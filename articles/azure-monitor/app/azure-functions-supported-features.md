@@ -1,23 +1,19 @@
 ---
 title: Obsługiwane funkcje platformy Azure Azure Functions Application Insights | Microsoft Docs
 description: Application Insights obsługiwane funkcje Azure Functions
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: ''
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: reference
+author: TimothyMothra
+ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.author: tilee
-ms.openlocfilehash: 46e7f5b5376622be9a05265942b6aceb38feebac
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 31f962ca96ca5c47d18f9250e567abb8f4024e6f
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372450"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677552"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights Azure Functions obsługiwanych funkcji
 
@@ -34,14 +30,14 @@ Azure Functions oferuje [wbudowaną integrację](../../azure-functions/functions
 | Wyjątki &bull;                   | Tak             | Tak               | 
 | Liczniki wydajności &bull;         | Tak             | Tak               |
 | Zależności &bull;                   |                   |                   |               
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 HTTP      |                 | Tak               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 ServiceBus|                 | Tak               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 EventHub  |                 | Tak               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 SQL       |                 | Tak               | 
+| &nbsp; &nbsp; &nbsp; &mdash; HTTP      |                 | Tak               | 
+| &nbsp; &nbsp; &nbsp; &mdash; ServiceBus|                 | Tak               | 
+| &nbsp; &nbsp; &nbsp; &mdash; EventHub  |                 | Tak               | 
+| &nbsp; &nbsp; &nbsp; &mdash; SQL       |                 | Tak               | 
 | | | | 
 | **Obsługiwane funkcje**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Tak             | Tak               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Secure Control Channel|                 | Tak               | 
+| &nbsp; &nbsp; &nbsp; &mdash; kanał Secure Control|                 | Tak               | 
 | Próbkowanie &bull;                     | Tak             | Tak               | 
 | pulsy &bull;                   |                 | Tak               | 
 | | | | 

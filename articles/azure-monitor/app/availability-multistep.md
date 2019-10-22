@@ -1,37 +1,33 @@
 ---
 title: Monitoruj aplikację sieci Web za pomocą wieloetapowych testów sieci Web i platformy Azure Application Insights | Microsoft Docs
 description: Konfigurowanie wieloetapowych testów sieci Web do monitorowania aplikacji sieci Web przy użyciu usługi Azure Application Insights
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 07/25/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881439"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678232"
 ---
-# <a name="multi-step-web-tests"></a>Wieloetapowe testy sieci Web
+# <a name="multi-step-web-tests"></a>Wieloetapowy test witryny
 
 Można monitorować zarejestrowane sekwencje adresów URL i interakcji z witryną internetową za pomocą wieloetapowych testów sieci Web. Ten artykuł przeprowadzi Cię przez proces tworzenia wieloetapowego testu sieci Web za pomocą Visual Studio Enterprise.
 
 > [!NOTE]
-> Wieloetapowe testy sieci Web zależą od plików WebTest programu Visual Studio. Zostało [ogłoszone](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , że program Visual Studio 2019 będzie ostatnią wersją z funkcjonalnością WebTest. Ważne jest, aby zrozumieć, że podczas gdy nie zostaną dodane żadne nowe funkcje, funkcja WebTest w programie Visual Studio 2019 nadal jest obsługiwana i będzie nadal obsługiwana w ramach cyklu życia produktu. Azure Monitor zespół produkcyjny zakwestionuje pytania dotyczące przyszłościowych testów dostępności wieloetapowej [](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101).  
+> Wieloetapowe testy sieci Web zależą od plików WebTest programu Visual Studio. Zostało [ogłoszone](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , że program Visual Studio 2019 będzie ostatnią wersją z funkcjonalnością WebTest. Ważne jest, aby zrozumieć, że podczas gdy nie zostaną dodane żadne nowe funkcje, funkcja WebTest w programie Visual Studio 2019 nadal jest obsługiwana i będzie nadal obsługiwana w ramach cyklu życia produktu. Azure Monitor zespół produkcyjny zakwestionuje pytania dotyczące przyszłościowych [testów dostępności](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)wieloetapowej.  
 
 ## <a name="pre-requisites"></a>Wymagania wstępne
 
 * Program Visual Studio 2017 Enterprise lub nowszy.
 * Narzędzia do testowania wydajności i obciążenia sieci Web w programie Visual Studio.
 
-Aby zlokalizować wymagania wstępne narzędzi do testowania. Uruchom debugowanie **Instalator programu Visual Studio** > **poszczególnych składników** > **i testowanie** > **narzędzi do testowania wydajności sieci Web i testów obciążenia**.
+Aby zlokalizować wymagania wstępne narzędzi do testowania. Uruchom **Instalator programu Visual Studio**  > **poszczególnych składników**  > **debugowanie i testowanie**  > **Narzędzia do testowania wydajności sieci Web i testów obciążenia**.
 
 ![Zrzut ekranu przedstawiający interfejs użytkownika Instalatora programu Visual Studio z pojedynczymi składnikami, które są zaznaczone z CheckBox obok elementu narzędzi do testowania wydajności sieci Web i obciążenia](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -48,11 +44,11 @@ Aby utworzyć test wieloetapowy, nagraj scenariusz przy użyciu programu Visual 
 
 Nagraj sesję sieci Web w programie Visual Studio Enterprise.
 
-1. Utwórz projekt testu wydajności i obciążenia sieci Web.  >  >  **Test** **wizualizacji C#** **pliku nowego**projektu >   > 
+1. Utwórz projekt testu wydajności i obciążenia sieci Web. **Plik**  > **Nowy**  > **projektu**  > **Visual C#**   > **test**
 
     ![Interfejs użytkownika nowego projektu programu Visual Studio](./media/availability-multistep/vs-web-performance-and-load-test.png)
 
-2. `.webtest` Otwórz plik i Rozpocznij nagrywanie.
+2. Otwórz plik `.webtest` i Rozpocznij nagrywanie.
 
     ![Interfejs użytkownika nagrywania testu programu Visual Studio](./media/availability-multistep/open-web-test.png)
 
@@ -73,7 +69,7 @@ Nagraj sesję sieci Web w programie Visual Studio Enterprise.
 
 ## <a name="upload-the-web-test"></a>Przekaż test sieci Web
 
-1. W portalu Application Insights w okienku dostępność wybierz pozycję **Utwórz** > test testowy**Typ** > wieloetapowego**testu sieci Web**.
+1. W portalu Application Insights w okienku dostępność wybierz pozycję **Utwórz test**  > **typ testowy**  > **wieloetapowy test sieci Web**.
 
 2. Ustaw lokalizacje testu, częstotliwość i parametry alertu.
 
@@ -84,7 +80,7 @@ Nagraj sesję sieci Web w programie Visual Studio Enterprise.
 |**Częstotliwość testów**| Ustawia częstotliwość uruchamiania testu z każdej lokalizacji testowej. Przy domyślnej częstotliwości równej 5 minut i 5 lokalizacjach testu witryna będzie testowana średnio co minutę.|
 |**Lokalizacje testów**| Są miejsca, w których serwery wysyłają żądania sieci Web do adresu URL. **Minimalna liczba zalecanych lokalizacji testowych to pięć** , aby upewnić się, że problemy w witrynie sieci Web można odróżnić od problemów z siecią. Wybrać można maksymalnie 16 lokalizacji.
 
-### <a name="success-criteria"></a>Kryteria powodzenia
+### <a name="success-criteria"></a>Kryteria sukcesu
 
 |Ustawienie| Wyjaśnienie
 |----|----|----|
@@ -98,7 +94,7 @@ Nagraj sesję sieci Web w programie Visual Studio Enterprise.
 |----|----|----|
 |**Niemal w czasie rzeczywistym (wersja zapoznawcza)** | Zalecamy korzystanie z alertów niemal w czasie rzeczywistym. Konfigurowanie tego typu alertu odbywa się po utworzeniu testu dostępności.  |
 |**Wdrożenie klasyczne** | Nie zalecamy już używania klasycznych alertów dla nowych testów dostępności.|
-|**Próg lokalizacji alertu**|Zalecamy co najmniej 3/5 lokalizacji. Optymalna relacja między progiem lokalizacji alertu a liczbą lokalizacji testowych to liczba lokalizacji testu w **lokalizacji** = alertów **-2 z co najmniej pięcioma lokalizacjami testów.**|
+|**Próg lokalizacji alertu**|Zalecamy co najmniej 3/5 lokalizacji. Optymalną relację między progiem lokalizacji alertów a liczbą lokalizacji testowych jest **próg lokalizacji alertu**  = **liczbę lokalizacji testu-2 z co najmniej pięcioma lokalizacjami testów.**|
 
 ## <a name="advanced-configuration"></a>Konfiguracja zaawansowana
 
@@ -124,7 +120,7 @@ Wtyczka Data/godzina testu sieci Web umożliwia obsługę czasów Sparametryzuj.
 
 3. W parametrach testu sieci Web użyj {{nazwa wtyczki}}, aby odwoływać się do nazwy wtyczki.
 
-    ![Godzina rozpoczęcia](./media/availability-multistep/app-insights-72webtest-plugins.png)
+    ![StartTime](./media/availability-multistep/app-insights-72webtest-plugins.png)
 
 Teraz przekaż test do portalu. Wartości dynamiczne zostaną zastosowane w każdym przebiegu testu.
 

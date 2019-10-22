@@ -1,6 +1,6 @@
 ---
-title: Odwołanie do typów wyzwalaczy i akcji w języku definicji przepływu pracy — Azure Logic Apps
-description: Przewodnik referencyjny dotyczący wyzwalaczy i typów akcji w języku definicji przepływu pracy dla Azure Logic Apps
+title: Odwołanie do schematu dla typów wyzwalaczy i akcji — Azure Logic Apps
+description: Przewodnik odwołujący się do schematu dla wyzwalacza języka definicji przepływu pracy i typów akcji w Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -9,14 +9,14 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 3311ca3665083ec8c71f48b28e7195aa8c14f13d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 9bee329953a1f39720b054ed90e1d56c6743862e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350675"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679874"
 ---
-# <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Odwołanie do typów wyzwalaczy i akcji w języku definicji przepływu pracy dla Azure Logic Apps
+# <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Przewodnik odwołujący się do schematu dla wyzwalaczy i typów akcji w Azure Logic Apps
 
 Ta dokumentacja zawiera opis typów ogólnych używanych do identyfikowania wyzwalaczy i akcji w podstawowej definicji przepływu pracy aplikacji logiki, która jest opisana i weryfikowana przez [Język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md).
 Aby znaleźć określone wyzwalacze łącznika i akcje, których można używać w aplikacjach logiki, zobacz listę w obszarze [Przegląd łączników](https://docs.microsoft.com/connectors/).
@@ -50,23 +50,23 @@ Wyzwalacze mają te elementy najwyższego poziomu, chociaż niektóre są opcjon
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Nazwa wyzwalacza*> | String | Nazwa wyzwalacza | 
-| <*Typ wyzwalacza*> | String | Typ wyzwalacza, taki jak "http" lub "ApiConnection" | 
-| <*trigger-inputs*> | Obiekt JSON | Dane wejściowe, które definiują zachowanie wyzwalacza | 
-| <*time-unit*> | String | Jednostka czasu, która opisuje, jak często wyzwala wyzwalacz: "Sekunda", "minuta", "godzina", "dzień", "tydzień", "miesiąc" | 
-| <*number-of-time-units*> | Integer | Wartość określająca częstotliwość uruchamiania wyzwalacza na podstawie częstotliwości, czyli liczbę jednostek czasu oczekiwania do momentu ponownego uruchomienia wyzwalacza <p>Poniżej znajdują się minimalne i maksymalne interwały: <p>Bieżącym 1-16 miesięcy </br>Dzień 1-500 dni </br>Wydajność 1 – 12 000 godzin </br>Minutę 1 – 72000 minut </br>Drugi 1 – 9999999 s<p>Jeśli na przykład interwał wynosi 6, a częstotliwość wynosi "miesiąc", cykl jest co 6 miesięcy. | 
+| *Nazwa wyzwalacza* < > | Ciąg | Nazwa wyzwalacza | 
+| <*Typ wyzwalacza* > | Ciąg | Typ wyzwalacza, taki jak "http" lub "ApiConnection" | 
+| *wyzwalacz < dane wejściowe* > | Obiekt JSON | Dane wejściowe, które definiują zachowanie wyzwalacza | 
+| < >*jednostki czasu* | Ciąg | Jednostka czasu, która opisuje, jak często wyzwala wyzwalacz: "s", "minute", "Hour", "Day", "tydzień", "Month" | 
+| <*liczbę jednostek czasu* > | Liczba całkowita | Wartość określająca częstotliwość uruchamiania wyzwalacza na podstawie częstotliwości, czyli liczbę jednostek czasu oczekiwania do momentu ponownego uruchomienia wyzwalacza <p>Poniżej znajdują się minimalne i maksymalne interwały: <p>-Miesiąc: 1-16 miesięcy </br>-Dzień: 1-500 dni </br>-Godz.: 1 – 12 godzin </br>-Minutę: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 s<p>Jeśli na przykład interwał wynosi 6, a częstotliwość wynosi "miesiąc", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*array-with-conditions*> | Array | Tablica, która zawiera jeden lub więcej [warunków](#trigger-conditions) , które określają, czy należy uruchomić przepływ pracy. Dostępne tylko dla wyzwalaczy. | 
-| <*runtime-config-options*> | Obiekt JSON | Można zmienić zachowanie uruchamiania wyzwalacza przez ustawienie `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
-| <*splitOn-expression*> | String | Dla wyzwalaczy, które zwracają tablicę, można określić wyrażenie dzielące [lub ](#split-on-debatch) departia elementów tablicowych na wiele wystąpień przepływu pracy do przetworzenia. | 
-| <*operation-option*> | String | Zachowanie domyślne można zmienić, ustawiając `operationOptions` właściwość. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*tablicę z warunkami* > | Tablica | Tablica, która zawiera jeden lub więcej [warunków](#trigger-conditions) , które określają, czy należy uruchomić przepływ pracy. Dostępne tylko dla wyzwalaczy. | 
+| <*Runtime-config-options* > | Obiekt JSON | Można zmienić zachowanie uruchamiania wyzwalacza przez ustawienie `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
+| <*splitOn — wyrażenie* > | Ciąg | Dla wyzwalaczy, które zwracają tablicę, można określić wyrażenie [dzielące lub *departia* ](#split-on-debatch) elementów tablicowych na wiele wystąpień przepływu pracy do przetworzenia. | 
+| <*operacji — opcja* > | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 ## <a name="trigger-types-list"></a>Lista typów wyzwalaczy
@@ -77,7 +77,7 @@ Każdy typ wyzwalacza ma inny interfejs i dane wejściowe, które definiują zac
 
 | Typ wyzwalacza | Opis | 
 |--------------|-------------| 
-| [**HTTP**](#http-trigger) | Sprawdza lub *sonduje* dowolny punkt końcowy. Ten punkt końcowy musi być zgodny z określonym kontraktem wyzwalacza przy użyciu wzorca asynchronicznego "202" lub zwracając tablicę. | 
+| [**PROTOKOŁY**](#http-trigger) | Sprawdza lub *sonduje* dowolny punkt końcowy. Ten punkt końcowy musi być zgodny z określonym kontraktem wyzwalacza przy użyciu wzorca asynchronicznego "202" lub zwracając tablicę. | 
 | [**HTTPWebhook**](#http-webhook-trigger) | Tworzy możliwy do wywołania punkt końcowy dla aplikacji logiki, ale wywołuje określony adres URL, aby zarejestrować lub wyrejestrować. |
 | [**Wystąpieniu**](#recurrence-trigger) | Uruchamiany zgodnie ze zdefiniowanym harmonogramem. Możesz ustawić przyszłą datę i godzinę uruchamiania tego wyzwalacza. Na podstawie częstotliwości można także określić godziny i dni uruchamiania przepływu pracy. | 
 | [**Żądając**](#request-trigger)  | Tworzy wywoływany punkt końcowy dla aplikacji logiki i jest również znany jako wyzwalacz "ręczny". Na przykład zobacz [wywoływanie, wyzwalanie lub zagnieżdżanie przepływów pracy za pomocą punktów końcowych http](../logic-apps/logic-apps-http-endpoint.md). | 
@@ -130,35 +130,35 @@ Ten wyzwalacz sprawdza lub *sonduje* punkt końcowy przy użyciu [interfejsów A
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*APIConnection_trigger_name*> | String | Nazwa wyzwalacza | 
-| <*Nazwa połączenia*> | String | Nazwa połączenia z zarządzanym interfejsem API, którego używa przepływ pracy | 
-| <*Typ metody*> | String | Metoda HTTP służąca do komunikacji z zarządzanym interfejsem API: "GET", "PUT", "POST", "PATCH", "DELETE" | 
-| <*Operacja interfejsu API*> | String | Operacja interfejsu API do wywołania | 
-| <*time-unit*> | String | Jednostka czasu, która opisuje, jak często wyzwala wyzwalacz: "Sekunda", "minuta", "godzina", "dzień", "tydzień", "miesiąc" | 
-| <*number-of-time-units*> | Integer | Wartość określająca częstotliwość uruchamiania wyzwalacza na podstawie częstotliwości, czyli liczbę jednostek czasu oczekiwania do momentu ponownego uruchomienia wyzwalacza <p>Poniżej znajdują się minimalne i maksymalne interwały: <p>Bieżącym 1-16 miesięcy </br>Dzień 1-500 dni </br>Wydajność 1 – 12 000 godzin </br>Minutę 1 – 72000 minut </br>Drugi 1 – 9999999 s<p>Jeśli na przykład interwał wynosi 6, a częstotliwość wynosi "miesiąc", cykl jest co 6 miesięcy. | 
+| <*APIConnection_trigger_name* > | Ciąg | Nazwa wyzwalacza | 
+| <*Nazwa połączenia*> | Ciąg | Nazwa połączenia z zarządzanym interfejsem API, którego używa przepływ pracy | 
+| <*Typ metody* > | Ciąg | Metoda HTTP służąca do komunikacji z zarządzanym interfejsem API: "GET", "PUT", "POST", "PATCH", "DELETE" | 
+| <*operacji interfejsu api* > | Ciąg | Operacja interfejsu API do wywołania | 
+| < >*jednostki czasu* | Ciąg | Jednostka czasu, która opisuje, jak często wyzwala wyzwalacz: "s", "minute", "Hour", "Day", "tydzień", "Month" | 
+| <*liczbę jednostek czasu* > | Liczba całkowita | Wartość określająca częstotliwość uruchamiania wyzwalacza na podstawie częstotliwości, czyli liczbę jednostek czasu oczekiwania do momentu ponownego uruchomienia wyzwalacza <p>Poniżej znajdują się minimalne i maksymalne interwały: <p>-Miesiąc: 1-16 miesięcy </br>-Dzień: 1-500 dni </br>-Godz.: 1 – 12 godzin </br>-Minutę: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 s<p>Jeśli na przykład interwał wynosi 6, a częstotliwość wynosi "miesiąc", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*ponawianie próby — zachowanie*> | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*zapytanie-parametry*> | Obiekt JSON | Wszystkie parametry zapytania, które mają zostać dołączone do wywołania interfejsu API. Na przykład `"queries": { "api-version": "2018-01-01" }` obiekt dodaje `?api-version=2018-01-01` do wywołania. | 
-| <*max-runs*> | Integer | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Integer | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić w `runtimeConfiguration.concurrency.runs` zależności od właściwości, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
-| <*splitOn-expression*> | String | Dla wyzwalaczy, które zwracają tablice, to wyrażenie odwołuje się do tablicy, która ma być używana, aby można było utworzyć i uruchomić wystąpienie przepływu pracy dla każdego elementu tablicy zamiast używać pętli "for each". <p>Na przykład, wyrażenie reprezentuje element w tablicy zwracany w treści wyzwalacza:`@triggerbody()?['value']` |
-| <*operation-option*> | String | Zachowanie domyślne można zmienić, ustawiając `operationOptions` właściwość. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). |
+| <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
+| <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania, które mają zostać dołączone do wywołania interfejsu API. Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do wywołania. | 
+| <*Max-uruchomienia* > | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
+| <*Maksymalna liczba uruchomień kolejki* > | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
+| <*splitOn — wyrażenie* > | Ciąg | Dla wyzwalaczy, które zwracają tablice, to wyrażenie odwołuje się do tablicy, która ma być używana, aby można było utworzyć i uruchomić wystąpienie przepływu pracy dla każdego elementu tablicy zamiast używać pętli "for each". <p>Na przykład to wyrażenie reprezentuje element w tablicy zwracany w treści wyzwalacza: `@triggerbody()?['value']` |
+| <*operacji — opcja* > | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). |
 ||||
 
 *Dane wyjściowe*
  
-| Element | Type | Opis |
+| Element | Typ | Opis |
 |---------|------|-------------|
-| nagłówki | Obiekt JSON | Nagłówki odpowiedzi |
+| Nagłówka | Obiekt JSON | Nagłówki odpowiedzi |
 | jednostce | Obiekt JSON | Treść z odpowiedzi |
-| Kod stanu | Integer | Kod stanu z odpowiedzi |
+| kod stanu | Liczba całkowita | Kod stanu z odpowiedzi |
 |||| 
 
 *Przykład*
@@ -224,22 +224,22 @@ Ten wyzwalacz wysyła żądanie subskrypcji do punktu końcowego przy użyciu [i
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Nazwa połączenia*> | String | Nazwa połączenia z zarządzanym interfejsem API, którego używa przepływ pracy | 
-| <*treść — zawartość*> | Obiekt JSON | Zawartość wiadomości do wysłania jako ładunek do zarządzanego interfejsu API | 
+| <*Nazwa połączenia*> | Ciąg | Nazwa połączenia z zarządzanym interfejsem API, którego używa przepływ pracy | 
+| < treść *— > zawartości* | Obiekt JSON | Zawartość wiadomości do wysłania jako ładunek do zarządzanego interfejsu API | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*ponawianie próby — zachowanie*> | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*zapytanie-parametry*> | Obiekt JSON | Wszystkie parametry zapytania, które mają zostać dołączone do wywołania interfejsu API <p>Na przykład `"queries": { "api-version": "2018-01-01" }` obiekt dodaje `?api-version=2018-01-01` do wywołania. | 
-| <*max-runs*> | Integer | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Integer | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić w `runtimeConfiguration.concurrency.runs` zależności od właściwości, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
-| <*splitOn-expression*> | String | Dla wyzwalaczy, które zwracają tablice, to wyrażenie odwołuje się do tablicy, która ma być używana, aby można było utworzyć i uruchomić wystąpienie przepływu pracy dla każdego elementu tablicy zamiast używać pętli "for each". <p>Na przykład, wyrażenie reprezentuje element w tablicy zwracany w treści wyzwalacza:`@triggerbody()?['value']` |
-| <*operation-option*> | String | Zachowanie domyślne można zmienić, ustawiając `operationOptions` właściwość. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
+| <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania, które mają zostać dołączone do wywołania interfejsu API <p>Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do wywołania. | 
+| <*Max-uruchomienia* > | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
+| <*Maksymalna liczba uruchomień kolejki* > | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
+| <*splitOn — wyrażenie* > | Ciąg | Dla wyzwalaczy, które zwracają tablice, to wyrażenie odwołuje się do tablicy, która ma być używana, aby można było utworzyć i uruchomić wystąpienie przepływu pracy dla każdego elementu tablicy zamiast używać pętli "for each". <p>Na przykład to wyrażenie reprezentuje element w tablicy zwracany w treści wyzwalacza: `@triggerbody()?['value']` |
+| <*operacji — opcja* > | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 *Przykład*
@@ -303,35 +303,35 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy na podstawie okreś
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Typ metody*> | String | Metoda HTTP używana do sondowania określonego punktu końcowego: "GET", "PUT", "POST", "PATCH", "DELETE" | 
-| <*endpoint-URL*> | String | Adres URL protokołu HTTP lub HTTPS dla punktu końcowego do sondowania <p>Maksymalny rozmiar ciągu: 2 KB | 
-| <*time-unit*> | String | Jednostka czasu, która opisuje, jak często wyzwala wyzwalacz: "Sekunda", "minuta", "godzina", "dzień", "tydzień", "miesiąc" | 
-| <*number-of-time-units*> | Integer | Wartość określająca częstotliwość uruchamiania wyzwalacza na podstawie częstotliwości, czyli liczbę jednostek czasu oczekiwania do momentu ponownego uruchomienia wyzwalacza <p>Poniżej znajdują się minimalne i maksymalne interwały: <p>Bieżącym 1-16 miesięcy </br>Dzień 1-500 dni </br>Wydajność 1 – 12 000 godzin </br>Minutę 1 – 72000 minut </br>Drugi 1 – 9999999 s<p>Jeśli na przykład interwał wynosi 6, a częstotliwość wynosi "miesiąc", cykl jest co 6 miesięcy. | 
+| <*Typ metody* > | Ciąg | Metoda HTTP używana do sondowania określonego punktu końcowego: "GET", "PUT", "POST", "PATCH", "DELETE" | 
+| <*punkt końcowy — adres URL* > | Ciąg | Adres URL protokołu HTTP lub HTTPS dla punktu końcowego do sondowania <p>Maksymalny rozmiar ciągu: 2 KB | 
+| < >*jednostki czasu* | Ciąg | Jednostka czasu, która opisuje, jak często wyzwala wyzwalacz: "s", "minute", "Hour", "Day", "tydzień", "Month" | 
+| <*liczbę jednostek czasu* > | Liczba całkowita | Wartość określająca częstotliwość uruchamiania wyzwalacza na podstawie częstotliwości, czyli liczbę jednostek czasu oczekiwania do momentu ponownego uruchomienia wyzwalacza <p>Poniżej znajdują się minimalne i maksymalne interwały: <p>-Miesiąc: 1-16 miesięcy </br>-Dzień: 1-500 dni </br>-Godz.: 1 – 12 godzin </br>-Minutę: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 s<p>Jeśli na przykład interwał wynosi 6, a częstotliwość wynosi "miesiąc", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*header-content*> | Obiekt JSON | Nagłówki do wysłania wraz z żądaniem <p>Na przykład, aby ustawić język i typ dla żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*treść — zawartość*> | String | Zawartość wiadomości do wysłania jako ładunek do żądania | 
-| <*Uwierzytelnianie — Metoda*> | Obiekt JSON | Metoda stosowana przez żądanie do uwierzytelniania. Aby uzyskać więcej informacji, zobacz Usługa [Scheduler — uwierzytelnianie](../scheduler/scheduler-outbound-authentication.md)wychodzące. Poza harmonogramem `authority` właściwość jest obsługiwana. Gdy nie zostanie określony, wartość domyślna to `https://login.windows.net`, ale można użyć innej wartości, takiej jak.`https://login.windows\-ppe.net` |
-| <*ponawianie próby — zachowanie*> | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). |  
- <*zapytanie-parametry*> | Obiekt JSON | Wszystkie parametry zapytania do dołączenia do żądania <p>Na przykład `"queries": { "api-version": "2018-01-01" }` obiekt dodaje `?api-version=2018-01-01` do żądania. | 
-| <*max-runs*> | Integer | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Integer | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić w `runtimeConfiguration.concurrency.runs` zależności od właściwości, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
-| <*operation-option*> | String | Zachowanie domyślne można zmienić, ustawiając `operationOptions` właściwość. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| *nagłówek < — zawartość* > | Obiekt JSON | Nagłówki do wysłania wraz z żądaniem <p>Na przykład, aby ustawić język i typ dla żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| < treść *— > zawartości* | Ciąg | Zawartość wiadomości do wysłania jako ładunek do żądania | 
+| <*uwierzytelnianie-metoda* > | Obiekt JSON | Metoda stosowana przez żądanie do uwierzytelniania. Aby uzyskać więcej informacji, zobacz Usługa [Scheduler — uwierzytelnianie wychodzące](../scheduler/scheduler-outbound-authentication.md). Poza harmonogramem Właściwość `authority` jest obsługiwana. Gdy nie zostanie określony, wartość domyślna to `https://login.windows.net`, ale można użyć innej wartości, takiej jak `https://login.windows\-ppe.net`. |
+| <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). |  
+ <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania do dołączenia do żądania <p>Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do żądania. | 
+| <*Max-uruchomienia* > | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
+| <*Maksymalna liczba uruchomień kolejki* > | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
+| <*operacji — opcja* > | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 *Dane wyjściowe*
 
-| Element | Type | Opis |
+| Element | Typ | Opis |
 |---------|------|-------------| 
-| nagłówki | Obiekt JSON | Nagłówki odpowiedzi | 
+| Nagłówka | Obiekt JSON | Nagłówki odpowiedzi | 
 | jednostce | Obiekt JSON | Treść z odpowiedzi | 
-| Kod stanu | Integer | Kod stanu z odpowiedzi | 
+| kod stanu | Liczba całkowita | Kod stanu z odpowiedzi | 
 |||| 
 
 *Wymagania dotyczące żądań przychodzących*
@@ -352,8 +352,8 @@ Aby można było poprawnie współpracować z aplikacją logiki, punkt końcowy 
 | 200 | dawaj | Uruchom przepływ pracy, a następnie sprawdź ponownie, aby uzyskać więcej danych po zdefiniowanym cyklu. | 
 | 200 | 10 sekund | Uruchom przepływ pracy, a następnie sprawdź ponownie, aby uzyskać więcej danych po 10 sekundach. |  
 | 202 | 60 sekund | Nie Wyzwalaj przepływu pracy. Kolejna próba występuje w ciągu minuty, zgodnie ze zdefiniowanym cyklem. Jeśli zdefiniowany cykl jest krótszy niż jedna minuta, będzie miał pierwszeństwo nagłówek retry-After. W przeciwnym razie używany jest zdefiniowany cykl. | 
-| 400 | dawaj | Złe żądanie, nie uruchamiaj przepływu pracy. Jeśli nie `retryPolicy` jest zdefiniowany, zostaną użyte zasady domyślne. Po osiągnięciu liczby ponownych prób wyzwalacz ponownie sprawdzi dane po zdefiniowanym cyklu. | 
-| 500 | dawaj| Błąd serwera, nie uruchamiaj przepływu pracy. Jeśli nie `retryPolicy` jest zdefiniowany, zostaną użyte zasady domyślne. Po osiągnięciu liczby ponownych prób wyzwalacz ponownie sprawdzi dane po zdefiniowanym cyklu. | 
+| 400 | dawaj | Złe żądanie, nie uruchamiaj przepływu pracy. Jeśli nie zdefiniowano `retryPolicy`, zostaną użyte zasady domyślne. Po osiągnięciu liczby ponownych prób wyzwalacz ponownie sprawdzi dane po zdefiniowanym cyklu. | 
+| 500 | dawaj| Błąd serwera, nie uruchamiaj przepływu pracy. Jeśli nie zdefiniowano `retryPolicy`, zostaną użyte zasady domyślne. Po osiągnięciu liczby ponownych prób wyzwalacz ponownie sprawdzi dane po zdefiniowanym cyklu. | 
 |||| 
 
 <a name="http-webhook-trigger"></a>
@@ -396,37 +396,37 @@ Zachowanie wyzwalacza zależy od sekcji, które są używane lub pomijane.
 }
 ```
 
-Niektóre wartości, takie jak <*typu metody*>, są dostępne zarówno `"subscribe"` dla obiektów, jak i. `"unsubscribe"`
+Niektóre wartości, takie jak <*typu metody*>, są dostępne zarówno dla obiektów `"subscribe"`, jak i `"unsubscribe"`.
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Typ metody*> | String | Metoda HTTP do użycia dla żądania subskrypcji: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
-| <*endpoint-subscribe-URL*> | String | Adres URL punktu końcowego, pod którym ma zostać wysłane żądanie subskrypcji | 
+| <*Typ metody* > | Ciąg | Metoda HTTP do użycia dla żądania subskrypcji: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
+| <*punkt końcowy — adres URL subskrypcji* > | Ciąg | Adres URL punktu końcowego, pod którym ma zostać wysłane żądanie subskrypcji | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Typ metody*> | String | Metoda HTTP do użycia dla żądania anulowania: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
-| <*endpoint-unsubscribe-URL*> | String | Adres URL punktu końcowego, pod którym ma zostać wysłane żądanie anulowania | 
-| <*treść — zawartość*> | String | Zawartość wiadomości do wysłania w ramach subskrypcji lub żądania anulowania | 
-| <*Uwierzytelnianie — Metoda*> | Obiekt JSON | Metoda stosowana przez żądanie do uwierzytelniania. Aby uzyskać więcej informacji, zobacz Usługa [Scheduler — uwierzytelnianie](../scheduler/scheduler-outbound-authentication.md)wychodzące. |
-| <*ponawianie próby — zachowanie*> | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*max-runs*> | Integer | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Integer | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić w `runtimeConfiguration.concurrency.runs` zależności od właściwości, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
-| <*operation-option*> | String | Zachowanie domyślne można zmienić, ustawiając `operationOptions` właściwość. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*Typ metody* > | Ciąg | Metoda HTTP do użycia dla żądania anulowania: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
+| <*punkt końcowy — anulowanie subskrypcji — adres URL* > | Ciąg | Adres URL punktu końcowego, pod którym ma zostać wysłane żądanie anulowania | 
+| < treść *— > zawartości* | Ciąg | Zawartość wiadomości do wysłania w ramach subskrypcji lub żądania anulowania | 
+| <*uwierzytelnianie-metoda* > | Obiekt JSON | Metoda stosowana przez żądanie do uwierzytelniania. Aby uzyskać więcej informacji, zobacz Usługa [Scheduler — uwierzytelnianie wychodzące](../scheduler/scheduler-outbound-authentication.md). |
+| <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
+| <*Max-uruchomienia* > | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
+| <*Maksymalna liczba uruchomień kolejki* > | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
+| <*operacji — opcja* > | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 *Dane wyjściowe* 
 
-| Element | Type | Opis |
+| Element | Typ | Opis |
 |---------|------|-------------| 
-| nagłówki | Obiekt JSON | Nagłówki odpowiedzi | 
+| Nagłówka | Obiekt JSON | Nagłówki odpowiedzi | 
 | jednostce | Obiekt JSON | Treść z odpowiedzi | 
-| Kod stanu | Integer | Kod stanu z odpowiedzi | 
+| kod stanu | Liczba całkowita | Kod stanu z odpowiedzi | 
 |||| 
 
 *Przykład*
@@ -494,24 +494,24 @@ Ten wyzwalacz jest uruchamiany na podstawie określonego harmonogramu cyklu i za
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*time-unit*> | String | Jednostka czasu, która opisuje, jak często wyzwala wyzwalacz: "Sekunda", "minuta", "godzina", "dzień", "tydzień", "miesiąc" | 
-| <*number-of-time-units*> | Integer | Wartość określająca częstotliwość uruchamiania wyzwalacza na podstawie częstotliwości, czyli liczbę jednostek czasu oczekiwania do momentu ponownego uruchomienia wyzwalacza <p>Poniżej znajdują się minimalne i maksymalne interwały: <p>Bieżącym 1-16 miesięcy </br>Dzień 1-500 dni </br>Wydajność 1 – 12 000 godzin </br>Minutę 1 – 72000 minut </br>Drugi 1 – 9999999 s<p>Jeśli na przykład interwał wynosi 6, a częstotliwość wynosi "miesiąc", cykl jest co 6 miesięcy. | 
+| < >*jednostki czasu* | Ciąg | Jednostka czasu, która opisuje, jak często wyzwala wyzwalacz: "s", "minute", "Hour", "Day", "tydzień", "Month" | 
+| <*liczbę jednostek czasu* > | Liczba całkowita | Wartość określająca częstotliwość uruchamiania wyzwalacza na podstawie częstotliwości, czyli liczbę jednostek czasu oczekiwania do momentu ponownego uruchomienia wyzwalacza <p>Poniżej znajdują się minimalne i maksymalne interwały: <p>-Miesiąc: 1-16 miesięcy </br>-Dzień: 1-500 dni </br>-Godz.: 1 – 12 godzin </br>-Minutę: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 s<p>Jeśli na przykład interwał wynosi 6, a częstotliwość wynosi "miesiąc", cykl jest co 6 miesięcy. | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Start-Date-Time-with-format-RRRR-MM-DDTgg: mm: SS*> | String | Data i godzina rozpoczęcia w tym formacie: <p>RRRR-MM-DDTgg: mm: SS w przypadku określenia strefy czasowej <p>—lub— <p>RRRR-MM-DDTgg: mm: SSS, jeśli nie określisz strefy czasowej <p>Na przykład jeśli chcesz, aby 18 września 2017 o 2:00 PM, określ "2017-09-18T14:00:00" i określ strefę czasową, taką jak "Pacyficzny czas standardowy", lub określ "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** Ta godzina rozpoczęcia ma maksymalnie 49 lat w przyszłości i musi być zgodna ze [specyfikacją ISO 8601 Data Time](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [formacie czasu UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcia czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie określisz strefy czasowej, musisz dodać literę "Z" na końcu bez spacji. Ten "Z" odnosi się do odpowiadającego [czasu morskich](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia jest pierwszym wystąpieniem, a w przypadku harmonogramów złożonych wyzwalacz nie jest uruchamiany dłużej niż godzina rozpoczęcia. Aby uzyskać więcej informacji na temat dat i godzin uruchamiania, zobacz [Tworzenie i planowanie regularnie wykonywanych zadań](../connectors/connectors-native-recurrence.md). | 
-| <*Strefa czasowa*> | String | Ma zastosowanie tylko w przypadku określenia czasu rozpoczęcia, ponieważ ten wyzwalacz nie akceptuje [przesunięcia czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Określ strefę czasową, która ma zostać zastosowana. | 
-| <*znaki jednorazowe lub dłuższe*> | Tablica liczb całkowitych lub liczb całkowitych | Jeśli określisz wartość "Day" lub "tydzień" `frequency`dla, możesz określić co najmniej jedną liczbę całkowitą z zakresu od 0 do 23, rozdzieloną przecinkami, jako godziny, w których chcesz uruchomić przepływ pracy. <p>Na przykład, jeśli określisz wartość "10", "12" i "14", otrzymujesz 10 AM, 12 PM i 2 PM jako znaki godzinowe. | 
-| <*co najmniej jedna minuta*> | Tablica liczb całkowitych lub liczb całkowitych | Jeśli określisz wartość "Day" lub "tydzień" `frequency`dla, możesz określić co najmniej jedną liczbę całkowitą z zakresu od 0 do 59, rozdzieloną przecinkami, jako minuty godziny, gdy chcesz uruchomić przepływ pracy. <p>Na przykład można określić wartość "30" jako znak minuty i użyć poprzedniego przykładu dla godzin dnia, otrzymują 10:30 AM, 12:30 PM i 2:30 PM. | 
-| weekDays | Ciąg lub tablica ciągów | Jeśli określisz wartość "tydzień" `frequency`dla, możesz określić jeden lub więcej dni rozdzielonych przecinkami, gdy chcesz uruchomić przepływ pracy: "Poniedziałek", "wtorek", "Środa", "czwartek", "piątek", "Sobota" i "Niedziela" | 
-| <*max-runs*> | Integer | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Integer | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić w `runtimeConfiguration.concurrency.runs` zależności od właściwości, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
-| <*operation-option*> | String | Zachowanie domyślne można zmienić, ustawiając `operationOptions` właściwość. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*Start-Date-Time-with-format-RRRR-MM-DDTgg: mm: ss* > | Ciąg | Data i godzina rozpoczęcia w tym formacie: <p>RRRR-MM-DDTgg: mm: SS w przypadku określenia strefy czasowej <p>— lub — <p>RRRR-MM-DDTgg: mm: SSS, jeśli nie określisz strefy czasowej <p>Na przykład jeśli chcesz, aby 18 września 2017 o 2:00 PM, określ "2017-09-18T14:00:00" i określ strefę czasową, taką jak "Pacyficzny czas standardowy", lub określ "2017-09-18T14:00:00Z" bez strefy czasowej. <p>**Uwaga:** Ta godzina rozpoczęcia ma maksymalnie 49 lat w przyszłości i musi być zgodna ze [specyfikacją ISO 8601 Data Time](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) w [formacie czasu UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), ale bez [przesunięcia czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Jeśli nie określisz strefy czasowej, musisz dodać literę "Z" na końcu bez spacji. Ten "Z" odnosi się do odpowiadającego [czasu morskich](https://en.wikipedia.org/wiki/Nautical_time). <p>W przypadku prostych harmonogramów czas rozpoczęcia jest pierwszym wystąpieniem, a w przypadku harmonogramów złożonych wyzwalacz nie jest uruchamiany dłużej niż godzina rozpoczęcia. Aby uzyskać więcej informacji na temat dat i godzin uruchamiania, zobacz [Tworzenie i planowanie regularnie wykonywanych zadań](../connectors/connectors-native-recurrence.md). | 
+| <*strefę czasową* > | Ciąg | Ma zastosowanie tylko w przypadku określenia czasu rozpoczęcia, ponieważ ten wyzwalacz nie akceptuje [przesunięcia czasu UTC](https://en.wikipedia.org/wiki/UTC_offset). Określ strefę czasową, która ma zostać zastosowana. | 
+| <*znakami "1" lub "więcej-godzinowym"* > | Tablica liczb całkowitych lub liczb całkowitych | Jeśli określisz wartość "Day" lub "tydzień" dla `frequency`, możesz określić co najmniej jedną liczbę całkowitą z przedziału od 0 do 23, rozdzieloną przecinkami, jako godziny, w których chcesz uruchomić przepływ pracy. <p>Na przykład, jeśli określisz wartość "10", "12" i "14", otrzymujesz 10 AM, 12 PM i 2 PM jako znaki godzinowe. | 
+| <*znaki "jeden lub więcej-minutowe"* > | Tablica liczb całkowitych lub liczb całkowitych | Jeśli określisz wartość "Day" lub "tydzień" dla `frequency`, możesz określić co najmniej jedną liczbę całkowitą z zakresu od 0 do 59, rozdzieloną przecinkami, jako minuty godziny, gdy chcesz uruchomić przepływ pracy. <p>Na przykład można określić wartość "30" jako znak minuty i użyć poprzedniego przykładu dla godzin dnia, otrzymują 10:30 AM, 12:30 PM i 2:30 PM. | 
+| weekDays | Ciąg lub tablica ciągów | Jeśli określisz wartość "tydzień" dla `frequency`, możesz określić jeden lub więcej dni rozdzielonych przecinkami, gdy chcesz uruchomić przepływ pracy: "poniedziałek", "wtorek", "Środa", "czwartek", "piątek", "Sobota" i "Niedziela" | 
+| <*Max-uruchomienia* > | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
+| <*Maksymalna liczba uruchomień kolejki* > | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
+| <*operacji — opcja* > | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 *Przykład 1*
@@ -572,7 +572,7 @@ Aby uzyskać więcej informacji i przykłady dla tego wyzwalacza, zobacz [Tworze
 
 Ten wyzwalacz umożliwia wywołanie aplikacji logiki przez utworzenie punktu końcowego, który może akceptować żądania przychodzące. Dla tego wyzwalacza Podaj schemat JSON, który opisuje i weryfikuje ładunek lub dane wejściowe, które wyzwalacz odbiera od żądania przychodzącego. Schemat umożliwia również łatwiejsze odwoływanie się do dalszych działań w przepływie pracy. 
 
-Aby wywołać ten wyzwalacz, należy użyć `listCallbackUrl` interfejsu API, który jest opisany w interfejsie [API REST usługi przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Aby dowiedzieć się, jak używać tego wyzwalacza jako punktu końcowego HTTP, zobacz [wywoływanie, wyzwalanie lub zagnieżdżanie przepływów pracy za pomocą punktów końcowych http](../logic-apps/logic-apps-http-endpoint.md).
+Aby wywołać ten wyzwalacz, należy użyć interfejsu API `listCallbackUrl`, który jest opisany w [interfejsie API REST usługi przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflows). Aby dowiedzieć się, jak używać tego wyzwalacza jako punktu końcowego HTTP, zobacz [wywoływanie, wyzwalanie lub zagnieżdżanie przepływów pracy za pomocą punktów końcowych http](../logic-apps/logic-apps-http-endpoint.md).
 
 ```json
 "manual": {
@@ -603,22 +603,22 @@ Aby wywołać ten wyzwalacz, należy użyć `listCallbackUrl` interfejsu API, kt
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Nazwa właściwości*> | String | Nazwa właściwości w schemacie JSON opisująca ładunek | 
-| <*property-type*> | String | Typ właściwości | 
+| *Nazwa właściwości* < > | Ciąg | Nazwa właściwości w schemacie JSON opisująca ładunek | 
+| *Typ właściwości* < > | Ciąg | Typ właściwości | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Typ metody*> | String | Metoda, którą muszą używać żądania przychodzące do wywoływania aplikacji logiki: "GET", "PUT", "POST", "PATCH", "DELETE" |
-| <*relative-path-for-accepted-parameter*> | String | Ścieżka względna parametru, który może zostać zaakceptowany przez adres URL punktu końcowego | 
-| <*wymagane — właściwości*> | Array | Co najmniej jedna właściwość, która wymaga wartości | 
-| <*max-runs*> | Integer | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Integer | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić w `runtimeConfiguration.concurrency.runs` zależności od właściwości, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
-| <*operation-option*> | String | Zachowanie domyślne można zmienić, ustawiając `operationOptions` właściwość. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*Typ metody* > | Ciąg | Metoda, której żądania przychodzące muszą używać do wywoływania aplikacji logiki: "GET", "PUT", "POST", "PATCH", "DELETE" |
+| <*ścieżka względna-dla zaakceptowanego parametru* > | Ciąg | Ścieżka względna parametru, który może zostać zaakceptowany przez adres URL punktu końcowego | 
+| <*Required — właściwości* > | Tablica | Co najmniej jedna właściwość, która wymaga wartości | 
+| <*Max-uruchomienia* > | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
+| <*Maksymalna liczba uruchomień kolejki* > | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
+| <*operacji — opcja* > | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 *Przykład*
@@ -656,11 +656,11 @@ Ten wyzwalacz określa, że żądanie przychodzące musi używać metody HTTP PO
 
 <a name="trigger-conditions"></a>
 
-## <a name="trigger-conditions"></a>Warunki wyzwalacza
+## <a name="trigger-conditions"></a>Warunki wyzwalania
 
-Dla każdego wyzwalacza i tylko wyzwalaczy, można dołączyć tablicę, która zawiera co najmniej jeden warunek określający, czy przepływ pracy powinien być uruchamiany. Aby dodać `conditions` właściwość do wyzwalacza w przepływie pracy, Otwórz aplikację logiki w edytorze widoku kodu.
+Dla każdego wyzwalacza i tylko wyzwalaczy, można dołączyć tablicę, która zawiera co najmniej jeden warunek określający, czy przepływ pracy powinien być uruchamiany. Aby dodać właściwość `conditions` do wyzwalacza w przepływie pracy, Otwórz aplikację logiki w edytorze widoku kodu.
 
-Można na przykład określić, że wyzwalacz ma być uruchamiany tylko wtedy, gdy witryna sieci Web zwróci błąd wewnętrzny serwera, odwołując się do kodu `conditions` stanu wyzwalacza we właściwości:
+Można na przykład określić, że wyzwalacz ma być uruchamiany tylko wtedy, gdy witryna sieci Web zwróci błąd wewnętrzny serwera, odwołując się do kodu stanu wyzwalacza we właściwości `conditions`:
 
 ```json
 "Recurrence": {
@@ -683,11 +683,11 @@ Domyślnie wyzwalacz jest uruchamiany tylko po otrzymaniu odpowiedzi "200 OK". G
 
 ## <a name="trigger-multiple-runs"></a>Wyzwalanie wielu przebiegów
 
-Jeśli wyzwalacz zwraca tablicę dla aplikacji logiki do przetworzenia, czasami pętla "for each" może trwać zbyt długo, aby przetwarzać każdy element tablicy. Zamiast tego można użyć właściwości **SplitOn** w wyzwalaczu, aby wygrupować tablicę. Usuwanie partii dzieli elementy tablicy i uruchamia nowe wystąpienie przepływu pracy, które jest uruchamiane dla każdego elementu tablicy. Takie podejście jest przydatne, na przykład gdy chcesz sondować punkt końcowy, który może zwrócić wiele nowych elementów między interwałami sondowania.
+Jeśli wyzwalacz zwraca tablicę dla aplikacji logiki do przetworzenia, czasami pętla "for each" może trwać zbyt długo, aby przetwarzać każdy element tablicy. Zamiast tego można użyć właściwości **SplitOn** w wyzwalaczu, aby *wygrupować* tablicę. Usuwanie partii dzieli elementy tablicy i uruchamia nowe wystąpienie przepływu pracy, które jest uruchamiane dla każdego elementu tablicy. Takie podejście jest przydatne, na przykład gdy chcesz sondować punkt końcowy, który może zwrócić wiele nowych elementów między interwałami sondowania.
 Maksymalna liczba elementów tablicy, które **SplitOn** może przetwarzać w jednym przebiegu aplikacji logiki, znajduje się w temacie [limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). 
 
 > [!NOTE]
-> Nie można użyć **SplitOn** z wzorcem odpowiedzi synchronicznej. Każdy przepływ pracy korzystający z **SplitOn** i zawiera akcję odpowiedzi uruchamianą asynchronicznie i `202 ACCEPTED` natychmiast wysyła odpowiedź.
+> Nie można użyć **SplitOn** z wzorcem odpowiedzi synchronicznej. Każdy przepływ pracy korzystający z **SplitOn** i zawiera akcję odpowiedzi uruchamianą asynchronicznie i natychmiast wysyła odpowiedź `202 ACCEPTED`.
 
 Jeśli plik struktury Swagger wyzwalacza opisuje ładunek, który jest tablicą, właściwość **SplitOn** jest automatycznie dodawana do wyzwalacza. W przeciwnym razie Dodaj tę właściwość do ładunku odpowiedzi, który ma tablicę, którą chcesz departii. 
 
@@ -729,11 +729,11 @@ Aplikacja logiki potrzebuje tylko zawartości z tablicy w `Rows`, więc można u
 ```
 
 > [!NOTE]
-> Jeśli używasz `SplitOn` polecenia, nie możesz uzyskać właściwości, które znajdują się poza tablicą. W tym przykładzie nie można uzyskać `status` właściwości w odpowiedzi zwróconej przez interfejs API.
+> Jeśli używasz `SplitOn` polecenia, nie możesz uzyskać właściwości, które znajdują się poza tablicą. W tym przykładzie nie można uzyskać właściwości `status` w odpowiedzi zwróconej przez interfejs API.
 > 
-> Aby uniknąć błędu, jeśli `Rows` właściwość nie istnieje, w `?` tym przykładzie używa operatora.
+> Aby uniknąć błędu, jeśli właściwość `Rows` nie istnieje, w poniższym przykładzie jest używane operator `?`.
 
-Można teraz użyć `@triggerBody().name` definicji przepływu pracy do `name` pobrania wartości, które są `"customer-name-one"` z pierwszego uruchomienia i `"customer-name-two"` z drugiego przebiegu. Dlatego dane wyjściowe wyzwalacza wyglądają podobnie jak w następujących przykładach:
+Twoja definicja przepływu pracy może teraz używać `@triggerBody().name`, aby uzyskać `name` wartości, które są `"customer-name-one"` z pierwszego uruchomienia i `"customer-name-two"` z drugiego przebiegu. Dlatego dane wyjściowe wyzwalacza wyglądają podobnie jak w następujących przykładach:
 
 ```json
 {
@@ -776,22 +776,22 @@ Akcje mają te elementy wysokiego poziomu, chociaż niektóre są opcjonalne:
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------|
-| <*Akcja — nazwa*> | String | Nazwa akcji | 
-| <*Typ akcji*> | String | Typ akcji, na przykład "http" lub "ApiConnection"| 
-| <*Nazwa wejściowa*> | String | Nazwa danych wejściowych, która definiuje zachowanie akcji | 
-| <*wartość wejściowa*> | Poszczególne | Wartość wejściowa, która może być ciągiem, liczbą całkowitą, obiektem JSON itd. | 
-| <*previous-trigger-or-action-status*> | Obiekt JSON | Może zostać uruchomiona nazwa i stan wynikający wyzwalacza lub akcji, które muszą zostać uruchomione bezpośrednio przed bieżącą akcją | 
+| <*akcji — nazwa* > | Ciąg | Nazwa akcji | 
+| *Typ akcji* < > | Ciąg | Typ akcji, na przykład "http" lub "ApiConnection"| 
+| <*Input-name* > | Ciąg | Nazwa danych wejściowych, która definiuje zachowanie akcji | 
+| <*wartość wejściowa* > | Poszczególne | Wartość wejściowa, która może być ciągiem, liczbą całkowitą, obiektem JSON itd. | 
+| <*stan poprzedniego wyzwalacza lub akcji —* > | Obiekt JSON | Może zostać uruchomiona nazwa i stan wynikający wyzwalacza lub akcji, które muszą zostać uruchomione bezpośrednio przed bieżącą akcją | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------|
-| <*ponawianie próby — zachowanie*> | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz zasady ponawiania. | 
-| <*runtime-config-options*> | Obiekt JSON | W przypadku niektórych akcji można zmienić zachowanie akcji w czasie wykonywania przez ustawienie `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
-| <*operation-option*> | String | W przypadku niektórych akcji można zmienić zachowanie domyślne przez ustawienie `operationOptions` właściwości. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
+| <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz zasady ponawiania. | 
+| <*Runtime-config-options* > | Obiekt JSON | W przypadku niektórych akcji można zmienić zachowanie akcji w czasie wykonywania przez ustawienie `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [Ustawienia konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
+| <*operacji — opcja* > | Ciąg | W przypadku niektórych akcji można zmienić zachowanie domyślne, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
 |||| 
 
 ## <a name="action-types-list"></a>Lista typów akcji
@@ -825,13 +825,13 @@ Poniżej przedstawiono niektóre powszechnie używane typy akcji:
 | [**Compose**](#compose-action) | Tworzy pojedyncze dane wyjściowe z danych wejściowych, które mogą mieć różne typy. | 
 | [**Wykonaj kod JavaScript**](#run-javascript-code) | Uruchom fragmenty kodu JavaScript zgodne z określonymi kryteriami. Aby uzyskać wymagania dotyczące kodu i uzyskać więcej informacji, zobacz [Dodawanie i uruchamianie fragmentów kodu przy użyciu kodu wbudowanego](../logic-apps/logic-apps-add-run-inline-code.md). |
 | [**Funkcyjn**](#function-action) | Wywołuje funkcję platformy Azure. | 
-| [**HTTP**](#http-action) | Wywołuje punkt końcowy HTTP. | 
+| [**PROTOKOŁY**](#http-action) | Wywołuje punkt końcowy HTTP. | 
 | [**Złącza**](#join-action) | Tworzy ciąg ze wszystkich elementów w tablicy i oddziela te elementy o określonym znaku ogranicznika. | 
 | [**Analiza JSON**](#parse-json-action) | Tworzy przyjazne dla użytkownika tokeny na podstawie właściwości w zawartości JSON. Następnie można odwołać się do tych właściwości, dołączając tokeny w aplikacji logiki. | 
-| [**Query**](#query-action) | Tworzy tablicę z elementów w innej tablicy na podstawie warunku lub filtru. | 
+| [**Dotyczących**](#query-action) | Tworzy tablicę z elementów w innej tablicy na podstawie warunku lub filtru. | 
 | [**Reakcji**](#response-action) | Tworzy odpowiedź na wywołanie przychodzące lub żądanie. | 
 | [**Zaznaczenia**](#select-action) | Tworzy tablicę z obiektami JSON przez transformowanie elementów z innej tablicy na podstawie określonej mapy. | 
-| [**Table**](#table-action) | Tworzy tabelę CSV lub HTML z tablicy. | 
+| [**Tabele**](#table-action) | Tworzy tabelę CSV lub HTML z tablicy. | 
 | [**Kończyć**](#terminate-action) | Powoduje zatrzymanie aktywnie działającego przepływu pracy. | 
 | [**Trwa**](#wait-action) | Wstrzymuje przepływ pracy przez określony czas lub do określonej daty i godziny. | 
 | [**Utworzonego**](#workflow-action) | Zagnieżdża przepływ pracy w innym przepływie pracy. | 
@@ -851,7 +851,7 @@ Poniżej przedstawiono niektóre powszechnie używane typy akcji:
 
 ### <a name="control-workflow-actions"></a>Akcje sterowania przepływem pracy
 
-Te akcje ułatwiają kontrolowanie wykonywania przepływu pracy i obejmują inne akcje. Poza akcją przepływu pracy formantu można bezpośrednio odwoływać się do akcji w ramach akcji przepływu pracy sterującej. Na przykład jeśli masz `Http` akcję wewnątrz zakresu, możesz odwoływać się do `@body('Http')` wyrażenia z dowolnego miejsca w przepływie pracy. Jednak akcje, które znajdują się w akcji przepływu pracy kontrolki, mogą być uruchamiane tylko po wykonaniu innych akcji, które znajdują się w tej samej strukturze przepływu pracy kontroli.
+Te akcje ułatwiają kontrolowanie wykonywania przepływu pracy i obejmują inne akcje. Poza akcją przepływu pracy formantu można bezpośrednio odwoływać się do akcji w ramach akcji przepływu pracy sterującej. Na przykład jeśli masz akcję `Http` wewnątrz zakresu, możesz odwoływać się do wyrażenia `@body('Http')` z dowolnego miejsca w przepływie pracy. Jednak akcje, które znajdują się w akcji przepływu pracy kontrolki, mogą być uruchamiane tylko po wykonaniu innych akcji, które znajdują się w tej samej strukturze przepływu pracy kontroli.
 
 | Typ akcji | Opis | 
 |-------------|-------------| 
@@ -892,22 +892,22 @@ Ta akcja wysyła żądanie HTTP do zarządzanego przez [firmę Microsoft interfe
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Akcja — nazwa*> | String | Nazwa akcji udostępnianej przez łącznik | 
-| <*nazwa interfejsu API*> | String | Nazwa interfejsu API zarządzanego przez firmę Microsoft, który jest używany do połączenia | 
-| <*Typ metody*> | String | Metoda HTTP służąca do wywoływania interfejsu API: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
-| <*Operacja interfejsu API*> | String | Operacja interfejsu API do wywołania | 
+| <*akcji — nazwa* > | Ciąg | Nazwa akcji udostępnianej przez łącznik | 
+| <*nazwę interfejsu api* > | Ciąg | Nazwa interfejsu API zarządzanego przez firmę Microsoft, który jest używany do połączenia | 
+| <*Typ metody* > | Ciąg | Metoda HTTP służąca do wywoływania interfejsu API: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
+| <*operacji interfejsu api* > | Ciąg | Operacja interfejsu API do wywołania | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*other-action-specific-input-properties*> | Obiekt JSON | Wszystkie inne właściwości wejściowe, które dotyczą tej konkretnej akcji | 
-| <*ponawianie próby — zachowanie*> | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*zapytanie-parametry*> | Obiekt JSON | Wszystkie parametry zapytania, które mają zostać dołączone do wywołania interfejsu API. <p>Na przykład `"queries": { "api-version": "2018-01-01" }` obiekt dodaje `?api-version=2018-01-01` do wywołania. | 
-| <*other-action-specific-properties*> | Obiekt JSON | Wszystkie inne właściwości, które mają zastosowanie do tej konkretnej akcji | 
+| <*inne-właściwości danych wejściowych dla akcji* > | Obiekt JSON | Wszystkie inne właściwości wejściowe, które dotyczą tej konkretnej akcji | 
+| <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
+| <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania, które mają zostać dołączone do wywołania interfejsu API. <p>Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do wywołania. | 
+| <*inne-właściwości specyficzne dla akcji* > | Obiekt JSON | Wszystkie inne właściwości, które mają zastosowanie do tej konkretnej akcji | 
 |||| 
 
 *Przykład*
@@ -968,29 +968,29 @@ Ta akcja powoduje wysłanie żądania subskrypcji za pośrednictwem protokołu H
 }
 ```
 
-Niektóre wartości, takie jak <*typu metody*>, są dostępne zarówno `"subscribe"` dla obiektów, jak i. `"unsubscribe"`
+Niektóre wartości, takie jak <*typu metody*>, są dostępne zarówno dla obiektów `"subscribe"`, jak i `"unsubscribe"`.
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Akcja — nazwa*> | String | Nazwa akcji udostępnianej przez łącznik | 
-| <*Typ metody*> | String | Metoda HTTP używana do subskrybowania lub anulowania subskrypcji z punktu końcowego: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
-| <*api-subscribe-URL*> | String | Identyfikator URI, który ma być używany do subskrybowania interfejsu API | 
+| <*akcji — nazwa* > | Ciąg | Nazwa akcji udostępnianej przez łącznik | 
+| <*Typ metody* > | Ciąg | Metoda HTTP używana do subskrybowania lub anulowania subskrypcji z punktu końcowego: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
+| <*API — subskrypcja adresu URL* > | Ciąg | Identyfikator URI, który ma być używany do subskrybowania interfejsu API | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*api-unsubscribe-URL*> | String | Identyfikator URI, który ma być używany do anulowania subskrypcji z interfejsu API | 
-| <*header-content*> | Obiekt JSON | Wszystkie nagłówki do wysłania w żądaniu <p>Na przykład, aby ustawić język i typ na żądanie: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*treść — zawartość*> | Obiekt JSON | Zawartość wiadomości do wysłania w żądaniu | 
-| <*Uwierzytelnianie — Metoda*> | Obiekt JSON | Metoda stosowana przez żądanie do uwierzytelniania. Aby uzyskać więcej informacji, zobacz Usługa [Scheduler — uwierzytelnianie](../scheduler/scheduler-outbound-authentication.md)wychodzące. |
-| <*ponawianie próby — zachowanie*> | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*zapytanie-parametry*> | Obiekt JSON | Wszystkie parametry zapytania, które mają zostać dołączone do wywołania interfejsu API <p>Na przykład `"queries": { "api-version": "2018-01-01" }` obiekt dodaje `?api-version=2018-01-01` do wywołania. | 
-| <*other-action-specific-input-properties*> | Obiekt JSON | Wszystkie inne właściwości wejściowe, które dotyczą tej konkretnej akcji | 
-| <*other-action-specific-properties*> | Obiekt JSON | Wszystkie inne właściwości, które mają zastosowanie do tej konkretnej akcji | 
+| <*API — anulowanie subskrypcji — adres URL* > | Ciąg | Identyfikator URI, który ma być używany do anulowania subskrypcji z interfejsu API | 
+| *nagłówek < — zawartość* > | Obiekt JSON | Wszystkie nagłówki do wysłania w żądaniu <p>Na przykład, aby ustawić język i typ na żądanie: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| < treść *— > zawartości* | Obiekt JSON | Zawartość wiadomości do wysłania w żądaniu | 
+| <*uwierzytelnianie-metoda* > | Obiekt JSON | Metoda stosowana przez żądanie do uwierzytelniania. Aby uzyskać więcej informacji, zobacz Usługa [Scheduler — uwierzytelnianie wychodzące](../scheduler/scheduler-outbound-authentication.md). |
+| <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
+| <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania, które mają zostać dołączone do wywołania interfejsu API <p>Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do wywołania. | 
+| <*inne-właściwości danych wejściowych dla akcji* > | Obiekt JSON | Wszystkie inne właściwości wejściowe, które dotyczą tej konkretnej akcji | 
+| <*inne-właściwości specyficzne dla akcji* > | Obiekt JSON | Wszystkie inne właściwości, które mają zastosowanie do tej konkretnej akcji | 
 |||| 
 
 Można również określić limity akcji **ApiConnectionWebhook** w taki sam sposób jak [limity asynchroniczne protokołu HTTP](#asynchronous-limits).
@@ -1012,15 +1012,15 @@ Następnie można użyć danych wyjściowych akcji w innych akcjach.
 
 *Wymagane* 
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*dane wejściowe do zredagowania*> | Any | Dane wejściowe do tworzenia pojedynczego wyjścia | 
+| <*dane wejściowe do redagowania* > | Dowolne | Dane wejściowe do tworzenia pojedynczego wyjścia | 
 |||| 
 
 *Przykład 1*
 
 <!-- markdownlint-disable MD038 -->
-Ta definicja akcji jest scalana `abcdefg ` z końcowym miejscem i wartością: `1234`
+Ta definicja akcji Scala `abcdefg ` z końcowym miejscem i wartością `1234`:
 <!-- markdownlint-enable MD038 -->
 
 ```json
@@ -1037,7 +1037,7 @@ Oto dane wyjściowe tworzone przez tę akcję:
 
 *Przykład 2*
 
-Ta definicja akcji Scala zmienną `abcdefg` ciągu zawierającą i zmienną całkowitą, która zawiera: `1234`
+Ta definicja akcji Scala zmienną ciągu, która zawiera `abcdefg` i zmienną całkowitą zawierającą `1234`:
 
 ```json
 "Compose": {
@@ -1055,7 +1055,7 @@ Oto dane wyjściowe tworzone przez tę akcję:
 
 ### <a name="execute-javascript-code-action"></a>Akcja wykonywania kodu JavaScript
 
-Ta akcja powoduje uruchomienie fragmentu kodu JavaScript i zwrócenie wyników przez `Result` token, do którego mogą się odwoływać dalsze akcje.
+Ta akcja uruchamia fragment kodu JavaScript i zwraca wyniki za pomocą tokenu `Result`, do którego mogą się odwoływać dalsze akcje.
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1073,25 +1073,25 @@ Ta akcja powoduje uruchomienie fragmentu kodu JavaScript i zwrócenie wyników p
 
 *Wymagane*
 
-| Value | Type | Opis |
+| Wartość | Typ | Opis |
 |-------|------|-------------|
-| <*JavaScript-code-snippet*> | Różna | Kod JavaScript, który ma zostać uruchomiony. Aby uzyskać wymagania dotyczące kodu i uzyskać więcej informacji, zobacz [Dodawanie i uruchamianie fragmentów kodu przy użyciu kodu wbudowanego](../logic-apps/logic-apps-add-run-inline-code.md). <p>W atrybucie fragment kodu może użyć obiektu tylko `workflowContext` do odczytu jako dane wejściowe. `code` Ten obiekt ma właściwości podrzędne, które dają kodowi dostęp do wyników wyzwalacza i poprzednich akcji w przepływie pracy. Aby uzyskać więcej informacji na `workflowContext` temat obiektu, zobacz [wyzwalacz odwołania i wyniki akcji w kodzie](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
+| <*kodu JavaScript* > | Różna | Kod JavaScript, który ma zostać uruchomiony. Aby uzyskać wymagania dotyczące kodu i uzyskać więcej informacji, zobacz [Dodawanie i uruchamianie fragmentów kodu przy użyciu kodu wbudowanego](../logic-apps/logic-apps-add-run-inline-code.md). <p>W atrybucie `code` fragment kodu może użyć obiektu `workflowContext` tylko do odczytu jako dane wejściowe. Ten obiekt ma właściwości podrzędne, które dają kodowi dostęp do wyników wyzwalacza i poprzednich akcji w przepływie pracy. Aby uzyskać więcej informacji na temat obiektu `workflowContext`, zobacz [wyzwalacz odwołania i wyniki akcji w kodzie](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
 ||||
 
 *Wymagane w niektórych przypadkach*
 
-Ten `explicitDependencies` atrybut określa, że chcesz jawnie uwzględnić wyniki z wyzwalacza, poprzednich akcji lub obu tych elementów jako zależności dla fragmentu kodu. Aby uzyskać więcej informacji na temat dodawania tych zależności, zobacz [Dodawanie parametrów dla kodu wbudowanego](../logic-apps/logic-apps-add-run-inline-code.md#add-parameters). 
+Atrybut `explicitDependencies` określa, że chcesz jawnie uwzględnić wyniki z wyzwalacza, poprzednich akcji lub obu tych elementów jako zależności dla fragmentu kodu. Aby uzyskać więcej informacji na temat dodawania tych zależności, zobacz [Dodawanie parametrów dla kodu wbudowanego](../logic-apps/logic-apps-add-run-inline-code.md#add-parameters). 
 
-Dla atrybutu można określić `true` lub `false` wartości. `includeTrigger`
+Dla atrybutu `includeTrigger` można określić wartości `true` lub `false`.
 
-| Value | Type | Opis |
+| Wartość | Typ | Opis |
 |-------|------|-------------|
-| <*poprzednie akcje*> | Tablica ciągów | Tablica z określonymi nazwami akcji. Użyj nazw akcji, które pojawiają się w definicji przepływu pracy, gdzie w nazwach akcji są używane znaki podkreślenia (_), a nie spacje (""). |
+| <*poprzednie akcje* > | Tablica ciągów | Tablica z określonymi nazwami akcji. Użyj nazw akcji, które pojawiają się w definicji przepływu pracy, gdzie w nazwach akcji są używane znaki podkreślenia (_), a nie spacje (""). |
 ||||
 
 *Przykład 1*
 
-Ta akcja uruchamia kod, który pobiera nazwę aplikacji logiki i zwraca tekst "Hello World from \<Logic-App-Name >" jako wynik. W tym przykładzie kod odwołuje się do nazwy przepływu pracy przez uzyskanie dostępu `workflowContext.workflow.name` do właściwości za pomocą obiektu tylko `workflowContext` do odczytu. Aby uzyskać więcej informacji na temat `workflowContext` używania obiektu, zobacz [wyzwalacz odwołania i wyniki akcji w kodzie](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext).
+Ta akcja uruchamia kod, który pobiera nazwę aplikacji logiki i zwraca tekst "Hello World z \<logic-App-Name >" jako wynik. W tym przykładzie kod odwołuje się do nazwy przepływu pracy, uzyskując dostęp do właściwości `workflowContext.workflow.name` za pomocą obiektu `workflowContext` tylko do odczytu. Aby uzyskać więcej informacji na temat używania obiektu `workflowContext`, zobacz [wyzwalacz odwołania i wyniki akcji w kodzie](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext).
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1107,7 +1107,7 @@ Ta akcja uruchamia kod, który pobiera nazwę aplikacji logiki i zwraca tekst "H
 
 Ta akcja uruchamia kod w aplikacji logiki, która wyzwala po nadejściu nowej wiadomości e-mail do konta programu Outlook w usłudze Office 365. Aplikacja logiki używa również akcji Wyślij wiadomość e-mail dotyczącą zatwierdzenia, która przekazuje zawartość odebranej wiadomości e-mail wraz z żądaniem zatwierdzenia. 
 
-Kod wyodrębnia adresy e-mail z `Body` właściwości wyzwalacza i zwraca te adresy e-mail wraz `SelectedOption` z wartością właściwości z akcji zatwierdzania. Akcja jawnie obejmuje akcję Wyślij wiadomość e-mail dotyczącą zatwierdzenia jako zależność w `explicitDependencies`  >  `actions` atrybucie.
+Kod wyodrębnia adresy e-mail z właściwości `Body` wyzwalacza i zwraca te adresy e-mail wraz z wartością właściwości `SelectedOption` z akcji zatwierdzania. Akcja jawnie obejmuje akcję Wyślij wiadomość e-mail dotyczącą zatwierdzenia jako zależność w atrybucie `explicitDependencies`  >  `actions`.
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1150,21 +1150,21 @@ Ta akcja wywołuje wcześniej utworzoną [funkcję platformy Azure](../azure-fun
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------|  
-| <*Identyfikator funkcji Azure*> | String | Identyfikator zasobu dla funkcji platformy Azure, która ma zostać wywołana. Oto format tej wartości:<p>"/subscriptions/<*Azure-Subscription-ID*>/ResourceGroups/<*Azure-resource-group*>/Providers/Microsoft.Web/Sites/<*Azure-function-app-Name*>/Functions/<*Azure-Function-Name*> " | 
-| <*Typ metody*> | String | Metoda HTTP używana do wywoływania funkcji: "GET", "PUT", "POST", "PATCH" lub "DELETE" <p>Jeśli nie zostanie określony, wartością domyślną jest metoda "POST". | 
+| < na*platformie Azure — identyfikator funkcji* > | Ciąg | Identyfikator zasobu dla funkcji platformy Azure, która ma zostać wywołana. Oto format tej wartości:<p>"/subscriptions/<*Azure-Subscription-ID*>/ResourceGroups/<*Azure-resource-group*>/Providers/Microsoft.Web/Sites/<*Azure-function-app-Name*>/Functions/<*Azure-Function-Name*> " | 
+| <*Typ metody* > | Ciąg | Metoda HTTP używana do wywoływania funkcji: "GET", "PUT", "POST", "PATCH" lub "DELETE" <p>Jeśli nie zostanie określony, wartością domyślną jest metoda "POST". | 
 ||||
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------|  
-| <*header-content*> | Obiekt JSON | Wszystkie nagłówki do wysłania z wywołaniem <p>Na przykład, aby ustawić język i typ na żądanie: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*treść — zawartość*> | Obiekt JSON | Zawartość wiadomości do wysłania w żądaniu | 
-| <*zapytanie-parametry*> | Obiekt JSON | Wszystkie parametry zapytania, które mają zostać dołączone do wywołania interfejsu API <p>Na przykład `"queries": { "api-version": "2018-01-01" }` obiekt dodaje `?api-version=2018-01-01` do wywołania. | 
-| <*other-action-specific-input-properties*> | Obiekt JSON | Wszystkie inne właściwości wejściowe, które dotyczą tej konkretnej akcji | 
-| <*other-action-specific-properties*> | Obiekt JSON | Wszystkie inne właściwości, które mają zastosowanie do tej konkretnej akcji | 
+| *nagłówek < — zawartość* > | Obiekt JSON | Wszystkie nagłówki do wysłania z wywołaniem <p>Na przykład, aby ustawić język i typ na żądanie: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| < treść *— > zawartości* | Obiekt JSON | Zawartość wiadomości do wysłania w żądaniu | 
+| <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania, które mają zostać dołączone do wywołania interfejsu API <p>Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do wywołania. | 
+| <*inne-właściwości danych wejściowych dla akcji* > | Obiekt JSON | Wszystkie inne właściwości wejściowe, które dotyczą tej konkretnej akcji | 
+| <*inne-właściwości specyficzne dla akcji* > | Obiekt JSON | Wszystkie inne właściwości, które mają zastosowanie do tej konkretnej akcji | 
 ||||
 
 Po zapisaniu aplikacji logiki aparat Logic Apps wykonuje te testy na funkcji, której dotyczy odwołanie:
@@ -1221,22 +1221,22 @@ Ta akcja wysyła żądanie do określonego punktu końcowego i sprawdza odpowied
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Typ metody*> | String | Metoda używana do wysyłania żądania: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
-| <*HTTP-or-HTTPS-endpoint-URL*> | String | Punkt końcowy HTTP lub HTTPS do wywołania. Maksymalny rozmiar ciągu: 2 KB | 
+| <*Typ metody* > | Ciąg | Metoda używana do wysyłania żądania: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
+| <*http-lub-https-Endpoint-URL* > | Ciąg | Punkt końcowy HTTP lub HTTPS do wywołania. Maksymalny rozmiar ciągu: 2 KB | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*header-content*> | Obiekt JSON | Wszystkie nagłówki do wysłania wraz z żądaniem <p>Na przykład, aby ustawić język i typ: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*treść — zawartość*> | Obiekt JSON | Zawartość wiadomości do wysłania w żądaniu | 
-| <*ponawianie próby — zachowanie*> | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*zapytanie-parametry*> | Obiekt JSON | Wszystkie parametry zapytania do dołączenia do żądania <p>Na przykład `"queries": { "api-version": "2018-01-01" }` obiekt dodaje `?api-version=2018-01-01` do wywołania. | 
-| <*other-action-specific-input-properties*> | Obiekt JSON | Wszystkie inne właściwości wejściowe, które dotyczą tej konkretnej akcji | 
-| <*other-action-specific-properties*> | Obiekt JSON | Wszystkie inne właściwości, które mają zastosowanie do tej konkretnej akcji | 
+| *nagłówek < — zawartość* > | Obiekt JSON | Wszystkie nagłówki do wysłania wraz z żądaniem <p>Na przykład, aby ustawić język i typ: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| < treść *— > zawartości* | Obiekt JSON | Zawartość wiadomości do wysłania w żądaniu | 
+| <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
+| <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania do dołączenia do żądania <p>Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do wywołania. | 
+| <*inne-właściwości danych wejściowych dla akcji* > | Obiekt JSON | Wszystkie inne właściwości wejściowe, które dotyczą tej konkretnej akcji | 
+| <*inne-właściwości specyficzne dla akcji* > | Obiekt JSON | Wszystkie inne właściwości, które mają zastosowanie do tej konkretnej akcji | 
 |||| 
 
 *Przykład*
@@ -1272,10 +1272,10 @@ Ta akcja tworzy ciąg ze wszystkich elementów w tablicy i oddziela te elementy 
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*macierzy*> | Array | Tablica lub wyrażenie, które udostępnia elementy źródłowe. Jeśli określisz wyrażenie, ujmij to wyrażenie z podwójnymi cudzysłowami. | 
-| <*delimiter*> | Pojedynczy ciąg znaków | Znak oddzielający każdy element w ciągu | 
+| < >*tablicy* | Tablica | Tablica lub wyrażenie, które udostępnia elementy źródłowe. Jeśli określisz wyrażenie, ujmij to wyrażenie z podwójnymi cudzysłowami. | 
+| <*ogranicznik* > | Pojedynczy ciąg znaków | Znak oddzielający każdy element w ciągu | 
 |||| 
 
 *Przykład*
@@ -1284,7 +1284,7 @@ Załóżmy, że masz wcześniej utworzoną zmienną "myIntegerArray", która zaw
 
 `[1,2,3,4]` 
 
-Ta definicja akcji pobiera wartości ze zmiennej przy użyciu `variables()` funkcji w wyrażeniu i tworzy ten ciąg za pomocą tych wartości, które są oddzielone przecinkami:`"1,2,3,4"`
+Ta definicja akcji pobiera wartości ze zmiennej przy użyciu funkcji `variables()` w wyrażeniu i tworzy ten ciąg za pomocą tych wartości, które są oddzielone przecinkami: `"1,2,3,4"`
 
 ```json
 "Join": {
@@ -1301,7 +1301,7 @@ Ta definicja akcji pobiera wartości ze zmiennej przy użyciu `variables()` funk
 
 ### <a name="parse-json-action"></a>Analiza akcji JSON
 
-Ta akcja tworzy przyjazne dla użytkownika pola lub tokeny na podstawie właściwości w zawartości JSON. Następnie można uzyskać dostęp do tych właściwości w aplikacji logiki przy użyciu tokenów. Na przykład jeśli chcesz użyć danych wyjściowych JSON z usług takich jak Azure Service Bus i Azure Cosmos DB, możesz dołączyć tę akcję do aplikacji logiki, aby łatwiej odwoływać się do danych w tym wyniku. 
+Ta akcja tworzy przyjazne dla użytkownika pola lub *tokeny* na podstawie właściwości w zawartości JSON. Następnie można uzyskać dostęp do tych właściwości w aplikacji logiki przy użyciu tokenów. Na przykład jeśli chcesz użyć danych wyjściowych JSON z usług takich jak Azure Service Bus i Azure Cosmos DB, możesz dołączyć tę akcję do aplikacji logiki, aby łatwiej odwoływać się do danych w tym wyniku. 
 
 ```json
 "Parse_JSON": {
@@ -1316,17 +1316,17 @@ Ta akcja tworzy przyjazne dla użytkownika pola lub tokeny na podstawie właści
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Źródło JSON*> | Obiekt JSON | Zawartość JSON, którą chcesz przeanalizować | 
-| <*JSON — schemat*> | Obiekt JSON | Schemat JSON, który opisuje podstawową zawartość JSON, której używa akcja do analizowania źródłowej zawartości JSON. <p>**Porada**: W projektancie Logic Apps można dostarczyć schemat lub dostarczyć przykładowy ładunek, aby akcja mogła generować schemat. | 
+| < >*źródła danych JSON* | Obiekt JSON | Zawartość JSON, którą chcesz przeanalizować | 
+| < >*schematu JSON* | Obiekt JSON | Schemat JSON, który opisuje podstawową zawartość JSON, której używa akcja do analizowania źródłowej zawartości JSON. <p>**Porada**: w projektancie Logic Apps można dostarczyć schemat lub dostarczyć przykładowy ładunek, aby akcja mogła generować schemat. | 
 |||| 
 
 *Przykład*
 
-Ta definicja akcji tworzy te tokeny, których można użyć w przepływie pracy, ale tylko w akcjach uruchamianych po akcji Przeanalizuj dane **JSON** : 
+Ta definicja akcji tworzy te tokeny, których można użyć w przepływie pracy, ale tylko w akcjach uruchamianych po akcji **Przeanalizuj dane JSON** : 
 
-`FirstName`, `LastName`i`Email`
+`FirstName`, `LastName` i `Email`
 
 ```json
 "Parse_JSON": {
@@ -1418,10 +1418,10 @@ Ta akcja tworzy tablicę z elementów w innej tablicy na podstawie określonego 
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*macierzy*> | Array | Tablica lub wyrażenie, które udostępnia elementy źródłowe. Jeśli określisz wyrażenie, ujmij to wyrażenie z podwójnymi cudzysłowami. |
-| <*condition-or-filter*> | String | Warunek używany do filtrowania elementów w tablicy źródłowej <p>**Uwaga**: Jeśli żadna wartość nie spełnia warunku, wówczas akcja tworzy pustą tablicę. |
+| < >*tablicy* | Tablica | Tablica lub wyrażenie, które udostępnia elementy źródłowe. Jeśli określisz wyrażenie, ujmij to wyrażenie z podwójnymi cudzysłowami. |
+| <*warunek-lub-filter* > | Ciąg | Warunek używany do filtrowania elementów w tablicy źródłowej <p>**Uwaga**: Jeśli żadna wartość nie spełnia warunku, wówczas akcja tworzy pustą tablicę. |
 |||| 
 
 *Przykład*
@@ -1459,17 +1459,17 @@ Ta akcja tworzy ładunek odpowiedzi na żądanie HTTP.
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*odpowiedź — stan-kod*> | Integer | Kod stanu HTTP, który jest wysyłany do żądania przychodzącego. Domyślnym kodem jest "200 OK", ale kod może być dowolnym prawidłowym kodem stanu zaczynającym się od 2xx, 4xx lub 5xx, ale nie z 3xxx. | 
+| <*odpowiedzi — kod stanu* > | Liczba całkowita | Kod stanu HTTP, który jest wysyłany do żądania przychodzącego. Domyślnym kodem jest "200 OK", ale kod może być dowolnym prawidłowym kodem stanu zaczynającym się od 2xx, 4xx lub 5xx, ale nie z 3xxx. | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*response-headers*> | Obiekt JSON | Co najmniej jeden nagłówek, który ma zostać dołączony do odpowiedzi | 
-| <*odpowiedź — treść*> | Poszczególne | Treść odpowiedzi, która może być ciągiem, obiektem JSON lub nawet zawartością binarną z poprzedniej akcji | 
+| < >*nagłówka odpowiedzi* | Obiekt JSON | Co najmniej jeden nagłówek, który ma zostać dołączony do odpowiedzi | 
+| < >*treści odpowiedzi* | Poszczególne | Treść odpowiedzi, która może być ciągiem, obiektem JSON lub nawet zawartością binarną z poprzedniej akcji | 
 |||| 
 
 *Przykład*
@@ -1516,7 +1516,7 @@ W przeciwieństwie do innych działań Akcja **odpowiedzi** ma specjalne ogranic
 
 ### <a name="select-action"></a>Wybierz akcję
 
-Ta akcja tworzy tablicę z obiektami JSON przez transformowanie elementów z innej tablicy na podstawie określonej mapy. Tablica wyjściowa i tablica źródłowa zawsze mają tę samą liczbę elementów. Chociaż nie można zmienić liczby obiektów w tablicy wyjściowej, można dodawać lub usuwać właściwości i ich wartości w tych obiektach. `select` Właściwość określa co najmniej jedną parę klucz-wartość, która definiuje mapę do przekształcania elementów w tablicy źródłowej. Para klucz-wartość reprezentuje właściwość i jej wartość we wszystkich obiektach tablicy wyjściowej. 
+Ta akcja tworzy tablicę z obiektami JSON przez transformowanie elementów z innej tablicy na podstawie określonej mapy. Tablica wyjściowa i tablica źródłowa zawsze mają tę samą liczbę elementów. Chociaż nie można zmienić liczby obiektów w tablicy wyjściowej, można dodawać lub usuwać właściwości i ich wartości w tych obiektach. Właściwość `select` określa co najmniej jedną parę klucz-wartość, która definiuje mapę do przekształcania elementów w tablicy źródłowej. Para klucz-wartość reprezentuje właściwość i jej wartość we wszystkich obiektach tablicy wyjściowej. 
 
 ```json
 "Select": {
@@ -1534,18 +1534,18 @@ Ta akcja tworzy tablicę z obiektami JSON przez transformowanie elementów z inn
 
 *Wymagane* 
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*macierzy*> | Array | Tablica lub wyrażenie, które udostępnia elementy źródłowe. Upewnij się, że wyrażenie zostało ujęte w podwójne cudzysłowy. <p>**Uwaga**: Jeśli tablica źródłowa jest pusta, akcja tworzy pustą tablicę. | 
-| <*Nazwa klucza*> | String | Nazwa właściwości przypisana do wyniku z*wyrażenia* <> <p>Aby dodać nową właściwość dla wszystkich obiektów w tablicy wyjściowej, podaj <ową*nazwę klucza*> dla tej właściwości i*wyrażenie*< > dla wartości właściwości. <p>Aby usunąć Właściwość ze wszystkich obiektów w tablicy, Pomiń <*klucz-nazwa*> dla tej właściwości. | 
-| <*wyrażenia*> | String | Wyrażenie, które przekształca element w tablicy źródłowej i przypisuje wynik do <*klucz-nazwa*> | 
+| < >*tablicy* | Tablica | Tablica lub wyrażenie, które udostępnia elementy źródłowe. Upewnij się, że wyrażenie zostało ujęte w podwójne cudzysłowy. <p>**Uwaga**: Jeśli tablica źródłowa jest pusta, akcja tworzy pustą tablicę. | 
+| *Nazwa klucza* < > | Ciąg | Nazwa właściwości przypisana do wyniku z*wyrażenia* < > <p>Aby dodać nową właściwość dla wszystkich obiektów w tablicy wyjściowej, podaj <ową*nazwę klucza*> dla tej właściwości i*wyrażenie*< > dla wartości właściwości. <p>Aby usunąć Właściwość ze wszystkich obiektów w tablicy, Pomiń <*klucz-nazwa*> dla tej właściwości. | 
+| *wyrażenie* < > | Ciąg | Wyrażenie, które przekształca element w tablicy źródłowej i przypisuje wynik do <*Key-name* > | 
 |||| 
 
-Akcja **Wybierz** powoduje utworzenie tablicy jako danych wyjściowych, dlatego wszelkie akcje, które chcą korzystać z tych danych wyjściowych, muszą przyjmować tablicę lub należy skonwertować tablicę na typ, który akcja odbiorcy akceptuje. Na przykład, aby przekonwertować tablicę wyjściową na ciąg, można przekazać tę tablicę do akcji **redagowania** , a następnie odwołać się do danych wyjściowych akcji tworzenia w innych akcjach.
+Akcja **Wybierz** powoduje utworzenie tablicy jako danych wyjściowych, dlatego wszelkie akcje, które chcą korzystać z tych danych wyjściowych, muszą przyjmować tablicę lub należy skonwertować tablicę na typ, który akcja odbiorcy akceptuje. Na przykład, aby przekonwertować tablicę wyjściową na ciąg, można przekazać tę tablicę do akcji **redagowania** , a następnie odwołać się do danych wyjściowych **akcji tworzenia w innych akcjach** .
 
 *Przykład*
 
-Ta definicja akcji tworzy tablicę obiektów JSON z tablicy liczb całkowitych. Akcja iteruje za pośrednictwem tablicy źródłowej, pobiera każdą wartość całkowitą przy użyciu `@item()` wyrażenia i przypisuje każdej wartości do właściwości "`number`" w każdym obiekcie JSON: 
+Ta definicja akcji tworzy tablicę obiektów JSON z tablicy liczb całkowitych. Akcja wykonuje iterację przez tablicę źródłową, pobiera każdą wartość całkowitą za pomocą wyrażenia `@item()` i przypisuje każdej wartości do właściwości "`number`" w każdym obiekcie JSON: 
 
 ```json
 "Select": {
@@ -1564,7 +1564,7 @@ Oto tablica, którą tworzy ta akcja:
 
 `[ { "number": 1 }, { "number": 2 }, { "number": 3 } ]`
 
-Aby użyć tego danych wyjściowych macierzy w innych akcjach, Przekaż dane wyjściowe do akcji redagowania:
+Aby użyć tego danych wyjściowych macierzy w innych akcjach, Przekaż dane wyjściowe do akcji **redagowania** :
 
 ```json
 "Compose": {
@@ -1632,20 +1632,20 @@ Ta akcja tworzy tabelę CSV lub HTML z tablicy. W przypadku tablic z obiektami J
 
 *Wymagane* 
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| \<Wolumin CSV *lub* > HTML| String | Format tabeli, którą chcesz utworzyć. | 
-| <*macierzy*> | Array | Tablica lub wyrażenie, które zawiera elementy źródłowe tabeli. <p>**Uwaga**: Jeśli tablica źródłowa jest pusta, akcja spowoduje utworzenie pustej tabeli. | 
+| > \<CSV *lub* HTML| Ciąg | Format tabeli, którą chcesz utworzyć. | 
+| < >*tablicy* | Tablica | Tablica lub wyrażenie, które zawiera elementy źródłowe tabeli. <p>**Uwaga**: Jeśli tablica źródłowa jest pusta, akcja spowoduje utworzenie pustej tabeli. | 
 |||| 
 
 *Obowiązkowe*
 
-Aby określić lub dostosować nagłówki i wartości kolumn, użyj `columns` tablicy. Gdy `header-value` pary mają tę samą nazwę nagłówka, ich wartości są wyświetlane w tej samej kolumnie pod nazwą nagłówka. W przeciwnym razie każdy unikatowy nagłówek definiuje unikatową kolumnę.
+Aby określić lub dostosować nagłówki i wartości kolumn, użyj tablicy `columns`. Gdy `header-value` par ma taką samą nazwę nagłówka, ich wartości są wyświetlane w tej samej kolumnie, w której znajduje się ta sama nazwa nagłówka. W przeciwnym razie każdy unikatowy nagłówek definiuje unikatową kolumnę.
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Nazwa kolumny*> | String | Nazwa nagłówka kolumny | 
-| <*wartość kolumny*> | Any | Wartość w tej kolumnie. | 
+| *nazwa < kolumny* > | Ciąg | Nazwa nagłówka kolumny | 
+| < >*wartości kolumny* | Dowolne | Wartość w tej kolumnie. | 
 |||| 
 
 *Przykład 1*
@@ -1654,7 +1654,7 @@ Załóżmy, że masz wcześniej utworzoną zmienną "myItemArray", która obecni
 
 `[ {"ID": 0, "Product_Name": "Apples"}, {"ID": 1, "Product_Name": "Oranges"} ]`
 
-Ta definicja akcji tworzy tabelę CSV ze zmiennej "myItemArray". Wyrażenie używane przez `from` Właściwość pobiera tablicę z "myItemArray" za `variables()` pomocą funkcji: 
+Ta definicja akcji tworzy tabelę CSV ze zmiennej "myItemArray". Wyrażenie używane przez właściwość `from` pobiera tablicę z "myItemArray" za pomocą funkcji `variables()`: 
 
 ```json
 "Create_CSV_table": {
@@ -1677,7 +1677,7 @@ ID,Product_Name
 
 *Przykład 2*
 
-Ta definicja akcji tworzy tabelę HTML ze zmiennej "myItemArray". Wyrażenie używane przez `from` Właściwość pobiera tablicę z "myItemArray" za `variables()` pomocą funkcji: 
+Ta definicja akcji tworzy tabelę HTML ze zmiennej "myItemArray". Wyrażenie używane przez właściwość `from` pobiera tablicę z "myItemArray" za pomocą funkcji `variables()`: 
 
 ```json
 "Create_HTML_table": {
@@ -1692,7 +1692,7 @@ Ta definicja akcji tworzy tabelę HTML ze zmiennej "myItemArray". Wyrażenie uż
 
 Oto tabela HTML, którą tworzy ta akcja: 
 
-<table><thead><tr><th>id</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Jabłka</td></tr><tr><td>1</td><td>Pomarańcze</td></tr></tbody></table>
+<table><thead><tr><th>ID</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Jabłka</td></tr><tr><td>1</td><td>Pomarańcze</td></tr></tbody></table>
 
 *Przykład 3*
 
@@ -1745,19 +1745,19 @@ Ta akcja powoduje zatrzymanie przebiegu dla wystąpienia przepływu pracy, anulo
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*status*> | String | Stan do zwrócenia dla przebiegu: "Niepowodzenie", "anulowane" lub "powodzenie" |
+| <*status*> | Ciąg | Stan do zwrócenia dla przebiegu: "Niepowodzenie", "anulowana" lub "powodzenie" |
 |||| 
 
 *Obowiązkowe*
 
 Właściwości obiektu "runStatus" są stosowane tylko wtedy, gdy właściwość "runStatus" ma stan "Niepowodzenie".
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*error-code-or-name*> | String | Kod lub nazwa błędu |
-| <*error-message*> | String | Komunikat lub tekst opisujący błąd oraz wszystkie akcje, które może wykonać użytkownik aplikacji | 
+| <*błąd — kod lub nazwa* > | Ciąg | Kod lub nazwa błędu |
+| *błąd < — komunikat* > | Ciąg | Komunikat lub tekst opisujący błąd oraz wszystkie akcje, które może wykonać użytkownik aplikacji | 
 |||| 
 
 *Przykład*
@@ -1815,11 +1815,11 @@ Ta akcja wstrzymuje wykonywanie przepływu pracy dla określonego interwału lub
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Liczba jednostek*> | Integer | Dla akcji **opóźnionej** liczba jednostek do odczekania | 
-| <*dat*> | String | Dla akcji **Opóźnij** interwał oczekiwania: "Sekunda", "minuta", "godzina", "dzień", "tydzień", "miesiąc" | 
-| <*date-time-stamp*> | String | Dla **Opóźnij do** akcji, datę i godzinę wznowienia wykonania. Ta wartość musi używać [formatu daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). | 
+| <*Liczba jednostek* > | Liczba całkowita | Dla akcji **opóźnionej** liczba jednostek do odczekania | 
+| *interwał* < > | Ciąg | Dla akcji **opóźnienia** interwał oczekiwania: "s", "minuta", "godzina", "dzień", "tydzień", "miesiąc" | 
+| <*sygnatura czasowa* > | Ciąg | Dla **Opóźnij do** akcji, datę i godzinę wznowienia wykonania. Ta wartość musi używać [formatu daty i godziny UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). | 
 |||| 
 
 *Przykład 1*
@@ -1888,21 +1888,21 @@ Aparat Logic Apps sprawdza dostęp do wyzwalacza, który ma zostać wywołany, w
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*nested-logic-app-name*> | String | Nazwa aplikacji logiki, która ma zostać wywołana | 
-| <*Nazwa wyzwalacza*> | String | Nazwa wyzwalacza w zagnieżdżonej aplikacji logiki, która ma zostać wywołana | 
-| <*Azure-Subscription-ID*> | String | Identyfikator subskrypcji platformy Azure dla zagnieżdżonej aplikacji logiki |
-| <*Azure-resource-group*> | String | Nazwa grupy zasobów platformy Azure dla zagnieżdżonej aplikacji logiki |
-| <*nested-logic-app-name*> | String | Nazwa aplikacji logiki, która ma zostać wywołana |
+| <*zagnieżdżone-Logic-App-name* > | Ciąg | Nazwa aplikacji logiki, która ma zostać wywołana | 
+| *Nazwa wyzwalacza* < > | Ciąg | Nazwa wyzwalacza w zagnieżdżonej aplikacji logiki, która ma zostać wywołana | 
+| <*Azure-Subscription-ID* > | Ciąg | Identyfikator subskrypcji platformy Azure dla zagnieżdżonej aplikacji logiki |
+| <*Azure-Resource-group*> | Ciąg | Nazwa grupy zasobów platformy Azure dla zagnieżdżonej aplikacji logiki |
+| <*zagnieżdżone-Logic-App-name* > | Ciąg | Nazwa aplikacji logiki, która ma zostać wywołana |
 ||||
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------|  
-| <*header-content*> | Obiekt JSON | Wszystkie nagłówki do wysłania z wywołaniem | 
-| <*treść — zawartość*> | Obiekt JSON | Zawartość wiadomości do wysłania z wywołaniem | 
+| *nagłówek < — zawartość* > | Obiekt JSON | Wszystkie nagłówki do wysłania z wywołaniem | 
+| < treść *— > zawartości* | Obiekt JSON | Zawartość wiadomości do wysłania z wywołaniem | 
 ||||
 
 *Dane wyjściowe*
@@ -1965,19 +1965,19 @@ Ta akcja zapętlenia wykonuje iterację przez tablicę i wykonuje akcje dla każ
 
 *Wymagane* 
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Akcja-1... Azotan*> | String | Nazwy akcji, które są uruchamiane dla każdego elementu tablicy | 
-| <*Akcja-definicja-1... Azotan*> | Obiekt JSON | Definicje akcji, które są uruchamiane | 
-| <*for-each-expression*> | String | Wyrażenie odwołujące się do każdego elementu w określonej tablicy. | 
+| <*Akcja — 1... n* > | Ciąg | Nazwy akcji, które są uruchamiane dla każdego elementu tablicy | 
+| <*akcji — definicja-1... n* > | Obiekt JSON | Definicje akcji, które są uruchamiane | 
+| <*for-each-expression* > | Ciąg | Wyrażenie odwołujące się do każdego elementu w określonej tablicy. | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*liczbą*> | Integer | Domyślnie iteracja pętli "for each" jest uruchamiana w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana "dla każdego" współbieżności pętli](#change-for-each-concurrency). | 
-| <*operation-option*> | String | Aby uruchomić pętlę "for each" sekwencyjnie, a nie równolegle, należy ustawić opcję <*operacji*> `Sequential` na lub <*liczbę*> do, ale `1`nie do obu jednocześnie. Aby uzyskać więcej informacji, zobacz [Uruchom polecenie "for each" sekwencyjnie](#sequential-for-each). | 
+| *liczba* < > | Liczba całkowita | Domyślnie iteracja pętli "for each" jest uruchamiana w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana "dla każdego" współbieżności pętli](#change-for-each-concurrency). | 
+| <*operacji — opcja* > | Ciąg | Aby uruchomić pętlę "for each" sekwencyjnie, a nie równolegle, należy ustawić opcję <*operacji*>, aby `Sequential` lub <*liczba*> do `1`, ale nie obu jednocześnie. Aby uzyskać więcej informacji, zobacz [Uruchom polecenie "for each" sekwencyjnie](#sequential-for-each). | 
 |||| 
 
 *Przykład*
@@ -2012,7 +2012,7 @@ Ta pętla "for each" wysyła wiadomość e-mail dla każdego elementu w tablicy,
 }
 ```
 
-Aby określić tylko tablicę, która jest przenoszona jako wyjście z wyzwalacza, to wyrażenie pobiera < tablicy*nazw*> tablicy z treści wyzwalacza. Aby uniknąć awarii, jeśli tablica nie istnieje, wyrażenie używa `?` operatora:
+Aby określić tylko tablicę, która jest przenoszona jako wyjście z wyzwalacza, to wyrażenie pobiera < tablicy*nazw*> tablicy z treści wyzwalacza. Aby uniknąć awarii, jeśli tablica nie istnieje, wyrażenie używa operatora `?`:
 
 `@triggerBody()?['<array-name>']` 
 
@@ -2038,15 +2038,15 @@ Ta akcja, która jest *instrukcją warunkową*, oblicza wyrażenie reprezentują
 }
 ```
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*rozgrzewa*> | Obiekt JSON | Warunek, który może być wyrażeniem do obliczenia | 
-| <*Akcja-1*> | Obiekt JSON | Akcja do uruchomienia, gdy <*warunek*> ma wartość true | 
-| <*Akcja — definicja*> | Obiekt JSON | Definicja akcji | 
-| <*Akcja — 2*> | Obiekt JSON | Akcja, która ma być uruchamiana, gdy <*warunek*> wartość false | 
+| <*warunek* > | Obiekt JSON | Warunek, który może być wyrażeniem do obliczenia | 
+| *akcja < — 1* > | Obiekt JSON | Akcja do uruchomienia, gdy <*warunek*> ma wartość true | 
+| < *— Definicja akcji* > | Obiekt JSON | Definicja akcji | 
+| *akcja < — 2* > | Obiekt JSON | Akcja, która ma być uruchamiana, gdy <*warunek*> wartość false | 
 |||| 
 
-Akcje w `actions` obiekcie lub `else` uzyskują te stany:
+Akcje w obiektach `actions` lub `else` otrzymują te stany:
 
 * "Powodzenie", gdy są uruchamiane i kończą się powodzeniem
 * "Niepowodzenie", gdy są uruchamiane i kończą się niepowodzeniem
@@ -2096,10 +2096,10 @@ Poniżej przedstawiono kilka przykładów, które pokazują, jak można używać
   
 | JSON | Wynik | 
 |------|--------| 
-| "Expression": "@parameters(" <*hasSpecialAction*> ")" | W przypadku tylko wyrażeń logicznych warunek jest przekazywany dla każdej wartości, która ma wartość true. <p>Aby przekonwertować inne typy na wartość logiczną, użyj następujących funkcji `empty()` : `equals()`lub. | 
-| "Expression": "@greater(akcje (" <*Akcja*> "). Output. Value, Parameters (" <*próg*> "))" | W przypadku funkcji porównania akcja jest uruchamiana tylko wtedy, gdy wartość wyjściowa >*akcji*< jest większa niż >*próg*< wartości. | 
-| "Expression": "@or(większe (akcje" <*Action*> "). Output. Value, Parameters (" <*Threshold*> ")), less (akcje (" <*Ta sama-akcja*> "). Output. Value, 100))" | W przypadku funkcji logiki i tworzenia zagnieżdżonych wyrażeń logicznych akcja jest uruchamiana, gdy wynik <*akcji*> jest większy niż*próg*< > wartość lub poniżej 100. | 
-| "Expression": "@equals(długość (akcje:" <*Akcja*> "). Output. Errors), 0))" | Można użyć funkcji tablicowych do sprawdzenia, czy tablica zawiera jakieś elementy. Akcja jest uruchamiana, `errors` gdy tablica jest pusta. | 
+| "Expression": "@parameters (" <*hasSpecialAction*> ")" | W przypadku tylko wyrażeń logicznych warunek jest przekazywany dla każdej wartości, która ma wartość true. <p>Aby przekonwertować inne typy na wartość logiczną, użyj następujących funkcji: `empty()` lub `equals()`. | 
+| "Expression": "@greater (akcje (" <*action*> "). Output. Value, Parameters (" <*próg*> "))" | W przypadku funkcji porównania akcja jest uruchamiana tylko wtedy, gdy wartość wyjściowa >*akcji*< jest większa niż >*próg*< wartości. | 
+| "Expression": "@or (większe (akcje:" <*action*> "). Output. Value, Parameters (" <*Threshold*> ")), less (akcje:" <*Ta sama-akcja*> "). Output. Value, 100))" | W przypadku funkcji logiki i tworzenia zagnieżdżonych wyrażeń logicznych akcja jest uruchamiana, gdy wynik <*akcji*> jest większy niż*próg*< > wartość lub poniżej 100. | 
+| "Expression": "@equals (długość (akcje:" <*action*> "). Output. Errors), 0))" | Można użyć funkcji tablicowych do sprawdzenia, czy tablica zawiera jakieś elementy. Akcja jest uruchamiana, gdy tablica `errors` jest pusta. | 
 ||| 
 
 <a name="scope-action"></a>
@@ -2128,10 +2128,10 @@ Ta akcja logicznie grupuje akcje do *zakresów*, które uzyskują własny stan p
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------|  
-| <*wewnętrzna-akcja-1... Azotan*> | Obiekt JSON | Co najmniej jedna akcja, która jest uruchamiana w zakresie |
-| <*Akcja — dane wejściowe*> | Obiekt JSON | Dane wejściowe dla każdej akcji |
+| <*działania wewnętrzne-1... n* > | Obiekt JSON | Co najmniej jedna akcja, która jest uruchamiana w zakresie |
+| <*akcji — wejścia* > | Obiekt JSON | Dane wejściowe dla każdej akcji |
 |||| 
 
 <a name="switch-action"></a>
@@ -2169,25 +2169,25 @@ Ta akcja, znana także jako *instrukcja SWITCH*, organizuje inne akcje w *przypa
 
 *Wymagane*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*expression-object-or-token*> | Różna | Wyrażenie, obiekt JSON lub token do obliczenia | 
-| <*Akcja — nazwa*> | String | Nazwa akcji do uruchomienia dla przypadku dopasowania | 
-| <*Akcja — definicja*> | Obiekt JSON | Definicja akcji do uruchomienia dla przypadku dopasowania | 
-| <*matching-value*> | Różna | Wartość do porównania z obliczonym wynikiem | 
+| <*Expression-obiekt-lub-token* > | Różna | Wyrażenie, obiekt JSON lub token do obliczenia | 
+| <*akcji — nazwa* > | Ciąg | Nazwa akcji do uruchomienia dla przypadku dopasowania | 
+| < *— Definicja akcji* > | Obiekt JSON | Definicja akcji do uruchomienia dla przypadku dopasowania | 
+| <*dopasowywania wartości* > | Różna | Wartość do porównania z obliczonym wynikiem | 
 |||| 
 
 *Obowiązkowe*
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Default-Action-Name*> | String | Nazwa domyślnej akcji do uruchomienia, gdy nie istnieje żaden pasujący przypadek | 
-| <*default-action-definition*> | Obiekt JSON | Definicja akcji, która ma być uruchamiana, gdy nie istnieje żaden pasujący przypadek | 
+| <*domyślne-Nazwa akcji* > | Ciąg | Nazwa domyślnej akcji do uruchomienia, gdy nie istnieje żaden pasujący przypadek | 
+| <*domyślne-definicja akcji* > | Obiekt JSON | Definicja akcji, która ma być uruchamiana, gdy nie istnieje żaden pasujący przypadek | 
 |||| 
 
 *Przykład*
 
-Ta definicja akcji służy do obliczania, czy osoba odpowiadająca na wiadomość e-mail z żądaniem zatwierdzenia została wybrana opcja "Zatwierdź" lub "Odrzuć". Na podstawie tego wyboru akcja przełączenia uruchamia akcje dla przypadku dopasowania, które polega na wysłaniu kolejnej wiadomości e-mail do obiektu odpowiadającego, ale z różnymi słowami w każdym przypadku. 
+Ta definicja akcji służy do obliczania, czy osoba odpowiadająca na wiadomość e-mail z żądaniem zatwierdzenia została wybrana opcja "Zatwierdź" lub "Odrzuć". Na podstawie tego wyboru Akcja **przełączenia** uruchamia akcje dla przypadku dopasowania, które polega na wysłaniu kolejnej wiadomości e-mail do obiektu odpowiadającego, ale z różnymi słowami w każdym przypadku. 
 
 ``` json
 "Switch": {
@@ -2269,7 +2269,7 @@ Ta definicja akcji służy do obliczania, czy osoba odpowiadająca na wiadomoś�
 
 ### <a name="until-action"></a>Do akcji do
 
-Ta akcja pętli zawiera akcje, które są uruchamiane do momentu, gdy określony warunek ma wartość true. Pętla sprawdza warunek jako ostatni krok po wykonaniu wszystkich innych akcji. W `"actions"` obiekcie można uwzględnić więcej niż jedną akcję, a akcja musi definiować co najmniej jeden limit. Dowiedz się [, jak utworzyć pętle "until"](../logic-apps/logic-apps-control-flow-loops.md#until-loop). 
+Ta akcja pętli zawiera akcje, które są uruchamiane do momentu, gdy określony warunek ma wartość true. Pętla sprawdza warunek jako ostatni krok po wykonaniu wszystkich innych akcji. W obiekcie `"actions"` można uwzględnić więcej niż jedną akcję, a akcja musi definiować co najmniej jeden limit. Dowiedz się [, jak utworzyć pętle "until"](../logic-apps/logic-apps-control-flow-loops.md#until-loop). 
 
 ```json
  "Until": {
@@ -2295,14 +2295,14 @@ Ta akcja pętli zawiera akcje, które są uruchamiane do momentu, gdy określony
 }
 ```
 
-| Value | Type | Opis | 
+| Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Akcja — nazwa*> | String | Nazwa akcji, która ma być uruchamiana wewnątrz pętli | 
-| <*Typ akcji*> | String | Typ akcji, którą chcesz uruchomić | 
-| <*Akcja — dane wejściowe*> | Poszczególne | Dane wejściowe akcji do uruchomienia | 
-| <*rozgrzewa*> | String | Warunek lub wyrażenie do obliczenia po zakończeniu wszystkich akcji w pętli | 
-| <*liczba pętli*> | Integer | Limit największej liczby pętli, które może wykonać akcja. Wartość domyślna `count` to 60. | 
-| <*Pętla — limit czasu*> | String | Limit najdłuższego czasu, w którym można uruchomić pętlę. Wartość domyślna `timeout` to `PT1H`, który jest wymaganym [formatem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
+| <*akcji — nazwa* > | Ciąg | Nazwa akcji, która ma być uruchamiana wewnątrz pętli | 
+| *Typ akcji* < > | Ciąg | Typ akcji, którą chcesz uruchomić | 
+| <*akcji — wejścia* > | Poszczególne | Dane wejściowe akcji do uruchomienia | 
+| <*warunek* > | Ciąg | Warunek lub wyrażenie do obliczenia po zakończeniu wszystkich akcji w pętli | 
+| <*liczba pętli* > | Liczba całkowita | Limit największej liczby pętli, które może wykonać akcja. Wartość domyślna `count` to 60. | 
+| <*przekroczenie limitu czasu pętli* > | Ciąg | Limit najdłuższego czasu, w którym można uruchomić pętlę. Wartość domyślna `timeout` jest `PT1H`, która jest wymaganym [formatem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 
 *Przykład*
@@ -2339,23 +2339,23 @@ Ta definicja akcji pętli wysyła żądanie HTTP do określonego adresu URL do m
 
 ## <a name="webhooks-and-subscriptions"></a>Elementy webhook i subskrypcje
 
-Wyzwalacze i akcje oparte na elemencie webhook nie sprawdzają regularnie punktów końcowych, ale w zamian Zaczekaj na określone zdarzenia lub dane w tych punktach końcowych. Te wyzwalacze i akcje subskrybują punkty końcowe, podając *adres URL wywołania zwrotnego* , pod którym punkt końcowy może wysyłać odpowiedzi.
+Wyzwalacze i akcje oparte na elemencie webhook nie sprawdzają regularnie punktów końcowych, ale w zamian Zaczekaj na określone zdarzenia lub dane w tych punktach końcowych. Te wyzwalacze i akcje *subskrybują* punkty końcowe, podając *adres URL wywołania zwrotnego* , pod którym punkt końcowy może wysyłać odpowiedzi.
 
-`subscribe` Wywołanie ma miejsce, gdy przepływ pracy zmienia się w dowolny sposób, na przykład w przypadku odnowienia poświadczeń lub zmiany parametrów wejściowych dla wyzwalacza lub akcji. To wywołanie używa tych samych parametrów, co w przypadku standardowych akcji HTTP. 
+Wywołanie `subscribe` występuje, gdy przepływ pracy zmienia się w dowolny sposób, na przykład w przypadku odnowienia poświadczeń lub zmiany parametrów wejściowych dla wyzwalacza lub akcji. To wywołanie używa tych samych parametrów, co w przypadku standardowych akcji HTTP. 
 
-Wywołanie `unsubscribe` jest wykonywane automatycznie, gdy operacja powoduje nieprawidłowe działanie wyzwalacza lub akcji, na przykład:
+Wywołanie `unsubscribe` automatycznie występuje, gdy operacja powoduje nieprawidłowe działanie wyzwalacza lub akcji, na przykład:
 
 * Usuwanie lub wyłączanie wyzwalacza. 
 * Usuwanie lub wyłączanie przepływu pracy. 
 * Usuwanie lub wyłączanie subskrypcji. 
 
-W celu obsługi tych wywołań `@listCallbackUrl()` wyrażenie zwraca unikatowy adres URL wywołania zwrotnego dla wyzwalacza lub akcji. Ten adres URL reprezentuje unikatowy identyfikator dla punktów końcowych korzystających z interfejsu API REST usługi. Parametry tej funkcji są takie same jak wyzwalacz elementu webhook lub akcja.
+Aby można było obsługiwać te wywołania, wyrażenie `@listCallbackUrl()` zwraca unikatowy adres URL wywołania zwrotnego dla wyzwalacza lub akcji. Ten adres URL reprezentuje unikatowy identyfikator dla punktów końcowych korzystających z interfejsu API REST usługi. Parametry tej funkcji są takie same jak wyzwalacz elementu webhook lub akcja.
 
 <a name="asynchronous-limits"></a>
 
 ## <a name="change-asynchronous-duration"></a>Zmień czas trwania asynchronicznego
 
-Dla obu wyzwalaczy i akcji można ograniczyć czas trwania wzorca asynchronicznego do określonego interwału przez dodanie `limit.timeout` właściwości. W ten sposób, jeśli akcja nie zakończyła się po zakończeniu interwału, stan akcji jest oznaczony jako `Cancelled` `ActionTimedOut` z kodem. Właściwość używa [formatu ISO 8601.](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) `timeout` 
+Dla obu wyzwalaczy i akcji można ograniczyć czas trwania wzorca asynchronicznego do określonego interwału przez dodanie właściwości `limit.timeout`. W ten sposób, jeśli akcja nie zakończyła się po zakończeniu interwału, stan akcji jest oznaczony jako `Cancelled` z kodem `ActionTimedOut`. Właściwość `timeout` używa [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). 
 
 ``` json
 "<trigger-or-action-name>": {
@@ -2372,30 +2372,30 @@ Dla obu wyzwalaczy i akcji można ograniczyć czas trwania wzorca asynchroniczne
 
 ## <a name="runtime-configuration-settings"></a>Ustawienia konfiguracji środowiska uruchomieniowego
 
-Można zmienić domyślne zachowanie środowiska uruchomieniowego dla wyzwalaczy i akcji z tymi `runtimeConfiguration` właściwościami w wyzwalaczu lub definicji akcji.
+Można zmienić domyślne zachowanie środowiska uruchomieniowego dla wyzwalaczy i akcji z tymi `runtimeConfiguration` właściwości w wyzwalaczu lub definicji akcji.
 
-| Właściwość | Type | Opis | Wyzwalacz lub Akcja | 
+| Właściwość | Typ | Opis | Wyzwalacz lub Akcja | 
 |----------|------|-------------|-------------------| 
-| `runtimeConfiguration.concurrency.runs` | Integer | Zmień [*domyślny limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) liczby wystąpień przepływów pracy, które mogą być uruchamiane w tym samym czasie lub równolegle. Ta wartość może pomóc w ograniczeniu liczby żądań odbieranych przez systemy zaplecza. <p>Ustawianie właściwości tak, `1` aby działała tak `operationOptions` samo jak ustawienie właściwości na `SingleInstance`. `runs` Można ustawić każdą właściwość, ale nie obie jednocześnie. <p>Aby zmienić domyślny limit, zobacz sekwencyjne [Zmienianie](#change-trigger-concurrency) wystąpień współbieżności lub [wyzwalaczy](#sequential-trigger)wyzwalacza. | Wszystkie wyzwalacze | 
-| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | Zmień [*domyślny limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) liczby wystąpień przepływów pracy, które mogą poczekać na uruchomienie, gdy przepływ pracy już uruchamia maksymalną liczbę równoczesnych wystąpień. Limit współbieżności można zmienić we `concurrency.runs` właściwości. <p>Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | Wszystkie wyzwalacze | 
-| `runtimeConfiguration.concurrency.repetitions` | Integer | Zmień [*domyślny limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) liczby iteracji pętli "for each", które mogą być uruchamiane w tym samym czasie lub równolegle. <p>Ustawianie właściwości tak, `1` aby działała tak `operationOptions` samo jak ustawienie właściwości na `SingleInstance`. `repetitions` Można ustawić każdą właściwość, ale nie obie jednocześnie. <p>Aby zmienić domyślny limit, zobacz [zmiana "dla każdego" współbieżności](#change-for-each-concurrency) lub [uruchomienia "dla każdego" pętli sekwencyjnie](#sequential-for-each). | Akcja: <p>[Spowodował](#foreach-action) | 
-| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Integer | W przypadku określonych akcji, które obsługują i mają włączone stronicowanie, ta wartość określa minimalną liczbę wyników do pobrania. <p>Aby włączyć podział na strony, zobacz [pobieranie danych zbiorczych, elementów lub wyników przy użyciu stronicowania](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | Akcja: Różnych |
-| `runtimeConfiguration.secureData.properties` | Array | W wielu wyzwalaczach i akcjach te ustawienia ukrywają dane wejściowe, wyjściowe lub zarówno z historii uruchamiania aplikacji logiki. <p>Aby zabezpieczyć te dane, zobacz [Ukryj dane wejściowe i wyjściowe z historii uruchamiania](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view). | Większość wyzwalaczy i akcji |
-| `runtimeConfiguration.staticResult` | Obiekt JSON | W przypadku akcji, które obsługują i mają włączone ustawienie [statycznego wyniku](../logic-apps/test-logic-apps-mock-data-static-results.md) , `staticResult` obiekt ma następujące atrybuty: <p>- `name`, która odwołuje się do nazwy definicji wyniku statycznego bieżącej akcji, która jest `staticResults` wyświetlana wewnątrz atrybutu w `definition` atrybucie przepływu pracy aplikacji logiki. Aby uzyskać więcej informacji, zobacz [statyczne wyniki — dokumentacja schematu dla języka definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> - `staticResultOptions`, które określa, czy wyniki statyczne `Enabled` są lub nie dla bieżącej akcji. <p>Aby włączyć statyczne wyniki, zobacz [testowanie aplikacji logiki za pomocą danych makiety przez skonfigurowanie wyników statycznych](../logic-apps/test-logic-apps-mock-data-static-results.md) | Akcja: Różnych |
+| `runtimeConfiguration.concurrency.runs` | Liczba całkowita | Zmień [*domyślny limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) liczby wystąpień przepływów pracy, które mogą być uruchamiane w tym samym czasie lub równolegle. Ta wartość może pomóc w ograniczeniu liczby żądań odbieranych przez systemy zaplecza. <p>Ustawienie właściwości `runs` na `1` działa tak samo, jak ustawienie właściwości `operationOptions` na `SingleInstance`. Można ustawić każdą właściwość, ale nie obie jednocześnie. <p>Aby zmienić domyślny limit, zobacz [sekwencyjne Zmienianie wystąpień](#sequential-trigger) [współbieżności](#change-trigger-concurrency) lub wyzwalaczy wyzwalacza. | Wszystkie wyzwalacze | 
+| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Liczba całkowita | Zmień [*domyślny limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) liczby wystąpień przepływów pracy, które mogą poczekać na uruchomienie, gdy przepływ pracy już uruchamia maksymalną liczbę równoczesnych wystąpień. Limit współbieżności można zmienić we właściwości `concurrency.runs`. <p>Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | Wszystkie wyzwalacze | 
+| `runtimeConfiguration.concurrency.repetitions` | Liczba całkowita | Zmień [*domyślny limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) liczby iteracji pętli "for each", które mogą być uruchamiane w tym samym czasie lub równolegle. <p>Ustawienie właściwości `repetitions` na `1` działa tak samo, jak ustawienie właściwości `operationOptions` na `SingleInstance`. Można ustawić każdą właściwość, ale nie obie jednocześnie. <p>Aby zmienić domyślny limit, zobacz [zmiana "dla każdego" współbieżności](#change-for-each-concurrency) lub [uruchomienia "dla każdego" pętli sekwencyjnie](#sequential-for-each). | Transakcji <p>[Spowodował](#foreach-action) | 
+| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Liczba całkowita | W przypadku określonych akcji, które obsługują i mają włączone stronicowanie, ta wartość określa *minimalną* liczbę wyników do pobrania. <p>Aby włączyć podział na strony, zobacz [pobieranie danych zbiorczych, elementów lub wyników przy użyciu stronicowania](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | Akcja: różnicowa |
+| `runtimeConfiguration.secureData.properties` | Tablica | W wielu wyzwalaczach i akcjach te ustawienia ukrywają dane wejściowe, wyjściowe lub zarówno z historii uruchamiania aplikacji logiki. <p>Aby zabezpieczyć te dane, zobacz [Ukryj dane wejściowe i wyjściowe z historii uruchamiania](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view). | Większość wyzwalaczy i akcji |
+| `runtimeConfiguration.staticResult` | Obiekt JSON | W przypadku akcji, które obsługują i mają włączone ustawienie [statycznego wyniku](../logic-apps/test-logic-apps-mock-data-static-results.md) , obiekt `staticResult` ma następujące atrybuty: <p>-  `name`, który odwołuje się do nazwy definicji wyniku statycznego bieżącej akcji, która pojawia się wewnątrz atrybutu `staticResults` w atrybucie `definition` przepływu pracy aplikacji logiki. Aby uzyskać więcej informacji, zobacz [statyczne wyniki — dokumentacja schematu dla języka definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> -  `staticResultOptions`, które określa, czy statyczne wyniki są `Enabled` lub nie dla bieżącej akcji. <p>Aby włączyć statyczne wyniki, zobacz [testowanie aplikacji logiki za pomocą danych makiety przez skonfigurowanie wyników statycznych](../logic-apps/test-logic-apps-mock-data-static-results.md) | Akcja: różnicowa |
 ||||| 
 
 <a name="operation-options"></a>
 
 ## <a name="operation-options"></a>Opcje operacji
 
-Można zmienić domyślne zachowanie wyzwalaczy i akcji z `operationOptions` właściwością w wyzwalaczu lub definicji akcji.
+Można zmienić domyślne zachowanie wyzwalaczy i akcji z właściwością `operationOptions` w wyzwalaczu lub definicji akcji.
 
-| Opcja operacji | Type | Opis | Wyzwalacz lub Akcja | 
+| Opcja operacji | Typ | Opis | Wyzwalacz lub Akcja | 
 |------------------|------|-------------|-------------------| 
-| `DisableAsyncPattern` | String | Wykonywanie akcji opartych na protokole HTTP synchronicznie, a nie asynchronicznie. <p><p>Aby ustawić tę opcję, zobacz [Uruchamianie akcji synchronicznie](#asynchronous-patterns). | Wykonane <p>[ApiConnection](#apiconnection-action), <br>[PROTOKÓŁ HTTP](#http-action), <br>[Odpowiedź](#response-action) | 
-| `OptimizedForHighThroughput` | String | Zmień [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) liczby wykonań akcji na 5 minut na [maksymalny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Aby ustawić tę opcję, zobacz [Uruchamianie w trybie wysokiej przepływności](#run-high-throughput-mode). | Wszystkie akcje | 
-| `Sequential` | String | Uruchom "dla każdej" iteracji pętli pojedynczo, a nie wszystkie w tym samym czasie równolegle. <p>Ta opcja działa tak samo jak ustawienie `runtimeConfiguration.concurrency.repetitions` właściwości na. `1` Można ustawić każdą właściwość, ale nie obie jednocześnie. <p><p>Aby ustawić tę opcję, zobacz [Uruchom polecenie "for each" w](#sequential-for-each)sposób sekwencyjny.| Akcja: <p>[Spowodował](#foreach-action) | 
-| `SingleInstance` | String | Uruchom wyzwalacz dla każdego wystąpienia aplikacji logiki sekwencyjnie i poczekaj na zakończenie poprzednio aktywnego uruchomienia przed wyzwoleniem następnego wystąpienia aplikacji logiki. <p><p>Ta opcja działa tak samo jak ustawienie `runtimeConfiguration.concurrency.runs` właściwości na. `1` Można ustawić każdą właściwość, ale nie obie jednocześnie. <p>Aby ustawić tę opcję, zobacz [wyzwalacze wystąpień sekwencyjnie](#sequential-trigger). | Wszystkie wyzwalacze | 
+| `DisableAsyncPattern` | Ciąg | Wykonywanie akcji opartych na protokole HTTP synchronicznie, a nie asynchronicznie. <p><p>Aby ustawić tę opcję, zobacz [Uruchamianie akcji synchronicznie](#asynchronous-patterns). | Wykonane <p>[ApiConnection](#apiconnection-action), <br>[Protokół http](#http-action), <br>[Odpowiedź](#response-action) | 
+| `OptimizedForHighThroughput` | Ciąg | Zmień [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) liczby wykonań akcji na 5 minut na [maksymalny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Aby ustawić tę opcję, zobacz [Uruchamianie w trybie wysokiej przepływności](#run-high-throughput-mode). | Wszystkie akcje | 
+| `Sequential` | Ciąg | Uruchom "dla każdej" iteracji pętli pojedynczo, a nie wszystkie w tym samym czasie równolegle. <p>Ta opcja działa tak samo jak ustawienie właściwości `runtimeConfiguration.concurrency.repetitions` na `1`. Można ustawić każdą właściwość, ale nie obie jednocześnie. <p><p>Aby ustawić tę opcję, zobacz [Uruchom polecenie "for each" w sposób sekwencyjny](#sequential-for-each).| Transakcji <p>[Spowodował](#foreach-action) | 
+| `SingleInstance` | Ciąg | Uruchom wyzwalacz dla każdego wystąpienia aplikacji logiki sekwencyjnie i poczekaj na zakończenie poprzednio aktywnego uruchomienia przed wyzwoleniem następnego wystąpienia aplikacji logiki. <p><p>Ta opcja działa tak samo jak ustawienie właściwości `runtimeConfiguration.concurrency.runs` na `1`. Można ustawić każdą właściwość, ale nie obie jednocześnie. <p>Aby ustawić tę opcję, zobacz [wyzwalacze wystąpień sekwencyjnie](#sequential-trigger). | Wszystkie wyzwalacze | 
 ||||
 
 <a name="change-trigger-concurrency"></a>
@@ -2404,7 +2404,7 @@ Można zmienić domyślne zachowanie wyzwalaczy i akcji z `operationOptions` wł
 
 Domyślnie wystąpienia aplikacji logiki są uruchamiane w tym samym czasie (współbieżnie lub równolegle) do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Dlatego każde wystąpienie wyzwalacza wyzwalane przed ukończeniem poprzedniego wystąpienia przepływu pracy. Ten limit pomaga kontrolować liczbę żądań odbieranych przez systemy zaplecza. 
 
-Aby zmienić domyślny limit, można użyć edytora widoku kodu lub projektanta Logic Apps, ponieważ zmiana ustawienia współbieżności za pomocą projektanta powoduje dodanie lub zaktualizowanie `runtimeConfiguration.concurrency.runs` właściwości w podstawowej definicji wyzwalacza i na odwrót. Ta właściwość określa maksymalną liczbę wystąpień przepływów pracy, które mogą być uruchamiane równolegle. Poniżej przedstawiono niektóre zagadnienia dotyczące korzystania z kontroli współbieżności:
+Aby zmienić domyślny limit, można użyć edytora widoku kodu lub projektanta Logic Apps, ponieważ zmiana ustawienia współbieżności za pomocą projektanta powoduje dodanie lub zaktualizowanie właściwości `runtimeConfiguration.concurrency.runs` w podstawowej definicji wyzwalacza i na odwrót. Ta właściwość określa maksymalną liczbę wystąpień przepływów pracy, które mogą być uruchamiane równolegle. Poniżej przedstawiono niektóre zagadnienia dotyczące korzystania z kontroli współbieżności:
 
 * Gdy współbieżność jest włączona, długotrwałe wystąpienie aplikacji logiki może spowodować, że nowe wystąpienia aplikacji logiki będą mogły wprowadzić stan oczekiwania. Ten stan uniemożliwia Azure Logic Apps tworzenia nowych wystąpień i występuje nawet wtedy, gdy liczba współbieżnych uruchomień jest mniejsza niż określona maksymalna liczba współbieżnych uruchomień.
 
@@ -2433,11 +2433,11 @@ Aby zmienić domyślny limit, można użyć edytora widoku kodu lub projektanta 
 
        ![Określ czas trwania limitu czasu](./media/logic-apps-workflow-actions-triggers/timeout.png)
 
-* Jeśli chcesz uruchomić aplikację logiki sekwencyjnie, możesz ustawić współbieżność wyzwalacza na `1` przy użyciu edytora widoku kodu lub projektanta. Nie należy jednak ustawiać właściwości `operationOptions` wyzwalacza na `SingleInstance` w edytorze widoku kodu. W przeciwnym razie zostanie wyświetlony błąd walidacji. Aby uzyskać więcej informacji, zobacz [kolejno wyzwalacze wystąpień](#sequential-trigger).
+* Jeśli chcesz uruchomić aplikację logiki sekwencyjnie, możesz ustawić współbieżność wyzwalacza, aby `1` przy użyciu edytora widoku kodu lub projektanta. Nie należy jednak ustawiać właściwości `operationOptions` wyzwalacza, aby `SingleInstance` w edytorze widoku kodu. W przeciwnym razie zostanie wyświetlony błąd walidacji. Aby uzyskać więcej informacji, zobacz [kolejno wyzwalacze wystąpień](#sequential-trigger).
 
 #### <a name="edit-in-code-view"></a>Edytuj w widoku kodu 
 
-W definicji wyzwalacza źródłowego Dodaj lub zaktualizuj `runtimeConfiguration.concurrency.runs` właściwość do wartości między `1` i `50` włącznie.
+W definicji wyzwalacza źródłowego Dodaj lub zaktualizuj właściwość `runtimeConfiguration.concurrency.runs` do wartości między `1` i `50` włącznie.
 
 Oto przykład, który ogranicza współbieżne uruchomienia do 10 wystąpień:
 
@@ -2468,14 +2468,14 @@ Oto przykład, który ogranicza współbieżne uruchomienia do 10 wystąpień:
 
 ### <a name="change-for-each-concurrency"></a>Zmień współbieżność dla każdego z nich
 
-Domyślnie iteracja pętli "for each" jest uruchamiana w tym samym czasie lub równolegle, do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, można użyć edytora widoku kodu lub projektanta Logic Apps, ponieważ zmiana ustawienia współbieżności za pomocą projektanta powoduje dodanie lub zaktualizowanie `runtimeConfiguration.concurrency.repetitions` właściwości w źródłowej definicji akcji "for each" i odwrotnie. Ta właściwość określa maksymalną liczbę iteracji, które mogą być uruchamiane równolegle.
+Domyślnie iteracja pętli "for each" jest uruchamiana w tym samym czasie lub równolegle, do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, można użyć edytora widoku kodu lub projektanta Logic Apps, ponieważ zmiana ustawienia współbieżności za pomocą projektanta powoduje dodanie lub zaktualizowanie właściwości `runtimeConfiguration.concurrency.repetitions` w podstawowej definicji akcji "for each" i odwrotnie. Ta właściwość określa maksymalną liczbę iteracji, które mogą być uruchamiane równolegle.
 
 > [!NOTE] 
-> Jeśli ustawisz akcję "for each", która będzie uruchamiana sekwencyjnie przy użyciu projektanta lub edytora widoku kodu, nie ustawiaj `operationOptions` właściwości Action na `Sequential` w edytorze widoku kodu. W przeciwnym razie zostanie wyświetlony błąd walidacji. Aby uzyskać więcej informacji, zobacz [Uruchom polecenie "for each" sekwencyjnie](#sequential-for-each).
+> Jeśli ustawisz akcję "for each", która będzie uruchamiana sekwencyjnie przy użyciu projektanta lub edytora widoku kodu, nie ustawiaj właściwości `operationOptions` akcji na `Sequential` w edytorze widoku kodu. W przeciwnym razie zostanie wyświetlony błąd walidacji. Aby uzyskać więcej informacji, zobacz [Uruchom polecenie "for each" sekwencyjnie](#sequential-for-each).
 
 #### <a name="edit-in-code-view"></a>Edytuj w widoku kodu 
 
-W źródłowej definicji "for each" Dodaj lub zaktualizuj `runtimeConfiguration.concurrency.repetitions` właściwość do wartości między `1` i `50` włącznie. 
+W źródłowej definicji "for each" Dodaj lub zaktualizuj właściwość `runtimeConfiguration.concurrency.repetitions` do wartości między `1` i `50` włącznie. 
 
 Oto przykład, który ogranicza współbieżne uruchomienia do 10 iteracji:
 
@@ -2497,7 +2497,7 @@ Oto przykład, który ogranicza współbieżne uruchomienia do 10 iteracji:
 
 1. W obszarze **dla każdej** akcji w prawym górnym rogu wybierz przycisk wielokropka (...), a następnie wybierz pozycję **Ustawienia**.
 
-2. W obszarze **Kontrola współbieżności**ustaw opcję **Kontrola współbieżności** na wartość **włączone**. 
+2. W obszarze **Kontrola współbieżności**ustaw opcję **Kontrola współbieżności** **na wartość włączone**. 
 
 3. Przeciągnij suwak **stopień równoległości** na żądaną wartość. Aby uruchomić aplikację logiki sekwencyjnie, przeciągnij wartość suwaka do **1**.
 
@@ -2509,7 +2509,7 @@ Domyślnie wystąpienia przepływu pracy aplikacji logiki są wykonywane w tym s
 
 Liczba przebiegów, które mogą oczekiwać, również ma [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits), który można zmienić. Jednak po osiągnięciu limitu oczekiwania przez aplikację logiki aparat Logic Apps nie akceptuje już nowych uruchomień. Wyzwalacze żądań i elementów webhook zwracają błędy 429, a Wyzwalacze cykliczne rozpoczynają pomijanie prób sondowania.
 
-Aby zmienić domyślny limit oczekujących uruchomień, w definicji wyzwalacza źródłowego Dodaj `runtimeConfiguration.concurency.maximumWaitingRuns` właściwość z wartością między `0` i `100`. 
+Aby zmienić domyślny limit oczekujących uruchomień, w definicji wyzwalacza źródłowego Dodaj właściwość `runtimeConfiguration.concurency.maximumWaitingRuns` z wartością między `0` i `100`. 
 
 ```json
 "<trigger-name>": {
@@ -2530,16 +2530,16 @@ Aby zmienić domyślny limit oczekujących uruchomień, w definicji wyzwalacza �
 
 ### <a name="trigger-instances-sequentially"></a>Wyzwalaj wystąpienia sekwencyjnie
 
-Aby uruchomić każde wystąpienie przepływu pracy aplikacji logiki dopiero po zakończeniu poprzedniego wystąpienia, należy ustawić wyzwalacz do uruchomienia sekwencyjnie. Można użyć edytora widoku kodu lub projektanta Logic Apps, ponieważ zmiana ustawienia współbieżności za pomocą projektanta powoduje dodanie lub zaktualizowanie `runtimeConfiguration.concurrency.runs` właściwości w podstawowej definicji wyzwalacza i na odwrót. 
+Aby uruchomić każde wystąpienie przepływu pracy aplikacji logiki dopiero po zakończeniu poprzedniego wystąpienia, należy ustawić wyzwalacz do uruchomienia sekwencyjnie. Można użyć edytora widoku kodu lub projektanta Logic Apps, ponieważ zmiana ustawienia współbieżności za pomocą projektanta powoduje również dodanie lub zaktualizowanie właściwości `runtimeConfiguration.concurrency.runs` w podstawowej definicji wyzwalacza i na odwrót. 
 
 > [!NOTE] 
-> Gdy ustawiasz wyzwalacz do uruchomienia sekwencyjnie przy użyciu projektanta lub edytora widoku kodu, nie ustawiaj `operationOptions` właściwości wyzwalacza na `Sequential` w edytorze widoku kodu. W przeciwnym razie zostanie wyświetlony błąd walidacji. 
+> Gdy ustawiasz wyzwalacz do uruchomienia sekwencyjnie przy użyciu projektanta lub edytora widoku kodu, nie ustawiaj właściwości `operationOptions` wyzwalacza na `Sequential` w edytorze widoku kodu. W przeciwnym razie zostanie wyświetlony błąd walidacji. 
 
 #### <a name="edit-in-code-view"></a>Edytuj w widoku kodu
 
 W definicji wyzwalacza Ustaw jedną z tych właściwości, ale nie obie. 
 
-Ustaw właściwość na `1`: `runtimeConfiguration.concurrency.runs`
+Ustaw właściwość `runtimeConfiguration.concurrency.runs` na `1`:
 
 ```json
 "<trigger-name>": {
@@ -2558,7 +2558,7 @@ Ustaw właściwość na `1`: `runtimeConfiguration.concurrency.runs`
 
 *oraz*
 
-Ustaw właściwość na `SingleInstance`: `operationOptions`
+Ustaw właściwość `operationOptions` na `SingleInstance`:
 
 ```json
 "<trigger-name>": {
@@ -2577,22 +2577,22 @@ Ustaw właściwość na `SingleInstance`: `operationOptions`
 
 2. W obszarze **Kontrola współbieżności**ustaw opcję **Limit** **na wartość włączone**. 
 
-3. Przeciągnij suwak **stopień równoległości** do liczby `1`. 
+3. Przeciągnij suwak **stopień równoległości** do numeru `1`. 
 
 <a name="sequential-for-each"></a>
 
 ### <a name="run-for-each-loops-sequentially"></a>Uruchamiaj kolejne pętle "for each"
 
-Aby uruchomić iterację pętli "for each" tylko po zakończeniu poprzedniej iteracji, należy ustawić akcję "for each", która będzie uruchamiana sekwencyjnie. Można użyć edytora widoku kodu lub projektanta Logic Apps, ponieważ zmiana współbieżności akcji przez projektanta powoduje również dodanie lub zaktualizowanie `runtimeConfiguration.concurrency.repetitions` właściwości w podstawowej definicji akcji i odwrotnie. 
+Aby uruchomić iterację pętli "for each" tylko po zakończeniu poprzedniej iteracji, należy ustawić akcję "for each", która będzie uruchamiana sekwencyjnie. Można użyć edytora widoku kodu lub projektanta Logic Apps, ponieważ zmiana współbieżności akcji przez projektanta powoduje również dodanie lub zaktualizowanie właściwości `runtimeConfiguration.concurrency.repetitions` w podstawowej definicji akcji i odwrotnie. 
 
 > [!NOTE] 
-> Po ustawieniu akcji "for each", aby uruchomić ją sekwencyjnie przy użyciu projektanta lub edytora widoku kodu, nie ustawiaj `operationOptions` właściwości Action na `Sequential` w edytorze widoku kodu. W przeciwnym razie zostanie wyświetlony błąd walidacji. 
+> Po ustawieniu akcji "for each", aby uruchomić ją sekwencyjnie przy użyciu projektanta lub edytora widoku kodu, nie ustawiaj właściwości `operationOptions` akcji na `Sequential` w edytorze widoku kodu. W przeciwnym razie zostanie wyświetlony błąd walidacji. 
 
 #### <a name="edit-in-code-view"></a>Edytuj w widoku kodu
 
 W definicji akcji Ustaw jedną z tych właściwości, ale nie obie. 
 
-Ustaw właściwość na `1`: `runtimeConfiguration.concurrency.repetitions`
+Ustaw właściwość `runtimeConfiguration.concurrency.repetitions` na `1`:
 
 ```json
 "For_each" {
@@ -2610,7 +2610,7 @@ Ustaw właściwość na `1`: `runtimeConfiguration.concurrency.repetitions`
 
 *oraz*
 
-Ustaw właściwość na `Sequential`: `operationOptions`
+Ustaw właściwość `operationOptions` na `Sequential`:
 
 ```json
 "For_each" {
@@ -2626,9 +2626,9 @@ Ustaw właściwość na `Sequential`: `operationOptions`
 
 1. W prawym górnym rogu **dla każdej** akcji wybierz przycisk wielokropka (...), a następnie wybierz pozycję **Ustawienia**.
 
-2. W obszarze **Kontrola współbieżności**ustaw opcję **Kontrola współbieżności** na wartość **włączone**. 
+2. W obszarze **Kontrola współbieżności**ustaw opcję **Kontrola współbieżności** **na wartość włączone**. 
 
-3. Przeciągnij suwak **stopień równoległości** do liczby `1`. 
+3. Przeciągnij suwak **stopień równoległości** do numeru `1`. 
 
 <a name="asynchronous-patterns"></a>
 
@@ -2636,7 +2636,7 @@ Ustaw właściwość na `Sequential`: `operationOptions`
 
 Domyślnie wszystkie akcje oparte na protokole HTTP są zgodne ze wzorcem standardowej operacji asynchronicznej. Ten wzorzec określa, że gdy akcja oparta na protokole HTTP wysyła żądanie do określonego punktu końcowego, serwer zdalny odsyła odpowiedź "202 zaakceptowane". Ta odpowiedź oznacza, że serwer zaakceptował żądanie przetworzenia. Aparat Logic Apps sprawdza adres URL określony przez nagłówek lokalizacji odpowiedzi do momentu zatrzymania przetwarzania, który jest dowolną odpowiedzią różną od 202.
 
-Jednak żądania mają limit czasu, więc w przypadku długotrwałych akcji można wyłączyć zachowanie asynchroniczne, dodając i ustawiając `operationOptions` `DisableAsyncPattern` właściwość w obszarze dane wejściowe akcji.
+Jednak żądania mają limit czasu, więc w przypadku długotrwałych akcji można wyłączyć zachowanie asynchroniczne poprzez dodanie i ustawienie właściwości `operationOptions`, aby `DisableAsyncPattern` pod danymi wejściowymi akcji.
   
 ```json
 "<some-long-running-action>": {
@@ -2651,7 +2651,7 @@ Jednak żądania mają limit czasu, więc w przypadku długotrwałych akcji moż
 
 ### <a name="run-in-high-throughput-mode"></a>Uruchom w trybie wysokiej przepływności
 
-W przypadku pojedynczej definicji aplikacji logiki liczba akcji wykonywanych co 5 minut ma [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Aby podnieść ten limit do wartości [maksymalnej](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) , można ustawić `operationOptions` właściwość na `OptimizedForHighThroughput`. To ustawienie powoduje przełączenie aplikacji logiki do trybu "Wysoka przepływność". 
+W przypadku pojedynczej definicji aplikacji logiki liczba akcji wykonywanych co 5 minut ma [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Aby podnieść [Maksymalny](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) możliwy limit, ustaw właściwość `operationOptions` na `OptimizedForHighThroughput`. To ustawienie powoduje przełączenie aplikacji logiki do trybu "Wysoka przepływność". 
 
 > [!NOTE]
 > Tryb wysokiej przepływności jest w wersji zapoznawczej. W razie potrzeby można także rozłożyć obciążenie na więcej niż jedną aplikację logiki.
@@ -2688,16 +2688,16 @@ Poniżej przedstawiono rodzaje uwierzytelniania, które można skonfigurować:
 
 ### <a name="basic-authentication"></a>Uwierzytelnianie podstawowe
 
-W przypadku [uwierzytelniania podstawowego](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) przy użyciu Azure Active Directory wyzwalacz lub definicja akcji może zawierać `authentication` obiekt JSON, który ma właściwości określone w poniższej tabeli. Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można `@parameters('parameterName')` użyć wyrażenia, które jest dostarczane przez [Język definicji przepływu pracy](https://aka.ms/logicappsdocs). 
+W przypadku [uwierzytelniania podstawowego](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) przy użyciu Azure Active Directory wyzwalacz lub definicja akcji może zawierać obiekt `authentication` JSON, który ma właściwości określone w poniższej tabeli. Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można użyć wyrażenia `@parameters('parameterName')`, które jest dostarczane przez [Język definicji przepływu pracy](https://aka.ms/logicappsdocs). 
 
-| Właściwość | Wymagany | Value | Opis | 
+| Właściwość | Wymagane | Wartość | Opis | 
 |----------|----------|-------|-------------| 
 | **type** | Tak | Prosty | Typ uwierzytelniania, który ma być używany w tym miejscu | 
-| **Nazwa użytkownika** | Tak | "@parameters(" userNameParam ")" | Nazwa użytkownika służąca do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
-| **Hasło** | Tak | "@parameters(" passwordParam ")" | Hasło do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
+| **uż** | Tak | "@parameters (" userNameParam ")" | Nazwa użytkownika służąca do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
+| **hasło** | Tak | "@parameters (" passwordParam ")" | Hasło do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
 ||||| 
 
-W tej przykładowej definicji `authentication` akcji http sekcja określa `Basic` uwierzytelnianie. Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
+W tej przykładowej definicji akcji HTTP sekcja `authentication` określa `Basic` uwierzytelniania. Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
 
 ```json
 "HTTP": {
@@ -2722,16 +2722,16 @@ W tej przykładowej definicji `authentication` akcji http sekcja określa `Basic
 
 ### <a name="client-certificate-authentication"></a>Uwierzytelnianie certyfikatu klienta
 
-W przypadku [uwierzytelniania opartego na certyfikatach](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) przy użyciu Azure Active Directory wyzwalacz lub definicja akcji może `authentication` zawierać obiekt JSON, który ma właściwości określone w poniższej tabeli. Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można `@parameters('parameterName')` użyć wyrażenia, które jest dostarczane przez [Język definicji przepływu pracy](https://aka.ms/logicappsdocs). Aby uzyskać ograniczenia dotyczące liczby certyfikatów klienta, których można użyć, zobacz [limity i konfiguracja dla Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md).
+W przypadku [uwierzytelniania opartego na certyfikatach](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) przy użyciu Azure Active Directory wyzwalacz lub definicja akcji może zawierać obiekt `authentication` JSON, który ma właściwości określone w poniższej tabeli. Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można użyć wyrażenia `@parameters('parameterName')`, które jest dostarczane przez [Język definicji przepływu pracy](https://aka.ms/logicappsdocs). Aby uzyskać ograniczenia dotyczące liczby certyfikatów klienta, których można użyć, zobacz [limity i konfiguracja dla Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md).
 
-| Właściwość | Wymagany | Value | Opis |
+| Właściwość | Wymagane | Wartość | Opis |
 |----------|----------|-------|-------------|
 | **type** | Tak | Kolekcja | Typ uwierzytelniania, który ma być używany dla certyfikatów klienta SSL (SSL). Certyfikaty z podpisem własnym są obsługiwane, ale certyfikaty z podpisem własnym dla protokołu SSL nie są obsługiwane. |
-| **pfx** | Tak | "@parameters(" pfxParam ") | Zawartość zakodowana algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
-| **Hasło** | Tak | "@parameters(" passwordParam ")" | Hasło do uzyskiwania dostępu do pliku PFX |
+| **PFX** | Tak | "@parameters (" pfxParam ") | Zawartość zakodowana algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
+| **hasło** | Tak | "@parameters (" passwordParam ")" | Hasło do uzyskiwania dostępu do pliku PFX |
 ||||| 
 
-W tej przykładowej definicji `authentication` akcji http sekcja określa `ClientCertificate` uwierzytelnianie. Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
+W tej przykładowej definicji akcji HTTP sekcja `authentication` określa `ClientCertificate` uwierzytelniania. Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
 
 ```json
 "HTTP": {
@@ -2756,22 +2756,22 @@ W tej przykładowej definicji `authentication` akcji http sekcja określa `Clien
 
 ### <a name="azure-active-directory-ad-oauth-authentication"></a>Uwierzytelnianie OAuth Azure Active Directory (AD)
 
-W przypadku [uwierzytelniania OAuth usługi Azure AD](../active-directory/develop/authentication-scenarios.md)wyzwalacz lub definicja akcji mogą zawierać `authentication` obiekt JSON, który ma właściwości określone w poniższej tabeli. Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można `@parameters('parameterName')` użyć wyrażenia, które jest dostarczane przez [Język definicji przepływu pracy](https://aka.ms/logicappsdocs).
+W przypadku [uwierzytelniania OAuth usługi Azure AD](../active-directory/develop/authentication-scenarios.md)wyzwalacz lub definicja akcji mogą zawierać `authentication` obiekt JSON, który ma właściwości określone w poniższej tabeli. Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można użyć wyrażenia `@parameters('parameterName')`, które jest dostarczane przez [Język definicji przepływu pracy](https://aka.ms/logicappsdocs).
 
-| Właściwość | Wymagany | Value | Opis |
+| Właściwość | Wymagane | Wartość | Opis |
 |----------|----------|-------|-------------|
 | **type** | Tak | `ActiveDirectoryOAuth` | Typ uwierzytelniania, który ma być używany jako "ActiveDirectoryOAuth" dla uwierzytelniania OAuth usługi Azure AD |
-| **uwierzytelniania** | Nie | <*Adres URL-urząd-token-wystawca*> | Adres URL urzędu dostarczającego token uwierzytelniania |
-| **dzierżaw** | Tak | <*Identyfikator dzierżawy*> | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
-| **audience** | Tak | <*zasób do autoryzacji*> | Zasób, który ma być używany na potrzeby autoryzacji, na przykład`https://management.core.windows.net/` |
-| **clientId** | Tak | <*Identyfikator klienta*> | Identyfikator klienta aplikacji żądającej autoryzacji |
-| **credentialType** | Tak | "Certyfikat" lub "wpis tajny" | Typ poświadczeń, którego klient używa do żądania autoryzacji. Ta właściwość i wartość nie pojawiają się w podstawowej definicji, ale określają wymagane parametry dla typu poświadczeń. |
-| **pfx** | Tak, tylko dla typu poświadczeń "certyfikat" | "@parameters(" pfxParam ") | Zawartość zakodowana algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
-| **Hasło** | Tak, tylko dla typu poświadczeń "certyfikat" | "@parameters(" passwordParam ")" | Hasło do uzyskiwania dostępu do pliku PFX |
-| **wpisu** | Tak, tylko dla typu poświadczeń "Secret" | "@parameters(" secretParam ")" | Wpis tajny klienta na potrzeby żądania autoryzacji |
+| **uwierzytelniania** | Nie | <*adres URL-urząd-wystawca tokenów* > | Adres URL urzędu dostarczającego token uwierzytelniania |
+| **dzierżaw** | Tak | <*Identyfikator dzierżawy* > | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
+| **publiczn** | Tak | < >*zasobów do autoryzacji* | Zasób, który ma być używany na potrzeby autoryzacji, na przykład `https://management.core.windows.net/` |
+| **clientId** | Tak | *Identyfikator klienta* < > | Identyfikator klienta aplikacji żądającej autoryzacji |
+| **CredentialType** | Tak | "Certyfikat" lub "wpis tajny" | Typ poświadczeń, którego klient używa do żądania autoryzacji. Ta właściwość i wartość nie pojawiają się w podstawowej definicji, ale określają wymagane parametry dla typu poświadczeń. |
+| **PFX** | Tak, tylko dla typu poświadczeń "certyfikat" | "@parameters (" pfxParam ") | Zawartość zakodowana algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
+| **hasło** | Tak, tylko dla typu poświadczeń "certyfikat" | "@parameters (" passwordParam ")" | Hasło do uzyskiwania dostępu do pliku PFX |
+| **wpisu** | Tak, tylko dla typu poświadczeń "Secret" | "@parameters (" secretParam ")" | Wpis tajny klienta na potrzeby żądania autoryzacji |
 |||||
 
-W tej przykładowej definicji `authentication` akcji http sekcja określa `ActiveDirectoryOAuth` uwierzytelnianie i typ poświadczeń "wpis tajny". Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
+W tej przykładowej definicji akcji HTTP sekcja `authentication` określa `ActiveDirectoryOAuth` uwierzytelniania i typ poświadczeń "wpis tajny". Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
 
 ```json
 "HTTP": {

@@ -1,51 +1,47 @@
 ---
-title: Model danych aplikacji systemu Azure szczegółowe informacje Telemetrii — Telemetrii zależności | Dokumentacja firmy Microsoft
-description: Model danych szczegółowych informacji aplikacji dla telemetrii zależności
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Usługa Azure telemetria usługi Application Insights Data Model — Telemetria zależności | Microsoft Docs
+description: Application Insights model danych dla telemetrii zależności
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 3e3d6b8fdc9ac8dd28f73fecd6231e97a5645407
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0923c20b11aa02f380af1faa6766d2346ad1fb2
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60901029"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677431"
 ---
-# <a name="dependency-telemetry-application-insights-data-model"></a>Telemetria zależności: Model danych usługi Application Insights
+# <a name="dependency-telemetry-application-insights-data-model"></a>Telemetria zależności: Application Insights model danych
 
-Telemetria zależności (w [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md)) reprezentuje interakcji monitorowanego składnika za pomocą zdalnego składnika, takiego jak SQL lub punkt końcowy HTTP.
+Telemetria zależności (w [Application Insights](../../azure-monitor/app/app-insights-overview.md)) reprezentuje interakcję monitorowanego składnika ze składnikiem zdalnym, takim jak SQL lub punkt końcowy HTTP.
 
-## <a name="name"></a>Name (Nazwa)
+## <a name="name"></a>Nazwa
 
-Nazwa polecenia inicjowane za pomocą tego wywołania zależności. Kardynalność niska wartość. Przykłady to nazwa procedury składowanej i szablon ścieżki adresu URL.
+Nazwa polecenia zainicjowanego z tym wywołaniem zależności. Niska wartość kardynalności. Przykładami są nazwa procedury przechowywanej i szablon ścieżki URL.
 
 ## <a name="id"></a>ID
 
-Identyfikator wystąpienia wywołań zależności. Używane na potrzeby korelacji z elementu telemetrii żądania odpowiadający wywołanie zależności. Aby uzyskać więcej informacji, zobacz [korelacji](../../azure-monitor/app/correlation.md) strony.
+Identyfikator wystąpienia wywołania zależności. Używany do korelacji z elementem żądania telemetrii, odpowiadającym temu wywołaniu zależności. Aby uzyskać więcej informacji, zobacz stronę [korelacji](../../azure-monitor/app/correlation.md) .
 
 ## <a name="data"></a>Dane
 
-Polecenia inicjowane przez wywołanie zależności. Przykładami są instrukcji SQL i adresem URL protokołu HTTP z wszystkie parametry zapytania.
+Polecenie zainicjowane przez to wywołanie zależności. Przykłady to instrukcja SQL i adres URL protokołu HTTP ze wszystkimi parametrami zapytania.
 
 ## <a name="type"></a>Typ
 
-Nazwa typu zależności. Niski Kardynalność wartości powodują ustawienie logicznego grupowania zależności i interpretacji inne pola, takie jak commandName i kod wyniku. Przykłady to SQL, tabela platformy Azure i HTTP.
+Nazwa typu zależności. Niska wartość kardynalności logicznego grupowania zależności i interpretacji innych pól, takich jak CommandName i resultCode. Przykłady to SQL, Azure Table i HTTP.
 
 ## <a name="target"></a>Cel
 
-Witryna docelowa wywołania zależności. Przykłady to nazwa serwera, adres hosta. Aby uzyskać więcej informacji, zobacz [korelacji](../../azure-monitor/app/correlation.md) strony.
+Lokacja docelowa wywołania zależności. Przykłady to nazwa serwera, adres hosta. Aby uzyskać więcej informacji, zobacz stronę [korelacji](../../azure-monitor/app/correlation.md) .
 
 ## <a name="duration"></a>Czas trwania
 
-Czas trwania w formacie żądania: `DD.HH:MM:SS.MMMMMM`. Musi być mniejsza niż `1000` dni.
+Czas trwania żądania w formacie: `DD.HH:MM:SS.MMMMMM`. Musi być krótszy niż `1000` dni.
 
 ## <a name="result-code"></a>Kod wyniku
 
@@ -53,7 +49,7 @@ Kod wyniku wywołania zależności. Przykłady to kod błędu SQL i kod stanu HT
 
 ## <a name="success"></a>Powodzenie
 
-Wskazanie wywołanie powodzeniem lub niepowodzeniem.
+Wskazanie powodzenia lub nieudanych wywołań.
 
 ## <a name="custom-properties"></a>Właściwości niestandardowe
 
@@ -64,10 +60,10 @@ Wskazanie wywołanie powodzeniem lub niepowodzeniem.
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Konfigurowanie śledzenia dla zależności [.NET](../../azure-monitor/app/asp-net-dependencies.md).
-- Konfigurowanie śledzenia dla zależności [Java](../../azure-monitor/app/java-agent.md).
-- [Zapisywanie danych telemetrycznych zależność niestandardową](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- Zobacz [modelu danych](data-model.md) dla usługi Application Insights typów i danych modelu.
-- Zapoznaj się z [platform](../../azure-monitor/app/platforms.md) obsługiwane przez usługę Application Insights.
+- Skonfiguruj Śledzenie zależności dla [platformy .NET](../../azure-monitor/app/asp-net-dependencies.md).
+- Skonfiguruj Śledzenie zależności dla [środowiska Java](../../azure-monitor/app/java-agent.md).
+- [Napisz niestandardową telemetrię zależności](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
+- Zobacz [model danych](data-model.md) dla typów Application Insights i modelu danych.
+- Sprawdź [platformy](../../azure-monitor/app/platforms.md) obsługiwane przez Application Insights.

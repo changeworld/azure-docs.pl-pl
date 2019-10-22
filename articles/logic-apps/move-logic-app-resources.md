@@ -1,5 +1,5 @@
 ---
-title: Przenoszenie zasobów aplikacji logiki między subskrypcjami, grupami zasobów lub regionami — Azure Logic Apps
+title: Przenoszenie aplikacji logiki między subskrypcjami, grupami zasobów lub regionami — Azure Logic Apps
 description: Migrowanie aplikacji logiki lub kont integracji do innych subskrypcji platformy Azure, grup zasobów lub lokalizacji (regionów)
 services: logic-apps
 ms.service: logic-apps
@@ -9,14 +9,14 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: e7c201004be6c4d39f482cc288824cba74e302cb
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8c3bad32943b83cbfe4c96087f3fef1c51f64bb1
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737500"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679108"
 ---
-# <a name="migrate-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Migrowanie zasobów aplikacji logiki do innych subskrypcji platformy Azure, grup zasobów lub regionów
+# <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Przenoszenie zasobów aplikacji logiki do innych subskrypcji platformy Azure, grup zasobów lub regionów
 
 Aby przenieść aplikację logiki lub powiązane zasoby na inną subskrypcję platformy Azure, grupę zasobów lub region, masz różne sposoby wykonywania tych zadań, takie jak Azure Portal, Azure PowerShell, interfejs wiersza polecenia platformy Azure i interfejsy API REST. Przed przeniesieniem zasobów zapoznaj się z następującymi kwestiami: 
 
@@ -82,12 +82,12 @@ Jeśli chcesz przenieść aplikację logiki do innego regionu, opcje są zależn
 
 Aby uzyskać więcej informacji na temat szablonów wdrażania dla usługi Logic Apps, zobacz następujące tematy:
 
-* [Podsumowanie Automatyzowanie wdrażania Azure Logic Apps przy użyciu szablonów Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Przegląd: Automatyzowanie wdrażania Azure Logic Apps przy użyciu szablonów Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Znajdowanie, otwieranie i pobieranie aplikacji logiki z Azure Portal do programu Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
 * [Tworzenie Azure Resource Manager szablonów dla Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [Wdróż szablony Azure Resource Manager dla Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 
-### <a name="related-resources"></a>Powiązane zasoby
+### <a name="related-resources"></a>Zasoby powiązane
 
 Niektóre zasoby platformy Azure, takie jak zasoby lokalnej bramy danych na platformie Azure, mogą znajdować się w regionie, który różni się od aplikacji logiki, które używają tych zasobów. Jednak inne zasoby platformy Azure, takie jak połączone konta integracji, muszą znajdować się w tym samym regionie, w którym znajdują się Aplikacje logiki. Na podstawie Twojego scenariusza upewnij się, że aplikacje logiki mogą uzyskać dostęp do zasobów, których aplikacje oczekują w tym samym regionie.
 

@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 50059711df195c13ee44061ee4844f0192e0e10d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, seo-javascript-october2019
+ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992095"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677274"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Zbieranie danych z komputera z systemem Windows w środowisku hybrydowym z Azure Monitor
 
@@ -29,7 +29,7 @@ Aby zrozumieć obsługiwaną konfigurację, zobacz [obsługiwane systemy operacy
  
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Zaloguj się w witrynie Azure Portal
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
 
@@ -37,7 +37,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **log Analytics obszary robocze**.
 
-    ![Azure Portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Wybierz pozycję **Utwórz**, a następnie wybierz opcje dla następujących elementów:
 
@@ -47,7 +47,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
    * W polu **Lokalizacja** wybierz lokalizację, w której wdrożono maszyny wirtualne.  Aby uzyskać dodatkowe informacje, sprawdź, w których [regionach jest dostępna usługa Log Analytics](https://azure.microsoft.com/regions/services/).
    * W przypadku tworzenia obszaru roboczego w nowej subskrypcji utworzonej po 2 kwietnia 2018 r. zostanie automatycznie użyty plan cenowy *Na GB*, a opcja wyboru warstwy cenowej będzie niedostępna.  W przypadku tworzenia obszaru roboczego dla istniejącej subskrypcji utworzonej przed 2 kwietnia lub dla subskrypcji powiązanej z istniejącą rejestracją umowy EA wybierz preferowaną warstwę cenową.  Aby uzyskać dodatkowe informacje dotyczące konkretnej warstwy, zobacz [Log Analytics — cennik](https://azure.microsoft.com/pricing/details/log-analytics/).
   
-        ![Utwórz blok zasobów Log Analytics](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Utwórz blok zasobów Log Analytics](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. Po podania wymaganych informacji w okienku **obszaru roboczego log Analytics** wybierz pozycję **OK**.  
 
@@ -64,7 +64,7 @@ Przed zainstalowaniem agenta Log Analytics dla systemu Windows (nazywanego równ
 
 3. Wybierz pozycję **Ustawienia zaawansowane**:
 
-    ![Log Analytics ustawień zaawansowanych](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics ustawień zaawansowanych](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
   
 4. Wybierz **Połączone źródła**, a następnie **Serwery Windows**.
 
@@ -99,7 +99,7 @@ Poniższe kroki instalują i konfigurują agenta dla Log Analytics na platformie
 
 10. Na stronie **Konfiguracja została ukończona pomyślnie** wybierz pozycję **Zakończ**.
 
-Po zakończeniu instalacji i instalacji Microsoft Monitoring Agent pojawia się w panelu sterowania. Możesz przejrzeć konfigurację i sprawdzić, czy Agent jest połączony z obszarem roboczym Log Analytics. Po nawiązaniu połączenia na karcie **log Analytics Azure** Agent wyświetli następujący komunikat: **Usługa Microsoft Monitoring Agent pomyślnie nawiązała połączenie z usługą Microsoft Log Analytics.**<br><br> ![Stan połączenia usługi MMA](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+Po zakończeniu instalacji i instalacji Microsoft Monitoring Agent pojawia się w panelu sterowania. Możesz przejrzeć konfigurację i sprawdzić, czy Agent jest połączony z obszarem roboczym Log Analytics. Po nawiązaniu połączenia na karcie **log Analytics Azure** Agent wyświetli następujący komunikat: **Microsoft Monitoring Agent pomyślnie nawiązał połączenie z usługą Microsoft log Analytics.**<br><br> ![MMA stanu połączenia ](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 ## <a name="collect-event-and-performance-data"></a>Zbieranie danych zdarzeń i wydajności
 
@@ -109,7 +109,7 @@ Azure Monitor może zbierać zdarzenia określone z dzienników zdarzeń systemu
 
 2. Wybierz pozycję **Ustawienia zaawansowane**:
 
-    ![Log Analytics ustawień zaawansowanych](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics ustawień zaawansowanych](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
  
 3. Wybierz pozycję **Dane**, a następnie pozycję **Dzienniki zdarzeń systemu Windows**.  
 
@@ -129,7 +129,7 @@ Azure Monitor może zbierać zdarzenia określone z dzienników zdarzeń systemu
 
 9. Wybierz pozycję **Zapisz** w górnej części strony.
 
-## <a name="view-collected-data"></a>Przeglądanie zebranych danych
+## <a name="view-collected-data"></a>Wyświetlanie zebranych danych
 
 Teraz, po włączeniu zbierania danych, uruchom proste wyszukiwanie w dzienniku, aby wyświetlić dane z komputera docelowego.  
 
@@ -157,11 +157,11 @@ Aby usunąć agenta, wykonaj następujące kroki:
 
 Aby usunąć utworzony wcześniej obszar roboczy Log Analytics, zaznacz go, a następnie na stronie zasób wybierz pozycję **Usuń**:
 
-![Usuwanie obszaru roboczego analizy dzienników](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
+![Usuwanie obszaru roboczego Log Analytics](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy zbierasz dane operacyjne i wydajności z komputera z systemem Windows, możesz łatwo rozpocząć Eksplorowanie, analizowanie i działanie na zbieranych danych.  
+Teraz, gdy zbierasz dane operacyjne i wydajności z komputera z systemem Windows, możesz łatwo rozpocząć Eksplorowanie, analizowanie i *działanie na zbieranych danych.*  
 
 Aby dowiedzieć się, jak wyświetlać i analizować dane, przejdź do samouczka:
 

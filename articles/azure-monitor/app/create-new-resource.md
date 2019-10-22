@@ -1,23 +1,18 @@
 ---
 title: Tworzenie nowego zasobu usługi Azure Application Insights | Microsoft Docs
 description: Ręcznie skonfiguruj Application Insights monitorowania dla nowej aplikacji na żywo.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/16/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ae9c885b342664baf90f9c2b5702a092c9d838df
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.date: 08/16/2019
+ms.openlocfilehash: be68c70a105737f232741f02994da87c0c628bd7
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562843"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677504"
 ---
 # <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
 
@@ -33,11 +28,11 @@ Zaloguj się do [Azure Portal](https://portal.azure.com)i utwórz zasób Applica
 
 ![Kliknij znak "+" w lewym górnym rogu. Wybierz Narzędzia deweloperskie a następnie Application Insights](./media/create-new-resource/new-app-insights.png)
 
-   | Ustawienia        |  Value           | Opis  |
+   | Ustawienia        |  Wartość           | Opis  |
    | ------------- |:-------------|:-----|
    | **Nazwa**      | Wartość unikatowa w skali globalnej | Nazwa identyfikująca monitorowaną aplikację. |
    | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej lub istniejącej grupy zasobów do hostowania danych usługi App Insights. |
-   | **Location** | East US | Wybierz lokalizację znajdującą się w sąsiedztwie lub w miejscu, w którym znajduje się aplikacja. |
+   | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację znajdującą się w sąsiedztwie lub w miejscu, w którym znajduje się aplikacja. |
 
 Wprowadź odpowiednie wartości w wymaganych polach, a następnie wybierz pozycję **Przegląd + Utwórz**.
 
@@ -108,7 +103,7 @@ Aby uzyskać dostęp do wersji zapoznawczej Application Insights poleceń interf
  az extension add -n application-insights
 ```
 
-Jeśli `az extension add` polecenie nie zostanie uruchomione, zostanie wyświetlony komunikat o błędzie informujący o tym, że:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Jeśli polecenie `az extension add` nie zostanie uruchomione, zostanie wyświetlony komunikat o błędzie z informacją: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Teraz można wykonać następujące czynności, aby utworzyć zasób Application Insights:
 

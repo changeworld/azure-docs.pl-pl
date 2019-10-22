@@ -1,117 +1,112 @@
 ---
-title: Ustawianie alertów w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Otrzymywanie powiadomień o wydłużają czas odpowiedzi, wyjątki oraz inne wydajności lub użycia zmian w aplikacji sieci web.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.reviewer: lagayhar
-ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Ustawianie alertów w usłudze Azure Application Insights | Microsoft Docs
+description: Otrzymuj powiadomienia o wolnym czasie odpowiedzi, wyjątkach i innych zmianach wydajności lub użycia w aplikacji sieci Web.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/23/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/23/2019
+ms.reviewer: lagayhar
+ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60693374"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678404"
 ---
-# <a name="set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights
-[Usługa Azure Application Insights] [ start] może generować alerty na zmiany w metrykach wydajności lub użycia aplikacji sieci web. 
+# <a name="set-alerts-in-application-insights"></a>Ustawianie alertów w Application Insights
+[Usługa Azure Application Insights][start] może wysyłać alerty o zmianach metryk wydajności lub użycia w aplikacji sieci Web. 
 
-Usługa Application Insights monitoruje aplikację na żywo na [różnymi platformami] [ platforms] ułatwiają diagnozowanie problemów z wydajnością i poznania wzorców użycia.
+Application Insights monitoruje aktywną aplikację na wielu [platformach][platforms] , aby ułatwić diagnozowanie problemów z wydajnością i zrozumienie wzorców użycia.
 
 Istnieje wiele typów alertów:
 
-* [**Alerty metryki** ](../../azure-monitor/platform/alerts-metric-overview.md) informujące o tym, gdy Metryka przekracza wartość progową przez pewien — na przykład czasy odpowiedzi, liczby wyjątków, użycie procesora CPU lub wyświetlenia stron.
-* [**Alerty dzienników** ](../../azure-monitor/platform/alerts-unified-log.md) jest używane do opisywania alerty, gdy sygnał alertu opiera się na niestandardowe zapytanie Kusto.
-* [**Testy sieci Web** ] [ availability] informujące o tym, gdy witryny jest niedostępna w Internecie lub odpowiada powoli. [Dowiedz się więcej][availability].
-* [**Diagnostyka proaktywna** ](../../azure-monitor/app/proactive-diagnostics.md) są konfigurowane automatycznie Powiadomimy Cię o wydajności nietypowe wzorce.
+* [**Alerty metryk**](../../azure-monitor/platform/alerts-metric-overview.md) informują użytkownika, gdy Metryka przekroczy wartość progową dla pewnego okresu, na przykład czasy odpowiedzi, liczby wyjątków, użycie procesora CPU lub wyświetlenie strony.
+* [**Alerty dzienników**](../../azure-monitor/platform/alerts-unified-log.md) są używane do opisywania alertów, w których sygnał alertu jest oparty na niestandardowej kwerendzie Kusto.
+* [**Testy sieci Web**][availability] informują użytkownika, gdy witryna jest niedostępna w Internecie lub wolno reagować. [Dowiedz się więcej][availability].
+* [**Proaktywna Diagnostyka**](../../azure-monitor/app/proactive-diagnostics.md) jest konfigurowana automatycznie w celu powiadomienia o nietypowych wzorcach wydajności.
 
-## <a name="set-a-metric-alert"></a>Ustawianie alertu metryki
-Otwórz kartę reguły alertu, a następnie użyj przycisku Dodaj.
+## <a name="set-a-metric-alert"></a>Ustawianie alertu dotyczącego metryki
+Otwórz kartę reguły alertów, a następnie użyj przycisku Dodaj.
 
-![Na karcie reguły alertów wybierz pozycję Dodaj Alert. Ustaw aplikację jako zasób do mierzenia, podaj nazwę alertu, a następnie wybierz metrykę.](./media/alerts/01-set-metric.png)
+![Na karcie reguły alertów wybierz pozycję Dodaj alert. Ustaw aplikację jako zasób do mierzenia, podaj nazwę alertu i wybierz metrykę.](./media/alerts/01-set-metric.png)
 
-* Ustaw zasób przed innymi właściwościami. **Wybierz zasób "(składniki)"** Jeśli chcesz ustawić alerty dotyczące metryk wydajności lub użycia.
-* Nazwa która oferowanie alertu musi być unikatowa w obrębie grupy zasobów (nie tylko aplikację).
-* Należy zachować ostrożność, należy pamiętać, jednostki, w których pojawi się prośba o podanie wartości progowej.
-* Jeśli zaznaczysz pole "Adres E-mail właścicieli...", alerty są wysyłane za pośrednictwem poczty e-mail dla każdego, kto ma dostęp do tej grupy zasobów. Aby rozszerzyć ten zestaw osób, dodaj je do [grupy zasobów lub subskrypcji](../../azure-monitor/app/resources-roles-access-control.md) (nie zasobu).
-* Jeśli określisz "Dodatkowe adresy e-mail", alerty są wysyłane do tych konkretnych osób lub grup (określa, czy zaznaczono pole "email właścicieli..."). 
-* Ustaw [adres elementu webhook](../../azure-monitor/platform/alerts-webhooks.md) Jeśli skonfigurujesz aplikację internetową, która odpowiada na alerty. Jest on nazywany zarówno po aktywowaniu alertu, jak i kiedy zostanie on rozwiązany. (Ale należy pamiętać, że obecnie parametry zapytania nie są przekazywane jako właściwości elementu webhook).
-* Możesz wyłączyć lub włączyć alert: wyświetlanie przycisków u góry.
+* Ustaw zasób przed innymi właściwościami. **Wybierz zasób "(składniki)"** , jeśli chcesz ustawić alerty dotyczące wydajności lub metryk użycia.
+* Nazwa przydana do alertu musi być unikatowa w obrębie grupy zasobów (nie tylko aplikacja).
+* Należy zwrócić uwagę na jednostki, w których zostanie wyświetlony monit o wprowadzenie wartości progowej.
+* W przypadku zaznaczenia pola "właściciele poczty E-mail..." alerty są wysyłane pocztą e-mail do wszystkich użytkowników, którzy mają dostęp do tej grupy zasobów. Aby rozwinąć ten zestaw osób, należy dodać ich do [grupy zasobów lub subskrypcji](../../azure-monitor/app/resources-roles-access-control.md) (a nie zasobu).
+* W przypadku określenia opcji "dodatkowe wiadomości e-mail" alerty są wysyłane do tych osób lub grup (bez względu na to, czy "właściciele poczty e-mail..." są Zaewidencjonuj. ). 
+* Ustaw [adres elementu webhook](../../azure-monitor/platform/alerts-webhooks.md) , jeśli skonfigurowano aplikację sieci Web, która reaguje na alerty. Jest on wywoływany, gdy alert jest aktywowany i po jego rozwiązaniu. (Ale należy zauważyć, że w tym momencie parametry zapytania nie są przenoszone przez właściwości elementu webhook).
+* Alert można wyłączyć lub włączyć: Zobacz przyciski w górnej części strony.
 
-*Przycisk Dodaj Alert nie jest widoczny.*
+*Nie widzę przycisku Dodaj alert.*
 
-* Czy używasz konta organizacyjnego Możesz ustawić alerty, jeśli masz dostęp do tego zasobu aplikacji współautora lub właściciela. Spójrz na karcie kontrola dostępu. [Dowiedz się więcej na temat kontroli dostępu][roles].
+* Czy używasz konta organizacyjnego? Możesz ustawić alerty, jeśli masz uprawnienia właściciela lub współautora do tego zasobu aplikacji. Spójrz na kartę Access Control. więcej informacji na [temat kontroli dostępu][roles].
 
 > [!NOTE]
-> W bloku alertów zostanie wyświetlony, że istnieje już zestaw alertu: [Diagnostyka proaktywna](../../azure-monitor/app/proactive-failure-diagnostics.md). Alert automatycznego monitoruje jednego częstość niepowodzeń żądań metryki, określonej. Chyba że zdecydujesz się wyłączanie alertu aktywnego, nie trzeba ustawiać własne alert częstość niepowodzeń żądań.
+> W bloku alerty zobaczysz, że skonfigurowano już Alert: [Proactive Diagnostics](../../azure-monitor/app/proactive-failure-diagnostics.md). Alert automatyczny monitoruje jedną konkretną metrykę, częstotliwość niepowodzeń żądań. Jeśli nie zdecydujesz się wyłączyć aktywnego alertu, nie musisz ustawiać własnego alertu w przypadku niepowodzenia żądań.
 > 
 > 
 
-## <a name="see-your-alerts"></a>Wyświetlić alerty
-Otrzymasz wiadomość e-mail, gdy stan alertu zmiany między nieaktywne i aktywne. 
+## <a name="see-your-alerts"></a>Wyświetlanie alertów
+Otrzymasz wiadomość e-mail, gdy alert zmieni stan między nieaktywnym i aktywnym. 
 
-Bieżący stan każdego alertu są wyświetlane na karcie reguły alertów.
+Bieżący stan każdego alertu jest wyświetlany na karcie reguły alertów.
 
-Znajduje się podsumowanie, ostatnie działania w alertach listy rozwijanej:
+Na liście rozwijanej alerty znajduje się podsumowanie ostatnich działań:
 
-![Alerty z listy rozwijanej](./media/alerts/010-alert-drop.png)
+![Lista rozwijana alertów](./media/alerts/010-alert-drop.png)
 
-Historię zmian stanu znajduje się w dzienniku aktywności:
+Historia zmian stanu znajduje się w dzienniku aktywności:
 
-![Na karcie Przegląd kliknij pozycję Ustawienia, dzienniki inspekcji](./media/alerts/09-alerts.png)
+![Na karcie Przegląd kliknij pozycję Ustawienia, dzienniki inspekcji.](./media/alerts/09-alerts.png)
 
-## <a name="how-alerts-work"></a>Jak działają alerty
-* Alert ma trzy stany: "Nigdy nie aktywowano", "Aktywowano" i "Rozwiązany". Aktywowano oznacza, że określony warunek był ma wartość true, został ostatnio oceniane.
-* Powiadomienie jest generowany, gdy zmieni się stan alertu. (Jeśli warunek alertu zostało już wartość true, podczas tworzenia alertu, można otrzymać powiadomienie dopóki warunek spadnie wartość false.)
-* Każde powiadomienie generuje wiadomość e-mail, jeśli zaznaczono pole wiadomości e-mail lub podane adresy e-mail. Można również przeglądać listy powiadomień.
-* Alert jest oceniany na każdym razem, gdy nadejdzie metrykę, a w przeciwnym przypadku nie.
-* Ocena zagregowane metryki w okresie poprzedzającym i porównuje go z wartością progową, aby określić nowy stan.
-* Okresu, w którym możesz wybrać, określa interwał, przez który metryki są agregowane. Nie wpływa na jak często alert jest oceniany:, zależy od częstotliwości przybycia metryki.
-* Jeśli żadne dane dla konkretnej metryki przez pewien czas, przerwa ma różne efekty na ocenę alertu i na wykresach w Eksploratorze metryk. W Eksploratorze metryk Jeśli żadne dane nie są widoczne przez czas dłuższy niż interwał próbkowania dla wykresu, wykres pokazuje wartość 0. Ale alert w oparciu o metryki tej samej nie jest ponownie oceniane, i stan alertów pozostaje bez zmian. 
+## <a name="how-alerts-work"></a>Jak działają Alerty
+* Alert ma trzy stany: "nigdy nie uaktywnione", "aktywowany" i "rozwiązany". Aktywowany oznacza, że określony warunek ma wartość true, kiedy został ostatnio oceniony.
+* Po zmianie stanu alertu zostanie wygenerowane powiadomienie. (Jeśli warunek alertu był już prawdziwy podczas tworzenia alertu, możesz nie otrzymać powiadomienia, dopóki warunek nie zostanie spełniony.)
+* Każde powiadomienie generuje wiadomość e-mail, jeśli zaznaczono pole wiadomości e-mail lub podano adresy e-mail. Możesz również sprawdzić listę rozwijaną powiadomienia.
+* Alert jest oceniany za każdym razem, gdy Metryka dociera, ale nie w inny sposób.
+* Ocena agreguje metrykę w poprzednim okresie, a następnie porównuje ją z progiem w celu określenia nowego stanu.
+* Wybrany okres określa przedział czasu, w którym metryki są agregowane. Nie ma to wpływu na częstotliwość szacowania alertu: zależy od częstotliwości przybycia metryk.
+* Jeśli dane nie dotarły do określonej metryki przez jakiś czas, różnica ma różny wpływ na ocenę alertu i na wykresach w Eksploratorze metryk. W Eksploratorze metryk, jeśli żadne dane nie są wyświetlane dłużej niż interwał próbkowania wykresu, wykres pokazuje wartość 0. Jednak alert oparty na tej samej metryce nie jest obliczany, a stan alertu pozostaje niezmieniony. 
   
-    Po odebraniu ostatecznie danych, wykres skacze z powrotem do zera. Ocenia alertu na podstawie danych, które są dostępne na okres określony. Jeśli nowy punkt danych jest tylko jeden w okresie, agregacji jest oparte tylko na punktu danych.
-* Alert można zmieniał kolor często między Stanami alertów i działa prawidłowo, nawet wtedy, gdy ustawisz długiego okresu. Może to nastąpić, jeśli wartość metryki unosi się wokół wartości progowej. Istnieje nie histerezy przez wartość progową: przejście do alertu odbywa się na tę samą wartość jak przejście do dobrej kondycji.
+    Po nadejściu danych, wykres wraca z powrotem do wartości innej niż zero. Alert jest obliczany na podstawie danych dostępnych dla określonego okresu. Jeśli nowy punkt danych jest jedynym dostępnym w danym okresie, agregacja opiera się tylko na tym punkcie danych.
+* Alert może często migotać między Stanami alertu i prawidłowym, nawet jeśli ustawisz długi okres. Może się tak zdarzyć, gdy wartość metryki zostanie zatrzymana wokół progu. W wartości progowej nie ma żadnych hysteresis: przejście do alertu ma taką samą wartość, jak przejście w dobrej kondycji.
 
-## <a name="what-are-good-alerts-to-set"></a>Co to są dobre alerty można ustawić?
-To zależy od aplikacji. Na początek z najlepiej jest nie chcesz ustawiać zbyt wiele metryk. Poświęcić trochę czasu, analizując wykresów metryki w uruchomionej aplikacji, aby uzyskać pewne pojęcie dla jak będzie pracował normalnie. Pomaga to znaleźć sposoby zwiększenia wydajności. Następnie skonfiguruj alerty informujące o tym, kiedy metryki wychodzenia poza normalne strefy. 
+## <a name="what-are-good-alerts-to-set"></a>Jakie są dobre alerty do ustawienia?
+Zależy to od aplikacji. Aby rozpocząć od, najlepiej nie ustawiać zbyt wielu metryk. Poświęcaj nieco czasu na przeszukiwanie wykresów metrycznych w czasie, gdy aplikacja jest uruchomiona, i zapoznaj się z zachowaniem normalnego działania. To rozwiązanie pomaga znaleźć sposoby ulepszania wydajności. Następnie skonfiguruj alerty, aby określić, kiedy metryki wykraczają poza normalną strefę. 
 
-Popularne alerty zawierają:
+Popularne alerty obejmują:
 
-* [Metryki przeglądarki][client], szczególnie przeglądarki **stronie czasów ładowania**, są odpowiednie dla aplikacji sieci web. Jeśli strona ma wiele skryptów, należy szukać **wyjątków przeglądarki**. Aby uzyskać te metryki i alerty, należy skonfigurować [monitorowania strony sieci web][client].
-* **Czas odpowiedzi serwera** po stronie serwera aplikacji sieci web. A także Konfigurowanie alertów, Zwracaj uwagę na tę metrykę, aby zobaczyć, jeśli zależy to nieproporcjonalnie z kursów żądania wysokiej: odmiany może wskazywać, że Twoja aplikacja działa brakuje zasobów. 
-* **Wyjątki serwera** — aby je zobaczy, należy wykonać niektóre [dodatkowe ustawienia](../../azure-monitor/app/asp-net-exceptions.md).
+* [Metryki przeglądarki][client], zwłaszcza **czasy ładowania stron**przeglądarki, są dobre dla aplikacji sieci Web. Jeśli strona zawiera wiele skryptów, należy szukać **wyjątków przeglądarki**. Aby można było uzyskać te metryki i alerty, należy skonfigurować [monitorowanie stron sieci Web][client].
+* **Czas odpowiedzi serwera** po stronie serwera aplikacji sieci Web. Podobnie jak w przypadku konfigurowania alertów, należy śledzić tę metrykę, aby sprawdzić, czy jest ona różna proporcjonalnie do liczby żądań o wysokim stopniu: odmiana może wskazywać na brak zasobów w aplikacji. 
+* **Wyjątki serwera** — aby je wyświetlić, należy wykonać [dodatkowe czynności konfiguracyjne](../../azure-monitor/app/asp-net-exceptions.md).
 
-Nie należy zapominać, że [aktywna współczynnik Diagnostyka błędów](../../azure-monitor/app/proactive-failure-diagnostics.md) automatycznie monitorować współczynnik, w którym aplikacja ma odpowiadać na żądania z kodami błędów.
+Nie zapomnij, że [usługa automatycznej częstotliwości niepowodzeń diagnostyki](../../azure-monitor/app/proactive-failure-diagnostics.md) automatycznie monitoruje szybkość, z jaką aplikacja reaguje na żądania z kodem błędu.
 
-## <a name="how-to-set-an-exception-alert-using-custom-log-search"></a>Jak ustawić alert wyjątek przy użyciu wyszukiwania dziennika niestandardowego
+## <a name="how-to-set-an-exception-alert-using-custom-log-search"></a>Jak ustawić alert dotyczący wyjątku przy użyciu wyszukiwania w dziennikach niestandardowych
 
-W tej sekcji opiszemy sposób ustawiania alertu wyjątku na podstawie zapytania. W tym przykładzie załóżmy, że chcemy alert, gdy współczynnik zakończonych niepowodzeniem jest większa niż 10% w ciągu ostatnich 24 godzin.
+W tej sekcji opisano sposób ustawiania alertu dotyczącego wyjątku opartego na zapytaniu. Na potrzeby tego przykładu Załóżmy, że chcemy, aby alert, gdy Częstotliwość powodzeń była większa niż 10% w ciągu ostatnich 24 godzin.
 
-1. Przejdź do zasobu usługi Application Insights w witrynie Azure portal.
-2. Po lewej stronie, w obszarze skonfigurować kliknij na **alertu**.
+1. Przejdź do zasobu usługi Application Insights w Azure Portal.
+2. Po lewej stronie w obszarze Konfiguruj kliknij **alert**.
 
-    ![Po lewej stronie w obszarze skonfigurować możesz kliknąć alert](./media/alerts/1appinsightalert.png)
+    ![Po lewej stronie w obszarze Konfiguruj alert kliknięcia](./media/alerts/1appinsightalert.png)
 
-3. W górnej części karty alertu wybierz **Nowa reguła alertu**.
+3. W górnej części karty alert wybierz pozycję **Nowa reguła alertu**.
 
-     ![W górnej części karty alertu kliknij przycisk Nowa reguła alertu](./media/alerts/2createalert.png)
+     ![W górnej części karty Alert kliknij pozycję Nowa reguła alertu.](./media/alerts/2createalert.png)
 
-4. Zasób powinien być automatycznie wybrana. Aby ustawić warunek, kliknij **Dodaj warunek**.
+4. Zasób powinien być wybrany jako zaznaczony. Aby ustawić warunek, kliknij przycisk **Dodaj warunek**.
 
-    ![Kliknij przycisk Dodaj warunek](./media/alerts/3addcondition.png)
+    ![Kliknij pozycję Dodaj warunek](./media/alerts/3addcondition.png)
 
-5. Na karcie Konfigurowanie logiki sygnału, zaznacz **przeszukiwania dzienników niestandardowych**
+5. Na karcie Konfigurowanie logiki sygnału wybierz opcję **Wyszukiwanie w dzienniku niestandardowym**
 
-    ![Kliknij przycisk Wyszukaj dziennika niestandardowego](./media/alerts/4customlogsearch.png)
+    ![Kliknij pozycję Wyszukiwanie w dzienniku niestandardowym](./media/alerts/4customlogsearch.png)
 
-6. Na karcie wyszukiwania dzienników niestandardowych wprowadź zapytanie w polu "Zapytania wyszukiwania". W tym przykładzie użyjemy poniżej zapytanie Kusto.
+6. Na karcie wyszukiwanie w dzienniku niestandardowym wprowadź swoje zapytanie w polu "wyszukiwanie zapytania". W tym przykładzie użyjemy poniższego zapytania Kusto.
     ```kusto
     let percentthreshold = 10;
     let period = 24h;
@@ -127,63 +122,63 @@ W tej sekcji opiszemy sposób ustawiania alertu wyjątku na podstawie zapytania.
     ![Wpisz zapytanie w polu zapytania wyszukiwania](./media/alerts/5searchquery.png)
     
     > [!NOTE]
-    > Procedurę można zastosować do innych typów alertów opartych na zapytaniach. Dowiedz się więcej o języku zapytania Kusto z tego [Kusto wprowadzenie doc](https://docs.microsoft.com/azure/kusto/concepts/) bądź [SQL do Kusto ściągawka](https://docs.microsoft.com/azure/kusto/query/sqlcheatsheet)
+    > Te kroki można również zastosować do innych typów alertów opartych na zapytaniach. Więcej informacji na temat języka zapytań Kusto można znaleźć w arkuszu [wprowadzenie](https://docs.microsoft.com/azure/kusto/concepts/) do tego Kusto lub ten [kod SQL do Kusto Ściągawka](https://docs.microsoft.com/azure/kusto/query/sqlcheatsheet)
 
-7. W obszarze "Alert logic" Wybierz, czy jest on oparty na liczbie wyników lub pomiar metryki. Następnie wybierz warunek (większa, równa mniej niż) i wartości progowej. Podczas zmieniania wartości te można zauważyć zmiany zdania Podgląd warunku. W tym przykładzie używamy "jest równe".
+7. W obszarze "logika alertu" Wybierz, czy jest on oparty na liczbie wyników, czy pomiarze metryki. Następnie wybierz warunek (większe niż, równe, mniejsze niż) i próg. Podczas zmieniania tych wartości można zauważyć, że zmieni się zdanie w wersji zapoznawczej. W tym przykładzie używamy "równej".
 
-    ![W obszarze Alert logic, wybierając spośród opcji dostępnych na podstawie i warunek, a następnie wpisz wartości progowej](./media/alerts/6alertlogic.png)
+    ![W obszarze logika alertu wybierz spośród opcji dostępnych na podstawie warunku, a następnie wpisz próg](./media/alerts/6alertlogic.png)
 
-8. W obszarze "Evaluated na podstawie" Ustaw okres i częstotliwości. Okres, w tym miejscu musi odpowiadać wartości, które umieściliśmy dla okresu w powyższym zapytaniu. Następnie kliknij przycisk **gotowe**.
+8. W obszarze "obliczone na podstawie wartości" Ustaw okres i częstotliwość. Ten okres musi być zgodny z wartością, która została wprowadzona dla okresu w powyższym zapytaniu. Następnie kliknij przycisk **gotowe**.
 
-    ![Ustaw okres i częstotliwość u dołu, a następnie kliknij przycisk Gotowe](./media/alerts/7evaluate.png)
+    ![Ustaw wartość opcji okres i częstotliwość u dołu, a następnie kliknij pozycję Gotowe.](./media/alerts/7evaluate.png)
 
-9. Teraz widzimy warunek, który utworzyliśmy z szacowany koszt miesięczny. Poniżej w obszarze ["Grupy akcji"](../platform/action-groups.md) możesz utworzyć nową grupę lub wybierz istniejącą. Jeśli chcesz, możesz dostosować akcje.
+9. Zobaczymy teraz utworzony przez nas warunek szacunkowy koszt miesięczny. Poniżej w obszarze ["grupy akcji"](../platform/action-groups.md) można utworzyć nową grupę lub wybrać istniejącą. Jeśli chcesz, możesz dostosować akcje.
 
-    ![Kliknij Wybierz lub Utwórz przyciski w ramach grupy akcji](./media/alerts/8actiongroup.png)
+    ![Kliknij przycisk Wybierz lub Utwórz w obszarze Grupa akcji.](./media/alerts/8actiongroup.png)
 
-10. Na koniec dodanie szczegółów dotyczących alertu (alertu z reguły nazwę, opis, ważność). Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz regułę alertu** u dołu.
+10. Na koniec Dodaj szczegóły alertu (Nazwa reguły alertu, opis, ważność). Gdy skończysz, kliknij przycisk **Utwórz regułę alertu** u dołu.
 
-    ![W obszarze szczegółów alertu, wpisz nazwę reguły alertu, Napisz opis i wybierz ważność](./media/alerts/9alertdetails.png)
+    ![W obszarze Szczegóły alertu wpisz nazwę reguły alertu, napisz opis i wybierz ważność](./media/alerts/9alertdetails.png)
 
-## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Jak anulować subskrypcję alertów klasycznych w wiadomości e-mail z powiadomieniami
+## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Jak anulować subskrypcję powiadomień e-mail z alertami klasycznymi
 
-Ta sekcja dotyczy **alerty klasyczne dostępności**, **klasycznego alertów dotyczących metryk usługi Application Insights**, a **alerty dotyczące anomalii klasycznego błędów**.
+Ta sekcja ma zastosowanie do **klasycznych**alertów dostępności, **alertów metryk klasycznych Application Insights**oraz do **klasycznych alertów o błędach**.
 
-Otrzymujesz wiadomości e-mail z powiadomieniami dla tych alertów klasycznych, jeśli dowolny z następujących czynności:
+Powiadomienia e-mail dotyczące tych klasycznych alertów są wysyłane w przypadku następujących warunków:
 
-* Adres e-mail znajduje się w polu adresatów powiadomień e-mail, w ustawieniach reguły alertu.
+* Twój adres e-mail jest wyświetlany w polu adresaci wiadomości e-mail w obszarze Ustawienia reguły alertu.
 
-* Opcja wysyłania powiadomień e-mail dla użytkowników posiadających pewnych ról dla subskrypcji jest aktywna i przechowywania odpowiedniej roli dla tej konkretnej subskrypcji platformy Azure.
+* Opcja wysyłania powiadomień e-mail do użytkowników przechowujących pewne role dla subskrypcji została aktywowana i masz odpowiednią rolę dla danej subskrypcji platformy Azure.
 
-![Zrzut ekranu z powiadomień o alertach](./media/alerts/alert-notification.png)
+![Zrzut ekranu powiadomień o alertach](./media/alerts/alert-notification.png)
 
-Aby lepiej kontrolować, co do bezpieczeństwa i prywatności ogólnie zaleca się jawnie określ adresatów powiadomienia dla alertów klasycznych w **adresatów wiadomości e-mail powiadomień** pola. Możliwość Powiadom wszystkich użytkowników, zawierający określone role towarzyszy zgodności z poprzednimi wersjami.
+Aby lepiej kontrolować zabezpieczenia i prywatność, zwykle zalecamy, aby jawnie określić adresatów powiadomień dla alertów klasycznych w polu **Adresaci wiadomości e-mail z powiadomieniem** . Opcja powiadamiania wszystkich użytkowników przechowujących pewne role jest zapewniana w celu zapewnienia zgodności z poprzednimi wersjami.
 
-Aby otrzymywać powiadomienia e-mail generowane przez niektóre reguły alertu, należy usunąć swój adres e-mail, z **adresatów wiadomości e-mail powiadomień** pola.
+Aby anulować subskrypcję powiadomień e-mail wygenerowanych przez określoną regułę alertu, Usuń adres e-mail z pola **adresat wiadomości e-mail z powiadomieniem** .
 
-Jeśli Twój adres e-mail nie ma jawnie, firma Microsoft zaleca wyłączenie opcji automatycznego powiadamiania wszyscy członkowie określonych ról i zamiast tego wyświetlić listę wszystkich wiadomości e-mail użytkowników, którzy będą otrzymywać powiadomienia dla tej reguły alertu w wiadomości e-mail z powiadomieniem pole adresatów.
+Jeśli Twój adres e-mail nie znajduje się na liście jawnie, zalecamy wyłączenie opcji automatycznego powiadamiania wszystkich członków niektórych ról, a zamiast tego lista wszystkich wiadomości e-mail użytkowników, którzy muszą otrzymać powiadomienia dla tej reguły alertu w wiadomości e-mail z powiadomieniem. pole adresatów.
 
-## <a name="who-receives-the-classic-alert-notifications"></a>Kto otrzymuje powiadomienia o alertach (model klasyczny)?
+## <a name="who-receives-the-classic-alert-notifications"></a>Kto otrzymuje powiadomienia o alertach (klasyczny)?
 
-W tej sekcji dotyczą alertów klasycznych i tylko pomoże Ci zoptymalizować swoje powiadomień o alertach, aby upewnić się, że tylko przez adresatów żądaną otrzymywać powiadomienia. Aby dowiedzieć się więcej o różnicach między [alertów klasycznych](../platform/alerts-classic.overview.md) i nowe alerty występują, zapoznaj się [artykuł z omówieniem alerty](../platform/alerts-overview.md). Aby kontrolować powiadomień o alertach w nowym środowisku alerty, należy użyć [grup akcji](../platform/action-groups.md).
+Ta sekcja ma zastosowanie tylko do klasycznych alertów i pomoże zoptymalizować swoje powiadomienia o alertach, aby upewnić się, że tylko żądani adresaci otrzymają powiadomienia. Aby dowiedzieć się więcej o różnicach między [klasycznymi alertami](../platform/alerts-classic.overview.md) i nowym działaniem alertów, zapoznaj się z [artykułem przegląd alertów](../platform/alerts-overview.md). Aby kontrolować powiadamianie o alertach w nowym środowisku alertów, użyj [grup akcji](../platform/action-groups.md).
 
-* Firma Microsoft zaleca użycie określonych adresatów klasycznego powiadomień o alertach.
+* Zalecamy użycie określonych odbiorców w przypadku klasycznych powiadomień o alertach.
 
-* Dla alertów dotyczących metryk usługi Application Insights, wszelkie (w tym metryki dostępności) **zbiorcze/grupę** pole wyboru opcji, jeśli włączona, wysyła do użytkowników z rolami właściciela, współautora lub czytelnika w ramach subskrypcji. W efekcie _wszystkich_ użytkowników z dostępem do subskrypcji zasobu usługi Application Insights znajdują się w zakresie i będą otrzymywać powiadomienia.
+* W przypadku alertów dotyczących dowolnych metryk Application Insights (w tym metryk dostępności) opcja pola wyboru **Zbiorcza/Grupa** , jeśli jest włączona, wysyła do użytkowników z rolami właściciela, współautora lub czytelnika w ramach subskrypcji. W efekcie _Wszyscy_ użytkownicy z dostępem do subskrypcji, w której znajduje się zasób Application Insights, znajdują się w zakresie i będą otrzymywać powiadomienia.
 
 > [!NOTE]
-> Jeśli obecnie używasz **zbiorcze/grupę** pole wyboru opcji i go wyłączyć, nie można przywrócić zmianę.
+> Jeśli obecnie używasz opcji **zbiorczych/grupowych** pól wyboru i go wyłączysz, nie będzie można przywrócić zmiany.
 
-Jeśli chcesz powiadomić użytkowników na podstawie ich ról, należy użyć nowe alerty środowisko/niemal w czasie rzeczywistym. Za pomocą [grup akcji](../platform/action-groups.md), można skonfigurować powiadomienia e-mail do użytkowników z dowolną rolę właściciel/Współautor/reader (nie łączyć ze sobą jako pojedyncza opcja).
+Jeśli musisz powiadomić użytkowników na podstawie ich ról, Użyj nowego środowiska alertu/alertów w czasie rzeczywistym. Za pomocą [grup akcji](../platform/action-groups.md)można skonfigurować powiadomienia e-mail dla użytkowników z dowolnymi rolami współautor/właściciela/czytnika (nie razem ze sobą jako pojedynczą opcją).
 
-## <a name="automation"></a>Automatyzacja
+## <a name="automation"></a>Automation
 * [Automatyzowanie konfigurowania alertów za pomocą programu PowerShell](../../azure-monitor/app/powershell-alerts.md)
-* [Używanie elementów webhook w celu zautomatyzowania reagowanie na alerty](../../azure-monitor/platform/alerts-webhooks.md)
+* [Używanie elementów webhook do automatyzowania reagowania na alerty](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="see-also"></a>Zobacz także
-* [Testy sieci web dostępności](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Testy sieci Web dostępności](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Automatyzowanie konfigurowania alertów](../../azure-monitor/app/powershell-alerts.md)
-* [Diagnostyka proaktywna](../../azure-monitor/app/proactive-diagnostics.md) 
+* [Proaktywna Diagnostyka](../../azure-monitor/app/proactive-diagnostics.md) 
 
 <!--Link references-->
 

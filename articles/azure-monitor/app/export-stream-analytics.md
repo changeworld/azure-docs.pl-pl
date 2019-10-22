@@ -1,88 +1,83 @@
 ---
-title: Eksportowanie przy użyciu usługi Stream Analytics z usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Stream Analytics może stale przekształcania, filtrowanie i kierować dane, które są eksportowane z usługi Application Insights.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 31594221-17bd-4e5e-9534-950f3b022209
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Eksportowanie za pomocą Stream Analytics z platformy Azure Application Insights | Microsoft Docs
+description: Stream Analytics mogą w sposób ciągły przekształcać, filtrować i kierować dane eksportowane z Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/08/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d4a4196aa601fc8da79da3962faec026eff5ec87
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.date: 01/08/2019
+ms.openlocfilehash: 3be1a643cbe942c0b740ae8ebcc2c7f2dda24854
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625056"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677950"
 ---
-# <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Użyj usługi Stream Analytics, aby przetworzyć wyeksportowane dane z usługi Application Insights
-[Usługa Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) jest idealnym narzędziem do przetwarzania danych [wyeksportowany z usługi Application Insights](export-telemetry.md). Stream Analytics można pobierają dane z różnych źródeł. Go przekształcić i filtrowania danych, a następnie kierować do różnych ujścia.
+# <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Użyj Stream Analytics, aby przetwarzać eksportowane dane z Application Insights
+[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) jest idealnym narzędziem do przetwarzania danych [wyeksportowanych z Application Insights](export-telemetry.md). Stream Analytics może pobierać dane z różnych źródeł. Może on przekształcać i filtrować dane, a następnie kierować je do różnych zlewów.
 
-W tym przykładzie utworzymy adaptera, który pobiera dane z usługi Application Insights, zmiana nazwy, przetwarza niektóre pola i przekazuje go do usługi Power BI.
+W tym przykładzie utworzymy adapter, który pobiera dane z Application Insights, zmienia nazwy i przetwarza niektóre pola, a następnie przekazuje je do Power BI.
 
 > [!WARNING]
-> Są znacznie lepsze i łatwiejsze [zalecane sposoby, aby wyświetlić dane usługi Application Insights w usłudze Power BI](../../azure-monitor/app/export-power-bi.md ). Ścieżka przedstawionych w tym miejscu jest tylko przykład ilustrujący sposób przetwarzania wyeksportowane dane.
+> Istnieje dużo lepszych i łatwiejszych [sposobów wyświetlania danych Application Insights w Power BI](../../azure-monitor/app/export-power-bi.md ). Ścieżka zilustrowana poniżej to przykład ilustrujący, jak przetwarzać eksportowane dane.
 > 
 > 
 
-![Diagram blokowy eksportu przez administratora systemu do usługi PBI](./media/export-stream-analytics/020.png)
+![Diagram blokowy do eksportowania przez SA do PBI](./media/export-stream-analytics/020.png)
 
 ## <a name="create-storage-in-azure"></a>Tworzenie magazynu na platformie Azure
-Eksport ciągły zawsze wysyła dane do konta usługi Azure Storage, dlatego musisz najpierw utworzyć magazynu.
+Eksport ciągły zawsze wyprowadza dane do konta usługi Azure Storage, dlatego należy najpierw utworzyć magazyn.
 
-1. Tworzenie konta magazynu "klasyczny" w Twojej subskrypcji w [witryny Azure portal](https://portal.azure.com).
+1. Utwórz konto magazynu klasycznego w subskrypcji w [Azure Portal](https://portal.azure.com).
    
-   ![W witrynie Azure portal wybierz pozycję Nowy, danych, Magazyn](./media/export-stream-analytics/030.png)
+   ![W Azure Portal wybierz kolejno pozycje nowy, dane i magazyn](./media/export-stream-analytics/030.png)
 2. Tworzenie kontenera
    
-    ![W nowym magazynie wybierz kontenery, kliknij Kafelek kontenerów, a następnie dodaj](./media/export-stream-analytics/040.png)
+    ![W obszarze nowy magazyn wybierz pozycję kontenery, kliknij kafelek kontenery, a następnie pozycję Dodaj.](./media/export-stream-analytics/040.png)
 3. Kopiowanie klucza dostępu do magazynu
    
-    Będzie potrzebny wkrótce, aby skonfigurować dane wejściowe do usługi stream analytics.
+    Będzie to wkrótce potrzebne do skonfigurowania danych wejściowych usługi Stream Analytics.
    
-    ![W magazynie Otwórz okno Ustawienia i klucze i utwórz jego kopię podstawowego klucza dostępu](./media/export-stream-analytics/045.png)
+    ![W obszarze magazyn Otwórz pozycję Ustawienia, klucze i wykonaj kopię podstawowego klucza dostępu](./media/export-stream-analytics/045.png)
 
-## <a name="start-continuous-export-to-azure-storage"></a>Rozpocząć eksport ciągły w usłudze Azure storage
-[Eksport ciągły](export-telemetry.md) przenosi dane z usługi Application Insights do usługi Azure storage.
+## <a name="start-continuous-export-to-azure-storage"></a>Rozpocznij eksport ciągły do usługi Azure Storage
+[Eksport ciągły](export-telemetry.md) przenosi dane z Application Insights do usługi Azure Storage.
 
-1. W witrynie Azure portal przejdź do zasobu usługi Application Insights, utworzonej aplikacji.
+1. W Azure Portal przejdź do zasobu Application Insights utworzonego dla aplikacji.
    
-    ![Wybierz kolejno opcje Przeglądaj, Application Insights aplikacji](./media/export-stream-analytics/050.png)
+    ![Wybierz kolejno opcje Przeglądaj, Application Insights, aplikacja](./media/export-stream-analytics/050.png)
 2. Utwórz eksport ciągły.
    
-    ![Wybierz pozycję Dodaj ustawienia eksportu ciągłego](./media/export-stream-analytics/060.png)
+    ![Wybieranie ustawień, eksport ciągły, Dodawanie](./media/export-stream-analytics/060.png)
 
-    Wybierz konto magazynu, która została utworzona wcześniej:
+    Wybierz utworzone wcześniej konto magazynu:
 
     ![Ustaw miejsce docelowe eksportu](./media/export-stream-analytics/070.png)
 
-    Ustaw typy zdarzeń, które mają być wyświetlane:
+    Ustaw typy zdarzeń, które chcesz wyświetlić:
 
-    ![Wybierz typy zdarzeń](./media/export-stream-analytics/080.png)
+    ![Wybieranie typów zdarzeń](./media/export-stream-analytics/080.png)
 
-1. Pozwól, niektóre dane są gromadzone. Zaczekaj i umożliwianie użytkownikom korzystania z aplikacji przez jakiś czas. Dane telemetryczne pojawią się, a zobaczysz statystyczne wykresów w [Eksplorator metryk](../../azure-monitor/app/metrics-explorer.md) i zdarzeń z [wyszukiwaniu diagnostycznym](../../azure-monitor/app/diagnostic-search.md). 
+1. Umożliwia gromadzenie danych. Powróć i pozwól, aby użytkownicy korzystali z aplikacji przez pewien czas. Dane telemetryczne będą dostępne, a wykresy statystyczne są wyświetlane w [Eksploratorze metryk](../../azure-monitor/app/metrics-explorer.md) i w poszczególnych zdarzeniach w [przeszukiwaniu diagnostycznym](../../azure-monitor/app/diagnostic-search.md). 
    
-    A także dane zostaną wyeksportowane do usługi storage. 
-2. Sprawdź, czy wyeksportowane dane. W programie Visual Studio, wybierz **wyświetlić / w chmurze Explorer**, a następnie otwórz Azure / Storage. (Jeśli nie masz tej opcji menu, należy zainstalować zestaw Azure SDK: Otwórz okno dialogowe Nowy projekt i otwórz Visual C# / w chmurze / uzyskiwanie Microsoft Azure SDK dla platformy .NET.)
+    Ponadto dane zostaną wyeksportowane do magazynu. 
+2. Sprawdź wyeksportowane dane. W programie Visual Studio wybierz pozycję **Widok/Eksplorator chmury**i Otwórz pozycję Azure/Storage. (Jeśli nie masz tej opcji menu, musisz zainstalować zestaw Azure SDK: Otwórz okno dialogowe Nowy projekt i Otwórz element Visual C# /Cloud/get zestaw Microsoft Azure SDK dla platformy .NET).
    
     ![](./media/export-stream-analytics/04-data.png)
    
-    Zanotuj części wspólnej nazwy ścieżki, która jest pochodną klucz nazwy i instrumentacji aplikacji. 
+    Zanotuj wspólną część nazwy ścieżki, która jest pochodną nazwy aplikacji i klucza Instrumentacji. 
 
-Zdarzenia są zapisywane do obiektu blob, pliki w formacie JSON. Każdy plik może zawierać jedno lub więcej zdarzeń. Dlatego chcielibyśmy odczytuje dane zdarzenia i filtrowanie pól, które chcemy. Istnieją wszelkiego rodzaju czynności, które firma Microsoft może wykonać przy użyciu danych, ale naszego planu jest obecnie przekazać dane do usługi Power BI za pomocą usługi Stream Analytics.
+Zdarzenia są zapisywane w plikach obiektów BLOB w formacie JSON. Każdy plik może zawierać jedno lub więcej zdarzeń. Więc chcemy przeczytać dane zdarzenia i odfiltrować pola, które chcemy. Istnieją wszystkie rodzaje rzeczy, które możemy zrobić z danymi, ale naszym planem jest użycie Stream Analytics do potoku danych do Power BI.
 
-## <a name="create-an-azure-stream-analytics-instance"></a>Tworzenie wystąpienia usługi Azure Stream Analytics
-Z [witryny Azure portal](https://portal.azure.com/), wybierz usługę Azure Stream Analytics i utworzyć nowe zadanie usługi Stream Analytics:
+## <a name="create-an-azure-stream-analytics-instance"></a>Tworzenie wystąpienia Azure Stream Analytics
+W [Azure Portal](https://portal.azure.com/)wybierz usługę Azure Stream Analytics i Utwórz nowe zadanie Stream Analytics:
 
 ![](./media/export-stream-analytics/SA001.png)
 
 ![](./media/export-stream-analytics/SA002.png)
 
-Gdy zostanie utworzone nowe zadanie, wybierz pozycję **przejdź do zasobu**.
+Po utworzeniu nowego zadania wybierz pozycję **Przejdź do zasobu**.
 
 ![](./media/export-stream-analytics/SA003.png)
 
@@ -90,47 +85,47 @@ Gdy zostanie utworzone nowe zadanie, wybierz pozycję **przejdź do zasobu**.
 
 ![](./media/export-stream-analytics/SA004.png)
 
-Ustaw, aby pobrać dane wejściowe z obiektu blob z eksportu ciągłego:
+Ustaw, aby pobierał dane wejściowe z obiektu BLOB ciągłego eksportu:
 
 ![](./media/export-stream-analytics/SA0005.png)
 
-Teraz będzie potrzebna podstawowy klucz dostępu z Twojego konta magazynu, możesz zauważyć, wcześniej. Ustaw jako klucz konta magazynu.
+Teraz potrzebny jest podstawowy klucz dostępu z konta magazynu, który został zanotowany wcześniej. Ustaw tę wartość jako klucz konta magazynu.
 
-### <a name="set-path-prefix-pattern"></a>Wzorzec prefiksu ścieżki zestawu
+### <a name="set-path-prefix-pattern"></a>Ustaw wzorzec prefiksu ścieżki
 
-**Pamiętaj ustawić Format daty RRRR-MM-DD (z kreskami).**
+**Upewnij się, że ustawiono format daty RRRR-MM-DD (z kreskami).**
 
-Wzorzec prefiksu ścieżki Określa, gdzie usługi Stream Analytics znajduje pliki wejściowe w magazynie. Musisz ustawić jego odpowiadają jak eksportu ciągłego przechowuje dane. Ustaw ją następująco:
+Wzorzec prefiksu ścieżki Określa, gdzie Stream Analytics znajdować pliki wejściowe w magazynie. Należy ustawić tę wartość, aby odpowiadała, jak eksport ciągły przechowuje dane. Ustaw go następująco:
 
     webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 W tym przykładzie:
 
-* `webapplication27` to nazwa zasobu usługi Application Insights **małymi literami**.
-* `1234...` jest to klucz Instrumentacji zasobu usługi Application Insights **pominięcie kresek**. 
-* `PageViews` jest to typ danych, które mają być analizowane. Dostępne typy są zależne od filtr, który zostało ustawiony w eksportu ciągłego. Sprawdź wyeksportowane dane, aby zobaczyć dostępne typy, a [eksportowanie modelu danych](export-data-model.md).
-* `/{date}/{time}` wzorzec jest zapisywany bezpośrednio.
+* `webapplication27` to nazwa zasobu Application Insights ze **wszystkimi małymi literami**.
+* `1234...` jest kluczem Instrumentacji zasobu Application Insights, **pomijając łączniki**. 
+* `PageViews` to typ danych, które mają być analizowane. Dostępne typy zależą od filtru ustawionego w ramach eksportu ciągłego. Sprawdź wyeksportowane dane, aby zobaczyć inne dostępne typy i zobacz [Eksportuj model danych](export-data-model.md).
+* `/{date}/{time}` jest wzorcem zapisanym dosłownie.
 
 > [!NOTE]
-> Sprawdź, czy Magazyn upewnij się, że otrzymujemy ścieżkę do prawej.
+> Sprawdź magazyn, aby upewnić się, że pobrano odpowiednie ścieżki.
 > 
 
 ## <a name="add-new-output"></a>Dodaj nowe dane wyjściowe
-Teraz wybierz zadania > **dane wyjściowe** > **Dodaj**.
+Teraz wybierz zadanie > dane **wyjściowe**  > **Dodaj**.
 
 ![](./media/export-stream-analytics/SA006.png)
 
 
-![Wybierz nowy kanał, kliknij przycisk Dodaj dane wyjściowe, usługa Power BI](./media/export-stream-analytics/SA010.png)
+![Wybierz nowy kanał, kliknij pozycję dane wyjściowe, Dodaj, Power BI](./media/export-stream-analytics/SA010.png)
 
-Podaj swoje **konto służbowe** do autoryzowania Stream Analytics, aby uzyskać dostęp do zasobów usługi Power BI. Następnie Wymyśl nazwę dla danych wyjściowych, a dla zestawu danych usługi Power BI docelowego i tabeli.
+Podaj swoje **konto służbowe** , aby autoryzować Stream Analytics dostępu do zasobu Power BI. Następnie wynalazek nazwę danych wyjściowych i dla docelowego zestawu danych Power BI i tabeli.
 
 ## <a name="set-the-query"></a>Ustaw zapytanie
-Zapytanie Określa tłumaczenie z danych wejściowych i wyjściowych.
+Zapytanie reguluje tłumaczenie danych wyjściowych na dane wyjściowe.
 
-Użyj funkcji testowej, aby sprawdzić, że otrzymasz odpowiednie dane wyjściowe. Nadaj przykładowych danych, która została przyjęta ze strony danych wejściowych. 
+Użyj funkcji testowej, aby sprawdzić, czy otrzymujesz odpowiednie dane wyjściowe. Nadaj mu przykładowe dane, które zostały wykonane ze strony danych wejściowych. 
 
-### <a name="query-to-display-counts-of-events"></a>Zapytanie, aby wyświetlić liczby zdarzeń
+### <a name="query-to-display-counts-of-events"></a>Zapytanie w celu wyświetlenia liczby zdarzeń
 Wklej to zapytanie:
 
 ```SQL
@@ -146,11 +141,11 @@ Wklej to zapytanie:
     GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 ```
 
-* dane wejściowe eksportu jest alias, którego firma Microsoft udostępniła do strumienia danych wejściowych
-* dane wyjściowe pbi jest alias danych wyjściowych, który zdefiniowaliśmy
-* Używamy [zewnętrzne zastosowania metody GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) ponieważ nazwa zdarzenia znajduje się w zagnieżdżonych tablic JSON. Następnie wybierz wybiera nazwę zdarzenia, wraz z liczbą wystąpień o tej nazwie w przedziale czasu. [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) klauzuli grupuje elementy w okresach czasu w jednej minuty.
+* Eksport — dane wejściowe to alias przekazany do danych wejściowych strumienia
+* PBI-Output to zdefiniowany przez nas alias wyjściowy
+* Użyjemy klasy [OUTER APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) , ponieważ nazwa zdarzenia znajduje się w zagnieżdżonej tablicy JSON. Następnie wybierz pozycję wybiera nazwę zdarzenia wraz z liczbą wystąpień o tej nazwie w danym okresie. Klauzula [Group by](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) Grupuje elementy w okresach o pojedynczej minucie.
 
-### <a name="query-to-display-metric-values"></a>Zapytanie, aby wyświetlić wartości metryk
+### <a name="query-to-display-metric-values"></a>Zapytanie w celu wyświetlenia wartości metryk
 ```SQL
 
     SELECT
@@ -165,9 +160,9 @@ Wklej to zapytanie:
 
 ``` 
 
-* To zapytanie przejście do telemetrii metryk, które można pobrać czasu zdarzeń i wartość metryki. Wartości metryk są wewnątrz tablicy, więc używana wzorzec zewnętrznego zastosowania metody GetElements wyodrębniać wiersze. "myMetric" to nazwa metryki w tym przypadku. 
+* To zapytanie służy do przechodzenia do danych telemetrycznych metryk w celu uzyskania czasu zdarzenia i wartości metryki. Wartości metryk znajdują się wewnątrz tablicy, dlatego w celu wyodrębnienia wierszy używamy wzorca APPLY GetElements. "fotometryczne" to nazwa metryki w tym przypadku. 
 
-### <a name="query-to-include-values-of-dimension-properties"></a>Zapytanie, aby uwzględnić wartości właściwości wymiaru
+### <a name="query-to-include-values-of-dimension-properties"></a>Zapytanie w celu uwzględnienia wartości właściwości wymiaru
 ```SQL
 
     WITH flat AS (
@@ -187,41 +182,41 @@ Wklej to zapytanie:
 
 ```
 
-* To zapytanie zawiera wartości właściwości wymiaru nie w zależności od określonego wymiaru w stałym indeks w tablicy wymiaru.
+* To zapytanie zawiera wartości właściwości wymiaru bez w zależności od określonego wymiaru w stałym indeksie macierzy wymiarowej.
 
 ## <a name="run-the-job"></a>Uruchamianie zadania
-Możesz wybrać datę w przeszłości, aby uruchomić zadanie z. 
+Możesz wybrać datę z przeszłości, aby uruchomić zadanie z. 
 
-![Wybierz zadanie, a następnie kliknij przycisk zapytania. Wklej poniższy przykład.](./media/export-stream-analytics/SA008.png)
+![Wybierz zadanie, a następnie kliknij pozycję zapytanie. Wklej poniższy przykład.](./media/export-stream-analytics/SA008.png)
 
-Zaczekaj, aż zadanie jest uruchomione.
+Poczekaj, aż zadanie zostanie uruchomione.
 
-## <a name="see-results-in-power-bi"></a>Wyświetlanie wyników w usłudze Power BI
+## <a name="see-results-in-power-bi"></a>Zobacz wyniki w Power BI
 > [!WARNING]
-> Są znacznie lepsze i łatwiejsze [zalecane sposoby, aby wyświetlić dane usługi Application Insights w usłudze Power BI](../../azure-monitor/app/export-power-bi.md ). Ścieżka przedstawionych w tym miejscu jest tylko przykład ilustrujący sposób przetwarzania wyeksportowane dane.
+> Istnieje dużo lepszych i łatwiejszych [sposobów wyświetlania danych Application Insights w Power BI](../../azure-monitor/app/export-power-bi.md ). Ścieżka zilustrowana poniżej to przykład ilustrujący, jak przetwarzać eksportowane dane.
 > 
 > 
 
-Otwórz usługę Power BI przy użyciu konta służbowego lub wybierz zestaw danych i tabelę, która jest zdefiniowana jako dane wyjściowe zadania usługi Stream Analytics.
+Otwórz Power BI przy użyciu konta służbowego i wybierz zestaw danych i tabelę zdefiniowane jako dane wyjściowe zadania Stream Analytics.
 
-![W usłudze Power BI wybierz zestaw danych i pola.](./media/export-stream-analytics/200.png)
+![W Power BI wybierz zestaw danych i pola.](./media/export-stream-analytics/200.png)
 
-Teraz możesz używać tego zestawu danych w raportach i pulpitów nawigacyjnych w [usługi Power BI](https://powerbi.microsoft.com).
+Teraz można użyć tego zestawu danych w raportach i pulpitach nawigacyjnych w programie [Power BI](https://powerbi.microsoft.com).
 
-![W usłudze Power BI wybierz zestaw danych i pola.](./media/export-stream-analytics/210.png)
+![W Power BI wybierz zestaw danych i pola.](./media/export-stream-analytics/210.png)
 
-## <a name="no-data"></a>Brak danych?
-* Sprawdź, że [ustawić format daty](#set-path-prefix-pattern) poprawnie do RRRR-MM-DD (z kreskami).
+## <a name="no-data"></a>Nie masz danych?
+* Sprawdź, czy [Format daty](#set-path-prefix-pattern) jest prawidłowo ustawiony na rrrr-mm-dd (z kreskami).
 
-## <a name="video"></a>Połączenia wideo
-Noam Ben Zeev przedstawiono sposób przetwarzania wyeksportowane dane przy użyciu usługi Stream Analytics.
+## <a name="video"></a>Wideo
+Noam Ben Zeev pokazuje, jak przetwarzać eksportowane dane przy użyciu Stream Analytics.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Export-to-Power-BI-from-Application-Insights/player]
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Eksport ciągły](export-telemetry.md)
-* [Szczegółowe dane modelu odwołań dla typów właściwości i wartości.](export-data-model.md)
+* [Szczegółowe informacje o modelu danych dla typów i wartości właściwości.](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 

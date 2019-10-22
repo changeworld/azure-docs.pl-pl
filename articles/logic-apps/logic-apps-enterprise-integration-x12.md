@@ -1,6 +1,6 @@
 ---
-title: X12 komunikaty dla integracji dla przedsiębiorstw B2B — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Wymiana X12 komunikatów w formacie EDI, B2B integracji przedsiębiorstwa w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+title: Komunikaty X12 dla integracji B2B — Azure Logic Apps
+description: Komunikaty programu Exchange X12 w formacie EDI dla integracji z usługą B2B Enterprise w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,90 +8,89 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bc5c458240925af1fdd74ebc9b2d4c3db71fb05
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728747"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679996"
 ---
-# <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wymiana X12 komunikatów B2B integracji przedsiębiorstwa w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+# <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Komunikaty programu Exchange X12 dla integracji z usługą B2B Enterprise w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 
-Przed przystąpieniem do wymiany X12 wiadomości w usłudze Azure Logic Apps, należy utworzyć X12 umowy i zapisanie tej umowy na koncie integracji. Poniżej przedstawiono procedurę tworzenia X12 umowy.
+Przed rozpoczęciem wymiany komunikatów X12 dla Azure Logic Apps należy utworzyć umowę X12 i przechować ją na koncie integracji. Poniżej przedstawiono procedurę tworzenia umowy X12.
 
 > [!NOTE]
-> Ta funkcja obejmuje X12 strony dla usługi Azure Logic Apps. Aby uzyskać więcej informacji, zobacz [EDIFACT](logic-apps-enterprise-integration-edifact.md).
+> Ta strona obejmuje funkcje X12 dla Azure Logic Apps. Aby uzyskać więcej informacji, zobacz [EDIFACT](logic-apps-enterprise-integration-edifact.md).
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Oto elementy, które są potrzebne:
+Oto elementy, których potrzebujesz:
 
-* [Konta integracji](logic-apps-enterprise-integration-create-integration-account.md) który został już zdefiniowany i skojarzonych z subskrypcją platformy Azure
-* Co najmniej dwóch [partnerów](../logic-apps/logic-apps-enterprise-integration-partners.md) , są zdefiniowane w ramach konta integracji i skonfigurowano X12 identyfikator w obszarze **tożsamości biznesowych**    
-* Wymagany [schematu](../logic-apps/logic-apps-enterprise-integration-schemas.md) przesyłanych do swojego konta integracji
+* [Konto integracji](logic-apps-enterprise-integration-create-integration-account.md) , które jest już zdefiniowane i skojarzone z subskrypcją platformy Azure
+* Co najmniej dwóch [partnerów](../logic-apps/logic-apps-enterprise-integration-partners.md) zdefiniowanych w ramach konta integracji i skonfigurowanych przy użyciu identyfikatora X12 w obszarze **tożsamości biznesowe**    
+* Wymagany [schemat](../logic-apps/logic-apps-enterprise-integration-schemas.md) , który można przekazać do konta integracji
 
-Po zakończeniu [utworzyć konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), [partnerów dodane](logic-apps-enterprise-integration-partners.md)i mieć [schematu](../logic-apps/logic-apps-enterprise-integration-schemas.md) , którego chcesz użyć, możesz utworzyć X12 umowy, wykonując następujące kroki.
+Po [utworzeniu konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), [dodaniu partnerów](logic-apps-enterprise-integration-partners.md)i utworzeniu [schematu](../logic-apps/logic-apps-enterprise-integration-schemas.md) , który ma być używany, można utworzyć umowę X12, wykonując następujące kroki.
 
-## <a name="create-an-x12-agreement"></a>Utwórz X12 umowy
+## <a name="create-an-x12-agreement"></a>Utwórz umowę X12
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com "Azure Portal"). 
+1. Zaloguj się do [portalu Azure](https://portal.azure.com "Azure Portal"). 
 
-2. W głównym menu platformy Azure, wybierz **wszystkich usług**. 
-   W polu wyszukiwania wprowadź "integration", a następnie wybierz pozycję **kont integracji**.  
+2. W głównym menu platformy Azure wybierz pozycję **wszystkie usługi**. 
+   W polu wyszukiwania wprowadź ciąg "Integracja", a następnie wybierz pozycję **konta integracji**.  
 
-   ![Znajdź swoje konto integracji](./media/logic-apps-enterprise-integration-x12/account-1.png)
+   ![Znajdowanie konta integracji](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
    > [!TIP]
-   > Jeśli **wszystkich usług** nie jest wyświetlane, trzeba najpierw rozwiń menu. W górnej części menu zwinięty wybierz **Show menu**.
+   > Jeśli nie zostaną wyświetlone **wszystkie usługi** , może być konieczne pierwsze rozszerzenie menu. W górnej części menu rozwijanego wybierz pozycję **Pokaż menu**.
 
-3. W obszarze **kont integracji**, wybierz konto integracji, w której chcesz dodać umowy.
+3. W obszarze **konta integracji**wybierz konto integracji, do którego chcesz dodać umowę.
 
-   ![Wybierz miejsce utworzenia umowę konta integracji](./media/logic-apps-enterprise-integration-x12/account-3.png)
+   ![Wybierz konto integracji, dla którego chcesz utworzyć umowę](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
-4. Wybierz **Przegląd**, a następnie wybierz **umów** kafelka. 
-   Jeśli nie masz umowy kafelka, dodać Kafelek. 
+4. Wybierz pozycję **Przegląd**, a następnie wybierz kafelek **umowy** . 
+   Jeśli nie masz kafelka umów, najpierw Dodaj kafelek. 
 
-   ![Wybierz Kafelek "Umowy"](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
+   ![Wybierz kafelek "umowy"](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
 
-5. W obszarze **umów**, wybierz **Dodaj**.
+5. W obszarze **umowy**wybierz pozycję **Dodaj**.
 
-   ![Wybieranie pozycji "Dodaj"](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
+   ![Wybierz pozycję "Dodaj"](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
 
-6. W obszarze **Dodaj**, wprowadź **nazwa** dla umowy. 
-   Wybierz typ umowy **X12**. 
-   Wybierz **Partner hosta**, **tożsamości hosta**, **Partner gościa**, i **tożsamość gościa** dla umowy. 
-   Aby uzyskać więcej szczegółów właściwości Zobacz tabelę w tym kroku.
+6. W obszarze **Dodaj**wpisz **nazwę** umowy. 
+   W polu Typ umowy wybierz pozycję **X12**. 
+   Wybierz **partnera hosta**, **tożsamość hosta**, **partnera gościa**i **tożsamość gościa** dla Twojej umowy. 
+   Aby uzyskać więcej informacji o właściwościach, zobacz tabelę w tym kroku.
 
     ![Podaj szczegóły umowy](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
     | Właściwość | Opis |
     | --- | --- |
-    | Name (Nazwa) |Nazwa umowy |
+    | Nazwa |Nazwa umowy |
     | Typ umowy | Powinien być X12 |
-    | Partner hosta |Umowa musi mieć partnera hosta i gościa. Partner hosta reprezentuje organizację, która umożliwia skonfigurowanie umowy. |
-    | Tożsamość hosta |Identyfikator partnera hosta |
-    | Partner gościa |Umowa musi mieć partnera hosta i gościa. Partner gościa reprezentuje organizację, która jest prowadzących działalność we współpracy z partnerem hosta. |
+    | Partner hosta |Umowa wymaga zarówno hosta, jak i partnera gościa. Partner hosta reprezentuje organizację, która konfiguruje umowę. |
+    | Tożsamość hosta |Identyfikator dla partnera hosta |
+    | Partner gościa |Umowa wymaga zarówno hosta, jak i partnera gościa. Partner gościa reprezentuje organizację, która wykonuje działalność z partnerem hosta. |
     | Tożsamość gościa |Identyfikator partnera gościa |
     | Ustawienia odbierania |Te właściwości mają zastosowanie do wszystkich komunikatów odebranych przez umowę. |
     | Ustawienia wysyłania |Te właściwości mają zastosowanie do wszystkich komunikatów wysłanych przez umowę. |  
 
    > [!NOTE]
-   > Rozdzielczość X12 Umowy zależy od tego, pasujące kwalifikator nadawcy i identyfikator i kwalifikator odbiorcy i identyfikator, który zdefiniowano w przychodzącej wiadomości i partnera. W przypadku zmiany tych wartości dla partnera, zaktualizuj zbyt umowy.
+   > Rozpoznawanie umów X12 zależy od dopasowania kwalifikatora i identyfikatora nadawcy oraz kwalifikatora i identyfikatora odbiorcy zdefiniowanego w komunikacie partnera i przychodzącego. Jeśli te wartości są zmieniane dla partnera, zaktualizuj umowę.
 
-## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurowanie, jak dojścia Twojej umowy odebranych komunikatów
+## <a name="configure-how-your-agreement-handles-received-messages"></a>Skonfiguruj sposób obsługi komunikatów odebranych przez umowę
 
-Teraz, gdy ustawiono właściwości umowy, można skonfigurować, jak niniejsza Umowa identyfikuje i obsługuje komunikaty przychodzące otrzymany od partnera za pośrednictwem niniejszej Umowy.
+Po ustawieniu właściwości umowy można skonfigurować, w jaki sposób ta umowa identyfikuje i obsługuje komunikaty przychodzące otrzymane od partnera za pośrednictwem tej umowy.
 
-1.  W obszarze **Dodaj**, wybierz opcję **ustawienia odbierania**.
-Należy skonfigurować te właściwości, w oparciu o umowy z partnerem, który wymienia wiadomości z Tobą. Opisy właściwości znajdują się w tabelach w tej sekcji.
+1.  W obszarze **Dodaj**wybierz pozycję **Odbierz ustawienia**.
+Skonfiguruj te właściwości na podstawie umowy z partnerem, który wymienia z nim wiadomości. Opisy właściwości znajdują się w tabelach w tej sekcji.
 
-    **Otrzymał ustawienia** jest podzielone na następujące sekcje: Identyfikatory potwierdzenia, schematów, koperty, numery kontrolne, ocen i ustawienia wewnętrzne.
+    **Ustawienia odbierania** są zorganizowane w następujące sekcje: identyfikatory, potwierdzenia, schematy, koperty, numery kontrolne, walidacje i ustawienia wewnętrzne.
 
-2. Po wykonaniu tych czynności upewnij się zapisać ustawienia, wybierając **OK**.
+2. Po zakończeniu upewnij się, że ustawienia zostały zapisane, wybierając **przycisk OK**.
 
-Teraz umowy jest gotowy do obsługi wiadomości przychodzących, które są zgodne z wybrane ustawienia.
+Teraz Twoja umowa jest gotowa do obsługi wiadomości przychodzących, które są zgodne z wybranymi ustawieniami.
 
 ### <a name="identifiers"></a>Identyfikatory
 
@@ -99,69 +98,69 @@ Teraz umowy jest gotowy do obsługi wiadomości przychodzących, które są zgod
 
 | Właściwość | Opis |
 | --- | --- |
-| ISA1 (kwalifikator autoryzacji) |Wybierz wartość kwalifikator autoryzacji z listy rozwijanej. |
-| ISA2 |Opcjonalny. Wprowadź wartość informacji o autoryzacji. Jeśli wprowadzona dla ISA1 wartość jest równa 00, wprowadź co najmniej jeden znak alfanumeryczny oraz maksymalnie 10. |
-| ISA3 (kwalifikator bezpieczeństwa) |Wybierz wartość kwalifikatora zabezpieczeń z listy rozwijanej. |
-| ISA4 |Opcjonalny. Wprowadź wartość informacji zabezpieczeń. Jeśli wprowadzona dla ISA3 wartość jest równa 00, wprowadź co najmniej jeden znak alfanumeryczny oraz maksymalnie 10. |
+| ISA1 (kwalifikator autoryzacji) |Wybierz wartość kwalifikatora autoryzacji z listy rozwijanej. |
+| ISA2 |Opcjonalny. Wprowadź wartość informacji o autoryzacji. Jeśli wartość wprowadzona dla ISA1 jest inna niż 00, wprowadź co najmniej jeden znak alfanumeryczny i maksymalnie 10. |
+| ISA3 (kwalifikator zabezpieczeń) |Wybierz z listy rozwijanej wartość kwalifikatora zabezpieczeń. |
+| ISA4 |Opcjonalny. Wprowadź wartość informacji o zabezpieczeniach. Jeśli wartość wprowadzona dla ISA3 jest inna niż 00, wprowadź co najmniej jeden znak alfanumeryczny i maksymalnie 10. |
 
-### <a name="acknowledgment"></a>Po potwierdzeniu
+### <a name="acknowledgment"></a>Dziękowanie
 
-![Ustaw właściwości potwierdzenia](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
+![Ustawianie właściwości potwierdzenia](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
 
 | Właściwość | Opis |
 | --- | --- |
-| Oczekiwane TA1 |Zwraca techniczne potwierdzenia do nadawcy wymiany |
-| Oczekiwane FA |Zwraca funkcjonalności potwierdzenia do nadawcy wymiany. Następnie określ, czy potwierdzenia 997 lub 999, w zależności od używanej wersji schematu |
-| Obejmują pętli pętlę AK2/IK2 |Umożliwia generowanie pętlę AK2 pętli w funkcjonalności potwierdzenia dla zaakceptowanych zestawów transakcji |
+| Oczekiwano TA1 |Zwraca potwierdzenie techniczne nadawcy wymiany |
+| Przewidywany FA |Zwraca potwierdzenie funkcjonalne do nadawcy wymiany. Następnie wybierz, czy chcesz potwierdzeń 997 lub 999 na podstawie wersji schematu |
+| Uwzględnij pętlę AK2/IK2 |Włącza generowanie pętli AK2 w potwierdzeniach funkcjonalnych dla akceptowanych zestawów transakcji |
 
 ### <a name="schemas"></a>Schematy
 
-Wybierz schemat dla każdego typu transakcji (ST1) i aplikację nadawcy (GS2). Potok receive dezasembluje wiadomości przychodzących, dopasowując wartości ST1 i GS2 w przychodzącej wiadomości, za pomocą wartości ustawione w tym miejscu i schematu komunikatu przychodzącego ze schematem, że ustawiona w tym miejscu.
+Wybierz schemat dla każdego typu transakcji (ST1) i aplikacji nadawcy (GS2). Potok odbierania rozkłada komunikat przychodzący przez dopasowanie wartości parametrów ST1 i GS2 w komunikacie przychodzącym z wartościami ustawionymi w tym miejscu oraz schematem komunikatu przychodzącego ze schematem ustawionym w tym miejscu.
 
 ![Wybierz schemat](./media/logic-apps-enterprise-integration-x12/x12-33.png) 
 
 | Właściwość | Opis |
 | --- | --- |
-| Version |Wybierz X12 wersję |
+| Wersja |Wybierz wersję X12 |
 | Typ transakcji (ST01) |Wybierz typ transakcji |
 | Aplikacja nadawcy (GS02) |Wybierz aplikację nadawcy |
-| Schemat |Wybierz plik schematu, który chcesz użyć. Schematy są dodawane do Twojego konta integracji. |
+| Schemat |Wybierz plik schematu, którego chcesz użyć. Schematy są dodawane do konta integracji. |
 
 > [!NOTE]
-> Skonfiguruj wymagane [schematu](../logic-apps/logic-apps-enterprise-integration-schemas.md) przekazany do usługi [konta integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+> Skonfiguruj wymagany [schemat](../logic-apps/logic-apps-enterprise-integration-schemas.md) , który jest przekazywany do [konta integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md).
 
-### <a name="envelopes"></a>Kopert
+### <a name="envelopes"></a>Koperty
 
-![Określ separatora w zestawie transakcji: standardowy identyfikator lub Separator powtórzeń](./media/logic-apps-enterprise-integration-x12/x12-34.png)
+![Określ separator w zestawie transakcji: Wybierz standardowy identyfikator lub separator powtórzeń](./media/logic-apps-enterprise-integration-x12/x12-34.png)
 
 | Właściwość | Opis |
 | --- | --- |
-| Użycie ISA11 |Określa separator, do użytku w zestawie transakcji: <p>Wybierz **standardowy identyfikator** do notacji dziesiętnej, należy użyć kropki (.), zamiast notacji dziesiętnej przychodzących dokumentu w EDI otrzymywać potoku. <p>Wybierz **Separator powtórzeń** do określenia separator dla powtarzanych wystąpień elementu prostych danych lub strukturą danych wielokrotnego. Na przykład zazwyczaj daszka (^) jest używany jako separator powtórzeń. Schematy HIPAA można używać tylko strzałkę. |
+| ISA11 użycie |Określa separator, który ma być używany w zestawie transakcji: <p>Wybierz opcję **Identyfikator standardowy** , aby użyć kropki (.) dla notacji dziesiętnej, a nie notacji dziesiętnej dokumentu przychodzącego w potoku odbierania EDI. <p>Wybierz pozycję **separator powtórzeń** , aby określić separator powtórzonych wystąpień prostego elementu danych lub powtarzanej struktury danych. Na przykład zwykle daszek (^) jest używany jako separator powtórzeń. W przypadku schematów HIPAA można używać tylko karatów. |
 
 ### <a name="control-numbers"></a>Numery kontrolne
 
-![Wybierz sposób obsługiwania duplikaty numerów kontrolnych](./media/logic-apps-enterprise-integration-x12/x12-35.png) 
+![Wybierz, jak obsłużyć duplikaty numerów kontrolnych](./media/logic-apps-enterprise-integration-x12/x12-35.png) 
 
 | Właściwość | Opis |
 | --- | --- |
-| Nie zezwalaj na duplikaty numeru kontrolnego wymiany |Blokuj wymian duplikatów. Sprawdza, czy numer kontrolny wymiany odebrany numer kontrolny wymiany (ISA13). Jeśli zostanie wykryte dopasowanie potoku odbioru nie przetwarza wymiany. Można określić liczbę dni w przypadku sprawdzania, zapewniając wartość *Sprawdzaj duplikaty ISA13 co (dni)* . |
-| Nie zezwalaj na duplikaty numerów kontrolnych grupy |Blok wymiany przy użyciu numerów kontrolnych grupy. |
-| Nie zezwalaj na duplikaty numerów kontrolnych zestawu transakcji |Blok wymiany przy użyciu numerów kontrolnych zestawu transakcji duplikatów. |
+| Nie Zezwalaj na duplikaty numerów kontrolnych wymiany |Blokuj zduplikowane zmiany. Sprawdza numer kontroli wymiany (ISA13) dla odebranego numeru kontrolnego wymiany. W przypadku wykrycia dopasowania potok odbierania nie przetwarza wymiany. Możesz określić liczbę dni, przez jaką należy wykonać sprawdzanie, podając wartość dla opcji *Sprawdź duplikaty ISA13 co (dni)* . |
+| Nie Zezwalaj na duplikaty numerów kontrolnych grupy |Blokuj zmiany ze zduplikowanymi numerami kontrolek grup. |
+| Nie Zezwalaj na duplikaty numerów kontrolnych zestawu transakcji |Blokuj zmiany za pomocą duplikatów numerów kontrolnych zestawu transakcji. |
 
-### <a name="validations"></a>Liczba ocen
+### <a name="validations"></a>Walidacji
 
-![Ustawić właściwości sprawdzania poprawności odebranej wiadomości](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
+![Ustawianie właściwości walidacji dla odebranych komunikatów](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
-Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany automatycznie. Jeśli nie określisz żadnych reguł sprawdzania poprawności używa wiersza "Default".
+Po ukończeniu każdego wiersza walidacji zostanie automatycznie dodany inny. Jeśli nie określisz żadnych reguł, walidacja używa wiersza "default".
 
 | Właściwość | Opis |
 | --- | --- |
-| Typ komunikatu |Wybierz typ komunikatu EDI. |
-| Walidacja EDI |Walidacja EDI należy wykonać na typach danych, zgodnie z definicją schematu EDI właściwości, ograniczenia długości, elementy z pustymi danymi i separatory kończące. |
-| Rozszerzona Walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
-| Zezwalaj na zera wiodące/kończące |Zachowują wszelkie dodatkowe wiodące lub końcowe zero i miejsca znaków. Nie usuwaj te znaki. |
-| Przycinaj zera wiodące/kończące |Usuń wiodących ani końcowych zero i znaków spacji. |
-| Zasady dotyczące separatorów kończących |Generowanie separatory kończące. <p>Wybierz **niedozwolone** do Stanów Zjednoczonych zabraniają końcowe ograniczniki i separatorów w wymianie odebrane. Jeśli wymiana zawiera końcowe ograniczniki i separatory, wymiana zadeklarowano nie prawidłowy. <p>Wybierz **opcjonalnie** do akceptowania wymian z lub bez końcowe ograniczniki i separatorów. <p>Wybierz **obowiązkowe** podczas wymiany musi mieć końcowe ograniczniki i separatorów. |
+| Typ komunikatu |Wybierz typ wiadomości EDI. |
+| Weryfikacja EDI |Wykonaj walidację EDI dla typów danych, zgodnie z definicją w schemacie właściwości EDI, ograniczenia długości, puste elementy danych i końcowe separatory. |
+| Rozszerzona weryfikacja |Jeśli typ danych nie jest EDI, walidacja dotyczy wymagania elementu danych, dozwolonego powtórzenia, wyliczeń i poprawności długości elementu danych (min/max). |
+| Zezwalaj na zera wiodące/końcowe |Zachowaj wszystkie dodatkowe wiodące lub końcowe zera i spacje. Nie usuwaj tych znaków. |
+| Przytnij zera wiodące/końcowe |Usuń znaki wiodące lub końcowe zerowe i spacje. |
+| Końcowe zasady separatora |Generuj końcowe separatory. <p>Wybierz opcję **niedozwolone** , aby uniemożliwić końcowe ograniczniki i separatory w odebranej wymianie. Jeśli wymiana ma końcowe ograniczniki i separatory, wymiana jest zadeklarowana jako nieprawidłowa. <p>Wybierz opcję **opcjonalne** , aby akceptować zmiany, z końcowymi ogranicznikami i separatorami oraz bez nich. <p>Wybierz wartość **obowiązkowe** , gdy w wymianie muszą być końcowe ograniczniki i separatory. |
 
 ### <a name="internal-settings"></a>Ustawienia wewnętrzne
 
@@ -169,25 +168,25 @@ Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany au
 
 | Właściwość | Opis |
 | --- | --- |
-| Konwertuj domyślny format dziesiętny "Nn" do podstawowej wartości liczbowej 10 |Konwertuje liczbę EDI, który jest określony za pomocą formatu "Nn" na wartość liczbową base 10 |
-| Utwórz puste tagi XML, jeśli dozwolone są separatory kończące |Zaznacz to pole wyboru, aby mieć nadawcy wymiany zawierają puste tagi XML dla końcowych separatorów. |
-| Podziel wymiany na zestawy transakcji — Zawieś zestawy transakcji w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując koperty odpowiedni zestaw transakcji. Wstrzymuje działanie tylko transakcje, gdy sprawdzanie poprawności nie powiedzie się. |
-| Rozdziel wymianę na zestawy transakcji — Zawieś wymianę w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując odpowiednie koperty. Wstrzymuje działanie całej wymiany, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. | 
-| Zachowaj wymianę — Zawieś zestawy transakcji w przypadku błędu |Pozostawia wymiana bez zmian, tworzy dokument XML dla całego wymiany wsadowej. Wstrzymuje zestawów transakcji, które powodują Niepowodzenie weryfikacji przerywając przetwarzania wszystkich innych zestawów transakcji. |
-| Zachowaj wymianę — Zawieś wymianę w przypadku błędu |Pozostawia wymiana bez zmian, tworzy dokument XML dla całego wymiany wsadowej. Wstrzymuje działanie całej wymiany, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. |
+| Konwertuj implikowany format dziesiętny "NN" na podstawową wartość liczbową 10 |Konwertuje numer EDI, który jest określony w formacie "NN" na wartość liczbową dziesiętną. |
+| Utwórz puste tagi XML, jeśli są dozwolone końcowe separatory |Zaznacz to pole wyboru, aby nadawca wymiany mogli uwzględnić puste tagi XML dla końcowych separatorów. |
+| Rozdziel wymianę jako zestawy transakcji — Zawieś zestawy transakcji w przypadku błędu|Analizuje każdy zestaw transakcji w ramach wymiany do oddzielnego dokumentu XML przez zastosowanie odpowiedniej koperty do zestawu transakcji. Wstrzymuje tylko transakcje, w których weryfikacja nie powiedzie się. |
+| Podział wymiany jako zestawy transakcji — Zawieś wymianę w przypadku błędu|Analizuje każdy zestaw transakcji w ramach wymiany do oddzielnego dokumentu XML przez zastosowanie odpowiedniej formy. Wstrzymuje całą wymianę, gdy co najmniej jeden zestaw transakcji w ramach walidacji nie powiodło się. | 
+| Zachowaj zestawy transakcji zawieszania wymiany w przypadku błędu |Pozostawia wymianę bez zmian, tworzy dokument XML dla całej wymiany wsadowej. Wstrzymuje tylko zestawy transakcji, których Walidacja nie powiodła się, a jednocześnie przetwarza wszystkie inne zestawy transakcji. |
+| Zachowaj wymianę — Wstrzymaj transwymianę w przypadku błędu |Pozostawia wymianę bez zmian, tworzy dokument XML dla całej wymiany wsadowej. Wstrzymuje całą wymianę, gdy co najmniej jeden zestaw transakcji w ramach walidacji nie powiodło się. |
 
-## <a name="configure-how-your-agreement-sends-messages"></a>Skonfiguruj sposób umowie wysyłania wiadomości
+## <a name="configure-how-your-agreement-sends-messages"></a>Konfigurowanie sposobu wysyłania komunikatów przez umowę
 
-Można skonfigurować, jak niniejsza Umowa identyfikuje i obsługuje komunikaty wychodzące, które wysyłają do partnera za pośrednictwem niniejszej Umowy.
+Można skonfigurować sposób, w jaki ta umowa identyfikuje i obsługuje wiadomości wychodzące wysyłane do partnera w ramach niniejszej umowy.
 
-1.  W obszarze **Dodaj**, wybierz opcję **ustawienia wysyłania**.
-Należy skonfigurować te właściwości, w oparciu o umowy z partnerem, który wymienia wiadomości z Tobą. Opisy właściwości znajdują się w tabelach w tej sekcji.
+1.  W obszarze **Dodaj**wybierz pozycję **Wyślij ustawienia**.
+Skonfiguruj te właściwości na podstawie umowy z partnerem, którzy wymieniają wiadomości. Opisy właściwości znajdują się w tabelach w tej sekcji.
 
-    **Ustawienia wysyłania** jest podzielone na następujące sekcje: Identyfikatory, potwierdzenia, schematów, koperty, zestawów znaków i separatory, numerów kontrolnych i sprawdzanie poprawności.
+    **Ustawienia wysyłania** są zorganizowane w następujące sekcje: identyfikatory, potwierdzenia, schematy, koperty, zestawy znaków i separatory, numery kontrolne i walidacja.
 
-2. Po wykonaniu tych czynności upewnij się zapisać ustawienia, wybierając **OK**.
+2. Po zakończeniu upewnij się, że ustawienia zostały zapisane, wybierając **przycisk OK**.
 
-Teraz umowy jest gotowy do obsługi wiadomości wychodzących, które są zgodne z wybrane ustawienia.
+Teraz Twoja umowa jest gotowa do obsługi wiadomości wychodzących, które są zgodne z wybranymi ustawieniami.
 
 ### <a name="identifiers"></a>Identyfikatory
 
@@ -195,41 +194,41 @@ Teraz umowy jest gotowy do obsługi wiadomości wychodzących, które są zgodne
 
 | Właściwość | Opis |
 | --- | --- |
-| Kwalifikator autoryzacji (ISA1) |Wybierz wartość kwalifikator autoryzacji z listy rozwijanej. |
-| ISA2 |Wprowadź wartość informacji o autoryzacji. Jeśli ta wartość jest równa 00, wprowadź co najmniej jeden znak alfanumeryczny oraz maksymalnie 10. |
-| Kwalifikator bezpieczeństwa (ISA3) |Wybierz wartość kwalifikatora zabezpieczeń z listy rozwijanej. |
-| ISA4 |Wprowadź wartość informacji zabezpieczeń. Jeśli ta wartość jest różna od 00, w tym polu tekstowym wartość (ISA4) wprowadź co najmniej jednej wartości alfanumeryczne i maksymalnie 10. |
+| Kwalifikator autoryzacji (ISA1) |Wybierz wartość kwalifikatora autoryzacji z listy rozwijanej. |
+| ISA2 |Wprowadź wartość informacji o autoryzacji. Jeśli ta wartość jest inna niż 00, wprowadź co najmniej jeden znak alfanumeryczny i maksymalnie 10. |
+| Kwalifikator zabezpieczeń (ISA3) |Wybierz z listy rozwijanej wartość kwalifikatora zabezpieczeń. |
+| ISA4 |Wprowadź wartość informacji o zabezpieczeniach. Jeśli ta wartość jest inna niż 00, dla pola tekstowego wartość (ISA4) wprowadź co najmniej jedną wartość alfanumeryczną i maksymalnie 10. |
 
-### <a name="acknowledgment"></a>Po potwierdzeniu
+### <a name="acknowledgment"></a>Dziękowanie
 
-![Ustaw właściwości potwierdzenia](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+![Ustawianie właściwości potwierdzenia](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
 
 | Właściwość | Opis |
 | --- | --- |
-| Oczekiwane TA1 |Zwróć techniczne potwierdzenia (TA1) do nadawcy wymiany. To ustawienie określa, czy partner hosta, który wysyła wiadomość żądania potwierdzenia od partnera gościa w umowie. Te potwierdzenia powinny przez partnera hosta, oparte na ustawieniach odbierania umowy. |
-| Oczekiwane FA |Zwróć funkcjonalności potwierdzenia (da) do nadawcy wymiany. Wybierz, czy potwierdzeń 997 lub 999 sprawdzającego wersję schematu, którą pracujesz. Te potwierdzenia powinny przez partnera hosta, oparte na ustawieniach odbierania umowy. |
+| Oczekiwano TA1 |Zwróć potwierdzenie techniczne (TA1) do nadawcy wymiany. To ustawienie określa, że partner hosta, który wysyła wiadomość, żąda potwierdzenia od partnera gościa w umowie. Te potwierdzenia są oczekiwane przez partnera hosta na podstawie ustawień odbioru umowy. |
+| Przewidywany FA |Zwróć potwierdzenie funkcjonalności (FA) do nadawcy wymiany. Wybierz, czy mają być potwierdzeń 997 lub 999 na podstawie wersji schematu, z którymi pracujesz. Te potwierdzenia są oczekiwane przez partnera hosta na podstawie ustawień odbioru umowy. |
 | Wersja FA |Wybierz wersję FA |
 
 ### <a name="schemas"></a>Schematy
 
-![Wybierz opcję schematu do użycia](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+![Wybierz schemat do użycia](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
 
 | Właściwość | Opis |
 | --- | --- |
-| Version |Wybierz X12 wersję |
+| Wersja |Wybierz wersję X12 |
 | Typ transakcji (ST01) |Wybierz typ transakcji |
-| SCHEMA |Wybierz schemat używany. Schematy znajdują się na koncie integracji. Jeśli wybierzesz schematu pierwszy, automatycznie konfiguruje transakcji i wersji typu  |
+| SCHEMATY |Wybierz schemat do użycia. Schematy znajdują się na koncie integracji. Jeśli wybierzesz najpierw schemat, automatycznie skonfiguruje wersję i typ transakcji  |
 
 > [!NOTE]
-> Skonfiguruj wymagane [schematu](../logic-apps/logic-apps-enterprise-integration-schemas.md) przekazany do usługi [konta integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+> Skonfiguruj wymagany [schemat](../logic-apps/logic-apps-enterprise-integration-schemas.md) , który jest przekazywany do [konta integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md).
 
-### <a name="envelopes"></a>Kopert
+### <a name="envelopes"></a>Koperty
 
-![Określ separatora w zestawie transakcji: standardowy identyfikator lub Separator powtórzeń](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
+![Określ separator w zestawie transakcji: Wybierz standardowy identyfikator lub separator powtórzeń](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
 
 | Właściwość | Opis |
 | --- | --- |
-| Użycie ISA11 |Określa separator, do użytku w zestawie transakcji: <p>Wybierz **standardowy identyfikator** do notacji dziesiętnej, należy użyć kropki (.), zamiast notacji dziesiętnej przychodzących dokumentu w EDI otrzymywać potoku. <p>Wybierz **Separator powtórzeń** do określenia separator dla powtarzanych wystąpień elementu prostych danych lub strukturą danych wielokrotnego. Na przykład zazwyczaj daszka (^) jest używany jako separator powtórzeń. Schematy HIPAA można używać tylko strzałkę. |
+| ISA11 użycie |Określa separator, który ma być używany w zestawie transakcji: <p>Wybierz opcję **Identyfikator standardowy** , aby użyć kropki (.) dla notacji dziesiętnej, a nie notacji dziesiętnej dokumentu przychodzącego w potoku odbierania EDI. <p>Wybierz pozycję **separator powtórzeń** , aby określić separator powtórzonych wystąpień prostego elementu danych lub powtarzanej struktury danych. Na przykład zwykle daszek (^) jest używany jako separator powtórzeń. W przypadku schematów HIPAA można używać tylko karatów. |
 
 ### <a name="control-numbers"></a>Numery kontrolne
 
@@ -237,70 +236,70 @@ Teraz umowy jest gotowy do obsługi wiadomości wychodzących, które są zgodne
 
 | Właściwość | Opis |
 | --- | --- |
-| Numer wersji kontroli (ISA12) |Wybierz wersję standard X12 |
-| Wskaźnik użycia (ISA15) |Wybierz kontekst wymiany.  Wartości są informacji i danych produkcyjnych lub danych testowych |
-| Schemat |Generuje segmentów GS i ST zakodowane w formacie X12 wymiany, wysyła go do wysyłania potoku |
-| GS1 |Opcjonalne, wybierz wartość dla funkcjonalności kod z listy rozwijanej |
-| GS2 |Opcjonalnie, aplikacja nadawcy |
-| GS3 |Opcjonalnie odbiorca aplikacji |
-| GS4 |Opcjonalnie wybierz CCYYMMDD i rrmmdd |
-| GS5 |Opcjonalnie, wybierz opcję hh: mm, HHMMSS lub HHMMSSdd |
-| GS7 |Opcjonalne, wybierz wartość dla Agencji odpowiada z listy rozwijanej |
-| GS8 |Opcjonalnie, wersję dokumentu |
-| (ISA13). numer kontrolny wymiany |Wymagane, wprowadź zakres wartości dla numeru kontrolnego wymiany. Podaj wartość liczbową z co najmniej 1 i maksymalnej 999999999 |
-| Numer kontrolny grupy (GS06) |Wymagane, wprowadź zakres numerów dla numeru kontrolnego grupy. Podaj wartość liczbową z co najmniej 1 i maksymalnej 999999999 |
-| Numer kontrolny zestawu transakcji (ST02) |Wymagane, wprowadź zakres numerów numer kontrolny zestawu transakcji. Wprowadź zakres wartości liczbowych z co najmniej 1 i maksymalnej 999999999 |
-| Prefiks |Opcjonalne wyznaczony dla zakresu numerów kontrolnych zestawu transakcji używanych w potwierdzeniu. Wprowadź wartość liczbową dla środkowej dwa pola, a wartością alfanumeryczną (w razie potrzeby) dla pól prefiksem i sufiksem. Środkowy pola są wymagane i zawierają minimalne i maksymalne wartości dla numeru kontrolnego |
-| Suffix |Opcjonalne wyznaczony dla zakresu numerów kontrolnych zestawu transakcji używanych w potwierdzeniu. Wprowadź wartość liczbową dla środkowej dwóch pól i wartości alfanumeryczne (w razie potrzeby) dla pól prefiksem i sufiksem. Środkowy pola są wymagane i zawierają minimalne i maksymalne wartości dla numeru kontrolnego |
+| Numer wersji kontrolki (ISA12) |Wybierz wersję standardu X12 |
+| Wskaźnik użycia (ISA15) |Wybierz kontekst wymiany.  Wartości to informacje, dane produkcyjne lub dane testowe |
+| Schemat |Generuje segmenty GS i ST dla wymiany zakodowanej w X12, która wysyła do potoku wysyłania |
+| GS1 |Opcjonalne, wybierz wartość dla kodu funkcjonalnego z listy rozwijanej |
+| GS2 |Opcjonalny, nadawca aplikacji |
+| GS3 |Opcjonalne, odbiorca aplikacji |
+| GS4 |Opcjonalne, wybierz pozycję CCYYMMDD lub YYMMDD |
+| GS5 |Opcjonalne, Select HHMM, HHMMSS lub HHMMSSdd |
+| GS7 |Opcjonalne, wybierz wartość dla odpowiedzialnej agencji z listy rozwijanej |
+| GS8 |Opcjonalna, wersja dokumentu |
+| Numer kontrolny wymiany (ISA13) |Wymagane, wprowadź zakres wartości dla numeru kontrolnego wymiany. Wprowadź wartość liczbową z co najmniej 1 i maksymalnie 999999999 |
+| Numer kontrolny grupy (GS06) |Wymagane, wprowadź zakres liczb dla numeru kontroli grupy. Wprowadź wartość liczbową z co najmniej 1 i maksymalnie 999999999 |
+| Numer kontrolny zestawu transakcji (ST02) |Wymagane, wprowadź zakres liczb dla numeru kontrolnego zestawu transakcji. Wprowadź zakres wartości liczbowych z wartością minimalną 1 i maksymalną 999999999 |
+| Prefiks |Opcjonalne, wyznaczony dla zakresu numerów kontrolnych zestawu transakcji użytych w potwierdzeniu. Wprowadź wartość liczbową dla środkowych dwóch pól i wartość alfanumeryczną (jeśli to konieczne) dla pól prefiksu i sufiksu. Pola środkowe są wymagane i zawierają wartości minimalne i maksymalne dla numeru kontrolnego |
+| Przedrostk |Opcjonalne, wyznaczony dla zakresu numerów kontrolnych zestawu transakcji użytych w potwierdzeniu. Wprowadź wartość liczbową dla dwóch pól środkowych i wartość alfanumeryczną (jeśli to konieczne) dla pól prefiksu i sufiksu. Pola środkowe są wymagane i zawierają wartości minimalne i maksymalne dla numeru kontrolnego |
 
 ### <a name="character-sets-and-separators"></a>Zestawy znaków i separatory
 
-Inne niż zestaw znaków, dla każdego typu komunikatu można wprowadzić innego zestawu ograniczników. Jeśli zestaw znaków nie jest określona dla schematu podanym komunikatem, jest używany domyślny zestaw znaków.
+Oprócz zestawu znaków można wprowadzić inny zestaw ograniczników dla każdego typu wiadomości. Jeśli zestaw znaków nie został określony dla danego schematu wiadomości, zostanie użyty domyślny zestaw znaków.
 
-![Określ ograniczniki typy komunikatów](./media/logic-apps-enterprise-integration-x12/x12-9.png) 
+![Określanie ograniczników dla typów komunikatów](./media/logic-apps-enterprise-integration-x12/x12-9.png) 
 
 | Właściwość | Opis |
 | --- | --- |
-| Zestaw ma być używany znaków |Aby sprawdzić właściwości, wybierz X12 zestaw znaków. Opcje są podstawowy, rozszerzony i UTF8. |
-| Schemat |Wybierz schemat z listy rozwijanej. Po wykonaniu każdego wiersza, nowy wiersz jest automatycznie dodawany. Dla wybranego schematu wybierz zestaw separatorów, do którego chcesz użyć, w oparciu o poniższe opisy separatora. |
+| Zestaw znaków do użycia |Aby sprawdzić poprawność właściwości, wybierz zestaw znaków X12. Dostępne są opcje Basic, Extended i UTF8. |
+| Schemat |Z listy rozwijanej wybierz schemat. Po zakończeniu każdego wiersza zostanie automatycznie dodany nowy wiersz. Dla wybranego schematu wybierz zestaw separatorów, który ma być używany, na podstawie opisów separatora poniżej. |
 | Typ danych wejściowych |Wybierz typ danych wejściowych z listy rozwijanej. |
-| Separator składników |Do oddzielania elementów danych złożonych, wprowadź jeden znak. |
-| Separator elementów danych |Do oddzielania elementów prostych danych w obrębie danych złożonych elementów, wprowadź jeden znak. |
-| Znak zastępczy |Wprowadź znak zastępczy, używany do zastępowania wszystkie znaki separatora w ładunku danych podczas generowania X12 wychodzących wiadomości. |
-| Terminator segmentu |Aby wskazać koniec segmentu EDI, wprowadź jeden znak. |
-| Suffix |Wybierz znak, który jest używany z identyfikatora segmentu. Po wyznaczeniu sufiksu, element danych terminator segmentu może być pusta. Terminator segmentu jest puste, należy określić sufiks. |
+| Separator składników |Aby oddzielić złożone elementy danych, wprowadź pojedynczy znak. |
+| Separator elementów danych |Aby rozdzielić proste elementy danych w ramach złożonych elementów danych, należy wprowadzić pojedynczy znak. |
+| Znak zastępczy |Wprowadź znak zastępczy używany do zastępowania wszystkich znaków separatora w danych ładunku podczas generowania wychodzącego komunikatu X12. |
+| Terminator segmentu |Aby wskazać koniec segmentu EDI, wprowadź pojedynczy znak. |
+| Przedrostk |Wybierz znak, który jest używany z identyfikatorem segmentu. Jeśli wyznaczysz sufiks, element danych terminatora segmentu może być pusty. Jeśli terminator segmentu pozostaje pusty, należy wyznaczyć sufiks. |
 
 > [!TIP]
-> Aby podać wartości znaków specjalnych, Edytuj Umowę w formacie JSON i podaj wartość ASCII znaki specjalne.
+> Aby podać wartości znaków specjalnych, Edytuj umowę jako kod JSON i podaj wartość ASCII dla znaku specjalnego.
 
 ### <a name="validation"></a>Walidacja
 
-![Ustawić właściwości sprawdzania poprawności do wysyłania wiadomości](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
+![Ustawianie właściwości walidacji na potrzeby wysyłania wiadomości](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
 
-Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany automatycznie. Jeśli nie określisz żadnych reguł sprawdzania poprawności używa wiersza "Default".
+Po ukończeniu każdego wiersza walidacji zostanie automatycznie dodany inny. Jeśli nie określisz żadnych reguł, walidacja używa wiersza "default".
 
 | Właściwość | Opis |
 | --- | --- |
-| Typ komunikatu |Wybierz typ komunikatu EDI. |
-| Walidacja EDI |Walidacja EDI należy wykonać na typach danych, zgodnie z definicją schematu EDI właściwości, ograniczenia długości, elementy z pustymi danymi i separatory kończące. |
-| Rozszerzona Walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
-| Zezwalaj na zera wiodące/kończące |Zachowują wszelkie dodatkowe wiodące lub końcowe zero i miejsca znaków. Nie usuwaj te znaki. |
-| Przycinaj zera wiodące/kończące |Usuń początkowe lub końcowe zero znaków. |
-| Zasady dotyczące separatorów kończących |Generowanie separatory kończące. <p>Wybierz **niedozwolone** do Stanów Zjednoczonych zabraniają końcowe ograniczniki i separatorów w wymianie wysłane. Jeśli wymiana zawiera końcowe ograniczniki i separatory, wymiana zadeklarowano nie prawidłowy. <p>Wybierz **opcjonalnie** wysyłać wymian z lub bez końcowe ograniczniki i separatorów. <p>Wybierz **obowiązkowe** Jeśli wysłane wymiany musi mieć końcowe ograniczniki i separatorów. |
+| Typ komunikatu |Wybierz typ wiadomości EDI. |
+| Weryfikacja EDI |Wykonaj walidację EDI dla typów danych, zgodnie z definicją w schemacie właściwości EDI, ograniczenia długości, puste elementy danych i końcowe separatory. |
+| Rozszerzona weryfikacja |Jeśli typ danych nie jest EDI, walidacja dotyczy wymagania elementu danych, dozwolonego powtórzenia, wyliczeń i poprawności długości elementu danych (min/max). |
+| Zezwalaj na zera wiodące/końcowe |Zachowaj wszystkie dodatkowe wiodące lub końcowe zera i spacje. Nie usuwaj tych znaków. |
+| Przytnij zera wiodące/końcowe |Usuń znaki wiodące lub końcowe zerowe. |
+| Końcowe zasady separatora |Generuj końcowe separatory. <p>Wybierz opcję **niedozwolone** , aby uniemożliwić końcowe ograniczniki i separatory w wysyłanej wymianie. Jeśli wymiana ma końcowe ograniczniki i separatory, wymiana jest zadeklarowana jako nieprawidłowa. <p>Wybierz opcję **opcjonalne** , aby wysyłać zmiany z lub bez ograniczników i separatorów końcowego. <p>Wybierz pozycję **obowiązkowe** , jeśli wysłana wymiana musi mieć końcowe ograniczniki i separatory. |
 
-## <a name="find-your-created-agreement"></a>Znajdź utworzony umowy
+## <a name="find-your-created-agreement"></a>Znajdź utworzoną umowę
 
-1.  Po zakończeniu na ustawienie swoje właściwości umowy **Dodaj** wybierz **OK** w stanie zakończyć tworzenia umowy, a następnie wróć do konta integracji.
+1.  Po zakończeniu ustawiania wszystkich właściwości umowy na stronie **Dodaj** wybierz **przycisk OK** , aby zakończyć tworzenie umowy i wrócić do konta integracji.
 
-    Nowo dodane umowy teraz pojawia się w Twojej **umów** listy.
+    Nowo dodana umowa zostanie teraz wyświetlona na liście **umów** .
 
-2.  Można również wyświetlić Twojej umowy w przeglądzie konta integracji. W menu konta integracji, wybierz **Przegląd**, a następnie wybierz **umów** kafelka.
+2.  Możesz również wyświetlić umowy na koncie integracji — Omówienie. W menu konto integracji wybierz pozycję **Przegląd**, a następnie wybierz kafelek **umowy** .
 
-    ![Wybierz Kafelek "Umowy"](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
+    ![Wybierz kafelek "umowy"](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
-## <a name="view-the-swagger"></a>Wyświetlanie struktury swagger
-Zobacz [swagger szczegóły](/connectors/x12/). 
+## <a name="view-the-swagger"></a>Wyświetlanie struktury Swagger
+Zobacz [szczegóły struktury Swagger](/connectors/x12/). 
 
 ## <a name="learn-more"></a>Dowiedz się więcej
-* [Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw")  
+* [Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw")  
 

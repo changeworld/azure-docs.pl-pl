@@ -1,30 +1,25 @@
 ---
 title: Konfigurowanie alertów dostępności przy użyciu usługi Azure Application Insights | Microsoft Docs
 description: Konfigurowanie testów sieci Web w usłudze Application Insights. Otrzymywanie alertów, kiedy witryna sieci Web staje się niedostępna lub wolno odpowiada.
-services: application-insights
-documentationcenter: ''
-author: lgayhardt
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.author: lagayhar
-ms.openlocfilehash: 1d7527d6f52235c6b95ad2e336ea9f9ba85d6344
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ea2bec541c13ec1615113cef184eb5ad502b158c
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114392"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678277"
 ---
 # <a name="availability-alerts"></a>Alerty dostępności
 
 Usługa [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Może to być alert, jeśli aplikacja nie odpowiada, lub jeśli reaguje zbyt wolno.
 
-## <a name="enable-alerts"></a>Włącz alerty
+## <a name="enable-alerts"></a>Włączanie alertów
 
 Alerty są teraz automatycznie włączane domyślnie, ale w celu pełnego skonfigurowania alertu musisz najpierw utworzyć swój Test dostępności.
 

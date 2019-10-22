@@ -1,23 +1,18 @@
 ---
 title: Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 description: Nie widzisz danych w usłudze Azure Application Insights? Spróbuj tutaj.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: e231569f-1b38-48f8-a744-6329f41d91d3
-ms.service: application-insights
-ms.workload: mobile
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/23/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: b4bfd984f1e169cb1044002118f9534c4efc9bd8
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 07/23/2018
+ms.openlocfilehash: 0bb32486ea3fcfd37337b18b02f4f432effa8f75
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169573"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678341"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje niektórych danych telemetrycznych
@@ -34,7 +29,7 @@ ms.locfileid: "71169573"
 
 *Mam utratę danych w aplikacji konsolowej lub aplikacji sieci Web, gdy aplikacja zostanie zatrzymana.*
 
-* Kanał zestawu SDK przechowuje dane telemetryczne w buforze i wysyła je w partiach. Jeśli aplikacja jest zamykana, może być konieczne jawne wywołanie metody [Flush ()](api-custom-events-metrics.md#flushing-data). Zachowanie zależy od rzeczywistego używanego kanału. [](telemetry-channels.md#built-in-telemetry-channels) `Flush()`
+* Kanał zestawu SDK przechowuje dane telemetryczne w buforze i wysyła je w partiach. Jeśli aplikacja jest zamykana, może być konieczne jawne wywołanie metody [Flush ()](api-custom-events-metrics.md#flushing-data). Zachowanie `Flush()` zależy od rzeczywistego używanego [kanału](telemetry-channels.md#built-in-telemetry-channels) .
 
 ## <a name="no-data-from-my-server"></a>Brak danych z mojego serwera
 *Moja aplikacja została zainstalowana na serwerze sieci Web, a teraz nie widzę żadnych danych telemetrycznych. Działa on prawidłowo na komputerze deweloperskim.*
@@ -67,7 +62,7 @@ Wiązane
 
 * Sprawdź, czy podane poświadczenia logowania są odpowiednie dla odpowiedniego konta platformy Azure.
 * Sprawdź, czy masz dostęp do [Azure Portal](https://portal.azure.com)w przeglądarce. Otwórz ustawienia i sprawdź, czy istnieją jakieś ograniczenia.
-* [Dodaj Application Insights do istniejącego projektu](../../azure-monitor/app/asp-net.md): W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt i wybierz polecenie "Dodaj Application Insights".
+* [Dodaj Application Insights do istniejącego projektu](../../azure-monitor/app/asp-net.md): w Eksplorator rozwiązań, kliknij prawym przyciskiem myszy projekt i wybierz polecenie "Dodaj Application Insights".
 
 ## <a name="emptykey"></a>Otrzymuję błąd "klucz instrumentacji nie może być pusty"
 Wygląda na to, że wystąpił problem podczas instalowania Application Insights lub karty rejestrowania.
@@ -102,9 +97,9 @@ W przeciwnym razie typ projektu nie jest obsługiwany bezpośrednio przez narzę
 Logowanie firmy Microsoft, które zostało ostatnio użyte w domyślnej przeglądarce, nie ma dostępu do [zasobu, który został utworzony po dodaniu Application Insights do tej aplikacji](../../azure-monitor/app/asp-net.md). Istnieją dwa możliwe przyczyny:
 
 * Masz więcej niż jedną konto Microsoft — może to być służbowa i osobista konto Microsofta? Logowanie, które było ostatnio używane w domyślnej przeglądarce, dotyczyło innego konta niż konto, które ma dostęp do [dodawania Application Insights do projektu](../../azure-monitor/app/asp-net.md).
-  * Wiązane Kliknij swoją nazwę w prawym górnym rogu okna przeglądarki i wyloguj się. Następnie zaloguj się przy użyciu konta, które ma dostęp. Następnie na lewym pasku nawigacyjnym kliknij pozycję Application Insights i wybierz aplikację.
+  * Poprawka: kliknij swoją nazwę w prawym górnym rogu okna przeglądarki i wyloguj się. Następnie zaloguj się przy użyciu konta, które ma dostęp. Następnie na lewym pasku nawigacyjnym kliknij pozycję Application Insights i wybierz aplikację.
 * Ktoś inny dodał Application Insights do projektu i nie ma [dostępu do grupy zasobów](../../azure-monitor/app/resources-roles-access-control.md) , w której został utworzony.
-  * Wiązane Jeśli użył konta organizacyjnego, może dodać Cię do zespołu; lub mogą udzielić indywidualnego dostępu do grupy zasobów.
+  * Poprawka: Jeśli użył konta organizacyjnego, może dodać Cię do zespołu; lub mogą udzielić indywidualnego dostępu do grupy zasobów.
 
 ## <a name="asset-not-found-on-opening-application-insights-from-visual-studio"></a>"Nie znaleziono elementu zawartości" podczas otwierania Application Insights z programu Visual Studio
 *Polecenie menu "Otwórz Application Insights" przenosi do Azure Portal, ale otrzymuję błąd "nie znaleziono zasobu".*
@@ -118,7 +113,7 @@ Klucz Instrumentacji w ApplicationInsights. config kontroluje, gdzie jest wysył
 
 Wiązane
 
-* W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję Application Insights, skonfiguruj Application Insights. W oknie dialogowym możesz wybrać wysyłanie danych telemetrycznych do istniejącego zasobu lub utworzyć nowe. Oraz
+* W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję Application Insights, skonfiguruj Application Insights. W oknie dialogowym możesz wybrać wysyłanie danych telemetrycznych do istniejącego zasobu lub utworzyć nowe. oraz
 * Otwórz zasób bezpośrednio. Zaloguj się do [Azure Portal](https://portal.azure.com), kliknij przycisk Application Insights na lewym pasku nawigacyjnym, a następnie wybierz aplikację.
 
 ## <a name="where-do-i-find-my-telemetry"></a>Gdzie mogę znaleźć moją telemetrię?
@@ -141,7 +136,7 @@ Wiązane
   * Jeśli nie możesz znaleźć pasujących kluczy, sprawdź, czy używasz tych samych poświadczeń logowania w programie Visual Studio jak w portalu.
 * Na [głównym pulpicie nawigacyjnym Microsoft Azure](https://portal.azure.com)obejrzyj mapę Service Health. Jeśli istnieją jakieś wskazania alertów, poczekaj, aż powróci do programu OK, a następnie zamknij i ponownie otwórz blok aplikacji Application Insights.
 * Sprawdź również [nasz blog o stanie](https://blogs.msdn.microsoft.com/servicemap-status/).
-* Czy piszesz kod dla [zestawu SDK po stronie serwera](../../azure-monitor/app/api-custom-events-metrics.md) , który może zmienić klucz Instrumentacji w `TelemetryClient` wystąpieniach lub w? `TelemetryContext` Lub napisać [Filtr lub konfigurację próbkowania](../../azure-monitor/app/api-filtering-sampling.md) , która może być zbyt duża?
+* Czy piszesz kod dla [zestawu SDK po stronie serwera](../../azure-monitor/app/api-custom-events-metrics.md) , który może zmienić klucz Instrumentacji w `TelemetryClient` wystąpieniach lub w `TelemetryContext`? Lub napisać [Filtr lub konfigurację próbkowania](../../azure-monitor/app/api-filtering-sampling.md) , która może być zbyt duża?
 * Jeśli edytowano plik ApplicationInsights. config, należy uważnie sprawdzić konfigurację [TelemetryInitializers i TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md). Nieprawidłowo nazwany typ lub parametr może spowodować, że zestaw SDK nie wyśle danych.
 
 ## <a name="q04"></a>Brak danych w widokach stron, przeglądarkach, użyciu
@@ -151,7 +146,7 @@ Dane pochodzą ze skryptów na stronach sieci Web.
 
 * Jeśli dodano Application Insights do istniejącego projektu sieci Web, [należy ręcznie dodać skrypty](../../azure-monitor/app/javascript.md).
 * Upewnij się, że w programie Internet Explorer nie jest wyświetlana witryna w trybie zgodności.
-* Użyj funkcji debugowania przeglądarki (F12 w niektórych przeglądarkach, a następnie wybierz sieć), aby sprawdzić, czy dane są wysyłane `dc.services.visualstudio.com`do.
+* Użyj funkcji debugowania przeglądarki (F12 w niektórych przeglądarkach, a następnie wybierz sieć), aby sprawdzić, czy dane są wysyłane do `dc.services.visualstudio.com`.
 
 ## <a name="no-dependency-or-exception-data"></a>Brak zależności lub danych wyjątków
 Zobacz [Telemetria zależności](../../azure-monitor/app/asp-net-dependencies.md) i [telemetrię wyjątku](asp-net-exceptions.md).
@@ -170,7 +165,7 @@ Dane wydajności (procesor CPU, szybkość operacji we/wy itd.) są dostępne dl
 * Czy osiągnięto miesięczny limit liczby punktów danych? Aby dowiedzieć się, Otwórz ustawienia/przydział i Cennik. Jeśli tak, możesz uaktualnić plan lub uregulować dodatkową pojemność. Zobacz [schemat cen](https://azure.microsoft.com/pricing/details/application-insights/).
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>Nie widzę wszystkich danych, których oczekuje
-Jeśli aplikacja wysyła dużo danych i używasz zestawu Application Insights SDK dla ASP.NET w wersji 2.0.0-beta3 lub nowszej, funkcja próbkowania adaptacyjnego [](../../azure-monitor/app/sampling.md) może działać i wysyłać tylko procent danych telemetrycznych.
+Jeśli aplikacja wysyła dużo danych i używasz zestawu Application Insights SDK dla ASP.NET w wersji 2.0.0-beta3 lub nowszej, funkcja [próbkowania adaptacyjnego](../../azure-monitor/app/sampling.md) może działać i wysyłać tylko procent danych telemetrycznych.
 
 Można go wyłączyć, ale nie jest to zalecane. Próbkowanie jest zaprojektowana tak, aby powiązane dane telemetryczne były prawidłowo przesyłane do celów diagnostycznych.
 
@@ -179,7 +174,7 @@ Można go wyłączyć, ale nie jest to zalecane. Próbkowanie jest zaprojektowan
 W lutym 5 2018 ogłoszono, że usunięto rejestrowanie adresu IP klienta. Nie ma to wpływu na lokalizację geograficzną.
 
 > [!NOTE]
-> Jeśli potrzebujesz pierwszych 3 oktetów adresu IP, możesz użyć inicjatora telemetrii, [](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) aby dodać atrybut niestandardowy.
+> Jeśli potrzebujesz pierwszych 3 oktetów adresu IP, możesz użyć [inicjatora telemetrii](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) , aby dodać atrybut niestandardowy.
 > Nie ma to wpływu na dane zebrane przed 5 lutego 2018 r.
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Nieprawidłowe dane geograficzne w telemetrii użytkownika
@@ -194,7 +189,7 @@ Postępuj zgodnie z tymi instrukcjami, aby przechwytywać dzienniki rozwiązywan
 
 ### <a name="net-framework"></a>.NET Framework
 
-1. Zainstaluj pakiet [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z narzędzia NuGet. Instalowana wersja musi być zgodna z aktualnie zainstalowaną wersją programu`Microsoft.ApplicationInsighs`
+1. Zainstaluj pakiet [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z narzędzia NuGet. Instalowana wersja musi być zgodna z aktualnie zainstalowaną wersją `Microsoft.ApplicationInsighs`
 
 2. Zmodyfikuj plik ApplicationInsights. config w taki sposób, aby obejmował następujące elementy:
 
@@ -215,11 +210,11 @@ Postępuj zgodnie z tymi instrukcjami, aby przechwytywać dzienniki rozwiązywan
 
 ### <a name="net-core"></a>.NET Core
 
-1. Zainstaluj pakiet [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z narzędzia NuGet. Instalowana wersja musi być zgodna z aktualnie zainstalowaną wersją programu`Microsoft.ApplicationInsights`
+1. Zainstaluj pakiet [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z narzędzia NuGet. Instalowana wersja musi być zgodna z aktualnie zainstalowaną wersją `Microsoft.ApplicationInsights`
 
 Najnowsza wersja Microsoft. ApplicationInsights. AspNetCore to 2.7.1 i odnosi się do Microsoft. ApplicationInsights w wersji 2,10. W związku z tym wersja programu Microsoft. AspNet. ApplicationInsights. HostingStartup, która ma zostać zainstalowana, powinna być 2.10.0
 
-2. Modyfikuj `ConfigureServices` metodę`Startup.cs` w klasie.:
+2. Zmodyfikuj metodę `ConfigureServices` w klasie `Startup.cs`.:
 
     ```csharp
     services.AddSingleton<ITelemetryModule, FileDiagnosticsTelemetryModule>();

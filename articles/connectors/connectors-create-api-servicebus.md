@@ -1,6 +1,6 @@
 ---
-title: Wysyłanie i odbieranie komunikatów przy użyciu Azure Service Bus-Azure Logic Apps
-description: Konfigurowanie obsługi komunikatów w chmurze przedsiębiorstwa przy użyciu Azure Service Bus i Azure Logic Apps
+title: Komunikaty programu Exchange z Azure Service Bus-Azure Logic Apps
+description: Wysyłanie i odbieranie wiadomości przy użyciu Azure Service Bus w Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,16 +9,15 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 tags: connectors
-ms.openlocfilehash: f2034686e4a8de5e1ccc246f49337a6600bf441f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0cf5486e77e69f83973f7e62669e5ab45d1c94a2
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120879"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679197"
 ---
-# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-with-azure-service-bus"></a>Wymiana komunikatów w chmurze przy użyciu Azure Logic Apps z Azure Service Bus
+# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Wymiana komunikatów w chmurze przy użyciu Azure Logic Apps i Azure Service Bus
 
 Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i łącznika [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) można tworzyć automatyczne zadania i przepływy pracy, które przesyłają dane, takie jak zamówienia sprzedaży i zakupu, dzienniki i przesunięcia spisu między aplikacjami w organizacji. Łącznik nie tylko monitoruje, wysyła i zarządza komunikatami, ale wykonuje także akcje z kolejkami, sesjami, tematami, subskrypcjami i tak dalej, na przykład:
 
@@ -49,7 +48,7 @@ Można użyć wyzwalaczy, które pobierają odpowiedzi z Service Bus i udostępn
 
 Upewnij się, że aplikacja logiki ma uprawnienia do uzyskiwania dostępu do przestrzeni nazw Service Bus.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. Przejdź do *przestrzeni nazw*Service Bus. Na stronie przestrzeń nazw w obszarze **Ustawienia**wybierz pozycję **zasady dostępu współdzielonego**. W obszarze **oświadczenia**Sprawdź, czy masz uprawnienia do **zarządzania** tą przestrzenią nazw.
 
@@ -64,7 +63,7 @@ Upewnij się, że aplikacja logiki ma uprawnienia do uzyskiwania dostępu do prz
       ![Kopiuj parametry połączenia Service Bus przestrzeni nazw](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Aby sprawdzić, czy parametry połączenia są skojarzone z przestrzenią nazw Service Bus, czy z jednostką obsługi komunikatów, taką jak kolejka, Wyszukaj parametry `EntityPath`połączenia dla  parametru. Jeśli ten parametr zostanie znaleziony, ciąg połączenia jest przeznaczony dla określonej jednostki i nie jest poprawnym ciągiem używanym z aplikacją logiki.
+   > Aby potwierdzić, czy parametry połączenia są skojarzone z przestrzenią nazw Service Bus, czy z jednostką obsługi komunikatów, taką jak kolejka, wyszukaj ciąg połączenia dla `EntityPath`  parameter. Jeśli ten parametr zostanie znaleziony, ciąg połączenia jest przeznaczony dla określonej jednostki i nie jest poprawnym ciągiem używanym z aplikacją logiki.
 
 ## <a name="add-service-bus-trigger"></a>Dodaj wyzwalacz Service Bus
 

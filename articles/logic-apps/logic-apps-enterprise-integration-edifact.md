@@ -1,6 +1,6 @@
 ---
-title: Komunikatów EDIFACT integracji przedsiębiorstw B2B — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Wymienianie komunikatów EDIFACT w formacie EDI, B2B integracji przedsiębiorstwa w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+title: Komunikaty EDIFACT dla integracji B2B — Azure Logic Apps
+description: Komunikaty programu Exchange EDIFACT w formacie EDI dla integracji z usługą B2B Enterprise w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,243 +8,242 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.date: 07/26/2016
-ms.openlocfilehash: bbcdad7c5496cd08994a613b07e1bc7c611e4572
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 42197f8bf08ae1f36c531c220ebbf78484a5946e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684509"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680349"
 ---
-# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wymienianie komunikatów EDIFACT integracji przedsiębiorstw B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Komunikaty programu Exchange EDIFACT dla integracji z usługą B2B Enterprise w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 
-Przed przystąpieniem do wymiany komunikatów EDIFACT dla usługi Azure Logic Apps, należy utworzyć umowę EDIFACT i przechowywać tej umowy na koncie integracji. Poniżej przedstawiono procedurę tworzenia umowy EDIFACT.
+Przed rozpoczęciem wymiany komunikatów EDIFACT dla Azure Logic Apps należy utworzyć umowę EDIFACT i przechować ją na koncie integracji. Poniżej przedstawiono procedurę tworzenia umowy EDIFACT.
 
 > [!NOTE]
-> Ta strona obejmuje funkcje EDIFACT w usłudze Azure Logic Apps. Aby uzyskać więcej informacji, zobacz [X12](logic-apps-enterprise-integration-x12.md).
+> Ta strona obejmuje funkcje EDIFACT dla Azure Logic Apps. Aby uzyskać więcej informacji, zobacz [X12](logic-apps-enterprise-integration-x12.md).
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Oto elementy, które są potrzebne:
+Oto elementy, których potrzebujesz:
 
-* [Konta integracji](logic-apps-enterprise-integration-create-integration-account.md) który został już zdefiniowany i skojarzonych z subskrypcją platformy Azure  
-* Co najmniej dwóch [partnerów](logic-apps-enterprise-integration-partners.md) które zostały już zdefiniowane w ramach konta integracji
+* [Konto integracji](logic-apps-enterprise-integration-create-integration-account.md) , które jest już zdefiniowane i skojarzone z subskrypcją platformy Azure  
+* Co najmniej dwóch [partnerów](logic-apps-enterprise-integration-partners.md) , które są już zdefiniowane na koncie integracji
 
 > [!NOTE]
-> Podczas tworzenia umowy zawartości w wiadomości, które odbierania lub wysyłania do i od partnera musi być zgodna z typem umowy.
+> Podczas tworzenia umowy zawartość komunikatów otrzymywanych lub wysyłanych do i z partnera musi być zgodna z typem umowy.
 
-Po zakończeniu [utworzyć konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) i [partnerów dodane](logic-apps-enterprise-integration-partners.md), umowę EDIFACT można utworzyć, wykonując następujące kroki.
+Po [utworzeniu konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) i [dodaniu partnerów](logic-apps-enterprise-integration-partners.md)możesz utworzyć umowę EDIFACT, wykonując następujące kroki.
 
-## <a name="create-an-edifact-agreement"></a>Tworzenie umowy EDIFACT 
+## <a name="create-an-edifact-agreement"></a>Utwórz umowę EDIFACT 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com "Azure Portal"). 
+1. Zaloguj się do [portalu Azure](https://portal.azure.com "Azure Portal"). 
 
-2. W głównym menu platformy Azure, wybierz **wszystkich usług**. W polu wyszukiwania wprowadź "integration", a następnie wybierz pozycję **kont integracji**.
+2. W głównym menu platformy Azure wybierz pozycję **wszystkie usługi**. W polu wyszukiwania wprowadź ciąg "Integracja", a następnie wybierz pozycję **konta integracji**.
 
-   ![Znajdź swoje konto integracji](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+   ![Znajdowanie konta integracji](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
    > [!TIP]
-   > Jeśli **wszystkich usług** nie jest wyświetlane, trzeba najpierw rozwiń menu. W górnej części menu zwinięty wybierz **Pokaż etykiety tekstowe**.
+   > Jeśli nie zostaną wyświetlone **wszystkie usługi** , może być konieczne pierwsze rozszerzenie menu. W górnej części zwiniętego menu wybierz pozycję **Pokaż etykiety tekstu**.
 
-3. W obszarze **kont integracji**, wybierz konto integracji, w którym chcesz utworzyć umowy.
+3. W obszarze **konta integracji**wybierz konto integracji, w którym chcesz utworzyć umowę.
 
-   ![Wybierz miejsce utworzenia umowę konta integracji](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+   ![Wybierz konto integracji, dla którego chcesz utworzyć umowę](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
-4. Wybierz **umowy**. Jeśli nie masz umowy kafelka, dodać Kafelek.   
+4. Wybierz pozycję **umowy**. Jeśli nie masz kafelka umów, najpierw Dodaj kafelek.   
 
-   ![Wybierz Kafelek "Umowy"](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
+   ![Wybierz kafelek "umowy"](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
 
-5. Na stronie umowy wybierz **Dodaj**.
+5. Na stronie umowy wybierz pozycję **Dodaj**.
 
-   ![Wybieranie pozycji "Dodaj"](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
+   ![Wybierz pozycję "Dodaj"](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. W obszarze **Dodaj**, wprowadź **nazwa** dla umowy. Aby uzyskać **typ umowy**, wybierz opcję **EDIFACT**. Wybierz **Partner hosta**, **tożsamości hosta**, **Partner gościa**, i **tożsamość gościa** dla umowy.
+6. W obszarze **Dodaj**wpisz **nazwę** umowy. W obszarze **typ umowy**wybierz pozycję **EDIFACT**. Wybierz **partnera hosta**, **tożsamość hosta**, **partnera gościa**i **tożsamość gościa** dla Twojej umowy.
 
    ![Podaj szczegóły umowy](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
    | Właściwość | Opis |
    | --- | --- |
-   | Name (Nazwa) |Nazwa umowy |
+   | Nazwa |Nazwa umowy |
    | Typ umowy | Powinien być EDIFACT |
-   | Partner hosta |Umowa musi mieć partnera hosta i gościa. Partner hosta reprezentuje organizację, która umożliwia skonfigurowanie umowy. |
-   | Tożsamość hosta |Identyfikator partnera hosta |
-   | Partner gościa |Umowa musi mieć partnera hosta i gościa. Partner gościa reprezentuje organizację, która jest prowadzących działalność we współpracy z partnerem hosta. |
+   | Partner hosta |Umowa wymaga zarówno hosta, jak i partnera gościa. Partner hosta reprezentuje organizację, która konfiguruje umowę. |
+   | Tożsamość hosta |Identyfikator dla partnera hosta |
+   | Partner gościa |Umowa wymaga zarówno hosta, jak i partnera gościa. Partner gościa reprezentuje organizację, która wykonuje działalność z partnerem hosta. |
    | Tożsamość gościa |Identyfikator partnera gościa |
    | Ustawienia odbierania |Te właściwości mają zastosowanie do wszystkich komunikatów odebranych przez umowę. |
    | Ustawienia wysyłania |Te właściwości mają zastosowanie do wszystkich komunikatów wysłanych przez umowę. |
    ||| 
 
-## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurowanie, jak dojścia Twojej umowy odebranych komunikatów
+## <a name="configure-how-your-agreement-handles-received-messages"></a>Skonfiguruj sposób obsługi komunikatów odebranych przez umowę
 
-Teraz, gdy ustawiono właściwości umowy, można skonfigurować, jak niniejsza Umowa identyfikuje i obsługuje komunikaty przychodzące otrzymany od partnera za pośrednictwem niniejszej Umowy.
+Po ustawieniu właściwości umowy można skonfigurować, w jaki sposób ta umowa identyfikuje i obsługuje komunikaty przychodzące otrzymane od partnera za pośrednictwem tej umowy.
 
-1. W obszarze **Dodaj**, wybierz opcję **ustawienia odbierania**.
-Należy skonfigurować te właściwości, w oparciu o umowy z partnerem, który wymienia wiadomości z Tobą. Opisy właściwości znajdują się w tabelach w tej sekcji.
+1. W obszarze **Dodaj**wybierz pozycję **Odbierz ustawienia**.
+Skonfiguruj te właściwości na podstawie umowy z partnerem, który wymienia z nim wiadomości. Opisy właściwości znajdują się w tabelach w tej sekcji.
 
-   **Otrzymał ustawienia** jest podzielone na następujące sekcje: Identyfikatory potwierdzenia, schematów, numerów kontrolnych, weryfikacji i ustawienia wewnętrzne.
+   **Ustawienia odbierania** są zorganizowane w następujące sekcje: identyfikatory, potwierdzenia, schematy, numery kontrolne, walidacja i ustawienia wewnętrzne.
 
-   ![Skonfiguruj "Otrzymywać ustawienia"](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
+   ![Konfigurowanie "odbierania ustawień"](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
-2. Po wykonaniu tych czynności upewnij się zapisać ustawienia, wybierając **OK**.
+2. Po zakończeniu upewnij się, że ustawienia zostały zapisane, wybierając **przycisk OK**.
 
-Teraz umowy jest gotowy do obsługi wiadomości przychodzących, które są zgodne z wybrane ustawienia.
+Teraz Twoja umowa jest gotowa do obsługi wiadomości przychodzących, które są zgodne z wybranymi ustawieniami.
 
 ### <a name="identifiers"></a>Identyfikatory
 
 | Właściwość | Opis |
 | --- | --- |
-| UNB6.1 (hasło odwołania do odbiorcy) |Wprowadź wartość alfanumeryczne z zakresu od 1 do 14 znaków. |
-| UNB6.2 (kwalifikator odwołania do odbiorcy) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie dwóch znaków. |
+| UNB 6.1 (hasło odwołania do odbiorcy) |Wprowadź wartość alfanumeryczną z zakresu od 1 do 14 znaków. |
+| UNB 6.2 (kwalifikator odwołania odbiorcy) |Wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie dwa znaki. |
 
-### <a name="acknowledgments"></a>Potwierdzenia
+### <a name="acknowledgments"></a>Potwierdzeń
 
 | Właściwość | Opis |
 | --- | --- |
-| Potwierdzenie odbioru komunikatu (CONTRL) |Zaznacz to pole wyboru do zwrócenia techniczne potwierdzenie (CONTRL) do nadawcy wymiany. Potwierdzenie są wysyłane do nadawcy wymiany oparte na ustawieniach wysyłania umowy. |
-| Potwierdzenie (CONTRL) |Zaznacz to pole wyboru, aby przywrócić funkcjonalności potwierdzenie (CONTRL) nadawcy wymiany potwierdzenie są wysyłane do nadawcy wymiany oparte na ustawieniach wysyłania umowy. |
+| Otrzymanie wiadomości (CONTRL) |Zaznacz to pole wyboru, aby zwrócić do nadawcy wymiany potwierdzenie techniczne (CONTRL). Potwierdzenie jest wysyłane do nadawcy wymiany na podstawie ustawień wysyłki dla umowy. |
+| Potwierdzenie (CONTRL) |Zaznacz to pole wyboru, aby zwrócić funkcję (CONTRL) do nadawcy wymiany, potwierdzenie jest wysyłane do nadawcy wymiany na podstawie ustawień wysyłania dla umowy. |
 
 ### <a name="schemas"></a>Schematy
 
 | Właściwość | Opis |
 | --- | --- |
-| UNH2.1 (TYPE) |Wybierz typ zestawu transakcji. |
-| UNH2.2 (WERSJA) |Wprowadź numer wersji komunikatu. (Co najmniej, jeden znak; maksymalna, trzy znaki). |
-| UNH2.3 (ZWOLNIENIE) |Wprowadź numer wersji komunikatu. (Co najmniej, jeden znak; maksymalna, trzy znaki). |
-| UNH2.5 (KOD PRZYPISANY SKOJARZONE) |Wprowadź kod przypisany. (Maksymalnie sześć znaków. Musi być alfanumeryczny). |
-| UNG2.1 (IDENTYFIKATOR NADAWCY APLIKACJI) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 35 znaków. |
-| UNG2.2 (KWALIFIKATOR KODU NADAWCY APLIKACJI) |Wprowadź wartość alfanumeryczne, z maksymalnie cztery znaki. |
-| SCHEMA |Wybierz wcześniej przekazane schemat, który chcesz korzystać z usługi skojarzonego konta integracji. |
+| UNH 2.1 (TYP) |Wybierz typ zestawu transakcji. |
+| UNH 2.2 (WERSJA) |Wprowadź numer wersji wiadomości. (Minimum, jeden znak; maksimum, trzy znaki). |
+| UNH 2.3 (WERSJA) |Wprowadź numer wersji wiadomości. (Minimum, jeden znak; maksimum, trzy znaki). |
+| UNH 2.5 (SKOJARZONY KOD PRZYPISANY) |Wprowadź przypisany kod. (Maksymalnie sześć znaków. Musi być alfanumeryczne). |
+| UNG 2.1 (IDENTYFIKATOR NADAWCY APLIKACJI) |Wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie 35 znaków. |
+| UNG 2.2 (KWALIFIKATOR KODU NADAWCY APLIKACJI) |Wprowadź wartość alfanumeryczną z maksymalnie czterema znakami. |
+| SCHEMATY |Wybierz wcześniej przekazany schemat, którego chcesz użyć ze skojarzonego konta integracji. |
 
 ### <a name="control-numbers"></a>Numery kontrolne
 | Właściwość | Opis |
 | --- | --- |
-| Nie zezwalaj na duplikaty numeru kontrolnego wymiany |Aby zablokować wymian duplikatów, wybierz tę właściwość. Zaznaczenie tego pola wyboru oznacza, akcja dekodowania EDIFACT sprawdza, czy numer kontrolny wymiany (UNB5) odebranych wymiany jest niezgodny numer kontrolny wymiany wcześniej przetworzonych. Jeśli zostanie wykryte dopasowanie, wymiana nie został przetworzony. |
-| Wyszukaj zduplikowanych elementów UNB5 co (dni) |Jeśli została wybrana opcja zabrania numerów kontrolnych wymiany duplikatów, można określić liczbę dni, kiedy należy sprawdzić, zapewniając odpowiednią wartość dla tego ustawienia. |
-| Nie zezwalaj na duplikaty numerów kontrolnych grupy |Aby zablokować wymian przy użyciu numerów kontrolnych grupy (UNG5), wybierz tę właściwość. |
-| Nie zezwalaj na duplikaty numerów kontrolnych zestawu transakcji |Aby zablokować wymian przy użyciu numerów kontrolnych zestawu transakcji zduplikowane (UNH1), wybierz tę właściwość. |
-| Numer kontrolny potwierdzenia EDIFACT |Aby wyznaczyć numerów odwołanie do zestawu transakcji do użycia w potwierdzenie, wprowadź wartość prefiksu, zakresu numerów odniesienia oraz sufiks. |
+| Nie Zezwalaj na duplikaty numerów kontrolnych wymiany |Aby zablokować zduplikowane zmiany, wybierz tę właściwość. W przypadku wybrania tej akcji dekodowanie EDIFACT sprawdza, czy numer kontrolki wymiany (UNB5) dla otrzymanej wymiany nie jest zgodny z wcześniej przetworzonym numerem kontroli wymiany. W przypadku wykrycia dopasowania, wymiana nie zostanie przetworzona. |
+| Sprawdzaj obecność zduplikowanych UNB5 co (dni) |Jeśli wybrano opcję niezezwalania na zduplikowane numery kontroli wymiany, można określić liczbę dni, po której należy wykonać sprawdzanie, podając odpowiednią wartość tego ustawienia. |
+| Nie Zezwalaj na duplikaty numerów kontrolnych grupy |Aby zablokować zmiany ze zduplikowanymi numerami kontrolek grup (UNG5), wybierz tę właściwość. |
+| Nie Zezwalaj na duplikaty numerów kontrolnych zestawu transakcji |Aby zablokować zmiany za pomocą duplikatów numerów kontroli zestawu transakcji (UNH1), wybierz tę właściwość. |
+| Numer kontrolny potwierdzenia EDIFACT |Aby wyznaczyć numery referencyjne zestawu transakcji do użycia w potwierdzeniu, wprowadź wartość dla prefiksu, zakres numerów odwołań i sufiks. |
 
-### <a name="validations"></a>Liczba ocen
+### <a name="validations"></a>Walidacji
 
-Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany automatycznie. Jeśli nie określisz żadnych reguł sprawdzania poprawności używa wiersza "Default".
+Po ukończeniu każdego wiersza walidacji zostanie automatycznie dodany inny. Jeśli nie określisz żadnych reguł, walidacja używa wiersza "default".
 
 | Właściwość | Opis |
 | --- | --- |
-| Typ komunikatu |Wybierz typ komunikatu EDI. |
-| Walidacja EDI |Walidacja EDI należy wykonać na typach danych, zgodnie z definicją schematu EDI właściwości, ograniczenia długości, elementy z pustymi danymi i separatory kończące. |
-| Rozszerzona Walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
-| Zezwalaj na zera wiodące/kończące |Zachowują wszelkie dodatkowe wiodące lub końcowe zero i miejsca znaków. Nie usuwaj te znaki. |
-| Przycinaj zera wiodące/kończące |Usuń wiodących ani końcowych zero i znaków spacji. |
-| Zasady dotyczące separatorów kończących |Generowanie separatory kończące. <p>Wybierz **niedozwolone** do Stanów Zjednoczonych zabraniają końcowe ograniczniki i separatorów w wymianie odebrane. Jeśli wymiana zawiera końcowe ograniczniki i separatory, wymiana zadeklarowano nie prawidłowy. <p>Wybierz **opcjonalnie** do akceptowania wymian z lub bez końcowe ograniczniki i separatorów. <p>Wybierz **obowiązkowe** podczas wymiany odebranych musi mieć końcowe ograniczniki i separatorów. |
+| Typ komunikatu |Wybierz typ wiadomości EDI. |
+| Weryfikacja EDI |Wykonaj walidację EDI dla typów danych, zgodnie z definicją w schemacie właściwości EDI, ograniczenia długości, puste elementy danych i końcowe separatory. |
+| Rozszerzona weryfikacja |Jeśli typ danych nie jest EDI, walidacja dotyczy wymagania elementu danych, dozwolonego powtórzenia, wyliczeń i poprawności długości elementu danych (min/max). |
+| Zezwalaj na zera wiodące/końcowe |Zachowaj wszystkie dodatkowe wiodące lub końcowe zera i spacje. Nie usuwaj tych znaków. |
+| Przytnij zera wiodące/końcowe |Usuń znaki wiodące lub końcowe zerowe i spacje. |
+| Końcowe zasady separatora |Generuj końcowe separatory. <p>Wybierz opcję **niedozwolone** , aby uniemożliwić końcowe ograniczniki i separatory w odebranej wymianie. Jeśli wymiana ma końcowe ograniczniki i separatory, wymiana jest zadeklarowana jako nieprawidłowa. <p>Wybierz opcję **opcjonalne** , aby akceptować zmiany, z końcowymi ogranicznikami i separatorami oraz bez nich. <p>Wybierz wartość **obowiązkowe** , Jeśli odebrana wymiana musi mieć końcowe ograniczniki i separatory. |
 
 ### <a name="internal-settings"></a>Ustawienia wewnętrzne
 
 | Właściwość | Opis |
 | --- | --- |
-| Utwórz puste tagi XML, jeśli dozwolone są separatory kończące |Zaznacz to pole wyboru, aby mieć nadawcy wymiany zawierają puste tagi XML dla końcowych separatorów. |
-| Podziel wymiany na zestawy transakcji — Zawieś zestawy transakcji w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując koperty odpowiedni zestaw transakcji. Zawieś zestawy transakcji, które powodują Niepowodzenie weryfikacji. |
-| Rozdziel wymianę na zestawy transakcji — Zawieś wymianę w przypadku błędu|Analizuje każdej transakcji, ustaw w wymianie do innego dokumentu XML, stosując odpowiednie koperty. Wstrzymaj wymiana całego, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. | 
-| Zachowaj wymianę — Zawieś zestawy transakcji w przypadku błędu |Pozostawia wymiana bez zmian, tworzy dokument XML dla całego wymiany wsadowej. Zawieś zestawy transakcji, które powodują Niepowodzenie weryfikacji przerywając przetwarzania wszystkich innych zestawów transakcji. |
-| Zachowaj wymianę — Zawieś wymianę w przypadku błędu |Pozostawia wymiana bez zmian, tworzy dokument XML dla całego wymiany wsadowej. Wstrzymaj wymiana całego, gdy wystąpi niepowodzenie weryfikacji, jeden lub więcej zestawów transakcji w wymianie. |
+| Utwórz puste tagi XML, jeśli są dozwolone końcowe separatory |Zaznacz to pole wyboru, aby nadawca wymiany mogli uwzględnić puste tagi XML dla końcowych separatorów. |
+| Rozdziel wymianę jako zestawy transakcji — Zawieś zestawy transakcji w przypadku błędu|Analizuje każdy zestaw transakcji w ramach wymiany do oddzielnego dokumentu XML przez zastosowanie odpowiedniej koperty do zestawu transakcji. Zawieś tylko zestawy transakcji, których Walidacja nie powiodła się. |
+| Podział wymiany jako zestawy transakcji — Zawieś wymianę w przypadku błędu|Analizuje każdy zestaw transakcji w ramach wymiany do oddzielnego dokumentu XML przez zastosowanie odpowiedniej formy. Zawieś całą wymianę, gdy co najmniej jeden zestaw transakcji w ramach walidacji nie powiodło się. | 
+| Zachowaj zestawy transakcji zawieszania wymiany w przypadku błędu |Pozostawia wymianę bez zmian, tworzy dokument XML dla całej wymiany wsadowej. Zawieś tylko zestawy transakcji, których Walidacja nie powiodła się, jednocześnie przetwarzając wszystkie inne zestawy transakcji. |
+| Zachowaj wymianę — Wstrzymaj transwymianę w przypadku błędu |Pozostawia wymianę bez zmian, tworzy dokument XML dla całej wymiany wsadowej. Zawieś całą wymianę, gdy co najmniej jeden zestaw transakcji w ramach walidacji nie powiodło się. |
 
-## <a name="configure-how-your-agreement-sends-messages"></a>Skonfiguruj sposób umowie wysyłania wiadomości
+## <a name="configure-how-your-agreement-sends-messages"></a>Konfigurowanie sposobu wysyłania komunikatów przez umowę
 
-Można skonfigurować, jak niniejsza Umowa identyfikuje i obsługuje komunikaty wychodzące wysyłane do partnerów za pośrednictwem niniejszej Umowy.
+Można skonfigurować sposób, w jaki ta umowa identyfikuje i obsługuje wiadomości wychodzące wysyłane do partnerów w ramach niniejszej umowy.
 
-1.  W obszarze **Dodaj**, wybierz opcję **ustawienia wysyłania**.
-Należy skonfigurować te właściwości, w oparciu o umowy z partnerem, który wymienia wiadomości z Tobą. Opisy właściwości znajdują się w tabelach w tej sekcji.
+1.  W obszarze **Dodaj**wybierz pozycję **Wyślij ustawienia**.
+Skonfiguruj te właściwości na podstawie umowy z partnerem, którzy wymieniają wiadomości. Opisy właściwości znajdują się w tabelach w tej sekcji.
 
-    **Ustawienia wysyłania** jest podzielone na następujące sekcje: Identyfikatory, potwierdzenia, schematów, koperty, zestawów znaków i separatory, numerów kontrolnych i sprawdzanie poprawności.
+    **Ustawienia wysyłania** są zorganizowane w następujące sekcje: identyfikatory, potwierdzenia, schematy, koperty, zestawy znaków i separatory, numery kontroli i walidacji.
 
-    ![Skonfiguruj "Wyślij ustawienia"](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
+    ![Konfigurowanie "wysyłania ustawień"](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
 
-2. Po wykonaniu tych czynności upewnij się zapisać ustawienia, wybierając **OK**.
+2. Po zakończeniu upewnij się, że ustawienia zostały zapisane, wybierając **przycisk OK**.
 
-Teraz umowy jest gotowy do obsługi wiadomości wychodzących, które są zgodne z wybrane ustawienia.
+Teraz Twoja umowa jest gotowa do obsługi wiadomości wychodzących, które są zgodne z wybranymi ustawieniami.
 
 ### <a name="identifiers"></a>Identyfikatory
 
 | Właściwość | Opis |
 | --- | --- |
-| UNB1.2 (wersja składni) |Wybierz wartość z zakresu od **1** i **4**. |
-| UNB2.3 (adres routingu odwrotnego nadawcy) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 14 znaków. |
-| UNB3.3 (adres routingu odwrotnego odbiorcy) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 14 znaków. |
-| UNB6.1 (hasło odwołania do odbiorcy) |Wprowadź wartość alfanumeryczne z co najmniej jedną i maksymalnie 14 znaków. |
-| UNB6.2 (kwalifikator odwołania do odbiorcy) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie dwóch znaków. |
-| UNB7 (Identyfikator odwołania do aplikacji) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 14 znaków |
+| UNB 1.2 (wersja składni) |Wybierz wartość z zakresu od **1** do **4**. |
+| UNB 2.3 (adres routingu odwrotnego nadawcy) |Wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie 14 znaków. |
+| UNB 3.3 (adres routingu odwrotnego odbiorcy) |Wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie 14 znaków. |
+| UNB 6.1 (hasło odwołania do odbiorcy) |Wprowadź wartość alfanumeryczną z co najmniej jedną i maksymalnie 14 znakami. |
+| UNB 6.2 (kwalifikator odwołania odbiorcy) |Wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie dwa znaki. |
+| UNB7 (identyfikator odwołania do aplikacji) |Wprowadź wartość alfanumeryczną z co najmniej jednym znakiem i maksymalnie 14 znakami |
 
-### <a name="acknowledgment"></a>Po potwierdzeniu
+### <a name="acknowledgment"></a>Dziękowanie
 | Właściwość | Opis |
 | --- | --- |
-| Potwierdzenie odbioru komunikatu (CONTRL) |Zaznacz to pole wyboru, jeśli partner hostowanej oczekuje otrzymać pomoc potwierdzenie (CONTRL). To ustawienie określa, że hostowanej partnera, który wysyła wiadomość, zażąda potwierdzenia od partnera gościa. |
-| Potwierdzenie (CONTRL) |Zaznacz to pole wyboru, jeśli partner hostowanej oczekuje otrzymać funkcjonalności potwierdzenie (CONTRL). To ustawienie określa, że hostowanej partnera, który wysyła wiadomość, zażąda potwierdzenia od partnera gościa. |
-| Generowanie SG1/sg4 dla zaakceptowanych zestawów transakcji |Jeśli została wybrana opcja żądania potwierdzenia funkcjonalności, zaznacz to pole wyboru, aby wymusić Generowanie SG1/BL4 pętli w funkcjonalności potwierdzenia CONTRL dla zaakceptowanych zestawów transakcji. |
+| Otrzymanie wiadomości (CONTRL) |Zaznacz to pole wyboru, jeśli Partner hostowany oczekuje na otrzymanie CONTRL. To ustawienie określa, że partner hostowany, który wysyła wiadomość, żąda potwierdzenia od partnera gościa. |
+| Potwierdzenie (CONTRL) |Zaznacz to pole wyboru, jeśli Partner hostowany oczekuje na otrzymanie funkcji (CONTRL). To ustawienie określa, że partner hostowany, który wysyła wiadomość, żąda potwierdzenia od partnera gościa. |
+| Generuj pętlę SG1/SG4 dla zaakceptowanych zestawów transakcji |Jeśli wybrano opcję zażądania potwierdzenia funkcjonalnego, zaznacz to pole wyboru, aby wymusić generowanie pętli SG1/SG4 w przypadku zaakceptowanych zestawów transakcji CONTRL. |
 
 ### <a name="schemas"></a>Schematy
 | Właściwość | Opis |
 | --- | --- |
-| UNH2.1 (TYPE) |Wybierz typ zestawu transakcji. |
-| UNH2.2 (WERSJA) |Wprowadź numer wersji komunikatu. |
-| UNH2.3 (ZWOLNIENIE) |Wprowadź numer wersji komunikatu. |
-| SCHEMA |Wybierz schemat używany. Schematy znajdują się na koncie integracji. Aby uzyskać dostęp do Twojego schematów, najpierw połączyć konta integracji aplikacji logiki. |
+| UNH 2.1 (TYP) |Wybierz typ zestawu transakcji. |
+| UNH 2.2 (WERSJA) |Wprowadź numer wersji wiadomości. |
+| UNH 2.3 (WERSJA) |Wprowadź numer wersji wiadomości. |
+| SCHEMATY |Wybierz schemat do użycia. Schematy znajdują się na koncie integracji. Aby uzyskać dostęp do swoich schematów, najpierw Połącz swoje konto integracji z aplikacją logiki. |
 
-### <a name="envelopes"></a>Kopert
+### <a name="envelopes"></a>Koperty
 | Właściwość | Opis |
 | --- | --- |
-| UNB8 (kod priorytetu przetwarzania) |Wprowadź wartość alfabetycznym, który nie jest więcej niż jeden znak. |
-| UNB10 (Umowa komunikacji) |Wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 40 znaków. |
-| UNB11 (wskaźnik testu) |Zaznacz to pole wyboru, aby wskazać, że wymiany generowane dane testowe |
-| Zastosuj Segment UNA (porady ciągu usługi) |Zaznacz to pole wyboru, aby wygenerować segment UNA wymiany do wysłania. |
-| Zastosuj segmenty UNG (nagłówek grupy funkcji) |Zaznacz to pole wyboru, aby utworzyć grupowanie segmenty w nagłówku grupy funkcjonalnej komunikaty wysyłane do partnera gościa. Aby utworzyć segmenty UNG używane są następujące wartości: <p>Aby uzyskać **UNG1**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie sześciu znaków. <p>Aby uzyskać **UNG2.1**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 35 znaków. <p>Aby uzyskać **UNG2.2**, wprowadź wartość alfanumeryczne z maksymalnie cztery znaki. <p>Aby uzyskać **UNG3.1**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 35 znaków. <p>Aby uzyskać **UNG3.2**, wprowadź wartość alfanumeryczne z maksymalnie cztery znaki. <p>Aby uzyskać **UNG6**, wprowadź wartość alfanumeryczne z co najmniej jedną i maksymalnie trzy znaki. <p>Aby uzyskać **UNG7.1**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie trzy znaki. <p>Aby uzyskać **UNG7.2**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie trzy znaki. <p>Aby uzyskać **UNG7.3**, wprowadź wartość alfanumeryczne z co najmniej 1 znak i maksymalnie 6 znaków. <p>Aby uzyskać **UNG8**, wprowadź wartość alfanumeryczne z co najmniej jeden znak i maksymalnie 14 znaków. |
+| UNB8 (kod priorytetu przetwarzania) |Wprowadź wartość alfabetyczną, która nie zawiera więcej niż jeden znak. |
+| UNB10 (Umowa komunikacyjna) |Wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie 40 znaków. |
+| UNB11 (wskaźnik testu) |Zaznacz to pole wyboru, aby wskazać, że wygenerowanej wymiany są dane testowe |
+| Zastosuj segment segmentu UNA (wskazówki dotyczące ciągu usługi) |Zaznacz to pole wyboru, aby wygenerować segment segmentu UNA dla wymiany, która ma zostać wysłana. |
+| Zastosuj segmenty UNG (nagłówek grupy funkcji) |Zaznacz to pole wyboru, aby utworzyć segmenty grupowania w nagłówku grupy funkcjonalnej w komunikatach wysyłanych do partnera gościa. Do tworzenia segmentów UNG są używane następujące wartości: <p>Dla **UNG1**wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie sześć znaków. <p>Dla **ung 2.1**wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie 35 znaków. <p>Dla **ung 2.2**wprowadź wartość alfanumeryczną z maksymalnie czterema znakami. <p>Dla **ung 3.1**wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie 35 znaków. <p>Dla **ung 3.2**wprowadź wartość alfanumeryczną z maksymalnie czterema znakami. <p>Dla **UNG6**wprowadź wartość alfanumeryczną z co najmniej jedną i maksymalnie trzema znakami. <p>Dla **ung 7.1**wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie trzy znaki. <p>W przypadku **ung 7.2**wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie trzy znaki. <p>Dla **ung 7.3**wprowadź wartość alfanumeryczną zawierającą co najmniej 1 znak i maksymalnie 6 znaków. <p>Dla **UNG8**wprowadź wartość alfanumeryczną z co najmniej jednym znakiem i maksymalnie 14 znakami. |
 
 ### <a name="character-sets-and-separators"></a>Zestawy znaków i separatory
 
-Inne niż zestaw znaków, możesz wprowadzić innego zestawu ograniczników ma być używany dla każdego typu komunikatu. Jeśli nie określono zestaw znaków dla schematu podanym komunikatem, jest używany domyślny zestaw znaków.
+Oprócz zestawu znaków można wprowadzić inny zestaw ograniczników, który będzie używany dla każdego typu wiadomości. Jeśli zestaw znaków nie zostanie określony dla danego schematu wiadomości, zostanie użyty domyślny zestaw znaków.
 
 | Właściwość | Opis |
 | --- | --- |
-| UNB1.1 (identyfikator systemu) |Wybierz zestaw ma zostać zastosowany wychodzących wymiany znaków EDIFACT. |
-| Schemat |Wybierz schemat z listy rozwijanej. Po wykonaniu każdego wiersza, nowy wiersz jest automatycznie dodawany. Dla wybranego schematu wybierz zestaw separatorów, do którego chcesz użyć, w oparciu o poniższe opisy separatora. |
+| UNB 1.1 (identyfikator systemu) |Wybierz zestaw znaków EDIFACT do zastosowania w wychodzącej wymianie. |
+| Schemat |Z listy rozwijanej wybierz schemat. Po zakończeniu każdego wiersza zostanie automatycznie dodany nowy wiersz. Dla wybranego schematu wybierz zestaw separatorów, który ma być używany, na podstawie opisów separatora poniżej. |
 | Typ danych wejściowych |Wybierz typ danych wejściowych z listy rozwijanej. |
-| Separator składników |Do oddzielania elementów danych złożonych, wprowadź jeden znak. |
-| Separator elementów danych |Do oddzielania elementów prostych danych w obrębie danych złożonych elementów, wprowadź jeden znak. |
-| Terminator segmentu |Aby wskazać koniec segmentu EDI, wprowadź jeden znak. |
-| Suffix |Wybierz znak, który jest używany z identyfikatora segmentu. Po wyznaczeniu sufiksu, element danych terminator segmentu może być pusta. Terminator segmentu jest puste, należy określić sufiks. |
+| Separator składników |Aby oddzielić złożone elementy danych, wprowadź pojedynczy znak. |
+| Separator elementów danych |Aby rozdzielić proste elementy danych w ramach złożonych elementów danych, należy wprowadzić pojedynczy znak. |
+| Terminator segmentu |Aby wskazać koniec segmentu EDI, wprowadź pojedynczy znak. |
+| Przedrostk |Wybierz znak, który jest używany z identyfikatorem segmentu. Jeśli wyznaczysz sufiks, element danych terminatora segmentu może być pusty. Jeśli terminator segmentu pozostaje pusty, należy wyznaczyć sufiks. |
 
 ### <a name="control-numbers"></a>Numery kontrolne
 | Właściwość | Opis |
 | --- | --- |
-| UNB5 (numer kontrolny wymiany) |Wprowadź prefiks zakresu wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania wychodzących wymiany. Prefiksem i sufiksem są opcjonalne, gdy numer kontrolny jest wymagana. Numer kontrolny są zwiększane dla każdej nowej wiadomości; Prefiks i sufiks pozostają takie same. |
-| UNG5 (numer kontrolny grupy) |Wprowadź prefiks zakresu wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania numer kontrolny grupy. Prefiksem i sufiksem są opcjonalne, gdy numer kontrolny jest wymagana. Numer kontrolny są zwiększane dla każdej nowej wiadomości, aż do osiągnięcia maksymalnej wartości; Prefiks i sufiks pozostają takie same. |
-| UNH1 (numer odwołania nagłówka komunikatu) |Wprowadź prefiks zakresu wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania numer odwołania do nagłówka komunikatu. Prefiks i sufiks są opcjonalne, gdy wymagany jest numer odwołania. Numer referencyjny są zwiększane dla każdej nowej wiadomości; Prefiks i sufiks pozostają takie same. |
+| UNB5 (numer kontrolny wymiany) |Wprowadź prefiks, zakres wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania wymiany wychodzącej. Prefiks i sufiks są opcjonalne, podczas gdy wymagany jest numer kontrolny. Numer kontrolny jest zwiększany dla każdej nowej wiadomości; prefiks i sufiks pozostają takie same. |
+| UNG5 (numer kontrolny grupy) |Wprowadź prefiks, zakres wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania numeru kontrolnego grupy. Prefiks i sufiks są opcjonalne, podczas gdy wymagany jest numer kontrolny. Numer kontrolny jest zwiększany dla każdej nowej wiadomości, dopóki nie zostanie osiągnięta maksymalna wartość; prefiks i sufiks pozostają takie same. |
+| UNH1 (Numer odwołania do nagłówka komunikatu) |Wprowadź prefiks, zakres wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania numeru odwołania do nagłówka komunikatu. Prefiks i sufiks są opcjonalne, podczas gdy numer referencyjny jest wymagany. Numer referencyjny jest zwiększany dla każdej nowej wiadomości; prefiks i sufiks pozostają takie same. |
 
-### <a name="validations"></a>Liczba ocen
+### <a name="validations"></a>Walidacji
 
-Po ukończeniu każdego wiersza sprawdzania poprawności innego jest dodawany automatycznie. Jeśli nie określisz żadnych reguł sprawdzania poprawności używa wiersza "Default".
+Po ukończeniu każdego wiersza walidacji zostanie automatycznie dodany inny. Jeśli nie określisz żadnych reguł, walidacja używa wiersza "default".
 
 | Właściwość | Opis |
 | --- | --- |
-| Typ komunikatu |Wybierz typ komunikatu EDI. |
-| Walidacja EDI |Walidacja EDI należy wykonać na typach danych, zgodnie z definicją schematu, ograniczenia długości, elementy z pustymi danymi i separatory kończące właściwości EDI. |
-| Rozszerzona Walidacja |Jeśli nie jest typem danych EDI, sprawdzanie poprawności jest na wymaganie element danych, powtórzenia, wyliczenia i danych weryfikacji długości elementu (min/max). |
-| Zezwalaj na zera wiodące/kończące |Zachowują wszelkie dodatkowe wiodące lub końcowe zero i miejsca znaków. Nie usuwaj te znaki. |
-| Przycinaj zera wiodące/kończące |Usuń początkowe lub końcowe zero znaków. |
-| Zasady dotyczące separatorów kończących |Generowanie separatory kończące. <p>Wybierz **niedozwolone** do Stanów Zjednoczonych zabraniają końcowe ograniczniki i separatorów w wymianie wysłane. Jeśli wymiana zawiera końcowe ograniczniki i separatory, wymiana zadeklarowano nie prawidłowy. <p>Wybierz **opcjonalnie** wysyłać wymian z lub bez końcowe ograniczniki i separatorów. <p>Wybierz **obowiązkowe** Jeśli wysłane wymiany musi mieć końcowe ograniczniki i separatorów. |
+| Typ komunikatu |Wybierz typ wiadomości EDI. |
+| Weryfikacja EDI |Wykonaj walidację EDI dla typów danych zgodnie z definicją właściwości EDI schematu, ograniczenia długości, puste elementy danych i końcowe separatory. |
+| Rozszerzona weryfikacja |Jeśli typ danych nie jest EDI, walidacja dotyczy wymagania elementu danych, dozwolonego powtórzenia, wyliczeń i poprawności długości elementu danych (min/max). |
+| Zezwalaj na zera wiodące/końcowe |Zachowaj wszystkie dodatkowe wiodące lub końcowe zera i spacje. Nie usuwaj tych znaków. |
+| Przytnij zera wiodące/końcowe |Usuń znaki wiodące lub końcowe zerowe. |
+| Końcowe zasady separatora |Generuj końcowe separatory. <p>Wybierz opcję **niedozwolone** , aby uniemożliwić końcowe ograniczniki i separatory w wysyłanej wymianie. Jeśli wymiana ma końcowe ograniczniki i separatory, wymiana jest zadeklarowana jako nieprawidłowa. <p>Wybierz opcję **opcjonalne** , aby wysyłać zmiany z lub bez ograniczników i separatorów końcowego. <p>Wybierz pozycję **obowiązkowe** , jeśli wysłana wymiana musi mieć końcowe ograniczniki i separatory. |
 
-## <a name="find-your-created-agreement"></a>Znajdź utworzony umowy
+## <a name="find-your-created-agreement"></a>Znajdź utworzoną umowę
 
-1.  Po zakończeniu na ustawienie swoje właściwości umowy **Dodaj** wybierz **OK** w stanie zakończyć tworzenia umowy, a następnie wróć do konta integracji.
+1.  Po zakończeniu ustawiania wszystkich właściwości umowy na stronie **Dodaj** wybierz **przycisk OK** , aby zakończyć tworzenie umowy i wrócić do konta integracji.
 
-    Nowo dodane umowy teraz pojawia się w Twojej **umów** listy.
+    Nowo dodana umowa zostanie teraz wyświetlona na liście **umów** .
 
-2.  Można również wyświetlić Twojej umowy w przeglądzie konta integracji. W menu konta integracji, wybierz **Przegląd**, a następnie wybierz **umów** kafelka. 
+2.  Możesz również wyświetlić umowy na koncie integracji — Omówienie. W menu konto integracji wybierz pozycję **Przegląd**, a następnie wybierz kafelek **umowy** . 
 
-    ![Wybierz Kafelek "Umowy"](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Wybierz kafelek "umowy"](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
-## <a name="view-swagger-file"></a>Wyświetl plik struktury Swagger
-Aby wyświetlić szczegóły struktury Swagger łącznika EDIFACT, zobacz [EDIFACT](/connectors/edifact/).
+## <a name="view-swagger-file"></a>Wyświetl plik Swagger
+Aby wyświetlić szczegóły struktury Swagger dla łącznika EDIFACT, zobacz [EDIFACT](/connectors/edifact/).
 
 ## <a name="learn-more"></a>Dowiedz się więcej
-* [Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw")  
+* [Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw")  
 

@@ -1,23 +1,18 @@
 ---
 title: Korzystanie z wyszukiwania w usłudze Azure Application Insights | Microsoft Docs
 description: Wyszukiwanie i filtrowanie nieprzetworzonej telemetrii wysyłanej przez aplikację sieci Web.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/30/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d08fd2ac6db63eee01c0653d2dbb1623fb1b51ed
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.date: 07/30/2019
+ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705418"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678055"
 ---
 # <a name="using-search-in-application-insights"></a>Korzystanie z wyszukiwania w Application Insights
 
@@ -65,12 +60,12 @@ Otwórz menu rozwijane typy zdarzeń i wybierz typy zdarzeń, które chcesz wyś
 
 Typy zdarzeń są następujące:
 
-* Śledzenie - [dzienników diagnostycznych](../../azure-monitor/app/asp-net-trace-logs.md) , w tym TrackTrace, log4Net, nLOG i system. Diagnostics. Trace.
+* **Śledzenie**  - [dzienników diagnostycznych](../../azure-monitor/app/asp-net-trace-logs.md) , w tym wywołań TrackTrace, Log4Net, nLOG i system. Diagnostics. Trace.
 * Żądania **żądania** — http odbierane przez aplikację serwera, w tym strony, skrypty, obrazy, pliki stylów i dane. Te zdarzenia są używane do tworzenia wykresów przeglądów żądań i odpowiedzi.
-*  - Dane telemetryczne wyświetlania stron[wysyłane przez klienta sieci Web](../../azure-monitor/app/javascript.md), używane do tworzenia raportów widoku strony.
+* **Widok strony**  -  dane[telemetryczne wysyłane przez klienta sieci Web](../../azure-monitor/app/javascript.md), używane do tworzenia raportów widoku strony.
 * **Zdarzenie niestandardowe** — w przypadku wstawienia wywołań do poleceń trackEvent () w celu [monitorowania użycia](../../azure-monitor/app/api-custom-events-metrics.md)można wyszukiwać je w tym miejscu.
 * Nieprzechwycone [wyjątki na serwerze](../../azure-monitor/app/asp-net-exceptions.md)oraz te, które są rejestrowane za pomocą funkcji trackexception ().
-* **Wywołania zależności** - [od aplikacji serwera](../../azure-monitor/app/asp-net-dependencies.md) do innych usług, takich jak interfejsy API REST lub bazy danych, oraz wywołania AJAX z [kodu klienta](../../azure-monitor/app/javascript.md).
+* **Zależność**  - [wywołań z aplikacji serwerowej](../../azure-monitor/app/asp-net-dependencies.md) do innych usług, takich jak interfejsy API REST lub bazy danych, oraz wywołań AJAX z [kodu klienta](../../azure-monitor/app/javascript.md).
 * **Dostępność** — wyniki [testów dostępności](../../azure-monitor/app/monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>Filtrowanie wartości właściwości
@@ -101,7 +96,7 @@ Może zajść potrzeba ustawienia zakresu czasu, ponieważ wyszukiwanie w króts
 
 Wyszukaj kompletne słowa, nie podciągi. Znaki specjalne należy ująć w cudzysłów.
 
-| String | *Nie* znaleziono | Znaleziono |
+| Ciąg | *Nie* znaleziono | Uznan |
 | --- | --- | --- |
 | HomeController. informacje |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |Stany Zjednoczone|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
@@ -142,7 +137,7 @@ Oprócz wbudowanej telemetrii wysyłanej przez Application Insights SDK można:
 
 [Dowiedz się, jak wysyłać dzienniki i niestandardową telemetrię do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
 
-## <a name="questions"></a>P & A
+## <a name="questions"></a>p & A
 
 ### <a name="limits"></a>Ile danych jest przechowywanych?
 

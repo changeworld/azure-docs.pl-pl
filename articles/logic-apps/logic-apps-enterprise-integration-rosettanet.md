@@ -1,6 +1,6 @@
 ---
-title: Komunikaty RosettaNet dla integracji dla przedsiębiorstw B2B — Azure Logic Apps
-description: Wymiana komunikatów RosettaNet w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+title: Komunikaty RosettaNet dla integracji B2B — Azure Logic Apps
+description: Komunikaty programu Exchange RosettaNet w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,255 +9,255 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 88e02f3fbbca8007fdf479bb973f50c42a878d6e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 570c7907f320b881e2db0bd45cdce311490f4f45
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333065"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680331"
 ---
-# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>RosettaNet komunikatów B2B integracji dla przedsiębiorstw w usłudze Azure Logic Apps 
+# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Komunikaty programu Exchange RosettaNet dla integracji z usługą B2B Enterprise w Azure Logic Apps
 
-[RosettaNet](https://resources.gs1us.org) to niedochodowa konsorcjum, która została ustanowiona standardowych procesów na potrzeby udostępniania informacji biznesowych. Standardy są często używane do procesów łańcuch dostaw i są powszechne w branżach półprzewodnikowych, electronics i logistycznych. Konsorcjum RosettaNet tworzy i obsługuje procesy interfejsu partnera (pestek), która zawiera typowe definicje procesów biznesowych, dla wszystkich wymianę komunikatów RosettaNet. RosettaNet jest oparte na języku XML i definiuje komunikat wytycznych, interfejsy dla procesów biznesowych i implementacja struktury do komunikacji między firmami.
+[RosettaNet](https://resources.gs1us.org) to konsorcjum niedochodowe, które ma standardowe procesy do udostępniania informacji służbowych. Te standardy są często używane na potrzeby procesów łańcucha dostaw i są szeroko rozpowszechnione w branżach półprzewodnikowych, elektronicznych i logistycznych. Konsorcjum RosettaNet tworzy i utrzymuje procesy interfejsu partnera (pestek), które zapewniają wspólne definicje procesów firmy dla wszystkich wymian komunikatów RosettaNet. RosettaNet opiera się na języku XML i definiuje wskazówki dotyczące komunikatów, interfejsy dla procesów biznesowych i struktury implementacji komunikacji między firmami.
 
-W [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md), łącznik RosettaNet pomaga w tworzeniu rozwiązań do integracji, które obsługują RosettaNet standardy. Łącznik jest oparty na RosettaNet Framework implementacji (RNIF) w wersji 2.0.01. RNIF to platforma aplikacji otwórz sieci, która umożliwia partnerom biznesowym wspólnie Uruchom pestek RosettaNet. Ta struktura definiuje strukturę wiadomości, konieczność potwierdzenia, kodowanie protokołu dynamicznej konfiguracji hosta (MIME, Multipurpose Internet Mail Extensions) i podpis cyfrowy.
+W [Azure Logic Apps](../logic-apps/logic-apps-overview.md)łącznik RosettaNet pomaga tworzyć rozwiązania integracji obsługujące standardy RosettaNet. Łącznik jest oparty na programie RosettaNet implementation Framework (RNIF) w wersji 2.0.01. RNIF to struktura aplikacji otwartej sieci, która umożliwia partnerom biznesowym współdziałanie z RosettaNet pestek. Ta struktura definiuje strukturę wiadomości, wymaganie potwierdzeń, kodowanie MIME (Multipurpose Internet Mail Extensions) i podpis cyfrowy.
 
-W szczególności łącznik spełnia te wymagania:
+W tym celu łącznik zapewnia następujące możliwości:
 
-* Zakoduj lub odbieranie komunikatów RosettaNet.
-* Dekodowanie komunikatów lub wysyłać komunikaty RosettaNet.
-* Oczekiwanie na odpowiedź i generowania powiadomień awarii.
+* Koduj lub odbieraj komunikaty RosettaNet.
+* Dekodowanie lub wysyłanie komunikatów RosettaNet.
+* Poczekaj na odpowiedź i wygenerowanie powiadomienia o niepowodzeniu.
 
-Tych funkcji łącznik obsługuje wszystkie pestek, które są definiowane przez RNIF 2.0.01. Komunikacja z partnerem, może być synchroniczna lub asynchroniczna.
+Dla tych możliwości łącznik obsługuje wszystkie pestek, które są zdefiniowane przez RNIF 2.0.01. Komunikacja z partnerem może być synchroniczna lub asynchroniczna.
 
-## <a name="rosettanet-concepts"></a>Pojęcia dotyczące RosettaNet
+## <a name="rosettanet-concepts"></a>Pojęcia RosettaNet
 
-Poniżej przedstawiono kilka pojęć i terminów, są unikatowe dla specyfikacji RosettaNet, które są ważne podczas kompilowania na podstawie RosettaNet integracji:
+Poniżej przedstawiono kilka pojęć i terminów, które są unikatowe dla specyfikacji RosettaNet i są ważne podczas tworzenia integracji opartych na RosettaNet:
 
-* **PIP**
+* **GRACZY**
 
-  Organizacja RosettaNet tworzy i obsługuje procesy interfejsu partnera (pestek), która zawiera typowe definicje procesów biznesowych, dla wszystkich wymianę komunikatów RosettaNet. Każda specyfikacja PIP zawiera plik definicji (DTD) typu dokumentu i dokument wytyczne wiadomości. Plik definicji DTD definiuje strukturę zawartości usługi wiadomości. Dokument wskazówek dotyczących komunikatów, czyli czytelny dla człowieka plik HTML, określa ograniczenia na poziomie elementu. Razem te pliki zawierają kompletną definicję procesu biznesowego.
+  Organizacja RosettaNet tworzy i utrzymuje procesy interfejsu partnera (pestek), które zapewniają wspólne definicje procesów firmy dla wszystkich wymian komunikatów RosettaNet. Każda specyfikacja PIP zawiera plik definicji typu dokumentu (DTD) i dokument zawierający wytyczne dotyczące komunikatów. Plik DTD definiuje strukturę wiadomości zawartości usługi. Dokument dotyczący komunikatów, który jest plikiem HTML, który jest czytelny dla człowieka, określa ograniczenia na poziomie elementu. Razem te pliki zapewniają kompletną definicję procesu biznesowego.
 
-   Pestek są pogrupowane według funkcji biznesowych wysokiego poziomu, lub klastra i podfunkcji lub segmentu. Na przykład "3A4" jest publiczny adres IP dla zamówienia zakupu, podczas "3" jest funkcją, Zarządzanie zamówieniami i "3A" jest podfunkcji oferty & wpisu zamówienia. Aby uzyskać więcej informacji, zobacz [witryny RosettaNet](https://resources.gs1us.org).
+   Wartości pestek są kategoryzowane przez funkcję biznesową wysokiego poziomu lub klaster oraz podfunkcję lub segment. Na przykład "3A4" to PIP dla zamówienia zakupu, natomiast "3" jest funkcją zarządzania kolejnością, a "3A" to funkcja podrzędnego wejścia kolejności &. Aby uzyskać więcej informacji, zobacz [witrynę RosettaNet](https://resources.gs1us.org).
 
 * **Akcja**
 
-  Część PIP, komunikaty akcji są komunikaty biznesowych, które są wymieniane między partnerami.
+  Częścią PIP, komunikaty akcji to wiadomości biznesowe wymieniane między partnerami.
 
-* **Sygnał**
+* **Wysłać**
 
-   Część PIP, komunikaty sygnału są potwierdzenia, które są wysyłane w odpowiedzi na komunikaty akcji.
+   Część PIP, komunikaty sygnalizujące są potwierdzeniami, które są wysyłane w odpowiedzi na komunikaty akcji.
 
-* **Podwójne akcji i jedną akcję**
+* **Pojedyncza Akcja i podwójna akcja**
 
-  Dla PIP jedną akcję tylko odpowiedź jest wiadomości potwierdzającej sygnału. W przypadku PIP akcji podwójnej precyzji inicjator odbiera komunikat odpowiedzi i odpowiada za pomocą potwierdzenia oprócz przepływ komunikatów pojedynczej akcji.
+  Jedyną odpowiedzią dla PIP jednego z nich jest komunikat z sygnałem potwierdzającym. W przypadku PIP podwójnej akcji inicjator odbiera komunikat odpowiedzi i odpowiedzi z potwierdzeniem oprócz przepływu komunikatu o pojedynczej akcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure [Załóż bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* [Konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) do przechowywania umowy i innych artefaktów B2B. To konto integracji muszą być skojarzone z subskrypcją platformy Azure.
+* [Konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) do przechowywania umowy i innych artefaktów B2B. To konto integracji musi być skojarzone z subskrypcją platformy Azure.
 
-* Co najmniej dwóch [partnerów](../logic-apps/logic-apps-enterprise-integration-partners.md) , są zdefiniowane w ramach konta integracji i skonfigurowano kwalifikator "DUNS" w obszarze **tożsamości biznesowych**
+* Co najmniej dwóch [partnerów](../logic-apps/logic-apps-enterprise-integration-partners.md) zdefiniowanych w ramach konta integracji i skonfigurowanych przy użyciu kwalifikatora "Duns" w obszarze **tożsamości biznesowe**
 
-* Narzędzie PIP konfiguracji procesu, który jest wymagany do wysyłania i odbierania wiadomości RosettaNet na koncie integracji. Konfiguracja procesu przechowuje wszystkie właściwości konfiguracji narzędzia PIP. Ta konfiguracja może się wtedy odwoływać podczas tworzenia umowy z partnerem. Aby utworzyć konfigurację procesu PIP na koncie integracji, zobacz [konfiguracji procesu dodawania PIP](#add-pip).
+* Konfiguracja procesu PIP, która jest wymagana do wysyłania i odbierania komunikatów RosettaNet na koncie integracji. W konfiguracji procesu są przechowywane wszystkie charakterystyki konfiguracji PIP. Następnie można odwołać się do tej konfiguracji podczas tworzenia umowy z partnerem. Aby utworzyć konfigurację procesu PIP na koncie integracji, zobacz [Add PIP Process Configuration](#add-pip).
 
-* Opcjonalnie [certyfikaty](../logic-apps/logic-apps-enterprise-integration-certificates.md) szyfrowania, odszyfrowywania i podpisywania wiadomości, które można przekazać do konta integracji. Certyfikaty są wymagane tylko wtedy, gdy jesteś, użyj podpisywania lub szyfrowania.
+* Opcjonalne [Certyfikaty](../logic-apps/logic-apps-enterprise-integration-certificates.md) służące do szyfrowania, odszyfrowywania lub podpisywania komunikatów przekazywanych na konto integracji. Certyfikaty są wymagane tylko w przypadku korzystania z podpisywania lub szyfrowania.
 
 <a name="add-pip"></a>
 
 ## <a name="add-pip-process-configuration"></a>Dodaj konfigurację procesu PIP
 
-Aby dodać konfigurację procesu PIP z kontem integracji, wykonaj następujące kroki:
+Aby dodać konfigurację procesu PIP do konta integracji, wykonaj następujące kroki:
 
-1. W [witryny Azure portal](https://portal.azure.com), Znajdź i Otwórz swoje konto integracji.
+1. W [Azure Portal](https://portal.azure.com)Znajdź i Otwórz konto integracji.
 
-1. Na **Przegląd** okienku wybierz **RosettaNet PIP** kafelka.
+1. W okienku **Przegląd** wybierz KAFELEK **RosettaNet PIP** .
 
-   ![Wybierz Kafelek RosettaNet](media/logic-apps-enterprise-integration-rosettanet/select-rosettanet-tile.png)
+   ![Wybierz kafelek RosettaNet](media/logic-apps-enterprise-integration-rosettanet/select-rosettanet-tile.png)
 
-1. W obszarze **RosettaNet PIP**, wybierz **Dodaj**. Podaj informacje dotyczące narzędzia PIP.
+1. W obszarze **ROSETTANET PIP**wybierz pozycję **Dodaj**. Podaj szczegóły dotyczące PIP.
 
    ![Dodaj szczegóły RosettaNet PIP](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
-   | **Nazwa** | Tak | Twoja nazwa adresu PIP |
-   | **Kod PIP** | Tak | Trzy cyfrowy kod PIP. Aby uzyskać więcej informacji, zobacz [pestek RosettaNet](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
-   | **Wersja narzędzia PIP** | Yes | Numer wersji narzędzia PIP, który jest dostępny w oparciu o wybrany kod PIP |
+   | **Nazwa** | Tak | Nazwa PIP |
+   | **Kod PIP** | Tak | Kod trzycyfrowy PIP. Aby uzyskać więcej informacji, zobacz [RosettaNet pestek](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
+   | **Wersja PIP** | Tak | Numer wersji PIP, który jest dostępny w oparciu o wybrany kod PIP |
    ||||
 
-   Aby uzyskać więcej informacji o tych właściwościach narzędzia PIP, odwiedź stronę [RosettaNet witryny sieci Web](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg).
+   Więcej informacji o tych właściwościach PIP można znaleźć w [witrynie sieci Web RosettaNet](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg).
 
-1. Gdy wszystko będzie gotowe, wybierz pozycję **OK**, która umożliwia utworzenie konfiguracji narzędzia PIP.
+1. Gdy wszystko będzie gotowe, wybierz **przycisk OK**, aby utworzyć konfigurację PIP.
 
-1. Aby wyświetlić lub edytować konfigurację procesu, wybierz publiczny adres IP, a następnie wybierz **Edytuj jako dane JSON**.
+1. Aby wyświetlić lub edytować konfigurację procesu, wybierz pozycję PIP, a następnie wybierz pozycję **Edytuj jako plik JSON**.
 
-   Przetwarzanie wszystkich konfiguracji ustawienia pochodzą z specyfikacje PIP. Usługa Logic Apps umożliwia wypełnienie większość ustawień z wartościami domyślnymi, które są najczęściej używane wartości tych właściwości.
+   Wszystkie ustawienia konfiguracji procesu pochodzą ze specyfikacji PIP. Logic Apps wypełnia większość ustawień wartościami domyślnymi, które są najczęściej używanymi wartościami dla tych właściwości.
 
    ![Edytuj konfigurację RosettaNet PIP](media/logic-apps-enterprise-integration-rosettanet/edit-rosettanet-pip.png)
 
-1. Upewnij się, że ustawienia odpowiadają wartościom w specyfikacji odpowiednie narzędzia PIP i potrzeb Twojej firmy. W razie potrzeby zaktualizuj wartości w formacie JSON i Zapisz zmiany.
+1. Upewnij się, że ustawienia odpowiadają wartościom w odpowiedniej specyfikacji PIP i spełniają potrzeby biznesowe. W razie potrzeby zaktualizuj wartości w formacie JSON i Zapisz te zmiany.
 
-## <a name="create-rosettanet-agreement"></a>Tworzenie umowy z RosettaNet
+## <a name="create-rosettanet-agreement"></a>Utwórz umowę RosettaNet
 
-1. W [witryny Azure portal](https://portal.azure.com), Znajdź i Otwórz swoje konto integracji, jeśli nie już otwarty.
+1. W [Azure Portal](https://portal.azure.com)Znajdź i Otwórz konto integracji, jeśli nie jest jeszcze otwarte.
 
-1. Na **Przegląd** okienku wybierz **umów** kafelka.
+1. W okienku **Przegląd** wybierz kafelek **umowy** .
 
-   ![Wybierz Kafelek umowy](media/logic-apps-enterprise-integration-rosettanet/select-agreement-tile.png)
+   ![Wybierz kafelek umowy](media/logic-apps-enterprise-integration-rosettanet/select-agreement-tile.png)
 
-1. W obszarze **umów**, wybierz **Dodaj**. Podaj szczegóły umowy.
+1. W obszarze **umowy**wybierz pozycję **Dodaj**. Podaj szczegóły umowy.
 
    ![Dodaj szczegóły umowy](media/logic-apps-enterprise-integration-rosettanet/add-agreement-details.png)
 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
    | **Nazwa** | Tak | Nazwa umowy |
-   | **Typ umowy** | Tak | Wybierz **RosettaNet**. |
-   | **Host Partner** | Yes | Umowa wymaga partnera hosta i gościa. Partner hosta reprezentuje organizację, która umożliwia skonfigurowanie umowy. |
-   | **Tożsamość hosta** | Tak | Identyfikator partnera hosta |
-   | **Partner gościa** | Tak | Umowa wymaga partnera hosta i gościa. Partner gościa reprezentuje organizację, która jest prowadzących działalność we współpracy z partnerem hosta. |
-   | **Tożsamość gościa** | Yes | Identyfikator partnera gościa |
+   | **Typ umowy** | Tak | Wybierz pozycję **RosettaNet**. |
+   | **Partner hosta** | Tak | Umowa wymaga zarówno hosta, jak i partnera gościa. Partner hosta reprezentuje organizację, która konfiguruje umowę. |
+   | **Tożsamość hosta** | Tak | Identyfikator dla partnera hosta |
+   | **Partner gościa** | Tak | Umowa wymaga zarówno hosta, jak i partnera gościa. Partner gościa reprezentuje organizację, która wykonuje działalność z partnerem hosta. |
+   | **Tożsamość gościa** | Tak | Identyfikator partnera gościa |
    | **Ustawienia odbierania** | Różna | Te właściwości mają zastosowanie do wszystkich komunikatów odebranych przez partnera hosta |
-   | **Ustawienia wysyłania** | Różna | Te właściwości mają zastosowanie do wszystkich komunikatów wysłanych przez partnera hosta |  
-   | **Odwołania RosettaNet PIP** | Tak | Odwołania narzędzia PIP umowy. Wszystkie komunikaty RosettaNet wymagają zastosowania takiej konfiguracji narzędzia PIP. |
+   | **Ustawienia wysyłania** | Różna | Te właściwości mają zastosowanie do wszystkich komunikatów wysyłanych przez partnera hosta |  
+   | **Odwołania do RosettaNet PIP** | Tak | Odwołanie PIP dla umowy. Wszystkie komunikaty RosettaNet wymagają konfiguracji PIP. |
    ||||
 
-1. Aby skonfigurować umowy do odbierania komunikatów przychodzących od partnera gościa, należy wybrać **ustawienia odbierania**.
+1. Aby skonfigurować umowę do odbierania wiadomości przychodzących z partnera gościa, wybierz pozycję **Odbierz ustawienia**.
 
    ![Ustawienia odbierania](media/logic-apps-enterprise-integration-rosettanet/add-agreement-receive-details.png)
 
-   1. Aby włączyć podpisywanie lub szyfrowanie dla komunikatów przychodzących w obszarze **wiadomości**, wybierz opcję **komunikat powinien być podpisany** lub **komunikat powinien być zaszyfrowany** odpowiednio.
+   1. Aby włączyć podpisywanie lub szyfrowanie dla wiadomości przychodzących, w obszarze **komunikaty**wybierz opcję **komunikat powinien być podpisany** lub **komunikat powinien być szyfrowany** odpowiednio.
 
       | Właściwość | Wymagane | Opis |
       |----------|----------|-------------|
-      | **Komunikat powinien być podpisany** | Nie | Zaloguj się komunikaty przychodzące z wybranego certyfikatu. |
-      | **Certyfikat** | Tak, jeśli podpisywanie jest włączone | Certyfikat podpisywania |
-      | **Włącz szyfrowanie komunikatów** | Nie | Szyfrowanie wiadomości przychodzących za pomocą wybranego certyfikatu. |
-      | **Certyfikat** | Tak, jeśli szyfrowanie jest włączone | Certyfikat szyfrowania |
+      | **Komunikat powinien być podpisany** | Nie | Podpisz wiadomości przychodzące z wybranym certyfikatem. |
+      | **Certyfikat** | Tak, jeśli podpisywanie jest włączone | Certyfikat używany do podpisywania |
+      | **Włącz szyfrowanie komunikatów** | Nie | Szyfruj wiadomości przychodzące z wybranym certyfikatem. |
+      | **Certyfikat** | Tak, jeśli szyfrowanie jest włączone | Certyfikat do użycia na potrzeby szyfrowania |
       ||||
 
-   1. W obszarze każdego wyboru, wybierz odpowiednie [certyfikatu](./logic-apps-enterprise-integration-certificates.md), które zostały wcześniej dodane do Twojego konta integracji na potrzeby podpisywania lub szyfrowania.
+   1. W każdym z wybranych opcji wybierz odpowiedni [certyfikat](./logic-apps-enterprise-integration-certificates.md), który został wcześniej dodany do konta integracji, aby użyć do podpisywania lub szyfrowania.
 
-1. Aby skonfigurować umowy do wysyłania wiadomości do partnera gościa, należy wybrać **ustawienia wysyłania**.
+1. Aby skonfigurować umowę do wysyłania wiadomości do partnera gościa, wybierz pozycję **Wyślij ustawienia**.
 
    ![Ustawienia wysyłania](media/logic-apps-enterprise-integration-rosettanet/add-agreement-send-details.png)
 
-   1. Aby włączyć podpisywanie lub szyfrowanie dla wiadomości wychodzących, w obszarze **wiadomości**, wybierz opcję **Włącz podpisywanie komunikatów** lub **Włącz szyfrowanie komunikatów** odpowiednio. W obszarze każdego wyboru, wybierz odpowiedniego algorytmu i [certyfikatu](./logic-apps-enterprise-integration-certificates.md), które zostały wcześniej dodane do Twojego konta integracji na potrzeby podpisywania lub szyfrowania.
+   1. Aby włączyć podpisywanie lub szyfrowanie dla wiadomości wychodzących, w obszarze **komunikaty**wybierz opcję **Włącz podpisywanie wiadomości** lub **Włącz szyfrowanie wiadomości** odpowiednio. W każdym z wybranych opcji wybierz odpowiedni algorytm i [certyfikat](./logic-apps-enterprise-integration-certificates.md), które zostały wcześniej dodane do konta integracji, aby użyć do podpisywania lub szyfrowania.
 
       | Właściwość | Wymagane | Opis |
       |----------|----------|-------------|
-      | **Włącz podpisywanie komunikatów** | Nie | Zaloguj się komunikaty wychodzące z wybranego algorytm podpisywania i certyfikatem. |
-      | **Algorytm podpisywania** | Tak, jeśli podpisywanie jest włączone | Algorytm podpisywania, aby użyć, oparte na wybrany certyfikat |
-      | **Certyfikat** | Tak, jeśli podpisywanie jest włączone | Certyfikat podpisywania |
-      | **Włącz szyfrowanie komunikatów** | Nie | Szyfrowanie wychodzących za pomocą algorytmu szyfrowania wybranych i certyfikatu. |
-      | **Algorytm szyfrowania** | Tak, jeśli szyfrowanie jest włączone | Algorytm szyfrowania używany, oparte na wybrany certyfikat |
-      | **Certyfikat** | Tak, jeśli szyfrowanie jest włączone | Certyfikat szyfrowania |
+      | **Włącz podpisywanie komunikatów** | Nie | Podpisz wiadomości wychodzące z wybranym algorytmem podpisywania i certyfikatem. |
+      | **Algorytm podpisywania** | Tak, jeśli podpisywanie jest włączone | Algorytm podpisywania, który ma być używany, na podstawie wybranego certyfikatu |
+      | **Certyfikat** | Tak, jeśli podpisywanie jest włączone | Certyfikat używany do podpisywania |
+      | **Włącz szyfrowanie komunikatów** | Nie | Szyfruj wychodzące z wybranym algorytmem szyfrowania i certyfikatem. |
+      | **Algorytm szyfrowania** | Tak, jeśli szyfrowanie jest włączone | Algorytm szyfrowania, który ma być używany na podstawie wybranego certyfikatu |
+      | **Certyfikat** | Tak, jeśli szyfrowanie jest włączone | Certyfikat do użycia na potrzeby szyfrowania |
       ||||
 
-   1. W obszarze **punktów końcowych**, określ wymagany adres URL używany do wysyłania wiadomości działania i potwierdzenia.
+   1. W obszarze **punkty końcowe**Określ wymagane adresy URL, które mają być używane do wysyłania komunikatów akcji i potwierdzeń.
 
       | Właściwość | Wymagane | Opis |
       |----------|----------|-------------|
-      | **Adres URL akcji** |  Yes | Adres URL używany do wysyłania komunikatów akcji. Adres URL jest polem wymaganym dla komunikatów synchroniczne i asynchroniczne. |
-      | **Potwierdzenie adresu URL** | Tak | Adres URL używany do wysyłania wiadomości z potwierdzeniem. Adres URL jest polem wymaganym dla wiadomości asynchronicznych. |
+      | **Adres URL akcji** |  Tak | Adres URL służący do wysyłania komunikatów akcji. Adres URL jest polem wymaganym dla wiadomości synchronicznych i asynchronicznych. |
+      | **Adres URL potwierdzenia** | Tak | Adres URL służący do wysyłania wiadomości potwierdzających. Adres URL jest polem wymaganym dla komunikatów asynchronicznych. |
       ||||
 
-1. Aby skonfigurować umowy z odwołaniami RosettaNet PIP dla partnerów, wybierz **RosettaNet PIP odwołuje się do**. W obszarze **nazwa PIP**, wybierz nazwę usługi utworzonej wcześniej PIP.
+1. Aby skonfigurować umowę za pomocą RosettaNet PIP References for Partners, wybierz pozycję **ROSETTANET PIP References**. W obszarze **Nazwa PIP**wybierz nazwę utworzonego wcześniej PIP.
 
-   ![Odwołania narzędzia PIP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-pip-details.png)
+   ![Odwołania PIP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-pip-details.png)
 
-   Wybór wypełnia pozostałe właściwości, które są oparte na publiczny adres IP, który został ustawiony na koncie integracji. Jeśli to konieczne, możesz zmienić **roli PIP**.
+   Wybór wypełnia pozostałe właściwości, które są oparte na urządzeniu PIP skonfigurowanym na koncie integracji. W razie potrzeby można zmienić **rolę PIP**.
 
-   ![Wybrane PIP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-selected-pip.png)
+   ![Wybrany PIP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-selected-pip.png)
 
-Po wykonaniu tych kroków, możesz przystąpić do wysyłania i odbierania wiadomości RosettaNet.
+Po wykonaniu tych kroków możesz wysyłać i odbierać komunikaty RosettaNet.
 
 ## <a name="rosettanet-templates"></a>Szablony RosettaNet
 
-Aby przyspieszyć opracowywanie i zaleca wzorce integracji, można użyć szablony aplikacji logiki dekodowanie i kodowanie RosettaNet wiadomości. Podczas tworzenia aplikacji logiki można wybrać w galerii szablonów w Projektancie aplikacji logiki. Możesz również znaleźć tych szablonów w [repozytorium GitHub dla usługi Azure Logic Apps](https://github.com/Azure/logicapps).
+Aby przyspieszyć opracowywanie i zalecać wzorce integracji, można używać szablonów aplikacji logiki do dekodowania i kodowania komunikatów RosettaNet. Podczas tworzenia aplikacji logiki można wybrać ją z galerii szablonów w Projektancie aplikacji logiki. Szablony te można również znaleźć w [repozytorium GitHub, aby uzyskać Azure Logic Apps](https://github.com/Azure/logicapps).
 
 ![Szablony RosettaNet](media/logic-apps-enterprise-integration-rosettanet/decode-encode-rosettanet-templates.png)
 
-## <a name="receive-or-decode-rosettanet-messages"></a>Odbieranie i dekodowania RosettaNet wiadomości
+## <a name="receive-or-decode-rosettanet-messages"></a>Odbierz lub Dekoduj RosettaNet komunikatów
 
-1. [Tworzenie pustej aplikacji logiki](quickstart-create-first-logic-app-workflow.md).
+1. [Utwórz pustą aplikację logiki](quickstart-create-first-logic-app-workflow.md).
 
-1. [Połącz swoje konto integracji](logic-apps-enterprise-integration-create-integration-account.md#link-account) do aplikacji logiki.
+1. [Połącz swoje konto integracji](logic-apps-enterprise-integration-create-integration-account.md#link-account) z aplikacją logiki.
 
-1. Zanim będzie można dodać akcję do dekodowania komunikatu RosettaNet, należy dodać wyzwalacza uruchamiającego twoją aplikację logiki, takich jak wyzwalacza żądania.
+1. Aby można było dodać akcję dekodowanie komunikatu RosettaNet, należy dodać wyzwalacz do uruchamiania aplikacji logiki, takiej jak wyzwalacz żądania.
 
-1. Po dodaniu wyzwalacza, wybierz **nowy krok**.
+1. Po dodaniu wyzwalacza wybierz pozycję **nowy krok**.
 
-   ![Dodawanie wyzwalacza żądania](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
+   ![Dodaj wyzwalacz żądania](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
 
-1. W polu wyszukiwania wprowadź "rosettanet", a następnie wybierz następującą akcję: **Dekodowanie RosettaNet**
+1. W polu wyszukiwania wprowadź ciąg "RosettaNet", a następnie wybierz tę akcję: **dekodowanie RosettaNet**
 
-   ![Znajdowanie i wybieranie akcji "RosettaNet dekodowania"](media/logic-apps-enterprise-integration-rosettanet/select-decode-rosettanet-action.png)
+   ![Znajdź i wybierz akcję "decodeing" RosettaNet](media/logic-apps-enterprise-integration-rosettanet/select-decode-rosettanet-action.png)
 
-1. Podaj informacje dotyczące właściwości akcji:
+1. Podaj informacje o właściwościach akcji:
 
    ![Podaj szczegóły akcji](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
-   | **Komunikat** | Tak | Dekoduj komunikat RosettaNet  |
-   | **Nagłówki** | Tak | Nagłówki HTTP, które dostarczają wartości dla wersji, która jest wersją RNIF, a typ odpowiedzi, który wskazuje typ komunikacji między partnerami i może być synchroniczna lub asynchroniczna |
-   | **Rola** | Tak | Roli partnera hosta na publiczny adres IP |
+   | **Komunikat** | Tak | Komunikat RosettaNet do zdekodowania  |
+   | **Nagłówki** | Tak | Nagłówki HTTP, które dostarczają wartości dla wersji, która jest wersją RNIF, oraz typ odpowiedzi, który wskazuje typ komunikacji między partnerami i może być synchroniczny lub asynchroniczny |
+   | **Rola** | Tak | Rola partnera hosta w PIP |
    ||||
 
-   W ramach akcji dekodowania RosettaNet zawiera dane wyjściowe, oraz inne właściwości **sygnału ruchu wychodzącego**, której można wybrać kodowanie i wrócić do partnera lub wykonać żadnych innych działań na te dane wyjściowe.
+   Z poziomu akcji dekodowania RosettaNet, dane wyjściowe oraz inne właściwości, obejmują **sygnał wychodzący**, który można wybrać do kodowania i powrotu do partnera, lub wykonać wszelkie inne działania w tych danych wyjściowych.
 
-## <a name="send-or-encode-rosettanet-messages"></a>Wyślij lub zakodować RosettaNet wiadomości
+## <a name="send-or-encode-rosettanet-messages"></a>Wysyłanie lub kodowanie komunikatów RosettaNet
 
-1. [Tworzenie pustej aplikacji logiki](quickstart-create-first-logic-app-workflow.md).
+1. [Utwórz pustą aplikację logiki](quickstart-create-first-logic-app-workflow.md).
 
-1. [Połącz swoje konto integracji](logic-apps-enterprise-integration-create-integration-account.md#link-account) do aplikacji logiki.
+1. [Połącz swoje konto integracji](logic-apps-enterprise-integration-create-integration-account.md#link-account) z aplikacją logiki.
 
-1. Zanim będzie można dodać akcję do zakodowania komunikatu RosettaNet, należy dodać wyzwalacza uruchamiającego twoją aplikację logiki, takich jak wyzwalacza żądania.
+1. Aby można było dodać akcję w celu zakodowania komunikatu RosettaNet, należy dodać wyzwalacz do uruchamiania aplikacji logiki, takiej jak wyzwalacz żądania.
 
-1. Po dodaniu wyzwalacza, wybierz **nowy krok**.
+1. Po dodaniu wyzwalacza wybierz pozycję **nowy krok**.
 
-   ![Dodawanie wyzwalacza żądania](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
+   ![Dodaj wyzwalacz żądania](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
 
-1. W polu wyszukiwania wprowadź "rosettanet", a następnie wybierz następującą akcję: **Kodowanie RosettaNet**
+1. W polu wyszukiwania wprowadź ciąg "RosettaNet", a następnie wybierz tę akcję: **RosettaNet Encode**
 
-   ![Znajdowanie i wybieranie akcji "RosettaNet kodowanie"](media/logic-apps-enterprise-integration-rosettanet/select-encode-rosettanet-action.png)
+   ![Znajdź i wybierz akcję "RosettaNet Encode"](media/logic-apps-enterprise-integration-rosettanet/select-encode-rosettanet-action.png)
 
-1. Podaj informacje dotyczące właściwości akcji:
+1. Podaj informacje o właściwościach akcji:
 
    ![Podaj szczegóły akcji](media/logic-apps-enterprise-integration-rosettanet/encode-action-details.png)
 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
-   | **Komunikat** | Yes | Komunikat RosettaNet do kodowania  |
-   | **Partner hosta** | Yes | Nazwa partnera hosta |
+   | **Komunikat** | Tak | Komunikat RosettaNet do zakodowania  |
+   | **Partner hosta** | Tak | Nazwa partnera hosta |
    | **Partner gościa** | Tak | Nazwa partnera gościa |
    | **Kod PIP** | Tak | Kod PIP |
-   | **Wersja narzędzia PIP** | Yes | Wersja narzędzia PIP |  
-   | **Tożsamość wystąpienia PIP** | Tak | Unikatowy identyfikator dla tego komunikatu PIP |  
-   | **Typ komunikatu** | Yes | Typ komunikatu do kodowania |  
-   | **Rola** | Tak | Rola partner hosta |
+   | **Wersja PIP** | Tak | Wersja PIP |  
+   | **Tożsamość wystąpienia PIP** | Tak | Unikatowy identyfikator tego komunikatu PIP |  
+   | **Typ komunikatu** | Tak | Typ wiadomości do zakodowania |  
+   | **Rola** | Tak | Rola partnera hosta |
    ||||
 
-   Zakodowany komunikat jest teraz gotowe do wysłania do partnera.
+   Zakodowany komunikat jest teraz gotowy do wysłania do partnera.
 
-1. Aby wysłać zakodowanego komunikatu, w tym przykładzie użyto **HTTP** akcji, która jest zmieniona "HTTP - wysyłania zakodowany komunikat do partnera".
+1. Aby wysłać zakodowany komunikat, w tym przykładzie zostanie użyta akcja **http** , której nazwa została zmieniona na "Wyślij komunikat szyfrowany przez protokół HTTP do partnera".
 
-   ![Akcja HTTP do wysyłania wiadomości RosettaNet](media/logic-apps-enterprise-integration-rosettanet/send-rosettanet-message-to-partner.png)
+   ![Akcja HTTP do wysyłania komunikatu RosettaNet](media/logic-apps-enterprise-integration-rosettanet/send-rosettanet-message-to-partner.png)
 
-   Na standardach RosettaNet transakcje biznesowe są uważane za ukończone, tylko wtedy, gdy spełniono wszystkie kroki, które są definiowane przez publiczny adres IP.
+   Zgodnie ze standardami RosettaNet transakcje biznesowe są uważane za ukończone tylko wtedy, gdy wszystkie kroki zdefiniowane przez PIP zostały ukończone.
 
-1. Po host wysyła zakodowany komunikat do partnera, host oczekuje na sygnał i potwierdzenia. Aby wykonać to zadanie, należy dodać **RosettaNet oczekiwania na odpowiedź** akcji.
+1. Gdy host wyśle zakodowany komunikat do partnera, Host czeka na sygnał i potwierdzenie. Aby wykonać to zadanie, Dodaj akcję **RosettaNet poczekaj na odpowiedź** .
 
-   ![Dodawanie akcji "RosettaNet oczekiwania na odpowiedź"](media/logic-apps-enterprise-integration-rosettanet/rosettanet-wait-for-response-action.png)
+   ![Dodaj akcję "Oczekiwanie na odpowiedź" RosettaNet](media/logic-apps-enterprise-integration-rosettanet/rosettanet-wait-for-response-action.png)
 
-   Czas oczekiwania i liczby ponownych prób zależą od konfiguracji narzędzia PIP na koncie integracji. Jeśli nie zostanie odebrana odpowiedź, ta akcja generuje zgłoszenia błędu. Aby obsłużyć liczbę ponownych prób, zawsze umieszczaj **Koduj** i **oczekiwanie na odpowiedź** akcji w **aż** pętli.
+   Czas trwania oczekiwania i liczba ponownych prób jest oparty na konfiguracji PIP na koncie integracji. Jeśli odpowiedź nie zostanie odebrana, ta akcja spowoduje wygenerowanie powiadomienia o niepowodzeniu. Aby obsłużyć ponawianie prób, zawsze umieszczaj **kodowanie** i **czekaj na akcje odpowiedzi** w pętli **until** .
 
-   ![Do momentu pętli z akcjami RosettaNet](media/logic-apps-enterprise-integration-rosettanet/rosettanet-loop.png)
+   ![Do pętli z akcjami RosettaNet](media/logic-apps-enterprise-integration-rosettanet/rosettanet-loop.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak sprawdzanie poprawności, przekształcania i inne operacje dotyczące wiadomości z [pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md)
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Informacje dotyczące sprawdzania poprawności, przekształcania i innych operacji na komunikatach przy użyciu [pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

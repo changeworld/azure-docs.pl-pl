@@ -1,23 +1,18 @@
 ---
 title: Przechowywanie i przechowywanie danych w usłudze Azure Application Insights | Microsoft Docs
 description: Zasady przechowywania i zasad zachowania poufności informacji
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: a6268811-c8df-42b5-8b1b-1d5a7e94cbca
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: df441a55ef4a9a40fe4defcabca5f667eeddbf29
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 08/22/2019
+ms.openlocfilehash: 62758ef82b074e093e837b2095dd9f27ab31657b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207294"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678099"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -57,14 +52,14 @@ Istnieją trzy źródła danych:
 ### <a name="what-kinds-of-data-are-collected"></a>Jakie rodzaje danych są zbierane?
 Główne kategorie to:
 
-* Dane telemetryczne [serwera sieci Web](../../azure-monitor/app/asp-net.md) — żądania HTTP.  Identyfikator URI, czas trwania przetwarzania żądania, kod odpowiedzi, adres IP klienta. Identyfikator sesji.
-* [Strony sieci Web](../../azure-monitor/app/javascript.md) — liczba stron, użytkowników i sesji. Czasy ładowania strony. Liczba wyjątków. Wywołania AJAX.
+* Dane [telemetryczne serwera sieci Web](../../azure-monitor/app/asp-net.md) — żądania HTTP.  Identyfikator URI, czas trwania przetwarzania żądania, kod odpowiedzi, adres IP klienta. Identyfikator sesji.
+* [Strony sieci Web](../../azure-monitor/app/javascript.md) — liczba stron, użytkowników i sesji. Czasy ładowania strony. Wyłączenia. Wywołania AJAX.
 * Liczniki wydajności — pamięć, procesor CPU, we/wy, zajętość sieci.
 * Kontekst klienta i serwera — system operacyjny, ustawienia regionalne, typ urządzenia, przeglądarka, rozdzielczość ekranu.
 * [Wyjątki](../../azure-monitor/app/asp-net-exceptions.md) i awarie — **zrzuty stosu**, identyfikator kompilacji, typ procesora CPU. 
 * [Zależności](../../azure-monitor/app/asp-net-dependencies.md) — wywołania usług zewnętrznych, takich jak REST, SQL i AJAX. Identyfikator URI lub parametry połączenia, czas trwania, powodzenie, polecenie.
 * [Testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) — czas trwania testu i kroków, odpowiedzi.
-* [Dzienniki śledzenia](../../azure-monitor/app/asp-net-trace-logs.md) i [niestandardowa Telemetria](../../azure-monitor/app/api-custom-events-metrics.md) - —**wszystko, co jest używane w dziennikach lub danych**telemetrycznych.
+* [Dzienniki śledzenia](../../azure-monitor/app/asp-net-trace-logs.md) i [niestandardową telemetrię](../../azure-monitor/app/api-custom-events-metrics.md)  - **wszystkie dane kodu w dziennikach lub telemetrii**.
 
 [Więcej szczegółów](#data-sent-by-application-insights).
 
@@ -80,7 +75,7 @@ W przypadku stron sieci Web otwórz okno debugowanie przeglądarki.
 ![Naciśnij klawisz F12 i Otwórz kartę Sieć.](./media/data-retention-privacy/08-browser.png)
 
 ### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>Czy mogę napisać kod, aby odfiltrować dane telemetryczne przed wysłaniem?
-Jest to możliwe dzięki napisaniu [wtyczki procesora](../../azure-monitor/app/api-filtering-sampling.md)telemetrii.
+Jest to możliwe dzięki napisaniu [wtyczki procesora telemetrii](../../azure-monitor/app/api-filtering-sampling.md).
 
 ## <a name="how-long-is-the-data-kept"></a>Jak długo są przechowywane dane?
 Pierwotne punkty danych (czyli elementy, które można badać w analizie i inspekcji wyszukiwania) są przechowywane przez maksymalnie 730 dni. Można [wybrać okres przechowywania](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period) równy 30, 60, 90, 120, 180, 270, 365, 550 lub 730. Jeśli chcesz przechowywać dane dłużej niż 730 dni, możesz użyć [eksportu ciągłego](../../azure-monitor/app/export-telemetry.md) , aby skopiować go do konta magazynu podczas pozyskiwania danych. 
@@ -89,7 +84,7 @@ Dane przechowywane dłużej niż 90 dni spowodują naliczenie opłat za dodawani
 
 Zagregowane dane (czyli liczniki, średnie i inne dane statystyczne widoczne w Eksploratorze metryk) są zachowywane w ciągu 1 minuty przez 90 dni.
 
-[Migawki debugowania](../../azure-monitor/app/snapshot-debugger.md) są przechowywane przez piętnaście dni. Te zasady przechowywania jest ustawiona na podstawie poszczególnych aplikacji. Jeśli potrzebujesz zwiększyć tę wartość, możesz poprosić o zwiększenie przez otwarcie zgłoszenia do pomocy technicznej w witrynie Azure portal.
+[Migawki debugowania](../../azure-monitor/app/snapshot-debugger.md) są przechowywane przez piętnaście dni. Te zasady przechowywania są ustawiane dla poszczególnych aplikacji. Jeśli musisz zwiększyć tę wartość, możesz poprosić o zwiększenie, otwierając przypadek pomocy technicznej w Azure Portal.
 
 ## <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
 Dane są widoczne dla Ciebie i, jeśli masz konto organizacji, członków zespołu. 
@@ -100,7 +95,7 @@ Mogą być eksportowane przez Ciebie i członków zespołu i mogą być kopiowan
 Firma Microsoft używa danych tylko w celu udostępnienia usługi.
 
 ## <a name="where-is-the-data-held"></a>Gdzie są przechowywane dane?
-* Lokalizację można wybrać podczas tworzenia nowego zasobu Application Insights. Dowiedz się więcej o dostępności Application Insights [](https://azure.microsoft.com/global-infrastructure/services/?products=all)na region.
+* Lokalizację można wybrać podczas tworzenia nowego zasobu Application Insights. Dowiedz się więcej o dostępności Application Insights [na region.](https://azure.microsoft.com/global-infrastructure/services/?products=all)
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Czy oznacza to, że moja aplikacja musi być hostowana w USA, Europie czy Azji Południowo-Wschodnia?
 * Nie. Aplikacja może działać w dowolnym miejscu — na własnych hostach lokalnych lub w chmurze.
@@ -137,11 +132,11 @@ Jeśli klient musi skonfigurować ten katalog z określonymi wymaganiami dotycz�
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp`służy do utrwalania danych. Ta lokalizacja nie jest konfigurowalna z katalogu konfiguracji, a uprawnienia dostępu do tego folderu są ograniczone do określonego użytkownika z wymaganymi poświadczeniami. (Zobacz [](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72) tutaj implementację).
+`C:\Users\username\AppData\Local\Temp` jest używany do utrwalania danych. Ta lokalizacja nie jest konfigurowalna z katalogu konfiguracji, a uprawnienia dostępu do tego folderu są ograniczone do określonego użytkownika z wymaganymi poświadczeniami. (Zobacz tutaj [implementację](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72) ).
 
-###  <a name="net"></a>.Net
+###  <a name="net"></a>.NET
 
-Domyślnie `ServerTelemetryChannel` używa folderu `%localAppData%\Microsoft\ApplicationInsights` danych lokalnej aplikacji lub folderu `%TMP%`tymczasowego bieżącego użytkownika. (Zobacz [](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tutaj implementację).
+Domyślnie `ServerTelemetryChannel` używa folderu danych lokalnej aplikacji użytkownika `%localAppData%\Microsoft\ApplicationInsights` lub folderu tymczasowego `%TMP%`. (Zobacz tutaj [implementację](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) ).
 
 
 Plik konfiguracji:
@@ -164,9 +159,9 @@ Za pośrednictwem kodu:
 
 ### <a name="netcore"></a>NetCore
 
-Domyślnie `ServerTelemetryChannel` używa folderu `%localAppData%\Microsoft\ApplicationInsights` danych lokalnej aplikacji lub folderu `%TMP%`tymczasowego bieżącego użytkownika. (Zobacz [](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tutaj implementację). W środowisku systemu Linux magazyn lokalny zostanie wyłączony, chyba że zostanie określony folder magazynu.
+Domyślnie `ServerTelemetryChannel` używa folderu danych lokalnej aplikacji użytkownika `%localAppData%\Microsoft\ApplicationInsights` lub folderu tymczasowego `%TMP%`. (Zobacz tutaj [implementację](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) ). W środowisku systemu Linux magazyn lokalny zostanie wyłączony, chyba że zostanie określony folder magazynu.
 
-Poniższy fragment kodu pokazuje, `ServerTelemetryChannel.StorageFolder` `ConfigureServices()` jak ustawić w metodzie `Startup.cs` klasy:
+Poniższy fragment kodu pokazuje, jak ustawić `ServerTelemetryChannel.StorageFolder` w metodzie `ConfigureServices()` klasy `Startup.cs`:
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -176,35 +171,35 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 
 ### <a name="nodejs"></a>Node.js
 
-Domyślnie `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` jest używany do utrwalania danych. Uprawnienia dostępu do tego folderu są ograniczone do bieżącego użytkownika i administratorów. (Zobacz [](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) tutaj implementację).
+Domyślnie `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` jest używany do utrwalania danych. Uprawnienia dostępu do tego folderu są ograniczone do bieżącego użytkownika i administratorów. (Zobacz tutaj [implementację](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) ).
 
-Prefiks `appInsights-node` folderu można przesłonić, zmieniając wartość w czasie wykonywania zmiennej `Sender.TEMPDIR_PREFIX` statycznej znalezionej w elemencie [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384).
+Prefiks folderu `appInsights-node` można przesłonić, zmieniając wartość w czasie wykonywania zmiennej statycznej `Sender.TEMPDIR_PREFIX` znaleziona w polu [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384).
 
 
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Jak mogę wysyłać dane do Application Insights przy użyciu protokołu TLS 1,2?
 
-Aby zapewnić bezpieczeństwo danych przesyłanych do Application Insightsych punktów końcowych, zdecydowanie zachęcamy klientów do konfigurowania aplikacji do korzystania z co najmniej Transport Layer Security (TLS) 1,2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**, i branży szybko rozwijających się do porzucenia pomocy technicznej dla tych starszych protokołów. 
+Aby zapewnić bezpieczeństwo danych przesyłanych do Application Insightsych punktów końcowych, zdecydowanie zachęcamy klientów do konfigurowania aplikacji do korzystania z co najmniej Transport Layer Security (TLS) 1,2. Starsza wersja protokołu TLS/SSL (SSL) została uznana za narażoną, a mimo to nadal pracują w celu zapewnienia zgodności z poprzednimi wersjami, **nie są zalecane**, a branża jest szybko przenoszona w celu uzyskania pomocy technicznej dotyczącej tych starszych protokołów. 
 
-[Rady standardami bezpieczeństwa PCI](https://www.pcisecuritystandards.org/) ustawił [terminu 30 czerwca 2018 r.](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) wyłączyć starsze wersje protokołu TLS/SSL i uaktualniania, aby lepiej zabezpieczyć protokołów. Gdy platforma Azure pozostanie w starszej wersji, jeśli aplikacja/klienci nie mogą komunikować się za pomocą co najmniej protokołu TLS 1,2, nie będzie możliwe wysyłanie danych do Application Insights. Podejście wykonywane do testowania i weryfikowania obsługi protokołu TLS aplikacji będzie się różnić w zależności od systemu operacyjnego/platformy, a także od języka/platformy używanej przez aplikację.
+[Rada normy zabezpieczeń PCI](https://www.pcisecuritystandards.org/) ustawił [termin 30 czerwca 2018,](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) aby wyłączyć starsze wersje protokołu TLS/SSL i uaktualnić je do bezpieczniejsze protokoły. Gdy platforma Azure pozostanie w starszej wersji, jeśli aplikacja/klienci nie mogą komunikować się za pomocą co najmniej protokołu TLS 1,2, nie będzie możliwe wysyłanie danych do Application Insights. Podejście wykonywane do testowania i weryfikowania obsługi protokołu TLS aplikacji będzie się różnić w zależności od systemu operacyjnego/platformy, a także od języka/platformy używanej przez aplikację.
 
 Firma Microsoft nie zaleca jawnej konfiguracji aplikacji, aby używała protokołu TLS 1,2, chyba że jest to absolutnie konieczne, ponieważ może to spowodować przerwanie funkcji zabezpieczeń na poziomie platformy, które umożliwiają automatyczne wykrywanie i korzystanie z nowszych bezpieczniejszych protokołów w miarę ich używania dostępne, takie jak TLS 1,3. Zalecamy przeprowadzenie szczegółowej inspekcji kodu aplikacji w celu sprawdzenia zakodowana określonych wersji protokołu TLS/SSL.
 
 ### <a name="platformlanguage-specific-guidance"></a>Wskazówki dotyczące platformy/języka
 
-|Języka/platformy | Pomoc techniczna | Więcej informacji |
+|Platforma/język | Pomoc techniczna | Więcej informacji |
 | --- | --- | --- |
 | Azure App Services  | Obsługiwane, może być wymagana konfiguracja. | Obsługa została ogłoszona w kwietniu 2018. Zapoznaj się z ogłoszeniem, aby uzyskać [szczegółowe informacje o konfiguracji](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
 | Aplikacje funkcji platformy Azure | Obsługiwane, może być wymagana konfiguracja. | Obsługa została ogłoszona w kwietniu 2018. Zapoznaj się z ogłoszeniem, aby uzyskać [szczegółowe informacje o konfiguracji](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
 |.NET | Obsługiwane, konfiguracja zależy od wersji. | Aby uzyskać szczegółowe informacje o konfiguracji dla programu .NET 4,7 i wcześniejszych wersji, zobacz [te instrukcje](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
-|Monitor stanu | Obsługiwane, wymagana konfiguracja | Monitor stanu korzysta z[konfiguracji platformy .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)  +  [konfiguracji systemu operacyjnego](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)w celu zapewnienia obsługi protokołu TLS 1,2.
+|Monitor stanu | Obsługiwane, wymagana konfiguracja | Monitor stanu korzysta z [konfiguracji systemu operacyjnego](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  + [konfiguracji platformy .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) do obsługi protokołu TLS 1,2.
 |Node.js |  Obsługiwane w programie v 10.5.0 może być wymagana konfiguracja. | Informacje o konfiguracji specyficzne dla aplikacji zawiera [Oficjalna dokumentacja protokołu TLS/SSL w programie Node. js](https://nodejs.org/api/tls.html) . |
 |Java | Obsługiwane, JDK support for TLS 1,2 zostało dodane w [JDK 6 update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) i [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 [domyślnie używa protokołu TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
-|Linux | Dystrybucje systemu Linux, zwykle zależą od [OpenSSL](https://www.openssl.org) obsługę protokołu TLS 1.2.  | Sprawdź [dziennika zmian OpenSSL](https://www.openssl.org/news/changelog.html) aby upewnić się, używana wersja biblioteki openssl jest obsługiwana.|
-| Windows 8.0 10 | Obsługiwane i domyślnie włączona. | Aby upewnić się, że nadal używasz [domyślne ustawienia](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
-| System Windows Server 2012 2016 | Obsługiwane i domyślnie włączona. | Aby upewnić się, że nadal używasz [ustawienia domyślne](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 | Obsługiwane, ale nie jest włączony domyślnie. | Zobacz [zabezpieczeń TLS (Transport Layer), ustawień rejestru](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) strony, aby uzyskać szczegółowe informacje o sposobie włączania.  |
-| Windows Server 2008 SP2 | Obsługa protokołu TLS 1.2 wymaga aktualizacji. | Zobacz [aktualizacji, aby dodać obsługę protokołu TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) w systemie Windows Server 2008 z dodatkiem SP2. |
+|Linux | Dystrybucje systemu Linux zależą od [OpenSSL](https://www.openssl.org) obsługi TLS 1,2.  | Sprawdź [Dziennik zmian OpenSSL](https://www.openssl.org/news/changelog.html) , aby potwierdzić, że wersja OpenSSL jest obsługiwana.|
+| Windows 8,0 — 10 | Obsługiwane i domyślnie włączone. | , Aby upewnić się, że nadal używasz [ustawień domyślnych](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012 — 2016 | Obsługiwane i domyślnie włączone. | Aby potwierdzić, że nadal używasz [ustawień domyślnych](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 | Obsługiwane, ale nie włączone domyślnie. | Aby uzyskać szczegółowe informacje na temat włączania, zobacz stronę [Ustawienia rejestru Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
+| Windows Server 2008 SP2 | Obsługa protokołu TLS 1,2 wymaga aktualizacji. | Zobacz [Aktualizacja, aby dodać obsługę protokołu TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) w systemie Windows Server 2008 z dodatkiem SP2. |
 |Windows Vista | Nieobsługiwane. | ND
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Sprawdź wersję OpenSSL, w której działa dystrybucja systemu Linux
@@ -239,10 +234,10 @@ Zestawy SDK różnią się między platformami i istnieje kilka składników, kt
 
 | Twoja akcja | Zebrane klasy danych (zobacz następną tabelę) |
 | --- | --- |
-| [Dodawanie Application Insights SDK do projektu sieci Web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskować<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Sesja<br/>Użytkownicy |
+| [Dodawanie Application Insights SDK do projektu sieci Web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskować<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Session<br/>liczby użytkowników |
 | [Instalowanie monitor stanu w usługach IIS][redfield] |Zależności<br/>ServerContext<br/>Wywnioskować<br/>Liczniki wydajności |
-| [Dodawanie Application Insights SDK do aplikacji sieci Web Java][java] |ServerContext<br/>Wywnioskować<br/>Żądanie<br/>Sesja<br/>Użytkownicy |
-| [Dodaj zestaw SDK JavaScript do strony sieci Web][client] |ClientContext <br/>Wywnioskować<br/>Strona<br/>ClientPerf<br/>Ajax |
+| [Dodawanie Application Insights SDK do aplikacji sieci Web Java][java] |ServerContext<br/>Wywnioskować<br/>Prośba<br/>Session<br/>liczby użytkowników |
+| [Dodaj zestaw SDK JavaScript do strony sieci Web][client] |Klasa ClientContext <br/>Wywnioskować<br/>Strona<br/>ClientPerf<br/>Języki |
 | [Definiowanie właściwości domyślnych][apiproperties] |**Właściwości** wszystkich zdarzeń standardowych i niestandardowych |
 | [TrackMetric wywołań][api] |Wartości liczbowe<br/>**Aœciwoœci** |
 | [Śledzenie wywołań *][api] |Nazwa zdarzenia<br/>**Aœciwoœci** |
@@ -257,15 +252,15 @@ W przypadku [zestawów SDK dla innych platform][platforms]Zobacz dokumenty.
 | --- | --- |
 | **Aœciwoœci** |**Wszystkie dane — określone przez kod** |
 | DeviceContext |Identyfikator, adres IP, ustawienia regionalne, model urządzenia, Sieć, typ sieci, nazwa OEM, rozdzielczość ekranu, wystąpienie roli, nazwa roli, typ urządzenia |
-| ClientContext |System operacyjny, ustawienia regionalne, język, Sieć, rozdzielczość okna |
-| Sesja |Identyfikator sesji |
+| Klasa ClientContext |System operacyjny, ustawienia regionalne, język, Sieć, rozdzielczość okna |
+| Session |Identyfikator sesji |
 | ServerContext |Nazwa komputera, ustawienia regionalne, system operacyjny, urządzenie, sesja użytkownika, kontekst użytkownika, operacja |
 | Wywnioskować |Lokalizacja geograficzna z adresu IP, sygnatury czasowej, systemu operacyjnego, przeglądarki |
 | Metryki |Nazwa i wartość metryki |
-| Events |Nazwa i wartość zdarzenia |
+| Wydarzenia |Nazwa i wartość zdarzenia |
 | PageViews |Adres URL i nazwa strony lub nazwa ekranu |
 | Wydajność klienta |Nazwa adresu URL/strony, czas ładowania przeglądarki |
-| Ajax |Wywołania HTTP ze strony sieci Web na serwer |
+| Języki |Wywołania HTTP ze strony sieci Web na serwer |
 | Żądania |Adres URL, czas trwania, kod odpowiedzi |
 | Zależności |Typ (SQL, HTTP,...), parametry połączenia lub identyfikator URI, synchronizacja/Async, czas trwania, sukces, instrukcja SQL (z monitor stanu) |
 | **Wyjątki** |Typ, **komunikat**, stosy wywołań, plik źródłowy i numer wiersza, identyfikator wątku |
@@ -280,8 +275,8 @@ W przypadku [zestawów SDK dla innych platform][platforms]Zobacz dokumenty.
 > [!NOTE]
 > Adres IP klienta jest używany do wywnioskowania lokalizacji geograficznej, ale domyślnie dane IP nie są już przechowywane i wszystkie zera są zapisywane w skojarzonym polu. Aby dowiedzieć się więcej na temat obsługi danych osobowych, zalecamy korzystanie z tego [artykułu](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Jeśli zachodzi potrzeba zapisania danych adresów IP w [artykule dotyczącym zbierania adresów IP](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) , przeprowadzisz Cię przez opcje.
 
-## <a name="credits"></a>Napisy końcowe
-Ten produkt zawiera dane GeoLite2 utworzone przez MaxMind, dostępne z [https://www.maxmind.com](https://www.maxmind.com).
+## <a name="credits"></a>Środki
+Ten produkt zawiera dane GeoLite2 utworzone przez MaxMind, dostępne w [https://www.maxmind.com](https://www.maxmind.com).
 
 
 

@@ -1,26 +1,22 @@
 ---
 title: Azure Monitor — Application Insights platformy Azure przesłonić domyślne punkty końcowe zestawu SDK | Microsoft Docs
 description: Zmodyfikuj domyślne punkty końcowe zestawu SDK usługi Azure Application Insights dla regionów takich jak Azure Government.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/26/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 25087c5b3a078b740764f51a7780a24277d5c642
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 07/26/2019
+ms.openlocfilehash: e1db9782fe923f7a5759f4e001cd0db970606fed
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639557"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677492"
 ---
- # <a name="application-insights-overriding-default-endpoints"></a>Application Insights Przesłanianie domyślnych punktów końcowych
+# <a name="application-insights-overriding-default-endpoints"></a>Application Insights Przesłanianie domyślnych punktów końcowych
 
-Aby wysłać dane z Application Insights do określonych regionów, należy zastąpić domyślne adresy punktów końcowych. Każdy zestaw SDK wymaga nieco różnych modyfikacji, które zostały opisane w tym artykule. Te zmiany wymagają dostosowania przykładowego kodu i zastąpienia wartości zastępczych dla `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address`i `Profile_Query_Endpoint_address` z rzeczywistymi adresami punktów końcowych dla danego regionu. Koniec tego artykułu zawiera linki do adresów punktów końcowych dla regionów, w których ta konfiguracja jest wymagana.
+Aby wysłać dane z Application Insights do określonych regionów, należy zastąpić domyślne adresy punktów końcowych. Każdy zestaw SDK wymaga nieco różnych modyfikacji, które zostały opisane w tym artykule. Te zmiany wymagają dostosowania przykładowego kodu i zastępowania wartości zastępczych `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address` i `Profile_Query_Endpoint_address` z rzeczywistymi adresami punktów końcowych dla danego regionu. Koniec tego artykułu zawiera linki do adresów punktów końcowych dla regionów, w których ta konfiguracja jest wymagana.
 
 ## <a name="sdk-code-changes"></a>Zmiany kodu zestawu SDK
 
@@ -62,7 +58,7 @@ Zmodyfikuj plik appSettings. JSON w projekcie w następujący sposób, aby dosto
   }
 ```
 
-Wartości metryk na żywo i punkt końcowy zapytania profilu można ustawić tylko za pośrednictwem kodu. Aby zastąpić wartości domyślne dla wszystkich wartości punktów końcowych za pośrednictwem kodu, wprowadź następujące zmiany `ConfigureServices` w metodzie `Startup.cs` pliku:
+Wartości metryk na żywo i punkt końcowy zapytania profilu można ustawić tylko za pośrednictwem kodu. Aby zastąpić wartości domyślne dla wszystkich wartości punktów końcowych za pośrednictwem kodu, wprowadź następujące zmiany w metodzie `ConfigureServices` pliku `Startup.cs`:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -157,7 +153,7 @@ Zmodyfikuj plik ApplicationInsights. XML, aby zmienić domyślny adres punktu ko
 
 ### <a name="spring-boot"></a>Spring Boot
 
-`application.properties` Zmodyfikuj plik i Dodaj:
+Zmodyfikuj plik `application.properties` i Dodaj:
 
 ```yaml
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
@@ -199,22 +195,22 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 Obecnie jedyne regiony, które wymagają modyfikacji punktów końcowych, to [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) i [Chiny platformy Azure](https://docs.microsoft.com/azure/china/resources-developer-guide).
 
-|Region |  Nazwa punktu końcowego | Value |
+|Region |  Nazwa punktu końcowego | Wartość |
 |-----------------|:------------|:-------------|
-| Azure — Chiny | Kanał telemetrii | `https://dc.applicationinsights.azure.cn/v2/track` |
-| Azure — Chiny | QuickPulse (metryki na żywo) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
-| Azure — Chiny | Zapytanie profilu |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
-| Azure Government | Kanał telemetrii |`https://dc.applicationinsights.us/v2/track` |
-| Azure Government | QuickPulse (metryki na żywo) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
-| Azure Government | Zapytanie profilu |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+| Azure (Chiny) | Kanał telemetrii | `https://dc.applicationinsights.azure.cn/v2/track` |
+| Azure (Chiny) | QuickPulse (metryki na żywo) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
+| Azure (Chiny) | Zapytanie profilu |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
+| Platforma Azure dla instytucji rządowych | Kanał telemetrii |`https://dc.applicationinsights.us/v2/track` |
+| Platforma Azure dla instytucji rządowych | QuickPulse (metryki na żywo) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
+| Platforma Azure dla instytucji rządowych | Zapytanie profilu |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
 
-Jeśli obecnie używasz [interfejsu API](https://dev.applicationinsights.io/
-) REST Application Insights, do którego zwykle uzyskuje się dostęp za pośrednictwem elementu "API.ApplicationInsights.IO", musisz użyć punktu końcowego, który jest lokalny dla regionu:
+Jeśli obecnie używasz [interfejsu API REST Application Insights](https://dev.applicationinsights.io/
+) , do którego zwykle uzyskuje się dostęp za pośrednictwem elementu "API.ApplicationInsights.IO", musisz użyć punktu końcowego, który jest lokalny dla regionu:
 
-|Region |  Nazwa punktu końcowego | Value |
+|Region |  Nazwa punktu końcowego | Wartość |
 |-----------------|:------------|:-------------|
-| Azure — Chiny | Interfejs API REST | `api.applicationinsights.azure.cn` |
-| Azure Government | Interfejs API REST | `api.applicationinsights.us`|
+| Azure (Chiny) | Interfejs API REST | `api.applicationinsights.azure.cn` |
+| Platforma Azure dla instytucji rządowych | Interfejs API REST | `api.applicationinsights.us`|
 
 > [!NOTE]
 > W tych regionach **nie jest obecnie obsługiwane** monitorowanie oparte na agentach i rozszerzeniach w ramach agentów usługi Azure App Services. Po udostępnieniu tej funkcji ten artykuł zostanie zaktualizowany.

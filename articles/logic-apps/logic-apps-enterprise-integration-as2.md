@@ -1,6 +1,6 @@
 ---
-title: AS2 messages for B2B Enterprise Integration — Azure Logic Apps
-description: Komunikaty programu Exchange AS2 w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
+title: Wysyłanie i odbieranie komunikatów AS2 dla B2B Azure Logic Apps
+description: Komunikaty programu Exchange AS2 dotyczące scenariuszy integracji B2B przedsiębiorstwa przy użyciu Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,25 +9,25 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 08/22/2019
-ms.openlocfilehash: b1e7664aa08171c16c83e17ad93977b29e31b5c0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1f063c0e8dada8eb6c4eee031764f6ca7dd3a91d
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656454"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680384"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Komunikaty programu Exchange AS2 dla integracji z usługą B2B Enterprise w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 
 Aby móc korzystać z komunikatów AS2 w Azure Logic Apps, można użyć łącznika AS2, który udostępnia wyzwalacze i akcje zarządzania komunikacją AS2. Aby na przykład nawiązać bezpieczeństwo i niezawodność podczas przesyłania komunikatów, możesz użyć następujących akcji:
 
-* [ **AS2** zakodować akcję](#encode) w celu zapewnienia szyfrowania, podpisywania cyfrowego i potwierdzeń poprzez powiadomienia o dyspozycjach komunikatów (powiadomienia MDN), które ułatwiają odrzucanie. Na przykład ta akcja stosuje nagłówki AS2/HTTP i wykonuje te zadania po skonfigurowaniu:
+* [ **AS2 zakodować** akcję](#encode) w celu zapewnienia szyfrowania, podpisywania cyfrowego i potwierdzeń poprzez powiadomienia o dyspozycjach komunikatów (powiadomienia MDN), które ułatwiają odrzucanie. Na przykład ta akcja stosuje nagłówki AS2/HTTP i wykonuje te zadania po skonfigurowaniu:
 
   * Podpisuje komunikaty wychodzące.
   * Szyfruje wiadomości wychodzące.
   * Kompresuje komunikat.
   * Przesyła nazwę pliku w nagłówku MIME.
 
-* [ **AS2** akcja dekodowania](#decode) do zapewniania odszyfrowywania, podpisywania cyfrowego i potwierdzeń przy użyciu powiadomień o dyspozycjach komunikatów (powiadomienia MDN). Na przykład ta akcja wykonuje następujące zadania:
+* [ **AS2 akcja dekodowania** ](#decode) do zapewniania odszyfrowywania, podpisywania cyfrowego i potwierdzeń przy użyciu powiadomień o dyspozycjach komunikatów (powiadomienia MDN). Na przykład ta akcja wykonuje następujące zadania:
 
   * Przetwarza nagłówki AS2/HTTP.
   * Uzgadnia odebrane MDNs z oryginalnymi komunikatami wychodzącymi.
@@ -54,7 +54,7 @@ W tym artykule pokazano, jak dodać akcje kodowania i dekodowania AS2 do istniej
 
 * Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Aplikacja logiki, z której ma być używany łącznik AS2 i wyzwalacz, który uruchamia przepływ pracy aplikacji logiki. Łącznik AS2 zawiera tylko akcje, a nie wyzwalacze. Jeśli jesteś nowym usługą Logic Apps, zapoznaj [się](../logic-apps/logic-apps-overview.md) z tematem [Azure Logic Apps i szybki start: Utwórz swoją pierwszą aplikację](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiki.
+* Aplikacja logiki, z której ma być używany łącznik AS2 i wyzwalacz, który uruchamia przepływ pracy aplikacji logiki. Łącznik AS2 zawiera tylko akcje, a nie wyzwalacze. Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zapoznaj [się z tematem Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * [Konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) skojarzone z subskrypcją platformy Azure i połączone z aplikacją logiki, w której zamierzasz używać łącznika AS2. Zarówno aplikacja logiki, jak i konto integracji muszą istnieć w tej samej lokalizacji lub regionie platformy Azure.
 
@@ -64,7 +64,7 @@ W tym artykule pokazano, jak dodać akcje kodowania i dekodowania AS2 do istniej
 
 * Jeśli używasz [Azure Key Vault](../key-vault/key-vault-overview.md) do zarządzania certyfikatami, sprawdź, czy klucze magazynu umożliwiają wykonywanie operacji **szyfrowania** i **odszyfrowywania** . W przeciwnym razie akcje kodowania i dekodowania kończą się niepowodzeniem.
 
-  W Azure Portal przejdź do magazynu kluczy, Wyświetl **dozwolone operacje**klucza magazynu i upewnij się, że są wybrane operacje **szyfrowania** i odszyfrowywania .
+  W Azure Portal przejdź do magazynu kluczy, Wyświetl **dozwolone operacje**klucza magazynu i upewnij się, że są wybrane operacje **szyfrowania** i **odszyfrowywania** .
 
   ![Sprawdzanie operacji klucza magazynu](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
 
@@ -76,7 +76,7 @@ W tym artykule pokazano, jak dodać akcje kodowania i dekodowania AS2 do istniej
 
 1. W projektancie Dodaj nową akcję do aplikacji logiki.
 
-1. W obszarze **Wybierz akcję** i pole wyszukiwania wybierz pozycję **wszystkie**. W polu wyszukiwania wprowadź ciąg "AS2 Encode" i upewnij się, że wybrano akcję AS2 (v2): **Kodowanie AS2**
+1. W obszarze **Wybierz akcję** i pole wyszukiwania wybierz pozycję **wszystkie**. W polu wyszukiwania wprowadź ciąg "AS2 Encode" i upewnij się, że wybrano akcję AS2 (v2): **As2 Encode**
 
    ![Wybierz pozycję "AS2 Encode"](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
@@ -101,7 +101,7 @@ W tym artykule pokazano, jak dodać akcje kodowania i dekodowania AS2 do istniej
 
 1. W projektancie Dodaj nową akcję do aplikacji logiki.
 
-1. W obszarze **Wybierz akcję** i pole wyszukiwania wybierz pozycję **wszystkie**. W polu wyszukiwania wprowadź ciąg "dekodowanie AS2" i upewnij się, że wybrano akcję AS2 (v2): **Dekodowanie AS2**
+1. W obszarze **Wybierz akcję** i pole wyszukiwania wybierz pozycję **wszystkie**. W polu wyszukiwania wprowadź ciąg "dekodowanie AS2" i upewnij się, że wybrano akcję AS2 (v2): **dekodowanie AS2**
 
    ![Wybierz pozycję "dekodowanie AS2"](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
@@ -111,7 +111,7 @@ W tym artykule pokazano, jak dodać akcje kodowania i dekodowania AS2 do istniej
 
    ![Wybieranie treści i nagłówków z danych wyjściowych żądania](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
 
-## <a name="sample"></a>Próbka
+## <a name="sample"></a>Przykład
 
 Aby spróbować wdrożyć w pełni działającą aplikację logiki i przykład scenariusza AS2, zobacz [szablon i scenariusz aplikacji logiki AS2](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/).
 

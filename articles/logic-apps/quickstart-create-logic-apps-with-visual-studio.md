@@ -1,6 +1,6 @@
 ---
-title: Tworzenie zautomatyzowanych przepływów pracy za pomocą programu Visual Studio — Azure Logic Apps
-description: Automatyzuj zadania, procesy biznesowe i przepływy pracy dla integracji przedsiębiorstwa przy użyciu Azure Logic Apps i programu Visual Studio
+title: Automatyzowanie przepływów pracy za pomocą programu Visual Studio — Azure Logic Apps
+description: Tworzenie, planowanie i uruchamianie cyklicznych przepływów pracy dla integracji przedsiębiorstwa przy użyciu Azure Logic Apps i programu Visual Studio
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,18 +8,17 @@ ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/25/2019
-ms.openlocfilehash: 47b7609fe111ecbe41a161bfbff1f7225ad66357
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d02f0bf8cc880dd39f7bdf0c953fcb130df2e23a
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165917"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680563"
 ---
-# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Szybki Start: Tworzenie zautomatyzowanych zadań, procesów i przepływów pracy przy użyciu Azure Logic Apps — Visual Studio
+# <a name="quickstart-automate-tasks-processes-and-workflows-by-using-azure-logic-apps-and-visual-studio"></a>Szybki Start: Automatyzowanie zadań, procesów i przepływów pracy przy użyciu Azure Logic Apps i programu Visual Studio
 
 Za pomocą usługi [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i programu Visual Studio można utworzyć przepływy pracy do automatyzacji zadań i procesów, które integrują aplikacje, dane, systemy i usługi w przedsiębiorstwach i organizacjach. W tym przewodniku szybki start przedstawiono, jak projektować i kompilować te przepływy pracy, tworząc Aplikacje logiki w programie Visual Studio i wdrażając te aplikacje na platformie Azure. Chociaż można wykonać te zadania w Azure Portal, program Visual Studio umożliwia dodawanie aplikacji logiki do kontroli źródła, publikowanie różnych wersji i tworzenie Azure Resource Manager szablonów dla różnych środowisk wdrażania.
 

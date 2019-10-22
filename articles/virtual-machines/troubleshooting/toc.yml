@@ -127,12 +127,18 @@
   href: storage-resource-deletion-errors.md
 - name: Błędy podczas usuwania klasycznych zasobów magazynu
   href: storage-classic-cannot-delete-storage-account-container-vhd.md
-- name: Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD
-  href: unexpected-reboots-attached-vhds.md
-- name: Problemy z aktywacją systemu Windows
-  href: troubleshoot-activation-problems.md
-- name: Problem z aktywacją przy wymuszonym tunelowaniu
-  href: custom-routes-enable-kms-activation.md
+- name: Rozwiązywanie problemów z ponownym uruchamianiem maszyny wirtualnej
+  items:
+    - name: Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD
+      href: unexpected-reboots-attached-vhds.md
+    - name: Omówienie ponownego uruchamiania systemu
+      href: understand-vm-reboot.md
+- name: Aktywacja systemu Windows
+  items:
+    - name: Problemy z aktywacją systemu Windows
+      href: troubleshoot-activation-problems.md
+    - name: Problem z aktywacją przy wymuszonym tunelowaniu
+      href: custom-routes-enable-kms-activation.md
 - name: Problemy z dostępem do aplikacji
   href: troubleshoot-app-connection.md
 - name: Nowe wdrożenia maszyn wirtualnych
@@ -188,8 +194,6 @@
   href: troubleshooting-throttling-errors.md
 - name: Używanie wirtualizacji zagnieżdżonej
   href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: Omówienie ponownego uruchamiania systemu
-  href: understand-vm-reboot.md
 - name: Narzędzia do zdalnego rozwiązywania problemów
   href: remote-tools-troubleshoot-azure-vm-issues.md
 - name: Naprawianie maszyny wirtualnej

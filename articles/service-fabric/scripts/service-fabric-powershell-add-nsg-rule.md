@@ -14,16 +14,16 @@ ms.topic: sample
 ms.date: 11/28/2017
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 8e3187ba399ffa4d6c0ca863380205f7fbbfaae8
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 44bb0e615453450c401949f0ce76f15cb82fab67
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036115"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680541"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>Dodawanie reguły sieciowej grupy zabezpieczeń dla ruchu przychodzącego
 
-Ten przykładowy skrypt tworzy regułę sieciowej grupy zabezpieczeń, która zezwala na ruch przychodzący na porcie 8081.  Skrypt pobiera `Microsoft.Network/networkSecurityGroups` zasób, w którym znajduje się klaster, tworzy nową regułę konfiguracji zabezpieczeń sieci i aktualizuje sieciową grupę zabezpieczeń. Dostosuj parametry zgodnie z potrzebami.
+Ten przykładowy skrypt tworzy regułę sieciowej grupy zabezpieczeń, która zezwala na ruch przychodzący na porcie 8081.  Skrypt pobiera grupę zabezpieczeń sieci, tworzy nową regułę konfiguracji zabezpieczeń sieci i aktualizuje sieciową grupę zabezpieczeń. Dostosuj parametry zgodnie z potrzebami.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

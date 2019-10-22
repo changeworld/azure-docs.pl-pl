@@ -1,24 +1,19 @@
 ---
 title: Mapa aplikacji na platformie Azure Application Insights | Microsoft Docs
 description: Monitorowanie złożonych topologii aplikacji za pomocą mapy aplikacji
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: f895aa9aa4bc66c32f10d290b7ee708345be8c9b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 49efad50b988da263a715c1aba9d53ad4b4a7121
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983769"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678389"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacje rozproszone
 
@@ -58,7 +53,7 @@ Wybierz pozycję **Zbadaj błędy** , aby uruchomić okienko błędy.
 
 ![Zrzut ekranu przedstawiający środowisko błędów](media/app-map/failures.png)
 
-### <a name="investigate-performance"></a>Zbadaj wydajność
+### <a name="investigate-performance"></a>Badanie wydajności
 
 Aby rozwiązać problemy z wydajnością, wybierz pozycję **Zbadaj wydajność**.
 
@@ -74,7 +69,7 @@ Wybierz pozycję **Przejdź do szczegółów** , aby poznać kompleksowe środow
 
 ![Zrzut ekranu przedstawiający szczegółowe informacje o transakcji](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Wyświetl w usłudze Analytics
+### <a name="view-in-analytics"></a>Wyświetl w analizie
 
 Aby kontynuować zapytania i zbadać dane aplikacji, kliknij przycisk **Wyświetl w analizie**.
 
@@ -119,7 +114,7 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**ASP.NET aplikacje: Załaduj inicjator do aktywnego TelemetryConfiguration**
+**ASP.NET Apps: Załaduj inicjator do aktywnego TelemetryConfiguration**
 
 W pliku ApplicationInsights. config:
 
@@ -147,11 +142,11 @@ Alternatywną metodą ASP.NET Web Apps jest tworzenie wystąpienia inicjatora w 
 ```
 
 > [!NOTE]
-> Dodawanie inicjatora `ApplicationInsights.config` przy użyciu `TelemetryConfiguration.Active` lub użycie nie jest prawidłowe dla aplikacji ASP.NET Core. 
+> Dodawanie inicjatora przy użyciu `ApplicationInsights.config` lub `TelemetryConfiguration.Active` jest nieprawidłowe dla aplikacji ASP.NET Core. 
 
-**ASP.NET Core aplikacje: Załaduj inicjator do TelemetryConfiguration**
+**ASP.NET Core Apps: Załaduj inicjator do TelemetryConfiguration**
 
-W przypadku aplikacji [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) dodanie nowego `TelemetryInitializer` jest wykonywane przez dodanie go do kontenera iniekcji zależności, jak pokazano poniżej. Jest to wykonywane w `ConfigureServices` metodzie `Startup.cs` klasy.
+W przypadku aplikacji [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) dodanie nowego `TelemetryInitializer` odbywa się przez dodanie go do kontenera iniekcji zależności, jak pokazano poniżej. Odbywa się to w `ConfigureServices` metodzie klasy `Startup.cs`.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -210,7 +205,7 @@ W miarę jak sądzisz o **nazwie roli w chmurze**, warto przyjrzeć się mapie a
 
 ![Zrzut ekranu mapy aplikacji](media/app-map/cloud-rolename.png)
 
-Na mapie aplikacji powyżej każdej z nazw w zielonych polach znajdują się wartości nazw ról w chmurze dla różnych aspektów tej konkretnej aplikacji rozproszonej. W przypadku tej aplikacji role składają się z: `Authentication`, `acmefrontend`, `Inventory Management`, `Payment Processing Worker Role`. 
+Na mapie aplikacji powyżej każdej z nazw w zielonych polach znajdują się wartości nazw ról w chmurze dla różnych aspektów tej konkretnej aplikacji rozproszonej. W przypadku tej aplikacji role składają się z: `Authentication`, `acmefrontend`, `Inventory Management` `Payment Processing Worker Role`. 
 
 W przypadku tej aplikacji każda z tych nazw roli w chmurze reprezentuje również inny unikatowy Application Insights zasób z własnymi kluczami Instrumentacji. Ponieważ właściciel tej aplikacji ma dostęp do każdego z czterech różnych zasobów Application Insights, Mapa aplikacji jest w stanie połączyć mapę relacji podstawowych.
 
@@ -240,7 +235,7 @@ Jeśli masz problemy z uzyskaniem działania mapy aplikacji zgodnie z oczekiwani
 
 1. Upewnij się, że używasz oficjalnie obsługiwanego zestawu SDK. Nieobsługiwane zestawy SDK/zestawy SDK społeczności mogą nie obsługiwać korelacji.
 
-    Zapoznaj się [](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) z tym artykułem, aby zapoznać się z listą obsługiwanych zestawów SDK.
+    Zapoznaj się z tym [artykułem](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) , aby zapoznać się z listą obsługiwanych zestawów SDK.
 
 2. Uaktualnij wszystkie składniki do najnowszej wersji zestawu SDK.
 
@@ -262,7 +257,7 @@ Aby rozwiązać ten problem, należy zmienić instrumentację, aby prawidłowo u
 
 * Typ zależności powinien reprezentować typ logiczny zależności. Na przykład, HTTP, SQL lub Azure Blob są typowymi typami zależności. Nie powinien zawierać unikatowych identyfikatorów.
 
-* W powyższej [sekcji](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)opisano przeznaczenie nazwy roli w chmurze.
+* W [powyższej sekcji](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)opisano przeznaczenie nazwy roli w chmurze.
 
 ## <a name="portal-feedback"></a>Opinie portalu
 

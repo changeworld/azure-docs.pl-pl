@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z AI do zrozumienia danych obiektów BLOB
+title: Używanie AI do zrozumienia danych magazynu obiektów BLOB
 titleSuffix: Azure Search
 description: Dodaj semantykę, przetwarzanie języka naturalnego i analizę obrazu do obiektów blob platformy Azure przy użyciu potoku wzbogacania AI w Azure Search.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: f7e264be9a02514972f9c9702adec8fa55a157bd
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529382"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678413"
 ---
-# <a name="use-ai-to-understand-blob-data"></a>Korzystanie z AI do zrozumienia danych obiektów BLOB
+# <a name="use-ai-to-understand-blob-storage-data"></a>Używanie AI do zrozumienia danych magazynu obiektów BLOB
 
 Dane w usłudze Azure Blob Storage to często wiele zawartości bez struktury, takich jak obrazy, długie teksty, pliki PDF i dokumenty pakietu Office. Korzystając z możliwości systemu AI w Azure Search, można zrozumieć i wyodrębnić cenne informacje z obiektów BLOB na różne sposoby. Przykłady zastosowania AI do zawartości obiektów BLOB obejmują:
 
@@ -112,7 +112,8 @@ Wzbogacony dokument na końcu potoku różni się od oryginalnej wersji wejścio
 
 Istnieje dużo więcej możliwości dzięki wzbogacaniu AI, aby maksymalnie wykorzystać swoje dane w usłudze Azure Storage, w tym łączenie Cognitive Services na różne sposoby i tworzenie niestandardowych umiejętności w przypadkach, gdy nie ma istniejącej usługi poznawczej dla tego scenariusza. Więcej informacji można uzyskać, korzystając z poniższych linków.
 
-> [!div class="nextstepaction"]
-> [Omówienie wzbogacenia AI](cognitive-search-concept-intro.md) 
->  Utwórz węzły mapy[zestawu umiejętności](cognitive-search-defining-skillset.md)
-> [w drzewie adnotacji](cognitive-search-output-field-mapping.md)
++ [Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB za pomocą Azure Portal (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Konfigurowanie indeksatora obiektów BLOB (Azure Search)](search-howto-indexing-azure-blob-storage.md) 
++ [Omówienie wzbogacenia AI (Azure Search)](cognitive-search-concept-intro.md) 
++ [Utwórz zestawu umiejętności (Azure Search)](cognitive-search-defining-skillset.md)
++ [Mapuj węzły w drzewie adnotacji (Azure Search)](cognitive-search-output-field-mapping.md)

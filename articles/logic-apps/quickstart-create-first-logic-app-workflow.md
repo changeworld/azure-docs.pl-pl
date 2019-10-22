@@ -1,6 +1,6 @@
 ---
-title: Szybki Start — tworzenie i automatyzowanie pierwszego przepływu pracy przy użyciu Azure Logic Apps
-description: Utwórz pierwszą aplikację logiki, która automatyzuje zadania, procesy i przepływy pracy przy użyciu Azure Logic Apps. Twórz aplikacje logiki dla rozwiązań integracji systemu i integracji aplikacji przedsiębiorstwa (EAI) dla systemów & usług w chmurze.
+title: Tworzenie i automatyzowanie pierwszego przepływu pracy — Azure Logic Apps
+description: Szybki Start — Tworzenie pierwszego zautomatyzowanego zadania lub przepływu pracy przy użyciu Azure Logic Apps na potrzeby rozwiązań integracji systemu i integracji aplikacji w przedsiębiorstwie (EAI)
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
-ms.openlocfilehash: c85b3e3ced661eb36d9cb1eb0ae443a5ab21a913
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8886472b9840c27bcbceb70265379db1682673a9
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029440"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679141"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Szybki start: tworzenie pierwszego zautomatyzowanego przepływu pracy za pomocą usługi Azure Logic Apps — witryna Azure Portal
 

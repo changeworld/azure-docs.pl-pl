@@ -1,20 +1,18 @@
 ---
 title: Monitorowanie wydajności usługi Azure App Services | Microsoft Docs
 description: Monitorowanie wydajności aplikacji dla usług Azure App Services. Załaduj wykres i czas odpowiedzi, informacje o zależnościach i ustaw alerty wydajności.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/04/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ec741c0051ccd8020b7d7ab689e15add3ad716bd
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 10/04/2019
+ms.openlocfilehash: 1937cce03412db55dafc2025c6a59b037deee3d1
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286178"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677652"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorowanie wydajności Azure App Service
 
@@ -330,7 +328,7 @@ Poniżej przedstawiono Przewodnik rozwiązywania problemów krok po kroku dotycz
 > Aplikacje ASP.NET Core 3,0 nie są obsługiwane. Wykonaj [ręczną instrumentację](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) za pomocą kodu dla aplikacji ASP.NET Core 3,0.
 
 1. Sprawdź, czy aplikacja jest monitorowana za pośrednictwem `ApplicationInsightsAgent`.
-    * Sprawdź, czy ustawienie aplikacji `ApplicationInsightsAgent_EXTENSION_VERSION` ma ustawioną wartość "~ 2".
+    * Sprawdź, czy ustawienie `ApplicationInsightsAgent_EXTENSION_VERSION` aplikacji jest ustawione na wartość "~ 2".
 2. Upewnij się, że aplikacja spełnia wymagania, które mają być monitorowane.
     * Przejdź do `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 

@@ -1,22 +1,18 @@
 ---
 title: Tworzenie i uruchamianie niestandardowych testów dostępności przy użyciu Azure Functions
 description: Ten dokument zawiera informacje dotyczące sposobu tworzenia funkcji platformy Azure z TrackAvailability (), która będzie uruchamiana okresowo zgodnie z konfiguracją podaną w funkcji TimerTrigger. Wyniki tego testu zostaną wysłane do zasobu Application Insights, w którym będzie można wykonywać zapytania o dane dotyczące wyników dostępności i je otrzymywać. Dostosowane testy umożliwiają pisanie bardziej złożonych testów dostępności niż jest to możliwe za pomocą interfejsu użytkownika portalu, monitorowania aplikacji wewnątrz sieci wirtualnej platformy Azure, zmiany adresu punktu końcowego lub tworzenia testu dostępności, jeśli nie jest on dostępny w Twoim regionie.
-services: application-insights
-documentationcenter: ''
-author: morgangrobin
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/11/2019
+author: morgangrobin
 ms.author: mogrobin
-ms.openlocfilehash: 38a83169a7d1ffa03416f5947ada703bcba5017a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/11/2019
+ms.openlocfilehash: a2b29f2c24a3244cdc800d882e7c2ed8f943eabe
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301375"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677580"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Tworzenie i uruchamianie niestandardowych testów dostępności przy użyciu Azure Functions
 

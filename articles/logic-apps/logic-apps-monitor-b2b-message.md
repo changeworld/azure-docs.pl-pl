@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie komunikatów B2B przy użyciu dzienników Azure Monitor — Azure Logic Apps | Microsoft Docs
-description: Monitoruj komunikaty AS2, X12 i EDIFACT dla kont integracji i Azure Logic Apps i skonfiguruj rejestrowanie diagnostyki przy użyciu dzienników Azure Monitor
+title: Monitorowanie komunikatów B2B przy użyciu Azure Monitor-Azure Logic Apps
+description: Konfigurowanie rejestrowania diagnostyki dla komunikatów AS2, X12 i EDIFACT w Azure Logic Apps przy użyciu Azure Monitor
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,14 +9,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: a4a7f951d34455f2e333f2c11e30d24efdfd22c1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261201"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680204"
 ---
-# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Monitorowanie komunikatów B2B przy użyciu dzienników Azure Monitor w Azure Logic Apps
+# <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>Konfigurowanie rejestrowania diagnostyki dla komunikatów B2B w Azure Logic Apps przy użyciu Azure Monitor
 
 Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na Twoim koncie integracyjnym partnerzy mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy ta komunikacja działa w oczekiwany sposób, możesz monitorować komunikaty AS2, X12 i EDIFACT oraz konfigurować rejestrowanie danych diagnostycznych dla konta integracji za pomocą [dzienników Azure monitor](../log-analytics/log-analytics-overview.md). Ta usługa monitoruje środowiska w chmurze i lokalne, pomaga zachować swoją dostępność i wydajność oraz gromadzi szczegóły i zdarzenia środowiska uruchomieniowego w celu zaawansowania debugowania. Możesz również użyć tych danych z innymi usługami, takimi jak Azure Storage i Azure Event Hubs.
 
@@ -39,19 +39,19 @@ Rejestrowanie można włączyć bezpośrednio z poziomu konta integracji lub [za
 
 ### <a name="turn-on-logging-from-integration-account"></a>Włącz rejestrowanie na koncie integracji
 
-1. W [Azure Portal](https://portal.azure.com)Znajdź i wybierz swoje konto integracji. W obszarze **monitorowanie**, wybierz opcję **ustawień diagnostycznych**.
+1. W [Azure Portal](https://portal.azure.com)Znajdź i wybierz swoje konto integracji. W obszarze **monitorowanie**wybierz pozycję **Ustawienia diagnostyczne**.
 
    ![Znajdź i wybierz swoje konto integracji, wybierz pozycję Ustawienia diagnostyczne](media/logic-apps-monitor-b2b-message/find-integration-account.png)
 
 1. Teraz Znajdź i wybierz swoje konto integracji. Z listy filtrów wybierz wartości, które mają zastosowanie do konta integracji.
 Gdy skończysz, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
 
-   | Właściwość | Value | Opis | 
+   | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
    | **Subskrypcja** | <*Azure-subscription-name*> | Subskrypcja platformy Azure skojarzona z kontem integracji | 
-   | **Grupa zasobów** | <*Azure-resource-group-name*> | Grupa zasobów platformy Azure dla konta integracji | 
+   | **Grupa zasobów** | <*Azure-Resource-Group-name*> | Grupa zasobów platformy Azure dla konta integracji | 
    | **Typ zasobu** | **Integracja kont** | Typ zasobu platformy Azure, w którym ma zostać włączone rejestrowanie | 
-   | **Zasób** | <*Integracja — nazwa konta*> | Nazwa zasobu platformy Azure, w którym ma zostać włączona Rejestracja | 
+   | **Zasób** | <*integrację — nazwa konta* > | Nazwa zasobu platformy Azure, w którym ma zostać włączona Rejestracja | 
    ||||  
 
    Na przykład:
@@ -88,12 +88,12 @@ Gdy skończysz, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
 1. Teraz Znajdź i wybierz swoje konto integracji. Z listy filtrów wybierz wartości, które mają zastosowanie do konta integracji.
 Gdy skończysz, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
 
-   | Właściwość | Value | Opis | 
+   | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
    | **Subskrypcja** | <*Azure-subscription-name*> | Subskrypcja platformy Azure skojarzona z kontem integracji | 
-   | **Grupa zasobów** | <*Azure-resource-group-name*> | Grupa zasobów platformy Azure dla konta integracji | 
+   | **Grupa zasobów** | <*Azure-Resource-Group-name*> | Grupa zasobów platformy Azure dla konta integracji | 
    | **Typ zasobu** | **Integracja kont** | Typ zasobu platformy Azure, w którym ma zostać włączone rejestrowanie | 
-   | **Zasób** | <*Integracja — nazwa konta*> | Nazwa zasobu platformy Azure, w którym ma zostać włączona Rejestracja | 
+   | **Zasób** | <*integrację — nazwa konta* > | Nazwa zasobu platformy Azure, w którym ma zostać włączona Rejestracja | 
    ||||  
 
    Na przykład:

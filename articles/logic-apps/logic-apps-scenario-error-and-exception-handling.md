@@ -1,6 +1,6 @@
 ---
-title: Obsługa wyjątków & scenariusz rejestrowania błędów — Azure Logic Apps | Microsoft Docs
-description: Oto rzeczywisty przypadek użycia dotyczący zaawansowanej obsługi wyjątków i rejestrowania błędów w Azure Logic Apps
+title: Obsługa wyjątków & scenariusz rejestrowania błędów — Azure Logic Apps
+description: Rzeczywisty przypadek użycia i scenariusz dla zaawansowanej obsługi wyjątków i rejestrowania błędów w Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,16 +10,16 @@ ms.reviewer: LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: ec01f738ee4943659de1b49ab8d52218e6a8fb79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 7930d487d367ee19b869becae5017f80ea1df8cb
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385465"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680156"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenariusz: Obsługa wyjątków i rejestrowanie błędów dla aplikacji logiki
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenariusz: obsługa wyjątków i rejestrowanie błędów dla aplikacji logiki
 
-W tym scenariuszu opisano sposób, w jaki można rozłożyć aplikację logiki w celu zapewnienia lepszej obsługi wyjątków. Wykorzystamy przypadek użycia w czasie rzeczywistym, aby odpowiedzieć na pytanie: "Czy Azure Logic Apps obsługiwać wyjątek i obsługa błędów?"
+W tym scenariuszu opisano sposób, w jaki można rozłożyć aplikację logiki w celu zapewnienia lepszej obsługi wyjątków. Użycie przypadku użycia w czasie rzeczywistym w celu udzielenia odpowiedzi na pytanie: "czy Azure Logic Apps obsługiwać wyjątek i obsługę błędów?".
 
 > [!NOTE]
 > Bieżący schemat Azure Logic Apps zawiera standardowy szablon odpowiedzi akcji. Ten szablon zawiera wewnętrzne walidacje i odpowiedzi na błędy zwracane z aplikacji interfejsu API.
@@ -36,13 +36,13 @@ Projekt ma dwa główne wymagania:
 * Sposób wyświetlania wszelkich błędów, które wystąpiły w ramach przepływu pracy
 
 > [!TIP]
-> Aby zapoznać się z ogólnym filmem wideo dotyczącym tego projektu, zobacz(http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Grupa")użytkowników integracji [grupy]użytkowników integracji.
+> Aby uzyskać ogólne wideo na temat tego projektu, zobacz [Grupa użytkowników integracji](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Grupa użytkowników integracji").
 
 ## <a name="how-we-solved-the-problem"></a>Jak rozwiązać problem
 
-Wybrano [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") jako repozytorium dla rekordów dziennika i błędów (Cosmos DB odnosi się do rekordów jako dokumentów). Ponieważ Azure Logic Apps ma standardowy szablon dla wszystkich odpowiedzi, nie trzeba tworzyć schematu niestandardowego. Możemy utworzyć aplikację interfejsu API do **wstawiania** i **wykonywania zapytań** dotyczących rekordów błędów i dzienników. Możemy również zdefiniować schemat dla każdej z nich w aplikacji interfejsu API.  
+Wybrano [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") jako repozytorium dla rekordów dziennika i błędów (Cosmos DB odwołuje się do rekordów jako dokumentów). Ponieważ Azure Logic Apps ma standardowy szablon dla wszystkich odpowiedzi, nie trzeba tworzyć schematu niestandardowego. Możemy utworzyć aplikację interfejsu API do **wstawiania** i **wykonywania zapytań** dotyczących rekordów błędów i dzienników. Możemy również zdefiniować schemat dla każdej z nich w aplikacji interfejsu API.  
 
-Innym wymaganiem było przeczyszczenie rekordów po określonej dacie. Cosmos DB ma właściwość " [Time to]Live(https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") " (TTL), która pozwala nam ustawić wartość **czasu wygaśnięcia** dla każdego rekordu lub kolekcji. Ta funkcja eliminuje konieczność ręcznego usuwania rekordów w Cosmos DB.
+Innym wymaganiem było przeczyszczenie rekordów po określonej dacie. Cosmos DB ma właściwość o nazwie [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Czas wygaśnięcia") (TTL), która pozwala nam ustawić wartość **czasu wygaśnięcia** dla każdego rekordu lub kolekcji. Ta funkcja eliminuje konieczność ręcznego usuwania rekordów w Cosmos DB.
 
 > [!IMPORTANT]
 > Aby ukończyć ten samouczek, musisz utworzyć bazę danych Cosmos DB i dwie kolekcje (rejestrowanie i błędy).
@@ -402,7 +402,7 @@ Nasze rozwiązanie dodaliśmy możliwości z [Azure Cosmos DB](https://azure.mic
 Aby wyświetlić błędy, można utworzyć aplikację sieci Web MVC do wyświetlania rekordów błędów z Cosmos DB. Operacje **list**, **szczegółów**, **edycji**i **usuwania** są zawarte w bieżącej wersji.
 
 > [!NOTE]
-> Operacja edycji: Cosmos DB zastępuje cały dokument. Rekordy widoczne na **liście** i w widokach **szczegółów** są tylko przykładami. Nie są to rzeczywiste rekordy terminów pacjenta.
+> Edycja operacji: Cosmos DB zamienia cały dokument. Rekordy widoczne na **liście** i w widokach **szczegółów** są tylko przykładami. Nie są to rzeczywiste rekordy terminów pacjenta.
 
 Oto przykłady szczegółów aplikacji MVC utworzonych przy użyciu opisanego wcześniej podejścia.
 
@@ -469,7 +469,7 @@ Interfejs API jest wywoływany z aplikacji logiki przy użyciu następującej sk
  }
 ```
 
-Sprawdza, czy wyrażenie w poprzednim przykładzie kodu *Create_NewPatientRecord* stan.
+Wyrażenie w poprzednim przykładzie kodu sprawdza stan *Create_NewPatientRecord* **nie powiodło się**.
 
 ## <a name="summary"></a>Podsumowanie
 
@@ -479,7 +479,7 @@ Sprawdza, czy wyrażenie w poprzednim przykładzie kodu *Create_NewPatientRecord
 
 ### <a name="source-code"></a>Kod źródłowy
 
-Kod źródłowy aplikacji interfejsu API zarządzania wyjątkami Logic Apps jest dostępny w tym(https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "interfejsie API zarządzania wyjątkami aplikacji logiki") [repozytorium GitHub].
+Kod źródłowy aplikacji interfejsu API zarządzania wyjątkami Logic Apps jest dostępny w tym [repozytorium GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Interfejs API zarządzania wyjątkami aplikacji logiki").
 
 ## <a name="next-steps"></a>Następne kroki
 

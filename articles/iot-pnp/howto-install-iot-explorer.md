@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960572"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679853"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Instalowanie i korzystanie z programu Azure IoT Explorer
 
@@ -73,27 +73,33 @@ Na stronie lista **urządzeń** można wykonać następujące instrukcje:
 
 - Wybierz pozycję **Dodaj** , aby zarejestrować nowe urządzenie w centrum. Następnie wprowadź identyfikator urządzenia. Użyj ustawień domyślnych, aby automatycznie generować klucze uwierzytelniania i włączyć połączenie z centrum.
 - Wybierz urządzenie, a następnie wybierz pozycję **Usuń** , aby usunąć tożsamość urządzenia. Przed ukończeniem tej akcji Przejrzyj szczegóły urządzenia, aby upewnić się, że usuwasz właściwą tożsamość urządzenia.
-- Zapytanie według `capabilityID` i `interfaceID`. Dodaj `capabilityID` lub `interfaceID` jako parametr do wysyłania zapytań do urządzeń.
+- Zapytanie według `capabilityID` i `interfaceID`. Dodaj `capabilityID` lub `interfaceID` jako parametr, aby wykonać zapytanie dotyczące urządzeń.
 
 ## <a name="interact-with-a-device"></a>Korzystanie z urządzenia
 
-Na stronie lista **urządzeń** wybierz wartość w kolumnie **Identyfikator urządzenia** , aby wyświetlić stronę szczegółów dla zarejestrowanego urządzenia. W przypadku urządzeń znajdują się dwie sekcje: **urządzenie** i **cyfrowe sznurki**.
+Na stronie lista **urządzeń** wybierz wartość w kolumnie **Identyfikator urządzenia** , aby wyświetlić stronę szczegółów dla zarejestrowanego urządzenia. Dla każdego urządzenia znajdują się dwie sekcje: **Device** i **Digital bliźniaczy**.
 
 ### <a name="device"></a>Urządzenie
 
-Ta sekcja zawiera karty **tożsamość urządzenia**, **sznurki urządzenia**i dane **telemetryczne** .
+Ta sekcja zawiera karty **tożsamość urządzenia**, **dane** **telemetrii, dane telemetryczne**, **metody bezpośrednie** i **komunikaty z chmury do urządzenia** .
 
 - Informacje o [tożsamości urządzenia](../iot-hub/iot-hub-devguide-identity-registry.md) można wyświetlić i zaktualizować na karcie **tożsamość urządzenia** .
 - Dostęp do informacji o [bliźniaczych urządzeniach](../iot-hub/iot-hub-devguide-device-twins.md) można uzyskać na karcie **sznurki urządzenia** .
 - Jeśli urządzenie jest połączone i aktywnie wysyła dane, [można je wyświetlić na karcie](../iot-hub/iot-hub-devguide-messages-read-builtin.md) **telemetrii** .
+- [Metodę bezpośrednią](../iot-hub/iot-hub-devguide-direct-methods.md) można wywołać na urządzeniu na karcie **Metoda bezpośrednia** .
+- [Komunikat z chmury do urządzenia](../iot-hub/iot-hub-devguide-messages-c2d.md) można wysłać na karcie **komunikaty z chmury do urządzenia** .
 
 ### <a name="digital-twin"></a>Cyfrowe sznurki
 
-Możesz użyć narzędzia, aby wyświetlić wystąpienie cyfrowego przędzenia urządzenia. W tym artykule zostaną wyświetlone wszystkie interfejsy skojarzone z modelem możliwości urządzenia Plug and Play IoT. Wybierz interfejs, aby rozwinąć odpowiednie elementy podstawowe [Plug and Play IoT](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL).
+Możesz użyć narzędzia, aby wyświetlić wystąpienie cyfrowego przędzenia urządzenia. W przypadku urządzenia Plug and Play IoT wszystkie interfejsy skojarzone z modelem możliwości urządzenia są wyświetlane w tej sekcji Narzędzia. Wybierz interfejs, aby rozwinąć odpowiednie elementy podstawowe [Plug and Play IoT](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL).
+
+### <a name="interface"></a>Interfejsu
+
+Na stronie **interfejs** można wyświetlić definicję JSON interfejsu.
 
 #### <a name="properties"></a>Właściwości
 
-Właściwości tylko do odczytu zdefiniowane w interfejsie można wyświetlić na stronie **Właściwości** . Można aktualizować właściwości do zapisu zdefiniowane w interfejsie na stronie właściwości do **zapisu** .
+Właściwości tylko do odczytu zdefiniowane w interfejsie można wyświetlić na stronie **właściwości bez możliwości zapisu** . Można aktualizować właściwości do zapisu zdefiniowane w interfejsie na stronie właściwości do **zapisu** :
 
 1. Przejdź do strony **właściwości z możliwością zapisu** .
 1. Kliknij właściwość, którą chcesz zaktualizować.

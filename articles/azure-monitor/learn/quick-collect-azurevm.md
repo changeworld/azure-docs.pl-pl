@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, sec-javascript-october2019
+ms.openlocfilehash: f400fb7f177301e2b8c21cde9be334635025b4b3
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992151"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677697"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Zbieranie danych z maszyny wirtualnej platformy Azure za pomocą Azure Monitor
 
@@ -27,7 +27,7 @@ ms.locfileid: "69992151"
  
 W tym przewodniku Szybki start przyjęto założenie, że masz już maszynę wirtualną platformy Azure. Jeśli jeszcze jej nie masz, możesz [utworzyć maszynę wirtualną z systemem Windows](../../virtual-machines/windows/quick-create-portal.md) lub [utworzyć maszynę wirtualną z systemem Linux](../../virtual-machines/linux/quick-create-cli.md), wykonując czynności opisane w przewodnikach Szybki start dotyczących maszyn wirtualnych.
 
-## <a name="sign-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Zaloguj się w witrynie Azure Portal
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
 
@@ -35,7 +35,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **log Analytics obszary robocze**.
 
-    ![Azure Portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Wybierz pozycję **Utwórz**, a następnie wybierz opcje dla następujących elementów:
 
@@ -45,7 +45,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
    * W polu **Lokalizacja** wybierz lokalizację, w której wdrożono maszyny wirtualne.  Aby uzyskać dodatkowe informacje, sprawdź, w których [regionach jest dostępna usługa Log Analytics](https://azure.microsoft.com/regions/services/).
    * W przypadku tworzenia obszaru roboczego w nowej subskrypcji utworzonej po 2 kwietnia 2018 r. zostanie automatycznie użyty plan cenowy *Na GB*, a opcja wyboru warstwy cenowej będzie niedostępna.  W przypadku tworzenia obszaru roboczego dla istniejącej subskrypcji utworzonej przed 2 kwietnia lub dla subskrypcji powiązanej z istniejącą rejestracją umowy EA wybierz preferowaną warstwę cenową.  Aby uzyskać dodatkowe informacje dotyczące konkretnej warstwy, zobacz [Log Analytics — cennik](https://azure.microsoft.com/pricing/details/log-analytics/).
   
-        ![Utwórz blok zasobów Log Analytics](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Utwórz blok zasobów Log Analytics](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. Po podania wymaganych informacji w okienku **obszaru roboczego log Analytics** wybierz pozycję **OK**.  
 
@@ -80,11 +80,11 @@ Azure Monitor może zbierać zdarzenia z dzienników zdarzeń systemu Windows lu
 
 1. Wybierz pozycję **Ustawienia zaawansowane**.
 
-    ![Ustawienia zaawansowane usługi Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Ustawienia zaawansowane usługi Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
 
 2. Wybierz pozycję **Dane**, a następnie pozycję **Dzienniki zdarzeń systemu Windows**.
 
-3. Dziennik zdarzeń dodaje się przez wpisanie nazwy dziennika.  Wpisz **system** , a następnie wybierz znak plus **+** .
+3. Dziennik zdarzeń dodaje się przez wpisanie nazwy dziennika.  Wpisz **system** , a następnie wybierz **+** znak plus.
 
 4. W tabeli zaznacz ważności **Błąd** i **Ostrzeżenie**.
 
@@ -114,7 +114,7 @@ Azure Monitor może zbierać zdarzenia z dzienników zdarzeń systemu Windows lu
 
 6. Podczas pierwszej konfiguracji liczników wydajności systemu Linux dla nowego obszaru roboczego usługi Log Analytics można szybko utworzyć kilka typowych liczników. Na liście obok każdego z nich znajduje się pole wyboru.
 
-    ![Zaznaczone domyślne liczniki wydajności systemu Windows](media/quick-collect-azurevm/linux-perfcounters-default.png)
+    ![Zaznaczone domyślne liczniki wydajności systemu Windows](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     Wybierz pozycję **Zastosuj poniższą konfigurację do moich maszyn** , a następnie wybierz pozycję **Dodaj wybrane liczniki wydajności**.  Są one dodawane i ustawiane wstępnie z dziesięciosekundowym interwałem próbkowania kolekcji.  
 

@@ -1,5 +1,5 @@
 ---
-title: Scenariusz bezserwerowy — tworzenie pulpitu nawigacyjnego usługi Customer Insights przy użyciu usług platformy Azure | Microsoft Docs
+title: Tworzenie pulpitu nawigacyjnego usługi Customer Insights — Azure Logic Apps
 description: Zarządzaj opiniami klientów, danymi mediów społecznościowych i innymi, tworząc pulpit nawigacyjny klienta za pomocą Azure Logic Apps i Azure Functions
 services: logic-apps
 ms.service: logic-apps
@@ -7,21 +7,20 @@ ms.suite: integration
 author: jeffhollan
 ms.author: jehollan
 ms.reviewer: estfan, LADocs
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: b8ba341252679a07e50f9b276f7f485b08a6acba
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: c9c5cf9c56f2e22faa973c983c6fd81733119daa
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164863"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680104"
 ---
-# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Tworzenie pulpitu nawigacyjnego usługi Streaming Customer Insights za pomocą Azure Logic Apps i Azure Functions
+# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Utwórz pulpit nawigacyjny usługi przesyłania strumieniowego na platformie Customer Insights zawierający Azure Logic Apps i Azure Functions
 
-Platforma Azure [](https://azure.microsoft.com/solutions/serverless/) oferuje narzędzia bezserwerowe, które ułatwiają szybkie tworzenie i hostowanie aplikacji w chmurze bez konieczności zaopiniowania infrastruktury. W tym samouczku możesz utworzyć pulpit nawigacyjny, który wyzwala Opinie klientów, analizuje Opinie z uczeniem maszynowym i publikuje szczegółowe informacje w źródle, na przykład Power BI lub Azure Data Lake.
+Platforma Azure oferuje narzędzia [bezserwerowe](https://azure.microsoft.com/solutions/serverless/) , które ułatwiają szybkie tworzenie i hostowanie aplikacji w chmurze bez konieczności zaopiniowania infrastruktury. W tym samouczku możesz utworzyć pulpit nawigacyjny, który wyzwala Opinie klientów, analizuje Opinie z uczeniem maszynowym i publikuje szczegółowe informacje w źródle, na przykład Power BI lub Azure Data Lake.
 
-W przypadku tego rozwiązania te usługi Key Components są używane w przypadku aplikacji bezserwerowych: [Azure Functions](https://azure.microsoft.com/services/functions/) i [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
+W przypadku tego rozwiązania są używane następujące kluczowe składniki platformy Azure dla aplikacji bezserwerowych: [Azure Functions](https://azure.microsoft.com/services/functions/) i [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 Azure Logic Apps zapewnia bezserwerowy aparat przepływu pracy w chmurze, dzięki czemu można tworzyć aranżacje między składnikami bezserwerowymi i łączyć się z 200 usługami i interfejsami API. Azure Functions zapewnia serwerowe przetwarzanie danych w chmurze. To rozwiązanie używa Azure Functions do oflagowania tweetów klientów na podstawie wstępnie zdefiniowanych słów kluczowych.
 
 W tym scenariuszu utworzysz aplikację logiki, która wyzwala wyszukiwanie opinii klientów. Niektóre łączniki, które pomagają odpowiedzieć na Opinie klientów, obejmują Outlook.com, pakiet Office 365, badanie małp, serwis Twitter i [żądanie HTTP z formularza sieci Web](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). Utworzony przez Ciebie przepływ pracy monitoruje element hasztagów w serwisie Twitter.
@@ -34,7 +33,7 @@ Można [skompilować całe rozwiązanie w programie Visual Studio](../logic-apps
 
    Jeśli jesteś nowym sposobem korzystania z usługi Logic Apps, zapoznaj się z [przewodnikiem Szybki Start dla Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) lub [przewodnika Szybki Start dla programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
-2. W Projektancie aplikacji logiki Znajdź i Dodaj wyzwalacz usługi Twitter, który ma tę akcję: **Po opublikowaniu nowego tweetu**
+2. W Projektancie aplikacji logiki Znajdź i Dodaj wyzwalacz usługi Twitter, który ma tę akcję: **po opublikowaniu nowego tweetu**
 
 3. Skonfiguruj wyzwalacz, aby nasłuchiwać tweetów opartych na słowie kluczowym lub nagłówku.
 
@@ -61,8 +60,8 @@ Aby wykryć tonacji za jakiś tekst, możesz użyć [usługi Azure Cognitive Ser
 Po otrzymaniu danych tweetów i szczegółowych informacji dotyczących tweetu możesz teraz użyć kilku innych odpowiednich łączników i ich działań:
 
 * **Power BI Dodaj wiersze do zestawu danych przesyłania strumieniowego**: Wyświetl przychodzące Tweety na pulpicie nawigacyjnym Power BI.
-* **Azure Data Lake — Dołącz plik**: Dodaj dane klienta do Azure Data Lake zestawu danych, aby dołączyć je do zadań analitycznych.
-* **SQL — Dodawanie wierszy**: Przechowywanie danych w bazie danych na potrzeby późniejszego pobierania.
+* **Azure Data Lake — Dołącz plik**: Dodaj dane klienta do Azure Data Lake zestawu danych, aby dołączyć do zadań analitycznych.
+* **SQL — Dodawanie wierszy**: przechowywanie danych w bazie danych na potrzeby późniejszego pobierania.
 * **Zapasowy — Wyślij wiadomość**: Powiadom kanał zapasowy o negatywnych opiniach, które mogą wymagać akcji.
 
 Możesz również utworzyć i funkcję platformy Azure, aby umożliwić wykonywanie niestandardowych operacji przetwarzania danych. 
@@ -75,7 +74,7 @@ W tym scenariuszu tekst tweetu jest używany jako treść żądania dla funkcji 
 Na końcu funkcji Zwróć odpowiedź do aplikacji logiki z niektórymi danymi, na przykład prostą wartością logiczną, taką jak `containsKeyword` lub obiektem złożonym.
 
 > [!TIP]
-> Aby uzyskać dostęp do złożonej odpowiedzi z funkcji w aplikacji logiki, użyj akcji Przeanalizuj dane **JSON** .
+> Aby uzyskać dostęp do złożonej odpowiedzi z funkcji w aplikacji logiki, użyj akcji **Przeanalizuj dane JSON** .
 
 Gdy wszystko będzie gotowe, Zapisz funkcję, a następnie Dodaj funkcję jako akcję w aplikacji logiki, która jest tworzona.
 

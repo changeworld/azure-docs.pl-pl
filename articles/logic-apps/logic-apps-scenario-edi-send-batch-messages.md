@@ -1,6 +1,6 @@
 ---
-title: Przetwarzanie wsadowe komunikatów EDI jako grupy lub kolekcji — Azure Logic Apps | Microsoft Docs
-description: Wysyłanie komunikatów EDI do przetwarzania wsadowego w usłudze Logic Apps
+title: Przetwarzanie wsadowe komunikatów EDI jako grupy — Azure Logic Apps
+description: Wysyłanie i odbieranie komunikatów EDI jako partii, grup lub kolekcji w Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: c2b0e2ed801724b682e0c4a60d6d7dff9645aab3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827431"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680179"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Wysyłanie komunikatów EDI w partiach do partnerów handlowych przy użyciu Azure Logic Apps
 
@@ -59,20 +59,20 @@ W przypadku tego odbiorcy usługi Batch należy określić tryb wsadowy, nazwę,
 
 2. [Połącz aplikację logiki z kontem integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-3. W projektancie Logic Apps, Dodaj wyzwalacz **wsadowy** , który uruchamia przepływ pracy aplikacji logiki. W polu wyszukiwania wprowadź ciąg "Batch" jako filtr. Wybierz ten wyzwalacz: **Komunikaty wsadowe**
+3. W projektancie Logic Apps, Dodaj wyzwalacz **wsadowy** , który uruchamia przepływ pracy aplikacji logiki. W polu wyszukiwania wprowadź ciąg "Batch" jako filtr. Wybierz ten wyzwalacz: **wiadomości wsadowe**
 
    ![Dodaj wyzwalacz partii](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
 4. Ustaw właściwości odbiorcy partii: 
 
-   | Właściwość | Value | Uwagi | 
+   | Właściwość | Wartość | Uwagi | 
    |----------|-------|-------|
-   | **Tryb wsadowy** | wbudowane |  |  
+   | **Tryb wsadowy** | Alert |  |  
    | **Nazwa partii** | TestBatch | Dostępne tylko z **wbudowanym** trybem wsadowym | 
    | **Kryteria wydania** | Na podstawie liczby komunikatów na podstawie harmonogramu | Dostępne tylko z **wbudowanym** trybem wsadowym | 
    | **Liczba komunikatów** | 10 | Dostępne tylko w przypadku kryteriów wydania **opartych na liczbie komunikatów** | 
-   | **Interval** | 10 | Dostępne tylko w przypadku kryteriów wydania **opartych na harmonogramie** | 
-   | **Częstotliwość** | minuta | Dostępne tylko w przypadku kryteriów wydania **opartych na harmonogramie** | 
+   | **Interwał** | 10 | Dostępne tylko w przypadku kryteriów wydania **opartych na harmonogramie** | 
+   | **Częstotliwość** | minutę | Dostępne tylko w przypadku kryteriów wydania **opartych na harmonogramie** | 
    ||| 
 
    ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -84,7 +84,7 @@ W przypadku tego odbiorcy usługi Batch należy określić tryb wsadowy, nazwę,
 
    1. W obszarze wyzwalacza wsadowego wybierz pozycję **nowy krok**.
 
-   2. W polu wyszukiwania wprowadź ciąg "X12 Batch" jako filtr, a następnie wybierz tę akcję (dowolna wersja): **Kodowanie wsadowe <*wersja*> — X12** 
+   2. W polu wyszukiwania wprowadź ciąg "X12 Batch" jako filtr, a następnie wybierz tę akcję (dowolna wersja): **kodowanie wsadowe <*wersji*>-X12** 
 
       ![Wybierz akcję kodowania partii X12](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
@@ -118,7 +118,7 @@ Aby upewnić się, że odbiornik usługi Batch działa zgodnie z oczekiwaniami, 
 
 1. W akcji kodowania X12 wybierz pozycję **nowy krok**. 
 
-2. W polu wyszukiwania wprowadź ciąg "http" jako filtr. Wybierz tę akcję: **HTTP-HTTP**
+2. W polu wyszukiwania wprowadź ciąg "http" jako filtr. Wybierz tę akcję: **http-http**
     
    ![Wybieranie akcji HTTP](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action.png)
 
@@ -126,9 +126,9 @@ Aby upewnić się, że odbiornik usługi Batch działa zgodnie z oczekiwaniami, 
 
    | Właściwość | Opis | 
    |----------|-------------|
-   | **— Metoda** | Z tej listy wybierz pozycję **post**. | 
+   | **Metoda** | Z tej listy wybierz pozycję **post**. | 
    | **Adresu** | Wygeneruj identyfikator URI dla pojemnika żądania, a następnie wprowadź ten identyfikator URI w tym polu. | 
-   | **Body** | Kliknij wewnątrz tego pola i po otwarciu listy zawartości dynamicznej wybierz token **treści** , który jest wyświetlany w sekcji, zakodować **zadanie wsadowe według nazwy umowy**. <p>Jeśli nie widzisz tokenu **treści** , obok pozycji **Koduj zadanie wsadowe według nazwy umowy**wybierz pozycję **Zobacz więcej**. | 
+   | **Treść** | Kliknij wewnątrz tego pola i po otwarciu listy zawartości dynamicznej wybierz token **treści** , który jest wyświetlany w sekcji, **zakodować zadanie wsadowe według nazwy umowy**. <p>Jeśli nie widzisz tokenu **treści** , obok pozycji **Koduj zadanie wsadowe według nazwy umowy**wybierz pozycję **Zobacz więcej**. | 
    ||| 
 
    ![Podaj szczegóły akcji HTTP](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action-details.png)
@@ -151,7 +151,7 @@ Teraz należy utworzyć co najmniej jedną aplikację logiki, która wysyła kom
 
 1. Utwórz kolejną aplikację logiki o tej nazwie: "SendX12MessagesToBatch" 
 
-2. W polu wyszukiwania wprowadź ciąg "When a żądanie HTTP" jako filtr. Wybierz ten wyzwalacz: **Po odebraniu żądania HTTP** 
+2. W polu wyszukiwania wprowadź ciąg "When a żądanie HTTP" jako filtr. Wybierz ten wyzwalacz: **po odebraniu żądania HTTP** 
    
    ![Dodawanie wyzwalacza żądania](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
@@ -160,7 +160,7 @@ Teraz należy utworzyć co najmniej jedną aplikację logiki, która wysyła kom
    1. W obszarze Akcja żądania HTTP wybierz pozycję **nowy krok**.
 
    2. W polu wyszukiwania wprowadź ciąg "Batch" jako filtr. 
-   Wybierz listę **Akcje** , a następnie wybierz tę akcję: **Wybieranie przepływu pracy Logic Apps z wyzwalaczem wsadowym — wysyłanie komunikatów do partii**
+   Wybierz listę **Akcje** , a następnie wybierz tę akcję: **wybierz przepływ pracy Logic Apps z wyzwalaczem wsadowym — Wyślij komunikaty do partii**
 
       ![Wybierz pozycję "Wybierz Logic Apps przepływ pracy z wyzwalaczem wsadowym"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 
@@ -168,7 +168,7 @@ Teraz należy utworzyć co najmniej jedną aplikację logiki, która wysyła kom
 
       ![Wybierz aplikację logiki "odbiorca wsadowa"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Wybierz tę akcję: **Batch_messages < —*odbiornik*>**
+   4. Wybierz tę akcję: **Batch_messages <-*receiver* ->**
 
       ![Wybierz akcję "Batch_messages"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
@@ -190,8 +190,8 @@ Teraz należy utworzyć co najmniej jedną aplikację logiki, która wysyła kom
 
 ## <a name="test-your-logic-apps"></a>Testowanie aplikacji logiki
 
-Aby przetestować rozwiązanie do przetwarzania wsadowego, Opublikuj komunikaty X12 w aplikacji logiki nadawcy usługi [](https://www.getpostman.com/postman) Batch z poziomu programu Poster lub podobnego narzędzia. Wkrótce rozpocznie się pobieranie komunikatów X12 w koszu do żądania, co 10 minut lub w partiach 10, z tym samym kluczem partycji.
+Aby przetestować rozwiązanie do przetwarzania wsadowego, Opublikuj komunikaty X12 w aplikacji logiki nadawcy usługi Batch z poziomu programu [Poster](https://www.getpostman.com/postman) lub podobnego narzędzia. Wkrótce rozpocznie się pobieranie komunikatów X12 w koszu do żądania, co 10 minut lub w partiach 10, z tym samym kluczem partycji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Przetwarzaj komunikaty jako partie](../logic-apps/logic-apps-batch-process-send-receive-messages.md) 

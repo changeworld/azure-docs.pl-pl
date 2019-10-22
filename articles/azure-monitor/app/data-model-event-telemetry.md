@@ -1,33 +1,29 @@
 ---
-title: Usługi Azure Application Insights Telemetrii Data Model — danych Telemetrycznych zdarzeń | Dokumentacja firmy Microsoft
-description: Model danych szczegółowych informacji aplikacji dla zdarzenia telemetrii
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Azure telemetria usługi Application Insights Data Model — Telemetria zdarzeń | Microsoft Docs
+description: Application Insights model danych telemetrii zdarzeń
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 8e519e5a5e5fe6b893fa5663e1426630f46f885f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 620983fb2174fe7f32a61503b0b87e8e7ce0c330
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900854"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678146"
 ---
-# <a name="event-telemetry-application-insights-data-model"></a>Dane telemetryczne zdarzeń: Model danych usługi Application Insights
+# <a name="event-telemetry-application-insights-data-model"></a>Telemetrię zdarzeń: Application Insights model danych
 
-Elementy można tworzyć zdarzenia telemetrii (w [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md)) do reprezentowania zdarzenie, które wystąpiły w aplikacji. Zazwyczaj jest interakcji z użytkownikiem takich jak przycisk kliknij przycisk lub kolejność wyewidencjonowania. Można także zdarzeń cyklu życia aplikacji, takich jak inicjowanie lub konfiguracji aktualizacji. 
+Można utworzyć elementy telemetrii zdarzeń (w [Application Insights](../../azure-monitor/app/app-insights-overview.md)) do reprezentowania zdarzenia, które wystąpiło w aplikacji. Zwykle jest to interakcja użytkownika, taka jak kliknięcie przycisku lub zamówienie wyewidencjonowania. Może to być również zdarzenie dotyczące cyklu życia aplikacji, takie jak Inicjalizacja lub aktualizacja konfiguracji. 
 
-Semantycznie zdarzenia mogą być lub nie może zostać skorelowane z żądania. Jeśli jednak poprawnie użyty danych telemetrycznych zdarzeń jest ważniejsza niż żądania lub śledzenia. Zdarzenia reprezentują dane telemetryczne, firm i temat do oddzielnych, powinny być łagodniej [próbkowania](../../azure-monitor/app/api-filtering-sampling.md).
+Semantycznie zdarzenia mogą lub nie mogą być skorelowane z żądaniami. Jednak jeśli są używane prawidłowo, dane telemetryczne zdarzeń są ważniejsze niż żądania lub ślady. Zdarzenia reprezentują dane telemetryczne i powinny być podmiotem do oddzielenia, mniej agresywnych [próbek](../../azure-monitor/app/api-filtering-sampling.md).
 
-## <a name="name"></a>Name (Nazwa)
+## <a name="name"></a>Nazwa
 
-Nazwa zdarzenia. Aby umożliwić odpowiednie grupowania i przydatne metryki, ograniczania aplikacji, tak, aby generuje niewielką liczbę nazw oddzielne zdarzenie. Na przykład nie używaj odrębną nazwę dla każdego wystąpienia wygenerowane zdarzenia.
+Nazwa zdarzenia. Aby umożliwić prawidłowe grupowanie i przydatne metryki, Ogranicz aplikację, tak aby generowała małą liczbę oddzielnych nazw zdarzeń. Na przykład nie należy używać oddzielnej nazwy dla każdego wygenerowanego wystąpienia zdarzenia.
 
 Maksymalna długość: 512 znaków
 
@@ -39,8 +35,8 @@ Maksymalna długość: 512 znaków
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz [modelu danych](data-model.md) dla usługi Application Insights typów i danych modelu.
-- [Zapisywanie danych telemetrycznych zdarzeń niestandardowych](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
-- Zapoznaj się z [platform](../../azure-monitor/app/platforms.md) obsługiwane przez usługę Application Insights.
+- Zobacz [model danych](data-model.md) dla typów Application Insights i modelu danych.
+- [Napisz niestandardową telemetrię zdarzeń](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
+- Sprawdź [platformy](../../azure-monitor/app/platforms.md) obsługiwane przez Application Insights.

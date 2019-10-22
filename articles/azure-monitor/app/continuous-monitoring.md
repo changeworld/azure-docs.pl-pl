@@ -1,20 +1,18 @@
 ---
 title: Ciągłe monitorowanie potoku wydania usługi DevOps przy użyciu Azure Pipelines i platformy Azure Application Insights | Microsoft Docs
 description: Zawiera instrukcje umożliwiające szybkie konfigurowanie ciągłego monitorowania za pomocą Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/16/2019
-ms.service: application-insights
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c39a2f75fe74b61463af464078b4446bba07dec0
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c891cc7564a60dfd665d84d569e266332d255fa9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277700"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677513"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Dodawanie ciągłego monitorowania do potoku wydania
 
@@ -26,7 +24,7 @@ W przypadku ciągłego monitorowania potoki wersji mogą zawierać dane monitoro
 
 1. W [usłudze Azure DevOps](https://dev.azure.com)wybierz organizację i projekt.
    
-1. W menu po lewej stronie projektu wybierz pozycję**wersje** **potoków** > . 
+1. W menu po lewej stronie projektu wybierz pozycję **potoki**  > **wersje**. 
    
 1. Rozwiń strzałkę obok pozycji **Nowy** i wybierz pozycję **Nowy potok wersji**. Lub, jeśli nie masz jeszcze potoku, wybierz pozycję **Nowy potok** na wyświetlonej stronie.
    
@@ -40,7 +38,7 @@ W przypadku ciągłego monitorowania potoki wersji mogą zawierać dane monitoro
 
 1. W okienku Konfiguracja **etapu 1** wykonaj następujące pola: 
 
-    | Parametr        | Value |
+    | Parametr        | Wartość |
    | ------------- |:-----|
    | **Nazwa etapu**      | Podaj nazwę etapu lub pozostaw ją na **etapie 1**. |
    | **Subskrypcja platformy Azure** | Wybierz połączoną subskrypcję platformy Azure, której chcesz użyć.|
@@ -53,7 +51,7 @@ W przypadku ciągłego monitorowania potoki wersji mogą zawierać dane monitoro
 
 ## <a name="modify-alert-rules"></a>Modyfikuj reguły alertów
 
-**Wdrożenie Azure App Service z szablonem ciągłego monitorowania** ma cztery reguły alertów: **Dostępność**, **żądania zakończone niepowodzeniem**, **czas odpowiedzi serwera**i **wyjątki serwera**. Możesz dodać więcej reguł lub zmienić ustawienia reguły, aby spełniały wymagania poziomu usługi. 
+**Wdrożenie Azure App Service z szablonem ciągłego monitorowania** ma cztery reguły alertów: **dostępność**, **żądania zakończone niepowodzeniem**, **czas odpowiedzi serwera**i **wyjątki serwera**. Możesz dodać więcej reguł lub zmienić ustawienia reguły, aby spełniały wymagania poziomu usługi. 
 
 Aby zmodyfikować ustawienia reguły alertu:
 
@@ -99,7 +97,7 @@ W dziennikach wydań można zobaczyć zachowanie bramy wdrażania i inne kroki w
    
 1. W obszarze **etapy**wybierz dowolny etap, aby wyświetlić podsumowanie wydania. 
    
-1. Aby wyświetlić dzienniki, wybierz pozycję **Wyświetl dzienniki** w podsumowaniu wersji, zaznacz hiperlink **zakończone powodzeniem** lub niepowodzeniem na dowolnym etapie lub umieść kursor na dowolnym etapie i wybierz pozycję  **dzienniki**. 
+1. Aby wyświetlić dzienniki, wybierz pozycję **Wyświetl dzienniki** w podsumowaniu wersji, zaznacz hiperlink **zakończone powodzeniem** lub **niepowodzeniem** na dowolnym etapie lub umieść kursor na dowolnym etapie i wybierz pozycję **dzienniki**. 
    
    ![Wyświetlanie dzienników wydań](media/continuous-monitoring/006.png)
 

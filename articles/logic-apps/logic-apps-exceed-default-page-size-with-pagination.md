@@ -1,6 +1,6 @@
 ---
-title: Uzyskaj więcej danych, elementy lub rekordy z podziałem na strony — Azure Logic Apps
-description: Skonfigurować podział na strony przekracza limit rozmiaru strony domyślnej akcji łącznika w usłudze Azure Logic Apps
+title: Uzyskaj więcej elementów lub rekordów z podziałem na strony Azure Logic Apps
+description: Skonfiguruj stronicowanie, aby przekroczyć domyślny limit rozmiaru strony dla akcji łącznika w Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,26 +9,26 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 04/11/2019
-ms.openlocfilehash: 2d1bcf2cf83fab106f79120c3caacc424f839836
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e86600312490c77ed492cb28a359add0fed90596
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64476544"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679888"
 ---
-# <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Uzyskaj więcej danych, elementy lub rekordy przy użyciu dzielenia na strony w usłudze Azure Logic Apps
+# <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Uzyskaj więcej danych, elementów lub rekordów przy użyciu stronicowania w Azure Logic Apps
 
-Podczas pobierania danych, elementy lub rekordów za pomocą akcji łącznika w [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md), możesz otrzymać zestawów wyników tak dużych, akcja nie zwraca wszystkie wyniki w tym samym czasie. Za pomocą niektórych działań liczba wyników może przekraczać łącznika domyślny rozmiar strony. W tym przypadku akcja zwraca pierwszej strony wyników. Na przykład domyślny rozmiar strony dla łącznika programu SQL Server **Pobierz wiersze** akcji to 2048, ale może się różnić w zależności od innych ustawień.
+Podczas pobierania danych, elementów lub rekordów przy użyciu akcji łącznika w [Azure Logic Apps](../logic-apps/logic-apps-overview.md)można uzyskać zestawy wyników tak duże, że akcja nie zwróci wszystkich wyników w tym samym czasie. W przypadku niektórych akcji liczba wyników może przekroczyć domyślny rozmiar strony łącznika. W takim przypadku akcja zwraca tylko pierwszą stronę wyników. Na przykład domyślny rozmiar strony dla akcji **Pobierz wiersze** łącznika SQL Server to 2048, ale może się różnić w zależności od innych ustawień.
 
-Pewne działania pozwalają włączyć *dzielenia na strony* ustawienie, aby Twoja aplikacja logiki pobierać więcej wyników do limitu dzielenia na strony, ale zwracają te jako pojedynczy komunikat po zakończeniu działania. Korzystając z podziałem na strony, należy określić *próg* wartość, która jest docelowa liczba wyników akcji do zwrócenia. Akcja pobiera wyniki, aż do osiągnięcia określony próg. Jeśli łączna liczba elementów jest mniejsza niż określony próg, akcja pobiera wszystkie wyniki.
+Niektóre akcje umożliwiają włączenie ustawienia *stronicowania* , dzięki czemu aplikacja logiki może pobrać więcej wyników do limitu stronicowania, ale zwrócić te wyniki jako pojedynczy komunikat po zakończeniu działania. W przypadku korzystania z stronicowania należy określić wartość *progową* , która jest docelowym numerem wyników, które ma zwrócić akcja. Akcja pobiera wyniki do osiągnięcia określonego progu. Gdy łączna liczba elementów jest mniejsza niż określona wartość progowa, Akcja pobiera wszystkie wyniki.
 
-Włączenie tej opcji na stronach pobiera ustawienia podziału na strony wyników na podstawie rozmiaru strony łącznika. To zachowanie oznacza, że czasami może być otrzymasz więcej wyników niż określony próg. Na przykład w przypadku korzystania z programu SQL Server **Pobierz wiersze** akcji, która obsługuje podział na strony ustawienie:
+Włączenie ustawienia stronicowania pobiera strony wyników na podstawie rozmiaru strony łącznika. Takie zachowanie oznacza, że czasami można uzyskać więcej wyników niż określony próg. Na przykład podczas korzystania z akcji SQL Server **Pobierz wiersze** , która obsługuje ustawienia stronicowania:
 
-* Akcja ma domyślny rozmiar strony jest 2048 rekordy na każdej stronie.
-* Załóżmy, że masz 10 000 rekordów i określić 5000 rekordów jako minimum.
-* Podział na strony pobiera strony rekordów, aby pobrać co najmniej określona wartość minimalna, akcja zwraca 6144 rekordów (3 stron x 2048 rekordów), nie 5000 rekordów.
+* Domyślny rozmiar strony akcji to 2048 rekordów na stronę.
+* Załóżmy, że masz 10 000 rekordów i jako minimum określisz 5000 rekordów.
+* Stronicowanie pobiera strony rekordów, aby uzyskać co najmniej określone minimum, Akcja zwraca 6144 rekordów (3 strony x 2048 rekordów), nie 5000 rekordów.
 
-Poniżej przedstawiono listę tylko niektórych łączników, których może przekroczyć domyślny rozmiar strony dla określonych akcji:
+Poniżej znajduje się lista zawierająca tylko niektóre łączniki, w których można przekroczyć domyślny rozmiar strony dla określonych akcji:
 
 * [Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/)
 * [Dynamics 365](https://docs.microsoft.com/connectors/dynamicscrmonline/)
@@ -43,21 +43,21 @@ Poniżej przedstawiono listę tylko niektórych łączników, których może prz
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure [Załóż bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Aplikacja logiki i akcji, której chcesz włączyć funkcję podziału na strony. Jeśli nie masz aplikacji logiki, zobacz [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Aplikacja logiki i akcja, w której chcesz włączyć podział na strony. Jeśli nie masz aplikacji logiki, zobacz [Szybki Start: Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="turn-on-pagination"></a>Włącz podział na strony
 
-Aby ustalić, czy akcja obsługuje podział na strony w Projektancie aplikacji logiki, sprawdź ustawienia akcji **dzielenia na strony** ustawienie. W tym przykładzie pokazano, jak włączyć funkcję podziału na strony w programie SQL Server **Pobierz wiersze** akcji.
+Aby określić, czy akcja obsługuje stronicowanie w Projektancie aplikacji logiki, sprawdź ustawienia akcji dla ustawienia podziału na **strony** . Ten przykład pokazuje, jak włączyć podział na strony w akcji **Pobierz wiersze** SQL Server.
 
-1. W akcji w prawym górnym rogu wybierz wielokropek ( **...** ) i wybierz **ustawienia**.
+1. W prawym górnym rogu akcji wybierz przycisk wielokropka ( **...** ), a następnie wybierz pozycję **Ustawienia**.
 
    ![Otwórz ustawienia akcji](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings.png)
 
-   Jeśli stronicowanie obsługiwane przez akcję, akcja pokazuje **dzielenia na strony** ustawienie.
+   Jeśli akcja obsługuje podział na strony, Akcja pokazuje ustawienie **podział na strony** .
 
-1. Zmiana **dzielenia na strony** z **poza** do **na**. W **próg** właściwości, określ dla docelowej liczby wyników, które chcesz, aby akcja zwracająca wartość całkowitą.
+1. Zmień ustawienie **stronicowania** z **wyłączone** na **włączone**. We właściwości **próg** Określ wartość całkowitą dla docelowej liczby wyników, które akcja ma zwrócić.
 
    ![Określ minimalną liczbę wyników do zwrócenia](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings-pagination.png)
 
@@ -65,7 +65,7 @@ Aby ustalić, czy akcja obsługuje podział na strony w Projektancie aplikacji l
 
 ## <a name="workflow-definition---pagination"></a>Definicja przepływu pracy — podział na strony
 
-Po włączeniu dzielenia na strony dla akcji, która obsługuje tę możliwość obejmuje definicję przepływu pracy aplikacji logiki `"paginationPolicy"` właściwości wraz z `"minimumItemCount"` właściwość ta akcja `"runtimeConfiguration"` właściwości, na przykład:
+Po włączeniu dzielenia na strony dla akcji, która obsługuje tę możliwość, definicja przepływu pracy aplikacji logiki zawiera właściwość `"paginationPolicy"` wraz z właściwością `"minimumItemCount"` we właściwości `"runtimeConfiguration"` tej akcji, na przykład:
 
 ```json
 "actions": {
@@ -85,6 +85,6 @@ Po włączeniu dzielenia na strony dla akcji, która obsługuje tę możliwość
 },
 ```
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
 
 Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).

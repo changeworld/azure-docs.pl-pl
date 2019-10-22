@@ -7,12 +7,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: b67f0cf60d279c7bc52b4114d29c37847f5c57f1
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 68808a2ea99c8fccd7e64f15e97f2ee6ec84d1a9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244463"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678457"
 ---
 # <a name="create-an-azure-search-knowledge-store-by-using-rest"></a>Tworzenie Azure Search sklepu z bazami danych przy użyciu usługi REST
 
@@ -30,7 +30,7 @@ Utwórz następujące usługi:
 
 - Utwórz [konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , aby przechowywać przykładowe dane i magazyn wiedzy. Twoje konto magazynu musi używać tej samej lokalizacji (na przykład US-zachodni) dla usługi Azure Search. Wartością dla **rodzaju konta** musi być **StorageV2 (ogólnego przeznaczenia w wersji 2)** (wartość domyślna) lub **Storage (ogólnego przeznaczenia w wersji 1)** .
 
-- Zalecane: Pobierz [aplikację komputerową programu Poster](https://www.getpostman.com/) na potrzeby wysyłania żądań do Azure Search. Za pomocą interfejsu API REST można korzystać z dowolnego narzędzia, które może pracować z żądaniami i odpowiedziami HTTP. Na potrzeby eksplorowania interfejsów API REST jest dobrym rozwiązaniem. W tym artykule używamy programu Poster. Ponadto [kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) tego artykułu zawiera kolekcję żądań. 
+- Zalecane: Pobierz [aplikację komputerową programu Poster](https://www.getpostman.com/) na potrzeby wysyłania żądań do Azure Search. Za pomocą interfejsu API REST można korzystać z dowolnego narzędzia, które może pracować z żądaniami i odpowiedziami HTTP. Na potrzeby eksplorowania interfejsów API REST jest dobrym rozwiązaniem. W tym artykule używamy programu Poster. Ponadto [kod źródłowy](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) tego artykułu zawiera kolekcję żądań. 
 
 ## <a name="store-the-data"></a>Przechowywanie danych
 
@@ -46,7 +46,7 @@ Załaduj plik CSV przeglądów hotelu do magazynu obiektów blob platformy Azure
 1. Wybierz **przycisk OK** , aby utworzyć kontener obiektów BLOB.
 1. Otwórz nowy kontener **hoteli-Recenzja** , wybierz pozycję **Przekaż**, a następnie wybierz plik HotelReviews-Free. csv, który został pobrany w pierwszym kroku.
 
-    ![Przekazywanie danych](media/knowledge-store-create-portal/upload-command-bar.png "przekazywanie przeglądów hotelu")
+    ![Przekaż dane](media/knowledge-store-create-portal/upload-command-bar.png "Przekaż przeglądy hotelu")
 
 1. Wybierz pozycję **Przekaż** , aby ZAIMPORTOWAĆ plik CSV do usługi Azure Blob Storage. Zostanie wyświetlony nowy kontener:
 
@@ -63,14 +63,14 @@ Zainstaluj i skonfiguruj program ogłaszający.
 1. Wybierz kartę **kolekcje** , a następnie wybierz przycisk **...** (wielokropek).
 1. Wybierz pozycję **Edit** (Edytuj). 
    
-   ![Aplikacja programu Poster pokazująca nawigację](media/knowledge-store-create-rest/postman-edit-menu.png "Przejdź do menu Edycja w programie Poster")
+   ![Aplikacja do publikowania po wyświetleniu nawigacji](media/knowledge-store-create-rest/postman-edit-menu.png "Przejdź do menu Edycja w programie Poster")
 1. W oknie dialogowym **Edycja** wybierz kartę **zmienne** . 
 
 Na karcie **zmienne** można dodawać wartości, które zaswapki są księgowane w każdym momencie napotkania określonej zmiennej wewnątrz podwójnych nawiasów klamrowych. Na przykład, program Poster zastępuje symbol `{{admin-key}}` bieżącą wartością ustawioną dla `admin-key`. Program ogłaszający tworzy podstawienie w adresach URL, nagłówkach, treści żądania i tak dalej. 
 
 Aby uzyskać wartość `admin-key`, przejdź do usługi Azure Search i wybierz kartę **klucze** . Zmień `search-service-name` i `storage-account-name` na wartości wybrane w obszarze [Tworzenie usług](#create-services). Ustaw wartość `storage-connection-string` przy użyciu wartości na karcie **klucze dostępu** konta magazynu. Można pozostawić wartości domyślne dla innych wartości.
 
-![Karta zmienne aplikacji po wprowadzeniu](media/knowledge-store-create-rest/postman-variables-window.png "")
+![Karta zmiennych aplikacji po wprowadzeniu](media/knowledge-store-create-rest/postman-variables-window.png "Okno zmiennych autora")
 
 
 | Zmienna    | Gdzie uzyskać |
@@ -168,9 +168,9 @@ Wybierz pozycję **Wyślij** , aby wydać żądanie post.
 
 Następnym krokiem jest określenie zestawu umiejętności, który określa ulepszenia do zastosowania oraz magazyn wiedzy, w którym będą przechowywane wyniki. W programie Poster wybierz kartę **Tworzenie zestawu umiejętności** . To żądanie wysyła do `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`. Ustaw nagłówki `api-key` i `Content-type` tak jak wcześniej. 
 
-Istnieją dwa duże obiekty najwyższego poziomu: `skills` i `knowledgeStore`. Każdy obiekt w obiekcie `skills` jest usługą wzbogacania. Każda usługa wzbogacania ma `inputs` i `outputs`. @No__t-0 zawiera dane wyjściowe `targetName` z `Language`. Wartość tego węzła jest używana przez większość innych umiejętności jako dane wejściowe. Źródło jest `document/Language`. Możliwość używania danych wyjściowych z jednego węzła jako dane wejściowe do innego jest jeszcze bardziej oczywista w `ShaperSkill`, która określa, jak dane są przesyłane do tabel w sklepie z bazami danych.
+Istnieją dwa duże obiekty najwyższego poziomu: `skills` i `knowledgeStore`. Każdy obiekt w obiekcie `skills` jest usługą wzbogacania. Każda usługa wzbogacania ma `inputs` i `outputs`. @No__t_0 ma `targetName` danych wyjściowych `Language`. Wartość tego węzła jest używana przez większość innych umiejętności jako dane wejściowe. Źródło jest `document/Language`. Możliwość używania danych wyjściowych z jednego węzła jako dane wejściowe do innego jest jeszcze bardziej oczywista w `ShaperSkill`, która określa, jak dane są przesyłane do tabel w sklepie z bazami danych.
 
-Obiekt `knowledge_store` nawiązuje połączenie z kontem magazynu za pośrednictwem zmiennej post `{{storage-connection-string}}`. `knowledge_store` zawiera zestaw mapowań między rozszerzonym dokumentem i tabelami oraz kolumnami w sklepie z bazami danych. 
+Obiekt `knowledge_store` nawiązuje połączenie z kontem magazynu za pośrednictwem zmiennej `{{storage-connection-string}}` Poster. `knowledge_store` zawiera zestaw mapowań między rozszerzonym dokumentem i tabelami oraz kolumnami w sklepie z bazami danych. 
 
 Aby wygenerować zestawu umiejętności, wybierz przycisk **Wyślij** w ogłoszeniu w celu umieszczenia żądania:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Użyj języka Python i TensorFlow w Azure Functions, aby przeprowadzić wnioskowanie dotyczące uczenia maszynowego | Microsoft Docs'
+title: 'Samouczek: używanie języka Python i TensorFlow w Azure Functions, aby przeprowadzić wnioskowanie dotyczące uczenia maszynowego | Microsoft Docs'
 description: W tym samouczku pokazano, jak zastosować modele uczenia maszynowego w programie TensorFlow w Azure Functions
 services: functions
 author: anthonychu
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: abc7302ee59103a9cbab156b95a41b77eb95d474
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729176"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677880"
 ---
-# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Samouczek: Stosuj modele uczenia maszynowego w Azure Functions przy użyciu języka Python i TensorFlow
+# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Samouczek: stosowanie modeli uczenia maszynowego w Azure Functions przy użyciu języka Python i TensorFlow
 
 W tym artykule pokazano, jak Azure Functions umożliwia korzystanie z języka Python i TensorFlow z modelem uczenia maszynowego w celu klasyfikowania obrazu na podstawie jego zawartości.
 
@@ -52,9 +52,9 @@ cd functions-python-tensorflow-tutorial
 
 Repozytorium zawiera kilka folderów.
 
-- *Rozpocznij*:  Ten folder roboczy samouczka
-- *zakończenie*: Jest to końcowy wynik i pełna implementacja odwołania
-- *resources*: Zawiera model uczenia maszynowego i biblioteki pomocnika
+- *Rozpocznij*: to jest folder roboczy samouczka
+- *koniec*: jest to końcowy wynik i pełna implementacja dla odwołania
+- *zasoby*: zawiera model uczenia maszynowego i biblioteki pomocnika
 - *fronton*: Witryna sieci Web, która wywołuje aplikację funkcji
 
 ## <a name="create-and-activate-a-python-virtual-environment"></a>Tworzenie i aktywowanie środowiska wirtualnego języka Python
@@ -79,7 +79,7 @@ py -3.6 -m venv .venv
 .venv\scripts\activate
 ```
 
-Monit dotyczący `(.venv)` terminalu jest teraz poprzedzony prefiksem, który wskazuje, że środowisko wirtualne zostało pomyślnie uaktywnione. Upewnij się `python` , że w środowisku wirtualnym rzeczywiście jest język Python 3.6. x.
+Monit dotyczący terminalu jest teraz poprzedzony `(.venv)`, co oznacza, że środowisko wirtualne zostało pomyślnie uaktywnione. Upewnij się, że `python` w środowisku wirtualnym jest naprawdę Python 3.6. x.
 
 ```console
 python --version
@@ -98,9 +98,9 @@ func init --worker-runtime python
 
 Aplikacja funkcji może zawierać co najmniej jedną Azure Functions. Otwórz folder *Start* w edytorze i przejrzyj jego zawartość.
 
-- [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): Zawiera ustawienia aplikacji używane do tworzenia lokalnego
-- plik [*host. JSON*](functions-host-json.md): Zawiera ustawienia dla hosta Azure Functions i rozszerzeń
-- [*Requirements. txt*](functions-reference-python.md#python-version-and-package-management): Zawiera pakiety języka Python wymagane przez tę aplikację
+- [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): zawiera ustawienia aplikacji używane na potrzeby lokalnego tworzenia
+- plik [*host. JSON*](functions-host-json.md): zawiera ustawienia dla Azure Functions hosta i rozszerzeń
+- [*Requirements. txt*](functions-reference-python.md#python-version-and-package-management): zawiera pakiety języka Python wymagane przez tę aplikację
 
 ## <a name="create-an-http-function"></a>Tworzenie funkcji HTTP
 
@@ -112,10 +112,10 @@ W terminalu Użyj Azure Functions Core Tools do tworzenia szkieletu nowej funkcj
 func new --language python --template HttpTrigger --name classify
 ```
 
-Tworzony jest nowy folder o nazwie klasyfikowanie zawierający dwa pliki.
+Tworzony jest nowy folder o nazwie *klasyfikowanie* zawierający dwa pliki.
 
-- *init.PR\_: \_ \_\_* Plik dla funkcji Main
-- *Function. JSON*:  Plik opisujący wyzwalacz funkcji i jego powiązania wejściowe i wyjściowe
+- *\_ \_init \_ \_. PR*: plik dla funkcji Main
+- *Function. JSON*: plik opisujący wyzwalacz funkcji i jego powiązania wejściowe i wyjściowe
 
 ### <a name="run-the-function"></a>Uruchom funkcję
 
@@ -131,7 +131,7 @@ Otwórz przeglądarkę i przejdź do poniższego adresu URL. Funkcja powinna zos
 http://localhost:7071/api/classify?name=Azure
 ```
 
-Użyj `Ctrl-C` , aby zatrzymać aplikację funkcji.
+Użyj `Ctrl-C`, aby zatrzymać aplikację funkcji.
 
 ## <a name="import-the-tensorflow-model"></a>Importowanie modelu TensorFlow
 
@@ -140,7 +140,7 @@ Będziesz używać wstępnie skompilowanego modelu TensorFlow, który został pr
 > [!NOTE]
 > Jeśli chcesz utworzyć własny program za pomocą warstwy Bezpłatna Custom Vision Service, możesz postępować zgodnie z [instrukcjami w repozytorium przykładowego projektu](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
 
-Model składa się z dwóch plików w *< REPOSITORY_ROOT >/Resources/model* folder: *model. DB* i *Label. txt*. Skopiuj je do folderu funkcji klasyfikowanie.
+Model składa się z dwóch plików w *< REPOSITORY_ROOT >/Resources/model* folder: *model. PB* i *Label. txt*. Skopiuj je do folderu funkcji *klasyfikowanie* .
 
 #### <a name="linux-and-macos"></a>Linux i macOS:
 
@@ -154,11 +154,11 @@ cp ../resources/model/* classify
 copy ..\resources\model\* classify
 ```
 
-Pamiętaj o uwzględnieniu \* w powyższym poleceniu. Upewnij się , że Klasyfikowanie zawiera teraz pliki o nazwach *model. PB* i *Label. txt*.
+Upewnij się, że w powyższym poleceniu uwzględniono \*. Upewnij się, że *klasyfikowanie* zawiera teraz pliki o nazwach *model. PB* i *Label. txt*.
 
 ## <a name="add-the-helper-functions-and-dependencies"></a>Dodawanie funkcji i zależności pomocnika
 
-Niektóre funkcje pomocnika na potrzeby przygotowania obrazu wejściowego i tworzenia prognoz przy użyciu TensorFlow znajdują się w pliku o nazwie *Predict.py* w folderze Resources. Skopiuj ten plik do folderu funkcji klasyfikowanie.
+Niektóre funkcje pomocnika na potrzeby przygotowania obrazu wejściowego i tworzenia prognoz przy użyciu TensorFlow znajdują się w pliku o nazwie *Predict.py* w folderze *resources* . Skopiuj ten plik do folderu funkcji *klasyfikowanie* .
 
 #### <a name="linux-and-macos"></a>Linux i macOS:
 
@@ -172,14 +172,14 @@ cp ../resources/predict.py classify
 copy ..\resources\predict.py classify
 ```
 
-Upewnij się , że Klasyfikowanie zawiera teraz plik o nazwie *Predict.py*.
+Upewnij się, że *klasyfikowanie* zawiera teraz plik o nazwie *Predict.py*.
 
 ### <a name="install-dependencies"></a>Instalowanie zależności
 
 Biblioteka pomocników ma pewne zależności, które należy zainstalować. Otwórz plik *Start/Requirements. txt* w edytorze i Dodaj do niego następujące zależności.
 
 ```txt
-tensorflow
+tensorflow==1.15
 Pillow
 requests
 ```
@@ -194,13 +194,13 @@ pip install --no-cache-dir -r requirements.txt
 
 ### <a name="caching-the-model-in-global-variables"></a>Buforowanie modelu w zmiennych globalnych
 
-W edytorze Otwórz *Predict.py* i obejrzyj `_initialize` funkcję znajdującą się w górnej części pliku. Należy zauważyć, że model TensorFlow jest ładowany z dysku podczas pierwszego wykonywania funkcji i zapisywania w zmiennych globalnych. Ładowanie z dysku jest pomijane w kolejnych wykonaniach `_initialize` funkcji. Buforowanie modelu w pamięci dzięki tej metodzie przyspiesza późniejsze przewidywania.
+W edytorze Otwórz *Predict.py* i przyjrzyj się funkcji `_initialize` w górnej części pliku. Należy zauważyć, że model TensorFlow jest ładowany z dysku podczas pierwszego wykonywania funkcji i zapisywania w zmiennych globalnych. Ładowanie z dysku jest pomijane w kolejnych wykonaniach funkcji `_initialize`. Buforowanie modelu w pamięci dzięki tej metodzie przyspiesza późniejsze przewidywania.
 
-Aby uzyskać więcej informacji na temat zmiennych globalnych, zapoznaj się z przewodnikiem dla deweloperów w języku [Python Azure Functions](functions-reference-python.md#global-variables).
+Aby uzyskać więcej informacji na temat zmiennych globalnych, zapoznaj się z [przewodnikiem dla deweloperów w języku Python Azure Functions](functions-reference-python.md#global-variables).
 
 ## <a name="update-function-to-run-predictions"></a>Funkcja aktualizacji do uruchamiania prognoz
 
-Otwórz *klasyfikację\_\_/init\_. PR w edytorze.\_* Zaimportuj bibliotekę *predykcyjną* dodaną do tego samego folderu wcześniej. Dodaj poniższe `import` instrukcje poniżej innych importów znajdujących się już w pliku.
+Otwórz *\_init \_ w edytorze \_ \_. PR* . Zaimportuj bibliotekę *predykcyjną* dodaną do tego samego folderu wcześniej. Dodaj następujące instrukcje `import` poniżej innych importów znajdujących się już w pliku.
 
 ```python
 import json
@@ -221,14 +221,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(json.dumps(results), headers = headers)
 ```
 
-Upewnij się zapisać zmiany.
+Upewnij się, że Zapisano zmiany.
 
-Ta funkcja odbiera adres URL obrazu w parametrze ciągu zapytania o `img`nazwie. Wywołuje `predict_image_from_url` z biblioteki pomocnika, która pobiera obraz i zwraca prognozę przy użyciu modelu TensorFlow. Funkcja zwraca odpowiedź HTTP z wynikami.
+Ta funkcja odbiera adres URL obrazu w parametrze ciągu zapytania o nazwie `img`. Wywołuje `predict_image_from_url` z biblioteki pomocnika, która pobiera obraz i zwraca prognozę przy użyciu modelu TensorFlow. Funkcja zwraca odpowiedź HTTP z wynikami.
 
-Ponieważ punkt końcowy HTTP jest wywoływany przez stronę sieci Web hostowaną w innej domenie, odpowiedź HTTP zawiera `Access-Control-Allow-Origin` nagłówek, który spełnia wymagania funkcji udostępniania zasobów między źródłami (CORS) przeglądarki.
+Ponieważ punkt końcowy HTTP jest wywoływany przez stronę sieci Web hostowaną w innej domenie, odpowiedź HTTP zawiera nagłówek `Access-Control-Allow-Origin`, aby spełnić wymagania dotyczące udostępniania zasobów między źródłami (CORS) w przeglądarce.
 
 > [!NOTE]
-> W aplikacji produkcyjnej przejdź `*` do konkretnego źródła strony sieci Web, aby zwiększyć bezpieczeństwo.
+> W aplikacji produkcyjnej Zmień `*` na konkretną Źródło strony sieci Web, aby zwiększyć bezpieczeństwo.
 
 ### <a name="run-the-function-app"></a>Uruchamianie aplikacji funkcji
 
@@ -246,11 +246,11 @@ http://localhost:7071/api/classify?img=https://raw.githubusercontent.com/Azure-S
 
 Pozostaw uruchomioną aplikację funkcji.
 
-### <a name="run-the-web-app"></a>Uruchamianie aplikacji sieci web
+### <a name="run-the-web-app"></a>Uruchamianie aplikacji internetowej
 
-W folderze frontonu znajduje się prosta aplikacja internetowa korzystająca z interfejsu API protokołu HTTP w aplikacji funkcji.
+W folderze *frontonu* znajduje się prosta aplikacja internetowa korzystająca z interfejsu API protokołu HTTP w aplikacji funkcji.
 
-Otwórz oddzielny Terminal i przejdź do folderu *frontonu* . Uruchom serwer HTTP przy użyciu języka Python 3,6.
+Otwórz *oddzielny* Terminal i przejdź do folderu *frontonu* . Uruchom serwer HTTP przy użyciu języka Python 3,6.
 
 #### <a name="linux-and-macos"></a>Linux i macOS:
 

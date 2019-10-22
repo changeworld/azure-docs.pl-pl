@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Automatyzowanie wiadomości e-mail dotyczących przetwarzania i załączników — Azure Logic Apps
-description: Samouczek — Tworzenie zautomatyzowanych przepływów pracy na potrzeby obsługi wiadomości e-mail i załączników przy użyciu usług Azure Logic Apps, Azure Storage i Azure Functions
+title: Tworzenie przepływów pracy przy użyciu Azure Functions-Azure Logic Apps
+description: Samouczek — Automatyzowanie przepływów pracy do przetwarzania wiadomości e-mail i załączników za pomocą Azure Logic Apps, usługi Azure Storage i Azure Functions
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,14 +11,14 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: e7c27d284ef93d15c5ac9a6228205e79518f2ffa
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 2919816872fd73c8a50f404e857c9ec56eeab0f5
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051775"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679172"
 ---
-# <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Samouczek: Automatyzowanie obsługi wiadomości e-mail i załączników za pomocą usługi Azure Logic Apps
+# <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Samouczek: Automatyzowanie obsługi wiadomości e-mail i załączników za pomocą Azure Logic Apps
 
 Usługa Azure Logic Apps pomaga automatyzować przepływy pracy i integrować dane w usługach platformy Azure, usługach firmy Microsoft, innych aplikacjach typu oprogramowanie jako usługa (SaaS) oraz systemach lokalnych. Ten samouczek pokazuje sposób tworzenia [aplikacji logiki](../logic-apps/logic-apps-overview.md), która obsługuje przychodzące wiadomości e-mail i wszelkie załączniki. Ta aplikacja logiki analizuje zawartość wiadomości e-mail, zapisuje ją w usłudze Azure Storage oraz wysyła powiadomienia dotyczące przeglądania zawartości.
 
@@ -49,7 +49,7 @@ Po ukończeniu aplikacja logiki będzie ogólnie wyglądać jak ten przepływ pr
 
 * Pobierz i zainstaluj [bezpłatny Eksplorator usługi Microsoft Azure Storage](https://storageexplorer.com/). To narzędzie ułatwia sprawdzanie, czy kontener magazynu został skonfigurowany prawidłowo.
 
-## <a name="sign-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Zaloguj się w witrynie Azure Portal
 
 Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu poświadczeń konta Azure.
 
@@ -62,19 +62,19 @@ Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty 
    | Ustawienie | Wartość | Opis |
    |---------|-------|-------------|
    | **Subskrypcja** | <*Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |  
-   | **Grupa zasobów** | <*Azure-resource-group*> | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używana do organizowania powiązanych zasobów i zarządzania nimi. W tym przykładzie zastosowano "LA-samouczek-RG". <p>**Uwaga:** Grupa zasobów istnieje w konkretnym regionie. Chociaż elementy w tym samouczku mogą nie być dostępne we wszystkich regionach, spróbuj używać tego samego regionu, jeśli jest to możliwe. |
-   | **Nazwa konta magazynu** | <*Azure-Storage-account-name*> | Nazwa konta magazynu, która musi mieć 3-24 znaków i może zawierać tylko małe litery i cyfry. W tym przykładzie zastosowano "attachmentstorageacct". |
-   | **Location** | <*Platforma Azure — region*> | Region, w którym są przechowywane informacje o koncie magazynu. W tym przykładzie zastosowano "zachodnie stany USA". |
+   | **Grupa zasobów** | <*Azure-Resource-group*> | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używana do organizowania powiązanych zasobów i zarządzania nimi. W tym przykładzie zastosowano "LA-samouczek-RG". <p>**Uwaga:** grupa zasobów istnieje w konkretnym regionie. Chociaż elementy w tym samouczku mogą nie być dostępne we wszystkich regionach, spróbuj używać tego samego regionu, jeśli jest to możliwe. |
+   | **Nazwa konta magazynu** | <*Azure-Storage-account-name* > | Nazwa konta magazynu, która musi mieć 3-24 znaków i może zawierać tylko małe litery i cyfry. W tym przykładzie zastosowano "attachmentstorageacct". |
+   | **Lokalizacja** | <*Azure-region*> | Region, w którym są przechowywane informacje o koncie magazynu. W tym przykładzie zastosowano "zachodnie stany USA". |
    | **Wydajność** | Standardowa (Standard) | To ustawienie określa obsługiwane typy danych oraz nośniki do przechowywania danych. Zobacz [Typy kont magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts). |
-   | **Rodzaj konta** | Ogólnego przeznaczenia | [Typ konta magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts) |
-   | **Replikacja** | Magazyn lokalnie nadmiarowy (LRS) | To ustawienie określa sposób kopiowania, przechowywania i synchronizowania danych oraz zarządzania nimi. Zobacz [Locally redundant storage (LRS): Low-cost data redundancy for Azure Storage](../storage/common/storage-redundancy-lrs.md) (Magazyn lokalnie nadmiarowy: nadmiarowość danych o niskich kosztach dla usługi Azure Storage). |
+   | **Rodzaj konta** | Zastosowania ogólne | [Typ konta magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts) |
+   | **Replikacja** | Magazyn lokalnie nadmiarowy (LRS) | To ustawienie określa sposób kopiowania, przechowywania i synchronizowania danych oraz zarządzania nimi. Zobacz [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](../storage/common/storage-redundancy-lrs.md). |
    ||||
 
    Na karcie **Zaawansowane** wybierz to ustawienie:
 
    | Ustawienie | Wartość | Opis |
    |---------|-------|-------------|
-   | **Wymagany bezpieczny transfer** | Wyłączone | To ustawienie określa wymagane zabezpieczenia dla żądań z połączeń. Zobacz [Require secure transfer (Wymaganie bezpiecznego transferu)](../storage/common/storage-require-secure-transfer.md). |
+   | **Wymagany bezpieczny transfer** | Disabled (Wyłączony) | To ustawienie określa wymagane zabezpieczenia dla żądań z połączeń. Zobacz [Require secure transfer (Wymaganie bezpiecznego transferu)](../storage/common/storage-require-secure-transfer.md). |
    ||||
 
    Aby utworzyć konto magazynu, możesz również użyć [programu Azure PowerShell](../storage/common/storage-quickstart-create-storage-account-powershell.md) lub [wiersza polecenia platformy Azure](../storage/common/storage-quickstart-create-storage-account-cli.md).
@@ -126,7 +126,7 @@ Teraz połącz Eksplorator usługi Storage z kontem magazynu, aby potwierdzić, 
    > [!TIP]
    > Jeśli nie zostanie wyświetlony monit, na pasku narzędzi Eksploratora usługi Storage wybierz pozycję **Dodaj konto**.
 
-3. W obszarze **Nazwa konta** podaj nazwę konta magazynu. W obszarze **Klucz konta** podaj wcześniej zapisany klucz dostępu. Wybierz **dalej**.
+3. W obszarze **Nazwa konta** podaj nazwę konta magazynu. W obszarze **Klucz konta** podaj wcześniej zapisany klucz dostępu. Wybierz pozycję **Dalej**.
 
 4. Potwierdź informacje o połączeniu, a następnie wybierz pozycję **Połącz**.
 
@@ -146,13 +146,13 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
 
    | Ustawienie | Wartość | Opis |
    | ------- | ----- | ----------- |
-   | **Nazwa aplikacji** | <*Function-App-Name*> | Opisowa i globalnie unikatowa nazwa aplikacji funkcji, która jest "CleanTextFunctionApp" w tym przykładzie, więc podaj inną nazwę, taką jak "MyCleanTextFunctionApp" |
+   | **Nazwa aplikacji** | <*funkcji — nazwa aplikacji* > | Opisowa i globalnie unikatowa nazwa aplikacji funkcji, która jest "CleanTextFunctionApp" w tym przykładzie, więc podaj inną nazwę, taką jak "MyCleanTextFunctionApp" |
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Ta sama subskrypcja platformy Azure, której użyto wcześniej | 
    | **Grupa zasobów** | LA-Tutorial-RG | Ta sama grupa zasobów platformy Azure, której użyto wcześniej |
    | **Plan hostingu** | Plan zużycia | To ustawienie określa sposób przydzielania i skalowania zasobów, takich jak moc obliczeniowa, na potrzeby uruchamiania aplikacji funkcji. Zobacz [Hosting plan comparison (Porównanie planów hostingu)](../azure-functions/functions-scale.md). | 
-   | **Location** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej |
+   | **Lokalizacja** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej |
    | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz pozycję .NET C# dla F# funkcji i. |
-   | **Storage** | cleantextfunctionstorageacct | Utwórz konto magazynu dla aplikacji funkcji. Użyj tylko małych liter i cyfr. <p>**Uwaga:** To konto magazynu zawiera aplikacje funkcji i różni się od poprzednio utworzonego konta magazynu do przechowywania załączników wiadomości e-mail. |
+   | **Magazyn** | cleantextfunctionstorageacct | Utwórz konto magazynu dla aplikacji funkcji. Użyj tylko małych liter i cyfr. <p>**Uwaga:** to konto magazynu zawiera aplikacje funkcji i różni się od poprzednio utworzonego konta magazynu do przechowywania załączników wiadomości e-mail. |
    | **Application Insights** | Wyłączone | Włącza monitorowanie aplikacji za pomocą usługi [Application Insights](../azure-monitor/app/app-insights-overview.md), ale na potrzeby tego samouczka wybierz ustawienie **Wyłączone**. |
    ||||
 
@@ -169,7 +169,7 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
 
    Aby utworzyć aplikację funkcji, możesz też użyć [interfejsu wiersza polecenia platformy Azure](../azure-functions/functions-create-first-azure-function-azure-cli.md) lub [szablonów programu PowerShell i usługi Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
 
-2. W obszarze **aplikacje funkcji**rozwiń aplikację funkcji, w której znajduje się wartość "CleanTextFunctionApp" w tym przykładzie, a następnie wybierz pozycję Functions ( **funkcje**). Na pasku narzędzi funkcji wybierz pozycję **Nowa funkcja**.
+2. W obszarze **aplikacje funkcji**rozwiń aplikację funkcji, w której znajduje się wartość "CleanTextFunctionApp" w tym przykładzie, a następnie wybierz pozycję **Functions (funkcje**). Na pasku narzędzi funkcji wybierz pozycję **Nowa funkcja**.
 
    ![Tworzenie nowej funkcji](./media/tutorial-process-email-attachments-workflow/function-app-new-function.png)
 
@@ -181,7 +181,7 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
 
 4. W okienku **Nowa funkcja** w obszarze **Nazwa** wprowadź `RemoveHTMLFunction`. Zachowaj pozycję **Poziom autoryzacji** ustawioną na wartość **Funkcja** i wybierz pozycję **Utwórz**.
 
-   ![Nadaj nazwę funkcji](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
+   ![Nadawanie nazwy funkcji](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
 
 5. Po otwarciu edytora zastąp kod szablonu poniższym kodem przykładowym, który usuwa kod HTML i zwraca wyniki do obiektu wywołującego:
 
@@ -221,7 +221,7 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
    {"name": "<p><p>Testing my function</br></p></p>"}
    ```
 
-   ![Testuj funkcję](./media/tutorial-process-email-attachments-workflow/function-run-test.png)
+   ![Testowanie funkcji](./media/tutorial-process-email-attachments-workflow/function-run-test.png)
 
    W oknie **Dane wyjściowe** jest wyświetlany wynik funkcji:
 
@@ -247,7 +247,7 @@ Po sprawdzeniu, czy funkcja działa, utwórz aplikację logiki. Chociaż ten sam
    | **Nazwa** | LA-ProcessAttachment | Nazwa aplikacji logiki |
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Ta sama subskrypcja platformy Azure, której użyto wcześniej |
    | **Grupa zasobów** | LA-Tutorial-RG | Ta sama grupa zasobów platformy Azure, której użyto wcześniej |
-   | **Location** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej |
+   | **Lokalizacja** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej |
    | **Log Analytics** | Wyłączone | Na potrzeby tego samouczka wybierz ustawienie **Wyłączone**. |
    ||||
 
@@ -259,11 +259,11 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 ## <a name="monitor-incoming-email"></a>Monitorowanie przychodzących wiadomości e-mail
 
-1. W projektancie w polu wyszukiwania wprowadź ciąg „po nadejściu nowej wiadomości e-mail” jako filtr. Wybierz ten wyzwalacz dla dostawcy poczty e-mail: **Po nadejściu nowej wiadomości e-mail — <*dostawca poczty e-mail*>**
+1. W projektancie w polu wyszukiwania wprowadź ciąg „po nadejściu nowej wiadomości e-mail” jako filtr. Wybierz ten wyzwalacz dla dostawcy poczty e-mail: **Po nadejściu nowej wiadomości e-mail — <*Twój-dostawca-poczty-e-mail*>**
 
    Na przykład:
 
-   ![Wybierz ten wyzwalacz dla dostawcy poczty e-mail: „Po nadejściu nowej wiadomości e-mail”](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
+   ![Wybieranie wyzwalacza dla dostawcy poczty e-mail: „Po nadejściu nowej wiadomości e-mail”](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
    * Dla kont służbowych platformy Azure wybierz pozycję Office 365 Outlook.
 
@@ -280,9 +280,9 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
       | Ustawienie | Wartość | Opis |
       | ------- | ----- | ----------- |
       | **Folder** | Skrzynka odbiorcza | Folder poczty e-mail do sprawdzania |
-      | **Zawiera załącznik** | Tak | Pobieraj tylko wiadomości e-mail z załącznikami. <p>**Uwaga:** Wyzwalacz nie usuwa żadnych wiadomości e-mail z konta; sprawdza tylko nowe wiadomości i przetwarza tylko te wiadomości, które pasują do filtru tematu. |
+      | **Zawiera załącznik** | Tak | Pobieraj tylko wiadomości e-mail z załącznikami. <p>**Uwaga:** wyzwalacz nie usuwa żadnych wiadomości e-mail z konta; sprawdza tylko nowe wiadomości i przetwarza tylko te wiadomości, które pasują do filtru tematu. |
       | **Uwzględnij załączniki** | Tak | Pobieraj załączniki jako dane wejściowe dla przepływu pracy, zamiast tylko sprawdzać wiadomości pod kątem istnienia załączników. |
-      | **Interval** | 1 | Liczba interwałów do odczekania między sprawdzaniami |
+      | **Interwał** | 1 | Liczba interwałów do odczekania między sprawdzaniami |
       | **Częstotliwość** | Minuta | Jednostka czasu dla każdego interwału między sprawdzaniami |
       ||||
   
@@ -312,12 +312,12 @@ Teraz dodaj warunek, który powoduje wybranie tylko wiadomości e-mail z załąc
 
    !["Nowy krok"](./media/tutorial-process-email-attachments-workflow/add-condition-under-trigger.png)
 
-2. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź wartość "warunek". Wybierz tę akcję: **Kontrola warunku**
+2. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź wartość "warunek". Wybierz tę akcję: **formant warunku**
 
    ![Wybierz pozycję "warunek"](./media/tutorial-process-email-attachments-workflow/select-condition.png)
 
    1. Zmień nazwę warunku na lepszy opis. 
-   Na pasku tytułu warunku wybierz przycisk wielokropka ( **...** ), > **zmienić nazwę**.
+   Na pasku tytułu warunku wybierz przycisk **wielokropka** ( **...** ), > **zmienić nazwę**.
 
       ![Zmienianie nazwy warunku](./media/tutorial-process-email-attachments-workflow/condition-rename.png)
 
@@ -396,7 +396,7 @@ Ten krok powoduje dodanie wcześniej utworzonej funkcji platformy Azure do aplik
 
    ![Wnętrze warunku „W przypadku wartości true”, dodawanie akcji](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-2. W polu wyszukiwania znajdź frazę „azure functions” i wybierz tę akcję: **Wybierz funkcję platformy Azure — Azure Functions**
+2. W polu wyszukiwania znajdź frazę „azure functions” i wybierz następującą akcję: **Wybierz funkcję platformy Azure — Azure Functions**
 
    ![Wybieranie akcji dla pozycji „Wybierz funkcję platformy Azure”](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
@@ -438,7 +438,7 @@ Następnie dodaj akcję, która utworzy obiekt blob w kontenerze magazynu, co um
 
 1. W bloku **W przypadku wartości true** i w obszarze funkcji platformy Azure wybierz pozycję **Dodaj akcję**.
 
-2. W polu wyszukiwania wprowadź frazę „utwórz obiekt blob” jako filtr i wybierz następującą akcję: **Utwórz obiekt blob — Azure Blob Storage**
+2. W polu wyszukiwania wprowadź frazę „tworzenie obiektu blob” jako filtr i wybierz następującą akcję: **Utwórz obiekt blob — Azure Blob Storage**
 
    ![Dodawanie akcji w celu utworzenia obiektu blob na potrzeby treści wiadomości e-mail](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-email-body.png)
 
@@ -518,7 +518,7 @@ Aby przetwarzać wszystkie załączniki do wiadomości e-mail, dodaj pętlę **F
 
    ![Dodawanie pętli „for each”](./media/tutorial-process-email-attachments-workflow/add-for-each-loop.png)
 
-1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź ciąg "for each" jako filtr. Wybierz tę akcję: **Dla każdej kontrolki**
+1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź ciąg "for each" jako filtr. Wybierz tę akcję: **dla każdej kontrolki**
 
    ![Wybierz opcję "for each"](./media/tutorial-process-email-attachments-workflow/select-for-each.png)
 
@@ -541,7 +541,7 @@ Następnie dodaj akcję, która zapisuje każdy załącznik jako obiekt blob w k
 
    ![Dodawanie akcji do pętli](./media/tutorial-process-email-attachments-workflow/for-each-add-action.png)
 
-2. W polu wyszukiwania wprowadź frazę „utwórz obiekt blob” jako filtr, a następnie wybierz następującą akcję: **Utwórz obiekt blob — Azure Blob Storage**
+2. W polu wyszukiwania wprowadź frazę „tworzenie obiektu blob” jako filtr i wybierz następującą akcję: **Utwórz obiekt blob — Azure Blob Storage**
 
    ![Dodawanie akcji umożliwiającej utworzenie obiektu blob](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 
@@ -621,9 +621,9 @@ Następnie dodaj akcję, dzięki której aplikacja logiki będzie wysyłać wiad
 
    | Ustawienie | Wartość | Uwagi | 
    | ------- | ----- | ----- | 
-   | **Body** | ```Please review new applicant:``` <p>```Applicant name:``` **Od** <p>```Application file location:``` **Ścieżka** <p>```Application email content:``` **Treść** | Treść wiadomości e-mail. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz następujące pola: <p>– Pole **Od** w obszarze **Po nadejściu nowej wiadomości e-mail** </br>– Pole **Ścieżka** w obszarze **Utwórz obiekt blob na potrzeby treści wiadomości e-mail** </br>– Pole **Treść** w obszarze **Wywołaj funkcję RemoveHTMLFunction, aby wyczyścić treść wiadomości e-mail** |
-   | **Subject**  | ```ASAP - Review applicant for position:``` **Temat** | Temat wiadomości e-mail, który chcesz uwzględnić. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz pole **Temat** w obszarze **Po nadejściu nowej wiadomości e-mail**. |
-   | **To** | <*recipient-email-address*> | Do celów testowych możesz użyć własnego adresu e-mail. |
+   | **Treść** | ```Please review new applicant:``` <p>```Applicant name:``` **Od** <p>```Application file location:``` **Ścieżka** <p>```Application email content:``` **Treść** | Treść wiadomości e-mail. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz następujące pola: <p>– Pole **Od** w obszarze **Po nadejściu nowej wiadomości e-mail** </br>– Pole **Ścieżka** w obszarze **Utwórz obiekt blob na potrzeby treści wiadomości e-mail** </br>– Pole **Treść** w obszarze **Wywołaj funkcję RemoveHTMLFunction, aby wyczyścić treść wiadomości e-mail** |
+   | **Temat**  | ```ASAP - Review applicant for position:``` **Temat** | Temat wiadomości e-mail, który chcesz uwzględnić. Kliknij wewnątrz tego pola, wprowadź przykładowy tekst i z dynamicznej listy zawartości wybierz pole **Temat** w obszarze **Po nadejściu nowej wiadomości e-mail**. |
+   | **Do** | <*recipient-email-address*> | Do celów testowych możesz użyć własnego adresu e-mail. |
    ||||
 
    > [!NOTE]

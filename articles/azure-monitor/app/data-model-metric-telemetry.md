@@ -1,25 +1,21 @@
 ---
 title: Azure telemetria usługi Application Insights Data Model — Telemetria metryk | Microsoft Docs
 description: Application Insights model danych dla telemetrii metryki
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 0973c86d055ff4ebbe7e5a3c4a2ca4e3dcabc6a0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 816fa37ea052b18dab80bcc0d5c1528cd3d9a014
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60900464"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678128"
 ---
-# <a name="metric-telemetry-application-insights-data-model"></a>Telemetria metryki: Model danych usługi Application Insights
+# <a name="metric-telemetry-application-insights-data-model"></a>Telemetria metryki: Application Insights model danych
 
 Istnieją dwa typy danych telemetrycznych metryk obsługiwane przez [Application Insights](../../azure-monitor/app/app-insights-overview.md): pojedyncze pomiary i wstępnie zagregowane metryki. Pojedyncza miara jest tylko nazwą i wartością. Metryka wstępnie zagregowana określa minimalną i maksymalną wartość metryki w interwale agregacji i odchylenie standardowe.
 
@@ -41,7 +37,7 @@ Metryka reprezentująca liczniki systemowe i procesów:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Pracuj w toku... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | Średni czas wykonywania żądań
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Pracuj w toku... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | Liczba żądań oczekujących na przetworzenie w kolejce
 
-## <a name="name"></a>Name (Nazwa)
+## <a name="name"></a>Nazwa
 
 Nazwa metryki, którą chcesz zobaczyć w portalu Application Insights i interfejsie użytkownika. 
 
@@ -49,7 +45,7 @@ Nazwa metryki, którą chcesz zobaczyć w portalu Application Insights i interfe
 
 Pojedyncza wartość miary. Suma pojedynczych pomiarów dla agregacji.
 
-## <a name="count"></a>Count
+## <a name="count"></a>Liczba
 
 Waga metryki zagregowanej metryki. Nie należy ustawiać dla miary.
 
@@ -67,7 +63,7 @@ Odchylenie standardowe zagregowanej metryki. Nie należy ustawiać dla miary.
 
 ## <a name="custom-properties"></a>Właściwości niestandardowe
 
-Metryka z `true` ustawioną `CustomPerfCounter` właściwością niestandardową wskazującą, że Metryka reprezentuje licznik wydajności systemu Windows. Te metryki zostały umieszczone w tabeli liczniki wydajności. Nie w customMetrics. Nazwa tej metryki jest również analizowana w celu wyodrębnienia nazwy kategorii, licznika i wystąpienia.
+Metryka z właściwością niestandardową `CustomPerfCounter` ustawiona na `true` wskazują, że Metryka reprezentuje licznik wydajności systemu Windows. Te metryki zostały umieszczone w tabeli liczniki wydajności. Nie w customMetrics. Nazwa tej metryki jest również analizowana w celu wyodrębnienia nazwy kategorii, licznika i wystąpienia.
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 

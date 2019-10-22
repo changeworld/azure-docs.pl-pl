@@ -1,21 +1,20 @@
 ---
-title: Tworzenie, edytowanie lub rozszerzone dane JSON dla definicji aplikacji logiki — Azure Logic Apps | Microsoft Docs
-description: Tworzenie i rozszerzone dane JSON dla definicji aplikacji logiki w Azure Logic Apps
+title: Tworzenie, edytowanie lub rozszerzone definicje aplikacji logiki — Azure Logic Apps
+description: Jak pisać, edytować i zwiększać definicje JSON aplikacji logiki w Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
+ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: a96cc56c85db6726bf2cdaff72904e76ecbaf087
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 03203a5fdb6d61ed95e96581a7e4a979c911cd02
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164651"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680025"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Tworzenie, edytowanie lub rozszerzone dane JSON dla definicji aplikacji logiki w Azure Logic Apps
 
@@ -29,7 +28,7 @@ Aby pracować z definicjami aplikacji logiki w formacie JSON, Otwórz Edytor wid
 
 ## <a name="edit-json---azure-portal"></a>Edytuj plik JSON — Azure Portal
 
-1. Zaloguj się w witrynie <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+1. Zaloguj się do <a href="https://portal.azure.com" target="_blank">portalu Azure</a>.
 
 2. Z menu po lewej stronie wybierz pozycję **wszystkie usługi**. W polu wyszukiwania Znajdź pozycję "Aplikacje logiki", a następnie z wyników wybierz aplikację logiki.
 
@@ -39,7 +38,7 @@ Aby pracować z definicjami aplikacji logiki w formacie JSON, Otwórz Edytor wid
 
 ## <a name="edit-json---visual-studio"></a>Edytowanie JSON — Visual Studio
 
-Przed rozpoczęciem pracy z definicją aplikacji logiki w programie Visual Studio upewnij się, że zainstalowano [wymagane narzędzia](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites). Aby utworzyć aplikację logiki przy użyciu programu Visual Studio, [zapoznaj się z przewodnikiem Szybki Start: Automatyzowanie zadań i procesów przy użyciu Azure Logic Apps —](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)Visual Studio.
+Przed rozpoczęciem pracy z definicją aplikacji logiki w programie Visual Studio upewnij się, że [zainstalowano wymagane narzędzia](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites). Aby utworzyć aplikację logiki przy użyciu programu Visual Studio, zapoznaj się [z przewodnikiem Szybki Start: Automatyzowanie zadań i procesów przy użyciu Azure Logic Apps — Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 W programie Visual Studio można otwierać aplikacje logiki, które zostały utworzone i wdrożone bezpośrednio w Azure Portal lub jako projekty Azure Resource Manager z programu Visual Studio.
 
@@ -64,7 +63,7 @@ W programie Visual Studio można otwierać aplikacje logiki, które zostały utw
 
 Cykl życia wdrożenia ma zwykle różne środowiska do projektowania, testowania, przemieszczania i produkcji. Jeśli masz wartości, które chcesz ponownie użyć w całej aplikacji logiki bez zakodowana lub które różnią się w zależności od potrzeb wdrażania, możesz utworzyć [szablon Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla definicji przepływu pracy, aby można było również zautomatyzować aplikację logiki mieszczeniu. 
 
-Postępuj zgodnie z tymi ogólnymi krokami, aby *Sparametryzuj*lub definiować i używać parametrów dla tych wartości. Następnie można podać wartości w osobnym pliku parametrów, który przekazuje te wartości do szablonu. Dzięki temu można łatwiej zmieniać te wartości bez konieczności aktualizacji i ponownego wdrażania aplikacji logiki. Aby uzyskać szczegółowe informacje, [Zobacz Omówienie: Automatyzowanie wdrażania aplikacji logiki za pomocą szablonów](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)Azure Resource Manager.
+Postępuj zgodnie z tymi ogólnymi krokami, aby *Sparametryzuj*lub definiować i używać parametrów dla tych wartości. Następnie można podać wartości w osobnym pliku parametrów, który przekazuje te wartości do szablonu. Dzięki temu można łatwiej zmieniać te wartości bez konieczności aktualizacji i ponownego wdrażania aplikacji logiki. Aby uzyskać szczegółowe informacje, zobacz [Omówienie: Automatyzowanie wdrażania dla usługi Logic Apps za pomocą szablonów Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 1. W szablonie Zdefiniuj parametry szablonu i parametry definicji przepływu pracy służące do akceptowania wartości używanych odpowiednio do wdrożenia i środowiska uruchomieniowego.
 
@@ -121,17 +120,17 @@ W tych krokach opisano, jak ten przykład przetwarza ten ciąg, pracując od wew
 "uri": "https://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
-1. [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) Pobierz nazwę firmy, aby uzyskać całkowitą liczbę znaków.
+1. Pobierz [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) nazwy firmy, aby uzyskać całkowitą liczbę znaków.
 
 2. Aby uzyskać krótszy ciąg, Odejmij `5`.
 
-3. Uzyskaj [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md)teraz. Rozpocznij od indeksu `5`i przejdź do pozostałej części ciągu.
+3. Uzyskaj teraz [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md). Zacznij od indeksu `5` i przejdź do pozostałej części ciągu.
 
-4. Przekonwertuj ten podciąg na [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) ciąg.
+4. Przekonwertuj ten podciąg na ciąg [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) .
 
-5. Teraz [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) wszystkie`+` znaki z`-` znakami.
+5. Teraz [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) wszystkie znaki `+` z `-` znakami.
 
-6. `_` Na [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) koniecwszystkieznakizznakami`/` .
+6. Na koniec [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) wszystkie znaki `/` z `_` znakami.
 
 ## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>Mapuj elementy listy na wartości właściwości, a następnie użyj map jako parametrów
 
@@ -139,9 +138,9 @@ Aby uzyskać różne wyniki na podstawie wartości właściwości, można utworz
 
 Na przykład ten przepływ pracy definiuje niektóre kategorie jako parametry i mapę, która pasuje do tych kategorii z określonym adresem URL. Pierwszy przepływ pracy pobiera listę artykułów. Następnie przepływ pracy używa mapy, aby znaleźć adres URL zgodny z kategorią dla każdego artykułu.
 
-*   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md) Funkcja sprawdza, czy kategoria pasuje do znanej zdefiniowanej kategorii.
+*   Funkcja [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md) sprawdza, czy kategoria pasuje do znanej zdefiniowanej kategorii.
 
-*   Po otrzymaniu pasującej kategorii przykład ściąga element z mapy przy użyciu nawiasów kwadratowych:`parameters[...]`
+*   Po otrzymaniu pasującej kategorii przykład ściąga element z mapy przy użyciu nawiasów kwadratowych: `parameters[...]`
 
 ``` json
 {
@@ -219,19 +218,19 @@ Aby uzyskać dane ze źródła danych, które nie obsługuje natywnie *wyzwalacz
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. `order` Z akcji Wyodrębnij `startTime`.
-2. Pobierz bieżącą godzinę w usłudze `utcNow()`.
+1. Z poziomu akcji `order` Wyodrębnij `startTime`.
+2. Pobierz bieżącą godzinę w `utcNow()`.
 3. Odejmij jedną sekundę:
 
    [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
 
-   Możesz użyć innych jednostek czasu, takich jak `minutes` lub. `hours`
+   Możesz użyć innych jednostek czasu, takich jak `minutes` lub `hours`.
 
 3. Teraz można porównać te dwie wartości. 
 
    Jeśli pierwsza wartość jest mniejsza od drugiej wartości, to więcej niż jedna sekunda została przeniesiona od momentu pierwszego umieszczenia kolejności.
 
-Aby sformatować daty, można użyć elementów formatujących ciągi. Na przykład, aby uzyskać RFC1123, użyj [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md). Dowiedz się więcej na temat [formatowania dat](../logic-apps/logic-apps-workflow-definition-language.md).
+Aby sformatować daty, można użyć elementów formatujących ciągi. Na przykład aby uzyskać RFC1123, użyj [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md). Dowiedz się więcej na temat [formatowania dat](../logic-apps/logic-apps-workflow-definition-language.md).
 
 ``` json
 {

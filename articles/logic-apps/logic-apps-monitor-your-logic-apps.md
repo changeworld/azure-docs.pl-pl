@@ -1,5 +1,5 @@
 ---
-title: Sprawdź stan, skonfiguruj rejestrowanie i Pobierz alerty — Azure Logic Apps | Microsoft Docs
+title: Sprawdź stan, skonfiguruj rejestrowanie i Pobierz alerty — Azure Logic Apps
 description: Monitoruj stan, rejestruj dane diagnostyczne i Konfiguruj alerty dla Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -8,14 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: f6ece10c43c2c4a6bea92d14a8bf6fbdb49fd318
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 336e2ac93a954c35b7afc8dbb98dd1fca1838985
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261366"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680299"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorowanie stanu, Konfigurowanie rejestrowania diagnostyki i włączanie alertów dla Azure Logic Apps
 
@@ -80,7 +79,7 @@ Przed rozpoczęciem należy mieć obszar roboczy Log Analytics. Dowiedz się [, 
 
 1. W [Azure Portal](https://portal.azure.com)Znajdź i wybierz aplikację logiki. 
 
-2. W menu blok aplikacji logiki w obszarze **monitorowanie**wybierz pozycję **Ustawienia diagnostyczne** **diagnostyki** > .
+2. W menu blok aplikacji logiki w obszarze **monitorowanie**wybierz pozycję **Diagnostyka** > **Ustawienia diagnostyczne**.
 
    ![Przejdź do pozycji monitorowanie, Diagnostyka, ustawienia diagnostyczne](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
@@ -180,7 +179,7 @@ Aby monitorować określone metryki lub przekroczyły progi dla aplikacji logiki
 
 Aby skonfigurować alerty bez [dzienników Azure monitor](../log-analytics/log-analytics-overview.md), wykonaj następujące kroki. Aby uzyskać bardziej zaawansowane kryteria i akcje alertów, [Skonfiguruj również dzienniki Azure monitor](#azure-diagnostics) .
 
-1. W menu blok aplikacji logiki w obszarze **monitorowanie**wybierz pozycję**reguły** > alertów **diagnostycznych** > **Dodaj alert** , jak pokazano poniżej:
+1. W menu blok aplikacji logiki w obszarze **monitorowanie**wybierz pozycję **Diagnostyka**  > **reguły alertów**  > **Dodaj alert** , jak pokazano poniżej:
 
    ![Dodawanie alertu dla aplikacji logiki](media/logic-apps-monitor-your-logic-apps/set-up-alerts.png)
 
@@ -211,7 +210,7 @@ Aby skonfigurować alerty bez [dzienników Azure monitor](../log-analytics/log-a
 
 Każde zdarzenie diagnostyczne zawiera szczegółowe informacje o aplikacji logiki oraz o tym zdarzeniu, na przykład o stanie, czasie rozpoczęcia, czasie zakończenia itd. Aby programowo skonfigurować monitorowanie, śledzenie i rejestrowanie, można użyć tych szczegółów z [interfejsem API REST dla Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) i [interfejsu api REST dla Diagnostyka Azure](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows).
 
-Na przykład `ActionCompleted` zdarzenie `clientTrackingId` ma właściwości i `trackedProperties` , których można użyć do śledzenia i monitorowania:
+Na przykład zdarzenie `ActionCompleted` ma właściwości `clientTrackingId` i `trackedProperties`, których można użyć do śledzenia i monitorowania:
 
 ``` json
 {
@@ -247,11 +246,11 @@ Na przykład `ActionCompleted` zdarzenie `clientTrackingId` ma właściwości i 
 }
 ```
 
-* `clientTrackingId`: Jeśli nie zostanie podany, platforma Azure automatycznie generuje ten identyfikator i skorelowanie zdarzeń w ramach przebiegu aplikacji logiki, w tym wszystkich zagnieżdżonych przepływów pracy, które są wywoływane z poziomu aplikacji logiki. Można ręcznie określić ten identyfikator z wyzwalacza, przekazując `x-ms-client-tracking-id` nagłówek z wartością niestandardowego identyfikatora w żądaniu wyzwalacza. Można użyć wyzwalacza żądania, wyzwalacza HTTP lub wyzwalacza elementu webhook.
+* `clientTrackingId`: Jeśli nie zostanie podany, platforma Azure automatycznie generuje ten identyfikator i skorelowanie zdarzeń w ramach przebiegu aplikacji logiki, w tym wszystkich zagnieżdżonych przepływów pracy, które są wywoływane z poziomu aplikacji logiki. Można ręcznie określić ten identyfikator z wyzwalacza, przechodząc do nagłówka `x-ms-client-tracking-id` z wartością niestandardowego identyfikatora w żądaniu wyzwalacza. Można użyć wyzwalacza żądania, wyzwalacza HTTP lub wyzwalacza elementu webhook.
 
-* `trackedProperties`: Aby śledzić dane wejściowe lub wyjściowe w danych diagnostycznych, można dodać prześledzone właściwości do akcji w definicji JSON aplikacji logiki. Śledzone właściwości mogą śledzić tylko dane wejściowe i wyjściowe pojedynczej akcji, ale można użyć `correlation` właściwości zdarzeń do skorelowania między akcjami w przebiegu.
+* `trackedProperties`: aby śledzić dane wejściowe lub wyjściowe w danych diagnostycznych, można dodać prześledzone właściwości do akcji w definicji JSON aplikacji logiki. Śledzone właściwości mogą śledzić tylko dane wejściowe i wyjściowe pojedynczej akcji, ale można użyć `correlation` właściwości zdarzeń do skorelowania między akcjami w działaniu.
 
-  Aby śledzić jedną lub więcej właściwości, Dodaj `trackedProperties` sekcję i właściwości, które chcesz wykonać w definicji akcji. Załóżmy na przykład, że chcesz śledzić dane takie jak "Identyfikator zamówienia" w telemetrii:
+  Aby śledzić jedną lub więcej właściwości, Dodaj sekcję `trackedProperties` i właściwości, które mają być definicją akcji. Załóżmy na przykład, że chcesz śledzić dane takie jak "Identyfikator zamówienia" w telemetrii:
 
   ``` json
   "myAction": {

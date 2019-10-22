@@ -1,6 +1,6 @@
 ---
-title: Wiadomości XML dla integracji dla przedsiębiorstw B2B — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Przetwarzanie, sprawdzanie poprawności, przekształcania i wzbogacania komunikatów XML dla rozwiązań B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+title: Wiadomości XML i pliki proste — Azure Logic Apps
+description: Przetwarzaj, Weryfikuj i Przekształcaj komunikaty XML w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,30 +8,34 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.date: 02/27/2017
-ms.openlocfilehash: a75ac9773072423c13eef85ecad29c632c13d024
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 730adf3e6ef3ddab5a8b0e927f94ffe3725358f4
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996581"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679903"
 ---
-# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wiadomości XML i pliki proste w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>Wiadomości XML i pliki proste w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 
-Przy użyciu aplikacji logiki, masz możliwość przetwarzania komunikatów XML, które wysyłania i odbierania. Ta funkcja jest uwzględniona w pakiet integracyjny dla przedsiębiorstw. Dla tych użytkowników, za pomocą programu BizTalk Server w tle pakiet integracyjny dla przedsiębiorstw zapewnia możliwości podobne do przekształcania i sprawdzania poprawności komunikatów, pracować z plików prostych i nawet za pomocą XPath wzbogacanie lub prowadzenie określonych właściwości komunikatu. 
+W [Azure Logic Apps](logic-apps-overview.md)można przetwarzać komunikaty XML wysyłane i odbierane przy użyciu pakiet integracyjny dla przedsiębiorstw. Jeśli użyto BizTalk Server, Pakiet integracyjny dla przedsiębiorstw oferuje podobne funkcje do przekształcania i weryfikowania komunikatów, pracy z plikami prostymi, a nawet do wzbogacania lub wyodrębniania określonych właściwości z wiadomości przy użyciu XPath. Jeśli jesteś nowym miejscem w tym miejscu, te funkcje rozszerzają sposób przetwarzania komunikatów w przepływie pracy aplikacji logiki. Na przykład jeśli masz scenariusz biznesowy (B2B) i pracujesz z określonymi schematami XML, możesz użyć Pakiet integracyjny dla przedsiębiorstw, aby zwiększyć sposób przetwarzania tych komunikatów przez firmę.
 
-Dla tych użytkowników, którzy są nowe w tym obszarze te funkcje Rozwiń, jak przetwarzać komunikaty w ramach przepływu pracy. Na przykład jeśli jesteś w scenariuszu business-to-business i pracować z określonych schematów XML, możesz użyć pakietu integracyjnego dla przedsiębiorstw, aby zwiększyć jak Twoja firma przetwarzający te komunikaty. 
+Na przykład Pakiet integracyjny dla przedsiębiorstw obejmuje następujące funkcje:
 
-Zawiera pakiet integracyjny dla przedsiębiorstw: 
+* [Sprawdzanie poprawności kodu XML](logic-apps-enterprise-integration-xml-validation.md): sprawdzanie poprawności przychodzącej lub wychodzącej wiadomości XML względem określonego schematu.
 
-* [Sprawdzanie poprawności kodu XML](logic-apps-enterprise-integration-xml-validation.md "więcej informacji na temat sprawdzanie poprawności kodu XML komunikat") — sprawdzanie poprawności przychodzących lub wychodzących wiadomości XML ze schematem określonym.
-* [Przekształceń danych XML](../logic-apps/logic-apps-enterprise-integration-transform.md "więcej informacji na temat przekształcenia wiadomości XML oraz maps") — konwersji lub dostosować komunikat XML na podstawie wymagań dotyczących lub wymagania partnera.
-* [Płaskie pliku kodowania i dekodowania pliku prostego](logic-apps-enterprise-integration-flatfile.md "więcej informacji na temat kodowania/dekodowanie pliku prostego") — kodowania i dekodowania pliku prostego. Na przykład SAP akceptuje i wysyła IDOC pliki w formacie pliku prostego. Integracja z wieloma platformami utworzyć wiadomości XML, łącznie z aplikacji logiki. Tak można utworzyć aplikację logiki, która używa kodera pliku prostego do "konwersji" pliki XML do plików prostych. 
-* [Wyrażenie XPath](https://msdn.microsoft.com/library/mt643789.aspx) — wzbogacanie komunikat i prowadzenie określonych właściwości wiadomości. Wyodrębnione właściwości służy następnie do rozsyłania wiadomości do miejsca docelowego lub pośredniczący punktu końcowego.
+* [Przekształcanie kodu XML](logic-apps-enterprise-integration-transform.md): konwertowanie lub dostosowywanie wiadomości XML na podstawie wymagań lub wymagań partnera przy użyciu usługi Maps.
 
-## <a name="try-it-out"></a>Wypróbuj
-[Wdrażanie aplikacji logiki w pełni funkcjonalne](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (przykład GitHub) przy użyciu funkcji XML w usłudze Azure Logic Apps.
+* [Kodowanie pliku prostego i płaskie dekodowanie plików](logic-apps-enterprise-integration-flatfile.md): Koduj lub Dekoduj plik prosty.
 
-## <a name="learn-more"></a>Dowiedz się więcej
-[Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw")
+  Na przykład system SAP akceptuje i wysyła pliki IDOC w formacie pliku prostego. Wiele platform integracji tworzy komunikaty XML, w tym Logic Apps. Dzięki temu można utworzyć aplikację logiki, która używa kodera prostego pliku do "konwersji" plików XML na pliki płaskie.
+
+* [XPath](workflow-definition-language-functions-reference.md#xpath): wzbogacanie komunikatu i wyodrębnienie określonych właściwości z wiadomości. Następnie można użyć wyodrębnionych właściwości, aby skierować komunikat do miejsca docelowego lub do pośredniego punktu końcowego.
+
+## <a name="sample"></a>Przykład
+
+[Wdróż w pełni działającą aplikację logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (przykład GitHub) przy użyciu funkcji XML w Azure Logic Apps.
+
+## <a name="next-steps"></a>Następne kroki
+
+Dowiedz się więcej o [pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md)

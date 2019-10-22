@@ -1,39 +1,34 @@
 ---
 title: Liczniki zdarzeń w Application Insights | Microsoft Docs
 description: Monitoruj system i niestandardową platformę .NET/.NET Core EventCounters w Application Insights.
-services: application-insights
-documentationcenter: ''
-author: cithomas
-manager: carmonm
-ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/20/2019
+author: cithomas
 ms.author: cithomas
-ms.openlocfilehash: fc9148d4f4c5920210b9218ca70f270bae3b663b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.date: 09/20/2019
+ms.openlocfilehash: 0762819239e8fd71a015f317776a94280806db53
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273942"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677166"
 ---
 # <a name="eventcounters-introduction"></a>Wprowadzenie do EventCounters
 
-`EventCounter`jest mechanizmem .NET/.NET Core do publikowania i korzystania z liczników lub statystyk. [Ten](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) dokument zawiera omówienie i przykłady `EventCounters` sposobu ich publikowania i korzystania z nich. EventCounters są obsługiwane na wszystkich platformach systemu operacyjnego — Windows, Linux i macOS. Można go traktować jako odpowiednik na wielu platformach dla [liczniki wydajności](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) , który jest obsługiwany tylko w systemach Windows.
+`EventCounter` jest mechanizmem .NET/.NET Core do publikowania i używania liczników lub statystyk. [Ten](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) dokument zawiera omówienie `EventCounters` i przykłady dotyczące sposobu ich publikowania i korzystania z nich. EventCounters są obsługiwane na wszystkich platformach systemu operacyjnego — Windows, Linux i macOS. Można go traktować jako odpowiednik na wielu platformach dla [liczniki wydajności](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) , który jest obsługiwany tylko w systemach Windows.
 
-Użytkownicy mogą publikować dowolne niestandardowe `EventCounters` , aby spełniały ich potrzeby, ale środowisko uruchomieniowe programu .NET Core 3,0 domyślnie publikuje zestaw tych liczników. W tym dokumencie przedstawiono kroki wymagane do zbierania i wyświetlania `EventCounters` (zdefiniowane przez system lub zdefiniowane przez użytkownika) w usłudze Azure Application Insights.
+Użytkownicy mogą publikować dowolne `EventCounters` niestandardowe w celu spełnienia własnych potrzeb, ale środowisko uruchomieniowe programu .NET Core 3,0 domyślnie publikuje zestaw tych liczników. W tym dokumencie przedstawiono kroki wymagane do zbierania i wyświetlania `EventCounters` (zdefiniowane przez system lub zdefiniowane przez użytkownika) w usłudze Azure Application Insights.
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>Używanie Application Insights do zbierania EventCounters
 
-Application Insights obsługuje zbieranie `EventCounters` ze swoimi `EventCounterCollectionModule`składnikami, który jest częścią nowo wydanego pakietu NuGet [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule`jest automatycznie włączana podczas korzystania z [AspNetCore](asp-net-core.md) lub [WorkerService](worker-service.md). `EventCounterCollectionModule`zbiera liczniki z niekonfigurowalną częstotliwością zbierania wynoszącą 60 sekund. Nie są wymagane żadne specjalne uprawnienia do zbierania EventCounters.
+Application Insights obsługuje zbieranie `EventCounters` z `EventCounterCollectionModule`, który jest częścią nowo wydanego pakietu NuGet [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule` jest włączana automatycznie w przypadku korzystania z [AspNetCore](asp-net-core.md) lub [WorkerService](worker-service.md). `EventCounterCollectionModule` zbiera liczniki z niekonfigurowalną częstotliwością zbierania wynoszącą 60 sekund. Nie są wymagane żadne specjalne uprawnienia do zbierania EventCounters.
 
 ## <a name="default-counters-collected"></a>Zebrane liczniki domyślne
 
 W przypadku aplikacji uruchamianych na platformie .NET Core 3,0 następujące liczniki są zbierane automatycznie przez zestaw SDK. Nazwa liczników będzie mieć postać "Kategoria | Licznik ".
 
-|Category | Licznik|
+|Kategoria | Przeciw|
 |---------------|-------|
 |`System.Runtime` | `cpu-usage` |
 |`System.Runtime` | `working-set` |
@@ -64,7 +59,7 @@ W przypadku aplikacji uruchamianych na platformie .NET Core 3,0 następujące li
 
 ## <a name="customizing-counters-to-be-collected"></a>Dostosowywanie liczników do zebrania
 
-Poniższy przykład pokazuje, jak dodać lub usunąć liczniki. To dostosowanie można wykonać w `ConfigureServices` metodzie aplikacji Application Insights po włączeniu zbierania danych telemetrycznych `AddApplicationInsightsTelemetry()` przy użyciu funkcji lub `AddApplicationInsightsWorkerService()`. Poniżej znajduje się przykładowy kod z aplikacji ASP.NET Core. W przypadku innych typów aplikacji zapoznaj się z [tym](worker-service.md#configuring-or-removing-default-telemetrymodules) dokumentem.
+Poniższy przykład pokazuje, jak dodać lub usunąć liczniki. To dostosowanie można wykonać w `ConfigureServices`ej aplikacji po włączeniu Application Insightsj kolekcji telemetrii przy użyciu `AddApplicationInsightsTelemetry()` lub `AddApplicationInsightsWorkerService()`. Poniżej znajduje się przykładowy kod z aplikacji ASP.NET Core. W przypadku innych typów aplikacji zapoznaj się z [tym](worker-service.md#configuring-or-removing-default-telemetrymodules) dokumentem.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
@@ -103,7 +98,7 @@ Poniższy przykład pokazuje, jak dodać lub usunąć liczniki. To dostosowanie 
 Aby wyświetlić metryki EventCounter w [Eksploratorze metryk](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), wybierz pozycję Application Insights Resource i wybrane metryki oparte na dzienniku jako przestrzeń nazw metryki. Następnie metryki EventCounter są wyświetlane w kategorii PerformanceCounter.
 
 > [!div class="mx-imgBorder"]
-> ![Liczniki zdarzeń zgłoszone w Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
+> Liczniki ![Event raportowane w Application Insights ](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Liczniki zdarzeń w analizie
 
@@ -116,7 +111,7 @@ performanceCounters | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Liczniki zdarzeń zgłoszone w Application Insights](./media/event-counters/analytics-event-counters.png)
+> Liczniki ![Event raportowane w Application Insights ](./media/event-counters/analytics-event-counters.png)
 
 Aby uzyskać wykres określonego licznika (na przykład: `ThreadPool Completed Work Item Count`) w ciągu ostatniego okresu, uruchom następujące zapytanie.
 
@@ -128,9 +123,9 @@ performanceCounters
 | render timechart
 ```
 > [!div class="mx-imgBorder"]
-> ![Czat jednego licznika w Application Insights](./media/event-counters/analytics-completeditems-counters.png)
+> ![Chat jednego licznika w Application Insights ](./media/event-counters/analytics-completeditems-counters.png)
 
-Podobnie jak w przypadku innych telemetrii, `cloud_RoleInstance` liczniki wydajności ma także kolumnę, która wskazuje tożsamość wystąpienia serwera hosta, na którym działa aplikacja. Powyższe zapytanie pokazuje wartość licznika na wystąpienie i może służyć do porównywania wydajności różnych wystąpień serwera.
+Podobnie jak w przypadku innych telemetrii, **liczniki wydajności** ma również kolumnę `cloud_RoleInstance`, która wskazuje tożsamość wystąpienia serwera hosta, na którym działa aplikacja. Powyższe zapytanie pokazuje wartość licznika na wystąpienie i może służyć do porównywania wydajności różnych wystąpień serwera.
 
 ## <a name="alerts"></a>Alerty
 Podobnie jak w przypadku innych metryk, można [ustawić alert](../../azure-monitor/app/alerts.md) ostrzegający o tym, czy licznik zdarzeń wykracza poza określony limit. Otwórz okienko alerty, a następnie kliknij pozycję Dodaj alert.
@@ -146,10 +141,10 @@ Metryki na żywo nie wyświetlają EventCounters z dzisiaj. Użyj Eksploratora m
 EventCounter nie wymaga żadnych specjalnych uprawnień i jest obsługiwana we wszystkich platformach .NET Core 3,0. Obejmuje to:
 
 * **System operacyjny**: Windows, Linux lub macOS.
-* **Metoda hostingu**: W procesie lub w trakcie procesu.
-* **Metoda wdrożenia**: Platforma zależna lub samodzielna.
-* **Serwer sieci Web**: Usługi IIS (Internet Information Server) lub Kestrel.
-* **Platforma hostingu**: Web Apps funkcja Azure App Service, maszyna wirtualna platformy Azure, platforma Docker, usługa Azure Kubernetes Service (AKS) i tak dalej.
+* **Metoda hostingu**: w procesie lub w trakcie procesu.
+* **Metoda wdrażania**: zależna od platformy lub samodzielna.
+* **Serwer sieci Web**: IIS (Internet Information Server) lub Kestrel.
+* **Platforma hostingu**: funkcja Web Apps Azure App Service, Azure VM, Docker, Azure Kubernetes Service (AKS) i tak dalej.
 
 ### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>Włączono Application Insights z portalu aplikacji sieci Web platformy Azure. Ale nie widzę EventCounters.?
 

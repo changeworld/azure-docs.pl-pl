@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: db54c7886f5256dab41325cd12f1b893be732d72
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 6d8ad27766e85568cc759af84cc586476ad3ef9a
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529034"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678436"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>Dodawanie wyszukiwania pełnotekstowego do danych obiektów blob platformy Azure przy użyciu Azure Search
 
@@ -70,5 +70,5 @@ Bardziej trwałe rozwiązanie polega na zebraniu danych wejściowych zapytania i
 
 ## <a name="next-steps"></a>Następne kroki
 
-> [!div class="nextstepaction"]
-> [Konfigurowanie indeksatora obiektów BLOB](search-howto-indexing-azure-blob-storage.md) 
++ [Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB za pomocą Azure Portal (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Konfigurowanie indeksatora obiektów BLOB (Azure Search)](search-howto-indexing-azure-blob-storage.md) 

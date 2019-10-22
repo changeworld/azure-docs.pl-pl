@@ -1,140 +1,136 @@
 ---
-title: Model danych Telemetrii aplikacji platformy Azure szczegółowe informacje — kontekstu danych Telemetrycznych | Dokumentacja firmy Microsoft
-description: Model danych kontekstu danych telemetrycznych Insights aplikacji
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Azure telemetria usługi Application Insights Data Model — kontekst telemetrii | Microsoft Docs
+description: Application Insights model danych kontekstu telemetrii
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0351f4fe65745242da58d3c3fb2f9fbe5c722d06
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900714"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677457"
 ---
-# <a name="telemetry-context-application-insights-data-model"></a>Kontekst danych telemetrycznych: Model danych usługi Application Insights
+# <a name="telemetry-context-application-insights-data-model"></a>Kontekst telemetrii: Application Insights model danych
 
-Każdego elementu telemetrii mogą mieć pola silnie typizowaną kontekstu. Każde pole umożliwia konkretnego scenariusza monitorowania. Użyj kolekcji właściwości niestandardowych do przechowywania informacji kontekstowych o niestandardowych lub specyficznych dla aplikacji.
+Każdy element telemetrii może mieć jednoznacznie wpisane pola kontekstowe. Każde pole umożliwia określony scenariusz monitorowania. Za pomocą kolekcji właściwości niestandardowych można przechowywać niestandardowe lub specyficzne dla aplikacji informacje kontekstowe.
 
 
 ## <a name="application-version"></a>Wersja aplikacji
 
-Informacje w polach kontekst aplikacji jest zawsze dotyczące aplikacji, która wysyła dane telemetryczne. Wersja aplikacji jest używany do analizowania trend zmiany zachowania aplikacji i jej korelacji do wdrożeń.
+Informacje w polach kontekstu aplikacji zawsze dotyczą aplikacji wysyłającej dane telemetryczne. Wersja aplikacji służy do analizowania zmian trendów w zachowaniu aplikacji i jej korelacji z wdrożeniami.
 
 Maksymalna długość: 1024
 
 
 ## <a name="client-ip-address"></a>Adres IP klienta
 
-Adres IP urządzenia klienckiego. IPv4 i IPv6 są obsługiwane. Gdy dane telemetryczne są wysyłane z usługi, kontekst lokalizacji jest o użytkowniku, który zainicjował operację usługi. Usługa Application Insights wyodrębnić informacji o lokalizacji geograficznej z adresu IP klienta, a następnie go obciąć. Dlatego adres IP klienta przez siebie nie można użyć jako informacje umożliwiające identyfikację użytkownika końcowego. 
+Adres IP urządzenia klienckiego. Obsługiwane są Protokoły IPv4 i IPv6. Gdy dane telemetryczne są wysyłane z usługi, kontekst lokalizacji dotyczy użytkownika, który zainicjował operację w usłudze. Application Insights Wyodrębnij informacje o lokalizacji geograficznej z adresu IP klienta, a następnie obcinanie go. Dlatego nie można używać protokołu IP klienta jako informacji umożliwiających identyfikację użytkownika końcowego. 
 
 Maksymalna długość: 46
 
 
 ## <a name="device-type"></a>Typ urządzenia
 
-Pierwotnie to pole było używane do wskazać typ urządzenia, które użytkownik aplikacji za pomocą. Obecnie używane głównie w celu odróżnienia JavaScript dane telemetryczne z typem urządzenia "Przeglądarka" z telemetrii po stronie serwera za pomocą urządzenia typu "Komputer".
+Pierwotnie to pole było używane do wskazywania typu urządzenia, z którego korzysta użytkownik końcowy aplikacji. Obecnie używane głównie do rozróżnienia danych telemetrycznych języka JavaScript z typem urządzenia "Browser" z telemetrii po stronie serwera z typem urządzenia "PC".
 
 Maksymalna długość: 64
 
 
 ## <a name="operation-id"></a>Identyfikator operacji
 
-Unikatowy identyfikator operacji głównej. Ten identyfikator umożliwia do telemetrii grupy między kilka składników. Zobacz [korelacja telemetrii](../../azure-monitor/app/correlation.md) Aby uzyskać szczegółowe informacje. Identyfikator operacji jest tworzony przez żądanie lub wyświetlenia strony. Wszystkie inne dane telemetryczne ustawia tego pola wartość zawierającą żądanie lub wyświetlenie strony. 
+Unikatowy identyfikator operacji głównej. Ten identyfikator umożliwia grupowanie danych telemetrycznych w wielu składnikach. Aby uzyskać szczegółowe informacje, zobacz [korelacja telemetrii](../../azure-monitor/app/correlation.md) . Identyfikator operacji jest tworzony przez żądanie lub widok strony. Wszystkie inne dane telemetryczne ustawiają to pole na wartość dla zawierającego żądanie lub widok strony. 
 
 Maksymalna długość: 128
 
 
 ## <a name="parent-operation-id"></a>Identyfikator operacji nadrzędnej
 
-Unikatowy identyfikator elementu telemetrii bezpośredni obiekt nadrzędny. Zobacz [korelacja telemetrii](../../azure-monitor/app/correlation.md) Aby uzyskać szczegółowe informacje.
+Unikatowy identyfikator nadrzędnego elementu telemetrii. Aby uzyskać szczegółowe informacje, zobacz [korelacja telemetrii](../../azure-monitor/app/correlation.md) .
 
 Maksymalna długość: 128
 
 
 ## <a name="operation-name"></a>Nazwa operacji
 
-Nazwa (grupa) operacji. Nazwa operacji jest tworzony przez żądanie lub wyświetlenia strony. Wszystkie pozostałe elementy danych telemetrycznych ustaw wartość zawierającą żądanie lub wyświetlenie strony tego pola. Nazwa operacji jest używana do znajdowania wszystkich elementów danych telemetrycznych dla grupy operacji (na przykład "GET Home/Index"). Ta właściwość kontekstu jest używana w odpowiedzi na pytania, takie jak "co to są typowe wyjątki generowane na tej stronie."
+Nazwa (Grupa) operacji. Nazwa operacji jest tworzona przez żądanie lub widok strony. Wszystkie inne elementy telemetrii ustawiają to pole na wartość dla zawierającego żądanie lub widok strony. Nazwa operacji jest używana do znajdowania wszystkich elementów telemetrii dla grupy operacji (na przykład "GET Home/index"). Ta właściwość kontekstu służy do udzielania odpowiedzi na pytania, takie jak typowe wyjątki zgłoszone na tej stronie.
 
 Maksymalna długość: 1024
 
 
-## <a name="synthetic-source-of-the-operation"></a>Syntetyczne źródło działania
+## <a name="synthetic-source-of-the-operation"></a>Źródło syntetyczne operacji
 
-Nazwa źródła syntetycznych. Dane telemetryczne z aplikacji może reprezentować ruchu syntetycznego. Może to być przeszukiwarkę sieci web indeksowania witryny sieci web, testy dostępności witryny lub śladów od bibliotek diagnostycznych, takich jak zestaw SDK Application Insights sam.
+Nazwa źródła syntetycznego. Niektóre dane telemetryczne z aplikacji mogą reprezentować ruch syntetyczny. Może to być indeksowanie witryny sieci Web, testy dostępności witryny lub ślady z bibliotek diagnostycznych, takie jak Application Insights SDK.
 
 Maksymalna długość: 1024
 
 
 ## <a name="session-id"></a>Identyfikator sesji
 
-Identyfikator sesji — wystąpienie interakcji użytkownika z aplikacją. Informacje w polach kontekstu sesji jest zawsze o użytkownika końcowego. Gdy dane telemetryczne są wysyłane z usługi, kontekstu sesji dotyczy użytkownika, który zainicjował operację usługi.
+Identyfikator sesji — wystąpienie interakcji użytkownika z aplikacją. Informacje w kontekście sesji zawsze dotyczą użytkownika końcowego. Gdy dane telemetryczne są wysyłane z usługi, kontekst sesji dotyczy użytkownika, który zainicjował operację w usłudze.
 
 Maksymalna długość: 64
 
 
 ## <a name="anonymous-user-id"></a>Identyfikator użytkownika anonimowego
 
-Identyfikator użytkownika anonimowego. Reprezentuje użytkownika końcowego aplikacji. Gdy dane telemetryczne są wysyłane z usługi, kontekstu użytkownika dotyczy użytkownika, który zainicjował operację usługi.
+Identyfikator użytkownika anonimowego. Reprezentuje użytkownika końcowego aplikacji. Gdy dane telemetryczne są wysyłane z usługi, kontekst użytkownika dotyczy użytkownika, który zainicjował operację w usłudze.
 
-[Próbkowanie](../../azure-monitor/app/sampling.md) to jedna z technik, aby zminimalizować ilość zebranych danych telemetrycznych. Algorytm próbkowania podejmuje próbę albo przykładowe wewnątrz lub na zewnątrz skorelowana telemetria. Identyfikator użytkownika anonimowego jest używany do pobierania próbek generowania oceny. Dlatego użytkownik anonimowy identyfikator powinien być wystarczająco losową wartość. 
+[Próbkowanie](../../azure-monitor/app/sampling.md) jest jedną z technik, aby zminimalizować ilość zbieranych danych telemetrycznych. Algorytm próbkowania próbuje wykonać próbkowanie do lub wypróbowanie wszystkich skorelowanych danych telemetrycznych. Identyfikator użytkownika anonimowego jest używany do generowania wyników próbkowania. Identyfikator użytkownika anonimowego powinien być wystarczająco losowy. 
 
-Przy użyciu identyfikatora użytkownika anonimowego do przechowywania nazwy użytkownika jest nadużycie pola. Użyj uwierzytelniony identyfikator użytkownika.
+Użycie anonimowego identyfikatora użytkownika do przechowywania nazwy użytkownika jest nieprawidłowym polem. Użyj identyfikatora uwierzytelnionego użytkownika.
 
 Maksymalna długość: 128
 
 
-## <a name="authenticated-user-id"></a>Identyfikator użytkownika uwierzytelnionego
+## <a name="authenticated-user-id"></a>Identyfikator uwierzytelnionego użytkownika
 
-Identyfikator użytkownika uwierzytelnionego. Identyfikator użytkownika anonimowego i na odwrót to pole reprezentuje użytkownika o przyjaznej nazwie. Od momentu jego osobowe go nie są zbierane Domyślnie większość zestawu SDK.
+Identyfikator uwierzytelnionego użytkownika. W przeciwieństwie do identyfikatora użytkownika anonimowego, to pole reprezentuje użytkownika z przyjazną nazwą. Ponieważ informacje OSOBowe nie są zbierane domyślnie przez większość SDK.
 
 Maksymalna długość: 1024
 
 
 ## <a name="account-id"></a>Identyfikator konta
 
-W aplikacjach wielodostępnych jest to identyfikator konta lub nazwę, którą działa użytkownik za pomocą. Przykładami mogą być identyfikator subskrypcji platformy Azure portal lub w blogu nazwy do obsługi blogów.
+W aplikacjach z wieloma dzierżawcami jest to identyfikator lub nazwa konta, z którym użytkownik działa. Przykłady mogą być IDENTYFIKATORem subskrypcji dla Azure Portal lub platformy blogów w imieniu blogu.
 
 Maksymalna długość: 1024
 
 
 ## <a name="cloud-role"></a>Rola w chmurze
 
-Nazwa roli aplikacji jest częścią. Mapowania bezpośrednio na nazwę roli na platformie azure. Można również do odróżnienia wczesnych usług, które są częścią pojedynczej aplikacji.
+Nazwa roli, do której należy aplikacja. Mapuje bezpośrednio na nazwę roli na platformie Azure. Można również użyć do rozróżniania mikrousług, które są częścią pojedynczej aplikacji.
 
 Maksymalna długość: 256
 
 
 ## <a name="cloud-role-instance"></a>Wystąpienie roli w chmurze
 
-Nazwa wystąpienia, gdzie aplikacja jest uruchomiona. Nazwa komputera dla lokalnego, nazwę wystąpienia dla platformy Azure.
+Nazwa wystąpienia, w którym jest uruchomiona aplikacja. Nazwa komputera dla lokalnego, nazwa wystąpienia platformy Azure.
 
 Maksymalna długość: 256
 
 
-## <a name="internal-sdk-version"></a>Wewnętrzny: Wersja zestawu SDK
+## <a name="internal-sdk-version"></a>Wewnętrzny: wersja zestawu SDK
 
-Wersja zestawu SDK. Zobacz https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification informacji.
+Wersja zestawu SDK. Aby uzyskać więcej informacji, zobacz https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification.
 
 Maksymalna długość: 64
 
 
-## <a name="internal-node-name"></a>Wewnętrzny: Nazwa węzła
+## <a name="internal-node-name"></a>Wewnętrzny: nazwa węzła
 
-To pole reprezentuje nazwę węzła używane na potrzeby rozliczeń. Dzięki niemu przesłonić standardowe wykrywanie węzłów.
+To pole reprezentuje nazwę węzła używanego na potrzeby rozliczeń. Służy do zastępowania standardowego wykrywania węzłów.
 
 Maksymalna długość: 256
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [rozszerzyć i filtrowanie danych telemetrycznych](../../azure-monitor/app/api-filtering-sampling.md).
-- Zobacz [modelu danych](data-model.md) dla usługi Application Insights typów i danych modelu.
-- Zapoznaj się z kolekcji właściwości kontekstu standardowa [konfiguracji](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet).
+- Dowiedz się [, jak rozciągnąć i filtrować dane telemetryczne](../../azure-monitor/app/api-filtering-sampling.md).
+- Zobacz [model danych](data-model.md) dla typów Application Insights i modelu danych.
+- Sprawdź [konfigurację](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)kolekcji właściwości kontekstu standardowego.
