@@ -18,22 +18,22 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70983499"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Raporty dotyczące aprowizacji w portalu Azure Active Directory (wersja zapoznawcza)
 
 Architektura raportowania w Azure Active Directory (Azure AD) składa się z następujących składników:
 
-- **Aktywność** 
+- **Działanie** 
     - **Logowania** — informacje na temat użycia zarządzanych aplikacji i działań związanych z logowaniem użytkowników.
-    - **Dzienniki inspekcji dzienników**inspekcji zapewniają informacje o aktywności systemu dotyczące zarządzania użytkownikami i grupami, zarządzane aplikacje i działania w katalogu.[](concept-audit-logs.md)  - 
+    - **Dzienniki inspekcji**  - [dzienniki inspekcji](concept-audit-logs.md) zapewniają informacje o aktywności systemu dotyczące zarządzania użytkownikami i grupami, zarządzane aplikacje i działania w katalogu.
     - **Dzienniki aprowizacji** — zapewniają działania systemowe dotyczące użytkowników, grup i ról, które są obsługiwane przez usługę aprowizacji usługi Azure AD. 
 
-- **Zabezpieczenia** 
+- **Bezpieczeństwo** 
     - **Ryzykowne logowania** — [ryzykowne logowanie](concept-risky-sign-ins.md) jest wskaźnikiem próby logowania, które mogło zostać wykonane przez kogoś, kto nie jest uprawnionym właścicielem konta użytkownika.
     - **Użytkownicy oflagowani do ryzyka** — [ryzykowny użytkownik](concept-user-at-risk.md) jest wskaźnikiem konta użytkownika, które mogło zostać naruszone.
 
@@ -60,7 +60,7 @@ Dzienniki aprowizacji zapewniają odpowiedzi na następujące pytania:
 
 Dostęp do dzienników aprowizacji można uzyskać, wybierając pozycję **dzienniki aprowizacji** w sekcji **monitorowanie** w bloku **Azure Active Directory** w [Azure Portal](https://portal.azure.com). W przypadku niektórych rekordów aprowizacji w portalu może upłynąć do dwóch godzin.
 
-![Dzienniki aprowizacji](./media/concept-provisioning-logs/access-provisioning-logs.png "Dzienniki aprowizacji")
+![Dzienniki aprowizacji](./media/concept-provisioning-logs/access-provisioning-logs.png "Dzienniki aprowizowania")
 
 
 Dziennik aprowizacji zawiera domyślny widok listy, który pokazuje:
@@ -93,14 +93,14 @@ Wybierz element w widoku listy, aby uzyskać bardziej szczegółowe informacje.
 Aby zawęzić zgłoszone dane do poziomu, który działa dla Ciebie, można odfiltrować dane aprowizacji przy użyciu następujących pól domyślnych. Należy zauważyć, że wartości w filtrach są dynamicznie wypełniane na podstawie dzierżawy. Jeśli na przykład nie masz żadnych zdarzeń tworzenia w dzierżawie, nie będzie dostępna opcja filtru dla operacji tworzenia.
 
 - Tożsamość
-- Action
+- Działanie
 - System źródłowy
 - System docelowy
-- State
-- Date
+- Stan
+- Data
 
 
-![Filtr](./media/concept-provisioning-logs/filter.png "Filtr")
+![Filtru](./media/concept-provisioning-logs/filter.png "Filtr")
 
 Filtr **tożsamości** umożliwia określenie nazwy lub tożsamości, o której Cię interesują. Ta tożsamość może być użytkownikiem, grupą, rolą lub innym obiektem. Można wyszukiwać według nazwy lub identyfikatora obiektu. Identyfikator różni się w zależności od scenariusza. Na przykład podczas aprowizacji obiektu z usługi Azure AD do usług SalesForce identyfikator źródłowy jest IDENTYFIKATORem obiektu użytkownika w usłudze Azure AD, a TargetID jest IDENTYFIKATORem użytkownika w usłudze Salesforce. Po zainicjowaniu obsługi administracyjnej od dnia roboczego do Active Directory identyfikator źródła to identyfikator pracownika procesu roboczego programu Workday. Należy zauważyć, że nazwa użytkownika może nie zawsze występować w kolumnie tożsamość. Zawsze będzie istnieć jeden identyfikator. 
 
@@ -110,26 +110,26 @@ Filtr **systemu źródłowego** umożliwia określenie lokalizacji, z której je
 
 Filtr **stanu** umożliwia wybranie:
 
-- Wszyscy
+- Wszystko
 - Powodzenie
 - Niepowodzenie
-- Pominięte
+- Pominięto
 
 Filtr **akcji** umożliwia filtrowanie:
 
 - Create 
 - Aktualizacja
-- Usuwanie
-- Wyłączanie
+- Usuń
+- Wyłączenie
 - Inne
 
 Filtr **Data** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
-Możliwe wartości to:
+Możliwe wartości:
 
 - 1 miesiąc
 - 7 dni
 - 30 dni
-- 24 godz.
+- 24 godziny
 - Niestandardowy zakres czasu
 
 Po wybraniu niestandardowego przedziału czasu można skonfigurować datę początkową i datę końcową.
@@ -161,7 +161,7 @@ Szczegóły są pogrupowane w oparciu o następujące kategorie:
 - Podsumowanie
 
 
-![Filtr](./media/concept-provisioning-logs/provisioning-tabs.png "Karty")
+![Filtru](./media/concept-provisioning-logs/provisioning-tabs.png "Przedstawia")
 
 
 
@@ -176,7 +176,7 @@ Na karcie **kroki** przedstawiono kroki, które należy wykonać w celu aprowiza
 
 
 
-![Filtr](./media/concept-provisioning-logs/steps.png "Filtr")
+![Filtru](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Rozwiązywanie problemów i zalecenia

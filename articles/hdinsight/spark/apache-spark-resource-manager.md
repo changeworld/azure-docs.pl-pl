@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
 ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71001767"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight 
@@ -44,7 +44,7 @@ Serwer historii platformy Spark jest interfejsem użytkownika sieci Web do końc
     https://<ClusterName>.azurehdinsight.net/sparkhistory
     ```
 
-    Zastąp `<ClusterName>` ciąg nazwą klastra Spark.
+    Zastąp `<ClusterName>` nazwą klastra Spark.
 
 Interfejs użytkownika sieci Web serwera historii platformy Spark wygląda następująco:
 
@@ -64,7 +64,7 @@ Za pomocą interfejsu użytkownika PRZĘDZy można monitorować aplikacje, któr
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Optymalizowanie klastrów dla aplikacji platformy Spark
 
-Trzy kluczowe parametry, które mogą być używane do konfiguracji platformy Spark w zależności od wymagań aplikacji `spark.executor.instances`to `spark.executor.cores`, i `spark.executor.memory`. Program wykonujący to proces uruchomiony dla aplikacji platformy Spark. Jest on uruchamiany w węźle procesu roboczego i jest odpowiedzialny za wykonywanie zadań aplikacji. Domyślna liczba modułów wykonujących i rozmiary wykonawców dla każdego klastra jest obliczana na podstawie liczby węzłów procesu roboczego i rozmiaru węzła procesu roboczego. Te informacje są przechowywane w `spark-defaults.conf` węzłach głównych klastra.
+Trzy kluczowe parametry, które mogą być używane do konfiguracji platformy Spark w zależności od wymagań aplikacji, są `spark.executor.instances`, `spark.executor.cores` i `spark.executor.memory`. Program wykonujący to proces uruchomiony dla aplikacji platformy Spark. Jest on uruchamiany w węźle procesu roboczego i jest odpowiedzialny za wykonywanie zadań aplikacji. Domyślna liczba modułów wykonujących i rozmiary wykonawców dla każdego klastra jest obliczana na podstawie liczby węzłów procesu roboczego i rozmiaru węzła procesu roboczego. Te informacje są przechowywane w `spark-defaults.conf` w węzłach głównych klastra.
 
 Trzy parametry konfiguracji można skonfigurować na poziomie klastra (dla wszystkich aplikacji uruchamianych w klastrze) lub można je określić również dla poszczególnych aplikacji.
 
@@ -81,7 +81,7 @@ Trzy parametry konfiguracji można skonfigurować na poziomie klastra (dla wszys
     ![Ponowne uruchamianie usług](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Zmień parametry aplikacji działającej w notesie Jupyter
-W przypadku aplikacji uruchamianych w notesie Jupyter można użyć `%%configure` Magic, aby wprowadzić zmiany w konfiguracji. W idealnym przypadku należy wprowadzić takie zmiany na początku aplikacji, zanim zaczniesz korzystać z pierwszej komórki kodu. W ten sposób zagwarantujemy, że konfiguracja zostanie zastosowana do sesji usługi Livy, gdy zostanie utworzona. Jeśli chcesz zmienić konfigurację na późniejszym etapie w aplikacji, musisz użyć `-f` parametru. Jednak dzięki temu cały postęp w aplikacji zostanie utracony.
+W przypadku aplikacji uruchamianych w notesie Jupyter można użyć Magic `%%configure`, aby wprowadzić zmiany w konfiguracji. W idealnym przypadku należy wprowadzić takie zmiany na początku aplikacji, zanim zaczniesz korzystać z pierwszej komórki kodu. W ten sposób zagwarantujemy, że konfiguracja zostanie zastosowana do sesji usługi Livy, gdy zostanie utworzona. Jeśli chcesz zmienić konfigurację na późniejszym etapie w aplikacji, należy użyć parametru `-f`. Jednak dzięki temu cały postęp w aplikacji zostanie utracony.
 
 Poniższy fragment kodu przedstawia sposób zmiany konfiguracji aplikacji działającej w Jupyter.
 
@@ -103,12 +103,12 @@ Poniższe polecenie stanowi przykład zmiany parametrów konfiguracji dla aplika
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>Zmień te parametry na serwerze Spark Thrift
 Serwer Spark Thrift zapewnia dostęp JDBC/ODBC do klastra Spark i służy do obsługi zapytań Spark SQL. Narzędzia, takie jak Power BI, Tableau itp. Użyj protokołu ODBC, aby komunikować się z serwerem Spark Thrift w celu wykonywania zapytań Spark SQL jako aplikacji platformy Spark. Po utworzeniu klastra Spark dwa wystąpienia serwera Spark Thrift są uruchamiane, jeden w każdym węźle głównym. Każdy serwer Spark Thrift jest widoczny jako aplikacja Spark w interfejsie użytkownika z PRZĘDZą.
 
-Serwer Spark Thrift korzysta z dynamicznej alokacji modułu wykonawczego platformy `spark.executor.instances` Spark, w związku z czym nie jest używany. Zamiast tego serwer Spark Thrift używa `spark.dynamicAllocation.minExecutors` programu `spark.dynamicAllocation.maxExecutors` i do określenia liczby programów wykonujących. Parametry `spark.executor.cores` konfiguracji i `spark.executor.memory` są używane do modyfikowania rozmiaru programu wykonującego. Te parametry można zmienić, jak pokazano w następujących krokach:
+Serwer Spark Thrift korzysta z dynamicznej alokacji modułu wykonawczego platformy Spark, dlatego `spark.executor.instances` nie jest używany. Zamiast tego serwer Spark Thrift używa `spark.dynamicAllocation.minExecutors` i `spark.dynamicAllocation.maxExecutors` do określenia liczby programów wykonujących. Parametry konfiguracji `spark.executor.cores` i `spark.executor.memory` są używane do modyfikowania rozmiaru programu wykonującego. Te parametry można zmienić, jak pokazano w następujących krokach:
 
-* Rozwiń kategorię **Advanced Spark-Thrift-sparkconf** , aby zaktualizować parametry `spark.dynamicAllocation.minExecutors`, `spark.dynamicAllocation.maxExecutors`i `spark.executor.memory`.
+* Rozwiń kategorię **Advanced Spark-Thrift-sparkconf** , aby zaktualizować parametry `spark.dynamicAllocation.minExecutors`, `spark.dynamicAllocation.maxExecutors` i `spark.executor.memory`.
 
     ![Konfigurowanie serwera Spark Thrift](./media/apache-spark-resource-manager/spark-thrift-server-1.png "Konfigurowanie serwera Spark Thrift")
-* Rozwiń **niestandardową kategorię Spark-Thrift-sparkconf** , aby zaktualizować `spark.executor.cores`parametr.
+* Rozwiń **niestandardową kategorię Spark-Thrift-sparkconf** , aby zaktualizować parametr `spark.executor.cores`.
 
     ![Konfigurowanie parametru serwera Spark Thrift](./media/apache-spark-resource-manager/spark-thrift-server-2.png "Konfigurowanie parametru serwera Spark Thrift")
 
@@ -137,7 +137,7 @@ Ze względu na dynamiczną alokację Spark jedynymi zasobami, które są używan
 ## <a name="restart-the-jupyter-service"></a>Uruchom ponownie usługę Jupyter
 Uruchom interfejs użytkownika sieci Web Ambari, jak pokazano na początku artykułu. W okienku nawigacji po lewej stronie kliknij pozycję **Jupyter**, kliknij pozycję **Akcje usługi**, a następnie kliknij pozycję **Uruchom ponownie wszystkie**. Spowoduje to uruchomienie usługi Jupyter na wszystkich węzłów głównychach.
 
-![Uruchom ponownie Jupyter](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Uruchom ponownie Jupyter")
+![Uruchom ponownie Jupyter](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Uruchom ponownie program Jupyter")
 
 ## <a name="monitor-resources"></a>Monitorowanie zasobów
 Uruchom interfejs użytkownika przędzy, jak pokazano na początku artykułu. W tabeli metryk klastra w górnej części ekranu Sprawdź wartości **używanej pamięci** i kolumny **łącznie z pamięcią** . Jeśli te dwie wartości są zamknięte, może nie być wystarczającej ilości zasobów do uruchomienia następnej aplikacji. To samo dotyczy **rdzeni wirtualnych używanych** i **rdzeni wirtualnych sum** kolumn. Ponadto w widoku głównym, jeśli istnieje aplikacja, która została **zaakceptowana** , a nie przeszedł w stan **uruchomienia** lub **niepowodzenia** , może to oznaczać, że nie jest dostępna wystarczająca ilość zasobów do uruchomienia.
@@ -158,8 +158,8 @@ Uruchom interfejs użytkownika przędzy, jak pokazano na początku artykułu. W 
 
 ### <a name="for-data-analysts"></a>Dla analityków danych
 
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dzienników witryny sieci Web przy użyciu Apache Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
 * [Analiza danych telemetrycznych usługi Application Insight przy użyciu Apache Spark w usłudze HDInsight](apache-spark-analyze-application-insight-logs.md)
 * [Użyj Caffe na Azure HDInsight Spark na potrzeby rozproszonej uczenia głębokiego](apache-spark-deep-learning-caffe.md)

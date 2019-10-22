@@ -1,5 +1,5 @@
 ---
-title: 'Dodaj wiersze: Dokumentacja modułu'
+title: 'Dodawanie wierszy: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak połączyć dwa zestawy danych przy użyciu modułu Dodaj wiersze w usłudze Azure Machine Learning.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: c25f555fd7870afa4e75a3d1e490914e85118d20
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c8d8b6a873ee17d1658b0cb47de830848b215b89
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129007"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693247"
 ---
 # <a name="add-rows-module"></a>Dodaj moduł wierszy
 
@@ -32,11 +32,11 @@ Ten moduł służy do łączenia dwóch zestawów danych. W trakcie łączenia w
 
 Aby połączyć wiersze z dwóch zestawów danych, wiersze muszą mieć dokładnie ten sam schemat. Oznacza to, że ta sama liczba kolumn i ten sam typ danych w kolumnach.
 
-1.  Przeciągnij moduł **Dodaj wiersze** do swojego eksperymentu, możesz go znaleźć w obszarze **Przekształcanie danych**w kategorii **manipulowanie** .
+1.  Przeciągnij moduł **Dodaj wiersze** do potoku, aby znaleźć go w obszarze **Przekształcanie danych**, w kategorii **manipulowanie** .
 
 2. Połącz zestawy danych z dwoma portami wejściowymi. Zestaw danych, który chcesz dołączyć, powinien być połączony z drugim (prawym) portem. 
   
-3.  Uruchom eksperyment. Liczba wierszy w wyjściowym zestawie danych powinna być równa sumie wierszy wejściowych zestawów danych.
+3.  Uruchamianie potoku. Liczba wierszy w wyjściowym zestawie danych powinna być równa sumie wierszy wejściowych zestawów danych.
 
     Jeśli dodasz ten sam zestaw danych do obu wejść modułu **Dodaj wiersze** , zestaw danych zostanie zduplikowany. 
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
 ms.openlocfilehash: b720d64f5b0a5f66375083b7854658aa754db150
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072302"
 ---
 # <a name="azure-api-management-page-controls"></a>Kontrolki strony API Management platformy Azure
@@ -38,15 +38,15 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
   
 -   [aplikacje — akcje](#app-actions)  
 -   [Logowanie Podstawowe](#basic-signin)  
--   [paging-control](#paging-control)  
--   [dostawcy](#providers)  
+-   [Kontrola stronicowania](#paging-control)  
+-   [udostępnia](#providers)  
 -   [Kontrolka wyszukiwania](#search-control)  
 -   [Utwórz konto](#sign-up)  
 -   [subskrypcja — przycisk](#subscribe-button)  
--   [subscription-cancel](#subscription-cancel)  
+-   [subskrypcja — Anuluj](#subscription-cancel)  
   
 ##  <a name="app-actions"></a>aplikacje — akcje  
- `app-actions` Kontrolka udostępnia interfejs użytkownika służący do manipulowania aplikacjami na stronie profilu użytkownika w portalu dla deweloperów.  
+ Formant `app-actions` udostępnia interfejs użytkownika służący do korzystania z aplikacji na stronie profilu użytkownika w portalu dla deweloperów.  
   
  ![Kontrola&#45;akcji aplikacji](./media/api-management-page-controls/APIM-app-actions-control.png "Aplikacja APIM — kontrola akcji")  
   
@@ -63,12 +63,12 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
 |appId|Identyfikator aplikacji.|  
   
 ### <a name="developer-portal-templates"></a>Szablony portalu dla deweloperów  
- `app-actions` Kontrolka może być używana w następujących szablonach portalu dla deweloperów:  
+ Kontrolka `app-actions` może być używana w następujących szablonach portalu dla deweloperów:  
   
 -   [Aplikacje](api-management-user-profile-templates.md#Applications)  
   
 ##  <a name="basic-signin"></a>Logowanie Podstawowe  
- `basic-signin` Kontrolka udostępnia kontrolkę do zbierania informacji logowania użytkownika na stronie logowania w portalu dla deweloperów.  
+ Kontrolka `basic-signin` udostępnia formant do zbierania informacji logowania użytkownika na stronie logowania w portalu dla deweloperów.  
   
  ![podstawowa&#45;kontrola logowania](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM — kontrola logowania")  
   
@@ -82,14 +82,14 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
  Brak.  
   
 ### <a name="developer-portal-templates"></a>Szablony portalu dla deweloperów  
- `basic-signin` Kontrolka może być używana w następujących szablonach portalu dla deweloperów:  
+ Kontrolka `basic-signin` może być używana w następujących szablonach portalu dla deweloperów:  
   
 -   [Rejestrowanie](api-management-page-templates.md#SignIn)  
   
 ##  <a name="paging-control"></a>Kontrola stronicowania  
- `paging-control` Zawiera funkcje stronicowania na stronach portalu dla deweloperów, na których jest wyświetlana lista elementów.  
+ @No__t_0 udostępnia funkcje stronicowania na stronach portalu dla deweloperów, które wyświetlają listę elementów.  
   
- ![kontrolka stronicowania](./media/api-management-page-controls/APIM-paging-control.png "APIM — formant stronicowania")  
+ ![Kontrolka stronicowania](./media/api-management-page-controls/APIM-paging-control.png "APIM — formant stronicowania")  
   
 ### <a name="usage"></a>Użycie  
   
@@ -101,7 +101,7 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
  Brak.  
   
 ### <a name="developer-portal-templates"></a>Szablony portalu dla deweloperów  
- `paging-control` Kontrolka może być używana w następujących szablonach portalu dla deweloperów:  
+ Kontrolka `paging-control` może być używana w następujących szablonach portalu dla deweloperów:  
   
 -   [Lista interfejsów API](api-management-api-templates.md#APIList)  
   
@@ -110,9 +110,9 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
 -   [Lista produktów](api-management-product-templates.md#ProductList)  
   
 ##  <a name="providers"></a>udostępnia  
- `providers` Kontrolka zapewnia kontrolkę wyboru dostawców uwierzytelniania na stronie logowania w portalu dla deweloperów.  
+ Formant `providers` zapewnia kontrolę wyboru dostawców uwierzytelniania na stronie logowania w portalu dla deweloperów.  
   
- ![sterowanie dostawcami](./media/api-management-page-controls/APIM-providers-control.png "Kontrolka dostawcy APIM")  
+ ![Sterowanie dostawcami](./media/api-management-page-controls/APIM-providers-control.png "Kontrolka dostawcy APIM")  
   
 ### <a name="usage"></a>Użycie  
   
@@ -124,14 +124,14 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
  Brak.  
   
 ### <a name="developer-portal-templates"></a>Szablony portalu dla deweloperów  
- `providers` Kontrolka może być używana w następujących szablonach portalu dla deweloperów:  
+ Kontrolka `providers` może być używana w następujących szablonach portalu dla deweloperów:  
   
 -   [Rejestrowanie](api-management-page-templates.md#SignIn)  
   
 ##  <a name="search-control"></a>Kontrolka wyszukiwania  
- Funkcja `search-control` zawiera funkcje wyszukiwania na stronach portalu dla deweloperów, na których jest wyświetlana lista elementów.  
+ @No__t_0 udostępnia funkcje wyszukiwania na stronach portalu dla deweloperów, które wyświetlają listę elementów.  
   
- ![kontrolka wyszukiwania](./media/api-management-page-controls/APIM-search-control.png "APIM — formant wyszukiwania")  
+ ![Kontrolka wyszukiwania](./media/api-management-page-controls/APIM-search-control.png "APIM — formant wyszukiwania")  
   
 ### <a name="usage"></a>Użycie  
   
@@ -143,14 +143,14 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
  Brak.  
   
 ### <a name="developer-portal-templates"></a>Szablony portalu dla deweloperów  
- `search-control` Kontrolka może być używana w następujących szablonach portalu dla deweloperów:  
+ Kontrolka `search-control` może być używana w następujących szablonach portalu dla deweloperów:  
   
 -   [Lista interfejsów API](api-management-api-templates.md#APIList)  
   
 -   [Lista produktów](api-management-product-templates.md#ProductList)  
   
 ##  <a name="sign-up"></a>Utwórz konto  
- `sign-up` Formant zawiera kontrolkę do zbierania informacji o profilu użytkownika na stronie rejestracji w portalu dla deweloperów.  
+ Formant `sign-up` zapewnia kontrolę zbierania informacji o profilu użytkownika na stronie tworzenia konta w portalu dla deweloperów.  
   
  ![Kontrola&#45;rejestracji](./media/api-management-page-controls/APIM-sign-up-control.png "APIM — formant rejestracji")  
   
@@ -164,12 +164,12 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
  Brak.  
   
 ### <a name="developer-portal-templates"></a>Szablony portalu dla deweloperów  
- `sign-up` Kontrolka może być używana w następujących szablonach portalu dla deweloperów:  
+ Kontrolka `sign-up` może być używana w następujących szablonach portalu dla deweloperów:  
   
 -   [Tworzenie konta](api-management-page-templates.md#SignUp)  
   
 ##  <a name="subscribe-button"></a>subskrypcja — przycisk  
- `subscribe-button` Zawiera kontrolkę umożliwiającą subskrybowanie użytkownika w produkcie.  
+ @No__t_0 zapewnia kontrolę subskrybowania użytkownika w produkcie.  
   
  ![przycisk&#45;subskrybowania — formant](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM — formant subskrypcji przycisku")  
   
@@ -183,12 +183,12 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
  Brak.  
   
 ### <a name="developer-portal-templates"></a>Szablony portalu dla deweloperów  
- `subscribe-button` Kontrolka może być używana w następujących szablonach portalu dla deweloperów:  
+ Kontrolka `subscribe-button` może być używana w następujących szablonach portalu dla deweloperów:  
   
 -   [Iloczyn](api-management-product-templates.md#Product)  
   
 ##  <a name="subscription-cancel"></a>subskrypcja — Anuluj  
- `subscription-cancel` Formant umożliwia kontrolowanie anulowania subskrypcji produktu na stronie profilu użytkownika w portalu dla deweloperów.  
+ Formant `subscription-cancel` zapewnia kontrolkę anulowania subskrypcji produktu na stronie profilu użytkownika w portalu dla deweloperów.  
   
  ![Kontrola&#45;anulowania subskrypcji](./media/api-management-page-controls/APIM-subscription-cancel-control.png "Subskrypcja APIM — anulowanie kontroli")  
   
@@ -208,7 +208,7 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
 |cancelUrl|Subskrypcja anuluje adres URL.|  
   
 ### <a name="developer-portal-templates"></a>Szablony portalu dla deweloperów  
- `subscription-cancel` Kontrolka może być używana w następujących szablonach portalu dla deweloperów:  
+ Kontrolka `subscription-cancel` może być używana w następujących szablonach portalu dla deweloperów:  
   
 -   [Iloczyn](api-management-product-templates.md#Product)
 

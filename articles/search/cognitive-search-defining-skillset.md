@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265530"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Jak utworzyć zestawu umiejętności w potoku wzbogacania
 
-Wyszukiwanie poznawcze umożliwia wyodrębnianie i wzbogacanie danych w celu przeszukiwania ich w Azure Search. Wywołajemy możliwości wydobywania i wzbogacania *umiejętności poznawcze*, połączone w *zestawu umiejętności* , do których odwołuje się podczas indeksowania. Zestawu umiejętności może używać [wbudowanych umiejętności](cognitive-search-predefined-skills.md) lub umiejętności niestandardowych (zobacz [przykład: Utwórz niestandardową umiejętność wyszukiwania](cognitive-search-create-custom-skill-example.md) poznawczego, aby uzyskać więcej informacji.
+Wyszukiwanie poznawcze umożliwia wyodrębnianie i wzbogacanie danych w celu przeszukiwania ich w Azure Search. Wywołajemy możliwości wydobywania i wzbogacania *umiejętności poznawcze*, połączone w *zestawu umiejętności* , do których odwołuje się podczas indeksowania. Zestawu umiejętności może korzystać z [wbudowanych umiejętności](cognitive-search-predefined-skills.md) lub umiejętności niestandardowych (zobacz [przykład: Tworzenie niestandardowej umiejętności wyszukiwania poznawczego](cognitive-search-create-custom-skill-example.md) , aby uzyskać więcej informacji).
 
-W tym artykule dowiesz się, jak utworzyć potok wzbogacania dla umiejętności, których chcesz użyć. Zestawu umiejętności jest dołączony do indeksatora Azure Search [](search-indexer-overview.md). Jedną z części projektu potoku, omówionego w tym artykule, jest konstrukcja zestawu umiejętności. 
+W tym artykule dowiesz się, jak utworzyć potok wzbogacania dla umiejętności, których chcesz użyć. Zestawu umiejętności jest dołączony do [indeksatora](search-indexer-overview.md)Azure Search. Jedną z części projektu potoku, omówionego w tym artykule, jest konstrukcja zestawu umiejętności. 
 
 > [!NOTE]
 > Inna część projektu potoku określa indeksator, pokryty w [następnym kroku](#next-step). Definicja indeksatora zawiera odwołanie do zestawu umiejętności oraz mapowania pól, które są używane do łączenia danych wejściowych z docelowym indeksem.
@@ -38,7 +38,7 @@ Załóżmy, że interesuje Cię przetwarzanie zestawu komentarzy analityków fin
 
 | rekord — tekst | towarzystw | Tonacji | opisy firmy |
 |--------|-----|-----|-----|
-|sample-record| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation to amerykańska firma wielonarodowych technologii...", "LinkedIn to sieć społecznościowa zorientowana na działalność biznesową i"... "]
+|Przykładowy rekord| ["Microsoft", "LinkedIn"] | 0,99 | ["Microsoft Corporation to amerykańska firma wielonarodowych technologii...", "LinkedIn to sieć społecznościowa zorientowana na działalność biznesową i"... "]
 
 Poniższy diagram ilustruje hipotetyczny potok wzbogacania:
 
@@ -126,7 +126,7 @@ Content-Type: application/json
 
 ## <a name="create-a-skillset"></a>Tworzenie zestawu umiejętności
 
-Podczas tworzenia zestawu umiejętności można podać opis, aby zestawu umiejętności samodzielny dokument. Opis jest opcjonalny, ale przydatny do śledzenia zawartości zestawu umiejętności. Ponieważ zestawu umiejętności jest dokumentem JSON, który nie zezwala na komentarze, musisz użyć `description` elementu.
+Podczas tworzenia zestawu umiejętności można podać opis, aby zestawu umiejętności samodzielny dokument. Opis jest opcjonalny, ale przydatny do śledzenia zawartości zestawu umiejętności. Ponieważ zestawu umiejętności jest dokumentem JSON, który nie zezwala na komentarze, należy użyć elementu `description`.
 
 ```json
 {
@@ -163,13 +163,13 @@ Przyjrzyjmy się pierwszej umiejętności, która stanowi wbudowaną [umiejętno
     }
 ```
 
-* Każda wbudowana umiejętność ma `odata.type`właściwości `input`, i `output` . Właściwości specyficzne dla umiejętności zawierają dodatkowe informacje dotyczące tej umiejętności. W przypadku rozpoznawania `categories` jednostek jest jedną jednostką z ustalonego zestawu typów jednostek, które może rozpoznać przedmieszczony model.
+* Każda wbudowana umiejętność ma `odata.type`, `input` i `output` właściwości. Właściwości specyficzne dla umiejętności zawierają dodatkowe informacje dotyczące tej umiejętności. W przypadku rozpoznawania jednostek `categories` jest jedną jednostką dla ustalonego zestawu typów jednostek, które może rozpoznać przedmieszczony model.
 
-* Każda umiejętność powinna mieć ```"context"```. Kontekst reprezentuje poziom, na którym operacje mają miejsce. W powyższej umiejętności kontekst jest całym dokumentem, co oznacza, że umiejętność rozpoznawania jednostki jest wywoływana raz dla dokumentu. Dane wyjściowe są również tworzone na tym poziomie. Dokładniej, ```"organizations"``` są generowane jako ```"/document"```element członkowski. W obszarze umiejętności podrzędne można odwołać się do nowo utworzonych informacji jako ```"/document/organizations"```.  ```"context"``` Jeśli pole nie jest jawnie ustawione, domyślnym kontekstem jest dokument.
+* Każda umiejętność powinna mieć ```"context"```. Kontekst reprezentuje poziom, na którym operacje mają miejsce. W powyższej umiejętności kontekst jest całym dokumentem, co oznacza, że umiejętność rozpoznawania jednostki jest wywoływana raz dla dokumentu. Dane wyjściowe są również tworzone na tym poziomie. Dokładniej, ```"organizations"``` są generowane jako element członkowski ```"/document"```. W obszarze umiejętności podrzędne można odwołać się do nowo utworzonych informacji jako ```"/document/organizations"```.  Jeśli pole ```"context"``` nie jest jawnie ustawione, domyślnym kontekstem jest dokument.
 
-* Umiejętność ma jedno wejście o nazwie "text" ze źródłowym zestawem wejściowym ```"/document/content"```na. Umiejętność (rozpoznawanie jednostek) działa w polu *zawartość* każdego dokumentu, który jest standardowym polem utworzonym przez indeksator usługi Azure Blob. 
+* Umiejętność ma jedno wejście o nazwie "text" ze źródłowym wejściem ustawionym na ```"/document/content"```. Umiejętność (rozpoznawanie jednostek) działa w polu *zawartość* każdego dokumentu, który jest standardowym polem utworzonym przez indeksator usługi Azure Blob. 
 
-* Umiejętność ma jedno wyjście ```"organizations"```. Dane wyjściowe istnieją tylko podczas przetwarzania. Aby połączyć dane wyjściowe z danymi wejściowymi w celu uzyskania kwalifikacji podrzędnych, należy ```"/document/organizations"```odwołać się do danych wyjściowych jako.
+* Umiejętność ma jedno wyjście o nazwie ```"organizations"```. Dane wyjściowe istnieją tylko podczas przetwarzania. Aby połączyć te dane wyjściowe z danymi wejściowymi w celu uzyskania kwalifikacji podrzędnych, należy odwołać się do danych wyjściowych jako ```"/document/organizations"```.
 
 * W przypadku określonego dokumentu wartość ```"/document/organizations"``` jest tablicą organizacji wyodrębnionych z tekstu. Na przykład:
 
@@ -177,9 +177,9 @@ Przyjrzyjmy się pierwszej umiejętności, która stanowi wbudowaną [umiejętno
   ["Microsoft", "LinkedIn"]
   ```
 
-Niektóre sytuacje odwołują się do każdego elementu tablicy osobno. Załóżmy na przykład, że chcesz przekazać każdy element ```"/document/organizations"``` oddzielnie do innej umiejętności (na przykład niestandardowego programu do wyszukiwania jednostek Bing). Można odwołać się do każdego elementu tablicy, dodając gwiazdkę do ścieżki:```"/document/organizations/*"``` 
+Niektóre sytuacje odwołują się do każdego elementu tablicy osobno. Załóżmy na przykład, że chcesz przekazać każdy element ```"/document/organizations"``` niezależnie do innej umiejętności (na przykład niestandardowego wzbogacania wyszukiwania jednostek Bing). Można odwołać się do każdego elementu tablicy, dodając gwiazdkę do ścieżki: ```"/document/organizations/*"``` 
 
-Druga umiejętność wyodrębniania tonacji jest zgodna z tym samym wzorcem, co pierwszy wzbogacający. Przyjmuje ```"/document/content"``` jako dane wejściowe i zwraca ocenę tonacji dla każdego wystąpienia zawartości. Ponieważ nie ustawiono ```"context"``` jawnie pola, dane wyjściowe (mySentiment) są teraz ```"/document"```elementem podrzędnym.
+Druga umiejętność wyodrębniania tonacji jest zgodna z tym samym wzorcem, co pierwszy wzbogacający. Przyjmuje ```"/document/content"``` jako dane wejściowe i zwraca wynik tonacji dla każdego wystąpienia zawartości. Ponieważ nie ustawiono jawnie pola ```"context"```, dane wyjściowe (mySentiment) są teraz elementami podrzędnymi ```"/document"```.
 
 ```json
     {
@@ -229,9 +229,9 @@ Odwołaj strukturę niestandardowego elementu wzbogacania wyszukiwania jednostek
 
 Ta definicja to [niestandardowa umiejętność](cognitive-search-custom-skill-web-api.md) wywołująca internetowy interfejs API w ramach procesu wzbogacania. W przypadku każdej organizacji identyfikowanej przez funkcję rozpoznawania jednostek ta umiejętność wywołuje internetowy interfejs API, aby znaleźć opis tej organizacji. Aranżacja, kiedy należy wywołać interfejs API sieci Web i jak przepływać otrzymane informacje, jest obsługiwana wewnętrznie przez aparat wzbogacania. Jednak Inicjalizacja niezbędna do wywołania tego niestandardowego interfejsu API musi być podana w formacie JSON (na przykład identyfikator URI, httpHeaders i oczekiwane dane wejściowe). Aby uzyskać wskazówki dotyczące tworzenia niestandardowego interfejsu API sieci Web dla potoku wzbogacania, zobacz [How to define a Custom Interface](cognitive-search-custom-skill-interface.md).
 
-Zwróć uwagę, że pole "context" jest ustawione ```"/document/organizations/*"``` na wartość przy użyciu gwiazdki, co oznacza, że krok wzbogacania jest wywoływany ```"/document/organizations"``` *dla każdej* organizacji. 
+Zwróć uwagę, że pole "context" jest ustawione na ```"/document/organizations/*"``` przy użyciu gwiazdki, co oznacza, że krok wzbogacania jest wywoływany *dla każdej* organizacji w obszarze ```"/document/organizations"```. 
 
-Dane wyjściowe — w tym przypadku opis firmy jest generowany dla każdej identyfikowanej organizacji. W przypadku odwoływania się do opisu w kroku podrzędnym (na przykład w przypadku wyodrębniania kluczowych fraz) należy użyć ścieżki ```"/document/organizations/*/description"``` do tego celu. 
+Dane wyjściowe — w tym przypadku opis firmy jest generowany dla każdej identyfikowanej organizacji. W przypadku odwoływania się do opisu w kroku podrzędnym (na przykład w przypadku wyodrębniania kluczowych fraz) użyj ścieżki ```"/document/organizations/*/description"```. 
 
 ## <a name="add-structure"></a>Dodaj strukturę
 

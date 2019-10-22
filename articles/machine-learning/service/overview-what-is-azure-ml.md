@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 08/05/2019
+ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a70b1c9d3ac888f0f77cf0f6e9ca37bc6cd4324
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c845966c86659c0ff983bf33c492a67dd99275f0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999932"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692964"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co to jest usługa Azure Machine Learning?
 
@@ -22,9 +22,9 @@ Azure Machine Learning to usługa w chmurze, która służy do uczenia, wdrażan
 
 ## <a name="what-is-machine-learning"></a>Co to jest uczenie maszynowe?
 
-Uczenie maszynowe to technika badania danych, która dzięki przetwarzaniu istniejących danych jest w stanie przewidzieć przyszłe zachowania, rezultaty i trendy. Przy użyciu techniki uczenia maszynowego komputery uczą się bez ich jawnego programowania.
+Uczenie maszynowe to technika przetwarzania danych, która umożliwia wykorzystanie przez komputery istniejących danych w celu przewidywania przyszłych zachowań, rezultatów i trendów. Przy użyciu techniki uczenia maszynowego komputery uczą się bez ich jawnego programowania.
 
-Dzięki prognozom uzyskanym za pomocą uczenia maszynowego aplikacje mogą być bardziej inteligentne. Na przykład podczas zakupów w Internecie uczenie maszynowe wspomaga proces rekomendowania innych produktów, którymi kupujący może być zainteresowany, na podstawie jego dotychczasowych zakupów. W przypadku płacenia kartą kredytową uczenie maszynowe porównuje transakcję z bazą danych transakcji i ułatwia wykrycie oszustwa. Gdy robot odkurzający sprząta pomieszczenie, uczenie maszynowe pomaga mu zdecydować, czy praca została wykonana.
+Dzięki prognozom lub przewidywaniom uzyskiwanym za pomocą uczenia maszynowego aplikacje i urządzenia są bardziej inteligentne. Na przykład podczas zakupów w Internecie uczenie maszynowe wspomaga proces rekomendowania innych produktów, którymi kupujący może być zainteresowany, na podstawie jego dotychczasowych zakupów. W przypadku płacenia kartą kredytową uczenie maszynowe porównuje transakcję z bazą danych transakcji i ułatwia wykrycie oszustwa. Gdy robot odkurzający sprząta pomieszczenie, uczenie maszynowe pomaga mu zdecydować, czy praca została wykonana.
 
 ## <a name="what-is-azure-machine-learning"></a>Co to jest usługa Azure Machine Learning?
 
@@ -38,9 +38,9 @@ Eksplorowanie i przygotowywanie danych, uczenie i testowanie modeli oraz wdraża
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
-## <a name="what-can-i-do-with-azure-machine-learning"></a>Co mogę zrobić z Azure Machine Learning?
+## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Jakie czynności można wykonać za pomocą usługi Azure Machine Learning?
 
-Użyj <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">zestawu SDK języka python Azure Machine Learning</a> z pakietami Python Open Source lub Użyj [interfejsu wizualizacji (wersja zapoznawcza)](ui-tutorial-automobile-price-train-score.md) , aby samodzielnie tworzyć i uczenia wysoce precyzyjne modele uczenia maszynowego i uczenia się w obszar roboczy usługi Azure Machine Learning.
+Korzystanie z <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">zestawu SDK języka python Azure Machine Learning</a> z pakietami Python Open Source lub korzystanie z [interfejsu wizualizacji (wersja zapoznawcza)](ui-tutorial-automobile-price-train-score.md) w celu tworzenia i uczenia wysoce precyzyjne modele uczenia maszynowego i uczenia się w usłudze Azure Machine Learning Obszary.
 
 Możesz wybrać spośród wielu składników uczenia maszynowego dostępnych w pakietach języka Python typu open source, takich jak <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-</a>Learning, <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>, <a href="https://pytorch.org" target="_blank">PyTorch</a>i <a href="https://mxnet.io" target="_blank">MXNet</a>.
 
@@ -54,11 +54,11 @@ Możesz również [zautomatyzować szkolenia i dostrajanie modeli](tutorial-auto
 
 ### <a name="ui-based-low-code-experience"></a>Interfejs użytkownika, środowisko o niskim kodzie
 
-W przypadku szkoleń bez kodu wypróbuj następujące rozwiązania:
+W przypadku szkoleń i wdrażania bez kodu wypróbuj następujące rozwiązania:
 
 + Tworzenie [zautomatyzowanych eksperymentów ml](tutorial-first-experiment-automated-ml.md) w łatwym w użyciu interfejsie.
 + [Eksperymentowanie przy użyciu przeciągania i upuszczania w interfejsie wizualizacji](ui-tutorial-automobile-price-train-score.md).
-  ![Interfejs wizualny dla Azure Machine Learning](media/overview-what-is-azure-ml/visual-interface.png)
+  Interfejs ![Visual dla Azure Machine Learning ](media/overview-what-is-azure-ml/visual-interface.png)
 
 
 
@@ -90,12 +90,17 @@ Oto krótkie porównanie.
 || Machine Learning Studio | Azure Machine Learning:<br/>Interfejs wizualny|
 |---| --- | --- |
 || Ogólnie dostępna (GA) | W wersji zapoznawczej|
+|Interfejs przeciągnij i upuść| Tak | Tak|
+|Doświadczenia| Skala (limit danych szkoleniowych 10 GB) | Skalowanie za pomocą elementu docelowego obliczeń|
 |Moduły dla interfejsu| Ilość | Początkowy zestaw popularnych modułów|
-|Szkoleniowe cele obliczeniowe| Własnościowy obiekt docelowy obliczeń, tylko obsługa procesora CPU| Obsługuje Azure Machine Learning obliczeń, procesora GPU i procesora CPU.<br/>(Inne obliczenia obsługiwane w zestawie SDK)|
-|Cele obliczeń wdrożenia| Własny format usługi sieci Web, niedostosowywalny | Opcje zabezpieczeń przedsiębiorstwa & usługi Azure Kubernetes. <br/>([Inne obliczenia](how-to-deploy-and-where.md) obsługiwane w zestawie SDK) |
-|Automatyczne szkolenie modelu i dostrajanie parametrów | Nie | Jeszcze nie w interfejsie wizualizacji. <br/> (Obsługiwane w zestawie SDK i Azure Portal stronie docelowej/Workspace). |
+|Szkoleniowe cele obliczeniowe| Własnościowy obiekt docelowy obliczeń, tylko procesor CPU|AML COMPUTE (procesor GPU/procesor CPU)<br/> Maszyny wirtualne notesu |
+|Inferencing cele obliczeń| Własny format usługi sieci Web, niedostosowywalny | Usługa Azure Kubernetes (inferencing w czasie rzeczywistym) <br/>AML COMPUTE (Batch inferencing) |
+|Potok ML| Brak obsługi | Tworzenie potoku <br/> Opublikowany potok <br/> Punkt końcowy potoku <br/> [Dowiedz się więcej o potoku ML](concept-ml-pipelines.md)|
+|Operacje na ML| Podstawowe Zarządzanie modelami i wdrażanie | Konfigurowalne wdrożenia, model i wersja potoku|
+|Model| Format własny. Nie można używać poza programem Studio | Standardowy format, różne zależy od zadania szkoleniowego|
+|Automatyczne szkolenie modelu i dostrajanie parametrów | Nie | Jeszcze nie w interfejsie wizualizacji. <br/> (Obsługiwane w zestawach SDK języka Python i na stronie docelowej obszaru roboczego). |
 
-Wypróbuj interfejs wizualny (wersja zapoznawcza [) z samouczkiem: Przewidywanie ceny samochodów za pomocą interfejsu](ui-tutorial-automobile-price-train-score.md)wizualnego.
+Wypróbuj interfejs wizualny (wersja zapoznawcza) z [samouczkiem: przewidywanie ceny za samochód dla urządzeń przenośnych za pomocą interfejsu wizualnego](ui-tutorial-automobile-price-train-score.md).
 
 > [!NOTE]
 > Nie można wdrożyć modeli utworzonych w programie Studio ani nimi zarządzać za pomocą Azure Machine Learning. Jednak modele utworzone i wdrożone w interfejsie wizualnym usługi mogą być zarządzane za pomocą obszaru roboczego Azure Machine Learning.

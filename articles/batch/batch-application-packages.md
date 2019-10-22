@@ -15,10 +15,10 @@ ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70095689"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Wdrażanie aplikacji w węzłach obliczeniowych za pomocą pakietów aplikacji wsadowych
@@ -88,7 +88,7 @@ Usługa Batch używa skojarzonego konta magazynu do przechowywania pakietów apl
 
 ![Wybierz blok konta magazynu w Azure Portal][10]
 
-Zalecamy utworzenie konta magazynu przeznaczonego do użycia z kontem usługi Batch i wybranie go w tym miejscu. Po utworzeniu konta magazynu można połączyć je z kontem usługi Batch przy użyciu okna **konto magazynu** .
+Zalecamy utworzenie konta magazynu *przeznaczonego* do użycia z kontem usługi Batch i wybranie go w tym miejscu. Po utworzeniu konta magazynu można połączyć je z kontem usługi Batch przy użyciu okna **konto magazynu** .
 
 > [!NOTE] 
 > Obecnie nie można używać pakietów aplikacji z kontem usługi Azure Storage skonfigurowanym przy użyciu [reguł zapory](../storage/common/storage-network-security.md).
@@ -109,9 +109,9 @@ Wybranie tej opcji menu spowoduje otwarcie okna **aplikacje** :
 
 W tym oknie jest wyświetlany identyfikator każdej aplikacji na Twoim koncie oraz następujące właściwości:
 
-* **Pakiety**: Liczba wersji skojarzonych z tą aplikacją.
-* **Wersja domyślna**: Wersja aplikacji zainstalowana, jeśli nie wskazano wersji podczas określania aplikacji dla puli. To ustawienie jest opcjonalne.
-* **Zezwalaj na aktualizacje**: Wartość określająca, czy są dozwolone aktualizacje pakietów, usunięcia i dodatki. Jeśli to ustawienie ma wartość **nie**, aktualizacje i usunięcia pakietu są wyłączone dla aplikacji. Można dodawać tylko nowe wersje pakietów aplikacji. Wartość domyślna to **Tak**.
+* **Pakiety**: liczba wersji skojarzonych z tą aplikacją.
+* **Wersja domyślna**: zainstalowana wersja aplikacji, jeśli nie wskazano wersji podczas określania aplikacji dla puli. To ustawienie jest opcjonalne.
+* **Zezwalaj na aktualizacje**: wartość określająca, czy są dozwolone aktualizacje pakietów, usunięcia i dodatki. Jeśli to ustawienie ma wartość **nie**, aktualizacje i usunięcia pakietu są wyłączone dla aplikacji. Można dodawać tylko nowe wersje pakietów aplikacji. Wartość domyślna to **Tak**.
 
 Jeśli chcesz zobaczyć strukturę plików pakietu aplikacji w węźle obliczeniowym, przejdź do swojego konta w usłudze Batch w portalu. Na koncie usługi Batch przejdź do **pul**. Wybierz pulę zawierającą węzły obliczeniowe, które Cię interesują.
 
@@ -130,7 +130,7 @@ W szczegółach aplikacji można skonfigurować następujące ustawienia dla apl
 
 * **Zezwalaj na aktualizacje**: Określ, czy pakiety aplikacji mogą być aktualizowane lub usuwane. Zobacz sekcję "Aktualizowanie lub usuwanie pakietu aplikacji" w dalszej części tego artykułu.
 * **Wersja domyślna**: Określ domyślny pakiet aplikacji do wdrożenia w węzłach obliczeniowych.
-* **Nazwa wyświetlana**: Określ przyjazną nazwę, która może być używana przez rozwiązanie usługi Batch, gdy wyświetla informacje o aplikacji, na przykład w interfejsie użytkownika usługi udostępnianej klientom przez usługę Batch.
+* **Nazwa wyświetlana**: Określ przyjazną nazwę, która może być używana przez rozwiązanie usługi Batch podczas wyświetlania informacji o aplikacji, na przykład w interfejsie użytkownika usługi udostępnianej klientom przez usługę Batch.
 
 ### <a name="add-a-new-application"></a>Dodaj nową aplikację
 Aby utworzyć nową aplikację, Dodaj pakiet aplikacji i określ nowy, unikatowy identyfikator aplikacji. Pierwszy pakiet aplikacji dodany wraz z nowym IDENTYFIKATORem aplikacji również tworzy nową aplikację.
@@ -171,14 +171,14 @@ Po wybraniu pliku kliknij przycisk **OK** , aby rozpocząć przekazywanie do us�
 > 
 
 ### <a name="add-a-new-application-package"></a>Dodaj nowy pakiet aplikacji
-Aby dodać wersję pakietu aplikacji dla istniejącej aplikacji, wybierz aplikację w oknach **aplikacje** , a następnie kliknij pozycję **pakiety** > **Dodaj**.
+Aby dodać wersję pakietu aplikacji dla istniejącej aplikacji, wybierz aplikację w oknach **aplikacje** , a następnie kliknij pozycję **pakiety**  > **Dodaj**.
 
 ![Dodaj blok pakietu aplikacji w Azure Portal][8]
 
 Jak widać, pola są zgodne z tymi, które są wyświetlane w oknie **Nowa aplikacja** , ale pole **Identyfikator aplikacji** jest wyłączone. Tak jak w przypadku nowej aplikacji, określ **wersję** nowego pakietu, przejdź do pliku **pakietu aplikacji** . zip, a następnie kliknij przycisk **OK** , aby przekazać pakiet.
 
 ### <a name="update-or-delete-an-application-package"></a>Aktualizowanie lub usuwanie pakietu aplikacji
-Aby zaktualizować lub usunąć istniejący pakiet aplikacji, Otwórz szczegóły aplikacji, kliknij pozycję **pakiety**, kliknij wielokropek w wierszu pakietu aplikacji, który chcesz zmodyfikować, a następnie wybierz akcję, którą chcesz wykonać.
+Aby zaktualizować lub usunąć istniejący pakiet aplikacji, Otwórz szczegóły aplikacji, kliknij pozycję **pakiety**, kliknij **wielokropek** w wierszu pakietu aplikacji, który chcesz zmodyfikować, a następnie wybierz akcję, którą chcesz wykonać.
 
 ![Aktualizowanie lub usuwanie pakietu w Azure Portal][7]
 
@@ -225,7 +225,7 @@ await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Jeśli z jakiegoś powodu nie powiedzie się wdrożenie pakietu aplikacji, usługa Batch oznaczy [][net_nodestate]węzeł jako bezużyteczny i nie zaplanowano wykonywania zadań w tym węźle. W takim przypadku należy **ponownie uruchomić** węzeł w celu ponownego zainicjowania wdrożenia pakietu. Ponowne uruchomienie węzła umożliwia również ponowne planowanie zadań w węźle.
+> Jeśli z jakiegoś powodu nie powiedzie się wdrożenie pakietu aplikacji, usługa Batch oznaczy węzeł jako [bezużyteczny][net_nodestate]i nie zaplanowano wykonywania zadań w tym węźle. W takim przypadku należy **ponownie uruchomić** węzeł w celu ponownego zainicjowania wdrożenia pakietu. Ponowne uruchomienie węzła umożliwia również ponowne planowanie zadań w węźle.
 > 
 > 
 
@@ -251,7 +251,7 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 ```
 
 ## <a name="execute-the-installed-applications"></a>Wykonaj zainstalowane aplikacje
-Pakiety określone dla puli lub zadania są pobierane i wyodrębniane do nazwanego katalogu w `AZ_BATCH_ROOT_DIR` węźle. Wsadowe tworzy również zmienną środowiskową, która zawiera ścieżkę do nazwanego katalogu. Wiersze poleceń zadania używają tej zmiennej środowiskowej podczas odwoływania się do aplikacji w węźle. 
+Pakiety określone dla puli lub zadania są pobierane i wyodrębniane do nazwanego katalogu w `AZ_BATCH_ROOT_DIR` węzła. Wsadowe tworzy również zmienną środowiskową, która zawiera ścieżkę do nazwanego katalogu. Wiersze poleceń zadania używają tej zmiennej środowiskowej podczas odwoływania się do aplikacji w węźle. 
 
 W węzłach systemu Windows zmienna ma następujący format:
 
@@ -267,7 +267,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`i `version` to wartości, które odpowiadają wersji aplikacji i pakietu określonej do wdrożenia. Na przykład jeśli określono, że w węzłach systemu Windows zostanie zainstalowana wersja 2,7 programu Application *Blend* , wiersze poleceń zadań użyją tej zmiennej środowiskowej, aby uzyskać dostęp do swoich plików:
+`APPLICATIONID` i `version` to wartości, które odpowiadają wersji aplikacji i pakietu określonej do wdrożenia. Na przykład jeśli określono, że w węzłach systemu Windows zostanie zainstalowana wersja 2,7 programu Application *Blend* , wiersze poleceń zadań użyją tej zmiennej środowiskowej, aby uzyskać dostęp do swoich plików:
 
 ```
 Windows:

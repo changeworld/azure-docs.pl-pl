@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 08/29/2019
-ms.openlocfilehash: ae7baf09df42a5824e5f59e7ebb372f4d9f6350c
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/21/2019
+ms.openlocfilehash: 108e31ebff5910c139bcaf83675cc8161c2a96f6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72032875"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693364"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na rdzeń wirtualny
 
@@ -46,8 +46,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Pamięć (GB)|7|14|21|28|35|42|
 |Obsługa magazynu kolumn|Tak|Tak|Tak|Tak|Tak|Tak|
 |Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
-|Maksymalny rozmiar danych (GB)|1024|1024|1024|1536|1536|1536|
-|Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|461|
+|Maksymalny rozmiar danych (GB)|1024|1024|1536|1536|1536|3072|
+|Maksymalny rozmiar dziennika (GB)|307|307|461|461|461|922|
 |Maksymalny rozmiar danych TempDB (GB)|32|64|96|128|160|192|
 |Typ usługi Storage|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|
 |Opóźnienie we/wy (przybliżone)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
@@ -69,8 +69,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Pamięć (GB)|49|56|63|70|112|168|
 |Obsługa magazynu kolumn|Tak|Tak|Tak|Tak|Tak|Tak|
 |Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
-|Maksymalny rozmiar danych (GB)|1536|3072|3072|3072|4096|4096|
-|Maksymalny rozmiar dziennika (GB)|461|922|922|922|1229|1229|
+|Maksymalny rozmiar danych (GB)|3072|3072|3072|3072|4096|4096|
+|Maksymalny rozmiar dziennika (GB)|922|922|922|922|1229|1229|
 |Maksymalny rozmiar danych TempDB (GB)|224|256|288|320|384|384|
 |Typ usługi Storage|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|
 |Opóźnienie we/wy (przybliżone)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)
@@ -93,7 +93,7 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Obsługa magazynu kolumn|Tak|Tak|Tak|Tak|Tak|Tak|Tak|
 |Magazyn OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|
 |Maksymalny rozmiar danych (GB)|1024|1024|1536|1536|1536|3072|3072|
-|Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|461|461|
+|Maksymalny rozmiar dziennika (GB)|307|307|461|461|461|922|922|
 |Maksymalny rozmiar danych TempDB (GB)|64|128|192|256|320|384|384|
 |Typ usługi Storage|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|Zdalny dysk SSD|
 |Opóźnienie we/wy (przybliżone)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
@@ -196,8 +196,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Obsługa magazynu kolumn|Tak|Tak|Tak|Tak|Tak|Tak|
 |Magazyn OLTP w pamięci (GB)|1|2|3|4|5|6|
 |Typ usługi Storage|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
-|Maksymalny rozmiar danych (GB)|650|650|650|650|650|650|
-|Maksymalny rozmiar dziennika (GB)|195|195|195|195|195|195|
+|Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
+|Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|307|
 |Maksymalny rozmiar danych TempDB (GB)|32|64|96|128|160|192|
 |Opóźnienie we/wy (przybliżone)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
 |Maksymalna liczba operacji we/wy danych (64 KB)|5000|10 000|15000|20000|25000|30000|
@@ -220,8 +220,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Obsługa magazynu kolumn|Tak|Tak|Tak|Tak|Tak|Tak|
 |Magazyn OLTP w pamięci (GB)|7|8|9,5|11|20|36|
 |Typ usługi Storage|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
-|Maksymalny rozmiar danych (GB)|650|650|650|650|1024|1024|
-|Maksymalny rozmiar dziennika (GB)|195|195|195|195|307|307|
+|Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
+|Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|307|
 |Maksymalny rozmiar danych TempDB (GB)|224|256|288|320|384|384|
 |Opóźnienie we/wy (przybliżone)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|
 |Maksymalna liczba operacji we/wy danych (64 KB)|35000|40000|45000|50000|80000|120000|
@@ -244,7 +244,7 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |Obsługa magazynu kolumn|Tak|Tak|Tak|Tak|Tak|Tak|Tak|
 |Magazyn OLTP w pamięci (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
 |Maksymalny rozmiar danych (GB)|1024|1024|1536|1536|1536|3072|3072|
-|Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|922|922|
+|Maksymalny rozmiar dziennika (GB)|307|307|461|461|461|922|922|
 |Maksymalny rozmiar danych TempDB (GB)|64|128|192|256|320|384|384|
 |Typ usługi Storage|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Opóźnienie we/wy (przybliżone)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|1-2 ms (zapis)<br>1-2 ms (odczyt)|

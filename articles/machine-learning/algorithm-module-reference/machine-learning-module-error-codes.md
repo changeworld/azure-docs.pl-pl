@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: dc383d302fb3e9920ee8ef2d7d908a5b406ea1da
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128661"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693072"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Wyjątki i kody błędów dla algorytmu & odwołanie do modułu
 
@@ -32,15 +32,15 @@ Jeśli tekst komunikatu o błędzie nie jest pomocny, Wyślij do nas informacje 
 ## <a name="error-0001"></a>Błąd 0,001  
  Wyjątek występuje, jeśli nie można odnaleźć co najmniej jednej określonej kolumny zestawu danych.  
   
- Ten błąd zostanie wyświetlony w przypadku wybrania kolumny dla modułu, ale wybrane kolumny nie istnieją w zestawie danych wejściowych. Ten błąd może wystąpić, jeśli wpisano ręcznie nazwę kolumny lub jeśli selektor kolumny dostarczył sugerowaną kolumnę, która nie istnieje w zestawie danych podczas uruchamiania eksperymentu.  
+ Ten błąd zostanie wyświetlony w przypadku wybrania kolumny dla modułu, ale wybrane kolumny nie istnieją w zestawie danych wejściowych. Ten błąd może wystąpić, jeśli wpisano ręcznie nazwę kolumny lub jeśli selektor kolumny dostarczył sugerowaną kolumnę, która nie istnieje w zestawie danych podczas uruchamiania potoku.  
   
-**Tłumaczenia** Ponownie odwiedź moduł zgłaszający ten wyjątek i sprawdź, czy nazwa kolumny lub nazwy są poprawne i czy wszystkie kolumny, do których istnieją odwołania, istnieją.  
+**Rozwiązanie:** Ponownie odwiedź moduł zgłaszający ten wyjątek i sprawdź, czy nazwa kolumny lub nazwy są poprawne i czy wszystkie kolumny, do których istnieją odwołania, istnieją.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie znaleziono co najmniej jednej określonej kolumny|  
-|Nie znaleziono kolumny o nazwie lub{0}indeksie ""|  
-|Kolumna o nazwie lub indeksie{0}"" nie istnieje w "{1}"|  
+|Nie znaleziono kolumny o nazwie lub indeksie "{0}"|  
+|Kolumna o nazwie lub indeksie "{0}" nie istnieje w "{1}"|  
  
 
 ## <a name="error-0002"></a>Błąd 0,002  
@@ -48,16 +48,16 @@ Jeśli tekst komunikatu o błędzie nie jest pomocny, Wyślij do nas informacje 
   
  Ten błąd występuje w Azure Machine Learning w przypadku określenia parametru jako danych wejściowych, a typ wartości różni się od oczekiwanego typu i nie można wykonać niejawnej konwersji.  
   
-**Tłumaczenia** Sprawdź wymagania modułu i określ, który typ wartości jest wymagany (String, Integer, Double itp.).  
+**Rozwiązanie:** Sprawdź wymagania modułu i określ, który typ wartości jest wymagany (String, Integer, Double itp.).  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można przeanalizować parametru|  
 |Nie można przeanalizować parametru "{0}"|  
-|Nie można przeanalizować (skonwertować{0}) "" na{1}""|  
-|Nie można skonwertować parametru{0}"" z "{1}" na "{2}"|  
-|Nie można skonwertować wartości{0}"" parametru "{1}" z "{2}" na "{3}"|  
-|Nie można przekonwertować wartości "{0}" w kolumnie "{1}" z "{2}" na{4}"{3}" przy użyciu formatu "".|  
+|Nie można przeanalizować (skonwertować) parametru "{0}" na "{1}"|  
+|Nie można skonwertować parametru "{0}" z "{1}" na "{2}"|  
+|Nie można skonwertować wartości parametru "{0}" "{1}" z "{2}" na "{3}"|  
+|Nie można przekonwertować wartości "{0}" w kolumnie "{1}" z "{2}" na "{3}" przy użyciu podanego formatu "{4}"|  
   
 
 ## <a name="error-0003"></a>0003 błędów  
@@ -76,7 +76,7 @@ Jeśli tekst komunikatu o błędzie nie jest pomocny, Wyślij do nas informacje 
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Co najmniej jeden z wejść ma wartość null lub jest pusty|  
-|Wejście "{0}" ma wartość null lub jest puste|  
+|Dane wejściowe "{0}" mają wartość null lub są puste|  
   
 
 ## <a name="error-0004"></a>Błąd 0,004  
@@ -84,13 +84,13 @@ Jeśli tekst komunikatu o błędzie nie jest pomocny, Wyślij do nas informacje 
   
  Ten błąd zostanie wyświetlony w Azure Machine Learning, jeśli parametr w komunikacie jest poniżej wartości granicznej wymaganej przez moduł do przetwarzania danych.  
   
-**Tłumaczenia** Ponownie odwiedzający moduł zgłasza wyjątek i zmodyfikuj parametr tak, aby był większy niż określona wartość.  
+**Rozwiązanie:** Ponownie odwiedzający moduł zgłasza wyjątek i zmodyfikuj parametr tak, aby był większy niż określona wartość.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Parametr musi być większy niż wartość graniczna.|  
-|Wartość parametru{0}"" powinna być większa niż {1}.|  
-|Parametr "{0}" ma wartość "{1}", która powinna być większa niż{2}|  
+|Wartość parametru "{0}" powinna być większa niż {1}.|  
+|Parametr "{0}" ma wartość "{1}", która powinna być większa niż {2}|  
   
 
 
@@ -99,13 +99,13 @@ Jeśli tekst komunikatu o błędzie nie jest pomocny, Wyślij do nas informacje 
   
  Ten błąd zostanie wyświetlony w Azure Machine Learning, jeśli parametr w komunikacie jest mniejszy lub równy wartości granicznej wymaganej przez moduł do przetwarzania danych.  
   
-**Tłumaczenia** Ponownie odwiedź moduł zgłaszający wyjątek i zmodyfikuj parametr tak, aby był większy lub równy podanej wartości.  
+**Rozwiązanie:** Ponownie odwiedź moduł zgłaszający wyjątek i zmodyfikuj parametr tak, aby był większy lub równy podanej wartości.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Wartość parametru powinna być większa lub równa wartości granicy.|  
-|Wartość parametru{0}"" powinna być większa lub {1}równa.|  
-|Parametr "{0}" ma wartość "{1}", która powinna być {2}większa lub równa.|  
+|Wartość parametru "{0}" powinna być większa lub równa {1}.|  
+|Parametr "{0}" ma wartość "{1}", która powinna być większa lub równa {2}.|  
   
 
 ## <a name="error-0006"></a>0006 błędów  
@@ -113,13 +113,13 @@ Jeśli tekst komunikatu o błędzie nie jest pomocny, Wyślij do nas informacje 
   
  Ten błąd zostanie wyświetlony w Azure Machine Learning, jeśli parametr w komunikacie jest większy lub równy wartości granicznej wymaganej przez moduł do przetwarzania danych.  
   
-**Tłumaczenia** Ponownie odwiedzający moduł zgłaszający wyjątek i zmodyfikuj parametr, aby był mniejszy niż określona wartość.  
+**Rozwiązanie:** Ponownie odwiedzający moduł zgłaszający wyjątek i zmodyfikuj parametr, aby był mniejszy niż określona wartość.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Niezgodność parametrów. Jeden z parametrów powinien być mniejszy niż inny.|  
-|Wartość parametru{0}"" powinna być mniejsza niż parametr "{1}".|  
-|Parametr "{0}" ma wartość "{1}", która powinna być mniejsza {2}niż.|  
+|Wartość parametru "{0}" powinna być mniejsza niż wartość parametru "{1}".|  
+|Parametr "{0}" ma wartość "{1}", która powinna być mniejsza niż {2}.|  
   
 
 ## <a name="error-0007"></a>0007 błędów  
@@ -140,8 +140,8 @@ Jeśli tekst komunikatu o błędzie nie jest pomocny, Wyślij do nas informacje 
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Niezgodność parametrów. Jeden z parametrów powinien być mniejszy lub równy innemu.|  
-|Wartość parametru{0}"" powinna być mniejsza lub równa wartości parametru "{1}".|  
-|Parametr "{0}" ma wartość "{1}", która powinna być {2}mniejsza lub równa.|  
+|Wartość parametru "{0}" powinna być mniejsza lub równa wartości parametru "{1}".|  
+|Parametr "{0}" ma wartość "{1}", która powinna być mniejsza lub równa {2}.|  
   
 
 ## <a name="error-0008"></a>0008 błędów  
@@ -151,13 +151,13 @@ Jeśli tekst komunikatu o błędzie nie jest pomocny, Wyślij do nas informacje 
   
  Na przykład ten błąd jest wyświetlany, jeśli spróbujesz użyć [Dodawanie wierszy](add-rows.md) do łączenia dwóch zestawów danych, które mają różną liczbę kolumn.  
   
-**Tłumaczenia** Ponownie odwiedzający moduł zgłaszający wyjątek i zmodyfikuj parametr tak, aby znajdował się w określonym zakresie.  
+**Rozwiązanie:** Ponownie odwiedzający moduł zgłaszający wyjątek i zmodyfikuj parametr tak, aby znajdował się w określonym zakresie.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Wartość parametru nie znajduje się w określonym zakresie.|  
-|Wartość parametru{0}"" jest poza zakresem.|  
-|Wartość parametru{0}"" musi należeć do zakresu [{1}, {2}].|  
+|Wartość parametru "{0}" nie należy do zakresu.|  
+|Wartość parametru "{0}" musi należeć do zakresu [{1}, {2}].|  
   
 
 ## <a name="error-0009"></a>0009 błędów  
@@ -196,12 +196,12 @@ Jeśli podano pełną ścieżkę do obiektu BLOB, należy sprawdzić, czy ście�
   
  Ten błąd zostanie wyświetlony w Azure Machine Learning, jeśli indeks kolumny w komunikacie ma inne nazwy kolumn w dwóch wejściowych zestawach danych.  
   
-**Tłumaczenia** Użyj [Edytuj metadanych](edit-metadata.md) lub zmodyfikuj oryginalny zestaw danych tak, aby miał tę samą nazwę kolumny dla określonego indeksu kolumn.  
+**Rozwiązanie:** Użyj [Edytuj metadanych](edit-metadata.md) lub zmodyfikuj oryginalny zestaw danych tak, aby miał tę samą nazwę kolumny dla określonego indeksu kolumn.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Kolumny z odpowiednim indeksem wejściowych zestawów danych mają różne nazwy.|  
-|Nazwy kolumn nie są takie same dla kolumn {0} (liczonych od zera) wejściowych zestawów danych ({1} i {2} odpowiednio).|  
+|Nazwy kolumn nie są takie same dla kolumn {0} (liczonych od zera) wejściowych zestawów danych (odpowiednio {1} i {2}).|  
   
 
 ## <a name="error-0011"></a>0011 błędów  
@@ -211,33 +211,33 @@ Jeśli podano pełną ścieżkę do obiektu BLOB, należy sprawdzić, czy ście�
   
  Możesz również uzyskać ten błąd, jeśli nie wybrano kolumny i co najmniej jedna kolumna jest wymagana do działania modułu.  
   
-**Tłumaczenia** Zmodyfikuj wybór kolumny w module, tak aby miał zastosowanie do kolumn w zestawie danych.  
+**Rozwiązanie:** Zmodyfikuj wybór kolumny w module, tak aby miał zastosowanie do kolumn w zestawie danych.  
   
  Jeśli moduł wymaga wybrania konkretnej kolumny, takiej jak kolumna etykiety, sprawdź, czy wybrano prawą kolumnę.  
   
- Jeśli wybrane są nieodpowiednie kolumny, usuń je i ponownie uruchom eksperyment.  
+ Jeśli wybrane są nieodpowiednie kolumny, usuń je i ponownie uruchom potok.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Określony zestaw kolumn nie ma zastosowania do żadnej z kolumn zestawu danych.|  
-|Określony zestaw kolumn "{0}" nie ma zastosowania do żadnej kolumny zestawu danych.|  
+|Określony zestaw kolumn "{0}" nie ma zastosowania do żadnej kolumny z zestawem danych.|  
   
 
 ## <a name="error-0012"></a>0012 błędów  
  Wyjątek występuje, jeśli nie można utworzyć wystąpienia klasy przy użyciu przekazanego zestawu argumentów.  
   
-**Tłumaczenia** Ten błąd nie jest funkcjonalny przez użytkownika i zostanie uznany za przestarzały w przyszłych wydaniach.  
+**Rozwiązanie:** Ten błąd nie jest funkcjonalny przez użytkownika i zostanie uznany za przestarzały w przyszłych wydaniach.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nieuczenie modelu, najpierw Przeszkol model.|  
-|Nauczenie modelu{0}(), używanie przeszkolonego modelu.|  
+|Nieuczenie modelu ({0}), używanie przeszkolonego modelu.|  
   
 
 ## <a name="error-0013"></a>0013 błędów  
  Wyjątek występuje, jeśli osoba docelowa przeniesiona do modułu jest nieprawidłowym typem.  
   
- Ten błąd występuje zawsze, gdy szkolony model jest niezgodny z połączonym modułem oceniania. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the experiment is run.  -->
+ Ten błąd występuje zawsze, gdy szkolony model jest niezgodny z połączonym modułem oceniania. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the pipeline is run.  -->
   
 **Tłumaczenia**
 
@@ -264,7 +264,7 @@ Jeśli model został przeszkolony przy użyciu dowolnego z wyspecjalizowanych mo
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Przeszedł nieprawidłowy typ.|  
-|Dowiedz się{0}"" ma nieprawidłowy typ.|  
+|Dowiedz się "{0}" ma nieprawidłowy typ.|  
 
 
 ## <a name="error-0014"></a>0014 błędów  
@@ -287,7 +287,7 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Liczba unikatowych wartości kolumny jest większa niż dozwolona.|  
-|Liczba unikatowych wartości w kolumnie:{0}"" przekracza liczbę krotek. {1}|  
+|Liczba unikatowych wartości w kolumnie: "{0}" przekracza liczbę krotek {1}.|  
   
 
 ## <a name="error-0015"></a>0015 błędów  
@@ -295,12 +295,12 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
   
  Ten błąd zostanie wyświetlony w przypadku wprowadzenia nieprawidłowej nazwy konta SQL, hasła, serwera bazy danych lub nazwy bazy danych lub jeśli nie można nawiązać połączenia z bazą danych z powodu problemów z bazą danych lub serwerem.  
   
-**Tłumaczenia** Sprawdź, czy nazwa konta, hasło, serwer bazy danych i baza danych zostały wprowadzone poprawnie oraz czy określone konto ma prawidłowy poziom uprawnień. Sprawdź, czy baza danych jest obecnie dostępna.  
+**Rozwiązanie:** Sprawdź, czy nazwa konta, hasło, serwer bazy danych i baza danych zostały wprowadzone poprawnie oraz czy określone konto ma prawidłowy poziom uprawnień. Sprawdź, czy baza danych jest obecnie dostępna.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Wystąpił błąd podczas tworzenia połączenia z bazą danych.|  
-|Błąd podczas nawiązywania połączenia {0}z bazą danych:.|  
+|Wystąpił błąd podczas tworzenia połączenia z bazą danych: {0}.|  
   
 
 
@@ -309,13 +309,13 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
   
  Ten błąd zostanie wyświetlony w Azure Machine Learning, jeśli typy kolumn przesyłanych w co najmniej dwóch zestawach danych nie są zgodne ze sobą.  
   
-**Tłumaczenia** Użyj [edycji metadanych](edit-metadata.md) lub zmodyfikuj oryginalny wejściowy zestaw danych<!--, or use [Convert to Dataset](convert-to-dataset.md)--> Aby upewnić się, że typy kolumn są zgodne.  
+**Rozwiązanie:** Użyj [edycji metadanych](edit-metadata.md) lub zmodyfikuj oryginalny wejściowy zestaw danych<!--, or use [Convert to Dataset](convert-to-dataset.md)--> Aby upewnić się, że typy kolumn są zgodne.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Kolumny z odpowiednim indeksem w wejściowych zestawach danych mają niezgodne typy.|  
-|Kolumny {0} i{1} są niezgodne.|  
-|Typy elementów kolumn są niezgodne dla kolumn {0} (liczonych od zera) wejściowych zestawów danych ({1} i {2} odpowiednio).|  
+|Kolumny {0} i {1} są niezgodne.|  
+|Typy elementów kolumn są niezgodne z kolumnami {0} (liczonymi od zera) wejściowych zestawów danych (odpowiednio {1} i {2}).|  
   
 
 ## <a name="error-0017"></a>0017 błędów  
@@ -339,15 +339,15 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można przetworzyć kolumny bieżącego typu. Ten typ nie jest obsługiwany przez moduł.|  
-|Nie można przetworzyć {0}kolumny typu. Ten typ nie jest obsługiwany przez moduł.|  
-|Nie można przetworzyć kolumny{1}" {0}" typu. Ten typ nie jest obsługiwany przez moduł.|  
-|Nie można przetworzyć kolumny{1}" {0}" typu. Ten typ nie jest obsługiwany przez moduł. Nazwa parametru:{2}|  
+|Nie można przetworzyć kolumny typu {0}. Ten typ nie jest obsługiwany przez moduł.|  
+|Nie można przetworzyć kolumny "{1}" typu {0}. Ten typ nie jest obsługiwany przez moduł.|  
+|Nie można przetworzyć kolumny "{1}" typu {0}. Ten typ nie jest obsługiwany przez moduł. Nazwa parametru: {2}|  
   
 
 ## <a name="error-0018"></a>0018 błędów  
  Wyjątek występuje, jeśli wejściowy zestaw danych jest nieprawidłowy.  
   
-**Tłumaczenia** Ten błąd w Azure Machine Learning może występować w wielu kontekstach, więc nie istnieje pojedyncze rozwiązanie. Ogólnie rzecz biorąc, błąd wskazuje, że dane podane jako dane wejściowe modułu mają nieprawidłową liczbę kolumn lub że typ danych nie jest zgodny z wymaganiami modułu. Przykład:  
+**Rozwiązanie:** Ten błąd w Azure Machine Learning może występować w wielu kontekstach, więc nie istnieje pojedyncze rozwiązanie. Ogólnie rzecz biorąc, błąd wskazuje, że dane podane jako dane wejściowe modułu mają nieprawidłową liczbę kolumn lub że typ danych nie jest zgodny z wymaganiami modułu. Na przykład:  
   
 -   Moduł wymaga kolumny etykieta, ale żadna kolumna nie jest oznaczona jako etykieta lub nie wybrano jeszcze kolumny etykieta.  
   
@@ -367,8 +367,8 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Element dataset jest nieprawidłowy.|  
-|{0}zawiera nieprawidłowe dane.|  
-|{0}i {1} powinny być spójne z kolumną.|  
+|{0} zawiera nieprawidłowe dane.|  
+|{0} i {1} powinny być spójne z kolumną.|  
   
 
 ## <a name="error-0019"></a>0019 błędów  
@@ -376,7 +376,7 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
   
  Ten błąd zostanie wyświetlony w Azure Machine Learning, jeśli określone wartości kolumn są nieuporządkowane.  
   
-**Tłumaczenia** Posortuj wartości kolumn, ręcznie modyfikując wejściowy zestaw danych i ponownie uruchom moduł.  
+**Rozwiązanie:** Posortuj wartości kolumn, ręcznie modyfikując wejściowy zestaw danych i ponownie uruchom moduł.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -390,13 +390,13 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
   
  Ten błąd zostanie wyświetlony w Azure Machine Learning, jeśli nie wybrano wystarczającej liczby kolumn dla modułu.  
   
-**Tłumaczenia** Ponownie odwiedź moduł i upewnij się, że wybrano poprawną liczbę kolumn selektora kolumn.  
+**Rozwiązanie:** Ponownie odwiedź moduł i upewnij się, że wybrano poprawną liczbę kolumn selektora kolumn.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Liczba kolumn w wejściowym zestawie danych jest mniejsza niż dozwolona wartość minimalna.|  
-|Liczba kolumn w wejściowym zestawie danych jest mniejsza niż dozwolona minimalna {0} liczba kolumn.|  
-|Liczba kolumn w wejściowym zestawie danych{0}"" jest mniejsza niż dozwolona minimalna {1} liczba kolumn.|
+|Liczba kolumn w wejściowym zestawie danych jest mniejsza niż dozwolona minimalna liczba kolumn {0}.|  
+|Liczba kolumn w wejściowym zestawie danych "{0}" jest mniejsza niż dozwolona minimalna liczba kolumn: {1}.|
 
 ## <a name="error-0021"></a>0021 błędów  
  Wyjątek występuje, jeśli liczba wierszy w niektórych zestawach danych przeniesiona do modułu jest za mała.  
@@ -425,7 +425,7 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
   
 -   Podano rozdzieloną przecinkami listę wartości dla danych wejściowych, ale liczba wartości nie jest zgodna lub wiele danych wejściowych nie jest obsługiwanych.  
   
-**Tłumaczenia** Ponownie odwiedź moduł i zaznacz kolumnę, aby upewnić się, że wybrano poprawną liczbę kolumn. Sprawdź dane wyjściowe modułów nadrzędnych i wymagania operacji podrzędnych.  
+**Rozwiązanie:** Ponownie odwiedź moduł i zaznacz kolumnę, aby upewnić się, że wybrano poprawną liczbę kolumn. Sprawdź dane wyjściowe modułów nadrzędnych i wymagania operacji podrzędnych.  
   
  Jeśli użyto jednej z opcji wyboru kolumn, które mogą wybrać wiele kolumn (indeksów kolumn, wszystkie funkcje, wszystkie liczbowe itp.), sprawdź dokładną liczbę kolumn zwracanych przez zaznaczenie.  
   
@@ -439,8 +439,8 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 |------------------------|  
 |Liczba wybranych kolumn w wejściowym zestawie danych nie jest równa oczekiwanej liczbie.|  
 |Liczba wybranych kolumn w wejściowym zestawie danych nie jest równa {0}.|  
-|Wzorzec wyboru kolumny "{0}" zawiera liczbę wybranych kolumn w wejściowym zestawie danych, które {1}nie są równe.|  
-|Wzorzec wyboru kolumny "{0}" oczekuje {1} , że kolumny wybrane w wejściowym zestawie danych zostaną podane, ale {2} kolumny są podane/.|  
+|Wzorzec wyboru kolumny "{0}" zawiera liczbę wybranych kolumn w wejściowym zestawie danych, które nie są równe {1}.|  
+|Wzorzec wyboru kolumny "{0}" oczekuje na dostarczenie {1}ch kolumn wybranych w wejściowym zestawie danych, ale podano kolumny {2}/.|  
 
 
 
@@ -449,13 +449,13 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
   
  Ten błąd w Azure Machine Learning występuje, jeśli kolumna docelowa (wybrana w parametrach modułu) nie jest prawidłowym typem danych, zawiera wszystkie brakujące wartości lub nie została kategorii zgodnie z oczekiwaniami.  
   
-**Tłumaczenia** Ponownie odwiedź dane wejściowe modułu, aby sprawdzić zawartość kolumny etykieta/cel. Upewnij się, że nie ma wszystkich wartości, które nie istnieją. Jeśli moduł oczekuje kolumny docelowej do kategorii, upewnij się, że w kolumnie Target znajduje się więcej niż jedna wartość DISTINCT.  
+**Rozwiązanie:** Ponownie odwiedź dane wejściowe modułu, aby sprawdzić zawartość kolumny etykieta/cel. Upewnij się, że nie ma wszystkich wartości, które nie istnieją. Jeśli moduł oczekuje kolumny docelowej do kategorii, upewnij się, że w kolumnie Target znajduje się więcej niż jedna wartość DISTINCT.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Wejściowy zestaw danych zawiera nieobsługiwaną kolumnę docelową.|  
-|Wejściowy zestaw danych zawiera nieobsługiwaną{0}kolumnę docelową "".|  
-|Wejściowy zestaw danych zawiera nieobsługiwaną{0}kolumnę docelową "" {1}dla dodanego typu.|  
+|Wejściowy zestaw danych zawiera nieobsługiwaną kolumnę docelową "{0}".|  
+|Wejściowy zestaw danych zawiera nieobsługiwaną kolumnę docelową "{0}" dla dowiedzenia typu {1}.|  
  
 
 ## <a name="error-0024"></a>0024 błędów  
@@ -483,21 +483,21 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
   
  Ten błąd w Azure Machine Learning występuje, jeśli dane wejściowe dla modelu szacowania nie zawierają prawidłowych kolumn oceny. Na przykład użytkownik próbuje dokonać oceny zestawu danych przed jego oceną przy użyciu prawidłowego, przeszkolonego modelu lub kolumna punktacji została jawnie porzucona. Ten wyjątek występuje również wtedy, gdy kolumny oceny w dwóch zestawach danych są niezgodne. Na przykład może być podjęta próba porównania dokładności liniowej regresor z tym elementem klasyfikatora binarnego.  
   
-**Tłumaczenia** Odwiedzaj dane wejściowe do modelu oceny i sprawdź, czy zawiera on co najmniej jedną kolumnę oceny. Jeśli nie, zestaw danych nie został oceniony lub kolumny wynikowe zostały porzucone w module nadrzędnym.  
+**Rozwiązanie:** Odwiedzaj dane wejściowe do modelu oceny i sprawdź, czy zawiera on co najmniej jedną kolumnę oceny. Jeśli nie, zestaw danych nie został oceniony lub kolumny wynikowe zostały porzucone w module nadrzędnym.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Brak kolumny punktacji w elemencie dataset.|  
-|Brak kolumny oceny w "{0}".|  
+|Brak kolumny Score w "{0}".|  
 |Brak kolumny Score w "{0}", która jest generowana przez "{1}". Poznanie zestawu danych przy użyciu poprawnego typu.|  
   
 
 ## <a name="error-0026"></a>0026 błędów  
  Wyjątek występuje, jeśli kolumny o tej samej nazwie są niedozwolone.  
   
- Ten błąd w Azure Machine Learning występuje, jeśli wiele kolumn ma taką samą nazwę. Jednym ze sposobów, gdy ten błąd może się pojawić, jest to, że zestaw danych nie ma wiersza nagłówka, a nazwy kolumn są przypisywane automatycznie: Col0, Kol1 itd.  
+ Ten błąd w Azure Machine Learning występuje, jeśli wiele kolumn ma taką samą nazwę. Jednym ze sposobów na wyświetlenie tego błędu jest to, że zestaw danych nie ma wiersza nagłówka, a nazwy kolumn są automatycznie przypisywane: Col0, Kol1 itd.  
   
-**Tłumaczenia** Jeśli kolumny mają tę samą nazwę, Wstaw moduł [Edytuj metadane](edit-metadata.md) między wejściowym zestawem danych i modułem. Użyj selektora kolumn w obszarze [Edytuj metadane](edit-metadata.md) , aby wybrać kolumny, które mają zostać zmienione, wpisując nowe nazwy do **nowych nazw kolumn** pole tekstowe.  
+**Rozwiązanie:** Jeśli kolumny mają tę samą nazwę, Wstaw moduł [Edytuj metadane](edit-metadata.md) między wejściowym zestawem danych i modułem. Użyj selektora kolumn w obszarze [Edytuj metadane](edit-metadata.md) , aby wybrać kolumny, które mają zostać zmienione, wpisując nowe nazwy do **nowych nazw kolumn** pole tekstowe.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -510,7 +510,7 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
   
  Jest to typowy błąd w Azure Machine Learning i może być spowodowany przez wiele warunków.  
   
-**Tłumaczenia** Nie ma konkretnego rozwiązania. Można jednak sprawdzić, czy są spełnione następujące warunki:  
+**Rozwiązanie:** Nie ma konkretnego rozwiązania. Można jednak sprawdzić, czy są spełnione następujące warunki:  
   
 -   W przypadku zmieniania nazw kolumn upewnij się, że każda lista (kolumny wejściowe i lista nowych nazw) ma taką samą liczbę elementów.  
   
@@ -529,7 +529,7 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
   
  Ten błąd w Azure Machine Learning występuje, gdy nazwy kolumn są zduplikowane; to nie jest unikatowa.  
   
-**Tłumaczenia** Jeśli dowolna kolumna ma taką samą nazwę, Dodaj wystąpienie [edycji metadanych](edit-metadata.md) między wejściowym zestawem danych i modułem wywołującym błąd. Użyj selektora kolumn w obszarze [Edytuj metadane](edit-metadata.md) , aby wybrać kolumny, które chcesz zmienić, a następnie wpisz nazwy nowych kolumn w **nowej kolumnie** pole tekstowe. W przypadku zmiany nazwy wielu kolumn upewnij się, że wartości wpisane w **nowych nazwach kolumn** są unikatowe.  
+**Rozwiązanie:** Jeśli dowolna kolumna ma taką samą nazwę, Dodaj wystąpienie [edycji metadanych](edit-metadata.md) między wejściowym zestawem danych i modułem wywołującym błąd. Użyj selektora kolumn w obszarze [Edytuj metadane](edit-metadata.md) , aby wybrać kolumny, które chcesz zmienić, a następnie wpisz nazwy nowych kolumn w **nowej kolumnie** pole tekstowe. W przypadku zmiany nazwy wielu kolumn upewnij się, że wartości wpisane w **nowych nazwach kolumn** są unikatowe.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -553,7 +553,7 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
   
 -   Nie można rozpoznać adresu URL przez źródło zdalne.  
   
-**Tłumaczenia** Ponownie odwiedź moduł i sprawdź format identyfikatora URI. Jeśli źródło danych jest adresem URL sieci Web za pośrednictwem protokołu HTTP, sprawdź, czy zamierzone źródło nie jest plikiem lub identyfikatorem URI sprzężenia zwrotnego (localhost).  
+**Rozwiązanie:** Ponownie odwiedź moduł i sprawdź format identyfikatora URI. Jeśli źródło danych jest adresem URL sieci Web za pośrednictwem protokołu HTTP, sprawdź, czy zamierzone źródło nie jest plikiem lub identyfikatorem URI sprzężenia zwrotnego (localhost).  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -565,12 +565,12 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
   
  Ten wyjątek w Azure Machine Learning występuje, gdy nie można pobrać pliku. Ten wyjątek zostanie wyświetlony, jeśli próba odczytania ze źródła HTTP zakończyła się niepowodzeniem po trzech (3) ponownych próbach.  
   
-**Tłumaczenia** Sprawdź, czy identyfikator URI źródła HTTP jest poprawny i czy lokacja jest obecnie dostępna za pośrednictwem Internetu.  
+**Rozwiązanie:** Sprawdź, czy identyfikator URI źródła HTTP jest poprawny i czy lokacja jest obecnie dostępna za pośrednictwem Internetu.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można pobrać pliku.|  
-|Wystąpił błąd podczas pobierania pliku {0}:.|  
+|Wystąpił błąd podczas pobierania pliku: {0}.|  
   
 
 ## <a name="error-0031"></a>0031 błędów  
@@ -578,19 +578,19 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
   
  Ten błąd w Azure Machine Learning występuje, jeśli wybrana liczba kolumn jest mniejsza niż wymagana.  Ten błąd zostanie wyświetlony, jeśli minimalna wymagana liczba kolumn nie została wybrana.  
   
-**Tłumaczenia** Dodaj dodatkowe kolumny do zaznaczenia kolumny przy użyciu selektora **kolumn**.  
+**Rozwiązanie:** Dodaj dodatkowe kolumny do zaznaczenia kolumny przy użyciu **selektora kolumn**.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Liczba kolumn w zestawie kolumn jest mniejsza niż wymagana.|  
-|{0}należy określić kolumny. Rzeczywista liczba określonych kolumn to {1}.|  
+|należy określić {0} kolumn. Rzeczywista liczba określonych kolumn jest {1}.|  
 
 ## <a name="error-0032"></a>Błąd 0032  
  Wyjątek występuje, jeśli argument nie jest liczbą.  
   
  Ten błąd zostanie wyświetlony w Azure Machine Learning, jeśli argument jest typu Double lub NaN.  
   
-**Tłumaczenia** Zmodyfikuj określony argument, aby użyć prawidłowej wartości.  
+**Rozwiązanie:** Zmodyfikuj określony argument, aby użyć prawidłowej wartości.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -601,14 +601,14 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
 ## <a name="error-0033"></a>Błąd 0033  
  Wyjątek występuje, jeśli argument jest nieskończony.  
   
- Ten błąd w Azure Machine Learning występuje, jeśli argument jest nieskończony. Ten błąd zostanie wyświetlony, jeśli argument ma wartość `double.NegativeInfinity` lub. `double.PositiveInfinity`  
+ Ten błąd w Azure Machine Learning występuje, jeśli argument jest nieskończony. Ten błąd zostanie wyświetlony, jeśli argument ma wartość `double.NegativeInfinity` lub `double.PositiveInfinity`.  
   
-**Tłumaczenia** Zmodyfikuj określony argument jako prawidłową wartość.  
+**Rozwiązanie:** Zmodyfikuj określony argument jako prawidłową wartość.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Argument musi być skończona.|  
-|"{0}" nie jest skończone.|  
+|"{0}" nie jest skończona.|  
   
 
 ## <a name="error-0034"></a>Błąd 0034  
@@ -616,12 +616,12 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
   
  Ten błąd w Azure Machine Learning występuje, jeśli para elementu użytkownika ma więcej niż jedną wartość rankingu.  
   
-**Tłumaczenia** Upewnij się, że para elementów użytkownika posiada tylko jedną wartość klasyfikacji.  
+**Rozwiązanie:** Upewnij się, że para elementów użytkownika posiada tylko jedną wartość klasyfikacji.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Istnieje więcej niż jedna Klasyfikacja dla wartości w zestawie danych.|  
-|Więcej niż jedna Klasyfikacja dla użytkownika {0} i elementu {1} w tabeli danych prognozowania klasyfikacji.|  
+|Więcej niż jedna Klasyfikacja dla {0} użytkownika i {1} elementów w tabeli danych prognozowania klasyfikacji.|  
   
 
 ## <a name="error-0035"></a>Błąd 0035  
@@ -647,7 +647,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie podano żadnych funkcji dla wymaganego użytkownika lub elementu.|  
-|{0} Funkcje wymagane, ale nie podano.|  
+|Funkcja dla {0} wymagana, ale nie została podana.|  
   
 
 ## <a name="error-0036"></a>Błąd 0036  
@@ -655,12 +655,12 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Ten błąd w Azure Machine Learning występuje, jeśli wektor funkcji jest zdefiniowany więcej niż raz.  
   
-**Tłumaczenia** Upewnij się, że wektor funkcji nie jest zdefiniowany więcej niż raz.  
+**Rozwiązanie:** Upewnij się, że wektor funkcji nie jest zdefiniowany więcej niż raz.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Zduplikowana definicja funkcji dla użytkownika lub elementu.|  
-|Zduplikowana definicja funkcji {0}dla elementu.|  
+|Zduplikowana definicja funkcji dla {0}.|  
   
 
 ## <a name="error-0037"></a>Błąd 0037  
@@ -668,7 +668,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Ten błąd w Azure Machine Learning występuje, gdy została wybrana więcej niż jedna kolumna jako nowa kolumna etykiety. Większość nadzorowanych algorytmów uczenia wymaga, aby jedna kolumna była oznaczona jako element docelowy lub etykieta.  
   
-**Tłumaczenia** Pamiętaj o zaznaczeniu pojedynczej kolumny jako nowej kolumny etykieta.  
+**Rozwiązanie:** Pamiętaj o zaznaczeniu pojedynczej kolumny jako nowej kolumny etykieta.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -680,13 +680,13 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Ten błąd w Azure Machine Learning występuje, jeśli liczba oczekiwanych elementów powinna być dokładną wartością, ale nie jest.  Ten błąd zostanie wyświetlony, jeśli liczba elementów nie jest równa prawidłowej oczekiwanej wartości.  
   
-**Tłumaczenia** Zmodyfikuj dane wejściowe, aby zawierały poprawną liczbę elementów.  
+**Rozwiązanie:** Zmodyfikuj dane wejściowe, aby zawierały poprawną liczbę elementów.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nieprawidłowa liczba elementów.|  
-|Liczba elementów w elemencie "{0}" jest nieprawidłowa.|  
-|Liczba elementów w "{0}" nie jest równa prawidłowej {1} liczbie elementów.|  
+|Liczba elementów w "{0}" jest nieprawidłowa.|  
+|Liczba elementów w "{0}" nie jest równa prawidłowej liczbie {1} elementów.|  
   
 
 ## <a name="error-0039"></a>Błąd 0039  
@@ -694,7 +694,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Ten błąd w Azure Machine Learning występuje, gdy nie można ukończyć operacji wewnętrznej.  
   
-**Tłumaczenia** Ten błąd jest spowodowany przez wiele warunków i nie ma konkretnego rozwiązania.  
+**Rozwiązanie:** Ten błąd jest spowodowany przez wiele warunków i nie ma konkretnego rozwiązania.  
  Poniższa tabela zawiera komunikaty ogólne dla tego błędu, po którym następuje określony opis warunku. 
  
  Jeśli żadne szczegóły nie są dostępne, [Prześlij opinię](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) i podaj informacje o modułach, które wygenerowały błąd i powiązane warunki.
@@ -702,7 +702,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Operacja nie powiodła się.|  
-|Wystąpił błąd podczas kończenia {0}operacji:.|  
+|Wystąpił błąd podczas kończenia operacji: {0}.|  
   
 
 ## <a name="error-0040"></a>Błąd 0040  
@@ -710,12 +710,12 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Ten błąd w Azure Machine Learning jest tworzony podczas wywoływania przestarzałego modułu.  
   
-**Tłumaczenia** Zastąp przestarzały moduł z obsługiwaną opcją. Zapoznaj się z dziennikiem danych wyjściowych modułu, aby uzyskać informacje na temat tego, którego modułu użyć.  
+**Rozwiązanie:** Zastąp przestarzały moduł z obsługiwaną opcją. Zapoznaj się z dziennikiem danych wyjściowych modułu, aby uzyskać informacje na temat tego, którego modułu użyć.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Uzyskiwanie dostępu do przestarzałego modułu.|  
-|Moduł "{0}" jest przestarzały. Użyj zamiast tego{1}modułu "".|  
+|Moduł "{0}" jest przestarzały. Użyj zamiast tego modułu "{1}".|  
  
 
 ## <a name="error-0041"></a>Błąd 0041  
@@ -723,7 +723,7 @@ For general information about how the Matchbox recommendation algorithm works, a
   
  Ten błąd w Azure Machine Learning jest tworzony podczas wywoływania przestarzałego modułu.  
   
-**Tłumaczenia** Zastąp przestarzały moduł zestawem obsługiwanych. Te informacje powinny być widoczne w dzienniku danych wyjściowych modułu.  
+**Rozwiązanie:** Zastąp przestarzały moduł zestawem obsługiwanych. Te informacje powinny być widoczne w dzienniku danych wyjściowych modułu.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -764,9 +764,9 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Konwersja nie jest dozwolona.|  
-|Nie można skonwertować kolumny typu {0} do kolumny {1}typu.|  
+|Nie można skonwertować kolumny typu {0} do kolumny typu {1}.|  
 |Nie można skonwertować kolumny "{2}" typu {0} do kolumny typu {1}.|  
-|{2}Nie można skonwertować kolumny "" typu {0} do kolumny{3}"" typu {1}.|  
+|Nie można skonwertować kolumny "{2}" typu {0} na kolumnę "{3}" typu {1}.|  
   
 
 ## <a name="error-0043"></a>Błąd 0043  
@@ -774,12 +774,12 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning jest nieużywany i będzie przestarzały.  
   
-**Tłumaczenia** Brak.  
+**Rozwiązanie:** Dawaj.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie znaleziono żadnego dostępnego jawnej metody.|  
-|Nie można porównać wartości dla \\kolumny{0}\\"" typu {1}. Nie znaleziono żadnego dostępnego jawnej metody.|  
+|Nie można porównać wartości dla kolumny \\ "{0} \\" typu {1}. Nie znaleziono żadnego dostępnego jawnej metody.|  
 
 
 ## <a name="error-0044"></a>Błąd 0044  
@@ -787,13 +787,13 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning występuje, gdy nie można wywnioskować typu kolumny lub kolumn w zestawie danych. Jest to zwykle wykonywane podczas łączenia dwóch lub większej liczby zestawów danych z różnymi typami elementów. Jeśli Azure Machine Learning nie może określić typu wspólnego, który może reprezentować wszystkie wartości w kolumnie lub kolumnach bez utraty informacji, wygeneruje ten błąd.  
   
-**Tłumaczenia** Upewnij się, że wszystkie wartości w danej kolumnie w łączonych zestawach danych są takie same jak typ (numeric, Boolean, kategorii, String, Date itp.) lub można go przekształcić na ten sam typ.  
+**Rozwiązanie:** Upewnij się, że wszystkie wartości w danej kolumnie w łączonych zestawach danych są takie same jak typ (numeric, Boolean, kategorii, String, Date itp.) lub można go przekształcić na ten sam typ.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można utworzyć elementu pochodny dla kolumny.|  
-|Nie można utworzyć pochodnej typu elementu dla{0}kolumny "" — wszystkie elementy są odwołaniami o wartości null.|  
-|Nie można utworzyć pochodnej typu elementu dla{0}kolumny "" zestawu{1}danych "" — wszystkie elementy są odwołaniami o wartości null.|  
+|Nie można utworzyć pochodnej typu elementu dla kolumny "{0}" — wszystkie elementy są odwołaniami o wartości null.|  
+|Nie można utworzyć pochodnej typu elementu dla kolumny "{0}" zestawu danych "{1}" — wszystkie elementy są odwołaniami o wartości null.|  
   
 
 ## <a name="error-0045"></a>Błąd 0045  
@@ -801,12 +801,12 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning jest tworzony, gdy typy elementów dwóch połączonych zestawów danych są różne.  
   
-**Tłumaczenia** Upewnij się, że wszystkie wartości w danej kolumnie w łączonych zestawach danych są tego samego typu (liczbowe, Boolean, kategorii, String, Date itp.).  
+**Rozwiązanie:** Upewnij się, że wszystkie wartości w danej kolumnie w łączonych zestawach danych są tego samego typu (liczbowe, Boolean, kategorii, String, Date itp.).  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można utworzyć kolumny z mieszanymi typami elementów.|  
-|Nie można{0}utworzyć kolumny o identyfikatorze "" typów elementów mieszanych: \ n\tType danych [ {0}{1},] {2} {4}to \n\tType danych [{3}, {0}].|  
+|Nie można utworzyć kolumny o IDENTYFIKATORze "{0}" typów elementów mieszanych: \ n\tType danych [{1}, {0}] jest {2} \n\tType danych [{3}, {0}] jest {4}.|  
   
 
 ## <a name="error-0046"></a>Błąd 0046  
@@ -814,12 +814,12 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning występuje, gdy nie można utworzyć katalogu w określonej ścieżce. Ten błąd zostanie wyświetlony, jeśli jakakolwiek część ścieżki do katalogu wyjściowego zapytania Hive jest niepoprawna lub niedostępna.  
   
-**Tłumaczenia** Ponownie odwiedź moduł i sprawdź, czy ścieżka katalogu jest poprawnie sformatowana i czy jest dostępna z bieżącymi poświadczeniami.  
+**Rozwiązanie:** Ponownie odwiedź moduł i sprawdź, czy ścieżka katalogu jest poprawnie sformatowana i czy jest dostępna z bieżącymi poświadczeniami.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Określ prawidłowy katalog wyjściowy.|  
-|Katalog: {0} nie można utworzyć. Określ prawidłową ścieżkę.|  
+|Katalog: nie można utworzyć {0}. Określ prawidłową ścieżkę.|  
   
 
 ## <a name="error-0047"></a>Błąd 0047  
@@ -827,13 +827,13 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning występuje, jeśli wejściowy zestaw danych do szkolenia nie zawiera minimalnej liczby kolumn wymaganych przez algorytm. Zazwyczaj zestaw danych jest pusty lub zawiera tylko kolumny szkoleniowe.  
   
-**Tłumaczenia** Ponownie przejdź do wejściowego zestawu danych, aby upewnić się, że jedna lub więcej dodatkowych kolumn należy od siebie oddzielić od kolumny etykieta.  
+**Rozwiązanie:** Ponownie przejdź do wejściowego zestawu danych, aby upewnić się, że jedna lub więcej dodatkowych kolumn należy od siebie oddzielić od kolumny etykieta.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Liczba kolumn funkcji w wejściowym zestawie danych jest mniejsza niż dozwolona wartość minimalna.|  
-|Liczba kolumn funkcji w wejściowym zestawie danych jest mniejsza niż dozwolona minimalna {0} liczba kolumn.|  
-|Liczba kolumn funkcji w wejściowym zestawie danych{0}"" jest mniejsza niż dozwolona minimalna {1} liczba kolumn.|  
+|Liczba kolumn funkcji w wejściowym zestawie danych jest mniejsza niż dozwolona minimalna liczba kolumn {0}.|  
+|Liczba kolumn funkcji w wejściowym zestawie danych "{0}" jest mniejsza niż dozwolona minimalna liczba kolumn: {1}.|  
   
 
 ## <a name="error-0048"></a>Błąd 0048  
@@ -847,7 +847,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
 -   Plik jest za duży, aby można go było odczytać lub mieć zły format  
   
-**Tłumaczenia** Ponownie odwiedzanie modułu i pliku, który próbujesz odczytać.  
+**Rozwiązanie:** Ponownie odwiedzanie modułu i pliku, który próbujesz odczytać.  
   
  Sprawdź, czy nazwy kontenera i pliku są poprawne.  
   
@@ -858,7 +858,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można otworzyć pliku.|  
-|Wystąpił błąd podczas otwierania pliku {0}:.|  
+|Wystąpił błąd podczas otwierania pliku: {0}.|  
 
 
 ## <a name="error-0049"></a>Błąd 0049  
@@ -866,18 +866,18 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning występuje, gdy nie można przeanalizować pliku. Ten błąd zostanie wyświetlony, jeśli format pliku wybrany w module [Importuj dane](import-data.md) nie jest zgodny z rzeczywistym formatem pliku lub jeśli plik zawiera nierozpoznawalny znak.  
   
-**Tłumaczenia** Ponownie odwiedzaj moduł i popraw wybór formatu pliku, jeśli nie jest zgodny z formatem pliku. Jeśli to możliwe, sprawdź, czy plik nie zawiera żadnych niedozwolonych znaków.  
+**Rozwiązanie:** Ponownie odwiedzaj moduł i popraw wybór formatu pliku, jeśli nie jest zgodny z formatem pliku. Jeśli to możliwe, sprawdź, czy plik nie zawiera żadnych niedozwolonych znaków.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można przeanalizować pliku.|  
-|Wystąpił błąd podczas analizowania pliku {0}:.|  
+|Wystąpił błąd podczas analizowania pliku: {0}.|  
   
 
 ## <a name="error-0050"></a>Błąd 0050  
  Wyjątek występuje w przypadku, gdy pliki wejściowe i wyjściowe są takie same.  
   
-**Tłumaczenia** Ten błąd w Azure Machine Learning jest nieużywany i będzie przestarzały.  
+**Rozwiązanie:** Ten błąd w Azure Machine Learning jest nieużywany i będzie przestarzały.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -887,7 +887,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 ## <a name="error-0051"></a>Błąd 0051  
  Wyjątek występuje w przypadku, gdy kilka plików wyjściowych jest taka sama.  
   
-**Tłumaczenia** Ten błąd w Azure Machine Learning jest nieużywany i będzie przestarzały.  
+**Rozwiązanie:** Ten błąd w Azure Machine Learning jest nieużywany i będzie przestarzały.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -901,7 +901,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Aby uzyskać więcej informacji na temat uzyskiwania klucza dla konta usługi Azure Storage, zobacz [Wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu do magazynu](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/).  
   
-**Tłumaczenia** Ponownie odwiedź moduł i sprawdź, czy klucz usługi Azure Storage jest prawidłowy dla tego konta. w razie potrzeby skopiuj klucz z klasycznego portalu Azure.  
+**Rozwiązanie:** Ponownie odwiedź moduł i sprawdź, czy klucz usługi Azure Storage jest prawidłowy dla tego konta. w razie potrzeby skopiuj klucz z klasycznego portalu Azure.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -913,7 +913,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning jest tworzony, gdy nie można odnaleźć wektora funkcji.  
   
-**Tłumaczenia** Upewnij się, że wektor funkcji jest obecny w wejściowym zestawie danych.  
+**Rozwiązanie:** Upewnij się, że wektor funkcji jest obecny w wejściowym zestawie danych.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -922,13 +922,13 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 ## <a name="error-0054"></a>Błąd 0054  
  Wyjątek występuje, jeśli w kolumnie jest zbyt mało odrębnych wartości, aby ukończyć operację.  
   
-**Tłumaczenia** Ten błąd w Azure Machine Learning jest nieużywany i będzie przestarzały.  
+**Rozwiązanie:** Ten błąd w Azure Machine Learning jest nieużywany i będzie przestarzały.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Dane mają zbyt mało odrębnych wartości w określonej kolumnie, aby ukończyć operację.|  
-|Dane mają zbyt mało odrębnych wartości w określonej kolumnie, aby ukończyć operację. Wymagane minimum to {0} elementy.|  
-|Dane mają zbyt mało odrębnych wartości w kolumnie "{1}", aby ukończyć operację. Wymagane minimum to {0} elementy.|  
+|Dane mają zbyt mało odrębnych wartości w określonej kolumnie, aby ukończyć operację. Wymagane minimum to {0} elementów.|  
+|Dane mają zbyt mało odrębnych wartości w kolumnie "{1}", aby ukończyć operację. Wymagane minimum to {0} elementów.|  
   
 
 ## <a name="error-0055"></a>Błąd 0055  
@@ -963,13 +963,13 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Co najmniej jedna z wybranych kolumn nie była w dozwolonej kategorii.|  
-|Kolumna o nazwie "{0}" nie znajduje się w dozwolonej kategorii.|  
+|Kolumna o nazwie "{0}" nie należy do dozwolonej kategorii.|  
   
 
 ## <a name="error-0057"></a>Błąd 0057  
  Wystąpił wyjątek podczas próby utworzenia pliku lub obiektu BLOB, który już istnieje.  
   
- Ten wyjątek występuje, gdy korzystasz z modułu [eksportu danych](export-data.md) lub innego modułu, aby zaoszczędzić wyniki eksperymentu w Azure Machine Learning z magazynem obiektów blob platformy Azure, ale podjęto próbę utworzenia pliku lub obiektu BLOB, który już istnieje.   
+ Ten wyjątek występuje, gdy używasz modułu [eksportu danych](export-data.md) lub innego modułu do zapisywania wyników potoku w Azure Machine Learning do magazynu obiektów blob platformy Azure, ale podjęto próbę utworzenia pliku lub obiektu BLOB, który już istnieje.   
   
 **Tłumaczenia**
  
@@ -981,7 +981,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Plik lub obiekt BLOB już istnieje.|  
-|Plik lub obiekt BLOB{0}"" już istnieje.|  
+|Plik lub obiekt BLOB "{0}" już istnieje.|  
   
 
 ## <a name="error-0058"></a>Błąd 0058  
@@ -989,7 +989,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten wyjątek może również wystąpić, jeśli podana kolumna etykiet nie jest zgodna z danymi lub typem danych oczekiwanym przez dowiedzenie lub ma nieprawidłowe wartości. Na przykład ten wyjątek jest tworzony podczas korzystania z kolumny etykiet o wartości rzeczywistej podczas szkolenia klasyfikatora binarnego.  
   
-**Tłumaczenia** Rozwiązanie zależy od podanej informacji lub Trainer, a także typów danych kolumn w zestawie danych. Najpierw Sprawdź wymagania dotyczące algorytmu uczenia maszynowego lub modułu szkoleniowego.  
+**Rozwiązanie:** Rozwiązanie zależy od podanej informacji lub Trainer, a także typów danych kolumn w zestawie danych. Najpierw Sprawdź wymagania dotyczące algorytmu uczenia maszynowego lub modułu szkoleniowego.  
   
  Ponownie odwiedza wejściowy zestaw danych. Sprawdź, czy kolumna, która powinna być traktowana jako etykieta, ma odpowiedni typ danych dla tworzonego modelu.  
   
@@ -1000,8 +1000,8 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Kolumna etykiety jest niezgodna z oczekiwaniami|  
-|Kolumna etykiety nie jest zgodna z oczekiwaniami w "{0}".|  
-|Nie oczekiwano kolumny{0}etykiety "" w "{1}".|  
+|Kolumna etykiety nie jest zgodna z oczekiwaną w "{0}".|  
+|Kolumna etykiety "{0}" nie jest oczekiwana w "{1}".|  
   
 
 ## <a name="error-0059"></a>Błąd 0059  
@@ -1009,12 +1009,12 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning występuje, jeśli nie można przeanalizować indeksu kolumny określonego podczas używania selektora kolumn.  Ten błąd zostanie wyświetlony, gdy indeks kolumny ma nieprawidłowy format, którego nie można przeanalizować.  
   
-**Tłumaczenia** Zmodyfikuj indeks kolumny, aby używał prawidłowej wartości indeksu.  
+**Rozwiązanie:** Zmodyfikuj indeks kolumny, aby używał prawidłowej wartości indeksu.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można przeanalizować co najmniej jednego z określonych indeksów kolumn lub zakresów indeksów.|  
-|Nie można przeanalizować{0}indeksu kolumn lub zakresu "".|  
+|Nie można przeanalizować indeksu kolumn lub zakresu "{0}".|  
   
 
 ## <a name="error-0060"></a>Błąd 0060  
@@ -1022,7 +1022,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning występuje, gdy zakres kolumn poza zakresem jest określony w selektorze kolumn. Ten błąd zostanie wyświetlony, jeśli zakres kolumn w selektorze kolumn nie odpowiada kolumnom w zestawie danych.  
   
-**Tłumaczenia** Zmodyfikuj zakres kolumn w selektorze kolumn, aby odpowiadały kolumnom w zestawie danych.  
+**Rozwiązanie:** Zmodyfikuj zakres kolumn w selektorze kolumn, aby odpowiadały kolumnom w zestawie danych.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1035,7 +1035,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning występuje podczas próby dodania wiersza do zestawu danych, który ma inną liczbę kolumn niż zestaw danych.  Ten błąd zostanie wyświetlony, jeśli wiersz, który jest dodawany do zestawu danych, ma inną liczbę kolumn z wejściowego zestawu danych.  Nie można dołączyć wiersza do zestawu danych, jeśli liczba kolumn jest różna.  
   
-**Tłumaczenia** Zmodyfikuj wejściowy zestaw danych tak, aby miał taką samą liczbę kolumn jak wiersz dodany, lub zmodyfikuj wiersz dodany, aby mieć taką samą liczbę kolumn jak zestaw danych.  
+**Rozwiązanie:** Zmodyfikuj wejściowy zestaw danych tak, aby miał taką samą liczbę kolumn jak wiersz dodany, lub zmodyfikuj wiersz dodany, aby mieć taką samą liczbę kolumn jak zestaw danych.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1047,7 +1047,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning jest tworzony, gdy metryki oceny dla dwóch różnych zestawów danych z oceną nie można porównać. W takim przypadku nie jest możliwe Porównanie skuteczności modeli używanych do tworzenia dwóch wynikowych zestawów danych.  
   
-**Tłumaczenia** Sprawdź, czy wyniki oceny są tworzone w ramach tego samego rodzaju modelu uczenia maszynowego (klasyfikacja binarna, regresja, klasyfikacja wieloklasowa, zalecenie, klastrowanie, wykrywanie anomalii itp.) Wszystkie porównywane modele muszą mieć ten sam typ.  
+**Rozwiązanie:** Sprawdź, czy wyniki oceny są tworzone w ramach tego samego rodzaju modelu uczenia maszynowego (klasyfikacja binarna, regresja, klasyfikacja wieloklasowa, zalecenie, klastrowanie, wykrywanie anomalii itp.) Wszystkie porównywane modele muszą mieć ten sam typ.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1066,7 +1066,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
-    + Messages from R marked as **warnings** typically do not cause the experiment to fail.
+    + Messages from R marked as **warnings** typically do not cause the pipeline to fail.
 3. Resolve script issues.  
     + Check for R syntax errors. Check for variables that are defined but never populated.
     + Review the input data and the script to determine if either the data or variables in the script use characters not supported by Azure Machine Learning.
@@ -1074,19 +1074,19 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
     + Check whether your code loads required libraries that are not loaded by default.
     + Check whether the required packages are the correct version.
     + Make sure that any dataset that you want to output is converted to a data frame.  
-4.  Resubmit the experiment.
+4.  Resubmit the pipeline.
 
  <!--
 > [!NOTE]
-> These topics contains examples of R code that you can use, as well as links to experiments in the [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) that use R script.
+> These topics contains examples of R code that you can use, as well as links to pipelines in the [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) that use R script.
 > + [Execute R Script](execute-r-script.md)
 > + [Create R Model](create-r-model.md)
 -->  
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Wystąpił błąd podczas obliczania skryptu języka R.|  
-|Wystąpił następujący błąd podczas obliczania skryptu języka R:----------początek komunikatu o błędzie z programu r {0} ---------------------końcu komunikatu o błędzie z r-----------|  
-|Podczas obliczania skryptu języka R "{1}" Wystąpił następujący błąd:----------początek komunikatu o błędzie z r---------- {0} -----------koniec komunikatu o błędzie z języka r-----------|  
+|Wystąpił następujący błąd podczas obliczania skryptu języka R:----------początek komunikatu o błędzie z programu R----------{0}-----------końcu komunikatu o błędzie z R-----------|  
+|Podczas obliczania skryptu języka R "{1}" Wystąpił następujący błąd:----------rozpoczęcia komunikatu o błędzie z R----------{0}-----------końcu komunikatu o błędzie z R-----------|  
   
 
 
@@ -1095,7 +1095,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning występuje, jeśli nazwa konta usługi Azure Storage lub klucz magazynu został określony nieprawidłowo. Ten błąd zostanie wyświetlony w przypadku wprowadzenia nieprawidłowej nazwy konta lub hasła dla konta magazynu. Może się tak zdarzyć w przypadku ręcznego wprowadzenia nazwy konta lub hasła. Może również wystąpić, jeśli konto zostało usunięte.  
   
-**Tłumaczenia** Sprawdź, czy nazwa konta i hasło zostały wprowadzone prawidłowo i czy konto istnieje.  
+**Rozwiązanie:** Sprawdź, czy nazwa konta i hasło zostały wprowadzone prawidłowo i czy konto istnieje.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1116,12 +1116,12 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
 -   Identyfikator URI sygnatury dostępu współdzielonego nie zawiera nazwy prawidłowego obiektu BLOB.  
   
-**Tłumaczenia** Ponownie odwiedzający moduł zgłaszający wyjątek. Sprawdź, czy określony obiekt BLOB istnieje w kontenerze na koncie magazynu i czy uprawnienia umożliwiają wyświetlanie obiektu BLOB. Upewnij się, że dane wejściowe mają postać **ContainerName/filename** , jeśli masz program Excel lub CSV z formatami kodowania. Sprawdź, czy identyfikator URI sygnatury dostępu współdzielonego zawiera nazwę prawidłowego obiektu BLOB.  
+**Rozwiązanie:** Ponownie odwiedzający moduł zgłaszający wyjątek. Sprawdź, czy określony obiekt BLOB istnieje w kontenerze na koncie magazynu i czy uprawnienia umożliwiają wyświetlanie obiektu BLOB. Upewnij się, że dane wejściowe mają postać **ContainerName/filename** , jeśli masz program Excel lub CSV z formatami kodowania. Sprawdź, czy identyfikator URI sygnatury dostępu współdzielonego zawiera nazwę prawidłowego obiektu BLOB.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Obiekt BLOB usługi Azure Storage jest nieprawidłowy.|  
-|Nazwa obiektu BLOB usługi Azure Storage{0}"" jest niepoprawna|  
+|Nazwa obiektu BLOB usługi Azure Storage "{0}" jest niepoprawna|  
   
 
 ## <a name="error-0066"></a>Błąd 0066  
@@ -1129,12 +1129,12 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning występuje, jeśli nie można przekazać zasobu do obiektu blob platformy Azure.  <!--You will receive this message if [Train Vowpal Wabbit 7-4 Model](train-vowpal-wabbit-version-7-4-model.md) encounters an error attempting to save either the model or the hash created when training the model.--> Oba są zapisywane na tym samym koncie usługi Azure Storage, co konto zawierające plik wejściowy.  
   
-**Tłumaczenia** Ponownie przejdź do modułu. Sprawdź, czy nazwa konta platformy Azure, klucz magazynu i kontener są poprawne i czy konto ma uprawnienia do zapisu w kontenerze.  
+**Rozwiązanie:** Ponownie przejdź do modułu. Sprawdź, czy nazwa konta platformy Azure, klucz magazynu i kontener są poprawne i czy konto ma uprawnienia do zapisu w kontenerze.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można przekazać zasobu do usługi Azure Storage.|  
-|Nie można przekazać{0}pliku "" do usługi Azure Storage jako. {1}|  
+|Nie można przekazać pliku "{0}" do usługi Azure Storage jako {1}.|  
   
 
 ## <a name="error-0067"></a>Błąd 0067  
@@ -1142,12 +1142,12 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
   
  Ten błąd w Azure Machine Learning występuje, jeśli zestaw danych ma inną liczbę kolumn niż oczekiwano.  Ten błąd zostanie wyświetlony, gdy liczba kolumn w zestawie danych różni się od liczby kolumn oczekiwanych przez moduł podczas wykonywania.  
   
-**Tłumaczenia** Zmodyfikuj wejściowy zestaw danych lub parametry.  
+**Rozwiązanie:** Zmodyfikuj wejściowy zestaw danych lub parametry.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nieoczekiwana liczba kolumn w elemencie DataTable.|  
-|Oczekiwano{0}"" kolumn, ale{1}zamiast nich znaleziono "".|  
+|Oczekiwano kolumn "{0}", ale zamiast nich znaleziono kolumny "{1}".|  
   
 
 ## <a name="error-0068"></a>Błąd 0068  
@@ -1176,7 +1176,7 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Skrypt Hive jest nieprawidłowy.|  
-|Skrypt {0} Hive jest niepoprawny.|  
+|@No__t_0 skryptu Hive jest niepoprawny.|  
   
 
 ## <a name="error-0069"></a>Błąd 0069  
@@ -1186,20 +1186,20 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
  
  Ten błąd zostanie wyświetlony, jeśli podczas wykonywania zapytania lub skryptu wystąpi błąd w aparacie SQL. Komunikat o błędzie SQL jest zwykle raportowany ponownie w dzienniku błędów, aby można było wykonać akcję na podstawie konkretnego błędu.  
   
-**Tłumaczenia** Ponownie odwiedź moduł i sprawdź, czy zapytanie SQL zawiera błędy.  
+**Rozwiązanie:** Ponownie odwiedź moduł i sprawdź, czy zapytanie SQL zawiera błędy.  
   
  Sprawdź, czy zapytanie działa prawidłowo poza platformą Azure, logując się do serwera bazy danych bezpośrednio i uruchamiając zapytanie.  
   
  Jeśli w wyjątku modułu jest raportowany komunikat generowany przez program SQL, należy wykonać akcję na podstawie zgłoszonego błędu. Na przykład komunikaty o błędach czasami zawierają określone wskazówki dotyczące przyczyny błędu:
 + *Nie ma takiej kolumny ani brakującej bazy danych*, co oznacza, że być może wpisano nieprawidłową nazwę kolumny. Jeśli masz pewność, że nazwa kolumny jest poprawna, spróbuj użyć nawiasów lub znaków cudzysłowu, aby ująć identyfikator kolumny.
-+ *Błąd logiki SQL w \<sąsiedztwie\>słowa kluczowego SQL*, wskazujący, że może wystąpić błąd składniowy przed określonym słowem kluczowym
++ *Błąd logiki SQL w sąsiedztwie \<SQL \> słowa kluczowego*, wskazujący, że może wystąpić błąd składniowy przed określonym słowem kluczowym
 
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Skrypt SQL jest nieprawidłowy.|  
 |Zapytanie SQL "{0}" jest niepoprawne.|  
-|Zapytanie SQL "{0}" jest niepoprawne:{1}|  
+|Zapytanie SQL "{0}" jest niepoprawne: {1}|  
   
 
 ## <a name="error-0070"></a>Błąd 0070  
@@ -1207,12 +1207,12 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
   
  Ten błąd w Azure Machine Learning występuje podczas próby uzyskania dostępu do nieistniejącej tabeli platformy Azure. Ten błąd zostanie wyświetlony, jeśli określisz tabelę w usłudze Azure Storage, która nie istnieje podczas odczytywania lub zapisywania do Table Storage platformy Azure. Taka sytuacja może wystąpić, jeśli wpiszesz nazwę odpowiedniej tabeli lub występuje niezgodność między nazwą docelową a typem magazynu. Na przykład, zamierzasz odczytać z tabeli, ale zamiast tego wprowadzić nazwę obiektu BLOB.  
   
-**Tłumaczenia** Ponownie odwiedź moduł, aby sprawdzić, czy nazwa tabeli jest poprawna.  
+**Rozwiązanie:** Ponownie odwiedź moduł, aby sprawdzić, czy nazwa tabeli jest poprawna.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Tabela platformy Azure nie istnieje.|  
-|Tabela platformy Azure{0}"" nie istnieje.|  
+|Tabela platformy Azure "{0}" nie istnieje.|  
   
 ## <a name="error-0071"></a>Błąd 0071  
  Wyjątek występuje, jeśli podane poświadczenia są nieprawidłowe.  
@@ -1221,7 +1221,7 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
   
  Ten błąd może również pojawić się, jeśli moduł nie może połączyć się z klastrem usługi HDInsight.  
   
-**Tłumaczenia** Przejrzyj dane wejściowe modułu i Sprawdź nazwę konta i hasło.  
+**Rozwiązanie:** Przejrzyj dane wejściowe modułu i Sprawdź nazwę konta i hasło.  
   
  Sprawdź, czy występują następujące problemy, które mogą spowodować wystąpienie błędu:  
   
@@ -1246,7 +1246,7 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
   
  Ten błąd w Azure Machine Learning występuje, gdy upłynął limit czasu połączenia. Ten błąd zostanie wyświetlony w przypadku problemów z łącznością ze źródłem danych lub miejscem docelowym, na przykład w przypadku powolnej łączności z Internetem lub jeśli zestaw danych jest duży i/lub zapytanie SQL do odczytu w danych wykonuje skomplikowane przetwarzanie.  
   
-**Tłumaczenia** Ustal, czy występują obecnie problemy z wolnym połączeniem z usługą Azure Storage lub Internetem.  
+**Rozwiązanie:** Ustal, czy występują obecnie problemy z wolnym połączeniem z usługą Azure Storage lub Internetem.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1258,12 +1258,12 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
   
  Ten błąd w Azure Machine Learning występuje, gdy nie jest możliwe przekonwertowanie kolumny na inny typ.  Ten błąd zostanie wyświetlony, jeśli moduł wymaga określonego typu i nie jest możliwe przekonwertowanie kolumny na nowy typ.  
   
-**Tłumaczenia** Zmodyfikuj wejściowy zestaw danych, aby można było przekonwertować kolumnę na podstawie wewnętrznego wyjątku.  
+**Rozwiązanie:** Zmodyfikuj wejściowy zestaw danych, aby można było przekonwertować kolumnę na podstawie wewnętrznego wyjątku.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można skonwertować kolumny.|  
-|Nie można przekonwertować kolumny na {0}.|  
+|Nie można skonwertować kolumny na {0}.|  
   
 
 ## <a name="error-0074"></a>Błąd 0074  
@@ -1300,12 +1300,12 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
   
  Ten błąd w Azure Machine Learning występuje, jeśli nieprawidłowy argument w specyfikacjach dla obiektu docelowego lub źródła pliku BLOB.  
   
-**Tłumaczenia** W prawie wszystkie moduły importujące lub eksportujące dane do i z usługi Azure Blob Storage, wartości parametrów kontrolujących tryb zapisu są przypisywane przy użyciu listy rozwijanej. w związku z tym nie jest możliwe przekazanie nieprawidłowej wartości i ten błąd nie powinien być wyświetlany. Ten błąd zostanie uznany za przestarzały w nowszej wersji.  
+**Rozwiązanie:** W prawie wszystkie moduły importujące lub eksportujące dane do i z usługi Azure Blob Storage, wartości parametrów kontrolujących tryb zapisu są przypisywane przy użyciu listy rozwijanej. w związku z tym nie jest możliwe przekazanie nieprawidłowej wartości i ten błąd nie powinien być wyświetlany. Ten błąd zostanie uznany za przestarzały w nowszej wersji.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nieobsługiwany tryb zapisów obiektów BLOB.|  
-|Nieobsługiwany tryb zapisów {0}obiektów blob:.|  
+|Nieobsługiwany tryb zapisywania obiektów blob: {0}.|  
   
 
 ## <a name="error-0078"></a>Błąd 0078  
@@ -1313,7 +1313,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
   
  Ten błąd w Azure Machine Learning występuje, gdy opcja HTTP dla [danych importu](import-data.md) odbiera 3xx (301, 302, 304 itp.) kod stanu wskazujący przekierowania. Ten błąd zostanie wyświetlony w przypadku próby nawiązania połączenia ze źródłem HTTP, które przekierowuje przeglądarkę do innej strony. Ze względów bezpieczeństwa Przekierowywanie witryn sieci Web nie jest dozwolone jako źródła danych dla Azure Machine Learning.  
   
-**Tłumaczenia** Jeśli witryna sieci Web jest zaufaną witryną sieci Web, wprowadź adres URL przekierowane bezpośrednio.  
+**Rozwiązanie:** Jeśli witryna sieci Web jest zaufaną witryną sieci Web, wprowadź adres URL przekierowane bezpośrednio.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1325,7 +1325,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
   
  Ten błąd w Azure Machine Learning występuje, jeśli nazwa kontenera usługi Azure Storage została określona nieprawidłowo. Ten błąd zostanie wyświetlony, jeśli nie określono zarówno kontenera, jak i nazwy obiektu BLOB (pliku) przy użyciu **ścieżki do obiektu BLOB rozpoczynającego** się od opcji kontenera podczas zapisywania na platformie Azure Blob Storage.  
   
-**Tłumaczenia** Ponownie odwiedź moduł [eksportu danych](export-data.md) i sprawdź, czy określona ścieżka do obiektu BLOB zawiera zarówno kontener, jak i nazwę pliku, w formacie **Container/filename**.  
+**Rozwiązanie:** Ponownie odwiedź moduł [eksportu danych](export-data.md) i sprawdź, czy określona ścieżka do obiektu BLOB zawiera zarówno kontener, jak i nazwę pliku, w formacie **Container/filename**.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1338,12 +1338,12 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
   
  Ten błąd w Azure Machine Learning jest tworzony, gdy co najmniej jedna z kolumn używanych przez moduł zawiera wszystkie brakujące wartości. Na przykład, jeśli moduł przetwarza zagregowane statystyki dla każdej kolumny, nie może działać na kolumnie zawierającej nie dane. W takich przypadkach wykonywanie modułu zostało zatrzymane z powodu tego wyjątku.  
   
-**Tłumaczenia** Ponownie odwiedza wejściowy zestaw danych i Usuń wszystkie kolumny, które zawierają wszystkie brakujące wartości.  
+**Rozwiązanie:** Ponownie odwiedza wejściowy zestaw danych i Usuń wszystkie kolumny, które zawierają wszystkie brakujące wartości.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Kolumny zawierające wszystkie brakujące wartości są niedozwolone.|  
-|Brak {0} wszystkich wartości w kolumnie.|  
+|Brak wszystkich wartości w kolumnie {0}.|  
   
 
 ## <a name="error-0081"></a>Błąd 0081  
@@ -1351,7 +1351,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
   
  Ten błąd w Azure Machine Learning jest generowany w przypadku spełnienia następujących warunków: (a) wejściowy zestaw danych ma co najmniej jedną kolumnę rozrzedzoną i (b) końcowa Liczba żądanych wymiarów jest taka sama jak liczba wymiarów wejściowych.  
   
-**Tłumaczenia** Rozważ zmniejszenie liczby wymiarów w danych wyjściowych na mniejszą niż liczba wymiarów w danych wejściowych. Jest to typowe w aplikacjach asystenta UPW.   <!--For more information, see [Principal Component Analysis](principal-component-analysis.md).  -->
+**Rozwiązanie:** Rozważ zmniejszenie liczby wymiarów w danych wyjściowych na mniejszą niż liczba wymiarów w danych wejściowych. Jest to typowe w aplikacjach asystenta UPW.   <!--For more information, see [Principal Component Analysis](principal-component-analysis.md).  -->
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1363,7 +1363,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
   
  Ten błąd w Azure Machine Learning występuje, gdy zapisany model uczenia maszynowego lub transformacja nie może zostać załadowana przez nowszą wersję środowiska uruchomieniowego Azure Machine Learning w wyniku istotnej zmiany.  
   
-**Tłumaczenia** Eksperyment szkoleniowy, który wygenerował model lub transformację, musi zostać ponownie uruchomiony, a model lub przekształcenie musi być zapisywany.  
+**Rozwiązanie:** Należy ponownie uruchomić potok szkoleniowy, który wygenerował model lub transformację, a model lub przekształcenie musi zostać zapisane.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1375,13 +1375,13 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
   
  Ten błąd w Azure Machine Learning jest tworzony, gdy zestaw danych jest niezgodny z przeszkolonym nauką. Na przykład zestaw danych może zawierać co najmniej jedną brakującą wartość w każdym wierszu, a w rezultacie cały zestaw danych zostanie pominięty podczas szkolenia. W innych przypadkach niektóre algorytmy uczenia maszynowego, takie jak wykrywanie anomalii, nie oczekują na obecność etykiet i mogą zgłosić ten wyjątek, jeśli etykiety są obecne w zestawie danych.  
   
-**Tłumaczenia** Zapoznaj się z dokumentacją dostosowanej do sprawdzania wymagań dla wejściowego zestawu danych. Sprawdź kolumny, aby wyświetlić wszystkie wymagane kolumny.  
+**Rozwiązanie:** Zapoznaj się z dokumentacją dostosowanej do sprawdzania wymagań dla wejściowego zestawu danych. Sprawdź kolumny, aby wyświetlić wszystkie wymagane kolumny.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Zestaw danych używany do szkolenia jest nieprawidłowy.|  
-|{0}zawiera nieprawidłowe dane do szkoleń.|  
-|{0}zawiera nieprawidłowe dane do szkoleń. Typ Dowiedz się {1}:.|  
+|{0} zawiera nieprawidłowe dane do szkoleń.|  
+|{0} zawiera nieprawidłowe dane do szkoleń. Typ uczenia: {1}.|  
   
 
 ## <a name="error-0084"></a>Błąd 0084  
@@ -1401,12 +1401,12 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
   
  Ten błąd w Azure Machine Learning występuje, gdy jest uruchomiony skrypt niestandardowy zawierający błędy składni.  
   
-**Tłumaczenia** Przejrzyj kod w edytorze zewnętrznym i sprawdź pod kątem błędów.  
+**Rozwiązanie:** Przejrzyj kod w edytorze zewnętrznym i sprawdź pod kątem błędów.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Wystąpił błąd podczas obliczania skryptu.|  
-|Podczas oceny skryptu wystąpił następujący błąd. Aby uzyskać więcej informacji, zobacz Dziennik danych wyjściowych:----------początku komunikatu {0} o błędzie z {1} interpretera--------------------końcu komunikatu {0} o błędzie z interpretera---- ------|  
+|Podczas oceny skryptu wystąpił następujący błąd. Aby uzyskać więcej informacji, zobacz Dziennik danych wyjściowych:----------początek komunikatu o błędzie z interpretera {0}----------{1}----------końcu komunikatu o błędzie z interpretera {0}|  
   
 
 ## <a name="error-0086"></a>Błąd 0086  
@@ -1414,7 +1414,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
   
  Ten błąd w Azure Machine Learning występuje po wybraniu transformacji opartej na tabeli Count, ale wybrane przekształcenie jest niezgodne z bieżącymi danymi lub z nową tabelą Count.  
   
-**Tłumaczenia** Moduł obsługuje zapisywanie liczników i reguł, które składają się na transformację w dwóch różnych formatach. Jeśli scalasz tabele Count, sprawdź, czy obie tabele, które mają zostać scalone, używają tego samego formatu.  
+**Rozwiązanie:** Moduł obsługuje zapisywanie liczników i reguł, które składają się na transformację w dwóch różnych formatach. Jeśli scalasz tabele Count, sprawdź, czy obie tabele, które mają zostać scalone, używają tego samego formatu.  
   
 Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zestawów danych, które mają ten sam schemat, co DataSet, na którym zostało utworzone Przekształcanie.  
   
@@ -1429,8 +1429,8 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Określono nieprawidłowe przekształcenie Count.|  
-|Transformacja zliczania na porcie wejściowym{0}"" jest nieprawidłowa.|  
-|Nie można scalić przekształcenia liczenia na port{0}wejściowy "" z przekształceniem zliczania na porcie{1}wejściowym "". Sprawdź, czy metadane używane do zliczania dopasowań.|  
+|Przekształcenie obliczania w porcie wejściowym "{0}" jest nieprawidłowe.|  
+|Nie można scalić przekształcenia obliczeń z portem wejściowym "{0}" na port wejściowy "{1}". Sprawdź, czy metadane używane do zliczania dopasowań.|  
   
 
 ## <a name="error-0087"></a>Błąd 0087  
@@ -1438,7 +1438,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning występuje podczas próby zaimportowania istniejącej tabeli Count, ale tabela jest niezgodna z bieżącymi danymi lub z nową tabelą Count.  
   
-**Tłumaczenia** Istnieją różne formaty do zapisywania liczników i reguł, które tworzą transformację. Jeśli scalasz tabele Count, sprawdź, czy oba używają tego samego formatu.  
+**Rozwiązanie:** Istnieją różne formaty do zapisywania liczników i reguł, które tworzą transformację. Jeśli scalasz tabele Count, sprawdź, czy oba używają tego samego formatu.  
   
  Ogólnie transformacja bazująca na liczbie może być stosowana tylko do zestawów danych, które mają ten sam schemat, co element dataset, dla którego została utworzona transformacja.  
   
@@ -1450,7 +1450,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning występuje, gdy spróbujesz użyć innej metody zliczania niż obsługiwana dla cechowania opartej na licznikach.  
   
-**Tłumaczenia** Ogólnie rzecz biorąc, metody zliczania są wybierane z listy rozwijanej, więc ten błąd nie powinien być widoczny.  
+**Rozwiązanie:** Ogólnie rzecz biorąc, metody zliczania są wybierane z listy rozwijanej, więc ten błąd nie powinien być widoczny.  
   
   <!--For general information, see [Learning with Counts](data-transformation-learning-with-counts.md). For requirements specific to creating and merging count-based features, see these topics:  
   
@@ -1471,7 +1471,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning występuje podczas tworzenia tabeli Count, a kolumna Label zawiera inną liczbę klas niż określono w parametrach modułu.  
   
-**Tłumaczenia** Sprawdź zestaw danych i Dowiedz się dokładnie, ile różnych wartości (możliwych klas) znajduje się w kolumnie etykieta. Podczas tworzenia tabeli Count należy określić co najmniej następującą liczbę klas.  
+**Rozwiązanie:** Sprawdź zestaw danych i Dowiedz się dokładnie, ile różnych wartości (możliwych klas) znajduje się w kolumnie etykieta. Podczas tworzenia tabeli Count należy określić co najmniej następującą liczbę klas.  
   
  W tabeli Count nie można automatycznie określić liczby dostępnych klas.  
   
@@ -1488,23 +1488,23 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning występuje, gdy używane są [dane eksportu](export-data.md) lub inna opcja zapisywania danych w klastrze usługi HDInsight i nie można utworzyć określonej tabeli programu Hive.  
   
-**Tłumaczenia** Sprawdź nazwę konta usługi Azure Storage skojarzoną z klastrem i sprawdź, czy używasz tego samego konta we właściwościach modułu.  
+**Rozwiązanie:** Sprawdź nazwę konta usługi Azure Storage skojarzoną z klastrem i sprawdź, czy używasz tego samego konta we właściwościach modułu.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można utworzyć tabeli programu Hive. Upewnij się, że nazwa konta usługi Azure Storage skojarzona z klastrem jest taka sama jak w przypadku przekazywania przez parametr module.|  
-|Nie można utworzyć tabeli{0}programu Hive "". Upewnij się, że nazwa konta usługi Azure Storage skojarzona z klastrem jest taka sama jak w przypadku przekazywania przez parametr module.|  
-|Nie można utworzyć tabeli{0}programu Hive "". Upewnij się, że nazwa konta usługi Azure Storage skojarzona z klastrem to "{1}".|  
+|Nie można utworzyć tabeli programu Hive "{0}". Upewnij się, że nazwa konta usługi Azure Storage skojarzona z klastrem jest taka sama jak w przypadku przekazywania przez parametr module.|  
+|Nie można utworzyć tabeli programu Hive "{0}". Upewnij się, że nazwa konta usługi Azure Storage skojarzona z klastrem to "{1}".|  
  
 
 ## <a name="error-0100"></a>Błąd 0100  
  Wyjątek występuje, gdy dla modułu niestandardowego określono nieobsługiwany język.  
   
- Ten błąd w Azure Machine Learning występuje, gdy kompilacja niestandardowego modułu i właściwość name elementu **języka** w pliku definicji XML modułu niestandardowego zawiera nieprawidłową wartość. Obecnie jedyną prawidłową wartością dla tej właściwości jest `R`. Na przykład:  
+ Ten błąd w Azure Machine Learning występuje, gdy kompilacja niestandardowego modułu i właściwość name elementu **języka** w pliku definicji XML modułu niestandardowego zawiera nieprawidłową wartość. Obecnie jedyną prawidłową wartością tej właściwości jest `R`. Na przykład:  
   
  `<Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />`  
   
-**Tłumaczenia** Sprawdź, czy właściwość name elementu **Language** w pliku definicji XML modułu niestandardowego jest ustawiona na `R`. Zapisz plik, zaktualizuj pakiet ZIP modułu, a następnie spróbuj ponownie dodać moduł niestandardowy.  
+**Rozwiązanie:** Sprawdź, czy właściwość name elementu **Language** w pliku definicji XML modułu niestandardowego jest ustawiona na `R`. Zapisz plik, zaktualizuj pakiet ZIP modułu, a następnie spróbuj ponownie dodać moduł niestandardowy.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1516,7 +1516,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning występuje, gdy jeden lub więcej portów lub parametrów ma przypisaną taką samą wartość identyfikatora w pliku definicji XML modułu niestandardowego.  
   
-**Tłumaczenia** Sprawdź, czy wartości identyfikatora we wszystkich portach i parametrach są unikatowe. Zapisz plik XML, zaktualizuj pakiet ZIP modułu, a następnie spróbuj ponownie dodać moduł niestandardowy.  
+**Rozwiązanie:** Sprawdź, czy wartości identyfikatora we wszystkich portach i parametrach są unikatowe. Zapisz plik XML, zaktualizuj pakiet ZIP modułu, a następnie spróbuj ponownie dodać moduł niestandardowy.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1529,7 +1529,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning występuje podczas importowania pakietu spakowanego z rozszerzeniem zip, ale pakiet nie jest plikiem ZIP lub plik nie korzysta z obsługiwanego formatu zip.  
   
-**Tłumaczenia** Upewnij się, że wybrany plik jest prawidłowym plikiem zip i że został skompresowany przy użyciu jednego z obsługiwanych algorytmów kompresji.  
+**Rozwiązanie:** Upewnij się, że wybrany plik jest prawidłowym plikiem zip i że został skompresowany przy użyciu jednego z obsługiwanych algorytmów kompresji.  
   
  Jeśli ten błąd wystąpi podczas importowania zestawów danych w formacie skompresowanym, upewnij się, że wszystkie zawarte pliki korzystają z jednego z obsługiwanych formatów plików i są w formacie Unicode.  <!--For more information, see [Unpack Zipped Datasets](unpack-zipped-datasets.md).  -->
   
@@ -1545,7 +1545,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning występuje, gdy pakiet ZIP modułu niestandardowego nie zawiera żadnych plików definicji modułu (. xml). Te pliki muszą znajdować się w katalogu głównym pakietu zip (na przykład nie w podfolderze).  
   
-**Tłumaczenia** Sprawdź, czy co najmniej jeden plik definicji modułu XML znajduje się w folderze głównym pakietu zip przez wyodrębnienie go do folderu tymczasowego na dysku. Wszystkie pliki XML powinny znajdować się bezpośrednio w folderze, w którym został wyodrębniony pakiet ZIP. Upewnij się, że podczas tworzenia pakietu zip nie wybrano folderu zawierającego pliki XML do ZIP, ponieważ spowoduje to utworzenie podfolderu w pakiecie zip o takiej samej nazwie jak folder wybrany do pliku zip.  
+**Rozwiązanie:** Sprawdź, czy co najmniej jeden plik definicji modułu XML znajduje się w folderze głównym pakietu zip przez wyodrębnienie go do folderu tymczasowego na dysku. Wszystkie pliki XML powinny znajdować się bezpośrednio w folderze, w którym został wyodrębniony pakiet ZIP. Upewnij się, że podczas tworzenia pakietu zip nie wybrano folderu zawierającego pliki XML do ZIP, ponieważ spowoduje to utworzenie podfolderu w pakiecie zip o takiej samej nazwie jak folder wybrany do pliku zip.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1555,16 +1555,16 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
 ## <a name="error-0104"></a>Błąd 0104  
  Zgłaszany, gdy plik definicji modułu odwołuje się do skryptu, którego nie można zlokalizować  
   
- Ten błąd w Azure Machine Learning jest generowany, gdy plik definicji XML modułu niestandardowego odwołuje się do pliku skryptu w elemencie **języka** , który nie istnieje w pakiecie zip. Ścieżka pliku skryptu jest zdefiniowana we właściwości **SourceFile** elementu **języka** . Ścieżka do pliku źródłowego jest określana względem katalogu głównego pakietu zip (ta sama lokalizacja, w której znajduje się plik definicji XML modułu). Jeśli plik skryptu znajduje się w podfolderze, należy określić ścieżkę względną do pliku skryptu. Na przykład jeśli wszystkie skrypty były przechowywane w folderze Moje skrypty w pakiecie zip, element **Language** będzie musiał dodać tę ścieżkę do właściwości **SourceFile** , jak pokazano poniżej. Na przykład:  
+ Ten błąd w Azure Machine Learning jest generowany, gdy plik definicji XML modułu niestandardowego odwołuje się do pliku skryptu w elemencie **języka** , który nie istnieje w pakiecie zip. Ścieżka pliku skryptu jest zdefiniowana we właściwości **SourceFile** elementu **języka** . Ścieżka do pliku źródłowego jest określana względem katalogu głównego pakietu zip (ta sama lokalizacja, w której znajduje się plik definicji XML modułu). Jeśli plik skryptu znajduje się w podfolderze, należy określić ścieżkę względną do pliku skryptu. Na przykład jeśli wszystkie skrypty były przechowywane **w folderze Moje skrypty w** pakiecie zip, element **Language** będzie musiał dodać tę ścieżkę do właściwości **SourceFile** , jak pokazano poniżej. Na przykład:  
   
  `<Language name="R" sourceFile="myScripts/CustomAddRows.R" entryPoint="CustomAddRows" />`  
   
-**Tłumaczenia** Upewnij się, że wartość właściwości **SourceFile** w elemencie **języka** definicji XML modułu niestandardowego jest poprawna i że plik źródłowy istnieje w prawidłowej ścieżce względnej w pakiecie zip.  
+**Rozwiązanie:** Upewnij się, że wartość właściwości **SourceFile** w elemencie **języka** definicji XML modułu niestandardowego jest poprawna i że plik źródłowy istnieje w prawidłowej ścieżce względnej w pakiecie zip.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Plik skryptu języka R przywoływany nie istnieje.|  
-|Nie można znaleźć pliku skryptu{0}języka R "", do którego się odwoływano. Upewnij się, że ścieżka względna do pliku jest poprawna z lokalizacji definicji.|  
+|Nie można znaleźć pliku skryptu języka R "{0}", do którego istnieje odwołanie. Upewnij się, że ścieżka względna do pliku jest poprawna z lokalizacji definicji.|  
 
 
 ## <a name="error-0105"></a>Błąd 0105  
@@ -1572,12 +1572,12 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning jest tworzony podczas tworzenia niestandardowej definicji XML modułu, a typ parametru lub argumentu w definicji nie jest zgodny z obsługiwanym typem.  
   
-**Tłumaczenia** Upewnij się, że Właściwość Type dowolnego elementu **ARG** w pliku definicji XML modułu niestandardowego jest obsługiwana.  
+**Rozwiązanie:** Upewnij się, że Właściwość Type dowolnego elementu **ARG** w pliku definicji XML modułu niestandardowego jest obsługiwana.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nieobsługiwany typ parametru.|  
-|Określono nieobsługiwany typ{0}parametru "".|  
+|Określono nieobsługiwany typ parametru "{0}".|  
 
 
 ## <a name="error-0106"></a>Błąd 0106  
@@ -1585,12 +1585,12 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning jest tworzony, gdy typ portu wejściowego w definicji XML modułu niestandardowego nie jest zgodny z obsługiwanym typem.  
   
-**Tłumaczenia** Upewnij się, że Właściwość Type elementu wejściowego w pliku definicji XML modułu niestandardowego jest obsługiwana.  
+**Rozwiązanie:** Upewnij się, że Właściwość Type elementu wejściowego w pliku definicji XML modułu niestandardowego jest obsługiwana.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nieobsługiwany typ danych wejściowych.|  
-|Określono nieobsługiwany typ{0}wejściowy "".|  
+|Określono nieobsługiwany typ danych wejściowych "{0}".|  
 
 
 ## <a name="error-0107"></a>Błąd 0107  
@@ -1598,12 +1598,12 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning jest tworzony, gdy typ portu wyjściowego w definicji XML modułu niestandardowego nie jest zgodny z obsługiwanym typem.  
   
-**Tłumaczenia** Upewnij się, że Właściwość Type elementu wyjściowego w pliku definicji XML modułu niestandardowego jest obsługiwana.  
+**Rozwiązanie:** Upewnij się, że Właściwość Type elementu wyjściowego w pliku definicji XML modułu niestandardowego jest obsługiwana.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nieobsługiwany typ danych wyjściowych.|  
-|Określono nieobsługiwany typ{0}wyjściowy "".|  
+|Określono nieobsługiwany typ wyjściowy "{0}".|  
 
 
 ## <a name="error-0108"></a>Błąd 0108  
@@ -1611,19 +1611,19 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning jest tworzony, gdy w definicji XML modułu niestandardowego zdefiniowano zbyt wiele portów wejściowych lub wyjściowych.  
   
-**Tłumaczenia** Upewnij się, że maksymalna liczba portów wejściowych i wyjściowych zdefiniowanych w definicji XML modułu niestandardowego nie przekracza maksymalnej dozwolonej liczby portów.  
+**Rozwiązanie:** Upewnij się, że maksymalna liczba portów wejściowych i wyjściowych zdefiniowanych w definicji XML modułu niestandardowego nie przekracza maksymalnej dozwolonej liczby portów.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Przekroczono obsługiwaną liczbę portów wejściowych lub wyjściowych.|  
-|Przekroczono liczbę obsługiwanych portów{0}"". Maksymalna dozwolona liczba{0}portów "" to "{1}".| 
+|Przekroczono liczbę obsługiwanych portów "{0}". Maksymalna dozwolona liczba portów "{0}" to "{1}".| 
 
 ## <a name="error-0109"></a>Błąd 0109  
  Zgłaszany, gdy plik definicji modułu definiuje nieprawidłowy selektor kolumny  
   
  Ten błąd w Azure Machine Learning jest tworzony, gdy składnia argumentu selektora kolumn zawiera błąd w definicji XML modułu niestandardowego.  
   
-**Tłumaczenia** Ten błąd jest generowany, gdy składnia argumentu selektora kolumn zawiera błąd w definicji XML modułu niestandardowego.  
+**Rozwiązanie:** Ten błąd jest generowany, gdy składnia argumentu selektora kolumn zawiera błąd w definicji XML modułu niestandardowego.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1635,7 +1635,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning jest generowany, gdy właściwość *Identyfikator portu* w elemencie Properties argumentu typu ColumnPicker nie jest zgodna z wartością identyfikatora portu wejściowego.  
   
-**Tłumaczenia** Upewnij się, że właściwość identyfikator portu pasuje do wartości identyfikatora portu wejściowego zdefiniowanego w definicji XML modułu niestandardowego.  
+**Rozwiązanie:** Upewnij się, że właściwość identyfikator portu pasuje do wartości identyfikatora portu wejściowego zdefiniowanego w definicji XML modułu niestandardowego.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1648,7 +1648,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning jest tworzony, gdy nieprawidłowa właściwość jest przypisana do elementu w definicji XML modułu niestandardowego.  
   
-**Tłumaczenia** Upewnij się, że właściwość jest obsługiwana przez niestandardowy element modułu.  
+**Rozwiązanie:** Upewnij się, że właściwość jest obsługiwana przez niestandardowy element modułu.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1661,12 +1661,12 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning jest tworzony w przypadku wystąpienia błędu w formacie XML, który uniemożliwia przeanalizowanie definicji XML modułu niestandardowego jako prawidłowego pliku XML.  
   
-**Tłumaczenia** Upewnij się, że każdy element jest otwarty i poprawnie zamknięty. Upewnij się, że w formatowaniu XML nie ma żadnych błędów.  
+**Rozwiązanie:** Upewnij się, że każdy element jest otwarty i poprawnie zamknięty. Upewnij się, że w formatowaniu XML nie ma żadnych błędów.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można przeanalizować pliku definicji modułu.|  
-|Nie można przeanalizować pliku definicji{0}modułu "".|  
+|Nie można przeanalizować pliku definicji modułu "{0}".|  
   
 
 ## <a name="error-0113"></a>Błąd 0113  
@@ -1674,13 +1674,13 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning jest tworzony, gdy plik definicji XML modułu niestandardowego można analizować, ale zawiera błędy, takie jak definicje elementów nieobsługiwanych przez niestandardowe moduły.  
   
-**Tłumaczenia** Upewnij się, że plik definicji modułu niestandardowego definiuje elementy i właściwości, które są obsługiwane przez niestandardowe moduły.  
+**Rozwiązanie:** Upewnij się, że plik definicji modułu niestandardowego definiuje elementy i właściwości, które są obsługiwane przez niestandardowe moduły.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Plik definicji modułu zawiera błędy.|  
 |Plik definicji modułu "{0}" zawiera błędy.|  
-|Plik definicji modułu "{0}" zawiera błędy. [https://doi.org/10.13012/J8PN93H8]({1})|  
+|Plik definicji modułu "{0}" zawiera błędy. {1}|  
   
 
 ## <a name="error-0114"></a>Błąd 0114  
@@ -1688,12 +1688,12 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning jest tworzony w przypadku niepowodzenia kompilacji modułu niestandardowego. Dzieje się tak w przypadku wystąpienia co najmniej jednego niestandardowego błędu związanego z modułami podczas dodawania modułu niestandardowego. Dodatkowe błędy są raportowane w tym komunikacie o błędzie.  
   
-**Tłumaczenia** Usuń błędy raportowane w tym komunikacie wyjątku.  
+**Rozwiązanie:** Usuń błędy raportowane w tym komunikacie wyjątku.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można skompilować modułu niestandardowego.|  
-|Niestandardowa kompilacja modułu nie powiodła się z błędami:{0}|  
+|Niestandardowa kompilacja modułu nie powiodła się z błędami: {0}|  
   
 
 ## <a name="error-0115"></a>Błąd 0115  
@@ -1701,12 +1701,12 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning występuje, gdy podajesz skrypt niestandardowego modułu, który używa nieznanego rozszerzenia nazwy pliku.  
   
-**Tłumaczenia** Sprawdź format pliku i rozszerzenie nazwy pliku dowolnych plików skryptów zawartych w module niestandardowym.  
+**Rozwiązanie:** Sprawdź format pliku i rozszerzenie nazwy pliku dowolnych plików skryptów zawartych w module niestandardowym.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nieobsługiwana wielkość skryptu domyślnego.|  
-|Nieobsługiwany rozmiar {0} pliku dla skryptu domyślnego.|  
+|Nieobsługiwana {0} rozmiaru pliku dla skryptu domyślnego.|  
   
 
 ## <a name="error-0121"></a>Błąd 0121  
@@ -1723,7 +1723,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Połączono z serwerem, nie można zapisać do tabeli.|  
-|Nie można zapisać w tabeli SQL:{0}|  
+|Nie można zapisać w tabeli SQL: {0}|  
 
 
 ## <a name="error-0122"></a>Błąd 0122  
@@ -1731,7 +1731,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning występuje, gdy jako kolumny wag wybrano zbyt wiele kolumn.  
   
-**Tłumaczenia** Przejrzyj wejściowy zestaw danych i jego metadane. Upewnij się, że tylko jedna kolumna zawiera wagi.  
+**Rozwiązanie:** Przejrzyj wejściowy zestaw danych i jego metadane. Upewnij się, że tylko jedna kolumna zawiera wagi.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1743,7 +1743,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd w Azure Machine Learning występuje, jeśli używasz wektora jako kolumny etykiety.  
   
-**Tłumaczenia** W razie potrzeby zmień format danych w kolumnie lub wybierz inną kolumnę.  
+**Rozwiązanie:** W razie potrzeby zmień format danych w kolumnie lub wybierz inną kolumnę.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1776,18 +1776,18 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd jest generowany, gdy użytkownik określi domenę SQL, która nie jest obsługiwana w Azure Machine Learning. Ten błąd zostanie wyświetlony, jeśli próbujesz nawiązać połączenie z serwerem bazy danych w domenie, która nie jest listy dozwolonych. Obecnie dozwolone domeny SQL to: ". database.windows.net", ". cloudapp.net" lub ". database.secure.windows.net". Oznacza to, że serwer musi być serwerem SQL platformy Azure lub serwerem w maszynie wirtualnej na platformie Azure.  
   
-**Tłumaczenia** Ponownie przejdź do modułu. Sprawdź, czy serwer bazy danych SQL należy do jednej z zaakceptowanych domen:  
+**Rozwiązanie:** Ponownie przejdź do modułu. Sprawdź, czy serwer bazy danych SQL należy do jednej z zaakceptowanych domen:  
   
--   .database.windows.net  
+-   . database.windows.net  
   
--   .cloudapp.net  
+-   . cloudapp.net  
   
--   .database.secure.windows.net  
+-   . database.secure.windows.net  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nieobsługiwana domena SQL.|  
-|Domena {0} SQL nie jest obecnie obsługiwana w usłudze Azure ml|  
+|@No__t_0 domeny SQL nie jest obecnie obsługiwana w usłudze Azure ML|  
   
 
 ## <a name="error-0127"></a>Błąd 0127  
@@ -1805,7 +1805,7 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Rozmiar pikseli obrazu przekracza dozwolony limit.|  
-|Rozmiar pikseli obrazu w pliku "{0}" przekracza dozwolony limit: ""{1}|  
+|Rozmiar pikseli obrazu w pliku "{0}" przekracza dozwolony limit: "{1}"|  
 
 
 ## <a name="error-0128"></a>Błąd 0128  
@@ -1827,15 +1827,15 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Liczba kolumn w zestawie danych przekracza dozwolony limit.|  
-|Liczba kolumn w zestawie danych w elemencie "{0}" przekracza dozwolony rozmiar.|  
-|Liczba kolumn w zestawie danych w elemencie "{0}" przekracza dozwolony limit wynoszący "{1}". "|  
-|Liczba kolumn w zestawie danych w elemencie "{0}" przekracza{1}dozwolony limit{2}"" ".|  
+|Liczba kolumn w zestawie danych w elemencie "{0}" przekracza dozwolone. "|  
+|Liczba kolumn w zestawie danych w elemencie "{0}" przekracza dozwolony limit wynoszący "{1}".|  
+|Liczba kolumn w zestawie danych w elemencie "{0}" przekracza dozwolony limit "{1}" "{2}".|  
 ## <a name="error-0130"></a>Błąd 0130  
  Wyjątek występuje, gdy wszystkie wiersze w zestawie danych szkoleniowych zawierają brakujące wartości.  
   
  Dzieje się tak, gdy niektóre kolumny w zestawie danych szkoleniowych są puste.  
   
-**Tłumaczenia** Użyj nieoczyszczonego modułu [danych](clean-missing-data.md) , aby usunąć kolumny zawierające wszystkie brakujące wartości.  
+**Rozwiązanie:** Użyj [nieoczyszczonego modułu danych](clean-missing-data.md) , aby usunąć kolumny zawierające wszystkie brakujące wartości.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -1847,13 +1847,13 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd jest generowany, gdy nie można rozpakować i odczytać co najmniej jednego zestawu danych w pliku zip. Ten błąd zostanie wyświetlony, jeśli Rozpakowanie nie powiedzie się, ponieważ plik zip lub jeden z jego plików jest uszkodzony lub wystąpił błąd systemu podczas próby rozpakowania i rozwinięcia pliku.  
   
-**Tłumaczenia** Szczegóły podane w komunikacie o błędzie służą do określenia, jak można wykonać operację.  
+**Rozwiązanie:** Szczegóły podane w komunikacie o błędzie służą do określenia, jak można wykonać operację.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Przekazywanie spakowanych zestawów danych nie powiodło się|  
-|Spakowanego {0} zestawu danych nie powiodło się z następującym komunikatem:{1}|  
-|Spakowanego {0} zestawu danych nie {1} powiodło się z powodu wyjątku z komunikatem:{2}|  
+|@No__t_0 spakowanego zestawu danych nie powiodło się z następującym komunikatem: {1}|  
+|@No__t_0 spakowanego zestawu danych nie powiodło się z powodu {1} wyjątku z komunikatem: {2}|  
   
 
 ## <a name="error-0132"></a>Błąd 0132  
@@ -1861,12 +1861,12 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd jest generowany, gdy nie określono nazwy pliku do rozpakowania. znaleziono wiele plików w pliku zip. Ten błąd zostanie wyświetlony, jeśli plik zip zawiera więcej niż jeden skompresowany plik, ale plik do wyodrębnienia nie został określony w **zestawie danych do rozpakowania** pola tekstowego, w okienku **Właściwości** modułu. Obecnie podczas uruchamiania modułu można wyodrębnić tylko jeden plik.  
   
-**Tłumaczenia** Komunikat o błędzie zawiera listę plików znalezionych w pliku zip. Skopiuj nazwę żądanego pliku i wklej go do **zestawu danych, aby rozpakować** pole tekstowe.  
+**Rozwiązanie:** Komunikat o błędzie zawiera listę plików znalezionych w pliku zip. Skopiuj nazwę żądanego pliku i wklej go do **zestawu danych, aby rozpakować** pole tekstowe.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Plik zip zawiera wiele plików; należy określić plik do rozwinięcia.|  
-|Plik zawiera więcej niż jeden plik. Określ plik do rozwinięcia. Znaleziono następujące pliki:{0}|  
+|Plik zawiera więcej niż jeden plik. Określ plik do rozwinięcia. Znaleziono następujące pliki: {0}|  
   
 
 ## <a name="error-0133"></a>Błąd 0133  
@@ -1874,12 +1874,12 @@ Ogólnie przekształcenie bazujące na liczbie może być stosowane tylko do zes
   
  Ten błąd jest generowany, gdy nazwa pliku wprowadzona w **zestawie danych, aby rozpakować** pole w okienku **Właściwości** , nie jest zgodna z nazwą pliku znajdującego się w pliku zip. Najczęstszymi przyczynami tego błędu jest błąd wpisywania lub wyszukanie niewłaściwego pliku Archiwum dla pliku do rozwinięcia.  
   
-**Tłumaczenia** Ponownie przejdź do modułu. Jeśli nazwa pliku przeznaczonego do dekompresowania pojawia się na liście znalezionych plików, skopiuj nazwę pliku i wklej ją do pola właściwości **zestawu danych** . Jeśli na liście nie ma odpowiedniej nazwy pliku, sprawdź, czy masz prawidłowy plik. zip i poprawną nazwę żądanego pliku.  
+**Rozwiązanie:** Ponownie przejdź do modułu. Jeśli nazwa pliku przeznaczonego do dekompresowania pojawia się na liście znalezionych plików, skopiuj nazwę pliku i wklej ją do pola właściwości **zestawu danych** . Jeśli na liście nie ma odpowiedniej nazwy pliku, sprawdź, czy masz prawidłowy plik. zip i poprawną nazwę żądanego pliku.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Określony plik nie znalazł int pliku zip.|  
-|Nie znaleziono określonego pliku. Znaleziono następujące pliki:{0}|  
+|Nie znaleziono określonego pliku. Znaleziono następujące pliki: {0}|  
   
 
 ## <a name="error-0134"></a>Błąd 0134
@@ -1893,20 +1893,20 @@ Rozwiązanie:
 
  Jeśli w zaznaczeniu kolumny zostanie uwzględniona kolumna etykieta, ale nie zostanie ona rozpoznana, użyj modułu [Edytuj metadane](edit-metadata.md) , aby oznaczyć ją jako kolumnę etykiety.
   
-  <!--Use the [Summarize Data](summarize-data.md) module to generate a report that shows how many values are missing in each column. -->Następnie możesz użyć nieoczyszczonego modułu [danych](clean-missing-data.md) , aby usunąć z kolumny etykieta brakujące wartości. 
+  <!--Use the [Summarize Data](summarize-data.md) module to generate a report that shows how many values are missing in each column. -->Następnie możesz użyć [nieoczyszczonego modułu danych](clean-missing-data.md) , aby usunąć z kolumny etykieta brakujące wartości. 
 
  Sprawdź wejściowe zestawy danych, aby upewnić się, że zawierają one prawidłowe dane, oraz wystarczającą liczbę wierszy, aby spełnić wymagania operacji. Wiele algorytmów generuje komunikat o błędzie, jeśli wymagają pewnej minimalnej liczby wierszy danych, ale dane zawierają tylko kilka wierszy lub tylko nagłówek.
   
 |Komunikaty o wyjątkach|
 |------------------------|
 |Wyjątek występuje, gdy brakuje kolumny etykiety lub zawiera ona niewystarczającą liczbę wierszy z etykietą.|  
-|Wyjątek występuje, gdy brakuje kolumny etykiety lub jest ona mniejsza {0} niż etykieta wierszy|  
+|Wyjątek występuje, gdy brakuje kolumny etykiety lub jest ona mniejsza niż {0} wierszy z etykietą|  
   
 
 ## <a name="error-0135"></a>Błąd 0135  
  Obsługiwany jest tylko klaster oparty na centroida.  
   
-**Tłumaczenia** Ten komunikat o błędzie może pojawić się, Jeśli podjęto próbę oszacowania modelu klastrowania opartego na niestandardowym algorytmie klastrowania, który nie używa centroids do zainicjowania klastra.  
+**Rozwiązanie:** Ten komunikat o błędzie może pojawić się, Jeśli podjęto próbę oszacowania modelu klastrowania opartego na niestandardowym algorytmie klastrowania, który nie używa centroids do zainicjowania klastra.  
   
   <!--You can use [Evaluate Model](evaluate-model.md) to evaluate clustering models that are based on the  [K-Means Clustering](k-means-clustering.md) module. For custom algorithms, use the [Execute R Script](execute-r-script.md) module to create a custom evaluation script.  -->
   
@@ -1933,14 +1933,14 @@ Rozwiązanie:
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Błąd konwersji między właściwością magazynu tabeli Azure i kolumną DataSet.|  
-|Błąd konwersji między właściwością magazynu tabeli Azure i kolumną DataSet. Informacje dodatkowe:{0}|  
+|Błąd konwersji między właściwością magazynu tabeli Azure i kolumną DataSet. Informacje dodatkowe: {0}|  
 
 ## <a name="error-0138"></a>Błąd 0138  
  Pamięć została wyczerpana, nie można ukończyć działania modułu. Próbkowanie w dół zestawu danych może pomóc w zmniejszeniu problemu.  
   
  Ten błąd występuje, gdy uruchomiony moduł wymaga więcej pamięci niż jest dostępny w kontenerze platformy Azure. Taka sytuacja może wystąpić, jeśli pracujesz z dużym zestawem danych, a bieżąca operacja nie może pasować do pamięci.  
   
-**Tłumaczenia** Jeśli próbujesz odczytać duży zestaw danych, a operacja nie może zostać zakończona, próbkowanie zestawu danych może pomóc.  
+**Rozwiązanie:** Jeśli próbujesz odczytać duży zestaw danych, a operacja nie może zostać zakończona, próbkowanie zestawu danych może pomóc.  
   
   <!--If you use the visualizations on datasets to check the cardinality of columns, only some rows are sampled. To get a full report, use [Summarize Data](summarize-data.md). You can also use the [Apply SQL Transformation](apply-sql-transformation.md) to check for the number of unique values in each column.  
   
@@ -1979,17 +1979,17 @@ Rozwiązanie:
 |------------------------|  
 |Konwersja nie jest dozwolona.|  
 |Nie można skonwertować: {0}.|  
-|Nie można skonwertować: {0}, w wierszu {1}.|  
-|Nie można skonwertować kolumny typu {0} na kolumnę {1} typu w wierszu {2}.|  
-|Nie można skonwertować kolumny "{2}" typu {0} na kolumnę typu {1} w wierszu {3}.|  
-|Nie można skonwertować kolumny "{2}" typu {0} do kolumny{3}"" typu {1} w wierszu {4}.| 
+|Nie można skonwertować: {0}, w {1} wiersza.|  
+|Nie można skonwertować kolumny typu {0} do kolumny typu {1} w {2} wiersza.|  
+|Nie można skonwertować kolumny "{2}" typu {0} do kolumny typu {1} w {3} wiersza.|  
+|Nie można skonwertować kolumny "{2}" typu {0} na kolumnę "{3}" typu {1} w wierszu {4}.| 
 
 ## <a name="error-0140"></a>Błąd 0140  
  Wyjątek występuje, jeśli argument zestawu kolumn zakończonych niezawiera inne kolumny z wyjątkiem kolumny Label.  
   
  Ten błąd występuje, jeśli zestaw danych został podłączony do modułu, który wymaga wielu kolumn, w tym funkcji, ale podano tylko kolumnę etykieta.  
   
-**Tłumaczenia** Wybierz co najmniej jedną kolumnę funkcji do uwzględnienia w zestawie danych.  
+**Rozwiązanie:** Wybierz co najmniej jedną kolumnę funkcji do uwzględnienia w zestawie danych.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -2001,7 +2001,7 @@ Rozwiązanie:
   
  Ten błąd w Azure Machine Learning występuje, gdy w wybranej kolumnie nie ma wystarczającej liczby unikatowych wartości, aby wykonać tę operację.  
   
-**Tłumaczenia** Niektóre operacje wykonują operacje statystyczne w kolumnach funkcji i kategorii, a jeśli nie ma wystarczającej wartości, operacja może zakończyć się niepowodzeniem lub zwracać nieprawidłowy wynik. Sprawdź zestaw danych, aby zobaczyć, ile wartości znajduje się w kolumnach funkcja i etykieta, i sprawdź, czy operacja, którą próbujesz wykonać, jest statystycznie ważna.  
+**Rozwiązanie:** Niektóre operacje wykonują operacje statystyczne w kolumnach funkcji i kategorii, a jeśli nie ma wystarczającej wartości, operacja może zakończyć się niepowodzeniem lub zwracać nieprawidłowy wynik. Sprawdź zestaw danych, aby zobaczyć, ile wartości znajduje się w kolumnach funkcja i etykieta, i sprawdź, czy operacja, którą próbujesz wykonać, jest statystycznie ważna.  
   
  Jeśli źródłowy zestaw danych jest prawidłowy, możesz również sprawdzić, czy niektóre operacje operowania danymi nadrzędnymi lub metadanych spowodowały zmianę danych i Usunięto niektóre wartości.  
   
@@ -2010,7 +2010,7 @@ Rozwiązanie:
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Liczba wybranych kolumn liczbowych i unikatowych wartości w kolumnach kategorii i String jest za mała.|  
-|Łączna liczba wybranych kolumn liczbowych i unikatowych wartości w kolumnach kategorii i String (obecnie {0}) powinna wynosić co najmniej{1}|  
+|Łączna liczba wybranych kolumn liczbowych i unikatowych wartości w kolumnach kategorii i String (obecnie {0}) powinna wynosić co najmniej {1}|  
   
 
 ## <a name="error-0142"></a>Błąd 0142  
@@ -2021,7 +2021,7 @@ Rozwiązanie:
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można załadować certyfikatu.|  
-|Nie można {0} załadować certyfikatu. Jego odcisk palca to {1}.|  
+|Nie można załadować certyfikatu {0}. Jego odcisk palca jest {1}.|  
   
 
 ## <a name="error-0143"></a>Błąd 0143  
@@ -2029,24 +2029,24 @@ Rozwiązanie:
   
  Ten błąd w Azure Machine Learning występuje po określeniu nieprawidłowego adresu URL i Module wymaga prawidłowego adresu URL usługi GitHub.  
   
-**Tłumaczenia** Sprawdź, czy adres URL odwołuje się do prawidłowego repozytorium GitHub. Inne typy lokacji nie są obsługiwane.  
+**Rozwiązanie:** Sprawdź, czy adres URL odwołuje się do prawidłowego repozytorium GitHub. Inne typy lokacji nie są obsługiwane.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Adres URL nie należy do github.com.|  
-|Adres URL nie należy do github.com:{0}|  
+|Adres URL nie należy do github.com: {0}|  
 
 ## <a name="error-0144"></a>Błąd 0144  
  W adresie URL usługi GitHub dostarczonym przez użytkownika brakuje oczekiwanej części.  
   
  Ten błąd w Azure Machine Learning występuje, gdy określisz Źródło pliku GitHub przy użyciu nieprawidłowego formatu adresu URL.  
   
-**Tłumaczenia** Sprawdź, czy adres URL repozytorium GitHub jest prawidłowy i czy jest zakończony ciągiem \blob\ lub\\\tree.  
+**Rozwiązanie:** Sprawdź, czy adres URL repozytorium GitHub jest prawidłowy i czy został zakończony przy użyciu \blob\ lub \tree \\.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można przeanalizować adresu URL usługi GitHub.|  
-|Nie można przeanalizować adresu URL usługi GitHub\\(oczekiwano elementu\\"\blob" lub "\tree" po nazwie repozytorium):{0}|  
+|Nie można przeanalizować adresu URL usługi GitHub (oczekiwano elementu "\blob \\" lub "\tree \\" po nazwie repozytorium): {0}|  
 
 ## <a name="error-0145"></a>Błąd 0145  
  Z jakiegoś powodu nie można utworzyć katalogu replikacji.  
@@ -2065,7 +2065,7 @@ Rozwiązanie:
   
  Ten błąd w Azure Machine Learning występuje podczas wyodrębniania plików, ale niektóre nazwy plików są zbyt długie, gdy są rozpakowane.  
   
-**Tłumaczenia** Edytuj nazwy plików, takie jak łączona ścieżka i nazwa pliku nie dłuższa niż 248 znaków.  
+**Rozwiązanie:** Edytuj nazwy plików, takie jak łączona ścieżka i nazwa pliku nie dłuższa niż 248 znaków.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
@@ -2076,12 +2076,12 @@ Rozwiązanie:
   
  Ten błąd w Azure Machine Learning występuje, gdy nie można odczytać lub pobrać określonych plików z usługi GitHub.  
   
-**Tłumaczenia** Problem może być tymczasowy; Możesz próbować uzyskać dostęp do plików w innym czasie. Możesz też sprawdzić, czy masz odpowiednie uprawnienia i czy źródło jest prawidłowe.  
+**Rozwiązanie:** Problem może być tymczasowy; Możesz próbować uzyskać dostęp do plików w innym czasie. Możesz też sprawdzić, czy masz odpowiednie uprawnienia i czy źródło jest prawidłowe.  
   
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Błąd dostępu do usługi GitHub.|  
-|Błąd dostępu do usługi GitHub. [https://doi.org/10.13012/J8PN93H8]({0})|  
+|Błąd dostępu do usługi GitHub. {0}|  
   
 
 ## <a name="error-0148"></a>Błąd 0148  
@@ -2106,7 +2106,7 @@ Rozwiązanie:
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie znaleziono pliku usługi GitHub.|  
-|Nie znaleziono pliku GitHub.:{0}|  
+|Nie znaleziono pliku GitHub.: {0}|  
   
 
 ## <a name="error-0150"></a>Błąd 0150  
@@ -2131,7 +2131,7 @@ Rozwiązanie: Sprawdź adres URL i sprawdź, czy jest on zapisywalny.
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Wystąpił błąd podczas zapisywania w magazynie w chmurze (prawdopodobnie nieprawidłowy adres URL).|  
-|Wystąpił błąd podczas zapisywania w {0}magazynie w chmurze:. Sprawdź adres URL.|  
+|Wystąpił błąd podczas zapisywania w magazynie w chmurze: {0}. Sprawdź adres URL.|  
   
 ## <a name="error-0152"></a>Błąd 0152  
  Typ chmury platformy Azure został określony niepoprawnie w kontekście modułu.  
@@ -2139,7 +2139,7 @@ Rozwiązanie: Sprawdź adres URL i sprawdź, czy jest on zapisywalny.
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Zły typ chmury platformy Azure|  
-|Zły typ chmury platformy Azure:{0}|  
+|Zły typ chmury platformy Azure: {0}|  
   
 ## <a name="error-0153"></a>Błąd 0153  
  Określony punkt końcowy magazynu jest nieprawidłowy.  
@@ -2147,7 +2147,7 @@ Rozwiązanie: Sprawdź adres URL i sprawdź, czy jest on zapisywalny.
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Zły typ chmury platformy Azure|  
-|Zły punkt końcowy magazynu:{0}|  
+|Zły punkt końcowy magazynu: {0}|  
 
 ## <a name="error-0154"></a>Błąd 0154  
  Nie można rozpoznać określonej nazwy serwera  
@@ -2155,7 +2155,7 @@ Rozwiązanie: Sprawdź adres URL i sprawdź, czy jest on zapisywalny.
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Nie można rozpoznać określonej nazwy serwera|  
-|Nie można rozpoznać {0}określonego serwera. Documents.Azure.com|
+|Nie można rozpoznać określonego serwera {0}. documents.azure.com|
 
 ## <a name="error-0155"></a>Błąd 0155  
  Klient DocDb zgłosił wyjątek  
@@ -2163,7 +2163,7 @@ Rozwiązanie: Sprawdź adres URL i sprawdź, czy jest on zapisywalny.
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Klient DocDb zgłosił wyjątek|  
-|Klient DocDb:{0}|
+|DocDb Client: {0}|
 
 ## <a name="error-0156"></a>Błąd 0156  
  Zła odpowiedź dla serwera HCatalog.  
@@ -2190,5 +2190,5 @@ Aby uzyskać dalszą pomoc, zalecamy opublikowanie szczegółowego komunikatu za
 |Komunikaty o wyjątkach|  
 |------------------------|  
 |Wyjątek biblioteki.|  
-|Wyjątek biblioteki:{0}|  
-|{0}wyjątek biblioteki:{1}|  
+|Wyjątek biblioteki: {0}|  
+|wyjątek biblioteki {0}: {1}|  

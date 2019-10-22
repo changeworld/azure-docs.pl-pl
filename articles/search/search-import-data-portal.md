@@ -10,10 +10,10 @@ ms.date: 10/03/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 89f43227cfca3519a4985c5c961cf0b3c5774177
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71936907"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Kreator importu danych dla Azure Search
@@ -92,7 +92,7 @@ Kreator importu danych jest uruchamiany z paska poleceń na stronie Przegląd us
 
 2. Na stronie Przegląd usługi u góry kliknij pozycję **Importuj dane**.
 
-   ![Polecenie Importuj dane w portalu](./media/search-import-data-portal/import-data-cmd2.png "Uruchom Kreatora importu danych")
+   ![Importuj dane — polecenie w portalu](./media/search-import-data-portal/import-data-cmd2.png "Uruchamianie kreatora importu danych")
 
 Możesz również uruchomić **Importowanie danych** z innych usług platformy Azure, w tym Azure Cosmos DB, Azure SQL Database i usługi Azure Blob Storage. Poszukaj **Azure Search** w okienku nawigacji po lewej stronie Przegląd usługi.
 

@@ -10,14 +10,14 @@ ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c048dcf31d8f434f742d2da9351ef9b46f0a71d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69650062"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Skalowanie partycji i replik dla obciążeń zapytań i indeksowania w Azure Search
-Po [wybraniu warstwy cenowej](search-sku-tier.md) i zainicjowaniu obsługi [administracyjnej usługi wyszukiwania](search-create-service-portal.md)następnym krokiem jest opcjonalne zwiększenie liczby replik lub partycji używanych przez usługę. Każda warstwa oferuje stałą liczbę jednostek rozliczeniowych. W tym artykule wyjaśniono, jak przydzielić te jednostki w celu zapewnienia optymalnej konfiguracji, która równoważy wymagania dotyczące wykonywania zapytań, indeksowania i magazynu.
+Po [wybraniu warstwy cenowej](search-sku-tier.md) i [zainicjowaniu obsługi administracyjnej usługi wyszukiwania](search-create-service-portal.md)następnym krokiem jest opcjonalne zwiększenie liczby replik lub partycji używanych przez usługę. Każda warstwa oferuje stałą liczbę jednostek rozliczeniowych. W tym artykule wyjaśniono, jak przydzielić te jednostki w celu zapewnienia optymalnej konfiguracji, która równoważy wymagania dotyczące wykonywania zapytań, indeksowania i magazynu.
 
 Konfiguracja zasobów jest dostępna podczas konfigurowania usługi w [warstwie Podstawowa](https://aka.ms/azuresearchbasic) lub jednej z [warstw zoptymalizowanych pod kątem magazynu](search-limits-quotas-capacity.md). W przypadku usług w tych warstwach pojemność jest kupowana w przyrostach *jednostek wyszukiwania* (SUs), w których każda partycja i replika są liczone jako jeden su. 
 
@@ -29,7 +29,7 @@ Użycie mniejszego poziomu usługi SUs spowoduje zmniejszenie proporcjonalnie ra
 ## <a name="terminology-replicas-and-partitions"></a>Terminologia: repliki i partycje
 Repliki i partycje są zasobami podstawowymi, które wykonują usługi wyszukiwania.
 
-| Resource | Definicja |
+| Zasób | Definicja |
 |----------|------------|
 |*Partycje* | Zapewnia magazyn indeksu oraz operacje we/wy dla operacji odczytu i zapisu (na przykład podczas odbudowywania lub odświeżania indeksu).|
 |*Replik* | Wystąpienia usługi wyszukiwania, używane głównie do równoważenia obciążenia operacji zapytań. Każda replika zawsze obsługuje jedną kopię indeksu. Jeśli masz 12 replik, będziesz mieć 12 kopii każdego indeksu załadowanego do usługi.|
@@ -64,7 +64,7 @@ Ogólnie rzecz biorąc, aplikacje wyszukiwania wymagają większej liczby replik
 
 3. Kliknij przycisk **Zapisz** , aby potwierdzić zmiany.
 
-   ![Potwierdź zmiany w zakresie skalowania i] rozliczeń (media/search-capacity-planning/3-save-confirm.png "Potwierdź zmiany w zakresie skalowania i") rozliczeń
+   ![Potwierdź zmiany w zakresie skalowania i rozliczeń](media/search-capacity-planning/3-save-confirm.png "Potwierdź zmiany w zakresie skalowania i rozliczeń")
 
    Zmiany pojemności potrwają kilka godzin. Nie można anulować po rozpoczęciu procesu i nie ma monitorowania w czasie rzeczywistym dla zmian replik i partycji. Jednak następujący komunikat pozostanie widoczny w czasie trwania zmian.
 

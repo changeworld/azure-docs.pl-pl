@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 0f24b9c6ce2aeb318040b61c29d7e14c01886c46
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70073308"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Szablony profilów użytkowników w usłudze Azure API Management
@@ -95,7 +95,7 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 </div>  
 ```  
   
-### <a name="controls"></a>Formanty  
+### <a name="controls"></a>Kontrolki  
  Ten szablon nie może używać żadnych [kontrolek strony](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Model danych  
@@ -103,19 +103,19 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 > [!NOTE]
 >  Szablony [Profile](#Profile), [aplikacje](#Applications)i [subskrypcje](#Subscriptions) współużytkują ten sam model danych i otrzymują te same dane szablonu.  
   
-|Właściwość|Type|Opis|  
+|Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|`firstName`|ciąg|Imię bieżącego użytkownika.|  
-|`lastName`|ciąg|Nazwisko bieżącego użytkownika.|  
-|`companyName`|ciąg|Nazwa firmy bieżącego użytkownika.|  
-|`addresserEmail`|ciąg|Adres e-mail bieżącego użytkownika.|  
-|`developersUsageStatisticsLink`|ciąg|Względny adres URL służący do wyświetlania analiz dla bieżącego użytkownika.|  
+|`firstName`|string|Imię bieżącego użytkownika.|  
+|`lastName`|string|Nazwisko bieżącego użytkownika.|  
+|`companyName`|string|Nazwa firmy bieżącego użytkownika.|  
+|`addresserEmail`|string|Adres e-mail bieżącego użytkownika.|  
+|`developersUsageStatisticsLink`|string|Względny adres URL służący do wyświetlania analiz dla bieżącego użytkownika.|  
 |`subscriptions`|Kolekcja jednostek [subskrypcji](api-management-template-data-model-reference.md#Subscription) .|Subskrypcje dla bieżącego użytkownika.|  
 |`applications`|Kolekcja jednostek [aplikacji](api-management-template-data-model-reference.md#Application) .|Aplikacje bieżącego użytkownika.|  
-|`changePasswordUrl`|ciąg|Względny adres URL umożliwiający zmianę hasła bieżącego użytkownika.|  
-|`changeNameOrEmailUrl`|ciąg|Względny adres URL służący do zmiany nazwy i adresu e-mail bieżącego użytkownika.|  
-|`canChangePassword`|boolean|Czy bieżący użytkownik może zmienić swoje hasło.|  
-|`isSystemUser`|boolean|Czy bieżący użytkownik jest członkiem jednej z wbudowanych [grup](api-management-key-concepts.md#groups).|  
+|`changePasswordUrl`|string|Względny adres URL umożliwiający zmianę hasła bieżącego użytkownika.|  
+|`changeNameOrEmailUrl`|string|Względny adres URL służący do zmiany nazwy i adresu e-mail bieżącego użytkownika.|  
+|`canChangePassword`|wartość logiczna|Czy bieżący użytkownik może zmienić swoje hasło.|  
+|`isSystemUser`|wartość logiczna|Czy bieżący użytkownik jest członkiem jednej z wbudowanych [grup](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -314,29 +314,29 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 </div>  
 ```  
   
-### <a name="controls"></a>Formanty  
+### <a name="controls"></a>Kontrolki  
  Ten szablon może korzystać z następujących [kontrolek strony](api-management-page-controls.md).  
   
--   [subscription-cancel](api-management-page-controls.md#subscription-cancel)  
+-   [subskrypcja — Anuluj](api-management-page-controls.md#subscription-cancel)  
   
 ### <a name="data-model"></a>Model danych  
   
 > [!NOTE]
 >  Szablony [Profile](#Profile), [aplikacje](#Applications)i [subskrypcje](#Subscriptions) współużytkują ten sam model danych i otrzymują te same dane szablonu.  
   
-|Właściwość|Type|Opis|  
+|Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|`firstName`|ciąg|Imię bieżącego użytkownika.|  
-|`lastName`|ciąg|Nazwisko bieżącego użytkownika.|  
-|`companyName`|ciąg|Nazwa firmy bieżącego użytkownika.|  
-|`addresserEmail`|ciąg|Adres e-mail bieżącego użytkownika.|  
-|`developersUsageStatisticsLink`|ciąg|Względny adres URL służący do wyświetlania analiz dla bieżącego użytkownika.|  
+|`firstName`|string|Imię bieżącego użytkownika.|  
+|`lastName`|string|Nazwisko bieżącego użytkownika.|  
+|`companyName`|string|Nazwa firmy bieżącego użytkownika.|  
+|`addresserEmail`|string|Adres e-mail bieżącego użytkownika.|  
+|`developersUsageStatisticsLink`|string|Względny adres URL służący do wyświetlania analiz dla bieżącego użytkownika.|  
 |`subscriptions`|Kolekcja jednostek [subskrypcji](api-management-template-data-model-reference.md#Subscription) .|Subskrypcje dla bieżącego użytkownika.|  
 |`applications`|Kolekcja jednostek [aplikacji](api-management-template-data-model-reference.md#Application) .|Aplikacje bieżącego użytkownika.|  
-|`changePasswordUrl`|ciąg|Względny adres URL umożliwiający zmianę hasła bieżącego użytkownika.|  
-|`changeNameOrEmailUrl`|ciąg|Względny adres URL służący do zmiany nazwy i adresu e-mail bieżącego użytkownika.|  
-|`canChangePassword`|boolean|Czy bieżący użytkownik może zmienić swoje hasło.|  
-|`isSystemUser`|boolean|Czy bieżący użytkownik jest członkiem jednej z wbudowanych [grup](api-management-key-concepts.md#groups).|  
+|`changePasswordUrl`|string|Względny adres URL umożliwiający zmianę hasła bieżącego użytkownika.|  
+|`changeNameOrEmailUrl`|string|Względny adres URL służący do zmiany nazwy i adresu e-mail bieżącego użytkownika.|  
+|`canChangePassword`|wartość logiczna|Czy bieżący użytkownik może zmienić swoje hasło.|  
+|`isSystemUser`|wartość logiczna|Czy bieżący użytkownik jest członkiem jednej z wbudowanych [grup](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -477,7 +477,7 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 </div>  
 ```  
   
-### <a name="controls"></a>Formanty  
+### <a name="controls"></a>Kontrolki  
  Ten szablon może korzystać z następujących [kontrolek strony](api-management-page-controls.md).  
   
 -   [aplikacje — akcje](api-management-page-controls.md#app-actions)  
@@ -487,19 +487,19 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 > [!NOTE]
 >  Szablony [Profile](#Profile), [aplikacje](#Applications)i [subskrypcje](#Subscriptions) współużytkują ten sam model danych i otrzymują te same dane szablonu.  
   
-|Właściwość|Type|Opis|  
+|Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|`firstName`|ciąg|Imię bieżącego użytkownika.|  
-|`lastName`|ciąg|Nazwisko bieżącego użytkownika.|  
-|`companyName`|ciąg|Nazwa firmy bieżącego użytkownika.|  
-|`addresserEmail`|ciąg|Adres e-mail bieżącego użytkownika.|  
-|`developersUsageStatisticsLink`|ciąg|Względny adres URL służący do wyświetlania analiz dla bieżącego użytkownika.|  
+|`firstName`|string|Imię bieżącego użytkownika.|  
+|`lastName`|string|Nazwisko bieżącego użytkownika.|  
+|`companyName`|string|Nazwa firmy bieżącego użytkownika.|  
+|`addresserEmail`|string|Adres e-mail bieżącego użytkownika.|  
+|`developersUsageStatisticsLink`|string|Względny adres URL służący do wyświetlania analiz dla bieżącego użytkownika.|  
 |`subscriptions`|Kolekcja jednostek [subskrypcji](api-management-template-data-model-reference.md#Subscription) .|Subskrypcje dla bieżącego użytkownika.|  
 |`applications`|Kolekcja jednostek [aplikacji](api-management-template-data-model-reference.md#Application) .|Aplikacje bieżącego użytkownika.|  
-|`changePasswordUrl`|ciąg|Względny adres URL umożliwiający zmianę hasła bieżącego użytkownika.|  
-|`changeNameOrEmailUrl`|ciąg|Względny adres URL służący do zmiany nazwy i adresu e-mail bieżącego użytkownika.|  
-|`canChangePassword`|boolean|Czy bieżący użytkownik może zmienić swoje hasło.|  
-|`isSystemUser`|boolean|Czy bieżący użytkownik jest członkiem jednej z wbudowanych [grup](api-management-key-concepts.md#groups).|  
+|`changePasswordUrl`|string|Względny adres URL umożliwiający zmianę hasła bieżącego użytkownika.|  
+|`changeNameOrEmailUrl`|string|Względny adres URL służący do zmiany nazwy i adresu e-mail bieżącego użytkownika.|  
+|`canChangePassword`|wartość logiczna|Czy bieżący użytkownik może zmienić swoje hasło.|  
+|`isSystemUser`|wartość logiczna|Czy bieżący użytkownik jest członkiem jednej z wbudowanych [grup](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -604,7 +604,7 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 </a>  
 ```  
   
-### <a name="controls"></a>Formanty  
+### <a name="controls"></a>Kontrolki  
  Ten szablon nie może używać żadnych [kontrolek strony](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Model danych  

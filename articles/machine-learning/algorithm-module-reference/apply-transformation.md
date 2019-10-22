@@ -1,5 +1,5 @@
 ---
-title: 'Zastosuj transformację: Dokumentacja modułu'
+title: 'Zastosuj transformację: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak zmodyfikować wejściowy zestaw danych na podstawie wcześniej obliczonego przekształcenia przy użyciu modułu Zastosuj przekształcenie w usłudze Azure Machine Learning.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 8b4ec9e71d9ce932a7b206467db91760f4a4fc47
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: adb2477fe2b7eea0dd0a98c7240843d90411d832
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128978"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693873"
 ---
-# <a name="apply-transformation-module"></a>Zastosuj przekształcenie modułu
+# <a name="apply-transformation-module"></a>Zastosuj moduł transformacji
 
 W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
@@ -32,7 +32,7 @@ Azure Machine Learning zapewnia obsługę tworzenia i stosowania wielu różnych
 
 ## <a name="how-to-use-apply-transformation"></a>Jak używać transformacji zastosowania  
   
-1. Dodaj do eksperymentu moduł **Zastosuj transformację** . Ten moduł można znaleźć w obszarze **Machine Learning**, w kategorii **wynik** . 
+1. Dodaj moduł **przekształcenia Zastosuj** do potoku. Ten moduł można znaleźć w obszarze **Machine Learning**, w kategorii **wynik** . 
   
 2. Znajdź istniejącą transformację do użycia jako dane wejściowe.  Wcześniej zapisane przekształcenia można znaleźć w grupie **transformacje** w okienku nawigacji po lewej stronie.  
   
@@ -42,7 +42,7 @@ Azure Machine Learning zapewnia obsługę tworzenia i stosowania wielu różnych
   
 4. Nie trzeba ustawiać innych parametrów, ponieważ podczas definiowania transformacji jest wykonywane wszystkie dostosowania.  
   
-5. Aby zastosować transformację do nowego zestawu danych, uruchom eksperyment.  
+5. Aby zastosować transformację do nowego zestawu danych, uruchom potok.  
 
 ## <a name="next-steps"></a>Następne kroki
 

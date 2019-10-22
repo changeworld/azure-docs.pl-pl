@@ -9,42 +9,42 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: a91f1446d8aab3db36499a9b5707d48d387b6081
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 861b04203575a6046608cf3fad3117ad2726acab
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131560"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693468"
 ---
-# <a name="sample-1---regression-predict-price"></a>Przykład 1 — regresja: Przewidywanie ceny
+# <a name="sample-1---regression-predict-price"></a>Przykład 1-regresja: cena predykcyjna
 
 Dowiedz się, jak utworzyć model regresji uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu interfejsu wizualizacji.
 
-Ten eksperyment pociąga za **regresor Las decyzyjny** , aby przewidzieć cenę samochodu w oparciu o funkcje techniczne, takie jak marka, model, możliwości i rozmiar. Ponieważ próbujesz odpowiedzieć na pytanie "jak dużo?" jest to tzw. problem z regresją. Można jednak zastosować te same podstawowe kroki w tym przykładzie, aby rozwiązać dowolny typ problemu uczenia maszynowego, niezależnie od tego, czy jest to regresja, klasyfikacja, klastrowanie i tak dalej.
+Ten potok pociąga za **regresor Las decyzyjny** , aby przewidzieć cenę samochodu w oparciu o funkcje techniczne, takie jak marka, model, możliwości i rozmiar. Ponieważ próbujesz odpowiedzieć na pytanie "jak dużo?" jest to tzw. problem z regresją. Można jednak zastosować te same podstawowe kroki w tym przykładzie, aby rozwiązać dowolny typ problemu uczenia maszynowego, niezależnie od tego, czy jest to regresja, klasyfikacja, klastrowanie i tak dalej.
 
 Podstawowe kroki związane z modelem uczenia maszynowego są następujące:
 
 1. Pobieranie danych
 1. Wstępnie przetwórz dane
-1. Uczenie modelu
+1. Trenowanie modelu
 1. Ocenianie modelu
 
-Oto końcowy, ukończony wykres eksperymentu, nad którym pracujemy. Udostępnimy uzasadnienie dla wszystkich modułów, dzięki czemu będziesz w stanie podjąć podobne decyzje.
+Oto końcowy, ukończony wykres potoku. Ten artykuł zawiera uzasadnienie dla wszystkich modułów, dzięki czemu można podejmować podobne decyzje.
 
-![Wykres eksperymentu](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
+![Wykres potoku](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Wybierz przycisk **Otwórz** dla przykładowego eksperymentu 1:
+4. Wybierz przycisk **Otwórz** dla potoku przykładowego 1:
 
-    ![Otwieranie eksperymentu](media/how-to-ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
+    ![Otwórz potok](media/how-to-ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
 
 ## <a name="get-the-data"></a>Pobieranie danych
 
-W tym przykładzie jest używany zestaw **danych cen samochodów (RAW)** , który pochodzi z REPOZYTORIUM Machine Learning UCI. Zestaw danych zawiera 26 kolumn zawierających informacje o urządzeniach przenośnych, takich jak marka, model, Cena, funkcje pojazdu (na przykład liczba cylindrów), MPG i Ocena ryzyka dla ubezpieczenia. Celem tego eksperymentu jest przewidywanie ceny samochodu.
+W tym przykładzie jest używany zestaw **danych cen samochodów (RAW)** , który pochodzi z REPOZYTORIUM Machine Learning UCI. Zestaw danych zawiera 26 kolumn zawierających informacje o urządzeniach przenośnych, takich jak marka, model, Cena, funkcje pojazdu (na przykład liczba cylindrów), MPG i Ocena ryzyka dla ubezpieczenia. Celem tego przykładu jest przewidywanie ceny samochodu.
 
 ## <a name="pre-process-the-data"></a>Wstępnie przetwórz dane
 
@@ -54,11 +54,11 @@ Użyj modułu **SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych**
 
 ![Przetwarzanie wstępne danych](./media/how-to-ui-sample-regression-predict-automobile-price-basic/data-processing.png)
 
-## <a name="train-the-model"></a>Uczenie modelu
+## <a name="train-the-model"></a>Trenowanie modelu
 
 Problemy dotyczące uczenia maszynowego są różne. Typowe zadania uczenia maszynowego obejmują klasyfikację, klastrowanie, regresję i systemy zalecające, z których każdy może wymagać innego algorytmu. Wybór algorytmu często zależy od wymagań dotyczących przypadku użycia. Po wybraniu algorytmu należy dostosować jego parametry, aby szkolić dokładniejszy model. Następnie należy oszacować wszystkie modele na podstawie metryk, takich jak dokładność, intelligibility i wydajność.
 
-Ponieważ celem tego eksperymentu jest przewidywanie cen samochodów, a kolumna etykieta (cena) zawiera liczby rzeczywiste, model regresji jest dobrym rozwiązaniem. Biorąc pod uwagę, że liczba funkcji jest stosunkowo mała (mniej niż 100) i te funkcje nie są rozrzedzone, granica decyzji może być nieliniowa. Dlatego używamy **regresji lasów decyzyjnych** dla tego eksperymentu.
+Ponieważ celem tego przykładu jest przewidywanie cen samochodów, a kolumna etykiety (cena) zawiera liczby rzeczywiste, model regresji jest dobrym rozwiązaniem. Biorąc pod uwagę, że liczba funkcji jest stosunkowo mała (mniej niż 100) i te funkcje nie są rozrzedzone, granica decyzji może być nieliniowa. Dlatego używamy **regresji lasów decyzyjnych** dla tego potoku.
 
 Użyj modułu **Split Data** , aby losowo podzielić dane wejściowe, tak aby zestaw danych szkoleniowy zawierał 70% danych oryginalnych, a test DataSet zawiera 30% oryginalnych danych.
 
@@ -84,8 +84,9 @@ Przekaż wyniki do modułu **oceny modelu** , aby wygenerować metryki oceny. Ab
 
 Zapoznaj się z innymi przykładami dostępnymi dla interfejsu wizualizacji:
 
-- [Przykład 2 — Regresja: Porównanie algorytmów do prognozowania cen samochodów](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [Przykład 3 — Klasyfikacja: Przewidywanie ryzyka kredytowego](how-to-ui-sample-classification-predict-credit-risk-basic.md)
-- [Przykład 4 — Klasyfikacja: Przewidywanie ryzyka kredytowego (z uwzględnieniem kosztów)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-- [Przykład 5 — Klasyfikacja: Prognozowanie zmian](how-to-ui-sample-classification-predict-churn.md)
-- [Przykład 6 — Klasyfikacja: Przewidywanie opóźnień lotów](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Przykład 2-Regresja: porównanie algorytmów do prognozowania cen samochodów](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [Przykład 3 — Klasyfikacja: przewidywanie ryzyka kredytowego](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+- [Przykład 4 — Klasyfikacja: przewidywanie ryzyka kredytowego (z uwzględnieniem kosztów)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+- [Przykład 5 — Klasyfikacja: przewidywalność zmian](how-to-ui-sample-classification-predict-churn.md)
+- [Przykład 6 — Klasyfikacja: przewidywanie opóźnień lotów](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Przykład 7 — Klasyfikacja tekstu: Recenzje książek](how-to-ui-sample-text-classification.md)

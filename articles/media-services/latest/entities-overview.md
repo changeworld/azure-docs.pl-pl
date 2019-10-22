@@ -1,5 +1,5 @@
 ---
-title: Filtrowanie, porządkowanie, stronicowanie jednostek Media Services — platforma Azure | Microsoft Docs
+title: Filtrowanie, porządkowanie i stronicowanie jednostek Media Services — platforma Azure | Microsoft Docs
 description: W tym artykule omówiono filtrowanie, porządkowanie, stronicowanie jednostek Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -12,20 +12,20 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ed509ac8fea43a9c011bbbf76c1dc433cd78d43c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298954"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693306"
 ---
-# <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrowanie, porządkowanie, stronicowanie jednostek Media Services
+# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtrowanie, porządkowanie i stronicowanie jednostek Media Services
 
-W tym temacie omówiono opcje zapytania OData i obsługa podziału na strony dostępne podczas tworzenia listy jednostek Azure Media Services v3.
+W tym temacie omówiono opcje zapytania OData i obsługa podziału na strony dostępne podczas wyświetlania listy jednostek Azure Media Services v3.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-* Właściwości jednostek, które są typu DateTime, są zawsze w formacie UTC.
+* Właściwości jednostek, które są typu `Datetime`, są zawsze w formacie UTC.
 * Biały znak w ciągu zapytania powinien być kodowany przy użyciu adresu URL przed wysłaniem żądania.
 
 ## <a name="comparison-operators"></a>Operatory porównania
@@ -34,21 +34,21 @@ Aby porównać pole z wartością stałą, można użyć następujących operato
 
 Operatory równości:
 
-- `eq`: testowanie, czy pole jest **równe** wartości stałej
-- `ne`: testowanie, czy pole **nie jest równe** wartości stałej
+- `eq`: Sprawdź, czy pole jest *równe* stałej wartości.
+- `ne`: Sprawdź, czy pole *nie jest równe* wartości stałej.
 
 Operatory zakresu:
 
-- `gt`: testowanie, czy pole jest **większe niż** wartość stała
-- `lt`: testowanie, czy pole jest **mniejsze niż** wartość stała
-- `ge`: testowanie, czy pole jest **większe lub równe** wartości stałej
-- `le`: testowanie, czy pole jest **mniejsze niż lub równe** wartości stałej
+- `gt`: Sprawdź, czy pole jest *większe niż* wartość stała.
+- `lt`: Sprawdź, czy pole jest *mniejsze niż* wartość stała.
+- `ge`: Sprawdź, czy pole jest *większe lub równe* stałej. wartość
+- `le`: Sprawdź, czy pole jest *mniejsze niż lub równe* wartości stałej.
 
 ## <a name="filter"></a>Filtr
 
-**$Filter** — Użyj filtru, aby podać parametr filtru OData w celu znalezienia tylko interesujących obiektów.
+Użyj `$filter`, aby podać parametr filtru OData w celu znalezienia tylko interesujących obiektów.
 
-Poniżej przedstawiono przykładowe filtry w alternateId elementu zawartości:
+Poniżej przedstawiono przykładowe filtry dla `alternateId` wartości elementu zawartości:
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
@@ -63,28 +63,28 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>Porządkuj według
 
-**$OrderBy** — Użyj jej do sortowania zwracanych obiektów przez określony parametr. Na przykład:    
+Użyj `$orderby` do sortowania zwracanych obiektów przez określony parametr. Na przykład:    
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Aby posortować wyniki w kolejności rosnącej lub malejącej, Dołącz `asc` lub `desc` do nazwy pola rozdzielone spacją. Na przykład `$orderby properties/created desc`.
+Aby posortować wyniki w kolejności rosnącej lub malejącej, Dołącz `asc` lub `desc` do nazwy pola rozdzielone spacją. Na przykład: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Pomiń token
 
-**$skiptoken** — Jeśli odpowiedź na zapytanie zawiera wiele elementów, usługa zwraca wartość tokenu pomijania (`@odata.nextLink`), która jest używana do uzyskiwania następnej strony wyników. Ta wartość może być używana na stronie przez cały zestaw wyników.
+Jeśli odpowiedź na zapytanie zawiera wiele elementów, usługa zwraca wartość `$skiptoken` (`@odata.nextLink`), która służy do uzyskania następnej strony wyników. Użyj go do strony za pomocą całego zestawu wyników.
 
-W Media Services V3 nie można skonfigurować rozmiaru strony. Rozmiar strony jest różny w zależności od typu jednostki. Przeczytaj poszczególne sekcje, które są zgodne, aby uzyskać szczegółowe informacje.
+W Media Services V3 nie można skonfigurować rozmiaru strony. Rozmiar strony jest różny w zależności od typu jednostki. Przeczytaj poszczególne sekcje, które obserwują, aby uzyskać szczegółowe informacje.
 
-Jeśli jednostki są tworzone lub usuwane podczas stronicowania kolekcji, zmiany są odzwierciedlane w zwracanych wynikach (jeśli te zmiany znajdują się w części kolekcji, która nie została pobrana). 
+Jeśli obiekty są tworzone lub usuwane podczas stronicowania w kolekcji, zmiany zostaną odzwierciedlone w zwracanych wynikach (jeśli te zmiany znajdują się w części kolekcji, która nie została pobrana). 
 
 > [!TIP]
-> Należy zawsze używać `nextLink` do wyliczenia kolekcji i nie zależy od określonego rozmiaru strony.
+> Należy zawsze używać `nextLink` do wyliczania kolekcji i nie zależy od określonego rozmiaru strony.
 >
-> @No__t-0 będzie obecna tylko wtedy, gdy istnieje więcej niż jedna strona jednostek.
+> Wartość `nextLink` będzie obecna tylko wtedy, gdy istnieje więcej niż jedna strona jednostek.
 
-Rozważmy następujący przykład użycia $skiptoken. Upewnij się, że zastąpisz *amstestaccount* z nazwą konta i ustawisz wartość *interfejsu API-Version* w najnowszej wersji.
+Rozważmy następujący przykład użycia `$skiptoken`. Upewnij się, że zastąpisz *amstestaccount* z nazwą konta i ustawisz wartość *interfejsu API-Version* w najnowszej wersji.
 
 W przypadku żądania listy zasobów takich jak:
 
@@ -94,7 +94,7 @@ x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-Odpowiedź będzie wyglądać podobnie do tego:
+Otrzymasz odpowiedź podobną do tej:
 
 ```
 HTTP/1.1 200 OK
@@ -136,7 +136,7 @@ while (currentPage.NextPageLink != null)
 
 ## <a name="using-logical-operators-to-combine-query-options"></a>Używanie operatorów logicznych do łączenia opcji zapytania
 
-Media Services v3 obsługuje operatory logiczne "or" i "i". 
+Media Services v3 obsługuje operatory logiczne **lub** i **i** . 
 
 Poniższy przykład REST sprawdza stan zadania:
 

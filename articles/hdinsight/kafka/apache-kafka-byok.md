@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71122679"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Przenoszenie własnego klucza do Apache Kafka w usłudze Azure HDInsight
@@ -61,7 +61,7 @@ Aby utworzyć klaster Kafka z obsługą BYOK, wykonaj następujące czynności:
 
         ![Apache Kafka — generowanie nazwy klucza](./media/apache-kafka-byok/apache-kafka-create-key.png "Generuj nazwę klucza")
 
-        c. Wybierz utworzony klucz z listy kluczy.
+        d. Wybierz utworzony klucz z listy kluczy.
 
         ![Lista kluczy magazynu kluczy Apache Kafka](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
@@ -79,7 +79,7 @@ Aby utworzyć klaster Kafka z obsługą BYOK, wykonaj następujące czynności:
 
         ![Ustaw pozycję Wybierz podmiot zabezpieczeń dla zasad dostępu Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
 
-        c. Ustawianie **uprawnień klucza** do **pobierania**, **odwinięcia klucza**i **zawijania klucza**.
+        d. Ustawianie **uprawnień klucza** do **pobierania**, **odwinięcia klucza**i **zawijania klucza**.
 
         ![Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy1](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy1")
 

@@ -6,29 +6,30 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sgilley
-author: sdgilley
-ms.date: 05/15/2019
-ms.openlocfilehash: f560887a48ce4754b26a54ef0e18093c5577af34
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+author: xiaoharper
+ms.author: zhanxia
+ms.date: 9/23/2019
+ms.openlocfilehash: a23f123c6ffadaad4f830e1f4eab3820e6ef56f6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128806"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692218"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Co to jest interfejs wizualny dla Azure Machine Learning? 
 
 Interfejs wizualny (wersja zapoznawcza) dla Azure Machine Learning umożliwia Przygotowywanie danych, uczenie, testowanie, wdrażanie, zarządzanie i śledzenie modeli uczenia maszynowego bez konieczności pisania kodu.
 
-Nie ma potrzeby programowania, można wizualnie połączyć [zestawy danych](#dataset) i [moduły](#module) , aby utworzyć model.
+Nie ma potrzeby programowania, można wizualnie połączyć [zestawy danych](#datasets) i [moduły](#module) , aby utworzyć model.
 
 Interfejs wizualny używa [obszaru roboczego](concept-workspace.md) Azure Machine Learning, aby:
 
-+ Zapisuj artefakty [eksperymentu](#experiment) w obszarze roboczym.
-+ Dostęp do [zestawów danych](#dataset).
-+ Użyj [zasobów obliczeniowych](#compute) w obszarze roboczym, aby uruchomić eksperyment. 
++ Tworzenie, edytowanie i uruchamianie [potoków](#pipeline) w obszarze roboczym.
++ Dostęp do [zestawów danych](#datasets).
++ Użyj [zasobów obliczeniowych](#compute) w obszarze roboczym, aby uruchomić potok. 
 + Zarejestruj [modele](concept-azure-machine-learning-architecture.md#models).
-+ [Wdrażaj](#deployment) modele jako usługi sieci Web w zasobach obliczeniowych w obszarze roboczym.
++ [Publikuj](#publish) potoki jako punkty końcowe Rest.
++ [Wdrażaj](#deployment) modele jako punkty końcowe potoku (dla wnioskowania wsadowego) lub punkty końcowe w czasie rzeczywistym w zasobach obliczeniowych w obszarze roboczym.
 
 ![Przegląd interfejsu wizualizacji](media/ui-concept-visual-interface/overview.png)
 
@@ -36,18 +37,19 @@ Interfejs wizualny używa [obszaru roboczego](concept-workspace.md) Azure Machin
 
 Interfejs wizualny zapewnia interaktywną, wizualną kanwę umożliwiającą szybkie kompilowanie, testowanie i iterację modelu. 
 
-+ Przeciąganie i upuszczanie [modułów](#module) na kanwę.
-+ Połącz moduły ze sobą, aby utworzyć [eksperyment](#experiment).
-+ Uruchom eksperyment, korzystając z zasobu COMPUTE w obszarze roboczym usługi Machine Learning.
-+ Wykonaj iterację projektu modelu, edytując eksperyment i uruchamiając go ponownie.
-+ Gdy wszystko będzie gotowe, przekonwertuj **eksperyment szkoleniowy** na **eksperyment predykcyjny**.
-+ [Wdróż](#deployment) eksperyment predykcyjny jako usługę sieci Web, dzięki czemu model może być dostępny dla innych osób.
++ Przeciąganie i upuszczanie [zestawów danych](#datasets) i [modułów](#module) na kanwę.
++ Połącz moduły ze sobą, aby utworzyć [potok](#pipeline).
++ Uruchom potok przy użyciu zasobu obliczeniowego obszaru roboczego usługi Machine Learning.
++ Wykonaj iterację projektu modelu, edytując potok i uruchamiając go ponownie.
++ Gdy wszystko będzie gotowe, przekonwertuj **potok szkoleniowy** na **potok wnioskowania**.
++ [Opublikuj](#publish) potok jako punkt końcowy REST, jeśli chcesz go ponownie przesłać bez kodu języka Python, który został skonstruowany.
++ [Wdróż](#deployment) potok wnioskowania jako punkt końcowy potoku lub punkt końcowy w czasie rzeczywistym, aby można było uzyskać dostęp do modelu przez inne osoby.
 
-## <a name="experiment"></a>Eksperyment
+## <a name="pipeline"></a>Potok
 
-Utwórz eksperyment od podstaw lub Użyj istniejącego przykładowego eksperymentu jako szablonu.  Za każdym razem, gdy uruchamiasz eksperyment, artefakty są przechowywane w obszarze roboczym.
+Utwórz [potok](concept-azure-machine-learning-architecture.md#ml-pipelines) ml od podstaw lub Użyj istniejącego przykładowego potoku jako szablonu. Za każdym razem, gdy uruchamiasz potok, artefakty są przechowywane w obszarze roboczym. Uruchomienia potoku są pogrupowane w [eksperymenty](concept-azure-machine-learning-architecture.md#experiments).
 
-Eksperyment składa się z zestawów danych i modułów analitycznych połączonych ze sobą w celu skonstruowania modelu. Prawidłowy eksperyment ma następujące cechy:
+Potok składa się z zestawów danych i modułów analitycznych połączonych ze sobą w celu skonstruowania modelu. W przypadku, prawidłowy potok ma następujące cechy:
 
 * Zestawy danych mogą być połączone tylko z modułami.
 * Moduły mogą być połączone z zestawami danych lub innymi modułami.
@@ -55,11 +57,11 @@ Eksperyment składa się z zestawów danych i modułów analitycznych połączon
 * Należy ustawić wszystkie wymagane parametry dla każdego modułu.
 
 
-Aby dowiedzieć się, jak rozpocząć pracę z interfejsem wizualnym, zobacz [samouczek: Przewidywanie ceny samochodów za pomocą interfejsu](ui-tutorial-automobile-price-train-score.md)wizualnego.
+Aby dowiedzieć się, jak rozpocząć pracę z interfejsem wizualnym, zobacz [Samouczek: przewidywanie ceny za samochód dla urządzeń przenośnych za pomocą interfejsu wizualnego](ui-tutorial-automobile-price-train-score.md).
 
-## <a name="dataset"></a>Zestaw danych
+## <a name="datasets"></a>Zestawy danych
 
-Zestaw danych to dane, które zostały przekazane do interfejsu wizualizacji do użycia w procesie modelowania. Kilka przykładowych zestawów danych jest dostępnych do eksperymentowania z programem i można przekazać im więcej zestawów danych.
+Zestaw danych uczenia maszynowego ułatwia uzyskiwanie dostępu do danych i korzystanie z nich. Wiele przykładowych zestawów danych znajduje się w interfejsie wizualizacji, dzięki któremu można eksperymentować z programem. W razie potrzeby możesz [zarejestrować](./how-to-create-register-datasets.md) więcej zestawów danych.
 
 ## <a name="module"></a>Moduł
 
@@ -73,30 +75,40 @@ Aby uzyskać pomoc dotyczącą przechodzenia przez bibliotekę dostępnych algor
 
 ## <a name="compute"></a>Zasoby obliczeniowe
 
-Użyj zasobów obliczeniowych z obszaru roboczego, aby uruchomić eksperyment lub hostować wdrożone modele jako usługi sieci Web. Są obsługiwane obliczeniowych elementów docelowych:
+Użyj zasobów obliczeniowych z obszaru roboczego, aby uruchomić potok i hostować wdrożone modele jako punkty końcowe w czasie rzeczywistym lub punkty końcowe potoku (na potrzeby wnioskowania wsadowego). Obsługiwane elementy docelowe obliczeń są następujące:
 
-
-| Obliczeniowego elementu docelowego | Szkolenia | Wdrożenie |
+| Docelowy zasób obliczeniowy | Szkolenie | Wdrażanie |
 | ---- |:----:|:----:|
-| Obliczeniowe platformy Azure Machine Learning | ✓ | |
+| Azure Machine Learning obliczeń | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 Elementy docelowe obliczeń są dołączone do [obszaru roboczego](concept-workspace.md)Machine Learning. Obiektami docelowymi obliczeń można zarządzać w obszarze roboczym w [Azure Portal](https://portal.azure.com) lub na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
 
-## <a name="deployment"></a>Wdrożenie
+## <a name="publish"></a>Publikuj
 
-Gdy model analizy predykcyjnej będzie gotowy, należy wdrożyć go jako usługę sieci Web bezpośrednio z poziomu interfejsu wizualizacji.
+Po przygotowaniu potoku możesz go opublikować jako punkt końcowy REST. [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) można przesłać bez kodu języka Python, który go skonstruowano.
 
-Usługi sieci Web zapewniają interfejs między aplikacją a modelem oceniania. Aplikacja zewnętrzna może komunikować się z modelem oceniania w czasie rzeczywistym. Wywołanie usługi sieci Web zwraca wyniki prognozowania do aplikacji zewnętrznej. Wywołanie usługi sieci Web polega na przekazaniu klucza interfejsu API utworzonego podczas wdrażania tej usługi. Usługa sieci Web jest oparta na architekturze REST, popularnej architektury dla projektów programowania w sieci Web.
+Ponadto PublishedPipeline może służyć do ponownego przesłania potoku z różnymi wartościami PipelineParameter i danymi wejściowymi.
 
-Aby dowiedzieć się, jak wdrożyć model, [zobacz Samouczek: Wdróż model uczenia maszynowego za pomocą interfejsu](ui-tutorial-automobile-price-deploy.md)wizualnego.
+## <a name="deployment"></a>Wdrażanie
+
+Gdy model predykcyjny jest gotowy, wdróż go jako punkt końcowy potoku lub punkt końcowy w czasie rzeczywistym w interfejsie wizualizacji.
+
+Punkt końcowy potoku to [PublishedPipeline, który można przesłać do uruchomienia potoku z różnymi wartościami PipelineParameter i danymi wejściowymi dotyczącymi wnioskowania wsadowego.
+
+Punkt końcowy w czasie rzeczywistym zapewnia interfejs między aplikacją a modelem oceniania. Aplikacja zewnętrzna może komunikować się z modelem oceniania w czasie rzeczywistym. Wywołanie punktu końcowego w czasie rzeczywistym zwraca wyniki prognozowania do aplikacji zewnętrznej. Aby wykonać wywołanie do punktu końcowego w czasie rzeczywistym, należy przekazać klucz interfejsu API, który został utworzony podczas wdrażania punktu końcowego. Punkt końcowy jest oparty na pozostałej, popularnej architekturze dla projektów programowania w sieci Web.
+
+Aby dowiedzieć się, jak wdrożyć model, zobacz [Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą interfejsu wizualnego](ui-tutorial-automobile-price-deploy.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Poznaj podstawy analizy predykcyjnej i uczenia maszynowego przy [użyciu samouczka: Przewidywanie ceny samochodów za pomocą interfejsu wizualnego](ui-tutorial-automobile-price-train-score.md)
+* Poznaj podstawy analizy predykcyjnej i uczenia maszynowego za pomocą [samouczka: przewidywanie ceny za samochód z użyciem interfejsu wizualnego](ui-tutorial-automobile-price-train-score.md)
 * Użyj jednego z przykładów i zmodyfikuj, aby wymusić Twoje potrzeby:
-    * [Przykład 1 — regresja: Przewidywana cena](how-to-ui-sample-regression-predict-automobile-price-basic.md)
-    * [Przykład 2 — Regresja: Przewidywanie cen i porównywanie algorytmów](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [Przykład 3 — Klasyfikacja: Przewidywanie ryzyka kredytowego](how-to-ui-sample-classification-predict-credit-risk-basic.md)
-    * [Przykład 4 — Klasyfikacja: Przewidywanie ryzyka kredytowego (z uwzględnieniem kosztów)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [Przykład 5 — Klasyfikacja: Przewidywanie zmian, pragnienie i kupowanie](how-to-ui-sample-classification-predict-churn.md)
+
+    * [Przykład 1-regresja: cena predykcyjna](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+    * [Przykład 2-Regresja: przewidywanie ceny i porównywanie algorytmów](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [Przykład 3 — Klasyfikacja: przewidywanie ryzyka kredytowego](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+    * [Przykład 4 — Klasyfikacja: przewidywanie ryzyka kredytowego (z uwzględnieniem kosztów)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [Przykład 5 — Klasyfikacja: przewidywanie zmian, pragnienie i kupowanie](how-to-ui-sample-classification-predict-churn.md)
+    * [Przykład 6 — Klasyfikacja: przewidywanie opóźnień lotów](how-to-ui-sample-classification-predict-flight-delay.md)
+

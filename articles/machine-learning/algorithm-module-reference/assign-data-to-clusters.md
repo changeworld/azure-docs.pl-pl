@@ -1,5 +1,5 @@
 ---
-title: 'Przypisywanie danych do klastra: Dokumentacja modułu'
+title: 'Przypisywanie danych do klastra: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak używać modułu przypisywanie danych do klastra w usłudze Azure Machine Learning do oceny modelu klastrowania.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 56f608044716ea3655576c11aa7a62343215f508
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3caf568590beb5b1f9d346d472c93f134a4f3a5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128985"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693233"
 ---
-# <a name="module-assign-data-to-clusters"></a>Elementu Przypisywanie danych do klastrów
+# <a name="module-assign-data-to-clusters"></a>Moduł: przypisywanie danych do klastrów
 
-W tym artykule opisano sposób korzystania z modułu *przypisywanie danych do klastrów* w Azure Machine Learning interfejsie wizualnym. Moduł generuje przewidywania za pośrednictwem modelu klastrowania, który został przeszkolony przy użyciu tego algorytmu.
+W tym artykule opisano sposób korzystania z modułu *przypisywanie danych do klastrów* w Azure Machine Learning interfejsie wizualnym. Moduł generuje przewidywania za pośrednictwem modelu klastrowania, który został przeszkolony przy użyciu *tego algorytmu.*
 
 Moduł przypisz dane do klastrów zwraca zestaw danych, który zawiera prawdopodobne przypisania dla każdego nowego punktu danych. 
 
@@ -31,7 +31,7 @@ Moduł przypisz dane do klastrów zwraca zestaw danych, który zawiera prawdopod
   
     - Możesz również dodać istniejący model przeszkolonych klastrów z grupy **zapisane modele** w obszarze roboczym.
 
-2. Dołącz model przeszkolony do lewego portu wejściowego przypisywania **danych do klastrów**.  
+2. Dołącz model przeszkolony do lewego portu wejściowego **przypisywania danych do klastrów**.  
 
 3. Dołącz nowy zestaw danych jako dane wejściowe. 
 
@@ -44,7 +44,7 @@ Moduł przypisz dane do klastrów zwraca zestaw danych, który zawiera prawdopod
   
     Jeśli wyczyścisz to pole wyboru, tylko wyniki zostaną zwrócone. Ta opcja może być przydatna podczas tworzenia prognoz w ramach usługi sieci Web.
   
-5.  Uruchom eksperyment.  
+5.  Uruchamianie potoku.  
   
 ### <a name="results"></a>Wyniki
 

@@ -1,5 +1,5 @@
 ---
-title: 'Regresja lasu decyzyjnego: Dokumentacja modułu'
+title: 'Regresja lasu decyzyjnego: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak utworzyć model regresji na podstawie kompletu drzew decyzyjnych za pomocą modułu regresja lasu decyzyjnego w usłudze Azure Machine Learning.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b8bb3285aecb6aff399606e6263f014027a86581
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128889"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693174"
 ---
 # <a name="decision-forest-regression-module"></a>Moduł regresji lasu decyzyjnego
 
@@ -24,7 +24,7 @@ Użyj tego modułu, aby utworzyć model regresji na podstawie kompletu drzew dec
 
 Po skonfigurowaniu modelu należy przeprowadzić uczenie modelu przy użyciu zestawu danych z etykietami i modułu [uczenie modelu](./train-model.md) .  Model przeszkolony może być następnie używany do prognozowania. 
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Drzewa decyzyjne są modelami nieparametrycznymi, które wykonują sekwencję prostych testów dla każdego wystąpienia, przechodząc do struktury danych drzewa binarnego do momentu osiągnięcia węzła liścia (decyzja).
 
@@ -38,21 +38,21 @@ Drzewa decyzyjne mają następujące zalety:
 
 Ten model regresji składa się z kompletów drzew decyzyjnych. Każde drzewo w lesie z decyzją regresji wyprowadza rozkład gaussowskie jako prognozowanie. Agregacja jest wykonywana w ramach zestawu drzew, aby znaleźć rozkład gaussowskie najbliżej połączonej dystrybucji dla wszystkich drzew w modelu.
 
-Aby uzyskać więcej informacji na temat teoretycznej struktury tego algorytmu i jego implementacji, zobacz ten artykuł: [Lasy decyzyjne: Ujednolicona platforma do klasyfikowania, regresji, oszacowania gęstości, uczenie kolektora i uczenie częściowo nadzorowane](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Aby uzyskać więcej informacji na temat teoretycznej struktury tego algorytmu i jego implementacji, zobacz ten artykuł: [lasy decyzyjne: ujednolicona struktura klasyfikacji, regresji, oszacowania gęstości, uczenie kolektora i uczenie Międzynadzorowane ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Konfigurowanie modelu regresji lasu decyzyjnego
 
-1. Dodaj do eksperymentu moduł **regresji lasu** . Moduł można znaleźć w interfejsie w obszarze **Machine Learning**, **zainicjuj model**i **regresja**.
+1. Dodaj moduł **regresji lasu decyzji** do potoku. Moduł można znaleźć w interfejsie w obszarze **Machine Learning**, **zainicjuj model**i **regresja**.
 
-2. Otwórz właściwości modułu i dla **metody ponownej próbkowania**wybierz metodę użytą do utworzenia poszczególnych drzew.  Możesz wybrać jedną z opcji Working lub **replikacja**.
+2. Otwórz właściwości modułu i dla **metody ponownej próbkowania**wybierz metodę użytą do utworzenia poszczególnych drzew.  Możesz wybrać jedną z opcji **Working** lub **replikacja**.
 
-    - **Working**: Working jest również nazywane *agregacją Bootstrap*. Każde drzewo w lesie z decyzją regresji wyprowadza rozkład gaussowskie w drodze przewidywania. Agregacją jest znalezienie gaussowskie, którego pierwsze dwa momenty są zgodne z chwilą mieszaniny gaussowskie podaną przez połączenie wszystkich gaussowskie zwracanych przez poszczególne drzewa.
+    - **Working**: w workach jest również wywoływana *agregacja Bootstrap*. Każde drzewo w lesie z decyzją regresji wyprowadza rozkład gaussowskie w drodze przewidywania. Agregacją jest znalezienie gaussowskie, którego pierwsze dwa momenty są zgodne z chwilą mieszaniny gaussowskie podaną przez połączenie wszystkich gaussowskie zwracanych przez poszczególne drzewa.
 
          Aby uzyskać więcej informacji, zobacz wpis Wikipedia na potrzeby [agregowania Bootstrap](https://wikipedia.org/wiki/Bootstrap_aggregating).
 
-    - **Replikacja**: W replikacji Każde drzewo jest przeszkolone dokładnie na te same dane wejściowe. Określenie, który predykat Split jest używany dla każdego węzła drzewa, pozostaje losowy, a drzewa będą różne.
+    - **Replikacja**: w replikacji Każde drzewo jest przeszkolone dokładnie na te same dane wejściowe. Określenie, który predykat Split jest używany dla każdego węzła drzewa, pozostaje losowy, a drzewa będą różne.
 
-         Aby uzyskać więcej informacji na temat procesu szkolenia z opcją **replikacja** , zobacz [lasy decyzyjne dla przetwarzanie obrazów i analizy obrazu medycznego. Criminisi i J. Shotton. Springer 2013. ](https://research.microsoft.com/projects/decisionforests/).
+         Aby uzyskać więcej informacji na temat procesu szkolenia z opcją **replikacja** , zobacz [lasy decyzyjne dla przetwarzanie obrazów i analizy obrazu medycznego. Criminisi i J. Shotton. Springer 2013.](https://research.microsoft.com/projects/decisionforests/)..
 
 3. Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .
 
@@ -82,7 +82,7 @@ Aby uzyskać więcej informacji na temat teoretycznej struktury tego algorytmu i
 
    
 
-10. Uruchom eksperyment.
+10. Uruchamianie potoku.
 
 ### <a name="results"></a>Wyniki
 
@@ -92,7 +92,7 @@ Po zakończeniu szkolenia:
 
 + Aby wyświetlić reguły dla każdego węzła, kliknij każde drzewo i przejdź do szczegółów.
 
-+ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy dane wyjściowe modułu szkoleń i wybierz polecenie **Zapisz jako przeszkolony model**. Ta kopia modelu nie jest aktualizowana po kolejnych uruchomieniach eksperymentu. 
++ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy dane wyjściowe modułu szkoleń i wybierz polecenie **Zapisz jako przeszkolony model**. Ta kopia modelu nie jest aktualizowana po kolejnych uruchomieniach potoku. 
 
 ## <a name="next-steps"></a>Następne kroki
 

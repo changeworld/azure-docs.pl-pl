@@ -1,5 +1,5 @@
 ---
-title: 'Wprowadź dane ręcznie: Dokumentacja modułu'
+title: 'Wprowadź dane ręcznie: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak używać modułu wprowadzanie danych ręcznie w usłudze Azure Machine Learning, aby utworzyć mały zestaw danych, wpisując wartości. Zestaw danych może mieć wiele kolumn.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: d7e6cede12f5a348f59db83b31b19c89266dfdf7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bd5fb636dbf79534e84a21a461f8912ceb6d9633
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128842"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693157"
 ---
 # <a name="enter-data-manually-module"></a>Wprowadź ręcznie moduł danych
 
@@ -32,13 +32,13 @@ Ten moduł może być przydatny w następujących scenariuszach:
 
 ## <a name="enter-data-manually"></a>Ręczne wprowadzanie danych 
   
-1.  Dodaj moduł [Wprowadź dane ręcznie](./enter-data-manually.md) do swojego eksperymentu. Ten moduł można znaleźć w kategorii dane **wejściowe i wyjściowe** w Azure Machine Learning. 
+1.  Dodaj moduł [Wprowadź dane ręcznie](./enter-data-manually.md) do potoku. Ten moduł można znaleźć w kategorii dane **wejściowe i wyjściowe** w Azure Machine Learning. 
   
 2.  W polu **Format**danych wybierz jedną z następujących opcji. Te opcje określają sposób, w jaki podane dane powinny być analizowane. Wymagania dotyczące każdego formatu różnią się znacznie, dlatego pamiętaj, aby przeczytać tematy pokrewne.  
   
     -   **ARFF**. Format pliku relacji atrybutu używany przez Weka.   
   
-    -   **WOLUMIN CSV**. Format wartości rozdzielanych przecinkami. Aby uzyskać więcej informacji, zobacz [konwertowanie do formatu CSV](./convert-to-csv.md).  
+    -   **Wolumin CSV**. Format wartości rozdzielanych przecinkami. Aby uzyskać więcej informacji, zobacz [konwertowanie do formatu CSV](./convert-to-csv.md).  
   
     -   **SVMLight**. Format używany przez Vowpal Wabbit i inne platformy uczenia maszynowego.  
   
@@ -48,7 +48,7 @@ Ten moduł może być przydatny w następujących scenariuszach:
   
 3.  Kliknij wewnątrz pola tekstowego **dane** , aby rozpocząć wprowadzanie danych. Następujące formaty wymagają szczególnej uwagi:  
   
-    - **WOLUMIN CSV**:  Aby utworzyć wiele kolumn, Wklej w tekście rozdzielanym przecinkami lub wpisz wiele kolumn, używając przecinków między polami.
+    - **CSV**: Aby utworzyć wiele kolumn, Wklej w tekście rozdzielanym przecinkami lub wpisz wiele kolumn, używając przecinków między polami.
   
         W przypadku wybrania opcji **HasHeader** można użyć pierwszego wiersza wartości jako nagłówka kolumny.  
   
@@ -60,9 +60,9 @@ Ten moduł może być przydatny w następujących scenariuszach:
   
         Jeśli zaznaczysz tę opcję, używane są nazwy kolumn, Kol1, Col2 i tak dalej. Nazwy kolumn można dodawać lub zmieniać później za pomocą polecenia [Edytuj metadane](./edit-metadata.md).  
   
-    -   **ARFF**:  Wklej w istniejącym pliku formatu ARFF. W przypadku wpisywania wartości bezpośrednio należy pamiętać o dodaniu opcjonalnego nagłówka i wymaganych pól atrybutów na początku danych. 
+    -   **ARFF**: Wklej w istniejącym pliku formatu ARFF. W przypadku wpisywania wartości bezpośrednio należy pamiętać o dodaniu opcjonalnego nagłówka i wymaganych pól atrybutów na początku danych. 
     
-        Na przykład następujące wiersze nagłówka i atrybutu można dodać do prostej listy. Nagłówek `SampleText`kolumny.
+        Na przykład następujące wiersze nagłówka i atrybutu można dodać do prostej listy. Nagłówek kolumny będzie `SampleText`.
     
         ```text
         % Title: SampleText.ARFF  
@@ -72,7 +72,7 @@ Ten moduł może być przydatny w następujących scenariuszach:
         \<type first data row here>  
         ```
 
-    -   **SVMLight**: Wpisz lub wklej wartość w wartościach przy użyciu formatu SVMLight.  
+    -   **SVMLight**: wpisz lub wklej wartość w wartościach przy użyciu formatu SVMLight.  
   
         Na przykład poniższy przykład reprezentuje pierwsze kilka wierszy zestawu danych darowizny krwi w formacie SVMight:  
   

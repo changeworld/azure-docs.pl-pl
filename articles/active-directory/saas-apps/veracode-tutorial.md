@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50056e6b201313805e7b9253e7a962e096b9df65
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72372996"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą Veracode
@@ -109,13 +109,13 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. W menu u góry kliknij pozycję **Ustawienia**, a następnie kliknij pozycję **administrator**.
    
-    ![Administracja](./media/veracode-tutorial/ic802911.png "Administracja")
+    ![Administracyjnego](./media/veracode-tutorial/ic802911.png "Administracja")
 
 1. Kliknij kartę **SAML** .
 
 1. W sekcji **Ustawienia protokołu SAML organizacji** wykonaj następujące czynności:
 
-    ![Administracja](./media/veracode-tutorial/ic802912.png "Administracja")
+    ![Administracyjnego](./media/veracode-tutorial/ic802912.png "Administracja")
 
     a.  W polu tekstowym **wystawca** wklej wartość **identyfikatora usługi Azure AD** , który został skopiowany z Azure Portal.
 
@@ -125,7 +125,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. W sekcji **Ustawienia rejestracji automatycznej** wykonaj następujące czynności, a następnie kliknij przycisk **Zapisz**:
 
-    ![Administracja](./media/veracode-tutorial/ic802913.png "Administracja")
+    ![Administracyjnego](./media/veracode-tutorial/ic802913.png "Administracja")
 
     a. W ramach **aktywacji nowego użytkownika**wybierz opcję **Brak wymagania aktywacji**.
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 030ea87018e1a2d438e3e4d728af76e429efda08
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ac5817675d3cfc97a8732ee2e10ec7b9246b12a5
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169022"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693335"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Obsługa platformy zestawów SDK urządzeń Azure IoT
 
@@ -56,11 +56,13 @@ Dla każdego z wymienionych zestawów SDK firma Microsoft:
 
 [Zestaw SDK urządzeń w języku Python platformy Azure IoT Hub](https://github.com/Azure/azure-iot-sdk-python) jest testowany z programem i obsługuje następujące konfiguracje.
 
-| System operacyjny                  | Compiler                       |
-|---------------------|--------------------------------|
-| Linux               | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
-| MacOS wysoka firma Sierra   | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
-| Rodzina systemów Windows 10   | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
+| System operacyjny                  | Compiler                          |
+|---------------------|-----------------------------------|
+| Linux               | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
+| MacOS wysoka firma Sierra   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
+| Rodzina systemów Windows 10   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
+
+\* Tylko w wersji 3.5.3 lub nowszej obsługują asynchroniczne interfejsy API, zalecamy użycie 3,7 lub nowszego.
 
 ### <a name="net-sdk"></a>Zestaw SDK dla platformy .NET
 
@@ -70,6 +72,8 @@ Dla każdego z wymienionych zestawów SDK firma Microsoft:
 |--------------------------------------|------------------------------------------------------------|
 | Linux                                | .NET Core 2.1                                              |
 | Jednostki SKU systemu Windows 10 dla komputerów stacjonarnych i serwerów   | .NET Core 2,1, .NET Framework 4.5.1 lub .NET Framework 4,7 |
+
+Zestawu .NET SDK można także użyć w połączeniu z usługą Windows IoT Core z [agentem urządzenia platformy Azure](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) lub z [niestandardowym NTService, który może używać usługi RPC do komunikowania się z aplikacjami platformy UWP](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/).
 
 ### <a name="nodejs-sdk"></a>Zestaw SDK środowiska Node.js
 

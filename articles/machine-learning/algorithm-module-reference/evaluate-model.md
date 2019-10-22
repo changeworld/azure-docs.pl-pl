@@ -1,5 +1,5 @@
 ---
-title: 'Oceń model: Dokumentacja modułu'
+title: 'Oceń model: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, w jaki sposób używać modułu oceny modelu w usłudze Azure Machine Learning, aby mierzyć dokładność przeszkolonego modelu.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 17263c8e7300f427b7d82aea65e1f83edf6d6fc4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 0ad4ceedf9c1d65339c9e4aabebc0a47475ed568
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128849"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693805"
 ---
 # <a name="evaluate-model-module"></a>Oceń moduł modelu
 
@@ -30,7 +30,7 @@ Ten moduł służy do mierzenia dokładności nauczonego modelu. Dostarczasz zes
 
 
 > [!TIP]
-> Jeśli dopiero zaczynasz Obliczanie modelu, zalecamy korzystanie z serii wideo przez Dr. Stephen Elston w ramach [kursu uczenia maszynowego](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) od EdX. 
+> Jeśli dopiero zaczynasz korzystać z wersji ewaluacyjnej modelu, zalecamy korzystanie z serii wideo przez Dr. Stephen Elston w ramach [kursu uczenia maszynowego](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) z usługi EdX. 
 
 
 Istnieją trzy sposoby używania modułu **szacowania modelu** :
@@ -44,7 +44,7 @@ Istnieją trzy sposoby używania modułu **szacowania modelu** :
 Aby oszacować model, należy połączyć zestaw danych, który zawiera zestaw kolumn wejściowych i wyników.  Jeśli żadne inne dane nie są dostępne, możesz użyć oryginalnego zestawu danych.
 
 1. Podłącz **wynikowy zestaw danych** wyjściowych z [modelu wynikowego](./score-model.md) do danych wejściowych **oceny modelu**. 
-2. Kliknij pozycję **Oceń moduł modelu** i uruchom eksperyment, aby wygenerować wyniki oceny.
+2. Kliknij pozycję **Oceń moduł modelu** i uruchom potok, aby wygenerować wyniki oceny.
 
 ## <a name="use-testing-data"></a>Korzystanie z danych testowych
 
@@ -66,7 +66,7 @@ Ta funkcja jest przydatna, ponieważ można łatwo porównać wyniki z dwóch r�
 
 ## <a name="results"></a>Wyniki
 
-Po uruchomieniu **oceny modelu**kliknij prawym przyciskiem myszy moduł i wybierz pozycję **wyniki oceny** , aby wyświetlić wyniki. Możesz:
+Po uruchomieniu **oceny modelu**kliknij prawym przyciskiem myszy moduł i wybierz pozycję **wyniki oceny** , aby wyświetlić wyniki. Przekonaj się:
 
 + Zapisz wyniki jako zestaw danych, aby ułatwić analizę przy użyciu innych narzędzi
 + Generowanie wizualizacji w interfejsie
@@ -95,7 +95,7 @@ Podczas oceniania modeli klasyfikacji są raportowane następujące metryki. W p
   
 -   **Precyzja** jest proporcją prawdziwych wyników dla wszystkich pozytywnych wyników.  
   
--   Funkcja odwoływania jest częścią wszystkich poprawnych wyników zwracanych przez model.  
+-   Funkcja **odwoływania** jest częścią wszystkich poprawnych wyników zwracanych przez model.  
   
 -   **F-Score** jest obliczana jako średnia ważona precyzji i odzyskanie między 0 i 1, gdzie idealna wartość F-score to 1.  
   
@@ -119,9 +119,9 @@ Metryki zwracane dla modeli regresji są ogólnie zaprojektowane w celu oszacowa
   
 - **Względny kwadratowy błąd (RSE)** podobnie normalizuje łączny kwadratowy błąd przewidywanych wartości przez podzielenie przez łączny kwadrat błędów rzeczywistych wartości.  
   
-- **Średnia zero jeden błąd (mzoe)** wskazuje, czy Prognoza była poprawna.  Innymi słowy: `ZeroOneLoss(x,y) = 1` `x!=y`w przeciwnym razie `0`.
+- **Średnia zero jeden błąd (mzoe)** wskazuje, czy Prognoza była poprawna.  Innymi słowy: `ZeroOneLoss(x,y) = 1`, gdy `x!=y`; w przeciwnym razie `0`.
   
-- **Współczynnik**wyznaczania, często określany jako R<sup>2</sup>, reprezentuje siłę predykcyjną modelu jako wartość z przedziału od 0 do 1. Zero oznacza, że model jest losowo (wyjaśnia nic); 1 oznacza, że jest idealnym dopasowaniem. Należy zachować ostrożność w interpretacji wartości R<sup>2</sup> , ponieważ niskie wartości mogą być całkowicie normalne i mogą być podejrzane wysokie wartości.
+- **Współczynnik wyznaczania**, często określany jako R<sup>2</sup>, reprezentuje siłę predykcyjną modelu jako wartość z przedziału od 0 do 1. Zero oznacza, że model jest losowo (wyjaśnia nic); 1 oznacza, że jest idealnym dopasowaniem. Należy zachować ostrożność w interpretacji wartości R<sup>2</sup> , ponieważ niskie wartości mogą być całkowicie normalne i mogą być podejrzane wysokie wartości.
   
 
 ## <a name="next-steps"></a>Następne kroki

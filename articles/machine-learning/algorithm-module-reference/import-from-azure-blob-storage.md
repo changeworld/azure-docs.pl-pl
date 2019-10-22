@@ -1,7 +1,7 @@
 ---
-title: 'Importuj z usługi Azure Blob Storage: Dokumentacja modułu'
+title: 'Importowanie z usługi Azure Blob Storage: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
-description: Zapoznaj się z tym tematem, jak używać narzędzia Import z usługi Azure Blob Storage w usłudze Azure Machine Learning do odczytywania danych z usługi Azure Blob Storage, dzięki czemu możesz korzystać z danych w eksperymentie uczenia maszynowego.
+description: Informacje w tym temacie opisują sposób używania importu z modułu Azure Blob Storage w usłudze Azure Machine Learning do odczytywania danych z usługi Azure Blob Storage, dzięki czemu można używać danych w potoku uczenia maszynowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: fea64070c496379351bb75f2a38aba9b4db70dcd
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f8d23bfbee6d3665d770d8cbbcb9440827a88e8e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128716"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693736"
 ---
 # <a name="import-from-azure-blob-storage-module"></a>Importuj z modułu Blob Storage platformy Azure
 
 W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do odczytywania danych z usługi Azure Blob Storage, dzięki czemu można używać danych w doświadczeniu uczenia maszynowego.  
+Ten moduł służy do odczytywania danych z usługi Azure Blob Storage, dzięki czemu można używać danych w potoku uczenia maszynowego.  
 
 Usługa Azure Blob Service służy do przechowywania dużych ilości danych, w tym danych binarnych. Dostęp do obiektów blob platformy Azure można uzyskać z dowolnego miejsca przy użyciu protokołu HTTP lub HTTPS. Uwierzytelnianie może być wymagane w zależności od typu magazynu obiektów BLOB. 
 
@@ -38,11 +38,11 @@ Zdecydowanie zalecamy Profilowanie danych przed ich zaimportowaniem, aby upewni�
 
 W poniższych krokach opisano sposób ręcznego konfigurowania źródła importu.
 
-1. Dodaj moduł **Import danych** do eksperymentu. Ten moduł można znaleźć w interfejsie, w **danych wejściowych i wyjściowych** .
+1. Dodaj moduł **Import danych** do potoku. Ten moduł można znaleźć w interfejsie, w **danych wejściowych i wyjściowych** .
 
 2. W obszarze **Źródło danych**wybierz pozycję **Azure Blob Storage**.
 
-3. W **polu Typ uwierzytelniania**wybierz opcję **publiczny (adres URL sygnatury** dostępu współdzielonego), Jeśli wiesz, że informacje są dostarczane jako publiczne źródło danych. Adres URL sygnatury dostępu współdzielonego jest adresem URL związanym z dostępem publicznym, który można wygenerować za pomocą narzędzia Azure Storage.
+3. W **polu Typ uwierzytelniania**wybierz opcję **publiczny (adres URL sygnatury dostępu współdzielonego)** , Jeśli wiesz, że informacje są dostarczane jako publiczne źródło danych. Adres URL sygnatury dostępu współdzielonego jest adresem URL związanym z dostępem publicznym, który można wygenerować za pomocą narzędzia Azure Storage.
 
     W przeciwnym razie wybierz pozycję **konto**.
 
@@ -56,7 +56,7 @@ W poniższych krokach opisano sposób ręcznego konfigurowania źródła importu
 
     - W polu **nazwa konta**wpisz lub wklej nazwę konta, które zawiera obiekt BLOB, do którego chcesz uzyskać dostęp.
 
-        Na przykład jeśli pełny adres URL konta magazynu to `http://myshared.blob.core.windows.net`, należy wpisać. `myshared`
+        Na przykład jeśli pełny adres URL konta magazynu jest `http://myshared.blob.core.windows.net`, wpisz `myshared`.
 
     - W polu **klucz konta**Wklej klucz dostępu do magazynu, który jest skojarzony z tym kontem.
 
@@ -64,36 +64,36 @@ W poniższych krokach opisano sposób ręcznego konfigurowania źródła importu
 
 6. Dla **ścieżki do kontenera, katalogu lub obiektu BLOB**wpisz nazwę określonego obiektu BLOB, który ma zostać pobrany.
 
-    Jeśli na przykład plik o nazwie **data01. csv** został przekazany do kontenera **trainingdata** na koncie o nazwie **mymldata**, pełny adres URL dla tego pliku będzie: `http://mymldata.blob.core.windows.net/trainingdata/data01.txt`.
+    Na przykład, jeśli plik o nazwie **data01. csv** został przekazany do kontenera **trainingdata** na koncie o nazwie **mymldata**, pełny adres URL pliku będzie: `http://mymldata.blob.core.windows.net/trainingdata/data01.txt`.
 
-    W związku z tym, w **ścieżce pola do kontenera, katalogu lub obiektu BLOB**, należy wpisać:`trainingdata/data01.csv`
+    W związku z tym, w **ścieżce pola do kontenera, katalogu lub obiektu BLOB**, należy wpisać: `trainingdata/data01.csv`
 
-    Aby zaimportować wiele plików, można użyć symboli wieloznacznych `*` (gwiazdka) `?` lub (znak zapytania).
+    Aby zaimportować wiele plików, można użyć symboli wieloznacznych `*` (gwiazdka) lub `?` (znak zapytania).
 
-    Na przykład przy założeniu, `trainingdata` że kontener zawiera wiele plików zgodnego formatu, można użyć następującej specyfikacji, aby odczytać wszystkie pliki zaczynające się `data`od i połączyć je w jeden zestaw danych:
+    Na przykład przy założeniu, że kontener `trainingdata` zawiera wiele plików zgodnego formatu, można użyć następującej specyfikacji do odczytania wszystkich plików, zaczynając od `data`, i połączyć je w jeden zestaw danych:
 
     `trainingdata/data*.csv`
 
     Nie można używać symboli wieloznacznych w nazwach kontenerów. Jeśli zachodzi konieczność zaimportowania plików z wielu kontenerów, należy użyć oddzielnego wystąpienia modułu **Importuj dane** dla każdego kontenera, a następnie scalić zestawy danych przy użyciu modułu [Dodaj wiersze](./add-rows.md) .
 
     > [!NOTE]
-    > W przypadku wybrania opcji **Użyj zbuforowanych wyników**, wszelkie zmiany wprowadzone w plikach w kontenerze nie wyzwalają odświeżania danych w ramach eksperymentu.
+    > W przypadku wybrania opcji **Użyj zbuforowanych wyników**, wszelkie zmiany wprowadzone w plikach w kontenerze nie wyzwalają odświeżania danych w potoku.
 
 7. W polu **Format pliku BLOB**wybierz opcję, która wskazuje format danych przechowywanych w obiekcie blob, dzięki czemu Azure Machine Learning może odpowiednio przetwarzać dane. Obsługiwane są następujące formaty:
 
-    - **WOLUMIN CSV**: Wartości rozdzielane przecinkami (CSV) to domyślny format magazynu do eksportowania i importowania plików w Azure Machine Learning. Jeśli dane zawierają już wiersz nagłówka, pamiętaj, aby wybrać opcję, **plik ma wiersz nagłówka**lub nagłówek będzie traktowany jako wiersz danych.
+    - **CSV**: wartości rozdzielane przecinkami (CSV) to domyślny format magazynu do eksportowania i importowania plików w Azure Machine Learning. Jeśli dane zawierają już wiersz nagłówka, pamiętaj, aby wybrać opcję, **plik ma wiersz nagłówka**lub nagłówek będzie traktowany jako wiersz danych.
 
        
 
-    - **TSV**: Wartości rozdzielane znakami tabulacji (TSV) są formatem używanym przez wiele narzędzi uczenia maszynowego. Jeśli dane zawierają już wiersz nagłówka, pamiętaj, aby wybrać opcję, **plik ma wiersz nagłówka**lub nagłówek będzie traktowany jako wiersz danych.
+    - **TSV**: wartości rozdzielane znakami tabulacji (tsv) są formatem używanym przez wiele narzędzi uczenia maszynowego. Jeśli dane zawierają już wiersz nagłówka, pamiętaj, aby wybrać opcję, **plik ma wiersz nagłówka**lub nagłówek będzie traktowany jako wiersz danych.
 
        
 
-    - **ARFF**: Ten format obsługuje importowanie plików w formacie używanym przez zestaw narzędzi Weka. 
+    - **ARFF**: ten format obsługuje importowanie plików w formacie używanym przez zestaw narzędzi Weka. 
 
    
 
-8. Uruchom eksperyment.
+8. Uruchamianie potoku.
 
 
 ## <a name="next-steps"></a>Następne kroki

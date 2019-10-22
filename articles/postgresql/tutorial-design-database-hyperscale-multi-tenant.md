@@ -10,10 +10,10 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70163980"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Samouczek: Projektowanie bazy danych z wieloma dzierżawami przy użyciu Azure Database for PostgreSQL — Citus (wersja zapoznawcza)
@@ -130,7 +130,7 @@ Aplikacje z wieloma dzierżawcami mogą wymuszać unikatowość tylko dla dzier�
 
 Wdrożenie w celu przechowania tabeli wierszy w różnych węzłach w oparciu o wartość kolumny wyznaczonej przez użytkownika. Ta "kolumna dystrybucji" oznacza, do której dzierżawy należą wiersze.
 
-Ustawmy, aby kolumna dystrybucji była identyfikatorem\_firmy, identyfikatorem dzierżawy. W PSQL Uruchom następujące funkcje:
+Ustawmy kolumnę dystrybucji na \_id firmy, identyfikator dzierżawy. W PSQL Uruchom następujące funkcje:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -166,7 +166,7 @@ Te dane będą teraz rozłożone między węzłami procesu roboczego.
 
 ## <a name="query-tenant-data"></a>Wykonywanie zapytań dotyczących danych dzierżawy
 
-Gdy aplikacja żąda danych dla pojedynczej dzierżawy, baza danych może wykonać zapytanie w jednym węźle procesu roboczego. Zapytania o pojedynczej dzierżawie są filtrowane według pojedynczego identyfikatora dzierżawy. Na przykład następujące filtry `company_id = 5` zapytań dla reklam i wrażenia. Spróbuj uruchomić go w PSQL, aby wyświetlić wyniki.
+Gdy aplikacja żąda danych dla pojedynczej dzierżawy, baza danych może wykonać zapytanie w jednym węźle procesu roboczego. Zapytania o pojedynczej dzierżawie są filtrowane według pojedynczego identyfikatora dzierżawy. Na przykład następujące filtry zapytań `company_id = 5` dla reklam i wrażenia. Spróbuj uruchomić go w PSQL, aby wyświetlić wyniki.
 
 ```sql
 SELECT a.campaign_id,
@@ -185,7 +185,7 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 ## <a name="share-data-between-tenants"></a>Udostępnianie danych między dzierżawcami
 
-Dopóki teraz wszystkie tabele nie zostaną rozdystrybuowane przez `company_id`program, ale niektóre dane nie są naturalnie "należące do żadnej dzierżawy i mogą być udostępniane. Na przykład, wszystkie firmy z tej platformy usługi AD mogą chcieć uzyskać informacje geograficzne dla swoich odbiorców na podstawie adresów IP.
+Do momentu, gdy teraz wszystkie tabele są dystrybuowane przez `company_id`, ale niektóre dane nie należą do żadnej dzierżawy w szczególności i mogą być udostępniane. Na przykład, wszystkie firmy z tej platformy usługi AD mogą chcieć uzyskać informacje geograficzne dla swoich odbiorców na podstawie adresów IP.
 
 Utwórz tabelę, aby przechowywać udostępnione informacje geograficzne. Uruchom następujące polecenia w PSQL:
 
@@ -199,7 +199,7 @@ CREATE TABLE geo_ips (
 CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 ```
 
-Następnie Utwórz `geo_ips` "tabelę referencyjną", aby zapisać kopię tabeli w każdym węźle procesu roboczego.
+Następnie `geo_ips` "tabela referencyjna", aby zapisać kopię tabeli w każdym węźle procesu roboczego.
 
 ```sql
 SELECT create_reference_table('geo_ips');
@@ -211,7 +211,7 @@ Załaduj dane przy użyciu przykładowych danych. Należy pamiętać, aby urucho
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Dołączanie tabeli kliknięć przy\_użyciu geograficznie adresów IP jest wydajne we wszystkich węzłach.
+Sprzęganie tabeli kliknięć z geograficzną \_ips jest wydajne we wszystkich węzłach.
 Oto sprzężenie, aby znaleźć lokalizacje wszystkich osób, które klikną w usłudze AD
 290. Spróbuj uruchomić zapytanie w PSQL.
 
@@ -227,7 +227,7 @@ SELECT c.id, clicked_at, latlon
 
 Każdy Dzierżawca może wymagać przechowywania specjalnych informacji, które nie są wymagane przez inne osoby. Jednak wszyscy dzierżawcy korzystają ze wspólnej infrastruktury z identycznym schematem bazy danych. Gdzie można znaleźć dodatkowe dane?
 
-Jedną z lew jest użycie typu kolumny Open-zakończony, takiego jak PostgreSQL JSONB.  Nasz schemat zawiera pole `clicks` JSONB o nazwie. `user_data`
+Jedną z lew jest użycie typu kolumny Open-zakończony, takiego jak PostgreSQL JSONB.  Nasz schemat zawiera pole JSONB w `clicks` o nazwie `user_data`.
 Firma (powiedzmy pięć firm) może użyć kolumny, aby sprawdzić, czy użytkownik znajduje się na urządzeniu przenośnym.
 
 Oto zapytanie, aby znaleźć, kto klika pozycję Więcej: mobilne lub tradycyjne osoby odwiedzające.

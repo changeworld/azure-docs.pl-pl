@@ -1,5 +1,5 @@
 ---
-title: 'Drzewo decyzyjnej grupy wieloklasowej: Dokumentacja modułu'
+title: 'Drzewo decyzyjnej grupy wieloklasowej: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak używać wieloklasowego modułu drzewa decyzyjnego w usłudze Azure Machine Learning, aby utworzyć klasyfikator przy użyciu danych z etykietami.
 services: machine-learning
@@ -10,14 +10,14 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/22/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a9cf134a3db5b9bc62cd0f9054aefa6092954d9
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 09d2a637099bae414400f49bb89efc5b6652f150
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129915"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692817"
 ---
-# <a name="multiclass-boosted-decision-tree"></a>Wieloklasowe drzewo decyzyjne
+# <a name="multiclass-boosted-decision-tree"></a>Wieloklasowe wzmocnione drzewo decyzyjne
 
 W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
@@ -31,7 +31,7 @@ Ten moduł tworzy niepociąg model klasyfikacji. Ponieważ klasyfikacja jest met
 
 Ten typ modelu można przeszkolić przy użyciu [modelu uczenia](././train-model.md). 
 
-1.  Dodaj moduł **drzewa decyzyjnej** wieloklasowej do eksperymentu.
+1.  Dodaj moduł **drzewa decyzyjnej wieloklasowej** do potoku.
 
 1.  Określ sposób, w jaki model ma być szkolony przez ustawienie opcji **tworzenia trybu Trainer** .
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
 ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71262786"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: PaaS hosting aplikacji sieci Web dla OFICJALNych obciążeń BRYTYJSKIch
@@ -39,24 +39,24 @@ Korzystając z szablonów [Azure Resource Manager](https://docs.microsoft.com/az
 
 Ten plan jest architekturą podstawy. Nasi klienci mogą używać tego planu jako podstawy do ich OFICJALNEgo klasyfikowania obciążeń opartych na sieci Web i rozwijać szablony i zasoby z ich własnymi wymaganiami. Ten plan jest oparty na zasadach z planu [aplikacji sieci Web w Wielkiej OFFICAL (IaaS](https://aka.ms/ukofficial-iaaswa) ) w celu zaoferowania naszym klientom rozwiązań [w zakresie infrastruktury jako usługi (IaaS)](https://azure.microsoft.com/overview/what-is-iaas/) i implementacji PaaS do hostowania obciążeń opartych na sieci Web.
 
-Aby wdrożyć ten plan, wymagana jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz skorzystać z możliwości szybkiego i łatwego rejestrowania: Rozpocznij pracę z platformą Azure. Kliknij [tutaj](https://aka.ms/ukofficial-paaswa-repo/) , aby uzyskać instrukcje dotyczące wdrażania.
+Aby wdrożyć ten plan, wymagana jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz skorzystać z możliwości szybkiego i łatwego rejestrowania się z usługą Azure. Kliknij [tutaj](https://aka.ms/ukofficial-paaswa-repo/) , aby uzyskać instrukcje dotyczące wdrażania.
 
 ## <a name="architecture-and-components"></a>Architektura i składniki
 
 Ten plan dostarcza rozwiązanie hostingu aplikacji sieci Web w środowisku chmury platformy Azure, które obsługuje oficjalne obciążenia w Wielkiej Brytanii. Architektura zapewnia bezpieczne środowisko, które wykorzystuje platformę Azure jako możliwości usługi. W środowisku programu są wdrażane dwie App Service aplikacje sieci Web (po jednym dla użytkowników publicznych i jeden dla użytkowników zaplecza w biurze), dzięki warstwie aplikacji interfejsu API w celu zapewnienia usług firmy dla frontonu sieci Web. Azure SQL Database jest wdrażana jako zarządzany magazyn danych relacyjnych dla aplikacji. Łączność z tymi składnikami spoza platformy i między wszystkimi tymi składnikami jest szyfrowana za pośrednictwem protokołu TLS 1,2 w celu zapewnienia prywatności danych w transporcie, z dostępem uwierzytelnionym przez Azure Active Directory.
 
-![PaaS hosting aplikacji sieci Web na potrzeby oficjalnych obciążeń dla Wielkiej Brytanii](images/ukofficial-paaswa-architecture.png?raw=true "PaaS hosting aplikacji sieci Web na potrzeby oficjalnych obciążeń dla Wielkiej Brytanii")
+![PaaS hosting aplikacji sieci Web na potrzeby OFICJALNych obciążeń dla Wielkiej Brytanii](images/ukofficial-paaswa-architecture.png?raw=true "PaaS hosting aplikacji sieci Web na potrzeby OFICJALNych obciążeń dla Wielkiej Brytanii")
 
 W ramach architektury wdrażania bezpieczne Inicjowanie obsługi magazynu, monitorowanie & rejestrowanie, ujednolicone Zarządzanie zabezpieczeniami & zaawansowanej ochrony przed zagrożeniami oraz funkcje zarządzania są również wdrażane w celu zapewnienia, że klienci mają wszystkie narzędzia wymagane do Zabezpiecz i monitoruj swoje środowisko dla tego rozwiązania.
 
 To rozwiązanie używa następujących usług platformy Azure. Szczegóły architektury wdrożenia znajdują się w sekcji [Architektura wdrażania](#deployment-architecture) .
 
-- Usługa Azure Active Directory
+- Usługa Active Directory systemu Azure
 - App Service
 - Aplikacja internetowa
-- Aplikacja interfejsu API
-- System DNS platformy Azure
-- Usługa Key Vault
+- Aplikacja API
+- System DNS Azure
+- Magazyn kluczy
 - Azure Monitor (dzienniki)
 - Application Insights
 - Azure Resource Manager
@@ -68,7 +68,7 @@ To rozwiązanie używa następujących usług platformy Azure. Szczegóły archi
 
 W poniższej sekcji znajdują się szczegółowe informacje dotyczące elementów wdrażania i implementacji.
 
-### <a name="security"></a>Bezpieczeństwo
+### <a name="security"></a>Zabezpieczenia
 
 #### <a name="identity-and-authentication"></a>Tożsamość i uwierzytelnianie
 
@@ -78,7 +78,7 @@ Następujące technologie zapewniają funkcje zarządzania tożsamościami w śr
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) to usługa firmy Microsoft do zarządzania katalogami i tożsamościami opartymi na chmurze. Wszyscy użytkownicy rozwiązania zostały utworzeni w Azure Active Directory, w tym użytkownicy uzyskujący dostęp do SQL Database.
 - Uwierzytelnianie do aplikacji sieci Web w ramach operatora i dostęp do administrowania zasobami platformy Azure odbywa się za pomocą usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji z Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
-- Szyfrowanie kolumn bazy danych używa usługi Azure AD do uwierzytelniania aplikacji do Azure SQL Database. Aby uzyskać więcej informacji, [Zobacz Always Encrypted: Ochrona danych poufnych w SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+- Szyfrowanie kolumn bazy danych używa usługi Azure AD do uwierzytelniania aplikacji do Azure SQL Database. Aby uzyskać więcej informacji, zobacz [Always Encrypted: Ochrona poufnych danych w programie SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
 - Aplikacja sieci Web mająca dostęp do obywateli jest skonfigurowana na potrzeby dostępu publicznego. Aby umożliwić tworzenie i uwierzytelnianie kont za poorednictwem dostawców tożsamości usługi Active Directory lub sieci społecznościowej, [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) mogą być zintegrowane w razie potrzeby.
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) wykrywa potencjalne luki w zabezpieczeniach i ryzykowne konta zawierają zalecenia zwiększające bezpieczeństwo stan tożsamości w organizacji, konfiguruje automatyczne odpowiedzi na wykryte podejrzane akcje związane z tożsamościami organizacji i badania podejrzanych zdarzeń oraz podejmowanie odpowiednich działań w celu ich rozwiązania.
 - [Access Control oparte na rolach (RBAC) na platformie Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) umożliwia precyzyjne zarządzanie dostępem na platformie Azure. Dostęp do subskrypcji jest ograniczony do administratora subskrypcji, a Azure Key Vault dostęp jest ograniczony tylko do użytkowników, którzy wymagają dostępu do zarządzania kluczami.
@@ -99,7 +99,7 @@ Dane są przesyłane z zewnątrz i między składnikami platformy Azure są chro
 
 ### <a name="paas-services-in-this-blueprint"></a>Usługi PaaS w tym planie
 
-#### <a name="azure-app-service"></a>Usługa Azure App Service
+#### <a name="azure-app-service"></a>Azure App Service
 
 Azure App Service udostępnia w pełni zarządzane środowisko hostingu w sieci Web dla aplikacji sieci Web opracowane w języku Java, PHP, Node. js C# Python, HTML i bez konieczności zarządzania infrastrukturą. Oferuje automatyczne skalowanie i wysoką dostępność, obsługuje zarówno system Windows, jak i Linux, a także włącza automatyczne wdrożenia z [usługi Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) lub dowolnego repozytorium opartego na usłudze git.
 
@@ -110,7 +110,7 @@ Plany w warstwach Podstawowa, standardowa i Premium są przeznaczone dla obcią�
 Ten szablon wdraża następujące funkcje App Service:
 
 - [Standard](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) App Service warstwa planu
-- Wiele App Service [miejsc wdrożenia](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Tworzenie, Podgląd, pytania i odpowiedzi, przeprowadzających i kurs (gniazdo domyślne).
+- Wiele App Service [miejsc wdrożenia](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): dev, Preview, pytań i odpowiedzi, przeprowadzających i kursów produkcyjnych (gniazdo domyślne).
 - [Zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity) w celu nawiązania połączenia z [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (może to również służyć do zapewnienia dostępu do [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
 - Integracja z [usługą Azure Application Insights](../../azure-monitor/app/azure-web-apps.md) w celu monitorowania wydajności
 - [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) 
@@ -156,7 +156,7 @@ Szczegółowe informacje na temat zabezpieczania usługi Azure Storage można zn
 
 ### <a name="secrets-management"></a>Zarządzanie kluczami tajnymi
 
-#### <a name="azure-key-vault"></a>W usłudze Azure Key Vault
+#### <a name="azure-key-vault"></a>Azure Key Vault
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) służy do zabezpieczania kluczy i wpisów tajnych aplikacji w celu zapewnienia, że nie są one dostępne dla stron trzecich. Usługa Key Vault nie jest przeznaczona do przechowywania haseł użytkowników. Umożliwia tworzenie wielu bezpiecznych kontenerów o nazwie magazyny. Te magazyny są wspierane przez sprzętowe moduły zabezpieczeń. Magazyny zmniejszają prawdopodobieństwo przypadkowej utraty danych zabezpieczeń, stanowiąc centrum przechowywania wpisów tajnych aplikacji. Magazyny usługi Key Vault umożliwiają także kontrolowanie i rejestrowanie dostępu do wszelkich elementów, które są w nich przechowywane. Usługa Azure Key Vault obsługuje żądania i odnawianie certyfikatów protokołu TLS (Transport Layer Security), udostępniając funkcje wymagane przez niezawodne rozwiązania do zarządzania cyklem życia certyfikatu.
 
@@ -174,7 +174,7 @@ Szczegółowe informacje na temat zabezpieczania usługi Azure Storage można zn
 
 #### <a name="azure-monitor-logs-in-this-blueprint"></a>Dzienniki Azure Monitor w tym planie
 
-- Ocena SQL
+- Ocena serwera SQL
 - Diagnostyka Key Vault
 - Połączenie Application Insights
 - Dziennik aktywności platformy Azure
@@ -191,7 +191,7 @@ Ten szablon używa następujących składników Application Insights:
 
 #### <a name="azure-activity-logs"></a>Dzienniki aktywności platformy Azure
 
-[Dziennik aktywności platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) przeprowadza inspekcję zdarzeń płaszczyzny dla subskrypcji. Za pomocą dziennika aktywności można określić, kto i kiedy "w przypadku operacji zapisu (PUT, POST, DELETE) wykonanych dla zasobów w subskrypcji. Dodatkowo użytkownik rozumie stanu operacji i inne odpowiednie właściwości.
+[Dziennik aktywności platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) przeprowadza inspekcję zdarzeń płaszczyzny dla subskrypcji. Za pomocą dziennika aktywności można określić, kto i kiedy "w przypadku operacji zapisu (PUT, POST, DELETE) wykonanych dla zasobów w subskrypcji. Można także zrozumieć stan operacji i inne istotne właściwości.
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
@@ -201,7 +201,7 @@ Ten szablon używa następujących składników Application Insights:
 
 Diagram przepływu danych dla tej architektury referencyjnej jest dostępny do [pobrania](https://aka.ms/ukofficial-paaswa-tm) lub można go znaleźć poniżej. Ten model może pomóc klientom zrozumieć punkty potencjalnego ryzyka w infrastrukturze systemu podczas wprowadzania modyfikacji.
 
-![PaaS hosting aplikacji sieci Web na potrzeby oficjalnego modelu zagrożeń dla brytyjskich obciążeń](images/ukofficial-paaswa-threat-model.png?raw=true "PaaS hosting aplikacji sieci Web na potrzeby oficjalnego modelu zagrożeń dla brytyjskich obciążeń")
+![PaaS hosting aplikacji sieci Web na potrzeby OFICJALNEgo modelu zagrożeń dla BRYTYJSKIch obciążeń](images/ukofficial-paaswa-threat-model.png?raw=true "PaaS hosting aplikacji sieci Web na potrzeby OFICJALNEgo modelu zagrożeń dla BRYTYJSKIch obciążeń")
 
 ## <a name="ncsc-cloud-security-principles-compliance-documentation"></a>Dokumentacja dotycząca zgodności z zasadami zabezpieczeń w chmurze NCSC
 
@@ -229,9 +229,9 @@ Ta Strategia zabezpieczeń i zgodności z przepisami platformy Azure Automatyzac
 Do wdrożenia udostępniono trzy podejścia; Prosty "Express" [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , który jest przystosowany do szybkiego tworzenia środowiska testowego; sparametryzowane podejście [interfejsu wiersza polecenia platformy Azure 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) zapewniające większą konfigurację dla środowisk obciążeń; i wdrożenie oparte na Azure Portal, w którym operator może określić parametry wdrożenia za pośrednictwem Azure Portal. 
 
 1.  Sklonuj lub Pobierz [to](https://aka.ms/ukofficial-paaswa-repo) repozytorium GitHub do lokalnej stacji roboczej.
-2.  Zapoznaj [się z metodą 1: Interfejs wiersza polecenia platformy Azure 2 (](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) wersja Express) i wykonywanie podanych poleceń.
-3.  Przegląd [metody 1a: Interfejs wiersza polecenia platformy Azure 2 (Konfigurowanie wdrożenia za pośrednictwem argumentów skryptu)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) i wykonywanie podanych poleceń
-4.  Przegląd [metody 2: Azure Portal proces](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) wdrażania i wykonywanie wymienionych poleceń
+2.  Zapoznaj się z [metodą 1: interfejs wiersza polecenia platformy Azure 2 (wersja Express)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) i wykonaj podane polecenia.
+3.  Przegląd [metody 1a: interfejs wiersza polecenia platformy Azure 2 (Konfigurowanie wdrożenia za pośrednictwem argumentów skryptu)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) i wykonywanie podanych poleceń
+4.  Przegląd [metody 2: Azure Portal proces wdrażania](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) i wykonywanie wymienionych poleceń
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia
 
@@ -243,7 +243,7 @@ Do wdrożenia udostępniono trzy podejścia; Prosty "Express" [interfejs wiersza
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) można zaimplementować jako kontrolkę umożliwiającą użytkownikom rejestrację, utworzenie tożsamości i włączenie autoryzacji i kontroli dostępu do publicznej aplikacji sieci Web.
 
-## <a name="disclaimer"></a>Zastrzeżenie
+## <a name="disclaimer"></a>Zrzeczenie odpowiedzialności
 
 - Ten dokument jest przeznaczony wyłącznie do celów informacyjnych. FIRMA MICROSOFT NIE UDZIELA ŻADNYCH GWARANCJI, WYRAŹNYCH, DOROZUMIANYCH ANI USTAWOWYCH, W ODNIESIENIU DO INFORMACJI ZAWARTYCH W TYM DOKUMENCIE. Ten dokument jest dostarczany "w takiej postaci, w jakim jest". Informacje i poglądy wyrażone w tym dokumencie, w tym adresy URL i inne odwołania do witryn internetowych, mogą ulec zmianie bez powiadomienia. Klienci czytający ten dokument mają ryzyko związane z jego użyciem.
 - Niniejszy dokument nie zapewnia klientom żadnych praw do jakiejkolwiek własności intelektualnej w jakichkolwiek produktach lub rozwiązaniach firmy Microsoft.

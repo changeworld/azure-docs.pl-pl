@@ -1,5 +1,5 @@
 ---
-title: 'Multiclass Neural Network: Dokumentacja modułu'
+title: 'Wieloklasowa sieć neuronowych: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak używać wieloklasowego modułu sieci neuronowych w usłudze Azure Machine Learning, aby utworzyć model sieci neuronowych, który może służyć do przewidywania obiektu docelowego, który ma wiele wartości.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 44d1e7606efd5bc6d2286254dc4863728e3edbfd
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3322f2be3c5c6f819adbc9d83ee9eb6b6577f707
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128596"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692720"
 ---
 # <a name="multiclass-neural-network-module"></a>Wieloklasowy moduł sieci neuronowych
 
@@ -24,7 +24,7 @@ Ten moduł służy do tworzenia modelu sieci neuronowych, który może służyć
 
 Na przykład sieci neuronowych tego rodzaju mogą być używane w złożonych zadaniach przetwarzania obrazów, takich jak rozpoznawanie cyfr lub liter, klasyfikacja dokumentu i Rozpoznawanie wzorców.
 
-Klasyfikacja przy użyciu sieci neuronowych to nadzorowana Metoda uczenia i dlatego wymaga oznakowanego *zestawu danych* , który zawiera kolumnę etykieta.
+Klasyfikacja przy użyciu sieci neuronowych to nadzorowana Metoda uczenia i dlatego wymaga *oznakowanego zestawu danych* , który zawiera kolumnę etykieta.
 
 Możesz nauczyć model, dostarczając model i otagowany zestaw danych jako dane wejściowe do [modelu uczenia](./train-model.md). Model przeszkolony może być następnie używany do przewidywania wartości dla nowych przykładów wejściowych.  
 
@@ -40,15 +40,15 @@ Aby obliczyć dane wyjściowe sieci dla konkretnych danych wejściowych, wartoś
 
 ## <a name="configure-multiclass-neural-network"></a>Konfiguruj wieloklasową sieć neuronowych
 
-1. Dodaj wieloklasowy moduł **sieci neuronowych** do eksperymentu w interfejsie. Ten moduł można znaleźć w obszarze **Machine Learning**, **zainicjować**, w kategorii **Klasyfikacja** .
+1. Dodaj moduł **sieci Wieloklasowej neuronowych** do potoku w interfejsie. Ten moduł można znaleźć w obszarze **Machine Learning**, **zainicjować**, w kategorii **Klasyfikacja** .
 
 2. **Utwórz tryb Trainer**: Użyj tej opcji, aby określić, w jaki sposób model ma być szkolony:
 
-    - **Pojedynczy parametr**: Wybierz tę opcję, Jeśli wiesz już, jak chcesz skonfigurować model.
+    - **Pojedynczy parametr**: Wybierz tę opcję, jeśli już wiesz, jak chcesz skonfigurować model.
 
     
 
-3. **Ukryta Specyfikacja warstwy**: Wybierz typ architektury sieci do utworzenia.
+3. **Specyfikacja warstwy ukrytej**: Wybierz typ architektury sieci do utworzenia.
 
     - W **pełni połączony przypadek**: Wybierz tę opcję, aby utworzyć model przy użyciu domyślnej architektury sieci neuronowych. W przypadku modeli sieci z wieloklasową neuronowych wartości domyślne są następujące:
 
@@ -63,19 +63,19 @@ Aby obliczyć dane wyjściowe sieci dla konkretnych danych wejściowych, wartoś
 
 5. **Liczba ukrytych węzłów**: Ta opcja umożliwia dostosowanie liczby ukrytych węzłów w architekturze domyślnej. Wpisz liczbę ukrytych węzłów. Wartość domyślna to jedna ukryta warstwa z węzłami 100.
 
-6. **Stawka szkoleniowa**: Zdefiniuj rozmiar kroku wykonany dla każdej iteracji przed poprawką. Większa wartość współczynnika uczenia może spowodować szybsze zbieżność modelu, ale może przekroczyć wartości minimalne.
+6. **Szybkość uczenia**: Zdefiniuj rozmiar kroku wykonany w każdej iteracji przed poprawką. Większa wartość współczynnika uczenia może spowodować szybsze zbieżność modelu, ale może przekroczyć wartości minimalne.
 
-7. **Liczba iteracji szkoleniowych**: Określ maksymalną liczbę przypadków, w których algorytm powinien przetwarzać przypadki szkoleniowe.
+7. **Liczba iteracji uczenia**się: Określ maksymalną liczbę przypadków, w których algorytm powinien przetwarzać przypadki szkoleniowe.
 
 8. **Średnica początkowej wagi uczenia**: Określ wagi węzłów na początku procesu uczenia.
 
-9. **Wartość pędu**: Określ wagę do zastosowania podczas uczenia się do węzłów z poprzednich iteracji.
+9. **Pędu**: Określ wagę do zastosowania podczas uczenia się z węzłami z poprzednich iteracji.
   
-11. **Przykłady losowe**: Wybierz tę opcję, aby losowo rozróżniać przypadki między iteracjami.
+11. **Przykłady losowe**: Wybierz tę opcję, aby losowo rozmieścić przypadki między iteracjami.
 
-    W przypadku zaznaczenia tej opcji przypadki są przetwarzane w dokładnie tym samym porządku przy każdym uruchomieniu eksperymentu.
+    W przypadku zaznaczenia tej opcji przypadki są przetwarzane w dokładnie tym samym porządku przy każdym uruchomieniu potoku.
 
-12. **Inicjator liczb losowych**: Wpisz wartość, która ma być używana jako inicjator, jeśli chcesz zapewnić powtarzalność między przebiegami tego samego eksperymentu.
+12. **Inicjator liczb losowych**: wpisz wartość, która ma być używana jako inicjator, jeśli chcesz zapewnić powtarzalność między przebiegami tego samego potoku.
 
 14. Połącz zestaw danych szkoleniowych i jeden z [modułów szkoleniowych](module-reference.md): 
 
@@ -88,7 +88,7 @@ Po zakończeniu szkolenia:
 
 - Aby wyświetlić podsumowanie parametrów modelu wraz z wagami funkcji pochodzącymi z uczenia i innymi parametrami sieci neuronowych, kliknij prawym przyciskiem myszy dane wyjściowe [modelu uczenia](./train-model.md) i wybierz polecenie **Wizualizuj**.  
 
-- Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy **wyszkolony model** wyjściowy i wybierz pozycję **Zapisz jako model przeszkolony**. Ten model nie jest aktualizowany po kolejnych uruchomieniach tego samego eksperymentu.
+- Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy **wyszkolony model** wyjściowy i wybierz pozycję **Zapisz jako model przeszkolony**. Ten model nie jest aktualizowany po kolejnych uruchomieniach tego samego potoku.
 
 
 ## <a name="next-steps"></a>Następne kroki

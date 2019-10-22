@@ -16,13 +16,13 @@ ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68825775"
 ---
-# <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi Salesforce do automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi Salesforce do automatycznego aprowizacji użytkowników
 
 Celem tego samouczka jest przedstawienie czynności wymaganych do wykonania w usłudze Salesforce i usłudze Azure AD w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników z usługi Azure AD w usłudze Salesforce.
 
@@ -36,7 +36,7 @@ Scenariusz opisany w tym samouczku założono, że masz już następujące eleme
 > [!IMPORTANT]
 > Jeśli używasz konta próbnego Salesforce.com, nie będzie można skonfigurować automatycznej aprowizacji użytkowników. Konta próbne nie mają włączonego dostępu do interfejsu API, dopóki nie zostaną zakupione. To ograniczenie można obejść, używając bezpłatnego [konta dewelopera](https://developer.salesforce.com/signup) do wykonania tego samouczka.
 
-Jeśli używasz środowiska piaskownicy Salesforce, zobacz [Samouczek dotyczący integracji](https://go.microsoft.com/fwLink/?LinkID=521879)z piaskownicą usługi Salesforce.
+Jeśli używasz środowiska piaskownicy Salesforce, zobacz [Samouczek dotyczący integracji z piaskownicą usługi Salesforce](https://go.microsoft.com/fwLink/?LinkID=521879).
 
 ## <a name="assigning-users-to-salesforce"></a>Przypisywanie użytkowników do usługi Salesforce
 
@@ -72,7 +72,7 @@ Celem tej sekcji jest zaprojektowanie sposobu włączania obsługi administracyj
 
 4. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-    ![aprowizowanie](./media/salesforce-provisioning-tutorial/provisioning.png)
+    ![Aprowizacji](./media/salesforce-provisioning-tutorial/provisioning.png)
 
 5. W sekcji **poświadczenia administratora** podaj następujące ustawienia konfiguracji:
 
@@ -96,7 +96,7 @@ Celem tej sekcji jest zaprojektowanie sposobu włączania obsługi administracyj
 
 10. Skopiuj token, przejdź do okna usługi Azure AD i wklej go w polu **token tajny** .
 
-11. Należy wprowadzić **adres URL dzierżawy** , jeśli wystąpienie usługi Salesforce znajduje się w chmurze dla instytucji rządowych usługi Salesforce. W przeciwnym razie jest to opcjonalne. Wprowadź adres URL dzierżawy przy użyciu formatu "https://\<The-instance\>. my.Salesforce.com", zastępując \<swój wystąpienie\> nazwą wystąpienia usługi Salesforce.
+11. Należy wprowadzić **adres URL dzierżawy** , jeśli wystąpienie usługi Salesforce znajduje się w chmurze dla instytucji rządowych usługi Salesforce. W przeciwnym razie jest to opcjonalne. Wprowadź adres URL dzierżawy przy użyciu formatu "https://\<your-instance \>. my.salesforce.com", zastępując \<your wystąpienie \> nazwą wystąpienia usługi Salesforce.
 
 12. W Azure Portal kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z Twoją aplikacją w usłudze Salesforce.
 
@@ -106,7 +106,7 @@ Celem tej sekcji jest zaprojektowanie sposobu włączania obsługi administracyj
 
 15. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkowników w usłudze Salesforce.**
 
-16. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD z usługą Salesforce. Należy zauważyć, że atrybuty wybrane jako pasujące właściwości są używane do dopasowywania do kont użytkowników w usłudze Salesforce dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+16. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD z usługą Salesforce. Należy zauważyć, że atrybuty wybrane jako **pasujące** właściwości są używane do dopasowywania do kont użytkowników w usłudze Salesforce dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
 17. Aby włączyć usługę Azure AD Provisioning dla usługi Salesforce, Zmień **stan aprowizacji** na **włączone** w sekcji Ustawienia.
 
@@ -117,9 +117,9 @@ Celem tej sekcji jest zaprojektowanie sposobu włączania obsługi administracyj
 
 Spowoduje to rozpoczęcie synchronizacji początkowej dla wszystkich użytkowników i/lub grup przypisanych do usługi Salesforce w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły około 40 minut, o ile usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji usługi Salesforce.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

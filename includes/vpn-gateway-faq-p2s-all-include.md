@@ -9,15 +9,15 @@ ms.date: 05/23/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "67056486"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Ile punktów końcowych klienta sieci VPN może obejmować konfiguracja punkt-lokacja?
 
-To zależy od jednostki SKU bramy. Aby uzyskać więcej informacji na temat liczba obsługiwanych połączeń, zobacz [jednostki SKU bramy](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
+Zależy od jednostki SKU bramy. Aby uzyskać więcej informacji o liczbie obsługiwanych połączeń, zobacz [jednostki SKU bramy](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
 
 ### <a name="supportedclientos"></a>Których systemów operacyjnych klienta można używać z połączeniami typu punkt-lokacja?
 
@@ -30,7 +30,7 @@ Obsługiwane są następujące systemy operacyjne klientów:
 * Windows Server 2012 R2 (tylko 64-bitowy)
 * Windows Server 2016 (tylko 64-bitowy)
 * Windows 10
-* Mac OS X w wersji 10.11 lub nowszy
+* Mac OS X w wersji 10,11 lub nowszej
 * Linux (StrongSwan)
 * iOS
 
@@ -38,13 +38,13 @@ Obsługiwane są następujące systemy operacyjne klientów:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Czy można pominąć serwery proxy i zapory, korzystając z funkcji punkt-lokacja?
 
-Platforma Azure obsługuje trzy typy opcji sieci VPN typu punkt lokacja:
+Platforma Azure obsługuje trzy typy opcji sieci VPN typu punkt-lokacja:
 
-* Protokół Secure Socket Tunneling Protocol (SSTP). Protokół SSTP to rozwiązanie firmy Microsoft własności opartym na protokole SSL może przechodzić przez zapory, ponieważ większość zapór otwiera ruchu wychodzącego portu TCP, który używa protokołu SSL 443.
+* Protokół Secure Socket Tunneling Protocol (SSTP). SSTP to firmowe rozwiązanie oparte na protokole SSL firmy Microsoft, które może przeniknąć zapory od momentu, gdy większość zapór otworzy wychodzący port TCP, którego używa protokół SSL 443.
 
-* OpenVPN. OpenVPN jest rozwiązaniem opartym na protokole SSL, może przechodzić przez zapory, ponieważ większość zapór otwiera ruchu wychodzącego portu TCP, który używa protokołu SSL 443.
+* OpenVPN. OpenVPN jest rozwiązaniem opartym na protokole SSL, które może przeniknąć zapory od czasu, gdy większość zapór otwiera wychodzący port TCP, którego używa protokół SSL 443.
 
-* Sieć VPN z protokołem IKEv2. Protokół IKEv2 sieci VPN jest oparte na standardach rozwiązanie sieci VPN IPsec, korzystającą z wychodzących porty UDP 500 i 4500 i protokołu IP nie. 50. Zapory nie zawsze otwierają te porty, więc istnieje możliwość, że sieć VPN z protokołem IKEv2 nie będzie mogła nawiązywać połączeń przez serwery proxy i zapory.
+* Sieć VPN z protokołem IKEv2. Sieci VPN IKEv2 to oparte na standardach rozwiązanie sieci VPN IPsec, które korzysta z wychodzących portów UDP 500 i 4500 oraz protokołu IP nr. 50. Zapory nie zawsze otwierają te porty, więc istnieje możliwość, że sieć VPN z protokołem IKEv2 nie będzie mogła nawiązywać połączeń przez serwery proxy i zapory.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Czy w przypadku ponownego uruchomienia komputera klienckiego skonfigurowanego pod kątem połączenia typu punkt-lokacja połączenie z siecią VPN zostanie nawiązane automatycznie?
 
@@ -68,21 +68,21 @@ Trudno jest utrzymać dokładną przepływność tuneli VPN. Protokoły IPsec i 
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Czy mogę używać dowolnego programowego klienta sieci VPN dla połączeń typu punkt-lokacja obsługujących protokoły SSTP i/lub IKEv2?
 
-Nie. Możesz używać wyłącznie natywnego klienta sieci VPN w systemie Windows dla protokołu SSTP i natywnego klienta sieci VPN na komputerach Mac dla protokołu IKEv2. Jednak można użyć klienta OpenVPN na wszystkich platformach, nawiązać połączenie za pośrednictwem protokołu OpenVPN. Zapoznaj się z listą obsługiwanych systemów operacyjnych klienta.
+Nie. Możesz używać wyłącznie natywnego klienta sieci VPN w systemie Windows dla protokołu SSTP i natywnego klienta sieci VPN na komputerach Mac dla protokołu IKEv2. Można jednak użyć klienta OpenVPN na wszystkich platformach, aby nawiązać połączenie za pośrednictwem protokołu OpenVPN. Zapoznaj się z listą obsługiwanych systemów operacyjnych klienta.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Czy platforma Azure obsługuje sieć VPN z protokołem IKEv2 w systemie Windows?
 
-Protokół IKEv2 jest obsługiwany w systemach Windows 10 i Server 2016. Jednak aby można było używać protokołu IKEv2, należy zainstalować aktualizacje i lokalnie ustawić wartość klucza rejestru. Wersje systemu operacyjnego przed systemu Windows 10 nie są obsługiwane i może używać tylko protokołu SSTP lub **OpenVPN® protokołu**.
+Protokół IKEv2 jest obsługiwany w systemach Windows 10 i Server 2016. Jednak aby można było używać protokołu IKEv2, należy zainstalować aktualizacje i lokalnie ustawić wartość klucza rejestru. Wersje systemu operacyjnego starsze niż Windows 10 nie są obsługiwane i mogą korzystać tylko z **protokołu SSTP lub OpenVPN®**.
 
 Aby przygotowywać system Windows 10 lub Server 2016 pod kątem protokołu IKEv2:
 
 1. Zainstaluj aktualizację.
 
-   | Wersja systemu operacyjnego | Date | Numer/link |
+   | Wersja systemu operacyjnego | Data | Numer/link |
    |---|---|---|
    | Windows Server 2016<br>Windows 10 w wersji 1607 | 17 stycznia 2018 r. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 w wersji 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | System Windows 10 w wersji 1709 | 22 marca 2018 r. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows 10 w wersji 1709 | 22 marca, 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |
 
 2. Ustaw wartość klucza rejestru. Utwórz lub ustaw klucz rejestru REG_DWORD „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload”na wartość 1.

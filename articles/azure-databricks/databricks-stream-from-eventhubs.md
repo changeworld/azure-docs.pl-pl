@@ -11,10 +11,10 @@ ms.workload: Active
 ms.date: 07/23/2019
 ms.author: alehall
 ms.openlocfilehash: 942553e2ececf2bdc7bb2b240d4fa6c5f338beb2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68976501"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Samouczek: Przesyłanie strumieniowe danych do usługi Azure Databricks przy użyciu usługi Event Hubs
@@ -28,7 +28,7 @@ Wykonanie kroków tego samouczka pozwoli Ci przesłać strumieniowo tweety (zawi
 
 Poniższa ilustracja przedstawia przepływ aplikacji:
 
-![Usługa Azure Databricks z usługą Event Hubs](./media/databricks-stream-from-eventhubs/databricks-eventhubs-tutorial.png "Usługa Azure Databricks z usługą Event Hubs")
+![Azure Databricks z Event Hubs](./media/databricks-stream-from-eventhubs/databricks-eventhubs-tutorial.png "Azure Databricks z Event Hubs")
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -59,7 +59,7 @@ Aby spełnić te wymagania, wystarczy wykonać kroki opisane w artykule [Create 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
@@ -67,11 +67,11 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
 1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Dane i analiza** > **Azure Databricks**.
 
-    ![Usługa Databricks w witrynie Azure Portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Usługa Databricks w witrynie Azure Portal")
+    ![Datakostki na Azure Portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Datakostki na Azure Portal")
 
 3. W obszarze **Usługa Azure Databricks** podaj wartości umożliwiające utworzenie obszaru roboczego usługi Databricks.
 
-    ![Tworzenie obszaru roboczego usługi Azure Databricks](./media/databricks-stream-from-eventhubs/create-databricks-workspace.png "Tworzenie obszaru roboczego usługi Azure Databricks")
+    ![Tworzenie obszaru roboczego Azure Databricks](./media/databricks-stream-from-eventhubs/create-databricks-workspace.png "Tworzenie obszaru roboczego usługi Azure Databricks")
 
     Podaj następujące wartości:
 
@@ -87,7 +87,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
 4. Tworzenie konta potrwa kilka minut. Podczas tworzenia konta po prawej stronie portalu jest wyświetlany kafelek **Przesyłanie wdrożenia dla usługi Azure Databricks**. Aby go zobaczyć, być może trzeba będzie przesunąć pulpit nawigacyjny w prawo. W górnej części ekranu jest również wyświetlany pasek postępu. Postęp można obserwować w dowolnym z tych obszarów.
 
-    ![Kafelek wdrażania usługi Databricks](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Kafelek wdrażania usługi Databricks")
+    ![Kafelek wdrożenia datakostek](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Kafelek wdrożenia datakostek")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Tworzenie klastra Spark w usłudze Databricks
 
@@ -95,11 +95,11 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
 2. Nastąpi przekierowanie do portalu usługi Azure Databricks. W portalu wybierz pozycję **Klaster**.
 
-    ![Usługa Databricks na platformie Azure](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Usługa Databricks na platformie Azure")
+    ![Datakostki na platformie Azure](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Datakostki na platformie Azure")
 
 3. Na stronie **Nowy klaster** podaj wartości, aby utworzyć klaster.
 
-    ![Tworzenie klastra Spark usługi Databricks na platformie Azure](./media/databricks-stream-from-eventhubs/create-databricks-spark-cluster.png "Tworzenie klastra Spark usługi Databricks na platformie Azure")
+    ![Tworzenie klastra usługi datakosteks Spark na platformie Azure](./media/databricks-stream-from-eventhubs/create-databricks-spark-cluster.png "Tworzenie klastra usługi datakosteks Spark na platformie Azure")
 
     Zaakceptuj pozostałe wartości domyślne poza następującymi:
 
@@ -146,7 +146,7 @@ W tym samouczku tweety są wysyłane do usługi Event Hubs za pomocą interfejs�
    * Łącznik Event Hubs platformy Spark — `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Interfejs API usługi Twitter — `org.twitter4j:twitter4j-core:4.0.7`
 
-     ![Podawanie współrzędnych Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "Podawanie współrzędnych Maven")
+     ![Podaj współrzędne Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "Podaj współrzędne Maven")
 
      ![Podaj współrzędne Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search-dialogue.png "Przeszukaj współrzędne Maven")
 
@@ -167,11 +167,11 @@ W tej sekcji w obszarze roboczym usługi Databricks zostaną utworzone dwa notes
 
 1. W lewym okienku wybierz pozycję **Obszar roboczy**. Z listy rozwijanej **Obszar roboczy** wybierz pozycję **Utwórz** > **Notes**.
 
-    ![Tworzenie notesu w usłudze Databricks](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "Tworzenie notesu w usłudze Databricks")
+    ![Tworzenie notesu w kostkach](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "Tworzenie notesu w kostkach")
 
 2. W oknie dialogowym **Tworzenie notesu** wpisz **SendTweetsToEventHub**, jako język wybierz pozycję **Scala** i wybierz utworzony wcześniej klaster Spark.
 
-    ![Tworzenie notesu w usłudze Databricks](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Tworzenie notesu w usłudze Databricks")
+    ![Tworzenie notesu w kostkach](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Tworzenie notesu w kostkach")
 
     Wybierz pozycję **Utwórz**.
 
@@ -405,13 +405,13 @@ Dane wyjściowe są teraz podobne do następującego fragmentu kodu:
     ...
     ...
 
-To wszystko! Za pomocą usługi Azure Databricks udało się przesłać strumień danych do usługi Azure Event Hubs w czasie niemal rzeczywistym. Następnie został on pobrany przy użyciu łącznika usługi Event Hubs dla platformy Apache Spark. Aby uzyskać więcej informacji na temat sposobu korzystania z łącznika usługi Event Hubs dla platformy Spark, zobacz [dokumentację łącznika](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
+Gotowe. Za pomocą usługi Azure Databricks udało się przesłać strumień danych do usługi Azure Event Hubs w czasie niemal rzeczywistym. Następnie został on pobrany przy użyciu łącznika usługi Event Hubs dla platformy Apache Spark. Aby uzyskać więcej informacji na temat sposobu korzystania z łącznika usługi Event Hubs dla platformy Spark, zobacz [dokumentację łącznika](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Po ukończeniu tego samouczka możesz zakończyć działanie klastra. Aby to zrobić, w obszarze roboczym usługi Azure Databricks wybierz pozycję **Klastry** w lewym okienku. W obszarze klastra, którego działanie chcesz zakończyć, przesuń kursor na wielokropek w kolumnie **Akcje**, a następnie wybierz ikonę **Zakończ**.
 
-![Zatrzymywanie klastra usługi Databricks](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Zatrzymywanie klastra usługi Databricks")
+![Zatrzymaj klaster datakostki](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Zatrzymaj klaster datakostki")
 
 Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po \_\_ min nieaktywności**. W takim przypadku nieaktywny klaster zostanie automatycznie zatrzymany po określonym czasie.
 

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie wystąpienia usługi Azure Network Watcher | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć usługę Network Watcher w regionie platformy Azure.
+title: Tworzenie wystąpienia usługi Azure Network Watcher | Microsoft Docs
+description: Dowiedz się, jak włączyć Network Watcher w regionie świadczenia usługi Azure.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: c97f6dff17896b8a58c17aed9063e0b2b5733503
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd293c2815721295715c5e02846c55d4cdb74a32
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681574"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693488"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Tworzenie wystąpienia usługi Azure Network Watcher
 
-Network Watcher to regionalna usługa, która pozwala na monitorowanie i diagnozowanie warunków na poziomie sieci, do i z platformy Azure. Monitorowania na poziomie scenariusza pozwala diagnozować problemy w widoku poziomu typu end to end sieci. Diagnostyka sieci i narzędzi do wizualizacji dostępne w usłudze Network Watcher pomagają zrozumieć, diagnozowanie i uzyskiwanie szczegółowych informacji do sieci na platformie Azure. Usługa Network Watcher jest włączana za pomocą utworzony zasób usługi Network Watcher. Ten zasób umożliwia korzystanie z funkcji usługi Network Watcher.
+Network Watcher to usługa regionalna, która umożliwia monitorowanie i diagnozowanie warunków na poziomie scenariusza sieci w, do i z platformy Azure. Monitorowanie poziomu scenariusza umożliwia diagnozowanie problemów w widoku na poziomie sieci. Narzędzia do diagnostyki i wizualizacji sieci dostępne w Network Watcher pomagają zrozumieć, zdiagnozować i uzyskiwać wgląd w sieć na platformie Azure. Network Watcher jest włączana za pomocą tworzenia zasobu Network Watcher. Ten zasób umożliwia korzystanie z możliwości Network Watcher.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="network-watcher-is-automatically-enabled"></a>Usługa Network Watcher jest automatycznie włączone.
+## <a name="network-watcher-is-automatically-enabled"></a>Network Watcher jest automatycznie włączona
 Podczas tworzenia lub aktualizowania sieci wirtualnej w ramach subskrypcji usługa Network Watcher zostanie automatycznie włączona w regionie sieci wirtualnej. Automatyczne włączanie usługi Network Watcher nie wpływa na zasoby i nie wiąże się z opłatami.
 
-#### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Zrezygnować z automatycznego włączania usługi Network Watcher
-Jeśli chcesz zrezygnować z automatycznego włączania usługi Network Watcher, możesz to zrobić, uruchamiając następujące polecenia:
+#### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Rezygnacja z automatycznego włączania Network Watcher
+Jeśli chcesz zrezygnować z Network Watcher automatycznego włączania, możesz to zrobić, uruchamiając następujące polecenia:
 
 > [!WARNING]
-> Rezygnacja z automatycznego włączania usługi Network Watcher jest trwałych zmian. Po użytkownik zrezygnować możesz nie wymaga zgody na uczestnictwo bez [kontaktując się z pomocą techniczną](https://azure.microsoft.com/support/options/)
+> Rezygnacja z Network Watcher automatycznego włączania jest trwałą zmianą. Gdy zrezygnujesz [z pomocy technicznej](https://azure.microsoft.com/support/options/) , nie możesz się zadecydować
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
@@ -49,45 +49,45 @@ az provider register -n Microsoft.Network
 
 
 
-## <a name="create-a-network-watcher-in-the-portal"></a>Tworzenie usługi Network Watcher w portalu
+## <a name="create-a-network-watcher-in-the-portal"></a>Tworzenie Network Watcher w portalu
 
-Przejdź do **wszystkich usług** > **sieć** > **Network Watcher**. Można wybrać wszystkie subskrypcje, które chcesz włączyć usługi Network Watcher dla. Ta akcja powoduje utworzenie usługi Network Watcher w każdym regionie, który jest dostępny.
+Przejdź do **wszystkich usług**  > **sieci**  > **Network Watcher**. Możesz wybrać wszystkie subskrypcje, dla których chcesz włączyć Network Watcher. Ta akcja tworzy Network Watcher w każdym dostępnym regionie.
 
-![Tworzenie usługi network watcher](./media/network-watcher-create/figure1.png)
+![Tworzenie obserwatora sieciowego](./media/network-watcher-create/figure1.png)
 
-Po włączeniu usługi Network Watcher przy użyciu portalu, nazwę wystąpienia usługi Network Watcher jest automatycznie równa *NetworkWatcher_region_name* gdzie *region_name* odnosi się do regionu platformy Azure gdy wystąpienie jest włączone. Na przykład, nosi nazwę usługi Network Watcher w regionie zachodnio-środkowe stany USA włączone *NetworkWatcher_westcentralus*.
+Po włączeniu Network Watcher przy użyciu portalu nazwa wystąpienia Network Watcher zostanie automatycznie ustawiona na *NetworkWatcher_region_name* , gdzie *region_name* odnosi się do regionu platformy Azure, w którym to wystąpienie jest włączone. Na przykład Network Watcher włączony w regionie Zachodnio-środkowe stany USA ma nazwę *NetworkWatcher_westcentralus*.
 
-Automatycznie tworzone jest wystąpienie usługi Network Watcher w grupie zasobów o nazwie *NetworkWatcherRG*. Jeśli jeszcze nie istnieje, utworzona jest grupa zasobów.
+Wystąpienie Network Watcher jest tworzone automatycznie w grupie zasobów o nazwie *NetworkWatcherRG*. Grupa zasobów jest tworzona, jeśli jeszcze nie istnieje.
 
-Jeśli chcesz dostosować nazwę wystąpienia usługi Network Watcher i grupy zasobów jest umieszczana w, można użyć programu Powershell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST lub metody ARMClient opisane w kolejnych sekcjach. W przypadku poszczególnych opcji grupy zasobów musi istnieć przed utworzeniem usługi Network Watcher w nim.  
+Jeśli chcesz dostosować nazwę wystąpienia Network Watcher i grupę zasobów, w której jest ona umieszczana, możesz użyć programu PowerShell, interfejsu wiersza polecenia platformy Azure lub metod ARMClient opisanych w poniższych sekcjach. W każdej opcji Grupa zasobów musi istnieć przed utworzeniem w niej Network Watcher.  
 
-## <a name="create-a-network-watcher-with-powershell"></a>Tworzenie usługi Network Watcher przy użyciu programu PowerShell
+## <a name="create-a-network-watcher-with-powershell"></a>Tworzenie Network Watcher przy użyciu programu PowerShell
 
-Aby utworzyć wystąpienie usługi Network Watcher, uruchom poniższy przykład:
+Aby utworzyć wystąpienie Network Watcher, uruchom następujący przykład:
 
 ```powershell
 New-AzNetworkWatcher -Name "NetworkWatcher_westcentralus" -ResourceGroupName "NetworkWatcherRG" -Location "West Central US"
 ```
 
-## <a name="create-a-network-watcher-with-the-azure-cli"></a>Tworzenie usługi Network Watcher przy użyciu wiersza polecenia platformy Azure
+## <a name="create-a-network-watcher-with-the-azure-cli"></a>Tworzenie Network Watcher przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Aby utworzyć wystąpienie usługi Network Watcher, uruchom poniższy przykład:
+Aby utworzyć wystąpienie Network Watcher, uruchom następujący przykład:
 
 ```azurecli
 az network watcher configure --resource-group NetworkWatcherRG --locations westcentralus --enabled
 ```
 
-## <a name="create-a-network-watcher-with-the-rest-api"></a>Tworzenie usługi Network Watcher przy użyciu interfejsu API REST
+## <a name="create-a-network-watcher-with-the-rest-api"></a>Tworzenie Network Watcher przy użyciu interfejsu API REST
 
-ARMclient jest używane do wywołania interfejsu API REST przy użyciu programu PowerShell. ARMClient znajduje się na chocolatey na [ARMClient na narzędzia Chocolatey](https://chocolatey.org/packages/ARMClient)
+ARMclient jest używany do wywoływania interfejsu API REST przy użyciu programu PowerShell. ARMClient znajduje się na czekolady w [ARMClient na czekoladie](https://chocolatey.org/packages/ARMClient)
 
-### <a name="log-in-with-armclient"></a>Zaloguj się przy użyciu ARMClient
+### <a name="log-in-with-armclient"></a>Logowanie za pomocą ARMClient
 
 ```powerShell
 armclient login
 ```
 
-### <a name="create-the-network-watcher"></a>Tworzenie usługi network watcher
+### <a name="create-the-network-watcher"></a>Tworzenie obserwatora sieciowego
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -103,16 +103,36 @@ $requestBody = @"
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="delete-a-network-watcher-in-the-portal"></a>Usuwanie Network Watcher w portalu
 
-Teraz, gdy wystąpienie usługi Network Watcher, Dowiedz się więcej o funkcjach dostępnych:
+Przejdź do **wszystkich usług**  > **sieci**  > **Network Watcher**.
+
+Wybierz kartę Przegląd, jeśli jeszcze tego nie zrobiono. Użyj listy rozwijanej, aby wybrać subskrypcję, w której chcesz wyłączyć obserwatora sieciowego.
+Rozwiń listę regionów dla wybranej subskrypcji, klikając strzałkę. Dla każdego z nich należy użyć 3 kropek po prawej stronie, aby uzyskać dostęp do menu kontekstowego.
+Kliknij pozycję "Wyłącz obserwatora sieci", aby rozpocząć wyłączanie. Zostanie wyświetlony monit o potwierdzenie tego kroku. Kliknij przycisk tak, aby kontynuować.
+W portalu należy wykonać te czynności osobno dla każdego regionu w każdej subskrypcji.
+
+
+## <a name="delete-a-network-watcher-with-powershell"></a>Usuwanie Network Watcher przy użyciu programu PowerShell
+
+Aby usunąć wystąpienie Network Watcher, uruchom następujący przykład:
+
+```powershell
+New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
+New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG -Location westcentralus
+Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
+```
+
+## <a name="next-steps"></a>Następne kroki
+
+Teraz, gdy masz już wystąpienie Network Watcher, zapoznaj się z dostępnymi funkcjami:
 
 * [Topologia](network-watcher-topology-overview.md)
-* [Przechwycenie pakietu](network-watcher-packet-capture-overview.md)
+* [Przechwytywanie pakietów](network-watcher-packet-capture-overview.md)
 * [Weryfikowanie przepływu adresów IP](network-watcher-ip-flow-verify-overview.md)
 * [Następny przeskok](network-watcher-next-hop-overview.md)
 * [Widok grupy zabezpieczeń](network-watcher-security-group-view-overview.md)
-* [Rejestrowanie przepływu sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md)
-* [Rozwiązywanie problemów bramy sieci wirtualnej](network-watcher-troubleshoot-overview.md)
+* [Rejestrowanie przepływu sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-overview.md)
+* [Rozwiązywanie problemów z bramą Virtual Network](network-watcher-troubleshoot-overview.md)
 
-Po wystąpieniu usługi Network Watcher umożliwia przechwytywanie pakietów na maszynach wirtualnych. Aby dowiedzieć się więcej, zobacz temat [tworzenie przechwytywania pakietów wyzwolonych alertów](network-watcher-alert-triggered-packet-capture.md)
+Po wystąpieniu Network Watcher można włączyć funkcję przechwytywania pakietów na maszynach wirtualnych. Aby dowiedzieć się, jak to zrobić, zobacz artykuł [Tworzenie wyzwalanego przechwytywania pakietów przez alert](network-watcher-alert-triggered-packet-capture.md)

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
 ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69611918"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrowanie istniejących Azure Service Bus standardowych przestrzeni nazw do warstwy Premium
@@ -94,30 +94,30 @@ Aby przeprowadzić migrację standardowej przestrzeni nazw Service Bus do warstw
 Migracja przy użyciu Azure Portal ma ten sam przepływ logiczny co migracja przy użyciu poleceń. Wykonaj następujące kroki, aby przeprowadzić migrację przy użyciu Azure Portal.
 
 1. W menu **nawigacji** w okienku po lewej stronie wybierz pozycję **Migruj do warstwy Premium**. Kliknij przycisk **Rozpocznij** , aby przejść do następnej strony.
-    ![Strona docelowa migracji][]
+    Strona docelowa ![Migration ][]
 
 1. Ukończ **instalację**.
-   ![Konfiguracja przestrzeni nazw][]
+   ![Setup przestrzeni nazw ][]
    1. Utwórz i przypisz przestrzeń nazw Premium, aby przeprowadzić migrację istniejącej standardowej przestrzeni nazw do programu.
-        ![Konfiguracja przestrzeni nazw — tworzenie przestrzeni nazw Premium][]
+        ![Setup przestrzeni nazw — Utwórz przestrzeń nazw Premium ][]
    1. Wybierz **nazwę po migracji**. Ta nazwa będzie używana w celu uzyskania dostępu do standardowej przestrzeni nazw po zakończeniu migracji.
-        ![Konfiguracja przestrzeni nazw — wybierz nazwę migracji][]
+        ![Setup przestrzeń nazw — wybierz nazwę po migracji ][]
    1. Wybierz pozycję **"dalej"** , aby kontynuować.
 1. Synchronizuj jednostki między przestrzeniami nazw Standard i Premium.
-    ![Konfiguracja przestrzeni nazw — jednostki synchronizacji — Rozpocznij][]
+    ![Setup przestrzeni nazw — jednostki synchronizacji — Rozpocznij ][]
 
    1. Wybierz pozycję **Rozpocznij synchronizację** , aby rozpocząć synchronizowanie jednostek.
    1. W oknie dialogowym wybierz pozycję **tak** , aby potwierdzić i uruchomić synchronizację.
    1. Poczekaj, aż synchronizacja zostanie zakończona. Stan jest dostępny na pasku stanu.
-        ![Konfiguracja przestrzeni nazw — jednostki synchronizacji — postęp][]
+        ![Setup przestrzeni nazw — jednostki synchronizacji — postęp ][]
         >[!IMPORTANT]
         > Jeśli zachodzi potrzeba przerwania migracji z dowolnego powodu, zapoznaj się z przepływem przerwań w sekcji często zadawanych pytań tego dokumentu.
    1. Po zakończeniu synchronizacji wybierz pozycję **dalej** w dolnej części strony.
 
 1. Przejrzyj zmiany na stronie Podsumowanie. Wybierz pozycję **pełna migracja** , aby przełączyć obszary nazw i ukończyć migrację.
-    ![Przełącz menu przełączania przestrzeni nazw][]  
+    ![Switch menu przełączania ][]  
     Strona potwierdzenia zostanie wyświetlona po zakończeniu migracji.
-    ![Przełącz przestrzeń nazw — powodzenie][]
+    ![Switch przestrzeni nazw — powodzenie ][]
 
 ## <a name="caveats"></a>Zastrzeżenia
 
@@ -169,7 +169,7 @@ Przestój, który jest napotykany przez aplikację, jest ograniczony do czasu po
 Nie, nie trzeba zmieniać kodu lub konfiguracji, aby przeprowadzić migrację. Parametry połączenia używane przez nadawcę i aplikacje odbiornika do uzyskiwania dostępu do standardowej przestrzeni nazw są automatycznie mapowane do działania jako alias dla przestrzeni nazw w warstwie Premium.
 
 ### <a name="what-happens-when-i-abort-the-migration"></a>Co się stanie w przypadku przerwania migracji?
-Migrację można przerwać przy użyciu `Abort` polecenia lub za pomocą Azure Portal. 
+Migrację można przerwać przy użyciu polecenia `Abort` lub przy użyciu Azure Portal. 
 
 #### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -179,8 +179,8 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 #### <a name="azure-portal"></a>Azure Portal
 
-![Przerwij przepływ — Przerwij przepływ][]
-przerwania synchronizacji![— ukończono przerywanie][]
+![Abort przepływ — przerwanie synchronizacji ][]
+ ![Abort przepływ — przerywanie ][]
 
 Gdy proces migracji zostanie przerwany, przerywa proces kopiowania jednostek (tematów, subskrypcji i filtrów) z warstwy Standardowa do przestrzeni nazw Premium i przerywa parowanie.
 

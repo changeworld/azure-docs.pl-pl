@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.openlocfilehash: c5fb547b18bc4014f91341070f49c4af84c01005
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265184"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Praca z projekcjami w sklepie z bazami danych w Azure Search
@@ -29,9 +29,9 @@ Projekcje mogą być tabelaryczne, z danymi przechowywanymi w wierszach i kolumn
 
 Magazyn wiedzy obsługuje dwa typy projekcji:
 
-+ **Tabele**: W przypadku danych, które są najlepiej reprezentowane jako wiersze i kolumny, projekcje tabeli umożliwiają definiowanie kształtu schematized lub projekcji w usłudze Table Storage. 
++ **Tabele**: dla danych, które są najlepiej reprezentowane jako wiersze i kolumny, projekcje tabeli umożliwiają definiowanie kształtu schematized lub projekcji w magazynie tabel. 
 
-+ **Obiekty**: Jeśli potrzebujesz reprezentacji danych w formacie JSON i wzbogacania, projekcje obiektów są zapisywane jako obiekty blob.
++ **Obiekty**: gdy potrzebna jest reprezentacja w formacie JSON danych i wzbogacania, projekcje obiektów są zapisywane jako obiekty blob.
 
 Aby wyświetlić projekcje zdefiniowane w kontekście, krok po kroku, [jak rozpocząć pracę z magazynem wiedzy](knowledge-store-howto.md).
 
@@ -64,18 +64,18 @@ Można projektować pojedynczy dokument w indeksie w wielu tabelach, zachowując
 
 ### <a name="defining-a-table-projection"></a>Definiowanie projekcji tabeli
 
-Podczas definiowania projekcji tabeli w ramach `knowledgeStore` elementu zestawu umiejętności, Zacznij od mapowania węzła w drzewie wzbogacania do źródła tabeli. Zazwyczaj ten węzeł jest wynikiem umiejętności **kształtu** , który został dodany do listy umiejętności w celu utworzenia określonego kształtu, który jest potrzebny do projektu w tabelach. Wybrany dla projektu węzeł można podzielić na projekt na wiele tabel. Definicja tabel jest listą tabel, które mają być przeznaczone do projektu. 
+Podczas definiowania projekcji tabeli w `knowledgeStore` elemencie zestawu umiejętności, Zacznij od mapowania węzła w drzewie wzbogacania do źródła tabeli. Zazwyczaj ten węzeł jest wynikiem umiejętności **kształtu** , który został dodany do listy umiejętności w celu utworzenia określonego kształtu, który jest potrzebny do projektu w tabelach. Wybrany dla projektu węzeł można podzielić na projekt na wiele tabel. Definicja tabel jest listą tabel, które mają być przeznaczone do projektu. 
 
 #### <a name="projection-slicing"></a>Dzielenie wycinków
 Podczas definiowania grupy projekcji tabeli pojedynczy węzeł drzewa wzbogacania można podzielić na wiele powiązanych tabel. Dodanie tabeli ze ścieżką źródłową, która jest elementem podrzędnym istniejącej tabeli projekcji, spowoduje, że węzeł podrzędny zostanie wycięty z węzła nadrzędnego i podzielony na nową, powiązaną tabelę. Pozwala to definiować pojedynczy węzeł w umiejętności kształtu, który może być źródłem dla wszystkich projekcji tabeli.
 
 Każda tabela wymaga trzech właściwości:
 
-+ TableName Nazwa tabeli w usłudze Azure Storage.
++ TableName: Nazwa tabeli w usłudze Azure Storage.
 
-+ generatedKeyName: Nazwa kolumny klucza, która jednoznacznie identyfikuje ten wiersz.
++ generatedKeyName: Nazwa kolumny klucza, który jednoznacznie identyfikuje ten wiersz.
 
-+ Zewnętrz Węzeł z drzewa wzbogacania, z którego są pozyskiwane wzbogacenia. Zwykle jest to dane wyjściowe kształtu, ale mogą to być dane wyjściowe dowolnych umiejętności.
++ Źródło: węzeł z drzewa wzbogacania, z którego pochodzą Twoje wzbogacenia. Zwykle jest to dane wyjściowe kształtu, ale mogą to być dane wyjściowe dowolnych umiejętności.
 
 Oto przykład projekcji tabeli.
 
@@ -154,9 +154,9 @@ Projekcje obiektów to reprezentacje JSON drzewa wzbogacania, które mogą być 
 
 Generowanie projekcji obiektu wymaga kilku atrybutów specyficznych dla obiektu:
 
-+ storageContainer: Kontener, w którym zostaną zapisane obiekty
-+ Zewnętrz Ścieżka do węzła drzewa wzbogacania, który jest katalogiem głównym projekcji
-+ Głównych Ścieżka reprezentująca unikatowy klucz dla obiektu, który ma być przechowywany. Zostanie ona użyta do utworzenia nazwy obiektu BLOB w kontenerze.
++ storageContainer: kontener, w którym zostaną zapisane obiekty
++ Źródło: ścieżka do węzła drzewa wzbogacania, który jest elementem głównym projekcji
++ klucz: ścieżka reprezentująca unikatowy klucz dla obiektu, który ma być przechowywany. Zostanie ona użyta do utworzenia nazwy obiektu BLOB w kontenerze.
 
 ## <a name="projection-lifecycle"></a>Cykl życia projekcji
 

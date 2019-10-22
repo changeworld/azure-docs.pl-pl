@@ -1,7 +1,7 @@
 ---
-title: 'Maszyna wektorowa obsługująca dwie klasy: Dokumentacja modułu'
+title: 'Maszyna wektorowa obsługująca dwie klasy: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać dwuklasowego modułu **maszyny wektorowego** w usłudze Azure Machine Learning, aby utworzyć model oparty na algorytmie maszyny wektorowej obsługi.
+description: Dowiedz się, jak używać **dwuklasowego modułu maszyny wektorowego** w usłudze Azure Machine Learning, aby utworzyć model oparty na algorytmie maszyny wektorowej obsługi.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 23f5c638146472b72078e76745e557b6babe7a49
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c58e66070f137f9c5d713a45682afac5f30bbd1e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128305"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692602"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Moduł maszyny wektorowej obsługujący dwie klasy
 
@@ -24,7 +24,7 @@ Ten moduł służy do tworzenia modelu opartego na algorytmie maszyny wektorowej
 
 Maszyny wektorowe obsługi (SVMs) to dobrze przeszukiwana Klasa metod uczenia nadzorowanego. Ta konkretna implementacja jest odpowiednia do przewidywania dwóch możliwych wyników na podstawie zmiennych ciągłych lub kategorii.
 
-Po zdefiniowaniu parametrów modelu należy nauczyć model przy użyciu modułów szkoleniowych i dostarczając znacznikowy *zestaw danych* , który zawiera etykietę lub kolumnę wyników.
+Po zdefiniowaniu parametrów modelu należy nauczyć model przy użyciu modułów szkoleniowych i dostarczając *znacznikowy zestaw danych* , który zawiera etykietę lub kolumnę wyników.
 
 ## <a name="about-support-vector-machines"></a>Informacje o obsłudze maszyn wektorowych
 
@@ -38,7 +38,7 @@ W przypadku przewidywania algorytm SVM przypisuje nowe przykłady do jednej kate
 
 W przypadku tego typu modelu zaleca się normalizowanie zestawu danych przed użyciem go do uczenia klasyfikatora.
   
-1.  Dodaj do eksperymentu moduł **maszyny wektorowej obsługujący dwie klasy** .  
+1.  Dodaj moduł **maszyny wektorowej obsługujący dwie klasy** do potoku.  
   
 2.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
@@ -52,7 +52,7 @@ W przypadku tego typu modelu zaleca się normalizowanie zestawu danych przed uż
   
      Ten współczynnik uregulowania może służyć do dostrajania modelu. Większe wartości karają bardziej złożone modele.  
   
-5.  Wybierz opcję normalizing **Features**, jeśli chcesz znormalizować funkcje przed szkoleniem.
+5.  Wybierz opcję **normalizing Features**, jeśli chcesz znormalizować funkcje przed szkoleniem.
   
      W przypadku zastosowania normalizacji przed szkoleniem punkty danych są wyśrodkowane w średniej i skalowane w celu uzyskania jednej jednostki odchylenia standardowego.
   
@@ -67,7 +67,7 @@ W przypadku tego typu modelu zaleca się normalizowanie zestawu danych przed uż
     -   W przypadku ustawienia opcji **Utwórz tryb Trainer** na **pojedynczy parametr**Użyj modułu [uczenie modelu](train-model.md) .
   
 
-10. Uruchom eksperyment.
+10. Uruchamianie potoku.
 
 ## <a name="results"></a>Wyniki
 

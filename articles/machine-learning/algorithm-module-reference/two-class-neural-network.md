@@ -1,5 +1,5 @@
 ---
-title: 'Dwie klasy sieci neuronowych: Dokumentacja modułu'
+title: 'Dwie klasy sieci neuronowych: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, w jaki sposób używać wieloklasowego modułu sieci neuronowych w usłudze Azure Machine Learning, aby utworzyć model sieci neuronowych, który może służyć do przewidywania elementu docelowego, który ma tylko dwie wartości.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 6f0ad3cc6f506efdc0579f7b8949c41b539ade6a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8f38a7b7086e5023eb63e94363301ac5277f7e7c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128368"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693598"
 ---
 # <a name="two-class-neural-network-module"></a>Dwuklasowy moduł sieci neuronowych
 
@@ -22,7 +22,7 @@ W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi 
 
 Ten moduł służy do tworzenia modelu sieci neuronowych, który może służyć do przewidywania elementu docelowego, który ma tylko dwie wartości.
 
-Klasyfikacja przy użyciu sieci neuronowych to nadzorowana Metoda uczenia i dlatego wymaga oznakowanego *zestawu danych*, który zawiera kolumnę etykieta. Na przykład można użyć tego modelu sieci neuronowych do przewidywania danych binarnych, takich jak to, czy pacjent ma pewną chorobę, czy też może zakończyć się niepowodzeniem w określonym przedziale czasu.  
+Klasyfikacja przy użyciu sieci neuronowych to nadzorowana Metoda uczenia i dlatego wymaga *oznakowanego zestawu danych*, który zawiera kolumnę etykieta. Na przykład można użyć tego modelu sieci neuronowych do przewidywania danych binarnych, takich jak to, czy pacjent ma pewną chorobę, czy też może zakończyć się niepowodzeniem w określonym przedziale czasu.  
 
 Po zdefiniowaniu modelu nauczenie go przez udostępnienie oznakowanego zestawu danych i modelu jako dane wejściowe do [uczenia modelu](./train-model.md). Model przeszkolony może być następnie używany do przewidywania wartości dla nowych danych wejściowych.
 
@@ -38,15 +38,15 @@ Aby obliczyć dane wyjściowe sieci dla konkretnych danych wejściowych, wartoś
   
 ## <a name="how-to-configure"></a>Jak skonfigurować
 
-1.  Dodaj moduł **sieci neuronowych z dwoma klasami** do eksperymentu. Ten moduł można znaleźć w obszarze **Machine Learning**, **zainicjować**, w kategorii **Klasyfikacja** .  
+1.  Dodaj moduł **sieci neuronowych z dwoma klasami** do potoku. Ten moduł można znaleźć w obszarze **Machine Learning**, **zainicjować**, w kategorii **Klasyfikacja** .  
   
 2.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
-    -   **Pojedynczy parametr**: Wybierz tę opcję, Jeśli wiesz już, jak chcesz skonfigurować model.  
+    -   **Pojedynczy parametr**: Wybierz tę opcję, jeśli już wiesz, jak chcesz skonfigurować model.  
 
 3.  W obszarze **Specyfikacja warstwy ukrytej**wybierz typ architektury sieci do utworzenia.  
   
-    -   W **pełni połączony przypadek**: Używa domyślnej architektury sieci neuronowych zdefiniowanej dla dwóch klas neuronowych sieci w następujący sposób:
+    -   W **pełni połączony przypadek**: używa domyślnej architektury sieci neuronowych zdefiniowanej dla dwóch klas neuronowych sieci w następujący sposób:
   
         -   Ma jedną ukrytą warstwę.
   
@@ -58,7 +58,7 @@ Aby obliczyć dane wyjściowe sieci dla konkretnych danych wejściowych, wartoś
   
         -   Liczba węzłów jest równa liczbie klas. W przypadku sieci z dwiema klasami neuronowych oznacza to, że wszystkie dane wejściowe muszą być mapowane na jeden z dwóch węzłów w warstwie wyjściowej.
 
-5.  Wpolu Stawka szkoleniowa Zdefiniuj rozmiar kroku wykonany dla każdej iteracji przed poprawką. Większa wartość współczynnika uczenia może spowodować szybsze zbieżność modelu, ale może przekroczyć wartości minimalne.
+5.  W polu **stawka szkoleniowa**Zdefiniuj rozmiar kroku wykonany dla każdej iteracji przed poprawką. Większa wartość współczynnika uczenia może spowodować szybsze zbieżność modelu, ale może przekroczyć wartości minimalne.
 
 6.  W polu **Liczba iteracji uczenia**Określ maksymalną liczbę przypadków, w których algorytm powinien przetwarzać przypadki szkoleniowe.
 
@@ -66,17 +66,17 @@ Aby obliczyć dane wyjściowe sieci dla konkretnych danych wejściowych, wartoś
 
 8.  Na czas **pędu**Określ wagę do zastosowania podczas uczenia się do węzłów z poprzednich iteracji  
 
-10. Wybierz opcję **losowe przykłady** , aby losowo rozróżnić przypadki między iteracjami. W przypadku zaznaczenia tej opcji przypadki są przetwarzane w dokładnie tym samym porządku przy każdym uruchomieniu eksperymentu.
+10. Wybierz opcję **losowe przykłady** , aby losowo rozróżnić przypadki między iteracjami. W przypadku zaznaczenia tej opcji przypadki są przetwarzane w dokładnie tym samym porządku przy każdym uruchomieniu potoku.
   
 11. W przypadku **liczby losowej inicjatora**wpisz wartość, która ma być używana jako inicjator.
   
-     Określanie wartości inicjatora jest przydatne, gdy chcesz zapewnić powtarzalność między przebiegami tego samego eksperymentu.  W przeciwnym razie wartość zegara systemowego jest używana jako inicjator, co może spowodować nieco inne wyniki przy każdym uruchomieniu eksperymentu.
+     Określanie wartości inicjatora jest przydatne, gdy chcesz zapewnić powtarzalność między przebiegami tego samego potoku.  W przeciwnym razie wartość zegara systemowego jest używana jako inicjator, co może spowodować nieco inne wyniki przy każdym uruchomieniu potoku.
   
-13. Dodaj oznakowany zestaw danych do eksperymentu i Połącz jeden z [modułów szkoleniowych](module-reference.md).  
+13. Dodaj oznakowany zestaw danych do potoku i Połącz jeden z [modułów szkoleniowych](module-reference.md).  
   
     -   W przypadku ustawienia opcji **Utwórz tryb Trainer** na **pojedynczy parametr**Użyj modułu [uczenie modelu](train-model.md) .  
   
-14. Uruchom eksperyment.
+14. Uruchamianie potoku.
 
 ## <a name="results"></a>Wyniki
 
@@ -84,7 +84,7 @@ Po zakończeniu szkolenia:
 
 + Aby wyświetlić podsumowanie parametrów modelu wraz z wagami funkcji pochodzącymi z uczenia i innymi parametrami sieci neuronowych, kliknij prawym przyciskiem myszy dane wyjściowe [modelu uczenia](./train-model.md)i wybierz polecenie **Wizualizuj**.  
 
-+ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy **wyszkolony model** wyjściowy i wybierz pozycję **Zapisz jako model przeszkolony**. Ten model nie jest aktualizowany po kolejnych uruchomieniach tego samego eksperymentu.
++ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy **wyszkolony model** wyjściowy i wybierz pozycję **Zapisz jako model przeszkolony**. Ten model nie jest aktualizowany po kolejnych uruchomieniach tego samego potoku.
 
 
 ## <a name="next-steps"></a>Następne kroki

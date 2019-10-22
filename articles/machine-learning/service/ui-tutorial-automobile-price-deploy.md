@@ -1,125 +1,121 @@
 ---
 title: 'Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą interfejsu wizualnego'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak utworzyć rozwiązanie do analizy predykcyjnej w interfejsie wizualizacji Azure Machine Learning. Uczenie, ocenę i wdrożenie modelu uczenia maszynowego przy użyciu modułów przeciągania i upuszczania. Ten samouczek jest drugą częścią serii dwóch części na temat przewidywania cen samochodów przy użyciu regresji liniowej.
+description: Dowiedz się, jak utworzyć rozwiązanie do analizy predykcyjnej w Azure Machine Learning interfejsie wizualizacji. Uczenie, ocenę i wdrożenie modelu uczenia maszynowego przy użyciu modułów przeciągania i upuszczania.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/11/2019
-ms.openlocfilehash: 9378c6a14c3b755a6456ef68ecd73730cb77fc79
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 10/09/2019
+ms.openlocfilehash: ff3ffe4b68d7b5d74ee3a84ca9c59a13d445f43b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128985"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692984"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą interfejsu wizualnego
 
-Aby umożliwić innym użytkownikom korzystanie z modelu predykcyjnego opracowanego w pierwszej części tego [samouczka](ui-tutorial-automobile-price-train-score.md), możesz go wdrożyć jako usługę sieci Web platformy Azure. Do tej pory udało Ci się eksperymentować z uczeniem modelu. Teraz można generować nowe prognozy na podstawie danych wejściowych użytkownika. W tej części samouczka:
+Aby umożliwić innym użytkownikom korzystanie z modelu predykcyjnego opracowanego w pierwszej części tego [samouczka](ui-tutorial-automobile-price-train-score.md), możesz wdrożyć go jako punkt końcowy w czasie rzeczywistym. W części 1 został przeszkolony model. Teraz można generować nowe prognozy na podstawie danych wejściowych użytkownika. W tej części samouczka:
 
 > [!div class="checklist"]
-> * Przygotuj model do wdrożenia
-> * Wdrażanie usługi internetowej
-> * Testowanie usługi sieci Web
-> * Zarządzanie usługą sieci Web
-> * Korzystanie z usługi sieci Web
+> * Wdrażanie punktu końcowego w czasie rzeczywistym
+> * Tworzenie klastra inferencing
+> * Testowanie punktu końcowego w czasie rzeczywistym
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Wykonaj [jedną z części samouczka](ui-tutorial-automobile-price-train-score.md) , aby dowiedzieć się, jak szkolić i oceny model uczenia maszynowego w interfejsie wizualnym.
 
-## <a name="prepare-for-deployment"></a>Przygotowanie do wdrożenia
+## <a name="deploy-a-real-time-endpoint"></a>Wdrażanie punktu końcowego w czasie rzeczywistym
 
-Przed wdrożeniem eksperymentu jako usługi sieci Web należy najpierw skonwertować *eksperyment szkoleniowy* do *eksperymentu predykcyjnego*.
+Aby można było wdrożyć potok, należy:
 
-1. Wybierz pozycję **Utwórz eksperyment predykcyjny*** w dolnej części kanwy eksperymentu.
+1. Przekonwertuj potok szkoleniowy na potok wnioskowania w czasie rzeczywistym, który usuwa moduły szkoleniowe i dodaje dane wejściowe i wyjściowe dla żądań inferencing.
+1. Wdróż potok wnioskowania.
 
-    ![Animowany plik GIF przedstawiający automatyczną konwersję eksperymentu szkoleniowego na eksperyment predykcyjny](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
+### <a name="create-a-real-time-inference-pipeline"></a>Tworzenie potoku w czasie rzeczywistym
 
-    Po wybraniu opcji **Utwórz eksperyment predykcyjny należy wykonać**kilka czynności:
+1. W górnej części kanwy potoku wybierz pozycję **Utwórz potok wnioskowania**  > **potoku w czasie rzeczywistym**
+
+    W przypadku wybrania opcji **Utwórz potok predykcyjny**następuje kilka rzeczy:
     
-    * Szkolony model jest przechowywany jako moduł **przeszkolonych modeli** w palecie modułów. Można go znaleźć w obszarze **modele przeszkolone**.
-    * Moduły, które zostały użyte do trenowania zostaną usunięte; w szczególności:
-      * Trenowanie modelu
-      * Dzielenie danych
-      * Ocena modelu
-    * Zapisany model przeszkolony zostanie dodany z powrotem do eksperymentu.
+    * Szkolony model jest przechowywany jako moduł **DataSet** w palecie modułów. Można go znaleźć w obszarze **Moje zestawy danych**.
+    * Moduły, takie jak **uczenie modelu** i **dane podzielone**, które zostały użyte do szkolenia, są usuwane.
+    * Zapisany model przeszkolony zostanie dodany z powrotem do potoku.
     * Dodawane są moduły danych **wejściowych** i **usług** sieci Web. Te moduły identyfikują, gdzie dane użytkownika zostaną wprowadzone do modelu, a dane są zwracane.
 
-    **Eksperyment szkoleniowy** jest nadal zapisywany na nowych kartach w górnej części kanwy eksperymentu.
+    > [!Note]
+    > **Potok szkoleń** jest zapisywany na nowej karcie w górnej części kanwy potoku. Można go również znaleźć jako opublikowany potok w interfejsie wizualizacji.
+    >
 
-1. Kliknij przycisk **Run** (Uruchom), aby uruchomić eksperyment
+    Potok powinien teraz wyglądać następująco:  
 
-1. Wybierz dane wyjściowe modułu **wynik model** i wybierz pozycję **Wyświetl wyniki** , aby sprawdzić, czy model nadal działa. Wyświetlane są oryginalne dane oraz Przewidywana cena ("etykiety oceny").
+   ![Zrzut ekranu przedstawiający oczekiwaną konfigurację potoku po przygotowaniu go do wdrożenia](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
-Eksperyment powinien teraz wyglądać następująco:  
+1. Wybierz pozycję **Uruchom** i Użyj tego samego elementu docelowego obliczeń i eksperymentu użytego w części 1.
 
-![Zrzut ekranu przedstawiający oczekiwaną konfigurację eksperymentu po przygotowaniu go do wdrożenia](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
+1. Wybierz moduł **model oceny** .
 
-## <a name="deploy-the-web-service"></a>Wdrażanie usługi sieci Web
+1. W okienku właściwości wybierz pozycję **wyjściowe**  > **Wizualizacja** , aby sprawdzić, czy model nadal działa. Można zobaczyć oryginalne dane wraz z przewidywaną ceną ("etykiety oceny").
 
-1. Wybierz pozycję **Wdróż usługę sieci Web** poniżej kanwy.
+1. Wybierz pozycję **Wdróż**.
 
-1. Wybierz **obiekt docelowy obliczeń** , dla którego chcesz uruchomić usługę sieci Web.
+### <a name="create-an-inferencing-cluster"></a>Tworzenie klastra inferencing
 
-    Obecnie interfejs wizualny obsługuje tylko wdrażanie w celach obliczeniowych usługi Azure Kubernetes Service (AKS). Możesz wybrać spośród dostępnych obiektów docelowych obliczeniowych AKS w obszarze roboczym usługi Machine Learning lub skonfigurować nowe środowisko AKS przy użyciu kroków w wyświetlonym oknie dialogowym.
+W wyświetlonym oknie dialogowym możesz wybrać z istniejących klastrów usługi Azure Kubernetes Service (AKS) w obszarze roboczym, aby wdrożyć model. Jeśli nie masz klastra AKS, wykonaj następujące kroki, aby go utworzyć.
 
-    ![Zrzut ekranu przedstawiający możliwą konfigurację nowego elementu docelowego obliczeń](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
+1. W oknie dialogowym wybierz pozycję **obliczenia** , aby przejść do strony **obliczenia** .
 
-1. Wybierz pozycję **Wdróż usługę sieci Web**. Po zakończeniu wdrażania zobaczysz następujące powiadomienie. Wdrożenie może potrwać kilka minut.
+1. Na Wstążce Nawigacja wybierz pozycję **klastry wnioskowania**  >  **+ Nowy**.
 
-    ![Zrzut ekranu przedstawiający komunikat potwierdzający pomyślne wdrożenie.](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
+    ![Zrzut ekranu przedstawiający sposób przejścia do okienka nowy klaster wnioskowania](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
 
-## <a name="test-the-web-service"></a>Test usługi sieci web
+1. W okienku klaster wnioskowania Skonfiguruj nową usługę Kubernetes.
 
-Możesz przetestować usługi sieci Web interfejsu wizualnego i zarządzać nimi, przechodząc do karty **usługi sieci Web** .
+1. Wprowadź wartość "AKS-COMPUTE" dla **nazwy obliczeniowej**.
+    
+1. Wybierz dostępny **region**w pobliżu.
 
-1. Przejdź do sekcji usługa sieci Web. Zostanie wyświetlona usługa sieci Web, którą wdrożono przy użyciu **samouczka z nazwą — przewidywanie ceny samochodów [predykcyjne]** .
+1. Wybierz pozycję **Utwórz**.
 
-     ![Zrzut ekranu przedstawiający kartę usługa sieci Web z ostatnio utworzoną usługą sieci Web](./media/ui-tutorial-automobile-price-deploy/web-services.png)
+    > [!Note]
+    > Utworzenie nowej usługi AKS trwa około 15 minut. Stan aprowizacji można sprawdzić na stronie **klastrów wnioskowania**
+    >
 
-1. Wybierz nazwę usługi sieci Web, aby wyświetlić dodatkowe szczegóły.
+### <a name="deploy-the-real-time-endpoint"></a>Wdrażanie punktu końcowego w czasie rzeczywistym
+
+Po zakończeniu aprowizacji usługi AKS Wróć do potoku inferencing w czasie rzeczywistym, aby zakończyć wdrażanie.
+
+1. Wybierz pozycję **Wdróż** powyżej kanwy.
+
+1. Wybierz pozycję **wdróż nowy punkt końcowy**w czasie rzeczywistym. 
+
+1. Wybierz utworzony klaster AKS.
+
+1. Wybierz pozycję **Wdróż**.
+
+    [! Zrzut ekranu przedstawiający sposób konfigurowania nowego punktu końcowego w czasie rzeczywistym](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+
+    Powiadomienie o powodzeniu nad kanwą zostanie wyświetlone po zakończeniu wdrażania. może to potrwać kilka minut.
+
+## <a name="test-the-real-time-endpoint"></a>Testowanie punktu końcowego w czasie rzeczywistym
+
+Punkt końcowy w czasie rzeczywistym można przetestować, przechodząc do strony **punkty końcowe** w okienku nawigacji obszaru roboczego po lewej stronie.
+
+1. Na stronie **punkty końcowe** Wybierz wdrożony punkt końcowy.
+
+    ![Zrzut ekranu przedstawiający kartę punkty końcowe czasu rzeczywistego z wyróżnionym ostatnio utworzonym punktem końcowym](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
 1. Wybierz pozycję **Testuj**.
 
-    [![Zrzut ekranu przedstawiający stronę Testowanie usługi sieci Web](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)](./media/ui-tutorial-automobile-price-deploy/web-service-test.png#lightbox)
-
 1. Dane wejściowe testowania lub użyj autowypełnianych danych przykładowych, a następnie wybierz **test**.
 
-    Żądanie testowe zostanie przesłane do usługi sieci Web, a wyniki są wyświetlane na stronie. Mimo że dla danych wejściowych jest generowana wartość ceny, nie jest ona używana do generowania wartości przewidywania.
+    Żądanie testowe zostanie przesłane do punktu końcowego, a wyniki są wyświetlane na stronie. Mimo że dla danych wejściowych jest generowana wartość ceny, nie jest ona używana do generowania wartości przewidywania.
 
-## <a name="consume-the-web-service"></a>Korzystanie z usługi sieci Web
-
-Użytkownicy mogą teraz wysyłać żądania interfejsu API do usługi sieci Web platformy Azure i uzyskiwać wyniki, aby przewidzieć cenę nowych samochodów.
-
-**Żądanie/odpowiedź** — użytkownik wysyła do usługi jeden lub więcej wierszy danych typu Automobile przy użyciu protokołu HTTP. Usługa reaguje na co najmniej jeden zestaw wyników.
-
-Przykładowe wywołania REST można znaleźć na karcie **Korzystanie** na stronie Szczegóły usługi sieci Web.
-
-   ![Zrzut ekranu przedstawiający przykładowe wywołanie REST, które użytkownicy mogą znaleźć na karcie korzystanie](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
-
-Przejdź do karty **dokumentacji interfejsu API** , aby znaleźć więcej szczegółów interfejsu API.
-
-## <a name="manage-models-and-deployments"></a>Zarządzanie modelami i wdrożeniami
-
-Modele i wdrożenia usługi sieci Web utworzone w interfejsie wizualnym mogą być również zarządzane w obszarze roboczym Azure Machine Learning.
-
-1. Otwórz obszar roboczy w [Azure Portal](https://portal.azure.com/).  
-
-1. W obszarze roboczym wybierz pozycję **modele**. Następnie wybierz utworzony eksperyment.
-
-    ![Zrzut ekranu przedstawiający sposób nawigowania do eksperymentów w Azure Portal](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
-
-    Na tej stronie zostaną wyświetlone dodatkowe szczegóły dotyczące modelu.
-
-1. Wybierz pozycję **wdrożenia**, aby wyświetlić listę usług sieci Web, które korzystają z modelu. Wybierz nazwę usługi sieci Web, która zostanie przestawiona na stronę szczegółów usługi sieci Web. Na tej stronie można uzyskać bardziej szczegółowe informacje o usłudze sieci Web.
-
-    [![Raport szczegółowy przebiegu zrzutu ekranu](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
-
-Te modele i wdrożenia można również znaleźć w sekcjach **modele** i **punkty końcowe** na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
+    ![Zrzut ekranu przedstawiający sposób testowania punktu końcowego w czasie rzeczywistym z etykietą z oceną dla wyróżnionej ceny](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -127,7 +123,7 @@ Te modele i wdrożenia można również znaleźć w sekcjach **modele** i **punk
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono podstawowe kroki tworzenia, wdrażania i zużywania modelu uczenia maszynowego w interfejsie wizualizacji. Aby dowiedzieć się więcej o sposobach rozwiązywania innych rodzajów problemów za pomocą interfejsu wizualnego, zobacz nasze inne Przykładowe eksperymenty.
+W tym samouczku przedstawiono podstawowe kroki tworzenia, wdrażania i zużywania modelu uczenia maszynowego w interfejsie wizualizacji. Aby dowiedzieć się więcej o sposobach rozwiązywania innych rodzajów problemów za pomocą interfejsu wizualnego, zobacz nasze inne przykładowe potoki.
 
 > [!div class="nextstepaction"]
 > [Przykład klasyfikacji ryzyka kredytowego](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)

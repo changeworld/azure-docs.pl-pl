@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 09/14/2019
-ms.openlocfilehash: 0465dcba5130f3b2dc5c615c884bfa0d3b138eb7
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.date: 10/10/2019
+ms.openlocfilehash: f5136084530c48815fd6a9f9e25b7358df00af07
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514932"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692528"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co to są Azure Machine Learning potoki?
 
@@ -112,6 +112,14 @@ W [zestawie Azure Machine Learning Python SDK](https://docs.microsoft.com/python
 Potok Azure ML jest skojarzony z obszarem roboczym Azure Machine Learning, a krok potoku jest skojarzony z elementem docelowym obliczeń dostępnym w tym obszarze roboczym. Aby uzyskać więcej informacji, zobacz temat [Tworzenie obszarów roboczych Azure Machine Learning i zarządzanie nimi w Azure Portal](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) lub [co to są cele obliczeniowe w Azure Machine Learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
 
 W Azure Machine Learning obiektem docelowym obliczeń jest środowisko, w którym występuje faza ML. Środowisko oprogramowania może być zdalną maszyną wirtualną, Azure Machine Learning COMPUTE, Azure Databricks, Azure Batch itd. Środowisko sprzętowe może być również różne, w zależności od obsługi procesora GPU, pamięci, magazynu i tak dalej. Można określić element docelowy obliczeń dla każdego kroku, który zapewnia szczegółową kontrolę nad kosztami. Możesz użyć bardziej zaawansowanych zasobów dla konkretnej akcji, ilości danych i potrzeb związanych z wydajnością projektu. 
+
+## <a name="how-do-i-build-pipelines-using-the-azure-machine-learning-visual-interface"></a>Jak mogę potoki kompilacji przy użyciu interfejsu Visual Azure Machine Learning?
+
+Deweloperzy, którzy preferują powierzchnię projektowania wizualizacji, mogą używać interfejsu wizualizacji Azure Machine Learning, aby tworzyć potoki. Możesz uzyskać dostęp do tego narzędzia z wybranego **interfejsu wizualizacji** na stronie głównej obszaru roboczego.  Interfejs wizualizacji umożliwia przeciąganie i upuszczanie kroków na powierzchnię projektu. W celu szybkiego rozwoju można korzystać z istniejących modułów w całym spektrum zadań w ML. istniejące moduły obejmują wszystko, od przekształcania danych do wybranego algorytmu, do szkolenia do wdrożenia. Można też utworzyć w pełni niestandardowy potok, łącząc własne kroki zdefiniowane w skryptach języka Python.
+
+Podczas wizualnego projektowania potoków dane wejściowe i wyjściowe kroku są wyświetlane w sposób widoczny. Możesz przeciągać i upuszczać dane, co pozwala szybko zrozumieć i zmodyfikować przepływu danych potoku.
+ 
+![Przykład Azure Machine Learning interfejsu wizualizacji](./media/concept-ml-pipelines/visual-design-surface.gif)
 
 ### <a name="understanding-the-execution-graph"></a>Informacje na temat grafu wykonywania
 

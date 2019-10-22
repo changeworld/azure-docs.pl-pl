@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
 ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69647367"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Tworzenie indeksu podstawowego w Azure Search
@@ -36,7 +36,7 @@ Docieranie do właściwego projektu indeksu jest zazwyczaj realizowane przez wie
   
    Po kliknięciu pozycji **Utwórz**wszystkie struktury fizyczne obsługujące indeks są tworzone w usłudze wyszukiwania.
 
-3. Pobierz schemat indeksu przy użyciu [interfejsu API REST Get index](https://docs.microsoft.com/rest/api/searchservice/get-index) i narzędzia do testowania sieci [](search-get-started-postman.md)Web, takiego jak program Poster. Masz teraz reprezentację w formacie JSON indeksu utworzonego w portalu. 
+3. Pobierz schemat indeksu przy użyciu [interfejsu API REST Get index](https://docs.microsoft.com/rest/api/searchservice/get-index) i narzędzia do testowania sieci Web, takiego jak program [Poster](search-get-started-postman.md). Masz teraz reprezentację w formacie JSON indeksu utworzonego w portalu. 
 
    W tym momencie przełączasz się na podejście oparte na kodzie. Portal nie jest dobrze dostosowany do iteracji, ponieważ nie można edytować indeksu, który został już utworzony. Można jednak użyć elementu Poster i REST dla pozostałych zadań.
 
@@ -48,7 +48,7 @@ Docieranie do właściwego projektu indeksu jest zazwyczaj realizowane przez wie
 
 Ponieważ struktury fizyczne są tworzone w usłudze, [usuwanie i ponowne tworzenie indeksów](search-howto-reindex.md) jest konieczne po każdym wprowadzeniu istotnych zmian w istniejącej definicji pola. Oznacza to, że podczas opracowywania należy zaplanować częste ponowne kompilacje. Możesz rozważyć pracę z podzbiorem danych, aby szybciej tworzyć kompilacje. 
 
-Nie zaleca się tworzenia kodu, a nie podejścia do portalu. Jeśli korzystasz z portalu dla definicji indeksu, musisz podać definicję indeksu dla każdej kompilacji. Alternatywnie narzędzia takie jak Poster [i interfejs API REST](search-get-started-postman.md) są przydatne do testowania koncepcji, gdy projekty programistyczne są nadal w fazie wczesnych faz. Możesz wprowadzić przyrostowe zmiany definicji indeksu w treści żądania, a następnie wysłać żądanie do usługi, aby ponownie utworzyć indeks przy użyciu zaktualizowanego schematu.
+Nie zaleca się tworzenia kodu, a nie podejścia do portalu. Jeśli korzystasz z portalu dla definicji indeksu, musisz podać definicję indeksu dla każdej kompilacji. Alternatywnie narzędzia takie jak [Poster i interfejs API REST](search-get-started-postman.md) są przydatne do testowania koncepcji, gdy projekty programistyczne są nadal w fazie wczesnych faz. Możesz wprowadzić przyrostowe zmiany definicji indeksu w treści żądania, a następnie wysłać żądanie do usługi, aby ponownie utworzyć indeks przy użyciu zaktualizowanego schematu.
 
 ## <a name="components-of-an-index"></a>Składniki indeksu
 
@@ -146,7 +146,7 @@ Azure Search indeks składa się z następujących elementów.
 W trakcie definiowania schematu musisz określić nazwę, typ i atrybuty każdego pola w indeksie. Typ pola klasyfikuje dane, które są w nim przechowywane. Atrybuty są ustawiane dla poszczególnych pól, aby określić sposób użycia pola. W poniższych tabelach zostały wyszczególnione typy i atrybuty, które możesz określić.
 
 ### <a name="data-types"></a>Typy danych
-| Type | Opis |
+| Typ | Opis |
 | --- | --- |
 | *Edm.String* |Tekst, który można opcjonalnie uzyskać tokeny na potrzeby wyszukiwania pełnotekstowego (dzielenia wyrazów, szukania rdzeni itd.). |
 | *Collection(Edm.String)* |Lista ciągów, które opcjonalnie można podzielić na tokeny na potrzeby wyszukiwania pełnotekstowego. Nie ma teoretycznej górnej granicy liczby elementów w kolekcji, ale rozmiar ładunku w kolekcjach jest ograniczony do 16 MB. |
@@ -163,9 +163,9 @@ Dowiedz się więcej na temat [typów danych obsługiwanych przez usługę Azure
 
 Dokładnie jedno pole w indeksie musi być wyznaczono jako pole **klucza** , które jednoznacznie identyfikuje każdy dokument.
 
-Inne atrybuty określają, w jaki sposób pole jest używane w aplikacji. Na przykład atrybut **możliwy** do przeszukiwania jest przypisany do każdego pola, które powinno zostać uwzględnione w wyszukiwaniu pełnotekstowym. 
+Inne atrybuty określają, w jaki sposób pole jest używane w aplikacji. Na przykład atrybut **możliwy do przeszukiwania** jest przypisany do każdego pola, które powinno zostać uwzględnione w wyszukiwaniu pełnotekstowym. 
 
-Interfejsy API używane do tworzenia indeksu mają różne ustawienia domyślne. W przypadku [interfejsów API REST](https://docs.microsoft.com/rest/api/searchservice/Create-Index)większość atrybutów jest domyślnie włączona (na przykład **Wyszukiwanie** i pobieranie jest prawdziwe dla pól ciągów) i często należy je ustawić tylko wtedy, gdy chcesz je wyłączyć. W przypadku zestawu .NET SDK przeciwieństwem jest true. W przypadku każdej właściwości, która nie została ustawiona jawnie, domyślnie należy wyłączyć odpowiednie zachowanie wyszukiwania, chyba że zostanie to włączone.
+Interfejsy API używane do tworzenia indeksu mają różne ustawienia domyślne. W przypadku [interfejsów API REST](https://docs.microsoft.com/rest/api/searchservice/Create-Index)większość atrybutów jest domyślnie włączona (na przykład **Wyszukiwanie** i **pobieranie jest prawdziwe** dla pól ciągów) i często należy je ustawić tylko wtedy, gdy chcesz je wyłączyć. W przypadku zestawu .NET SDK przeciwieństwem jest true. W przypadku każdej właściwości, która nie została ustawiona jawnie, domyślnie należy wyłączyć odpowiednie zachowanie wyszukiwania, chyba że zostanie to włączone.
 
 | Atrybut | Opis |
 | --- | --- |
@@ -181,11 +181,11 @@ Interfejsy API używane do tworzenia indeksu mają różne ustawienia domyślne.
 
 Wybrane atrybuty mają wpływ na magazyn. Poniższy zrzut ekranu ilustruje wzorce magazynu indeksów, które wynikają z różnych kombinacji atrybutów.
 
-Indeks jest oparty na wbudowanym przykładowym źródle danych [nieruchomości](search-get-started-portal.md) , który można indeksować i wysyłać zapytania w portalu. Chociaż schematy indeksów nie są wyświetlane, można wywnioskować atrybuty na podstawie nazwy indeksu. Na przykład indeks z *możliwością wyszukiwania realestate* ma wybrany atrybut **możliwy** do przeszukiwania i nic nie jest, a *realestate —* indeks, który można pobrać, ma wybrany atrybut do **pobierania** i nic innego i tak dalej.
+Indeks jest oparty na [wbudowanym przykładowym](search-get-started-portal.md) źródle danych Nieruchomości, który można indeksować i wysyłać zapytania w portalu. Chociaż schematy indeksów nie są wyświetlane, można wywnioskować atrybuty na podstawie nazwy indeksu. Na przykład indeks z *możliwością wyszukiwania realestate* ma wybrany atrybut **możliwy do przeszukiwania** i nic nie jest, a *realestate —* indeks, który można pobrać, ma wybrany atrybut do **pobierania** i nic innego i tak dalej.
 
 ![Rozmiar indeksu na podstawie wybranego atrybutu](./media/search-what-is-an-index/realestate-index-size.png "Rozmiar indeksu na podstawie wybranego atrybutu")
 
-Chociaż te warianty indeksów są sztuczne, możemy odnieść się do nich w celu uzyskania szerokiego porównania wpływu atrybutów na magazyn. Czy ustawienie umożliwia pobieranie rozmiaru indeksu wzrostu? Nie. Czy dodanie pól do **sugestii** zwiększa rozmiar indeksu? Tak.
+Chociaż te warianty indeksów są sztuczne, możemy odnieść się do nich w celu uzyskania szerokiego porównania wpływu atrybutów na magazyn. Czy ustawienie **umożliwia** pobieranie rozmiaru indeksu wzrostu? Nie. Czy dodanie pól do **sugestii** zwiększa rozmiar indeksu? Tak.
 
 Indeksy obsługujące filtrowanie i sortowanie są proporcjonalnie większe niż indeksy obsługujące pełne wyszukiwanie tekstu. Przyczyną jest to, że zapytania filtru i sortowania dotyczące dokładnych dopasowań, aby dokumenty były przechowywane bez zmian. W przeciwieństwie do pól z możliwością wyszukiwania tekst obsługujący pełnotekstowe i rozmyte wyszukiwanie używaj odwróconych indeksów, które są wypełniane za pomocą tokenów, które zużywają mniej miejsca niż całe dokumenty.
 
@@ -193,7 +193,7 @@ Indeksy obsługujące filtrowanie i sortowanie są proporcjonalnie większe niż
 > Architektura magazynu jest uważana za szczegóły implementacji Azure Search i może ulec zmianie bez powiadomienia. Nie ma żadnej gwarancji, że bieżące zachowanie będzie nadal występowało w przyszłości.
 
 ## <a name="suggesters"></a>Funkcje sugestii
-Sugerował to sekcja schematu, która określa, które pola w indeksie są używane do obsługi autouzupełniania lub zapytań typu "w wyszukiwaniach". Zazwyczaj częściowe ciągi wyszukiwania są wysyłane do sugestii [(interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/suggestions) , podczas gdy użytkownik pisze zapytanie wyszukiwania, a interfejs API zwraca zestaw sugerowanych fraz. 
+Sugerował to sekcja schematu, która określa, które pola w indeksie są używane do obsługi autouzupełniania lub zapytań typu "w wyszukiwaniach". Zazwyczaj częściowe ciągi wyszukiwania są wysyłane do [sugestii (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/suggestions) , podczas gdy użytkownik pisze zapytanie wyszukiwania, a interfejs API zwraca zestaw sugerowanych fraz. 
 
 Pola dodane do sugestii są używane do kompilowania terminów wyszukiwania z wyprzedzeniem. Wszystkie terminy wyszukiwania są tworzone podczas indeksowania i zapisywane oddzielnie. Aby uzyskać więcej informacji na temat tworzenia struktury sugerującej, zobacz [Dodawanie sugestii](index-add-suggesters.md).
 
@@ -213,11 +213,11 @@ Kod JavaScript po stronie klienta nie może domyślnie wywołać żadnych interf
 
 Dla mechanizmu CORS można ustawić następujące opcje:
 
-+ **allowedOrigins** (wymagane): Jest to lista źródeł, do których zostanie udzielony dostęp do Twojego indeksu. Oznacza to, że każdy kod JavaScript obsługiwany z tych źródeł będzie mógł wysyłać zapytania do indeksu (przy założeniu, że zawiera on prawidłowy klucz API-Key). Każdy punkt początkowy ma zwykle postać `protocol://<fully-qualified-domain-name>:<port>` , chociaż `<port>` jest często pomijany. Aby uzyskać więcej informacji, zobacz [udostępnianie zasobów między źródłami (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
++ **allowedOrigins** (wymagane): jest to lista źródeł, do których zostanie udzielony dostęp do Twojego indeksu. Oznacza to, że każdy kod JavaScript obsługiwany z tych źródeł będzie mógł wysyłać zapytania do indeksu (przy założeniu, że zawiera on prawidłowy klucz API-Key). Każde miejsce pochodzenia ma zazwyczaj postać `protocol://<fully-qualified-domain-name>:<port>`, chociaż `<port>` jest często pomijane. Aby uzyskać więcej informacji, zobacz [udostępnianie zasobów między źródłami (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
 
   Jeśli chcesz zezwolić na dostęp do wszystkich źródeł, Dołącz `*` jako pojedynczy element w tablicy **allowedOrigins** . *Nie jest to zalecane w przypadku usług wyszukiwania w środowisku produkcyjnym* , ale często jest to przydatne w przypadku programowania i debugowania.
 
-+ **atrybut maxageinseconds** (opcjonalnie): Przeglądarki używają tej wartości do określenia czasu trwania (w sekundach) do buforowania odpowiedzi na inspekcję funkcji CORS. Ta wartość musi być nieujemną liczbą całkowitą. Im większa wartość to, tym lepsza wydajność, ale im dłużej zacznie obowiązywać zmiana zasad CORS. Jeśli nie jest ustawiona, zostanie użyty domyślny czas trwania wynoszący 5 minut.
++ **atrybut maxageinseconds** (opcjonalnie): przeglądarki używają tej wartości, aby określić czas (w sekundach), w którym są buforowane odpowiedzi na inspekcje wstępne. Ta wartość musi być nieujemną liczbą całkowitą. Im większa wartość to, tym lepsza wydajność, ale im dłużej zacznie obowiązywać zmiana zasad CORS. Jeśli nie jest ustawiona, zostanie użyty domyślny czas trwania wynoszący 5 minut.
 
 ## <a name="encryption-key"></a>Klucz szyfrowania
 

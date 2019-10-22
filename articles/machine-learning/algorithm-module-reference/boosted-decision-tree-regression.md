@@ -1,5 +1,5 @@
 ---
-title: 'Regresja drzewa decyzyjnej podwyższania: Dokumentacja modułu'
+title: 'Regresja drzewa decyzyjnej: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, w jaki sposób użyć modułu regresja drzewa decyzyjnego w usłudze Azure Machine Learning, aby utworzyć kompletną liczbę drzew regresji przy użyciu zwiększania.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 5f26dfbdd8d3ef094ed380b7bd00ab0169152502
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 4b8ff1c9f5b0f0b04448b950d3ba904ba76927c9
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208166"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693832"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Moduł regresji drzewa decyzyjnego
 
@@ -46,34 +46,34 @@ Aby uzyskać dodatkowe informacje, zobacz następujące artykuły:
   
 -  [https://research.microsoft.com/apps/pubs/default.aspx?id=132652](https://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
 
-    Microsoft Research: Od RankNet do LambdaRank do LambdaMART: Przegląd. Według J.C. Burges.
+    Microsoft Research: od RankNet do LambdaRank do LambdaMART: Omówienie. Według J.C. Burges.
 
-Metodę zwiększania gradientu można również użyć w przypadku problemów z klasyfikacją przez zredukowanie ich do regresji przy użyciu odpowiedniej funkcji strat. Aby uzyskać więcej informacji na temat wdrażania podwyższanych drzew dla zadań klasyfikacji, zobacz dwuklasowe [drzewo decyzyjne](./two-class-boosted-decision-tree.md).  
+Metodę zwiększania gradientu można również użyć w przypadku problemów z klasyfikacją przez zredukowanie ich do regresji przy użyciu odpowiedniej funkcji strat. Aby uzyskać więcej informacji na temat wdrażania podwyższanych drzew dla zadań klasyfikacji, zobacz [dwuklasowe drzewo decyzyjne](./two-class-boosted-decision-tree.md).  
 
 ## <a name="how-to-configure-boosted-decision-tree-regression"></a>Jak skonfigurować regresję drzewa decyzyjnej podwyższania
 
-1.  Dodaj do eksperymentu moduł podwyższający **decyzje** . Ten moduł można znaleźć w obszarze **Machine Learning**, **zainicjować**, w kategorii **regresja** . 
+1.  Dodaj do potoku moduł **podwyższający decyzje** . Ten moduł można znaleźć w obszarze **Machine Learning**, **zainicjować**, w kategorii **regresja** . 
   
 2.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
-    -   **Pojedynczy parametr**: Wybierz tę opcję, Jeśli wiesz, jak chcesz skonfigurować model i udostępnić określony zestaw wartości jako argumenty.  
+    -   **Pojedynczy parametr**: zaznacz tę opcję, Jeśli wiesz, jak chcesz skonfigurować model i udostępnić określony zestaw wartości jako argumenty.  
    
   
-3. **Maksymalna liczba liści na drzewo**: Określ maksymalną liczbę węzłów terminalu, które można utworzyć w dowolnym drzewie.  
+3. **Maksymalna liczba liści na drzewo**: wskazuje maksymalną liczbę węzłów terminalu (liści), które można utworzyć w dowolnym drzewie.  
 
     Zwiększając tę wartość, można zwiększyć rozmiar drzewa i uzyskać lepszą precyzję w przypadku ryzyka przekroczenia i dłuższego czasu uczenia się.  
 
-4. **Minimalna liczba próbek na węzeł liścia**: Wskaż minimalną liczbę przypadków potrzebną do utworzenia dowolnego węzła terminalu (liścia) w drzewie.
+4. **Minimalna liczba próbek na węzeł liścia**: wskazuje minimalną liczbę przypadków wymaganych do utworzenia dowolnego węzła terminalu w drzewie.
 
     Zwiększenie tej wartości spowoduje zwiększenie wartości progowej tworzenia nowych reguł. Na przykład, z wartością domyślną 1, nawet pojedynczy przypadek może spowodować utworzenie nowej reguły. W przypadku zwiększenia wartości do 5 dane szkoleniowe muszą zawierać co najmniej 5 przypadków, które spełniają te same warunki.
 
-5. **Stawka szkoleniowa**: Wpisz liczbę z zakresu od 0 do 1, która definiuje rozmiar kroku podczas uczenia się. Szybkość uczenia określa, jak szybko lub wolno dowiedzieć się zbieżność z optymalnym rozwiązaniem. Jeśli rozmiar tego kroku jest zbyt duży, można przekroczyć optymalne rozwiązanie. Jeśli rozmiar tego kroku jest zbyt mały, szkolenie trwa dłużej niż w przypadku najlepszego rozwiązania.
+5. **Szybkość uczenia**: wpisz liczbę z zakresu od 0 do 1, która definiuje rozmiar kroku podczas uczenia się. Szybkość uczenia określa, jak szybko lub wolno dowiedzieć się zbieżność z optymalnym rozwiązaniem. Jeśli rozmiar tego kroku jest zbyt duży, można przekroczyć optymalne rozwiązanie. Jeśli rozmiar tego kroku jest zbyt mały, szkolenie trwa dłużej niż w przypadku najlepszego rozwiązania.
 
-6. **Liczba skonstruowanych drzew**: Wskaż łączną liczbę drzew decyzyjnych do utworzenia w całości. Przez utworzenie większej liczby drzew decyzyjnych można potencjalnie uzyskać lepszy zakres, ale wydłużyć czas uczenia.
+6. **Liczba skonstruowanych drzew**: wskazuje całkowitą liczbę drzew decyzyjnych do utworzenia w całości. Przez utworzenie większej liczby drzew decyzyjnych można potencjalnie uzyskać lepszy zakres, ale wydłużyć czas uczenia.
 
-    Ta wartość kontroluje również liczbę drzew wyświetlanych podczas wizualizacji przeszkolonego modelu. Jeśli chcesz zobaczyć lub wydrukować drzewo Ingle, możesz ustawić wartość 1. jednak tworzone jest tylko jedno drzewo (drzewo z początkowym zestawem parametrów) i nie są wykonywane żadne dalsze iteracje.
+    Ta wartość kontroluje również liczbę drzew wyświetlanych podczas wizualizacji przeszkolonego modelu. Jeśli chcesz zobaczyć lub wydrukować pojedyncze drzewo, możesz ustawić wartość 1. jednak tworzone jest tylko jedno drzewo (drzewo z początkowym zestawem parametrów) i nie są wykonywane żadne dalsze iteracje.
 
-7. **Inicjator liczb losowych**: Wpisz opcjonalną nieujemną liczbę całkowitą do użycia jako losową wartość inicjatora. Określenie inicjatora zapewnia odtwarzalność w przebiegach, które mają te same dane i parametry.
+7. **Inicjator liczb losowych**: wpisz opcjonalną nieujemną liczbę całkowitą, która ma być używana jako wartość inicjatora losowego. Określenie inicjatora zapewnia odtwarzalność w przebiegach, które mają te same dane i parametry.
 
     Domyślnie losowy inicjator jest ustawiony na 0, co oznacza, że początkowa wartość inicjatora jest uzyskiwana z zegara systemowego.
   
@@ -85,7 +85,7 @@ Metodę zwiększania gradientu można również użyć w przypadku problemów z 
   
     
 
-10. Uruchom eksperyment.  
+10. Uruchamianie potoku.  
   
 ## <a name="results"></a>Wyniki
 
@@ -96,8 +96,6 @@ Po zakończeniu szkolenia:
      Kliknij każde drzewo, aby przejść do szczegółów i wyświetlić reguły dla każdego węzła.  
 
 + Aby użyć modelu do oceniania, połącz go z [modelem oceny](./score-model.md), aby przewidzieć wartości dla nowych przykładów wejściowych.
-
-+ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy **przeszkolony model** danych wyjściowych modułu szkoleniowego i wybierz polecenie **Zapisz jako**. Kopia przeszkolonego modelu, który jest zapisywany, nie jest aktualizowana po kolejnych uruchomieniach eksperymentu.
 
 ## <a name="next-steps"></a>Następne kroki
 

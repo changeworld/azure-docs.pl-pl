@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072255"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Szablony problemów na platformie Azure API Management
@@ -89,20 +89,20 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 </div>
 ```
   
-### <a name="controls"></a>Formanty  
- Szablon może korzystać z następujących [kontrolek strony.](api-management-page-controls.md) `Issue list`  
+### <a name="controls"></a>Kontrolki  
+ Szablon `Issue list` może korzystać z następujących [kontrolek strony](api-management-page-controls.md).  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [Kontrola stronicowania](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Model danych  
   
-|Właściwość|Type|Opis|  
+|Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
 |`Issues`|Kolekcja jednostek [problemu](api-management-template-data-model-reference.md#Issue) .|Problemy widoczne dla bieżącego użytkownika.|  
-|`Paging`|[](api-management-template-data-model-reference.md#Paging) Jednostka stronicowania.|Informacje o stronicowaniu dla kolekcji aplikacji.|  
-|`IsAuthenticated`|boolean|Czy bieżący użytkownik jest zalogowany do portalu dla deweloperów.|  
-|`CanReportIssues`|boolean|Czy bieżący użytkownik ma uprawnienia do pliku problemu.|  
-|`Search`|ciąg|Ta właściwość jest przestarzała i nie powinna być używana.|  
+|`Paging`|Jednostka [stronicowania](api-management-template-data-model-reference.md#Paging) .|Informacje o stronicowaniu dla kolekcji aplikacji.|  
+|`IsAuthenticated`|wartość logiczna|Czy bieżący użytkownik jest zalogowany do portalu dla deweloperów.|  
+|`CanReportIssues`|wartość logiczna|Czy bieżący użytkownik ma uprawnienia do pliku problemu.|  
+|`Search`|string|Ta właściwość jest przestarzała i nie powinna być używana.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   

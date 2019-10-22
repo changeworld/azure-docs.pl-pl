@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: 03b8e12d63ba84b4e20d7263f1c2ecb8d912936d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f2602e5a13f83090291656e7062c74c245bc6568
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203168"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693346"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP na platformie Azure
 
@@ -26,7 +26,7 @@ Ten artykuł jest pierwszym z dwóch przewodników szybki start dla Azure Functi
 
 Przed rozpoczęciem należy:
 
-+ Zainstaluj język [Python 3.6. x](https://www.python.org/downloads/).
++ Zainstaluj środowisko [Python 3.6.8](https://www.python.org/downloads/). Ta wersja języka Python jest weryfikowana przy użyciu funkcji. 3,7 i nowsze wersje nie są jeszcze obsługiwane.
 
 + Zainstaluj program [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.7.1575 lub nowszej.
 
@@ -59,7 +59,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-Po aktywowaniu środowiska wirtualnego uruchom pozostałe polecenia w nim. Aby wypróbować środowisko wirtualne, uruchom `deactivate`polecenie.
+Po aktywowaniu środowiska wirtualnego uruchom pozostałe polecenia w nim. Aby wypróbować środowisko wirtualne, uruchom `deactivate`.
 
 ## <a name="create-a-local-functions-project"></a>Tworzenie projektu funkcji lokalnych
 
@@ -85,7 +85,7 @@ Projekt funkcji jest odpowiednikiem aplikacji funkcji na platformie Azure. Może
     cd MyFunctionProj
     ```
 
-## <a name="create-a-function"></a>Utwórz funkcję
+## <a name="create-a-function"></a>Tworzenie funkcji
 
 Dodaj funkcję do nowego projektu.
 
@@ -101,11 +101,11 @@ Dodaj funkcję do nowego projektu.
 
 Te polecenia tworzą podfolder o nazwie _HttpTrigger_. Zawiera następujące pliki:
 
-* *Function. JSON*: plik konfiguracji, który definiuje funkcję, wyzwalacz i inne powiązania. Zwróć uwagę, że w tym pliku wartość dla `scriptFile` punktów do pliku zawierającego funkcję, `bindings` a tablica definiuje wyzwalacz wywołania i powiązania.
+* *Function. JSON*: plik konfiguracji, który definiuje funkcję, wyzwalacz i inne powiązania. Zwróć uwagę, że w tym pliku wartość `scriptFile` wskazuje plik zawierający funkcję, a tablica `bindings` definiuje wyzwalacz wywołania i powiązania.
 
-    Każde powiązanie wymaga kierunku, typu i unikatowej nazwy. Wyzwalacz http ma powiązanie wejściowe typu [`httpTrigger`](functions-bindings-http-webhook.md#trigger) i powiązania danych wyjściowych typu. [`http`](functions-bindings-http-webhook.md#output)
+    Każde powiązanie wymaga kierunku, typu i unikatowej nazwy. Wyzwalacz HTTP ma powiązanie wejściowe typu [`httpTrigger`](functions-bindings-http-webhook.md#trigger) i dane wyjściowe powiązania typu [`http`](functions-bindings-http-webhook.md#output).
 
-* *init.PR\_: plik skryptu, który jest funkcją wyzwalaną przez protokół http.\_ \_ \_* Zauważ, że ten skrypt ma wartość `main()`domyślną. Dane http z wyzwalacza przekazuje do funkcji przy użyciu `req` nazwanego. `binding parameter` Element, który jest zdefiniowany w Function. JSON, jest wystąpieniem [klasy Azure. Functions. HttpRequest.](/python/api/azure-functions/azure.functions.httprequest) `req` 
+* *\_ \_init \_ \_. PR*: plik skryptu, który jest funkcją wyzwalaną przez protokół http. Zauważ, że ten skrypt ma domyślne `main()`. Dane HTTP z wyzwalacza są przekazywane do funkcji przy użyciu `req` o nazwie `binding parameter`. @No__t_0, który jest zdefiniowany w funkcji Function. JSON, jest wystąpieniem [klasy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
 
     Obiekt zwracany, zdefiniowany jako `$return` w *funkcji Function. JSON*, jest wystąpieniem [klasy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Aby dowiedzieć się więcej, zobacz [Azure Functions wyzwalacze i powiązania HTTP](functions-bindings-http-webhook.md).
 
@@ -169,10 +169,10 @@ Teraz, gdy funkcja została uruchomiona lokalnie, możesz utworzyć aplikację f
 
 Aplikacja funkcji zapewnia środowisko do wykonywania kodu funkcji. Umożliwia ona grupowanie funkcji w ramach jednostki logicznej, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi.
 
-Uruchom następujące polecenie. Zamień `<APP_NAME>` na unikatową nazwę aplikacji funkcji. Zamień `<STORAGE_NAME>` na nazwę konta magazynu. `<APP_NAME>` jest również domyślną domeną DNS aplikacji funkcji. Ta nazwa musi być unikatowa dla wszystkich aplikacji na platformie Azure.
+Uruchom następujące polecenie. Zastąp `<APP_NAME>` unikatową nazwą aplikacji funkcji. Zastąp `<STORAGE_NAME>` nazwą konta magazynu. `<APP_NAME>` jest również domyślną domeną DNS aplikacji funkcji. Ta nazwa musi być unikatowa dla wszystkich aplikacji na platformie Azure.
 
 > [!NOTE]
-> Nie można hostować aplikacji systemu Linux i Windows w tej samej grupie zasobów. Jeśli masz istniejącą grupę zasobów o nazwie `myResourceGroup` przy użyciu aplikacji funkcji systemu Windows lub aplikacji sieci Web, musisz użyć innej grupy zasobów.
+> Nie można hostować aplikacji systemu Linux i Windows w tej samej grupie zasobów. Jeśli masz istniejącą grupę zasobów o nazwie `myResourceGroup` z aplikacją funkcji systemu Windows lub aplikacją sieci Web, musisz użyć innej grupy zasobów.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --os-type Linux \
@@ -186,13 +186,13 @@ Teraz możesz przystąpić do publikowania projektu funkcji lokalnych w aplikacj
 
 ## <a name="deploy-the-function-app-project-to-azure"></a>Wdrażanie projektu aplikacji funkcji na platformie Azure
 
-Po utworzeniu aplikacji funkcji na platformie Azure Możesz użyć polecenia [Func Azure functionapp Publish](functions-run-local.md#project-file-deployment) Core Tools, aby wdrożyć kod projektu na platformie Azure. W tym przykładzie Zastąp `<APP_NAME>` ciąg nazwą aplikacji.
+Po utworzeniu aplikacji funkcji na platformie Azure Możesz użyć polecenia [Func Azure functionapp Publish](functions-run-local.md#project-file-deployment) Core Tools, aby wdrożyć kod projektu na platformie Azure. W tym przykładzie Zastąp `<APP_NAME>` nazwą aplikacji.
 
 ```console
 func azure functionapp publish <APP_NAME> --build remote
 ```
 
-`--build remote` Opcja kompiluje projekt języka Python zdalnie na platformie Azure z plików w pakiecie wdrożeniowym. 
+Opcja `--build remote`a kompiluje projekt języka Python zdalnie na platformie Azure z plików w pakiecie wdrożeniowym. 
 
 Zobaczysz dane wyjściowe podobne do poniższego komunikatu. Jest ono obcinane w tym miejscu, aby można było je lepiej przeczytać:
 
@@ -210,7 +210,7 @@ Functions in myfunctionapp:
         Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
 ```
 
-Możesz skopiować `Invoke url` wartość `HttpTrigger` i użyć jej do zweryfikowania funkcji na platformie Azure. Adres URL zawiera `code` wartość ciągu zapytania, który jest kluczem funkcji, co utrudnia innym osobom wywoływanie punktu końcowego wyzwalacza http na platformie Azure.
+Możesz skopiować wartość `Invoke url` dla `HttpTrigger` i użyć jej do zweryfikowania funkcji na platformie Azure. Adres URL zawiera `code` wartość ciągu zapytania, która jest kluczem funkcji, co utrudnia innym wywoływanie punktu końcowego wyzwalacza HTTP na platformie Azure.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 

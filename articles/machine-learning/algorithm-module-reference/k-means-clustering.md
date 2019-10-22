@@ -1,5 +1,5 @@
 ---
-title: 'K-oznacza klastrowanie: Dokumentacja modułu'
+title: 'K-oznacza klastrowanie: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak wyszkolić modele klastrowania w usłudze Azure Machine Learning przy użyciu modułu K-oznaczania klastrowania.
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 7de2978fee80cf3acd078ef8ee5f235fab21713e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128698"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693110"
 ---
-# <a name="module-k-means-clustering"></a>Elementu Klastrowanie metodą k-średnich
+# <a name="module-k-means-clustering"></a>Moduł: K-oznacza klastrowanie
 
 W tym artykule opisano, jak używać modułu *k-oznaczania klastrowania* w programie Azure Machine Learning Studio do tworzenia nauczenia k-średnich klastrów. 
  
-K-oznacza to jeden z najprostszych i najlepszych znanych nienadzorowanych algorytmów uczenia. Można użyć algorytmu dla różnych zadań uczenia maszynowego, takich jak: 
+K-oznacza to jeden z najprostszych i najlepszych znanych *nienadzorowanych* algorytmów uczenia. Można użyć algorytmu dla różnych zadań uczenia maszynowego, takich jak: 
 
 * [Wykrywanie nieprawidłowych danych](https://msdn.microsoft.com/magazine/jj891054.aspx).
 * Klastrowanie dokumentów tekstowych.
@@ -28,11 +28,11 @@ K-oznacza to jeden z najprostszych i najlepszych znanych nienadzorowanych algory
 
 Aby utworzyć Model klastrowania, należy:
 
-* Dodaj ten moduł do eksperymentu.
+* Dodaj ten moduł do potoku.
 * Połącz zestaw danych.
 * Ustaw parametry, takie jak liczba oczekiwań klastrów, Metryka odległości do użycia podczas tworzenia klastrów itd. 
   
-Po skonfigurowaniu parametrów modułu należy połączyć nauczenie modelu z [modelem klastra](train-clustering-model.md)usługi Uczenie. Ze względu na to, że algorytm K-oznacza nienadzorowanej metody uczenia, kolumna etykiety jest opcjonalna. 
+Po skonfigurowaniu parametrów modułu należy połączyć nauczenie modelu z [modelem klastra usługi Uczenie](train-clustering-model.md). Ze względu na to, że algorytm K-oznacza nienadzorowanej metody uczenia, kolumna etykiety jest opcjonalna. 
 
 + Jeśli dane zawierają etykietę, można użyć wartości etykiety do przewodnika po wyborze klastrów i zoptymalizować model. 
 
@@ -54,11 +54,11 @@ Gdy przetwarza dane szkoleniowe, algorytm K-oznacza rozpoczyna się od początko
 
 ## <a name="configure-the-k-means-clustering-module"></a>Konfigurowanie modułu klastrowanie K-oznaczanie
   
-1.  Dodaj do eksperymentu moduł do obsługi klastrowania.  
+1.  Dodaj moduł **klastrowanie K-oznaczanie** do potoku.  
   
 2.  Aby określić sposób, w jaki model ma być szkolony, wybierz opcję **Utwórz tryb Trainer** .  
   
-    -   **Pojedynczy parametr**: Jeśli znasz dokładne parametry, których chcesz użyć w modelu klastra, możesz podać określony zestaw wartości jako argumenty.  
+    -   **Pojedynczy parametr**: Jeśli znasz dokładne parametry, których chcesz użyć w modelu klastrowania, możesz podać określony zestaw wartości jako argumenty.  
   
 3.  Dla **liczby centroids**wpisz liczbę klastrów, z którymi ma się rozpoczynać algorytm.  
   
@@ -66,24 +66,24 @@ Gdy przetwarza dane szkoleniowe, algorytm K-oznacza rozpoczyna się od początko
   
 4.  **Inicjowanie** właściwości służy do określenia algorytmu, który jest używany do definiowania początkowej konfiguracji klastra.  
   
-    -   **Pierwsze N**: Pewna początkowa liczba punktów danych jest wybierana z zestawu danych i używana jako początkowy sposób. 
+    -   **Pierwsze N**: pewna początkowa liczba punktów danych jest wybierana z zestawu danych i używana jako początkowy sposób. 
     
          Ta metoda jest również nazywana *metodą Forgy*.  
   
-    -   **Losowo**: Algorytm losowo umieszcza punkt danych w klastrze, a następnie oblicza początkową wartość jako centroidaą losowo przypisanych punktów klastra. 
+    -   **Losowo**: algorytm losowo umieszcza punkt danych w klastrze, a następnie oblicza początkową wartość jako centroidaą losowo przypisanych punktów klastra. 
 
          Ta metoda jest również nazywana metodą *losowej partycji* .  
   
-    -   **K-oznacza + +** : Jest to domyślna metoda inicjowania klastrów.  
+    -   **K-oznacza**, że jest to domyślna metoda inicjowania klastrów.  
   
          Algorytm **k----+ +** został zaproponowany w 2007 przez David Arthur i Sergei Vassilvitskii, aby uniknąć słabych klastrów przez standardowy K-oznacza algorytm. **K-oznacza** , że program + + jest ulepszony na standardowym poziomie K — przy użyciu innej metody do wyboru początkowych centrów klastra.  
   
     
 5.  W przypadku **liczby losowej inicjatora**opcjonalnie wpisz wartość, która ma być używana jako inicjator dla inicjowania klastra. Ta wartość może mieć znaczny wpływ na wybór klastra.  
   
-6.  Wpolu Metryka wybierz funkcję, która ma być używana do mierzenia odległości między wektorami klastra lub między nowymi punktami danych i losowo wybranym centroida. Azure Machine Learning obsługuje następujące metryki dotyczące odległości klastra:  
+6.  W polu **Metryka**wybierz funkcję, która ma być używana do mierzenia odległości między wektorami klastra lub między nowymi punktami danych i losowo wybranym centroida. Azure Machine Learning obsługuje następujące metryki dotyczące odległości klastra:  
   
-    -   **Euclidean**: Odległość Euclidean jest często używana jako miara obszaru klastra dla K-oznacza klastrowanie. Ta Metryka jest preferowana, ponieważ minimalizuje średnią odległość między punktami i centroids.
+    -   **Euclidean**: odległość Euclidean jest często używana jako miara punktowego klastra dla K-oznacza klastrowanie. Ta Metryka jest preferowana, ponieważ minimalizuje średnią odległość między punktami i centroids.
   
 7.  W przypadku **iteracji**wpisz, ile razy algorytm powinien wykonać iterację danych szkoleniowych, zanim zakończy wybór centroids.  
   
@@ -93,15 +93,15 @@ Gdy przetwarza dane szkoleniowe, algorytm K-oznacza rozpoczyna się od początko
   
      Ponieważ K-oznacza, że usługa klastrowania jest nienadzorowanym sposobem uczenia maszynowego, etykiety są opcjonalne. Jeśli jednak zestaw danych ma już kolumnę etykieta, można użyć tych wartości do zaznaczania klastrów lub można określić, że wartości będą ignorowane.  
   
-    -   **Ignoruj kolumnę etykiety**: Wartości w kolumnie etykieta są ignorowane i nie są używane podczas tworzenia modelu.
+    -   **Ignoruj kolumnę etykiety**: wartości w kolumnie etykieta są ignorowane i nie są używane podczas tworzenia modelu.
   
-    -   **Wypełnij brakujące wartości**: Wartości kolumn etykieta są używane jako funkcje ułatwiające tworzenie klastrów. Jeśli w dowolnym wierszu brakuje etykiety, wartość jest ustawiana za pomocą innych funkcji.  
+    -   **Wypełnij brakujące wartości**: wartości kolumn etykieta są używane jako funkcje ułatwiające tworzenie klastrów. Jeśli w dowolnym wierszu brakuje etykiety, wartość jest ustawiana za pomocą innych funkcji.  
   
-    -   **Zastąp najbliżej centrum**: Wartości kolumny etykieta są zastępowane prognozowanymi wartościami etykiet, przy użyciu etykiety punktu znajdującego się najbliżej bieżącej centroida.  
+    -   **Zastąp z najbliżej Center**: wartości kolumny etykieta są zamieniane na wartości z przewidywanymi etykietami, używając etykiety punktu znajdującego się najbliżej bieżącej centroida.  
 
 8.  Wybierz opcję **normalizing Features** , jeśli chcesz znormalizować funkcje przed szkoleniem.
   
-     W przypadku zastosowania normalizacji przed przeprowadzeniem szkolenia punkty danych są znormalizowane `[0,1]` przez MinMaxNormalizer.
+     W przypadku zastosowania normalizacji, przed rozpoczęciem szkolenia punkty danych są znormalizowane do `[0,1]` przez MinMaxNormalizer.
 
 10. Uczenie modelu.  
   
@@ -119,7 +119,7 @@ Jeśli użyto modułu [klastra uczenia](train-clustering-model.md) :
 
 2. Wybierz pozycję **szkolony model**, a następnie wybierz pozycję **Zapisz jako model przeszkolony**.
 
-Zapisany model reprezentuje dane szkoleniowe w momencie zapisania modelu. Jeśli później zaktualizujesz dane szkoleniowe używane w ramach eksperymentu, nie zaktualizujesz zapisanego modelu. 
+Zapisany model reprezentuje dane szkoleniowe w momencie zapisania modelu. Jeśli później zaktualizujesz dane szkoleniowe używane w potoku, nie zaktualizujesz zapisanego modelu. 
 
 #### <a name="see-the-clustering-result-dataset"></a>Zobacz zestaw danych wyników klastrowania 
 
@@ -131,7 +131,7 @@ Jeśli użyto modułu [klastra uczenia](train-clustering-model.md) :
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>Wskazówki dotyczące generowania najlepszego modelu klastra  
 
-Wiadomo, że proces umieszczania, który jest używany podczas klastrowania, może znacząco wpłynąć na model. Rozmieszczanie oznacza początkowe rozmieszczenie punktów w potencjalną centroids.
+Wiadomo *, że proces* umieszczania, który jest używany podczas klastrowania, może znacząco wpłynąć na model. Rozmieszczanie oznacza początkowe rozmieszczenie punktów w potencjalną centroids.
  
 Na przykład, jeśli zestaw danych zawiera wiele wartości odstających, a wartość odstająca jest wybierana do wypełniania klastrów, żadne inne punkty danych nie będą dobrze dopasowane do tego klastra, a klaster może być pojedynczy. Oznacza to, że może on mieć tylko jeden punkt.  
   

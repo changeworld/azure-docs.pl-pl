@@ -11,10 +11,10 @@ ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 10a10882efe05ef9e6bb86e54fcfcf8c5d73d225
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70098744"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Integracja kontroli źródła dla Azure SQL Data Warehouse
@@ -37,7 +37,7 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 
    ![Zarządzanie połączeniami](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Zarządzanie połączeniami")
 
-   ![Połącz](media/sql-data-warehouse-source-control-integration/3-connect.png "Połącz")
+   ![Połączenie](media/sql-data-warehouse-source-control-integration/3-connect.png "Łączenie")
 
 3. Klonowanie repozytorium repozytorium platformy Azure z projektu na komputerze lokalnym
 
@@ -47,7 +47,7 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 
 1. W programie Visual Studio Utwórz nowy projekt SQL Server bazy danych z katalogiem i lokalnym repozytorium Git w **lokalnym sklonowanym repozytorium** .
 
-   ![Utwórz nowy projekt](media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Utwórz nowy projekt")  
+   ![Utwórz nowy projekt](media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Tworzenie nowego projektu")  
 
 2. Kliknij prawym przyciskiem myszy pusty program sqlproject i zaimportuj magazyn danych do projektu bazy danych
 
@@ -55,7 +55,7 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 
 3. W programie Team Explorer w programie Visual Studio Zatwierdź wszystkie zmiany w lokalnym repozytorium git 
 
-   ![Zatwierdzenie](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Zatwierdzenie")  
+   ![Zleca](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Zatwierdzenie")  
 
 4. Teraz, gdy zmiany zostały zatwierdzone lokalnie w sklonowanym repozytorium, zsynchronizuj i wypchnij zmiany do repozytorium repozytorium platformy Azure w projekcie usługi Azure DevOps.
 
@@ -63,7 +63,7 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 
    ![Synchronizuj i wypchnij](media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Synchronizuj i wypchnij")  
 
-## <a name="validation"></a>Weryfikacja
+## <a name="validation"></a>Walidacja
 
 1. Sprawdź, czy zmiany zostały wypchnięte do repozytorium platformy Azure przez zaktualizowanie kolumny tabeli w projekcie bazy danych za pomocą programu Visual Studio SQL Server Data Tools (SSDT)
 
@@ -75,7 +75,7 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 
 3. Sprawdź, czy zmiana została wypchnięcia w repozytorium repozytorium platformy Azure
 
-   ![Sprawdź](media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Weryfikuj zmiany")
+   ![Weryfikacja](media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Weryfikuj zmiany")
 
 4. (**Opcjonalnie**) Użyj porównania schematów i zaktualizuj zmiany w docelowym hurtowni danych przy użyciu SSDT, aby upewnić się, że definicje obiektów w repozytorium Azure Repository i repozytorium lokalnym odzwierciedlają magazyn danych
 

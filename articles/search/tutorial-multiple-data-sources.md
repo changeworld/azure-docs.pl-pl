@@ -1,5 +1,5 @@
 ---
-title: C#Ręczny Indeksowanie wielu źródeł danych — Azure Search
+title: 'C#Samouczek: indeksowanie wielu źródeł danych — Azure Search'
 description: Dowiedz się, jak importować dane z wielu źródeł danych do jednego indeksu Azure Search.
 author: RobDixon22
 manager: nitinme
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
 ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70241833"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Ręczny Łączenie danych z wielu źródeł danych w jednym indeksie Azure Search
+# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Samouczek: łączenie danych z wielu źródeł danych w jednym indeksie Azure Search
 
 Azure Search umożliwia importowanie, analizowanie i indeksowanie danych z wielu źródeł danych w jednym połączonym indeksie wyszukiwania. Obsługuje to sytuacje, w których dane strukturalne są agregowane przy użyciu mniej strukturalnych lub nawet danych zwykłego tekstu z innych źródeł, takich jak tekst, HTML lub dokumenty JSON.
 
@@ -58,9 +58,9 @@ Aby można było korzystać z usługi Azure Search, wymagany jest adres URL usł
 
 1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Uzyskaj adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
-1. W obszarze **Ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
+1. W obszarze **ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
 
-![Pobieranie punktu końcowego http i klucza dostępu](media/search-get-started-postman/get-url-key.png "Pobieranie punktu końcowego http i klucza dostępu")
+![Pobieranie punktu końcowego HTTP i klucza dostępu](media/search-get-started-postman/get-url-key.png "Pobieranie punktu końcowego HTTP i klucza dostępu")
 
 Wszystkie żądania wymagają klucza API dla każdego żądania wysyłanego do usługi. Prawidłowy klucz ustanawia zaufanie dla każdego żądania, między aplikacją wysyłającą żądanie a usługą, która go obsługuje.
 
@@ -90,7 +90,7 @@ Ten przykład używa dwóch małych zestawów danych, które opisują siedem fik
 
 1. [Utwórz kontener obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) o nazwie **pokoje hotelowe** , aby zapisać przykładowe pliki JSON pokoju hotelowego. Można ustawić poziom dostępu publicznego na dowolną z jego prawidłowych wartości.
 
-   ![Tworzenie kontenera obiektów BLOB](media/tutorial-multiple-data-sources/blob-add-container.png "Tworzenie kontenera obiektów BLOB")
+   ![Tworzenie kontenera obiektów BLOB](media/tutorial-multiple-data-sources/blob-add-container.png "Tworzenie kontenera obiektów blob")
 
 1. Po utworzeniu kontenera Otwórz go i wybierz pozycję **Przekaż** na pasku poleceń.
 
@@ -98,7 +98,7 @@ Ten przykład używa dwóch małych zestawów danych, które opisują siedem fik
 
 1. Przejdź do folderu zawierającego pliki przykładowe. Zaznacz wszystkie z nich, a następnie kliknij przycisk **Przekaż**.
 
-   ![Przekaż pliki](media/tutorial-multiple-data-sources/blob-upload.png "Przekaż pliki")
+   ![Przekazywanie plików](media/tutorial-multiple-data-sources/blob-upload.png "Przekazywanie plików")
 
 Po zakończeniu przekazywania pliki powinny pojawić się na liście kontenera danych.
 
@@ -121,7 +121,7 @@ Informacje o połączeniu dla usługi wyszukiwania i źródeł danych są okreś
 }
 ```
 
-Pierwsze dwa wpisy używają adresu URL i kluczy administracyjnych dla usługi Azure Search. Załóżmy na przykład, że nazwa usługi jest `mydemo`określona. `https://mydemo.search.windows.net`
+Pierwsze dwa wpisy używają adresu URL i kluczy administracyjnych dla usługi Azure Search. Na przykład punkt końcowy `https://mydemo.search.windows.net`, nazwa usługi do udostępnienia jest `mydemo`.
 
 Następne wpisy określają nazwy kont i informacje o parametrach połączenia dla Blob Storage platformy Azure i Azure Cosmos DB źródeł danych.
 
@@ -171,7 +171,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-W pliku **program.cs** indeks jest zdefiniowany przy użyciu nazwy i kolekcji pól wygenerowanej przez `FieldBuilder.BuildForType<Hotel>()` metodę, a następnie utworzony w następujący sposób:
+W pliku **program.cs** indeks jest zdefiniowany przy użyciu nazwy i kolekcji pól wygenerowanej przez metodę `FieldBuilder.BuildForType<Hotel>()`, a następnie utworzony w następujący sposób:
 
 ```csharp
 private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
@@ -300,9 +300,9 @@ Po utworzeniu źródła danych program skonfiguruje obiekt BLOB indeksatora o na
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-Obiekty blob JSON zawierają pole klucza o nazwie **ID** zamiast **HotelId**. Kod używa klasy, `FieldMapping` aby określić indeksator do skierowania wartości pola **ID** do klucza dokumentu **HotelId** w indeksie.
+Obiekty blob JSON zawierają pole klucza o nazwie **ID** zamiast **HotelId**. Kod używa klasy `FieldMapping`, aby określić, że indeksator ma skierować wartość pola **ID** do klucza dokumentu **HotelId** w indeksie.
 
-Indeksatory magazynu obiektów BLOB mogą używać parametrów, które identyfikują tryb analizowania, który ma być używany. Tryb analizy różni się dla obiektów BLOB reprezentujących pojedynczy dokument lub wiele dokumentów w ramach tego samego obiektu BLOB. W tym przykładzie każdy obiekt BLOB reprezentuje pojedynczy dokument indeksu, więc kod używa `IndexingParameters.ParseJson()` parametru.
+Indeksatory magazynu obiektów BLOB mogą używać parametrów, które identyfikują tryb analizowania, który ma być używany. Tryb analizy różni się dla obiektów BLOB reprezentujących pojedynczy dokument lub wiele dokumentów w ramach tego samego obiektu BLOB. W tym przykładzie każdy obiekt BLOB reprezentuje pojedynczy dokument indeksu, więc kod używa parametru `IndexingParameters.ParseJson()`.
 
 Aby uzyskać więcej informacji na temat parametrów analizy indeksatora dla obiektów BLOB JSON, zobacz [indeksowanie obiektów BLOB JSON](search-howto-index-json-blobs.md). Aby uzyskać więcej informacji na temat określania tych parametrów przy użyciu zestawu .NET SDK, zobacz Klasa [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) .
 
@@ -349,7 +349,7 @@ Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usu
 Istnieje kilka metod i wiele opcji indeksowania obiektów BLOB JSON. Jeśli dane źródłowe zawierają zawartość JSON, możesz przejrzeć te opcje, aby zobaczyć, co najlepiej sprawdza się w danym scenariuszu.
 
 > [!div class="nextstepaction"]
-> [Jak indeksować obiekty blob JSON przy użyciu Azure Search indeksatora obiektów BLOB](search-howto-index-json-blobs.md)
+> [Jak indeksować obiekty blob JSON za pomocą indeksatora obiektów blob usługi Azure Search](search-howto-index-json-blobs.md)
 
 Możesz chcieć rozszerzyć strukturalne dane indeksów z jednego źródła danych, dzięki czemu dane są wzbogacone z nieuporządkowanymi obiektami BLOB lub z treści pełnotekstowych. W poniższym samouczku pokazano, jak używać Cognitive Services razem z Azure Search przy użyciu zestawu .NET SDK.
 

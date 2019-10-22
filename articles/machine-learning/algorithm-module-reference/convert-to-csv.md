@@ -1,5 +1,5 @@
 ---
-title: 'Konwertuj na CSV: Dokumentacja modułu'
+title: 'Konwertuj na CSV: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak za pomocą modułu konwersji do woluminów CSV w usłudze Azure Machine Learning skonwertować zestaw danych do formatu CSV, który można pobrać, wyeksportować lub udostępnić za pomocą modułów skryptów języka R lub Python.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 2b8f235014efe440e518f1f9c4d0d454f6918955
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 37c1653b31049dc0142cf8c0c6f6d405338b1d1f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128909"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693193"
 ---
 # <a name="convert-to-csv-module"></a>Konwertuj na moduł CSV
 
@@ -36,23 +36,23 @@ Podczas konwertowania zestawu danych do formatu CSV plik jest zapisywany w obsza
 
 ## <a name="how-to-configure-convert-to-csv"></a>Jak skonfigurować konwertowanie do formatu CSV
 
-1.  Dodaj do eksperymentu moduł [konwersji do woluminu CSV](./convert-to-csv.md) . Ten moduł można znaleźć w grupie **konwersje formatu danych** w interfejsie. 
+1.  Dodaj moduł [konwersji do woluminu CSV](./convert-to-csv.md) do potoku. Ten moduł można znaleźć w grupie **konwersje formatu danych** w interfejsie. 
 
 2. Połącz ją z dowolnym modułem, który wyprowadza zestaw danych.   
   
-3.  Uruchom eksperyment.
+3.  Uruchamianie potoku.
 
 ### <a name="results"></a>Wyniki
   
 
 Kliknij dwukrotnie dane wyjściowe [konwersji do CSV](./convert-to-csv.md), a następnie wybierz jedną z tych opcji.  
 
- + **Zestaw danych wyników — pobieranie >** : Natychmiast otwiera kopię danych w formacie CSV, który można zapisać w folderze lokalnym. Jeśli nie określisz folderu, zostanie zastosowana domyślna nazwa pliku, a plik CSV zostanie zapisany w lokalnej bibliotece **pobierania** .
+ + **Zestaw danych wyników — pobieranie >** : natychmiast otwiera kopię danych w formacie CSV, który można zapisać w folderze lokalnym. Jeśli nie określisz folderu, zostanie zastosowana domyślna nazwa pliku, a plik CSV zostanie zapisany w lokalnej bibliotece **pobierania** .
 
 
- + **Zestaw danych wyników — > Zapisz jako zestaw danych**: Zapisuje plik CSV z powrotem do obszaru roboczego Azure ML jako oddzielnego zestawu danych.
+ + **Zestaw danych wyników — > Zapisz jako zestaw danych**: zapisuje plik CSV z powrotem do obszaru roboczego usługi Azure ml jako oddzielnego zestawu danych.
 
- + **Generuj kod dostępu do danych**: Usługa Azure ML generuje dwa zestawy kodu, aby uzyskać dostęp do danych przy użyciu języka Python lub w języku R. Aby uzyskać dostęp do danych, skopiuj fragment kodu do aplikacji. (*Generowanie kodu dostępu do danych będzie wkrótce dostępne).*
+ + **Generuj kod dostępu do danych**: usługa Azure ml generuje dwa zestawy kodu umożliwiające uzyskiwanie dostępu do danych za pomocą języka Python lub przy użyciu środowiska R. Aby uzyskać dostęp do danych, skopiuj fragment kodu do aplikacji. (*Generowanie kodu dostępu do danych będzie wkrótce dostępne).*
 
 ## <a name="next-steps"></a>Następne kroki
 

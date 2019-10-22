@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: 9850c5f064815315db6f85a931e7e175d605dcc1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71257593"
 ---
-# <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: Analiza dla FedRAMP
+# <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: analiza dla FedRAMP
 
 ## <a name="overview"></a>Przegląd
 
@@ -55,14 +55,14 @@ Administrator SQL/Data tworzy funkcję importu danych zbiorczych i funkcję aktu
 #### <a name="operational-user"></a>Użytkownik operacyjny
 Użytkownik operacyjny regularnie aktualizuje dane i jest własnością codziennej generacji danych. Użytkownik operacyjny interpretuje także wyniki przez Power BI.
 
-### <a name="azure-services"></a>Usługi Azure
+### <a name="azure-services"></a>Usługi platformy Azure
 
 To rozwiązanie używa następujących usług platformy Azure. Szczegóły architektury wdrożenia znajdują się w sekcji [Architektura wdrażania](#deployment-architecture) .
-- Azure Functions
+- Stan usługi Funkcje Azure
 - Azure SQL Database
 - Usługa Azure Analysis Service
-- Usługa Azure Active Directory
-- W usłudze Azure Key Vault
+- Usługa Active Directory systemu Azure
+- Azure Key Vault
 - Azure Monitor (dzienniki)
 - Azure Storage
 - ExpressRoute/VPN Gateway
@@ -75,12 +75,12 @@ W poniższej sekcji znajdują się szczegółowe informacje dotyczące elementó
 
 **Azure Functions**: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) są rozwiązaniami do uruchamiania małych fragmentów kodu w chmurze za pośrednictwem większości języków programowania. Funkcje w tym rozwiązaniu integrują się z usługą Azure Storage, aby automatycznie ściągać dane klientów do chmury, ułatwiając integrację z innymi usługami platformy Azure. Funkcje są łatwo skalowalne i ponoszą koszt tylko wtedy, gdy są uruchomione.
 
-**Usługa Azure Analysis Service**: [Usługa Azure Analysis Service](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) zapewnia modelowanie i integrację danych w przedsiębiorstwie z usługami Azure Data Platform. Usługa Azure Analysis Service przyspiesza przeglądanie przez duże ilości danych przez połączenie danych z wielu źródeł w jednym modelu danych.
+**Usługa Azure Analysis Service**: [usługa Azure Analysis Service](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) umożliwia modelowanie i integrację danych w przedsiębiorstwie z usługami Azure Data Platform. Usługa Azure Analysis Service przyspiesza przeglądanie przez duże ilości danych przez połączenie danych z wielu źródeł w jednym modelu danych.
 
-**Power BI**: [Power BI](https://docs.microsoft.com/power-bi/service-azure-and-power-bi) udostępnia funkcje analizy i raportowania dla klientów próbujących uzyskać więcej informacji na temat wysiłków związanych z przetwarzaniem danych.
+**Power BI**: [Power BI](https://docs.microsoft.com/power-bi/service-azure-and-power-bi) udostępnia funkcje analizy i raportowania dla klientów próbujących uzyskać lepszy wgląd w wysiłki związane z przetwarzaniem danych.
 
 ### <a name="networking"></a>Networking
-**Sieciowe grupy zabezpieczeń**: [Sieciowych grup zabezpieczeń](../../virtual-network/virtual-network-vnet-plan-design-arm.md) są skonfigurowane do zarządzania ruchem skierowanym do wdrożonych zasobów i usług. Sieciowe grupy zabezpieczeń są ustawiane na schemat odmowy przez domyślny i zezwalają na ruch zawarty na liście wstępnie skonfigurowanych Access Control (ACL).
+**Sieciowe grupy zabezpieczeń**: [sieciowych grup zabezpieczeń](../../virtual-network/virtual-network-vnet-plan-design-arm.md) są skonfigurowane do zarządzania ruchem skierowanym do wdrożonych zasobów i usług. Sieciowe grupy zabezpieczeń są ustawiane na schemat odmowy przez domyślny i zezwalają na ruch zawarty na liście wstępnie skonfigurowanych Access Control (ACL).
 
 Każdy sieciowych grup zabezpieczeń ma otwarte określone porty i protokoły, dzięki czemu rozwiązanie może być bezpieczne i poprawne. Ponadto dla każdego sieciowej grupy ZABEZPIECZEŃu są włączone następujące konfiguracje:
   - [Dzienniki diagnostyczne i zdarzenia](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) są włączone i przechowywane na koncie magazynu
@@ -95,8 +95,8 @@ Architektura chroni dane przechowywane przez szyfrowanie, inspekcję bazy danych
 
 **Usługa Azure Storage** Aby zaspokoić zaszyfrowane dane w wymaganiach dotyczących REST, wszystkie usługi wdrożone w tej architekturze referencyjnej wykorzystują [usługę Azure Storage](https://azure.microsoft.com/services/storage/), która przechowuje dane w [szyfrowanie usługi Storage](../../storage/common/storage-service-encryption.md).
 
-AzureDiskEncryption
-[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) wykorzystuje funkcję BitLocker systemu Windows w celu zapewnienia szyfrowania woluminów dla systemu operacyjnego i dysków danych. Rozwiązanie integruje się z Azure Key Vault w celu ułatwienia kontroli kluczy szyfrowania dysków i zarządzania nimi.
+**Azure Disk Encryption** 
+[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) korzysta z funkcji BitLocker systemu Windows w celu zapewnienia szyfrowania woluminów dla systemu operacyjnego i dysków danych. Rozwiązanie integruje się z Azure Key Vault w celu ułatwienia kontroli kluczy szyfrowania dysków i zarządzania nimi.
 
 **Azure SQL Database** W wystąpieniu Azure SQL Database są stosowane następujące miary zabezpieczeń bazy danych:
 -   [Uwierzytelnianie i autoryzacja w usłudze AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) umożliwia zarządzanie tożsamościami użytkowników baz danych i innych usług firmy Microsoft w jednej centralnej lokalizacji.
@@ -110,16 +110,16 @@ AzureDiskEncryption
 ### <a name="logging-and-audit"></a>Rejestrowanie i inspekcja
 [Azure monitor](../../azure-monitor/overview.md) generuje cały ekran danych monitorowania, w tym dzienniki aktywności, metryki i dane diagnostyczne, umożliwiając klientom tworzenie kompletnego obrazu kondycji systemu.  
 [Dzienniki Azure monitor](../azure-security-disk-encryption-overview.md) zapewniają obszerne rejestrowanie aktywności systemu i użytkownika, a także kondycję systemu. Zbiera i analizuje dane generowane przez zasoby na platformie Azure i w środowiskach lokalnych.
-- **Dzienniki aktywności**: [Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji.
-- **Dzienniki diagnostyczne**: [Dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Te dzienniki obejmują Dzienniki systemu Windows i magazyn obiektów blob platformy Azure, tabele i dzienniki kolejki.
+- **Dzienniki aktywności**: [dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji.
+- **Dzienniki diagnostyczne**: [dzienniki diagnostyczne](../../azure-monitor/platform/resource-logs-overview.md) obejmują wszystkie dzienniki emitowane przez każdy zasób. Te dzienniki obejmują Dzienniki systemu Windows i magazyn obiektów blob platformy Azure, tabele i dzienniki kolejki.
 - **Dzienniki zapory**: Application Gateway zapewnia pełną dzienników diagnostycznych i dostępu. Dzienniki zapory są dostępne dla zasobów Application Gateway z włączoną obsługą usługi WAF.
-- **Archiwizowanie dzienników**: Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage na potrzeby archiwizacji ze zdefiniowanym okresem przechowywania wynoszącym 2 dni. Te dzienniki łączą się z dziennikami Azure Monitor na potrzeby przetwarzania, przechowywania i raportowania pulpitów nawigacyjnych.
+- **Archiwizowanie dzienników**: wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage na potrzeby archiwizacji ze zdefiniowanym okresem przechowywania wynoszącym 2 dni. Te dzienniki łączą się z dziennikami Azure Monitor na potrzeby przetwarzania, przechowywania i raportowania pulpitów nawigacyjnych.
 
 Ponadto w ramach tej architektury są dołączone następujące rozwiązania do monitorowania:
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation rozwiązanie przechowuje elementy Runbook, uruchamia je i zarządza nimi.
--   [Security and Audit](../../security-center/security-center-intro.md): Pulpit nawigacyjny Security and Audit zawiera szczegółowe informacje o stanie zabezpieczeń zasobów dzięki zapewnieniu metryk w domenach zabezpieczeń, istotnych problemach, wykryciach, analizie zagrożeń i typowych zapytaniach zabezpieczeń.
--   [SQL Assessment](../../azure-monitor/insights/sql-assessment.md): Rozwiązanie Sprawdzanie kondycji SQL ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu oraz zapewnia klientom priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
--   [Dzienniki aktywności platformy Azure](../../azure-monitor/platform/collect-activity-logs.md): Activity Log Analytics rozwiązanie pomaga w analizie dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klienta.
+-   [Security and Audit](../../security-center/security-center-intro.md): pulpit nawigacyjny Security and Audit udostępnia szczegółowe informacje o stanie zabezpieczeń zasobów, dostarczając metryki dotyczące domen zabezpieczeń, istotnych problemów, wykryć, analizy zagrożeń i typowych zapytań zabezpieczeń.
+-   [SQL Assessment](../../azure-monitor/insights/sql-assessment.md): rozwiązanie sprawdzania kondycji SQL ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu i oferuje klientom z priorytetową listą zaleceń specyficznych dla wdrożonej infrastruktury serwera.
+-   [Dzienniki aktywności platformy Azure](../../azure-monitor/platform/collect-activity-logs.md): rozwiązanie Activity Log Analytics pomaga w analizie dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klienta.
 
 ### <a name="identity-management"></a>Zarządzanie tożsamościami
 -   Uwierzytelnianie w aplikacji odbywa się przy użyciu usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Integrowanie aplikacji z Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md). Ponadto szyfrowanie kolumn bazy danych używa usługi Azure AD do uwierzytelniania aplikacji do Azure SQL Database. Aby uzyskać więcej informacji, zobacz jak [chronić poufne dane w SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
@@ -128,8 +128,8 @@ Ponadto w ramach tej architektury są dołączone następujące rozwiązania do 
 
 Aby dowiedzieć się więcej o korzystaniu z funkcji zabezpieczeń Azure SQL Database, zobacz przykład [aplikacji demonstracyjnej firmy Contoso](https://github.com/Microsoft/azure-sql-security-sample) .
 
-### <a name="security"></a>Bezpieczeństwo
-**Zarządzanie wpisami tajnymi**: Rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze.
+### <a name="security"></a>Zabezpieczenia
+**Zarządzanie wpisami tajnymi**: rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze.
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia
 
@@ -143,21 +143,21 @@ Aby dowiedzieć się więcej o korzystaniu z funkcji zabezpieczeń Azure SQL Dat
 #### <a name="iaas---vm-considerations"></a>IaaS — uwagi dotyczące maszyn wirtualnych
 To rozwiązanie PaaS nie obejmuje maszyn wirtualnych IaaS platformy Azure. Klient może utworzyć maszynę wirtualną platformy Azure do uruchamiania wielu z tych usług PaaS. W takim przypadku można korzystać z określonych funkcji i usług w celu zapewnienia ciągłości działania i dzienników Azure Monitor:
 
-##### <a name="business-continuity"></a>Ciągłość działalności biznesowej
-- **Wysoka dostępność**: Obciążenia serwera są pogrupowane w [zestawie dostępności](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , aby zapewnić wysoką dostępność maszyn wirtualnych na platformie Azure. Co najmniej jedna maszyna wirtualna jest dostępna podczas planowanego lub nieplanowanego zdarzenia konserwacji, które spełnia warunki umowy SLA na 99,95%.
+##### <a name="business-continuity"></a>Ciągłość działania
+- **Wysoka dostępność**: obciążenia serwera są pogrupowane w [zestawie dostępności](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , aby zapewnić wysoką dostępność maszyn wirtualnych na platformie Azure. Co najmniej jedna maszyna wirtualna jest dostępna podczas planowanego lub nieplanowanego zdarzenia konserwacji, które spełnia warunki umowy SLA na 99,95%.
 
 - **Magazyn Recovery Services**: [Magazyn Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) przechowuje dane kopii zapasowych i chroni wszystkie konfiguracje Virtual Machines platformy Azure w tej architekturze. W przypadku magazynu Recovery Services klienci mogą przywracać pliki i foldery z maszyny wirtualnej IaaS bez przywracania całej maszyny wirtualnej, co umożliwia szybsze przywracanie.
 
 ##### <a name="monitoring-solutions"></a>Rozwiązania do monitorowania
--   [AD Assessment](../../azure-monitor/insights/ad-assessment.md): Rozwiązanie Active Directory Sprawdzanie kondycji ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu i zawiera priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
--   [Antimalware Assessment](../../security-center/security-center-install-endpoint-protection.md): Rozwiązanie chroniące przed złośliwym kodem zgłasza złośliwe oprogramowanie, zagrożenia i stan ochrony.
--   [Update Management](../../automation/automation-update-management.md): Rozwiązanie Update Management umożliwia klientom zarządzanie aktualizacjami zabezpieczeń systemu operacyjnego, w tym stanem dostępnych aktualizacji i procesem instalowania wymaganych aktualizacji.
--   [Agent Health](../../monitoring/monitoring-solution-agenthealth.md): Rozwiązanie Agent Health zgłasza liczbę wdrożonych agentów i ich dystrybucję geograficzną, a także liczbę agentów, które nie odpowiadają, oraz liczby agentów przesyłających dane operacyjne.
--   [Change Tracking](../../automation/change-tracking.md): Rozwiązanie Change Tracking pozwala klientom łatwo identyfikować zmiany w środowisku.
+-   [AD Assessment](../../azure-monitor/insights/ad-assessment.md): rozwiązanie Active Directory Health Check ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu i zawiera priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
+-   [Antimalware Assessment](../../security-center/security-center-install-endpoint-protection.md): rozwiązanie chroniące przed złośliwym kodem zgłasza złośliwe oprogramowanie, zagrożenia i stan ochrony.
+-   [Update Management](../../automation/automation-update-management.md): rozwiązanie Update Management umożliwia klientom zarządzanie aktualizacjami zabezpieczeń systemu operacyjnego, w tym stanem dostępnych aktualizacji oraz procesem instalowania wymaganych aktualizacji.
+-   [Agent Health](../../monitoring/monitoring-solution-agenthealth.md): rozwiązanie Agent Health zgłasza liczbę wdrożonych agentów oraz ich dystrybucję geograficzną, a także liczbę agentów, które nie odpowiadają, oraz liczby agentów przesyłających dane operacyjne.
+-   [Change Tracking](../../automation/change-tracking.md): rozwiązanie Change Tracking pozwala klientom łatwo identyfikować zmiany w środowisku.
 
-##### <a name="security"></a>Bezpieczeństwo
-- **Ochrona przed złośliwym oprogramowaniem**: [Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft](https://docs.microsoft.com/azure/security/fundamentals/antimalware) Virtual Machines zapewnia ochronę w czasie rzeczywistym, która pomaga identyfikować i usuwać wirusy, programy szpiegujące i inne złośliwe oprogramowanie, z konfigurowalnymi alertami, gdy znane złośliwe lub niepożądane oprogramowanie próbuje Zainstaluj lub Uruchom na chronionych maszynach wirtualnych.
-- **Zarządzanie poprawkami**: Maszyny wirtualne z systemem Windows wdrożone w ramach tej architektury referencyjnej są domyślnie skonfigurowane tak, aby otrzymywać aktualizacje automatyczne z usługi Windows Update. To rozwiązanie obejmuje również usługę [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) , za pomocą której można tworzyć zaktualizowane wdrożenia w celu zastosowania poprawek do maszyn wirtualnych w razie potrzeby.
+##### <a name="security"></a>Zabezpieczenia
+- **Ochrona przed złośliwym oprogramowaniem**: [firma Microsoft chroniąca](https://docs.microsoft.com/azure/security/fundamentals/antimalware) przed złośliwym kodem Virtual Machines zapewnia ochronę w czasie rzeczywistym, która pomaga identyfikować i usuwać wirusy, programy szpiegujące i inne złośliwe oprogramowanie, z konfigurowalnymi alertami w przypadku znanych złośliwych lub niechciane oprogramowanie próbuje zainstalować lub uruchomić na chronionych maszynach wirtualnych.
+- **Zarządzanie poprawkami**: maszyny wirtualne z systemem Windows wdrożone w ramach tej architektury referencyjnej są domyślnie skonfigurowane do odbierania automatycznych aktualizacji z usługi Windows Update. To rozwiązanie obejmuje również usługę [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) , za pomocą której można tworzyć zaktualizowane wdrożenia w celu zastosowania poprawek do maszyn wirtualnych w razie potrzeby.
 
 #### <a name="azure-commercial"></a>Komercyjne platformy Azure
 Mimo że ta architektura analizy danych nie jest przeznaczona do wdrożenia w środowisku [komercyjnym platformy Azure](https://azure.microsoft.com/overview/what-is-azure/) , podobne cele można osiągnąć za pomocą usług opisanych w tej architekturze referencyjnej, a także dodatkowych dostępnych usług tylko w środowisku komercyjnym platformy Azure. Należy pamiętać, że komercyjne usługi platformy Azure utrzymują FedRAMP JAB P-ATO na poziomie umiarkowanego wpływu, umożliwiając instytucjom rządowym i partnerom wdrażanie średnio poufnych informacji w chmurze wykorzystujących środowisko komercyjne platformy Azure.
@@ -175,7 +175,7 @@ W [macierzy strategia zabezpieczeń i zgodności z przepisami platformy Azure �
 
 Macierz [implementacji strategia zabezpieczeń i zgodności z przepisami platformy Azure FedRAMP o wysokiej kontroli](https://aka.ms/blueprintanalyticscimhigh) i [strategia zabezpieczeń i zgodności z przepisami platformy Azure-FedRAMP umiarkowanej implementacji kontroli](https://aka.ms/blueprintanalyticscimmod) zawierają informacje o tym, które kontrolki są objęte Architektura analizy dla każdej linii bazowej FedRAMP, łącznie z szczegółowymi opisami tego, jak implementacja spełnia wymagania poszczególnych formantów objętych usługą.
 
-## <a name="disclaimer"></a>Zastrzeżenie
+## <a name="disclaimer"></a>Zrzeczenie odpowiedzialności
 
  - Ten dokument jest przeznaczony wyłącznie do celów informacyjnych. FIRMA MICROSOFT NIE UDZIELA ŻADNYCH GWARANCJI, WYRAŹNYCH, DOROZUMIANYCH ANI USTAWOWYCH, W ODNIESIENIU DO INFORMACJI ZAWARTYCH W TYM DOKUMENCIE. Ten dokument jest dostarczany "w takiej postaci, w jakim jest". Informacje i poglądy wyrażone w tym dokumencie, w tym adresy URL i inne odwołania do witryn internetowych, mogą ulec zmianie bez powiadomienia. Klienci czytający ten dokument mają ryzyko związane z jego użyciem.
  - Niniejszy dokument nie zapewnia klientom żadnych praw do jakiejkolwiek własności intelektualnej w jakichkolwiek produktach lub rozwiązaniach firmy Microsoft.

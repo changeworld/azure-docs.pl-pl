@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
 ms.openlocfilehash: ce7a8af1416664a3a94b248c95203c8e775e805c
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70182396"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Search szyfrowanie przy użyciu kluczy zarządzanych przez klienta w programie Azure Key Vault
 
 > [!Note]
-> Szyfrowanie za pomocą kluczy zarządzanych przez klienta jest w wersji zapoznawczej i nie jest przeznaczone do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 —](search-api-preview.md) wersja zapoznawcza zawiera tę funkcję. Można również użyć zestawu .NET SDK w wersji 8,0-Preview.
+> Szyfrowanie za pomocą kluczy zarządzanych przez klienta jest w wersji zapoznawczej i nie jest przeznaczone do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. Można również użyć zestawu .NET SDK w wersji 8,0-Preview.
 >
 > Ta funkcja jest niedostępna w przypadku bezpłatnych usług. Musisz użyć usługi wyszukiwania do rozliczenia, która została utworzona w dniu lub po 2019-01-01. W tej chwili nie ma pomocy technicznej dla portalu.
 
@@ -41,11 +41,11 @@ W tym przykładzie są używane następujące usługi.
 
 + [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) lub [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) jest używany na potrzeby zadań konfiguracyjnych.
 
-+ [](search-get-started-postman.md)Do wywoływania interfejsu API REST w wersji zapoznawczej można użyć programu Poster, [Azure POWERSHELL](search-create-index-rest-api.md) i [Azure Search SDK](https://aka.ms/search-sdk-preview) . W tej chwili nie ma portalu ani zestawu SDK platformy .NET dla szyfrowania zarządzanego przez klienta.
++ Do wywoływania interfejsu API REST w wersji zapoznawczej można użyć programu [Poster](search-get-started-postman.md), [Azure POWERSHELL](search-create-index-rest-api.md) i [Azure Search SDK](https://aka.ms/search-sdk-preview) . W tej chwili nie ma portalu ani zestawu SDK platformy .NET dla szyfrowania zarządzanego przez klienta.
 
 ## <a name="1---enable-key-recovery"></a>1 — Włączanie odzyskiwania klucza
 
-Ten krok jest opcjonalny, ale zdecydowanie zalecany. Po utworzeniu zasobu Azure Key Vault Włącz **trwałe usuwanie** i przeczyszczanie **ochrony** w wybranym magazynie kluczy przez wykonanie następujących poleceń programu PowerShell lub interfejsu wiersza polecenia platformy Azure:   
+Ten krok jest opcjonalny, ale zdecydowanie zalecany. Po utworzeniu zasobu Azure Key Vault Włącz **trwałe usuwanie** i **przeczyszczanie ochrony** w wybranym magazynie kluczy przez wykonanie następujących poleceń programu PowerShell lub interfejsu wiersza polecenia platformy Azure:   
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -62,7 +62,7 @@ az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --en
 ```
 
 >[!Note]
-> Ze względu na bardzo dużą naturę szyfrowania z kluczami zarządzanymi przez klienta Azure Search nie będzie można pobrać danych, jeśli klucz magazynu kluczy platformy Azure zostanie usunięty. Aby zapobiec utracie danych przez przypadkowe Key Vault usuwania kluczy, zdecydowanie zaleca się włączenie trwałego usuwania i przeczyszczania w wybranym magazynie kluczy. Aby uzyskać więcej informacji, zobacz [Azure Key Vault usuwania](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)nietrwałego.   
+> Ze względu na bardzo dużą naturę szyfrowania z kluczami zarządzanymi przez klienta Azure Search nie będzie można pobrać danych, jeśli klucz magazynu kluczy platformy Azure zostanie usunięty. Aby zapobiec utracie danych przez przypadkowe Key Vault usuwania kluczy, zdecydowanie zaleca się włączenie trwałego usuwania i przeczyszczania w wybranym magazynie kluczy. Aby uzyskać więcej informacji, zobacz [Azure Key Vault usuwania nietrwałego](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
 
 ## <a name="2---create-a-new-key"></a>2 — Tworzenie nowego klucza
 
@@ -164,7 +164,7 @@ Jeśli używasz aplikacji usługi AAD do uwierzytelniania Key Vault, a nie przy 
 }
 ```
 
-## <a name="example-index-encryption"></a>Przykład: Szyfrowanie indeksu
+## <a name="example-index-encryption"></a>Przykład: szyfrowanie indeksu
 Szczegóły dotyczące tworzenia nowego indeksu za pośrednictwem interfejsu API REST można znaleźć w artykule [Tworzenie indeksu (interfejs API REST usługi Azure Search Service)](https://docs.microsoft.com/rest/api/searchservice/create-index), gdzie jedyną różnicą jest określenie informacji o kluczu szyfrowania w ramach definicji indeksu: 
 
 ```json
@@ -191,7 +191,7 @@ Szczegóły dotyczące tworzenia nowego indeksu za pośrednictwem interfejsu API
 ```
 Teraz możesz wysłać żądanie utworzenia indeksu, a następnie zacząć używać indeksu normalnie.
 
-## <a name="example-synonym-map-encryption"></a>Przykład: Szyfrowanie mapy synonimów
+## <a name="example-synonym-map-encryption"></a>Przykład: szyfrowanie mapy synonimów
 
 Szczegóły tworzenia nowej mapy synonimów za pośrednictwem interfejsu API REST można znaleźć na stronie [Tworzenie mapy synonimów (Azure Search interfejs API REST usługi)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map), gdzie jedyną różnicą jest określenie informacji o kluczu szyfrowania w ramach definicji mapy synonimów: 
 
@@ -214,7 +214,7 @@ Teraz można wysłać żądanie utworzenia mapy synonimów, a następnie rozpocz
 > Mimo że nie można dodać **EncryptionKey** do istniejących indeksów Azure Search lub mapowań synonimów, można je zaktualizować, podając różne wartości dla każdego z trzech szczegółów magazynu kluczy (na przykład aktualizacji wersji klucza). W przypadku zmiany na nowy klucz Key Vault lub nowej wersji klucza należy najpierw zaktualizować wszystkie indeksy Azure Search indeksu lub synonimu, które używają klucza, aby użyć nowego key\version **przed** usunięciem poprzedniej key\version. Niewykonanie tej czynności spowoduje renderowanie indeksu lub mapy synonimów, ponieważ nie będzie można odszyfrować zawartości po utracie dostępu do klucza.   
 > Przywrócenie uprawnień dostępu do magazynu kluczy w późniejszym czasie spowoduje przywrócenie dostępu do zawartości.
 
-## <a name="aad-app"></a>Doświadczonych Korzystanie z zarządzanej zewnętrznie aplikacji Azure Active Directory
+## <a name="aad-app"></a>Zaawansowane: Użyj zarządzanej zewnętrznie aplikacji Azure Active Directory
 
 Jeśli zarządzana tożsamość nie jest możliwa, można utworzyć aplikację Azure Active Directory z podmiotem zabezpieczeń dla usługi Azure Search. W tym przypadku tożsamość zarządzana nie jest wykonalna w następujących warunkach:
 

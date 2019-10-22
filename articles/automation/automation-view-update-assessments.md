@@ -1,6 +1,6 @@
 ---
 title: Wyświetlanie ocen aktualizacji Update Management platformy Azure
-description: W tym artykule opisano sposób wyświetlania ocen aktualizacji dla wdrożeń aktualizacji
+description: W tym artykule opisano sposób wyświetlania ocen aktualizacji dla wdrożeń aktualizacji.
 services: automation
 ms.service: automation
 ms.subservice: update-management
@@ -9,26 +9,26 @@ ms.author: robreed
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e88622ede6437086b86a33081d6ec9b9ea50ef65
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d4e20b2924504b714dff9f5ba650f9b25c1c26c3
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377722"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690864"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Wyświetlanie ocen aktualizacji Update Management platformy Azure
 
-Na koncie usługi Automation wybierz pozycję **Update Management** , aby wyświetlić stan maszyn.
+Na koncie Azure Automation wybierz pozycję **Update Management** , aby wyświetlić stan maszyn.
 
-Ten widok zawiera informacje dotyczące maszyn, brakujących aktualizacji, wdrożeń aktualizacji i zaplanowanych wdrożeń aktualizacji. W **kolumnie zgodność**można zobaczyć czas ostatniego oceny maszyny. W kolumnie **Aktualizowanie gotowości agenta** można sprawdzić, czy kondycja agenta aktualizacji jest poprzednia. Jeśli wystąpił problem, wybierz link, aby przejść do dokumentacji dotyczącej rozwiązywania problemów, która może ułatwić zapoznanie się z krokami, które należy podjąć w celu rozwiązania problemu.
+Ten widok zawiera informacje dotyczące maszyn, brakujących aktualizacji, wdrożeń aktualizacji i zaplanowanych wdrożeń aktualizacji. W kolumnie **zgodność** można zobaczyć czas ostatniego oceny maszyny. W kolumnie **Aktualizowanie gotowości agenta** można sprawdzić kondycję agenta aktualizacji. Jeśli wystąpił problem, wybierz link, aby przejść do dokumentacji dotyczącej rozwiązywania problemów, która może pomóc w rozwiązaniu problemu.
 
-Aby uruchomić wyszukiwanie w dzienniku, które zwraca informacje o komputerze, aktualizacji lub wdrożeniu, wybierz element z listy. Zostanie otwarte okienko **przeszukiwania dzienników** z zapytaniem dotyczącym wybranego elementu:
+Aby uruchomić wyszukiwanie w dzienniku, które zwraca informacje o komputerze, aktualizacji lub wdrożeniu, wybierz odpowiedni element na liście. Zostanie otwarte okienko **przeszukiwania dzienników** z zapytaniem dotyczącym wybranego elementu:
 
 ![Update Management widoku domyślnego](media/automation-update-management/update-management-view.png)
 
 ## <a name="view-missing-updates"></a>Wyświetl brakujące aktualizacje
 
-Wybierz pozycję **brakujące aktualizacje** , aby wyświetlić listę aktualizacji, których brakuje na Twoich komputerach. Każda aktualizacja jest wyświetlana i można ją wybrać. Informacje o liczbie maszyn, które wymagają aktualizacji, systemu operacyjnego i linku, aby uzyskać więcej informacji. W okienku **przeszukiwania dzienników** są wyświetlane szczegółowe informacje o aktualizacjach.
+Wybierz pozycję **brakujące aktualizacje** , aby wyświetlić listę aktualizacji, których brakuje na Twoich komputerach. Każda aktualizacja jest wyświetlana i można ją wybrać. Wyświetlane są informacje o liczbie maszyn, które wymagają aktualizacji, szczegółów systemu operacyjnego i linku do większej ilości informacji. W okienku **przeszukiwania dzienników** są również wyświetlane szczegółowe informacje o aktualizacjach.
 
 ![Brakujące aktualizacje](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
@@ -54,15 +54,15 @@ W poniższej tabeli wymieniono klasyfikacje aktualizacji w Update Management z d
 |Klasyfikacja  |Opis  |
 |---------|---------|
 |Aktualizacje krytyczne i zabezpieczeń     | Aktualizacje dotyczące konkretnego problemu lub problemu związanego z zabezpieczeniami.         |
-|Inne aktualizacje     | Wszystkie inne aktualizacje, których charakter nie ma znaczenia lub nie są aktualizacjami zabezpieczeń.        |
+|Inne aktualizacje     | Wszystkie inne aktualizacje, których charakter nie ma znaczenia ani aktualizacje zabezpieczeń.        |
 
-W przypadku systemu Linux Update Management może rozróżnić aktualizacje krytyczne i zabezpieczenia w chmurze, a dane oceny są wyświetlane z powodu wzbogacania danych w chmurze. W przypadku stosowania poprawek Update Management opiera się na danych klasyfikacji dostępnych na komputerze. W przeciwieństwie do innych dystrybucji, CentOS nie ma dostępnych informacji. Jeśli masz skonfigurowane maszyny CentOS w sposób, aby zwracały dane zabezpieczeń dla poniższego polecenia, Update Management będzie można zastosować poprawki na podstawie klasyfikacji.
+W przypadku systemu Linux Update Management może rozróżnić aktualizacje krytyczne i aktualizacje zabezpieczeń w chmurze, a dane oceny są wyświetlane. (Stopień szczegółowości jest możliwy ze względu na Wzbogacanie danych w chmurze). W przypadku stosowania poprawek Update Management opiera się na danych klasyfikacji dostępnych na komputerze. W przeciwieństwie do innych dystrybucji, CentOS nie ma informacji dostępnych w wersji RTM produktu. Jeśli masz maszyny CentOS skonfigurowane do zwracania danych zabezpieczeń dla poniższego polecenia, Update Management może zostać poprawione na podstawie klasyfikacji:
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-Obecnie nie jest obsługiwana metoda umożliwiająca natywną klasyfikację — dostępność danych w CentOS. W tej chwili tylko Najlepsza pomoc techniczna jest świadczona klientom, którzy mogli ją samodzielnie włączyć.
+Obecnie nie jest obsługiwana metoda umożliwiająca natywną klasyfikację — dostępność danych w systemie CentOS. W tej chwili tylko Najlepsza pomoc techniczna jest świadczona klientom, którzy włączyli tę funkcję samodzielnie.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,5 +1,5 @@
 ---
-title: 'Regresja logistyczna dla wieloklasy: Dokumentacja modułu'
+title: 'Wieloklasowa regresja logistyczna: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak za pomocą wieloklasowego modułu regresji logistycznej w usłudze Azure Machine Learning utworzyć model regresji logistycznej, który może służyć do przewidywania wielu wartości.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: d51bc48944204b4c7c50790949927849869f26fc
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: d31329d6d45fd9f137bd6d57a638915e0833ee4a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128636"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692757"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Wieloklasowy moduł regresji logistycznej
 
@@ -22,7 +22,7 @@ W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi 
 
 Ten moduł służy do tworzenia modelu regresji logistycznej, który może służyć do przewidywania wielu wartości.
 
-Klasyfikacja przy użyciu regresji logistycznej to nadzorowana Metoda uczenia i dlatego wymaga oznaczonego zestawu danych. Możesz nauczyć model, dostarczając model i oznaczony zestaw danych jako dane wejściowe do modułu, takiego jak uczenie [modelu](./train-model.md). Model przeszkolony może być następnie używany do przewidywania wartości nowych przykładów wejściowych.
+Klasyfikacja przy użyciu regresji logistycznej to nadzorowana Metoda uczenia i dlatego wymaga oznaczonego zestawu danych. Możesz nauczyć model, dostarczając model i oznaczony zestaw danych jako dane wejściowe do modułu, takiego jak [uczenie modelu](./train-model.md). Model przeszkolony może być następnie używany do przewidywania wartości nowych przykładów wejściowych.
 
 Azure Machine Learning udostępnia również moduł [regresji logistycznej z dwoma klasami](./two-class-logistic-regression.md) , który jest odpowiedni do klasyfikacji zmiennych binarnych lub dichotomous.
 
@@ -34,7 +34,7 @@ W przypadku regresji logistycznej z wieloma klasami Klasyfikator może służyć
 
 ## <a name="configure-a-multiclass-logistic-regression"></a>Konfigurowanie wieloklasowej regresji logistycznej
 
-1. Dodaj do eksperymentu moduł regresji logistycznej dla wieloklasowego.
+1. Dodaj moduł **regresji logistycznej dla wieloklasowego** do potoku.
 
 2. Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .
 
@@ -44,21 +44,21 @@ W przypadku regresji logistycznej z wieloma klasami Klasyfikator może służyć
 
 3. **Tolerancja optymalizacji**, określ wartość progową zbieżności Optymalizatora. Jeśli poprawa między iteracjami jest mniejsza niż wartość progowa, algorytm zatrzyma się i zwróci bieżący model.
 
-4. **Waga uregulowania L1**, **waga uregulowania L2**: Wpisz wartość, która ma być używana dla parametrów uregulowania L1 i L2. Dla obu tych zaleca się wartość różną od zera.
+4. **Waga uregulowania L1**, **waga uregulowania L2**: wpisz wartość, która ma być używana dla parametrów uregulowania L1 i L2. Dla obu tych zaleca się wartość różną od zera.
 
     Uregulowanie to metoda zapobiegania zastępowaniu poprzez nakładanie się modeli o wartości skrajnego współczynnika. Uregulowanie działa przez dodanie kary, która jest skojarzona z wartościami współczynnika, do błędu hipotezy. Dokładny model z wartościami współczynnika skrajnie byłby bardziej karany, ale mniej dokładny model z bardziej bardziej bardziej nieprawidłowymi wartościami byłyby mniejsze.
 
-     Uregulowanie L1 i L2 mają różne efekty i używa. L1 można zastosować do modeli rozrzedzonych, co jest przydatne podczas pracy z danymi o dużym wymiarze. Z kolei w przypadku danych, które nie są rozrzedzone, preferowane jest uregulowanie L2.  Ten algorytm obsługuje liniową kombinację wartości rozliczania L1 i L2: oznacza to, `x = L1` że `y = L2`Jeśli `ax + by = c` i, definiuje liniowy zakres warunków uregulowania.
+     Uregulowanie L1 i L2 mają różne efekty i używa. L1 można zastosować do modeli rozrzedzonych, co jest przydatne podczas pracy z danymi o dużym wymiarze. Z kolei w przypadku danych, które nie są rozrzedzone, preferowane jest uregulowanie L2.  Ten algorytm obsługuje liniową kombinację wartości rozliczania L1 i L2: oznacza to, że jeśli `x = L1` i `y = L2`, `ax + by = c` definiuje zakres liniowy warunków uregulowania.
 
      Dla modeli regresji logistycznej opracowano różne liniowe kombinacje warunków L1 i L2, takie jak [elastyczne uregulowanie netto](https://wikipedia.org/wiki/Elastic_net_regularization).
 
-6. **Inicjator liczb losowych**: Wpisz wartość całkowitą, która ma być używana jako inicjator dla algorytmu, jeśli chcesz, aby wyniki były powtarzane. W przeciwnym razie wartość zegara systemowego jest używana jako inicjator, który może generować nieco różne wyniki w przebiegach tego samego eksperymentu.
+6. **Inicjator liczb losowych**: wpisz wartość całkowitą do użycia jako inicjator dla algorytmu, jeśli chcesz, aby wyniki były powtarzane. W przeciwnym razie wartość zegara systemowego jest używana jako inicjator, który może generować nieco inne wyniki w przebiegach tego samego potoku.
 
 8. Połącz zestaw danych z etykietą i jeden z modułów uczenia:
 
     + W przypadku ustawienia opcji **Utwórz tryb Trainer** na **pojedynczy parametr**Użyj modułu [uczenie modelu](./train-model.md) .
 
-9. Uruchom eksperyment.
+9. Uruchamianie potoku.
 
 ## <a name="results"></a>Wyniki
 

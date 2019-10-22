@@ -12,10 +12,10 @@ author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 511c737e160c0f0753e570314c9b29346972cb04
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71269264"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Tworzenie Azure Machine Learning obszarów roboczych i zarządzanie nimi w Azure Portal
@@ -24,7 +24,7 @@ W tym artykule opisano tworzenie, wyświetlanie i usuwanie [**Azure Machine Lear
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-Aby utworzyć obszar roboczy, musisz mieć subskrypcję platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+Do utworzenia obszaru roboczego potrzebna jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -41,7 +41,7 @@ Aby utworzyć obszar roboczy, musisz mieć subskrypcję platformy Azure. Jeśli 
 
 ## <a name="view"></a>Wyświetlanie obszaru roboczego
 
-1. W lewym górnym rogu portalu, wybierz **wszystkich usług**.
+1. W lewym górnym rogu portalu wybierz pozycję **wszystkie usługi**.
 
 1. W polu Filtr **wszystkich usług** wpisz **Usługa Machine Learning**.  
 
@@ -49,16 +49,16 @@ Aby utworzyć obszar roboczy, musisz mieć subskrypcję platformy Azure. Jeśli 
 
    ![Wyszukaj Azure Machine Learning obszar roboczy](media/how-to-manage-workspace/all-services.png)
 
-1. Przejrzyj listę obszarów roboczych, można odnaleźć. Można filtrować na podstawie subskrypcji, grupy zasobów i lokalizacji.  
+1. Przejrzyj listę znalezionych obszarów roboczych. Można filtrować na podstawie subskrypcji, grup zasobów i lokalizacji.  
 
 1. Wybierz obszar roboczy, aby wyświetlić jego właściwości.
-   ![Właściwości obszaru roboczego](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
+   ![Workspace właściwości ](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Usuwanie obszaru roboczego
 
-Przycisk Usuń w górnej części obszaru roboczego, który chcesz usunąć.
+Użyj przycisku Usuń w górnej części obszaru roboczego, który chcesz usunąć.
 
-  ![Usuwanie przycisku](media/how-to-manage-workspace/delete-workspace.png)
+  ![Przycisk Usuń](media/how-to-manage-workspace/delete-workspace.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -69,4 +69,4 @@ Przycisk Usuń w górnej części obszaru roboczego, który chcesz usunąć.
 Postępuj zgodnie z samouczkiem o pełnej długości, aby dowiedzieć się, jak używać obszaru roboczego do kompilowania, uczenia i wdrażania modeli przy użyciu Azure Machine Learning.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Modele uczenia](tutorial-train-models-with-aml.md)
+> [Samouczek: uczenie modeli](tutorial-train-models-with-aml.md)

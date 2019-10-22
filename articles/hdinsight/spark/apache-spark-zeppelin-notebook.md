@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.openlocfilehash: 26634e2fe23e0a23540638c4559af6e11eccbe72
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71180733"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Korzystanie z notesów Apache Zeppelin z klastrem Apache Spark w usłudze Azure HDInsight
@@ -21,9 +21,9 @@ Klastry usługi HDInsight Spark obejmują notesy [Apache Zeppelin](https://zeppe
 
 **Wymagania wstępne:**
 
-* Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Subskrypcja platformy Azure. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Schemat identyfikatora URI magazynu podstawowego klastrów. Będzie to możliwe `wasb://` w przypadku usługi Azure `abfs://` BLOB Storage w przypadku `adl://` Azure Data Lake Storage Gen2 lub Azure Data Lake Storage Gen1. W przypadku włączenia bezpiecznego transferu dla Blob Storage, identyfikator URI `wasbs://`to.  Aby uzyskać więcej informacji, zobacz również temat [Wymagaj bezpiecznego transferu w usłudze Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
+* Schemat identyfikatora URI magazynu podstawowego klastrów. Będzie to `wasb://` dla Blob Storage platformy Azure, `abfs://` dla Azure Data Lake Storage Gen2 lub `adl://` dla Azure Data Lake Storage Gen1. W przypadku włączenia bezpiecznego transferu dla Blob Storage można `wasbs://` identyfikator URI.  Aby uzyskać więcej informacji, zobacz również temat [Wymagaj bezpiecznego transferu w usłudze Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Uruchamianie notesu Apache Zeppelin
 
@@ -34,7 +34,7 @@ Klastry usługi HDInsight Spark obejmują notesy [Apache Zeppelin](https://zeppe
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. Utwórz nowy notes. W okienku nagłówek przejdź do **notesu** > **Utwórz nową notatkę**.
+2. Utwórz nowy notes. W okienku nagłówka przejdź do **notesu**  > **Utwórz nową notatkę**.
 
     ![Tworzenie nowego notesu Zeppelin](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Tworzenie nowego notesu Zeppelin")
 
@@ -44,7 +44,7 @@ Klastry usługi HDInsight Spark obejmują notesy [Apache Zeppelin](https://zeppe
 
     ![Stan notesu Zeppelin](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Stan notesu Zeppelin")
 
-4. Załaduj przykładowe dane do tabeli tymczasowej. Podczas tworzenia klastra Spark w usłudze HDInsight plik `hvac.csv`danych przykładowych jest kopiowany do skojarzonego konta magazynu w obszarze. `\HdiSamples\SensorSampleData\hvac`
+4. Załaduj przykładowe dane do tabeli tymczasowej. Podczas tworzenia klastra Spark w usłudze HDInsight plik danych przykładowych `hvac.csv` jest kopiowany do skojarzonego konta magazynu w obszarze `\HdiSamples\SensorSampleData\hvac`.
 
     W pustym akapicie, który jest tworzony domyślnie w nowym notesie, wklej poniższy fragment kodu.
 
@@ -81,7 +81,7 @@ Klastry usługi HDInsight Spark obejmują notesy [Apache Zeppelin](https://zeppe
     > [!NOTE]  
     > % spark2 interpretera nie jest obsługiwana w notesach Zeppelin we wszystkich wersjach usługi HDInsight, a interpreter% SH nie będzie obsługiwany przez usługi HDInsight 4,0.
 
-5. W `hvac` tabeli można teraz uruchamiać instrukcje platformy Spark SQL. Wklej następujące zapytanie w nowym akapicie. Zapytanie pobiera identyfikator budynku i różnicę między docelową i rzeczywistą temperaturą dla każdego budynku w danym dniu. Naciśnij klawisze **SHIFT + ENTER**.
+5. W tabeli `hvac` można teraz uruchamiać instrukcje platformy Spark SQL. Wklej następujące zapytanie w nowym akapicie. Zapytanie pobiera identyfikator budynku i różnicę między docelową i rzeczywistą temperaturą dla każdego budynku w danym dniu. Naciśnij klawisze **SHIFT + ENTER**.
 
     ```sql
     %sql
@@ -94,7 +94,7 @@ Klastry usługi HDInsight Spark obejmują notesy [Apache Zeppelin](https://zeppe
 
     ![Uruchamianie instrukcji platformy Spark języka SQL przy użyciu notebook1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Uruchamianie instrukcji platformy Spark języka SQL przy użyciu notebook1")
 
-7. Możesz również uruchomić instrukcje Spark SQL przy użyciu zmiennych w zapytaniu. W następnym fragmencie kodu pokazano, jak zdefiniować zmienną, `Temp`w zapytaniu z możliwymi wartościami, które chcesz zbadać. Po pierwszym uruchomieniu zapytania lista rozwijana jest automatycznie wypełniana wartościami określonymi dla zmiennej.
+7. Możesz również uruchomić instrukcje Spark SQL przy użyciu zmiennych w zapytaniu. W następnym fragmencie kodu pokazano, jak zdefiniować zmienną, `Temp` w zapytaniu z możliwymi wartościami, które chcesz zbadać. Po pierwszym uruchomieniu zapytania lista rozwijana jest automatycznie wypełniana wartościami określonymi dla zmiennej.
 
     ```sql
     %sql  
@@ -105,8 +105,8 @@ Klastry usługi HDInsight Spark obejmują notesy [Apache Zeppelin](https://zeppe
 
 8. Wybierz ikonę **wykresu słupkowego** , aby zmienić wyświetlanie.  Następnie wybierz pozycję **Ustawienia** i wprowadź następujące zmiany:
 
-   * **Grupowania**  Dodaj **targettemp**.  
-   * **Wartością** 1. Usuń **datę**.  2. Dodaj **temp_diff**.  3.  Zmień agregator z **sum** na **śr**.  
+   * **Grupy:**  Dodaj **targettemp**.  
+   * **Wartości:** jedno. Usuń **datę**.  2. Dodaj **temp_diff**.  3.  Zmień agregator z **sum** na **śr**.  
 
      Poniższy zrzut ekranu przedstawia dane wyjściowe.
 
@@ -133,7 +133,7 @@ W tym artykule przedstawiono sposób korzystania z pakietu [Spark-CSV](https://s
 
     ![Zmień interpreter settings1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Zmień interpreter settings1")
 
-3. Dodaj nowy klucz o nazwie `livy.spark.jars.packages`i ustaw jego wartość w formacie. `group:id:version` Tak więc, jeśli chcesz użyć pakietu [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) , musisz ustawić wartość klucza na `com.databricks:spark-csv_2.10:1.4.0`.
+3. Dodaj nowy klucz o nazwie `livy.spark.jars.packages` i ustaw jego wartość w formacie `group:id:version`. Tak więc, jeśli chcesz użyć pakietu [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) , musisz ustawić wartość klucza na `com.databricks:spark-csv_2.10:1.4.0`.
 
     ![Zmień interpreter settings2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Zmień interpreter settings2")
 
@@ -147,7 +147,7 @@ W tym artykule przedstawiono sposób korzystania z pakietu [Spark-CSV](https://s
    
     ![Korzystanie z zewnętrznych pakietów z notesem Jupyter](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Korzystanie z zewnętrznych pakietów z notesem Jupyter")
    
-    c. Połącz trzy wartości rozdzielone dwukropkiem ( **:** ).
+    d. Połącz trzy wartości rozdzielone dwukropkiem ( **:** ).
    
         com.databricks:spark-csv_2.10:1.4.0
 
@@ -174,12 +174,12 @@ W takim przypadku przed rozpoczęciem uruchamiania zadań z notesu Zeppelin nale
 3. Uruchom komórkę kodu z istniejącego notesu Zeppelin. Spowoduje to utworzenie nowej sesji usługi Livy w klastrze usługi HDInsight.
 
 ## <a name="seealso"></a>Zobacz też
-* [Podsumowanie Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+* [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
-* [Apache Spark z usługą BI: Przeprowadzanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark z usługą BI: wykonywanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dzienników witryny sieci Web przy użyciu Apache Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji
@@ -193,7 +193,7 @@ W takim przypadku przed rozpoczęciem uruchamiania zadań z notesu Zeppelin nale
 * [Korzystanie z zewnętrznych pakietów z notesami Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Zarządzaj zasobami
+### <a name="manage-resources"></a>Zarządzanie zasobami
 * [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
 * [Śledzenie i debugowanie zadań uruchamianych w klastrze Apache Spark w usłudze HDInsight](apache-spark-job-debugging.md)
 

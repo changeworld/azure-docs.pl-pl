@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: apimpm
 ms.openlocfilehash: 1189689566da84df6d6b8845bf7c81bd8aa5f1ab
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072223"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Szablony stron na platformie Azure API Management
@@ -97,12 +97,12 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 </div>  
 ```  
   
-### <a name="controls"></a>Formanty  
+### <a name="controls"></a>Kontrolki  
  Ten szablon może korzystać z następujących [kontrolek strony](api-management-page-controls.md).  
   
 -   [Logowanie Podstawowe](api-management-page-controls.md#basic-signin)  
   
--   [dostawcy](api-management-page-controls.md#providers)  
+-   [udostępnia](api-management-page-controls.md#providers)  
   
 ### <a name="data-model"></a>Model danych  
  Jednostka [logowania użytkownika](api-management-template-data-model-reference.md#UseSignIn) .  
@@ -156,7 +156,7 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 </div>  
 ```  
   
-### <a name="controls"></a>Formanty  
+### <a name="controls"></a>Kontrolki  
  Ten szablon może korzystać z następujących [kontrolek strony](api-management-page-controls.md).  
   
 -   [Utwórz konto](api-management-page-controls.md#sign-up)  
@@ -220,18 +220,18 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 </p>  
 ```  
   
-### <a name="controls"></a>Formanty  
+### <a name="controls"></a>Kontrolki  
  Ten szablon nie może używać żadnych [kontrolek strony](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Model danych  
   
-|Właściwość|Type|Opis|  
+|Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|referenceCode|ciąg|Kod wygenerowany, jeśli ta strona była wyświetlana jako wynik błędu wewnętrznego.|  
-|Kodzie|ciąg|Kod wygenerowany, jeśli ta strona była wyświetlana jako wynik błędu wewnętrznego.|  
-|emailBody|ciąg|Treść wiadomości e-mail wygenerowanej, jeśli ta strona była wyświetlana jako wynik błędu wewnętrznego.|  
-|requestedUrl|ciąg|Adres URL żądany, gdy strona nie została znaleziona.|  
-|referrerUrl|ciąg|Adres URL odwołującego się do żądanego adresu URL.|  
+|referenceCode|string|Kod wygenerowany, jeśli ta strona była wyświetlana jako wynik błędu wewnętrznego.|  
+|Kodzie|string|Kod wygenerowany, jeśli ta strona była wyświetlana jako wynik błędu wewnętrznego.|  
+|emailBody|string|Treść wiadomości e-mail wygenerowanej, jeśli ta strona była wyświetlana jako wynik błędu wewnętrznego.|  
+|requestedUrl|string|Adres URL żądany, gdy strona nie została znaleziona.|  
+|referrerUrl|string|Adres URL odwołującego się do żądanego adresu URL.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   

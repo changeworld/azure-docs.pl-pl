@@ -15,10 +15,10 @@ ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70127389"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Znajdź raporty aktywności w Azure Portal
@@ -52,12 +52,12 @@ Możesz użyć filtrowania zaawansowanego w raporcie inspekcji, aby uzyskać dos
 
 Kategorie obejmują:
 
-- Wszyscy
+- Wszystko
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
-- Authorization
-- Skontaktuj się z
+- Uwierzytelnianie
+- Autoryzacja
+- Kontakt
 - Urządzenie
 - DeviceConfiguration
 - DirectoryManagement
@@ -69,12 +69,12 @@ Kategorie obejmują:
 - RoleManagement
 - UserManagement
 
-Możesz również filtrować określoną usługę za pomocą filtru listy rozwijanej **usługi** . Aby na przykład uzyskać wszystkie zdarzenia inspekcji związane z samoobsługowym zarządzaniem hasłami, należy wybrać filtr samoobsługowego **zarządzania hasłami** .
+Możesz również filtrować określoną usługę za pomocą filtru listy rozwijanej **usługi** . Aby na przykład uzyskać wszystkie zdarzenia inspekcji związane z samoobsługowym zarządzaniem hasłami, należy wybrać filtr **samoobsługowego zarządzania hasłami** .
 
 Usługi to:
 
-- Wszyscy
-- Kontrole uprawnień dostępu
+- Wszystko
+- Przeglądy dostępu
 - Aprowizacja kont 
 - Logowanie jednokrotne aplikacji
 - Metody uwierzytelniania
@@ -82,16 +82,16 @@ Usługi to:
 - Dostęp warunkowy
 - Katalog podstawowy
 - Zarządzanie upoważnieniami
-- Identity Protection
+- Ochrona tożsamości
 - Zaproszeni użytkownicy
-- PIM
+- PROGRAMÓW
 - Samoobsługowe zarządzanie grupami
 - Samoobsługowe zarządzanie hasłami
 - Warunki użytkowania
 
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań 
 
-Widok **logowania** zawiera wszystkie logowania użytkowników, a także Raport **użycia aplikacji** . Informacje o użyciu aplikacji można także wyświetlić w sekcji **Zarządzanie** **aplikacjami** w przedsiębiorstwie.
+Widok **logowania** zawiera wszystkie logowania użytkowników, a także Raport **użycia aplikacji** . Informacje o użyciu aplikacji można także wyświetlić w sekcji **Zarządzanie** **aplikacjami w przedsiębiorstwie** .
 
 Aby uzyskać dostęp do raportu logowania:
 
@@ -108,7 +108,7 @@ Możesz użyć raportu logowania, aby wyświetlić szczegółowe informacje o u�
 
 ![Strona filtrowania zdarzeń logowania](./media/howto-find-activity-reports/07.png "Strona filtrowania zdarzeń logowania")
 
-## <a name="security-reports"></a>Raporty dotyczące zabezpieczeń
+## <a name="security-reports"></a>Raporty zabezpieczeń
 
 ### <a name="anomalous-activity-reports"></a>Raporty o nietypowych działaniach
 
@@ -119,7 +119,7 @@ W poniższej tabeli przedstawiono raporty o nietypowych działaniach związanych
 
 | Raport o nietypowej aktywności usługi Azure AD |  Typ wykrywania ryzyka ochrony tożsamości|
 | :--- | :--- |
-| Użytkownicy z ujawnionymi poświadczeniami | Ujawnione poświadczenia |
+| Użytkownicy z ujawnionymi poświadczeniami | Nieujawnione poświadczenia |
 | Nieregularne działania związane z logowaniem | Niemożliwa podróż do nietypowych lokalizacji |
 | Logowania z urządzeń, które mogą być zainfekowane | Logowania z zainfekowanych urządzeń|
 | Logowania z nieznanych źródeł | Logowania z anonimowych adresów IP |
@@ -139,7 +139,7 @@ Można uzyskać dostęp do raportów dotyczących wykrywania wykrytych zagroże�
 - [Narażeni użytkownicy](concept-user-at-risk.md)
 - [Ryzykowne logowania](concept-risky-sign-ins.md)
 
-    ![Raporty zabezpieczeń](./media/howto-find-activity-reports/04.png "Raporty zabezpieczeń")
+    ![Raporty dotyczące zabezpieczeń](./media/howto-find-activity-reports/04.png "Raporty zabezpieczeń")
 
 ## <a name="troubleshoot-issues-with-activity-reports"></a>Rozwiązywanie problemów z raportami aktywności
 
@@ -155,7 +155,7 @@ Pobrano dzienniki aktywności (inspekcji lub logowania), ale nie widać wszystki
 
 Po pobraniu dzienników aktywności w Azure Portal ograniczamy do 250000 rekordów, posortowanych według ostatnio używanych elementów. 
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-reporting-api.md), aby pobrać do miliona rekordów z dowolnego okresu.
 
@@ -176,7 +176,7 @@ Akcje nie pojawiają się natychmiast w dziennikach aktywności. W poniższej ta
 | Inspekcja katalogu | &nbsp; | 2 min | 5 min |
 | Aktywność związana z logowaniem | &nbsp; | 2 min | 5 min | 
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Poczekaj od 15 minut do dwóch godzin, a następnie sprawdź, czy akcje pojawią się w dzienniku. Jeśli dzienniki nie są widoczne nawet po dwóch godzinach, [utwórz bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), abyśmy mogli przeanalizować tę sytuację.
 
@@ -197,7 +197,7 @@ Akcje nie pojawiają się natychmiast w dziennikach aktywności. W poniższej ta
 | Inspekcja katalogu | &nbsp; | 2 min | 5 min |
 | Aktywność związana z logowaniem | &nbsp; | 2 min | 5 min | 
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Poczekaj od 15 minut do dwóch godzin, a następnie sprawdź, czy akcje pojawią się w dzienniku. Jeśli dzienniki nie są widoczne nawet po dwóch godzinach, [utwórz bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), abyśmy mogli przeanalizować tę sytuację.
 
@@ -220,7 +220,7 @@ W zależności od licencji w obszarze akcji usługi Azure Active Directory rapor
 
 Aby uzyskać więcej informacji, zobacz [Azure Active Directory report retention policies (Zasady przechowywania raportów w usłudze Azure Active Directory)](reference-reports-data-retention.md).  
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Dostępne są dwie opcje przechowywania danych przez czas dłuższy niż 30 dni. Możesz użyć [interfejsów API raportowania usługi Azure AD](concept-reporting-api.md) do programowego pobierania danych i przechowywania ich w bazie danych. Alternatywnie możesz zintegrować dzienniki inspekcji w systemie SIEM innej firmy, takim jak Splunk lub SumoLogic.
 

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266185"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Poprawianie wydajności Apache Spark obciążeń przy użyciu pamięci podręcznej we/wy usługi Azure HDInsight
@@ -27,7 +27,7 @@ Większość dysków SSD zapewnia więcej niż 1 GByte na sekundę przepustowoś
 
 Użycie pamięci podręcznej we/wy zapewnia wzrost wydajności zadań odczytywania danych z usługi Azure Blob Storage.
 
-Nie musisz wprowadzać żadnych zmian w zadaniach platformy Spark, aby zobaczyć wzrost wydajności podczas korzystania z pamięci podręcznej we/wy. Gdy pamięć podręczna we/wy jest wyłączona, ten kod platformy Spark odczytuje dane zdalnie `spark.read.load('wasbs:///myfolder/data.parquet').count()`z usługi Azure Blob Storage:. Gdy pamięć podręczna we/wy jest aktywowana, ten sam wiersz kodu powoduje zbuforowane odczyty z pamięci podręcznej we/wy. Na następujących odczytach dane są odczytywane lokalnie z dysku SSD. Węzły procesu roboczego w klastrze usługi HDInsight są wyposażone w lokalne, dedykowane dyski SSD. Pamięć podręczna we/wy usługi HDInsight używa tych lokalnych dysków SSD do buforowania, co zapewnia najniższy poziom opóźnienia i maksymalizuje przepustowość.
+Nie musisz wprowadzać żadnych zmian w zadaniach platformy Spark, aby zobaczyć wzrost wydajności podczas korzystania z pamięci podręcznej we/wy. Gdy pamięć podręczna we/wy jest wyłączona, ten kod platformy Spark odczytuje dane zdalnie z usługi Azure Blob Storage: `spark.read.load('wasbs:///myfolder/data.parquet').count()`. Gdy pamięć podręczna we/wy jest aktywowana, ten sam wiersz kodu powoduje zbuforowane odczyty z pamięci podręcznej we/wy. Na następujących odczytach dane są odczytywane lokalnie z dysku SSD. Węzły procesu roboczego w klastrze usługi HDInsight są wyposażone w lokalne, dedykowane dyski SSD. Pamięć podręczna we/wy usługi HDInsight używa tych lokalnych dysków SSD do buforowania, co zapewnia najniższy poziom opóźnienia i maksymalizuje przepustowość.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -56,7 +56,7 @@ Po włączeniu pamięci podręcznej we/wy może wystąpić błąd miejsca na dys
 
 1. Wybierz pozycję **konfiguracje i** karty **Zaawansowane** .
 
-    ![Edytuj zaawansowaną konfigurację] systemu plików HDFS (./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "Edytuj zaawansowaną konfigurację") systemu plików HDFS
+    ![Edytuj zaawansowaną konfigurację systemu plików HDFS](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "Edytuj zaawansowaną konfigurację systemu plików HDFS")
 
 1. Przewiń w dół i rozwiń obszar **niestandardowe Lokacje podstawowe** .
 
@@ -68,7 +68,7 @@ Po włączeniu pamięci podręcznej we/wy może wystąpić błąd miejsca na dys
 
 1. Wybierz pozycję **Zapisz** w prawym górnym rogu.
 
-1. Wybierz pozycję **Uruchom ponownie** > **ponownie wszystkie uwzględnione**.
+1. Wybierz pozycję **Uruchom ponownie**  > **ponownie uruchom wszystkie**.
 
     ![System Apache Ambari](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Uruchom ponownie wszystkie uwzględnione")
 
@@ -78,4 +78,4 @@ Jeśli to nie zadziała, Wyłącz pamięć podręczną we/wy.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj więcej na temat pamięci podręcznej we/wy, w tym wpisu testów wydajności w tym wpisie w blogu: [Apache Spark zadania mogą uzyskać do maksymalnie 9X szybkość dzięki pamięci podręcznej we/wy usługi HDInsight](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+- Przeczytaj więcej na temat pamięci podręcznej we/wy, włącznie z wynikami testów wydajności w tym wpisie w blogu: [Apache Spark zadania mogą uzyskać do 9X szybkość dzięki pamięci podręcznej usługi HDInsight](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)

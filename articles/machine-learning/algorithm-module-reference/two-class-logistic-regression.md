@@ -1,5 +1,5 @@
 ---
-title: 'Regresja logistyczna dla dwóch klas: Dokumentacja modułu'
+title: 'Regresja logistyczna na dwie klasy: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak utworzyć model regresji logistycznej w usłudze Azure Machine Learning przy użyciu dwuklasowego modułu regresji logistycznej, który może być używany do przewidywania dwóch (i tylko dwóch) rezultatów.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 818b8627decd5ee7db711abc417f71c83e32b6c0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7020bf529fa635d74959a9dac071aa6e2b134c5b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128382"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692623"
 ---
 # <a name="two-class-logistic-regression-module"></a>Moduł regresji logistycznej dla dwóch klas
 
@@ -22,13 +22,13 @@ W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi 
 
 Użyj tego modułu, aby utworzyć model regresji logistycznej, który może służyć do przewidywania dwóch (i tylko dwóch) wyników. 
 
-Regresja logistyczna to dobrze znana technika statystyczna, która jest używana do modelowania wielu rodzajów problemów. Ten algorytm to *nadzorowana* Metoda uczenia się;  w związku z tym musisz dostarczyć zestaw danych, który zawiera już wyniki do uczenia modelu.  
+Regresja logistyczna to dobrze znana technika statystyczna, która jest używana do modelowania wielu rodzajów problemów. Ten algorytm to *nadzorowana Metoda uczenia* się;  w związku z tym musisz dostarczyć zestaw danych, który zawiera już wyniki do uczenia modelu.  
 
 ### <a name="about-logistic-regression"></a>Regresja logistyczna — informacje  
 
 Regresja logistyczna to dobrze znana metoda w statystyce, która jest używana do przewidywania prawdopodobieństwa wyniku i jest szczególnie popularna w przypadku zadań klasyfikacji. Algorytm przewiduje prawdopodobieństwo wystąpienia zdarzenia przez dopasowanie danych do funkcji logistycznej.
   
-W tym module algorytm klasyfikacji jest zoptymalizowany pod kątem dichotomous lub zmiennych binarnych. Jeśli potrzebujesz sklasyfikować wiele wyników, użyj modułu regresja logistyczna dla wielu [klas](./multiclass-logistic-regression.md) .
+W tym module algorytm klasyfikacji jest zoptymalizowany pod kątem dichotomous lub zmiennych binarnych. Jeśli potrzebujesz sklasyfikować wiele wyników, użyj modułu [regresja logistyczna](./multiclass-logistic-regression.md) dla wielu klas.
 
 ##  <a name="how-to-configure"></a>Jak skonfigurować  
 
@@ -36,7 +36,7 @@ Aby szkolić ten model, należy dostarczyć zestaw danych, który zawiera etykie
 
 Na przykład kolumna etykieta może być [głosowana] z możliwymi wartościami "yes" lub "No". Lub może to być [ryzyko kredytowe], z możliwymi wartościami "High" lub "Low". 
   
-1.  Dodaj moduł **regresja logistyczna dla dwóch klas** do eksperymentu.  
+1.  Dodaj moduł **regresja logistyczna dla dwóch klas** do potoku.  
   
 2.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
@@ -54,10 +54,10 @@ Na przykład kolumna etykieta może być [głosowana] z możliwymi wartościami 
   
     -   Z kolei w przypadku danych, które nie są rozrzedzone, preferowane jest uregulowanie L2.  
   
-     Ten algorytm obsługuje liniową kombinację wartości rozliczania L1 i L2: to jest, <code>x = L1</code> Jeśli <code>y = L2</code>i, <code>ax + by = c</code> następnie definiuje liniowy zakres warunków uregulowania.  
+     Ten algorytm obsługuje liniową kombinację wartości rozliczania L1 i L2: oznacza to, że jeśli <code>x = L1</code> i <code>y = L2</code>, <code>ax + by = c</code> definiuje zakres liniowy warunków uregulowania.  
   
     > [!NOTE]
-    >  Chcesz dowiedzieć się więcej na temat uregulowania L1 i L2? Poniższy artykuł zawiera omówienie sposobu, w jaki uregulowania L1 i L2 są różne i jak wpływają na ich dopasowanie, z przykładami kodu dla regresji logistycznej i modeli sieci neuronowych:  [Uregulowanie L1 i L2 dla Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  Chcesz dowiedzieć się więcej na temat uregulowania L1 i L2? Poniższy artykuł zawiera omówienie sposobu, w jaki uregulowania L1 i L2 są różne i jak wpływają na ich dopasowanie, z przykładami kodu na potrzeby regresji logistycznej i modeli sieci neuronowych: [w przypadku Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
     >
     > Dla modeli regresji logistycznej opracowano różne liniowe kombinacje warunków L1 i L2: na przykład [elastyczne uregulowanie netto](https://wikipedia.org/wiki/Elastic_net_regularization). Sugerujemy, aby odwoływać się do tych kombinacji w celu zdefiniowania kombinacji liniowej, która obowiązuje w modelu.
       
@@ -67,14 +67,14 @@ Na przykład kolumna etykieta może być [głosowana] z możliwymi wartościami 
   
      Ten parametr optymalizacji ogranicza ilość pamięci, która jest używana do obliczania następnego etapu i kierunku. W przypadku określenia mniejszej ilości pamięci szkolenie jest szybsze, ale mniej dokładne.  
   
-6.  W przypadku **liczby losowej inicjatora**wpisz wartość całkowitą. Definiowanie wartości inicjatora jest ważne, jeśli chcesz, aby wyniki były odtwarzalne dla wielu przebiegów tego samego eksperymentu.  
+6.  W przypadku **liczby losowej inicjatora**wpisz wartość całkowitą. Definiowanie wartości inicjatora jest ważne, jeśli chcesz, aby wyniki były odtwarzalne dla wielu przebiegów tego samego potoku.  
   
   
-8. Dodaj oznakowany zestaw danych do eksperymentu i Połącz jeden z [modułów szkoleniowych](module-reference.md).  
+8. Dodaj oznakowany zestaw danych do potoku i Połącz jeden z [modułów szkoleniowych](module-reference.md).  
   
     -   W przypadku ustawienia opcji **Utwórz tryb Trainer** na **pojedynczy parametr**Użyj modułu [uczenie modelu](./train-model.md) .  
   
-9. Uruchom eksperyment.  
+9. Uruchamianie potoku.  
   
 ## <a name="results"></a>Wyniki
 

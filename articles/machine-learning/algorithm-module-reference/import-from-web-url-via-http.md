@@ -1,7 +1,7 @@
 ---
-title: 'Importuj z internetowego adresu URL za pośrednictwem protokołu HTTP: Dokumentacja modułu'
+title: 'Importuj z internetowego adresu URL za pośrednictwem protokołu HTTP: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać funkcji importowania z internetowego adresu URL za pośrednictwem protokołu HTTP w usłudze Azure Machine Learning, aby czytać dane z publicznej strony internetowej na potrzeby eksperymentu uczenia maszynowego.
+description: Dowiedz się, jak używać funkcji importowania z internetowego adresu URL za pośrednictwem protokołu HTTP w usłudze Azure Machine Learning, aby odczytywać dane z publicznej strony internetowej na potrzeby użycia w potoku uczenia maszynowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 59b8e2e73b9904a503c16d8891e5a5bd771fc87f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e2521dabdab8e9365019f35514f2d8d235c9c014
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128754"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693119"
 ---
 # <a name="import-from-web-url-via-http-module"></a>Importuj z internetowego adresu URL za pośrednictwem modułu HTTP
 
 W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do odczytywania danych z publicznej strony internetowej na potrzeby eksperymentu uczenia maszynowego.
+Ten moduł służy do odczytywania danych z publicznej strony internetowej na potrzeby użycia w potoku uczenia maszynowego.
 
 Następujące ograniczenia dotyczą danych opublikowanych na stronie sieci Web:
 
@@ -31,7 +31,7 @@ Istnieją dwa sposoby pobierania danych: Użyj kreatora, aby skonfigurować źr�
 
 ## <a name="use-the-data-import-wizard"></a>Korzystanie z Kreatora importu danych
 
-1. Dodaj moduł **Import danych** do eksperymentu. Moduł można znaleźć w interfejsie, w kategorii dane **wejściowe i wyjściowe** .
+1. Dodaj moduł **Import danych** do potoku. Moduł można znaleźć w interfejsie, w kategorii dane **wejściowe i wyjściowe** .
 
 2. Kliknij przycisk **Uruchom Kreatora importu danych** i wybierz adres URL sieci Web za pośrednictwem protokołu HTTP.
 
@@ -45,7 +45,7 @@ Aby edytować istniejące połączenie danych, ponownie uruchom kreatora. Kreato
 
 W poniższych krokach opisano sposób ręcznego konfigurowania źródła importu.
 
-1. Dodaj moduł [Import danych](import-data.md) do eksperymentu. Moduł można znaleźć w interfejsie, w kategorii dane **wejściowe i wyjściowe** .
+1. Dodaj moduł [Import danych](import-data.md) do potoku. Moduł można znaleźć w interfejsie, w kategorii dane **wejściowe i wyjściowe** .
 
 2. W obszarze **Źródło danych**wybierz pozycję **adres URL sieci Web za pośrednictwem protokołu HTTP**.
 
@@ -63,13 +63,13 @@ W poniższych krokach opisano sposób ręcznego konfigurowania źródła importu
 
 5. Jeśli dane są w formacie CSV lub TSV, użyj pliku z opcją **wiersza nagłówka** , aby wskazać, czy dane źródłowe zawierają wiersz nagłówka. Wiersz nagłówka jest używany do przypisywania nazw kolumn.
 
-6. Wybierz opcję **Użyj buforowanych wyników** , jeśli nie spodziewasz się, że dane mają być zmieniane, lub jeśli chcesz uniknąć ponownego ładowania danych przy każdym uruchomieniu eksperymentu.
+6. Wybierz opcję **Użyj buforowanych wyników** , jeśli nie spodziewasz się, że dane mają być zmieniane, lub jeśli chcesz uniknąć ponownego ładowania danych przy każdym uruchomieniu potoku.
 
-    Gdy ta opcja jest zaznaczona, eksperyment ładuje dane przy pierwszym uruchomieniu modułu, a następnie używa buforowanej wersji zestawu danych.
+    Gdy ta opcja jest zaznaczona, potok ładuje dane przy pierwszym uruchomieniu modułu, a następnie używa buforowanej wersji zestawu danych.
 
-    Jeśli chcesz ponownie załadować zestaw danych dla każdej iteracji zestawu danych eksperymentu, usuń zaznaczenie opcji **Użyj wyników z pamięci** podręcznej. Wyniki są również ponownie ładowane, jeśli istnieją zmiany parametrów [importu danych](import-data.md).
+    Jeśli chcesz ponownie załadować zestaw danych dla każdej iteracji zestawu danych potoku, usuń zaznaczenie opcji **Użyj wyników z pamięci podręcznej** . Wyniki są również ponownie ładowane, jeśli istnieją zmiany parametrów [importu danych](import-data.md).
 
-7. Uruchom eksperyment.
+7. Uruchamianie potoku.
 
 ## <a name="results"></a>Wyniki
 

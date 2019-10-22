@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: b5529babfae37fa0d9f4de46018bb3b107ce4eae
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 2c4af40886a81cbf8f8e11318737db05f570a1f0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265822"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692187"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Jak dodać niestandardową umiejętność do potoku wyszukiwania poznawczego
 
 [Potok indeksowania wyszukiwania poznawczego](cognitive-search-concept-intro.md) w Azure Search może być montowany ze [wstępnie zdefiniowanych umiejętności](cognitive-search-predefined-skills.md) , a także [niestandardowych umiejętności](cognitive-search-custom-skill-web-api.md) , które tworzysz i dodajesz do potoku. W tym artykule dowiesz się, jak utworzyć niestandardową umiejętność, która uwidacznia interfejs umożliwiający dołączenie go do potoku wyszukiwania poznawczego. 
 
-Tworzenie niestandardowych umiejętności umożliwia wstawianie przekształceń unikatowych dla zawartości. Niestandardowa umiejętnie wykonuje się niezależnie od zastosowania dowolnych wymaganych czynności wzbogacania. Można na przykład zdefiniować jednostki niestandardowe specyficzne dla pola, utworzyć niestandardowe modele klasyfikacji, aby rozróżnić kontrakty biznesowe i finansowe oraz dokumenty, lub dodać umiejętność rozpoznawania mowy, aby lepiej uzyskać dostęp do plików audio w celu uzyskania odpowiedniej zawartości. Aby zapoznać się z przykładem krok po kroku, [Zobacz przykład: Tworzenie niestandardowej umiejętności wyszukiwania](cognitive-search-create-custom-skill-example.md)poznawczego.
+Tworzenie niestandardowych umiejętności umożliwia wstawianie przekształceń unikatowych dla zawartości. Niestandardowa umiejętnie wykonuje się niezależnie od zastosowania dowolnych wymaganych czynności wzbogacania. Można na przykład zdefiniować jednostki niestandardowe specyficzne dla pola, utworzyć niestandardowe modele klasyfikacji, aby rozróżnić kontrakty biznesowe i finansowe oraz dokumenty, lub dodać umiejętność rozpoznawania mowy, aby lepiej uzyskać dostęp do plików audio w celu uzyskania odpowiedniej zawartości. Aby zapoznać się z przykładem krok po kroku, zobacz [przykład: Tworzenie niestandardowej umiejętności wyszukiwania poznawczego](cognitive-search-create-custom-skill-example.md).
 
  Niezależnie od tego, jakie możliwości niestandardowe są wymagane, istnieje prosty i przejrzysty interfejs do łączenia niestandardowych umiejętności z resztą potoku wzbogacania. Jedynym wymaganiem do włączenia w [zestawu umiejętności](cognitive-search-defining-skillset.md) jest możliwość przyjmowania danych wejściowych i emisji w sposób, który jest zużywany w ramach zestawu umiejętności jako całości. Fokus tego artykułu znajduje się w formatach wejściowych i wyjściowych wymaganych przez potok wzbogacania.
 
@@ -36,7 +36,7 @@ Niestandardowe punkty końcowe umiejętności WebAPI według domyślnego limitu 
 
 Obecnie jedynym mechanizmem do współdziałania z niestandardowymi umiejętnościami jest interfejs API sieci Web. Potrzeby interfejsu API sieci Web muszą spełniać wymagania opisane w tej sekcji.
 
-### <a name="1--web-api-input-format"></a>1.  Format danych wejściowych interfejsu API sieci Web
+### <a name="1--web-api-input-format"></a>1. format danych wejściowych interfejsu API sieci Web
 
 Internetowy interfejs API musi akceptować tablicę rekordów do przetworzenia. Każdy rekord musi zawierać "zbiór właściwości", który jest danymi wejściowymi do internetowego interfejsu API. 
 
@@ -81,7 +81,7 @@ Aby być bardziej konkretny, na powyższym przykładzie internetowy interfejs AP
 ```
 W rzeczywistości usługa może zostać wywołana z setkami lub tysiącami rekordów zamiast tylko trzech przedstawionych tutaj.
 
-### <a name="2-web-api-output-format"></a>2. Format danych wyjściowych interfejsu API sieci Web
+### <a name="2-web-api-output-format"></a>2. format danych wyjściowych interfejsu API sieci Web
 
 Format danych wyjściowych to zestaw rekordów zawierających identyfikator *recordId*i zbiór właściwości 
 
@@ -154,7 +154,8 @@ Podczas tworzenia programu wzbogacania interfejsu API sieci Web można opisać n
 
 ## <a name="next-steps"></a>Następne kroki
 
-+ [Przykład: Tworzenie niestandardowej umiejętności wyszukiwania poznawczego](cognitive-search-create-custom-skill-example.md)
++ [Umiejętności dotyczące oszczędzania mocy: repozytorium umiejętności niestandardowych](https://aka.ms/powerskills)
++ [Przykład: Tworzenie niestandardowej umiejętności dla wyszukiwania poznawczego](cognitive-search-create-custom-skill-example.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Utwórz zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Jak zmapować wzbogacone pola](cognitive-search-output-field-mapping.md)

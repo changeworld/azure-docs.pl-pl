@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 4622a8575d7b6a38226ee3a980c05f143c128356
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68963532"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>Bezpieczne Instalowanie i obsługiwanie urządzenia StorSimple
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-![Ikona](./media/storsimple-safety/IC740879.png)
-ostrzeżenia![Odczytaj ikonę](./media/storsimple-safety/IC740885.png) powiadomienia o zabezpieczeniach **Przeczytaj informacje o zabezpieczeniach i kondycji**
+Ikona ![Warning ](./media/storsimple-safety/IC740879.png)
+ ikona powiadomienia o bezpieczeństwie ![Read ](./media/storsimple-safety/IC740885.png) **informacji o bezpieczeństwie i kondycji**
 
 Przeczytaj wszystkie informacje dotyczące bezpieczeństwa i kondycji w tym artykule odnoszące się do urządzenia Microsoft Azure StorSimple. Zadbaj o to, aby wszystkie drukowane przewodniki były dostarczane z urządzeniem StorSimple w przyszłości. Nieprzestrzeganie instrukcji i prawidłowe skonfigurowanie, użycie i opieka nad tym produktem może zwiększyć ryzyko poważnej urazu lub zgonu lub uszkodzenia urządzenia lub urządzeń. Dostępna jest również [wersja do pobrania tego przewodnika](https://www.microsoft.com/download/details.aspx?id=44233) .
 
@@ -35,18 +35,18 @@ Poniżej znajdują się ikony, które zostaną znalezione podczas przeglądania 
 
 | Ikona | Opis |
 |:--- |:--- |
-| ![Niebezpieczeństwo](./media/storsimple-safety/IC740879.png) ikony zagrożenia **!** |Wskazuje niebezpieczną sytuację, która w przypadku braku problemów spowoduje śmierć lub poważną szkodę. Ten znak sygnału jest ograniczony do najbardziej skrajnych sytuacji. |
-| ![Ostrzeżenie ikony](./media/storsimple-safety/IC740879.png) ostrzeżenia **!** |Wskazuje niebezpieczną sytuację, która w przypadku braku problemów może spowodować śmierć lub poważną szkodę. |
-| ![Ostrzeżenie ikony](./media/storsimple-safety/IC740879.png) ostrzeżenia **!** |Wskazuje niebezpieczną sytuację, która w przypadku braku problemów może skutkować drobną lub średnią szkodą. |
-| ![Powiadomienie o](./media/storsimple-safety/IC740881.png) ikonie powiadomienia **:** |Wskazuje informacje uznawane za ważne, ale nie związane z zagrożeniami. |
-| ![Ikona](./media/storsimple-safety/IC740882.png) porażenia elektryczną — **zagrożenie elektryczne** |Wysoki poziom napięcia |
-| ![**Duże** wagi ikony](./media/storsimple-safety/IC740883.png) o dużej grubości | |
-| ![Ikona](./media/storsimple-safety/IC740879.png) elementów z obsługą użytkownika **nie ma części z obsługą użytkownika** |Nie należy uzyskiwać dostępu, o ile nie jest prawidłowo szkolony. |
-| ![Ikona powiadomienia o bezpieczeństwie Odczytaj](./media/storsimple-safety/IC740885.png)**najpierw wszystkie instrukcje** | |
-| ![](./media/storsimple-safety/IC740886.png) Niebezpieczeństwo **Porada** ikony ostrzegawczej | |
+| ![Danger ikonę ](./media/storsimple-safety/IC740879.png) **niebezpieczeństwo!** |Wskazuje niebezpieczną sytuację, która w przypadku braku problemów spowoduje śmierć lub poważną szkodę. Ten znak sygnału jest ograniczony do najbardziej skrajnych sytuacji. |
+| ![Warning ikonę ](./media/storsimple-safety/IC740879.png) **Ostrzeżenie!** |Wskazuje niebezpieczną sytuację, która w przypadku braku problemów może spowodować śmierć lub poważną szkodę. |
+| ![Warning ikonę ](./media/storsimple-safety/IC740879.png) **Przestroga!** |Wskazuje niebezpieczną sytuację, która w przypadku braku problemów może skutkować drobną lub średnią szkodą. |
+| ![Notice ikonę ](./media/storsimple-safety/IC740881.png) **Uwaga:** |Wskazuje informacje uznawane za ważne, ale nie związane z zagrożeniami. |
+| Ikona wstrząsu ![Electrical ](./media/storsimple-safety/IC740882.png) **zagrożenie porażeniem elektrycznym** |Wysoki poziom napięcia |
+| Ikona ![Heavy wagi ](./media/storsimple-safety/IC740883.png) **duże wagi** | |
+| Ikona części ![No z obsługą użytkowników ](./media/storsimple-safety/IC740879.png) **Brak części z obsługą użytkownika** |Nie należy uzyskiwać dostępu, o ile nie jest prawidłowo szkolony. |
+| Ikona powiadomienia o zabezpieczeniach ![Read](./media/storsimple-safety/IC740885.png)**najpierw Przeczytaj wszystkie instrukcje** | |
+| Ikona zagrożenia ![Tip ](./media/storsimple-safety/IC740886.png) **niebezpieczeństwo Porada** | |
 
 ## <a name="handling-precautions"></a>Obsługa środków ostrożności
-![**Ostrzeżenie** ikony](./media/storsimple-safety/IC740879.png) ![dużej grubości ikony ostrzeżenia!](./media/storsimple-safety/IC740883.png) 
+Ikona ![Warning ](./media/storsimple-safety/IC740879.png) ikonie ![Heavy wagi ](./media/storsimple-safety/IC740883.png) **Ostrzeżenie!** 
 
 Aby zmniejszyć ryzyko powstania szkody:
 
@@ -55,7 +55,7 @@ Aby zmniejszyć ryzyko powstania szkody:
 * Nie należy podłączać obudowy przez uchwyty dla modułów mocy i chłodzenia (PCMs) znajdujących się w tylnej części jednostki. Nie są one przeznaczone do rozważenia.
 
 ## <a name="connection-precautions"></a>Środki ostrożności dotyczące połączenia
-![](./media/storsimple-safety/IC740879.png) Ikona ostrzeżenia![ikona](./media/storsimple-safety/IC740882.png) wstrząsu instalacji elektrycznej.
+Ikona ![Warning ](./media/storsimple-safety/IC740879.png) ikona wstrząsania ![Electrical ](./media/storsimple-safety/IC740882.png) **Ostrzeżenie!**
 
 Aby zmniejszyć prawdopodobieństwo powstania szkody, porażenia energii elektrycznej lub zgonu:
 
@@ -65,7 +65,7 @@ Aby zmniejszyć prawdopodobieństwo powstania szkody, porażenia energii elektry
 * Upewnij się, że połączenie zasilania jest zawsze rozłączone przed usunięciem modułu PCM z obudowy.
 * Mając na względzie, że wtyk odbiornika zasilania jest głównym urządzeniem odłączania, upewnij się, że są one zlokalizowane blisko sprzętu i są łatwo dostępne.
 
-![](./media/storsimple-safety/IC740879.png) Ikona ostrzeżenia![ikona](./media/storsimple-safety/IC740882.png) wstrząsu instalacji elektrycznej.
+Ikona ![Warning ](./media/storsimple-safety/IC740879.png) ikona wstrząsania ![Electrical ](./media/storsimple-safety/IC740882.png) **Ostrzeżenie!**
 
 Aby zmniejszyć prawdopodobieństwo przegrzania lub wygaszenia z połączeń elektrycznych:
 
@@ -74,7 +74,7 @@ Aby zmniejszyć prawdopodobieństwo przegrzania lub wygaszenia z połączeń ele
 * Aby zapewnić zgodność z odpowiednimi wymaganiami dotyczącymi bezpieczeństwa, emisji i termicznej, nie należy usuwać żadnych okładek, a wszystkie kieszenie muszą być wypełniane za pomocą modułów wtyczek lub pustych dysków.
 * Upewnij się, że urządzenie jest używane w sposób określony przez producenta. Jeśli ten sprzęt jest używany w sposób nieokreślony przez producenta, ochrona zapewniona przez urządzenie może być niesparowana.
 
-![Powiadomienie o](./media/storsimple-safety/IC740881.png) ikonie powiadomienia **:**
+![Notice ikonę ](./media/storsimple-safety/IC740881.png) **Uwaga:**
 
 W celu zapewnienia prawidłowej obsługi sprzętu i zapobiegania uszkodzeniu produktu:
 
@@ -85,7 +85,7 @@ W celu zapewnienia prawidłowej obsługi sprzętu i zapobiegania uszkodzeniu pro
 ## <a name="rack-system-precautions"></a>Środki ostrożności systemu stojaka
 Podczas instalowania urządzenia w szafie w stojaku należy wziąć pod uwagę następujące wymagania dotyczące zabezpieczeń.
 
-![Ostrzeżenie ikony ostrzegawczej ikona ostrzeżenia **!** ](./media/storsimple-safety/IC740886.png) ](./media/storsimple-safety/IC740879.png) ![
+Ikona ![Warning ](./media/storsimple-safety/IC740879.png) ikona zagrożenia ![Tip ](./media/storsimple-safety/IC740886.png) **Ostrzeżenie!**
 
 Aby zmniejszyć prawdopodobieństwo powstania szkód z pozostałej Porady:
 
@@ -93,7 +93,7 @@ Aby zmniejszyć prawdopodobieństwo powstania szkód z pozostałej Porady:
 * Podczas ładowania stojaka Wypełnij stojak od dołu do góry i pustego w dół.
 * Nie przesuwaj więcej niż jeden obudowa poza stojakiem, aby uniknąć niebezpieczeństwa stojaka toppling.
 
-![](./media/storsimple-safety/IC740879.png) Ikona ostrzeżenia![ikona](./media/storsimple-safety/IC740882.png) wstrząsu instalacji elektrycznej.
+Ikona ![Warning ](./media/storsimple-safety/IC740879.png) ikona wstrząsania ![Electrical ](./media/storsimple-safety/IC740882.png) **Ostrzeżenie!**
 
 Aby zmniejszyć prawdopodobieństwo powstania szkody, porażenia energii elektrycznej lub zgonu:
 
@@ -102,7 +102,7 @@ Aby zmniejszyć prawdopodobieństwo powstania szkody, porażenia energii elektry
 * Projekt systemu dystrybucji elektrycznej musi uwzględniać całkowity wyciek ziemi z wszystkich zasilaczy we wszystkich obudowach. Należy zauważyć, że każdy zasilacz w każdej obudowie ma wyciek ziemi prądu o wartości 1,0, która ma maksimum o 60 Hz, 264 woltów. Stojak może wymagać etykietowania z "PRĄDem o dużym WYCIEKu. Połączenie naziemne jest niezbędne przed połączeniem dostawy ".
 * Stojak, gdy jest skonfigurowany przy użyciu obudów, musi spełniać wymagania w zakresie bezpieczeństwa z UL 60950-1 i IEC 60950-1/EN 60950-1.
 
-![Powiadomienie o](./media/storsimple-safety/IC740881.png) ikonie powiadomienia **:**
+![Notice ikonę ](./media/storsimple-safety/IC740881.png) **Uwaga:**
 
 Aby zapewnić prawidłowe chłodzenie systemu stojaka:
 
@@ -112,13 +112,13 @@ Aby zapewnić prawidłowe chłodzenie systemu stojaka:
 ## <a name="power-cooling-module-pcm-precautions"></a>Środki zabezpieczające modułu chłodzenia (PCM)
 Urządzenie zostało zaprojektowane do obsługi dwóch PCMs. Każdy PCMs ma zasilacz i wentylator dwuosiowy. W sytuacji krytycznej system umożliwia nieprzerwanie jednego zasilacza awaryjnego w czasie wykonywania normalnych operacji. Muszą być zawsze zainstalowane dwa PCMs (i w związku z tym zasilacze). Pojedynczy moduł PCM nie zapewnia nadmiarowej mocy. W związku z tym awaria nawet jednego modułu PCM może spowodować przestoje lub utratę danych.
 
-![](./media/storsimple-safety/IC740879.png) Ikona ostrzeżenia![ikona](./media/storsimple-safety/IC740882.png) wstrząsu instalacji elektrycznej.
+Ikona ![Warning ](./media/storsimple-safety/IC740879.png) ikona wstrząsania ![Electrical ](./media/storsimple-safety/IC740882.png) **Ostrzeżenie!**
 
 Aby zmniejszyć prawdopodobieństwo powstania szkody, porażenia energii elektrycznej lub zgonu:
 
 * Nie usuwaj okładek z modułu PCM. Występuje niebezpieczeństwo porażenia prądem. Aby zwrócić moduł PCM i uzyskać zamiennik, [skontaktuj się z pomoc techniczna firmy Microsoft](storsimple-contact-microsoft-support.md).
 
-![Powiadomienie o](./media/storsimple-safety/IC740881.png) ikonie powiadomienia **:**
+![Notice ikonę ](./media/storsimple-safety/IC740881.png) **Uwaga:**
 
 W celu zapewnienia prawidłowej obsługi sprzętu i zapobiegania uszkodzeniu produktu:
 
@@ -126,7 +126,7 @@ W celu zapewnienia prawidłowej obsługi sprzętu i zapobiegania uszkodzeniu pro
 * Nie usuwaj modułu PCM, chyba że zastępowanie można zainstalować natychmiast. Obudowa nie może działać bez wszystkich modułów.
 
 ## <a name="electrostatic-discharge-esd-precautions"></a>Środki zaradcze wyładowania elektrostatyczne (ESD)
-![Powiadomienie o](./media/storsimple-safety/IC740881.png) ikonie powiadomienia **:**
+![Notice ikonę ](./media/storsimple-safety/IC740881.png) **Uwaga:**
 
 Obserwuj następujące środki ostrożności związane z ESD.
 
@@ -138,7 +138,7 @@ Obserwuj następujące środki ostrożności związane z ESD.
 ## <a name="battery-disposal-precautions"></a>Środki ostrożności dotyczące usuwania baterii
 Zasilacz zużywa specjalną baterię do ochrony zawartości pamięci w trakcie tymczasowego, krótkoterminowej przerwy w zasilaniu. Bateria jest umieszczona w module PCM. Należy pamiętać o następujących kwestiach dotyczących baterii.
 
-![Ostrzeżenie ikony](./media/storsimple-safety/IC740879.png) ostrzeżenia **!**
+![Warning ikonę ](./media/storsimple-safety/IC740879.png) **Ostrzeżenie!**
 
 Aby zmniejszyć ryzyko związane z szorty, pożarem, wybuchem, urazem lub zgonem:
 
@@ -146,9 +146,9 @@ Aby zmniejszyć ryzyko związane z szorty, pożarem, wybuchem, urazem lub zgonem
 * Nie należy wyłączać, zgniatać ani podgrzewać powyżej 60 stopni Celsjusza (140 stopni Fahrenheita) ani spopielać. Zastąp baterię PCM tylko dostarczaną baterią. Korzystanie z innej baterii może stanowić ryzyko pożaru lub wybuchu.
 * Użyj ochrony końcowej na bateriach, jeśli są one usuwane z zasilacza.
 
-![Powiadomienie o](./media/storsimple-safety/IC740881.png) ikonie powiadomienia **:**
+![Notice ikonę ](./media/storsimple-safety/IC740881.png) **Uwaga:**
 
-W przypadku wysyłania lub przenoszenia baterii przez powietrze należy postępować zgodnie z dokumentem wskazówek dotyczących baterii IATA litu dostępnym w[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+W przypadku wysyłania lub przenoszenia baterii przez powietrze należy postępować zgodnie z dokumentem wskazówek dotyczących baterii IATA litu dostępnym w [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 Po przejrzeniu tych informacji o zabezpieczeniach następnym etapem jest rozpakowanie, stojak i podłączenie urządzenia.
 

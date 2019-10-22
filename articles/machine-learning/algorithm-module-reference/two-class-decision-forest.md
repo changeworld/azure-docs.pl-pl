@@ -1,5 +1,5 @@
 ---
-title: 'Las decyzyjny dwóch klas: Dokumentacja modułu'
+title: 'Las decyzyjny dwuklasowej: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak utworzyć model uczenia maszynowego na podstawie algorytmu lasów decyzyjnych przy użyciu dwuklasowego modułu lasu decyzyjnego w usłudze Azure Machine Learning.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 37a2ce77e438145219df9cb553d1881626e8a2c6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 243f1774069f048d0e8a1ce11e3ac42e4e73f58b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128392"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693619"
 ---
 # <a name="two-class-decision-forest-module"></a>Moduł dwuklasowego lasu decyzyjnego
 
@@ -28,7 +28,7 @@ Lasy decyzyjne są szybkimi, nadzorowanymi modelami kompletów. Ten moduł jest 
 
 Ten algorytm lasu decyzyjnego to metoda uczenia się, która jest przeznaczona dla zadań klasyfikacji. Metody kompletności opierają się na ogólnej zasadzie, która nie polega na pojedynczym modelu, można uzyskać lepsze wyniki i bardziej Uogólniony model, tworząc wiele powiązanych modeli i łącząc je w jakiś sposób. Ogólnie rzecz biorąc, modele kompletów zapewniają lepszy zakres i dokładność niż pojedyncze drzewa decyzyjne. 
 
-Istnieje wiele sposobów tworzenia pojedynczych modeli i łączenia ich w kompletną. Ta konkretna implementacja lasu decyzyjnego działa przez utworzenie wielu drzew decyzyjnych, a następnie głosujących na najpopularniejszą klasę wyjściową. Głosowanie jest jedną z lepszych metod generowania wyników w modelu typu "kompletna". 
+Istnieje wiele sposobów tworzenia pojedynczych modeli i łączenia ich w kompletną. Ta konkretna implementacja lasu decyzyjnego działa przez utworzenie wielu drzew decyzyjnych, a następnie **głosujących** na najpopularniejszą klasę wyjściową. Głosowanie jest jedną z lepszych metod generowania wyników w modelu typu "kompletna". 
 
 + Wiele pojedynczych drzew klasyfikacji jest tworzonych przy użyciu całego zestawu danych, ale różne (zazwyczaj losowe) punkty początkowe. Różni się to od przypadkowego podejścia lasów, w którym poszczególne drzewa decyzyjne mogą korzystać tylko z części danych lub funkcji.
 + Każde drzewo w drzewie lasu decyzyjnego wyprowadza histogram o nieznormalizowanej częstotliwości etykiet. 
@@ -49,19 +49,19 @@ Aby uzyskać więcej informacji, zobacz [lasy decyzyjne](https://go.microsoft.co
 
 ## <a name="how-to-configure"></a>Jak skonfigurować
   
-1.  Dodaj moduł **Las decyzyjny z dwoma klasami** do eksperymentu w Azure Machine Learning i Otwórz okienko **Właściwości** modułu. 
+1.  Dodaj moduł **Las decyzyjny z dwoma klasami** do potoku w Azure Machine Learning i Otwórz okienko **Właściwości** modułu. 
 
-    Moduł można znaleźć w obszarze **Machine Learning**. Rozwińwęzeł Inicjalizacja, a następnie pozycję **Klasyfikacja**.  
+    Moduł można znaleźć w obszarze **Machine Learning**. Rozwiń węzeł **Inicjalizacja**, a następnie pozycję **Klasyfikacja**.  
   
-2.  Dla **metody ponowne próbkowanie**wybierz metodę używaną do tworzenia poszczególnych drzew.  Możesz wybrać jedną z opcji Working lub **replikacja**.  
+2.  Dla **metody ponowne próbkowanie**wybierz metodę używaną do tworzenia poszczególnych drzew.  Możesz wybrać jedną z opcji **Working** lub **replikacja**.  
   
-    -   **Working**: Working jest również nazywane *agregacją Bootstrap*. W tej metodzie Każde drzewo jest uprawiane na nowym przykładzie, utworzonym losowo próbkowanie oryginalnego zestawu danych z zastępowaniem do momentu, gdy zestaw danych ma rozmiar oryginalny.  
+    -   **Working**: w workach jest również wywoływana *agregacja Bootstrap*. W tej metodzie Każde drzewo jest uprawiane na nowym przykładzie, utworzonym losowo próbkowanie oryginalnego zestawu danych z zastępowaniem do momentu, gdy zestaw danych ma rozmiar oryginalny.  
   
-         Dane wyjściowe modeli są łączone przez głosowanie, który jest formą agregacji. Każde drzewo w lesie decyzyjnym klasyfikacji wyprowadza nieznormalizowane histogramy częstotliwości etykiet. Agregacją jest sumowanie tych histogramów i normalizowanie w celu uzyskania "prawdopodobieństwa" dla każdej etykiety. W ten sposób drzewa, które mają wysoki poziom zaufania, będą mieć większą wagę w ostatecznej decyzji dotyczącej tego elementu.  
+         Dane wyjściowe modeli są łączone przez *głosowanie*, który jest formą agregacji. Każde drzewo w lesie decyzyjnym klasyfikacji wyprowadza nieznormalizowane histogramy częstotliwości etykiet. Agregacją jest sumowanie tych histogramów i normalizowanie w celu uzyskania "prawdopodobieństwa" dla każdej etykiety. W ten sposób drzewa, które mają wysoki poziom zaufania, będą mieć większą wagę w ostatecznej decyzji dotyczącej tego elementu.  
   
          Aby uzyskać więcej informacji, zobacz wpis Wikipedia na potrzeby agregowania Bootstrap.  
   
-    -   **Replikacja**: W replikacji Każde drzewo jest przeszkolone dokładnie na te same dane wejściowe. Określenie, który predykat Split jest używany dla każdego węzła drzewa, pozostaje losowy, a drzewa będą różne.   
+    -   **Replikacja**: w replikacji Każde drzewo jest przeszkolone dokładnie na te same dane wejściowe. Określenie, który predykat Split jest używany dla każdego węzła drzewa, pozostaje losowy, a drzewa będą różne.   
   
 3.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
@@ -97,9 +97,9 @@ Po zakończeniu szkolenia:
   
     Kliknij każde drzewo, aby przejść do szczegółów i wyświetlić reguły dla każdego węzła.
 
-+ Aby zapisać migawkę modelu, kliknij prawym przyciskiem myszy **wyszkolony model** wyjściowy, a następnie wybierz pozycję **Zapisz model**. Zapisany model nie jest aktualizowany po kolejnych uruchomieniach eksperymentu.
++ Aby zapisać migawkę modelu, kliknij prawym przyciskiem myszy **wyszkolony model** wyjściowy, a następnie wybierz pozycję **Zapisz model**. Zapisany model nie jest aktualizowany po kolejnych uruchomieniach potoku.
 
-+ Aby użyć modelu do oceniania, Dodaj moduł **modelu oceny** do eksperymentu.
++ Aby użyć modelu do oceniania, Dodaj moduł **model oceny** do potoku.
 
 
 ## <a name="next-steps"></a>Następne kroki
