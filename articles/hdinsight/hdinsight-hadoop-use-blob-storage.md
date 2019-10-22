@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.openlocfilehash: d934568f09e62ad8c1b472583cbfee79d2c837f6
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71936856"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Azure Storage w połączeniu z klastrami usługi Azure HDInsight
 
-Aby analizować dane w klastrze usługi HDInsight, możesz przechowywać dane w [usłudze Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)/[Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)lub kombinację. Te opcje magazynu umożliwiają bezpieczne usuwanie klastrów usługi HDInsight, które są używane do obliczeń bez utraty danych użytkownika.
+Aby analizować dane w klastrze usługi HDInsight, możesz przechowywać dane w [usłudze Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md) /[Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)lub kombinację. Te opcje magazynu umożliwiają bezpieczne usuwanie klastrów usługi HDInsight, które są używane do obliczeń bez utraty danych użytkownika.
 
 Apache Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. Podczas procesu tworzenia klastra usługi HDInsight można określić kontener obiektów BLOB w usłudze Azure Storage jako domyślny system plików lub za pomocą usługi HDInsight 3,6. można wybrać usługę Azure Storage lub Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 jako pliki domyślne System z kilkoma wyjątkami. Aby uzyskać pomoc techniczną dotyczącą korzystania z Data Lake Storage generacji 1 jako magazynu domyślnego i połączonego, zobacz [dostępność klastra usługi HDInsight](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters).
 
@@ -29,9 +29,9 @@ Usługa Azure Storage to niezawodne rozwiązanie ogólnego przeznaczenia, które
 
 | Rodzaj konta magazynu | Obsługiwane usługi | Obsługiwane warstwy wydajności | Obsługiwane warstwy dostępu |
 |----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (ogólnego przeznaczenia wersja 2)  | Obiekt blob     | Standardowa (Standard)                    | Gorąca, chłodna, archiwum @ no__t-0   |
+| StorageV2 (ogólnego przeznaczenia wersja 2)  | Obiekt blob     | Standardowa (Standard)                    | Gorące, chłodne i archiwalne \*   |
 | Storage (ogólnego przeznaczenia w wersji 1)   | Obiekt blob     | Standardowa (Standard)                    | ND                    |
-| BlobStorage                    | Obiekt blob     | Standardowa (Standard)                    | Gorąca, chłodna, archiwum @ no__t-0   |
+| BlobStorage                    | Obiekt blob     | Standardowa (Standard)                    | Gorące, chłodne i archiwalne \*   |
 
 Nie zaleca się używania domyślnego kontenera obiektów BLOB do przechowywania danych firmowych. Dobrym rozwiązaniem jest usunięcie domyślnego kontenera obiektów blob po każdym użyciu, aby obniżyć koszty magazynowania. Kontener domyślny zawiera Dzienniki aplikacji i systemu. Koniecznie pobierz dzienniki przed usunięciem kontenera.
 
@@ -46,7 +46,7 @@ Jeśli wybierzesz opcję zabezpieczenia konta magazynu za pomocą ograniczeń **
 
 Na poniższym diagramie przedstawiono schemat architektury magazynu usługi HDInsight dotyczący korzystania z usługi Azure Storage:
 
-![Klastry Hadoop używają interfejsu API systemu plików HDFS do uzyskiwania dostępu do danych i ich przechowywania w](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "architekturze HDInsight Storage") obiektów BLOB Storage
+![Klastry Hadoop używają interfejsu API systemu plików HDFS do uzyskiwania dostępu do danych w usłudze BLOB Storage i ich przechowywania](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "Architektura HDInsight Storage")
 
 Usługa HDInsight zapewnia dostęp do rozproszonego systemu plików, który jest lokalnie dołączony do węzłów obliczeniowych. Dostęp do tego systemu plików można uzyskać przy użyciu w pełni kwalifikowanego identyfikatora URI, na przykład:
 
@@ -104,10 +104,10 @@ wasbs://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<p
 
 Schemat identyfikatora URI zapewnia nieszyfrowany dostęp (z prefiksem *wasb:* ) oraz szyfrowany dostęp SSL (z prefiksem *wasbs*). Zalecamy używanie prefiksu *wasbs* wszędzie tam, gdzie to możliwe, nawet w przypadku uzyskiwania dostępu do danych, które znajdują się wewnątrz tego samego regionu w systemie Azure.
 
-@No__t-0 identyfikuje nazwę kontenera obiektów BLOB w usłudze Azure Storage.
-@No__t-0 identyfikuje nazwę konta usługi Azure Storage. Wymagana jest w pełni kwalifikowana nazwa domeny (FQDN).
+@No__t_0 identyfikuje nazwę kontenera obiektów BLOB w usłudze Azure Storage.
+@No__t_0 identyfikuje nazwę konta usługi Azure Storage. Wymagana jest w pełni kwalifikowana nazwa domeny (FQDN).
 
-Jeśli nie określono żadnego `<BlobStorageContainerName>` ani `<StorageAccountName>`, używany jest domyślny system plików. W przypadku plików w domyślnym systemie plików można używać ścieżki względnej lub bezwzględnej. Na przykład do pliku *hadoop-mapreduce-examples.jar* dostarczanego z klastrami usługi HDInsight można odwoływać się w jeden z następujących sposobów:
+Jeśli nie `<BlobStorageContainerName>` ani `<StorageAccountName>` nie został określony, używany jest domyślny system plików. W przypadku plików w domyślnym systemie plików można używać ścieżki względnej lub bezwzględnej. Na przykład do pliku *hadoop-mapreduce-examples.jar* dostarczanego z klastrami usługi HDInsight można odwoływać się w jeden z następujących sposobów:
 
 ```config
 wasbs://mycontainer@myaccount.blob.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
@@ -116,7 +116,7 @@ wasbs:///example/jars/hadoop-mapreduce-examples.jar
 ```
 
 > [!NOTE]  
-> Nazwa pliku to `hadoop-examples.jar` w usłudze HDInsight w wersji 2,1 i 1,6.
+> Nazwa pliku jest `hadoop-examples.jar` w klastrach usługi HDInsight w wersji 2,1 i 1,6.
 
 Ścieżka jest ścieżką do pliku lub katalogu systemu plików HDFS. Ponieważ kontenery w usłudze Azure Storage to magazyny klucz-wartość, nie ma żadnego prawdziwego systemu plików hierarchicznych. Znak ukośnika (/) wewnątrz klucza obiektu blob jest interpretowany jako separator katalogu. Na przykład nazwą obiektu blob dla pliku *hadoop-mapreduce-examples.jar* jest:
 

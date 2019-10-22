@@ -1,5 +1,5 @@
 ---
-title: 'Usuń zduplikowane wiersze: Dokumentacja modułu'
+title: 'Usuń zduplikowane wiersze: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, w jaki sposób używać modułu usuwania zduplikowanych wierszy w usłudze Azure Machine Learning, aby usunąć potencjalne duplikaty z zestawu danych.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b16e745de277d5aa262f1e1624df22f97d0cf29c
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8b3f73c56d85eecd50633085eca0e632abaa6b4c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128537"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693667"
 ---
 # <a name="remove-duplicate-rows-module"></a>Usuń moduł zduplikowanych wierszy
 
@@ -26,15 +26,15 @@ Załóżmy na przykład, że dane wyglądają jak poniżej, i reprezentują wiel
 
 | PatientID | Inicjały| Płeć|Wiek|Przyjęte|
 |----|----|----|----|----|
-|1|F.M.| M| 53| Sty|
-|2| F.A.M.| M| 53| Sty|
-|3| F.A.M.| M| 24| Sty|
-|3| F.M.| M| 24| Lut|
-|4| F.M.| M| 23| Lut|
-| | F.M.| M| 23| |
-|5| F.A.M.| M| 53| |
-|6| F.A.M.| M| NaN| |
-|7| F.A.M.| M| NaN| |
+|1|F.M.| milionów| 53| Stycznia|
+|2| F.A.M.| milionów| 53| Stycznia|
+|3| F.A.M.| milionów| 24| Stycznia|
+|3| F.M.| milionów| 24| Lutego|
+|4| F.M.| milionów| 23| Lutego|
+| | F.M.| milionów| 23| |
+|5| F.A.M.| milionów| 53| |
+|6| F.A.M.| milionów| NaN| |
+|7| F.A.M.| milionów| NaN| |
 
 Jasno ten przykład zawiera wiele kolumn, które mogą duplikować dane. Bez względu na to, czy są one w rzeczywistości duplikatami, zależy od wiedzy o danych. 
 
@@ -51,25 +51,25 @@ Po uruchomieniu modułu tworzy zestaw danych kandydujących i zwraca zbiór wier
 
 ## <a name="how-to-use-remove-duplicate-rows"></a>Jak używać usuwania zduplikowanych wierszy
 
-1. Dodaj moduł do eksperymentu. Moduł **usuwanie zduplikowanych wierszy** można znaleźć w obszarze **Przekształcanie danych**, **manipulowanie**.  
+1. Dodaj moduł do potoku. Moduł **usuwanie zduplikowanych wierszy** można znaleźć w obszarze **Przekształcanie danych**, **manipulowanie**.  
 
 2. Połącz zestaw danych, który ma zostać wyszukany dla zduplikowanych wierszy.
 
 3. W okienku **Właściwości** w obszarze **wyrażenie filtru wyboru kolumny klucza**kliknij pozycję **Uruchom selektor kolumny**, aby wybrać kolumny, które mają być używane do identyfikowania duplikatów.
 
-    W tym kontekście **klucz** nie oznacza unikatowego identyfikatora. Wszystkie kolumny wybrane za pomocą selektora kolumn są wykluczane jako **kolumny kluczy**. Wszystkie niewybrane kolumny są uznawane za kolumny niebędące kolumnami klucza. Kombinacja kolumn wybranych jako klucze określa unikatowość rekordów. (Należy traktować ją jako instrukcję SQL, która używa wielu dołączeń równości).
+    W tym kontekście **klucz** nie oznacza unikatowego identyfikatora. Wszystkie kolumny wybrane za pomocą selektora kolumn są **wykluczane jako kolumny kluczy**. Wszystkie niewybrane kolumny są uznawane za kolumny niebędące kolumnami klucza. Kombinacja kolumn wybranych jako klucze określa unikatowość rekordów. (Należy traktować ją jako instrukcję SQL, która używa wielu dołączeń równości).
 
     Przykłady:
 
     + "Chcę mieć pewność, że identyfikatory są unikatowe": Wybierz tylko kolumnę ID.
-    + "Chcę mieć pewność, że kombinacja imienia, nazwisko i identyfikator jest unikatowa": Zaznacz wszystkie trzy kolumny.
+    + "Chcę mieć pewność, że kombinacja imienia, nazwisko i identyfikator jest unikatowa": zaznacz wszystkie trzy kolumny.
 
 4. Użyj pola wyboru **Zachowaj pierwszy zduplikowany wiersz** , aby wskazać, który wiersz ma zostać zwrócony po znalezieniu duplikatów:
 
     + W przypadku zaznaczenia pierwszy wiersz jest zwracany, a inne odrzucane. 
     + W przypadku usunięcia zaznaczenia tej opcji ostatni zduplikowany wiersz jest przechowywany w wynikach, a pozostałe zostaną odrzucone. 
 
-5. Uruchom eksperyment.
+5. Uruchamianie potoku.
 
 6. Aby przejrzeć wyniki, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **zestaw danych wyników**, a następnie kliknij polecenie **Wizualizuj**. 
 

@@ -9,10 +9,10 @@ ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: eba0c6a8932a8c6d50bd98d94712c95516519274
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72300330"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Używanie Azure Data Lake Storage Gen2 do wymagań dotyczących danych Big Data
@@ -89,7 +89,7 @@ Aby dowiedzieć się więcej o konfigurowaniu innych aspektów zabezpieczeń, zo
 
 W tej sekcji przedstawiono różne źródła danych oraz różne sposoby, w których dane mogą być pozyskiwane na koncie Data Lake Storage Gen2.
 
-Pozyskiwanie ![danych w Data Lake Storage Gen2]pozyskiwania(./media/data-lake-storage-data-scenarios/ingest-data.png "danych do Data Lake Storage Gen2")
+![Pozyskiwanie danych w Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/ingest-data.png "Pozyskiwanie danych w Data Lake Storage Gen2")
 
 ### <a name="ad-hoc-data"></a>Dane ad hoc
 
@@ -165,7 +165,7 @@ Usługa Azure ExpressRoute umożliwia tworzenie prywatnych połączeń między c
 
 Gdy dane są dostępne w Data Lake Storage Gen2 można przeprowadzić analizę tych danych przy użyciu obsługiwanych aplikacji danych Big Data. 
 
-![Analizowanie danych w Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/analyze-data.png "analizowanie danych w Data Lake Storage Gen2")
+![Analizowanie danych w Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/analyze-data.png "Analizowanie danych w Data Lake Storage Gen2")
 
 Poniżej znajduje się lista narzędzi, których można użyć do uruchamiania zadań analizy danych na danych przechowywanych w Data Lake Storage Gen2.
 
@@ -178,7 +178,7 @@ Poniżej znajduje się lista narzędzi, których można użyć do uruchamiania z
 
 Za pomocą różnych usług można tworzyć wizualne reprezentacje danych przechowywanych w Data Lake Storage Gen2.
 
-![Wizualizuj dane w Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/visualize-data.png "wizualizowania danych w Data Lake Storage Gen2")
+![Wizualizowanie danych w Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/visualize-data.png "Wizualizowanie danych w Data Lake Storage Gen2")
 
 * Za pomocą [Azure Data Factory można przenieść dane z Data Lake Storage Gen2 do Azure SQL Data Warehouse](../../data-factory/copy-activity-overview.md)
 * Następnie można [zintegrować Power BI z Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) , aby utworzyć wizualną reprezentację danych.
@@ -191,7 +191,7 @@ Może być również konieczne pobranie lub przeniesienie danych z Azure Data La
 
 * Pobieranie danych na komputer lokalny na potrzeby przetwarzania w środowiskach IDE podczas budowania prototypów aplikacji.
 
-![Dane wychodzące z Data Lake Storage Gen2]dane wychodzące(./media/data-lake-storage-data-scenarios/egress-data.png "z Data Lake Storage Gen2")
+![Dane wyjściowe z Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/egress-data.png "Dane wyjściowe z Data Lake Storage Gen2")
 
 Poniżej znajduje się lista narzędzi, których można użyć do pobierania danych z Data Lake Storage Gen2.
 

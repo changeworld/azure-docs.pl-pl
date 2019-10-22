@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
 ms.openlocfilehash: be21b809272a132ee6e63582036c36ad5dcdf4ad
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266207"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Samouczek: przetwarzanie tweetów przy użyciu usługi Azure Event Hubs i Apache Spark w usłudze HDInsight
@@ -74,7 +74,7 @@ To centrum zdarzeń służy do przechowywania tweetów.
 
 3. W obszarze **Internet rzeczy**wybierz pozycję **Event Hubs**. 
 
-    Przykład ![tworzenia centrum zdarzeń na potrzeby przesyłania strumieniowego Spark](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Tworzenie centrum zdarzeń dla przykładowego przesyłania strumieniowego Spark")
+    ![Przykład tworzenia centrum zdarzeń na potrzeby przesyłania strumieniowego Spark](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Przykład tworzenia centrum zdarzeń na potrzeby przesyłania strumieniowego Spark")
 
 4. Wybierz pozycję **+ Dodaj**.
 
@@ -112,7 +112,7 @@ Utwórz centrum zdarzeń po wdrożeniu Event Hubs przestrzeni nazw.  Z poziomu p
 
     - **Przechowywanie komunikatów**: 1.   
    
-      ![Podaj szczegóły centrum zdarzeń dla przykładu przesyłania strumieniowego Spark](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Dostarcz szczegóły centrum zdarzeń na potrzeby przykładowego przesyłania strumieniowego Spark")
+      ![Podaj szczegóły centrum zdarzeń dla przykładu przesyłania strumieniowego Spark](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Podaj szczegóły centrum zdarzeń dla przykładu przesyłania strumieniowego Spark")
 
 1. Wybierz pozycję **Utwórz**.  Wdrożenie powinno zakończyć się w ciągu kilku sekund, a następnie nastąpi powrót do strony Event Hubs przestrzeni nazw.
 
@@ -124,7 +124,7 @@ Utwórz centrum zdarzeń po wdrożeniu Event Hubs przestrzeni nazw.  Z poziomu p
 
 1. Zapisz wartości **klucza podstawowego** i **parametrów połączenia — klucz podstawowy** do użycia w dalszej części samouczka.
 
-     ![Wyświetlanie kluczy zasad centrum zdarzeń dla przykładu usługi Spark Streaming](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Wyświetlanie kluczy zasad centrum zdarzeń dla przykładowego przesyłania strumieniowego Spark")
+     ![Wyświetl klucze zasad centrum zdarzeń dla przykładu przesyłania strumieniowego Spark](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Wyświetl klucze zasad centrum zdarzeń dla przykładu przesyłania strumieniowego Spark")
 
 
 ## <a name="send-tweets-to-the-event-hub"></a>Wyślij tweety do centrum zdarzeń
@@ -252,7 +252,7 @@ Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage lub A
 
 Otwórz klaster w witrynie Azure Portal, a następnie wybierz pozycję **Usuń**.
 
-![Usuwanie](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "klastra") usługi HDInsight w portalu Azure
+![Usuwanie klastra usługi HDInsight w witrynie Azure Portal](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "Usuwanie klastra usługi HDInsight")
 
 Dodatkowo możesz wybrać nazwę grupy zasobów, aby otworzyć stronę grupy zasobów, a następnie wybrać pozycję **Usuń grupę zasobów**. Usunięcie grupy zasobów powoduje usunięcie zarówno klastra Spark w usłudze HDInsight, jak i domyślnego konta magazynu.
 

@@ -8,14 +8,14 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: d76a250cc3554b086501899376cb411346a4251c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ab2f9e8859fba0c906e181727aab923254e9b620
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266334"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692196"
 ---
-# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Przykład: Utwórz niestandardową umiejętność przy użyciu interfejs API wyszukiwania jednostek Bing
+# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Przykład: Tworzenie niestandardowej umiejętności przy użyciu interfejs API wyszukiwania jednostek Bing
 
 W tym przykładzie dowiesz się, jak utworzyć niestandardową umiejętność interfejsu API sieci Web. Ta umiejętność akceptuje lokalizacje, publiczne dane i organizacje oraz zwraca do nich opisy. W przykładzie jest stosowana [Funkcja platformy Azure](https://azure.microsoft.com/services/functions/) , która umożliwia zawinięcie [interfejs API wyszukiwania jednostek Bing](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) tak, aby implementuje niestandardowy interfejs umiejętności.
 
@@ -33,9 +33,9 @@ Mimo że w tym przykładzie używa się funkcji platformy Azure do hostowania in
 
 ### <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-1. W programie Visual Studio wybierz pozycję **Nowy** > **projekt** z menu plik.
+1. W programie Visual Studio wybierz pozycję nowy**projekt**  >  z menu plik.
 
-1. W oknie dialogowym Nowy projekt wybierz pozycję **zainstalowane**, rozwiń **pozycję C#Visual**   >  **Cloud**, wybierz pozycję **Azure Functions**, wpisz nazwę projektu, a następnie wybierz **przycisk OK**. Nazwa aplikacji funkcji musi być prawidłowa jako C# przestrzeń nazw, dlatego nie należy używać podkreśleń, łączników ani żadnych innych znaków innych niż alfanumeryczne.
+1. W oknie dialogowym Nowy projekt wybierz pozycję **zainstalowane**, rozwiń **węzeł C# Visual**  > **Cloud**, wybierz pozycję **Azure Functions**, wpisz nazwę projektu, a następnie wybierz **przycisk OK**. Nazwa aplikacji funkcji musi być prawidłowa jako C# przestrzeń nazw, dlatego nie należy używać podkreśleń, łączników ani żadnych innych znaków innych niż alfanumeryczne.
 
 1. Wybierz **Azure Functions v2 (.NET Core)** . Można to również zrobić z wersją 1, ale kod zapisany poniżej jest oparty na szablonie v2.
 
@@ -311,11 +311,11 @@ namespace SampleSkills
 }
 ```
 
-Upewnij się, `key` że na podstawie klucza, który ma być używany podczas rejestrowania się w celu korzystania z interfejsu API wyszukiwania jednostek Bing, wprowadzono własną wartość *klucza* .
+Upewnij się, że wartość *klucza* została wprowadzona w `key` stałej na podstawie klucza uzyskanego podczas rejestrowania się w interfejsie API wyszukiwania jednostek Bing.
 
-Ten przykład zawiera wszystkie niezbędne kody w pojedynczym pliku dla wygody. Możesz znaleźć nieco bardziej strukturalną wersję tej samej umiejętności w [repozytorium umiejętności oszczędzania](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch).
+Ten przykład zawiera wszystkie niezbędne kody w pojedynczym pliku dla wygody. Możesz znaleźć nieco bardziej strukturalną wersję tej samej umiejętności, a także inne przykłady umiejętności niestandardowych w [repozytorium umiejętności](https://aka.ms/entity-search-power-skill).
 
-Oczywiście można zmienić nazwę pliku z `Function1.cs` na. `BingEntitySearch.cs`
+Oczywiście można zmienić nazwę pliku z `Function1.cs` na `BingEntitySearch.cs`.
 
 ## <a name="test-the-function-from-visual-studio"></a>Testowanie funkcji z programu Visual Studio
 
@@ -375,7 +375,7 @@ Powinna zostać wyświetlona odpowiedź podobna do poniższego przykładu:
 
 Gdy zachowanie funkcji jest zadowalające, można je opublikować.
 
-1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**. Wybierz pozycję **Utwórz nową** > **publikację**.
+1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**. Wybierz pozycję **Utwórz nowe**  > **Opublikuj**.
 
 1. Jeśli program Visual Studio nie został jeszcze połączony z kontem platformy Azure, wybierz pozycję **Dodaj konto....**
 
@@ -383,7 +383,7 @@ Gdy zachowanie funkcji jest zadowalające, można je opublikować.
 
 1. Po zakończeniu wdrażania Zwróć uwagę na adres URL witryny. Jest to adres aplikacji funkcji na platformie Azure. 
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do grupy zasobów, a następnie wyszukaj `EntitySearch` opublikowaną funkcję. W sekcji **Zarządzanie** powinny zostać wyświetlone klucze hosta. Wybierz ikonę **kopiowania** dla *domyślnego* klucza hosta.  
+1. W [Azure Portal](https://portal.azure.com)przejdź do grupy zasobów, a następnie wyszukaj zaopublikowaną funkcję `EntitySearch`. W sekcji **Zarządzanie** powinny zostać wyświetlone klucze hosta. Wybierz ikonę **kopiowania** dla *domyślnego* klucza hosta.  
 
 ## <a name="test-the-function-in-azure"></a>Testowanie funkcji na platformie Azure
 
@@ -418,7 +418,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 Ten przykład powinien dawać ten sam wynik, który został wcześniej wyświetlony podczas uruchamiania funkcji w środowisku lokalnym.
 
 ## <a name="connect-to-your-pipeline"></a>Nawiązywanie połączenia z potokiem
-Teraz, gdy masz nową niestandardową umiejętność, możesz dodać ją do swojej zestawu umiejętności. W poniższym przykładzie pokazano, jak wywoływać umiejętność dodawania opisów do organizacji w dokumencie (można ją rozszerzyć, aby działała także w lokalizacjach i osobach). Zamień `[your-entity-search-app-name]` na nazwę aplikacji.
+Teraz, gdy masz nową niestandardową umiejętność, możesz dodać ją do swojej zestawu umiejętności. W poniższym przykładzie pokazano, jak wywoływać umiejętność dodawania opisów do organizacji w dokumencie (można ją rozszerzyć, aby działała także w lokalizacjach i osobach). Zastąp `[your-entity-search-app-name]` nazwą aplikacji.
 
 ```json
 {
@@ -478,6 +478,7 @@ W tym miejscu Zliczamy wbudowaną [umiejętność rozpoznawania jednostek](cogni
 ## <a name="next-steps"></a>Następne kroki
 Gratulacje! Utworzono pierwszy wzbogacający niestandardowy. Teraz można użyć tego samego wzorca, aby dodać własną funkcję niestandardową. 
 
++ [Umiejętności dotyczące oszczędzania mocy: repozytorium umiejętności niestandardowych](https://aka.ms/powerskills)
 + [Dodaj niestandardową umiejętność do potoku wyszukiwania poznawczego](cognitive-search-custom-skill-interface.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Utwórz zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

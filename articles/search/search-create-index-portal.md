@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: heidist
 ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71937260"
 ---
 # <a name="create-an-azure-search-index-in-the-portal"></a>Tworzenie indeksu Azure Search w portalu
@@ -27,7 +27,7 @@ Projektant indeksów jest tylko jednym podejściem do tworzenia indeksu. Alterna
 
 2. Kliknij link **Dodaj indeks** na pasku poleceń w górnej części strony.
 
-   ![Dodaj link indeksu na pasku poleceń](media/search-create-index-portal/add-index.png "Dodaj indeks na pasku") poleceń
+   ![Dodaj łącze indeksu na pasku poleceń](media/search-create-index-portal/add-index.png "Dodaj łącze indeksu na pasku poleceń")
 
 3. Nadaj nazwę indeksowi usługi Azure Search. Nazwy indeksów są przywoływane w operacjach indeksowania i wykonywania zapytań. Nazwa indeksu staje się częścią adresu URL punktu końcowego używanego w przypadku połączeń z indeksem i wysyłania żądań HTTP za pomocą interfejsu API REST usługi Azure Search.
 
@@ -49,7 +49,7 @@ Kompozycja indeksu obejmuje *kolekcję pól*, która definiuje dane z możliwoś
 
     Dokumentacja interfejsu API usługi Azure Search zawiera przykłady kodu korzystającego z prostego indeksu *hotele*. Na poniższym zrzucie ekranu można zobaczyć definicję indeksu, w tym Analizator języka francuskiego określony podczas definiowania indeksu, który można odtworzyć jako ćwiczenie w portalu.
 
-    (media/search-create-index-portal/field-definitions.png "Indeks demonstracyjny") ![indeksu demonstracji dla hoteli]
+    ![Indeks demonstracyjny hoteli](media/search-create-index-portal/field-definitions.png "Indeks demonstracyjny hoteli")
 
 1. Po zakończeniu kliknij przycisk **Utwórz** , aby zapisać i utworzyć indeks.
 

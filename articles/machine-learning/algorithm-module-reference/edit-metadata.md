@@ -1,5 +1,5 @@
 ---
-title: 'Edytuj metadane: Dokumentacja modułu'
+title: 'Edytowanie metadanych: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Informacje dotyczące zmiany metadanych skojarzonych z kolumnami w zestawie danych przy użyciu modułu Edytuj metadane w usłudze Azure Machine Learning.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b6e28577fefe4892d719e211e16edafed1504e87
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128866"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693829"
 ---
 # <a name="edit-metadata-module"></a>Edytuj moduł metadanych
 
@@ -34,13 +34,13 @@ Typowe zmiany metadanych mogą obejmować:
   
 + Zmiana nazw kolumn.
   
- W każdej chwili należy zmodyfikować definicję kolumny, zazwyczaj w celu spełnienia wymagań dotyczących modułu podrzędnego. Na przykład niektóre moduły działają tylko z określonymi typami danych lub wymagają flag w kolumnach, takich jak `IsFeature` lub. `IsCategorical`  
+ W każdej chwili należy zmodyfikować definicję kolumny, zazwyczaj w celu spełnienia wymagań dotyczących modułu podrzędnego. Na przykład niektóre moduły działają tylko z określonymi typami danych lub wymagają flag w kolumnach, takich jak `IsFeature` lub `IsCategorical`.  
   
  Po wykonaniu wymaganej operacji możesz zresetować metadane do jego oryginalnego stanu.
   
 ## <a name="configure-edit-metadata"></a>Konfiguruj Edytowanie metadanych
   
-1. W Azure Machine Learning Dodaj moduł Edytuj metadane do eksperymentu i Połącz zestaw danych, który chcesz zaktualizować. Zestaw danych można znaleźć w obszarze **Przekształcanie danych** w kategorii manipulowanie.
+1. W Azure Machine Learning Dodaj moduł Edytuj metadane do potoku i Połącz zestaw danych, który chcesz zaktualizować. Zestaw danych można znaleźć w obszarze **Przekształcanie danych** w kategorii **manipulowanie** .
   
 1. Wybierz pozycję **Uruchom selektor kolumny** i wybierz kolumnę lub zestaw kolumn, z którymi chcesz współpracować. Możesz wybrać kolumny osobno według nazwy lub indeksu lub wybrać grupę kolumn według typu.  
   
@@ -94,7 +94,7 @@ Typowe zmiany metadanych mogą obejmować:
   
     + Należy zmienić nazwę wszystkich wybranych kolumn. Nie można pominąć ani pominąć kolumn.  
   
-1. Uruchom eksperyment.  
+1. Uruchamianie potoku.  
 
 ## <a name="next-steps"></a>Następne kroki
 

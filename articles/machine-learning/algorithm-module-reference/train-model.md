@@ -1,5 +1,5 @@
 ---
-title: 'Model uczenia: Dokumentacja modułu'
+title: 'Model uczenia: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak korzystać z modułu **uczenie modelu** w usłudze Azure Machine Learning, aby szkolić model klasyfikacji lub regresji.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 08b551e766632949db350478fa8d3725906c8af8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f9717c39388c85ced889744722899b78a5df8453
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128445"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693692"
 ---
-# <a name="train-model-module"></a>Train Model modułu
+# <a name="train-model-module"></a>Moduł uczenia modelu
 
 W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
@@ -29,7 +29,7 @@ W Azure Machine Learning tworzenie i Używanie modelu uczenia maszynowego jest z
 1. Należy skonfigurować model, wybierając konkretny typ algorytmu i definiując jego parametry lub parametr. Wybierz dowolny z następujących typów modeli: 
 
     + Modele **klasyfikacji** w oparciu o sieci neuronowych, drzewa decyzyjne i lasy decyzyjne oraz inne algorytmy.
-    + Modele regresji, które mogą uwzględniać standardowe regresję liniową lub które używają innych algorytmów, w tym sieci neuronowych i regresji bayesowskie.  
+    + Modele **regresji** , które mogą uwzględniać standardowe regresję liniową lub które używają innych algorytmów, w tym sieci neuronowych i regresji bayesowskie.  
 
 2. Podaj zestaw danych, który ma etykietę i zawiera dane zgodne z algorytmem. Połącz zarówno dane, jak i model, aby **szkolić model**.
 
@@ -43,7 +43,7 @@ W Azure Machine Learning tworzenie i Używanie modelu uczenia maszynowego jest z
   
 1.  W Azure Machine Learning Skonfiguruj model klasyfikacji lub model regresji.
     
-2. Dodaj moduł **uczenie modelu** do eksperymentu.  Ten moduł można znaleźć pod kategorią **Machine Learning** . Rozwińwęzeł uczenie, a następnie przeciągnij moduł **uczenie modelu** do eksperymentu.
+2. Dodaj moduł **uczenie modelu** do potoku.  Ten moduł można znaleźć pod kategorią **Machine Learning** . Rozwiń węzeł **uczenie**, a następnie przeciągnij moduł **uczenie modelu** do potoku.
   
 3.  Z lewej strony Dołącz tryb niepociąg. Dołącz zestaw danych szkoleniowych do prawego wejścia **modelu uczenia**.
 
@@ -62,16 +62,16 @@ W Azure Machine Learning tworzenie i Używanie modelu uczenia maszynowego jest z
     > [!TIP] 
     > Jeśli masz problemy z użyciem selektora kolumn, zobacz artykuł [Wybieranie kolumn w zestawie danych](./select-columns-in-dataset.md) , aby uzyskać porady. Opisano niektóre typowe scenariusze i porady dotyczące korzystania **z reguł with** i **według nazwy** .
   
-5.  Uruchom eksperyment. W przypadku dużej ilości danych może to chwilę potrwać.
+5.  Uruchamianie potoku. W przypadku dużej ilości danych może to chwilę potrwać.
 
 ## <a name="bkmk_results"></a>Uzyskane
 
 Po przeszkoleniu modelu:
 
 + Aby wyświetlić parametry modelu i wagi funkcji, kliknij prawym przyciskiem myszy dane wyjściowe i wybierz polecenie **Wizualizuj**.
-+ Aby użyć modelu w innych eksperymentach, kliknij prawym przyciskiem myszy Model i wybierz pozycję **Zapisz model**. Wpisz nazwę modelu. 
++ Aby użyć modelu w innych potokach, kliknij model prawym przyciskiem myszy, a następnie wybierz pozycję **Zapisz model**. Wpisz nazwę modelu. 
 
-    Spowoduje to zapisanie modelu jako migawki, która nie jest aktualizowana przez powtarzające się uruchomienia eksperymentu.
+    Spowoduje to zapisanie modelu jako migawki, która nie jest aktualizowana przez powtarzające się uruchomienia potoku.
 + Aby użyć modelu w celu przewidywania nowych wartości, połącz go z modułem [modelu oceny](./score-model.md) wraz z nowymi danymi wejściowymi.
 
 

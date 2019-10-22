@@ -1,22 +1,18 @@
 ---
 title: Automatyzacja procesów Application Insights platformy Azure za pomocą Microsoft Flow
 description: Dowiedz się, jak można użyć Microsoft Flow, aby szybko zautomatyzować powtarzalne procesy przy użyciu łącznika Application Insights.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/29/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 541d5b70ee56d62831f0947e64b9522e17a07dd9
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 08/29/2019
+ms.openlocfilehash: ff0896498c0270b8eb43b762228916985f924def
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194965"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678327"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Automatyzacja procesów Application Insights platformy Azure za pomocą łącznika dla Microsoft Flow
 
@@ -32,14 +28,14 @@ Można również dodać dodatkowe akcje. Microsoft Flow zapewnia setki dostępny
 
 W tym samouczku dowiesz się, jak utworzyć przepływ, który używa algorytmu autoklastrów analizy do grupowania atrybutów w danych aplikacji sieci Web. Przepływ automatycznie wysyła wyniki za pośrednictwem poczty e-mail, a tylko jeden przykład użycia Microsoft Flow i Application Insights analizy.
 
-### <a name="step-1-create-a-flow"></a>Krok 1: Tworzenie przepływu
+### <a name="step-1-create-a-flow"></a>Krok 1. Tworzenie przepływu
 
 1. Zaloguj się do [Microsoft Flow](https://flow.microsoft.com), a następnie wybierz pozycję **Moje przepływy**.
-2. Kliknij pozycję **Nowy** zaplanowana **— od zera**.
+2. Kliknij pozycję Nowy **zaplanowana — od zera**.
 
     ![Utwórz nowy przepływ z zaplanowanym ciągiem pustym](./media/automate-with-flow/1-create.png)
 
-### <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Tworzenie wyzwalacza dla przepływu
+### <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2. Tworzenie wyzwalacza dla przepływu
 
 1. W oknie podręcznym **Utwórz zaplanowany przepływ**, podaj nazwę przepływu i częstotliwość uruchamiania przepływu.
 
@@ -47,16 +43,16 @@ W tym samouczku dowiesz się, jak utworzyć przepływ, który używa algorytmu a
 
 1. Kliknij przycisk **Utwórz**.
 
-### <a name="step-3-add-an-application-insights-action"></a>Krok 3: Dodaj akcję Application Insights
+### <a name="step-3-add-an-application-insights-action"></a>Krok 3. Dodawanie akcji Application Insights
 
 1. Wyszukaj **Application Insights**.
 2. Kliknij pozycję **Azure Application Insights — Wizualizuj zapytanie analityczne**.
 
-    ![Wybierz akcję: Zapytanie dotyczące wizualizacji w usłudze Azure Application Insights](./media/automate-with-flow/3-visualize.png)
+    ![Wybierz akcję: zapytanie dotyczące wizualizacji Application Insights platformy Azure](./media/automate-with-flow/3-visualize.png)
 
 3. Wybierz pozycję **Nowy krok**.
 
-### <a name="step-4-connect-to-an-application-insights-resource"></a>Krok 4: Nawiązywanie połączenia z zasobem Application Insights
+### <a name="step-4-connect-to-an-application-insights-resource"></a>Krok 4. Nawiązywanie połączenia z zasobem Application Insights
 
 Aby ukończyć ten krok, potrzebny jest identyfikator aplikacji i klucz interfejsu API dla zasobu. Można je pobrać z Azure Portal, jak pokazano na poniższym diagramie:
 
@@ -72,7 +68,7 @@ Jeśli pole połączenie nie pojawia się od razu, a zamiast tego nastąpi bezpo
 
 Kliknij przycisk **Utwórz**.
 
-### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Krok 5. Określ zapytanie analityczne i typ wykresu
+### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Krok 5. Określanie typu zapytania i wykresu analitycznego
 To przykładowe zapytanie wybiera żądania zakończone niepowodzeniem w ciągu ostatniego dnia i skorelowanie ich z wyjątkami, które wystąpiły w ramach operacji. Analiza jest skorelowane z uwzględnieniem identyfikatora parametrów. Kwerenda następnie segmentuje wyniki przy użyciu algorytmu Autocluster.
 
 Podczas tworzenia własnych zapytań Sprawdź, czy działają prawidłowo w analizie, zanim dodasz ją do przepływu.
@@ -92,7 +88,7 @@ Podczas tworzenia własnych zapytań Sprawdź, czy działają prawidłowo w anal
     
     ![Okno konfiguracji zapytania analitycznego](./media/automate-with-flow/5-query.png)
 
-### <a name="step-6-configure-the-flow-to-send-email"></a>Krok 6: Skonfiguruj przepływ do wysyłania wiadomości e-mail
+### <a name="step-6-configure-the-flow-to-send-email"></a>Krok 6. Konfigurowanie przepływu do wysyłania wiadomości e-mail
 
 1. Wyszukaj **pakiet Office 365 Outlook**.
 2. Kliknij pozycję **Office 365 Outlook — Wyślij wiadomość e-mail**.
@@ -105,7 +101,7 @@ Podczas tworzenia własnych zapytań Sprawdź, czy działają prawidłowo w anal
 
    b. Wpisz temat wiadomości e-mail.
 
-   c. Kliknij w dowolnym miejscu w polu **treść** , a następnie w menu zawartość dynamiczna, które jest otwierane po prawej stronie, wybierz pozycję **treść**.
+   d. Kliknij w dowolnym miejscu w polu **treść** , a następnie w menu zawartość dynamiczna, które jest otwierane po prawej stronie, wybierz pozycję **treść**.
 
    e. Wybierz pozycję **Pokaż opcje zaawansowane**
 
@@ -115,15 +111,15 @@ Podczas tworzenia własnych zapytań Sprawdź, czy działają prawidłowo w anal
 
     b. Wybierz **zawartość załącznika**.
     
-    c. W polu **kod HTML** wybierz pozycję **tak**.
+    d. W polu **kod HTML** wybierz pozycję **tak**.
 
     ![Konfiguracja programu Outlook pakietu Office 365](./media/automate-with-flow/7-email.png)
 
-### <a name="step-7-save-and-test-your-flow"></a>Krok 7: Zapisywanie i testowanie przepływu
+### <a name="step-7-save-and-test-your-flow"></a>Krok 7. Zapisywanie i testowanie przepływu
 
-Kliknij polecenie **Zapisz**.
+Kliknij przycisk **Save** (Zapisz).
 
-Możesz poczekać, aż wyzwalacz uruchomi tę akcję, lub kliknij ![ **test** ikony](./media/automate-with-flow/testicon.png) testu w górnej części strony.
+Możesz poczekać na uruchomienie tej akcji przez wyzwalacz lub kliknąć przycisk ![beaker ikonę testu ](./media/automate-with-flow/testicon.png) **test** w górnej części.
 
 Po wybraniu **testu**:
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 967988d802a1b3d33ff50f578650e44794015583
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9fe7147325b2e14a7ae6bb4b31aa941fb4059b11
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550864"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690823"
 ---
 # <a name="azure-functions-networking-options"></a>Opcje sieci Azure Functions
 
@@ -36,7 +36,7 @@ Aplikacje funkcji można hostować na kilka sposobów:
 |[Ograniczenia przychodzącego adresu IP & dostęp do lokacji prywatnej](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
 |[Integracja sieci wirtualnej](#virtual-network-integration)|❌No|✅Yes (regionalny)|✅Yes (regionalne i bramy)|✅Yes|
 |[Wyzwalacze sieci wirtualnej (bez protokołu HTTP)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
-|[Połączenia hybrydowe](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
+|[Połączenia hybrydowe](#hybrid-connections)|❌No|✅Yes|✅Yes|✅Yes|
 |[Ograniczenia wychodzącego adresu IP](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
 
@@ -127,11 +127,11 @@ Zaznacz [tę listę dla wszystkich wyzwalaczy innych niż http](./functions-trig
 
 ## <a name="hybrid-connections"></a>Hybrydowe
 
-[Połączenia hybrydowe](../service-bus-relay/relay-hybrid-connections-protocol.md) to funkcja Azure Relay, z której można korzystać w celu uzyskania dostępu do zasobów aplikacji w innych sieciach. Zapewnia dostęp z aplikacji do punktu końcowego aplikacji. Nie można używać go do uzyskiwania dostępu do aplikacji. Połączenia hybrydowe jest dostępny dla funkcji uruchomionych w [planie App Service](functions-scale.md#app-service-plan) i [App Service Environment](../app-service/environment/intro.md).
+[Połączenia hybrydowe](../service-bus-relay/relay-hybrid-connections-protocol.md) to funkcja Azure Relay, z której można korzystać w celu uzyskania dostępu do zasobów aplikacji w innych sieciach. Zapewnia dostęp z aplikacji do punktu końcowego aplikacji. Nie można używać go do uzyskiwania dostępu do aplikacji. Połączenia hybrydowe jest dostępny dla funkcji uruchomionych we wszystkich, ale w planie zużycia.
 
 Jak w Azure Functions każde połączenie hybrydowe jest skorelowane z pojedynczym hostem TCP i kombinacją portów. Oznacza to, że punkt końcowy połączenia hybrydowego może znajdować się w dowolnym systemie operacyjnym i dowolnej aplikacji, o ile uzyskuje się dostęp do portu nasłuchiwania protokołu TCP. Funkcja Połączenia hybrydowe nie wie ani nie posługuje się z protokołem aplikacji lub dostępem do niego. Po prostu zapewnia dostęp do sieci.
 
-Aby dowiedzieć się więcej, zobacz [dokumentację App Service dotyczącą połączenia hybrydowe](../app-service/app-service-hybrid-connections.md), która obsługuje funkcje w planie App Service.
+Aby dowiedzieć się więcej, zobacz [dokumentację App Service dotyczącą połączenia hybrydowe](../app-service/app-service-hybrid-connections.md), która obsługuje funkcje w ramach tych samych czynności konfiguracyjnych.
 
 ## <a name="outbound-ip-restrictions"></a>Ograniczenia wychodzącego adresu IP
 

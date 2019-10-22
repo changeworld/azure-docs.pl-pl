@@ -1,7 +1,7 @@
 ---
-title: 'Normalizuj dane: Dokumentacja modułu'
+title: 'Normalizuj dane: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu normalizowanie danych w usłudze Azure Machine Learning do przekształcania zestawudanych za pomocą normalizacji.
+description: Dowiedz się, jak używać modułu normalizowanie danych w usłudze Azure Machine Learning do przekształcania zestawu danych za pomocą *normalizacji*.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 504224ae586e18fc5bf9294b537e730da37a2423
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c77ebbe8569ffd221fadb5b98a54fc26d0d70893
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128565"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692709"
 ---
 # <a name="normalize-data-module"></a>Normalizowanie modułu danych
 
 W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Użyj tego modułu do przekształcenia zestawu danych zapomocą normalizacji.
+Użyj tego modułu do przekształcenia zestawu danych za pomocą *normalizacji*.
 
 Normalizacja to technika często stosowana w ramach przygotowywania danych do uczenia maszynowego. Celem normalizacji jest zmiana wartości kolumn liczbowych w zestawie danych w celu użycia wspólnej skali bez zakłócania różnic między zakresami wartości ani utraty informacji. Normalizacja jest również wymagana w przypadku niektórych algorytmów w celu poprawnego modelowania danych.
 
@@ -32,16 +32,16 @@ Ten moduł oferuje kilka opcji przekształcania danych liczbowych:
 
 - Można zmienić wszystkie wartości na skalę 0-1 lub przekształcić wartości, reprezentując je jako rangi percentyla, a nie wartości bezwzględne.
 - Można zastosować normalizację do pojedynczej kolumny lub do wielu kolumn w tym samym zestawie danych.
-- Jeśli trzeba powtórzyć eksperyment lub zastosować te same kroki normalizacji do innych danych, można zapisać kroki jako transformację normalizacji i zastosować je do innych zestawów danych, które mają ten sam schemat.
+- Jeśli trzeba powtórzyć potok lub zastosować te same kroki normalizacji do innych danych, można zapisać kroki jako transformację normalizacji i zastosować je do innych zestawów danych, które mają ten sam schemat.
 
 > [!WARNING]
 > Niektóre algorytmy wymagają, aby dane były znormalizowane przed uczeniem modelu. Inne algorytmy wykonują własne skalowanie lub normalizację danych. Dlatego po wybraniu algorytmu uczenia maszynowego, który ma być używany podczas tworzenia modelu predykcyjnego, należy zapoznać się z wymaganiami dotyczącymi danych algorytmu przed zastosowaniem normalizacji do danych szkoleniowych.
 
 ##  <a name="configure-normalize-data"></a>Konfigurowanie danych normalizowania
 
-Przy użyciu tego modułu można zastosować tylko jedną metodę normalizacji. W związku z tym ta sama metoda normalizacji jest stosowana do wszystkich zaznaczonych kolumn. Aby użyć różnych metod normalizacji, użyj drugiego wystąpienia normalizacji **danych**.
+Przy użyciu tego modułu można zastosować tylko jedną metodę normalizacji. W związku z tym ta sama metoda normalizacji jest stosowana do wszystkich zaznaczonych kolumn. Aby użyć różnych metod normalizacji, użyj drugiego wystąpienia **normalizacji danych**.
 
-1. Dodaj moduł **normalizowanie danych** do swojego eksperymentu. Moduł można znaleźć w Azure Machine Learning, w obszarze **Przekształcanie danych**, w kategorii **skalowanie i zmniejszanie** .
+1. Dodaj moduł **normalizowanie danych** do potoku. Moduł można znaleźć w Azure Machine Learning, w obszarze **Przekształcanie danych**, w kategorii **skalowanie i zmniejszanie** .
 
 2. Połącz zestaw danych, który zawiera co najmniej jedną kolumnę zawierającą wszystkie liczby.
 
@@ -54,11 +54,11 @@ Przy użyciu tego modułu można zastosować tylko jedną metodę normalizacji. 
     > [!TIP]
     > Aby upewnić się, że kolumny określonego typu są dostarczane jako dane wejściowe, spróbuj użyć modułu [SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych](./select-columns-in-dataset.md) ), aby **znormalizować dane**.
 
-4. **Po zaznaczeniu pola wyboru Użyj 0 dla stałych kolumn**:  Zaznacz tę opcję, jeśli dowolna kolumna liczbowa zawiera pojedynczą, niezmieniającą się wartość. Gwarantuje to, że takie kolumny nie będą używane w operacjach normalizacji.
+4. **Po zaznaczeniu pola wyboru Użyj wartości 0 dla stałych kolumn**: zaznacz tę opcję, jeśli dowolna kolumna liczbowa zawiera pojedynczą, niezmieniającą się wartość. Gwarantuje to, że takie kolumny nie będą używane w operacjach normalizacji.
 
 5. Z listy rozwijanej **Metoda transformacji** wybierz pojedynczą funkcję matematyczną, która ma zostać zastosowana do wszystkich zaznaczonych kolumn. 
   
-    - **Zscore**: Konwertuje wszystkie wartości na wynik z.
+    - **Zscore**: konwertuje wszystkie wartości na wynik z.
     
       Wartości w kolumnie są przekształcane przy użyciu następującej formuły:  
   
@@ -66,19 +66,19 @@ Przy użyciu tego modułu można zastosować tylko jedną metodę normalizacji. 
   
       Odchylenie średnie i standardowe są obliczane osobno dla każdej kolumny. Użyto odchylenia standardowego populacji.
   
-    - **MinMax**: Normalizacja min-max skaluje liniowo każdą funkcję do interwału [0, 1].
+    - **MinMax**: niestandardowa wartość normalizacji liniowo skaluje każdą funkcję do interwału [0, 1].
     
       Ponowne skalowanie do [0, 1] interwału odbywa się przez przesunięcie wartości każdej funkcji tak, aby minimalna wartość wynosi 0, a następnie podzielenie przez nową wartość maksymalną (czyli różnicę między pierwotnymi wartościami maksymalnymi i minimalnymi).
       
       Wartości w kolumnie są przekształcane przy użyciu następującej formuły:  
   
-      ![normalizacja przy użyciu funkcji&#45;min max](media/module/aml-normalization-minmax.png "AML_normalization — MinMax")  
+      ![Normalizacja przy użyciu funkcji&#45;min max](media/module/aml-normalization-minmax.png "AML_normalization — MinMax")  
   
-    - **Logistyka**: Wartości w kolumnie są przekształcane przy użyciu następującej formuły:
+    - **Logistyka**: wartości w kolumnie są przekształcane przy użyciu następującej formuły:
 
-      ![formuła normalizacji przez funkcję logistyczną](media/module/aml-normalization-logistic.png "AML_normalization — logistyka")  
+      ![Formuła normalizacji przez funkcję logistyczną](media/module/aml-normalization-logistic.png "AML_normalization — logistyka")  
   
-    - **LOGARYTM logarytmiczny**: Ta opcja konwertuje wszystkie wartości na skalę logarytmiczną.
+    - **Logarytmicznie**: Ta opcja konwertuje wszystkie wartości na skalę logarytmiczną.
   
       Wartości w kolumnie są przekształcane przy użyciu następującej formuły:
   
@@ -86,13 +86,13 @@ Przy użyciu tego modułu można zastosować tylko jedną metodę normalizacji. 
     
       Tu μ i σ to parametry dystrybucji, obliczone w sposób niezależny od danych jako maksymalne prawdopodobieństwo oszacowania dla każdej kolumny osobno.  
   
-    - **Tanh**: Wszystkie wartości są konwertowane na tangens hiperboliczny.
+    - **Tanh**: wszystkie wartości są konwertowane na tangens hiperboliczny.
     
       Wartości w kolumnie są przekształcane przy użyciu następującej formuły:
     
-      ![normalizacja przy użyciu funkcji tanh](media/module/aml-normalization-tanh.png "AML_normalization — tanh")
+      ![Normalizacja przy użyciu funkcji tanh](media/module/aml-normalization-tanh.png "AML_normalization — tanh")
 
-6. Uruchom eksperyment lub kliknij dwukrotnie moduł **normalizowanie danych** i wybierz pozycję **Uruchom wybrane**. 
+6. Uruchom potok lub kliknij dwukrotnie moduł **normalizowanie danych** , a następnie wybierz pozycję **Uruchom wybrane**. 
 
 ## <a name="results"></a>Wyniki
 
@@ -104,7 +104,7 @@ Moduł **normalizowanie danych** generuje dwa dane wyjściowe:
 
 - Aby zapisać transformację, aby można było zastosować tę samą metodę normalizacji do innego podobnego zestawu danych, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **Funkcja transformacji**i kliknij polecenie **Zapisz jako Przekształć**.
 
-    Następnie można załadować zapisane przekształcenia z grupy transformacje w lewym okienku nawigacji i zastosować je do zestawu danych z tym samym schematem za pomocą [transformacji./Apply](apply-transformation.md).  
+    Następnie można załadować zapisane przekształcenia z grupy **transformacje** w lewym okienku nawigacji i zastosować je do zestawu danych z tym samym schematem za pomocą [transformacji./Apply](apply-transformation.md).  
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,5 +1,5 @@
 ---
-title: 'Dwuklasowe drzewo decyzyjne: Dokumentacja modułu'
+title: 'Dwuklasowe drzewo decyzyjne: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak utworzyć model uczenia maszynowego, który jest oparty na algorytmie podwyższania poziomu drzewa decyzyjnego w usłudze Azure Machine Learning.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 812fb8d312b165bd43f600da520f390f9c6399fe
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 5795dc994872ac5da37a1226524dddd35aa35126
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128417"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692631"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Moduł drzewa decyzyjnej z dwoma klasami
 
@@ -32,7 +32,7 @@ Ten moduł tworzy niepociąg model klasyfikacji. Ponieważ klasyfikacja jest met
 
 Możesz przeszkolić model tego typu przy użyciu [modelu uczenia](././train-model.md). 
 
-1.  W Azure Machine Learning Dodaj do eksperymentu bardziej rozwzmocniony moduł **drzewa decyzyjnego** .
+1.  W Azure Machine Learning Dodaj do potoku niewzmocniony moduł **drzewa decyzyjnego** .
   
 2.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .
   
@@ -47,7 +47,7 @@ Możesz przeszkolić model tego typu przy użyciu [modelu uczenia](././train-mod
   
      Zwiększenie tej wartości spowoduje zwiększenie wartości progowej tworzenia nowych reguł. Na przykład, z wartością domyślną 1, nawet pojedynczy przypadek może spowodować utworzenie nowej reguły. W przypadku zwiększenia wartości do 5 dane szkoleniowe muszą zawierać co najmniej pięć przypadków, które spełniają te same warunki.
   
-5.  Wpolu Stawka szkoleniowa wpisz liczbę z zakresu od 0 do 1, która definiuje rozmiar kroku podczas uczenia się.  
+5.  W polu **stawka szkoleniowa**wpisz liczbę z zakresu od 0 do 1, która definiuje rozmiar kroku podczas uczenia się.  
   
      Szybkość uczenia określa, jak szybko lub wolno dowiedzieć się zbieżność z optymalnym rozwiązaniem. Jeśli rozmiar tego kroku jest zbyt duży, można przekroczyć optymalne rozwiązanie. Jeśli rozmiar tego kroku jest zbyt mały, szkolenie trwa dłużej niż w przypadku najlepszego rozwiązania.
   

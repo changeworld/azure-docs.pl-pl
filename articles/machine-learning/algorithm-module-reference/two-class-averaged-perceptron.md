@@ -1,5 +1,5 @@
 ---
-title: 'Regresja lasu decyzyjnego: Dokumentacja modułu'
+title: 'Regresja lasu decyzyjnego: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak utworzyć model uczenia maszynowego na podstawie średniego algorytmu Perceptron przy użyciu dwuklasowego modułu Perceptron w usłudze Azure Machine Learning.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: f560923b0a5457ac5fd03c7f76fc4315c6ca08e8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 369974e52cb3585e4333b6033573b433e0a1a41a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128427"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693640"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Moduł Perceptron o średniej klasie
 
@@ -32,13 +32,13 @@ Prostsze modele Perceptron są odpowiednie do uczenia się liniowo oddzielnych w
 
 ## <a name="how-to-configure-two-class-averaged-perceptron"></a>Jak skonfigurować Perceptron średniej klasy dwuklasowej
 
-1.  Dodaj do eksperymentu moduł **Perceptron o średniej klasie** .  
+1.  Dodaj do potoku moduł **Perceptron o średniej klasie** .  
 
 2.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
     -   **Pojedynczy parametr**: Jeśli wiesz, jak chcesz skonfigurować model, podaj określony zestaw wartości jako argumenty.
   
-3.  Wpolu Stawka szkoleniowa Określ wartość dla *stawki szkoleniowej*. Wartości współczynnika uczenia kontrolują rozmiar kroku, który jest używany w gradiencie stochastycznego przy każdym przetestowaniu i skorygowaniu modelu.
+3.  W polu **stawka szkoleniowa**Określ wartość dla *stawki szkoleniowej*. Wartości współczynnika uczenia kontrolują rozmiar kroku, który jest używany w gradiencie stochastycznego przy każdym przetestowaniu i skorygowaniu modelu.
   
      Zmniejszając szybkość, można testować model częściej, z ryzykiem, który może zostać zablokowany w lokalnej Plateau. Dzięki powiększeniu tego kroku można szybciej łączyć się z ryzykiem w przypadku przekroczenia rzeczywistych wartości.
   
@@ -46,7 +46,7 @@ Prostsze modele Perceptron są odpowiednie do uczenia się liniowo oddzielnych w
   
      Zatrzymywanie wczesne często zapewnia lepszy sposób uogólniania. Zwiększenie liczby iteracji usprawnia dopasowanie w przypadku naruszenia.
   
-5.  W przypadku **liczby losowej inicjatora**opcjonalnie wpisz wartość całkowitą, która ma być używana jako inicjator. Użycie inicjatora jest zalecane, jeśli chcesz zapewnić odtwarzalność eksperymentu w ramach przebiegów.  
+5.  W przypadku **liczby losowej inicjatora**opcjonalnie wpisz wartość całkowitą, która ma być używana jako inicjator. Użycie inicjatora jest zalecane, jeśli chcesz zapewnić odtwarzalność potoku między przebiegami.  
   
 1.  Połącz zestaw danych szkoleniowych i jeden z modułów szkoleniowych:
   

@@ -11,10 +11,10 @@ author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
 ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72035669"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
@@ -73,7 +73,7 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
    Pole | Opis | Wartość dla samouczka
    ----|---|---
    Nazwa obliczeniowa |Unikatowa nazwa identyfikująca kontekst obliczeniowy.|automl — obliczenia
-   Virtual @ no__t-0machine @ no__t-1size| Wybierz rozmiar maszyny wirtualnej dla obliczenia.|Standard_DS12_V2
+   @No__t_1size &nbsp;machine wirtualnych| Wybierz rozmiar maszyny wirtualnej dla obliczenia.|Standard_DS12_V2
    Minimalna/Maksymalna liczba węzłów (w ustawieniach zaawansowanych)| Aby profilować dane, musisz określić co najmniej jeden węzeł.|Minimalna liczba węzłów: 1<br>Maksymalna liczba węzłów: 6
 
    >[!NOTE]
@@ -102,7 +102,7 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
         Pole|Opis| Wartość dla samouczka
         ---|---|---
         Format pliku|Definiuje układ i typ danych przechowywanych w pliku.| Lista
-        Ogranicznik|Jeden lub więcej znaków do określenia granicy między @ no__t-0 oddzielnych, niezależnych regionów w postaci zwykłego tekstu lub innych strumieni danych. |Pliku
+        Ogranicznik|Co najmniej jeden znak służący do określania granicy między &nbsp; oddzielnych, niezależnych regionów w postaci zwykłego tekstu lub innych strumieni danych. |Pliku
         Encoding|Identyfikuje tablicę znaków, która ma być używana do odczytywania zestawu danych.| UTF-8
         Nagłówki kolumn| Wskazuje, w jaki sposób nagłówki zestawu danych (jeśli istnieją) będą traktowane.| Wszystkie pliki mają te same nagłówki
         Pomiń wiersze | Wskazuje, ile (jeśli istnieją) wiersze są pomijane w zestawie danych.| Brak
@@ -118,10 +118,10 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
    >[!NOTE]
    > W tym samouczku nie ustawisz oceny metryki lub maksymalnej liczby rdzeni na wartość progową iteracji. Nie można natomiast blokować algorytmów.
    
-   Advanced @ no__t — 0settings|Opis|Value @ no__t-0for @ no__t-1tutorial
+   Zaawansowane &nbsp;settings|Opis|@No__t_1tutorial &nbsp;for wartości
    ------|---------|---
    Metryka podstawowa| Metryka oceny, według której będzie mierzony algorytm uczenia maszynowego.|AUC_weighted
-   Kryteria wyjścia| Jeśli kryteria są spełnione, zadanie szkolenia zostanie zatrzymane. |Szkolenia @ no__t-0job @ no__t-1Time: 5 <br> <br> Max @ no__t-0 @ no__t-1 @ no__t-2oF @ no__t-3iterations&#58;10
+   Kryteria wyjścia| Jeśli kryteria są spełnione, zadanie szkolenia zostanie zatrzymane. |Uczenie &nbsp;job &nbsp;time: 5 <br> <br> Maksymalna &nbsp; # &nbsp;of &nbsp;iterations&#58;10
    Przetwarzania wstępnego| Umożliwia przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Obejmuje to automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych.| Włączenie
    Typ walidacji | Wybierz typ krzyżowej walidacji.|K — złożenie krzyżowego sprawdzania poprawności
    Liczba walidacji | Liczba testów. | 2 walidacje krzyżowe 

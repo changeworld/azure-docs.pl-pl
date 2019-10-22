@@ -1,7 +1,7 @@
 ---
-title: 'Eksportuj dane: Dokumentacja modułu'
+title: 'Eksportowanie danych: odwołanie do modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób używać modułu eksport danych w usłudze Azure Machine Learning, aby zapisywać wyniki, dane pośrednie i dane robocze z eksperymentów do miejsc docelowych magazynu w chmurze poza Azure Machine Learning.
+description: Dowiedz się, jak używać modułu eksport danych w usłudze Azure Machine Learning, aby zapisywać wyniki, dane pośrednie i dane robocze z potoków do miejsc docelowych magazynu w chmurze poza Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,28 +9,28 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: a4fb539f4c86d27813b60964794fc1f398d3f2a4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b7b4b9de1e91279243e35f1b71f1ef6d2244e9e0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128776"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693715"
 ---
 # <a name="export-data-module"></a>Eksportuj moduł danych
 
 W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do zapisywania wyników, danych pośrednich i danych roboczych z eksperymentów do miejsc docelowych magazynu w chmurze spoza Azure Machine Learning.
+Ten moduł służy do zapisywania wyników, danych pośrednich i danych roboczych z potoków do miejsc docelowych magazynu w chmurze spoza Azure Machine Learning.
 
 Ten moduł obsługuje Eksportowanie lub zapisywanie danych do następujących usług danych w chmurze:
 
 
-- **Eksportuj do BLOB Storage platformy Azure**: Zapisuje dane w Blob service na platformie Azure. Dane w Blob service mogą być udostępniane publicznie lub zapisywane w zabezpieczonych magazynach danych aplikacji.
+- **Eksportuj do BLOB Storage platformy Azure**: zapisuje dane do BLOB Service na platformie Azure. Dane w Blob service mogą być udostępniane publicznie lub zapisywane w zabezpieczonych magazynach danych aplikacji.
 
   
 ## <a name="how-to-configure-export-data"></a>Jak skonfigurować dane eksportu
 
-1. Dodaj moduł **eksportu danych** do eksperymentu w interfejsie. Ten moduł można znaleźć w kategorii **dane wejściowe i wyjściowe** .
+1. Dodaj moduł **eksportu danych** do potoku w interfejsie. Ten moduł można znaleźć w kategorii **dane wejściowe i wyjściowe** .
 
 2. Połącz **eksport danych** z modułem zawierającym dane, które chcesz wyeksportować.
 
@@ -51,15 +51,15 @@ Ten moduł obsługuje Eksportowanie lub zapisywanie danych do następujących us
 
         W przypadku formatu pliku pliki CSV i TSV są obsługiwane.
 
-    3. W przypadku kont prywatnych wybierz pozycję **konto**, a następnie podaj nazwę konta i klucz konta, aby eksperyment mógł zapisywać dane na koncie magazynu.
+    3. W przypadku kont prywatnych wybierz pozycję **konto**, a następnie podaj nazwę konta i klucz konta, aby potok mógł zapisywać dane na koncie magazynu.
 
-         - **Nazwa konta**: Wpisz lub wklej nazwę konta, w którym chcesz zapisać dane. Na przykład jeśli pełny adres URL konta magazynu to `http://myshared.blob.core.windows.net`, należy wpisać. `myshared`
+         - **Nazwa konta**: wpisz lub wklej nazwę konta, w którym chcesz zapisać dane. Na przykład jeśli pełny adres URL konta magazynu jest `http://myshared.blob.core.windows.net`, wpisz `myshared`.
 
         - **Klucz konta**: Wklej klucz dostępu do magazynu, który jest skojarzony z tym kontem.
 
-        -  **Ścieżka do kontenera, katalogu lub obiektu BLOB**: Wpisz nazwę obiektu BLOB, w którym będą przechowywane eksportowane dane. Na przykład, aby zapisać wyniki eksperymentu do nowego obiektu BLOB o nazwie **results01. csv** w prognozach kontenera na koncie o nazwie **mymldata**, pełny adres URL dla obiektu BLOB mógłby być `http://mymldata.blob.core.windows.net/predictions/results01.csv`.
+        -  **Ścieżka do kontenera, katalogu lub obiektu BLOB**: wpisz nazwę obiektu BLOB, w którym będą przechowywane eksportowane dane. Na przykład, aby zapisać wyniki potoku do nowego obiektu BLOB o nazwie **results01. csv** w **przewidywaniach** kontenera na koncie o nazwie **mymldata**, pełny adres URL dla obiektu BLOB zostałby `http://mymldata.blob.core.windows.net/predictions/results01.csv`.
 
-            W związku z tym w **ścieżce pola do kontenera, katalogu lub obiektu BLOB**należy określić nazwę kontenera i obiektu BLOB w następujący sposób:`predictions/results01.csv`
+            W związku z tym w **ścieżce pola do kontenera, katalogu lub obiektu BLOB**należy określić nazwę kontenera i obiektu BLOB w następujący sposób: `predictions/results01.csv`
 
         - Jeśli określisz nazwę obiektu BLOB, który jeszcze nie istnieje, platforma Azure utworzy obiekt BLOB.
 
@@ -68,14 +68,14 @@ Ten moduł obsługuje Eksportowanie lub zapisywanie danych do następujących us
 
     4. W polu **Format pliku obiektu BLOB**wybierz format, w którym mają być przechowywane dane.
 
-        - **WOLUMIN CSV**: Wartości rozdzielane przecinkami (CSV) to domyślny format przechowywania. Aby wyeksportować nagłówki kolumn razem z danymi, wybierz opcję, **Zapisz wiersz nagłówka obiektu BLOB**.  Aby uzyskać więcej informacji o formacie rozdzielanym przecinkami używanym w Azure Machine Learning, zobacz [konwertowanie do formatu CSV](./convert-to-csv.md).
+        - **CSV**: domyślny format przechowywania wartości rozdzielanych przecinkami (CSV). Aby wyeksportować nagłówki kolumn razem z danymi, wybierz opcję, **Zapisz wiersz nagłówka obiektu BLOB**.  Aby uzyskać więcej informacji o formacie rozdzielanym przecinkami używanym w Azure Machine Learning, zobacz [konwertowanie do formatu CSV](./convert-to-csv.md).
 
-        - **TSV**: Format wartości rozdzielanych znakami tabulacji (TSV) jest zgodny z wieloma narzędziami uczenia maszynowego. Aby wyeksportować nagłówki kolumn razem z danymi, wybierz opcję, **Zapisz wiersz nagłówka obiektu BLOB**.  
+        - **TSV**: format wartości rozdzielanych tabulatorami (tsv) jest zgodny z wieloma narzędziami uczenia maszynowego. Aby wyeksportować nagłówki kolumn razem z danymi, wybierz opcję, **Zapisz wiersz nagłówka obiektu BLOB**.  
 
  
-    5. **Użyj zbuforowanych wyników**: Zaznacz tę opcję, jeśli chcesz uniknąć ponownego zapisywania wyników w pliku obiektu BLOB przy każdym uruchomieniu eksperymentu. Jeśli nie ma żadnych innych zmian parametrów modułu, eksperyment zapisuje wyniki tylko przy pierwszym uruchomieniu modułu lub po wprowadzeniu zmian w danych.
+    5. **Użyj zbuforowanych wyników**: zaznacz tę opcję, jeśli chcesz uniknąć ponownego zapisywania wyników w pliku BLOB przy każdym uruchomieniu potoku. Jeśli nie ma żadnych innych zmian parametrów modułu, potok zapisuje wyniki tylko przy pierwszym uruchomieniu modułu lub po wprowadzeniu zmian w danych.
 
-    6. Uruchom eksperyment.
+    6. Uruchamianie potoku.
 
 ## <a name="next-steps"></a>Następne kroki
 
