@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
 ms.openlocfilehash: 9768191d98bf1987ac24564869107cdd6bf19e8d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69032020"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Znajdowanie i diagnozowanie problemów z wydajnością za pomocą usługi Azure Application Insights
@@ -33,8 +33,8 @@ Usługa Azure Application Insights gromadzi dane telemetryczne z Twojej aplikacj
 W celu ukończenia tego samouczka:
 
 - Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi obciążeniami:
-    - ASP.NET i tworzenie aplikacji internetowych
-    - Programowanie na platformie Azure
+    - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
+    - Tworzenie aplikacji na platformie Azure
 - Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](../../azure-monitor/app/asp-net.md).
 - [Włącz profiler usługi Application Insights](../../azure-monitor/app/profiler.md#installation) dla swojej aplikacji.
 
@@ -79,7 +79,7 @@ Usługa Application Insights zbiera informacje o wydajności różnych operacji 
 ## <a name="use-logs-data-for-server"></a>Użyj danych dzienników dla serwera
  Dzienniki udostępniają bogaty język zapytań, który pozwala analizować wszystkie dane zbierane przez Application Insights. Możesz jej używać do wykonywania głębokiej analizy danych żądań i wydajności.
 
-1. Wróć do panelu Szczegóły operacji, a następnie ![kliknij pozycję Dzienniki](media/tutorial-performance/app-viewinlogs-icon.png)**Widok ikon w dziennikach (analiza)**
+1. Wróć do panelu Szczegóły operacji i kliknij ![Logs widoku ikon](media/tutorial-performance/app-viewinlogs-icon.png)**w dziennikach (analiza)**
 
 2. Dzienniki są otwierane za pomocą zapytania dla każdego z widoków w panelu.  Zapytania te można uruchomić w proponowanej formie lub dostosować do własnych wymagań.  Pierwsze zapytanie pokazuje czas trwania operacji w miarę upływu czasu.
 
@@ -100,11 +100,11 @@ Oprócz identyfikowania procesów serwera do zoptymalizowania, usługa Applicati
 ## <a name="use-logs-data-for-client"></a>Użyj danych dzienników dla klienta
 Podobnie jak w przypadku danych zbieranych pod kątem wydajności serwera, Application Insights wszystkie dane klienta są dostępne do głębokiej analizy przy użyciu dzienników.
 
-1. Wróć do podsumowania przeglądarki i kliknij ![kolejno](media/tutorial-performance/app-viewinlogs-icon.png) pozycje dzienniki **Widok ikon w dziennikach (analiza)**
+1. Wróć do podsumowania przeglądarki, a następnie kliknij przycisk ![Logs ikonę ](media/tutorial-performance/app-viewinlogs-icon.png) **Widok w dziennikach (analiza)**
 
 2. Dzienniki są otwierane za pomocą zapytania dla każdego z widoków w panelu. Pierwsze zapytanie pokazuje czas trwania dla różnych wyświetleń stron w miarę upływu czasu.
 
-    ![Zapytanie dotyczące dzienników](media/tutorial-performance/10-page-view-logs.png)
+    ![zapytanie dzienników](media/tutorial-performance/10-page-view-logs.png)
 
 3.  Inteligentna diagnostyka to funkcja dzienników identyfikująca unikatowe wzorce w danych. Po kliknięciu na wykresie liniowym kropki funkcji Inteligentna diagnostyka uruchamiane jest to samo zapytanie, ale bez rekordów będących przyczyną anomalii. Szczegółowe informacje o tych rekordach są pokazywane w sekcji komentarza zapytania, więc można zidentyfikować właściwości tych wyświetleń strony, które powodują za długie czasy trwania.
 

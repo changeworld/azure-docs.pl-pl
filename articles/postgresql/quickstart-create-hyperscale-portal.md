@@ -9,13 +9,13 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.openlocfilehash: fe981167249e24a43a8cb14c51c9b7c1eb081225
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70164015"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Szybki start: Utwórz Azure Database for PostgreSQL-Citus (wersja zapoznawcza) w Azure Portal
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Szybki Start: Tworzenie Azure Database for PostgreSQL-Citus (wersja zapoznawcza) w Azure Portal
 
 Azure Database for PostgreSQL to usługa zarządzana, która służy do uruchamiania i skalowania w chmurze baz danych PostgreSQL o wysokiej dostępności, a także zarządzania nimi. Ten przewodnik Szybki Start przedstawia sposób tworzenia grupy serwerów Azure Database for PostgreSQL-Citus (wersja zapoznawcza) przy użyciu Azure Portal. Poznasz dane rozproszone: tabele fragmentowania w węzłach, pozyskiwanie przykładowych danych i wykonywanie zapytań wykonywanych na wielu węzłach.
 
@@ -62,16 +62,16 @@ CREATE TABLE github_users
 );
 ```
 
-`payload` Pole elementu`github_events` zawiera JSONB typu danych. JSONB jest typem danych JSON w postaci binarnej w Postgres. Typ danych ułatwia przechowywanie elastycznego schematu w jednej kolumnie.
+@No__t_0 pole `github_events` ma typ danych JSONB. JSONB jest typem danych JSON w postaci binarnej w Postgres. Typ danych ułatwia przechowywanie elastycznego schematu w jednej kolumnie.
 
-Postgres może utworzyć `GIN` indeks tego typu, który będzie indeksować każdy klucz i jego wartość. Indeks umożliwia szybkie i łatwe wykonywanie zapytań dotyczących ładunku z różnych warunków. Przed załadowaniem danych przejdźmy do siebie i utworzysz kilka indeksów. W PSQL:
+Postgres może utworzyć indeks `GIN` tego typu, co spowoduje indeksowanie każdego klucza i jego wartości. Indeks umożliwia szybkie i łatwe wykonywanie zapytań dotyczących ładunku z różnych warunków. Przed załadowaniem danych przejdźmy do siebie i utworzysz kilka indeksów. W PSQL:
 
 ```sql
 CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Następnie zajmiemy się tymi tabelami Postgres na węźle koordynatora i przekażemy je do fragmentui przez pracowników. W tym celu uruchomimy zapytanie dla każdej tabeli, określając klucz, na który fragmentu. W bieżącym przykładzie będziemy fragmentu zarówno tabelę `user_id`zdarzeń, jak i użytkowników:
+Następnie zajmiemy się tymi tabelami Postgres na węźle koordynatora i przekażemy je do fragmentui przez pracowników. W tym celu uruchomimy zapytanie dla każdej tabeli, określając klucz, na który fragmentu. W bieżącym przykładzie będziemy fragmentu zarówno tabelę zdarzeń, jak i użytkowników w `user_id`:
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -96,13 +96,13 @@ SET CLIENT_ENCODING TO 'utf8';
 
 ## <a name="run-queries"></a>Uruchamianie zapytań
 
-Teraz czas dla części zabawnej, w rzeczywistości uruchamia kilka zapytań. Zacznijmy od prostego `count (*)` , aby zobaczyć, ile danych załadowałeś:
+Teraz czas dla części zabawnej, w rzeczywistości uruchamia kilka zapytań. Zacznijmy od prostego `count (*)`, aby zobaczyć, ile danych załadowałeś:
 
 ```sql
 SELECT count(*) from github_events;
 ```
 
-To działały dobrze. Powrócimy do tego sortowania agregacji w bitach, ale dla teraz przyjrzyjmy się kilku innym zapytaniom. W kolumnie JSONB `payload` istnieje dobry bit danych, ale jest ona różna w zależności od typu zdarzenia. `PushEvent`zdarzenia zawierają rozmiar, który obejmuje liczbę odrębnych zatwierdzeń dla wypychania. Możemy użyć jej do znalezienia łącznej liczby zatwierdzeń na godzinę:
+To działały dobrze. Powrócimy do tego sortowania agregacji w bitach, ale dla teraz przyjrzyjmy się kilku innym zapytaniom. W kolumnie `payload` JSONB istnieje dobry bit danych, ale jest ona różna w zależności od typu zdarzenia. zdarzenia `PushEvent` zawierają rozmiar, który obejmuje liczbę różnych zatwierdzeń dla wypychania. Możemy użyć jej do znalezienia łącznej liczby zatwierdzeń na godzinę:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,
@@ -113,9 +113,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Dotychczas zapytania dotyczyły wyłącznie wydarzeń usługi GitHub\_, ale możemy połączyć te informacje z użytkownikami usługi GitHub.\_ Ze względu na to, że podzielonej na fragmenty zarówno użytkowników, jak`user_id`i zdarzenia w tym samym identyfikatorze (), wiersze obu tabel ze zgodnymi identyfikatorami użytkowników będą współzlokalizowane w tych samych węzłach bazy danych i można je łatwo dołączyć. [](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation)
+Dotychczas zapytania dotyczyły usługi GitHub \_events wyłącznie, ale możemy połączyć te informacje z usługą GitHub \_users. Ze względu na to, że podzielonej na fragmenty zarówno użytkowników, jak i zdarzenia w tym samym identyfikatorze (`user_id`), wiersze obu tabel ze zgodnymi identyfikatorami użytkowników będą współdziałać [z tymi](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) samymi węzłami bazy danych i mogą być łatwe do przyłączenia.
 
-Jeśli dołączymy `user_id`się, funkcja skalowania może wypchnąć wykonywanie sprzężenia do fragmentów w celu wykonania równolegle w węzłach procesu roboczego. Załóżmy na przykład, że użytkownicy, którzy utworzyli największą liczbę repozytoriów:
+Jeśli dołączymy się do `user_id`, funkcja przedskalowania może wypchnąć wykonywanie operacji JOIN do fragmentów w celu wykonania równolegle w węzłach procesu roboczego. Załóżmy na przykład, że użytkownicy, którzy utworzyli największą liczbę repozytoriów:
 
 ```sql
 SELECT gu.login, count(*)

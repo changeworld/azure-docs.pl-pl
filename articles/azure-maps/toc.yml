@@ -53,8 +53,6 @@
       href: supported-languages.md
     - name: Obsługiwane style mapy
       href: supported-map-styles.md
-    - name: Przeglądarki obsługiwane przez zestaw Web SDK
-      href: supported-browsers.md
     - name: Poziomy powiększenia i siatka kafelków
       href: zoom-levels-and-tile-grid.md
     - name: Struktura danych usługi Mobility Service
@@ -147,6 +145,8 @@
               href: map-get-information-from-coordinate.md
             - name: Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B
               href: map-route.md
+        - name: Przeglądarki obsługiwane przez zestaw Web SDK
+          href: supported-browsers.md
     - name: Tworzenie aplikacji przy użyciu zestawu Android SDK
       items:
         - name: Wprowadzenie do kontrolek mapy systemu Android

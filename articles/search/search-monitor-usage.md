@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
 ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331210"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorowanie użycia zasobów i działania zapytań w Azure Search
@@ -30,8 +30,8 @@ Sekcje **użycia** i **monitorowania** wbudowane na stronie przeglądu raportuj�
 
 Karta **użycie** pokazuje dostępność zasobów względem bieżących [limitów](search-limits-quotas-capacity.md). Poniższa ilustracja dotyczy bezpłatnej usługi, która jest ograniczona do 3 obiektów każdego typu i 50 MB miejsca w magazynie. Usługa podstawowa lub standardowa ma wyższe limity i w przypadku zwiększenia liczby partycji Maksymalna ilość miejsca w magazynie jest proporcjonalna.
 
-![Stan użycia względem czynnych limitów](./media/search-monitor-usage/usage-tab.png
- "użycia względem limitów obowiązujących")
+![Stan użycia względem limitów obowiązujących](./media/search-monitor-usage/usage-tab.png
+ "Stan użycia względem limitów obowiązujących")
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>Zapytania na sekundę (zapytań) i inne metryki
 
@@ -40,7 +40,7 @@ Na karcie **monitorowanie** wyświetlane są średnie przenoszone wartości metr
 
 Te liczby są przybliżone i mają na celu zapewnienie ogólnego pomysłu, jak dobrze system obsługuje żądania. Rzeczywista wartość zapytań może być większa lub mniejsza od liczby raportowanej w portalu.
 
-![Zapytania na sekundę](./media/search-monitor-usage/monitoring-tab.png "dotyczące zapytań dotyczących aktywności na sekundę")
+![Działanie zapytań na sekundę](./media/search-monitor-usage/monitoring-tab.png "Działanie zapytań na sekundę")
 
 ## <a name="activity-logs"></a>Dzienniki aktywności
 
@@ -78,13 +78,13 @@ W tej sekcji dowiesz się, jak używać magazynu obiektów BLOB do przechowywani
 
 2. Otwórz stronę omówienia usługi wyszukiwania. W okienku nawigacji po lewej stronie przewiń w dół do **monitorowania** , a następnie kliknij pozycję **Włącz monitorowanie**.
 
-   ![Włącz]monitorowanie(./media/search-monitor-usage/enable-monitoring.png "Włączanie") monitorowania
+   ![Włącz monitorowanie](./media/search-monitor-usage/enable-monitoring.png "Włączanie monitorowania")
 
 3. Wybierz dane, które chcesz wyeksportować: dzienniki, metryki lub oba te elementy. Możesz skopiować go do konta magazynu, wysłać do centrum zdarzeń lub wyeksportować do Azure Monitor dzienników.
 
    W przypadku archiwizowania do usługi BLOB Storage musi istnieć tylko konto magazynu. Kontenery i obiekty blob zostaną utworzone w miarę konieczności podczas eksportowania danych dziennika.
 
-   ![Konfigurowanie archiwum magazynu obiektów BLOB](./media/search-monitor-usage/configure-blob-storage-archive.png "Skonfiguruj archiwum magazynu obiektów BLOB")
+   ![Konfigurowanie archiwum magazynu obiektów BLOB](./media/search-monitor-usage/configure-blob-storage-archive.png "Konfigurowanie archiwum magazynu obiektów BLOB")
 
 4. Zapisz profil.
 

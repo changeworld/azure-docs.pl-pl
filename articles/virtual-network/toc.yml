@@ -103,6 +103,8 @@
                   href: virtual-network-ipv4-ipv6-dual-stack-cli.md
                 - name: Szablon usługi Resource Manager
                   href: ipv6-configure-template-json.md
+            - name: Uaktualnienie w miejscu
+              href: ipv6-add-to-existing-vnet-powershell.md
             - name: Publiczny moduł równoważenia obciążenia w warstwie Standardowa
               items:
                 - name: Azure PowerShell

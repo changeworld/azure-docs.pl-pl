@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.openlocfilehash: 113286f829b628d4740fbba34e7279741a934aef
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265929"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Dołącz zasób Cognitive Services za pomocą zestawu umiejętności w Azure Search 
@@ -28,7 +28,7 @@ Możesz wzbogacić ograniczoną liczbę dokumentów bezpłatnie. Można też do�
 
 ## <a name="same-region-requirement"></a>Wymóg tego samego regionu
 
-Firma Microsoft wymaga, aby Azure Search i Azure Cognitive Services istnieć w tym samym regionie. W przeciwnym razie zostanie wyświetlony komunikat w czasie wykonywania:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+Firma Microsoft wymaga, aby Azure Search i Azure Cognitive Services istnieć w tym samym regionie. W przeciwnym razie zostanie wyświetlony komunikat w czasie wykonywania: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
 Nie ma możliwości przenoszenia usługi między regionami. Jeśli zostanie wyświetlony ten błąd, należy utworzyć nowy zasób Cognitive Services w tym samym regionie co Azure Search.
 
@@ -51,7 +51,7 @@ Bezpłatny (ograniczone wzbogacanie) zasoby są ograniczone do 20 dokumentów dz
 
    ![Rozwinięta sekcja Cognitive Services Attach](./media/cognitive-search-attach-cognitive-services/attach1.png "Rozwinięta sekcja Cognitive Services Attach")
 
-1. Przejdź do następnego kroku, **Dodaj wzbogacania**. Aby uzyskać opis umiejętności dostępnych w portalu, zobacz [krok 2: Dodaj umiejętności](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) poznawcze w przewodniku szybki start dla wyszukiwania poznawczego.
+1. Przejdź do następnego kroku, **Dodaj wzbogacania**. Aby uzyskać opis umiejętności dostępnych w portalu, zobacz [krok 2. Dodawanie umiejętności poznawczych](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) w przewodniku szybki start do wyszukiwania poznawczego.
 
 ## <a name="use-billable-resources"></a>Korzystanie z zasobów rozliczanych
 
@@ -63,7 +63,7 @@ Opłata jest naliczana tylko za umiejętności, które wywołują interfejsy API
 
 1. Rozwiń węzeł **dołącz Cognitive Services** a następnie wybierz pozycję **utwórz nowy zasób Cognitive Services**. Zostanie otwarta nowa karta, aby można było utworzyć zasób:
 
-   ![Tworzenie zasobu Cognitive Services](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Tworzenie zasobu Cognitive Services")
+   ![Tworzenie zasobu Cognitive Services](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Tworzenie zasobu usług Cognitive Services")
 
 1. Z listy **Lokalizacja** wybierz region, w którym znajduje się usługa Azure Search. Upewnij się, że ten region jest używany ze względu na wydajność. Użycie tego regionu również unieważnia opłaty za przepustowość wychodzącą w różnych regionach.
 
@@ -81,7 +81,7 @@ Opłata jest naliczana tylko za umiejętności, które wywołują interfejsy API
 
    ![Wybierz zasób Cognitive Services](./media/cognitive-search-attach-cognitive-services/attach2.png "Wybierz zasób Cognitive Services")
 
-1. Rozwiń sekcję **Dodawanie wzbogaceń** , aby wybrać konkretne umiejętności poznawcze, które mają być uruchamiane na danych. Ukończ resztę kreatora. Aby uzyskać opis umiejętności dostępnych w portalu, zobacz [krok 2: Dodaj umiejętności](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) poznawcze w przewodniku szybki start dla wyszukiwania poznawczego.
+1. Rozwiń sekcję **Dodawanie wzbogaceń** , aby wybrać konkretne umiejętności poznawcze, które mają być uruchamiane na danych. Ukończ resztę kreatora. Aby uzyskać opis umiejętności dostępnych w portalu, zobacz [krok 2. Dodawanie umiejętności poznawczych](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) w przewodniku szybki start do wyszukiwania poznawczego.
 
 ## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>Dołącz istniejący zestawu umiejętności do zasobu Cognitive Services
 
@@ -99,9 +99,9 @@ Jeśli masz istniejący zestawu umiejętności, możesz dołączyć go do nowego
 
 ## <a name="attach-cognitive-services-programmatically"></a>Dołącz Cognitive Services programowo
 
-Gdy tworzysz zestawu umiejętności programowo, Dodaj `cognitiveServices` sekcję do zestawu umiejętności. W tej sekcji należy uwzględnić klucz zasobu Cognitive Services, który ma zostać skojarzony z zestawu umiejętności. Należy pamiętać, że zasób musi znajdować się w tym samym regionie co zasób Azure Search. Należy również `@odata.type`uwzględnić i ustawić wartość. `#Microsoft.Azure.Search.CognitiveServicesByKey`
+Podczas programistycznego definiowania zestawu umiejętności, Dodaj sekcję `cognitiveServices` do zestawu umiejętności. W tej sekcji należy uwzględnić klucz zasobu Cognitive Services, który ma zostać skojarzony z zestawu umiejętności. Należy pamiętać, że zasób musi znajdować się w tym samym regionie co zasób Azure Search. Należy również uwzględnić `@odata.type` i ustawić ją na `#Microsoft.Azure.Search.CognitiveServicesByKey`.
 
-Poniższy przykład pokazuje ten wzorzec. Zwróć uwagę `cognitiveServices` na sekcję na końcu definicji.
+Poniższy przykład pokazuje ten wzorzec. Zwróć uwagę na sekcję `cognitiveServices` na końcu definicji.
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
@@ -137,7 +137,7 @@ Content-Type: application/json
 }
 ```
 
-## <a name="example-estimate-costs"></a>Przykład: Szacowanie kosztów
+## <a name="example-estimate-costs"></a>Przykład: oszacowanie kosztów
 
 Aby oszacować koszty związane z indeksowaniem wyszukiwania poznawczego, Zacznij od pomysłu dotyczącego wyglądu średniej dokumentu, aby można było uruchamiać pewne liczby. Na przykład może to być przybliżone:
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
 ms.openlocfilehash: 32ec97ce923c1cffd92fa6522f30abf7ea87fff7
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331189"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla Azure Search
@@ -41,7 +41,7 @@ Wybrana warstwa określa stawkę naliczaną. Poniższy zrzut ekranu z Azure Port
 
 **Bezpłatna** tworzy ograniczoną usługę wyszukiwania w klastrze, udostępnianą innym subskrybentom. Możesz wykonywać małe projekty, w tym Przewodniki Szybki Start i samouczki, ale nie można skalować usługi ani uruchamiać znaczących obciążeń. **Podstawowa** i **standardowa** są najczęściej używanymi warstwami do obciążania, a **standardem** domyślnym.
 
-![Warstwy cenowe Azure Search](media/search-sku-tier/tiers.png "warstw cenowych Azure Search")
+![Warstwy cenowe Azure Search](media/search-sku-tier/tiers.png "Warstwy cenowe Azure Search")
 
 Niektóre warstwy są zoptymalizowane pod kątem niektórych typów pracy. Na przykład **standardowa 3 wysoka gęstość (S3 HD)** jest *trybem hostingu* dla S3, gdzie podstawowy sprzęt jest zoptymalizowany pod kątem dużej liczby mniejszych indeksów i jest przeznaczony dla scenariuszy wielodostępnych. Funkcja S3 HD ma taką samą opłatą za jednostkę jak S3, ale sprzęt jest zoptymalizowany pod kątem szybkiego odczytu plików na dużej liczbie mniejszych indeksów.
 

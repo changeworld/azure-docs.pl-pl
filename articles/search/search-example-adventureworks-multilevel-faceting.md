@@ -1,5 +1,5 @@
 ---
-title: 'Przykład: Wielopoziomowe aspekty — Azure Search'
+title: 'Przykład: wielopoziomowe aspekty — Azure Search'
 description: Dowiedz się, jak tworzyć struktury aspektów dla taksonomii wielopoziomowej, tworząc zagnieżdżoną strukturę nawigacji, którą można uwzględnić na stronach aplikacji.
 author: HeidiSteen
 manager: nitinme
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70274081"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>Przykład: Wielopoziomowe aspekty w usłudze Azure Search
+# <a name="example-multi-level-facets-in-azure-search"></a>Przykład: wielopoziomowe aspekty w Azure Search
 
 Schematy Azure Search nie obsługują jawnie kategorii taksonomii wielopoziomowej, ale można je przybliżać przez manipulowanie zawartością przed indeksowaniem, a następnie zastosowanie specjalnej obsługi wyników. 
 
@@ -41,15 +41,15 @@ LEFT JOIN
 
 W indeksie zawierającym tę strukturę Utwórz pole **kolekcji (EDM. String)** w schemacie Azure Search, aby zapisać te dane, upewniając się, że atrybuty pola obejmują wyszukiwanie, filtrowanie, tworzenie i pobieranie.
 
-Teraz podczas indeksowania zawartości odwołującej się do określonej kategorii taksonomii Prześlij taksonomię jako tablicę zawierającą tekst z każdego poziomu taksonomii. Na przykład dla jednostki z `ProductCategoryId = 5 (Mountain Bikes)`, Prześlij pole jako`[ "Bikes", "Bikes|Mountain Bikes"]`
+Teraz podczas indeksowania zawartości odwołującej się do określonej kategorii taksonomii Prześlij taksonomię jako tablicę zawierającą tekst z każdego poziomu taksonomii. Na przykład dla jednostki z `ProductCategoryId = 5 (Mountain Bikes)` Prześlij pole jako `[ "Bikes", "Bikes|Mountain Bikes"]`
 
 Zwróć uwagę na umieszczenie kategorii nadrzędnej "Bikes" w podrzędnej wartości kategorii "Mountain Bikes". Każda Podkategoria powinna osadzić całą ścieżkę względem elementu głównego. Separator znaków potoku jest dowolny, ale musi być spójny i nie powinien znajdować się w tekście źródłowym. Znak separatora będzie używany w kodzie aplikacji do odtworzenia drzewa taksonomii z wyników aspektów.
 
 ## <a name="construct-the-query"></a>Konstruowanie zapytania
 
-Podczas wystawiania kwerend należy uwzględnić następujące specyfikacje aspektu (gdzie Taksonomia to pole taksonomii do prezentacji):`facet = taxonomy,count:50,sort:value`
+Podczas wystawiania kwerend należy uwzględnić następujące specyfikacje aspektu (gdzie Taksonomia to pole taksonomii do prezentacji): `facet = taxonomy,count:50,sort:value`
 
-Wartość licznika musi być wystarczająco wysoka, aby można było zwracać wszystkie możliwe wartości taksonomii. Dane AdventureWorks zawierają różne wartości taksonomii 41, co `count:50` jest wystarczające.
+Wartość licznika musi być wystarczająco wysoka, aby można było zwracać wszystkie możliwe wartości taksonomii. Dane AdventureWorks zawierają różne wartości taksonomii 41, dlatego `count:50` są wystarczające.
 
   ![Filtr aspektów](./media/search-example-adventureworks/facet-filter.png "Filtr aspektów")
 
@@ -89,10 +89,10 @@ Obiekt **Categories** może być teraz używany do renderowania zwijanego drzewa
  
 Każde łącze w drzewie powinno stosować filtr powiązany. Na przykład:
 
-+ **Taksonomia/wszystkie** `(x:x eq 'Accessories')` zwraca wszystkie dokumenty w gałęzi akcesoria
-+ **Taksonomia/wszystkie** `(x:x eq 'Accessories|Bike Racks')` zwraca tylko dokumenty z podkategorią stojaków rowerowych w gałęzi akcesoria.
++ **Taksonomia/dowolne** `(x:x eq 'Accessories')` zwraca wszystkie dokumenty w gałęzi akcesoria
++ **Taksonomia/dowolne** `(x:x eq 'Accessories|Bike Racks')` zwraca tylko dokumenty z podkategorią stojaków rowerowych w gałęzi akcesoria.
 
-Ta technika będzie skalowana w celu pokrycia bardziej złożonych scenariuszy, takich jak dokładniejsze drzewa taksonomii i zduplikowane podkategorie, które występują w różnych kategoriach `Camping Equipment|Forks`nadrzędnych (na przykład `Bike Components|Forks` i).
+Ta technika będzie skalowana w celu pokrycia bardziej złożonych scenariuszy, takich jak dokładniejsze drzewa taksonomii i zduplikowane podkategorie, które występują w różnych kategoriach nadrzędnych (na przykład `Bike Components|Forks` i `Camping Equipment|Forks`).
 
 > [!TIP]
 > Liczba zwróconych zestawów reguł ma wpływ na szybkość zapytania. Aby obsługiwać bardzo duże zestawy taksonomii, należy rozważyć dodanie pola Fronts **EDM. String** w celu utrzymania wartości taksonomii najwyższego poziomu dla każdego dokumentu. Następnie Zastosuj tę samą technikę powyżej, ale tylko wykonaj zapytanie dotyczące zestawu reguł (filtrowane dla głównego pola taksonomii), gdy użytkownik poszerzy węzeł najwyższego poziomu. Lub jeśli 100% odwoływanie nie jest wymagane, wystarczy zmniejszyć liczbę aspektów do rozsądnej liczby i upewnić się, że wpisy aspektu są sortowane według liczby.

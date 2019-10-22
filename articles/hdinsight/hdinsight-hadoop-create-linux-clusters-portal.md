@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.openlocfilehash: 687fde2e203ed471e2f0164f1f4a670de4afc74e
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71677084"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu Azure Portal
@@ -36,9 +36,9 @@ Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablon�
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
-1. W menu po lewej stronie przejdź do **+ Utwórz zasób** >  **Analytics** > **HDInsight**.
+1. W menu po lewej stronie przejdź do **+ Utwórz zasób**  >  **Analytics**  > **HDInsight**.
 
-    ![Utwórz nowy klaster w Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "tworzenia nowego klastra w Azure Portal")
+    ![Utwórz nowy klaster w Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Tworzenie nowego klastra w Azure Portal")
 
 1. Na stronie **Tworzenie klastra usługi HDInsight** wybierz pozycję **Przejdź do klasycznego tworzenia środowiska**.
 
@@ -48,7 +48,7 @@ Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablon�
 
 1. Wybierz **1 podstawowe**elementy. Następnie wprowadź poniższe informacje.
 
-    ![Tworzenie klastra w usłudze HDInsight —](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-basics.png "Tworzenie nowego klastra w Azure Portal")
+    ![Podstawowe informacje dotyczące tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-basics.png "Tworzenie nowego klastra w Azure Portal")
 
     * Wprowadź **nazwę klastra**. Ta nazwa musi być unikatowa w skali globalnej.
 
@@ -79,7 +79,7 @@ Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablon�
 
 1. W obszarze **3 magazynu**Określ, czy chcesz, aby usługa Azure storage lub Azure Data Lake Storage jako magazyn domyślny. Aby uzyskać więcej informacji, zobacz poniższą tabelę.
 
-     ![Utwórz magazyn klastra]w usłudze HDInsight tworzenie(./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "nowego klastra w Azure Portal")
+     ![Magazyn tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Tworzenie nowego klastra w Azure Portal")
 
      | Usługa Storage                                      | Opis |
      |----------------------------------------------|-------------|
@@ -98,7 +98,7 @@ Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablon�
 
 1. **5 rozmiar klastra** wyświetla informacje o węzłach, które są używane dla tego klastra. Ustaw liczbę węzłów procesu roboczego, które są potrzebne w klastrze. Zostanie również wyświetlony szacowany koszt uruchomienia klastra.
 
-    ![Tworzenie węzłów klastra przez usługi HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "Określanie liczby węzłów klastra")
+    ![Tworzenie węzłów klastra usługi HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "Określ liczbę węzłów klastra")
 
    > [!IMPORTANT]  
    > Jeśli planujesz więcej niż 32 węzłów procesu roboczego, wybierz rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM. Planowanie węzłów podczas tworzenia klastra lub skalowanie klastra po utworzeniu.
@@ -113,14 +113,14 @@ Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablon�
 
 1. W **podsumowaniu 7**Sprawdź wprowadzone wcześniej informacje. Następnie wybierz przycisk **Utwórz**.
 
-     ![Podsumowanie tworzenia klastra usługi HDInsight]—(./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "Określanie liczby węzłów klastra")
+     ![Podsumowanie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "Określ liczbę węzłów klastra")
     
     > [!NOTE]  
     > Tworzenie klastra zajmuje trochę czasu, zwykle około 20 minut. Monitoruj **powiadomienia** , aby sprawdzić proces aprowizacji.
 
 1. Po zakończeniu procesu tworzenia wybierz pozycję **Przejdź do zasobu** w ramach powiadomienia o **pomyślnym wdrożeniu** . Okno klaster zawiera poniższe informacje.
 
-    ![HDI Azure Portal klastra — Omówienie](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "właściwości klastra")
+    ![HDI klaster Azure Portal — Omówienie](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Właściwości klastra")
 
     Ikony w oknie są wyjaśnione w następujący sposób:
 
