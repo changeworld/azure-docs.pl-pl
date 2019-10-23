@@ -3,10 +3,6 @@
 - name: Architektura i projekt
   href: overview.md
   expanded: false
-  items: null
-- name: Architektura i projekt
-  href: overview.md
-  expanded: false
   items:
     - name: Wspólna odpowiedzialność w chmurze
       href: shared-responsibility.md
@@ -232,16 +228,12 @@
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Usługi zabezpieczeń platformy Azure
   href: services-technologies.md
-- name: Omówienia techniczne
-  href: overviews.md
 - name: Najlepsze praktyki
   href: best-practices-and-patterns.md
 - name: Zasoby
   items:
     - name: Wbudowane mechanizmy zabezpieczeń
       href: security-controls.md
-    - name: Program MVP dotyczący zabezpieczeń platformy Azure
-      href: mvp.md
     - name: Doradztwo z zakresu cyberbezpieczeństwa
       href: cyber-services.md
     - name: Rejestrowanie biletu pomocy technicznej zdarzenia zabezpieczeń
