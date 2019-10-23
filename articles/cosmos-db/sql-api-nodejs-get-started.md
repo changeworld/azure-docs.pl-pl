@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 213794828b838010b526026ae15f24122748e141
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: 5de0fe47d8ca6372c35cc4f148f97b366a1a742c
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989423"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971394"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Samouczek: Tworzenie aplikacji konsolowej Node.js przy użyciu zestawu SDK dla języka JavaScript na potrzeby zarządzania danymi interfejsu API SQL usługi Azure Cosmos DB
 
@@ -138,7 +138,7 @@ Teraz, gdy masz kod służący do zainicjowania klienta usługi Azure Cosmos DB,
 1. Skopiuj i wklej poniższy kod, aby ustawić identyfikator bazy danych i identyfikator kontenera. Te identyfikatory określają sposób znajdowania właściwej bazy danych i kontenera przez klienta usługi Azure Cosmos DB.
 
    ```javascript
-   const client = new CosmosClient({ endpoint, key } });
+   const client = new CosmosClient({ endpoint, key });
 
    // ADD THIS PART TO YOUR CODE
    const HttpStatusCodes = { NOTFOUND: 404 };

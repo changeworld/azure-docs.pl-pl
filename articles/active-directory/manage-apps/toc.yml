@@ -68,6 +68,8 @@
               href: end-user-experiences.md
     - name: Automatyczna aprowizacja użytkowników
       items:
+        - name: Planowanie wdrożenia automatycznego aprowizowania użytkowników
+          href: plan-auto-user-provisioning.md
         - name: Automatyczna aprowizacja w aplikacjach obsługujących standard SCIM
           href: use-scim-to-provision-users-and-groups.md
     - name: Serwer proxy aplikacji dla aplikacji lokalnych

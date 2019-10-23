@@ -599,8 +599,10 @@
       items:
         - name: Wprowadzenie
           href: mongodb-introduction.md
-        - name: Obsługa protokołu przewodowego
+        - name: Obsługa protokołu przewodowego (3.2)
           href: mongodb-feature-support.md
+        - name: Obsługa protokołu przewodowego (3.6)
+          href: mongodb-feature-support-36.md
         - name: Przewodniki Szybki start
           items:
             - name: .NET
