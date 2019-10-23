@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 50de654fb9222951a7380a322160496421006e7a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 57e38888249de448f5286baa1b5ebb0e2c01bda9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719682"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757414"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Interfejsy API na potrzeby automatyzacji rezerwacji platformy Azure
 
@@ -26,7 +26,7 @@ Używając interfejsów API platformy Azure, można programowo uzyskiwać inform
 
 Za pomocą interfejsu API rekomendacji rezerwacji możesz uzyskiwać rekomendacje dotyczące zakupu planu rezerwacji na podstawie użycia w organizacji. Aby uzyskać więcej informacji, zobacz [Get reservation recommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation) (Uzyskiwanie rekomendacji dotyczących rezerwacji).
 
-Możesz również analizować użycie zasobów za pomocą szczegółów użycia interfejsu API zużycia. Aby uzyskać więcej informacji, zobacz [Usage Details - List For Billing Period By Billing Account](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod) (Lista użycia — lista dla okresu rozliczeniowego według konta rozliczeniowego). Zasoby platformy Azure, z których stale korzystasz, są zwykle najlepszym kandydatem do rezerwacji.
+Możesz również analizować użycie zasobów za pomocą szczegółów użycia interfejsu API zużycia. Aby uzyskać więcej informacji, zobacz [Usage Details - List For Billing Period By Billing Account](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod-legacy) (Lista użycia — lista dla okresu rozliczeniowego według konta rozliczeniowego). Zasoby platformy Azure, z których stale korzystasz, są zwykle najlepszym kandydatem do rezerwacji.
 
 ## <a name="buy-a-reservation"></a>Kupowanie rezerwacji
 
