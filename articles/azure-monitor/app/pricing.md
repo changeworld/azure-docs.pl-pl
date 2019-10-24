@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 4674dede5912dc1dc64bd0e092e28461f30bebcd
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: MT
+ms.openlocfilehash: f9d92f03b1f55ad9d1f1e272886095ae48033266
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554222"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750393"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -45,7 +45,7 @@ Istnieją dwa podejścia do rozwiązania tego zagadnienia: użycie domyślnego m
 
 Przy [pobieraniu próbkowania](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)zestawu SDK ASP.NET wolumin danych jest dostosowywany automatycznie, aby zachować w ramach określonego maksymalnego natężenia ruchu dla domyślnego monitorowania Application Insights. Jeśli aplikacja tworzy niską ilość danych telemetrycznych, na przykład podczas debugowania lub z powodu niskiego użycia, elementy nie zostaną porzucone przez procesor próbkowania, o ile ilość poniżej skonfigurowanych zdarzeń na sekundę. W przypadku aplikacji o dużym nasileniu, z domyślnym progiem 5 zdarzeń na sekundę, próbkowanie adaptacyjne ograniczy liczbę codziennych zdarzeń do 432 000. Przy użyciu typowego średniego rozmiaru zdarzenia o wartości 1 KB odpowiada to 13,4 GB danych telemetrycznych na każdy węzeł obsługujący aplikację (ponieważ próbkowanie jest wykonywane lokalnie dla każdego węzła). 
 
-W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, można zastosować [próbkowanie](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) pozyskiwania próbek, gdy dane są odbierane przez Application Insights na podstawie procentu ilości danych do zachowania lub [próbkowania o stałym rozmiarze dla ASP.NET, ASP.NET Core i Java witryny internetowe](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) umożliwiające zmniejszenie ruchu wysyłanego z serwera sieci Web i przeglądarek sieci Web
+W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, można zastosować [próbkowanie](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) pozyskiwania próbek, gdy dane są odbierane przez Application Insights na podstawie procentu ilości danych do zachowania lub [próbkowania o stałym rozmiarze dla ASP.NET, ASP.NET Core i Java witryny internetowe](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) umożliwiające zmniejszenie ruchu wysyłanego z serwera sieci Web i przeglądarek sieci Web
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Dowiedz się, co zbiera podobne odbiorcy
 
@@ -164,7 +164,7 @@ W każdym zachowanym rekordzie `itemCount` wskazuje liczbę oryginalnych rekord�
 
 ## <a name="change-the-data-retention-period"></a>Zmień okres przechowywania danych
 
-Domyślne przechowywanie dla zasobów Application Insights to 90 dni. Dla każdego zasobu Application Insights można wybrać różne okresy przechowywania. Pełny zestaw dostępnych okresów przechowywania to 30, 60, 90, 120, 180, 270, 365, 550 lub 730. 
+Domyślne przechowywanie dla zasobów Application Insights to 90 dni. Dla każdego zasobu usługi Application Insights można wybrać inny okres przechowywania. Pełny zestaw dostępnych okresów przechowywania to 30, 60, 90, 120, 180, 270, 365, 550 lub 730. 
 
 Aby zmienić przechowywanie, z zasobu Application Insights przejdź na stronę **użycie i szacowane koszty** i wybierz opcję **przechowywania danych** :
 

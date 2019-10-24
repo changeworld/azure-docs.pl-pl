@@ -4,30 +4,30 @@ description: Jak zaktualizować lub usunąć przypisanie roli niestandardowej us
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63c2c96f53861eafcd95df8f5163d14bcb5fbd5f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: ccbc9fbd763b9393a64d6cfc29f6b5a9d021da88
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947345"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756334"
 ---
 # <a name="update-or-remove-an-assigned-azure-ad-custom-role-in-privileged-identity-management"></a>Aktualizowanie lub usuwanie przypisanej roli niestandardowej usługi Azure AD w Privileged Identity Management
 
 W tym artykule przedstawiono sposób używania Privileged Identity Management (PIM) do aktualizowania lub usuwania przypisywania just in Time i Time do ról niestandardowych utworzonych na potrzeby zarządzania aplikacjami w środowisku administracyjnym usługi Azure Active Directory (Azure AD). 
 
 - Aby uzyskać więcej informacji na temat tworzenia ról niestandardowych w celu delegowania zarządzania aplikacjami w usłudze Azure AD, zobacz [Niestandardowe role administratorów w Azure Active Directory (wersja zapoznawcza)](../users-groups-roles/roles-custom-overview.md). 
-- Jeśli jeszcze nie korzystasz Privileged Identity Management, uzyskaj więcej informacji na temat rozpoczynania pracy [przy użyciu Privileged Identity Management](pim-getting-started.md).
+- Jeśli jeszcze nie korzystasz Privileged Identity Management, uzyskaj więcej informacji na temat [rozpoczynania pracy przy użyciu Privileged Identity Management](pim-getting-started.md).
 
 > [!NOTE]
 > Role niestandardowe usługi Azure AD nie są zintegrowane z wbudowanymi rolami katalogu w wersji zapoznawczej. Gdy funkcja jest ogólnie dostępna, zarządzanie rolami zarządzania rolami będzie odbywać się w wbudowanym środowisku ról.
@@ -41,7 +41,7 @@ Wykonaj następujące kroki, aby zaktualizować lub usunąć istniejące niestan
 
     ![Wybieranie ról niestandardowych usługi Azure AD w wersji zapoznawczej, aby zobaczyć kwalifikujące się przypisania ról](./media/azure-ad-custom-roles-assign/view-custom.png)
 
-1. Wybierz pozycję **role** , aby wyświetlić listę przypisań ról niestandardowych dla aplikacji usługi Azure AD.
+1. Wybierz pozycję **role** , aby wyświetlić listę **przypisań** ról niestandardowych dla aplikacji usługi Azure AD.
 
     ![Wybierz role Zobacz listę kwalifikujących się przypisań ról](./media/azure-ad-custom-roles-update-remove/assignments-list.png)
 

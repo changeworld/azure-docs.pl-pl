@@ -3,19 +3,19 @@ title: Moderowanie obrazów — Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Content Moderator korzystaj z narzędzia do oceny obrazów z erotyczneją maszynową i w pętli, aby uzyskać umiarkowane obrazy dotyczące zawartości dla dorosłych i.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 8b3449edb539ab56fcf206a367f9b81e43290733
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 3bc5bc99984367b44b38a65266d2915c47ca6fd0
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564911"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757352"
 ---
 # <a name="learn-image-moderation-concepts"></a>Poznaj pojęcia związane z moderowaniem obrazu
 
@@ -145,6 +145,6 @@ Aby uzyskać więcej złożonychych przypadków, użyj [Narzędzia do przeglądu
 
 ![Przeglądanie obrazu przez moderatorów-ludzi](images/moderation-reviews-quickstart-dotnet.PNG)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przetestuj [konsolę interfejsu API moderowania obrazów](try-image-api.md) i użyj przykładów kodu interfejsu API REST. Zapoznaj się również z [przewodnikiem Szybki Start](image-moderation-quickstart-dotnet.md) dotyczącym moderowania obrazów w przypadku znajomości C#programów Visual Studio i.
+Przetestuj [konsolę interfejsu API moderowania obrazów](try-image-api.md) i użyj przykładów kodu interfejsu API REST. Zapoznaj się również z [przewodnikiem Szybki Start dotyczącym moderowania obrazów](image-moderation-quickstart-dotnet.md) w przypadku znajomości C#programów Visual Studio i.

@@ -3,19 +3,19 @@ title: Tworzenie przeglądów transkrypcji wideo przy użyciu platformy .NET Con
 titleSuffix: Azure Cognitive Services
 description: Tworzenie przeglądów transkrypcji wideo przy użyciu zestawu Content Moderator SDK dla platformy .NET
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: c7d68685a772bb777fff1dd56a25990b9d0406ef
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 7fe254aa6e78133102a295c5e60a10d29f6382a4
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242818"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757170"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Tworzenie przeglądów transkrypcji wideo przy użyciu platformy .NET
 
@@ -153,7 +153,7 @@ Utwórz recenzję wideo za pomocą **ContentModeratorClient. Reviews. CreateVide
 **CreateVideoReviews** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien mieć wartość "Application/JSON". 
 1. Nazwa zespołu Content Moderator.
-1. Obiekt **> IList @ no__t-1CreateVideoReviewsBodyItem** . Każdy obiekt **CreateVideoReviewsBodyItem** reprezentuje przegląd wideo. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
+1. Obiekt **IList \<CreateVideoReviewsBodyItem >** . Każdy obiekt **CreateVideoReviewsBodyItem** reprezentuje przegląd wideo. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
 
 **CreateVideoReviewsBodyItem** ma kilka właściwości. Należy ustawić co najmniej następujące właściwości:
 - **Zawartość**. Adres URL filmu wideo, który ma zostać sprawdzony.
@@ -161,7 +161,7 @@ Utwórz recenzję wideo za pomocą **ContentModeratorClient. Reviews. CreateVide
 - **Stan**. Ustaw wartość na "unopublikowałd". Jeśli go nie ustawisz, zostanie on ustawiony jako "Oczekujący", co oznacza, że przegląd wideo jest publikowany i oczekuje na weryfikację przez człowieka. Po opublikowaniu recenzji wideo nie można już dodawać do niej ramek wideo, transkrypcji ani moderowania transkrypcji.
 
 > [!NOTE]
-> **CreateVideoReviews** zwraca wartość IList @ no__t-1string >. Każdy z tych ciągów zawiera identyfikator dla recenzji wideo. Identyfikatory te są identyfikatorami GUID i nie są takie same jak wartość właściwości **identyfikatorze** .
+> **CreateVideoReviews** zwraca element IList > \<string. Każdy z tych ciągów zawiera identyfikator dla recenzji wideo. Identyfikatory te są identyfikatorami GUID i nie są takie same jak wartość właściwości **identyfikatorze** .
 
 Dodaj następującą definicję metody do VideoReviews przestrzeni nazw, programu klasy.
 
@@ -251,7 +251,7 @@ Oprócz dodawania transkrypcji do przeglądu wideo, można również dodać wyni
 
 Transkrypcja musi być w formacie WebVTT. Aby uzyskać więcej informacji, zobacz [WebVTT: format danych wideo w sieci Web](https://www.w3.org/TR/webvtt1/).
 
-Dodaj następującą definicję metody do VideoTranscriptReviews przestrzeni nazw, programu klasy. Ta metoda przesyła transkrypcję do metody **ContentModeratorClient. Textłagodzenie. ScreenText** . Tłumaczy również wynik na element IList @ no__t-0TranscriptModerationBodyItem > i przesyła do **AddVideoTranscriptModerationResult**.
+Dodaj następującą definicję metody do VideoTranscriptReviews przestrzeni nazw, programu klasy. Ta metoda przesyła transkrypcję do metody **ContentModeratorClient. Textłagodzenie. ScreenText** . Tłumaczy również wynik na element IList \<TranscriptModerationBodyItem > i przesyła do **AddVideoTranscriptModerationResult**.
 
 ```csharp
 /// <summary>
@@ -375,7 +375,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>Przejdź do przeglądu transkrypcji wideo
 
-Przejdź do przeglądu transkrypcji filmów wideo w narzędziu do przeglądu Content Moderator na ekranie **przegląd**>**wideo**@no__t **-3.**
+Przejdź do przeglądu transkrypcji wideo w narzędziu Content Moderator recenzja na ekranie **przegląd** >**wideo** >**transkrypcji** .
 
 Zobaczysz następujące funkcje:
 - Dwa wiersze dodanego transkrypcji

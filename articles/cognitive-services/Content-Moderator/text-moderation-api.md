@@ -1,21 +1,21 @@
 ---
 title: Moderowanie tekstu — Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Użyj moderowania tekstu, aby uzyskać niechciany tekst, dane OSOBowe i niestandardowe listy warunków.
+description: Użyj moderowania tekstu, aby uzyskać niechciany tekst, dane osobowe i niestandardowe listy warunków.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: e1d5224d8dc86c82624613b0d2a984ceef3ae5bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: c5127d0f16a12840cda735d1682cb578266441fe
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564379"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757250"
 ---
 # <a name="learn-text-moderation-concepts"></a>Poznaj pojęcia związane z moderowaniem tekstu
 
@@ -34,7 +34,7 @@ Odpowiedź usługi zawiera następujące informacje:
 
 ## <a name="profanity"></a>Wulgaryzmów
 
-Jeśli interfejs API wykryje wszelkie nieodpowiednie warunki w żadnym z [obsługiwanych języków](Text-Moderation-API-Languages.md), te warunki są zawarte w odpowiedzi. Odpowiedź zawiera również lokalizację (`Index`) w oryginalnym tekście. W poniższym przykładowym kodzie JSON odwołują się do warunków znalezionych w [niestandardowych listach terminów](try-terms-list-api.md) , jeśli są dostępne. `ListId`
+Jeśli interfejs API wykryje wszelkie nieodpowiednie warunki w żadnym z [obsługiwanych języków](Text-Moderation-API-Languages.md), te warunki są zawarte w odpowiedzi. Odpowiedź zawiera również lokalizację (`Index`) w oryginalnym tekście. @No__t_0 w poniższym przykładowym formacie JSON odwołuje się do warunków znalezionych w [niestandardowych listach terminów](try-terms-list-api.md) , jeśli są dostępne.
 
     "Terms": [
     {
@@ -70,17 +70,17 @@ Poniższy wyodrębnienie w ekstrakcie JSON pokazuje przykładowe dane wyjściowe
 
 ### <a name="explanation"></a>Wyjaśnienie
 
-- `Category1`odnosi się do potencjalnej obecności języka, który może być uważany za jawny lub dorosły w pewnych sytuacjach.
-- `Category2`odnosi się do potencjalnej obecności języka, który może być uważany za seksowo lub dojrzały w niektórych sytuacjach.
-- `Category3`odnosi się do potencjalnej obecności języka, który może być uznany za obraźliwy w pewnych sytuacjach.
-- `Score`jest z zakresu od 0 do 1. Im wyższy wynik, tym większy jest przewidywanie, że Kategoria może być stosowana. Ta funkcja opiera się na modelu statystycznym zamiast ręcznie zakodowanych wyników. Zalecamy testowanie przy użyciu własnej zawartości, aby określić, jak każda kategoria jest wyrównana do wymagań.
-- `ReviewRecommended`ma wartość true lub false, w zależności od wewnętrznych progów wyniku. Klienci powinni ocenić, czy należy używać tej wartości, czy też decydować o niestandardowych progach na podstawie ich zasad dotyczących zawartości.
+- `Category1` odnosi się do potencjalnej obecności języka, który może być uważany za jawny lub dorosły w pewnych sytuacjach.
+- `Category2` odnosi się do potencjalnej obecności języka, który może być traktowany w pewnych sytuacjach płciowo.
+- `Category3` odnosi się do potencjalnej obecności języka, który może być uznany za obraźliwy w pewnych sytuacjach.
+- `Score` jest z zakresu od 0 do 1. Im wyższy wynik, tym większy jest przewidywanie, że Kategoria może być stosowana. Ta funkcja opiera się na modelu statystycznym zamiast ręcznie zakodowanych wyników. Zalecamy testowanie przy użyciu własnej zawartości, aby określić, jak każda kategoria jest wyrównana do wymagań.
+- `ReviewRecommended` ma wartość true lub false, w zależności od wewnętrznych progów wyniku. Klienci powinni ocenić, czy należy używać tej wartości, czy też decydować o niestandardowych progach na podstawie ich zasad dotyczących zawartości.
 
 ## <a name="personal-data"></a>Dane osobowe
 
-Funkcja dane OSOBowe wykrywa potencjalną obecność tych informacji:
+Funkcja danych osobowych wykrywa potencjalną obecność tych informacji:
 
-- Adres e-mail
+- Email address (Adres e-mail)
 - Adres wysyłkowy nas
 - Adres IP
 - Numer telefonu USA
@@ -89,51 +89,68 @@ Funkcja dane OSOBowe wykrywa potencjalną obecność tych informacji:
 
 W poniższym przykładzie pokazano przykładową odpowiedź:
 
-    "PII": {
-        "Email": [{
-            "Detected": "abcdef@abcd.com",
-            "SubType": "Regular",
-            "Text": "abcdef@abcd.com",
-            "Index": 32
-            }],
-        "IPA": [{
-            "SubType": "IPV4",
-            "Text": "255.255.255.255",
-            "Index": 72
-            }],
-        "Phone": [{
-            "CountryCode": "US",
-            "Text": "6657789887",
-            "Index": 56
-            }, {
-            "CountryCode": "US",
-            "Text": "870 608 4000",
-            "Index": 212
-            }, {
-            "CountryCode": "UK",
-            "Text": "+44 870 608 4000",
-            "Index": 208
-            }, {
-            "CountryCode": "UK",
-            "Text": "0344 800 2400",
-            "Index": 228
-            }, {
-            "CountryCode": "UK",
-            "Text": "0800 820 3300",
-            "Index": 245
-            }],
-        "Address": [{
-            "Text": "1 Microsoft Way, Redmond, WA 98052",
-            "Index": 89
-            }],
-        "SSN": [{
-            "Text": "999999999",
-            "Index": 56
-            }, {
-            "Text": "999-99-9999",
-            "Index": 267
-            }]
-        }
+```json
+"PII":{ 
+  "Email":[ 
+    { 
+      "Detected":"abcdef@abcd.com",
+      "SubType":"Regular",
+      "Text":"abcdef@abcd.com",
+      "Index":32
+    }
+  ],
+  "IPA":[ 
+    { 
+      "SubType":"IPV4",
+      "Text":"255.255.255.255",
+      "Index":72
+    }
+  ],
+  "Phone":[ 
+    { 
+      "CountryCode":"US",
+      "Text":"6657789887",
+      "Index":56
+    },
+    { 
+      "CountryCode":"US",
+      "Text":"870 608 4000",
+      "Index":212
+    },
+    { 
+      "CountryCode":"UK",
+      "Text":"+44 870 608 4000",
+      "Index":208
+    },
+    { 
+      "CountryCode":"UK",
+      "Text":"0344 800 2400",
+      "Index":228
+    },
+    { 
+      "CountryCode":"UK",
+      "Text":"0800 820 3300",
+      "Index":245
+    }
+  ],
+  "Address":[ 
+    { 
+      "Text":"1 Microsoft Way, Redmond, WA 98052",
+      "Index":89
+    }
+  ],
+  "SSN":[ 
+    { 
+      "Text":"999999999",
+      "Index":56
+    },
+    { 
+      "Text":"999-99-9999",
+      "Index":267
+    }
+  ]
+}
+```
 
 ## <a name="auto-correction"></a>Funkcja Autokorekty
 
@@ -167,4 +184,4 @@ Content Moderator udostępnia [interfejs API listy terminów](https://westus.dev
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przetestuj [konsolę interfejsu API moderowania tekstu](try-text-api.md) i użyj przykładów kodu interfejsu API REST. Zapoznaj się również z tematem [przewodnika Szybki Start](text-moderation-quickstart-dotnet.md) dotyczącego moderowania tekstu w C#przypadku znajomości programów Visual Studio i.
+Przetestuj [konsolę interfejsu API moderowania tekstu](try-text-api.md) i użyj przykładów kodu interfejsu API REST. Zapoznaj się również z tematem [przewodnika Szybki Start dotyczącego moderowania tekstu](text-moderation-quickstart-dotnet.md) w C#przypadku znajomości programów Visual Studio i.

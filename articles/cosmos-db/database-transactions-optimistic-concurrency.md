@@ -1,18 +1,18 @@
 ---
 title: Transakcje bazy danych i optymistyczna kontrola współbieżności w Azure Cosmos DB
 description: W tym artykule opisano transakcje bazy danych i optymistyczną kontrolę współbieżności w Azure Cosmos DB
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: b58255aa471fe78c84b5f6a7432c0f3d402f0875
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4c263b32b7ededb9e5169e80a29806f322a3c849
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467903"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755172"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Transakcje i optymistyczna kontrola współbieżności
 
@@ -49,13 +49,13 @@ Możliwość wykonywania kodu JavaScript bezpośrednio w aparacie bazy danych za
 
 ## <a name="optimistic-concurrency-control"></a>Optymistyczna kontrola współbieżności 
 
-Optymistyczna kontrola współbieżności umożliwia Zapobieganie utracie aktualizacji i usunięć. Współbieżne operacje powodujące konflikt są uzależnione od zwykłego blokowania pesymistycznego aparatu bazy danych hostowanego przez partycję logiczną będącą właścicielem elementu. Gdy dwie operacje współbieżne będą próbowały zaktualizować najnowszą wersję elementu w ramach partycji logicznej, jeden z nich zostanie wygrany, a drugie zakończy się niepowodzeniem. Jeśli jednak jedna lub dwie operacje próbujące zaktualizować ten sam element wcześniej odczytały starszą wartość elementu, baza danych nie wie, czy poprzednio odczytana wartość przez jedną lub obie operacje powodujące konflikt były rzeczywiście ostatnią wartością elementu. Na szczęście tę sytuację można wykryć przy użyciu optymistycznej **kontroli współbieżności (OCC)** przed umożliwieniem, aby dwie operacje mogły wprowadzić granicę transakcji wewnątrz aparatu bazy danych. OCC chroni dane przed przypadkowym zastąpieniem zmian wprowadzonych przez inne osoby. Uniemożliwia to innym osobom przypadkowe zastąpienie własnych zmian.
+Optymistyczna kontrola współbieżności umożliwia Zapobieganie utracie aktualizacji i usunięć. Współbieżne operacje powodujące konflikt są uzależnione od zwykłego blokowania pesymistycznego aparatu bazy danych hostowanego przez partycję logiczną będącą właścicielem elementu. Gdy dwie operacje współbieżne będą próbowały zaktualizować najnowszą wersję elementu w ramach partycji logicznej, jeden z nich zostanie wygrany, a drugie zakończy się niepowodzeniem. Jeśli jednak jedna lub dwie operacje próbujące zaktualizować ten sam element wcześniej odczytały starszą wartość elementu, baza danych nie wie, czy poprzednio odczytana wartość przez jedną lub obie operacje powodujące konflikt były rzeczywiście ostatnią wartością elementu. Na szczęście tę sytuację można wykryć przy użyciu **optymistycznej kontroli współbieżności (OCC)** przed umożliwieniem, aby dwie operacje mogły wprowadzić granicę transakcji wewnątrz aparatu bazy danych. OCC chroni dane przed przypadkowym zastąpieniem zmian wprowadzonych przez inne osoby. Uniemożliwia to innym osobom przypadkowe zastąpienie własnych zmian.
 
 Współbieżne aktualizacje elementu są uzależnione od warstwy protokołu komunikacyjnego OCC przez Azure Cosmos DB. Usługa Azure Cosmos Database gwarantuje, że wersja elementu po stronie klienta aktualizowana (lub usuwana) jest taka sama jak wersja elementu w kontenerze usługi Azure Cosmos. Gwarantuje to, że zapisy są chronione przed przypadkowym zastąpieniem przez zapisy innych i na odwrót. W środowisku z obsługą kilku użytkowników optymistyczna kontrola współbieżności chroni przed przypadkowym usunięciem lub aktualizacją nieprawidłowej wersji elementu. W związku z tym elementy są chronione przed problemami z inFAMOUS "utraconej aktualizacji" lub "utracone usuwanie".
 
-Każdy element przechowywany w kontenerze usługi Azure Cosmos ma właściwość zdefiniowaną przez `_etag` system. Wartość `_etag` jest automatycznie generowana i aktualizowana przez serwer za każdym razem, gdy element zostanie zaktualizowany. `_etag`może być używany z nagłówkiem żądania `if-match` dostarczonego przez klienta, aby umożliwić serwerowi podjęcie decyzji o tym, czy element może być aktualizowany warunkowo. Wartość `if-match` nagłówka jest zgodna z wartością `_etag` na serwerze, a następnie jest aktualizowana. Jeśli wartość `if-match` nagłówka żądania nie jest już aktualna, serwer odrzuca operację z komunikatem odpowiedzi "Niepowodzenie warunku wstępnego http 412". Następnie klient może ponownie pobrać element, aby uzyskać bieżącą wersję elementu na serwerze, lub zastąpić wersję elementu na serwerze własną `_etag` wartością dla tego elementu. Ponadto, można `_etag` użyć `if-none-match` z nagłówkiem, aby określić, czy konieczne jest ponowne pobranie zasobu. 
+Każdy element przechowywany w kontenerze usługi Azure Cosmos ma zdefiniowaną przez system właściwość `_etag`. Wartość `_etag` jest automatycznie generowana i aktualizowana przez serwer za każdym razem, gdy element zostanie zaktualizowany. `_etag` można użyć z nagłówkiem żądania `if-match` klienta, aby umożliwić serwerowi podjęcie decyzji o tym, czy element może być aktualizowany warunkowo. Wartość nagłówka `if-match` jest zgodna z wartością `_etag` na serwerze, a następnie element zostanie zaktualizowany. Jeśli wartość nagłówka żądania `if-match` nie jest już aktualna, serwer odrzuca operację z komunikatem odpowiedzi "Niepowodzenie warunku wstępnego HTTP 412". Następnie klient może ponownie pobrać element, aby uzyskać bieżącą wersję elementu na serwerze, lub zastąpić wersję elementu na serwerze własnym `_etag` wartością dla tego elementu. Ponadto `_etag` mogą być używane z nagłówkiem `if-none-match`, aby określić, czy konieczne jest ponowne pobranie zasobu. 
 
-`_etag` Wartość elementu jest zmieniana za każdym razem, gdy element zostanie zaktualizowany. W przypadku operacji `if-match` Zamień element musi być jawnie wyrażona jako część opcji żądania. Aby zapoznać się z przykładem, zobacz przykładowy kod w usłudze [GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). `_etag`wartości są niejawnie sprawdzane dla wszystkich elementów zapisanych przez procedurę składowaną. W przypadku wykrycia dowolnego konfliktu procedura składowana wycofa transakcję i zgłosi wyjątek. W przypadku tej metody wszystkie lub żadne zapisy w procedurze składowanej są stosowane niepodzielnie. Jest to sygnał do aplikacji w celu ponownego zastosowania aktualizacji i ponowienia próby oryginalnego żądania klienta.
+Wartość `_etag` elementu jest zmieniana za każdym razem, gdy element zostanie zaktualizowany. W przypadku operacji zastępowania elementu `if-match` musi być jawnie wyrażona jako część opcji żądania. Aby zapoznać się z przykładem, zobacz przykładowy kod w usłudze [GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). wartości `_etag` są niejawnie sprawdzane dla wszystkich elementów zapisanych przez procedurę składowaną. W przypadku wykrycia dowolnego konfliktu procedura składowana wycofa transakcję i zgłosi wyjątek. W przypadku tej metody wszystkie lub żadne zapisy w procedurze składowanej są stosowane niepodzielnie. Jest to sygnał do aplikacji w celu ponownego zastosowania aktualizacji i ponowienia próby oryginalnego żądania klienta.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 17db8dbcba8dd0181be9ca7289ea1b85079ff9a1
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f7f45e479ad21b27832573b73a5e09e8da1b37b1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168512"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756119"
 ---
 # <a name="plan-virtual-networks"></a>Planowanie sieci wirtualnych
 
@@ -107,13 +107,13 @@ Zasoby w jednej sieci wirtualnej nie mogą rozpoznać nazw zasobów w równorzę
 
 ## <a name="permissions"></a>Uprawnienia
 
-Platforma Azure używa [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) do zasobów. Uprawnienia są przypisywane do [zakresu](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) w następującej hierarchii: subskrypcja, Grupa zarządzania, Grupa zasobów i indywidualny zasób. Aby dowiedzieć się więcej o hierarchii, zobacz [organizowanie zasobów](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby współpracować z sieciami wirtualnymi platformy Azure i wszystkimi związanymi z nimi funkcjami, takimi jak Komunikacja równorzędna, sieciowe grupy zabezpieczeń, punkty końcowe usługi i tabele tras, można przypisać członków organizacji do wbudowanego [właściciela](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [współautora](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)lub [ Role współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) , a następnie przypisz rolę do odpowiedniego zakresu. Jeśli chcesz przypisać określone uprawnienia dla podzestawu możliwości sieci wirtualnej, Utwórz [rolę niestandardową](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i przypisz określone uprawnienia wymagane dla [sieci wirtualnych](manage-virtual-network.md#permissions), [podsieci i punktów końcowych usługi](virtual-network-manage-subnet.md#permissions), [interfejsów sieciowych ](virtual-network-network-interface.md#permissions), [Komunikacja równorzędna](virtual-network-manage-peering.md#permissions), [Sieć i grupy zabezpieczeń aplikacji](manage-network-security-group.md#permissions)lub [tabele tras](manage-route-table.md#permissions) do roli.
+Platforma Azure używa [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) do zasobów. Uprawnienia są przypisywane do [zakresu](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) w następującej hierarchii: grupy zarządzania, subskrypcji, grupy zasobów i poszczególnych zasobów. Aby dowiedzieć się więcej o hierarchii, zobacz [organizowanie zasobów](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Aby współpracować z sieciami wirtualnymi platformy Azure i wszystkimi związanymi z nimi funkcjami, takimi jak Komunikacja równorzędna, sieciowe grupy zabezpieczeń, punkty końcowe usługi i tabele tras, można przypisać członków organizacji do wbudowanego [właściciela](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [współautora](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)lub [ Role współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) , a następnie przypisz rolę do odpowiedniego zakresu. Jeśli chcesz przypisać określone uprawnienia dla podzestawu możliwości sieci wirtualnej, Utwórz [rolę niestandardową](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i przypisz określone uprawnienia wymagane dla [sieci wirtualnych](manage-virtual-network.md#permissions), [podsieci i punktów końcowych usługi](virtual-network-manage-subnet.md#permissions), [interfejsów sieciowych ](virtual-network-network-interface.md#permissions), [Komunikacja równorzędna](virtual-network-manage-peering.md#permissions), [Sieć i grupy zabezpieczeń aplikacji](manage-network-security-group.md#permissions)lub [tabele tras](manage-route-table.md#permissions) do roli.
 
 ## <a name="policy"></a>Zasady
 
 Azure Policy umożliwia tworzenie i przypisywanie definicji zasad oraz zarządzanie nimi. Definicje zasad wymuszają stosowanie różnych reguł do zasobów, dzięki czemu zasoby pozostają zgodne ze standardami organizacji i umowami dotyczącymi poziomu usług. Azure Policy uruchamia ocenę zasobów i skanuje zasoby, które nie są zgodne z definicjami zasad. Na przykład można zdefiniować i zastosować zasady, które umożliwiają tworzenie sieci wirtualnych tylko w określonej grupie zasobów lub regionie. Inne zasady mogą wymagać, aby do każdej podsieci była skojarzona sieciowa Grupa zabezpieczeń. Zasady są następnie oceniane podczas tworzenia i aktualizowania zasobów.
 
-Zasady są stosowane do następującej hierarchii: subskrypcja, Grupa zarządzania i Grupa zasobów. Dowiedz się więcej na temat [usługi Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub Wdróż niektóre przykłady [szablonów zasad](policy-samples.md) sieci wirtualnej.
+Zasady są stosowane do następującej hierarchii: grupy zarządzania, subskrypcji i grupy zasobów. Dowiedz się więcej na temat [usługi Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub Wdróż niektóre przykłady [szablonów zasad](policy-samples.md) sieci wirtualnej.
 
 ## <a name="next-steps"></a>Następne kroki
 

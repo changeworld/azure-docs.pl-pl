@@ -1,19 +1,19 @@
 ---
 title: Wykonywanie zapytań o dane za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 description: Dowiedz się, jak wykonywać zapytania o dane za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 8bdd88652019ceb48cfd9f05d1009271f5b7a8c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 40385524e85f950fb32b69817fec27d842370736
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60727152"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754760"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Wykonywanie zapytań o dane przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -297,7 +297,7 @@ Następne zapytanie zwraca wszystkie rodziny, w których rozmiar tablicy z dzie�
 
 Żadne wyniki nie zostaną zwrócone, ponieważ nie ma żadnych rodzin z więcej niż 2 dzieci. To zapytanie powiedzie się i zwróci pełny dokument tylko wtedy, gdy parametr będzie równy 2.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wykonano następujące czynności:
 

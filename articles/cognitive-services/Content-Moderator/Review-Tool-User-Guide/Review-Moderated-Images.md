@@ -3,19 +3,19 @@ title: Korzystanie z przeglądów zawartości za pomocą narzędzia do przegląd
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak narzędzie do przeglądu pozwala moderatorom ludzkim przeglądać obrazy w portalu internetowym.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: sajagtap
-ms.openlocfilehash: 065d3cd80f93753eb91571d4ada4fe7151258ec0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 53d06f84172da0c4717cabe79f4f5152e73e9555
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882662"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754263"
 ---
 # <a name="create-human-reviews"></a>Tworzenie przeglądów ludzkich
 
@@ -34,7 +34,7 @@ W tym przewodniku dowiesz się, jak skonfigurować [przeglądy](../review-api.md
 
     Obrazy są wyświetlane z dowolnymi etykietami, które zostały przypisane przez proces automatycznego moderowania. Obrazy przesłane za pomocą narzędzia do przeglądu nie są widoczne dla innych recenzentów.
 
-1. Opcjonalnie Przenieś przeglądy **do** suwaka wyświetlania (1), aby dostosować liczbę obrazów wyświetlanych na ekranie. Kliknij przyciski **otagowane** lub nieoznakowane (2), aby odpowiednio posortować obrazy. Kliknij Panel tagów (3), aby go włączyć lub wyłączyć.
+1. Opcjonalnie Przenieś **przeglądy do** suwaka wyświetlania (1), aby dostosować liczbę obrazów wyświetlanych na ekranie. Kliknij przyciski **otagowane** lub **nieoznakowane** (2), aby odpowiednio posortować obrazy. Kliknij Panel tagów (3), aby go włączyć lub wyłączyć.
 
     ![Przeglądarka Chrome pokazująca narzędzie do przeglądu z otagowanymi obrazami do przeglądu](images/review-images-2.png)
 

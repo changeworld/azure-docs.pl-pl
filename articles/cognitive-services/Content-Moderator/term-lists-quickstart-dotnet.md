@@ -3,19 +3,19 @@ title: Sprawdzanie tekstu względem listy terminów niestandardowych w języku C
 titleSuffix: Azure Cognitive Services
 description: Jak moderować tekst przy użyciu list terminów niestandardowych za pomocą zestawu Content Moderator SDK dla języka C#.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: d1c2f8b06d333be23f25a2d150c23269bf84cd2e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 272063c3fcc77c76536dbd007b1ab0132a565e61
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242829"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757265"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Sprawdzanie tekstu względem listy terminów niestandardowych w języku C#
 
@@ -274,7 +274,7 @@ Do sprawdzania tekstu przy użyciu listy terminów służy metoda **ContentModer
 - Typ MIME, który może mieć wartość „text/html”, „text/xml”, „text/markdown” lub „text/plain”.
 - Tekst do sprawdzenia.
 - Wartość logiczna. Ustaw wartość **true** w tym polu w celu autokorekty tekstu przed jego sprawdzaniem.
-- Wartość logiczna. Ustaw wartość **true** w tym polu w celu wykrywania danych osobowych w tekście.
+- Wartość logiczna. Ustaw to pole na **wartość true** , aby wykrywać dane osobowe w tekście.
 - Identyfikator listy terminów.
 
 Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).

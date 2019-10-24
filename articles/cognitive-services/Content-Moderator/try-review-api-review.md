@@ -3,19 +3,19 @@ title: Tworzenie przeglądów moderowania za pomocą konsoli interfejsu API REST
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z interfejsów API usługi Azure Content Moderator, aby utworzyć przeglądy obrazów lub tekstu na potrzeby moderowania przez człowieka.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: ec45f182e24f44c2222d64f18e2aa0aeea845727
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882340"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757136"
 ---
 # <a name="create-human-reviews-rest"></a>Tworzenie przeglądów ludzkich (REST)
 
@@ -36,16 +36,16 @@ Aby utworzyć przegląd, przejdź do strony **[Przegląd — tworzenie](https://
 Wprowadź wartości dla **TeamName**i **OCP-APIM-Subscription-Key**:
 
 - **TeamName**: Identyfikator zespołu, który został utworzony podczas konfigurowania konta narzędzia do [przeglądania](https://contentmoderator.cognitive.microsoft.com/) (znajdującego się w polu **Identyfikator** na ekranie poświadczeń narzędzia przeglądu).
-- **Ocp-Apim-Subscription-Key**: Klucz Content Moderator. Można to znaleźć na karcie **Ustawienia** w narzędziu do [przeglądu](https://contentmoderator.cognitive.microsoft.com).
+- **OCP-APIM-Subscription-Key**: klucz Content Moderator. Można to znaleźć na karcie **Ustawienia** w [narzędziu do przeglądu](https://contentmoderator.cognitive.microsoft.com).
 
 ### <a name="enter-a-review-definition"></a>Wprowadź definicję przeglądu
 
 Edytuj pole **treści żądania** , aby wprowadzić żądanie JSON z następującymi polami:
 
-- **Metadane**: Niestandardowe pary klucz-wartość, które mają zostać zwrócone do punktu końcowego wywołania zwrotnego. Jeśli klucz jest krótkim kodem, który jest zdefiniowany w narzędziu do [przeglądu](https://contentmoderator.cognitive.microsoft.com), pojawia się jako tag.
-- **Zawartość**: W przypadku zawartości obrazu i wideo jest to ciąg adresu URL wskazujący zawartość. W przypadku zawartości tekstowej jest to rzeczywisty ciąg tekstowy.
-- **Identyfikatorze**: Niestandardowy ciąg identyfikatora. Ten ciąg jest przesyłany do interfejsu API i zwracany przez wywołanie zwrotne. Jest to przydatne w przypadku kojarzenia wewnętrznych identyfikatorów lub metadanych z wynikami zadania moderowania.
-- **CallbackEndpoint**: Obowiązkowe Adres URL do odbierania informacji zwrotnych po zakończeniu przeglądu.
+- **Metadane**: niestandardowe pary klucz-wartość, które mają zostać zwrócone do punktu końcowego wywołania zwrotnego. Jeśli klucz jest krótkim kodem, który jest zdefiniowany w [narzędziu do przeglądu](https://contentmoderator.cognitive.microsoft.com), pojawia się jako tag.
+- **Zawartość**: w przypadku zawartości obrazu i wideo jest to ciąg adresu URL wskazujący zawartość. W przypadku zawartości tekstowej jest to rzeczywisty ciąg tekstowy.
+- **Identyfikatorze**: niestandardowy ciąg identyfikatora. Ten ciąg jest przesyłany do interfejsu API i zwracany przez wywołanie zwrotne. Jest to przydatne w przypadku kojarzenia wewnętrznych identyfikatorów lub metadanych z wynikami zadania moderowania.
+- **CallbackEndpoint**: (opcjonalnie) adres URL do odbierania informacji zwrotnych po zakończeniu przeglądu.
 
 W domyślnej treści żądania przedstawiono przykłady różnych typów przeglądów, które można utworzyć:
 
@@ -129,13 +129,13 @@ W domyślnej treści żądania przedstawiono przykłady różnych typów przegl�
 
 ### <a name="submit-your-request"></a>Prześlij żądanie
   
-Wybierz pozycję **Wyślij**. Jeśli operacja się powiedzie, **stan odpowiedzi** to `200 OK`, a w polu **zawartość odpowiedzi** zostanie wyświetlony Identyfikator przeglądu. Skopiuj ten identyfikator, aby użyć go w poniższych krokach.
+Wybierz pozycję **Wyślij**. Jeśli operacja powiedzie się, **stan odpowiedzi** to `200 OK`, a w polu **zawartość odpowiedzi** zostanie wyświetlony Identyfikator przeglądu. Skopiuj ten identyfikator, aby użyć go w poniższych krokach.
 
 ![Przegląd — Tworzenie pola zawartość odpowiedzi konsoli wyświetla identyfikator przeglądu](images/test-drive-review-2.PNG)
 
 ### <a name="examine-the-new-review"></a>Zbadaj nowy przegląd
 
-W narzędziu do [przeglądu](https://contentmoderator.cognitive.microsoft.com)wybierz pozycję **Przeglądaj** > **wideo** **tekst**/**obrazu**/(w zależności od użytej zawartości). Zaprzekazywana zawartość powinna zostać wyświetlona, gotowa do przeglądu przez ludzi.
+W [narzędziu do przeglądu](https://contentmoderator.cognitive.microsoft.com)wybierz **pozycję przeglądaj**  > **obraz** /**tekst** /**wideo** (w zależności od użytej zawartości). Zaprzekazywana zawartość powinna zostać wyświetlona, gotowa do przeglądu przez ludzi.
 
 ![Zapoznaj się z obrazem narzędzia piłka nożna](images/test-drive-review-5.PNG)
 
@@ -149,7 +149,7 @@ Wprowadź parametry wywołania REST zgodnie z powyższą sekcją. W tym kroku **
 
 ![Przegląd — tworzenie wyników Get konsoli](images/test-drive-review-3.PNG)
   
-Wybierz pozycję **Wyślij**. Jeśli operacja powiedzie się, **stan odpowiedzi** to, `200 OK`a w polu **zawartość odpowiedzi** zostaną wyświetlone szczegóły przeglądu w formacie JSON, takie jak następujące:
+Wybierz pozycję **Wyślij**. Jeśli operacja powiedzie się, **stan odpowiedzi** to `200 OK`, a w polu **zawartość odpowiedzi** zostaną wyświetlone szczegóły przeglądu w formacie JSON, takie jak następujące:
 
 ```json
 {  
@@ -186,9 +186,9 @@ Wybierz pozycję **Wyślij**. Jeśli operacja powiedzie się, **stan odpowiedzi*
 
 Zwróć uwagę na następujące pola w odpowiedzi:
 
-- **status**
-- **reviewerResultTags**: Ten komunikat jest wyświetlany, jeśli jakikolwiek tag został ręcznie dodany przez zespół ds. kontroli ludzkich (podano pole **createdBy** ).
-- **metadane**: Przedstawiono w nim znaczniki, które zostały początkowo dodane w przeglądzie, zanim zespół ds. kontroli przez ludzi wprowadził zmiany.
+- **Stany**
+- **reviewerResultTags**: pojawia się, jeśli jakikolwiek tag został ręcznie dodany przez zespół ds. kontroli ludzkich (podano pole **createdBy** ).
+- **metadane**: pokazuje Tagi, które zostały początkowo dodane w przeglądzie, zanim zespół ds. recenzji nie wprowadził zmian.
 
 ## <a name="next-steps"></a>Następne kroki
 

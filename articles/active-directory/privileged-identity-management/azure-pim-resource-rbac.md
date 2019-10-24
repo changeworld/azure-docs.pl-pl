@@ -4,28 +4,28 @@ description: Wyświetl historię działań i inspekcji dla ról zasobów platfor
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e1ed018f66d4f5eefd02d587504cf64969f47b
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 0c9a58fb6cd8591f571b4e65c3ab88cc59e38cda
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804054"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756331"
 ---
-# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Wyświetlanie historii działań i inspekcji dla ról zasobów platformy Azure w usłudze PIM
+# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Wyświetlanie historii działań i inspekcji dla ról zasobów platformy Azure w Privileged Identity Management
 
-Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) można wyświetlać działania, aktywacje i historię inspekcji dla ról zasobów platformy Azure w organizacji. Obejmuje to subskrypcje, grupy zasobów, a nawet maszyny wirtualne. Każdy zasób w Azure Portal, który korzysta z funkcji kontroli dostępu opartej na rolach (RBAC) na platformie Azure, może korzystać z funkcji zarządzania zabezpieczeniami i cyklem życia w programie PIM.
+Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) można wyświetlać działania, aktywacje i historię inspekcji dla ról zasobów platformy Azure w organizacji. Obejmuje to subskrypcje, grupy zasobów, a nawet maszyny wirtualne. Każdy zasób w ramach Azure Portal, który korzysta z funkcji kontroli dostępu opartej na rolach (RBAC) na platformie Azure, może korzystać z możliwości zarządzania zabezpieczeniami i cyklem życia w programie Privileged Identity Management.
 
 ## <a name="view-activity-and-activations"></a>Wyświetl aktywność i aktywacje
 
@@ -51,7 +51,7 @@ Aby zobaczyć akcje wykonywane przez określonego użytkownika w różnych zasob
 
 ## <a name="export-role-assignments-with-children"></a>Eksportowanie przypisań ról z elementami podrzędnymi
 
-Może istnieć wymóg zgodności, w którym należy podać pełną listę przypisań ról do audytorów. Program PIM umożliwia wykonywanie zapytań dotyczących przypisań ról w określonym zasobie, który obejmuje przypisania ról dla wszystkich zasobów podrzędnych. Wcześniej było trudne, aby administratorzy mogli uzyskać pełną listę przypisań ról dla subskrypcji i musiały wyeksportować przypisania ról dla każdego określonego zasobu. Korzystając z usługi PIM, można wysyłać zapytania dotyczące wszystkich aktywnych i kwalifikujących się przypisań ról w ramach subskrypcji, w tym przypisania ról dla wszystkich grup zasobów i zasobów.
+Może istnieć wymóg zgodności, w którym należy podać pełną listę przypisań ról do audytorów. Privileged Identity Management umożliwia wykonywanie zapytań dotyczących przypisań ról w określonym zasobie, które obejmują przypisania ról dla wszystkich zasobów podrzędnych. Wcześniej było trudne, aby administratorzy mogli uzyskać pełną listę przypisań ról dla subskrypcji i musiały wyeksportować przypisania ról dla każdego określonego zasobu. Za pomocą Privileged Identity Management można wysyłać zapytania dotyczące wszystkich aktywnych i kwalifikujących się przypisań ról w ramach subskrypcji, łącznie z przypisaniami ról dla wszystkich grup zasobów i zasobów.
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 
@@ -67,7 +67,7 @@ Może istnieć wymóg zgodności, w którym należy podać pełną listę przypi
 
 1. Kliknij pozycję **Eksportuj wszystkie elementy członkowskie** , aby wyeksportować wszystkie przypisania ról w pliku CSV.
 
-    ![Wyeksportowane przypisania ról w pliku CSV PLI jako wyświetlane w programie Excel](media/azure-pim-resource-rbac/export-csv.png)
+    ![Wyeksportowane przypisania ról w pliku CSV jako wyświetlane w programie Excel](media/azure-pim-resource-rbac/export-csv.png)
 
 ## <a name="view-resource-audit-history"></a>Wyświetl historię inspekcji zasobów
 
@@ -111,6 +111,6 @@ Moja Inspekcja umożliwia wyświetlenie własnej aktywności roli użytkownika.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Przypisywanie ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-assign-roles.md)
-- [Zatwierdzanie lub odrzucanie żądań dotyczących ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-approval-workflow.md)
-- [Wyświetlanie historii inspekcji dla ról usługi Azure AD w usłudze PIM](pim-how-to-use-audit-log.md)
+- [Przypisywanie ról zasobów platformy Azure w Privileged Identity Management](pim-resource-roles-assign-roles.md)
+- [Zatwierdzanie lub odrzucanie żądań dotyczących ról zasobów platformy Azure w Privileged Identity Management](pim-resource-roles-approval-workflow.md)
+- [Wyświetlanie historii inspekcji dla ról usługi Azure AD w Privileged Identity Management](pim-how-to-use-audit-log.md)

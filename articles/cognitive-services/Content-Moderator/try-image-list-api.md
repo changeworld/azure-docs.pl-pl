@@ -3,19 +3,19 @@ title: Umiarkowane obrazy z listami niestandardowymi i konsolą interfejsu API C
 titleSuffix: Azure Content Moderator
 description: Do tworzenia niestandardowych list obrazów służy interfejs API zarządzania listami w usłudze Azure Content Moderator.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 2b2ab138945d32ca874dc20576d412c862965dc9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564359"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757189"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Umiarkowane z listami obrazów niestandardowych w konsoli interfejsu API
 
@@ -135,7 +135,7 @@ Ten przykład usuwa pojedynczy obraz:
  
    Zostanie otwarta konsola interfejsu API **usuwania obrazu** .
  
-3. W polu **listId** wprowadź identyfikator listy, z której ma zostać usunięty obraz.  Jest to liczba zwracana w obrazie **— Uzyskaj wszystkie identyfikatory obrazów** konsoli dla elementu moje listy. Następnie wprowadź **ImageId** obrazu do usunięcia. 
+3. W polu **listId** wprowadź identyfikator listy, z której ma zostać usunięty obraz.  Jest to liczba zwracana w **obrazie — Uzyskaj wszystkie identyfikatory obrazów** konsoli dla elementu moje listy. Następnie wprowadź **ImageId** obrazu do usunięcia. 
 
 W naszym przykładzie IDENTYFIKATORem listy jest **58953**, wartość dla **ContentSource**. Identyfikator obrazu to **59021**, wartość dla **ContentIds**.
 

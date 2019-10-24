@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: af20c9e3a50c0c60135b1e447e7e1cba1fc36526
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: fe4a2082647ef1325d03ce4eec428ed1579704c5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815723"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755981"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoków uczenia maszynowego za pomocą zestawu SDK Azure Machine Learning
 
@@ -30,7 +30,7 @@ Utworzone potoki ML są widoczne dla członków [obszaru roboczego](how-to-manag
 
 Potoki ML wykorzystują zdalne cele obliczeniowe do obliczeń i przechowywania danych pośrednich i końcowych skojarzonych z tym potokiem. Mogą odczytywać i zapisywać dane w i z obsługiwanych lokalizacji [usługi Azure Storage](https://docs.microsoft.com/azure/storage/) .
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -54,7 +54,7 @@ Utwórz zasoby wymagane do uruchomienia potoku ML:
 
 * Skonfiguruj magazyn danych, który jest używany do uzyskiwania dostępu do wymaganych przez kroki potoku.
 
-* Skonfiguruj obiekt `DataReference` w taki sposób, aby wskazywał dane, które znajdują się w lub jest dostępny w magazynie danych.
+* Skonfiguruj obiekt `DataReference` w taki sposób, aby wskazywał dane, które znajdują się w, lub jest dostępny w magazynie danych.
 
 * Skonfiguruj [cele obliczeń](concept-azure-machine-learning-architecture.md#compute-targets) , na których będą uruchamiane kroki potoku.
 
@@ -278,7 +278,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-Ponowne użycie poprzednich wyników (`allow_reuse`) jest kluczem w przypadku używania potoków w środowisku współpracy, ponieważ wyeliminowanie niepotrzebnych ponownych prób zapewnia elastyczność. Ponowne użycie jest zachowaniem domyślnym, gdy script_name, dane wejściowe i parametry kroku pozostają takie same. Gdy dane wyjściowe kroku są ponownie używane, zadanie nie zostanie przesłane do obliczenia, a wyniki z poprzedniego przebiegu są natychmiast dostępne dla uruchomienia następnego kroku. Jeśli wartość `allow_reuse` ma wartość false, po wykonaniu potoku jest zawsze generowany nowy przebieg dla tego kroku. 
+Ponowne użycie poprzednich wyników (`allow_reuse`) jest kluczem w przypadku używania potoków w środowisku współpracy, ponieważ wyeliminowanie niepotrzebnych ponownych prób zapewnia elastyczność. Ponowne użycie jest zachowaniem domyślnym, gdy script_name, dane wejściowe i parametry kroku pozostają takie same. Gdy dane wyjściowe kroku są ponownie używane, zadanie nie zostanie przesłane do obliczenia, a wyniki z poprzedniego przebiegu są natychmiast dostępne dla uruchomienia następnego kroku. Jeśli `allow_reuse` jest ustawiona na false, nowy przebieg będzie zawsze generowany dla tego kroku podczas wykonywania potoku. 
 
 Po zdefiniowaniu kroków można skompilować potok za pomocą niektórych lub wszystkich tych kroków.
 
@@ -354,7 +354,7 @@ Aby uzyskać więcej informacji, zobacz informacje o [klasie eksperymentów](htt
 
 ## <a name="github-tracking-and-integration"></a>Śledzenie i integracja z usługą GitHub
 
-Po rozpoczęciu szkolenia w przypadku, gdy katalog źródłowy jest lokalnym repozytorium git, informacje o repozytorium są przechowywane w historii uruchamiania. Na przykład bieżący identyfikator zatwierdzenia dla repozytorium jest rejestrowany jako część historii.
+Po rozpoczęciu szkolenia w przypadku, gdy katalog źródłowy jest lokalnym repozytorium git, informacje o repozytorium są przechowywane w historii uruchamiania. Aby uzyskać więcej informacji, zobacz Integracja z usługą [git dla Azure Machine Learning](concept-train-model-git-integration.md).
 
 ## <a name="publish-a-pipeline"></a>Publikowanie potoku
 
@@ -370,7 +370,7 @@ Można opublikować potok, aby uruchomić go z innymi danymi wejściowymi późn
      default_value=10)
    ```
 
-2. Dodaj ten obiekt `PipelineParameter` jako parametr do dowolnego z kroków w potoku w następujący sposób:
+2. Dodaj ten `PipelineParameter` obiekt jako parametr do dowolnego z kroków w potoku w następujący sposób:
 
    ```python
    compareStep = PythonScriptStep(
@@ -410,10 +410,10 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>Wyświetl wyniki opublikowanego potoku
 
 Zobacz listę wszystkich opublikowanych potoków i ich szczegóły przebiegu:
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. [Wyświetlenie obszaru roboczego](how-to-manage-workspace.md#view) , aby znaleźć listę potoków.
- ![list potoków uczenia maszynowego @ no__t-1
+ ![list potoków uczenia maszynowego ](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Wybierz konkretny potok, aby wyświetlić wyniki przebiegu.
 
@@ -436,10 +436,10 @@ Można ją ponownie włączyć z `p.enable()`. Aby uzyskać więcej informacji, 
 
 Aby zoptymalizować i dostosować zachowanie potoków, można wykonać kilka czynności związanych z buforowaniem i wielokrotnym użyciem. Można na przykład wybrać następujące opcje:
 + Wyłącz **domyślne ponowne użycie kroku uruchamiania etapu** przez ustawienie `allow_reuse=False` podczas [definiowania kroku](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Ponowne użycie jest kluczem przy użyciu potoków w środowisku współpracy, ponieważ wyeliminowanie niepotrzebnych uruchomień zapewnia elastyczność. Można jednak zrezygnować z ponownego użycia.
-+ **Zwiększ mieszanie poza skryptem**, aby dołączyć ścieżkę bezwzględną lub względną do pliku katalog_źródłowy do innych plików i katalogów przy użyciu `hash_paths=['<file or directory']` 
++ **Rozszerzenie mieszania wykraczające poza skrypt**, aby również zawierać ścieżkę bezwzględną lub względną do pliku katalog_źródłowy do innych plików i katalogów przy użyciu `hash_paths=['<file or directory']` 
 + **Wymuś ponowne wygenerowanie danych wyjściowych dla wszystkich kroków w przebiegu** z `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-Domyślnie, `allow_reuse` dla kroków jest włączona, a tylko główny plik skryptu jest używany jako skrót. Tak więc, jeśli skrypt dla danego kroku pozostaje taki sam (`script_name`, dane wejściowe i parametry), dane wyjściowe wykonywane w poprzednim kroku są ponownie używane, zadanie nie zostanie przesłane do obliczenia, a wyniki z poprzedniego przebiegu są natychmiast dostępne do następnego kroku.  
+Domyślnie `allow_reuse` dla kroków jest włączona i tylko plik głównego skryptu jest tworzony przy użyciu skrótu. Tak więc, jeśli skrypt dla danego kroku pozostaje taki sam (`script_name`, dane wejściowe i parametry), dane wyjściowe wykonywane w poprzednim kroku są ponownie używane, zadanie nie zostanie przesłane do obliczenia, a wyniki z poprzedniego przebiegu są natychmiast dostępne do następnego kroku.  
 
 ```python
 step = PythonScriptStep(name="Hello World",

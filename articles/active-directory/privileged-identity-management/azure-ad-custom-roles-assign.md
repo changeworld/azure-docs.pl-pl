@@ -4,31 +4,31 @@ description: Jak przypisać rolę niestandardową usługi Azure AD na potrzeby P
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a3f6eb815677133f3d7fe6ce07d6abf23db1f04
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1c4963e6563db166566cff41d381295a8a9e576b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947338"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756354"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Przypisywanie roli niestandardowej usługi Azure AD w Privileged Identity Management
 
 W tym artykule przedstawiono sposób użycia Privileged Identity Management (PIM) do tworzenia przypisywania just-in-Time i Time do ról niestandardowych utworzonych na potrzeby zarządzania aplikacjami w środowisku administracyjnym usługi Azure Active Directory (Azure AD).
 
 - Aby uzyskać więcej informacji na temat tworzenia ról niestandardowych w celu delegowania zarządzania aplikacjami w usłudze Azure AD, zobacz [Niestandardowe role administratorów w Azure Active Directory (wersja zapoznawcza)](../users-groups-roles/roles-custom-overview.md).
-- Jeśli jeszcze nie korzystasz Privileged Identity Management, uzyskaj więcej informacji na temat rozpoczynania pracy [z usługą PIM](pim-getting-started.md).
-- Aby uzyskać informacje na temat udzielania innym administratorom dostępu do zarządzania Privileged Identity Management, zobacz [udzielanie dostępu innym administratorom w celu zarządzania usługą PIM](pim-how-to-give-access-to-pim.md).
+- Jeśli jeszcze nie korzystasz Privileged Identity Management, uzyskaj więcej informacji na temat [rozpoczynania pracy przy użyciu Privileged Identity Management](pim-getting-started.md).
+- Aby uzyskać informacje na temat udzielania innym administratorom dostępu do zarządzania Privileged Identity Management, zobacz [udzielanie dostępu innym administratorom w celu zarządzania Privileged Identity Management](pim-how-to-give-access-to-pim.md).
 
 > [!NOTE]
 > Role niestandardowe usługi Azure AD nie są zintegrowane z wbudowanymi rolami katalogu w wersji zapoznawczej. Gdy funkcja jest ogólnie dostępna, zarządzanie rolami będzie odbywać się w interfejsie wbudowanym.
@@ -71,7 +71,7 @@ Privileged Identity Management może zarządzać rolami niestandardowymi, które
 1. Jeśli **trwałe** pole wyboru jest obecne i dostępne (w zależności od ustawień roli), można określić, czy przydział jest trwały. Zaznacz pole wyboru, aby przydzielić trwale kwalifikujące się lub trwale przypisane. Usuń zaznaczenie tego pola wyboru, aby określić czas trwania przypisywania.
 1. Aby utworzyć nowe przypisanie roli, kliknij przycisk **Zapisz** , a następnie **Dodaj**. Zostanie wyświetlony komunikat z informacją o stanie procesu przypisywania.
 
-Aby sprawdzić przypisanie roli, w otwartej roli wybierz pozycję **przypisania** > **Przypisz** i sprawdź, czy przypisanie roli jest prawidłowo zidentyfikowane jako kwalifikujące się lub aktywne.
+Aby sprawdzić przypisanie roli, w otwartej roli wybierz pozycję **przypisania**  > **Przypisz** i sprawdź, czy przypisanie roli jest prawidłowo zidentyfikowane jako kwalifikujące się lub aktywne.
 
  ![Sprawdź, czy przypisanie roli jest widoczne jako kwalifikujące się lub aktywne](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 

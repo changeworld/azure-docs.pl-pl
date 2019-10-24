@@ -1,18 +1,18 @@
 ---
 title: Globalnie dystrybuowany magazyn transakcyjny i analityczny dla kontenerów usługi Azure Cosmos
 description: Dowiedz się więcej o magazynie transakcyjnym i analitycznym oraz ich opcjach konfiguracji dla kontenerów usługi Azure Cosmos.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 27ca2102ee95273fbedd1a870e57d2ae3318e879
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: abf222b7a6d6e8fd053fa83c066d2b7850f575ab
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703394"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756904"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Globalnie dystrybuowany magazyn transakcyjny i analityczny dla kontenerów usługi Azure Cosmos
 
@@ -29,11 +29,11 @@ Transakcyjny aparat magazynu jest obsługiwany przez lokalną dysków SSD, podcz
 
 |Funkcja  |Magazyn transakcyjny  |Magazyn analityczny |
 |---------|---------|---------|
-|Maksymalny rozmiar magazynu na kontener usługi Azure Cosmos |   Nieograniczona liczba      |    Nieograniczona liczba     |
-|Maksymalny rozmiar magazynu na klucz partycji logicznej   |   10 GB      |   Nieograniczona liczba      |
+|Maksymalny rozmiar magazynu na kontener usługi Azure Cosmos |   Bez ograniczeń      |    Bez ograniczeń     |
+|Maksymalny rozmiar magazynu na klucz partycji logicznej   |   10 GB      |   Bez ograniczeń      |
 |Kodowanie magazynu  |   Zorientowane na wiersze przy użyciu formatu wewnętrznego.   |   Zorientowane na kolumny przy użyciu formatu Apache Parquet. |
 |Miejscowość magazynu |   Zreplikowane magazyny obsługiwane przez lokalne/wewnętrzne dysków SSD klastra. |  Replikowany magazyn został poddany niedrogim dysków SSD zdalnego/wyłączenia klastra.       |
-|Wytrzymałości  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |
+|Trwałość  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |
 |Interfejsy API, które uzyskują dostęp do danych  |   SQL, MongoDB, Cassandra, Gremlin, tabele i Etcd.       | Apache Spark         |
 |Przechowywanie (czas wygaśnięcia lub TTL)   |  Oparte na zasadach, skonfigurowane w kontenerze usługi Azure Cosmos za pomocą właściwości `DefaultTimeToLive`.       |   Oparte na zasadach, skonfigurowane w kontenerze usługi Azure Cosmos za pomocą właściwości `ColumnStoreTimeToLive`.      |
 |Cena za GB    |   $0,25/GB      |  $0,02/GB       |
@@ -90,19 +90,19 @@ W zależności od danego scenariusza można niezależnie włączać lub wyłącz
 
 1. **Konfigurowanie kontenera wyłącznie dla obciążeń analitycznych (z nieograniczonym przechowywaniem)**
 
-   Kontener usługi Azure Cosmos można skonfigurować wyłącznie na potrzeby obciążeń analitycznych. Ta konfiguracja ma zalety, w której nie jest wymagana opłata za magazyn transakcyjny. Jeśli celem jest użycie kontenera wyłącznie do obciążeń analitycznych, można wyłączyć magazyn transakcyjny, ustawiając wartość `DefaultTimeToLive` na 0 w kontenerze Cosmos. można także włączyć magazyn analityczny z nieograniczonym przechowywaniem, ustawiając `ColumnStoreTimeToLive` na-1.
+   Kontener usługi Azure Cosmos można skonfigurować wyłącznie na potrzeby obciążeń analitycznych. Ta konfiguracja ma zalety, w której nie jest wymagana opłata za magazyn transakcyjny. Jeśli celem jest użycie kontenera wyłącznie do obciążeń analitycznych, można wyłączyć magazyn transakcyjny przez ustawienie `DefaultTimeToLive` wartość 0 w kontenerze Cosmos. można włączyć magazyn analityczny z nieograniczonym przechowywaniem, ustawiając `ColumnStoreTimeToLive` do-1.
 
    ![Obciążenia analityczne z nieograniczonym przechowywaniem](./media/globally-distributed-transactional-analytical-storage/analytical-workload-configuration.png)
 
 1. **Konfigurowanie kontenera wyłącznie dla obciążeń transakcyjnych (z nieograniczonym przechowywaniem)**
 
-   Kontener usługi Azure Cosmos można skonfigurować wyłącznie dla obciążeń transakcyjnych. Można wyłączyć magazyn analityczny przez ustawienie `ColumnStoreTimeToLive` do 0 w kontenerze i można włączyć magazyn analityczny z nieograniczonym przechowywaniem przez ustawienie `DefaultTimeToLive` do-1.
+   Kontener usługi Azure Cosmos można skonfigurować wyłącznie dla obciążeń transakcyjnych. Można wyłączyć magazyn analityczny przez ustawienie `ColumnStoreTimeToLive` wartość 0 w kontenerze i można włączyć magazyn analityczny z nieograniczonym przechowywaniem, ustawiając `DefaultTimeToLive` do-1.
 
    ![Obciążenia transakcyjne z nieograniczonym przechowywaniem](./media/globally-distributed-transactional-analytical-storage/transactional-workload-configuration.png)
 
 1. **Konfigurowanie kontenera dla obciążeń transakcyjnych i analitycznych (z nieograniczonym przechowywaniem)**
 
-   Można skonfigurować kontener usługi Azure Cosmos dla obciążeń transakcyjnych i analitycznych z pełną izolacją wydajności. Można włączyć magazyn analityczny przez ustawienie `ColumnStoreTimeToLive` do-1 i włączyć magazyn transakcyjny z nieograniczonym przechowywaniem przez ustawienie `DefaultTimeToLive ` do-1.
+   Można skonfigurować kontener usługi Azure Cosmos dla obciążeń transakcyjnych i analitycznych z pełną izolacją wydajności. Można włączyć magazyn analityczny przez ustawienie `ColumnStoreTimeToLive` wartość-1 i włączenie magazynu transakcyjnego z nieograniczonym przechowywaniem przez ustawienie `DefaultTimeToLive ` do-1.
 
    ![Obciążenia transakcyjne i analityczne z nieograniczonym przechowywaniem](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-infinite-retention.png)
 
@@ -110,7 +110,7 @@ W zależności od danego scenariusza można niezależnie włączać lub wyłącz
 
    Można skonfigurować kontener usługi Azure Cosmos dla obciążeń transakcyjnych i analitycznych z pełną izolacją wydajności między nimi przy użyciu różnych interwałów przechowywania. Azure Cosmos DB będzie wymuszać, że magazyn analityczny jest zawsze zachowywany przez dłuższy czas niż magazyn transakcyjny.
 
-   Magazyn transakcyjny można włączyć z nieograniczonym przechowywaniem przez ustawienie `DefaultTimeToLive` do < wartość 1 > i włączyć magazyn analityczny przez ustawienie `ColumnStoreTimeToLive` do < wartość 2 >. Azure Cosmos DB będzie wymuszać, że < wartość 2 > jest zawsze większa niż < wartość 1 >.
+   Magazyn transakcyjny można włączyć z nieograniczonym przechowywaniem przez ustawienie `DefaultTimeToLive` < wartość 1 > i włączyć magazyn analityczny przez ustawienie `ColumnStoreTimeToLive` na < wartość 2 >. Azure Cosmos DB będzie wymuszać, że < wartość 2 > jest zawsze większa niż < wartość 1 >.
 
    ![Obciążenia transakcyjne i analityczne z obsługą warstw magazynowania](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-specified-retention.png)
 

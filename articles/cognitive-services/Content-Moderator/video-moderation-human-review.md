@@ -3,19 +3,19 @@ title: Moderowanie wideo dzięki przeglądowi przez człowieka Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Korzystanie z narzędzi do moderowania wideo i kontroli ludzkich w celu zapewnienia umiarkowanej nieodpowiedniej zawartości
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.author: sajagtap
-ms.openlocfilehash: 69075f6b36a0be7cd4d0dd4453ea9cdfc08d77dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561160"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754168"
 ---
 # <a name="video-moderation-with-human-review"></a>Moderowanie wideo przy użyciu recenzji przez człowieka
 
@@ -25,7 +25,7 @@ Za pomocą narzędzia do rozwiązywania i [kontroli ludzkich](Review-Tool-User-G
 
 Klasyfikacja wideo oparta na maszynach jest osiągana z użyciem modeli przeszkolonych przez obrazy lub modeli wideo. W przeciwieństwie do klasyfikatorów wideo szkolonych na obrazach, klasyfikator wideo firmy Microsoft dla dorosłych i erotycznej jest szkolony z filmami wideo. Ta metoda skutkuje lepszą zgodnością jakości.
 
-## <a name="shot-detection"></a>Wykrywanie ujęć
+## <a name="shot-detection"></a>Wykrywanie zrzutu
 
 Podczas wprowadzania szczegółów klasyfikacji dodatkowe analizy wideo pomagają zapewnić większą elastyczność analizowania filmów wideo. Zamiast wyprowadzać tylko ramki, usługa moderowania wideo firmy Microsoft udostępnia również informacje na poziomie zrzutu. Masz teraz możliwość analizowania filmów wideo na poziomie zrzutu i poziomie ramki.
 
@@ -102,7 +102,7 @@ Filmy wideo zwykle zawierają głos, który wymaga moderatora, a także w przypa
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Wprowadzenie do przewodnika [Szybki Start](video-moderation-api.md)dotyczącego moderowania wideo.
+- Wprowadzenie do [przewodnika Szybki Start dotyczącego moderowania wideo](video-moderation-api.md).
 - Dowiedz się, jak generować [Recenzje wideo](video-reviews-quickstart-dotnet.md) dla recenzentów z moderowanych danych wyjściowych.
 - Dodawaj [przeglądy transkrypcji wideo](video-transcript-reviews-quickstart-dotnet.md) do Twoich recenzji wideo.
 - Zapoznaj się z szczegółowym samouczkiem dotyczącym tworzenia [kompletnego rozwiązania do moderowania wideo](video-transcript-moderation-review-tutorial-dotnet.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4fd213a6550d045fe4bea280449ed228ba9eda35
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c764460fb65287dab0031b27291d2f332cec3b3d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550278"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756547"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Korzystanie z kontrolki mapy Azure Maps
 
@@ -44,6 +44,12 @@ Mapę można osadzić na stronie sieci Web przy użyciu kontrolka mapy bibliotek
     <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
     <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
     ```
+
+    >[!Note]
+    > Definicje języka TypeScript można zaimportować do aplikacji, dodając:
+    > ```Javascript
+    > import * as atlas from 'azure-maps-control';
+    > ```
 
 3. Aby renderować mapę w taki sposób, aby wypełniał całą treść strony, Dodaj następujący `<style>` elementu do elementu `<head>`.
 
@@ -102,6 +108,8 @@ Mapę można osadzić na stronie sieci Web przy użyciu kontrolka mapy bibliotek
     </script>
     ```
 
+    Listę przykładów pokazujących sposób integrowania usługi Azure Active Directory (AAD) z usługą Azure Maps można znaleźć [tutaj](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples). 
+    
     Aby uzyskać więcej informacji, zobacz artykuł [uwierzytelnianie w programie Azure Maps](azure-maps-authentication.md) .
 
 6. Opcjonalnie można dowiedzieć się, jak dodać następujące elementy meta tag do nagłówka strony przydatne:
@@ -222,3 +230,8 @@ Aby dodać więcej danych do mapy:
 
 > [!div class="nextstepaction"]
 > [Przykłady kodu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+
+Aby uzyskać listę przykładów pokazujących, jak zintegrować Azure Active Directory (AAD) z Azure Maps, zobacz:
+
+> [!div class="nextstepaction"]
+> [Przykłady uwierzytelniania usługi AAD](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

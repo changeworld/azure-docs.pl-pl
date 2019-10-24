@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 5631b34fee64c6ad0917b95ec68fcd586717a1b0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 2919c7a2fa3a8912de0272af5131583988184704
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675196"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755531"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Omówienie diagnostyki Azure App Service
 
@@ -92,7 +92,7 @@ Narzędzia diagnostyczne zawierają bardziej zaawansowane narzędzia diagnostycz
 
 ### <a name="proactive-cpu-monitoring"></a>Aktywne monitorowanie procesora
 
-Aktywne monitorowanie procesora CPU zapewnia łatwy i aktywny sposób podejmowania akcji, gdy aplikacja lub proces podrzędny aplikacji zużywa duże zasoby procesora CPU. Można ustawić własne reguły progu procesora CPU, aby tymczasowo wyeliminować problemy związane z dużym procesorem CPU do momentu znalezienia rzeczywistej przyczyny nieoczekiwanego problemu. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z procesorami przed ich wdrożeniem](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html). Aktywne monitorowanie procesora CPU zapewnia łatwy i aktywny sposób podejmowania akcji, gdy aplikacja lub proces podrzędny aplikacji zużywa duże zasoby procesora CPU. Można ustawić własne reguły progu procesora CPU, aby tymczasowo wyeliminować problemy związane z dużym procesorem CPU do momentu znalezienia rzeczywistej przyczyny nieoczekiwanego problemu.
+Aktywne monitorowanie procesora CPU zapewnia łatwy i aktywny sposób podejmowania akcji, gdy aplikacja lub proces podrzędny aplikacji zużywa duże zasoby procesora CPU. Można ustawić własne reguły progu procesora CPU, aby tymczasowo wyeliminować problemy związane z dużym procesorem CPU do momentu znalezienia rzeczywistej przyczyny nieoczekiwanego problemu. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z procesorami przed ich wdrożeniem](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html).
 
 ![Aktywne monitorowanie procesora](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 

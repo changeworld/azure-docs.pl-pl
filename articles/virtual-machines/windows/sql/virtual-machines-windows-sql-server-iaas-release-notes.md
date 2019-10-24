@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: f5f8985a0b9a97c559016add2567a936220aa910
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 599dd2b44f934bb864acfa9ffe8d03fa0e8bb850
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300085"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757461"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Zmiany w dokumentacji dotyczące SQL Server na platformie Azure Virtual Machines
 
@@ -29,10 +29,10 @@ System Azure umożliwia wdrożenie maszyny wirtualnej za pomocą obrazu SQL Serv
 | Wprowadzane | Szczegóły |
 | --- | --- |
 | **Konfiguracja magazynu zoptymalizowanego pod kątem wydajności** | Teraz można w [pełni dostosować konfigurację magazynu](virtual-machines-windows-sql-server-storage-configuration.md#new-vms) podczas tworzenia nowej maszyny wirtualnej SQL Server. |
-| **Udział plików w warstwie Premium dla FCI** | Teraz można utworzyć wystąpienie klastra trybu failover przy użyciu [udziału plików Premium](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md) zamiast oryginalnej metody [bezpośrednie miejsca do magazynowania](virtual-machines-windows-portal-sql-create-failover-cluster.md). 
+| **Udział plików w warstwie Premium dla FCI** | Teraz można utworzyć wystąpienie klastra trybu failover przy użyciu [udziału plików Premium](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) zamiast oryginalnej metody [bezpośrednie miejsca do magazynowania](virtual-machines-windows-portal-sql-create-failover-cluster.md). 
 | &nbsp; | &nbsp; |
 
-## <a name="august-2019"></a>2019 sierpnia
+## <a name="august-2019"></a>Sierpień 2019 r.
 
 | Wprowadzane | Szczegóły |
 | --- | --- |
@@ -40,7 +40,7 @@ System Azure umożliwia wdrożenie maszyny wirtualnej za pomocą obrazu SQL Serv
 | &nbsp; | &nbsp; |
 
 
-## <a name="july-2019"></a>Lipiec 2019
+## <a name="july-2019"></a>Lipiec 2019 r.
 
 
 | Wprowadzane | Szczegóły |
@@ -48,7 +48,7 @@ System Azure umożliwia wdrożenie maszyny wirtualnej za pomocą obrazu SQL Serv
 | **Przenoszenie maszyny wirtualnej SQL do innego regionu** | Użyj Azure Site Recovery, aby [migrować maszynę wirtualną SQL Server z jednego regionu do innego](virtual-machines-windows-sql-move-different-region.md). |
 | &nbsp; | &nbsp; |
 
-## <a name="june-2019"></a>Czerwiec 2019
+## <a name="june-2019"></a>Czerwiec 2019 r.
 
 
 | Wprowadzane | Szczegóły |
@@ -60,7 +60,7 @@ System Azure umożliwia wdrożenie maszyny wirtualnej za pomocą obrazu SQL Serv
 | &nbsp; | &nbsp; |
 
 
-## <a name="may-2019"></a>2019 maja
+## <a name="may-2019"></a>Maj 2019 r.
 
 | Wprowadzane | Szczegóły |
 | --- | --- |
@@ -69,7 +69,7 @@ System Azure umożliwia wdrożenie maszyny wirtualnej za pomocą obrazu SQL Serv
 
 
 
-## <a name="april-2019"></a>Kwiecień 2019
+## <a name="april-2019"></a>Kwiecień 2019 r.
 
 | Wprowadzane | Szczegóły |
 | --- | --- |
@@ -77,7 +77,7 @@ System Azure umożliwia wdrożenie maszyny wirtualnej za pomocą obrazu SQL Serv
 | &nbsp; | &nbsp; |
 
 
-## <a name="march-2019"></a>Marzec 2019
+## <a name="march-2019"></a>Marzec 2019 r.
 
 | Wprowadzane | Szczegóły |
 | --- | --- |
@@ -87,7 +87,7 @@ System Azure umożliwia wdrożenie maszyny wirtualnej za pomocą obrazu SQL Serv
 | &nbsp; | &nbsp; |
 
 
-## <a name="february-2019"></a>Luty 2019
+## <a name="february-2019"></a>Luty 2019 r.
 
 | Wprowadzane | Szczegóły |
 | --- | --- |
@@ -108,7 +108,7 @@ System Azure umożliwia wdrożenie maszyny wirtualnej za pomocą obrazu SQL Serv
 | &nbsp; | &nbsp; |
 
 
-### <a name="november-2018"></a>Listopad 2018
+### <a name="november-2018"></a>Listopad 2018 r.
 
 | Wprowadzane | Szczegóły |
 | --- | --- |
