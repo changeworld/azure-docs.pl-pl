@@ -1,21 +1,21 @@
 ---
 title: Tworzenie aplikacji internetowej za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i zestawu SDK platformy .NET
 description: Przykładowy kod programu .NET, którego można używać do nawiązywania połączeń i wykonywania zapytań przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 73caa57fe7e721d69091bfb6ee74f7d88baf1ba3
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 55f40e8f22b39caa3527a378f33982276bed597d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979093"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755153"
 ---
-# <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Szybki start: Tworzenie aplikacji internetowej platformy .NET przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB 
+# <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Szybki Start: Tworzenie aplikacji sieci Web platformy .NET przy użyciu interfejsu API Azure Cosmos DB dla MongoDB 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -34,7 +34,7 @@ Ten przewodnik Szybki start opisuje sposób tworzenia konta usługi Cosmos przy 
 
 Aby uruchomić przykład, musisz mieć program [Visual Studio](https://www.visualstudio.com/downloads/) i ważne konto usługi Microsoft Azure Cosmos DB.
 
-Jeśli nie masz jeszcze programu Visual Studio, Pobierz [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) z **ASP.NET i tworzenie aplikacji internetowych** obciążenia zainstalowanym w ramach instalacji.
+Jeśli nie masz jeszcze programu Visual Studio, Pobierz [program Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/) z obciążeniem **ASP.NET i programowaniem aplikacji sieci Web** instalowanym z instalatorem.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
@@ -47,7 +47,7 @@ Przykład opisany w tym artykule jest zgodny ze sterownikiem bazy danych MongoDB
 
 ## <a name="clone-the-sample-app"></a>Klonowanie przykładowej aplikacji
 
-Najpierw pobierz przykładową aplikację z witryny GitHub. 
+Najpierw pobierz przykładową aplikację z usługi GitHub. 
 
 1. Otwórz wiersz polecenia, utwórz nowy folder o nazwie git-samples, a następnie zamknij wiersz polecenia.
 
@@ -142,7 +142,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne do nawiązania komunikacji z usługą Cosmos DB. 
     
-## <a name="run-the-web-app"></a>Uruchamianie aplikacji sieci web
+## <a name="run-the-web-app"></a>Uruchamianie aplikacji internetowej
 
 1. W programie Visual Studio kliknij projekt prawym przyciskiem myszy w **Eksploratorze rozwiązań**, a następnie kliknij polecenie **Zarządzaj pakietami NuGet**. 
 
@@ -162,9 +162,9 @@ Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Cosmos, tworzenia kolekcji i uruchamiania aplikacji konsolowej. Teraz możesz zaimportować dodatkowe dane do swojej bazy danych usługi Cosmos. 
 
 > [!div class="nextstepaction"]
-> [Importowanie danych z bazy danych MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)
+> [Importuj dane usługi MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)
