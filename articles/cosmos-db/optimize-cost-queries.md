@@ -1,17 +1,17 @@
 ---
 title: Optymalizowanie jednostek żądań i kosztów w celu uruchamiania zapytań w Azure Cosmos DB
 description: Dowiedz się, jak oszacować opłaty jednostkowe żądań dla zapytania i zoptymalizować zapytanie pod względem wydajności i kosztów.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
-ms.openlocfilehash: bdf223e60015c4e5d96416f95c410854a057c02c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717020"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753302"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optymalizowanie kosztu zapytania w Azure Cosmos DB
 
@@ -27,13 +27,13 @@ Zapytania w Azure Cosmos DB są zwykle uporządkowane od najszybszego/najbardzie
 
 * Zapytanie bez filtrów.
 
-Zapytania odczytujące dane z co najmniej jednej partycji powodują wyższe opóźnienia i zużywają większą liczbę jednostek żądania. Ponieważ każda partycja ma Automatyczne indeksowanie wszystkich właściwości, zapytanie może być obsługiwane efektywnie z indeksu. Można tworzyć zapytania, które używają wielu partycji szybciej, przy użyciu opcji równoległości. Aby dowiedzieć się więcej na temat partycjonowania i klucze partycji, zobacz [partycjonowanie w usłudze Azure Cosmos DB](partitioning-overview.md).
+Zapytania odczytujące dane z co najmniej jednej partycji powodują wyższe opóźnienia i zużywają większą liczbę jednostek żądania. Ponieważ każda partycja ma Automatyczne indeksowanie wszystkich właściwości, zapytanie może być obsługiwane efektywnie z indeksu. Można tworzyć zapytania, które używają wielu partycji szybciej, przy użyciu opcji równoległości. Aby dowiedzieć się więcej na temat partycjonowania i kluczy partycji, zobacz [partycjonowanie w Azure Cosmos DB](partitioning-overview.md).
 
 ## <a name="evaluate-request-unit-charge-for-a-query"></a>Oceń opłatę jednostkową żądania dla zapytania
 
 Po zapisaniu danych w kontenerach usługi Azure Cosmos można użyć Eksplorator danych w Azure Portal do konstruowania i uruchamiania zapytań. Koszt zapytań można również uzyskać za pomocą Eksploratora danych. Ta metoda zapewnia zrozumienie rzeczywistych opłat związanych z typowymi zapytaniami i operacjami obsługiwanymi przez system.
 
-Koszt zapytań można również uzyskać programowo przy użyciu zestawów SDK. Aby zmierzyć obciążenie związane z dowolną operacją, taką jak tworzenie, aktualizowanie lub usuwanie, `x-ms-request-charge` należy przeprowadzić inspekcję nagłówka podczas korzystania z interfejsu API REST. Jeśli używasz platformy .NET lub zestawu Java SDK, `RequestCharge` właściwość jest równoważną właściwością do uzyskania opłaty za żądanie, a ta właściwość jest obecna w ResourceResponse lub FeedResponse.
+Koszt zapytań można również uzyskać programowo przy użyciu zestawów SDK. Aby zmierzyć obciążenie każdej operacji, takiej jak tworzenie, aktualizowanie lub usuwanie, należy sprawdzić nagłówek `x-ms-request-charge` podczas korzystania z interfejsu API REST. Jeśli używasz platformy .NET lub zestawu Java SDK, właściwość `RequestCharge` jest równoważną właściwością do uzyskania opłaty za żądanie, a ta właściwość jest obecna w ResourceResponse lub FeedResponse.
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -106,7 +106,7 @@ Następnie możesz dowiedzieć się więcej o optymalizacji kosztów w Azure Cos
 * Dowiedz się więcej o tym, [jak działa Cennik platformy Azure Cosmos](how-pricing-works.md)
 * Dowiedz się więcej [na temat optymalizacji na potrzeby programowania i testowania](optimize-dev-test.md)
 * Dowiedz się więcej o [zrozumieniu Azure Cosmos DB rachunku](understand-your-bill.md)
-* Dowiedz się [](optimize-cost-throughput.md) więcej na temat optymalizowania kosztu przepływności
+* Dowiedz się więcej na temat [optymalizowania kosztu przepływności](optimize-cost-throughput.md)
 * Dowiedz się więcej o [optymalizowaniu kosztów magazynu](optimize-cost-storage.md)
 * Dowiedz się więcej o [optymalizowaniu kosztów operacji odczytu i zapisu](optimize-cost-reads-writes.md)
 * Dowiedz się więcej [na temat optymalizowania kosztów kont usługi Azure Cosmos w wielu regionach](optimize-cost-regions.md)

@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: Wypróbuj Content Moderator w sieci Web — Content Moderator'
+title: 'Szybki Start: Wypróbuj Content Moderator w sieci Web — Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start użyjesz narzędzia do przeglądu Content Moderator w trybie online, aby przetestować podstawowe funkcje Content Moderator bez konieczności pisania kodu.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: e5b20bb45c08330c59fc72712b9e65b488c8c68b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564443"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757362"
 ---
-# <a name="quickstart-try-content-moderator-on-the-web"></a>Szybki start: Wypróbuj Content Moderator w sieci Web
+# <a name="quickstart-try-content-moderator-on-the-web"></a>Szybki Start: Wypróbuj Content Moderator w sieci Web
 
 W tym przewodniku szybki start użyjesz narzędzia do przeglądu Content Moderator w trybie online, aby przetestować podstawowe funkcje Content Moderator bez konieczności pisania kodu. Jeśli chcesz szybciej zintegrować tę usługę z aplikacją, zobacz inne Przewodniki Szybki Start w sekcji [następne kroki](#next-steps) .
 
@@ -58,14 +58,14 @@ W tym momencie użyto narzędzia do przeglądu Content Moderator, aby zobaczyć 
 
 ## <a name="learn-more-about-the-review-tool"></a>Dowiedz się więcej o narzędziu do przeglądu
 
-Aby dowiedzieć się więcej na temat korzystania z narzędzia do przeglądu Content Moderator, zapoznaj się [](Review-Tool-User-Guide/human-in-the-loop.md) z przewodnikiem po narzędziu do przeglądu i zobacz Interfejsy API narzędzia do przeglądu, aby dowiedzieć się, jak dostosować środowisko przeglądu ludzkiego:
+Aby dowiedzieć się więcej na temat korzystania z narzędzia do przeglądu Content Moderator, zapoznaj się z przewodnikiem po [narzędziu](Review-Tool-User-Guide/human-in-the-loop.md) do przeglądu i zobacz Interfejsy API narzędzia do przeglądu, aby dowiedzieć się, jak dostosować środowisko przeglądu ludzkiego:
 - [Interfejs API zadań](try-review-api-job.md) skanuje zawartość przy użyciu interfejsów API moderowania i generuje przeglądy w narzędziu do przeglądu. 
 - [Interfejs API przeglądu](try-review-api-review.md) bezpośrednio tworzy obrazy, tekst lub Recenzje wideo dla moderatorów ludzkich bez wcześniejszego skanowania zawartości. 
 - [Interfejs API przepływu pracy](try-review-api-workflow.md) tworzy, aktualizuje i pobiera szczegóły dotyczące niestandardowych przepływów pracy tworzonych przez zespół.
 
 Lub przejdź do następnych kroków, aby rozpocząć korzystanie z interfejsów API moderowania w kodzie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak używać interfejsów API moderowania w aplikacji.
 - Implementowanie moderowania obrazu. Użyj [konsoli interfejsu API](try-image-api.md) lub [ C# przewodnika Szybki Start](image-moderation-quickstart-dotnet.md) , aby skanować obrazy i wykrywać potencjalną zawartość dla dorosłych i erotycznej przy użyciu tagów, wyników pewności i innych wyodrębnionych informacji.

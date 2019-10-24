@@ -3,19 +3,19 @@ title: Definiowanie przepływów pracy moderowania za pomocą konsoli interfejsu
 titleSuffix: Azure Cognitive Services
 description: Korzystając z interfejsów API przeglądu Content Moderator platformy Azure, można definiować niestandardowe przepływy pracy i progi na podstawie zasad dotyczących zawartości.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: sajagtap
-ms.openlocfilehash: cb93cf1b7a5338058c6f2d93b4bb27f60286882e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881209"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754179"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>Definiowanie przepływów pracy moderowania (REST) i korzystanie z nich
 
@@ -37,13 +37,13 @@ Wprowadź wartości dla **zespołu**, **przepływu pracy**i **OCP-APIM-Subscript
 
 - **zespół**: Identyfikator zespołu, który został utworzony podczas konfigurowania konta narzędzia do [przeglądania](https://contentmoderator.cognitive.microsoft.com/) (znajdującego się w polu **Identyfikator** na ekranie poświadczeń narzędzia przeglądu).
 - **workflowname**: Nazwa nowego przepływu pracy do dodania (lub istniejącej nazwy, jeśli chcesz zaktualizować istniejący przepływ pracy).
-- **Ocp-Apim-Subscription-Key**: Klucz Content Moderator. Można to znaleźć na karcie **Ustawienia** w narzędziu do [przeglądu](https://contentmoderator.cognitive.microsoft.com).
+- **OCP-APIM-Subscription-Key**: klucz Content Moderator. Można to znaleźć na karcie **Ustawienia** w [narzędziu do przeglądu](https://contentmoderator.cognitive.microsoft.com).
 
 ![Przepływ pracy — tworzenie lub aktualizowanie parametrów i nagłówków zapytań konsoli](images/workflow-console-parameters.PNG)
 
 ### <a name="enter-a-workflow-definition"></a>Wprowadź definicję przepływu pracy
 
-1. Edytuj pole **treści żądania** , aby wprowadzić żądanie JSON zawierające szczegóły **opisu** i `Text` **typu** ( `Image` albo).
+1. Edytuj pole **treści żądania** , aby wprowadzić żądanie JSON zawierające szczegóły **opisu** i **typu** (albo `Image` lub `Text`).
 2. W polu **wyrażenie**Skopiuj domyślne wyrażenie JSON przepływu pracy. Końcowy ciąg JSON powinien wyglądać następująco:
 
 ```json
@@ -80,11 +80,11 @@ Wprowadź wartości dla **zespołu**, **przepływu pracy**i **OCP-APIM-Subscript
 
 ### <a name="submit-your-request"></a>Prześlij żądanie
   
-Wybierz pozycję **Wyślij**. Jeśli operacja się powiedzie, **stan odpowiedzi** to `200 OK`i zostanie wyświetlone `true`pole **zawartość odpowiedzi** .
+Wybierz pozycję **Wyślij**. Jeśli operacja powiedzie się, **stan odpowiedzi** to `200 OK`, a w polu **zawartość odpowiedzi** zostanie wyświetlona `true`.
 
 ### <a name="examine-the-new-workflow"></a>Badanie nowego przepływu pracy
 
-W narzędziu do [przeglądu](https://contentmoderator.cognitive.microsoft.com/)wybierz pozycję **Ustawienia** > **przepływy pracy**. Nowy przepływ pracy powinien pojawić się na liście.
+W [narzędziu do przeglądu](https://contentmoderator.cognitive.microsoft.com/)wybierz pozycję **Ustawienia**  > **przepływy pracy**. Nowy przepływ pracy powinien pojawić się na liście.
 
 ![Lista narzędzi do przeglądu przepływów pracy](images/workflow-console-new-workflow.PNG)
 
@@ -98,7 +98,7 @@ Aby pobrać szczegółowe informacje o istniejącym przepływie pracy, przejdź 
 
 ![Przepływ pracy — dostęp do wyboru regionów](images/test-drive-region.png)
 
-Wprowadź parametry wywołania REST zgodnie z powyższą sekcją. Upewnij się, że ten czas , workflowname jest nazwą istniejącego przepływu pracy.
+Wprowadź parametry wywołania REST zgodnie z powyższą sekcją. Upewnij się, że ten czas, **workflowname** jest nazwą istniejącego przepływu pracy.
 
 ![Pobierz parametry i nagłówki zapytania](images/workflow-get-default.PNG)
 

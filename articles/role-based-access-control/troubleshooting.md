@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
-ms.translationtype: MT
+ms.openlocfilehash: 158222c256e3efc7ca87d7a3781ca68e1c4307b1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967104"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750184"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Rozwiązywanie problemów z funkcją RBAC dla zasobów platformy Azure
 
@@ -28,15 +28,15 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące kontroli 
 
 ## <a name="problems-with-rbac-role-assignments"></a>Problemy z przypisaniami ról kontroli dostępu opartej na rolach
 
-- Jeśli nie można dodać przypisania roli w Azure Portal na **kontroli dostępu (IAM)** , ponieważ opcja **Dodaj** > **przypisanie roli** jest wyłączona lub z powodu błędu uprawnień "klient z identyfikatorem obiektu nie ma Autoryzacja do wykonania akcji ", sprawdź, czy użytkownik jest zalogowany przy użyciu przypisanej roli `Microsoft.Authorization/roleAssignments/write` z uprawnieniami, takimi jak [właściciel](built-in-roles.md#owner) lub [administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) w zakresie, w którym próbujesz przypisać rolę.
-- Jeśli zostanie wyświetlony komunikat o błędzie "nie można utworzyć więcej przypisań ról (kod: RoleAssignmentLimitExceeded)” podczas próby przypisania roli, spróbuj zmniejszyć liczbę przypisań ról, przypisując zamiast tego role do grup. Platforma Azure obsługuje maksymalnie **2000** przypisań ról na subskrypcję.
+- Jeśli nie można dodać przypisania roli w Azure Portal na **kontroli dostępu (IAM)** , ponieważ opcja **Dodaj**  > **Dodaj przypisanie roli** jest wyłączona lub z powodu błędu uprawnień "klient z identyfikatorem obiektu nie ma Autoryzacja do wykonania akcji ", sprawdź, czy jesteś zalogowany przy użyciu użytkownika, który ma przypisaną rolę z uprawnieniami `Microsoft.Authorization/roleAssignments/write`, takimi jak [właściciel](built-in-roles.md#owner) lub [administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) w zakresie, w którym próbujesz przypisać rolę.
+- Jeśli zostanie wyświetlony komunikat o błędzie "nie można utworzyć więcej przypisań ról (kod: RoleAssignmentLimitExceeded)" podczas próby przypisania roli, spróbuj zmniejszyć liczbę przypisań ról, przypisując role do grup. Platforma Azure obsługuje maksymalnie **2000** przypisań ról na subskrypcję.
 
 ## <a name="problems-with-custom-roles"></a>Problemy z rolami niestandardowymi
 
 - Jeśli potrzebujesz kroków dotyczących sposobu tworzenia roli niestandardowej, zobacz samouczki ról niestandardowych przy użyciu [Azure PowerShell](tutorial-custom-role-powershell.md) lub [interfejsu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md).
-- Jeśli nie można zaktualizować istniejącej roli niestandardowej, należy sprawdzić, czy użytkownik jest zalogowany przy użyciu przypisanej do roli `Microsoft.Authorization/roleDefinition/write` uprawnienia, takiej jak [właściciel](built-in-roles.md#owner) lub [administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
-- Jeśli nie możesz usunąć niestandardowej roli i otrzymujesz komunikat o błędzie „Istnieją przypisania ról odwołujące się do roli (kod: RoleDefinitionHasAssignments)”, wówczas istnieją przypisania ról nadal używające roli niestandardowej. Usuń te przypisania ról i spróbuj ponownie usunąć rolę niestandardową.
-- Jeśli otrzymujesz komunikat o błędzie „Przekroczono limit definicji ról. Nie można utworzyć więcej definicji ról (kod: RoleDefinitionLimitExceeded) "podczas próby utworzenia nowej roli niestandardowej Usuń wszystkie niestandardowe role, które nie są używane. Platforma Azure obsługuje do **5000** ról niestandardowych w dzierżawie. (W przypadku chmur wyspecjalizowanych, takich jak platformy Azure Government, Azure Niemcy i Azure Chiny 21Vianet limit wynosi 2000 ról niestandardowych).
+- Jeśli nie możesz zaktualizować istniejącej roli niestandardowej, sprawdź, czy użytkownik jest zalogowany przy użyciu przypisanej roli z uprawnieniami `Microsoft.Authorization/roleDefinition/write`, takich jak [właściciel](built-in-roles.md#owner) lub [administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
+- Jeśli nie można usunąć roli niestandardowej i uzyskać komunikatu o błędzie "istnieją istniejące przypisania ról odwołujące się do roli (kod: RoleDefinitionHasAssignments)", a następnie istnieją przypisania ról nadal korzystające z roli niestandardowej. Usuń te przypisania ról i spróbuj ponownie usunąć rolę niestandardową.
+- Jeśli otrzymujesz komunikat o błędzie „Przekroczono limit definicji ról. Nie można utworzyć więcej definicji ról (kod: RoleDefinitionLimitExceeded) "podczas próby utworzenia nowej roli niestandardowej, Usuń wszystkie niestandardowe role, które nie są używane. Platforma Azure obsługuje do **5000** ról niestandardowych w dzierżawie. (W przypadku chmur wyspecjalizowanych, takich jak platformy Azure Government, Azure Niemcy i Azure Chiny 21Vianet limit wynosi 2000 ról niestandardowych).
 - Jeśli zostanie wyświetlony komunikat o błędzie podobny do "klient ma uprawnienia do wykonania akcji" Microsoft. Authorization/roleDefinitions/Write "w zakresie"/subscriptions/{SubscriptionID} ", ale nie znaleziono połączonej subskrypcji" podczas próby zaktualizowania roli niestandardowej, sprawdź czy co najmniej jeden [przypisany zakres](role-definitions.md#assignablescopes) został usunięty w dzierżawie. Jeśli zakres został usunięty, utwórz bilet pomocy technicznej, ponieważ w tej chwili nie jest dostępne żadne rozwiązanie samoobsługowe.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Odzyskiwanie kontroli dostępu opartej na rolach po przeniesieniu subskrypcji między dzierżawami
@@ -51,12 +51,12 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące kontroli 
 
 ## <a name="access-denied-or-permission-errors"></a>Odmowa dostępu lub błędy uprawnień
 
-- Jeśli otrzymujesz błąd przypisania „Klient z identyfikatorem obiektu nie ma autoryzacji do wykonania akcji w zakresie (kod: AuthorizationFailed)” podczas próby utworzenia zasobu, upewnij się, że obecnie logujesz się jako użytkownik mający przypisaną rolę, która ma uprawnienia zapisu do zasobu w wybranym zakresie. Na przykład do zarządzania maszynami wirtualnymi w grupie zasobów musisz mieć rolę [Współautor maszyny wirtualnej](built-in-roles.md#virtual-machine-contributor) w grupie zasobów (lub zakresie nadrzędnym). Aby uzyskać listę uprawnień dla każdej roli wbudowanej, zobacz [Role wbudowane dla zasobów platformy Azure](built-in-roles.md).
-- Jeśli zostanie wyświetlony komunikat o błędzie "nie masz uprawnień do utworzenia żądania pomocy technicznej" podczas próby utworzenia lub zaktualizowania biletu pomocy technicznej, sprawdź, czy użytkownik jest zalogowany do użytkownika, do którego przypisano rolę `Microsoft.Support/supportTickets/write` z uprawnieniem, takim jak [ Współautor żądania obsługi](built-in-roles.md#support-request-contributor).
+- Jeśli zostanie wyświetlony komunikat o błędzie "klient z identyfikatorem obiektu nie ma autoryzacji do wykonania akcji względem zakresu (kod: AuthorizationFailed)" podczas próby utworzenia zasobu, należy sprawdzić, czy użytkownik jest zalogowany przy użyciu przypisanej roli z uprawnieniami zapisu uprawnienie do zasobu w wybranym zakresie. Na przykład do zarządzania maszynami wirtualnymi w grupie zasobów musisz mieć rolę [Współautor maszyny wirtualnej](built-in-roles.md#virtual-machine-contributor) w grupie zasobów (lub zakresie nadrzędnym). Aby uzyskać listę uprawnień dla każdej roli wbudowanej, zobacz [Role wbudowane dla zasobów platformy Azure](built-in-roles.md).
+- Jeśli zostanie wyświetlony komunikat o błędzie "nie masz uprawnień do utworzenia żądania pomocy technicznej" podczas próby utworzenia lub zaktualizowania biletu pomocy technicznej, sprawdź, czy jesteś zalogowanym użytkownikiem, do którego przypisano rolę z uprawnieniem `Microsoft.Support/supportTickets/write` , na przykład [współautor żądania pomocy technicznej](built-in-roles.md#support-request-contributor).
 
-## <a name="role-assignments-without-a-security-principal"></a>Przypisania ról bez podmiotu zabezpieczeń
+## <a name="role-assignments-with-unknown-security-principal"></a>Przypisania ról z nieznanym podmiotem zabezpieczeń
 
-Po wyświetleniu listy przypisań ról przy użyciu Azure PowerShell można zobaczyć przydziały `DisplayName` z pustą `ObjectType` i zestawem nieznane. Na przykład polecenie [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) zwraca przypisanie roli podobne do następujących:
+Po wyświetleniu listy przypisań ról przy użyciu Azure PowerShell można zobaczyć przydziały z pustą `DisplayName` i `ObjectType` ustawione jako nieznane. Na przykład polecenie [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) zwraca przypisanie roli podobne do następujących:
 
 ```azurepowershell
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -90,7 +90,7 @@ Te przypisania ról są wykonywane, gdy przypiszesz rolę do podmiotu zabezpiecz
 
 Aby usunąć te przypisania ról, Użyj poleceń [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) lub [AZ role Delete](/cli/azure/role/assignment#az-role-assignment-delete) .
 
-W programie PowerShell, jeśli spróbujesz usunąć przypisania roli przy użyciu identyfikatora obiektu i nazwy definicji roli, a więcej niż jedno przypisanie roli jest zgodne z parametrami, zostanie wyświetlony komunikat o błędzie: "Podane informacje nie są mapowane na przypisanie roli". Poniżej przedstawiono przykładowy komunikat o błędzie:
+W programie PowerShell, jeśli spróbujesz usunąć przypisania roli przy użyciu identyfikatora obiektu i nazwy definicji roli, a więcej niż jedno przypisanie roli jest zgodne z parametrami, zostanie wyświetlony komunikat o błędzie: "podane informacje nie są mapowane na przypisanie roli". Poniżej przedstawiono przykładowy komunikat o błędzie:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
@@ -103,7 +103,7 @@ At line:1 char:1
 + FullyQualifiedErrorId : Microsoft.Azure.Commands.Resources.RemoveAzureRoleAssignmentCommand
 ```
 
-Jeśli ten komunikat o błędzie jest wyświetlany, upewnij się, że określono `-Scope` również `-ResourceGroupName` parametry lub.
+Jeśli ten komunikat o błędzie jest wyświetlany, upewnij się, że określono również parametry `-Scope` lub `-ResourceGroupName`.
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
@@ -120,7 +120,7 @@ Jeśli przyznasz użytkownikowi dostęp tylko do odczytu do pojedynczej aplikacj
 * Polecenia (takie jak uruchamianie, zatrzymywanie itp.)
 * Zmiana ustawień, takich jak Konfiguracja ogólna, ustawienia skalowania, ustawienia kopii zapasowej i ustawienia monitorowania
 * Uzyskiwanie dostępu do poświadczeń publikowania i innych wpisów tajnych, takich jak ustawienia aplikacji i parametry połączenia
-* Przesyłanie strumieniowe dzienników
+* Dzienniki przesyłania strumieniowego
 * Konfiguracja dzienników diagnostycznych
 * Konsola (wiersz polecenia)
 * Aktywne i niedawne wdrożenia (dla lokalnego wdrożenia usługi Git)

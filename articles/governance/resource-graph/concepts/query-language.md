@@ -3,15 +3,15 @@ title: Opis języka zapytań
 description: Opisuje tabele grafu zasobów i dostępne typy danych Kusto, operatory i funkcje możliwe do użycia w usłudze Azure Resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 6189920cb03a6cf388f0b5d232c6ce97ae4f3f82
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 80b33212afa7fed3f87b241d5cf69b43be66574d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389764"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755911"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informacje o języku zapytań grafu zasobów platformy Azure
 
@@ -30,7 +30,7 @@ Wykres zasobów zawiera kilka tabel służących do przechowywania danych o typa
 |Tabele grafu zasobów |Opis |
 |---|---|
 |Zasoby |Domyślna tabela, jeśli żadna nie została zdefiniowana w zapytaniu. Większość Menedżer zasobów typów zasobów i właściwości jest tutaj. |
-|ResourceContainers |Zawiera subskrypcje (`Microsoft.Resources/subscriptions`) i grupy zasobów (`Microsoft.Resources/subscriptions/resourcegroups`) i dane. |
+|ResourceContainers |Obejmuje subskrypcję (w wersji zapoznawczej--`Microsoft.Resources/subscriptions`) i typy zasobów (`Microsoft.Resources/subscriptions/resourcegroups`) grupy zasobów. |
 |AlertsManagementResources |Obejmuje zasoby _związane_ z `Microsoft.AlertsManagement`. |
 |SecurityResources |Obejmuje zasoby _związane_ z `Microsoft.Security`. |
 
@@ -51,8 +51,8 @@ Poniższe zapytanie pokazuje bardziej skomplikowane użycie `join`. Zapytanie og
 
 ```kusto
 Resources
-| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | where type == 'microsoft.keyvault/vaults'
+| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | project type, name, SubName
 | limit 1
 ```
@@ -83,7 +83,7 @@ Poniżej znajduje się lista operatorów tabelarycznych KQL obsługiwanych przez
 |[Podsumuj](/azure/kusto/query/summarizeoperator) |[Liczba zasobów platformy Azure](../samples/starter.md#count-resources) |Uproszczona tylko pierwsza strona |
 |[czasochłonn](/azure/kusto/query/takeoperator) |[Lista wszystkich publicznych adresów IP](../samples/starter.md#list-publicip) |Synonim `limit` |
 |[Do góry](/azure/kusto/query/topoperator) |[Pokaż pierwsze pięć maszyn wirtualnych według nazwy i ich typu systemu operacyjnego](../samples/starter.md#show-sorted) | |
-|[Unii](/azure/kusto/query/unionoperator) |[Łączenie wyników z dwóch zapytań w jeden wynik](../samples/advanced.md#unionresults) |Dozwolona pojedyncza tabela: _T_ `| union` \[ @ no__t-3 `inner` @ no__t-5 @ no__t-6 @ no__t-7 \[ @ no__t-9_ColumnName_@no__t _-11._ Limit 3 `union` etapów w pojedynczym zapytaniu. Rozpoznawanie rozmyte tabel podetapów `union` jest niedozwolone. Może być używany w jednej tabeli lub między tabelami _zasobów_ i _ResourceContainers_ . |
+|[Unii](/azure/kusto/query/unionoperator) |[Łączenie wyników z dwóch zapytań w jeden wynik](../samples/advanced.md#unionresults) |Dozwolona pojedyncza tabela: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=`_ColumnName_ 1 _Table_. Limit 3 `union` etapów w pojedynczym zapytaniu. Rozpoznawanie rozmyte tabel podetapów `union` jest niedozwolone. Może być używany w jednej tabeli lub między tabelami _zasobów_ i _ResourceContainers_ . |
 |[miejscu](/azure/kusto/query/whereoperator) |[Pokaż zasoby, które zawierają magazyn](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Znaki ucieczki
@@ -100,7 +100,7 @@ Niektóre nazwy właściwości, takie jak te, które zawierają `.` lub `$`, mus
 
 - `$` — znak ucieczki w nazwie właściwości. Używany znak ucieczki zależy od wykresu zasobów powłoki jest uruchamiany z.
 
-  - **bash** -  @ no__t-2
+  - **bash**  -  `\`
 
     Przykładowe zapytanie, które wyprowadza Właściwość _\$type_ w bash:
 
@@ -110,7 +110,7 @@ Niektóre nazwy właściwości, takie jak te, które zawierają `.` lub `$`, mus
 
   - **cmd** — nie należy wyznaczać znaku `$`.
 
-  - @No__t **programu PowerShell**— 1 @ no__t-2
+  - @No__t_2  -  **programu PowerShell**
 
     Przykładowe zapytanie, które wyprowadza Właściwość _\$type_ w programie PowerShell:
 

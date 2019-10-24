@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962676"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752356"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Twoje komercyjne korzyści z witryny Marketplace
 
@@ -41,10 +41,10 @@ Szczegółowe opisy wszystkich korzyści z programu można znaleźć na [talii p
 Kroki umożliwiające rozpoczęcie pracy są proste:
 
 1. Opublikuj ofertę w Microsoft AppSource lub witrynie Azure Marketplace.
-2. Zespół dociera do oferty "właściciel" lub "główna osoba kontaktowa" w witrynie Marketplace. Najlepszym rozwiązaniem jest wprowadzenie albo indywidualnego, albo aliasu sprawdzanego regularnie: Komunikaty wysyłane do aliasów, takie jak info@company.com często są tracone.
+2. Zespół dociera do oferty "właściciel" lub "główna osoba kontaktowa" w witrynie Marketplace. Najlepszym rozwiązaniem jest wprowadzenie zarówno indywidualnej, jak i aliasu sprawdzanego regularnie: Komunikaty wysyłane do aliasów, takie jak info@company.com często są tracone.
 
 >[!Note]
->Jeśli Twoja oferta była aktywna przez ponad cztery tygodnie, a wiadomość nie została odebrana, skontaktuj się z Twoją organizacją, która jest właścicielem oferty, w portal Cloud Partner lub w centrum partnerskim. Powinny one mieć komunikację i następne kroki. <br> <br> Jeśli nie możesz określić właściciela lub jeśli właściciel opuścił Twoją firmę, możesz zgłosić bilet pomocy technicznej pod adresem https://aka.ms/marketplacepublishersupport.
+>Jeśli Twoja oferta była aktywna przez ponad cztery tygodnie, a wiadomość nie została odebrana, skontaktuj się z Twoją organizacją, która jest właścicielem oferty, w portal Cloud Partner lub w centrum partnerskim. Powinny one mieć komunikację i następne kroki. <br> <br> Jeśli nie możesz określić właściciela lub jeśli właściciel opuścił Twoją firmę, możesz zgłosić bilet pomocy technicznej w https://aka.ms/marketplacepublishersupport.
 
 Zakres działań dostępnych do rozwinięcia w miarę rozwoju ofert w portalu Marketplace. Wszystkie aukcje otrzymują podstawowe zalecenia dotyczące optymalizacji i promocję w ramach samodzielnego adresu e-mail zasobów i najlepszych rozwiązań.
 
@@ -60,7 +60,10 @@ Szczegółowe opisy wszystkich tych korzyści można znaleźć na [talii program
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Nagrody w witrynie Marketplace dotyczące partnerów Transact
 
-Po przejściu na aktywną ofertę z możliwością zrealizowania w witrynie Azure Marketplace lub Microsoft AppSource można uzyskać dostęp do dodatkowych korzyści w miarę wzrostu rozliczeń transakcji sprzedaży za pomocą komercyjnej witryny Marketplace. 
+Po przejściu na aktywną ofertę z możliwością zrealizowania w witrynie Azure Marketplace lub Microsoft AppSource można uzyskać dostęp do dodatkowych korzyści w miarę wzrostu rozliczonych transakcji sprzedaży lub miejsc sprzedawanych za pomocą komercyjnej witryny Marketplace. 
+
+>[!Note]
+>Próg sprzedanych miejsc dotyczy tylko aplikacji Microsoft 365 (SaaS aplikacje, które mają integrację z usługami Microsoft Teams, Office, Outlook lub SharePoint) i korzyści muszą zostać spełnione do 30 czerwca 2020.
 
 Te korzyści są przeznaczone do obsługi działań marketingowych, handlowych i technicznych, a tym samym pomagają Ci uzyskać więcej odwiedzających, uzyskać więcej potencjalnych klientów i przekonwertować większą działalność.
 
@@ -71,6 +74,8 @@ Wszyscy partnerzy, którzy posiadają ofertę na żywo, będą mogli korzystać 
 ![Korzyści z sprzedaży](./media/marketplace-publishers-guide/sales-benefit.png)
 
 ![Korzyści techniczne](./media/marketplace-publishers-guide/technical-benefit.png)
+
+próg sprzedanych miejsc \* dotyczy tylko aplikacji Microsoft 365 (SaaS aplikacje, które mają integrację z usługami Microsoft Teams, Office, Outlook lub SharePoint) i korzyści muszą zostać spełnione do 30 czerwca 2020.
 
 Szczegółowe opisy wszystkich tych korzyści można znaleźć na [talii programu w portalu Marketplace](https://aka.ms/marketplacerewards).
 

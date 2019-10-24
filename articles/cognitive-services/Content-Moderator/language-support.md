@@ -3,19 +3,19 @@ title: Obsługa języków — interfejs API Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Jest to lista języków naturalnych obsługiwanych przez interfejs API Content Moderator.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 6c71cefc25296df5a05c19ee84eb4e24ea90aa9d
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.author: pafarley
+ms.openlocfilehash: b4e6a5ca2dc19671dab3087c0a182925ac8f9a1b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562775"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755315"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Obsługa języka dla interfejsu API Content Moderator
 
@@ -30,22 +30,22 @@ ms.locfileid: "69562775"
 | Arabski (łaciński)   | Afrikaans   | Arabski   | Arabski |
 | Balinese | Albański | Chiński (uproszczony)    | Duński |
 | Bengalski | Amharski | Chiński (tradycyjny)     | Holenderski |
-| Buginese | Arabski | Czeski                     | Angielski |
+| Buginese | Arabski | Czeski                     | Polski |
 | Buhid | Armeński | Duński                     | Fiński |
 | Carian | Assamski | Holenderski                     | Francuski |
-| Chiński (uproszczony) | Azerski | Angielski  | Grecki (nowoczesny) |
+| Chiński (uproszczony) | Azerbejdżański | Polski  | Grecki (nowoczesny) |
 | Chiński (tradycyjny) | Bengalski — Bangladesz | Fiński  | Włoski |
 | Staro cerkiewno (słowiański) | Bengalski — Indie | Francuski     | Koreański |
-| Coptic | Baskijski | niemiecki                      | Norweski |
+| Coptic | Baskijski | Niemiecki                      | Norweski |
 | Czeski |  Białoruski | Grecki (nowoczesny)         | Polski |
 | Dhivehi | Bośniacki (cyrylica) | Węgierski      | Portugalski |
 | Holenderski | Bośniacki — łaciński | Włoski             | Rumuński |
 | Angielski (haitański) | Bretoński [GeoPol] | Japoński  | Rosyjski |
 | Perski | Bułgarski | Koreański                        | Słowacki |
 | Francuski | Kataloński | Norweski                        | Hiszpański |
-| niemiecki | Kurdyjski centralny | Polski        | Turecki |
+| Niemiecki | Kurdyjski centralny | Polski        | Turecki |
 | Grecki | Czirokeski | Portugalski | |
-| haitański | Chiński (uproszczony) | Rumuński | |
+| Kreolski | Chiński (uproszczony) | Rumuński | |
 | Hebrajski | Chiński (tradycyjny) — Hongkong SAR | Rosyjski | |
 | Hindi | Chiński (tradycyjny) — Tajwan | Serbski (cyrylica) | |
 | Hmong | Chorwacki | Serbski (łaciński) | |
@@ -53,17 +53,17 @@ ms.locfileid: "69562775"
 | Włoski | Duński | Hiszpański | |
 | Japoński | Dari | Szwedzki | |
 | Koreański | Holenderski | Turecki | |
-| Kurdyjski (arabski) | Angielski | | |
+| Kurdyjski (arabski) | Polski | | |
 | Kurdyjski (łaciński) | Estoński | | |
-| Lepcha | Filipino | | |
+| Lepcha | Filipiński | | |
 | Limbu | Fiński | | |
 | Lu | Francuski | | |
 | Lycian | Galicyjski | | |
 | Lydian | Gruziński | | |
-| Mycenaean (grecki) | niemiecki | | |
+| Mycenaean (grecki) | Niemiecki | | |
 | Nko | Grecki | | |
 | Norweski (Bokmal) | Gudżarati | | |
-| Norweski (Nynorsk) |  Hausański | | |
+| Norweski (Nynorsk) |  Haus | | |
 | Stary (perski) | Hebrajski | | |
 | Paszto | Hindi | | |
 | Polski | Węgierski | | |
@@ -76,30 +76,30 @@ ms.locfileid: "69562775"
 | Saurashtra | isiZulu | | |
 | Serbski (Cyrylica) | Włoski | | |
 | Serbski (łaciński) | Japoński | | |
-| Sinaloa | Kannada | | |
+| Syngaleski | Kannada | | |
 | Słoweński | Kazachski | | |
 | Hiszpański | Khmerski | | |
 | Szwedzki | Kicze | | |
 | Sylheti | Kinjarwanda | | |
-| Syryjski | Suahili | | |
+| Języka | Kiswahili | | |
 | Tagbanwa | Konkani | | |
 | Tai (Nua) | Koreański | | |
-| Tamashek | Kirgijski | | |
-| Turecki | Lao | | |
+| Tamashek | Kirgiski | | |
+| Turecki | - | | |
 | Ugaritic | Łotewski | | |
-| Uzbecki (cyrylica) | Litewski | | |
+| Uzbecki (Cyrylica) | Litewski | | |
 | Uzbecki (łaciński) | Luksemburski | | |
-| Vai | Macedoński | | |
+| Vai | Macedonii | | |
 | Yi | Malajski | | |
-| Czuang, Czuang | Malajalam | | |
+| Czuang, Czuang | Malayalam | | |
 | | Maltański | | |
 | | Maoryjski | | |
 | | Marathi | | |
-| | Mongolian | | |
+| | Mongolski | | |
 | | Nepalski | | |
 | | Norweski (bokmål) | | |
 | | Norweski (Nynorsk) | | |
-| | Orija | | |
+| | Odia | | |
 | | Paszto | | |
 | | Perski | | |
 | | Polski | | |
@@ -111,7 +111,7 @@ ms.locfileid: "69562775"
 | | Keczua (Peru) | | |
 | | Rumuński | | |
 | | Rosyjski | | |
-| | Szkocki celtycki | | |
+| | Szkocki gaelicki | | |
 | | Serbski (Cyrylica) | | |
 | | Serbski (cyrylica, Bośnia i Hercegowina) | | |
 | | Serbski (łaciński) | | |
@@ -119,7 +119,7 @@ ms.locfileid: "69562775"
 | | Sesotho północny | | |
 | | Setswana | | |
 | | Sindhi | | |
-| | Sinaloa | | |
+| | Syngaleski | | |
 | | Słowacki | | |
 | | Słoweński | | |
 | | Hiszpański | | |
@@ -128,14 +128,14 @@ ms.locfileid: "69562775"
 | | Tamilski | | |
 | | Tatarski | | |
 | | Telugu | | |
-| | Tajlandzki | | |
+| | Tajski | | |
 | | Tigrinia | | |
 | | Turecki | | |
 | | Turkmeński | | |
 | | Ukraiński | | |
 | | Urdu | | |
 | | Ujgurski | | |
-| | Uzbek | | |
+| | Uzbecki | | |
 | | Walencki | | |
 | | Wietnamski | | |
 | | Walijski | | |

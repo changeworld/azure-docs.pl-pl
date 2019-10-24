@@ -1,18 +1,18 @@
 ---
 title: Wady dostępności i wydajności dla różnych poziomów spójności w Azure Cosmos DB
 description: Wady dostępności i wydajności dla różnych poziomów spójności w Azure Cosmos DB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 2d80e291b3c054fec92b169c8a216a7189e24b79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9178b8007d707af2df150102b2d344a44106a9ca
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384188"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755184"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy w zakresie spójności, dostępności i wydajności 
 
@@ -20,11 +20,11 @@ Rozproszone bazy danych korzystające z replikacji w celu zapewnienia wysokiej d
 
 Azure Cosmos DB podejścia do spójności danych jako szeroki wybór. Takie podejście obejmuje więcej opcji niż dwa skrajne silne i ostateczne spójność. W spektrum spójności można wybrać spośród pięciu dobrze zdefiniowanych modeli. Od najsilniejszych do najsłabszych modele są:
 
-- *Silne*
+- *Najwyższy*
 - *Powiązana nieaktualność*
-- *Sesji*
+- *Obrad*
 - *Spójny prefiks*
-- *Ostateczna*
+- *Ewentualn*
 
 Każdy model zapewnia kompromisy dostępności i wydajności i jest wspierany przez kompleksową umowy SLA.
 
@@ -50,14 +50,14 @@ W globalnie rozproszonym środowisku bazy danych istnieje bezpośrednia relacja 
 
 W poniższej tabeli zdefiniowano relacje między modelem spójności i trwałością danych w przypadku awarii całego regionu. Należy pamiętać, że w systemie rozproszonym, nawet ze silną spójnością, nie można mieć rozproszonej bazy danych z RPO i RTO zero ze względu na zakończenie theorem. Aby dowiedzieć się więcej na temat przyczyn, zobacz [poziomy spójności w Azure Cosmos DB](consistency-levels.md).
 
-|**Regiony**|**Tryb replikacji**|**Poziom spójności**|**RPO**|**RTO**|
+|**Regiony**|**Tryb replikacji**|**Poziom spójności**|**ODZYSKIWANIA**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Jeden lub wiele wzorców|Dowolny poziom spójności|< 240 minut|< 1 tydzień|
-|>1|Pojedynczy wzorzec|Sesja, spójny prefiks, ostateczna|< 15 minut|< 15 minut|
-|>1|Pojedynczy wzorzec|Powiązana nieaktualność|*K*T & |< 15 minut|
-|>1|Pojedynczy wzorzec|Silne|0|< 15 minut|
-|>1|Wiele wzorców|Sesja, spójny prefiks, ostateczna|< 15 minut|0|
-|>1|Wiele wzorców|Powiązana nieaktualność|*K*T & |0|
+|> 1|Pojedynczy wzorzec|Sesja, spójny prefiks, ostateczna|< 15 minut|< 15 minut|
+|> 1|Pojedynczy wzorzec|Powiązana nieaktualność|*K*  & *t*|< 15 minut|
+|> 1|Pojedynczy wzorzec|Strong|0|< 15 minut|
+|> 1|Wiele wzorców|Sesja, spójny prefiks, ostateczna|< 15 minut|0|
+|> 1|Wiele wzorców|Powiązana nieaktualność|*K*  & *t*|0|
 
 *K* = liczba wersji *"K"* (tj. aktualizacji) elementu.
 

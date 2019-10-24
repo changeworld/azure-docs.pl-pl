@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c886289f098eb41f4b215b4abc2e206db93a27f9
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 706f76c00022c5f5661ea261a5bb35eedc13d5ba
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710139"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756028"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa Azure Machine Learning: architektura i koncepcje
 
@@ -23,7 +23,7 @@ Poznaj architekturę, koncepcje i przepływ pracy dla Azure Machine Learning. G�
 
 ![Azure Machine Learning architektura i przepływ pracy](./media/concept-azure-machine-learning-architecture/workflow.png)
 
-## <a name="workflow"></a>Utworzonego
+## <a name="workflow"></a>Przepływ pracy
 
 Przepływ pracy modelu uczenia maszynowego jest zwykle następujący:
 
@@ -34,7 +34,7 @@ Przepływ pracy modelu uczenia maszynowego jest zwykle następujący:
 
 1. **Pakiet** — po znalezieniu zadowalającego przebiegu Zarejestruj trwały model w **rejestrze modelu**.
 
-1. **Sprawdź Poprawność** - **Badanie eksperymentu** dotyczącego zarejestrowanych metryk z bieżącego i przeszłego uruchomienia. Jeśli metryki nie wskazują żądanego wyniku, pętla Wróć do kroku 1 i wykonuje iterację w skryptach.
+1. **Sprawdź Poprawność**  - **Zbadaj eksperyment** rejestrowanych metryk z bieżącego i przeszłego uruchomienia. Jeśli metryki nie wskazują żądanego wyniku, pętla Wróć do kroku 1 i wykonuje iterację w skryptach.
 
 1. **Wdróż** — opracowuje skrypt oceniania, który używa modelu i **wdraża model** jako **usługę sieci Web** na platformie Azure lub na **IoT Edge urządzenie**.
 
@@ -53,26 +53,26 @@ Użyj tych narzędzi dla Azure Machine Learning:
 > Chociaż w tym artykule opisano warunki i pojęcia używane przez Azure Machine Learning, nie zdefiniowano warunków i koncepcji dla platformy Azure. Aby uzyskać więcej informacji na temat terminologii platformy Azure, zobacz [słownik Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
 ## <a name="glossary"></a>Słownik
-+ <a href="#activities">Aktywność</a>
++ <a href="#activities">Działanie</a>
 + <a href="#compute-targets">Cele obliczeń</a>
 + <a href="#datasets-and-datastores">& Magazynów danych</a>
-+ <a href="#deployment">Wdrażanie</a>
++ <a href="#deployment">Wdrożenie</a>
 + <a href="#environments">Wiejski</a>
 + [Szacowania](#estimators)
-+ <a href="#experiments">Eksperyment</a>
++ <a href="#experiments">Eksperymenty</a>
 + <a href="#github-tracking-and-integration">Śledzenie git</a>
 + <a href="#iot-module-deployments">Moduły IoT</a>
-+ <a href="#logging">Rejestrowanie</a>
++ <a href="#logging">Rejestrować</a>
 + <a href="#ml-pipelines">Potoki ML</a>
 + <a href="#models">Przykładów</a>
-+ <a href="#runs">Uruchom</a>
++ <a href="#runs">Wykonane</a>
 + <a href="#run-configurations">Uruchom konfigurację</a>
-+ <a href="#snapshots">Migawka</a>
++ <a href="#snapshots">Zdjęcie</a>
 + <a href="#training-scripts">Skrypt szkoleniowy</a>
 + <a href="#web-service-deployments">Usługi sieci Web</a>
 + <a href="#workspaces">Obszary</a>
 
-### <a name="activities"></a>Kategoria Activities
+### <a name="activities"></a>Działania
 
 Działanie reprezentuje długotrwałą operację. Następujące operacje są przykładami działań:
 
@@ -97,7 +97,7 @@ Aby uzyskać więcej informacji, zobacz [Tworzenie i Rejestrowanie zestawów dan
 
 **Magazyn** danych to Abstrakcja magazynu przez konto usługi Azure Storage. Magazyn danych może używać kontenera obiektów blob platformy Azure lub udziału plików platformy Azure jako magazynu zaplecza. Każdy obszar roboczy ma domyślny magazyn danych i można zarejestrować dodatkowe magazyny danych. Użyj interfejsu API zestawu SDK języka Python lub wiersza polecenia Azure Machine Learning, aby przechowywać i pobierać pliki z magazynu danych.
 
-### <a name="deployment"></a>wdrażania
+### <a name="deployment"></a>Wdrażanie
 
 Wdrożenie to tworzenie wystąpienia modelu w usłudze sieci Web, która może być hostowana w chmurze lub w module IoT na potrzeby wdrożeń zintegrowanych urządzeń.
 
@@ -119,7 +119,7 @@ Jeśli włączono monitorowanie, platforma Azure zbiera dane telemetryczne z mod
 
 Azure IoT Edge zapewnia, że moduł jest uruchomiony, i monitoruje urządzenie, które je obsługuje.
 
-### <a name="environments"></a>wiejski
+### <a name="environments"></a>Środowiska
 
 Środowiska usługi Azure ML służą do określania konfiguracji (Docker/Python/Spark/itp.) służącej do tworzenia odtwarzalnego środowiska na potrzeby przygotowywania danych, szkolenia modeli i modelowania. Są one zarządzane i obsługiwane przez program w obszarze roboczym Azure Machine Learning, które umożliwiają powtarzalny, z inspekcją i przenośne przepływy pracy uczenia maszynowego między różnymi obiektami docelowymi obliczeniowymi.
 
@@ -133,14 +133,14 @@ Aby ułatwić uczenie modeli przy użyciu popularnych struktur, Klasa szacowania
 
 W przypadku zadań PyTorch, TensorFlow i łańcucha, Azure Machine Learning również udostępnia odpowiednie [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)i [łańcucha](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) szacowania, aby uprościć korzystanie z tych platform.
 
-Aby uzyskać więcej informacji, zobacz następujące artykuły:
+Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 * [Uczenie modeli ml z szacowania](how-to-train-ml-models.md).
 * [Pytorch modele uczenia głębokiego na dużą skalę w Azure Machine Learning](how-to-train-pytorch.md).
 * [Uczenie i rejestrowanie modeli TensorFlow na dużą skalę przy użyciu Azure Machine Learning](how-to-train-tensorflow.md).
 * [Uczenie i rejestrowanie modeli łańcucha na dużą skalę przy użyciu Azure Machine Learning](how-to-train-chainer.md).
 
-### <a name="experiments"></a>Eksperyment
+### <a name="experiments"></a>Eksperymenty
 
 Eksperyment to grupa wielu przebiegów z określonego skryptu. Zawsze należy do obszaru roboczego. Podczas przesyłania przebiegu należy podać nazwę eksperymentu. Informacje dotyczące przebiegu są przechowywane w ramach tego eksperymentu. Jeśli przesyłasz przebieg i określisz nieistniejącą nazwę eksperymentu, zostanie automatycznie utworzony nowy eksperyment z nowo określoną nazwą.
 
@@ -149,8 +149,9 @@ Przykład korzystania z eksperymentu można znaleźć w [samouczku: uczenie pier
 
 ### <a name="github-tracking-and-integration"></a>Śledzenie i integracja z usługą GitHub
 
-Po rozpoczęciu szkolenia w przypadku, gdy katalog źródłowy jest lokalnym repozytorium git, informacje o repozytorium są przechowywane w historii uruchamiania. Na przykład bieżący identyfikator zatwierdzenia dla repozytorium jest rejestrowany jako część historii. Działa to z przebiegami przesłanymi przy użyciu potoku szacowania, ML lub uruchamiania skryptu. Działa również w przypadku przebiegów przesłanych z zestawu SDK lub interfejsu wiersza polecenia Machine Learning.
+Po rozpoczęciu szkolenia w przypadku, gdy katalog źródłowy jest lokalnym repozytorium git, informacje o repozytorium są przechowywane w historii uruchamiania. Działa to z przebiegami przesłanymi przy użyciu potoku szacowania, ML lub uruchamiania skryptu. Działa również w przypadku przebiegów przesłanych z zestawu SDK lub interfejsu wiersza polecenia Machine Learning.
 
+Aby uzyskać więcej informacji, zobacz Integracja z usługą [git dla Azure Machine Learning](concept-train-model-git-integration.md).
 
 ### <a name="logging"></a>Rejestrowanie
 
@@ -188,7 +189,7 @@ Nie można usunąć zarejestrowanego modelu, który jest używany przez aktywne 
 Aby zapoznać się z przykładem rejestrowania modelu, zobacz [uczenie modelu klasyfikacji obrazów przy użyciu Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 
-### <a name="runs"></a>Wyczerpani
+### <a name="runs"></a>Uruchomienia
 
 Uruchomienie to pojedyncze wykonanie skryptu szkoleniowego. Azure Machine Learning rejestruje wszystkie uruchomienia i przechowuje następujące informacje:
 

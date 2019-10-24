@@ -4,23 +4,23 @@ description: Jak skonfigurować role niestandardowe usługi Azure AD w Privilege
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7e52a2ef92120da60f085c0afebeb8af714203
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: e7d5a7fe20a53baa86f43703c97fb8437fbb0fcd
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947359"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756412"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurowanie ról niestandardowych usługi Azure AD w Privileged Identity Management
 
@@ -48,31 +48,31 @@ Istnieje kilka ustawień, które można skonfigurować.
 
 Można wybrać jedną z dwóch opcji czasu trwania przypisania dla każdego typu przypisania (kwalifikujące się lub aktywne) podczas konfigurowania ustawień dla roli. Te opcje stają się domyślnym maksymalnym czasem trwania, gdy członek jest przypisany do roli w Privileged Identity Management.
 
-Można wybrać jedną z następujących opcji czasu trwania przypisywania.
+Można wybrać jedną *z następujących opcji* czasu trwania przypisywania.
 
-- **Zezwalaj na trwałe przypisanie**: Administratorzy mogą przypisywać trwałe członkowstwo kwalifikujące się.
-- **Wygaśnie przypisanie uprawniające po**: Administratorzy mogą wymagać, aby wszystkie kwalifikujące się przypisania mieli określoną datę początkową i końcową.
+- **Zezwalaj na trwałe przypisanie**: Administratorzy mogą przypisywać trwałe członkostwo w prawo.
+- **Wygaśnie przypisanie kwalifikujące się po**: Administratorzy mogą wymagać, aby wszystkie kwalifikujące się przypisania miały określoną datę początkową i końcową.
 
 Ponadto możesz wybrać jedną z następujących opcji *aktywnego* przydziału czasu trwania:
 
 - **Zezwalaj na trwałe aktywne przypisanie**: Administratorzy mogą przypisywać trwałe aktywne członkowstwo.
 - **Wygasa aktywne przypisanie po**: Administratorzy mogą wymagać, aby wszystkie aktywne przypisania miały określoną datę początkową i końcową.
 
-### <a name="require-azure-multi-factor-authentication"></a>Wymagaj uwierzytelniania wieloskładnikowego platformy Azure
+### <a name="require-azure-multi-factor-authentication"></a>Wymagaj Multi-Factor Authentication platformy Azure
 
-Privileged Identity Management zapewnia opcjonalne Wymuszanie uwierzytelniania wieloskładnikowego na platformie Azure dla dwóch różnych scenariuszy.
+Privileged Identity Management zapewnia opcjonalne wymuszanie Multi-Factor Authentication platformy Azure dla dwóch różnych scenariuszy.
 
-- **Wymagaj uwierzytelniania wieloskładnikowego w aktywnym przypisaniu**
+- **Wymagaj Multi-Factor Authentication przy aktywnym przypisaniu**
 
-  Jeśli chcesz przypisać element członkowski do roli przez krótki czas trwania (na przykład jeden dzień), być może jest zbyt długi, aby wymagać od przypisanych elementów członkowskich żądania aktywacji. W tym scenariuszu Privileged Identity Management nie może wymusić uwierzytelniania wieloskładnikowego, gdy użytkownik aktywuje przypisanie roli, ponieważ jest już aktywne w roli od momentu, w którym są przypisane. Aby upewnić się, że administrator spełniający przypisanie jest tym, że są one napisane, zaznacz pole wyboru **Wymagaj uwierzytelniania wieloskładnikowego w aktywnym przypisaniu** .
+  Jeśli chcesz przypisać element członkowski do roli przez krótki czas trwania (na przykład jeden dzień), być może jest zbyt długi, aby wymagać od przypisanych elementów członkowskich żądania aktywacji. W tym scenariuszu Privileged Identity Management nie może wymusić uwierzytelniania wieloskładnikowego, gdy użytkownik aktywuje przypisanie roli, ponieważ jest już aktywne w roli od momentu, w którym są przypisane. Aby upewnić się, że administrator spełniający przypisanie, należy zaznaczyć pole wyboru **wymagaj Multi-Factor Authentication w aktywnym przypisaniu** .
 
-- **Wymagaj uwierzytelniania wieloskładnikowego w przypadku aktywacji**
+- **Wymagaj Multi-Factor Authentication podczas aktywacji**
 
-  Przed aktywowaniem można wymagać od uprawnionych użytkowników przypisanych do roli w celu zarejestrowania się w usłudze Azure MFA Authentication. Ten proces zapewnia, że użytkownik, który żąda aktywacji, jest odpowiedzialny za uzyskanie odpowiednich pewności. Wymuszanie tej opcji chroni role krytyczne w sytuacjach, gdy nastąpiło naruszenie zabezpieczeń konta użytkownika. Aby wymagać, aby uprawniony członek mógł uruchomić uwierzytelnianie wieloskładnikowe systemu Azure przed aktywacją, zaznacz pole wyboru **Wymagaj uwierzytelniania wieloskładnikowego w przypadku aktywacji** .
+  Możesz wymagać od uprawnionych użytkowników przypisanych do roli w celu zarejestrowania się w usłudze Azure Multi-Factor Authentication, zanim będzie możliwe jej aktywowanie. Ten proces zapewnia, że użytkownik, który żąda aktywacji, jest odpowiedzialny za uzyskanie odpowiednich pewności. Wymuszanie tej opcji chroni role krytyczne w sytuacjach, gdy nastąpiło naruszenie zabezpieczeń konta użytkownika. Aby wymagać, aby uprawniony członek mógł uruchomić usługę Azure Multi-Factor Authentication przed aktywacją, zaznacz pole **wymagaj Multi-Factor Authentication na aktywację** .
 
 Aby uzyskać więcej informacji, zobacz temat [uwierzytelnianie wieloskładnikowe i Privileged Identity Management](pim-how-to-require-mfa.md).
 
-### <a name="activation-maximum-duration"></a>Maksymalny czas trwania uaktywniania
+### <a name="activation-maximum-duration"></a>Maksymalny czas trwania aktywacji
 
 Suwak **Maksymalny czas trwania aktywacji** umożliwia ustawienie maksymalnego czasu (w godzinach), przez który rola pozostaje aktywna przed wygaśnięciem. Wartość ta może wynosić od, 1 do 24 godzin.
 
@@ -80,7 +80,7 @@ Suwak **Maksymalny czas trwania aktywacji** umożliwia ustawienie maksymalnego c
 
 Możesz wymagać, aby członkowie mogli wprowadzić uzasadnienie aktywnego przypisania lub kiedy aktywują. Aby wymagać uzasadnienia, zaznacz pole wyboru **Wymagaj uzasadnienia dla aktywnego przypisania** lub pole **Wymagaj uzasadnienia przy aktywacji** .
 
-### <a name="require-approval-to-activate"></a>Wymagaj zatwierdzenia w celu aktywacji
+### <a name="require-approval-to-activate"></a>Wymagaj zatwierdzenia do aktywacji
 
 Jeśli chcesz wymagać zatwierdzenia w celu aktywowania roli, wykonaj następujące czynności.
 

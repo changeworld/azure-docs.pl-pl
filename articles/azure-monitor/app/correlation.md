@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: aa683e90a328e9525fa7d0a78981aa107818188a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678190"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755375"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w Application Insights
 
@@ -214,6 +214,82 @@ Ta funkcja jest dostępna w `Microsoft.ApplicationInsights.JavaScript`. Jest on 
 Aby uzyskać więcej informacji, zobacz [Application Insights model danych telemetrii](../../azure-monitor/app/data-model.md). 
 
 Definicje koncepcji OpenTracing można znaleźć w temacie OpenTracing [Specification](https://github.com/opentracing/specification/blob/master/specification.md) i [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
+
+## <a name="telemetry-correlation-in-opencensus-python"></a>Korelacja telemetrii w języku Python OpenCensus
+
+OpenCensus Python jest zgodna z specyfikacjami modelu danych `OpenTracing` opisanymi powyżej. Obsługuje ona również [kontekst śledzenia W3C](https://w3c.github.io/trace-context/) , bez konieczności konfigurowania.
+
+### <a name="incoming-request-correlation"></a>Korelacja żądań przychodzących
+
+OpenCensus Python skorelowanie nagłówków kontekstu śledzenia W3C z żądań przychodzących do zakresów, które są generowane na podstawie samych żądań. Program OpenCensus automatycznie podejmie integrację dla popularnych struktur aplikacji sieci Web, takich jak `flask`, `django` i `pyramid`. Nagłówki kontekstowe śledzenia W3C muszą być wypełniane przy użyciu [poprawnego formatu](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)i wysyłane z żądaniem. Poniżej znajduje się przykład `flask` aplikacji.
+
+```python
+from flask import Flask
+from opencensus.ext.azure.trace_exporter import AzureExporter
+from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+from opencensus.trace.samplers import ProbabilitySampler
+
+app = Flask(__name__)
+middleware = FlaskMiddleware(
+    app,
+    exporter=AzureExporter(),
+    sampler=ProbabilitySampler(rate=1.0),
+)
+
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=8080, threaded=True)
+```
+
+Spowoduje to uruchomienie przykładowej aplikacji `flask` na komputerze lokalnym, nasłuchiwanie `8080` portów. Aby skorelować kontekst śledzenia, wysyłamy żądanie do punktu końcowego. W tym przykładzie możemy użyć `curl` polecenia.
+```
+curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
+```
+Przeglądając [Format nagłówka kontekstu śledzenia](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format), firma Microsoft udostępnia następujące informacje: `version`: `00` 
+ `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736` 
+ `parent-id/span-id`: `00f067aa0ba902b7` 
+ 0: 1
+
+Jeśli Przyjrzyjmy się wpisowi żądania, który został wysłany do Azure Monitor, można zobaczyć pola wypełnione informacjami nagłówka śledzenia.
+
+![Zrzut ekranu przedstawiający dane telemetryczne żądania w dziennikach (analiza) z polami nagłówków śledzenia wyróżnionych czerwonym prostokątem](./media/opencensus-python/0011-correlation.png)
+
+Pole `id` ma format `<trace-id>.<span-id>`, gdzie `trace-id` jest pobierany z nagłówka śledzenia, który został przesłany w żądaniu, a `span-id` jest wygenerowaną 8-bajtową tablicą dla tego zakresu. 
+
+Pole `operation_ParentId` ma format `<trace-id>.<parent-id>`, gdzie `trace-id` i `parent-id` są pobierane z nagłówka śledzenia, który został przesłany w żądaniu.
+
+### <a name="logs-correlation"></a>Korelacja dzienników
+
+OpenCensus Python umożliwia korelację dzienników poprzez wzbogacanie rekordów dziennika o identyfikator śledzenia, identyfikator zakresu i flagę próbkowania. W tym celu należy zainstalować [integrację rejestrowania](https://pypi.org/project/opencensus-ext-logging/)OpenCensus. Następujące atrybuty zostaną dodane do `LogRecord`s Python: `traceId`, `spanId` i `traceSampled`. Należy pamiętać, że ta wartość obowiązuje tylko w przypadku rejestratorów utworzonych po integracji.
+Poniżej znajduje się przykładowa aplikacja pokazująca to.
+
+```python
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+    logger.warning('In the span')
+logger.warning('After the span')
+```
+Po uruchomieniu tego kodu w konsoli zostaną wyświetlone następujące elementy:
+```
+2019-10-17 11:25:59,382 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 Before the span
+2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
+2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
+```
+Zwróć uwagę na to, w jaki sposób spanId jest obecny dla komunikatu dziennika znajdującego się w obrębie zakresu, który jest tym samym spanId, który należy do zakresu o nazwie `hello`.
 
 ## <a name="telemetry-correlation-in-net"></a>Korelacja telemetrii w programie .NET
 

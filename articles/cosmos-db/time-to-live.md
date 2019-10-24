@@ -1,18 +1,18 @@
 ---
 title: Wygaśnięcie danych w Azure Cosmos DB z czasem wygaśnięcia
 description: Dzięki funkcji TTL Microsoft Azure Cosmos DB zapewnia możliwość automatycznego przeczyszczania dokumentów z systemu po upływie czasu.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: c3e1c4f56c641bf5bfa189836a4bcdf99672a3c1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f66508a4794b8009523cc2820efe0156b4a9e2f6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597485"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756845"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Czas wygaśnięcia (TTL) w Azure Cosmos DB 
 
@@ -24,7 +24,7 @@ Usuwanie wygasłych elementów to zadanie w tle, które wykorzystuje [jednostki]
 
 Wartość czasu wygaśnięcia jest ustawiana w sekundach i interpretowana jako Delta od momentu ostatniej modyfikacji elementu. Można ustawić czas wygaśnięcia dla kontenera lub elementu w kontenerze:
 
-1. **Czas wygaśnięcia kontenera** (Ustaw za `DefaultTimeToLive`pomocą):
+1. **Czas wygaśnięcia w kontenerze** (ustawienie przy użyciu `DefaultTimeToLive`):
 
    - Jeśli nie ma (lub ma wartość null), elementy nie są automatycznie wygasłe.
 
@@ -32,11 +32,11 @@ Wartość czasu wygaśnięcia jest ustawiana w sekundach i interpretowana jako D
 
    - Jeśli jest obecny, a wartość jest równa liczbie *"n"* — elementy wygaśnie *"n"* sek. po ich ostatniej modyfikacji.
 
-2. **Czas wygaśnięcia elementu** (Ustaw za `ttl`pomocą):
+2. **Czas wygaśnięcia elementu** (ustawienie przy użyciu `ttl`):
 
-   - Ta właściwość ma zastosowanie tylko wtedy `DefaultTimeToLive` , gdy jest obecny i nie jest ustawiona na wartość null dla kontenera nadrzędnego.
+   - Ta właściwość ma zastosowanie tylko wtedy, gdy `DefaultTimeToLive` jest obecna i nie jest ustawiona na wartość null dla kontenera nadrzędnego.
 
-   - Jeśli jest obecny, zastępuje `DefaultTimeToLive` wartość kontenera nadrzędnego.
+   - Jeśli jest obecny, zastępuje wartość `DefaultTimeToLive` kontenera nadrzędnego.
 
 ## <a name="time-to-live-configurations"></a>Czas do konfiguracji na żywo
 
@@ -60,7 +60,7 @@ Wartość parametru TTL w kontenerze ma wartość null (DefaultTimeToLive = null
 |---|---|
 |TTL = null|    Czas wygaśnięcia jest wyłączony. Element nigdy nie wygaśnie (domyślnie).|
 |czas wygaśnięcia =-1   |Czas wygaśnięcia jest wyłączony. Element nigdy nie wygaśnie.|
-|ttl = 2000 |Czas wygaśnięcia jest wyłączony. Element nigdy nie wygaśnie.|
+|czas wygaśnięcia = 2000 |Czas wygaśnięcia jest wyłączony. Element nigdy nie wygaśnie.|
 
 
 ### <a name="example-2"></a>Przykład 2
@@ -71,7 +71,7 @@ Wartość parametru TTL w kontenerze jest ustawiona na-1 (DefaultTimeToLive =-1)
 |---|---|
 |TTL = null |Czas wygaśnięcia jest włączony. Element nigdy nie wygaśnie (domyślnie).|
 |czas wygaśnięcia =-1   |Czas wygaśnięcia jest włączony. Element nigdy nie wygaśnie.|
-|ttl = 2000 |Czas wygaśnięcia jest włączony. Element wygaśnie po upływie 2000 sekund.|
+|czas wygaśnięcia = 2000 |Czas wygaśnięcia jest włączony. Element wygaśnie po upływie 2000 sekund.|
 
 
 ### <a name="example-3"></a>Przykład 3
@@ -82,7 +82,7 @@ Wartość parametru TTL w kontenerze jest ustawiona na 1000 (DefaultTimeToLive =
 |---|---|
 |TTL = null|    Czas wygaśnięcia jest włączony. Element wygaśnie po 1000 sekundach (wartość domyślna).|
 |czas wygaśnięcia =-1   |Czas wygaśnięcia jest włączony. Element nigdy nie wygaśnie.|
-|ttl = 2000 |Czas wygaśnięcia jest włączony. Element wygaśnie po upływie 2000 sekund.|
+|czas wygaśnięcia = 2000 |Czas wygaśnięcia jest włączony. Element wygaśnie po upływie 2000 sekund.|
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Wdrażanie usługi Azure serwer proxy aplikacji usługi Azure AD | Microsoft Docs'
+title: Wdróż usługę Azure serwer proxy aplikacji usługi Azure AD dla Azure AD Domain Services | Microsoft Docs
 description: Korzystanie z usługi Azure serwer proxy aplikacji usługi Azure AD w Azure Active Directory Domain Services domenach zarządzanych
 services: active-directory-ds
 documentationcenter: ''
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80c3b2120a617e5c4c0f8de252b9436753fea011
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613024"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754399"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie usługi Azure serwer proxy aplikacji usługi Azure AD w domenie zarządzanej Azure AD Domain Services
 Serwer proxy aplikacji Azure Active Directory (AD) pomaga zapewnić obsługę zdalnych procesów roboczych przez publikowanie aplikacji lokalnych w celu uzyskania dostępu przez Internet. Dzięki Azure AD Domain Services możesz teraz podnieśać i przeshift starsze aplikacje działające lokalnie do usług infrastruktury platformy Azure. Następnie można opublikować te aplikacje za pomocą serwer proxy aplikacji usługi Azure AD platformy Azure, aby zapewnić bezpieczny dostęp zdalny użytkownikom w organizacji.
 
-Jeśli jesteś nowym elementem serwer proxy aplikacji usługi Azure AD platformy Azure, Dowiedz się więcej o tej funkcji w następującym artykule: [Jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych](../active-directory/manage-apps/application-proxy.md).
+Jeśli dopiero zaczynasz korzystać z usługi Azure serwer proxy aplikacji usługi Azure AD, Dowiedz się więcej o tej funkcji w następującym artykule: [jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych](../active-directory/manage-apps/application-proxy.md).
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
@@ -73,7 +73,7 @@ Wcześniej zainicjowano już maszynę wirtualną z systemem Windows Server i prz
     ![Zaakceptuj warunki instalacji](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. Podczas instalacji zostanie wyświetlony monit o zarejestrowanie łącznika przy użyciu serwera proxy aplikacji w katalogu usługi Azure AD.
    * Podaj **poświadczenia administratora aplikacji usługi Azure AD**. Dzierżawa administratora aplikacji może się różnić od poświadczeń Microsoft Azure.
-   * Konto administratora użyte do zarejestrowania łącznika musi należeć do tego samego katalogu, w którym włączono usługę serwera proxy aplikacji. Na przykład jeśli domena dzierżawy to contoso.com, administrator powinien mieć lub mieć admin@contoso.com dowolny prawidłowy alias w tej domenie.
+   * Konto administratora użyte do zarejestrowania łącznika musi należeć do tego samego katalogu, w którym włączono usługę serwera proxy aplikacji. Na przykład jeśli domena dzierżawy to contoso.com, administrator powinien mieć admin@contoso.com lub dowolny inny prawidłowy alias w tej domenie.
    * Jeśli konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest włączona dla serwera, na którym jest instalowany łącznik, ekran rejestracji może zostać zablokowany. Aby zezwolić na dostęp, postępuj zgodnie z instrukcjami wyświetlanymi w komunikacie o błędzie. Upewnij się, że pozycja Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest wyłączona.
    * Jeśli rejestracja łącznika nie powiedzie się, zobacz [Troubleshoot Application Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md) (Rozwiązywanie problemów z serwerem proxy aplikacji).
 

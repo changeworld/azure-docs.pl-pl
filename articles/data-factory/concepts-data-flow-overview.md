@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 94bde7b2e2a6f3902d83de90b06638035fd34397
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7f6c131737ca63d120e111b3ef4504a36dbd7fc1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679124"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754710"
 ---
-# <a name="what-are-mapping-data-flows"></a>Co to jest mapowanie przepływów danych?
+# <a name="what-are-mapping-data-flows"></a>Czym są przepływy danych mapowania?
 
 Mapowanie przepływów danych to wizualnie zaprojektowane przekształcenia danych w Azure Data Factory. Przepływy danych umożliwiają inżynierom danych Tworzenie logiki transformacji danych graficznych bez pisania kodu. Wyniki przepływów danych są wykonywane jako działania w ramach potoków Azure Data Factory, które używają skalowanych klastrów Spark. Działania związane z przepływem danych mogą być operacyjne za pośrednictwem istniejących Data Factory planowania, kontroli, przepływu i monitorowania.
 
@@ -39,6 +39,38 @@ Kanwa przepływu danych jest podzielony na trzy części: górny pasek, wykres i
 Wykres przedstawia strumień transformacji. Pokazuje on dane źródłowe w miarę ich przepływu w jednym lub większej liczbie zlewów. Aby dodać nowe źródło, wybierz pozycję **Dodaj źródło**. Aby dodać nową transformację, wybierz znak plus w prawym dolnym rogu istniejącej transformacji.
 
 ![Przestrzeń](media/data-flow/canvas2.png "Przestrzeń")
+
+### <a name="azure-integration-runtime-data-flow-properties"></a>Właściwości przepływu danych środowiska Azure Integration Runtime
+
+![Przycisk Debuguj](media/data-flow/debugbutton.png "Przycisk Debuguj")
+
+Po rozpoczęciu pracy z przepływami danych w podajniku APD należy włączyć przełącznik "Debuguj" dla przepływów danych w górnej części interfejsu użytkownika przeglądarki. Spowoduje to przeprowadzenie Azure Databricks klastra do użycia na potrzeby debugowania interaktywnego, podglądów danych i wykonań debugowania potoku. Możesz ustawić rozmiar używanego klastra, wybierając niestandardową [Azure Integration Runtime](concepts-integration-runtime.md). Sesja debugowania pozostanie aktywna przez nawet 60 minut od ostatniej wersji zapoznawczej danych lub ostatniego wykonania potoku debugowania.
+
+Gdy operacjonalizować potoki z działaniami przepływu danych, funkcja ADF będzie używać Azure Integration Runtime skojarzonych z [działaniem](control-flow-execute-data-flow-activity.md) we właściwości "Run on".
+
+Domyślny Azure Integration Runtime to niewielki klaster jednordzeniowego pojedynczego procesu roboczego, który umożliwia podgląd danych i szybkie wykonywanie potoków debugowania przy minimalnych kosztach. Ustaw większą konfigurację Azure IR, jeśli wykonujesz operacje na dużych zestawach danych.
+
+Można wydać polecenie ADF, aby zachować pulę zasobów klastra (maszyn wirtualnych) przez ustawienie czasu wygaśnięcia we właściwościach przepływu danych Azure IR. Spowoduje to przyspieszenie wykonywania zadań w kolejnych działaniach.
+
+#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Infrastruktura Azure Integration Runtime i strategie przepływu danych
+
+##### <a name="execute-data-flows-in-parallel"></a>Równoległe wykonywanie przepływów danych
+
+Jeśli przepływy danych są uruchamiane w potoku równolegle, ADF będzie oddzielić oddzielne klastry Azure Databricks dla każdego wykonywania działań na podstawie ustawień w Azure Integration Runtime dołączone do poszczególnych działań. Aby zaprojektować wykonywanie równoległe w potokach ADF, należy dodać działania przepływu danych bez ograniczeń pierwszeństwa w interfejsie użytkownika.
+
+Z tych trzech opcji, ta opcja prawdopodobnie zostanie wykonana w najkrótszym czasie. Jednak każdy przepływ danych równoległych będzie wykonywany w tym samym czasie w osobnych klastrach, więc porządkowanie zdarzeń jest niedeterministyczne.
+
+##### <a name="overload-single-data-flow"></a>Przeciążanie pojedynczego przepływu danych
+
+Jeśli umieścisz całą logikę w ramach pojedynczego przepływu danych, moduł ADF będzie wykonywał ten sam kontekst wykonywania zadania w jednym wystąpieniu klastra Spark.
+
+Ta opcja może być trudniejsza do obserwowania i rozwiązywania problemów, ponieważ reguły biznesowe i logika biznesowa będą Jumble razem. Ta opcja nie zapewnia również wielu ponownej użyteczności.
+
+##### <a name="execute-data-flows-serially"></a>Wykonywanie przepływów danych w sposób szeregowy
+
+Jeśli wykonujesz działania przepływu danych w ramach sekwencji w potoku i ustawisz wartość czasu wygaśnięcia dla konfiguracji Azure IR, usługa ADF będzie ponownie używała zasobów obliczeniowych (maszyn wirtualnych) w krótszym czasie. W każdym wykonaniu będzie nadal wyświetlany nowy kontekst platformy Spark.
+
+Z tych trzech opcji prawdopodobnie trwa najdłuższy czas do wykonania. Ale zapewnia czyste rozdzielenie operacji logicznych w każdym kroku przepływu danych.
 
 ### <a name="configuration-panel"></a>Panel konfiguracji
 

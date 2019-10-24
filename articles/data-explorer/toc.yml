@@ -15,6 +15,12 @@
       href: web-query-data.md
 - name: Samouczki
   items:
+    - name: Kompleksowe programistyczne pozyskiwanie obiektów blob
+      items:
+        - name: 'C#'
+          href: end-to-end-csharp.md
+        - name: Python
+          href: end-to-end-python.md
     - name: Pozyskiwanie danych bez używania kodu
       href: ingest-data-no-code.md
     - name: Wizualizacja danych w usłudze Power BI

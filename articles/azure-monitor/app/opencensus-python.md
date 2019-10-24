@@ -10,62 +10,62 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.reviewer: mbullwin
 manager: carmonm
-ms.openlocfilehash: ed61cb1bc88c48fe89c4a9390f04747749bd48c5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: 4cd3d048ead8b9e6ff59a17d1a8269ecdec5a11c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329480"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750407"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Konfigurowanie Azure Monitor aplikacji języka Python (wersja zapoznawcza)
 
-Azure Monitor obsługuje śledzenie rozproszone, zbieranie metryk i rejestrowanie aplikacji języka Python poprzez integrację z usługą [OpenCensus](https://opencensus.io). W tym artykule przedstawiono krok po kroku przez proces konfigurowania OpenCensus dla języka Python i uzyskiwania danych monitorowania do Azure Monitor.
+Azure Monitor obsługuje śledzenie rozproszone, zbieranie metryk i rejestrowanie aplikacji języka Python poprzez integrację z usługą [OpenCensus](https://opencensus.io). Ten artykuł przeprowadzi Cię przez proces konfigurowania OpenCensus dla języka Python i wysyłania danych monitorowania do Azure Monitor.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konieczna jest subskrypcja platformy Azure.
-- Środowisko Python powinno być zainstalowane, w tym artykule jest stosowana [3.7.0 języka Python](https://www.python.org/downloads/), chociaż wcześniejsze wersje będą prawdopodobnie działać z drobnymi korektami.
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+- Instalacja języka Python. W tym artykule jest stosowany [3.7.0 języka Python](https://www.python.org/downloads/), chociaż starsze wersje będą prawdopodobnie działały z drobnymi zmianami.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
 Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
-## <a name="create-application-insights-resource-in-azure-monitor"></a>Utwórz zasób Application Insights w Azure Monitor
+## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Tworzenie zasobu Application Insights w Azure Monitor
 
 Najpierw należy utworzyć zasób Application Insights w Azure Monitor, co spowoduje wygenerowanie klucza Instrumentacji (iKey). IKey jest następnie używany do konfigurowania zestawu SDK OpenCensus w celu wysyłania danych telemetrycznych do Azure Monitor.
 
 1. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**.
 
-   ![Dodawanie zasobu usługi Application Insights](./media/opencensus-python/0001-create-resource.png)
+   ![Dodawanie zasobu Application Insights](./media/opencensus-python/0001-create-resource.png)
 
-   Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
+1. Zostanie wyświetlone okno Konfiguracja. Skorzystaj z poniższej tabeli, aby wypełnić pola wejściowe.
 
-    | Ustawienia        | Wartość           | Opis  |
+   | Ustawienie        | Wartość           | Opis  |
    | ------------- |:-------------|:-----|
-   | **Nazwa**      | Wartość unikatowa w skali globalnej | Nazwa identyfikująca monitorowaną aplikację |
-   | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów hostującej dane usługi App Insights |
-   | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
+   | **Nazwa**      | Globalnie unikatowa wartość | Nazwa identyfikująca monitorowaną aplikację |
+   | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów do hostowania danych Application Insights |
+   | **Lokalizacja** | Wschodnie stany USA | Lokalizacja w sąsiedztwie lub w sąsiedztwie, gdzie aplikacja jest hostowana |
 
-2. Kliknij przycisk **Utwórz**.
+1. Wybierz pozycję **Utwórz**.
 
-## <a name="instrumenting-with-opencensus-python-sdk-for-azure-monitor"></a>Instrumentacja przy użyciu zestawu OpenCensus Python SDK dla Azure Monitor
+## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrument z zestawem SDK OpenCensus języka Python dla Azure Monitor
 
-1. Zainstaluj OpenCensus Azure Monitor eksportu:
+Zainstaluj OpenCensus Azure Monitor eksportu:
 
-    ```console
-    python -m pip install opencensus-ext-azure
-    ```
+```console
+python -m pip install opencensus-ext-azure
+```
 
-    > [!NOTE]
-    > `python -m pip install opencensus-ext-azure` zakłada, że masz zmienną środowiskową PATH ustawioną dla instalacji języka Python. Jeśli nie skonfigurowano tego elementu, należy podać pełną ścieżkę do katalogu, w którym znajduje się plik wykonywalny języka Python, co spowoduje następujące polecenie: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`.
+> [!NOTE]
+> W `python -m pip install opencensus-ext-azure` polecenie założono, że masz `PATH` zmienną środowiskową ustawioną dla instalacji języka Python. Jeśli ta zmienna nie została skonfigurowana, należy podać pełną ścieżkę do katalogu, w którym znajduje się plik wykonywalny języka Python. Wynikiem jest następujące polecenie: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`.
 
-2. Zestaw SDK wykorzystuje trzy Azure Monitor eksportujący do wysyłania różnych typów telemetrii do Azure Monitor: śledzenia, metryk i dzienników. Zapoznaj się z [omówieniem platformy danych,](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform) Aby uzyskać więcej informacji na temat tych różnych typów. Postępuj zgodnie z poniższymi instrukcjami, aby dowiedzieć się, jak wysyłać te różne typy za pośrednictwem trzech eksporterów.
+Zestaw SDK używa trzech Azure Monitor eksportujących do wysyłania różnych typów danych telemetrycznych do Azure Monitor: śledzenia, metryk i dzienników. Aby uzyskać więcej informacji na temat tych typów telemetrii, zobacz [Omówienie platformy danych](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Aby wysłać te typy telemetrii za pośrednictwem trzech eksporterów, należy wykonać poniższe instrukcje.
 
 ### <a name="trace"></a>Ślad
 
-1. Najpierw wygenerujmy pewne dane śledzenia lokalnie. W bezczynnym języku Python lub wybranym przez Ciebie edytorze wpisz poniższy kod.
+1. Najpierw wygenerujmy dane śledzenia lokalnie. W bezczynnym języku Python lub wybranym przez Ciebie edytorze wpisz poniższy kod.
 
     ```python
     from opencensus.trace.samplers import ProbabilitySampler
@@ -86,7 +86,7 @@ Najpierw należy utworzyć zasób Application Insights w Azure Monitor, co spowo
         main()
     ```
 
-2. Uruchomienie kodu spowoduje wielokrotne wyświetlenie monitu o wprowadzenie wartości. W przypadku każdego wpisu wartość zostanie wydrukowany w powłoce, a odpowiadający jej element **SpanData** zostanie wygenerowany przez moduł OpenCensus języka Python. Projekt OpenCensus definiuje [_śledzenie jako drzewo zakresów_](https://opencensus.io/core-concepts/tracing/).
+2. Uruchomienie kodu spowoduje wielokrotne wyświetlenie monitu o wprowadzenie wartości. W przypadku każdego wpisu wartość zostanie wydrukowany w powłoce, a moduł OpenCensus języka Python wygeneruje odpowiadający element `SpanData`. Projekt OpenCensus definiuje [śledzenie jako drzewo zakresów](https://opencensus.io/core-concepts/tracing/).
     
     ```
     Enter a value: 4
@@ -100,7 +100,7 @@ Najpierw należy utworzyć zasób Application Insights w Azure Monitor, co spowo
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. Chociaż jest to przydatne w celach demonstracyjnych, ostatecznie chcemy emitować `SpanData`, aby Azure Monitor. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
+3. Chociaż wprowadzanie wartości jest przydatne w celach demonstracyjnych, ostatecznie chcemy emitować `SpanData` do Azure Monitor. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -128,7 +128,7 @@ Najpierw należy utworzyć zasób Application Insights w Azure Monitor, co spowo
         main()
     ```
 
-4. Teraz po uruchomieniu skryptu języka Python nadal powinien zostać wyświetlony monit o wprowadzenie wartości, ale teraz tylko wartość jest drukowana w powłoce. Utworzona `SpanData` zostanie wysłana do Azure Monitor. Emitowane dane zakresu można znaleźć w obszarze `dependencies`.
+4. Teraz po uruchomieniu skryptu języka Python nadal powinien zostać wyświetlony monit o wprowadzenie wartości, ale tylko wartość jest drukowana w powłoce. Utworzony `SpanData` zostanie wysłany do Azure Monitor. Emitowane dane zakresu można znaleźć w obszarze `dependencies`.
 
 ### <a name="metrics"></a>Metryki
 
@@ -172,7 +172,7 @@ Najpierw należy utworzyć zasób Application Insights w Azure Monitor, co spowo
     if __name__ == "__main__":
         main()
     ```
-2. Uruchomienie kodu będzie kilkukrotnie monitować o naciśnięcie klawisza ENTER. Zostanie utworzona Metryka umożliwiająca śledzenie liczby naciśniętych trafień. W przypadku każdego wpisu wartość zostanie zwiększona, a informacje o metrykach będą wyświetlane w konsoli, z bieżącą wartością oraz z bieżącą sygnaturą czasową, gdy Metryka została zaktualizowana.
+2. Uruchomienie kodu będzie kilkukrotnie monitować o naciśnięcie klawisza ENTER. Zostanie utworzona Metryka umożliwiająca śledzenie liczby godzin naciśnięcia klawisza ENTER. W przypadku każdego wpisu wartość zostanie zwiększona, a informacje o metrykach będą wyświetlane w konsoli programu. Informacje obejmują bieżącą wartość i bieżącą sygnaturę czasową, gdy Metryka została zaktualizowana.
 
     ```
     Press enter.
@@ -183,7 +183,7 @@ Najpierw należy utworzyć zasób Application Insights w Azure Monitor, co spowo
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. Chociaż jest to przydatne w celach demonstracyjnych, ostatecznie chcemy emitować dane metryk do Azure Monitor. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
+3. Chociaż wprowadzanie wartości jest przydatne w celach demonstracyjnych, ostatecznie chcemy emitować dane metryk do Azure Monitor. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
 
     ```python
     from datetime import datetime
@@ -231,7 +231,7 @@ Najpierw należy utworzyć zasób Application Insights w Azure Monitor, co spowo
         main()
     ```
 
-4. Eksporter wyśle dane metryk do Azure Monitor w stałym interwale, domyślnie co 15 sekund. Śledzimy jedną metrykę, aby dane metryk, z dowolną wartością i sygnaturą czasową, która zawiera, zostaną wysłane każdy interwał. Dane można znaleźć w obszarze `customMetrics`.
+4. Eksporter wyśle dane metryk do Azure Monitor w stałym interwale. Wartość domyślna to co 15 sekund. Śledzimy jedną metrykę, więc dane metryk, z dowolną wartością i sygnaturą czasową, będą wysyłane każdego interwału. Dane można znaleźć w obszarze `customMetrics`.
 
 ### <a name="logs"></a>Dzienniki
 
@@ -254,7 +254,7 @@ Najpierw należy utworzyć zasób Application Insights w Azure Monitor, co spowo
         main()
     ```
 
-2.  Kod będzie monitować o podanie wartości, która ma zostać wprowadzona. Wpis dziennika jest emitowany dla każdej wprowadzonej wartości zawierającej wymienioną wartość.
+2.  Kod będzie w sposób ciągły proszony o wprowadzenie wartości. Wpis dziennika jest emitowany dla każdej wprowadzonej wartości.
 
     ```
     Enter a value: 24
@@ -267,7 +267,7 @@ Najpierw należy utworzyć zasób Application Insights w Azure Monitor, co spowo
     90
     ```
 
-3. Chociaż jest to przydatne w celach demonstracyjnych, ostatecznie chcemy emitować dane metryk do Azure Monitor. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
+3. Chociaż wprowadzanie wartości jest przydatne w celach demonstracyjnych, ostatecznie chcemy emitować dane metryk do Azure Monitor. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
 
     ```python
     import logging
@@ -296,41 +296,43 @@ Najpierw należy utworzyć zasób Application Insights w Azure Monitor, co spowo
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Rozpoczynanie monitorowania w witrynie Azure Portal
 
-1. Możesz teraz ponownie otworzyć stronę **omówienia** Application Insights w Azure Portal, aby wyświetlić szczegóły dotyczące aktualnie uruchomionej aplikacji. Wybierz pozycję **Live Metric Stream**.
+1. Możesz teraz ponownie otworzyć Application Insights okienku **Przegląd** w Azure Portal, aby wyświetlić szczegółowe informacje o aktualnie uruchomionej aplikacji. Wybierz **Live Metrics Stream**.
 
-   ![Zrzut ekranu przedstawiający okienko przegląd z aktywnym strumieńem metryk w czerwonym polu](./media/opencensus-python/0005-overview-live-metrics-stream.png)
+   ![Zrzut ekranu przedstawiający okienko przegląd z opcją "Live Metrics Stream" wybraną w czerwonym polu](./media/opencensus-python/0005-overview-live-metrics-stream.png)
 
-2. Przejdź z powrotem do strony **Przegląd** i wybierz pozycję **Mapa aplikacji** , aby uzyskać wizualny układ relacji zależności i Wywołaj chronometraż między składnikami aplikacji.
+2. Wróć do okienka **Przegląd** . Wybierz pozycję **Mapa aplikacji** , aby uzyskać wizualny układ relacji zależności i Wywołaj chronometraż między składnikami aplikacji.
 
-    ![Zrzut ekranu przedstawiający podstawową mapę aplikacji](./media/opencensus-python/0007-application-map.png)
+   ![Zrzut ekranu przedstawiający podstawową mapę aplikacji](./media/opencensus-python/0007-application-map.png)
 
-    Ponieważ śledzono tylko jedno wywołanie metody, Mapa aplikacji nie jest tak interesująca. Jednak Mapa aplikacji może być skalowana w celu wizualizowania znacznie większej liczby aplikacji rozproszonych:
+   Ponieważ tylko jedno wywołanie metody zostało śledzone, Mapa aplikacji nie jest interesująca. Jednak Mapa aplikacji może być skalowana w celu wizualizowania znacznie większej liczby aplikacji rozproszonych:
 
    ![Mapa aplikacji](media/opencensus-python/application-map.png)
 
-3. Wybierz pozycję **Zbadaj wydajność** , aby przeprowadzić szczegółową analizę wydajności i określić główną przyczynę powolnej wydajności.
+3. Wybierz pozycję **Zbadaj wydajność** , aby szczegółowo analizować wydajność i określić główną przyczynę powolnej wydajności.
 
-    ![Zrzut ekranu przedstawiający okienko wydajności](./media/opencensus-python/0008-performance.png)
+   ![Zrzut ekranu przedstawiający szczegóły wydajności](./media/opencensus-python/0008-performance.png)
 
-4. Wybranie **próbek** , a następnie kliknięcie dowolnego z przykładów, które pojawiają się w okienku po prawej stronie, spowoduje uruchomienie kompleksowego środowiska z informacjami o transakcji. Mimo że nasza Przykładowa aplikacja wyświetli tylko jedno zdarzenie, bardziej złożona aplikacja umożliwi Eksplorowanie kompleksowej transakcji w dół do poziomu jednego ze stosu wywołań poszczególnych zdarzeń.
+4. Aby otworzyć kompleksowe środowisko dla szczegółów transakcji, wybierz pozycję **przykłady**, a następnie wybierz dowolny z przykładów, które są wyświetlane w okienku po prawej stronie. 
 
-     ![Zrzut ekranu przedstawiający kompletny interfejs transakcji](./media/opencensus-python/0009-end-to-end-transaction.png)
+   Mimo że nasza Przykładowa aplikacja wyświetla tylko jedno zdarzenie, bardziej złożona aplikacja umożliwia Eksplorowanie kompleksowej transakcji w dół do poziomu jednego ze stosu wywołań poszczególnych zdarzeń.
+
+   ![Zrzut ekranu przedstawiający interfejs transakcji typu end-to-end](./media/opencensus-python/0009-end-to-end-transaction.png)
 
 ## <a name="view-your-data-with-queries"></a>Wyświetlanie danych za pomocą zapytań
 
-1. Dane telemetryczne, które zostały wysłane z aplikacji, można wyświetlić za pomocą karty Dzienniki (analiza).
+Dane telemetryczne, które zostały wysłane z aplikacji, można wyświetlić za pomocą karty **dzienniki (analiza)** .
 
-    ![Zrzut ekranu przedstawiający okienko przegląd z dziennikami (analiza) wybraną w czerwonym polu](./media/opencensus-python/0010-logs-query.png)
+![Zrzut ekranu przedstawiający okienko przegląd z opcją "dzienniki (analiza)" wybraną w czerwonym polu](./media/opencensus-python/0010-logs-query.png)
 
-2. W przypadku danych telemetrycznych wysyłanych za pomocą Azure Monitorgo eksportu śledzenia żądania przychodzące będą wyświetlane w obszarze `requests` i żądania out/in-on-in będą wyświetlane w obszarze `dependencies`.
+Na liście w obszarze **aktywne**:
 
-3. W przypadku danych telemetrycznych wysyłanych za pomocą eksportu metryk Azure Monitor w obszarze `customMetrics` będą wyświetlane metryki.
+- W przypadku danych telemetrycznych wysyłanych za pomocą eksportu śledzenia Azure Monitor w obszarze `requests` są wyświetlane żądania przychodzące. W obszarze `dependencies` są wyświetlane żądania wychodzące lub w procesie.
+- W przypadku danych telemetrycznych wysyłanych za pomocą eksportu metryk Azure Monitor w obszarze `customMetrics` są wyświetlane metryki.
+- W przypadku danych telemetrycznych wysyłanych z wyeksportowanymi dziennikami Azure Monitor dzienniki są wyświetlane w obszarze `traces`. Wyjątki są wyświetlane w obszarze `exceptions`.
 
-4. W przypadku danych telemetrycznych wysyłanych za pomocą eksportu dzienników Azure Monitor dzienniki będą wyświetlane w obszarze `traces`, a wyjątki będą widoczne w obszarze `exceptions`.
+Aby uzyskać szczegółowe informacje na temat korzystania z zapytań i dzienników, zobacz [dzienniki w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs).
 
-5. Zapoznaj się z [dziennikami w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) , aby uzyskać bardziej szczegółowe informacje na temat korzystania z zapytań i dzienników.
-
-## <a name="opencensus-for-python"></a>OpenCensus dla języka Python
+## <a name="learn-more-about-opencensus-for-python"></a>Dowiedz się więcej na temat OpenCensus for Python
 
 * [OpenCensus Python w witrynie GitHub](https://github.com/census-instrumentation/opencensus-python)
 * [Customization](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
@@ -341,7 +343,6 @@ Najpierw należy utworzyć zasób Application Insights w Azure Monitor, co spowo
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Podsumowanie interfejsu API](./../../azure-monitor/app/api-custom-events-metrics.md)
 * [Mapa aplikacji](./../../azure-monitor/app/app-map.md)
 * [Kompleksowe monitorowanie wydajności](./../../azure-monitor/learn/tutorial-performance.md)
 

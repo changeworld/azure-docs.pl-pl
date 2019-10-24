@@ -1,18 +1,18 @@
 ---
 title: Używanie unikatowych kluczy w Azure Cosmos DB
 description: Dowiedz się, jak używać unikatowych kluczy w bazie danych Azure Cosmos
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e5b8eb4d5334eb198ff6699897c56b516ded069e
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4a929566d464f8548c4bffeb9f89099e77722e67
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467563"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756791"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Ograniczenia unikatowego klucza w Azure Cosmos DB
 
@@ -20,13 +20,13 @@ Klucze unikatowe umożliwiają dodanie warstwy integralności danych do kontener
 
 Po utworzeniu kontenera z unikatowymi zasadami kluczy, utworzenie nowej lub aktualizacji istniejącego elementu, co spowodowało wystąpienie duplikatu w obrębie partycji logicznej, jest blokowane, zgodnie z ograniczeniami unikatowego klucza. Klucz partycji połączony z unikatowym kluczem gwarantuje unikatowość elementu w zakresie kontenera.
 
-Rozważmy na przykład kontener usługi Azure Cosmos z adresem e-mail jako ograniczenie unikatowego klucza i `CompanyID` klucz partycji. W przypadku skonfigurowania adresu e-mail użytkownika przy użyciu unikatowego klucza każdy element ma unikatowy adres e-mail w danym `CompanyID`. Nie można tworzyć dwóch elementów ze zduplikowanymi adresami e-mail i z tą samą wartością klucza partycji. 
+Rozważmy na przykład kontener Azure Cosmos z adresem e-mail jako ograniczenie UNIQUE Key i `CompanyID` jako klucz partycji. W przypadku skonfigurowania adresu e-mail użytkownika przy użyciu unikatowego klucza każdy element ma unikatowy adres e-mail w ramach danego `CompanyID`. Nie można tworzyć dwóch elementów ze zduplikowanymi adresami e-mail i z tą samą wartością klucza partycji. 
 
-Aby utworzyć elementy o tym samym adresie e-mail, ale nie te same imię, nazwisko i adres e-mail, Dodaj więcej ścieżek do unikatowych zasad kluczy. Zamiast tworzyć unikatowe klucze wyłącznie na podstawie adresu e-mail, można również utworzyć unikatowy klucz z kombinacją imię, nazwisko i adres e-mail. Ten klucz jest znany jako złożony klucz unikatowy. W takim przypadku każda unikatowa kombinacja trzech wartości w ramach danego `CompanyID` elementu jest dozwolona. 
+Aby utworzyć elementy o tym samym adresie e-mail, ale nie te same imię, nazwisko i adres e-mail, Dodaj więcej ścieżek do unikatowych zasad kluczy. Zamiast tworzyć unikatowe klucze wyłącznie na podstawie adresu e-mail, można również utworzyć unikatowy klucz z kombinacją imię, nazwisko i adres e-mail. Ten klucz jest znany jako złożony klucz unikatowy. W takim przypadku każda unikatowa kombinacja trzech wartości w ramach danego `CompanyID` jest dozwolona. 
 
 Na przykład kontener może zawierać elementy o następujących wartościach, gdzie każdy element honoruje ograniczenie UNIQUE Key.
 
-|CompanyID|Imię|Nazwisko|Adres e-mail|
+|CompanyID|Imię|Nazwisko|Email address (Adres e-mail)|
 |---|---|---|---|
 |Contoso|Gaby|Duperre|gaby@contoso.com |
 |Contoso|Gaby|Duperre|gaby@fabrikam.com|
@@ -45,15 +45,15 @@ Klucze unikatowe można definiować tylko podczas tworzenia kontenera usługi Az
 
 * Aby ustawić unikatowy klucz dla istniejącego kontenera, Utwórz nowy kontener z ograniczeniem Unique Key. Użyj odpowiedniego narzędzia do migracji danych, aby przenieść dane z istniejącego kontenera do nowego kontenera. W przypadku kontenerów SQL Użyj [Narzędzia do migracji danych](import-data.md) , aby przenieść dane. W przypadku kontenerów MongoDB Użyj [mongoimport. exe lub mongorestore. exe](mongodb-migrate.md) , aby przenieść dane.
 
-* Unikatowe Zasady kluczy mogą zawierać maksymalnie 16 wartości ścieżki. Na przykład wartości mogą być `/firstName`, `/lastName`, i `/address/zipCode`. Każda unikatowa zasada klucza może mieć maksymalnie 10 unikatowych ograniczeń klucza lub kombinacji. Ścieżki połączone dla każdego unikatowego ograniczenia indeksu nie mogą przekraczać 60 bajtów. W poprzednim przykładzie pierwsze imię, nazwisko i adres e-mail są jednym ograniczeniem. To ograniczenie powoduje użycie 3 z 16 możliwych ścieżek.
+* Unikatowe Zasady kluczy mogą zawierać maksymalnie 16 wartości ścieżki. Na przykład wartości mogą być `/firstName`, `/lastName` i `/address/zipCode`. Każda unikatowa zasada klucza może mieć maksymalnie 10 unikatowych ograniczeń klucza lub kombinacji. Ścieżki połączone dla każdego unikatowego ograniczenia indeksu nie mogą przekraczać 60 bajtów. W poprzednim przykładzie pierwsze imię, nazwisko i adres e-mail są jednym ograniczeniem. To ograniczenie powoduje użycie 3 z 16 możliwych ścieżek.
 
 * Gdy kontener ma unikatowe Zasady kluczy, opłaty za [jednostkę żądania](request-units.md) do tworzenia, aktualizowania i usuwania elementu są nieco wyższe.
 
 * Unikatowe klucze rozrzedzone nie są obsługiwane. Jeśli brakuje niektórych unikatowych wartości ścieżki, są one traktowane jako wartości null, które uwzględniają część ograniczenia unikatowości. Z tego powodu może istnieć tylko jeden element z wartością null do spełnienia tego ograniczenia.
 
-* W unikatowych nazwach kluczy jest rozróżniana wielkość liter. Rozważmy na przykład kontener z ograniczeniem Unique Key ustawionym na `/address/zipcode`. Jeśli dane zawierają pole o nazwie `ZipCode`, Azure Cosmos DB wstawia "null" jako unikatowy klucz, ponieważ `zipcode` nie jest taki sam jak `ZipCode`. Ze względu na to, że nie ma uwzględniania wielkości liter, wszystkie inne rekordy z kod pocztowy nie mogą być wstawiane, ponieważ zduplikowane wartości "null" naruszają ograniczenie UNIQUE Key.
+* W unikatowych nazwach kluczy jest rozróżniana wielkość liter. Rozważmy na przykład kontener z ograniczeniem Unique Key ustawionym na `/address/zipcode`. Jeśli dane zawierają pole o nazwie `ZipCode`, Azure Cosmos DB wstawia wartość "null" jako unikatowy klucz, ponieważ `zipcode` nie jest taka sama jak `ZipCode`. Ze względu na to, że nie ma uwzględniania wielkości liter, wszystkie inne rekordy z kod pocztowy nie mogą być wstawiane, ponieważ zduplikowane wartości "null" naruszają ograniczenie UNIQUE Key.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [partycjami logicznymi](partition-data.md)
+* Dowiedz się więcej na temat [partycji logicznych](partition-data.md)
 * Zapoznaj [się z tematem Definiowanie unikatowych kluczy](how-to-define-unique-keys.md) podczas tworzenia kontenera

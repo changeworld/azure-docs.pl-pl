@@ -123,6 +123,8 @@
               href: deploy-continuous-deployment.md
             - name: Wdrażanie z lokalnego wdrożenia narzędzia Git
               href: deploy-local-git.md
+            - name: Wdrażanie przy użyciu akcji GitHub
+              href: deploy-github-actions.md
             - name: Wdrażanie za pomocą szablonu
               href: deploy-complex-application-predictably.md
         - name: Konfigurowanie poświadczeń wdrożenia

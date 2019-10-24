@@ -59,6 +59,8 @@
           items:
             - name: Konsola platformy .NET Core (demon)
               href: quickstart-v2-netcore-daemon.md
+            - name: Demon konsoli języka Python
+              href: quickstart-v2-python-daemon.md
             - name: Aplikacja internetowa demona platformy ASP.NET
               href: 'https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2'
     - name: Samouczki
@@ -644,7 +646,7 @@
           items:
             - name: Konwertowanie aplikacji z jedną dzierżawą na aplikację z wieloma dzierżawami
               href: howto-convert-app-to-be-multi-tenant.md
-            - name: Tworzenie jednostki usługi
+            - name: Tworzenie nazwy głównej usługi
               items:
                 - name: Korzystanie z programu Azure PowerShell
                   href: howto-authenticate-service-principal-powershell.md

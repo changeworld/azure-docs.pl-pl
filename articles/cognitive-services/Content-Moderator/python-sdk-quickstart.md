@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Content Moderator Biblioteka kliencka dla języka Python | Microsoft Docs'
+title: 'Szybki Start: Content Moderatora Biblioteka kliencka dla języka Python | Microsoft Docs'
 description: Rozpocznij pracę z biblioteką klienta Content Moderator dla języka Python.
 services: cognitive-services
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: pafarley
-ms.openlocfilehash: f3b9a7aefc5fc347c4d5114575388914ea8d6fee
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700244"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755251"
 ---
-# <a name="quickstart-content-moderator-client-library-for-python"></a>Szybki start: Content Moderator Biblioteka kliencka dla języka Python
+# <a name="quickstart-content-moderator-client-library-for-python"></a>Szybki Start: Content Moderatora Biblioteka kliencka dla języka Python
 
 Rozpocznij pracę z biblioteką klienta Content Moderator dla języka Python. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań. Content Moderator to usługa poznawczej, która sprawdza zawartość tekstu, obrazu i wideo dla materiałów, które są potencjalnie obraźliwe, ryzykowne lub w inny sposób niepożądane. W przypadku znalezienia takich treści usługa stosuje odpowiednie etykiety (flagi) do zawartości. Aplikacja może następnie obsłużyć oflagowaną zawartość w celu zachowania zgodności z przepisami lub zapewnienia odpowiedniego środowiska dla użytkowników.
 
@@ -28,7 +28,7 @@ Użyj biblioteki klienta Content Moderator dla języka Python, aby:
 * [Używanie niestandardowej listy obrazów](#use-a-custom-image-list)
 * [Utwórz recenzję](#create-a-review)
 
-[](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [Przykłady](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) pakietu | [kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)[](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)źródłowego biblioteki dokumentacji referencyjnej (PiPy) | 
+[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [pakiet (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [przykładów](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,20 +44,20 @@ Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azur
 * Uzyskaj [klucz wersji próbnej](https://azure.microsoft.com/try/cognitive-services/#decision) ważny przez siedem dni bezpłatnie. Po utworzeniu konta będzie ono dostępne w [witrynie sieci Web systemu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Wyświetl zasób na [Azure Portal](https://portal.azure.com/)
 
-Po otrzymaniu klucza z subskrypcji próbnej lub zasobu [Utwórz zmienną środowiskową](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza o nazwie `CONTENT_MODERATOR_SUBSCRIPTION_KEY`.
+Po otrzymaniu klucza z subskrypcji próbnej lub zasobu [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla adresu URL klucza i punktu końcowego o nazwie `CONTENT_MODERATOR_SUBSCRIPTION_KEY` i `CONTENT_MODERATOR_ENDPOINT`.
  
 ### <a name="create-a-python-script"></a>Tworzenie skryptu w języku Python
 
-Utwórz nowy skrypt w języku Python i otwórz go za pomocą preferowanego edytora lub środowiska IDE. Następnie Dodaj poniższe `import` instrukcje na początku pliku.
+Utwórz nowy skrypt w języku Python i otwórz go za pomocą preferowanego edytora lub środowiska IDE. Następnie Dodaj następujące instrukcje `import` na początku pliku.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imports)]
 
-Następnie w polu Zmienna środowiskowa Utwórz zmienne dla lokalizacji platformy Azure i klucza zasobu. 
+Następnie utwórz zmienne dla lokalizacji i klucza punktu końcowego zasobu jako zmienne środowiskowe. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
 > [!NOTE]
-> Jeśli zmienna środowiskowa została utworzona po uruchomieniu aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę, na których jest uruchomiona, aby uzyskać dostęp do zmiennej.
+> Jeśli po uruchomieniu aplikacji zostały utworzone zmienne środowiskowe, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę, na których jest uruchomiona, aby uzyskać dostęp do zmiennych.
 
 ### <a name="install-the-client-library"></a>Zainstaluj bibliotekę kliencką
 
@@ -71,7 +71,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 Poniższe klasy obsługują niektóre główne funkcje zestawu SDK języka Python Content Moderator.
 
-|Name (Nazwa)|Opis|
+|Nazwa|Opis|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Ta klasa jest wymagana dla wszystkich funkcji Content Moderator. Tworzysz wystąpienie z informacjami o subskrypcji i używasz ich do tworzenia wystąpień innych klas.|
 |[ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Ta klasa udostępnia funkcje do analizowania obrazów na potrzeby zawartości dla dorosłych, danych osobowych lub osób ludzkich.|
@@ -92,7 +92,7 @@ Te fragmenty kodu przedstawiają sposób wykonywania następujących zadań za p
 ## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
 
 > [!NOTE]
-> W tym przewodniku szybki start przyjęto założenie, że dla klucza Content Moderator `CONTENT_MODERATOR_SUBSCRIPTION_KEY`została [utworzona zmienna środowiskowa](../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) o nazwie.
+> W tym przewodniku szybki start założono, że [utworzono zmienne środowiskowe](../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) dla klucza Content moderator i punktu końcowego.
 
 Utwórz wystąpienie klienta z punktem końcowym i kluczem. Utwórz obiekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) z kluczem i użyj go w punkcie końcowym, aby utworzyć obiekt [ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) .
 
@@ -145,7 +145,7 @@ Aby edytować nazwę i opis, można użyć identyfikatora listy.
 
 ### <a name="add-a-term-to-the-list"></a>Dodawanie terminu do listy
 
-Poniższy kod dodaje warunki `"term1"` i `"term2"` do listy.
+Poniższy kod dodaje terminy `"term1"` i `"term2"` do listy.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_add)]
 
@@ -169,7 +169,7 @@ Główną funkcją listy warunków niestandardowych jest porównanie treści tek
 
 ### <a name="remove-a-term-from-a-list"></a>Usuwanie terminu z listy
 
-Poniższy kod usuwa okres `"term1"` z listy.
+Poniższy kod usuwa termin `"term1"` z listy.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_remove)]
 
@@ -226,7 +226,7 @@ Utwórz następujące zmienne tekstowe do przechowywania adresów URL obrazów, 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelistvars)]
 
 > [!NOTE]
-> Nie jest to właściwa lista, ale nieformalnej listy obrazów, które zostaną dodane w `add images` sekcji kodu.
+> Nie jest to właściwa lista, ale nieformalna lista obrazów, które zostaną dodane do `add images` sekcji kodu.
 
 
 ### <a name="create-an-image-list"></a>Tworzenie listy obrazów
@@ -334,7 +334,7 @@ Jeśli w tym scenariuszu użyto punktu końcowego wywołania zwrotnego, powinien
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Uruchom aplikację za pomocą `python` polecenia w pliku szybkiego startu.
+Uruchom aplikację za pomocą polecenia `python` w pliku szybkiego startu.
 
 ```console
 python quickstart-file.py
@@ -355,4 +355,4 @@ W tym przewodniku szybki start przedstawiono sposób korzystania z biblioteki j�
 >[Pojęcia związane z moderowaniem obrazu](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Co to jest platforma Azure Content Moderator?](./overview.md)
-* Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision).
+* Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py).

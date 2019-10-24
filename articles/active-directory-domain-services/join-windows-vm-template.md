@@ -1,5 +1,5 @@
 ---
-title: Użyj szablonu, aby dołączać maszynę wirtualną z systemem Windows Server do usługi Azure AD DS | Microsoft Docs
+title: Używanie szablonu do przyłączania maszyny wirtualnej z systemem Windows do usługi Azure AD DS | Microsoft Docs
 description: Dowiedz się, jak za pomocą szablonów Azure Resource Manager przyłączyć nową lub istniejącą maszynę wirtualną z systemem Windows Server do domeny zarządzanej Azure Active Directory Domain Services.
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: d4e6beb376172e5ec5285d26b47fd23b396d5e38
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 9f35c9c3c6c974c79dc849425fc91b532aed4d22
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104106"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755701"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej Azure Active Directory Domain Services przy użyciu szablonu Menedżer zasobów
 
@@ -84,11 +84,11 @@ Aby utworzyć maszynę wirtualną z systemem Windows Server, Dołącz ją do dom
 1. Przejdź do [szablonu szybkiego startu](https://azure.microsoft.com/resources/templates/201-vm-domain-join/). Wybierz opcję **wdrożenia na platformie Azure**.
 1. Na stronie **wdrożenie niestandardowe** wprowadź następujące informacje, aby utworzyć maszynę wirtualną z systemem Windows Server i dołączyć ją do domeny zarządzanej usługi Azure AD DS:
 
-    | Ustawienie                   | Value |
+    | Ustawienie                   | Wartość |
     |---------------------------|-------|
-    | Subscription              | Wybierz tę samą subskrypcję platformy Azure, w której włączono Azure AD Domain Services. |
-    | Resource group            | Wybierz grupę zasobów dla maszyny wirtualnej. |
-    | Location                  | Wybierz lokalizację dla maszyny wirtualnej. |
+    | Subskrypcja              | Wybierz tę samą subskrypcję platformy Azure, w której włączono Azure AD Domain Services. |
+    | Grupa zasobów            | Wybierz grupę zasobów dla maszyny wirtualnej. |
+    | Lokalizacja                  | Wybierz lokalizację dla maszyny wirtualnej. |
     | Istniejąca nazwa sieci wirtualnej        | Nazwa istniejącej sieci wirtualnej, z którą ma zostać nawiązane połączenie z MASZYNą wirtualną, na przykład *myVnet*. |
     | Istniejąca nazwa podsieci      | Nazwa istniejącej podsieci sieci wirtualnej, na przykład *obciążeń*. |
     | Prefiks etykiety DNS          | Wprowadź nazwę DNS, która ma być używana dla maszyny wirtualnej, na przykład *MyVM*. |
@@ -117,11 +117,11 @@ Aby przyłączyć istniejącą maszynę wirtualną z systemem Windows Server do 
 1. Przejdź do [szablonu szybkiego startu](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/). Wybierz opcję **wdrożenia na platformie Azure**.
 1. Na stronie **wdrożenie niestandardowe** wprowadź następujące informacje, aby dołączyć maszynę wirtualną do domeny zarządzanej usługi Azure AD DS:
 
-    | Ustawienie                   | Value |
+    | Ustawienie                   | Wartość |
     |---------------------------|-------|
-    | Subscription              | Wybierz tę samą subskrypcję platformy Azure, w której włączono Azure AD Domain Services. |
-    | Resource group            | Wybierz grupę zasobów z istniejącą maszyną wirtualną. |
-    | Location                  | Wybierz lokalizację istniejącej maszyny wirtualnej. |
+    | Subskrypcja              | Wybierz tę samą subskrypcję platformy Azure, w której włączono Azure AD Domain Services. |
+    | Grupa zasobów            | Wybierz grupę zasobów z istniejącą maszyną wirtualną. |
+    | Lokalizacja                  | Wybierz lokalizację istniejącej maszyny wirtualnej. |
     | Lista maszyn wirtualnych                   | Wprowadź rozdzieloną przecinkami listę istniejących maszyn wirtualnych do przyłączenia do domeny zarządzanej usługi Azure AD DS, takiej jak *myVM1, myVM2*. |
     | Nazwa użytkownika przyłączania do domeny     | Konto użytkownika w domenie zarządzanej platformy Azure AD DS, które ma zostać użyte do przyłączenia maszyny wirtualnej do domeny zarządzanej. To konto musi być członkiem grupy *administratorzy kontrolera domeny usługi Azure AD* . |
     | Hasło użytkownika dołączania do domeny | Hasło dla konta użytkownika określonego w poprzednim ustawieniu. |

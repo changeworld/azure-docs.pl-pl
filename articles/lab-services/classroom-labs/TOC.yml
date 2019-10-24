@@ -1,0 +1,92 @@
+- name: Dokumentacja usług Lab Services
+  href: index.yml
+- name: Przejdź do dokumentacji usługi DevTest Labs
+  href: ../devtest-lab-overview.md
+- name: Omówienie
+  items:
+    - name: Informacje na temat laboratoriów na potrzeby zajęć
+      href: classroom-labs-overview.md
+    - name: Informacje o usługach Lab Services i DevTest Labs
+      href: ../lab-services-overview.md?toc=%2fazure%2flab-services%2fclassroom-labs%2ftoc.json
+- name: Samouczki
+  items:
+    - name: Konfigurowanie konta laboratorium
+      href: tutorial-setup-lab-account.md
+    - name: Konfigurowanie laboratorium na potrzeby zajęć
+      href: tutorial-setup-classroom-lab.md
+    - name: Dostęp do laboratorium na potrzeby zajęć
+      href: tutorial-connect-virtual-machine-classroom-lab.md
+    - name: Śledzenie użycia laboratorium na potrzeby zajęć
+      href: tutorial-track-usage.md
+- name: Pojęcia
+  items:
+    - name: Pojęcia związane z laboratoriami na potrzeby zajęć
+      href: classroom-labs-concepts.md
+    - name: Scenariusze
+      items:
+        - name: Korzystanie z laboratoriów przy prowadzeniu zajęć
+          href: classroom-labs-scenarios.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Laboratoria klas — typy klas
+      items:
+        - name: Omówienie typów klas
+          href: class-types.md
+        - name: Uczenie głębokie w przetwarzaniu naturalnym
+          href: class-type-deep-learning-natural-processing.md
+        - name: Skrypty powłoki w systemie Linux
+          href: class-type-shell-scripting-linux.md
+        - name: Etyczne działania hakerskie
+          href: class-type-ethical-hacking.md
+    - name: Tworzenie i konfigurowanie kont laboratoriów (właściciel konta laboratorium)
+      items:
+        - name: Tworzenie kont laboratoriów i zarządzanie nimi
+          href: how-to-manage-lab-accounts.md
+        - name: Konfigurowanie kont laboratoriów
+          href: how-to-configure-lab-accounts.md
+        - name: Łączenie laboratoriów z równorzędną siecią wirtualną
+          href: how-to-connect-peer-virtual-network.md
+        - name: Dołączanie lub odłączanie galerii obrazów udostępnionych
+          href: how-to-attach-detach-shared-image-gallery.md
+    - name: Tworzenie i konfigurowanie laboratoriów na potrzeby zajęć (instruktor)
+      items:
+        - name: Tworzenie laboratoriów na potrzeby zajęć i zarządzanie nimi
+          href: how-to-manage-classroom-labs.md
+        - name: 'Konfigurowanie, dostosowywanie i publikowanie szablonów'
+          href: how-to-create-manage-template.md
+        - name: Konfigurowanie puli maszyn wirtualnych i zarządzanie nią
+          href: how-to-set-virtual-machine-passwords.md
+        - name: Dodawanie użytkowników laboratorium i zarządzanie nimi
+          href: how-to-configure-student-usage.md
+        - name: Tworzenie harmonogramów i zarządzanie nimi
+          href: how-to-create-schedules.md
+        - name: Używanie galerii obrazów udostępnionych
+          href: how-to-use-shared-image-gallery.md
+        - name: Włączanie połączenia pulpitu zdalnego dla systemu Linux
+          href: how-to-enable-remote-desktop-linux.md
+        - name: Włączanie wirtualizacji zagnieżdżonej na maszynie wirtualnej szablonu
+          href: how-to-enable-nested-virtualization-template-vm.md
+        - name: Tworzenie środowiska z wieloma maszynami wirtualnymi w maszynie wirtualnej szablonu
+          href: how-to-enable-multi-vm-environment.md
+    - name: Łączenie się z maszynami wirtualnymi w laboratoriach na potrzeby zajęć (uczeń)
+      items:
+        - name: Dostęp do laboratoriów na potrzeby zajęć
+          href: how-to-use-classroom-lab.md
+        - name: Używanie połączenia pulpitu zdalnego dla maszyn wirtualnych z systemem Linux
+          href: how-to-use-remote-desktop-linux-student.md
+        - name: Ustawianie lub resetowanie haseł maszyn wirtualnych
+          href: how-to-set-virtual-machine-passwords-student.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs API REST
+      href: 'https://docs.microsoft.com/rest/api/labservices/'
+- name: Zasoby
+  items:
+    - name: Aktualizacje platformy Azure
+      href: 'https://azure.microsoft.com/updates/?product=lab-services'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/lab-services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
+    - name: Często zadawane pytania
+      href: classroom-labs-faq.md

@@ -1,20 +1,24 @@
-- name: Dokumentacja usługi Azure Search
+- name: Dokumentacja wyszukiwania poznawczego na platformie Azure
   href: index.yml
 - name: Omówienie
-  items:
-    - name: Co to jest usługa Azure Search?
-      href: search-what-is-azure-search.md
-- name: Przewodniki Szybki start
   expanded: true
+  items:
+    - name: Co to jest wyszukiwanie poznawcze na platformie Azure?
+      href: search-what-is-azure-search.md
+    - name: Co nowego
+      href: whats-new.md
+- name: Przewodniki Szybki start
   items:
     - name: Tworzenie usługi
       href: search-create-service-portal.md
     - name: Portal
       items:
-        - name: Tworzenie i używanie indeksu
+        - name: Tworzenie indeksu wyszukiwania
           href: search-get-started-portal.md
-        - name: Wzbogacanie o wyszukiwanie poznawcze (sztuczna inteligencja)
+        - name: Tworzenie zestawu umiejętności poznawczych
           href: cognitive-search-quickstart-blob.md
+        - name: Tworzenie magazynu wiedzy
+          href: knowledge-store-create-portal.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -79,7 +83,7 @@
   items:
     - name: Wyszukiwanie pełnotekstowe
       href: search-lucene-query-architecture.md
-    - name: Wyszukiwanie poznawcze
+    - name: Wzbogacanie sztucznej inteligencji
       href: cognitive-search-concept-intro.md
     - name: Zestawy umiejętności
       href: cognitive-search-working-with-skillsets.md
@@ -87,6 +91,8 @@
       href: knowledge-store-concept-intro.md
     - name: Projekcje
       href: knowledge-store-projection-overview.md
+    - name: Indeksowanie przyrostowe
+      href: cognitive-search-incremental-indexing-conceptual.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Planowanie
@@ -209,6 +215,8 @@
           href: search-howto-schedule-indexers.md
         - name: Mapowanie pól
           href: search-indexer-field-mappings.md
+        - name: Indeksowanie przyrostowe
+          href: search-howto-incremental-index.md
         - name: Łączenie z wystąpieniem zarządzanym SQL
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Łączenie z maszynami wirtualnymi z programem SQL Server
@@ -247,8 +255,6 @@
           href: cognitive-search-resources-documentation.md
         - name: Magazyn wiedzy (wersja zapoznawcza)
           items:
-            - name: Tworzenie magazynu wiedzy w witrynie Azure Portal
-              href: knowledge-store-create-portal.md
             - name: Tworzenie przy użyciu rozwiązań REST i Postman
               href: knowledge-store-create-rest.md
             - name: Wyświetlanie przy użyciu Eksploratora usługi Storage

@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: f316f77d0f4ca3132a2ae77d807e2dd66ba62a43
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: b858776d8309be94a0dd64f994a9e34e589d3c49
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71846268"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750460"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL Database przy użyciu zautomatyzowanych kopii zapasowych bazy danych
 
-Domyślnie kopie zapasowe Azure SQL Database są przechowywane w magazynie obiektów BLOB replikowanych geograficznie. Poniższe opcje są dostępne do odzyskiwania bazy danych przy użyciu [zautomatyzowanych kopii zapasowych bazy danych](sql-database-automated-backups.md). Można:
+Domyślnie kopie zapasowe Azure SQL Database są przechowywane w replikowanym geograficznie magazynie obiektów BLOB (typ magazynu RA-GRS). Poniższe opcje są dostępne do odzyskiwania bazy danych przy użyciu [zautomatyzowanych kopii zapasowych bazy danych](sql-database-automated-backups.md). Przekonaj się:
 
 - Utwórz nową bazę danych na tym samym serwerze SQL Database, a następnie Odzyskaj ją do określonego punktu w czasie w okresie przechowywania.
 - Utwórz bazę danych na tym samym serwerze SQL Database, Odzyskaj do czasu usunięcia usuniętej bazy danych.
@@ -34,9 +34,6 @@ Jeśli skonfigurowano [długoterminowe przechowywanie kopii zapasowych](sql-data
 
 W przypadku korzystania z warstw usług warstwy Standardowa lub Premium przywrócenie bazy danych może pociągnąć za sobą dodatkowy koszt magazynu. Dodatkowy koszt jest naliczany, gdy maksymalny rozmiar przywróconej bazy danych jest większy niż ilość miejsca do magazynowania dołączona do warstwy usługi i poziomu wydajności docelowej bazy danych. Szczegóły cennika dodatkowego magazynu znajdują się na [stronie cennika SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywista ilość zajętego miejsca jest mniejsza niż ilość dostępnego magazynu, możesz uniknąć tego dodatkowego kosztu, ustawiając wartość w polu Maksymalny rozmiar bazy danych na uwzględnioną kwotę.
 
-> [!NOTE]
-> Podczas tworzenia [kopii bazy danych](sql-database-copy.md)należy używać [zautomatyzowanych kopii zapasowych bazy danych](sql-database-automated-backups.md).
-
 ## <a name="recovery-time"></a>Czas odzyskiwania
 
 Czas odzyskiwania do przywrócenia bazy danych przy użyciu zautomatyzowanych kopii zapasowych bazy danych ma wpływ na kilka czynników:
@@ -48,9 +45,9 @@ Czas odzyskiwania do przywrócenia bazy danych przy użyciu zautomatyzowanych ko
 - Przepustowość sieci, jeśli przywracanie jest w innym regionie.
 - Liczba współbieżnych żądań przywracania w regionie docelowym.
 
-W przypadku dużej lub bardzo aktywnej bazy danych Przywracanie może potrwać kilka godzin. Jeśli w regionie występuje długotrwała awaria, istnieje możliwość, że wiele żądań przywracania geograficznego jest przetwarzanych przez inne regiony. W przypadku wielu żądań czas odzyskiwania może wzrosnąć w przypadku baz danych w tym regionie. Większość operacji przywracania bazy danych jest przeprowadzana w czasie krótszym niż 12 godzin.
+W przypadku dużej lub bardzo aktywnej bazy danych Przywracanie może potrwać kilka godzin. Jeśli w regionie występuje długotrwała awaria, możliwe jest zainicjowanie dużej liczby żądań przywracania geograficznego na potrzeby odzyskiwania po awarii. Jeśli istnieje wiele żądań, można zwiększyć czas odzyskiwania poszczególnych baz danych. Większość operacji przywracania bazy danych jest przeprowadzana w czasie krótszym niż 12 godzin.
 
-W przypadku pojedynczej subskrypcji istnieją ograniczenia liczby współbieżnych żądań przywracania.  Te ograniczenia mają zastosowanie do dowolnej kombinacji przywracania do punktu w czasie, przywracania geograficznego i przywracania z kopii zapasowej przechowywania długoterminowego.
+W przypadku pojedynczej subskrypcji istnieją ograniczenia liczby współbieżnych żądań przywracania. Te ograniczenia mają zastosowanie do dowolnej kombinacji przywracania do punktu w czasie, przywracania geograficznego i przywracania z kopii zapasowej długoterminowego przechowywania.
 
 | | **Maksymalna liczba przetwarzanych żądań współbieżnych** | **Maksymalna liczba przesyłanych żądań współbieżnych** |
 | :--- | --: | --: |
@@ -63,7 +60,7 @@ Nie ma wbudowanej metody przywracania całego serwera. Aby zapoznać się z przy
 > [!IMPORTANT]
 > Aby odzyskać przy użyciu zautomatyzowanych kopii zapasowych, musisz być członkiem roli współautor SQL Server w subskrypcji lub być właścicielem subskrypcji. Aby uzyskać więcej informacji, zobacz [RBAC: role wbudowane](../role-based-access-control/built-in-roles.md). Odzyskiwanie można przeprowadzić za pomocą Azure Portal, programu PowerShell lub interfejsu API REST. Nie można używać języka Transact-SQL.
 
-## <a name="point-in-time-restore"></a>Przywracanie do punktu w czasie
+## <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 
 Za pomocą Azure Portal, [programu PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases)można przywrócić autonomiczną, w puli lub bazę danych wystąpienia do wcześniejszego punktu w czasie. Żądanie może określać dowolną warstwę usług lub rozmiar obliczeń dla przywróconej bazy danych. Upewnij się, że na serwerze, na którym jest przywracana baza danych, jest wystarczająca ilość zasobów. Po zakończeniu przywracania tworzy nową bazę danych na tym samym serwerze, na którym znajduje się oryginalna baza danych. Przywrócona baza danych jest naliczana według normalnych stawek na podstawie jej warstwy usług i rozmiaru obliczeniowego. Nie są naliczane opłaty do momentu zakończenia przywracania bazy danych.
 
@@ -148,14 +145,14 @@ Z Azure Portal można utworzyć nową bazę danych wystąpienia z jedną lub zar
 
 Aby przywrócić geograficzną pojedynczą bazę danych SQL z Azure Portal w wybranym regionie i serwerze, wykonaj następujące kroki:
 
-1. Z poziomu **pulpitu nawigacyjnego**wybierz pozycję **Dodaj** > **Utwórz SQL Database**. Na karcie **podstawowe** wprowadź wymagane informacje.
+1. Z poziomu **pulpitu nawigacyjnego**wybierz pozycję **dodaj**  > **Utwórz SQL Database**. Na karcie **podstawowe** wprowadź wymagane informacje.
 2. Wybierz **dodatkowe ustawienia**.
 3. W obszarze **Użyj istniejących danych**wybierz pozycję **kopia zapasowa**.
 4. W obszarze **kopia zapasowa**wybierz pozycję Kopia zapasowa z listy dostępnych kopii zapasowych przywracania geograficznego.
 
     ![Zrzut ekranu przedstawiający opcje tworzenia SQL Database](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
 
-Ukończ proces tworzenia nowej bazy danych. Po utworzeniu pojedynczej bazy danych Azure SQL Database zawiera przywróconą kopię zapasową przywracania geograficznego.
+Ukończ proces tworzenia nowej bazy danych z kopii zapasowej. Po utworzeniu pojedynczej bazy danych Azure SQL Database zawiera przywróconą kopię zapasową przywracania geograficznego.
 
 #### <a name="managed-instance-database"></a>Baza danych wystąpienia zarządzanego
 
@@ -185,7 +182,7 @@ W przypadku skryptu programu PowerShell, który pokazuje, jak przeprowadzić prz
 Nie można wykonać przywracania do punktu w czasie dla pomocniczej bazy danych. Można to zrobić tylko w podstawowej bazie danych. Aby uzyskać szczegółowe informacje o używaniu przywracania geograficznego w celu odzyskania sprawności przed awarią, zobacz [odzyskiwanie po awarii](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
-> Przywracanie geograficzne to najbardziej podstawowe rozwiązanie do odzyskiwania po awarii dostępne w SQL Database. Polega on na automatycznym tworzeniu kopii zapasowych replikowanych geograficznie z celem punktu odzyskiwania (RPO) równym 1 godz. oraz szacowanym czasem odzyskiwania wynoszącym maksymalnie 12 godzin. Nie gwarantuje to, że region docelowy będzie miał zdolność do przywrócenia baz danych po awarii regionalnej, ponieważ prawdopodobnie jest to gwałtowny wzrost popytu. Jeśli aplikacja używa stosunkowo małych baz danych i nie ma znaczenia dla działalności firmy, Funkcja przywracania geograficznego jest odpowiednim rozwiązaniem do odzyskiwania po awarii. W przypadku aplikacji o krytycznym znaczeniu dla firmy, które korzystają z dużych baz danych i muszą zapewnić ciągłość działania, należy używać [grup autotrybu failover](sql-database-auto-failover-group.md). Oferuje on znacznie niższy cel punktu odzyskiwania i odzyskania, a pojemność jest zawsze gwarantowana. Aby uzyskać więcej informacji o opcjach ciągłości biznesowej, zobacz [Omówienie ciągłości działania](sql-database-business-continuity.md).
+> Przywracanie geograficzne to najbardziej podstawowe rozwiązanie do odzyskiwania po awarii dostępne w SQL Database. Polega on na automatycznym tworzeniu kopii zapasowych replikowanych geograficznie z celem punktu odzyskiwania (RPO) równym 1 godz. oraz szacowanym czasem odzyskiwania wynoszącym maksymalnie 12 godzin. Nie gwarantuje to, że region docelowy będzie miał zdolność do przywrócenia baz danych po awarii regionalnej, ponieważ prawdopodobnie jest to gwałtowny wzrost popytu. Jeśli aplikacja używa stosunkowo małych baz danych i nie ma znaczenia dla działalności firmy, Funkcja przywracania geograficznego jest odpowiednim rozwiązaniem do odzyskiwania po awarii. W przypadku aplikacji o krytycznym znaczeniu dla firmy, które wymagają dużych baz danych i muszą zapewnić ciągłość działania, należy użyć [grup z obsługą trybu failover](sql-database-auto-failover-group.md). Oferuje on znacznie niższy cel punktu odzyskiwania i odzyskania, a pojemność jest zawsze gwarantowana. Aby uzyskać więcej informacji o opcjach ciągłości biznesowej, zobacz [Omówienie ciągłości działania](sql-database-business-continuity.md).
 
 ## <a name="programmatically-performing-recovery-by-using-automated-backups"></a>Programowe wykonywanie odzyskiwania przy użyciu zautomatyzowanych kopii zapasowych
 
@@ -201,7 +198,7 @@ Można również użyć Azure PowerShell lub interfejsu API REST do odzyskiwania
 
 Aby przywrócić bazę danych autonomiczną lub w puli, zobacz [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
-  | Parametr | Opis |
+  | Polecenie cmdlet | Opis |
   | --- | --- |
   | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |Pobiera co najmniej jedną bazę danych. |
   | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Pobiera usuniętą bazę danych, którą można przywrócić. |
@@ -215,17 +212,17 @@ Aby przywrócić bazę danych autonomiczną lub w puli, zobacz [Restore-AzSqlDat
 
 Aby przywrócić bazę danych wystąpienia zarządzanego, zobacz [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
-  | Parametr | Opis |
+  | Polecenie cmdlet | Opis |
   | --- | --- |
   | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Pobiera co najmniej jedno wystąpienie zarządzane. |
   | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Pobiera bazę danych wystąpienia. |
   | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Przywraca bazę danych wystąpienia. |
 
-### <a name="rest-api"></a>INTERFEJS API REST
+### <a name="rest-api"></a>Interfejs API REST
 
 Aby przywrócić pojedynczą lub w puli bazę danych przy użyciu interfejsu API REST:
 
-| interfejs API | Opis |
+| API | Opis |
 | --- | --- |
 | [REST (createmode = Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |Przywraca bazę danych. |
 | [Pobieranie lub aktualizowanie stanu bazy danych](https://docs.microsoft.com/rest/api/sql/operations) |Zwraca stan podczas operacji przywracania. |

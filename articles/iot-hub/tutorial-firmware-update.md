@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: c576020118778e34b80187ec056fca22a4d9c5b1
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: be1b23991a8dc4d8f29e961e33ba97153d8c5355
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485829"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755833"
 ---
-# <a name="tutorial-implement-a-device-firmware-update-process"></a>Samouczek: Wdrażanie procesu aktualizacji oprogramowania układowego urządzenia
+# <a name="tutorial-implement-a-device-firmware-update-process"></a>Samouczek: wdrażanie procesu aktualizacji oprogramowania układowego urządzenia
 
 Może zaistnieć potrzeba zaktualizowania oprogramowania układowego na urządzeniach podłączonych do centrum IoT. Na przykład możesz chcieć dodać nowe funkcje do oprogramowania układowego lub zastosować poprawki zabezpieczeń. W wielu scenariuszach IoT fizyczne odwiedzanie urządzeń, a następnie ręczne stosowanie do nich aktualizacji oprogramowania układowego, jest niepraktyczne. W tym samouczku pokazano, jak uruchomić i monitorować proces aktualizacji oprogramowania układowego zdalnie przy użyciu aplikacji zaplecza podłączonej do centrum.
 
@@ -41,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane przy użyciu środowiska Node.js. Należy Node.js v10.x.x lub później na komputerze deweloperskim.
+Dwie przykładowe aplikacje uruchamiane w tym przewodniku Szybki start zostały napisane przy użyciu środowiska Node.js. Potrzebujesz środowiska Node. js v10. x. x lub nowszego na komputerze deweloperskim.
 
 Możesz pobrać środowisko Node.js dla wielu platform ze strony [nodejs.org](https://nodejs.org).
 
@@ -73,7 +73,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname -policy-name service -o table
+az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
@@ -186,7 +186,7 @@ Poniższy zrzut ekranu przedstawia dane wyjściowe z aplikacji zaplecza i prezen
 
 ![Aplikacja zaplecza](./media/tutorial-firmware-update/BackEnd2.png)
 
-Ponieważ urządzenia automatycznego konfiguracji uruchamianych w czasie tworzenia, a następnie co pięć minut mogą nie być widoczne co stan aktualizacji są wysyłane do aplikacji zaplecza. Metryki możesz również wyświetlić w portalu, w sekcji **Automatyczne zarządzanie urządzeniami -> Konfiguracja urządzenia IoT** centrum IoT:
+Ponieważ automatyczne konfiguracje urządzeń są uruchamiane podczas tworzenia, a następnie co pięć minut, może nie być widoczna każda aktualizacja stanu wysłana do aplikacji zaplecza. Metryki możesz również wyświetlić w portalu, w sekcji **Automatyczne zarządzanie urządzeniami -> Konfiguracja urządzenia IoT** centrum IoT:
 
 ![Wyświetlanie konfiguracji w portalu](./media/tutorial-firmware-update/portalview.png)
 
@@ -203,7 +203,7 @@ Alternatywnie możesz użyć interfejsu wiersza polecenia:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób implementacji procesu aktualizacji oprogramowania układowego dla podłączonych urządzeń. Przejdź do następnego samouczka, aby dowiedzieć się, jak za pomocą narzędzi portalu usługi Azure IoT Hub i poleceń interfejsu wiersza polecenia platformy Azure przetestować łączność urządzeń.
 

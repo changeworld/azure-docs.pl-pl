@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e434065feb218b0a46220b95cc6bfd9a7033de30
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 120ab94ce62010acf4e742bd5220405961dad6db
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816110"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972722"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solution-by-cloudsimple"></a>Kluczowe pojęcia dotyczące administrowania rozwiązaniem VMware platformy Azure przez CloudSimple
 
@@ -34,7 +34,6 @@ Dowiedz się więcej o [usłudze CloudSimple](cloudsimple-service.md).
 ## <a name="cloudsimple-node"></a>Węzeł CloudSimple
 
 Węzeł CloudSimple to dedykowany Host obliczeniowy i magazyn, do którego wdrożono funkcję hypervisor VMware ESXi. Ten węzeł jest następnie dołączany do platform VMware vSphere, vCenter, sieci vSAN i NSX. Usługi sieciowe CloudSimple i usługi sieci brzegowej również są włączone. Każdy węzeł służy jako jednostka pojemności obliczeniowej i magazynu, którą można udostępnić do tworzenia [chmur prywatnych CloudSimple](cloudsimple-private-cloud.md). W regionie, w którym jest dostępna usługa CloudSimple, można zainicjować obsługę administracyjną lub zarezerwować węzły.
-
 
 Dowiedz się więcej o [węzłach CloudSimple](cloudsimple-node.md).
 

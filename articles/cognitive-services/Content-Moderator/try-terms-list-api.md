@@ -3,19 +3,19 @@ title: Umiarkowany tekst z niestandardowymi listami terminów — Content Modera
 titleSuffix: Azure Cognitive Services
 description: Użyj interfejsu API zarządzania listami, aby utworzyć niestandardowe listy terminów do użycia z interfejsem API moderowania tekstu.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 0a4e9b7925c2309a9682156934e9d94fa83c0d4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 828e8ae68286d7c208462d77a31a764427c79637
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564398"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755266"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Umiarkowane z niestandardowymi listami terminów w konsoli interfejsu API
 
@@ -139,7 +139,7 @@ Ten przykład usuwa pojedynczy termin.
 
    Zostanie otwarta konsola interfejsu API **usuwania** .
   
-3. W polu **listId** wprowadź identyfikator listy, z której chcesz usunąć termin. Ten identyfikator jest liczbą (w naszym przykładzie **122**), która jest zwracana z **listy terminów-Get** Details Console. Wprowadź termin i wybierz język.
+3. W polu **listId** wprowadź identyfikator listy, z której chcesz usunąć termin. Ten identyfikator jest liczbą (w naszym przykładzie **122**), która jest zwracana z **listy terminów-Get Details** Console. Wprowadź termin i wybierz język.
  
    ![Termin — Usuwanie parametrów zapytania konsoli](images/try-terms-list-delete-1.png)
 
@@ -170,6 +170,6 @@ Można edytować nazwę i opis listy oraz dodawać elementy metadanych.
    ![Listy terminów — zmiany treści żądania konsoli szczegółów aktualizacji](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Użyj interfejsu API REST w kodzie lub Rozpocznij od terminu na [platformie .NET — szybki](term-lists-quickstart-dotnet.md) Start, aby zintegrować z aplikacją.

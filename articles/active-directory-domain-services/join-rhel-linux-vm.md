@@ -1,5 +1,5 @@
 ---
-title: Przyłączanie maszyny wirtualnej RHEL do Azure AD Domain Services | Microsoft Docs "
+title: Przyłączanie maszyny wirtualnej RHEL do Azure AD Domain Services | Microsoft Docs
 description: Dowiedz się, jak skonfigurować maszynę wirtualną Red Hat Enterprise Linux i przyłączyć ją do domeny zarządzanej Azure AD Domain Services.
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: b90650fa2cd343c81b7bbb2fcea24c3a95f537b6
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 9472abd7a16c887a796e36b8190e8530c84dafa9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702052"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755709"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Dołączanie maszyny wirtualnej z systemem Red Hat Enterprise Linux do domeny zarządzanej Usług domenowych Azure AD
 
@@ -104,7 +104,7 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej, Dołącz m
 
    Jeśli polecenie `realm discover` nie może znaleźć domeny zarządzanej AD DS platformy Azure, zapoznaj się z następującymi krokami rozwiązywania problemów:
    
-    * Upewnij się, że domena jest osiągalna z maszyny wirtualnej. Spróbuj `ping contoso.com`, aby zobaczyć, czy zwracana jest pozytywna odpowiedź.
+    * Upewnij się, że domena jest osiągalna z maszyny wirtualnej. Spróbuj `ping contoso.com`, aby sprawdzić, czy jest zwracana pozytywna odpowiedź.
     * Sprawdź, czy maszyna wirtualna jest wdrożona w tej samej lub równorzędnej sieci wirtualnej, w której jest dostępna domena zarządzana platformy Azure AD DS.
     * Upewnij się, że ustawienia serwera DNS dla sieci wirtualnej zostały zaktualizowane w taki sposób, aby wskazywały kontrolery domeny w domenie zarządzanej platformy Azure AD DS.
 
@@ -138,17 +138,17 @@ Successfully enrolled machine in realm
     
    Jeśli polecenie `adcli info` nie może znaleźć domeny zarządzanej AD DS platformy Azure, zapoznaj się z następującymi krokami rozwiązywania problemów:
    
-    * Upewnij się, że domena jest osiągalna z maszyny wirtualnej. Spróbuj `ping contoso.com`, aby zobaczyć, czy zwracana jest pozytywna odpowiedź.
+    * Upewnij się, że domena jest osiągalna z maszyny wirtualnej. Spróbuj `ping contoso.com`, aby sprawdzić, czy jest zwracana pozytywna odpowiedź.
     * Sprawdź, czy maszyna wirtualna jest wdrożona w tej samej lub równorzędnej sieci wirtualnej, w której jest dostępna domena zarządzana platformy Azure AD DS.
     * Upewnij się, że ustawienia serwera DNS dla sieci wirtualnej zostały zaktualizowane w taki sposób, aby wskazywały kontrolery domeny w domenie zarządzanej platformy Azure AD DS.
 
-1. Najpierw Przyłącz się do domeny za pomocą polecenia `adcli join`, to polecenie spowoduje również utworzenie plik KEYTAB w celu uwierzytelnienia maszyny. Użyj konta użytkownika, które jest członkiem grupy *administratorów domeny usługi AAD* . 
+1. Najpierw Przyłącz się do domeny za pomocą polecenia `adcli join`, to polecenie spowoduje również utworzenie plik KEYTAB do uwierzytelnienia maszyny. Użyj konta użytkownika, które jest członkiem grupy *administratorów domeny usługi AAD* . 
 
     ```console
     sudo adcli join contoso.com -U contosoadmin
     ```
 
-1. Teraz należy skonfigurować `/ect/krb5.conf` i utworzyć pliki `/etc/sssd/sssd.conf` do korzystania z domeny Active Directory `contoso.com`. 
+1. Teraz Skonfiguruj `/ect/krb5.conf` i Utwórz pliki `/etc/sssd/sssd.conf` do używania `contoso.com` Active Directory domeny. 
    Upewnij się, że `CONTOSO.COM` jest zastępowana przez własną nazwę domeny:
 
     Otwórz plik `/ect/krb5.conf` z edytorem:
@@ -157,7 +157,7 @@ Successfully enrolled machine in realm
     sudo vi /etc/krb5.conf
     ```
 
-    Zaktualizuj plik `krb5.conf` w celu dopasowania go do poniższego przykładu:
+    Zaktualizuj plik `krb5.conf`, aby pasował do poniższego przykładu:
 
     ```console
     [logging]
@@ -190,7 +190,7 @@ Successfully enrolled machine in realm
     sudo vi /etc/sssd/sssd.conf
     ```
 
-    Zaktualizuj plik `sssd.conf` w celu dopasowania go do poniższego przykładu:
+    Zaktualizuj plik `sssd.conf`, aby pasował do poniższego przykładu:
 
     ```console
     [sssd]
@@ -265,7 +265,7 @@ Domyślnie użytkownicy mogą logować się tylko do maszyny wirtualnej przy uż
 
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>Przyznaj grupie "Administratorzy usługi AAD DC" uprawnienia sudo
 
-Aby udzielić członkom uprawnień administracyjnych grupy *administratorów usługi AAD* na maszynie wirtualnej RHEL, należy dodać wpis do */etc/sudoers*. Po dodaniu członkowie grupy *Administratorzy domeny usługi AAD* mogą użyć polecenia `sudo` na maszynie wirtualnej RHEL.
+Aby udzielić członkom uprawnień administracyjnych grupy *administratorów usługi AAD* na maszynie wirtualnej RHEL, należy dodać wpis do */etc/sudoers*. Po dodaniu członkowie grupy *Administratorzy domeny usługi AAD* mogą używać polecenia `sudo` na maszynie wirtualnej RHEL.
 
 1. Otwórz plik *sudo* do edycji:
 
@@ -280,7 +280,7 @@ Aby udzielić członkom uprawnień administracyjnych grupy *administratorów us�
     %AAD\ DC\ Administrators@contoso.com ALL=(ALL) NOPASSWD:ALL
     ```
 
-    Po zakończeniu Zapisz i wyjdź z edytora za pomocą polecenia `:wq` edytora.
+    Po zakończeniu Zapisz i wyjdź z edytora przy użyciu `:wq` polecenia edytora.
 
 ## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Logowanie się do maszyny wirtualnej przy użyciu konta domeny
 
