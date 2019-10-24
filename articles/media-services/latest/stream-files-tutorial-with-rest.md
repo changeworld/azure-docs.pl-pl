@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/22/2019
+ms.date: 10/21/2019
 ms.author: juliako
-ms.openlocfilehash: bb62a28798010d3e18c5f19fa0062001a70b9622
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675649"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750247"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — REST
 
@@ -94,11 +94,12 @@ Sklonuj repozytorium GitHub zawierające kolekcję programu Postman oraz pliki �
 W tej sekcji opisano wysyłanie żądań istotnych dla kodowania i tworzenia adresów URL, aby można było przesyłać strumieniowo plik. W szczególności wysyłane są następujące żądania:
 
 1. Pobieranie tokenu usługi Azure AD do uwierzytelniania jednostki usługi
+1. Uruchom punkt końcowy przesyłania strumieniowego
 2. Tworzenie zasobu wyjściowego
-3. Tworzenie **przekształcenia**
-4. Tworzenie **zadania**
-5. Tworzenie **lokalizatora przesyłania strumieniowego**
-6. Podanie listy ścieżek **lokalizatora przesyłania strumieniowego**
+3. Tworzenie przekształcenia
+4. Tworzenie zadania
+5. Tworzenie lokalizatora przesyłania strumieniowego
+6. Wyświetl listę ścieżek lokalizatora przesyłania strumieniowego
 
 > [!Note]
 >  W tym samouczku założono, że tworzysz wszystkie zasoby o unikatowych nazwach.  
@@ -118,6 +119,33 @@ W tej sekcji opisano wysyłanie żądań istotnych dla kodowania i tworzenia adr
 4. Odpowiedź wróci z tokenem i ustawi zmienną środowiskową „AccessToken” na wartość tokenu. Aby wyświetlić kod, który ustawia zmienną „AccessToken”, kliknij kartę **Testy**. 
 
     ![Pobieranie tokenu usługi AAD](./media/develop-with-postman/postman-get-aad-auth-token.png)
+
+
+### <a name="start-a-streaming-endpoint"></a>Uruchom punkt końcowy przesyłania strumieniowego
+
+Aby włączyć przesyłanie strumieniowe, należy najpierw uruchomić [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) , z którego chcesz przesłać strumieniowo wideo.
+
+> [!NOTE]
+> Opłaty są naliczane tylko wtedy, gdy punkt końcowy przesyłania strumieniowego jest w stanie uruchomienia.
+
+1. W lewym oknie aplikacji Poster wybierz pozycję "przesyłanie strumieniowe i" na żywo.
+2. Następnie wybierz pozycję "Start StreamingEndpoint".
+3. Kliknij pozycję **Wyślij**.
+
+    * Zostanie wysłana Następująca operacja **post** :
+
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
+        ```
+    * Jeśli żądanie zakończy się pomyślnie, zostanie zwrócona `Status: 202 Accepted`.
+
+        Ten stan oznacza, że żądanie zostało zaakceptowane do przetwarzania; jednak przetwarzanie nie zostało ukończone. Można wykonać zapytanie o stan operacji na podstawie wartości w nagłówku odpowiedzi `Azure-AsyncOperation`.
+
+        Na przykład następująca operacja GET zwraca stan operacji:
+        
+        `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
+
+        W artykule [śledzenie asynchronicznych operacji na platformie Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) wyjaśniono, jak śledzić stan asynchronicznych operacji platformy Azure za pomocą wartości zwracanych w odpowiedzi.
 
 ### <a name="create-an-output-asset"></a>Tworzenie zasobu wyjściowego
 

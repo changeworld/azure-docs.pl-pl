@@ -1,5 +1,5 @@
 ---
-title: Przyłączanie maszyny wirtualnej Ubuntu do Azure AD Domain Services | Microsoft Docs "
+title: Przyłączanie maszyny wirtualnej Ubuntu do Azure AD Domain Services | Microsoft Docs
 description: Dowiedz się, jak skonfigurować maszynę wirtualną Ubuntu Linux i przyłączyć ją do domeny zarządzanej Azure AD Domain Services.
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: e92327323f632f6b922e3eb948df75bb3666e2a9
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 9fb41b08cb29a68b39fb416b4b7b7bcce9e821dd
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075377"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754344"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Przyłączanie maszyny wirtualnej Ubuntu Linux do domeny zarządzanej Azure AD Domain Services
 
@@ -72,13 +72,13 @@ Zaktualizuj te nazwy przy użyciu własnych wartości:
 127.0.0.1 ubuntu.contoso.com ubuntu
 ```
 
-Po zakończeniu Zapisz i wyjdź z pliku *hosts* za pomocą `:wq` polecenia edytora.
+Po zakończeniu Zapisz i wyjdź z pliku *hosts* za pomocą polecenia `:wq` edytora.
 
 ## <a name="install-required-packages"></a>Instalowanie wymaganych pakietów
 
-Maszyna wirtualna wymaga dodatkowych pakietów do przyłączenia maszyny wirtualnej do domeny zarządzanej AD DS platformy Azure. Aby zainstalować i skonfigurować te pakiety, zaktualizuj i zainstaluj narzędzia do przyłączania do domeny za pomocą`apt-get`
+Maszyna wirtualna wymaga dodatkowych pakietów do przyłączenia maszyny wirtualnej do domeny zarządzanej AD DS platformy Azure. Aby zainstalować i skonfigurować te pakiety, zaktualizuj i zainstaluj narzędzia do przyłączania do domeny za pomocą `apt-get`
 
-Podczas instalacji protokołu Kerberos pakiet *krb5-User* będzie monitował o nazwę obszaru we wszystkich wielkich. Na przykład jeśli nazwa domeny zarządzanej platformy Azure AD DS to *contoso.com*, wprowadź *contoso.com* jako obszar. Instalacja zapisuje `[realm]` sekcje i `[domain_realm]` w pliku konfiguracji */etc/krb5.conf* . Upewnij się, że dla obszaru określono wszystkie wielkie litery:
+Podczas instalacji protokołu Kerberos pakiet *krb5-User* będzie monitował o nazwę obszaru we wszystkich wielkich. Na przykład jeśli nazwa domeny zarządzanej platformy Azure AD DS to *contoso.com*, wprowadź *contoso.com* jako obszar. Instalacja zapisuje `[realm]` i `[domain_realm]` sekcji w pliku konfiguracji */etc/krb5.conf* . Upewnij się, że dla obszaru określono wszystkie wielkie litery:
 
 ```console
 sudo apt-get update
@@ -101,7 +101,7 @@ Aby komunikacja w domenie działała poprawnie, Data i godzina maszyny wirtualne
     server contoso.com
     ```
 
-    Po zakończeniu Zapisz i wyjdź z pliku *NTP. conf* przy użyciu `:wq` polecenia edytora.
+    Po zakończeniu Zapisz i wyjdź z pliku *NTP. conf* przy użyciu polecenia `:wq` edytora.
 
 1. Aby upewnić się, że maszyna wirtualna jest zsynchronizowana z domeną zarządzaną platformy Azure AD DS, wymagane są następujące kroki:
 
@@ -109,7 +109,7 @@ Aby komunikacja w domenie działała poprawnie, Data i godzina maszyny wirtualne
     * Aktualizowanie daty i godziny z domeny zarządzanej
     * Uruchom usługę NTP
 
-    Uruchom następujące polecenia, aby wykonać te kroki. Użyj własnej nazwy DNS z `ntpdate` poleceniem:
+    Uruchom następujące polecenia, aby wykonać te kroki. Użyj własnej nazwy DNS z `ntpdate` polecenie:
 
     ```console
     sudo systemctl stop ntp
@@ -121,19 +121,19 @@ Aby komunikacja w domenie działała poprawnie, Data i godzina maszyny wirtualne
 
 Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej, a NTP jest skonfigurowany, Dołącz maszynę wirtualną do domeny zarządzanej AD DS platformy Azure.
 
-1. `realm discover` Użyj polecenia, aby odnaleźć domenę zarządzaną platformy Azure AD DS. Poniższy przykład umożliwia odnajdywanie obszaru *contoso.com*. Określ własną nazwę domeny zarządzanej przez usługę Azure AD DS w dowolnej wielkiej litery:
+1. Użyj `realm discover` polecenia, aby odnaleźć domenę zarządzaną platformy Azure AD DS. Poniższy przykład umożliwia odnajdywanie obszaru *contoso.com*. Określ własną nazwę domeny zarządzanej przez usługę Azure AD DS w dowolnej wielkiej litery:
 
     ```console
     sudo realm discover CONTOSO.COM
     ```
 
-   `realm discover` Jeśli polecenie nie może znaleźć domeny zarządzanej AD DS platformy Azure, zapoznaj się z następującymi krokami rozwiązywania problemów:
+   Jeśli polecenie `realm discover` nie może znaleźć domeny zarządzanej AD DS platformy Azure, zapoznaj się z następującymi krokami rozwiązywania problemów:
 
-    * Upewnij się, że domena jest osiągalna z maszyny wirtualnej. Spróbuj `ping contoso.com` sprawdzić, czy jest zwracana pozytywna odpowiedź.
+    * Upewnij się, że domena jest osiągalna z maszyny wirtualnej. Spróbuj `ping contoso.com`, aby sprawdzić, czy jest zwracana pozytywna odpowiedź.
     * Sprawdź, czy maszyna wirtualna jest wdrożona w tej samej lub równorzędnej sieci wirtualnej, w której jest dostępna domena zarządzana platformy Azure AD DS.
     * Upewnij się, że ustawienia serwera DNS dla sieci wirtualnej zostały zaktualizowane w taki sposób, aby wskazywały kontrolery domeny w domenie zarządzanej platformy Azure AD DS.
 
-1. Teraz zainicjuj protokół Kerberos `kinit` za pomocą polecenia. Określ użytkownika, który należy do grupy *administratorów kontrolera domeny usługi AAD* . W razie potrzeby [Dodaj konto użytkownika do grupy w usłudze Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Teraz zainicjuj protokół Kerberos za pomocą polecenia `kinit`. Określ użytkownika, który należy do grupy *administratorów kontrolera domeny usługi AAD* . W razie potrzeby [Dodaj konto użytkownika do grupy w usłudze Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
     Ponownie nazwa domeny zarządzanej platformy Azure AD DS musi być wpisana WIELKImi LITERAmi. W poniższym przykładzie konto o nazwie `contosoadmin@contoso.com` jest używane do inicjowania protokołu Kerberos. Wprowadź własne konto użytkownika, które jest członkiem grupy *administratorów domeny usługi AAD* :
 
@@ -141,7 +141,7 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej, a NTP jest
     kinit contosoadmin@CONTOSO.COM
     ```
 
-1. Na koniec Dołącz maszynę do domeny zarządzanej AD DS platformy Azure przy `realm join` użyciu polecenia. Użyj tego samego konta użytkownika, które jest członkiem grupy *administratorów domeny usługi AAD* , która została określona w poprzednim `kinit` poleceniu, na `contosoadmin@CONTOSO.COM`przykład:
+1. Na koniec Dołącz maszynę do domeny zarządzanej AD DS platformy Azure przy użyciu polecenia `realm join`. Użyj tego samego konta użytkownika, które jest członkiem grupy *administratorów domeny usługi AAD* , która została określona w poprzednim `kinit` polecenie, na przykład `contosoadmin@CONTOSO.COM`:
 
     ```console
     sudo realm join --verbose CONTOSO.COM -U 'contosoadmin@CONTOSO.COM' --install=/
@@ -171,7 +171,7 @@ Jeden z pakietów zainstalowanych w poprzednim kroku był przeznaczony dla demon
     # use_fully_qualified_names = True
     ```
 
-    Po zakończeniu Zapisz i zamknij plik *SSSD. conf* przy użyciu `:wq` polecenia edytora.
+    Po zakończeniu Zapisz i zamknij plik *SSSD. conf* przy użyciu polecenia `:wq` edytora.
 
 1. Aby zastosować zmianę, uruchom ponownie usługę SSSD:
 
@@ -199,7 +199,7 @@ Domyślnie użytkownicy mogą logować się tylko do maszyny wirtualnej przy uż
     PasswordAuthentication yes
     ```
 
-    Po zakończeniu Zapisz i zamknij plik *sshd_conf* za pomocą `:wq` polecenia edytora.
+    Po zakończeniu Zapisz i zamknij plik *sshd_conf* za pomocą polecenia `:wq` edytora.
 
 1. Aby zastosować zmiany i umożliwić użytkownikom logowanie się przy użyciu hasła, należy ponownie uruchomić usługę SSH:
 
@@ -223,11 +223,11 @@ Aby włączyć automatyczne tworzenie katalogu macierzystego, gdy użytkownik lo
     session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
     ```
 
-    Po zakończeniu Zapisz i zamknij plik *Common-Session* przy użyciu `:wq` polecenia edytora.
+    Po zakończeniu Zapisz i zamknij plik *Common-Session* przy użyciu polecenia `:wq` edytora.
 
 ### <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>Przyznaj grupie "Administratorzy usługi AAD DC" uprawnienia sudo
 
-Aby udzielić członkom uprawnień administracyjnych grupy *administratorów usługi AAD* na maszynie wirtualnej Ubuntu, należy dodać wpis do */etc/sudoers*. Po dodaniu członkowie grupy *administratorów domeny usługi AAD* mogą używać `sudo` polecenia na maszynie wirtualnej Ubuntu.
+Aby udzielić członkom uprawnień administracyjnych grupy *administratorów usługi AAD* na maszynie wirtualnej Ubuntu, należy dodać wpis do */etc/sudoers*. Po dodaniu członkowie grupy *Administratorzy domeny usługi AAD* mogą używać polecenia `sudo` na maszynie wirtualnej Ubuntu.
 
 1. Otwórz plik *sudo* do edycji:
 
@@ -242,13 +242,13 @@ Aby udzielić członkom uprawnień administracyjnych grupy *administratorów us�
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```
 
-    Po zakończeniu Zapisz i wyjdź z edytora przy użyciu `Ctrl-X` polecenia.
+    Po zakończeniu Zapisz i wyjdź z edytora przy użyciu polecenia `Ctrl-X`.
 
 ## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Logowanie się do maszyny wirtualnej przy użyciu konta domeny
 
 Aby sprawdzić, czy maszyna wirtualna została pomyślnie dołączona do domeny zarządzanej AD DS platformy Azure, uruchom nowe połączenie SSH przy użyciu konta użytkownika domeny. Upewnij się, że katalog macierzysty został utworzony, a członkostwo w grupie jest stosowane.
 
-1. Utwórz nowe połączenie SSH z poziomu konsoli. Użyj konta domeny, które należy do domeny zarządzanej przy użyciu `ssh -l` polecenia, na przykład `contosoadmin@contoso.com` , a następnie wprowadź adres maszyny wirtualnej, na przykład *Ubuntu.contoso.com*. Jeśli używasz Azure Cloud Shell, użyj publicznego adresu IP maszyny wirtualnej, a nie wewnętrznej nazwy DNS.
+1. Utwórz nowe połączenie SSH z poziomu konsoli. Użyj konta domeny należącego do domeny zarządzanej przy użyciu polecenia `ssh -l`, takiego jak `contosoadmin@contoso.com`, a następnie wprowadź adres maszyny wirtualnej, na przykład *Ubuntu.contoso.com*. Jeśli używasz Azure Cloud Shell, użyj publicznego adresu IP maszyny wirtualnej, a nie wewnętrznej nazwy DNS.
 
     ```console
     ssh -l contosoadmin@CONTOSO.com ubuntu.contoso.com

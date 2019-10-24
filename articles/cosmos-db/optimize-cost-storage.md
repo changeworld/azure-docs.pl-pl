@@ -1,17 +1,17 @@
 ---
 title: Optymalizuj koszt magazynu w Azure Cosmos DB
 description: W tym artykule wyjaśniono, jak zarządzać kosztami magazynu dla danych przechowywanych w Azure Cosmos DB
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 2955df266bcf164ce4a155acc5209679eff0ce8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1508adda761fcba7ba70df3bb212d3eb4e32f242
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615010"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754940"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optymalizuj koszt magazynu w Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Jeśli chcesz przechowywać rozbudowane typy multimediów, na przykład wideo, o
 
 ## <a name="check-storage-consumed"></a>Sprawdź zużyte miejsce w magazynie
 
-Aby sprawdzić użycie magazynu przez kontener usługi Azure Cosmos, możesz uruchomić żądanie Head lub Get na kontenerze i sprawdzić `x-ms-request-quota` `x-ms-request-usage` nagłówki i. Alternatywnie, podczas pracy z zestawem SDK .NET, można użyć właściwości [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))i [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) , aby uzyskać zużyty magazyn.
+Aby sprawdzić użycie magazynu przez kontener usługi Azure Cosmos, możesz uruchomić żądanie HEAD lub GET na kontenerze, a następnie sprawdzić `x-ms-request-quota` i nagłówki `x-ms-request-usage`. Alternatywnie, podczas pracy z zestawem SDK .NET, można użyć właściwości [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))i [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) , aby uzyskać zużyty magazyn.
 
 ## <a name="using-sdk"></a>Korzystanie z zestawu SDK
 
@@ -56,7 +56,7 @@ Następnie możesz dowiedzieć się więcej o optymalizacji kosztów w Azure Cos
 
 * Dowiedz się więcej [na temat optymalizacji na potrzeby programowania i testowania](optimize-dev-test.md)
 * Dowiedz się więcej o [zrozumieniu Azure Cosmos DB rachunku](understand-your-bill.md)
-* Dowiedz się [](optimize-cost-throughput.md) więcej na temat optymalizowania kosztu przepływności
+* Dowiedz się więcej na temat [optymalizowania kosztu przepływności](optimize-cost-throughput.md)
 * Dowiedz się więcej o [optymalizowaniu kosztów operacji odczytu i zapisu](optimize-cost-reads-writes.md)
 * Dowiedz się więcej o [optymalizowaniu kosztów zapytań](optimize-cost-queries.md)
 * Dowiedz się więcej [na temat optymalizowania kosztów kont usługi Azure Cosmos w wielu regionach](optimize-cost-regions.md)

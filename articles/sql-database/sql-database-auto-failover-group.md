@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/09/2019
-ms.openlocfilehash: b876fba2ae10c4f8b973ad1bb0c98bfa95c7f481
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
-ms.translationtype: MT
+ms.date: 10/21/2019
+ms.openlocfilehash: 1e847fd2ac39c93b28925cff3fe0a4c17a69da9f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249316"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750469"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
@@ -80,11 +80,11 @@ Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości baz
 
 - **Odbiornik odczytu i zapisu grupy trybu failover**
 
-  Rekord CNAME systemu DNS wskazujący na adres URL bieżącego elementu podstawowego. Jest tworzony automatycznie podczas tworzenia grupy trybu failover i umożliwia obciążenia SQL do odczytu i zapisu, aby w sposób przezroczysty ponownie połączyć się z podstawową bazą danych podczas pracy w trybie failover. Po utworzeniu grupy trybu failover na serwerze SQL Database rekord CNAME DNS dla adresu URL odbiornika zostanie utworzony jako `<fog-name>.database.windows.net`. Po utworzeniu grupy trybu failover w wystąpieniu zarządzanym rekord CNAME DNS dla adresu URL odbiornika jest tworzony jako `<fog-name>.zone_id.database.windows.net`.
+  Rekord CNAME systemu DNS wskazujący na adres URL bieżącego elementu podstawowego. Jest tworzony automatycznie podczas tworzenia grupy trybu failover i umożliwia obciążenia SQL do odczytu i zapisu, aby w sposób przezroczysty ponownie połączyć się z podstawową bazą danych podczas pracy w trybie failover. Po utworzeniu grupy trybu failover na serwerze SQL Database rekord CNAME DNS dla adresu URL odbiornika zostanie utworzony jako `<fog-name>.database.windows.net`. Po utworzeniu grupy trybu failover w wystąpieniu zarządzanym rekord CNAME DNS dla adresu URL odbiornika zostanie utworzony jako `<fog-name>.zone_id.database.windows.net`.
 
 - **Odbiornik tylko do odczytu grupy trybu failover**
 
-  Utworzony rekord CNAME systemu DNS wskazujący odbiornik tylko do odczytu wskazujący na adres URL pomocniczy. Jest tworzony automatycznie podczas tworzenia grupy trybu failover i zezwala na nieprzezroczyste połączenie z serwerem pomocniczym tylko do odczytu z usługą przy użyciu określonych reguł równoważenia obciążenia. Po utworzeniu grupy trybu failover na serwerze SQL Database rekord CNAME DNS dla adresu URL odbiornika zostanie utworzony jako `<fog-name>.secondary.database.windows.net`. Po utworzeniu grupy trybu failover w wystąpieniu zarządzanym rekord CNAME DNS dla adresu URL odbiornika jest tworzony jako `<fog-name>.zone_id.secondary.database.windows.net`.
+  Utworzony rekord CNAME systemu DNS wskazujący odbiornik tylko do odczytu wskazujący na adres URL pomocniczy. Jest tworzony automatycznie podczas tworzenia grupy trybu failover i zezwala na nieprzezroczyste połączenie z serwerem pomocniczym tylko do odczytu z usługą przy użyciu określonych reguł równoważenia obciążenia. Po utworzeniu grupy trybu failover na serwerze SQL Database rekord CNAME DNS dla adresu URL odbiornika zostanie utworzony jako `<fog-name>.secondary.database.windows.net`. Po utworzeniu grupy trybu failover w wystąpieniu zarządzanym rekord CNAME DNS dla adresu URL odbiornika zostanie utworzony jako `<fog-name>.zone_id.secondary.database.windows.net`.
 
 - **Zasady automatycznego trybu failover**
 
@@ -148,6 +148,9 @@ Podczas projektowania usługi z zachowaniem ciągłości działania postępuj zg
 - **Korzystanie z jednej lub kilku grup trybu failover w celu zarządzania trybem failover wielu baz danych**
 
   Można utworzyć co najmniej jedną grupę trybu failover między dwoma serwerami w różnych regionach (serwery podstawowe i pomocnicze). Każda grupa może zawierać jedną lub kilka baz danych, które są odzyskiwane jako jednostki na wypadek, a niektóre podstawowe bazy danych staną się niedostępne z powodu awarii w regionie podstawowym. Grupa trybu failover tworzy geograficzną i pomocniczą bazę danych z tym samym celem usługi co podstawowy. W przypadku dodania istniejącej relacji replikacji geograficznej do grupy trybu failover upewnij się, że dla elementu podrzędnego jest skonfigurowana ta sama warstwa usługi i rozmiar obliczeń jako podstawowa.
+  
+  > [!IMPORTANT]
+  > Tworzenie grup trybu failover między dwoma serwerami w różnych subskrypcjach nie jest obecnie obsługiwane w przypadku pojedynczych baz danych i pul elastycznych.
 
 - **Używanie odbiornika do odczytu i zapisu w obciążeniu OLTP**
 
@@ -214,15 +217,15 @@ Jeśli aplikacja używa wystąpienia zarządzanego jako warstwy danych, postępu
 
 - **Używanie odbiornika do odczytu i zapisu w obciążeniu OLTP**
 
-  Podczas wykonywania operacji OLTP należy użyć wartości `<fog-name>.zone_id.database.windows.net` jako adresu URL serwera, a połączenia są automatycznie kierowane do podstawowego. Ten adres URL nie zmienia się po przełączeniu w tryb failover. Tryb failover obejmuje aktualizację rekordu DNS, dlatego połączenia klienckie są przekierowywane do nowego serwera podstawowego dopiero po odświeżeniu pamięci podręcznej DNS klienta. Ponieważ wystąpienie pomocnicze współużytkuje strefę DNS z serwerem podstawowym, aplikacja kliencka będzie mogła ponownie połączyć się z nim przy użyciu tego samego certyfikatu sieci SAN.
+  Podczas wykonywania operacji OLTP Użyj `<fog-name>.zone_id.database.windows.net` jako adresu URL serwera, a połączenia są automatycznie kierowane do podstawowego. Ten adres URL nie zmienia się po przełączeniu w tryb failover. Tryb failover obejmuje aktualizację rekordu DNS, dlatego połączenia klienckie są przekierowywane do nowego serwera podstawowego dopiero po odświeżeniu pamięci podręcznej DNS klienta. Ponieważ wystąpienie pomocnicze współużytkuje strefę DNS z serwerem podstawowym, aplikacja kliencka będzie mogła ponownie połączyć się z nim przy użyciu tego samego certyfikatu sieci SAN.
 
 - **Bezpośrednie łączenie z replikacją geograficzną na potrzeby zapytań tylko do odczytu**
 
-  Jeśli istnieje logicznie izolowane obciążenie przeznaczone tylko do odczytu, które jest odporne na określoną nieaktualność danych, możesz użyć pomocniczej bazy danych w aplikacji. Aby połączyć się bezpośrednio z replikacją geograficzną, użyj `server.secondary.zone_id.database.windows.net` jako adresu URL serwera, a połączenie jest nawiązywane bezpośrednio z replikacją geograficzną.
+  Jeśli istnieje logicznie izolowane obciążenie przeznaczone tylko do odczytu, które jest odporne na określoną nieaktualność danych, możesz użyć pomocniczej bazy danych w aplikacji. Aby połączyć się bezpośrednio z replikacją geograficzną, użyj `server.secondary.zone_id.database.windows.net` jako adresu URL serwera, a połączenie jest nawiązywane bezpośrednio do pomocniczej replikacji geograficznej.
 
   > [!NOTE]
   > W niektórych warstwach usług Azure SQL Database obsługuje korzystanie z [replik tylko do odczytu](sql-database-read-scale-out.md) w celu równoważenia obciążenia obciążeń zapytań tylko do odczytu przy użyciu pojemności jednej repliki tylko do odczytu i przy użyciu parametru `ApplicationIntent=ReadOnly` w parametrach połączenia. Jeśli skonfigurowano pomocniczą replikację geograficzną, można użyć tej funkcji do łączenia się z repliką tylko do odczytu w lokalizacji podstawowej lub w lokalizacji zreplikowanej geograficznie.
-  > - Aby nawiązać połączenie z repliką tylko do odczytu w lokalizacji głównej, użyj `<fog-name>.zone_id.database.windows.net`.
+  > - Aby nawiązać połączenie z repliką tylko do odczytu w lokalizacji podstawowej, użyj `<fog-name>.zone_id.database.windows.net`.
   > - Aby nawiązać połączenie z repliką tylko do odczytu w lokalizacji pomocniczej, użyj `<fog-name>.secondary.zone_id.database.windows.net`.
 
 - **Przygotowanie do obniżenia wydajności**
@@ -309,7 +312,7 @@ Ta sekwencja jest zalecana, aby uniknąć problemu polegającego na tym, że pom
 Ze względu na duże opóźnienie sieci rozległej, ciągła kopia używa mechanizmu replikacji asynchronicznej. Replikacja asynchroniczna powoduje nieuniknięcie utraty danych w przypadku wystąpienia błędu. Jednak niektóre aplikacje mogą nie wymagać utraty danych. Aby chronić te aktualizacje krytyczne, Deweloper aplikacji może wywoływać procedurę systemu [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) natychmiast po zatwierdzeniu transakcji. Wywołanie `sp_wait_for_database_copy_sync` blokuje wątek wywołujący do momentu przekazania ostatniej zatwierdzonej transakcji do pomocniczej bazy danych. Jednak nie czeka na odtworzenie i zatwierdzenie wysłanych transakcji na serwerze pomocniczym. `sp_wait_for_database_copy_sync` jest objęty zakresem do określonego linku ciągłego kopiowania. Każdy użytkownik z uprawnieniami do nawiązywania połączenia z podstawową bazą danych może wywoływać tę procedurę.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync` zapobiega utracie danych po przejściu w tryb failover, ale nie gwarantuje pełnej synchronizacji dostępu do odczytu. Opóźnienie spowodowane przez wywołanie procedury `sp_wait_for_database_copy_sync` może być istotne i zależy od rozmiaru dziennika transakcji w czasie wywołania.
+> `sp_wait_for_database_copy_sync` zapobiega utracie danych po przejściu w tryb failover, ale nie gwarantuje pełnej synchronizacji dostępu do odczytu. Opóźnienie spowodowane przez `sp_wait_for_database_copy_sync` wywołanie procedury może być istotne i zależy od rozmiaru dziennika transakcji w czasie wywołania.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Grupy trybu failover i przywracanie do punktu w czasie
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aacedeb2c047d1abfc5affdcf94404abbb2c7b62
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 516f61775060b3e4073ed9d623545d4f227563ed
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168613"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750358"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak zainstalować i skonfigurować SAP HANA (duże wystąpienia) na platformie Azure
 
@@ -101,7 +101,7 @@ Poniżej znajduje się dodatkowy i przydatny system SAP dla linków związanych 
 
 Poniżej przedstawiono uwagi dotyczące pomocy technicznej SAP, które mają zastosowanie w przypadku wdrażania SAP HANA w SLES 12:
 
-- [Uwaga dotycząca pomocy technicznej SAP #1944799 — wytyczne SAP HANA dotyczące instalacji systemu operacyjnego SLES](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+- [Uwaga dotycząca pomocy technicznej SAP #1944799 — wytyczne SAP HANA dotyczące instalacji systemu operacyjnego SLES](http://service.sap.com/sap/support/notes/1944799)
 - [Uwaga dotycząca pomocy technicznej SAP #2205917 — SAP HANA bazy danych zalecane ustawienia systemu operacyjnego dla SLES 12 dla aplikacji SAP](https://launchpad.support.sap.com/#/notes/2205917/E)
 - [Uwaga dotycząca pomocy technicznej SAP #1984787 – SUSE Linux Enterprise Server 12: uwagi dotyczące instalacji](https://launchpad.support.sap.com/#/notes/1984787)
 - [Uwaga dotycząca pomocy technicznej SAP #171356 — oprogramowanie SAP w systemie Linux: Informacje ogólne](https://launchpad.support.sap.com/#/notes/1984787)
@@ -125,7 +125,7 @@ Poniżej znajdują się uwagi dotyczące pomocy technicznej SAP, które mają za
 
 ### <a name="time-synchronization"></a>Synchronizacja czasu
 
-Aplikacje SAP, które są oparte na architekturze SAP NetWeaver, są wrażliwe na różnice czasu dla różnych składników wchodzących w skład systemu SAP. Krótkie zrzuty SAP ABAP z tytułem błędu ZDATE @ no__t-0LARGE @ no__t-1TIME @ no__t-2DIFF są prawdopodobnie znane. Wynika to z faktu, że te krótkie zrzuty pojawiają się, gdy czas systemowy różnych serwerów lub maszyn wirtualnych jest zbyt daleko od siebie.
+Aplikacje SAP, które są oparte na architekturze SAP NetWeaver, są wrażliwe na różnice czasu dla różnych składników wchodzących w skład systemu SAP. W przypadku oprogramowania SAP ABAP krótkie zrzuty z tytułem błędu ZDATE \_LARGE \_TIME \_DIFF są prawdopodobnie znane. Wynika to z faktu, że te krótkie zrzuty pojawiają się, gdy czas systemowy różnych serwerów lub maszyn wirtualnych jest zbyt daleko od siebie.
 
 W przypadku SAP HANA na platformie Azure (duże wystąpienia) synchronizacja czasu wykonywana na platformie Azure nie ma zastosowania do jednostek obliczeniowych w sygnaturach dużych wystąpień. Ta synchronizacja nie ma zastosowania do uruchamiania aplikacji SAP na natywnych maszynach wirtualnych platformy Azure, ponieważ platforma Azure zapewnia poprawną synchronizację czasu systemu. 
 
@@ -152,8 +152,8 @@ Konwencje nazewnictwa woluminów magazynu są wymienione w poniższej tabeli:
 
 | Użycie magazynu | Nazwa instalacji | Nazwa woluminu | 
 | --- | --- | ---|
-| Dane platformy HANA | /hana/data/SID/mnt0000 @ no__t-0M > | Adres IP magazynu:/hana_data_SID_mnt00001_tenant_vol |
-| Dziennik platformy HANA | /hana/log/SID/mnt0000 @ no__t-0M > | Adres IP magazynu:/hana_log_SID_mnt00001_tenant_vol |
+| Dane platformy HANA | /hana/data/SID/mnt0000 \<m > | Adres IP magazynu:/hana_data_SID_mnt00001_tenant_vol |
+| Dziennik platformy HANA | /hana/log/SID/mnt0000 \<m > | Adres IP magazynu:/hana_log_SID_mnt00001_tenant_vol |
 | Kopia zapasowa dziennika HANA | /hana/log/backups | Adres IP magazynu:/hana_log_backups_SID_mnt00001_tenant_vol |
 | Platformy HANA — udostępnione | /hana/shared/SID | Adres IP magazynu:/hana_shared_SID_mnt00001_tenant_vol/udostępniony |
 | usr/SAP | /usr/sap/SID | Adres IP magazynu:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Prebudowane intencje i jednostki — LUIS'
+title: 'Samouczek: prebudowane intencje i jednostki — LUIS'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku dodasz wstępnie utworzone intencje i jednostki do aplikacji, aby szybko zyskać funkcje przewidywania intencji i wyodrębniania danych. Nie musisz oznaczać żadnych wypowiedzi za pomocą wstępnie utworzonych jednostek. Jednostka jest wykrywana automatycznie.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 10/21/2019
 ms.author: diberry
-ms.openlocfilehash: aaeddac98e3f192d5e6a87ecfd48005526379ff2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: cf0ef1095946b1c8e9479b3cd47fe403baeed7d1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390981"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757123"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Samouczek: identyfikowanie typowych intencji i jednostek
 
@@ -30,8 +30,8 @@ Wstępnie utworzone modele (domeny, intencje i jednostki) ułatwiają szybkie tw
 > * Tworzenie nowej aplikacji
 > * Dodawanie wstępnie utworzonych intencji 
 > * Dodawanie wstępnie utworzonych jednostek 
-> * Szkolenie 
-> * Publikowanie 
+> * Uczenie 
+> * Publikuj 
 > * Pobieranie intencji i jednostek z punktu końcowego
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
@@ -63,12 +63,9 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 1. Wybierz następujące pozycje z listy wstępnie utworzonych jednostek, a następnie wybierz pozycję **Done** (Gotowe).
 
-   * **[PersonName](luis-reference-prebuilt-person.md)** 
    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
-     ![Zrzut ekranu przedstawiający liczbę wybraną w oknie dialogowym prekompilowanych jednostek](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
-
-     Te jednostki ułatwią dodawanie funkcji rozpoznawania nazwy i miejsca do aplikacji klienckiej.
+     Ta jednostka pomoże Ci dodać rozpoznawanie w miejscu do aplikacji klienckiej.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None 
 
@@ -86,79 +83,83 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Przejdź na koniec adresu URL na pasku adresu przeglądarki i wprowadź ciąg `I want to cancel my trip to Seattle to see Bob Smith`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
+1. Przejdź na koniec adresu URL na pasku adresu przeglądarki i wprowadź ciąg `I want to cancel my trip to Seattle`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
     ```json
     {
-      "query": "I want to cancel my trip to Seattle to see Bob Smith.",
+      "query": "I want to cancel my trip to Seattle",
       "topScoringIntent": {
-        "intent": "Utilities.ReadAloud",
-        "score": 0.100361854
+        "intent": "Utilities.Cancel",
+        "score": 0.1055009
       },
       "intents": [
         {
-          "intent": "Utilities.ReadAloud",
-          "score": 0.100361854
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.08102781
-        },
-        {
-          "intent": "Utilities.SelectNone",
-          "score": 0.0398852825
-        },
-        {
           "intent": "Utilities.Cancel",
-          "score": 0.0277276486
+          "score": 0.1055009
         },
         {
           "intent": "Utilities.SelectItem",
-          "score": 0.0220712926
+          "score": 0.02659072
         },
         {
-          "intent": "Utilities.StartOver",
-          "score": 0.0145813478
+          "intent": "Utilities.Stop",
+          "score": 0.0253379084
         },
         {
-          "intent": "None",
-          "score": 0.012434179
+          "intent": "Utilities.ReadAloud",
+          "score": 0.02528683
+        },
+        {
+          "intent": "Utilities.SelectNone",
+          "score": 0.02434013
         },
         {
           "intent": "Utilities.Escalate",
-          "score": 0.0122632384
+          "score": 0.009161292
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.006861785
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.00633448
         },
         {
           "intent": "Utilities.ShowNext",
-          "score": 0.008534077
+          "score": 0.0053827134
+        },
+        {
+          "intent": "None",
+          "score": 0.002602003
         },
         {
           "intent": "Utilities.ShowPrevious",
-          "score": 0.00547111453
+          "score": 0.001797354
         },
         {
           "intent": "Utilities.SelectAny",
-          "score": 0.00152912608
+          "score": 0.000831930141
         },
         {
           "intent": "Utilities.Repeat",
-          "score": 0.0005556819
-        },
-        {
-          "intent": "Utilities.FinishTask",
-          "score": 0.000169488427
+          "score": 0.0006924066
         },
         {
           "intent": "Utilities.Confirm",
-          "score": 0.000149565312
+          "score": 0.000606057351
         },
         {
           "intent": "Utilities.GoBack",
-          "score": 0.000141017343
+          "score": 0.000276725681
+        },
+        {
+          "intent": "Utilities.FinishTask",
+          "score": 0.000267822179
         },
         {
           "intent": "Utilities.Reject",
-          "score": 6.27324E-06
+          "score": 3.21784828E-05
         }
       ],
       "entities": [
@@ -167,18 +168,12 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
           "type": "builtin.geographyV2.city",
           "startIndex": 28,
           "endIndex": 34
-        },
-        {
-          "entity": "bob smith",
-          "type": "builtin.personName",
-          "startIndex": 43,
-          "endIndex": 51
         }
       ]
     }
     ```
 
-    Wynik przewidział intencję Utilities.Cancel z 80% ufnością i wyodrębnił dane o mieście i nazwie osoby. 
+    Wyniki przewidywane przez narzędzia. zamiara anulowania z 80% pewnością i wyodrębnienia danych miejscowości. 
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4eaf59200295a25498d3c8b84196e73a703b055d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
-ms.translationtype: MT
+ms.openlocfilehash: 5a6ed66efa0f73f957c3acb048136a5328f9c264
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995245"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750165"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell
 
@@ -239,7 +239,7 @@ Aby wyświetlić listę przypisań ról dla klasycznego administratora subskrypc
 Get-AzRoleAssignment -IncludeClassicAdministrators
 ```
 
-## <a name="grant-access"></a>Przyznaj dostęp
+## <a name="grant-access"></a>Udzielanie dostępu
 
 Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli.
 
@@ -401,11 +401,11 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-## <a name="remove-access"></a>Usuń dostęp
+## <a name="remove-access"></a>Usuwanie dostępu
 
 Aby usunąć dostęp w ramach RBAC, usuń przypisanie roli za pomocą polecenia [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment).
 
-Poniższy przykład usuwa przypisanie roli *współautor maszyny wirtualnej* z użytkownika *Alain\@example.com* w grupie zasobów *Pharma-Sales* :
+Poniższy przykład usuwa przypisanie roli *współautor maszyny wirtualnej* z *Alain \@example. com* użytkownika w grupie zasobów *Pharma-Sales* :
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
@@ -423,10 +423,10 @@ Poniższy przykład usuwa rolę < role_name > z < object_id > w zakresie grupy z
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-Jeśli zostanie wyświetlony komunikat o błędzie: "Podane informacje nie są mapowane do przypisania roli", upewnij się, że określono `-Scope` również parametry lub. `-ResourceGroupName` Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z funkcją RBAC dla zasobów platformy Azure](troubleshooting.md#role-assignments-without-a-security-principal).
+Jeśli zostanie wyświetlony komunikat o błędzie: "podane informacje nie są mapowane do przypisania roli", upewnij się, że określono również parametry `-Scope` lub `-ResourceGroupName`. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z funkcją RBAC dla zasobów platformy Azure](troubleshooting.md#role-assignments-with-unknown-security-principal).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Samouczek: Przyznaj grupie dostęp do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell](tutorial-role-assignments-group-powershell.md)
-- [Samouczek: Tworzenie roli niestandardowej dla zasobów platformy Azure przy użyciu programu Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Samouczek: udzielanie grupie dostępu do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell](tutorial-role-assignments-group-powershell.md)
+- [Samouczek: tworzenie roli niestandardowej dla zasobów platformy Azure przy użyciu Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Zarządzanie zasobami za pomocą Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)

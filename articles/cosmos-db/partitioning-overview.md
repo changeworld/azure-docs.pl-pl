@@ -1,23 +1,23 @@
 ---
 title: Partycjonowanie w Azure Cosmos DB
 description: Omówienie partycjonowania w Azure Cosmos DB.
-ms.author: rimman
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: e80e548ceae2149fe7061da42c71ee8b61f00a72
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 38b4e4c2541bf30bd9c95d9c0ec61779b0d1d7bb
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717550"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753239"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Partycjonowanie w Azure Cosmos DB
 
 Azure Cosmos DB używa partycjonowania do skalowania poszczególnych kontenerów w bazie danych w celu spełnienia wymagań dotyczących wydajności aplikacji. W przypadku partycjonowania elementy w kontenerze są podzielone na odrębne podzestawy o nazwie *partycje logiczne*. Partycje logiczne są tworzone na podstawie wartości *klucza partycji* , który jest skojarzony z każdym elementem w kontenerze. Wszystkie elementy w partycji logicznej mają tę samą wartość klucza partycji.
 
-Na przykład kontener zawiera elementy. Każdy element ma unikatową wartość `UserID` właściwości. Jeśli `UserID` program służy jako klucz partycji dla elementów w kontenerze, a istnieją 1 000 wartości unikatowych `UserID` , dla kontenera są tworzone partycje logiczne 1 000.
+Na przykład kontener zawiera elementy. Każdy element ma unikatową wartość właściwości `UserID`. Jeśli `UserID` służy jako klucz partycji dla elementów w kontenerze i istnieją 1 000 wartości unikatowych `UserID`, dla kontenera są tworzone partycje logiczne 1 000.
 
 Oprócz klucza partycji, który określa partycję logiczną elementu, każdy element w kontenerze ma *Identyfikator elementu* (unikatowy w obrębie partycji logicznej). Połączenie klucza partycji i identyfikatora elementu tworzy *indeks*elementu, który jednoznacznie identyfikuje element.
 

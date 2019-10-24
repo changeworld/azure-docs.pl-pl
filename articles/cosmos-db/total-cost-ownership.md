@@ -1,22 +1,22 @@
 ---
 title: Łączny koszt posiadania (TCO) z Azure Cosmos DB
 description: W tym artykule porównano całkowity koszt posiadania Azure Cosmos DB z IaaS i lokalnymi bazami danych
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 911f5fa9985fc5e34f758dfb739d84521f91f5c0
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716932"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754788"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Łączny koszt posiadania (TCO) z Azure Cosmos DB
 
-Azure Cosmos DB jest zaprojektowana z szczegółowym użyciem wielu dzierżawców i zarządzania zasobami. Ten projekt pozwala Azure Cosmos DB działać w znacznie niższym koszcie i pomóc użytkownikom w zapisaniu. Obecnie Azure Cosmos DB obsługuje ponad 280 obciążeń klientów na jednym komputerze z ciągle rosnącą gęstością i tysiącami obciążeń klientów w ramach klastra. Równoważenie obciążenia jest równoważeniem replik obciążeń klientów na różnych maszynach w klastrze i w wielu klastrach w ramach centrum danych. Aby dowiedzieć się więcej [, zobacz Azure Cosmos DB: Wypychanie granicy dystrybuowanych globalnie baz danych](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Ze względu na integrację zasobów, wielodostępności i natywną z resztą infrastruktury platformy Azure Azure Cosmos DB jest średnio od 4 do 6 razy tańsze niż MongoDB, Cassandra lub inne NoSQL OSS działające na IaaS i nawet 10 razy tańsze niż baza danych aparaty działające lokalnie. Zobacz dokument dotyczący [łącznego kosztu (nie) własności usługi NoSQL Database w chmurze](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
+Azure Cosmos DB jest zaprojektowana z szczegółowym użyciem wielu dzierżawców i zarządzania zasobami. Ten projekt pozwala Azure Cosmos DB działać w znacznie niższym koszcie i pomóc użytkownikom w zapisaniu. Obecnie Azure Cosmos DB obsługuje ponad 280 obciążeń klientów na jednym komputerze z ciągle rosnącą gęstością i tysiącami obciążeń klientów w ramach klastra. Równoważenie obciążenia jest równoważeniem replik obciążeń klientów na różnych maszynach w klastrze i w wielu klastrach w ramach centrum danych. Aby dowiedzieć się więcej, zobacz [Azure Cosmos DB: wypychanie granicy dystrybuowanych globalnie baz danych](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Ze względu na integrację zasobów, wielodostępności i natywną z resztą infrastruktury platformy Azure Azure Cosmos DB jest średnio od 4 do 6 razy tańsze niż MongoDB, Cassandra lub inne NoSQL OSS działające na IaaS i nawet 10 razy tańsze niż baza danych aparaty działające lokalnie. Zobacz dokument dotyczący [łącznego kosztu (nie) własności usługi NoSQL Database w chmurze](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
 W przypadku rozwiązań baz danych OSS NoSQL, takich jak Apache Cassandra, MongoDB, HBase, aparaty zostały zaprojektowane do użytku lokalnego. Oferowana jako usługa zarządzana jest równoważna z szablonem Menedżer zasobów z bazą danych dzierżawy do zarządzania klastrami i obsługą monitorowania. Architektury OSS NoSQL wymagają znaczących obciążeń operacyjnych, a wiedza może być trudna i kosztowna do znalezienia. Z drugiej strony Azure Cosmos DB to w pełni zarządzana usługa w chmurze, która umożliwia deweloperom skoncentrowanie się na innowacyjności biznesowej, a nie na zarządzaniu infrastrukturą bazy danych i jej utrzymywaniu. 
 
@@ -60,7 +60,7 @@ Model aprowizacji bezserwerowej Azure Cosmos DB eliminuje konieczność przekroc
 
 * Dowiedz się więcej o tym, [jak Azure Cosmos DB model cenowy jest ekonomiczny dla klientów](total-cost-ownership.md)
 * Dowiedz się więcej [na temat optymalizacji na potrzeby programowania i testowania](optimize-dev-test.md)
-* Dowiedz się [](optimize-cost-throughput.md) więcej na temat optymalizowania kosztu przepływności
+* Dowiedz się więcej na temat [optymalizowania kosztu przepływności](optimize-cost-throughput.md)
 * Dowiedz się więcej o [optymalizowaniu kosztów magazynu](optimize-cost-storage.md)
 * Dowiedz się więcej o [optymalizowaniu kosztów operacji odczytu i zapisu](optimize-cost-reads-writes.md)
 * Dowiedz się więcej o [optymalizowaniu kosztów zapytań](optimize-cost-queries.md)

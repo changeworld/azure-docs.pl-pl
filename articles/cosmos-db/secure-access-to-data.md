@@ -1,17 +1,17 @@
 ---
 title: Dowiedz się, jak zabezpieczyć dostęp do danych w Azure Cosmos DB
 description: Poznaj koncepcje kontroli dostępu w Azure Cosmos DB, w tym klucze główne, klucze tylko do odczytu, użytkowników i uprawnienia.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7e732f1d35097730d4468b43a2d9804fe7a18514
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616673"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753169"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Bezpieczny dostęp do danych w Azure Cosmos DB
 
@@ -128,8 +128,8 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 Zasób uprawnienia Cosmos DB jest skojarzony z Cosmos DB użytkownikiem.  Każdy użytkownik może zawierać co najmniej zero uprawnień Cosmos DB.  Zasób uprawnienia zapewnia dostęp do tokenu zabezpieczającego wymaganego przez użytkownika podczas próby dostępu do określonego zasobu aplikacji.
 Dostępne są dwa poziomy dostępu, które mogą być udostępniane przez zasób uprawnienia:
 
-* Całą Użytkownik ma pełne uprawnienia do zasobu.
-* Przeczytaj Użytkownik może odczytać tylko zawartość zasobu, ale nie może wykonywać operacji zapisu, aktualizowania ani usuwania dla zasobu.
+* Wszystko: użytkownik ma pełne uprawnienia do zasobu.
+* Odczytaj: użytkownik może odczytać tylko zawartość zasobu, ale nie może wykonywać operacji zapisu, aktualizowania ani usuwania dla zasobu.
 
 > [!NOTE]
 > Aby można było uruchomić Cosmos DB procedury składowane, użytkownik musi mieć uprawnienie wszystkie do kontenera, w którym zostanie uruchomiona procedura składowana.
@@ -183,7 +183,7 @@ Aby dodać do konta użytkownika dostęp do czytnika konta Azure Cosmos DB, nale
 4. W **polu Przypisz dostęp do**wybierz pozycję **użytkownik, Grupa lub aplikacja usługi Azure AD**.
 5. Wybierz użytkownika, grupę lub aplikację w katalogu, do którego chcesz udzielić dostępu.  Katalog można wyszukać według nazwy wyświetlanej, adresu e-mail lub identyfikatorów obiektów.
     Wybrany użytkownik, Grupa lub aplikacja pojawi się na liście wybranych członków.
-6. Kliknij polecenie **Zapisz**.
+6. Kliknij przycisk **Save** (Zapisz).
 
 Jednostka może teraz odczytywać Azure Cosmos DB zasoby.
 
@@ -193,5 +193,5 @@ Azure Cosmos DB pozwala wyszukiwać, wybierać, modyfikować i usuwać dane osob
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-* Aby dowiedzieć się więcej na temat zabezpieczeń bazy [danych Cosmos, zobacz Cosmos DB: Zabezpieczenia](database-security.md)bazy danych.
+* Aby dowiedzieć się więcej na temat zabezpieczeń bazy danych Cosmos, zobacz [Cosmos DB: zabezpieczenia bazy danych](database-security.md).
 * Aby dowiedzieć się, jak utworzyć tokeny autoryzacji Azure Cosmos DB, zobacz [Access Control dotyczące zasobów Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

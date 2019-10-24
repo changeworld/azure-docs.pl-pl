@@ -5,14 +5,14 @@ services: service-fabric
 author: athinanthny
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: dcffc1ba783b49343bf3380b62c3d4085f5aa347
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b9a3534c24649e71385cd8fdc8b4981ac471cf90
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390091"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752318"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Co to jest model zasobów aplikacji Service Fabric?
 Zaleca się, aby Service Fabric aplikacje zostały wdrożone w klastrze Service Fabric za pośrednictwem Azure Resource Manager. Dzięki tej metodzie można opisać aplikacje i usługi w formacie JSON i wdrożyć je w tym samym szablonie Menedżer zasobów co klaster. W przeciwieństwie do wdrażania aplikacji i zarządzania nimi za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure nie trzeba czekać, aż klaster będzie gotowy. Proces rejestracji, aprowizacji i wdrażania aplikacji może obejmować tylko jeden krok. Jest to najlepsze rozwiązanie w zakresie zarządzania cyklem życiowym aplikacji w klastrze. Aby uzyskać więcej informacji, zapoznaj się z [najlepszymi rozwiązaniami](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
@@ -41,8 +41,14 @@ Wdrożenie aplikacji na podstawie szablonu Menedżer zasobów wymaga konta magaz
 ![Tworzenie konta magazynu][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>Skonfiguruj konto magazynu 
-Po utworzeniu konta magazynu należy utworzyć kontener obiektów blob, w którym można przemieszczać aplikacje. W Azure Portal przejdź do konta magazynu, na którym chcesz przechowywać aplikacje. Wybierz blok **obiekty blob** , a następnie kliknij przycisk **Dodaj kontener** . Dodaj nowy kontener z poziomem dostępu publicznego obiektu BLOB.
-   
+Po utworzeniu konta magazynu należy utworzyć kontener obiektów blob, w którym można przemieszczać aplikacje. W Azure Portal przejdź do konta magazynu, na którym chcesz przechowywać aplikacje. Wybierz blok **obiekty blob** , a następnie kliknij przycisk **Dodaj kontener** . Zasoby w klastrze mogą być zabezpieczone przez ustawienie publicznego poziomu dostępu do prywatnego. Dostęp można udzielić na wiele sposobów:
+* [Autoryzuj dostęp do obiektów blob i kolejek przy użyciu Azure Active Directory](../storage/common/storage-auth-aad-app.md)
+* [Udzielanie dostępu do danych w obiektach blob i kolejkach na platformie Azure za pomocą kontroli dostępu opartej na rolach w witrynie Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md)
+* [Delegowanie dostępu za pomocą sygnatury dostępu współdzielonego (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
+)
+
+ Na potrzeby tego przykładu będziemy korzystać z anonimowego dostępu do odczytu dla obiektów BLOB.
+
 ![Utwórz obiekt BLOB][CreateBlob]
 
 ### <a name="stage-application-in-a-storage-account"></a>Przygotowanie aplikacji na koncie magazynu
@@ -51,10 +57,10 @@ Aby można było wdrożyć aplikację, należy ją przemieszczać w usłudze BLO
 1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt głosowania i wybierz polecenie pakiet.   
 ![Aplikacja pakietu][PackageApplication]  
 2. Otwórz katalog **.\Service-Fabric-dotnet-quickstart\Voting\pkg\Debug** , który został właśnie utworzony, i zanotuj zawartość do pliku o nazwie **głosu. zip** , tak że ApplicationManifest. XML znajduje się w katalogu głównym pliku zip.  
-![Zip aplikacji @ no__t-1  
+![Zip ][ZipApplication] aplikacji  
 3. Zmień nazwę rozszerzenia pliku z. zip na **. sfpkg**.
 4. W Azure Portal, w kontenerze **aplikacje** konta magazynu, kliknij przycisk **Przekaż** i przekaż **głosu. sfpkg**.  
-@no__t — pakiet aplikacji 0Upload @ no__t-1
+Pakiet aplikacji ![Upload ][UploadAppPkg]
 
 Aplikacja jest teraz przygotowana. Teraz można utworzyć szablon Azure Resource Manager, aby wdrożyć aplikację.      
    

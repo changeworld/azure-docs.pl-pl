@@ -1,7 +1,7 @@
 ---
 title: Integracja z usługą git dla Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, w jaki sposób Azure Machine Learning integruje się z lokalnym repozytorium git.
+description: Dowiedz się, w jaki sposób Azure Machine Learning integruje się z lokalnym repozytorium git. Podczas przesyłania szkolenia z katalogu lokalnego, który jest repozytorium git, informacje o repozytorium, rozgałęzieniu i bieżącym zatwierdzeniu są śledzone w ramach przebiegu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: 1ef9f3f847cb74aca0cae66dc8354838d28a645f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c8b2407b18f0d7115ce51fc28b956e7fd764c71e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553655"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756010"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integracja z usługą git dla Azure Machine Learning
 
@@ -92,5 +92,4 @@ Aby uzyskać więcej informacji, zapoznaj się z dokumentacją [AZ ml Run](https
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby zapoznać się z przewodnikiem dotyczącym uczenia się z Azure Machine Learning w Visual Studio Code, zobacz [Samouczek: uczenie modeli przy użyciu Azure Machine Learning](tutorial-train-models-with-aml.md).
-* Aby zapoznać się z przewodnikiem dotyczącym sposobu edytowania, uruchamiania i debugowania kodu lokalnie, zobacz [samouczek Python Hello-World](https://code.visualstudio.com/docs/Python/Python-tutorial).
+* [Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu](how-to-set-up-training-targets.md)

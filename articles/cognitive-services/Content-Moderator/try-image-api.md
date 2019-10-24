@@ -3,19 +3,19 @@ title: Umiarkowane obrazy za pomocą konsoli interfejsu API Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Użyj interfejsu API moderowania obrazów na platformie Azure Content Moderator, aby inicjować przepływy pracy dla moderowania skanowania i przeglądania dla zawartości obrazu.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 20353d488cba255925d21017b77d1def2d06b30b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: aa3b6ce886b06c32e9e4515469099a5b31ff49e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561256"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757203"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Umiarkowane obrazy z konsoli interfejsu API
 
@@ -102,4 +102,4 @@ W celu wykrycia tekstu w obrazach można użyć funkcji Content Moderator OCR.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Użyj interfejsu API REST w kodzie lub Rozpocznij od moderowania [obrazu .NET szybkiego](image-moderation-quickstart-dotnet.md) startu, aby zintegrować z Twoją aplikacją.
+Użyj interfejsu API REST w kodzie lub Rozpocznij od [moderowania obrazu .NET szybkiego](image-moderation-quickstart-dotnet.md) startu, aby zintegrować z Twoją aplikacją.

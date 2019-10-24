@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c6c8bcfec9a8bdf6948190c5f132c2e1763b9973
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 574b1591669cc32ce30677cad5158e13b944486f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025638"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750199"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Programowanie przy użyciu interfejsów API Media Services v3
 
@@ -107,6 +107,8 @@ Media Services ma następujące długotrwałe operacje:
 * [Skalowanie StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
 
 Po pomyślnym wysłaniu długiej operacji otrzymano element "202 zaakceptował" i musi on być sondowany o uzupełnianie operacji przy użyciu zwróconego identyfikatora operacji.
+
+W artykule [śledzenie asynchronicznych operacji na platformie Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) wyjaśniono, jak śledzić stan asynchronicznych operacji platformy Azure za pomocą wartości zwracanych w odpowiedzi.
 
 Tylko jedna długotrwała operacja jest obsługiwana dla danego zdarzenia na żywo lub dowolnego skojarzonego z nim wyjścia na żywo. Po uruchomieniu należy wykonać długotrwałą operację przed rozpoczęciem kolejnej długotrwałej operacji na tym samym LiveEvent lub wszystkich skojarzonych danych wyjściowych na żywo. W przypadku wydarzeń na żywo z wieloma wyjściami dynamicznymi musisz oczekiwać na ukończenie długotrwałej operacji na jednym z danych wyjściowych na żywo przed wyzwoleniem długotrwałej operacji na innych danych wyjściowych na żywo. 
 

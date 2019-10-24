@@ -3,19 +3,19 @@ title: Konfigurowanie ustawień narzędzia do przeglądu — Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z narzędzia do przeglądu, aby skonfigurować lub pobrać zespół, znaczniki, łączniki, przepływy pracy i poświadczenia dla Content Moderator.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: sajagtap
-ms.openlocfilehash: 5e12806aca7c53c254cc43c8ff5bb8d314f9993e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882738"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757432"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurowanie narzędzia do przeglądu
 
@@ -25,7 +25,7 @@ ms.locfileid: "68882738"
 
 ## <a name="manage-team-and-subteams"></a>Zarządzanie zespołem i podzespołów
 
-Karta **zespół** umożliwia zarządzanie zespołami i&mdash;grupami podzespołów użytkowników, którzy mogą otrzymywać powiadomienia o rozpoczęciu niektórych [recenzji ludzkich](../review-api.md#reviews) . Możesz mieć tylko jeden zespół (tworzony podczas tworzenia konta za pomocą narzędzia do przeglądu), ale można utworzyć wiele podzespołów. Administrator zespołu może zapraszać członków, ustawiać ich uprawnienia i przypisywać je do różnych zespołów.
+Karta **zespół** umożliwia zarządzanie zespołem i podzespołów &mdash;groups użytkowników, którzy mogą otrzymywać powiadomienia po rozpoczęciu niektórych [recenzji ludzkich](../review-api.md#reviews) . Możesz mieć tylko jeden zespół (tworzony podczas tworzenia konta za pomocą narzędzia do przeglądu), ale można utworzyć wiele podzespołów. Administrator zespołu może zapraszać członków, ustawiać ich uprawnienia i przypisywać je do różnych zespołów.
 
 ![Przegląd ustawień zespołu narzędzi](images/settings-2-team.png)
 
@@ -41,7 +41,7 @@ Przejdź do sekcji **podzespołów** , a następnie kliknij pozycję **Dodaj pod
 
 #### <a name="invite-teammates"></a>Zapraszanie członków zespołu
 
-Nie można przypisać kogoś do zespołu, jeśli nie jest jeszcze członkiem zespołu domyślnego, więc musisz najpierw dodać recenzentów do zespołu domyślnego. Na karcie **zespół** kliknij pozycję Zaproś.
+Nie można przypisać kogoś do zespołu, jeśli nie jest jeszcze członkiem zespołu domyślnego, więc musisz najpierw dodać recenzentów do zespołu domyślnego. Na karcie **zespół** kliknij pozycję **Zaproś** .
 
 ![Zapraszanie użytkowników](images/invite-users.png)
 
@@ -53,7 +53,7 @@ Kliknij przycisk **Dodaj członka** , aby przypisać członków z domyślnego ze
 
 ### <a name="assign-reviews-to-subteams"></a>Przypisywanie przeglądów do podzespołów
 
-Po utworzeniu podzespołów i przypisanych elementów członkowskich można zacząć przypisywać przeglądy zawartości do [](../review-api.md#reviews) tych podzespołów. Odbywa się to na karcie **Przegląd** w witrynie.
+Po utworzeniu podzespołów i przypisanych elementów członkowskich można zacząć przypisywać [przeglądy](../review-api.md#reviews) zawartości do tych podzespołów. Odbywa się to na karcie **Przegląd** w witrynie.
 Aby przypisać zawartość do podzespołu, kliknij wielokropek w prawym górnym rogu, wybierz pozycję **Przenieś do**i wybierz podzespół.
 
 ![Przypisz przegląd obrazu do podzespołu](images/3-review-image-subteam-1.png)
@@ -64,9 +64,9 @@ Jeśli jesteś członkiem więcej niż jednego podzespołu, możesz przełącza�
 
 ![Przełączanie między podzespołów](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>`Tags`
+## <a name="tags"></a>Tagi
 
-**Tagi** kartę umożliwia definiowanie tagów niestandardowych Moderowanie oprócz tagów Moderowanie dwóch domyślnych&mdash;**isadult** (**a**) i **isracy**  (**r**). Gdy tworzysz tag niestandardowy, będzie on dostępny w przeglądach obok znaczników domyślnych. Możesz zmienić, które Tagi będą widoczne w przeglądach, przełączając ich ustawienia widoczności.
+Karta **Tagi** pozwala definiować niestandardowe znaczniki moderowania oprócz dwóch domyślnych tagów moderowania &mdash;**isdorosły** (**a**) i **isracy** (**r**). Gdy tworzysz tag niestandardowy, będzie on dostępny w przeglądach obok znaczników domyślnych. Możesz zmienić, które Tagi będą widoczne w przeglądach, przełączając ich ustawienia widoczności.
 
 ![Widok tagów, w tym pola wyboru "jest widoczne"](images/tags-4-disable.png)
 
@@ -74,9 +74,9 @@ Jeśli jesteś członkiem więcej niż jednego podzespołu, możesz przełącza�
 
 Aby utworzyć nowy tag, należy wprowadzić krótki kod, nazwę i opis w odpowiednich polach.
 
-- **Krótki kod**: Wprowadź dwuliterowy kod dla tagu. Przykład: **CB**
-- **Nazwa**: Wprowadź krótką i opisową nazwę tagu małymi literami bez spacji. Przykład: **isbullying**.
-- **Opis**: (opcjonalnie) wprowadź opis rodzaju zawartości, do której odwołuje się tag. Przykład: **Sceny i wystąpienia elementu cybernetycznymi bullying**.
+- **Krótki kod**: wprowadź dwuliterowy kod dla tagu. Przykład: **CB**
+- **Nazwa**: wprowadź krótką i opisową nazwę tagu małymi literami bez spacji. Przykład: **isbullying**.
+- **Opis**: (opcjonalnie) wprowadź opis rodzaju zawartości, do której odwołuje się tag. Przykład: **sceny lub wystąpienia elementu cybernetycznymi bullying**.
 
 Kliknij przycisk **Dodaj** , aby dodać tag, a następnie kliknij przycisk **Zapisz** po zakończeniu tworzenia tagów.
 
@@ -86,16 +86,16 @@ Kliknij przycisk **Dodaj** , aby dodać tag, a następnie kliknij przycisk **Zap
 
 Tagi niestandardowe można usunąć, wybierając ikonę kosza obok pozycji na liście Tagi, ale nie można usunąć tagów domyślnych.
 
-## <a name="connectors"></a>Łączniki
+## <a name="connectors"></a>Konektory
 
 Karta **Łączniki** umożliwia zarządzanie łącznikami, które są wtyczkami specyficznymi dla usług, które mogą przetwarzać zawartość na różne sposoby w ramach [przepływów pracy](../review-api.md#workflows)zawartości.
 
-Domyślnym łącznikiem podczas tworzenia przepływu pracy jest łącznik Content Moderator, który może oznaczać zawartość jako dorosłą lub **erotycznej**, znaleźć niepełnoletni itd. Można jednak użyć innych łączników, o ile masz poświadczenia dla odpowiednich usług (aby użyć łącznika interfejs API rozpoznawania twarzy, na przykład należy uzyskać klucz subskrypcji [interfejs API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/overview) ).
+Domyślnym łącznikiem podczas tworzenia przepływu pracy jest łącznik Content Moderator, który może oznaczać zawartość jako dorosłą lub **erotycznej**, znaleźć **niepełnoletni** itd. Można jednak użyć innych łączników, o ile masz poświadczenia dla odpowiednich usług (aby użyć łącznika interfejs API rozpoznawania twarzy, na przykład należy uzyskać klucz subskrypcji [interfejs API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/overview) ).
 
 [Narzędzie do przeglądu](./human-in-the-loop.md) obejmuje następujące łączniki:
 
-- Interfejs API Emotion
-- Interfejs API rozpoznawania twarzy
+- Interfejs API rozpoznawania emocji
+- Interfejs API twarzy
 - Usługa w chmurze PhotoDNA
 - Interfejs API analizy tekstu
 
@@ -105,7 +105,7 @@ Aby dodać łącznik (i udostępnić go do użycia w [przepływach pracy](../rev
 
 ![Ustawienia Content Moderator łączników](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>Przepływy
 
 Karta **przepływy pracy** umożliwia zarządzanie [przepływami pracy](../review-api.md#workflows). Przepływy pracy są filtrami opartymi na chmurze dla zawartości i pracują z łącznikami, aby sortować zawartość na różne sposoby i podejmować odpowiednie działania. Tutaj możesz definiować, edytować i testować przepływy pracy. Zobacz [Definiowanie i używanie przepływów pracy,](Workflows.md) Aby uzyskać wskazówki dotyczące sposobu wykonania tej czynności.
 

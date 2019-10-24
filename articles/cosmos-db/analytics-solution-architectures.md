@@ -1,18 +1,18 @@
 ---
 title: Rozwiązania wykorzystujące globalnie dystrybuowaną analizę w Azure Cosmos DB.
 description: Zapoznaj się z rozwiązaniami, które można skompilować za pomocą globalnie dystrybuowanej analizy w Azure Cosmos DB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d5c6b8727a24a7ea8ddf05f7983618b55884d3bf
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d50b946e67bbcc171850b71021165356011f58e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338986"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755202"
 ---
 # <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>Rozwiązania wykorzystujące globalnie dystrybuowaną analizę w Azure Cosmos DB
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: c0b93529872de774e1a6e915ef8254c5c0e0a1a9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f5b40e59a4ed2393e3b9912f8e4caa06ee267428
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676710"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757523"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Samouczek: Tworzenie puli hostów przy użyciu witryny Azure Marketplace
 
@@ -40,7 +40,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 Aby uruchomić ofertę Azure Marketplace w celu aprowizacji nowej puli hostów:
 
-1. Wybierz pozycję **+** lub **+ Utwórz zasób**.
+1. Wybierz **+** lub **+ Utwórz zasób**.
 2. W oknie wyszukiwania portalu Marketplace wprowadź **Windows Virtual Desktop** .
 3. Wybierz pozycję **pulpit wirtualny systemu Windows — zapewnij pulę hostów**, a następnie wybierz pozycję **Utwórz**.
 
@@ -52,7 +52,7 @@ Oto co należy zrobić w przypadku bloku **podstawy** :
 
 1. Wprowadź nazwę puli hostów, która jest unikatowa w ramach dzierżawy pulpitu wirtualnego systemu Windows.
 2. Wybierz odpowiednią opcję dla pulpitu osobistego. Jeśli wybierzesz opcję **tak**, każdy użytkownik łączący się z tą pulą hostów zostanie trwale przypisany do maszyny wirtualnej.
-3. Wprowadź rozdzieloną przecinkami listę użytkowników, którzy mogą logować się do klientów pulpitu wirtualnego systemu Windows i uzyskiwać dostęp do pulpitu po zakończeniu oferty portalu Azure Marketplace. Na przykład jeśli chcesz przypisać dostęp user1@contoso.com i user2@contoso.com, wpisz "user1@contoso.com, user2@contoso.com".
+3. Wprowadź rozdzieloną przecinkami listę użytkowników, którzy mogą logować się do klientów pulpitu wirtualnego systemu Windows i uzyskiwać dostęp do pulpitu po zakończeniu oferty portalu Azure Marketplace. Jeśli na przykład chcesz przypisać dostęp user1@contoso.com i user2@contoso.com, wprowadź "user1@contoso.com, user2@contoso.com".
 4. Wybierz pozycję **Utwórz nowy** i podaj nazwę nowej grupy zasobów.
 5. W polu **Lokalizacja**wybierz tę samą lokalizację co sieć wirtualna, która ma łączność z serwerem Active Directory.
 6. Kliknij przycisk **OK**.
@@ -73,7 +73,7 @@ W bloku **Konfiguruj maszyny wirtualne** :
 W bloku **ustawienia maszyny wirtualnej** :
 
 >[!NOTE]
-> W przypadku dołączania maszyn wirtualnych do środowiska Azure Active Directory Domain Services (Azure AD DS) Upewnij się, że użytkownik przyłączania do domeny jest również członkiem [grupy Administratorzy kontrolera domeny usługi AAD](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group).
+> W przypadku dołączania maszyn wirtualnych do środowiska Azure Active Directory Domain Services (Azure AD DS) Upewnij się, że użytkownik przyłączania do domeny jest również członkiem [grupy Administratorzy kontrolera domeny usługi AAD](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group).
 
 1. W polu **Źródło obrazu**wybierz źródło i wprowadź odpowiednie informacje na temat sposobu ich znalezienia i sposobu ich przechowywania. W przypadku wybrania opcji nie używaj dysków zarządzanych wybierz konto magazynu zawierające plik VHD.
 2. Wprowadź główną nazwę użytkownika i hasło konta domeny, które będzie przyłączać maszyny wirtualne do domeny Active Directory. Ta sama nazwa użytkownika i hasło zostaną utworzone na maszynach wirtualnych jako konto lokalne. Możesz zresetować te konta lokalne później.

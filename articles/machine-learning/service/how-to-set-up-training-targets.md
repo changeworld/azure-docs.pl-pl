@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: bce04a14a13d5b3615963f298f35af0d2fc480bb
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 95ded3c184836ac58a0f97d1bf30dd2e3c123ccb
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244432"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755968"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu 
 
@@ -106,7 +106,7 @@ Azure Machine Learning COMPUTE ma limity domyślne, takie jak liczba rdzeni, kt�
 Azure Machine Learning obliczeń można utworzyć jako obiekt docelowy obliczeń w czasie wykonywania. Obliczenia są tworzone automatycznie dla danego przebiegu. Obliczenia są usuwane automatycznie po zakończeniu przebiegu. 
 
 > [!NOTE]
-> Aby określić maksymalną liczbę węzłów, które mają być używane, należy normalnie ustawić wartość `node_count` na liczbę węzłów. Obecnie istnieje (04/04/2019) usterka, która uniemożliwia korzystanie z tej usługi. Jako obejście Użyj właściwości `amlcompute._cluster_max_node_count` konfiguracji uruchomieniowej. Na przykład `run_config.amlcompute._cluster_max_node_count = 5`.
+> Aby określić maksymalną liczbę węzłów, które mają być używane, zwykle ustawia się `node_count` na liczbę węzłów. Obecnie istnieje (04/04/2019) usterka, która uniemożliwia korzystanie z tej usługi. Aby obejść ten element, należy użyć właściwości `amlcompute._cluster_max_node_count` konfiguracji uruchomieniowej. Na przykład `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Tworzenie Azure Machine Learning obliczeń opartych na uruchomieniu jest obecnie dostępne w wersji zapoznawczej. Nie należy używać tworzenia opartego na uruchomieniach, jeśli jest używane automatyczne dostrajanie parametrów lub automatyczne Uczenie maszynowe. Aby skorzystać z dostrajania podparametru lub automatycznej uczenia maszynowego, należy zamiast tego utworzyć [trwały](#persistent) element docelowy obliczeń.
@@ -295,7 +295,7 @@ Aby zobaczyć cele obliczeń dla obszaru roboczego, wykonaj następujące czynno
  
 1. W obszarze __aplikacje__wybierz pozycję __obliczenia__.
 
-    [Karta obliczeniowa @no__t 1View](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [Karta obliczeniowa ![View](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Tworzenie obiektu docelowego obliczeń
 
@@ -406,7 +406,7 @@ Przełączenie tego samego eksperymentu w celu uruchomienia go w innym miejscu d
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
 > [!TIP]
-> Ten przykład domyślnie używa tylko jednego węzła elementu docelowego obliczeń do szkolenia. Aby użyć więcej niż jednego węzła, ustaw `node_count` konfiguracji uruchomieniowej na żądaną liczbę węzłów. Na przykład poniższy kod ustawia liczbę węzłów używanych do szkolenia w czterech:
+> Ten przykład domyślnie używa tylko jednego węzła elementu docelowego obliczeń do szkolenia. Aby użyć więcej niż jednego węzła, należy ustawić `node_count` konfiguracji uruchomieniowej na żądaną liczbę węzłów. Na przykład poniższy kod ustawia liczbę węzłów używanych do szkolenia w czterech:
 >
 > ```python
 > src.run_config.node_count = 4
@@ -499,7 +499,7 @@ Aby uzyskać więcej informacji na temat tych poleceń interfejsu wiersza polece
 
 ## <a name="git-tracking-and-integration"></a>Śledzenie i integracja usługi git
 
-Po rozpoczęciu szkolenia w przypadku, gdy katalog źródłowy jest lokalnym repozytorium git, informacje o repozytorium są przechowywane w historii uruchamiania. Na przykład bieżący identyfikator zatwierdzenia dla repozytorium jest rejestrowany jako część historii.
+Po rozpoczęciu szkolenia w przypadku, gdy katalog źródłowy jest lokalnym repozytorium git, informacje o repozytorium są przechowywane w historii uruchamiania. Aby uzyskać więcej informacji, zobacz Integracja z usługą [git dla Azure Machine Learning](concept-train-model-git-integration.md).
 
 ## <a name="notebook-examples"></a>Przykłady notesu
 
