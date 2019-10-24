@@ -14,23 +14,25 @@ ms.date: 11/13/2018
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45c7f42d536880f2578c62c6c4866b21be1cc9dc
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 49d49f42e0d705981a5b4e41630b425fcb02e940
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804563"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756257"
 ---
-# <a name="microsoft-graph-apis-for-pim-preview"></a>Interfejsy API programu Microsoft Graph dla usługi PIM (wersja zapoznawcza)
+# <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Microsoft Graph interfejsów API dla Privileged Identity Management (wersja zapoznawcza)
 
-W przypadku większości zadań, które można wykonać w Azure Active Directory (Azure AD) Privileged Identity Management (PIM) przy użyciu Azure Portal, można również wykonać za pomocą [Microsoft Graph interfejsów API](https://developer.microsoft.com/graph/docs/concepts/overview). W tym artykule opisano niektóre ważne pojęcia dotyczące korzystania z interfejsów API programu Microsoft Graph dla usługi PIM. Szczegółowe informacje na temat interfejsów API programu Microsoft Graph można znaleźć w [dokumentacji interfejsu API usługi Azure AD Privileged Identity Management](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
+Wszystkie Privileged Identity Management zadania można wykonać przy użyciu [Microsoft Graph interfejsów API](https://developer.microsoft.com/graph/docs/concepts/overview) dla Azure Active Directory. W tym artykule opisano ważne koncepcje dotyczące używania Microsoft Graph interfejsów API dla Privileged Identity Management.
+
+Szczegółowe informacje na temat interfejsów API programu Microsoft Graph można znaleźć w [dokumentacji interfejsu API usługi Azure AD Privileged Identity Management](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
 
 > [!IMPORTANT]
 > Interfejsy API w wersji beta w programie Microsoft Graph są w wersji zapoznawczej i mogą ulec zmianie. Te interfejsy API nie są obsługiwane w zastosowaniach produkcyjnych.
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 
-Aby wywoływać interfejsy API programu Microsoft Graph dla usługi PIM, musisz posiadać **co najmniej jedno** z następujących uprawnień:
+Aby wywołać Microsoft Graph interfejsów API dla Privileged Identity Management, musisz mieć **co najmniej jedno** z następujących uprawnień:
 
 - `Directory.AccessAsUser.All`
 - `Directory.Read.All`
@@ -39,7 +41,7 @@ Aby wywoływać interfejsy API programu Microsoft Graph dla usługi PIM, musisz 
 
 ### <a name="set-permissions"></a>Ustawianie uprawnień
 
-Aplikacje do wywoływania interfejsów API programu Microsoft Graph dla usługi PIM muszą mieć wymagane uprawnienia. Najprostszym sposobem określenia wymaganych uprawnień jest użycie [platformy wyrażania zgody w usłudze Azure AD](../develop/consent-framework.md).
+Aby aplikacje mogły wywołać Microsoft Graph interfejsów API dla Privileged Identity Management, muszą mieć wymagane uprawnienia. Najprostszym sposobem określenia wymaganych uprawnień jest użycie [platformy wyrażania zgody w usłudze Azure AD](../develop/consent-framework.md).
 
 ### <a name="set-permissions-in-graph-explorer"></a>Ustawianie uprawnień w Eksploratorze programu Graph
 
@@ -51,7 +53,7 @@ Jeśli do testowania wywołań używasz Eksploratora programu Graph, możesz okr
 
     ![Eksplorator programu Graph — modyfikowanie uprawnień](./media/pim-apis/graph-explorer.png)
 
-1. Dodaj znaczniki wyboru obok uprawnień, które mają zostać uwzględnione. Uprawnienia `PrivilegedAccess.ReadWrite.AzureAD` nie są jeszcze dostępne w Eksploratorze programu Graph.
+1. Zaznacz pola wyboru obok uprawnień, które chcesz uwzględnić. Uprawnienia `PrivilegedAccess.ReadWrite.AzureAD` nie są jeszcze dostępne w Eksploratorze programu Graph.
 
     ![Eksplorator programu Graph — modyfikowanie uprawnień](./media/pim-apis/graph-explorer-modify-permissions.png)
 

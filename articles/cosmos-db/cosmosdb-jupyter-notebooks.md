@@ -4,14 +4,14 @@ description: Dowiedz się, jak używać wbudowanych notesów Jupyter w Azure Cos
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 09/22/2019
-author: rimman
-ms.author: rimman
-ms.openlocfilehash: 8389cd4d73c5c5d881dcc32c688a59b86895a3e2
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+author: markjbrown
+ms.author: mjbrown
+ms.openlocfilehash: 8026140a07ce8ed03a7bec57f03a1ca1708f85ac
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309551"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756977"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Wbudowana obsługa notesów Jupyter w Azure Cosmos DB
 
@@ -28,7 +28,7 @@ Azure Portal natywnie integruje środowisko notesu Jupyter z kontami usługi Azu
 
 Notesy Jupyter zostały pierwotnie opracowane dla aplikacji do nauki o danych pisanych w języku Python, R. Można je jednak używać na różne sposoby dla różnych rodzajów projektów, takich jak:
 
-* ***Wizualizacje danych:** Notesy Jupyter umożliwiają wizualizowanie danych w postaci notesu udostępnionego, który renderuje zestaw danych jako grafikę. Notes Jupyter umożliwia tworzenie wizualizacji, udostępnianie ich i Zezwalanie na interaktywne wprowadzanie zmian w udostępnionym kodzie i zestawie danych.
+* ***wizualizacje danych:** notesy Jupyter umożliwiają wizualizowanie danych w postaci notesu udostępnionego, który renderuje zestaw danych jako grafikę. Notes Jupyter umożliwia tworzenie wizualizacji, udostępnianie ich i Zezwalanie na interaktywne wprowadzanie zmian w udostępnionym kodzie i zestawie danych.
 
 * **Udostępnianie kodu:** Usługi, takie jak GitHub, umożliwiają współużytkowanie kodu, ale są w dużym stopniu nieinteraktywny. Za pomocą notesu Jupyter można wyświetlić kod, wykonać go i wyświetlić wyniki bezpośrednio w Azure Portal.
 
@@ -48,11 +48,11 @@ Notesy Jupyter mogą zawierać kilka typów składników, które są zorganizowa
 
 * **Kod i dane wyjściowe:** Notesy Jupyter obsługują kod języka Python. Wyniki wykonywanego kodu są wyświetlane bezpośrednio po blokach kodu, a bloki kodu mogą być wykonywane wiele razy w dowolnej kolejności.
 
-* **Wizualizacje** Grafiki i wykresy można generować z kodu przy użyciu modułów takich jak matplotlib, wykreolić lub bokeh. Podobnie jak w przypadku danych wyjściowych, wizualizacje są wyświetlane obok kodu, który go generuje.
+* **Wizualizacje:** Grafiki i wykresy można generować z kodu przy użyciu modułów takich jak matplotlib, wykreolić lub bokeh. Podobnie jak w przypadku danych wyjściowych, wizualizacje są wyświetlane obok kodu, który go generuje.
 
-* **Zawartości** Ponieważ Notes Jupyter jest oparty na technologii sieci Web, można wyświetlić wszystkie typy multimediów obsługiwane na stronie sieci Web. Można je uwzględnić w notesie jako elementy HTML lub można generować je programowo przy użyciu `IPython.display` modułu.
+* **Multimedia:** Ponieważ Notes Jupyter jest oparty na technologii sieci Web, można wyświetlić wszystkie typy multimediów obsługiwane na stronie sieci Web. Można je uwzględnić w notesie jako elementy HTML lub można generować je programowo przy użyciu modułu `IPython.display`.
 
-* **Data** Dane z kontenerów usługi Azure Cosmos i wyniki zapytań można programowo zaimportować do notesu Jupyter. Na przykład przez dołączenie kodu w notesie do wykonywania zapytań dotyczących danych przy użyciu dowolnego z Cosmos DB interfejsów API lub wbudowanej natywnie Apache Spark.
+* **Dane:** Dane z kontenerów usługi Azure Cosmos i wyniki zapytań można programowo zaimportować do notesu Jupyter. Na przykład przez dołączenie kodu w notesie do wykonywania zapytań dotyczących danych przy użyciu dowolnego z Cosmos DB interfejsów API lub wbudowanej natywnie Apache Spark.
 
 ## <a name="next-steps"></a>Następne kroki
 

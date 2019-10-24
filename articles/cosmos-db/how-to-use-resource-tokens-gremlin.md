@@ -1,18 +1,18 @@
 ---
 title: Używanie tokenów zasobów Azure Cosmos DB z zestawem SDK Gremlin
 description: Dowiedz się, jak tworzyć tokeny zasobów i korzystać z nich w celu uzyskiwania dostępu do bazy danych programu Graph.
-author: olignat
+author: luisbosquez
+ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/06/2019
-ms.author: olignat
-ms.openlocfilehash: 6364bd0f762647b5fe9567ed40042a5ad81f97c1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 443b6ea2583c7c8a1c633cf1825e83cc02bd168c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105032"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756063"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Używanie tokenów zasobów Azure Cosmos DB z zestawem SDK Gremlin
 
@@ -24,7 +24,7 @@ Zestaw Apache TinkerPop Gremlin SDK nie ma interfejsu API, który służy do two
 
 Hierarchia modelu obiektów powyżej tokenów zasobów jest zilustrowana w następującym konspekcie:
 
-- **Konto Azure Cosmos DB** — jednostka najwyższego poziomu, z którą jest skojarzony system DNS (na przykład `contoso.gremlin.cosmos.azure.com`).
+- **Konto Azure Cosmos DB** — jednostka najwyższego poziomu, z którą skojarzona jest usługa DNS (na przykład `contoso.gremlin.cosmos.azure.com`).
   - **Baza danych Azure Cosmos DB**
     - **Użytkownicy**
       - **Zezwolenie**
@@ -95,7 +95,7 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>Limit
 
-Za pomocą jednego konta Gremlin można wydać nieograniczoną liczbę tokenów. Można jednak używać tylko do 100 tokenów jednocześnie w ciągu 1 godziny. Jeśli aplikacja przekroczy limit tokenów na godzinę, żądanie uwierzytelnienia zostanie odrzucone i zostanie wyświetlony następujący komunikat o błędzie: "Przekroczono dozwolony limit tokenów zasobów 100, który może być używany współbieżnie". Nie działa to blisko aktywnych połączeń, które używają określonych tokenów do zwolnienia miejsc dla nowych tokenów. Aparat bazy danych Azure Cosmos DB Gremlin śledzi unikatowe tokeny w ciągu godziny bezpośrednio przed żądaniem uwierzytelnienia.
+Za pomocą jednego konta Gremlin można wydać nieograniczoną liczbę tokenów. Można jednak używać tylko do 100 tokenów jednocześnie w ciągu 1 godziny. Jeśli aplikacja przekracza limit tokenów na godzinę, żądanie uwierzytelnienia zostanie odrzucone i zostanie wyświetlony następujący komunikat o błędzie: "Przekroczono dozwolony limit tokenów zasobów 100, który może być używany współbieżnie". Nie działa to blisko aktywnych połączeń, które używają określonych tokenów do zwolnienia miejsc dla nowych tokenów. Aparat bazy danych Azure Cosmos DB Gremlin śledzi unikatowe tokeny w ciągu godziny bezpośrednio przed żądaniem uwierzytelnienia.
 
 ## <a name="permission"></a>Uprawnienie
 

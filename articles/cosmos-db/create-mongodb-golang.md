@@ -1,20 +1,20 @@
 ---
 title: Tworzenie aplikacji konsolowej za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i zestawu SDK języka Golang
 description: Przykładowy kod w języku Golang, którego można używać do nawiązywania połączeń i wykonywania zapytań przy użyciu interfejsu API MongoDB usługi Azure Cosmos DB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.author: rimman
-ms.openlocfilehash: 5b60ac28cd8f65d464e659f328872524be59b3ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e16b9b7e591fcc089d74794c98ddfc951cbdced9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60898576"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755110"
 ---
-# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Szybki start: Tworzenie aplikacji konsolowej za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i zestawu SDK języka Golang
+# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Szybki Start: Tworzenie aplikacji konsolowej przy użyciu interfejsu API Azure Cosmos DB MongoDB i golang SDK
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -129,9 +129,9 @@ defer session.Close()
 session.SetSafe(&mgo.Safe{})
 ```
 
-Metoda **mgo.Dial()** jest używana w przypadku braku połączenia SSL. W przypadku połączenia SSL wymagana jest metoda **mgo.DialWithInfo()**.
+Metoda **mgo.Dial()** jest używana w przypadku braku połączenia SSL. W przypadku połączenia SSL wymagana jest metoda **mgo.DialWithInfo()** .
 
-Do utworzenia obiektu sesji używane jest wystąpienie obiektu **DialWithInfo{}**. Po ustanowieniu sesji można uzyskać dostęp do kolekcji, używając poniższego fragmentu kodu:
+Do utworzenia obiektu sesji używane jest wystąpienie obiektu **DialWithInfo{}** . Po ustanowieniu sesji można uzyskać dostęp do kolekcji, używając poniższego fragmentu kodu:
 
 ```go
 collection := session.DB("database").C("package")
@@ -246,9 +246,9 @@ Wróć do witryny Azure Portal, aby zobaczyć swój dokument w Eksploratorze dan
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Cosmos i uruchamiania aplikacji w języku Golang. Teraz możesz zaimportować dodatkowe dane do swojej bazy danych usługi Cosmos. 
 
 > [!div class="nextstepaction"]
-> [Importowanie danych z bazy danych MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)
+> [Importuj dane usługi MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)

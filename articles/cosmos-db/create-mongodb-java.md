@@ -1,22 +1,22 @@
 ---
-title: 'Szybki start: Tworzenie aplikacji sieci Web przy użyciu interfejsu API platformy Azure dla Mongo DB i Java SDK — Azure Cosmos DB'
+title: 'Szybki Start: Tworzenie aplikacji sieci Web przy użyciu interfejsu API platformy Azure dla Mongo DB i Java SDK — Azure Cosmos DB'
 description: Przykładowy kod języka Java, którego można używać do nawiązywania połączeń i wykonywania zapytań przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.author: rimman
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 7129819b6cec068420b0b265d878078622721812
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: bfded407790d01d65feec0b6e069c23739064e97
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965388"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756918"
 ---
-# <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Szybki start: Tworzenie aplikacji konsolowej przy użyciu języka Java i interfejsu API MongoDB w Azure Cosmos DB
+# <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Szybki Start: Tworzenie aplikacji konsolowej przy użyciu języka Java i interfejsu API MongoDB w Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -139,4 +139,4 @@ Teraz możesz używać narzędzia [Robomongo](mongodb-robomongo.md) / [Studio 3T
 W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Cosmos, tworzenia kolekcji i uruchamiania aplikacji konsolowej. Teraz możesz zaimportować dodatkowe dane do swojej bazy danych usługi Cosmos.
 
 > [!div class="nextstepaction"]
-> [Importowanie danych z bazy danych MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)
+> [Importuj dane usługi MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)

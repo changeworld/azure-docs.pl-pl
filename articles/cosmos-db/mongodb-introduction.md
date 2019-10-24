@@ -4,15 +4,15 @@ description: Dowiedz się, jak można używać usługi Azure Cosmos DB do przech
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 22438837a7cee1755d115993683101c260b99f2c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 670020d276b9d4a868f24eb4a3f522581060adca
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953832"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754978"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -22,9 +22,9 @@ ms.locfileid: "65953832"
 
 Usługa Cosmos DB implementuje protokoły przewodowe typowych baz danych NoSQL, w tym Cassandra, MongoDB, Gremlin i Azure Table Storage. Dzięki dostarczeniu natywnych implementacji protokołów przewodowych bezpośrednio i wydajnie w usłudze Cosmos DB możliwa jest przezroczysta interakcja istniejących zestawów SDK klienta, sterowników i narzędzi baz danych NoSQL z usługą Cosmos DB. Usługa Cosmos DB nie korzysta z żadnego kodu źródłowego baz danych w celu zapewnienia przewodowej zgodności interfejsów API baz danych NoSQL.
 
-Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB jest domyślnie zgodny z wersją 3.2 protokołu przewodowego MongoDB. Funkcje i operatory zapytań dodane w wersji 3.4 protokołu przewodowego są obecnie dostępne w wersji zapoznawczej. Każdy sterownik klienta MongoDB, który rozumie te wersje protokołu, powinien natywnie umożliwiać połączenie z usługą Cosmos DB.
+Domyślnie nowe konta utworzone przy użyciu interfejsu API Azure Cosmos DB dla MongoDB są zgodne z wersją 3,6 protokołu MongoDB. Każdy sterownik klienta MongoDB, który rozumie tę wersję protokołu, powinien mieć możliwość natywnego połączenia z Cosmos DB.
 
-![Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB](./media/mongodb-introduction/cosmosdb-mongodb.png) 
+![Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB](./media/mongodb-introduction/cosmosdb-mongodb.png)
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
 
@@ -38,13 +38,13 @@ Kluczowe korzyści z usługi Cosmos DB jako w pełni zarządzanej, globalnie roz
 
 ## <a name="cosmos-dbs-api-for-mongodb"></a>Interfejs API usługi Cosmos DB dla bazy danych MongoDB
 
-Wykonaj instrukcje z przewodników Szybki start, aby utworzyć konto usługi Cosmos i przeprowadzić migrację istniejącej aplikacji MongoDB do użycia usługi Azure Cosmos DB lub utworzyć nową:
+Postępuj zgodnie z przewodnikami Szybki Start, aby utworzyć konto usługi Azure Cosmos i przeprowadzić migrację istniejącej aplikacji MongoDB w celu użycia Azure Cosmos DB lub utworzyć nową:
 
 * [Migrate an existing MongoDB Node.js web app](create-mongodb-nodejs.md) (Migracja istniejącej aplikacji internetowej MongoDB w środowisku Node.js).
 * [Build a web app using Azure Cosmos DB's API for MongoDB and .NET SDK](create-mongodb-dotnet.md) (Tworzenie aplikacji internetowej za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i zestawu SDK platformy .NET)
 * [Build a web app using Azure Cosmos DB's API for MongoDB and Java SDK](create-mongodb-java.md) (Tworzenie aplikacji internetowej za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i zestawu SDK języka Java)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Oto kilka wskazówek ułatwiających rozpoczęcie pracy:
 
@@ -54,4 +54,4 @@ Oto kilka wskazówek ułatwiających rozpoczęcie pracy:
 * Nawiąż połączenie z kontem Cosmos za pomocą programu [Robo 3T](mongodb-robomongo.md).
 * Dowiedz się, jak [konfigurować preferencje odczytu dla aplikacji rozproszonych globalnie](../cosmos-db/tutorial-global-distribution-mongodb.md).
 
-<sup>Uwaga: W tym artykule opisano funkcjonalność usługi Azure Cosmos DB, która zapewnia zgodność protokołu przewodowego z bazami danych MongoDB. Firma Microsoft nie uruchamia baz danych MongoDB w celu udostępnienia tej usługi. Usługa Azure Cosmos DB nie jest powiązana z firmą MongoDB, Inc.</sup>
+<sup>Uwaga: w tym artykule opisano funkcję Azure Cosmos DB, która zapewnia zgodność protokołu telekomunikacyjnych z bazami danych MongoDB. Firma Microsoft nie uruchamia MongoDB baz danych w celu zapewnienia tej usługi. Azure Cosmos DB nie jest powiązany z MongoDB, Inc.</sup>
