@@ -1,25 +1,21 @@
 ---
-title: Azure Cloud Shell Szybki Start | Microsoft Docs
-description: Szybki Start dla Azure Cloud Shell
-services: ''
-documentationcenter: ''
+title: Azure Cloud Shell szybki start — bash
+description: Dowiedz się, jak używać wiersza polecenia bash w przeglądarce przy użyciu Azure Cloud Shell.
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 8151013f263c6cf2f90e89fa1c3b0b3025f2ea38
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741982"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757397"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Przewodnik Szybki Start dla usługi Bash w Azure Cloud Shell
 
@@ -39,7 +35,7 @@ Ten dokument zawiera szczegółowe informacje dotyczące używania bash w Azure 
 > Użytkownik jest automatycznie uwierzytelniany dla interfejsu wiersza polecenia platformy Azure w każdej sesji.
 
 ### <a name="select-the-bash-environment"></a>Wybierz środowisko bash
-Upewnij się, że lista rozwijana środowiska z lewej strony okna `Bash`powłoki ma wartość. <br>
+Upewnij się, że lista rozwijana środowiska z lewej strony okna powłoki ma wartość `Bash`. <br>
 ![](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Ustawianie subskrypcji
@@ -54,15 +50,15 @@ az account set --subscription 'my-subscription-name'
 ```
 
 > [!TIP]
-> Twoja subskrypcja zostanie zapamiętana na potrzeby przyszłych sesji przy `/home/<user>/.azure/azureProfile.json`użyciu usługi.
+> Twoja subskrypcja zostanie zapamiętana na potrzeby przyszłych sesji przy użyciu `/home/<user>/.azure/azureProfile.json`.
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 Utwórz nową grupę zasobów w zachodnim regionie o nazwie "Mojagz".
 ```azurecli-interactive
 az group create --location westus --name MyRG
 ```
 
-### <a name="create-a-linux-vm"></a>Utwórz maszynę wirtualną z systemem Linux
+### <a name="create-a-linux-vm"></a>Tworzenie maszyny wirtualnej z systemem Linux
 Utwórz maszynę wirtualną Ubuntu w nowej grupie zasobów. Interfejs wiersza polecenia platformy Azure utworzy klucze SSH i skonfiguruje dla nich maszynę wirtualną. <br>
 
 ```azurecli-interactive
@@ -70,7 +66,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> Użycie `--generate-ssh-keys` powoduje, że interfejs wiersza polecenia platformy Azure tworzy i konfiguruje klucze publiczne i prywatne w `$Home` maszynie wirtualnej i katalogu. Klucze domyślne są umieszczane w Cloud Shell `/home/<user>/.ssh/id_rsa` w i. `/home/<user>/.ssh/id_rsa.pub` Folder jest utrwalany w dołączonym obrazie 5 GB udziału plików, który będzie używany do utrwalania `$Home`. `.ssh`
+> Użycie `--generate-ssh-keys` powoduje, że interfejs wiersza polecenia platformy Azure tworzy i konfiguruje klucze publiczne i prywatne w maszynie wirtualnej i katalogu `$Home`. Klucze domyślne są umieszczane w Cloud Shell na `/home/<user>/.ssh/id_rsa` i `/home/<user>/.ssh/id_rsa.pub`. Folder `.ssh` jest utrwalany w załączonym obrazie 5 GB udziału plików używanym do utrwalania `$Home`.
 
 Nazwa użytkownika na tej maszynie wirtualnej będzie używana w Cloud Shell ($User@Azure:).
 
@@ -79,7 +75,7 @@ Nazwa użytkownika na tej maszynie wirtualnej będzie używana w Cloud Shell ($U
 2. Kliknij przycisk "Połącz", aby uzyskać nazwę i publiczny adres IP maszyny wirtualnej. <br>
    ![](media/quickstart/sshcmd-copy.png)
 
-3. Za pomocą `ssh` polecenia SSH do maszyny wirtualnej.
+3. Użyj polecenia SSH do maszyny wirtualnej przy użyciu `ssh`.
    ```
    ssh username@ipaddress
    ```

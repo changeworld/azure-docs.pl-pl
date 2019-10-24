@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: analizowanie obrazów pod kątem niepożądanej zawartości w języku C# — Content Moderator'
+title: 'Szybki Start: analizowanie obrazów pod kątem niepożądanych C# treści w Content moderator'
 titleSuffix: Azure Cognitive Services
 description: Jak analizować zawartość obrazów dla różnych niezwiązanych materiałów przy użyciu zestawu Content Moderator SDK dla platformy .NET
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.author: sajagtap
-ms.openlocfilehash: 2a4726357e35fa123355d9ba450f7c6d8624fe78
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: pafarley
+ms.openlocfilehash: 3fdc3fa0b7c624558aef84f86afd85c5aedb7054
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946230"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757313"
 ---
-# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Szybki start: Analizuj obrazy dla niepożądanych treści wC#
+# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Szybki Start: analizowanie obrazów pod kątem niepożądanych treściC#
 
 Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z [zestawu SDK pakietu Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dowiesz się, jak przeprowadzać skanowanie pod kątem zawartości dla dorosłych lub erotycznej, z możliwością pobierania tekstu oraz człowiekiem w celu uzyskania bardziej niepożądanego materiału.
 
@@ -51,7 +51,7 @@ Dodaj następujące instrukcje `using` na początku pliku *Program.cs*.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-7)]
 
-### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usługi Content Moderator
+### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usług Content Moderator
 
 Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta usługi Content Moderator dla subskrypcji. W tej samej przestrzeni nazw dodaj kod wraz z klasą **Program**. Następnie trzeba będzie zaktualizować pola **AzureRegion** i **CMSubscriptionKey** przy użyciu wartości identyfikatora regionu i klucza subskrypcji.
 
@@ -60,7 +60,7 @@ Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta u
 
 ### <a name="set-up-input-and-output-targets"></a>Konfigurowanie wejściowych i wyjściowych elementów docelowych
 
-Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_ . Te pola określają pliki dla wejściowej zawartości obrazu i wyjściowej zawartości JSON.
+Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Te pola określają pliki dla wejściowej zawartości obrazu i wyjściowej zawartości JSON.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=48-52)]
 
@@ -92,7 +92,7 @@ Dodaj następujący kod do metody **Main** w klasie **Program**. Ten kod konfigu
 
 ## <a name="run-the-program"></a>Uruchamianie programu
 
-Program zapisze dane ciągu JSON w pliku _ModerationOutput.json_ . Przykładowe obrazy używane w tym przewodniku Szybki start powodują wygenerowanie następujących danych wyjściowych. Każdy obraz ma różne sekcje dla `ImageModeration`, `FaceDetection`i `TextDetection`, które odpowiadają trzem wywołaniem interfejsu API w metodzie **EvaluateImage** .
+Program zapisze dane ciągu JSON w pliku _ModerationOutput.json_. Przykładowe obrazy używane w tym przewodniku Szybki start powodują wygenerowanie następujących danych wyjściowych. Każdy obraz ma różne sekcje dla `ImageModeration`, `FaceDetection`i `TextDetection`odpowiadające trzem wywołaniom interfejsu API w metodzie **EvaluateImage** .
 
 ```json
 [{

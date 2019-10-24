@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 10/02/2019
-ms.openlocfilehash: 5989aca2b577621c31fe486877ea006cb25d47b5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 448b2674aa6021107d138bc0d91f1bda399eb4a6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030338"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755897"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>pakiet Enterprise Security konfiguracji z Azure Active Directory Domain Services w usłudze HDInsight
 
@@ -70,7 +70,7 @@ Po utworzeniu tożsamości zarządzanej i otrzymaniu odpowiedniej roli administr
 ## <a name="networking-considerations"></a>Zagadnienia dotyczące pracy w sieci
 
 > [!NOTE]  
-> Usługę Azure AD-DS należy wdrożyć w sieci wirtualnej opartej na Azure Resource Manager. Klasyczne sieci wirtualne nie są obsługiwane w usłudze Azure AD — DS. Aby uzyskać więcej informacji, zobacz [włączanie Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network).
+> Usługę Azure AD-DS należy wdrożyć w sieci wirtualnej opartej na Azure Resource Manager. Klasyczne sieci wirtualne nie są obsługiwane w usłudze Azure AD — DS. Aby uzyskać więcej informacji, zobacz [włączanie Azure Active Directory Domain Services przy użyciu Azure Portal](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network).
 
 Po włączeniu usługi Azure AD-DS lokalny serwer usługi nazw domen (DNS) jest uruchamiany na Virtual Machines usługi AD. Skonfiguruj Virtual Network usługi Azure AD — DS (VNET), aby korzystać z tych niestandardowych serwerów DNS. Aby zlokalizować odpowiednie adresy IP, wybierz pozycję **Właściwości** w kategorii **Zarządzanie** i Sprawdź adresy IP wymienione pod **adresem IP na Virtual Network**.
 

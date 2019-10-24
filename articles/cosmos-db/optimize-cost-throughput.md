@@ -1,17 +1,17 @@
 ---
 title: Optymalizowanie kosztu przepływności w Azure Cosmos DB
 description: W tym artykule wyjaśniono, jak zoptymalizować koszty przepływności dla danych przechowywanych w Azure Cosmos DB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.author: rimman
-ms.openlocfilehash: d874f1ba8823ceddbef378decde127cef4ff8885
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 24812b8d97080d59fd50f4dc528117b3020fd8dc
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020109"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753263"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optymalizacja kosztu zaalokowanej przepływności w Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Przepustowość można zainicjować przy użyciu baz danych lub kontenerów, a K
 
 * Jeśli zainicjujesz przepływność w bazie danych, wszystkie kontenery, na przykład kolekcje/tabele/wykresy w tej bazie danych, mogą współużytkować przepływność na podstawie obciążenia. Przepływność zarezerwowana na poziomie bazy danych jest współdzielona nierównomiernie, w zależności od obciążenia określonego zestawu kontenerów.
 
-* Jeśli zainicjujesz przepływność na kontenerze, przepływność jest gwarantowana dla tego kontenera, objęta umową SLA. Wybór klucza partycji logicznej jest kluczowy dla równomiernego rozkładu obciążenia we wszystkich partycjach logicznych kontenera. Więcej [](partitioning-overview.md) informacji można znaleźć w artykule partycjonowanie i skalowanie w [poziomie](partition-data.md) .
+* Jeśli zainicjujesz przepływność na kontenerze, przepływność jest gwarantowana dla tego kontenera, objęta umową SLA. Wybór klucza partycji logicznej jest kluczowy dla równomiernego rozkładu obciążenia we wszystkich partycjach logicznych kontenera. Więcej informacji można znaleźć w artykule [partycjonowanie](partitioning-overview.md) i [skalowanie w poziomie](partition-data.md) .
 
 Poniżej przedstawiono kilka wytycznych dotyczących podejmowania decyzji dotyczących strategii dotyczącej przepływności.
 
@@ -53,19 +53,19 @@ Poniżej przedstawiono kilka wytycznych dotyczących podejmowania decyzji dotycz
 
 Jak pokazano w poniższej tabeli, w zależności od wyboru interfejsu API, można zainicjować przepływność na różnej szczegółowości.
 
-|interfejs API|W przypadku udostępnionej przepływności Skonfiguruj |W przypadku dedykowanej przepływności Skonfiguruj |
+|API|W przypadku **udostępnionej** przepływności Skonfiguruj |W przypadku **dedykowanej** przepływności Skonfiguruj |
 |----|----|----|
-|Interfejs API SQL|Database (Baza danych)|Kontener|
+|Interfejs SQL API|Database (Baza danych)|Kontener|
 |Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB|Database (Baza danych)|Collection|
-|Interfejs API rozwiązania Cassandra|Przestrzeń kluczy|Tabela|
-|Interfejs API języka Gremlin|Konto bazy danych|Graph|
+|Interfejs API rozwiązania Cassandra|przestrzeń kluczy|Tabela|
+|Interfejs API języka Gremlin|Konto bazy danych|Graf|
 |Interfejs API tabel|Konto bazy danych|Tabela|
 
 Dzięki aprowizacji przepływności na różnych poziomach można zoptymalizować koszty na podstawie charakterystyki obciążenia. Jak wspomniano wcześniej, można programowo i w dowolnym momencie zwiększyć lub zmniejszyć zainicjowaną przepływność dla poszczególnych kontenerów lub zbiorowo w zestawie kontenerów. Elastycznie skalowanie przepływności w miarę zmian obciążenia oznacza płatność wyłącznie za skonfigurowane przepływność. Jeśli kontener lub zbiór kontenerów są dystrybuowane w wielu regionach, to przepływność skonfigurowana na kontenerze lub zestaw kontenerów jest gwarantowany do udostępnienia we wszystkich regionach.
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>Optymalizacja z szybkością ograniczania żądań
 
-W przypadku obciążeń, które nie są zależne od opóźnienia, można zapewnić mniejszą przepływność i pozwolić aplikacji na ograniczenie szybkości obsługi, gdy rzeczywista przepływność przekracza zainicjowaną przepływność. Serwer zapobiegawczo żądanie z `RequestRateTooLarge` żądaniem (kod stanu HTTP 429) i `x-ms-retry-after-ms` zwraca nagłówek wskazujący ilość czasu (w milisekundach), przez który użytkownik musi czekać przed ponowieniem próby wykonania żądania. 
+W przypadku obciążeń, które nie są zależne od opóźnienia, można zapewnić mniejszą przepływność i pozwolić aplikacji na ograniczenie szybkości obsługi, gdy rzeczywista przepływność przekracza zainicjowaną przepływność. Serwer zapobiegawczo zakończyć żądanie `RequestRateTooLarge` (kod stanu HTTP 429) i zwróci nagłówek `x-ms-retry-after-ms` wskazujący ilość czasu (w milisekundach), przez który użytkownik musi czekać przed ponowieniem próby wykonania żądania. 
 
 ```html
 HTTP Status 429, 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 Natywne zestawy SDK (.NET/.NET Core, Java, Node. js i Python) niejawnie przechwytuje tę odpowiedź, przestrzegając określonego przez serwer nagłówka retry-After i ponów próbę wykonania żądania. O ile Twoje konto nie jest dostępne współbieżnie przez wielu klientów, następna próba powiodła się.
 
-Jeśli masz więcej niż jeden klient, który działa w sposób ciągły nad częstotliwością żądań, domyślna liczba ponownych prób aktualnie ustawiona na 9 może nie być wystarczająca. W takim przypadku klient zgłasza `DocumentClientException` kod stanu o stanie 429 do aplikacji. Domyślną liczbę ponownych prób można zmienić, ustawiając wartość `RetryOptions` w wystąpieniu ConnectionPolicy. Domyślnie kod stanu `DocumentClientException` z 429 jest zwracany po upływie skumulowanego czasu oczekiwania 30 sekund, jeśli żądanie będzie nadal działać powyżej stawki żądania. Dzieje się tak nawet wtedy, gdy bieżąca liczba ponownych prób jest mniejsza niż maksymalna liczba ponownych prób, być wartością domyślną 9 lub wartości zdefiniowanej przez użytkownika. 
+Jeśli masz więcej niż jeden klient, który działa w sposób ciągły nad częstotliwością żądań, domyślna liczba ponownych prób aktualnie ustawiona na 9 może nie być wystarczająca. W takim przypadku klient zgłasza `DocumentClientException` z kodem stanu 429 do aplikacji. Domyślną liczbę ponownych prób można zmienić, ustawiając `RetryOptions` w wystąpieniu ConnectionPolicy. Domyślnie `DocumentClientException` z kodem stanu 429 jest zwracany po upływie skumulowanego czasu oczekiwania 30 sekund, jeśli żądanie będzie nadal działać powyżej stawki żądania. Dzieje się tak nawet wtedy, gdy bieżąca liczba ponownych prób jest mniejsza niż maksymalna liczba ponownych prób, być wartością domyślną 9 lub wartości zdefiniowanej przez użytkownika. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) jest ustawiona na 3, więc w tym przypadku, jeśli operacja żądania jest naliczana proporcjonalnie do przekroczenia zarezerwowanej przepływności dla kontenera, operacja żądania jest ponawiana trzy razy przed przekazaniem wyjątku do aplikacji. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) jest ustawiona na 60, więc w tym przypadku, jeśli łączny czas oczekiwania ponowienia próby (w sekundach) od momentu pierwszego żądania przekracza 60 sekund, zostanie zgłoszony wyjątek.
 
@@ -139,7 +139,7 @@ Aby określić zainicjowaną przepływność dla nowego obciążenia, można wyk
 
 2. Zaleca się utworzenie kontenerów o wyższej przepływności niż oczekiwano, a następnie skalowanie w dół w razie potrzeby. 
 
-3. Zaleca się użycie jednego z natywnych zestawów SDK Azure Cosmos DB, aby skorzystać z automatycznych ponownych prób w przypadku żądań pobrania z ograniczeniami. Jeśli pracujesz na platformie, która nie jest obsługiwana, i użyj interfejsu API REST Cosmos DB, zaimplementuj własne zasady ponawiania prób `x-ms-retry-after-ms` przy użyciu nagłówka. 
+3. Zaleca się użycie jednego z natywnych zestawów SDK Azure Cosmos DB, aby skorzystać z automatycznych ponownych prób w przypadku żądań pobrania z ograniczeniami. Jeśli pracujesz na platformie, która nie jest obsługiwana, i użyj interfejsu API REST Cosmos DB, zaimplementuj własne zasady ponawiania przy użyciu nagłówka `x-ms-retry-after-ms`. 
 
 4. Upewnij się, że kod aplikacji bezpiecznie obsługuje przypadek, gdy wszystkie próby zakończą się niepowodzeniem. 
 

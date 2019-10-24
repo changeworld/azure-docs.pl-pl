@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Domain Services dla dostawców rozwiązań w chmurze platformy Azure | Microsoft Docs
+title: Azure AD Domain Services dla dostawców rozwiązań w chmurze | Microsoft Docs
 description: Azure Active Directory Domain Services dla dostawców rozwiązań w chmurze platformy Azure.
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
-ms.openlocfilehash: dc4ad7d8cf9f3267713fd066fa79a4d9d8ab733f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1134c078ee36a146cb1e1cbf8ca46f6cd9f8d775
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612969"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754437"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Usługi domenowe w usłudze Azure Active Directory (AD) dla dostawców rozwiązań w chmurze platformy Azure (CSP)
 W tym artykule wyjaśniono, jak można użyć Azure AD Domain Services w ramach subskrypcji dostawcy usług kryptograficznych platformy Azure.

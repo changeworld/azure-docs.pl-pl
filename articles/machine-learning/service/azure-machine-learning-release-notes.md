@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ea900efffe1aa0eec768c5376128bad72e85ca4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: afad2648ec73b02d4e06ad55f850a518d2488f68
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693527"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756053"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
@@ -171,7 +171,7 @@ Karta eksperymenty w [nowym portalu obszaru roboczego](http://ml.azure.com) zost
     + Oglądany obsługę wyjątków w kodzie ADB i Wprowadzaj zmiany zgodnie z nową obsługą błędów
     + Dodano automatyczne uwierzytelnianie MSI dla maszyn wirtualnych notesu.
     + Naprawia usterkę, w przypadku której można przekazać uszkodzone lub puste modele z powodu nieudanych ponownych prób.
-    + Naprawiono usterkę, w której nazwa `DataReference` zmienia się podczas zmiany trybu `DataReference` (np. podczas wywoływania `as_upload`, `as_download` lub `as_mount`).
+    + Naprawiono usterkę, w której nazwa `DataReference` zmienia się podczas zmiany trybu `DataReference` (np. podczas wywoływania `as_upload`, `as_download`lub `as_mount`).
     + Wprowadź `mount_point` i `target_path` opcjonalne dla `FileDataset.mount` i `FileDataset.download`.
     + Wyjątek, że nie można odnaleźć kolumny sygnatur czasowych, zostanie zgłoszony, jeśli interfejs API związany z połączeniami szeregowymi jest wywoływany bez określonej kolumny sygnatury czasowej lub że przypisane kolumny sygnatur czasowych zostaną usunięte.
     + Kolumny szeregów czasowych powinny być przypisane do kolumny, której typem jest Date, w przeciwnym razie oczekiwany jest wyjątek
@@ -447,7 +447,7 @@ W czasie tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefo
     + Usuń stare klasy wyjątków.
     + W przypadku zadań prognozowania parametr `target_lags` akceptuje teraz jedną liczbę całkowitą lub listę liczb całkowitych. Jeśli podano liczbę całkowitą, zostanie utworzone tylko jedno opóźnienie. W przypadku podanej listy zostaną wykonane unikatowe wartości spowolnienia. target_lags = [1, 2, 2, 4] utworzy spowolnienia jednego, 2 i 4 okresów.
     + Usuń usterkę dotyczącą utraty typów kolumn po przekształceniu (połączona usterka);
-    + W `model.forecast(X, y_query)` Zezwól, aby y_query być typem obiektu zawierającym brak (s) na początku (#459519).
+    + W `model.forecast(X, y_query)`Zezwól, aby y_query być typem obiektu zawierającym brak (s) na początku (#459519).
     + Dodaj oczekiwane wartości do danych wyjściowych automl
   + **Azure — contrib — datadryf**
     +  Ulepszenia przykładowego notesu, w tym przełączanie do platformy Uczenie maszynowe opendatasets zamiast platformy Azure-contrib-opendatasets i wydajności podczas wzbogacania danych
@@ -688,9 +688,9 @@ Przywrócono zmianę, która zwiększyła wydajność, ponieważ powodowała to 
   + Teraz można używać następujących funkcji języka wyrażeń do wyodrębniania i analizowania wartości DateTime w nowych kolumnach.
     + `RegEx.extract_record()` wyodrębnia elementów DateTime do nowej kolumny.
     + `create_datetime()` tworzy obiekty DateTime z oddzielnych elementów DateTime.
-  + Podczas wywoływania `get_profile()` teraz można zobaczyć, że kolumny quantile są oznaczone jako (EST.), aby jasno wskazać, że wartości są przybliżami.
+  + Podczas wywoływania `get_profile()`teraz można zobaczyć, że kolumny quantile są oznaczone jako (EST.), aby jasno wskazać, że wartości są przybliżami.
   + W przypadku odczytywania z usługi Azure Blob Storage można teraz używać * * obsługi symboli wieloznacznych.
-    + tj.  `dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
+    + np. `dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
 
 + **Poprawki błędów**
   + Naprawiono usterkę związaną z odczytywaniem pliku Parquet ze źródła zdalnego (obiekt blob platformy Azure).
@@ -826,14 +826,14 @@ Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już ins
     + Przykłady:
       + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
       + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
-  + Teraz można używać `to_upper`  and `to_lower`  functions w języku wyrażeń.
+  + Teraz można używać `to_upper`i `to_lower`funkcji w języku wyrażeń.
   + Teraz można zobaczyć liczbę unikatowych wartości każdej kolumny w profilu danych.
   + W przypadku niektórych często używanych kroków czytelnika można teraz przekazać argument `infer_column_types`. Jeśli jest ustawiona na `True`, przygotowanie danych podejmie próbę wykrycia i automatycznego przekonwertowania typów kolumn.
     + `inference_arguments` jest obecnie przestarzałe.
   + Teraz można wywołać `Dataflow.shape`.
 
 + **Poprawki i ulepszenia błędów**
-  + `keep_columns`  now akceptuje dodatkowego opcjonalnego argumentu `validate_column_exists`, który sprawdza, czy wynik `keep_columns` będzie zawierać wszystkie kolumny.
+  + `keep_columns` teraz akceptuje dodatkowy opcjonalny argument `validate_column_exists`, który sprawdza, czy wynik `keep_columns` będzie zawierać wszystkie kolumny.
   + Wszystkie kroki czytnika (które odczytają plik) teraz akceptują dodatkowy opcjonalny argument `verify_exists`.
   + Ulepszona wydajność odczytywania z Pandas Dataframe i pobierania profilów danych.
   + Rozwiązano problem polegający na tym, że cięcie pojedynczego kroku z przepływu danych nie powiodło się z pojedynczym indeksem.
@@ -852,7 +852,7 @@ Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już ins
 
 + **Nowe funkcje**
   + Zestaw SDK Azure Machine Learning obsługuje teraz środowisko Python 3,7.
-  + Azure Machine Learning DNN szacowania teraz zapewnia wbudowaną obsługę wielowersji. Na przykład `TensorFlow`  estimator teraz akceptuje `framework_version` parametr, a użytkownicy mogą określić wersję "1,10" lub "1,12". Aby uzyskać listę wersji obsługiwanych przez bieżącą wersję zestawu SDK, wywołaj `get_supported_versions()` w żądanej klasie Framework (na przykład `TensorFlow.get_supported_versions()`).
+  + Azure Machine Learning DNN szacowania teraz zapewnia wbudowaną obsługę wielowersji. Na przykład `TensorFlow` szacowania teraz akceptuje `framework_version` parametr, a użytkownicy mogą określić wersję "1,10" lub "1,12". Aby uzyskać listę wersji obsługiwanych przez bieżącą wersję zestawu SDK, wywołaj `get_supported_versions()` w żądanej klasie Framework (na przykład `TensorFlow.get_supported_versions()`).
   Listę wersji obsługiwanych przez najnowszą wersję zestawu SDK można znaleźć w [dokumentacji DNN szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py).
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Azure Machine Learning przygotowanie zestawu danych SDK v 1.1.1
@@ -904,7 +904,7 @@ Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już ins
 
  + **Wprowadzane**
    + Pakiet Azure-tensorboard zastępuje usługę Azure-contrib-tensorboard.
-   + W tej wersji można skonfigurować konto użytkownika w zarządzanym klastrze obliczeniowym (amlcompute) podczas jego tworzenia. Można to zrobić, przekazując te właściwości w konfiguracji aprowizacji. Więcej szczegółów można znaleźć w [dokumentacji referencyjnej zestawu SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remotelogin-port-public-access--notspecified--).
+   + W tej wersji można skonfigurować konto użytkownika w zarządzanym klastrze obliczeniowym (amlcompute) podczas jego tworzenia. Można to zrobić, przekazując te właściwości w konfiguracji aprowizacji. Więcej szczegółów można znaleźć w [dokumentacji referencyjnej zestawu SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--).
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure Machine Learning zestawu SDK 1.0.17 przygotowywania danych
 
@@ -1036,7 +1036,7 @@ Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już ins
 
 + **Nowe funkcje**
   + Funkcja `to_bool` umożliwia teraz konwertowanie niezgodnych wartości na wartości błędów. Jest to nowe domyślne zachowanie niezgodności dla `to_bool` i `set_column_types`, podczas gdy poprzednie domyślne zachowanie miało na celu przekonwertowanie niezgodnych wartości na wartość false.
-  + Podczas wywoływania `to_pandas_dataframe` jest dostępna nowa opcja interpretacji wartości null/brakująca w kolumnach liczbowych jako NaN.
+  + Podczas wywoływania `to_pandas_dataframe`jest dostępna nowa opcja interpretacji wartości null/brakująca w kolumnach liczbowych jako NaN.
   + Dodano możliwość sprawdzenia zwracanego typu niektórych wyrażeń w celu zapewnienia spójności typów i wczesnego powrotu po awarii.
   + Teraz możesz wywoływać `parse_json`, aby analizować wartości w kolumnie jako obiekty JSON i rozszerzać je do wielu kolumn.
 

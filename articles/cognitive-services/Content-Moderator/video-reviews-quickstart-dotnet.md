@@ -3,19 +3,19 @@ title: Tworzenie przeglądów wideo przy użyciu platformy .NET Content Moderato
 titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera informacje i przykłady kodu ułatwiające szybkie rozpoczęcie pracy przy użyciu zestawu SDK Content Moderator w C# programie w celu utworzenia recenzji wideo.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: 5a0d462f08e88ae4d26e1c684cfaf772910d2220
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: ca5322aa78a4fd3018d961a5d31c618cf10bf156
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242846"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757165"
 ---
 # <a name="create-video-reviews-using-net"></a>Tworzenie recenzji wideo przy użyciu platformy .NET
 
@@ -165,7 +165,7 @@ Utwórz recenzję wideo za pomocą **ContentModeratorClient. Reviews. CreateVide
 **CreateVideoReviews** ma następujące wymagane parametry:
 1. Ciąg zawierający typ MIME, który powinien mieć wartość "Application/JSON". 
 1. Nazwa zespołu Content Moderator.
-1. Obiekt **> IList @ no__t-1CreateVideoReviewsBodyItem** . Każdy obiekt **CreateVideoReviewsBodyItem** reprezentuje przegląd wideo. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
+1. Obiekt **IList \<CreateVideoReviewsBodyItem >** . Każdy obiekt **CreateVideoReviewsBodyItem** reprezentuje przegląd wideo. Ten przewodnik Szybki Start tworzy jeden przegląd w danym momencie.
 
 **CreateVideoReviewsBodyItem** ma kilka właściwości. Należy ustawić co najmniej następujące właściwości:
 - **Zawartość**. Adres URL filmu wideo, który ma zostać sprawdzony.
@@ -173,7 +173,7 @@ Utwórz recenzję wideo za pomocą **ContentModeratorClient. Reviews. CreateVide
 - **Stan**. Ustaw wartość na "unopublikowałd". Jeśli go nie ustawisz, zostanie on ustawiony jako "Oczekujący", co oznacza, że przegląd wideo jest publikowany i oczekuje na weryfikację przez człowieka. Po opublikowaniu recenzji wideo nie można już dodawać do niej ramek wideo, transkrypcji ani moderowania transkrypcji.
 
 > [!NOTE]
-> **CreateVideoReviews** zwraca wartość IList @ no__t-1string >. Każdy z tych ciągów zawiera identyfikator dla recenzji wideo. Identyfikatory te są identyfikatorami GUID i nie są takie same jak wartość właściwości **identyfikatorze** . 
+> **CreateVideoReviews** zwraca element IList > \<string. Każdy z tych ciągów zawiera identyfikator dla recenzji wideo. Identyfikatory te są identyfikatorami GUID i nie są takie same jak wartość właściwości **identyfikatorze** . 
 
 Dodaj następującą definicję metody do VideoReviews przestrzeni nazw, programu klasy.
 
@@ -223,7 +223,7 @@ Dodawaj klatki wideo do recenzji wideo przy użyciu **ContentModeratorClient. Re
 1. Ciąg zawierający typ MIME, który powinien mieć wartość "Application/JSON".
 1. Nazwa zespołu Content Moderator.
 1. Identyfikator przeglądu wideo zwrócony przez **CreateVideoReviews**.
-1. Obiekt **> IList @ no__t-1VideoFrameBodyItem** . Każdy obiekt **VideoFrameBodyItem** reprezentuje ramkę wideo.
+1. Obiekt **IList\<VideoFrameBodyItem >** . Każdy obiekt **VideoFrameBodyItem** reprezentuje ramkę wideo.
 
 **VideoFrameBodyItem** ma następujące właściwości:
 - **Sygnatura czasowa**. Ciąg zawierający w sekundach czas w filmie wideo, z którego zrobiono klatkę wideo.

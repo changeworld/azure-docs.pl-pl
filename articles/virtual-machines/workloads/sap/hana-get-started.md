@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Ręczna instalacja SAP HANA pojedynczego wystąpienia na platformie Azure Virtual Machines | Microsoft Docs'
+title: 'Szybki Start: Instalacja ręczna SAP HANA pojedynczego wystąpienia na platformie Azure Virtual Machines | Microsoft Docs'
 description: Przewodnik Szybki Start dotyczący ręcznej instalacji SAP HANA pojedynczego wystąpienia na platformie Azure Virtual Machines
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 8d4e7b7056f4d5e53785366818fad05e24cfc605
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100051"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750370"
 ---
-# <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Szybki start: Ręczna instalacja SAP HANA pojedynczego wystąpienia na platformie Azure Virtual Machines
+# <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Szybki Start: Instalacja ręczna SAP HANA pojedynczego wystąpienia na platformie Azure Virtual Machines
 ## <a name="introduction"></a>Wprowadzenie
 Ten przewodnik ułatwia skonfigurowanie pojedynczego wystąpienia SAP HANA na platformie Azure Virtual Machines podczas ręcznego instalowania oprogramowania SAP NetWeaver 7,5 i SAP HANA 1,0 SP12. Ten przewodnik zawiera informacje na temat wdrażania SAP HANA na platformie Azure. Nie zastępuje ona dokumentacji SAP. 
 
@@ -50,7 +50,7 @@ Aby uzyskać SAP HANA wysoką dostępność, zobacz [SAP HANA wysokiej dostępno
 
 Jeśli chcesz szybko uzyskać SAP HANA wystąpienia usługi 4HANA lub S/4HANA, rozważ użycie [biblioteki urządzeń w chmurze SAP](https://cal.sap.com). W [tym przewodniku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)znajdziesz dokumentację dotyczącą sposobu wdrażania systemu S/4HANA za pomocą biblioteki urządzeń SAP w chmurze na platformie Azure. Wystarczy, że jest to subskrypcja platformy Azure i użytkownik SAP, który może być zarejestrowany w bibliotece urządzeń SAP Cloud.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 ### <a name="sap-hana-backup"></a>SAP HANA kopia zapasowa
 Aby uzyskać informacje na temat tworzenia kopii zapasowych baz danych SAP HANA na maszynach wirtualnych platformy Azure, zobacz:
 * [Przewodnik dotyczący tworzenia kopii zapasowych SAP HANA na platformie Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide).
@@ -61,19 +61,19 @@ Aby uzyskać informacje na temat tworzenia kopii zapasowych baz danych SAP HANA 
 Aby uzyskać informacje o sposobach wdrażania usługi S/4HANA lub BW/4HANA przy użyciu biblioteki urządzeń w chmurze SAP, zobacz [wdrażanie oprogramowania SAP s/4HANA lub BW/4HANA na Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h).
 
 ### <a name="sap-hana-supported-operating-systems"></a>Obsługiwane systemy operacyjne SAP HANA
-Aby uzyskać informacje o obsługiwanych systemach operacyjnych SAP HANA, zobacz [temat SAP Note 2235581-SAP HANA: Obsługiwane systemy](https://launchpad.support.sap.com/#/notes/2235581/E)operacyjne. Maszyny wirtualne platformy Azure obsługują tylko podzbiór tych systemów operacyjnych. W przypadku wdrażania SAP HANA na platformie Azure obsługiwane są następujące systemy operacyjne: 
+Aby uzyskać informacje o obsługiwanych systemach operacyjnych SAP HANA, zobacz temat [SAP Note 2235581-SAP HANA: obsługiwane systemy operacyjne](https://launchpad.support.sap.com/#/notes/2235581/E). Maszyny wirtualne platformy Azure obsługują tylko podzbiór tych systemów operacyjnych. W przypadku wdrażania SAP HANA na platformie Azure obsługiwane są następujące systemy operacyjne: 
 
-* SUSE Linux Enterprise Server 12.x
+* SUSE Linux Enterprise Server 12. x
 * Red Hat Enterprise Linux 7.2
 
 Aby uzyskać dodatkową dokumentację SAP dotyczącą SAP HANA i innych systemów operacyjnych Linux, zobacz:
 
-* [Uwaga dotycząca oprogramowania SAP 171356: Oprogramowanie SAP w systemie Linux: Informacje](https://launchpad.support.sap.com/#/notes/1984787)ogólne.
-* [Uwaga dotycząca oprogramowania SAP 1944799: SAP HANA wskazówki dotyczące instalacji](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)systemu operacyjnego SLES.
-* [Uwaga dotycząca oprogramowania SAP 2205917: SAP HANA DB zaleca ustawienia systemu operacyjnego dla SLES 12 dla aplikacji](https://launchpad.support.sap.com/#/notes/2205917/E)SAP.
-* [Uwaga dotycząca oprogramowania SAP 1391070: Rozwiązania](https://launchpad.support.sap.com/#/notes/1391070)UUID systemu Linux.
-* [SAP Note 2009879: Wytyczne SAP HANA dla systemu](https://launchpad.support.sap.com/#/notes/2009879)operacyjnego Red Hat Enterprise Linux (RHEL).
-* [Uwaga dotycząca oprogramowania SAP 2292690: SAP HANA DB: Zalecane ustawienia systemu operacyjnego dla RHEL](https://launchpad.support.sap.com/#/notes/2292690/E)7.
+* [Test sap 171356: oprogramowanie SAP w systemie Linux: Informacje ogólne](https://launchpad.support.sap.com/#/notes/1984787).
+* [Test SAP 1944799: SAP HANA wytycznych dotyczących instalacji systemu operacyjnego SLES](http://service.sap.com/sap/support/notes/1944799).
+* [Test SAP 2205917: SAP HANA DB zaleca ustawienia systemu operacyjnego dla SLES 12 dla aplikacji SAP](https://launchpad.support.sap.com/#/notes/2205917/E).
+* [Test SAP 1391070: rozwiązania identyfikatora UUID systemu Linux](https://launchpad.support.sap.com/#/notes/1391070).
+* [Test SAP 2009879: SAP HANA wytyczne dla systemu operacyjnego Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879).
+* [Test SAP 2292690: SAP HANA DB: zalecane ustawienia systemu operacyjnego dla RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E).
 
 ### <a name="sap-monitoring-in-azure"></a>Monitorowanie SAP na platformie Azure
 Aby uzyskać informacje o monitorowaniu oprogramowania SAP na platformie Azure:
@@ -85,7 +85,7 @@ Aby uzyskać informacje o monitorowaniu oprogramowania SAP na platformie Azure:
 ### <a name="azure-vm-types"></a>Typy maszyn wirtualnych platformy Azure
 Typy maszyn wirtualnych platformy Azure i scenariusze obciążeń obsługiwane przez SAP używane z SAP HANA są udokumentowane na [platformach IaaS Certified z certyfikatem SAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). 
 
-Typy maszyn wirtualnych platformy Azure certyfikowane przez oprogramowanie SAP dla oprogramowania SAP NetWeaver lub warstwa aplikacji S/4HANA zostały [udokumentowane w programie SAP Note 1928533: Aplikacje SAP na platformie Azure: Obsługiwane produkty i typy](https://launchpad.support.sap.com/#/notes/1928533/E)maszyn wirtualnych platformy Azure.
+Typy maszyn wirtualnych platformy Azure certyfikowane przez oprogramowanie SAP dla oprogramowania SAP NetWeaver lub warstwa aplikacji S/4HANA zostały udokumentowane w programie [SAP Note 1928533: Aplikacje SAP na platformie Azure: obsługiwane produkty i typy maszyn wirtualnych platformy Azure](https://launchpad.support.sap.com/#/notes/1928533/E).
 
 > [!NOTE]
 > SAP-Linux — integracja z platformą Azure jest obsługiwana tylko w Azure Resource Manager, a nie w klasycznym modelu wdrażania. 
@@ -175,26 +175,26 @@ Oto przykład sposobu sprawdzania dostępności dostępnych poprawek dla systemu
  `sudo zypper list-patches`
 
 W zależności od rodzaju problemu poprawki są klasyfikowane według kategorii i ważności. Najczęściej używane wartości dla kategorii są następujące: 
-- Bezpieczeństwo
+- Zabezpieczenia
 - Zalecane
-- Optional
-- Cecha
-- Dokument
-- Yast
+- Opcjonalne
+- Funkcja
+- Dokumentowa
+- yast
 
 Najczęściej używane wartości dla ważności to:
 
-- Krytyczny
+- Krytyczna
 - Ważne
-- Umiarkowane
-- Małe
-- Nieokreślona
+- Średnia
+- Niska
+- Nieokreślony
 
 **Użyciu narzędzia zypper** polecenie szuka tylko aktualizacji wymaganych przez zainstalowane pakiety. Można na przykład użyć tego polecenia:
 
 `sudo zypper patch  --category=security,recommended --severity=critical,important`
 
-Można dodać parametr `--dry-run` w celu przetestowania aktualizacji bez faktycznego aktualizowania systemu.
+Można dodać parametr `--dry-run`, aby przetestować aktualizację bez faktycznego aktualizowania systemu.
 
 
 ### <a name="disk-setup"></a>Konfiguracja dysku
@@ -241,7 +241,7 @@ SLES for SAP Applications 12 General Availability i SLES for SAP Applications 12
 
 Aby uzyskać więcej informacji na temat dostrajania **-adm**, zobacz [dokumentację SUSE na temat dostrajania-adm](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip).
 
-Na poniższym zrzucie ekranu można zobaczyć, jak **dostrojony/adm** zmienił `transparent_hugepage` wartości i `numa_balancing` , zgodnie z wymaganymi SAP HANA ustawieniami:
+Na poniższym zrzucie ekranu można zobaczyć, jak **dostrojony/adm** zmienił wartości `transparent_hugepage` i `numa_balancing`, zgodnie z wymaganiami SAP HANA ustawień:
 
 ![Dostrajane-adm Narzędzie zmienia wartości zgodnie z wymaganiami wymaganych SAP HANA ustawień](./media/hana-get-started/image005.jpg)
 
@@ -251,7 +251,7 @@ Poniższy zrzut ekranu pokazuje, w jaki sposób ustawienia jądra zostały zmien
 
 ![Ustawienia jądra zostały zmienione w pliku konfiguracji i skompilowane przy użyciu polecenia grub2-mkconfig](./media/hana-get-started/image006.jpg)
 
-Inną opcją jest zmiana ustawień przy użyciu YaST i**parametrów jądra** **modułu ładującego** > rozruchu:
+Inną opcją jest zmiana ustawień przy użyciu YaST oraz **modułu ładującego rozruchu** > ustawień **parametrów jądra** :
 
 ![Karta Ustawienia parametrów jądra w module ładującym YaST Boot](./media/hana-get-started/image007.jpg)
 
@@ -262,7 +262,7 @@ Nie jest to wymagane do struktury systemów plików w ten sposób. Dostępne są
 
 ![Dwa systemy plików utworzone na maszynie wirtualnej serwera aplikacji SAP](./media/hana-get-started/image008.jpg)
 
-W przypadku maszyny wirtualnej SAP HANA DB podczas instalacji bazy danych w przypadku używania SAPinst z SWPM i typową opcją instalacji wszystko jest instalowane w obszarze/Hana i/usr/SAP. Domyślna lokalizacja SAP HANA kopii zapasowej dziennika znajduje się w obszarze/usr/SAP. Należy ponownie pamiętać, aby zapobiec wykorzystaniu miejsca do magazynowania przez główny system plików. Przed zainstalowaniem SAP HANA przy użyciu SWPM upewnij się, że jest wystarczająca ilość wolnego miejsca pod/Hana i/usr/SAP.
+W przypadku maszyny wirtualnej SAP HANA DB podczas instalacji bazy danych w przypadku używania SAPinst z SWPM i **typową** opcją instalacji wszystko jest instalowane w obszarze/Hana i/usr/SAP. Domyślna lokalizacja SAP HANA kopii zapasowej dziennika znajduje się w obszarze/usr/SAP. Należy ponownie pamiętać, aby zapobiec wykorzystaniu miejsca do magazynowania przez główny system plików. Przed zainstalowaniem SAP HANA przy użyciu SWPM upewnij się, że jest wystarczająca ilość wolnego miejsca pod/Hana i/usr/SAP.
 
 Aby uzyskać opis standardowego układu systemu plików SAP HANA, zobacz [Przewodnik instalacji i aktualizacji serwera SAP HANA](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm).
 
@@ -282,7 +282,7 @@ Przed rozpoczęciem instalacji SAP upewnij się, że w pliku/etc/hosts zostały 
 
 ### <a name="the-etcfstab-file"></a>Plik/etc/fstab
 
-Warto dodać parametr nofail do pliku fstab. W ten sposób, jeśli coś się nie powiedzie z dyskami, maszyna wirtualna nie przestanie odpowiadać w procesie rozruchu. Należy jednak pamiętać, że dodatkowe miejsce na dysku może nie być dostępne i procesy mogą wypełnić główny system plików. Jeśli brakuje/Hana, SAP HANA nie zostanie uruchomiona.
+Warto dodać parametr **nofail** do pliku fstab. W ten sposób, jeśli coś się nie powiedzie z dyskami, maszyna wirtualna nie przestanie odpowiadać w procesie rozruchu. Należy jednak pamiętać, że dodatkowe miejsce na dysku może nie być dostępne i procesy mogą wypełnić główny system plików. Jeśli brakuje/Hana, SAP HANA nie zostanie uruchomiona.
 
 ![Dodaj parametr nofail do pliku fstab](./media/hana-get-started/image000c.jpg)
 
@@ -321,12 +321,12 @@ Jeśli masz tło systemu Windows, możesz łatwo użyć graficznego pulpitu bezp
 
    `check /var/run` 
 
-   `xrdp.pid`Wyszukaj. Jeśli go znajdziesz, usuń go, a następnie ponów próbę ponownego uruchomienia.
+   Poszukaj `xrdp.pid`. Jeśli go znajdziesz, usuń go, a następnie ponów próbę ponownego uruchomienia.
 
 ### <a name="start-sap-mc"></a>Uruchom oprogramowanie SAP MC
 Po zainstalowaniu pulpitu GNOME należy uruchomić graficzny program SAP MC oparty na języku Java z przeglądarki Firefox. Jeśli działa na maszynie wirtualnej Azure SLES 12/SLES for SAP Applications 12, może zostać wyświetlony komunikat o błędzie. Błąd występuje z powodu braku wtyczki przeglądarki Java.
 
-Adres URL do uruchomienia oprogramowania SAP MC to `<server>:5<instance_number>13`.
+Adres URL do uruchomienia oprogramowania SAP MC jest `<server>:5<instance_number>13`.
 
 Aby uzyskać więcej informacji, zobacz [Uruchamianie konsoli zarządzania SAP opartej na sieci Web](https://help.sap.com/saphelp_nwce10/helpdata/en/48/6b7c6178dc4f93e10000000a42189d/frameset.htm).
 
@@ -419,7 +419,7 @@ Więcej informacji o narzędziu HANA HDBLCM można znaleźć w temacie:
 * [SAP HANA narzędzia do zarządzania cyklem życia](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm).
 * [Przewodnik instalacji i aktualizacji serwera SAP HANA](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf).
 
-Chcesz uniknąć problemów z domyślnym ustawieniem identyfikatora grupy dla `\<HANA SID\>adm user`, które jest tworzone przez narzędzie HDBLCM. Przed zainstalowaniem SAP HANA za pośrednictwem HDBLCM należy zdefiniować nową `sapsys` grupę o nazwie przy `1001`użyciu identyfikatora grupy:
+Chcesz uniknąć problemów z domyślnym ustawieniem Identyfikator grupy dla `\<HANA SID\>adm user`, który jest tworzony przez narzędzie HDBLCM. Przed zainstalowaniem SAP HANA za pośrednictwem HDBLCM należy zdefiniować nową grupę o nazwie `sapsys` przy użyciu identyfikatora grupy `1001`:
 
 ![Nowa grupa "sapsys" zdefiniowana za pomocą grupy o IDENTYFIKATORze 1001](./media/hana-get-started/image030.jpg)
 
@@ -432,13 +432,13 @@ Poniższy zrzut ekranu przedstawia wszystkie opcje klucza wybrane wcześniej.
 > [!IMPORTANT]
 > Katalogi, które są nazywane woluminami dzienników i danych platformy HANA, a ścieżką instalacji, która jest/Hana/Shared w tym przykładzie, i/usr/SAP nie mogą być częścią głównego systemu plików. Te katalogi należą do dysków danych platformy Azure dołączonych do maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz sekcję "Konfiguracja dysku". 
 
-Takie podejście pomaga zapobiec braku miejsca w głównym systemie plików. Zwróć uwagę, że administrator systemu Hana ma identyfikator `1005` użytkownika i jest częścią `sapsys` grupy o identyfikatorze `1001`, która została zdefiniowana przed instalacją.
+Takie podejście pomaga zapobiec braku miejsca w głównym systemie plików. Zwróć uwagę, że administrator systemu HANA ma identyfikator użytkownika `1005` i jest częścią grupy `sapsys` o IDENTYFIKATORze `1001`, która została zdefiniowana przed instalacją.
 
 ![Lista wszystkich wybranych wcześniej składników SAP HANA najważniejszych](./media/hana-get-started/image032.jpg)
 
-`\<HANA SID\>adm user` Sprawdź szczegóły w katalogu/etc/passwd. `azdadm`Wyszukaj, jak pokazano na poniższym zrzucie ekranu:
+Sprawdź szczegóły `\<HANA SID\>adm user` w katalogu/etc/passwd. Poszukaj `azdadm`, jak pokazano na poniższym zrzucie ekranu:
 
-![Informacje o użytkowniku adm\> HanaSIDusługiwkatalogu/etc/passwd\<](./media/hana-get-started/image033.jpg)
+![\<HANA SID\>szczegóły użytkownika adm wymienione w katalogu/etc/passwd](./media/hana-get-started/image033.jpg)
 
 Po zainstalowaniu SAP HANA za pomocą HDBLCM można zobaczyć strukturę plików w programie SAP HANA Studio, jak pokazano na poniższym zrzucie ekranu. Schemat SAPABAP1, który zawiera wszystkie tabele SAP NetWeaver, nie jest jeszcze dostępny.
 

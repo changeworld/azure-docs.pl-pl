@@ -3,19 +3,19 @@ title: Analizuj zawartość wideo dla niepożądanych materiałów w C# Content 
 titleSuffix: Azure Cognitive Services
 description: Jak analizować zawartość wideo dla różnych niepożądanych materiałów przy użyciu zestawu Content Moderator SDK dla platformy .NET
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 1742db702a899d47110177532f5e85e74a59d91c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564318"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755233"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analizuj zawartość wideo dla niepożądanych materiałówC#
 
@@ -40,7 +40,7 @@ Przejdź do nowej subskrypcji usługi AMS w Azure Portal i wybierz pozycję **do
 
 W sekcji **aplikacja usługi Azure AD** wybierz pozycję **Utwórz nową** i nadaj nazwę nowej rejestracji aplikacji usługi Azure AD (na przykład "VideoModADApp"). Kliknij przycisk **Zapisz** i odczekaj kilka minut, gdy aplikacja jest skonfigurowana. Następnie w sekcji **aplikacji usługi Azure AD** na stronie powinna zostać wyświetlona nowa Rejestracja aplikacji.
 
-Wybierz swoją rejestrację aplikacji, a następnie kliknij przycisk **Zarządzaj aplikacjami** poniżej. Zanotuj wartość w polu **Identyfikator aplikacji** ; będzie on potrzebny później. Wybierz pozycję **Ustawienia** > **klucze**i wprowadź opis nowego klucza (na przykład "VideoModKey"). Kliknij przycisk **Zapisz**, a następnie Zwróć uwagę na nową wartość klucza. Skopiuj ten ciąg i Zapisz go w bezpiecznym miejscu.
+Wybierz swoją rejestrację aplikacji, a następnie kliknij przycisk **Zarządzaj aplikacjami** poniżej. Zanotuj wartość w polu **Identyfikator aplikacji** ; będzie on potrzebny później. Wybierz pozycję **ustawienia** > **klucze**i wprowadź opis nowego klucza (na przykład "VideoModKey"). Kliknij przycisk **Zapisz**, a następnie Zwróć uwagę na nową wartość klucza. Skopiuj ten ciąg i Zapisz go w bezpiecznym miejscu.
 
 Dokładniejszy Przewodnik dotyczący powyższego procesu znajduje się w temacie [Rozpoczynanie pracy z uwierzytelnianiem w usłudze Azure AD](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
 
@@ -57,8 +57,8 @@ Eksplorator Azure Media Services jest przyjazny dla użytkownika fronton dla us�
 1. W programie Visual Studio Utwórz nowy projekt **aplikacja konsoli (.NET Framework)** i nadaj mu nazwę **VideoModeration**. 
 1. Jeśli w rozwiązaniu istnieją inne projekty, wybierz ten projekt jako pojedynczy projekt startowy.
 1. Pobierz wymagane pakiety NuGet. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań i wybierz pozycję **Zarządzaj pakietami NuGet**, a następnie znajdź i zainstaluj następujące pakiety:
-    - windowsazure.mediaservices
-    - windowsazure.mediaservices.extensions
+    - windowsazure. MediaServices
+    - windowsazure. MediaServices. Extensions
 
 ## <a name="add-video-moderation-code"></a>Dodaj kod moderowania wideo
 
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Konfigurowanie odwołań zasobów
 
-Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Te pola zawierają informacje niezbędne do nawiązania połączenia z subskrypcją usługi AMS. Wypełnij je wartościami, które zostały podane w powyższych krokach. Zwróć uwagę `CLIENT_ID` , że jest to wartość **identyfikatora aplikacji** dla aplikacji usługi Azure `CLIENT_SECRET` AD. jest to wartość "VideoModKey", która została utworzona dla tej aplikacji.
+Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Te pola zawierają informacje niezbędne do nawiązania połączenia z subskrypcją usługi AMS. Wypełnij je wartościami, które zostały podane w powyższych krokach. Należy pamiętać, że `CLIENT_ID` jest wartością **identyfikatora aplikacji** dla aplikacji usługi Azure AD, a `CLIENT_SECRET` to wartość "VideoModKey", która została utworzona dla tej aplikacji.
 
 ```csharp
 // declare constants and globals
@@ -118,7 +118,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 ```
 
-Jeśli chcesz użyć lokalnego pliku wideo (najprostszy przypadek), Dodaj go do projektu i wprowadź ścieżkę jako `INPUT_FILE` wartość (ścieżki względne są względne dla katalogu wykonywania).
+Jeśli chcesz użyć lokalnego pliku wideo (najprostszy przypadek), Dodaj go do projektu i wprowadź ścieżkę jako wartość `INPUT_FILE` (ścieżki względne są względne dla katalogu wykonywania).
 
 Należy również utworzyć _predefiniowany plik JSON_ w bieżącym katalogu i użyć go do określenia numeru wersji. Na przykład:
 
@@ -369,10 +369,10 @@ Po zakończeniu zadania moderowania zawartości Przeanalizuj odpowiedź JSON. Sk
 - wartości **Start**, **Duration**, **totalDuration**i **timestamp** są w "taktach". Podziel przez **skalę czasu** , aby uzyskać liczbę w sekundach.
  
 > [!NOTE]
-> - `adultScore`reprezentuje potencjalne informacje o obecności i prognozie zawartości, które mogą być uważane za jawne lub dorosłe w pewnych sytuacjach.
-> - `racyScore`reprezentuje potencjalne informacje o obecności i prognozie zawartości, które mogą być uznawane za sugerowane lub dojrzałe w pewnych sytuacjach.
-> - `adultScore`i `racyScore` należą do zakresu od 0 do 1. Im wyższy wynik, tym większy jest przewidywanie, że Kategoria może być stosowana. Ta wersja zapoznawcza polega na modelu statystycznym zamiast ręcznie zakodowanych wyników. Zalecamy testowanie przy użyciu własnej zawartości, aby określić, jak każda kategoria jest wyrównana do wymagań.
-> - `reviewRecommended`ma wartość true lub false, w zależności od wewnętrznych progów wyniku. Klienci powinni ocenić, czy należy używać tej wartości, czy też decydować o niestandardowych progach na podstawie ich zasad dotyczących zawartości.
+> - `adultScore` reprezentuje potencjalne informacje o obecności i prognozie zawartości, które mogą być uznawane za jawne lub dorosłe w pewnych sytuacjach.
+> - `racyScore` reprezentuje potencjalne informacje o obecności i prognozie zawartości, które mogą być uznawane za sugerowane lub dojrzałe w pewnych sytuacjach.
+> - `adultScore` i `racyScore` należą do zakresu od 0 do 1. Im wyższy wynik, tym większy jest przewidywanie, że Kategoria może być stosowana. Ta wersja zapoznawcza polega na modelu statystycznym zamiast ręcznie zakodowanych wyników. Zalecamy testowanie przy użyciu własnej zawartości, aby określić, jak każda kategoria jest wyrównana do wymagań.
+> - `reviewRecommended` ma wartość true lub false, w zależności od wewnętrznych progów wyniku. Klienci powinni ocenić, czy należy używać tej wartości, czy też decydować o niestandardowych progach na podstawie ich zasad dotyczących zawartości.
 
 ```json
 {

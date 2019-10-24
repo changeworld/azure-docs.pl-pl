@@ -3,19 +3,19 @@ title: Umiarkowany tekst przy użyciu interfejsu API moderowania tekstu — Cont
 titleSuffix: Azure Cognitive Services
 description: Moderowanie tekstu dysku testowego za pomocą interfejsu API moderowania tekstu w konsoli online.
 services: cognitive-services
-author: sanjeev3
-ms.author: sajagtap
+author: PatrickFarley
+ms.author: pafarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 49047c21f86530aac6ed3e0138a643fd08c35af8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf3f08436fb4bac56907b342c991709947f4c24d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561178"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754201"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Umiarkowany tekst z konsoli interfejsu API
 
@@ -50,7 +50,7 @@ Wybierz parametry zapytania, które mają być używane na ekranie tekstowym. W 
 >
 > W przypadku wykrywania **warunków wulgarnych** Użyj [kodu ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) dla obsługiwanych języków wymienionych w tym artykule lub pozostaw to pole puste.
 
-W przypadku funkcji **Autokorekta**, dane osobowe i **klasyfikowanie (wersja zapoznawcza)** wybierz pozycję **prawda**. Pozostaw puste pole **ListId** .
+W przypadku funkcji **Autokorekta**, dane **osobowe**i **klasyfikowanie (wersja zapoznawcza)** wybierz pozycję **prawda**. Pozostaw puste pole **ListId** .
 
   ![Parametry zapytania konsoli ekranowej](images/text-api-console-inputs.PNG)
 
@@ -172,8 +172,8 @@ W poniższej odpowiedzi przedstawiono różne informacje z interfejsu API. Zawie
 }
 ```
 
-Szczegółowe wyjaśnienie wszystkich sekcji odpowiedzi JSON można znaleźć w przewodniku koncepcyjnym moderowania [tekstu](text-moderation-api.md) .
+Szczegółowe wyjaśnienie wszystkich sekcji odpowiedzi JSON można znaleźć w przewodniku koncepcyjnym [moderowania tekstu](text-moderation-api.md) .
 
 ## <a name="next-steps"></a>Następne kroki
 
-Użyj interfejsu API REST w kodzie lub Zacznij od moderowania [tekstu .NET — szybki](text-moderation-quickstart-dotnet.md) Start, aby zintegrować z aplikacją.
+Użyj interfejsu API REST w kodzie lub Zacznij od [moderowania tekstu .NET — szybki](text-moderation-quickstart-dotnet.md) Start, aby zintegrować z aplikacją.

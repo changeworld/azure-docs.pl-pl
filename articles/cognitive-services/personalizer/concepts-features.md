@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989082"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756105"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkcje to informacje o akcjach i kontekście
 
@@ -26,7 +26,7 @@ Personalizacja używa **funkcji**, które są informacjami o **bieżącym kontek
 Na przykład może być dostępna **Funkcja** :
 
 * _Osoba użytkownika_ , taka jak `Sports_Shopper`. Nie powinna to być indywidualny identyfikator użytkownika. 
-* _Zawartość_ , taka jak w przypadku filmu wideo `Documentary`, `Movie`a lub `TV Series`lub czy element detaliczny jest dostępny w sklepie.
+* _Zawartość_ , taka jak, jeśli film wideo to `Documentary`, `Movie`lub `TV Series`lub czy element detaliczny jest dostępny w sklepie.
 * _Bieżący_ okres, taki jak dzień tygodnia.
 
 Personalizacja nie określa, nie ogranicza ani nie naprawia funkcji, które można wysyłać dla akcji i kontekstu:
@@ -43,8 +43,8 @@ Personalizacja obsługuje funkcje typu String, numeric i Boolean.
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Jak wybór typu funkcji ma wpływ na Machine Learning w programie Personalizacja
 
-* **Ciągi**: W przypadku typów ciągów każda kombinacja klucza i wartości tworzy nowe wagi w modelu uczenia maszynowego. 
-* Wartość numeryczna: Należy używać wartości liczbowych, gdy liczba powinna proporcjonalnie wpłynąć na wynik personalizacji. Jest to bardzo zależne. W uproszczonym przykładzie, np. w przypadku personalizowania środowiska sprzedaży detalicznej, NumberOfPetsOwned może być funkcją, która jest wartością numeryczną, ponieważ osoby mające 2 lub 3 zwierzęta domowe mają wpływ na wynik personalizacji dwa razy lub trzy razy dziennie tak samo, jak w przypadku 1 PET. Funkcje, które są oparte na jednostkach liczbowych, ale których znaczenie nie jest liniowe, takie jak wiek, temperatura lub wysokość osoby — są najlepiej kodowane jako ciągi, a jakość funkcji można zazwyczaj zwiększyć przy użyciu zakresów. Na przykład wiek może być zakodowany jako "wiek": "0-5", "wiek": "6-10" itd.
+* **Ciągi**: dla typów ciągów każda kombinacja klucza i wartości tworzy nowe wagi w modelu uczenia maszynowego. 
+* Wartość **liczbowa**: należy używać wartości liczbowych, gdy liczba powinna proporcjonalnie wpłynąć na wynik personalizacji. Jest to bardzo zależne. W uproszczonym przykładzie, np. w przypadku personalizowania środowiska sprzedaży detalicznej, NumberOfPetsOwned może być funkcją, która jest wartością numeryczną, ponieważ osoby mające 2 lub 3 zwierzęta domowe mają wpływ na wynik personalizacji dwa razy lub trzy razy dziennie tak samo, jak w przypadku 1 PET. Funkcje, które są oparte na jednostkach liczbowych, ale których znaczenie nie jest liniowe, takie jak wiek, temperatura lub wysokość osoby — są najlepiej kodowane jako ciągi, a jakość funkcji można zazwyczaj zwiększyć przy użyciu zakresów. Na przykład wiek może być zakodowany jako "wiek": "0-5", "wiek": "6-10" itd.
 * Wartości **logiczne** wysyłane z wartością "false" działają tak, jakby nie zostały wysłane.
 
 Nieobecne funkcje powinny być pominięte w żądaniu. Należy unikać wysyłania funkcji o wartości null, ponieważ zostaną one przetworzone jako istniejące i mają wartość "null" podczas uczenia modelu.
@@ -56,12 +56,12 @@ Personalizacja wykonuje funkcje zorganizowane w przestrzenie nazw. W aplikacji n
 Poniżej przedstawiono przykłady przestrzeni nazw funkcji używanych przez aplikacje:
 
 * User_Profile_from_CRM
-* Time
+* Czas
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
 * UserDeviceInfo
-* Pogoda
+* Meteorologiczn
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,7 +69,7 @@ Poniżej przedstawiono przykłady przestrzeni nazw funkcji używanych przez apli
 Przestrzenie nazw funkcji można nazwać po własnych konwencjach, o ile są one prawidłowymi kluczami JSON. Przestrzenie nazw służą do organizowania funkcji w różne zestawy oraz do odróżniania funkcji o podobnych nazwach. Przestrzenie nazw można traktować jako prefiks, który jest dodawany do nazw funkcji. Przestrzenie nazw nie mogą być zagnieżdżane.
 
 
-W poniższym kodzie JSON, `user` `state`,, i `device` są przestrzeniami nazw funkcji. Uwaga dotycząca publicznej wersji zapoznawczej: Obecnie zdecydowanie zalecamy używanie nazw dla przestrzeni nazw funkcji, które są oparte na kodowaniu UTF-8 i zaczynają się od różnych liter. Na `user`przykład `device` `u` `s`,, i zaczyna się od,, i `d`. `state` Obecnie przestrzenie nazw zawierające te same pierwsze znaki mogą powodować kolizje w indeksach używanych do uczenia maszynowego.
+W poniższym formacie JSON, `user`, `state`i `device` są przestrzeniami nazw funkcji. Uwaga dotycząca publicznej wersji zapoznawczej: obecnie zdecydowanie zalecamy używanie nazw dla przestrzeni nazw funkcji, które są oparte na kodowaniu UTF-8 i zaczynają się od różnych liter. Na przykład `user`, `state`i `device` rozpoczynają się od `u`, `s`i `d`. Obecnie przestrzenie nazw zawierające te same pierwsze znaki mogą powodować kolizje w indeksach używanych do uczenia maszynowego.
 
 Obiekty JSON mogą zawierać zagnieżdżone obiekty JSON oraz proste właściwości/wartości. Tablica może być uwzględniana tylko wtedy, gdy elementy tablicy są liczbami. 
 
@@ -98,6 +98,13 @@ Obiekty JSON mogą zawierać zagnieżdżone obiekty JSON oraz proste właściwo�
 }
 ```
 
+### <a name="restrictions-in-character-sets-for-namespaces"></a>Ograniczenia w zestawach znaków dla przestrzeni nazw
+
+Ciąg używany do nazywania przestrzeni nazw musi spełniać pewne ograniczenia: 
+* Nie może być Unicode.
+* Można użyć niektórych symboli drukowalnych z kodami < 256 dla nazw przestrzeni nazw. 
+* Nie można użyć symboli z kodami < 32 (nie do drukowania), 32 (Space), 58 (dwukropek), 124 (potok) i 126 – 140.
+
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Jak zwiększyć efektywność zestawów funkcji dla personalizacji
 
 Dobry zestaw funkcji ułatwia personalizację, aby dowiedzieć się, jak prognozować akcję, która zwiększy najwyższy poziom. 
@@ -106,7 +113,7 @@ Rozważ wysłanie funkcji do interfejsu API rangi narzędzia personalizacji, kt�
 
 * Dostępna jest wystarczająca liczba funkcji do personalizacji dysków. Im bardziej precyzyjnie skierowana jest zawartość, tym więcej funkcji są potrzebne.
 
-* Dostępna jest wystarczająca liczba funkcji oróżnych gęstościach. Funkcja jest *gęsta* , jeśli wiele elementów jest zgrupowanych w kilku zasobnikach. Na przykład tysiące wideo może być sklasyfikowane jako "Long" (ponad 5 min Long) i "krótkie" (poniżej 5 min Long). Jest to *bardzo gęsta* funkcja. Z drugiej strony, te same tysiące elementów mogą mieć atrybut o nazwie "title", który niemal nigdy nie będzie miał takiej samej wartości z jednego elementu. Jest to bardzo gęsta lub rozrzedzona funkcja .  
+* Dostępna jest wystarczająca liczba funkcji o różnych *gęstościach*. Funkcja jest *gęsta* , jeśli wiele elementów jest zgrupowanych w kilku zasobnikach. Na przykład tysiące wideo może być sklasyfikowane jako "Long" (ponad 5 min Long) i "krótkie" (poniżej 5 min Long). Jest to *bardzo gęsta* funkcja. Z drugiej strony, te same tysiące elementów mogą mieć atrybut o nazwie "title", który niemal nigdy nie będzie miał takiej samej wartości z jednego elementu. Jest to bardzo gęsta lub *rozrzedzona* funkcja.  
 
 Funkcja wysokiej gęstości ułatwia personalizację ekstrapolację z jednego elementu na inny. Ale jeśli istnieje tylko kilka funkcji i są one zbyt gęste, Personalizowanie próbuje precyzyjnie określić zawartość docelową, korzystając z tylko kilku zasobników.
 
@@ -133,7 +140,7 @@ Sztuczna inteligencja i gotowe do uruchomienia Cognitive Services mogą być bar
 
 Wstępnie przetwarzając elementy przy użyciu sztucznych usług analizy, można automatycznie wyodrębniać informacje, które mogą być odpowiednie do personalizacji.
 
-Przykład:
+Na przykład:
 
 * Plik filmowy można uruchomić za pomocą [Video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) , aby wyodrębnić elementy sceny, tekst, tonacji i wiele innych atrybutów. Te atrybuty mogą następnie stać się bardziej gęste w celu odzwierciedlenia cech, które nie miały metadanych oryginalnego elementu. 
 * Obrazy można uruchamiać za poorednictwem wykrywania obiektów, twarzy przez tonacji itp.
@@ -153,7 +160,7 @@ Każda akcja:
 * Ma identyfikator _zdarzenia_ . Jeśli masz już identyfikator zdarzenia, należy go przesłać. Jeśli nie masz identyfikatora zdarzenia, nie wysyłaj go, Personalizujer tworzy go dla Ciebie i zwraca go w odpowiedzi na żądanie rangi. Identyfikator jest skojarzony ze zdarzeniem rangi, a nie użytkownikiem. W przypadku utworzenia identyfikatora identyfikator GUID działa najlepiej. 
 * Zawiera listę funkcji.
 * Lista funkcji może być duża (setki), ale zalecamy ocenę skuteczności funkcji w celu usunięcia funkcji, które nie przyczyniają się do uzyskania korzyści. 
-* Funkcje w akcjach mogą lub nie mają żadnej korelacji z funkcjami w **kontekście** używanym przez program personalizujer.
+* Funkcje w **akcjach** mogą lub nie mają żadnej korelacji z funkcjami w **kontekście** używanym przez program personalizujer.
 * Funkcje dla akcji mogą być obecne w niektórych akcjach, a nie w innych. 
 * Funkcje dla określonego identyfikatora akcji mogą być dostępne jeden dzień, ale później staną się niedostępne. 
 
@@ -168,7 +175,7 @@ Akcje wysyłane do interfejsu API rangi zależą od tego, co próbujesz spersona
 
 Oto kilka przykładów:
 
-|Cel|Action|
+|Przeznaczenie|Działanie|
 |--|--|
 |Personalizowanie artykułu wyróżnionego w witrynie sieci Web z wiadomościami.|Każda akcja jest potencjalnym artykułem z wiadomościami.|
 |Optymalizacja umieszczania w usłudze AD w witrynie sieci Web.|Każda akcja będzie układem lub regułami, aby utworzyć układ dla reklamy (na przykład w górnej części, w prawym, małych obrazach, Big images).|
@@ -194,7 +201,7 @@ Funkcje z akcji mogą zazwyczaj pochodzić z systemów zarządzania zawartości�
 
 W niektórych przypadkach istnieją akcje, które nie mają być wyświetlane użytkownikom. Najlepszym sposobem, aby zapobiec klasyfikacji akcji jako najwyższego poziomu nie jest uwzględnianie jej na liście akcji do interfejsu API rangi w pierwszym miejscu.
 
-W niektórych przypadkach można je określić później tylko w logice biznesowej, Jeśli wynikowa _Akcja_ wywołania interfejsu API rangi ma być pokazywana użytkownikowi. W takich przypadkach należy używać _zdarzeń_nieaktywnych.
+W niektórych przypadkach można je określić później tylko w logice biznesowej, Jeśli wynikowa _Akcja_ wywołania interfejsu API rangi ma być pokazywana użytkownikowi. W takich przypadkach należy używać _zdarzeń nieaktywnych_.
 
 ## <a name="json-format-for-actions"></a>Format JSON dla akcji
 

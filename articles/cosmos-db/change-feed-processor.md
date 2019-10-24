@@ -1,19 +1,19 @@
 ---
 title: Praca z biblioteką procesora źródła zmian w Azure Cosmos DB
 description: Korzystanie z biblioteki procesora kanału informacyjnego zmiany Azure Cosmos DB.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 4074f26cdefd650c1b927293f422623841dfff7d
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 4bd7a31abf47664d1a6ffdd39fe46d9370dbbc97
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073687"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757044"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Zmień procesor kanału informacyjnego w Azure Cosmos DB 
 
@@ -39,7 +39,7 @@ Aby dowiedzieć się więcej o tym, jak te cztery elementy procesora źródła z
 
 ## <a name="implementing-the-change-feed-processor"></a>Implementacja procesora źródła zmian
 
-Punkt wejścia jest zawsze monitorowanym kontenerem z `Container` wystąpienia wywoływanego: `GetChangeFeedProcessorBuilder`
+Punkt wejścia jest zawsze monitorowanym kontenerem z wystąpienia `Container`, które jest wywoływane `GetChangeFeedProcessorBuilder`:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -49,18 +49,18 @@ Przykładem delegata będzie:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-Na koniec zdefiniujesz nazwę tego wystąpienia procesora z `WithInstanceName` i który jest kontenerem do obsługi `WithLeaseContainer`stanu dzierżawy.
+Na koniec zdefiniujesz nazwę tego wystąpienia procesora z `WithInstanceName`, który jest kontenerem do obsługi stanu dzierżawy z `WithLeaseContainer`.
 
-Wywołanie `Build` spowoduje udostępnienie wystąpienia procesora, które można uruchomić, wywołując `StartAsync`metodę.
+Wywołanie `Build` spowoduje udostępnienie wystąpienia procesora, które można uruchomić, wywołując `StartAsync`.
 
 ## <a name="processing-life-cycle"></a>Cykl życia przetwarzania
 
 Normalny cykl życia wystąpienia hosta to:
 
 1. Przeczytaj Źródło zmian.
-1. `WithPollInterval` W przypadku braku zmian w stanie uśpienia przez wstępnie zdefiniowany czas (dostosowywalny w programie w ramach konstruktora) i przejdź do #1.
-1. Jeśli istnieją zmiany, wyślij je do delegata.
-1. Po pomyślnym zakończeniu przetwarzania zmianprzez delegata należy zaktualizować magazyn dzierżawy o ostatni przetworzony punkt w czasie i przejść do #1.
+1. W przypadku braku zmian w stanie uśpienia przez wstępnie zdefiniowany czas (dostosowywalny w przypadku `WithPollInterval` w konstruktorze) i przejdź do #1.
+1. Jeśli istnieją zmiany, wyślij je do **delegata**.
+1. Po **pomyślnym**zakończeniu przetwarzania zmian przez delegata należy zaktualizować magazyn dzierżawy o ostatni przetworzony punkt w czasie i przejść do #1.
 
 ## <a name="error-handling"></a>Obsługa błędów
 
@@ -84,7 +84,7 @@ Ponadto procesor kanału informacyjnego zmiany można dynamicznie dopasować do 
 
 Opłata jest naliczana za zużyte jednostek ru, ponieważ przenoszenie danych do i z kontenerów Cosmos zawsze zużywa jednostek ru. Opłata jest naliczana za jednostek ru zużyty przez kontener dzierżawy.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Zestaw SDK Azure Cosmos DB](sql-api-sdk-dotnet.md)
 * [Przykłady użycia w witrynie GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

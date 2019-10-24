@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 2cc6493d01508d439d8dcef2d12ca1ea40632d81
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ce83d521d5bc986be7bb24ef874f1f0e1051e3ae
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096223"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755410"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Plan Azure Functions Premium (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-W tym przykładzie Zastąp `<RESOURCE_GROUP>` wartość grupą zasobów i `<PLAN_NAME>` nazwą planu, która jest unikatowa w grupie zasobów. Określ [obsługiwane `<REGION>` ](#regions). Aby utworzyć plan Premium, który obsługuje system Linux, należy `--is-linux` uwzględnić opcję.
+W tym przykładzie Zastąp `<RESOURCE_GROUP>` w grupie zasobów i `<PLAN_NAME>` nazwą planu, który jest unikatowy w grupie zasobów. Określ [obsługiwaną `<REGION>`](#regions). Aby utworzyć plan Premium, który obsługuje system Linux, należy uwzględnić opcję `--is-linux`.
 
 Po utworzeniu planu możesz użyć [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) , aby utworzyć aplikację funkcji. W portalu zarówno plan, jak i aplikacja są tworzone w tym samym czasie. 
 
@@ -45,7 +45,7 @@ Jeśli w planie zużycia nie wystąpiły żadne zdarzenia i wykonania, aplikacja
 
 W planie Premium aplikacja została wstępnie przegrzana na określoną liczbę wystąpień do minimalnej wielkości planu.  Wystąpienia przed obciążeniem umożliwiają również wstępne skalowanie aplikacji. Gdy aplikacja jest skalowana w poziomie, najpierw skaluje się do wygrzanych wystąpień. Dodatkowe wystąpienia kontynuują buforowanie i podgrzewanie natychmiast po przygotowaniu dla następnej operacji skalowania. Dzięki buforowi wstępnie wygrzanych wystąpień można skutecznie uniknąć opóźnień zimnego uruchamiania.  Wystąpienia wstępnie działające to funkcja planu Premium, która wymaga, aby co najmniej jedno wystąpienie było uruchomione i dostępne we wszystkich przypadkach, gdy plan jest aktywny.
 
-Liczbę wstępnie rozgrzanych wystąpień można skonfigurować w Azure Portal przez wybranie **aplikacja funkcji**, przejście na kartę **funkcje platformy** i wybranie opcji skalowania w **poziomie** . W oknie Edycja aplikacji funkcji, wstępnie rozgrzane wystąpienia są specyficzne dla tej aplikacji, ale minimalne i maksymalne wystąpienia są stosowane do całego planu.
+Liczbę wstępnie rozgrzanych wystąpień można skonfigurować w Azure Portal przez wybranie **aplikacja funkcji**, przejście na kartę **funkcje platformy** i wybranie opcji **skalowania w poziomie** . W oknie Edycja aplikacji funkcji, wstępnie rozgrzane wystąpienia są specyficzne dla tej aplikacji, ale minimalne i maksymalne wystąpienia są stosowane do całego planu.
 
 ![Ustawienia skalowania elastycznego](./media/functions-premium-plan/scale-out.png)
 
@@ -82,7 +82,7 @@ Podczas tworzenia planu można skonfigurować dwa ustawienia: minimalną liczbę
 
 Jeśli aplikacja wymaga wystąpień poza rozmiarem planu, można nadal skalować w poziomie, dopóki liczba wystąpień osiągnie maksymalny limit.  Opłaty są naliczane za wystąpienia poza rozmiarem planu, gdy są one uruchomione i dzierżawione.  W celu skalowania aplikacji do zdefiniowanego maksymalnego limitu zostanie osiągnięty najlepszy nakład pracy, podczas gdy minimalne wystąpienia planu są gwarantowane dla aplikacji.
 
-Rozmiar planu i maksymalne wartości można skonfigurować w Azure Portal przez wybranie opcji skalowania w **poziomie** w ramach planu lub aplikacji funkcji wdrożonej w ramach tego planu (w obszarze **funkcje platformy**).
+Rozmiar planu i maksymalne wartości można skonfigurować w Azure Portal przez wybranie opcji **skalowania w poziomie** w ramach planu lub aplikacji funkcji wdrożonej w ramach tego planu (w obszarze **funkcje platformy**).
 
 Możesz również zwiększyć maksymalny limit obciążeń z poziomu interfejsu wiersza polecenia platformy Azure:
 
@@ -94,42 +94,50 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Podczas tworzenia lub skalowania planu można wybrać jeden z trzech rozmiarów wystąpień.  Opłaty zostaną naliczone za łączną liczbę rdzeni i zużywaną pamięć na sekundę.  Aplikacja może automatycznie skalować w poziomie do wielu wystąpień stosownie do potrzeb.  
 
-|SKU|Rdzenie|Memory (Pamięć)|Magazyn|
+|JSZ|Rdzenie|Pamięć|Usługa Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
 |EP3|4|14 GB|250 GB|
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Regiony
 
 Poniżej znajdują się obecnie obsługiwane regiony dla publicznej wersji zapoznawczej dla każdego systemu operacyjnego.
 
 |Region| Windows | Linux |
 |--| -- | -- |
+|Australia Środkowa| ✔ * | |
+|Australia Środkowa 2| ✔ * | |
 |Australia Wschodnia| ✔ | |
 |Australia Południowo-Wschodnia | ✔ | ✔ |
+|Brazylia Południowa| ✔ * * |  |
 |Kanada Środkowa| ✔ |  |
 |Środkowe stany USA| ✔ |  |
 |Azja Wschodnia| ✔ |  |
-|East US | | ✔ |
+|Wschodnie stany USA | ✔ | ✔ |
 |Wschodnie stany USA 2| ✔ |  |
 |Francja Środkowa| ✔ |  |
-|Japonia Wschodnia|  | ✔ |
+|Japonia Wschodnia| ✔ | ✔ |
 |Japonia Zachodnia| ✔ | |
 |Korea Środkowa| ✔ |  |
-|Środkowo-północne stany USA| ✔ |  |
+|Północno-środkowe stany USA| ✔ |  |
 |Europa Północna| ✔ | ✔ |
-|Środkowo-południowe stany USA| ✔ |  |
+|Południowo-środkowe stany USA| ✔ |  |
 |Indie Południowe | ✔ | |
 |Azja Południowo-Wschodnia| ✔ | ✔ |
+|Południowe Zjednoczone Królestwo| ✔ | |
 |Zachodnie Zjednoczone Królestwo| ✔ |  |
 |Europa Zachodnia| ✔ | ✔ |
 |Indie Zachodnie| ✔ |  |
 |Zachodnie stany USA| ✔ | ✔ |
 
+\* maksymalna skala w poziomie ograniczona do 20 wystąpień
+
+\** Maksymalna długość skalowania w poziomie ograniczona do 60 wystąpień
+
 ## <a name="known-issues"></a>Znane problemy
 
-Stan znanych problemów z publicznej wersji zapoznawczej można śledzić [w witrynie GitHub](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues).
+Stan znanych problemów z [publicznej wersji zapoznawczej można śledzić w witrynie GitHub](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues).
 
 ## <a name="next-steps"></a>Następne kroki
 
