@@ -3,15 +3,15 @@ title: Uruchamianie pierwszego zapytania za pomocą Eksploratora Azure Resource 
 description: W tym artykule omówiono procedurę uruchamiania pierwszego zapytania z Azure Portal przy użyciu Eksploratora Azure Resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387603"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752144"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Szybki Start: uruchamianie pierwszego zapytania grafu zasobów przy użyciu Eksploratora Azure Resource Graph
 
@@ -45,7 +45,10 @@ Gdy ostateczne zapytanie jest uruchamiane kilka razy, przy założeniu, że żad
 
 ### <a name="schema-browser"></a>Przeglądarka schematów
 
-Przeglądarka schematów znajduje się w lewym okienku Eksploratora grafów zasobów. Ta lista zasobów zawiera wszystkie _typy_ zasobów platformy Azure, które są obsługiwane przez usługę Azure Resource Graph i które istnieją w dzierżawie, do której masz dostęp. Rozszerzanie typu zasobu lub podwłaściwości pokazuje właściwości podrzędne, których można użyć do utworzenia kwerendy wykresu zasobów. Wybór typu zasobu miejsca `where type =="<resource type>"` do pola zapytania. Wybranie jednej z właściwości podrzędnych powoduje dodanie `where <propertyName> == "INSERT_VALUE_HERE"` do pola zapytania. Przeglądarka schematów to doskonały sposób odnajdywania właściwości do użycia w zapytaniach. Pamiętaj, aby zastąpić _Wstaw @ no__t-1VALUE @ no__t-2HERE_ własną wartością, dostosować zapytanie o warunki, operatory i funkcje, aby osiągnąć zamierzone wyniki.
+Przeglądarka schematów znajduje się w lewym okienku Eksploratora grafów zasobów. Ta lista zasobów zawiera wszystkie _typy_ zasobów platformy Azure, które są obsługiwane przez usługę Azure Resource Graph i które istnieją w dzierżawie, do której masz dostęp. Rozszerzanie typu zasobu lub podwłaściwości pokazuje właściwości podrzędne, których można użyć do utworzenia kwerendy wykresu zasobów.
+
+Wybór typu zasobu miejsca `where type =="<resource type>"` do pola zapytania. Wybranie jednej z właściwości podrzędnych powoduje dodanie `where <propertyName> == "INSERT_VALUE_HERE"` do pola zapytania.
+Przeglądarka schematów to doskonały sposób odnajdywania właściwości do użycia w zapytaniach. Pamiętaj, aby zastąpić _wstaw \_VALUE \_HERE_ własnymi wartościami, Dostosuj zapytanie o warunki, operatory i funkcje, aby osiągnąć zamierzone wyniki.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Tworzenie wykresu na podstawie zapytania wykresu zasobów
 

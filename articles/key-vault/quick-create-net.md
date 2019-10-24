@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 3ccc5c7c0def7ec1d8d2f8927dc8f8e5d3678a52
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 4faf889755b6f3e5f8fc6ef08cb69b4265fec355
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718982"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755790"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Szybki Start: Azure Key Vaulta Biblioteka kliencka dla platformy .NET
 
@@ -25,7 +25,7 @@ Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajn
 - Upraszczanie i Automatyzowanie zadań związanych z certyfikatami SSL/TLS.
 - Użyj zweryfikowanej sprzętowych modułów zabezpieczeń poziomu 2 trybu FIPS 140-2.
 
-[Dokumentacja interfejsu API](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [pakiet (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
+[Dokumentacja referencyjna interfejsu API](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)  |   |  pakietu[kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -41,7 +41,7 @@ W tym przewodniku szybki start założono, że używasz `dotnet`, [interfejsu wi
 
 Utwórz nową aplikację platformy .NET Core w preferowanym edytorze lub środowisku IDE.
 
-W oknie konsoli Użyj polecenia `dotnet new`, aby utworzyć nową aplikację konsolową o nazwie `akv-dotnet`.
+W oknie konsoli Użyj `dotnet new` polecenie, aby utworzyć nową aplikację konsolową o nazwie `akv-dotnet`.
 
 
 ```console
@@ -132,7 +132,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 Biblioteka klienta Azure Key Vault dla platformy .NET umożliwia zarządzanie kluczami i powiązanymi zasobami, takimi jak certyfikaty i wpisy tajne. Poniższe przykłady kodu pokazują, jak ustawić wpis tajny i pobrać wpis tajny.
 
-Cała Aplikacja konsolowa jest dostępna pod adresem https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet.
+Cała Aplikacja konsolowa jest dostępna w https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet.
 
 ## <a name="code-examples"></a>Przykłady kodu
 
@@ -154,7 +154,7 @@ setx akvClientId <your-clientID>
 setx akvClientSecret <your-clientSecret>
 ````
 
-Za każdym razem, gdy wywołasz `setx`, należy uzyskać odpowiedź "sukces: została zapisana określona wartość".
+Przy każdym wywołaniu `setx` należy uzyskać odpowiedź "sukces: określona wartość została zapisana".
 
 Przypisz te zmienne środowiskowe do ciągów w kodzie, a następnie Uwierzytelnij aplikację, przekazując je do [klasy KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient):
 
@@ -162,7 +162,7 @@ Przypisz te zmienne środowiskowe do ciągów w kodzie, a następnie Uwierzyteln
 
 ### <a name="save-a-secret"></a>Zapisz klucz tajny
 
-Teraz, gdy aplikacja jest uwierzytelniana, możesz umieścić klucz tajny w magazynie kluczy przy użyciu [metody SetSecretAsync](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) , która wymaga adresu URL magazynu klucza, który znajduje się w formacie `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`. Wymaga również nazwy wpisu tajnego — używamy hasła ".  Możesz przypisać te ciągi do zmiennych do ponownego użycia.
+Teraz, gdy Twoja aplikacja jest uwierzytelniana, możesz umieścić klucz tajny w magazynie kluczy przy użyciu [metody SetSecretAsync](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) , co wymaga podania adresu URL Twojego magazynu, który znajduje się w postaci `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`. Wymaga również nazwy wpisu tajnego — używamy hasła ".  Możesz przypisać te ciągi do zmiennych do ponownego użycia.
 
 [!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
 

@@ -12,44 +12,40 @@ metadata:
   ms.author: joflore
   ms.date: 08/20/2019
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: b493af4372c612c41bafeaef863d8542e6730cb1
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: aeaa23138fb7d0a6d73625fdf7c6507c7fd8152a
+  ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70126212"
+  ms.lasthandoff: 10/24/2019
+  ms.locfileid: "72880690"
 landingContent:
 - title: Informacje o ochronie tożsamości
   linkLists:
   - linkListType: overview
     links:
     - text: Co to jest ochrona tożsamości?
-      url: overview-v2.md
+      url: overview-identity-protection.md
     - text: Przedstawiamy omówienie zabezpieczeń
-      url: security-overview.md
+      url: concept-identity-protection-security-overview.md
 - title: Badanie wykryć ryzyka
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Konfigurowanie zasad ryzyka
-      url: howto-configure-risk-policies.md
+      url: howto-identity-protection-configure-risk-policies.md
     - text: Badanie ryzyka
-      url: howto-investigate-risk.md
+      url: howto-identity-protection-investigate-risk.md
   - linkListType: reference
     links:
     - text: Typy zdarzeń
-      url: risk-events-reference.md
+      url: concept-identity-protection-risks.md
 - title: Ochrona tożsamości
   linkLists:
   - linkListType: concept
     links:
     - text: Środowisko logowania
-      url: flows.md
+      url: concept-identity-protection-user-experience.md
   - linkListType: how-to-guide
     links:
     - text: Symulowanie wykryć ryzyka
-      url: playbook.md
-  - linkListType: quickstart
-    links:
-    - text: Blokowanie dostępu po wykryciu ryzykownej sesji
-      url: quickstart-sign-in-risk-policy.md
+      url: howto-identity-protection-simulate-risk.md
