@@ -8,13 +8,13 @@ author: tomarcher
 manager: gwallace
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: b156169e7202319366e337cc7081e02f5de3acad
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 82cee1e5c93eb21fa8db29985d26fe75bde970d2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244808"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882604"
 ---
 # <a name="create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Tworzenie Application Gatewayowego kontrolera w usłudze Azure Kubernetes
 
@@ -479,7 +479,7 @@ Kod przedstawiony w tej sekcji określa nazwę klastra, lokalizacji i resource_g
 
 Rekord `linux_profile` umożliwia skonfigurowanie ustawień umożliwiających zalogowanie się w węzłach procesu roboczego przy użyciu protokołu SSH.
 
-W przypadku usługi AKS płacisz tylko za węzły procesu roboczego. Rekord `agent_pool_profile` konfiguruje szczegóły dla tych węzłów procesu roboczego. @No__t-0 obejmuje liczbę węzłów procesu roboczego do utworzenia i typ węzłów procesu roboczego. Jeśli w przyszłości konieczne jest skalowanie klastra w górę lub w dół, należy zmodyfikować wartość `count` w tym rekordzie.
+W przypadku usługi AKS płacisz tylko za węzły procesu roboczego. Rekord `agent_pool_profile` konfiguruje szczegóły dla tych węzłów procesu roboczego. `agent_pool_profile record` obejmuje liczbę węzłów procesu roboczego do utworzenia i typ węzłów procesu roboczego. Jeśli w przyszłości konieczne jest skalowanie klastra w górę lub w dół, należy zmodyfikować wartość `count` w tym rekordzie.
 
 ## <a name="create-a-terraform-output-file"></a>Tworzenie pliku wyjściowego narzędzia Terraform
 
@@ -568,7 +568,7 @@ W tej sekcji dowiesz się, jak za pomocą polecenia `terraform init` utworzyć z
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
   
-    Polecenie `terraform init` spowoduje wyświetlenie informacji o pomyślnym zainicjowaniu wtyczki dostawcy i zaplecza:
+    `terraform init` polecenie wyświetla powodzenie inicjowania wtyczki zaplecza i dostawcy:
 
     ![Przykładowe wyniki wykonania polecenia „terraform init”](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 

@@ -1,23 +1,22 @@
 ---
 title: Opcje sieci Azure Functions
 description: Przegląd wszystkich opcji sieciowych dostępnych w Azure Functions
-services: functions
 author: alexkarcher-msft
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 9fe7147325b2e14a7ae6bb4b31aa941fb4059b11
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: bf5ce8da2ce62a5da821588c8f635bbab04dd3c1
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690823"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881568"
 ---
 # <a name="azure-functions-networking-options"></a>Opcje sieci Azure Functions
 
-W tym artykule opisano funkcje sieciowe dostępne w obszarze Opcje hostingu dla Azure Functions. Wszystkie poniższe opcje sieciowe zapewniają pewne możliwości uzyskiwania dostępu do zasobów bez używania adresów sieci internetowej lub ograniczają dostęp do Internetu do aplikacji funkcji. 
+W tym artykule opisano funkcje sieciowe dostępne w obszarze Opcje hostingu dla Azure Functions. Wszystkie poniższe opcje sieciowe zapewniają pewne możliwości uzyskiwania dostępu do zasobów bez używania adresów sieci internetowej lub ograniczają dostęp do Internetu do aplikacji funkcji.
 
 Modele hostingu mają różne poziomy izolacji sieci. Wybranie odpowiedniej opcji pomoże Ci spełnić wymagania dotyczące izolacji sieci.
 
@@ -39,7 +38,6 @@ Aplikacje funkcji można hostować na kilka sposobów:
 |[Połączenia hybrydowe](#hybrid-connections)|❌No|✅Yes|✅Yes|✅Yes|
 |[Ograniczenia wychodzącego adresu IP](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
-
 ## <a name="inbound-ip-restrictions"></a>Ograniczenia przychodzącego adresu IP
 
 Za pomocą ograniczeń adresów IP można zdefiniować uporządkowaną według priorytetu listę adresów IP, które mają dostęp/odmowę dostępu do aplikacji. Lista może zawierać adresy IPv4 i IPv6. Gdy istnieje co najmniej jeden wpis, na końcu listy istnieje niejawne "odmowa wszystkich". Ograniczenia adresów IP działają ze wszystkimi opcjami hostingu funkcji.
@@ -51,8 +49,9 @@ Aby dowiedzieć się więcej, zobacz [Azure App Service ograniczenia dostępu st
 
 ## <a name="private-site-access"></a>Dostęp do witryn prywatnych
 
-Dostęp do lokacji prywatnej dotyczy udostępniania aplikacji tylko z sieci prywatnej, takiej jak z poziomu sieci wirtualnej platformy Azure. 
-* Dostęp do lokacji prywatnej jest dostępny w wersji [Premium](./functions-premium-plan.md), [zużycie], (Functions. MD # zużycie-plan) i [App Service plan](functions-scale.md#app-service-plan) podczas konfigurowania **punktów końcowych usługi** . 
+Dostęp do lokacji prywatnej dotyczy udostępniania aplikacji tylko z sieci prywatnej, takiej jak z poziomu sieci wirtualnej platformy Azure.
+
+* Dostęp do lokacji prywatnej jest dostępny w planie [Premium](./functions-premium-plan.md), [zużycia](functions-scale.md#consumption-plan) i [App Service](functions-scale.md#app-service-plan) w przypadku skonfigurowania **punktów końcowych usługi** .
     * Punkty końcowe usługi można skonfigurować dla poszczególnych aplikacji w obszarze funkcje platformy > sieci > skonfigurować ograniczenia dostępu > Dodaj regułę. Sieci wirtualne można teraz wybrać jako "typ" reguły.
     * Aby uzyskać więcej informacji, zobacz [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md)
         * Należy pamiętać, że dzięki punktom końcowym usługi funkcja nadal ma pełny dostęp wychodzący do Internetu, nawet z skonfigurowaną integracją sieci wirtualnej.
@@ -64,14 +63,14 @@ Integracja z siecią wirtualną umożliwia aplikacji funkcji dostęp do zasobów
 
 Integracja z siecią wirtualną umożliwia dostęp z aplikacji do baz danych i usług sieci Web działających w sieci wirtualnej. Dzięki integracji z siecią wirtualną nie trzeba ujawniać publicznego punktu końcowego dla aplikacji na maszynie wirtualnej. Zamiast tego możesz użyć prywatnych adresów z obsługą routingu bez Internetu.
 
-Istnieją dwa formularze funkcji integracji sieci wirtualnej
+Istnieją dwie formy integracji z siecią wirtualną:
 
-1. Integracja regionalnej sieci wirtualnej umożliwia integrację z sieciami wirtualnymi w tym samym regionie. Ta forma funkcji wymaga podsieci w sieci wirtualnej w tym samym regionie. Ta funkcja jest nadal w wersji zapoznawczej, ale jest obsługiwana w przypadku obciążeń produkcyjnych aplikacji systemu Windows z pewnymi zastrzeżeniami wymienionymi poniżej.
-2. Integracja sieci wirtualnej wymagana przez bramę umożliwia integrację z sieciami wirtualnymi w regionach zdalnych lub z klasycznymi sieciami wirtualnymi. Ta wersja funkcji wymaga wdrożenia bramy Virtual Network w sieci wirtualnej. Jest to funkcja oparta na sieci VPN typu punkt-lokacja i jest obsługiwana tylko w aplikacjach systemu Windows.
++ **Integracja regionalnej sieci wirtualnej (wersja zapoznawcza)** : umożliwia integrację z sieciami wirtualnymi w tym samym regionie. Ten typ integracji wymaga podsieci w sieci wirtualnej w tym samym regionie. Ta funkcja jest nadal dostępna w wersji zapoznawczej, ale jest obsługiwana w przypadku aplikacji funkcji działających w systemie Windows z zastrzeżeniami wymienionymi poniżej.
++ **Integracja sieci wirtualnej wymagana przez bramę**: umożliwia integrację z sieciami wirtualnymi w regionach zdalnych lub z klasycznymi sieciami wirtualnymi. Ten typ integracji wymaga wdrożenia bramy Virtual Network w sieci wirtualnej. Jest to funkcja oparta na sieci VPN typu punkt-lokacja, która jest obsługiwana tylko w przypadku aplikacji funkcji działających w systemie Windows.
 
-Aplikacja może jednocześnie korzystać z jednej formy funkcji integracji sieci wirtualnej. Następnie pytanie to funkcja, której należy użyć. Możesz użyć dowolnej dla wielu rzeczy. Jasne odróżniające są następujące:
+Aplikacja może jednocześnie używać tylko jednego typu funkcji integracji sieci wirtualnej. Chociaż oba są przydatne w wielu scenariuszach, Poniższa tabela wskazuje, gdzie należy używać każdego z nich:
 
-| Problem  | Rozwiązanie | 
+| Problem  | Rozwiązanie |
 |----------|----------|
 | Chcesz uzyskać dostęp do adresu RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) w tym samym regionie | Integracja z regionalną siecią wirtualną |
 | Chcesz uzyskać dostęp do zasobów w klasycznej sieci wirtualnej lub sieci wirtualnej w innym regionie | Integracja sieci wirtualnej wymagana przez bramę |
@@ -93,10 +92,11 @@ Funkcja integracji sieci wirtualnej:
 Istnieje kilka rzeczy, które nie są obsługiwane przez integrację sieci wirtualnej, w tym:
 
 * Instalowanie dysku
-* Integracja usługi AD 
+* Integracja usługi AD
 * NetBios
 
 Integracja sieci wirtualnej w usłudze Functions używa udostępnionej infrastruktury z App Service Web Apps. Aby dowiedzieć się więcej o dwóch typach integracji z siecią wirtualną, zobacz:
+
 * [Integracja z siecią wirtualną regionalny](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
 * [Integracja sieci wirtualnej wymagana przez bramę](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
@@ -104,7 +104,7 @@ Aby dowiedzieć się więcej o korzystaniu z integracji z siecią wirtualną, zo
 
 ## <a name="connecting-to-service-endpoint-secured-resources"></a>Łączenie z zabezpieczonymi zasobami punktu końcowego usługi
 
-> [!note] 
+> [!NOTE]
 > Czasowo nowe punkty końcowe usługi staną się dostępne w aplikacji funkcji dopiero po upływie 12 godzin. W tym czasie zasób będzie całkowicie niedostępny dla aplikacji.
 
 Aby zapewnić wyższy poziom zabezpieczeń, można ograniczyć liczbę usług platformy Azure do sieci wirtualnej za pomocą punktów końcowych usługi. Następnie należy zintegrować aplikację funkcji z tą siecią wirtualną, aby uzyskać dostęp do zasobu. Ta konfiguracja jest obsługiwana we wszystkich planach, które obsługują integrację z siecią wirtualną.
@@ -112,10 +112,11 @@ Aby zapewnić wyższy poziom zabezpieczeń, można ograniczyć liczbę usług pl
 [Więcej informacji na temat punktów końcowych usługi sieci wirtualnej można znaleźć tutaj.](../virtual-network/virtual-network-service-endpoints-overview.md)
 
 ### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Ograniczanie konta magazynu do sieci wirtualnej
+
 Podczas tworzenia aplikacji funkcji należy utworzyć konto usługi Azure Storage ogólnego przeznaczenia lub połączyć się z nim, które obsługuje magazyn obiektów blob, kolejek i tabel. Nie jest obecnie możliwe używanie żadnych ograniczeń sieci wirtualnej na tym koncie. W przypadku skonfigurowania punktu końcowego usługi sieci wirtualnej na koncie magazynu używanym przez aplikację funkcji aplikacja zostanie przerwana.
 
 [Przeczytaj więcej na temat wymagań dotyczących konta magazynu tutaj.](./functions-create-function-app-portal.md#storage-account-requirements
-) 
+)
 
 ## <a name="virtual-network-triggers-non-http"></a>Wyzwalacze sieci wirtualnej (bez protokołu HTTP)
 
@@ -140,6 +141,7 @@ Ograniczenia wychodzącego adresu IP są dostępne tylko dla funkcji wdrożonych
 W przypadku integrowania aplikacji funkcji w planie Premium lub App Service planie z siecią wirtualną aplikacja nadal będzie mogła nawiązywać połączenia wychodzące do Internetu.
 
 ## <a name="next-steps"></a>Następne kroki
+
 Aby dowiedzieć się więcej na temat sieci i Azure Functions: 
 
 * [Postępuj zgodnie z samouczkiem dotyczącym rozpoczynania pracy z integracją z siecią wirtualną](./functions-create-vnet.md)

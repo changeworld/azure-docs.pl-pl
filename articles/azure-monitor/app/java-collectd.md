@@ -1,49 +1,44 @@
 ---
-title: Monitorowanie wydajności aplikacji sieci web Java w systemie Linux — Azure | Dokumentacja firmy Microsoft
-description: Rozszerzone monitorowanie wydajności aplikacji witryny sieci Web Java za pomocą wtyczki zebrane dla usługi Application Insights.
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40c68f45-197a-4624-bf89-541eb7323002
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Monitorowanie wydajności aplikacji sieci Web w języku Java w systemie Linux — Azure | Microsoft Docs
+description: Rozszerzone monitorowanie wydajności aplikacji w witrynie Java za pomocą zebranej wtyczki dla Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: c6e947dfed3169f346f43ab08225056815e8b487
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 03/14/2019
+ms.openlocfilehash: 6c74684ac45a040be154a1e6406c1e7a5e0dd253
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061197"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817152"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>zebrane: Metryki wydajności systemu Linux w usłudze Application Insights
+# <a name="collectd-linux-performance-metrics-in-application-insights"></a>zebrane: metryki wydajności systemu Linux w Application Insights
 
 
-Aby zapoznać się z metryk wydajności systemu Linux w [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md), zainstaluj [zebrane](https://collectd.org/), wraz z jej usługi Application Insights wtyczki. To rozwiązanie typu open-source zbiera różne statystyki systemu i sieciowych.
+Aby poznać metryki wydajności systemu Linux w [Application Insights](../../azure-monitor/app/app-insights-overview.md), należy zainstalować [zebrane](https://collectd.org/)dane wraz z wtyczką Application Insights. To rozwiązanie "open source" gromadzi różne statystyki systemu i sieci.
 
-Zazwyczaj służy zebrane Jeśli masz już [Instrumentacji usługi sieci web Java za pomocą usługi Application Insights][java]. Oferuje on większej ilości danych, aby pomóc zwiększyć wydajność aplikacji lub diagnozować problemy. 
+Zazwyczaj należy używać zebranych danych, jeśli [Instrumentacja usługi sieci Web języka Java][java]została już zastosowana za pomocą Application Insights. Zapewnia więcej danych, które ułatwiają zwiększenie wydajności aplikacji lub diagnozowanie problemów. 
 
-## <a name="get-your-instrumentation-key"></a>Uzyskaj klucz Instrumentacji
-W [portalu Microsoft Azure](https://portal.azure.com), otwórz [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) zasobów, w którym ma się pojawić się dane. (Lub [Utwórz nowy zasób](../../azure-monitor/app/create-new-resource.md ).)
+## <a name="get-your-instrumentation-key"></a>Pobieranie klucza Instrumentacji
+W [Microsoft Azure Portal](https://portal.azure.com)otwórz zasób [Application Insights](../../azure-monitor/app/app-insights-overview.md) , w którym mają być wyświetlane dane. (Lub [Utwórz nowy zasób](../../azure-monitor/app/create-new-resource.md )).
 
-Wykonaj kopię klucza instrumentacji, który identyfikuje zasób.
+Skopiuj klucz instrumentacji, który identyfikuje zasób.
 
-![Przeglądaj wszystko, otwórz zasób usługi w rozwijanej podstawy, a następnie wybierz, skopiuj klucz Instrumentacji](./media/java-collectd/instrumentation-key-001.png)
+![Przeglądaj wszystko, Otwórz zasób, a następnie na liście rozwijanej podstawowe dane wybierz i skopiuj klucz Instrumentacji](./media/java-collectd/instrumentation-key-001.png)
 
-## <a name="install-collectd-and-the-plug-in"></a>Zainstaluj zebrane i wtyczki
-Na komputerach serwerów Linux:
+## <a name="install-collectd-and-the-plug-in"></a>Instalacja zebrana i wtyczka
+Na komputerach z systemem Linux:
 
-1. Zainstaluj [zebrane](https://collectd.org/) wersji 5.4.0 lub nowszej.
-2. Pobierz [wtyczką składnik zapisywania usługi Application Insights zebrane](https://aka.ms/aijavasdk). Zanotuj numer wersji.
-3. Wtyczka JAR do kopiowania `/usr/share/collectd/java`.
+1. Zainstaluj [zebraną](https://collectd.org/) wersję 5.4.0 lub nowszą.
+2. Pobierz [wtyczkę Application Insights zebranych modułów zapisujących](https://aka.ms/aijavasdk). Zanotuj numer wersji.
+3. Skopiuj wtyczkę JAR do `/usr/share/collectd/java`.
 4. Edytuj `/etc/collectd/collectd.conf`:
-   * Upewnij się, że [wtyczki Java](https://collectd.org/wiki/index.php/Plugin:Java) jest włączona.
-   * Zaktualizuj JVMArg dla java.class.path, aby uwzględnić Poniższy plik JAR. Numer wersji do dopasowania, które można pobrać aktualizacji:
+   * Upewnij się, że [Wtyczka Java](https://collectd.org/wiki/index.php/Plugin:Java) jest włączona.
+   * Zaktualizuj JVMArg dla elementu Java. Class. Path, aby dołączyć następujący plik JAR. Zaktualizuj numer wersji, aby dopasować go do pobranego:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
-   * Dodaj następujący fragment kodu przy użyciu klucza Instrumentacji z zasobu:
+   * Dodaj ten fragment kodu przy użyciu klucza Instrumentacji z zasobu:
 
 ```XML
 
@@ -53,7 +48,7 @@ Na komputerach serwerów Linux:
      </Plugin>
 ```
 
-W tym miejscu znajduje się przykładowy plik konfiguracji:
+Oto część przykładowego pliku konfiguracji:
 
 ```XML
 
@@ -86,47 +81,47 @@ W tym miejscu znajduje się przykładowy plik konfiguracji:
     ...
 ```
 
-Konfigurowanie innych [wtyczek zebrane](https://collectd.org/wiki/index.php/Table_of_Plugins), który może zbierać różne dane z różnych źródeł.
+Skonfiguruj inne [zebrane wtyczki](https://collectd.org/wiki/index.php/Table_of_Plugins), które mogą zbierać różne dane z różnych źródeł.
 
-Uruchom ponownie zebrane zgodnie z opisem w jego [ręczne](https://collectd.org/wiki/index.php/First_steps).
+Uruchom ponownie zebrane zgodnie z jego [instrukcją ręczną](https://collectd.org/wiki/index.php/First_steps).
 
-## <a name="view-the-data-in-application-insights"></a>Wyświetlanie danych w usłudze Application Insights
-Otwórz zasób usługi Application Insights [metryki i dodać wykresy][metrics], wybierając metryki mają być wyświetlane z kategorię niestandardową.
+## <a name="view-the-data-in-application-insights"></a>Wyświetlanie danych w Application Insights
+W zasobie Application Insights Otwórz [metryki i Dodaj wykresy][metrics], wybierając metryki, które mają być wyświetlane z kategorii niestandardowej.
 
-Domyślnie metryki są agregowane dla wszystkich maszyn hosta, z których zostały pobrane metryki. Aby wyświetlić metryki na hoście, w bloku szczegóły wykresu, należy włączyć grupowanie, a następnie wybierz grupowanie według hosta zebrane.
+Domyślnie metryki są agregowane we wszystkich maszynach hostów, z których zostały zebrane metryki. Aby wyświetlić metryki na hosta, w bloku szczegóły wykresu Włącz grupowanie, a następnie wybierz pozycję Grupuj według hosta.
 
-## <a name="to-exclude-upload-of-specific-statistics"></a>Aby wyłączyć przekazywanie poszczególnych statystyk
-Domyślnie wtyczka usługi Application Insights wysyła wszystkie dane zebrane przez wszystkie włączone zebrane odczytu wtyczek. 
+## <a name="to-exclude-upload-of-specific-statistics"></a>Aby wykluczyć przekazywanie określonych statystyk
+Domyślnie wtyczka Application Insights wysyła wszystkie dane zbierane przez wszystkie włączone zebrane Dodatki "read". 
 
-Aby wykluczyć danych z konkretnych źródeł danych lub wtyczek:
+Aby wykluczyć dane z określonych wtyczek lub źródeł danych:
 
-* Przeprowadź edycję pliku konfiguracji. 
-* W `<Plugin ApplicationInsightsWriter>`, Dodaj dyrektywę wiersze następująco:
+* Edytuj plik konfiguracji. 
+* W `<Plugin ApplicationInsightsWriter>`Dodaj wiersze dyrektywy w następujący sposób:
 
-| — Dyrektywa | Efekt |
+| Dyrektywę | Efekt |
 | --- | --- |
-| `Exclude disk` |Wyklucz wszystkie dane zebrane przez `disk` wtyczki |
-| `Exclude disk:read,write` |Wyklucz źródła o nazwie `read` i `write` z `disk` wtyczki. |
+| `Exclude disk` |Wyklucz wszystkie dane zebrane przez wtyczkę `disk` |
+| `Exclude disk:read,write` |Wykluczanie źródeł o nazwie `read` i `write` z wtyczki `disk`. |
 
-Oddzielnych dyrektyw przy użyciu nowego wiersza.
+Oddzielne dyrektywy z wierszem nowego wiersza.
 
 ## <a name="problems"></a>Problemy?
 *Nie widzę danych w portalu*
 
-* Otwórz [wyszukiwania] [ diagnostic] aby zobaczyć, jeśli nieuaktywnionego nieprzetworzonych zdarzeń. Czasami dłużej wyświetlane w Eksploratorze metryk.
-* Konieczne może być [Ustaw wyjątki zapory dla danych wychodzących](../../azure-monitor/app/ip-addresses.md)
-* Włącz śledzenie we wtyczce usługi Application Insights. Dodaj następujący wiersz w ramach `<Plugin ApplicationInsightsWriter>`:
+* Otwórz [Wyszukiwanie][diagnostic] , aby sprawdzić, czy zdarzenia RAW dotarły do Ciebie. Czasami pojawiają się one dłużej w Eksploratorze metryk.
+* Może być konieczne [ustawienie wyjątków zapory dla danych wychodzących](../../azure-monitor/app/ip-addresses.md)
+* Włącz śledzenie w dodatku Application Insights. Dodaj następujący wiersz w `<Plugin ApplicationInsightsWriter>`:
   * `SDKLogger true`
-* Otwórz terminal i uruchom zebrane w trybie informacji pełnej, aby zobaczyć wszelkie problemy, które są zgłaszane jest:
+* Otwórz Terminal i Rozpocznij zbieranie w trybie pełnym, aby wyświetlić wszystkie problemy, które zgłasza:
   * `sudo collectd -f`
 
 ## <a name="known-issue"></a>Znany problem
 
-Wtyczkę usługi Application Insights zapisu jest niezgodna z niektórych wtyczek odczytu. Niektóre wtyczki Wyślij czasami "NaN", gdzie wtyczką Application Insights oczekuje, że liczba zmiennoprzecinkowa.
+Wtyczka zapisu Application Insights jest niezgodna z pewnymi wtyczkami odczytu. Niektóre wtyczki czasami wysyłają "NaN", gdzie wtyczka Application Insights oczekuje liczby zmiennoprzecinkowej.
 
-Objaw: Dziennik zebrane zawiera błędy, które zawierają "SI:... SyntaxError: Nieoczekiwany token N".
+Objaw: zebrany dziennik przedstawia błędy, które zawierają wartość "AI:... SyntaxError: Nieoczekiwany token N ".
 
-Obejście problemu: Wyklucz dane zebrane przez wtyczki zapisu problem. 
+Obejście: wykluczanie danych zebranych przez wtyczki zapisu problemu. 
 
 <!--Link references-->
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: dbf2b4b5113598fee742c3864bede782a624773c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677880"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817463"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Samouczek: stosowanie modeli uczenia maszynowego w Azure Functions przy użyciu języka Python i TensorFlow
 
@@ -114,7 +114,7 @@ func new --language python --template HttpTrigger --name classify
 
 Tworzony jest nowy folder o nazwie *klasyfikowanie* zawierający dwa pliki.
 
-- *\_ \_init \_ \_. PR*: plik dla funkcji Main
+- *\_\_init\_\_. PR*: plik dla funkcji Main
 - *Function. JSON*: plik opisujący wyzwalacz funkcji i jego powiązania wejściowe i wyjściowe
 
 ### <a name="run-the-function"></a>Uruchom funkcję
@@ -179,7 +179,7 @@ Upewnij się, że *klasyfikowanie* zawiera teraz plik o nazwie *Predict.py*.
 Biblioteka pomocników ma pewne zależności, które należy zainstalować. Otwórz plik *Start/Requirements. txt* w edytorze i Dodaj do niego następujące zależności.
 
 ```txt
-tensorflow==1.15
+tensorflow==1.14
 Pillow
 requests
 ```
@@ -200,7 +200,7 @@ Aby uzyskać więcej informacji na temat zmiennych globalnych, zapoznaj się z [
 
 ## <a name="update-function-to-run-predictions"></a>Funkcja aktualizacji do uruchamiania prognoz
 
-Otwórz *\_init \_ w edytorze \_ \_. PR* . Zaimportuj bibliotekę *predykcyjną* dodaną do tego samego folderu wcześniej. Dodaj następujące instrukcje `import` poniżej innych importów znajdujących się już w pliku.
+Otwórz przystawkę */\_\_init\_\_. PR* w edytorze. Zaimportuj bibliotekę *predykcyjną* dodaną do tego samego folderu wcześniej. Dodaj następujące instrukcje `import` poniżej innych importów znajdujących się już w pliku.
 
 ```python
 import json

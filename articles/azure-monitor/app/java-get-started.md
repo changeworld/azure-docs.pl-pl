@@ -1,25 +1,20 @@
 ---
 title: Analiza aplikacji internetowej w języku Java za pomocą usługi Application Insights | Microsoft Docs
 description: 'Monitorowanie wydajności aplikacji internetowych w języku Java za pomocą usługi Application Insights. '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/24/2019
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: a6e8187a085d637ad3abc650daf15d92b96755a3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 05/24/2019
+ms.openlocfilehash: 28fbb5fcfba2b346d0519dec79e538b1e513b7dd
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338111"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817126"
 ---
-# <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
+# <a name="get-started-with-application-insights-in-a-java-web-project"></a>Rozpocznij pracę z usługą Application Insights w projekcie internetowym Java
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) jest rozszerzalną usługą analizy dla deweloperów sieci Web, która ułatwia zrozumienie wydajności i użycia aktywnej aplikacji. Umożliwiają one [Automatyczne instrumentację żądań, śledzenie zależności oraz zbieranie liczników wydajności](auto-collect-dependencies.md#java), diagnozowanie problemów z wydajnością i wyjątków oraz [pisanie kodu][api] w celu śledzenia użytkowników, którzy korzystają z aplikacji. 
 
@@ -27,12 +22,12 @@ ms.locfileid: "71338111"
 
 Usługa Application Insights obsługuje aplikacje w języku Java działające w systemach Linux, Unix lub Windows.
 
-Potrzebne elementy:
+Potrzebne są:
 
 * Java 7 lub nowszy
 * Subskrypcja platformy [Microsoft Azure](https://azure.microsoft.com/).
 
-## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Uzyskiwanie klucza instrumentacji usługi Application Insights
+## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Pobierz klucz Instrumentacji Application Insights
 1. Zaloguj się do [Portalu Microsoft Azure](https://portal.azure.com).
 2. Utwórz zasób usługi Application Insights. Jako typ aplikacji ustaw wartość Aplikacja internetowa Java.
 
@@ -40,7 +35,7 @@ Potrzebne elementy:
 
     ![W opisie nowego zasobu kliknij opcję Właściwości i skopiuj klucz instrumentacji](./media/java-get-started/instrumentation-key-001.png)
 
-## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Dodawanie zestawu SDK usługi Application Insights dla środowiska Java do projektu
+## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Dodaj zestaw Application Insights SDK dla języka Java do projektu
 *Wybierz odpowiedni sposób dla danego projektu.*
 
 #### <a name="if-youre-using-maven-a-namemaven-setup-"></a>Jeśli używasz narzędzia Maven... <a name="maven-setup" />
@@ -77,10 +72,10 @@ Następnie odśwież zależności projektu, aby pliki binarne zostały pobrane.
 Pobierz [najnowszą wersję](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) i skopiuj niezbędne pliki do projektu, zastępując wszystkie poprzednie wersje.
 
 ### <a name="questions"></a>Pytania...
-* *Jaka jest relacja między `-web-auto` `-web` składnikami i `-core` ?*
-  * `applicationinsights-web-auto`Program udostępnia metryki do śledzenia liczby żądań i czasów odpowiedzi HTTP serwletu przez automatyczne zarejestrowanie filtru Application Insights serwletu w czasie wykonywania.
-  * `applicationinsights-web`zapewnia również metryki, które śledzą liczby żądań HTTP serwletu i czasy odpowiedzi, ale wymagają ręcznej rejestracji filtru Application Insights serwletu w aplikacji.
-  * `applicationinsights-core`zapewnia tylko bezobsługowy interfejs API, na przykład jeśli aplikacja nie jest oparta na serwletu.
+* *Jaka jest relacja między składnikami `-web-auto`, `-web` i `-core`?*
+  * `applicationinsights-web-auto` udostępnia metryki do śledzenia liczby żądań i czasów odpowiedzi HTTP serwletu przez automatyczne zarejestrowanie Application Insights filtru serwletu w czasie wykonywania.
+  * `applicationinsights-web` zapewnia również metryki, które śledzą liczby żądań HTTP serwletu i czasy odpowiedzi, ale wymagają ręcznej rejestracji filtru Application Insights serwletu w aplikacji.
+  * `applicationinsights-core` zapewnia tylko bezobsługowy interfejs API, na przykład jeśli aplikacja nie jest oparta na serwletu.
   
 * *Jak zaktualizować zestaw SDK do najnowszej wersji?*
   * Jeśli używasz narzędzia Gradle lub Maven...
@@ -88,7 +83,7 @@ Pobierz [najnowszą wersję](https://github.com/Microsoft/ApplicationInsights-Ja
   * Jeśli ręcznie zarządzasz zależnościami...
     * Pobierz najnowszy [Zestaw SDK usługi Application Insights dla środowiska Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) i zastąp nim stary. Zmiany są opisane w [informacjach o wersji zestawu SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
 
-## <a name="3-add-an-applicationinsightsxml-file"></a>3. Dodawanie pliku ApplicationInsights.xml
+## <a name="3-add-an-applicationinsightsxml-file"></a>3. Dodaj plik ApplicationInsights. XML
 Dodaj plik ApplicationInsights.xml do folderu zasobów w projekcie lub upewnij się, że jest dodany do ścieżki klas wdrażania projektu. Skopiuj do niego następujący kod XML.
 
 Zastąp klucz instrumentacji kluczem pobranym z portalu Azure.
@@ -124,7 +119,7 @@ Opcjonalnie plik konfiguracji może znajdować się w dowolnym miejscu, które j
 
 * Klucz instrumentacji jest wysyłany wraz z każdym elementem telemetrii i dzięki temu te elementy mogą być wyświetlane dla odpowiedniego zasobu usługi Application Insights.
 * Składnik żądań HTTP jest opcjonalny. Powoduje automatyczne wysyłanie telemetrii dotyczącej żądań i czasów odpowiedzi do portalu.
-* Korelacja zdarzenia jest dodatkiem do składnika żądań HTTP. Przypisuje identyfikator do każdego żądania odebranego przez serwer i dodaje go do każdego elementu telemetrii jako właściwość „Operation.Id”. Umożliwia skorelowanie telemetrii skojarzonej z każdym żądaniem przez ustawienie filtru w wyszukiwaniu [diagnostycznym][diagnostic].
+* Korelacja zdarzenia jest dodatkiem do składnika żądań HTTP. Przypisuje identyfikator do każdego żądania odebranego przez serwer i dodaje go do każdego elementu telemetrii jako właściwość „Operation.Id”. Umożliwia skorelowanie telemetrii skojarzonej z każdym żądaniem przez ustawienie filtru w [wyszukiwaniu diagnostycznym][diagnostic].
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>Alternatywne sposoby ustawienia klucza instrumentacji
 Zestaw SDK usługi Application Insights szuka klucza w następującej kolejności:
@@ -148,10 +143,10 @@ Możesz również [ustawić klucz w kodzie](../../azure-monitor/app/api-custom-e
 
 [Zainstaluj agenta Java](java-agent.md) , aby przechwytywać wychodzące wywołania http, zapytania JDBC, rejestrowanie aplikacji i lepszą nazwę operacji.
 
-## <a name="5-run-your-application"></a>5. Uruchamianie aplikacji
+## <a name="5-run-your-application"></a>5. Uruchom aplikację
 Uruchom aplikację w trybie debugowania na komputerze deweloperskim albo opublikuj na serwerze.
 
-## <a name="6-view-your-telemetry-in-application-insights"></a>6. Wyświetlanie telemetrii w usłudze Application Insights
+## <a name="6-view-your-telemetry-in-application-insights"></a>6. Wyświetl dane telemetryczne w Application Insights
 Wróć do zasobu usługi Application Insights w witrynie [Microsoft Azure Portal](https://portal.azure.com).
 
 W bloku przeglądu zostaną wyświetlone dane żądań HTTP. (Jeśli ich tam nie ma, odczekaj kilka sekund, a następnie kliknij przycisk Odśwież).
@@ -173,12 +168,12 @@ Kliknij określony typ żądania, aby wyświetlić poszczególne wystąpienia.
 
 ![Przechodzenie do szczegółów konkretnego widoku przykładowego](./media/java-get-started/007-instance.png)
 
-### <a name="analytics-powerful-query-language"></a>Wersję Zaawansowany język zapytań
+### <a name="analytics-powerful-query-language"></a>Analiza: zaawansowany język zapytań
 W miarę zgromadzenia większej ilości danych można uruchamiać zapytania zarówno w celu agregowania danych, jak i w celu znajdowania poszczególnych wystąpień.  [Analiza](../../azure-monitor/app/analytics.md) jest zaawansowanym narzędziem, którego można używać zarówno w celu poznania wydajności i użycia, jak i do celów diagnostycznych.
 
 ![Przykład analizy](./media/java-get-started/0025.png)
 
-## <a name="7-install-your-app-on-the-server"></a>7. Instalowanie aplikacji na serwerze
+## <a name="7-install-your-app-on-the-server"></a>7. Zainstaluj aplikację na serwerze
 Teraz opublikuj aplikację na serwerze, pozwól z niej korzystać innym osobom, a następnie obejrzyj telemetrię wyświetlaną w portalu.
 
 * Upewnij się, że zapora pozwala aplikacji na wysłanie telemetrii do tych portów:
@@ -225,7 +220,7 @@ I dla automatycznego nazewnictwa operacji.
 
 Zestaw Application Insights Java SDK obsługuje teraz [rozproszone śledzenie W3C](https://w3c.github.io/trace-context/).
 
-Konfiguracja przychodzącego zestawu SDK została omówiona dokładniej w naszym artykule [](correlation.md#telemetry-correlation-in-the-java-sdk)dotyczącym korelacji.
+Konfiguracja przychodzącego zestawu SDK została omówiona dokładniej w naszym artykule dotyczącym [korelacji](correlation.md#telemetry-correlation-in-the-java-sdk).
 
 Konfiguracja wychodzącego zestawu SDK jest zdefiniowana w pliku [AI-Agent. XML](java-agent.md) .
 
@@ -297,7 +292,7 @@ Teraz, po zainstalowaniu zestawu SDK, możesz użyć interfejsu API do wysyłani
 * [Śledź niestandardowe zdarzenia i metryki][api] , aby dowiedzieć się, co użytkownicy robią z aplikacją.
 * [Wyszukaj zdarzenia i dzienniki][diagnostic] , aby ułatwić diagnozowanie problemów.
 
-## <a name="availability-web-tests"></a>Testy dostępności sieci Web
+## <a name="availability-web-tests"></a>Testy sieci Web z zakresu dostępności
 Usługa Application Insights może służyć do testowania witryny sieci Web w regularnych odstępach czasu, aby sprawdzić, czy witryna działa i odpowiada poprawnie.
 
 [Dowiedz się więcej na temat konfigurowania testów dostępności sieci Web.][availability]

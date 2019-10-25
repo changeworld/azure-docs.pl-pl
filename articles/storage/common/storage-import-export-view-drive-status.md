@@ -1,6 +1,6 @@
 ---
-title: Wyświetlanie stanu zadania usługi Azure Import/Export | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wyświetlić stan zadania importu/eksportu i dysków używanych.
+title: Wyświetlanie stanu zadań importu/eksportu platformy Azure | Microsoft Docs
+description: Dowiedz się, jak wyświetlić stan zadań importu/eksportu i używanych dysków.
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,76 +8,76 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 225164fe00f70839446f8b74155cd3959f745a49
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 222c893f06d9adf77f8a8124af18bc03c5d20bdf
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478049"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821431"
 ---
-# <a name="view-the-status-of-azure-importexport-jobs"></a>Wyświetlanie stanu zadania usługi Azure Import/Export
+# <a name="view-the-status-of-azure-importexport-jobs"></a>Wyświetlanie stanu zadań importu/eksportu platformy Azure
 
-Ten artykuł zawiera informacje na temat wyświetlić stan dysku i zadania dla zadań Azure Import/Export. Usługa Azure Import/Export umożliwia bezpieczne przesyłanie dużych ilości danych do usługi Azure Files i obiektów blob Azure. Usługa umożliwia również eksportować dane z usługi Azure Blob storage.  
+Ten artykuł zawiera informacje dotyczące sposobu wyświetlania stanu dysku i zadania na potrzeby zadań importu/eksportu platformy Azure. Usługa Azure Import/Export służy do bezpiecznego transferu dużych ilości danych do obiektów blob platformy Azure i Azure Files. Usługa jest również używana do eksportowania danych z usługi Azure Blob Storage.  
 
-## <a name="view-job-and-drive-status"></a>Widok zadania i stan dysku
-Można śledzić stan importu lub eksportu zadania w witrynie Azure portal. Kliknij przycisk **Import/Export** kartę. Na stronie zostanie wyświetlona lista zadań.
+## <a name="view-job-and-drive-status"></a>Wyświetlanie stanu zadania i dysku
+Można śledzić stan zadań importu lub eksportu z Azure Portal. Kliknij kartę **Import/Export** . Na stronie zostanie wyświetlona lista zadań.
 
-![Widok stanu zadania](./media/storage-import-export-service/jobstate.png)
+![Wyświetl stan zadania](./media/storage-import-export-service/jobstate.png)
 
 ## <a name="view-job-status"></a>Wyświetlanie stanu zadania
 
-Zostanie wyświetlony jeden z następujących stanów zadań w zależności od tego, gdzie Twój dysk jest w trakcie procesu.
+Zostanie wyświetlony jeden z następujących stanów zadań w zależności od miejsca, w którym znajduje się dysk.
 
 | Stan zadania | Opis |
 |:--- |:--- |
-| Tworzenie | Po utworzeniu zadania, jego stan jest ustawiony na **tworzenie**. Podczas wykonywania zadania w **tworzenie** stanu usługi Import/Export przyjęto założenie, dyski nie zostały wysłane do centrum danych. Zadanie może pozostać w tym stanie przez maksymalnie dwa tygodnie, po których jest on automatycznie usunięty przez usługę. |
-| Wysyłki | Po wysyłasz pakietu, należy zaktualizować informacje o śledzeniu w witrynie Azure portal.  Spowoduje to włączenie zadania do **wysyłania** stanu. Zadanie pozostanie w **wysyłania** stanie do dwóch tygodni. 
-| Odebrano | Po wszystkie dyski są odbierane w centrum danych, stan zadania jest ustawiana na **odebrane**. |
-| Przeniesienie | Po co najmniej jeden dysk rozpoczął przetwarzanie, stan zadania jest ustawiony na **transferowanie**. Aby uzyskać więcej informacji, przejdź do [stany stacji](#view-drive-status). |
-| Tworzenie pakietów | Po wszystkich dysków przetwarzania, zadanie jest umieszczona w **pakowania** stan do momentu dyski są wysyłane do Ciebie. |
-| Ukończone | Po wszystkie dyski są dostarczane do Ciebie, jeśli zadanie zostało ukończone bez błędów, następnie zadanie jest ustawiana na **Ukończono**. Zadania są automatycznie usuwane po 90 dniach w **Ukończono** stanu. |
-| Zamknięte | Po wszystkie dyski są dostarczane do Ciebie, jeśli wystąpiły błędy podczas przetwarzania zadania, zadanie jest ustawiana na **zamknięte**. Zadania są automatycznie usuwane po 90 dniach w **zamknięte** stanu. |
+| Tworzenie | Po utworzeniu zadania jego stan jest ustawiany na **Tworzenie**. Gdy zadanie jest w stanie **tworzenia** , usługa importu/eksportu zakłada, że dyski nie zostały dostarczone do centrum danych. Zadanie może pozostawać w tym stanie przez maksymalnie dwa tygodnie, po upływie którego zostanie automatycznie usunięte przez usługę. |
+| Towarzystwo | Po wysłaniu pakietu należy zaktualizować informacje o śledzeniu w Azure Portal.  Spowoduje to zamianę zadania w stan **wysyłki** . Zadanie pozostaje w stanie **wysyłki** przez maksymalnie dwa tygodnie. 
+| Odebrano | Po odebraniu wszystkich dysków w centrum danych stan zadania jest ustawiany na **odebrane**. |
+| Przekazując | Po rozpoczęciu przetwarzania co najmniej jednego dysku stan zadania jest ustawiany na **transfer**. Aby uzyskać więcej informacji, przejdź do pozycji [dysk Stany](#view-drive-status). |
+| Tworzenie pakietów | Po zakończeniu przetwarzania na wszystkich dyskach zadanie jest umieszczane w stanie **pakowania** , dopóki dyski nie zostaną wysłane z powrotem do użytkownika. |
+| Zakończone | Po wysłaniu wszystkich dysków z powrotem do użytkownika, jeśli zadanie zostało ukończone bez błędów, to zadanie jest ustawione na **ukończone**. Zadanie jest automatycznie usuwane po 90 dniach w stanie **ukończone** . |
+| napis | Po wysłaniu wszystkich dysków do użytkownika, jeśli wystąpią błędy podczas przetwarzania zadania, zadanie jest ustawione na **zamknięte**. Zadanie jest automatycznie usuwane po 90 dniach w stanie **zamkniętym** . |
 
 ## <a name="view-drive-status"></a>Wyświetlanie stanu dysku
 
-W poniższej tabeli opisano cyklu życia poszczególnych dyskach przechodzi przez zadania importu lub eksportu. Bieżący stan każdego dysku, w ramach zadania jest widoczny w witrynie Azure portal.
+W poniższej tabeli opisano cykl życia poszczególnych stacji podczas przejścia przez zadanie importowania lub eksportowania. Bieżący stan każdego dysku w zadaniu jest widoczny w Azure Portal.
 
-W poniższej tabeli opisano każdy stan, który każdego dysku, w ramach zadania mogą przechodzić przez.
+W poniższej tabeli opisano każdy stan, w którym można przechodzić poszczególne dyski w zadaniu.
 
-| Stan stacji | Opis |
+| Stan dysku | Opis |
 |:--- |:--- |
-| Określona | Do zadania importu, gdy zadanie jest tworzone w witrynie Azure portal, stan początkowy dla dysku jest **określone**. Przez zadanie eksportu, ponieważ dysk nie zostanie określony po utworzeniu zadania dysk początkowy stan jest **odebrane**. |
-| Odebrano | Dysk przechodzi do **odebrane** stanu, gdy usługa Import/Export został przetworzony dysków, które zostały odebrane z firmą transportową do zadania importu. Przez zadanie eksportu jest stan stacji początkowej **odebrane** stanu. |
-| NeverReceived | Dysk przechodzi do **NeverReceived** stanu po odebraniu pakietu do danego zadania, ale pakiet nie zawiera dysku. Dysk zostanie przesunięta w ten stan została już dwa tygodnie, ponieważ usługa otrzymała informacje o wysyłce, ale pakiet nie dotarła jeszcze w centrum danych. |
-| Przeniesienie | Dysk przechodzi do **transferowanie** stan, kiedy usługa zaczyna się na przesyłanie danych z dysku do usługi Azure Storage. |
-| Ukończone | Dysk przechodzi do **Ukończono** stanu, gdy usługa została pomyślnie przeniesiona wszystkie dane bez błędów.
-| CompletedMoreInfo | Dysk przechodzi do **CompletedMoreInfo** stanu, gdy Usługa napotkała problemy podczas kopiowania danych z lub na dysku. Informacje mogą zawierać błędy, ostrzeżenia lub komunikaty informacyjne o zastępowaniu obiektów blob.
-| ShippedBack | Dysk przechodzi do **ShippedBack** stan, gdy zostały wysłane z centrum danych na powrót do adres zwrotny. |
+| Wyszczególnion | W przypadku zadania importowania, gdy zadanie jest tworzone na podstawie Azure Portal, zostanie **określony**stan początkowy dla dysku. W przypadku zadania eksportu, ponieważ nie określono dysku podczas tworzenia zadania, zostanie **odebrany**stan dysku początkowego. |
+| Odebrano | Dysk przechodzi do stanu **otrzymanego** , gdy usługa importu/eksportu przetworzyła dyski, które zostały odebrane przez firmę wysyłkową dla zadania importu. W przypadku zadania eksportu stan początkowej stacji jest stan **odebrany** . |
+| NeverReceived | Dysk przechodzi do stanu **NeverReceived** , gdy pakiet dla zadania dociera, ale pakiet nie zawiera dysku. Dysk jest również przenoszony do tego stanu, jeśli miał dwa tygodnie od momentu odebrania przez usługę informacji o wysyłce, ale pakiet nie dotarł jeszcze do centrum danych. |
+| Przekazując | Dysk przechodzi do stanu **transferu** , gdy usługa zaczyna transferować dane z dysku do usługi Azure Storage. |
+| Zakończone | Dysk przechodzi do stanu **ukończenia** , gdy usługa pomyślnie przekazała wszystkie dane bez błędów.
+| CompletedMoreInfo | Dysk przechodzi do stanu **CompletedMoreInfo** , gdy usługa napotkała problemy podczas kopiowania danych z lub do dysku. Informacje mogą zawierać błędy, ostrzeżenia i komunikaty informacyjne dotyczące zastępowania obiektów BLOB.
+| ShippedBack | Dysk przechodzi do stanu **ShippedBack** , gdy został wysłany z centrum danych z powrotem do adresu zwrotnego. |
 
-Ten obraz z witryny Azure portal Wyświetla stan dysku zadania przykład:
+Ten obraz z Azure Portal zawiera stan dysku przykładowego zadania:
 
 ![Wyświetl stan dysku](./media/storage-import-export-service/drivestate.png)
 
-W poniższej tabeli opisano stanów awarii dysku i akcje wykonywane dla każdego stanu.
+W poniższej tabeli opisano Stany awarii stacji i akcje podejmowane dla każdego stanu.
 
-| Stan stacji | Wydarzenie | Rozpoznawanie / następny krok |
+| Stan dysku | Wydarzenie | Rozwiązanie/następny krok |
 |:--- |:--- |:--- |
-| NeverReceived | Dysk, który jest oznaczony jako **NeverReceived** (ponieważ nie została odebrana jako część zadania wydania) dociera do innego wydania. | Zespół operacyjny przenosi dysku **odebrane**. |
-| ND | Dysk, który nie jest częścią dowolnego zadania dociera do centrum danych jako część innego zadania. | Dysk jest oznaczony jako dodatkowy dysk i jest zwracane po zakończeniu zadania skojarzone z oryginalnym pakietem. |
+| NeverReceived | Dysk oznaczony jako **NeverReceived** (ponieważ nie został odebrany jako część wysyłki zadania) dociera do innej wysyłki. | Zespół operacyjny przenosi dysk do **odbierania**. |
+| ND | Dysk, który nie jest częścią żadnego zadania, dociera do centrum danych jako część innego zadania. | Dysk jest oznaczony jako dodatkowy dysk i jest zwracany do użytkownika, gdy zostanie zakończone zadanie skojarzone z oryginalnym pakietem. |
 
-## <a name="time-to-process-job"></a>Czas procesu zadania
-Ilość czasu potrzebnego do przetworzenia zadania importu/eksportu zależy od wielu czynników takich jak:
+## <a name="time-to-process-job"></a>Czas przetwarzania zadania
+Czas przetwarzania zadania importu/eksportu zależy od wielu czynników, takich jak:
 
 -  Czas dostawy
 -  Ładowanie w centrum danych
--  Typ zadania i rozmiaru danych, w której są kopiowane
--  Liczba dysków w ramach zadania. 
+-  Typ zadania i rozmiar kopiowanych danych
+-  Liczba dysków w zadaniu. 
 
-Usługa Import/Export nie ma umowy SLA, ale usługa dokłada starań, aby wykonać kopię w 7 – 10 dni, po otrzymaniu dyski. Oprócz stanu opublikowane w witrynie Azure Portal interfejsów API REST może służyć do śledzenia postępu zadań. Wykonano parametru w [listy zadań](/previous-versions/azure/dn529083(v=azure.100)) wywołania operacji interfejsu API zapewnia postępy wartości procentowej.
+Usługa Import/Export nie ma umowy SLA, ale usługa dokłada starań, aby zakończyć kopię w dniach od 7 do 10 dni po odebraniu dysków. Oprócz stanu opublikowanego w witrynie Azure Portal interfejsy API REST mogą służyć do śledzenia postępów zadań. Parametr procent ukończenia w wywołaniu interfejsu API operacji [listy zadań](/previous-versions/azure/dn529083(v=azure.100)) zapewnia procentowy postęp kopiowania.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Konfigurowanie narzędzia WAImportExport](storage-import-export-tool-how-to.md)
 * [Transferowanie danych za pomocą narzędzia wiersza polecenia AzCopy](storage-use-azcopy.md)
-* [Przykład interfejsu API REST wyeksportować importu Azure](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
+* [Przykład interfejsu API REST usługi Azure Import Export](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

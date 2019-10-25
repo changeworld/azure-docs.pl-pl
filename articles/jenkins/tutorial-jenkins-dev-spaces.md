@@ -1,22 +1,20 @@
 ---
-title: Używanie wtyczki Azure Dev Spaces dla Jenkins z usługą Azure Kubenetes Service
+title: Korzystanie z wtyczki Azure Dev Spaces dla Jenkins za pomocą usługi Azure Kubernetes Service
 description: Dowiedz się, jak używać wtyczki Azure Dev Spaces w potoku ciągłej integracji.
 author: tomarchermsft
 ms.author: tarcher
 ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/31/2019
-ms.openlocfilehash: 3d5e8ba8a29481a6f37ffd10f577d354fc5fbf0a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/23/2019
+ms.openlocfilehash: 7bc2bb63f1382d1c7fd7e436dd5ddfa278262526
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161497"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881879"
 ---
-<!-- GMinchAQ, 06/18/19 -->
-
-# <a name="tutorial-using-the-azure-dev-spaces-plugin-for-jenkins-with-azure-kubenetes-service"></a>Samouczek: Używanie wtyczki Azure Dev Spaces dla Jenkins z usługą Azure Kubenetes Service 
+# <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Samouczek: korzystanie z wtyczki Azure Dev Spaces dla Jenkins za pomocą usługi Azure Kubernetes Service 
 
 Azure Dev Spaces umożliwia testowanie i iteracyjne opracowywanie aplikacji mikrousług działającej w usłudze Azure Kubernetes Service (AKS) bez konieczności replikowania lub makiety zależności. Wtyczka Azure Dev Spaces dla Jenkins ułatwia korzystanie z funkcji miejsca deweloperskiego w potoku ciągłej integracji i dostarczania (CI/CD).
 
@@ -74,7 +72,7 @@ W tej sekcji utworzysz zasoby platformy Azure:
     ```bash
     az aks use-dev-spaces --resource-group MyResourceGroup --name MyAKS
     ```
-    Ten krok powoduje zainstalowanie `azds` rozszerzenia interfejsu wiersza polecenia.
+    Ten krok powoduje zainstalowanie rozszerzenia interfejsu wiersza polecenia `azds`.
 
 4. Utwórz rejestr kontenerów.
 
@@ -88,11 +86,11 @@ W tej sekcji skonfigurujesz miejsce do tworzenia i wdrożono przykładową aplik
 
 Aby uzyskać więcej informacji na temat korzystania z Azure Dev Spaces i tworzenia wielu usług za pomocą Azure Dev Spaces, zobacz artykuł Rozpoczynanie [pracy w systemie Azure dev Spaces przy użyciu języka Java](https://docs.microsoft.com/azure/dev-spaces/get-started-java)i [Tworzenie wielu usług za pomocą Azure dev Spaces](https://docs.microsoft.com/azure/dev-spaces/multi-service-java). Te samouczki zawierają dodatkowe informacje w tle, które nie zostały uwzględnione w tym miejscu.
 
-1. https://github.com/Azure/dev-spaces Pobierz repozytorium z usługi GitHub.
+1. Pobierz repozytorium https://github.com/Azure/dev-spaces z usługi GitHub.
 
-2. `samples/java/getting-started/webfrontend` Otwórz folder w vs Code. (Możesz zignorować wszystkie domyślne monity o dodanie zasobów debugowania lub przywrócenie projektu).
+2. Otwórz folder `samples/java/getting-started/webfrontend` w VS Code. (Możesz zignorować wszystkie domyślne monity o dodanie zasobów debugowania lub przywrócenie projektu).
 
-3. Aktualizuj `/src/main/java/com/ms/sample/webfrontend/Application.java` , aby wyglądać następująco:
+3. Zaktualizuj `/src/main/java/com/ms/sample/webfrontend/Application.java`, aby wyglądać następująco:
 
     ```java
     package com.ms.sample.webfrontend;
@@ -124,26 +122,26 @@ Aby uzyskać więcej informacji na temat korzystania z Azure Dev Spaces i tworze
 
 4. Kliknij przycisk **Wyświetl** , a następnie **Terminal** , aby otworzyć zintegrowany terminal w vs Code.
 
-5. Uruchom polecenie `azds prep` , aby przygotować aplikację do uruchamiania w obszarze dev. To polecenie musi zostać uruchomione z `dev-spaces/samples/java/getting-started/webfrontend` programu w celu poprawnego przygotowania aplikacji:
+5. Uruchom `azds prep` polecenie, aby przygotować aplikację do uruchamiania w obszarze dev. To polecenie musi zostać uruchomione z `dev-spaces/samples/java/getting-started/webfrontend` w celu poprawnego przygotowania aplikacji:
 
     ```bash
     azds prep --public
     ```
 
-    `azds prep` Polecenie interfejsu wiersza polecenia dev Spaces generuje zasoby Docker i Kubernetes z ustawieniami domyślnymi. Te pliki są utrwalane przez okres istnienia projektu i można je dostosować:
+    Polecenie `azds prep` interfejsu wiersza polecenia dev Spaces generuje zasoby Docker i Kubernetes z ustawieniami domyślnymi. Te pliki są utrwalane przez okres istnienia projektu i można je dostosować:
 
-    * `./Dockerfile`i `./Dockerfile.develop` opisują obraz kontenera aplikacji oraz sposób kompilowania i uruchamiania kodu źródłowego w kontenerze.
+    * `./Dockerfile` i `./Dockerfile.develop` opisują obraz kontenera aplikacji oraz sposób kompilowania i uruchamiania kodu źródłowego w ramach kontenera.
     * [Pakiet Helm](https://helm.sh/docs/developing_charts/) w folderze `./charts/webfrontend` opisuje, jak wdrożyć kontener na platformie Kubernetes.
-    * `./azds.yaml`jest plikiem konfiguracji Azure Dev Spaces.
+    * `./azds.yaml` to plik konfiguracji Azure Dev Spaces.
 
     Aby uzyskać więcej informacji, zobacz [jak działa Azure dev Spaces i jest skonfigurowany](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works).
 
-6. Kompiluj i uruchamiaj aplikację w AKS przy użyciu `azds up` polecenia:
+6. Kompiluj i uruchamiaj aplikację w AKS przy użyciu polecenia `azds up`:
 
     ```bash
     azds up
     ```
-    <a name="test_endpoint"></a>Zeskanuj dane wyjściowe konsoli, aby uzyskać informacje o adresie URL utworzonym `up` za pomocą polecenia. Będzie on mieć postać:
+    <a name="test_endpoint"></a>Zeskanuj dane wyjściowe konsoli, aby uzyskać informacje o adresie URL, który został utworzony przez polecenie `up`. Będzie on mieć postać:
 
     ```bash
     (pending registration) Service 'webfrontend' port 'http' will be available at '<url>'
@@ -153,15 +151,15 @@ Aby uzyskać więcej informacji na temat korzystania z Azure Dev Spaces i tworze
 
 8. Następnie skonfiguruj i Wdróż *mywebapi*:
 
-    1. Zmień katalog na`dev-spaces/samples/java/getting-started/mywebapi`
+    1. Zmień katalog na `dev-spaces/samples/java/getting-started/mywebapi`
 
-    2. Uruchom polecenie
+    2. Uruchamianie
 
         ```bash
         azds prep
         ```
 
-    3. Uruchom polecenie
+    3. Uruchamianie
 
         ```bash
         azds up -d
@@ -173,7 +171,7 @@ W tej sekcji przygotowano serwer Jenkins do uruchamiania przykładowego potoku C
 
 * Zainstaluj wtyczki
 * Instalowanie interfejsu wiersza polecenia Helm i Kubernetes
-* Dodaj poświadczenia
+* Dodawanie poświadczeń
 
 ### <a name="install-plug-ins"></a>Zainstaluj wtyczki
 
@@ -207,7 +205,7 @@ Przykładowy potok używa Helm i polecenia kubectl do wdrożenia w obszarze dev.
 
 ### <a name="add-credentials-to-jenkins"></a>Dodawanie poświadczeń do Jenkins
 
-1. Jenkins potrzebuje jednostki usługi platformy Azure na potrzeby uwierzytelniania i uzyskiwania dostępu do zasobów platformy Azure. Aby utworzyć nazwę główną usługi, zapoznaj się z sekcją [Tworzenie nazwy głównej](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) usługi w samouczku wdrażanie do Azure App Service. Pamiętaj, aby zapisać kopię danych wyjściowych z `create-for-rbac` programu, ponieważ potrzebujesz tych informacji, aby wykonać następny krok. Dane wyjściowe będą wyglądać następująco:
+1. Jenkins potrzebuje jednostki usługi platformy Azure na potrzeby uwierzytelniania i uzyskiwania dostępu do zasobów platformy Azure. Aby utworzyć nazwę główną usługi, zapoznaj się z sekcją [tworzenie głównej usługi](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#create-service-principal) w samouczku wdrażanie do Azure App Service. Pamiętaj, aby zapisać kopię danych wyjściowych z `create-for-rbac`, ponieważ potrzebujesz tych informacji, aby wykonać następny krok. Dane wyjściowe będą wyglądać następująco:
 
     ```json
     {
@@ -219,9 +217,9 @@ Przykładowy potok używa Helm i polecenia kubectl do wdrożenia w obszarze dev.
     }
     ```
 
-2. Dodaj typ poświadczeń jednostki *usługi Microsoft Azure* w Jenkins, używając informacji o jednostce usługi z poprzedniego kroku. Nazwy na poniższym zrzucie ekranu odpowiadają wynikom z `create-for-rbac`.
+2. Dodaj typ poświadczeń jednostki *usługi Microsoft Azure* w Jenkins, używając informacji o jednostce usługi z poprzedniego kroku. Nazwy na poniższym zrzucie ekranu odpowiadają dane wyjściowe z `create-for-rbac`.
 
-    Pole **ID** jest nazwą poświadczenia Jenkins dla nazwy głównej usługi. W przykładzie użyto wartości `displayName` (w tym `xxxxxxxjenkinssp`wystąpieniu), ale można użyć dowolnego tekstu. Ta nazwa poświadczenia jest wartością zmiennej środowiskowej AZURE_CRED_ID w następnej sekcji.
+    Pole **ID** jest nazwą poświadczenia Jenkins dla nazwy głównej usługi. W przykładzie użyto wartości `displayName` (w tym przypadku `xxxxxxxjenkinssp`), ale można użyć dowolnego tekstu. Ta nazwa poświadczenia jest wartością zmiennej środowiskowej AZURE_CRED_ID w następnej sekcji.
 
     ![Dodaj poświadczenia nazwy głównej usługi do Jenkins](media/tutorial-jenkins-dev-spaces/add-service-principal-credentials.png)
 
@@ -265,7 +263,7 @@ Przykładowy potok używa Helm i polecenia kubectl do wdrożenia w obszarze dev.
 
 ## <a name="create-a-pipeline"></a>Tworzenie potoku
 
-Scenariusz wybrany dla przykładowego potoku jest oparty na wzorcu rzeczywistym: Żądanie ściągnięcia wyzwala potok elementu konfiguracji, który kompiluje, a następnie wdraża proponowane zmiany w obszarze dev platformy Azure na potrzeby testowania i przeglądu. W zależności od wyniku przeglądu zmiany są scalane i wdrażane w AKS lub odrzucane. Na koniec miejsce dev jest usuwana.
+Scenariusz wybrany dla przykładowego potoku jest oparty na wzorcu rzeczywistym: żądanie ściągnięcia wyzwala potok elementu konfiguracji, który kompiluje, a następnie wdraża proponowane zmiany w obszarze dev platformy Azure na potrzeby testowania i przeglądu. W zależności od wyniku przeglądu zmiany są scalane i wdrażane w AKS lub odrzucane. Na koniec miejsce dev jest usuwana.
 
 Konfiguracja potoku Jenkins i fragmenty definiują etapy w potoku CI. Ten schemat blokowy przedstawia etapy potoku i punkty decyzyjne zdefiniowane przez fragmenty:
 
@@ -339,7 +337,7 @@ Aby wykonać krok 3 w tej sekcji, należy dodać komentarz do części fragmenty
     }
 ```
 
-1. Wprowadź zmiany `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`, a następnie Utwórz żądanie ściągnięcia. Na przykład:
+1. Wprowadź zmianę w `mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java`a następnie Utwórz żądanie ściągnięcia. Na przykład:
 
     ```java
     public String index() {
@@ -355,7 +353,7 @@ Aby wykonać krok 3 w tej sekcji, należy dodać komentarz do części fragmenty
 
     1. Otwórz przeglądarkę i przejdź do udostępnionej wersji `https://webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. TEST_ENDPOINT zawiera adres URL.
 
-    2. Otwórz kolejną kartę, a następnie wprowadź adres URL przestrzeni dev dla zakupu. Będzie wyglądać podobnie do `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. Link zostanie znaleziony w **historii kompilacji > < kompilacja # > > dane wyjściowe konsoli** dla zadania Jenkins. Wyszukaj na stronie `aksapp`lub aby wyświetlić tylko prefiks, `azdsprefix`Wyszukaj ciąg.
+    2. Otwórz kolejną kartę, a następnie wprowadź adres URL przestrzeni dev dla zakupu. Będzie wyglądać podobnie do `https://<yourdevspacename>.s.webfrontend.XXXXXXXXXXXXXXXXXXX.eastus.aksapp.io`. Link zostanie znaleziony w **historii kompilacji > < kompilacja # > > dane wyjściowe konsoli** dla zadania Jenkins. Przeszukaj stronę `aksapp`lub aby wyświetlić tylko prefiks, wyszukaj ciąg `azdsprefix`.
 
  
 
@@ -376,9 +374,9 @@ stage('create dev space') {
 }
 ```
 
-Jest to adres URL aplikacji webfrontonu, która została wcześniej wdrożona za pomocą polecenia `azds up`w temacie [wdrażanie przykładowych aplikacji do klastra AKS, krok 7](#test_endpoint). `test_endpoint` Wartość `$env.TEST_ENDPOINT` jest ustawiana w konfiguracji potoku. 
+`test_endpoint` to adres URL aplikacji webfrontonu, która została wcześniej wdrożona przy użyciu `azds up`[wdrażania przykładowych aplikacji do klastra AKS, krok 7](#test_endpoint). Wartość `$env.TEST_ENDPOINT` jest ustawiona w konfiguracji potoku. 
 
-Poniższy fragment kodu pokazuje, jak na `smoketest` etapie jest używany adres URL podrzędnego miejsca dev. Kod sprawdza, czy jest dostępna podrzędna przestrzeń dev TEST_ENDPOINT, a jeśli tak, pobiera tekst pozdrowienia do stdout:
+Poniższy fragment kodu przedstawia sposób używania adresu URL podrzędnego miejsca deweloperskiego na etapie `smoketest`. Kod sprawdza, czy jest dostępna podrzędna przestrzeń dev TEST_ENDPOINT, a jeśli tak, pobiera tekst pozdrowienia do stdout:
 
 ```Groovy
 stage('smoketest') {

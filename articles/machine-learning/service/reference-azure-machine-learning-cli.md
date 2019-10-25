@@ -1,7 +1,7 @@
 ---
 title: Rozszerzenie interfejsu wiersza polecenia uczenia maszynowego
 titleSuffix: Azure Machine Learning
-description: Dowiedz się więcej o rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning dla wiersza polecenia platformy Azure. Wiersza polecenia platformy Azure jest narzędziem wiersza polecenia dla wielu platform, która umożliwia pracę z zasobami w chmurze platformy Azure. Rozszerzenie Machine Learning umożliwia korzystanie z Azure Machine Learning.
+description: Dowiedz się więcej o rozszerzeniu interfejsu wiersza polecenia Azure Machine Learning dla interfejsu wiersza polecenia platformy Azure. Interfejs wiersza polecenia platformy Azure to międzyplatformowy program narzędziowy, który umożliwia korzystanie z zasobów w chmurze platformy Azure. Rozszerzenie Machine Learning umożliwia korzystanie z Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,32 +9,32 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 08/20/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 85ebcc36d32b86ec2640ce7ce02190deaab19d6b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 597cc4e03257b544187fc2bc131974954b64c84b
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997078"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819869"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Użyj rozszerzenia interfejsu wiersza polecenia dla Azure Machine Learning
 
-Interfejsu wiersza polecenia usługi Azure Machine Learning to rozszerzenie [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), interfejs wiersza polecenia dla wielu platform na platformie Azure. To rozszerzenie udostępnia polecenia do pracy z Azure Machine Learning. Pozwala to zautomatyzować działania uczenia maszynowego. Poniższa lista zawiera przykładowe akcje, które można wykonać przy użyciu rozszerzenia interfejsu wiersza polecenia:
+Interfejs wiersza polecenia Azure Machine Learning jest rozszerzeniem [dla platformy Azure, który](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)działa na wielu platformach. To rozszerzenie udostępnia polecenia do pracy z Azure Machine Learning. Pozwala to zautomatyzować działania uczenia maszynowego. Poniższa lista zawiera przykładowe akcje, które można wykonać przy użyciu rozszerzenia interfejsu wiersza polecenia:
 
 + Uruchamianie eksperymentów w celu tworzenia modeli uczenia maszynowego
 
-+ Zarejestruj modele uczenia maszynowego do użycia przez klientów
++ Rejestrowanie modeli uczenia maszynowego do użycia przez klienta
 
-+ Pakowanie, wdrażanie i śledzenia w cyklu życia modeli usługi machine learning
++ Pakowanie, wdrażanie i śledzenie cyklu życia modeli uczenia maszynowego
 
-Interfejs wiersza polecenia nie jest zamiennikiem dla zestawu SDK usługi Azure Machine Learning. Jest to narzędzie uzupełniające, które jest zoptymalizowane pod kątem obsługi wysoce sparametryzowanych zadań, które dobrze pasują do automatyzacji.
+Interfejs wiersza polecenia nie zastępuje zestawu SDK Azure Machine Learning. Jest to narzędzie uzupełniające, które jest zoptymalizowane pod kątem obsługi wysoce sparametryzowanych zadań, które dobrze pasują do automatyzacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Aby korzystać z interfejsu wiersza polecenia, musi mieć subskrypcję platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+* Aby korzystać z interfejsu wiersza polecenia, musisz mieć subskrypcję platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
-* [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 ## <a name="full-reference-docs"></a>Pełne dokumenty referencyjne
 
@@ -51,9 +51,9 @@ az extension add -n azure-cli-ml
 > [!TIP]
 > Przykładowe pliki, których można użyć z poniższymi poleceniami, można znaleźć [tutaj](https://aka.ms/azml-deploy-cloud).
 
-Po wyświetleniu monitu wybierz `y` można zainstalować rozszerzenia.
+Po wyświetleniu monitu wybierz pozycję `y`, aby zainstalować rozszerzenie.
 
-Aby sprawdzić, czy rozszerzenie zostało zainstalowane, użyj następującego polecenia, aby wyświetlić listę określonych ML podpoleceń polecenia:
+Aby sprawdzić, czy rozszerzenie zostało zainstalowane, użyj następującego polecenia, aby wyświetlić listę podpoleceń specyficznych dla ML:
 
 ```azurecli-interactive
 az ml -h
@@ -68,9 +68,9 @@ az extension update -n azure-cli-ml
 ```
 
 
-## <a name="remove-the-extension"></a>Usuń rozszerzenie
+## <a name="remove-the-extension"></a>Usuwanie rozszerzenia
 
-Aby usunąć rozszerzenie interfejsu wiersza polecenia, użyj następującego polecenia:
+Aby usunąć rozszerzenie CLI, użyj następującego polecenia:
 
 ```azurecli-interactive
 az extension remove -n azure-cli-ml
@@ -78,7 +78,7 @@ az extension remove -n azure-cli-ml
 
 ## <a name="resource-management"></a>Zarządzanie zasobami
 
-Poniższe polecenia pokazują, jak zarządzać zasoby używane przez usługi Azure Machine Learning przy użyciu interfejsu wiersza polecenia.
+Następujące polecenia pokazują, jak używać interfejsu wiersza polecenia do zarządzania zasobami używanymi przez Azure Machine Learning.
 
 + Jeśli jeszcze tego nie zrobiono, Utwórz grupę zasobów:
 
@@ -100,7 +100,7 @@ Poniższe polecenia pokazują, jak zarządzać zasoby używane przez usługi Azu
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    To polecenie tworzy `.azureml` podkatalog zawierający przykładowe pliki środowiska runconfig i Conda. Zawiera `config.json` również plik, który jest używany do komunikowania się z obszarem roboczym Azure Machine Learning.
+    To polecenie tworzy podkatalog `.azureml`, który zawiera przykładowe pliki środowiska runconfig i Conda. Zawiera również plik `config.json`, który jest używany do komunikowania się z obszarem roboczym Azure Machine Learning.
 
     Aby uzyskać więcej informacji, zobacz [AZ ml folder Attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -138,18 +138,18 @@ Poniższe polecenia pokazują, jak zarządzać zasoby używane przez usługi Azu
 
 ## <a id="experiments"></a>Uruchom eksperymenty
 
-* Rozpocznij przebieg eksperymentu. Korzystając z tego polecenia, należy określić nazwę pliku runconfig (tekst przed \*. runconfig, Jeśli przeglądasz system plików) z parametrem-c.
+* Rozpocznij uruchamianie eksperymentu. Korzystając z tego polecenia, należy określić nazwę pliku runconfig (tekst przed \*. runconfig, Jeśli przeglądasz system plików) z parametrem-c.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
     > [!TIP]
-    > `az ml folder attach` Polecenie`.azureml` tworzy podkatalog, który zawiera dwa przykładowe pliki runconfig. 
+    > `az ml folder attach` polecenie tworzy podkatalog `.azureml`, który zawiera dwa przykładowe pliki runconfig. 
     >
     > Jeśli masz skrypt języka Python, który programowo tworzy obiekt konfiguracji uruchomieniowej, możesz użyć [runconfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) , aby zapisać go jako plik runconfig.
     >
-    > Więcej przykładowych plików runconfig można znaleźć [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml)w temacie.
+    > Aby uzyskać więcej przykładowych plików runconfig, zobacz [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml).
 
     Aby uzyskać więcej informacji, zobacz [AZ ml Run Submit-Script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
@@ -197,11 +197,45 @@ Następujące polecenia pokazują, jak tworzyć, rejestrować i wyświetlać lis
 
     Aby uzyskać więcej informacji, zobacz [AZ ml Environment Download](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download).
 
+## <a name="ml-pipeline-management"></a>Zarządzanie potoku ML
+
+Następujące polecenia pokazują, jak korzystać z potoków uczenia maszynowego:
+
++ Tworzenie potoku uczenia maszynowego:
+
+    ```azurecli-interactive
+    az ml pipeline create -n mypipeline -y mypipeline.yml
+    ```
+
+    Aby uzyskać więcej informacji, zobacz [AZ ml Pipeline Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline?view=azure-cli-latest#ext-azure-cli-ml-az-ml-pipeline-create).
+
+    Aby uzyskać więcej informacji na temat potoku YAML pliku, zobacz [Definiowanie potoków uczenia maszynowego w YAML](reference-pipeline-yaml.md).
+
++ Uruchamianie potoku:
+
+    ```azurecli-interactive
+    az ml run submit-pipeline -n myexperiment -y mypipeline.yml
+    ```
+
+    Aby uzyskać więcej informacji, zobacz [AZ ml Run Submit-Pipeline](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-pipeline).
+
+    Aby uzyskać więcej informacji na temat potoku YAML pliku, zobacz [Definiowanie potoków uczenia maszynowego w YAML](reference-pipeline-yaml.md).
+
++ Planowanie potoku:
+
+    ```azurecli-interactive
+    az ml pipeline create-schedule -n myschedule -e myexpereiment -i mypipelineid -y myschedule.yml
+    ```
+
+    Aby uzyskać więcej informacji, zobacz [AZ ml potoku Create-Schedule](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline?view=azure-cli-latest#ext-azure-cli-ml-az-ml-pipeline-create-schedule).
+
+    Aby uzyskać więcej informacji na temat pliku YAML harmonogramu potoku, zobacz [Definiowanie potoków uczenia maszynowego w YAML](reference-pipeline-yaml.md#schedules).
+
 ## <a name="model-registration-profiling-deployment"></a>Rejestracja modelu, profilowanie, wdrażanie
 
-Poniższe polecenia pokazują, jak rejestrowanie uczonego modelu, a następnie wdrożyć go jako usługę produkcyjną:
+Następujące polecenia pokazują, jak zarejestrować szkolony model, a następnie wdrożyć go jako usługę produkcyjną:
 
-+ Zarejestruj model przy użyciu usługi Azure Machine Learning:
++ Zarejestruj model przy użyciu Azure Machine Learning:
 
     ```azurecli-interactive
     az ml model register -n mymodel -p sklearn_regression_model.pkl

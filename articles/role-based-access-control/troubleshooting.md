@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 158222c256e3efc7ca87d7a3781ca68e1c4307b1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: e8a5b8b5794687f9e3b1707fda4cbe381e277317
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750184"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819768"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Rozwiązywanie problemów z funkcją RBAC dla zasobów platformy Azure
 
@@ -29,7 +29,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące kontroli 
 ## <a name="problems-with-rbac-role-assignments"></a>Problemy z przypisaniami ról kontroli dostępu opartej na rolach
 
 - Jeśli nie można dodać przypisania roli w Azure Portal na **kontroli dostępu (IAM)** , ponieważ opcja **Dodaj**  > **Dodaj przypisanie roli** jest wyłączona lub z powodu błędu uprawnień "klient z identyfikatorem obiektu nie ma Autoryzacja do wykonania akcji ", sprawdź, czy jesteś zalogowany przy użyciu użytkownika, który ma przypisaną rolę z uprawnieniami `Microsoft.Authorization/roleAssignments/write`, takimi jak [właściciel](built-in-roles.md#owner) lub [administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) w zakresie, w którym próbujesz przypisać rolę.
-- Jeśli zostanie wyświetlony komunikat o błędzie "nie można utworzyć więcej przypisań ról (kod: RoleAssignmentLimitExceeded)" podczas próby przypisania roli, spróbuj zmniejszyć liczbę przypisań ról, przypisując role do grup. Platforma Azure obsługuje maksymalnie **2000** przypisań ról na subskrypcję.
+- Jeśli zostanie wyświetlony komunikat o błędzie "nie można utworzyć więcej przypisań ról (kod: RoleAssignmentLimitExceeded)" podczas próby przypisania roli, spróbuj zmniejszyć liczbę przypisań ról, przypisując role do grup. Platforma Azure obsługuje maksymalnie **2000** przypisań ról na subskrypcję. Limit przypisań ról jest stały i nie można go zwiększyć.
 
 ## <a name="problems-with-custom-roles"></a>Problemy z rolami niestandardowymi
 

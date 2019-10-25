@@ -1,27 +1,27 @@
 ---
-title: Wdrażanie w usłudze Azure Functions przy użyciu wtyczki serwera Jenkins usługi Azure Functions
-description: Dowiedz się, jak wdrażać w usłudze Azure Functions przy użyciu wtyczki serwera Jenkins usługi Azure Functions
+title: Wdrażanie do Azure Functions przy użyciu wtyczki Azure Functions Jenkins
+description: Dowiedz się, jak wdrażać Azure Functions przy użyciu wtyczki Azure Functions Jenkins
 ms.service: jenkins
 keywords: jenkins, azure, metodyki devops, java, usługę azure functions
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 02/23/2019
-ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 10/23/2019
+ms.openlocfilehash: 58267c607b0c4f2eaaf242c8e0752451f8c04c9a
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815737"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882037"
 ---
-# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Wdrażanie w usłudze Azure Functions przy użyciu wtyczki serwera Jenkins usługi Azure Functions
+# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Wdrażanie do Azure Functions przy użyciu wtyczki Azure Functions Jenkins
 
-[Azure Functions](/azure/azure-functions/) to usługa obliczeniowa niewymagająca użycia serwera. Dzięki usłudze Azure Functions możesz uruchamiać kod na żądanie bez konieczności aprowizowania infrastruktury lub zarządzania nią. W tym samouczku pokazano, jak wdrożyć funkcję w języku Java w usłudze Azure Functions przy użyciu wtyczki Azure Functions.
+[Azure Functions](/azure/azure-functions/) to usługa obliczeniowa niewymagająca użycia serwera. Dzięki usłudze Azure Functions możesz uruchamiać kod na żądanie bez konieczności aprowizowania infrastruktury lub zarządzania nią. W tym samouczku pokazano, jak wdrożyć funkcję języka Java w celu Azure Functions przy użyciu wtyczki Azure Functions.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Subskrypcja platformy Azure**: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - **Serwer Jenkins**: Jeśli nie masz zainstalowanego serwera Jenkins, zapoznaj się z artykułem [Tworzenie serwera Jenkins na platformie Azure](./install-jenkins-solution-template.md).
 
   > [!TIP]
@@ -76,7 +76,7 @@ W poniższych krokach wyjaśniono, jak przygotować serwer Jenkins:
 
 1. Na pulpicie nawigacyjnym serwera Jenkins zainstaluj następujące wtyczki:
 
-    - Wtyczka Azure Functions
+    - Azure Functions wtyczka
     - Wtyczka EnvInject
 
 1. Serwer Jenkins wymaga jednostki usługi platformy Azure w celu uwierzytelniania zasobów platformy Azure i uzyskania do nich dostępu. Zapoznaj się z artykułem [Deploy to Azure App Service (Wdrażanie w usłudze Azure App Service)](./tutorial-jenkins-deploy-web-app-azure-app-service.md), aby uzyskać instrukcje krok po kroku.

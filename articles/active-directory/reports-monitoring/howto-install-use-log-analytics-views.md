@@ -1,5 +1,5 @@
 ---
-title: Jak zainstalować widoki usługi log Analytics i korzystać z nich Azure Active Directory | Microsoft Docs
+title: Jak zainstalować widoki usługi log Analytics i korzystać z nich | Microsoft Docs
 description: Dowiedz się, jak zainstalować widoki usługi log Analytics i korzystać z nich Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -17,26 +17,26 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb1241387144b691b76ec330a5f90b762ebc11f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 00bca8bca19f9a71c4eeb639017845987682661f
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989787"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820915"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalowanie i Używanie widoków usługi log Analytics na potrzeby Azure Active Directory
 
 Widoki usługi log Analytics ułatwiają analizowanie i wyszukiwanie dzienników aktywności w usłudze Azure AD w dzierżawie usługi Azure AD. Azure Active Directory Dzienniki aktywności usługi Azure AD obejmują:
 
-* Dzienniki inspekcji: [Raport działania dzienników inspekcji](concept-audit-logs.md) umożliwia dostęp do historii każdego zadania, które jest wykonywane w dzierżawie.
-* Dzienniki logowania: [Raport dotyczący działań](concept-sign-ins.md)związanych z logowaniem pozwala określić, kto wykonał zadania zgłaszane w dziennikach inspekcji.
+* Dzienniki inspekcji: [raport działania dzienników inspekcji](concept-audit-logs.md) umożliwia dostęp do historii każdego zadania, które jest wykonywane w dzierżawie.
+* Dzienniki logowania: w raporcie dotyczącym [działań związanych z logowaniem](concept-sign-ins.md)można określić, kto wykonał zadania zgłaszane w dziennikach inspekcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby można było korzystać z widoków usługi log Analytics, potrzebne są:
 
 * Log Analytics obszar roboczy w ramach subskrypcji platformy Azure. Dowiedz się [, jak utworzyć obszar roboczy log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
-* Najpierw wykonaj kroki umożliwiające kierowanie [dzienników aktywności usługi Azure AD do obszaru roboczego log Analytics](howto-integrate-activity-logs-with-log-analytics.md).
+* Najpierw wykonaj kroki umożliwiające [kierowanie dzienników aktywności usługi Azure AD do obszaru roboczego log Analytics](howto-integrate-activity-logs-with-log-analytics.md).
 * Pobierz widoki z [repozytorium GitHub](https://aka.ms/AADLogAnalyticsviews) na komputer lokalny.
 
 ## <a name="install-the-log-analytics-views"></a>Instalowanie widoków usługi log Analytics
@@ -51,15 +51,15 @@ Aby można było korzystać z widoków usługi log Analytics, potrzebne są:
 
 2. Gdy jesteś w obszarze roboczym, wybierz opcję **Podsumowanie obszaru roboczego**. Powinny zostać wyświetlone następujące trzy widoki:
 
-    * **Zdarzenia aprowizacji konta usługi Azure AD**: Ten widok przedstawia raporty dotyczące aktywności związanej z obsługą inspekcji, takie jak liczba nowych użytkowników i niepowodzenia aprowizacji, liczba zaktualizowanych użytkowników i aktualizacja niepowodzeń oraz liczba użytkowników, którym cofnięto Inicjowanie obsługi administracyjnej i odpowiadające im błędy.    
-    * **Zdarzenia logowania**: Ten widok przedstawia najbardziej odpowiednie raporty dotyczące monitorowania aktywności związanej z logowaniem, takie jak logowania według aplikacji, użytkownika, urządzenia, a także widok podsumowania, który śledzi liczbę logowań w czasie.
+    * **Zdarzenia aprowizacji konta usługi Azure AD**: ten widok przedstawia raporty dotyczące aktywności związanej z obsługą inspekcji, na przykład liczbę nowych użytkowników i niepowodzenia aprowizacji, liczbę zaktualizowanych użytkowników i błędy aktualizacji oraz liczbę użytkowników dezaktywowane i odpowiadające błędy.    
+    * **Zdarzenia logowania**: ten widok przedstawia najbardziej odpowiednie raporty związane z monitorowaniem aktywności, takie jak logowania według aplikacji, użytkownika, urządzenia, a także widok podsumowania, który śledzi liczbę logowań w czasie.
 
 3. Wybierz jeden z tych widoków, aby przejść do poszczególnych raportów. Możesz również ustawić alerty dla dowolnego parametru raportu. Na przykład Skonfigurujmy alert za każdym razem, gdy wystąpi błąd logowania. Aby to zrobić, najpierw wybierz widok **zdarzenia logowania** , wybierz pozycję **Błędy logowania** w raporcie czas, a następnie wybierz pozycję **Analiza** , aby otworzyć stronę szczegóły z rzeczywistym zapytaniem za raport. 
 
     ![Szczegóły](./media/howto-install-use-log-analytics-views/details.png)
 
 
-4. Wybierz pozycję **Ustaw Alert**, a następnie wybierz pozycję za każdym razem, gdy w sekcji **kryteria alertu** **jest &lt;zdefiniowana&gt; logika wyszukiwanie w dzienniku** niestandardowym. Ponieważ chcemy alertować zawsze, gdy wystąpi błąd logowania, ustaw **próg** domyślnej logiki alertu na **1** , a następnie wybierz pozycję **gotowe**. 
+4. Wybierz pozycję **Ustaw Alert**, a następnie wybierz opcję **zawsze, gdy niestandardowe wyszukiwanie w dzienniku jest &lt;logiki niezdefiniowanej&gt;** w sekcji **kryteria alertu** . Ponieważ chcemy alertować zawsze, gdy wystąpi błąd logowania, ustaw **próg** domyślnej logiki alertu na **1** , a następnie wybierz pozycję **gotowe**. 
 
     ![Konfigurowanie logiki sygnału](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 

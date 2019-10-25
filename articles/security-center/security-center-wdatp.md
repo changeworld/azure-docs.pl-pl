@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: fb401226e9697afb71dfa7a30f9814e07c3422c2
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6ceed914d1c69ccdfce5d7acb6dcfc1afc9ef868
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028079"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819892"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Zaawansowana ochrona przed zagrożeniami w usłudze Microsoft Defender przy użyciu Azure Security Center
 
@@ -50,7 +50,7 @@ Aby przeprowadzić dalsze badanie, użyj programu Microsoft Defender ATP. Usług
 
 ## <a name="platform-support"></a>Obsługa platform
 
-Usługa Microsoft Defender ATP w Security Center obsługuje wykrywanie w systemach operacyjnych Windows Server 2016, 2012 R2 i 2008 R2 z dodatkiem SP1 w standardowej subskrypcji usługi.
+Usługa Microsoft Defender ATP w Security Center obsługuje wykrywanie w systemach Windows Server 2016, 2012 R2 i 2008 R2 SP1 w przypadku maszyn wirtualnych platformy Azure potrzebna jest subskrypcja warstwy Standardowa i dla maszyn wirtualnych z systemem innym niż Azure potrzebna jest warstwa standardowa tylko na poziomie obszaru roboczego.
 
 > [!NOTE]
 > W przypadku korzystania z Azure Security Center do monitorowania serwerów usługa Microsoft Defender ATP zostanie automatycznie utworzona, a dane z witryny Microsoft Defender ATP są domyślnie przechowywane w Europie. Jeśli musisz przenieść dane do innej lokalizacji, musisz skontaktować się z pomoc techniczna firmy Microsoft w celu zresetowania dzierżawy. Monitorowanie punktu końcowego serwera korzystające z tej integracji zostało wyłączone dla klientów korzystających z pakietu Office 365 w zatoce.

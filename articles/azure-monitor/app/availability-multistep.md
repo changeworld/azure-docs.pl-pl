@@ -1,19 +1,19 @@
 ---
 title: Monitoruj aplikację sieci Web za pomocą wieloetapowych testów sieci Web i platformy Azure Application Insights | Microsoft Docs
-description: Konfigurowanie wieloetapowych testów sieci Web do monitorowania aplikacji sieci Web przy użyciu usługi Azure Application Insights
+description: Konfigurowanie wieloetapowych testów sieci Web w celu monitorowania aplikacji sieci Web przy użyciu usługi Azure Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/25/2019
+ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678232"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817393"
 ---
 # <a name="multi-step-web-tests"></a>Wieloetapowy test witryny
 
@@ -34,38 +34,12 @@ Aby zlokalizować wymagania wstępne narzędzi do testowania. Uruchom **Instalat
 > [!NOTE]
 > Wieloetapowe testy sieci Web mają dodatkowe koszty związane z nimi. Aby dowiedzieć się więcej, zapoznaj się z [oficjalnym przewodnikiem cen](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="record-a-multi-step-web-test"></a>Rejestrowanie wieloetapowego testu sieci Web
+## <a name="record-a-multi-step-web-test"></a>Rejestrowanie wieloetapowego testu sieci Web 
 
-Aby utworzyć test wieloetapowy, nagraj scenariusz przy użyciu programu Visual Studio Enterprise, a następnie przekaż nagranie do usługi Application Insights. Application Insights odtwarza scenariusz w ustalonych odstępach czasu i weryfikuje odpowiedź.
+> [!WARNING]
+> Nie zalecamy już korzystania z rejestratora wieloetapowego. Rejestrator został opracowany dla statycznych stron HTML z podstawowymi interakcjami i nie zapewnia funkcjonalnego środowiska dla nowoczesnych stron sieci Web.
 
-> [!IMPORTANT]
-> * W testach nie można używać pętli ani funkcji kodowanych. Test musi być całkowicie zawarty w skrypcie webtest. Można jednak używać wtyczek standardowych.
-> * W wieloetapowych testach internetowych obsługiwane są tylko angielskie znaki. Jeśli używasz programu Visual Studio w innych językach, zaktualizuj plik definicji testu internetowego w celu zmiany/wykluczenia znaków innych niż angielskie.
-
-Nagraj sesję sieci Web w programie Visual Studio Enterprise.
-
-1. Utwórz projekt testu wydajności i obciążenia sieci Web. **Plik**  > **Nowy**  > **projektu**  > **Visual C#**   > **test**
-
-    ![Interfejs użytkownika nowego projektu programu Visual Studio](./media/availability-multistep/vs-web-performance-and-load-test.png)
-
-2. Otwórz plik `.webtest` i Rozpocznij nagrywanie.
-
-    ![Interfejs użytkownika nagrywania testu programu Visual Studio](./media/availability-multistep/open-web-test.png)
-
-3. Kliknij kroki, które mają zostać symulowane przez test w ramach nagrania.
-
-    ![Interfejs użytkownika rejestrowania przeglądarki](./media/availability-multistep/record.png)
-
-4. Zmodyfikuj test, aby:
-
-    * Dodać operacje sprawdzania poprawności odebranego tekstu i kodów odpowiedzi,
-    * Usuń wszystkie interakcje uneccesary. Można również usunąć zależne żądania dla obrazów lub dodać witryny śledzenia, które nie są istotne dla rozważanych testów.
-    
-    Należy pamiętać, że można edytować tylko skrypt testowy — można dodać kod niestandardowy lub wywołać inne testy sieci Web. Nie wstawiaj pętli do testu. Możesz używać standardowych wtyczek testów sieci Web.
-
-5. Uruchom test w programie Visual Studio, aby sprawdzić poprawność i upewnić się, że działa.
-
-    Moduł uruchamiający testy sieci web otwiera przeglądarkę sieci Web i powtarza nagrane akcje. Upewnij się, że wszystko działa zgodnie z oczekiwaniami.
+Aby uzyskać wskazówki dotyczące tworzenia testów sieci Web programu Visual Studio, zapoznaj się z [oficjalną dokumentacją programu Visual studio 2019](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
 
 ## <a name="upload-the-web-test"></a>Przekaż test sieci Web
 
@@ -96,7 +70,7 @@ Nagraj sesję sieci Web w programie Visual Studio Enterprise.
 |**Wdrożenie klasyczne** | Nie zalecamy już używania klasycznych alertów dla nowych testów dostępności.|
 |**Próg lokalizacji alertu**|Zalecamy co najmniej 3/5 lokalizacji. Optymalną relację między progiem lokalizacji alertów a liczbą lokalizacji testowych jest **próg lokalizacji alertu**  = **liczbę lokalizacji testu-2 z co najmniej pięcioma lokalizacjami testów.**|
 
-## <a name="advanced-configuration"></a>Konfiguracja zaawansowana
+## <a name="configuration"></a>Konfigurowanie
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>Podłączanie czasu i liczb losowych do testu
 

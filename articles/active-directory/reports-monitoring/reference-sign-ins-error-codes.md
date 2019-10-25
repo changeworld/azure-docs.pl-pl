@@ -1,5 +1,5 @@
 ---
-title: Kody błędów w raportach działań związanych z logowaniem w portalu usługi Azure Active Directory | Microsoft Docs
+title: Kody błędów w portalu Azure Active Directory | Microsoft Docs
 description: Dokumentacja dotycząca kodów błędów w raportach działań związanych z logowaniem.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 931f2fbe5798966c41378d9b401dcd59cafc5cca
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383171"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820875"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raportów działań związanych z logowaniem 
 
@@ -38,15 +38,15 @@ Gdy logowanie nie powiedzie się, zostanie wyświetlony kod błędu odpowiadają
 
 Przejdź do [raportu logowania](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) w [Azure Portal](https://portal.azure.com).
 
-![Działania związane z logowaniem](./media/reference-sign-ins-error-codes/61.png "Działania związane z logowaniem")
+![Aktywność logowania](./media/reference-sign-ins-error-codes/61.png "Aktywność związana z logowaniem")
 
 Przefiltruj raport, aby wyświetlić wszystkie nieudane logowania, wybierając pozycję **Niepowodzenie** w polu listy rozwijanej **Stan logowania** .
 
-![Działania związane z logowaniem](./media/reference-sign-ins-error-codes/06.png "Działania związane z logowaniem")
+![Aktywność logowania](./media/reference-sign-ins-error-codes/06.png "Aktywność związana z logowaniem")
 
-Wybranie elementu z listy filtrowanej powoduje otwarcie **szczegółów działania:**  Blok logowania. Ten widok zawiera dodatkowe informacje dotyczące nieudanego zdarzenia logowania, **w tym kod błędu logowania** i **przyczynę niepowodzenia**.
+Wybranie elementu z listy filtrowanej powoduje otwarcie bloku **szczegóły działania: logowania** . Ten widok zawiera dodatkowe informacje dotyczące nieudanego zdarzenia logowania, **w tym kod błędu logowania** i **przyczynę niepowodzenia**.
 
-![Działania związane z logowaniem](./media/reference-sign-ins-error-codes/05.png "Działania związane z logowaniem")
+![Aktywność logowania](./media/reference-sign-ins-error-codes/05.png "Aktywność związana z logowaniem")
 
 Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [interfejsu API raportowania](concept-reporting-api.md).
 
@@ -71,7 +71,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |50007|Nie znaleziono certyfikatu szyfrowania partnera dla tej aplikacji. Aby uzyskać ten problem [, Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) w firmie Microsoft.|
 |50008|Brak potwierdzenia SAML lub zostało ono nieprawidłowo skonfigurowane w tokenie. Skontaktuj się z dostawcą federacji.|
 |50010|Weryfikacja identyfikatora URI odbiorców dla aplikacji nie powiodła się, ponieważ nie skonfigurowano żadnych odbiorców z tokenem. Skontaktuj się z właścicielem aplikacji w celu rozwiązania problemu.|
-|50011|Brak adresu zwrotnego, został nieprawidłowo skonfigurowany lub jest inny niż adresy zwrotne skonfigurowane dla aplikacji. Wypróbuj rozwiązanie wymienione pod adresem [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Jeśli problem będzie się powtarzać, skontaktuj się z właścicielem aplikacji lub administratorem aplikacji.|
+|50011|Brak adresu zwrotnego, został nieprawidłowo skonfigurowany lub jest inny niż adresy zwrotne skonfigurowane dla aplikacji. Wypróbuj rozwiązanie wymienione w [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Jeśli problem będzie się powtarzać, skontaktuj się z właścicielem aplikacji lub administratorem aplikacji.|
 |50012| Jest to ogólny komunikat o błędzie wskazujący, że uwierzytelnianie nie powiodło się. Może się to zdarzyć z przyczyn, takich jak brakujące lub nieprawidłowe poświadczenia lub oświadczenia w żądaniu. Upewnij się, że żądanie jest wysyłane z prawidłowymi poświadczeniami i oświadczeniami. |
 |50013|Potwierdzenie jest nieprawidłowe z różnych powodów. Na przykład Wystawca tokenu nie jest zgodny z wersją interfejsu API w prawidłowym zakresie czasu, token wygasł lub źle sformułowany lub token odświeżania w potwierdzeniu nie jest podstawowym tokenem odświeżania.|
 |50017|Weryfikacja certyfikacji nie powiodła się z następujących powodów:<ul><li>Nie można odnaleźć certyfikatu wystawcy na liście zaufanych certyfikatów</li><li>Nie można odnaleźć oczekiwanego elementu CrlSegment</li><li>Nie można odnaleźć certyfikatu wystawcy na liście zaufanych certyfikatów</li><li>Punkt dystrybucji różnicowej listy CRL jest skonfigurowany bez odpowiedniego punktu dystrybucji listy CRL</li><li>Nie można pobrać prawidłowych segmentów listy CRL z powodu przekroczenia limitu czasu</li><li>Nie można pobrać listy CRL</li></ul>Skontaktuj się z administratorem dzierżawy.|
@@ -137,7 +137,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |53002|Używana aplikacja nie jest zatwierdzoną aplikacją dla dostępu warunkowego. Użytkownik musi używać jednej z aplikacji z listy zatwierdzonych aplikacji w celu uzyskania dostępu.|
 |53003|Dostęp został zablokowany z powodu zasad dostępu warunkowego.|
 |53004|Użytkownik musi ukończyć proces rejestracji w celu używania uwierzytelniania wieloskładnikowego przed uzyskaniem dostępu do tej zawartości. Użytkownik powinien zarejestrować się w celu uwierzytelniania wieloskładnikowego.|
-|65001|Aplikacja X nie ma uprawnienia dostępu do aplikacji Y lub uprawnienie zostało odwołany. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z identyfikatorem X. Wyślij interaktywne żądanie autoryzacji dla tego użytkownika i zasobu. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z IDENTYFIKATORem X. Wyślij żądanie autoryzacji do administratora dzierżawy, aby działać w imieniu aplikacji: T dla zasobu: Z.|
+|65001|Aplikacja X nie ma uprawnienia dostępu do aplikacji Y lub uprawnienie zostało odwołany. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z identyfikatorem X. Wyślij interaktywne żądanie autoryzacji dla tego użytkownika i zasobu. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z identyfikatorem X. Wyślij do administratora dzierżawy żądanie autoryzacji dotyczące działania w imieniu aplikacji Y dla zasobu Z.|
 |65004|Użytkownik odmówił wyrażenia zgody na dostęp do aplikacji. Użytkownik musi ponowić próbę zalogowania się i wyrazić zgodę na aplikację|
 |65005|Lista dostępu do wymaganych zasobów aplikacji nie zawiera aplikacji możliwych do wykrycia przez zasób lub aplikacja kliencka zażądała dostępu do zasobu, który nie został określony na liście dostępu do wymaganych zasobów, lub usługa programu Graph zwróciła nieprawidłowe żądanie lub nie można odnaleźć zasobu. Jeśli aplikacja obsługuje język SAML, być może aplikację skonfigurowano z nieprawidłowym identyfikatorem (jednostką). Wypróbuj rozwiązania dla języka SAML, korzystając z linku poniżej: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
 |70000|Udzielenie dostępu jest nieprawidłowe z następujących przyczyn:<ul><li>Żądane potwierdzenie SAML 2.0 ma nieprawidłową metodę potwierdzenia podmiotu</li><li>Przepływ OnBehalfOf aplikacji nie jest obsługiwany w wersji 2</li><li>Podstawowy token odświeżania nie jest podpisany przy użyciu klucza sesji</li><li>Nieprawidłowy zewnętrzny token odświeżania</li><li>Udzielenie dostępu uzyskano dla innej dzierżawy.</li></ul>|
@@ -149,7 +149,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |70007|Aplikacja zwróciła nieobsługiwaną wartość parametru „response_mode” podczas żądania tokenu. Skontaktuj się z właścicielem aplikacji.|
 |70008|Podany kod autoryzacji lub token odświeżania wygasł lub został odwołany. Użytkownik ponowi próbę zalogowania się.|
 |70011|Zakres żądany przez aplikację jest nieprawidłowy. Skontaktuj się z właścicielem aplikacji.|
-|70012|Wystąpił błąd serwera podczas uwierzytelniania użytkownika zarządzanego konta usługi (użytkownika). Ponów próbę logowania, a jeśli problem będzie się powtarzać, [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+|70012|Wystąpił błąd serwera podczas uwierzytelniania użytkownika zarządzanego konta usługi (użytkownika). Ponów próbę logowania, a jeśli problem będzie nadal występować, [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 |70018|Nieprawidłowy kod weryfikacyjny — użytkownik wpisał niewłaściwy kod użytkownika dla przepływu kodu urządzenia. Autoryzacja nie jest zatwierdzona.|
 |70019|Kod weryfikacyjny wygasł. Ponowienie próby logowania przez użytkownika.|
 |70037|Podano nieprawidłową odpowiedź na wezwanie. Odrzucono sesję uwierzytelniania zdalnego.|
@@ -162,9 +162,9 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |75011|Metoda uwierzytelniania użyta do uwierzytelnienia użytkownika w usłudze jest niezgodna z żądaną metodą uwierzytelniania. Skontaktuj się z właścicielem aplikacji.|
 |75016|Żądanie uwierzytelniania SAML2 ma nieprawidłowy element NameIdPolicy. Skontaktuj się z właścicielem aplikacji.|
 |80001|Agent uwierzytelniania nie może nawiązać połączenia z usługą Active Directory. Upewnij się, że agent uwierzytelniania jest zainstalowany na komputerze przyłączonym do domeny, który ma kontakt z kontrolerem domeny, który może obsługiwać żądania logowania użytkownika.|
-|80002|Błąd wewnętrzny. Upłynął limit czasu żądania weryfikacji hasła. Nie możemy wysłać żądania uwierzytelnienia do wewnętrznej usługi tożsamości hybrydowej. [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu.|
+|80002|Błąd wewnętrzny. Upłynął limit czasu żądania weryfikacji hasła. Nie można wysłać żądania uwierzytelnienia do wewnętrznej usługi tożsamości hybrydowej. [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu.|
 |80003|Agent uwierzytelniania odebrał nieprawidłową odpowiedź. Wystąpił nieznany błąd podczas próby uwierzytelniania za pomocą lokalnej usługi Active Directory. [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu.|
-|80005|Agent uwierzytelniania: Wystąpił nieznany błąd podczas przetwarzania odpowiedzi z agenta uwierzytelniania. [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu.|
+|80005|Agent uwierzytelniania: wystąpił nieznany błąd podczas przetwarzania odpowiedzi od agenta uwierzytelniania. [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu.|
 |80007|Agent uwierzytelniania nie może zweryfikować hasła użytkownika.|
 |80010|Agent uwierzytelniania nie może odszyfrować hasła. |
 |80011|Agent uwierzytelniania nie może pobrać klucza szyfrowania.|

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Wdrażanie z usługi GitHub w Azure App Service z usługą Jenkins'
+title: 'Samouczek: wdrażanie z usługi GitHub w Azure App Service z usługą Jenkins'
 description: Konfigurowanie narzędzia Jenkins pod kątem ciągłej integracji z usługi GitHub i ciągłego wdrażania w usłudze Azure App Service dla aplikacji internetowych w języku Java
 services: jenkins
 ms.service: jenkins
@@ -7,16 +7,16 @@ author: tomarchermsft
 ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 10/23/2019
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 24dbe67052d185de0eb308c4c869e63dbc825d9e
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172802"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882026"
 ---
-# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: Wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu funkcji ciągłej integracji i ciągłego wdrażania narzędzia Jenkins
+# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Samouczek: wdrażanie z usługi GitHub do usługi Azure App Service przy użyciu funkcji ciągłej integracji i ciągłego wdrażania narzędzia Jenkins
 
 W tym samouczku wdrożysz przykładową internetową aplikację Java z usługi GitHub do [usługi Azure App Service w systemie Linux](/azure/app-service/containers/app-service-linux-intro), konfigurując ciągłą integrację i ciągłe wdrażanie w narzędziu Jenkins. Po zaktualizowaniu aplikacji przez wypchnięcie zatwierdzeń do usługi GitHub narzędzie Jenkins automatycznie skompiluje i opublikuje ponownie aplikację w usłudze Azure App Service. Przykładowa aplikacja w tym samouczku została opracowana przy użyciu struktury [Spring Boot](https://projects.spring.io/spring-boot/). 
 
@@ -62,9 +62,9 @@ Do ukończenia tego samouczka są potrzebne następujące elementy:
 
 1. Na karcie **Available** (Dostępne) wybierz następujące wtyczki:
 
-   - [Usługa Azure App Service](https://plugins.jenkins.io/azure-app-service)
+   - [Azure App Service](https://plugins.jenkins.io/azure-app-service)
    - [GitHub Branch Source](https://plugins.jenkins.io/github-branch-source)
-   - [Environment Injector Plugin](https://plugins.jenkins.io/envinject) dla narzędzia Jenkins
+   - [Wtyczka iniektora środowiska](https://plugins.jenkins.io/envinject) Jenkins
    - [Azure Credentials](https://plugins.jenkins.io/azure-credentials)
 
    Jeśli te wtyczki nie są wyświetlane, upewnij się, że nie są już zainstalowane, sprawdzając kartę **Installed** (Zainstalowane).
@@ -163,10 +163,10 @@ Oto dane wyjściowe wygenerowane przez polecenie **`create-for-rbac`** :
 
    ![Dodawanie poświadczeń jednostki usługi platformy Azure](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-service-principal-credentials.png)
 
-   | Właściwość | Value | Opis | 
+   | Właściwość | Wartość | Opis | 
    |----------|-------|-------------| 
-   | **Subscription ID (Identyfikator subskrypcji)** | <*yourAzureSubscription-ID (Identyfikator Twojej subskrypcji platformy Azure)* > | Wartość identyfikatora GUID dla subskrypcji platformy Azure <p>**Porada**: jeśli nie znasz identyfikatora subskrypcji platformy Azure, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure z poziomu wiersza polecenia lub usługi Cloud Shell, a następnie użyj wartości identyfikatora GUID `id`: <p>`az account list` | 
-   | **Identyfikator klienta** | <*yourAzureServicePrincipal-ID (Identyfikator jednostki usługi platformy Azure)* > | Wartość identyfikatora GUID `appId` wygenerowanego wcześniej dla jednostki usługi platformy Azure | 
+   | **Subscription ID (Identyfikator subskrypcji)** | <*yourAzureSubscription-ID (Identyfikator Twojej subskrypcji platformy Azure)* > | Wartość identyfikatora GUID dla subskrypcji platformy Azure <p>**Wskazówka**: jeśli nie znasz identyfikatora subskrypcji platformy Azure, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure z poziomu wiersza polecenia lub usługi Cloud Shell, a następnie użyj wartości identyfikatora GUID `id`: <p>`az account list` | 
+   | **Client ID (Identyfikator klienta)** | <*yourAzureServicePrincipal-ID (Identyfikator jednostki usługi platformy Azure)* > | Wartość identyfikatora GUID `appId` wygenerowanego wcześniej dla jednostki usługi platformy Azure | 
    | **Client Secret (Wpis tajny klienta)** | <*yourSecurePassword (Hasło)* > | Wartość `password` lub „wpis tajny” określony dla jednostki usługi platformy Azure | 
    | **Tenant ID (Identyfikator dzierżawy)** | <*yourAzureActiveDirectoryTenant-ID (Identyfikator dzierżawy usługi Azure Active Directory)* > | Wartość identyfikatora GUID `tenant` dla dzierżawy usługi Azure Active Directory | 
    | **Identyfikator** | <*yourAzureServicePrincipalName (Nazwa jednostki usługi platformy Azure)* > | Wartość `displayName` jednostki usługi platformy Azure | 

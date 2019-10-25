@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: e7a99ffdd42c02e5a18dc14c4774b428232b8293
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a546df73f316b4eb6c215a6f52d68f87ad09c1a2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015996"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881693"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Użyj Azure Media Video Thumbnails, aby utworzyć podsumowanie wideo  
+
+> [!IMPORTANT]
+> Zapoznaj się z [planami wycofania](media-services-analytics-overview.md#retirement-plans) niektórych procesorów multimedialnych.
+
 ## <a name="overview"></a>Przegląd
 Procesor Media **Azure Media Video thumbnails** (MP) umożliwia tworzenie podsumowania filmu wideo, który jest przydatny dla klientów, którzy po prostu chcą obejrzeć podsumowanie długiego wideo. Na przykład klienci mogą chcieć zobaczyć krótkie "Podsumowanie wideo" po umieszczeniu wskaźnika myszy na miniaturie. Przez dostosowanie parametrów **Azure Media Video thumbnails** za pomocą ustawień wstępnych konfiguracji, można użyć zaawansowanego wykrywania zastrzelonych pakietów MP i technologii łączenia, aby algorithmically wygenerować opisowy podklip.  
 
@@ -56,8 +60,8 @@ Obecnie można zmienić następujące parametry:
 
 | Param | Opis |
 | --- | --- |
-| outputAudio |Określa, czy wynikowy film wideo zawiera dźwięk. <br/>Dozwolone wartości to: Wartość TRUE lub False. Wartość domyślna to true. |
-| fadeInFadeOut |Określa, czy przejścia zanikania są używane między oddzielnymi miniaturkami ruchu.  <br/>Dozwolone wartości to: Wartość TRUE lub False.  Wartość domyślna to true. |
+| outputAudio |Określa, czy wynikowy film wideo zawiera dźwięk. <br/>Dozwolone wartości to: true lub false. Wartość domyślna to true. |
+| fadeInFadeOut |Określa, czy przejścia zanikania są używane między oddzielnymi miniaturkami ruchu.  <br/>Dozwolone wartości to: true lub false.  Wartość domyślna to true. |
 | maxMotionThumbnailDurationInSecs |Liczba całkowita określająca czas trwania całego wynikowego wideo.  Wartość domyślna zależy od oryginalnego czasu trwania wideo. |
 
 W poniższej tabeli opisano domyślny czas trwania, gdy **maxMotionThumbnailInSecs** nie jest używany.
@@ -282,10 +286,10 @@ Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu info
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Linki pokrewne
+## <a name="related-links"></a>Powiązane linki
 [Omówienie Azure Media Services Analytics](media-services-analytics-overview.md)
 
 [Demonstracje Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)

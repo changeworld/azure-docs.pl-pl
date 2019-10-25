@@ -1,5 +1,5 @@
 ---
-title: Raport dotyczący użycia i szczegółowych informacji w portalu Azure Active Directory | Microsoft Docs
+title: Raport dotyczący użycia i szczegółowych informacji | Microsoft Docs
 description: Wprowadzenie do raportu dotyczącego użycia i szczegółowych informacji w portalu Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0c6723c28bf6ab8af112763a6485bc89b46409c6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 568eaa358f6788af525a69cd8ecda76a0591879f
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989855"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820941"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Raport dotyczący użycia i szczegółowych informacji w portalu Azure Active Directory
 
@@ -54,7 +54,7 @@ Raport użycie i szczegółowe informacje przedstawia listę aplikacji z co najm
 
 Kliknięcie przycisku Załaduj więcej u dołu listy umożliwia wyświetlenie dodatkowych aplikacji na stronie. Możesz wybrać zakres dat, aby wyświetlić wszystkie aplikacje, które zostały użyte w zakresie.
 
-Możesz również ustawić fokus dla określonej aplikacji. Wybierz pozycję **Wyświetl działanie** związane z logowaniem, aby zobaczyć działanie logowania w czasie dla aplikacji, a także najważniejszych błędów.  
+Możesz również ustawić fokus dla określonej aplikacji. Wybierz pozycję **Wyświetl działanie związane z logowaniem** , aby zobaczyć działanie logowania w czasie dla aplikacji, a także najważniejszych błędów.  
 
 Po wybraniu dnia na wykresie użycia aplikacji zostanie wykorzystana Szczegółowa lista działań związanych z logowaniem dla aplikacji.  
 

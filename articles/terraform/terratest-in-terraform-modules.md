@@ -5,16 +5,16 @@ services: terraform
 ms.service: azure
 keywords: terraform, devops, konto magazynu, azure, terratest, test jednostkowy, test integracyjny
 author: tomarchermsft
-manager: jeconnoc
+manager: gwallace
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 637bb01bff625989e392d5d711ebd5cdef5c0e09
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/23/2019
+ms.openlocfilehash: e4965ba47a99e3cd189763d994bef6381badd9ba
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169633"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881792"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Testowanie modułów programu Terraform na platformie Azure za pomocą struktury Terratest
 
@@ -38,9 +38,9 @@ Ten artykuł praktyczny jest niezależny od platformy. Przykłady kodu używane 
 
 Przed rozpoczęciem zainstaluj następujące oprogramowanie:
 
-- **Język programowania Go**: przypadki testowe Terraform są pisane w języku [Go](https://golang.org/dl/).
+- **Język programowania Go**: przypadki testowe programu Terraform pisze się w języku [Go](https://golang.org/dl/).
 - **DEP**: [dep](https://github.com/golang/dep#installation) to narzędzie do zarządzania zależnościami dla języka Go.
-- **Interfejs wiersza polecenia platformy Azure**: [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) to narzędzie wiersza polecenia umożliwiające zarządzanie zasobami platformy Azure. (Program Terraform obsługuje uwierzytelnianie na platformie Azure za pomocą jednostki usługi lub [interfejsu wiersza polecenia platformy Azure](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html)).
+- **Interfejs wiersza polecenia Azure**: [interfejs wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) to narzędzie wiersza polecenia umożliwiające zarządzanie zasobami platformy Azure. (Program Terraform obsługuje uwierzytelnianie na platformie Azure za pomocą jednostki usługi lub [interfejsu wiersza polecenia platformy Azure](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html)).
 - **mage**: używamy [pliku wykonywalnego mage](https://github.com/magefile/mage/releases), aby przedstawić, jak można uprościć uruchamianie przypadków struktury Terratest. 
 
 ## <a name="create-a-static-webpage-module"></a>Tworzenie modułu statycznej strony internetowej
@@ -226,7 +226,7 @@ func TestUT_StorageAccountName(t *testing.T) {
         // Terraform init and plan only
         tfPlanOutput := "terraform.tfplan"
         terraform.Init(t, tfOptions)
-        terraform.RunTerraformCommand(t, tfOptions, terraform.FormatArgs(tfOptions.Vars, "plan", "-out="+tfPlanOutput)...)
+        terraform.RunTerraformCommand(t, tfOptions, terraform.FormatArgs(tfOptions, "plan", "-out="+tfPlanOutput)...)
 
         // Read and parse the plan output
         f, err := os.Open(path.Join(tfOptions.TerraformDir, tfPlanOutput))
@@ -327,7 +327,7 @@ output "homepage" {
 
 Ponownie używamy funkcji testu struktury Terratest i klasycznych funkcji testu języka Go w pliku testu integracji `./test/hello_world_example_test.go`.
 
-W przeciwieństwie do testów jednostkowych, testy integracji tworzą rzeczywiste zasoby na platformie Azure. Dlatego należy uważać, aby uniknąć konfliktów nazw. (Należy zwrócić szczególną uwagę na niektóre globalnie unikatowe nazwy, takie jak nazwy konta magazynu). W związku z tym pierwszym krokiem logiki testowania jest wygenerowanie losowej wartości `websiteName` przy użyciu funkcji `UniqueId()` udostępnionej przez strukturę Terratest. Ta funkcja generuje losową nazwę zawierającą małe litery, wielkie litery lub cyfry. Element `tfOptions` powoduje, że wszystkie polecenia struktury Terraform dotyczą folderu `./examples/hello-world/`. Zapewnia też, że element `website_name` jest ustawiany na losową wartość `websiteName`.
+W przeciwieństwie do testów jednostkowych, testy integracji tworzą rzeczywiste zasoby na platformie Azure. Dlatego należy uważać, aby uniknąć konfliktów nazw. (Należy zwrócić szczególną uwagę na niektóre globalnie unikatowe nazwy, takie jak nazwy kont magazynu). W związku z tym pierwszy krok logiki testowania polega na wygenerowaniu losowo `websiteName` przy użyciu funkcji `UniqueId()` dostępnej przez Terratest. Ta funkcja generuje losową nazwę zawierającą małe litery, wielkie litery lub cyfry. Element `tfOptions` powoduje, że wszystkie polecenia struktury Terraform dotyczą folderu `./examples/hello-world/`. Zapewnia też, że element `website_name` jest ustawiany na losową wartość `websiteName`.
 
 Następnie po kolei są wykonywane funkcje `terraform init`, `terraform apply` i `terraform output`. Użyjemy kolejnej funkcji pomocniczej (`HttpGetWithCustomValidation()`) udostępnianej przez strukturę Terratest. Użycie tej funkcji pomocniczej pozwala upewnić się, że kod HTML został przekazany do wyjściowego adresu URL `homepage` zwróconego przez polecenie `terraform output`. Porównamy kod stanu HTTP GET z wartością `200` i wyszukamy pewne słowa kluczowe w zawartości HTML. Na koniec wykonanie funkcji `terraform destroy` jest zapewnione dzięki wykorzystaniu instrukcji `defer` języka Go.
 
@@ -395,8 +395,7 @@ GoPath/src/staticwebpage/test$ go test
 Testy integracji trwają znacznie dłużej niż testy jednostkowe (dwie minuty dla jednego przypadku testowego integracji w porównaniu z jedną minutą dla pięciu przypadków testowych testów jednostkowych). Jednak do Ciebie należy decyzja, czy użyć testów jednostkowych, czy testów integracji w danym scenariuszu. Zwykle preferowane jest stosowanie testów jednostkowych dla skomplikowanej logiki przez użycie funkcji HCL programu Terraform. Testy integracji są zwykle stosowane w przypadku kompleksowej perspektywy użytkownika.
 
 ## <a name="use-mage-to-simplify-running-terratest-cases"></a>Użycie narzędzia mage do uproszczenia uruchamiania przypadków struktury Terratest 
-
-Uruchamianie przypadków testowych w usłudze Azure Cloud Shell nie jest łatwe. Należy przechodzić do różnych katalogów i uruchamiać różne polecenia. Aby uniknąć używania usługi Cloud Shell, wprowadzimy system kompilacji w naszym projekcie. W tej sekcji użyjemy narzędzia mage systemu kompilacji języka Go, aby wykonać zadanie.
+Uruchamianie przypadków testowych w Azure Cloud Shell wymaga wykonywania różnych poleceń w różnych katalogach. Aby ten proces był bardziej wydajny, wprowadzamy system kompilacji w naszym projekcie. W tej sekcji użyjemy narzędzia mage systemu kompilacji języka Go, aby wykonać zadanie.
 
 Jedyną rzeczą wymaganą przez narzędzie mage jest umieszczenie pliku `magefile.go` (oznaczonego znakiem `(+)` w poniższym przykładzie) w katalogu głównym projektu:
 
@@ -518,7 +517,7 @@ Korzystając z narzędzia mage, można też współużytkować kroki przez użyc
 
 **Opcjonalnie: można ustawić zmienne środowiskowe jednostki usługi pod kątem uruchamiania testów akceptacyjnych**
  
-Zamiast uruchamiania polecenia `az login` przed testami, możesz przeprowadzić uwierzytelnianie platformy Azure, ustawiając zmienne środowiskowe jednostki usługi. Program Terraform publikuje [listę nazw zmiennych środowiskowych](https://www.terraform.io/docs/providers/azurerm/index.html#testing). (Tylko pierwsze cztery zmienne środowiskowe są wymagane). Program Terraform publikuje również szczegółowe instrukcje objaśniające sposób [uzyskiwania wartości tych zmiennych środowiskowych](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html).
+Zamiast uruchamiania polecenia `az login` przed testami, możesz przeprowadzić uwierzytelnianie platformy Azure, ustawiając zmienne środowiskowe jednostki usługi. Program Terraform publikuje [listę nazw zmiennych środowiskowych](https://www.terraform.io/docs/providers/azurerm/index.html#testing). (Wymagane są tylko pierwsze cztery z tych zmiennych środowiskowych). Terraform publikuje także szczegółowe instrukcje, które wyjaśniają, jak [uzyskać wartość tych zmiennych środowiskowych](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html).
 
 ## <a name="next-steps"></a>Następne kroki
 

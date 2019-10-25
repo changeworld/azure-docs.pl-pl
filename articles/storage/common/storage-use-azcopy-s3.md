@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 73eed48bd34a8c8d81a66872888ebf5481074648
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: b984d194c75924451a52250490b1a5590b996974
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274105"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821383"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Kopiowanie danych z pakietów Amazon S3 przy użyciu AzCopy
 
@@ -52,6 +52,9 @@ AzCopy korzysta z interfejsu API [Put Block z adresu URL](https://docs.microsoft
 
 > [!IMPORTANT]
 > Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Jeśli zdecydujesz się na usunięcie danych z pakietów S3 po operacji kopiowania, upewnij się, że dane zostały prawidłowo skopiowane na konto magazynu przed usunięciem danych.
+
+> [!TIP]
+> W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
 
 ### <a name="copy-an-object"></a>Kopiowanie obiektu
 

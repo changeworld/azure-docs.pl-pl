@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 71f2b111c0291bc9563b12a1cdbd88ea7e9f5b5b
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e361ba4c7275a783b9211def5047a5a755f5a8b8
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376134"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881997"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosuj ustawienia klastra Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej dla klastra Service Fabric, które można dostosować. W przypadku klastrów hostowanych na platformie Azure można dostosować ustawienia za pomocą [Azure Portal](https://portal.azure.com) lub szablonu Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra platformy Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych można dostosować ustawienia, aktualizując plik *ClusterConfig. JSON* i wykonując uaktualnienie konfiguracji w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -185,6 +185,9 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |EnableRestartManagement |Bool, wartość domyślna to false |Dynamiczny|Ma to na celu włączenie ponownego uruchomienia serwera. |
 |EnableServiceFabricAutomaticUpdates |Bool, wartość domyślna to false |Dynamiczny|Jest to włączenie automatycznej aktualizacji sieci szkieletowej za pośrednictwem Windows Update. |
 |EnableServiceFabricBaseUpgrade |Bool, wartość domyślna to false |Dynamiczny|Jest to włączenie aktualizacji podstawowej dla serwera programu. |
+|FailureReportingExpeditedReportingIntervalEnabled | Bool, wartość domyślna to true | Statyczny | Umożliwia szybsze przekazywanie w DCA, gdy elemencie fabrichost określono jest w trybie raportowania błędów. |
+|FailureReportingTimeout | TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (60) | Statyczny |Określ wartość TimeSpan w sekundach. Przekroczenie limitu czasu dla raportowania błędów DCA w przypadku elemencie fabrichost określono napotka błąd uruchamiania wczesnego etapu. | 
+|RunDCAOnStartupFailure | Bool, wartość domyślna to true | Statyczny |Określa, czy uruchamiać DCA do przekazywania dzienników w przypadku problemów z uruchamianiem w elemencie fabrichost określono. | 
 |StartTimeout |Czas w sekundach, wartość domyślna to 300 |Dynamiczny|Określ wartość TimeSpan w sekundach. Przekroczono limit czasu podczas uruchamiania usługi fabricactivationmanager. |
 |StopTimeout |Czas w sekundach, wartość domyślna to 300 |Dynamiczny|Określ wartość TimeSpan w sekundach. Limit czasu aktywacji usługi hostowanej; Dezaktywacja i uaktualnienie. |
 
@@ -279,7 +282,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan, wartość domyślna to common:: TimeSpan:: FromMinutes (5)|Dynamiczny|Określ wartość TimeSpan w sekundach. Przedział czasu między sprawdzaniem miejsca na dysku dla zdarzenia kondycji raportowania, gdy ilość wolnego miejsca na dysku jest bliska. |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan, wartość domyślna to common:: TimeSpan:: FromMinutes (15)|Dynamiczny|Określ wartość TimeSpan w sekundach. Przedział czasu między sprawdzaniem miejsca na dysku dla zdarzenia kondycji raportowania, gdy na dysku jest wystarczająca ilość miejsca. |
 |EnableImageStoreHealthReporting |bool, wartość domyślna to TRUE |Statyczny|Konfiguracja w celu ustalenia, czy usługa magazynu plików powinna raportować swoją kondycję. |
-|FreeDiskSpaceNotificationSizeInKB|Int64, wartość domyślna to 25 @ no__t-01024 |Dynamiczny|Rozmiar wolnego miejsca na dysku, poniżej którego może wystąpić ostrzeżenie o kondycji. Minimalna wartość tej konfiguracji i konfiguracji FreeDiskSpaceNotificationThresholdPercentage są używane do określania wysyłania ostrzeżenia kondycji. |
+|FreeDiskSpaceNotificationSizeInKB|Int64, wartość domyślna to 25\*1024 |Dynamiczny|Rozmiar wolnego miejsca na dysku, poniżej którego może wystąpić ostrzeżenie o kondycji. Minimalna wartość tej konfiguracji i konfiguracji FreeDiskSpaceNotificationThresholdPercentage są używane do określania wysyłania ostrzeżenia kondycji. |
 |FreeDiskSpaceNotificationThresholdPercentage|Double, wartość domyślna to 0,02 |Dynamiczny|Wartość procentowa wolnego miejsca na dysku, poniżej którego może wystąpić ostrzeżenie o kondycji. Minimalna wartość tej konfiguracji i konfiguracji FreeDiskSpaceNotificationInMB są używane do określania wysyłania ostrzeżenia kondycji. |
 |GenerateV1CommonNameAccount| bool, wartość domyślna to TRUE|Statyczny|Określa, czy ma zostać wygenerowane konto z algorytmem generowania nazwy użytkownika w wersji 1. Począwszy od Service Fabric w wersji 6,1; tworzone jest konto z generacjami w wersji 2. Konto w wersji 1 jest wymagane w przypadku uaktualnień z/do wersje, które nie obsługują generacji v2 (przed 6,1).|
 |MaxCopyOperationThreads | Uint, wartość domyślna to 0 |Dynamiczny| Maksymalna liczba plików równoległych, które pomocnicze mogą kopiować z elementu podstawowego. "0" = = liczba rdzeni. |
@@ -353,6 +356,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |DeploymentRetryBackoffInterval| TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (10)|Dynamiczny|Określ wartość TimeSpan w sekundach. Interwał wycofywania dla błędu wdrożenia. Na każdym ciągłym błędzie wdrożenia system podejmie ponowną próbę wdrożenia do MaxDeploymentFailureCount. Interwał ponawiania prób to iloczyn ciągłego niepowodzeń wdrażania oraz interwału wycofywania wdrożenia. |
 |DisableContainers|bool, wartość domyślna to FALSE|Statyczny|Konfiguracja do wyłączania kontenerów — używana zamiast DisableContainerServiceStartOnContainerActivatorOpen, która jest przestarzałą konfiguracją |
 |DisableDockerRequestRetry|bool, wartość domyślna to FALSE |Dynamiczny| Domyślnie SF komunikuje się z DD (Docker Dameon) o limicie czasu DockerRequestTimeout ' dla każdego wysłanego żądania HTTP. Jeśli DD nie odpowiada w tym okresie; SF ponownie wysyła żądanie, jeśli operacja najwyższego poziomu nadal ma pozostały czas.  Z kontenerem HyperV; DD czasami Poświęć więcej czasu na przełączenie kontenera lub jego dezaktywowanie. W takich przypadkach DD żądanie, które upłynął od perspektywa SF i SF ponawia operację. Czasami wydaje się, że zwiększa nacisk na DD. Ta konfiguracja pozwala wyłączyć tę ponowną próbę i poczekać na odpowiedź DD. |
+|DnsServerListTwoIps | bool, wartość domyślna to FALSE | Statyczny | Ta flaga dodaje dwa razy lokalny serwer DNS, aby pomóc w zmniejszeniu sporadycznych problemów. |
 |EnableActivateNoWindow| bool, wartość domyślna to FALSE|Dynamiczny| Aktywowany proces jest tworzony w tle bez żadnej konsoli. |
 |EnableContainerServiceDebugMode|bool, wartość domyślna to TRUE|Statyczny|Włącz/Wyłącz rejestrowanie kontenerów platformy Docker.  Tylko system Windows.|
 |EnableDockerHealthCheckIntegration|bool, wartość domyślna to TRUE|Statyczny|Włącza integrację zdarzeń platformy Docker HEALTHCHECK z raportem kondycji systemu Service Fabric |
@@ -460,7 +464,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |MaxClientConnections |Int, wartość domyślna to 1000 |Dynamiczny|Maksymalna dozwolona liczba połączeń klienta na bramę. |
 |MaxFileOperationTimeout |Czas w sekundach, wartość domyślna to 30 |Dynamiczny|Określ wartość TimeSpan w sekundach. Maksymalny limit czasu dozwolony dla operacji usługi magazynu plików. Żądania określające większy limit czasu zostaną odrzucone. |
 |MaxIndexedEmptyPartitions |Int, wartość domyślna to 1000 |Dynamiczny|Maksymalna liczba pustych partycji, które pozostaną indeksowane w pamięci podręcznej powiadomień w celu synchronizowania ponownie połączonych klientów. Wszystkie puste partycje powyżej tej liczby zostaną usunięte z indeksu w kolejności wersji wyszukiwania rosnącego. Ponowne łączenie klientów nadal może synchronizować i odbierać brakujące aktualizacje pustej partycji; jednak protokół synchronizacji jest droższy. |
-|MaxMessageSize |Int, wartość domyślna to 4 @ no__t-01024 @ no__t-11024 |Statyczny|Maksymalny rozmiar komunikatu dla komunikacji węzła klienta podczas korzystania z nazw. System DOS — łagodzenie ataków; wartość domyślna to 4 MB. |
+|MaxMessageSize |Int, wartość domyślna to 4\*1024\*1024 |Statyczny|Maksymalny rozmiar komunikatu dla komunikacji węzła klienta podczas korzystania z nazw. System DOS — łagodzenie ataków; wartość domyślna to 4 MB. |
 |MaxNamingServiceHealthReports | Int, wartość domyślna to 10 |Dynamiczny|Maksymalna liczba wolnych operacji, w przypadku których nazwy raportów usługi magazynu są w złej kondycji. Jeśli 0; wszystkie wolne operacje są wysyłane. |
 |MaxOperationTimeout |Czas w sekundach, wartość domyślna to 600 |Dynamiczny|Określ wartość TimeSpan w sekundach. Maksymalny limit czasu dozwolony dla operacji klienta. Żądania określające większy limit czasu zostaną odrzucone. |
 |MaxOutstandingNotificationsPerClient |Int, wartość domyślna to 1000 |Dynamiczny|Maksymalna liczba oczekujących powiadomień przed zamknięciem rejestracji klienta przez bramę. |
@@ -660,7 +664,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |CertificateHealthReportingInterval|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (3600 * 8)|Statyczny|Określ wartość TimeSpan w sekundach. Określ interwał raportowania kondycji certyfikatu; Domyślnie 8 godzin; ustawienie wartości 0 powoduje wyłączenie raportowania kondycji certyfikatów |
 |ClientCertThumbprints|ciąg, wartość domyślna to ""|Dynamiczny|Odciski palców certyfikatów używanych przez klientów do komunikacji z klastrem; klaster używa tego autoryzowanego połączenia przychodzącego. Jest to lista nazw rozdzielonych przecinkami. |
 |ClientClaimAuthEnabled|bool, wartość domyślna to FALSE|Statyczny|Wskazuje, czy na klientach jest włączone uwierzytelnianie oparte na żądaniach. ustawienie tego ustawienia prawda niejawnie ustawia ClientRoleEnabled. |
-|ClientClaims|ciąg, wartość domyślna to ""|Dynamiczny|Wszystkie możliwe oświadczenia oczekiwane od klientów na potrzeby łączenia się z bramą. To jest lista "OR": ClaimsEntry \| @ no__t-1 ClaimsEntry \| @ no__t-3 ClaimsEntry... Każdy ClaimsEntry jest listą "i": ClaimType = ClaimValue & & ClaimType ClaimValue & & Claimname = ClaimValue... |
+|ClientClaims|ciąg, wartość domyślna to ""|Dynamiczny|Wszystkie możliwe oświadczenia oczekiwane od klientów na potrzeby łączenia się z bramą. Jest to "OR" list: ClaimsEntry \|\| ClaimsEntry \|\| ClaimsEntry... Każdy ClaimsEntry jest listą "i": ClaimType = ClaimValue & & ClaimType ClaimValue & & Claimname = ClaimValue... |
 |ClientIdentities|ciąg, wartość domyślna to ""|Dynamiczny|Tożsamości systemu Windows FabricClient; Brama nazw używa tego do autoryzacji połączeń przychodzących. Jest to rozdzielana przecinkami lista; Każdy wpis jest nazwą konta domeny lub grupą. Dla wygody; konto z uruchomionym programem Fabric. exe jest automatycznie dozwolone; są to grupy ServiceFabricAllowedUsers i ServiceFabricAdministrators. |
 |ClientRoleEnabled|bool, wartość domyślna to FALSE|Statyczny|Wskazuje, czy rola klienta jest włączona; Po ustawieniu na wartość true; Klienci mają przypisane role na podstawie ich tożsamości. W wersji 2; Włączenie tego oznacza, że klient nie w AdminClientCommonNames/AdminClientIdentities może wykonywać tylko operacje tylko do odczytu. |
 |ClusterCertThumbprints|ciąg, wartość domyślna to ""|Dynamiczny|Odciski palca certyfikatów, które mogą dołączać do klastra; rozdzielana przecinkami lista nazw. |
@@ -713,47 +717,47 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |DeleteNetwork|ciąg, wartość domyślna to "Administrator" |Dynamiczny|Usuwa sieć kontenera |
 |DeleteService |ciąg, wartość domyślna to "Administrator" |Dynamiczny|Konfiguracja zabezpieczeń do usunięcia usługi. |
 |DeleteVolume|ciąg, wartość domyślna to "Administrator"|Dynamiczny|Usuwa wolumin.| 
-|EnumerateProperties |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" | Dynamiczny|Konfiguracja zabezpieczeń dla wyliczania właściwości nazewnictwa. |
-|EnumerateSubnames |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń dla wyliczania identyfikatorów URI. |
+|EnumerateProperties |ciąg, wartość domyślna to "Administrator\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń dla wyliczania właściwości nazewnictwa. |
+|EnumerateSubnames |ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń dla wyliczania identyfikatorów URI. |
 |FileContent |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń transferu plików klienta na potrzeby magazynu obrazów (zewnętrzna z klastrem). |
 |FileDownload |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla inicjowania pliku klienta z magazynem obrazów (zewnętrzna z klastrem). |
 |FinishInfrastructureTask |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń służąca do kończenia zadań związanych z infrastrukturą. |
-|Raporcie getchaosreport | ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Pobiera stan chaos w danym przedziale czasu. |
-|GetClusterConfiguration | ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" | Dynamiczny|Wywołuje GetClusterConfiguration na partycji. |
-|GetClusterConfigurationUpgradeStatus | ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Wywołuje GetClusterConfigurationUpgradeStatus na partycji. |
-|GetFabricUpgradeStatus |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń do sondowania stanu uaktualnienia klastra. |
+|Raporcie getchaosreport | ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Pobiera stan chaos w danym przedziale czasu. |
+|GetClusterConfiguration | ciąg, wartość domyślna to "Administrator\|\|użytkownika" | Dynamiczny|Wywołuje GetClusterConfiguration na partycji. |
+|GetClusterConfigurationUpgradeStatus | ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Wywołuje GetClusterConfigurationUpgradeStatus na partycji. |
+|GetFabricUpgradeStatus |ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń do sondowania stanu uaktualnienia klastra. |
 |GetFolderSize |ciąg, wartość domyślna to "Administrator" |Dynamiczny|Konfiguracja zabezpieczeń dla rozmiaru folderu pobierania FileStoreService |
 |GetNodeDeactivationStatus |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń służąca do sprawdzania stanu dezaktywacji. |
-|GetNodeTransitionProgress | ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń do uzyskiwania postępu dla polecenia przejścia węzła. |
-|GetPartitionDataLossProgress | ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" | Dynamiczny|Pobiera postęp wywołania interfejsu API utraty danych. |
-|GetPartitionQuorumLossProgress | ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Pobiera postęp wywołania interfejsu API utraty kworum. |
-|GetPartitionRestartProgress | ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Pobiera postęp wywołania interfejsu API ponownego uruchamiania partycji. |
+|GetNodeTransitionProgress | ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń do uzyskiwania postępu dla polecenia przejścia węzła. |
+|GetPartitionDataLossProgress | ciąg, wartość domyślna to "Administrator\|\|użytkownika" | Dynamiczny|Pobiera postęp wywołania interfejsu API utraty danych. |
+|GetPartitionQuorumLossProgress | ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Pobiera postęp wywołania interfejsu API utraty kworum. |
+|GetPartitionRestartProgress | ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Pobiera postęp wywołania interfejsu API ponownego uruchamiania partycji. |
 |Getsecrets|ciąg, wartość domyślna to "Administrator"|Dynamiczny|Pobierz wartości klucza tajnego |
-|GetServiceDescription |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń dla powiadomień o usłudze w przypadku długich sondowań i odczytywanie opisów usług. |
+|GetServiceDescription |ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń dla powiadomień o usłudze w przypadku długich sondowań i odczytywanie opisów usług. |
 |GetStagingLocation |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla pobierania lokalizacji tymczasowej klienta magazynu obrazów. |
 |GetStoreLocation |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla pobierania lokalizacji magazynu klienta magazynu obrazów. |
 |GetUpgradeOrchestrationServiceState|ciąg, wartość domyślna to "Administrator"| Dynamiczny|Wywołuje GetUpgradeOrchestrationServiceState na partycji |
 |GetUpgradesPendingApproval |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Wywołuje GetUpgradesPendingApproval na partycji. |
-|GetUpgradeStatus |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń do sondowania stanu uaktualnienia aplikacji. |
+|GetUpgradeStatus |ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń do sondowania stanu uaktualnienia aplikacji. |
 |InternalList |ciąg, wartość domyślna to "Administrator" | Dynamiczny|Konfiguracja zabezpieczeń dla operacji na liście plików klienta magazynu obrazów (wewnętrzna). |
 |InvokeContainerApi|ciąg, wartość domyślna to "Administrator"|Dynamiczny|Wywołaj interfejs API kontenera |
 |InvokeInfrastructureCommand |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla poleceń zarządzania zadaniami infrastruktury. |
-|InvokeInfrastructureQuery |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" | Dynamiczny|Konfiguracja zabezpieczeń do wykonywania zapytań dotyczących zadań infrastruktury. |
-|Lista |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" | Dynamiczny|Konfiguracja zabezpieczeń dla operacji na liście plików klienta magazynu obrazów. |
+|InvokeInfrastructureQuery |ciąg, wartość domyślna to "Administrator\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń do wykonywania zapytań dotyczących zadań infrastruktury. |
+|Lista |ciąg, wartość domyślna to "Administrator\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń dla operacji na liście plików klienta magazynu obrazów. |
 |MoveNextFabricUpgradeDomain |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń służąca do wznawiania uaktualnień klastra z jawną domeną uaktualnienia. |
 |MoveNextUpgradeDomain |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń służąca do wznawiania uaktualnień aplikacji z jawną domeną uaktualnienia. |
 |MoveReplicaControl |ciąg, wartość domyślna to "Administrator" | Dynamiczny|Przenieś replikę. |
-|NameExists |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" | Dynamiczny|Konfiguracja zabezpieczeń dla sprawdzania istnienia identyfikatorów URI. |
+|NameExists |ciąg, wartość domyślna to "Administrator\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń dla sprawdzania istnienia identyfikatorów URI. |
 |NodeControl |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń do uruchomienia; zatrzymanie i ponownie uruchamiając węzły. |
 |Elementu nodestateremoved |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Usunięto konfigurację zabezpieczeń dla stanu węzła raportowania. |
-|Ping |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń dla poleceń ping klienta. |
+|Ping |ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń dla poleceń ping klienta. |
 |PredeployPackageToNode |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Interfejs API preinstalacji. |
-|PrefixResolveService |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń dla rozpoznawania prefiksów usługi opartej na skargach. |
-|PropertyReadBatch |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń dla operacji odczytu właściwości. |
+|PrefixResolveService |ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń dla rozpoznawania prefiksów usługi opartej na skargach. |
+|PropertyReadBatch |ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń dla operacji odczytu właściwości. |
 |PropertyWriteBatch |ciąg, wartość domyślna to "Administrator" |Dynamiczny|Konfiguracje zabezpieczeń do nazewnictwa operacji zapisu właściwości. |
 |ProvisionApplicationType |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla aprowizacji typu aplikacji. |
 |ProvisionFabric |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla inicjowania obsługi manifestu MSI i/lub klastra. |
-|Zapytanie |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń dla zapytań. |
+|Zapytanie |ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń dla zapytań. |
 |RecoverPartition |ciąg, wartość domyślna to "Administrator" | Dynamiczny|Konfiguracja zabezpieczeń na potrzeby odzyskiwania partycji. |
 |RecoverPartitions |ciąg, wartość domyślna to "Administrator" | Dynamiczny|Konfiguracja zabezpieczeń na potrzeby odzyskiwania partycji. |
 |RecoverServicePartitions |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń na potrzeby odzyskiwania partycji usługi. |
@@ -763,14 +767,14 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |ReportFault |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla błędu raportowania. |
 |ReportHealth |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla kondycji raportowania. |
 |ReportUpgradeHealth |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń służąca do wznawiania uaktualnień aplikacji z bieżącym postępem uaktualniania. |
-|ResetPartitionLoad |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń służąca do resetowania obciążenia dla elementu jednostka failover Unit. |
-|ResolveNameOwner |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" | Dynamiczny|Konfiguracja zabezpieczeń służąca do rozpoznawania właściciela nazewnictwa URI. |
-|ResolvePartition |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" | Dynamiczny|Konfiguracja zabezpieczeń służąca do rozpoznawania usług systemowych. |
-|ResolveService |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń dla rozpoznawania usługi opartej na skargach. |
-|ResolveSystemService|ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User"|Dynamiczny| Konfiguracja zabezpieczeń służąca do rozpoznawania usług systemowych |
+|ResetPartitionLoad |ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń służąca do resetowania obciążenia dla elementu jednostka failover Unit. |
+|ResolveNameOwner |ciąg, wartość domyślna to "Administrator\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń służąca do rozpoznawania właściciela nazewnictwa URI. |
+|ResolvePartition |ciąg, wartość domyślna to "Administrator\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń służąca do rozpoznawania usług systemowych. |
+|ResolveService |ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń dla rozpoznawania usługi opartej na skargach. |
+|ResolveSystemService|ciąg, wartość domyślna to "Administrator\|\|użytkownika"|Dynamiczny| Konfiguracja zabezpieczeń służąca do rozpoznawania usług systemowych |
 |RollbackApplicationUpgrade |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń do wycofywania uaktualnień aplikacji. |
 |RollbackFabricUpgrade |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń do wycofywania uaktualnień klastra. |
-|Powiadomienia dotyczące servicenotifications |ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń dla powiadomień dotyczących usług opartych na zdarzeniach. |
+|Powiadomienia dotyczące servicenotifications |ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń dla powiadomień dotyczących usług opartych na zdarzeniach. |
 |SetUpgradeOrchestrationServiceState|ciąg, wartość domyślna to "Administrator"| Dynamiczny|Wywołuje SetUpgradeOrchestrationServiceState na partycji |
 |StartApprovedUpgrades |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Wywołuje StartApprovedUpgrades na partycji. |
 |StartChaos |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Uruchamia chaos — Jeśli nie jest jeszcze uruchomiona. |
@@ -781,7 +785,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |StartPartitionQuorumLoss |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Wywołuje utratę kworum w partycji. |
 |StartPartitionRestart |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Jednocześnie uruchamia ponownie niektóre lub wszystkie repliki partycji. |
 |StopChaos |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Program przestaje chaos — jeśli został uruchomiony. |
-|ToggleVerboseServicePlacementHealthReporting | ciąg, wartość domyślna to "admin @ no__t-0 @ no__t-1User" |Dynamiczny| Konfiguracja zabezpieczeń służąca do przełączania pełnego HealthReporting usługi serviceplace. |
+|ToggleVerboseServicePlacementHealthReporting | ciąg, wartość domyślna to "Administrator\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń służąca do przełączania pełnego HealthReporting usługi serviceplace. |
 |UnprovisionApplicationType |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń dla typu aplikacji anulowania aprowizacji. |
 |UnprovisionFabric |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Konfiguracja zabezpieczeń na potrzeby anulowania aprowizacji manifestu MSI i/lub klastra. |
 |UnreliableTransportControl |ciąg, wartość domyślna to "Administrator" |Dynamiczny| Zawodny transport służący do dodawania i usuwania zachowań. |
@@ -872,7 +876,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |FrameHeaderErrorCheckingEnabled|bool, wartość domyślna to TRUE|Statyczny|Domyślne ustawienie sprawdzania błędów w nagłówku ramki w trybie niezabezpieczonym; ustawienie składnika zastępuje ten element. |
 |MessageErrorCheckingEnabled|bool, wartość domyślna to FALSE|Statyczny|Ustawienie domyślne do sprawdzania błędów w nagłówku komunikatu i treści w trybie niezabezpieczonym; ustawienie składnika zastępuje ten element. |
 |ResolveOption|ciąg, wartość domyślna to "nieokreślone"|Statyczny|Określa sposób rozwiązywania nazwy FQDN.  Prawidłowe wartości to "nieokreślone/IPv4/IPv6". |
-|Właściwości SendTimeout|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (300)|Dynamiczny|Określ wartość TimeSpan w sekundach. Wysłano limit czasu podczas wykrywania zablokowanego połączenia. Raporty o błędach TCP nie są niezawodne w niektórych środowiskach. Może być konieczne dostosowanie w zależności od dostępnej przepustowości sieci i rozmiaru danych wychodzących (\*MaxMessageSize @ no__t-1 @ no__t-2SendQueueSizeLimit). |
+|Właściwości SendTimeout|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (300)|Dynamiczny|Określ wartość TimeSpan w sekundach. Wysłano limit czasu podczas wykrywania zablokowanego połączenia. Raporty o błędach TCP nie są niezawodne w niektórych środowiskach. Może być konieczne dostosowanie w zależności od dostępnej przepustowości sieci i rozmiaru danych wychodzących (\*MaxMessageSize\/\*SendQueueSizeLimit). |
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
 

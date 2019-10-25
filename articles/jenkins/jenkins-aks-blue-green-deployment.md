@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: de9088333f69a22246fe5873d6e09ddb7ba3044a
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 10/23/2019
+ms.openlocfilehash: 4f528a667a7b498cadb15a441f9d9321259fffde
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249404"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882084"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania
 
@@ -218,7 +218,7 @@ W tej sekcji zobaczysz, jak przygotować serwer Jenkins do uruchomienia kompilac
     1. Wybierz pozycję **Manage Jenkins > Manage Plugins > Available** (Zarządzanie usługą Jenkins > Zarządzanie wtyczkami > Dostępne).
     1. Wyszukaj i zainstaluj wtyczkę usługi Azure Container Service.
 
-1. Dodaj poświadczenia umożliwiające zarządzanie zasobami na platformie Azure. Jeśli nie masz jeszcze wtyczki, zainstaluj **wtyczkę poświadczeń platformy Azure**.
+1. Dodaj poświadczenia umożliwiające zarządzanie zasobami na platformie Azure. Jeśli nie masz jeszcze wtyczki, zainstaluj wtyczkę **usługi Azure Credential** .
 
 1. Dodaj poświadczenia jednostki usługi platformy Azure jako typ **Microsoft Azure Service Principal** (Jednostka usługi Microsoft Azure).
 

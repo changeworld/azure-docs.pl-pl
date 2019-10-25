@@ -4,14 +4,35 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 1007533df077c58d9e4d57f9e86b035730ea917f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ec8fb6efab126dcf5556a9abfdf58d1fd69d4212
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904036"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882311"
 ---
-## <a name="set-up-your-device-in-unity"></a>Konfigurowanie urządzenia w środowisku Unity
+## <a name="androidtabandroid"></a>[Android](#tab/Android)
+
+Przykład Java dla systemu Android obsługuje udostępnianie między urządzeniami.
+Otwórz plik `SharedActivity.java` z folderu Samples w Android Studio. Wprowadź adres URL uzyskany w poprzednim kroku (z wdrożenia aplikacji sieci Web ASP.NET Azure) jako wartość `SharingAnchorsServiceUrl` w pliku `SharedActivity.java`. Zastąp `index.html` w adresie URL z `api/anchors`. Powinien wyglądać następująco: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="iostabios"></a>[iOS](#tab/iOS)
+
+Przykładowy cel-C dla systemu iOS obsługuje udostępnianie między urządzeniami.
+Otwórz plik `SharedDemoViewController.m` w folderze Samples. Wprowadź adres URL uzyskany w poprzednim kroku (z wdrożenia aplikacji sieci Web ASP.NET Azure) jako wartość `SharingAnchorsServiceUrl` w pliku `SharedActivity.java`. Zastąp `index.html` w adresie URL z `api/anchors`. Powinien wyglądać następująco: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="xamarintabxamarin"></a>[Xamarin](#tab/Xamarin)
+
+Przykłady platformy Xamarin Android i iOS obsługują udostępnianie na różnych urządzeniach.
+Otwórz plik `AccountDetails.cs` w folderze Samples. Wprowadź adres URL uzyskany w poprzednim kroku (z wdrożenia aplikacji sieci Web ASP.NET Azure) jako wartość `AnchorSharingServiceUrl` w pliku `SharedActivity.java`. Zastąp `index.html` w adresie URL z `api/anchors`. Powinien wyglądać następująco: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="unitytabunity"></a>[Unity](#tab/Unity)
 
 [!INCLUDE [Open Unity Project](spatial-anchors-open-unity-project.md)]
 
@@ -29,7 +50,7 @@ W okienku **Project (Projekt)** przejdź do katalogu `Assets/AzureSpatialAnchors
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-W okienku **projekt** przejdź do `Assets\AzureSpatialAnchors.Examples\Resources`. Wybierz pozycję `SpatialAnchorSamplesConfig`. Następnie w okienku **Inspektor** `Sharing Anchors Service url` wprowadź wartość `Base Sharing Url` dlaparametru`index.html` (z wdrożenia aplikacji sieci Web ASP.NET Azure), zastępując polecenie. `api/anchors` Powinien wyglądać następująco: `https://<app_name>.azurewebsites.net/api/anchors`.
+W okienku **projekt** przejdź do `Assets\AzureSpatialAnchors.Examples\Resources`. Wybierz pozycję `SpatialAnchorSamplesConfig`. Następnie w okienku **Inspektor** wprowadź `Sharing Anchors Service url` (z wdrożenia aplikacji sieci Web ASP.NET Azure) jako wartość `Base Sharing Url`, zastępując `index.html` `api/anchors`. Powinien wyglądać następująco: `https://<app_name>.azurewebsites.net/api/anchors`.
 
 Zapisz scenę, wybierając pozycje **File (Plik)**  > **Save (Zapisz)** .
 
@@ -43,12 +64,9 @@ Otwórz obszar **Build Settings (Ustawienia kompilacji)** , wybierając pozycje 
 
 W obszarze **sceny w kompilacji**upewnij się, że wszystkie sceny mają obok nich znacznik wyboru.
 
-Upewnij się, że **projekt eksportu** nie ma znacznika wyboru. Wybierz opcję **Kompiluj i uruchom**. Zostanie wyświetlony monit o zapisanie `.apk` pliku. Możesz wybrać dla niego dowolną nazwę.
+Upewnij się, że **projekt eksportu** nie ma znacznika wyboru. Wybierz opcję **Kompiluj i uruchom**. Zostanie wyświetlony monit o zapisanie pliku `.apk`. Możesz wybrać dla niego dowolną nazwę.
 
-Po uruchomieniu aplikacji w oknie dialogowym **Wybierz demonstrację** Użyj strzałek w lewo lub w prawo, aby wybrać opcję **LocalShare** , a następnie naciśnij pozycję **Przejdź!** . Postępuj zgodnie z instrukcjami w aplikacji. Możesz wybrać opcję **Utwórz zakotwiczenie udostępniania &** lub **zlokalizować zakotwiczenie udostępnione**.
-
-Pierwszy scenariusz pozwala utworzyć kotwicę, która może znajdować się później na tym samym urządzeniu lub na innym.
-Drugi scenariusz, jeśli aplikacja została już uruchomiona na tym samym urządzeniu lub w innym, umożliwia zlokalizowanie wcześniej udostępnionych kotwic. Po wybraniu scenariusza aplikacja przeprowadzi Cię przez użytkownika z dalszych instrukcji dotyczących czynności, które należy wykonać. Na przykład użytkownik zostanie poproszony o przeniesienie urządzenia do programu w celu zebrania informacji o środowisku. Później Umieść kotwicę na świecie, poczekaj na jego zapis itd.
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ### <a name="deploy-to-an-ios-device"></a>Wdrażanie na urządzeniu z systemem iOS
 
@@ -58,9 +76,6 @@ W obszarze **sceny w kompilacji**upewnij się, że wszystkie sceny mają obok ni
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-Po uruchomieniu aplikacji w oknie dialogowym **Wybierz demonstrację** Użyj strzałek w lewo lub w prawo, aby wybrać opcję **LocalShare** , a następnie naciśnij pozycję **Przejdź!** . Postępuj zgodnie z instrukcjami w aplikacji. Możesz wybrać opcję **Utwórz zakotwiczenie udostępniania &** lub **zlokalizować zakotwiczenie udostępnione**.
-
-Pierwszy scenariusz pozwala utworzyć kotwicę, która może znajdować się później na tym samym urządzeniu lub na innym.
-Drugi scenariusz, jeśli aplikacja została już uruchomiona na tym samym urządzeniu lub w innym, umożliwia zlokalizowanie wcześniej udostępnionych kotwic. Po wybraniu scenariusza aplikacja przeprowadzi Cię przez użytkownika z dalszych instrukcji dotyczących czynności, które należy wykonać. Na przykład użytkownik zostanie poproszony o przeniesienie urządzenia do programu w celu zebrania informacji o środowisku. Później Umieść kotwicę na świecie, poczekaj na jego zapis itd.
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 W programie Xcode Zatrzymaj aplikację, wybierając pozycję **Zatrzymaj**.

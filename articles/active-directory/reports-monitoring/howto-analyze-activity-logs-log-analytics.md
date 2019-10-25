@@ -1,5 +1,5 @@
 ---
-title: Analizowanie Azure Active Directory dzienników aktywności przy użyciu dzienników Azure Monitor | Microsoft Docs
+title: Analizowanie dzienników aktywności przy użyciu dzienników Azure Monitor | Microsoft Docs
 description: Dowiedz się, jak analizować Azure Active Directory dzienniki aktywności przy użyciu dzienników Azure Monitor
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1670c93f83ecd6f5bd557d24ec754998a225db0c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 52ab1bd445f8af0bf58dcb6b1176904aa073877a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255630"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820954"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analizowanie dzienników aktywności usługi Azure AD za pomocą dzienników Azure Monitor
 
@@ -61,7 +61,7 @@ Dzienniki są wypychane do tabel **AuditLogs** i **SigninLogs** w obszarze roboc
 1. W obszarze domyślny widok zapytania w poprzedniej sekcji Wybierz pozycję **schemat** i rozwiń obszar roboczy. 
 
 2. Rozwiń sekcję **Zarządzanie dziennikami** , a następnie rozwiń pozycję **AuditLogs** lub **SignInLogs** , aby wyświetlić schemat dziennika.
-    ![Audit Logs @ no__t-1 ![Signin Logs @ no__t-3
+    ![dzienniki inspekcji](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![dzienników logowania](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>Wykonywanie zapytań względem dzienników aktywności usługi Azure AD
 

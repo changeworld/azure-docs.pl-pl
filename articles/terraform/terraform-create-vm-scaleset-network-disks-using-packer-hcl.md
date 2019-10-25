@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/23/2019
+ms.openlocfilehash: de68d5217fb455c8d2b3e11163287e00abcf8481
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173483"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882505"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure z niestandardowego obrazu narzędzia Packer przy użyciu narzędzia Terraform
 
@@ -42,9 +42,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 W pustym katalogu utwórz trzy nowe pliki o następujących nazwach:
 
-- `variables.tf` : Ten plik zawiera wartości zmiennych użytych w szablonie.
-- `output.tf` : W tym pliku opisano ustawienia, które są wyświetlane po wdrożeniu.
-- `vmss.tf` : Ten plik zawiera kod infrastruktury, która jest wdrażana.
+- `variables.tf`: ten plik zawiera wartości zmiennych użytych w szablonie.
+- `output.tf`: ten plik opisuje ustawienia, które są wyświetlane po wdrożeniu.
+- `vmss.tf`: ten plik zawiera kod infrastruktury, która jest wdrażana.
 
 ##  <a name="create-the-variables"></a>Tworzenie zmiennych 
 
@@ -145,7 +145,7 @@ Zainicjuj środowisko narzędzia Terraform, uruchamiając następujące poleceni
 terraform init 
 ```
  
-Do folderu `.terraform` w katalogu, w którym uruchomiono polecenie, zostaną pobrane wtyczki dostawcy z rejestru narzędzia Terraform.
+Wtyczki dostawcy pobierają z rejestru Terraform do folderu `.terraform` w katalogu, w którym uruchomiono polecenie.
 
 Uruchom poniższe polecenie, aby wdrożyć infrastrukturę na platformie Azure.
 

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 3f94481e6a8550479788d92c744327e1dc3b58c4
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 890095718833c90a6764d0799d2081b393b1d0bd
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "66376918"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72887820"
 ---
 Poniższe limity mają zastosowanie do tematów systemu Azure Event Grid i tematów niestandardowych, a *nie* domen zdarzeń.
 
-| Resource | Limit |
+| Zasób | Limit |
 | --- | --- |
 | Tematy niestandardowe na subskrypcję platformy Azure | 100 |
 | Subskrypcje zdarzeń na temat | 500 |
@@ -27,10 +27,11 @@ Poniższe limity mają zastosowanie do tematów systemu Azure Event Grid i temat
 
 Poniższe limity mają zastosowanie tylko do domen zdarzeń.
 
-| Resource | Limit |
+| Zasób | Limit |
 | --- | --- |
-| Tematy na domenę zdarzeń | 1 000 w publicznej wersji zapoznawczej |
-| Subskrypcje zdarzeń na temat w domenie | 50 w publicznej wersji zapoznawczej |
-| Subskrypcje zdarzeń zakresu domeny | 50 w publicznej wersji zapoznawczej |
-| Częstotliwość publikowania dla domeny zdarzeń (ruch przychodzący) | 5 000 zdarzeń na sekundę w publicznej wersji zapoznawczej |
+| Tematy na domenę zdarzeń | 100 000 |
+| Subskrypcje zdarzeń na temat w domenie | 500 |
+| Subskrypcje zdarzeń zakresu domeny | 50 |
+| Częstotliwość publikowania dla domeny zdarzeń (ruch przychodzący) | 5 000 zdarzeń na sekundę |
 | Publikuj żądania | 250 na sekundę |
+| Domeny zdarzeń na subskrypcję platformy Azure | 100 |

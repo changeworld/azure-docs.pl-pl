@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9557923fc2228e8508acaa7e15d1729ac3d29538
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d3f5ef9d2c3359dc61c32d4971100b096b004f2f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028364"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881549"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych przez Subskrybowanie powiadomień Event Grid
 
@@ -53,7 +53,7 @@ W tym artykule dowiesz się, jak ustawić subskrypcję [Azure Event Grid](/azure
     | Punkt końcowy | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
     | | |
 
-1. Wybierz kartę **Dodatkowe funkcje**, jeśli chcesz śledzić pliki z określonego kontenera. Filtry dla powiadomień ustaw w następujący sposób:
+1. Wybierz kartę **filtry** , jeśli chcesz śledzić pliki z określonego kontenera. Filtry dla powiadomień ustaw w następujący sposób:
     * **Temat rozpoczyna się od** pola jest prefiksem *literału* kontenera obiektów BLOB. Ponieważ stosowany wzorzec to *StartsWith*, może on obejmować wiele kontenerów. Symbole wieloznaczne nie są dozwolone.
      Ustawienie *musi* wyglądać następująco: *`/blobServices/default/containers/`* [prefiks kontenera]
     * **Temat kończy się na** — to pole jest sufiksem *literału* obiektu blob. Symbole wieloznaczne nie są dozwolone.

@@ -6,33 +6,33 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
+ms.date: 10/23/2019
 ms.author: dapine
-ms.openlocfilehash: 52d8e1355558b197b193a50c7cde571799541268
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ecb172aec37fdab21bed8373ac7484dc52a54829
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717174"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72822017"
 ---
-## <a name="create-a-luis-resource"></a>Utwórz zasób usługi LUIS
+## <a name="create-a-luis-resource"></a>Tworzenie zasobu LUIS
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)
-1. Kliknij przycisk [tworzenie **Language Understanding**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUIS)
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)
+1. Kliknij przycisk [utwórz **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
 1. Wprowadź wszystkie wymagane ustawienia:
 
     |Ustawienie|Wartość|
     |--|--|
-    |Name (Nazwa)|Nazwy żądanej (2 do 64 znaków)|
-    |Subscription|Wybierz odpowiednią subskrypcję.|
-    |Location|Wybierz dowolną lokalizację w pobliżu i dostępne|
-    |Warstwa cenowa|`F0` -minimalnej warstwy cenowej|
-    |Grupa zasobów|Wybierz grupę dostępnych zasobów|
+    |Nazwa|Wymagana nazwa (2-64 znaków)|
+    |Subskrypcja|Wybierz odpowiednią subskrypcję|
+    |Lokalizacja|Wybierz dowolną lokalizację w pobliżu i dostępną|
+    |Warstwa cenowa|`F0` — minimalna warstwa cenowa|
+    |Grupa zasobów|Wybierz dostępną grupę zasobów|
 
-1. Kliknij przycisk **Utwórz** i poczekaj na zasób, który ma zostać utworzony. Po jego utworzeniu, przejdź do strony zasobu
+1. Kliknij przycisk **Utwórz** i poczekaj na utworzenie zasobu. Po jego utworzeniu przejdź do strony zasobów
 1. Zbierz skonfigurowane `endpoint` i klucz interfejsu API:
 
-    |Karta zasobów w portalu|Ustawienie|Value|
+    |Karta zasób w portalu|Ustawienie|Wartość|
     |--|--|--|
-    |**Omówienie**|Endpoint|Kopiowanie punktu końcowego. Będzie on podobny do `https://luis.cognitiveservices.azure.com/luis/v2.0`|
-    |**klucze**|Klucz interfejsu API|Skopiuj 1 dwa klucze. Jest to 32 ciąg znaków alfanumerycznych, bez spacji lub kreski, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |**Omówienie**|Punkt końcowy|Skopiuj punkt końcowy. Wygląda podobnie do `https://luis.cognitiveservices.azure.com/luis/v2.0`|
+    |**Ponownie**|Klucz interfejsu API|Kopiuj 1 z dwóch kluczy. Jest to 32 ciąg znaków alfanumerycznych bez spacji ani kresek, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|

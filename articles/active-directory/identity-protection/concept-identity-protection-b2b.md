@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d374f4ddac2e4d013bab1c5e88a87af1da2c1f
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667133"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881308"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Usługa Identity Protection i użytkownicy B2B
 
@@ -33,9 +33,9 @@ Ryzyko dla użytkowników związane z użytkownikami współpracy B2B jest oceni
 
 Istnieją pewne ograniczenia w implementacji ochrony tożsamości dla użytkowników współpracy B2B w katalogu zasobów ze względu na ich tożsamość w katalogu macierzystym. Główne ograniczenia są następujące:
 
-- Jeśli użytkownik-Gość wyzwala zasadę ryzyka użytkownika ochrony tożsamości w celu wymuszenia zresetowania hasła, zostanie zablokowany. Ten blok jest spowodowany brakiem możliwości resetowania haseł w katalogu zasobów.
-- Użytkownicy-Goście nie są wyświetlani w raporcie ryzykowni użytkownicy. Ta utrata widoczności jest spowodowana oceną ryzyka występującym w katalogu macierzystym użytkownika B2B.
-- Administratorzy nie mogą odrzucić lub skorygować ryzykownego użytkownika współpracy B2B w katalogu zasobów. Ta utrata funkcjonalności wynika z tego, że Administratorzy w katalogu zasobów nie mają dostępu do katalogu macierzystego użytkownika B2B.
+- Jeśli użytkownik-Gość wyzwala zasadę ryzyka użytkownika ochrony tożsamości w celu wymuszenia zresetowania hasła, **zostanie zablokowany**. Ten blok jest spowodowany brakiem możliwości resetowania haseł w katalogu zasobów.
+- **Użytkownicy-Goście nie są wyświetlani w raporcie ryzykowni użytkownicy**. Ta utrata widoczności jest spowodowana oceną ryzyka występującym w katalogu macierzystym użytkownika B2B.
+- Administratorzy **nie mogą odrzucić lub skorygować ryzykownego użytkownika współpracy B2B** w katalogu zasobów. Ta utrata funkcjonalności wynika z tego, że Administratorzy w katalogu zasobów nie mają dostępu do katalogu macierzystego użytkownika B2B.
 
 ### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>Dlaczego nie mogę skorygować ryzykownych użytkowników współpracy B2B w moim katalogu?
 
@@ -49,9 +49,8 @@ Jeśli ryzykowny użytkownik B2B w katalogu jest blokowany przez zasady oparte n
 
 Wyłączenie użytkowników B2B z zasad dostępu warunkowego opartych na ryzyku organizacji uniemożliwi użytkownikom B2B lub zablokowanie ich oceny ryzyka. Aby wykluczyć tych użytkowników B2B, Utwórz grupę w usłudze Azure AD, która zawiera wszystkich użytkowników-Gości w organizacji. Następnie Dodaj tę grupę jako wykluczenie dla wbudowanego ryzyka użytkownika ochrony tożsamości i zasad dotyczących ryzyka związanego z logowaniem, a także wszelkich zasad dostępu warunkowego, które używają ryzyka związanego z logowaniem jako warunku.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z następującymi artykułami dotyczącymi współpracy B2B w usłudze Azure AD:
 
 - [Czym jest współpraca B2B w usłudze Azure AD?](../b2b/what-is-b2b.md)
-- [Co to jest dostęp warunkowy?](../conditional-access/overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów związanych z brakiem danych w dziennikach aktywności usługi Azure Active Directory | Microsoft Docs
+title: Rozwiązywanie problemów z brakującymi danymi w dziennikach aktywności | Microsoft Docs
 description: Zawiera rozwiązanie problemu dotyczącego braku danych w dziennikach aktywności usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 01/15/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a04de319a17255e3b61378cbd716828a237317b3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 7aeac1180292ea5200e9eabc30ee01db05b67e75
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989516"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820851"
 ---
-# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Rozwiązywanie problemów: brak danych w dziennikach aktywności usługi Azure Active Directory 
+# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Rozwiązywanie problemów: Brak danych w dziennikach aktywności usługi Azure Active Directory 
 
 ## <a name="i-cant-find-audit-logs-for-recent-actions-in-the-azure-portal"></a>Nie mogę znaleźć dzienników inspekcji dla ostatnich działań w witrynie Azure Portal
 
@@ -43,7 +43,7 @@ Akcje nie pojawiają się natychmiast w dziennikach aktywności. W poniższej ta
 | Inspekcja katalogu | &nbsp; | 2 min | 5 min |
 | Aktywność związana z logowaniem | &nbsp; | 2 min | 5 min | 
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Poczekaj od 15 minut do dwóch godzin, a następnie sprawdź, czy akcje pojawią się w dzienniku. Jeśli dzienniki nie są widoczne nawet po dwóch godzinach, [utwórz bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), abyśmy mogli przeanalizować tę sytuację.
 
@@ -64,7 +64,7 @@ Akcje nie pojawiają się natychmiast w dziennikach aktywności. W poniższej ta
 | Inspekcja katalogu | &nbsp; | 2 min | 5 min |
 | Aktywność związana z logowaniem | &nbsp; | 2 min | 5 min | 
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Poczekaj od 15 minut do dwóch godzin, a następnie sprawdź, czy akcje pojawią się w dzienniku. Jeśli dzienniki nie są widoczne nawet po dwóch godzinach, [utwórz bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), abyśmy mogli przeanalizować tę sytuację.
 
@@ -87,7 +87,7 @@ W zależności od licencji w obszarze akcji usługi Azure Active Directory rapor
 
 Aby uzyskać więcej informacji, zobacz [Azure Active Directory report retention policies (Zasady przechowywania raportów w usłudze Azure Active Directory)](reference-reports-data-retention.md).  
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 Dostępne są dwie opcje przechowywania danych przez czas dłuższy niż 30 dni. Możesz użyć [interfejsów API raportowania usługi Azure AD](concept-reporting-api.md) do programowego pobierania danych i przechowywania ich w bazie danych. Alternatywnie możesz zintegrować dzienniki inspekcji w systemie SIEM innej firmy, takim jak Splunk lub SumoLogic.
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: eb13e6d279ffd8efc0cdb5ce675b77aac5be9c18
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3cec6ee9368b1d9d1f2c9a627108aaf41c6da3c3
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436635"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819854"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
 
@@ -34,6 +34,27 @@ Takie podejście, w przeciwieństwie do klasycznych metod szeregów czasowych, m
 Można [skonfigurować](#config) , jak daleko w przyszłość Prognoza powinna zostać rozszerzona (horyzont prognoz), a także spowolnienia i nie tylko. Zautomatyzowana ML zdobywa pojedynczy, ale często wewnętrznie rozgałęzienie modelu dla wszystkich elementów w zestawie danych i prognozowanie Horizons. W tym celu można uzyskać więcej danych w celu oszacowania parametrów modelu i generalizacji do niewidocznej serii.
 
 Funkcje wyodrębnione z danych szkoleniowych odgrywają rolę krytyczną. I, zautomatyzowana ML wykonuje standardowe kroki przetwarzania wstępnego i generuje dodatkowe funkcje szeregów czasowych do przechwytywania efektów sezonowych i maksymalizuje dokładność predykcyjną.
+
+## <a name="time-series-and-deep-learning-models"></a>Serie czasowe i modele uczenia głębokiego
+
+
+Automatyczna ML zapewnia użytkownikom zarówno natywne, jak i bogate modele uczenia w ramach systemu rekomendacji. Te informacje obejmują:
++ Prophet
++ AutoARIMA
++ ForecastTCN
+
+Uczenie głębokie o rozbudowanej ML umożliwia prognozowanie danych szeregów czasowych univariate i wieloczynnikowa.
+
+Modele uczenia głębokiego mają trzy capbailities wewnętrzne:
+1. Mogą uczyć się z dowolnego mapowania z danych wejściowych do wyjścia
+1. Obsługują one wiele wejść i wyjść
+1. Mogą automatycznie wyodrębniać wzorce w danych wejściowych, które rozciągają się na długie sekwencje
+
+Dane o większej liczbie, modele uczenia głębokiego, takie jak Microsoft "ForecasTCN", mogą poprawić wyniki modelu wynikowego. 
+
+Natywne informacje o szeregach czasowych są również udostępniane jako część zautomatyzowanej ML. Prophet działa najlepiej z seriami czasowymi, które mają silne skutki sezonowe i kilka sezonów danych historycznych. Prophet jest dokładny & Szybka, niezawodna do wartości odstających, brakujących danych i znaczących zmian w szeregach czasowych. 
+
+AutoRegressive Integrated (ARIMA) jest popularną metodą statystyczną dla prognozowania szeregów czasowych. Ta technika prognozowania jest często używana w krótkoterminowych scenariuszach prognozowania, w których dane przedstawiają dowód trendów, takich jak cykle, które mogą być nieprzewidywalne i trudne do modelowania lub prognozowania. Funkcja autoARIMA przekształca dane w dane stacjonarne w celu uzyskania spójnych, niezawodnych wyników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -56,7 +77,7 @@ Najważniejszym różnicą między typem zadania regresja prognozowania a typem 
     9/7/2018,A,2450,36
     9/7/2018,B,650,36
 
-Ten zestaw danych to prosty przykład codziennych danych sprzedaży dla firmy, która ma dwa różne sklepy, a i B. Ponadto istnieje funkcja `week_of_year`, która umożliwi modelowi wykrywanie cotygodniowych sezonowości. Pole `day_datetime` reprezentuje czystą serię czasową z częstotliwością dzienną, a pole `sales_quantity` jest kolumną docelową dla uruchomionych prognoz. Odczytaj dane do ramki dataPandas, a następnie użyj funkcji `to_datetime`, aby upewnić się, że seria czasowa jest typu `datetime`.
+Ten zestaw danych to prosty przykład codziennych danych sprzedaży dla firmy, która ma dwa różne sklepy, a i B. Ponadto istnieje funkcja `week_of_year`, która umożliwi modelowi wykrywanie cotygodniowych sezonowości. Pole `day_datetime` reprezentuje czystą serię czasową z częstotliwością dzienną, a pole `sales_quantity` jest kolumną docelową dla uruchomionych prognoz. Odczytaj dane do ramki dataPandas, a następnie użyj funkcji `to_datetime`, aby upewnić się, że szeregi czasowe są typu `datetime`.
 
 ```python
 import pandas as pd
@@ -64,7 +85,7 @@ data = pd.read_csv("sample.csv")
 data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-W takim przypadku dane są już sortowane rosnąco przez pole czasu `day_datetime`. Jednak podczas konfigurowania eksperymentu upewnij się, że kolumna żądana godzina jest posortowana w kolejności rosnącej, aby utworzyć prawidłową serię czasową. Załóżmy, że dane zawierają 1 000 rekordów i czynią deterministyczną podział w danych w celu tworzenia zestawów danych szkoleniowych i testowych. Zidentyfikuj nazwę kolumny etykieta i ustaw ją na etykieta. W tym przykładzie etykieta będzie `sales_quantity`. Następnie należy oddzielić pole Etykieta od `test_data` w celu utworzenia zestawu `test_target`.
+W takim przypadku dane są już sortowane rosnąco według pola czasu `day_datetime`. Jednak podczas konfigurowania eksperymentu upewnij się, że kolumna żądana godzina jest posortowana w kolejności rosnącej, aby utworzyć prawidłową serię czasową. Załóżmy, że dane zawierają 1 000 rekordów i czynią deterministyczną podział w danych w celu tworzenia zestawów danych szkoleniowych i testowych. Zidentyfikuj nazwę kolumny etykieta i ustaw ją na etykieta. W tym przykładzie etykieta zostanie `sales_quantity`. Następnie należy oddzielić pole Etykieta od `test_data`, aby utworzyć zestaw `test_target`.
 
 ```python
 train_data = data.iloc[:950]
@@ -101,7 +122,7 @@ Obiekt `AutoMLConfig` definiuje ustawienia i dane niezbędne do automatycznego z
 
 Aby uzyskać więcej informacji, zobacz [dokumentację referencyjną](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) .
 
-Utwórz ustawienia szeregów czasowych jako obiekt słownika. Ustaw wartość `time_column_name` w polu `day_datetime` w zestawie danych. Zdefiniuj parametr `grain_column_names`, aby mieć pewność, że dla danych są tworzone **dwie osobne grupy szeregów czasowych** . jeden dla sklepu A i B. na koniec Ustaw `max_horizon` na 50, aby przewidzieć cały zestaw testów. Ustaw okno prognozy na 10 okresów z `target_rolling_window_size` i określ pojedyncze opóźnienie dla wartości docelowych dla 2 okresów z parametrem `target_lags`.
+Utwórz ustawienia szeregów czasowych jako obiekt słownika. Ustaw `time_column_name` na pole `day_datetime` w zestawie danych. Zdefiniuj parametr `grain_column_names`, aby mieć pewność, że dla danych są tworzone **dwie osobne grupy szeregów czasowych** . jeden dla sklepu A i B. na koniec Ustaw `max_horizon` na 50, aby przewidzieć cały zestaw testów. Ustaw okno prognozy na 10 okresów z `target_rolling_window_size`, a następnie określ pojedyncze opóźnienie dla wartości docelowych dla 2 okresów z parametrem `target_lags`.
 
 ```python
 time_series_settings = {
@@ -173,7 +194,7 @@ predict_labels = fitted_model.predict(test_data)
 actual_labels = test_labels.flatten()
 ```
 
-Alternatywnie można użyć funkcji `forecast()` zamiast `predict()`, która będzie zezwalała na specyfikacje, kiedy przewidywane powinny być uruchamiane. W poniższym przykładzie należy najpierw zastąpić wszystkie wartości w `y_pred` z `NaN`. Podstawą prognozy będzie na końcu danych szkoleniowych w tym przypadku, tak jak zwykle w przypadku korzystania z `predict()`. Jednakże jeśli zamienisz tylko drugą połowę `y_pred` z `NaN`, funkcja spowodowałaby pozostawienie wartości liczbowych w pierwszej połowie niemodyfikowanej, ale prognozowanie wartości `NaN` w drugiej połowie. Funkcja zwraca zarówno wartości prognozowane, jak i wyrównane funkcje.
+Alternatywnie można użyć funkcji `forecast()` zamiast `predict()`, która będzie zezwalała na specyfikacje, kiedy przewidywane powinny być uruchamiane. W poniższym przykładzie należy najpierw zastąpić wszystkie wartości w `y_pred` z `NaN`. Podstawą prognozy będzie na końcu danych szkoleniowych w tym przypadku, tak jak zwykle w przypadku korzystania z `predict()`. Jednak jeśli zamienisz tylko drugą połowę `y_pred` z `NaN`, funkcja spowodowałaby pozostawienie wartości liczbowych w pierwszej połowie niemodyfikowanej, ale prognozowanie wartości `NaN` w drugiej połowie. Funkcja zwraca zarówno wartości prognozowane, jak i wyrównane funkcje.
 
 Można również użyć parametru `forecast_destination` w funkcji `forecast()` do prognozowania wartości aż do określonej daty.
 
@@ -184,7 +205,7 @@ label_fcst, data_trans = fitted_pipeline.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-Oblicz RMSE (główny błąd oznaczający pierwiastek) między wartościami rzeczywistymi `actual_labels` i wartościami prognozowanymi w `predict_labels`.
+Oblicz RMSE (główny błąd oznaczający pierwiastek) między wartościami rzeczywistymi `actual_labels` i prognozowanie wartości w `predict_labels`.
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -194,7 +215,7 @@ rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
 rmse
 ```
 
-Teraz, gdy ogólna dokładność modelu została określona, najbardziej realistycznym następnym krokiem jest użycie modelu do prognozowania nieznanych przyszłych wartości. Wystarczy dostarczyć zestaw danych w tym samym formacie co zestaw testów `test_data`, ale z przyszłymi datetimemi, a wynikiem jest przewidywane wartości dla każdego kroku szeregów czasowych. Załóżmy, że ostatnie rekordy szeregów czasowych w zestawie danych były 12/31/2018. Aby prognozować zapotrzebowanie na następny dzień (lub wiele okresów potrzebnych do prognozowania, < = `max_horizon`), należy utworzyć pojedynczy rekord szeregu czasowego dla każdego magazynu dla 01/01/2019.
+Teraz, gdy ogólna dokładność modelu została określona, najbardziej realistycznym następnym krokiem jest użycie modelu do prognozowania nieznanych przyszłych wartości. Wystarczy dostarczyć zestaw danych w tym samym formacie co zestaw testów, `test_data` ale z przyszłymi datami datetimes, a wynikający z tego zestaw predykcyjny to prognozowane wartości dla każdego kroku szeregów czasowych. Załóżmy, że ostatnie rekordy szeregów czasowych w zestawie danych były 12/31/2018. Aby prognozować zapotrzebowanie na następny dzień (lub wiele okresów potrzebnych do prognozowania, < = `max_horizon`), Utwórz pojedynczy rekord szeregu czasowego dla każdego magazynu dla 01/01/2019.
 
     day_datetime,store,week_of_year
     01/01/2019,A,1

@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Azure udziału przestrzenne zakotwiczenia między sesjami i urządzeniami | Dokumentacja firmy Microsoft
-description: W tym samouczku dowiesz się, jak udostępniać identyfikatory Azure przestrzenne zakotwiczenia między Android/urządzenia z systemem iOS na platformie Unity usługi zaplecza.
+title: Samouczek — udostępnianie kotwic przestrzennych platformy Azure między sesjami i urządzeniami | Microsoft Docs
+description: W tym samouczku dowiesz się, jak udostępnić identyfikatory kotwic Azure w środowisku z systemem Android/iOS w środowisku Unity przy użyciu usługi zaplecza.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,16 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 734e1d08413867a438270660fa97bb8c5737e087
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e8a60d5d90b684698d6fcb612278bcae6d4ed08e
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "67135384"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882302"
 ---
-# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Samouczek: Udostępnianie kotwic przestrzenne Azure między sesjami i urządzeniami
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Samouczek: udostępnianie kotwic przestrzennych platformy Azure między sesjami i urządzeniami
 
-W tym samouczku dowiesz się, jak używać [kotwic przestrzenne Azure](../overview.md) tworzyć kotwic podczas jednej sesji i Znajdź je na tym samym urządzeniu lub na inną. Również znajdować się te sam kotwic przez wiele urządzeń, w tym samym miejscu, a w tym samym czasie.
+W ramach tego samouczka nauczysz się używać [kotwic przestrzennych platformy Azure](../overview.md) do tworzenia kotwic podczas jednej sesji, a następnie znajdowania ich na tym samym urządzeniu lub na innym. Te same kotwice mogą również znajdować się na wielu urządzeniach w tym samym miejscu i w tym samym czasie.
 
 ![Trwałość](./media/persistence.gif)
 
@@ -34,29 +34,70 @@ Omawiane tematy:
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Warto zauważyć, że chociaż w tym samouczku będzie używany aparat Unity i aplikacja internetowa platformy ASP.NET Core, ma to na celu jedynie zaprezentowanie przykładu udostępniania identyfikatorów kotwic usługi Azure Spatial Anchors innym urządzeniom. Aby osiągnąć ten sam, można użyć innych języków i technologii zaplecza. Ponadto aplikacja internetowa platformy ASP.NET Core używana w tym samouczku zależy od zestawu .NET Core 2.2 SDK. Działa poprawnie w normalnej usłudze Azure Web Apps (dla systemu Windows), ale obecnie nie będzie działać w usłudze Azure Web Apps dla systemu Linux.
+Warto zauważyć, że chociaż w tym samouczku będzie używany aparat Unity i aplikacja internetowa platformy ASP.NET Core, ma to na celu jedynie zaprezentowanie przykładu udostępniania identyfikatorów kotwic usługi Azure Spatial Anchors innym urządzeniom. Możesz użyć innych języków i technologii zaplecza, aby osiągnąć ten sam cel. Ponadto aplikacja internetowa platformy ASP.NET Core używana w tym samouczku zależy od zestawu .NET Core 2.2 SDK. Działa poprawnie w normalnej usłudze Azure Web Apps (dla systemu Windows), ale obecnie nie będzie działać w usłudze Azure Web Apps dla systemu Linux.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="download-the-unity-sample-project"></a>Pobierz przykładowy projekt aparatu Unity
+## <a name="download-the-sample-project"></a>Pobierz przykładowy projekt
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
 ## <a name="deploy-your-sharing-anchors-service"></a>Wdrażanie usługi do udostępniania kotwic
 
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/VS)
+
 Otwórz program Visual Studio i otwórz projekt w folderze `Sharing\SharingServiceSample`.
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
+
+## <a name="visual-studio-codetabvsc"></a>[Visual Studio Code](#tab/VSC)
+
+Przed wdrożeniem usługi w programie VS Code należy utworzyć grupę zasobów i plan App Service.
+
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+
+Przejdź do <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> i zaloguj się do subskrypcji platformy Azure.
+
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+
+[!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
+
+Obok pozycji **Grupa zasobów** wybierz pozycję **Nowa**.
+
+Nadaj grupie zasobów nazwę **myResourceGroup**, a następnie kliknij przycisk **OK**.
+
+### <a name="create-an-app-service-plan"></a>Tworzenie planu usługi App Service
+
+[!INCLUDE [app-service-plan](../../../includes/app-service-plan.md)]
+
+Obok pozycji **Plan hostingu** wybierz pozycję **Nowy**.
+
+W oknie dialogowym **Konfiguruj plan hostingu** Użyj następujących ustawień:
+
+| Ustawienie | Sugerowana wartość | Opis |
+|-|-|-|
+|Plan usługi App Service| MySharingServicePlan | Nazwa planu usługi App Service. |
+| Lokalizacja | Zachodnie stany USA | Centrum danych, w którym hostowana jest aplikacja internetowa. |
+| Rozmiar | Bezpłatnie | [Warstwa cenowa](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , która określa funkcje hostingu. |
+
+Kliknij przycisk **OK**.
+
+Otwórz Visual Studio Code i Otwórz projekt w folderze `Sharing\SharingServiceSample`. Postępuj zgodnie z <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">tym samouczkiem</a> , aby wdrożyć usługę udostępniania za pomocą Visual Studio Code. Wykonaj kroki opisane w sekcji "Otwórz za pomocą Visual Studio Code". Nie należy tworzyć innego projektu MVC, jak wyjaśniono w powyższym kroku, ponieważ istnieje już projekt, który należy wdrożyć i opublikować — SharingServiceSample.
+
+---
+
+## <a name="deploy-the-sample-app"></a>Wdrażanie przykładowej aplikacji
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku została wdrożona aplikacja internetowa platformy ASP.NET Core na platformie Azure, a następnie została skonfigurowana i wdrożona aplikacja aparatu Unity. W aplikacji zostały utworzone kotwice przestrzenne i udostępniono je innym urządzeniom za pomocą aplikacji internetowej platformy ASP.NET Core.
 
-Aby dowiedzieć się więcej o sposobach poprawiania aplikacji internetowej ASP.NET Core, korzystającą z usługi Azure Cosmos DB do przechowywania Twojego udostępnionego identyfikatory zakotwiczenia przestrzennych, przejdź do następnego samouczka. Usługa Azure Cosmos DB umożliwi trwałości aplikacji internetowej ASP.NET Core. Spowoduje to więc umożliwi aplikacji do tworzenia elementu zakotwiczenia już dziś i wróć dni później, aby można go odnaleźć, korzystając z identyfikatorem kotwicy przechowywanych w aplikacji sieci web.
+Możesz ulepszyć ASP.NET Core aplikację sieci Web, tak aby używała Azure Cosmos DB do utrwalania magazynu udostępnionych identyfikatorów zakotwiczenia przestrzennego. Dodanie obsługi Azure Cosmos DB umożliwi aplikacji sieci Web ASP.NET Core utworzenie zakotwiczenia dzisiaj i powracanie później w przyszłości, aby można było je ponownie zlokalizować przy użyciu identyfikatora zakotwiczenia przechowywanego w aplikacji sieci Web.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Użyj usługi Azure Cosmos DB do kotwic Store](./tutorial-use-cosmos-db-to-store-anchors.md)
+> [Przechowywanie kotwic przy użyciu usługi Azure Cosmo DB](./tutorial-use-cosmos-db-to-store-anchors.md)
+
