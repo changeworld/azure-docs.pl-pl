@@ -1,5 +1,5 @@
 ---
-title: Co to jest usługa Azure Active Directory? — Usługa azure Active Directory | Dokumentacja firmy Microsoft
+title: Czym jest usługa Active Directory systemu Azure? — Azure Active Directory | Microsoft Docs
 description: Omówienie i pojęcia dotyczące Azure Active Directory, w tym terminologia, jakie licencje są dostępne, oraz listę powiązanych funkcji z linkami, aby uzyskać więcej informacji.
 services: active-directory
 author: msaburnley
@@ -10,14 +10,14 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a52b9ee26aac20d95356db6a280c5feb40023fed
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 8e0e028be6b4a507ba97f9126c791ee77c764c70
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942803"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880509"
 ---
-# <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory?
+# <a name="what-is-azure-active-directory"></a>Czym jest usługa Active Directory systemu Azure?
 
 Azure Active Directory (Azure AD) to usługa zarządzania tożsamościami i dostępem opartymi na chmurze firmy Microsoft, która ułatwia pracownikom logowanie się i dostęp do zasobów w programie:
 
@@ -52,11 +52,11 @@ Aby ulepszyć implementację usługi Azure AD, możesz również dodać płatne 
 
 - **Azure Active Directory — wersja Premium P1.** Oprócz bezpłatnych funkcji P1 umożliwia również użytkownikom hybrydowym dostęp do zasobów lokalnych i w chmurze. Obsługuje ona również zaawansowaną administrację, taką jak grupy dynamiczne, samoobsługowe zarządzanie grupami, usługa Microsoft Identity Manager (lokalny pakiet do zarządzania tożsamościami i dostępem) oraz funkcje zapisu zwrotnego, które umożliwiają samoobsługowe resetowanie haseł przez użytkowników lokalnych.
 
-- **Azure Active Directory — wersja Premium P2.** Oprócz funkcji wolnych i P1 firma P2 oferuje również [Azure Active Directory Identity Protection](../identity-protection/enable.md) w celu zapewnienia na podstawie ryzyka dostępu warunkowego do aplikacji i kluczowych danych firmy, a [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) w celu uzyskania pomocy. Ogranicz i monitoruj administratorów oraz ich dostęp do zasobów i zapewniaj dostęp just in Time w razie potrzeby.
+- **Azure Active Directory — wersja Premium P2.** Oprócz funkcji wolnych i P1 firma P2 oferuje również [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) w celu zapewnienia na podstawie ryzyka dostępu warunkowego do aplikacji i kluczowych danych firmy, a [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) w celu uzyskania pomocy. Ogranicz i monitoruj administratorów oraz ich dostęp do zasobów i zapewniaj dostęp just in Time w razie potrzeby.
 
 - **Licencje funkcji „Płatność zgodnie z rzeczywistym użyciem”.** Istnieje też możliwość uzyskania licencji dodatkowych funkcji, takich jak usługa Azure Active Directory Business-to-Customer (B2C). Usługa B2C może ułatwić zapewnianie rozwiązań do zarządzania tożsamościami i dostępem dla aplikacji udostępnianych klientom. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 
-Aby uzyskać więcej informacji o kojarzeniu subskrypcji platformy Azure z usługą Azure AD, zobacz [How to: Associate or add an Azure subscription to Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) (Instrukcje: kojarzenie lub dodawanie subskrypcji platformy Azure do usługi Azure Active Directory). Aby uzyskać więcej informacji o przypisywaniu licencji do użytkowników, zobacz [How to: Assign or remove Azure Active Directory licenses](license-users-groups.md) (Instrukcje: przypisywanie lub usuwanie licencji usługi Azure Active Directory).
+Aby uzyskać więcej informacji o kojarzeniu subskrypcji platformy Azure z usługą Azure AD, zobacz [How to: Associate or add an Azure subscription to Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) (Jak: Kojarzenie subskrypcji platformy Azure lub dodawanie jej do usługi Azure Active Directory). Aby uzyskać więcej informacji o przypisywaniu licencji użytkownikom, zobacz [How to: Assign or remove Azure Active Directory licenses](license-users-groups.md) (Jak: Przypisywanie lub usuwanie licencji usługi Azure Active Directory).
 
 ## <a name="terminology"></a>Terminologia
 
@@ -86,7 +86,7 @@ Po wybraniu licencji usługi Azure AD uzyskasz dostęp do niektórych lub wszyst
 |Kategoria|Opis|
 |-------|-----------|
 |Zarządzanie aplikacjami|Zarządzanie aplikacjami w chmurze i lokalnymi przy użyciu serwera proxy aplikacji, logowania jednokrotnego, portalu Moje aplikacje (nazywanego też panelem dostępu) i aplikacji typu oprogramowanie jako usługa (SaaS). Aby uzyskać więcej informacji, zobacz temat [Jak zapewnić bezpieczny, zdalny dostęp do aplikacji lokalnych](../manage-apps/application-proxy.md) i [dokumentację zarządzania aplikacjami](../manage-apps/index.yml).|
-|Authentication|Zarządzanie samoobsługowym resetowaniem haseł, uwierzytelnianiem wieloskładnikowym, niestandardowymi listami zakazanych haseł i inteligentną blokadą usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [dokumentację uwierzytelniania w usłudze Azure AD](../authentication/index.yml).|
+|Uwierzytelnianie|Zarządzanie samoobsługowym resetowaniem haseł, uwierzytelnianiem wieloskładnikowym, niestandardowymi listami zakazanych haseł i inteligentną blokadą usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [dokumentację uwierzytelniania w usłudze Azure AD](../authentication/index.yml).|
 |Działania między firmami (B2B)|Zarządzanie użytkownikami-gośćmi i partnerami zewnętrznymi przy zachowaniu kontroli nad danymi firmowymi. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2B](../b2b/index.yml).|
 |Działania między firmami i klientami (B2C)|Dostosowywanie i kontrolowanie sposobu tworzenia kont, logowania się i zarządzania profilami przez użytkowników podczas korzystania z aplikacji. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2C](../../active-directory-b2c/index.yml).|
 |Dostęp warunkowy|Zarządzanie dostępem do aplikacji w chmurze. Aby uzyskać więcej informacji, zobacz [dokumentację dostępu warunkowego w usłudze Azure AD](../conditional-access/index.yml).|
@@ -95,7 +95,7 @@ Po wybraniu licencji usługi Azure AD uzyskasz dostęp do niektórych lub wszyst
 |Usługi domenowe|Przyłączanie maszyn wirtualnych platformy Azure do domeny bez używania kontrolerów domeny. Aby uzyskać więcej informacji, zobacz [dokumentację usług Azure AD Domain Services](../../active-directory-domain-services/index.yml).|
 |Użytkownicy korporacyjni|Zarządzanie przypisywaniem licencji i dostępem do aplikacji oraz konfigurowanie delegatów za pomocą grup i ról administratora. Aby uzyskać więcej informacji, zobacz [dokumentację zarządzania użytkownikami usługi Azure Active Directory](../users-groups-roles/index.yml).|
 |Tożsamość hybrydowa|Używanie programów Azure Active Directory Connect i Connect Health w celu udostępniania pojedynczej tożsamości użytkownika na potrzeby uwierzytelniania i autoryzacji we wszystkich zasobach, niezależnie od lokalizacji (w chmurze lub lokalnie). Aby uzyskać więcej informacji, zobacz [dokumentację tożsamości hybrydowej](../hybrid/index.yml).|
-|Nadzór nad tożsamościami|Zarządzanie tożsamością w organizacji za pośrednictwem mechanizmów kontroli dostępu pracowników, partnerów biznesowych, dostawców, usług i aplikacji. Można też przeprowadzać przeglądy dostępu. Aby uzyskać więcej informacji, zobacz [dokumentację zarządzania tożsamościami w usłudze Azure AD](../governance/identity-governance-overview.md) i temat [Przeglądy dostępu w usłudze Azure AD](../governance/access-reviews-overview.md).|
+|Zapewnienie ładu w zakresie tożsamości|Zarządzanie tożsamością w organizacji za pośrednictwem mechanizmów kontroli dostępu pracowników, partnerów biznesowych, dostawców, usług i aplikacji. Można też przeprowadzać przeglądy dostępu. Aby uzyskać więcej informacji, zobacz [dokumentację zarządzania tożsamościami w usłudze Azure AD](../governance/identity-governance-overview.md) i temat [Przeglądy dostępu w usłudze Azure AD](../governance/access-reviews-overview.md).|
 |Ochrona tożsamości|Wykrywanie potencjalnych luk w zabezpieczeniach wpływających na tożsamości w organizacji, konfigurowanie zasad w celu reagowania na podejrzane działania oraz podejmowanie odpowiednich działań w celu rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [Usługa Azure AD Identity Protection](../identity-protection/index.yml).|
 |Tożsamości zarządzane dla zasobów platformy Azure|Zapewnia usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure AD, która umożliwia uwierzytelnianie dowolnych usług uwierzytelniania obsługiwanych przez usługę Azure AD, włącznie z usługą Key Vault. Aby uzyskać więcej informacji, zobacz [Czym są tożsamości zarządzane dla zasobów platformy Azure?](../managed-identities-azure-resources/overview.md).|
 |Privileged Identity Management (PIM)|Kontrolowanie i monitorowanie dostępu w organizacji oraz zarządzanie nim. Ta funkcja obejmuje dostęp do zasobów w usłudze Azure AD i na platformie Azure oraz w innych usługach online firmy Microsoft, takich jak Office 365 lub Intune. Aby uzyskać więcej informacji, zobacz [Usługa Azure AD Privileged Identity Management](../privileged-identity-management/index.yml).|

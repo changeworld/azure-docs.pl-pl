@@ -1,6 +1,6 @@
 ---
-title: Tworzenie konta usługi block blob storage — usługi Azure Storage | Dokumentacja firmy Microsoft
-description: Pokazuje, jak utworzyć konto usługi Azure block blob storage za pomocą charakterystyki wydajności premium.
+title: Tworzenie konta usługi Block BLOB Storage — Azure Storage | Microsoft Docs
+description: Pokazuje, jak utworzyć konto usługi Azure BlockBlobStorage z charakterystyką wydajności Premium.
 author: tamram
 services: storage
 ms.service: storage
@@ -8,72 +8,71 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9d8fb8f5f470dc47088efb30b7f823a0b8c624c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1df1d5180d951e7a720ec82c548438892a47a426
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65141013"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881867"
 ---
-# <a name="create-a-block-blob-storage-account"></a>Tworzenie konta magazynu blokowych obiektów blob
+# <a name="create-a-blockblobstorage-account"></a>Utwórz konto BlockBlobStorage
 
-Typ konta magazynu blokowych obiektów blob umożliwia tworzenie blokowych obiektów blob za pomocą charakterystyki wydajności premium. Ten typ konta magazynu jest zoptymalizowany dla obciążeń przy użyciu stawki za transakcje o wysokiej lub które wymagają bardzo szybkie godziny dostępu. W tym artykule przedstawiono sposób tworzenia konta usługi block blob storage za pomocą witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell.
+Rodzaj konta BlockBlobStorage umożliwia tworzenie blokowych obiektów blob z charakterystyką wydajności Premium. Ten typ konta magazynu jest zoptymalizowany pod kątem obciążeń z wysoką stawką transakcji lub wymagających bardzo szybkiego dostępu. W tym artykule przedstawiono sposób tworzenia konta usługi BlockBlobStorage przy użyciu Azure Portal, interfejsu wiersza polecenia platformy Azure lub Azure PowerShell.
 
-Aby uzyskać więcej informacji na temat kont usługi block blob storage, zobacz [Przegląd konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Aby uzyskać więcej informacji o kontach BlockBlobStorage, zobacz [Omówienie konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
-## <a name="create-account-in-the-azure-portal"></a>Utwórz konto w witrynie Azure portal
+## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+Aby utworzyć konto BlockBlobStorage w Azure Portal, wykonaj następujące kroki:
 
-Aby utworzyć konto usługi block blob storage w witrynie Azure portal, wykonaj następujące kroki:
+1. W Azure Portal wybierz pozycję **wszystkie usługi** > kategoria **magazynu** > **konta magazynu**.
 
-1. W witrynie Azure portal wybierz **wszystkich usług** > **magazynu** kategorii > **kont magazynu**.
+1. W obszarze **konta magazynu**wybierz pozycję **Dodaj**.
 
-1. W obszarze **kont magazynu**, wybierz opcję **Dodaj**.
+1. W polu **subskrypcja** wybierz subskrypcję, w ramach której chcesz utworzyć konto magazynu.
 
-1. W **subskrypcji** Wybierz subskrypcję, w której ma zostać utworzone konto magazynu.
+1. W polu **Grupa zasobów** wybierz istniejącą grupę zasobów lub wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę nowej grupy zasobów.
 
-1. W **grupy zasobów** pola, wybierz istniejącą grupę zasobów lub **Utwórz nową**, a następnie wprowadź nazwę dla nowej grupy zasobów.
+1. W polu **nazwa konta magazynu** wprowadź nazwę konta. Należy zwrócić uwagę na następujące wytyczne:
 
-1. W **nazwa konta magazynu** wprowadź nazwę konta. Należy zwrócić uwagę następujących wytycznych:
-
-   - Nazwa musi być unikatowa w obrębie platformy Azure.
-   - Nazwa musi wynosić od 3 do 24 znaków.
+   - Nazwa musi być unikatowa na platformie Azure.
+   - Nazwa musi mieć długość od 3 do 24 znaków.
    - Nazwa może zawierać tylko cyfry i małe litery.
 
-1. W **lokalizacji** pola, wybierz lokalizację dla konta magazynu lub użyj domyślnej lokalizacji.
+1. W polu **Lokalizacja** wybierz lokalizację konta magazynu lub Użyj domyślnej lokalizacji.
 
-1. Dla pozostałych ustawień skonfiguruj następujące ustawienia:
+1. W pozostałych ustawieniach skonfiguruj następujące opcje:
 
    |Pole     |Wartość  |
    |---------|---------|
-   |**Wydajność**    |  Wybierz **Premium**.   |
-   |**Rodzaj konta**    | Wybierz **BlockBlobStorage**.      |
-   |**Replikacja**    |  Pozostaw domyślne ustawienie **magazyn lokalnie nadmiarowy (LRS)** .      |
+   |**Wydajność**    |  Wybierz pozycję **Premium**.   |
+   |**Rodzaj konta**    | Wybierz pozycję **BlockBlobStorage**.      |
+   |**Replikacja**    |  Pozostaw domyślne ustawienie **magazynu lokalnie nadmiarowego (LRS)** .      |
 
-   ![Pokazuje interfejsu użytkownika do utworzenia konta usługi blob storage bloku portalu](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
+   ![Przedstawia interfejs użytkownika portalu do tworzenia konta blokowego magazynu obiektów BLOB](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
-1. Wybierz **Przejrzyj + Utwórz** Aby przejrzeć ustawienia konta magazynu.
+1. Wybierz pozycję **Przegląd + Utwórz** , aby przejrzeć ustawienia konta magazynu.
 
 1. Wybierz pozycję **Utwórz**.
 
-## <a name="create-account-using-azure-powershell"></a>Tworzenie konta przy użyciu programu Azure PowerShell
+## <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień (Uruchom jako administrator).
+1. Otwórz sesję programu Windows PowerShell z podwyższonym poziomem uprawnień (Uruchom jako administrator).
 
-1. Uruchom następujące polecenie, aby upewnić się, że najnowsza wersja `Az` zainstalowany moduł PowerShell.
+1. Uruchom następujące polecenie, aby upewnić się, że zainstalowano najnowszą wersję modułu `Az` PowerShell.
 
    ```powershell
    Install-Module -Name Az -AllowClobber
    ```
 
-1. Otwórz nowy konsolę programu PowerShell i zaloguj się przy użyciu konta platformy Azure.
+1. Otwórz nową konsolę programu PowerShell i zaloguj się przy użyciu konta platformy Azure.
 
    ```powershell
    Connect-AzAccount -SubscriptionId <SubscriptionID>
    ```
 
-1. Jeśli to konieczne, Utwórz nową grupę zasobów. Zastąp wartości w ofert, a następnie uruchom następujące polecenie.
+1. W razie konieczności Utwórz nową grupę zasobów. Zastąp wartości w cudzysłowach i uruchom następujące polecenie.
 
    ```powershell
    $resourcegroup = "new_resource_group_name"
@@ -81,7 +80,7 @@ Aby utworzyć konto usługi block blob storage w witrynie Azure portal, wykonaj 
    New-AzResourceGroup -Name $resourceGroup -Location $location
    ```
 
-1. Utwórz konto magazynu blokowych obiektów blob. Zastąp wartości w ofert, a następnie uruchom następujące polecenie.
+1. Utwórz konto BlockBlobStorage. Zastąp wartości w cudzysłowach i uruchom następujące polecenie.
 
    ```powershell
    $resourcegroup = "resource_group_name"
@@ -91,9 +90,9 @@ Aby utworzyć konto usługi block blob storage w witrynie Azure portal, wykonaj 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
 
-## <a name="create-account-using-azure-cli"></a>Tworzenie konta przy użyciu wiersza polecenia platformy Azure
+## <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
-Aby utworzyć konto usługi block blob przy użyciu wiersza polecenia platformy Azure, należy najpierw zainstalować interfejs wiersza polecenia platformy Azure. 2.0.46 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Aby utworzyć konto blokowego obiektu BLOB przy użyciu interfejsu wiersza polecenia platformy Azure, musisz najpierw zainstalować interfejs wiersza polecenia platformy Azure w wersji 2.0. 2.0.46 lub nowszą wersję. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 1. Zaloguj się do subskrypcji platformy Azure.
 
@@ -101,7 +100,7 @@ Aby utworzyć konto usługi block blob przy użyciu wiersza polecenia platformy 
    az login
    ```
 
-1. Jeśli to konieczne, Utwórz nową grupę zasobów. Zastąp wartości w nawiasach kwadratowych (razem z nawiasami), a następnie uruchom następujące polecenie.
+1. W razie konieczności Utwórz nową grupę zasobów. Zastąp wartości w nawiasach (w tym nawiasy klamrowe) i uruchom następujące polecenie.
 
    ```azurecli
    az group create \
@@ -109,7 +108,7 @@ Aby utworzyć konto usługi block blob przy użyciu wiersza polecenia platformy 
     --location "<location>"
    ```
 
-1. Utwórz konto magazynu blokowych obiektów blob. Zastąp wartości w nawiasach kwadratowych (razem z nawiasami), a następnie uruchom następujące polecenie.
+1. Utwórz konto BlockBlobStorage. Zastąp wartości w nawiasach (w tym nawiasy klamrowe) i uruchom następujące polecenie.
 
    ```azurecli
    az storage account create \
@@ -120,8 +119,8 @@ Aby utworzyć konto usługi block blob przy użyciu wiersza polecenia platformy 
     --sku "Premium_LRS"
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](https://docs.microsoft.com/azure/storage/common/storage-account-overview) (Omówienie konta usługi Azure Storage).
+- Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview (Omówienie konta usługi Azure Storage)](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
 - Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).

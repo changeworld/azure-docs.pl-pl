@@ -1,45 +1,40 @@
 ---
-title: Ustawianie alertów w usłudze Application Insights przy użyciu programu Powershell | Dokumentacja firmy Microsoft
-description: Automatyzowanie konfiguracji usługi Application Insights, aby otrzymywać wiadomości e-mail o zmianach metryki.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Ustawianie alertów w Application Insights za pomocą programu PowerShell | Microsoft Docs
+description: Automatyzacja konfiguracji Application Insights, aby otrzymywać wiadomości e-mail o zmianach metryk.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/31/2016
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/31/2016
+ms.openlocfilehash: 0771079eb338c2f22cb0b1f31c48b0b9f80a3ff5
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66130984"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819093"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights przy użyciu programu PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Można zautomatyzować konfigurację [alerty](../../azure-monitor/app/alerts.md) w [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md).
+Konfigurację [alertów](../../azure-monitor/app/alerts.md) można zautomatyzować w [Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
-Ponadto mogą [Ustaw elementami webhook w celu automatyzowania odpowiedzi na alert](../../azure-monitor/platform/alerts-webhooks.md).
+Ponadto można [ustawić elementy webhook w celu zautomatyzowania odpowiedzi na alert](../../azure-monitor/platform/alerts-webhooks.md).
 
 > [!NOTE]
-> Jeśli chcesz utworzyć zasoby i alerty w tym samym czasie, należy wziąć pod uwagę [przy użyciu szablonu usługi Azure Resource Manager](powershell.md).
+> Jeśli chcesz utworzyć zasoby i alerty w tym samym czasie, rozważ [użycie szablonu Azure Resource Manager](powershell.md).
 
-## <a name="one-time-setup"></a>Jednorazowej konfiguracji
-Jeśli nie znasz programu PowerShell z subskrypcją platformy Azure przed:
+## <a name="one-time-setup"></a>Konfiguracja jednorazowa
+Jeśli nie korzystasz z programu PowerShell z subskrypcją platformy Azure przed:
 
-Instalowanie modułu Azure Powershell na komputerze, na którym chcesz uruchomić skrypty.
+Zainstaluj moduł Azure PowerShell na komputerze, na którym chcesz uruchomić skrypty.
 
-* Zainstaluj [Instalatora platformy sieci Web firmy Microsoft (w wersji 5 lub nowszej)](https://www.microsoft.com/web/downloads/platform.aspx).
-* Użyć go do zainstalowania środowiska Microsoft Azure Powershell
+* Zainstaluj [Instalator platformy Microsoft Web (w wersji 5 lub nowszej)](https://www.microsoft.com/web/downloads/platform.aspx).
+* Użyj jej do zainstalowania programu Microsoft Azure PowerShell
 
 ## <a name="connect-to-azure"></a>Nawiązywanie połączenia z usługą Azure
-Uruchom program Azure PowerShell i [nawiązać połączenie z subskrypcją](/powershell/azure/overview):
+Rozpocznij Azure PowerShell i [Nawiąż połączenie z subskrypcją](/powershell/azure/overview):
 
 ```powershell
 
@@ -47,10 +42,10 @@ Uruchom program Azure PowerShell i [nawiązać połączenie z subskrypcją](/pow
 ```
 
 
-## <a name="get-alerts"></a>Otrzymuj alerty
+## <a name="get-alerts"></a>Pobierz alerty
     Get-AzAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
 
-## <a name="add-alert"></a>Dodaj alert
+## <a name="add-alert"></a>Dodawanie alertu
     Add-AzMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
      -ResourceGroup "{GROUP NAME}" `
      -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
@@ -66,9 +61,9 @@ Uruchom program Azure PowerShell i [nawiązać połączenie z subskrypcją](/pow
 
 
 ## <a name="example-1"></a>Przykład 1
-Wyślij mi wiadomość e-mail, jeśli odpowiedzi serwera na żądania HTTP, średniej ponad 5 minut, jest mniejsza niż 1 sekunda. Mój zasób usługi Application Insights jest nazywany IceCreamWebApp i jest w grupie zasobów firmy Fabrikam. Jestem właścicielem subskrypcji platformy Azure.
+Wyślij do mnie wiadomość e-mail, jeśli odpowiedź serwera na żądania HTTP, średnia na 5 minut, jest mniejsza niż 1 sekunda. Zasób my Application Insights ma nazwę IceCreamWebApp i znajduje się w grupie zasobów fabrikam. Jestem właścicielem subskrypcji platformy Azure.
 
-Identyfikator GUID jest identyfikator subskrypcji (nie klucz instrumentacji aplikacji).
+GUID jest IDENTYFIKATORem subskrypcji (nie kluczem Instrumentacji aplikacji).
 
     Add-AzMetricAlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
@@ -82,7 +77,7 @@ Identyfikator GUID jest identyfikator subskrypcji (nie klucz instrumentacji apli
      -Location "East US" -RuleType Metric
 
 ## <a name="example-2"></a>Przykład 2
-Mam aplikację, w którym mogę użyć [TrackMetric()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) zgłosić Metryka o nazwie "salesPerHour." Wyślij wiadomość e-mail do moich współpracowników, jeśli "salesPerHour" spadnie poniżej 100, średniej ponad 24 godzin.
+Mam aplikację, w której używam [TrackMetric ()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) do raportowania metryki o nazwie "salesPerHour". Wyślij wiadomość e-mail do moich współpracowników, jeśli wartość "salesPerHour" spadnie poniżej 100, średnia na 24 godziny.
 
     Add-AzMetricAlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -95,48 +90,48 @@ Mam aplikację, w którym mogę użyć [TrackMetric()](../../azure-monitor/app/a
      -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
      -Location "East US" -RuleType Metric
 
-Ta zasada może służyć do metryki zgłoszony za pomocą [parametr miary](../../azure-monitor/app/api-custom-events-metrics.md#properties) wywołania śledzenia innego, takich jak funkcja TrackEvent lub wywołania trackPageView.
+Ta sama reguła może być używana dla metryki raportowanej za pomocą [parametru pomiaru](../../azure-monitor/app/api-custom-events-metrics.md#properties) innego wywołania śledzenia, takiego jak poleceń trackEvent lub trackPageView.
 
 ## <a name="metric-names"></a>Nazwy metryk
-| Nazwa metryki | Nazwa ekranowa | Opis |
+| Nazwa metryki | Nazwa ekranu | Opis |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Wyjątki przeglądarki |Liczba nieprzechwyconych wyjątków zgłoszonych w przeglądarce. |
-| `basicExceptionServer.count` |Wyjątki serwera |Liczba nieobsługiwanych wyjątków zgłoszonych przez aplikację |
-| `clientPerformance.clientProcess.value` |Czas przetwarzania klienta |Czas między odebraniem ostatniego bajtu dokumentu, do momentu załadowania modelu DOM. Żądania asynchroniczne mogą nadal być przetwarzane. |
-| `clientPerformance.networkConnection.value` |Czas połączenia sieciowego podczas ładowania strony |Czas przyjmuje przeglądarki, aby nawiązać połączenie z siecią. Może być równa 0, jeśli w pamięci podręcznej. |
-| `clientPerformance.receiveRequest.value` |Czas odpowiedzi odbierania |Czas między przeglądarką, wysyłając żądanie do uruchamiania na odebranie odpowiedzi. |
-| `clientPerformance.sendRequest.value` |Czas żądania wysyłania |Czas poświęcony przez przeglądarkę, aby wysłać żądanie. |
-| `clientPerformance.total.value` |Czas ładowania strony przeglądarki |Czas od żądania użytkownika do modelu DOM, arkuszy stylów, skrypty i obrazy są ładowane. |
-| `performanceCounter.available_bytes.value` |Dostępna pamięć |Pamięć fizyczna dostępna natychmiast dla procesów lub do użycia przez system. |
-| `performanceCounter.io_data_bytes_per_sec.value` |Proces we/wy |Całkowita liczba bajtów na sekundę odczytywanych i zapisywanych na plikach i sieci oraz urządzenia. |
-| `performanceCounter.number_of_exceps_thrown_per_sec.value` |częstotliwość występowania wyjątków |Wyjątki zgłoszone w ciągu sekundy. |
-| `performanceCounter.percentage_processor_time.value` |Procesy — procesor CPU |Wartość procentową czasu wszystkie wątki procesów używana przez procesor do wykonywania instrukcji w procesie aplikacji. |
-| `performanceCounter.percentage_processor_total.value` |Czas procesora |Procent czasu, jaki procesor zużywa wątki. |
+| `basicExceptionServer.count` |Wyjątki serwera |Liczba nieobsłużonych wyjątków zgłoszonych przez aplikację |
+| `clientPerformance.clientProcess.value` |Czas przetwarzania klienta |Czas między odebraniem ostatniego bajtu dokumentu do momentu załadowania modelu DOM. Żądania asynchroniczne nadal mogą być przetwarzane. |
+| `clientPerformance.networkConnection.value` |Czas połączenia sieciowego ładowania strony |Czas, przez jaki przeglądarka będzie łączyć się z siecią. Może mieć wartość 0, jeśli jest buforowana. |
+| `clientPerformance.receiveRequest.value` |Czas odpowiedzi na odebranie |Czas między wysłaniem żądania przez przeglądarkę do rozpoczęcia odbierania odpowiedzi. |
+| `clientPerformance.sendRequest.value` |Czas żądania wysłania |Czas potrzebny na wysłanie żądania przez przeglądarkę. |
+| `clientPerformance.total.value` |Czas ładowania strony w przeglądarce |Czas od żądania użytkownika do załadowania modelu DOM, arkuszy stylów, skryptów i obrazów. |
+| `performanceCounter.available_bytes.value` |Dostępna pamięć |Pamięć fizyczna natychmiast dostępna dla procesu lub do użycia przez system. |
+| `performanceCounter.io_data_bytes_per_sec.value` |Szybkość operacji we/wy procesu |Łączna liczba bajtów odczytanych i zapisywana w plikach, sieci i urządzeniach. |
+| `performanceCounter.number_of_exceps_thrown_per_sec.value` |Częstotliwość wyjątków |Zgłoszone wyjątki na sekundę. |
+| `performanceCounter.percentage_processor_time.value` |Procesor CPU procesu |Wyrażony w procentach czas, przez jaki wszystkie wątki procesów używane przez procesor do wykonywania instrukcji dla procesu aplikacji. |
+| `performanceCounter.percentage_processor_total.value` |Czas procesora |Procent czasu spędzanego przez procesor w wątkach, które nie są bezczynne. |
 | `performanceCounter.process_private_bytes.value` |Prywatne bajty procesu |Pamięć przypisana wyłącznie do procesów monitorowanej aplikacji. |
-| `performanceCounter.request_execution_time.value` |Czas wykonywania żądania programu ASP.NET |Godzina wykonania ostatniego żądania. |
-| `performanceCounter.requests_in_application_queue.value` |Żądania programu ASP.NET w kolejce do wykonania |Długość kolejki żądań aplikacji. |
-| `performanceCounter.requests_per_sec.value` |Liczba żądań programu ASP.NET |Liczba wszystkich żądań wysłanych do aplikacji na sekundę z platformy ASP.NET. |
-| `remoteDependencyFailed.durationMetric.count` |Błędy zależności |Liczba wywołań zakończonych niepowodzeniem wykonanych przez aplikację serwera z zasobami zewnętrznymi. |
+| `performanceCounter.request_execution_time.value` |Czas wykonywania żądania ASP.NET |Czas wykonywania najnowszego żądania. |
+| `performanceCounter.requests_in_application_queue.value` |Żądania ASP.NET w kolejce wykonywania |Długość kolejki żądań aplikacji. |
+| `performanceCounter.requests_per_sec.value` |Częstotliwość żądania ASP.NET |Szybkość wszystkich żądań wysyłanych do aplikacji w ciągu sekundy od ASP.NET. |
+| `remoteDependencyFailed.durationMetric.count` |Awarie zależności |Liczba wywołań zakończonych niepowodzeniem wykonanych przez aplikację serwera w zasobach zewnętrznych. |
 | `request.duration` |Czas odpowiedzi serwera |Czas między odebraniem żądania HTTP i zakończeniem wysyłania odpowiedzi. |
-| `request.rate` |Liczba żądań |Liczba wszystkich żądań do aplikacji na sekundę. |
-| `requestFailed.count` |Żądania zakończone niepowodzeniem |Żądania liczba HTTP, które spowodowało kod odpowiedzi > = 400 |
-| `view.count` |Wyświetlenia strony |Liczba żądań użytkowników klientów dla strony sieci web. Odfiltrowane ruchu syntetycznego. |
-| {niestandardowe metryki nazwę} |{Nazwa metryki} |Wartość metryki zgłoszone przez [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) lub [pomiarów parametr wywołania śledzenia](../../azure-monitor/app/api-custom-events-metrics.md#properties). |
+| `request.rate` |Częstotliwość żądań |Szybkość wszystkich żądań wysyłanych do aplikacji na sekundę. |
+| `requestFailed.count` |Żądania zakończone niepowodzeniem |Liczba żądań HTTP, które spowodowały powstanie kodu odpowiedzi > = 400 |
+| `view.count` |Wyświetlenia stron |Liczba żądań użytkowników klienta dla strony sieci Web. Ruch syntetyczny jest odfiltrowany. |
+| {Nazwa metryki niestandardowej} |{Twoja Nazwa metryki} |Wartość metryki zgłoszona przez [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) lub [parametr pomiarów wywołania śledzenia](../../azure-monitor/app/api-custom-events-metrics.md#properties). |
 
-Metryki są wysyłane przez moduły różnych danych telemetrycznych:
+Metryki są wysyłane przez różne moduły telemetrii:
 
-| Metryki grupy | Moduł zbierający |
+| Grupa metryk | Moduł zbierający |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>wyświetl |[Kod JavaScript przeglądarki](../../azure-monitor/app/javascript.md) |
-| PerformanceCounter |[Wydajność](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| remoteDependencyFailed |[Zależności](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| żądania,<br/>requestFailed |[Żądanie serwera](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>wyświetl |[Przeglądarka JavaScript](../../azure-monitor/app/javascript.md) |
+| performanceCounter |[Wydajność](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| remoteDependencyFailed |[Zależność](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| żądając<br/>requestFailed |[Żądanie serwera](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Elementy webhook
-Możesz [automatyzowania odpowiedzi na alert](../../azure-monitor/platform/alerts-webhooks.md). Azure będzie wywoływać wybrany adres w sieci web, gdy zostanie zgłoszony alert.
+Możesz [zautomatyzować swoją odpowiedź na alert](../../azure-monitor/platform/alerts-webhooks.md). Gdy zostanie zgłoszony alert, platforma Azure wywoła wybrany adres internetowy.
 
 ## <a name="see-also"></a>Zobacz także
-* [Skrypt w celu skonfigurowania usługi Application Insights](powershell-script-create-resource.md)
-* [Tworzenie usługi Application Insights i zasoby testu sieci web za pomocą szablonów](powershell.md)
-* [Automatyzowanie sprzężenia Microsoft Azure Diagnostics do usługi Application Insights](powershell-azure-diagnostics.md)
+* [Skrypt służący do konfigurowania Application Insights](powershell-script-create-resource.md)
+* [Tworzenie zasobów testowania Application Insights i sieci Web z szablonów](powershell.md)
+* [Automatyzowanie Diagnostyka Microsoft Azure sprzęgu do Application Insights](powershell-azure-diagnostics.md)
 * [Automatyzowanie odpowiedzi na alert](../../azure-monitor/platform/alerts-webhooks.md)

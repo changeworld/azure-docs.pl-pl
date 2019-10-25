@@ -1,24 +1,19 @@
 ---
 title: Konfigurowanie ustawień reguły wykrywania inteligentnego Application Insights platformy Azure przy użyciu szablonów Azure Resource Manager | Microsoft Docs
 description: Automatyzowanie zarządzania i konfiguracji Application Insights reguł wykrywania inteligentnego na platformie Azure przy użyciu szablonów Azure Resource Manager
-services: application-insights
-documentationcenter: ''
-author: harelbr
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: harelbr
+ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.author: harelbr
-ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8b55271b39bf2a65dababbef58f7389ca07d57d8
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193722"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818835"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Zarządzanie Application Insights regułami wykrywania inteligentnego przy użyciu szablonów Azure Resource Manager
 
@@ -29,9 +24,9 @@ Tej metody można użyć podczas wdrażania nowych zasobów Application Insights
 
 Dla reguły wykrywania inteligentnego można skonfigurować następujące ustawienia:
 - Jeśli reguła jest włączona (wartość domyślna to **true**).
-- Jeśli wiadomości e-mail powinny być wysyłane do użytkowników skojarzonych z czytnikiem [monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) subskrypcji i [monitorować role współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) po znalezieniu wykrywania (wartość domyślna to **true**).
+- Jeśli wiadomości e-mail powinny być wysyłane do użytkowników skojarzonych z [czytnikiem monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) subskrypcji i [monitorować role współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) po znalezieniu wykrywania (wartość domyślna to **true**).
 - Wszyscy dodatkowi Adresaci poczty e-mail, którzy powinni otrzymać powiadomienie po znalezieniu wykrywania.
-    -  Konfiguracja poczty e-mail nie jest dostępna dla reguł wykrywania inteligentnego oznaczonych jako _wersja_zapoznawcza.
+    -  Konfiguracja poczty e-mail nie jest dostępna dla reguł wykrywania inteligentnego oznaczonych jako _wersja zapoznawcza_.
 
 Aby umożliwić Konfigurowanie ustawień reguły za pośrednictwem Azure Resource Manager, Konfiguracja reguły wykrywania inteligentnego jest teraz dostępna jako zasób wewnętrzny w ramach zasobu Application Insights o nazwie **ProactiveDetectionConfigs**.
 W celu uzyskania maksymalnej elastyczności Każda reguła wykrywania inteligentnego może być skonfigurowana przy użyciu unikatowych ustawień powiadomień.
@@ -140,7 +135,7 @@ Pamiętaj, aby zastąpić nazwę zasobu Application Insights i określić odpowi
 
 ### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Reguła alertu o niepowodzeniu w wersji 2 (nieklasycznej)
 
-Ten szablon Azure Resource Manager demonstruje konfigurację reguły alertu o anomalii niepowodzeń v2 o ważności 2. Ta nowa wersja reguły alertu dotyczącego anomalii awarii jest częścią nowej platformy alertów platformy Azure i zastępuje wersję klasyczną, która jest wycofywana w ramach [procesu](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)wycofywania alertów klasycznych.
+Ten szablon Azure Resource Manager demonstruje konfigurację reguły alertu o anomalii niepowodzeń v2 o ważności 2. Ta nowa wersja reguły alertu dotyczącego anomalii awarii jest częścią nowej platformy alertów platformy Azure i zastępuje wersję klasyczną, która jest wycofywana w ramach procesu wycofywania [alertów klasycznych](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
 
 ```json
 {
@@ -153,7 +148,7 @@ Ten szablon Azure Resource Manager demonstruje konfigurację reguły alertu o an
             "name": "Failure Anomalies - my-app",
             "location": "global", 
             "properties": {
-                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "description": "Failure Anomalies notifies you of an unusual rise in the rate of failed HTTP requests or dependency calls.",
                   "state": "Enabled",
                   "severity": "2",
                   "frequency": "PT1M",
@@ -178,15 +173,15 @@ Ten szablon Azure Resource Manager demonstruje konfigurację reguły alertu o an
 Poniżej znajduje się tabela nazw reguł wykrywania inteligentnego, która pojawia się w portalu wraz z nazwami wewnętrznymi, które powinny być używane w szablonie Azure Resource Manager.
 
 > [!NOTE]
-> Reguły inteligentnego wykrywania oznaczone jako _wersja_ zapoznawcza nie obsługują powiadomień e-mail. W związku z tym można ustawić tylko właściwość _Enabled_ dla tych reguł. 
+> Reguły inteligentnego wykrywania oznaczone jako _wersja zapoznawcza_ nie obsługują powiadomień e-mail. W związku z tym można ustawić tylko właściwość _Enabled_ dla tych reguł. 
 
 | Nazwa reguły Azure Portal | Nazwa wewnętrzna
 |:---|:---|
 | Długi czas ładowania strony | slowpageloadtime |
-| Długi czas odpowiedzi serwera | slowserverresponsetime |
-| Długi czas trwania zależności | longdependencyduration |
-| Wydłużenie czasu odpowiedzi serwera | degradationinserverresponsetime |
-| Obniżenie w czasie trwania zależności | degradationindependencyduration |
+| Wolny czas odpowiedzi serwera | slowserverresponsetime |
+| Czas trwania długiej zależności | longdependencyduration |
+| Spadek czasu odpowiedzi serwera | degradationinserverresponsetime |
+| Pogorszenie czasu trwania zależności | degradationindependencyduration |
 | Spadek współczynnika ważności śledzenia (wersja zapoznawcza) | extension_traceseveritydetector |
 | Nietypowy wzrost w woluminie wyjątku (wersja zapoznawcza) | extension_exceptionchangeextension |
 | Wykryto Potencjalny przeciek pamięci (wersja zapoznawcza) | extension_memoryleakextension |

@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 4a8a8d7f6004ac32aeb7ce2b8cbffeca9ddf0079
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f3b2a976dc6b2b9e91f046a7f69e3057a7af7d0e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595533"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72816987"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Utwórz nową ofertę Dynamics 365 dla operacji
 
@@ -102,7 +102,7 @@ Wybierz co najmniej jedną i maksymalnie trzy kategorie. Zostaną one użyte do 
 
 ### <a name="industry"></a>Branża
 
-Opcjonalnie możesz wybrać do dwóch branż, aby pomóc w klasyfikowaniu oferty w portalu Marketplace. Jeśli oferta nie jest specyficzna dla branży, pozostaw tę sekcję pustą. Pamiętaj, aby dowiedzieć się, jak Twoja oferta obsługuje wybrane branże w opisie oferty. 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Wersja aplikacji
 
@@ -286,7 +286,7 @@ Firma Microsoft może usunąć złożoność konfigurowania dysku testowego, udo
 
 - **Adres URL wystąpienia** (wymagany): adres URL, pod którym klient zacznie testować swój dysk. Zwykle jest to adres URL wystąpienia Dynamics 365, na którym działa Twoja aplikacja z zainstalowanymi przykładowymi danymi (np. https://testdrive.crm.dynamics.com).
 
-- **Adres URL internetowego interfejsu API wystąpienia** (wymagane): Pobierz adres URL internetowego interfejsu API dla wystąpienia usługi Dynamics 365, logując się do konta usługi Microsoft 365 i przechodząc do **ustawień** \&gt; @No__t_4gt **dostosowania** ; **Zasoby dla deweloperów** \&gt; **Interfejs API sieci Web wystąpienia (główny adres URL usługi)** , skopiuj tutaj znaleziony adres URL (np.  https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **Adres URL internetowego interfejsu API wystąpienia** (wymagane): Pobierz adres URL internetowego interfejsu API dla wystąpienia usługi Dynamics 365, logując się do konta usługi Microsoft 365 i przechodząc do **ustawień** \&gt; **Dostosowanie** \&gt; **Zasoby dla deweloperów** \&gt; **Interfejs API sieci Web wystąpienia (główny adres URL usługi)** , skopiuj tutaj znaleziony adres URL (np. https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Nazwa roli** (wymagana): Podaj nazwę roli zabezpieczeń zdefiniowaną w niestandardowym dysku testowym Dynamics 365. Ta wartość zostanie przypisana do użytkownika w trakcie jego dysku testowego (np. roli "Test-Drive-role").
 

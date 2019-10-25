@@ -4,14 +4,14 @@ description: Opisuje, w jaki sposób należy określić, czy ma być używany pe
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 10a9917d8ed763b133fbd33aedd16da399a224b2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258959"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881637"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager tryby wdrażania
 
@@ -21,7 +21,9 @@ W przypadku obu trybów Menedżer zasobów próbuje utworzyć wszystkie zasoby o
 
 ## <a name="complete-mode"></a>Tryb kompletny
 
-W trybie kompletnym Menedżer zasobów **usuwa** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie. Zasoby, które są określone w szablonie, ale nie zostały wdrożone, ponieważ [warunek](conditional-resource-deployment.md) ma wartość false, nie jest usuwany.
+W trybie kompletnym Menedżer zasobów **usuwa** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie.
+
+Jeśli szablon zawiera zasób, który nie został wdrożony, ponieważ [warunek](conditional-resource-deployment.md) ma wartość false, wynik zależy od używanej wersji interfejsu API REST do wdrożenia szablonu. W przypadku używania wersji wcześniejszej niż 2019-05-10 zasób nie zostanie **usunięty**. W przypadku 2019-05-10 lub nowszych zasób **jest usuwany**. Najnowsze wersje Azure PowerShell i interfejsu wiersza polecenia platformy Azure usuwają zasób.
 
 Należy zachować ostrożność przy użyciu trybu kompletnego z [pętlami kopiowania](resource-group-create-multiple.md). Wszystkie zasoby, które nie są określone w szablonie po rozwiązaniu pętli kopiowania, są usuwane.
 
@@ -78,7 +80,7 @@ Po wdrożeniu w trybie **kompletnym** zasób C jest usuwany. Grupa zasobów zawi
 
 ## <a name="set-deployment-mode"></a>Ustawianie trybu wdrożenia
 
-Aby ustawić tryb wdrażania podczas wdrażania przy użyciu programu PowerShell, należy `Mode` użyć parametru.
+Aby ustawić tryb wdrażania podczas wdrażania przy użyciu programu PowerShell, użyj parametru `Mode`.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment `
@@ -88,7 +90,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile c:\MyTemplates\storage.json
 ```
 
-Aby ustawić tryb wdrażania podczas wdrażania przy użyciu interfejsu wiersza polecenia platformy Azure `mode` , użyj parametru.
+Aby ustawić tryb wdrażania podczas wdrażania przy użyciu interfejsu wiersza polecenia platformy Azure, użyj parametru `mode`.
 
 ```azurecli-interactive
 az group deployment create \

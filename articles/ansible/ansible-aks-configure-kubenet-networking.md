@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 949a55fd8c004bc656d02816231c4ebb6dd8f92b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 67b4eb9e9ee53613ec8b54b2bf8d3bbdb89778c7
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242169"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881524"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Samouczek: Konfigurowanie sieci korzystającą wtyczki kubenet w usłudze Azure Kubernetes Service (AKS) za pomocą rozwiązania ansible
 
@@ -108,12 +108,12 @@ Zapisz następujący podręcznik jako `aks.yml`:
 Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
 
 - Użyj modułu `azure_rm_aks_version`, aby znaleźć obsługiwaną wersję.
-- @No__t-0 to podsieć utworzona w poprzedniej sekcji.
-- @No__t-0 definiuje właściwości wtyczki sieciowej korzystającą wtyczki kubenet.
-- @No__t-0 służy do przypisywania wewnętrznych usług w klastrze AKS na adres IP. Ten zakres adresów IP powinien być przestrzenią adresową, która nie jest używana w innym miejscu w sieci. 
+- `vnet_subnet_id` to podsieć utworzona w poprzedniej sekcji.
+- `network_profile` definiuje właściwości wtyczki sieciowej korzystającą wtyczki kubenet.
+- `service_cidr` służy do przypisywania wewnętrznych usług w klastrze AKS na adres IP. Ten zakres adresów IP powinien być przestrzenią adresową, która nie jest używana w innym miejscu w sieci. 
 - Adres `dns_service_ip` powinien być adresem ". 10" zakresu adresów IP usługi.
-- @No__t-0 powinna być dużą przestrzenią adresową, która nie jest używana w innym miejscu w środowisku sieciowym. Zakres adresów musi być wystarczająco duży, aby pomieścić liczbę węzłów, do których można skalować w górę. Nie można zmienić tego zakresu adresów po wdrożeniu klastra.
-- Zakres adresów IP pod jest używany do przypisywania przestrzeni adresowej/24 do każdego węzła w klastrze. W poniższym przykładzie `pod_cidr` z 192.168.0.0/16 przypisuje pierwszy węzeł 192.168.0.0/24, drugi węzeł 192.168.1.0/24 i trzeci węzeł 192.168.2.0/24.
+- `pod_cidr` powinna być dużą przestrzenią adresową, która nie jest używana w innym miejscu w środowisku sieciowym. Zakres adresów musi być wystarczająco duży, aby pomieścić liczbę węzłów, do których można skalować w górę. Nie można zmienić tego zakresu adresów po wdrożeniu klastra.
+- Zakres adresów IP pod jest używany do przypisywania przestrzeni adresowej/24 do każdego węzła w klastrze. W poniższym przykładzie `pod_cidr` 192.168.0.0/16 przypisuje pierwszy węzeł 192.168.0.0/24, drugi węzeł 192.168.1.0/24 i trzeci węzeł 192.168.2.0/24.
 - W miarę skalowania lub uaktualniania klastra platforma Azure nadal przypisuje zakres adresów IP pod każdym nowym węzłem.
 - Element PlayBook ładuje `ssh_key` z `~/.ssh/id_rsa.pub`. Jeśli zmodyfikujesz go, użyj formatu jednowierszowego — rozpoczynając od "SSH-RSA" (bez cudzysłowów).
 - Wartości `client_id` i `client_secret` są ładowane z `~/.azure/credentials`, czyli domyślnego pliku poświadczeń. Można ustawić te wartości jako nazwę główną usługi lub załadować te wartości ze zmiennych środowiskowych:
@@ -161,8 +161,8 @@ Zapisz następujący element PlayBook jako `associate.yml`.
 
 Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
 
-- @No__t-0 to nazwa grupy zasobów, w której są tworzone węzły AKS.
-- @No__t-0 to podsieć utworzona w poprzedniej sekcji.
+- `node_resource_group` to nazwa grupy zasobów, w której są tworzone węzły AKS.
+- `vnet_subnet_id` to podsieć utworzona w poprzedniej sekcji.
 
 
 ## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowej element PlayBook
@@ -346,7 +346,7 @@ Zapisz następujący kod jako `cleanup.yml`:
             force: yes
 ```
 
-W sekcji `vars` Zastąp symbol zastępczy `{{ resource_group_name }}` nazwą grupy zasobów.
+W sekcji `vars` Zamień symbol zastępczy `{{ resource_group_name }}` na nazwę grupy zasobów.
 
 Uruchom element PlayBook za pomocą polecenia `ansible-playbook`:
 

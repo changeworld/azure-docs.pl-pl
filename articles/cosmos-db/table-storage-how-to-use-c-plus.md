@@ -1,105 +1,126 @@
 ---
 title: Jak korzystać z usługi Azure Table Storage i interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka C++
-description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB.
+description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu Table API usługi Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: cpp
 ms.topic: sample
-ms.date: 04/05/2018
+ms.date: 10/07/2019
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 40b84a56f93ad670a26eb876a18820e0d4037f63
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 48222bf3f964f8c728f980f839c460862a8212ca
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130555"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818661"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Jak korzystać z usługi Azure Table Storage i interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka C++
+
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Omówienie
-Ten przewodnik przedstawia sposób wykonywania typowych zdań przy użyciu usługi Azure Table Storage oraz interfejsu API tabel usługi Azure Cosmos DB. Przykłady są napisane w języku C++ i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Przedstawione scenariusze obejmują **tworzenie i usuwanie tabel** oraz **pracę z jednostkami w tabelach**.
+W tym przewodniku przedstawiono typowe scenariusze przy użyciu usługi Azure Table Storage lub interfejs API tabel Azure Cosmos DB. Przykłady są napisane w języku C++ i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). W tym artykule opisano następujące scenariusze:
+
+* Tworzenie i usuwanie tabeli
+* Współpraca z jednostkami tabel
 
 > [!NOTE]
-> Ten przewodnik jest przeznaczony do użycia z biblioteką klienta usługi Azure Storage dla języka C++ w wersji 1.0.0 lub wyższej. Zalecana wersja biblioteki klienta usługi Storage to wersja 2.2.0, dostępna za pośrednictwem narzędzia [NuGet](https://www.nuget.org/packages/wastorage) lub witryny [GitHub](https://github.com/Azure/azure-storage-cpp/).
-> 
+> Ten przewodnik jest przeznaczony do użycia z biblioteką klienta usługi Azure Storage dla języka C++ w wersji 1.0.0 lub wyższej. Zalecana wersja to 2.2.0 Biblioteka klienta magazynu, która jest dostępna za pomocą programu [NuGet](https://www.nuget.org/packages/wastorage) lub [GitHub](https://github.com/Azure/azure-storage-cpp/).
+>
 
-## <a name="create-an-azure-service-account"></a>Tworzenie konta usługi Azure
+## <a name="create-accounts"></a>Utwórz konta
+
+### <a name="create-an-azure-service-account"></a>Tworzenie konta usługi Azure
+
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
+
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
 ### <a name="create-an-azure-cosmos-db-table-api-account"></a>Tworzenie konta interfejsu API tabel usługi Azure Cosmos DB
+
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-c-application"></a>Tworzenie aplikacji języka C++
-Podczas pracy z tym przewodnikiem będziesz używać funkcji magazynu, które można uruchamiać w aplikacji języka C++. W tym celu należy zainstalować bibliotekę klienta usługi Azure Storage dla języka C++ i utworzyć konto usługi Azure Storage w ramach subskrypcji platformy Azure.  
 
-Możesz zainstalować bibliotekę klienta usługi Azure Storage dla języka C++, korzystając z następujących metod:
+W tym przewodniku są używane funkcje magazynu z C++ aplikacji. Aby to zrobić, zainstaluj bibliotekę klienta usługi Azure Storage dla C++programu.
 
-* **Linux:** postępuj zgodnie z instrukcjami dostępnymi na stronie [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (Plik README biblioteki klienta usługi Azure Storage dla języka C++).  
-* **Windows:** W programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [konsoli menedżera pakietów NuGet](/nuget/tools/package-manager-console) i naciśnij klawisz Enter.  
-  
-     Install-Package wastorage
+Aby zainstalować bibliotekę klienta usługi Azure Storage dla C++programu, należy użyć następujących metod:
 
-## <a name="configure-access-to-the-table-client-library"></a>Konfigurowanie dostępu do biblioteki klienta usługi Table Storage
-Na początku pliku C++, w którym chcesz używać interfejsów API usługi Azure Storage w celu uzyskania dostępu do tabel, dodaj następujące instrukcje include:  
+* Linux. Postępuj zgodnie z instrukcjami podanymi w [bibliotece klienta C++usługi Azure Storage dla programu ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).  
+* Windows. W programie Visual Studio wybierz kolejno pozycje **narzędzia > Menedżer pakietów NuGet > konsola Menedżera pakietów**. Uruchom następujące polecenie w **konsoli Zarządzanie pakietami**:
+
+  ```powershell
+  Install-Package wastorage
+  ```
+
+Aby uzyskać więcej informacji na temat **konsoli Zarządzanie pakietami**, zobacz [Instalowanie i zarządzanie pakietami za pomocą konsoli Menedżera pakietów w programie Visual Studio](/nuget/tools/package-manager-console).
+
+### <a name="configure-access-to-the-table-client-library"></a>Konfigurowanie dostępu do biblioteki klienta usługi Table Storage
+
+Aby używać interfejsów API usługi Azure Storage do uzyskiwania dostępu do tabel, Dodaj następujące instrukcje `include` na początku C++ pliku:
 
 ```cpp
 #include <was/storage_account.h>
 #include <was/table.h>
 ```
 
-W kliencie usługi Azure Storage lub Cosmos DB punkty końcowe i poświadczenia wymagane do uzyskania dostępu do usług zarządzania danymi są przechowywane w parametrach połączenia. W aplikacji klienckiej należy podać parametry połączenia usługi Storage lub Azure Cosmos DB w odpowiednim formacie.
+W kliencie usługi Azure Storage lub Cosmos DB punkty końcowe i poświadczenia wymagane do uzyskania dostępu do usług zarządzania danymi są przechowywane w parametrach połączenia. Po uruchomieniu aplikacji klienckiej należy podać parametry połączenia z magazynem lub Azure Cosmos DB parametry połączenia w odpowiednim formacie.
 
-## <a name="set-up-an-azure-storage-connection-string"></a>Konfigurowanie parametrów połączenia usługi Azure Storage
- Użyj nazwy konta usługi Storage i klucza dostępu do konta usługi Storage z witryny [Azure Portal](https://portal.azure.com) jako wartości *AccountName* i *AccountKey*. Aby uzyskać więcej informacji dotyczących kont i kluczy dostępu usługi Storage, zobacz [Informacje o kontach usługi Azure Storage](../storage/common/storage-create-storage-account.md). W tym przykładzie pokazano, jak można zadeklarować pole statyczne w celu przechowywania parametrów połączenia usługi Azure Storage:  
+### <a name="set-up-an-azure-storage-connection-string"></a>Konfigurowanie parametrów połączenia usługi Azure Storage
+
+Ten przykład pokazuje, jak zadeklarować pole statyczne do przechowywania parametrów połączenia usługi Azure Storage:  
 
 ```cpp
 // Define the Storage connection string with your values.
-const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
+const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-## <a name="set-up-an-azure-cosmos-db-connection-string"></a>Konfigurowanie parametrów połączenia usługi Azure Cosmos DB
-Użyj nazwy konta usługi Azure Cosmos DB, klucza podstawowego oraz punktu końcowego z witryny [Azure Portal](https://portal.azure.com) jako wartości *AccountName*, *AccountKey* i *Endpoint*. W tym przykładzie pokazano, jak można zadeklarować pole statyczne w celu przechowywania parametrów połączenia usługi Azure Cosmos DB:
+Użyj nazwy konta magazynu, aby uzyskać `<your_storage_account>`. W przypadku < your_storage_account_key > Użyj klucza dostępu dla konta magazynu wymienionego w [Azure Portal](https://portal.azure.com). Aby uzyskać informacje na temat kont magazynu i kluczy dostępu, zobacz [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md).
+
+### <a name="set-up-an-azure-cosmos-db-connection-string"></a>Konfigurowanie parametrów połączenia usługi Azure Cosmos DB
+
+Ten przykład pokazuje, jak zadeklarować pole statyczne do przechowywania parametrów połączenia Azure Cosmos DB:
 
 ```cpp
 // Define the Azure Cosmos DB connection string with your values.
-const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_cosmos_db_account;AccountKey=your_cosmos_db_account_key;TableEndpoint=your_cosmos_db_endpoint"));
+const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_cosmos_db_account>;AccountKey=<your_cosmos_db_account_key>;TableEndpoint=<your_cosmos_db_endpoint>"));
 ```
 
+Użyj nazwy konta Azure Cosmos DB, aby `<your_cosmos_db_account>`. Wprowadź klucz podstawowy dla `<your_cosmos_db_account_key>`. Wprowadź punkt końcowy wymieniony w [Azure Portal](https://portal.azure.com) `<your_cosmos_db_endpoint>`.
 
-Aby przetestować aplikację na komputerze lokalnym z systemem Windows, możesz użyć [emulatora magazynu](../storage/common/storage-use-emulator.md) platformy Azure, instalowanego w ramach [zestawu Azure SDK](https://azure.microsoft.com/downloads/). Emulator magazynu to narzędzie umożliwiające symulowanie usług Azure Blob, Queue i Table Storage na lokalnej maszynie deweloperskiej. W tym przykładzie pokazano, jak można zadeklarować pole statyczne w celu przechowywania parametrów połączenia z lokalnym emulatorem magazynu:  
+Aby przetestować aplikację na lokalnym komputerze z systemem Windows, można użyć emulatora usługi Azure Storage, który jest instalowany z [zestawem Azure SDK](https://azure.microsoft.com/downloads/). Emulator magazynu to narzędzie umożliwiające symulowanie usług Azure Blob, Queue i Table Storage na lokalnej maszynie deweloperskiej. Poniższy przykład pokazuje, jak zadeklarować pole statyczne do przechowywania parametrów połączenia do lokalnego emulatora magazynu:  
 
 ```cpp
 // Define the connection string with Azure storage emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Aby uruchomić emulator magazynu platformy Azure, kliknij przycisk **Start** lub naciśnij klawisz systemu Windows. Zacznij wpisywać **emulator magazynu Microsoft Azure**, a następnie wybierz pozycję **Emulator magazynu Microsoft Azure** z listy aplikacji.  
+Aby uruchomić emulator usługi Azure Storage, z poziomu pulpitu systemu Windows wybierz przycisk **Start** lub klawisz systemu Windows. Wprowadź i uruchom *emulator magazynu Microsoft Azure*. Aby uzyskać więcej informacji, zobacz [Używanie emulatora usługi Azure Storage do programowania i testowania](../storage/common/storage-use-emulator.md).
 
-W poniższych przykładach założono, że uzyskano parametry połączenia za pomocą jednej z tych dwóch metod.  
+### <a name="retrieve-your-connection-string"></a>Pobieranie parametrów połączenia
 
-## <a name="retrieve-your-connection-string"></a>Pobieranie parametrów połączenia
-Możesz użyć klasy **cloud_storage_account** do reprezentowania informacji o koncie magazynu. Aby pobrać informacje o koncie magazynu z parametrów połączenia usługi Storage, użyj metody **parse**.
+Możesz użyć klasy `cloud_storage_account` do reprezentowania informacji o koncie magazynu. Aby pobrać informacje o koncie magazynu z parametrów połączenia magazynu, użyj metody `parse`.
 
 ```cpp
 // Retrieve the storage account from the connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-Następnie pobierz odwołanie do klasy **cloud_table_client**, co umożliwia pobieranie obiektów referencyjnych dla tabel i jednostek przechowywanych w usłudze Table Storage. Poniższy kod tworzy obiekt **cloud_table_client** przy użyciu pobranego powyżej obiektu konta magazynu:  
+Następnie Pobierz odwołanie do klasy `cloud_table_client`. Ta klasa umożliwia pobieranie obiektów referencyjnych dla tabel i jednostek przechowywanych w usłudze Table Storage. Poniższy kod tworzy obiekt `cloud_table_client` przy użyciu obiektu konta magazynu, który został wcześniej pobrany:  
 
 ```cpp
 // Create the table client.
 azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 ```
 
-## <a name="create-a-table"></a>Tworzenie tabeli
-Obiekt **cloud_table_client** umożliwia pobieranie obiektów referencyjnych dla tabel i jednostek. Poniższy kod tworzy obiekt **cloud_table_client**, a następnie tworzy przy jego użyciu nową tabelę.
+## <a name="create-and-add-entities-to-a-table"></a>Tworzenie i Dodawanie jednostek do tabeli
+
+### <a name="create-a-table"></a>Tworzenie tabeli
+
+Obiekt `cloud_table_client` umożliwia pobieranie obiektów referencyjnych dla tabel i jednostek. Poniższy kod tworzy obiekt `cloud_table_client` i używa go do utworzenia nowej tabeli.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -115,10 +136,11 @@ azure::storage::cloud_table table = table_client.get_table_reference(U("people")
 table.create_if_not_exists();  
 ```
 
-## <a name="add-an-entity-to-a-table"></a>Dodawanie jednostki do tabeli
-Aby dodać jednostkę do tabeli, utwórz nowy obiekt **table_entity** i przekaż go do metody **table_operation::insert_entity**. W poniższym kodzie imię klienta jest używane jako klucz wiersza, a nazwisko jako klucz partycji. Razem klucz partycji i klucz wiersza jednostki jednoznacznie identyfikują jednostkę w tabeli. Jednostki z tym samym kluczem partycji mogą być przeszukiwane szybciej niż jednostki o różnych kluczach partycji, niemniej użycie różnych kluczy partycji umożliwia zwiększenie skalowalności operacji równoległych. Aby uzyskać więcej informacji, zobacz temat [Microsoft Azure Storage Performance and Scalability Checklist (Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage)](../storage/common/storage-performance-checklist.md).
+### <a name="add-an-entity-to-a-table"></a>Dodawanie jednostki do tabeli
 
-Poniższy kod tworzy nowe wystąpienie obiektu **table_entity**, zawierające dane klienta, które mają być przechowywane. Następnie wywołuje metodę**table_operation::insert_entity**, aby utworzyć obiekt **table_operation** w celu wstawienia jednostki do tabeli, i kojarzy z nim nową jednostkę tabeli. Na koniec wywołuje metodę execute względem obiektu **cloud_table**. W rezultacie nowy obiekt **table_operation** wysyła do usługi Table Storage żądanie wstawienia nowej jednostki klienta do tabeli „people” (osoby).  
+Aby dodać jednostkę do tabeli, Utwórz nowy obiekt `table_entity` i przekaż go do `table_operation::insert_entity`. W poniższym kodzie imię klienta jest używane jako klucz wiersza, a nazwisko jako klucz partycji. Razem klucz partycji i klucz wiersza jednostki jednoznacznie identyfikują jednostkę w tabeli. Jednostki z tym samym kluczem partycji mogą być przeszukiwane szybciej niż jednostki z różnymi kluczami partycji. Użycie różnych kluczy partycji pozwala zwiększyć skalowalność operacji równoległych. Aby uzyskać więcej informacji, zobacz temat [Microsoft Azure Storage Performance and Scalability Checklist (Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage)](../storage/common/storage-performance-checklist.md).
+
+Poniższy kod tworzy nowe wystąpienie `table_entity` z danymi klienta do przechowywania. Kod Next wywołuje `table_operation::insert_entity`, aby utworzyć obiekt `table_operation`, aby wstawić jednostkę do tabeli, i kojarzy z nią nową jednostkę tabeli. Na koniec kod wywołuje metodę `execute` na obiekcie `cloud_table`. Nowy `table_operation` wysyła żądanie do Table service, aby wstawić nową jednostkę klienta do tabeli `people`.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -149,8 +171,9 @@ azure::storage::table_operation insert_operation = azure::storage::table_operati
 azure::storage::table_result insert_result = table.execute(insert_operation);
 ```
 
-## <a name="insert-a-batch-of-entities"></a>Zbiorcze wstawianie jednostek
-Możesz wstawić partię jednostek do usługi tabel w ramach jednej operacji zapisu. Poniższy kod tworzy obiekt **table_batch_operation**, a następnie dodaje do niego trzy operacje wstawiania. Każda operacja wstawiania zostaje dodana przez utworzenie nowego obiektu jednostki, ustawienie jego wartości i wywołanie metody insert względem obiektu **table_batch_operation** w celu skojarzenia jednostki z nową operacją wstawiania. Następnie wywoływana jest metoda **cloud_table.execute** w celu wykonania operacji.  
+### <a name="insert-a-batch-of-entities"></a>Zbiorcze wstawianie jednostek
+
+Możesz wstawić partię jednostek do usługi tabel w ramach jednej operacji zapisu. Poniższy kod tworzy obiekt `table_batch_operation`, a następnie dodaje do niego trzy operacje wstawiania. Każda operacja wstawiania jest dodawana przez utworzenie nowego obiektu jednostki, ustawienie jego wartości, a następnie wywołanie metody `insert` w obiekcie `table_batch_operation` w celu skojarzenia jednostki z nową operacją wstawiania. Następnie kod wywołuje `cloud_table.execute`, aby uruchomić operację.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -198,15 +221,18 @@ batch_operation.insert_or_replace_entity(customer3);
 std::vector<azure::storage::table_result> results = table.execute_batch(batch_operation);
 ```
 
-Kilka uwag dotyczących operacji zbiorczych:  
+Kilka uwag dotyczących operacji zbiorczych:
 
-* W ramach jednej partii można wykonać maksymalnie 100 operacji wstawiania, usuwania, łączenia, zastępowania, wstawiania lub łączenia i wstawiania lub zastępowania — w dowolnej kombinacji.  
-* Operacja zbiorcza może zawierać operację pobierania, o ile jest to jedyna operacja w partii.  
+* W dowolnej kombinacji pojedynczej partii można wykonać maksymalnie 100 `insert`, `delete`, `merge`, `replace`, `insert-or-merge`i `insert-or-replace`.  
+* Operacja wsadowa może mieć operację pobierania, jeśli jest jedyną operacją w partii.  
 * Wszystkie jednostki w jednej operacji zbiorczej muszą mieć ten sam klucz partycji.  
 * Maksymalny rozmiar ładunku danych operacji zbiorczej to 4 MB.  
 
-## <a name="retrieve-all-entities-in-a-partition"></a>Pobieranie wszystkich jednostek w partycji
-Aby wysłać zapytanie do tabeli dla wszystkich obiektów w partycji, użyj obiektu **table_query**. Poniższy przykład kodu określa filtr jednostek, gdzie „Smith” jest kluczem partycji. W tym przykładzie drukowane są pola każdej jednostki w wynikach zapytania w konsoli.  
+## <a name="query-and-modify-entities"></a>Zapytanie i modyfikowanie jednostek
+
+### <a name="retrieve-all-entities-in-a-partition"></a>Pobieranie wszystkich jednostek w partycji
+
+Aby wykonać zapytanie dotyczące tabeli dla wszystkich jednostek w partycji, użyj obiektu `table_query`. Poniższy przykład kodu określa filtr dla jednostek, w których `Smith` jest kluczem partycji. W tym przykładzie drukowane są pola każdej jednostki w wynikach zapytania w konsoli.  
 
 > [!NOTE]
 > Te metody języka C++ nie są obecnie obsługiwane w przypadku usługi Azure Cosmos DB.
@@ -241,10 +267,11 @@ for (; it != end_of_results; ++it)
 }  
 ```
 
-Zapytanie w tym przykładzie zwraca wszystkie jednostki spełniające kryteria filtrowania. Jeśli masz duże tabele i często pobierasz jednostki z tabel, zalecamy zamiast tego przechowywanie danych w obiektach blob w usłudze Azure Storage.
+Zapytanie w tym przykładzie zwraca wszystkie jednostki, które pasują do kryteriów filtrowania. Jeśli masz duże tabele i często pobierasz jednostki z tabel, zalecamy zamiast tego przechowywanie danych w obiektach blob w usłudze Azure Storage.
 
-## <a name="retrieve-a-range-of-entities-in-a-partition"></a>Pobieranie zakresu jednostek w partycji
-Jeśli nie chcesz wykonywać zapytania dla wszystkich jednostek w partycji, możesz określić zakres, łącząc filtr klucza partycji z filtrem klucza wiersza. Poniższy przykład kodu wykorzystuje dwa filtry do pobrania wszystkich jednostek w partycji „Smith”, w których klucz wiersza (imię) rozpoczyna się od litery alfabetu wcześniejszej niż „E”, a następnie drukuje wyniki zapytania.  
+### <a name="retrieve-a-range-of-entities-in-a-partition"></a>Pobieranie zakresu jednostek w partycji
+
+Jeśli nie chcesz wykonywać zapytania dla wszystkich jednostek w partycji, możesz określić zakres. Połącz filtr klucza partycji z filtrem klucza wiersza. Poniższy przykład kodu używa dwóch filtrów do pobrania wszystkich jednostek w partycji `Smith` gdzie klucz wiersza (imię) rozpoczyna się od litery wcześniejszej niż `E` w alfabecie, a następnie drukuje wyniki zapytania.  
 
 > [!NOTE]
 > Te metody języka C++ nie są obecnie obsługiwane w przypadku usługi Azure Cosmos DB.
@@ -283,8 +310,9 @@ for (; it != end_of_results; ++it)
 }  
 ```
 
-## <a name="retrieve-a-single-entity"></a>Pobieranie pojedynczej jednostki
-Można napisać zapytanie do pobrania jednej, określonej jednostki. W poniższym kodzie użyto metody **table_operation::retrieve_entity** do wskazania klienta o nazwisku „Jeff Smith”. Metoda ta zwraca tylko jedną jednostkę, a nie zbiór jednostek, a zwrócona wartość znajduje się w obiekcie **table_result**. Określenie kluczy partycji i wiersza w pojedynczym zapytaniu jest najszybszym sposobem na pobranie jednej jednostki z usługi tabel.  
+### <a name="retrieve-a-single-entity"></a>Pobieranie pojedynczej jednostki
+
+Można napisać zapytanie do pobrania jednej, określonej jednostki. Poniższy kod używa `table_operation::retrieve_entity`, aby określić `Jeff Smith`klienta. Ta metoda zwraca tylko jedną jednostkę, a nie kolekcję, a zwrócona wartość jest w `table_result`. Określenie kluczy partycji i wiersza w pojedynczym zapytaniu jest najszybszym sposobem na pobranie jednej jednostki z usługi tabel.  
 
 ```cpp
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -308,8 +336,9 @@ std::wcout << U("PartitionKey: ") << entity.partition_key() << U(", RowKey: ") <
     << U(", Property2: ") << properties.at(U("Phone")).string_value() << std::endl;
 ```
 
-## <a name="replace-an-entity"></a>Zastępowanie jednostki
-Aby zastąpić jednostkę, pobierz ją z usługi Table Storage, zmodyfikuj obiekt jednostki, a następnie zapisz zmiany w usłudze Table Storage. Poniższy kod zmienia numer telefonu i adres e-mail istniejącego klienta. Zamiast wywołania metody **table_operation::insert_entity** w tym kodzie jest używana metoda **table_operation::replace_entity**. Dzięki temu jednostka będzie całkowicie zastąpiona na serwerze, chyba że jednostka na serwerze zmieniła się od czasu jej pobrania. W takim przypadku operacja nie powiedzie się. Ten błąd uniemożliwia aplikacji nieodwracalne nadpisanie zmiany dokonanej pomiędzy pobraniem i zaktualizowaniem przez inny składnik aplikacji. W przypadku tego błędu prawidłowa procedura obejmuje ponowne pobranie jednostki, wprowadzenie zmian (jeśli nadal mają zastosowanie), a następnie ponowne przeprowadzenie operacji **table_operation::replace_entity**. W następnej sekcji opisano sposób zastąpienia tego zachowania.  
+### <a name="replace-an-entity"></a>Zastępowanie jednostki
+
+Aby zastąpić jednostkę, pobierz ją z usługi Table Storage, zmodyfikuj obiekt jednostki, a następnie zapisz zmiany w usłudze Table Storage. Poniższy kod zmienia numer telefonu i adres e-mail istniejącego klienta. Zamiast wywoływania `table_operation::insert_entity`, ten kod używa `table_operation::replace_entity`. Takie podejście powoduje, że jednostka zostanie całkowicie zastąpiona na serwerze, chyba że jednostka na serwerze zmieniła się od czasu jej pobrania. Jeśli została zmieniona, operacja zakończy się niepowodzeniem. Ten błąd uniemożliwia aplikacji zastąpienie zmiany wprowadzonej między pobieraniem i aktualizacją przez inny składnik. Właściwa obsługa tego błędu polega na ponownym pobraniu jednostki, wprowadzeniu zmian, jeśli jest nadal ważna, a następnie wykonaniu innej `table_operation::replace_entity` operacji.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -339,8 +368,9 @@ azure::storage::table_operation replace_operation = azure::storage::table_operat
 azure::storage::table_result replace_result = table.execute(replace_operation);
 ```
 
-## <a name="insert-or-replace-an-entity"></a>Wstawianie lub zastępowanie jednostki
-Operacje **table_operation::replace_entity** zakończą się niepowodzeniem, jeśli jednostka została zmieniona od czasu jej pobrania z serwera. Ponadto aby operacja **table_operation::replace_entity** się powiodła, należy najpierw pobrać jednostkę z serwera. Czasami jednak nie wiadomo, czy jednostka istnieje na serwerze, a jej obecne wartości są nieistotne — wszystkie powinny zostać zastąpione zaktualizowanymi wartościami. W takiej sytuacji należy użyć operacji **table_operation::insert_or_replace_entity**. Ta operacja wstawi jednostkę, jeśli jednostka nie istnieje, lub zastąpi ją, jeśli już istnieje — niezależnie od czasu ostatniej aktualizacji. W poniższym przykładzie kodu jednostka klienta „Jeff Smith” również zostanie pobrana, ale następnie zostanie zapisana na serwerze za pomocą operacji **table_operation::insert_or_replace_entity**. Wszelkie aktualizacje wprowadzone w jednostce między operacjami pobrania i aktualizacji zostaną zastąpione.  
+### <a name="insert-or-replace-an-entity"></a>Wstawianie lub zastępowanie jednostki
+
+`table_operation::replace_entity` operacji kończy się niepowodzeniem, jeśli jednostka została zmieniona od czasu pobrania z serwera. Ponadto należy najpierw pobrać jednostkę z serwera w celu pomyślnego przeprowadzenia `table_operation::replace_entity`. Czasami nie wiadomo, czy jednostka istnieje na serwerze. Bieżące przechowywane w nim wartości są nieistotne, ponieważ aktualizacja powinna zastąpić wszystkie. Aby zrealizować ten wynik, użyj `table_operation::insert_or_replace_entity` operacji. Ta operacja wstawia jednostkę, jeśli nie istnieje. Operacja zastępuje jednostkę, jeśli istnieje. W poniższym przykładzie kodu jednostka klienta dla `Jeff Smith` jest wciąż pobierana, ale jest następnie zapisywana z powrotem na serwerze przy użyciu `table_operation::insert_or_replace_entity`. Wszelkie aktualizacje wprowadzone w jednostce między operacjami pobrania i aktualizacji zostaną zastąpione.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -352,7 +382,7 @@ azure::storage::cloud_table_client table_client = storage_account.create_cloud_t
 // Create a cloud table object for the table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Insert-or-replace an entity.
+// Insert or replace an entity.
 azure::storage::table_entity entity_to_insert_or_replace(U("Smith"), U("Jeff"));
 azure::storage::table_entity::properties_type& properties_to_insert_or_replace = entity_to_insert_or_replace.properties();
 
@@ -364,15 +394,16 @@ properties_to_insert_or_replace[U("Phone")] = azure::storage::entity_property(U(
 // Specify an email address.
 properties_to_insert_or_replace[U("Email")] = azure::storage::entity_property(U("Jeffsm@contoso.com"));
 
-// Create an operation to insert-or-replace the entity.
+// Create an operation to insert or replace the entity.
 azure::storage::table_operation insert_or_replace_operation = azure::storage::table_operation::insert_or_replace_entity(entity_to_insert_or_replace);
 
 // Submit the operation to the Table service.
 azure::storage::table_result insert_or_replace_result = table.execute(insert_or_replace_operation);
 ```
 
-## <a name="query-a-subset-of-entity-properties"></a>Tworzenie zapytania do podzbioru właściwości jednostki
-Za pomocą zapytania wykonywanego względem tabeli można pobrać tylko kilka właściwości z jednostki. Zapytanie w poniższym kodzie zwraca wyłącznie adresy e-mail jednostek w tabeli dzięki użyciu metody **table_query::set_select_columns**.  
+### <a name="query-a-subset-of-entity-properties"></a>Tworzenie zapytania do podzbioru właściwości jednostki
+
+Za pomocą zapytania wykonywanego względem tabeli można pobrać tylko kilka właściwości z jednostki. Zapytanie w poniższym kodzie używa metody `table_query::set_select_columns`, aby zwrócić tylko adresy e-mail jednostek w tabeli.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -412,11 +443,13 @@ for (; it != end_of_results; ++it)
 
 > [!NOTE]
 > Pobieranie wybranych właściwości z jednostki za pomocą zapytania będzie bardziej wydajne niż pobieranie wszystkich właściwości.
-> 
-> 
+>
 
-## <a name="delete-an-entity"></a>Usuwanie jednostki
-Można łatwo usunąć pobraną jednostkę. Po pobraniu jednostki wywołaj metodę **table_operation::delete_entity**, wskazując jednostkę do usunięcia. Następnie wywołaj metodę **cloud_table.execute**. Poniższy kod umożliwia pobranie i usunięcie jednostki, której klucz partycji to „Smith”, a klucz wiersza to „Jeff”.  
+## <a name="delete-content"></a>Usuń zawartość
+
+### <a name="delete-an-entity"></a>Usuwanie jednostki
+
+Można usunąć jednostkę po jej pobraniu. Po pobraniu jednostki Wywołaj `table_operation::delete_entity` z jednostką do usunięcia. Następnie Wywołaj metodę `cloud_table.execute`. Poniższy kod pobiera i usuwa jednostkę z kluczem partycji `Smith` i kluczem wiersza `Jeff`.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -439,8 +472,9 @@ azure::storage::table_operation delete_operation = azure::storage::table_operati
 azure::storage::table_result delete_result = table.execute(delete_operation);  
 ```
 
-## <a name="delete-a-table"></a>Usuwanie tabeli
-Poniższy przykład kodu usuwa tabelę z konta magazynu. Tabeli, która została usunięta, nie będzie można ponownie utworzyć przez dany okres czasu po jej usunięciu.  
+### <a name="delete-a-table"></a>Usuwanie tabeli
+
+Poniższy przykład kodu usuwa tabelę z konta magazynu. Usunięta tabela nie jest dostępna do ponownego utworzenia przez jakiś czas po usunięciu.  
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -454,28 +488,30 @@ azure::storage::cloud_table table = table_client.get_table_reference(U("people")
 
 // Delete the table if it exists
 if (table.delete_table_if_exists())
-    {
-        std::cout << "Table deleted!";
-    }
-    else
-    {
-        std::cout << "Table didn't exist";
-    }
+{
+    std::cout << "Table deleted!";
+}
+else
+{
+    std::cout << "Table didn't exist";
+}
 ```
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-* Błędy kompilacji w programie Visual Studio 2017 Community Edition
 
-  Jeśli w projekcie występują błędy kompilacji powodowane przez pliki dołączane storage_account.h i table.h, usuń przełącznik kompilatora **/permissive-**. 
-  - Kliknij prawym przyciskiem myszy projekt w **Eksploratorze rozwiązań** i wybierz pozycję **Właściwości**.
-  - W oknie dialogowym **Strony właściwości** rozwiń węzeł **Właściwości konfiguracji**, rozwiń węzeł **C/C++**, a następnie wybierz pozycję **Język**.
-  - Zmień ustawienie **Tryb zgodności** na **Nie**.
-   
+W przypadku programu Visual Studio Community Edition, jeśli projekt pobiera błędy kompilacji z powodu plików dołączanych *storage_account. h* i *Table. h*, Usuń przełącznik kompilatora **/permissive-** :
+
+1. Kliknij prawym przyciskiem myszy projekt w **Eksploratorze rozwiązań** i wybierz pozycję **Właściwości**.
+1. W oknie dialogowym **Strony właściwości** rozwiń węzeł **Właściwości konfiguracji**, rozwiń węzeł **C/C++** , a następnie wybierz pozycję **Język**.
+1. Zmień ustawienie **Tryb zgodności** na **Nie**.
+
 ## <a name="next-steps"></a>Następne kroki
-Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat usługi Azure Storage i interfejsu API tabel usługi Azure Cosmos DB: 
+
+[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.
+
+Skorzystaj z poniższych linków, aby dowiedzieć się więcej na temat usługi Azure Storage i interfejsu API tabel usługi Azure Cosmos DB:
 
 * [Wprowadzenie do interfejsu API tabel](table-introduction.md)
-* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.
 * [Generowanie listy zasobów usługi Azure Storage w języku C++](../storage/common/storage-c-plus-plus-enumeration.md)
 * [Dokumentacja biblioteki klienta usługi Storage dla języka C++](https://azure.github.io/azure-storage-cpp)
 * [Dokumentacja usługi Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

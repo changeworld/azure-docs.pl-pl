@@ -1,6 +1,6 @@
 ---
-title: Digitize tekstu za pomocą usługi Azure Media Analytics optyczne rozpoznawanie znaków | Dokumentacja firmy Microsoft
-description: Azure Media Analytics OCR (optyczne rozpoznawanie znaków) umożliwia konwertowanie zawartości tekstowej w plikach wideo do edycji, wyszukiwanie tekstu cyfrowych.  Dzięki temu można zautomatyzować ekstrakcji istotne metadane z multimediów sygnału wideo.
+title: Cyfrowe tekstu za pomocą Azure Media Analytics OCR | Microsoft Docs
+description: Azure Media Analytics OCR (optyczne rozpoznawanie znaków) umożliwia konwertowanie zawartości tekstowej w plikach wideo na edytowalny, przeszukiwany tekst cyfrowy.  Pozwala to zautomatyzować wyodrębnianie znaczących metadanych z sygnału wideo nośnika.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,43 +14,47 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 91fad34073d7505c596bedfb6c93946ee7393dd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48b5136505c3d0cb5e2e2027f832655e4b3445bf
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825612"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881741"
 ---
-# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Użyj analizy multimediów Azure, aby przekonwertować na tekst cyfrowych, zawartości tekstowej w plikach wideo  
-## <a name="overview"></a>Omówienie
-Jeśli zachodzi potrzeba wyodrębnić zawartość tekstu z plików wideo i wygenerować go edytować, którą można przeszukiwać tekst cyfrowych, należy użyć usługi Azure Media Analytics OCR (optyczne rozpoznawanie znaków). To procesor multimediów Azure wykrywa zawartość tekstową plików wideo i generuje pliki tekstowe do użycia. Optyczne rozpoznawanie znaków umożliwia automatyzację ekstrakcji istotne metadane z multimediów sygnału wideo.
+# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Użyj Azure Media Analytics do przekonwertowania zawartości tekstowej w plikach wideo na tekst cyfrowy  
 
-W przypadku użycia w połączeniu z wyszukiwarką, możesz łatwo indeksowanie multimediów według tekstu i Zwiększ możliwości odnajdywania Twojej zawartości. Jest to bardzo przydatne w wysoce tekstową wideo, takich jak nagranie wideo lub Przechwytywanie ekranu prezentacji pokaz slajdów. Procesor multimediów Azure optyczne rozpoznawanie znaków jest zoptymalizowany pod kątem cyfrowego tekstu.
+> [!IMPORTANT]
+> Zapoznaj się z [planami wycofania](media-services-analytics-overview.md#retirement-plans) niektórych procesorów multimedialnych.
 
-**OCR multimediów Azure** procesor multimediów jest obecnie w wersji zapoznawczej.
+## <a name="overview"></a>Przegląd
+Jeśli zachodzi potrzeba wyodrębnienia zawartości tekstowej z plików wideo i wygenerowania edytowalnego, możliwego do przeszukiwania tekstu cyfrowego, należy użyć Azure Media Analytics OCR (optyczne rozpoznawanie znaków). Ten procesor multimediów platformy Azure wykrywa zawartość tekstową w plikach wideo i generuje pliki tekstowe do użycia. OCR umożliwia automatyzację wyodrębniania znaczących metadanych z sygnału wideo nośnika.
 
-Ten artykuł zawiera szczegółowe informacje o **OCR multimediów Azure** i pokazuje, jak z niej korzystać z zestawu SDK usługi Media Services dla platformy .NET. Aby uzyskać więcej informacji i przykładów, zobacz [ten blog](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
+W połączeniu z aparatem wyszukiwania można łatwo indeksować multimedia według tekstu i zwiększyć wykrywalność zawartości. Jest to niezwykle przydatne w przypadku bardzo tekstowego wideo, takiego jak nagrywanie wideo lub przechwytywanie ekranu prezentacji pokazu slajdów. Procesor multimediów OCR na platformie Azure jest zoptymalizowany pod kątem tekstu cyfrowego.
 
-## <a name="ocr-input-files"></a>Optyczne rozpoznawanie znaków plików wejściowych
+Procesor multimediów **usługi Azure Media OCR** jest obecnie w wersji zapoznawczej.
+
+Ten artykuł zawiera szczegółowe informacje na temat **usługi Azure Media OCR** i pokazuje, jak używać jej z zestawem SDK Media Services dla platformy .NET. Aby uzyskać więcej informacji i przykładów, zobacz [ten blog](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
+
+## <a name="ocr-input-files"></a>Pliki wejściowe OCR
 Pliki wideo. Obecnie obsługiwane są następujące formaty: MP4, MOV i WMV.
 
 ## <a name="task-configuration"></a>Konfiguracja zadania
-Konfiguracja zadania (ustawienie wstępne). Podczas tworzenia zadania za pomocą **OCR multimediów Azure**, należy określić konfigurację ustawienia wstępnego za pomocą JSON lub XML. 
+Konfiguracja zadania (ustawienie wstępne). Podczas tworzenia zadania za pomocą **usługi Azure Media OCR**należy określić ustawienie wstępne konfiguracji przy użyciu formatu JSON lub XML. 
 
 >[!NOTE]
->Aparatu OCR trwa tylko obszar obrazu z minimalną pikseli 40 maksymalna pikseli 32000 jako prawidłowe dane wejściowe w obu Wysokość/szerokość.
+>Aparat OCR pobiera tylko region obrazu z minimum 40 pikseli do maksymalnie 32000 pikseli jako prawidłowe dane wejściowe w wysokości/szerokości.
 >
 
 ### <a name="attribute-descriptions"></a>Opisy atrybutów
 | Nazwa atrybutu | Opis |
 | --- | --- |
-|AdvancedOutput| Jeśli AdvancedOutput jest ustawiona na wartość true, dane wyjściowe JSON będzie zawierać dane pozycyjne dla każdego pojedynczego słowa (oprócz fraz i regiony). Jeśli chcesz wyświetlić te informacje, należy ustawić flagę na wartość false. Wartość domyślna to false. Aby uzyskać więcej informacji, zobacz [ten blog](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
-| Język |(opcjonalnie) opis język tekstu do wyszukania. Jeden z następujących czynności: Autowykrywanie (ustawienie domyślne), arabskiego, ChineseSimplified, ChineseTraditional, czeski, duński, holenderski, angielski, fiński, francuski, niemiecki, grecki, węgierski, włoski, japoński, koreański, norweski, Polski, portugalski, rumuński, rosyjski, SerbianCyrillic, SerbianLatin , Słowacki, hiszpański, szwedzki, turecki. |
-| TextOrientation |(opcjonalnie) opis orientacji tekstu do wyszukania.  "Left" oznacza, że w górnej części wszystkich liter skierowane po lewej stronie.  Domyślny tekst (na przykład tych, które można znaleźć w książce) może być wywoływana "Up", aby poznać podstawy.  Jeden z następujących czynności: Autowykrywanie (ustawienie domyślne), maksymalnie, prawo, dół, lewo. |
-| TimeInterval |(opcjonalnie) opis częstotliwość próbkowania.  Domyślnie jest co sekundę 1/2.<br/>Format JSON —: mm: ss. SSS (00:00:00.500 domyślny)<br/>Format XML — pierwotny czas trwania W3C XSD (ustawienie domyślne PT0.5) |
-| DetectRegions |(opcjonalnie) Tablica obiektów DetectRegion, określając regionach w obrębie klatki wideo, w której ma zostać wykrywaj tekst.<br/>Obiekt DetectRegion składa się z następujących wartości cztery liczby całkowitej:<br/>Po lewej stronie — pikseli od lewy margines<br/>TOP — pikseli od górnej marginesu<br/>Width — szerokość obszaru w pikselach<br/>Wysokość — wysokość regionu, w pikselach |
+|AdvancedOutput| Jeśli ustawisz wartość AdvancedOutput na true, dane wyjściowe JSON będą zawierać dane pozycyjne dla każdego pojedynczego wyrazu (oprócz fraz i regionów). Jeśli nie chcesz zobaczyć tych szczegółów, Ustaw flagę na false. Wartość domyślna to false. Aby uzyskać więcej informacji, zobacz [ten blog](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
+| Język |(opcjonalnie) zawiera opis języka tekstu, który ma być wyszukiwany. Jeden z następujących: Autowykrywanie (domyślnie), arabski, ChineseSimplified, ChineseTraditional, Czeski Duński, holenderski, angielski, francuski, niemiecki, grecki, węgierski, włoski, japoński, koreański SerbianCyrillic, SerbianLatin, słowacki, hiszpański, szwedzki, turecki. |
+| TextOrientation |(opcjonalnie) określa orientację tekstu, który ma być wyszukiwany.  "Left" oznacza, że górna część wszystkich liter jest wskazywana po lewej stronie.  Domyślny tekst (na przykład, który można znaleźć w książce) może być nazywany "w górę".  Jeden z następujących: Autowykrywanie (domyślnie), w górę, w prawo, w dół, w lewo. |
+| TimeInterval |(opcjonalnie) opisuje częstotliwość próbkowania.  Wartość domyślna to co 1/2 sekund.<br/>Format JSON — HH: mm: SS. SSS (domyślnie 00:00:00.500)<br/>Format XML — pierwotny czas trwania XSD (W3C) |
+| DetectRegions |obowiązkowe Tablica obiektów DetectRegion określający regiony w ramce wideo, w której ma być wykrywany tekst.<br/>Obiekt DetectRegion składa się z następujących czterech wartości całkowitych:<br/>Od lewej do pikseli od lewego marginesu<br/>Góra — piksele od górnego marginesu<br/>Width — szerokość regionu w pikselach.<br/>Height — wysokość regionu w pikselach |
 
-#### <a name="json-preset-example"></a>Przykład kodu JSON z wstępnie zdefiniowane
+#### <a name="json-preset-example"></a>Przykład ustawień wstępnych JSON
 
 ```json
     {
@@ -73,7 +77,7 @@ Konfiguracja zadania (ustawienie wstępne). Podczas tworzenia zadania za pomocą
     }
 ```
 
-#### <a name="xml-preset-example"></a>Przykład wstępnie zdefiniowane w pliku XML
+#### <a name="xml-preset-example"></a>Przykład ustawienia wstępnego XML
 
 ```xml
     <?xml version=""1.0"" encoding=""utf-16""?>
@@ -95,34 +99,34 @@ Konfiguracja zadania (ustawienie wstępne). Podczas tworzenia zadania za pomocą
     </VideoOcrPreset>
 ```
 
-## <a name="ocr-output-files"></a>Pliki wyjściowe optyczne rozpoznawanie znaków
-Dane wyjściowe procesora media optyczne rozpoznawanie znaków jest plik w formacie JSON.
+## <a name="ocr-output-files"></a>Pliki wyjściowe OCR
+Wyjście procesora multimediów OCR jest plikiem JSON.
 
-### <a name="elements-of-the-output-json-file"></a>Elementy danych wyjściowych pliku JSON
-Dane wyjściowe optyczne rozpoznawanie znaków w wideo zawiera czas segmentów danych znaków w wideo.  Atrybuty, takie jak język lub orientacja służy hone w dokładnie słowa, które zostały wybrane w analizie. 
+### <a name="elements-of-the-output-json-file"></a>Elementy wyjściowego pliku JSON
+Dane wyjściowe OCR do wideo dostarczają segmentów czasowych dla znaków znalezionych w filmie wideo.  Możesz użyć atrybutów, takich jak Language lub Orientacja, do stworzyć właściwy na dokładnie wyrazach, które interesują się analizą. 
 
 Dane wyjściowe zawierają następujące atrybuty:
 
 | Element | Opis |
 | --- | --- |
-| Skala czasu |"impulsów", na sekundę filmu wideo |
-| Offset |Czas przesunięcia sygnatur czasowych. W wersji 1.0 interfejsów API Video ta będzie zawsze równa 0. |
-| Framerate |Liczba klatek na sekundę filmu wideo |
-| Szerokość |szerokość obrazu wideo w pikselach |
-| Wysokość |wysokość w pikselach |
-| Fragments |Tablica oparte na czasie fragmenty filmu wideo, do którego jest podzielony metadanych |
-| start |uruchomienie fragmentu w "taktach" |
-| Czas trwania |Długość fragmentu w "taktach" |
-| interval |Interwał każde zdarzenie w ramach danego fragmentu |
-| zdarzenia |Tablica zawierająca regionów |
-| region |Obiekt reprezentujący wykryto słów i fraz |
-| language |język tekstu wykryte w obrębie regionu |
-| Orientacja |Orientacja tekstu wykryte w obrębie regionu |
-| wiersze |Tablica wierszy tekstu wykryte w obrębie regionu |
-| tekst |aktualny tekst |
+| Skala czasu |"Takty" na sekundę filmu wideo |
+| Przesunięcie |przesunięcie czasu dla sygnatur czasowych. W wersji 1,0 interfejsów API wideo zawsze będzie równa 0. |
+| Framerate |Klatki na sekundę filmu wideo |
+| Szerokość |Szerokość filmu wideo w pikselach |
+| Proporcj |wysokość filmu wideo w pikselach |
+| Fragments |Tablica fragmentów wideo opartych na czasie, w których fragmenty metadanych są podzielone |
+| rozpoczynanie |Godzina rozpoczęcia fragmentu w "taktach" |
+| trwania |Długość fragmentu w "taktach" |
+| interval |interwał każdego zdarzenia w danym fragmencie |
+| zdarzenia |Tablica zawierająca regiony |
+| region |Obiekt reprezentujący wykryte wyrazy lub frazy |
+| language |język tekstu wykryty w regionie |
+| zorientowany |Orientacja tekstu wykryta w regionie |
+| wiersze |Tablica wierszy tekstu wykrytych w regionie |
+| tekst |rzeczywisty tekst |
 
 ### <a name="json-output-example"></a>Przykład danych wyjściowych JSON
-W poniższym przykładzie danych wyjściowych zawiera ogólne informacje wideo oraz kilka fragmentów wideo. W każdym fragmencie wideo zawiera on każdy region, który zostanie wykryty przez pakiet administracyjny optyczne rozpoznawanie znaków za pomocą języka i jego orientacja tekstu. Region zawiera również wszystkich wierszy programu word, w tym regionie przy użyciu wiersza tekstu, położenie wiersza i co informacje programu word (zawartości programu word, położenie i zaufania) w tym wierszu. Oto przykład i umieścić niektóre wbudowane komentarzy.
+Poniższy przykład danych wyjściowych zawiera ogólne informacje wideo i kilka fragmentów wideo. W każdym fragmencie wideo zawiera każdy region, który jest wykrywany przez program OCR MP z językiem i orientacją tekstu. Region zawiera również każdy wiersz słowa w tym regionie z tekstem wiersza, pozycją wiersza i wszystkimi informacjami o wyrazie (zawartością w programie Word, pozycją i pewnością) w tym wierszu. Poniżej znajduje się przykład i umieszczamy w niej pewne Komentarze.
 
 ```json
     {
@@ -179,13 +183,13 @@ W poniższym przykładzie danych wyjściowych zawiera ogólne informacje wideo o
     }
 ```
 
-## <a name="net-sample-code"></a>Przykładowy kod .NET
+## <a name="net-sample-code"></a>Przykładowy kod platformy .NET
 
-Poniższy program pokazuje jak:
+Poniższy program pokazuje, jak:
 
-1. Utworzenie elementu zawartości i przekaż plik multimedialny do niego.
-2. Utwórz zadanie przy użyciu pliku konfiguracji/ustawienie wstępne optyczne rozpoznawanie znaków.
-3. Pobierz pliki danych wyjściowych w formacie JSON. 
+1. Utwórz element zawartości i Przekaż plik multimedialny do elementu zawartości.
+2. Utwórz zadanie z konfiguracją OCR/wstępnie ustawionym plikiem.
+3. Pobierz wyjściowe pliki JSON. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
@@ -365,9 +369,9 @@ namespace OCR
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki
-[Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
+[Omówienie Azure Media Services Analytics](media-services-analytics-overview.md)
 

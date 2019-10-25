@@ -4,16 +4,16 @@ description: Ten artykuł zawiera kolekcję przykładowych poleceń AzCopy, któ
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c65c6b3f6f186e7821ff402eea4494fa60e9c370
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6680efb89eddcfb1c4fa931993956ef83369b292
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598065"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817049"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB
 
@@ -31,6 +31,9 @@ Zapoznaj się z artykułem [wprowadzenie do AzCopy](storage-use-azcopy-v10.md) w
 > Na przykład: `'https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>'`.
 
 ## <a name="create-a-container"></a>Tworzenie kontenera
+
+> [!TIP]
+> W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
 
 Aby utworzyć kontener, można użyć polecenia [AzCopy](storage-ref-azcopy-make.md) . Przykłady w tej sekcji tworzą kontener o nazwie `mycontainer`.
 
@@ -54,10 +57,10 @@ Ta sekcja zawiera następujące przykłady:
 > * Przekaż zawartość katalogu 
 > * Przekazywanie określonych plików
 
-> [!NOTE]
-> AzCopy nie oblicza automatycznie ani nie zapisuje kodu skrótu MD5 pliku. Jeśli chcesz, aby AzCopy to zrobić, Dodaj flagę `--put-md5` do poszczególnych poleceń kopiowania. Dzięki temu po pobraniu obiektu BLOB AzCopy oblicza skrót MD5 dla pobranych danych i weryfikuje, czy skrót MD5 przechowywany we właściwości `Content-md5` obiektu BLOB jest zgodny z obliczonym skrótem.
-
 Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md).
+
+> [!TIP]
+> W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
 
 ### <a name="upload-a-file"></a>Przekazywanie pliku
 
@@ -122,7 +125,6 @@ W tym przykładzie AzCopy transferuje katalog `C:\myDirectory\photos` i plik `C:
 
 Można również wykluczać pliki przy użyciu opcji `--exclude-path`. Aby dowiedzieć się więcej, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
-
 #### <a name="use-wildcard-characters"></a>Użyj symboli wieloznacznych
 
 Użyj polecenia [copy AzCopy](storage-ref-azcopy-copy.md) z opcją `--include-pattern`. Określ częściowe nazwy, które zawierają symbole wieloznaczne. Oddziel nazwy przy użyciu semicolin (`;`). 
@@ -153,6 +155,9 @@ Ta sekcja zawiera następujące przykłady:
 > Jeśli wartość właściwości `Content-md5` obiektu BLOB zawiera skrót, AzCopy oblicza skrót MD5 dla pobranych danych i weryfikuje, czy skrót MD5 przechowywany we właściwości `Content-md5` obiektu BLOB jest zgodny z obliczonym skrótem. Jeśli te wartości nie są zgodne, pobieranie nie powiedzie się, o ile nie zastąpisz tego zachowania, dołączając `--check-md5=NoCheck` lub `--check-md5=LogOnly` do polecenia copy.
 
 Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md).
+
+> [!TIP]
+> W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
 
 ### <a name="download-a-file"></a>Pobieranie pliku
 
@@ -242,6 +247,9 @@ Ta sekcja zawiera następujące przykłady:
 
 Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Copy](storage-ref-azcopy-copy.md).
 
+> [!TIP]
+> W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
+
 ### <a name="copy-a-blob-to-another-storage-account"></a>Kopiowanie obiektu BLOB do innego konta magazynu
 
 |    |     |
@@ -285,6 +293,9 @@ Jeśli ustawisz flagę `--delete-destination` do `true` AzCopy usuwa pliki bez w
 > Aby zapobiec przypadkowemu usunięciu, upewnij się, że funkcja [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) została włączona przed użyciem flagi `--delete-destination=prompt|true`.
 
 Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy Sync](storage-ref-azcopy-sync.md).
+
+> [!TIP]
+> W przykładach w tej sekcji zamieszczono argumenty Path z pojedynczymi cudzysłowami (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Aktualizowanie kontenera ze zmianami w lokalnym systemie plików
 

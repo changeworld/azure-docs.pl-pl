@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d49d763dedc5d86557dadd10f5d727e7893dbe
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 2e2195c61acbf39b40a7659335afff78ac03cb4b
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563062"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881424"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>Łączenie sieci wirtualnej platformy Azure z usługą CloudSimple przy użyciu usługi ExpressRoute
 
@@ -23,22 +23,29 @@ Sieć prywatną chmury można zwiększyć do sieci wirtualnej platformy Azure i 
 
 Klucz autoryzacji jest wymagany dla połączenia ExpressRoute między chmurą prywatną i siecią wirtualną platformy Azure. Aby uzyskać klucz, należy skorzystać z <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">pomocy technicznej</a>.  W żądaniu Skorzystaj z następujących informacji:
 
-* Typ problemu: **Naukow**
+* Typ problemu: **techniczne**
 * Subskrypcja: **Wybierz subskrypcję, w której wdrożono usługę CloudSimple**
-* Usługa: **Rozwiązanie VMware według CloudSimple**
-* Typ problemu: **Żądanie obsługi**
-* Podtyp problemu: **Klucz autoryzacji dla połączenia sieci wirtualnej platformy Azure**
-* Temat: **Żądanie klucza autoryzacji dla połączenia sieci wirtualnej platformy Azure**
+* Usługa: **rozwiązanie VMware według CloudSimple**
+* Typ problemu: **żądanie obsługi**
+* Podtyp problemu: **klucz autoryzacji dla połączenia sieci wirtualnej platformy Azure**
+* Podmiot: **żądanie klucza autoryzacji dla połączenia sieci wirtualnej platformy Azure**
 
-## <a name="obtain-peering-information-for-azure-virtual-network-to-cloudsimple-connection"></a>Uzyskaj informacje o komunikacji równorzędnej dla usługi Azure Virtual Network z połączeniem CloudSimple
+## <a name="get-peering-information-from-cloudsimple-portal"></a>Pobierz informacje o komunikacji równorzędnej z portalu CloudSimple
 
-Aby skonfigurować połączenie, należy ustanowić łącze między usługą Azure Virtual Network i środowiskiem CloudSimple.  W ramach procedury należy podać identyfikator URI obwodu równorzędnego i klucz autoryzacji. Uzyskaj identyfikator URI i klucz autoryzacji z [portalu CloudSimple](access-cloudsimple-portal.md).  Wybierz pozycję **Sieć** w menu po stronie, a następnie wybierz pozycję **połączenie sieciowe platformy Azure**. Lub wybierz pozycję **konto** w menu po stronie, a następnie wybierz pozycję **połączenie sieciowe platformy Azure**.
+Aby skonfigurować połączenie, należy nawiązać połączenie między usługą Azure Virtual Network i środowiskiem CloudSimple.  W ramach procedury należy podać identyfikator URI obwodu równorzędnego i klucz autoryzacji. Uzyskaj identyfikator URI i klucz autoryzacji z [portalu CloudSimple](access-cloudsimple-portal.md).  Wybierz pozycję **Sieć** w menu po stronie, a następnie wybierz pozycję **połączenie sieciowe platformy Azure**. Lub wybierz pozycję **konto** w menu po stronie, a następnie wybierz pozycję **połączenie sieciowe platformy Azure**.
 
-Zwróć uwagę na ikony kopiowania dla identyfikatora URI obwodu równorzędnego oraz dla klucza autoryzacji dla każdego regionu. Dla każdej chmury prywatnej, którą chcesz połączyć:
+Kopiuj identyfikator URI obwodu równorzędnego oraz klucz autoryzacji dla każdego z regionów przy użyciu ikony *kopiowania* . Dla każdego regionu CloudSimple, który chcesz połączyć:
 
-* Kliknij przycisk **Kopiuj** , aby skopiować identyfikator URI. Wklej ją do pliku, który może być dostępny do dodania do Azure Portal.  
-* Kliknij przycisk **Kopiuj** , aby skopiować klucz autoryzacji i wkleić go do pliku.
+1. Kliknij przycisk **Kopiuj** , aby skopiować identyfikator URI. Wklej ją do pliku, który może być dostępny do dodania do Azure Portal.  
+2. Kliknij przycisk **Kopiuj** , aby skopiować klucz autoryzacji i wkleić go do pliku.
 
-![Strona połączenia Virtual Network](media/network-virt-conn-page.png)
+Skopiuj klucz autoryzacji i identyfikator URI obwodu równorzędnego, który jest w stanie **dostępny** .  **Użycie** stanu wskazuje, że klucz został już użyty do utworzenia połączenia sieci wirtualnej.
+
+![Strona połączenia Virtual Network](media/virtual-network-connection.png)
 
 Aby uzyskać szczegółowe informacje na temat konfigurowania linku sieci wirtualnej platformy Azure do usługi CloudSimple, zobacz [łączenie środowiska chmury prywatnej CloudSimple z siecią wirtualną platformy Azure przy użyciu usługi ExpressRoute](azure-expressroute-connection.md).
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Połączenie sieci wirtualnej platformy Azure z chmurą prywatną](azure-expressroute-connection.md)
+* [Nawiązywanie połączenia z siecią lokalną za pomocą usługi Azure ExpressRoute](on-premises-connection.md)

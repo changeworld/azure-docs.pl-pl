@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 59bf62f73d8ba9732cd89209d2b239fd15a6d844
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: 11e2a02277a47e070f91e8f057f0d8493235c5ce
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754469"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821355"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikacja z Centrum IoT Hub przy użyciu protokołu MQTT
 
@@ -116,6 +116,38 @@ Jeśli urządzenie nie może użyć zestawów SDK urządzeń, nadal może nawią
 W przypadku pakietów MQTT Connect i Disconnect IoT Hub wystawić zdarzenie w kanale **monitorowania operacji** . To zdarzenie zawiera dodatkowe informacje, które mogą pomóc w rozwiązywaniu problemów z łącznością.
 
 Aplikacja urządzenia może **określić komunikat w** pakiecie **Connect** . Aplikacja urządzenia powinna używać `devices/{device_id}/messages/events/` lub `devices/{device_id}/messages/events/{property_bag}` jako **nazwy tematu, aby określić,** czy **komunikaty mają** być przekazywane jako komunikat telemetrii. W takim przypadku, jeśli połączenie sieciowe zostało zamknięte, ale pakiet **rozłączenia** nie został wcześniej odebrany z urządzenia, IoT Hub wyśle komunikat **o podanej** w pakiecie **Connect** do kanału telemetrii. Kanał telemetrii może być domyślnym punktem końcowym **zdarzeń** lub niestandardowym punktem końcowym zdefiniowanym przez IoT Hub Routing. Komunikat ma właściwość **iothub-MessageType** o wartości, która **zostanie** do niej przypisana.
+
+### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>Przykładowy kod języka C korzystający z MQTT bez zestawu SDK języka C usługi Azure IoT
+W tym [repozytorium](https://github.com/Azure-Samples/IoTMQTTSample)znajdziesz kilka projektów C/C++ demonstracyjnych, które pokazują, jak wysyłać komunikaty telemetryczne, odbierać zdarzenia z Centrum IoT bez korzystania z zestawu SDK języka C usługi Azure IoT. 
+
+Te przykłady umożliwiają wysyłanie komunikatów do brokera MQTT zaimplementowane w usłudze IoT Hub przy użyciu biblioteki Mosquitto.
+
+To repozytorium zawiera:
+
+**Dla systemu Windows:**
+
+• TelemetryMQTTWin32: zawiera kod służący do wysyłania komunikatów telemetrycznych do usługi Azure IoT Hub, zbudowanych i uruchamianych na komputerze z systemem Windows.
+
+• SubscribeMQTTWin32: zawiera kod, który subskrybuje zdarzenia z danego centrum IoT Hub na komputerze z systemem Windows.
+
+• DeviceTwinMQTTWin32: zawiera kod służący do wykonywania zapytań i subskrybowania zdarzeń z sznurka urządzenia w usłudze Azure IoT Hub na komputerze z systemem Windows.
+
+• PnPMQTTWin32: zawiera kod służący do wysyłania komunikatów telemetrycznych z funkcją IoT Plug & Play w wersji zapoznawczej do usługi Azure IoT Hub, która została utworzona i uruchomiona na komputerze z systemem Windows. Więcej informacji o usłudze IoT & Play [tutaj](https://docs.microsoft.com/en-us/azure/iot-pnp/overview-iot-plug-and-play)
+
+**Dla systemu Linux:**
+
+• MQTTLinux: zawiera kod i skrypt kompilacji do uruchomienia w systemie Linux (WSL, Ubuntu i raspbian zostały przetestowane do tej pory).
+
+• LinuxConsoleVS2019: zawiera ten sam kod, ale w projekcie VS2019 przeznaczonym dla WSL (podsystem systemu Windows Linux). Ten projekt umożliwia debugowanie kodu uruchomionego w systemie Linux krok po kroku z programu Visual Studio.
+
+**Dla mosquito_pub:**
+
+• Ten folder zawiera dwa przykłady poleceń używanych z narzędziem narzędzi mosquitto_pub udostępnionym przez Mosquitto.org.
+
+Mosquitto_sendmessage: w celu wysłania prostej wiadomości tekstowej do usługi Azure IoT Hub działającej jako urządzenie.
+
+Mosquitto_subscribe: Aby wyświetlić zdarzenia występujące w usłudze Azure IoT Hub.
+
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Bezpośrednie używanie protokołu MQTT (jako modułu)
 
@@ -249,7 +281,7 @@ Aby odbierać komunikaty z IoT Hub, urządzenie powinno subskrybować przy użyc
 
 Urządzenie nie odbiera żadnych komunikatów z IoT Hub, dopóki nie zostanie pomyślnie zasubskrybowana do jego punktu końcowego określonego dla urządzenia reprezentowanego przez `devices/{device_id}/messages/devicebound/#` filtr tematu. Po nawiązaniu subskrypcji urządzenie odbiera wysłane do niego komunikaty z chmury do urządzenia po upływie czasu subskrypcji. Jeśli urządzenie połączy się z flagą **CleanSession** o wartości **0**, subskrypcja jest utrwalana w różnych sesjach. W takim przypadku następnym razem, gdy urządzenie połączy się z **CleanSession 0** odbierze wszelkie zaległe komunikaty wysyłane do niego, gdy zostanie odłączony. Jeśli urządzenie używa flagi **CleanSession** ustawionej na **1** , nie odbiera żadnych komunikatów z IoT Hub, dopóki nie zasubskrybuje on swojego punktu końcowego urządzenia.
 
-IoT Hub dostarcza komunikaty z **nazwą tematu** `devices/{device_id}/messages/devicebound/` lub `devices/{device_id}/messages/devicebound/{property_bag}`, gdy istnieją właściwości komunikatów. `{property_bag}` zawiera pary klucz/wartość kodowane w adresie URL właściwości komunikatów. W zbiorze właściwości są uwzględniane tylko właściwości aplikacji i właściwości systemu użytkownika (takie jak **MessageID** lub **Identyfikator korelacji**). Nazwy właściwości systemu mają prefiks **$** , właściwości aplikacji używają oryginalnej nazwy właściwości bez prefiksu.
+IoT Hub dostarcza komunikaty z **nazwą tematu** `devices/{device_id}/messages/devicebound/`lub `devices/{device_id}/messages/devicebound/{property_bag}`, gdy istnieją właściwości komunikatów. `{property_bag}` zawiera pary klucz/wartość kodowane w adresie URL właściwości komunikatów. W zbiorze właściwości są uwzględniane tylko właściwości aplikacji i właściwości systemu użytkownika (takie jak **MessageID** lub **Identyfikator korelacji**). Nazwy właściwości systemu mają prefiks **$** , właściwości aplikacji używają oryginalnej nazwy właściwości bez prefiksu.
 
 Gdy aplikacja urządzenia subskrybuje temat z zasadą **QoS 2**, IoT Hub przyznaje maksymalny poziom jakości usług (QoS) 1 w pakiecie **SUBACK** . Następnie IoT Hub dostarcza komunikaty do urządzenia przy użyciu usługi QoS 1.
 

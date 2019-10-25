@@ -1,5 +1,5 @@
 ---
-title: Przesyłanie strumieniowe dzienników Azure Active Directory do SumoLogic przy użyciu Azure Monitor | Microsoft Docs
+title: Przesyłanie strumieniowe dzienników do SumoLogic przy użyciu Azure Monitor | Microsoft Docs
 description: Dowiedz się, jak zintegrować dzienniki Azure Active Directory z usługą SumoLogic przy użyciu Azure Monitor
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1645415a8cfd86b142c25dc145c60e8b986d1013
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 70c3b72ab650eb506dfaac378e10a7170b8f041d
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989756"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819756"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Integrowanie dzienników Azure Active Directory z usługą SumoLogic przy użyciu Azure Monitor
 

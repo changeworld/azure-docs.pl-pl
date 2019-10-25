@@ -1,31 +1,26 @@
 ---
 title: Monitorowanie wydajności aplikacji sieci Web Java na platformie Azure Application Insights | Microsoft Docs
 description: Rozszerzone monitorowanie wydajności i użycia witryny sieci Web w języku Java za pomocą Application Insights.
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 84017a48-1cb3-40c8-aab1-ff68d65e2128
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/10/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ff9d4bb98a79c379fda2c1a0a0ab9d5e0ec212ce
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 01/10/2019
+ms.openlocfilehash: 181a1f253157fe112d42753d6f824a327457a2fa
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338091"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819415"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorowanie zależności, przechwycone wyjątki i czasy wykonywania metod w aplikacjach sieci Web Java
 
 
 Jeśli masz [instrumentację aplikacji sieci Web w języku Java za pomocą Application Insights][java], możesz użyć agenta Java, aby uzyskać dokładniejszy wgląd, bez żadnych zmian w kodzie:
 
-* **Tamten** Dane dotyczące wywołań, które aplikacja wykonuje w innych składnikach, w tym:
-  * **Wychodzące wywołania http** wykonywane za pośrednictwem Apache HttpClient `java.net.HttpURLConnection` , OkHttp i są przechwytywane.
+* **Zależności:** Dane dotyczące wywołań, które aplikacja wykonuje w innych składnikach, w tym:
+  * **Wychodzące wywołania http** wykonywane za pośrednictwem Apache HTTPClient, OkHttp i `java.net.HttpURLConnection` są przechwytywane.
   * Przechwycono **wywołania Redis** wykonywane za pośrednictwem klienta Jedis.
   * **JDBC zapytania** — dla obiektów MySQL i PostgreSQL, jeśli wywołanie trwa dłużej niż 10 sekund, Agent zgłosi plan zapytania.
 
@@ -34,9 +29,9 @@ Jeśli masz [instrumentację aplikacji sieci Web w języku Java za pomocą Appli
   * **Log4j2**
   * **Logback**
 
-* **Lepsza nazwa operacji:** (używany do agregowania żądań w portalu)
-  * Na`@RequestMapping`podstawie.
-  * **Jax-RS** — na `@Path`podstawie. 
+* **Lepsza nazwa operacji:** (używana do agregowania żądań w portalu)
+  * Na podstawie `@RequestMapping`.
+  * **Jax-RS** — na podstawie `@Path`. 
 
 Aby korzystać z agenta Java, należy zainstalować go na serwerze. Aplikacje sieci Web muszą być Instrumentacją [Application Insights Java SDK][java]. 
 
@@ -93,17 +88,17 @@ W przypadku usługi Azure App Services wykonaj następujące czynności:
 * Wybierz kolejno pozycje Ustawienia > Ustawienia aplikacji
 * W obszarze Ustawienia aplikacji dodaj nową parę klucz-wartość:
 
-Głównych `JAVA_OPTS`Wartościami`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+Klucz: `JAVA_OPTS` wartość: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-Aby uzyskać najnowszą wersję agenta Java, zapoznaj się z wydaniami [tutaj.](https://github.com/Microsoft/ApplicationInsights-Java/releases
-) 
+Aby uzyskać najnowszą wersję agenta Java, zapoznaj się z wydaniami [tutaj](https://github.com/Microsoft/ApplicationInsights-Java/releases
+). 
 
-Agent musi być spakowany jako zasób w projekcie, w taki sposób, aby kończył się w sieci D:/Home/site/wwwroot/katalogu. Można potwierdzić, że Agent znajduje się w poprawnym katalogu App Service, przechodząc do**konsoli debugowania** narzędzia deweloperskie**Narzędzia** >  **programistyczne** > i sprawdzając zawartość katalogu witryn.    
+Agent musi być spakowany jako zasób w projekcie, w taki sposób, aby kończył się w sieci D:/Home/site/wwwroot/katalogu. Można potwierdzić, że Agent znajduje się w poprawnym katalogu App Service, przechodząc do **narzędzi deweloperskich** > **Narzędzia zaawansowane** > **konsoli debugowania** i sprawdzając zawartość katalogu witryn.    
 
 * Zapisz ustawienia i ponownie uruchom aplikację. (Te kroki dotyczą tylko App Services uruchomionych w systemie Windows).
 
 > [!NOTE]
-> AI-Agent. XML i plik JAR agenta powinny znajdować się w tym samym folderze. Są one często umieszczane w `/resources` folderze projektu.  
+> AI-Agent. XML i plik JAR agenta powinny znajdować się w tym samym folderze. Są one często umieszczane w folderze `/resources` projektu.  
 
 #### <a name="enable-w3c-distributed-tracing"></a>Włącz śledzenie rozproszone W3C
 
@@ -132,7 +127,7 @@ Aby wyszukać poszczególne wystąpienia zależności, wyjątków i raportów me
 [Diagnozowanie problemów z zależnościami — Dowiedz się więcej](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
 
 ## <a name="questions-problems"></a>Pytania? Problemy?
-* Brak danych? [Ustawianie wyjątków zapory](../../azure-monitor/app/ip-addresses.md)
+* Nie masz danych? [Ustawianie wyjątków zapory](../../azure-monitor/app/ip-addresses.md)
 * [Rozwiązywanie problemów z technologią Java](java-troubleshoot.md)
 
 <!--Link references-->

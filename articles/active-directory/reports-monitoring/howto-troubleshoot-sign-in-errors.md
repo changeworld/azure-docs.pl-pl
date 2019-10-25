@@ -1,5 +1,5 @@
 ---
-title: Jak rozwiązywać problemy z błędami logowania przy użyciu raportów Azure Active Directory | Microsoft Docs
+title: Jak rozwiązywać problemy z raportami o błędach logowania | Microsoft Docs
 description: Dowiedz się, jak rozwiązywać problemy związane z logowaniem przy użyciu raportów Azure Active Directory w Azure Portal
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c901395436c8ed660c50b7342a804143d57db3c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 692fd2034fb70feffe02320eea5cdb9a3d163475
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988164"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819698"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Instrukcje: Rozwiązywanie problemów z błędami logowania przy użyciu raportów Azure Active Directory
 
@@ -34,10 +34,10 @@ Ponadto raport logowania może również pomóc w rozwiązywaniu problemów z b�
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Potrzebne elementy:
+Potrzebne są:
 
 * Dzierżawa usługi Azure AD z licencją premium (P1/P2). Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md).
-* Użytkownik będący **administratorem globalnym**, **administratorem zabezpieczeń**, **czytelnikiem zabezpieczeń**lub rolą czytelnika **raportu** dla dzierżawy. Ponadto każdy użytkownik może uzyskiwać dostęp do informacji o swoim logowaniu. 
+* Użytkownik będący **administratorem globalnym**, **administratorem zabezpieczeń**, **czytelnikiem zabezpieczeń**lub rolą **czytelnika raportu** dla dzierżawy. Ponadto każdy użytkownik może uzyskiwać dostęp do informacji o swoim logowaniu. 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Rozwiązywanie problemów z błędami logowania przy użyciu raportu logowania
 
@@ -45,7 +45,7 @@ Potrzebne elementy:
 2. Wybierz pozycję **Azure Active Directory**, a następnie pozycję **Logowania** w sekcji **Monitorowanie**. 
 3. Użyj dostarczonych filtrów, aby zawęzić awarię o nazwę użytkownika lub identyfikator obiektu, nazwę aplikacji lub datę. Ponadto wybierz opcję **Niepowodzenie** z listy rozwijanej **stan** , aby wyświetlić tylko nieudane logowania. 
 
-    ![Filtruj wyniki](./media/howto-troubleshoot-sign-in-errors/filters.png)
+    ![Filtrowanie wyników](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
 4. Zidentyfikuj nieudane logowanie, które chcesz zbadać. Wybierz go, aby otworzyć okno dodatkowe szczegóły z więcej informacji na temat nieudanego logowania. Zanotuj **Kod błędu logowania** i **przyczynę niepowodzenia**. 
 

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 578904d40b1354dde99644cb2fc73e0a56223b34
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a757ee03b8d8c7c93b191054182d077408c162db
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376285"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819826"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -96,7 +96,7 @@ W poniższej tabeli przedstawiono przykład podziału kosztów i wypłaty w celu
 
 |**Rachunki firmy Microsoft**|**$100 miesięcznie**|
 |:---|:---|
-|Firma Microsoft płaci 80% kosztu licencji <br>**w przypadku kwalifikujących się aplikacji SaaS firma Microsoft płaci 90% kosztu licencji*|$80,00 miesięcznie <br>*@no__t – 1*90,00 miesięcznie *|
+|Firma Microsoft płaci 80% kosztu licencji <br>**dla zakwalifikowanych aplikacji SaaS, firma Microsoft płaci 90% kosztu licencji*|$80,00 miesięcznie <br>*$* 90,00 miesięcznie *|
 
 - W tym przykładzie firma Microsoft rozlicza $100,00 od klienta na potrzeby licencji na oprogramowanie i płaci do wydawcy $80,00.
 - Partnerzy, którzy zakwalifikowani do **obniżonej opłaty za usługę Marketplace** , będą widzieć obniżoną opłatę za transakcje w ofertach SaaS od maja 2019 do 2020 czerwca. W tym scenariuszu firma Microsoft Bills $100,00 na potrzeby licencji na oprogramowanie i płaci wydawcę $90,00.
@@ -178,7 +178,8 @@ Po zakończeniu tych pól wybierz pozycję **Zapisz** .
 Wybierz co najmniej jedną (1) i maksymalnie trzy kategorie (3) używane do grupowania oferty w odpowiednie obszary wyszukiwania w portalu Marketplace. Zapoznaj się ze sposobem, w jaki oferta obsługuje te kategorie w opisie oferty. 
 
 ### <a name="industry"></a>Branża
-Wybierz maksymalnie dwa (2) branże używane do grupowania oferty w odpowiednie obszary wyszukiwania w portalu Marketplace. Jeśli oferta nie jest specyficzna dla branży, nie wybieraj jej. Zapoznaj się ze sposobem, w jaki oferta obsługuje wybrane branże w opisie oferty. 
+
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Wersja aplikacji
 Jest to pole opcjonalne używane w witrynie AppSource Marketplace do identyfikowania numeru wersji oferty. 
@@ -289,12 +290,12 @@ Aby dowiedzieć się, jak będzie bardziej atrakcyjny opis oferty, możesz uży�
 
     **Przykład**:
 
-    `<h1>`This to nagłówek 1 @ no__t-1 <br>
-    `<h2>`This to nagłówek 2 @ no__t-1 <br>
-    `<h3>`This to nagłówek 3 @ no__t-1 <br>
-    `<h4>`This to nagłówek 4 @ no__t-1 <br>
-    `<h5>`This to nagłówek 5 @ no__t-1 <br>
-    `<h6>`This to nagłówek 6 @ no__t-1 
+    `<h1>`jest to nagłówek 1`</h1>` <br>
+    `<h2>`jest to nagłówek 2`</h2>` <br>
+    `<h3>`jest to nagłówek 3`</h3>` <br>
+    `<h4>`jest to nagłówek 4`</h4>` <br>
+    `<h5>`jest to nagłówek 5`</h5>` <br>
+    `<h6>`jest to nagłówek 6`</h6>` 
 
     Powyższy sposób będzie wyglądać następująco:
 

@@ -4,14 +4,14 @@ description: W tym dokumencie opisano różne opcje migracji danych lokalnych lu
 author: bharathsreenivas
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 0a2423421c6dfda02646546a6e071c8c78396f2c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9111193bb441487b9e3c49bc9ee1a296d49f8a31
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170687"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882384"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Opcje migracji danych lokalnych lub w chmurze do Azure Cosmos DB
 
@@ -72,8 +72,4 @@ W przypadku interfejsów API innych niż interfejs API SQL, interfejs API Mongo 
 
 * Dowiedz się więcej, pobierając przykładowe aplikacje zużywające zbiorczą bibliotekę wykonawczą w programie [.NET i środowisku](bulk-executor-dot-net.md) [Java](bulk-executor-java.md). 
 * Biblioteka wykonawców zbiorczych jest zintegrowana z łącznikiem Cosmos DB Spark, aby dowiedzieć się więcej, zobacz Azure Cosmos DB artykuł dotyczący [łącznika Spark](spark-connector.md) .  
-* Skontaktuj się z zespołem produktu Azure Cosmos DB, otwierając bilet pomocy technicznej w ramach typu problemu "ogólny poradnik" i "duże (TB +) migracje", aby uzyskać dodatkową pomoc dotyczącą migracji z dużą skalą. 
-* Użyj [programu Bootstrap Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/) , aby przyspieszyć Kompilowanie lub Migrowanie aplikacji na Azure Cosmos DB.
-
-> [!div class="nextstepaction"]
-> [Program Cosmos DB Bootstrap](https://azurecosmosdb.github.io/CosmosBootstrap/)
+* Skontaktuj się z zespołem produktu Azure Cosmos DB, otwierając bilet pomocy technicznej w ramach typu problemu "ogólny poradnik" i "duże (TB +) migracje", aby uzyskać dodatkową pomoc dotyczącą migracji z dużą skalą.

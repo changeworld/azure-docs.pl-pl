@@ -1,70 +1,65 @@
 ---
-title: Pulpit nawigacyjny usługi Azure Application Insights przeglądu | Dokumentacja firmy Microsoft
-description: Monitorowanie aplikacji za pomocą funkcji usługi Azure Application Insights i pulpit nawigacyjny przeglądu.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Pulpit nawigacyjny omówienia usługi Azure Application Insights | Microsoft Docs
+description: Monitoruj aplikacje za pomocą usługi Azure Application Insights i funkcji pulpitu nawigacyjnego.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 06/03/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/03/2019
+ms.openlocfilehash: 218ae158512326bcad8efd6c598f68d296fe9370
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497164"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819159"
 ---
-# <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny aplikacji — omówienie szczegółowe informacje
+# <a name="application-insights-overview-dashboard"></a>Pulpit nawigacyjny przeglądu Application Insights
 
-Usługa Application Insights zawsze oferowała okienko Przegląd podsumowania, aby umożliwić szybkie, w skrócie ocenę kondycji i wydajności aplikacji. Nowy pulpit nawigacyjny przeglądu zapewnia szybsze, bardziej elastyczne środowisko.
+Application Insights zawsze udostępnia okienko podsumowania podsumowujące, które umożliwia szybkie i natychmiastowe ocenę kondycji i wydajności aplikacji. Nowy pulpit nawigacyjny omówienia oferuje szybsze środowisko pracy.
 
-## <a name="how-do-i-test-out-the-new-experience"></a>Jak przetestowania nowego środowiska
+## <a name="how-do-i-test-out-the-new-experience"></a>Jak mogę sprawdzić nowe środowisko?
 
-Nowy pulpit nawigacyjny przeglądu teraz uruchamia się domyślnie:
+Nowy pulpit nawigacyjny przeglądu jest teraz uruchamiany domyślnie:
 
-![Okienko podglądu — omówienie](./media/overview-dashboard/overview.png)
+![Okienko podglądu przeglądu](./media/overview-dashboard/overview.png)
 
 ## <a name="better-performance"></a>Lepsza wydajność
 
-Wybór zakresu czasu został uproszczony, aby za pomocą prostego interfejsu jednym kliknięciem.
+Wybór zakresu czasu jest uproszczony dla prostego interfejsu jednego kliknięcia.
 
 ![Przedział czasu](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-Ogólna wydajność została znacznie zwiększona. Masz jednym kliknięciem dostęp do popularnych funkcji, takich jak **wyszukiwania** i **analizy**. Każda domyślna dynamiczne aktualizowanie kafelka kluczowy wskaźnik wydajności zapewnia wgląd w odpowiedniej funkcji usługi Application Insights. Aby dowiedzieć się więcej na temat nie powiodło się wybierz opcję żądania **błędów** w obszarze **zbadaj** nagłówka:
+Ogólna wydajność została znacznie zwiększona. Masz dostęp z jednym kliknięciem do popularnych funkcji, takich jak **Wyszukiwanie** i **Analiza**. Każda domyślna funkcja dynamicznego aktualizowania kafelka kluczowego wskaźnika wydajności zapewnia wgląd w odpowiednie funkcje Application Insights. Aby dowiedzieć się więcej o żądaniach zakończonych niepowodzeniem, wybierz **Błędy** w nagłówku **badania** :
 
 ![Błędy](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Pulpit nawigacyjny aplikacji
 
-Pulpit nawigacyjny aplikacji korzysta z istniejących technologii pulpitu nawigacyjnego w obrębie platformy Azure, aby przedstawić widok można swobodnie dostosowywać jedną taflę wydajności i kondycji aplikacji.
+Pulpit nawigacyjny aplikacji korzysta z istniejącej technologii pulpitu nawigacyjnego w systemie Azure, aby zapewnić w pełni dostosowywalny widok jednego okienka kondycji i wydajności aplikacji.
 
-Wybierz pulpit nawigacyjny domyślnego dostępu do _pulpit nawigacyjny aplikacji_ w lewym górnym rogu.
+Aby uzyskać dostęp do domyślnego pulpitu nawigacyjnego, wybierz pozycję _pulpit nawigacyjny aplikacji_ w lewym górnym rogu.
 
 ![Widok pulpitu nawigacyjnego](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
-Jeśli jest to dostęp do pulpitu nawigacyjnego po raz pierwszy, program uruchamia domyślny widok:
+Jeśli po raz pierwszy uzyskujesz dostęp do pulpitu nawigacyjnego, zostanie uruchomiony widok domyślny:
 
 ![Widok pulpitu nawigacyjnego](./media/overview-dashboard/0001-dashboard.png)
 
-Możesz zachować widok domyślny, jeśli chcesz go. Lub można również dodawać i usuwać z poziomu pulpitu nawigacyjnego w sposób najlepiej odpowiadający potrzeb danego zespołu.
+Jeśli chcesz, możesz zachować widok domyślny. Możesz również dodawać i usuwać z pulpitu nawigacyjnego, aby najlepiej dopasować się do potrzeb zespołu.
 
 > [!NOTE]
-> Wszyscy użytkownicy z dostępem do zasobu usługi Application Insights udostępnianie tego samego środowiska pulpitu nawigacyjnego aplikacji. Zmiany wprowadzone przez jeden użytkownik zmodyfikuje widoku dla wszystkich użytkowników.
+> Wszyscy użytkownicy z dostępem do zasobów Application Insights współdzielą ten sam interfejs pulpitu nawigacyjnego aplikacji. Zmiany wprowadzone przez jednego użytkownika spowodują modyfikację widoku dla wszystkich użytkowników.
 
-Aby przejść z powrotem do środowiska — omówienie, po prostu wybierz opcję:
+Aby przejść z powrotem do środowiska przeglądu, wybierz:
 
-![Przycisk — omówienie](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
+![Przycisk przegląd](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli wybierzesz **Konfigurowanie ustawień kafelków** i Ustaw niestandardowy zakres czasu przekraczające 31 dni pulpitu nawigacyjnego nie będą wyświetlane poza 31 dni dla danych, nawet w przypadku przechowywania danych domyślne 90 dni. Obecnie nie ma sposobu obejścia tego zachowania.
+Jeśli wybierzesz pozycję **Konfiguruj ustawienia kafelków** i ustawisz niestandardowy zakres czasu przekraczający 31 dni, ten pulpit nawigacyjny nie będzie wyświetlany dłużej niż 31 dni, nawet z domyślnym przechowywaniem danych wynoszącym 90 dni. Obecnie nie ma żadnego obejścia tego problemu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Lejki](../../azure-monitor/app/usage-funnels.md)
 - [Przechowywanie](../../azure-monitor/app/usage-retention.md)

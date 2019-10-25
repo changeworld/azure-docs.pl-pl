@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: da8dc332794cadc0eb6677390c566e67a6df6f3f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72596543"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882442"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Przekształcanie ujścia dla przepływu danych
 
@@ -53,8 +53,8 @@ Wybierz pozycję **Weryfikuj schemat** , aby zakończyć niepowodzeniem ujścia 
 
 Wybierz pozycję **Wyczyść folder,** aby obciąć zawartość folderu ujścia przed zapisaniem plików docelowych w tym folderze docelowym.
 
-## <a name="rule-based-mapping"></a>Mapowanie oparte na regułach
-Gdy automapowanie jest wyłączone, będzie można dodać mapowanie oparte na kolumnach (stałe mapowanie) lub mapowanie oparte na regułach. Mapowanie oparte na regułach umożliwi pisanie wyrażeń z dopasowywaniem do wzorca. 
+## <a name="fixed-mapping-vs-rule-based-mapping"></a>Stałe mapowanie a mapowanie oparte na regułach
+Po wyłączeniu automapowania będzie można dodać mapowanie oparte na kolumnach (stałe mapowanie) lub mapowanie oparte na regułach. Mapowanie oparte na regułach umożliwi pisanie wyrażeń z dopasowaniem do wzorca, podczas gdy stałe mapowanie spowoduje zamapowanie nazw kolumn logicznych i fizycznych.
 
 ![Mapowanie oparte na regułach](media/data-flow/rules4.png "Mapowanie oparte na regułach")
 
@@ -65,6 +65,12 @@ Szczegóły dopasowania wzorca znajdują się w [dokumentacji wzorca kolumny](co
 Można także wprowadzać wzorce wyrażeń regularnych w przypadku używania dopasowania opartego na regułach, rozszerzając wiersz i wprowadzając wyrażenie regularne obok "nazwa pasuje:".
 
 ![Mapowanie wyrażenia regularnego](media/data-flow/scdt1g4.png "Mapowanie wyrażenia regularnego")
+
+Bardzo prostym typowym przykładem dla mapowania opartego na regułach i stałego mapowania jest przypadek, w którym chcesz zmapować wszystkie pola przychodzące na taką samą nazwę w miejscu docelowym. W przypadku stałych mapowań należy wyświetlić poszczególne kolumny w tabeli. W przypadku mapowania opartego na regułach istnieje jedna reguła, która mapuje wszystkie pola przy użyciu ```true()``` do tej samej nazwy pola przychodzącego reprezentowanej przez ```$$```.
+
+### <a name="sink-association-with-dataset"></a>Skojarzenie ujścia z zestawem danych
+
+Zestaw danych, który został wybrany dla obiektu sink, może lub nie ma zdefiniowanego schematu w definicji zestawu danych. Jeśli nie ma zdefiniowanego schematu, należy zezwolić na dryfowanie schematu. Po zdefiniowaniu stałego mapowania Mapowanie nazw logicznie do fizycznych będzie trwało w transformacji ujścia. W przypadku zmiany definicji schematu zestawu danych można przerwać mapowanie ujścia. Aby tego uniknąć, należy użyć mapowania opartego na regułach. Mapowania oparte na regułach są uogólnione, co oznacza, że zmiany schematu w zestawie danych nie spowodują przerwania mapowania.
 
 ## <a name="file-name-options"></a>Opcje nazwy pliku
 

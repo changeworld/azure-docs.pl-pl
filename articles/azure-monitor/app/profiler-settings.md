@@ -1,28 +1,24 @@
 ---
 title: Użyj okienka ustawień usługi Azure Application Insights Profiler | Microsoft Docs
 description: Zobacz temat stan profilera i uruchamianie sesji profilowania
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 12cb8e31617ee6b1e0c8515e66e265f4eccdf3df
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: b383ef8c92325b0ad6561bee9b654c78e4054338
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338048"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820476"
 ---
-# <a name="configure-application-insights-profiler"></a>Konfigurowanie narzędzia Application Insights Profiler
+# <a name="configure-application-insights-profiler"></a>Konfigurowanie Application Insights Profiler
 
 ## <a name="updated-profiler-agent"></a>Zaktualizowany Agent profilera
-Funkcje wyzwalacza działają tylko w wersji 2,6 lub nowszej agenta profilera. W przypadku korzystania z Azure App Service Agent zostanie automatycznie zaktualizowany. Możesz sprawdzić, która wersja agenta jest uruchomiona, jeśli przejdziesz do adresu URL kudu witryny sieci Web i dodasz \DiagnosticServices do końca tego: https://yourwebsite.scm.azurewebsites.net/diagnosticservices. Application Insights Profiler Zadania WebJob powinien być w wersji 2,6 lub nowszej. Aby wymusić uaktualnienie, należy ponownie uruchomić aplikację sieci Web. 
+Funkcje wyzwalacza działają tylko w wersji 2,6 lub nowszej agenta profilera. W przypadku korzystania z Azure App Service Agent zostanie automatycznie zaktualizowany. Możesz sprawdzić, która wersja agenta jest uruchamiana, jeśli przejdziesz do adresu URL kudu witryny sieci Web i dodasz \DiagnosticServices na końcu tego: https://yourwebsite.scm.azurewebsites.net/diagnosticservices. Application Insights Profiler Zadania WebJob powinien być w wersji 2,6 lub nowszej. Aby wymusić uaktualnienie, należy ponownie uruchomić aplikację sieci Web. 
 
 Jeśli używasz profilera na maszynie wirtualnej lub w usłudze w chmurze, musisz mieć zainstalowane rozszerzenie systemu Windows Diagnostyka Azure (funkcji wad) w wersji 16.0.4 lub nowszej. Możesz sprawdzić wersję programu funkcji wad, logując się na maszynie wirtualnej i sprawdzając ten katalog: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. Nazwa katalogu jest zainstalowaną wersją programu funkcji wad. Agent maszyny wirtualnej platformy Azure zaktualizuje funkcji wad automatycznie, gdy będą dostępne nowe wersje.
 
@@ -58,8 +54,8 @@ Kliknięcie przycisku wyzwalacze na pasku menu spowoduje otwarcie pola ustawieni
 |-|-|
 Przycisk włączania/wyłączania | Włączone: profiler może być uruchamiany przez ten wyzwalacz; Wyłączone: Profiler nie zostanie uruchomiony przez ten wyzwalacz.
 Próg pamięci | Gdy procent pamięci jest używany, profiler zostanie uruchomiony.
-Duration | Ustawia długość czasu, przez który Profiler będzie uruchamiany po wyzwoleniu.
-Ochładzanie | Ustawia długość czasu, przez który Profiler będzie czekał przed wyzwoleniem na ponowne uruchomienie pamięci lub użycie procesora.
+Czas trwania | Ustawia długość czasu, przez który Profiler będzie uruchamiany po wyzwoleniu.
+Cooldown | Ustawia długość czasu, przez który Profiler będzie czekał przed wyzwoleniem na ponowne uruchomienie pamięci lub użycie procesora.
 
 ## <a name="recent-profiling-sessions"></a>Ostatnie sesje profilowania
 Ta sekcja na stronie zawiera informacje o ostatnich sesjach profilowania. Sesja profilowania reprezentuje okres czasu, w którym Agent profilera przetworzy profil na jednej z maszyn obsługujących aplikację. Możesz otworzyć profile z sesji, klikając jeden z wierszy. Dla każdej sesji pokazujemy:
@@ -69,7 +65,7 @@ Ta sekcja na stronie zawiera informacje o ostatnich sesjach profilowania. Sesja 
 Wyzwolone przez | Jak sesja została uruchomiona, przez wyzwalacz, profil teraz lub domyślne próbkowanie. 
 Nazwa aplikacji | Nazwa aplikacji, która została profilowana.
 Wystąpienie maszyny | Nazwa komputera, na którym uruchomiono agenta profilera.
-Timestamp | Godzina przechwycenia profilu.
+Znacznik czasu | Godzina przechwycenia profilu.
 Śledzenie | Liczba śladów, które zostały dołączone do poszczególnych żądań.
 TESTY | Procent użycia procesora CPU, który był używany podczas działania profilera.
 Rozmiar | Procent pamięci używanej podczas działania profilera.
@@ -80,11 +76,11 @@ Możesz wyzwolić Profiler ręcznie przy użyciu jednego kliknięcia. Załóżmy
 
 W następnych sekcjach przedstawiono sposób działania tego scenariusza:
 
-### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>Krok 1: Generuj ruch do aplikacji sieci Web, rozpoczynając test wydajności sieci Web
+### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>Krok 1. generowanie ruchu do aplikacji sieci Web przez uruchomienie testu wydajności sieci Web
 
 Jeśli aplikacja sieci Web ma już ruch przychodzący lub po prostu chcesz ręcznie generować ruch, Pomiń tę sekcję i przejdź do kroku 2.
 
-1. W portalu Application Insights wybierz pozycję **Skonfiguruj** **testowanie wydajności** > . 
+1. W portalu Application Insights wybierz pozycję **konfiguruj** > **testowanie wydajności**. 
 
 1. Aby rozpocząć nowy test wydajności, wybierz przycisk **Nowy** .
 
@@ -100,14 +96,14 @@ Jeśli aplikacja sieci Web ma już ruch przychodzący lub po prostu chcesz ręcz
 
     ![Test obciążenia jest uruchomiony w toku][load-test-in-progress]
 
-### <a name="step-2-start-a-profiler-on-demand-session"></a>Krok 2: Uruchamianie sesji profilera na żądanie
+### <a name="step-2-start-a-profiler-on-demand-session"></a>Krok 2. Rozpoczynanie sesji profilera na żądanie
 
 1. Gdy test obciążenia jest uruchomiony, uruchom program Profiler, aby przechwycić ślady w aplikacji sieci Web podczas otrzymywania ładowania.
 
 1. Przejdź do okienka **Konfigurowanie profilera** .
 
 
-### <a name="step-3-view-traces"></a>Krok 3: Wyświetl ślady
+### <a name="step-3-view-traces"></a>Krok 3. Wyświetlanie śladów
 
 Po zakończeniu działania profilera postępuj zgodnie z instrukcjami w obszarze powiadomień, aby przejść do okienka wydajność i wyświetlić dane śledzenia.
 

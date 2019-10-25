@@ -1,5 +1,5 @@
 ---
-title: Samouczek — przesyłanie strumieniowe dzienników Azure Active Directory do centrum zdarzeń platformy Azure | Microsoft Docs
+title: Samouczek — przesyłanie strumieniowe dzienników do centrum zdarzeń platformy Azure | Microsoft Docs
 description: Dowiedz się, jak skonfigurować Diagnostyka Azure do wypychania dzienników Azure Active Directory do centrum zdarzeń
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93dd7b13ca9e1a3f078994e76610c45447cfa41c
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b5a790358b0b5c5f301cd53f0cd564a36f66049b
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264077"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817507"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Samouczek: przesyłanie strumieniowe dzienników Azure Active Directory do centrum zdarzeń platformy Azure
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dc8381fe964ce924ed37d6b7e6d22dc730eae89
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 19b29181f023b49cca7159fbbcad4a4675744a96
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453058"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819742"
 ---
 # <a name="blocking-legacy-authentication"></a>Blokowanie starszego uwierzytelniania
  
@@ -33,9 +33,11 @@ Przed zablokowaniem starszego uwierzytelniania w katalogu należy najpierw zrozu
 
 1. Przejdź do Azure Portal > Azure Active Directory > logowania.
 1. Dodaj kolumnę aplikacji klienckiej, jeśli nie jest ona wyświetlana przez kliknięcie kolumn > aplikacji klienckiej.
-1. Filtruj według aplikacji klienta > innych klientów i kliknij przycisk Zastosuj.
+1. Filtruj według aplikacji klienckich > Zaznacz wszystkie inne opcje klienta, a następnie kliknij przycisk Zastosuj.
+1. Filtruj według stanu > powodzenie i kliknij przycisk Zastosuj. 
+1. W razie potrzeby rozwiń zakres dat, używając filtru daty.
 
-Filtrowanie będzie zawierać tylko próby logowania, które zostały wykonane przez starsze protokoły uwierzytelniania. Kliknięcie każdej próby logowania spowoduje wyświetlenie dodatkowych szczegółów. Pole aplikacji klienckiej na karcie Informacje podstawowe wskazuje, który z starszych wersji protokołu uwierzytelniania był używany. Te dzienniki wskazują, którzy użytkownicy nadal są w stanie w zależności od starszego uwierzytelniania i które aplikacje używają starszych protokołów do przesyłania żądań uwierzytelniania. W przypadku użytkowników, którzy nie znajdują się w tych dziennikach i potwierdzają, że nie używają starszego uwierzytelniania, zaimplementuj zasady dostępu warunkowego lub Włącz zasady linii bazowej: Blokuj starsze uwierzytelnianie dla tych użytkowników.
+Filtrowanie będzie zawierać tylko pomyślne próby logowania, które zostały wprowadzone przez wybrane starsze protokoły uwierzytelniania. Kliknięcie każdej próby logowania spowoduje wyświetlenie dodatkowych szczegółów. Kolumna aplikacji klienta lub pole aplikacji klienta na karcie Informacje podstawowe po wybraniu pojedynczego wiersza danych wskazuje, który z starszych wersji protokołu uwierzytelniania był używany. Te dzienniki wskazują, którzy użytkownicy nadal są w stanie w zależności od starszego uwierzytelniania i które aplikacje używają starszych protokołów do przesyłania żądań uwierzytelniania. W przypadku użytkowników, którzy nie znajdują się w tych dziennikach i potwierdzają, że nie używają starszego uwierzytelniania, zaimplementuj zasady dostępu warunkowego lub Włącz zasady linii bazowej: Blokuj starsze uwierzytelnianie dla tych użytkowników.
 
 ## <a name="moving-away-from-legacy-authentication"></a>Przejście z starszego uwierzytelniania 
 
@@ -47,8 +49,8 @@ Ta sekcja zawiera omówienie krok po kroku dotyczące aktualizowania środowiska
 
 Pierwszym krokiem w celu włączenia nowoczesnego uwierzytelniania jest upewnienie się, że katalog obsługuje nowoczesne uwierzytelnianie. Nowoczesne uwierzytelnianie jest domyślnie włączone dla katalogów utworzonych w dniu lub po 1 sierpnia 2017. Jeśli katalog został utworzony przed tą datą, musisz ręcznie włączyć nowoczesne uwierzytelnianie dla katalogu, wykonując następujące czynności:
 
-1. Sprawdź, czy w katalogu jest już obsługiwane nowoczesne uwierzytelnianie przez uruchomienie polecenia @ no__t-0 @ no__t-1from [modułu PowerShell usługi Skype dla firm Online](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
-1. Jeśli polecenie zwraca pusty ciąg @ no__t-0 @ no__t-1property, to nowoczesne uwierzytelnianie jest wyłączone. Zaktualizuj ustawienie, aby włączyć nowoczesne uwierzytelnianie przy użyciu programu @ no__t-0. Jeśli Twój @ no__t-0 @ no__t-1property zawiera wpis, możesz go wybrać.
+1. Sprawdź, czy katalog już obsługuje nowoczesne uwierzytelnianie, uruchamiając `Get-CsOAuthConfiguration` z [modułu programu PowerShell w usłudze Skype dla firm Online](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
+1. Jeśli polecenie zwróci pustą właściwość  `OAuthServers`, nowoczesne uwierzytelnianie jest wyłączone. Zaktualizuj ustawienie, aby włączyć nowoczesne uwierzytelnianie przy użyciu `Set-CsOAuthConfiguration`. Jeśli właściwość  `OAuthServers`zawiera wpis, możesz go wyszukać.
 
 Pamiętaj, aby ukończyć ten krok przed przejściem do przodu. Ważne jest, aby konfiguracje katalogów były najpierw zmieniane, ponieważ określają, który protokół będzie używany przez wszystkich klientów pakietu Office. Nawet jeśli używasz klientów pakietu Office obsługujących nowoczesne uwierzytelnianie, domyślnie będą używać starszych protokołów, jeśli nowoczesne uwierzytelnianie jest wyłączone w Twoim katalogu.
 

@@ -1,17 +1,17 @@
 ---
 title: Wprowadzenie do usługi Azure Cosmos DB
 description: Zapoznaj się z informacjami na temat usługi Azure Cosmos DB. Ta dostępna w skali światowej, wielomodelowa baza danych zapewnia małe opóźnienia, elastyczną skalowalność i wysoką dostępność oraz oferuje natywną obsługę danych NoSQL.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 09/01/2019
-ms.author: rimman
-ms.openlocfilehash: f7396a747852e98b15c8c85e9b0d9a46326e6b25
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 10/23/2019
+ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240703"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882176"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
@@ -24,22 +24,17 @@ Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.micros
 > [!div class="nextstepaction"]
 > [Wypróbuj bezpłatnie usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
 
-Możesz również użyć [programu Bootstrap Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/) , aby przyspieszyć Kompilowanie lub Migrowanie aplikacji na Azure Cosmos DB. Po zarejestrowaniu się w tym programie inżynierowie Azure Cosmos DB są przypisani do pomocy w projekcie i mogą być pomocne podczas migrowania danych do Azure Cosmos DB lub tworzenia nowych aplikacji w Azure Cosmos DB.
-
-> [!div class="nextstepaction"]
-> [Zarejestruj się, aby skorzystać z programu Bootstrap Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)
-
 ![Azure Cosmos DB to dostępna w skali światowej usługa bazy danych firmy Microsoft z elastycznym skalowaniem, gwarantowanymi małymi opóźnieniami, pięcioma modelami spójności oraz kompleksowymi, gwarantowanymi umowami SLA](./media/introduction/azure-cosmos-db.png)
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
 
-### <a name="turnkey-global-distribution"></a>Gotowa do użycia dystrybucja globalna
+### <a name="turnkey-global-distribution"></a>Gotowa do użycia funkcja dystrybucji globalnej
 
 Usługa Cosmos DB umożliwia tworzenie bardzo dynamicznych i wysoce dostępnych aplikacji na całym świecie. Cosmos DB w sposób przezroczysty replikuje dane, wszędzie tam, gdzie się znajdują użytkownicy, dzięki czemu użytkownicy mogą korzystać z repliki danych znajdujących się najbliżej nich.
 
 Usługa Cosmos DB umożliwia dodawanie i usuwanie regionów platformy Azure do konta usługi Cosmos w dowolnym momencie, wystarczy kliknąć przycisk. Cosmos DB będzie bezproblemowo replikować dane do wszystkich regionów skojarzonych z kontem usługi Cosmos, gdy aplikacja nadal będzie wysoce dostępna, dzięki możliwościom *wielomultihostingunym* . Aby uzyskać więcej informacji, zobacz artykuł dotyczący [globalnej dystrybucji](distribute-data-globally.md).
 
-### <a name="always-on"></a>Zawsze włączone
+### <a name="always-on"></a>Zawsze włączona
 
 Dzięki głębokiej integracji z infrastrukturą platformy Azure i [przezroczystej replikacji wielu wzorców](global-dist-under-the-hood.md)Cosmos DB zapewnia [wysoką dostępność na 99,999%](high-availability.md) dla operacji odczytu i zapisu. Usługa Cosmos DB zapewnia również możliwość programowego (lub za pomocą portalu) wywoływania regionalnego trybu failover konta usługi Cosmos. Ta funkcja pomaga zapewnić, że aplikacja została zaprojektowana w celu przełączenia w tryb failover w przypadku awarii regionalnej.
 
@@ -53,7 +48,7 @@ Przy użyciu usługi Cosmos DB można tworzyć szybko reagujące aplikacje skalo
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Wiele dokładnie zdefiniowanych opcji spójności
 
-Podczas kompilowania aplikacji rozproszonych globalnie w Cosmos DB nie trzeba już podejmować wyjątkowo [kompromisów między spójnością, dostępnością, opóźnieniami i przepływności](consistency-levels-tradeoffs.md). Protokół replikacji wielu wzorców Cosmos DB został starannie zaprojektowany w celu zaoferowania [pięciu dobrze zdefiniowanych opcji](consistency-levels.md) - spójności,*silnych*, *nieodświeżonych*, *sesji*, *spójnego prefiksu*i *ostateczności* — w przypadku intuicyjnego modelu programowania o małym opóźnieniu i wysokiej dostępności dla aplikacji rozproszonej globalnie.
+Podczas kompilowania aplikacji rozproszonych globalnie w Cosmos DB nie trzeba już podejmować wyjątkowo [kompromisów między spójnością, dostępnością, opóźnieniami i przepływności](consistency-levels-tradeoffs.md). Protokół replikacji wielu wzorców Cosmos DB został starannie zaprojektowany w celu zaoferowania [pięciu dobrze zdefiniowanych opcji spójności](consistency-levels.md) - *silnej*, *ograniczonej nieodświeżoności*, *sesji*, *spójnego prefiksu*i *ostateczności* — Intuicyjny model programowania o małym opóźnieniu i wysokiej dostępności dla aplikacji rozproszonej globalnie.
 
 ### <a name="no-schema-or-index-management"></a>Bez zarządzania schematami lub indeksami
 
@@ -87,7 +82,7 @@ Możesz uruchomić projekt [Spark](spark-connector.md) bezpośrednio na danych p
 
 Cosmos DB oferuje interfejsy API do pracy z danymi przechowywanymi w bazie danych Cosmos. Domyślnie [można użyć języka SQL](how-to-sql-query.md) (podstawowego interfejsu API) do wykonywania zapytań dotyczących bazy danych Cosmos. Cosmos DB również implementuje interfejsy API dla [Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) i [Azure Table Storage](table-introduction.md). Możesz wskazać sterowniki klienta (i narzędzia) dla najczęściej używanych NoSQL (np. MongoDB, Cassandra, Gremlin) bezpośrednio do swojej bazy danych programu Cosmos. Dzięki obsłudze protokołów sieci powszechnie używanych interfejsów API NoSQL Cosmos DB umożliwia:
 
-* Łatwe migrowanie aplikacji do usługi Cosmos DB przy jednoczesnym zachowaniu znacznej części logiki aplikacji.
+* Łatwa migracja aplikacji do usługi Cosmos DB przy jednoczesnym zachowaniu znacznej części logiki aplikacji.
 * Zapewnienie, że aplikacja będzie nadal przenośna i niezależna od dostawcy chmury.
 * Korzystaj z w pełni zarządzanej usługi w chmurze, która zapewnia wiodące w branży umowy SLA, finansowo NoSQLe dla wspólnych interfejsów API. 
 * Elastyczne skalowanie aprowizowanej przepływności i magazynu dla baz danych zgodnie z potrzebami i płatność tylko za przepływność i magazyn, które są potrzebne. Prowadzi to do znacznych oszczędności kosztów.

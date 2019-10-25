@@ -1,23 +1,19 @@
 ---
 title: Profilowanie aplikacji produkcyjnych na platformie Azure za pomocą Application Insights Profiler | Microsoft Docs
 description: Zidentyfikuj gorącą ścieżkę w kodzie serwera sieci Web za pomocą profilera niskiego poziomu.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: debc30a368a0f9ef7be9b0cda0b1238f8e2bc2e3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: fc152aab6d0e62ac5656b50834ce17278bb6676e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338080"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820521"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilowanie aplikacji produkcyjnych na platformie Azure za pomocą Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Włączanie Application Insights Profiler dla aplikacji
@@ -26,8 +22,8 @@ Usługa Azure Application Insights Profiler udostępnia dane śledzenia wydajno�
 
 Profiler współpracuje z aplikacjami .NET, które są wdrożone w następujących usługach platformy Azure. Szczegółowe instrukcje dotyczące włączania profilera dla każdego typu usługi znajdują się w poniższych linkach.
 
-* [Usługa Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
+* [usług Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines i zestawy skalowania maszyn wirtualnych](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 * [**Wersja zapoznawcza** ASP.NET Core Web Apps systemu Linux platformy Azure](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
@@ -48,10 +44,10 @@ Wybierz próbkę, aby wyświetlić podział czasu poświęcony na wykonanie żą
 
 Eksplorator śledzenia wyświetla następujące informacje:
 
-* **Pokaż ścieżkę gorącą**: Otwiera największy węzeł liścia lub co najmniej coś zamknięcia. W większości przypadków ten węzeł zbliża się do wąskiego gardła wydajności.
-* **Etykieta**: Nazwa funkcji lub zdarzenia. W drzewie jest wyświetlany mieszany kod i zdarzenia, które wystąpiły, takie jak zdarzenia SQL i HTTP. Zdarzenie Top reprezentuje ogólny czas trwania żądania.
-* **Upłynęło**: Przedział czasu między rozpoczęciem operacji a końcem operacji.
-* **Kiedy**: Czas, w którym funkcja lub zdarzenie działały w odniesieniu do innych funkcji.
+* **Pokaż ścieżkę gorącą**: otwiera największy węzeł liścia lub co najmniej coś zamknięcia. W większości przypadków ten węzeł zbliża się do wąskiego gardła wydajności.
+* **Etykieta**: nazwa funkcji lub zdarzenia. W drzewie jest wyświetlany mieszany kod i zdarzenia, które wystąpiły, takie jak zdarzenia SQL i HTTP. Zdarzenie Top reprezentuje ogólny czas trwania żądania.
+* **Upłynęło**: przedział czasu między rozpoczęciem operacji a końcem operacji.
+* **Kiedy**: czas, kiedy funkcja lub zdarzenie działały w odniesieniu do innych funkcji.
 
 ## <a name="how-to-read-performance-data"></a>Jak odczytać dane dotyczące wydajności
 
@@ -59,9 +55,9 @@ Program Microsoft Service Profiler używa kombinacji metod próbkowania i instru
 
 Stos wywołań, który jest wyświetlany w widoku oś czasu jest wynikiem próbkowania i instrumentacji. Ponieważ każdy przykład przechwytuje cały stos wywołań wątku, zawiera kod z Microsoft .NET Framework oraz z innych struktur, do których się odwołuje.
 
-### <a id="jitnewobj"></a>Alokacja obiektu (CLR! JIT @ no__t-1New lub CLR! JIT @ no__t-2Newarr1)
+### <a id="jitnewobj"></a>Alokacja obiektu (CLR! Kompilator JIT\_New lub CLR! Newarr1 JIT\_)
 
-**środowisko CLR! JIT @ no__t-1New** i **CLR! JIT @ no__t-3Newarr1** to funkcje pomocnika w .NET Framework przydzielania pamięci z sterty zarządzanej. **środowisko CLR! Wywołanie JIT @ no__t-1New** jest wywoływane po przydzieleniu obiektu. **środowisko CLR! Wywoływana jest metoda JIT @ no__t-1Newarr1** , gdy przydzielono tablicę obiektów. Te dwie funkcje są zwykle szybkie i stosunkowo małe. Jeśli **CLR! JIT @ no__t-1New** lub **CLR! JIT @ no__t-3Newarr1** zajmuje dużo czasu na osi czasu, kod może przydzielić wiele obiektów i zużywać znaczną ilość pamięci.
+**środowisko CLR! Kompilator JIT\_New** i **CLR! Newarr1 JIT\_** są funkcjami pomocnika w .NET Framework przydzielenia pamięci z sterty zarządzanej. **środowisko CLR! Metoda JIT\_New** jest wywoływana po przydzieleniu obiektu. **środowisko CLR! Newarr1 JIT\_** jest wywoływana, gdy zostanie przypisana tablica obiektów. Te dwie funkcje są zwykle szybkie i stosunkowo małe. Jeśli **CLR! Kompilator JIT\_New** lub **CLR! Program JIT\_Newarr1** zajmuje dużo czasu na osi czasu, kod może przydzielić wiele obiektów i zużywać znaczną ilość pamięci.
 
 ### <a id="theprestub"></a>Ładowanie kodu (CLR! ThePreStub)
 
@@ -69,9 +65,9 @@ Stos wywołań, który jest wyświetlany w widoku oś czasu jest wynikiem próbk
 
 Jeśli **CLR! ThePreStub** zajmuje dużo czasu na żądanie, żądanie jest pierwszym z nich, aby wykonać tę metodę. Czas ładowania pierwszej metody przez środowisko uruchomieniowe .NET Framework jest znaczący. Rozważ użycie procesu rozgrzewania, który wykonuje tę część kodu, zanim użytkownicy uzyskają do niego dostęp, lub Rozważ uruchomienie natywnego generatora obrazu (Ngen. exe) w Twoich zestawach.
 
-### <a id="lockcontention"></a>Zablokuj rywalizację (CLR! JITutil @ no__t-1MonContention lub CLR! JITutil\_MonEnterWorker)
+### <a id="lockcontention"></a>Zablokuj rywalizację (CLR! JITutil\_MonContention lub CLR! JITutil\_MonEnterWorker)
 
-**środowisko CLR! JITutil @ no__t-1MonContention** lub **CLR! JITutil @ no__t-3MonEnterWorker** wskazuje, że bieżący wątek oczekuje na zwolnienie blokady. Ten tekst jest często wyświetlany podczas C# wykonywania instrukcji **Lock** , wywoływanie metody **monitor. Enter** lub wywoływanie metody z atrybutem **MethodImplOptions. Synchronized** . Rywalizacja o blokadę zwykle występuje, gdy wątek _a_ uzyskuje blokadę, a wątek _B_ próbuje uzyskać tę samą blokadę przed jej wydaniem przez wątek.
+**środowisko CLR! JITutil\_MonContention** lub **CLR! JITutil\_MonEnterWorker** wskazuje, że bieżący wątek oczekuje na zwolnienie blokady. Ten tekst jest często wyświetlany podczas C# wykonywania instrukcji **Lock** , wywoływanie metody **monitor. Enter** lub wywoływanie metody z atrybutem **MethodImplOptions. Synchronized** . Rywalizacja o blokadę zwykle występuje, gdy wątek _a_ uzyskuje blokadę, a wątek _B_ próbuje uzyskać tę samą blokadę przed _jej wydaniem przez wątek_ .
 
 ### <a id="ngencold"></a>Ładowanie kodu ([ZIMNy])
 
@@ -87,9 +83,9 @@ Metody, takie jak **HttpClient. Send** wskazują, że kod oczekuje na ukończeni
 
 Metody takie jak **SqlCommand. Execute** wskazują, że kod oczekuje na zakończenie operacji bazy danych.
 
-### <a id="await"></a>Oczekiwanie (AWAIT @ no__t-1TIME)
+### <a id="await"></a>Oczekiwanie (AWAIT\_czas)
 
-**AWAIT @ no__t-1TIME** wskazuje, że kod oczekuje na zakończenie innego zadania. To opóźnienie zwykle odbywa się przy C# użyciu instrukcji **AWAIT** . Gdy kod wykonuje C# **oczekiwania**, wątek cofa i zwraca kontrolę do puli wątków i nie istnieje wątek, który jest zablokowany oczekujący na zakończenie oczekiwania. Jednak logicznie wątek, który został oczekiwał, jest zablokowany, i oczekuje na zakończenie operacji. Instrukcja **AWAIT @ no__t-1TIME** wskazuje zablokowany czas oczekiwania na zakończenie zadania.
+**Czas oczekiwania\_** wskazuje, że kod oczekuje na zakończenie innego zadania. To opóźnienie zwykle odbywa się przy C# użyciu instrukcji **AWAIT** . Gdy kod wykonuje C# **oczekiwania**, wątek cofa i zwraca kontrolę do puli wątków i nie istnieje wątek, który jest zablokowany oczekujący na **zakończenie oczekiwania.** Jednak logicznie wątek, **który został oczekiwał, jest zablokowany** , i oczekuje na zakończenie operacji. Instrukcja **AWAIT\_Time** wskazuje zablokowany czas oczekiwania na zakończenie zadania.
 
 ### <a id="block"></a>Czas blokowania
 
@@ -128,7 +124,7 @@ Profiler losowo uruchamia dwie minuty co godzinę na każdej maszynie wirtualnej
 ## <a name="next-steps"></a>Następne kroki
 Włącz Application Insights Profiler dla aplikacji platformy Azure. Zobacz również:
 * [App Services](profiler.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [usług Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines i zestawy skalowania maszyn wirtualnych](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 

@@ -1,20 +1,18 @@
 ---
 title: Śledzenie OpenCensus za pomocą usługi Azure Application Insights | Microsoft Docs
 description: Zawiera instrukcje dotyczące integrowania OpenCensus go z lokalną usługą przesyłania dalej i Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/15/2018
-ms.service: application-insights
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 56e66f17e9ce1d2482463f619e82dfd29d48f191
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 99f26bb2b89ef9642a36aa2be2037d04aafcdcd4
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990298"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819269"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Zbierz rozproszone dane śledzenia z języka go (wersja zapoznawcza)
 
@@ -30,7 +28,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-application-insights-resource"></a>Utwórz zasób Application Insights
 
@@ -49,7 +47,7 @@ Najpierw należy utworzyć zasób Application Insights, który spowoduje wygener
    | ------------- |:-------------|:-----|
    | **Nazwa**      | Wartość unikatowa w skali globalnej | Nazwa identyfikująca monitorowaną aplikację |
    | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów hostującej dane usługi App Insights |
-   | **Location** | East US | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
+   | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
 2. Kliknij przycisk **Utwórz**.
 
@@ -59,7 +57,7 @@ Najpierw należy utworzyć zasób Application Insights, który spowoduje wygener
 
    ![Zrzut ekranu klucza Instrumentacji](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. `LocalForwarder.config` Edytuj plik i Dodaj swój klucz Instrumentacji. Jeśli wykonano instrukcje w wymaganiu [wstępnym](./opencensus-local-forwarder.md) , plik znajduje się w lokalizacji`C:\LF-WindowsServiceHost`
+2. Edytuj plik `LocalForwarder.config` i Dodaj swój klucz Instrumentacji. Jeśli wykonano instrukcje w [wymaganiu wstępnym](./opencensus-local-forwarder.md) , plik znajduje się w `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -186,11 +184,11 @@ Najpierw należy utworzyć zasób Application Insights, który spowoduje wygener
         }
      ```
 
-3. Gdy aplikacja Simple go działa, przejdź do `http://localhost:50030`. Każde odświeżenie przeglądarki spowoduje wygenerowanie tekstu "Hello World" wraz z odpowiednimi danymi zakresu, które są pobierane przez lokalną usługę przesyłania dalej.
+3. Po uruchomieniu aplikacji Simple go przejdź do `http://localhost:50030`. Każde odświeżenie przeglądarki spowoduje wygenerowanie tekstu "Hello World" wraz z odpowiednimi danymi zakresu, które są pobierane przez lokalną usługę przesyłania dalej.
 
-4. Aby upewnić się, że **lokalna usługa przesyłania dalej** pobiera ślady, sprawdź `LocalForwarder.config` plik. Jeśli wykonano kroki wymagane w ramach [wymagań wstępnych](https://docs.microsoft.com/azure/application-insights/local-forwarder), będzie ono znajdować `C:\LF-WindowsServiceHost`się w temacie.
+4. Aby upewnić się, że **lokalna usługa przesyłania dalej** odbiera ślady, sprawdź plik `LocalForwarder.config`. Jeśli wykonano kroki wymagane w ramach [wymagań wstępnych](https://docs.microsoft.com/azure/application-insights/local-forwarder), będzie ono znajdować się w `C:\LF-WindowsServiceHost`.
 
-    Na poniższym obrazie pliku dziennika można zobaczyć, że przed uruchomieniem drugiego skryptu, w którym został dodany eksporter `OpenCensus input BatchesReceived` , to 0. Po rozpoczęciu pracy z zaktualizowanym skryptem `BatchesReceived` zwiększono liczbę wprowadzonych wartości:
+    Na poniższym obrazie pliku dziennika można zobaczyć, że przed uruchomieniem drugiego skryptu, w którym dodaliśmy eksport `OpenCensus input BatchesReceived` był 0. Po rozpoczęciu pracy z zaktualizowanym skryptem `BatchesReceived` większym niż liczba wprowadzonych wartości:
     
     ![Formularz nowego zasobu usługi App Insights](./media/opencensus-go/0004-batches-received.png)
 
@@ -200,7 +198,7 @@ Najpierw należy utworzyć zasób Application Insights, który spowoduje wygener
 
    ![Zrzut ekranu przedstawiający okienko przegląd z aktywnym strumieńem metryk w czerwonym polu](./media/opencensus-go/0005-overview-live-metrics-stream.png)
 
-2. Jeśli ponownie uruchomisz aplikację po raz drugi i rozpocznie się odświeżanie `http://localhost:50030`przeglądarki dla programu, zobaczysz dane śledzenia na żywo, gdy dociera do Application Insights z lokalnej usługi przesyłania dalej.
+2. Jeśli ponownie uruchomisz aplikację po raz drugi i rozpocznie się odświeżanie przeglądarki w celu `http://localhost:50030`, zobaczysz dane śledzenia na żywo w miarę docierania do Application Insights z lokalnej usługi przesyłania dalej.
 
    ![Zrzut ekranu przedstawiający strumień metryk na żywo z wyświetlonymi danymi wydajności](./media/opencensus-go/0006-stream.png)
 
@@ -222,7 +220,7 @@ Najpierw należy utworzyć zasób Application Insights, który spowoduje wygener
 
 ## <a name="opencensus-trace-for-go"></a>Śledzenie OpenCensus dla języka go
 
-Poznasz jedynie podstawowe informacje dotyczące integrowania OpenCensus dla języka go z lokalną usługą przesyłania dalej i Application Insights. [Oficjalne wskazówki dotyczące użycia](https://godoc.org/go.opencensus.io) programu OpenCensuse dotyczą bardziej zaawansowanych tematów.
+Poznasz jedynie podstawowe informacje dotyczące integrowania OpenCensus dla języka go z lokalną usługą przesyłania dalej i Application Insights. [Oficjalne wskazówki dotyczące użycia programu OpenCensuse](https://godoc.org/go.opencensus.io) dotyczą bardziej zaawansowanych tematów.
 
 ## <a name="next-steps"></a>Następne kroki
 

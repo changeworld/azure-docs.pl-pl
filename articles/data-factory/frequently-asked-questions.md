@@ -5,18 +5,16 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 764a4dd31125dad20f6ef23e3628d7710dba2b85
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387059"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880139"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące Azure Data Factory.  
@@ -178,34 +176,21 @@ Tak. Dane wyjściowe działania mogą być używane w kolejnym działaniu z kons
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Jak mogę bezpiecznie obsłużyć wartości null w danych wyjściowych działania? 
 Można użyć konstrukcji `@coalesce` w wyrażeniach, aby bezpiecznie obsługiwać wartości null. 
 
-## <a name="mapping-data-flows"></a>Mapowanie przepływów danych
-
-### <a name="which-data-factory-version-do-i-use-to-create-data-flows"></a>Która wersja Data Factory używana do tworzenia przepływów danych?
-Użyj wersji Data Factory v2, aby utworzyć przepływy danych.
-  
-### <a name="i-was-a-previous-private-preview-customer-who-used-data-flows-and-i-used-the-data-factory-v2-preview-version-for-data-flows"></a>Jestem poprzednim klientem prywatnej wersji zapoznawczej, który używał przepływów danych, a w przypadku przepływów danych została użyta wersja zapoznawcza Data Factory v2.
-Ta wersja jest obecnie przestarzała. Użyj Data Factory v2 dla przepływów danych.
-  
-### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-regard-to-data-flows"></a>Co się zmieniło od prywatnej wersji zapoznawczej do ograniczonej publicznej wersji zapoznawczej w odniesieniu do przepływów danych?
-Nie będzie już konieczne korzystanie z własnych klastrów Azure Databricks. Data Factory będzie zarządzać tworzeniem i rozbiciem klastra. Zestawy danych BLOB i zestawy danych Azure Data Lake Storage Gen2 są rozdzielone na tekst rozdzielony i zestawy danych Apache Parquet. Można nadal używać Data Lake Storage Gen2 i magazynu obiektów BLOB do przechowywania tych plików. Użyj odpowiedniej połączonej usługi dla tych aparatów pamięci masowej.
-
-### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>Czy mogę migrować własne fabryki w wersji zapoznawczej do Data Factory v2?
-
-Tak. [Postępuj zgodnie z instrukcjami](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration).
+## <a name="mapping-data-flows"></a>Przepływy danych mapowania
 
 ### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>Potrzebuję pomocy przy rozwiązywaniu problemów z moją logiką przepływu danych. Jakie informacje muszę udostępnić, aby uzyskać pomoc?
 
-Gdy firma Microsoft zapewnia pomoc lub Rozwiązywanie problemów z przepływami danych, należy podać plan kodu DSL. W tym celu wykonaj następujące kroki:
+Gdy firma Microsoft zapewnia pomoc lub Rozwiązywanie problemów z przepływami danych, podaj skrypt przepływu danych. To jest skrypt związany z kodem z grafu przepływu danych. W interfejsie użytkownika usługi ADF Otwórz przepływ danych, a następnie kliknij przycisk "skrypt" w prawym górnym rogu. Skopiuj i wklej ten skrypt lub Zapisz go w pliku tekstowym.
 
-1. W Projektancie przepływu danych wybierz pozycję **kod** w prawym górnym rogu. Spowoduje to wyświetlenie edytowalnego kodu JSON dla przepływu danych.
-2. W widoku Kod wybierz pozycję **Plan** w prawym górnym rogu. Ten przełącznik będzie przełączać się z formatu JSON do sformatowanego planu skryptu DSL tylko do odczytu.
-3. Skopiuj i wklej ten skrypt lub Zapisz go w pliku tekstowym.
-
-### <a name="how-do-i-access-data-by-using-the-other-80-dataset-types-in-data-factory"></a>Jak mogę dostęp do danych przy użyciu innych typów zestawów danych 80 w Data Factory?
+### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Jak mogę dostęp do danych przy użyciu innych typów zestawów danych 90 w Data Factory?
 
 Funkcja Mapowanie przepływu danych umożliwia obecnie Azure SQL Database, Azure SQL Data Warehouse, rozdzielane pliki tekstowe z usługi Azure Blob Storage lub Azure Data Lake Storage Gen2 oraz pliki Parquet z magazynu obiektów blob lub Data Lake Storage Gen2 natywne dla źródła i ujścia. 
 
 Działanie kopiowania służy do przemieszczania danych z dowolnego innego łącznika, a następnie wykonywania działania przepływu danych w celu przekształcenia danych po ich przygotowaniu. Na przykład potok będzie najpierw kopiowany do magazynu obiektów blob, a następnie działanie przepływu danych będzie używać zestawu danych w źródle do przekształcenia tych danych.
+
+### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Czy środowisko Integration Runtime jest dostępne dla przepływów danych?
+
+Samoobsługowe środowisko IR to konstrukcja potoków ADF, której można używać z działaniem kopiowania do uzyskiwania lub przenoszenia danych do i z Premium lub źródeł danych opartych na maszynach wirtualnych. Najpierw umieść dane za pomocą kopii, a następnie przepływ danych do przekształcenia, a następnie kolejną kopię, jeśli chcesz przenieść te przekształcone dane z powrotem do magazynu Premium.
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać instrukcje krok po kroku dotyczące tworzenia fabryki danych, zobacz następujące samouczki:

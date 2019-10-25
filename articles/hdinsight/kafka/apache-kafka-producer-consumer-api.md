@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka — Azure HDInsight '
+title: 'Samouczek: korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka — Azure HDInsight '
 description: Informacje o sposobie korzystania z interfejsów API producentów i odbiorców platformy Apache Kafka w usłudze HDInsight. W tym samouczku dowiesz się, jak używać tych interfejsów API na platformie Kafka w usłudze HDInsight z poziomu aplikacji Java.
 author: dhgoelmsft
 ms.author: dhgoel
@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/24/2019
-ms.openlocfilehash: 7a23d30e940417a6191cf14ad5d60159bd11c3da
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 10/08/2019
+ms.openlocfilehash: 3ac68732042016c747b693e97bf8da15e1843b1e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446411"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817800"
 ---
-# <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Samouczek: Korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka
+# <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Samouczek: korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka
 
 Informacje o sposobie korzystania z interfejsów API producentów i odbiorców platformy Apache Kafka w usłudze HDInsight.
 
@@ -33,11 +33,11 @@ Aby uzyskać więcej informacji o tych interfejsach API, zobacz dokumentację pl
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Platforma Apache Kafka w HDInsight 3.6. Aby dowiedzieć się, jak utworzyć platformy Kafka w klastrze HDInsight, zobacz [rozpoczynać platformy Apache Kafka w HDInsight](apache-kafka-get-started.md).
+* Apache Kafka w usłudze HDInsight 3,6. Aby dowiedzieć się, jak utworzyć Kafka w klastrze usługi HDInsight, zobacz [Rozpoczynanie pracy z Apache Kafka w usłudze HDInsight](apache-kafka-get-started.md).
 
-* [Java Developer Kit (JDK) w wersji 8](https://aka.ms/azure-jdks) lub równoważny, taki jak OpenJDK.
+* [Zestaw Java developer Kit (JDK) w wersji 8](https://aka.ms/azure-jdks) lub równoważnej, taki jak OpenJDK.
 
-* [Narzędzia Apache Maven](https://maven.apache.org/download.cgi) prawidłowo [zainstalowane](https://maven.apache.org/install.html) zgodnie z Apache.  Maven to projekt system kompilacji dla projektów Java.
+* Pakiet [Apache Maven](https://maven.apache.org/download.cgi) został prawidłowo [zainstalowany](https://maven.apache.org/install.html) zgodnie z usługą Apache.  Maven to system kompilacji projektu dla projektów języka Java.
 
 * Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -59,9 +59,9 @@ Należy zrozumieć następujące ważne kwestie dotyczące pliku `pom.xml`:
     ```xml
     <!-- Kafka client for producer/consumer operations -->
     <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka-clients</artifactId>
-      <version>${kafka.version}</version>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
     </dependency>
     ```
 
@@ -74,7 +74,7 @@ Należy zrozumieć następujące ważne kwestie dotyczące pliku `pom.xml`:
 
 ### <a name="producerjava"></a>Producer.java
 
-Producent komunikuje się z hostami brokera platformy Kafka (węzłami procesu roboczego) i wysyła dane do tematu platformy Kafka. Poniższy fragment kodu jest z [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) plik wchodzącej w skład [repozytorium GitHub](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) i przedstawiono sposób ustawiania właściwości producenta:
+Producent komunikuje się z hostami brokera platformy Kafka (węzłami procesu roboczego) i wysyła dane do tematu platformy Kafka. Poniższy fragment kodu pochodzi z pliku [Producer. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) z [repozytorium GitHub](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) i pokazuje, jak ustawić właściwości producenta:
 
 ```java
 Properties properties = new Properties();
@@ -112,13 +112,13 @@ W tym kodzie odbiorca jest skonfigurowany do odczytywania od początku tematu (w
 
 ### <a name="runjava"></a>Run.java
 
-[Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) plik zawiera interfejs wiersza polecenia, która uruchamia kod producenta lub konsumenta. Jako parametr należy podać informacje o hoście brokera platformy Kafka. Możesz opcjonalnie dołączyć wartość Identyfikatora grupy, który jest używany przez proces konsumenta. Jeśli tworzysz wiele wystąpień odbiorcy, przy użyciu tego samego Identyfikatora grupy, załaduje saldo odczytu z tematu.
+Plik [Run. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) zawiera interfejs wiersza polecenia, w którym jest uruchamiany kod producenta lub konsumenta. Jako parametr należy podać informacje o hoście brokera platformy Kafka. Opcjonalnie możesz dołączyć wartość identyfikatora grupy, która jest używana przez proces odbiorcy. Jeśli utworzysz wiele wystąpień odbiorców przy użyciu tego samego identyfikatora grupy, to spowoduje to załadowanie z tematu równoważenia obciążenia.
 
 ## <a name="build-and-deploy-the-example"></a>Kompilowanie i wdrażanie przykładu
 
-1. Pobierz i Wyodrębnij przykłady z [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
+1. Pobierz i Wyodrębnij przykłady z [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
-2. Ustaw bieżący katalog na lokalizację `hdinsight-kafka-java-get-started\Producer-Consumer` katalogu i użyj następującego polecenia:
+2. Ustaw bieżący katalog na lokalizację katalogu `hdinsight-kafka-java-get-started\Producer-Consumer` i użyj następującego polecenia:
 
     ```cmd
     mvn clean package
@@ -126,7 +126,7 @@ W tym kodzie odbiorca jest skonfigurowany do odczytywania od początku tematu (w
 
     To polecenie tworzy katalog o nazwie `target`, który zawiera plik o nazwie `kafka-producer-consumer-1.0-SNAPSHOT.jar`.
 
-3. Zamień ciąg `sshuser` na nazwę użytkownika SSH klastra i zamień ciąg `CLUSTERNAME` na nazwę klastra. Wprowadź następujące polecenie, aby skopiować `kafka-producer-consumer-1.0-SNAPSHOT.jar` plików do klastra usługi HDInsight. Po wyświetleniu monitu wprowadź hasło użytkownika SSH.
+3. Zamień ciąg `sshuser` na nazwę użytkownika SSH klastra i zamień ciąg `CLUSTERNAME` na nazwę klastra. Wprowadź następujące polecenie, aby skopiować plik `kafka-producer-consumer-1.0-SNAPSHOT.jar` do klastra usługi HDInsight. Po wyświetleniu monitu wprowadź hasło użytkownika SSH.
 
     ```cmd
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
@@ -140,47 +140,48 @@ W tym kodzie odbiorca jest skonfigurowany do odczytywania od początku tematu (w
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Zainstaluj [jq](https://stedolan.github.io/jq/), wiersza polecenia procesora w formacie JSON. Z otwartego połączenia SSH, wprowadź następujące polecenie, aby zainstalować `jq`:
+1. Zainstaluj [JQ](https://stedolan.github.io/jq/), procesor JSON w wierszu polecenia. Z otwartego połączenia SSH wprowadź następujące polecenie, aby zainstalować `jq`:
 
     ```bash
     sudo apt -y install jq
     ```
 
-3. Konfigurowanie zmiennych środowiskowych. Zastąp `PASSWORD` i `CLUSTERNAME` hasło logowania klastra i klastra odpowiednio nazwę, a następnie wpisz polecenie:
+1. Skonfiguruj zmienną hasła. Zastąp `PASSWORD` hasłem logowania klastra, a następnie wprowadź polecenie:
 
     ```bash
     export password='PASSWORD'
-    export clusterNameA='CLUSTERNAME'
     ```
 
-4. Wyodrębnij nazwy klastra poprawnie z uwzględnieniem wielkości liter. Rzeczywiste wielkość liter w wyrazie nazwy klastra mogą być inne, niż jest to oczekiwane, w zależności od sposobu utworzenia klastra. To polecenie uzyskać rzeczywiste wielkość liter w wyrazie, zapisz go w zmiennej i następnie poprawnie cased nazwę wyświetlaną i nazwę, którą podano wcześniej. Wprowadź następujące polecenie:
+1. Wyodrębnij poprawnie wielkość liter w nazwach klastra. Rzeczywista wielkość liter nazwy klastra może być inna niż oczekiwano, w zależności od sposobu utworzenia klastra. To polecenie spowoduje pobranie rzeczywistej wielkości liter, a następnie zapisanie jej w zmiennej. Wprowadź następujące polecenie:
 
     ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" \
-  	| jq -r '.items[].Clusters.cluster_name')
-    echo $clusterName, $clusterNameA
+    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
+    > [!Note]  
+    > Jeśli ten proces jest wykonywany spoza klastra, istnieje inna procedura przechowywania nazwy klastra. W mniejszej sytuacji należy uzyskać nazwę klastra z Azure Portal. Następnie zastąp nazwę klastra `<clustername>` w następującym poleceniu i wykonaj go: `export clusterName='<clustername>'`.  
 
-5. Aby uzyskać brokera platformy Kafka, hostów i hosty Apache Zookeeper, użyj następującego polecenia:
+1. Aby uzyskać hosty brokera Kafka, użyj następującego polecenia:
 
     ```bash
-    export KAFKABROKERS=`curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER \
-  	| jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 
-6. Utworzenie tematu platformy Kafka `myTest`, wprowadzając następujące polecenie:
+    > [!Note]  
+    > To polecenie wymaga dostępu Ambari. Jeśli klaster znajduje się za sieciowej grupy zabezpieczeń, Uruchom to polecenie z komputera, który może uzyskać dostęp do Ambari.
+
+1. Utwórz temat Kafka `myTest`, wprowadzając następujące polecenie:
 
     ```bash
     java -jar kafka-producer-consumer.jar create myTest $KAFKABROKERS
     ```
 
-7. Aby uruchomić producenta i zapisać dane w temacie, użyj następującego polecenia:
+1. Aby uruchomić producenta i zapisać dane w temacie, użyj następującego polecenia:
 
     ```bash
     java -jar kafka-producer-consumer.jar producer myTest $KAFKABROKERS
     ```
 
-8. Po zakończeniu procesu producenta odczytaj rekordy z tematu za pomocą następującego polecenia:
+1. Po zakończeniu procesu producenta odczytaj rekordy z tematu za pomocą następującego polecenia:
 
     ```bash
     java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS
@@ -188,7 +189,7 @@ W tym kodzie odbiorca jest skonfigurowany do odczytywania od początku tematu (w
 
     Zostanie wyświetlona liczba odczytanych rekordów wraz z liczbą rekordów.
 
-9. Użyj klawiszy __Ctrl+C__, aby zakończyć działanie odbiorcy.
+1. Użyj klawiszy __Ctrl+C__, aby zakończyć działanie odbiorcy.
 
 ### <a name="multiple-consumers"></a>Wielu odbiorców
 
@@ -210,14 +211,14 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 \; attach
 ```
 
-To polecenie używa polecenia `tmux`, aby podzielić terminal na dwie kolumny. W każdej kolumnie jest uruchamiany odbiorca z tą samą wartością identyfikatora grupy. Kiedy odbiorcy zakończą odczytywanie, można zauważyć, że każdy z nich odczytał tylko część rekordów. Użyj __klawisze Ctrl + C__ dwa razy, aby zakończyć działanie `tmux`.
+To polecenie używa polecenia `tmux`, aby podzielić terminal na dwie kolumny. W każdej kolumnie jest uruchamiany odbiorca z tą samą wartością identyfikatora grupy. Kiedy odbiorcy zakończą odczytywanie, można zauważyć, że każdy z nich odczytał tylko część rekordów. __Naciśnij klawisz Ctrl + C__ dwa razy, aby zakończyć `tmux`.
 
 Użycie przez klientów w tej samej grupie jest obsługiwane przez partycje tematu. W tym przykładowym kodzie utworzony wcześniej temat `test` ma osiem partycji. Jeśli zostanie uruchomionych ośmiu odbiorców, każdy z nich będzie odczytywał rekordy z jednej partycji tematu.
 
 > [!IMPORTANT]  
 > Grupa odbiorców nie może zawierać więcej wystąpień odbiorców niż partycji. W tym przykładzie jedna grupa odbiorców może zawierać maksymalnie ośmiu odbiorców, ponieważ tyle partycji znajduje się w temacie. Może też istnieć wiele grup odbiorców — każda z nich może zawierać maksymalnie ośmiu odbiorców.
 
-Rekordy na platformie Kafka są przechowywane w kolejności, w której zostały odebrane na partycji. Aby dostarczać rekordy *na partycji* w określonej kolejności, utwórz grupę odbiorców, w której liczba wystąpień odbiorców jest zgodna z liczbą partycji. Aby dostarczać rekordy *w temacie* w określonej kolejności, utwórz grupę odbiorców z jednym wystąpieniem odbiorcy.
+Rekordy przechowywane w Kafka są przechowywane w kolejności, w jakiej są odbierane w ramach partycji. Aby dostarczać rekordy *na partycji* w określonej kolejności, utwórz grupę odbiorców, w której liczba wystąpień odbiorców jest zgodna z liczbą partycji. Aby dostarczać rekordy *w temacie* w określonej kolejności, utwórz grupę odbiorców z jednym wystąpieniem odbiorcy.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -229,7 +230,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 2. Znajdź grupę zasobów do usunięcia, a następnie kliknij prawym przyciskiem myszy przycisk __Więcej (...)__ po prawej stronie listy.
 3. Wybierz pozycję __Usuń grupę zasobów__ i potwierdź.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym dokumencie zawarto informacje o sposobie korzystania z interfejsu API producenta i odbiorcy platformy Apache Kafka w usłudze HDInsight. Dowiedz się więcej o pracy z platformą Kafka, korzystając z następujących zasobów:
 

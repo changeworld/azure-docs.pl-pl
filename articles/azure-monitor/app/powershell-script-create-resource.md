@@ -1,43 +1,38 @@
 ---
-title: Skrypt programu PowerShell, aby utworzyć zasób usługi Application Insights | Dokumentacja firmy Microsoft
-description: Automatyczne tworzenie zasobów usługi Application Insights.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: f0082c9b-43ad-4576-a417-4ea8e0daf3d9
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Skrypt programu PowerShell służący do tworzenia zasobu Application Insights | Microsoft Docs
+description: Automatyzowanie tworzenia zasobów Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/19/2016
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 8a7b19dd6e5bc08c0c7e278b514ecaa9dc13a00e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/19/2016
+ms.openlocfilehash: 11245d0f9d6e6b86a5d0249df65b33f851bee9d7
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60254499"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820689"
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>Skrypt programu PowerShell do tworzenia zasobu usługi Application Insights
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Gdy zachodzi potrzeba monitorowania nowej aplikacji — lub nową wersję aplikacji — przy użyciu [usługi Azure Application Insights](https://azure.microsoft.com/services/application-insights/), konfigurowanie nowego zasobu w systemie Microsoft Azure. Ten zasób jest, gdzie analizowane i wyświetlane dane telemetryczne z Twojej aplikacji. 
+Jeśli chcesz monitorować nową aplikację lub nową wersję aplikacji — za pomocą [usługi Azure Application Insights](https://azure.microsoft.com/services/application-insights/)skonfigurujesz nowy zasób w Microsoft Azure. Ten zasób to miejsce, w którym dane telemetryczne z aplikacji są analizowane i wyświetlane. 
 
-Aby zautomatyzować tworzenie nowego zasobu, należy za pomocą programu PowerShell.
+Możesz zautomatyzować tworzenie nowego zasobu przy użyciu programu PowerShell.
 
-Na przykład jeśli tworzysz aplikacji urządzenia przenośnego jest prawdopodobieństwo, że w dowolnym momencie i będzie kilka wersji opublikowanej aplikacji używanych przez klientów. Nie chcesz uzyskać wyniki dane telemetryczne z różnych wersji zamienione. Dlatego możesz uzyskać proces kompilacji, aby utworzyć nowy zasób dla każdej kompilacji.
+Na przykład w przypadku tworzenia aplikacji urządzenia przenośnego jest to możliwe, ponieważ w dowolnym momencie będzie można korzystać z kilku opublikowanych wersji aplikacji. Nie chcesz uzyskać danych telemetrycznych z różnych wersji. Dlatego proces kompilacji umożliwia utworzenie nowego zasobu dla każdej kompilacji.
 
 > [!NOTE]
-> Jeśli chcesz utworzyć zestaw zasobów, wszystko w tym samym czasie, należy wziąć pod uwagę [tworzenia zasobów przy użyciu szablonu platformy Azure](powershell.md).
+> Jeśli chcesz utworzyć zestaw zasobów wszystko w tym samym czasie, rozważ [utworzenie zasobów przy użyciu szablonu platformy Azure](powershell.md).
 > 
 > 
 
-## <a name="script-to-create-an-application-insights-resource"></a>Skrypt, aby utworzyć zasób usługi Application Insights
-Zobacz specyfikacje odpowiednie polecenia cmdlet:
+## <a name="script-to-create-an-application-insights-resource"></a>Skrypt służący do tworzenia zasobów Application Insights
+Zobacz odpowiednie specyfikacje poleceń cmdlet:
 
-* [Nowe AzResource](https://msdn.microsoft.com/library/mt652510.aspx)
+* [New-AzResource](https://msdn.microsoft.com/library/mt652510.aspx)
 * [New-AzRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
 
 *Skrypt programu PowerShell*  
@@ -99,19 +94,19 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
 
 ```
 
-## <a name="what-to-do-with-the-ikey"></a>Co należy zrobić klucz Instrumentacji
-Każdy zasób jest identyfikowany za pomocą klucza Instrumentacji (klucz Instrumentacji). Klucz instrumentacji, są to dane wyjściowe skryptu tworzenia zasobu. Skrypt kompilacji powinien zapewnić, że klucz Instrumentacji do zestawu SDK usługi Application Insights osadzone w aplikacji.
+## <a name="what-to-do-with-the-ikey"></a>Co zrobić z iKey
+Każdy zasób jest identyfikowany przez swój klucz Instrumentacji (iKey). IKey jest wyjściem skryptu tworzenia zasobów. Skrypt kompilacji powinien udostępnić Application Insights iKey zestaw SDK osadzony w aplikacji.
 
-Istnieją dwa sposoby, aby udostępnić klucz Instrumentacji do zestawu SDK:
+Istnieją dwa sposoby udostępnienia iKey dla zestawu SDK:
 
-* W [plik ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md): 
+* W [pliku ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md): 
   * `<instrumentationkey>`*ikey*`</instrumentationkey>`
-* Lub [kod inicjujący](../../azure-monitor/app/api-custom-events-metrics.md): 
+* Lub w [kodzie inicjalizacji](../../azure-monitor/app/api-custom-events-metrics.md): 
   * `Microsoft.ApplicationInsights.Extensibility.
     TelemetryConfiguration.Active.InstrumentationKey = "`*iKey*`";`
 
 ## <a name="see-also"></a>Zobacz także
-* [Tworzenie usługi Application Insights i zasoby testu sieci web za pomocą szablonów](powershell.md)
+* [Tworzenie zasobów testowania Application Insights i sieci Web z szablonów](powershell.md)
 * [Konfigurowanie monitorowania diagnostyki platformy Azure przy użyciu programu PowerShell](powershell-azure-diagnostics.md) 
 * [Ustawianie alertów przy użyciu programu PowerShell](powershell-alerts.md)
 

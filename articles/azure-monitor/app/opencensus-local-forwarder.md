@@ -1,23 +1,19 @@
 ---
 title: Usługa Azure Application Insights OpenCensus — moduł przekazujący śledzenie rozproszone (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Przekazuj OpenCensus rozproszone i rozpięte z języków, takich jak Python, i przejdź do platformy Azure Application Insights
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.author: mbullwin
-ms.openlocfilehash: aa64755b636005f4ed8ea5c074ffaada51fb8dd9
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: b0d0bc4d711b05dd2206b7437f1f4c7b3444a0c6
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348155"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819196"
 ---
 # <a name="local-forwarder-preview"></a>Lokalna usługa przesyłania dalej (wersja zapoznawcza)
 
@@ -34,7 +30,7 @@ Lokalna usługa przesyłania dalej to [projekt Open Source w usłudze GitHub](ht
 Najprostszym sposobem uruchamiania lokalnego usługi przesyłania dalej w systemie Windows jest zainstalowanie jej jako usługi systemu Windows. Wydanie zawiera plik wykonywalny usługi systemu Windows (*WindowsServiceHost/Microsoft. LocalForwarder. WindowsServiceHost. exe*), który może być łatwo zarejestrowany w systemie operacyjnym.
 
 > [!NOTE]
-> Lokalna usługa przesyłania dalej wymaga co najmniej .NET Framework 4,7. Jeśli nie masz .NET Framework 4,7, usługa zostanie zainstalowana, ale nie zostanie uruchomiona. Najnowsza wersja programu .NET Framework dostęp do **[odwiedź stronę pobierania programu .NET Framework](
+> Lokalna usługa przesyłania dalej wymaga co najmniej .NET Framework 4,7. Jeśli nie masz .NET Framework 4,7, usługa zostanie zainstalowana, ale nie zostanie uruchomiona. Aby uzyskać dostęp do najnowszej wersji .NET Framework, **[odwiedź stronę pobierania .NET Framework](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. Pobierz LF. Plik WindowsServiceHost. zip z [lokalnej strony wersji usługi przesyłania dalej](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) w witrynie GitHub.
@@ -53,7 +49,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
     `[SC] CreateService SUCCESS`
     
-    Aby przeanalizować nową usługę za pomocą typu graficznego interfejsu użytkownika usług``services.msc``
+    Aby przeanalizować nową usługę za pomocą typu interfejsu GUI usług ``services.msc``
         
      ![Zrzut ekranu usługi lokalnego przesyłania dalej](./media/opencensus-local-forwarder/002-services.png)
 
@@ -67,11 +63,11 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     sc failure "Local Forwarder" reset= 432000 actions= restart/1000/restart/1000/restart/1000
     ```
 
-5. W tej samej lokalizacji ``Microsoft.LocalForwarder.WindowsServiceHost.exe`` , w której znajduje się plik, w tym ``C:\LF-WindowsServiceHost`` przykładzie istnieje plik o nazwie. ``LocalForwarder.config`` Jest to plik oparty na formacie XML, który umożliwia dostosowanie konfiguracji localforwader i określenie klucza Instrumentacji zasobu Application Insights, do którego mają być przekazywane dane śledzenia rozproszonego. 
+5. W tej samej lokalizacji, w której znajduje się plik ``Microsoft.LocalForwarder.WindowsServiceHost.exe``, w tym przykładzie ``C:\LF-WindowsServiceHost`` jest plik o nazwie ``LocalForwarder.config``. Jest to plik oparty na formacie XML, który umożliwia dostosowanie konfiguracji localforwader i określenie klucza Instrumentacji zasobu Application Insights, do którego mają być przekazywane dane śledzenia rozproszonego. 
 
-    Po przeprowadzeniu edycji ``LocalForwarder.config`` pliku w celu dodania klucza Instrumentacji należy ponownie uruchomić **usługę przesyłania dalej** , aby umożliwić wprowadzenie zmian.
+    Po przeprowadzeniu edycji pliku ``LocalForwarder.config`` w celu dodania klucza Instrumentacji należy ponownie uruchomić **usługę przesyłania dalej** , aby umożliwić wprowadzenie zmian.
     
-6. Aby upewnić się, że żądane ustawienia są na miejscu i że lokalny moduł przesyłania dalej nasłuchuje danych śledzenia zgodnie z ``LocalForwarder.log`` oczekiwaniami, sprawdź plik. Powinny być widoczne wyniki podobne do poniższej ilustracji w dolnej części pliku:
+6. Aby upewnić się, że żądane ustawienia są na miejscu i że lokalny moduł przesyłania dalej nasłuchuje danych śledzenia zgodnie z oczekiwaniami, sprawdź plik ``LocalForwarder.log``. Powinny być widoczne wyniki podobne do poniższej ilustracji w dolnej części pliku:
 
     ![Zrzut ekranu przedstawiający plik LocalForwarder. log](./media/opencensus-local-forwarder/003-log-file.png)
 
@@ -82,7 +78,7 @@ W przypadku niektórych przypadków użycia może być korzystne uruchomienie lo
   ```batchfile
   E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
   ```
-* własny zestaw plików binarnych platformy .NET Core dla platform x86 i x64. Nie wymaga to uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
+* własny zestaw plików binarnych platformy .NET Core dla platform x86 i x64. Nie wymaga to uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/win-x86/Publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/Publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
   ```batchfile
   E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
   E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
@@ -97,7 +93,7 @@ Podobnie jak w przypadku systemu Windows, wydanie zawiera następujące wersje w
 dotnet Microsoft.LocalForwarder.ConsoleHost.dll
 ```
 
-* własny zestaw plików binarnych platformy .NET Core dla systemu Linux-64. To nie wymaga uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
+* własny zestaw plików binarnych platformy .NET Core dla systemu Linux-64. To nie wymaga uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/Linux-x64/Publish/Microsoft.LocalForwarder.ConsoleHost*.
 
 ```batchfile
 user@machine:~/ConsoleHost/linux-x64/publish$ sudo chmod +x Microsoft.LocalForwarder.ConsoleHost
@@ -181,6 +177,6 @@ host.Stop();
 
 Jeśli nie podano pliku konfiguracji (co jest ustawieniem domyślnym), lokalna usługa przesyłania dalej będzie używać konfiguracji domyślnej, którą można znaleźć [tutaj](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Otwórz spis](https://opencensus.io/)

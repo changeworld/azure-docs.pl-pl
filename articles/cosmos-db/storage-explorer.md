@@ -1,31 +1,31 @@
 ---
-title: Zarządzanie zasobami usługi Azure Cosmos DB przy użyciu Eksploratora usługi Azure Storage
-description: Dowiedz się, jak nawiązać połączenie z usługi Azure Cosmos DB i zarządzania jej zasobami za pomocą Eksploratora usługi Azure Storage.
+title: Zarządzanie zasobami Azure Cosmos DB przy użyciu Eksplorator usługi Azure Storage
+description: Dowiedz się, jak nawiązać połączenie z usługą Azure Cosmos DB i zarządzać swoimi zasobami przy użyciu Eksplorator usługi Azure Storage.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: 6c3c8aee51a4484013126a5959d3d275a88aa1cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242646"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882351"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Praca z danymi za pomocą Eksploratora usługi Azure Storage
 
-Korzystanie z usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage pozwala użytkownikom zarządzać jednostkami usługi Azure Cosmos DB, wykonywać operacje na danych oraz aktualizować procedury składowane i wyzwalacze, a także inne jednostki platformy Azure, takie jak obiekty blob i kolejki usługi Storage. Za pomocą jednego narzędzia można teraz centralnie zarządzać różnymi jednostkami platformy Azure. W tej chwili Eksploratora usługi Azure Storage obsługuje konta usługi Cosmos skonfigurowane dla programu SQL, MongoDB, wykresów i interfejsy API tabel.
+Korzystanie z usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage pozwala użytkownikom zarządzać jednostkami usługi Azure Cosmos DB, wykonywać operacje na danych oraz aktualizować procedury składowane i wyzwalacze, a także inne jednostki platformy Azure, takie jak obiekty blob i kolejki usługi Storage. Za pomocą jednego narzędzia można teraz centralnie zarządzać różnymi jednostkami platformy Azure. W tej chwili Eksplorator usługi Azure Storage obsługuje konta Cosmos skonfigurowane dla interfejsów API SQL, MongoDB, Graph i Table.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konta usługi Cosmos przy użyciu interfejsu API SQL czy Azure Cosmos DB interfejsu API dla bazy danych MongoDB. Jeśli nie masz konta, możesz go utworzyć w witrynie Azure portal zgodnie z opisem w [usługi Azure Cosmos DB: Tworzenie aplikacji internetowej interfejsu API SQL za pomocą platformy .NET i witryny Azure portal](create-sql-api-dotnet.md).
+Konto Cosmos z interfejsem API SQL lub interfejsem API Azure Cosmos DB dla MongoDB. Jeśli nie masz konta, możesz je utworzyć w witrynie Azure Portal, wykonując instrukcje podane w temacie [Azure Cosmos DB: Tworzenie aplikacji internetowej interfejsu API SQL za pomocą platformy .NET i witryny Azure Portal](create-sql-api-dotnet.md).
 
 ## <a name="installation"></a>Instalacja
 
-Instalowanie Eksploratora usługi Azure Storage najnowszą tutaj: [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/), teraz obsługujemy Windows, Linux i MAC w wersji.
+Zainstaluj najnowszą wersję Eksploratora usługi Azure Storage. Program [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) jest dostępny w wersji dla systemu Windows i Linux oraz dla komputerów MAC.
 
 ## <a name="connect-to-an-azure-subscription"></a>Łączenie się z subskrypcją platformy Azure
 
@@ -39,11 +39,11 @@ Instalowanie Eksploratora usługi Azure Storage najnowszą tutaj: [Eksplorator u
 
 2. W oknie dialogowym **Logowanie do platformy Azure** wybierz pozycję **Zaloguj**, a następnie wprowadź poświadczenia platformy Azure.
 
-    ![Logowanie](./media/storage-explorer/sign-in.png)
+    ![Zaloguj](./media/storage-explorer/sign-in.png)
 
 3. Wybierz subskrypcję z listy, a następnie kliknij przycisk **Zastosuj**.
 
-    ![Zastosuj](./media/storage-explorer/apply-subscription.png)
+    ![Składanie wniosku o przyjęcie do programu](./media/storage-explorer/apply-subscription.png)
 
     Zawartość okienka Eksploratora zostanie zaktualizowana i pojawią się konta w wybranej subskrypcji.
 
@@ -59,7 +59,7 @@ Alternatywna metoda połączenia się z usługą Azure Cosmos DB polega na użyc
 
     ![Nawiązywanie połączenia z usługą Cosmos DB za pomocą parametrów połączenia](./media/storage-explorer/connect-to-db-by-connection-string.png)
 
-2. Aktualnie obsługiwana jest baza danych SQL i interfejs API tabel. Wybierz interfejs API, wklej **parametry połączenia**, wprowadź wartość **Etykieta konta**, kliknij przycisk **Dalej**, aby sprawdzić podsumowanie, a następnie kliknij pozycję **Połącz**, aby nawiązać połączenie z kontem usługi Azure Cosmos DB. Aby uzyskać informacje dotyczące pobierania parametrów połączenia, zobacz [Get the connection string (Pobieranie parametrów połączenia)](https://docs.microsoft.com/azure/cosmos-db/manage-account).
+2. Aktualnie obsługiwana jest baza danych SQL i interfejs API tabel. Wybierz interfejs API, wklej **parametry połączenia**, wprowadź wartość **Etykieta konta**, kliknij przycisk **Dalej**, aby sprawdzić podsumowanie, a następnie kliknij pozycję **Połącz**, aby nawiązać połączenie z kontem usługi Azure Cosmos DB. Aby uzyskać informacje na temat pobierania podstawowych parametrów połączenia, zobacz [pobieranie parametrów połączenia](manage-with-powershell.md#list-keys).
 
     ![Parametry połączenia](./media/storage-explorer/connection-string.png)
 
@@ -73,7 +73,7 @@ Wykonaj następujące kroki, aby nawiązać połączenie z usługą Azure Cosmos
 
     ![Nawiązywanie połączenia z usługą Cosmos DB za pomocą emulatora](./media/storage-explorer/emulator-entry.png)
 
-3. Aktualnie obsługiwany jest tylko interfejs API SQL. Wklej **parametry połączenia**, wprowadź wartość **Etykieta konta**, kliknij przycisk **Dalej**, aby sprawdzić podsumowanie, a następnie kliknij pozycję **Połącz**, aby nawiązać połączenie z kontem usługi Azure Cosmos DB. Aby uzyskać informacje dotyczące pobierania parametrów połączenia, zobacz [Get the connection string (Pobieranie parametrów połączenia)](https://docs.microsoft.com/azure/cosmos-db/manage-account).
+3. Aktualnie obsługiwany jest tylko interfejs API SQL. Wklej **parametry połączenia**, wprowadź wartość **Etykieta konta**, kliknij przycisk **Dalej**, aby sprawdzić podsumowanie, a następnie kliknij pozycję **Połącz**, aby nawiązać połączenie z kontem usługi Azure Cosmos DB. Aby uzyskać informacje na temat pobierania podstawowych parametrów połączenia, zobacz [pobieranie parametrów połączenia](manage-with-powershell.md#list-keys).
 
     ![Nawiązywanie połączenia z usługą Cosmos DB za pomocą okna dialogowego emulatora](./media/storage-explorer/emulator-dialog.png)
 
@@ -116,7 +116,7 @@ Po kliknięciu prawym przyciskiem myszy subskrypcji w okienku Eksploratora pojaw
     ![Usuwanie bazy danych 2](./media/storage-explorer/delete-database2.png) 
 
 #### <a name="create-a-collection"></a>Tworzenie kolekcji
-1. Kliknij prawym przyciskiem myszy bazę danych, wybierz polecenie **Utwórz kolekcję**, a następnie podaj odpowiednie informacje w polach, takich jak **Identyfikator kolekcji**, **Pojemność magazynu** itd. Kliknij przycisk **OK**, aby zakończyć. 
+1. Kliknij prawym przyciskiem myszy bazę danych, wybierz polecenie **Utwórz kolekcję**, a następnie podaj następujące informacje, takie jak **identyfikator kolekcji**, **pojemność magazynu**itp. Kliknij przycisk **OK** , aby zakończyć. 
 
     ![Tworzenie kolekcji 1](./media/storage-explorer/create-collection.png)
 
@@ -140,7 +140,7 @@ Po kliknięciu prawym przyciskiem myszy subskrypcji w okienku Eksploratora pojaw
 #### <a name="create-and-modify-documents"></a>Tworzenie i modyfikowanie dokumentów
 - Aby utworzyć nowy dokument, otwórz węzeł **Dokumenty** w lewym oknie, kliknij pozycję **Nowy dokument**, zmodyfikuj zawartość dokumentu w prawym okienku, a następnie kliknij przycisk **Zapisz**. Możesz również zaktualizować istniejący dokument, a następnie kliknąć przycisk **Zapisz**. Aby odrzucić zmiany, kliknij przycisk **Odrzuć**.
 
-    ![Dokument](./media/storage-explorer/document.png)
+    ![Dokumentowa](./media/storage-explorer/document.png)
 
 #### <a name="delete-a-document"></a>Usuwanie dokumentu
 - Aby usunąć wybrany dokument, kliknij przycisk **Usuń**.
@@ -158,7 +158,7 @@ Po kliknięciu prawym przyciskiem myszy subskrypcji w okienku Eksploratora pojaw
 1. Aby utworzyć nowy wierzchołek, otwórz program **Graph** w oknie po lewej stronie, kliknij pozycję **Nowy wierzchołek**, dokonaj edycji zawartości, a następnie kliknij przycisk **OK**.    
 2. Aby zmodyfikować istniejący wierzchołek, kliknij ikonę pióra w okienku po prawej stronie.   
 
-    ![Graph](./media/storage-explorer/vertex.png)
+    ![Graf](./media/storage-explorer/vertex.png)
 
 #### <a name="delete-a-graph"></a>Usuwanie wykresu
 - Aby usunąć wierzchołek, kliknij ikonę kosza obok nazwy wierzchołka.
@@ -213,7 +213,7 @@ Przed kontynuacją spróbuj ponownie uruchomić aplikację i zobacz, czy problem
 
 Istnieje kilka przyczyn wyświetlenia tego błędu, przy czym dwoma najbardziej typowymi są:
 
-+ Znajdujesz się za *przezroczystym serwerem proxy*, co oznacza, że ktoś (na przykład dział IT) przechwytuje ruch HTTPS, odszyfrowuje go i następnie szyfruje za pomocą certyfikatu z podpisem własnym.
++ Jesteś za *przezroczystym serwerem proxy*, co oznacza, że ktoś (na przykład dział IT) przechwytuje ruch https, odszyfrowuje go, a następnie szyfruje przy użyciu certyfikatu z podpisem własnym.
 
 + Używasz oprogramowania, takiego jak oprogramowanie antywirusowe, które wprowadza certyfikaty SSL z podpisem własnym do wiadomości protokołu HTTPS, które otrzymujesz.
 
@@ -221,9 +221,9 @@ Gdy Eksplorator usługi Storage napotka jeden z tych „certyfikatów z podpisem
 
 1. Zainstaluj protokół Open SSL
      - [System Windows](https://slproweb.com/products/Win32OpenSSL.html) (dowolna z wersji uproszczonych jest OK)
-     - Systemów Mac i Linux: Powinien być dołączony do systemu operacyjnego
+     - Komputery Mac i system Linux: powinien być dołączony do systemu operacyjnego
 2. Uruchom protokół Open SSL
-    - W systemie Windows: Przejdź do katalogu instalacyjnego, następnie **/bin/** , a następnie kliknij dwukrotnie **openssl.exe**.
+    - System Windows: przejdź do katalogu instalacyjnego, a następnie **/bin/** , po czym kliknij dwukrotnie plik **openssl.exe**.
     - Komputery Mac i system Linux: wykonaj polecenie **openssl** z terminala
 3. Wykonaj polecenie `s_client -showcerts -connect microsoft.com:443`
 4. Wyszukaj certyfikaty z podpisem własnym. Jeśli nie wiesz, które z nich są z podpisem własnym, wówczas poszukaj pozycji, gdzie podmiot („s:”) i wystawca („i:”) są identyczni.
@@ -240,7 +240,7 @@ Jeśli nie możesz pobrać subskrypcji po pomyślnym zalogowaniu:
 - Upewnij się, że podczas logowania używasz poprawnego środowiska ([Azure](https://portal.azure.com/), [Azure — Chiny](https://portal.azure.cn/), [Azure — Niemcy](https://portal.microsoftazure.de/), [Azure — instytucje rządowe USA](https://portal.azure.us/) lub niestandardowe środowisko/usługa Azure Stack)
 - Jeśli znajdujesz się za serwerem proxy, upewnij się, że masz poprawnie skonfigurowany serwer proxy Eksploratora usługi Storage
 - Spróbuj usunąć i ponownie dodać konto
-- Spróbuj usunąć następujące pliki z katalogu macierzystego (takich jak: C:\Users\ContosoUser), a następnie ponownie dodać konto:
+- Spróbuj usunąć następujące pliki z katalogu macierzystego (takiego jak: C:\Users\ContosoUser), a następnie ponownie dodać konto:
   - .adalcache
   - .devaccounts
   - .extaccounts
@@ -266,7 +266,7 @@ Jeśli nie możesz usunąć konta lub jeśli link do ponownego uwierzytelniania 
   - .extaccounts
 - Jeśli chcesz usunąć zasoby usługi Storage dołączone do systemu SAS, usuń:
   - Folder %AppData%/StorageExplorer dla systemu Windows
-  - /Users/ < twoja_nazwa >/Library/Application SUpport/StorageExplorer dla komputerów Mac
+  - /Users/< your_name >/Library/Application Support SUpport/StorageExplorer for Mac
   - ~/.config/StorageExplorer dla systemu Linux
   - Po usunięciu tych plików **trzeba będzie ponownie wprowadzić wszystkie poświadczenia**
 
@@ -302,8 +302,8 @@ Spróbuj wykonać poniższe sugestie:
 
 Jeśli te rozwiązania nie działają w Twoim przypadku, wyślij wiadomość e-mail do zespołu narzędzi dla deweloperów usługi Cosmos Azure DB ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)) zawierającą szczegółowe informacje o problemach w celu ich rozwiązania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Obejrzyj poniższy klip wideo, aby zobaczyć, jak używać usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage: [Użyj usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
+* Obejrzyj ten film wideo, aby dowiedzieć się, jak używać usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage: [Use Azure Cosmos DB in Azure Storage Explorer (Używanie usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage)](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * Aby dowiedzieć się więcej o Eksploratorze usługi Storage i sposobach łączenia się z dodatkowymi usługami, zobacz [Wprowadzenie do Eksploratora usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 

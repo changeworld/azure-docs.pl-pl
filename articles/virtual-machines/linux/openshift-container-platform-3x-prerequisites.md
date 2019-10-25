@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 591cc7a4b84f75536446abbcbe32a69a122ddf5a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0b7eaaf68c1b0907b6d687b823ef71a7c9bd0102
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392672"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882414"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Wspólne wymagania wstępne dotyczące wdrażania OpenShift Container platform 3,11 na platformie Azure
 
@@ -113,14 +113,16 @@ az group create -l eastus -n openshiftrg
 Utwórz nazwę główną usługi:
 
 ```azurecli
-scope=`az group show --name openshiftrg --query id`
-az ad sp create-for-rbac --name openshiftsp \
-      --role Contributor --password {Strong Password} \
-      --scopes $scope \
+az group show --name openshiftrg --query id
 ```
-Jeśli używasz systemu Windows, wykonaj ```az group show --name openshiftrg --query id``` i Użyj danych wyjściowych zamiast $scope.
+Zapisz dane wyjściowe polecenia i Użyj zamiast $scope w następnym poleceniu
 
-Zanotuj Właściwość appId zwracaną z polecenia:
+```azurecli
+az ad sp create-for-rbac --name openshiftsp \
+      --role Contributor --scopes $scope \
+```
+
+Zanotuj Właściwość appId i hasło zwrócone przez polecenie:
 ```json
 {
   "appId": "11111111-abcd-1234-efgh-111111111111",
@@ -131,7 +133,7 @@ Zanotuj Właściwość appId zwracaną z polecenia:
 }
 ```
  > [!WARNING] 
- > Należy pamiętać o utworzeniu bezpiecznego hasła. Postępuj zgodnie ze wskazówkami zawartymi w [ograniczeniach i regułach dotyczących hasła usługi Azure AD](/azure/active-directory/active-directory-passwords-policy).
+ > Pamiętaj o zapisaniu bezpiecznego hasła, ponieważ nie będzie można ponownie pobrać tego hasła.
 
 Aby uzyskać więcej informacji o jednostkach usługi, zobacz [Tworzenie jednostki usługi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671311"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882587"
 ---
 # <a name="azure-storage-account-overview"></a>Omówienie konta usługi Azure Storage
 
@@ -29,7 +29,7 @@ Aby dowiedzieć się, jak utworzyć konto usługi Azure Storage, zobacz [Tworzen
 
 Konta magazynu ogólnego przeznaczenia w wersji 2 obsługują najnowsze funkcje usługi Azure Storage i obejmują wszystkie funkcje kont w ramach ogólnego przeznaczenia w wersji 1 i usługi BLOB Storage. Konta ogólnego przeznaczenia w wersji 2 zapewniają najniższy poziom wydajności dla usługi Azure Storage, a także konkurencyjne w branży ceny transakcji. Konta magazynu ogólnego przeznaczenia w wersji 2 obsługują te usługi Azure Storage:
 
-- Obiekty blob (wszystkie typy: Blok, dołączanie, strona)
+- Obiekty blob (wszystkie typy: Block, append, Page)
 - Pliki
 - Dyski
 - Kolejki
@@ -44,7 +44,7 @@ Konta magazynu ogólnego przeznaczenia w wersji 2 oferują wiele warstw dostępu
 
 ### <a name="general-purpose-v1-accounts"></a>Konta ogólnego przeznaczenia, wersja 1
 
-Konta ogólnego przeznaczenia w wersji 1 zapewniają dostęp do wszystkich usług Azure Storage, ale mogą nie mieć najnowszych funkcji lub najniższych cen za gigabajt. Konta magazynu ogólnego przeznaczenia w wersji 1 obsługują te usługi Azure Storage:
+Konta magazynu ogólnego przeznaczenia w wersji 1 zapewniają dostęp do wszystkich usług Azure Storage, ale mogą nie mieć najnowszych funkcji lub najniższych cen za gigabajt. Konta magazynu ogólnego przeznaczenia w wersji 1 obsługują te usługi Azure Storage:
 
 - Obiekty blob (wszystkie typy)
 - Pliki
@@ -60,23 +60,25 @@ Chociaż w większości przypadków zaleca się używanie kont ogólnego przezna
 
 * Używasz wersji [interfejsu API REST usług Storage](https://msdn.microsoft.com/library/azure/dd894041.aspx) wcześniejsza niż 2014-02-14 lub biblioteka klienta w wersji wcześniejszej niż 4.x i nie można uaktualnić aplikacji.
 
-### <a name="block-blob-storage-accounts"></a>Blokuj konta magazynu obiektów BLOB
+### <a name="blockblobstorage-accounts"></a>Konta BlockBlobStorage
 
-Konto usługi Block BLOB Storage to wyspecjalizowane konto magazynu do przechowywania danych obiektów bez struktury jako blokowych obiektów BLOB. Ten typ konta magazynu obsługuje blokowe obiekty blob i dołączanie obiektów blob, ale nie stronicowych obiektów blob, tabel lub kolejek.
+Konto BlockBlobStorage to wyspecjalizowane konto magazynu używane do przechowywania danych obiektów bez struktury jako blokowych obiektów blob i tworzenia blokowych obiektów BLOB w warstwie Premium. Ten rodzaj konta magazynu obsługuje blokowe obiekty blob i dołączanie obiektów blob, ale nie stronicowych obiektów blob, tabel lub kolejek.
 
-W porównaniu z kontami, które są w wersji 2 i nowszych, blokowe konta magazynu obiektów BLOB zapewniają niskie i spójne opóźnienia oraz wyższe stawki transakcji.
+W porównaniu z kontami ogólnego przeznaczenia w wersji 2 i BlobStorage konta BlockBlobStorage zapewniają niskie i spójne opóźnienia oraz wyższe stawki transakcji.
 
-Blokowe konta magazynu obiektów BLOB nie obsługują obecnie warstw dostępu do warstwy gorąca, chłodna lub archiwalna.
+Konta BlockBlobStorage nie obsługują obecnie warstw dostępu do warstwy gorąca, chłodna lub archiwalna.
 
-### <a name="filestorage-storage-accounts"></a>Konta magazynu FileStorage
+### <a name="filestorage-accounts"></a>Konta FileStorage
 
-Konto magazynu FileStorage to wyspecjalizowane konto magazynu używane do przechowywania i tworzenia udziałów plików w warstwie Premium. Konta magazynu FileStorage oferują unikatowe cechy charakterystyczne dla wydajności, takie jak rozerwanie operacji we/wy. Więcej informacji o tych właściwościach znajduje się w sekcji [warstwy wydajności udziału plików](../files/storage-files-planning.md#file-share-performance-tiers) w przewodniku planowania plików.
+Konto FileStorage to wyspecjalizowane konto magazynu używane do przechowywania i tworzenia udziałów plików w warstwie Premium. Ten rodzaj konta magazynu obsługuje pliki, ale nie blokuje obiektów blob, dołączanie obiektów blob, stronicowych obiektów blob, tabel lub kolejek. 
+
+Konta FileStorage oferują unikatowe cechy charakterystyczne dla wydajności, takie jak rozerwanie operacji we/wy. Więcej informacji o tych właściwościach znajduje się w sekcji [warstwy wydajności udziału plików](../files/storage-files-planning.md#file-share-performance-tiers) w przewodniku planowania plików.
 
 ## <a name="naming-storage-accounts"></a>Nazewnictwo kont magazynu
 
 Podczas określania nazwy konta magazynu należy pamiętać o następujących regułach:
 
-- Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.
+- Nazwy kont usługi Magazyn muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.
 - Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Każde konto magazynu musi mieć inną nazwę.
 
 ## <a name="performance-tiers"></a>Warstwy wydajności
@@ -86,7 +88,7 @@ Konta magazynu ogólnego przeznaczenia można skonfigurować dla jednej z nastę
 * Standardowa warstwa wydajności do przechowywania obiektów blob, plików, tabel, kolejek i dysków maszyn wirtualnych platformy Azure.
 * Warstwa wydajności Premium do przechowywania tylko niezarządzanych dysków maszyny wirtualnej.
 
-Blokowe konta usługi BLOB Storage zapewniają warstwę wydajności Premium do przechowywania blokowych obiektów blob i dołączania obiektów BLOB.
+Konta magazynu BlockBlobStorage zapewniają warstwę wydajności Premium do przechowywania blokowych obiektów blob i dołączania obiektów BLOB.
 
 Konta magazynu FileStorage zapewniają warstwę wydajności Premium dla udziałów plików platformy Azure.
 
@@ -96,8 +98,8 @@ Usługa Azure Storage oferuje różne opcje uzyskiwania dostępu do danych bloko
 
 Dostępne są następujące warstwy dostępu:
 
-* Warstwa dostępu gorąca zoptymalizowana pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej opłacalne, natomiast koszty magazynu są wyższe. Nowe konta magazynu są domyślnie tworzone w warstwie gorąca.
-* Warstwa dostępu chłodna zoptymalizowana pod kątem przechowywania dużych ilości danych, które są rzadko używane i są przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest tańsze, ale dostęp do tych danych może być droższy niż dostęp do danych w warstwie gorąca.
+* Warstwa dostępu **gorąca** zoptymalizowana pod kątem częstego dostępu do obiektów na koncie magazynu. Uzyskiwanie dostępu do danych w warstwie gorąca jest najbardziej opłacalne, natomiast koszty magazynu są wyższe. Nowe konta magazynu są domyślnie tworzone w warstwie gorąca.
+* Warstwa dostępu **chłodna** zoptymalizowana pod kątem przechowywania dużych ilości danych, które są rzadko używane i są przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest tańsze, ale dostęp do tych danych może być droższy niż dostęp do danych w warstwie gorąca.
 * Warstwa **archiwum** , która jest dostępna tylko dla pojedynczych blokowych obiektów BLOB. Warstwa archiwum jest zoptymalizowana pod kątem danych, które mogą tolerować kilka godzin opóźnienia pobierania i pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwa archiwum to najbardziej ekonomiczna opcja przechowywania danych, ale dostęp do tych danych jest droższy niż dostęp do danych w warstwach gorąca i chłodna.
 
 W przypadku zmiany wzorca użycia danych można w dowolnym momencie przełączyć się między tymi warstwami dostępu. Aby uzyskać więcej informacji o warstwach dostępu, zobacz [Azure Blob Storage: warstwy dostępu gorąca, chłodna i archiwalna](../blobs/storage-blob-storage-tiers.md).
@@ -115,7 +117,7 @@ Aby uzyskać więcej informacji na temat replikacji magazynu, zobacz [Replikacja
 
 Wszystkie dane na koncie magazynu są szyfrowane po stronie usługi. Aby uzyskać więcej informacji na temat szyfrowania, zobacz [Azure szyfrowanie usługi Storage w przypadku danych przechowywanych w spoczynku](storage-service-encryption.md).
 
-## <a name="storage-account-endpoints"></a>Punkty końcowe konta magazynu
+## <a name="storage-account-endpoints"></a>Punkty końcowe konta usługi Storage
 
 Konto magazynu zapewnia unikatową przestrzeń nazw na platformie Azure dla danych użytkownika. Każdy obiekt przechowywany w usłudze Azure Storage ma adres, który zawiera unikatową nazwę konta. Kombinacja nazwy konta i punktu końcowego usługi Azure Storage stanowi punkty końcowe konta magazynu.
 
@@ -186,5 +188,5 @@ Usługi Import/Export można także użyć do transferowania danych z usługi Az
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się, jak utworzyć konto usługi Azure Storage ogólnego przeznaczenia, zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md).
-* Aby dowiedzieć się, jak utworzyć konto blokowych obiektów BLOB Storage, zobacz [Tworzenie konta blokowego magazynu obiektów BLOB](../blobs/storage-blob-create-account-block-blob.md).
+* Aby dowiedzieć się, jak utworzyć konto BlockBlobStorage, zobacz [Tworzenie konta blokowego magazynu obiektów BLOB](../blobs/storage-blob-create-account-block-blob.md).
 * Aby zarządzać istniejącym kontem magazynu lub je usunąć, zobacz [Zarządzanie kontami usługi Azure Storage](storage-account-manage.md).

@@ -1,23 +1,18 @@
 ---
 title: Jak używać Micrometer z usługą Azure Application Insights Java SDK | Microsoft Docs
 description: 'Przewodnik krok po kroku dotyczący używania Micrometer Application Insights z rozruchem wiosny i niesprężynowymi aplikacjami rozruchowymi. '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/01/2018
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 5bef5a6037c6eb29d0dc48e313958e2d243904eb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 11/01/2018
+ms.openlocfilehash: 267665c97f683740c05ae6602a416225c79aa44c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299567"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819311"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Jak używać Micrometer z usługą Azure Application Insights Java SDK
 Micrometer do monitorowania aplikacji miaruje metryki dla kodu aplikacji opartego na JVM i umożliwia eksportowanie danych do ulubionych systemów monitorowania. W tym artykule opisano, jak używać Micrometer z Application Insights zarówno dla aplikacji rozruchowych z systemem sprężyny, jak i bez sprężyny.
@@ -26,7 +21,7 @@ Micrometer do monitorowania aplikacji miaruje metryki dla kodu aplikacji oparteg
 Dodaj następujące zależności do pliku pliku pom. XML lub Build. Gradle: 
 * [Application Insights sprężyny rozruchu — Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 lub nowszego
 * Micrometer Azure Registry 1.1.0 lub nowszy
-* [Micrometer sprężyny](https://micrometer.io/docs/ref/spring/1.5) ze starszą 1.1.0 lub wyższą (to spowoduje Przeportowanie kodu autokonfiguracji w strukturze sprężynowej).
+* [Micrometer sprężyny ze starszą](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 lub wyższą (to spowoduje Przeportowanie kodu autokonfiguracji w strukturze sprężynowej).
 * [Zasób ApplicationInsights](../../azure-monitor/app/create-new-resource.md )
 
 Kroki
@@ -101,15 +96,15 @@ Metryki domyślne:
 Jak wyłączyć automatyczne zbieranie metryk: 
  
 - Metryki JVM: 
-    - management.metrics.binders.jvm.enabled=false 
+    - Management. Metrics. Binders. JVM. Enabled = false 
 - Metryki Logback: 
-    - management.metrics.binders.logback.enabled=false
+    - Management. Metrics. Binders. logback. Enabled = false
 - Metryki czasu przestoju: 
     - Management. Metrics. Binders. czas działania. Enabled = false 
 - Metryki procesora:
     -  Management. Metrics. Binders. Processor. Enabled = false 
 - FileDescriptorMetrics:
-    - management.metrics.binders.files.enabled=false 
+    - Management. Metrics. Binders. Files. Enabled = false 
 - Hystrix metryki w przypadku biblioteki na ścieżce klasy: 
     - Management. Metrics. Binders. Hystrix. Enabled = false 
 - AspectJ metryki w przypadku biblioteki na ścieżce klasy: 
@@ -144,7 +139,7 @@ Kroki:
         </dependency>
      ```
 
-2. Umieść `ApplicationInsights.xml` plik w folderze Resources:
+2. Umieść plik `ApplicationInsights.xml` w folderze Resources:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -267,7 +262,7 @@ Utwórz element ziarna odpowiedniej kategorii metryk. Załóżmy na przykład, �
         Return new GuavaCacheMetrics();
     }
 ```
-Istnieje kilka metryk, które nie są domyślnie włączone, ale można je powiązać w powyższy sposób. Pełną listę można znaleźć w oficjalnym [repozytorium usługi GitHub Micrometer](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
+Istnieje kilka metryk, które nie są domyślnie włączone, ale można je powiązać w powyższy sposób. Pełną listę można znaleźć w [oficjalnym repozytorium usługi GitHub Micrometer](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
 
 ### <a name="non-spring-apps"></a>Aplikacje niesprężynowe
 Dodaj następujący kod powiązania do pliku konfiguracji:

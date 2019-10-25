@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 241935afa023162a35559cd3c46206efa7a7835f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 254a1fd8644015de33855e13f78ab122d28f1e35
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240180"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817113"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Szybki Start: Dodawanie logowania z firmą Microsoft do aplikacji sieci Web w języku Python
 
@@ -100,8 +100,9 @@ Do uruchomienia tego przykładu potrzebne są:
 1. Otwórz plik **app_config. PR** , który znajduje się w folderze głównym i Zamień na następujący fragment kodu:
 
 ```python
-CLIENT_SECRET = "Enter_the_Client_Secret_Here"
 CLIENT_ID = "Enter_the_Application_Id_here"
+CLIENT_SECRET = "Enter_the_Client_Secret_Here"
+AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 ```
 
 > [!div renderon="docs"]
@@ -109,6 +110,7 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 >
 > - `Enter_the_Application_Id_here` jest identyfikatorem dla zarejestrowanej aplikacji.
 > - `Enter_the_Client_Secret_Here` — jest **kluczem tajnym klienta** utworzonym w **certyfikatach & wpisy tajne** dla zarejestrowanej aplikacji.
+> - `Enter_the_Tenant_Name_Here` — jest wartością **identyfikatora katalogu (dzierżawy)** zarejestrowanej aplikacji.
 
 #### <a name="step-4-run-the-code-sample"></a>Krok 4. Uruchamianie przykładu kodu
 
@@ -122,6 +124,25 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 
    ```Shell
    python app.py
+   ```
+   > [!IMPORTANT]
+   > Aplikacja w tym przewodniku Szybki start używa klucza tajnego klienta do identyfikowania się jako klienta poufnego. Ponieważ klucz tajny klienta jest dodawany jako zwykły tekst w plikach projektu, ze względów bezpieczeństwa zaleca się używanie certyfikatu zamiast klucza tajnego klienta, zanim będzie można uznać aplikację za produkcyjną. Aby uzyskać więcej informacji na temat korzystania z certyfikatu, zobacz [te instrukcje](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials).
+
+   ## <a name="more-information"></a>Więcej informacji
+
+   ### <a name="getting-msal"></a>Pobieranie MSAL
+   MSAL to biblioteka służąca do logowania użytkowników i żądania tokenów używanych w celu uzyskania dostępu do interfejsu API chronionego przez platformę tożsamości firmy Microsoft.
+   Możesz dodać MSAL Python do aplikacji przy użyciu narzędzia PIP.
+
+   ```Shell
+   pip install msal
+   ```
+
+   ### <a name="msal-initialization"></a>Inicjowanie biblioteki MSAL
+   Można dodać odwołanie do MSAL Python, dodając następujący kod na początku pliku, w którym będzie używany MSAL:
+
+   ```Python
+   import msal
    ```
 
 ## <a name="next-steps"></a>Następne kroki

@@ -4,15 +4,15 @@ description: Za pomocą programu Azure PowerShell Zarządzaj kontami Azure Cosmo
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 08/05/2019
+ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 3b5d8ff6177b4f9f397b40f50a9cc65f74460f02
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815902"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882104"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Zarządzanie Azure Cosmos DB zasobami interfejsu API SQL przy użyciu programu PowerShell
 
@@ -26,7 +26,7 @@ W przypadku zarządzania różnymi platformami Azure Cosmos DB można korzystać
 
 Postępuj zgodnie z instrukcjami w temacie [jak zainstalować i skonfigurować Azure PowerShell][powershell-install-configure] , aby zainstalować i zalogować się do konta platformy Azure w programie PowerShell.
 
-* Jeśli chcesz wykonać następujące polecenia, nie wymagając potwierdzenia przez użytkownika, Dodaj flagę `-Force` do polecenia.
+* Jeśli chcesz wykonać następujące polecenia, nie wymagając potwierdzenia przez użytkownika, Dołącz flagę `-Force` do polecenia.
 * Wszystkie poniższe polecenia są synchroniczne.
 
 ## <a name="azure-cosmos-accounts"></a>Konta usługi Azure Cosmos
@@ -78,11 +78,11 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-* `$accountName` nazwa konta usługi Azure Cosmos. Musi być małymi literami, akceptuje alfanumeryczne i znak "-" oraz od 3 do 31 znaków.
-* `$location` lokalizacja zasobu konta usługi Azure Cosmos.
-* `$locations` obszary replik dla konta bazy danych. Dla każdego konta bazy danych musi istnieć jeden region zapisu z wartością priorytetu trybu failover równą 0.
+* `$accountName` nazwę konta usługi Azure Cosmos. Musi być małymi literami, akceptuje alfanumeryczne i znak "-" oraz od 3 do 31 znaków.
+* `$location` lokalizację zasobu konta usługi Azure Cosmos.
+* `$locations` regionów replik dla konta bazy danych. Dla każdego konta bazy danych musi istnieć jeden region zapisu z wartością priorytetu trybu failover równą 0.
 * `$consistencyPolicy` domyślny poziom spójności konta usługi Azure Cosmos. Aby uzyskać więcej informacji, zobacz [poziomy spójności w Azure Cosmos DB](consistency-levels.md).
-* `$CosmosDBProperties` wartości właściwości przesłane do dostawcy Cosmos DB Azure Resource Manager w celu aprowizacji konta.
+* `$CosmosDBProperties` wartości właściwości przekazaniu do dostawcy Cosmos DB Azure Resource Manager w celu aprowizacji konta.
 
 Konta usługi Azure Cosmos można skonfigurować za pomocą zapory IP oraz punktów końcowych usługi Virtual Network. Aby uzyskać informacje dotyczące sposobu konfigurowania zapory protokołu IP dla Azure Cosmos DB, zobacz [Konfigurowanie zapory IP](how-to-configure-firewall.md).  Aby uzyskać więcej informacji na temat włączania punktów końcowych usługi dla Azure Cosmos DB, zobacz [Konfigurowanie dostępu z sieci wirtualnych](how-to-configure-vnet-service-endpoint.md).
 
@@ -255,7 +255,8 @@ $keys = Invoke-AzResourceAction -Action listKeys `
     -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
     -ResourceGroupName $resourceGroupName -Name $accountName
 
-Select-Object $keys
+Write-Host "PrimaryKey =" $keys.primaryMasterKey
+Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 ```
 
 ### <a id="list-connection-strings"></a>Wyświetlanie listy parametrów połączenia
@@ -348,7 +349,7 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 
 ### <a id="trigger-manual-failover"></a>Wyzwalanie ręcznego przełączania do trybu failover
 
-W przypadku kont skonfigurowanych z ręcznym trybem failover można przełączyć do trybu failover i podwyższyć poziom repliki pomocniczej do podstawowego, modyfikując wartość `failoverPriority=0`. Ta operacja może służyć do inicjowania testowania odzyskiwania po awarii w celu zaplanowania odzyskiwania po awarii.
+W przypadku kont skonfigurowanych z ręcznym trybem failover można przełączyć do trybu failover i podnieść każdą replikę pomocniczą do podstawowej, modyfikując do `failoverPriority=0`. Ta operacja może służyć do inicjowania testowania odzyskiwania po awarii w celu zaplanowania odzyskiwania po awarii.
 
 W poniższym przykładzie przyjęto założenie, że konto ma bieżący priorytet trybu failover `West US 2 = 0` i `East US 2 = 1` i przerzucić regiony.
 
@@ -697,7 +698,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 
 ### <a id="create-container-lww"></a>Tworzenie kontenera usługi Azure Cosmos za pomocą rozwiązywania konfliktów
 
-Aby utworzyć zasady rozwiązywania konfliktów w celu użycia procedury składowanej, ustaw `"mode"="custom"` i Ustaw ścieżkę rozpoznawania jako nazwę procedury składowanej, `"conflictResolutionPath"="myResolverStoredProcedure"`. Aby zapisać wszystkie konflikty w ConflictsFeed i obsłudze oddzielnie, ustaw `"mode"="custom"` i `"conflictResolutionPath"=""`
+Aby utworzyć zasady rozwiązywania konfliktów w celu użycia procedury składowanej, należy ustawić `"mode"="custom"` i ustawić ścieżkę rozpoznawania jako nazwę procedury składowanej, `"conflictResolutionPath"="myResolverStoredProcedure"`. Aby zapisać wszystkie konflikty w ConflictsFeed i obsłudze oddzielnie, ustaw `"mode"="custom"` i `"conflictResolutionPath"=""`
 
 ```azurepowershell-interactive
 # Create container with last-writer-wins conflict resolution policy

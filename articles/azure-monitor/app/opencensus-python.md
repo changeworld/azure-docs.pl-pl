@@ -1,21 +1,19 @@
 ---
 title: Monitoruj aplikacje języka Python za pomocą Azure Monitor (wersja zapoznawcza) | Microsoft Docs
 description: Zawiera instrukcje dotyczące szkieletu OpenCensus Python z Azure Monitor
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
-ms.service: application-insights
-ms.topic: conceptual
 ms.reviewer: mbullwin
-manager: carmonm
-ms.openlocfilehash: 4cd3d048ead8b9e6ff59a17d1a8269ecdec5a11c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: 0d848027d6c754df371b4d87cf01c5b2fdbc8c02
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750407"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820739"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Konfigurowanie Azure Monitor aplikacji języka Python (wersja zapoznawcza)
 

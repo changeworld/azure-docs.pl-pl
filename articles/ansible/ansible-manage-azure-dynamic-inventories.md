@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: d89150f43205a4b38612008033ab5649acd9af5b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 38be15cf5771f7eb09bce1154baa3bc6e559d49b
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241575"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881503"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Samouczek: Konfigurowanie dynamicznych spisów zasobów platformy Azure przy użyciu rozwiązania ansible
 
@@ -71,11 +71,20 @@ Za pomocą rozwiązania Ansible można ściągać informacje o spisie z różnyc
 
 Możesz [użyć tagów, aby zorganizować zasoby platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#azure-cli) według kategorii zdefiniowanych przez użytkownika. 
 
+### <a name="using-ansible-version--28"></a>Używanie rozwiązania ansible w wersji < 2,8
 Wprowadź następujące polecenie [az resource tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag), aby oznaczyć maszynę wirtualną `ansible-inventory-test-vm1` za pomocą klucza `nginx`:
 
 ```azurecli-interactive
 az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
 ```
+
+### <a name="using-ansible-version--28"></a>Używanie rozwiązania ansible w wersji > = 2,8
+Wprowadź następujące polecenie [az resource tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag), aby oznaczyć maszynę wirtualną `ansible-inventory-test-vm1` za pomocą klucza `Ansible=nginx`:
+
+```azurecli-interactive
+az resource tag --tags Ansible=nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
+```
+
 ## <a name="generate-a-dynamic-inventory"></a>Generowanie spisu dynamicznego
 
 Po zdefiniowaniu i oznaczeniu tagami maszyn wirtualnych nadszedł czas na wygenerowanie spisu dynamicznego.
@@ -119,15 +128,19 @@ Rozwiązania ansible udostępnia skrypt języka Python o nazwie [azure_rm. PR](h
 
 ### <a name="ansible-version--28"></a>Wersja rozwiązania ansible > = 2,8
 
-Począwszy od rozwiązania ansible 2,8, rozwiązania ansible zapewnia [wtyczkę dynamicznego spisu platformy Azure](https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/inventory/azure_rm.py). W poniższych krokach przedstawiono sposób korzystania z wtyczki:
+Począwszy od rozwiązania ansible 2,8, rozwiązania ansible udostępnia [wtyczkę dynamicznego spisu platformy Azure](https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/inventory/azure_rm.py). W poniższych krokach przedstawiono sposób korzystania z wtyczki:
 
 1. Wtyczka spisu wymaga pliku konfiguracji. Plik konfiguracji musi kończyć się `azure_rm` i mieć rozszerzenie `yml` lub `yaml`. Na potrzeby tego przykładu Zapisz następujący element PlayBook jako `myazure_rm.yml`:
 
     ```yml
-    plugin: azure_rm
-    include_vm_resource_groups:
-    - ansible-inventory-test-rg
-    auth_source: auto
+        plugin: azure_rm
+        include_vm_resource_groups:
+        - ansible-inventory-test-rg
+        auth_source: auto
+    
+        keyed_groups:
+        - prefix: tag
+          key: tags
     ```
 
 1. Uruchom następujące polecenie, aby wysłać polecenie ping do maszyn wirtualnych w grupie zasobów:
@@ -156,33 +169,49 @@ Począwszy od rozwiązania ansible 2,8, rozwiązania ansible zapewnia [wtyczkę 
     ```
 
 ## <a name="enable-the-vm-tag"></a>Włącz Tag maszyny wirtualnej
-Po ustawieniu znacznika należy "Włącz" ten tag. Jednym ze sposobów na włączenie znacznika jest wyeksportowanie znacznika do zmiennej środowiskowej `AZURE_TAGS` za pośrednictwem polecenia `export`:
 
-```azurecli-interactive
-export AZURE_TAGS=nginx
-```
+### <a name="if-youre-using-ansible--28"></a>Jeśli używasz rozwiązania ansible < 2,8,
 
-- Jeśli używasz rozwiązania ansible < 2,8, uruchom następujące polecenie:
+- Po ustawieniu znacznika należy "Włącz" ten tag. Jednym ze sposobów na włączenie znacznika jest wyeksportowanie znacznika do zmiennej środowiskowej `AZURE_TAGS` za pomocą polecenia `export`:
+
+    ```azurecli-interactive
+    export AZURE_TAGS=nginx
+    ```
+    
+- Uruchom następujące polecenie:
 
     ```bash
     ansible -i azure_rm.py ansible-inventory-test-rg -m ping
     ```
+    
+    Zobaczysz teraz tylko jedną maszynę wirtualną (której tag pasuje do wartości wyeksportowanej do zmiennej środowiskowej `AZURE_TAGS`):
 
-- Jeśli używasz rozwiązania ansible > = 2,8, uruchom następujące polecenie:
-  
-    ```bash
-    ansible all -m ping -i ./myazure_rm.yml
+    ```Output
+       ansible-inventory-test-vm1 | SUCCESS => {
+        "changed": false,
+        "failed": false,
+        "ping": "pong"
+    }
     ```
 
-Zobaczysz teraz tylko jedną maszynę wirtualną (której tag pasuje do wartości wyeksportowanej do zmiennej środowiskowej `AZURE_TAGS`):
+### <a name="if-youre-using-ansible---28"></a>Jeśli używasz rozwiązania ansible > = 2,8
 
-```Output
-ansible-inventory-test-vm1 | SUCCESS => {
-    "changed": false,
-    "failed": false,
-    "ping": "pong"
-}
-```
+- Uruchom polecenie `ansible-inventory -i myazure_rm.yml --graph`, aby uzyskać następujące dane wyjściowe:
+
+    ```Output
+        @all:
+          |--@tag_Ansible_nginx:
+          |  |--ansible-inventory-test-vm1_9e2f
+          |--@ungrouped:
+          |  |--ansible-inventory-test-vm2_7ba9
+    ```
+
+- Aby przetestować połączenie z maszyną wirtualną Nginx, można również uruchomić następujące polecenie:
+  
+    ```bash
+    ansible -i ./myazure_rm.yml -m ping tag_Ansible_nginx
+    ```
+
 
 ## <a name="set-up-nginx-on-the-tagged-vm"></a>Konfigurowanie serwera Nginx na maszynie wirtualnej oznaczonej tagiem
 
@@ -197,19 +226,19 @@ Celem tagów jest umożliwienie szybkiej i łatwej pracy z podgrupami maszyn wir
 1. Wklej następujący kod przykładowy do edytora:
 
     ```yml
-    ---
-    - name: Install and start Nginx on an Azure virtual machine
-      hosts: all
-      become: yes
-      tasks:
-      - name: install nginx
-        apt: pkg=nginx state=installed
-        notify:
-        - start nginx
-
-      handlers:
-        - name: start nginx
-          service: name=nginx state=started
+        ---
+        - name: Install and start Nginx on an Azure virtual machine
+          hosts: all
+          become: yes
+          tasks:
+          - name: install nginx
+            apt: pkg=nginx state=installed
+            notify:
+            - start nginx
+    
+          handlers:
+            - name: start nginx
+              service: name=nginx state=started
     ```
 
 1. Zapisz plik i Zamknij Edytor.
@@ -218,15 +247,15 @@ Celem tagów jest umożliwienie szybkiej i łatwej pracy z podgrupami maszyn wir
 
    - Rozwiązania ansible < 2,8:
 
-    ```bash
-    ansible-playbook -i azure_rm.py nginx.yml
-    ```
+     ```bash
+     ansible-playbook -i azure_rm.py nginx.yml
+     ```
 
    - Rozwiązania ansible > = 2,8:
 
-    ```bash
-     ansible-playbook  -i ./myazure_rm.yml  nginx.yml
-    ```
+     ```bash
+     ansible-playbook  -i ./myazure_rm.yml  nginx.yml --limit=tag_Ansible_nginx
+     ```
 
 1. Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
 

@@ -1,38 +1,33 @@
 ---
-title: Alert dotyczący problemów w usługach Azure Cloud Services za pomocą integracji usługi Azure Diagnostics przy użyciu usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Monitor kwestie, takie jak błędy podczas uruchamiania, awarii i roli Odtwórz pętli w usługach Azure Cloud Services za pomocą usługi Azure Application Insights
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Alerty dotyczące problemów z usługą Azure Cloud Services przy użyciu integracji Diagnostyka Azure z platformą Azure Application Insights | Microsoft Docs
+description: Monitoruj problemy, takie jak awarie uruchamiania, awarie i pętle odtwarzania ról w usłudze Azure Cloud Services z platformą Azure Application Insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 06/07/2018
 ms.reviewer: harelbr
-ms.author: mbullwin
-ms.openlocfilehash: 219ba632d7688f1a428378309828b689698d2fe5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4404f033f5bdf221590e155640e4c0442601e18
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409555"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820637"
 ---
-# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Alert po wystąpieniu problemów w usługach Azure Cloud Services za pomocą integracji diagnostyki platformy Azure za pomocą usługi Azure Application Insights
+# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Alerty dotyczące problemów z usługą Azure Cloud Services przy użyciu integracji diagnostyki platformy Azure z platformą Azure Application Insights
 
-W tym artykule opisujemy sposób konfigurowania reguł alertów, które monitorują problemów, takich jak błędy podczas uruchamiania, awarii i roli Odtwórz pętli w usługach Azure Cloud Services (role sieć web i proces roboczy).
+W tym artykule opisano sposób konfigurowania reguł alertów, które monitorują pod kątem problemów, takich jak błędy uruchomienia, awarie i pętle odtwarzania roli w usłudze Azure Cloud Services (role sieci Web i proces roboczy).
 
-Metody opisanej w tym artykule opiera się na [integracji usługi Azure Diagnostics przy użyciu usługi Application Insights](https://azure.microsoft.com/blog/azure-diagnostics-integration-with-application-insights/)i jest to udostępniona niedawno [alertów dzienników usługi Application Insights](https://azure.microsoft.com/blog/log-alerts-for-application-insights-preview/) możliwości.
+Metoda opisana w tym artykule jest oparta na [Diagnostyka Azure integracji z Application Insights](https://azure.microsoft.com/blog/azure-diagnostics-integration-with-application-insights/)i ostatnio wydane [alerty dziennika dla możliwości Application Insights](https://azure.microsoft.com/blog/log-alerts-for-application-insights-preview/) .
 
-## <a name="define-a-base-query"></a>Zdefiniuj zapytanie o podstawowej
+## <a name="define-a-base-query"></a>Zdefiniuj zapytanie podstawowe
 
-Aby rozpocząć pracę, zdefiniujemy podstawowy zapytanie, które pobiera zdarzenia w dzienniku zdarzeń Windows z kanału usługi Windows Azure, które są przechwytywane do usługi Application Insights jako rekordów śledzenia.
-Te rekordy mogą służyć do wykrywania różne problemy w usługach Azure Cloud Services, takich jak błędy podczas uruchamiania, błędy czasu wykonywania i odtwarzanie w pętli.
+Aby rozpocząć, zdefiniujemy podstawowe zapytanie, które pobiera zdarzenia dziennika zdarzeń systemu Windows z kanału systemu Windows Azure, które są przechwytywane do Application Insights jako rekordy śledzenia.
+Te rekordy mogą służyć do wykrywania różnych problemów na platformie Azure Cloud Services, takich jak awarie uruchamiania, awarie środowiska uruchomieniowego i pętle odtwarzania.
 
 > [!NOTE]
-> Poniższe zapytanie podstawowego sprawdza, czy problemy w przedziale czasowym, 30 minut, a przyjęto założenie, umożliwiając pozyskiwanie rejestruje dane telemetryczne opóźnieniem 10 minut. Te ustawienia domyślne można skonfigurować zgodnie z potrzebami.
+> Poniższe zapytanie podstawowe sprawdza, czy występują problemy w przedziale czasu 30 minut, i zakłada opóźnienia 10 minut podczas pozyskiwania rekordów telemetrii. Te ustawienia domyślne można skonfigurować zgodnie z potrzebami.
 
 ```
 let window = 30m;
@@ -45,13 +40,13 @@ let EventLogs = traces
 | project timestamp, channel, eventId, message, cloud_RoleInstance, cloud_RoleName, itemCount;
 ```
 
-## <a name="check-for-specific-event-ids"></a>Wyszukaj określone identyfikatory zdarzeń.
+## <a name="check-for-specific-event-ids"></a>Sprawdzanie określonych identyfikatorów zdarzeń
 
-Po pobraniu Windows zdarzenia dziennika zdarzeń, określonych problemów może zostać wykryte przez sprawdzenie, czy ich odpowiednich Identyfikatora i komunikatu właściwości zdarzenia (Zobacz przykłady poniżej).
-Po prostu Połącz zapytania bazowego powyżej za pomocą jednego zapytania poniżej i używane, które są połączone zapytania podczas definiowania reguł alertów dzienników.
+Po pobraniu zdarzeń dziennika zdarzeń systemu Windows można wykryć konkretne problemy, sprawdzając odpowiednie identyfikatory zdarzeń i właściwości komunikatów (Zobacz przykłady poniżej).
+Wystarczy połączyć bazowe zapytanie powyżej z jednym z poniższych zapytań i używało tego połączonego zapytania podczas definiowania reguły alertu dziennika.
 
 > [!NOTE]
-> W poniższych przykładach problem zostanie wykryty, jeśli więcej niż trzy zdarzenia znajdują się w przedziale czasu przeanalizowany. To ustawienie domyślne można skonfigurować tak, aby zmienić ważność reguły alertu.
+> W poniższych przykładach zostanie wykryty problem, jeśli podczas przeanalizowanego przedziału czasu zostanie znalezionych więcej niż trzy zdarzenia. Tę wartość domyślną można skonfigurować w celu zmiany czułości reguły alertu.
 
 ```
 // Detect failures in the OnStart method
@@ -89,38 +84,38 @@ EventLogs
 
 ## <a name="create-an-alert"></a>Tworzenie alertu
 
-W menu nawigacji w ramach zasobu usługi Application Insights, przejdź do **alerty**, a następnie wybierz pozycję **Nowa reguła alertu**.
+W menu nawigacji w ramach zasobu Application Insights przejdź do pozycji **alerty**, a następnie wybierz pozycję **Nowa reguła alertu**.
 
-![Zrzut ekranu opcji Utwórz regułę](./media/proactive-cloud-services/001.png)
+![Zrzut ekranu przedstawiający tworzenie reguły](./media/proactive-cloud-services/001.png)
 
-W **Utwórz regułę** okna, w obszarze **Zdefiniuj warunek alertu** sekcji, kliknij pozycję **Dodaj kryteria**, a następnie wybierz pozycję **przeszukiwania dzienników niestandardowych**.
+W oknie **Tworzenie reguły** w sekcji **Zdefiniuj warunek alertu** kliknij pozycję **Dodaj kryteria**, a następnie wybierz pozycję Wyszukiwanie w **dzienniku niestandardowym**.
 
-![Zrzut ekranu przedstawiający zdefiniuj kryteria warunku dla alertu](./media/proactive-cloud-services/002.png)
+![Zrzut ekranu przedstawiający kryteria definiowania warunków dla alertu](./media/proactive-cloud-services/002.png)
 
-W **zapytania wyszukiwania** pole, Wklej zapytanie połączone został przygotowany w poprzednim kroku.
+W polu **zapytania wyszukiwania** wklej połączone zapytanie przygotowane w poprzednim kroku.
 
-Następnie przejdź do **próg** polu i ustawić jej wartość na 0. Może być opcjonalnie dostosować **okres** i częstotliwość **pola**.
+Następnie przejdź do pola **PROG** i ustaw jego wartość na 0. Opcjonalnie możesz dostosować **pola** **okresów** i częstotliwości.
 Kliknij przycisk **Gotowe**.
 
-![Zrzut ekranu przedstawiający Konfigurowanie zapytania logiki sygnału](./media/proactive-cloud-services/003.png)
+![Zrzut ekranu przedstawiający zapytanie dotyczące konfiguracji logiki sygnałów](./media/proactive-cloud-services/003.png)
 
-W obszarze **Zdefiniuj szczegóły alertu** sekcji, podaj **nazwa** i **opis** regułę alertu i ustaw jego **ważność**.
-Ponadto upewnij się, że **Włącz regułę po utworzeniu** przycisk jest ustawiona na **tak**.
+W sekcji **Zdefiniuj szczegóły alertu** Podaj **nazwę** i **Opis** reguły alertu, a następnie ustaw jej **ważność**.
+Upewnij się również, że przycisk **Włącz regułę przy tworzeniu** ma wartość **tak**.
 
-![Zrzut ekranu szczegóły alertu](./media/proactive-cloud-services/004.png)
+![Szczegóły alertu zrzutu ekranu](./media/proactive-cloud-services/004.png)
 
-W obszarze **zdefiniuj grupę akcji** sekcji można wybrać istniejącą **grupy akcji** lub utworzyć nowy.
-Istnieje możliwość mają grupy akcji zawiera wiele akcji różnych typów.
+W sekcji **Zdefiniuj grupę akcji** możesz wybrać istniejącą **grupę akcji** lub utworzyć nową.
+Można zdecydować, że grupa akcji będzie zawierać wiele akcji różnych typów.
 
-![Zrzut ekranu grupy akcji](./media/proactive-cloud-services/005.png)
+![Grupa akcji zrzutu ekranu](./media/proactive-cloud-services/005.png)
 
-Po zdefiniowaniu grupy akcji zatwierdzić zmiany i kliknij **Utwórz regułę alertu**.
+Po zdefiniowaniu grupy akcji potwierdź zmiany i kliknij przycisk **Utwórz regułę alertu**.
 
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat automatycznego wykrywania:
 
-[Anomalie](../../azure-monitor/app/proactive-failure-diagnostics.md)
-[przecieki pamięci](../../azure-monitor/app/proactive-potential-memory-leak.md)
+[Anomalie niepowodzeń](../../azure-monitor/app/proactive-failure-diagnostics.md)
+[przecieków pamięci](../../azure-monitor/app/proactive-potential-memory-leak.md)
 [anomalie wydajności](../../azure-monitor/app/proactive-performance-diagnostics.md)
 

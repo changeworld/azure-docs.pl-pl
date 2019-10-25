@@ -1,210 +1,205 @@
 ---
-title: Eksplorowanie metryk w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Jak interpretować wykresów na Eksplorator metryk i dostosowywanie bloków Eksplorator metryk.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Eksplorowanie metryk na platformie Azure Application Insights | Microsoft Docs
+description: Jak interpretować wykresy w Eksploratorze metryk oraz jak dostosować bloki w Eksploratorze metryk.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/22/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5c659ca2f40d47450227d16963499a6b27c9e313
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/22/2019
+ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60700891"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820794"
 ---
-# <a name="exploring-metrics-in-application-insights"></a>Eksplorowanie metryk w usłudze Application Insights
-Metryki w [usługi Application Insights] [ start] są mierzone wartości i liczby zdarzeń, które są wysyłane w danych telemetrycznych z Twojej aplikacji. Ułatwiają one wykryć problemy z wydajnością i obserwuj trendy w sposobu korzystania z aplikacji. Istnieje szereg standardowych metryk i można również utworzyć własne niestandardowe metryki i zdarzenia.
+# <a name="exploring-metrics-in-application-insights"></a>Eksplorowanie metryk w Application Insights
+Metryki w [Application Insights][start] są mierzonymi wartościami i liczbami zdarzeń wysyłanych w ramach telemetrii z aplikacji. Pomagają wykrywać problemy z wydajnością i obserwować trendy w sposobie używania aplikacji. Istnieje szeroki zakres metryk standardowych i można również utworzyć własne, niestandardowe metryki i zdarzenia.
 
 > [!NOTE]
-> W tym artykule opisano interfejs Eksploratora metryk klasyczne, która jest obecnie przestarzała i ostatecznie zostanie wycofana. Zaleca się sprawdzanie nowego środowiska pracy, który jest opisany w [w tym artykule](../platform/metrics-charts.md).
+> W tym artykule opisano klasyczne środowisko Eksploratora metryk, które jest obecnie przestarzałe i ostatecznie zostanie wycofane. Zalecamy wyewidencjonowanie nowego środowiska opisanego w [tym artykule](../platform/metrics-charts.md).
 
-Liczby metryk i zdarzeń są wyświetlane na wykresach zagregowane wartości, takich jak sum, średnie lub liczby.
+Liczniki metryk i zdarzeń są wyświetlane na wykresach zagregowanych wartości, takich jak sumy, średnie lub zliczenia.
 
-Poniżej przedstawiono przykładowy zestaw wykresy:
+Oto przykładowy zestaw wykresów:
 
 ![](./media/metrics-explorer/01-overview.png)
 
-Wykresy metryk wszędzie, gdzie można znaleźć w portalu Application Insights. W większości przypadków można dostosowywać, a następnie można dodać więcej wykresów do bloku. Z poziomu bloku Przegląd kliknij, aby bardziej szczegółowe wykresy, (które mają tytułów, takich jak "Serwery z"), lub kliknij przycisk **Eksploratora metryk** aby otworzyć nowy blok, w którym można utworzyć niestandardowe wykresy.
+Wykresy metryk znajdziesz wszędzie w portalu Application Insights. W większości przypadków można je dostosować i dodać więcej wykresów do bloku. W bloku przegląd kliknij pozycję przez, aby wyświetlić bardziej szczegółowe wykresy (które mają tytuły takie jak "serwery"), lub kliknij przycisk **Eksplorator metryk** , aby otworzyć nowy blok, w którym można utworzyć wykresy niestandardowe.
 
 ## <a name="time-range"></a>Przedział czasu
-Można zmienić zakres czasu objętych wykresy lub siatkach dowolnego bloku.
+Można zmienić zakres czasu obejmujący wykresy lub siatki w dowolnym bloku.
 
-![Otwórz blok przeglądu aplikacji w witrynie Azure portal](./media/metrics-explorer/03-range.png)
+![Otwórz blok przegląd aplikacji w Azure Portal](./media/metrics-explorer/03-range.png)
 
-Jeśli oczekujesz części danych, które nie pojawiły się jeszcze, kliknij przycisk Odśwież. Wykresy odświeżane w odstępach czasu, ale interwały są dłuższe dla większych zakresy czasu. Może upłynąć trochę czasu dane docierają za pośrednictwem potoku analizy na wykres.
+Jeśli oczekujesz, że niektóre dane jeszcze się nie pojawiły, kliknij przycisk Odśwież. Wykresy są odświeżane w odstępach czasu, ale interwały są dłuższe dla większych zakresów czasu. Może upłynąć trochę czasu, zanim dane przechodzą przez potok analizy na wykres.
 
-Umożliwiającą powiększenie fragmentu częścią wykresu, przeciągnij nad nią:
+Aby powiększyć część wykresu, przeciągnij nad nim:
 
-![Przeciągnij kursor nad częścią wykresu.](./media/metrics-explorer/12-drag.png)
+![Przeciągnij w poprzek części wykresu.](./media/metrics-explorer/12-drag.png)
 
-Kliknij przycisk Cofnij Powiększ, aby go przywrócić.
+Kliknij przycisk Cofnij powiększenie, aby go przywrócić.
 
-## <a name="granularity-and-point-values"></a>Poziom szczegółowości oraz punkt wartości
-Umieść kursor myszy na wykresie, aby wyświetlić wartości metryk w tym momencie.
+## <a name="granularity-and-point-values"></a>Stopień szczegółowości i wartości punktów
+Umieść wskaźnik myszy na wykresie, aby wyświetlić wartości metryk w tym momencie.
 
-![Umieść kursor myszy nad wykresem](./media/metrics-explorer/02-focus.png)
+![Umieść wskaźnik myszy na wykresie](./media/metrics-explorer/02-focus.png)
 
-Wartość metryki w określonym punkcie jest agregowana w przedziałach próbkowania.
+Wartość metryki w konkretnym punkcie jest agregowana w poprzednim interwale próbkowania.
 
-Interwał próbkowania lub "stopnia szczegółowości" jest wyświetlana w górnej części bloku.
+W górnej części bloku zostanie wyświetlony interwał próbkowania lub stopień szczegółowości.
 
 ![Nagłówek bloku.](./media/metrics-explorer/11-grain.png)
 
-Można dostosować poziom szczegółowości, w bloku zakres czasu:
+Stopień szczegółowości można dostosować w bloku zakres czasu:
 
 ![Nagłówek bloku.](./media/metrics-explorer/grain.png)
 
-Dostępne szczegółowości zależą od wybranego zakresu czasu. Jawne stopniach szczegółowości są alternatywy dla "Automatyczny" poziom szczegółowości dla zakresu czasu.
+Dostępne szczegóły zależą od wybranego zakresu czasu. Jawne szczegółowości są alternatywami dla stopnia szczegółowości "Automatyczne" dla zakresu czasu.
 
 
-## <a name="editing-charts-and-grids"></a>Edytowanie siatki i wykresy
+## <a name="editing-charts-and-grids"></a>Edytowanie wykresów i siatek
 Aby dodać nowy wykres do bloku:
 
-![W Eksploratorze metryk wybierz opcję Dodaj wykres](./media/metrics-explorer/04-add.png)
+![W Eksplorator metryk wybierz pozycję Dodaj wykres](./media/metrics-explorer/04-add.png)
 
-Wybierz **Edytuj** na istniejącym lub nowym wykres, aby edytować jego zawartość:
+Wybierz pozycję **Edytuj** na istniejącym lub nowym wykresie, aby edytować elementy, które pokazuje:
 
 ![Wybierz co najmniej jedną metrykę](./media/metrics-explorer/08-select.png)
 
-Więcej niż jedną metrykę można wyświetlić na wykresie, chociaż istnieją ograniczenia dotyczące połączenia, które mogą być wyświetlane ze sobą. Tak szybko, jak zostanie wybrana jedna metryka, niektóre inne są wyłączone.
+Na wykresie można wyświetlić więcej niż jedną metrykę, chociaż istnieją ograniczenia dotyczące kombinacji, które mogą być wyświetlane razem. Po wybraniu jednej metryki niektóre inne są wyłączone.
 
-Jeśli zakodowane [metryki niestandardowe] [ track] z Twoją aplikacją (wywołania TrackMetric i TrackEvent) zostaną one wyświetlone w tym miejscu.
+Jeśli do aplikacji są kodowane [niestandardowe metryki][track] (wywołania do TrackMetric i poleceń trackEvent), zostaną one wyświetlone w tym miejscu.
 
-## <a name="segment-your-data"></a>Segmentacji danych
-Możesz podzielić metryki przez właściwość — na przykład, aby porównać wyświetleń strony na klientach w różnych systemach operacyjnych.
+## <a name="segment-your-data"></a>Segmentowanie danych
+Można podzielić metrykę według właściwości — na przykład, aby porównać widok strony na klientach z różnymi systemami operacyjnymi.
 
-Wybierz wykres lub siatkę, przejdź na grupowanie, a następnie wybierz właściwość, która ma Grupuj według:
+Wybierz wykres lub siatkę, Włącz grupowanie i wybierz właściwość do zgrupowania:
 
-![Wybierz grupowanie w, a następnie ustaw wybierz właściwość Group by](./media/metrics-explorer/15-segment.png)
+![Wybierz pozycję grupowanie na, a następnie ustaw pozycję Wybierz właściwość w polu Grupuj według](./media/metrics-explorer/15-segment.png)
 
 > [!NOTE]
-> Gdy używasz grupowania, typy obszaru i wykres słupkowy zapewniają skumulowany wyświetlania. Jest to odpowiednia, gdzie to metoda agregacji to suma. Ale typ agregacji w przypadku średniej, typy ekranu wiersza lub siatkę.
+> W przypadku korzystania z grupowania, typy wykresu warstwowego i słupkowego zapewniają skumulowany wyświetlacz. Jest to odpowiednie miejsce, gdzie Metoda agregacji jest sumą. Ale gdzie typ agregacji jest średni, wybierz typy wyświetlania linii lub siatki.
 >
 >
 
-Jeśli zakodowane [metryki niestandardowe] [ track] w swojej aplikacji i obejmują one wartości właściwości, będzie można wybrać właściwość na liście.
+Jeśli do aplikacji zostały zakodowane [metryki niestandardowe][track] i zawierają one wartości właściwości, będzie można wybrać właściwość z listy.
 
-Wykres jest zbyt mały dla segmentowane dane? Dopasuj wysokość:
+Czy wykres jest zbyt mały dla danych segmentowych? Dostosuj Wysokość:
 
-![Ustaw suwak](./media/metrics-explorer/18-height.png)
+![Dostosuj suwak](./media/metrics-explorer/18-height.png)
 
 ## <a name="aggregation-types"></a>Typy agregacji
-Legenda po stronie domyślnie zwykle zawiera zagregowaną wartość w okresie wykresu. Po umieszczeniu wskaźnika myszy nad wykresem pokazuje wartość w tym momencie.
+Legenda po stronie domyślnej zazwyczaj pokazuje zagregowaną wartość w okresie wykresu. Umieszczenie wskaźnika myszy na wykresie powoduje wyświetlenie wartości w tym momencie.
 
-Każdy punkt danych na wykresie jest agregacją wartości danych odebranych w poprzednim interwał próbkowania lub "stopnia szczegółowości". Stopień szczegółowości jest wyświetlany w górnej części bloku i zależy od ogólnej skali czasu wykresu.
+Każdy punkt danych na wykresie to zagregowana wartość danych odebranych w poprzednim interwale próbkowania lub "stopień szczegółowości". Stopień szczegółowości jest pokazywany w górnej części bloku i różni się od ogólnego przedziału czasu wykresu.
 
-Metryki może być agregowany na różne sposoby:
+Metryki można agregować na różne sposoby:
 
-* **Liczba** jest liczba zdarzeń otrzymanych w interwale próbkowania. Służy do zdarzenia, takie jak żądania. Różnice w wysokość wykresu wskazuje wahania kursu, jaką wystąpienia zdarzenia. Jednak należy pamiętać, że wartość liczbowa zmienia się po zmianie interwału próbkowania.
-* **Suma** dodaje wartości punktów danych odebranych za pośrednictwem interwał próbkowania lub okres wykresu.
-* **Średnia** dzieli sumy przez liczbę punktów danych odebranych za pośrednictwem interwału.
-* **Unikatowe** liczby są używane dla liczby użytkowników i kont. Dla interwału próbkowania lub w okresie wykresu ilustracji liczba różnych użytkowników, w tym czasie.
-* **%** -Procent wersje każdej agregacji są używane tylko z wykresów segmentu. Suma zawsze dodaje do 100%, a wykres przedstawia względnego udziału różnych składników łącznie.
+* **Licznik** jest liczbą zdarzeń odebranych w interwale próbkowania. Jest on używany do zdarzeń, takich jak żądania. Różnice w wysokości wykresu oznaczają różnice w szybkości, w której występują zdarzenia. Należy jednak pamiętać, że wartość liczbowa zmienia się w przypadku zmiany interwału próbkowania.
+* **Sum** dodaje wartości wszystkich punktów danych odebranych w interwale próbkowania lub okresu wykresu.
+* **Średnia** dzieli sumę przez liczbę punktów danych odebranych w interwale.
+* **Unikatowe** zliczenia są używane dla liczników użytkowników i kont. W przypadku interwału próbkowania lub w okresie wykresu rysunek przedstawia liczbę różnych użytkowników, którzy wywidzili w tym czasie.
+* wersje **%** poszczególnych agregacji są używane tylko w przypadku wykresów z segmentami. Suma zawsze jest dodawana do 100%, a wykres pokazuje względny udział różnych składników łącznie.
 
-    ![Wartość procentowa agregacji](./media/metrics-explorer/percentage-aggregation.png)
+    ![Agregacja procentowa](./media/metrics-explorer/percentage-aggregation.png)
 
 ### <a name="change-the-aggregation-type"></a>Zmień typ agregacji
 
-![Edytuj wykres, a następnie wybierz pozycję agregacji](./media/metrics-explorer/05-aggregation.png)
+![Edytuj wykres, a następnie wybierz pozycję agregacja](./media/metrics-explorer/05-aggregation.png)
 
-Domyślną metodą wszystkie metryki jest wyświetlana podczas tworzenia nowego wykresu lub kiedy są wyczyszczone wszystkie metryki:
+Domyślna metoda dla każdej metryki jest wyświetlana podczas tworzenia nowego wykresu lub po odzaznaczeniu wszystkich metryk:
 
-![Usuń zaznaczenie wszystkich metryk, aby zobaczyć wartości domyślne](./media/metrics-explorer/06-total.png)
+![Odznacz wszystkie metryki, aby wyświetlić wartości domyślne](./media/metrics-explorer/06-total.png)
 
-## <a name="pin-y-axis"></a>Numer PIN osi y 
-Domyślnie wykres pokazuje wartości osi Y, zaczynając od zera do maksymalnej wartości w zakresie danych, aby zapewnić reprezentację wizualną quantum wartości. Jednak w niektórych przypadkach więcej niż quantum mogą być interesujące dla wizualnie badać drobne zmiany w wartościach. Dla dostosowania, takie jak to wykorzystania osi y w zakresie funkcji edycji, przypinanie osi y minimalną i maksymalną wartość w odpowiednim miejscu.
-Kliknij pole wyboru "Zaawansowane ustawienia", aby wyświetlić zakres osi y ustawienia
+## <a name="pin-y-axis"></a>Przypnij oś Y 
+Domyślnie wykres pokazuje wartości osi Y zaczynające się od zera do wartości maksymalnej w zakresie danych, aby przedstawić wizualną reprezentację Quantum wartości. Jednak w niektórych przypadkach może być interesująca Wizualizacja wizualnie drobnych zmian w wartościach. W przypadku dostosowań, takich jak ta, użyj funkcji edycji zakresu osi Y, aby przypiąć wartość minimalną lub maksymalną osi Y w żądanym miejscu.
+Kliknij pole wyboru "Ustawienia zaawansowane", aby wyświetlić ustawienia zakresu osi Y
 
-![Kliknij przycisk Zaawansowane ustawienia, wybierz niestandardowy zakres i określ maksymalną wartości minimalnej](./media/metrics-explorer/y-axis-range.png)
+![Kliknij pozycję Ustawienia zaawansowane, wybierz zakres niestandardowy i Określ minimalną maksymalną wartość](./media/metrics-explorer/y-axis-range.png)
 
 ## <a name="filter-your-data"></a>Filtrowanie danych
-Aby wyświetlić tylko metryk dla wybranego zestawu wartości właściwości:
+Aby wyświetlić tylko metryki dla wybranego zestawu wartości właściwości:
 
-![Kliknij filtr, rozwiń właściwość, a także sprawdzić niektóre wartości](./media/metrics-explorer/19-filter.png)
+![Kliknij pozycję Filtr, rozwiń Właściwość i Sprawdź niektóre wartości.](./media/metrics-explorer/19-filter.png)
 
-Jeśli nie zaznaczysz żadnych wartości dla określonej właściwości jest taka sama jak wybierając je wszystkie: istnieje żaden filtr dla tej właściwości.
+Jeśli nie wybrano żadnych wartości dla konkretnej właściwości, jest to taka sama jak w przypadku wybrania opcji wszystkie: nie ma żadnego filtru dla tej właściwości.
 
-Zwróć uwagę, liczby zdarzeń, wraz z każdej wartości właściwości. Po wybraniu wartości jedną właściwość, zostaną skorygowane Liczby obok wartości innych właściwości.
+Zwróć uwagę na liczbę zdarzeń obok każdej wartości właściwości. Po wybraniu wartości z jednej właściwości, liczby wraz z innymi wartościami właściwości są korygowane.
 
-Filtry mają zastosowanie do wszystkich schematów w bloku. Jeśli chcesz, aby różne filtrów stosowanych do różnych wykresów, Utwórz i Zapisz bloków różne metryki. Jeśli chcesz, możesz przypiąć wykresów z różnych bloków do pulpitu nawigacyjnego, tak, aby można je wyświetlić obok siebie.
+Filtry stosują się do wszystkich wykresów w bloku. Jeśli chcesz zastosować różne filtry do różnych wykresów, Utwórz i Zapisz różne bloki metryk. Jeśli chcesz, możesz przypiąć wykresy z różnych bloków do pulpitu nawigacyjnego, aby były widoczne obok siebie.
 
-### <a name="remove-bot-and-web-test-traffic"></a>Usuń przesyłów testu sieci web i bot
-Użyj filtru **ruch rzeczywisty lub syntetyczny** i sprawdź **rzeczywistych**.
+### <a name="remove-bot-and-web-test-traffic"></a>Usuwanie ruchu testowego bot i sieci Web
+Użyj filtru **ruchu rzeczywistego lub syntetycznego** i sprawdź **rzeczywistą**wartość.
 
-Można również filtrować według **źródło ruchu syntetycznego**.
+Można również filtrować według **źródła ruchu syntetycznego**.
 
 ### <a name="to-add-properties-to-the-filter-list"></a>Aby dodać właściwości do listy filtrów
-Czy chcesz filtrowanie danych telemetrycznych na kategorii w wybranej przez użytkownika? Na przykład może podzielić się użytkowników w różnych kategoriach, a chcesz się podzielić dane według tych kategorii.
+Czy chcesz filtrować dane telemetryczne według własnej kategorii? Można na przykład podzielić użytkowników na różne kategorie, a użytkownik chce segmentować dane według tych kategorii.
 
-[Utwórz własną właściwość](../../azure-monitor/app/api-custom-events-metrics.md#properties). Ustaw go w [inicjatora Telemetrii](../../azure-monitor/app/api-custom-events-metrics.md#defaults) aby były wyświetlane wszystkie dane telemetryczne — w tym standardowe dane telemetryczne wysyłane przez różne moduły zestawu SDK.
+[Utwórz własną Właściwość](../../azure-monitor/app/api-custom-events-metrics.md#properties). Ustaw go w [inicjatorze telemetrii](../../azure-monitor/app/api-custom-events-metrics.md#defaults) , aby był wyświetlany w całej telemetrii — w tym standardowe dane telemetryczne wysyłane przez różne moduły zestawu SDK.
 
 ## <a name="edit-the-chart-type"></a>Edytuj typ wykresu
-Zwróć uwagę, że można przełączać się między siatki i wykresy:
+Należy zauważyć, że można przełączać się między siatkami i wykresami:
 
-![Wybierz w siatce lub na wykresie, a następnie wybierz typ wykresu](./media/metrics-explorer/16-chart-grid.png)
+![Wybierz siatkę lub Graf, a następnie wybierz typ wykresu](./media/metrics-explorer/16-chart-grid.png)
 
 ## <a name="save-your-metrics-blade"></a>Zapisz blok metryk
-Po utworzeniu Niektóre wykresy, zapisz je jako ulubione. Czy chcesz udostępnić go innym członkom zespołu, można wybrać, jeśli używasz konta organizacyjnego.
+Po utworzeniu niektórych wykresów Zapisz je jako Ulubione. Jeśli używasz konta organizacyjnego, możesz wybrać, czy udostępnić go innym członkom zespołu.
 
-![Wybierz ulubiony](./media/metrics-explorer/21-favorite-save.png)
+![Wybierz element ulubiony](./media/metrics-explorer/21-favorite-save.png)
 
-Aby wyświetlić blok ponownie, **przejdź do bloku przeglądu** , a następnie otwórz Ulubione:
+Aby ponownie wyświetlić blok, **Przejdź do bloku przegląd** i Otwórz folder Ulubione:
 
-![W bloku Przegląd wybierz Ulubione](./media/metrics-explorer/22-favorite-get.png)
+![W bloku przegląd wybierz pozycję Ulubione.](./media/metrics-explorer/22-favorite-get.png)
 
-Jeśli została wybrana opcja względny zakres czasu, po zapisaniu, bloku zostaną zaktualizowane przy użyciu najnowszych metryki. Jeśli została wybrana opcja bezwzględny zakres czasu, widoczna będzie te same dane co czasu.
+Jeśli wybrano względny zakres czasu podczas zapisywania, blok zostanie zaktualizowany przy użyciu najnowszych metryk. W przypadku wybrania bezwzględnego zakresu czasu program będzie wyświetlał te same dane co godzinę.
 
-## <a name="reset-the-blade"></a>Zresetować blok
-Jeśli edytujesz blok, ale następnie chcesz wrócić do oryginalnego zapisano zestaw, wystarczy kliknąć resetowania.
+## <a name="reset-the-blade"></a>Zresetuj blok
+Jeśli edytujesz blok, ale chcesz wrócić do oryginalnego zapisanego zestawu, po prostu kliknij pozycję Zresetuj.
 
-![Na liście przyciski w górnej części Eksploratora metryk](./media/metrics-explorer/17-reset.png)
+![Na przyciskach u góry Eksploratora metryk](./media/metrics-explorer/17-reset.png)
 
 ## <a name="live-metrics-stream"></a>Strumień metryk na żywo
 
-Znacznie więcej natychmiastowej widok danych telemetrycznych, można otworzyć [Live Stream](live-stream.md). Większość metryk potrwać kilka minut, ze względu na proces agregacji. Z drugiej strony metryki na żywo są optymalizowane w celu uzyskania niskich opóźnień. 
+Aby uzyskać znacznie bardziej bezpośredni wgląd w dane telemetryczne, Otwórz [Live Stream](live-stream.md). Większość metryk może pojawić się w ciągu kilku minut z powodu procesu agregacji. Z kolei metryki na żywo są zoptymalizowane pod kątem małych opóźnień. 
 
 ## <a name="set-alerts"></a>Ustawianie alertów
-Aby otrzymywać powiadomienia pocztą e-mail wyjątkowe wartości dowolnej metryce, należy dodać alert. Możesz wybrać albo Wyślij wiadomość e-mail do administratorów konta lub adresów e-mail określonych.
+Aby otrzymywać powiadomienia pocztą e-mail o nietypowych wartościach dowolnej metryki, Dodaj alert. Możesz wybrać opcję wysłania wiadomości e-mail do administratorów konta lub do określonych adresów e-mail.
 
-![W Eksploratorze metryk Wybierz reguły alertów, Dodaj Alert](./media/metrics-explorer/appinsights-413setMetricAlert.png)
+![W Eksplorator metryk Wybierz reguły alertów, Dodaj alert](./media/metrics-explorer/appinsights-413setMetricAlert.png)
 
 [Dowiedz się więcej o alertach][alerts].
 
 
 ## <a name="continuous-export"></a>Ciągły eksport
-Jeśli chcesz, aby dane wyeksportowane stale, dzięki czemu można przetwarzać go zewnętrznie, rozważ użycie [Eksport ciągły](../../azure-monitor/app/export-telemetry.md).
+Jeśli chcesz, aby dane były stale eksportowane, aby można było je przetwarzać zewnętrznie, rozważ użycie [eksportu ciągłego](../../azure-monitor/app/export-telemetry.md).
 
 ### <a name="power-bi"></a>Power BI
-Jeśli chcesz, aby jeszcze dokładniej widoków danych, możesz to zrobić [eksportowanie do usługi Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
+Jeśli chcesz, aby jeszcze bardziej bogatsze widoki danych, możesz [wyeksportować je do Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
 ## <a name="analytics"></a>Analiza
-[Analiza](../../azure-monitor/app/analytics.md) jest bardziej wszechstronna sposób analizować dane telemetryczne za pomocą zaawansowanego języka zapytań. Użyj go, jeśli chcesz połączyć i obliczenia wyników metryk spośród lub wykonywać szczegółowe eksploracji ostatnią wydajność Twojej aplikacji. 
+[Analiza](../../azure-monitor/app/analytics.md) to bardziej uniwersalny sposób analizowania danych telemetrycznych za pomocą zaawansowanego języka zapytań. Użyj go, jeśli chcesz połączyć lub obliczyć wyniki z metryk lub uzyskać szczegółowe badanie ostatniej wydajności aplikacji. 
 
-Z wykresu metryki możesz kliknąć ikonę analiza, aby przejść bezpośrednio do równoważne zapytania usługi Analytics.
+Na wykresie metryki możesz kliknąć ikonę analiza, aby przejść bezpośrednio do odpowiedniej kwerendy analizy.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 *Nie widzę żadnych danych na wykresie.*
 
-* Filtry mają zastosowanie do wszystkich schematów w bloku. Upewnij się, że podczas, gdy są najbardziej istotne na jeden wykres, nie został ustawiony filtr, który nie obejmuje wszystkich danych na innym.
+* Filtry stosują się do wszystkich wykresów w bloku. Upewnij się, że podczas skoncentrowania się na jednym wykresie nie ustawiono filtru, który wyklucza wszystkie dane z innego.
 
-    Jeśli chcesz ustawić różne filtry na różnych wykresów, należy je utworzyć w różnych bloków, zapisać je jako osobne Ulubione. Jeśli chcesz, możesz przypiąć je do pulpitu nawigacyjnego tak, aby można je wyświetlić obok siebie.
-* Jeśli wykres jest Grupuj według właściwości, która nie jest zdefiniowana w metryki, będą nic na wykresie. Spróbuj wyczyścić "Grupuj według", lub wybierz właściwość grupowania.
-* Dane dotyczące wydajności (procesora CPU, we/wy i tak dalej) jest dostępna dla usług sieci web Java, aplikacjach klasycznych Windows [usług IIS i aplikacje sieci web usług jeśli instalowany jest monitor stanu](../../azure-monitor/app/monitor-performance-live-website-now.md), i [usług Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). Nie jest dostępne dla usługi Azure websites.
+    Jeśli chcesz ustawić inne filtry na różnych wykresach, utwórz je w różnych blokach, a następnie Zapisz je jako osobne Ulubione. Jeśli chcesz, możesz przypiąć je do pulpitu nawigacyjnego, aby były widoczne obok siebie.
+* W przypadku grupowania wykresu według właściwości, która nie jest zdefiniowana w metryce, na wykresie nie będzie niczego. Spróbuj wyczyścić polecenie "Grupuj według" lub wybierz inną właściwość grupowania.
+* Dane wydajności (procesor CPU, szybkość operacji we/wy itd.) są dostępne dla usług sieci Web Java, aplikacji klasycznych systemu Windows, [aplikacji sieci Web i usług IIS, jeśli jest instalowany Monitor stanu](../../azure-monitor/app/monitor-performance-live-website-now.md)i [usługa Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). Nie jest ona dostępna dla usługi Azure Websites.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Monitorowanie użycia za pomocą usługi Application Insights](../../azure-monitor/app/usage-overview.md)
-* [Za pomocą wyszukiwanie diagnostyczne](../../azure-monitor/app/diagnostic-search.md)
+## <a name="next-steps"></a>Następne kroki
+* [Monitorowanie użycia za pomocą Application Insights](../../azure-monitor/app/usage-overview.md)
+* [Korzystanie z wyszukiwania diagnostycznego](../../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->
 

@@ -1,24 +1,19 @@
 ---
 title: Wykrywanie inteligentne — anomalie wydajności | Microsoft Docs
 description: Application Insights przeprowadza inteligentnej analizy telemetrii aplikacji i ostrzega o potencjalnych problemach. Ta funkcja nie wymaga instalacji.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.author: mbullwin
-ms.openlocfilehash: 5ccff22a74b0cb1edcbae40fca087fe3197cb6ca
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867706"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820569"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Wykrywanie inteligentne — anomalie wydajności
 
@@ -41,7 +36,7 @@ Inteligentne wykrywanie wymaga co najmniej 8 dni telemetrii w woluminie, aby mo�
 
 Nie, powiadomienie nie oznacza, że w aplikacji występuje problem. To po prostu sugestia dotyczącą czegoś, czemu możesz chcieć przyjrzeć się bliżej.
 
-## <a name="how-do-i-fix-it"></a>Jak go naprawić?
+## <a name="how-do-i-fix-it"></a>Jak mogę rozwiązać ten problem?
 
 Powiadomienia obejmują informacje diagnostyczne. Oto przykład:
 
@@ -58,7 +53,7 @@ Powiadomienia obejmują informacje diagnostyczne. Oto przykład:
 
 ## <a name="configure-email-notifications"></a>Konfigurowanie powiadomień E-mail
 
-Powiadomienia inteligentnego wykrywania są domyślnie włączone i wysyłane do tych, którzy mają [kontrolę](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) dostępu współautora i [monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) do subskrypcji, w której znajduje się zasób Application Insights. Aby to zmienić, kliknij pozycję **Konfiguruj** w powiadomieniu e-mail lub Otwórz ustawienia inteligentnego wykrywania w Application Insights. 
+Powiadomienia inteligentnego wykrywania są domyślnie włączone i wysyłane do tych, którzy mają [kontrolę](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) dostępu [współautora i monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) do subskrypcji, w której znajduje się zasób Application Insights. Aby to zmienić, kliknij pozycję **Konfiguruj** w powiadomieniu e-mail lub Otwórz ustawienia inteligentnego wykrywania w Application Insights. 
   
   ![Ustawienia inteligentnego wykrywania](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -80,7 +75,7 @@ Wiadomości e-mail dotyczące anomalii dotyczących wydajności wykrywania intel
 
   * Jeszcze nie, ale możesz:
     * [Skonfiguruj alerty](../../azure-monitor/app/alerts.md) informujące o przekroczeniu progu przez metrykę.
-    * [](../../azure-monitor/app/export-telemetry.md) Wyeksportuj dane telemetryczne do [bazy danych](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) lub [do usługi PowerBI](../../azure-monitor/app/export-power-bi.md ), gdzie możesz ją przeanalizować.
+    * [Wyeksportuj dane telemetryczne](../../azure-monitor/app/export-telemetry.md) do [bazy danych](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) lub [do usługi PowerBI](../../azure-monitor/app/export-power-bi.md ), gdzie możesz ją przeanalizować.
 * *Jak często przeprowadzana jest analiza?*
 
   * Przeprowadzamy analizę codziennie na danych telemetrycznych od poprzedniego dnia (pełny dzień w strefie czasowej UTC).
@@ -108,7 +103,7 @@ Gdzie jest problem? Czy serwer jest powolnie reagować, czy jest to strona bardz
 
 Otwórz blok metryki przeglądarki. Segmentowy widok czasu ładowania strony w przeglądarce pokazuje, gdzie odbywa się czas. 
 
-* Jeśli **czas żądania wysłania** jest wysoki, serwer reaguje powoli lub żądanie jest wpisem z dużą ilością danych. Sprawdź metryki [wydajności](../../azure-monitor/app/web-monitor-performance.md#metrics) , aby zbadać czasy odpowiedzi.
+* Jeśli **czas żądania wysłania** jest wysoki, serwer reaguje powoli lub żądanie jest wpisem z dużą ilością danych. Sprawdź [metryki wydajności](../../azure-monitor/app/web-monitor-performance.md#metrics) , aby zbadać czasy odpowiedzi.
 * Skonfiguruj [Śledzenie zależności](../../azure-monitor/app/asp-net-dependencies.md) , aby zobaczyć, czy spowolnienie jest spowodowane usługami zewnętrznymi czy bazą danych.
 * Jeśli **otrzymujesz odpowiedź** , Twoja strona i jej zależne części — JavaScript, CSS, obrazy i tak dalej (ale dane ładowane asynchronicznie) są długie. Skonfiguruj [Test dostępności](../../azure-monitor/app/monitor-web-app-availability.md)i pamiętaj, aby ustawić opcję ładowania części zależnych. Po otrzymaniu pewnych wyników Otwórz szczegóły wyniku i rozwiń go, aby zobaczyć czasy ładowania różnych plików.
 * Wysoka **godzina przetwarzania przez klienta** sugeruje, że skrypty działają wolno. Jeśli powód nie jest oczywisty, rozważ dodanie pewnego kodu chronometrażu i wysłanie czasu w wywołaniach trackMetric.
@@ -117,7 +112,7 @@ Otwórz blok metryki przeglądarki. Segmentowy widok czasu ładowania strony w p
 W sieci Web jest dostępna pełna informacja o ulepszaniu odpowiedzi serwera i czasów ładowania stron, dlatego nie będziemy próbować powtórzyć ich w tym miejscu. Oto kilka porad, które prawdopodobnie już wiesz, po prostu zapoznaj się z nim:
 
 * Wolne ładowanie z powodu dużych plików: Załaduj skrypty i inne części asynchronicznie. Użyj grupowania skryptów. Podziel stronę główną na widżety, które ładują dane oddzielnie. Nie wysyłaj zwykłego pliku HTML dla długich tabel: Użyj skryptu, aby zażądać danych jako JSON lub innego formatu kompaktowego, a następnie wypełnij tabelę. Istnieją wspaniałe platformy, które pomogą Ci. (Pociąga to za sobą również duże skrypty).
-* Wolne zależności serwera: Uwzględnij lokalizacje geograficzne składników. Jeśli na przykład używasz platformy Azure, upewnij się, że serwer sieci Web i baza danych znajdują się w tym samym regionie. Czy zapytania są pobierają więcej informacji niż są one potrzebne? Czy chcesz buforować lub wsadowo pomoc?
+* Wolne zależności serwera: należy wziąć pod uwagę lokalizację geograficzną składników. Jeśli na przykład używasz platformy Azure, upewnij się, że serwer sieci Web i baza danych znajdują się w tym samym regionie. Czy zapytania są pobierają więcej informacji niż są one potrzebne? Czy chcesz buforować lub wsadowo pomoc?
 * Problemy z pojemnością: Sprawdź metryki serwera dotyczące czasów odpowiedzi i liczby żądań. Jeśli czas odpowiedzi jest nieproporcjonalny z szczytami w licznikach żądań, prawdopodobnie serwery są rozciągane.
 
 

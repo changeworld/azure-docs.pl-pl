@@ -1,23 +1,18 @@
 ---
 title: Rozwiązywanie problemów Application Insights w projekcie sieci Web w języku Java
 description: Przewodnik rozwiązywania problemów — monitorowanie aplikacji Java na żywo za pomocą Application Insights.
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ef602767-18f2-44d2-b7ef-42b404edd0e9
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: a26302b0c0b4361fe3e7aae6aba798f433c72ade
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.date: 03/14/2019
+ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742196"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820801"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Rozwiązywanie problemów oraz pytania i odpowiedzi dotyczące usługi Application Insights dla języka Java
 Masz pytania lub problemy z [usługą Azure Application Insights w języku Java][java]? Poniżej przedstawiono niektóre porady.
@@ -25,17 +20,17 @@ Masz pytania lub problemy z [usługą Azure Application Insights w języku Java]
 ## <a name="build-errors"></a>Błędy kompilacji
 **W przypadku, gdy dodajesz zestaw Application Insights SDK za pośrednictwem Maven lub Gradle, nastąpiło przebudowywanie lub IntelliJ.**
 
-* Jeśli element Dependency `<version>` używa wzorca z symbolami wieloznacznymi (np. Maven lub (Gradle) `version:'2.0.+'`) spróbuj określić konkretną wersję, a nie na przykład `2.0.1`. `<version>[2.0,)</version>` Zapoznaj się z [informacjami o wersji](https://github.com/Microsoft/ApplicationInsights-Java/releases) najnowszej wersji.
+* Jeśli zależność `<version>` elementu używa wzorca z symbolami wieloznacznymi (np. (Maven) `<version>[2.0,)</version>` lub (Gradle) `version:'2.0.+'`), spróbuj określić określoną wersję, a nie `2.0.1`. Zapoznaj się z [informacjami o wersji](https://github.com/Microsoft/ApplicationInsights-Java/releases) najnowszej wersji.
 
 ## <a name="no-data"></a>Brak danych
 **Dodano Application Insights pomyślnie i uruchomiono moją aplikację, ale w portalu nigdy nie były wyświetlane dane.**
 
 * Poczekaj chwilę, a następnie kliknij przycisk Odśwież. Wykresy są odświeżane okresowo, ale można również odświeżać je ręcznie. Interwał odświeżania zależy od zakresu czasu wykresu.
 * Sprawdź, czy masz zdefiniowany klucz Instrumentacji w pliku ApplicationInsights. XML (w folderze Resources w projekcie) lub skonfigurowany jako zmienna środowiskowa.
-* Sprawdź, czy w pliku `<DisableTelemetry>true</DisableTelemetry>` XML nie ma węzła.
+* Sprawdź, czy w pliku XML nie ma węzła `<DisableTelemetry>true</DisableTelemetry>`.
 * W zaporze może być konieczne otwarcie portów TCP 80 i 443 dla ruchu wychodzącego do dc.services.visualstudio.com. Zapoznaj się z [pełną listą wyjątków zapory](../../azure-monitor/app/ip-addresses.md)
 * Na tablicy startowej Microsoft Azure Zapoznaj się z mapą stanu usługi. Jeśli istnieją jakieś wskazania alertów, poczekaj, aż powróci do programu OK, a następnie zamknij i ponownie otwórz blok aplikacji Application Insights.
-* [Włącz rejestrowanie](#debug-data-from-the-sdk) przez dodanie `<SDKLogger />` elementu w węźle głównym w pliku ApplicationInsights. XML (w folderze Resources w projekcie) i sprawdź wpisy z systemem AI: Informacja/ostrzeżenie/błąd dla wszystkich podejrzanych dzienników. 
+* [Włącz rejestrowanie](#debug-data-from-the-sdk) , dodając `<SDKLogger />` element w węźle głównym w pliku ApplicationInsights. XML (w folderze Resources w projekcie) i sprawdź wpisy z systemem AI: info/warn/Error dla wszystkich podejrzanych dzienników. 
 * Upewnij się, że prawidłowy plik ApplicationInsights. xml został pomyślnie załadowany przez zestaw SDK języka Java, przeglądając komunikaty wyjściowe konsoli dla "plik konfiguracyjny został pomyślnie znaleziony".
 * Jeśli nie można odnaleźć pliku konfiguracji, sprawdź komunikaty wyjściowe, aby zobaczyć, gdzie jest wyszukiwany plik konfiguracji, i upewnij się, że ApplicationInsights. XML znajduje się w jednej z tych lokalizacji wyszukiwania. Zgodnie z zasadą można umieścić plik konfiguracji w sąsiedztwie Application Insights JARs zestawu SDK. Na przykład: w Tomcat, oznacza to folder WEB-INF/Classes. Podczas opracowywania można umieścić plik ApplicationInsights. XML w folderze Resources projektu sieci Web.
 * Sprawdź również na [stronie problemy](https://github.com/Microsoft/ApplicationInsights-Java/issues) z usługą GitHub znane problemy związane z zestawem SDK.
@@ -80,7 +75,7 @@ W kodzie:
     config.setTrackingIsDisabled(true);
 ```
 
-**Or**
+**Oraz**
 
 Zaktualizuj plik ApplicationInsights. XML (w folderze Resources w projekcie). Dodaj następujące elementy w węźle głównym:
 
@@ -103,9 +98,9 @@ Przy użyciu metody XML, należy ponownie uruchomić aplikację po zmianie warto
 
 **Jak mogę się dowiedzieć, co robi zestaw SDK?**
 
-Aby uzyskać więcej informacji na temat tego, co dzieje się w interfejsie `<SDKLogger/>` API, Dodaj w węźle głównym pliku konfiguracji ApplicationInsights. XML.
+Aby uzyskać więcej informacji na temat tego, co dzieje się w interfejsie API, Dodaj `<SDKLogger/>` w węźle głównym pliku konfiguracji ApplicationInsights. XML.
 
-### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
+### <a name="applicationinsightsxml"></a>ApplicationInsights. XML
 
 Możesz również nakazać Rejestratorowi wyjście do pliku:
 
@@ -119,7 +114,7 @@ Możesz również nakazać Rejestratorowi wyjście do pliku:
 
 ### <a name="spring-boot-starter"></a>Rozruch z sprężyną Starter
 
-Aby włączyć rejestrowanie zestawu SDK za pomocą aplikacji do rozruchu sprężynowego przy użyciu Application Insights sprężynowego rozruchu Starter, `application.properties` Dodaj następujący plik do pliku:
+Aby włączyć rejestrowanie zestawu SDK za pomocą aplikacji do rozruchu sprężynowego przy użyciu Application Insights sprężynowego rozruchu Starter, Dodaj następujący plik do `application.properties`:
 
 ```yaml
 azure.application-insights.logger.type=file
@@ -183,10 +178,10 @@ W zaporze może być konieczne otwarcie portów TCP 80 i 443 dla ruchu wychodzą
 Zobacz [przechowywanie i prywatność danych][data].
 
 ## <a name="debug-logging"></a>Rejestrowanie debugowania
-Application Insights używa `org.apache.http`. Jest to przeniesiono w Application Insights rdzeń Jars w przestrzeni nazw `com.microsoft.applicationinsights.core.dependencies.http`. Dzięki temu Application Insights obsługiwać scenariusze, w których różne wersje tych samych `org.apache.http` istnieją w jednej bazie kodu.
+Application Insights używa `org.apache.http`. Jest to przeniesiono w Application Insights rdzeń Jars w `com.microsoft.applicationinsights.core.dependencies.http`przestrzeni nazw. Dzięki temu Application Insights obsługiwać scenariusze, w których różne wersje tego samego `org.apache.http` istnieją w jednej bazie kodu.
 
 >[!NOTE]
->Jeśli włączysz rejestrowanie na poziomie debugowania dla wszystkich przestrzeni nazw w aplikacji, zostaną one uznane przez wszystkie wykonywane moduły, w tym `org.apache.http` nazwa zmieniona `com.microsoft.applicationinsights.core.dependencies.http`jako. Application Insights nie będzie w stanie zastosować filtrowania dla tych wywołań, ponieważ jest ono wykonywane przez bibliotekę Apache. Rejestrowanie na poziomie debugowania daje znaczną ilość danych dzienników i nie jest zalecane w przypadku wystąpień produkcyjnych na żywo.
+>Jeśli włączysz rejestrowanie na poziomie debugowania dla wszystkich przestrzeni nazw w aplikacji, zostaną one uznane przez wszystkie wykonywane moduły, w tym `org.apache.http` zmienione jako `com.microsoft.applicationinsights.core.dependencies.http`. Application Insights nie będzie w stanie zastosować filtrowania dla tych wywołań, ponieważ jest ono wykonywane przez bibliotekę Apache. Rejestrowanie na poziomie debugowania daje znaczną ilość danych dzienników i nie jest zalecane w przypadku wystąpień produkcyjnych na żywo.
 
 
 ## <a name="next-steps"></a>Następne kroki

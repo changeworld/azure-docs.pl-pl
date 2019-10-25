@@ -1,59 +1,55 @@
 ---
-title: Profil aplikacji sieci web platformy ASP.NET Core platformy Azure w systemie Linux za pomocą Application Insights Profiler | Dokumentacja firmy Microsoft
-description: Omówienie pojęć i samouczek krok po kroku dotyczące sposobu używania Application Insights Profiler.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.reviewer: mbullwin
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Profilowanie ASP.NET Core aplikacji sieci Web systemu Linux Azure z Application Insights Profiler | Microsoft Docs
+description: Przegląd koncepcyjny i samouczek krok po kroku dotyczący sposobu korzystania z Application Insights Profiler.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/23/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/23/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: a300aa066bdef40c4768ac5e278537aec1a8b3b7
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306536"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820556"
 ---
-# <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil aplikacji sieci web platformy ASP.NET Core platformy Azure w systemie Linux za pomocą Application Insights Profiler
+# <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profilowanie ASP.NET Core aplikacji sieci Web systemu Linux Azure z Application Insights Profiler
 
 Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 
-Dowiedz się, jaka jest zużywany czas w każdej metodzie działającej aplikacji internetowej przy użyciu [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights Profiler jest teraz dostępny do aplikacji sieci web platformy ASP.NET Core, które są hostowane w systemie Linux w usłudze Azure App Service. Ten przewodnik zawiera instrukcje krok po kroku w sposób można zbierać ślady Profiler dla aplikacji sieci web platformy ASP.NET Core w systemie Linux.
+Dowiedz się, ile czasu zajmuje każda metoda aktywnej aplikacji sieci Web przy użyciu [Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights Profiler jest teraz dostępna dla ASP.NET Core aplikacji sieci Web hostowanych w systemie Linux w Azure App Service. Ten przewodnik zawiera instrukcje krok po kroku dotyczące sposobu zbierania śladów profilera dla ASP.NET Core aplikacji sieci Web systemu Linux.
 
-Po ukończeniu tego przewodnika aplikacji może zbierać ślady Profiler, takich jak śladów, które są wyświetlane na obrazie. W tym przykładzie śledzenia Profiler wskazuje, że żądanie namierzenie internetowego jest powolne, ze względu na czas oczekiwania. *Ścieżka aktywna* w kodzie, który spowalnia aplikacji jest oznaczony ikoną gaśniczego. **o** method in Class metoda **HomeController** sekcji spowalnia aplikacji sieci web, ponieważ wywołuje metodę **Thread.Sleep** funkcji.
+Po zakończeniu tego instruktażu aplikacja będzie mogła zbierać ślady profilera, takie jak ślady, które są wyświetlane na obrazie. W tym przykładzie ślad profilera wskazuje, że określone żądanie sieci Web jest powolne z powodu czasu oczekiwania. *Gorąca ścieżka* w kodzie, który spowalnia aplikację, jest oznaczona ikoną płomienia. Metoda **about** w sekcji **HomeController** spowalnia działanie aplikacji sieci Web, ponieważ metoda wywołuje funkcję **Thread. Sleep** .
 
-![Ślady Profiler](./media/profiler-aspnetcore-linux/profiler-traces.png)
+![Ślady profilera](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Poniższe instrukcje mają zastosowanie do wszystkich środowisk programowania Windows, Linux i Mac:
+Poniższe instrukcje dotyczą wszystkich środowisk deweloperskich dla systemów Windows, Linux i Mac:
 
-* Zainstaluj [zestawu .NET Core SDK 2.1.2 lub nowszej](https://dotnet.microsoft.com/download/archives).
-* Zainstaluj oprogramowanie Git, postępując zgodnie z instrukcjami w artykule [wprowadzenie — Instalowanie usługi Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Zainstaluj [zestaw .NET Core SDK 2.1.2 lub nowszy](https://dotnet.microsoft.com/download/archives).
+* Zainstaluj usługę git, postępując zgodnie z instrukcjami w [wprowadzenie — Instalowanie usługi git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 ## <a name="set-up-the-project-locally"></a>Konfigurowanie projektu lokalnie
 
-1. Otwórz okno wiersza polecenia na komputerze. Zgodnie z poniższymi instrukcjami działać dla wszystkich środowisk programowania Windows, Linux i Mac.
+1. Otwórz okno wiersza polecenia na komputerze. Poniższe instrukcje działają w przypadku wszystkich środowisk deweloperskich dla systemów Windows, Linux i Mac.
 
-1. Tworzenie aplikacji sieci web platformy ASP.NET Core MVC:
+1. Utwórz aplikację sieci Web ASP.NET Core MVC:
 
     ```
     dotnet new mvc -n LinuxProfilerTest
     ```
 
-1. Zmień katalog roboczy do folderu głównego projektu.
+1. Zmień katalog roboczy na folder główny projektu.
 
-1. Dodawanie pakietu NuGet, aby zbierać ślady Profiler:
+1. Dodaj pakiet NuGet w celu zebrania śladów profilera:
 
     ```shell
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-1. Włącz usługę Application Insights w pliku Program.cs:
+1. Włącz Application Insights w Program.cs:
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -62,7 +58,7 @@ Poniższe instrukcje mają zastosowanie do wszystkich środowisk programowania W
             .UseStartup<Startup>();
     ```
     
-1. Włącz Profiler w pliku Startup.cs:
+1. Włącz Profiler w Startup.cs:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -72,7 +68,7 @@ Poniższe instrukcje mają zastosowanie do wszystkich środowisk programowania W
     }
     ```
 
-1. Dodaj wiersz kodu w **HomeController.cs** sekcji, aby losowo opóźnienie kilka sekund:
+1. Dodaj wiersz kodu w sekcji **HomeController.cs** , aby losowo opóźnić kilka sekund:
 
     ```csharp
         using System.Threading;
@@ -95,43 +91,43 @@ Poniższe instrukcje mają zastosowanie do wszystkich środowisk programowania W
         git commit -m "first commit"
     ```
 
-## <a name="create-the-linux-web-app-to-host-your-project"></a>Utwórz aplikację internetową systemu Linux w celu hostowania projektu
+## <a name="create-the-linux-web-app-to-host-your-project"></a>Tworzenie aplikacji sieci Web systemu Linux na potrzeby hostowania projektu
 
-1. Utwórz środowiska aplikacji sieci web przy użyciu usługi App Service w systemie Linux:
+1. Utwórz środowisko aplikacji sieci Web przy użyciu App Service w systemie Linux:
 
-    ![Utwórz aplikację internetową systemu Linux](./media/profiler-aspnetcore-linux/create-linux-appservice.png)
+    ![Tworzenie aplikacji sieci Web systemu Linux](./media/profiler-aspnetcore-linux/create-linux-appservice.png)
 
 2. Utwórz poświadczenia wdrożenia:
 
     > [!NOTE]
-    > Zapisz hasło do użycia w przyszłości podczas wdrażania aplikacji sieci web.
+    > Zapisz hasło, aby użyć go później podczas wdrażania aplikacji sieci Web.
 
-    ![Utwórz poświadczenia wdrożenia](./media/profiler-aspnetcore-linux/create-deployment-credentials.png)
+    ![Tworzenie poświadczeń wdrożenia](./media/profiler-aspnetcore-linux/create-deployment-credentials.png)
 
-3. Wybierz opcje wdrażania. Konfigurowanie lokalnego repozytorium Git w aplikacji sieci web, postępując zgodnie z instrukcjami w witrynie Azure portal. Repozytorium Git jest tworzona automatycznie.
+3. Wybierz opcje wdrażania. Skonfiguruj lokalne repozytorium Git w aplikacji sieci Web, postępując zgodnie z instrukcjami na Azure Portal. Repozytorium git jest tworzone automatycznie.
 
-    ![Konfigurowanie repozytorium Git](./media/profiler-aspnetcore-linux/setup-git-repo.png)
+    ![Konfigurowanie repozytorium git](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Aby uzyskać więcej opcji wdrażania, zobacz [w tym artykule](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type).
+Aby uzyskać więcej opcji wdrażania, zobacz [ten artykuł](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type).
 
 ## <a name="deploy-your-project"></a>Wdrażanie projektu
 
-1. W oknie wiersza polecenia przejdź do folderu głównego projektu. Dodaj zdalne repozytorium Git, aby wskazywał repozytorium w usłudze App Service:
+1. W oknie wiersza polecenia przejdź do folderu głównego projektu. Dodaj zdalne repozytorium git, aby wskazywało repozytorium na App Service:
 
     ```
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
-    * Użyj **username** umożliwia Utwórz poświadczenia wdrożenia.
-    * Użyj **nazwy aplikacji** umożliwia tworzenie aplikacji sieci web przy użyciu usługi App Service w systemie Linux.
+    * Użyj **nazwy użytkownika** użytej do utworzenia poświadczeń wdrożenia.
+    * Użyj **nazwy aplikacji** , która została użyta do utworzenia aplikacji sieci Web przy użyciu App Service w systemie Linux.
 
-2. Wdrażanie projektu, wypychając zmiany do platformy Azure:
+2. Wdróż projekt, wypychając zmiany do platformy Azure:
 
     ```
     git push azure master
     ```
 
-Powinny zostać wyświetlone dane wyjściowe podobne do poniższego przykładu:
+Powinny zostać wyświetlone dane wyjściowe podobne do następującego przykładu:
 
     ```
     Counting objects: 9, done.
@@ -154,33 +150,33 @@ Powinny zostać wyświetlone dane wyjściowe podobne do poniższego przykładu:
 
     ```
 
-## <a name="add-application-insights-to-monitor-your-web-apps"></a>Dodaj usługę Application Insights do monitorowania aplikacji sieci web
+## <a name="add-application-insights-to-monitor-your-web-apps"></a>Dodawanie Application Insights do monitorowania aplikacji sieci Web
 
-1. [Utwórz zasób usługi Application Insights](./../../azure-monitor/app/create-new-resource.md ).
+1. [Utwórz zasób Application Insights](./../../azure-monitor/app/create-new-resource.md ).
 
-2. Kopiuj **iKey** wartości zasobu usługi Application Insights i skonfigurować następujące ustawienia w aplikacjach sieci web:
+2. Skopiuj wartość **iKey** zasobu Application Insights i ustaw następujące ustawienia w aplikacjach sieci Web:
 
     ```
     APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
     ```
 
-    Po zmianie ustawień aplikacji, witryna zostanie automatycznie uruchomiony ponownie. Po zastosowaniu nowych ustawień, Profiler jest uruchamiany natychmiast na dwie minuty. Profiler następnie działa na dwie minuty, co godzinę.
+    Po zmianie ustawień aplikacji lokacja zostanie automatycznie uruchomiona ponownie. Po zastosowaniu nowych ustawień Profiler natychmiast działa przez dwie minuty. Profiler jest uruchamiany przez dwie minuty co godzinę.
 
-3. Generowanie część ruchu do swojej witryny sieci Web. Możesz wygenerować ruchu, odświeżając lokacji **o** strony kilka razy.
+3. Wygeneruj ruch dla swojej witryny sieci Web. Ruch można generować przez odświeżenie strony **o** kilka razy.
 
-4. Poczekaj 2 do 5 minut, zanim zdarzenia do agregacji do usługi Application Insights.
+4. Zaczekaj od dwóch do pięciu minut, aż zdarzenia mają być agregowane do Application Insights.
 
-5. Przejdź do usługi Application Insights **wydajności** okienko w witrynie Azure portal. Można wyświetlić ślady Profiler w prawej dolnej części okienka.
+5. Przejdź do okienka **wydajność** Application Insights w Azure Portal. Ślady profilera można wyświetlić w prawym dolnym rogu okienka.
 
-    ![Wyświetlanie śladów Profiler](./media/profiler-aspnetcore-linux/view-traces.png)
+    ![Wyświetlanie śladów profilera](./media/profiler-aspnetcore-linux/view-traces.png)
 
 ## <a name="known-issues"></a>Znane problemy
 
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Przycisk teraz profil nie działa dla systemu Linux Profiler
-Wersji systemu Linux profiler usługi App Insights nie obsługuje jeszcze na żądanie profilowania przy użyciu profilu teraz przycisk.
+### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Przycisk profil nie działa w przypadku profilera systemu Linux
+Wersja systemu Linux profilera usługi App Insights jeszcze nie obsługuje profilowania na żądanie przy użyciu przycisku profilu teraz.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Jeśli używasz kontenerów niestandardowych, które są hostowane przez usługę Azure App Service, postępuj zgodnie z instrukcjami [ Włącz Profiler usługi dla konteneryzowanych aplikacji platformy ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) umożliwiające Application Insights Profiler.
+## <a name="next-steps"></a>Następne kroki
+Jeśli używasz kontenerów niestandardowych hostowanych przez Azure App Service, postępuj zgodnie z instrukcjami w temacie [włączanie Service Profiler dla aplikacji ASP.NET Core kontenerowych](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) , aby włączyć Application Insights Profiler.
 
-Zgłoś wszelkie problemy lub sugestie do repozytorium usługi Application Insights w witrynie GitHub: [ApplicationInsights-Profiler-AspNetCore: Problemy z](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
+Zgłoś wszelkie problemy lub sugestie dotyczące Application Insights repozytorium GitHub: [ApplicationInsights-Profiler-AspNetCore: problemy](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).

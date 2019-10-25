@@ -1,23 +1,18 @@
 ---
 title: Ciągły eksport danych telemetrycznych z Application Insights | Microsoft Docs
 description: Wyeksportuj dane diagnostyczne i użycia do magazynu w Microsoft Azure i Pobierz je stamtąd.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/25/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 3238abcbcbc4d776e3736b13d5b32149c642649c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 07/25/2019
+ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516943"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819551"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Eksportuj dane telemetryczne z Application Insights
 Chcesz utrzymać dane telemetryczne dłużej niż w przypadku standardowego okresu przechowywania? Lub przetwarzać je w sposób wyspecjalizowany? Eksport ciągły jest idealnym rozwiązaniem. Zdarzenia wyświetlane w portalu Application Insights mogą zostać wyeksportowane do magazynu w Microsoft Azure w formacie JSON. Z tego miejsca możesz pobrać dane i napisać dowolny kod, który jest potrzebny do jego przetworzenia.  
@@ -92,7 +87,7 @@ Dane obejmują również wyniki wszelkich skonfigurowanych [testów dostępnośc
 ## <a name="get"></a>Inspekcja danych
 Magazyn można sprawdzić bezpośrednio w portalu. Kliknij pozycję Strona główna w menu z lewej strony, w górnej części strony "usługi platformy Azure" Wybierz pozycję **konta magazynu**, wybierz nazwę konta magazynu, na stronie Przegląd wybierz pozycję **obiekty blob** w obszarze usługi, a następnie wybierz nazwę kontenera.
 
-Aby sprawdzić usługę Azure Storage w programie Visual Studio, Otwórz **Widok**, **Eksplorator chmury**. (Jeśli nie masz tego polecenia menu, musisz zainstalować zestaw Azure SDK: Otwórz okno dialogowe **Nowy projekt** , rozwiń pozycję C#Visual/Cloud i wybierz polecenie **Pobierz zestaw Microsoft Azure SDK dla platformy .NET**.)
+Aby sprawdzić usługę Azure Storage w programie Visual Studio, Otwórz **Widok**, **Eksplorator chmury**. (Jeśli nie masz tego polecenia menu, musisz zainstalować zestaw Azure SDK: Otwórz okno dialogowe **Nowy projekt** , rozwiń pozycję Visual C#/Cloud i wybierz polecenie **Pobierz zestaw Microsoft Azure SDK dla platformy .NET**.)
 
 Po otwarciu magazynu obiektów BLOB zobaczysz kontener z zestawem plików obiektów BLOB. Identyfikator URI każdego pliku pochodzącego z nazwy zasobu Application Insights, jego klucza instrumentacji, typu telemetrii/daty/godziny. (Nazwa zasobu jest mała, a klucz Instrumentacji pomija łączniki).
 
@@ -104,10 +99,10 @@ Oto postać ścieżki:
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
-Gdzie
+Lokalizacja
 
-* `blobCreationTimeUtc`czas utworzenia obiektu BLOB w wewnętrznym magazynie przemieszczania
-* `blobDeliveryTimeUtc`to czas, po jakim obiekt BLOB jest kopiowany do magazynu docelowego eksportu
+* `blobCreationTimeUtc` to czas, po utworzeniu obiektu BLOB w wewnętrznym magazynie przemieszczania
+* `blobDeliveryTimeUtc` to czas, kiedy obiekt BLOB jest kopiowany do magazynu docelowego eksportu
 
 ## <a name="format"></a>Format danych
 * Każdy obiekt BLOB jest plikiem tekstowym zawierającym wiele wierszy "\n", które są oddzielone. Zawiera dane telemetryczne przetwarzane w przedziale czasu wynoszącym około pół minuty.
@@ -125,7 +120,7 @@ Czas trwania jest w taktach, gdzie 10 000 Takty = 1 ms. Na przykład te wartośc
 [Szczegółowe informacje o modelu danych dla typów i wartości właściwości.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Przetwarzanie danych
-Na małą skalę można napisać kod, aby ściągnąć dane, odczytać je w arkuszu kalkulacyjnym itd. Przykład:
+Na małą skalę można napisać kod, aby ściągnąć dane, odczytać je w arkuszu kalkulacyjnym itd. Na przykład:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -185,7 +180,7 @@ W przypadku większych skal należy wziąć pod uwagę klastry usługi [HDInsigh
   * Ponadto w przypadku aplikacji o dużym natężeniu ruchu są przydzielone dodatkowe jednostki partycji. W takim przypadku każda jednostka tworzy obiekt BLOB co minutę.
 * *Ponownie wygenerowano klucz do magazynu lub zmieniono nazwę kontenera, a teraz eksportowanie nie działa.*
 
-    Edytuj eksport i Otwórz kartę eksport docelowy. Pozostaw ten sam magazyn wybrany jak wcześniej, a następnie kliknij przycisk OK, aby potwierdzić. Eksport zostanie uruchomiony ponownie. Jeśli zmiana była w ciągu ostatnich kilku dni, utracisz dane.
+    Edytuj kartę Eksportuj i Otwórz lokalizację docelową eksportu. Pozostaw ten sam magazyn wybrany jak poprzednio, a następnie kliknij przycisk OK, aby potwierdzić. Eksport zostanie uruchomiony ponownie. Jeśli zmiana była w ciągu ostatnich kilku dni, utracisz dane.
 * *Czy mogę wstrzymać eksport?*
 
     Tak. Kliknij przycisk Wyłącz.

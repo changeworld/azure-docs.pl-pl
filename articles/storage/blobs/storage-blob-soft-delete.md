@@ -5,27 +5,30 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 253f42080d7c0eab2f7b3cfc5de3d4462f63c738
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: f53bf023346c4f494de5ab50e8beb185d9f97c91
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673411"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882655"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Usuwanie nietrwałe dla obiektów BLOB usługi Azure Storage
+
 Usługa Azure Storage oferuje teraz nietrwałe usuwanie obiektów blob, dzięki czemu można łatwiej odzyskać dane, gdy są one błędnie modyfikowane lub usuwane przez aplikację lub innego użytkownika konta magazynu.
 
-## <a name="how-does-it-work"></a>Jak to działa?
+## <a name="how-soft-delete-works"></a>Jak działa usuwanie nietrwałe
+
 Po włączeniu funkcja usuwania nietrwałego umożliwia zapisanie i odzyskanie danych po usunięciu obiektów blob lub migawek obiektów BLOB. Ta ochrona rozciąga się na dane obiektów blob, które są wymazywane jako wynik zastępowania.
 
 Po usunięciu danych następuje przejście do nietrwałego stanu usuniętego zamiast wyczyszczenia. Gdy usuwanie nietrwałe jest włączone i zastąpi dane, generowana jest nietrwała migawka, która umożliwia zapisanie stanu nadpisanych danych. Usunięte obiekty nietrwałe są niewidoczne, chyba że są jawnie wymienione. Można skonfigurować ilość czasu nietrwałego usuwania nietrwałych danych, zanim zostanie ono trwale wygasłe.
 
-Usuwanie nietrwałe jest zgodne z poprzednimi wersjami; nie musisz wprowadzać żadnych zmian w aplikacjach, aby korzystać z ochrony oferowanej przez tę funkcję. Jednak [odzyskiwanie danych](#recovery) wprowadza nowy, **cofający Usuwanie interfejsu API obiektów BLOB** .
+Usuwanie nietrwałe jest zgodne z poprzednimi wersjami, więc nie musisz wprowadzać żadnych zmian w aplikacjach, aby korzystać z ochrony tej funkcji. Jednak [odzyskiwanie danych](#recovery) wprowadza nowy, **cofający Usuwanie interfejsu API obiektów BLOB** .
 
 ### <a name="configuration-settings"></a>Ustawienia konfiguracji
+
 Podczas tworzenia nowego konta usuwanie nietrwałe jest domyślnie wyłączone. Usuwanie nietrwałe jest również domyślnie wyłączone dla istniejących kont magazynu. Funkcję można włączać i wyłączać w dowolnym momencie w trakcie okresu istnienia konta magazynu.
 
 Nadal będzie można uzyskiwać dostęp do nietrwałych danych usuniętych i odzyskiwać je, gdy ta funkcja jest wyłączona, przy założeniu, że nietrwałe usunięte dane zostały zapisane, gdy funkcja była wcześniej włączona. Po włączeniu usuwania nietrwałego należy również skonfigurować okres przechowywania.
@@ -35,13 +38,14 @@ Okres przechowywania wskazuje ilość czasu, przez który nietrwałe usunięte d
 Okres przechowywania nietrwałego usuwania można zmienić w dowolnym momencie. Zaktualizowany okres przechowywania będzie dotyczył tylko nowo usuniętych danych. Wcześniej usunięte dane wygaśnie na podstawie okresu przechowywania, który został skonfigurowany podczas usuwania tych danych. Próba usunięcia nietrwałego usuniętego obiektu nie wpłynie na jego czas wygaśnięcia.
 
 ### <a name="saving-deleted-data"></a>Zapisywanie usuniętych danych
+
 Nietrwałe usuwanie zachowuje dane w wielu przypadkach, gdy obiekty blob lub migawki obiektów BLOB są usuwane lub zastępowane.
 
 Gdy obiekt BLOB zostanie zastąpiony przy użyciu **Put**obiektów blob, **Put Block**, **Put Block list** lub **copy BLOB** , migawka stanu obiektu BLOB przed operacją zapisu jest generowana automatycznie. Ta migawka jest usuwaną nietrwałą migawką; jest on niewidoczny, jeśli nie zostaną jawnie wymienione nietrwałe obiekty usunięte. Zobacz sekcję [odzyskiwanie](#recovery) , aby dowiedzieć się, jak wyświetlić nietrwałe obiekty usunięte.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
-@no__t 0Soft usunięte dane są szare, a aktywne dane są niebieskie. Ostatnio zapisywane dane są wyświetlane poniżej starszych danych. Gdy B0 jest zastępowany przez B1, generowana jest nietrwałe migawka B0. Gdy B1 zostanie zastąpiona przez B2, generowana jest niewygładzona migawka elementu B1. *
+*Usunięte dane nietrwałe są szare, a aktywne dane są niebieskie. Ostatnio zapisywane dane są wyświetlane poniżej starszych danych. Gdy B0 jest zastępowany przez B1, generowana jest nietrwałe migawka B0. Gdy B1 zostanie zastąpiona przez B2, generowana jest niewygładzona migawka z B1.*
 
 > [!NOTE]  
 > Funkcja usuwania nietrwałego umożliwia zastępowanie ochrony operacji kopiowania, gdy jest włączona dla konta docelowego obiektu BLOB.
@@ -53,13 +57,13 @@ Gdy **obiekt BLOB jest usuwany** w migawce, migawka jest oznaczona jako nietrwa�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-@no__t 0Soft usunięte dane są szare, a aktywne dane są niebieskie. Ostatnio zapisywane dane są wyświetlane poniżej starszych danych. Po wywołaniu **obiektu BLOB Snapshot** B0 stanie się migawką, a B1 jest aktywnym stanem obiektu BLOB. Po usunięciu migawki B0 są one oznaczone jako nietrwałe. *
+*Usunięte dane nietrwałe są szare, a aktywne dane są niebieskie. Ostatnio zapisywane dane są wyświetlane poniżej starszych danych. Po wywołaniu **obiektu BLOB Snapshot** B0 stanie się migawką, a B1 jest aktywnym stanem obiektu BLOB. Po usunięciu migawki B0 jest ona oznaczona jako nietrwała.*
 
 Kiedy **obiekt BLOB Delete** jest wywoływany na bazowym obiekcie BLOB (dowolny obiekt BLOB, który nie jest samym migawką), ten obiekt BLOB jest oznaczony jako usunięty. Spójne z poprzednim zachowaniem, wywołanie **usuwania obiektów BLOB** na obiekcie blob, który ma aktywne migawki, zwraca błąd. Wywołanie metody **delete BLOB** na obiekcie blob z nietrwałymi usuniętymi migawkami nie powoduje zwrócenia błędu. Nadal można usunąć obiekt BLOB i wszystkie jego migawki w ramach jednej operacji, gdy jest włączona funkcja usuwania nietrwałego. Spowoduje to oznaczenie podstawowego obiektu BLOB i migawek jako nietrwałego usunięcia.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-@no__t 0Soft usunięte dane są szare, a aktywne dane są niebieskie. Ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu jest wykonywane wywołanie **usuwania obiektu BLOB** , aby usunąć B2 i wszystkie skojarzone migawki. Aktywne obiekty blob, B2 i wszystkie skojarzone migawki są oznaczane jako nietrwałe usunięte. *
+*Usunięte dane nietrwałe są szare, a aktywne dane są niebieskie. Ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu jest wykonywane wywołanie **usuwania obiektu BLOB** , aby usunąć B2 i wszystkie skojarzone migawki. Aktywne obiekty blob, B2 i wszystkie skojarzone migawki są oznaczane jako nietrwałe usunięte.*
 
 > [!NOTE]  
 > Po nadpisaniu nietrwałego usuniętego obiektu BLOB nietrwała usunięta migawka stanu obiektu BLOB przed operacją zapisu jest generowana automatycznie. Nowy obiekt BLOB dziedziczy warstwę nadpisywanego obiektu BLOB.
@@ -72,9 +76,9 @@ W poniższej tabeli przedstawiono oczekiwane zachowanie podczas włączania usuw
 |--------------------|---------------|-------------|--------------------|
 | [Usuwanie](/rest/api/storagerp/StorageAccounts/Delete) | Konto | Usuwa konto magazynu, w tym wszystkie kontenery i obiekty blob, które zawiera.                           | Bez zmian. Kontenery i obiekty blob w usuniętym koncie nie są możliwe do odzyskania. |
 | [Usuń kontener](/rest/api/storageservices/delete-container) | Kontener | Usuwa kontener, w tym wszystkie obiekty blob, które zawiera. | Bez zmian. Nie da się odzyskać obiektów BLOB w usuniętym kontenerze. |
-| [Put Blob](/rest/api/storageservices/put-blob) | Blokowe, dołączanie i stronicowe obiekty blob | Tworzy nowy obiekt BLOB lub zastępuje istniejący obiekt BLOB w kontenerze | Jeśli jest używany do zastępowania istniejącego obiektu BLOB, automatycznie generowana jest migawka stanu obiektu BLOB przed wywołaniem. Dotyczy to również poprzednio nietrwałego usuniętego obiektu BLOB, jeśli i tylko wtedy, gdy jest zastępowany przez obiekt BLOB tego samego typu (blok, dołączanie lub strona). Jeśli zostanie on zastąpiony przez obiekt BLOB innego typu, wszystkie istniejące nietrwałe dane usunięte zostaną trwale wygasłe. |
+| [Umieść obiekt BLOB](/rest/api/storageservices/put-blob) | Blokowe, dołączanie i stronicowe obiekty blob | Tworzy nowy obiekt BLOB lub zastępuje istniejący obiekt BLOB w kontenerze | Jeśli jest używany do zastępowania istniejącego obiektu BLOB, automatycznie generowana jest migawka stanu obiektu BLOB przed wywołaniem. Dotyczy to również poprzednio nietrwałego usuniętego obiektu BLOB, jeśli i tylko wtedy, gdy jest zastępowany przez obiekt BLOB tego samego typu (blok, dołączanie lub strona). Jeśli zostanie on zastąpiony przez obiekt BLOB innego typu, wszystkie istniejące nietrwałe dane usunięte zostaną trwale wygasłe. |
 | [Usuwanie obiektu BLOB](/rest/api/storageservices/delete-blob) | Blokowe, dołączanie i stronicowe obiekty blob | Oznacza obiekt BLOB lub migawkę obiektu BLOB do usunięcia. Obiekt BLOB lub migawka został później usunięty podczas wyrzucania elementów bezużytecznych | Jeśli zostanie użyta do usunięcia migawki obiektu BLOB, ta migawka jest oznaczona jako nietrwała. Jeśli jest używany do usuwania obiektu BLOB, ten obiekt BLOB jest oznaczony jako usunięty. |
-| [Copy Blob](/rest/api/storageservices/copy-blob) | Blokowe, dołączanie i stronicowe obiekty blob | Kopiuje źródłowy obiekt BLOB do docelowego obiektu BLOB na tym samym koncie magazynu lub na innym koncie magazynu. | Jeśli jest używany do zastępowania istniejącego obiektu BLOB, automatycznie generowana jest migawka stanu obiektu BLOB przed wywołaniem. Dotyczy to również poprzednio nietrwałego usuniętego obiektu BLOB, jeśli i tylko wtedy, gdy jest zastępowany przez obiekt BLOB tego samego typu (blok, dołączanie lub strona). Jeśli zostanie on zastąpiony przez obiekt BLOB innego typu, wszystkie istniejące nietrwałe dane usunięte zostaną trwale wygasłe. |
+| [Kopiuj obiekt BLOB](/rest/api/storageservices/copy-blob) | Blokowe, dołączanie i stronicowe obiekty blob | Kopiuje źródłowy obiekt BLOB do docelowego obiektu BLOB na tym samym koncie magazynu lub na innym koncie magazynu. | Jeśli jest używany do zastępowania istniejącego obiektu BLOB, automatycznie generowana jest migawka stanu obiektu BLOB przed wywołaniem. Dotyczy to również poprzednio nietrwałego usuniętego obiektu BLOB, jeśli i tylko wtedy, gdy jest zastępowany przez obiekt BLOB tego samego typu (blok, dołączanie lub strona). Jeśli zostanie on zastąpiony przez obiekt BLOB innego typu, wszystkie istniejące nietrwałe dane usunięte zostaną trwale wygasłe. |
 | [Umieść blok](/rest/api/storageservices/put-block) | Obiekty BLOB typu Block | Tworzy nowy blok, który ma zostać przekazany jako część blokowego obiektu BLOB. | Jeśli jest używany do zatwierdzania bloku do obiektu BLOB, który jest aktywny, nie ma zmian. Jeśli jest używany do zatwierdzania bloku do obiektu BLOB, który jest usuwany nietrwale, tworzony jest nowy obiekt BLOB, a migawka jest generowana automatycznie w celu przechwycenia stanu nietrwałego usuniętego obiektu BLOB. |
 | [Umieść listę zablokowanych](/rest/api/storageservices/put-block-list) | Obiekty BLOB typu Block | Zatwierdza obiekt BLOB przez określenie zestawu identyfikatorów bloków, które składają się na blokowy obiekt BLOB. | Jeśli jest używany do zastępowania istniejącego obiektu BLOB, automatycznie generowana jest migawka stanu obiektu BLOB przed wywołaniem. Dotyczy to również poprzednio nietrwałego usuniętego obiektu BLOB, jeśli i tylko wtedy, gdy jest to blokowy obiekt BLOB. Jeśli zostanie on zastąpiony przez obiekt BLOB innego typu, wszystkie istniejące nietrwałe dane usunięte zostaną trwale wygasłe. |
 | [Umieść stronę](/rest/api/storageservices/put-page) | Page Blobs | Zapisuje zakres stron na stronie obiektu BLOB. | Bez zmian. Dane stronicowego obiektu BLOB zastępowane lub wyczyszczone przy użyciu tej operacji nie zostały zapisane i nie są możliwe do odzyskania. |
@@ -85,18 +89,20 @@ W poniższej tabeli przedstawiono oczekiwane zachowanie podczas włączania usuw
 Należy zauważyć, że wywołanie "Put Page", aby zastąpić lub wyczyścić zakresy obiektu BLOB stronicowania, nie spowoduje automatycznego generowania migawek. Dyski maszyny wirtualnej są obsługiwane przez stronicowe obiekty blob i wykorzystują **stronę Put** do zapisu danych.
 
 ### <a name="recovery"></a>Odzyskiwanie
-Aby ułatwić odzyskanie usuniętych danych, wprowadzono nowy interfejs API "cofania usuwania obiektów BLOB". Wywołanie interfejsu API cofania usuwania dla nietrwałego, usuniętego podstawowego obiektu BLOB spowoduje przywrócenie go i wszystkich skojarzonych nietrwałych usuniętych migawek jako aktywnych. Wywołanie interfejsu API cofania usunięcia na aktywnym podstawowym obiekcie blob spowoduje przywrócenie wszystkich skojarzonych nieusuniętych migawek jako aktywnych. Gdy migawki są przywracane jako aktywne, wyglądają jak migawki wygenerowane przez użytkownika; nie zastępuje podstawowego obiektu BLOB.
 
-Aby przywrócić obiekt BLOB do konkretnej usuniętej nietrwałej migawki, można wywołać **cofanie usunięcia obiektu BLOB** na podstawowym obiekcie blob. Następnie można skopiować migawkę za pośrednictwem teraz aktywnego obiektu BLOB. Możesz również skopiować migawkę do nowego obiektu BLOB.
+Wywołanie operacji [cofnięcia usunięcia obiektu](/rest/api/storageservices/undelete-blob) BLOB dla nietrwałego, usuniętego obiektu typu Base spowoduje przywrócenie tego elementu i wszystkich skojarzonych nietrwałych usuniętych migawek jako aktywnych. Wywołanie `Undelete Blob` operacji na aktywnym podstawowym obiekcie blob przywraca wszystkie skojarzone usunięte nietrwałe migawki jako aktywne. Gdy migawki są przywracane jako aktywne, wyglądają jak migawki wygenerowane przez użytkownika; nie zastępuje podstawowego obiektu BLOB.
+
+Aby przywrócić obiekt BLOB do konkretnej usuniętej nietrwałej migawki, można wywołać `Undelete Blob` na podstawowym obiekcie blob. Następnie można skopiować migawkę za pośrednictwem teraz aktywnego obiektu BLOB. Możesz również skopiować migawkę do nowego obiektu BLOB.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-@no__t 0Soft usunięte dane są szare, a aktywne dane są niebieskie. Ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu **obiekt BLOB Undelete** jest wywoływany w obiekcie blob B, a tym samym przywracasz podstawowy obiekt BLOB, B1 i wszystkie skojarzone migawki, tutaj tylko B0 jako aktywny. W drugim kroku B0 jest kopiowany przez podstawowy obiekt BLOB. Ta operacja kopiowania generuje nietrwałą migawkę z B1. *
+*Usunięte dane nietrwałe są szare, a aktywne dane są niebieskie. Ostatnio zapisywane dane są wyświetlane poniżej starszych danych. W tym miejscu **obiekt BLOB Undelete** jest wywoływany w obiekcie blob B, a tym samym przywracasz podstawowy obiekt BLOB, B1 i wszystkie skojarzone migawki, tutaj tylko B0 jako aktywny. W drugim kroku B0 jest kopiowany przez podstawowy obiekt BLOB. Ta operacja kopiowania generuje niewygładzoną migawkę z B1.*
 
 Aby wyświetlić nietrwałe usunięte obiekty blob i migawki obiektów blob, możesz dołączyć usunięte dane do **listy obiektów BLOB**. Można wybrać opcję wyświetlania tylko usuniętych nietrwałych obiektów blob lub do dołączenia nietrwałych usuniętych migawek obiektów BLOB. W przypadku wszystkich nietrwałych danych usuniętych można wyświetlić czas, w którym dane zostały usunięte, a także liczbę dni, po których dane będą trwale wygasłe.
 
 ### <a name="example"></a>Przykład
-Poniżej znajduje się dane wyjściowe konsoli skryptu .NET, który przekazuje, zastępuje, migawka, usuwa i przywraca obiekt BLOB o nazwie "HelloWorld", gdy jest włączona funkcja usuwania nietrwałego:
+
+Poniżej znajduje się dane wyjściowe konsoli skryptu .NET, który przekazuje, zastępuje, migawka, usuwa i przywraca obiekt BLOB o nazwie *HelloWorld* po włączeniu usuwania nietrwałego:
 
 ```bash
 Upload:
@@ -131,16 +137,21 @@ Copy a snapshot over the base blob:
 Zapoznaj się z sekcją [następne kroki](#next-steps) , aby uzyskać wskaźnik do aplikacji, która wygenerowała te dane wyjściowe.
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
+
 Wszystkie usunięte nietrwałe dane są rozliczane według tej samej stawki co aktywne dane. Nie zostanie naliczona opłata za dane, które zostały trwale usunięte po upływie skonfigurowanego okresu przechowywania. Aby uzyskać bardziej szczegółowy szczegółowe migawek i sposób ich naliczania, zobacz [Opis sposobu naliczania opłat za migawki](storage-blob-snapshots.md).
 
-Nie będą naliczane opłaty za transakcje związane z automatyczną generowaniem migawek. Zostaną naliczone opłaty za **cofanie usunięcia transakcji obiektów BLOB** przy użyciu stawki "operacje zapisu".
+Nie będą naliczane opłaty za transakcje związane z automatyczną generowaniem migawek. Opłaty są naliczane za **cofanie usuwania transakcji obiektów BLOB** według stawki za operacje zapisu.
 
 Aby uzyskać więcej szczegółowych informacji na temat cen usługi Azure Blob Storage ogólnie, zapoznaj się z [cennikiem usługi azure BLOB Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 Po wstępnym włączeniu usuwania nietrwałego zalecamy użycie małego okresu przechowywania, aby lepiej zrozumieć, jak ta funkcja wpłynie na rachunek.
 
-## <a name="quickstart"></a>Szybki start
-### <a name="azure-portal"></a>Azure Portal
+## <a name="get-started"></a>Rozpocznij
+
+Poniższe kroki pokazują, jak rozpocząć pracę z usuwaniem nietrwałym.
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
 Aby włączyć usuwanie nietrwałe, przejdź do opcji **usuwania nietrwałego** w obszarze **usługi BLOB**. Następnie kliknij pozycję **włączone** , a następnie wprowadź liczbę dni, przez które mają zostać zachowane usunięte nietrwałe dane.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
@@ -169,7 +180,7 @@ Po cofnięciu usunięcia migawek obiektu BLOB można kliknąć pozycję **Podwy�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -187,6 +198,7 @@ $MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
 ```
 
 Aby odzyskać obiekty blob, które zostały przypadkowo usunięte, wywołaj Cofnięcie usunięcia na tych obiektach Blob. Należy pamiętać, że wywoływanie **usuwania obiektów BLOB**, zarówno aktywnych, jak i nietrwałych usuniętych obiektów blob, spowoduje przywrócenie wszystkich skojarzonych nietrwałych migawek usuniętych jako aktywne. Poniższy przykład wywołuje Cofnięcie usunięcia wszystkich nietrwałych usuniętych i aktywnych obiektów BLOB w kontenerze:
+
 ```powershell
 # Create a context by specifying storage account name and key
 $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
@@ -205,7 +217,8 @@ Aby znaleźć bieżące zasady przechowywania nietrwałego usuwania, użyj nast�
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure 
+# <a name="clitabazure-cli"></a>[Interfejs wiersza polecenia](#tab/azure-CLI)
+
 Aby włączyć usuwanie nietrwałe, zaktualizuj właściwości usługi klienta obiektów blob:
 
 ```azurecli-interactive
@@ -218,7 +231,8 @@ Aby sprawdzić, czy usuwanie nietrwałe jest włączone, użyj następującego p
 az storage blob service-properties delete-policy show --account-name mystorageaccount 
 ```
 
-### <a name="python-client-library"></a>Biblioteka kliencka języka Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
 Aby włączyć usuwanie nietrwałe, zaktualizuj właściwości usługi klienta obiektów blob:
 
 ```python
@@ -235,7 +249,8 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-### <a name="net-client-library"></a>Biblioteka kliencka platformy .NET
+# <a name="nettabnet"></a>[.NET](#tab/net)
+
 Aby włączyć usuwanie nietrwałe, zaktualizuj właściwości usługi klienta obiektów blob:
 
 ```csharp
@@ -276,50 +291,70 @@ CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)ve
 blockBlob.StartCopy(copySource);
 ```
 
+---
+
 ## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>Czy istnieją specjalne uwagi dotyczące korzystania z nietrwałego usunięcia?
-Jeśli istnieje szansa, że dane są przypadkowo modyfikowane lub usuwane przez aplikację lub innego użytkownika konta magazynu, zalecamy włączenie usuwania nietrwałego. Włączenie usuwania nietrwałego dla często zamienionych danych może spowodować zwiększenie opłat za pojemność magazynu i zwiększenie opóźnień podczas tworzenia listy obiektów BLOB. Można to ograniczyć, przechowując często nadpisywane dane na osobnym koncie magazynu z wyłączonym usuwaniem nietrwałego. 
+
+Jeśli istnieje prawdopodobieństwo, że dane są przypadkowo modyfikowane lub usuwane przez aplikację lub innego użytkownika konta magazynu, zaleca się włączenie usuwania nietrwałego. Włączenie usuwania nietrwałego dla często zamienionych danych może spowodować zwiększenie opłat za pojemność magazynu i zwiększenie opóźnień podczas tworzenia listy obiektów BLOB. Możesz złagodzić ten dodatkowy koszt, przechowując często nadpisywane dane na oddzielnym koncie magazynu, w którym jest wyłączone usuwanie nietrwałe. 
 
 ## <a name="faq"></a>Często zadawane pytania
-**Dla jakich typów magazynów można użyć usuwania nietrwałego?**  
+
+### <a name="for-which-storage-services-can-i-use-soft-delete"></a>Dla których usług magazynu można korzystać z usuwania nietrwałego?
+
 Obecnie usuwanie nietrwałe jest dostępne tylko dla magazynu obiektów BLOB (Object).
 
-**Czy jest możliwe usuwanie nietrwałe dla wszystkich typów kont magazynu?**  
-Tak, usuwanie nietrwałe jest dostępne dla kont usługi BLOB Storage, a także dla obiektów BLOB w ramach kont magazynu ogólnego przeznaczenia (zarówno GPv1, jak i GPv2). Dotyczy to zarówno kont w warstwie Standardowa, jak i Premium. Usuwanie nietrwałe nie jest dostępne dla dysków zarządzanych.
+### <a name="is-soft-delete-available-for-all-storage-account-types"></a>Czy jest możliwe usuwanie nietrwałe dla wszystkich typów kont magazynu?
 
-**Czy dla wszystkich warstw magazynowania jest dostępne usuwanie nietrwałe?**  
+Tak, usuwanie nietrwałe jest dostępne dla kont usługi BLOB Storage, a także dla obiektów BLOB w ramach kont magazynu ogólnego przeznaczenia (zarówno GPv1, jak i GPv2). Obsługiwane są zarówno typy kont w warstwie Standardowa, jak i Premium. Usuwanie nietrwałe jest dostępne dla dysków niezarządzanych, które są stronicowymi obiektami BLOB w ramach okładek. Usuwanie nietrwałe nie jest dostępne dla dysków zarządzanych.
+
+### <a name="is-soft-delete-available-for-all-storage-tiers"></a>Czy dla wszystkich warstw magazynowania jest dostępne usuwanie nietrwałe?
+
 Tak, funkcja usuwania nietrwałego jest dostępna dla wszystkich warstw magazynowania, w tym gorąca, chłodna i archiwalna. Jednak usuwanie nietrwałe nie zapewnia ochrony przed zastąpieniem obiektów BLOB w warstwie archiwum.
 
-**Czy można użyć zestawu API warstwy obiektów BLOB do warstwy obiektów blob z nietrwałymi usuniętymi migawkami?**  
+### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>Czy można użyć zestawu API warstwy obiektów BLOB do warstwy obiektów blob z nietrwałymi usuniętymi migawkami?
+
 Tak. Usunięte nietrwałe migawki pozostaną w oryginalnej warstwie, ale podstawowy obiekt BLOB zostanie przeniesiony do nowej warstwy. 
 
-konta magazynu **Premium mają limit migawek dla obiektów BLOB 100. Czy liczba nietrwałych usuniętych migawek zbliża się do tego limitu?**  
+### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>Dla kont magazynu w warstwie Premium obowiązuje limit migawek obiektów BLOB równy 100. Czy liczba nietrwałych usuniętych migawek zbliża się do tego limitu?
+
 Nie. nietrwałe usunięte migawki nie są wliczane do tego limitu.
 
-**Czy mogę włączyć usuwanie nietrwałe dla istniejących kont magazynu?**  
+### <a name="can-i-turn-on-soft-delete-for-existing-storage-accounts"></a>Czy mogę włączyć usuwanie nietrwałe dla istniejących kont magazynu?
+
 Tak, usuwanie nietrwałe można skonfigurować dla istniejących i nowych kont magazynu.
 
-**Czy usunięcie całego konta lub kontenera z włączonym usuwaniem nietrwałego spowoduje zapisanie wszystkich skojarzonych obiektów BLOB?**  
-Nie, jeśli usuniesz całe konto lub kontener, wszystkie skojarzone obiekty blob zostaną trwale usunięte. Aby dowiedzieć się, jak chronić konto magazynu przed przypadkowym usunięciem, zapoznaj się z artykułem Azure Resource Manager [Zablokuj zasoby, aby zapobiec nieoczekiwanym zmianom](../../azure-resource-manager/resource-group-lock-resources.md).
+### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Czy usunięcie całego konta lub kontenera z włączonym usuwaniem nietrwałego spowoduje zapisanie wszystkich skojarzonych obiektów BLOB?
 
-**Czy można wyświetlić metryki pojemności dla usuniętych danych?**  
-Nietrwałe usunięte dane są dołączane jako część całkowitej pojemności konta magazynu. Aby uzyskać więcej informacji na temat śledzenia i monitorowania pojemności magazynu, zobacz artykuł [analityka magazynu](../common/storage-analytics.md) .
+Nie, jeśli usuniesz całe konto lub kontener, wszystkie skojarzone obiekty blob zostaną trwale usunięte. Aby uzyskać więcej informacji na temat ochrony konta magazynu przed przypadkowym usunięciem, zobacz [blokowanie zasobów, aby zapobiec nieoczekiwanym zmianom](../../azure-resource-manager/resource-group-lock-resources.md).
 
-**Czy wyłączenie usuwania nietrwałego spowoduje, że nadal będzie można uzyskać dostęp do usuniętych nietrwałych danych?**  
+### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Czy można wyświetlić metryki pojemności dla usuniętych danych?
+
+Nietrwałe usunięte dane są dołączane jako część całkowitej pojemności konta magazynu. Aby uzyskać więcej informacji o śledzeniu i monitorowaniu pojemności magazynu, zobacz [analityka magazynu](../common/storage-analytics.md).
+
+### <a name="if-i-turn-off-soft-delete-will-i-still-be-able-to-access-soft-deleted-data"></a>Czy wyłączenie usuwania nietrwałego spowoduje, że nadal będzie można uzyskać dostęp do usuniętych nietrwałych danych?
+
 Tak. nadal będzie można uzyskiwać dostęp do niewygasłych nieaktualnych usuniętych danych i odzyskiwać je w przypadku wyłączenia usuwania nietrwałego.
 
-**Czy mogę odczytywać i kopiować nietrwałe usunięte migawki mojego obiektu BLOB?**  
+### <a name="can-i-read-and-copy-out-soft-deleted-snapshots-of-my-blob"></a>Czy mogę odczytywać i kopiować nietrwałe usunięte migawki mojego obiektu BLOB?  
+
 Tak, ale najpierw należy wywołać cofanie usunięcia obiektu BLOB.
 
-**Czy dla wszystkich typów obiektów BLOB jest dostępne nietrwałe usuwanie?**  
-Tak, usuwanie nietrwałe jest dostępne dla blokowych obiektów blob, dołączanie obiektów blob i stronicowych obiektów BLOB.
+### <a name="is-soft-delete-available-for-all-blob-types"></a>Czy dla wszystkich typów obiektów BLOB jest dostępne nietrwałe usuwanie?
 
-**Czy dla dysków maszyny wirtualnej jest dostępne usuwanie nietrwałe?**  
-Usuwanie nietrwałe jest dostępne zarówno dla dysków niezarządzanych w warstwie Premium, jak i w warstwie Standardowa. Usuwanie nietrwałe ułatwi odzyskanie danych usuniętych przez **usunięcie**obiektu BLOB, **umieszczenie obiektu BLOB**, umieszczenie **listy zablokowanych**, **umieszczenie bloku** i **Kopiowanie obiektu BLOB**. Dane zastąpione przez wywołanie **strony** nie są możliwe do odzyskania.
+Tak, usuwanie nietrwałe jest dostępne dla blokowych obiektów blob, dołączania obiektów blob i stronicowych obiektów BLOB.
 
-**Czy muszę zmienić istniejące aplikacje, aby użyć usuwania nietrwałego?**  
-Można korzystać z usuwania nietrwałego niezależnie od używanej wersji interfejsu API. Jednak w celu wyświetlania i odzyskiwania nietrwałych usuniętych obiektów blob i migawek obiektów BLOB konieczne będzie użycie wersji 2017-07-29 [interfejsu API REST usług Storage](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) lub nowszego. Ogólnie rzecz biorąc, zalecamy użycie najnowszej wersji, niezależnie od tego, czy jest używana ta funkcja.
+### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>Czy dla dysków maszyny wirtualnej jest dostępne usuwanie nietrwałe?  
+
+Usuwanie nietrwałe jest dostępne dla dysków niezarządzanych w warstwie Premium i standardowa, które są stronicowymi obiektami BLOB w ramach okładek. Funkcja usuwania nietrwałego ułatwia odzyskanie danych usuniętych przez operacje **usuwania obiektów BLOB**, **Put obiektów BLOB**, **Put bloków list**, **Put bloków** i **kopiowania obiektów BLOB** . Dane zastąpione przez wywołanie **strony** nie są możliwe do odzyskania.
+
+Maszyna wirtualna platformy Azure zapisuje dane na dysku niezarządzanym przy użyciu wywołań do **umieszczania na stronie**, dlatego użycie nietrwałego usunięcia umożliwia cofnięcie operacji zapisu na dysku niezarządzanym z maszyny wirtualnej platformy Azure nie jest obsługiwanym scenariuszem.
+
+### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>Czy muszę zmienić istniejące aplikacje, aby użyć usuwania nietrwałego?
+
+Można korzystać z usuwania nietrwałego niezależnie od używanej wersji interfejsu API. Jednak w celu wyświetlania i odzyskiwania nietrwałych usuniętych obiektów blob i migawek obiektów BLOB konieczne będzie użycie wersji 2017-07-29 [interfejsu API REST usług Storage](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) lub nowszego. Firma Microsoft zaleca, aby zawsze używać najnowszej wersji interfejsu API usługi Azure Storage.
 
 ## <a name="next-steps"></a>Następne kroki
+
 * [Przykładowy kod platformy .NET](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
 * [Interfejs API REST usługi BLOB Service](/rest/api/storageservices/blob-service-rest-api)
 * [Replikacja usługi Azure Storage](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

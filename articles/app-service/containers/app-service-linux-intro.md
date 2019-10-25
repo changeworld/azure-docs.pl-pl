@@ -4,8 +4,8 @@ description: Dowiedz się więcej o usłudze Azure App Service w systemie Linux.
 keywords: azure app service, linux, oss
 services: app-service
 documentationcenter: ''
-author: msangapu
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
@@ -15,35 +15,26 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 7c00946ed9de88df43a4435c23ebef27b5c64e5c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071327"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819685"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 
-[Azure App Service](../overview.md) to w pełni zarządzana platforma obliczeniowa zoptymalizowana pod kątem hostowania witryn i aplikacji internetowych. Klienci mogą używać usługi App Service w systemie Linux do natywnego hostowania aplikacji internetowych w systemie Linux dla obsługiwanych stosów aplikacji. W sekcji [Języki](#languages) wymieniono stosy aplikacji, które są obecnie obsługiwane.
+[Azure App Service](../overview.md) to w pełni zarządzana platforma obliczeniowa zoptymalizowana pod kątem hostowania witryn i aplikacji internetowych. Klienci mogą używać usługi App Service w systemie Linux do natywnego hostowania aplikacji internetowych w systemie Linux dla obsługiwanych stosów aplikacji.
 
-## <a name="languages"></a>Languages
+## <a name="languages"></a>Języki
 
-Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w celu zwiększenia produktywności deweloperów. Jeśli aplikacja wymaga środowiska uruchomieniowego, które nie jest obsługiwane we wbudowanych obrazach, skorzystaj z instrukcji dotyczących sposobu [tworzenia własnego obrazu platformy Docker](tutorial-custom-docker-image.md), aby wykonać wdrożenie w usłudze Web App for Containers.
-
-| Język | Obsługiwane wersje |
-|---|---|
-| Node.js | 4,4, 4,5, 4,8, 6,2, 6,6, 6,9, 6,10, 6,11, 8,0, 8,1, 8,2, 8,8, 8,9, 8,11, 8,12, 9,4, 10,1, 10,10, 10,14 |
-| Java * | Tomcat 8.5, 9.0, Java SE, WildFly 14 (z uruchomionym środowiskiem JRE 8) |
-| PHP | 5,6, 7,0, 7,2, 7,3 |
-| Python | 2.7, 3.6, 3.7 |
-| .NET Core | 1,0, 1,1, 2,0, 2,1, 2,2 |
-| Ruby | 2,3, 2,4, 2,5, 2,6 |
+Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w celu zwiększenia produktywności deweloperów. Języki obejmują: Node. js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core i Ruby. Uruchom [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) , aby wyświetlić najnowsze Języki i obsługiwane wersje. Jeśli aplikacja wymaga środowiska uruchomieniowego, które nie jest obsługiwane we wbudowanych obrazach, skorzystaj z instrukcji dotyczących sposobu [tworzenia własnego obrazu platformy Docker](tutorial-custom-docker-image.md), aby wykonać wdrożenie w usłudze Web App for Containers.
 
 ## <a name="deployments"></a>Wdrożenia
 
-* Protokół FTP
+* FTP
 * Lokalna usługa Git
-* GitHub
+* Witryna GitHub
 * Bitbucket
 
 ## <a name="devops"></a>DevOps
@@ -56,7 +47,7 @@ Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w ce
 * Środowiska
 * Wdrożenia
 * Podstawowa konsola
-* Protokół SSH
+* SSH
 
 ## <a name="scaling"></a>Skalowanie
 
@@ -76,7 +67,7 @@ W oparciu o bieżące ograniczenie dla tej samej grupy zasobów nie można miesz
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli nie można uruchomić aplikacji lub chcesz sprawdzić rejestrowanie z aplikacji, sprawdź dzienniki platformy Docker w katalogu LogFiles. Dostęp do tego katalogu można uzyskać za pomocą witryny funkcji SCM lub za pośrednictwem protokołu FTP. Aby zalogować `stdout` się `stderr` i z kontenera, musisz włączyć **Rejestrowanie kontenerów platformy Docker** w obszarze **dzienniki App Service**. To ustawienie jest stosowane od razu. App Service wykrywa zmianę i automatycznie ponownie uruchamia kontener.
+Jeśli nie można uruchomić aplikacji lub chcesz sprawdzić rejestrowanie z aplikacji, sprawdź dzienniki platformy Docker w katalogu LogFiles. Dostęp do tego katalogu można uzyskać za pomocą witryny funkcji SCM lub za pośrednictwem protokołu FTP. Aby rejestrować `stdout` i `stderr` z kontenera, należy włączyć **Rejestrowanie kontenerów platformy Docker** w obszarze **dzienniki App Service**. To ustawienie jest stosowane od razu. App Service wykrywa zmianę i automatycznie ponownie uruchamia kontener.
 
 Dostęp do witryny SCM można uzyskać za pomocą opcji **Narzędzia zaawansowane** w menu **Narzędzia programistyczne**.
 

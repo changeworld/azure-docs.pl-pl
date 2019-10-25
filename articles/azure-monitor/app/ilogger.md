@@ -1,20 +1,19 @@
 ---
 title: Eksplorowanie dzienników śledzenia .NET na platformie Azure Application Insights przy użyciu ILogger
 description: Przykłady użycia dostawcy usługi Azure Application Insights ILogger z aplikacjami ASP.NET Core i konsolowymi.
-services: application-insights
-author: cijothomas
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: cijothomas
+ms.author: cithomas
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.author: cithomas
-ms.openlocfilehash: acc7a218d40ec7b752d9495bd48e5f37436d736d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0e93e2a98d96ca7f436f20e579ab625341024686
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169463"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819482"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>Dzienniki usługi ApplicationInsightsLoggerProvider dla programu .NET Core ILogger
 
@@ -108,7 +107,7 @@ public class ValuesController : ControllerBase
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>Przechwytywanie dzienników ILogger z Startup.cs i Program.cs w aplikacjach ASP.NET Core
 
 > [!NOTE]
-> W ASP.NET Core 3,0 i nowszych nie jest już możliwe `ILogger` wprowadzanie w Startup.cs i program.cs. Aby https://github.com/aspnet/Announcements/issues/353 uzyskać więcej informacji, zobacz.
+> W ASP.NET Core 3,0 i nowszych nie można już wstrzyknąć `ILogger` w Startup.cs i Program.cs. Aby uzyskać więcej informacji, zobacz https://github.com/aspnet/Announcements/issues/353.
 
 Nowy ApplicationInsightsLoggerProvider może przechwytywać dzienniki wczesne w potoku uruchamiania aplikacji. Mimo że usługa ApplicationInsightsLoggerProvider jest automatycznie włączana w Application Insights (począwszy od wersji 2.7.0-beta3), nie ma skonfigurowanego klucza instrumentacji do późniejszego potoku. W związku z tym tylko dzienniki z klas/inne **kontrolera**będą przechwytywane. Aby przechwycić każdy dziennik zaczynający się od **program.cs** i **Startup.cs** , należy jawnie włączyć klucz Instrumentacji dla ApplicationInsightsLoggerProvider. Ponadto *TelemetryConfiguration* nie jest w pełni skonfigurowany podczas rejestrowania się z **program.cs** lub **Startup.cs** . Te dzienniki będą mieć minimalną konfigurację, która używa InMemoryChannel, bez próbkowania ani nie ma standardowych inicjatorów telemetrii ani procesorów.
 
@@ -209,12 +208,12 @@ Wersje zestawu SDK Microsoft. ApplicationInsights. AspNet przed 2.7.0-beta2 obs�
 1. Usuń wywołanie *ILoggerFactory. AddApplicationInsights ()* z metody **Startup. Configure ()** , aby uniknąć podwójnego rejestrowania.
 2. Zastosuj ponownie wszystkie reguły filtrowania w kodzie, ponieważ nie będą one przestrzegane przez nowego dostawcę. Przeciążenia *ILoggerFactory. AddApplicationInsights ()* wymagały minimalnych funkcji LogLevel lub Filter. W przypadku nowego dostawcy filtrowanie jest częścią samej struktury rejestrowania. Nie zostało to zrobione przez dostawcę Application Insights. Należy usunąć wszystkie filtry, które są dostarczane za pośrednictwem przeciążeń *ILoggerFactory. AddApplicationInsights ()* . I reguły filtrowania powinny być podane zgodnie z instrukcjami [kontroli poziomu rejestrowania](#control-logging-level) . Jeśli używasz pliku *appSettings. JSON* do filtrowania rejestrowania, będzie on nadal działał z nowym dostawcą, ponieważ oba używają tego samego aliasu dostawcy, *ApplicationInsights*.
 
-Nadal możesz używać starego dostawcy. (Zostanie on usunięty tylko w wersji głównej, zmiana na 3). *XX*). Jednak zalecamy przeprowadzenie migracji do nowego dostawcy z następujących powodów:
+Nadal możesz używać starego dostawcy. (Zostanie on usunięty tylko w wersji głównej, zmiana na 3). *XX*), ale zalecamy przeprowadzenie migracji do nowego dostawcy z następujących powodów:
 
 - Poprzedni dostawca nie obsługuje [zakresów dzienników](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes). W nowym dostawcy właściwości z zakresu są automatycznie dodawane jako właściwości niestandardowe do zebranych danych telemetrycznych.
 - Dzienniki można teraz przechwycić znacznie wcześniej w potoku uruchamiania aplikacji. Dzienniki z **programu** i klasy **uruchamiania** mogą teraz być przechwytywane.
 - W przypadku nowego dostawcy Filtrowanie odbywa się na poziomie platformy. Dzienniki można filtrować do dostawcy Application Insights w taki sam sposób jak w przypadku innych dostawców, w tym w przypadku dostawców wbudowanych, takich jak konsole, debugowanie i tak dalej. Można również zastosować te same filtry do wielu dostawców.
-- W ASP.NET Core (2,0 i nowszych) zalecanym sposobem włączania [dostawców rejestrowania](https://github.com/aspnet/Announcements/issues/255) jest użycie metod rozszerzających ILoggingBuilder w **program.cs** .
+- W ASP.NET Core (2,0 i nowszych) zalecanym sposobem [włączania dostawców rejestrowania](https://github.com/aspnet/Announcements/issues/255) jest użycie metod rozszerzających ILoggingBuilder w **program.cs** .
 
 > [!Note]
 > Nowy dostawca jest dostępny dla aplikacji przeznaczonych dla wersji STANDARD 2.0 lub nowszej. Jeśli aplikacja jest przeznaczona dla starszych wersji programu .NET Core, takich jak .NET Core 1,1, lub jeśli jest ona przeznaczona dla .NET Framework, Kontynuuj korzystanie z starego dostawcy.
@@ -283,7 +282,7 @@ class Program
 }
 ```
 
-W tym przykładzie jest użyty pakiet `Microsoft.Extensions.Logging.ApplicationInsights`autonomiczny. Domyślnie ta konfiguracja używa TelemetryConfiguration "bCzy minimum" do wysyłania danych do Application Insights. Minimum od zera oznacza, że InMemoryChannel jest używanym kanałem. Nie ma próbkowania ani standardowego TelemetryInitializers. Takie zachowanie można zastąpić dla aplikacji konsolowej, jak pokazano w poniższym przykładzie.
+W tym przykładzie jest wykorzystywany `Microsoft.Extensions.Logging.ApplicationInsights`pakiet autonomiczny. Domyślnie ta konfiguracja używa TelemetryConfiguration "bCzy minimum" do wysyłania danych do Application Insights. Minimum od zera oznacza, że InMemoryChannel jest używanym kanałem. Nie ma próbkowania ani standardowego TelemetryInitializers. Takie zachowanie można zastąpić dla aplikacji konsolowej, jak pokazano w poniższym przykładzie.
 
 Zainstaluj ten dodatkowy pakiet:
 
@@ -291,7 +290,7 @@ Zainstaluj ten dodatkowy pakiet:
 <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" Version="2.9.1" />
 ```
 
-W poniższej sekcji pokazano, jak zastąpić domyślny TelemetryConfiguration za pomocą **usług. Skonfiguruj\<metodę TelemetryConfiguration > ()** . Ten przykład konfiguruje `ServerTelemetryChannel` i pobiera próbkowanie. Dodaje niestandardowy ITelemetryInitializer do TelemetryConfiguration.
+W poniższej sekcji pokazano, jak zastąpić domyślny TelemetryConfiguration za pomocą **usług. Skonfiguruj metodę\<TelemetryConfiguration > ()** . Ten przykład konfiguruje `ServerTelemetryChannel` i próbkowanie. Dodaje niestandardowy ITelemetryInitializer do TelemetryConfiguration.
 
 ```csharp
     // Create the DI container.
@@ -330,7 +329,7 @@ Poniższe przykłady stosują reguły filtru do ApplicationInsightsLoggerProvide
 
 ### <a name="create-filter-rules-in-configuration-with-appsettingsjson"></a>Utwórz reguły filtru w konfiguracji za pomocą pliku appSettings. JSON
 
-W przypadku ApplicationInsightsLoggerProvider alias dostawcy to `ApplicationInsights`. Poniższa sekcja pliku *appSettings. JSON* konfiguruje dzienniki pod kątem *ostrzeżenia* i powyżej z wszystkich kategorii i *błędów* i powyżej od kategorii, które zaczynają się od "Microsoft `ApplicationInsightsLoggerProvider`" do wysłania do.
+W przypadku ApplicationInsightsLoggerProvider alias dostawcy jest `ApplicationInsights`. Poniższa sekcja pliku *appSettings. JSON* konfiguruje dzienniki pod kątem *ostrzeżenia* i powyżej z wszystkich kategorii i *błędów* i powyżej od kategorii, które zaczynają się od "Microsoft" do wysłania do `ApplicationInsightsLoggerProvider`.
 
 ```json
 {
@@ -351,7 +350,7 @@ W przypadku ApplicationInsightsLoggerProvider alias dostawcy to `ApplicationInsi
 
 ### <a name="create-filter-rules-in-code"></a>Tworzenie reguł filtru w kodzie
 
-Poniższy fragment kodu konfiguruje dzienniki pod kątem *ostrzeżenia* i powyżej ze wszystkich kategorii oraz dla *błędu* i powyżej z kategorii, które zaczynają się od "Microsoft" `ApplicationInsightsLoggerProvider`do wysłania do. Ta konfiguracja jest taka sama jak w poprzedniej sekcji pliku *appSettings. JSON*.
+Poniższy fragment kodu konfiguruje dzienniki pod kątem *ostrzeżenia* i powyżej ze wszystkich kategorii oraz dla *błędu* i powyżej z kategorii, które zaczynają się od "Microsoft" do wysłania do `ApplicationInsightsLoggerProvider`. Ta konfiguracja jest taka sama jak w poprzedniej sekcji pliku *appSettings. JSON*.
 
 ```csharp
     WebHost.CreateDefaultBuilder(args)
@@ -375,7 +374,7 @@ Sugerowana alternatywa to nowy pakiet autonomiczny [Microsoft. Extensions. Loggi
 
 ### <a name="why-are-some-ilogger-logs-shown-twice-in-application-insights"></a>Dlaczego niektóre dzienniki ILogger są wyświetlane dwukrotnie w Application Insights?
 
-Duplikowanie może wystąpić, jeśli masz starszą (teraz przestarzałą) wersję programu ApplicationInsightsLoggerProvider, `AddApplicationInsights` która `ILoggerFactory`została włączona przez wywołanie metody. Sprawdź, czy metoda **konfiguracji** ma następujące elementy, i usuń ją:
+Duplikowanie może wystąpić, jeśli masz starszą (teraz przestarzałą) wersję programu ApplicationInsightsLoggerProvider, wywołując `AddApplicationInsights` w `ILoggerFactory`. Sprawdź, czy metoda **konfiguracji** ma następujące elementy, i usuń ją:
 
 ```csharp
  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -385,7 +384,7 @@ Duplikowanie może wystąpić, jeśli masz starszą (teraz przestarzałą) wersj
  }
 ```
 
-Jeśli podczas debugowania z programu Visual Studio występuje podwójne rejestrowanie, w kodzie `EnableDebugLogger` , który umożliwia Application Insights, należy ustawić *wartość false* . To duplikowanie i naprawa ma zastosowanie tylko w przypadku debugowania aplikacji.
+Jeśli podczas debugowania z programu Visual Studio występuje podwójne rejestrowanie, ustaw dla `EnableDebugLogger` *wartość false* w kodzie, który włącza Application Insights w następujący sposób. To duplikowanie i naprawa ma zastosowanie tylko w przypadku debugowania aplikacji.
 
 ```csharp
  public void ConfigureServices(IServiceCollection services)
@@ -426,7 +425,7 @@ Application Insights przechwytuje i wysyła dzienniki ILogger przy użyciu tego 
 
 ### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-i-want-to-log-some-additional-custom-telemetry-manually-how-should-i-do-that"></a>Używam autonomicznego pakietu Microsoft. Extensions. Logging. ApplicationInsights i chcę ręcznie rejestrować kilka dodatkowych danych telemetrycznych. Jak to zrobić?
 
-W przypadku korzystania z pakietu autonomicznego `TelemetryClient` program nie jest wprowadzany do kontenera di, dlatego należy utworzyć nowe wystąpienie programu `TelemetryClient` i użyć tej samej konfiguracji, która jest używana przez dostawcę rejestratora, jak pokazano w poniższym kodzie. Gwarantuje to, że ta sama konfiguracja jest używana dla wszystkich niestandardowych danych telemetrycznych, a także do telemetrii z ILogger.
+W przypadku korzystania z pakietu autonomicznego `TelemetryClient` nie jest wprowadzany do kontenera DI, dlatego należy utworzyć nowe wystąpienie `TelemetryClient` i użyć tej samej konfiguracji, która jest używana przez dostawcę rejestratora, jak pokazano w poniższym kodzie. Gwarantuje to, że ta sama konfiguracja jest używana dla wszystkich niestandardowych danych telemetrycznych, a także do telemetrii z ILogger.
 
 ```csharp
 public class MyController : ApiController
@@ -451,7 +450,7 @@ public class MyController : ApiController
 
 ApplicationInsightsLoggerProvider przechwytuje dzienniki ILogger i tworzy TraceTelemetry z nich. Jeśli obiekt wyjątku jest przesyłany do metody **log ()** na ILogger, *ExceptionTelemetry* jest tworzony zamiast TraceTelemetry. Te elementy telemetrii mogą znajdować się w tych samych miejscach co inne TraceTelemetry lub ExceptionTelemetry dla Application Insights, w tym do portalu, analizy lub lokalnego debugera programu Visual Studio.
 
-Jeśli wolisz zawsze wysyłać TraceTelemetry, użyj tego fragmentu kodu:```builder.AddApplicationInsights((opt) => opt.TrackExceptionsAsExceptionTelemetry = false);```
+Jeśli wolisz zawsze wysyłać TraceTelemetry, użyj tego fragmentu kodu: ```builder.AddApplicationInsights((opt) => opt.TrackExceptionsAsExceptionTelemetry = false);```
 
 ### <a name="i-dont-have-the-sdk-installed-and-i-use-the-azure-web-apps-extension-to-enable-application-insights-for-my-aspnet-core-applications-how-do-i-use-the-new-provider"></a>Nie mam zainstalowanego zestawu SDK i używam rozszerzenia Web Apps platformy Azure, aby włączyć Application Insights dla aplikacji ASP.NET Core. Jak mogę użyć nowego dostawcy? 
 
@@ -482,7 +481,7 @@ Zmodyfikuj Program.cs i appSettings. JSON w następujący sposób:
    }
    ```
 
-   Odpowiednia sekcja z `appsettings.json`:
+   Właściwa sekcja z `appsettings.json`:
 
    ```json
    {
@@ -490,7 +489,7 @@ Zmodyfikuj Program.cs i appSettings. JSON w następujący sposób:
    }
    ```
 
-Ten kod jest wymagany tylko w przypadku korzystania z autonomicznego dostawcy rejestrowania. Do regularnego monitorowania Application Insights klucz Instrumentacji jest ładowany automatycznie ze ścieżki *konfiguracyjnej ApplicationInsights: Instrumentationkey*. Plik appSettings. JSON powinien wyglądać następująco:
+Ten kod jest wymagany tylko w przypadku korzystania z autonomicznego dostawcy rejestrowania. Do regularnego monitorowania Application Insights klucz Instrumentacji jest ładowany automatycznie ze ścieżki konfiguracyjnej *ApplicationInsights: Instrumentationkey*. Plik appSettings. JSON powinien wyglądać następująco:
 
    ```json
    {

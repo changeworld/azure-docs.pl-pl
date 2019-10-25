@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: de8f31a02b62164a8a6b099a90297a207aefae80
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5dae8c4da46c750f69057f33d593f5bb7396a99e
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240798"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882252"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Łączenie danych z Azure AD Identity Protection
 
@@ -37,7 +37,7 @@ Można przesyłać strumieniowo dzienniki z [Azure AD Identity Protection](https
 
 ## <a name="connect-to-azure-ad-identity-protection"></a>Połącz z Azure AD Identity Protection
 
-Jeśli masz już Azure AD Identity Protection, upewnij się, że jest [włączona w sieci](../active-directory/identity-protection/enable.md).
+Jeśli masz już Azure AD Identity Protection, upewnij się, że jest [włączona w sieci](../active-directory/identity-protection/overview-identity-protection.md).
 Jeśli Azure AD Identity Protection jest wdrożona i pobiera dane, dane alertów można łatwo przesłać strumieniowo do usługi Azure wskaźnikowej.
 
 
