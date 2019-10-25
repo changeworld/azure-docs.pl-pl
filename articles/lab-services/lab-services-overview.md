@@ -13,24 +13,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 07/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 3c23cc4fc7647cffa98cff9310498f683fda6328
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 115320a8b4ee7afc6e420dcfa96612b91ea6d1a0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275718"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790768"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Wprowadzenie do usługi Azure Lab Services
-Usługa Azure Lab Services pozwala szybko skonfigurować środowisko dla zespołu (na przykład środowisko deweloperskie, środowisko testowe lub środowisko laboratorium na potrzeby zajęć) w chmurze. Właściciel laboratorium tworzy laboratorium, aprowizuje maszyny wirtualne z systemem Windows lub Linux, instaluje niezbędne oprogramowanie i narzędzia oraz udostępnia je użytkownikom laboratorium. Użytkownicy laboratorium łączą się z maszynami wirtualnymi w laboratorium, a następnie używają ich w codziennej pracy lub krótkoterminowych projektach albo do wykonywania ćwiczeń w klasie. Gdy użytkownicy rozpoczną korzystanie z zasobów w laboratorium, administrator laboratorium może analizować koszty i użycie w wielu laboratoriach, a następnie ustawić nadrzędne zasady w celu zoptymalizowania kosztów organizacji lub zespołu.
+Na platformie Azure dostępne są dwie usługi, które umożliwiają Konfigurowanie środowisk laboratoryjnych w chmurze. 
 
-> [!IMPORTANT]
-> Usługa **Azure DevTest Labs** jest rozszerzana o nowe typy laboratoriów (Azure Lab Services)!
->  
-> Usługa Azure Lab Services umożliwia tworzenie typów laboratoriów zarządzanych, takich jak laboratoria na potrzeby zajęć. Sama usługa obsługuje całe zarządzanie infrastrukturą w typach laboratoriów zarządzanych, od inicjowania maszyn wirtualnych do obsługi błędów i skalowania infrastruktury. Na razie usługi [DevTest Labs](https://azure.microsoft.com/services/devtest-lab/) i [Azure Lab Services](https://azure.microsoft.com/services/lab-services/) będą w dalszym ciągu oddzielnymi usługami w witrynie Azure Portal. 
+- **Azure DevTest Labs** — ta usługa umożliwia szybkie skonfigurowanie środowiska dla zespołu (na przykład środowisko programistyczne lub środowisko testowe w chmurze). Właściciel laboratorium tworzy laboratorium, aprowizuje maszyny wirtualne z systemem Windows lub Linux, instaluje niezbędne oprogramowanie i narzędzia oraz udostępnia je użytkownikom laboratorium. Użytkownicy laboratorium nawiązują połączenie z maszynami wirtualnymi w laboratorium i używają ich do codziennej pracy, krótkoterminowych projektów. Gdy użytkownicy rozpoczną korzystanie z zasobów w laboratorium, administrator laboratorium może analizować koszty i użycie w wielu laboratoriach, a następnie ustawić nadrzędne zasady w celu zoptymalizowania kosztów organizacji lub zespołu.
+- **Azure Lab Services** — ta usługa umożliwia tworzenie zarządzanych typów laboratorium. Obecnie laboratoria klas jest jedynym typem zarządzanego laboratorium obsługiwanego przez Azure Lab Services. Sama usługa obsługuje całe zarządzanie infrastrukturą w typach laboratoriów zarządzanych, od inicjowania maszyn wirtualnych do obsługi błędów i skalowania infrastruktury. Po utworzeniu przez administratora IT konta laboratorium w Azure Lab Services instruktor może szybko skonfigurować laboratorium dla swojej klasy, określić liczbę i typ maszyn wirtualnych, które są potrzebne do ćwiczeń w klasie, i dodać użytkowników do klasy. Gdy użytkownik rejestruje się w klasie, użytkownik może uzyskać dostęp do maszyny wirtualnej w celu wykonania ćwiczeń dla klasy.  
 
 ## <a name="key-capabilities"></a>Najważniejsze możliwości
 
-Usługa Azure Lab Services obsługuje następujące kluczowe możliwości/funkcje:
+Te usługi (Azure DevTest Labs i Azure Lab Services) obsługują następujące kluczowe funkcje/funkcje:
 
 - **Szybka i elastyczna konfiguracja laboratorium**. Przy użyciu usługi Azure Lab Services właściciele laboratoriów mogą szybko skonfigurować laboratorium odpowiednio do swoich potrzeb. Usługa może zająć się całą pracą związaną z infrastrukturą platformy Azure w typach laboratoriów zarządzanych. Alternatywnie właściciele laboratoriów mogą samodzielnie zarządzać infrastrukturą i dostosowywać ją w swojej subskrypcji. Usługa zapewnia wbudowane skalowanie i odporność infrastruktury w laboratoriach zarządzanych przez usługę.
 - **Uproszczone środowisko dla użytkowników laboratorium**. W typie laboratorium zarządzanego, takim jak laboratorium na potrzeby zajęć, użytkownicy laboratorium mogą się zarejestrować za pomocą kodu rejestracji, a następnie uzyskać dostęp do laboratorium w dowolnym czasie, aby korzystać z zasobów laboratorium. W laboratorium utworzonym w usłudze DevTest Labs właściciel laboratorium może nadać użytkownikom laboratorium uprawnienia do tworzenia maszyn wirtualnych i uzyskiwania do nich dostępu, ponownego używania dysków z danymi i zarządzania nimi oraz konfigurowania wpisów tajnych wielokrotnego użytku.  
@@ -43,7 +41,7 @@ Usługa Azure Lab Services obsługuje następujące kluczowe możliwości/funkcj
 
 ## <a name="scenarios"></a>Scenariusze
 
-Oto niektóre scenariusze obsługiwane przez usługę Azure Lab Services:
+Poniżej przedstawiono niektóre scenariusze, w których Azure DevTest Labs i Azure Lab Services support:
 
 ### <a name="set-up-a-resizable-computer-lab-in-the-cloud-for-your-classroom"></a>Konfigurowanie laboratorium komputerowego o zmiennym rozmiarze w chmurze na potrzeby zajęć  
 
@@ -81,7 +79,7 @@ Poniższe sekcje zawierają więcej szczegółowych informacji o tych laboratori
 ## <a name="managed-lab-types"></a>Typy laboratoriów zarządzanych
 Usługa Azure Lab Services umożliwia tworzenie laboratoriów, których infrastruktura jest zarządzana przez platformę Azure. Ten artykuł mówi o nich jako o typach laboratoriów zarządzanych. Typy laboratoriów zarządzanych to różnego rodzaju laboratoria, które spełniają Twoje specyficzne wymagania. Obecnie jedynym obsługiwanym typem laboratorium zarządzanego jest **laboratorium na potrzeby zajęć**. 
 
-Typy laboratoriów zarządzanych pozwalają od razu rozpocząć działanie przy minimalnej konfiguracji. Sama usługa obsługuje całe zarządzanie infrastrukturą w laboratorium, od inicjowania maszyn wirtualnych do obsługi błędów i skalowania infrastruktury. Aby utworzyć typ laboratorium zarządzanego, taki jak laboratorium na potrzeby zajęć, musisz najpierw utworzyć konto laboratorium dla Twojej organizacji. Konto laboratorium służy jako centralne konto, w ramach którego są zarządzane wszystkie laboratoria w organizacji. 
+Typy laboratoriów zarządzanych pozwalają od razu rozpocząć działanie przy minimalnej konfiguracji. Sama usługa obsługuje całe zarządzanie infrastrukturą w laboratorium, od inicjowania maszyn wirtualnych do obsługi błędów i skalowania infrastruktury. Aby utworzyć zarządzany typ laboratorium, taki jak laboratorium zajęć, musisz najpierw utworzyć konto laboratorium dla swojej organizacji. Konto laboratorium służy jako centralne konto, w ramach którego są zarządzane wszystkie laboratoria w organizacji. 
 
 Podczas tworzenia i korzystania z zasobów platformy Azure w tych typach laboratoriów zarządzanych usługa tworzy zasoby i zarządza nimi w wewnętrznych subskrypcjach firmy Microsoft. Nie są one tworzone w ramach Twojej własnej subskrypcji platformy Azure. Usługa przechowuje informacje o użyciu tych zasobów w wewnętrznych subskrypcjach firmy Microsoft. To użycie jest rozliczane w ramach Twojej subskrypcji platformy Azure, która zawiera konto laboratorium.   
 
@@ -94,7 +92,7 @@ Poniżej przedstawiono niektóre **przypadki użycia typów laboratoriów zarzą
 
 
 ## <a name="devtest-labs"></a>DevTest Labs
-W przypadku niektórych scenariuszy możesz chcieć samodzielnie zarządzać całą infrastrukturą i konfiguracją w ramach własnej subskrypcji. Aby to zrobić, możesz utworzyć laboratorium za pomocą usługi Azure DevTest Labs w witrynie Azure Portal. Dla tych laboratoriów nie jest konieczne tworzenie konta laboratorium. Te laboratoria nie są wyświetlane na koncie laboratorium (które istnieje dla typów laboratoriów zarządzanych).  
+W przypadku niektórych scenariuszy możesz chcieć samodzielnie zarządzać całą infrastrukturą i konfiguracją w ramach własnej subskrypcji. Aby to zrobić, możesz utworzyć laboratorium za pomocą usługi Azure DevTest Labs w witrynie Azure Portal. W przypadku tych laboratoriów nie trzeba tworzyć konta laboratorium. Te laboratoria nie są wyświetlane na koncie laboratorium (które istnieje dla typów laboratoriów zarządzanych).  
 
 Poniżej przedstawiono niektóre **przypadki użycia laboratoriów DevTest Labs**: 
 
@@ -106,7 +104,7 @@ Poniżej przedstawiono niektóre **przypadki użycia laboratoriów DevTest Labs*
 - Oferuj sesje szkoleniowe swoim klientom, używając laboratorium skonfigurowanego przy użyciu najnowszej wersji swojego produktu. Przyznaj każdemu klientowi ograniczoną liczbę godzin korzystania z laboratorium. 
 
 
-## <a name="managed-lab-types-vs-devtest-labs"></a>Typy laboratoriów zarządzanych a DevTest Labs
+## <a name="managed-lab-types-vs-devtest-labs"></a>Zarządzane typy laboratorium a DevTest Labs
 W poniższej tabeli porównano dwa rodzaje laboratoriów, które są obsługiwane przez usługę Azure Lab Services: 
 
 | Funkcje | Typy laboratoriów zarządzanych | DevTest Labs |
@@ -114,9 +112,9 @@ W poniższej tabeli porównano dwa rodzaje laboratoriów, które są obsługiwan
 | Zarządzanie infrastrukturą platformy Azure w laboratorium. |  Automatycznie zarządzane przez usługę | Zarządzane samodzielnie  |
 | Wbudowana odporność na problemy z infrastrukturą | Automatycznie obsługiwane przez usługę | Zarządzane samodzielnie  |
 | Zarządzanie subskrypcjami | Usługa obsługuje alokację zasobów w ramach subskrypcji firmy Microsoft wspierających usługę. Skalowanie jest obsługiwane automatycznie przez usługę. | Samodzielnie zarządzasz w ramach własnej subskrypcji platformy Azure. Brak automatycznego skalowania subskrypcji. |
-| Wdrożenie usługi Azure Resource Manager w laboratorium | Niedostępne | Dostępne |
+| Wdrożenie usługi Azure Resource Manager w laboratorium | Niedostępne | Dostępna |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zobacz następujące artykuły: 
 

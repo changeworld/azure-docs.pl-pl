@@ -1,22 +1,22 @@
 ---
-title: 'Szybki start: Tworzenie indeksu wyszukiwania w programie PowerShell przy użyciu interfejsów API REST — Azure Search'
-description: Wyjaśnia, jak utworzyć indeks, załadować dane i uruchamiać zapytania za pomocą polecenia Invoke-RestMethod programu PowerShell i interfejsu API REST Azure Search.
-ms.date: 09/10/2019
-author: heidisteen
+title: 'Szybki Start: Tworzenie indeksu wyszukiwania w programie PowerShell przy użyciu interfejsów API REST'
+titleSuffix: Azure Cognitive Search
+description: Wyjaśnia, jak utworzyć indeks, załadować dane i uruchamiać zapytania za pomocą polecenia Invoke-RestMethod programu PowerShell i interfejsu API REST platformy Azure Wyszukiwanie poznawcze.
 manager: nitinme
+author: heidisteen
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.openlocfilehash: ab82406fa151f5889a563d8154e02da921f1c4e6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: e9b2b8e8b3585bc747efb5b2916ddf1fe07d3645
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881719"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792252"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Szybki start: Tworzenie indeksu Azure Search w programie PowerShell przy użyciu interfejsów API REST
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Szybki Start: Tworzenie indeksu Wyszukiwanie poznawcze platformy Azure w programie PowerShell przy użyciu interfejsów API REST
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "70881719"
 > * [Portal](search-create-index-portal.md)
 > 
 
-W tym artykule omówiono proces tworzenia, ładowania i wykonywania zapytań dotyczących indeksu Azure Search przy użyciu programu PowerShell i [interfejsów API REST Azure Search](https://docs.microsoft.com/rest/api/searchservice/). W tym artykule wyjaśniono, jak uruchomić polecenia programu PowerShell interaktywnie. Alternatywnie można [pobrać i uruchomić skrypt programu PowerShell](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , który wykonuje te same operacje.
+W tym artykule omówiono proces tworzenia, ładowania i wykonywania zapytań dotyczących indeksu Wyszukiwanie poznawcze platformy Azure przy użyciu programu PowerShell i [interfejsów API REST platformy azure wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice/). W tym artykule wyjaśniono, jak uruchomić polecenia programu PowerShell interaktywnie. Alternatywnie można [pobrać i uruchomić skrypt programu PowerShell](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) , który wykonuje te same operacje.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -35,21 +35,21 @@ Ten przewodnik Szybki Start wymaga następujących usług i narzędzi.
 
 + Program [PowerShell 5,1 lub nowszy](https://github.com/PowerShell/PowerShell)przy użyciu polecenia [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) dla kroków sekwencyjnych i interaktywnych.
 
-+ [Utwórz usługę Azure Search](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. Możesz użyć bezpłatnej usługi dla tego przewodnika Szybki Start. 
++ [Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. Możesz użyć bezpłatnej usługi dla tego przewodnika Szybki Start. 
 
 ## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
 
-Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla każdego żądania. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+Wywołania interfejsu REST wymagają adresu URL usługi i klucza dostępu dla każdego żądania. Usługa wyszukiwania jest tworzona razem z usługą, więc jeśli do subskrypcji dodano Wyszukiwanie poznawcze platformy Azure, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
 1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Uzyskaj adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
-2. W obszarze **Ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
+2. W obszarze **ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
 
-![Pobieranie punktu końcowego http i klucza dostępu](media/search-get-started-postman/get-url-key.png "Pobieranie punktu końcowego http i klucza dostępu")
+![Pobieranie punktu końcowego HTTP i klucza dostępu](media/search-get-started-postman/get-url-key.png "Pobieranie punktu końcowego HTTP i klucza dostępu")
 
 Wszystkie żądania wymagają klucza API dla każdego żądania wysyłanego do usługi. Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplikacją wysyłającą żądanie i usługą, która je obsługuje.
 
-## <a name="connect-to-azure-search"></a>Połącz z Azure Search
+## <a name="connect-to-azure-cognitive-search"></a>Nawiązywanie połączenia z usługą Azure Wyszukiwanie poznawcze
 
 1. W programie PowerShell Utwórz obiekt **$Headers** , aby przechowywać typ zawartości i klucz interfejsu API. Zastąp klucz interfejsu API administratora (klucz-administrator-API-KEY) kluczem prawidłowym dla usługi wyszukiwania. Wystarczy ustawić ten nagłówek tylko raz na czas trwania sesji, ale zostanie on dodany do każdego żądania. 
 
@@ -87,7 +87,7 @@ Wszystkie żądania wymagają klucza API dla każdego żądania wysyłanego do u
 
 Jeśli nie korzystasz z portalu, musi istnieć indeks usługi, aby można było załadować dane. Ten krok umożliwia zdefiniowanie indeksu i wypchnięcie go do usługi. Dla tego kroku jest używany [interfejs API Rest tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index) .
 
-Wymagane elementy indeksu obejmują nazwę i kolekcję pól. Kolekcja Fields definiuje strukturę *dokumentu*. Każde pole ma nazwę, typ i atrybuty, które określają, w jaki sposób jest używany (na przykład czy umożliwia wyszukiwanie pełnotekstowe, filtrowanie lub pobieranie w wynikach wyszukiwania). W indeksie należy wyznaczyć jedno z pól `Edm.String` typu jako *klucz* dla tożsamości dokumentu.
+Wymagane elementy indeksu obejmują nazwę i kolekcję pól. Kolekcja Fields definiuje strukturę *dokumentu*. Każde pole ma nazwę, typ i atrybuty, które określają, w jaki sposób jest używany (na przykład czy umożliwia wyszukiwanie pełnotekstowe, filtrowanie lub pobieranie w wynikach wyszukiwania). W indeksie należy wyznaczyć jedno z pól typu `Edm.String` jako *klucz* dla tożsamości dokumentu.
 
 Ten indeks ma nazwę "Hotele-Szybki Start" i zawiera definicje pól widoczne poniżej. Jest to podzestaw większego [indeksu hoteli](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) używany w innych przewodnikach. Ten przewodnik Szybki Start został przez nas przycięty do zwięzłości.
 
@@ -183,7 +183,7 @@ Aby wypchnąć dokumenty, użyj żądania HTTP POST do punktu końcowego adresu 
 
 1. Wklej ten przykład do programu PowerShell, aby utworzyć obiekt **$Body** zawierający dokumenty, które chcesz przekazać. 
 
-    To żądanie zawiera dwa pełne i jeden rekord częściowy. Rekord częściowy pokazuje, że można przekazać niekompletne dokumenty. `@search.action` Parametr określa sposób indeksowania. Prawidłowe wartości to upload, Merge, mergeOrUpload i DELETE. Zachowanie mergeOrUpload tworzy nowy dokument dla hotelId = 3 lub aktualizuje zawartość, jeśli już istnieje.
+    To żądanie zawiera dwa pełne i jeden rekord częściowy. Rekord częściowy pokazuje, że można przekazać niekompletne dokumenty. `@search.action` parametr określa, jak indeksowanie jest wykonywane. Prawidłowe wartości to upload, Merge, mergeOrUpload i DELETE. Zachowanie mergeOrUpload tworzy nowy dokument dla hotelId = 3 lub aktualizuje zawartość, jeśli już istnieje.
 
     ```powershell
     $body = @"
@@ -319,11 +319,11 @@ Aby wypchnąć dokumenty, użyj żądania HTTP POST do punktu końcowego adresu 
 
 W tym kroku przedstawiono sposób wykonywania zapytań względem indeksu przy użyciu [interfejsu API dokumentów wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-Upewnij się, że w $urls wyszukiwania są używane pojedyncze cudzysłowy. Ciągi zapytań zawierają **$** znaki i można pominąć ich wyprowadzanie, jeśli cały ciąg jest ujęty w cudzysłów pojedynczy.
+Upewnij się, że w $urls wyszukiwania są używane pojedyncze cudzysłowy. Ciągi zapytań zawierają **$** znaki i można pominąć, jeśli cały ciąg jest ujęty w apostrofy.
 
 1. Ustaw punkt końcowy do kolekcji *hoteli-szybkiego startu* dokumentów i Dodaj parametr **wyszukiwania** do przekazania w ciągu zapytania. 
   
-   Ten ciąg wykonuje puste wyszukiwanie (Search = *), zwracając niesklasyfikowaną listę (wynik wyszukiwania = 1,0) dowolnych dokumentów. Domyślnie Azure Search zwraca 50 dopasowań w danym momencie. Zgodnie ze strukturą, to zapytanie zwraca całą strukturę dokumentu i jego wartości. Dodaj **$Count = true** , aby uzyskać liczbę wszystkich dokumentów w wynikach.
+   Ten ciąg wykonuje puste wyszukiwanie (Search = *), zwracając niesklasyfikowaną listę (wynik wyszukiwania = 1,0) dowolnych dokumentów. Domyślnie usługa Azure Wyszukiwanie poznawcze zwraca 50 dopasowań w danym momencie. Zgodnie ze strukturą, to zapytanie zwraca całą strukturę dokumentu i jego wartości. Dodaj **$Count = true** , aby uzyskać liczbę wszystkich dokumentów w wynikach.
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
@@ -401,7 +401,7 @@ Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech i
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start użyto programu PowerShell do przechodzenia przez podstawowy przepływ pracy na potrzeby tworzenia i uzyskiwania dostępu do zawartości w Azure Search. Mając na uwadze koncepcje, zalecamy przechodzenie do bardziej zaawansowanych scenariuszy, takich jak indeksowanie ze źródeł danych platformy Azure;
+W tym przewodniku szybki start użyto programu PowerShell do przechodzenia przez podstawowy przepływ pracy na potrzeby tworzenia i uzyskiwania dostępu do zawartości na platformie Azure Wyszukiwanie poznawcze. Mając na uwadze koncepcje, zalecamy przechodzenie do bardziej zaawansowanych scenariuszy, takich jak indeksowanie ze źródeł danych platformy Azure;
 
 > [!div class="nextstepaction"]
-> [Samouczek REST: Indeksowanie i przeszukiwanie danych z częściową strukturą (obiekty blob JSON) w Azure Search](search-semi-structured-data.md)
+> [Samouczek REST: indeksowanie i wyszukiwanie danych częściowo strukturalnych (obiektów BLOB JSON) na platformie Azure Wyszukiwanie poznawcze](search-semi-structured-data.md)

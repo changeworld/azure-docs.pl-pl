@@ -1,45 +1,46 @@
 ---
-title: 'Szybki Start: Tworzenie indeksu wyszukiwania przy użyciu Azure Portal-Azure Search'
-description: Użyj Kreatora importowania danych w Azure Portal, aby utworzyć, załadować i zbadać swój pierwszy indeks w programie Azure Search.
+title: Utwórz indeks wyszukiwania w Azure Portal
+titleSuffix: Azure Cognitive Search
+description: Za pomocą Kreatora importu danych można tworzyć i ładować pierwszy indeks wyszukiwania w usłudze Azure Wyszukiwanie poznawcze oraz wykonywać na nich zapytania.
 author: lobrien
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: quickstart
-ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: a4a25b8504d873b624e1f6822807c9c08ebd2e4f
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: 502177519c0e66baa7ae9c1de18a7b41bceb054a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936978"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791251"
 ---
-# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Szybki Start: Tworzenie indeksu Azure Search przy użyciu Azure Portal
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Szybki Start: Tworzenie indeksu Wyszukiwanie poznawcze platformy Azure w Azure Portal
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
+> * [C#](search-get-started-dotnet.md)
+> * [Java](search-get-started-java.md)
+> * [Node.js](search-get-started-nodejs.md)
 > * [Program PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
-> * [C#](search-get-started-dotnet.md)
 
-Aby szybko poznać działanie usługi Azure Search, wypróbuj narzędzia wbudowane w witrynie Azure Portal. Kreatorzy i edytory nie zapewniają pełnej zgodności z interfejsami API platformy .NET i REST, ale możesz szybko rozpocząć pracę dzięki wprowadzeniu bezpłatnego kodu, pisząc interesujące zapytania względem indeksu w ciągu kilku minut.
+Skorzystaj z portalu, aby szybko uzyskać dostęp do koncepcji i pisać interesujące zapytania względem indeksu w ciągu kilku minut.
 
 > [!div class="checklist"]
 > * Rozpocznij od publicznego bezpłatnego zestawu przykładowych danych hostowanego na platformie Azure
-> * Uruchom kreatora **Importowanie danych** w usłudze Azure Search, aby załadować dane i wygenerować indeks
+> * Uruchom kreatora **importowania danych** w usłudze Azure wyszukiwanie poznawcze, aby załadować dane i wygenerować indeks
 > * Monitoruj w portalu postęp indeksowania
 > * Wyświetlaj istniejący indeks i opcje służące do modyfikowania go
 > * Zapoznaj się z wyszukiwaniem pełnotekstowym, filtrami, aspektami, wyszukiwaniem rozmytym i wyszukiwaniem geograficznym, korzystając z **Eksploratora wyszukiwania**
 
-Jeśli narzędzia są zbyt ograniczone, można rozważyć [wprowadzenie kodu do programowania Azure Search w programie .NET](search-howto-dotnet-sdk.md) lub użycie [programu do tworzenia wywołań interfejsu API REST](search-get-started-postman.md). Możesz także obejrzeć 6-minutowy pokaz czynności wykonywanych w ramach tego samouczka, rozpoczynający się od około trzeciej minuty tego [klipu wideo z omówieniem usługi Azure Search](https://channel9.msdn.com/Events/Connect/2016/138).
+Jeśli narzędzia są zbyt ograniczone, można rozważyć [wprowadzenie kodu do programowania platformy Azure wyszukiwanie poznawcze w programie .NET](search-howto-dotnet-sdk.md) lub użycie [programu do tworzenia wywołań interfejsu API REST](search-get-started-postman.md). 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[Utwórz usługę Azure Search](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. Możesz użyć bezpłatnej usługi dla tego przewodnika Szybki Start. 
+[Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. Możesz użyć bezpłatnej usługi dla tego przewodnika Szybki Start. 
 
 ### <a name="check-for-space"></a>Sprawdzanie ilości wolnego miejsca
 
@@ -57,11 +58,11 @@ W tym samouczku użyjemy wbudowanego przykładowego zestawu danych, który możn
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Krok 1 — Uruchomienie Kreatora importowania danych i utworzenie źródła danych
 
-1. Na pulpicie nawigacyjnym usługi Azure Search kliknij pozycję **Importuj dane** na pasku poleceń, aby utworzyć i wypełnić indeks wyszukiwania.
+1. Na pulpicie nawigacyjnym usługi Azure Wyszukiwanie poznawcze kliknij pozycję **Importuj dane** na pasku poleceń, aby utworzyć i wypełnić indeks wyszukiwania.
 
    ![Polecenie importu danych](media/search-get-started-portal/import-data-cmd.png)
 
-2. W Kreatorze kliknij pozycję **Połącz z danymi** > **przykładów** > **Hotele-przykład**. To źródło danych jest wbudowane. Podczas tworzenia własnego źródła danych należy określić nazwę, typ i informacje o połączeniu. Po utworzeniu staje się ono „istniejącym źródłem danych”, które może zostać ponownie użyte w innych operacjach importu.
+2. W Kreatorze kliknij pozycję **Połącz z** **przykładami > ** danych > **hotelach**. To źródło danych jest wbudowane. Podczas tworzenia własnego źródła danych należy określić nazwę, typ i informacje o połączeniu. Po utworzeniu staje się ono „istniejącym źródłem danych”, które może zostać ponownie użyte w innych operacjach importu.
 
    ![Wybieranie przykładowego zestawu danych](media/search-get-started-portal/import-datasource-sample.png)
 
@@ -71,7 +72,7 @@ W tym samouczku użyjemy wbudowanego przykładowego zestawu danych, który możn
 
 ### <a name="step-2---skip-cognitive-skills"></a>Krok 2 — Pomijanie kroku Umiejętności poznawcze
 
-Kreator obsługuje tworzenie [potoku umiejętności poznawczych](cognitive-search-concept-intro.md) w celu wykorzystania algorytmów sztucznej inteligencji usługi Cognitive Services do indeksowania. 
+Kreator obsługuje tworzenie [potoku wzbogacania AI](cognitive-search-concept-intro.md) do dołączania Cognitive Servicesych algorytmów AI do indeksowania. 
 
 Na razie pominiemy ten krok i przejdziemy bezpośrednio do kroku **Dostosowywanie indeksu docelowego**.
 
@@ -125,13 +126,13 @@ Aktualizacja strony w portalu może wymagać kilku minut, ale na liście powinie
 
 ## <a name="view-the-index"></a>Wyświetlanie indeksu
 
-Strona główna usługi zawiera linki do zasobów utworzonych w usłudze Azure Search.  Aby wyświetlić właśnie utworzony indeks, kliknij pozycję **Indeksy** na liście linków. 
+Strona główna usługi zawiera linki do zasobów utworzonych w usłudze Azure Wyszukiwanie poznawcze.  Aby wyświetlić właśnie utworzony indeks, kliknij pozycję **Indeksy** na liście linków. 
 
    ![Lista Indeksy na pulpicie nawigacyjnym usługi](media/search-get-started-portal/indexes-list.png)
 
 Z tej listy możesz kliknąć właśnie utworzony indeks *hoteli* , wyświetlić schemat indeksu. i opcjonalnie dodać nowe pola. 
 
-Karta **Pola** zawiera schemat indeksu. Przewiń listę w dół, aby wprowadzić nowe pole. W większości przypadków nie można zmienić istniejących pól. Istniejące pola mają fizyczną reprezentację w usłudze Azure Search i w związku z tym nie można ich modyfikować nawet za pomocą kodu. Aby całkowicie zmienić istniejące pole, utwórz nowy indeks, usuwając poprzednią wersję.
+Karta **Pola** zawiera schemat indeksu. Przewiń listę w dół, aby wprowadzić nowe pole. W większości przypadków nie można zmienić istniejących pól. Istniejące pola mają fizyczną reprezentację w usłudze Azure Wyszukiwanie poznawcze i nie można ich modyfikować, a nawet w kodzie. Aby całkowicie zmienić istniejące pole, utwórz nowy indeks, usuwając poprzednią wersję.
 
    ![Przykładowa definicja indeksu](media/search-get-started-portal/sample-index-def.png)
 
@@ -146,7 +147,7 @@ Indeks wyszukiwania powinien być teraz gotowy do wykonywania względem niego za
 **Eksplorator wyszukiwania** jest przystosowany tylko do obsługi [żądań interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents), ale akceptuje zarówno [prostą składnię zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), jak i składnię [pełnego analizatora zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), a także wszystkie parametry wyszukiwania dostępne w ramach operacji [interfejsu API REST wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples).
 
 > [!TIP]
-> Następujące kroki są prezentowane od momentu 6:08 w [klipie wideo z omówieniem usługi Azure Search](https://channel9.msdn.com/Events/Connect/2016/138).
+> Poniższe kroki przedstawiono na stronie 6m08s na temat wideo z [omówieniem usługi Azure wyszukiwanie poznawcze](https://channel9.msdn.com/Events/Connect/2016/138).
 >
 
 1. Kliknij pozycję **Eksplorator wyszukiwania** na pasku poleceń.
@@ -181,7 +182,7 @@ Można wprowadzać terminy i frazy (podobnie jak w wyszukiwaniu Bing lub Google)
 
 * Parametr **$Count = true** zwraca łączną liczbę wszystkich zwróconych dokumentów. Ta wartość jest wyświetlana na początku listy wyników wyszukiwania. Możesz zweryfikować zapytania filtru, monitorując zmiany raportowane przez parametr **$count=true**. Zmniejszająca się liczba wskazuje, że filtr działa.
 
-* **$Top = 10** zwraca najwyższy rangę 10 dokumentów z sumy. Domyślnie usługa Azure Search zwraca 50 pierwszych najlepszych dopasowań. Tę liczbę możesz zwiększyć lub zmniejszyć za pomocą parametru **$top**.
+* **$Top = 10** zwraca najwyższy rangę 10 dokumentów z sumy. Domyślnie usługa Azure Wyszukiwanie poznawcze zwraca pierwsze najlepsze dopasowanie 50. Tę liczbę możesz zwiększyć lub zmniejszyć za pomocą parametru **$top**.
 
 ### <a name="filter-query"></a> Filtrowanie zapytania
 
@@ -200,7 +201,7 @@ Filtry aspektów są uwzględniane w żądaniach wyszukiwania. Korzystając z pa
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Przykład (aspektowe ze zmniejszeniem zakresu): `search=*&facet=Category&$top=2`
 
 * Parametr **search=** * to puste wyszukiwanie. Puste wyszukiwania umożliwiają znalezienie wszystkiego. Jednym z powodów przesłania pustego zapytania może być potrzeba przeprowadzenia filtrowania lub utworzenia aspektów pełnego zestawu dokumentów. Na przykład, chcesz, aby struktura nawigacji aspektów zawierała wszystkie hotele w indeksie.
-* Parametr **facet** zwraca strukturę nawigacji, którą można przekazać do kontrolki interfejsu użytkownika. Zwraca ona kategorie i liczbę elementów. W takim przypadku kategorie są oparte na polu wygodnie o nazwie *Category*. Nie istnieje żadna agregacja w usłudze Azure Search, ale możesz przybliżyć się do agregacji za pomocą parametru `facet`, który podaje liczbę dokumentów w poszczególnych kategoriach.
+* Parametr **facet** zwraca strukturę nawigacji, którą można przekazać do kontrolki interfejsu użytkownika. Zwraca ona kategorie i liczbę elementów. W takim przypadku kategorie są oparte na polu wygodnie o nazwie *Category*. Na platformie Azure Wyszukiwanie poznawcze nie ma agregacji, ale można przybliżyć agregację za pośrednictwem `facet`, co daje liczbę dokumentów w każdej kategorii.
 
 * Parametr **$top=2** powoduje zwrócenie dwóch dokumentów, co pokazuje, że za pomocą parametru `top` możesz zmniejszyć lub zwiększyć liczbę wyników.
 
@@ -210,7 +211,7 @@ Filtry aspektów są uwzględniane w żądaniach wyszukiwania. Korzystając z pa
 
 * Aspekty mogą być tworzone tylko na podstawie pól z możliwością filtrowania. W wynikach mogą być zwracane tylko pola z możliwością pobierania.
 
-* Pole *Rating* ma wartość zmiennoprzecinkową o podwójnej precyzji, a grupowanie będzie precyzyjne. Aby uzyskać więcej informacji na temat grupowania według interwału (na przykład "3 gwiazdki Rating" "4 gwiazdki Rating" itp.), zobacz [jak zaimplementować nawigację aspektową w Azure Search](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
+* Pole *Rating* ma wartość zmiennoprzecinkową o podwójnej precyzji, a grupowanie będzie precyzyjne. Aby uzyskać więcej informacji na temat grupowania według interwału (na przykład "3 gwiazdki Rating", "4 gwiazdki Rating" itp.), zobacz [jak zaimplementować nawigację aspektową w usłudze Azure wyszukiwanie poznawcze](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
 
 
 ### <a name="highlight-query"></a> Wyróżnianie wyników wyszukiwania
@@ -225,7 +226,7 @@ Wyróżnianie trafień oznacza dodawanie formatowania do tekstu zgodnego ze sło
 
 * Wyszukiwanie pełnotekstowe rozpoznaje podstawowe odmiany w formularzach programu Word. W takim przypadku wyniki wyszukiwania zawierają wyróżniony tekst dla elementu "sekwencje", w przypadku hoteli, w których pola z możliwością wyszukiwania będą znajdować się w odpowiedzi na wyszukiwanie za pomocą słowa kluczowego "plażach". Różne rodzaje tego samego wyrazu mogą być wyświetlane w wynikach z powodu przeprowadzenia analizy lingwistycznej. 
 
-* Usługa Azure Search obsługuje 56 analizatorów — zarówno oprogramowania Lucene, jak i firmy Microsoft. W usłudze Azure Search domyślnie używany jest standardowy analizator Lucene.
+* Platforma Azure Wyszukiwanie poznawcze obsługuje analizatory 56 z obu programów — Lucene i Microsoft. Domyślnie używany przez usługę Azure Wyszukiwanie poznawcze jest standardowym analizatorem Lucene.
 
 ### <a name="fuzzy-search"></a> Testowanie wyszukiwania rozmytego
 
@@ -241,9 +242,9 @@ Ten przykład zwraca teraz dokumenty, które zawierają dopasowania w "Seattle".
 
 Gdy parametr **queryType** jest nieokreślony, używany jest domyślny prosty analizator zapytań. Prosty analizator zapytań jest szybszy, ale jeśli wymagane jest użycie wyszukiwania rozmytego, wyrażeń regularnych, wyszukiwania w sąsiedztwie lub innych zaawansowanych typów zapytań, konieczne będzie korzystanie z pełnej składni.
 
-Wyszukiwanie rozmyte i wyszukiwanie z użyciem symboli wieloznacznych ma wpływ na wyniki wyszukiwania. W przypadku tych formatów zapytań nie jest wykonywana analiza lingwistyczna. Zanim zastosujesz wyszukiwanie rozmyte i wyszukiwanie z użyciem symboli wieloznacznych, zobacz [How full text search works in Azure Search (Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search)](search-lucene-query-architecture.md#stage-2-lexical-analysis) i zapoznaj się z sekcją dotyczącą wyjątków w przypadku analizy leksykalnej.
+Wyszukiwanie rozmyte i wyszukiwanie z użyciem symboli wieloznacznych ma wpływ na wyniki wyszukiwania. W przypadku tych formatów zapytań nie jest wykonywana analiza lingwistyczna. Przed użyciem wyszukiwania rozmytego i wieloznacznego Sprawdź, [w jaki sposób wyszukiwanie pełnotekstowe działa na platformie Azure wyszukiwanie poznawcze](search-lucene-query-architecture.md#stage-2-lexical-analysis) i poszukaj sekcji dotyczącej wyjątków w analizie leksykalnej.
 
-Aby uzyskać więcej informacji o scenariuszach zapytań dostępnych przy użyciu pełnego analizatora zapytań, zobacz [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) (Składnia zapytań Lucene w usłudze Azure Search).
+Aby uzyskać więcej informacji na temat scenariuszy zapytań włączonych przez analizator pełnych zapytań, zobacz [składnia zapytań Lucene w usłudze Azure wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
 ### <a name="geo-search"></a> Testowanie wyszukiwania geoprzestrzennego
 
@@ -257,7 +258,7 @@ Wyszukiwanie geoprzestrzenne jest przydatne, jeśli aplikacja wyszukiwania ma fu
 
 ## <a name="takeaways"></a>Wnioski
 
-W tym samouczku podano krótkie wprowadzenie do korzystania z usługi Azure Search za pomocą witryny Azure Portal.
+Ten samouczek zapewnia szybkie wprowadzenie do usługi Azure Wyszukiwanie poznawcze przy użyciu Azure Portal.
 
 Opisano tworzenie indeksu wyszukiwania przy użyciu kreatora **Importowanie danych**. Zostały przedstawione [indeksatory](search-indexer-overview.md), a także podstawowy przepływ pracy projektowania indeksu, w tym [obsługiwane modyfikacje opublikowanego indeksu](https://docs.microsoft.com/rest/api/searchservice/update-index).
 
@@ -275,8 +276,8 @@ Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech i
 
 ## <a name="next-steps"></a>Następne kroki
 
-Możesz lepiej poznać usługę Azure Search przy użyciu narzędzi programistycznych:
+Więcej Wyszukiwanie poznawcze platformy Azure można poznać przy użyciu narzędzi programistycznych:
 
 * [Tworzenie indeksu przy użyciu zestawu .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [Tworzenie indeksu przy użyciu interfejsów API REST](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Tworzenie indeksu przy użyciu narzędzia Postman lub Fiddler i interfejsów API REST usługi Azure Search](search-get-started-postman.md)
+* [Tworzenie indeksu za pomocą programu Poster lub programu Fiddler oraz interfejsów API REST platformy Azure Wyszukiwanie poznawcze](search-get-started-postman.md)

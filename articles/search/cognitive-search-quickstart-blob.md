@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Poznaj ulepszoną wzbogacanie AI w programie Azure Portal — Azure Search'
+title: 'Szybki Start: informacje o wzbogaceniu AI do wyszukiwania poznawczego w Azure Portal-Azure Search'
 description: Pobieranie danych, umiejętność przetwarzania języka naturalnego i obrazów w Azure Search Portal indeksowania przy użyciu Azure Portal i przykładowych danych.
 manager: nitinme
 author: HeidiSteen
@@ -8,14 +8,14 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: 11c58a891a730c57aae3500911741623dde5d51b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: e542d4685829886084bbc8adf6831647b9a1256a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265902"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809657"
 ---
-# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Szybki start: Tworzenie potoku wzbogacania AI przy użyciu umiejętności poznawczych w Azure Search
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Szybki Start: Tworzenie potoku wzbogacania AI przy użyciu umiejętności poznawczych w Azure Search
 
 Azure Search integruje się z [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), dodając wyodrębnianie zawartości, przetwarzanie języka naturalnego (NLP) oraz umiejętności przetwarzania obrazów do Azure Searchego potoku indeksowania, dzięki czemu zawartość nie może być wyszukiwana lub bez struktury. 
 
@@ -62,7 +62,7 @@ Wróć do strony pulpitu nawigacyjnego usługi Azure Search i na pasku poleceń 
 
   ![Polecenie importu danych](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
-### <a name="step-1-create-a-data-source"></a>Krok 1: Utwórz źródło danych
+### <a name="step-1-create-a-data-source"></a>Krok 1. Tworzenie źródła danych
 
 W obszarze **Nawiązywanie połączenia z danymi** wybierz opcję **Magazyn obiektów blob Azure**, a następnie wybierz konto i utworzony kontener. Podaj nazwę źródła danych i użyj wartości domyślnych dla pozostałych ustawień. 
 
@@ -72,7 +72,7 @@ Przejdź do następnej strony.
 
   ![Przycisk następnej strony dla wyszukiwania poznawczego](media/cognitive-search-quickstart-blob/next-button-add-cog-search.png)
 
-### <a name="step-2-add-cognitive-skills"></a>Krok 2: Dodawanie umiejętności poznawczych
+### <a name="step-2-add-cognitive-skills"></a>Krok 2. Dodawanie umiejętności poznawczych
 
 Następnie dodaj kroki wzbogacenia do potoku indeksowania. Jeśli nie masz zasobu usług Cognitive Services, możesz zarejestrować się w bezpłatnej wersji, która umożliwia wykonywanie 20 transakcji dziennie. Przykładowe dane składają się z 14 plików, co oznacza, że po uruchomieniu tego kreatora dzienny przydział zostanie w większości wykorzystany.
 
@@ -93,7 +93,7 @@ Następnie dodaj kroki wzbogacenia do potoku indeksowania. Jeśli nie masz zasob
 > [!NOTE]
 > Umiejętności przetwarzania języka naturalnego pracują na zawartości tekstowej w przykładowym zestawie danych. Ponieważ nie wybrano żadnej opcji OCR, w tym przewodniku Szybki start pliki JPEG i PNG znalezione w przykładowym zestawie danych nie będą przetwarzane. 
 
-### <a name="step-3-configure-the-index"></a>Krok 3: Konfigurowanie indeksu
+### <a name="step-3-configure-the-index"></a>Krok 3. Konfigurowanie indeksu
 
 Kreator może zazwyczaj wnioskować, korzystając z domyślnego indeksu. W tym kroku możesz wyświetlić wygenerowany schemat indeksu i masz możliwość poprawienia dowolnych ustawień. Poniżej znajduje się domyślny indeks utworzony dla demonstracyjnego zestawu danych obiektów blob.
 
@@ -117,7 +117,7 @@ Przejdź do następnej strony.
 
   ![Następna strona — tworzenie indeksatora](media/cognitive-search-quickstart-blob/next-button-create-indexer.png)
 
-### <a name="step-4-configure-the-indexer"></a>Krok 4: Konfigurowanie indeksatora
+### <a name="step-4-configure-the-indexer"></a>Krok 4. Konfigurowanie indeksatora
 
 Indeksator jest procesem wysokiego poziomu sterującym procesem indeksowania. Określa on nazwę źródła danych, docelowy indeks oraz częstotliwość wykonywania. Wynik końcowy kreatora **Import danych** zawsze jest indeksatorem, który można wywoływać wielokrotnie.
 
@@ -145,7 +145,7 @@ Po utworzeniu indeksu możesz przesyłać zapytania, aby zwrócić dokumenty z i
 
 1. Kliknij pozycję **Zmień indeks** u góry, aby wybrać utworzony indeks.
 
-1. Wprowadź ciąg wyszukiwania, aby wykonać zapytanie względem indeksu, np. `search=Microsoft&searchFields=organizations`.
+1. Wprowadź ciąg wyszukiwania, aby wykonać zapytanie względem indeksu, np. `search=Microsoft&searchFields=Organizations`.
 
 Wyniki są zwracane w formacie JSON, który może zawierać wiele danych i być trudny do odczytania, szczególnie w przypadku dużych dokumentów pochodzących z obiektów blob platformy Azure. Jeśli nie można łatwo skanować wyników, wyszukaj dane w dokumentach za pomocą klawiszy CTRL+F. Dla tego zapytania możesz wyszukać określone terminy w zawartości JSON. 
 

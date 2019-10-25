@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0540d8a83a8dc1da9bc763bce0b30463889cfe90
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 71ccdb7ac6666cde1841599cdaf95b67bc54e6a5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915038"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800019"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co to jest Apache Storm w usłudze Azure HDInsight?
 
@@ -24,7 +24,7 @@ ms.locfileid: "70915038"
 
 System Storm w usłudze HDInsight oferuje następujące funkcje:
 
-* __99% umowa dotycząca poziomu usług (SLA) w__przypadku czasu działania burzy: Aby uzyskać więcej informacji, zobacz dokument [HDInsight — umowa SLA](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
+* __Umowa dotycząca poziomu usług (SLA) gwarantująca czas pracy systemu Storm na poziomie 99%__ : Aby uzyskać więcej informacji, zobacz dokument [HDInsight — umowa SLA](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
 * Umożliwia łatwe dostosowywanie klastrów Storm dzięki uruchamianiu w nich skryptów podczas procesu tworzenia klastra lub po jego ukończeniu. Aby uzyskać więcej informacji, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -38,9 +38,9 @@ System Storm w usłudze HDInsight oferuje następujące funkcje:
 
     * Aby skorzystać z nowych węzłów dodanych za pośrednictwem operacji skalowania, musisz dezaktywować i ponownie aktywować działające topologie.
 
-* **Tworzenie potoków przesyłania strumieniowego przy użyciu wielu usług platformy Azure**: Burza w usłudze HDInsight integruje się z innymi usługami platformy Azure, takimi jak Event Hubs, SQL Database, Azure Storage i Azure Data Lake Storage.
+* **Tworzenie potoków przesyłania strumieniowego przy użyciu wielu usług platformy Azure**: burza w usłudze HDInsight integruje się z innymi usługami platformy Azure, takimi jak Event Hubs, SQL Database, Azure Storage i Azure Data Lake Storage.
 
-    Przykładowe rozwiązanie, które integruje się z usługami platformy Azure, znajduje się w temacie [przetwarzanie zdarzeń z Event Hubs z Apache Storm w usłudze HDInsight](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
+    Przykładowe rozwiązanie, które integruje się z usługami platformy Azure, znajduje się w temacie [przetwarzanie zdarzeń z Event Hubs z Apache Storm w usłudze HDInsight](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
 
 Lista firm, które używają systemu Apache Storm w rozwiązaniach analitycznych działających w czasie rzeczywistym, jest dostępna na stronie [Companies Using Apache Storm](https://storm.apache.org/documentation/Powered-By.html) (Firmy korzystające z systemu Apache Storm).
 
@@ -70,33 +70,33 @@ W domyślnej konfiguracji klastrów Apache Storm występuje tylko jeden węzeł 
 
 Nowy klaster Storm można utworzyć w usłudze HDInsight w ciągu kilku minut. Aby uzyskać więcej informacji na temat tworzenia klastra burzy, zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="ease-of-use"></a>Łatwość obsługi
+## <a name="ease-of-use"></a>Prostota użytkowania
 
-* __Łączność Secure Shell (SSH)__ : Możesz uzyskać dostęp do węzłów głównych klastra burzy za pośrednictwem Internetu przy użyciu protokołu SSH. Polecenia można uruchamiać bezpośrednio w klastrze przy użyciu protokołu SSH.
+* __Łączność z protokołem Secure Shell (SSH)__ : dostęp do węzłów głównych klastra Storm w Internecie przy użyciu protokołu SSH. Polecenia można uruchamiać bezpośrednio w klastrze przy użyciu protokołu SSH.
 
   Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* __Łączność z siecią Web__: Wszystkie klastry usługi HDInsight zapewniają interfejs użytkownika sieci Web Ambari. Pozwala on łatwo monitorować i konfigurować usługi oraz zarządzać nimi w klastrze. Klastry Storm udostępniają też interfejs Storm. Interfejs ten pozwala na monitorowanie działających topologii systemu Storm oraz zarządzanie nimi z poziomu przeglądarki przy użyciu interfejsu użytkownika Storm.
+* __Łączność w sieci Web__: wszystkie klastry HDInsight udostępniają interfejs webowy Ambari. Pozwala on łatwo monitorować i konfigurować usługi oraz zarządzać nimi w klastrze. Klastry Storm udostępniają też interfejs Storm. Interfejs ten pozwala na monitorowanie działających topologii systemu Storm oraz zarządzanie nimi z poziomu przeglądarki przy użyciu interfejsu użytkownika Storm.
 
   Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą HDInsight przy użyciu interfejsu użytkownika usługi Apache Ambari Web](../hdinsight-hadoop-manage-ambari.md) i [monitorowanie i zarządzanie przy użyciu dokumentów interfejsu użytkownika Apache Storm](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui) .
 
-* __Azure PowerShell i klasyczny interfejs wiersza polecenia platformy Azure__: Program PowerShell i klasyczny interfejs wiersza polecenia umożliwiają korzystanie z narzędzi wiersza poleceń, które mogą być używane z systemu klienckiego do pracy z usługą HDInsight i innymi usługami platformy Azure.
+* __Azure PowerShell i klasyczny interfejs wiersza polecenia platformy Azure__: program PowerShell i klasyczny interfejs użytkownika umożliwiają korzystanie z narzędzi wiersza poleceń, których można używać z systemu klienckiego do pracy z usługą HDInsight i innymi usługami platformy Azure.
 
-* __Integracja z programem Visual Studio__: Azure Data Lake Tools for Visual Studio uwzględnić szablony projektów służące C# do tworzenia topologii burzy przy użyciu struktury SCP.NET. Narzędzia Data Lake Tools oferują również umożliwiające wdrażanie i monitorowanie rozwiązań systemu Storm w usłudze HDInsight oraz zarządzanie nimi.
+* __Integracja z programem Visual Studio__: Azure Data Lake Tools for Visual Studio obejmować szablony projektów C# służące do tworzenia topologii burzy przy użyciu struktury SCP.NET. Narzędzia Data Lake Tools oferują również umożliwiające wdrażanie i monitorowanie rozwiązań systemu Storm w usłudze HDInsight oraz zarządzanie nimi.
 
   Aby uzyskać więcej informacji, zobacz [Develop C# Storm topologies with the HDInsight Tools for Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md) (Tworzenie topologii języka C# przy użyciu narzędzi HDInsight Tools dla programu Visual Studio).
 
 ## <a name="integration-with-other-azure-services"></a>Integracja z innymi usługami platformy Azure
 
-* __Azure Data Lake Storage__: Aby zapoznać się z przykładem użycia Data Lake Storage z klastrem burzy, zobacz [używanie Azure Data Lake Storage z usługą Apache Storm w usłudze HDInsight](apache-storm-write-data-lake-store.md).
+* __Azure Data Lake Storage__: Aby zapoznać się z przykładem użycia Data Lake Storage z klastrem burzy, zobacz [używanie Azure Data Lake Storage z Apache Storm w usłudze HDInsight](apache-storm-write-data-lake-store.md).
 
-* __Event Hubs__: Przykład używania Event Hubs z klastrem burzy, można znaleźć w następujących przykładach:
+* __Event Hubs__: przykład użycia usługi Event Hubs w klastrze Storm można znaleźć w następujących artykułach:
 
-    * [Przetwarzanie zdarzeń z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)
+    * [Przetwarzanie zdarzeń z usługi Azure Event Hubs przy użyciu Apache Storm w usłudze HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
-    * [Przetwarzania zdarzeń pochodzących z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (C#)](apache-storm-develop-csharp-event-hub-topology.md)
+    * [Przetwarzaj zdarzenia z usługi Azure Event Hubs przy użyciu Apache StormC#w usłudze HDInsight ()](apache-storm-develop-csharp-event-hub-topology.md)
 
-* __SQL Database__, __Cosmos DB__, __Event Hubs__i __HBase__: Przykłady szablonów są zawarte w narzędziach Data Lake Tools for Visual Studio. Aby uzyskać więcej informacji, zobacz [Tworzenie C# topologii dla Apache Storm w usłudze HDInsight](apache-storm-develop-csharp-visual-studio-topology.md).
+* __SQL Database__, __Cosmos DB__, __Event Hubs__ i __HBase__: przykłady szablonów są dostępne w narzędziach Data Lake Tools for Visual Studio. Aby uzyskać więcej informacji, zobacz [Tworzenie C# topologii dla Apache Storm w usłudze HDInsight](apache-storm-develop-csharp-visual-studio-topology.md).
 
 ## <a name="support"></a>Pomoc techniczna
 
@@ -113,12 +113,12 @@ Poniżej przedstawiono kilka typowych scenariuszy, w których można skorzystać
 * Analityka społecznościowa
 * Wyodrębnianie, transformacja, ładowanie (ETL)
 * Monitorowanie sieci
-* Wyszukaj
+* Search
 * Marketing na urządzeniach przenośnych
 
 Aby uzyskać informacje na temat scenariuszy rzeczywistych, zobacz artykuł [jak firmy](https://storm.apache.org/documentation/Powered-By.html) korzystają z Apache Storm dokumentu.
 
-## <a name="development"></a>Programowanie
+## <a name="development"></a>Tworzenie oprogramowania
 
 Korzystając z narzędzi Data Lake Tools for Visual Studio programiści .NET mogą projektować i implementować topologie w języku C#. Można również tworzyć hybrydowe topologie, wykorzystujące składniki Java i C#.
 

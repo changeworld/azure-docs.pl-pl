@@ -1,20 +1,20 @@
 ---
-title: Porównanie obsługi wiadomości na platformie Azure — Event Grid, Event Hubs, Service Bus
+title: Porównanie usług obsługi komunikatów platformy Azure
 description: W tym artykule opisano trzy usługi do obsługi wiadomości na platformie Azure — Azure Event Grid, Event Hubs i Service Bus. Zalecenia dotyczące tego, której usługi używać w różnych scenariuszach.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 01/30/2019
+ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: d2daa23a22fae6ba420a146599c0c0ba659a94f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b68bd69c6d00ac177466f8fdaabd89649c910287
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60826295"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790285"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Wybór usługi do obsługi wiadomości na platformie Azure — Event Grid, Event Hubs i Service Bus
 
@@ -38,17 +38,17 @@ Zdarzenia odrębne zgłaszają zmianę stanu i umożliwiają wykonanie akcji. Ab
 
 Zdarzenia w serii zgłaszają warunek i nadają się do analizy. Zdarzenia są uporządkowane według czasu i powiązane. Odbiorca potrzebuje sekwencyjnej serii zdarzeń, aby móc przeanalizować, co się zdarzyło.
 
-### <a name="message"></a>Komunikat
+### <a name="message"></a>Wiadomość
 
 Komunikat to nieprzetworzone dane utworzone przez usługę, które mają zostać użyte lub przechowane w innej lokalizacji. Komunikat zawiera dane, które spowodowały wyzwolenie potoku komunikatów. Wydawca komunikatu ma oczekiwanie dotyczące sposobu obsługi komunikatu przez odbiorcę. Pomiędzy obiema stronami obowiązuje kontrakt. Na przykład wydawca wysyła komunikat z nieprzetworzonymi danymi i oczekuje, że odbiorca utworzy plik na podstawie tych danych i wyśle odpowiedź po zakończeniu pracy.
 
 ## <a name="comparison-of-services"></a>Porównanie usług
 
-| Usługa | Przeznaczenie | Type | Kiedy stosować |
+| Usługa | Przeznaczenie | Typ | Kiedy stosować |
 | ------- | ------- | ---- | ----------- |
 | Event Grid | Programowanie reaktywne | Dystrybucja zdarzeń (odrębne) | Reagowanie na zmiany stanu |
-| Event Hubs | Potok danych big data | Przesyłanie strumieniowe zdarzeń (serie) | Przesyłanie strumieniowe rozproszonych danych i telemetrii |
-| Service Bus | Obsługa komunikatów o wysokiej wartości w przedsiębiorstwie | Komunikat | Przetwarzanie zamówień i transakcje finansowe |
+| Centra zdarzeń | Potok danych big data | Przesyłanie strumieniowe zdarzeń (serie) | Przesyłanie strumieniowe rozproszonych danych i telemetrii |
+| Service Bus | Obsługa komunikatów o wysokiej wartości w przedsiębiorstwie | Wiadomość | Przetwarzanie zamówień i transakcje finansowe |
 
 ### <a name="event-grid"></a>Event Grid
 
@@ -58,18 +58,18 @@ Usługa Event Grid jest ściśle zintegrowana z usługami platformy Azure i moż
 
 Usługa Event Grid obejmuje obsługę utraconych komunikatów dla zdarzeń, które nie są dostarczane do punktu końcowego.
 
-Ma następujące cechy:
+Ma ona następujące cechy:
 
 * dynamiczna skalowalność
 * niski koszt
 * praca bezserwerowa
 * co najmniej jednokrotne dostarczanie
 
-### <a name="event-hubs"></a>Event Hubs
+### <a name="event-hubs"></a>Centra zdarzeń
 
 Usługa Azure Event Hubs to potok danych big data. Ułatwia przechwytywanie, przechowywanie i ponowne odtwarzanie danych telemetrycznych i danych strumienia zdarzeń. Dane mogą pochodzić z wielu równoczesnych źródeł. Usługa Event Hubs umożliwia udostępnianie danych telemetrycznych i danych zdarzeń różnym infrastrukturom przetwarzania strumieni oraz usługom analizy. Jest dostępna jako strumienie danych albo partie powiązanych zdarzeń. Ta usługa zapewnia pojedyncze rozwiązanie umożliwiające szybkie pobieranie danych na potrzeby przetwarzania w czasie rzeczywistym oraz powtarzane ponowne odtwarzanie przechowywanych nieprzetworzonych danych. Może przechwycić dane przesyłane strumieniowo do pliku na potrzeby przetwarzania i analizy.
 
-Ma następujące cechy:
+Ma ona następujące cechy:
 
 * małe opóźnienie
 * możliwość odbieranie i przetwarzania milionów zdarzeń na sekundę
@@ -81,7 +81,7 @@ Usługa Service Bus jest przeznaczona dla tradycyjnych aplikacji dla przedsiębi
 
 Usługa Service Bus jest systemem komunikatów obsługiwanych przez brokera. W niezawodny sposób przechowuje komunikaty w „brokerze” (np. w kolejce) do momentu, w którym strona odbierająca będzie gotowa do odebrania komunikatów.
 
-Ma następujące cechy:
+Ma ona następujące cechy:
 
 * niezawodne asynchroniczne dostarczanie komunikatów (komunikaty w przedsiębiorstwie jako usługa) wymagające sondowania
 * zaawansowane funkcje obsługi wiadomości, takie jak FIFO, tworzenie partii / sesje, transakcje, obsługa utraconych komunikatów, kontrola czasowa, routing i filtrowanie oraz wykrywanie duplikatów
@@ -96,7 +96,7 @@ W innych przypadkach można je połączyć ze sobą w celu utworzenia potoku zda
 
 ![Omówienie przesyłania strumieniowego danych](./media/compare-messaging-services/overview.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły: 
 
 - [Zdarzenia, punkty danych i komunikaty — wybieranie usługi platformy Azure do obsługi wiadomości właściwej dla Twoich danych](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
