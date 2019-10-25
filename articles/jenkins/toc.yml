@@ -55,7 +55,7 @@
           maintainContext: true
 - name: Porady
   items:
-    - name: Używanie wtyczki usługi Azure App Service
+    - name: Korzystanie z wtyczki usługi Azure App Service
       href: deploy-jenkins-app-service-plugin.md
 - name: Przykłady
   items:

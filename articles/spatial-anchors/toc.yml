@@ -31,10 +31,11 @@
           href: quickstarts/get-started-xamarin-ios.md
 - name: Samouczki
   items:
-    - name: Udostępnianie w aparacie Unity
+    - name: Udostępnianie dla różnych sesji i urządzeń
       href: tutorials/tutorial-share-anchors-across-devices.md
-    - name: Udostępnianie w aparacie Unity za pomocą usługi Azure Cosmos DB
-      href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+      items:
+        - name: Trwałe udostępnianie za pomocą usługi Azure Cosmos DB
+          href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
     - name: Uruchamianie nowej aplikacji Unity HoloLens
       href: tutorials/tutorial-new-unity-hololens-app.md
     - name: Uruchamianie nowej aplikacji dla systemu Android

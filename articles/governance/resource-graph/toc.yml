@@ -17,6 +17,11 @@
     - name: Uruchamianie pierwszego zapytania — program PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+- name: Samouczki
+  items:
+    - name: Tworzenie i udostępnianie zapytania w witrynie Azure Portal
+      displayName: 'query, portal'
+      href: ./tutorials/create-share-query.md
 - name: Przykłady
   items:
     - name: Zapytania dla początkujących

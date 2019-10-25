@@ -1,5 +1,6 @@
 ---
-title: Uwagi dotyczące platformy Xamarin Android (Microsoft Authentication Library for .NET) | Azure
+title: Uwagi dotyczące platformy Xamarin Android (Microsoft Authentication Library for .NET)
+titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących korzystania z platformy Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b0c810097913e896027245b15600ed75aabcd25
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 8f5caad4b136c9ef2686cc4befc70e6720e27855
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532576"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802756"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Zagadnienia specyficzne dla platformy Xamarin Android z MSAL.NET
 W tym artykule omówiono określone zagadnienia dotyczące korzystania z przeglądarki systemowej w programie Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
@@ -33,46 +34,46 @@ Zalecamy korzystanie z przeglądarek, które obsługują niestandardowe karty, t
 
 | Obsługa przeglądarek z kartami niestandardowymi | Nazwa pakietu |
 |------| ------- |
-|Chrome | com.android.chrome|
+|Chrome | com. Android. Chrome|
 |Microsoft Edge | com. Microsoft. emmx|
 |Firefox | org. mozilla. Firefox|
-|Ecosia | com.ecosia.android|
+|Ecosia | com. ecosia. Android|
 |Kiwi | com. kiwibrowser. Browser|
 |Brave | com. Brave. Browser|
 
-Oprócz obsługi przeglądarek z kartami niestandardowymi w oparciu o nasze testy, niektóre przeglądarki, które nie obsługują kart niestandardowych, również będą działały w celu uwierzytelnienia: Opera, Opera, inbrowser i Maxthon. Aby uzyskać więcej informacji, Przeczytaj [tabelę dla wyników testu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Android-system-browser#devices-and-browsers-tested).
+Oprócz obsługi przeglądarek z kartami niestandardowymi w oparciu o nasze testy, niektóre przeglądarki, które nie obsługują kart niestandardowych, również będą działały w celu uwierzytelniania: Opera, Opera Mini, inbrowser i Maxthon. Aby uzyskać więcej informacji, Przeczytaj [tabelę dla wyników testu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Android-system-browser#devices-and-browsers-tested).
 
 ## <a name="known-issues"></a>Znane problemy
 
-- Jeśli użytkownik nie ma włączonej przeglądarki na urządzeniu, MSAL.NET zgłosi `AndroidActivityNotFound` wyjątek. 
-  - Środki zaradcze: Poinformuj użytkownika o tym, że powinni włączyć przeglądarkę (najlepiej z obsługą kart niestandardowych) na urządzeniu.
+- Jeśli na urządzeniu nie jest włączona przeglądarka, MSAL.NET wygeneruje wyjątek `AndroidActivityNotFound`. 
+  - Środki **zaradcze**: Powiadom użytkownika, że powinni włączyć przeglądarkę (najlepiej ją z obsługą kart niestandardowych) na urządzeniu.
 
 - W przypadku niepowodzenia uwierzytelniania (np. Uwierzytelnianie jest uruchamiane z DuckDuckGo), MSAL.NET zwróci `AuthenticationCanceled MsalClientException`. 
-  - **Problem z głównym**: Nie włączono obsługi przeglądarki z kartami niestandardowymi na urządzeniu. Uwierzytelnianie zostało uruchomione przy użyciu alternatywnej przeglądarki, która nie mogła ukończyć uwierzytelniania. 
-  - Środki zaradcze: Zawiadom użytkownika, że powinni zainstalować przeglądarkę (najlepiej ją z obsługą kart niestandardowych) na urządzeniu.
+  - **Problem główny**: Obsługa przeglądarki z kartami niestandardowymi nie została włączona na urządzeniu. Uwierzytelnianie zostało uruchomione przy użyciu alternatywnej przeglądarki, która nie mogła ukończyć uwierzytelniania. 
+  - Środki **zaradcze**: Powiadom użytkownika, że powinni zainstalować przeglądarkę (najlepiej ją z obsługą kart niestandardowych) na urządzeniu.
 
 ## <a name="devices-and-browsers-tested"></a>Przetestowane urządzenia i przeglądarki
 W poniższej tabeli wymieniono urządzenia i przeglądarki, które zostały przetestowane.
 
-| | Przeglądarka&ast;     |  Wynik  | 
+| | &ast; przeglądarki     |  Wynik  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/jeden + | Własnego&ast; | Powodzenie|
-| Huawei/jeden + | Edge&ast; | Powodzenie|
-| Huawei/jeden + | Firefox&ast; | Powodzenie|
-| Huawei/jeden + | Brave&ast; | Powodzenie|
-| Jeden + | Ecosia&ast; | Powodzenie|
-| Jeden + | Kiwi&ast; | Powodzenie|
-| Huawei/jeden + | Opera | Powodzenie|
-| Huawei | OperaMini | Powodzenie|
-| Huawei/jeden + | Brak przeglądarki | Powodzenie|
-| Jeden + | Maxthon | Powodzenie|
+| Huawei/jeden + | &ast; Chrome | Chodzenia|
+| Huawei/jeden + | &ast; brzegowe | Chodzenia|
+| Huawei/jeden + | &ast; Firefox | Chodzenia|
+| Huawei/jeden + | Brave&ast; | Chodzenia|
+| Jeden + | Ecosia&ast; | Chodzenia|
+| Jeden + | Kiwi&ast; | Chodzenia|
+| Huawei/jeden + | Opera | Chodzenia|
+| Huawei | OperaMini | Chodzenia|
+| Huawei/jeden + | Brak przeglądarki | Chodzenia|
+| Jeden + | Maxthon | Chodzenia|
 | Huawei/jeden + | DuckDuckGo | Użytkownik anulował uwierzytelnianie|
 | Huawei/jeden + | Przeglądarka UC | Użytkownik anulował uwierzytelnianie|
 | Jeden + | Tuńczyk | Użytkownik anulował uwierzytelnianie|
 | Jeden + | Przeglądarka CM | Użytkownik anulował uwierzytelnianie|
 | Huawei/jeden + | Brak zainstalowanych | AndroidActivityNotFound ex|
 
-&ast;Obsługuje karty niestandardowe
+&ast; obsługuje niestandardowe karty
 
 ## <a name="next-steps"></a>Następne kroki
 Aby zapoznać się z fragmentami kodu i dodatkowymi informacjami na temat korzystania z przeglądarki systemowej z systemem Xamarin Android, przeczytaj ten [Przewodnik](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid).  

@@ -285,6 +285,8 @@
     - name: Interfejs wiersza polecenia uczenia maszynowego
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: Dokumentacja języka YAML potoku uczenia maszynowego
+      href: reference-pipeline-yaml.md
     - name: Moduły interfejsu wizualnego
       displayName: 'module, reference, algorithm, studio'
       items:
