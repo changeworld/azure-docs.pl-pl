@@ -1,5 +1,6 @@
 ---
-title: Jak żądać oświadczeń niestandardowych przy użyciu MSAL dla systemów iOS i macOS | Platforma tożsamości firmy Microsoft
+title: Jak żądać oświadczeń niestandardowych przy użyciu MSAL dla systemów iOS i macOS
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak żądać oświadczeń niestandardowych.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +18,14 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e09d58742bffd74f07f79b3ec55c1e81533632
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6c34da9e8faa8c2c2e24e7f00569e2b7c8af674f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268988"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802598"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Instrukcje: Żądaj oświadczeń niestandardowych przy użyciu MSAL dla systemów iOS i macOS
+# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Instrukcje: żądania oświadczeń niestandardowych przy użyciu MSAL dla systemów iOS i macOS
 
 Program OpenID Connect Connect umożliwia opcjonalne żądanie powrotu pojedynczych oświadczeń z punktu końcowego UserInfo i/lub identyfikatora. Żądanie oświadczeń jest reprezentowane jako obiekt JSON, który zawiera listę żądanych oświadczeń. Aby uzyskać więcej informacji, zobacz [OpenID Connect Connect Core 1,0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) .
 
@@ -36,9 +37,9 @@ Istnieje wiele scenariuszy, w których jest to wymaganie. Na przykład:
 - Żądanie określonych kombinacji standardowych oświadczeń, których nie można określić za pomocą zakresów dla aplikacji. Na przykład, jeśli token dostępu zostanie odrzucony z powodu braku oświadczeń, aplikacja może zażądać brakujących oświadczeń przy użyciu MSAL.
 
 > [!NOTE]
-> MSAL pomija pamięć podręczną tokenów dostępu za każdym razem, gdy żądanie oświadczeń jest określone. Należy podać `claimsRequest` parametr tylko wtedy, gdy potrzebne są dodatkowe oświadczenia (w przeciwieństwie do tego samego `claimsRequest` parametru w każdym wywołaniu interfejsu API MSAL).
+> MSAL pomija pamięć podręczną tokenów dostępu za każdym razem, gdy żądanie oświadczeń jest określone. Należy podać parametr `claimsRequest` tylko wtedy, gdy potrzebne są dodatkowe oświadczenia (w przeciwieństwie do tego samego parametru `claimsRequest` w każdym wywołaniu interfejsu API MSAL).
 
-`claimsRequest`można określić w `MSALSilentTokenParameters` i `MSALInteractiveTokenParameters`:
+`claimsRequest` można określić w `MSALSilentTokenParameters` i `MSALInteractiveTokenParameters`:
 
 ```objc
 /*!
@@ -54,7 +55,7 @@ Istnieje wiele scenariuszy, w których jest to wymaganie. Na przykład:
 
 @end
 ```
-`MSALClaimsRequest`można utworzyć z reprezentacji NSString żądania oświadczeń JSON. 
+`MSALClaimsRequest` można utworzyć na podstawie reprezentacji NSString żądania oświadczeń JSON. 
 
 Cel-C:
 
@@ -103,7 +104,7 @@ do {
 
 
 
-`MSALClaimsRequest`należy następnie ustawić parametry tokenu i podać je w jednym z interfejsów API pozyskiwania tokenów MSAL:
+`MSALClaimsRequest` powinna być następnie ustawiona w parametrach tokenów i udostępniana jednemu z interfejsów API pozyskiwania tokenów MSAL:
 
 Cel-C:
 

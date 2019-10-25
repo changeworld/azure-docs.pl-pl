@@ -1,5 +1,6 @@
 ---
-title: Jak ograniczyć swoją zarejestrowaną przez Azure Active Directory aplikację do zbioru użytkowników
+title: Ograniczanie zarejestrowanej aplikacji Azure Active Directory do zestawu użytkowników
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak ograniczyć dostęp do aplikacji zarejestrowanych w usłudze Azure AD do wybranego zestawu użytkowników.
 services: active-directory
 documentationcenter: ''
@@ -17,18 +18,18 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51c49633e68fdc5f9afd4bf0205adaa625940ff
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: c768730a00d424333e735bb4f6a385d294f38513
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812961"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803951"
 ---
-# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>Instrukcje: Ograniczanie aplikacji do zestawu użytkowników
+# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>Instrukcje: ograniczanie aplikacji do zestawu użytkowników
 
 Aplikacje zarejestrowane w dzierżawie usługi Azure Active Directory (Azure AD) są domyślnie dostępne dla wszystkich użytkowników dzierżawy, którzy pomyślnie uwierzytelniają się.
 
-Podobnie, w przypadku aplikacji wielodostępnej, wszyscy użytkownicy w dzierżawie usługi Azure AD, w której ta aplikacja jest obsługiwana, będą mogli uzyskiwać dostęp do tej aplikacji po pomyślnym uwierzytelnieniu w odpowiedniej dzierżawie. [](howto-convert-app-to-be-multi-tenant.md)
+Podobnie, w [przypadku aplikacji](howto-convert-app-to-be-multi-tenant.md) wielodostępnej, wszyscy użytkownicy w dzierżawie usługi Azure AD, w której ta aplikacja jest obsługiwana, będą mogli uzyskiwać dostęp do tej aplikacji po pomyślnym uwierzytelnieniu w odpowiedniej dzierżawie.
 
 Administratorzy dzierżawy i deweloperzy często mają wymagania, w przypadku których aplikacja musi być ograniczona do określonego zbioru użytkowników. Deweloperzy mogą osiągnąć ten sam sposób, korzystając ze popularnych wzorców autoryzacji, takich jak Access Control oparte na rolach (RBAC), ale takie podejście wymaga dużej ilości pracy na części dewelopera.
 
@@ -43,7 +44,7 @@ Opcja ograniczenia aplikacji do określonego zestawu użytkowników lub grup zab
 - Aplikacje utworzone bezpośrednio na platformie aplikacji usługi Azure AD, która korzysta z uwierzytelniania OAuth 2.0/OpenID Connect, gdy użytkownik lub administrator wyraził zgodę na tę aplikację.
 
      > [!NOTE]
-     > Ta funkcja jest dostępna tylko dla aplikacji sieci Web/internetowego interfejsu API i aplikacje dla przedsiębiorstw. Aplikacje zarejestrowane jako natywne [](quickstart-v1-integrate-apps-with-azure-ad.md) nie mogą być ograniczone do zestawu użytkowników lub grup zabezpieczeń w dzierżawie.
+     > Ta funkcja jest dostępna tylko dla aplikacji sieci Web/internetowego interfejsu API i aplikacje dla przedsiębiorstw. Aplikacje zarejestrowane jako [natywne](quickstart-v1-integrate-apps-with-azure-ad.md) nie mogą być ograniczone do zestawu użytkowników lub grup zabezpieczeń w dzierżawie.
 
 ## <a name="update-the-app-to-enable-user-assignment"></a>Aktualizowanie aplikacji w celu włączenia przypisania użytkownika
 

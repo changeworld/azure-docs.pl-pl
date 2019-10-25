@@ -1,6 +1,7 @@
 ---
-title: W programie Internet Explorer (Microsoft Authentication Library dla języka JavaScript) | Azure
-description: Informacje o używaniu Biblioteka Microsoft Authentication Library dla języka JavaScript (MSAL.js) za pomocą przeglądarki Internet Explorer.
+title: Korzystanie z programu Internet Explorer (biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript)
+titleSuffix: Microsoft identity platform
+description: Dowiedz się więcej o korzystaniu z biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js) przy użyciu przeglądarki Internet Explorer.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,45 +18,45 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf8c84120f4c90d3943cfc31ffbf9aafcec0ba3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c79717b00cd9a4b5da00496bf2f1822f7f77032
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873918"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802993"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Znane problemy w przeglądarkach Internet Explorer i Microsoft Edge z MSAL.js
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Znane problemy w programie Internet Explorer i przeglądarki Microsoft Edge z MSAL. js
 
-Biblioteka Microsoft Authentication Library dla języka JavaScript (MSAL.js) jest generowany dla [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) , aby go uruchomić w przeglądarce Internet Explorer. Istnieje jednak kilka kwestii, które znasz.
+Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js) jest generowana na potrzeby [języka JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) , dzięki czemu można uruchamiać ją w programie Internet Explorer. Istnieje jednak kilka rzeczy, które należy znać.
 
 ## <a name="run-an-app-in-internet-explorer"></a>Uruchamianie aplikacji w programie Internet Explorer
-Jeśli zamierzasz używać MSAL.js w aplikacjach, które można uruchomić w przeglądarce Internet Explorer, należy dodać odwołanie do kód Pro promise przed odwołaniem się do skryptu MSAL.js.
+Jeśli zamierzasz używać MSAL. js w aplikacjach, które mogą być uruchamiane w programie Internet Explorer, musisz dodać odwołanie do wypełnienia obietnicą przed odwołaniem do skryptu MSAL. js.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js" class="pre"></script>
 ```
 
-Jest to spowodowane programu Internet Explorer nie obsługuje natywnie obietnic języka JavaScript.
+Wynika to z faktu, że program Internet Explorer nie obsługuje natywnie niesie obietnice zwiększenia języka JavaScript.
 
-## <a name="debugging-an-application-running-in-internet-explorer"></a>Debugowanie aplikacji w programie Internet Explorer
+## <a name="debugging-an-application-running-in-internet-explorer"></a>Debugowanie aplikacji działającej w programie Internet Explorer
 
-### <a name="running-in-production"></a>Działających w środowisku produkcyjnym
-Wdrażanie aplikacji do środowiska produkcyjnego (na przykład w usłudze Azure Web apps) zwykle działa prawidłowo, pod warunkiem, że użytkownik końcowy zaakceptował okna podręczne. Możemy przetestowane za pomocą programu Internet Explorer 11.
+### <a name="running-in-production"></a>Uruchamianie w środowisku produkcyjnym
+Wdrażanie aplikacji w środowisku produkcyjnym (na przykład w usłudze Azure Web Apps) zwykle działa prawidłowo, pod warunkiem, że użytkownik końcowy zaakceptował okna podręczne. Przetestowano ją z programem Internet Explorer 11.
 
-### <a name="running-locally"></a>Uruchomiony lokalnie
-Jeśli chcesz uruchamiać i debugować lokalnie aplikację w programie Internet Explorer, należy pamiętać o następujących kwestiach (przyjęto założenie, chcesz uruchomić aplikację jako *http://localhost:1234* ):
+### <a name="running-locally"></a>Uruchamianie lokalne
+Jeśli chcesz uruchomić i debugować lokalnie aplikację działającą w programie Internet Explorer, musisz pamiętać o następujących kwestiach (Załóżmy, że chcesz uruchomić aplikację jako *http://localhost:1234* ):
 
-- Program Internet Explorer jest mechanizm zabezpieczeń o nazwie "Tryb chroniony", co zapobiega MSAL.js działa prawidłowo. Wśród objawy, po zalogowaniu, strona może zostać przekierowany do http://localhost:1234/null.
+- Program Internet Explorer ma mechanizm zabezpieczeń o nazwie "tryb chroniony", który uniemożliwia poprawne działanie MSAL. js. Po zalogowaniu się do strony można przekierować do http://localhost:1234/null.
 
-- Do uruchamiania i debugowania aplikacji w środowisku lokalnym, należy wyłączyć to "Tryb chroniony". W tym:
+- Aby uruchomić i debugować aplikację lokalnie, należy wyłączyć ten tryb chroniony. Dla tego:
 
-    1. Program Internet Explorer kliknij **narzędzia** (ikonę koła zębatego).
-    1. Wybierz **Opcje internetowe** i następnie **zabezpieczeń** kartę.
-    1. Kliknij pozycję **Internet** strefy i usuń zaznaczenie pola wyboru **Włącz tryb chroniony (wymaga ponownego uruchomienia programu Internet Explorer)** . Program Internet Explorer ostrzega o tym, że komputer nie jest już chronione. Kliknij przycisk **OK**.
-    1. Ponownie uruchom program Internet Explorer.
+    1. Kliknij pozycję **Narzędzia** programu Internet Explorer (ikona koła zębatego).
+    1. Wybierz pozycję **Opcje internetowe** , a następnie kartę **zabezpieczenia** .
+    1. Kliknij strefę **Internet** , a następnie usuń zaznaczenie pola wyboru **Włącz tryb chroniony (wymaga ponownego uruchomienia programu Internet Explorer)** . Program Internet Explorer ostrzega o tym, że komputer nie jest już chroniony. Kliknij przycisk **OK**.
+    1. Uruchom ponownie program Internet Explorer.
     1. Uruchamianie i debugowanie aplikacji.
 
-Gdy wszystko będzie gotowe, przywracanie ustawień zabezpieczeń programu Internet Explorer.  Wybierz **ustawienia** -> **Opcje internetowe** -> **zabezpieczeń** -> **zresetować wszystkie strefy na domyślny poziom**.
+Gdy wszystko będzie gotowe, Przywróć ustawienia zabezpieczeń programu Internet Explorer.  Wybierz pozycję **ustawienia** -> **Opcje internetowe** -> **zabezpieczenia** -> **Zresetuj wszystkie strefy do poziomu domyślnego**.
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o [znane problemy w programie Internet Explorer przy użyciu MSAL.js](msal-js-use-ie-browser.md).
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się więcej o [znanych problemach dotyczących używania MSAL. js w programie Internet Explorer](msal-js-use-ie-browser.md).

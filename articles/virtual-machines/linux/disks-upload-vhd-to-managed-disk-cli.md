@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: dfcf9ea61a1f0fb5fd2d3b613c2449480753b3a1
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5215a7d899af15dc028189aee5760a6ec5b6577d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595096"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803988"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Przekazywanie wirtualnego dysku twardego do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
 W tym artykule opisano sposób przekazywania dysku VHD z komputera lokalnego do dysku zarządzanego platformy Azure. Wcześniej musiałeś postępować zgodnie z większym procesem, który obejmuje przemieszczenie danych na konto magazynu, i zarządzanie tym kontem magazynu. Teraz nie trzeba już zarządzać kontem magazynu ani przemieszczać danych w celu przekazania dysku VHD. Zamiast tego należy utworzyć pusty dysk zarządzany i bezpośrednio przekazać do niego dysk VHD. Upraszcza to przekazywanie lokalnych maszyn wirtualnych na platformę Azure i umożliwia przekazywanie wirtualnego dysku twardego do 32 TiB bezpośrednio do dysku zarządzanego.
 
-Jeśli udostępniasz rozwiązanie do tworzenia kopii zapasowych dla maszyn wirtualnych IaaS na platformie Azure, zalecamy użycie funkcji bezpośredniego przekazywania w celu przywrócenia kopii zapasowych klientów na dyskach zarządzanych. W przypadku przekazywania wirtualnego dysku twardego z maszyny zewnętrznej na platformę Azure szybkości z zależą od przepustowości lokalnej. W przypadku korzystania z maszyny wirtualnej platformy Azure przepustowość będzie taka sama jak standardowa HDD.
+Jeśli udostępniasz rozwiązanie do tworzenia kopii zapasowych dla maszyn wirtualnych IaaS na platformie Azure, zalecamy użycie funkcji bezpośredniego przekazywania w celu przywrócenia kopii zapasowych klientów na dyskach zarządzanych. Jeśli przekazujesz wirtualny dysk twardy z maszyny zewnętrznej do platformy Azure, szybkość będzie zależeć od lokalnej przepustowości. W przypadku korzystania z maszyny wirtualnej platformy Azure przepustowość będzie taka sama jak standardowa HDD.
 
 Obecnie bezpośrednie przekazywanie jest obsługiwane dla standardowego dysku twardego, standardowego SSD i dysków zarządzanych w warstwie Premium SSD. Nie jest jeszcze obsługiwane dla Ultra dysków SSD.
 
@@ -29,7 +29,7 @@ Obecnie bezpośrednie przekazywanie jest obsługiwane dla standardowego dysku tw
 - Pobierz najnowszą [wersję programu AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Zainstaluj interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 - Plik VHD zapisany lokalnie
-- Jeśli zamierzasz przekazać dysk VHD z dysku na PEM: dysk VHD, który został [przygotowany na platformie Azure, jest](../windows/prepare-for-upload-vhd-image.md)przechowywany lokalnie.
+- Jeśli zamierzasz przekazać dysk VHD ze swojego miejsca lokalnego: dysku VHD [przygotowanego dla platformy Azure](../windows/prepare-for-upload-vhd-image.md), który jest przechowywany lokalnie.
 - Lub dysk zarządzany na platformie Azure, jeśli zamierzasz wykonać akcję kopiowania.
 
 ## <a name="create-an-empty-managed-disk"></a>Utwórz pusty dysk zarządzany
@@ -124,6 +124,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wirtualny dysk twardy został pomyślnie przekazany do dysku zarządzanego, możesz dołączyć dysk do maszyny wirtualnej i zacząć z niego korzystać.
+Teraz, gdy wirtualny dysk twardy został pomyślnie przekazany do dysku zarządzanego, możesz dołączyć dysk jako [dysk danych do istniejącej maszyny wirtualnej](add-disk.md) lub [dołączyć dysk do maszyny wirtualnej jako dysk systemu operacyjnego](upload-vhd.md#create-the-vm), aby utworzyć nową maszynę wirtualną. 
 
-Aby dowiedzieć się, jak dołączyć dysk do maszyny wirtualnej, zobacz nasz artykuł w temacie: [Dodawanie dysku do maszyny wirtualnej z systemem Linux](add-disk.md).

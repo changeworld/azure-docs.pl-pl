@@ -1,5 +1,6 @@
 ---
-title: Inicjuj aplikacje klienckie (Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript) | Azure
+title: Inicjuj aplikacje klienckie (Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript)
+titleSuffix: Microsoft identity platform
 description: Informacje na temat inicjowania aplikacji klienckich przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d36def4faa98f4b8e42c93cf3e222c2ec7ca89a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b24d9d79bf34325ec033b6ae6847579fa51769ac
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073841"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803081"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicjuj aplikacje klienckie przy użyciu MSAL. js
 W tym artykule opisano inicjowanie biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js) przy użyciu wystąpienia aplikacji agent użytkownika. Aplikacja agent użytkownika jest formą publicznej aplikacji klienckiej, w której kod klienta jest wykonywany w agencie użytkownika, takim jak przeglądarka sieci Web. Ci klienci nie przechowują wpisów tajnych, ponieważ kontekst przeglądarki jest otwarty. Aby dowiedzieć się więcej na temat typów aplikacji klienta i opcji konfiguracji aplikacji, zapoznaj się z [omówieniem](msal-client-applications.md).
@@ -39,7 +40,7 @@ Przed zainicjowaniem aplikacji należy najpierw [zarejestrować ją w Azure Port
 
 Można użyć MSAL. js w następujący sposób w zwykłej aplikacji JavaScript/TypeScript. Inicjowanie kontekstu uwierzytelniania MSAL przez utworzenie wystąpienia `UserAgentApplication` z obiektem konfiguracji. Minimalną wymaganą konfiguracją do zainicjowania MSAL. js jest clientID aplikacji, którą należy uzyskać z portalu rejestracji aplikacji.
 
-W przypadku metod uwierzytelniania przy użyciu przepływów `acquireTokenRedirect`przekierowania (`loginRedirect` i) należy jawnie zarejestrować wywołanie zwrotne dla sukcesu lub błędu `handleRedirectCallback()` za pomocą metody. Jest to wymaganie, ponieważ przepływy przekierowania nie zwracają niesie obietnice zwiększenia jako metod z wyskakującym doświadczeniem.
+W przypadku metod uwierzytelniania z przepływami przekierowania (`loginRedirect` i `acquireTokenRedirect`) należy jawnie zarejestrować wywołanie zwrotne dla sukcesu lub błędu za pomocą metody `handleRedirectCallback()`. Jest to wymaganie, ponieważ przepływy przekierowania nie zwracają niesie obietnice zwiększenia jako metod z wyskakującym doświadczeniem.
 
 ```javascript
 // Configuration object constructed
@@ -60,7 +61,7 @@ function authCallback(error, response) {
 myMSALObj.handleRedirectCallback(authCallback);
 ```
 
-MSAL. js zaprojektowano tak, aby miało jedno wystąpienie i `UserAgentApplication` konfigurację do reprezentowania jednego kontekstu uwierzytelniania. Nie zaleca się stosowania wielu wystąpień, ponieważ powodują one konflikt wpisów w pamięci podręcznej i zachowanie w przeglądarce.
+MSAL. js ma takie samo wystąpienie i konfigurację `UserAgentApplication` do reprezentowania jednego kontekstu uwierzytelniania. Nie zaleca się stosowania wielu wystąpień, ponieważ powodują one konflikt wpisów w pamięci podręcznej i zachowanie w przeglądarce.
 
 ## <a name="configuration-options"></a>Opcje konfiguracji
 
@@ -110,36 +111,36 @@ export type Configuration = {
 
 Poniżej znajduje się całkowity zbiór konfigurowalnych opcji, które są obecnie obsługiwane w obiekcie konfiguracji:
 
-- **clientID**: Wymagana. ClientID aplikacji należy uzyskać z portalu rejestracji aplikacji.
+- **clientID**: wymagane. ClientID aplikacji należy uzyskać z portalu rejestracji aplikacji.
 
-- **Urząd**: Opcjonalny. Adres URL wskazujący katalog, z którego MSAL może żądać tokenów. Wartość domyślna to: `https://login.microsoftonline.com/common`.
-    * W&lt;usłudze Azure AD jest to grupa odbiorców&gt;/&lt; &lt;&gt; instancji https://, gdzie wystąpienie jest domeną dostawcy tożsamości (na przykład `https://login.microsoftonline.com`) i&gt; &lt;odbiorcy&gt; to identyfikator reprezentujący odbiorców logowania. Mogą to być następujące wartości:
-        * `https://login.microsoftonline.com/<tenant>`-dzierżawca jest domeną skojarzoną z dzierżawcą, taką jak contoso.onmicrosoft.com, lub identyfikatorem `TenantID` GUID reprezentującym Właściwość katalogu, który służy tylko do logowania użytkowników z określoną organizacją.
-        * `https://login.microsoftonline.com/common`— Służy do logowania użytkowników przy użyciu kont służbowych lub konta osobistego firmy Microsoft.
-        * `https://login.microsoftonline.com/organizations/`— Służy do logowania użytkowników przy użyciu kont służbowych.
-        * `https://login.microsoftonline.com/consumers/`— Służy do logowania użytkowników tylko do konto Microsoft osobistych (Live).
+- **Urząd**: opcjonalny. Adres URL wskazujący katalog, z którego MSAL może żądać tokenów. Wartość domyślna to: `https://login.microsoftonline.com/common`.
+    * W usłudze Azure AD ma postać https://&lt;wystąpienia&gt;/&lt;odbiorców&gt;, gdzie &lt;wystąpienie&gt; to domena dostawcy tożsamości (na przykład `https://login.microsoftonline.com`), a &lt;&gt; odbiorców to identyfikator reprezentowania odbiorców logowania. Mogą to być następujące wartości:
+        * `https://login.microsoftonline.com/<tenant>`-dzierżawca to domena skojarzona z dzierżawcą, na przykład contoso.onmicrosoft.com lub identyfikator GUID reprezentujący `TenantID` właściwości katalogu używanego tylko do logowania użytkowników określonej organizacji.
+        * `https://login.microsoftonline.com/common`— służy do logowania użytkowników przy użyciu kont służbowych lub konta osobistego firmy Microsoft.
+        * `https://login.microsoftonline.com/organizations/`— służy do logowania użytkowników przy użyciu kont służbowych.
+        * `https://login.microsoftonline.com/consumers/` — służy do logowania użytkowników tylko przy użyciu konto Microsoft osobistych (Live).
     * W Azure AD B2C ma postać `https://<instance>/tfp/<tenant>/<policyName>/`, gdzie wystąpienie jest domeną Azure AD B2C, dzierżawcą jest nazwą dzierżawy Azure AD B2C, PolicyName jest nazwą zasad B2C, które mają zostać zastosowane.
 
 
-- **validateAuthority**: Opcjonalny.  Sprawdź poprawność wystawcy tokenów. Wartość domyślna to `true`. W przypadku aplikacji B2C, ponieważ wartość urzędu jest znana i może być różna dla zasad, weryfikacja urzędu nie będzie działać i musi być ustawiona na `false`.
+- **validateAuthority**: opcjonalne.  Sprawdź poprawność wystawcy tokenów. Wartość domyślna to `true`. W przypadku aplikacji B2C, ponieważ wartość urzędu jest znana i może być różna dla zasad, weryfikacja urzędu nie będzie działać i musi być ustawiona na `false`.
 
-- **redirectUri**: Opcjonalny.  Identyfikator URI przekierowania aplikacji, w którym odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Musi dokładnie pasować do jednego z identyfikatorów URI przekierowania zarejestrowanych w portalu. Wartość domyślna to `window.location.href`.
+- **redirectUri**: opcjonalne.  Identyfikator URI przekierowania aplikacji, w którym odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Musi dokładnie pasować do jednego z identyfikatorów URI przekierowania zarejestrowanych w portalu. Wartość domyślna to `window.location.href`.
 
-- **postLogoutRedirectUri**: Opcjonalny.  Przekierowuje użytkownika do `postLogoutRedirectUri` programu po wylogowaniu. Wartość domyślna to `redirectUri`.
+- **postLogoutRedirectUri**: opcjonalne.  Przekierowuje użytkownika do `postLogoutRedirectUri` po wylogowaniu. Wartość domyślna to `redirectUri`.
 
-- **navigateToLoginRequestUrl**: Opcjonalna. Możliwość wyłączenia domyślnej nawigacji na stronie początkowej po zalogowaniu się. Wartość domyślna to true. Jest on używany tylko w przypadku przepływów przekierowywania.
+- **navigateToLoginRequestUrl**: opcjonalne. Możliwość wyłączenia domyślnej nawigacji na stronie początkowej po zalogowaniu się. Wartość domyślna to true. Jest on używany tylko w przypadku przepływów przekierowywania.
 
-- **cacheLocation**: Opcjonalna.  Ustawia magazyn przeglądarki na `localStorage` lub. `sessionStorage` Wartość domyślna to `sessionStorage`.
+- **cacheLocation**: opcjonalne.  Ustawia magazyn przeglądarki na `localStorage` lub `sessionStorage`. Wartość domyślna to `sessionStorage`.
 
-- **storeAuthStateInCookie**: Opcjonalna.  Ta flaga została wprowadzona w MSAL. js v 0.2.2 jako poprawka do problemów z [pętlą uwierzytelniania](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#1-issues-due-to-security-zones) w programie Microsoft Internet Explorer i Microsoft Edge. Aby skorzystać z `storeAuthStateInCookie` tej poprawki, Włącz dla tej flagi wartość true. Gdy ta funkcja jest włączona, MSAL. js będzie przechowywać stan żądania uwierzytelnienia wymagany do weryfikacji przepływów uwierzytelniania w plikach cookie w przeglądarce. Domyślnie ta flaga jest ustawiona na `false`.
+- **storeAuthStateInCookie**: opcjonalne.  Ta flaga została wprowadzona w MSAL. js v 0.2.2 jako poprawka do problemów z [pętlą uwierzytelniania](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#1-issues-due-to-security-zones) w programie Microsoft Internet Explorer i Microsoft Edge. Aby skorzystać z tej poprawki, Włącz dla flagi `storeAuthStateInCookie` wartość true. Gdy ta funkcja jest włączona, MSAL. js będzie przechowywać stan żądania uwierzytelnienia wymagany do weryfikacji przepływów uwierzytelniania w plikach cookie w przeglądarce. Domyślnie ta flaga jest ustawiona na `false`.
 
-- **Rejestrator**: Opcjonalny.  Obiekt rejestratora z wystąpieniem wywołania zwrotnego, które może zostać dostarczone przez dewelopera w celu korzystania z dzienników i publikowania ich w sposób niestandardowy. Aby uzyskać szczegółowe informacje dotyczące przekazywania obiektu rejestratora, zobacz [Rejestrowanie przy użyciu msal. js](msal-logging.md).
+- **Rejestrator**: opcjonalny.  Obiekt rejestratora z wystąpieniem wywołania zwrotnego, które może zostać dostarczone przez dewelopera w celu korzystania z dzienników i publikowania ich w sposób niestandardowy. Aby uzyskać szczegółowe informacje dotyczące przekazywania obiektu rejestratora, zobacz [Rejestrowanie przy użyciu msal. js](msal-logging.md).
 
-- **loadFrameTimeout**: Opcjonalna.  Liczba milisekund braku aktywności przed upływem limitu czasu odpowiedzi na odnowienie tokenu z usługi Azure AD. Wartość domyślna to 6 sekund.
+- **loadFrameTimeout**: opcjonalne.  Liczba milisekund braku aktywności przed upływem limitu czasu odpowiedzi na odnowienie tokenu z usługi Azure AD. Wartość domyślna to 6 sekund.
 
-- **tokenRenewalOffsetSeconds**: Opcjonalna. Liczba milisekund, która ustawia przedział czasu wymagany do odnowienia tokenu przed wygaśnięciem. Wartość domyślna to 300 milisekund.
+- **tokenRenewalOffsetSeconds**: opcjonalne. Liczba milisekund, która ustawia przedział czasu wymagany do odnowienia tokenu przed wygaśnięciem. Wartość domyślna to 300 milisekund.
 
 Są one stosowane tylko do przekazywania z biblioteki otoki kątowej MSAL:
-- **unprotectedResources**: Opcjonalna.  Tablica identyfikatorów URI, które nie są chronionymi zasobami. MSAL nie będzie dołączać tokenu do żądań wychodzących, które mają ten identyfikator URI. Wartość domyślna to `null`.
+- **unprotectedResources**: opcjonalne.  Tablica identyfikatorów URI, które nie są chronionymi zasobami. MSAL nie będzie dołączać tokenu do żądań wychodzących, które mają ten identyfikator URI. Wartość domyślna to `null`.
 
-- **protectedResourceMap**: Opcjonalny.  Jest to mapowanie zasobów do zakresów używanych przez MSAL do automatycznego dołączania tokenów dostępu w wywołaniach interfejsu API sieci Web. Dla zasobu uzyskano pojedynczy token dostępu. Aby można było zmapować określoną ścieżkę zasobu w następujący sposób: {"https://graph.microsoft.com/v1.0/me", ["User. Read"]} lub adres URL aplikacji zasobu: {"https://graph.microsoft.com/", ["User. Read", "mail. Send"]}. Jest to wymagane dla wywołań mechanizmu CORS. Wartość domyślna to `null`.
+- **protectedResourceMap**: opcjonalne.  Jest to mapowanie zasobów do zakresów używanych przez MSAL do automatycznego dołączania tokenów dostępu w wywołaniach interfejsu API sieci Web. Dla zasobu uzyskano pojedynczy token dostępu. Aby można było zmapować określoną ścieżkę zasobu w następujący sposób: {"https://graph.microsoft.com/v1.0/me", ["User. Read"]} lub adres URL aplikacji zasobu: {"https://graph.microsoft.com/", ["User. Read", "mail. Send"]}. Jest to wymagane dla wywołań mechanizmu CORS. Wartość domyślna to `null`.

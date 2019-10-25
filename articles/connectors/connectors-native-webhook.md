@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 36b0ea7233b449584bd83450b45276da5baa135b
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: ee86f53795b1b3e7bd61480a490d4e18c844d4c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264344"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804262"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Tworzenie i uruchamianie zautomatyzowanych przepływów zadań opartych na zdarzeniach za pomocą elementów webhook protokołu HTTP w Azure Logic Apps
 
@@ -75,7 +75,7 @@ Ten wbudowany wyzwalacz rejestruje adres URL wywołania zwrotnego z określoną 
 
 1. Aby dodać inne dostępne parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry.
 
-   Aby uzyskać więcej informacji na temat typów uwierzytelniania dostępnych dla elementu webhook protokołu HTTP, zobacz temat [uwierzytelnianie wyzwalaczy i akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Aby uzyskać więcej informacji na temat typów uwierzytelniania dostępnych dla elementu webhook protokołu HTTP, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Kontynuuj tworzenie przepływu pracy aplikacji logiki przy użyciu akcji uruchamianych podczas uruchamiania wyzwalacza.
 
@@ -111,7 +111,7 @@ Ta wbudowana akcja rejestruje adres URL wywołania zwrotnego z określoną usłu
 
 1. Aby dodać inne dostępne parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry.
 
-   Aby uzyskać więcej informacji na temat typów uwierzytelniania dostępnych dla elementu webhook protokołu HTTP, zobacz temat [uwierzytelnianie wyzwalaczy i akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Aby uzyskać więcej informacji na temat typów uwierzytelniania dostępnych dla elementu webhook protokołu HTTP, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Po zakończeniu Pamiętaj, aby zapisać aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 

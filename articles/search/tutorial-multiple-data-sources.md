@@ -1,27 +1,27 @@
 ---
-title: 'C#Samouczek: indeksowanie wielu źródeł danych — Azure Search'
-description: Dowiedz się, jak importować dane z wielu źródeł danych do jednego indeksu Azure Search.
-author: RobDixon22
+title: 'C#Samouczek: indeksowanie wielu źródeł danych'
+titleSuffix: Azure Cognitive Search
+description: Dowiedz się, jak importować dane z wielu źródeł danych do jednego indeksu Wyszukiwanie poznawcze platformy Azure.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 06/21/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 3b94e3e352f4d6b5cd7da41feb9660be2ffed2bd
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70241833"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786481"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Samouczek: łączenie danych z wielu źródeł danych w jednym indeksie Azure Search
+# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Samouczek: łączenie danych z wielu źródeł danych w jednym indeksie Wyszukiwanie poznawcze platformy Azure
 
-Azure Search umożliwia importowanie, analizowanie i indeksowanie danych z wielu źródeł danych w jednym połączonym indeksie wyszukiwania. Obsługuje to sytuacje, w których dane strukturalne są agregowane przy użyciu mniej strukturalnych lub nawet danych zwykłego tekstu z innych źródeł, takich jak tekst, HTML lub dokumenty JSON.
+Usługa Azure Wyszukiwanie poznawcze umożliwia importowanie, analizowanie i indeksowanie danych z wielu źródeł danych w jednym połączonym indeksie wyszukiwania. Obsługuje to sytuacje, w których dane strukturalne są agregowane przy użyciu mniej strukturalnych lub nawet danych zwykłego tekstu z innych źródeł, takich jak tekst, HTML lub dokumenty JSON.
 
 W tym samouczku opisano sposób indeksowania danych hotelu ze źródła danych Azure Cosmos DB i scalania z informacjami o pokoju hotelowym pobranymi z dokumentów Blob Storage platformy Azure. Wynik będzie połączonym indeksem wyszukiwania hotelowego zawierającym złożone typy danych.
 
-Ten samouczek używa C#programu, zestawu .NET SDK dla Azure Search i Azure Portal do wykonywania następujących zadań:
+Ten samouczek używa C#programu, zestawu .NET SDK dla platformy Azure Wyszukiwanie poznawcze i Azure Portal do wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Przekazywanie przykładowych danych i tworzenie źródeł danych
@@ -34,7 +34,7 @@ Ten samouczek używa C#programu, zestawu .NET SDK dla Azure Search i Azure Porta
 
 W tym przewodniku Szybki Start są używane następujące usługi, narzędzia i dane. 
 
-- [Utwórz usługę Azure Search](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. W tym samouczku możesz użyć bezpłatnej usługi.
+- [Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. W tym samouczku możesz użyć bezpłatnej usługi.
 
 - [Utwórz konto Azure Cosmos DB](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych hotelowych.
 
@@ -46,7 +46,7 @@ W tym przewodniku Szybki Start są używane następujące usługi, narzędzia i 
 
 1. Znajdź przykładowe repozytorium w usłudze GitHub: [Azure-Search-dotnet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 1. Wybierz pozycję **Klonuj lub Pobierz** , aby utworzyć prywatną kopię lokalną repozytorium.
-1. Otwórz program Visual Studio i zainstaluj pakiet NuGet wyszukiwania Microsoft Azure, jeśli nie został jeszcze zainstalowany. W menu **Narzędzia** wybierz pozycję **Menedżer pakietów NuGet** , a następnie **Zarządzaj pakietami NuGet dla rozwiązania..** .. Wybierz kartę **Przeglądaj** , a następnie wpisz ciąg "Azure Search" w polu wyszukiwania. Zainstaluj **program Microsoft. Azure. Search** , gdy zostanie wyświetlony na liście (w wersji 9.0.1 lub nowszej). Aby ukończyć instalację, trzeba będzie kliknąć dodatkowe okna dialogowe.
+1. Otwórz program Visual Studio i zainstaluj pakiet NuGet Wyszukiwanie poznawcze Microsoft Azure, jeśli nie został jeszcze zainstalowany. W menu **Narzędzia** wybierz pozycję **Menedżer pakietów NuGet** , a następnie **Zarządzaj pakietami NuGet dla rozwiązania..** .. Na karcie **Przeglądaj** Znajdź i zainstaluj **program Microsoft. Azure. Search** (w wersji 9.0.1 lub nowszej). Aby ukończyć instalację, trzeba będzie kliknąć dodatkowe okna dialogowe.
 
     ![Dodawanie bibliotek platformy Azure przy użyciu narzędzia NuGet](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
@@ -54,7 +54,7 @@ W tym przewodniku Szybki Start są używane następujące usługi, narzędzia i 
 
 ## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
 
-Aby można było korzystać z usługi Azure Search, wymagany jest adres URL usługi i klucz dostępu. Usługa wyszukiwania jest tworzona przy użyciu obu, więc jeśli usługa Azure Search została dodana do Twojej subskrypcji, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+Aby można było korzystać z usługi Azure Wyszukiwanie poznawcze, wymagany jest adres URL usługi i klucz dostępu. Usługa wyszukiwania jest tworzona razem z usługą, więc jeśli do subskrypcji dodano Wyszukiwanie poznawcze platformy Azure, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
 
 1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Uzyskaj adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
 
@@ -121,17 +121,17 @@ Informacje o połączeniu dla usługi wyszukiwania i źródeł danych są okreś
 }
 ```
 
-Pierwsze dwa wpisy używają adresu URL i kluczy administracyjnych dla usługi Azure Search. Na przykład punkt końcowy `https://mydemo.search.windows.net`, nazwa usługi do udostępnienia jest `mydemo`.
+Pierwsze dwa wpisy używają adresu URL i kluczy administratora usługi Azure Wyszukiwanie poznawcze. Na przykład punkt końcowy `https://mydemo.search.windows.net`, nazwa usługi do udostępnienia jest `mydemo`.
 
 Następne wpisy określają nazwy kont i informacje o parametrach połączenia dla Blob Storage platformy Azure i Azure Cosmos DB źródeł danych.
 
 ### <a name="identify-the-document-key"></a>Identyfikowanie klucza dokumentu
 
-W Azure Search pole klucza jednoznacznie identyfikuje każdy dokument w indeksie. Każdy indeks wyszukiwania musi mieć dokładnie jedno pole klucza typu `Edm.String`. Pole klucza musi być obecne dla każdego dokumentu w źródle danych, które jest dodawane do indeksu. (W rzeczywistości jest to jedyne pole wymagane).
+W usłudze Azure Wyszukiwanie poznawcze pole klucza jednoznacznie identyfikuje każdy dokument w indeksie. Każdy indeks wyszukiwania musi mieć dokładnie jedno pole klucza typu `Edm.String`. Pole klucza musi być obecne dla każdego dokumentu w źródle danych, które jest dodawane do indeksu. (W rzeczywistości jest to jedyne pole wymagane).
 
 Podczas indeksowania danych z wielu źródeł danych każda wartość klucza źródła danych musi być mapowana na to samo pole klucza w połączonym indeksie. Często wymaga to pewnej planowania z góry, aby zidentyfikować istotny klucz dokumentu dla indeksu, i upewnić się, że istnieje w każdym źródle danych.
 
-Azure Search indeksatorów mogą używać mapowań pól do zmiany nazw i nawet ponownego formatowania pól danych podczas procesu indeksowania, dzięki czemu dane źródłowe mogą być kierowane do poprawnego pola indeksu.
+Indeksatory usługi Azure Wyszukiwanie poznawcze mogą używać mapowań pól do zmiany nazw i nawet ponownego formatowania pól danych w procesie indeksowania, dzięki czemu dane źródłowe mogą być kierowane do poprawnego pola indeksu.
 
 Na przykład w naszym przykładzie Azure Cosmos DB dane, identyfikator hotelu ma nazwę **HotelId**. Jednak w plikach obiektów BLOB JSON dla pokojów hotelowych identyfikator hotelu ma nazwę **ID**. Program obsługuje to przez mapowanie pola **identyfikatora** z obiektów BLOB do pola klucza **HotelId** w indeksie.
 
@@ -143,7 +143,7 @@ Na przykład w naszym przykładzie Azure Cosmos DB dane, identyfikator hotelu ma
 Po wprowadzeniu ustawień danych i konfiguracji, przykładowy program w **AzureSearchMultipleDataSources. sln** powinien być gotowy do kompilowania i uruchamiania.
 
 Ta prosta C#Aplikacja konsolowa/.NET wykonuje następujące zadania:
-* Tworzy nowy indeks Azure Search na podstawie struktury danych klasy C# hotelu (która odwołuje się również do klas adresów i pokojów).
+* Tworzy nowy indeks Wyszukiwanie poznawcze platformy Azure na podstawie struktury danych klasy C# hotelu (która odwołuje się również do klas adresów i pokojów).
 * Tworzy Azure Cosmos DB źródło danych i indeksator, który mapuje Azure Cosmos DB dane na pola indeksu.
 * Uruchamia indeksator Azure Cosmos DB w celu załadowania danych hotelu.
 * Tworzy źródło danych usługi Azure Blob Storage i indeksator, który mapuje dane obiektów BLOB JSON do pól indeksu.
@@ -152,11 +152,11 @@ Ta prosta C#Aplikacja konsolowa/.NET wykonuje następujące zadania:
  Przed uruchomieniem programu Poświęć minutę na przeanalizowanie kodu i definicji indeksu i indeksatora dla tego przykładu. Odpowiedni kod znajduje się w dwóch plikach:
 
   + **Hotel.cs** zawiera schemat definiujący indeks
-  + **Program.cs** zawiera funkcje, które tworzą indeks Azure Search, źródła danych i indeksatory, a następnie Ładuj połączone wyniki do indeksu.
+  + **Program.cs** zawiera funkcje, które tworzą indeks wyszukiwanie poznawcze platformy Azure, źródła danych i indeksatory, a następnie Ładuj połączone wyniki do indeksu.
 
 ### <a name="define-the-index"></a>Definiowanie indeksu
 
-Ten przykładowy program używa zestawu .NET SDK do definiowania i tworzenia indeksu Azure Search. Wykorzystuje klasę [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) , aby wygenerować strukturę indeksu z klasy modelu C# danych.
+Ten przykładowy program używa zestawu .NET SDK do definiowania i tworzenia indeksu Wyszukiwanie poznawcze platformy Azure. Wykorzystuje klasę [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) , aby wygenerować strukturę indeksu z klasy modelu C# danych.
 
 Model danych jest definiowany przez klasę hotelu, która również zawiera odwołania do klas Address i Room. FieldBuilder przechodzi przez wiele definicji klas w celu wygenerowania złożonej struktury danych dla indeksu. Tagi metadanych są używane do definiowania atrybutów poszczególnych pól, na przykład czy można je przeszukiwać czy sortować.
 
@@ -336,22 +336,22 @@ Można eksplorować wypełniony indeks wyszukiwania po uruchomieniu programu prz
 
 W Azure Portal Otwórz stronę **Przegląd** usługi wyszukiwania i Znajdź na liście **indeksów** pozycję **Pokój z przemieszczeń hotelowych** .
 
-  ![Lista indeksów Azure Search](media/tutorial-multiple-data-sources/index-list.png "Lista indeksów Azure Search")
+  ![Lista indeksów usługi Azure Wyszukiwanie poznawcze](media/tutorial-multiple-data-sources/index-list.png "Lista indeksów usługi Azure Wyszukiwanie poznawcze")
 
 Na liście kliknij indeks pokojów hotelowych — przykład. Zostanie wyświetlony interfejs Eksploratora wyszukiwania dla indeksu. Wprowadź zapytanie dla terminu takiego jak "możliwość zaprojektowania". W wynikach powinien być widoczny co najmniej jeden dokument, a ten dokument powinien zawierać listę obiektów Room w tablicy pokojów.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Najszybszym sposobem wyczyszczenia środowiska po ukończeniu samouczka jest usunięcie grupy zasobów zawierającej usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. Nazwa grupy zasobów w portalu znajduje się na stronie Przegląd usługi Azure Search.
+Najszybszym sposobem oczyszczenia po samouczku jest usunięcie grupy zasobów zawierającej usługę Wyszukiwanie poznawcze platformy Azure. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. Nazwa grupy zasobów w portalu znajduje się na stronie Przegląd usługi Azure Wyszukiwanie poznawcze.
 
 ## <a name="next-steps"></a>Następne kroki
 
 Istnieje kilka metod i wiele opcji indeksowania obiektów BLOB JSON. Jeśli dane źródłowe zawierają zawartość JSON, możesz przejrzeć te opcje, aby zobaczyć, co najlepiej sprawdza się w danym scenariuszu.
 
 > [!div class="nextstepaction"]
-> [Jak indeksować obiekty blob JSON za pomocą indeksatora obiektów blob usługi Azure Search](search-howto-index-json-blobs.md)
+> [Jak indeksować obiekty blob JSON przy użyciu usługi Azure Wyszukiwanie poznawcze BLOB Indexer](search-howto-index-json-blobs.md)
 
-Możesz chcieć rozszerzyć strukturalne dane indeksów z jednego źródła danych, dzięki czemu dane są wzbogacone z nieuporządkowanymi obiektami BLOB lub z treści pełnotekstowych. W poniższym samouczku pokazano, jak używać Cognitive Services razem z Azure Search przy użyciu zestawu .NET SDK.
+Możesz chcieć rozszerzyć strukturalne dane indeksów z jednego źródła danych, dzięki czemu dane są wzbogacone z nieuporządkowanymi obiektami BLOB lub z treści pełnotekstowych. W poniższym samouczku pokazano, jak używać Cognitive Services razem z usługą Azure Wyszukiwanie poznawcze przy użyciu zestawu .NET SDK.
 
 > [!div class="nextstepaction"]
-> [Wywołaj interfejsy API usług Cognitive Services w potoku indeksowania Azure Search](cognitive-search-tutorial-blob-dotnet.md)
+> [Wywołaj interfejsy API usług Cognitive Services w potoku indeksowania Wyszukiwanie poznawcze platformy Azure](cognitive-search-tutorial-blob-dotnet.md)

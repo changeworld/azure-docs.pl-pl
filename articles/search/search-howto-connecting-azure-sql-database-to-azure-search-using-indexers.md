@@ -1,29 +1,28 @@
 ---
-title: Łączenie i indeksowanie Azure SQL Database zawartości przy użyciu indeksatorów — Azure Search
-description: Dowiedz się, jak przeszukiwać dane w Azure SQL Database przy użyciu indeksatorów w celu przeszukiwania pełnotekstowego w Azure Search. W tym artykule opisano połączenia, konfigurację indeksatora i pozyskiwanie danych.
-ms.date: 05/02/2019
-author: mgottein
+title: Łączenie i indeksowanie Azure SQL Database zawartości przy użyciu indeksatorów
+titleSuffix: Azure Cognitive Search
+description: Importuj dane z Azure SQL Database przy użyciu indeksatorów w celu wyszukiwania pełnotekstowego w usłudze Azure Wyszukiwanie poznawcze. W tym artykule opisano połączenia, konfigurację indeksatora i pozyskiwanie danych.
 manager: nitinme
+author: mgottein
 ms.author: magottei
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 4ed218fdc1c6580e9b92364d123b081a1f34b441
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 11/04/2019
+ms.openlocfilehash: 012f555f3837086946eb4581dadc74011a3acc09
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656235"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792191"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Łączenie się z zawartością i indeksowanie Azure SQL Database przy użyciu indeksatorów Azure Search
+# <a name="connect-to-and-index-azure-sql-database-content-using-azure-cognitive-search-indexers"></a>Łączenie się z zawartością i indeksowanie Azure SQL Database za pomocą indeksatorów Wyszukiwanie poznawcze platformy Azure
 
-Aby można było badać [indeks Azure Search](search-what-is-an-index.md), należy wypełnić go danymi. Jeśli dane znajdują się w usłudze Azure SQL Database, **indeksator Azure Search dla Azure SQL Database** (lub **Azure SQL indeksator** for Short) może zautomatyzować proces indeksowania, co oznacza, że nie trzeba pisać i obsłużyć odpowiedniej infrastruktury, aby dowiedzieć się więcej.
+Aby można było wykonywać zapytania dotyczące [indeksu wyszukiwanie poznawcze platformy Azure](search-what-is-an-index.md), musisz wypełnić je danymi. Jeśli dane znajdują się w bazie danych Azure SQL, usługa **azure wyszukiwanie poznawcze indeksator dla Azure SQL Database** (lub **Azure SQL indeksator** for Short) może zautomatyzować proces indeksowania, co oznacza, że nie trzeba pisać i mniej więcej, aby zachować infrastrukturę.
 
 Ten artykuł dotyczy Mechanics z użyciem [indeksatorów](search-indexer-overview.md), ale również zawiera opis funkcji dostępnych tylko w bazach danych Azure SQL (na przykład zintegrowane śledzenie zmian). 
 
-Oprócz baz danych SQL Azure Azure Search udostępnia Indeksatory [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)i [Azure Table Storage](search-howto-indexing-azure-tables.md). Aby poprosić o pomoc techniczną dla innych źródeł danych, Prześlij swoją opinię na [forum opinii Azure Search](https://feedback.azure.com/forums/263029-azure-search/).
+Oprócz baz danych SQL Azure usługa Azure Wyszukiwanie poznawcze udostępnia Indeksatory [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)i [Azure Table Storage](search-howto-indexing-azure-tables.md). Aby poprosić o pomoc techniczną dla innych źródeł danych, Prześlij swoją opinię na [forum opinii na temat usługi Azure wyszukiwanie poznawcze](https://feedback.azure.com/forums/263029-azure-search/).
 
 ## <a name="indexers-and-data-sources"></a>Indeksatory i źródła danych
 
@@ -35,15 +34,15 @@ Oprócz baz danych SQL Azure Azure Search udostępnia Indeksatory [Azure Cosmos 
 * Zaktualizuj indeks ze zmianami w źródle danych zgodnie z harmonogramem.
 * Uruchom na żądanie, aby zaktualizować indeks stosownie do potrzeb.
 
-Pojedynczy indeksator może korzystać tylko z jednej tabeli lub widoku, ale można utworzyć wiele indeksatorów, jeśli chcesz wypełnić wiele indeksów wyszukiwania. Aby uzyskać więcej informacji na temat pojęć [, zobacz indeksator operacji: Typowy przepływ](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow)pracy.
+Pojedynczy indeksator może korzystać tylko z jednej tabeli lub widoku, ale można utworzyć wiele indeksatorów, jeśli chcesz wypełnić wiele indeksów wyszukiwania. Aby uzyskać więcej informacji na temat pojęć, zobacz [indeksator operacje: Typowy przepływ pracy](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
 
 Można skonfigurować i skonfigurować indeksator usługi Azure SQL przy użyciu:
 
 * Kreator importu danych w [Azure Portal](https://portal.azure.com)
-* [Zestaw SDK Azure Search .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
-* [Interfejs API REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) Azure Search
+* Azure Wyszukiwanie poznawcze [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* [Interfejs API REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) usługi Azure wyszukiwanie poznawcze
 
-W tym artykule będziemy używać interfejsu API REST do tworzenia indeksatorów i **źródeł danych**.
+W tym artykule będziemy używać interfejsu API REST do tworzenia **indeksatorów** i **źródeł danych**.
 
 ## <a name="when-to-use-azure-sql-indexer"></a>Kiedy używać usługi Azure SQL Indexer
 W zależności od kilku czynników związanych z danymi korzystanie z usługi Azure SQL Indexer może być nieodpowiednie. Jeśli dane spełniają następujące wymagania, możesz użyć usługi Azure SQL indeksator.
@@ -51,12 +50,12 @@ W zależności od kilku czynników związanych z danymi korzystanie z usługi Az
 | Kryteria | Szczegóły |
 |----------|---------|
 | Dane pochodzą z pojedynczej tabeli lub widoku | Jeśli dane są rozproszone w wielu tabelach, można utworzyć pojedynczy widok danych. Jednak w przypadku korzystania z widoku nie będzie można używać zintegrowanego wykrywania zmian SQL Server, aby odświeżyć indeks ze zmianami przyrostowymi. Aby uzyskać więcej informacji, zobacz [przechwytywanie zmienionych i usuniętych wierszy](#CaptureChangedRows) poniżej. |
-| Typy danych są zgodne | W indeksie Azure Search, ale nie wszystkie typy SQL są obsługiwane. Aby uzyskać listę, zobacz [Mapowanie typów danych](#TypeMapping). |
+| Typy danych są zgodne | Nie wszystkie typy SQL są obsługiwane w indeksie Wyszukiwanie poznawcze platformy Azure. Aby uzyskać listę, zobacz [Mapowanie typów danych](#TypeMapping). |
 | Synchronizacja danych w czasie rzeczywistym nie jest wymagana | Indeksator może ponownie indeksować tabelę co najwyżej pięć minut. Jeśli dane ulegają zmianie często, a zmiany muszą być odzwierciedlone w indeksie w ciągu kilku sekund lub minut, zalecamy użycie [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) lub [zestawu .NET SDK](search-import-data-dotnet.md) do bezpośredniego wypychania zaktualizowanych wierszy. |
-| Indeksowanie przyrostowe jest możliwe | Jeśli masz duży zestaw danych i planujesz uruchamianie indeksatora zgodnie z harmonogramem, Azure Search musi być w stanie skutecznie identyfikować nowe, zmienione lub usunięte wiersze. Indeksowanie nieprzyrostowe jest dozwolone tylko w przypadku indeksowania na żądanie (bez harmonogramu) lub indeksowania mniej niż 100 000 wierszy. Aby uzyskać więcej informacji, zobacz [przechwytywanie zmienionych i usuniętych wierszy](#CaptureChangedRows) poniżej. |
+| Indeksowanie przyrostowe jest możliwe | Jeśli masz duży zestaw danych i planujesz uruchamianie indeksatora zgodnie z harmonogramem, platforma Azure Wyszukiwanie poznawcze musi być w stanie skutecznie identyfikować nowe, zmienione lub usunięte wiersze. Indeksowanie nieprzyrostowe jest dozwolone tylko w przypadku indeksowania na żądanie (bez harmonogramu) lub indeksowania mniej niż 100 000 wierszy. Aby uzyskać więcej informacji, zobacz [przechwytywanie zmienionych i usuniętych wierszy](#CaptureChangedRows) poniżej. |
 
 > [!NOTE] 
-> Azure Search obsługuje tylko uwierzytelnianie SQL Server. Jeśli wymagana jest obsługa uwierzytelniania przy Azure Active Directory hasła, zapoznaj się z [propozycją usługi UserVoice](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica).
+> Usługa Azure Wyszukiwanie poznawcze obsługuje tylko uwierzytelnianie SQL Server. Jeśli wymagana jest obsługa uwierzytelniania przy Azure Active Directory hasła, zapoznaj się z [propozycją usługi UserVoice](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica).
 
 ## <a name="create-an-azure-sql-indexer"></a>Tworzenie indeksatora usługi Azure SQL
 
@@ -75,9 +74,9 @@ W zależności od kilku czynników związanych z danymi korzystanie z usługi Az
     }
    ```
 
-   Parametry połączenia można uzyskać z [Azure Portal](https://portal.azure.com); `ADO.NET connection string` Użyj opcji.
+   Parametry połączenia można uzyskać z [Azure Portal](https://portal.azure.com); Użyj opcji `ADO.NET connection string`.
 
-2. Utwórz docelowy indeks Azure Search, jeśli jeszcze go nie masz. Indeks można utworzyć przy użyciu [portalu](https://portal.azure.com) lub [interfejsu API tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Upewnij się, że schemat indeksu docelowego jest zgodny ze schematem tabeli źródłowej — zobacz [Mapowanie między typami danych SQL i Azure Search](#TypeMapping).
+2. Utwórz docelowy indeks Wyszukiwanie poznawcze platformy Azure, jeśli jeszcze go nie masz. Indeks można utworzyć przy użyciu [portalu](https://portal.azure.com) lub [interfejsu API tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Upewnij się, że schemat indeksu docelowego jest zgodny ze schematem tabeli źródłowej — zobacz [Mapowanie między typami danych wyszukiwania SQL i usług Azure poznawczej](#TypeMapping).
 
 3. Utwórz indeksator, nadając mu nazwę i odwołujący się do źródła danych i indeksu docelowego:
 
@@ -156,18 +155,18 @@ Można również rozmieocić indeksator tak, aby był uruchamiany okresowo zgodn
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-Parametr **interwału** jest wymagany. Interwał odnosi się do czasu między rozpoczęciem dwóch kolejnych wykonań indeksatora. Najmniejszy dozwolony interwał wynosi 5 minut; Najdłuższa wartość to jeden dzień. Musi być sformatowana jako wartość XSD "dayTimeDuration" (ograniczony podzbiór wartości [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Wzorzec dla tego elementu to: `P(nD)(T(nH)(nM))`. Przykłady: `PT15M` co 15 minut, `PT2H` przez co 2 godziny.
+Parametr **interwału** jest wymagany. Interwał odnosi się do czasu między rozpoczęciem dwóch kolejnych wykonań indeksatora. Najmniejszy dozwolony interwał wynosi 5 minut; Najdłuższa wartość to jeden dzień. Musi być sformatowana jako wartość XSD "dayTimeDuration" (ograniczony podzbiór wartości [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Wzorzec dla tego elementu to: `P(nD)(T(nH)(nM))`. Przykłady: `PT15M` przez co 15 minut, `PT2H` przez co 2 godziny.
 
-Więcej informacji o definiowaniu harmonogramów indeksatorów znajduje się w temacie [jak zaplanować indeksatory dla Azure Search](search-howto-schedule-indexers.md).
+Więcej informacji o definiowaniu harmonogramów indeksatorów znajduje się w temacie [jak zaplanować indeksatory dla platformy Azure wyszukiwanie poznawcze](search-howto-schedule-indexers.md).
 
 <a name="CaptureChangedRows"></a>
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>Przechwytuj nowe, zmienione i usunięte wiersze
 
-Azure Search używa **indeksowania przyrostowego** , aby uniknąć konieczności ponownego indeksowania całej tabeli lub widoku przy każdym uruchomieniu indeksatora. Azure Search udostępnia dwie zasady wykrywania zmian w celu obsługi indeksowania przyrostowego. 
+Usługa Azure Wyszukiwanie poznawcze używa **indeksowania przyrostowego** , aby uniknąć konieczności ponownego indeksowania całej tabeli lub widoku przy każdym uruchomieniu indeksatora. Usługa Azure Wyszukiwanie poznawcze udostępnia dwie zasady wykrywania zmian w celu obsługi indeksowania przyrostowego. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Zasady Change Tracking zintegrowanego SQL
-Jeśli Twoja baza danych SQL obsługuje [śledzenie zmian](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server), zalecamy użycie **zasad Change Tracking zintegrowanych z programem SQL**. Jest to najbardziej wydajne zasady. Ponadto pozwala Azure Search identyfikować usunięte wiersze bez konieczności dodawania jawnej kolumny "miękkie usuwanie" do tabeli.
+Jeśli Twoja baza danych SQL obsługuje [śledzenie zmian](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server), zalecamy użycie **zasad Change Tracking zintegrowanych z programem SQL**. Jest to najbardziej wydajne zasady. Ponadto umożliwia ona platformie Azure Wyszukiwanie poznawcze identyfikowanie usuniętych wierszy bez konieczności dodawania jawnej kolumny "miękkie usuwanie" do tabeli.
 
 #### <a name="requirements"></a>Wymagania 
 
@@ -195,7 +194,7 @@ Aby użyć tych zasad, Utwórz lub zaktualizuj źródło danych podobne do tego:
 W przypadku korzystania z zasad zintegrowanego śledzenia zmian w programie SQL Server nie określaj zasad wykrywania oddzielnego usuwania danych — ta zasada ma wbudowaną obsługę identyfikowania usuniętych wierszy. Jednak w przypadku usunięć do wykrycia "AUTOMAGIC" klucz dokumentu w indeksie wyszukiwania musi być taki sam jak klucz podstawowy w tabeli SQL. 
 
 > [!NOTE]  
-> Aby usunąć dużą liczbę wierszy z tabeli SQL przy użyciu [TRUNCATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql) , indeksator musi zostać zresetowany w celu zresetowania [](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) stanu śledzenia zmian w celu pobrania usunięć wierszy.
+> Aby usunąć dużą liczbę wierszy z tabeli SQL przy użyciu [TRUNCATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql) , indeksator musi zostać [zresetowany](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) w celu zresetowania stanu śledzenia zmian w celu pobrania usunięć wierszy.
 
 <a name="HighWaterMarkPolicy"></a>
 
@@ -208,7 +207,7 @@ Ta zasada wykrywania zmian korzysta z kolumny "High-Mark" przechwytującej wersj
 * Wszystkie wstawienia określają wartość dla kolumny.
 * Wszystkie aktualizacje elementu zmieniają również wartość kolumny.
 * Wartość tej kolumny rośnie wraz z każdym wstawieniem lub aktualizacją.
-* Zapytania z następującymi klauzulami WHERE i ORDER BY mogą być wykonywane efektywnie:`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
+* Zapytania z następującymi klauzulami WHERE i ORDER BY mogą być wykonywane efektywnie: `WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
 
 > [!IMPORTANT] 
 > Zdecydowanie zalecamy użycie typu danych [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) dla kolumny znacznika limitu górnego. W przypadku użycia dowolnego innego typu danych śledzenie zmian nie gwarantuje przechwycenia wszystkich zmian w obecności transakcji wykonywanych współbieżnie przy użyciu zapytania indeksatora. W przypadku korzystania z **rowversion** w konfiguracji z replikami tylko do odczytu należy wskazać indeksator w replice podstawowej. Tylko replika podstawowa może być używana do scenariuszy synchronizacji danych.
@@ -229,11 +228,11 @@ Aby użyć zasad oznakowania górnego, Utwórz lub zaktualizuj źródło danych 
     }
 
 > [!WARNING]
-> Jeśli tabela źródłowa nie ma indeksu w kolumnie znacznik górny, zapytania używane przez indeksator programu SQL mogą przekroczyć limit czasu. W szczególności `ORDER BY [High Water Mark Column]` klauzula wymaga, aby indeks działał efektywnie, gdy tabela zawiera wiele wierszy.
+> Jeśli tabela źródłowa nie ma indeksu w kolumnie znacznik górny, zapytania używane przez indeksator programu SQL mogą przekroczyć limit czasu. W szczególności klauzula `ORDER BY [High Water Mark Column]` wymaga, aby indeks działał efektywnie, gdy tabela zawiera wiele wierszy.
 >
 >
 
-Jeśli wystąpią błędy limitu czasu, można użyć `queryTimeout` ustawienia konfiguracji indeksatora, aby ustawić limit czasu zapytania na wartość wyższą niż domyślny limit 5 minut. Na przykład aby ustawić limit czasu na 10 minut, należy utworzyć lub zaktualizować indeksator przy użyciu następującej konfiguracji:
+W przypadku wystąpienia błędów przekroczenia limitu czasu można użyć ustawienia konfiguracji `queryTimeout` indeksatora, aby ustawić limit czasu zapytania na wartość wyższą niż domyślny limit 5 minut. Na przykład aby ustawić limit czasu na 10 minut, należy utworzyć lub zaktualizować indeksator przy użyciu następującej konfiguracji:
 
     {
       ... other indexer definition properties
@@ -241,7 +240,7 @@ Jeśli wystąpią błędy limitu czasu, można użyć `queryTimeout` ustawienia 
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-Można również wyłączyć `ORDER BY [High Water Mark Column]` klauzulę. Nie jest to jednak zalecane, ponieważ w przypadku przerwania wykonywania indeksatora przez błąd indeksator musi ponownie przetworzyć wszystkie wiersze, jeśli program indeksator przetworzył już prawie wszystkie wiersze o czas, który został przerwany. Aby wyłączyć `ORDER BY` klauzulę, `disableOrderByHighWaterMarkColumn` Użyj ustawienia w definicji indeksatora:  
+Można również wyłączyć klauzulę `ORDER BY [High Water Mark Column]`. Nie jest to jednak zalecane, ponieważ w przypadku przerwania wykonywania indeksatora przez błąd indeksator musi ponownie przetworzyć wszystkie wiersze, jeśli program indeksator przetworzył już prawie wszystkie wiersze o czas, który został przerwany. Aby wyłączyć klauzulę `ORDER BY`, użyj ustawienia `disableOrderByHighWaterMarkColumn` w definicji indeksatora:  
 
     {
      ... other indexer definition properties
@@ -252,7 +251,7 @@ Można również wyłączyć `ORDER BY [High Water Mark Column]` klauzulę. Nie 
 ### <a name="soft-delete-column-deletion-detection-policy"></a>Zasady wykrywania usuwania nietrwałej kolumny usuwania
 Po usunięciu wierszy z tabeli źródłowej prawdopodobnie chcesz również usunąć te wiersze z indeksu wyszukiwania. W przypadku korzystania ze zintegrowanych zasad śledzenia zmian SQL jest to konieczne. Jednak zasady śledzenia zmian o wysokiej rozdzielczości nie ułatwiają usuwania wierszy. Co można zrobić w takiej sytuacji?
 
-Jeśli wiersze są fizycznie usuwane z tabeli, Azure Search nie ma możliwości wywnioskowania obecności rekordów, które już nie istnieją.  Można jednak użyć techniki "Soft-Delete", aby logicznie usunąć wiersze bez usuwania ich z tabeli. Dodaj kolumnę do tabeli lub widoku i Oznacz wiersze jako usunięte przy użyciu tej kolumny.
+Jeśli wiersze są fizycznie usuwane z tabeli, usługa Azure Wyszukiwanie poznawcze nie ma możliwości wywnioskowania obecności rekordów, które już nie istnieją.  Można jednak użyć techniki "Soft-Delete", aby logicznie usunąć wiersze bez usuwania ich z tabeli. Dodaj kolumnę do tabeli lub widoku i Oznacz wiersze jako usunięte przy użyciu tej kolumny.
 
 Korzystając z techniki usuwania nietrwałego, można określić zasady usuwania nietrwałego w następujący sposób podczas tworzenia lub aktualizowania źródła danych:
 
@@ -265,34 +264,34 @@ Korzystając z techniki usuwania nietrwałego, można określić zasady usuwania
         }
     }
 
-**SoftDeleteMarkerValue** musi być ciągiem — Użyj ciągu reprezentującego wartość rzeczywistą. Na przykład jeśli masz kolumnę liczb całkowitych, w której usunięte wiersze są oznaczone wartością 1, użyj `"1"`. Jeśli masz kolumnę bitową, w której usunięte wiersze są oznaczone wartością logiczną true, użyj literału `True` ciągu lub `true`, jeśli wielkość liter nie ma znaczenia.
+**SoftDeleteMarkerValue** musi być ciągiem — Użyj ciągu reprezentującego wartość rzeczywistą. Na przykład jeśli masz kolumnę liczb całkowitych, w której usunięte wiersze są oznaczone wartością 1, użyj `"1"`. Jeśli masz kolumnę BITOWą, w której usunięte wiersze są oznaczone wartością logiczną true, użyj literału ciągu `True` lub `true`, a wielkość liter nie ma znaczenia.
 
 <a name="TypeMapping"></a>
 
-## <a name="mapping-between-sql-and-azure-search-data-types"></a>Mapowanie między typami danych SQL i Azure Search
+## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Mapowanie między typami danych SQL i Azure Wyszukiwanie poznawcze
 | Typ danych SQL | Dozwolone typy pól indeksu docelowego | Uwagi |
 | --- | --- | --- |
-| bit |Edm.Boolean, Edm.String | |
-| int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
-| bigint |Edm.Int64, Edm.String | |
-| rzeczywiste, zmiennoprzecinkowe |Edm.Double, Edm.String | |
-| smallmoney, cyfra dziesiętna pieniędzy |Edm.String |Azure Search nie obsługuje konwertowania typów dziesiętnych na EDM. Double, ponieważ spowodowałoby to utratę precyzji |
-| char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Ciąg SQL może służyć do wypełniania pola kolekcji (EDM. String), jeśli ciąg reprezentuje tablicę JSON ciągów:`["red", "white", "blue"]` |
-| smalldatetime, DateTime, datetime2, Date, DateTimeOffset |Edm.DateTimeOffset, Edm.String | |
+| bit |EDM. Boolean, EDM. String | |
+| int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |
+| bigint |EDM. Int64, EDM. String | |
+| rzeczywiste, zmiennoprzecinkowe |EDM. Double, EDM. String | |
+| smallmoney, cyfra dziesiętna pieniędzy |Edm.String |Usługa Azure Wyszukiwanie poznawcze nie obsługuje konwertowania typów dziesiętnych na EDM. Double, ponieważ spowodowałoby to utratę precyzji |
+| char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Ciąg SQL może służyć do wypełniania pola kolekcji (EDM. String), jeśli ciąg reprezentuje tablicę JSON ciągów: `["red", "white", "blue"]` |
+| smalldatetime, DateTime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, EDM. String | |
 | uniqueidentifer |Edm.String | |
-| geograficzne |Edm.GeographyPoint |Obsługiwane są tylko wystąpienia typu Geografia z SRID 4326 (co jest ustawieniem domyślnym) |
+| Geograficzne |Edm.GeographyPoint |Obsługiwane są tylko wystąpienia typu Geografia z SRID 4326 (co jest ustawieniem domyślnym) |
 | rowversion |ND |Kolumny wiersza — wersja nie mogą być przechowywane w indeksie wyszukiwania, ale mogą być używane do śledzenia zmian |
-| Time, TimeSpan, Binary, varbinary, Image, XML, geometria, typy CLR |ND |Nieobsługiwane |
+| Time, TimeSpan, Binary, varbinary, Image, XML, geometria, typy CLR |ND |Brak obsługi |
 
 ## <a name="configuration-settings"></a>Ustawienia konfiguracji
 Program SQL indeksator uwidacznia kilka ustawień konfiguracji:
 
-| Ustawienie | Typ danych | Cel | Wartość domyślna |
+| Ustawienie | Typ danych | Przeznaczenie | Wartość domyślna |
 | --- | --- | --- | --- |
-| queryTimeout |ciąg |Ustawia limit czasu wykonywania zapytania SQL |5 minut ("00:05:00") |
+| queryTimeout |string |Ustawia limit czasu wykonywania zapytania SQL |5 minut ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |bool |Powoduje, że zapytanie SQL używane przez zasady wysokiej rozdzielczości do pomijania klauzuli ORDER BY. Zobacz [zasady oznaczania górną wodą](#HighWaterMarkPolicy) |false |
 
-Te ustawienia są używane w `parameters.configuration` obiekcie w definicji indeksatora. Na przykład aby ustawić limit czasu zapytania na 10 minut, Utwórz lub zaktualizuj indeksator przy użyciu następującej konfiguracji:
+Te ustawienia są używane w obiekcie `parameters.configuration` w definicji indeksatora. Na przykład aby ustawić limit czasu zapytania na 10 minut, Utwórz lub zaktualizuj indeksator przy użyciu następującej konfiguracji:
 
     {
       ... other indexer definition properties
@@ -302,44 +301,44 @@ Te ustawienia są używane w `parameters.configuration` obiekcie w definicji ind
 
 ## <a name="faq"></a>Często zadawane pytania
 
-**Pyt.: Czy mogę używać usługi Azure SQL Indexer z bazami danych SQL działającymi na maszynach wirtualnych IaaS na platformie Azure?**
+**P: Czy można używać usługi Azure SQL Indexer z bazami danych SQL działającymi na maszynach wirtualnych IaaS na platformie Azure?**
 
-Tak. Należy jednak zezwolić usłudze wyszukiwania na łączenie się z bazą danych. Aby uzyskać więcej informacji, zobacz [Konfigurowanie połączenia z indeksatora Azure Search do SQL Server na maszynie wirtualnej platformy Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
+Tak. Należy jednak zezwolić usłudze wyszukiwania na łączenie się z bazą danych. Aby uzyskać więcej informacji, zobacz [Konfigurowanie połączenia z indeksatora wyszukiwanie poznawcze platformy Azure do SQL Server na maszynie wirtualnej platformy Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
-**Pyt.: Czy mogę używać usługi Azure SQL Indexer z bazami danych SQL działającymi lokalnie?**
+**P: Czy można używać usługi Azure SQL Indexer z bazami danych SQL działającymi lokalnie?**
 
-Nie bezpośrednio. Nie zalecamy ani nie obsługuje bezpośredniego połączenia, ponieważ wymaga to otworzenia baz danych do ruchu internetowego. Klienci pomyślnie korzystali z tego scenariusza przy użyciu technologii mostka, takich jak Azure Data Factory. Aby uzyskać więcej informacji, zobacz [wypychanie danych do indeksu Azure Search przy użyciu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
+Nie bezpośrednio. Nie zalecamy ani nie obsługuje bezpośredniego połączenia, ponieważ wymaga to otworzenia baz danych do ruchu internetowego. Klienci pomyślnie korzystali z tego scenariusza przy użyciu technologii mostka, takich jak Azure Data Factory. Aby uzyskać więcej informacji, zobacz temat [wypychanie danych do indeksu wyszukiwanie poznawcze platformy Azure przy użyciu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
-**Pyt.: Czy mogę używać usługi Azure SQL indeksator z bazami danych innymi niż SQL Server działające w programie IaaS na platformie Azure?**
+**P: Czy można używać usługi Azure SQL Indexer z bazami danych innymi niż SQL Server na platformie Azure?**
 
 Nie. Ten scenariusz nie jest obsługiwany, ponieważ nie przetestowano indeksatora z innymi bazami danych, które nie są SQL Server.  
 
-**Pyt.: Czy mogę utworzyć wiele indeksatorów uruchomionych zgodnie z harmonogramem?**
+**P: Czy można utworzyć wiele indeksatorów uruchomionych zgodnie z harmonogramem?**
 
 Tak. Jednak w jednym węźle może być uruchomiony tylko jeden indeksator. Jeśli potrzebujesz wielu indeksatorów uruchomionych współbieżnie, rozważ skalowanie usługi wyszukiwania do więcej niż jednej jednostki wyszukiwania.
 
-**Pyt.: Czy uruchomiony indeksator ma wpływ na obciążenie zapytania?**
+**P: czy uruchomiony indeksator ma wpływ na obciążenie zapytania?**
 
-Tak. Indeksator działa na jednym z węzłów usługi wyszukiwania, a zasoby tego węzła są współużytkowane przez indeksowanie i obsługę ruchu zapytań i innych żądań interfejsu API. W przypadku uruchamiania intensywnego indeksowania i obciążeń zapytań oraz wystąpienia dużej liczby błędów 503 lub wydłużenia czasu odpowiedzi warto rozważyć skalowanie w [górę usługi wyszukiwania](search-capacity-planning.md).
+Tak. Indeksator działa na jednym z węzłów usługi wyszukiwania, a zasoby tego węzła są współużytkowane przez indeksowanie i obsługę ruchu zapytań i innych żądań interfejsu API. W przypadku uruchamiania intensywnego indeksowania i obciążeń zapytań oraz wystąpienia dużej liczby błędów 503 lub wydłużenia czasu odpowiedzi warto rozważyć [skalowanie w górę usługi wyszukiwania](search-capacity-planning.md).
 
-**Pyt.: Czy mogę użyć repliki pomocniczej w [klastrze trybu failover](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako źródła danych?**
+**P: Czy można użyć repliki pomocniczej w [klastrze trybu failover](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako źródła danych?**
 
 To zależy. Do pełnego indeksowania tabeli lub widoku można użyć repliki pomocniczej. 
 
-W przypadku indeksowania przyrostowego Azure Search obsługuje dwie zasady wykrywania zmian: Zintegrowane śledzenie zmian SQL i wysoki znacznik wodny.
+W przypadku indeksowania przyrostowego usługa Azure Wyszukiwanie poznawcze obsługuje dwie zasady wykrywania zmian: zintegrowane śledzenie zmian w programie SQL i wysoki znacznik wodny.
 
 W przypadku replik tylko do odczytu usługa SQL Database nie obsługuje zintegrowanego śledzenia zmian. W związku z tym należy używać zasad oznaczania wysokiej wody. 
 
-Naszym standardowym zaleceniem jest użycie typu danych rowversion dla kolumny znacznika wysokiej wody. Jednak użycie rowversion opiera się na `MIN_ACTIVE_ROWVERSION` funkcji SQL Database, która nie jest obsługiwana w przypadku replik tylko do odczytu. W związku z tym należy wskazać indeksator do repliki podstawowej, jeśli używasz rowversion.
+Naszym standardowym zaleceniem jest użycie typu danych rowversion dla kolumny znacznika wysokiej wody. Jednak użycie rowversion opiera się na funkcji `MIN_ACTIVE_ROWVERSION` SQL Database, która nie jest obsługiwana w przypadku replik tylko do odczytu. W związku z tym należy wskazać indeksator do repliki podstawowej, jeśli używasz rowversion.
 
 Jeśli spróbujesz użyć rowversion w replice tylko do odczytu, zostanie wyświetlony następujący błąd: 
 
     "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
-**Pyt.: Czy można użyć alternatywnej kolumny nierowversionowej do śledzenia zmian znaku wodnego?**
+**P: Czy można użyć alternatywnej kolumny nierowversionej do śledzenia zmian znaku wodnego?**
 
 Nie jest to zalecane. Tylko **rowversion** umożliwia niezawodne synchronizowanie danych. Jednak w zależności od logiki aplikacji może być bezpieczna, jeśli:
 
-+ Można upewnić się, że podczas uruchamiania indeksatora nie ma żadnych zaległych transakcji w tabeli, która jest indeksowana (na przykład wszystkie aktualizacje tabeli są wykonywane jako partia według harmonogramu, a Harmonogram Azure Search indeksatora jest ustawiony tak, aby uniknąć nakładania się aktualizacji tabeli Harmonogram).  
++ Można upewnić się, że podczas uruchamiania indeksatora nie ma żadnych zaległych transakcji w tabeli, która jest indeksowana (na przykład wszystkie aktualizacje tabeli są wykonywane jako partia według harmonogramu, a harmonogram usługi Azure Wyszukiwanie poznawcze indeksator jest ustawiony tak, aby uniknąć nakładania się na tabelę Zaplanuj aktualizację).  
 
 + Okresowo należy wykonać pełne ponowne indeksowanie w celu pobrania wszystkich pominiętych wierszy. 

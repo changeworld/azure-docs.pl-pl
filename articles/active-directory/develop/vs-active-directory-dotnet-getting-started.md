@@ -1,5 +1,5 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure AD w projektach programu Visual Studio .NET MVC
+title: Rozpoczynanie pracy z usługą Azure AD w projektach programu Visual Studio .NET MVC | Azure
 description: Jak rozpocząć korzystanie z Azure Active Directory w projektach .NET MVC po nawiązaniu połączenia z usługą Azure AD lub utworzeniu jej przy użyciu usług połączonych programu Visual Studio
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806961dce41fbdf07572b3d0ab8b79bc9fb682da
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3b0a6265f76cc7c799d162487999c129ec7e6a14
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852021"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803613"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Wprowadzenie z Azure Active Directory (projekty ASP.NET MVC)
 
@@ -31,11 +31,11 @@ Zobacz, [co się stało z moim projektem MVC?](vs-active-directory-dotnet-what-h
 
 ## <a name="requiring-authentication-to-access-controllers"></a>Wymaganie uwierzytelniania do kontrolerów dostępu
 
-Wszystkie kontrolery w projekcie zostały wbudowane przy użyciu `[Authorize]` atrybutu. Ten atrybut wymaga uwierzytelnienia użytkownika przed uzyskaniem dostępu do tych kontrolerów. Aby umożliwić dostęp do kontrolera anonimowo, Usuń ten atrybut z kontrolera. Jeśli chcesz ustawić uprawnienia na bardziej szczegółowym poziomie, zastosuj atrybut do każdej metody wymagającej autoryzacji zamiast zastosowania jej do klasy kontrolera.
+Wszystkie kontrolery w projekcie zostały utworzone przy użyciu atrybutu `[Authorize]`. Ten atrybut wymaga uwierzytelnienia użytkownika przed uzyskaniem dostępu do tych kontrolerów. Aby umożliwić dostęp do kontrolera anonimowo, Usuń ten atrybut z kontrolera. Jeśli chcesz ustawić uprawnienia na bardziej szczegółowym poziomie, zastosuj atrybut do każdej metody wymagającej autoryzacji zamiast zastosowania jej do klasy kontrolera.
 
 ## <a name="adding-signin--signout-controls"></a>Dodawanie kontrolek Signing/wylogowaniu
 
-Aby dodać kontrolki logowania/wylogowaniu do widoku, możesz użyć `_LoginPartial.cshtml` widoku częściowego, aby dodać funkcje do jednego z widoków. Oto przykład funkcji dodanych do widoku standardowego `_Layout.cshtml` . (Należy zwrócić uwagę na ostatni element w bloku DIV z klasą nawigacyjną — zwijanie):
+Aby dodać kontrolki logowania/wylogowaniu do widoku, możesz użyć widoku częściowego `_LoginPartial.cshtml`, aby dodać funkcje do jednego z widoków. Oto przykład funkcji dodanej do widoku standardowej `_Layout.cshtml`. (Należy zwrócić uwagę na ostatni element w bloku DIV z klasą nawigacyjną — zwijanie):
 
 ```html
 <!DOCTYPE html>

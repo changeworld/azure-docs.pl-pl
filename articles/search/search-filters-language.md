@@ -1,38 +1,36 @@
 ---
-title: Filtry języka dla zawartości wielojęzykowej w indeksie wyszukiwania — Azure Search
+title: Filtry języka dla zawartości wielojęzycznej w indeksie wyszukiwania
+titleSuffix: Azure Cognitive Search
 description: Kryteria filtrowania obsługujące wyszukiwanie w wielu językach, określanie zakresu wykonywania zapytań do pól specyficznych dla języka.
-author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 10/23/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 1eced868b180a916355d6f9fbfc8cd47a5d7d6e2
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2762ce42f0d3f5829682e0910c452746a65ef2f3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649861"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792872"
 ---
-# <a name="how-to-filter-by-language-in-azure-search"></a>Jak filtrować według języka w Azure Search 
+# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Jak filtrować według języka na platformie Azure Wyszukiwanie poznawcze 
 
-Kluczowym wymaganiem w aplikacji wyszukiwania wielojęzycznego jest możliwość wyszukiwania i pobierania wyników w języku użytkownika. W Azure Search jednym ze sposobów spełnienia wymagań językowych aplikacji wielojęzycznej jest utworzenie serii pól przeznaczonych do przechowywania ciągów w określonym języku, a następnie ograniczenie wyszukiwania pełnotekstowego do tylko tych pól w czasie zapytania.
+Kluczowym wymaganiem w aplikacji wyszukiwania wielojęzycznego jest możliwość wyszukiwania i pobierania wyników w języku użytkownika. Na platformie Azure Wyszukiwanie poznawcze jednym ze sposobów spełnienia wymagań językowych aplikacji wielojęzycznej jest utworzenie serii pól przeznaczonych do przechowywania ciągów w określonym języku, a następnie ograniczenie wyszukiwania pełnotekstowego do tylko tych pól w czasie zapytania.
 
 Parametry zapytania w żądaniu są używane do zakresu operacji wyszukiwania, a następnie przycinają wyniki pól, które nie zapewniają zawartości zgodnej z funkcją wyszukiwania, którą chcesz dostarczyć.
 
-| Parametry | Cel |
+| Parametry | Przeznaczenie |
 |-----------|--------------|
 | **searchFields** | Ogranicza wyszukiwanie pełnotekstowe do listy nazwanych pól. |
 | **$select** | Przycina odpowiedź w celu uwzględnienia tylko pól, które określisz. Domyślnie zwracane są wszystkie pola do pobierania. Parametr **$SELECT** umożliwia wybranie, które z nich mają być zwracane. |
 
-Sukces tej techniki zawiasuje integralność zawartości pola. Azure Search nie tłumaczy ciągów ani nie przeprowadza wykrywania języka. Należy upewnić się, że pola zawierają ciągi, których oczekujesz.
+Sukces tej techniki zawiasuje integralność zawartości pola. Usługa Azure Wyszukiwanie poznawcze nie tłumaczy ciągów ani nie przeprowadza wykrywania języka. Należy upewnić się, że pola zawierają ciągi, których oczekujesz.
 
 ## <a name="define-fields-for-content-in-different-languages"></a>Definiowanie pól dla zawartości w różnych językach
 
-W Azure Search zapytania mają jeden indeks jako docelowy. Deweloperzy, którzy chcą podawać ciągi charakterystyczne dla języka w jednym środowisku wyszukiwania, zwykle definiują dedykowane pola do przechowywania wartości: jedno pole dla ciągów w języku angielskim, jeden dla języka francuskiego itd. 
+W Wyszukiwanie poznawcze na platformie Azure zapytania mają jeden indeks docelowy. Deweloperzy, którzy chcą podawać ciągi charakterystyczne dla języka w jednym środowisku wyszukiwania, zwykle definiują dedykowane pola do przechowywania wartości: jedno pole dla ciągów w języku angielskim, jeden dla języka francuskiego itd. 
 
 W naszych przykładach, w tym w pokazanym poniżej [przykładzie](search-get-started-portal.md) , można zobaczyć definicje pól podobne do poniższego zrzutu ekranu. Zwróć uwagę, jak w tym przykładzie przedstawiono przypisania analizatora języka dla pól w tym indeksie. Pola zawierające ciągi działają lepiej podczas wyszukiwania pełnotekstowego, gdy jest sparowany z analizatorem zaprojektowanym do obsługi reguł lingwistycznych języka docelowego.
 
@@ -64,8 +62,8 @@ parameters =
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Filtry w Azure Search](search-filters.md)
++ [Filtry na platformie Azure Wyszukiwanie poznawcze](search-filters.md)
 + [Analizatory języków](https://docs.microsoft.com/rest/api/searchservice/language-support)
-+ [Jak działa wyszukiwanie pełnotekstowe w Azure Search](search-lucene-query-architecture.md)
++ [Jak działa wyszukiwanie pełnotekstowe na platformie Azure Wyszukiwanie poznawcze](search-lucene-query-architecture.md)
 + [Interfejs API REST dokumentów wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

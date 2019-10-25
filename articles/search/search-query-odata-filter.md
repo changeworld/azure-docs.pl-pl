@@ -1,13 +1,13 @@
 ---
-title: Odwołanie filtru OData — Azure Search
-description: Dokumentacja języka OData dla składni filtru w kwerendach Azure Search.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: Odwołanie filtru OData
+titleSuffix: Azure Cognitive Search
+description: Dokumentacja języka OData dla składni filtru w zapytaniach usługi Azure Wyszukiwanie poznawcze.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8817ce075409a3f166b82404767697dc1326cc89
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647590"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793369"
 ---
-# <a name="odata-filter-syntax-in-azure-search"></a>Składnia $filter OData w Azure Search
+# <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Składnia $filter OData na platformie Azure Wyszukiwanie poznawcze
 
-Azure Search używa [wyrażeń filtru OData](query-odata-filter-orderby-syntax.md) , aby zastosować dodatkowe kryteria do zapytania wyszukiwania oprócz terminów wyszukiwania pełnotekstowego. W tym artykule opisano szczegółowo składnię filtrów. Aby uzyskać ogólne informacje o filtrach i sposobach ich użycia do realizacji określonych scenariuszy zapytań, zobacz [filtry w Azure Search](search-filters.md).
+Usługa Azure Wyszukiwanie poznawcze używa [wyrażeń filtru OData](query-odata-filter-orderby-syntax.md) , aby zastosować dodatkowe kryteria do zapytania wyszukiwania oprócz terminów wyszukiwania pełnotekstowego. W tym artykule opisano szczegółowo składnię filtrów. Aby uzyskać ogólne informacje o filtrach i sposobach ich użycia do realizacji konkretnych scenariuszy zapytań, zobacz [filtry na platformie Azure wyszukiwanie poznawcze](search-filters.md).
 
 ## <a name="syntax"></a>Składnia
 
@@ -53,32 +53,32 @@ variable ::= identifier | field_path
 Dostępny jest również interaktywny diagram składni:
 
 > [!div class="nextstepaction"]
-> [Diagram składni OData dla Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
+> [Diagram składni OData dla Wyszukiwanie poznawcze platformy Azure](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
 
 > [!NOTE]
-> Zapoznaj się z informacjami o [składni wyrażenia OData dla Azure Search](search-query-odata-syntax-reference.md) , aby uzyskać pełną EBNF.
+> Zapoznaj się z informacjami o [składni wyrażenia OData dla usługi Azure wyszukiwanie poznawcze](search-query-odata-syntax-reference.md) , aby uzyskać pełną EBNF.
 
 Typy wyrażeń logicznych obejmują:
 
-- Wyrażenia filtru kolekcji `any` używające `all`lub. Zastosuj kryteria filtrowania do pól kolekcji. Aby uzyskać więcej informacji, zobacz [Operatory kolekcji OData w Azure Search](search-query-odata-collection-operators.md).
-- Wyrażenia logiczne łączące inne wyrażenia logiczne przy użyciu operatorów `and`, `or`i `not`. Aby uzyskać więcej informacji, zobacz [Operatory logiczne OData w Azure Search](search-query-odata-logical-operators.md).
-- Wyrażenia porównania, które porównują pola lub zmienne zakresów do wartości stałych przy użyciu `eq`operatorów `ne`, `gt`, `lt`, `ge`, i `le`. Aby uzyskać więcej informacji, zobacz [Operatory porównania OData w Azure Search](search-query-odata-comparison-operators.md). Wyrażenia porównania są również używane do porównywania odległości między współrzędnymi geograficznie `geo.distance` przy użyciu funkcji. Aby uzyskać więcej informacji, zobacz [funkcje geograficzne OData w Azure Search](search-query-odata-geo-spatial-functions.md).
-- Literały `true` logiczne i `false`. Te stałe mogą być przydatne czasami podczas programowego generowania filtrów, ale w przeciwnym razie nie są one używane w ćwiczeniach.
+- Wyrażenia filtru kolekcji używające `any` lub `all`. Zastosuj kryteria filtrowania do pól kolekcji. Aby uzyskać więcej informacji, zobacz [Operatory kolekcji OData na platformie Azure wyszukiwanie poznawcze](search-query-odata-collection-operators.md).
+- Wyrażenia logiczne łączące inne wyrażenia logiczne przy użyciu operatorów `and`, `or`i `not`. Aby uzyskać więcej informacji, zobacz [logiczne operatory OData na platformie Azure wyszukiwanie poznawcze](search-query-odata-logical-operators.md).
+- Wyrażenia porównania, które porównują pola lub zmienne zakresów do wartości stałych przy użyciu operatorów `eq`, `ne`, `gt`, `lt`, `ge`i `le`. Aby uzyskać więcej informacji, zobacz [Operatory porównania OData na platformie Azure wyszukiwanie poznawcze](search-query-odata-comparison-operators.md). Wyrażenia porównania są również używane do porównywania odległości między współrzędnymi geograficznie przy użyciu funkcji `geo.distance`. Aby uzyskać więcej informacji, zobacz [funkcje geograficzne OData w usłudze Azure wyszukiwanie poznawcze](search-query-odata-geo-spatial-functions.md).
+- Literały logiczne `true` i `false`. Te stałe mogą być przydatne czasami podczas programowego generowania filtrów, ale w przeciwnym razie nie są one używane w ćwiczeniach.
 - Wywołania funkcji logicznych, w tym:
-  - `geo.intersects`, który testuje, czy dany punkt znajduje się w obrębie danego wielokąta. Aby uzyskać więcej informacji, zobacz [funkcje geograficzne OData w Azure Search](search-query-odata-geo-spatial-functions.md).
-  - `search.in`, która porównuje zmienną pola lub zakresu z każdą wartością na liście wartości. Aby uzyskać więcej informacji, [Zobacz `search.in` funkcja OData w Azure Search](search-query-odata-search-in-function.md).
-  - `search.ismatch`i `search.ismatchscoring`, które wykonują operacje wyszukiwania pełnotekstowego w kontekście filtru. Aby uzyskać więcej informacji, zobacz [Funkcja wyszukiwania pełnotekstowego protokołu OData w Azure Search](search-query-odata-full-text-search-functions.md).
-- Ścieżki pól lub zmienne zakresowe typu `Edm.Boolean`. Na przykład jeśli indeks ma pole logiczne o nazwie `IsEnabled` i chcesz zwrócić wszystkie dokumenty, w których to pole jest `true`, wyrażenie filtru może być po prostu nazwą `IsEnabled`.
+  - `geo.intersects`, która sprawdza, czy dany punkt znajduje się w obrębie danego wielokątu. Aby uzyskać więcej informacji, zobacz [funkcje geograficzne OData w usłudze Azure wyszukiwanie poznawcze](search-query-odata-geo-spatial-functions.md).
+  - `search.in`, która porównuje zmienną pola lub zakresu z każdą wartością na liście wartości. Aby uzyskać więcej informacji, zobacz [funkcja `search.in` OData w usłudze Azure wyszukiwanie poznawcze](search-query-odata-search-in-function.md).
+  - `search.ismatch` i `search.ismatchscoring`, które wykonują operacje wyszukiwania pełnotekstowego w kontekście filtru. Aby uzyskać więcej informacji, zobacz [funkcje wyszukiwania pełnotekstowego protokołu OData w usłudze Azure wyszukiwanie poznawcze](search-query-odata-full-text-search-functions.md).
+- Ścieżki pól lub zmienne zakresów typu `Edm.Boolean`. Na przykład jeśli indeks ma pole logiczne o nazwie `IsEnabled` i chcesz zwrócić wszystkie dokumenty, w których to pole jest `true`, wyrażenie filtru może być po prostu nazwą `IsEnabled`.
 - Wyrażenia logiczne w nawiasach. Używanie nawiasów może pomóc jawnie określić kolejność operacji w filtrze. Aby uzyskać więcej informacji na temat domyślnego pierwszeństwa operatorów OData, zobacz następną sekcję.
 
 ### <a name="operator-precedence-in-filters"></a>Pierwszeństwo operatorów w filtrach
 
-Jeśli piszesz wyrażenie filtru bez nawiasów wokół jego podwyrażeń, Azure Search obliczy je zgodnie z zestawem reguł pierwszeństwa operatora. Reguły te są oparte na tym, które operatory są używane do łączenia wyrażeń podrzędnych. Poniższa tabela zawiera listę grup operatorów w kolejności od najwyższego do najniższego pierwszeństwa:
+Jeśli piszesz wyrażenie filtru bez nawiasów wokół jego wyrażeń podrzędnych, usługa Azure Wyszukiwanie poznawcze obliczy go zgodnie z zestawem reguł pierwszeństwa operatora. Reguły te są oparte na tym, które operatory są używane do łączenia wyrażeń podrzędnych. Poniższa tabela zawiera listę grup operatorów w kolejności od najwyższego do najniższego pierwszeństwa:
 
 | Grupa | Operatorzy: |
 | --- | --- |
 | Operatory logiczne | `not` |
-| Operatory porównania | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
+| Operatory porównania | `eq`, `ne`, `gt`, `lt`, `ge``le` |
 | Operatory logiczne | `and` |
 | Operatory logiczne | `or` |
 
@@ -87,7 +87,7 @@ Operator, który jest wyższy w powyższej tabeli, zostanie "poddany bardziej ś
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
 
-`not` Operator ma najwyższy priorytet wszystkich elementów — nawet wyższych niż operatory porównania. Dlatego jeśli próbujesz napisać filtr podobny do tego:
+Operator `not` ma najwyższy priorytet wszystkich elementów--nawet wyższych niż operatory porównania. Dlatego jeśli próbujesz napisać filtr podobny do tego:
 
     not Rating gt 5
 
@@ -95,7 +95,7 @@ Zostanie wyświetlony następujący komunikat o błędzie:
 
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
 
-Ten błąd występuje, ponieważ operator jest skojarzony tylko `Rating` z polem, który jest typu `Edm.Int32`, a nie z całym wyrażeniem porównania. Poprawka polega na umieszczeniu operandu `not` w nawiasach:
+Ten błąd występuje, ponieważ operator jest skojarzony tylko z polem `Rating`, które jest typu `Edm.Int32`, a nie z całym wyrażeniem porównania. Poprawka polega na umieszczeniu operandu `not` w nawiasach:
 
     not (Rating gt 5)
 
@@ -103,10 +103,10 @@ Ten błąd występuje, ponieważ operator jest skojarzony tylko `Rating` z polem
 
 ### <a name="filter-size-limitations"></a>Ograniczenia rozmiaru filtru
 
-Istnieją limity rozmiaru i złożoności wyrażeń filtru, które można wysłać do Azure Search. Limity są oparte na liczbie klauzul w wyrażeniu filtru. Dobrym warunkiem jest to, że jeśli masz setki klauzul, masz ryzyko przekroczenia limitu. Zalecamy projektowanie aplikacji w taki sposób, aby nie generować filtrów o nieograniczonej wielkości.
+Istnieją limity rozmiaru i złożoności wyrażeń filtru, które można wysłać do Wyszukiwanie poznawcze platformy Azure. Limity są oparte na liczbie klauzul w wyrażeniu filtru. Dobrym warunkiem jest to, że jeśli masz setki klauzul, masz ryzyko przekroczenia limitu. Zalecamy projektowanie aplikacji w taki sposób, aby nie generować filtrów o nieograniczonej wielkości.
 
 > [!TIP]
-> Użycie funkcji zamiast długich rozgałęzień porównania równości może pomóc w uniknięciu ograniczenia klauzuli filtru, ponieważ wywołanie funkcji jest traktowane jako pojedyncza klauzula. [ `search.in` ](search-query-odata-search-in-function.md)
+> Użycie [funkcji `search.in`](search-query-odata-search-in-function.md) zamiast długich rozgałęzień porównania równości może pomóc uniknąć ograniczenia klauzuli filtru, ponieważ wywołanie funkcji jest traktowane jako pojedyncza klauzula.
 
 ## <a name="examples"></a>Przykłady
 
@@ -126,7 +126,7 @@ Znajdź wszystkie hotele, w których znajduje się parking i gdzie nie są nalic
 
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
 
- \-ORAZ  
+ \- lub-  
 
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
 
@@ -134,7 +134,7 @@ Znajdź wszystkie hotele, które są możliwość zaprojektowaniae lub zawieraj�
 
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
 
-Znajdź wszystkie hotele ze znacznikiem "Wi-Fi" w co najmniej jednym pokoju (gdzie każde pomieszczenie ma Tagi przechowywane `Collection(Edm.String)` w polu):  
+Znajdź wszystkie hotele ze znacznikiem "Wi-Fi" w co najmniej jednym pokoju (gdzie każde pomieszczenie ma Tagi przechowywane w `Collection(Edm.String)` polu):  
 
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
 
@@ -150,7 +150,7 @@ Znajdź wszystkie hotele w ciągu 10 kilometrów danego punktu odwołania (gdzie
 
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 
-Znajdź wszystkie hotele w ramach danego okienka ekranu opisane jako wielokąt (gdzie `Location` jest polem typu EDM. geographyPoint względem). Wielokąt musi być zamknięty, co oznacza, że pierwszy i ostatni zestaw punktów muszą być takie same. Ponadto [punkty muszą być wymienione w porządku w lewo](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Znajdź wszystkie hotele w obrębie danego okienka ekranu opisane jako wielokąt (gdzie `Location` jest polem typu EDM. geographyPoint względem). Wielokąt musi być zamknięty, co oznacza, że pierwszy i ostatni zestaw punktów muszą być takie same. Ponadto [punkty muszą być wymienione w porządku w lewo](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
@@ -174,11 +174,11 @@ Znajdź dopasowanie do fraz w kolekcji, takich jak "ogrzewane Stojaki ręcznikó
 
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-Znajdź dokumenty z wyrazem "Waterfront". To zapytanie filtru jest identyczne z [żądaniem wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents) w `search=waterfront`.
+Znajdź dokumenty z wyrazem "Waterfront". To zapytanie filtru jest identyczne z [żądaniem wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents) z `search=waterfront`.
 
     $filter=search.ismatchscoring('waterfront')
 
-Znajdź dokumenty z wyrazem "Hostel" i klasyfikacją wyższą lub równą 4 lub dokumenty z wyrazem "Motel" i klasyfikacją równą 5. Nie można wyrazić tego żądania bez `search.ismatchscoring` funkcji, ponieważ łączy ono wyszukiwanie pełnotekstowe z operacjami filtrowania przy `or`użyciu.
+Znajdź dokumenty z wyrazem "Hostel" i klasyfikacją wyższą lub równą 4 lub dokumenty z wyrazem "Motel" i klasyfikacją równą 5. Nie można wyrazić tego żądania bez funkcji `search.ismatchscoring`, ponieważ łączy ono wyszukiwanie pełnotekstowe z operacjami filtrowania przy użyciu `or`.
 
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
 
@@ -186,7 +186,7 @@ Znajdź dokumenty bez słowa "możliwość zaprojektowania".
 
     $filter=not search.ismatch('luxury')
 
-Znajdź dokumenty z frazą "widok oceanu" lub klasyfikacją równą 5. Zapytanie zostanie wykonane tylko względem pól `HotelName` i `Description`. `search.ismatchscoring` Dokumenty, które pasują tylko do drugiej klauzuli rozłączenia, zostaną zwrócone zbyt--Hotele `Rating` z równymi 5. Te dokumenty zostaną zwrócone z wynikiem równym zero, aby było jasne, że nie pasują do żadnej z ocenionych części wyrażenia.
+Znajdź dokumenty z frazą "widok oceanu" lub klasyfikacją równą 5. Zapytanie `search.ismatchscoring` zostanie wykonane tylko względem pól `HotelName` i `Description`. Dokumenty, które pasują tylko do drugiej klauzuli rozłączenia, zostaną zwrócone zbyt--Hotele z `Rating` równe 5. Te dokumenty zostaną zwrócone z wynikiem równym zero, aby było jasne, że nie pasują do żadnej z ocenionych części wyrażenia.
 
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
 
@@ -196,7 +196,7 @@ Znajdź Hotele, w których terminy "Hotel" i "Lotnisko" nie są więcej niż pi�
 
 ## <a name="next-steps"></a>Następne kroki  
 
-- [Filtry w Azure Search](search-filters.md)
-- [Przegląd języka wyrażenia OData dla Azure Search](query-odata-filter-orderby-syntax.md)
-- [Odwołanie do składni wyrażenia OData dla Azure Search](search-query-odata-syntax-reference.md)
-- [Wyszukaj dokumenty &#40;Azure Search interfejs API REST usługi&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filtry na platformie Azure Wyszukiwanie poznawcze](search-filters.md)
+- [Omówienie języka wyrażeń OData dla platformy Azure Wyszukiwanie poznawcze](query-odata-filter-orderby-syntax.md)
+- [Dokumentacja składni wyrażenia OData dla usługi Azure Wyszukiwanie poznawcze](search-query-odata-syntax-reference.md)
+- [Wyszukaj dokumenty &#40;w interfejsie API REST usługi Azure wyszukiwanie poznawcze&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

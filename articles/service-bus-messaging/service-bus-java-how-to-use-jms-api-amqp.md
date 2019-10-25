@@ -1,10 +1,9 @@
 ---
-title: Korzystanie z programu AMQP 1,0 z interfejsem API usługi komunikatów Java i Azure Service Bus
+title: Korzystanie z AMQP z interfejsem API usługi komunikatów Java & Azure Service Bus
 description: Jak używać usługi wiadomości Java (JMS) z Azure Service Bus i Advanced Message Queuing Protocol (AMQP) 1,0.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
 ms.service: service-bus-messaging
@@ -12,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 10/22/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 9dff2cc11b71f314de81fd99ed3b72c6337d977f
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: f1a679deca8ee33bb4801eb1d1023684a37d0f59
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967979"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793162"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Korzystanie z usługi wiadomości Java (JMS) z Azure Service Bus i AMQP 1,0
 W tym artykule wyjaśniono, jak używać funkcji Azure Service Bus Messaging (kolejek i publikowania/subskrybowania tematów) z aplikacji Java przy użyciu popularnego interfejsu API usługi komunikatów języka Java (JMS). Istnieje [artykuł towarzyszący](service-bus-amqp-dotnet.md) , w którym wyjaśniono, jak to zrobić za pomocą interfejsu API programu Azure Service Bus .NET. Za pomocą tych dwóch przewodników można dowiedzieć się więcej na temat obsługi komunikatów na wielu platformach przy użyciu AMQP 1,0.
@@ -42,7 +41,7 @@ Aby uzyskać informacje o tym, gdzie pobrać najnowszą wersję biblioteki klien
 
 Podczas kompilowania i uruchamiania aplikacji JMS z Service Bus należy dodać następujące cztery pliki JAR z archiwum dystrybucji dystrybucyjnej systemu Apache Qpid JMS AMQP 1,0 do ścieżki w języku Java.
 
-* geronimo-jms\_1.1\_spec-1.0.jar
+* Geronimo-JMS\_1,1\_spec-1.0. jar
 * qpid-JMS-Client-[wersja]. jar
 
 > [!NOTE]
@@ -50,7 +49,7 @@ Podczas kompilowania i uruchamiania aplikacji JMS z Service Bus należy dodać n
 
 ## <a name="coding-java-applications"></a>Kodowanie aplikacji języka Java
 ### <a name="java-naming-and-directory-interface-jndi"></a>Nazwa i interfejs katalogu Java (JNDI)
-JMS używa języka Java Name and Directory Interface (JNDI) w celu utworzenia rozdzielenia między nazwami logicznymi i nazwami fizycznymi. Dwa typy obiektów JMS są rozwiązywane przy użyciu JNDI: ConnectionFactory i miejsce docelowe. JNDI korzysta z modelu dostawcy, w którym można podłączyć różne usługi katalogowe do obsługi obowiązków rozpoznawania nazw. Biblioteka Apache Qpid JMS AMQP 1,0 zawiera prostą, opartą na plikach właściwości dostawcę JNDI, który jest konfigurowany przy użyciu pliku właściwości następującego formatu:
+JMS używa języka Java Name and Directory Interface (JNDI) w celu utworzenia rozdzielenia między nazwami logicznymi i nazwami fizycznymi. Dwa typy obiektów JMS są rozwiązywane za pomocą JNDI: ConnectionFactory i Destination. JNDI korzysta z modelu dostawcy, w którym można podłączyć różne usługi katalogowe do obsługi obowiązków rozpoznawania nazw. Biblioteka Apache Qpid JMS AMQP 1,0 zawiera prostą, opartą na plikach właściwości dostawcę JNDI, który jest konfigurowany przy użyciu pliku właściwości następującego formatu:
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -342,7 +341,7 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
-## <a name="jms-topics-vs-service-bus-topics"></a>Tematy JMS a Tematy dotyczące usługi Service Bus
+## <a name="jms-topics-vs-service-bus-topics"></a>Tematy JMS a Service Bus — tematy
 Korzystanie z Azure Service Bus tematów i subskrypcji za pośrednictwem interfejsu API usługi wiadomości Java (JMS) zapewnia podstawowe możliwości wysyłania i odbierania. Jest to wygodny wybór podczas przenoszenia aplikacji z innych brokerów komunikatów za pomocą zgodnych interfejsów API JMS, mimo że tematy Service Bus różnią się od tematów JMS i wymagają kilku korekt. 
 
 Tematy Azure Service Bus kierować wiadomości do nazwanych, udostępnionych, trwałych subskrypcji, które są zarządzane za pomocą interfejsu usługi Azure Resource Management, narzędzi wiersza polecenia platformy Azure lub Azure Portal. Każda subskrypcja umożliwia korzystanie z maksymalnie 2000 reguł wyboru, z których każdy może mieć warunek filtru i, w przypadku filtrów SQL, również akcję przekształcenia metadanych. Każde dopasowanie warunku filtru wybiera komunikat wejściowy, który ma zostać skopiowany do subskrypcji tehj.  
@@ -387,5 +386,5 @@ Możesz również użyć Service Bus AMQP 1,0 z innych języków, w tym .NET, C,
 * [Jak używać AMQP 1,0 z interfejsem API platformy .NET Service Bus](service-bus-dotnet-advanced-message-queuing.md)
 * [Podręcznik dewelopera Service Bus AMQP 1,0](service-bus-amqp-dotnet.md)
 * [Wprowadzenie do kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Centrum deweloperów języka Java](https://azure.microsoft.com/develop/java/)
+* [Java Developer Center](https://azure.microsoft.com/develop/java/)
 

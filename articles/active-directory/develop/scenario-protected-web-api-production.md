@@ -1,6 +1,7 @@
 ---
-title: Chroniony internetowy interfejs API — przenoszenie do środowiska produkcyjnego | Azure
-description: Dowiedz się, jak utworzyć chroniony internetowy interfejs API (przenoszenie do środowiska produkcyjnego).
+title: Chroniony internetowy interfejs API — Przenieś do środowiska produkcyjnego
+titleSuffix: Microsoft identity platform
+description: Dowiedz się, jak utworzyć chroniony internetowy interfejs API (Przenieś do środowiska produkcyjnego).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,30 +16,30 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e78cb712501b86f98d3459cac6280d0484f41a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deb5a04f23268edc112c38c993b190827fa65061
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833107"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802506"
 ---
-# <a name="protected-web-api---move-to-production"></a>Chroniony internetowy interfejs API — przenoszenie do środowiska produkcyjnego
+# <a name="protected-web-api---move-to-production"></a>Chroniony internetowy interfejs API — Przenieś do środowiska produkcyjnego
 
-Teraz gdy wiesz, jak chronić interfejs API sieci web, Oto jak można go przenieść do środowiska produkcyjnego.
+Teraz, gdy wiesz już, jak chronić internetowy interfejs API, możesz go przenieść do środowiska produkcyjnego.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak wywoływać interfejsy API podrzędne:
-
-> [!div class="nextstepaction"]
-> [Scenariusz — interfejs API sieci Web wywołuje interfejsy API niższego rzędu](scenario-web-api-call-api-overview.md)
-
-Dowiedz się więcej z samouczków i przykładów:
+Dowiedz się, jak wywołać podrzędne interfejsy API:
 
 > [!div class="nextstepaction"]
-> [Sieci web platformy ASP.NET Core samouczek dotyczący interfejsu API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+> [Scenariusz — interfejs API sieci Web wywołuje podrzędne interfejsy API](scenario-web-api-call-api-overview.md)
+
+Dowiedz się więcej z samouczkami i przykładami:
 
 > [!div class="nextstepaction"]
-> [Przykładowy internetowy interfejs API platformy ASP.NET](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
+> [Samouczek interfejsu API sieci Web ASP.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+
+> [!div class="nextstepaction"]
+> [Przykład interfejsu API sieci Web ASP.NET](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)

@@ -1,10 +1,9 @@
 ---
-title: Jak używać kolejek usługi Azure Service Bus w środowisku Node.js — azure/service-bus | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać kolejek usługi Service Bus na platformie Azure z poziomu aplikacji Node.js.
+title: Jak używać kolejek usługi Azure/Service-Bus w programie Node. js
+description: Dowiedz się, jak używać kolejek Service Bus na platformie Azure z poziomu aplikacji node. js przy użyciu pakietu Azure/Service-Bus.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
 ms.service: service-bus-messaging
@@ -12,42 +11,42 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 10/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 7aacefde9c037fcce64d9256e35082eb04e0a2f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58049855cc27d51134b9f76a773f32f49c6381b6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65988346"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790313"
 ---
-# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Jak używać kolejek usługi Service Bus przy użyciu środowiska Node.js i pakietu azure/service-bus
-> [!div class="op_multi_selector" title1="Język programowania" title2="Pacakge środowiska node.js"]
-> - [(Node.js | azure sb)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
+# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Jak używać kolejek Service Bus przy użyciu programu Node. js i pakietu Azure/Service-Bus
+> [!div class="op_multi_selector" title1="Język programowania" title2="Uaktualniający środowiska Node. js"]
+> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-queues.md)
+> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
-W tym samouczku dowiesz się, jak napisać program Nodejs, aby wysyłać i odbierać komunikaty z kolejki usługi Service Bus za pomocą nowego [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) pakietu. Ten pakiet używa szybciej [protokołu AMQP 1.0](service-bus-amqp-overview.md) natomiast starszej wersji [azure sb](https://www.npmjs.com/package/azure-sb) używany pakiet [interfejsów API środowiska wykonawczego interfejsu REST usługi Service Bus](/rest/api/servicebus/service-bus-runtime-rest). Przykłady są napisane w języku JavaScript.
+W ramach tego samouczka nauczysz się pisać program NodeJS w celu wysyłania komunikatów do i odbierania komunikatów z kolejki Service Bus przy użyciu nowego pakietu [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Ten pakiet używa szybszego [protokołu AMQP 1,0](service-bus-amqp-overview.md) , podczas gdy starszy pakiet [platformy Azure-SB](https://www.npmjs.com/package/azure-sb) używany [Service Bus interfejsów API czasu wykonywania REST](/rest/api/servicebus/service-bus-runtime-rest). Przykłady są zapisywane w języku JavaScript.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować swoje [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub zarejestrować się w celu [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Jeśli nie masz kolejki chcesz pracować, wykonaj czynności opisane w [użycia usługi Azure portal można utworzyć kolejki usługi Service Bus](service-bus-quickstart-portal.md) artykuł, aby utworzyć kolejkę. Zanotuj parametry połączenia dla swojego wystąpienia usługi Service Bus i nazwę kolejki, który został utworzony. Użyjemy tych wartości w próbce.
+- Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Jeśli nie masz kolejki do współpracy z programem, postępuj zgodnie z instrukcjami w temacie [Use Azure Portal, aby utworzyć](service-bus-quickstart-portal.md) kolejkę Service Bus w celu utworzenia kolejki. Zanotuj parametry połączenia dla wystąpienia Service Bus i nazwę utworzonej kolejki. Będziemy używać tych wartości w przykładach.
 
 > [!NOTE]
-> - W tym samouczku współpracuje z przykładów, które można skopiować i uruchomić za pomocą [Nodejs](https://nodejs.org/). Aby uzyskać instrukcje dotyczące sposobu tworzenia aplikacji w technologii Node.js, zobacz [tworzenie i wdrażanie aplikacji Node.js w witrynie sieci Web platformy Azure](../app-service/app-service-web-get-started-nodejs.md), lub [usługi w chmurze Node.js przy użyciu programu Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
-> - Nowy [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) pakiet nie obsługuje jeszcze tworzenia kolejek. Użyj [ @azure/arm-servicebus ](https://www.npmjs.com/package/@azure/arm-servicebus) pakietu, jeśli chcesz programowo tworzyć je.
+> - Ten samouczek współpracuje z przykładami, które można kopiować i uruchamiać przy użyciu [NodeJS](https://nodejs.org/). Aby uzyskać instrukcje dotyczące sposobu tworzenia aplikacji node. js, zobacz [Tworzenie i wdrażanie aplikacji node. js w witrynie sieci Web platformy Azure](../app-service/app-service-web-get-started-nodejs.md)lub [usługi w chmurze Node. js przy użyciu programu Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
+> - Nowy pakiet [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) nie obsługuje jeszcze tworzenia kolejek. Użyj pakietu [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) , jeśli chcesz programowo je utworzyć.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Instalowanie menedżera NPM (Node Package Manager)
-Aby zainstalować pakiet npm dla usługi Service Bus, Otwórz okno Wiersz polecenia, który ma `npm` w ścieżce, zmień katalog na folder, w którym chcesz mieć Twoich przykładów, a następnie uruchom to polecenie.
+Aby zainstalować pakiet npm dla Service Bus, Otwórz wiersz polecenia, który ma `npm` w swojej ścieżce, Zmień katalog na folder, w którym chcesz uzyskać przykłady, a następnie Uruchom to polecenie.
 
 ```bash
 npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Wysyłanie komunikatów do kolejki
-Wchodzenie w interakcje z usługą Service Bus kolejki zaczyna się od tworzenia wystąpienia [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) klasy i użyjesz go w celu utworzenia wystąpienia [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) klasy. Po utworzeniu klienta kolejki, możesz utworzyć nadawcy i użyć [wysyłania](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) lub [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) metody na niej w celu wysyłania komunikatów.
+Korzystanie z kolejki Service Bus rozpoczyna się od utworzenia wystąpienia klasy [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) i użycia jej do utworzenia wystąpienia klasy [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) . Gdy masz klienta kolejki, możesz utworzyć nadawcę i użyć metody [send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) lub [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) do wysyłania wiadomości.
 
-1. Otwórz ulubionym edytorze, takich jak [programu Visual Studio Code](https://code.visualstudio.com/)
-2. Utwórz plik o nazwie `send.js` i Wklej poniższego kodu, które do niej. Ten kod będzie wysyłać 10 komunikatów do kolejki.
+1. Otwórz ulubiony Edytor, taki jak [Visual Studio Code](https://code.visualstudio.com/)
+2. Utwórz plik o nazwie `send.js` i wklej do niego Poniższy kod. Ten kod wyśle 10 komunikatów do kolejki.
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus"); 
@@ -84,20 +83,20 @@ Wchodzenie w interakcje z usługą Service Bus kolejki zaczyna się od tworzenia
       console.log("Error occurred: ", err);
     });
     ```
-3. Wprowadź parametry połączenia i nazwę swojej kolejki w powyższym kodzie.
-4. Następnie uruchom polecenie `node send.js` w wierszu polecenia do wykonania tego pliku.
+3. Wprowadź parametry połączenia i nazwę kolejki w powyższym kodzie.
+4. Następnie uruchom polecenie `node send.js` w wierszu polecenia, aby wykonać ten plik.
 
-Gratulacje! Wysłane wiadomości do kolejki usługi Service Bus.
+Gratulacje! Właśnie wysłano komunikaty do kolejki Service Bus.
 
-Komunikaty mają niektóre standardowe właściwości, takie jak `label` i `messageId` ustawioną podczas wysyłania. Można ustawić żadnych właściwości niestandardowych, należy użyć `userProperties`, który jest obiekt json, który może zawierać pary klucz wartość danych niestandardowych.
+Komunikaty mają pewne właściwości standardowe, takie jak `label` i `messageId`, które można ustawić podczas wysyłania. Aby ustawić właściwości niestandardowe, użyj `userProperties`, który jest obiektem JSON, który może przechowywać pary klucz-wartość danych niestandardowych.
 
-Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nie ma żadnego limitu liczby komunikatów w kolejce, ale jest ograniczenie całkowitego rozmiaru komunikatów przechowywanych przez kolejkę. Ten rozmiar kolejki jest definiowany w czasie tworzenia, z górnym limitem 5 GB. Aby uzyskać więcej informacji na temat limitów przydziału, zobacz [przydziały usługi Service Bus](service-bus-quotas.md).
+Kolejki usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [warstwie Standardowa](service-bus-premium-messaging.md) i 1 MB w [warstwie Premium](service-bus-premium-messaging.md). Nie ma żadnego limitu liczby komunikatów przechowywanych w kolejce, ale istnieje limit całkowitego rozmiaru komunikatów przechowywanych przez kolejkę. Ten rozmiar kolejki jest definiowany w czasie tworzenia, z górnym limitem 5 GB. Aby uzyskać więcej informacji na temat przydziałów, zobacz [Service Bus przydziały](service-bus-quotas.md).
 
 ## <a name="receive-messages-from-a-queue"></a>Odbieranie komunikatów z kolejki
-Wchodzenie w interakcje z usługą Service Bus kolejki zaczyna się od tworzenia wystąpienia [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) klasy i użyjesz go w celu utworzenia wystąpienia [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) klasy. Po utworzeniu klienta kolejki, można utworzyć odbiornik i użyć [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) lub [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metody na niej w celu odbierania komunikatów.
+Korzystanie z kolejki Service Bus rozpoczyna się od utworzenia wystąpienia klasy [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) i użycia jej do utworzenia wystąpienia klasy [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) . Gdy masz klienta kolejki, możesz utworzyć odbiorcę i użyć metody [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) lub [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) do odbierania komunikatów.
 
-1. Otwórz ulubionym edytorze, takich jak [programu Visual Studio Code](https://code.visualstudio.com/)
-2. Utwórz plik o nazwie `recieve.js` i Wklej poniższego kodu, które do niej. Ten kod będzie podejmować próby odbieranie 10 komunikatów z kolejki. Rzeczywista liczba, które otrzymujesz zależy od liczby wiadomości w opóźnienia sieci i kolejki.
+1. Otwórz ulubiony Edytor, taki jak [Visual Studio Code](https://code.visualstudio.com/)
+2. Utwórz plik o nazwie `recieve.js` i wklej do niego Poniższy kod. Ten kod będzie próbował otrzymywać 10 komunikatów z kolejki. Rzeczywista liczba, którą otrzymujesz, zależy od liczby komunikatów w kolejce i opóźnieniu sieci.
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -109,7 +108,7 @@ Wchodzenie w interakcje z usługą Service Bus kolejki zaczyna się od tworzenia
     async function main(){
       const sbClient = ServiceBusClient.createFromConnectionString(connectionString); 
       const queueClient = sbClient.createQueueClient(queueName);
-      const receiver = queueClient.createReceiver(ReceiveMode.ReceiveAndDelete);
+      const receiver = queueClient.createReceiver(ReceiveMode.receiveAndDelete);
       try {
         const messages = await receiver.receiveMessages(10)
         console.log("Received messages:");
@@ -125,19 +124,19 @@ Wchodzenie w interakcje z usługą Service Bus kolejki zaczyna się od tworzenia
       console.log("Error occurred: ", err);
     });
     ```
-3. Wprowadź parametry połączenia i nazwę swojej kolejki w powyższym kodzie.
-4. Następnie uruchom polecenie `node receiveMessages.js` w wierszu polecenia do wykonania tego pliku.
+3. Wprowadź parametry połączenia i nazwę kolejki w powyższym kodzie.
+4. Następnie uruchom polecenie `node receiveMessages.js` w wierszu polecenia, aby wykonać ten plik.
 
-Gratulacje! Właśnie odebrano komunikaty z kolejki usługi Service Bus.
+Gratulacje! Właśnie odebrano komunikaty z kolejki Service Bus.
 
-[CreateReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) metoda przyjmuje `ReceiveMode` czyli wyliczenie z wartościami [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) i [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Pamiętaj, aby [rozliczenia wiadomości](message-transfers-locks-settlement.md#settling-receive-operations) Jeśli używasz `PeekLock` trybie przy użyciu dowolnej z `complete()`, `abandon()`, `defer()`, lub `deadletter()` metod w komunikacie.
+Metoda [getreceive](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) przyjmuje `ReceiveMode`, który jest wyliczeniem z wartościami [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) i [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Należy pamiętać o [rozliczeniu komunikatów](message-transfers-locks-settlement.md#settling-receive-operations) , jeśli używasz trybu `PeekLock` przy użyciu dowolnych z `complete()`, `abandon()`, `defer()` lub `deadletter()` metod w komunikacie.
 
 > [!NOTE]
-> Możesz zarządzać zasobami usługi Service Bus przy użyciu [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus pozwala użytkownikom na łączenie do przestrzeni nazw usługi Service Bus i administrować jednostek obsługi komunikatów w łatwy sposób. To narzędzie zawiera zaawansowane funkcje, takie jak funkcja Importuj/Eksportuj lub możliwość testowania tematu, kolejek, subskrypcji, usługi przekazywania, usługi notification hubs i centrów zdarzeń. 
+> Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej, zobacz następujące zasoby.
 - [Kolejki, tematy i subskrypcje](service-bus-queues-topics-subscriptions.md)
-- Zapoznaj się z innymi [Nodejs przykłady dla usługi Service Bus w witrynie GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
+- Wyewidencjonuj inne [przykłady NodeJS dla Service Bus w witrynie GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Centrum deweloperów środowiska Node.js](https://azure.microsoft.com/develop/nodejs/)
 

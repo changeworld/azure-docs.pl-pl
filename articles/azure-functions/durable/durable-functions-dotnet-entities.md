@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5738161e88c42f4d4033fab091d8e8c8d7162042
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9eba76d78c2070f03ed835cdf2bf303ed72b1f7f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301726"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801865"
 ---
 # <a name="developers-guide-to-durable-entities-in-net-preview"></a>Przewodnik dewelopera dotyczący trwałych jednostek w programie .NET (wersja zapoznawcza)
 
@@ -120,7 +120,7 @@ Można na przykład zmodyfikować jednostkę licznika, aby rozpocząć aranżacj
 Dostęp do jednostek opartych na klasie można uzyskać bezpośrednio przy użyciu jawnych nazw ciągów dla jednostki i jej operacji. Udostępniamy kilka przykładów poniżej. Aby uzyskać dokładniejsze objaśnienie podstawowych koncepcji (takich jak sygnały i wywołania), zobacz Omówienie [uzyskiwania dostępu do jednostek](durable-functions-entities.md#accessing-entities). 
 
 > [!NOTE]
-> Tam, gdzie to możliwe, zalecamy [dostęp do jednostek za poorednictwem interfejsów](), ponieważ zapewnia ona większą kontrolę typów.
+> Tam, gdzie to możliwe, zalecamy [dostęp do jednostek za poorednictwem interfejsów](#accessing-entities-through-interfaces), ponieważ zapewnia ona większą kontrolę typów.
 
 ### <a name="example-client-signals-entity"></a>Przykład: klient sygnalizuje jednostkę
 

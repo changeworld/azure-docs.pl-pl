@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/30/2019
-ms.author: kevin
+ms.date: 10/21/2019
+ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 90544e182eb25f53232cee9a4dd0c05bd25508a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1cf6444b155830326f4876d2d65bcdaa5923fc35
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988474"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72788811"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Tworzenie kopii zapasowych i przywracanie w Azure SQL Data Warehouse
 
@@ -25,11 +25,11 @@ Dowiedz się, jak używać funkcji tworzenia kopii zapasowych i przywracania w p
 
 *Migawka magazynu danych* tworzy punkt przywracania, którego można użyć do odzyskania lub skopiowania magazynu danych do poprzedniego stanu.  Ponieważ SQL Data Warehouse jest systemem rozproszonym, migawka magazynu danych składa się z wielu plików znajdujących się w usłudze Azure Storage. Migawki przechwytują zmiany przyrostowe z danych przechowywanych w magazynie danych.
 
-*Przywracanie magazynu danych* jest nowym magazynem danych, który jest tworzony na podstawie punktu przywracania istniejącego lub usuniętego magazynu danych. Przywrócenie magazynu danych jest istotną częścią strategii ciągłości działania i odzyskiwania po awarii, ponieważ powoduje ponowne utworzenie danych po przypadkowe uszkodzenia lub usunięciu. Magazyn danych jest również zaawansowanym mechanizmem tworzenia kopii magazynu danych na potrzeby testowania lub projektowania.  Stawki za SQL Data Warehouse przywracania mogą się różnić w zależności od rozmiaru bazy danych i lokalizacji źródłowego i docelowego magazynu danych. Na średnim poziomie w tym samym regionie szybkość przywracania zwykle trwa około 20 minut. 
+*Przywracanie magazynu danych* jest nowym magazynem danych, który jest tworzony na podstawie punktu przywracania istniejącego lub usuniętego magazynu danych. Przywrócenie magazynu danych jest istotną częścią strategii ciągłości działania i odzyskiwania po awarii, ponieważ powoduje ponowne utworzenie danych po przypadkowe uszkodzenia lub usunięciu. Magazyn danych jest również zaawansowanym mechanizmem tworzenia kopii magazynu danych na potrzeby testowania lub projektowania.  Stawki za SQL Data Warehouse przywracania mogą się różnić w zależności od rozmiaru bazy danych i lokalizacji źródłowego i docelowego magazynu danych. 
 
 ## <a name="automatic-restore-points"></a>Automatyczne punkty przywracania
 
-Migawki to wbudowana funkcja usługi, która tworzy punkty przywracania. Nie musisz włączać tej funkcji. Automatyczne punkty przywracania nie mogą obecnie zostać usunięte przez użytkowników, w których usługa używa tych punktów przywracania do obsługi umowy SLA na potrzeby odzyskiwania.
+Migawki to wbudowana funkcja usługi, która tworzy punkty przywracania. Nie musisz włączać tej funkcji. Jednak magazyn danych powinien znajdować się w stanie aktywnym do tworzenia punktów przywracania. Jeśli magazyn danych jest wstrzymany często, automatyczne punkty przywracania mogą nie zostać utworzone, dlatego należy utworzyć punkt przywracania zdefiniowany przez użytkownika przed wstrzymaniem magazynu danych. Automatyczne punkty przywracania obecnie nie mogą zostać usunięte przez użytkowników, ponieważ usługa używa tych punktów przywracania do obsługi umowy SLA na potrzeby odzyskiwania.
 
 SQL Data Warehouse wykonuje migawki magazynu danych przez cały dzień tworzenia punktów przywracania dostępnych przez siedem dni. Nie można zmienić tego okresu przechowywania. SQL Data Warehouse obsługuje osiem godzin cel punktu odzyskiwania (RPO). Magazyn danych można przywrócić w regionie podstawowym z jednej z migawek wykonanych w ciągu ostatnich siedmiu dni.
 
@@ -47,7 +47,7 @@ order by run_id desc
 Ta funkcja umożliwia ręczne wyzwalanie migawek do tworzenia punktów przywracania magazynu danych przed i po dużych modyfikacjach. Ta funkcja zapewnia, że punkty przywracania są logicznie spójne, co zapewnia dodatkową ochronę danych w przypadku wszelkich przerw w obciążeniu lub błędów użytkowników w celu szybkiego odzyskiwania. Punkty przywracania zdefiniowane przez użytkownika są dostępne przez siedem dni i są automatycznie usuwane w Twoim imieniu. Nie można zmienić okresu przechowywania zdefiniowanych przez użytkownika punktów przywracania. **42 punkty przywracania zdefiniowane przez użytkownika** są gwarantowane w dowolnym momencie, dlatego należy je [usunąć](https://go.microsoft.com/fwlink/?linkid=875299) przed utworzeniem innego punktu przywracania. Możesz wyzwolić migawki, aby utworzyć punkty przywracania zdefiniowane przez użytkownika za pomocą [programu PowerShell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint#examples) lub Azure Portal.
 
 > [!NOTE]
-> Jeśli wymagane jest przywracanie punktów dłużej niż 7 dni, należy zagłosować na [](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points)tę funkcję. Można również utworzyć punkt przywracania zdefiniowany przez użytkownika i przywrócić go z nowo utworzonego punktu przywracania do nowego magazynu danych. Po przywróceniu będziesz mieć magazyn danych w trybie online i można go wstrzymać w nieskończoność, aby zaoszczędzić koszty obliczeniowe. Wstrzymana baza danych wiąże się z opłatami za magazyn według stawki za Premium Storage platformy Azure. Jeśli potrzebujesz aktywnej kopii przywróconego magazynu danych, możesz wznowić działanie, które powinno trwać tylko kilka minut.
+> Jeśli wymagane jest przywracanie punktów dłużej niż 7 dni, należy zagłosować na [tę funkcję.](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points) Można również utworzyć punkt przywracania zdefiniowany przez użytkownika i przywrócić go z nowo utworzonego punktu przywracania do nowego magazynu danych. Po przywróceniu będziesz mieć magazyn danych w trybie online i można go wstrzymać w nieskończoność, aby zaoszczędzić koszty obliczeniowe. Wstrzymana baza danych wiąże się z opłatami za magazyn według stawki za Premium Storage platformy Azure. Jeśli potrzebujesz aktywnej kopii przywróconego magazynu danych, możesz wznowić działanie, które powinno trwać tylko kilka minut.
 
 ### <a name="restore-point-retention"></a>Przechowywanie punktów przywracania
 
@@ -61,7 +61,7 @@ Poniżej znajdują się szczegółowe informacje dotyczące okresów przechowywa
 
 ### <a name="snapshot-retention-when-a-data-warehouse-is-dropped"></a>Przechowywanie migawek w przypadku porzucenia magazynu danych
 
-Podczas upuszczania magazynu danych SQL Data Warehouse tworzy ostateczną migawkę i zapisuje ją przez siedem dni. Magazyn danych można przywrócić do końcowego punktu przywracania utworzonego podczas usuwania.
+Podczas upuszczania magazynu danych SQL Data Warehouse tworzy ostateczną migawkę i zapisuje ją przez siedem dni. Magazyn danych można przywrócić do końcowego punktu przywracania utworzonego podczas usuwania. Jeśli magazyn danych zostanie porzucony w stanie wstrzymania, migawka nie jest wykonywana. W tym scenariuszu należy utworzyć zdefiniowany przez użytkownika punkt przywracania przed usunięciem magazynu danych.
 
 > [!IMPORTANT]
 > Usunięcie logicznego wystąpienia programu SQL Server spowoduje również usunięcie wszystkich baz danych, które należą do wystąpienia, i nie będzie można ich odzyskać. Nie można przywrócić usuniętego serwera.
@@ -69,8 +69,6 @@ Podczas upuszczania magazynu danych SQL Data Warehouse tworzy ostateczną migawk
 ## <a name="geo-backups-and-disaster-recovery"></a>Tworzenie kopii zapasowych i odzyskiwanie po awarii
 
 SQL Data Warehouse wykonuje geograficzną kopię zapasową raz dziennie w [sparowanym centrum danych](../best-practices-availability-paired-regions.md). Cel punktu odzyskiwania w przypadku przywracania geograficznego wynosi 24 godziny. Można przywrócić geograficzną kopię zapasową do serwera w dowolnym innym regionie, w którym SQL Data Warehouse jest obsługiwana. Geograficzna kopia zapasowa zapewnia możliwość przywrócenia magazynu danych na wypadek, gdyby nie można było uzyskać dostępu do punktów przywracania w regionie podstawowym.
-
-Kopie zapasowe są domyślnie włączone. Jeśli Twój magazyn danych to Gen1, możesz [zrezygnować](/powershell/module/az.sql/set-azsqldatabasegeobackuppolicy) z tego, jeśli chcesz. Nie można zrezygnować z geograficznie kopii zapasowych Gen2, ponieważ ochrona danych jest wbudowana.
 
 > [!NOTE]
 > Jeśli potrzebujesz krótszego celu punktu odzyskiwania dla geograficznie kopii zapasowych, zagłosuj na tę funkcję [tutaj](https://feedback.azure.com/forums/307516-sql-data-warehouse). Można również utworzyć zdefiniowany przez użytkownika punkt przywracania i przywrócić go z nowo utworzonego punktu przywracania do nowego magazynu danych w innym regionie. Po przywróceniu będziesz mieć magazyn danych w trybie online i można go wstrzymać w nieskończoność, aby zaoszczędzić koszty obliczeniowe. Wstrzymana baza danych wiąże się z opłatami za magazyn według stawki za Premium Storage platformy Azure. Jeśli potrzebujesz aktywnej kopii hurtowni danych, możesz wznowić działanie, które powinno trwać tylko kilka minut.
@@ -83,7 +81,7 @@ Na rachunku za platformę Azure zostanie wystawiony element line for Storage i e
 
 W przypadku korzystania z magazynu geograficznie nadmiarowego otrzymujesz oddzielną opłatą za magazyn. Magazyn Geograficznie nadmiarowy jest rozliczany zgodnie ze standardową szybkością magazynowania geograficznego do odczytu (RA-GRS).
 
-Aby uzyskać więcej informacji na temat cennika SQL Data Warehouse, zobacz [SQL Data Warehouse cennika]. Nie jest naliczana opłata za dane wychodzące podczas przywracania między regionami.
+Aby uzyskać więcej informacji na temat cennika SQL Data Warehouse, zobacz [SQL Data Warehouse Cennik](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/). Nie jest naliczana opłata za dane wychodzące podczas przywracania między regionami.
 
 ## <a name="restoring-from-restore-points"></a>Przywracanie z punktów przywracania
 
@@ -108,4 +106,4 @@ Jeśli musisz bezpośrednio przywrócić subskrypcję, zagłosuj na tę funkcję
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat planowania awarii, zobacz temat ciągłość działania — [Omówienie](../sql-database/sql-database-business-continuity.md)
+Aby uzyskać więcej informacji na temat planowania awarii, zobacz temat [ciągłość](../sql-database/sql-database-business-continuity.md) działania — Omówienie

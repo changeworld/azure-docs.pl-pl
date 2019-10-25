@@ -1,5 +1,5 @@
 ---
-title: Kolejki usługi Azure Storage i kolejki Service Bus są porównywane i różnicowe | Microsoft Docs
+title: Porównaj kolejki usługi Azure Storage i kolejki Service Bus
 description: Analizuje różnice i podobieństwa między dwoma typami kolejek oferowanych przez platformę Azure.
 services: service-bus-messaging
 documentationcenter: na
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: df9a7325d3ffc2362ff14b9a618ca0db7928b337
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a1e75416db34514425436bc3ceae9f27b156b557
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376329"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792683"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Kolejki magazynu i kolejki Service Bus — porównane i rozróżnienia
-Ten artykuł analizuje różnice i podobieństwa między dwoma typami kolejek oferowanych przez Microsoft Azure Dzisiaj: Kolejki magazynu i kolejki Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
+Ten artykuł analizuje różnice i podobieństwa między dwoma typami kolejek oferowanych przez Microsoft Azure Dzisiaj: kolejkami magazynu i kolejkami Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
 
 ## <a name="introduction"></a>Wprowadzenie
-Platforma Azure obsługuje dwa typy mechanizmów kolejki: **Kolejki magazynu** i **kolejki Service Bus**.
+Platforma Azure obsługuje dwa typy mechanizmów kolejki: **kolejki magazynu** i **kolejki Service Bus**.
 
 **Kolejki magazynu**, które są częścią infrastruktury [usługi Azure Storage](https://azure.microsoft.com/services/storage/) , oferują prosty, oparty na REST interfejs get/put/Peek, zapewniając niezawodne, trwałe komunikaty w ramach i między usługami.
 
@@ -70,13 +70,13 @@ W tej sekcji porównano niektóre podstawowe możliwości kolejkowania zapewnian
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
 | Gwarancja porządkowania |**Nie** <br/><br>Aby uzyskać więcej informacji, zobacz pierwszą uwagę w sekcji "dodatkowe informacje".</br> |**Tak — pierwszy w pierwszej kolejności (FIFO)**<br/><br>(za pomocą sesji obsługi komunikatów) |
-| Gwarancja dostarczania |**Co najmniej raz** |**Co najmniej raz** (Używanie trybu odbierania PeekLock — jest to ustawienie domyślne) <br/><br/>**Co najwyżej raz** (Używanie trybu odbierania ReceiveAndDelete) <br/> <br/> Dowiedz się więcej na temat różnych [trybów odbierania](service-bus-queues-topics-subscriptions.md#receive-modes)  |
+| Gwarancja dostarczania |**Co najmniej raz** |**Co najmniej raz** (przy użyciu trybu odbierania PeekLock — jest to ustawienie domyślne) <br/><br/>**Co najwyżej raz** (przy użyciu trybu odbierania ReceiveAndDelete) <br/> <br/> Dowiedz się więcej na temat różnych [trybów odbierania](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | Obsługa niepodzielnych operacji |**Nie** |**Tak**<br/><br/> |
 | Zachowanie odbierania |**Bez blokowania**<br/><br/>(wykonuje natychmiast, jeśli nie zostanie znaleziony nowy komunikat) |**Blokowanie z limitem czasu/bez**<br/><br/>(oferuje długotrwałe sondowanie lub ["technikę" Comet "](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Bez blokowania**<br/><br/>(tylko w przypadku korzystania z zarządzanego interfejsu API platformy .NET) |
 | Interfejs API w stylu wypychania |**Nie** |**Tak**<br/><br/>Interfejsy API platformy .NET dla sesji [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) i **OnMessage** . |
 | Tryb odbioru |**Wgląd w & dzierżawy** |**Wgląd & blokadę**<br/><br/>**Odbierz & usunąć** |
 | Wyłączny tryb dostępu |**Oparte na dzierżawie** |**Na podstawie blokady** |
-| Czas trwania dzierżawy/blokady |**30 sekund (wartość domyślna)**<br/><br/>**7 dni (maksimum)** (Można odnowić lub wydać dzierżawę komunikatów przy użyciu interfejsu API [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) ). |**60 sekund (wartość domyślna)**<br/><br/>Blokadę wiadomości można odnowić przy użyciu interfejsu API [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) . |
+| Czas trwania dzierżawy/blokady |**30 sekund (wartość domyślna)**<br/><br/>**7 dni (maksymalnie) (maksymalnie)** (można odnowić lub zwolnić dzierżawę wiadomości za pomocą interfejsu API [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) ). |**60 sekund (wartość domyślna)**<br/><br/>Blokadę wiadomości można odnowić przy użyciu interfejsu API [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) . |
 | Precyzja dzierżawy/blokady |**Poziom komunikatu**<br/><br/>(każdy komunikat może mieć inną wartość limitu czasu, którą można następnie zaktualizować w razie konieczności podczas przetwarzania komunikatu przy użyciu interfejsu API [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) ). |**Poziom kolejki**<br/><br/>(Każda kolejka ma dokładnooć blokady zastosowana do wszystkich swoich komunikatów, ale można odnowić blokadę przy użyciu interfejsu API [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) ). |
 | Odbierane wsadowo |**Tak**<br/><br/>(jawnie Określanie liczby komunikatów podczas pobierania komunikatów, maksymalnie 32 komunikatów) |**Tak**<br/><br/>(niejawnie włączenie właściwości poprzedzającego pobranie lub jawne użycie transakcji) |
 | Wysyłanie wsadowe |**Nie** |**Tak**<br/><br/>(w przypadku korzystania z transakcji lub wykonywania operacji wsadowych po stronie klienta) |
@@ -133,9 +133,9 @@ W tej sekcji porównano kolejki magazynu i kolejki Service Bus z perspektywy [po
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
 | Maksymalny rozmiar kolejki |**500 TB**<br/><br/>(ograniczone do [jednej pojemności konta magazynu](../storage/common/storage-introduction.md#queue-storage)) |**1 GB do 80 GB**<br/><br/>(zdefiniowane podczas tworzenia kolejki i [włączania partycjonowania](service-bus-partitioning.md) — Zobacz sekcję "informacje dodatkowe"). |
-| Maksymalny rozmiar wiadomości |**64 KB**<br/><br/>(48 KB przy użyciu kodowania **Base64** )<br/><br/>Platforma Azure obsługuje duże komunikaty przez połączenie kolejek i obiektów BLOB — w tym momencie można umieścić w kolejce do 200 GB dla pojedynczego elementu. |**256 KB** lub **1 MB**<br/><br/>(w tym nagłówek i treść, maksymalny rozmiar nagłówka: 64 KB).<br/><br/>Zależy od [warstwy usług](service-bus-premium-messaging.md). |
-| Maksymalny czas wygaśnięcia komunikatu |**Nieskończoność** (w przypadku interfejsu API — wersja 2017-07-27) |**TimeSpan.Max** |
-| Maksymalna liczba kolejek |**Unlimited (nieograniczony)** |**10,000**<br/><br/>(na przestrzeń nazw usługi) |
+| Maksymalny rozmiar komunikatu |**64 KB**<br/><br/>(48 KB przy użyciu kodowania **Base64** )<br/><br/>Platforma Azure obsługuje duże komunikaty przez połączenie kolejek i obiektów BLOB — w tym momencie można umieścić w kolejce do 200 GB dla pojedynczego elementu. |**256 KB** lub **1 MB**<br/><br/>(w tym nagłówek i treść, maksymalny rozmiar nagłówka: 64 KB).<br/><br/>Zależy od [warstwy usług](service-bus-premium-messaging.md). |
+| Maksymalny czas wygaśnięcia komunikatu |**Nieskończony** (w przypadku interfejsu API w wersji 2017-07-27) |**TimeSpan. Max** |
+| Maksymalna liczba kolejek |**Unlimited (nieograniczony)** |**10 000**<br/><br/>(na przestrzeń nazw usługi) |
 | Maksymalna liczba jednoczesnych klientów |**Unlimited (nieograniczony)** |**Unlimited (nieograniczony)**<br/><br/>(100 limit połączeń współbieżnych dotyczy tylko komunikacji opartej na protokole TCP) |
 
 ### <a name="additional-information"></a>Dodatkowe informacje
@@ -154,7 +154,7 @@ W tej sekcji porównano funkcje zarządzania udostępniane przez kolejki magazyn
 | Protokół zarządzania |**REST za pośrednictwem protokołu HTTP/HTTPS** |**REST za pośrednictwem protokołu HTTPS** |
 | Protokół uruchomieniowy |**REST za pośrednictwem protokołu HTTP/HTTPS** |**REST za pośrednictwem protokołu HTTPS**<br/><br/>**AMQP 1,0 Standard (TCP z TLS)** |
 | Interfejs API .NET |**Tak**<br/><br/>(Interfejs API klienta usługi Storage) |**Tak**<br/><br/>(.NET Service Bus API) |
-| Natywnych języka C++ |**Tak** |**Tak** |
+| TrybuC++ |**Tak** |**Tak** |
 | Interfejs API języka Java |**Tak** |**Tak** |
 | INTERFEJS API PHP |**Tak** |**Tak** |
 | Interfejs API środowiska Node. js |**Tak** |**Tak** |
@@ -175,15 +175,15 @@ W tej sekcji omówiono funkcje uwierzytelniania i autoryzacji obsługiwane przez
 
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
-| Authentication |**Klucz symetryczny** |**Klucz symetryczny** |
-| Model zabezpieczeń |Delegowany dostęp za pośrednictwem tokenów SAS. |SAS |
+| Uwierzytelnianie |**Klucz symetryczny** |**Klucz symetryczny** |
+| Model zabezpieczeń |Delegowany dostęp za pośrednictwem tokenów SAS. |SYGNATUR |
 | Federacja dostawcy tożsamości |**Nie** |**Tak** |
 
 ### <a name="additional-information"></a>Dodatkowe informacje
 * Każde żądanie dotyczące każdej z technologii kolejkowania musi zostać uwierzytelnione. Kolejki publiczne z dostępem anonimowym nie są obsługiwane. Korzystając z [sygnatury dostępu współdzielonego](service-bus-sas.md), można rozwiązać ten scenariusz, publikując sygnaturę dostępu współdzielonego tylko do odczytu, czyli SAS, do której istnieje wiele SAS.
 * Schemat uwierzytelniania dostarczany przez kolejki magazynu obejmuje użycie klucza symetrycznego, który jest kod uwierzytelniania wiadomości oparty na skrótach (HMAC), obliczany przy użyciu algorytmu SHA-256 i zakodowany jako ciąg **Base64** . Aby uzyskać więcej informacji na temat odpowiedniego protokołu, zobacz [uwierzytelnianie dla usług Azure Storage](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services). Kolejki Service Bus obsługują podobny model przy użyciu kluczy symetrycznych. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie sygnatury dostępu współdzielonego za pomocą Service Bus](service-bus-sas.md).
 
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 Dzięki dokładniejszemu zrozumieniu tych dwóch technologii będziesz mieć możliwość podejmowania bardziej świadomej decyzji o tym, której technologii kolejki użyć i kiedy. Podejmowanie decyzji o tym, kiedy należy używać kolejek usługi Storage lub kolejek Service Bus, zależy od wielu czynników. Te czynniki mogą zależeć od indywidualnych potrzeb aplikacji i jej architektury. Jeśli aplikacja korzysta już z podstawowych możliwości Microsoft Azure, warto wybrać kolejno pozycje kolejki magazynu, zwłaszcza jeśli wymagana jest podstawowa komunikacja i obsługa komunikatów między usługami lub potrzebna jest większa liczba kolejek niż 80 GB.
 
 Ponieważ kolejki Service Bus udostępniają wiele zaawansowanych funkcji, takich jak sesje, transakcje, wykrywanie duplikatów, automatyczne martwe i trwałe funkcje publikowania/subskrybowania, mogą one być preferowanym wyborem w przypadku kompilowania hybrydowego Aplikacja lub jeśli w przeciwnym razie aplikacja wymaga tych funkcji.

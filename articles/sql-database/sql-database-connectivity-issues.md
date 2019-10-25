@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: eb34395e0a9ec881c2f5e303383555fa6544369d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: aba404842658aaa946a14a3cde03853c2fb3062d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090899"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792570"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Praca z SQL Database problemami z połączeniem i błędami przejściowymi
 
@@ -57,7 +57,7 @@ Programy klienckie, które sporadycznie napotykają błąd przejściowy, są bar
 ### <a name="principles-for-retry"></a>Zasady ponawiania prób
 
 - Jeśli błąd jest przejściowy, spróbuj ponownie otworzyć połączenie.
-- Nie należy bezpośrednio ponawiać instrukcji `SELECT` SQL, która nie powiodła się z powodu błędu przejściowego. Zamiast tego Ustanów nowe połączenie, a następnie ponów próbę `SELECT`.
+- Nie należy bezpośrednio ponawiać instrukcji SQL `SELECT`, która nie powiodła się z powodu błędu przejściowego. Zamiast tego Ustanów nowe połączenie, a następnie spróbuj ponownie wykonać `SELECT`.
 - Jeśli instrukcja SQL `UPDATE` kończy się niepowodzeniem z błędem przejściowym, przed ponowieniem aktualizacji Ustanów nowe połączenie. Logika ponawiania musi mieć pewność, że cała transakcja bazy danych została zakończona lub cała transakcja jest wycofywana.
 
 ### <a name="other-considerations-for-retry"></a>Inne zagadnienia dotyczące ponawiania prób
@@ -91,7 +91,7 @@ Aby przetestować logikę ponowień, należy symulować lub spowodować błąd, 
 Jednym ze sposobów przetestowania logiki ponawiania jest odłączenie komputera klienckiego od sieci, gdy program jest uruchomiony. Błąd to:
 
 - **SqlException. Number** = 11001
-- Komunikat: "Host nie jest znany"
+- Komunikat: "ten host nie jest znany"
 
 W ramach pierwszej ponowienia próby można ponownie połączyć komputer kliencki z siecią, a następnie podjąć próbę nawiązania połączenia.
 
@@ -109,7 +109,7 @@ Aby ten test był praktyczny, Odłącz komputer od sieci przed uruchomieniem pro
 Program może przeznaczenie nazwy użytkownika przed rozpoczęciem pierwszej próby połączenia. Błąd to:
 
 - **SqlException. Number** = 18456
-- Komunikat: "Nie można zalogować użytkownika" WRONG_MyUserName "."
+- Komunikat: "nie można zalogować użytkownika" WRONG_MyUserName "."
 
 W ramach pierwszej ponowienia próby program może poprawić błąd pisowni, a następnie podjąć próbę nawiązania połączenia.
 
@@ -131,13 +131,13 @@ Jeśli program kliencki nawiązuje połączenie z SQL Database przy użyciu klas
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-Podczas tworzenia [parametrów połączenia](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) dla obiektu SqlConnection koordynuj wartości z następujących parametrów:
+Podczas tworzenia [parametrów połączenia](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) dla obiektu **SqlConnection** koordynuj wartości z następujących parametrów:
 
-- **ConnectRetryCount**&nbsp;:&nbsp;wartość domyślna to 1. Zakres to od 0 do 255.
-- **ConnectRetryInterval**&nbsp;:&nbsp;wartość domyślna to 10 sekund. Zakres to od 1 do 60.
+- **ConnectRetryCount**:&nbsp;&nbsp;wartość domyślna to 1. Zakres to od 0 do 255.
+- **ConnectRetryInterval**:&nbsp;&nbsp;wartość domyślna to 10 sekund. Zakres to od 1 do 60.
 - **Limit czasu połączenia**:&nbsp;&nbsp;wartość domyślna to 15 sekund. Zakres to od 0 do 2147483647.
 
-W tym celu wybrane wartości powinny mieć następujące równość: Limit czasu połączenia = ConnectRetryCount * ConnectionRetryInterval
+W związku z tym wybrane wartości powinny mieć następujące równość: limit czasu połączenia = ConnectRetryCount * ConnectionRetryInterval
 
 Na przykład, jeśli liczba jest równa 3, a interwał jest równy 10 sekund, przekroczenie limitu czasu przez 29 sekund nie daje systemowi wystarczającej czasu na jego trzecią i końcową ponowną próbę nawiązania połączenia: 29 < 3 * 10.
 
@@ -150,7 +150,7 @@ Parametry **ConnectRetryCount** i **ConnectRetryInterval** pozwalają obiektowi 
 - wywołanie metody mySqlConnection. Open
 - wywołanie metody mySqlConnection. Execute
 
-Istnieje element subtlety. Jeśli wystąpi błąd przejściowy podczas wykonywania *zapytania* , obiekt SqlConnection nie spróbuje wykonać operacji Connect. Nie powoduje to ponowienia próby wykonania zapytania. Jednak element SqlConnection bardzo szybko sprawdza połączenie przed wysłaniem zapytania do wykonania. Jeśli szybkie sprawdzenie wykryje problem z połączeniem, program SQLConnect próbuje wykonać operację łączenia. Jeśli ponowna próba powiodła się, zapytanie jest wysyłane do wykonania.
+Istnieje element subtlety. Jeśli wystąpi błąd przejściowy podczas wykonywania *zapytania* , obiekt **SqlConnection** nie spróbuje wykonać operacji Connect. Nie powoduje to ponowienia próby wykonania zapytania. Jednak element **SqlConnection** bardzo szybko sprawdza połączenie przed wysłaniem zapytania do wykonania. Jeśli szybkie sprawdzenie wykryje problem z połączeniem, program **SQLConnect** próbuje wykonać operację łączenia. Jeśli ponowna próba powiodła się, zapytanie jest wysyłane do wykonania.
 
 ### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>Czy ConnectRetryCount być połączone z logiką ponawiania aplikacji
 
@@ -162,7 +162,7 @@ Załóżmy, że Twoja aplikacja ma niestandardową logikę ponowień. Może pono
 
 <a id="c-connection-string" name="c-connection-string"></a>
 
-### <a name="connection-connection-string"></a>Połączenie: Parametry połączenia
+### <a name="connection-connection-string"></a>Połączenie: parametry połączenia
 
 Parametry połączenia, które są niezbędne do nawiązania połączenia z SQL Database są nieco inne niż ciąg używany do nawiązywania połączenia z SQL Server. Parametry połączenia dla bazy danych można skopiować z [Azure Portal](https://portal.azure.com/).
 
@@ -170,7 +170,7 @@ Parametry połączenia, które są niezbędne do nawiązania połączenia z SQL 
 
 <a id="b-connection-ip-address" name="b-connection-ip-address"></a>
 
-### <a name="connection-ip-address"></a>Połączenie: Adres IP
+### <a name="connection-ip-address"></a>Połączenie: adres IP
 
 Należy skonfigurować serwer SQL Database, aby akceptował komunikację z adresu IP komputera, na którym jest hostowany program kliencki. Aby skonfigurować tę konfigurację, Edytuj ustawienia zapory za pomocą [Azure Portal](https://portal.azure.com/).
 
@@ -181,14 +181,14 @@ Jeśli zapomnisz skonfigurować adres IP, program zakończy się niepowodzeniem 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie ustawień zapory na SQL Database](sql-database-configure-firewall-settings.md).
 <a id="c-connection-ports" name="c-connection-ports"></a>
 
-### <a name="connection-ports"></a>Połączenie: Porty
+### <a name="connection-ports"></a>Połączenie: porty
 
 Zazwyczaj należy upewnić się, że tylko port 1433 jest otwarty dla komunikacji wychodzącej na komputerze hostującym program kliencki.
 
 Na przykład, gdy program kliencki jest hostowany na komputerze z systemem Windows, można użyć zapory systemu Windows na hoście, aby otworzyć port 1433.
 
 1. Otwórz Panel sterowania.
-2.  > Wybierz kolejno **pozycje wszystkie elementy** > panelu sterowania Opcje**Zapora** > systemu Windows**Zaawansowane ustawienia** > **reguły** > ruchu wychodzącego**Nowa reguła**.
+2. Wybierz kolejno **pozycje wszystkie elementy panelu sterowania** > **zapora systemu Windows** > **Ustawienia zaawansowane** > **reguły ruchu wychodzącego** > **Akcje** > **Nowa reguła**.
 
 Jeśli program kliencki jest hostowany na maszynie wirtualnej platformy Azure, Odczytaj [porty powyżej 1433 dla ADO.NET 4,5 i SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 
@@ -196,7 +196,7 @@ Informacje ogólne na temat konfiguracji portów i adresów IP znajdują się w 
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-### <a name="connection-adonet-462-or-later"></a>Połączenie: ADO.NET 4.6.2 lub nowszy
+### <a name="connection-adonet-462-or-later"></a>Połączenie: ADO.NET 4.6.2 lub nowsze
 
 Jeśli program używa klas ADO.NET, takich jak **System. Data. SqlClient.** SqlConnection, aby nawiązać połączenie z SQL Database, zalecamy użycie .NET Framework w wersji 4.6.2 lub nowszej.
 
@@ -219,20 +219,20 @@ Jeśli używasz ADO.NET 4,0 lub starszej wersji, zalecamy przeprowadzenie uaktua
 
 <a id="d-test-whether-utilities-can-connect" name="d-test-whether-utilities-can-connect"></a>
 
-### <a name="diagnostics-test-whether-utilities-can-connect"></a>Programów Testowanie, czy narzędzia mogą się łączyć
+### <a name="diagnostics-test-whether-utilities-can-connect"></a>Diagnostyka: testowanie, czy narzędzia mogą się łączyć
 
 Jeśli program nie może nawiązać połączenia z SQL Database, jedną z opcji diagnostycznych jest próba nawiązania połączenia z programem narzędziowym. W idealnym przypadku narzędzie nawiązuje połączenie za pomocą tej samej biblioteki, która jest używana przez program.
 
 Na dowolnym komputerze z systemem Windows można wypróbować następujące narzędzia:
 
 - SQL Server Management Studio (SSMS. exe), który nawiązuje połączenie za pomocą ADO.NET
-- `sqlcmd.exe`, które nawiązuje połączenie za pomocą [ODBC](https://msdn.microsoft.com/library/jj730308.aspx)
+- `sqlcmd.exe`, który nawiązuje połączenie za pomocą [ODBC](https://msdn.microsoft.com/library/jj730308.aspx)
 
 Po nawiązaniu połączenia z programem Sprawdź, czy jest działa krótkie zapytanie SELECT języka SQL.
 
 <a id="f-diagnostics-check-open-ports" name="f-diagnostics-check-open-ports"></a>
 
-### <a name="diagnostics-check-the-open-ports"></a>Programów Sprawdź otwarte porty
+### <a name="diagnostics-check-the-open-ports"></a>Diagnostyka: Sprawdź otwarte porty
 
 Jeśli podejrzewasz, że próba połączenia nie powiedzie się z powodu problemów z portem, możesz uruchomić na komputerze narzędzie, które zgłasza konfigurację portów.
 
@@ -261,17 +261,17 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 <a id="g-diagnostics-log-your-errors" name="g-diagnostics-log-your-errors"></a>
 
-### <a name="diagnostics-log-your-errors"></a>Programów Rejestruj błędy
+### <a name="diagnostics-log-your-errors"></a>Diagnostyka: Rejestruj błędy
 
 Sporadyczny problem jest czasami optymalnie zdiagnozowany przez wykrycie ogólnego wzorca w ciągu dni lub tygodni.
 
 Klient może pomóc w diagnozowaniu, rejestrując wszystkie napotkane błędy. Możliwe jest skorelowanie wpisów dziennika z danymi o błędach, które zarejestrują się wewnętrznie SQL Database.
 
-Biblioteka Enterprise Library 6 (EntLib60) oferuje klasy zarządzane przez platformę .NET, które pomagają w rejestrowaniu. Aby uzyskać więcej informacji, [Zobacz 5-tak proste, jak w przypadku dziennika: Użyj bloku](https://msdn.microsoft.com/library/dn440731.aspx)rejestrowanie aplikacji.
+Biblioteka Enterprise Library 6 (EntLib60) oferuje klasy zarządzane przez platformę .NET, które pomagają w rejestrowaniu. Aby uzyskać więcej informacji, zobacz [5-tak prosty jak w przypadku przechowywania dziennika: Użyj bloku aplikacji rejestrowania](https://msdn.microsoft.com/library/dn440731.aspx).
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
-### <a name="diagnostics-examine-system-logs-for-errors"></a>Programów Sprawdzenie dzienników systemowych pod kątem błędów
+### <a name="diagnostics-examine-system-logs-for-errors"></a>Diagnostyka: Sprawdzenie dzienników systemowych pod kątem błędów
 
 Poniżej przedstawiono niektóre instrukcje SELECT języka Transact-SQL, które wykonują zapytania dotyczące dzienników błędów i innych informacji.
 
@@ -282,7 +282,7 @@ Poniżej przedstawiono niektóre instrukcje SELECT języka Transact-SQL, które 
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
-### <a name="diagnostics-search-for-problem-events-in-the-sql-database-log"></a>Programów Wyszukaj zdarzenia dotyczące problemów w dzienniku SQL Database
+### <a name="diagnostics-search-for-problem-events-in-the-sql-database-log"></a>Diagnostyka: wyszukiwanie zdarzeń problemów w dzienniku SQL Database
 
 Wpisy dotyczące zdarzeń problemów można wyszukać w dzienniku SQL Database. Wypróbuj następującą instrukcję SELECT języka Transact-SQL w bazie danych *Master* :
 
@@ -327,7 +327,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 Biblioteka Enterprise Library 6 (EntLib60) to struktura klas platformy .NET, która ułatwia wdrażanie niezawodnych klientów usług w chmurze, z których jedna jest usługą SQL Database. Aby znaleźć tematy przeznaczone dla każdego obszaru, w którym EntLib60 może pomóc, zobacz [Biblioteka Enterprise 6-kwiecień 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
 
-Logika ponowień do obsługi błędów przejściowych to jeden obszar, w którym EntLib60 może pomóc. Aby uzyskać więcej informacji, [Zobacz 4-Perseverance, Secret of all Triumphs: Użyj bloku](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)aplikacji do obsługi błędów przejściowych.
+Logika ponowień do obsługi błędów przejściowych to jeden obszar, w którym EntLib60 może pomóc. Aby uzyskać więcej informacji, zobacz [4-Perseverance, klucz tajny wszystkich Triumphs: Użyj bloku aplikacji do obsługi błędów przejściowych](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
 
 > [!NOTE]
 > Kod źródłowy EntLib60 jest dostępny do pobrania publicznie z [Centrum pobierania](https://go.microsoft.com/fwlink/p/?LinkID=290898). Firma Microsoft nie ma żadnych planów, aby podejmować dalsze aktualizacje funkcji lub aktualizacje konserwacji EntLib.
@@ -354,13 +354,13 @@ W przestrzeni nazw **Microsoft. Practices. EnterpriseLibrary. TransientFaultHand
 
 Poniżej znajdują się linki do informacji na temat EntLib60:
 
-- Pobieranie bezpłatnej książki: [Przewodnik dewelopera dotyczący biblioteki Enterprise firmy Microsoft, wersja 2](https://www.microsoft.com/download/details.aspx?id=41145).
-- Najlepsze rozwiązania: Szczegółowe [wskazówki dotyczące ponawiania prób](../best-practices-retry-general.md) zawierają doskonałe Omówienie logiki ponawiania.
+- Pobieranie bezpłatnej książki: [przewodnik dewelopera do biblioteki Enterprise firmy Microsoft, wersja 2](https://www.microsoft.com/download/details.aspx?id=41145).
+- Najlepsze rozwiązania: [wskazówki dotyczące ponawiania prób ogólnych](../best-practices-retry-general.md) zawierają doskonałe Omówienie logiki ponawiania.
 - Pobieranie plików NuGet: [Biblioteka przedsiębiorstwa — przejściowa obsługa błędów — blok aplikacji 6,0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 
-### <a name="entlib60-the-logging-block"></a>EntLib60: Blok rejestrowania
+### <a name="entlib60-the-logging-block"></a>EntLib60: blok rejestrowania
 
 - Blok rejestrowania to wysoce elastyczne i konfigurowalne rozwiązanie, za pomocą którego można:
   - Tworzenie i przechowywanie komunikatów dzienników w wielu różnych lokalizacjach.
@@ -368,13 +368,13 @@ Poniżej znajdują się linki do informacji na temat EntLib60:
   - Zbieraj informacje kontekstowe, które są przydatne do debugowania i śledzenia, a także na potrzeby inspekcji i ogólnych wymagań dotyczących rejestrowania.
 - Blok rejestrowania służy do wyodrębniania funkcji rejestrowania z miejsca docelowego dziennika, dzięki czemu kod aplikacji jest spójny, niezależnie od lokalizacji i typu docelowego magazynu rejestrowania.
 
-Aby uzyskać więcej informacji, [Zobacz 5-tak proste, jak w przypadku dziennika: Użyj bloku](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)rejestrowanie aplikacji.
+Aby uzyskać więcej informacji, zobacz [5-tak prosty jak w przypadku przechowywania dziennika: Użyj bloku aplikacji rejestrowania](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx).
 
 <a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 
 ### <a name="entlib60-istransient-method-source-code"></a>Kod źródłowy metody EntLib60 isprzejściowej
 
-Następnie z klasy **SqlDatabaseTransientErrorDetectionStrategy** jest kodem C# źródłowym dla metody isprzejściowej. Kod źródłowy wyjaśnia, które błędy zostały uznane za przejściowe i zaufanego ponowień, od kwietnia 2013.
+Następnie z klasy **SqlDatabaseTransientErrorDetectionStrategy** jest kodem C# źródłowym dla metody **isprzejściowej** . Kod źródłowy wyjaśnia, które błędy zostały uznane za przejściowe i zaufanego ponowień, od kwietnia 2013.
 
 ```csharp
 public bool IsTransient(Exception ex)
@@ -451,6 +451,6 @@ public bool IsTransient(Exception ex)
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
 [step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php

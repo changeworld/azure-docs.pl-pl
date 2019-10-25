@@ -1,25 +1,25 @@
 ---
-title: Utwórz zestawu umiejętności w potoku wyszukiwania poznawczego — Azure Search
-description: Zdefiniuj wyodrębnianie danych, przetwarzanie języka naturalnego lub procedurę analizy obrazów, aby wzbogacać i wyodrębniać informacje strukturalne z danych do użycia w Azure Search.
+title: Tworzenie zestawu umiejętności w potoku wzbogacania
+titleSuffix: Azure Cognitive Search
+description: Zdefiniuj wyodrębnianie danych, przetwarzanie języka naturalnego lub procedurę analizy obrazów, aby wzbogacać i wyodrębnić informacje o strukturze z danych do użycia w usłudze Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71265530"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787466"
 ---
-# <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Jak utworzyć zestawu umiejętności w potoku wzbogacania
+# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Jak utworzyć zestawu umiejętności w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze 
 
-Wyszukiwanie poznawcze umożliwia wyodrębnianie i wzbogacanie danych w celu przeszukiwania ich w Azure Search. Wywołajemy możliwości wydobywania i wzbogacania *umiejętności poznawcze*, połączone w *zestawu umiejętności* , do których odwołuje się podczas indeksowania. Zestawu umiejętności może korzystać z [wbudowanych umiejętności](cognitive-search-predefined-skills.md) lub umiejętności niestandardowych (zobacz [przykład: Tworzenie niestandardowej umiejętności wyszukiwania poznawczego](cognitive-search-create-custom-skill-example.md) , aby uzyskać więcej informacji).
+Wyodrębnianie i wzbogacanie danych w celu przeszukiwania ich w usłudze Azure Wyszukiwanie poznawcze. Wywołajemy możliwości wydobywania i wzbogacania *umiejętności poznawcze*, połączone w *zestawu umiejętności* , do których odwołuje się podczas indeksowania. Zestawu umiejętności może używać [wbudowanych umiejętności](cognitive-search-predefined-skills.md) lub umiejętności niestandardowych (zobacz [przykład: Tworzenie niestandardowej umiejętności w potoku wzbogacania AI](cognitive-search-create-custom-skill-example.md) , aby uzyskać więcej informacji).
 
-W tym artykule dowiesz się, jak utworzyć potok wzbogacania dla umiejętności, których chcesz użyć. Zestawu umiejętności jest dołączony do [indeksatora](search-indexer-overview.md)Azure Search. Jedną z części projektu potoku, omówionego w tym artykule, jest konstrukcja zestawu umiejętności. 
+W tym artykule dowiesz się, jak utworzyć potok wzbogacania dla umiejętności, których chcesz użyć. Zestawu umiejętności jest dołączany do [indeksatora](search-indexer-overview.md)wyszukiwanie poznawcze platformy Azure. Jedną z części projektu potoku, omówionego w tym artykule, jest konstrukcja zestawu umiejętności. 
 
 > [!NOTE]
 > Inna część projektu potoku określa indeksator, pokryty w [następnym kroku](#next-step). Definicja indeksatora zawiera odwołanie do zestawu umiejętności oraz mapowania pól, które są używane do łączenia danych wejściowych z docelowym indeksem.
@@ -45,10 +45,10 @@ Poniższy diagram ilustruje hipotetyczny potok wzbogacania:
 ![Hipotetyczny potok wzbogacania](media/cognitive-search-defining-skillset/sample-skillset.png "Hipotetyczny potok wzbogacania")
 
 
-Po uzyskaniu odpowiedniego pomysłu w potoku można wyrazić zestawu umiejętności, który zawiera te kroki. Funkcja zestawu umiejętności jest wyrażona w czasie przekazywania definicji indeksatora do Azure Search. Aby dowiedzieć się więcej na temat przekazywania indeksatora, zapoznaj się z [dokumentacją indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Po uzyskaniu odpowiedniego pomysłu w potoku można wyrazić zestawu umiejętności, który zawiera te kroki. Funkcja zestawu umiejętności jest wyrażana w przypadku przekazywania definicji indeksatora do usługi Azure Wyszukiwanie poznawcze. Aby dowiedzieć się więcej na temat przekazywania indeksatora, zapoznaj się z [dokumentacją indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 
-Na diagramie krok *łamania dokumentu* odbywa się automatycznie. Zasadniczo Azure Search wie, jak otworzyć dobrze znane pliki i utworzyć pole *zawartości* zawierające tekst wyodrębniony z każdego dokumentu. Białe pola są wbudowanymi wzbogacami, a kropkowane pole "wyszukiwanie jednostek Bing" reprezentuje obiekt wzbogacany, który tworzysz. Tak jak pokazano, zestawu umiejętności zawiera trzy umiejętności.
+Na diagramie krok *łamania dokumentu* odbywa się automatycznie. Zasadniczo usługa Azure Wyszukiwanie poznawcze wie, jak otworzyć dobrze znane pliki i utworzyć pole *zawartości* zawierające tekst wyodrębniony z każdego dokumentu. Białe pola są wbudowanymi wzbogacami, a kropkowane pole "wyszukiwanie jednostek Bing" reprezentuje obiekt wzbogacany, który tworzysz. Tak jak pokazano, zestawu umiejętności zawiera trzy umiejętności.
 
 ## <a name="skillset-definition-in-rest"></a>Definicja zestawu umiejętności w REST
 
@@ -243,11 +243,11 @@ Prawdopodobnie wynik będzie wygenerował strukturę podobną do poniższej ilus
 
 ![Przykładowa struktura wyjściowa](media/cognitive-search-defining-skillset/enriched-doc.png "Przykładowa struktura wyjściowa")
 
-Do tej pory Ta struktura była tylko wewnętrzna, tylko pamięć i używana tylko w indeksach Azure Search. Dodanie sklepu z bazami danych umożliwia zapisanie wzbogacania w celu użycia poza wyszukiwaniem.
+Do tej pory Ta struktura była tylko wewnętrzna, tylko pamięć i używana tylko w indeksach Wyszukiwanie poznawcze platformy Azure. Dodanie sklepu z bazami danych umożliwia zapisanie wzbogacania w celu użycia poza wyszukiwaniem.
 
 ## <a name="add-a-knowledge-store"></a>Dodawanie sklepu merytorycznego
 
-[Sklep merytoryczny](knowledge-store-concept-intro.md) jest funkcją w wersji zapoznawczej w Azure Search do zapisywania wzbogaconego dokumentu. Magazyn wiedzy tworzony przez użytkownika w ramach konta usługi Azure Storage jest repozytorium, w którym są używane wzbogacone dane. 
+[Sklep merytoryczny](knowledge-store-concept-intro.md) jest funkcją w wersji zapoznawczej na platformie Azure wyszukiwanie poznawcze do zapisywania wzbogaconego dokumentu. Magazyn wiedzy tworzony przez użytkownika w ramach konta usługi Azure Storage jest repozytorium, w którym są używane wzbogacone dane. 
 
 Definicja sklepu merytorycznego jest dodawana do zestawu umiejętności. Aby zapoznać się z przewodnikiem dotyczącym całego procesu, zobacz [jak rozpocząć pracę ze sklepem merytorycznym](knowledge-store-howto.md).
 

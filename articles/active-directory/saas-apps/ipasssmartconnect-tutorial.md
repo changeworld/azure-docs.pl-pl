@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą iPass SmartConnect | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i iPass SmartConnect.
+title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą iPass SmartConnect | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i iPass SmartConnect.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,252 +13,157 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9417d7b957d69dc802ecb2f9f78723eb7aba08ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 15a84504efc39b901120c6584634950809f0c306
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67099851"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790978"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą iPass SmartConnect
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipass-smartconnect"></a>Samouczek Azure Active Directory: integracja logowania jednokrotnego (SSO) z usługą iPass SmartConnect
 
-W tym samouczku dowiesz się, jak zintegrować iPass SmartConnect w usłudze Azure Active Directory (Azure AD).
-Integrowanie iPass SmartConnect z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę iPass SmartConnect z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi iPass SmartConnect z usługą Azure AD można:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do iPass SmartConnect.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do iPass SmartConnect (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do iPass SmartConnect.
+* Zezwól użytkownikom na automatyczne logowanie do iPass SmartConnect przy użyciu kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą iPass SmartConnect, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* iPass SmartConnect pojedynczego logowania jednokrotnego włączonych subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* subskrypcja z włączonym logowaniem jednokrotnym (SSO, iPass SmartConnect).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* iPass obsługuje SmartConnect **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez
-* iPass obsługuje SmartConnect **Just In Time** aprowizacji użytkowników
+* iPass SmartConnect obsługuje logowanie jednokrotne **z użyciem SP i dostawcy tożsamości**
+* iPass SmartConnect obsługuje inicjowanie aprowizacji użytkowników **just in Time**
+
+> [!NOTE]
+> Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
 
 ## <a name="adding-ipass-smartconnect-from-the-gallery"></a>Dodawanie iPass SmartConnect z galerii
 
-Aby skonfigurować integrację iPass SmartConnect w usłudze Azure AD, należy dodać iPass SmartConnect z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację usługi iPass SmartConnect w usłudze Azure AD, musisz dodać SmartConnect iPass z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać iPass SmartConnect z galerii, wykonaj następujące czynności:**
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **iPass SmartConnect** w polu wyszukiwania.
+1. Wybierz pozycję **IPass SmartConnect** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-ipass-smartconnect"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla iPass SmartConnect
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą iPass SmartConnect przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w iPass SmartConnect.
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą iPass SmartConnect, wykonaj następujące bloki konstrukcyjne:
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj logowanie JEDNOkrotne w usłudze IPass SmartConnect](#configure-ipass-smartconnect-sso)** , aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    * **[Utwórz użytkownika testowego programu IPass SmartConnect](#create-ipass-smartconnect-test-user)** , aby uzyskać odpowiednika B. Simon w iPass SmartConnect, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-4. W polu wyszukiwania wpisz **iPass SmartConnect**, wybierz opcję **iPass SmartConnect** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **iPass SmartConnect** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-     ![iPass SmartConnect na liście wyników](common/search-new-app.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** nie musisz wykonywać żadnych kroków, ponieważ aplikacja jest już wstępnie zintegrowana z platformą Azure.
 
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą iPass SmartConnect w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Do logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w iPass SmartConnect musi zostać ustanowione.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą iPass SmartConnect, należy wykonać poniższe bloki konstrukcyjne:
-
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie iPass SmartConnect logowania jednokrotnego](#configure-ipass-smartconnect-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego SmartConnect iPass](#create-ipass-smartconnect-test-user)**  — aby mają odpowiednika w pozycji Britta simon w iPass SmartConnect, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
-
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z iPass SmartConnect, wykonaj następujące czynności:
-
-1. W [witryny Azure portal](https://portal.azure.com/)na **iPass SmartConnect** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
-
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. W sekcji **Podstawowa konfiguracja protokołu SAML** użytkownik nie musi wykonywać żadnych kroków, ponieważ aplikacja jest już wstępnie zintegrowana z platformą Azure.
-
-    ![iPass SmartConnect domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/preintegrated.png)
-
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
-
-    ![iPass SmartConnect domena i adresy URL pojedynczy informacje logowania jednokrotnego](common/metadata-upload-additional-signon.png)
+1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://om-activation.ipass.com/ClientActivation/ssolanding.go`
 
-6. iPass SmartConnect aplikacja oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
+1. Kliknij przycisk **Save** (Zapisz).
 
-    ![image](common/edit-attribute.png)
+1. Aplikacja iPass SmartConnect oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
-7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności:
+    ![image](common/default-attributes.png)
 
-    | Name (Nazwa) |  Atrybut źródłowy|
+1. Oprócz powyższych, aplikacja iPass SmartConnect oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je sprawdzić zgodnie z wymaganiami.
+
+    | Nazwa |  Atrybut źródłowy|
     | ---------------| ----------|
     | firstName | user.givenname |
     | lastName | user.surname |
-    | email | user.userprincipalname |
-    | username | user.userprincipalname |
-    | | |
+    | e-mail | user.userprincipalname |
+    | nazwa użytkownika | user.userprincipalname |
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![image](common/new-save-attribute.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-    ![image](common/new-attribute-details.png)
-
-    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
-
-    d. Pozostaw pole **Przestrzeń nazw** puste.
-
-    d. Dla opcji Źródło wybierz wartość **Atrybut**.
-
-    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
-
-    f. Kliknij przycisk **OK**.
-
-    g. Kliknij pozycję **Zapisz**.
-
-8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
-
-    ![Link pobierania certyfikatu](common/metadataxml.png)
-
-9. Na **Konfigurowanie iPass SmartConnect** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie IPass SmartConnect** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-    b. Identyfikator usługi Azure AD
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-    c. Adres URL wylogowywania
-
-### <a name="configure-ipass-smartconnect-single-sign-on"></a>Konfigurowanie iPass SmartConnect logowania jednokrotnego
-
-Aby skonfigurować logowanie jednokrotne na **iPass SmartConnect** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure w celu [iPass SmartConnect zespołu pomocy technicznej](mailto:help@ipass.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
-
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
-
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
-
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
-    Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do iPass SmartConnect.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do iPass SmartConnect.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **iPass SmartConnect**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **IPass SmartConnect**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-2. Na liście aplikacji wybierz **iPass SmartConnect**.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![IPass SmartConnect łącze na liście aplikacji](common/all-applications.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+## <a name="configure-ipass-smartconnect-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze iPass SmartConnect
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+Aby skonfigurować Logowanie jednokrotne na stronie **IPass SmartConnect** , musisz wysłać pobrany **kod XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej iPass SmartConnect](mailto:help@ipass.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+### <a name="create-ipass-smartconnect-test-user"></a>Utwórz użytkownika testowego iPass SmartConnect
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w iPass SmartConnect. Współpracuj z [zespołem pomocy technicznej IPass SmartConnect](mailto:help@ipass.com) , aby dodać użytkowników lub domenę, która musi zostać dodana do listy dozwolonych dla platformy iPass SmartConnect. Jeśli domena zostanie dodana przez zespół, użytkownicy zostaną automatycznie zaobsługiwani do platformy iPass SmartConnect. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-### <a name="create-ipass-smartconnect-test-user"></a>Tworzenie użytkownika testowego SmartConnect iPass
+Po kliknięciu kafelka iPass SmartConnect w panelu dostępu należy automatycznie zalogować się do SmartConnect iPass, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w iPass SmartConnect. Praca z [zespołu pomocy technicznej iPass SmartConnect](mailto:help@ipass.com) można dodać użytkowników lub domeny, która musi zostać dodany do listy dozwolonych dla platformy SmartConnect iPass. Jeśli domena jest dodawany przez zespół, użytkownicy będą automatycznie aprowizowany platformę SmartConnect iPass. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-**Aby przetestować aplikację w usłudze flow SP zainicjowane, wykonaj następujące czynności:**
-
-a. Pobierz windows iPass klienta SmartConnect [tutaj](https://om-activation.ipass.com/ClientActivation/ssolanding.go).
-
-![IPass SmartConnect łącze na liście aplikacji](./media/ipasssmartconnect-tutorial/testing3.png)
-
-b. Instalowanie klienta i uruchamiania.
-
-c. Kliknij pozycję **wprowadzenie**.
-
-![IPass SmartConnect łącze na liście aplikacji](./media/ipasssmartconnect-tutorial/testing1.png) 
-
-d. Wprowadź nazwę użytkownika platformy Azure z domeną. Kliknij pozycję **nadal**. To nastąpi przekierowanie do strony logowania do platformy Azure
-
-![IPass SmartConnect łącze na liście aplikacji](./media/ipasssmartconnect-tutorial/testing2.png) 
-
-e. Aktywacja klienta zostanie uruchomiony po pomyślnym uwierzytelnieniu. Klient będzie aktywować.
-
-**Aby przetestować aplikację w usłudze flow inicjowane przez dostawcę tożsamości, wykonaj następujące czynności:**
-
-a. Zaloguj się do [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
-
-b. Polecenie iPass SmartConnect aplikacji.
-
-c. Uruchamia ona SSA strony, kliknij pozycję **pobrać aplikację dla Windows** zainstalował iPass SmartConnect klienta.
-
-![IPass SmartConnect łącze na liście aplikacji](./media/ipasssmartconnect-tutorial/testing4.png)
-
-d. Po instalacji klienta przy pierwszym uruchomieniu zostanie automatycznie uruchamia aktywacji po zaakceptowaniu warunków i postanowień.
-
-e. Jeśli aktywacja nie zostanie uruchomiona, kliknij przycisk Aktywuj na stronie SSA, aby rozpocząć aktywację.
-
-f. Klient będzie aktywować.
-
-## <a name="additional-resources"></a>Dodatkowe zasoby
-
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wypróbuj usługę iPass SmartConnect w usłudze Azure AD](https://aad.portal.azure.com/)
+

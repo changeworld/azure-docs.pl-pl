@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 53399fbdeba44b184ef4e76c89affefd29dbc413
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 62d65a4f004494ac4ce4ecd3df0f091460028d8f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915333"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800056"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Przetwarzaj zdarzenia z usługi Azure Event Hubs przy użyciu Apache StormC#w usłudze HDInsight ()
 
 Dowiedz się, jak korzystać z usługi Azure Event Hubs [Apache Storm](https://storm.apache.org/) w usłudze HDInsight. Ten dokument używa topologii C# burzy do odczytu i zapisu danych z Event Hubs
 
 > [!NOTE]  
-> W przypadku wersji języka Java tego projektu zobacz [zdarzenia przetwarzania z platformy Azure Event Hubs przy użyciu Apache Storm w usłudze HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
+> W przypadku wersji języka Java tego projektu zobacz [zdarzenia przetwarzania z platformy Azure Event Hubs przy użyciu Apache Storm w usłudze HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
 
 ## <a name="scpnet"></a>SCP.NET
 
@@ -44,17 +44,17 @@ C#topologie muszą również kierować platformę .NET 4,5.
 
 ## <a name="how-to-work-with-event-hubs"></a>Jak korzystać z Event Hubs
 
-Firma Microsoft udostępnia zestaw składników języka Java, których można użyć do komunikowania się z Event Hubs z topologii burzy. Plik archiwum Java (JAR) zawierający zgodną wersję usługi HDInsight 3,6 można znaleźć pod adresem [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
+Firma Microsoft udostępnia zestaw składników języka Java, których można użyć do komunikowania się z Event Hubs z topologii burzy. Plik archiwum Java (JAR) zawierający zgodną wersję usługi HDInsight 3,6 można znaleźć w [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
 > [!IMPORTANT]  
 > Chociaż składniki są zapisywane w języku Java, można je łatwo wykorzystać z C# topologii.
 
 W tym przykładzie używane są następujące składniki:
 
-* __EventHubSpout__: Odczytuje dane z Event Hubs.
-* __EventHubBolt__: Zapisuje dane do Event Hubs.
-* __EventHubSpoutConfig__: Służy do konfigurowania EventHubSpout.
-* __EventHubBoltConfig__: Służy do konfigurowania EventHubBolt.
+* __EventHubSpout__: odczytuje dane z Event Hubs.
+* __EventHubBolt__: zapisuje dane do Event Hubs.
+* __EventHubSpoutConfig__: służy do konfigurowania EventHubSpout.
+* __EventHubBoltConfig__: służy do konfigurowania EventHubBolt.
 
 ### <a name="example-spout-usage"></a>Przykładowe użycie elementu Spout
 
@@ -125,7 +125,7 @@ Możesz pobrać kompletną wersję projektu utworzoną w tym artykule z usługi 
 
 ## <a name="download-the-event-hubs-components"></a>Pobierz składniki Event Hubs
 
-Pobierz Event Hubs i składnik elementu Spout z [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
+Pobierz składnik Event Hubs elementu Spout i piorun z [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
 Utwórz katalog o nazwie `eventhubspout`i Zapisz plik w katalogu.
 
@@ -135,10 +135,10 @@ Event Hubs jest źródłem danych dla tego przykładu. Skorzystaj z informacji w
 
 1. Po utworzeniu centrum zdarzeń Sprawdź ustawienia **centrum EventHub** w Azure Portal i wybierz pozycję **zasady dostępu współdzielonego**. Wybierz pozycję **+ Dodaj** , aby dodać następujące zasady:
 
-   | Name | Uprawnienia |
+   | Nazwa | Uprawnienia |
    | --- | --- |
-   | autor |Wyślij |
-   | czytelnik |Nasłuchuj |
+   | Usługa |Wyślij |
+   | czytnika |Nasłuchiwanie |
 
     ![Zrzut ekranu przedstawiający okno zasady dostępu do udziału](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
@@ -152,7 +152,7 @@ Event Hubs jest źródłem danych dla tego przykładu. Skorzystaj z informacji w
 
 3. W projekcie **EventHubWriter** Otwórz plik **App. config** . Użyj informacji z centrum zdarzeń, które zostały wcześniej skonfigurowane, aby wypełnić wartość następujących kluczy:
 
-   | Klucz | Value |
+   | Klucz | Wartość |
    | --- | --- |
    | EventHubPolicyName |składnik zapisywania (Jeśli użyto innej nazwy dla zasad z uprawnieniami do *wysyłania* , Użyj zamiast niej). |
    | EventHubPolicyKey |Klucz dla zasad składnika zapisywania. |
@@ -168,7 +168,7 @@ Event Hubs jest źródłem danych dla tego przykładu. Skorzystaj z informacji w
 
 2. Otwórz plik **App. config** dla **EventHubReader**. Użyj informacji z centrum zdarzeń, które zostały wcześniej skonfigurowane, aby wypełnić wartość następujących kluczy:
 
-   | Klucz | Value |
+   | Klucz | Wartość |
    | --- | --- |
    | EventHubPolicyName |czytnik (Jeśli użyto innej nazwy dla zasad z uprawnieniami *nasłuchiwania* , Użyj zamiast niej). |
    | EventHubPolicyKey |Klucz dla zasad czytnika. |

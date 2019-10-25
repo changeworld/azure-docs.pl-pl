@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: fc8cc4834997033203376cd33670cc907e2911e7
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fdac123ee7bda9d91d96940aebd6bddf4ea00f8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170296"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790818"
 ---
 # <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Rozwiązywanie ogólnych problemów z wydajnością dla maszyny wirtualnej platformy Azure z systemem Linux lub Windows
 
-W tym artykule opisano ogólne Rozwiązywanie problemów z wydajnością maszyny wirtualnej za pośrednictwem monitorowania i poszanowania wąskich gardeł oraz możliwe Korygowanie problemów, które mogą wystąpić.
+W tym artykule opisano ogólne Rozwiązywanie problemów z wydajnością maszyny wirtualnej za pośrednictwem monitorowania i poszanowania wąskich gardeł oraz możliwe Korygowanie problemów, które mogą wystąpić. Oprócz monitorowania można również użyć że program perfinsights, który może dostarczyć raport z zaleceniami dotyczącymi najlepszych rozwiązań i kluczowych wąskich gardeł wokół operacji we/wy/procesora/pamięci. Że program perfinsights jest dostępna dla maszyn wirtualnych z [systemami Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) i [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) na platformie Azure.
+
+Ten artykuł przeprowadzi Cię przez proces monitorowania w celu zdiagnozowania wąskich gardeł wydajności.
 
 ## <a name="enabling-monitoring"></a>Włączanie monitorowania
 
@@ -34,32 +36,55 @@ Aby monitorować maszynę wirtualną gościa, należy użyć monitorowania maszy
  
 ### <a name="enable-vm-diagnostics-through-microsoft-azure-portal"></a>Włącz diagnostykę maszyny wirtualnej za poorednictwem Azure Portal firmy Microsoft
 
-Aby włączyć diagnostykę maszyn wirtualnych, przejdź do maszyny wirtualnej, kliknij pozycję **Ustawienia**, a następnie kliknij pozycję **Diagnostyka**.
+Aby włączyć diagnostykę maszyny wirtualnej:
 
-![Kliknij kolejno pozycje Ustawienia, Diagnostyka](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
- 
+1. Przejdź do maszyny wirtualnej
+2. Kliknij pozycję **Ustawienia diagnostyki**
+3. Wybierz konto magazynu, a następnie kliknij pozycję **Włącz monitorowanie na poziomie gościa**.
+
+   ![Kliknij kolejno pozycje Ustawienia, Diagnostyka](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
+
+Konto magazynu używane do konfigurowania diagnostyki można sprawdzić na karcie **Agent** w obszarze **Ustawienia diagnostyki**.
+
+![Sprawdź konto magazynu](media/troubleshoot-performance-virtual-machine-linux-windows/3-check-storage-account.png)
+
 ### <a name="enable-storage-account-diagnostics-through-azure-portal"></a>Włącz diagnostykę konta magazynu za Azure Portal
 
-Najpierw należy określić konto magazynu (lub konta) używane przez maszynę wirtualną, wybierając maszynę wirtualną. Kliknij pozycję **Ustawienia**, a następnie kliknij pozycję **dyski**:
+Magazyn jest bardzo ważną warstwą, gdy zamierzamy analizować wydajność operacji we/wy dla maszyny wirtualnej na platformie Azure. W przypadku metryk związanych z magazynem należy włączyć diagnostykę jako dodatkowy krok. Można to również włączyć, jeśli chcemy analizować tylko liczniki powiązane z magazynem.
 
-![Kliknij przycisk Ustawienia, a następnie dysków](media/troubleshoot-performance-virtual-machine-linux-windows/3-storage-disks-disks-selection.png)
+1. Określ konto magazynu (lub konta) używane przez maszynę wirtualną, wybierając maszynę wirtualną. Kliknij pozycję **Ustawienia**, a następnie kliknij pozycję **dyski**:
 
-W portalu przejdź do konta magazynu (lub kont) dla maszyny wirtualnej i wykonaj następujące czynności:
+   ![Kliknij przycisk Ustawienia, a następnie dysków](media/troubleshoot-performance-virtual-machine-linux-windows/4-storage-disks-disks-selection.png)
 
-![Wybieranie metryk obiektów BLOB](media/troubleshoot-performance-virtual-machine-linux-windows/4-select-blob-metrics.png)
- 
-1. Wybierz pozycję **wszystkie ustawienia**.
-2. Włącz diagnostykę.
-3. Wybierz pozycję *metryki *obiektów BLOB** * i ustaw wartość przechowywanie na **30** dni.
-4. Zapisz zmiany.
+2. W portalu przejdź do konta magazynu (lub kont) dla maszyny wirtualnej i wykonaj następujące czynności:
+
+   1. Kliknij pozycję przegląd dla konta magazynu znalezionego w powyższym kroku.
+   2. Zostaną wyświetlone metryki domyślne. 
+
+    ![Metryki domyślne](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
+
+3. Kliknij dowolną z metryk, co spowoduje wyświetlenie innego bloku zawierającego więcej opcji konfigurowania i dodawania metryk.
+
+   ![Dodawanie metryk](media/troubleshoot-performance-virtual-machine-linux-windows/6-add-metrics.png)
+
+Aby skonfigurować te opcje:
+
+1.  Wybierz pozycję **Metryki**.
+2.  Wybierz **zasób** (konto magazynu).
+3.  Wybierz **przestrzeń nazw**
+4.  Wybierz **metrykę**.
+5.  Wybierz typ **agregacji**
+6.  Możesz przypiąć ten widok na pulpicie nawigacyjnym.
 
 ## <a name="observing-bottlenecks"></a>Obserwowanie wąskich gardeł
+
+Po przeprowadzeniu wstępnego procesu instalacji wymaganych metryk i po włączeniu diagnostyki dla maszyny wirtualnej i powiązanego konta magazynu możemy przejść do fazy analizy.
 
 ### <a name="accessing-the-monitoring"></a>Uzyskiwanie dostępu do monitorowania
 
 Wybierz maszynę wirtualną platformy Azure, którą chcesz zbadać, i wybierz pozycję **monitorowanie**.
 
-![Wybierz monitorowanie](media/troubleshoot-performance-virtual-machine-linux-windows/5-observe-monitoring.png)
+![Wybierz monitorowanie](media/troubleshoot-performance-virtual-machine-linux-windows/7-select-monitoring.png)
  
 ### <a name="timelines-of-observation"></a>Osie czasu obserwacji
 
@@ -67,7 +92,7 @@ Aby określić, czy masz jakieś wąskie gardła zasobów, Przejrzyj dane. Jeśl
 
 ### <a name="check-for-cpu-bottleneck"></a>Sprawdzanie wąskiego gardła procesora
 
-![Sprawdzanie wąskiego gardła procesora](media/troubleshoot-performance-virtual-machine-linux-windows/6-cpu-bottleneck-time-range.png)
+![Sprawdzanie wąskiego gardła procesora](media/troubleshoot-performance-virtual-machine-linux-windows/8-cpu-bottleneck-time-range.png)
 
 1. Edytuj Graf.
 2. Ustaw zakres czasu.
@@ -94,6 +119,8 @@ Jeśli aplikacja lub proces nie działa na poprawnym poziomie wydajności i widz
 * Zapoznaj się z problemem — zlokalizuj aplikację/proces i Rozwiąż odpowiednie problemy.
 
 Jeśli zwiększono maszynę wirtualną, a procesor CPU nadal działa 95%, ustal, czy to ustawienie zapewnia lepszą wydajność lub wyższą przepływność aplikacji do akceptowalnego poziomu. W przeciwnym razie Rozwiązywanie problemów z indywidualnym application\process.
+
+Możesz użyć że program perfinsights dla [systemu Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) lub [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) , aby przeanalizować, który proces zapewnia użycie procesora CPU. 
 
 ## <a name="check-for-memory-bottleneck"></a>Sprawdzanie wąskiego gardła pamięci
 
@@ -124,9 +151,13 @@ Aby rozwiązać duże wykorzystanie pamięci, wykonaj dowolne z następujących 
 
 Jeśli po przeprowadzeniu uaktualnienia do większej maszyny wirtualnej okaże się, że nadal masz stały wzrost ciągły do 100%, zidentyfikuj aplikację/proces i rozwiązywanie problemów.
 
+Możesz użyć że program perfinsights dla [systemu Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) lub [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) , aby przeanalizować, który proces zwiększa zużycie pamięci. 
+
 ## <a name="check-for-disk-bottleneck"></a>Sprawdź, czy nie ma wąskiego gardła dysku
 
 Aby sprawdzić podsystem magazynowania dla maszyny wirtualnej, sprawdź diagnostykę na poziomie maszyny wirtualnej platformy Azure przy użyciu liczników w diagnostyce maszyny wirtualnej, a także diagnostyki konta magazynu.
+
+W przypadku rozwiązywania problemów związanych z maszyną wirtualną można użyć programu że program perfinsights dla [systemu Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) lub [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux), który może pomóc w analizie, który proces prowadzi do operacji we/wy. 
 
 Należy pamiętać, że nie mamy liczników dla stref nadmiarowych i kont Premium Storage. W przypadku problemów związanych z tymi licznikami Zgłoś zgłoszenie do pomocy technicznej.
 
@@ -134,7 +165,7 @@ Należy pamiętać, że nie mamy liczników dla stref nadmiarowych i kont Premiu
 
 Aby obejść poniższe elementy, przejdź do konta magazynu dla maszyny wirtualnej w portalu:
 
-![Wyświetlanie diagnostyki konta magazynu w ramach monitorowania](media/troubleshoot-performance-virtual-machine-linux-windows/7-virtual-machine-storage-account.png)
+![Wyświetlanie diagnostyki konta magazynu w ramach monitorowania](media/troubleshoot-performance-virtual-machine-linux-windows/9-virtual-machine-storage-account.png)
 
 1. Edytuj wykres monitorowania.
 2. Ustaw zakres czasu.
@@ -175,6 +206,10 @@ Korzystając z tej metryki, nie można określić, który obiekt BLOB powoduje o
 
 Aby ustalić, czy zbliżasz się do limitu liczby operacji we/wy, przejdź do diagnostyki konta magazynu i sprawdź TotalRequests, aby sprawdzić, czy dojdziesz do 20000 TotalRequests. Zidentyfikuj zmianę wzorca, niezależnie od tego, czy widzisz limit po raz pierwszy, czy ten limit występuje w określonym czasie.
 
+Dzięki nowym oferowanym dyskom w ramach magazynu w warstwie Standardowa przepustowość i limity przepływności mogą się różnić, ale łączny limit konta magazynu to 20000 IOPS (magazyn w warstwie Premium ma inne limity na poziomie konta lub dysku). Dowiedz się więcej o różnych ofertach dysków magazynu w warstwie Standardowa i limitach na dysku:
+
+* [Elementy docelowe skalowalności i wydajności dla dysków maszyn wirtualnych w systemie Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+
 #### <a name="references"></a>Informacje
 
 * [Elementy docelowe skalowalności dla dysków maszyny wirtualnej](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
@@ -187,7 +222,9 @@ Sprawdź TotalIngress i TotalEgress względem limitów ruchu przychodzącego i w
 
 Sprawdź limity przepływności wirtualnych dysków twardych dołączonych do maszyny wirtualnej. Dodaj dysk metryk maszyny wirtualnej odczyt i zapis.
 
-Każdy wirtualny dysk twardy może obsługiwać do 60 MB/s (liczba operacji we/wy nie jest dostępna dla wirtualnego dysku twardego). Sprawdź dane, aby sprawdzić, czy są używane limity łącznej przepływności dysków VHD na poziomie maszyny wirtualnej przy użyciu odczytu i zapisu na dysku, a następnie Zoptymalizuj konfigurację magazynu maszyn wirtualnych w celu skalowania ostatnich limitów jednego dysku VHD.
+Nowe oferty dysków w ramach magazynu w warstwie Standardowa mają różne liczby IOPS i limity przepływności (operacje we/wy nie są widoczne dla wirtualnego dysku twardego). Sprawdź dane, aby sprawdzić, czy są używane limity łącznej przepływności dysków VHD na poziomie maszyny wirtualnej przy użyciu odczytu i zapisu na dysku, a następnie Zoptymalizuj konfigurację magazynu maszyn wirtualnych w celu skalowania ostatnich limitów jednego dysku VHD. Dowiedz się więcej o różnych ofertach dysków magazynu w warstwie Standardowa i limitach na dysku:
+
+* [Elementy docelowe skalowalności i wydajności dla dysków maszyn wirtualnych w systemie Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Duże użycie dysku/korygowanie opóźnień
 

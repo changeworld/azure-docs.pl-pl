@@ -1,30 +1,30 @@
 ---
-title: Skrypty programu PowerShell używające polecenia AZ. Search module-Azure Search
-description: Utwórz i skonfiguruj usługę Azure Search przy użyciu programu PowerShell. Usługę można skalować w górę lub w dół, zarządzać administratorami i interfejsami API-Keys oraz badać informacje o systemie.
-author: HeidiSteen
+title: Skrypty programu PowerShell używające polecenia AZ. Search module
+titleSuffix: Azure Cognitive Search
+description: Utwórz i skonfiguruj usługę Azure Wyszukiwanie poznawcze przy użyciu programu PowerShell. Można skalować usługę w górę lub w dół, zarządzać administratorami i interfejsami API-Keys oraz wysyłać zapytania o informacje o systemie.
 manager: nitinme
-services: search
-ms.service: search
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.author: heidist
-ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 11/04/2019
+ms.openlocfilehash: efc61f7dc8e9d2caa53c4cbd7d932af9e1a206d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331241"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793541"
 ---
-# <a name="manage-your-azure-search-service-with-powershell"></a>Zarządzanie usługą Azure Search przy użyciu programu PowerShell
+# <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Zarządzanie usługą Wyszukiwanie poznawcze platformy Azure przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
 > * [Program PowerShell](search-manage-powershell.md)
 > * [Interfejs API REST](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * @No__t języka [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)— 1 
+> * > [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0) 
 
-Polecenia cmdlet programu PowerShell i skrypty w systemie Windows, Linux lub [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) można uruchomić w celu utworzenia i skonfigurowania Azure Search. Moduł **AZ. Search** rozszerza Azure PowerShell] z pełną parzystością do [interfejsów api REST zarządzania Azure Search](https://docs.microsoft.com/rest/api/searchmanagement). Za pomocą Azure PowerShell i **AZ. Search**można wykonać następujące zadania:
+Polecenia cmdlet programu PowerShell i skrypty w systemie Windows, Linux lub [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) można uruchomić w celu utworzenia i skonfigurowania usługi Azure wyszukiwanie poznawcze. Moduł **AZ. Search** rozszerza Azure PowerShell] z pełną parzystością do [interfejsów API REST usługi Azure wyszukiwanie poznawcze Management](https://docs.microsoft.com/rest/api/searchmanagement). Za pomocą Azure PowerShell i **AZ. Search**można wykonać następujące zadania:
 
 > [!div class="checklist"]
 > * [Wyświetl listę wszystkich usług wyszukiwania w ramach subskrypcji](#list-search-services)
@@ -92,7 +92,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-search-services-in-your-subscription"></a>Wyświetl listę wszystkich usług Azure Search w ramach subskrypcji
+## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Wyświetl listę wszystkich usług Wyszukiwanie poznawcze platformy Azure w ramach subskrypcji
 
 Następujące polecenia pochodzą z [**AZ. resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources), zwracając informacje o istniejących zasobach i usługach, które zostały już zainicjowane w ramach subskrypcji. Jeśli nie wiesz, ile usług wyszukiwania zostało już utworzonych, te polecenia zwracają te informacje, co umożliwia zapisanie podróży do portalu.
 
@@ -201,7 +201,7 @@ Możesz ponownie wygenerować tylko jeden raz, określony jako klucz `primary` l
 
 W zależności od tego, czy klucze zostaną ponownie wygenerowane bez aktualizowania kodu klienta, żądania przy użyciu starego klucza zakończą się niepowodzeniem. Ponowne wygenerowanie wszystkich nowych kluczy nie powoduje trwałego zablokowania Twojej usługi i nadal można uzyskać dostęp do usługi za pomocą portalu. Po ponownym wygenerowaniu kluczy podstawowych i pomocniczych można zaktualizować kod klienta, aby używał nowych kluczy, a operacje zostaną odpowiednio wznowione.
 
-Wartości kluczy interfejsu API są generowane przez usługę. Nie można podać klucza niestandardowego dla Azure Search do użycia. Podobnie nie istnieje zdefiniowana przez użytkownika nazwa kluczy API-Keys. Odwołania do klucza są stałymi ciągami, `primary` lub `secondary`. 
+Wartości kluczy interfejsu API są generowane przez usługę. Nie można podać klucza niestandardowego do użycia w usłudze Azure Wyszukiwanie poznawcze. Podobnie nie istnieje zdefiniowana przez użytkownika nazwa kluczy API-Keys. Odwołania do klucza są stałymi ciągami, `primary` lub `secondary`. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
@@ -217,9 +217,9 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>Tworzenie lub usuwanie kluczy zapytania
 
-[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) służy do tworzenia [kluczy interfejsu API](search-security-api-keys.md) zapytania dla dostępu tylko do odczytu z aplikacji klienckich do indeksu Azure Search. Klucze zapytań są używane do uwierzytelniania w określonym indeksie na potrzeby pobierania wyników wyszukiwania. Klucze zapytań nie zapewniają dostępu tylko do odczytu do innych elementów w usłudze, takich jak indeks, źródło danych lub indeksator.
+[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) służy do tworzenia [kluczy interfejsu API](search-security-api-keys.md) zapytania dla dostępu tylko do odczytu z aplikacji klienckich do indeksu wyszukiwanie poznawcze platformy Azure. Klucze zapytań są używane do uwierzytelniania w określonym indeksie na potrzeby pobierania wyników wyszukiwania. Klucze zapytań nie zapewniają dostępu tylko do odczytu do innych elementów w usłudze, takich jak indeks, źródło danych lub indeksator.
 
-Nie można podać klucza do użycia przez Azure Search. Klucze interfejsu API są generowane przez usługę.
+Nie można podać klucza dla usługi Azure Wyszukiwanie poznawcze do użycia. Klucze interfejsu API są generowane przez usługę.
 
 ```azurepowershell-interactive
 New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <query-key-name> 
@@ -257,7 +257,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 
 Tworzenie [indeksu](search-what-is-an-index.md), [wykonywanie zapytań względem indeksu](search-query-overview.md) przy użyciu portalu, interfejsów API REST lub zestawu .NET SDK.
 
-* [Utwórz indeks Azure Search w Azure Portal](search-create-index-portal.md)
+* [Utwórz indeks Wyszukiwanie poznawcze platformy Azure w Azure Portal](search-create-index-portal.md)
 * [Konfigurowanie indeksatora w celu załadowania danych z innych usług](search-indexer-overview.md)
-* [Wykonywanie zapytania dotyczącego indeksu Azure Search przy użyciu Eksploratora wyszukiwania w Azure Portal](search-explorer.md)
-* [Jak używać usługi Azure Search na platformie .NET](search-howto-dotnet-sdk.md)
+* [Tworzenie zapytań względem indeksu Wyszukiwanie poznawcze platformy Azure przy użyciu Eksploratora wyszukiwania w Azure Portal](search-explorer.md)
+* [Jak korzystać z usługi Azure Wyszukiwanie poznawcze w środowisku .NET](search-howto-dotnet-sdk.md)

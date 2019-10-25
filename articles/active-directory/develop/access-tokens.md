@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7ef9b55dd17a6f1d190282f369ccb8b9386e65d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 39b727d14419634d413e0f649a43d455c4aeba20
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324275"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803553"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny dostępu platformy tożsamości firmy Microsoft
 
@@ -67,7 +67,7 @@ JWTs są podzielone na trzy sztuki:
 
 Każdy element jest oddzielony kropką (`.`) i osobno szyfrowany algorytmem Base64.
 
-Oświadczenia są obecne tylko wtedy, gdy istnieje wartość do wypełnienia. W związku z tym aplikacja nie powinna być zależne od obecnego żądania. Przykłady obejmują `pwd_exp` (nie każdy dzierżawca wymaga hasła) lub `family_name` (przepływy[poświadczeń klienta](v1-oauth2-client-creds-grant-flow.md) są w imieniu aplikacji, które nie mają nazw). Oświadczenia używane do sprawdzania poprawności tokenu dostępu będą zawsze obecne.
+Oświadczenia są obecne tylko wtedy, gdy istnieje wartość do wypełnienia. W związku z tym aplikacja nie powinna być zależne od obecnego żądania. Przykładami mogą być `pwd_exp` (nie każdy dzierżawca wymaga hasła) lub `family_name` (przepływy[poświadczeń klienta](v1-oauth2-client-creds-grant-flow.md) są w imieniu aplikacji, które nie mają nazw). Oświadczenia używane do sprawdzania poprawności tokenu dostępu będą zawsze obecne.
 
 > [!NOTE]
 > Niektóre oświadczenia są używane do zabezpieczania tokenów usługi Azure AD w przypadku ponownego użycia. Są one oznaczane jako nieprzeznaczone do użycia publicznego w opisie jako "nieprzezroczyste". Te oświadczenia mogą lub nie mogą występować w tokenie, a nowe mogą zostać dodane bez powiadomienia.
@@ -108,7 +108,7 @@ Oświadczenia są obecne tylko wtedy, gdy istnieje wartość do wypełnienia. W 
 | `hasgroups` | Wartość logiczna | Jeśli jest obecny, zawsze `true`, co oznacza, że użytkownik należy do co najmniej jednej grupy. Używane zamiast żądania `groups` dla JWTs w niejawnych przepływach, jeśli w ramach żądania Full Groups zostanie rozbudowany fragment identyfikatora URI wykraczający poza limity długości adresów URL (obecnie 6 lub więcej grup). Wskazuje, że klient powinien użyć grafu do określenia grup użytkownika (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
 | `groups:src1` | Obiekt JSON | W przypadku żądań tokenów, które nie mają ograniczonej długości (zobacz `hasgroups` powyżej), ale nadal są za duże dla tokenu, zostanie uwzględniony link do listy pełnych grup dla użytkownika. W przypadku JWTs jako roszczeń rozproszonych, w przypadku protokołu SAML jako nowego odszkodowania zamiast roszczeń `groups`. <br><br>**Przykładowa wartość JWT**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
 | `sub` | Ciąg, identyfikator GUID | Podmiot zabezpieczeń, dla którego token potwierdza informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienna i nie można jej ponownie przypisać ani ponownie użyć. Może służyć do bezpiecznego sprawdzania autoryzacji, na przykład gdy token jest używany w celu uzyskania dostępu do zasobu i może być używany jako klucz w tabelach bazy danych. Ponieważ podmiot jest zawsze obecny w tokenach, które są problemy z usługą Azure AD, zalecamy użycie tej wartości w systemie autoryzacji ogólnego przeznaczenia. Podmiot jest jednak identyfikatorem parowania — jest unikatowy dla określonego identyfikatora aplikacji. W związku z tym, jeśli pojedynczy użytkownik zaloguje się do dwóch różnych aplikacji przy użyciu dwóch różnych identyfikatorów klienta, te aplikacje otrzymają dwie różne wartości dla zgłoszenia podmiotu. Może to być niepotrzebne, w zależności od wymagań dotyczących architektury i ochrony prywatności. Zobacz również "`oid`" (który pozostaje taki sam dla aplikacji w ramach dzierżawy). |
-| `oid` | Ciąg, identyfikator GUID | Niezmienny identyfikator dla obiektu na platformie tożsamości firmy Microsoft, w tym przypadku, konto użytkownika. Może również służyć do bezpiecznego sprawdzania autoryzacji i jako klucz w tabelach bazy danych. Ten identyfikator jednoznacznie identyfikuje użytkownika w wielu aplikacjach — dwie różne aplikacje, które logują się w tym samym użytkowniku, otrzymają taką samą wartość w ramach roszczeń `oid`. W związku z tym `oid` może być używany podczas wykonywania zapytań do programu Microsoft Usługi online, takich jak Microsoft Graph. Microsoft Graph zwróci ten identyfikator jako właściwość `id` dla danego konta użytkownika. Ponieważ `oid` zezwala wielu aplikacjom na skorelowanie użytkowników, zakres `profile` jest wymagany w celu otrzymania tego żądania. Należy pamiętać, że jeśli pojedynczy użytkownik istnieje w wielu dzierżawach, użytkownik będzie zawierać inny identyfikator obiektu w każdej dzierżawie — jest uznawany za różne konta, nawet jeśli użytkownik loguje się do każdego konta z tymi samymi poświadczeniami. |
+| `oid` | Ciąg, identyfikator GUID | Niezmienny identyfikator dla obiektu na platformie tożsamości firmy Microsoft, w tym przypadku, konto użytkownika. Może również służyć do bezpiecznego sprawdzania autoryzacji i jako klucz w tabelach bazy danych. Ten identyfikator jednoznacznie identyfikuje użytkownika w wielu aplikacjach — dwie różne aplikacje, które logują się w tym samym użytkowniku, otrzymają taką samą wartość w ramach roszczeń `oid`. W związku z tym `oid` może być używany podczas wykonywania zapytań do programu Microsoft Usługi online, takich jak Microsoft Graph. Microsoft Graph zwróci ten identyfikator jako właściwość `id` dla danego [konta użytkownika](/graph/api/resources/user). Ponieważ `oid` zezwala wielu aplikacjom na skorelowanie użytkowników, zakres `profile` jest wymagany w celu otrzymania tego żądania. Należy pamiętać, że jeśli pojedynczy użytkownik istnieje w wielu dzierżawach, użytkownik będzie zawierać inny identyfikator obiektu w każdej dzierżawie — jest uznawany za różne konta, nawet jeśli użytkownik loguje się do każdego konta z tymi samymi poświadczeniami. |
 | `tid` | Ciąg, identyfikator GUID | Reprezentuje dzierżawę usługi Azure AD, z której korzysta użytkownik. W przypadku kont służbowych identyfikator GUID jest niezmiennym IDENTYFIKATORem dzierżawy organizacji, do której należy użytkownik. W przypadku kont osobistych wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad`. Zakres `profile` jest wymagany w celu otrzymania tego żądania. |
 | `unique_name` | Ciąg | Występuje tylko w tokenach v 1.0. Udostępnia zrozumiałą wartość identyfikującą podmiot tokenu. Ta wartość nie powinna być unikatowa w ramach dzierżawy i powinna być używana tylko do wyświetlania. |
 | `uti` | Ciąg nieprzezroczysty | Wyjątek wewnętrzny używany przez platformę Azure do weryfikacji tokenów. Zasoby nie powinny korzystać z tego żądania. |
@@ -145,7 +145,7 @@ Następujące oświadczenia zostaną uwzględnione w tokenach w wersji 1.0, jeś
 | Claim | Format | Opis |
 |-----|--------|-------------|
 | `ipaddr`| Ciąg | Adres IP, z którego użytkownik został uwierzytelniony. |
-| `onprem_sid`| Ciąg w [formacie identyfikatora SID](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | W przypadkach, w których użytkownik ma uwierzytelnianie lokalne, to zgłoszenie zapewnia swój identyfikator SID. Do autoryzacji w starszych aplikacjach można użyć `onprem_sid`.|
+| `onprem_sid`| Ciąg w [formacie identyfikatora SID](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | W przypadkach, w których użytkownik ma uwierzytelnianie lokalne, to zgłoszenie zapewnia swój identyfikator SID. Możesz użyć `onprem_sid` do autoryzacji w starszych aplikacjach.|
 | `pwd_exp`| int, sygnatura czasowa systemu UNIX | Wskazuje, kiedy wygasa hasło użytkownika. |
 | `pwd_url`| Ciąg | Adres URL, pod którym można wysyłać użytkowników w celu zresetowania hasła. |
 | `in_corp`| wartość logiczna | Sygnalizuje, czy klient loguje się z sieci firmowej. Jeśli nie, oświadczenia nie są uwzględniane. |
@@ -156,7 +156,7 @@ Następujące oświadczenia zostaną uwzględnione w tokenach w wersji 1.0, jeś
 
 #### <a name="the-amr-claim"></a>Roszczeń `amr`
 
-Tożsamości firmy Microsoft mogą być uwierzytelniane na różne sposoby, które mogą być odpowiednie dla Twojej aplikacji. "@No__t-0" jest tablicą, która może zawierać wiele elementów, takich jak `["mfa", "rsa", "pwd"]`, w przypadku uwierzytelniania, który używa zarówno hasła, jak i aplikacji uwierzytelniania.
+Tożsamości firmy Microsoft mogą być uwierzytelniane na różne sposoby, które mogą być odpowiednie dla Twojej aplikacji. `amr` jest to tablica, która może zawierać wiele elementów, takich jak `["mfa", "rsa", "pwd"]`, do uwierzytelniania, który używa zarówno hasła, jak i aplikacji uwierzytelniania.
 
 | Wartość | Opis |
 |-----|-------------|
@@ -193,7 +193,7 @@ Tokeny wystawione przez usługę Azure AD są podpisywane przy użyciu standardo
 }
 ```
 
-"@No__t-0" wskazuje algorytm, który został użyty do podpisania tokenu, natomiast w przypadku żądania `kid` wskazuje określony klucz publiczny, który został użyty do zweryfikowania tokenu.
+`alg` jest wskazywany algorytm, który został użyty do podpisania tokenu, podczas gdy `kid`e wskazuje określony klucz publiczny, który został użyty do zweryfikowania tokenu.
 
 W dowolnym momencie usługa Azure AD może podpisać id_token przy użyciu dowolnego zestawu par kluczy publiczny-prywatny. Usługa Azure AD umożliwia okresowe obracanie możliwego zestawu kluczy, dlatego należy napisać aplikację w celu automatycznego obsłużenia tych zmian. Rozsądna częstotliwość sprawdzania dostępności aktualizacji kluczy publicznych używanych przez usługę Azure AD wynosi co 24 godziny.
 
@@ -209,14 +209,14 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 Ten dokument metadanych:
 
 * Jest obiektem JSON zawierającym kilka przydatnych informacji, takich jak lokalizacja różnych punktów końcowych wymaganych do wykonania uwierzytelniania OpenID Connect Connect.
-* Zawiera `jwks_uri`, co daje lokalizację zestawu kluczy publicznych używanych do podpisywania tokenów. Dokument JSON znajdujący się w `jwks_uri` zawiera wszystkie informacje o kluczu publicznym używanym w tym konkretnym momencie. Twoja aplikacja może użyć roszczeń `kid` w nagłówku JWT, aby wybrać klucz publiczny w tym dokumencie, który został użyty do podpisania określonego tokenu. Następnie można sprawdzić poprawność podpisu przy użyciu prawidłowego klucza publicznego i wskazanego algorytmu.
+* Zawiera `jwks_uri`, która daje lokalizację zestawu kluczy publicznych używanych do podpisywania tokenów. Klucz sieci Web JSON (JWK) znajdujący się w `jwks_uri` zawiera wszystkie informacje o kluczu publicznym używanym w tym konkretnym momencie.  Format JWK został opisany w [dokumencie RFC 7517](https://tools.ietf.org/html/rfc7517).  Twoja aplikacja może użyć roszczeń `kid` w nagłówku JWT, aby wybrać klucz publiczny w tym dokumencie, który został użyty do podpisania określonego tokenu. Następnie można sprawdzić poprawność podpisu przy użyciu prawidłowego klucza publicznego i wskazanego algorytmu.
 
 > [!NOTE]
 > Punkt końcowy v 1.0 zwraca oświadczenia `x5t` i `kid`, podczas gdy punkt końcowy programu v 2.0 reaguje tylko na oświadczenie `kid`. W przyszłości zalecamy użycie żądania `kid` w celu zweryfikowania tokenu.
 
 Sprawdzanie poprawności podpisu jest poza zakresem tego dokumentu — istnieje wiele dostępnych bibliotek typu open source, które ułatwiają wykonywanie tych czynności w razie potrzeby.  Jednak platforma tożsamości firmy Microsoft ma jedno rozszerzenie podpisywania tokenu do standardów — niestandardowe klucze podpisywania.  
 
-Jeśli aplikacja ma niestandardowe klucze podpisywania w wyniku korzystania z funkcji [mapowania oświadczeń](active-directory-claims-mapping.md) , należy dołączyć parametr zapytania `appid` zawierający identyfikator aplikacji, aby uzyskać `jwks_uri` wskazujące informacje o kluczu podpisywania aplikacji, które powinny być używane do walidacji. Na przykład: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` zawiera `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
+Jeśli aplikacja ma niestandardowe klucze podpisywania w wyniku użycia funkcji [mapowania oświadczeń](active-directory-claims-mapping.md) , należy dołączyć parametr zapytania `appid` zawierający identyfikator aplikacji, aby uzyskać `jwks_uri` wskazujący informacje o kluczu podpisywania aplikacji, które powinny być używane do walidacji. Na przykład: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` zawiera `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
 ### <a name="claims-based-authorization"></a>Autoryzacja oparta na oświadczeniach
 
@@ -272,5 +272,5 @@ Tokeny odświeżania można unieważniać lub odwołać w dowolnym momencie, z r
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej [na temat `id_tokens` w usłudze Azure AD](id-tokens.md).
+* Dowiedz się więcej [na temat`id_tokens` w usłudze Azure AD](id-tokens.md).
 * Uzyskaj informacje na temat uprawnień i zgody w [wersjach 1.0](v1-permissions-and-consent.md) i [2.0](v2-permissions-and-consent.md).

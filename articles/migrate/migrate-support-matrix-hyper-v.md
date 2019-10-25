@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 004010983b87c333adeb4b20abbe851581917a3a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937430"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802183"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
 
@@ -29,8 +29,6 @@ W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych funkc
 **Ocenianie lokalnych maszyn wirtualnych funkcji Hyper-V** | [Skonfiguruj](tutorial-prepare-hyper-v.md) swoją pierwszą ocenę.<br/><br/> [Uruchom](scale-hyper-v-assessment.md) ocenę na dużą skalę.
 **Migrowanie maszyn wirtualnych funkcji Hyper-V na platformę Azure** | [Wypróbuj](tutorial-migrate-hyper-v.md) migrację do platformy Azure.
 
-Migracja serwerów funkcji Hyper-V zarządzanych przy użyciu programu System Center Virtual Machine Manager (VMM) nie jest obsługiwana przez migrację serwera Azure Migrate.
-
 ## <a name="azure-migrate-projects"></a>Projekty Azure Migrate
 
 **Pomoc techniczna** | **Szczegóły**
@@ -41,7 +39,7 @@ Geograficzne | Możesz tworzyć Azure Migrate projekty w wielu lokalizacje geogr
 
   **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
   --- | ---
-  Platforma Azure dla instytucji rządowych | Administracja USA — Wirginia
+  Platforma Azure dla instytucji rządowych | US Gov Wirginia
   Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
   Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
   Brazylia | Brazylia Południowa
@@ -122,7 +120,7 @@ Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 
 **Pliku** | **Połączenie**
 --- | ---
-**Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 umożliwiające zdalny dostęp do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
+**Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 **Host/klaster funkcji Hyper-V** | Połączenia przychodzące na portach usługi WinRM 5985 (HTTP) i 5986 (HTTPS) do ściągania metadanych konfiguracji i wydajności maszyn wirtualnych funkcji Hyper-V przy użyciu sesji model wspólnych informacji (CIM).
 
 ## <a name="migration-limitations"></a>Migracja — ograniczenia

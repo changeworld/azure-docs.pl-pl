@@ -1,43 +1,43 @@
 ---
-title: Modelowanie wielodostępności na potrzeby izolacji zawartości w jednej usłudze — Azure Search
-description: Poznaj typowe wzorce projektowe dla wielodostępnych aplikacji SaaS przy użyciu Azure Search.
+title: Modelowanie wielodostępności na potrzeby izolacji zawartości w jednej usłudze
+titleSuffix: Azure Cognitive Search
+description: Poznaj typowe wzorce projektowe dla wielodostępnych aplikacji SaaS przy użyciu usługi Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: LiamCavanagh
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/30/2018
 ms.author: liamca
-ms.openlocfilehash: 8b7538da41241f005298537c2969e5fce72b3c38
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 0332443997fbc58781f99e3b4e6d9776dd23926b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182237"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793529"
 ---
-# <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Wzorce projektowe dla wielodostępnych aplikacji SaaS i Azure Search
-Aplikacja wielodostępna jest taka, która zapewnia te same usługi i możliwości dla dowolnej liczby dzierżawców, którzy nie mogą zobaczyć ani udostępnić danych innych dzierżawców. W tym dokumencie omówiono strategie izolacji dzierżawców dla aplikacji wielodostępnych utworzonych przy użyciu Azure Search.
+# <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Wzorce projektowe dla wielodostępnych aplikacji SaaS i platformy Azure Wyszukiwanie poznawcze
+Aplikacja wielodostępna jest taka, która zapewnia te same usługi i możliwości dla dowolnej liczby dzierżawców, którzy nie mogą zobaczyć ani udostępnić danych innych dzierżawców. W tym dokumencie omówiono strategie izolacji dzierżawców dla aplikacji wielodostępnych utworzonych przy użyciu usługi Azure Wyszukiwanie poznawcze.
 
-## <a name="azure-search-concepts"></a>Koncepcje Azure Search
-Jako rozwiązanie typu "wyszukiwanie jako usługa" Azure Search pozwala deweloperom dodawać zaawansowane środowiska wyszukiwania do aplikacji bez konieczności zarządzania infrastrukturą ani uzyskania eksperta w zakresie pobierania informacji. Dane są przekazywane do usługi, a następnie przechowywane w chmurze. Korzystając z prostych żądań do interfejsu API Azure Search, dane można następnie zmodyfikować i przeszukać. Przegląd usługi można znaleźć w [tym artykule](https://aka.ms/whatisazsearch). Przed przedyskutowaniem wzorców projektowych ważne jest zrozumienie niektórych koncepcji w Azure Search.
+## <a name="azure-cognitive-search-concepts"></a>Pojęcia dotyczące usługi Azure Wyszukiwanie poznawcze
+Jako rozwiązanie typu "wyszukiwanie jako usługa" platforma Azure Wyszukiwanie poznawcze pozwala deweloperom dodawać zaawansowane środowiska wyszukiwania do aplikacji bez konieczności zarządzania infrastrukturą ani do pobierania informacji. Dane są przekazywane do usługi, a następnie przechowywane w chmurze. Przy użyciu prostych żądań do interfejsu API usługi Azure Wyszukiwanie poznawcze można modyfikować i przeszukiwać dane. Przegląd usługi można znaleźć w [tym artykule](https://aka.ms/whatisazsearch). Przed przedyskutowaniem wzorców projektowych ważne jest zrozumienie niektórych pojęć dotyczących usługi Azure Wyszukiwanie poznawcze.
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Usługi wyszukiwania, indeksy, pola i dokumenty
-W przypadku korzystania z Azure Search jeden subskrybuje *usługę wyszukiwania*. Dane są przekazywane do Azure Search, są przechowywane w indeksie w ramach usługi wyszukiwania. W ramach jednej usługi może istnieć wiele indeksów. Aby korzystać ze znanych koncepcji baz danych, usługa wyszukiwania może być likened do bazy danych, podczas gdy indeksy w ramach usługi mogą być likened do tabel w bazie danych.
+W przypadku korzystania z usługi Azure Wyszukiwanie poznawcze jeden subskrybuje *usługę wyszukiwania*. Dane przekazywane do usługi Azure Wyszukiwanie poznawcze są przechowywane w *indeksie* w ramach usługi wyszukiwania. W ramach jednej usługi może istnieć wiele indeksów. Aby korzystać ze znanych koncepcji baz danych, usługa wyszukiwania może być likened do bazy danych, podczas gdy indeksy w ramach usługi mogą być likened do tabel w bazie danych.
 
-Każdy indeks w ramach usługi wyszukiwania ma własny schemat, który jest definiowany przez wiele dostosowywalnych *pól*. Dane są dodawane do indeksu Azure Search w postaci poszczególnych *dokumentów*. Każdy dokument musi być przekazany do określonego indeksu i musi pasować do tego schematu indeksu. Podczas wyszukiwania danych przy użyciu Azure Search zapytania wyszukiwania pełnotekstowego są wydawane w odniesieniu do określonego indeksu.  Aby porównać te koncepcje z bazą danych, pola mogą być likened do kolumn w tabeli, a dokumenty mogą być likened do wierszy.
+Każdy indeks w ramach usługi wyszukiwania ma własny schemat, który jest definiowany przez wiele dostosowywalnych *pól*. Dane są dodawane do indeksu Wyszukiwanie poznawcze platformy Azure w postaci poszczególnych *dokumentów*. Każdy dokument musi być przekazany do określonego indeksu i musi pasować do tego schematu indeksu. Podczas wyszukiwania danych przy użyciu usługi Azure Wyszukiwanie poznawcze zapytania wyszukiwania pełnotekstowego są wydawane względem określonego indeksu.  Aby porównać te koncepcje z bazą danych, pola mogą być likened do kolumn w tabeli, a dokumenty mogą być likened do wierszy.
 
 ### <a name="scalability"></a>Skalowalność
-Każda usługa Azure Search w [warstwie cenowej](https://azure.microsoft.com/pricing/details/search/) standardowa może być skalowana w dwóch wymiarach: Magazyn i dostępność.
+Każda usługa Wyszukiwanie poznawcze platformy Azure w [warstwie cenowej](https://azure.microsoft.com/pricing/details/search/) standardowa może być skalowana w dwóch wymiarach: przechowywanie i dostępność.
 
 * *Partycje* można dodać, aby zwiększyć magazyn usługi wyszukiwania.
 * *Repliki* można dodawać do usługi w celu zwiększenia przepływności żądań, które usługa wyszukiwania może obsłużyć.
 
 Dodawanie i usuwanie partycji oraz replik umożliwia zwiększenie pojemności usługi wyszukiwania z ilością danych i ruchem wymaganym przez aplikację. Aby usługa wyszukiwania mogła uzyskać umowę [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)do odczytu, wymaga dwóch replik. Aby usługa mogła osiągnąć umowę [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)do odczytu i zapisu, wymaga trzech replik.
 
-### <a name="service-and-index-limits-in-azure-search"></a>Limity usługi i indeksu w Azure Search
-W Azure Search istnieje kilka różnych [warstw cenowych](https://azure.microsoft.com/pricing/details/search/) , a każda z nich ma różne [limity i](search-limits-quotas-capacity.md)przydziały. Niektóre z tych limitów znajdują się na poziomie usługi, a niektóre z nich znajdują się na poziomie indeksu, a niektóre z nich znajdują się na poziomie partycji.
+### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Limity usługi i indeksu na platformie Azure Wyszukiwanie poznawcze
+Na platformie Azure Wyszukiwanie poznawcze istnieje kilka różnych [warstw cenowych](https://azure.microsoft.com/pricing/details/search/) , a każda z nich ma różne [limity i przydziały](search-limits-quotas-capacity.md). Niektóre z tych limitów znajdują się na poziomie usługi, a niektóre z nich znajdują się na poziomie indeksu, a niektóre z nich znajdują się na poziomie partycji.
 
-|  | Podstawowa | Standard1 | Standardowa 2 | Standardowa 3 | Standard3 HD |
+|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba replik na usługę |3 |12 |12 |12 |12 |
 | Maksymalna liczba partycji na usługę |1 |12 |12 |12 |3 |
@@ -47,7 +47,7 @@ W Azure Search istnieje kilka różnych [warstw cenowych](https://azure.microsof
 | Maksymalna liczba indeksów na usługę |5 |50 |200 |200 |3000 (maksymalnie 1000 indeksów/partycji) |
 
 #### <a name="s3-high-density"></a>Wysoka gęstość S3
-W warstwie cenowej S3 Azure Search istnieje opcja trybu wysokiej gęstości (HD) przeznaczonego specjalnie dla scenariuszy wielodostępnych. W wielu przypadkach konieczne jest obsługę dużej liczby mniejszych dzierżawców w ramach jednej usługi, aby osiągnąć zalety prostoty i opłacalności.
+W warstwie cenowej S3 usługi Azure Wyszukiwanie poznawcze istnieje opcja trybu wysokiej gęstości (HD) przeznaczonego specjalnie dla scenariuszy wielodostępnych. W wielu przypadkach konieczne jest obsługę dużej liczby mniejszych dzierżawców w ramach jednej usługi, aby osiągnąć zalety prostoty i opłacalności.
 
 Funkcja S3 HD pozwala na zapakowanie wielu małych indeksów w ramach zarządzania pojedynczą usługą wyszukiwania przez handel możliwością skalowania indeksów w poziomie przy użyciu partycji, aby hostować więcej indeksów w jednej usłudze.
 
@@ -58,37 +58,37 @@ Aplikacje wielodostępne muszą efektywnie dystrybuować zasoby między dzierża
 
 * *Izolacja dzierżawy:* Deweloperzy aplikacji muszą podjąć odpowiednie środki, aby upewnić się, że żaden dzierżawca nie ma nieautoryzowanego lub niepożądanego dostępu do danych innych dzierżawców. Z perspektywy prywatności danych, strategie izolacji dzierżawców wymagają efektywnego zarządzania zasobami udostępnionymi i ochrony przed przechodzącymi przez nie sąsiadów.
 * *Koszt zasobów w chmurze:* Podobnie jak w przypadku każdej innej aplikacji, rozwiązania programowe muszą pozostawać konkurencyjne jako składnik aplikacji wielodostępnej.
-* *Łatwość operacji:* Podczas tworzenia architektury wielodostępnego, wpływ na operacje i złożoność aplikacji jest ważnym zagadnieniem. Azure Search ma umowę [SLA na 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+* *Łatwość operacji:* Podczas tworzenia architektury wielodostępnego, wpływ na operacje i złożoność aplikacji jest ważnym zagadnieniem. Usługa Azure Wyszukiwanie poznawcze ma umowę [SLA na 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 * *Globalne rozmiary:* Aplikacje wielodostępne mogą być efektywnie obsługiwać dzierżawców rozmieszczonych na całym świecie.
 * *Skalowalność:* Deweloperzy aplikacji muszą rozważyć, jak uzgadniają między utrzymaniem wystarczająco niskich poziomów złożoności aplikacji i projektowaniem aplikacji do skalowania przy użyciu liczby dzierżawców i rozmiaru danych i obciążeń dzierżawców.
 
-Azure Search oferuje kilka granic, których można użyć do izolowania danych i obciążenia dzierżawców.
+Usługa Azure Wyszukiwanie poznawcze oferuje kilka granic, których można użyć do izolowania danych i obciążeń dzierżawców.
 
-## <a name="modeling-multitenancy-with-azure-search"></a>Wielodostępność modelowania z Azure Search
-W przypadku scenariusza wielodostępnego Deweloper aplikacji korzysta z jednej lub kilku usług wyszukiwania i dzieli dzierżawców między usługi, indeksy lub oba te usługi. Azure Search zawiera kilka typowych wzorców podczas modelowania scenariusza wielodostępnego:
+## <a name="modeling-multitenancy-with-azure-cognitive-search"></a>Wielodostępność modelowania przy użyciu usługi Azure Wyszukiwanie poznawcze
+W przypadku scenariusza wielodostępnego Deweloper aplikacji korzysta z jednej lub kilku usług wyszukiwania i dzieli dzierżawców między usługi, indeksy lub oba te usługi. Usługa Azure Wyszukiwanie poznawcze ma kilka typowych wzorców podczas modelowania scenariusza wielodostępnego:
 
 1. *Indeks na dzierżawcę:* Każda dzierżawa ma swój własny indeks w ramach usługi wyszukiwania, który jest udostępniany innym dzierżawcom.
-2. *Usługa na dzierżawcę:* Każda dzierżawa ma własną dedykowaną Azure Search usługę, zapewniając najwyższy poziom danych i separacji obciążeń.
+2. *Usługa na dzierżawcę:* Każda dzierżawa ma własną dedykowaną usługę Wyszukiwanie poznawcze platformy Azure, która oferuje najwyższy poziom danych i rozdzielanie obciążeń.
 3. *Kombinacja obu:* Większe, bardziej aktywne dzierżawy są przypisane do dedykowanych usług, podczas gdy mniejsze dzierżawy są przypisane do poszczególnych indeksów w ramach usług udostępnionych.
 
-## <a name="1-index-per-tenant"></a>1. Indeks na dzierżawcę
+## <a name="1-index-per-tenant"></a>1. indeks na dzierżawcę
 ![Wskaźnik modelu indeksu na dzierżawcę](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
 
-W modelu z indeksem na dzierżawcę wiele dzierżawców zajmuje jedną Azure Search usługę, w której każdy dzierżawca ma swój własny indeks.
+W modelu z indeksem na dzierżawcę wiele dzierżawców zajmuje jedną usługę Wyszukiwanie poznawcze platformy Azure, w której każdy dzierżawca ma swój własny indeks.
 
-Dzierżawcy uzyskują izolację danych, ponieważ wszystkie żądania wyszukiwania i operacje dokumentu są wydawane na poziomie indeksu w Azure Search. W warstwie aplikacji istnieje konieczna świadomość umożliwiająca kierowanie ruchu różnych dzierżawców do właściwych indeksów, a także zarządzanie zasobami na poziomie usługi dla wszystkich dzierżawców.
+Dzierżawcy uzyskują izolację danych, ponieważ wszystkie żądania wyszukiwania i operacje dokumentu są wydawane na poziomie indeksu na platformie Azure Wyszukiwanie poznawcze. W warstwie aplikacji istnieje konieczna świadomość umożliwiająca kierowanie ruchu różnych dzierżawców do właściwych indeksów, a także zarządzanie zasobami na poziomie usługi dla wszystkich dzierżawców.
 
 Kluczowym atrybutem modelu indeksu na dzierżawcę jest możliwość, aby Deweloper aplikacji anulował subskrypcję pojemności usługi wyszukiwania wśród dzierżawców aplikacji. Jeśli dzierżawcy mają nierównomierny rozkład obciążenia, optymalna kombinacja dzierżawców może być dystrybuowana przez indeksy usługi wyszukiwania, aby pomieścić wiele wysoce aktywnych, intensywnie korzystających z zasobów dzierżawców jednocześnie obsługujących długie ślady mniejsze aktywni dzierżawy. Handel jest niezdolnością do obsługi sytuacji, w których każda dzierżawa jest wysoce aktywna.
 
-Model "indeks na dzierżawcę" stanowi podstawę dla modelu kosztu zmiennego, w którym cała usługa Azure Search jest zakupiona, a następnie uzupełniona dzierżawcami. Pozwala to na wyznaczenie nieużywanej pojemności dla prób i kont bezpłatnych.
+Model "indeks na dzierżawcę" stanowi podstawę dla modelu kosztu zmiennego, w którym cała usługa Wyszukiwanie poznawcze platformy Azure jest zakupiona, a następnie uzupełniona dzierżawcami. Pozwala to na wyznaczenie nieużywanej pojemności dla prób i kont bezpłatnych.
 
 W przypadku aplikacji z globalnym wpływem model indeksu na dzierżawcę może nie być najbardziej wydajny. Jeśli dzierżawy aplikacji są dystrybuowane na całym świecie, może być konieczne oddzielna usługa dla każdego regionu, co może pociągnąć za sobą dodatkowe koszty.
 
-Azure Search umożliwia skalowanie zarówno poszczególnych indeksów, jak i całkowitej liczby indeksów, które mają zostać powiększone. W przypadku wybrania odpowiedniej warstwy cenowej partycje i repliki można dodać do całej usługi wyszukiwania, gdy pojedynczy indeks w ramach usługi powiększa się zbyt duży pod względem magazynu lub ruchu.
+Usługa Azure Wyszukiwanie poznawcze umożliwia skalowanie zarówno pojedynczych indeksów, jak i całkowitej liczby indeksów, które mają zostać powiększone. W przypadku wybrania odpowiedniej warstwy cenowej partycje i repliki można dodać do całej usługi wyszukiwania, gdy pojedynczy indeks w ramach usługi powiększa się zbyt duży pod względem magazynu lub ruchu.
 
-Jeśli łączna liczba indeksów rośnie zbyt duże dla pojedynczej usługi, należy zastanowić się, aby zapewnić obsługę nowych dzierżawców. Jeśli indeksy muszą zostać przeniesione między usługami wyszukiwania po dodaniu nowych usług, dane z indeksu muszą być ręcznie skopiowane z jednego indeksu do drugiego, ponieważ Azure Search nie zezwala na przeniesienie indeksu.
+Jeśli łączna liczba indeksów rośnie zbyt duże dla pojedynczej usługi, należy zastanowić się, aby zapewnić obsługę nowych dzierżawców. Jeśli indeksy muszą zostać przeniesione między usługami wyszukiwania po dodaniu nowych usług, dane z indeksu muszą zostać ręcznie skopiowane z jednego indeksu do drugiego, ponieważ usługa Azure Wyszukiwanie poznawcze nie zezwala na przenoszenie indeksu.
 
-## <a name="2-service-per-tenant"></a>2. Usługa na dzierżawcę
+## <a name="2-service-per-tenant"></a>2. usługa na dzierżawcę
 ![Broszura modelu usługi dla dzierżawców](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
 
 W architekturze usługi dla dzierżawy każdy dzierżawca ma własną usługę wyszukiwania.
@@ -101,9 +101,9 @@ Usługa na model dzierżawy oferuje również możliwość korzystania z przewid
 
 Model usługi dla dzierżawy jest wydajnym wyborem dla aplikacji z globalnym wpływem. W przypadku dzierżawców rozproszonych geograficznie można łatwo korzystać z usługi każdej dzierżawy w odpowiednim regionie.
 
-Wyzwania w zakresie skalowania tego wzorca powstają, gdy poszczególne dzierżawy skalowalnośćą swoją usługę. Azure Search obecnie nie obsługuje uaktualniania warstwy cenowej usługi wyszukiwania, dlatego wszystkie dane będą musiały zostać ręcznie skopiowane do nowej usługi.
+Wyzwania w zakresie skalowania tego wzorca powstają, gdy poszczególne dzierżawy skalowalnośćą swoją usługę. Usługa Azure Wyszukiwanie poznawcze nie obsługuje obecnie uaktualniania warstwy cenowej usługi wyszukiwania, dlatego wszystkie dane będą musiały zostać ręcznie skopiowane do nowej usługi.
 
-## <a name="3-mixing-both-models"></a>3. Mieszanie obu modeli
+## <a name="3-mixing-both-models"></a>3. mieszanie obu modeli
 Innym wzorcem modelowania wielodostępności jest mieszanie strategii dla dzierżawców i usług dla dzierżawców.
 
 Przez mieszanie dwóch wzorców, największa liczba dzierżawców aplikacji może zajmować się dedykowanymi usługami, a długi ogon mniej aktywnych, krótszych dzierżawców może zajmować indeksy w usłudze udostępnionej. Ten model zapewnia, że największe dzierżawy mają spójną wysoką wydajność usługi, jednocześnie pomagając w ochronie mniejszych dzierżawców z dowolnego sąsiada z zakłóceniami.
@@ -111,11 +111,11 @@ Przez mieszanie dwóch wzorców, największa liczba dzierżawców aplikacji moż
 Jednak wdrożenie tej strategii polega na prognozie przewidywania, które dzierżawcy będą wymagały dedykowanej usługi, a indeks w usłudze udostępnionej. Złożoność aplikacji zwiększa się wraz z koniecznością zarządzania obydwoma modelami wielodostępnymi.
 
 ## <a name="achieving-even-finer-granularity"></a>Osiąganie jeszcze większej szczegółowości
-Powyższe wzorce projektowe do modelowania scenariuszy wielodostępnych w Azure Search zakładają jednolity zakres, w którym każda dzierżawa jest całym wystąpieniem aplikacji. Jednak aplikacje mogą czasami obsługiwać wiele mniejszych zakresów.
+Powyższe wzorce projektowe do modelowania scenariuszy wielodostępnych na platformie Azure Wyszukiwanie poznawcze zakładają jednolity zakres, w którym każda dzierżawa jest całym wystąpieniem aplikacji. Jednak aplikacje mogą czasami obsługiwać wiele mniejszych zakresów.
 
 Jeśli modele usługi dla dzierżawców i indeksu dla dzierżawców nie mają wystarczająco małych zakresów, można modelować indeks, aby osiągnąć jeszcze bardziej szczegółowy stopień szczegółowości.
 
-Aby jeden indeks zachowywać się inaczej dla różnych punktów końcowych klienta, można dodać pole do indeksu, który wyznacza określoną wartość dla każdego możliwego klienta. Za każdym razem, gdy klient wywołuje Azure Search, aby wykonać zapytanie lub zmodyfikować indeks, kod z aplikacji klienckiej określa odpowiednią wartość dla tego pola przy użyciu funkcji [filtrowania](https://msdn.microsoft.com/library/azure/dn798921.aspx) Azure Search w czasie wykonywania zapytania.
+Aby jeden indeks zachowywać się inaczej dla różnych punktów końcowych klienta, można dodać pole do indeksu, który wyznacza określoną wartość dla każdego możliwego klienta. Za każdym razem, gdy klient wywołuje Wyszukiwanie poznawcze platformy Azure, aby wykonać zapytanie lub zmodyfikować indeks, kod z aplikacji klienckiej określa odpowiednią wartość dla tego pola przy użyciu funkcji [filtrowania](https://msdn.microsoft.com/library/azure/dn798921.aspx) wyszukiwanie poznawcze platformy Azure w czasie wykonywania zapytania.
 
 Ta metoda może służyć do osiągnięcia funkcjonalności oddzielnych kont użytkowników, oddzielenia poziomów uprawnień, a nawet całkowicie oddzielnych aplikacji.
 
@@ -125,7 +125,7 @@ Ta metoda może służyć do osiągnięcia funkcjonalności oddzielnych kont uż
 > 
 
 ## <a name="next-steps"></a>Następne kroki
-Azure Search to atrakcyjny wybór dla wielu aplikacji, Dowiedz się [więcej na temat niezawodnych możliwości usługi](https://aka.ms/whatisazsearch). Oceniając różne wzorce projektowe dla aplikacji wielodostępnych, należy wziąć pod uwagę [różne warstwy cenowe](https://azure.microsoft.com/pricing/details/search/) i odpowiednie [limity usług](search-limits-quotas-capacity.md) , aby najlepiej dopasować Azure Search do obsługi obciążeń aplikacji i architektur wszystkich rozmiarów.
+Usługa Azure Wyszukiwanie poznawcze to atrakcyjny wybór dla wielu aplikacji. Oceniając różne wzorce projektowe dla aplikacji wielodostępnych, należy wziąć pod uwagę [różne warstwy cenowe](https://azure.microsoft.com/pricing/details/search/) i odpowiednie [limity usług](search-limits-quotas-capacity.md) , aby najlepiej dostosować platformę Azure wyszukiwanie poznawcze tak, aby pasowała do obciążeń aplikacji i architektury wszystkich rozmiarów .
 
-Wszystkie pytania dotyczące Azure Search i wielodostępnych scenariuszy można kierować do azuresearch_contact@microsoft.comprogramu.
+Wszelkie pytania dotyczące usługi Azure Wyszukiwanie poznawcze i wielodostępne scenariusze można kierować do azuresearch_contact@microsoft.com.
 

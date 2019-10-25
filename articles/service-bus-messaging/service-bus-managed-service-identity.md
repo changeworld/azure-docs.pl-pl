@@ -1,5 +1,5 @@
 ---
-title: Zarządzane tożsamości dla zasobów platformy Azure z Azure Service Bus | Microsoft Docs
+title: Zarządzane tożsamości dla zasobów platformy Azure z Service Bus
 description: Korzystanie z tożsamości zarządzanych dla zasobów platformy Azure z Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 10/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 86721907352f19cc7ed69fba1f1a021dcf1ed1b7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 57c52640262854037420c1679804f611394230ef
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299638"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793149"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Uwierzytelnianie zarządzanej tożsamości za pomocą Azure Active Directory w celu uzyskania dostępu do zasobów Azure Service Bus
-[Zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) jest funkcją między platformą Azure, która pozwala na tworzenie bezpieczna tożsamość skojarzonym z wdrożeniem w ramach którego działa kod aplikacji. Następnie można skojarzyć z tą tożsamością z rolami kontroli dostępu, które udzielić uprawnień niestandardowych na potrzeby uzyskiwania dostępu do określonych zasobów platformy Azure wymaganych przez aplikację.
+[Zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) to funkcja obejmująca wiele platform Azure, która umożliwia tworzenie bezpiecznej tożsamości skojarzonej z wdrożeniem, w ramach którego działa kod aplikacji. Następnie można powiązać tę tożsamość z rolami kontroli dostępu, które przyznają niestandardowe uprawnienia dostępu do określonych zasobów platformy Azure wymaganych przez aplikację.
 
-Za pomocą tożsamości zarządzanych platformy Azure zarządza tą tożsamością środowiska uruchomieniowego. Nie trzeba przechowywać i chronić klucze dostępu w kodzie aplikacji albo konfiguracji dla tożsamości, sama lub za zasoby, których chcesz uzyskać dostęp. Aplikacja kliencka Service Bus uruchomiona w aplikacji Azure App Service lub na maszynie wirtualnej z włączonymi jednostkami zarządzanymi dla obsługi zasobów platformy Azure nie musi obsługiwać reguł i kluczy SAS ani żadnych innych tokenów dostępu. Aplikacja kliencka wymaga tylko adresu punktu końcowego przestrzeni nazw wiadomości Service Bus. Gdy aplikacja nawiązuje połączenie, Service Bus powiązać kontekstu jednostki zarządzanej z klientem w operacji, która jest wyświetlana w przykładzie w dalszej części tego artykułu. Po skojarzeniu jej z tożsamością zarządzaną klient Service Bus może wykonać wszystkie autoryzowane operacje. Autoryzacja jest przyznawana przez skojarzenie jednostki zarządzanej z rolami Service Bus. 
+Przy użyciu tożsamości zarządzanych platforma Azure zarządza tą tożsamością środowiska uruchomieniowego. Nie jest konieczne przechowywanie i ochrona kluczy dostępu w kodzie lub konfiguracji aplikacji, zarówno w przypadku tożsamości, jak i dla zasobów, do których należy uzyskać dostęp. Aplikacja kliencka Service Bus uruchomiona w aplikacji Azure App Service lub na maszynie wirtualnej z włączonymi jednostkami zarządzanymi dla obsługi zasobów platformy Azure nie musi obsługiwać reguł i kluczy SAS ani żadnych innych tokenów dostępu. Aplikacja kliencka wymaga tylko adresu punktu końcowego przestrzeni nazw wiadomości Service Bus. Gdy aplikacja nawiązuje połączenie, Service Bus powiązać kontekstu jednostki zarządzanej z klientem w operacji, która jest wyświetlana w przykładzie w dalszej części tego artykułu. Po skojarzeniu jej z tożsamością zarządzaną klient Service Bus może wykonać wszystkie autoryzowane operacje. Autoryzacja jest przyznawana przez skojarzenie jednostki zarządzanej z rolami Service Bus. 
 
 ## <a name="overview"></a>Przegląd
 Gdy podmiot zabezpieczeń (użytkownik, Grupa lub aplikacja) próbuje uzyskać dostęp do jednostki Service Bus, żądanie musi być autoryzowane. W przypadku usługi Azure AD dostęp do zasobu jest procesem dwuetapowym. 
 
- 1. Najpierw jest uwierzytelniana tożsamość podmiotu zabezpieczeń i zwracany jest token OAuth 2,0. Nazwa zasobu do żądania tokenu to `https://servicebus.azure.net`.
+ 1. Najpierw jest uwierzytelniana tożsamość podmiotu zabezpieczeń i zwracany jest token OAuth 2,0. Nazwa zasobu do żądania tokenu jest `https://servicebus.azure.net`.
  1. Następnie token jest przesyłany w ramach żądania do usługi Service Bus, aby autoryzować dostęp do określonego zasobu.
 
 Krok uwierzytelniania wymaga, aby żądanie aplikacji zawierało token dostępu OAuth 2,0 w czasie wykonywania. Jeśli aplikacja jest uruchomiona w ramach jednostki platformy Azure, takiej jak maszyna wirtualna platformy Azure, zestaw skalowania maszyn wirtualnych lub aplikacja funkcji platformy Azure, może używać tożsamości zarządzanej do uzyskiwania dostępu do zasobów. 
@@ -46,8 +46,8 @@ Gdy rola RBAC jest przypisana do podmiotu zabezpieczeń usługi Azure AD, platfo
 ## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Wbudowane role RBAC dla Azure Service Bus
 W przypadku Azure Service Bus Zarządzanie przestrzeniami nazw i wszystkimi powiązanymi zasobami za pośrednictwem Azure Portal i interfejsu API usługi Azure Resource Management jest już chronione przy użyciu modelu *kontroli dostępu opartej na rolach* (RBAC). Platforma Azure udostępnia następujące wbudowane role RBAC do autoryzacji dostępu do Service Bus przestrzeni nazw:
 
-- [Właściciel danych Azure Service Bus](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Umożliwia dostęp do danych Service Bus przestrzeni nazw i jej jednostek (kolejek, tematów, subskrypcji i filtrów)
-- [Nadawca danych Azure Service Bus](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Ta rola umożliwia dostęp do Service Bus przestrzeni nazw i jej jednostek.
+- [Azure Service Bus właściciel danych](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): umożliwia dostęp do danych Service Bus przestrzeni nazw i jej jednostek (kolejek, tematów, subskrypcji i filtrów)
+- [Azure Service Bus nadawcy danych](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Ta rola daje dostęp do Service Bus przestrzeni nazw i jej jednostek.
 - [Azure Service Bus odbiorca danych](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver): Ta rola umożliwia uzyskanie dostępu do Service Bus przestrzeni nazw i jej jednostek. 
 
 ## <a name="resource-scope"></a>Zakres zasobów 
@@ -55,7 +55,7 @@ Przed przypisaniem roli RBAC do podmiotu zabezpieczeń należy określić zakres
 
 Na poniższej liście opisano poziomy, w których można określić zakres dostępu do zasobów Service Bus, rozpoczynając od najwęższego zakresu:
 
-- **Kolejka**, **temat**lub **subskrypcja**: Przypisanie roli dotyczy konkretnej jednostki Service Bus. Obecnie Azure Portal nie obsługuje przypisywania użytkowników/grup/tożsamości zarządzanych do Service Bus ról RBAC na poziomie subskrypcji. Oto przykład użycia interfejsu wiersza polecenia platformy Azure: [AZ-role-Assign-Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) w celu przypisania tożsamości do Service Bus roli RBAC: 
+- **Kolejka**, **temat**lub **subskrypcja**: przypisanie roli dotyczy konkretnej jednostki Service Bus. Obecnie Azure Portal nie obsługuje przypisywania użytkowników/grup/tożsamości zarządzanych do Service Bus ról RBAC na poziomie subskrypcji. Oto przykład użycia interfejsu wiersza polecenia platformy Azure: [AZ-role-Assign-Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) w celu przypisania tożsamości do Service Bus roli RBAC: 
 
     ```azurecli
     az role assignment create \
@@ -63,9 +63,9 @@ Na poniższej liście opisano poziomy, w których można określić zakres dost�
         --assignee $assignee_id \
         --scope /subscriptions/$subscription_id/resourceGroups/$resource_group/providers/Microsoft.ServiceBus/namespaces/$service_bus_namespace/topics/$service_bus_topic/subscriptions/$service_bus_subscription
     ```
-- **Service Bus przestrzeń nazw**: Przypisanie roli obejmuje całą topologię Service Bus w przestrzeni nazw oraz do skojarzonej z nią grupy odbiorców.
-- **Grupa zasobów**: Przypisanie roli dotyczy wszystkich zasobów Service Bus w grupie zasobów.
-- **Subskrypcja**: Przypisanie roli dotyczy wszystkich zasobów Service Bus we wszystkich grupach zasobów w subskrypcji.
+- **Przestrzeń nazw Service Bus**: przypisanie roli obejmuje całą topologię Service Bus w przestrzeni nazw oraz do skojarzonej z nią grupy odbiorców.
+- **Grupa zasobów**: przypisanie roli dotyczy wszystkich zasobów Service Bus w grupie zasobów.
+- **Subskrypcja**: przypisanie roli dotyczy wszystkich zasobów Service Bus we wszystkich grupach zasobów w subskrypcji.
 
 > [!NOTE]
 > Należy pamiętać, że propagacja ról RBAC może potrwać do 5 minut. 
@@ -128,15 +128,15 @@ Po przypisaniu roli aplikacja sieci Web będzie miała dostęp do Service Bus je
 
 Teraz Zmodyfikuj domyślną stronę utworzonej aplikacji ASP.NET. Możesz użyć kodu aplikacji sieci Web z [tego repozytorium GitHub](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet).  
 
-Domyślna strona. aspx to strona docelowa. Kod można znaleźć w pliku Default.aspx.cs. Wynikiem jest minimalna aplikacja sieci Web z kilkoma polami wprowadzania oraz za pomocą przycisków **Wyślij** i Odbierz łączących się z Service Bus wysyłania lub odbierania wiadomości.
+Domyślna strona. aspx to strona docelowa. Kod można znaleźć w pliku Default.aspx.cs. Wynikiem jest minimalna aplikacja sieci Web z kilkoma polami wprowadzania oraz za pomocą przycisków **Wyślij** i **Odbierz** łączących się z Service Bus wysyłania lub odbierania wiadomości.
 
-Uwaga jak [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) obiekt jest zainicjowany. Zamiast używania dostawcy tokenu dostępu współdzielonego tokenu (SAS), kod tworzy dostawcy tokenu dla tożsamości zarządzanej przy użyciu `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` wywołania. W związku z tym nie ma żadnych wpisów tajnych do zachowania i używania. Przepływ tożsamości zarządzanej do Service Bus i uzgadnianie autoryzacji są automatycznie obsługiwane przez dostawcę tokenu. Jest to prostsze model niż używanie sygnatury dostępu współdzielonego.
+Zauważ, jak obiekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) jest zainicjowany. Zamiast korzystać z dostawcy tokenów token dostępu współdzielonego (SAS), kod tworzy dostawcę tokenu dla tożsamości zarządzanej z wywołaniem `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();`. W związku z tym nie ma żadnych wpisów tajnych do zachowania i używania. Przepływ tożsamości zarządzanej do Service Bus i uzgadnianie autoryzacji są automatycznie obsługiwane przez dostawcę tokenu. Jest to prostsze model niż używanie sygnatury dostępu współdzielonego.
 
-Po wprowadzeniu tych zmian, publikowania, a następnie uruchom aplikację. Poprawne publikowanie danych można łatwo uzyskać, pobierając i importując profil publikacji w programie Visual Studio:
+Po wprowadzeniu tych zmian Opublikuj i uruchom aplikację. Poprawne publikowanie danych można łatwo uzyskać, pobierając i importując profil publikacji w programie Visual Studio:
 
 ![Pobierz profil publikowania](./media/service-bus-managed-service-identity/msi3.png)
  
-Aby wysłać lub odebrać wiadomości, wprowadź nazwę przestrzeni nazw i nazwę utworzonej jednostki. Następnie kliknij opcję **Wyślij** lub Odbierz.
+Aby wysłać lub odebrać wiadomości, wprowadź nazwę przestrzeni nazw i nazwę utworzonej jednostki. Następnie kliknij opcję **Wyślij** lub **Odbierz**.
 
 
 > [!NOTE]

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 661e1b6e3811ff2b5ae25e4fd59764a69e9ebe48
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6d59964013a2631430ecd7e46d1ce0f6be60a05f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596646"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802026"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Wprowadzenie do Azure Cost Management dla partnerów
 
@@ -30,10 +30,10 @@ Partnerzy programu CSP używają Cost Management do:
 - Włącz zasady Azure Resource Manager, które zapewniają klientom dostęp do Cost Management danych. Klienci mogą następnie wyświetlać dane dotyczące kosztów zużycia dla swoich subskrypcji [, używając stawek płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/calculator/)użyciem.
 
 Oto przykład przedstawiający koszty dla wszystkich klientów.
-![Example pokazywanie kosztów dla wszystkich klientów ](./media/get-started-partners/customer-costs1.png)
+![przykład pokazujący koszty dla wszystkich klientów](./media/get-started-partners/customer-costs1.png)
 
 Oto przykład przedstawiający koszty jednego klienta.
-![Example pokazywanie kosztów dla pojedynczego klienta ](./media/get-started-partners/customer-costs2.png)
+![przykład pokazujący koszty jednego klienta](./media/get-started-partners/customer-costs2.png)
 
 Wszystkie funkcje dostępne w Azure Cost Management są również dostępne w interfejsach API REST. Użyj interfejsów API do automatyzowania zadań zarządzania kosztami.
 
@@ -83,7 +83,7 @@ Obecnie waluta rozliczeniowa klienta jest walutą domyślną podczas wyświetlan
 Partnerzy mogą używać zakresu, aby uzgodnić faktury. I, wykorzystują zakres do ustawiania budżetów w walucie rozliczeniowej dla następujących elementów:
 
 - Konkretna filtrowana faktura
-- Dział
+- Klient
 - Subskrypcja
 - Grupa zasobów
 - Zasób
@@ -101,7 +101,7 @@ Zakres klienta nie obejmuje klientów, którzy znajdują się w bieżącej oferc
 
 Tylko użytkownicy z rolami **administrator globalny** i **administrator mogą** zarządzać kosztami kont rozliczeń, profilów rozliczeń i klientów bezpośrednio w dzierżawie platformy Azure partnera. Aby uzyskać więcej informacji na temat ról Centrum partnerskiego, zobacz [Przypisywanie ról i uprawnień użytkowników](/partner-center/permissions-overview).
 
-### <a name="enable-cost-management-in-the-customer-tenant"></a>Włącz zarządzanie kosztami w dzierżawie klienta
+## <a name="enable-cost-management-in-the-customer-tenant"></a>Włącz zarządzanie kosztami w dzierżawie klienta
 
 Partnerzy mogą zapewnić dostęp do Cost Management po dołączeniu klientów do umowy klienta firmy Microsoft. Następnie partnerzy mogą następnie włączyć zasady umożliwiające klientom wyświetlanie ich kosztów w ramach stawek za sprzedaż zgodnie z rzeczywistym użyciem. Koszty są pokazane w walucie rozliczeniowej klienta dla ich użycia w ramach subskrypcji RBAC i zakresów grup zasobów.
 
@@ -122,7 +122,7 @@ Na liście klientów wybierz klienta, który ma być uprawniony do wyświetlania
 W obszarze **Ustawienia**kliknij pozycję **zasady**.
 
 Bieżące zasady widoczności kosztów są wyświetlane dla opłat za **użycie platformy Azure** skojarzonych z subskrypcjami dla wybranego klienta.
-![Policy, aby umożliwić klientom wyświetlanie opłat z płatnością zgodnie z rzeczywistym użyciem ](./media/get-started-partners/cost-management-billing-policies.png)
+Zasady ![, aby umożliwić klientom wyświetlanie opłat z płatnością zgodnie z rzeczywistym użyciem](./media/get-started-partners/cost-management-billing-policies.png)
 
 Jeśli zasady są ustawione na wartość **nie**, Azure Cost Management nie są dostępne dla użytkowników subskrypcji skojarzonych z klientem. Zasady widoczności kosztów są domyślnie wyłączone dla wszystkich użytkowników subskrypcji, chyba że jest on włączony przez partnera.
 

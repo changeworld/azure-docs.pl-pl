@@ -1,25 +1,25 @@
 ---
-title: Definicja interfejsu dla umiejętności niestandardowych w usłudze wyszukiwania poznawcze — Azure Search
-description: Niestandardowy interfejs wyodrębniania danych dla niestandardowej umiejętności interfejsu API sieci Web w potoku wyszukiwania poznawczego w Azure Search.
+title: Definicja interfejsu dla umiejętności niestandardowych
+titleSuffix: Azure Cognitive Search
+description: Niestandardowy interfejs wyodrębniania danych dla niestandardowej umiejętności interfejsu API sieci Web w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 2c4af40886a81cbf8f8e11318737db05f570a1f0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: f86c34dcc1276b8677e3e60514661a6d0b974005
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692187"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787546"
 ---
-# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Jak dodać niestandardową umiejętność do potoku wyszukiwania poznawczego
+# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Jak dodać niestandardową umiejętność do potoku wzbogacenia Wyszukiwanie poznawcze platformy Azure
 
-[Potok indeksowania wyszukiwania poznawczego](cognitive-search-concept-intro.md) w Azure Search może być montowany ze [wstępnie zdefiniowanych umiejętności](cognitive-search-predefined-skills.md) , a także [niestandardowych umiejętności](cognitive-search-custom-skill-web-api.md) , które tworzysz i dodajesz do potoku. W tym artykule dowiesz się, jak utworzyć niestandardową umiejętność, która uwidacznia interfejs umożliwiający dołączenie go do potoku wyszukiwania poznawczego. 
+[Potok wzbogacania](cognitive-search-concept-intro.md) w usłudze Azure wyszukiwanie poznawcze może być montowany z [wbudowanych umiejętności poznawczych](cognitive-search-predefined-skills.md) , a także [niestandardowych umiejętności](cognitive-search-custom-skill-web-api.md) , które tworzysz i dodajesz do potoku. W tym artykule dowiesz się, jak utworzyć niestandardową umiejętność, która uwidacznia interfejs umożliwiający dołączenie go do potoku wzbogacania AI. 
 
-Tworzenie niestandardowych umiejętności umożliwia wstawianie przekształceń unikatowych dla zawartości. Niestandardowa umiejętnie wykonuje się niezależnie od zastosowania dowolnych wymaganych czynności wzbogacania. Można na przykład zdefiniować jednostki niestandardowe specyficzne dla pola, utworzyć niestandardowe modele klasyfikacji, aby rozróżnić kontrakty biznesowe i finansowe oraz dokumenty, lub dodać umiejętność rozpoznawania mowy, aby lepiej uzyskać dostęp do plików audio w celu uzyskania odpowiedniej zawartości. Aby zapoznać się z przykładem krok po kroku, zobacz [przykład: Tworzenie niestandardowej umiejętności wyszukiwania poznawczego](cognitive-search-create-custom-skill-example.md).
+Tworzenie niestandardowych umiejętności umożliwia wstawianie przekształceń unikatowych dla zawartości. Niestandardowa umiejętnie wykonuje się niezależnie od zastosowania dowolnych wymaganych czynności wzbogacania. Można na przykład zdefiniować jednostki niestandardowe specyficzne dla pola, utworzyć niestandardowe modele klasyfikacji, aby rozróżnić kontrakty biznesowe i finansowe oraz dokumenty, lub dodać umiejętność rozpoznawania mowy, aby lepiej uzyskać dostęp do plików audio w celu uzyskania odpowiedniej zawartości. Aby zapoznać się z przykładem krok po kroku, zobacz [przykład: Tworzenie niestandardowej umiejętności dla wzbogacania AI](cognitive-search-create-custom-skill-example.md).
 
  Niezależnie od tego, jakie możliwości niestandardowe są wymagane, istnieje prosty i przejrzysty interfejs do łączenia niestandardowych umiejętności z resztą potoku wzbogacania. Jedynym wymaganiem do włączenia w [zestawu umiejętności](cognitive-search-defining-skillset.md) jest możliwość przyjmowania danych wejściowych i emisji w sposób, który jest zużywany w ramach zestawu umiejętności jako całości. Fokus tego artykułu znajduje się w formatach wejściowych i wyjściowych wymaganych przez potok wzbogacania.
 

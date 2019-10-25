@@ -1,5 +1,6 @@
 ---
-title: Poświadczenia certyfikatu w usłudze Azure AD | Microsoft Docs
+title: Poświadczenia certyfikatu w usłudze Azure AD
+titleSuffix: Microsoft identity platform
 description: W tym artykule omówiono rejestrację i użycie poświadczeń certyfikatu na potrzeby uwierzytelniania aplikacji
 services: active-directory
 documentationcenter: .net
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aa63a8f06b71455b7f00d2ce5842f0da851789b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1184d210f5b7ea25b9f73cbd70b5f960402126a1
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835477"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803523"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Poświadczenia certyfikatu na potrzeby uwierzytelniania aplikacji
 
@@ -32,9 +33,9 @@ Azure Active Directory (Azure AD) umożliwia aplikacji używanie własnych pośw
 Jedną z poświadczeń, których może używać aplikacja do uwierzytelniania, jest potwierdzenie tokenu sieci Web JSON (JWT) podpisane przy użyciu certyfikatu, którego właścicielem jest aplikacja.
 
 ## <a name="assertion-format"></a>Format potwierdzenia
-Aby obliczyć potwierdzenie, można użyć jednej z wielu bibliotek tokenów [sieci Web JSON](https://jwt.ms/) w wybranym języku. Informacje przekazane przez token są następujące:
+Aby obliczyć potwierdzenie, można użyć jednej z wielu bibliotek [tokenów sieci Web JSON](https://jwt.ms/) w wybranym języku. Informacje przekazane przez token są następujące:
 
-### <a name="header"></a>nagłówek
+### <a name="header"></a>Nagłówek
 
 | Parametr |  Dyskusji |
 | --- | --- |
@@ -46,14 +47,14 @@ Aby obliczyć potwierdzenie, można użyć jednej z wielu bibliotek tokenów [si
 
 | Parametr |  Uwagi |
 | --- | --- |
-| `aud` | Publiczn Powinna być  **https://login.microsoftonline.com/ *tenant_Id*/OAuth2/token** |
+| `aud` | Odbiorcy: powinien być **https://login.microsoftonline.com/*tenant_Id*/OAuth2/token** |
 | `exp` | Data wygaśnięcia: Data wygaśnięcia tokenu. Czas jest reprezentowany jako liczba sekund od 1 stycznia 1970 (1970-01-01T0:0: 0Z) UTC do momentu wygaśnięcia ważności tokenu.|
 | `iss` | Wystawca: powinien być client_id (Identyfikator aplikacji usługi klienta). |
 | `jti` | GUID: Identyfikator JWT |
 | `nbf` | Nie przed: Data, przed upływem którego nie można użyć tokenu. Czas jest reprezentowany jako liczba sekund od 1 stycznia 1970 (1970-01-01T0:0: 0Z) UTC do momentu wystawienia tokenu. |
-| `sub` | Temat: Zgodnie z `iss`dla, powinna być client_id (Identyfikator aplikacji usługi klienta) |
+| `sub` | Temat: w przypadku `iss`należy client_id (Identyfikator aplikacji usługi klienta). |
 
-### <a name="signature"></a>Podpis
+### <a name="signature"></a>podpisane
 
 Sygnatura jest obliczana przy zastosowaniu certyfikatu zgodnie z opisem w [specyfikacji RFC7519 tokenu internetowego JSON](https://tools.ietf.org/html/rfc7519)
 
@@ -98,9 +99,9 @@ Poświadczenie certyfikatu można skojarzyć z aplikacją kliencką w usłudze A
 ### <a name="uploading-the-certificate-file"></a>Przekazywanie pliku certyfikatu
 
 W usłudze Azure App Registration dla aplikacji klienckiej:
-1. Wybierz pozycję **certyfikaty &** wpisy tajne. 
+1. Wybierz pozycję **certyfikaty & wpisy tajne**. 
 2. Kliknij pozycję **Przekaż certyfikat** i wybierz plik certyfikatu do przekazania.
-3. Kliknij przycisk **Dodaj**.
+3. Kliknij pozycję **Add** (Dodaj).
   Po przekazaniu certyfikatu zostaną wyświetlone wartości odcisku palca, Data rozpoczęcia i wygaśnięcie. 
 
 ### <a name="updating-the-application-manifest"></a>Aktualizowanie manifestu aplikacji
@@ -114,7 +115,7 @@ Należy również podać identyfikator GUID, aby zidentyfikować klucz w manife�
 
 W usłudze Azure App Registration dla aplikacji klienckiej:
 1. Wybierz pozycję **manifest** , aby otworzyć manifest aplikacji.
-2. Zastąp Właściwość poświadczeniami, podając nowe informacje o certyfikacie, korzystając z poniższego schematu.
+2. Zastąp Właściwość *poświadczeniami* , podając nowe informacje o certyfikacie, korzystając z poniższego schematu.
 
    ```
    "keyCredentials": [
@@ -129,8 +130,8 @@ W usłudze Azure App Registration dla aplikacji klienckiej:
    ```
 3. Zapisz zmiany w manifeście aplikacji, a następnie Przekaż manifest do usługi Azure AD. 
 
-   `keyCredentials` Właściwość jest wielowartościowa, więc można przekazać wiele certyfikatów do rozbudowanego zarządzania kluczami.
+   Właściwość `keyCredentials` ma wiele wartości, dzięki czemu można przekazać wiele certyfikatów w celu zaawansowania zarządzania kluczami.
    
 ## <a name="code-sample"></a>Przykład kodu
 
-Przykładowy kod na potrzeby [uwierzytelniania w usłudze Azure AD w aplikacjach demonów z certyfikatami](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) pokazuje, w jaki sposób aplikacja korzysta z własnych poświadczeń do uwierzytelniania. Przedstawiono w `New-SelfSignedCertificate` nim również, jak [utworzyć certyfikat z](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) podpisem własnym za pomocą polecenia programu PowerShell. Możesz również wykorzystać [Skrypty tworzenia aplikacji](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) do tworzenia certyfikatów, obliczania odcisku palca i tak dalej.
+Przykładowy kod na potrzeby [uwierzytelniania w usłudze Azure AD w aplikacjach demonów z certyfikatami](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) pokazuje, w jaki sposób aplikacja korzysta z własnych poświadczeń do uwierzytelniania. Przedstawiono w nim również, jak [utworzyć certyfikat z](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) podpisem własnym za pomocą polecenia `New-SelfSignedCertificate` PowerShell. Możesz również wykorzystać [Skrypty tworzenia aplikacji](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) do tworzenia certyfikatów, obliczania odcisku palca i tak dalej.

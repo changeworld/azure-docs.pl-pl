@@ -1,23 +1,23 @@
 ---
-title: 'Przykład: Modelowanie bazy danych magazynu AdventureWorks — Azure Search'
-description: Dowiedz się, jak modelować dane relacyjne, przekształcając je w spłaszczony zestaw danych, na potrzeby indeksowania i wyszukiwania pełnotekstowego w Azure Search.
+title: 'Przykład: Modelowanie bazy danych spisu AdventureWorks'
+titleSuffix: Azure Cognitive Search
+description: Dowiedz się, jak modelować dane relacyjne, przekształcając je w spłaszczony zestaw danych, na potrzeby indeksowania i wyszukiwania pełnotekstowego w usłudze Azure Wyszukiwanie poznawcze.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: heidist
-ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: edb6162724938962df8a7340afea6e930a0b1049
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274036"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792997"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Przykład: Modelowanie bazy danych magazynu AdventureWorks dla Azure Search
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>Przykład: Modelowanie bazy danych magazynu AdventureWorks dla platformy Azure Wyszukiwanie poznawcze
 
-Azure Search akceptuje spłaszczony zestaw wierszy jako dane wejściowe do [potoku indeksowania (pozyskiwania danych)](search-what-is-an-index.md). Jeśli dane źródłowe pochodzą z SQL Server relacyjnej bazy danych, w tym artykule przedstawiono jedno podejście do tworzenia spłaszczonego zestawu wierszy przed indeksowaniem przy użyciu przykładowej bazy danych AdventureWorks.
+Usługa Azure Wyszukiwanie poznawcze akceptuje spłaszczony zestaw wierszy jako dane wejściowe do [potoku indeksowania (pozyskiwania danych)](search-what-is-an-index.md). Jeśli dane źródłowe pochodzą z SQL Server relacyjnej bazy danych, w tym artykule przedstawiono jedno podejście do tworzenia spłaszczonego zestawu wierszy przed indeksowaniem przy użyciu przykładowej bazy danych AdventureWorks.
 
 ## <a name="about-adventureworks"></a>Informacje o AdventureWorks
 
@@ -43,7 +43,7 @@ Rozwiązanie tego problemu nie jest tak proste jak przeniesienie docelowego inde
 
 ## <a name="use-a-collection-data-type"></a>Użyj typu danych kolekcji
 
-"Prawidłowe podejście" polega na użyciu funkcji wyszukiwania w schemacie, która nie ma bezpośredniego operatora równoległego w modelu bazy danych: **Kolekcja (EDM. String)** . Ta konstrukcja jest zdefiniowana w schemacie indeksu Azure Search. Typ danych kolekcji jest używany, gdy trzeba przedstawić listę pojedynczych ciągów, a nie bardzo długi (pojedynczy) ciąg. Jeśli masz Tagi lub słowa kluczowe, użyj typu danych kolekcji dla tego pola.
+"Prawidłowe podejście" polega na użyciu funkcji wyszukiwania w schemacie, która nie ma bezpośredniego operatora równoległego w modelu bazy danych: **Kolekcja (EDM. String)** . Ta konstrukcja jest definiowana w schemacie indeksu Wyszukiwanie poznawcze platformy Azure. Typ danych kolekcji jest używany, gdy trzeba przedstawić listę pojedynczych ciągów, a nie bardzo długi (pojedynczy) ciąg. Jeśli masz Tagi lub słowa kluczowe, użyj typu danych kolekcji dla tego pola.
 
 Przez definiowanie pól indeksu wielowartościowego **kolekcji (EDM. String)** dla "Color", "size" i "Image" informacje pomocnicze są zachowywane dla aspektów i filtrowania bez zanieczyszczania indeksu ze zduplikowanymi wpisami. Analogicznie Zastosuj funkcje agregujące do pól liczbowych produktu, indeksowanie **minListPrice** zamiast każdego pojedynczego produktu **listPrice**.
 
@@ -163,4 +163,4 @@ WHERE
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przykład: Taksonomie aspektów wielopoziomowych w Azure Search](search-example-adventureworks-multilevel-faceting.md)
+> [Przykład: wielopoziom Taksonomie aspektów na platformie Azure Wyszukiwanie poznawcze](search-example-adventureworks-multilevel-faceting.md)

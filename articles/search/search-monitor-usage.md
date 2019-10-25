@@ -1,24 +1,24 @@
 ---
-title: Monitorowanie użycia zasobów i metryk zapytania dla usługi wyszukiwania — Azure Search
-description: Włącz rejestrowanie, Pobierz metryki działania zapytania, użycie zasobów i inne dane systemu z usługi Azure Search.
-author: HeidiSteen
+title: Monitorowanie użycia zasobów i metryk zapytania
+titleSuffix: Azure Cognitive Search
+description: Włącz rejestrowanie, Pobierz metryki działania zapytania, użycie zasobów i inne dane systemu z usługi Azure Wyszukiwanie poznawcze.
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/16/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+tags: azure-portal
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72331210"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793485"
 ---
-# <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorowanie użycia zasobów i działania zapytań w Azure Search
+# <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Monitorowanie użycia zasobów i działania zapytań w usłudze Azure Wyszukiwanie poznawcze
 
-Na stronie Przegląd usługi Azure Search można wyświetlić dane systemowe dotyczące użycia zasobów, metryk zapytania i ilości dostępnego przydziału, aby utworzyć więcej indeksów, indeksatorów i źródeł danych. Możesz również użyć portalu, aby skonfigurować usługę log Analytics lub inny zasób używany do trwałego zbierania danych. 
+Na stronie Przegląd usługi Azure Wyszukiwanie poznawcze można wyświetlić dane systemowe dotyczące użycia zasobów, metryk zapytania i ilość dostępnego przydziału, aby utworzyć więcej indeksów, indeksatorów i źródeł danych. Możesz również użyć portalu, aby skonfigurować usługę log Analytics lub inny zasób używany do trwałego zbierania danych. 
 
 Konfigurowanie dzienników jest przydatne w przypadku samoobsługowej diagnostyki i zachowywania historii operacyjnej. Wewnętrznie dzienniki znajdują się w zapleczu przez krótki czas, co jest wystarczające do zbadania i analizy w przypadku utworzenia biletu pomocy technicznej. Jeśli chcesz kontrolować i uzyskiwać dostęp do informacji o dziennikach, należy skonfigurować jedno z rozwiązań opisanych w tym artykule.
 
@@ -52,7 +52,7 @@ W przypadku zadań w usłudze, takich jak tworzenie indeksu lub usuwanie źród�
 
 ## <a name="add-on-monitoring-solutions"></a>Rozwiązania do monitorowania dodatków
 
-Azure Search nie przechowuje żadnych danych poza zarządzanymi obiektami, co oznacza, że dane dziennika mają być przechowywane zewnętrznie. Aby zachować dane dziennika, można skonfigurować dowolne z poniższych zasobów. 
+Usługa Azure Wyszukiwanie poznawcze nie przechowuje żadnych danych poza obiektami, którymi zarządza, co oznacza, że dane dzienników mają być przechowywane zewnętrznie. Aby zachować dane dziennika, można skonfigurować dowolne z poniższych zasobów. 
 
 W poniższej tabeli porównano opcje przechowywania dzienników i dodawania szczegółowego monitorowania operacji usługi i wykonywania zapytań do obciążeń za pomocą Application Insights.
 
@@ -64,17 +64,17 @@ W poniższej tabeli porównano opcje przechowywania dzienników i dodawania szcz
 
 Zarówno dzienniki Azure Monitor, jak i magazyn obiektów BLOB są dostępne jako bezpłatna usługa, dzięki czemu można wypróbować ją bezpłatnie w okresie istnienia subskrypcji platformy Azure. Application Insights jest bezpłatny, aby zarejestrować się i używać tak długo, jak rozmiar danych aplikacji ma określone limity (szczegółowe informacje znajdują się na [stronie cennika](https://azure.microsoft.com/pricing/details/monitor/) ).
 
-W następnej sekcji przeprowadzimy Cię przez kroki umożliwiające włączenie i użycie usługi Azure Blob Storage w celu zbierania i uzyskiwania dostępu do danych dziennika utworzonych przez Azure Search operacji.
+Następna sekcja przeprowadzi Cię przez kroki umożliwiające włączenie i użycie usługi Azure Blob Storage w celu zbierania i uzyskiwania dostępu do danych dziennika utworzonych przez operacje Wyszukiwanie poznawcze platformy Azure.
 
 ## <a name="enable-logging"></a>Włącz rejestrowanie
 
-Rejestrowanie dla obciążeń indeksowania i zapytań jest domyślnie wyłączone i zależy od rozwiązań dodatków zarówno dla infrastruktury rejestrowania, jak i długoterminowego magazynu zewnętrznego. Same dane utrwalone w Azure Search są obiektami tworzonymi i zarządzanymi, dlatego dzienniki muszą być przechowywane w innym miejscu.
+Rejestrowanie dla obciążeń indeksowania i zapytań jest domyślnie wyłączone i zależy od rozwiązań dodatków zarówno dla infrastruktury rejestrowania, jak i długoterminowego magazynu zewnętrznego. Same dane utrwalone na platformie Azure Wyszukiwanie poznawcze są tworzonymi i zarządzanymi obiektami, dlatego dzienniki muszą być przechowywane w innym miejscu.
 
 W tej sekcji dowiesz się, jak używać magazynu obiektów BLOB do przechowywania zarejestrowanych zdarzeń i danych metryk.
 
-1. [Utwórz konto magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , jeśli jeszcze go nie masz. Można ją umieścić w tej samej grupie zasobów co Azure Search, aby uprościć czyszczenie później, jeśli chcesz usunąć wszystkie zasoby używane w tym ćwiczeniu.
+1. [Utwórz konto magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , jeśli jeszcze go nie masz. Można ją umieścić w tej samej grupie zasobów co usługa Azure Wyszukiwanie poznawcze, aby uprościć czyszczenie później, jeśli chcesz usunąć wszystkie zasoby używane w tym ćwiczeniu.
 
-   Konto magazynu musi znajdować się w tym samym regionie co Azure Search.
+   Konto magazynu musi znajdować się w tym samym regionie co usługa Azure Wyszukiwanie poznawcze.
 
 2. Otwórz stronę omówienia usługi wyszukiwania. W okienku nawigacji po lewej stronie przewiń w dół do **monitorowania** , a następnie kliknij pozycję **Włącz monitorowanie**.
 
@@ -158,14 +158,14 @@ Aby wyświetlić plik dziennika, można użyć dowolnego edytora JSON. Jeśli go
 
 1. W Azure Portal Otwórz konto magazynu. 
 
-2. W okienku nawigacji po lewej stronie kliknij pozycję **obiekty blob**. Powinny być widoczne informacje **Insights-Logs-operationlogs** i **Insights-Metrics-pt1m**. Te kontenery są tworzone przez Azure Search podczas eksportowania danych dziennika do magazynu obiektów BLOB.
+2. W okienku nawigacji po lewej stronie kliknij pozycję **obiekty blob**. Powinny być widoczne informacje **Insights-Logs-operationlogs** i **Insights-Metrics-pt1m**. Te kontenery są tworzone przez usługę Azure Wyszukiwanie poznawcze podczas eksportowania danych dziennika do magazynu obiektów BLOB.
 
 3. Kliknij kolejno pozycje hierarchia folderów, aby uzyskać dostęp do pliku. JSON.  Użyj menu kontekstowego, aby pobrać plik.
 
 Po pobraniu pliku Otwórz go w edytorze JSON, aby wyświetlić jego zawartość.
 
 ## <a name="use-system-apis"></a>Korzystanie z interfejsów API systemu
-Interfejs API REST Azure Search i zestaw .NET SDK zapewniają programistyczny dostęp do metryk usług, informacji dotyczących indeksu i indeksatora oraz liczby dokumentów.
+Zarówno interfejs API REST platformy Azure Wyszukiwanie poznawcze, jak i zestaw .NET SDK zapewniają programistyczny dostęp do metryk usług, informacji o indeksie i indeksatorze oraz liczby dokumentów.
 
 * [Pobierz statystyki usług](/rest/api/searchservice/get-service-statistics)
 * [Pobierz statystyki indeksu](/rest/api/searchservice/get-index-statistics)

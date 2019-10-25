@@ -1,13 +1,13 @@
 ---
-title: Odwołanie do wyboru protokołu OData — Azure Search
-description: Dokumentacja języka OData dla składni SELECT w zapytaniach Azure Search.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: Odwołanie do wyboru protokołu OData
+titleSuffix: Azure Cognitive Search
+description: Dokumentacja języka OData dla składni SELECT w zapytaniach usługi Azure Wyszukiwanie poznawcze.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64e9ad75d88f595ab5def6fe8b63fee9407ae0fe
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7786974f3d39f9cbc81e1ffea955156d623f1476
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647869"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793245"
 ---
-# <a name="odata-select-syntax-in-azure-search"></a>Składnia $select OData w Azure Search
+# <a name="odata-select-syntax-in-azure-cognitive-search"></a>Składnia $select OData na platformie Azure Wyszukiwanie poznawcze
 
- Można użyć [parametru **$SELECT** OData](query-odata-filter-orderby-syntax.md) , aby wybrać pola do uwzględnienia w wynikach wyszukiwania z Azure Search. W tym artykule opisano szczegółowo składnię **$SELECT** . Aby uzyskać ogólne informacje na temat używania **$SELECT** podczas prezentowania wyników wyszukiwania, zobacz jak korzystać [z wyników wyszukiwania w Azure Search](search-pagination-page-layout.md).
+ Można użyć [parametru **$SELECT** OData](query-odata-filter-orderby-syntax.md) , aby wybrać pola do uwzględnienia w wynikach wyszukiwania z usługi Azure wyszukiwanie poznawcze. W tym artykule opisano szczegółowo składnię **$SELECT** . Aby uzyskać ogólne informacje na temat używania **$SELECT** podczas prezentowania wyników wyszukiwania, zobacz jak korzystać [z wyników wyszukiwania w usłudze Azure wyszukiwanie poznawcze](search-pagination-page-layout.md).
 
 ## <a name="syntax"></a>Składnia
 
@@ -45,23 +45,23 @@ field_path ::= identifier('/'identifier)*
 Dostępny jest również interaktywny diagram składni:
 
 > [!div class="nextstepaction"]
-> [Diagram składni OData dla Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [Diagram składni OData dla Wyszukiwanie poznawcze platformy Azure](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> Zapoznaj się z informacjami o [składni wyrażenia OData dla Azure Search](search-query-odata-syntax-reference.md) , aby uzyskać pełną EBNF.
+> Zapoznaj się z informacjami o [składni wyrażenia OData dla usługi Azure wyszukiwanie poznawcze](search-query-odata-syntax-reference.md) , aby uzyskać pełną EBNF.
 
 **$SELECT** parametr znajduje się w dwóch formach:
 
-1. Pojedyncza gwiazdka`*`(), wskazująca, że wszystkie pola do pobierania powinny być zwracane.
+1. Pojedyncza gwiazdka (`*`), wskazująca, że wszystkie pola do pobierania powinny być zwracane.
 1. Rozdzielana przecinkami lista ścieżek pól, które identyfikują pola, które powinny być zwracane.
 
 W przypadku korzystania z drugiego formularza można określić tylko na liście pola do pobierania.
 
-Jeśli lista zawiera pole złożone bez określania jego pól podrzędnych, wszystkie możliwe do pobierania pola podrzędne zostaną uwzględnione w zestawie wyników zapytania. Załóżmy na przykład `Address` , że indeks zawiera `Street`pola, `City`i `Country` pola podrzędne, które są do pobierania. W przypadku określenia `Address` w **$SELECT**wyniki zapytania będą zawierać wszystkie trzy pola podrzędne.
+Jeśli lista zawiera pole złożone bez określania jego pól podrzędnych, wszystkie możliwe do pobierania pola podrzędne zostaną uwzględnione w zestawie wyników zapytania. Załóżmy na przykład, że indeks zawiera pole `Address` z `Street`, `City`i `Country` pól podrzędnych, które są do pobierania. Jeśli określisz `Address` w **$SELECT**, wyniki zapytania będą zawierać wszystkie trzy pola podrzędne.
 
 ## <a name="examples"></a>Przykłady
 
-`Rating` `Address` `City` Uwzględnij pola `HotelName` ,inajwyższegopoziomuwwynikach,atakżepolapodrzędne:`HotelId`
+Uwzględnij `HotelId`, `HotelName`i `Rating` pola najwyższego poziomu w wynikach, a także `City` podpole `Address`:
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +78,7 @@ Przykładowy wynik może wyglądać następująco:
 }
 ```
 
-`BaseRate` `Address` `Type` Uwzględnij pole `Rooms` najwyższego poziomu w wynikach, a także wszystkie pola podrzędne i i podrzędne pola dla każdego obiektu w kolekcji: `HotelName`
+Uwzględnij `HotelName` pole najwyższego poziomu w wynikach, a także wszystkie pola podrzędne `Address`i `Type` i `BaseRate` podpola każdego obiektu w kolekcji `Rooms`:
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 
@@ -110,7 +110,7 @@ Przykładowy wynik może wyglądać następująco:
 
 ## <a name="next-steps"></a>Następne kroki  
 
-- [Jak korzystać z wyników wyszukiwania w Azure Search](search-pagination-page-layout.md)
-- [Przegląd języka wyrażenia OData dla Azure Search](query-odata-filter-orderby-syntax.md)
-- [Odwołanie do składni wyrażenia OData dla Azure Search](search-query-odata-syntax-reference.md)
-- [Wyszukaj dokumenty &#40;Azure Search interfejs API REST usługi&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Jak korzystać z wyników wyszukiwania w usłudze Azure Wyszukiwanie poznawcze](search-pagination-page-layout.md)
+- [Omówienie języka wyrażeń OData dla platformy Azure Wyszukiwanie poznawcze](query-odata-filter-orderby-syntax.md)
+- [Dokumentacja składni wyrażenia OData dla usługi Azure Wyszukiwanie poznawcze](search-query-odata-syntax-reference.md)
+- [Wyszukaj dokumenty &#40;w interfejsie API REST usługi Azure wyszukiwanie poznawcze&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

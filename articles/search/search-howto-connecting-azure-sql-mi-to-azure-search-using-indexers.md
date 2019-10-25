@@ -1,22 +1,23 @@
 ---
-title: Połączenie wystąpienia zarządzanego usługi Azure SQL na potrzeby indeksowania wyszukiwania — Azure Search
-description: Włącz publiczny punkt końcowy, aby zezwolić na połączenia z wystąpieniami zarządzanymi SQL z indeksatora na Azure Search.
-author: vl8163264128
+title: Połączenie wystąpienia zarządzanego usługi Azure SQL na potrzeby indeksowania wyszukiwania
+titleSuffix: Azure Cognitive Search
+description: Włącz publiczny punkt końcowy, aby zezwalać na połączenia z wystąpieniami zarządzanymi SQL z indeksatora na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/01/2019
+author: vl8163264128
 ms.author: victliu
-ms.openlocfilehash: 07bc1a55c0222fda87b28acbaa8bfe552fb8e6ed
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 16daf4a79252134703715ccd88f0b10dda7f4fa6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186676"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792167"
 ---
-# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-managed-instance"></a>Konfigurowanie połączenia z indeksatora Azure Search do wystąpienia zarządzanego SQL
-Jak zostało to opisane w temacie [łączenie Azure SQL Database Azure Search za pomocą indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), tworzenie indeksatorów z **wystąpieniami zarządzanymi SQL** jest obsługiwane przez Azure Search za pośrednictwem publicznego punktu końcowego.
+# <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Skonfiguruj połączenie z usługą Azure Wyszukiwanie poznawcze indeksator do wystąpienia zarządzanego SQL
+
+Jak zostało to opisane w temacie [łączenie Azure SQL Database z platformą azure wyszukiwanie poznawcze przy użyciu indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), tworzenie indeksatorów z **wystąpieniami zarządzanymi SQL** jest obsługiwane przez usługę Azure wyszukiwanie poznawcze za pośrednictwem publicznego punktu końcowego.
 
 ## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>Utwórz wystąpienie zarządzane Azure SQL z publicznym punktem końcowym
 Utwórz wystąpienie zarządzane SQL z wybraną opcją **Włącz publiczny punkt końcowy** .
@@ -24,7 +25,7 @@ Utwórz wystąpienie zarządzane SQL z wybraną opcją **Włącz publiczny punkt
    ![Włącz publiczny punkt końcowy](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "Włącz publiczny punkt końcowy")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Włącz publiczny punkt końcowy wystąpienia zarządzanego usługi Azure SQL
-Możesz również włączyć publiczny punkt końcowy na istniejącym wystąpieniu zarządzanym SQL w obszarze **Security** > **Network** > Virtual**Endpoint** > **enable**.
+Możesz również włączyć publiczny punkt końcowy na istniejącym wystąpieniu zarządzanym SQL w obszarze **zabezpieczenia** > **Sieć wirtualna** > **publicznym punkcie końcowym** > **włączyć**.
 
    ![Włącz publiczny punkt końcowy](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Włącz publiczny punkt końcowy")
 
@@ -39,4 +40,4 @@ Upewnij się, że używasz parametrów połączenia dla **publicznego punktu ko�
    ![Parametry połączenia publicznego punktu końcowego](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-connection-string.png "Parametry połączenia publicznego punktu końcowego")
 
 ## <a name="next-steps"></a>Następne kroki
-Za pomocą konfiguracji można teraz określić wystąpienie zarządzane SQL jako źródło danych dla indeksatora Azure Search przy użyciu portalu lub interfejsu API REST. Aby uzyskać więcej informacji [, zobacz łączenie Azure SQL Database do Azure Search za pomocą indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) .
+Za pomocą konfiguracji możesz teraz określić wystąpienie zarządzane SQL jako źródło danych dla indeksatora Wyszukiwanie poznawcze platformy Azure przy użyciu portalu lub interfejsu API REST. Aby uzyskać więcej informacji [, zobacz łączenie Azure SQL Database z usługą Azure wyszukiwanie poznawcze przy użyciu indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) .

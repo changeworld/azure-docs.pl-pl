@@ -10,26 +10,26 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/27/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2069f0161ea2600a62ab123206d0ebe3c00642c3
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 72d9f0c7df12bd6746cd5cf0336e7bd58b6cc88d
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804367"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809041"
 ---
-# <a name="create-an-access-review-of-azure-ad-roles-in-pim"></a>Tworzenie przeglądu dostępu ról usługi Azure AD w usłudze PIM
+# <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Tworzenie przeglądu dostępu do ról usługi Azure AD w Privileged Identity Management
 
-Dostęp do ról uprzywilejowanych usługi Azure AD dla pracowników zmienia się w czasie. Aby zmniejszyć ryzyko związane ze starymi przypisaniami ról, należy regularnie przeglądać dostęp. Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) można tworzyć przeglądy dostępu dla ról uprzywilejowanych usługi Azure AD. Istnieje również możliwość skonfigurowania cyklicznych przeglądów dostępu, które są wykonywane automatycznie.
+Wymagania dotyczące użytkowników w celu uzyskania dostępu do ról uprzywilejowanych Azure Active Directory (Azure AD) mogą ulec zmianie z upływem czasu. Aby zmniejszyć ryzyko związane ze starymi przypisaniami ról, należy regularnie przeglądać dostęp. Możesz użyć Azure AD Privileged Identity Management (PIM), aby utworzyć przeglądy dostępu dla ról uprzywilejowanych usługi Azure AD. Istnieje również możliwość skonfigurowania cyklicznych przeglądów dostępu, które są wykonywane automatycznie.
 
 W tym artykule opisano sposób tworzenia co najmniej jednej oceny dostępu dla uprzywilejowanych ról usługi Azure AD.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>Otwarte przeglądy dostępu
 
@@ -37,19 +37,17 @@ W tym artykule opisano sposób tworzenia co najmniej jednej oceny dostępu dla u
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 
-1. W menu po lewej stronie kliknij pozycję **role usługi Azure AD** , a następnie kliknij pozycję **przeglądy dostępu**.
+1. W menu po lewej stronie wybierz pozycję **role usługi Azure AD** , a następnie wybierz pozycję **przeglądy dostępu**.
 
-1. W obszarze Zarządzanie kliknij pozycję **przeglądy dostępu**.
+1. W obszarze Zarządzaj wybierz pozycję **przeglądy dostępu**.
 
     ![Role usługi Azure AD — lista przeglądów dostępu przedstawiających stan wszystkich przeglądów](./media/pim-how-to-start-security-review/access-reviews.png)
 
-
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
-
 
 ## <a name="start-the-access-review"></a>Rozpocznij przegląd dostępu
 
-Po określeniu ustawień przeglądu dostępu kliknij przycisk **Uruchom**. Przegląd dostępu zostanie wyświetlony na liście ze wskaźnikiem jego stanu.
+Po określeniu ustawień przeglądu dostępu wybierz pozycję **Rozpocznij**. Przegląd dostępu zostanie wyświetlony na liście ze wskaźnikiem jego stanu.
 
 ![Lista przeglądów dostępu pokazująca stan rozpoczęte przeglądy](./media/pim-how-to-start-security-review/access-reviews-list.png)
 

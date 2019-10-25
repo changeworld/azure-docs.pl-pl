@@ -1,5 +1,5 @@
 ---
-title: Dodawanie Azure Active Directory przy użyciu usług połączonych w programie Visual Studio
+title: Dodawanie Azure Active Directory przy użyciu usług połączonych w programie Visual Studio | Azure
 description: Dodawanie Azure Active Directory przy użyciu okna dialogowego Dodawanie usług połączonych programu Visual Studio
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c02821a41faa976f8f35984ecf48f425239e6fd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 04c8b6bfeaabfa20b9b9b884584d40de7f09e9ac
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881177"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802477"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Dodawanie Azure Active Directory przy użyciu usług połączonych w programie Visual Studio
 
@@ -46,7 +46,7 @@ W tej chwili usługa połączona Active Directory nie obsługuje aplikacji ASP.N
 
     ![Strona wprowadzenia](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. Na stronie **Logowanie** jednokrotne wybierz domenę z listy rozwijanej **domena** . Lista zawiera wszystkie domeny dostępne przez konta wymienione w oknie dialogowym Ustawienia konta w programie Visual Studio (**Ustawienia konta > plików...** ). Alternatywnie możesz wprowadzić nazwę domeny, jeśli nie znajdziesz tego, na czym szukasz, na przykład `mydomain.onmicrosoft.com`. Możesz wybrać opcję tworzenia aplikacji Azure Active Directory lub użyć ustawień z istniejącej aplikacji Azure Active Directory. Po zakończeniu wybierz pozycję **dalej** .
+1. Na stronie **Logowanie** jednokrotne wybierz domenę z listy rozwijanej **domena** . Lista zawiera wszystkie domeny dostępne przez konta wymienione w oknie dialogowym Ustawienia konta w programie Visual Studio (**Ustawienia konta > plików...** ). Alternatywnie możesz wprowadzić nazwę domeny, jeśli nie znajdziesz szukanego elementu, na przykład `mydomain.onmicrosoft.com`. Możesz wybrać opcję tworzenia aplikacji Azure Active Directory lub użyć ustawień z istniejącej aplikacji Azure Active Directory. Po zakończeniu wybierz pozycję **dalej** .
 
     ![Strona logowania jednokrotnego](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
@@ -65,7 +65,7 @@ W tej chwili usługa połączona Active Directory nie obsługuje aplikacji ASP.N
 
 1. Na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)można także zobaczyć domenę Active Directory.
 
-## <a name="how-your-project-is-modified"></a>Jak jest modyfikowana projektu
+## <a name="how-your-project-is-modified"></a>Jak projekt jest modyfikowany
 
 Po dodaniu połączonej usługi Kreator programu Visual Studio dodaje Azure Active Directory i skojarzone odwołania do projektu. Pliki konfiguracji i pliki kodu w projekcie są również modyfikowane w celu dodania obsługi usługi Azure AD. Konkretne modyfikacje wprowadzane przez program Visual Studio zależą od typu projektu. Szczegółowe informacje znajdują się w następujących artykułach:
 

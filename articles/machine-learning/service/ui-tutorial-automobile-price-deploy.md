@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: ff3ffe4b68d7b5d74ee3a84ca9c59a13d445f43b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 6f8717f70a2cb03a7fd683cfe61f1198461f4305
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692984"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792674"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą interfejsu wizualnego
 
@@ -40,7 +40,7 @@ Aby można było wdrożyć potok, należy:
 
 1. W górnej części kanwy potoku wybierz pozycję **Utwórz potok wnioskowania**  > **potoku w czasie rzeczywistym**
 
-    W przypadku wybrania opcji **Utwórz potok predykcyjny**następuje kilka rzeczy:
+    Po wybraniu opcji **Utwórz potok wnioskowania**kilka rzeczy zostanie wykonanych:
     
     * Szkolony model jest przechowywany jako moduł **DataSet** w palecie modułów. Można go znaleźć w obszarze **Moje zestawy danych**.
     * Moduły, takie jak **uczenie modelu** i **dane podzielone**, które zostały użyte do szkolenia, są usuwane.
@@ -97,7 +97,7 @@ Po zakończeniu aprowizacji usługi AKS Wróć do potoku inferencing w czasie rz
 
 1. Wybierz pozycję **Wdróż**.
 
-    [! Zrzut ekranu przedstawiający sposób konfigurowania nowego punktu końcowego w czasie rzeczywistym](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+    ![Zrzut ekranu przedstawiający sposób konfigurowania nowego punktu końcowego w czasie rzeczywistym](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
 
     Powiadomienie o powodzeniu nad kanwą zostanie wyświetlone po zakończeniu wdrażania. może to potrwać kilka minut.
 

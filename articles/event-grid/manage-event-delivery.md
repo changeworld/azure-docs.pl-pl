@@ -1,18 +1,18 @@
 ---
-title: Utracony komunikat i zasady ponawiania dla subskrypcji Azure Event Grid
+title: Utracony komunikat i zasady ponawiania — Azure Event Grid
 description: Opisuje sposób dostosowywania opcji dostarczania zdarzeń dla Event Grid. Ustaw miejsce docelowe utraconych wiadomości, a następnie określ, jak długo ma być ponawiane dostarczanie.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/06/2019
+ms.date: 10/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 63bae62ed89bd0bbc167a88274002d1fa1e9b86d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933369"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794036"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Utracony i ponawianie zasad
 
@@ -44,7 +44,7 @@ az eventgrid event-subscription create \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
 ```
 
-Aby wyłączyć obsługę utraconych wiadomości, należy ponownie uruchomić polecenie, aby utworzyć subskrypcję zdarzeń, ale nie podawać wartości `deadletter-endpoint`dla. Nie musisz usuwać subskrypcji zdarzeń.
+Aby wyłączyć obsługę utraconych wiadomości, należy ponownie uruchomić polecenie, aby utworzyć subskrypcję zdarzeń, ale nie podawać wartości `deadletter-endpoint`. Nie musisz usuwać subskrypcji zdarzeń.
 
 > [!NOTE]
 > Jeśli używasz interfejsu wiersza polecenia platformy Azure na komputerze lokalnym, powinien on być w wersji co najmniej 2.0.56. Aby uzyskać instrukcje na temat instalowania najnowszej wersji interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
@@ -64,7 +64,7 @@ New-AzEventGridSubscription `
   -DeadLetterEndpoint "$storageid/blobServices/default/containers/$containername"
 ```
 
-Aby wyłączyć obsługę utraconych wiadomości, należy ponownie uruchomić polecenie, aby utworzyć subskrypcję zdarzeń, ale nie podawać wartości `DeadLetterEndpoint`dla. Nie musisz usuwać subskrypcji zdarzeń.
+Aby wyłączyć obsługę utraconych wiadomości, należy ponownie uruchomić polecenie, aby utworzyć subskrypcję zdarzeń, ale nie podawać wartości `DeadLetterEndpoint`. Nie musisz usuwać subskrypcji zdarzeń.
 
 > [!NOTE]
 > Jeśli używasz usługi Azure PowerShell na komputerze lokalnym, użyj Azure PowerShell w wersji 1.1.0 lub nowszej. Pobierz i zainstaluj najnowszą Azure PowerShell z [usługi Azure downloads](https://azure.microsoft.com/downloads/).
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Po ustawieniu obu tych `event-ttl` opcji `max-deliver-attempts`i, Event Grid używa pierwszej do wygaśnięcia, aby określić, kiedy należy zatrzymać dostarczanie zdarzeń.
+Jeśli ustawisz oba `event-ttl` i `max-deliver-attempts`, Event Grid korzysta z pierwszej do wygaśnięcia, aby określić, kiedy należy zatrzymać dostarczanie zdarzeń.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -127,11 +127,11 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Po ustawieniu obu tych `EventTtl` opcji `MaxDeliveryAttempt`i, Event Grid używa pierwszej do wygaśnięcia, aby określić, kiedy należy zatrzymać dostarczanie zdarzeń.
+Jeśli ustawisz oba `EventTtl` i `MaxDeliveryAttempt`, Event Grid korzysta z pierwszej do wygaśnięcia, aby określić, kiedy należy zatrzymać dostarczanie zdarzeń.
 
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z przykładową aplikacją, która używa aplikacji funkcji platformy Azure do przetwarzania zdarzeń utraconych wiadomości, zobacz [Azure Event Grid utraconych próbek dla platformy .NET](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/).
-* Informacje o dostarczanie zdarzeń i ponownych prób [dostarczanie komunikatów usługi Event Grid i ponów próbę](delivery-and-retry.md).
+* Aby uzyskać informacje dotyczące dostarczania i ponawiania zdarzeń, [Event Grid dostarczania komunikatów i ponawiania próby](delivery-and-retry.md).
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
-* Aby szybko rozpocząć pracę, przy użyciu usługi Event Grid, zobacz [Utwórz i wyznaczać trasy zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).
+* Aby szybko rozpocząć korzystanie z Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych z Azure Event Grid](custom-event-quickstart.md).

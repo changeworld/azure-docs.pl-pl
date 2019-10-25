@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 952bcb85484e885d45876de1e4cf3326db0a146a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: 2aebcf05cbc818997943ed3bab19fb1fd8a83592
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693391"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786061"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z Update Management
 
@@ -163,7 +163,7 @@ Windows Update mogą być modyfikowane przez kilka kluczy rejestru, z których k
 
 ### <a name="resolution"></a>Rozdzielczość
 
-Zapoznaj się z kluczami rejestru wymienionymi w obszarze [Konfigurowanie aktualizacji automatycznych, edytując rejestr](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-rej7uijui7jgistry) i [klucze rejestru używane do zarządzania ponownym uruchomieniem](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) , aby upewnić się, że maszyny są prawidłowo skonfigurowane.
+Zapoznaj się z kluczami rejestru wymienionymi w obszarze [Konfigurowanie aktualizacji automatycznych, edytując rejestr](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) i [klucze rejestru używane do zarządzania ponownym uruchomieniem](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) , aby upewnić się, że maszyny są prawidłowo skonfigurowane.
 
 ## <a name="failed-to-start"></a>Scenariusz: na komputerze nie można uruchomić programu w ramach wdrożenia aktualizacji
 
@@ -334,7 +334,7 @@ Możesz również pobrać i uruchomić narzędzie do [rozwiązywania problemów 
 > [!NOTE]
 > Dokumentacja [Windows Update narzędzia do rozwiązywania problemów](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) wskazuje, że jest ona używana na klientach z systemem Windows, ale działa również w systemie Windows Server.
 
-## <a name="scenario-update-run-returns-failed-status"></a>Scenariusz: przebieg aktualizacji zwraca stan "Niepowodzenie"
+## <a name="scenario-update-run-returns-failed-status-linux"></a>Scenariusz: przebieg aktualizacji zwraca stan "Niepowodzenie" (system Linux)
 
 ### <a name="issue"></a>Problem
 
@@ -367,7 +367,7 @@ Jeśli nie możesz rozwiązać problemu z poprawkami, Utwórz kopię następują
 ### <a name="machines-dont-install-updates"></a>Maszyny nie instalują aktualizacji
 
 * Spróbuj uruchomić aktualizacje bezpośrednio na maszynie. Jeśli na komputerze nie można zastosować aktualizacji, zapoznaj się z [listą potencjalnych błędów w przewodniku rozwiązywania problemów](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult).
-* Jeśli aktualizacje są uruchamiane lokalnie, spróbuj usunąć i ponownie zainstalować agenta na komputerze, postępując zgodnie ze wskazówkami w temacie [usuwanie maszyny wirtualnej z Update Management](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-from-update-management).
+* Jeśli aktualizacje są uruchamiane lokalnie, spróbuj usunąć i ponownie zainstalować agenta na komputerze, postępując zgodnie ze wskazówkami w temacie [usuwanie maszyny wirtualnej z Update Management](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources).
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Wiemy, że aktualizacje są dostępne, ale nie są wyświetlane jako dostępne na moich maszynach
 

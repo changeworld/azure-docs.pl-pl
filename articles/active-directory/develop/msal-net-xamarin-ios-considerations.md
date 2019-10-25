@@ -1,5 +1,6 @@
 ---
-title: Uwagi dotyczące platformy Xamarin iOS (Microsoft Authentication Library for .NET) | Azure
+title: Uwagi dotyczące platformy Xamarin iOS (Microsoft Authentication Library for .NET)
+titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących korzystania z platformy Xamarin iOS z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,18 +18,18 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 054033c0fc9f1138ef9ecf7eaceca626f6f53423
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 64524960e584907b1e761a36f8ceb1461a7771c7
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872845"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802611"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Uwagi dotyczące platformy Xamarin dla systemu iOS z usługą MSAL.NET
 W oprogramowaniu Xamarin iOS istnieje kilka kwestii, które należy wziąć pod uwagę podczas korzystania z usługi MSAL.NET
 
 - [Znane problemy z systemem iOS 12 i uwierzytelnianiem](#known-issues-with-ios-12-and-authentication)
-- [Przesłoń i zaimplementuj `OpenUrl` funkcję w`AppDelegate`](#implement-openurl)
+- [Przesłoń i zaimplementuj funkcję `OpenUrl` w `AppDelegate`](#implement-openurl)
 - [Włącz grupy pęku kluczy](#enable-keychain-access)
 - [Włącz udostępnianie pamięci podręcznej tokenu](#enable-token-cache-sharing-across-ios-applications)
 - [Włącz dostęp do łańcucha kluczy](#enable-keychain-access)
@@ -42,7 +43,7 @@ Możesz również zobaczyć przerwy w ASP.NET Core OIDC uwierzytelniania z syste
 
 ## <a name="implement-openurl"></a>Implementuj OpenUrl
 
-Najpierw należy zastąpić `OpenUrl` metodę `FormsApplicationDelegate` klasy pochodnej i wywołania `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`.
+Najpierw należy zastąpić metodę `OpenUrl` klasy pochodnej `FormsApplicationDelegate` i `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`wywoływania.
 
 ```CSharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -57,9 +58,9 @@ Musisz również zdefiniować schemat adresu URL, wymagać uprawnień aplikacji 
 ### <a name="enable-keychain-access"></a>Włącz dostęp do łańcucha kluczy
 
 Aby włączyć dostęp do łańcucha kluczy, aplikacja musi mieć grupę dostępu łańcucha kluczy.
-Grupę dostępu łańcucha kluczy można skonfigurować przy użyciu `WithIosKeychainSecurityGroup()` interfejsu API podczas tworzenia aplikacji, jak pokazano poniżej:
+Grupę dostępu łańcucha kluczy można skonfigurować przy użyciu interfejsu API `WithIosKeychainSecurityGroup()` podczas tworzenia aplikacji, jak pokazano poniżej:
 
-Aby włączyć logowanie jednokrotne, należy ustawić `PublicClientApplication.iOSKeychainSecurityGroup` właściwość na taką samą wartość we wszystkich aplikacjach.
+Aby włączyć logowanie jednokrotne, należy ustawić właściwość `PublicClientApplication.iOSKeychainSecurityGroup` na taką samą wartość we wszystkich aplikacjach.
 
 Przykładem tego użycia jest MSAL v3. x:
 ```csharp
@@ -71,7 +72,7 @@ var builder = PublicClientApplicationBuilder
 
 Uprawnienia. plist należy zaktualizować tak, aby wyglądały jak w poniższym fragmencie kodu XML:
 
-Ta zmiana stanowi *uzupełnienie* dostępu do łańcucha kluczy w `Entitlements.plist` pliku przy użyciu poniższej grupy dostępu lub własnego:
+Ta zmiana stanowi *uzupełnienie* dostępu do łańcucha kluczy w pliku `Entitlements.plist` przy użyciu poniższej grupy dostępu lub własnego:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -92,7 +93,7 @@ Przykładem tego użycia jest MSAL v4. x:
 PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
 ```
 
-Gdy korzystasz `WithIosKeychainSecurityGroup()` z interfejsu API, MSAL automatycznie dołączy grupę zabezpieczeń na końcu "Identyfikator zespołu" (AppIdentifierPrefix) aplikacji, ponieważ podczas kompilowania aplikacji przy użyciu Xcode zostanie ona taka sama. [Więcej informacji można znaleźć w dokumentacji dotyczącej uprawnień systemu iOS](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). Dlatego należy zaktualizować uprawnienia w celu uwzględnienia $ (AppIdentifierPrefix) przed grupą dostępu pęku kluczy w uprawnieniach. plist.
+Gdy korzystasz z interfejsu API `WithIosKeychainSecurityGroup()`, MSAL automatycznie dołączy grupę zabezpieczeń na końcu "Identyfikator zespołu" aplikacji (AppIdentifierPrefix), ponieważ w przypadku kompilowania aplikacji przy użyciu Xcode będzie ona taka sama. [Więcej informacji można znaleźć w dokumentacji dotyczącej uprawnień systemu iOS](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). Dlatego należy zaktualizować uprawnienia w celu uwzględnienia $ (AppIdentifierPrefix) przed grupą dostępu pęku kluczy w uprawnieniach. plist.
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Włączanie udostępniania pamięci podręcznej tokenów w aplikacjach dla systemu iOS
 
@@ -102,15 +103,15 @@ Udostępnianie pamięci podręcznej tokenów umożliwia logowanie jednokrotne mi
 
 Aby włączyć udostępnianie pamięci podręcznej, należy ustawić metodę Użyj metody "WithIosKeychainSecurityGroup ()", aby ustawić grupę dostępu łańcucha kluczy na taką samą wartość we wszystkich aplikacjach korzystających z tej samej pamięci podręcznej, jak pokazano w powyższym przykładzie.
 
-Wcześniej stwierdzono, że MSAL dodaliśmy $ (AppIdentifierPrefix) za każdym razem, gdy korzystasz z `WithIosKeychainSecurityGroup()` interfejsu API. Wynika to z faktu, że AppIdentifierPrefix lub "Identyfikator zespołu" służy do zapewnienia, że tylko aplikacje wykonane przez tego samego wydawcę mogą udostępniać dostęp do łańcucha kluczy.
+Wcześniej stwierdzono, że MSAL dodaliśmy $ (AppIdentifierPrefix) przy każdym użyciu interfejsu API `WithIosKeychainSecurityGroup()`. Wynika to z faktu, że AppIdentifierPrefix lub "Identyfikator zespołu" służy do zapewnienia, że tylko aplikacje wykonane przez tego samego wydawcę mogą udostępniać dostęp do łańcucha kluczy.
 
 > [!NOTE]
-> **`KeychainSecurityGroup` Właściwość jest przestarzała.**
+> **Właściwość `KeychainSecurityGroup` jest przestarzała.**
 > 
-> Wcześniej, od MSAL 2. x, deweloperzy byli zmuszeni do uwzględnienia prefiksu użytkownika przy użyciu `KeychainSecurityGroup` właściwości.
+> Wcześniej, od MSAL 2. x, deweloperzy byli zmuszeni do uwzględnienia prefiksu użytkownika przy użyciu właściwości `KeychainSecurityGroup`.
 >
->  W MSAL 2.7. x, gdy jest używana nowa `iOSKeychainSecurityGroup` właściwość, MSAL rozwiąże prefiks użytkownika w czasie wykonywania. W przypadku używania tej właściwości wartość nie powinna zawierać prefiksu użytkownika.
->  Użyj nowej `iOSKeychainSecurityGroup` właściwości, która nie wymaga podania użytkownika, ponieważ Poprzednia `KeychainSecurityGroup` właściwość jest już przestarzała.
+>  W MSAL 2.7. x przy użyciu nowej właściwości `iOSKeychainSecurityGroup` MSAL rozpozna prefiks użytkownika w czasie wykonywania. W przypadku używania tej właściwości wartość nie powinna zawierać prefiksu użytkownika.
+>  Użyj nowej właściwości `iOSKeychainSecurityGroup`, która nie wymaga podania użytkownika, ponieważ Poprzednia Właściwość `KeychainSecurityGroup` jest już przestarzała.
 
 ### <a name="use-microsoft-authenticator"></a>Użyj Microsoft Authenticator
 
@@ -126,7 +127,7 @@ Aby uzyskać szczegółowe informacje na temat włączania brokera, zobacz [uży
 
 Więcej szczegółowych informacji znajduje się w ustępie [uwagi dotyczące określonych zagadnień dotyczących systemu iOS](https://github.com/azure-samples/active-directory-xamarin-native-v2#ios-specific-considerations) w następującym przykładowym pliku Readme.MD:
 
-Próbka | Platforma | Opis
+Przykład | Platforma | Opis
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, platformy UWP | Prosta aplikacja interfejsu Xamarin Forms, która przedstawia, jak używać MSAL do uwierzytelniania kont MSA i Azure AD za pośrednictwem punktu końcowego usługi Azure AD V 2.0, a następnie uzyskiwać dostęp do Microsoft Graph przy użyciu tokenu z wynikiem.
 

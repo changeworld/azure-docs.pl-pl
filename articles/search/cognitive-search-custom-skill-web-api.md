@@ -1,24 +1,23 @@
 ---
-title: Niestandardowa umiejętność wyszukiwania poznawczego — Azure Search
-description: Zwiększaj możliwości umiejętności wyszukiwania poznawczego, wywołując do interfejsów API sieci Web
-services: search
+title: Niestandardowa umiejętność interfejsu API sieci Web w potoku wzbogacania
+titleSuffix: Azure Cognitive Search
+description: Zwiększaj możliwości usługi Azure Wyszukiwanie poznawcze umiejętności, wywołując do interfejsów API sieci Web. Za pomocą niestandardowej funkcji interfejsu API sieci Web Zintegruj swój kod niestandardowy.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a148f974671e0d909591cbf24a433384a7570842
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 54c51993733091d326c59c4ac4ec3662cc704021
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693290"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784904"
 ---
-# <a name="custom-web-api-skill"></a>Niestandardowa umiejętność interfejsu API sieci Web
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Niestandardowa umiejętność interfejsu API sieci Web w potoku wzbogacenia Wyszukiwanie poznawcze platformy Azure
 
-Niestandardowa umiejętność **interfejsu API sieci Web** umożliwia przeprowadzenie wyszukiwania poznawczego przez wywoływanie do punktu końcowego interfejsu API sieci Web dostarczającego operacje niestandardowe. Podobnie jak w przypadku wbudowanych umiejętności, **niestandardowa umiejętność interfejsu API sieci Web** ma dane wejściowe i wyjściowe. W zależności od danych wejściowych internetowy interfejs API odbiera ładunek JSON podczas uruchamiania indeksatora i wyprowadza ładunek JSON jako odpowiedź wraz z kodem stanu sukcesu. Oczekiwano, że odpowiedź będzie miała dane wyjściowe określone przez niestandardową umiejętność. Jakakolwiek inna odpowiedź jest traktowana jako błąd i nie są wykonywane żadne wzbogacania.
+Niestandardowa umiejętność **interfejsu API sieci Web** umożliwia zwiększenie wzbogacenia AI przez wywołanie do punktu końcowego internetowego interfejsu API dostarczającego operacje niestandardowe. Podobnie jak w przypadku wbudowanych umiejętności, **niestandardowa umiejętność interfejsu API sieci Web** ma dane wejściowe i wyjściowe. W zależności od danych wejściowych internetowy interfejs API odbiera ładunek JSON podczas uruchamiania indeksatora i wyprowadza ładunek JSON jako odpowiedź wraz z kodem stanu sukcesu. Oczekiwano, że odpowiedź będzie miała dane wyjściowe określone przez niestandardową umiejętność. Jakakolwiek inna odpowiedź jest traktowana jako błąd i nie są wykonywane żadne wzbogacania.
 
 Struktura ładunków JSON została opisana w dalszej części tego dokumentu.
 
@@ -204,5 +203,5 @@ W przypadku niedostępności internetowego interfejsu API lub zwrócenie błędu
 
 + [Umiejętności dotyczące oszczędzania mocy: repozytorium umiejętności niestandardowych](https://aka.ms/powerskills)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
-+ [Dodaj niestandardową umiejętność wyszukiwania poznawczego](cognitive-search-custom-skill-interface.md)
-+ [Przykład: Tworzenie niestandardowej umiejętności dla wyszukiwania poznawczego](cognitive-search-create-custom-skill-example.md)
++ [Dodaj niestandardową umiejętność do potoku wzbogacania AI](cognitive-search-custom-skill-interface.md)
++ [Przykład: Tworzenie niestandardowej umiejętności dla wzbogacania AI (poznawcze — wyszukiwanie-tworzenie-niestandardowe-umiejętność-example.md)

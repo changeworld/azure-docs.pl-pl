@@ -14,18 +14,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 9ec8e2df8befa28fc023edb30889f177b60939f9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015046"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792585"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Formaty Media Encoder Premium Workflow i kodeki
 
 > [!NOTE]
-> Aby uzyskać odpowiedzi na pytania dotyczące mepd@microsoft.comkodera Premium, Wyślij wiadomość e-mail.
-> 
 > Procesor multimediów Media Encoder Premium Workflow omawiany w tym temacie nie jest dostępny w Chinach. 
 
 Ten dokument zawiera listę formatów plików wejściowych i wyjściowych oraz kodeków, które są obsługiwane przez publiczną wersję zapoznawczą kodera **Media Encoder Premium Workflow** .
@@ -55,7 +53,7 @@ W poniższej sekcji przedstawiono kodery-dekoder i formaty plików obsługiwane 
 
 * AVC 8-bitowy/10-bitowy, do 4:2:2, włącznie z AVCIntra
 * Avid DNxHD (w MXF)
-* DVCPro/DVCProHD (in MXF)
+* DVCPro/DVCProHD (w MXF)
 * HEVC/H. 265, główny i główny 10 profil
 * JPEG2000
 * MPEG-2 (do 422 profilu i wysokiego poziomu), w tym różne warianty, takie jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® i D10)
@@ -93,14 +91,12 @@ W poniższej sekcji przedstawiono kodery-dekoder i formaty plików, które są o
 
 * AVC (H. 264; 8-bitowy; maksymalnie wysoki profil, poziom 5,2; 4K Ultra HD; AVC — Intra)
 * Avid DNxHD (w MXF)
-* DVCPro/DVCProHD (in MXF)
+* DVCPro/DVCProHD (w MXF)
 * MPEG-2 (do 422 profilu i wysokiego poziomu), w tym różne warianty, takie jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® i D10)
 * MPEG-1
 * Windows Media Video/VC-1
 * Tworzenie miniatur JPEG
 * HEVC (H. 265; 8 bitów i 10 bitów, główny i główny 10 profilów)
-
-  W niektórych scenariuszach jest dostępna obsługa HDR 10. Aby uzyskać więcej mepd@microsoft.com informacji, skontaktuj się z nami.
 
 
 ### <a name="output-audio-codecs"></a>Wyjściowe kodery-dekoder audio
@@ -141,11 +137,14 @@ W przypadku danych wyjściowych dostępne są następujące opcje:
 
 Jeśli wejściowy film wideo nie zawiera napisów kodowanych, element zawartości wyjściowej nadal będzie zawierał pusty plik TTML. 
 
+## <a name="need-help"></a>Potrzebujesz pomocy?
+
+Możesz otworzyć bilet pomocy technicznej, przechodząc do [nowego żądania obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: c75db8d1885c8680dd316952a5f67e11dc26edb1
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 53b53fa5185ade87dfdd21f0805641657d49d676
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949795"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800214"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>Nawiązywanie połączenia z interfejsami API i uwierzytelnianie przy użyciu
 
@@ -24,7 +24,7 @@ Aby zapoznać się z omówieniem usługi Azure AD, odwiedź [stronę podstawy](h
 > [!TIP]
 > Postępuj zgodnie z [samouczkiem](tutorial-facilities-setup.md) , aby skonfigurować i uruchomić przykładową aplikację usługi Azure Digital bliźniaczych reprezentacji.
 
-Aby zintegrować aplikację lub usługę z usługą Azure AD, Deweloper musi najpierw zarejestrować aplikację w usłudze Azure AD. Szczegółowe instrukcje i zrzuty ekranu znajdują się w [tym przewodniku szybki start](../active-directory/develop/quickstart-register-app.md).
+Aby zintegrować aplikację lub usługę z usługą Azure AD, deweloper musi najpierw zarejestrować aplikację w usłudze Azure AD. Szczegółowe instrukcje i zrzuty ekranu znajdują się w [tym przewodniku szybki start](../active-directory/develop/quickstart-register-app.md).
 
 Usługa Azure AD obsługuje [pięć scenariuszy aplikacji podstawowych](../active-directory/develop/v2-app-types.md) :
 
@@ -49,7 +49,7 @@ Gdy deweloperzy korzystają z rozwiązań bliźniaczych reprezentacji Digital, z
 
 1. Uzyskany token jest następnie używany do uwierzytelniania za pomocą lub wywoływania interfejsów API, które są w pełni podrzędne przy użyciu przepływu.
 
-Aby uzyskać instrukcje dotyczące sposobu organizowania przepływu w imieniu, zobacz [uwierzytelnianie OAuth 2,0 w imieniu użytkownika](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Możesz również wyświetlić przykłady kodu w [wywołaniu podrzędnego interfejsu API sieci Web](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
+Aby uzyskać instrukcje dotyczące sposobu organizowania przepływu w imieniu, zobacz [uwierzytelnianie OAuth 2,0 w imieniu użytkownika](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Możesz również wyświetlić przykłady kodu w [wywołaniu podrzędnego interfejsu API sieci Web](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
 
 ## <a name="next-steps"></a>Następne kroki
 

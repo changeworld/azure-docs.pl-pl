@@ -1,5 +1,6 @@
 ---
-title: Aplikacja mobilna, która wywołuje interfejsy API sieci Web — Omówienie | Platforma tożsamości firmy Microsoft
+title: Aplikacja mobilna, która wywołuje interfejsy API sieci Web — Omówienie
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć aplikację mobilną wywołującą interfejsy API sieci Web (omówienie)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,14 +17,14 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f67f063ab374dec8bac3905ea46f1dfa9d8ed1fb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 98f05470a07bad82a1e51517a787fb98c78f92ce
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852606"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803743"
 ---
-# <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenariusz: Aplikacja mobilna, która wywołuje interfejsy API sieci Web
+# <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenariusz: aplikacja mobilna, która wywołuje interfejsy API sieci Web
 
 Dowiedz się, co musisz wiedzieć, aby utworzyć aplikację mobilną, która wywołuje interfejsy API sieci Web.
 
@@ -36,13 +37,13 @@ Dowiedz się, co musisz wiedzieć, aby utworzyć aplikację mobilną, która wyw
 Utwórz pierwszą aplikację mobilną i wypróbuj Przewodnik Szybki Start.
 
 > [!div class="nextstepaction"]
-> [Szybki start: Uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z poziomu aplikacji systemu Android](./quickstart-v2-android.md)
+> [Szybki Start: uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z poziomu aplikacji systemu Android](./quickstart-v2-android.md)
 >
-> [Szybki start: Uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z poziomu aplikacji systemu iOS](./quickstart-v2-ios.md)
+> [Szybki Start: uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z poziomu aplikacji systemu iOS](./quickstart-v2-ios.md)
 >
-> [Szybki start: Uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z aplikacji platformy Xamarin dla systemu iOS & systemu Android](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+> [Szybki Start: uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z aplikacji platformy Xamarin dla systemu iOS &](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Spersonalizowane, bezproblemowe środowisko użytkownika jest niezbędne dla aplikacji mobilnych.  Platforma tożsamości firmy Microsoft umożliwia deweloperom mobilnym tworzenie tego środowiska dla użytkowników systemów iOS i Android. Twoja aplikacja może logować się Azure Active Directory użytkowników (usługi Azure AD), użytkowników prywatnych konto Microsoft i Azure AD B2C użytkowników oraz uzyskiwać tokeny do wywoływania interfejsu API sieci Web w ich imieniu. Aby zaimplementować te przepływy, będziemy używać biblioteki Microsoft Authentication Library (MSAL), która implementuje [przepływ kodu autoryzacji standardu OAuth 2.0](v2-oauth2-auth-code-flow.md).
 
@@ -50,9 +51,9 @@ Spersonalizowane, bezproblemowe środowisko użytkownika jest niezbędne dla apl
 
 Zagadnienia dotyczące aplikacji mobilnych:
 
-- **Środowisko użytkownika jest kluczem**: Zezwól użytkownikom na wyświetlanie wartości aplikacji przed zapytaniem o zalogowanie się i zażądaj tylko wymaganych uprawnień.
-- **Obsługa wszystkich konfiguracji użytkowników**: Wielu użytkowników aplikacji mobilnych ma dostęp warunkowy i zasady zgodności urządzeń. Upewnij się, że te kluczowe scenariusze są obsługiwane.
-- Zaimplementuj Logowanie jednokrotne **(SSO)** : Platforma MSAL i Microsoft Identity platform umożliwiają włączenie logowania jednokrotnego przy użyciu przeglądarki urządzenia lub Microsoft Authenticator (i Intune — Portal firmy w systemie Android).
+- **Środowisko użytkownika jest kluczem**: zezwól użytkownikom na wyświetlanie wartości aplikacji przed pytaniem o logowanie i Żądaj tylko wymaganych uprawnień.
+- **Obsługa wszystkich konfiguracji użytkowników**: wielu użytkowników pracujących na urządzeniach przenośnych jest objętych zasadami dostępu warunkowego i zasad zgodności urządzeń. Upewnij się, że te kluczowe scenariusze są obsługiwane.
+- Zaimplementuj Logowanie jednokrotne **(SSO)** : MSAL i Microsoft Identity platform umożliwiają łatwe logowanie jednokrotne za pomocą przeglądarki urządzenia lub Microsoft Authenticator (i Intune — portal firmy w systemie Android).
 
 ## <a name="specifics"></a>Szczegółowych informacji
 

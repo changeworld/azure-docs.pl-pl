@@ -1,26 +1,25 @@
 ---
-title: Tworzenie definicji indeksu i koncepcji — Azure Search
-description: Wprowadzenie do indeksowania terminów i koncepcji w Azure Search, w tym części składników i struktury fizycznej.
-author: HeidiSteen
+title: Tworzenie definicji indeksu i koncepcji
+titleSuffix: Azure Cognitive Search
+description: Wprowadzenie do indeksowania terminów i koncepcji na platformie Azure Wyszukiwanie poznawcze, w tym części składników i struktury fizycznej.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 11/04/2019
+ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69647367"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794212"
 ---
-# <a name="create-a-basic-index-in-azure-search"></a>Tworzenie indeksu podstawowego w Azure Search
+# <a name="create-a-basic-index-in-azure-cognitive-search"></a>Tworzenie podstawowego indeksu na platformie Azure Wyszukiwanie poznawcze
 
-W Azure Search *indeks* jest trwałym magazynem *dokumentów* i innych konstrukcji używanych do przeszukiwania i wyszukiwania pełnotekstowego w usłudze Azure Search. Koncepcyjnie dokument jest pojedynczą jednostką danych, które można przeszukiwać w indeksie. Na przykład sklep internetowy może mieć dokument dla każdego sprzedawanego produktu, a organizacja medialna — dla każdego artykułu itp. W przełożeniu na lepiej znane pojęcia bazodanowe: *indeks* jest podobny do *tabeli*, a *dokumenty* są w przybliżeniu równe *wierszom* w tabeli.
+Na platformie Azure Wyszukiwanie poznawcze *indeks* jest trwałym magazynem *dokumentów* i innych konstrukcji używanych do przeszukiwania i wyszukiwania pełnotekstowego w usłudze Azure wyszukiwanie poznawcze. Koncepcyjnie dokument jest pojedynczą jednostką danych, które można przeszukiwać w indeksie. Na przykład sklep internetowy może mieć dokument dla każdego sprzedawanego produktu, a organizacja medialna — dla każdego artykułu itp. W przełożeniu na lepiej znane pojęcia bazodanowe: *indeks* jest podobny do *tabeli*, a *dokumenty* są w przybliżeniu równe *wierszom* w tabeli.
 
-Gdy dodajesz lub przekażesz indeks, Azure Search tworzy struktury fizyczne na podstawie udostępnianego schematu. Na przykład, jeśli pole w indeksie jest oznaczone jako kryterium wyszukiwania, dla tego pola jest tworzony odwrócony indeks. Później, podczas dodawania lub przekazywania dokumentów lub przesyłania zapytań wyszukiwania do Azure Search, wysyłane są żądania do określonego indeksu w usłudze wyszukiwania. Ładowanie pól z wartościami dokumentu jest nazywane *indeksowaniem* lub pozyskiwaniem danych.
+Gdy dodajesz lub przekażesz indeks, platforma Azure Wyszukiwanie poznawcze tworzy struktury fizyczne na podstawie udostępnianego schematu. Na przykład, jeśli pole w indeksie jest oznaczone jako kryterium wyszukiwania, dla tego pola jest tworzony odwrócony indeks. Później podczas dodawania lub przekazywania dokumentów lub przesyłania zapytań wyszukiwania do usługi Azure Wyszukiwanie poznawcze wysyłane są żądania do określonego indeksu w usłudze wyszukiwania. Ładowanie pól z wartościami dokumentu jest nazywane *indeksowaniem* lub pozyskiwaniem danych.
 
 Indeks można utworzyć w portalu, [interfejsie API REST](search-create-index-rest-api.md)lub w [zestawie SDK platformy .NET](search-create-index-dotnet.md).
 
@@ -40,7 +39,7 @@ Docieranie do właściwego projektu indeksu jest zazwyczaj realizowane przez wie
 
    W tym momencie przełączasz się na podejście oparte na kodzie. Portal nie jest dobrze dostosowany do iteracji, ponieważ nie można edytować indeksu, który został już utworzony. Można jednak użyć elementu Poster i REST dla pozostałych zadań.
 
-4. [Załaduj swój indeks z danymi](search-what-is-data-import.md). Azure Search akceptuje dokumenty JSON. Aby programowo załadować dane, można użyć programu Poster z dokumentami JSON w ładunku żądania. Jeśli dane nie są łatwo wyrażone w formacie JSON, ten krok będzie najbardziej pracochłonny.
+4. [Załaduj swój indeks z danymi](search-what-is-data-import.md). Usługa Azure Wyszukiwanie poznawcze akceptuje dokumenty JSON. Aby programowo załadować dane, można użyć programu Poster z dokumentami JSON w ładunku żądania. Jeśli dane nie są łatwo wyrażone w formacie JSON, ten krok będzie najbardziej pracochłonny.
 
 5. Zbadaj swój indeks, sprawdź wyniki i wykonaj kolejne iteracje na schemacie indeksu do momentu rozpoczęcia wyświetlania oczekiwanych wyników. Aby zbadać indeks, można użyć [**Eksploratora wyszukiwania**](search-explorer.md) lub programu Poster.
 
@@ -52,7 +51,7 @@ Nie zaleca się tworzenia kodu, a nie podejścia do portalu. Jeśli korzystasz z
 
 ## <a name="components-of-an-index"></a>Składniki indeksu
 
-Azure Search indeks składa się z następujących elementów. 
+W sposób schematyczny indeks Wyszukiwanie poznawcze platformy Azure składa się z następujących elementów. 
 
 [*Kolekcja Fields*](#fields-collection) jest zwykle największą częścią indeksu, gdzie każde pole ma nazwę, wpisano i jest przypisane do dozwolonych zachowań, które określają sposób ich używania. Inne elementy obejmują [sugestie](#suggesters), [Profile oceniania](#scoring-profiles), [analizatory](#analyzers) ze składnikami składników do obsługi opcji dostosowywania, [CORS](#cors) i [klucza szyfrowania](#encryption-key) .
 
@@ -157,7 +156,7 @@ W trakcie definiowania schematu musisz określić nazwę, typ i atrybuty każdeg
 | *Edm.DateTimeOffset* |Wartości daty i godziny reprezentowane w formacie OData v4 (na przykład `yyyy-MM-ddTHH:mm:ss.fffZ` lub `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
 | *Edm.GeographyPoint* |Punkt przedstawiający lokalizację geograficzną na świecie. |
 
-Dowiedz się więcej na temat [typów danych obsługiwanych przez usługę Azure Search w tym miejscu](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
+Więcej szczegółowych informacji na temat [obsługiwanych typów danych](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)platformy Azure wyszukiwanie poznawcze można znaleźć tutaj.
 
 ### <a name="index-attributes"></a>Atrybuty indeksu
 
@@ -190,7 +189,7 @@ Chociaż te warianty indeksów są sztuczne, możemy odnieść się do nich w ce
 Indeksy obsługujące filtrowanie i sortowanie są proporcjonalnie większe niż indeksy obsługujące pełne wyszukiwanie tekstu. Przyczyną jest to, że zapytania filtru i sortowania dotyczące dokładnych dopasowań, aby dokumenty były przechowywane bez zmian. W przeciwieństwie do pól z możliwością wyszukiwania tekst obsługujący pełnotekstowe i rozmyte wyszukiwanie używaj odwróconych indeksów, które są wypełniane za pomocą tokenów, które zużywają mniej miejsca niż całe dokumenty.
 
 > [!Note]
-> Architektura magazynu jest uważana za szczegóły implementacji Azure Search i może ulec zmianie bez powiadomienia. Nie ma żadnej gwarancji, że bieżące zachowanie będzie nadal występowało w przyszłości.
+> Architektura magazynu jest uważana za szczegóły implementacji platformy Azure Wyszukiwanie poznawcze i może ulec zmianie bez powiadomienia. Nie ma żadnej gwarancji, że bieżące zachowanie będzie nadal występowało w przyszłości.
 
 ## <a name="suggesters"></a>Funkcje sugestii
 Sugerował to sekcja schematu, która określa, które pola w indeksie są używane do obsługi autouzupełniania lub zapytań typu "w wyszukiwaniach". Zazwyczaj częściowe ciągi wyszukiwania są wysyłane do [sugestii (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/suggestions) , podczas gdy użytkownik pisze zapytanie wyszukiwania, a interfejs API zwraca zestaw sugerowanych fraz. 
@@ -205,7 +204,7 @@ Domyślny profil oceniania działa w tle, aby obliczyć wynik wyszukiwania dla k
 
 ## <a name="analyzers"></a>Analizatory
 
-Element analizatorzes ustawia nazwę analizatora języka, który ma być używany dla pola. Aby uzyskać więcej informacji na temat zakresu analizatorów dostępnych dla Ciebie, zobacz [Dodawanie analizatorów do indeksu Azure Search](search-analyzers.md). Analizatory mogą być używane tylko z polami z możliwością wyszukiwania. Gdy analizator zostanie przypisany do pola, nie można go zmienić, chyba że zostanie odbudowany indeks.
+Element analizatorzes ustawia nazwę analizatora języka, który ma być używany dla pola. Aby uzyskać więcej informacji na temat zakresu analizatorów dostępnych dla Ciebie, zobacz [Dodawanie analizatorów do indeksu wyszukiwanie poznawcze platformy Azure](search-analyzers.md). Analizatory mogą być używane tylko z polami z możliwością wyszukiwania. Gdy analizator zostanie przypisany do pola, nie można go zmienić, chyba że zostanie odbudowany indeks.
 
 ## <a name="cors"></a>CORS
 
@@ -221,7 +220,7 @@ Dla mechanizmu CORS można ustawić następujące opcje:
 
 ## <a name="encryption-key"></a>Klucz szyfrowania
 
-Mimo że wszystkie indeksy usługi Azure Search są domyślnie szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft, indeksy można skonfigurować tak, aby były szyfrowane za pomocą **kluczy zarządzanych przez klienta** w Key Vault. Aby dowiedzieć się więcej, zobacz [Zarządzanie kluczami szyfrowania w Azure Search](search-security-manage-encryption-keys.md).
+Wszystkie indeksy Wyszukiwanie poznawcze platformy Azure domyślnie są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft, indeksy można skonfigurować tak, aby były szyfrowane za pomocą **kluczy zarządzanych przez klienta** w Key Vault. Aby dowiedzieć się więcej, zobacz [Zarządzanie kluczami szyfrowania w usłudze Azure wyszukiwanie poznawcze](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

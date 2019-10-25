@@ -1,5 +1,6 @@
 ---
-title: Zarządzanie tokenami (Biblioteka uwierzytelniania firmy Microsoft) | Azure
+title: Zarządzanie tokenami (Biblioteka uwierzytelniania firmy Microsoft)
+titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o uzyskiwaniu i buforowaniu tokenów przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f7914744073f82d8a35d3679a1c65459e10b2f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: aaa6a939fce3eae8b1367c2d01e947e813fa5437
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532907"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803286"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>Pobieranie i buforowanie tokenów przy użyciu MSAL
 [Tokeny dostępu](access-tokens.md) umożliwiają klientom bezpieczne wywoływanie interfejsów API sieci Web chronionych przez platformę Azure. Istnieje wiele sposobów uzyskania tokenu przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL). Niektóre sposoby wymagają interakcji z użytkownikami za pomocą przeglądarki sieci Web. Niektóre nie wymagają interakcji z użytkownikiem. Ogólnie rzecz biorąc, sposób uzyskania tokenu zależy od tego, czy aplikacja to publiczna aplikacja kliencka (aplikacja klasyczna lub mobilna), czy poufna aplikacja kliencka (aplikacja sieci Web, internetowy interfejs API lub aplikacja demona, taka jak usługa systemu Windows).
@@ -39,23 +40,23 @@ Szereg metod uzyskiwania tokenów MSAL wymaga parametru *Scopes* . Ten parametr 
 Możliwe jest również, że w MSAL dostęp do zasobów w wersji 1.0. Aby uzyskać więcej informacji, Przeczytaj [zakresy dla aplikacji w wersji 1.0](msal-v1-app-scopes.md).
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>Żądaj określonych zakresów dla internetowego interfejsu API
-Gdy aplikacja musi zażądać tokenów z określonymi uprawnieniami dla interfejsu API zasobów, należy przekazać zakresy zawierające identyfikator URI aplikacji interfejsu API w następującym formacie:  *&lt;&gt;/&lt;zakres identyfikatorów URI aplikacji&gt;*
+Gdy aplikacja musi zażądać tokenów z określonymi uprawnieniami dla interfejsu API zasobów, należy przekazać zakresy zawierające identyfikator URI aplikacji interfejsu API w następującym formacie: *&lt;identyfikator URI aplikacji&gt;/&lt;zakres&gt;*
 
-Na przykład zakresy interfejsu API Microsoft Graph:`https://graph.microsoft.com/User.Read`
+Na przykład zakresy Microsoft Graph interfejsu API: `https://graph.microsoft.com/User.Read`
 
-Lub na przykład zakresy niestandardowego interfejsu API sieci Web:`api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
+Lub na przykład zakresy niestandardowego interfejsu API sieci Web: `api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
 
-W przypadku interfejsu API Microsoft Graph tylko wartości `user.read` zakresu są mapowane na `https://graph.microsoft.com/User.Read` format i mogą być używane zamiennie.
+W przypadku interfejsu API Microsoft Graph tylko wartość zakresu `user.read` mapowania do formatu `https://graph.microsoft.com/User.Read` i mogą być używane zamiennie.
 
 > [!NOTE]
-> Niektóre interfejsy API sieci Web, takie jak https://management.core.windows.net/) Azure Resource Manager API (oczekiwano znaku końcowego "/" w ramach żądania odbiorców (AUD) tokenu dostępu. W takim przypadku ważne jest przekazanie zakresu jako https://management.core.windows.net//user_impersonation (należy pamiętać o podwójnym ukośniku), aby token był prawidłowy w interfejsie API.
+> Niektóre interfejsy API sieci Web, takie jak Azure Resource Manager API (https://management.core.windows.net/) oczekiwano końcowego znaku "/" w ramach żądania odbiorców (AUD) tokenu dostępu. W takim przypadku ważne jest przekazanie zakresu jako https://management.core.windows.net//user_impersonation (należy pamiętać o podwójnym ukośniku), aby token był prawidłowy w interfejsie API.
 
 ### <a name="request-dynamic-scopes-for-incremental-consent"></a>Żądaj zakresów dynamicznych na potrzeby przyrostowej zgody
 Podczas kompilowania aplikacji przy użyciu wersji 1.0, należy zarejestrować pełen zestaw uprawnień (zakresy statyczne) wymagane przez aplikację, aby użytkownik mógł wyrazić zgodę w czasie logowania. W wersji 2.0 można zażądać dodatkowych uprawnień zgodnie z wymaganiami przy użyciu parametru scope. Są one nazywane zakresami dynamicznymi i umożliwiają użytkownikowi zapewnienie przyrostowej zgody na zakresy.
 
 Na przykład możesz początkowo zalogować użytkownika i odmówić im dowolnego rodzaju dostępu. Później można dać im możliwość odczytywania kalendarza użytkownika przez zażądanie zakresu kalendarza w metodach uzyskiwania tokenu i uzyskanie zgody użytkownika.
 
-Na przykład: `https://graph.microsoft.com/User.Read` i`https://graph.microsoft.com/Calendar.Read`
+Na przykład: `https://graph.microsoft.com/User.Read` i `https://graph.microsoft.com/Calendar.Read`
 
 ## <a name="acquiring-tokens-silently-from-the-cache"></a>Uzyskiwanie tokenów dyskretnie (z pamięci podręcznej)
 MSAL przechowuje pamięć podręczną tokenów (lub dwie pamięci podręczne dla poufnych aplikacji klienckich) i buforuje token po jego uzyskaniu.  W wielu przypadkach próba dyskretnego pobrania tokenu spowoduje uzyskanie innego tokenu z większą liczbą zakresów na podstawie tokenu w pamięci podręcznej. Istnieje również możliwość odświeżenia tokenu, gdy zbliża się do wygaśnięcia (ponieważ pamięć podręczna tokenów zawiera również token odświeżania).

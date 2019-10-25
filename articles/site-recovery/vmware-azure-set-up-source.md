@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie środowiska źródłowego dla oprogramowania VMware do platformy Azure replikację za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania środowiska lokalnego do replikowania maszyn wirtualnych programu VMware do platformy Azure za pomocą usługi Azure Site Recovery.
+title: Skonfiguruj środowisko źródłowe na potrzeby replikacji oprogramowania VMware do platformy Azure za pomocą Azure Site Recovery | Microsoft Docs
+description: W tym artykule opisano sposób konfigurowania środowiska lokalnego do replikowania maszyn wirtualnych VMware na platformę Azure przy użyciu Azure Site Recovery.
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,26 +8,26 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 075f86b24e2915d9689db8097889a830bade74c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf1ff4dfba105b6c90ab949217453e1db82d109d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723430"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791774"
 ---
-# <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Konfigurowanie środowiska źródłowego dla oprogramowania VMware do platformy Azure replikacji
+# <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Konfigurowanie środowiska źródłowego na potrzeby replikacji oprogramowania VMware do platformy Azure
 
-W tym artykule opisano sposób konfigurowania środowiska źródłowego w środowisku lokalnym replikowania maszyn wirtualnych programu VMware do platformy Azure. Obejmuje kroki wybierania scenariusza replikacji konfigurowanie na komputerze lokalnym jako serwera konfiguracji usługi Site Recovery, a automatyczne odnajdowanie lokalnych maszyn wirtualnych. 
+W tym artykule opisano sposób konfigurowania źródłowego środowiska lokalnego do replikowania maszyn wirtualnych VMware na platformę Azure. Artykuł zawiera kroki umożliwiające wybranie scenariusza replikacji, skonfigurowanie maszyny lokalnej jako serwera konfiguracji Site Recovery i automatyczne odnajdowanie lokalnych maszyn wirtualnych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Tego artykułu przyjęto założenie, że masz już:
+W artykule założono, że masz już:
 
-- Zaplanowane wdrożenie za pomocą [planista wdrażania usługi Azure Site Recovery](site-recovery-deployment-planner.md). Dzięki temu można przydzielić odpowiednią przepustowość zgodnie z częstotliwością dziennych zmian danych, aby spełnić swoje żądany cel punktu odzyskiwania (RPO).
-- [Konfigurowanie zasobów](tutorial-prepare-azure.md) w [witryny Azure portal](https://portal.azure.com).
-- [Konfigurowanie lokalnego wdrożenia oprogramowania VMware](vmware-azure-tutorial-prepare-on-premises.md), łącznie z dedykowanego konta do automatycznego odnajdowania.
+- Zaplanowano wdrożenie z pomocą [planista wdrażania usługi Azure Site Recovery](site-recovery-deployment-planner.md). Dzięki temu można przydzielić wystarczającą przepustowość na podstawie dziennego współczynnika zmian danych, aby zaspokoić żądany cel punktu odzyskiwania (RPO).
+- [Skonfiguruj zasoby](tutorial-prepare-azure.md) w [Azure Portal](https://portal.azure.com).
+- [Konfigurowanie lokalnego programu VMware, w](vmware-azure-tutorial-prepare-on-premises.md)tym dedykowanego konta do automatycznego odnajdywania.
 
-## <a name="choose-your-protection-goals"></a>Wybranie celów ochrony
+## <a name="choose-your-protection-goals"></a>Wybierz cele ochrony
 
 1. W obszarze **Magazyny usługi Recovery Services** wybierz nazwę magazynu. W tym scenariuszu jest używany magazyn **ContosoVMVault**.
 2. W obszarze **Wprowadzenie** wybierz pozycję Site Recovery. Następnie wybierz pozycję **Przygotowywanie infrastruktury**.
@@ -37,52 +37,52 @@ Tego artykułu przyjęto założenie, że masz już:
 
 ## <a name="set-up-the-configuration-server"></a>Konfigurowanie serwera konfiguracji
 
-Możesz skonfigurować serwer konfiguracji jako maszyny Wirtualnej VMware w środowisku lokalnym za pomocą szablonu usługi Open wirtualizacji aplikacji (OVA). [Dowiedz się więcej](concepts-vmware-to-azure-architecture.md) o składnikach, które zostaną zainstalowane na maszynie Wirtualnej programu VMware.
+Serwer konfiguracji można skonfigurować jako lokalną maszynę wirtualną VMware za pomocą szablonu Open Virtualization Application (komórki jajowe). [Dowiedz się więcej](concepts-vmware-to-azure-architecture.md) o składnikach, które zostaną zainstalowane na maszynie wirtualnej programu VMware.
 
-1. Dowiedz się więcej o [wymagania wstępne](vmware-azure-deploy-configuration-server.md#prerequisites) dla wdrożenia serwera konfiguracji.
-2. [Sprawdź pojemność liczby](vmware-azure-deploy-configuration-server.md#capacity-planning) dla wdrożenia.
-3. [Pobierz](vmware-azure-deploy-configuration-server.md#download-the-template) i [zaimportować](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) szablon OVA, aby skonfigurować lokalnych zasobów programu VMware maszynę Wirtualną, która działa na serwerze konfiguracji. Licencja dostarczane z szablonem jest licencją wersji ewaluacyjnej i jest ważna przez 180 dni. Post tego okresu klient musi wykonać aktywację systemu windows za pomocą licencji uzyskiwanych.
-4. Włącz na maszynie Wirtualnej programu VMware i [go zarejestrować](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) w usługi Recovery Services vault.
+1. Dowiedz się więcej o [wymaganiach wstępnych](vmware-azure-deploy-configuration-server.md#prerequisites) dotyczących wdrażania serwera konfiguracji.
+2. [Sprawdź numery pojemności](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements) dla wdrożenia.
+3. [Pobierz](vmware-azure-deploy-configuration-server.md#download-the-template) i [zaimportuj](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) szablon komórki jajowe, aby skonfigurować lokalną maszynę wirtualną VMware, na której jest uruchomiony serwer konfiguracji. Licencja dostarczona z szablonem jest licencją ewaluacyjną i jest ważna przez 180 dni. Opublikuj ten okres, aby klient mógł aktywować system Windows przy użyciu licencji z licencją.
+4. Włącz maszynę wirtualną VMware i [zarejestruj ją](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) w magazynie Recovery Services.
 
-## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Usługa Azure Site Recovery wykluczenia folderów z programu antywirusowego
+## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Azure Site Recovery wykluczenia folderu z programu antywirusowego
 
-### <a name="if-antivirus-software-is-active-on-source-machine"></a>Jeśli oprogramowanie antywirusowe jest aktywna na maszynie źródłowej
+### <a name="if-antivirus-software-is-active-on-source-machine"></a>Jeśli oprogramowanie antywirusowe jest aktywne na maszynie źródłowej
 
-Jeśli maszyna źródłowa ma aktywne oprogramowania antywirusowego, należy wykluczyć folder instalacji. Dlatego wykluczyć folder *C:\ProgramData\ASR\agent* smooth replikacji.
+Jeśli maszyna źródłowa ma aktywne oprogramowanie antywirusowe, folder instalacji powinien zostać wykluczony. Dlatego Wyklucz *C:\ProgramData\ASR\agent* folderu w celu zapewnienia płynnej replikacji.
 
-### <a name="if-antivirus-software-is-active-on-configuration-server"></a>Jeśli oprogramowanie antywirusowe jest aktywna na serwerze konfiguracji
+### <a name="if-antivirus-software-is-active-on-configuration-server"></a>Jeśli oprogramowanie antywirusowe jest aktywne na serwerze konfiguracji
 
-Wyklucz następujące foldery z oprogramowania antywirusowego do sprawnego replikacji i aby uniknąć problemów z łącznością
+Wyklucz następujące foldery ze oprogramowania antywirusowego w celu zapewnienia płynnej replikacji, aby uniknąć problemów z łącznością
 
-- Agent C:\Program Files\Microsoft Azure Recovery Services.
-- Dostawca usługi C:\Program Files\Microsoft Azure Site Recovery
+- C:\Program Files\Microsoft Azure Recovery Services Agent.
+- Dostawca C:\Program Files\Microsoft Azure Site Recovery
 - C:\Program Files\Microsoft Azure Site Recovery Configuration Manager 
-- Narzędzie do C:\Program Files\Microsoft usługi Azure Site Recovery błąd zbierania 
+- C:\Program Files\Microsoft Azure Site Recovery Narzędzie do zbierania błędów 
   - C:\thirdparty
   - C:\Temp
   - C:\strawberry
   - C:\ProgramData\MySQL
-  - C:\Program Files (x86)\MySQL
+  - C:\Program Files (x86) \MySQL
   - C:\ProgramData\ASR
   - C:\ProgramData\Microsoft Azure Site Recovery
   - C:\ProgramData\ASRLogs
   - C:\ProgramData\ASRSetupLogs
   - C:\ProgramData\LogUploadServiceLogs
-  - C:\Inetpub
-  - Katalog instalacji serwera usługi ASR. Na przykład: E:\Program pliki (x86) \Microsoft Azure Site Recovery
+  - C:\inetpub
+  - Katalog instalacji serwera Site Recovery. Na przykład: E:\Program Files (x86) \Microsoft Azure Site Recovery
 
-### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Jeśli oprogramowanie antywirusowe jest aktywny w skali w poziomie przetwarzania server/Master Target
+### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Jeśli oprogramowanie antywirusowe jest aktywne na serwerze przetwarzania skalowalnego w poziomie/głównym miejscu docelowym
 
-Wyklucz następujące foldery z oprogramowania antywirusowego
+Wyklucz następujące foldery ze oprogramowania antywirusowego
 
-1. Agent usług C:\Program Files\Microsoft Azure Recovery Services
+1. C:\Program Files\Microsoft Azure Recovery Services Agent
 2. C:\ProgramData\ASR
 3. C:\ProgramData\ASRLogs
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. Usługa ASR obciążenia procesu o zrównoważonym obciążeniu katalog instalacji serwera, przykład: C:\Program Files (x86) \Microsoft Azure Site Recovery
+7. Azure Site Recovery katalog instalacji serwera przetwarzania z równoważeniem obciążenia, przykład: C:\Program Files (x86) \Microsoft Azure Site Recovery
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Konfigurowanie środowiska docelowego](./vmware-azure-set-up-target.md) 

@@ -1,23 +1,24 @@
 ---
-title: Wyświetlanie sklepu z bazami danych za pomocą Eksplorator usługi Storage — Azure Search
-description: Wyświetlanie i analizowanie Azure Search sklepu z bazami danych za pomocą Eksplorator usługi Storage Azure Portal.
+title: Wyświetlanie sklepu z bazami danych za pomocą Eksplorator usługi Storage
+titleSuffix: Azure Cognitive Search
+description: Przeglądaj i Analizuj Wyszukiwanie poznawcze sklepu z bazami danych platformy Azure, korzystając z Eksplorator usługi Storage Azure Portal.
+manager: nitinme
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
 ms.author: v-lilei
-ms.openlocfilehash: 9ec93bcd2309bb47b24983260c35726ac24b5e95
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: cfa85e61059e27cd39a9701a835a725e16e5bc0a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265603"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789970"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Wyświetlanie sklepu z bazami danych za pomocą Eksplorator usługi Storage
 
 > [!Note]
-> Magazyn wiedzy jest w wersji zapoznawczej i nie powinien być używany w środowisku produkcyjnym. [Interfejs API REST Azure Search wersja 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
+> Magazyn wiedzy jest w wersji zapoznawczej i nie powinien być używany w środowisku produkcyjnym. [Interfejs API REST usługi Azure wyszukiwanie poznawcze w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
 >
 W tym artykule dowiesz się, jak nawiązać połączenie i eksplorować magazyn wiedzy przy użyciu Eksplorator usługi Storage w Azure Portal. Aby utworzyć przykład sklepu z bazami danych używany w tym przewodniku, zobacz temat [Tworzenie sklepu z bazami danych w Azure Portal](knowledge-store-create-portal.md).
 

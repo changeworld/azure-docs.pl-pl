@@ -1,23 +1,22 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — subskrybowanie do konta usługi Blob Storage | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell — subskrybowanie do konta usługi Blob Storage
+title: Azure PowerShell — subskrybowanie do konta usługi BLOB Storage
+description: Przykładowy skrypt Azure Event Grid & Azure PowerShell — subskrybowanie do konta usługi BLOB Storage
 services: event-grid
 documentationcenter: na
-author: tfitzmac
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: d236bcbf71915576ee31587e9abfff92c99250c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/22/2019
+ms.author: spelluru
+ms.openlocfilehash: 1e394b27818456b96118f80f17cf459ac08f45a9
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117210"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790514"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>Subskrybowanie do zdarzeń dla konta usługi Blob Storage przy użyciu programu PowerShell
 
@@ -37,9 +36,9 @@ Ten skrypt używa następującego polecenia w celu utworzenia subskrypcji zdarze
 
 | Polecenie | Uwagi |
 |---|---|
-| [Nowe AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Tworzy subskrypcję usługi Event Grid. |
+| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Tworzy subskrypcję usługi Event Grid. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z wprowadzeniem do aplikacji zarządzanych, zobacz [Azure Managed Application overview](../overview.md) (Omówienie aplikacji zarządzanych platformy Azure).
 * Aby uzyskać więcej informacji na temat programu PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).

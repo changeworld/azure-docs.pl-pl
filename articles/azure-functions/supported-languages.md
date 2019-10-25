@@ -1,67 +1,57 @@
 ---
-title: Obsługiwane języki w usłudze Azure Functions
-description: Dowiedz się, jakie języki są obsługiwane (GA) i które są eksperymentalne lub w wersji zapoznawczej.
-services: functions
-documentationcenter: na
+title: Obsługiwane języki w Azure Functions
+description: Dowiedz się, które języki są obsługiwane (GA) i które są eksperymentalne lub dostępne w wersji zapoznawczej.
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: dotnet
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 8839fc0fb9f19a1cfa95a4191213503dba7602c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eac67c43915edb0aed273df40e7b08ca846062bf
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148818"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802454"
 ---
-# <a name="supported-languages-in-azure-functions"></a>Obsługiwane języki w usłudze Azure Functions
+# <a name="supported-languages-in-azure-functions"></a>Obsługiwane języki w Azure Functions
 
-W tym artykule wyjaśniono, że poziom obsługi oferowany dla języków, za pomocą usługi Azure Functions.
+W tym artykule opisano poziomy pomocy technicznej oferowane w przypadku języków, których można używać z programem Azure Functions.
 
 ## <a name="levels-of-support"></a>Poziomy pomocy technicznej
 
 Istnieją trzy poziomy pomocy technicznej:
 
-* **Ogólnie dostępna (GA)** — w pełni obsługiwana i zatwierdzone do użycia w środowisku produkcyjnym.
-* **Podgląd** — nie są jeszcze obsługiwane, ale oczekuje się, że osiągną stan wersji ogólnie dostępnej w przyszłości.
-* **Eksperymentalne** — obsługiwane i może zostać porzucony w przyszłości; nie gwarantuje stan GA lub ostatecznej wersji zapoznawczej.
+* **Ogólnie dostępna (ga)** — w pełni obsługiwana i zatwierdzona do użycia w środowisku produkcyjnym.
+* **Wersja zapoznawcza** — nie jest jeszcze obsługiwana, ale oczekuje się, że w przyszłości zostanie osiągnięty stan ga.
+* **Eksperymentalny** — nieobsługiwany i może zostać porzucony w przyszłości; Brak gwarancji dotyczącej wersji zapoznawczej lub stanu GA.
 
-## <a name="languages-in-runtime-1x-and-2x"></a>Języki w środowisku uruchomieniowym w wersji 1.x i 2.x
+## <a name="languages-by-runtime-version"></a>Języki według wersji środowiska uruchomieniowego 
 
-[Dwie wersje środowiska uruchomieniowego usługi Azure Functions](functions-versions.md) są dostępne. W poniższej tabeli przedstawiono, które języki są obsługiwane w każdej wersji środowiska uruchomieniowego.
+Dostępne są [dwie wersje środowiska uruchomieniowego Azure Functions](functions-versions.md) . W poniższej tabeli przedstawiono języki obsługiwane w poszczególnych wersjach środowiska uruchomieniowego.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>Języków eksperymentalnych
+### <a name="experimental-languages"></a>Języki eksperymentalne
 
-Języków eksperymentalnych wersji 1.x nie jest dobrze skalowalna i nie obsługują wszystkie powiązania.
+Języki eksperymentalne w wersji 1. x nie są dobrze skalowane i nie obsługują wszystkich powiązań.
 
-Nie należy używać funkcji eksperymentalnych dla wszystkich elementów, z którym polegasz, ponieważ nie ma żadnych oficjalne wsparcie dla nich. Przypadki pomocy technicznej nie powinny być otwierane w przypadku problemów z języków eksperymentalnych. 
+Nie używaj eksperymentalnych funkcji dla wszystkich elementów, na których polegasz, ponieważ nie ma oficjalnego wsparcia dla nich. Nie należy otwierać przypadków pomocy technicznej w przypadku problemów z językiem eksperymentalnym. 
 
-Środowisko uruchomieniowe 2.x wersja nie obsługuje języków eksperymentalnych. Obsługa nowych języków jest dodawana tylko wtedy, gdy język może być obsługiwany w środowisku produkcyjnym. 
+Środowisko uruchomieniowe w wersji 2. x nie obsługuje języków eksperymentalnych. Obsługa nowych języków jest dodawana tylko wtedy, gdy język może być obsługiwany w środowisku produkcyjnym. 
 
 ### <a name="language-extensibility"></a>Rozszerzalność języka
 
-Środowisko uruchomieniowe 2.x jest przeznaczona do zaoferowania [rozszerzalność języka](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). Środowisko uruchomieniowe 2.x języka JavaScript i Java są tworzone za pomocą tego rozszerzalności.
+Począwszy od wersji 2. x, środowisko uruchomieniowe zostało zaprojektowane, aby oferować [rozszerzalność języka](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). Języki JavaScript i Java w środowisku uruchomieniowym 2. x zostały skompilowane przy użyciu tej rozszerzalności.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o sposobie używania jednego z języków GA lub w wersji zapoznawczej w usłudze Azure Functions, zobacz następujące zasoby:
+Aby dowiedzieć się więcej o sposobach tworzenia funkcji w obsługiwanych językach, zobacz następujące zasoby:
 
-> [!div class="nextstepaction"]
-> [C#](functions-reference-csharp.md)
-
-> [!div class="nextstepaction"]
-> [F#](functions-reference-fsharp.md)
-
-> [!div class="nextstepaction"]
-> [JavaScript](functions-reference-node.md)
-
-> [!div class="nextstepaction"]
-> [Java](functions-reference-java.md)
-
-> [!div class="nextstepaction"]
-> [Python](functions-reference-python.md)
++ [C#Dokumentacja dla deweloperów biblioteki klas](functions-dotnet-class-library.md)
++ [C#Dokumentacja dewelopera skryptów](functions-reference-csharp.md)
++ [Dokumentacja dewelopera języka Java](functions-reference-java.md)
++ [Dokumentacja dewelopera języka JavaScript](functions-reference-node.md)
++ [Dokumentacja dewelopera programu PowerShell](functions-reference-powershell.md)
++ [Dokumentacja dla deweloperów języka Python](functions-reference-python.md)
++ [Dokumentacja dewelopera języka TypeScript](functions-reference-node.md#typescript)

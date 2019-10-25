@@ -1,26 +1,23 @@
 ---
-title: Wersja zapoznawcza interfejsu API REST dla Azure Search 2019-05-06 — wersja zapoznawcza — Azure Search
-description: Interfejs API REST usługi Azure Search w wersji 2019-05-06 — wersja zapoznawcza obejmuje funkcje eksperymentalne, takie jak magazyn wiedzy i klucze szyfrowania zarządzane przez klienta.
-services: search
-author: HeidiSteen
+title: Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza
+titleSuffix: Azure Cognitive Search
+description: Interfejs API REST usługi Wyszukiwanie poznawcze platformy Azure w wersji 2019-05-06 — wersja zapoznawcza obejmuje funkcje eksperymentalne, takie jak magazyn wiedzy i klucze szyfrowania zarządzane przez klienta.
 manager: nitinme
-ms.service: search
-ms.devlang: rest-api
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: search
-ms.date: 05/02/2019
-ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 7fa280742556b7bc42d2c7fb30c880f836eef62b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 11/04/2019
+ms.openlocfilehash: a4daaac6abababcedb5d6dd7eb2122ef29846ef4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649984"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792529"
 ---
-# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Interfejs API REST usługi Azure Search — wersja 2019-05-06-Preview
-W `api-version=2019-05-06-Preview` tym artykule opisano wersję interfejsu API REST usługi Azure Search, oferując funkcje eksperymentalne, które nie są jeszcze ogólnie dostępne.
+# <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Interfejs API REST usługi Wyszukiwanie poznawcze platformy Azure — Wersja 2019-05-06-Preview
+
+W tym artykule opisano `api-version=2019-05-06-Preview` wersja interfejsu API REST usługi Search, oferując funkcje eksperymentalne, które nie są jeszcze ogólnie dostępne.
 
 > [!NOTE]
 > Funkcje w wersji zapoznawczej są dostępne do testowania i eksperymentowania z celem zebrania opinii i mogą ulec zmianie. Zdecydowanie odradzamy korzystanie z interfejsów API w wersji zapoznawczej w aplikacjach produkcyjnych.
@@ -34,7 +31,7 @@ W `api-version=2019-05-06-Preview` tym artykule opisano wersję interfejsu API R
 
 ## <a name="other-preview-features"></a>Inne funkcje w wersji zapoznawczej
 
-Funkcje ogłoszone we wcześniejszych wersjach zapoznawczych nadal są w publicznej wersji zapoznawczej. Jeśli wywołujesz interfejs API z wcześniejszą wersją interfejsu API w wersji zapoznawczej, możesz nadal korzystać z tej wersji lub `2019-05-06-Preview` przełączać się do programu bez zmian w oczekiwanym zachowaniu.
+Funkcje ogłoszone we wcześniejszych wersjach zapoznawczych nadal są w publicznej wersji zapoznawczej. Jeśli wywołujesz interfejs API z wcześniejszą wersją interfejsu API w wersji zapoznawczej, możesz nadal korzystać z tej wersji lub przełączać się do `2019-05-06-Preview` bez zmian w oczekiwanym zachowaniu.
 
 + [parametr zapytania moreLikeThis](search-more-like-this.md) wyszukuje dokumenty, które mają zastosowanie do określonego dokumentu. Ta funkcja została zamieszczona w wcześniejszych wersjach zapoznawczych. 
 * [Indeksowanie obiektów BLOB CSV](search-howto-index-csv-blobs.md) tworzy jeden dokument na wiersz, w przeciwieństwie do jednego dokumentu na obiekt BLOB tekstu.
@@ -49,11 +46,11 @@ Poniższa przykładowa składnia ilustruje wywołanie wersji interfejsu API podg
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2019-05-06-Preview
 
-Usługa Azure Search jest dostępna w wielu wersjach. Aby uzyskać więcej informacji, zobacz [wersje interfejsu API](search-api-versions.md).
+Usługa Azure Wyszukiwanie poznawcze jest dostępna w wielu wersjach. Aby uzyskać więcej informacji, zobacz [wersje interfejsu API](search-api-versions.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z dokumentacją interfejsu API REST usługi Azure Search. Jeśli wystąpią problemy, poproś nas o pomoc dotyczącą usługi [StackOverflow](https://stackoverflow.com/) lub [skontaktuj się z pomocą techniczną](https://azure.microsoft.com/support/community/?product=search).
+Zapoznaj się z dokumentacją interfejsu API REST usługi Search. Jeśli wystąpią problemy, poproś nas o pomoc dotyczącą usługi [StackOverflow](https://stackoverflow.com/) lub [skontaktuj się z pomocą techniczną](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API REST usługi Search](https://docs.microsoft.com/rest/api/searchservice/)

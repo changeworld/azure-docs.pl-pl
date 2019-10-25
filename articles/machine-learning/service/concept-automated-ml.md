@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: e80d79c16b0748e25e549365001990fb014b5f14
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 895425232dabc78650b6ee7ed035048471084237
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030542"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793893"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczne Uczenie maszynowe?
 
@@ -81,7 +81,7 @@ W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są wstęp
 
 W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są automatycznie skalowane lub znormalizowane w celu zapewnienia prawidłowego wykonywania algorytmów.  Podczas uczenia modelu jedna z następujących technik skalowania lub normalizacji zostanie zastosowana do każdego modelu.
 
-|Skalowanie w @ no__t-0 @ no__t-1 @ no__t-2normalization| Opis |
+|Skalowanie&nbsp;&&nbsp;normalizacji| Opis |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Ujednolicenie funkcji przez usunięcie średniej i skalowania do wariancji jednostek  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Przekształca funkcje, przeskalowane każdą funkcję według minimalnej i maksymalnej wartości tej kolumny  |
@@ -108,6 +108,8 @@ Zautomatyzowany eksperyment szeregów czasowych jest traktowany jako problem z r
 Dowiedz się więcej i zobacz przykład [automatycznej uczenia maszynowego na potrzeby prognozowania szeregów czasowych](how-to-auto-train-forecast.md). Lub zapoznaj się z [notesem zapotrzebowania na energię](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) , aby zapoznać się ze szczegółowymi przykładami zaawansowanej konfiguracji prognozowania, w tym:
 
 * Wykrywanie świąt i cechowania
+* DNN (autoARIMA, Prophet, ForecastTCN)
+* Obsługa wielu modeli przy użyciu grupowania
 * krzyżowe sprawdzanie poprawności źródła
 * Konfigurowalne spowolnienia
 * funkcje agregujące okna stopniowego

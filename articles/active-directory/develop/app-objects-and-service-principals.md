@@ -1,5 +1,6 @@
 ---
 title: Obiekty główne aplikacji i usług w Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: Informacje o relacji między obiektami obiektów głównych aplikacji i usług w Azure Active Directory.
 documentationcenter: dev-center-name
 author: rwike77
@@ -18,18 +19,18 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83083026b20573d93777e77f44bf8d5480bfdd97
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c1a4d9301894c6a98abd8244fdd6c10a058a26ad
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853323"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803424"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Obiekty główne aplikacji i usług w Azure Active Directory
 
-Czasami znaczenie terminu "aplikacja" może być interpretowane w kontekście Azure Active Directory (Azure AD). W tym artykule wyjaśniono koncepcje i konkretne aspekty integracji aplikacji usługi Azure AD z ilustracją rejestracji i zgody dla [aplikacji](developer-glossary.md#multi-tenant-application)wielodostępnych.
+Czasami znaczenie terminu "aplikacja" może być interpretowane w kontekście Azure Active Directory (Azure AD). W tym artykule wyjaśniono koncepcje i konkretne aspekty integracji aplikacji usługi Azure AD z ilustracją rejestracji i zgody dla [aplikacji wielodostępnych](developer-glossary.md#multi-tenant-application).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aplikacja zintegrowana z usługą Azure AD ma konsekwencje wykraczające poza aspekt oprogramowania. "Aplikacja" jest często używana jako termin koncepcyjny, odnoszący się do nie tylko oprogramowania aplikacji, ale także rejestrację i rolę usługi Azure AD w ramach uwierzytelniania/autoryzacji "konwersacje" w czasie wykonywania.
 
@@ -87,7 +88,7 @@ Na poniższym diagramie przedstawiono relację między obiektem aplikacji aplika
 
 W tym przykładowym scenariuszu:
 
-| Krok | Opis |
+| Czynność | Opis |
 |------|-------------|
 | 1    | Jest procesem tworzenia obiektów głównych aplikacji i usług w dzierżawie głównej aplikacji. |
 | 2    | Gdy administratorzy Contoso i fabrikam ukończyją zgodę, obiekt główny usługi jest tworzony w dzierżawie usługi Azure AD swojej firmy i ma przypisane uprawnienia przyznane przez administratora. Należy również pamiętać, że aplikacja KADRowa mogła zostać skonfigurowana/zaprojektowana tak, aby zezwalać użytkownikom na zgodę na użycie indywidualnych. |

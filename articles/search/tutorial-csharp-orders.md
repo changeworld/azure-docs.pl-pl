@@ -1,24 +1,25 @@
 ---
-title: C#Samouczek dotyczący porządkowania wyników — Azure Search
-description: Ten samouczek kompiluje się w projekcie "wyniki wyszukiwania na stronie rozdzielenie Azure Search", aby dodać kolejność wyników wyszukiwania. Dowiedz się, jak zamówić wyniki na głównej właściwości i dla wyników mających taką samą Właściwość podstawową, jak kolejność wyników na właściwości pomocniczej. Na koniec dowiesz się, jak zamówić wyniki w oparciu o profil oceniania.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#Samouczek dotyczący porządkowania wyników
+titleSuffix: Azure Cognitive Search
+description: W tym samouczku przedstawiono projekt "wyniki wyszukiwania na stronie spisu — Wyszukiwanie poznawcze platformy Azure" w celu dodania kolejności wyników wyszukiwania. Dowiedz się, jak zamówić wyniki na głównej właściwości i dla wyników mających taką samą Właściwość podstawową, jak kolejność wyników na właściwości pomocniczej. Na koniec dowiesz się, jak zamówić wyniki w oparciu o profil oceniania.
+manager: nitinme
 author: PeterTurcan
-ms.date: 06/21/2019
-ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327647"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794052"
 ---
-# <a name="c-tutorial-order-the-results---azure-search"></a>C#Ręczny Kolejność wyników — Azure Search
+# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#Samouczek: kolejność wyników — Wyszukiwanie poznawcze platformy Azure
 
 W górę do tego momentu w naszej serii samouczków wyniki są zwracane i wyświetlane w kolejności domyślnej. Może to być kolejność, w której znajdują się dane lub prawdopodobnie został zdefiniowany domyślny _profil oceniania_ , który będzie używany, gdy nie zostaną określone żadne parametry porządkowania. W tym samouczku przejdziemy do sposobu porządkowania wyników w oparciu o Właściwość podstawową, a następnie dla wyników, które mają tę samą Właściwość podstawową, w jaki sposób należy określić kolejność tego wyboru we właściwości pomocniczej. Zamiast określania kolejności na podstawie wartości liczbowych, ostatni przykład pokazuje, jak zamówić na podstawie niestandardowego profilu oceniania. Dodatkowo przejdziemy do wyświetlania _typów złożonych_.
 
-Aby można było łatwo porównać zwrócone wyniki, ten projekt jest kompilowany do nieskończonego projektu przewijania utworzonego w @no__t samouczku -0C# : Na rozdzielenie wyników wyszukiwania — samouczek Azure Search @ no__t-0.
+Aby można było łatwo porównać zwrócone wyniki, ten projekt jest kompilowany do nieskończonego projektu przewijania utworzonego w [ C# samouczku: wyniki wyszukiwania na stronie stronicowania — Samouczek platformy Azure wyszukiwanie poznawcze](tutorial-csharp-paging.md) .
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -31,7 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-Ma nieskończoną wersję przewijania samouczka [C# : Na stronicowaniu wyników wyszukiwania Azure Search @ no__t-0 Project up i uruchomiona. Ten projekt może być własną wersją lub być instalowany z serwisu GitHub: [Utwórz pierwszą aplikację](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Ma nieskończoną wersję przewijania [ C# samouczka: przeszukiwanie wyników wyszukiwania — Azure wyszukiwanie poznawcze](tutorial-csharp-paging.md) Project up i uruchomiona. Ten projekt może być własną wersją lub być instalowany z serwisu GitHub: [Utwórz pierwszą aplikację](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="order-results-based-on-one-property"></a>Kolejność wyników na podstawie jednej właściwości
 
@@ -435,7 +436,7 @@ Aby wyświetlić wyniki na podstawie odległości geograficznej, wymagane jest w
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Mimo że wyniki zostały zwrócone przez Azure Search przy użyciu filtra odległość, obliczona odległość między danymi a określonym punktem _nie_ jest zwracana. Ponownie Oblicz tę wartość w widoku lub kontrolerze, jeśli chcesz wyświetlić ją w wynikach.
+3. Mimo że wyniki zostały zwrócone przez Wyszukiwanie poznawcze platformy Azure przy użyciu filtru odległości, obliczona odległość między danymi a określonym punktem _nie_ jest zwracana. Ponownie Oblicz tę wartość w widoku lub kontrolerze, jeśli chcesz wyświetlić ją w wynikach.
 
     Poniższy kod obliczy odległość między dwoma punktami w zakresie.
 
@@ -465,7 +466,7 @@ Aby wyświetlić wyniki na podstawie odległości geograficznej, wymagane jest w
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Zamów wyniki w oparciu o profil oceniania
 
-W przykładach podanych w samouczku pokazano, jak zamówić wartości liczbowe (Klasyfikacja, Data renowacji, odległość geograficzna), co zapewnia _dokładny_ proces określania kolejności. Jednak niektóre wyszukiwania i niektóre dane nie zapewnią do takiego łatwego porównania między dwoma elementami danych. Azure Search obejmuje koncepcję _oceniania_. _Profile oceniania_ można określić dla zestawu danych, które mogą być używane do zapewniania bardziej złożonych i jakościowych porównań, które powinny być najbardziej cenne, gdy, powiedzmy, porównując dane tekstowe, aby określić, które powinny być wyświetlane jako pierwsze.
+W przykładach podanych w samouczku pokazano, jak zamówić wartości liczbowe (Klasyfikacja, Data renowacji, odległość geograficzna), co zapewnia _dokładny_ proces określania kolejności. Jednak niektóre wyszukiwania i niektóre dane nie zapewnią do takiego łatwego porównania między dwoma elementami danych. Usługa Azure Wyszukiwanie poznawcze obejmuje koncepcję _oceniania_. _Profile oceniania_ można określić dla zestawu danych, które mogą być używane do zapewniania bardziej złożonych i jakościowych porównań, które powinny być najbardziej cenne, gdy, powiedzmy, porównując dane tekstowe, aby określić, które powinny być wyświetlane jako pierwsze.
 
 Profile oceniania nie są definiowane przez użytkowników, ale zazwyczaj są administratorami zestawu danych. Skonfigurowano kilka profilów oceniania dla danych hoteli. Spójrzmy na sposób definiowania profilu oceniania, a następnie spróbuj napisać kod, aby go wyszukać.
 
@@ -543,7 +544,7 @@ Przyjrzyjmy się trzem przykładom profilów oceniania i Rozważmy, jak każdy _
 
 ### <a name="add-code-to-the-view-to-compare-profiles"></a>Dodawanie kodu do widoku w celu porównania profilów
 
-1. Otwórz plik index. cshtml i Zastąp sekcję &lt;body @ no__t-1 sekcją z poniższym kodem.
+1. Otwórz plik index. cshtml i Zastąp sekcję &lt;treści&gt; z poniższym kodem.
 
     ```cs
     <body>
@@ -957,7 +958,7 @@ Przyjrzyjmy się trzem przykładom profilów oceniania i Rozważmy, jak każdy _
 
 ### <a name="resources"></a>Zasoby
 
-Aby uzyskać więcej informacji, zobacz następujące [Dodawanie profilów oceniania do indeksu Azure Search](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+Aby uzyskać więcej informacji, zobacz następujące [Dodawanie profilów oceniania do indeksu wyszukiwanie poznawcze platformy Azure](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
 
 ## <a name="takeaways"></a>Wnioski
 
@@ -971,6 +972,6 @@ Rozważmy następujący wnioski z tego projektu:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ta seria C# samouczków została ukończona — należy uzyskać cenne informacje dotyczące Azure Search interfejsów API.
+Ta seria C# samouczków została ukończona — należy uzyskać cenne informacje dotyczące interfejsów API wyszukiwanie poznawcze platformy Azure.
 
-Aby uzyskać więcej informacji i samouczków, należy rozważyć przeglądanie [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)lub innych samouczków w [dokumentacji Azure Search](https://docs.microsoft.com/azure/search/).
+Aby uzyskać więcej informacji i samouczków, należy rozważyć przeglądanie [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)lub innych samouczków w [dokumentacji usługi Azure wyszukiwanie poznawcze](https://docs.microsoft.com/azure/search/).

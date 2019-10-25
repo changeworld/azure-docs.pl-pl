@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2d460688392ae017c0d87ce60fa980701e5d47d3
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528197"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792840"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu Azure Monitor
 
@@ -29,7 +29,7 @@ Azure Backup udostępnia [wbudowane funkcje monitorowania i alertów](backup-azu
 ## <a name="using-log-analytics-workspace"></a>Używanie Log Analytics obszaru roboczego
 
 > [!NOTE]
-> Dane z kopii zapasowych maszyn wirtualnych platformy Azure, agenta Azure Backup, programu System Center Data Protection Manager, kopii zapasowych SQL na maszynach wirtualnych platformy Azure i tworzenia kopii zapasowych Azure Files udostępniania są pompy w obszarze roboczym Log Analytics za pośrednictwem ustawień diagnostycznych.
+> Dane z kopii zapasowych maszyn wirtualnych platformy Azure, agenta Azure Backup, programu System Center Data Protection Manager, kopii zapasowych SQL na maszynach wirtualnych platformy Azure i tworzenia kopii zapasowych Azure Files udostępniania są pompy w obszarze roboczym Log Analytics za pośrednictwem ustawień diagnostycznych. Obsługa Microsoft Azure Backup Server (serwera usługi MAB) zostanie dodana wkrótce
 
 Aby monitorować/raportować na dużą skalę, potrzebne są możliwości dwóch usług platformy Azure. *Ustawienia diagnostyczne* umożliwiają wysyłanie danych z wielu zasobów Azure Resource Manager do innego zasobu. *Log Analytics* generuje niestandardowe alerty, w których można używać grup akcji do definiowania innych kanałów powiadomień.
 

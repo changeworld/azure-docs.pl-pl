@@ -1,5 +1,6 @@
 ---
-title: Inicjowanie aplikacji klienckich (Microsoft Authentication Library for .NET) | Azure
+title: Inicjuj aplikacje klienckie (Biblioteka uwierzytelniania firmy Microsoft dla platformy .NET)
+titleSuffix: Microsoft identity platform
 description: Informacje na temat inicjowania publicznego klienta i poufnych aplikacji klienckich przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,17 +18,17 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5012da8f2ff41971df674fd35162fe14e1de8fc9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f15f6480c2dc77fb1f6e229b62a0114f0f6fb735
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532637"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802838"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Inicjuj aplikacje klienckie przy użyciu MSAL.NET
 W tym artykule opisano sposób inicjowania publicznego klienta i poufnych aplikacji klienckich przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).  Aby dowiedzieć się więcej na temat typów aplikacji klienta i opcji konfiguracji aplikacji, zapoznaj się z [omówieniem](msal-client-applications.md).
 
-W przypadku MSAL.NET 3. x zalecanym sposobem tworzenia wystąpienia aplikacji jest użycie konstruktorów aplikacji: `PublicClientApplicationBuilder` i. `ConfidentialClientApplicationBuilder` Oferują one zaawansowany mechanizm konfigurowania aplikacji zarówno z kodu, jak i pliku konfiguracji, a nawet przez mieszanie obu metod.
+W przypadku MSAL.NET 3. x zalecanym sposobem tworzenia wystąpienia aplikacji jest użycie konstruktorów aplikacji: `PublicClientApplicationBuilder` i `ConfidentialClientApplicationBuilder`. Oferują one zaawansowany mechanizm konfigurowania aplikacji zarówno z kodu, jak i pliku konfiguracji, a nawet przez mieszanie obu metod.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed zainicjowaniem aplikacji należy najpierw [ją zarejestrować](quickstart-register-app.md) , aby można było zintegrować aplikację z platformą tożsamości firmy Microsoft.  Po zarejestrowaniu mogą być potrzebne następujące informacje (które można znaleźć w Azure Portal):
@@ -52,7 +53,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="initializing-a-confidential-client-application-from-code"></a>Inicjowanie poufnej aplikacji klienckiej z kodu
 
-W ten sam sposób Poniższy kod tworzy wystąpienie aplikacji poufnej (aplikacji sieci Web znajdującej się w `https://myapp.azurewebsites.net`lokalizacji) obsługującej tokeny użytkowników w Microsoft Azure chmurze publicznej, z kontami służbowymi lub osobistymi kontami Microsoft. Aplikacja jest identyfikowana przy użyciu dostawcy tożsamości, udostępniając klucz tajny klienta:
+W ten sam sposób Poniższy kod tworzy wystąpienie poufnej aplikacji (aplikacja sieci Web znajdująca się w `https://myapp.azurewebsites.net`) obsługującą tokeny użytkowników w chmurze publicznej Microsoft Azure z kontami służbowymi lub osobistymi kontami Microsoft. Aplikacja jest identyfikowana przy użyciu dostawcy tożsamości, udostępniając klucz tajny klienta:
 
 ```csharp
 string redirectUri = "https://myapp.azurewebsites.net";
@@ -83,7 +84,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 
 ### <a name="initializing-a-confidential-client-application-from-configuration-options"></a>Inicjowanie poufnej aplikacji klienckiej z poziomu opcji konfiguracji
 
-Ten sam rodzaj wzorca ma zastosowanie do poufnych aplikacji klienckich. Możesz również dodać inne parametry za pomocą `.WithXXX` modyfikatorów (w tym przypadku certyfikatu).
+Ten sam rodzaj wzorca ma zastosowanie do poufnych aplikacji klienckich. Możesz również dodać inne parametry za pomocą modyfikatorów `.WithXXX` (w tym przypadku certyfikatu).
 
 ```csharp
 ConfidentialClientApplicationOptions options = GetOptions(); // your own method
@@ -94,7 +95,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 ## <a name="builder-modifiers"></a>Modyfikatory konstruktora
 
-W fragmentach kodu przy użyciu konstruktorów aplikacji, można zastosować szereg `.With` metod jako modyfikatory (na `.WithCertificate` przykład i `.WithRedirectUri`). 
+W fragmentach kodu przy użyciu konstruktorów aplikacji, wiele metod `.With` można zastosować jako modyfikatory (na przykład `.WithCertificate` i `.WithRedirectUri`). 
 
 ### <a name="modifiers-common-to-public-and-confidential-client-applications"></a>Modyfikatory wspólne dla publicznych i poufnych aplikacji klienckich
 
@@ -102,13 +103,13 @@ Modyfikatory, które można ustawić dla klienta publicznego lub poufnego konstr
 
 |Parametr | Opis|
 |--------- | --------- |
-|`.WithAuthority()`7 zastąpień | Ustawia domyślny urząd certyfikacji usługi Azure AD, z możliwością wyboru chmury platformy Azure, odbiorców, dzierżawy (identyfikatora dzierżawy lub nazwy domeny) lub bezpośredniego przekazywania identyfikatora URI urzędu certyfikacji.|
+|Zastępowanie `.WithAuthority()` 7 | Ustawia domyślny urząd certyfikacji usługi Azure AD, z możliwością wyboru chmury platformy Azure, odbiorców, dzierżawy (identyfikatora dzierżawy lub nazwy domeny) lub bezpośredniego przekazywania identyfikatora URI urzędu certyfikacji.|
 |`.WithAdfsAuthority(string)` | Ustawia domyślny urząd aplikacji jako urząd usług ADFS.|
 |`.WithB2CAuthority(string)` | Ustawia domyślny urząd aplikacji jako urząd Azure AD B2C.|
 |`.WithClientId(string)` | Zastępuje identyfikator klienta.|
 |`.WithComponent(string)` | Ustawia nazwę biblioteki przy użyciu MSAL.NET (ze względów telemetrii). |
-|`.WithDebugLoggingCallback()` | Jeśli zostanie wywołana, aplikacja będzie wywoływała `Debug.Write` po prostu włączenie śladów debugowania. Zobacz [Rejestrowanie](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) , aby uzyskać więcej informacji.|
-|`.WithExtraQueryParameters(IDictionary<string,string> eqp)` | Ustaw dodatkowe parametry zapytania na poziomie aplikacji, które będą wysyłane we wszystkich żądaniach uwierzytelniania. Jest to możliwe do zastąpienia na każdym poziomie metody pozyskiwania tokenu ( `.WithExtraQueryParameters pattern`z tymi samymi).|
+|`.WithDebugLoggingCallback()` | Jeśli zostanie wywołana, aplikacja będzie wywoływała `Debug.Write` po prostu włączyć debugowanie śladów. Zobacz [Rejestrowanie](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) , aby uzyskać więcej informacji.|
+|`.WithExtraQueryParameters(IDictionary<string,string> eqp)` | Ustaw dodatkowe parametry zapytania na poziomie aplikacji, które będą wysyłane we wszystkich żądaniach uwierzytelniania. Jest to możliwe do zastąpienia na każdym poziomie metody pozyskiwania tokenu (z tą samą `.WithExtraQueryParameters pattern`).|
 |`.WithHttpClientFactory(IMsalHttpClientFactory httpClientFactory)` | Umożliwia zaawansowane scenariusze, takie jak Konfigurowanie dla serwera proxy HTTP, lub wymuszenie użycia określonego HttpClient (na przykład w ASP.NET Core aplikacje sieci Web/interfejsy API).|
 |`.WithLogging()` | Jeśli zostanie wywołana, aplikacja wywoła wywołanie zwrotne za pomocą śladów debugowania. Zobacz [Rejestrowanie](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) , aby uzyskać więcej informacji.|
 |`.WithRedirectUri(string redirectUri)` | Zastępuje domyślny identyfikator URI przekierowania. W przypadku publicznych aplikacji klienckich jest to przydatne w scenariuszach obejmujących brokera.|
@@ -121,7 +122,7 @@ Modyfikatory, które można ustawić w publicznym konstruktorze aplikacji klient
 
 |Parametr | Opis|
 |--------- | --------- |
-|`.WithIosKeychainSecurityGroup()` | **Tylko platforma Xamarin. iOS**: Ustawia grupę zabezpieczeń łańcuch kluczy systemu iOS (dla trwałości pamięci podręcznej).|
+|`.WithIosKeychainSecurityGroup()` | **Tylko Xamarin. iOS**: ustawia grupę zabezpieczeń łańcuch kluczy systemu iOS (dla trwałości pamięci podręcznej).|
 
 ### <a name="modifiers-specific-to-confidential-client-applications"></a>Modyfikatory specyficzne dla poufnych aplikacji klienckich
 

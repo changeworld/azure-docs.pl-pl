@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 032d52961b4867cad94d06802adb0a1f3eb00f5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 84af0484ed9fb792bef6bbbe9c53395b569acb3c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553957"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793863"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania pakietem Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -69,7 +69,10 @@ Z subskrypcji pakietu Office 365:
 
 - Nazwa użytkownika: adres E-mail konta administracyjnego.
 - Identyfikator dzierżawy: unikatowy identyfikator subskrypcji pakietu Office 365.
-- Identyfikator klienta: 16-znakowy ciąg, który reprezentuje klienta pakietu Office 365.
+
+Podczas tworzenia i konfigurowania aplikacji pakietu Office 365 w Azure Active Directory należy zebrać następujące informacje:
+
+- Identyfikator aplikacji (klienta): 16-znakowy ciąg, który reprezentuje klienta pakietu Office 365.
 - Wpis tajny klienta: zaszyfrowany ciąg niezbędny do uwierzytelnienia.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Tworzenie aplikacji pakietu Office 365 w Azure Active Directory
@@ -87,6 +90,9 @@ Pierwszym krokiem jest utworzenie aplikacji w Azure Active Directory, która bę
 1. Kliknij pozycję **zarejestruj** i sprawdź poprawność informacji o aplikacji.
 
     ![Zarejestrowana aplikacja](media/solution-office-365/registered-app.png)
+
+1. Zapisz identyfikator aplikacji (klienta) wraz z pozostałą częścią zebranych wcześniej informacji.
+
 
 ### <a name="configure-application-for-office-365"></a>Konfigurowanie aplikacji dla pakietu Office 365
 
@@ -117,7 +123,7 @@ Pierwszym krokiem jest utworzenie aplikacji w Azure Active Directory, która bę
     ![Klucze](media/solution-office-365/secret.png)
  
 1. Wpisz **Opis** i **czas trwania** nowego klucza.
-1. Kliknij przycisk **Dodaj** , a następnie skopiuj wygenerowaną **wartość** .
+1. Kliknij przycisk **Dodaj** , a następnie Zapisz **wartość** wygenerowaną jako klucz tajny klienta wraz z pozostałą częścią zebranych wcześniej informacji.
 
     ![Klucze](media/solution-office-365/keys.png)
 
@@ -188,7 +194,12 @@ Aby włączyć konto administracyjne po raz pierwszy, musisz podać zgodę admin
     
     ![zgoda administratora](media/solution-office-365/admin-consent.png)
 
+> [!NOTE]
+> Być może nastąpi przekierowanie do strony, która nie istnieje. Rozważmy ją jako powodzenie.
+
 ### <a name="subscribe-to-log-analytics-workspace"></a>Subskrybowanie obszaru roboczego Log Analytics
+
+Ostatnim krokiem jest subskrybowanie aplikacji do obszaru roboczego Log Analytics. Można to zrobić również za pomocą skryptu programu PowerShell.
 
 Ostatnim krokiem jest subskrybowanie aplikacji do obszaru roboczego Log Analytics. Można to zrobić również za pomocą skryptu programu PowerShell.
 
@@ -236,18 +247,20 @@ Ostatnim krokiem jest subskrybowanie aplikacji do obszaru roboczego Log Analytic
                     $authority = "https://login.windows.net/$adTenant";
                     $ARMResource ="https://management.azure.com/";break} 
                     }
-    
+
     Function RESTAPI-Auth { 
-    
-    $global:SubscriptionID = $Subscription.SubscriptionId
+    $global:SubscriptionID = $Subscription.Subscription.Id
     # Set Resource URI to Azure Service Management API
-    $resourceAppIdURIARM=$ARMResource;
+    $resourceAppIdURIARM=$ARMResource
     # Authenticate and Acquire Token 
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
-    $global:authResultARM = $authContext.AcquireToken($resourceAppIdURIARM, $clientId, $redirectUri, "Auto")
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
+    $global:authResultARM = $authContext.AcquireTokenAsync($resourceAppIdURIARM, $clientId, $redirectUri, $platformParameters)
+    $global:authResultARM.Wait()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
+
     $authHeader
     }
     
@@ -271,7 +284,7 @@ Ostatnim krokiem jest subskrybowanie aplikacji do obszaru roboczego Log Analytic
     
     Function Connection-API
     {
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $ResourceName = "https://manage.office.com"
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     
@@ -315,7 +328,7 @@ Ostatnim krokiem jest subskrybowanie aplikacji do obszaru roboczego Log Analytic
     Function Office-Subscribe-Call{
     try{
     #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_' + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
     
@@ -509,7 +522,7 @@ Zebranie danych może potrwać kilka godzin. Po rozpoczęciu zbierania pakiet Of
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 Po dodaniu rozwiązania pakietu Office 365 do obszaru roboczego Log Analytics, kafelek **pakietu office 365** zostanie dodany do pulpitu nawigacyjnego. Ten kafelek zawiera liczbę oraz graficzną reprezentację liczby komputerów w środowisku wraz z informacjami o ich zgodności aktualizacji.<br><br>
-Kafelek podsumowania ![Office 365 ](media/solution-office-365/tile.png)  
+![kafelka podsumowania pakietu Office 365](media/solution-office-365/tile.png)  
 
 Kliknij kafelek **office 365** , aby otworzyć pulpit nawigacyjny **pakietu Office 365** .
 

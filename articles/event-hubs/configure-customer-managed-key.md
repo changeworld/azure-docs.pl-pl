@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 37ca2b655d30ffd330d5430da20d07d9548a7c84
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 63fe6c4a2d02489b5e25100aa6aa23407bbe6bc7
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260872"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809367"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Skonfiguruj klucze zarządzane przez klienta do szyfrowania danych Event Hubs platformy Azure przechowywanych przy użyciu Azure Portal
 Usługa Azure Event Hubs zapewnia szyfrowanie danych przechowywanych przy użyciu usługi Azure szyfrowanie usługi Storage (SSE platformy Azure). Event Hubs opiera się na usłudze Azure Storage do przechowywania danych i domyślnie wszystkie dane przechowywane w usłudze Azure Storage są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. 
@@ -28,10 +28,10 @@ Włączenie funkcji BYOK to jednorazowy proces konfiguracji w przestrzeni nazw.
 
 Za pomocą Azure Key Vault można zarządzać kluczami i przeprowadzać inspekcję użycia klucza. Możesz utworzyć własne klucze i zapisać je w magazynie kluczy lub użyć Azure Key Vault interfejsów API do wygenerowania kluczy. Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](../key-vault/key-vault-overview.md)
 
-W tym artykule pokazano, jak skonfigurować magazyn kluczy z kluczami zarządzanymi przez klienta przy użyciu Azure Portal. Aby dowiedzieć się, jak utworzyć magazyn kluczy przy użyciu Azure Portal, zobacz [] szybki start: Ustaw i Pobierz klucz tajny z Azure Key Vault przy użyciu Azure Portal] (.. /key-vault/quick-create-portal.md).
+W tym artykule pokazano, jak skonfigurować magazyn kluczy z kluczami zarządzanymi przez klienta przy użyciu Azure Portal. Aby dowiedzieć się, jak utworzyć magazyn kluczy przy użyciu Azure Portal, zobacz [Szybki Start: Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu Azure Portal](../key-vault/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Użycie kluczy zarządzanych przez klienta w usłudze Azure Event Hubs wymaga skonfigurowania dwóch wymaganych właściwości magazynu kluczy. Oto one:  **Usuwanie nietrwałe** i **nie przeczyszczaj**. Te właściwości są domyślnie włączone podczas tworzenia nowego magazynu kluczy w Azure Portal. Jeśli jednak musisz włączyć te właściwości w istniejącym magazynie kluczy, musisz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+> Użycie kluczy zarządzanych przez klienta w usłudze Azure Event Hubs wymaga skonfigurowania dwóch wymaganych właściwości magazynu kluczy. Są to: **usuwanie nietrwałe** i **nie przeczyszczanie**. Te właściwości są domyślnie włączone podczas tworzenia nowego magazynu kluczy w Azure Portal. Jeśli jednak musisz włączyć te właściwości w istniejącym magazynie kluczy, musisz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 ## <a name="enable-customer-managed-keys"></a>Włącz klucze zarządzane przez klienta
 Aby włączyć klucze zarządzane przez klienta w Azure Portal, wykonaj następujące kroki:
@@ -63,7 +63,7 @@ Po włączeniu kluczy zarządzanych przez klienta należy skojarzyć klucz zarz�
         ![Przycisk Wybierz opcję Generuj/Importuj](./media/configure-customer-managed-key/select-generate-import.png)
     1. Ustaw **Opcje** w celu **wygenerowania** klucza i nadaj mu nazwę.
 
-        ![Tworzenie klucza](./media/configure-customer-managed-key/create-key.png) 
+        ![Utwórz klucz](./media/configure-customer-managed-key/create-key.png) 
     1. Teraz możesz wybrać ten klucz do skojarzenia z przestrzenią nazw Event Hubs do szyfrowania z listy rozwijanej. 
 
         ![Wybierz klucz z magazynu kluczy](./media/configure-customer-managed-key/select-key-from-key-vault.png)
@@ -104,17 +104,17 @@ Wykonaj następujące kroki, aby włączyć dzienniki dla kluczy zarządzanych p
 ## <a name="log-schema"></a>Schemat dziennika 
 Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSON). Każdy wpis zawiera pola ciągów, które używają formatu opisanego w poniższej tabeli. 
 
-| Name | Opis |
+| Nazwa | Opis |
 | ---- | ----------- | 
-| TaskName | Opis zadania, które nie powiodło się. |
-| Identyfikator działania | Wewnętrzny identyfikator używany do śledzenia. |
+| TaskName | Opis zadania, które zakończyło się niepowodzeniem. |
+| ActivityId | Wewnętrzny identyfikator używany do śledzenia. |
 | category | Definiuje klasyfikację zadania. Na przykład jeśli klucz z magazynu kluczy jest wyłączany, będzie to kategoria informacji lub jeśli klucz nie może zostać rozpakowany, może to oznaczać, że wystąpił błąd. |
 | resourceId | Identyfikator zasobu Azure Resource Manager |
-| KeyVault | Pełna nazwa magazynu kluczy. |
+| keyVault | Pełna nazwa magazynu kluczy. |
 | key | Nazwa klucza służąca do szyfrowania przestrzeni nazw Event Hubs. |
 | version | Używana wersja klucza. |
-| operation | Operacja wykonywana na kluczu w magazynie kluczy. Na przykład Wyłącz/Włącz klucz, Zawijaj lub Odpakuj |
-| code | Kod, który jest skojarzony z operacją. Przykład: Kod błędu, 404 oznacza, że nie znaleziono klucza. |
+| Operacje | Operacja wykonywana na kluczu w magazynie kluczy. Na przykład Wyłącz/Włącz klucz, Zawijaj lub Odpakuj |
+| Kodu | Kod, który jest skojarzony z operacją. Przykład: kod błędu, 404 oznacza, że nie znaleziono klucza. |
 | message | Dowolny komunikat o błędzie skojarzony z operacją |
 
 Oto przykład dziennika dla klucza zarządzanego przez klienta:
@@ -154,7 +154,7 @@ Najlepszym rozwiązaniem jest zawsze włączenie dzienników, jak pokazano w pop
 
 Poniżej przedstawiono kody typowych błędów, które należy wyszukać, gdy włączone jest szyfrowanie BYOK.
 
-| Action | Kod błędu | Wynikający ze stanu danych |
+| Działanie | Kod błędu | Wynikający ze stanu danych |
 | ------ | ---------- | ----------------------- | 
 | Usuń uprawnienie zawijania/odwinięcia z magazynu kluczy | 403 |    Niedostępny |
 | Usuń członkostwo roli usługi AAD z podmiotu usługi AAD, który udzielił uprawnienia do zawijania/depakowania | 403 |  Niedostępny |
@@ -175,7 +175,7 @@ Poniżej przedstawiono kody typowych błędów, które należy wyszukać, gdy w�
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:
-- [Omówienie usługi Event Hubs](event-hubs-about.md)
+- [Przegląd usługi Event Hubs](event-hubs-about.md)
 - [Przegląd Key Vault](../key-vault/key-vault-overview.md)
 
 

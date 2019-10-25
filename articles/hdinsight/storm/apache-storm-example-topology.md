@@ -8,25 +8,25 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 42819749b019b4b1db77942e22e09ea31a137fe7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 831d3a187a4388a429c6fabb1bb0e0ec6dd584cc
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813856"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800044"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Przykład Apache Storm topologie i składniki Apache Storm w usłudze HDInsight
 
 Poniżej znajduje się Lista przykładów utworzonych i obsługiwanych przez firmę Microsoft do użycia z usługą [Apache Storm](https://storm.apache.org/) w usłudze HDInsight. Te przykłady obejmują różne tematy, od tworzenia topologii Basic C# i Java do pracy z usługami platformy Azure, takimi jak Event Hubs, Cosmos DB, SQL Database, [Apache HBase](https://hbase.apache.org/) w usłudze HDInsight i Azure Storage. W niektórych przykładach przedstawiono również sposób pracy z platformą inną niż Azure, a nawet technologiami nienależącymi do firmy Microsoft, takimi jak sygnalizujący i Socket.IO.
 
-| Opis | Demonstracje | Język/struktura |
+| Opis | Pokazuje | Język/struktura |
 |:--- |:--- |:--- |
 | [Zapisz do Azure Data Lake Storage z Apache Storm](apache-storm-write-data-lake-store.md) |Zapisywanie w Azure Data Lake Storage |Java |
 | [Elementu Spout i źródło piorunu centrum zdarzeń](https://github.com/apache/storm/tree/master/external/storm-eventhubs) |Źródło dla elementu Spout i błyskawicy centrum zdarzeń |Java |
 | [Tworzenie topologii opartych na języku Java dla Apache Storm w usłudze HDInsight][5797064f] |Maven |Java |
-| [Tworzenie C# topologii dla Apache Storm w usłudze HDInsight przy użyciu programu Visual Studio][16fce2d1] |HDInsight Tools for Visual Studio |C#, Java |
-| [Przetwarzania zdarzeń pochodzących z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (C#)][844d1d81] |Event Hubs |C#i Java |
-| [Process events from Azure Event Hubs with Storm on HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/) (Przetwarzanie zdarzeń usługi Azure Event Hubs przy użyciu systemu Storm w usłudze HDInsight — Java) |Event Hubs |Java |
+| [Tworzenie C# topologii dla Apache Storm w usłudze HDInsight przy użyciu programu Visual Studio][16fce2d1] |Narzędzia HDInsight Tools for Visual Studio |C#, Java |
+| [Przetwarzaj zdarzenia z usługi Azure Event Hubs przy użyciu Apache StormC#w usłudze HDInsight ()][844d1d81] |Centra zdarzeń |C#i Java |
+| [Process events from Azure Event Hubs with Storm on HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) (Przetwarzanie zdarzeń usługi Azure Event Hubs przy użyciu systemu Storm w usłudze HDInsight — Java) |Centra zdarzeń |Java |
 | [Przetwarzanie danych z czujnika pojazdu z Event Hubs przy użyciu Apache Storm w usłudze HDInsight][246ee964] |Event Hubs, Cosmos DB, Azure Storage Blob (WASB) |C#, Java |
 | [Wyodrębnianie, przekształcanie i ładowanie (ETL) z usługi Azure Event Hubs do platformy Apache HBase przy użyciu Apache Storm w usłudze HDInsight][b4b68194] |Event Hubs, HBase |C# |
 | [Szablon C# projektu topologii burzy na potrzeby pracy z usługami platformy Azure z Apache Storm w usłudze HDInsight][ce0c02a2] |Event Hubs, Cosmos DB, SQL Database, HBase, sygnalizujący |C#, Java |

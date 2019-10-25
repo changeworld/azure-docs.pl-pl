@@ -1,5 +1,6 @@
 ---
-title: Uwagi dotyczące platformy Xamarin Android (Microsoft Authentication Library for .NET) | Azure
+title: Uwagi dotyczące platformy Xamarin Android (Microsoft Authentication Library for .NET)
+titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących korzystania z platformy Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 465902cf6ef6db1d867f7cc986da8c9e06e4fbbf
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2d6af9753887ffa593a44fba9faa3376066417a8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532470"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802653"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Zagadnienia specyficzne dla platformy Xamarin Android z MSAL.NET
 W tym artykule omówiono określone zagadnienia dotyczące korzystania z platformy Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
@@ -58,7 +59,7 @@ var pca = PublicClientApplicationBuilder
 
 
 ## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>Upewnienie się, że kontrola wraca do MSAL po zakończeniu interaktywnej części przepływu uwierzytelniania
-W systemie Android należy przesłonić `OnActivityResult` metodę `Activity` i wywołać metodę SetAuthenticationContinuationEventArgs klasy AuthenticationContinuationHelper MSAL.
+W systemie Android należy zastąpić metodę `OnActivityResult` `Activity` i wywołać metodę SetAuthenticationContinuationEventArgs klasy AuthenticationContinuationHelper MSAL.
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -74,7 +75,7 @@ protected override void OnActivityResult(int requestCode,
 Ten wiersz zapewnia, że formant wraca do MSAL po zakończeniu interaktywnej części przepływu uwierzytelniania.
 
 ## <a name="update-the-android-manifest"></a>Aktualizowanie manifestu systemu Android
-`AndroidManifest.xml` Powinien zawierać następujące wartości:
+`AndroidManifest.xml` powinna zawierać następujące wartości:
 ```csharp
 <activity android:name="microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
@@ -113,9 +114,9 @@ Aby rozwiązać te problemy, należy:
 - Alternatywnie, jeśli tworzysz z wiersza polecenia, spróbuj usunąć/m z polecenia, jeśli jest używane.
 
 
-### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Błąd: Nazwa "AuthenticationContinuationHelper" nie istnieje w bieżącym kontekście
+### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Błąd: nazwa "AuthenticationContinuationHelper" nie istnieje w bieżącym kontekście
 
-Prawdopodobną przyczyną jest to, że program Visual Studio nie zaktualizował poprawnie pliku Android. csproj *. Czasami HintPath > FilePath nieprawidłowo zawiera netstandard13 zamiast **monoandroid90**.  **\<**
+Prawdopodobną przyczyną jest to, że program Visual Studio nie zaktualizował poprawnie pliku Android. csproj *. Czasami **\<HintPath >** FilePath nieprawidłowo zawiera netstandard13 zamiast **monoandroid90**.
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,
@@ -128,6 +129,6 @@ Prawdopodobną przyczyną jest to, że program Visual Studio nie zaktualizował 
 
 Więcej szczegółowych informacji i przykładów znajduje się w punkcie [uwagi dotyczące określonych](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) przykładowych plików README.MD:
 
-| Próbka | Platforma | Opis |
+| Przykład | Platforma | Opis |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, platformy UWP | Prosta aplikacja interfejsu Xamarin Forms, która przedstawia, jak używać MSAL do uwierzytelniania kont MSA i Azure AD za pośrednictwem punktu końcowego AADD v 2.0, a następnie uzyskiwać dostęp do Microsoft Graph przy użyciu tokenu z wynikiem. <br>![Topologia](media/msal-net-xamarin-android-considerations/topology.png) |

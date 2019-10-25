@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: df856e0d76dbd5903964bc80aa01b97b7461128a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4f585778808b133fe5c731ab6a3189594cbfc0f9
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122696"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804230"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Wysyłaj wywołania wychodzące do punktów końcowych HTTP lub HTTPS za pomocą Azure Logic Apps
 
@@ -35,7 +35,7 @@ Na podstawie możliwości docelowego punktu końcowego łącznik protokołu HTTP
 
 * Adres URL docelowego punktu końcowego, który ma zostać wywołany.
 
-* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps](../logic-apps/logic-apps-overview.md)?
 
 * Aplikacja logiki, z której ma zostać wywołany docelowy punkt końcowy. Aby rozpocząć pracę z wyzwalaczem HTTP, [Utwórz pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji HTTP, uruchom aplikację logiki z dowolnym wyzwalaczem, który chcesz. Ten przykład używa wyzwalacza HTTP jako pierwszego kroku.
 
@@ -43,9 +43,9 @@ Na podstawie możliwości docelowego punktu końcowego łącznik protokołu HTTP
 
 Ten wbudowany wyzwalacz wykonuje wywołanie HTTP do określonego adresu URL dla punktu końcowego i zwraca odpowiedź.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
 
-1. W projektancie w polu wyszukiwania wprowadź ciąg "http" jako filtr. Z listy **wyzwalacze** Wybierz wyzwalacz **http** .
+1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź ciąg "http" jako filtr. Z listy **wyzwalacze** Wybierz wyzwalacz **http** .
 
    ![Wybieranie wyzwalacza HTTP](./media/connectors-native-http/select-http-trigger.png)
 
@@ -53,9 +53,9 @@ Ten wbudowany wyzwalacz wykonuje wywołanie HTTP do określonego adresu URL dla 
 
 1. Podaj wartości [parametrów wyzwalacza http](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger) , które mają zostać uwzględnione w wywołaniu docelowego punktu końcowego. Skonfiguruj Cykl dla tego, jak często wyzwalacz ma sprawdzać docelowy punkt końcowy.
 
-   ![Wprowadź parametry wyzwalacza HTTP](./media/connectors-native-http/http-trigger-parameters.png)
+   W przypadku wybrania typu uwierzytelniania innego niż **none**ustawienia uwierzytelniania różnią się w zależności od wybranej opcji. Aby uzyskać więcej informacji, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-   Aby uzyskać więcej informacji o typach uwierzytelniania dostępnych dla protokołu HTTP, zobacz [uwierzytelnianie wyzwalaczy i akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   ![Wprowadź parametry wyzwalacza HTTP](./media/connectors-native-http/http-trigger-parameters.png)
 
 1. Aby dodać inne dostępne parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry.
 
@@ -67,7 +67,7 @@ Ten wbudowany wyzwalacz wykonuje wywołanie HTTP do określonego adresu URL dla 
 
 Ta wbudowana akcja powoduje wywołanie HTTP do określonego adresu URL dla punktu końcowego i zwraca odpowiedź.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
    Ten przykład używa wyzwalacza HTTP jako pierwszego kroku.
 
@@ -75,7 +75,7 @@ Ta wbudowana akcja powoduje wywołanie HTTP do określonego adresu URL dla punkt
 
    Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między krokami. Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
 
-1. W projektancie w polu wyszukiwania wprowadź ciąg "http" jako filtr. Z listy **Akcje** wybierz akcję **http** .
+1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź ciąg "http" jako filtr. Z listy **Akcje** wybierz akcję **http** .
 
    ![Wybieranie akcji HTTP](./media/connectors-native-http/select-http-action.png)
 
@@ -83,17 +83,17 @@ Ta wbudowana akcja powoduje wywołanie HTTP do określonego adresu URL dla punkt
 
 1. Podaj wartości [parametrów akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action) , które mają zostać uwzględnione w wywołaniu docelowego punktu końcowego.
 
-   ![Wprowadź parametry akcji HTTP](./media/connectors-native-http/http-action-parameters.png)
+   W przypadku wybrania typu uwierzytelniania innego niż **none**ustawienia uwierzytelniania różnią się w zależności od wybranej opcji. Aby uzyskać więcej informacji, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-   Aby uzyskać więcej informacji o typach uwierzytelniania dostępnych dla protokołu HTTP, zobacz [uwierzytelnianie wyzwalaczy i akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   ![Wprowadź parametry akcji HTTP](./media/connectors-native-http/http-action-parameters.png)
 
 1. Aby dodać inne dostępne parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry.
 
-1. Po zakończeniu Pamiętaj, aby zapisać aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
+1. Gdy skończysz, pamiętaj, aby zapisać aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
 ## <a name="content-with-multipartform-data-type"></a>Zawartość z typem wieloczęściowym/formularzem danych
 
-Aby obsłużyć zawartość `multipart/form-data` , która ma typ w żądaniach HTTP, można dodać obiekt JSON, `$content-type` który `$multipart` zawiera atrybuty i do treści żądania HTTP przy użyciu tego formatu.
+Aby obsłużyć zawartość, która ma `multipart/form-data` typu w żądaniach HTTP, można dodać obiekt JSON, który zawiera atrybuty `$content-type` i `$multipart` do treści żądania HTTP przy użyciu tego formatu.
 
 ```json
 "body": {
@@ -109,7 +109,7 @@ Aby obsłużyć zawartość `multipart/form-data` , która ma typ w żądaniach 
 }
 ```
 
-Załóżmy na przykład, że masz aplikację logiki, która wysyła żądanie HTTP post dla pliku programu Excel do witryny sieci Web za pomocą interfejsu API tej witryny, który obsługuje ten `multipart/form-data` typ. Oto, jak ta akcja może wyglądać następująco:
+Załóżmy na przykład, że masz aplikację logiki, która wysyła żądanie HTTP POST dla pliku programu Excel do witryny sieci Web za pomocą interfejsu API tej witryny, który obsługuje typ `multipart/form-data`. Oto, jak ta akcja może wyglądać następująco:
 
 ![Wieloczęściowe dane formularza](./media/connectors-native-http/http-action-multipart.png)
 
@@ -148,20 +148,20 @@ Aby uzyskać więcej informacji na temat wyzwalaczy i parametrów akcji, zobacz 
 
 Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacza HTTP lub akcji, która zwraca te informacje:
 
-| Nazwa właściwości | Type | Opis |
+| Nazwa właściwości | Typ | Opis |
 |---------------|------|-------------|
-| Nagłówka | object | Nagłówki żądania |
-| treść | object | Obiekt JSON | Obiekt z zawartością treści z żądania |
-| Kod stanu | int | Kod stanu z żądania |
+| Nagłówka | obiekt | Nagłówki żądania |
+| jednostce | obiekt | Obiekt JSON | Obiekt z zawartością treści z żądania |
+| kod stanu | int | Kod stanu z żądania |
 |||
 
 | Kod stanu | Opis |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Zaakceptowany |
-| 400 | Nieprawidłowe żądanie |
+| 202 | Przyjmować |
+| 400 | Złe żądanie |
 | 401 | Brak autoryzacji |
-| 403 | Zabroniony |
+| 403 | Forbidden |
 | 404 | Nie znaleziono |
 | 500 | Wewnętrzny błąd serwera. Wystąpił nieznany błąd. |
 |||

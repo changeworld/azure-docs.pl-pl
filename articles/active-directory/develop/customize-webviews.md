@@ -1,5 +1,6 @@
 ---
-title: Dostosuj przeglądarki i WebViews | Platforma tożsamości firmy Microsoft
+title: Dostosowywanie przeglądarek i widoków WebViews
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak dostosować środowisko przeglądarki używane przez MSAL dla systemów iOS i macOS do logowania użytkowników
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dd5be3944bdff459f6d920b358ae08efedcc431
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: fcb314e46094bb6c283a17508c35b7fc17e010e5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264205"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803381"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Instrukcje: Dostosowywanie przeglądarek i WebViews dla systemu iOS/macOS
 

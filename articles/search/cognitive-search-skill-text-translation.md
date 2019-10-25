@@ -1,20 +1,19 @@
 ---
-title: Umiejętność wyszukiwania w tłumaczeniach tekstu — Azure Search
-description: Oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy w potoku wzbogacenia Azure Search.
-services: search
+title: Umiejętność tłumaczenia tekstu
+titleSuffix: Azure Cognitive Search
+description: Oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: careyjmac
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 06/25/2019
 ms.author: chalton
-ms.openlocfilehash: ddfb35cbfcfbc262f3eff0de67f5cedfc31ea27e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c2405fe67b39e016e64efb1b36cc551a00a338fc
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265708"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791857"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Umiejętność tłumaczenia tekstu
 
@@ -22,12 +21,12 @@ Umiejętność **tłumaczenia tekstu** oblicza tekst i dla każdego rekordu zwra
 
 Ta funkcja jest przydatna, jeśli oczekujesz, że dokumenty mogą nie być w jednym języku, a w takim przypadku można znormalizować tekst do jednego języka przed indeksowaniem wyszukiwania, przetłumacząc go.  Jest on również przydatny w przypadku przypadków użycia lokalizacji, w których można chcieć mieć kopie tego samego tekstu w wielu językach.
 
-[Interfejs API tłumaczenia tekstu w usłudze translator v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) jest nieregionalną usługą poznawczej, co oznacza, że dane nie są gwarantowane w tym samym regionie co Azure Search lub dołączonego zasobu Cognitive Services.
+[Interfejs API tłumaczenia tekstu w usłudze translator v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) jest nieregionalną usługą poznawczej, co oznacza, że dane nie są gwarantowane w tym samym regionie co wyszukiwanie poznawcze platformy Azure lub dołączonego zasobu Cognitive Services.
 
 > [!NOTE]
-> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w Azure Search. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
+> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w usłudze Azure Wyszukiwanie poznawcze. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
 >
-> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika usługi Azure wyszukiwanie poznawcze](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. umiejętności. Text. TranslationSkill
@@ -47,9 +46,9 @@ W parametrach jest rozróżniana wielkość liter.
 
 ## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
 
-| Wprowadź nazwę     | Opis |
+| Nazwa wejściowa     | Opis |
 |--------------------|-------------|
-| text | Tekst do tłumaczenia.|
+| tekst | Tekst do tłumaczenia.|
 | toLanguageCode    | Ciąg wskazujący język, w którym powinien zostać przetłumaczony tekst. Jeśli nie określono tego parametru wejściowego, defaultToLanguageCode będzie służyć do tłumaczenia tekstu. <br/>Zapoznaj się [z pełną listą obsługiwanych języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
 | fromLanguageCode  | Ciąg wskazujący bieżący język tekstu. Jeśli ten parametr nie jest określony, defaultFromLanguageCode (lub automatyczne wykrywanie języka, jeśli nie podano defaultFromLanguageCode) będzie używany do tłumaczenia tekstu. <br/>Zapoznaj się [z pełną listą obsługiwanych języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
 
@@ -151,5 +150,5 @@ Jeśli tekst jest większy niż 50 000 znaków, zostaną przetłumaczone tylko p
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
++ [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

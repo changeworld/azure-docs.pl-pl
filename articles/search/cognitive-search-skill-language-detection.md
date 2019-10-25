@@ -1,20 +1,19 @@
 ---
-title: Umiejętność wyszukiwania w języku wykrywanie poznawcze — Azure Search
-description: Oblicza niestrukturalny tekst, a dla każdego rekordu zwraca identyfikator języka z oceną wskazującą siłę analizy w potoku wzbogacenia Azure Search.
-services: search
+title: Umiejętność wykrywania języka
+titleSuffix: Azure Cognitive Search
+description: Oblicza niestrukturalny tekst, a dla każdego rekordu zwraca identyfikator języka z oceną wskazującą siłę analizy w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: fe21477865b5bbad65f5e4639e8df253f12dc1b6
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: e3ec9ea9cfbae314297c5b59f6a07bcebaef6a5c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265422"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791956"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Umiejętność wykrywania języka
 
@@ -22,16 +21,16 @@ Umiejętność **wykrywanie języka** wykrywa język tekstu wejściowego i rapor
 
 Ta funkcja jest szczególnie przydatna, gdy trzeba dostarczyć język tekstu jako dane wejściowe do innych umiejętności (na przykład [umiejętności analiza tonacji](cognitive-search-skill-sentiment.md) lub [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md)).
 
-Wykrywanie języka korzysta z bibliotek przetwarzania języka naturalnego Bing, które przekraczają liczbę [obsługiwanych języków i regionów](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support) wymienionych dla analiza tekstu. Dokładna lista języków nie jest publikowana, ale zawiera wszystkie języki szeroko wypowiadane oraz warianty, dialekty i niektóre języki regionalne i kulturowe. Jeśli masz zawartość wyrażoną w rzadziej używanym języku, możesz [wypróbować interfejs API wykrywanie języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) , aby zobaczyć, czy zwraca kod. Odpowiedź dla języków, których nie można wykryć, `unknown`to.
+Wykrywanie języka korzysta z bibliotek przetwarzania języka naturalnego Bing, które przekraczają liczbę [obsługiwanych języków i regionów](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support) wymienionych dla analiza tekstu. Dokładna lista języków nie jest publikowana, ale zawiera wszystkie języki szeroko wypowiadane oraz warianty, dialekty i niektóre języki regionalne i kulturowe. Jeśli masz zawartość wyrażoną w rzadziej używanym języku, możesz [wypróbować interfejs API wykrywanie języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) , aby zobaczyć, czy zwraca kod. Odpowiedź dla języków, których nie można wykryć, jest `unknown`.
 
 > [!NOTE]
-> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w Azure Search. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
+> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w usłudze Azure Wyszukiwanie poznawcze. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
 >
-> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika usługi Azure wyszukiwanie poznawcze](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.LanguageDetectionSkill
+Microsoft. umiejętności. Text. LanguageDetectionSkill
 
 ## <a name="data-limits"></a>Limity danych
 Maksymalny rozmiar rekordu powinien składać się z 50 000 znaków mierzonych przez [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Jeśli musisz podzielić dane przed wysłaniem ich do analizatora tonacji, możesz użyć [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
@@ -42,7 +41,7 @@ W parametrach jest rozróżniana wielkość liter.
 
 | Dane wejściowe     | Opis |
 |--------------------|-------------|
-| text | Tekst do analizy.|
+| tekst | Tekst do analizy.|
 
 ## <a name="skill-outputs"></a>Wyniki umiejętności
 
@@ -50,7 +49,7 @@ W parametrach jest rozróżniana wielkość liter.
 |--------------------|-------------|
 | languageCode | Kod języka ISO 6391 dla zidentyfikowanego języka. Na przykład "en". |
 | język | Nazwa języka. Na przykład "angielski". |
-| wynik | Wartość z zakresu od 0 do 1. Prawdopodobieństwo poprawnego zidentyfikowania języka. Wynik może być mniejszy niż 1, jeśli zdanie ma Języki mieszane.  |
+| dały | Wartość z zakresu od 0 do 1. Prawdopodobieństwo poprawnego zidentyfikowania języka. Wynik może być mniejszy niż 1, jeśli zdanie ma Języki mieszane.  |
 
 ##  <a name="sample-definition"></a>Definicja Przykładowa
 
@@ -137,5 +136,5 @@ Jeśli tekst jest wyrażony w nieobsługiwanym języku, generowany jest błąd i
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
++ [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

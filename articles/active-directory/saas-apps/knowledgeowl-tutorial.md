@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą KnowledgeOwl | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i KnowledgeOwl.
+title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą KnowledgeOwl | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i KnowledgeOwl.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,110 +13,88 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: ab80b6efef71c71feea1359112d09bae90a7ab84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dc7d481b757a76ba65e0c78a93bde1bc58ace7cc
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098886"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791632"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą KnowledgeOwl
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą KnowledgeOwl
 
-W tym samouczku dowiesz się, jak zintegrować KnowledgeOwl w usłudze Azure Active Directory (Azure AD).
-Integrowanie KnowledgeOwl z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę KnowledgeOwl z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi KnowledgeOwl z usługą Azure AD można:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do KnowledgeOwl.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do KnowledgeOwl (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do KnowledgeOwl.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi KnowledgeOwl przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą KnowledgeOwl, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* KnowledgeOwl logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) KnowledgeOwl.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje KnowledgeOwl **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez
-* Obsługuje KnowledgeOwl **Just In Time** aprowizacji użytkowników
+* KnowledgeOwl obsługuje usługę **SP i dostawcy tożsamości** zainicjowano Logowanie jednokrotne
+* KnowledgeOwl obsługuje Inicjowanie obsługi użytkowników **just in Time**
 
 ## <a name="adding-knowledgeowl-from-the-gallery"></a>Dodawanie KnowledgeOwl z galerii
 
-Aby skonfigurować integrację KnowledgeOwl w usłudze Azure AD, należy dodać KnowledgeOwl z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu KnowledgeOwl z usługą Azure AD, musisz dodać KnowledgeOwl z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać KnowledgeOwl z galerii, wykonaj następujące czynności:**
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **KnowledgeOwl** w polu wyszukiwania.
+1. Wybierz pozycję **KnowledgeOwl** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-knowledgeowl"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla KnowledgeOwl
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą KnowledgeOwl przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w KnowledgeOwl.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą KnowledgeOwl, wykonaj następujące bloki konstrukcyjne:
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj Logowanie jednokrotne](#configure-knowledgeowl-sso)** w usłudze KnowledgeOwl, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    * **[Utwórz użytkownika testowego KnowledgeOwl](#create-knowledgeowl-test-user)** , aby dysponować odpowiednikiem B. Simon w KnowledgeOwl, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-4. W polu wyszukiwania wpisz **KnowledgeOwl**, wybierz opcję **KnowledgeOwl** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-    ![KnowledgeOwl na liście wyników](common/search-new-app.png)
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **KnowledgeOwl** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą KnowledgeOwl w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w KnowledgeOwl musi zostać ustanowione.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą KnowledgeOwl, należy wykonać poniższe bloki konstrukcyjne:
-
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie KnowledgeOwl logowania jednokrotnego](#configure-knowledgeowl-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego KnowledgeOwl](#create-knowledgeowl-test-user)**  — aby odpowiednikiem Britta Simon w KnowledgeOwl połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
-
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z KnowledgeOwl, wykonaj następujące czynności:
-
-1. W [witryny Azure portal](https://portal.azure.com/)na **KnowledgeOwl** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
-
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
-
-    ![KnowledgeOwl domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , w sekcji **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
 
     a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
-
-    ||
-    |-|
+    
+    | | |
+    |-|-|
     | `https://app.knowledgeowl.com/sp`|
     | `https://app.knowledgeowl.com/sp/id/<unique ID>`|
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
-
-    ||
-    |-|
+    
+    | | |
+    |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
     | `https://subdomain.knowledgeowl.com/docs/saml-login`|
     | `https://subdomain.knowledgeowl.com/home/saml-login`|
@@ -124,14 +102,12 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z KnowledgeOwl, wykon
     | `https://privatedomain.com/docs/saml-login`|
     | `https://privatedomain.com/home/saml-login`|
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
-
-    ![KnowledgeOwl domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
-
-    ||
-    |-|
+    
+    | | |
+    |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
     | `https://subdomain.knowledgeowl.com/docs/saml-login`|
     | `https://subdomain.knowledgeowl.com/home/saml-login`|
@@ -140,158 +116,115 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z KnowledgeOwl, wykon
     | `https://privatedomain.com/home/saml-login`|
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy zaktualizować te wartości z rzeczywistego identyfikatora, adres URL odpowiedzi i URL logowania jednokrotnego, co zostało wyjaśnione w dalszej części tego samouczka.
+    > Te wartości nie są prawdziwe. Musisz zaktualizować te wartości z rzeczywistego identyfikatora, adresu URL odpowiedzi i adresu URL logowania, co zostało wyjaśnione w dalszej części tego samouczka.
 
-6. Aplikacja KnowledgeOwl oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij przycisk **Edytuj** ikonę, aby otworzyć **atrybutów użytkownika** okna dialogowego.
+1. Aplikacja KnowledgeOwl oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności: 
+1. Oprócz powyższych, aplikacja KnowledgeOwl oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je sprawdzić zgodnie z wymaganiami.
 
-    | Name (Nazwa) | Atrybut źródłowy | Przestrzeń nazw |
+    | Nazwa | Atrybut źródłowy | Przestrzeń nazw |
     | ------------ | -------------------- | -----|
     | ssoid | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (RAW)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![image](common/new-save-attribute.png)
+    ![Link do pobierania certyfikatu](common/certificateraw.png)
 
-    ![image](common/new-attribute-details.png)
-
-    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
-
-    c. Na liście **Przestrzeń nazw** podaj wartość przestrzeni nazw pokazaną dla tego wiersza.
-
-    d. Dla opcji Źródło wybierz wartość **Atrybut**.
-
-    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
-
-    f. Kliknij przycisk **OK**.
-
-    g. Kliknij pozycję **Zapisz**.
-
-8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (nieprzetworzony)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
-
-    ![Link pobierania certyfikatu](common/certificateraw.png)
-
-9. Na **Konfigurowanie KnowledgeOwl** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie KnowledgeOwl** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-    b. Identyfikator usługi Azure AD
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-    c. Adres URL wylogowywania
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
-### <a name="configure-knowledgeowl-single-sign-on"></a>Konfigurowanie KnowledgeOwl logowanie jednokrotne
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-1. W oknie przeglądarki innej witryny sieci web należy zalogować się do witryny firmy KnowledgeOwl jako administrator.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi KnowledgeOwl.
 
-1. Kliknij pozycję **ustawienia** , a następnie wybierz **zabezpieczeń**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **KnowledgeOwl**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
+
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+## <a name="configure-knowledgeowl-sso"></a>Konfigurowanie logowania jednokrotnego KnowledgeOwl
+
+1. W innym oknie przeglądarki sieci Web Zaloguj się do firmowej witryny KnowledgeOwl jako administrator.
+
+1. Kliknij pozycję **Ustawienia** , a następnie wybierz pozycję **zabezpieczenia**.
 
     ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure1.png)
 
-1. Przewiń do **integracja logowania jednokrotnego SAML** i wykonaj następujące czynności:
+1. Przewiń do **integracji SAML SSO** i wykonaj następujące czynności:
 
     ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure2.png)
 
-    a. Wybierz **włączenia funkcji logowania jednokrotnego SAML**.
+    a. Wybierz pozycję **Włącz logowanie jednokrotne SAML**.
 
-    b. Kopiuj **identyfikator jednostki SP** wartość i wklej go w **identyfikator jednostki** w **podstawową konfigurację protokołu SAML** sekcji w witrynie Azure portal.
+    b. Skopiuj wartość **Identyfikator jednostki Sp** i wklej ją do **identyfikatora (identyfikator jednostki)** w sekcji **Podstawowa konfiguracja SAML** w Azure Portal.
 
-    c. Kopiuj **adres URL logowania SP** wartość i wklej go w **adres URL logowania i adres URL odpowiedzi** pola tekstowe w **podstawową konfigurację protokołu SAML** sekcji w witrynie Azure portal.
+    d. Skopiuj wartość **adres URL logowania** do programu SP i wklej ją do pól tekstowych **adres URL logowania i adres URL odpowiedzi** w sekcji **Podstawowa konfiguracja SAML** w Azure Portal.
 
-    d. W **entityID tożsamości** pola tekstowego, Wklej **usługi Azure AD identyfikator** wartości, które zostały skopiowane z witryny Azure portal.
+    d. W polu tekstowym **dostawcy tożsamości entityID** wklej wartość **identyfikatora usługi Azure AD** , która została skopiowana z Azure Portal.
 
-    e. W **adres URL logowania dostawcy tożsamości** pola tekstowego, Wklej **adres URL logowania** wartości, które zostały skopiowane z witryny Azure portal.
+    e. W polu tekstowym **adres URL logowania dostawcy tożsamości** wklej wartość **adresu URL logowania** , która została skopiowana z Azure Portal.
 
-    f. W **adres URL wylogowania dostawcy tożsamości** pola tekstowego, Wklej **adres URL wylogowania** wartości, które zostały skopiowane z witryny Azure portal
+    f. W polu tekstowym **adres URL wylogowywania dostawcy tożsamości** wklej wartość **adresu URL wylogowania** , która została skopiowana z Azure Portal
 
-    g. Przekazywanie formularza pobranego certyfikatu witryny Azure portal, klikając **Przekaż certyfikat tożsamości**.
+    g. Przekaż pobrany certyfikat w Azure Portal przez kliknięcie przycisku **Przekaż certyfikat dostawcy tożsamości**.
 
-    h. Kliknij pozycję **atrybutów SAML mapy** do mapowania atrybutów, a następnie wykonaj następujące czynności:
+    h. Kliknij pozycję **Mapuj atrybuty SAML** , aby mapować atrybuty, i wykonaj następujące czynności:
 
     ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure3.png)
 
-    * Wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` do **identyfikator logowania jednokrotnego** textbox
-    * Wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` do **nazwy użytkownika/Poczta E-mail** pola tekstowego.
-    * Wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` do **imię** pola tekstowego.
-    * Wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` do **nazwisko** pola tekstowego.
-    * Kliknij polecenie **Zapisz**.
+    * Wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` w polu tekstowym **identyfikatora logowania jednokrotnego**
+    * Wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` w polu tekstowym **username/email** .
+    * Wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` w polu tekstowym **imię i nazwisko** .
+    * Wprowadź `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` w polu tekstowym **nazwisko** .
+    * Kliknij pozycję **Zapisz**
 
     i. Kliknij przycisk **Zapisz** w dolnej części strony.
 
     ![Konfiguracja KnowledgeOwl](./media/knowledgeowl-tutorial/configure4.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-knowledgeowl-test-user"></a>Utwórz użytkownika testowego KnowledgeOwl
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
-
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`  
-    Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do KnowledgeOwl.
-
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **KnowledgeOwl**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-2. Na liście aplikacji wybierz **KnowledgeOwl**.
-
-    ![Link KnowledgeOwl na liście aplikacji](common/all-applications.png)
-
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
-
-### <a name="create-knowledgeowl-test-user"></a>Tworzenie użytkownika testowego KnowledgeOwl
-
-W tej sekcji użytkownika o nazwie Britta Simon jest tworzony w KnowledgeOwl. KnowledgeOwl obsługuje aprowizacji użytkowników w czasie, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w KnowledgeOwl, nowy katalog jest tworzony po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie B. Simon został utworzony w KnowledgeOwl. KnowledgeOwl obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze KnowledgeOwl, zostanie utworzony nowy po uwierzytelnieniu.
 
 > [!Note]
 > Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej KnowledgeOwl](mailto:support@knowledgeowl.com).
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka KnowledgeOwl w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze KnowledgeOwl, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka KnowledgeOwl w panelu dostępu należy automatycznie zalogować się do KnowledgeOwl, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wypróbuj KnowledgeOwl z usługą Azure AD](https://aad.portal.azure.com/)

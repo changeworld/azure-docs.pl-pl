@@ -1,5 +1,6 @@
 ---
-title: Wytyczne dotyczące oznaczania aplikacji marką | Microsoft Docs
+title: Wytyczne dotyczące oznaczania aplikacji marką
+titleSuffix: Microsoft identity platform
 description: Kompletny przewodnik dotyczący zasobów dla deweloperów usługi Azure Active Directory
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92770acb19bf95d6a19507184bd8bea10806d5b7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ef784dc5f071889a1f4a0072599b9880b7c07c55
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70053247"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803875"
 ---
 # <a name="branding-guidelines-for-applications"></a>Wytyczne dotyczące oznaczania aplikacji marką
 
@@ -60,9 +61,9 @@ We wcześniejszej wersji tych wytycznych zalecamy używanie piktogramu niebieski
 
 Aplikacja może mieć różne procedury tworzenia konta i logowania. W poniższych sekcjach przedstawiono wizualne wskazówki dla obu scenariuszy.
 
-**Jeśli aplikacja obsługuje rejestrację użytkownika końcowego (np. w celu skorzystania z bezpłatnej wersji próbnej lub w modelu freemium)** : Możesz wyświetlić przycisk **logowania**, który umożliwia użytkownikom uzyskanie dostępu do aplikacji za pomocą konta służbowego lub konta osobistego. Przy pierwszym uzyskaniu dostępu do aplikacji w usłudze Azure AD jest wyświetlany monit o wyrażenie zgody.
+**Jeśli aplikacja obsługuje tworzenie kont użytkowników końcowych, np. w ramach bezpłatnej wersji próbnej lub modelu bezpłatnych funkcji premium (freemium)** : można wyświetlić przycisk **logowania**, który umożliwia użytkownikom dostęp do aplikacji przy użyciu konta służbowego lub osobistego. Przy pierwszym uzyskaniu dostępu do aplikacji w usłudze Azure AD jest wyświetlany monit o wyrażenie zgody.
 
-**Jeśli organizacja wymaga uprawnień, na które zgodę mogą wyrazić tylko administratorzy, lub aplikacja wymaga licencjonowania organizacji**: Należy oddzielić dostęp administratora od logowania użytkowników. Użycie **przycisku „Pobierz tę aplikację”** powoduje przekierowanie administratorów do logowania, a następnie wyświetlenie monitu o wyrażenie zgody w imieniu użytkowników w organizacji, co ma dodatkową zaletę w postaci pomijania monitów o wyrażenie zgody użytkowników końcowych w aplikacji.
+**Jeśli organizacja wymaga uprawnień, na które zgodę mogą wyrazić tylko administratorzy, lub aplikacja wymaga licencjonowania organizacji**: należy oddzielić dostęp administratora od logowania użytkowników. Użycie **przycisku „Pobierz tę aplikację”** powoduje przekierowanie administratorów do logowania, a następnie wyświetlenie monitu o wyrażenie zgody w imieniu użytkowników w organizacji, co ma dodatkową zaletę w postaci pomijania monitów o wyrażenie zgody użytkowników końcowych w aplikacji.
 
 ## <a name="visual-guidance-for-app-acquisition"></a>Wizualne wskazówki dotyczące pozyskiwania aplikacji
 
@@ -74,7 +75,7 @@ Gdy administratorzy wyrażą zgodę na aplikację, będą mogli dodać ją do ś
 
 Jednak zalecamy napisanie tekstu objaśnienia, aby nie trzeba było używać tylko przycisków. Na przykład:
 
-> *Jeśli używasz już usługi Office 365 lub innej usługi biznesowej firmy Microsoft, możesz udzielić aplikacji <nazwa_aplikacji> dostępu do danych organizacji. Umożliwi to użytkownikom dostęp do aplikacji <nazwa_aplikacji> przy użyciu istniejących kont służbowych.*
+> *Jeśli korzystasz już z pakietu Office 365 lub innej usługi biznesowej firmy Microsoft, możesz udzielić < your_app_name > dostępu do danych organizacji. Dzięki temu użytkownicy będą mogli uzyskiwać dostęp do < your_app_name > przy użyciu istniejących kont służbowych.*
 
 Aby pobrać oficjalne logo firmy Microsoft do użycia w aplikacji, kliknij prawym przyciskiem myszy logo, którego chcesz użyć, a następnie zapisz je w komputerze.
 

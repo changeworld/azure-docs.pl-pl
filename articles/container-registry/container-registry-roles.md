@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
-ms.openlocfilehash: 793dbf056201a3315a9b77dfebbb9331a8ed7db1
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 69104cdaeb4abfc15e2ac4209e1ddbc610656c13
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310599"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793985"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry ról i uprawnień
 
@@ -23,7 +23,7 @@ Usługa Azure Container Registry obsługuje zestaw ról platformy Azure, które 
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | Właściciel | X | X | X | X | X | X |  |  
 | Współautor | X | X | X |  X | X | X |  |  
-| Czytelnik | X |  |  |  |  |  |  |
+| Czytelnik | X |  |  | X |  |  |  |
 | AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
 | AcrDelete |  |  |  |  | X |  |  |
@@ -35,7 +35,7 @@ Wszystkie uprawnienia są stosowane, najlepszym rozwiązaniem jest zapewnienie n
 
 ### <a name="cicd-solutions"></a>Rozwiązania CI/CD
 
-W przypadku automatyzowania `docker build` poleceń z rozwiązań ciągłej integracji/ciągłego `docker push` wdrażania wymagane są funkcje. W przypadku tych scenariuszy usługi bezobsługowe sugerujemy przypisanie roli **AcrPush** . Ta rola, w przeciwieństwie do szerszej roli **współautor** , uniemożliwia kontu wykonywanie innych operacji rejestru lub uzyskiwanie dostępu do Azure Resource Manager.
+W przypadku automatyzowania `docker build` poleceń z rozwiązań ciągłej integracji/ciągłego wdrażania wymagane są `docker push` możliwości. W przypadku tych scenariuszy usługi bezobsługowe sugerujemy przypisanie roli **AcrPush** . Ta rola, w przeciwieństwie do szerszej roli **współautor** , uniemożliwia kontu wykonywanie innych operacji rejestru lub uzyskiwanie dostępu do Azure Resource Manager.
 
 ### <a name="container-host-nodes"></a>Węzły hosta kontenera
 
@@ -43,11 +43,11 @@ Podobnie węzły korzystające z kontenerów wymagają roli **AcrPull** , ale ni
 
 ### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code rozszerzenie platformy Docker
 
-Dla narzędzi, takich jak Visual Studio Code [Docker Extension](https://code.visualstudio.com/docs/azure/docker), wymagany jest dodatkowy dostęp dostawcy zasobów, aby wyświetlić listę dostępnych rejestrów kontenerów platformy Azure. W takim przypadku należy zapewnić użytkownikom dostęp do roli **czytelnik** lub **współautor** . Role te umożliwiają `docker pull`, `docker push`, `az acr list` ,iinnemożliwości.`az acr build` 
+Dla narzędzi, takich jak Visual Studio Code [Docker Extension](https://code.visualstudio.com/docs/azure/docker), wymagany jest dodatkowy dostęp dostawcy zasobów, aby wyświetlić listę dostępnych rejestrów kontenerów platformy Azure. W takim przypadku należy zapewnić użytkownikom dostęp do roli **czytelnik** lub **współautor** . Role te zezwalają na `docker pull`, `docker push`, `az acr list`, `az acr build`i inne możliwości. 
 
 ## <a name="access-resource-manager"></a>Menedżer zasobów dostępu
 
-Do zarządzania Azure Portal i rejestrem za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/)jest wymagany dostęp Azure Resource Manager. Aby na przykład uzyskać listę rejestrów przy użyciu `az acr list` polecenia, musisz mieć ten zestaw uprawnień. 
+Do zarządzania Azure Portal i rejestrem za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/)jest wymagany dostęp Azure Resource Manager. Na przykład aby uzyskać listę rejestrów przy użyciu polecenia `az acr list`, musisz mieć ten zestaw uprawnień. 
 
 ## <a name="create-and-delete-registry"></a>Tworzenie i usuwanie rejestru
 
@@ -55,11 +55,11 @@ Możliwość tworzenia i usuwania rejestrów kontenerów platformy Azure.
 
 ## <a name="push-image"></a>Obraz wypychany
 
-Możliwość `docker push` obrazu lub wypchnięcie innego obsługiwanego [artefaktu](container-registry-image-formats.md) , takiego jak wykres Helm, do rejestru. Wymaga [uwierzytelniania](container-registry-authentication.md) z rejestrem przy użyciu autoryzowanej tożsamości. 
+Możliwość `docker push` obrazu lub wypchnięcia innego [obsługiwanego artefaktu](container-registry-image-formats.md) , takiego jak wykres Helm, do rejestru. Wymaga [uwierzytelniania](container-registry-authentication.md) z rejestrem przy użyciu autoryzowanej tożsamości. 
 
 ## <a name="pull-image"></a>Obraz ściągania
 
-Możliwość `docker pull` niepoddania kwarantannie obrazu lub ściągnięcia innego obsługiwanego [artefaktu](container-registry-image-formats.md) , takiego jak wykres Helm, z rejestru. Wymaga [uwierzytelniania](container-registry-authentication.md) z rejestrem przy użyciu autoryzowanej tożsamości.
+Możliwość `docker pull` obrazu nieobjętego kwarantanną lub ściągnięcia innego [obsługiwanego artefaktu](container-registry-image-formats.md) , takiego jak wykres Helm, z rejestru. Wymaga [uwierzytelniania](container-registry-authentication.md) z rejestrem przy użyciu autoryzowanej tożsamości.
 
 ## <a name="delete-image-data"></a>Usuń dane obrazu
 
@@ -73,7 +73,7 @@ Możliwość konfigurowania zasad w rejestrze. Zasady obejmują przeczyszczanie 
 
 Możliwość podpisywania obrazów, zwykle przypisywanych do zautomatyzowanego procesu, który mógłby korzystać z nazwy głównej usługi. To uprawnienie jest zwykle połączone z [obrazem push](#push-image) , aby umożliwić wypychanie zaufanego obrazu do rejestru. Aby uzyskać szczegółowe informacje, zobacz [zaufanie zawartości w Azure Container Registry](container-registry-content-trust.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej na temat przypisywania ról RBAC do tożsamości platformy Azure przy użyciu [Azure Portal](../role-based-access-control/role-assignments-portal.md), [interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)lub innych narzędzi platformy Azure.
 

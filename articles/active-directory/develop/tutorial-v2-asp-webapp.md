@@ -1,5 +1,6 @@
 ---
-title: Wprowadzenie do usługi Azure AD v 2.0 ASP.NET Web Server | Microsoft Docs
+title: Wprowadzenie do usługi Azure AD v 2.0 ASP.NET Web Server
+titleSuffix: Microsoft identity platform
 description: Implementowanie logowania firmy Microsoft w rozwiązaniu ASP.NET przy użyciu tradycyjnej aplikacji opartej na przeglądarce sieci Web i usługi OpenID Connect Connect Standard
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1ce7197a195b37787d1a43a44efd8438154e9f9
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: b66d2a9a958afd536dcffeca211a3fc56cf09ef8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113646"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803722"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Dodawanie logowania do firmy Microsoft do aplikacji sieci Web ASP.NET
 
@@ -55,14 +56,14 @@ W tej sekcji opisano sposób instalowania i konfigurowania potoku uwierzytelnian
 
 ### <a name="create-your-aspnet-project"></a>tworzenie projektu ASP.NET
 
-1. W programie Visual Studio: Przejdź do **pliku** > **nowe** > **projektu**.
+1. W programie Visual Studio: Przejdź do **pliku** > **nowym** > **projekcie**.
 2. W pozycji **Visual C#\Internet** wybierz opcję **Aplikacja internetowa ASP.NET (.NET Framework)** .
 3. Nadaj nazwę aplikacji, a następnie wybierz przycisk **OK**.
 4. Wybierz opcję **puste**, a następnie zaznacz pole wyboru, aby dodać odwołania **MVC** .
 
 ## <a name="add-authentication-components"></a>dodawanie składników uwierzytelniania
 
-1. W programie Visual Studio: Wybierz kolejno pozycje **Narzędzia** > Menedżer**pakietów** > NuGet**konsola Menedżera pakietów**.
+1. W programie Visual Studio: Przejdź do pozycji **narzędzia** > **menedżer pakietów NuGet** > **konsola Menedżera pakietów**.
 2. Dodaj *pakiety NuGet oprogramowania pośredniczącego OWIN*, wpisując następujące polecenie w oknie Konsola menedżera pakietów:
 
     ```powershell
@@ -82,10 +83,10 @@ Poniższe kroki służą do tworzenia klasy startowej OWIN oprogramowania pośre
 
 > [!TIP]
 > Jeśli projekt nie ma pliku `Startup.cs` w folderze głównym:
-> 1. Kliknij prawym przyciskiem myszy folder główny projektu, a następnie wybierz pozycję **Dodaj** > **nowy element** > **Owin klasy startowej**.<br/>
+> 1. Kliknij prawym przyciskiem myszy folder główny projektu, a następnie wybierz pozycję **dodaj** > **nowy element** > **Klasa początkowa Owin**.<br/>
 > 2. Nadaj mu nazwę **Startup.cs**.
 >
->> Upewnij się, że wybrana Klasa jest klasą początkową OWIN, a C# nie klasą standardową. Potwierdź to, sprawdzając, czy widzisz [zestaw: OwinStartup (typeof ({NameSpace}. Uruchamianie)] powyżej przestrzeni nazw.
+>> Upewnij się, że wybrana Klasa jest klasą początkową OWIN, a C# nie klasą standardową. Potwierdź to, sprawdzając, czy jest widoczny komunikat [assembly: OwinStartup (typeof ({NameSpace}). Uruchamianie)] powyżej przestrzeni nazw.
 
 1. Dodaj odwołania *Owin* i *Microsoft. IdentityModel* do Startup.cs:
 
@@ -169,7 +170,7 @@ Poniższe kroki służą do tworzenia klasy startowej OWIN oprogramowania pośre
     ```
 
 > [!NOTE]
-> Ustawienie `ValidateIssuer = false` to uproszczenie dla tego przewodnika Szybki Start. W rzeczywistych aplikacjach należy sprawdzić poprawność wystawcy.
+> Ustawieniem `ValidateIssuer = false` jest uproszczenie dla tego przewodnika Szybki Start. W rzeczywistych aplikacjach należy sprawdzić poprawność wystawcy.
 > Zapoznaj się z przykładami, aby dowiedzieć się, jak to zrobić.
 
 <!--start-collapse-->
@@ -181,7 +182,7 @@ Poniższe kroki służą do tworzenia klasy startowej OWIN oprogramowania pośre
 
 Aby utworzyć nowy kontroler w celu udostępnienia metod logowania i wylogowania, wykonaj następujące kroki:
 
-1.  Kliknij prawym przyciskiem myszy folder controllers, a następnie wybierz polecenie **Dodaj** > **kontroler**.
+1.  Kliknij prawym przyciskiem myszy folder **controllers** i wybierz polecenie **Dodaj** **kontroler** > .
 2.  Wybierz pozycję **Kontroler MVC (wersja platformy .NET) — Pusty**.
 3.  Wybierz pozycję **Dodaj**.
 4.  Nadaj jej nazwę **HomeController** , a następnie wybierz pozycję **Dodaj**.
@@ -269,17 +270,17 @@ W programie Visual Studio Utwórz nowy widok, aby dodać przycisk logowania i wy
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Więcej informacji
-> Ta strona dodaje przycisk logowania w formacie SVG z czarnym tłem:<br/>![Zaloguj się przy użyciu konta Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Aby uzyskać więcej przycisków logowania, przejdź do wytycznych dotyczących [](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "")znakowania.
+> Ta strona dodaje przycisk logowania w formacie SVG z czarnym tłem:<br/>![Zaloguj się przy użyciu konta Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Aby uzyskać więcej przycisków logowania, przejdź do [wskazówek dotyczących znakowania](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "BWskazówki dotyczące Los).
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Dodaj kontroler, aby wyświetlić oświadczenia użytkownika
 Ten kontroler pokazuje wykorzystanie atrybutu `[Authorize]` do ochrony kontrolera. Ten atrybut ogranicza dostęp do kontrolera przez umożliwienie tylko uwierzytelnionym użytkownikom. Poniższy kod umożliwia użycie atrybutu w celu wyświetlenia oświadczeń użytkownika, które zostały pobrane w ramach logowania:
 
-1.  Kliknij prawym przyciskiem myszy folder controllers, a następnie wybierz polecenie **Dodaj** > **kontroler**.
+1.  Kliknij prawym przyciskiem myszy folder **controllers** , a następnie wybierz polecenie **Dodaj** **kontroler** > .
 2.  Wybierz pozycję **Kontroler MVC {version} — Pusty**.
 3.  Wybierz pozycję **Dodaj**.
 4.  Nadaj mu nazwę **ClaimsController**.
-5.  Zastąp kod klasy kontrolera następującym kodem. Spowoduje to dodanie `[Authorize]` atrybutu do klasy:
+5.  Zastąp kod klasy kontrolera następującym kodem. Spowoduje to dodanie atrybutu `[Authorize]` do klasy:
 
     ```csharp
     [Authorize]
@@ -312,7 +313,7 @@ Ten kontroler pokazuje wykorzystanie atrybutu `[Authorize]` do ochrony kontroler
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Więcej informacji
-> Ze względu na użycie `[Authorize]` atrybutu wszystkie metody tego kontrolera można wykonać tylko wtedy, gdy użytkownik jest uwierzytelniony. Jeśli użytkownik nie jest uwierzytelniony i próbuje uzyskać dostęp do kontrolera, OWIN inicjuje wyzwanie uwierzytelniania i wymusza uwierzytelnienie użytkownika. Poprzedni kod przegląda listę oświadczeń dla określonych atrybutów użytkownika zawartych w tokenie identyfikatora użytkownika. Te atrybuty obejmują imię i nazwisko użytkownika oraz nazwę użytkownika, a także podmiot globalnego identyfikatora. Zawiera on także *identyfikator dzierżawy*, który reprezentuje identyfikator organizacji użytkownika. 
+> Ze względu na użycie atrybutu `[Authorize]` wszystkie metody tego kontrolera można wykonać tylko wtedy, gdy użytkownik jest uwierzytelniony. Jeśli użytkownik nie jest uwierzytelniony i próbuje uzyskać dostęp do kontrolera, OWIN inicjuje wyzwanie uwierzytelniania i wymusza uwierzytelnienie użytkownika. Poprzedni kod przegląda listę oświadczeń dla określonych atrybutów użytkownika zawartych w tokenie identyfikatora użytkownika. Te atrybuty obejmują imię i nazwisko użytkownika oraz nazwę użytkownika, a także podmiot globalnego identyfikatora. Zawiera on także *identyfikator dzierżawy*, który reprezentuje identyfikator organizacji użytkownika. 
 <!--end-collapse-->
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>tworzenie widoku w celu wyświetlenia oświadczeń użytkownika
@@ -353,11 +354,11 @@ W programie Visual Studio utwórz nowy widok w celu wyświetlenia oświadczeń u
     </html>
     ```
 
-## <a name="register-your-application"></a>Zarejestruj swoją aplikację
+## <a name="register-your-application"></a>Rejestrowanie aplikacji
 
 Aby zarejestrować aplikację i dodać do rozwiązania informacje o rejestracji aplikacji, dostępne są dwie opcje:
 
-### <a name="option-1-express-mode"></a>Option 1: Tryb ekspresowy
+### <a name="option-1-express-mode"></a>Opcja 1: tryb ekspresowy
 
 Aby szybko zarejestrować aplikację, wykonaj następujące kroki:
 
@@ -365,13 +366,13 @@ Aby szybko zarejestrować aplikację, wykonaj następujące kroki:
 1. Wprowadź nazwę aplikacji i wybierz pozycję **Zarejestruj**.
 1. Postępuj zgodnie z instrukcjami, aby pobrać i automatycznie skonfigurować nową aplikację przy użyciu jednego kliknięcia.
 
-### <a name="option-2-advanced-mode"></a>Opcja 2: Tryb zaawansowany
+### <a name="option-2-advanced-mode"></a>Opcja 2: tryb zaawansowany
 
 Aby ręcznie zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 
 1. Otwórz program Visual Studio, a następnie:
    1. w Eksplorator rozwiązań wybierz projekt i Wyświetl okno Właściwości (jeśli nie widzisz okno Właściwości, naciśnij klawisz F4).
-   1. Zmień włączony protokół SSL `True`na.
+   1. Zmień włączony protokół SSL na `True`.
    1. Kliknij prawym przyciskiem myszy projekt w programie Visual Studio, wybierz polecenie **Właściwości**, a następnie wybierz kartę **Sieć Web** . W sekcji **serwery** Zmień ustawienie **adres URL projektu** na **adres URL protokołu SSL**.
    1. Skopiuj adres URL protokołu SSL. Ten adres URL zostanie dodany do listy adresów URL przekierowania na liście adresów URL przekierowania portalu rejestracji w następnym kroku.<br/><br/>![Właściwości projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta służbowego lub za pomocą konto Microsoft osobistych.
@@ -381,8 +382,8 @@ Aby ręcznie zarejestrować aplikację i dodać informacje na temat rejestracji 
 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
    1. W sekcji **Nazwa** wprowadź zrozumiałą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład **ASPNET-samouczek**.
    1. Dodaj adres URL protokołu SSL skopiowany z programu Visual Studio w kroku 1 (na przykład `https://localhost:44368/`) w polu **adres URL odpowiedzi**i wybierz pozycję **zarejestruj**.
-1. Wybierz menu **uwierzytelnianie** , wybierz pozycję **identyfikatory tokeny** w obszarze niejawne **Grant**, a następnie wybierz pozycję **Zapisz**.
-1. Dodaj następujące elementy w pliku Web. config znajdującym się w folderze głównym w `configuration\appSettings` sekcji:
+1. Wybierz menu **uwierzytelnianie** , wybierz pozycję **identyfikatory tokeny** w obszarze **niejawne Grant**, a następnie wybierz pozycję **Zapisz**.
+1. Dodaj następujące elementy w pliku Web. config znajdującym się w folderze głównym w sekcji `configuration\appSettings`:
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
@@ -391,8 +392,8 @@ Aby ręcznie zarejestrować aplikację i dodać informacje na temat rejestracji 
     <add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" />
     ```
 
-1. Zamień `ClientId` na zarejestrowany identyfikator aplikacji.
-1. Zamień `redirectUri` na adres URL protokołu SSL projektu.
+1. Zastąp `ClientId` zarejestrowanym IDENTYFIKATORem aplikacji.
+1. Zastąp `redirectUri` adresem URL protokołu SSL projektu.
 
 ## <a name="test-your-code"></a>testowanie kodu
 
@@ -402,20 +403,20 @@ Gdy wszystko będzie gotowe do uruchomienia testu, użyj konta usługi Azure AD 
 
 ![Zaloguj się przy użyciu konta Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
-![Zaloguj się do konto Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
+![zalogować się do konto Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
 <!--start-collapse-->
 > ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgoda w punkcie końcowym platformy tożsamości firmy Microsoft
->  Aplikacje integrowane z platformą tożsamości firmy Microsoft są zgodne z modelem autoryzacji, który umożliwia użytkownikom i administratorom kontrolę nad sposobem uzyskiwania dostępu do danych. Po uwierzytelnieniu użytkownika w usłudze Azure AD w celu uzyskania dostępu do tej aplikacji zostanie wyświetlony monit o zgodę na uprawnienia wymagane przez aplikację ("Wyświetl swój profil podstawowy" i "Obsługuj dostęp do danych, do których masz dostęp"). Po zaakceptowaniu tych uprawnień użytkownik będzie kontynuował działanie aplikacji. Jednak użytkownik może zamiast tego monitować o wymaganą stronę **zgody administratora** , jeśli wystąpi jeden z następujących sytuacji:
+>  Aplikacje integrowane z platformą tożsamości firmy Microsoft są zgodne z modelem autoryzacji, który umożliwia użytkownikom i administratorom kontrolę nad sposobem uzyskiwania dostępu do danych. Po uwierzytelnieniu użytkownika w usłudze Azure AD w celu uzyskania dostępu do tej aplikacji zostanie wyświetlony monit o zgodę na uprawnienia wymagane przez aplikację ("Wyświetl swój profil podstawowy" i "Obsługuj dostęp do danych, do których masz dostęp"). Po zaakceptowaniu tych uprawnień użytkownik będzie kontynuował działanie aplikacji. Jednak użytkownik może zamiast tego monitować o **wymaganą stronę zgody administratora** , jeśli wystąpi jeden z następujących sytuacji:
 >  > - Deweloper aplikacji dodaje wszelkie dodatkowe uprawnienia, które wymagają **zgody administratora**.
 >  > - Lub dzierżawy są skonfigurowane (w **aplikacjach dla przedsiębiorstw — > ustawienia użytkownika**), w których użytkownicy nie mogą wyrazić zgody na aplikacje uzyskujące dostęp do danych firmy w ich imieniu.
 >
-> Aby uzyskać więcej informacji, zobacz [uprawnienia i zgody w punkcie końcowym platformy tożsamości firmy Microsoft](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent).
+> Aby uzyskać więcej informacji, zobacz [uprawnienia i zgody w punkcie końcowym platformy tożsamości firmy Microsoft](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
 <!--end-collapse-->
 
 #### <a name="view-application-results"></a>Wyświetlanie wyników aplikacji
 
-Po zalogowaniu użytkownik zostanie przekierowany do strony głównej witryny sieci Web. Strona główna to adres URL HTTPS określony w informacjach rejestracyjnych aplikacji w portalu rejestracji aplikacji firmy Microsoft. Strona główna zawiera komunikat powitalny *" \<Hello user >"* , link do wylogowania oraz link umożliwiający wyświetlenie oświadczeń użytkownika. Link do oświadczeń użytkownika nawiązuje połączenie z utworzonym wcześniej kontrolerem oświadczeń.
+Po zalogowaniu użytkownik zostanie przekierowany do strony głównej witryny sieci Web. Strona główna to adres URL HTTPS określony w informacjach rejestracyjnych aplikacji w portalu rejestracji aplikacji firmy Microsoft. Strona główna zawiera komunikat powitalny *"witaj \<user >"* , link do wylogowania oraz link umożliwiający wyświetlenie oświadczeń użytkownika. Link do oświadczeń użytkownika nawiązuje połączenie z utworzonym wcześniej kontrolerem oświadczeń.
 
 ### <a name="view-the-users-claims"></a>Wyświetl oświadczenia użytkownika
 
@@ -425,21 +426,21 @@ Aby wyświetlić oświadczenia użytkownika, wybierz link, aby przejść do wido
 
 Po przejściu do widoku kontrolera powinna zostać wyświetlona tabela zawierająca podstawowe właściwości użytkownika:
 
-|Właściwość |Value |Opis |
+|Właściwość |Wartość |Opis |
 |---|---|---|
 |**Nazwa** |Pełna nazwa użytkownika | Imię i nazwisko użytkownika
-|**Nazwa użytkownika** |Użytkownicy<span>@domain.com</span> | Nazwa użytkownika używana do identyfikowania użytkownika|
-|**Subject** |Subject |Ciąg, który jednoznacznie identyfikuje użytkownika w sieci Web|
-|**Tenant ID (Identyfikator dzierżawy)** |Guid | **Identyfikator GUID** , który jednoznacznie reprezentuje organizację usługi Azure AD użytkownika|
+|**Nazwa użytkownika** |<span>@domain.com</span> użytkownika | Nazwa użytkownika używana do identyfikowania użytkownika|
+|**Temat** |Temat |Ciąg, który jednoznacznie identyfikuje użytkownika w sieci Web|
+|**Tenant ID (Identyfikator dzierżawy)** |Identyfikator GUID | **Identyfikator GUID** , który jednoznacznie reprezentuje organizację usługi Azure AD użytkownika|
 
 Ponadto powinna zostać wyświetlona tabela wszystkich oświadczeń, które znajdują się w żądaniu uwierzytelniania. Aby uzyskać więcej informacji, zobacz [listę oświadczeń, które znajdują się w tokenie identyfikatora usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Przetestuj dostęp do metody, która ma atrybut Autoryzuj (opcjonalnie)
 
-Aby przetestować dostęp jako anonimowy użytkownik do kontrolera, który jest chroniony przez ten `Authorize` atrybut, wykonaj następujące kroki:
+Aby przetestować dostęp jako anonimowy użytkownik do kontrolera, który jest chroniony przez atrybut `Authorize`, wykonaj następujące kroki:
 
 1. Wybierz link, aby wylogować użytkownika i zakończyć proces wylogowywania.
-2. W przeglądarce wpisz http://<span></span>localhost: {Port}/oświadczenia, aby uzyskać dostęp do kontrolera, który jest chroniony przez `Authorize` atrybut.
+2. W przeglądarce wpisz http://<span></span>localhost: {Port}/oświadczenia, aby uzyskać dostęp do kontrolera, który jest chroniony przez atrybut `Authorize`.
 
 #### <a name="expected-results-after-access-to-a-protected-controller"></a>Oczekiwane wyniki po uzyskaniu dostępu do kontrolera chronionego
 
@@ -449,7 +450,7 @@ Zostanie wyświetlony monit o uwierzytelnienie w celu użycia widoku kontrolera 
 
 <!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>Ochrona całej witryny sieci Web
-Aby chronić całą witrynę sieci Web, w pliku **Global. asax** Dodaj `AuthorizeAttribute` atrybut do `GlobalFilters` filtru w `Application_Start` metodzie:
+Aby chronić całą witrynę sieci Web w pliku **Global. asax** , dodaj atrybut `AuthorizeAttribute` do filtru `GlobalFilters` w metodzie `Application_Start`:
 
 ```csharp
 GlobalFilters.Filters.Add(new AuthorizeAttribute());
@@ -462,20 +463,20 @@ Domyślnie podczas kompilowania aplikacji utworzonej przez ten przewodnik aplika
 
 Aby ograniczyć dostęp użytkowników do logowania do aplikacji, dostępne są różne opcje.
 
-#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Option 1: Ograniczenie możliwości logowania się do aplikacji do użytkowników tylko jednego wystąpienia usługi Active Directory organizacji (pojedyncza dzierżawa)
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Opcja 1: Ogranicz użytkowników tylko z wystąpienia Active Directory w organizacji, aby zalogować się do aplikacji (pojedyncza dzierżawa)
 
-Ta opcja jest często używana w przypadku *aplikacji biznesowych*: Jeśli chcesz, aby Twoja aplikacja akceptowała logowania tylko z kont należących do określonego wystąpienia usługi Azure AD (w tym *kont gości* tego wystąpienia), wykonaj następujące kroki:
+Ta opcja jest często używana w przypadku *aplikacji biznesowych*: Jeśli chcesz, aby aplikacja akceptowała logowania tylko z kont należących do określonego wystąpienia usługi Azure AD (w tym *kont Gości* tego wystąpienia), wykonaj następujące kroki:
 
-1. W pliku Web. config zmień wartość `Tenant` parametru z `Common` na nazwę dzierżawy organizacji, `contoso.onmicrosoft.com`na przykład.
-2. W [klasie uruchomieniowej Owin](#configure-the-authentication-pipeline)Ustaw `ValidateIssuer` argument na `true`.
+1. W pliku Web. config zmień wartość parametru `Tenant` z `Common` na nazwę dzierżawy organizacji, taką jak `contoso.onmicrosoft.com`.
+2. W [klasie uruchomieniowej Owin](#configure-the-authentication-pipeline)ustaw argument `ValidateIssuer`, aby `true`.
 
-#### <a name="option-2-restrict-access-to-users-in-a-specific-list-of-organizations"></a>Opcja 2: Ograniczanie dostępu do użytkowników z określoną listą organizacji
+#### <a name="option-2-restrict-access-to-users-in-a-specific-list-of-organizations"></a>Opcja 2: ograniczanie dostępu do użytkowników z określoną listą organizacji
 
 Możesz ograniczyć dostęp do logowania tylko do tych kont użytkowników, które znajdują się w organizacji usługi Azure AD, która znajduje się na liście dozwolonych organizacji:
-1. W [klasie uruchomieniowej Owin](#configure-the-authentication-pipeline)Ustaw `ValidateIssuer` argument na `true`.
-2. Ustaw wartość `ValidIssuers` parametru na listę dozwolonych organizacji.
+1. W [klasie uruchomieniowej Owin](#configure-the-authentication-pipeline)ustaw argument `ValidateIssuer`, aby `true`.
+2. Ustaw wartość parametru `ValidIssuers` na listę dozwolonych organizacji.
 
-#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Opcja 3: Używanie niestandardowej metody do walidacji wystawców
+#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Opcja 3: Użyj niestandardowej metody do walidacji wystawców
 
 Można zaimplementować metodę niestandardową w celu weryfikacji wystawców przy użyciu parametru **IssuerValidator** . Aby uzyskać więcej informacji na temat korzystania z tego parametru, zobacz [TokenValidationParameters Class](/previous-versions/visualstudio/dn464192(v=vs.114)).
 

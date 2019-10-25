@@ -1,26 +1,26 @@
 ---
-title: Architektura aparatu wyszukiwania pełnotekstowego (Lucene) — Azure Search
-description: Wyjaśnienie pojęć związanych z przetwarzaniem zapytań Lucene i pobieraniem dokumentów dla wyszukiwania pełnotekstowego w odniesieniu do Azure Search.
+title: Pełna kwerenda tekstowa i architektura aparatu indeksowania (Lucene)
+titleSuffix: Azure Cognitive Search
+description: Bada przetwarzanie zapytań Lucene i koncepcje pobierania dokumentów dla wyszukiwania pełnotekstowego w odniesieniu do usługi Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: yahnoosh
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
 ms.author: jlembicz
-ms.openlocfilehash: d377d6180f3d2d64f183ed574add3e7307e34fc3
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186537"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793552"
 ---
-# <a name="how-full-text-search-works-in-azure-search"></a>Jak działa wyszukiwanie pełnotekstowe w Azure Search
+# <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Jak działa wyszukiwanie pełnotekstowe na platformie Azure Wyszukiwanie poznawcze
 
-Ten artykuł jest przeznaczony dla deweloperów, którzy muszą bliżej zrozumieć, jak działa wyszukiwanie pełnotekstowe w programie Lucene w Azure Search. W przypadku zapytań tekstowych Azure Search będzie bezproblemowo dostarczać oczekiwane wyniki w większości scenariuszy, ale czasami może pojawić się wynik "off". W takich sytuacjach posiadanie tła w czterech etapach wykonywania zapytań Lucene (analizowanie zapytań, analiza leksykalna, dopasowywanie dokumentów, ocenianie) może ułatwić identyfikację konkretnych zmian parametrów zapytania lub konfiguracji indeksu, które będą dostarczać odpowiednie wynikiem. 
+Ten artykuł jest przeznaczony dla deweloperów, którzy potrzebują bardziej szczegółowego wglądu w sposób działania wyszukiwania pełnotekstowego w usłudze Azure Wyszukiwanie poznawcze. W przypadku zapytań tekstowych usługa Azure Wyszukiwanie poznawcze bezproblemowo dostarcza oczekiwane wyniki w większości scenariuszy, ale czasami może zostać wyświetlony wynik "off". W takich sytuacjach posiadanie tła w czterech etapach wykonywania zapytań Lucene (analizowanie zapytań, analiza leksykalna, dopasowywanie dokumentów, ocenianie) może ułatwić identyfikację konkretnych zmian parametrów zapytania lub konfiguracji indeksu, które będą dostarczać odpowiednie wynikiem. 
 
 > [!Note] 
-> Azure Search używa Lucene do wyszukiwania pełnotekstowego, ale integracja z systemem Lucene nie jest wyczerpująca. Selektywnie uwidaczniamy i rozszerzy funkcje Lucene, aby umożliwić scenariuszom ważne Azure Search. 
+> Usługa Azure Wyszukiwanie poznawcze używa Lucene do wyszukiwania pełnotekstowego, ale integracja z usługą Lucene nie jest wyczerpująca. Selektywnie uwidaczniamy i rozszerzył funkcję Lucene, aby umożliwić scenariuszom ważne dla platformy Azure Wyszukiwanie poznawcze. 
 
 ## <a name="architecture-overview-and-diagram"></a>Przegląd i diagram architektury
 
@@ -35,7 +35,7 @@ Przeprowadzenie wykonywania zapytania ma cztery etapy:
 
 Na poniższym diagramie przedstawiono składniki używane do przetwarzania żądania wyszukiwania. 
 
- ![Diagram architektury zapytania Lucene w Azure Search][1]
+ ![Diagram architektury zapytania Lucene na platformie Azure Wyszukiwanie poznawcze][1]
 
 
 | Główne składniki | Opis funkcjonalny | 
@@ -49,7 +49,7 @@ Na poniższym diagramie przedstawiono składniki używane do przetwarzania żąd
 
 Żądanie Search to kompletna Specyfikacja, która powinna zostać zwrócona w zestawie wyników. W najprostszym formularzu jest to puste zapytanie, które nie ma żadnych kryteriów żadnego rodzaju. Bardziej realistyczny przykład obejmuje parametry, kilka terminów zapytania, które mogą być ograniczone do określonych pól, z ewentualnym wyrażeniem filtru i kolejnością reguł.  
 
-Poniższy przykład to żądanie wyszukiwania, które może zostać wysłane do Azure Search przy użyciu [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents).  
+Poniższy przykład to żądanie wyszukiwania, które może zostać wysłane do usługi Azure Wyszukiwanie poznawcze przy użyciu [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/search-documents).  
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2019-05-06
@@ -66,13 +66,13 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 W przypadku tego żądania aparat wyszukiwania wykonuje następujące czynności:
 
 1. Filtruje dokumenty, w których cena jest równa co najmniej $60 i mniejszej niż $300.
-2. Wykonuje zapytanie. W tym przykładzie zapytanie wyszukiwania składa się z fraz i terminów: `"Spacious, air-condition* +\"Ocean view\""` (zwykle nie są one wprowadzane do interpunkcji, ale z uwzględnieniem ich w przykładzie pozwala nam wyjaśnić, jak obsługiwane są analizatory). W przypadku tego zapytania aparat wyszukiwania skanuje pola Description i title określone w `searchFields` dla dokumentów, które zawierają "Ocean View", a także w przypadku terminu "spacious" lub warunków, które zaczynają się od prefiksu "warunki powietrza". Parametr jest używany do dopasowania w dowolnym okresie (wartość domyślna) lub wszystkie z nich, w przypadkach, gdy termin nie jest jawnie wymagany (`+`). `searchMode`
+2. Wykonuje zapytanie. W tym przykładzie zapytanie wyszukiwania składa się z fraz i terminów: `"Spacious, air-condition* +\"Ocean view\""` (zazwyczaj nie wprowadzamy interpunkcji, ale w tym w tym przykładzie pozwala nam wyjaśnić, jak obsługują analizatory). W przypadku tego zapytania aparat wyszukiwania skanuje pola Description i title określone w `searchFields` dla dokumentów, które zawierają "Ocean View", a także w przypadku terminu "spacious" lub warunków, które zaczynają się od prefiksu "warunki powietrza". Parametr `searchMode` jest używany do dopasowywania wartości dowolnego warunku (domyślnego) lub wszystkich z nich, w przypadkach, gdy termin nie jest jawnie wymagany (`+`).
 3. Porządkuje wynikowy zestaw hoteli przez bliskość do danej lokalizacji geograficznej, a następnie zwraca do aplikacji wywołującej. 
 
 Większość tego artykułu dotyczy przetwarzania *zapytania wyszukiwania*: `"Spacious, air-condition* +\"Ocean view\""`. Filtrowanie i porządkowanie są poza zakresem. Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
-## <a name="stage-1-query-parsing"></a>Etap 1: Analizowanie zapytań 
+## <a name="stage-1-query-parsing"></a>Etap 1. analizowanie zapytań 
 
 Jak wspomniano, ciąg zapytania jest pierwszym wierszem żądania: 
 
@@ -80,29 +80,29 @@ Jak wspomniano, ciąg zapytania jest pierwszym wierszem żądania:
  "search": "Spacious, air-condition* +\"Ocean view\"", 
 ~~~~
 
-Analizator zapytań oddziela operatory (takie jak `*` i `+` w przykładzie) z wyszukiwanych terminów i dekonstruuje zapytanie wyszukiwania w podzapytaniach obsługiwanego typu: 
+Analizator zapytań oddziela operatory (takie jak `*` i `+` w przykładzie) z wyszukiwanych terminów i dekonstruuje zapytanie wyszukiwania w *podzapytaniach* obsługiwanego typu: 
 
 + *zapytanie warunkowe* dla warunków autonomicznych (takich jak Spacious)
 + *zapytanie zwrotne* dla cytowanych terminów (na przykład widoku Ocean)
-+ *zapytanie* dotyczące prefiksu dla warunków, po których `*` następuje operator prefiksu (np. warunek powietrza)
++ *zapytanie dotyczące prefiksu* dla warunków, po których następuje `*` operatora prefiksu (np. warunek powietrza)
 
 Aby zapoznać się z pełną listą obsługiwanych typów zapytań, zobacz [składnia zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 
-Operatory skojarzone z podzapytaniem określają, czy zapytanie "musi być" lub "powinno być" spełnione, aby dokument mógł zostać uznany za zgodny. Na przykład, `+"Ocean view"` jest "musi" ze względu `+` na operatora. 
+Operatory skojarzone z podzapytaniem określają, czy zapytanie "musi być" lub "powinno być" spełnione, aby dokument mógł zostać uznany za zgodny. Na przykład `+"Ocean view"` jest "musi" ze względu na operator `+`. 
 
 Analizator zapytań przekształca podzapytania w *drzewo zapytań* (wewnętrzną strukturę reprezentującą zapytanie), które przekazuje do aparatu wyszukiwania. W pierwszym etapie analizy zapytania drzewo zapytania wygląda następująco.  
 
  ![Dowolna wartość logiczna wyszukiwania zapytań][2]
 
-### <a name="supported-parsers-simple-and-full-lucene"></a>Obsługiwane analizatory: Proste i pełne Lucene 
+### <a name="supported-parsers-simple-and-full-lucene"></a>Obsługiwane analizatory: proste i pełne Lucene 
 
- Azure Search uwidacznia dwa różne języki `simple` zapytań (domyślnie) i. `full` Ustawiając `queryType` parametr z żądaniem wyszukiwania, możesz poinformować analizatora zapytań o wybranym języku zapytania, aby wie, jak interpretować operatory i składnię. [Prosty język zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) jest intuicyjny i niezawodny, często odpowiedni do interpretowania danych wprowadzanych przez użytkownika bez przetwarzania po stronie klienta. Obsługuje operatory zapytań znane z wyszukiwarek sieci Web. [Pełny język zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), który można uzyskać przez ustawienie `queryType=full`, rozszerza domyślny prosty język zapytań, dodając obsługę większej liczby operatorów i typów zapytań, takich jak symbole wieloznaczne, rozmyte, wyrażenia regularnego i zapytania o zakres pól. Na przykład wyrażenie regularne wysyłane w prostej składni zapytania jest interpretowane jako ciąg zapytania, a nie wyrażenie. Przykładowe żądanie w tym artykule używa pełnego języka zapytań Lucene.
+ Na platformie Azure Wyszukiwanie poznawcze są uwidaczniane dwa różne języki zapytań, `simple` (domyślne) i `full`. Ustawiając parametr `queryType` z żądaniem wyszukiwania, poinformujesz Analizator zapytań o wybranym języku zapytań, aby wie, jak interpretować operatory i składnię. [Prosty język zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) jest intuicyjny i niezawodny, często odpowiedni do interpretowania danych wprowadzanych przez użytkownika bez przetwarzania po stronie klienta. Obsługuje operatory zapytań znane z wyszukiwarek sieci Web. [Pełny język zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), który można uzyskać przez ustawienie `queryType=full`, rozszerza domyślny prosty język zapytania przez dodanie obsługi większej liczby operatorów i typów zapytań, takich jak symbole wieloznaczne, rozmyte, wyrażenia regularnego i zapytania o zakres pól. Na przykład wyrażenie regularne wysyłane w prostej składni zapytania jest interpretowane jako ciąg zapytania, a nie wyrażenie. Przykładowe żądanie w tym artykule używa pełnego języka zapytań Lucene.
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>Wpływ przeszukiwania na analizator składni 
 
-Innym parametrem żądania wyszukiwania, który ma wpływ `searchMode` na analizowanie, jest parametr. Steruje operatorem domyślnym dla zapytań logicznych: dowolne (domyślne) lub wszystkie.  
+Innym parametrem żądania wyszukiwania, który ma wpływ na analizowanie, jest parametr `searchMode`. Steruje operatorem domyślnym dla zapytań logicznych: dowolne (domyślne) lub wszystkie.  
 
-Gdy `searchMode=any`jest to domyślny, ogranicznik odstępu między Spacious i warunkiem obpowietrzanym jest lub (`||`), co oznacza, że przykładowy tekst zapytania odpowiada: 
+Gdy `searchMode=any`, który jest domyślnym, ogranicznik odstępu między Spacious i warunkiem powietrza jest lub (`||`), dzięki czemu przykładowy tekst zapytania jest odpowiednikiem: 
 
 ~~~~
 Spacious,||air-condition*+"Ocean view" 
@@ -110,7 +110,7 @@ Spacious,||air-condition*+"Ocean view"
 
 Jawne operatory, takie jak `+` w `+"Ocean view"`, są niejednoznaczne w konstrukcji zapytania logicznego (termin *musi* być zgodny). Mniej oczywiste to sposób interpretacji pozostałych warunków: Spacious i stanu powietrza. Czy aparat wyszukiwania powinien znaleźć dopasowania w widoku oceanu *i* Spacious *i* warunkach powietrza? Lub powinien znaleźć widok oceanu i *jedno* z pozostałych warunków? 
 
-Domyślnie (`searchMode=any`) aparat wyszukiwania przyjmuje szersze interpretacje. Każde pole *powinno* być dopasowane, odzwierciedlające semantykę "lub". Początkowe drzewo zapytań przedstawione wcześniej, z dwoma operacjami "powinien", pokazuje wartość domyślną.  
+Domyślnie (`searchMode=any`) aparat wyszukiwania przyjmuje szersze możliwości interpretacji. Każde pole *powinno* być dopasowane, odzwierciedlające semantykę "lub". Początkowe drzewo zapytań przedstawione wcześniej, z dwoma operacjami "powinien", pokazuje wartość domyślną.  
 
 Załóżmy, że teraz ustawimy `searchMode=all`. W takim przypadku miejsce jest interpretowane jako operacja "i". Każdy z pozostałych warunków musi być obecny w dokumencie, aby można go było zakwalifikować jako odpowiednik. Wyniki przykładowego zapytania byłyby interpretowane w następujący sposób: 
 
@@ -123,7 +123,7 @@ Zmodyfikowane drzewo zapytań dla tego zapytania byłoby następujące, gdzie pa
  ![Wartość Boolean przeszukiwania zapytań logicznych][3]
 
 > [!Note] 
-> Wybór `searchMode=any` powyżej`searchMode=all` stanowi decyzję, która najlepiej dotarła do uruchamiania reprezentatywnych zapytań. Użytkownicy, którzy mogą dołączać operatory (typowi podczas wyszukiwania w sklepie dokumentów), mogą znaleźć `searchMode=all` wyniki bardziej intuicyjne, jeśli są informować konstrukcje zapytania logicznego. Aby uzyskać więcej informacji na temat `searchMode` współpraca między operatorami i, zobacz [prostą składnię zapytania](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search).
+> Wybór `searchMode=any` za pośrednictwem `searchMode=all` jest najlepszym rozwiązaniem w przypadku, gdy wykonywane są zapytania reprezentatywne. Użytkownicy, którzy mogą dołączać operatory (typowi podczas wyszukiwania w sklepach z dokumentami), mogą znaleźć wyniki bardziej intuicyjne, jeśli `searchMode=all` informuje konstrukcje zapytania logicznego. Aby uzyskać więcej informacji na temat współpraca między operatorami `searchMode` i, zobacz [prostą składnię zapytania](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search).
 
 <a name="stage2"></a>
 ## <a name="stage-2-lexical-analysis"></a>Etap 2: Analiza leksykalna 
@@ -137,7 +137,7 @@ Najbardziej powszechną formą analizy leksykalnej jest *Analiza językowa* , kt
 * Dzielenie złożonego słowa na części składnika 
 * Małe litery wielką literą 
 
-Wszystkie te operacje mają na celu wymazanie różnic między danymi wejściowymi wprowadzonymi przez użytkownika i postanowieniami przechowywanymi w indeksie. Takie operacje wykraczają poza przetwarzanie tekstu i wymagają dokładnej znajomości samego języka. Aby dodać tę warstwę świadomości lingwistycznej, Azure Search obsługuje długą listę [analizatorów języka](https://docs.microsoft.com/rest/api/searchservice/language-support) zarówno z luce, jak i od firmy Microsoft.
+Wszystkie te operacje mają na celu wymazanie różnic między danymi wejściowymi wprowadzonymi przez użytkownika i postanowieniami przechowywanymi w indeksie. Takie operacje wykraczają poza przetwarzanie tekstu i wymagają dokładnej znajomości samego języka. Aby dodać tę warstwę świadomości lingwistycznej, platforma Azure Wyszukiwanie poznawcze obsługuje długą listę [analizatorów języka](https://docs.microsoft.com/rest/api/searchservice/language-support) zarówno z luce, jak i od firmy Microsoft.
 
 > [!Note]
 > Wymagania dotyczące analizy mogą być od minimum do rozwinięcia w zależności od danego scenariusza. Złożoność analizy leksykalnej można kontrolować przez wybranie jednego ze wstępnie zdefiniowanych analizatorów lub utworzenie własnego [niestandardowego analizatorze](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search). Analizatory są objęte zakresem pól, które można przeszukiwać i są określone jako część definicji pola. Pozwala to na zmianę analizy leksykalnej na podstawie poszczególnych pól. Nieokreślony, używany jest *Standardowy* Analizator Lucene.
@@ -184,11 +184,11 @@ Analizator standardowy dzieli tekst wejściowy na następujące dwa tokeny, doda
 
 ### <a name="exceptions-to-lexical-analysis"></a>Wyjątki dla analizy leksykalnej 
 
-Analiza leksykalna dotyczy tylko typów zapytań, które wymagają pełnych warunków — zapytania warunkowego lub zapytania zwrotnego. Nie ma zastosowania do typów zapytań z niekompletnymi terminami — zapytania prefiksowego, zapytania wieloznacznego, zapytania wyrażenia regularnego lub zapytania rozmytego. Te typy zapytań, w tym zapytanie prefiksu z `air-condition*` terminem w naszym przykładzie, są dodawane bezpośrednio do drzewa zapytań, pomijając etap analizy. Jedynym przekształceniem wykonywanym na warunkach zapytań tych typów jest lowercasing.
+Analiza leksykalna dotyczy tylko typów zapytań, które wymagają pełnych warunków — zapytania warunkowego lub zapytania zwrotnego. Nie ma zastosowania do typów zapytań z niekompletnymi terminami — zapytania prefiksowego, zapytania wieloznacznego, zapytania wyrażenia regularnego lub zapytania rozmytego. Te typy zapytań, w tym zapytanie prefix z terminem `air-condition*` w naszym przykładzie, są dodawane bezpośrednio do drzewa zapytań, pomijając etap analizy. Jedynym przekształceniem wykonywanym na warunkach zapytań tych typów jest lowercasing.
 
 <a name="stage3"></a>
 
-## <a name="stage-3-document-retrieval"></a>Etap 3: Pobieranie dokumentów 
+## <a name="stage-3-document-retrieval"></a>Etap 3: pobieranie dokumentów 
 
 Pobieranie dokumentów odnosi się do znajdowania dokumentów z pasującymi terminami w indeksie. Ten etap jest zrozumiały dla przykładu. Zacznijmy od indeksu hoteli o następującym prostym schemacie: 
 
@@ -245,13 +245,13 @@ Aby utworzyć warunki w odwróconym indeksie, aparat wyszukiwania wykonuje anali
 Jest to typowy, ale nie jest wymagany, aby używać tych samych analizatorów dla operacji wyszukiwania i indeksowania, tak aby terminy zapytania wyglądały tak, jak terminy w indeksie.
 
 > [!Note]
-> Azure Search pozwala określić różne analizatory do indeksowania i wyszukiwania za pomocą dodatkowych `indexAnalyzer` parametrów `searchAnalyzer` i pól. Jeśli nie zostanie określony, Analizator zostanie ustawiony z `analyzer` właściwością dla indeksowania i wyszukiwania.  
+> Usługa Azure Wyszukiwanie poznawcze pozwala określić różne analizatory do indeksowania i wyszukiwania za pomocą dodatkowych parametrów `indexAnalyzer` i `searchAnalyzer` pól. Jeśli nie zostanie określony, Analizator zestawu z właściwością `analyzer` jest używany do indeksowania i wyszukiwania.  
 
 **Odwrócony indeks dla przykładowych dokumentów**
 
 Powracamy do naszego przykładu dla pola **title** indeks odwrócony wygląda następująco:
 
-| Termin | Lista dokumentów |
+| Okres obowiązywania Umowy | Lista dokumentów |
 |------|---------------|
 | atman | 1 |
 | sekwencje | 2 |
@@ -265,31 +265,31 @@ W polu title tylko *Hotel* pojawia się w dwóch dokumentach: 1, 3.
 
 W przypadku pola **Description** indeks jest następujący:
 
-| Termin | Lista dokumentów |
+| Okres obowiązywania Umowy | Lista dokumentów |
 |------|---------------|
 | dmuchaw | 3
-| i | 4
+| oraz | 4
 | sekwencje | 1
 | przygotować | 3
-| comfortable | 3
-| distance | 1
+| potrafisz | 3
+| odległość | 1
 | Wyspa | 2
-| kauaʻi | 2
+| kaua ʻ i | 2
 | znajduje | 2
 | szerokości | 2
 | utworzeniu | 1, 2, 3
 | z | 2
-| włączone |2
-| quiet | 4
+| z |2
+| otoczeniu | 4
 | natrysk  | 1, 3
 | secluded | 4
 | zejście | 2
 | spacious | 1
 | względem zasobu | 1, 2
-| to | 1
+| na | 1
 | wyświetl | 1, 2, 3
 | wykorzystaniem | 1
-| with | 3
+| się | 3
 
 
 **Pasujące terminy zapytania względem indeksowanych terminów**
@@ -309,13 +309,13 @@ Podczas wykonywania zapytania poszczególne zapytania są wykonywane niezależni
 + PhraseQuery, "widok oceanu", wyszukuje terminy "Ocean" i "View" i sprawdza bliskość terminów w oryginalnym dokumencie. Dokumenty 1, 2 i 3 pasują do tego zapytania w polu Opis. Dokument Uwaga 4 ma termin Ocean w tytule, ale nie jest uważany za dopasowanie, ponieważ szukasz frazy "Ocean View", a nie poszczególnych wyrazów. 
 
 > [!Note]
-> Zapytanie wyszukiwania jest wykonywane niezależnie dla wszystkich pól, które można przeszukiwać w indeksie Azure Search, chyba że ograniczy się `searchFields` pola ustawione za pomocą parametru, jak pokazano w przykładowym żądaniu wyszukiwania. Zwracane są dokumenty pasujące do któregokolwiek z wybranych pól. 
+> Zapytanie wyszukiwania jest wykonywane niezależnie dla wszystkich pól z możliwością wyszukiwania w indeksie Wyszukiwanie poznawcze platformy Azure, chyba że ustawisz pola z parametrem `searchFields`, jak pokazano w przykładowym żądaniu wyszukiwania. Zwracane są dokumenty pasujące do któregokolwiek z wybranych pól. 
 
 W odniesieniu do zapytania, w przypadku którego jest to zgodne z danymi, mają one wartość 1, 2, 3. 
 
-## <a name="stage-4-scoring"></a>Etap 4: Zdań  
+## <a name="stage-4-scoring"></a>Etap 4: ocenianie  
 
-Każdy dokument w zestawie wyników wyszukiwania ma przypisany wynik istotności. Funkcja oceny przydatności polega na klasyfikowaniu wyższych dokumentów, które najlepiej odpowiadają na pytania użytkownika w postaci wydanej przez zapytanie wyszukiwania. Wynik jest obliczany na podstawie właściwości statystycznych pasujących do siebie warunków. Na początku formuły oceniania jest [TF/IDF (częstotliwość okresów — odwrotna częstotliwość dokumentu)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). W zapytaniach zawierających rzadki i często spotykane terminy TF/IDF promuje wyniki zawierające rzadkie terminy. Na przykład w indeks hipotetyczny z wszystkie artykuły Wikipedia z dokumentów wynik kwerendy *Prezes*, dokumentów na *prezesa* są uznawane za istotne więcej niż dokumenty *na*.
+Każdy dokument w zestawie wyników wyszukiwania ma przypisany wynik istotności. Funkcja oceny przydatności polega na klasyfikowaniu wyższych dokumentów, które najlepiej odpowiadają na pytania użytkownika w postaci wydanej przez zapytanie wyszukiwania. Wynik jest obliczany na podstawie właściwości statystycznych pasujących do siebie warunków. Na początku formuły oceniania jest [TF/IDF (częstotliwość okresów — odwrotna częstotliwość dokumentu)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). W zapytaniach zawierających rzadki i często spotykane terminy TF/IDF promuje wyniki zawierające rzadkie terminy. Na przykład w indeksie hipotetycznym ze wszystkimi artykułami witryny Wikipedia z dokumentów, które pasują do *prezesa*, dokumenty pasujące do *prezesa* są uważane za bardziej odpowiednie niż dokumenty pasujące do *programu*.
 
 
 ### <a name="scoring-example"></a>Przykład oceniania
@@ -349,7 +349,7 @@ search=Spacious, air-condition* +"Ocean view"
 }
 ~~~~
 
-Dokument 1 najlepiej pasuje do zapytania, ponieważ w polu Opis występuje zarówno termin *Spacious* , jak i wymagany *Widok oceanu* frazy. Dwa następne dokumenty pasują tylko do *widoku*"oznaczenie oceanu". Może być zaskakujące, że Ocena istotności dla dokumentów 2 i 3 różni się, nawet jeśli pasują do zapytania w ten sam sposób. Wynika to z faktu, że formuła oceniania zawiera więcej składników niż tylko TF/IDF. W takim przypadku dokument 3 został przyznany nieco większym wynikiem, ponieważ jego opis jest krótszy. Dowiedz się więcej na temat [praktycznej formuły oceniania](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) , aby zrozumieć, jak długość pola i inne czynniki mogą mieć wpływ na ocenę istotności.
+Dokument 1 najlepiej pasuje do zapytania, ponieważ w polu Opis występuje zarówno termin *Spacious* , jak i wymagany *Widok oceanu* frazy. Dwa następne dokumenty pasują tylko do widoku "oznaczenie *oceanu*". Może być zaskakujące, że Ocena istotności dla dokumentów 2 i 3 różni się, nawet jeśli pasują do zapytania w ten sam sposób. Wynika to z faktu, że formuła oceniania zawiera więcej składników niż tylko TF/IDF. W takim przypadku dokument 3 został przyznany nieco większym wynikiem, ponieważ jego opis jest krótszy. Dowiedz się więcej na temat [praktycznej formuły oceniania](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) , aby zrozumieć, jak długość pola i inne czynniki mogą mieć wpływ na ocenę istotności.
 
 Niektóre typy zapytań (symbol wieloznaczny, prefiks, wyrażenie regularne) zawsze tworzą stały wynik do ogólnego wyniku dokumentu. Pozwala to na dopasowania znalezione za pomocą rozszerzania zapytania, które mają być zawarte w wynikach, ale bez wpływania na klasyfikację. 
 
@@ -357,27 +357,27 @@ Przykład ilustruje to zagadnienia. Wyszukiwanie przy użyciu symboli wieloznacz
 
 ### <a name="score-tuning"></a>Dostrajanie wyniku
 
-Istnieją dwa sposoby dostrajania ocen przydatności w Azure Search:
+Istnieją dwa sposoby dostrajania ocen przydatności na platformie Azure Wyszukiwanie poznawcze:
 
 1. **Profile oceniania** promują dokumenty na uporządkowanej liście wyników na podstawie zestawu reguł. W naszym przykładzie możemy rozważyć, że dokumenty dopasowane w polu title są bardziej odpowiednie niż dokumenty pasujące do pola Description. Ponadto, jeśli nasz indeks miał pole ceny dla każdego hotelu, możemy wspierać dokumenty o niższej cenie. Dowiedz się więcej, jak [dodać profile oceniania do indeksu wyszukiwania.](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. **Zwiększenie warunków** (dostępne tylko w pełnej składni zapytań Lucene) zawiera operator `^` zwiększania poziomu, który można zastosować do dowolnej części drzewa zapytań. W naszym przykładzie zamiast wyszukiwania według *stanu*\*powietrza, jeden może wyszukiwać dokładny *warunek powietrza* lub prefiks, ale dokumenty, które pasują do dokładnego okresu są klasyfikowane przez zastosowanie podwyższania poziomu do terminu zapytanie: *warunek powietrza ^ 2 | | warunki powietrza* * Dowiedz się więcej o [zwiększaniu warunków](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. **Podwyższanie poziomu terminu** (dostępne tylko w pełnej składni zapytań Lucene) zawiera `^` operatora, który można zastosować do dowolnej części drzewa zapytań. W naszym przykładzie zamiast wyszukiwania na\**warunku Air* , jeden może wyszukać dokładny *warunek powietrza* lub prefiks, ale dokumenty, które pasują do dokładnego terminu, są klasyfikowane przez zastosowanie podwyższania poziomu zapytania warunkowego: * warunki powietrza ^ 2 | | warunki powietrza * *. Dowiedz się więcej o [zwiększaniu warunków](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Ocenianie w rozproszonym indeksie
 
-Wszystkie indeksy w Azure Search są automatycznie dzielone na wiele fragmentów, dzięki czemu możemy szybko rozpowszechnić indeks między wieloma węzłami podczas skalowania usługi w górę lub w dół. Po wydaniu żądania Search zostanie ono wystawione osobno dla każdego fragmentuu. Wyniki z poszczególnych fragmentu są następnie scalane i uporządkowane według wyniku (jeśli nie zdefiniowano innej kolejności). Ważne jest, aby wiedzieć, że funkcja oceniania liczy okres zapytania względem częstotliwości odwracania dokumentu we wszystkich dokumentach w fragmentu, a nie całej fragmentów!
+Wszystkie indeksy na platformie Azure Wyszukiwanie poznawcze są automatycznie dzielone na wiele fragmentów, dzięki czemu możemy szybko rozpowszechnić indeks między wieloma węzłami podczas skalowania usługi w górę lub w dół. Po wydaniu żądania Search zostanie ono wystawione osobno dla każdego fragmentuu. Wyniki z poszczególnych fragmentu są następnie scalane i uporządkowane według wyniku (jeśli nie zdefiniowano innej kolejności). Ważne jest, aby wiedzieć, że funkcja oceniania liczy okres zapytania względem częstotliwości odwracania dokumentu we wszystkich dokumentach w fragmentu, a nie całej fragmentów!
 
 Oznacza to, że ocena przydatności *może* być różna dla identycznych dokumentów, jeśli znajdują się one w różnych fragmentów. Na szczęście takie różnice mają być niewidoczne, ponieważ liczba dokumentów w indeksie rośnie ze względu na bardziej równomierny rozkład. Nie można założyć, że fragmentu dany dokument zostanie umieszczony. Jednak przy założeniu, że klucz dokumentu nie ulegnie zmianie, będzie on zawsze przypisany do tego samego fragmentu.
 
 Ogólnie rzecz biorąc, Ocena dokumentu nie jest najlepszym atrybutem do porządkowania dokumentów, jeśli trwałość zamówienia jest ważna. Na przykład, jeśli dwa dokumenty mają identyczny wynik, nie ma gwarancji, która jest najpierw wyświetlana w kolejnych uruchomieniach tego samego zapytania. Wynik dokumentu powinien zawierać jedynie ogólny sens dotyczący istotności dokumentu względem innych dokumentów w zestawie wyników.
 
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 
 Sukcesy aparatów wyszukiwania internetowego zgłosiły oczekiwania na wyszukiwanie pełnotekstowe w danych prywatnych. W przypadku niemal dowolnego rodzaju środowiska wyszukiwania oczekujemy, że aparat zapoznaje się z intencją, nawet jeśli warunki są błędne lub niekompletne. Możemy nawet oczekiwać dopasowania w oparciu o niemal równoważne warunki lub synonimy, które nigdy nie zostały określone.
 
 Z technicznego punktu widzenia wyszukiwanie pełnotekstowe jest wysoce skomplikowany, wymagając zaawansowanej analizy językowej i systematyczne podejścia do przetwarzania w taki sposób, że warunki zapytania w postaci "podwójna, rozwiń i Przekształć" w celu dostarczenia odpowiedniego wyniku. Mając na względzie złożone złożoności, istnieje wiele czynników, które mogą wpływać na wynik zapytania. Z tego powodu należy zainwestować czas, aby zrozumieć, Mechanics wyszukiwanie pełnotekstowe oferuje materialne korzyści podczas próby pracy przez nieoczekiwane wyniki.  
 
-W tym artykule zbadano wyszukiwanie pełnotekstowe w kontekście Azure Search. Mamy nadzieję, że zapewnisz wystarczającą wiedzę na temat rozpoznawania potencjalnych przyczyn i rozwiązań dotyczących rozwiązywania typowych problemów z zapytaniami. 
+W tym artykule zbadano wyszukiwanie pełnotekstowe w kontekście usługi Azure Wyszukiwanie poznawcze. Mamy nadzieję, że zapewnisz wystarczającą wiedzę na temat rozpoznawania potencjalnych przyczyn i rozwiązań dotyczących rozwiązywania typowych problemów z zapytaniami. 
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -387,7 +387,7 @@ W tym artykule zbadano wyszukiwanie pełnotekstowe w kontekście Azure Search. M
 
 + Przejrzyj [Profile oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) , jeśli chcesz dostroić klasyfikację w aplikacji wyszukiwania.
 
-+ Dowiedz się, jak stosować analizatory leksykalne charakterystyczne dla [języka](https://docs.microsoft.com/rest/api/searchservice/language-support).
++ Dowiedz się, jak stosować [analizatory leksykalne charakterystyczne dla języka](https://docs.microsoft.com/rest/api/searchservice/language-support).
 
 + [Skonfiguruj Niestandardowe analizatory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) dla minimalnej ilości przetwarzania lub wyspecjalizowanego przetwarzania dla określonych pól.
 

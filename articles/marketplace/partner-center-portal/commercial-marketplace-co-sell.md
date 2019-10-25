@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 7364bc41a67d8651c91745a8763fff62fee722fe
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773219"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784812"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Opcja współsprzedawana w centrum partnerskim
 
@@ -35,11 +35,11 @@ Wybierz typ oferty:
 | Urządzenie | Oferta, która obejmuje tworzenie i sprzedawanie sprzętu od producenta urządzenia. |
 | IP | Aplikacje lub inne materiały z prawem autorskim licencjonowane na użytek klienta. Na przykład: Program CRM, który może być licencjonowany i instalowany lokalnie. |
 | Usługa | Praktyczne doświadczenie dla konkretnego projektu jednorazowego, często dostarczane przez konsultantów. Na przykład: Konfigurowanie bazy danych klienta dla klienta programu (przy użyciu klienta przy założeniu, że jest on odpowiedzialny za obsługę bazy danych po dostarczeniu). |
-| Usługa zarządzana | Praktyczne doświadczenie w odniesieniu do projektu opartego na chmurze, zwykle w sposób ciągły. Na przykład: Zapewnianie platformy i narzędzi do uruchamiania bazy danych online z trwającym zarządzaniem udostępnianym przez dostawcę usług zarządzanych. |
+| Usługa zarządzana | Praktyczne doświadczenie w odniesieniu do projektu opartego na chmurze, zwykle w sposób ciągły. Przykład: dostarczenie platformy i narzędzi do uruchamiania bazy danych w trybie online z trwającym zarządzaniem udostępnianym przez dostawcę usług zarządzanych. |
 
 ## <a name="solution-areas"></a>Obszary rozwiązania
 
-Możesz dodać maksymalnie trzy obszary rozwiązań dla swojej oferty.  Dla każdego obszaru rozwiązania można wybrać maksymalnie dwa podobszary rozwiązania. Aby wybrać wiele podkategorii, użyj `Ctrl` klucza (w systemie Windows) lub klucza polecenia (w Mac OS).
+Możesz dodać maksymalnie trzy obszary rozwiązań dla swojej oferty.  Dla każdego obszaru rozwiązania można wybrać maksymalnie dwa podobszary rozwiązania. Aby wybrać wiele podkategorii, użyj klucza `Ctrl` (w systemie Windows) lub klucza polecenia (on Mac OS).
 
 Obszary rozwiązań ułatwiają Definiowanie scenariuszy, w których oferta została zaprojektowana.
 
@@ -65,17 +65,17 @@ Ten dokument zawiera wskazówki dotyczące różnych ról partnerów oraz sposó
 
 Możesz również wyeksportować istniejącą listę kontaktów oferty, a następnie wprowadzić zmiany w tym pliku.
 
-* *Nazwa (wymagana)* : Nazwa kontaktu.
-* *Adres e-mail (wymagany)* : Adres e-mail osoby kontaktowej.
-* *Stanowisko (wymagane)* : Stanowisko.
+* *Nazwa (wymagana)* : nazwa kontaktu.
+* *Adres e-mail (wymagane)* : adres e-mail osoby kontaktowej.
+* *Stanowisko (wymagane)* : stanowisko stanowiska.
 * *Rola (wymagana)* : Użyj jednej z następujących ról w tym polu w szablonie.
 
     | **Rola**    | **Opis**  |
     | :------------------- | :-------------------|
-    | *Marketing partnerski* | Ta rola koncentruje się na wprowadzaniu rozwiązań marketingowych i współpracy z zespołem ds. sprzedaży firmy Microsoft oraz odsprzedawców kanałów. Główny punkt kontaktu dotyczący zaangażowania marketingowego i oferowania oferty dotyczącej zawartości, na przykład opisów produktów, obrazów i filmów wideo. |
-    | *Sprzedaż partnerów* | Ta rola koncentruje się na sprzedawaniu rozwiązania i współpracy nad sprzedażą za pośrednictwem zespołów sprzedaży firmy Microsoft i odsprzedawców kanałów. W przypadku rozwiązań do współsprzedaży należy wskazać co najmniej jednego partnera sprzedaży dla partnerów w regionie, w którym ma być gotowa do sprzedaży. Ten sam kontakt sprzedaży partnera może obejmować wiele regionów. |
-    | *Sprzedaż techniczna partnera* | Obsługuje architekturę techniczną i zagadnienia dotyczące wdrażania w ramach cyklu sprzedaży, integracji po sprzedaży i okresów wdrożenia. |
-    | *Menedżer sukcesu dla klientów partnerskich* | Zwykle obsługuje klientów po wdrożeniu, aby pomóc im w pełni wykorzystać swoje rozwiązanie i zwiększyć jego zasięg w organizacji klienta. |
+    | *:::no-loc text="Partner marketing":::* | Ta rola koncentruje się na wprowadzaniu rozwiązań marketingowych i współpracy z zespołem ds. sprzedaży firmy Microsoft oraz odsprzedawców kanałów. Główny punkt kontaktu dotyczący zaangażowania marketingowego i oferowania oferty dotyczącej zawartości, na przykład opisów produktów, obrazów i filmów wideo. |
+    | *:::no-loc text="Partner sales":::* | Ta rola koncentruje się na sprzedawaniu rozwiązania i współpracy nad sprzedażą za pośrednictwem zespołów sprzedaży firmy Microsoft i odsprzedawców kanałów. W przypadku rozwiązań do współsprzedaży należy wskazać co najmniej jednego partnera sprzedaży dla partnerów w regionie, w którym ma być gotowa do sprzedaży. Ten sam kontakt sprzedaży partnera może obejmować wiele regionów. |
+    | *:::no-loc text="Partner technical sales":::* | Obsługuje architekturę techniczną i zagadnienia dotyczące wdrażania w ramach cyklu sprzedaży, integracji po sprzedaży i okresów wdrożenia. |
+    | *:::no-loc text="Partner customer success manager":::* | Zwykle obsługuje klientów po wdrożeniu, aby pomóc im w pełni wykorzystać swoje rozwiązanie i zwiększyć jego zasięg w organizacji klienta. |
 
 * *Kraje/regiony (wymagane):*  Podczas wypełniania szablonu Użyj [kodów krajów/regionów wymienionych poniżej](./commercial-marketplace-co-sell-countries.md). Jeśli kontakt obejmuje wszystkie kraje/regiony, użyj kodu w postaci trzech liter "OOO". Jeśli kontakt zawiera więcej niż jeden kraj/region, wprowadź każdy z dwóch kodów liter oddzielonych przecinkami (na przykład wprowadź "USA, CA, FR" bez cudzysłowów do szablonu).
 

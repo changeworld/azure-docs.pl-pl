@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 38a9f3a7020e866ccb000ed0c54499258f5e651a
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734674"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801882"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Wdrażanie usługi Azure Data Catalog — podejście i proces
 
@@ -125,7 +125,7 @@ Aby dowiedzieć się więcej o narzędziu rejestracji źródła danych, zobacz [
 W ramach projektu pilotażowego zespół Ireny korzysta również ze źródeł danych, które są opisane w skoroszycie programu Excel, obsługiwanym przez Dominika oraz jego współpracowników. Ponieważ inne zespoły w przedsiębiorstwie również używają skoroszytów programu Excel do opisywania źródeł danych, dział IT decyduje się na utworzenie narzędzia do migracji skoroszytów programu Excel do usługi Data Catalog. Używając interfejsu API REST usługi Data Catalog do zaimportowania istniejących adnotacji, zespół projektu pilotażowego może mieć pełny wykaz danych składający się z metadanych wyodrębnionych ze źródeł danych przy użyciu narzędzia rejestracji źródła danych, uzupełniony o informacje opisane wcześniej przez producentów danych i konsumentów, bez konieczności ponownego ręcznego wprowadzania. Wraz z rozwojem wykazu danych przedsiębiorstwa organizacja może używać narzędzia rejestracji źródła danych dla wspólnych źródeł danych, a także interfejsu API usługi Data Catalog dla źródeł niestandardowych i nietypowych scenariuszy.
 
 > [!NOTE]
-> Napisaliśmy przykładowe narzędzie, które używa interfejsu API usługi **Azure Data Catalog** do migracji skoroszytu programu Excel do usługi Data Catalog. Aby dowiedzieć się więcej o interfejsie API usługi Data Catalog i przykładowym narzędziu, [pobierz przykładowy kod skoroszytu ad hoc](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/) i zapoznaj się z dokumentacją [interfejsu API REST usługi Azure Data Catalog](/rest/api/datacatalog/).
+> Napisaliśmy przykładowe narzędzie, które używa interfejsu API usługi **Azure Data Catalog** do migracji skoroszytu programu Excel do usługi Data Catalog. Aby dowiedzieć się więcej o interfejsie API usługi Data Catalog i przykładowym narzędziu, [pobierz przykładowy kod skoroszytu ad hoc](https://github.com/Azure-Samples/data-catalog-dotnet-excel-register-data-assets) i zapoznaj się z dokumentacją [interfejsu API REST usługi Azure Data Catalog](/rest/api/datacatalog/).
 
 Kiedy projekt pilotażowy jest gotowy, czas na wykonanie planu wdrożenia usługi Data Catalog.
 
@@ -155,7 +155,7 @@ Ostatecznym sprawdzianem powodzenia projektu jest to, czy użytkownicy mogą odn
 
 Szkolenie powinno wystarczyć użytkownikom do rozpoczęcia pracy i być dostosowane do określonych celów oraz doświadczenia członków zespołu pilotażowego. Aby rozpocząć szkolenie, możesz wykonać czynności opisane w artykule [Rozpoczynanie pracy z usługą Azure Data Catalog](data-catalog-get-started.md). Ponadto możesz pobrać [prezentację szkolenia dotyczącego projektu pilotażowego usługi Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/blob/master/Azure%20Data%20Catalog%20Training.pptx?raw=true). Ta prezentacja programu PowerPoint powinna ułatwić rozpoczęcie szkolenia wprowadzającego członków zespołu pilotażowego do usługi Data Catalog.
 
-## <a name="conclusion"></a>Wniosek
+## <a name="conclusion"></a>Podsumowanie
 
 Gdy zespół pilotażowy radzi sobie dość sprawnie i zostały osiągnięte początkowe cele, należy rozszerzyć wdrożenie usługi Data Catalog na więcej zespołów. Zastosuj i dostosuj procesy z projektu pilotażowego w celu rozwinięcia usługi Data Catalog w całej organizacji.
 

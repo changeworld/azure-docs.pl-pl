@@ -1,23 +1,24 @@
 ---
-title: Nawiązywanie połączenia z magazynem wiedzy przy użyciu Power BI-Azure Search
-description: Połącz Azure Search ze sklepem z bazami danych, korzystając z Power BI do analizy i eksploracji.
+title: Nawiązywanie połączenia z magazynem wiedzy przy użyciu Power BI
+titleSuffix: Azure Cognitive Search
+description: Połącz magazyn wiedzy platformy Azure Wyszukiwanie poznawcze z Power BI do analizy i eksploracji.
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
+manager: nitinme
 ms.author: v-lilei
-ms.openlocfilehash: de282213535a2e49f73bc30e476bae02d470fdb2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265664"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790070"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Łączenie ze sklepem wiedzy Power BI
 
 > [!Note]
-> Magazyn wiedzy jest w wersji zapoznawczej i nie powinien być używany w środowisku produkcyjnym. [Interfejs API REST Azure Search wersja 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
+> Magazyn wiedzy jest w wersji zapoznawczej i nie powinien być używany w środowisku produkcyjnym. [Interfejs API REST usługi Azure wyszukiwanie poznawcze w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
 >
 W tym artykule dowiesz się, jak nawiązać połączenie i eksplorować magazyn wiedzy przy użyciu Power Query w aplikacji Power BI Desktop. Aby utworzyć przykład sklepu z bazami danych używany w tym przewodniku, zobacz temat [Tworzenie sklepu z bazami danych w Azure Portal](knowledge-store-create-portal.md).
 
@@ -39,7 +40,7 @@ W tym artykule dowiesz się, jak nawiązać połączenie i eksplorować magazyn 
 
 1. Jeśli zostanie wyświetlony monit, wprowadź klucz konta magazynu.
 
-1. Wybierz tabele *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*i *hotelReviewsSsPages* . Te tabele to projekcje w tabeli platformy Azure z przykładowymi danymi dotyczącymi przeanaliz hotelowych i obejmują wzbogacenie usługi poznawczej, które zostały wybrane podczas tworzenia magazynu wiedzy.
+1. Wybierz tabele *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*i *hotelReviewsSsPages* . Te tabele to projekcje tabeli platformy Azure dotyczące przykładowych danych w hotelu i zawierają wzbogacenia AI, które zostały wybrane podczas tworzenia magazynu wiedzy.
 
 1. Kliknij przycisk **Załaduj**.
 
@@ -87,7 +88,7 @@ Create new containers in Azure Blob storage and upload each CSV file to its own 
 | Medium (6000 Records)| [HotelReviews_Medium.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
 | Large (Full dataset 35000 Records) | [HotelReviews_Large.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Be aware that very large data sets are expensive to process. This one costs roughly $1000 U.S dollars.|
 
-In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Search to use larger data sets. 
+In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Cognitive Search to use larger data sets. 
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 

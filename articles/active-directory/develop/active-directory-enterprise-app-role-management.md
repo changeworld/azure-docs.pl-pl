@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie żądania roli wystawionego w tokenie SAML dla aplikacji dla przedsiębiorstw w usłudze Azure AD | Microsoft Docs
+title: Konfigurowanie żądania roli dla aplikacji dla przedsiębiorstw w usłudze Azure AD
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak skonfigurować rolę w tokenie SAML dla aplikacji dla przedsiębiorstw w Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -17,14 +18,14 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c671626a431a47e5100cf42ca0c9e29ab580ab3a
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207187"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803497"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Konfigurowanie żądania roli wystawionego w tokenie SAML dla aplikacji dla przedsiębiorstw
+# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Konfigurowanie roszczeń ról wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
 Korzystając z Azure Active Directory (Azure AD), można dostosować typ wystąpienia dla żądania roli w tokenie odpowiedzi, który otrzymasz po zatwierdzeniu aplikacji.
 
@@ -67,7 +68,7 @@ Jeśli aplikacja oczekuje, że role niestandardowe mają być przesyłane do odp
 
       ![Przycisk "Modyfikuj uprawnienia"](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
 
-    c. Wybierz następujące uprawnienia z listy (jeśli nie masz tych jeszcze) i wybierz pozycję **Modyfikuj uprawnienia**.
+    d. Wybierz następujące uprawnienia z listy (jeśli nie masz tych jeszcze) i wybierz pozycję **Modyfikuj uprawnienia**.
 
       ![Lista uprawnień i przycisk Modyfikuj uprawnienia](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
 
@@ -80,7 +81,7 @@ Jeśli aplikacja oczekuje, że role niestandardowe mają być przesyłane do odp
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
-      Jeśli używasz wielu katalogów, postępuj zgodnie z tym wzorcem:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+      Jeśli używasz wielu katalogów, postępuj zgodnie z tym wzorcem: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
       ![Eksplorator grafu — okno dialogowe z zapytaniem dotyczącym pobierania jednostek usługi](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -172,7 +173,7 @@ Jeśli aplikacja oczekuje, że role niestandardowe mają być przesyłane do odp
 
       ![Okienko "Dodaj atrybut"](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    c. W polu **Nazwa** wpisz nazwę atrybutu zgodnie z wymaganiami. Ten przykład używa **nazwy roli** jako nazwy żądania.
+    d. W polu **Nazwa** wpisz nazwę atrybutu zgodnie z wymaganiami. Ten przykład używa **nazwy roli** jako nazwy żądania.
 
     d. Pozostaw puste pole **obszar nazw** .
 
@@ -194,7 +195,7 @@ Aby zaktualizować istniejącą rolę, wykonaj następujące czynności:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Jeśli używasz wielu katalogów, postępuj zgodnie z tym wzorcem:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Jeśli używasz wielu katalogów, postępuj zgodnie z tym wzorcem: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Eksplorator grafu — okno dialogowe z zapytaniem dotyczącym pobierania jednostek usługi](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -216,7 +217,7 @@ Aby zaktualizować istniejącą rolę, wykonaj następujące czynności:
 
     b. Skopiuj istniejące role i wklej je w obszarze **treści żądania**.
 
-    c. Zaktualizuj wartość roli przez zaktualizowanie opisu roli, wartości roli lub nazwy wyświetlanej roli zgodnie z wymaganiami.
+    d. Zaktualizuj wartość roli przez zaktualizowanie opisu roli, wartości roli lub nazwy wyświetlanej roli zgodnie z wymaganiami.
 
     d. Po zaktualizowaniu wszystkich wymaganych ról wybierz pozycję **Uruchom zapytanie**.
 
@@ -232,7 +233,7 @@ Aby usunąć istniejącą rolę, wykonaj następujące czynności:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Jeśli używasz wielu katalogów, postępuj zgodnie z tym wzorcem:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Jeśli używasz wielu katalogów, postępuj zgodnie z tym wzorcem: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Eksplorator grafu — okno dialogowe z zapytaniem dotyczącym pobierania listy jednostek usługi](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -254,7 +255,7 @@ Aby usunąć istniejącą rolę, wykonaj następujące czynności:
 
     b. Skopiuj istniejące role z aplikacji i wklej je w obszarze **treści żądania**.
 
-    c. Dla roli, która ma zostać usunięta, ustaw wartość **false** dla opcji **IsEnabled** .
+    d. Dla roli, która ma zostać usunięta, ustaw wartość **false** dla opcji **IsEnabled** .
 
     d. Wybierz pozycję **Uruchom zapytanie**.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511017"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784828"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager często zadawane pytania
 
@@ -172,7 +172,7 @@ Można określić maksymalną liczbę punktów końcowych do zwrócenia, a wiele
 
 Nie możemy zagwarantować, że w każdym zapytaniu zostanie zwrócony ten sam zestaw punktów końcowych. Dotyczy to również faktu, że niektóre punkty końcowe mogą działać w złej kondycji, w którym punkt nie zostanie uwzględniony w odpowiedzi.
 
-## <a name="real-user-measurements"></a>Pomiary rzeczywistego użytkownika
+## <a name="real-user-measurements"></a>Pomiary dotyczące prawdziwych użytkowników
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Jakie korzyści wynikają z używania Pomiary rzeczywistego użytkownika?
 
@@ -326,7 +326,7 @@ Zwykle Traffic Manager jest używany do kierowania ruchu do aplikacji wdrożonyc
 
 Punkty końcowe platformy Azure skojarzone z profilem Traffic Manager są śledzone przy użyciu ich identyfikatorów zasobów. Gdy zasób platformy Azure używany jako punkt końcowy (na przykład publiczny adres IP, klasyczna usługa w chmurze, WebApp lub inny profil Traffic Manager używany w sposób zagnieżdżony) jest przenoszony do innej grupy zasobów lub subskrypcji, jego identyfikator zasobu zmieni się. W tym scenariuszu należy obecnie zaktualizować profil Traffic Manager, usuwając najpierw, a następnie dodając punkty końcowe do profilu.
 
-## <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager monitorowanie punktu końcowego
+## <a name="traffic-manager-endpoint-monitoring"></a>Monitorowanie punktu końcowego usługi Traffic Manager
 
 ### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Czy Traffic Manager jest odporny na awarie regionu platformy Azure?
 
@@ -345,7 +345,7 @@ Azure Resource Manager wymaga, aby wszystkie grupy zasobów określiły lokaliza
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Jak mogę określić aktualną kondycję każdego punktu końcowego?
 
-Bieżący stan monitorowania każdego punktu końcowego, oprócz ogólnego profilu, jest wyświetlany w Azure Portal. Te informacje są również dostępne za pośrednictwem [interfejsu API REST](https://msdn.microsoft.com/library/azure/mt163667.aspx)monitora ruchu, [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager)i międzyplatformowego [interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md).
+Bieżący stan monitorowania każdego punktu końcowego, oprócz ogólnego profilu, jest wyświetlany w Azure Portal. Te informacje są również dostępne za pośrednictwem [interfejsu API REST](https://msdn.microsoft.com/library/azure/mt163667.aspx)monitora ruchu, [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager)i [międzyplatformowego interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md).
 
 Możesz również użyć Azure Monitor do śledzenia kondycji punktów końcowych i wyświetlania wizualnej reprezentacji. Aby uzyskać więcej informacji na temat korzystania z Azure Monitor, zobacz [dokumentację dotyczącą monitorowania platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 
@@ -386,11 +386,11 @@ W przypadku profilów z dowolną metodą routingu inną niż wielowartościowy:
 |--|--|--|
 |ILE |  A/AAAA/CNAME |  Docelowy punkt końcowy| 
 |A |    A/CNAME | Docelowy punkt końcowy|
-|A |    AAAA |  NODATA |
+|A |    AAAA |  NoData |
 |AAAA | AAAA/CNAME |  Docelowy punkt końcowy|
-|AAAA | A | NODATA |
+|AAAA | A | NoData |
 |CNAME |    CNAME | Docelowy punkt końcowy|
-|CNAME  |A / AAAA | NODATA |
+|CNAME  |A/AAAA | NoData |
 |
 
 W przypadku profilów z metodą routingu ustawioną na wartość z wieloma wartościami:
@@ -400,7 +400,7 @@ W przypadku profilów z metodą routingu ustawioną na wartość z wieloma warto
 |ILE |  Mieszanie a i AAAA | Docelowe punkty końcowe|
 |A |    Mieszanie a i AAAA | Tylko docelowe punkty końcowe typu A|
 |AAAA   |Mieszanie a i AAAA|     Tylko docelowe punkty końcowe typu AAAA|
-|CNAME |    Mieszanie a i AAAA | NODATA |
+|CNAME |    Mieszanie a i AAAA | NoData |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Czy mogę użyć profilu z adresami końcowymi IPv4/IPv6 w profilu zagnieżdżonym?
 
@@ -416,7 +416,10 @@ Tak. Możesz określić TCP jako protokół monitorowania i Traffic Manager moż
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Jakie konkretne odpowiedzi są wymagane z punktu końcowego w przypadku korzystania z funkcji monitorowania protokołu TCP?
 
-Gdy jest używane monitorowanie TCP, Traffic Manager uruchamia trzykrotne uzgadnianie TCP, wysyłając żądanie SYN do punktu końcowego na określonym porcie. Następnie czeka przez pewien czas (określony w ustawieniach limitu czasu) dla odpowiedzi z punktu końcowego. Jeśli punkt końcowy odpowiada na żądanie SYN z odpowiedzią SYN-ACK w ramach limitu czasu określonego w ustawieniach monitorowania, ten punkt końcowy jest traktowany jako zdrowy. Jeśli otrzymasz odpowiedź SYN-ACK, Traffic Manager resetuje połączenie, reagując z powrotem z parametrem RST.
+Gdy jest używane monitorowanie TCP, Traffic Manager uruchamia trzykrotne uzgadnianie TCP, wysyłając żądanie SYN do punktu końcowego na określonym porcie. Następnie czeka na odpowiedź SYN-ACK z punktu końcowego przez określony czas (określony w ustawieniach limitu czasu).
+
+- Jeśli odebrano odpowiedź SYN-ACK w okresie limitu czasu określonym w ustawieniach monitorowania, ten punkt końcowy jest uznawany za prawidłowy. Wartość "FIN" lub "FIN-ACK" to oczekiwana odpowiedź z Traffic Manager, gdy regularnie kończy gniazdo.
+- Jeśli odebrano odpowiedź SYN-ACK po upływie określonego limitu czasu, Traffic Manager będzie odpowiadać z RST, aby zresetować połączenie.
 
 ### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Jak szybko Traffic Manager przenieść moich użytkowników poza punkt końcowy w złej kondycji?
 
@@ -477,8 +480,8 @@ Korzystanie z zagnieżdżonych profilów nie ma negatywnego wpływu na ceny.
 
 Rozliczanie Traffic Manager ma dwa składniki: kontrole kondycji punktów końcowych i miliony zapytań DNS
 
-* Kontrole kondycji punktów końcowych: Za profil podrzędny skonfigurowany jako punkt końcowy w profilu nadrzędnym nie jest naliczana opłata. Monitorowanie punktów końcowych w profilu podrzędnym jest rozliczane w zwykły sposób.
-* Zapytania DNS: Każde zapytanie jest zliczane tylko raz. Zapytanie względem profilu nadrzędnego zwracające punkt końcowy z profilu podrzędnego jest zliczane tylko względem profilu nadrzędnego.
+* Kontrole kondycji punktów końcowych: nie ma opłat za profil podrzędny, gdy jest skonfigurowany jako punkt końcowy w profilu nadrzędnym. Monitorowanie punktów końcowych w profilu podrzędnym jest rozliczane w zwykły sposób.
+* Zapytania DNS: poszczególne zapytania są zliczane tylko raz. Zapytanie względem profilu nadrzędnego zwracające punkt końcowy z profilu podrzędnego jest zliczane tylko względem profilu nadrzędnego.
 
 Aby uzyskać szczegółowe informacje, zobacz [stronę z cennikiem Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
@@ -496,13 +499,13 @@ W poniższej tabeli opisano zachowanie Traffic Manager Sprawdzanie kondycji dla 
 
 | Stan monitora podrzędnego | Stan monitora nadrzędnego punktu końcowego | Uwagi |
 | --- | --- | --- |
-| Wyłączony. Profil podrzędny został wyłączony. |Zatrzymano |Stan nadrzędnego punktu końcowego jest zatrzymany, nie jest wyłączony. Stan wyłączony jest zarezerwowany dla wskazywania, że punkt końcowy został wyłączony w profilu nadrzędnym. |
+| Wyłączony. Profil podrzędny został wyłączony. |Zatrzymane |Stan nadrzędnego punktu końcowego jest zatrzymany, nie jest wyłączony. Stan wyłączony jest zarezerwowany dla wskazywania, że punkt końcowy został wyłączony w profilu nadrzędnym. |
 | Pogorszenie. Co najmniej jeden punkt końcowy profilu podrzędnego jest w stanie obniżonej wydajności. |Online: liczba punktów końcowych w trybie online w profilu podrzędnym jest równa co najmniej wartości MinChildEndpoints.<BR>CheckingEndpoint: liczba punktów końcowych w trybie online i CheckingEndpoint w profilu podrzędnym jest równa co najmniej wartości MinChildEndpoints.<BR>Obniżona wydajność: w przeciwnym razie. |Ruch jest kierowany do punktu końcowego stanu CheckingEndpoint. Jeśli wartość MinChildEndpoints jest zbyt wysoka, punkt końcowy ma zawsze obniżony poziom. |
-| Online. Co najmniej jeden punkt końcowy profilu podrzędnego jest stanem online. Brak punktu końcowego w stanie obniżonej wydajności. |Zobacz powyżej. | |
+| Sieci. Co najmniej jeden punkt końcowy profilu podrzędnego jest stanem online. Brak punktu końcowego w stanie obniżonej wydajności. |Zobacz powyżej. | |
 | CheckingEndpoints. Co najmniej jeden punkt końcowy profilu podrzędnego to "CheckingEndpoint". Żadne punkty końcowe nie są w trybie online ani nie zostały obniżone. |Tak samo jak powyżej. | |
-| Nieaktywne. Wszystkie punkty końcowe profilu podrzędnego są wyłączone lub zatrzymane albo ten profil nie ma punktów końcowych. |Zatrzymano | |
+| Nieaktywne. Wszystkie punkty końcowe profilu podrzędnego są wyłączone lub zatrzymane albo ten profil nie ma punktów końcowych. |Zatrzymane | |
 
-## <a name="next-steps"></a>Kolejne kroki:
+## <a name="next-steps"></a>Następne kroki:
 
 - Dowiedz się więcej na temat Traffic Manager [monitorowania punktów końcowych i automatycznego przełączania do trybu failover](../traffic-manager/traffic-manager-monitoring.md).
 - Dowiedz się więcej o [metodach routingu ruchu](../traffic-manager/traffic-manager-routing-methods.md)Traffic Manager.

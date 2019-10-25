@@ -1,5 +1,6 @@
 ---
-title: Chroniony internetowy interfejs API — konfiguracja kodu aplikacji | Azure
+title: Chroniony internetowy interfejs API — konfiguracja kodu aplikacji
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć chroniony internetowy interfejs API i skonfigurować kod aplikacji.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fdc30df1f932a35702b01d7146017c4ca82c91a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 49dc3b0542e3f5e24c556ed78c20b16c3a6f1796
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562316"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803701"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chroniony internetowy interfejs API: Konfiguracja kodu
 
@@ -29,7 +30,7 @@ Aby skonfigurować kod chronionego internetowego interfejsu API, należy zrozumi
 
 ## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>Co definiuje ASP.NET/ASP.NET podstawowe interfejsy API jako chronione?
 
-Podobnie jak aplikacje sieci Web, interfejsy API sieci Web ASP.NET/ASP.NET Core są chronione, ponieważ ich akcje kontrolera są poprzedzone `[Authorize]` atrybutem. Tak więc akcje kontrolera można wywołać tylko wtedy, gdy interfejs API jest wywoływany przy użyciu tożsamości, która jest autoryzowana.
+Podobnie jak w przypadku aplikacji sieci Web, interfejsy API sieci Web ASP.NET/ASP.NET Core są chronione, ponieważ ich akcje kontrolera są poprzedzone atrybutem `[Authorize]`. Tak więc akcje kontrolera można wywołać tylko wtedy, gdy interfejs API jest wywoływany przy użyciu tożsamości, która jest autoryzowana.
 
 Weź pod uwagę następujące pytania:
 
@@ -91,7 +92,7 @@ W tej sekcji opisano sposób konfigurowania tokenu okaziciela.
 
 ### <a name="code-initialization"></a>Inicjowanie kodu
 
-Gdy aplikacja jest wywoływana w ramach akcji kontrolera, która posiada `[Authorize]` atrybut, ASP.NET/ASP.NET rdzeń przegląda token okaziciela w nagłówku autoryzacji żądania wywołania i wyodrębnia token dostępu. Token jest następnie przekazywany do oprogramowania pośredniczącego JwtBearer, które wywołuje rozszerzenia Microsoft IdentityModel dla platformy .NET.
+Gdy aplikacja jest wywoływana w ramach akcji kontrolera, która zawiera atrybut `[Authorize]`, ASP.NET/ASP.NET rdzeń przegląda token okaziciela w nagłówku autoryzacji żądania wywołania i wyodrębnia token dostępu. Token jest następnie przekazywany do oprogramowania pośredniczącego JwtBearer, które wywołuje rozszerzenia Microsoft IdentityModel dla platformy .NET.
 
 W ASP.NET Core to oprogramowanie pośredniczące jest inicjowane w pliku Startup.cs:
 
@@ -129,7 +130,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 ## <a name="token-validation"></a>Sprawdzanie poprawności tokenu
 
-Oprogramowanie pośredniczące JwtBearer, takie jak OpenID Connect Połącz oprogramowanie pośredniczące w aplikacjach sieci Web, jest `TokenValidationParameters` kierowane przez program w celu zweryfikowania tokenu. Token jest odszyfrowywany (w razie konieczności), oświadczenia są wyodrębniane i podpis zostanie zweryfikowany. Oprogramowanie pośredniczące sprawdza token, sprawdzając, czy są to dane:
+Oprogramowanie pośredniczące JwtBearer, takie jak OpenID Connect Połącz oprogramowanie pośredniczące w aplikacjach sieci Web, jest kierowane przez `TokenValidationParameters`, aby sprawdzić poprawność tokenu. Token jest odszyfrowywany (w razie konieczności), oświadczenia są wyodrębniane i podpis zostanie zweryfikowany. Oprogramowanie pośredniczące sprawdza token, sprawdzając, czy są to dane:
 
 - Jest on przeznaczony dla internetowego interfejsu API.
 - Został wystawiony dla aplikacji, która może wywołać internetowy interfejs API (Sub).
@@ -141,7 +142,7 @@ Mogą być również specjalne walidacje. Można na przykład sprawdzić, czy kl
 
 ### <a name="validators"></a>Modułów sprawdzania
 
-Kroki walidacji są przechwytywane w modułach walidacji, które znajdują się w programie [Microsoft IdentityModel Extensions for .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) Open Source Library, w jednym pliku źródłowym: [Microsoft.IdentityModel.Tokens/Validators.cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
+Kroki walidacji są przechwytywane w modułach walidacji, które znajdują się w programie [Microsoft IdentityModel Extensions for .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) Open Source Library, w jednym pliku źródłowym: [Microsoft. IdentityModel. tokeny/walidators. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
 
 W tej tabeli opisano moduły sprawdzania poprawności:
 
@@ -150,13 +151,13 @@ W tej tabeli opisano moduły sprawdzania poprawności:
 | `ValidateAudience` | Zapewnia, że token jest przeznaczony dla aplikacji, która sprawdza poprawność tokenu (dla mnie). |
 | `ValidateIssuer` | Zapewnia, że token został wystawiony przez zaufaną usługę STS (od zaufanej osoby). |
 | `ValidateIssuerSigningKey` | Gwarantuje, że aplikacja walidacji tokenu ufa klucz, który został użyty do podpisania tokenu. (Przypadek specjalny, gdzie klucz jest osadzony w tokenie. Zwykle nie jest to wymagane.) |
-| `ValidateLifetime` | Zapewnia, że token jest nadal (lub już) prawidłowy. Moduł sprawdzania poprawności sprawdza, czy okres istnienia tokenu`notbefore` ( `expires` i oświadczeń) jest w zakresie. |
+| `ValidateLifetime` | Zapewnia, że token jest nadal (lub już) prawidłowy. Moduł sprawdzania poprawności sprawdza, czy okres istnienia tokenu (`notbefore` i `expires` oświadczeń) jest w zakresie. |
 | `ValidateSignature` | Zapewnia, że token nie został naruszony. |
 | `ValidateTokenReplay` | Zapewnia, że token nie jest odtwarzany. (Specjalny przypadek dla niektórych jednorazowej używanych protokołów). |
 
-Wszystkie moduły walidacji są skojarzone z właściwościami `TokenValidationParameters` klasy, które są inicjowane z konfiguracji ASP.NET/ASP.NET Core. W większości przypadków nie trzeba zmieniać parametrów. Istnieje jeden wyjątek dla aplikacji, które nie są pojedynczymi dzierżawcami. (Oznacza to, że aplikacje sieci Web, które akceptują użytkowników z dowolnej organizacji lub osobistych kont Microsoft). W takim przypadku wystawca musi być zweryfikowany.
+Wszystkie moduły walidacji są skojarzone z właściwościami klasy `TokenValidationParameters`, które są inicjowane z poziomu konfiguracji ASP.NET/ASP.NET Core. W większości przypadków nie trzeba zmieniać parametrów. Istnieje jeden wyjątek dla aplikacji, które nie są pojedynczymi dzierżawcami. (Oznacza to, że aplikacje sieci Web, które akceptują użytkowników z dowolnej organizacji lub osobistych kont Microsoft). W takim przypadku wystawca musi być zweryfikowany.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Weryfikowanie zakresów i ról aplikacji w kodzie](scenario-protected-web-api-verification-scope-app-roles.md)

@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: 2f6f865f019b8b2a403865db4e59a7e86f59e509
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331057"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791798"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ponowne włączanie ochrony maszyn wirtualnych i ich przywracanie do lokacji lokalnej po przejściu do trybu failover na platformie Azure
 
@@ -34,6 +34,7 @@ Jeśli używasz szablonu do tworzenia maszyn wirtualnych, upewnij się, że każ
 - Jeśli serwer vCenter zarządza maszynami wirtualnymi, do których nastąpi powrót po awarii, upewnij się, że masz [wymagane uprawnienia](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) do odnajdywania maszyn wirtualnych na serwerach vCenter.
 - Przed ponownym włączeniem ochrony usuń migawki na głównym serwerze docelowym. Jeśli migawki znajdują się na lokalnym serwerze docelowym lub na maszynie wirtualnej, ponownej ochrony kończy się niepowodzeniem. Migawki na maszynie wirtualnej są automatycznie scalane podczas zadania ponownego włączania ochrony.
 - Wszystkie maszyny wirtualne grupy replikacji muszą mieć ten sam typ systemu operacyjnego (wszystkie Windows lub wszystkie systemy Linux). Grupa replikacji z mieszanymi systemami operacyjnymi nie jest obecnie obsługiwana w przypadku ponownego włączania ochrony i powrotu po awarii do lokacji lokalnej. Dzieje się tak, ponieważ główny element docelowy musi być tym samym systemem operacyjnym co maszyna wirtualna. Wszystkie maszyny wirtualne grupy replikacji muszą mieć ten sam główny element docelowy. 
+- Główny element docelowy musi mieć taką samą lub nowszą wersję systemu operacyjnego niż wersje systemu operacyjnego zreplikowanych elementów.
 - Serwer konfiguracji jest wymagany lokalnie w przypadku powrotu po awarii. Podczas powrotu po awarii maszyna wirtualna musi znajdować się w bazie danych serwera konfiguracji. W przeciwnym razie powrót po awarii nie powiedzie się. Upewnij się, że tworzysz regularnie zaplanowane kopie zapasowe serwera konfiguracji. Jeśli wystąpi awaria, przywróć serwer o tym samym adresie IP, aby działanie powrotu po awarii zadziałało. 
 - Ponownej ochrony i powrotu po awarii wymagają sieci VPN typu lokacja-lokacja (S2S) lub prywatnej komunikacji równorzędnej ExpressRoute w celu replikowania danych. Zapewnianie sieci, aby maszyny wirtualne w trybie failover na platformie Azure mogły nawiązać połączenie (ping) na lokalnym serwerze konfiguracji. Należy wdrożyć serwer przetwarzania w sieci platformy Azure dla maszyn wirtualnych zakończonych niepowodzeniem. Ten serwer przetwarzania musi być również w stanie komunikować się z lokalnym serwerem konfiguracji i główny serwer docelowy.
 - W przypadku, gdy adresy IP replikowanych elementów zostały zachowane w trybie failover, należy nawiązać połączenie S2S lub ExpressRoute między maszynami wirtualnymi platformy Azure i kartą sieciową powrotu po awarii serwera konfiguracji. Należy pamiętać, że przechowywanie adresów IP wymaga, aby serwer konfiguracji miał dwie karty sieciowe — jedną dla łączności z maszynami źródłowymi i jedną dla łączności z powrotem po awarii platformy Azure. Dzieje się tak, aby uniknąć nakładania się zakresów adresów podsieci źródła i maszyn wirtualnych w trybie failover.

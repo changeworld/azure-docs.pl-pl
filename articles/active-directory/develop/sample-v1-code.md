@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41ff9bce6135936a4b23096fb18efecf7be1e1e2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a71eaebcc6345d6550d6ddd38350fe709706d740
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374109"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809284"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Przykłady kodu Azure Active Directory (punkt końcowy v 1.0)
 
@@ -81,7 +81,7 @@ W poniższych przykładach przedstawiono publiczne aplikacje klienckie (aplikacj
 
 Aplikacja kliencka | Platforma | Przepływ/Grant | Microsoft Graph wywołań | Wywołuje interfejs API sieci Web ASP.NET lub ASP.NET Core 2. x
 ------------------ | -------- | ---------- | -------------------- | -------------------------
-Pulpit (WPF)           | ![Ten obraz pokazuje .NET/C# logo](media/sample-v2-code/logo_NET.png)  | Interaktywne | Część elementu [dotnet-Native — natywny](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [Dotnet-Native-Desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-natywny aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-WebAPI-Manual-JWT-Validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
+Pulpit (WPF)           | ![Ten obraz pokazuje .NET/C# logo](media/sample-v2-code/logo_NET.png)  | Interaktywne | Część elementu [dotnet-Native — natywny](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [Dotnet-Native-Desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-natywny aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-WebAPI-Manual-JWT-Validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
 Mobile (platformy UWP)            | .![Ten obraz pokazuje platformę .NETC#//UWP](media/sample-v2-code/logo_Windows.png)   | Interaktywne | [dotnet-Native-platformy UWP-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Ten przykład używa [Menedżera wam](/windows/uwp/security/web-account-manager), a nie [ADAL.NET](https://aka.ms/adalnet)|  [dotnet-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (platformy UWP Application przy użyciu ADAL.NET do wywoływania interfejsu API sieci Web z pojedynczym dzierżawcą) </p> [dotnet-WebAPI-wielodostępne-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (platformy UWP Application przy użyciu ADAL.NET do wywoływania wielodostępnego interfejsu API sieci Web)|
 Urządzenia przenośne (Android, iOS, platformy UWP)   | ![Ten obraz pokazuje platformę .NETC# /(Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interaktywne | [dotnet-obiekt macierzysty](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 Mobile (Android)           | ![Ten obraz pokazuje logo systemu Android](media/sample-v2-code/logo_Android.png) | Interaktywne |   [systemów](https://github.com/Azure-Samples/active-directory-android) |

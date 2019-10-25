@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: c78f2e37fa29fa1cdcb9acc6a4600688750b6d74
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: bcc272a8189ebb175f546f6a50c2c117a7975216
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387591"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800186"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Praca z dużymi zestawami danych zasobów platformy Azure
 
@@ -36,7 +36,7 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-W [interfejsie API REST](/rest/api/azureresourcegraph/resources/resources)formant jest **$Top** i jest częścią **QueryRequestOptions**.
+W [interfejsie API REST](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)formant jest **$Top** i jest częścią **QueryRequestOptions**.
 
 Formant, który jest _najbardziej restrykcyjny_ , zostanie wygrany. Na przykład jeśli w zapytaniu jest używany operator **Top** lub **Limit** , a wynikiem będzie więcej rekordów niż **pierwsze**, Maksymalna liczba zwracanych rekordów będzie równa **pierwsze**. Podobnie, jeśli **górny** lub **Limit** jest mniejszy niż **pierwszy**, zwracany zestaw rekordów będzie mniejszą wartością skonfigurowaną przez wartość **Top** lub **Limit**.
 
@@ -59,11 +59,11 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-W [interfejsie API REST](/rest/api/azureresourcegraph/resources/resources)formant jest **$Skip** i jest częścią **QueryRequestOptions**.
+W [interfejsie API REST](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)formant jest **$Skip** i jest częścią **QueryRequestOptions**.
 
 ## <a name="paging-results"></a>Stronicowanie wyników
 
-Gdy konieczne jest przerwanie zestawu wyników w mniejszych zestawach rekordów do przetworzenia lub ponieważ zestaw wyników będzie przekroczyć maksymalną dozwoloną wartość _1000_ zwracanych rekordów, należy użyć stronicowania. [Interfejs API REST](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** udostępnia wartości wskazujące, że zestaw wyników został podzielony: **resultTruncated** i **$skipToken**.
+Gdy konieczne jest przerwanie zestawu wyników w mniejszych zestawach rekordów do przetworzenia lub ponieważ zestaw wyników będzie przekroczyć maksymalną dozwoloną wartość _1000_ zwracanych rekordów, należy użyć stronicowania. [Interfejs API REST](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** udostępnia wartości wskazujące, że zestaw wyników został podzielony: **resultTruncated** i **$skipToken**.
 **resultTruncated** jest wartością logiczną, która informuje odbiorcę, jeśli w odpowiedzi nie zostały zwrócone dodatkowe rekordy. Ten stan można również zidentyfikować, gdy właściwość **Count** jest mniejsza niż Właściwość **totalRecords** . **totalRecords** definiuje liczbę rekordów, które pasują do zapytania.
 
 Gdy **resultTruncated** ma **wartość true**, właściwość **$skipToken** jest ustawiana w odpowiedzi. Ta wartość jest używana z tymi samymi wartościami zapytania i subskrypcji w celu uzyskania następnego zestawu rekordów, które pasują do zapytania.
@@ -81,7 +81,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 > [!IMPORTANT]
 > Zapytanie musi uwzględniać wartość pola **ID** **, aby** można było rozpocząć stronicowanie. Jeśli brakuje tego zapytania, odpowiedź nie będzie zawierać **$skipToken**.
 
-Aby zapoznać się z przykładem, zobacz [następne zapytanie na stronie](/rest/api/azureresourcegraph/resources/resources#next-page-query) w dokumentacji interfejsu API REST.
+Aby zapoznać się z przykładem, zobacz [następne zapytanie na stronie](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query) w dokumentacji interfejsu API REST.
 
 ## <a name="formatting-results"></a>Formatowanie wyników
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: dc5c85aaa3c2128b10ba2e6f9c45a66b44593202
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851792"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809224"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrolowana walidacja przyłączenia do hybrydowej usługi Azure AD
 
@@ -55,24 +55,24 @@ Użyj poniższego przykładu, aby utworzyć obiekt zasady grupy (GPO) w celu wdr
 
 1. Otwórz konsolę zarządzania zasady grupy i Utwórz nowy obiekt zasady grupy w domenie.
    1. Podaj nazwę nowo utworzonego obiektu zasad grupy (na przykład ClientSideSCP).
-1. Edytuj obiekt zasad grupy i znajdź następującą ścieżkę: > **Preferencje**konfiguracjikomputera > **Rejestr** **ustawień systemu Windows** > 
-1. Kliknij prawym przyciskiem myszy rejestr i wybierz pozycję **Nowy** > **element rejestru**
+1. Edytuj obiekt zasad grupy i znajdź następującą ścieżkę: **Konfiguracja komputera** > **Preferencje** > **Ustawienia systemu Windows** > **rejestrze**
+1. Kliknij prawym przyciskiem myszy rejestr i wybierz pozycję **nowy** > **element rejestru**
    1. Na karcie **Ogólne** skonfiguruj następujące ustawienia:
       1. Akcja: **Aktualizacja**
-      1. Ładowana **HKEY_LOCAL_MACHINE**
+      1. Gałąź: **HKEY_LOCAL_MACHINE**
       1. Ścieżka klucza: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Nazwa wartości: **TenantId**
       1. Typ wartości: **REG_SZ**
-      1. Dane wartości: Identyfikator GUID lub **katalog** Twojego wystąpienia usługi Azure AD (ta wartość znajduje się w **Azure Portal** > **Właściwości** > **Azure Active Directory** > **Identyfikator katalogu**)
+      1. Dane wartości: identyfikator GUID lub **katalog** Twojego wystąpienia usługi Azure AD (tę wartość można znaleźć w **Azure Portal** > **Azure Active Directory** > **Właściwości** > **Identyfikator katalogu**)
    1. Kliknij przycisk **OK**.
-1. Kliknij prawym przyciskiem myszy rejestr i wybierz pozycję **Nowy** > **element rejestru**
+1. Kliknij prawym przyciskiem myszy rejestr i wybierz pozycję **nowy** > **element rejestru**
    1. Na karcie **Ogólne** skonfiguruj następujące ustawienia:
       1. Akcja: **Aktualizacja**
-      1. Ładowana **HKEY_LOCAL_MACHINE**
+      1. Gałąź: **HKEY_LOCAL_MACHINE**
       1. Ścieżka klucza: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
-      1. Nazwa wartości: **TenantName**
+      1. Nazwa wartości: **dzierżawca**
       1. Typ wartości: **REG_SZ**
-      1. Dane wartości: Zweryfikowana **nazwa domeny** , jeśli używasz środowiska federacyjnego, takiego jak AD FS. Zweryfikowana **nazwa domeny** lub nazwa domeny onmicrosoft.com na przykład `contoso.onmicrosoft.com` w przypadku korzystania ze środowiska zarządzanego
+      1. Dane wartości: Nazwa zweryfikowanej **domeny** , jeśli używasz środowiska federacyjnego, takiego jak AD FS. Nazwa zweryfikowanej **domeny** lub nazwa domeny onmicrosoft.com na przykład `contoso.onmicrosoft.com` Jeśli używasz środowiska zarządzanego
    1. Kliknij przycisk **OK**.
 1. Zamknij Edytor dla nowo utworzonego obiektu zasad grupy
 1. Połącz nowo utworzony obiekt zasad grupy z odpowiednią jednostką organizacyjną zawierającą komputery przyłączone do domeny, które należą do kontrolowanej populacji wdrożenia
@@ -82,7 +82,7 @@ Użyj poniższego przykładu, aby utworzyć obiekt zasady grupy (GPO) w celu wdr
 Jeśli używasz AD FS, najpierw musisz skonfigurować punkt połączenia usługi po stronie klienta, korzystając z instrukcji wymienionych powyżej, ale łącząc obiekt zasad grupy z serwerami AD FS. Obiekt SCP definiuje Źródło uprawnień dla obiektów urządzeń. Może być lokalna lub Azure AD. W przypadku skonfigurowania AD FS źródłem obiektów urządzeń jest usługa Azure AD.
 
 > [!NOTE]
-> Jeśli nie powiodło się skonfigurowanie punktu połączenia usługi po stronie klienta na serwerach AD FS, Źródło tożsamości urządzeń będzie uznawane za lokalne i AD FS spowoduje to uruchomienie usuwania obiektów urządzeń z katalogu lokalnego po określonym okresie.
+> Jeśli nie powiodło się skonfigurowanie punktu połączenia usługi po stronie klienta na serwerach AD FS, Źródło tożsamości urządzeń będzie uznawane za lokalne i jeśli masz funkcję zapisywania zwrotnego urządzeń, AD FS rozpocząć usuwanie obiektów urządzeń z lokalnego zarejestrowanego kontenera urządzeń po określony okres.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Kontrolowana weryfikacja hybrydowego sprzężenia usługi Azure AD na urządzeniach niższego poziomu systemu Windows
 

@@ -1,41 +1,40 @@
 ---
-title: Umiejętność wyszukiwania poznawczego OCR — Azure Search
-description: Wyodrębnij tekst z plików obrazów przy użyciu funkcji optycznego rozpoznawania znaków (OCR) w potoku wzbogacenia Azure Search.
-services: search
+title: Umiejętność OCR
+titleSuffix: Azure Cognitive Search
+description: Wyodrębnij tekst z plików obrazów przy użyciu funkcji optycznego rozpoznawania znaków (OCR) w potoku wzbogacania na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: da1ca218f7a3d33e6ceb08b3f8d0f632b8b752b7
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265343"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791921"
 ---
 # <a name="ocr-cognitive-skill"></a>Umiejętność OCR
 
-Umiejętność optycznego rozpoznawania znaków (OCR) rozpoznaje drukowany i odręczny tekst w plikach obrazu. Ta umiejętność używa modeli uczenia maszynowego zapewnianych przez [Przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) w Cognitive Services. Umiejętność **OCR** jest mapowana na następujące funkcje:
+Umiejętność **optycznego rozpoznawania znaków (OCR)** rozpoznaje drukowany i odręczny tekst w plikach obrazu. Ta umiejętność używa modeli uczenia maszynowego zapewnianych przez [Przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) w Cognitive Services. Umiejętność **OCR** jest mapowana na następujące funkcje:
 
 + Interfejs API ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) jest używany w językach innych niż angielski. 
 + W przypadku języka angielskiego jest używany nowy interfejs API ["read"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) .
 
 Umiejętność **OCR** wyodrębnia tekst z plików obrazów. Obsługiwane formaty plików to:
 
-+ .JPEG
-+ .JPG
-+ .PNG
-+ .BMP
-+ .GIF
-+ .TIFF
++ . JPEG
++ . PLIKI
++ . Format
++ . BMP
++ . GIF
++ . TIFF
 
 > [!NOTE]
-> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w Azure Search. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
+> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w usłudze Azure Wyszukiwanie poznawcze. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
 >
-> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika usługi Azure wyszukiwanie poznawcze](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="skill-parameters"></a>Parametry umiejętności
@@ -46,21 +45,21 @@ W parametrach jest rozróżniana wielkość liter.
 |--------------------|-------------|
 | detectOrientation | Włącza Autowykrywanie orientacji obrazu. <br/> Prawidłowe wartości: PRAWDA/FAŁSZ.|
 |defaultLanguageCode | <p>  Kod języka tekstu wejściowego. Obsługiwane języki: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (czeski) <br/>da (duński) <br/>NL (holenderski) <br/>pl (angielski) <br/>Fi (fiński)  <br/>fr (francuski) <br/>  Niemcy (niemiecki) <br/>El (grecki) <br/> hu (węgierski) <br/> IT (włoski) <br/>  ja (japoński) <br/> ko (koreański) <br/> NB (norweski) <br/>   pl (Polski) <br/> pt (portugalski) <br/>  ru (rosyjski) <br/>  es (hiszpański) <br/>  OHR (szwedzki) <br/>  TR (turecki) <br/> AR (arabski) <br/> ro (rumuński) <br/> Wirtualizacja SR-Cyrl (SerbianCyrillic) <br/> Wirtualizacja sr-latn (SerbianLatin) <br/>  SK (słowacki). <br/>  UNK (nieznany) <br/><br/> Jeśli kod języka jest nieokreślony lub ma wartość null, język zostanie ustawiony na język angielski. Jeśli język jest jawnie ustawiony na wartość "UNK", język zostanie wykryty. </p> |
-|lineEnding | Wartość do użycia między wykrytymi wierszami. Możliwe wartości: "Space", "CarriageReturn", "wysuw wiersza".  Wartość domyślna to "Space" |
+|lineEnding | Wartość do użycia między wykrytymi wierszami. Możliwe wartości: "Space", "CarriageReturn", "wysuwu".  Wartość domyślna to "Space" |
 
 Wcześniej był już parametr o nazwie "textExtractionAlgorithm", który określa, czy umiejętność powinna wyodrębnić tekst "drukowany" lub "odpisanych".  Ten parametr jest przestarzały i nie jest już potrzebny, ponieważ najnowszy algorytm interfejsu API odczytu jest w stanie wyodrębnić oba typy tekstu jednocześnie.  Jeśli Twoja definicja umiejętności zawiera już ten parametr, nie musisz jej usuwać, ale nie będzie można jej używać, a oba typy tekstu zostaną wyodrębnione w przód, niezależnie od tego, co jest ustawione na.
 
 ## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
 
-| Wprowadź nazwę      | Opis                                          |
+| Nazwa wejściowa      | Opis                                          |
 |---------------|------------------------------------------------------|
-| image         | Typ złożony. Obecnie działa tylko z polem "/Document/normalized_images" tworzonym przez indeksator usługi Azure Blob, gdy ```imageAction``` jest ustawiony na wartość inną niż. ```none``` Zobacz [przykład](#sample-output) , aby uzyskać więcej informacji.|
+| image         | Typ złożony. Obecnie działa tylko z polem "/Document/normalized_images" tworzonym przez indeksator usługi Azure Blob, gdy ```imageAction``` jest ustawiona na wartość inną niż ```none```. Zobacz [przykład](#sample-output) , aby uzyskać więcej informacji.|
 
 
 ## <a name="skill-outputs"></a>Wyniki umiejętności
 | Nazwa wyjściowa     | Opis                   |
 |---------------|-------------------------------|
-| text          | Czysty tekst wyodrębniony z obrazu.   |
+| tekst          | Czysty tekst wyodrębniony z obrazu.   |
 | layoutText    | Typ złożony, który opisuje wyodrębniony tekst i lokalizację, w której został znaleziony tekst.|
 
 
@@ -135,7 +134,7 @@ Wcześniej był już parametr o nazwie "textExtractionAlgorithm", który określ
 }
 ```
 
-## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Przykład: Scalanie tekstu wyodrębnionego z obrazów osadzonych przy użyciu zawartości dokumentu.
+## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Przykład: scalanie tekstu wyodrębnionego z obrazów osadzonych przy użyciu zawartości dokumentu.
 
 Typowym przypadkiem użycia scalania tekstu jest możliwość scalania tekstowej reprezentacji obrazów (tekst z umiejętności OCR lub podpisanie obrazu) do pola zawartość dokumentu.
 
@@ -206,7 +205,7 @@ W powyższym przykładzie zestawu umiejętności założono, że istnieje pole N
 ```
 
 ## <a name="see-also"></a>Zobacz także
-+ [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
++ [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Umiejętność scalania](cognitive-search-skill-textmerger.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Utwórz indeksator (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

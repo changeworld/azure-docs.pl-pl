@@ -1,5 +1,6 @@
 ---
-title: Przeglądarki sieci Web w bibliotece uwierzytelniania firmy Microsoft dla platformy .NET | Azure
+title: Przeglądarki sieci Web w bibliotece uwierzytelniania firmy Microsoft dla platformy .NET
+titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących korzystania z platformy Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1285c5c61cee25e387ca5fb598f0e062088e549
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2446166aa8078040c06d7cb54ce01666d9931727
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532505"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802675"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Korzystanie z przeglądarek sieci Web w MSAL.NET
 Do uwierzytelniania interakcyjnego są wymagane przeglądarki sieci Web. Domyślnie MSAL.NET obsługuje [systemową przeglądarkę sieci Web](#system-web-browser-on-xamarinios-xamarinandroid) w oprogramowaniu Xamarin. iOS i Xamarin. Android. [Możesz również włączyć osadzoną przeglądarkę internetową](#enable-embedded-webviews-on-ios-and-android) w zależności od wymagań (UX, co jest potrzebne do logowania jednokrotnego (SSO), zabezpieczeń) w aplikacjach [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) i [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) . Możesz nawet [dynamicznie wybrać](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) , która przeglądarka sieci Web ma być używana w oparciu o obecność przeglądarki Chrome lub w przeglądarce obsługującej niestandardowe karty programu Chrome w systemie Android. MSAL.NET obsługuje tylko przeglądarkę systemową w aplikacjach klasycznych platformy .NET Core.
@@ -42,23 +43,23 @@ Ważne jest, aby zrozumieć, że w przypadku interakcyjnego pozyskiwania tokenu 
 
 ### <a name="embedded-vs-system-web-ui"></a>Osadzony interfejs użytkownika sieci Web systemu vs
 
-MSAL.NET to biblioteka wieloplatformowa, która ma kod specyficzny dla platformy, który umożliwia hostowanie przeglądarki w kontrolce interfejsu użytkownika (na przykład w przypadku klasycznej platformy .NET używa WinForms, w programie Xamarin używa natywnych kontrolek mobilnych itp.). Ta kontrolka jest `embedded` nazywana interfejsem użytkownika sieci Web. Alternatywnie, MSAL.NET może również uruchamiać przeglądarki systemu operacyjnego.
+MSAL.NET to biblioteka wieloplatformowa, która ma kod specyficzny dla platformy, który umożliwia hostowanie przeglądarki w kontrolce interfejsu użytkownika (na przykład w przypadku klasycznej platformy .NET używa WinForms, w programie Xamarin używa natywnych kontrolek mobilnych itp.). Ta kontrolka jest nazywana `embedded` interfejsem użytkownika sieci Web. Alternatywnie, MSAL.NET może również uruchamiać przeglądarki systemu operacyjnego.
 
-Ogólnie rzecz biorąc, zaleca się korzystanie z ustawień domyślnych platformy i jest to zwykle przeglądarka systemu. Przeglądarka systemowa jest lepsza do zapamiętywania użytkowników, którzy zalogowali się wcześniej. Jeśli musisz zmienić to zachowanie, użyj`WithUseEmbeddedWebView(bool)`
+Ogólnie rzecz biorąc, zaleca się korzystanie z ustawień domyślnych platformy i jest to zwykle przeglądarka systemu. Przeglądarka systemowa jest lepsza do zapamiętywania użytkowników, którzy zalogowali się wcześniej. Jeśli musisz zmienić to zachowanie, użyj `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>Błyskawicznie
+### <a name="at-a-glance"></a>W skrócie
 
-| Architektura        | Osadzić | System | Domyślny |
+| Architektura        | Osadzić | System | Domyślne |
 | ------------- |-------------| -----| ----- |
 | Klasyczny .NET     | Tak | Tak ^ | Osadzić |
 | .NET Core     | Nie | Tak ^ | System |
 | .NET Standard | Nie | Tak ^ | System |
-| Platforma UWP | Tak | Nie | Osadzić |
+| PLATFORMY UWP | Tak | Nie | Osadzić |
 | Xamarin.Android | Tak | Tak  | System |
 | Xamarin.iOS | Tak | Tak  | System |
-| Xamarin.Mac| Tak | Nie | Osadzić |
+| Platforma Xamarin. Mac| Tak | Nie | Osadzić |
 
-^ Wymaga "http://localhost" URI przekierowania
+^ Wymaga "http://localhost" identyfikator URI przekierowania
 
 ## <a name="system-web-browser-on-xamarinios-xamarinandroid"></a>Systemowa przeglądarka sieci Web na platformie Xamarin. iOS, Xamarin. Android
 
@@ -77,7 +78,7 @@ await pca.AcquireTokenInteractive(s_scopes)
          .WithUseEmbeddedWebView(false)
 ```
 
-MSAL.NET nie może wykryć, czy użytkownik nawiguje lub po prostu zamyka przeglądarkę. Aplikacje korzystające z tej techniki są zachęcane do definiowania limitu `CancellationToken`czasu (za pośrednictwem). Zalecamy przekroczenie limitu czasu co najmniej kilku minut, aby wziąć pod uwagę sytuacje, w których użytkownik zostanie poproszony o zmianę hasła lub przeprowadzenie uwierzytelniania wieloskładnikowego.
+MSAL.NET nie może wykryć, czy użytkownik nawiguje lub po prostu zamyka przeglądarkę. Aplikacje korzystające z tej techniki są zachęcane do definiowania limitu czasu (za pośrednictwem `CancellationToken`). Zalecamy przekroczenie limitu czasu co najmniej kilku minut, aby wziąć pod uwagę sytuacje, w których użytkownik zostanie poproszony o zmianę hasła lub przeprowadzenie uwierzytelniania wieloskładnikowego.
 
 ### <a name="how-to-use-the-default-os-browser"></a>Jak używać domyślnej przeglądarki systemu operacyjnego
 
@@ -97,12 +98,12 @@ IPublicClientApplication pca = PublicClientApplicationBuilder
 ```
 
 > [!Note]
-> W przypadku skonfigurowania `http://localhost`programu wewnętrznie MSAL.NET będzie znajdować losowy otwarty port i korzystać z niego.
+> W przypadku skonfigurowania `http://localhost`wewnętrznie MSAL.NET znajdzie losowy otwarty port i użyje go.
 
 ### <a name="linux-and-mac"></a>Linux i MAC
 
-W systemie Linux MSAL.NET otworzy domyślną przeglądarkę systemu operacyjnego za pomocą narzędzia xdg-Open. Aby rozwiązać problem, uruchom narzędzie z terminalu na przykład`xdg-open "https://www.bing.com"`  
-Na komputerze Mac przeglądarka jest otwierana przez wywołanie`open <url>`
+W systemie Linux MSAL.NET otworzy domyślną przeglądarkę systemu operacyjnego za pomocą narzędzia xdg-Open. Aby rozwiązać problem, uruchom narzędzie z terminalu na przykład `xdg-open "https://www.bing.com"`  
+Na komputerze Mac przeglądarka jest otwierana przez wywoływanie `open <url>`
 
 ### <a name="customizing-the-experience"></a>Dostosowywanie środowiska
 
@@ -141,7 +142,7 @@ Jednak w przypadku aplikacji klasycznych uruchamianie systemu WebView prowadzi d
 
 ## <a name="enable-embedded-webviews-on-ios-and-android"></a>Włączanie osadzonych widoków WebView w systemach iOS i Android
 
-Możesz również włączyć osadzone widoki WebView w aplikacjach Xamarin. iOS i Xamarin. Android. Począwszy od MSAL.NET 2.0.0 — wersja zapoznawcza, MSAL.NET obsługuje również korzystanie z osadzonej opcji WebView. Dla ADAL.NET osadzony widok WebView jest jedyną obsługiwaną opcją.
+Możesz również włączyć osadzone widoki WebView w aplikacjach Xamarin. iOS i Xamarin. Android. Począwszy od MSAL.NET 2.0.0 — wersja zapoznawcza, MSAL.NET obsługuje również korzystanie z **osadzonej** opcji WebView. Dla ADAL.NET osadzony widok WebView jest jedyną obsługiwaną opcją.
 
 Jako programista korzystający z platformy Xamarin, MSAL.NET jako element docelowy, możesz użyć osadzonych widoków WebViews lub przeglądarek systemu. Jest to wybór w zależności od środowiska użytkownika i kwestii związanych z bezpieczeństwem, które chcesz określić jako docelowe.
 
@@ -152,7 +153,7 @@ Istnieją pewne różnice wizualne między osadzonym widokiem WebView a przeglą
 
 **Logowanie interakcyjne przy użyciu usługi MSAL.NET z osadzonym widokiem WebView:**
 
-![osadzić](media/msal-net-web-browsers/embedded-webview.png)
+![Osadzić](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interakcyjne logowanie za pomocą usługi MSAL.NET przy użyciu przeglądarki systemowej:**
 
@@ -163,7 +164,7 @@ Istnieją pewne różnice wizualne między osadzonym widokiem WebView a przeglą
 Jako deweloper korzystający z usługi MSAL.NET masz kilka opcji wyświetlania interaktywnego okna dialogowego z usługi STS:
 
 - **Przeglądarka systemu.** Przeglądarka systemowa jest domyślnie ustawiana w bibliotece. W przypadku korzystania z systemu Android Przeczytaj [przeglądarki systemowe](msal-net-system-browser-android-considerations.md) , aby uzyskać szczegółowe informacje na temat tego, które przeglądarki są obsługiwane na potrzeby uwierzytelniania. W przypadku korzystania z przeglądarki systemowej w systemie Android zaleca się, aby urządzenie miało przeglądarkę, która obsługuje niestandardowe karty programu Chrome.  W przeciwnym razie uwierzytelnianie może zakończyć się niepowodzeniem.
-- **Osadzony widok WebView.** Aby użyć tylko osadzonego widoku WebView w MSAL.NET `AcquireTokenInteractively` , Konstruktor parametrów `WithUseEmbeddedWebView()` zawiera metodę.
+- **Osadzony widok WebView.** Aby użyć tylko osadzonego widoku WebView w MSAL.NET, Konstruktor parametrów `AcquireTokenInteractively` zawiera metodę `WithUseEmbeddedWebView()`.
 
     iOS
 
@@ -174,7 +175,7 @@ Jako deweloper korzystający z usługi MSAL.NET masz kilka opcji wyświetlania i
                     .ExecuteAsync();
     ```
 
-    Android:
+    Systemów
 
     ```csharp
     authResult = app.AcquireTokenInteractively(scopes)
@@ -185,7 +186,7 @@ Jako deweloper korzystający z usługi MSAL.NET masz kilka opcji wyświetlania i
 
 #### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinios"></a>Wybór między osadzoną przeglądarką sieci Web lub przeglądarką systemową na platformie Xamarin. iOS
 
-W aplikacji `ParentWindow` dla systemu iOS można `AppDelegate.cs` zainicjować w usłudze. `null` Nie jest on używany w systemie iOS
+W aplikacji systemu iOS w `AppDelegate.cs` można zainicjować `ParentWindow` do `null`. Nie jest on używany w systemie iOS
 
 ```csharp
 App.ParentWindow = null; // no UI parent on iOS
@@ -193,7 +194,7 @@ App.ParentWindow = null; // no UI parent on iOS
 
 #### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid"></a>Wybieranie między osadzoną przeglądarką sieci Web lub przeglądarką systemową na platformie Xamarin. Android
 
-W aplikacji `MainActivity.cs` systemu Android można ustawić działanie nadrzędne, tak aby wynik uwierzytelniania został przywrócony do:
+W aplikacji systemu Android w `MainActivity.cs` można ustawić działanie nadrzędne, tak aby wynik uwierzytelniania został przywrócony do:
 
 ```csharp
  App.ParentWindow = this;
@@ -210,11 +211,11 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 #### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>Wykrywanie obecności kart niestandardowych w aplikacji Xamarin. Android
 
-Jeśli chcesz użyć przeglądarki sieci Web systemu, aby włączyć logowanie jednokrotne w aplikacjach działających w przeglądarce, ale martwisz się się o środowisko użytkownika dla urządzeń z systemem Android bez przeglądarki z obsługą kart niestandardowych, możesz zdecydować, wywołując `IsSystemWebViewAvailable()` metodę w < c 2 > `IPublicClientApplication` . Ta metoda zwraca `true` Jeśli pakiet packagemanager wykryje niestandardowe karty `false` i nie wykryje ich na urządzeniu.
+Jeśli chcesz użyć przeglądarki sieci Web systemu, aby włączyć logowanie jednokrotne w aplikacjach działających w przeglądarce, ale martwisz się się o środowisko użytkownika dla urządzeń z systemem Android bez przeglądarki z obsługą kart niestandardowych, możesz zdecydować, wywołując metodę `IsSystemWebViewAvailable()` w `IPublicClientApplication`. Ta metoda zwraca `true`, jeśli pakiet Packagemanager wykryje niestandardowe karty i `false`, jeśli nie zostały wykryte na urządzeniu.
 
 W oparciu o wartość zwróconą przez tę metodę i wymagania można podjąć decyzję:
 
-- Do użytkownika można zwrócić niestandardowy komunikat o błędzie. Przykład: "Zainstaluj program Chrome, aby kontynuować uwierzytelnianie"-lub-
+- Do użytkownika można zwrócić niestandardowy komunikat o błędzie. Na przykład: "Zainstaluj program Chrome, aby kontynuować uwierzytelnianie"-lub-
 - Można wrócić do osadzonej opcji WebView i uruchomić interfejs użytkownika jako osadzony widok WebView.
 
 Poniższy kod pokazuje osadzoną opcję widoku WebView:

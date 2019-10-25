@@ -1,5 +1,6 @@
 ---
-title: Różnice między MSAL. js i ADAL. js | Azure
+title: Różnice między MSAL. js i ADAL. js
+titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o różnicach między biblioteką uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js) i biblioteki uwierzytelniania usługi Azure AD dla języka JavaScript (ADAL. js) i sposobu wybierania, który ma być używany.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7149b9d871c43af083774ffb799255e0d1144113
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8d831f9f1cf8dbf565d569f63ee6215fac80949d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429950"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803173"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Różnice między MSAL JS i ADAL JS
 
@@ -59,9 +60,9 @@ W wersji 2.0 przy użyciu urzędu `https://login.microsoftonline.com/common` uż
 
     Protokół v 2.0 używa zakresów zamiast zasobów w żądaniach. Innymi słowy, gdy aplikacja musi zażądać tokenów mających uprawnienia do zasobu, takiego jak MS Graph, różnica wartości przesyłanych do metod biblioteki jest następująca:
 
-    v 1.0: Resource = https @ no__t-0//Graph. Microsoft. com
+    v 1.0: Resource = https\://graph.microsoft.com
 
-    v 2.0: Scope = https @ no__t-0//Graph. Microsoft. com/user. Read
+    v 2.0: Scope = https\://graph.microsoft.com/User.Read
 
     Możesz zażądać zakresów dla dowolnego interfejsu API zasobów przy użyciu identyfikatora URI interfejsu API w tym formacie: appidURI/Scope na przykład: https: \//moja dzierżawca. onmicrosoft. com/myapi/API. Read
 

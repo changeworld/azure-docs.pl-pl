@@ -1,13 +1,13 @@
 ---
-title: Odwołanie do składni wyrażenia OData — Azure Search
-description: Formalna Specyfikacja gramatyki i składni dla wyrażeń OData w kwerendach Azure Search.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Odwołanie do składni wyrażenia OData
+titleSuffix: Azure Cognitive Search
+description: Formalna Specyfikacja gramatyki i składni dla wyrażeń OData w zapytaniach usługi Azure Wyszukiwanie poznawcze.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,27 +19,27 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5d7e6456cd6a6648ff2ca38ecbb4f2de5479d7c9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647493"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793237"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-search"></a>Odwołanie do składni wyrażenia OData dla Azure Search
+# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Dokumentacja składni wyrażenia OData dla usługi Azure Wyszukiwanie poznawcze
 
-Azure Search używa [wyrażeń OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) jako parametrów w całym interfejsie API. Najczęściej wyrażenia OData są używane dla `$orderby` parametrów i. `$filter` Wyrażenia te mogą być złożone, zawierające wiele klauzul, funkcje i operatory. Jednak nawet proste wyrażenia OData, takie jak ścieżki właściwości, są używane w wielu częściach interfejsu API REST Azure Search. Na przykład wyrażenia ścieżki są używane do odwoływania się do podpól złożonych pól wszędzie w interfejsie API, takich jak podczas tworzenia listy podpól w `$select` [sugestii](index-add-suggesters.md), [funkcji oceniania](index-add-scoring-profiles.md), parametru lub nawet [wyszukiwania w polu w Lucene zapytania](query-lucene-syntax.md).
+Usługa Azure Wyszukiwanie poznawcze używa [wyrażeń OData](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) jako parametrów w całym interfejsie API. Najczęściej wyrażenia OData są używane dla parametrów `$orderby` i `$filter`. Wyrażenia te mogą być złożone, zawierające wiele klauzul, funkcje i operatory. Jednak nawet proste wyrażenia OData, takie jak ścieżki właściwości, są używane w wielu częściach interfejsu API REST usługi Azure Wyszukiwanie poznawcze. Na przykład wyrażenia ścieżki są używane do odwoływania się do podpól złożonych pól wszędzie w interfejsie API, takich jak podczas tworzenia listy podpól w [sugestii](index-add-suggesters.md), [funkcji oceniania](index-add-scoring-profiles.md), parametru `$select` lub nawet [wyszukiwania w zapytań Lucene ](query-lucene-syntax.md).
 
-W tym artykule opisano wszystkie te formy wyrażeń OData przy użyciu formalnej gramatyki. Istnieje również interaktywny [Diagram](#syntax-diagram) ułatwiający wizualne Eksplorowanie gramatyki.
+W tym artykule opisano wszystkie te formy wyrażeń OData przy użyciu formalnej gramatyki. Istnieje również [interaktywny diagram](#syntax-diagram) ułatwiający wizualne Eksplorowanie gramatyki.
 
 ## <a name="formal-grammar"></a>Formalna Gramatyka
 
-Można opisać podzestaw języka OData obsługiwanego przez Azure Search przy użyciu gramatyki EBNF ([Extended back-Naura form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)). Reguły są wyświetlane na liście "w górę", zaczynając od najbardziej złożonych wyrażeń i dzieląc je na więcej wyrażeń pierwotnych. W górnej części są reguły gramatyki, które odpowiadają określonym parametrom interfejsu API REST Azure Search:
+Można opisać podzestaw języka OData obsługiwanego przez platformę Azure Wyszukiwanie poznawcze przy użyciu gramatyki EBNF ([Extended back-Naura form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)). Reguły są wyświetlane na liście "w górę", zaczynając od najbardziej złożonych wyrażeń i dzieląc je na więcej wyrażeń pierwotnych. W górnej części są reguły gramatyki, które odpowiadają określonym parametrom interfejsu API REST usługi Azure Wyszukiwanie poznawcze:
 
-- [`$filter`](search-query-odata-filter.md)zdefiniowane przez `filter_expression` regułę.
-- [`$orderby`](search-query-odata-orderby.md)zdefiniowane przez `order_by_expression` regułę.
-- [`$select`](search-query-odata-select.md)zdefiniowane przez `select_expression` regułę.
-- Ścieżki pól zdefiniowane przez `field_path` regułę. Ścieżki pól są używane w całym interfejsie API. Mogą odwoływać się do pól najwyższego poziomu indeksu lub pól podrzędnych z co najmniej jednym elementem nadrzędnym [złożonego pola](search-howto-complex-data-types.md) .
+- [`$filter`](search-query-odata-filter.md)zdefiniowane przez regułę `filter_expression`.
+- [`$orderby`](search-query-odata-orderby.md)zdefiniowane przez regułę `order_by_expression`.
+- [`$select`](search-query-odata-select.md)zdefiniowane przez regułę `select_expression`.
+- Ścieżki pól zdefiniowane przez regułę `field_path`. Ścieżki pól są używane w całym interfejsie API. Mogą odwoływać się do pól najwyższego poziomu indeksu lub pól podrzędnych z co najmniej jednym elementem nadrzędnym [złożonego pola](search-howto-complex-data-types.md) .
 
 Gdy EBNF jest [diagramem składni](https://en.wikipedia.org/wiki/Syntax_diagram) umożliwia przeglądania, który pozwala interaktywnie zbadać gramatykę i relacje między jej regułami.
 
@@ -209,14 +209,14 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="syntax-diagram"></a>Diagram składni
 
-Aby wizualnie zbadać gramatykę języka OData obsługiwaną przez Azure Search, wypróbuj interaktywny diagram składni:
+Aby wizualnie zbadać gramatykę języka OData obsługiwaną przez usługę Azure Wyszukiwanie poznawcze, wypróbuj interaktywny diagram składni:
 
 > [!div class="nextstepaction"]
-> [Diagram składni OData dla Azure Search](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Diagram składni OData dla Wyszukiwanie poznawcze platformy Azure](https://azuresearch.github.io/odata-syntax-diagram/)
 
 ## <a name="see-also"></a>Zobacz także  
 
-- [Filtry w Azure Search](search-filters.md)
-- [Wyszukaj dokumenty &#40;Azure Search interfejs API REST usługi&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filtry na platformie Azure Wyszukiwanie poznawcze](search-filters.md)
+- [Wyszukaj dokumenty &#40;w interfejsie API REST usługi Azure wyszukiwanie poznawcze&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Składnia zapytań Lucene](query-lucene-syntax.md)
-- [Prosta Składnia zapytania w Azure Search](query-simple-syntax.md)
+- [Prosta Składnia zapytania w usłudze Azure Wyszukiwanie poznawcze](query-simple-syntax.md)

@@ -1,5 +1,6 @@
 ---
-title: Dostosowywanie oświadczeń tokenów SAML dla aplikacji dla przedsiębiorstw w usłudze Azure AD | Microsoft Docs
+title: Dostosowywanie oświadczeń tokenów SAML dla aplikacji dla przedsiębiorstw w usłudze Azure AD
+titleSuffix: Microsoft identity platform
 description: Informacje o dostosowywaniu oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw w usłudze Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4f26c82d4cda6ce3d8bf01c7fd52fa579e86dcf
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
-ms.translationtype: MT
+ms.openlocfilehash: a9994d5f882e7bf27ac822a69c4310bc7c6fabe1
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240230"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803460"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -104,8 +105,8 @@ Można również użyć funkcji przekształcenia oświadczeń.
 
 | Funkcja | Opis |
 |----------|-------------|
-| **ExtractMailPrefix()** | Usuwa sufiks domeny z adresu e-mail lub głównej nazwy użytkownika. Spowoduje to wyodrębnienie tylko pierwszej części nazwy użytkownika, która jest przenoszona przez (na przykład "joe_smith" zamiast joe_smith@contoso.com). |
-| **Join ()** | Sprzęga atrybut z zweryfikowaną domeną. Jeśli wybrana wartość identyfikatora użytkownika ma domenę, Wyodrębnij nazwę użytkownika w celu dołączenia wybranej zweryfikowanej domeny. Na przykład w przypadku wybrania adresu e-mail (joe_smith@contoso.com) jako wartości identyfikatora użytkownika i wybrania contoso.onmicrosoft.com jako zweryfikowanej domeny spowoduje to joe_smith@contoso.onmicrosoft.com. |
+| **ExtractMailPrefix()** | Usuwa sufiks domeny z adresu e-mail lub głównej nazwy użytkownika. Spowoduje to wyodrębnienie tylko pierwszej części nazwy użytkownika, która jest przenoszona przez (na przykład "joe_smith", a nie joe_smith@contoso.com). |
+| **Join ()** | Sprzęga atrybut z zweryfikowaną domeną. Jeśli wybrana wartość identyfikatora użytkownika ma domenę, Wyodrębnij nazwę użytkownika w celu dołączenia wybranej zweryfikowanej domeny. Na przykład w przypadku wybrania adresu e-mail (joe_smith@contoso.com) jako wartości identyfikatora użytkownika i wybrania opcji contoso.onmicrosoft.com jako zweryfikowanej domeny spowoduje to joe_smith@contoso.onmicrosoft.com. |
 | **ToLower ()** | Konwertuje znaki wybranego atrybutu do małych liter. |
 | **ToUpper ()** | Konwertuje znaki wybranego atrybutu na wielkie litery. |
 
@@ -123,7 +124,7 @@ Można również użyć funkcji przekształcenia oświadczeń.
 
 | Funkcja | Opis |
 |----------|-------------|
-| **ExtractMailPrefix()** | Usuwa sufiks domeny z adresu e-mail lub głównej nazwy użytkownika. Spowoduje to wyodrębnienie tylko pierwszej części nazwy użytkownika, która jest przenoszona przez (na przykład "joe_smith" zamiast joe_smith@contoso.com). |
+| **ExtractMailPrefix()** | Usuwa sufiks domeny z adresu e-mail lub głównej nazwy użytkownika. Spowoduje to wyodrębnienie tylko pierwszej części nazwy użytkownika, która jest przenoszona przez (na przykład "joe_smith", a nie joe_smith@contoso.com). |
 | **Join ()** | Tworzy nową wartość przez Sprzęganie dwóch atrybutów. Opcjonalnie można użyć separatora między dwoma atrybutami. |
 | **ToLower ()** | Konwertuje znaki wybranego atrybutu do małych liter. |
 | **ToUpper ()** | Konwertuje znaki wybranego atrybutu na wielkie litery. |

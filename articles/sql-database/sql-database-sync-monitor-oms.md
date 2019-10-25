@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: d1461a1bb026d478d51a5f79cc02b34172524db6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 26dc1ebef1c627ed2b20eb0fda68b2ca2d01b82a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566419"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791758"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Monitorowanie SQL Data Sync przy użyciu dzienników Azure Monitor 
 
@@ -67,13 +67,13 @@ Upewnij się, że skonfigurowano następujące elementy:
 
 -   Konto Azure Automation
 
--   Obszar roboczy usługi Log Analytics
+-   Log Analytics obszar roboczy
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>Element Runbook programu PowerShell umożliwiający pobieranie SQL Data Sync dziennika 
 
 Użyj elementu Runbook programu PowerShell hostowanego w Azure Automation, aby ściągnąć SQL Data Sync dane dziennika i wysłać je do dzienników Azure Monitor. Przykładowy skrypt jest dołączony. Jako warunek wstępny musisz mieć konto Azure Automation. Następnie należy utworzyć element Runbook i zaplanować jego uruchomienie. 
 
-### <a name="create-a-runbook"></a>Utwórz element Runbook
+### <a name="create-a-runbook"></a>Tworzenie elementu runbook
 
 Aby uzyskać więcej informacji na temat tworzenia elementu Runbook, zobacz [pierwszy element Runbook programu PowerShell](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell).
 
@@ -83,7 +83,7 @@ Aby uzyskać więcej informacji na temat tworzenia elementu Runbook, zobacz [pie
 
 3.  Wybierz pozycję **Importuj istniejący element Runbook**.
 
-4.  W obszarze **plik Runbook**Użyj danego `DataSyncLogPowerShellRunbook` pliku. Ustaw **Typ elementu Runbook** jako `PowerShell`. Nadaj elementowi Runbook nazwę.
+4.  W obszarze **plik Runbook**Użyj danego pliku `DataSyncLogPowerShellRunbook`. Ustaw **Typ elementu Runbook** jako `PowerShell`. Nadaj elementowi Runbook nazwę.
 
 5.  Wybierz pozycję **Utwórz**. Masz teraz element Runbook.
 
@@ -135,9 +135,9 @@ Aby utworzyć alert korzystający z dzienników Azure Monitor, wykonaj następuj
 
 1.  W Azure Portal wybierz pozycję **przeszukiwanie dzienników**.
 
-2.  Utwórz zapytanie, aby wybrać błędy i ostrzeżenia według grupy synchronizacji w wybranym interwale. Przykład:
+2.  Utwórz zapytanie, aby wybrać błędy i ostrzeżenia według grupy synchronizacji w wybranym interwale. Na przykład:
 
-    `Type=DataSyncLog\_CL LogLevel\_s!=Success| measure count() by SyncGroupName\_s interval 60minute`
+    `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
 
 3.  Po uruchomieniu zapytania wybierz dzwonek z informacją o **alercie**.
 
@@ -149,7 +149,7 @@ Aby utworzyć alert korzystający z dzienników Azure Monitor, wykonaj następuj
 
 5.  W obszarze **Akcje**ustaw opcję **powiadomień e-mail** na wartość "tak". Wprowadź żądanych adresatów wiadomości e-mail.
 
-6.  Kliknij polecenie **Zapisz**. Określeni adresaci odbierają teraz powiadomienia e-mail w przypadku wystąpienia błędów.
+6.  Kliknij przycisk **Save** (Zapisz). Określeni adresaci odbierają teraz powiadomienia e-mail w przypadku wystąpienia błędów.
 
 ## <a name="create-an-azure-monitor-view-for-monitoring"></a>Tworzenie widoku Azure Monitor na potrzeby monitorowania
 
@@ -187,7 +187,7 @@ W większości przypadków to rozwiązanie jest bezpłatne.
 
 **Azure Automation:** W zależności od użycia może nastąpić poniesienie kosztu związanego z kontem Azure Automation. Pierwsze 500 minut czasu wykonywania zadania miesięcznie są bezpłatne. W większości przypadków użycie tego rozwiązania jest mniejsze niż 500 minut miesięcznie. Aby uniknąć naliczania opłat, Zaplanuj uruchomienie elementu Runbook w przedziale od 2 do kilku godzin. Aby uzyskać więcej informacji, zobacz [Cennik usługi Automation](https://azure.microsoft.com/pricing/details/automation/).
 
-**Azure Monitor dzienników:** W zależności od użycia może istnieć koszt skojarzony z dziennikami Azure Monitor. Warstwa Bezpłatna obejmuje 500 MB pobieranych danych dziennie. W większości przypadków to rozwiązanie powinno pozyskać mniej niż 500 MB dziennie. Aby zmniejszyć użycie, użyj filtrowania tylko niepowodzeń zawartego w elemencie Runbook. Jeśli używasz ponad 500 MB dziennie, przeprowadź uaktualnienie do warstwy płatnej, aby uniknąć ryzyka zatrzymania analizy po osiągnięciu ograniczenia. Aby uzyskać więcej informacji, zobacz [Azure monitor rejestrować cenniki](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Azure monitor dzienników:** W zależności od użycia może istnieć koszt skojarzony z dziennikami Azure Monitor. Warstwa Bezpłatna obejmuje 500 MB pobieranych danych dziennie. W większości przypadków to rozwiązanie powinno pozyskać mniej niż 500 MB dziennie. Aby zmniejszyć użycie, użyj filtrowania tylko niepowodzeń zawartego w elemencie Runbook. Jeśli używasz ponad 500 MB dziennie, przeprowadź uaktualnienie do warstwy płatnej, aby uniknąć ryzyka zatrzymania analizy po osiągnięciu ograniczenia. Aby uzyskać więcej informacji, zobacz [Azure monitor rejestrować cenniki](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Przykłady kodu
 
@@ -197,7 +197,7 @@ Pobierz przykłady kodu opisane w tym artykule z następujących lokalizacji:
 
 -   [Widok Azure Monitor synchronizacji danych](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
 
 -   Omówienie — [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync](sql-database-sync-data.md) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)
@@ -205,7 +205,7 @@ Aby uzyskać więcej informacji na temat usługi SQL Data Sync, zobacz:
     - W portalu — [Tutorial: Set up SQL Data Sync to sync data between Azure SQL Database and SQL Server on-premises](sql-database-get-started-sql-data-sync.md) (Samouczek: konfigurowanie usługi SQL Data Sync w celu synchronizowania danych między usługą Azure SQL Database i lokalnym programem SQL Server)
     - Z programem PowerShell
         -  [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
+        -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL Database i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Agent synchronizacji danych — [Data Sync Agent for Azure SQL Data Sync](sql-database-data-sync-agent.md) (Agent synchronizacji danych dla usługi Azure SQL Data Sync)
 -   Najlepsze rozwiązania — [Best practices for Azure SQL Data Sync](sql-database-best-practices-data-sync.md) (Najlepsze rozwiązania dotyczące korzystania z usługi Azure SQL Data Sync)
 -   Rozwiązywanie problemów — [Troubleshoot issues with Azure SQL Data Sync](sql-database-troubleshoot-data-sync.md) (Rozwiązywanie problemów z usługą Azure SQL Data Sync)

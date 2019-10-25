@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 18eba93661d9c418a230ced8f9970047a869a7e3
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051446"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808411"
 ---
 # <a name="what-are-authentication-methods"></a>Co to są metody uwierzytelniania?
 
 Jako administrator wybieraj metody uwierzytelniania dla usługi Azure Multi-Factor Authentication i samoobsługowego resetowania hasła (SSPR) zaleca się, aby użytkownicy musieli zarejestrować wiele metod uwierzytelniania. Gdy metoda uwierzytelniania nie jest dostępna dla użytkownika, może wybrać opcję uwierzytelnienia przy użyciu innej metody.
 
-Administratorzy mogą definiować w zasadach, które metody uwierzytelniania są dostępne dla użytkowników usługi SSPR i MFA. Niektóre metody uwierzytelniania mogą nie być dostępne dla wszystkich funkcji. Aby uzyskać więcej informacji na temat konfigurowania zasad, zobacz artykuł [jak pomyślnie wdrożyć](howto-sspr-deployment.md) Samoobsługowe resetowanie haseł i [zaplanować Multi-Factor Authentication platformy Azure opartej na chmurze](howto-mfa-getstarted.md)
+Administratorzy mogą definiować w zasadach, które metody uwierzytelniania są dostępne dla użytkowników usługi SSPR i MFA. Niektóre metody uwierzytelniania mogą nie być dostępne dla wszystkich funkcji. Aby uzyskać więcej informacji na temat konfigurowania zasad, zobacz artykuł [jak pomyślnie wdrożyć Samoobsługowe resetowanie haseł](howto-sspr-deployment.md) i [zaplanować Multi-Factor Authentication platformy Azure opartej na chmurze](howto-mfa-getstarted.md)
 
 Firma Microsoft zdecydowanie zaleca administratorów pozwala użytkownikom wybrać więcej niż minimalną wymaganą liczbę metod uwierzytelniania na wypadek, gdyby nie mieli dostępu do jednego.
 
@@ -30,7 +30,7 @@ Firma Microsoft zdecydowanie zaleca administratorów pozwala użytkownikom wybra
 | --- | --- |
 | Hasło | Uwierzytelnianie MFA i SSPR |
 | Pytania zabezpieczające | Tylko SSPR |
-| Adres e-mail | Tylko SSPR |
+| Email address (Adres e-mail) | Tylko SSPR |
 | Aplikacja Microsoft Authenticator | Uwierzytelnianie MFA i SSPR |
 | Token sprzętowy OATH | Publiczna wersja zapoznawcza usługi MFA i SSPR |
 | SMS | Uwierzytelnianie MFA i SSPR |
@@ -113,9 +113,9 @@ Maksymalna długość niestandardowego pytania zabezpieczającego to 200 znaków
 * Dowolny zestaw znaków może służyć do definiowania pytań i odpowiedzi, w tym znaków Unicode.
 * Liczba zdefiniowanych pytań musi być większa lub równa liczbie pytań, które były wymagane do zarejestrowania.
 
-## <a name="email-address"></a>Adres e-mail
+## <a name="email-address"></a>Email address (Adres e-mail)
 
-Adres e-mail jest dostępny **tylko w funkcji**samoobsługowego resetowania hasła usługi Azure AD.
+Adres e-mail jest dostępny **tylko w funkcji samoobsługowego resetowania hasła usługi Azure AD**.
 
 Firma Microsoft zaleca użycie konta e-mail, które nie wymaga hasła usługi Azure AD użytkownika do uzyskania dostępu.
 
@@ -123,20 +123,20 @@ Firma Microsoft zaleca użycie konta e-mail, które nie wymaga hasła usługi Az
 
 Aplikacja Microsoft Authenticator zapewnia dodatkowy poziom zabezpieczeń dla konta służbowego lub szkolnego usługi Azure AD lub konto Microsoft.
 
-Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
+Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
 
 > [!NOTE]
-> Użytkownicy nie będą mogli zarejestrować swojej aplikacji mobilnej podczas rejestrowania się w celu samoobsługowego resetowania hasła. Zamiast tego użytkownicy mogą rejestrować swoją aplikację [https://aka.ms/mfasetup](https://aka.ms/mfasetup) mobilną w wersji zapoznawczej rejestracji informacji o zabezpieczeniach pod adresem. [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)
+> Użytkownicy nie będą mogli zarejestrować swojej aplikacji mobilnej podczas rejestrowania się w celu samoobsługowego resetowania hasła. Zamiast tego użytkownicy mogą rejestrować swoją aplikację mobilną w [https://aka.ms/mfasetup](https://aka.ms/mfasetup) lub w wersji zapoznawczej rejestracji informacji o zabezpieczeniach w [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
 >
 
-### <a name="notification-through-mobile-app"></a>Powiadomienie przez aplikację mobilną
+### <a name="notification-through-mobile-app"></a>Powiadomienie za poorednictwem aplikacji mobilnej
 
 Aplikacja Microsoft Authenticator może pomóc zapobiec nieautoryzowanemu dostępowi do kont i zatrzymywać fałszywe transakcje przez wypychanie powiadomienia do telefonu lub tabletu. Użytkownicy wyświetlają powiadomienie i jeśli są wiarygodne, wybierz pozycję Weryfikuj. W przeciwnym razie można wybrać opcję Odmów.
 
 > [!WARNING]
 > Do samoobsługowego resetowania hasła, gdy do resetowania jest wymagana tylko jedna metoda, kod weryfikacyjny jest jedyną opcją dostępną dla użytkowników **w celu zapewnienia najwyższego poziomu zabezpieczeń**.
 >
-> Gdy wymagane są dwie metody, użytkownicy będą mogli resetować przy użyciu powiadomienia **lub** kodu weryfikacyjnego oprócz innych włączonych metod.
+> Gdy wymagane są dwie metody, użytkownicy będą mogli resetować przy **użyciu** powiadomienia **lub** kodu weryfikacyjnego oprócz innych włączonych metod.
 >
 
 Jeśli włączysz powiadomienia za pośrednictwem aplikacji mobilnej i kodu weryfikacyjnego z aplikacji mobilnej, użytkownicy rejestrujący aplikację Microsoft Authenticator przy użyciu powiadomienia będą mogli zweryfikować swoją tożsamość przy użyciu zarówno powiadomienia, jak i kodu.
@@ -172,7 +172,7 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 > [!NOTE]
 > Upewnij się, że w pliku CSV znajduje się wiersz nagłówka, jak pokazano powyżej.
 
-Po prawidłowym sformatowaniu pliku CSV administrator może następnie zalogować się do Azure Portal i przejść do **Azure Active Directory**, **serwera MFA**, tokenów **Oath**i przekazać plik CSV z wynikiem.
+Po prawidłowym sformatowaniu pliku CSV administrator może następnie zalogować się do Azure Portal i przejść do **Azure Active Directory**, **serwera MFA**, **tokenów Oath**i przekazać plik CSV z wynikiem.
 
 Proces może potrwać kilka minut, w zależności od rozmiaru pliku CSV. Kliknij przycisk **Odśwież** , aby uzyskać bieżący stan. W przypadku wystąpienia błędów w pliku można pobrać plik CSV zawierający listę błędów, które należy rozwiązać.
 
@@ -208,7 +208,7 @@ Automatyczne połączenie głosowe jest nawiązywane na podanym numerze telefonu
 > [!IMPORTANT]
 > Począwszy od marca 2019 opcje połączenia telefonicznego nie będą dostępne dla usługi MFA i SSPR użytkowników w bezpłatnych/bezpłatnych dzierżawach Azure AD. Ta zmiana nie ma wpływu na wiadomości SMS. Połączenie telefoniczne będzie nadal dostępne dla użytkowników w płatnych dzierżawach usługi Azure AD. Ta zmiana ma wpływ tylko na dzierżawy usługi Azure AD bezpłatne/próbne.
 
-### <a name="office-phone"></a>Telefon służbowy
+### <a name="office-phone"></a>Telefon biurowy
 
 Automatyczne połączenie głosowe jest nawiązywane na podanym numerze telefonu. Odpowiedz na wywołanie i naciśnij klawisz # na klawiaturze telefonu w celu uwierzytelnienia.
 
@@ -255,7 +255,7 @@ Jeśli Twoja organizacja jest federacyjnym logowaniem jednokrotnym w usłudze Az
 * Ustawienia lokalnej kontroli dostępu klienta nie są uznawane przez hasło aplikacji.
 * Nie jest dostępna funkcja rejestrowania/inspekcji lokalnego uwierzytelniania dla haseł aplikacji.
 * Niektóre zaawansowane projekty architektury mogą wymagać użycia kombinacji nazwy użytkownika i haseł w organizacji oraz haseł aplikacji podczas przeprowadzania weryfikacji dwuetapowej z klientami, w zależności od tego, gdzie są uwierzytelniane. W przypadku klientów, którzy uwierzytelniają się w infrastrukturze lokalnej, należy użyć nazwy użytkownika i hasła organizacji. W przypadku klientów, którzy uwierzytelniają się w usłudze Azure AD, Użyj hasła aplikacji.
-* Domyślnie użytkownicy nie mogą tworzyć haseł aplikacji. Jeśli musisz zezwolić użytkownikom na tworzenie haseł aplikacji, wybierz **opcję Zezwalaj użytkownikom na tworzenie haseł aplikacji do logowania się do aplikacji** niekorzystających z przeglądarki w obszarze Ustawienia usługi.
+* Domyślnie użytkownicy nie mogą tworzyć haseł aplikacji. Jeśli musisz zezwolić użytkownikom na tworzenie haseł aplikacji, wybierz **opcję Zezwalaj użytkownikom na tworzenie haseł aplikacji do logowania się do aplikacji niekorzystających z przeglądarki** w obszarze Ustawienia usługi.
 
 ## <a name="next-steps"></a>Następne kroki
 

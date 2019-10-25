@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 710bb8cba7fbbe4bc9b9fdc52b0767c96f97fe72
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c97c8231265cf87f52333a56d21d6fb13180c554
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183850"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808838"
 ---
-## <a name="create-base-resources"></a>Tworzenie zasobów podstawowego
+## <a name="create-base-resources"></a>Utwórz zasoby podstawowe
 
-Aby można było skonfigurować routing komunikatów, musisz utworzyć Centrum IoT hub, konto magazynu i kolejki usługi Service Bus. Te zasoby można utworzyć przy użyciu jednej z czterech artykułach, które jest dostępne dla części 1 tego samouczka: wiersza polecenia platformy Azure, programu Azure PowerShell, witryny Azure portal lub szablonu usługi Azure Resource Manager.
+Aby można było skonfigurować routing wiadomości, należy utworzyć Centrum IoT, konto magazynu i kolejkę Service Bus. Te zasoby można utworzyć przy użyciu jednego z czterech artykułów dostępnych dla części 1 tego samouczka: Azure Portal, szablonu Azure Resource Manager, interfejsu wiersza polecenia platformy Azure lub Azure PowerShell.
 
-Użyj tej samej grupy zasobów i lokalizacji dla wszystkich zasobów. Następnie na końcu, możesz usunąć wszystkie zasoby w jednym kroku przez usunięcie grupy zasobów.
+Użyj tej samej grupy zasobów i lokalizacji dla wszystkich zasobów. Następnie można usunąć wszystkie zasoby w jednym kroku, usuwając grupę zasobów.
 
-W poniższych sekcjach opisano kroki do wykonania.
+Poniżej znajduje się Podsumowanie kroków, które należy wykonać w następujących sekcjach: 
 
 1. Utwórz [grupę zasobów](../articles/azure-resource-manager/resource-group-overview.md).
 
@@ -35,4 +35,4 @@ W poniższych sekcjach opisano kroki do wykonania.
 
 4. Utwórz przestrzeń nazw i kolejkę usługi Service Bus.
 
-5. Utwórz tożsamość urządzenia symulowanego, które wysyła wiadomości do centrum. Zapisz klucz na potrzeby fazy testowania. (W przypadku tworzenia szablonu usługi Resource Manager, jest to wykonywane po wdrożeniu szablonu).
+5. Utwórz tożsamość urządzenia symulowanego, które wysyła wiadomości do centrum. Zapisz klucz na potrzeby fazy testowania. (W przypadku tworzenia szablonu Menedżer zasobów jest to wykonywane po wdrożeniu szablonu).

@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 03/12/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 5019951ca9628bc3beb849bdb2b148b575bc8618
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: cc084c9ff118aa5405bc12cf4e92ff1e11f24e2a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535120"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809410"
 ---
-# <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Samouczek: Korzystanie z interfejsu wiersza polecenia platformy Azure i Azure Portal konfigurowania routingu komunikatów IoT Hub
+# <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Samouczek: korzystanie z interfejsu wiersza polecenia platformy Azure i Azure Portal konfigurowania routingu komunikatów IoT Hub
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
 
@@ -26,11 +26,13 @@ ms.locfileid: "69535120"
 
 Ten samouczek używa interfejsu wiersza polecenia platformy Azure do tworzenia zasobów podstawowych, a następnie używa [Azure Portal](https://portal.azure.com) , aby pokazać, jak skonfigurować Routing komunikatów i skonfigurować urządzenie wirtualne na potrzeby testowania.
 
-Istnieje kilka nazw zasobów, które muszą być globalnie unikatowe, takie jak nazwa IoT Hub i nazwa konta magazynu. Aby to ułatwić, nazwy tych zasobów są dołączane losowo wartością alfanumeryczną o nazwie *randomValue*. RandomValue jest generowany raz u góry skryptu i dołączany do nazw zasobów zgodnie z wymaganiami w całym skrypcie. Jeśli nie chcesz go losowo, możesz ustawić go na pusty ciąg lub do określonej wartości.
-
 Skopiuj i wklej poniższy skrypt do Cloud Shell i naciśnij klawisz ENTER. Skrypt uruchamia jeden wiersz jednocześnie. Spowoduje to utworzenie zasobów podstawowych dla tego samouczka, w tym konta magazynu, IoT Hub, przestrzeni nazw Service Bus i kolejki Service Bus.
 
-Uwaga dotycząca debugowania: w tym skrypcie jest wykorzystywany symbol kontynuacji (ukośnik odwrotny `\`), aby skrypt był bardziej czytelny. Jeśli wystąpił problem z uruchomieniem skryptu, upewnij się, że nie ma spacji po żadnym z ukośników odwrotnych.
+Istnieje kilka nazw zasobów, które muszą być globalnie unikatowe, takie jak nazwa IoT Hub i nazwa konta magazynu. Aby to ułatwić, nazwy tych zasobów są dołączane losowo wartością alfanumeryczną o nazwie *randomValue*. RandomValue jest generowany raz u góry skryptu i dołączany do nazw zasobów zgodnie z wymaganiami w całym skrypcie. Jeśli nie chcesz go losowo, możesz ustawić go na pusty ciąg lub do określonej wartości.
+
+> [!TIP]
+> Wskazówka dotycząca debugowania: ten skrypt używa symbolu kontynuacji (`\`ukośnika odwrotnego), aby zwiększyć czytelność skryptu. Jeśli wystąpił problem z uruchomieniem skryptu, upewnij się, że sesja Cloud Shell jest uruchomiona `bash` i że nie ma spacji po żadnym z ukośników odwrotnych.
+>
 
 ```azurecli-interactive
 # This retrieves the subscription id of the account 
@@ -160,15 +162,15 @@ Teraz należy skonfigurować routing dla konta magazynu. Przejdź do okienka Kie
 
 9. Teraz podaj pozostałe informacje zapytania dotyczącego routingu. To zapytanie określa kryteria dotyczące wysyłania komunikatów do kontenera magazynu, który właśnie został dodany jako punkt końcowy. Wypełnij pola na ekranie.
 
-   **Nazwa**: Wprowadź nazwę zapytania dotyczącego routingu. Ten samouczek używa **ContosoStorageRoute**.
+   **Nazwa**: wprowadź nazwę zapytania dotyczącego routingu. Ten samouczek używa **ContosoStorageRoute**.
 
-   **Punkt końcowy**: Skonfigurowany w poprzednim kroku punkt końcowy.
+   **Punkt końcowy**: właśnie skonfigurowany punkt końcowy.
 
-   **Źródło danych**: Z listy rozwijanej wybierz pozycję **Komunikaty telemetrii urządzenia**.
+   **Źródło danych**: z listy rozwijanej wybierz pozycję **Komunikaty telemetrii urządzenia**.
 
-   **Włącz trasę**: Upewnij się, że to pole jest `enabled`ustawione na.
+   **Włącz trasę**: Upewnij się, że to pole jest ustawione na `enabled`.
    
-   **Zapytanie dotyczące routingu**: Wprowadź `level="storage"` jako ciąg zapytania.
+   **Zapytanie dotyczące routingu**: wprowadź `level="storage"` jako ciąg zapytania.
 
    ![Tworzenie zapytania routingu dla konta magazynu](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
 
@@ -188,23 +190,23 @@ Teraz skonfigurujesz routing dla kolejki usługi Service Bus. Przejdź do okienk
 
 4. Wypełnij następujące pola:
 
-   **Nazwa punktu końcowego**: Wprowadź nazwę punktu końcowego. Ten samouczek używa **ContosoSBQueueEndpoint**.
+   **Nazwa punktu końcowego**: wprowadź nazwę punktu końcowego. Ten samouczek używa **ContosoSBQueueEndpoint**.
    
-   **Przestrzeń nazw usługi Service Bus**: Użyj listy rozwijanej, aby wybrać przestrzeń nazw usługi Service Bus skonfigurowaną w ramach kroków przygotowania. W tym samouczku jest używana nazwa **ContosoSBNamespace**.
+   **Service Bus przestrzeń nazw**: Użyj listy rozwijanej, aby wybrać przestrzeń nazw usługi Service Bus skonfigurowaną w ramach kroków przygotowania. W tym samouczku jest używana nazwa **ContosoSBNamespace**.
 
-   **Kolejka usługi Service Bus**: Użyj listy rozwijanej, aby wybrać kolejkę Service Bus. W tym samouczku jest używana kolejka **contososbqueue**.
+   **Kolejka Service Bus**: Użyj listy rozwijanej, aby wybrać kolejkę Service Bus. W tym samouczku jest używana kolejka **contososbqueue**.
 
 5. Wybierz pozycję **Utwórz** , aby dodać punkt końcowy kolejki Service Bus. Spowoduje to powrót do okienka **Dodawanie trasy**.
 
 6. Teraz podaj pozostałe informacje zapytania dotyczącego routingu. To zapytanie określa kryteria dotyczące wysyłania komunikatów do kolejki usługi Service Bus, która właśnie została dodana jako punkt końcowy. Wypełnij pola na ekranie. 
 
-   **Nazwa**: Wprowadź nazwę zapytania dotyczącego routingu. Ten samouczek używa **ContosoSBQueueRoute**. 
+   **Nazwa**: wprowadź nazwę zapytania dotyczącego routingu. Ten samouczek używa **ContosoSBQueueRoute**. 
 
-   **Punkt końcowy**: Skonfigurowany w poprzednim kroku punkt końcowy.
+   **Punkt końcowy**: właśnie skonfigurowany punkt końcowy.
 
-   **Źródło danych**: Z listy rozwijanej wybierz pozycję **Komunikaty telemetrii urządzenia**.
+   **Źródło danych**: z listy rozwijanej wybierz pozycję **Komunikaty telemetrii urządzenia**.
 
-   **Zapytanie dotyczące routingu**: Wprowadź `level="critical"` jako ciąg zapytania. 
+   **Zapytanie dotyczące routingu**: wprowadź `level="critical"` jako ciąg zapytania. 
 
    ![Tworzenie zapytania routingu dla kolejki Service Bus](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 

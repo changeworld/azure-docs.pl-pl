@@ -1,13 +1,13 @@
 ---
-title: Zamówienie OData — według odwołania — Azure Search
-description: Dokumentacja języka OData dla składni order-by w zapytaniach Azure Search.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: Zamówienie OData — według odwołania
+titleSuffix: Azure Cognitive Search
+description: Dokumentacja języka OData dla składni order-by w zapytaniach usługi Azure Wyszukiwanie poznawcze.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8ee44549931100a1affa5e2bb9e5cda904c05ed1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: e3ca19b5696b9a7ad9b68b180313753a5c9de912
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647536"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793299"
 ---
-# <a name="odata-orderby-syntax-in-azure-search"></a>Składnia $orderby OData w Azure Search
+# <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Składnia $orderby OData na platformie Azure Wyszukiwanie poznawcze
 
- Można użyć [parametru **$OrderBy** OData](query-odata-filter-orderby-syntax.md) , aby zastosować niestandardową kolejność sortowania dla wyników wyszukiwania w Azure Search. W tym artykule opisano szczegółowo składnię **$OrderBy** . Aby uzyskać ogólne informacje na temat używania **$OrderBy** podczas prezentowania wyników wyszukiwania, zobacz jak korzystać [z wyników wyszukiwania w Azure Search](search-pagination-page-layout.md).
+ Możesz użyć [parametru **$OrderBy** OData](query-odata-filter-orderby-syntax.md) , aby zastosować niestandardową kolejność sortowania dla wyników wyszukiwania w usłudze Azure wyszukiwanie poznawcze. W tym artykule opisano szczegółowo składnię **$OrderBy** . Aby uzyskać ogólne informacje na temat używania **$OrderBy** podczas prezentowania wyników wyszukiwania, zobacz jak korzystać [z wyników wyszukiwania w usłudze Azure wyszukiwanie poznawcze](search-pagination-page-layout.md).
 
 ## <a name="syntax"></a>Składnia
 
@@ -45,20 +45,20 @@ sortable_function ::= geo_distance_call | 'search.score()'
 Dostępny jest również interaktywny diagram składni:
 
 > [!div class="nextstepaction"]
-> [Diagram składni OData dla Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
+> [Diagram składni OData dla Wyszukiwanie poznawcze platformy Azure](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
 
 > [!NOTE]
-> Zapoznaj się z informacjami o [składni wyrażenia OData dla Azure Search](search-query-odata-syntax-reference.md) , aby uzyskać pełną EBNF.
+> Zapoznaj się z informacjami o [składni wyrażenia OData dla usługi Azure wyszukiwanie poznawcze](search-query-odata-syntax-reference.md) , aby uzyskać pełną EBNF.
 
-Każda klauzula ma kryteria sortowania, opcjonalnie po której następuje kierunek sortowania (`asc` w przypadku rosnącej `desc` lub malejącej). Jeśli nie określisz kierunku, wartość domyślna to Ascending. Kryterium sortowania może być ścieżką `sortable` pola lub wywołaniem [`geo.distance`](search-query-odata-geo-spatial-functions.md) lub [`search.score`](search-query-odata-search-score-function.md) funkcjami.
+Każda klauzula ma kryteria sortowania, opcjonalnie po której następuje kierunek sortowania (`asc` do rosnącego lub `desc` dla malejąco). Jeśli nie określisz kierunku, wartość domyślna to Ascending. Kryterium sortowania może być ścieżką pola `sortable` lub wywołaniem [`geo.distance`](search-query-odata-geo-spatial-functions.md) lub funkcji [`search.score`](search-query-odata-search-score-function.md) .
 
-Jeśli wiele dokumentów ma takie same kryteria sortowania i `search.score` funkcja nie jest używana (na przykład w przypadku sortowania według pola liczbowego `Rating` , a trzy wszystkie dokumenty mają klasyfikację 4), powiązania zostaną przerwane według wyniku dokumentu w kolejności malejącej. Gdy wyniki dokumentu są takie same (na przykład w przypadku braku zapytania wyszukiwania pełnotekstowego określonego w żądaniu), względna kolejność dokumentów jest nieokreślona.
+Jeśli wiele dokumentów ma takie same kryteria sortowania, a funkcja `search.score` nie jest używana (na przykład jeśli sortujesz według pola liczbowego `Rating` i trzy wszystkie dokumenty mają klasyfikację 4), powiązania będą podzielone przez ocenę dokumentu w kolejności malejącej. Gdy wyniki dokumentu są takie same (na przykład w przypadku braku zapytania wyszukiwania pełnotekstowego określonego w żądaniu), względna kolejność dokumentów jest nieokreślona.
 
-Można określić wiele kryteriów sortowania. Kolejność wyrażeń określa ostateczną kolejność sortowania. Na przykład, aby sortować Malejąco według wyniku, po którym następuje klasyfikacja, składnia byłaby `$orderby=search.score() desc,Rating desc`następująca.
+Można określić wiele kryteriów sortowania. Kolejność wyrażeń określa ostateczną kolejność sortowania. Na przykład, aby sortować Malejąco według wyniku, po którym następuje klasyfikacja, składnia będzie `$orderby=search.score() desc,Rating desc`.
 
-Składnia dla `geo.distance` w **$OrderBy** jest taka sama jak w **$Filter**. W przypadku `geo.distance` używania w **$OrderBy**pole, do którego ma zastosowanie, musi być typu `Edm.GeographyPoint` i musi być `sortable`również.
+Składnia `geo.distance` w **$OrderBy** jest taka sama jak w **$Filter**. W przypadku używania `geo.distance` w **$OrderBy**, pole, którego ma dotyczyć, musi być typu `Edm.GeographyPoint` i musi być `sortable`.
 
-Składnia dla `search.score` w **$OrderBy** ma wartość `search.score()`. Funkcja `search.score` nie przyjmuje żadnych parametrów.
+Składnia `search.score` w **$OrderBy** jest `search.score()`. Funkcja `search.score` nie przyjmuje żadnych parametrów.
 
 ## <a name="examples"></a>Przykłady
 
@@ -80,7 +80,7 @@ Sortuj Hotele w kolejności malejącej według wyszukiwania. Ocena i ocena, a na
 
 ## <a name="next-steps"></a>Następne kroki  
 
-- [Jak korzystać z wyników wyszukiwania w Azure Search](search-pagination-page-layout.md)
-- [Przegląd języka wyrażenia OData dla Azure Search](query-odata-filter-orderby-syntax.md)
-- [Odwołanie do składni wyrażenia OData dla Azure Search](search-query-odata-syntax-reference.md)
-- [Wyszukaj dokumenty &#40;Azure Search interfejs API REST usługi&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Jak korzystać z wyników wyszukiwania w usłudze Azure Wyszukiwanie poznawcze](search-pagination-page-layout.md)
+- [Omówienie języka wyrażeń OData dla platformy Azure Wyszukiwanie poznawcze](query-odata-filter-orderby-syntax.md)
+- [Dokumentacja składni wyrażenia OData dla usługi Azure Wyszukiwanie poznawcze](search-query-odata-syntax-reference.md)
+- [Wyszukaj dokumenty &#40;w interfejsie API REST usługi Azure wyszukiwanie poznawcze&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

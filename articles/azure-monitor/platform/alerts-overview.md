@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: e79d9be6b893184bd615fbc569893e53a2c72861
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9796b41d0df091bc6eb23ba525a79da278e00bbd
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555597"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802308"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów w Microsoft Azure 
 
@@ -184,9 +184,9 @@ Użycie i Zarządzanie wystąpieniami alertów wymaga, aby użytkownik miał wbu
 
 Możesz chcieć programowo wykonywać zapytania dotyczące alertów generowanych w ramach subskrypcji. Może to być Tworzenie niestandardowych widoków poza Azure Portal lub analizowanie alertów w celu identyfikowania wzorców i trendów.
 
-Możesz wykonywać zapytania dotyczące alertów generowanych w ramach subskrypcji za pomocą [interfejsu API rest alert Management](https://aka.ms/alert-management-api) lub przy użyciu [interfejsu API REST usługi Azure Resource Graph dla alertów](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources).
+Możesz wykonywać zapytania dotyczące alertów generowanych w ramach subskrypcji za pomocą [interfejsu API rest alert Management](https://aka.ms/alert-management-api) lub przy użyciu [interfejsu API REST usługi Azure Resource Graph dla alertów](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources).
 
-[Interfejs API REST usługi Azure Resource Graph dla alertów](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) umożliwia wykonywanie zapytań o wystąpieniach alertów w odpowiedniej skali. Jest to zalecane, gdy konieczne jest zarządzanie alertami wygenerowanymi w wielu subskrypcjach. 
+[Interfejs API REST usługi Azure Resource Graph dla alertów](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)umożliwia wykonywanie zapytań o wystąpieniach alertów w odpowiedniej skali. Jest to zalecane, gdy konieczne jest zarządzanie alertami wygenerowanymi w wielu subskrypcjach. 
 
 Następujące przykładowe żądanie do interfejsu API zwraca liczbę alertów w ramach jednej subskrypcji:
 

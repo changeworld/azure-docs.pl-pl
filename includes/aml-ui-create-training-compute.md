@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/09/2019
-ms.openlocfilehash: 28478f38df6ba6ea356626cc36c23ad498fc1f47
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 3f969fb346ce341e694458dcc38bf193f012226b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692421"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792662"
 ---
-Potok jest uruchamiany w obiekcie docelowym obliczeń, czyli zasobem obliczeniowym dołączonym do obszaru roboczego.  Po utworzeniu obiektu docelowego obliczeń można użyć go ponownie do przyszłych przebiegów.
+Potok jest uruchamiany w miejscu docelowym obliczeń, który jest zasobem obliczeniowym dołączonym do obszaru roboczego. Po utworzeniu obiektu docelowego obliczeń można użyć go ponownie do przyszłych przebiegów.
 
 1. Wybierz pozycję **Uruchom** w górnej części kanwy, aby uruchomić potok.
 
@@ -36,6 +36,9 @@ Potok jest uruchamiany w obiekcie docelowym obliczeń, czyli zasobem obliczeniow
 1. Wybierz pozycję **Uruchom**.
 
 1. W oknie dialogowym **Konfigurowanie uruchomienia potoku** wybierz pozycję **+ nowy eksperyment** do **eksperymentu**
+
+    > [!NOTE]
+    > Grupy eksperymentów działają podobnie. W przypadku uruchomienia potoku wiele razy można wybrać ten sam eksperyment dla kolejnych uruchomień.
 
     * Wprowadź **nazwę eksperymentu** opisowego
 

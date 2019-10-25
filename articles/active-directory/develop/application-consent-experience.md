@@ -1,5 +1,6 @@
 ---
-title: Informacje o możliwościach wyrażania zgody aplikacji usługi Azure AD | Microsoft Docs
+title: Opis środowisk zgody dla aplikacji usługi Azure AD
+titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o usłudze Azure AD, aby zobaczyć, jak można jej używać podczas zarządzania aplikacjami i opracowywania ich w usłudze Azure AD
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 012a79969f2fa72589ba6b70aa5398b6f4e7e811
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 4356a0a26aa586f99766cc5166c17d301a9a194d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835250"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803905"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Opis środowisk zgody dla aplikacji usługi Azure AD
 
@@ -35,7 +36,7 @@ Zgoda polega na tym, że użytkownik udzielający autoryzacji aplikacji dostępu
 Rzeczywiste środowisko użytkownika udzielania zgody będzie różnić się w zależności od zasad ustawionych w dzierżawie użytkownika, zakresu uwierzytelniania użytkownika (lub roli) oraz typu [uprawnień](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions) wymaganych przez aplikację kliencką. Oznacza to, że deweloperzy aplikacji i Administratorzy dzierżawy mają pewną kontrolę nad doświadczeniem w zakresie wyrażania zgody. Administratorzy mają elastyczność ustawiania i wyłączania zasad w dzierżawie lub aplikacji w celu kontrolowania sposobu wyrażania zgody w dzierżawie. Deweloperzy aplikacji mogą określać, jakie typy uprawnień są wymagane i czy chcą przeprowadzić użytkowników przez przepływ zgody użytkownika lub przepływ zgody administratora.
 
 - **Przepływ zgody użytkownika** polega na tym, że deweloper aplikacji kieruje użytkowników do punktu końcowego autoryzacji z zamiarem zarejestrowania zgody wyłącznie dla bieżącego użytkownika.
-- **Przepływ zgody administratora** polega na tym, że deweloper aplikacji kieruje użytkowników do punktu końcowego zgody na administratora z zamiarem zarejestrowania zgody dla całej dzierżawy. Aby zapewnić prawidłowe działanie przepływu zgody administratora, deweloperzy aplikacji muszą wyświetlić listę wszystkich uprawnień we `RequiredResourceAccess` właściwości w manifeście aplikacji. Aby uzyskać więcej informacji, zobacz [manifest aplikacji](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
+- **Przepływ zgody administratora** polega na tym, że deweloper aplikacji kieruje użytkowników do punktu końcowego zgody na administratora z zamiarem zarejestrowania zgody dla całej dzierżawy. Aby zapewnić prawidłowe działanie przepływu zgody administratora, deweloperzy aplikacji muszą wyświetlić wszystkie uprawnienia we właściwości `RequiredResourceAccess` w manifeście aplikacji. Aby uzyskać więcej informacji, zobacz [manifest aplikacji](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>Bloki konstrukcyjne monitu o zgodę
 
@@ -45,7 +46,7 @@ Poniższy diagram i tabela zawierają informacje dotyczące bloków konstrukcyjn
 
 ![Bloki konstrukcyjne monitu o zgodę](./media/application-consent-experience/consent_prompt.png)
 
-| # | Składnik | Cel |
+| # | Składnik | Przeznaczenie |
 | ----- | ----- | ----- |
 | 1 | Identyfikator użytkownika | Ten identyfikator reprezentuje użytkownika, którego aplikacja kliencka żąda dostępu do chronionych zasobów w imieniu. |
 | 2 | Tytuł | Tytuł zmienia się w zależności od tego, czy użytkownicy przechodzą przez przepływ zgody użytkownika lub administratora. W przepływie zgody użytkownika tytuł będzie "żądanymi uprawnieniami" w przepływie zgody administratora, a tytuł będzie miał dodatkowy wiersz "Akceptuj dla organizacji". |

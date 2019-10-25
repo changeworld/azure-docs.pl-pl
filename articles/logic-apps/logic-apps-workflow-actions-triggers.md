@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 9bee329953a1f39720b054ed90e1d56c6743862e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: a6789f409e26d1310d9e583ac2934e0bae462b21
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679874"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799431"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Przewodnik odwołujący się do schematu dla wyzwalaczy i typów akcji w Azure Logic Apps
 
@@ -132,7 +132,7 @@ Ten wyzwalacz sprawdza lub *sonduje* punkt końcowy przy użyciu [interfejsów A
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*APIConnection_trigger_name* > | Ciąg | Nazwa wyzwalacza | 
+| <*APIConnection_trigger_name*> | Ciąg | Nazwa wyzwalacza | 
 | <*Nazwa połączenia*> | Ciąg | Nazwa połączenia z zarządzanym interfejsem API, którego używa przepływ pracy | 
 | <*Typ metody* > | Ciąg | Metoda HTTP służąca do komunikacji z zarządzanym interfejsem API: "GET", "PUT", "POST", "PATCH", "DELETE" | 
 | <*operacji interfejsu api* > | Ciąg | Operacja interfejsu API do wywołania | 
@@ -273,19 +273,21 @@ Ta definicja wyzwalacza subskrybuje interfejs API pakietu Office 365, udostępni
 
 ### <a name="http-trigger"></a>Wyzwalacz HTTP
 
-Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy na podstawie określonego harmonogramu cyklu. Odpowiedź punktu końcowego określa, czy przepływ pracy jest uruchomiony.
+Ten wyzwalacz wysyła żądanie do określonego punktu końcowego HTTP lub HTTPS na podstawie określonego harmonogramu cyklu. Następnie wyzwalacz sprawdza odpowiedź, aby określić, czy przepływ pracy jest uruchomiony.
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<endpoint-URL>",
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
       "headers": { "<header-content>" },
+      "queries": "<query-parameters>",
       "body": "<body-content>",
-      "authentication": { "<authentication-method>" },
-      "retryPolicy": { "<retry-behavior>" },
-      "queries": "<query-parameters>"
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      }
    },
    "recurrence": {
       "frequency": "<time-unit>",
@@ -303,27 +305,27 @@ Ten wyzwalacz sprawdza lub sonduje określony punkt końcowy na podstawie okreś
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
-|-------|------|-------------| 
-| <*Typ metody* > | Ciąg | Metoda HTTP używana do sondowania określonego punktu końcowego: "GET", "PUT", "POST", "PATCH", "DELETE" | 
-| <*punkt końcowy — adres URL* > | Ciąg | Adres URL protokołu HTTP lub HTTPS dla punktu końcowego do sondowania <p>Maksymalny rozmiar ciągu: 2 KB | 
-| < >*jednostki czasu* | Ciąg | Jednostka czasu, która opisuje, jak często wyzwala wyzwalacz: "s", "minute", "Hour", "Day", "tydzień", "Month" | 
-| <*liczbę jednostek czasu* > | Liczba całkowita | Wartość określająca częstotliwość uruchamiania wyzwalacza na podstawie częstotliwości, czyli liczbę jednostek czasu oczekiwania do momentu ponownego uruchomienia wyzwalacza <p>Poniżej znajdują się minimalne i maksymalne interwały: <p>-Miesiąc: 1-16 miesięcy </br>-Dzień: 1-500 dni </br>-Godz.: 1 – 12 godzin </br>-Minutę: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 s<p>Jeśli na przykład interwał wynosi 6, a częstotliwość wynosi "miesiąc", cykl jest co 6 miesięcy. | 
-|||| 
+| Właściwość | Wartość | Typ | Opis |
+|----------|-------|------|-------------|
+| `method` | <*Typ metody* > | Ciąg | Metoda używana do wysyłania żądania wychodzącego: "GET", "PUT", "POST", "PATCH" lub "DELETE" |
+| `uri` | <*http-lub-https-Endpoint-URL* > | Ciąg | Adres URL punktu końcowego HTTP lub HTTPS, do którego chcesz wysłać żądanie wychodzące. Maksymalny rozmiar ciągu: 2 KB <p>W przypadku usługi lub zasobu platformy Azure Ta składnia identyfikatora URI zawiera identyfikator zasobu i ścieżkę do zasobu, do którego chcesz uzyskać dostęp. |
+| `frequency` | < >*jednostki czasu* | Ciąg | Jednostka czasu, która opisuje, jak często wyzwala wyzwalacz: "s", "minute", "Hour", "Day", "tydzień", "Month" |
+| `interval` | <*liczbę jednostek czasu* > | Liczba całkowita | Wartość określająca częstotliwość uruchamiania wyzwalacza na podstawie częstotliwości, czyli liczbę jednostek czasu oczekiwania do momentu ponownego uruchomienia wyzwalacza <p>Poniżej znajdują się minimalne i maksymalne interwały: <p>-Miesiąc: 1-16 miesięcy </br>-Dzień: 1-500 dni </br>-Godz.: 1 – 12 godzin </br>-Minutę: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 s<p>Jeśli na przykład interwał wynosi 6, a częstotliwość wynosi "miesiąc", cykl jest co 6 miesięcy. |
+|||||
 
 *Obowiązkowe*
 
-| Wartość | Typ | Opis | 
-|-------|------|-------------| 
-| *nagłówek < — zawartość* > | Obiekt JSON | Nagłówki do wysłania wraz z żądaniem <p>Na przykład, aby ustawić język i typ dla żądania: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| < treść *— > zawartości* | Ciąg | Zawartość wiadomości do wysłania jako ładunek do żądania | 
-| <*uwierzytelnianie-metoda* > | Obiekt JSON | Metoda stosowana przez żądanie do uwierzytelniania. Aby uzyskać więcej informacji, zobacz Usługa [Scheduler — uwierzytelnianie wychodzące](../scheduler/scheduler-outbound-authentication.md). Poza harmonogramem Właściwość `authority` jest obsługiwana. Gdy nie zostanie określony, wartość domyślna to `https://login.windows.net`, ale można użyć innej wartości, takiej jak `https://login.windows\-ppe.net`. |
-| <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). |  
- <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania do dołączenia do żądania <p>Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do żądania. | 
-| <*Max-uruchomienia* > | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
-| <*Maksymalna liczba uruchomień kolejki* > | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
-| <*operacji — opcja* > | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). | 
-|||| 
+| Właściwość | Wartość | Typ | Opis |
+|----------|-------|------|-------------|
+| `headers` | *nagłówek < — zawartość* > | Obiekt JSON | Wszystkie nagłówki, które należy dołączyć do żądania <p>Na przykład, aby ustawić język i typ: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania, których należy użyć w żądaniu <p>Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do żądania. |
+| `body` | < treść *— > zawartości* | Obiekt JSON | Zawartość wiadomości do wysłania jako ładunek do żądania |
+| `authentication` | <*uwierzytelnianie-wartości typu i właściwości*> | Obiekt JSON | Model uwierzytelniania wykorzystywany przez żądanie do uwierzytelniania żądań wychodzących. Aby uzyskać więcej informacji, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). Poza harmonogramem Właściwość `authority` jest obsługiwana. Gdy nie zostanie określony, wartość domyślna to `https://management.azure.com/`, ale można użyć innej wartości. |
+| `retryPolicy` > `type` | <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
+| `runs` | <*Max-uruchomienia* > | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). |
+| `maximumWaitingRuns` | <*Maksymalna liczba uruchomień kolejki* > | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). |
+| `operationOptions` | <*operacji — opcja* > | Ciąg | Zachowanie domyślne można zmienić, ustawiając właściwość `operationOptions`. Aby uzyskać więcej informacji, zobacz [Opcje operacji](#operation-options). |
+|||||
 
 *Dane wyjściowe*
 
@@ -374,7 +376,7 @@ Zachowanie wyzwalacza zależy od sekcji, które są używane lub pomijane.
          "uri": "<endpoint-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": { "<retry-behavior>" }
          },
       },
@@ -383,7 +385,7 @@ Zachowanie wyzwalacza zależy od sekcji, które są używane lub pomijane.
          "url": "<endpoint-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" }
+         "authentication": { "<authentication-type>" }
       }
    },
    "runTimeConfiguration": {
@@ -413,7 +415,7 @@ Niektóre wartości, takie jak <*typu metody*>, są dostępne zarówno dla obiek
 | <*Typ metody* > | Ciąg | Metoda HTTP do użycia dla żądania anulowania: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
 | <*punkt końcowy — anulowanie subskrypcji — adres URL* > | Ciąg | Adres URL punktu końcowego, pod którym ma zostać wysłane żądanie anulowania | 
 | < treść *— > zawartości* | Ciąg | Zawartość wiadomości do wysłania w ramach subskrypcji lub żądania anulowania | 
-| <*uwierzytelnianie-metoda* > | Obiekt JSON | Metoda stosowana przez żądanie do uwierzytelniania. Aby uzyskać więcej informacji, zobacz Usługa [Scheduler — uwierzytelnianie wychodzące](../scheduler/scheduler-outbound-authentication.md). |
+| <*Typ uwierzytelniania*> | Obiekt JSON | Model uwierzytelniania wykorzystywany przez żądanie do uwierzytelniania żądań wychodzących. Aby uzyskać więcej informacji, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*Max-uruchomienia* > | Liczba całkowita | Domyślnie wystąpienia przepływu pracy są uruchamiane w tym samym czasie lub równolegle do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczbę*> wartość, zobacz [zmiana współbieżności wyzwalacza](#change-trigger-concurrency). | 
 | <*Maksymalna liczba uruchomień kolejki* > | Liczba całkowita | Gdy w przepływie pracy jest już uruchomiona Maksymalna liczba wystąpień, które można zmienić na podstawie właściwości `runtimeConfiguration.concurrency.runs`, wszystkie nowe uruchomienia są umieszczane w tej kolejce do [domyślnego limitu](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | 
@@ -950,7 +952,7 @@ Ta akcja powoduje wysłanie żądania subskrypcji za pośrednictwem protokołu H
          "uri": "<api-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": "<retry-behavior>",
          "queries": { "<query-parameters>" },
          "<other-action-specific-input-properties>"
@@ -960,7 +962,7 @@ Ta akcja powoduje wysłanie żądania subskrypcji za pośrednictwem protokołu H
          "uri": "<api-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "<other-action-specific-properties>"
       },
    },
@@ -986,7 +988,7 @@ Niektóre wartości, takie jak <*typu metody*>, są dostępne zarówno dla obiek
 | <*API — anulowanie subskrypcji — adres URL* > | Ciąg | Identyfikator URI, który ma być używany do anulowania subskrypcji z interfejsu API | 
 | *nagłówek < — zawartość* > | Obiekt JSON | Wszystkie nagłówki do wysłania w żądaniu <p>Na przykład, aby ustawić język i typ na żądanie: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | < treść *— > zawartości* | Obiekt JSON | Zawartość wiadomości do wysłania w żądaniu | 
-| <*uwierzytelnianie-metoda* > | Obiekt JSON | Metoda stosowana przez żądanie do uwierzytelniania. Aby uzyskać więcej informacji, zobacz Usługa [Scheduler — uwierzytelnianie wychodzące](../scheduler/scheduler-outbound-authentication.md). |
+| <*Typ uwierzytelniania*> | Obiekt JSON | Model uwierzytelniania wykorzystywany przez żądanie do uwierzytelniania żądań wychodzących. Aby uzyskać więcej informacji, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania, które mają zostać dołączone do wywołania interfejsu API <p>Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do wywołania. | 
 | <*inne-właściwości danych wejściowych dla akcji* > | Obiekt JSON | Wszystkie inne właściwości wejściowe, które dotyczą tej konkretnej akcji | 
@@ -1105,9 +1107,9 @@ Ta akcja uruchamia kod, który pobiera nazwę aplikacji logiki i zwraca tekst "H
 
 *Przykład 2*
 
-Ta akcja uruchamia kod w aplikacji logiki, która wyzwala po nadejściu nowej wiadomości e-mail do konta programu Outlook w usłudze Office 365. Aplikacja logiki używa również akcji Wyślij wiadomość e-mail dotyczącą zatwierdzenia, która przekazuje zawartość odebranej wiadomości e-mail wraz z żądaniem zatwierdzenia. 
+Ta akcja uruchamia kod w aplikacji logiki, która wyzwala po nadejściu nowej wiadomości e-mail do konta programu Outlook w usłudze Office 365. Aplikacja logiki używa również akcji Wyślij wiadomość e-mail dotyczącą zatwierdzenia, która przekazuje zawartość odebranej wiadomości e-mail wraz z żądaniem zatwierdzenia.
 
-Kod wyodrębnia adresy e-mail z właściwości `Body` wyzwalacza i zwraca te adresy e-mail wraz z wartością właściwości `SelectedOption` z akcji zatwierdzania. Akcja jawnie obejmuje akcję Wyślij wiadomość e-mail dotyczącą zatwierdzenia jako zależność w atrybucie `explicitDependencies`  >  `actions`.
+Kod wyodrębnia adresy e-mail z właściwości `Body` wyzwalacza i zwraca adresy wraz z wartością właściwości `SelectedOption` z akcji zatwierdzania. Akcja jawnie obejmuje akcję Wyślij wiadomość e-mail dotyczącą zatwierdzenia jako zależność w atrybucie `explicitDependencies`  >  `actions`.
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1206,14 +1208,21 @@ Ta definicja akcji wywołuje wcześniej utworzoną funkcję "getproductid":
 
 ### <a name="http-action"></a>Akcja HTTP
 
-Ta akcja wysyła żądanie do określonego punktu końcowego i sprawdza odpowiedź w celu ustalenia, czy przepływ pracy powinien zostać uruchomiony. 
+Ta akcja wysyła żądanie do określonego punktu końcowego HTTP lub HTTPS i sprawdza odpowiedź w celu ustalenia, czy przepływ pracy jest uruchomiony.
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<HTTP-or-HTTPS-endpoint-URL>"
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
+      "headers": { "<header-content>" },
+      "queries": { "<query-parameters>" },
+      "body": "<body-content>",
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      },
    },
    "runAfter": {}
 }
@@ -1221,23 +1230,24 @@ Ta akcja wysyła żądanie do określonego punktu końcowego i sprawdza odpowied
 
 *Wymagane*
 
-| Wartość | Typ | Opis | 
-|-------|------|-------------| 
-| <*Typ metody* > | Ciąg | Metoda używana do wysyłania żądania: "GET", "PUT", "POST", "PATCH" lub "DELETE" | 
-| <*http-lub-https-Endpoint-URL* > | Ciąg | Punkt końcowy HTTP lub HTTPS do wywołania. Maksymalny rozmiar ciągu: 2 KB | 
-|||| 
+| Właściwość | Wartość | Typ | Opis |
+|----------|-------|------|-------------|
+| `method` | <*Typ metody* > | Ciąg | Metoda używana do wysyłania żądania wychodzącego: "GET", "PUT", "POST", "PATCH" lub "DELETE" |
+| `uri` | <*http-lub-https-Endpoint-URL* > | Ciąg | Adres URL punktu końcowego HTTP lub HTTPS, do którego chcesz wysłać żądanie wychodzące. Maksymalny rozmiar ciągu: 2 KB <p>W przypadku usługi lub zasobu platformy Azure Ta składnia identyfikatora URI zawiera identyfikator zasobu i ścieżkę do zasobu, do którego chcesz uzyskać dostęp. |
+|||||
 
 *Obowiązkowe*
 
-| Wartość | Typ | Opis | 
-|-------|------|-------------| 
-| *nagłówek < — zawartość* > | Obiekt JSON | Wszystkie nagłówki do wysłania wraz z żądaniem <p>Na przykład, aby ustawić język i typ: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| < treść *— > zawartości* | Obiekt JSON | Zawartość wiadomości do wysłania w żądaniu | 
-| <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania do dołączenia do żądania <p>Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do wywołania. | 
-| <*inne-właściwości danych wejściowych dla akcji* > | Obiekt JSON | Wszystkie inne właściwości wejściowe, które dotyczą tej konkretnej akcji | 
-| <*inne-właściwości specyficzne dla akcji* > | Obiekt JSON | Wszystkie inne właściwości, które mają zastosowanie do tej konkretnej akcji | 
-|||| 
+| Właściwość | Wartość | Typ | Opis |
+|----------|-------|------|-------------|
+| `headers` | *nagłówek < — zawartość* > | Obiekt JSON | Wszystkie nagłówki, które należy dołączyć do żądania <p>Na przykład, aby ustawić język i typ: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*Query-parameters* > | Obiekt JSON | Wszystkie parametry zapytania, których należy użyć w żądaniu <p>Na przykład obiekt `"queries": { "api-version": "2018-01-01" }` dodaje `?api-version=2018-01-01` do wywołania. |
+| `body` | < treść *— > zawartości* | Obiekt JSON | Zawartość wiadomości do wysłania jako ładunek do żądania |
+| `authentication` | <*uwierzytelnianie-wartości typu i właściwości*> | Obiekt JSON | Model uwierzytelniania wykorzystywany przez żądanie do uwierzytelniania żądań wychodzących. Aby uzyskać więcej informacji, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). Poza harmonogramem Właściwość `authority` jest obsługiwana. Gdy nie zostanie określony, wartość domyślna to `https://management.azure.com/`, ale można użyć innej wartości. |
+| `retryPolicy` > `type` | <*zachowanie ponowienia próby* > | Obiekt JSON | Dostosowuje sposób ponawiania próby dla sporadycznych awarii, które mają kod stanu 408, 429 i 5XX oraz wszelkie wyjątki łączności. Aby uzyskać więcej informacji, zobacz [zasady ponawiania](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
+| <*inne-właściwości danych wejściowych dla akcji* > | <*Input-property*> | Obiekt JSON | Wszystkie inne właściwości wejściowe, które dotyczą tej konkretnej akcji |
+| <*inne-właściwości specyficzne dla akcji* > | <*wartość właściwości*> | Obiekt JSON | Wszystkie inne właściwości, które mają zastosowanie do tej konkretnej akcji |
+|||||
 
 *Przykład*
 
@@ -2665,134 +2675,11 @@ W przypadku pojedynczej definicji aplikacji logiki liczba akcji wykonywanych co 
 }
 ```
 
-<a name="connector-authentication"></a>
+<a name="authenticate-triggers-actions"></a>
 
-## <a name="authenticate-http-triggers-and-actions"></a>Uwierzytelnianie wyzwalaczy i akcji HTTP
+## <a name="authenticate-triggers-and-actions"></a>Uwierzytelnianie wyzwalaczy i akcji
 
-Punkty końcowe HTTP obsługują różne rodzaje uwierzytelniania. Można skonfigurować uwierzytelnianie dla tych wyzwalaczy i akcji HTTP:
-
-* [HTTP](../connectors/connectors-native-http.md)
-* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
-* [Element webhook protokołu HTTP](../connectors/connectors-native-webhook.md)
-
-Poniżej przedstawiono rodzaje uwierzytelniania, które można skonfigurować:
-
-* [Uwierzytelnianie podstawowe](#basic-authentication)
-* [Uwierzytelnianie certyfikatu klienta](#client-certificate-authentication)
-* [Uwierzytelnianie OAuth Azure Active Directory (Azure AD)](#azure-active-directory-oauth-authentication)
-
-> [!IMPORTANT]
-> Upewnij się, że chronisz wszelkie poufne informacje, które obsługuje definicja przepływu pracy aplikacji logiki. W razie potrzeby używaj zabezpieczonych parametrów i Koduj dane. Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-<a name="basic-authentication"></a>
-
-### <a name="basic-authentication"></a>Uwierzytelnianie podstawowe
-
-W przypadku [uwierzytelniania podstawowego](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) przy użyciu Azure Active Directory wyzwalacz lub definicja akcji może zawierać obiekt `authentication` JSON, który ma właściwości określone w poniższej tabeli. Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można użyć wyrażenia `@parameters('parameterName')`, które jest dostarczane przez [Język definicji przepływu pracy](https://aka.ms/logicappsdocs). 
-
-| Właściwość | Wymagane | Wartość | Opis | 
-|----------|----------|-------|-------------| 
-| **type** | Tak | Prosty | Typ uwierzytelniania, który ma być używany w tym miejscu | 
-| **uż** | Tak | "@parameters (" userNameParam ")" | Nazwa użytkownika służąca do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
-| **hasło** | Tak | "@parameters (" passwordParam ")" | Hasło do uwierzytelniania dostępu do docelowego punktu końcowego usługi |
-||||| 
-
-W tej przykładowej definicji akcji HTTP sekcja `authentication` określa `Basic` uwierzytelniania. Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "Basic",
-         "username": "@parameters('userNameParam')",
-         "password": "@parameters('passwordParam')"
-      }
-  },
-  "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Upewnij się, że chronisz wszelkie poufne informacje, które obsługuje definicja przepływu pracy aplikacji logiki. W razie potrzeby używaj zabezpieczonych parametrów i Koduj dane. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-<a name="client-certificate-authentication"></a>
-
-### <a name="client-certificate-authentication"></a>Uwierzytelnianie certyfikatu klienta
-
-W przypadku [uwierzytelniania opartego na certyfikatach](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) przy użyciu Azure Active Directory wyzwalacz lub definicja akcji może zawierać obiekt `authentication` JSON, który ma właściwości określone w poniższej tabeli. Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można użyć wyrażenia `@parameters('parameterName')`, które jest dostarczane przez [Język definicji przepływu pracy](https://aka.ms/logicappsdocs). Aby uzyskać ograniczenia dotyczące liczby certyfikatów klienta, których można użyć, zobacz [limity i konfiguracja dla Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md).
-
-| Właściwość | Wymagane | Wartość | Opis |
-|----------|----------|-------|-------------|
-| **type** | Tak | Kolekcja | Typ uwierzytelniania, który ma być używany dla certyfikatów klienta SSL (SSL). Certyfikaty z podpisem własnym są obsługiwane, ale certyfikaty z podpisem własnym dla protokołu SSL nie są obsługiwane. |
-| **PFX** | Tak | "@parameters (" pfxParam ") | Zawartość zakodowana algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
-| **hasło** | Tak | "@parameters (" passwordParam ")" | Hasło do uzyskiwania dostępu do pliku PFX |
-||||| 
-
-W tej przykładowej definicji akcji HTTP sekcja `authentication` określa `ClientCertificate` uwierzytelniania. Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ClientCertificate",
-         "pfx": "@parameters('pfxParam')",
-         "password": "@parameters('passwordParam')"
-      }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Upewnij się, że chronisz wszelkie poufne informacje, które obsługuje definicja przepływu pracy aplikacji logiki. W razie potrzeby używaj zabezpieczonych parametrów i Koduj dane. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-<a name="azure-active-directory-oauth-authentication"></a>
-
-### <a name="azure-active-directory-ad-oauth-authentication"></a>Uwierzytelnianie OAuth Azure Active Directory (AD)
-
-W przypadku [uwierzytelniania OAuth usługi Azure AD](../active-directory/develop/authentication-scenarios.md)wyzwalacz lub definicja akcji mogą zawierać `authentication` obiekt JSON, który ma właściwości określone w poniższej tabeli. Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można użyć wyrażenia `@parameters('parameterName')`, które jest dostarczane przez [Język definicji przepływu pracy](https://aka.ms/logicappsdocs).
-
-| Właściwość | Wymagane | Wartość | Opis |
-|----------|----------|-------|-------------|
-| **type** | Tak | `ActiveDirectoryOAuth` | Typ uwierzytelniania, który ma być używany jako "ActiveDirectoryOAuth" dla uwierzytelniania OAuth usługi Azure AD |
-| **uwierzytelniania** | Nie | <*adres URL-urząd-wystawca tokenów* > | Adres URL urzędu dostarczającego token uwierzytelniania |
-| **dzierżaw** | Tak | <*Identyfikator dzierżawy* > | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
-| **publiczn** | Tak | < >*zasobów do autoryzacji* | Zasób, który ma być używany na potrzeby autoryzacji, na przykład `https://management.core.windows.net/` |
-| **clientId** | Tak | *Identyfikator klienta* < > | Identyfikator klienta aplikacji żądającej autoryzacji |
-| **CredentialType** | Tak | "Certyfikat" lub "wpis tajny" | Typ poświadczeń, którego klient używa do żądania autoryzacji. Ta właściwość i wartość nie pojawiają się w podstawowej definicji, ale określają wymagane parametry dla typu poświadczeń. |
-| **PFX** | Tak, tylko dla typu poświadczeń "certyfikat" | "@parameters (" pfxParam ") | Zawartość zakodowana algorytmem Base64 z pliku wymiany informacji osobistych (PFX) |
-| **hasło** | Tak, tylko dla typu poświadczeń "certyfikat" | "@parameters (" passwordParam ")" | Hasło do uzyskiwania dostępu do pliku PFX |
-| **wpisu** | Tak, tylko dla typu poświadczeń "Secret" | "@parameters (" secretParam ")" | Wpis tajny klienta na potrzeby żądania autoryzacji |
-|||||
-
-W tej przykładowej definicji akcji HTTP sekcja `authentication` określa `ActiveDirectoryOAuth` uwierzytelniania i typ poświadczeń "wpis tajny". Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ActiveDirectoryOAuth",
-         "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-         "audience": "https://management.core.windows.net/",
-         "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-         "secret": "@parameters('secretParam')"
-     }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Upewnij się, że chronisz wszelkie poufne informacje, które obsługuje definicja przepływu pracy aplikacji logiki. W razie potrzeby używaj zabezpieczonych parametrów i Koduj dane. Aby uzyskać więcej informacji na temat zabezpieczania parametrów, zobacz temat [Zabezpieczanie aplikacji logiki](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters).
+Punkty końcowe HTTP i HTTPS obsługują różne rodzaje uwierzytelniania. Na podstawie wyzwalacza lub akcji, która służy do wykonywania wywołań wychodzących lub żądań dostępu do tych punktów końcowych, można wybierać spośród różnych zakresów typów uwierzytelniania. Aby uzyskać więcej informacji, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 ## <a name="next-steps"></a>Następne kroki
 

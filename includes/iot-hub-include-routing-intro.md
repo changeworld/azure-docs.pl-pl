@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d0accd01926743d64fa4911dfe56806537170c2d
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 863989f8e2cb90fe5ec0921ea6e080b61fc1b4ae
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66271541"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808853"
 ---
-[Routing komunikatów](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) umożliwia wysyłanie danych telemetrycznych z urządzeń IoT do wbudowanych punktach końcowych zgodnego z Centrum zdarzeń lub niestandardowe punkty końcowe takich jak usługi blob storage, kolejek usługi Service Bus, tematy usługi Service Bus i Event Hubs. Aby skonfigurować routing niestandardowy komunikat, należy utworzyć [zapytań routingu](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) dostosować trasy, który odpowiada określony warunek. Po zakończeniu konfiguracji dane przychodzące są automatycznie rozsyłane do punktów końcowych przez usługę IoT Hub. Jeśli komunikat nie pasuje do żadnego z zdefiniowane zapytania routingu, odbywa się do domyślnego punktu końcowego.
+[Routing komunikatów](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) umożliwia wysyłanie danych telemetrycznych z urządzeń IoT do wbudowanych punktów końcowych zgodnych z centrum zdarzeń lub niestandardowych punktów końcowych, takich jak BLOB storage, Service Bus Queues, tematy Service Bus i Event Hubs. Aby skonfigurować niestandardowy Routing komunikatów, tworzysz [zapytania routingu](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) w celu dostosowania trasy zgodnej z określonym warunkiem. Po zakończeniu konfiguracji dane przychodzące są automatycznie rozsyłane do punktów końcowych przez usługę IoT Hub. Jeśli komunikat nie jest zgodny z żadną z określonych zapytań routingu, jest kierowany do domyślnego punktu końcowego.
 
-W tym samouczku 2-częściowych dowiesz się, jak skonfigurować i korzystać z tych niestandardowych zapytań routingu za pomocą usługi IoT Hub. Możesz przesyłać wiadomości z urządzenia IoT do jednego z wielu punktów końcowych, w tym magazyn obiektów blob i kolejki usługi Service Bus. Komunikaty do kolejki usługi Service Bus są pobierane przez aplikację logiki i wysyłane za pośrednictwem poczty e-mail. Komunikaty, które nie mają niestandardowy komunikat routing zdefiniowany są wysyłane do domyślnego punktu końcowego, a następnie pobierane przez usługę Azure Stream Analytics i wyświetlane w wizualizacji usługi Power BI.
+W tym 2-częściowym samouczku dowiesz się, jak skonfigurować i używać tych niestandardowych zapytań routingu w IoT Hub. Komunikaty z urządzenia IoT są routowane do jednego z wielu punktów końcowych, w tym usługi BLOB Storage i kolejki Service Bus. Komunikaty do kolejki Service Bus są wybierane przez aplikację logiki i wysyłane za pośrednictwem poczty e-mail. Komunikaty, które nie mają zdefiniowanego niestandardowego routingu komunikatów, są wysyłane do domyślnego punktu końcowego, a następnie pobierane przez Azure Stream Analytics i wyświetlane w wizualizacji Power BI.
 
-Aby wykonane części 1 i 2 w tym samouczku wykonywane są następujące zadania:
+Aby ukończyć części 1 i 2 tego samouczka, należy wykonać następujące zadania:
 
-**Część I: Tworzenie zasobów, skonfigurować routing wiadomości**
+**Część I: Tworzenie zasobów, Konfigurowanie routingu komunikatów**
 > [!div class="checklist"]
-> * Tworzenie zasobów — Centrum IoT hub, konto magazynu, kolejki usługi Service Bus i symulowanego urządzenia. Można to zrobić za pomocą portalu, interfejsu wiersza polecenia platformy Azure, programu Azure PowerShell lub szablonu usługi Azure Resource Manager.
-> * Punkty końcowe i skonfigurować trasy wiadomości w usłudze IoT Hub dla konta magazynu i kolejki usługi Service Bus.
+> * Tworzenie zasobów — Centrum IoT Hub, konto magazynu, kolejka Service Bus i symulowane urządzenie. Można to zrobić za pomocą Azure Portal, szablonu Azure Resource Manager, interfejsu wiersza polecenia platformy Azure lub Azure PowerShell.
+> * Skonfiguruj punkty końcowe i trasy komunikatów w IoT Hub dla konta magazynu i kolejki Service Bus.
 
-**Part II: Wysyłanie komunikatów do Centrum, wyświetlanie wyników trasowane**
+**Część II: wysyłanie komunikatów do centrum, wyświetlanie rozesłanych wyników**
 > [!div class="checklist"]
 > * Tworzenie aplikacji logiki, która jest wyzwalana i wysyła wiadomość e-mail po dodaniu komunikatu do kolejki usługi Service Bus.
 > * Pobieranie i uruchamianie aplikacji, która symuluje urządzenie IoT wysyłające komunikaty do centrum przy użyciu różnych opcji routingu.
@@ -38,13 +38,13 @@ Aby wykonane części 1 i 2 w tym samouczku wykonywane są następujące zadania
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Dla części 1 tego samouczka:
+* W przypadku części 1 tego samouczka:
   - Wymagana jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Dla tego samouczka, część 2:
-  - Konieczne jest posiadanie ukończone części 1 tego samouczka oraz zasoby, które są nadal dostępne.
+* W przypadku części 2 tego samouczka:
+  - Należy wykonać część 1 tego samouczka i nadal dostępne zasoby.
   - Instalacja programu [Visual Studio](https://www.visualstudio.com/).
-  - Konto usługi Power BI do analizowania danych analitycznych strumienia domyślnego punktu końcowego. ([Wypróbuj bezpłatnie usługę Power BI](https://app.powerbi.com/signupredirect?pbi_source=web)).
-  - Konto usługi Office 365 do wysyłania powiadomień e-mail.
+  - Uzyskaj dostęp do konta Power BI, aby analizować usługę Stream Analytics domyślnego punktu końcowego. ([Wypróbuj bezpłatnie usługę Power BI](https://app.powerbi.com/signupredirect?pbi_source=web)).
+  - Posiadanie konta Office 365 do wysyłania wiadomości e-mail z powiadomieniami.
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]

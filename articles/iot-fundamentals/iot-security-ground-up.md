@@ -1,21 +1,23 @@
 ---
-title: Zabezpieczenia dla Internetu rzeczy (IoT) od podstaw
-description: W tym artykule opisano funkcje wbudowane zabezpieczenia akceleratorów rozwiązań Microsoft Azure IoT
+title: Zabezpieczenia dla Internet rzeczy (IoT) od podstaw
+description: W tym artykule opisano wbudowane funkcje zabezpieczeń akceleratorów rozwiązań Microsoft Azure IoT
 author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: 5d4034aa3ea2ceb3a3c294e05952461d46835895
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7072e2c0bfa054a670ac3fb09590378d3ef055a3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626472"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789726"
 ---
+# <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Zabezpieczenia dla Internet rzeczy (IoT) od podstaw
+
 [!INCLUDE [iot-security-ground-up](../../includes/iot-security-ground-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przeczytaj na temat zabezpieczeń usługi IoT Hub w [kontrolować dostęp do usługi IoT Hub](../iot-hub/iot-hub-devguide-security.md) w przewodniku dla deweloperów usługi IoT Hub.
+Przeczytaj informacje o IoT Hub zabezpieczeniach w programie [kontroli dostępu do IoT Hub](../iot-hub/iot-hub-devguide-security.md) w przewodniku dewelopera IoT Hub.

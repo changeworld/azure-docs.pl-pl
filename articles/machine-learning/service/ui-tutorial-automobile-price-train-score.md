@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: b0c9fd85171020c9b78dc166980f85bcd89d8d67
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 3852531615418ffe5397295bc194de34139d6e81
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692285"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792646"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Samouczek: przewidywanie ceny samochodów z interfejsem wizualnym
 
@@ -40,15 +40,15 @@ W [drugiej części](ui-tutorial-automobile-price-deploy.md) samouczka dowiesz s
 
 ## <a name="create-a-new-pipeline"></a>Tworzenie nowego potoku
 
-Potoki Azure Machine Learning organizują wiele zależnych kroków przetwarzania danych do pojedynczego zasobu. Potoki ułatwiają organizowanie i ponowne używanie złożonych przepływów pracy uczenia maszynowego między projektami i użytkownikami oraz zarządzanie nimi. Do utworzenia potoku Azure Machine Learning jest wymagany obszar roboczy usługi Azure Machine Learning. W tej sekcji dowiesz się, jak utworzyć oba te zasoby.
+Potoki Azure Machine Learning organizują wiele zależnych etapów uczenia maszynowego i przetwarzania danych w ramach jednego zasobu. Potoki ułatwiają organizowanie i ponowne używanie złożonych przepływów pracy uczenia maszynowego między projektami i użytkownikami oraz zarządzanie nimi. Do utworzenia potoku Azure Machine Learning jest wymagany obszar roboczy usługi Azure Machine Learning. W tej sekcji dowiesz się, jak utworzyć oba te zasoby.
 
 ### <a name="create-a-new-workspace"></a>Utwórz nowy obszar roboczy
 
-Jeśli masz obszar roboczy Azure Machine Learning, przejdź do następnej sekcji.
+Jeśli masz obszar roboczy usługi Azure Machine Learning, przejdź do następnej sekcji.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-### <a name="create-a-pipeline"></a>Tworzenie potoku
+### <a name="create-the-pipeline"></a>Tworzenie potoku
 
 1. Zaloguj się do [ml.Azure.com](https://ml.azure.com) i wybierz obszar roboczy, z którym chcesz współpracować.
 
@@ -56,7 +56,7 @@ Jeśli masz obszar roboczy Azure Machine Learning, przejdź do następnej sekcji
 
     ![Zrzut ekranu przedstawiający, jak uzyskać dostęp do interfejsu wizualizacji w obszarze roboczym](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
 
-1. Wybierz pozycję **pusty potok**.
+1. Wybierz **łatwe w użyciu wstępnie skompilowane moduły**.
 
 1. Wybierz domyślną nazwę potoku **"potok-utworzony-on..."** w górnej części kanwy i zmień jej nazwę na bardziej zrozumiałą. Na przykład **"Funkcja prognozowania cen dla samochodów"** . Nazwa nie musi być unikatowa.
 
@@ -69,32 +69,6 @@ Istnieje kilka przykładowych zestawów danych zawartych w interfejsie wizualiza
 1. Wybierz zestaw danych, **dane cen samochodów (RAW)** i przeciągnij je na kanwę.
 
    ![Przeciągnij dane do kanwy](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
-
-1. Wybierz kolumny danych, z którymi chcesz współpracować. Wpisz **Wybierz** w polu wyszukiwania w górnej części palety, aby znaleźć moduł **SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych** ).
-
-1. Kliknij i przeciągnij moduł **Wybieranie kolumn w zestawie danych** na kanwę. Upuść moduł poniżej modułu DataSet.
-
-1. Połącz zestaw danych, który został wcześniej dodany do modułu **SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych** ), klikając i przeciągając. Przeciągnij z portu wyjściowego zestawu danych, czyli małego okręgu w dolnej części zestawu danych na kanwie, do portu wejściowego **SELECT kolumn w zestawie danych**, czyli małego okręgu w górnej części modułu.
-
-    > [!TIP]
-    > Przepływ danych można utworzyć za pomocą potoku po podłączeniu portu wyjściowego jednego modułu do portu wejściowego innego.
-    >
-
-    ![Połącz moduły](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
-
-1. Wybierz pozycję **Wybierz kolumny w zestawie danych** .
-
-1. W okienku **Właściwości** z prawej strony kanwy wybierz pozycję **Edytuj kolumnę**.
-
-    W oknie dialogowym **Wybieranie kolumn** wybierz pozycję **wszystkie kolumny** i Dołącz **wszystkie funkcje**.
-
-1. W prawym dolnym rogu wybierz pozycję **Zapisz** , aby zamknąć selektor kolumny.
-
-### <a name="run-the-pipeline"></a>Uruchamianie potoku
-
-W dowolnym momencie kliknij port wyjściowy zestawu danych lub modułu, aby zobaczyć, jak wyglądają dane w tym momencie w przepływie danych. Jeśli karta dane **wyjściowe** nie zostanie wyświetlona, musisz najpierw uruchomić potok.
-
-[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
 
 ### <a name="visualize-the-data"></a>Wizualizacja danych
 
@@ -114,30 +88,23 @@ Możesz wizualizować dane, aby zrozumieć zestaw danych, który będzie używan
 
 ## <a name="prepare-data"></a>Przygotowywanie danych
 
-Zestawy danych zwykle wymagają pewnego przetworzenia przed analizą. Podczas wizualizacji zestawu danych mogą znajdować się pewne brakujące wartości. Te brakujące wartości muszą zostać wyczyszczone, aby umożliwić modelowi wykonanie poprawnej analizy danych. Usuniesz wszystkie wiersze, w których brakuje wartości.
+Zestawy danych zwykle wymagają pewnego przetworzenia przed analizą. Podczas wizualizacji zestawu danych mogą znajdować się pewne brakujące wartości. Te brakujące wartości muszą zostać wyczyszczone, aby umożliwić modelowi wykonanie poprawnej analizy danych. Usuniesz kolumny z wieloma brakującymi wartościami i usuniesz wszystkie wiersze, w których brakuje wartości.
 
-1. Wpisz **Wybierz** w polu wyszukiwania w górnej części palety, aby znaleźć moduł **SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych** ).
+### <a name="remove-a-column"></a>Usuwanie kolumny
+
+Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W tym zestawie danych w kolumnie **znormalizowana strata** brakuje wielu wartości, więc ta kolumna nie zostanie całkowicie wykluczona z modelu.
+
+1. Wybierz kolumny danych, z którymi chcesz współpracować. Wpisz **Wybierz** w polu wyszukiwania w górnej części palety, aby znaleźć moduł **SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych** ).
 
 1. Kliknij i przeciągnij moduł **Wybieranie kolumn w zestawie danych** na kanwę. Upuść moduł poniżej modułu DataSet.
 
 1. Połącz zestaw danych, który został wcześniej dodany do modułu **SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych** ), klikając i przeciągając. Przeciągnij z portu wyjściowego zestawu danych, czyli małego okręgu w dolnej części zestawu danych na kanwie, do portu wejściowego **SELECT kolumn w zestawie danych**, czyli małego okręgu w górnej części modułu.
 
+    > [!TIP]
+    > Przepływ danych można utworzyć za pomocą potoku po podłączeniu portu wyjściowego jednego modułu do portu wejściowego innego.
+    >
+
     ![Połącz moduły](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
-
-1. Wybierz pozycję **Wybierz kolumny w zestawie danych** .
-
-1. W okienku **Właściwości** z prawej strony kanwy wybierz pozycję **Edytuj kolumnę**.
-
-    W oknie dialogowym **Wybieranie kolumn** wybierz pozycję **wszystkie kolumny** i Dołącz **wszystkie funkcje**.
-
-1. W prawym dolnym rogu wybierz pozycję **Zapisz** , aby zamknąć selektor kolumny.
-
-> [!TIP]
-> Czyszczenie brakujących wartości z danych wejściowych jest wymaganiem wstępnym w przypadku używania większości modułów w interfejsie wizualizacji.
-
-### <a name="remove-column"></a>Usunięcie kolumny
-
-Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W tym zestawie danych kolumna **znormalizowanych strat** ma dużą liczbę brakujących wartości, dlatego w celu wykluczania tej kolumny z modelu można ją całkowicie wykluczyć.
 
 1. Wybierz pozycję **Wybierz kolumny w zestawie danych** .
 
@@ -162,6 +129,9 @@ Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W ty
 ### <a name="clean-missing-data"></a>Wyczyść brakujące dane
 
 Zestaw danych nadal ma brakujące wartości po usunięciu kolumny **znormalizowanych strat** . Pozostałe brakujące dane można usunąć przy użyciu modułu **czyste brakujące dane** .
+
+> [!TIP]
+> Czyszczenie brakujących wartości z danych wejściowych jest wymaganiem wstępnym w przypadku używania większości modułów w interfejsie wizualizacji.
 
 1. Wpisz **Clean** w polu wyszukiwania, aby znaleźć **nieczysty moduł danych** .
 
@@ -286,7 +256,7 @@ W pierwszej części tego samouczka zostały wykonane następujące czynności:
 * Przeszkolony model
 * Ocenianie i Ocena modelu
 
-W części drugiej dowiesz się, jak wdrożyć model jako punkt końcowy potoku.
+W części drugiej dowiesz się, jak wdrożyć model jako punkt końcowy w czasie rzeczywistym.
 
 > [!div class="nextstepaction"]
 > [Kontynuuj Wdrażanie modeli](ui-tutorial-automobile-price-deploy.md)

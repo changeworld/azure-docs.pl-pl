@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003951"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804043"
 ---
 # <a name="azure-encryption-overview"></a>Omówienie usługi Azure Encryption
 
@@ -51,15 +51,15 @@ Dzięki szyfrowaniu po stronie klienta dostawcy usług w chmurze nie mają dost�
 
 Trzy modele szyfrowania po stronie serwera oferują różne charakterystyki zarządzania kluczami, które można wybrać zgodnie z wymaganiami:
 
-- **Klucze zarządzane przez usługę**: Zapewnia kombinację kontroli i wygody o niskim obciążeniu.
+- **Klucze zarządzane przez usługę**: zapewniają kombinację kontroli i wygody z niskim obciążeniem.
 
-- **Klucze zarządzane przez klienta**: Zapewnia kontrolę nad kluczami, w tym zapewnianie obsługi własnych kluczy (BYOK) lub umożliwia generowanie nowych.
+- **Klucze zarządzane przez klienta**: zapewnia kontrolę nad kluczami, w tym przeprowadzenie obsługi własnych kluczy (BYOK), lub umożliwia generowanie nowych.
 
-- **Klucze zarządzane przez klienta**: Umożliwia zarządzanie kluczami w zastrzeżonym repozytorium poza kontrolą firmy Microsoft. Ta cecha jest nazywana własnym kluczem hosta (HYOK). Jednak konfiguracja jest złożona i większość usług platformy Azure nie obsługuje tego modelu.
+- **Klucze zarządzane przez klienta**: umożliwiają zarządzanie kluczami w repozytorium zastrzeżonym poza kontrolą firmy Microsoft. Ta cecha jest nazywana własnym kluczem hosta (HYOK). Jednak konfiguracja jest złożona i większość usług platformy Azure nie obsługuje tego modelu.
 
 ### <a name="azure-disk-encryption"></a>Szyfrowanie dysków Azure
 
-Maszyny wirtualne z systemem Windows i Linux można chronić za pomocą [usługi Azure Disk Encryption](/azure/security/azure-security-disk-encryption), która korzysta z technologii [Windows BitLocker i systemu](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) do ochrony zarówno dysków systemu operacyjnego, jak i dysków danych z pełnym szyfrowaniem woluminów.
+Maszyny wirtualne z systemem Windows i Linux można chronić za pomocą [usługi Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss), która korzysta z technologii [Windows BitLocker i systemu](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) do ochrony zarówno dysków systemu operacyjnego, jak i dysków danych z pełnym szyfrowaniem woluminów.
 
 Klucze szyfrowania i wpisy tajne są chronione w [subskrypcji Azure Key Vault](../../key-vault/key-vault-overview.md). Za pomocą usługi Azure Backup można tworzyć kopie zapasowe i przywracać zaszyfrowane maszyny wirtualne (VM) korzystające z konfiguracji klucza szyfrowania kluczy (KEK).
 
@@ -79,7 +79,7 @@ Aby dowiedzieć się więcej na temat i pobrać bibliotekę klienta usługi Azur
 
 W przypadku korzystania z szyfrowania po stronie klienta w programie Key Vault dane są szyfrowane przy użyciu jednorazowego klucza szyfrowania zawartości (CEK), który jest generowany przez zestaw SDK klienta usługi Azure Storage. CEK jest szyfrowany przy użyciu klucza szyfrowania klucza (KEK), który może być kluczem symetrycznym lub parę kluczy asymetrycznych. Można nim zarządzać lokalnie lub przechowywać ją w Key Vault. Zaszyfrowane dane są następnie przekazywane do usługi Azure Storage.
 
-Aby dowiedzieć się więcej o szyfrowaniu po stronie klienta przy użyciu Key Vault i rozpocząć pracę z instrukcjami, zobacz [samouczek: Szyfrowanie i odszyfrowywanie obiektów BLOB w usłudze Azure Storage](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)przy użyciu Key Vault.
+Aby dowiedzieć się więcej o szyfrowaniu po stronie klienta Key Vault i rozpoczynaniu pracy z instrukcjami, zobacz [Samouczek: szyfrowanie i odszyfrowywanie obiektów BLOB w usłudze Azure Storage przy użyciu Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 
 Na koniec można także użyć biblioteki klienta usługi Azure Storage dla języka Java, aby przeprowadzić szyfrowanie po stronie klienta przed przekazaniem danych do usługi Azure Storage oraz odszyfrowanie danych podczas pobierania ich do klienta. Ta biblioteka obsługuje także integrację z usługą [Key Vault](https://azure.microsoft.com/services/key-vault/) dla zarządzania kluczami konta magazynu.
 
@@ -87,7 +87,7 @@ Na koniec można także użyć biblioteki klienta usługi Azure Storage dla jęz
 
 [Azure SQL Database](../../sql-database/sql-database-technical-overview.md) to usługa relacyjnej bazy danych ogólnego przeznaczenia na platformie Azure, która obsługuje struktury, takie jak dane relacyjne, JSON, przestrzenne i XML. SQL Database obsługuje szyfrowanie po stronie serwera za pomocą funkcji Transparent Data Encryption (TDE) i szyfrowania po stronie klienta za pośrednictwem funkcji Always Encrypted.
 
-#### <a name="transparent-data-encryption"></a>Niewidoczne szyfrowanie danych
+#### <a name="transparent-data-encryption"></a>Przezroczyste szyfrowanie danych
 
 [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) jest używany do szyfrowania plików danych [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../sql-database/sql-database-technical-overview.md)i [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) w czasie rzeczywistym przy użyciu klucza szyfrowania bazy danych, który jest przechowywany w rekordzie rozruchowym bazy danych w celu zapewnienia dostępności podczas odzyskiwania.
 
@@ -105,7 +105,7 @@ CLE ma wbudowane funkcje, których można użyć do szyfrowania danych przy uży
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB szyfrowanie bazy danych
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) to globalnie dystrybuowana, wielomodelowa baza danych firmy Microsoft. Dane użytkownika przechowywane w Cosmos DB w magazynie nietrwałym (dyski półprzewodnikowe) są domyślnie szyfrowane. Brak kontrolek do włączenia lub wyłączenia. Szyfrowanie w spoczynku jest implementowany przy użyciu wielu technologii zabezpieczeń, w tym systemów bezpiecznego magazynu kluczy, sieci szyfrowane i interfejsów API usług kryptograficznych. Klucze szyfrowania są zarządzane przez firmę Microsoft i obracane zgodnie ze wskazówkami wewnętrznymi firmy Microsoft.
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) to globalnie dystrybuowana, wielomodelowa baza danych firmy Microsoft. Dane użytkownika przechowywane w Cosmos DB w magazynie nietrwałym (dyski półprzewodnikowe) są domyślnie szyfrowane. Brak kontrolek do włączenia lub wyłączenia. Szyfrowanie w spoczynku jest implementowane przy użyciu wielu technologii zabezpieczeń, w tym bezpiecznych systemów magazynowania kluczy, szyfrowanych sieci i kryptograficznych interfejsów API. Klucze szyfrowania są zarządzane przez firmę Microsoft i obracane zgodnie ze wskazówkami wewnętrznymi firmy Microsoft.
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Szyfrowanie w usłudze REST w Data Lake
 
@@ -121,7 +121,7 @@ Platforma Azure oferuje wiele mechanizmów utrzymywania prywatnych danych w trak
 
 Firma Microsoft korzysta z protokołu [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) w celu ochrony danych w przypadku podróży między usługami w chmurze i klientami. Centra danych firmy Microsoft negocjują połączenie TLS z systemami klienckimi, które łączą się z usługami platformy Azure. Protokół TLS zapewnia silne uwierzytelnianie, prywatność komunikatów i integralność (umożliwiając wykrywanie manipulowania komunikatami, przechwycenie i fałszowanie), współdziałanie, elastyczność algorytmu oraz łatwość wdrażania i używania.
 
-[Doskonałe utajnienie przekazywania](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) chroni połączenia między systemami klienckimi klientów i usługami w chmurze firmy Microsoft przez unikatowe klucze. Połączenia korzystają również z 2 048-bitowych kluczy szyfrowania RSA. Ta kombinacja utrudnia przechwycenie i dostęp do danych przesyłanych przez inną osobę.
+[Doskonałe](https://en.wikipedia.org/wiki/Forward_secrecy) utajnienie przekazywania (PFS) chroni połączenia między systemami klienta i usługami w chmurze firmy Microsoft przez unikatowe klucze. Połączenia korzystają również z 2 048-bitowych kluczy szyfrowania RSA. Ta kombinacja utrudnia przechwycenie i dostęp do danych przesyłanych przez inną osobę.
 
 ### <a name="azure-storage-transactions"></a>Transakcje usługi Azure Storage
 
@@ -171,9 +171,9 @@ Można skonfigurować połączenie sieci VPN typu punkt-lokacja z siecią wirtua
 
 Aby dowiedzieć się więcej o połączeniach sieci VPN typu punkt-lokacja z sieciami wirtualnymi platformy Azure, zobacz:
 
-[Skonfiguruj połączenie punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikacji: Azure Portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
+[Konfigurowanie połączenia typu punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikacji: Azure Portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
 
-[Skonfiguruj połączenie typu punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu: Narzędzia](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+[Konfigurowanie połączenia typu punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu: PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ### <a name="site-to-site-vpns"></a>Sieci VPN typu lokacja-lokacja 
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 04753ca4c9b14d7ccc265cfcf971b3fd63c861ae
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 11cd90da1b1ca85893dbdad2ced191326af51238
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72384158"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793885"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie zautomatyzowanych eksperymentów ML w języku Python
 
@@ -56,8 +56,9 @@ Klasyfikacja | Ubytk | Prognozowanie szeregów czasowych
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
 [Klasyfikator DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN Regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
 [DNN — klasyfikator liniowy](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Regresor liniowy](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Regresor liniowy](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Algorytm Bayesa Bayesa](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
-[Stochastycznego gradientu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
+[Algorytm Bayesa Bayesa](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)||[AutoARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Stochastycznego gradientu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)||[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+|||ForecastTCN
 
 Użyj parametru `task` w konstruktorze `AutoMLConfig`, aby określić typ eksperymentu.
 
@@ -70,28 +71,24 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>Źródło i format danych
 
-Automatyczne Uczenie maszynowe obsługuje dane, które znajdują się na pulpicie lokalnym lub w chmurze, takiej jak Azure Blob Storage. Dane można odczytać do Pandas Dataframe lub zestawu danych Azure Machine Learning. Poniższy przykład kodu pokazuje, jak przechowywać dane w tych formatach. [Dowiedz się więcej o datatsets](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md).
+Automatyczne Uczenie maszynowe obsługuje dane, które znajdują się na pulpicie lokalnym lub w chmurze, takiej jak Azure Blob Storage. Dane można odczytać do **Pandas Dataframe** lub **Azure Machine Learning TabularDataset**.  [Dowiedz się więcej o datatsets](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md).
+
+Wymagania dotyczące danych szkoleniowych:
+- Dane muszą być w formie tabelarycznej.
+- Wartość do przewidywania, kolumna docelowa, musi znajdować się w danych.
+
+Poniższy przykład kodu pokazuje, jak przechowywać dane w tych formatach.
 
 * TabularDataset
+  ```python
+  from azureml.core.dataset import Dataset
+  
+  tabular_dataset = Dataset.Tabular.from_delimited_files("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv")
+  train_dataset, test_dataset = tabular_dataset.random_split(percentage = 0.1, seed = 42)
+  label = "Label"
+  ```
+
 * Ramka dataPandas
-
->[!Important]
-> Wymagania dotyczące danych szkoleniowych:
->* Dane muszą być w formie tabelarycznej.
->* Wartość, która ma zostać przewidywalna (kolumna docelowa), musi być obecna w danych.
-
-Przykłady:
-
-* TabularDataset
-```python
-    from azureml.core.dataset import Dataset
-
-    tabular_dataset = Dataset.Tabular.from_delimited_files("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv")
-    train_dataset, test_dataset = tabular_dataset.random_split(percentage = 0.1, seed = 42)
-    label = "Label"
-```
-
-*   Ramka dataPandas
 
     ```python
     import pandas as pd
@@ -117,11 +114,11 @@ Można określić oddzielne zestawy pouczenia i walidacji bezpośrednio w konstr
 
 ### <a name="k-folds-cross-validation"></a>K — zgięcie krzyżowe
 
-Aby określić liczbę operacji sprawdzania krzyżowego, użyj ustawienia `n_cross_validations`. Zestaw danych szkoleniowych zostanie losowo podzielony na `n_cross_validations` założenia o równym rozmiarze. Podczas każdego zaokrąglania krzyżowego, jeden ze zgięciów będzie używany do walidacji modelu przeszkolonego na pozostałych zgięciach. Ten proces powtarza się dla `n_cross_validations` zaokrągla do momentu, gdy każde zgięcie zostanie użyte raz jako zestaw walidacji. Zostaną zgłoszone średnie wyniki dla wszystkich `n_cross_validations` zaokrąglania, a odpowiedni model zostanie ponownie przeszkolony w całym zestawie danych szkoleniowych.
+Użyj ustawienia `n_cross_validations`, aby określić liczbę operacji sprawdzania krzyżowego. Zestaw danych szkoleniowych zostanie losowo podzielony na `n_cross_validations` zgięcia o równym rozmiarze. Podczas każdego zaokrąglania krzyżowego, jeden ze zgięciów będzie używany do walidacji modelu przeszkolonego na pozostałych zgięciach. Ten proces powtarza się dla `n_cross_validations` zaokrągla do momentu, gdy każde zgięcie zostanie użyte raz jako zestaw walidacji. Zostaną zgłoszone średnie wyniki dla wszystkich `n_cross_validations` zaokrąglenia, a odpowiedni model zostanie przeszukany w całym zestawie danych szkoleniowych.
 
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo, krzyżowe sprawdzanie poprawności (powtarza losowe Podpróbkowanie)
 
-Użyj `validation_size`, aby określić wartość procentową zestawu danych szkoleniowych, która ma być używana do walidacji, a następnie użyj `n_cross_validations`, aby określić liczbę operacji krzyżowych. Podczas każdego zaokrąglania krzyżowego, podzbiór rozmiaru `validation_size` zostanie losowo wybrany do walidacji modelu przeszkolonego na pozostałych danych. Na koniec zostaną zgłoszone średnie wyniki dla wszystkich `n_cross_validations` zaokrąglania, a odpowiedni model zostanie przeszukany w całym zestawie danych szkoleniowych. Monte Carlo nie jest obsługiwana w przypadku prognozowania szeregów czasowych.
+Użyj `validation_size`, aby określić procentowy zestaw danych szkoleniowych, który ma być używany do walidacji, a następnie użyj `n_cross_validations`, aby określić liczbę operacji krzyżowych. Podczas każdego zaokrąglania krzyżowego, podzbiór rozmiaru `validation_size` będzie losowo wybierany do walidacji modelu przeszkolonego na pozostałych danych. Na koniec zostaną zgłoszone średnie oceny wszystkich `n_cross_validations`, a odpowiedni model zostanie przeszukany w całym zestawie danych szkoleniowych. Monte Carlo nie jest obsługiwana w przypadku prognozowania szeregów czasowych.
 
 ### <a name="custom-validation-dataset"></a>Niestandardowy zestaw danych walidacji
 
@@ -199,11 +196,11 @@ Aby włączyć tę cechowania, określ `"preprocess": True` dla [klasy `AutoMLCo
 > Zautomatyzowane kroki wstępnego przetwarzania w usłudze Machine Learning (normalizacja funkcji, obsługa brakujących danych, konwertowanie tekstu na liczbowe itp.) staje się częścią modelu źródłowego. Przy użyciu modelu dla prognoz te same kroki przetwarzania wstępnego zastosowane podczas uczenia są automatycznie stosowane do danych wejściowych.
 
 ### <a name="time-series-forecasting"></a>Prognozowanie szeregów czasowych
-Zadanie @no__t szeregów czasowych-0 wymaga dodatkowych parametrów w obiekcie Configuration:
+Zadanie `forecasting` szeregów czasowych wymaga dodatkowych parametrów w obiekcie Configuration:
 
 1. `time_column_name`: wymagany parametr, który definiuje nazwę kolumny w danych szkoleniowych zawierających prawidłową serię czasową.
 1. `max_horizon`: określa długość czasu, który ma być przewidywany na podstawie okresowości danych szkoleniowych. Na przykład jeśli masz dane szkoleniowe z codziennymi ziarnami czasowymi, możesz określić, jak daleko w dni ma być nadany model.
-1. `grain_column_names`: definiuje nazwę kolumn, które zawierają poszczególne dane szeregów czasowych w danych szkoleniowych. Na przykład w przypadku prognozowania sprzedaży określonej marki według sklepu należy zdefiniować kolumny sklepu i marki jako kolumny ziaren. Dla każdego ziarna/grupowania zostanie utworzona oddzielna seria czasowa i prognozy. 
+1. `grain_column_names`: Określa nazwę kolumn, które zawierają poszczególne dane szeregów czasowych w danych szkoleniowych. Na przykład w przypadku prognozowania sprzedaży określonej marki według sklepu należy zdefiniować kolumny sklepu i marki jako kolumny ziaren. Dla każdego ziarna/grupowania zostanie utworzona oddzielna seria czasowa i prognozy. 
 
 Przykłady ustawień używanych poniżej można znaleźć w [notesie przykładowym](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
 
@@ -243,7 +240,7 @@ Modele kompletów są domyślnie włączone i pojawiają się jako ostateczne it
 Istnieje wiele argumentów domyślnych, które mogą być podane jako `kwargs` w obiekcie `AutoMLConfig`, aby zmienić domyślne zachowanie kompletności stosu.
 
 * `stack_meta_learner_type`: meta-uczyć jest modelem przeszkolonym w danych wyjściowych poszczególnych modeli heterogenicznych. Domyślnie metaers są `LogisticRegression` w przypadku zadań klasyfikacji (lub `LogisticRegressionCV`, jeśli jest włączona funkcja wzajemnego sprawdzania poprawności) i `ElasticNet` dla zadań regresji/prognozowania (lub `ElasticNetCV`, jeśli włączono weryfikację krzyżową). Ten parametr może być jednym z następujących ciągów: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor` lub `LinearRegression`.
-* `stack_meta_learner_train_percentage`: określa proporcję zestawu szkoleniowego (przy wyborze typu uczenia i walidacji), które mają zostać zarezerwowane do uczenia się. Wartość domyślna to `0.2`.
+* `stack_meta_learner_train_percentage`: określa proporcję zestawu szkoleniowego (podczas wybierania typu uczenia i walidacji), które mają zostać zarezerwowane do uczenia się. Wartość domyślna to `0.2`.
 * `stack_meta_learner_kwargs`: parametry opcjonalne do przekazania do inicjatora meta. Te parametry i typy parametrów stanowią duplikaty z odpowiedniego konstruktora modelu i są przekazywane do konstruktora modelu.
 
 Poniższy kod przedstawia przykład określania niestandardowego zachowania w obiekcie `AutoMLConfig`.
@@ -272,7 +269,7 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
-Uczenie typu "kompletność" jest domyślnie włączone, ale można je wyłączyć za pomocą parametrów logicznych `enable_voting_ensemble` i `enable_stack_ensemble`.
+Szkolenie w ramach usługi jest domyślnie włączone, ale można je wyłączyć przy użyciu `enable_voting_ensemble` i `enable_stack_ensemble` parametrów logicznych.
 
 ```python
 automl_classifier = AutoMLConfig(
@@ -311,14 +308,14 @@ run = experiment.submit(automl_config, show_output=True)
 
 >[!NOTE]
 >Zależności są najpierw instalowane na nowym komputerze.  Przed wyświetleniem danych wyjściowych może upłynąć do 10 minut.
->Ustawienie wartości `show_output` spowoduje `True` powoduje, że dane wyjściowe są wyświetlane w konsoli.
+>Ustawienie `show_output`, aby `True` wyniki w danych wyjściowych wyświetlanych w konsoli.
 
 ### <a name="exit-criteria"></a>Kryteria wyjścia
 Istnieje kilka opcji, które można zdefiniować, aby zakończyć eksperyment.
 1. Brak kryteriów: Jeśli nie określisz żadnych parametrów zakończenia, eksperyment będzie kontynuowany do momentu, gdy nie zostanie wprowadzony żaden kolejny postęp w głównej metryki.
-1. Liczba iteracji: zdefiniujesz liczbę iteracji do uruchomienia eksperymentu. Opcjonalnie można dodać `iteration_timeout_minutes`, aby zdefiniować limit czasu w minutach dla każdej iteracji.
-1. Zakończ po upływie dłuższego czasu: użycie `experiment_timeout_minutes` w ustawieniach pozwala określić, jak długo w minutach ma być kontynuowane eksperymenty.
-1. Zakończ po osiągnięciu wyniku: użycie `experiment_exit_score` zakończy eksperyment po osiągnięciu podstawowego wyniku metryki.
+1. Liczba iteracji: zdefiniujesz liczbę iteracji do uruchomienia eksperymentu. Opcjonalnie możesz dodać `iteration_timeout_minutes`, aby zdefiniować limit czasu w minutach dla każdej iteracji.
+1. Zakończ po upływie dłuższego czasu: użycie `experiment_timeout_minutes` w ustawieniach pozwala określić, jak długo w minutach ma być kontynuowany eksperyment.
+1. Zakończ po osiągnięciu wyniku: użycie `experiment_exit_score` spowoduje zakończenie eksperymentu po osiągnięciu podstawowego wyniku metryki.
 
 ### <a name="explore-model-metrics"></a>Eksplorowanie metryk modelu
 
@@ -350,7 +347,7 @@ Rozważmy następujący przykład:
 
 Użyj tych 2 interfejsów API w pierwszym kroku dopasowanego modelu, aby poznać więcej.  Zapoznaj się z [tym przykładowym notesem](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
 
-+ API 1: `get_engineered_feature_names()` zwraca listę nazw wbudowanych funkcji.
++ Interfejs API 1: `get_engineered_feature_names()` zwraca listę nazwanych funkcji.
 
   Użycie:
   ```python
@@ -475,7 +472,7 @@ Automatyczne Uczenie maszynowe pozwala zrozumieć znaczenie funkcji.  Podczas pr
 
 Istnieją dwa sposoby generowania ważności funkcji.
 
-*   Po zakończeniu eksperymentu można użyć metody `explain_model` dla każdej iteracji.
+*   Po zakończeniu eksperymentu można użyć metody `explain_model`ej dla każdej iteracji.
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
@@ -531,7 +528,7 @@ Wyświetl adres URL, aby wyświetlić ważność funkcji przy użyciu obiektu Ru
 automl_run.get_portal_url()
 ```
 
-Możesz wizualizować wykres ważności funkcji w obszarze roboczym w Azure Portal lub ze [strony docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com). Wykres jest również pokazywany w przypadku @no__t używania [widżetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) -0 w notesie. Aby dowiedzieć się więcej na temat wykresów, zobacz [Opis zautomatyzowanych wyników uczenia maszynowego](how-to-understand-automated-ml.md).
+Możesz wizualizować wykres ważności funkcji w obszarze roboczym w Azure Portal lub ze [strony docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com). Wykres jest również pokazywany przy użyciu [widżetu `RunDetails` Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) w notesie. Aby dowiedzieć się więcej na temat wykresów, zobacz [Opis zautomatyzowanych wyników uczenia maszynowego](how-to-understand-automated-ml.md).
 
 ```Python
 from azureml.widgets import RunDetails

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: a545617c9e93a9a5fd0a34acc1dd5e2825917b62
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fb836b44ebd567f0ce1c833ca523b1c199ed9c9a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387679"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785995"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Format tekstu rozdzielanego w Azure Data Factory
 
@@ -29,7 +29,7 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 | Właściwość         | Opis                                                  | Wymagane |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Właściwość Type zestawu danych musi być ustawiona na wartość **DelimitedText**. | Tak      |
-| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Zobacz szczegóły w sekcji łącznik — > Właściwości zestawu danych**. | Tak      |
+| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`.  | Tak      |
 | columnDelimiter  | Znaki używane do oddzielania kolumn w pliku. Obecnie ogranicznik wieloznakowy jest obsługiwany tylko na potrzeby mapowania przepływu danych, ale bez działania kopiowania. <br>Wartość domyślna to **przecinek `,`** , gdy ogranicznik kolumny jest zdefiniowany jako pusty ciąg, co oznacza brak ogranicznika, cały wiersz jest traktowany jako jedna kolumna. | Nie       |
 | rowDelimiter     | Pojedynczy znak lub "\r\n" używany do oddzielania wierszy w pliku.<br>Wartość domyślna to dowolna z następujących wartości **podczas odczytu: ["\r\n", "\r", "\n"]** , **"\n" lub "\r\n" przy zapisie** odpowiednio mapując przepływ danych i działanie kopiowania. <br>Gdy `rowDelimiter` jest ustawiona na brak ogranicznika (pusty ciąg), `columnDelimiter` musi być ustawiony jako brak ogranicznika (pusty ciąg), co oznacza, że cała zawartość jest traktowana jako pojedyncza wartość. | Nie       |
 | quoteChar        | Pojedynczy znak do wartości kolumny QUOTE, jeśli zawiera ogranicznik kolumny. <br>Wartość domyślna to **podwójny cudzysłów** `"`. <br>W przypadku mapowania przepływu danych `quoteChar` nie może być pustym ciągiem. <br>W przypadku działania kopiowania, gdy `quoteChar` jest zdefiniowany jako pusty ciąg, oznacza to, że nie istnieje znak cudzysłowu, a wartość kolumny nie jest ujęta w cudzysłów, a `escapeChar` jest używany do ucieczki ogranicznika kolumny i samego siebie. | Nie       |
@@ -73,13 +73,13 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 ### <a name="delimited-text-as-source"></a>Rozdzielany tekst jako źródło 
 
-Następujące właściwości są obsługiwane w sekcji działanie copy ***\*source @ no__t-2*** .
+Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*źródło\**** .
 
 | Właściwość       | Opis                                                  | Wymagane |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | Właściwość Type źródła działania Copy musi być ustawiona na wartość **DelimitedTextSource**. | Tak      |
 | formatSettings | Grupa właściwości. Zapoznaj się z rozdzieloną tabelą **Ustawienia odczytu tekstu** poniżej. | Nie       |
-| storeSettings  | Grupa właściwości do odczytywania danych z magazynu danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia odczytu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
+| storeSettings  | Grupa właściwości do odczytywania danych z magazynu danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia odczytu w obszarze `storeSettings`. | Nie       |
 
 Obsługiwane **rozdzielane tekstem ustawienia odczytu** w obszarze `formatSettings`:
 
@@ -90,13 +90,13 @@ Obsługiwane **rozdzielane tekstem ustawienia odczytu** w obszarze `formatSettin
 
 ### <a name="delimited-text-as-sink"></a>Tekst rozdzielony jako ujścia
 
-Następujące właściwości są obsługiwane w sekcji działanie copy ***\*sink @ no__t-2*** .
+Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*ujścia\**** .
 
 | Właściwość       | Opis                                                  | Wymagane |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | Właściwość Type źródła działania Copy musi być ustawiona na wartość **DelimitedTextSink**. | Tak      |
 | formatSettings | Grupa właściwości. Zapoznaj się z rozdzieloną tabelą **ustawień zapisu tekstu** poniżej. |          |
-| storeSettings  | Grupa właściwości do zapisywania danych w magazynie danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia zapisu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
+| storeSettings  | Grupa właściwości do zapisywania danych w magazynie danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia zapisu w obszarze `storeSettings`.  | Nie       |
 
 Obsługiwane **rozdzielone ustawienia zapisu tekstu** w obszarze `formatSettings`:
 

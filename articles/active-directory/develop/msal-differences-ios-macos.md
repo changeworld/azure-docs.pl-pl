@@ -1,5 +1,6 @@
 ---
-title: Biblioteka Microsoft Authentication Library (MSAL) dla systemu iOS & macOS | Azure
+title: Biblioteka Microsoft Authentication Library (MSAL) dla systemu iOS & macOS
+titleSuffix: Microsoft identity platform
 description: Opisuje różnice użycia biblioteki uwierzytelniania firmy Microsoft (MSAL) między systemami iOS i macOS.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb6e55e83412535f29284db48fb37fd514b35d4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 090f4eaea292c7122db2427ce8730df815506fc0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269014"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803133"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>Biblioteka uwierzytelniania firmy Microsoft dla systemów iOS i macOS — różnice
 
@@ -37,7 +38,7 @@ MSAL for macOS to podzbiór funkcji dostępnych dla systemu iOS.
 
 MSAL dla macOS nie obsługuje:
 
-- różne typy przeglądarek, takie `ASWebAuthenticationSession`jak `SFAuthenticationSession`, `SFSafariViewController`,.
+- różne typy przeglądarek, takie jak `ASWebAuthenticationSession`, `SFAuthenticationSession``SFSafariViewController`.
 - uwierzytelnianie przez brokera za pośrednictwem aplikacji Microsoft Authenticator nie jest obsługiwane w przypadku macOS.
 
 Udostępnianie łańcucha kluczy między aplikacjami z tego samego wydawcy jest bardziej ograniczone na macOS 10,14 i starszych. Użyj [list kontroli dostępu](https://developer.apple.com/documentation/security/keychain_services/access_control_lists?language=objc) , aby określić ścieżki do aplikacji, które powinny korzystać z łańcucha kluczy. Użytkownik może zobaczyć dodatkowe wiersze łańcucha kluczy.

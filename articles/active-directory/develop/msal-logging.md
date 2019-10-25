@@ -1,5 +1,6 @@
 ---
-title: Rejestrowanie w aplikacjach Microsoft Authentication Library (MSAL) | Azure
+title: Rejestrowanie w aplikacjach Microsoft Authentication Library (MSAL)
+titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o rejestrowaniu w aplikacjach Microsoft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3235037d2b60322ab3e5c393c0a19b1a42bdc6c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 87102e3ea71695006e465d1becad0f2ece2a426b
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678033"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802974"
 ---
 # <a name="logging-in-msal-applications"></a>Logowanie w aplikacjach MSAL
 
@@ -46,11 +47,11 @@ Domyślnie Rejestrator MSAL nie przechwytuje żadnych wysoce poufnych danych oso
  > [!NOTE]
  > Zobacz [MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) , aby poznać przykłady rejestrowania MSAL.NET i nie tylko.
 
-W MSAL 3. x rejestrowanie jest ustawione na aplikację przy tworzeniu aplikacji przy użyciu modyfikatora konstruktora `.WithLogging`. Ta metoda pobiera parametry opcjonalne:
+W MSAL 3. x rejestrowanie jest ustawione na aplikację przy tworzeniu aplikacji przy użyciu modyfikatora `.WithLogging` Builder. Ta metoda pobiera parametry opcjonalne:
 
-- `Level` umożliwia określenie żądanego poziomu rejestrowania. Ustawienie na błędy spowoduje tylko błędy
+- `Level` umożliwia podjęcie decyzji o żądanym poziomie rejestrowania. Ustawienie na błędy spowoduje tylko błędy
 - `PiiLoggingEnabled` pozwala rejestrować dane osobiste i organizacyjne, jeśli ustawiono wartość true. Domyślnie to ustawienie ma wartość FAŁSZ, aby aplikacja nie rejestrował danych osobowych.
-- `LogCallback` jest ustawiona na delegata, który wykonuje rejestrowanie. Jeśli `PiiLoggingEnabled` ma wartość true, ta metoda otrzyma komunikaty dwa razy: raz z parametrem `containsPii` jest równa false, a komunikat bez danych osobowych i drugi raz z parametrem `containsPii` ma wartość true, a komunikat może zawierać dane osobowe. W niektórych przypadkach (gdy wiadomość nie zawiera danych osobowych), komunikat będzie taki sam.
+- `LogCallback` jest ustawiona na delegata, który wykonuje rejestrowanie. Jeśli `PiiLoggingEnabled` ma wartość true, ta metoda otrzyma komunikaty dwa razy: jeden raz z parametrem `containsPii` ma wartość false, a komunikat bez danych osobowych i drugi raz z parametrem `containsPii` równą true, a komunikat może zawierać dane osobowe. W niektórych przypadkach (gdy wiadomość nie zawiera danych osobowych), komunikat będzie taki sam.
 - `DefaultLoggingEnabled` Włącza rejestrowanie domyślne dla platformy. Domyślnie jest to wartość false. Jeśli ustawisz ją na wartość true, używa ona śledzenia zdarzeń w aplikacjach Desktop/platformy UWP, NSLog w systemach iOS i Logcat w systemie Android.
 
 ```csharp
@@ -84,10 +85,10 @@ class Program
 
 Włącz logowanie przy tworzeniu aplikacji przez utworzenie wywołania zwrotnego rejestrowania. Wywołanie zwrotne przyjmuje następujące parametry:
 
-- `tag` to ciąg przesłany do wywołania zwrotnego przez bibliotekę. Jest ona skojarzona z wpisem dziennika i może służyć do sortowania komunikatów rejestrowania.
-- `logLevel` umożliwia określenie żądanego poziomu rejestrowania. Obsługiwane poziomy dzienników to: `Error`, `Warning`, `Info` i `Verbose`.
+- `tag` jest ciągiem przesłanym do wywołania zwrotnego przez bibliotekę. Jest ona skojarzona z wpisem dziennika i może służyć do sortowania komunikatów rejestrowania.
+- `logLevel` umożliwia podjęcie decyzji o żądanym poziomie rejestrowania. Obsługiwane poziomy dzienników to: `Error`, `Warning`, `Info`i `Verbose`.
 - `message` to zawartość wpisu dziennika.
-- `containsPII` Określa, czy komunikaty zawierające dane osobowe lub dane organizacji są rejestrowane. Domyślnie to ustawienie ma wartość FAŁSZ, aby aplikacja nie rejestrował danych osobowych. Jeśli `containsPII` to `true`, ta metoda otrzyma komunikaty dwa razy: jeden z @no__t parametrów `containsPII` i `message` bez danych osobowych, a drugi raz z parametrem `containsPii` ustawionym na `true`, a komunikat może zawierać dane osobowe. W niektórych przypadkach (gdy wiadomość nie zawiera danych osobowych), komunikat będzie taki sam.
+- `containsPII` określa, czy komunikaty zawierające dane osobowe lub dane organizacji są rejestrowane. Domyślnie to ustawienie ma wartość FAŁSZ, aby aplikacja nie rejestrował danych osobowych. Jeśli `containsPII` jest `true`, ta metoda otrzyma komunikaty dwa razy: jeden raz z parametrem `containsPII` ustawionym na `false` i `message` bez danych osobowych i po raz drugi z parametrem `containsPii` ustawionym na `true`, a komunikat może zawierać dane osobowe. W niektórych przypadkach (gdy wiadomość nie zawiera danych osobowych), komunikat będzie taki sam.
 
 ```java
 private StringBuilder mLogs;
@@ -125,9 +126,9 @@ Logger.getInstance().setEnableLogcatLog(true);
 
  Włącz rejestrowanie w MSAL. js przez przekazanie obiektu rejestratora podczas konfiguracji w celu utworzenia wystąpienia `UserAgentApplication`. Ten obiekt rejestratora ma następujące właściwości:
 
-- `localCallback`: wystąpienie wywołania zwrotnego, które może zostać dostarczone przez dewelopera w celu użycia i publikowania dzienników w niestandardowy sposób. Zaimplementuj metodę localCallback w zależności od tego, jak chcesz przekierować dzienniki.
-- `level` (opcjonalnie): konfigurowalny poziom rejestrowania. Obsługiwane poziomy dzienników to: `Error`, `Warning`, `Info` i `Verbose`. Wartość domyślna to `Info`.
-- `piiLoggingEnabled` (opcjonalnie): w przypadku ustawienia wartości true, rejestruje dane osobiste i organizacyjne. Domyślnie jest to wartość false, aby aplikacja nie rejestrował danych osobowych. Osobiste dzienniki danych nigdy nie są zapisywane w domyślnych danych wyjściowych, takich jak Console, Logcat lub NSLog.
+- `localCallback`: wystąpienie wywołania zwrotnego, które może zostać dostarczone przez dewelopera do korzystania z dzienników i publikowania ich w niestandardowy sposób. Zaimplementuj metodę localCallback w zależności od tego, jak chcesz przekierować dzienniki.
+- `level` (opcjonalnie): konfigurowalny poziom rejestrowania. Obsługiwane poziomy dzienników to: `Error`, `Warning`, `Info`i `Verbose`. Wartość domyślna to `Info`.
+- `piiLoggingEnabled` (opcjonalnie): w przypadku ustawienia wartości true program rejestruje dane osobiste i organizacyjne. Domyślnie jest to wartość false, aby aplikacja nie rejestrował danych osobowych. Osobiste dzienniki danych nigdy nie są zapisywane w domyślnych danych wyjściowych, takich jak Console, Logcat lub NSLog.
 - `correlationId` (opcjonalnie): unikatowy identyfikator używany do mapowania żądania z odpowiedzią na potrzeby debugowania. Wartość domyślna to RFC4122 w wersji 4 GUID (128 bitów).
 
 ```javascript

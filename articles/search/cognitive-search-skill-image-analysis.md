@@ -1,33 +1,32 @@
 ---
-title: Umiejętność wyszukiwania poznawczego analizy obrazów — Azure Search
-description: Wyodrębnij tekst semantyczny za pomocą analizy obrazów, wykorzystując umiejętność ImageAnalysis poznawczych Azure Search w potoku wzbogacenia.
-services: search
+title: Umiejętność analizy obrazów
+titleSuffix: Azure Cognitive Search
+description: Wyodrębnij tekst semantyczny za pomocą analizy obrazów, korzystając z umiejętności poznawczej analizy obrazów w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 08/28/2019
 ms.author: luisca
-ms.openlocfilehash: 69e798601dc53ffb666aa9dcddd68980256fa3fc
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 04114d00f3905675a1794a3875e650661febc832
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265454"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791987"
 ---
-#   <a name="image-analysis-cognitive-skill"></a>Umiejętność analizy obrazów
+# <a name="image-analysis-cognitive-skill"></a>Umiejętność analizy obrazów
 
 Umiejętność **analizy obrazów** wyodrębnia bogaty zestaw funkcji wizualnych opartych na zawartości obrazu. Na przykład można wygenerować podpis na podstawie obrazu, generować Tagi lub identyfikować osobistości i punkty orientacyjne. Ta umiejętność używa modeli uczenia maszynowego zapewnianych przez [Przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) w Cognitive Services. 
 
 > [!NOTE]
-> Małe woluminy (w ramach 20 transakcji) można bezpłatnie wykonywać w Azure Search, ale większe obciążenia wymagają [dołączenia zasobu Cognitive Services do rozliczenia](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w Azure Search. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
+> Małe woluminy (w ramach 20 transakcji) można bezpłatnie wykonywać na platformie Azure Wyszukiwanie poznawcze, ale większe obciążenia wymagają [dołączenia zasobu Cognitive Services do rozliczenia](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w usłudze Azure Wyszukiwanie poznawcze. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
 >
-> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika usługi Azure wyszukiwanie poznawcze](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Vision.ImageAnalysisSkill 
+Microsoft. umiejętności. Vision. ImageAnalysisSkill 
 
 ## <a name="skill-parameters"></a>Parametry umiejętności
 
@@ -37,13 +36,13 @@ W parametrach jest rozróżniana wielkość liter.
 |--------------------|-------------|
 | defaultLanguageCode   |  Ciąg wskazujący język, który ma zostać zwrócony. Usługa zwraca wyniki rozpoznawania w określonym języku. Jeśli ten parametr nie jest określony, wartością domyślną jest "en". <br/><br/>Obsługiwane są następujące języki: <br/>*pl* — angielski (wartość domyślna) <br/> *zh* — chiński uproszczony|
 |visualFeatures |   Tablica ciągów wskazująca typy funkcji wizualizacji do zwrócenia. Prawidłowe typy funkcji wizualizacji to:  <ul><li> *Kategorie* — klasyfikuje zawartość obrazu zgodnie z taksonomią zdefiniowaną w [dokumentacji przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)Cognitive Services. </li><li> *znaczniki* — znaczniki obrazu ze szczegółową listą wyrazów związanych z zawartością obrazu.</li><li>*Opis* — opisuje zawartość obrazu za pomocą kompletnego zdania w języku angielskim.</li><li>*twarze* — wykrywa, czy twarze są obecne. Jeśli jest obecny, generuje współrzędne, płeć i wiek.</li><li>    *ImageType* — wykrywa, czy obraz jest obiektem clipart czy rysowaniem linii.</li><li>  *Color* — określa kolor akcentu, kolor dominujący oraz to, czy obraz jest czarny & biały.</li><li>*osoba dorosła* — wykrywa, czy obraz jest pornograficznej w naturze (przedstawia nagość lub akt płci). Wykryto również zawartość z sugestią seksualną.</li></ul> Nazwy funkcji wizualnych są rozróżniane wielkości liter.|
-| details informacje   | Tablica ciągów wskazująca, które szczegóły dotyczące domeny mają być zwracane. Prawidłowe typy funkcji wizualizacji to: <ul><li>*osobistości* — identyfikuje osobistości, jeśli został wykryty w obrazie.</li><li>*punkty orientacyjne* — wskazuje punkty orientacyjne, jeśli zostały wykryte na obrazie. </li></ul> |
+| Uzyskać   | Tablica ciągów wskazująca, które szczegóły dotyczące domeny mają być zwracane. Prawidłowe typy funkcji wizualizacji to: <ul><li>*osobistości* — identyfikuje osobistości, jeśli został wykryty w obrazie.</li><li>*punkty orientacyjne* — wskazuje punkty orientacyjne, jeśli zostały wykryte na obrazie. </li></ul> |
 
 ## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
 
-| Wprowadź nazwę      | Opis                                          |
+| Nazwa wejściowa      | Opis                                          |
 |---------------|------------------------------------------------------|
-| image         | Typ złożony. Obecnie działa tylko z polem "/Document/normalized_images" tworzonym przez indeksator usługi Azure Blob, gdy ```imageAction``` jest ustawiony na wartość inną niż. ```none``` Zobacz [przykład](#sample-output) , aby uzyskać więcej informacji.|
+| image         | Typ złożony. Obecnie działa tylko z polem "/Document/normalized_images" tworzonym przez indeksator usługi Azure Blob, gdy ```imageAction``` jest ustawiona na wartość inną niż ```none```. Zobacz [przykład](#sample-output) , aby uzyskać więcej informacji.|
 
 
 
@@ -503,7 +502,7 @@ W następujących przypadkach błędów nie są wyodrębniane żadne elementy.
 | NotSupportedImage | Nieobsługiwany obraz, na przykład pornografia podrzędna. |
 | InvalidDetails | Nieobsługiwany model specyficzny dla domeny. |
 
-Jeśli zostanie wyświetlony błąd podobny do `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`, sprawdź ścieżkę. Zarówno osobistości, jak i punkty orientacyjne `detail`są właściwościami poniżej.
+Jeśli zostanie wyświetlony komunikat o błędzie podobny do `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`, sprawdź ścieżkę. Zarówno osobistości, jak i punkty orientacyjne są właściwościami w obszarze `detail`.
 
 ```json
 "categories":[  
@@ -521,6 +520,6 @@ Jeśli zostanie wyświetlony błąd podobny do `"One or more skills are invalid.
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
++ [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Utwórz indeksator (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

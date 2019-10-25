@@ -1,36 +1,36 @@
 ---
-title: Zarządzanie wersjami interfejsu API dla zestawu .NET SDK i interfejsów API REST — Azure Search
-description: Zasady wersji dla Azure Search interfejsów API REST i biblioteki klienta w zestawie .NET SDK.
-author: brjohnstmsft
+title: Zarządzanie wersjami interfejsu API dla zestawu .NET SDK i interfejsów API REST
+titleSuffix: Azure Cognitive Search
+description: Zasady wersji dla interfejsów API REST platformy Azure Wyszukiwanie poznawcze i biblioteki klienta w zestawie SDK platformy .NET.
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: brjohnstmsft
 ms.author: brjohnst
-ms.openlocfilehash: f400c6fcb2b35e2adcf605c96bb802041cd9e0a9
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 4a976655d0f634c7026f008d64516a629947e90c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182359"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793056"
 ---
-# <a name="api-versions-in-azure-search"></a>Wersje interfejsu API w Azure Search
-Azure Search regularnie przedstawia aktualizacje funkcji. Czasami, ale nie zawsze, te aktualizacje wymagają nowej wersji interfejsu API w celu zachowania zgodności z poprzednimi wersjami. Opublikowanie nowej wersji pozwala określić, kiedy i w jaki sposób integrują aktualizacje usługi Search w kodzie.
+# <a name="api-versions-in-azure-cognitive-search"></a>Wersje interfejsu API na platformie Azure Wyszukiwanie poznawcze
 
-Zgodnie z regułą zespół Azure Search publikuje nowe wersje tylko wtedy, gdy jest to konieczne, ponieważ może to wymagać pewnego wysiłku, aby uaktualnić kod w celu użycia nowej wersji interfejsu API. Nowa wersja jest wymagana tylko wtedy, gdy jakiś aspekt interfejsu API zmienił się w taki sposób, który powoduje przerwanie zgodności z poprzednimi wersjami. Takie zmiany mogą wystąpić z powodu poprawek do istniejących funkcji lub z powodu nowych funkcji, które zmieniają istniejący obszar powierzchni interfejsu API.
+Usługa Azure Wyszukiwanie poznawcze regularnie przedstawia aktualizacje funkcji. Czasami, ale nie zawsze, te aktualizacje wymagają nowej wersji interfejsu API w celu zachowania zgodności z poprzednimi wersjami. Opublikowanie nowej wersji pozwala określić, kiedy i w jaki sposób integrują aktualizacje usługi Search w kodzie.
 
-Ta sama reguła dotyczy aktualizacji zestawu SDK. Zestaw SDK Azure Search jest zgodny z regułami [wersji semantycznej](https://semver.org/) , co oznacza, że jego wersja ma trzy części: główna, pomocnicza i numer kompilacji (na przykład 1.1.0). Nowa główna wersja zestawu SDK jest wydawana tylko dla zmian, które Przerwij zgodność z poprzednią wersją. Niekrytyczne aktualizacje funkcji spowodują zwiększenie wersji pomocniczej, a poprawki błędów spowodują zwiększenie wersji kompilacji.
+Zgodnie z regułą zespół usługi Azure Wyszukiwanie poznawcze publikuje nowe wersje tylko wtedy, gdy jest to konieczne, ponieważ może to wymagać pewnego wysiłku, aby uaktualnić kod w celu użycia nowej wersji interfejsu API. Nowa wersja jest wymagana tylko wtedy, gdy jakiś aspekt interfejsu API zmienił się w taki sposób, który powoduje przerwanie zgodności z poprzednimi wersjami. Takie zmiany mogą wystąpić z powodu poprawek do istniejących funkcji lub z powodu nowych funkcji, które zmieniają istniejący obszar powierzchni interfejsu API.
+
+Ta sama reguła dotyczy aktualizacji zestawu SDK. Zestaw SDK platformy Azure Wyszukiwanie poznawcze jest zgodny z regułami [wersji semantycznej](https://semver.org/) , co oznacza, że jej wersja ma trzy części: główna, pomocnicza i numer kompilacji (na przykład 1.1.0). Nowa główna wersja zestawu SDK jest wydawana tylko dla zmian, które Przerwij zgodność z poprzednią wersją. Niekrytyczne aktualizacje funkcji spowodują zwiększenie wersji pomocniczej, a poprawki błędów spowodują zwiększenie wersji kompilacji.
 
 > [!NOTE]
-> Wystąpienie usługi Azure Search obsługuje kilka wersji interfejsu API REST, w tym najnowsze. Możesz nadal korzystać z wersji, gdy nie jest już Najnowsza, ale zalecamy przeprowadzenie migracji kodu w celu użycia najnowszej wersji. W przypadku korzystania z interfejsu API REST należy określić wersję interfejsu API w każdym żądaniu za pośrednictwem parametru API-Version. Podczas korzystania z zestawu SDK platformy .NET wersja zestawu SDK określa odpowiednią wersję interfejsu API REST. Jeśli używasz starszego zestawu SDK, możesz nadal uruchamiać ten kod bez zmian, nawet jeśli usługa zostanie uaktualniona w celu obsługi nowszej wersji interfejsu API.
+> Wystąpienie usługi Azure Wyszukiwanie poznawcze obsługuje kilka wersji interfejsu API REST, w tym najnowsze. Możesz nadal korzystać z wersji, gdy nie jest już Najnowsza, ale zalecamy przeprowadzenie migracji kodu w celu użycia najnowszej wersji. W przypadku korzystania z interfejsu API REST należy określić wersję interfejsu API w każdym żądaniu za pośrednictwem parametru API-Version. Podczas korzystania z zestawu SDK platformy .NET wersja zestawu SDK określa odpowiednią wersję interfejsu API REST. Jeśli używasz starszego zestawu SDK, możesz nadal uruchamiać ten kod bez zmian, nawet jeśli usługa zostanie uaktualniona w celu obsługi nowszej wersji interfejsu API.
 
 ## <a name="snapshot-of-current-versions"></a>Migawka bieżących wersji
-Poniżej znajduje się migawka bieżących wersji wszystkich interfejsów programowania do Azure Search.
+Poniżej znajduje się migawka bieżących wersji wszystkich interfejsów programowania do Wyszukiwanie poznawcze platformy Azure.
 
 
-| Interfejsy | Najnowsza wersja główna | State |
+| Interfejsów | Najnowsza wersja główna | Stan |
 | --- | --- | --- |
 | [Zestaw SDK platformy .NET](https://aka.ms/search-sdk) |9.0 |Ogólnie dostępne, wydane mogą 2019 |
 | [.NET SDK — wersja zapoznawcza](https://aka.ms/search-sdk-preview) |8,0 — wersja zapoznawcza |Wersja zapoznawcza, wydana kwiecień 2019 |
@@ -39,7 +39,7 @@ Poniżej znajduje się migawka bieżących wersji wszystkich interfejsów progra
 | [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Ogólnie dostępne |
 | [Interfejs API REST zarządzania](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Ogólnie dostępne |
 
-W przypadku interfejsów API REST, `api-version` w tym na każde wywołanie jest wymagane. Korzystanie `api-version` z programu ułatwia kierowanie określonych wersji, takich jak interfejs API w wersji zapoznawczej. Poniższy przykład ilustruje sposób `api-version` określenia parametru:
+W przypadku interfejsów API REST, w tym `api-version` na każdym wywołaniu jest wymagane. Używanie `api-version` ułatwia kierowanie określonych wersji, takich jak interfejs API w wersji zapoznawczej. Poniższy przykład ilustruje sposób określenia parametru `api-version`:
 
     GET https://my-demo-app.search.windows.net/indexes/hotels?api-version=2019-05-06
 
@@ -51,12 +51,12 @@ W przypadku interfejsów API REST, `api-version` w tym na każde wywołanie jest
 Ogólnie dostępne interfejsy API mogą być używane w środowisku produkcyjnym i podlegają umowom dotyczącym poziomu usług platformy Azure. Wersje zapoznawcze mają funkcje eksperymentalne, które nie są zawsze migrowane do wersji GA. **Zdecydowanie zaleca się unikanie korzystania z interfejsów API w wersji zapoznawczej w aplikacjach produkcyjnych.**
 
 ## <a name="about-preview-and-generally-available-versions"></a>Informacje o wersji zapoznawczej i ogólnie dostępne wersje
-Azure Search zawsze wstępnie wydawania eksperymentalnych funkcji za pomocą interfejsu API REST, a następnie za pomocą wersji wstępnej zestawu .NET SDK.
+Usługa Azure Wyszukiwanie poznawcze zawsze wstępnie zwalnia funkcje eksperymentalne za pomocą interfejsu API REST, a następnie za pomocą wersji wstępnej zestawu .NET SDK.
 
 Funkcje w wersji zapoznawczej są dostępne do testowania i eksperymentowania, a celem zebrania opinii na temat projektowania i implementacji funkcji. Z tego powodu funkcje wersji zapoznawczej mogą ulec zmianie z upływem czasu, prawdopodobnie w sposób powodujący przerwanie zgodności z poprzednimi wersjami. Jest to w przeciwieństwie do funkcji w wersji GA, które są stabilne i mało prawdopodobne, aby można je było zmienić z wyjątkiem małych poprawek i ulepszeń zgodnych z poprzednimi wersjami. Ponadto funkcje wersji zapoznawczej nie zawsze sprawiają, że są one w wersji GA.
 
 Z tego powodu zalecamy zapisanie kodu produkcyjnego, który jest zależny od wersji w wersji zapoznawczej. Jeśli używasz starszej wersji zapoznawczej, zalecamy przeprowadzenie migracji do ogólnie dostępnej wersji.
 
-Zestaw SDK platformy .NET: Wskazówki dotyczące migracji kodu można znaleźć na stronie [uaktualnianie zestawu .NET SDK](search-dotnet-sdk-migration-version-9.md).
+Dla zestawu .NET SDK: wskazówki dotyczące migracji kodu można znaleźć w temacie [upgrade SDK platformy .NET](search-dotnet-sdk-migration-version-9.md).
 
-Ogólna dostępność oznacza, że Azure Search jest teraz objęta umową dotyczącą poziomu usług (SLA). Umowę SLA można znaleźć Azure Search na stronie [umowy dotyczące poziomu usług](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Ogólna dostępność oznacza, że usługa Azure Wyszukiwanie poznawcze jest teraz objęta umową dotyczącą poziomu usług (SLA). Umowę SLA można znaleźć na stronie [umowy dotyczące poziomu usług platformy Azure wyszukiwanie poznawcze](https://azure.microsoft.com/support/legal/sla/search/v1_0/).

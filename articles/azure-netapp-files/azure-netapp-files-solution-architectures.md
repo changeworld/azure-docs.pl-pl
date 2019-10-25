@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: b-juche
-ms.openlocfilehash: d5bdb7ead976065391ab31261b30328f03ff2177
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 037dcaf7ef6ac6aba7e9d0ea726c40ec5bcd54f8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051793"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791258"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury rozwiązań używające usługi Azure NetApp Files
 Ten artykuł zawiera informacje o najlepszych rozwiązaniach, które mogą pomóc w zrozumieniu architektur rozwiązań na potrzeby używania Azure NetApp Files.  
@@ -31,13 +31,14 @@ Ten artykuł zawiera informacje o najlepszych rozwiązaniach, które mogą pomó
 ## <a name="oracle-database-solutions"></a>Rozwiązania bazy danych Oracle
 
 * [Wskazówki dotyczące najlepszych rozwiązań firmy Oracle na platformie Azure przy użyciu Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)
-* [Obrazy maszyn wirtualnych Oracle i ich wdrożenie na Microsoft Azure: Opcje konfiguracji magazynu udostępnionego](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
+* [Obrazy maszyn wirtualnych Oracle i ich wdrożenie na Microsoft Azure: opcje konfiguracji magazynu udostępnionego](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
 
 ## <a name="sap-application-solutions"></a>Rozwiązania aplikacji SAP 
 
 * [Aplikacje SAP na Microsoft Azure przy użyciu Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
 * [Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server z Azure NetApp Files dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
 * [Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux z Azure NetApp Files dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+* [SAP HANA skalowanie w poziomie z węzłem gotowości na maszynach wirtualnych platformy Azure z Azure NetApp Files na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
 
 ## <a name="talon-solutions"></a>Rozwiązania Talon
 

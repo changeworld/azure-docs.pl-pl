@@ -1,31 +1,31 @@
 ---
-title: Jak zaplanować indeksatory — Azure Search
-description: Zaplanuj Azure Search indeksatory, aby okresowo indeksować zawartość lub w określonych godzinach.
-ms.date: 05/31/2019
+title: Jak zaplanować indeksatory
+titleSuffix: Azure Cognitive Search
+description: Zaplanuj indeksatory usługi Azure Wyszukiwanie poznawcze, aby okresowo indeksować zawartość lub w określonych godzinach.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: ''
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.openlocfilehash: d30c4532c43c5df568cf32a1025b796b3be9ee8e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 11/04/2019
+ms.openlocfilehash: e9d4f49bd0aec1a04b4839b2084a81fb538f7890
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72533625"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793691"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>Jak zaplanować indeksatory dla Azure Search
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Jak zaplanować indeksatory na platformie Azure Wyszukiwanie poznawcze
+
 Indeksator jest zwykle uruchamiany jednokrotnie, natychmiast po jego utworzeniu. Można uruchomić je ponownie na żądanie przy użyciu portalu, interfejsu API REST lub zestawu .NET SDK. Można również skonfigurować indeksator do uruchamiania okresowo zgodnie z harmonogramem.
 
 Niektóre sytuacje, w których planowanie indeksatora jest przydatne:
 
-* Dane źródłowe ulegną zmianie z upływem czasu i chcesz, aby indeksatory Azure Search automatycznie przetwarzać zmienione dane.
+* Dane źródłowe ulegną zmianie z upływem czasu i chcesz, aby indeksatory platformy Azure Wyszukiwanie poznawcze automatycznie przetwarzać zmienione dane.
 * Indeks zostanie wypełniony z wielu źródeł danych i chcesz się upewnić, że Indeksatory są uruchamiane w różnych porach, aby zmniejszyć liczbę konfliktów.
-* Dane źródłowe są bardzo duże i chcesz rozłożyć przetwarzanie indeksatora w czasie. Aby uzyskać więcej informacji na temat indeksowania dużych ilości danych, zobacz [jak indeksować duże zestawy danych w Azure Search](search-howto-large-index.md).
+* Dane źródłowe są bardzo duże i chcesz rozłożyć przetwarzanie indeksatora w czasie. Aby uzyskać więcej informacji na temat indeksowania dużych ilości danych, zobacz [jak indeksować duże zestawy danych w usłudze Azure wyszukiwanie poznawcze](search-howto-large-index.md).
 
-Harmonogram jest wbudowaną funkcją Azure Search. Nie można użyć zewnętrznego harmonogramu do kontrolowania indeksatorów wyszukiwania.
+Harmonogram jest wbudowaną funkcją Wyszukiwanie poznawcze platformy Azure. Nie można użyć zewnętrznego harmonogramu do kontrolowania indeksatorów wyszukiwania.
 
 ## <a name="define-schedule-properties"></a>Definiowanie właściwości harmonogramu
 
@@ -88,7 +88,7 @@ Indeksator można również uruchomić na żądanie w dowolnym momencie przy uż
 
 ## <a name="schedule-using-the-net-sdk"></a>Planowanie przy użyciu zestawu .NET SDK
 
-Można zdefiniować harmonogram dla indeksatora przy użyciu zestawu SDK platformy .NET Azure Search. W tym celu należy uwzględnić Właściwość **Schedule** podczas tworzenia lub aktualizowania indeksatora.
+Można zdefiniować harmonogram dla indeksatora przy użyciu zestawu Azure Wyszukiwanie poznawcze .NET SDK. W tym celu należy uwzględnić Właściwość **Schedule** podczas tworzenia lub aktualizowania indeksatora.
 
 Poniższy C# przykład tworzy indeksator przy użyciu wstępnie zdefiniowanego źródła danych i indeksu i ustawia jego harmonogram do uruchomienia raz dziennie od 30 minut od teraz:
 

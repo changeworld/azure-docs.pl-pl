@@ -5,15 +5,15 @@ description: Dodaj semantykę, przetwarzanie języka naturalnego i analizę obra
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5f65667ac8ffacdd12e57ae0d46e25c586624a31
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678413"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792469"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>Używanie AI do zrozumienia danych magazynu obiektów BLOB
 
@@ -68,7 +68,7 @@ Wzbogacanie AI odnosi się do modułów, które szukają wzorców lub cech, a na
 
 W Azure Search, *umiejętności* są indywidualnymi składnikami przetwarzania AI, które można wykorzystać autonomiczną lub w połączeniu z innymi umiejętnościami. 
 
-+ Wbudowane umiejętności są obsługiwane przez Cognitive Services, z analizą obrazów na podstawie przetwarzanie obrazów i przetwarzania w języku naturalnym opartym na analiza tekstu. Możesz zapoznać się z pełną listą wbudowanych umiejętności we [wstępnie zdefiniowanych umiejętnościach związanych z wzbogacaniem zawartości](cognitive-search-predefined-skills.md).
++ Wbudowane umiejętności są obsługiwane przez Cognitive Services, z analizą obrazów na podstawie przetwarzanie obrazów i przetwarzania w języku naturalnym opartym na analiza tekstu. Aby zapoznać się z pełną listą, zobacz [wbudowaną umiejętność wzbogacania zawartości](cognitive-search-predefined-skills.md).
 
 + Niestandardowe umiejętności to kod niestandardowy, opakowany w [definicję interfejsu](cognitive-search-custom-skill-interface.md) , która umożliwia integrację z potokiem. W rozwiązaniach klientów powszechną techniką jest korzystanie z nich zarówno z niestandardowymi umiejętnościami, jak i modułami AI "open source", innych firm lub firm.
 

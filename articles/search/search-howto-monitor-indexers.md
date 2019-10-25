@@ -1,25 +1,24 @@
 ---
-title: Jak monitorować stan i wyniki indeksatora — Azure Search
-description: Monitoruj stan, postęp i wyniki Azure Search indeksatorów w Azure Portal, przy użyciu interfejsu API REST lub zestawu .NET SDK.
-ms.date: 06/28/2019
-author: RobDixon22
+title: Jak monitorować stan i wyniki indeksatora
+titleSuffix: Azure Cognitive Search
+description: Monitoruj stan, postęp i wyniki Wyszukiwanie poznawcze indeksatorów platformy Azure w Azure Portal, przy użyciu interfejsu API REST lub zestawu .NET SDK.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 0096334e06051b9ff474543384febb37bdf1c8e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: c7f688c96576f660795becaf318c3b0677a24542
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72533702"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793804"
 ---
-# <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Jak monitorować stan i wyniki Azure Search indeksatora
+# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Jak monitorować stan i wyniki usługi Azure Wyszukiwanie poznawcze indeksator
 
-Azure Search udostępnia informacje o stanie i monitorowaniu bieżących i historycznych przebiegów każdego indeksatora.
+Usługa Azure Wyszukiwanie poznawcze udostępnia informacje o stanie i monitorowaniu dotyczące bieżących i historycznych przebiegów każdego indeksatora.
 
 Monitorowanie indeksatora jest przydatne, gdy chcesz:
 
@@ -75,7 +74,7 @@ Jeśli podczas przebiegu wystąpiły problemy specyficzne dla dokumentu, zostan�
 
 Ostrzeżenia są wspólne dla niektórych typów indeksatorów i nie zawsze wskazują problem. Na przykład indeksatory korzystające z usług poznawczych mogą raportować ostrzeżenia, gdy pliki obrazów lub PDF nie zawierają żadnego tekstu do przetworzenia.
 
-Aby uzyskać więcej informacji na temat badania błędów i ostrzeżeń indeksatora, zobacz [Rozwiązywanie typowych problemów indeksatora w Azure Search](search-indexer-troubleshooting.md).
+Aby uzyskać więcej informacji na temat badania błędów i ostrzeżeń indeksatora, zobacz [Rozwiązywanie typowych problemów indeksatora na platformie Azure wyszukiwanie poznawcze](search-indexer-troubleshooting.md).
 
 <a name="restapi"></a>
 
@@ -128,7 +127,7 @@ Aby uzyskać więcej informacji na temat kodów stanu i danych monitorowania ind
 
 ## <a name="monitor-using-the-net-sdk"></a>Monitorowanie przy użyciu zestawu .NET SDK
 
-Można zdefiniować harmonogram dla indeksatora przy użyciu zestawu SDK platformy .NET Azure Search. W tym celu należy uwzględnić Właściwość **Schedule** podczas tworzenia lub aktualizowania indeksatora.
+Można zdefiniować harmonogram dla indeksatora przy użyciu zestawu Azure Wyszukiwanie poznawcze .NET SDK. W tym celu należy uwzględnić Właściwość **Schedule** podczas tworzenia lub aktualizowania indeksatora.
 
 Poniższy C# przykład zapisuje informacje o stanie indeksatora i wyniki jego najnowszej (lub trwającego) uruchomienia do konsoli programu.
 

@@ -1,5 +1,6 @@
 ---
-title: Tworzenie tożsamości aplikacji platformy Azure przy użyciu programu PowerShell | Microsoft Docs
+title: Tworzenie tożsamości dla aplikacji platformy Azure przy użyciu programu PowerShell
+titleSuffix: Microsoft identity platform
 description: Opis tworzenia aplikacji i jednostki usługi Azure Active Directory oraz przyznawania jej dostępu do zasobów za pośrednictwem kontroli dostępu opartej na rolach przy użyciu programu Azure PowerShell. Ten temat zawiera również informacje na temat uwierzytelniania aplikacji przy użyciu certyfikatu.
 services: active-directory
 documentationcenter: na
@@ -17,12 +18,12 @@ ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7c75a567dbefc71b4b0fea595dae56a03def5ed
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fcf52bc5a6d177c18d9ebb792d1a147d09746afd
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295446"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803820"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Instrukcje: używanie Azure PowerShell do tworzenia jednostki usługi przy użyciu certyfikatu
 

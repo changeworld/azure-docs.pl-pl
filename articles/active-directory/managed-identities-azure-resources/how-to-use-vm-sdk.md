@@ -1,6 +1,6 @@
 ---
-title: Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure z zestawami SDK Azure
-description: Przykłady dotyczące używania zestawów SDK usługi Azure za pomocą maszyny Wirtualnej platformy Azure zarządza tożsamości dla zasobów platformy Azure kodu.
+title: Jak używać tożsamości zarządzanych dla zasobów platformy Azure na maszynie wirtualnej platformy Azure z zestawami Azure SDK
+description: Przykłady kodu służące do używania zestawów Azure SDK z maszyną wirtualną platformy Azure, która ma zarządzane tożsamości dla zasobów platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,39 +15,39 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00c86562e0fdb4e6d62d44088b7aba08e45e22a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c66bb2b4e9af6f4b79b0ead98b8d18fc56cb467
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60293238"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809187"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure z zestawami SDK Azure 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Jak używać tożsamości zarządzanych dla zasobów platformy Azure na maszynie wirtualnej platformy Azure z zestawami Azure SDK 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-Ten artykuł zawiera listę przykładowych zestawach SDK, które pokazują użycie ich odpowiednich SDK Azure pomocy technicznej dla zarządzanych tożsamości dla zasobów platformy Azure.
+Ten artykuł zawiera listę przykładów zestawu SDK, które demonstrują korzystanie z odpowiedniego zestawu Azure SDK do obsługi tożsamości zarządzanych dla zasobów platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
 > [!IMPORTANT]
-> - Wszystkie próbki kodu lub skryptu w tym artykule przyjęto założenie, klient jest uruchomiony na maszynie Wirtualnej z zarządzanych tożsamości dla zasobów platformy Azure są włączone. Funkcja VM "Połącz" w witrynie Azure portal na połączenie zdalne z maszyną wirtualną. Aby uzyskać więcej informacji na temat włączania zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md), lub jeden z tych artykułów variant (przy użyciu programu PowerShell, interfejsu wiersza polecenia, szablonu lub platformy Azure ZESTAW SDK). 
+> - We wszystkich przykładowym kodzie/skrypcie w tym artykule przyjęto założenie, że klient działa na maszynie wirtualnej z włączonymi tożsamościami zarządzanymi dla zasobów platformy Azure. Użyj funkcji "Połącz" maszyny wirtualnej w Azure Portal, aby zdalnie nawiązać połączenie z maszyną wirtualną. Aby uzyskać szczegółowe informacje na temat włączania tożsamości zarządzanych dla zasobów platformy Azure na maszynie wirtualnej, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej przy użyciu Azure Portal](qs-configure-portal-windows-vm.md)lub jednego z artykułów wariantów (przy użyciu programu PowerShell, interfejsu wiersza polecenia, szablonu lub zestawu Azure SDK). 
 
-## <a name="sdk-code-samples"></a>Przykładowy kod zestawu SDK
+## <a name="sdk-code-samples"></a>Przykłady kodu zestawu SDK
 
 | SDK             | Przykład kodu |
 | --------------- | ----------- |
-| .NET            | [Wdrażanie szablonu usługi Azure Resource Manager z maszyny Wirtualnej Windows przy użyciu zarządzanych tożsamości dla zasobów platformy Azure](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) |
-| .NET Core       | [Wywoływanie usług platformy Azure z maszyny Wirtualnej systemu Linux przy użyciu zarządzanych tożsamości dla zasobów platformy Azure](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
+| .NET            | [Wdrażanie szablonu Azure Resource Manager z maszyny wirtualnej z systemem Windows przy użyciu tożsamości zarządzanych dla zasobów platformy Azure](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) |
+| .NET Core       | [Wywoływanie usług platformy Azure z maszyny wirtualnej z systemem Linux przy użyciu tożsamości zarządzanych dla zasobów platformy Azure](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
 | Node.js         | [Zarządzanie zasobami przy użyciu zarządzanych tożsamości dla zasobów platformy Azure](https://azure.microsoft.com/resources/samples/resources-node-manage-resources-with-msi/) |
-| Python          | [Użyj zarządzanych tożsamości dla zasobów platformy Azure, aby uwierzytelnić po prostu z wewnątrz maszyny Wirtualnej](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
-| Ruby            | [Zarządzanie zasobami z poziomu maszyny Wirtualnej z zarządzanych tożsamości dla zasobów platformy Azure, włączone](https://azure.microsoft.com/resources/samples/resources-ruby-manage-resources-with-msi/) |
+| Python          | [Uwierzytelnianie za pomocą zarządzanych tożsamości zasobów platformy Azure po prostu z poziomu maszyny wirtualnej](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
+| Ruby            | [Zarządzanie zasobami z maszyny wirtualnej z tożsamościami zarządzanymi dla zasobów platformy Azure](https://github.com/Azure-Samples/resources-ruby-manage-resources-with-msi/) |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz [zestawami SDK Azure](https://azure.microsoft.com/downloads/) pełną listę zasobów zestawu SDK platformy Azure, łącznie z biblioteki pliki do pobrania, dokumentację i inne.
-- Aby włączyć zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md).
+- Zobacz zestaw [Azure](https://azure.microsoft.com/downloads/) SDK, aby uzyskać pełną listę zasobów zestawu Azure SDK, w tym pliki do pobrania biblioteki, dokumentację i inne.
+- Aby włączyć zarządzane tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej przy użyciu Azure Portal](qs-configure-portal-windows-vm.md).
 
 
 

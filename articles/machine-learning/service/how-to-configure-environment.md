@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5080ec4db46f717a9e9ecdcdfbea42fbe43c349d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 66073052b290a1345dc0bb63ed6df0934fd81c64
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598423"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804157"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Skonfiguruj środowisko programistyczne dla Azure Machine Learning
 
@@ -305,7 +305,7 @@ Użyj tych ustawień:
 | Ustawienie |Dotyczy| Wartość |
 |----|---|---|
 | Nazwa klastra |stałego| yourclustername |
-| Środowisko uruchomieniowe usługi Databricks |stałego| Wszystkie środowiska uruchomieniowe inne niż ML (nie ML 4. x, 5. x) |
+| Środowisko uruchomieniowe usługi Databricks |stałego|Środowisko uruchomieniowe inne niż ML 6,0 (Scala 2,11, Spark 2.4.3) |
 | Wersja języka Python |stałego| 3 |
 | Ochotnik |stałego| 2 lub nowszy |
 | Typy maszyn wirtualnych węzła procesu roboczego <br>(określa maksymalną liczbę współbieżnych iteracji) |Zautomatyzowane uczenie maszynowe<br>jedyn| Preferowana maszyna wirtualna zoptymalizowana pod kątem pamięci |
@@ -346,14 +346,17 @@ Po uruchomieniu klastra [Utwórz bibliotekę](https://docs.databricks.com/user-g
 
 Jeśli instalacja zakończyła się pomyślnie, zaimportowana biblioteka powinna wyglądać następująco:
 
-Zestaw SDK dla datakostek **_bez_** ZAUTOMATYZOWANEGO zestawu SDK usługi machine learning ![Azure Machine Learning dla datakostki ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+Zestaw SDK dla datakostek **_bez_** ZAUTOMATYZOWANEGO zestawu SDK usługi machine learning ![Azure Machine Learning dla datakostki](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Zestaw SDK dla kostek datakostks **z** automatycznym uczeniem maszynowym ![SDK z automatyczną nauką maszynową zainstalowaną w ramach datakostki ](./media/how-to-configure-environment/automlonadb.jpg)
+Zestaw SDK dla datakostek **z** automatycznym zestawem machine Learning ![SDK z automatyczną nauką maszynową zainstalowaną w kostkach datakostek](./media/how-to-configure-environment/automlonadb.png)
 
 ### <a name="start-exploring"></a>Zacznij Eksplorowanie
 
 Wypróbuj:
 + Chociaż dostępnych jest wiele przykładowych notesów, **tylko [te przykładowe notesy](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) współpracują z Azure Databricks.**
+
++ Zaimportuj te próbki bezpośrednio z obszaru roboczego. Zobacz poniżej: ![wybierz pozycję Importuj](media/how-to-configure-environment/azure-db-screenshot.png)
+![panelu importowania](media/how-to-configure-environment/azure-db-import.png)
 
 + Dowiedz się [, jak tworzyć potoki z kostkami w ramach obliczeń szkoleniowych](how-to-create-your-first-pipeline.md).
 

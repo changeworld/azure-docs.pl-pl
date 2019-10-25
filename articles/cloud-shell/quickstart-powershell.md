@@ -1,25 +1,20 @@
 ---
-title: Azure Cloud Shell Szybki Start | Microsoft Docs
-description: Szybki Start dla Azure Cloud Shell
-services: Azure
-documentationcenter: ''
+title: Azure Cloud Shell — szybki start — PowerShell
+description: Dowiedz się, jak używać programu PowerShell w przeglądarce z Azure Cloud Shell.
 author: maertendmsft
-manager: timlt
+ms.author: damaerte
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
-ms.author: damaerte
-ms.openlocfilehash: f1184f9f3a4cf827f0afef9bca8a72308c371d76
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224564"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791594"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Przewodnik Szybki Start dla programu PowerShell w programie Azure Cloud Shell
 
@@ -28,15 +23,13 @@ W tym dokumencie szczegółowo przedstawiono sposób użycia programu PowerShell
 > [!NOTE]
 > Dostępna jest również funkcja [bash w Azure Cloud Shell](quickstart.md) Szybki Start.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="start-cloud-shell"></a>Rozpocznij Cloud Shell
 
 1. Kliknij przycisk **Cloud Shell** na górnym pasku nawigacyjnym Azure Portal
 
    ![](media/quickstart-powershell/shell-icon.png)
 
-2. Wybierz środowisko PowerShell z listy rozwijanej, a ty będziesz na dysku platformy Azure`(Azure:)`
+2. Wybierz środowisko programu PowerShell z listy rozwijanej, a będziesz mieć `(Azure:)` dyskowej platformy Azure
 
    ![](media/quickstart-powershell/environment-ps.png)
 
@@ -68,7 +61,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
     PS Azure:\> dir
     ```
 
- 2. `cd`na preferowaną subskrypcję
+ 2. `cd` z preferowaną subskrypcją
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
@@ -77,7 +70,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
  3. Wyświetlanie wszystkich zasobów platformy Azure w ramach bieżącej subskrypcji
 
-    Wpisz `dir` , aby wyświetlić listę wielu widoków zasobów platformy Azure.
+    Wpisz `dir`, aby wyświetlić listę wielu widoków zasobów platformy Azure.
 
     ```azurepowershell-interactive
     PS Azure:\MySubscriptionName> dir
@@ -95,7 +88,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
 ### <a name="allresources-view"></a>Widok AllResources
 
-Wpisz `dir` w`AllResources` katalogu, aby wyświetlić zasoby platformy Azure.
+Wpisz `dir` w katalogu `AllResources`, aby wyświetlić zasoby platformy Azure.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir AllResources
@@ -103,7 +96,7 @@ PS Azure:\MySubscriptionName> dir AllResources
 
 ### <a name="explore-resource-groups"></a>Eksplorowanie grup zasobów
 
- Możesz przejść do `ResourceGroups` katalogu i wewnątrz określonej grupy zasobów, aby znaleźć maszyny wirtualne.
+ Możesz przejść do katalogu `ResourceGroups` i wewnątrz określonej grupy zasobów, aby znaleźć maszyny wirtualne.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
@@ -121,13 +114,13 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 ```
 
 > [!NOTE]
-> Można zauważyć, że podczas drugiego czasu podczas wpisywania `dir`Cloud Shell będzie można znacznie szybciej wyświetlić elementy.
+> Można zauważyć, że podczas drugiego czasu podczas wpisywania `dir`Cloud Shell może szybciej wyświetlić elementy.
 > Wynika to z faktu, że elementy podrzędne są buforowane w pamięci w celu lepszego środowiska użytkownika.
-Można jednak zawsze użyć `dir -Force` , aby pobrać dane świeże.
+Można jednak zawsze używać `dir -Force`, aby pobierać dane.
 
 ### <a name="navigate-storage-resources"></a>Nawigowanie po zasobach magazynu
 
-Wprowadzając do `StorageAccounts` katalogu, można łatwo nawigować po wszystkich zasobach magazynu
+Wprowadzając do katalogu `StorageAccounts`, można łatwo nawigować po wszystkich zasobach magazynu
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
@@ -163,7 +156,7 @@ Mode  Name
 
 ### <a name="interact-with-virtual-machines"></a>Praca z maszynami wirtualnymi
 
-Wszystkie maszyny wirtualne można znaleźć w ramach bieżącej subskrypcji za pośrednictwem `VirtualMachines` katalogu.
+Wszystkie maszyny wirtualne można znaleźć w ramach bieżącej subskrypcji za pośrednictwem usługi `VirtualMachines` Directory.
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName\VirtualMachines> dir
@@ -183,14 +176,14 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
  > [!WARNING]
  > Zapoznaj się z [tematem Rozwiązywanie problemów z zarządzaniem zdalnym maszyn wirtualnych platformy Azure](troubleshooting.md#troubleshooting-remote-management-of-azure-vms).
 
-  Przy założeniu, że masz maszynę wirtualną MyVM1, `Invoke-AzVMCommand` Użyjmy do wywołania bloku skryptu programu PowerShell na maszynie zdalnej.
+  Przy założeniu, że masz maszynę wirtualną MyVM1, użyjmy `Invoke-AzVMCommand`, aby wywołać blok skryptu programu PowerShell na maszynie zdalnej.
 
   ```azurepowershell-interactive
   Enable-AzVMPSRemoting -Name MyVM1 -ResourceGroupname MyResourceGroup
   Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
   ```
 
-  Możesz również najpierw przejść do katalogu VirtualMachines i uruchomić `Invoke-AzVMCommand` go w następujący sposób.
+  Możesz również najpierw przejść do katalogu VirtualMachines i uruchomić `Invoke-AzVMCommand` w następujący sposób.
 
   ```azurepowershell-interactive
   PS Azure:\> cd MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines
@@ -213,13 +206,13 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 
 #### <a name="interactively-log-on-to-a-remote-vm"></a>Interaktywna logowanie do zdalnej maszyny wirtualnej
 
-Możesz użyć `Enter-AzVM` , aby interakcyjnie zalogować się do maszyny wirtualnej działającej na platformie Azure.
+Za pomocą `Enter-AzVM` można interakcyjnie zalogować się do maszyny wirtualnej działającej na platformie Azure.
 
   ```azurepowershell-interactive
   PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
-Możesz również przejść do katalogu jako `VirtualMachines` pierwszy i uruchomić `Enter-AzVM` go w następujący sposób
+Możesz również najpierw przejść do katalogu `VirtualMachines` i uruchomić `Enter-AzVM` w następujący sposób
 
   ```azurepowershell-interactive
  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
@@ -227,7 +220,7 @@ Możesz również przejść do katalogu jako `VirtualMachines` pierwszy i urucho
 
 ### <a name="discover-webapps"></a>Odkryj aplikacje webapps
 
-Wprowadzając do `WebApps` katalogu, można łatwo nawigować po zasobach aplikacji sieci Web
+Wprowadzając do katalogu `WebApps`, można łatwo nawigować po zasobach aplikacji sieci Web
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -259,18 +252,18 @@ mywebapp2       Running  MyResourceGroup2   {mywebapp2.azurewebsites.net...   We
 mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   South Central US
 ```
 
-## <a name="ssh"></a>Protokół SSH
+## <a name="ssh"></a>SSH
 
-Aby przeprowadzić uwierzytelnianie na serwerach lub maszynach wirtualnych przy użyciu protokołu SSH, należy wygenerować parę kluczy publiczny-prywatny w Cloud Shell i `authorized_keys` opublikować klucz publiczny na komputerze zdalnym, `/home/user/.ssh/authorized_keys`na przykład.
+Aby przeprowadzić uwierzytelnianie na serwerach lub maszynach wirtualnych przy użyciu protokołu SSH, należy wygenerować parę kluczy publiczny-prywatny w Cloud Shell i opublikować klucz publiczny w celu `authorized_keys` na maszynie zdalnej, na przykład `/home/user/.ssh/authorized_keys`.
 
 > [!NOTE]
-> Można utworzyć klucze `ssh-keygen` prywatne SSH i opublikować `$env:USERPROFILE\.ssh` je w programie w Cloud Shell.
+> Klucze publiczne SSH można utworzyć przy użyciu `ssh-keygen` i opublikować je do `$env:USERPROFILE\.ssh` w Cloud Shell.
 
 ### <a name="using-ssh"></a>Korzystanie z protokołu SSH
 
 Postępuj zgodnie z instrukcjami [tutaj](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) , aby utworzyć nową konfigurację maszyny wirtualnej za pomocą poleceń cmdlet Azure PowerShell.
-Przed wywołaniem `New-AzVM` programu w celu rozpoczęcia wdrażania należy dodać klucz publiczny SSH do konfiguracji maszyny wirtualnej.
-Nowo utworzona maszyna wirtualna będzie zawierać klucz publiczny w `~\.ssh\authorized_keys` lokalizacji, umożliwiając w ten sposób włączenie sesji SSH bez poświadczeń do maszyny wirtualnej.
+Przed wywołaniem `New-AzVM`, aby uruchomić wdrożenie, Dodaj klucz publiczny SSH do konfiguracji maszyny wirtualnej.
+Nowo utworzona maszyna wirtualna będzie zawierać klucz publiczny w lokalizacji `~\.ssh\authorized_keys`, co spowoduje włączenie do maszyny wirtualnej sesji SSH bez poświadczeń.
 
 ```azurepowershell-interactive
 # Create VM config object - $vmConfig using instructions on linked page above
@@ -291,23 +284,23 @@ ssh azureuser@MyVM.Domain.Com
 
 ## <a name="list-available-commands"></a>Wyświetl dostępne polecenia
 
-W `Azure` obszarze dysk wpisz `Get-AzCommand` polecenie, aby pobrać specyficzne dla kontekstu polecenia platformy Azure.
+W obszarze `Azure` dysków wpisz `Get-AzCommand`, aby uzyskać kontekstowe polecenia platformy Azure.
 
-Możesz również użyć `Get-Command *az* -Module Az.*` , aby znaleźć dostępne polecenia platformy Azure.
+Możesz również użyć `Get-Command *az* -Module Az.*`, aby znaleźć dostępne polecenia platformy Azure.
 
 ## <a name="install-custom-modules"></a>Instalowanie modułów niestandardowych
 
-Można uruchomić `Install-Module` program, aby zainstalować moduły z [Galeria programu PowerShell][gallery].
+Aby zainstalować moduły z [Galeria programu PowerShell][gallery], można uruchomić `Install-Module`.
 
 ## <a name="get-help"></a>Get-Help
 
-Wpisz `Get-Help` , aby uzyskać informacje o programie PowerShell w Azure Cloud Shell.
+Wpisz `Get-Help`, aby uzyskać informacje na temat programu PowerShell w programie Azure Cloud Shell.
 
 ```azurepowershell-interactive
 Get-Help
 ```
 
-W przypadku określonego polecenia można nadal wykonać `Get-Help` polecenie cmdlet.
+W przypadku określonego polecenia można nadal `Get-Help` a następnie polecenie cmdlet.
 
 ```azurepowershell-interactive
 Get-Help Get-AzVM
@@ -315,7 +308,7 @@ Get-Help Get-AzVM
 
 ## <a name="use-azure-files-to-store-your-data"></a>Przechowywanie danych przy użyciu Azure Files
 
-Możesz utworzyć skrypt, powiedzieć `helloworld.ps1`i zapisać go `clouddrive` w usłudze, aby używać go w sesjach powłoki.
+Możesz utworzyć skrypt, powiedzieć `helloworld.ps1`i zapisać go w `clouddrive`, aby używać go w sesjach powłoki.
 
 ```azurepowershell-interactive
 cd $HOME\clouddrive
@@ -328,12 +321,12 @@ code .\helloworld.ps1
 Hello World!
 ```
 
-Następnym razem, gdy używasz programu PowerShell w Cloud Shell, `helloworld.ps1` plik będzie istniał `$HOME\clouddrive` w katalogu, który instaluje udział Azure Files.
+Następnym razem, gdy używasz programu PowerShell w Cloud Shell, plik `helloworld.ps1` będzie znajdować się w katalogu `$HOME\clouddrive`, który instaluje udział Azure Files.
 
 ## <a name="use-custom-profile"></a>Użyj profilu niestandardowego
 
 Możesz dostosować środowisko programu PowerShell, tworząc profile programu PowerShell — `profile.ps1` (lub `Microsoft.PowerShell_profile.ps1`).
-Zapisz ją w `$profile.CurrentUserAllHosts` obszarze ( `$profile.CurrentUserAllHosts`lub), aby można było załadować ją w każdym programie PowerShell w sesji Cloud Shell.
+Zapisz go w obszarze `$profile.CurrentUserAllHosts` (lub `$profile.CurrentUserAllHosts`), tak aby można go było załadować do każdego programu PowerShell w sesji Cloud Shell.
 
 Aby dowiedzieć się, jak utworzyć profil, zapoznaj się z [tematem profile][profile].
 
@@ -347,7 +340,7 @@ Aby sklonować repozytorium Git w Cloud Shell, musisz utworzyć [osobisty token 
 
 ## <a name="exit-the-shell"></a>Wyjdź z powłoki:
 
-Wpisz `exit` , aby przerwać sesję.
+Wpisz `exit`, aby przerwać sesję.
 
 [bashqs]:quickstart.md
 [gallery]:https://www.powershellgallery.com/

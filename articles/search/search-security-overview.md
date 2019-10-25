@@ -1,30 +1,29 @@
 ---
-title: Bezpieczeństwo i prywatność danych — Azure Search
-description: Azure Search jest zgodny z SOC 2, HIPAA i innymi certyfikatami. Łączenie i szyfrowanie danych, uwierzytelnianie i dostęp do tożsamości za poorednictwem identyfikatorów zabezpieczeń użytkowników i grup w filtrach Azure Search.
-author: HeidiSteen
+title: Bezpieczeństwo i prywatność danych
+titleSuffix: Azure Cognitive Search
+description: Usługa Azure Wyszukiwanie poznawcze jest zgodna z SOC 2, HIPAA i innymi certyfikatami. Połączenie i szyfrowanie danych, uwierzytelnianie i dostęp do tożsamości za poorednictwem identyfikatorów zabezpieczeń użytkowników i grup w wyrażeniach filtru.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 3a6ac7ff22c04bff5948193c163a7071cf2c2ff5
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2e509535473fa50fd3150965e1513e056ead18a6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320390"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794346"
 ---
-# <a name="security-and-data-privacy-in-azure-search"></a>Bezpieczeństwo i prywatność danych w Azure Search
+# <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Bezpieczeństwo i prywatność danych na platformie Azure Wyszukiwanie poznawcze
 
-Kompleksowe funkcje zabezpieczeń i kontroli dostępu są wbudowane w Azure Search, aby zapewnić, że prywatna zawartość pozostaje w ten sposób. W tym artykule wymieniono funkcje zabezpieczeń i standardy zgodności wbudowane w Azure Search.
+Kompleksowe funkcje zabezpieczeń i kontroli dostępu są wbudowane w usługę Azure Wyszukiwanie poznawcze, aby zapewnić, że prywatna zawartość pozostaje w ten sposób. W tym artykule wymieniono funkcje zabezpieczeń i standardy zgodności wbudowane w usługę Azure Wyszukiwanie poznawcze.
 
-Azure Search Architektura zabezpieczeń obejmuje zabezpieczenia fizyczne, zaszyfrowane transporty, zaszyfrowane magazyny i zgodność ze standardami na poziomie platformy. Działanie Azure Search akceptuje tylko uwierzytelnione żądania. Opcjonalnie można dodać kontrolę dostępu dla poszczególnych użytkowników do zawartości za poorednictwem filtrów zabezpieczeń. Ten artykuł dotyka zabezpieczeń każdej warstwy, ale głównie koncentruje się na sposobie zabezpieczania danych i operacji w Azure Search.
+Architektura zabezpieczeń Wyszukiwanie poznawcze platformy Azure obejmuje zabezpieczenia fizyczne, zaszyfrowane transporty, zaszyfrowane magazyny i zgodność ze standardami na poziomie platformy. W ramach tej operacji usługa Azure Wyszukiwanie poznawcze akceptuje tylko uwierzytelnione żądania. Opcjonalnie można dodać kontrolę dostępu dla poszczególnych użytkowników do zawartości za poorednictwem filtrów zabezpieczeń. Ten artykuł dotyka zabezpieczeń w każdej warstwie, ale głównie koncentruje się na sposobie zabezpieczania danych i operacji na platformie Azure Wyszukiwanie poznawcze.
 
 ## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Zgodność ze standardami: ISO 27001, SOC 2, HIPAA
 
-Azure Search jest certyfikowany dla następujących standardów, zgodnie z [ogłoszeniem w czerwcu 2018](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/):
+Usługa Azure Wyszukiwanie poznawcze ma certyfikat dla następujących standardów, zgodnie z [ogłoszeniem w czerwcu 2018](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/):
 
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [Zgodność SOC 2 typu 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) Aby uzyskać pełny raport, przejdź do [raportu Azure-i Azure Government SOC 2 Type II](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
@@ -38,17 +37,17 @@ Zgodność ze standardami dotyczy ogólnie dostępnych funkcji. Funkcje w wersji
 
 ## <a name="encrypted-transmission-and-storage"></a>Zaszyfrowana transmisja i magazyn
 
-Szyfrowanie rozciąga się w całym potoku indeksowania: od połączeń, transmisji i w dół do indeksowanych danych przechowywanych w Azure Search.
+Szyfrowanie rozciąga się w całym potoku indeksowania: od połączeń, transmisji i w dół do indeksowanych danych przechowywanych w usłudze Azure Wyszukiwanie poznawcze.
 
 | Warstwa zabezpieczeń | Opis |
 |----------------|-------------|
-| Szyfrowanie podczas przesyłania <br>(HTTPS/SSL/TLS) | Azure Search nasłuchuje na porcie HTTPS 443. Na całej platformie połączenia z usługami platformy Azure są szyfrowane. <br/><br/>Wszystkie interakcje Azure Search klient-usługa to obsługa protokołu SSL/TLS 1,2.  Upewnij się, że używasz TLSv 1.2 dla połączeń SSL z usługą.|
-| Szyfrowanie w spoczynku <br>Klucze zarządzane przez firmę Microsoft | Szyfrowanie jest w pełni wewnętrzne w procesie indeksowania, bez wymiernego wpływu na indeksowanie czasu do ukończenia lub rozmiaru indeksu. Odbywa się to automatycznie na wszystkich indeksach, w tym w przypadku aktualizacji przyrostowych, do indeksu, który nie jest w pełni szyfrowany (utworzony przed stycznia 2018).<br><br>Wewnętrznie szyfrowanie jest oparte na [usłudze Azure szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)przy użyciu 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Szyfrowanie jest wewnętrzne do Azure Search, z certyfikatami i kluczami szyfrowania, które są zarządzane wewnętrznie przez firmę Microsoft i stosowane uniwersalnie. Nie można włączać ani wyłączać szyfrowania, zarządzać nimi ani zastępować własnych kluczy lub wyświetlać ustawienia szyfrowania w portalu lub programowo.<br><br>Szyfrowanie w spoczynku zostało ogłoszone w 24 stycznia 2018 i ma zastosowanie do wszystkich warstw usług, w tym warstwy Bezpłatna, we wszystkich regionach. Aby można było przeprowadzić pełne szyfrowanie, indeksy utworzone przed tą datą muszą zostać porzucone i ponownie skompilowane w celu zaszyfrowania. W przeciwnym razie tylko nowe dane dodane po 24 stycznia są szyfrowane.|
-| Szyfrowanie w spoczynku <br>Klucze zarządzane przez klienta | Szyfrowanie za pomocą kluczy zarządzanych przez klienta to funkcja w **wersji zapoznawczej** , która nie jest dostępna dla bezpłatnych usług. W przypadku płatnych usług jest on dostępny tylko dla usług wyszukiwania utworzonych w dniu lub po styczniu 2019 przy użyciu najnowszego interfejsu API wersji zapoznawczej (API-Version = 2019-05 -06-Preview).<br><br>Azure Search indeksy i mapy synonimów mogą teraz być szyfrowane w czasie spoczynku z kluczami zarządzanymi klucze klienta w programie Azure Key Vault. Aby dowiedzieć się więcej, zobacz [Zarządzanie kluczami szyfrowania w Azure Search](search-security-manage-encryption-keys.md).<br>Ta funkcja nie zastępuje domyślnego szyfrowania w spoczynku, ale zamiast tego stosuje się do niego.<br>Włączenie tej funkcji spowoduje zwiększenie rozmiaru indeksu i spadek wydajności zapytań. Na podstawie obserwacji do daty można oczekiwać, że w czasie wykonywania zapytań zostanie wyświetlony wzrost o 30%-60%, chociaż Rzeczywista wydajność będzie się różnić w zależności od definicji indeksu i typów zapytań. Ze względu na ten wpływ na wydajność zalecamy włączenie tej funkcji tylko w przypadku indeksów, które naprawdę wymagają tego.
+| Szyfrowanie podczas przesyłania <br>(HTTPS/SSL/TLS) | Usługa Azure Wyszukiwanie poznawcze nasłuchuje na porcie HTTPS 443. Na całej platformie połączenia z usługami platformy Azure są szyfrowane. <br/><br/>Wszystkie interakcje Wyszukiwanie poznawcze platformy Azure z klientem są zgodne z protokołem SSL/TLS 1,2.  Upewnij się, że używasz TLSv 1.2 dla połączeń SSL z usługą.|
+| Szyfrowanie w spoczynku <br>Klucze zarządzane przez firmę Microsoft | Szyfrowanie jest w pełni wewnętrzne w procesie indeksowania, bez wymiernego wpływu na indeksowanie czasu do ukończenia lub rozmiaru indeksu. Odbywa się to automatycznie na wszystkich indeksach, w tym w przypadku aktualizacji przyrostowych, do indeksu, który nie jest w pełni szyfrowany (utworzony przed stycznia 2018).<br><br>Wewnętrznie szyfrowanie jest oparte na [usłudze Azure szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)przy użyciu 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Szyfrowanie jest wewnętrzne dla Wyszukiwanie poznawcze platformy Azure, z certyfikatami i kluczami szyfrowania, które są zarządzane wewnętrznie przez firmę Microsoft i stosowane uniwersalnie. Nie można włączać ani wyłączać szyfrowania, zarządzać nimi ani zastępować własnych kluczy lub wyświetlać ustawienia szyfrowania w portalu lub programowo.<br><br>Szyfrowanie w spoczynku zostało ogłoszone w 24 stycznia 2018 i ma zastosowanie do wszystkich warstw usług, w tym warstwy Bezpłatna, we wszystkich regionach. Aby można było przeprowadzić pełne szyfrowanie, indeksy utworzone przed tą datą muszą zostać porzucone i ponownie skompilowane w celu zaszyfrowania. W przeciwnym razie tylko nowe dane dodane po 24 stycznia są szyfrowane.|
+| Szyfrowanie w spoczynku <br>Klucze zarządzane przez klienta | Szyfrowanie za pomocą kluczy zarządzanych przez klienta to funkcja w **wersji zapoznawczej** , która nie jest dostępna dla bezpłatnych usług. W przypadku płatnych usług jest on dostępny tylko dla usług wyszukiwania utworzonych w dniu lub po styczniu 2019 przy użyciu najnowszego interfejsu API wersji zapoznawczej (API-Version = 2019-05 -06-Preview).<br><br>Usługi Azure Wyszukiwanie poznawcze Indexes i mapy synonimów mogą teraz być szyfrowane w czasie spoczynku z kluczami zarządzanymi klucze klienta w programie Azure Key Vault. Aby dowiedzieć się więcej, zobacz [Zarządzanie kluczami szyfrowania w usłudze Azure wyszukiwanie poznawcze](search-security-manage-encryption-keys.md).<br>Ta funkcja nie zastępuje domyślnego szyfrowania w spoczynku, ale zamiast tego stosuje się do niego.<br>Włączenie tej funkcji spowoduje zwiększenie rozmiaru indeksu i spadek wydajności zapytań. Na podstawie obserwacji do daty można oczekiwać, że w czasie wykonywania zapytań zostanie wyświetlony wzrost o 30%-60%, chociaż Rzeczywista wydajność będzie się różnić w zależności od definicji indeksu i typów zapytań. Ze względu na ten wpływ na wydajność zalecamy włączenie tej funkcji tylko w przypadku indeksów, które naprawdę wymagają tego.
 
 ## <a name="azure-wide-user-access-controls"></a>Kontrola dostępu użytkowników w całej platformie Azure
 
-Dostępne są różne mechanizmy zabezpieczeń platformy Azure, które są automatycznie dostępne dla utworzonych zasobów Azure Search.
+Dostępne są różne mechanizmy zabezpieczeń platformy Azure, które są automatycznie dostępne dla utworzonych zasobów Wyszukiwanie poznawcze platformy Azure.
 
 + [Blokuje na poziomie subskrypcji lub zasobu, aby zapobiec usunięciu](../azure-resource-manager/resource-group-lock-resources.md)
 + [Access Control oparte na rolach (RBAC) do kontrolowania dostępu do informacji i operacji administracyjnych](../role-based-access-control/overview.md)
@@ -59,7 +58,7 @@ Wszystkie usługi platformy Azure obsługują funkcję kontroli dostępu opartej
 
 ## <a name="service-access-and-authentication"></a>Dostęp do usługi i uwierzytelnianie
 
-Chociaż Azure Search dziedziczy zabezpieczenia platformy Azure, zapewnia także własne uwierzytelnianie oparte na kluczach. Klucz API-Key jest ciągiem zawierającym losowo wygenerowane liczby i litery. Typ klucza (administrator lub zapytanie) określa poziom dostępu. Przesyłanie prawidłowego klucza jest uważane za potwierdzenie, że żądanie pochodzi od zaufanej jednostki. 
+Mimo że platforma Azure Wyszukiwanie poznawcze dziedziczy zabezpieczenia platformy Azure, zapewnia także własne uwierzytelnianie oparte na kluczach. Klucz API-Key jest ciągiem zawierającym losowo wygenerowane liczby i litery. Typ klucza (administrator lub zapytanie) określa poziom dostępu. Przesyłanie prawidłowego klucza jest uważane za potwierdzenie, że żądanie pochodzi od zaufanej jednostki. 
 
 Istnieją dwa poziomy dostępu do usługi wyszukiwania, które są obsługiwane przez dwa typy kluczy:
 
@@ -74,17 +73,17 @@ Dla każdego żądania wymagane jest uwierzytelnianie, gdzie każde żądanie sk
 
 ## <a name="index-access"></a>Dostęp do indeksu
 
-W Azure Search pojedynczym indeksem nie jest obiekt zabezpieczany. Zamiast tego, dostęp do indeksu jest określany w warstwie usług (dostęp do odczytu lub zapisu) wraz z kontekstem operacji.
+Na platformie Azure Wyszukiwanie poznawcze pojedynczym indeksem nie jest obiekt zabezpieczany. Zamiast tego, dostęp do indeksu jest określany w warstwie usług (dostęp do odczytu lub zapisu) wraz z kontekstem operacji.
 
 W przypadku dostępu użytkowników końcowych można określać strukturę żądań zapytań w celu nawiązania połączenia przy użyciu klucza zapytania, co oznacza, że każdy żądania jest tylko do odczytu i zawiera określony indeks używany przez aplikację. W żądaniu zapytania nie istnieje koncepcja sprzęgania indeksów lub uzyskiwania dostępu do wielu indeksów jednocześnie, więc wszystkie żądania są kierowane do jednego indeksu według definicji. W związku z tym konstruowanie samego żądania zapytania (klucz Plus pojedynczy indeks docelowy) definiuje granicę zabezpieczeń.
 
-Dostęp administratora i dewelopera do indeksów jest niezróżnicowany: oba muszą mieć dostęp do zapisu, aby tworzyć, usuwać i aktualizować obiekty zarządzane przez usługę. Każda osoba mająca klucz administracyjny do usługi może odczytywać, modyfikować lub usuwać dowolne indeksy w tej samej usłudze. W celu ochrony przed przypadkowym lub złośliwym usunięciem indeksów, wewnętrzna kontrola źródła dla zasobów kodu jest środkiem do odwrócenia niechcianego usunięcia lub modyfikacji indeksu. Azure Search przełączenia w tryb failover w klastrze w celu zapewnienia dostępności, ale nie przechowuje lub nie wykonuje zastrzeżonego kodu używanego do tworzenia lub ładowania indeksów.
+Dostęp administratora i dewelopera do indeksów jest niezróżnicowany: oba muszą mieć dostęp do zapisu, aby tworzyć, usuwać i aktualizować obiekty zarządzane przez usługę. Każda osoba mająca klucz administracyjny do usługi może odczytywać, modyfikować lub usuwać dowolne indeksy w tej samej usłudze. W celu ochrony przed przypadkowym lub złośliwym usunięciem indeksów, wewnętrzna kontrola źródła dla zasobów kodu jest środkiem do odwrócenia niechcianego usunięcia lub modyfikacji indeksu. Usługa Azure Wyszukiwanie poznawcze w klastrze działa w trybie failover w celu zapewnienia dostępności, ale nie przechowuje ani nie wykonuje własnego kodu używanego do tworzenia lub ładowania indeksów.
 
-W przypadku rozwiązań wielodostępnych wymagających granic zabezpieczeń na poziomie indeksu takie rozwiązania zwykle obejmują warstwę środkową, której klienci używają do obsługi izolacji indeksów. Aby uzyskać więcej informacji na temat wielodostępnego przypadku użycia, zobacz [wzorce projektowania dla wielodostępnych aplikacji SaaS i Azure Search](search-modeling-multitenant-saas-applications.md).
+W przypadku rozwiązań wielodostępnych wymagających granic zabezpieczeń na poziomie indeksu takie rozwiązania zwykle obejmują warstwę środkową, której klienci używają do obsługi izolacji indeksów. Aby uzyskać więcej informacji na temat wielodostępnego przypadku użycia, zobacz [wzorce projektowania dla wielodostępnych aplikacji SaaS i platformy Azure wyszukiwanie poznawcze](search-modeling-multitenant-saas-applications.md).
 
 ## <a name="admin-access"></a>Dostęp administratora
 
-[Dostęp oparty na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) określa, czy masz dostęp do kontrolek usługi i jej zawartości. Jeśli jesteś właścicielem lub współautorem usługi Azure Search, możesz użyć portalu lub modułu PowerShell **AZ. Search** do tworzenia, aktualizowania lub usuwania obiektów w usłudze. Można również użyć [interfejsu API REST zarządzania Azure Search](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+[Dostęp oparty na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) określa, czy masz dostęp do kontrolek usługi i jej zawartości. Jeśli jesteś właścicielem lub współautorem usługi Azure Wyszukiwanie poznawcze, możesz użyć portalu lub modułu PowerShell **AZ. Search** do tworzenia, aktualizowania lub usuwania obiektów w usłudze. Można również użyć [interfejsu API REST usługi Azure wyszukiwanie poznawcze Management](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
 ## <a name="user-access"></a>Dostęp użytkowników
 
@@ -92,14 +91,14 @@ Domyślnie dostęp użytkownika do indeksu jest określany przez klucz dostępu 
 
 Jeśli potrzebujesz szczegółowej kontroli nad zawartością, możesz utworzyć filtry zabezpieczeń dla zapytań, zwracając dokumenty skojarzone z daną tożsamością zabezpieczeń. Zamiast wstępnie zdefiniowanych ról i przypisań ról kontrola dostępu oparta na tożsamości jest implementowana jako *Filtr* , który przycina wyniki wyszukiwania dokumentów i zawartości na podstawie tożsamości. W poniższej tabeli opisano dwa podejścia do przycinania wyników wyszukiwania nieautoryzowanej zawartości.
 
-| Podejście | Opis |
+| Wynosi | Opis |
 |----------|-------------|
 |[Przycinanie zabezpieczeń na podstawie filtrów tożsamości](search-security-trimming-for-azure-search.md)  | Dokumentuje podstawowy przepływ pracy dotyczący implementowania kontroli dostępu do tożsamości użytkownika. Obejmuje ona Dodawanie identyfikatorów zabezpieczeń do indeksu, a następnie objaśnia filtrowanie względem tego pola, aby przyciąć wyniki zabronionej zawartości. |
 |[Przycinanie zabezpieczeń oparte na tożsamościach Azure Active Directory](search-security-trimming-for-azure-search-with-aad.md)  | Ten artykuł został rozbudowany w poprzednim artykule, co zapewnia procedurę pobierania tożsamości z usługi Azure Active Directory (AAD), jednej z [bezpłatnych usług](https://azure.microsoft.com/free/) na platformie Azure w chmurze. |
 
-## <a name="table-permissioned-operations"></a>Tabele Operacje z uprawnieniami
+## <a name="table-permissioned-operations"></a>Tabela: operacje z uprawnieniami
 
-Poniższa tabela zawiera podsumowanie operacji dozwolonych w Azure Search oraz tego, który klucz odblokowuje dostęp do określonej operacji.
+Poniższa tabela zawiera podsumowanie operacji dozwolonych w usłudze Azure Wyszukiwanie poznawcze i odblokowanie dostępu do określonej operacji.
 
 | Operacja | Uprawnienia |
 |-----------|-------------------------|
@@ -123,6 +122,6 @@ Centra danych firmy Microsoft zapewniają wiodące w branży zabezpieczenia fizy
 
 + [Wprowadzenie do platformy .NET (w celu utworzenia indeksu przy użyciu klucza administratora)](search-create-index-dotnet.md)
 + [Wprowadzenie do usługi REST (w celu utworzenia indeksu przy użyciu klucza administratora)](search-create-index-rest-api.md)
-+ [Kontrola dostępu oparta na tożsamościch za pomocą filtrów Azure Search](search-security-trimming-for-azure-search.md)
-+ [Active Directory kontroli dostępu opartej na tożsamościach przy użyciu filtrów Azure Search](search-security-trimming-for-azure-search-with-aad.md)
-+ [Filtry w Azure Search](search-filters.md)
++ [Kontrola dostępu oparta na tożsamościch za pomocą filtrów Wyszukiwanie poznawcze platformy Azure](search-security-trimming-for-azure-search.md)
++ [Active Directory kontroli dostępu opartej na tożsamościach przy użyciu filtrów Wyszukiwanie poznawcze platformy Azure](search-security-trimming-for-azure-search-with-aad.md)
++ [Filtry na platformie Azure Wyszukiwanie poznawcze](search-filters.md)

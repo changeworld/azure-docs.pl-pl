@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 1d8b3aad3104f07f8f6499c88f00328c95047816
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 1a0d0426904ef5f9f49a627120ff2cc65f630861
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274217"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785945"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Samouczek: Analiza tonacji na strumieniu danych wykonywana przy użyciu usługi Azure Databricks
 
@@ -24,7 +24,7 @@ Wykonanie kroków tego samouczka pozwoli Ci przesłać strumieniowo tweety, któ
 
 Poniższa ilustracja przedstawia przepływ aplikacji:
 
-![Połączenie usługi Azure Databricks z usługami Event Hubs i Cognitive Services](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-tutorial.png "Połączenie usługi Azure Databricks z usługami Event Hubs i Cognitive Services")
+![Azure Databricks z Event Hubs i Cognitive Services](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-tutorial.png "Azure Databricks z Event Hubs i Cognitive Services")
 
 Ten samouczek obejmuje następujące zadania:
 
@@ -43,7 +43,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 > [!Note]
 > Tego samouczka nie można przeprowadzić za pomocą **subskrypcji bezpłatnej wersji próbnej platformy Azure**.
-> Aby użyć bezpłatnego konta do utworzenia klastra usługi Azure Databricks, przed utworzeniem klastra przejdź do swojego profilu i zmień swoją subskrypcję na **płatność zgodnie z rzeczywistym użyciem**. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall).
+> Jeśli masz bezpłatne konto, przejdź do swojego profilu i Zmień subskrypcję na **płatność zgodnie z rzeczywistym**użyciem. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). Następnie [Usuń limit wydatków](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)i [Poproś o zwiększenie limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) dla procesorów wirtualnych vCPU w Twoim regionie. Podczas tworzenia obszaru roboczego Azure Databricks możesz wybrać warstwę cenową **wersji próbnej (Premium-14-Days Free dBu)** , aby umożliwić dostęp do obszaru roboczego bezpłatnie Azure Databricks DBU przez 14 dni.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -65,11 +65,11 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
 1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** > **Dane i analiza** > **Azure Databricks**.
 
-    ![Usługa Databricks w witrynie Azure Portal](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Usługa Databricks w witrynie Azure Portal")
+    ![Datakostki na Azure Portal](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Datakostki na Azure Portal")
 
 3. W obszarze **Usługa Azure Databricks** podaj wartości umożliwiające utworzenie obszaru roboczego usługi Databricks.
 
-    ![Tworzenie obszaru roboczego usługi Azure Databricks](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-workspace.png "Tworzenie obszaru roboczego usługi Azure Databricks")
+    ![Tworzenie obszaru roboczego Azure Databricks](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-workspace.png "Tworzenie obszaru roboczego usługi Azure Databricks")
 
     Podaj następujące wartości:
 
@@ -85,7 +85,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
 4. Tworzenie konta potrwa kilka minut. Podczas tworzenia konta po prawej stronie portalu jest wyświetlany kafelek **Przesyłanie wdrożenia dla usługi Azure Databricks**. Aby go zobaczyć, być może trzeba będzie przesunąć pulpit nawigacyjny w prawo. W górnej części ekranu jest również wyświetlany pasek postępu. Postęp można obserwować w dowolnym z tych obszarów.
 
-    ![Kafelek wdrażania usługi Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-deployment-tile.png "Kafelek wdrażania usługi Databricks")
+    ![Kafelek wdrożenia datakostek](./media/databricks-sentiment-analysis-cognitive-services/databricks-deployment-tile.png "Kafelek wdrożenia datakostek")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Tworzenie klastra Spark w usłudze Databricks
 
@@ -93,11 +93,11 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
 2. Nastąpi przekierowanie do portalu usługi Azure Databricks. W portalu wybierz pozycję **Klaster**.
 
-    ![Usługa Databricks na platformie Azure](./media/databricks-sentiment-analysis-cognitive-services/databricks-on-azure.png "Usługa Databricks na platformie Azure")
+    ![Datakostki na platformie Azure](./media/databricks-sentiment-analysis-cognitive-services/databricks-on-azure.png "Datakostki na platformie Azure")
 
 3. Na stronie **Nowy klaster** podaj wartości, aby utworzyć klaster.
 
-    ![Tworzenie klastra Spark usługi Databricks na platformie Azure](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-spark-cluster.png "Tworzenie klastra Spark usługi Databricks na platformie Azure")
+    ![Tworzenie klastra usługi datakosteks Spark na platformie Azure](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-spark-cluster.png "Tworzenie klastra usługi datakosteks Spark na platformie Azure")
 
     Zaakceptuj pozostałe wartości domyślne poza następującymi:
 
@@ -115,7 +115,7 @@ Aby otrzymywać strumień tweetów, musisz utworzyć aplikację w usłudze Twitt
 
 1. W przeglądarce sieci Web przejdź do usługi [Twitter dla deweloperów](https://developer.twitter.com/en/apps), a następnie wybierz pozycję **Utwórz aplikację**. Może zostać wyświetlony komunikat informujący o konieczności zastosowania konta dewelopera usługi Twitter. Możesz to zrobić bezpłatnie, a po zatwierdzeniu aplikacji powinna zostać wyświetlona wiadomość e-mail z potwierdzeniem. Zatwierdzenie konta dewelopera może potrwać kilka dni.
 
-    Potwierdzenie ![konta dewelopera usługi Twitter]na koncie(./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "dewelopera usługi Twitter")
+    ![Potwierdzenie konta dewelopera usługi Twitter](./media/databricks-sentiment-analysis-cognitive-services/databricks-twitter-dev-confirmation.png "Potwierdzenie konta dewelopera usługi Twitter")
 
 2. Na stronie **Create an application (Tworzenie aplikacji)** podaj szczegóły nowej aplikacji, a następnie wybierz pozycję **Create your Twitter application (Utwórz aplikację usługi Twitter)** .
 
@@ -135,24 +135,24 @@ W tym samouczku tweety są wysyłane do usługi Event Hubs za pomocą interfejs�
 
 1. W obszarze roboczym Azure Databricks wybierz pozycję **klastry**, a następnie wybierz istniejący klaster Spark. W menu klaster wybierz polecenie **biblioteki** , a następnie kliknij przycisk **Instaluj nowe**.
 
-   Okno ![dialogowe Dodawanie biblioteki](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Dodaj klaster lokalizowania biblioteki")
+   ![Okno dialogowe Dodawanie biblioteki](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Dodaj klaster lokalizowania biblioteki")
 
-   ![Dodawanie biblioteki — okno dialogowe](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Dodaj nową bibliotekę Zainstaluj nowe")
+   ![Okno dialogowe Dodawanie biblioteki](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Dodaj nową bibliotekę Zainstaluj nowe")
 
 2. Na stronie Nowa biblioteka dla opcji **Source** SELECT **Maven**. W polu **koordynuj**kliknij pozycję **pakiety wyszukiwania** dla pakietu, który chcesz dodać. Oto współrzędne Maven bibliotek używanych w tym samouczku:
 
    * Łącznik Event Hubs platformy Spark — `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Interfejs API usługi Twitter — `org.twitter4j:twitter4j-core:4.0.7`
 
-     ![Podawanie współrzędnych Maven](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "Podawanie współrzędnych Maven")
+     ![Podaj współrzędne Maven](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "Podaj współrzędne Maven")
 
-     ![Udostępnianie](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "współrzędnych Maven wyszukiwania") Maven
+     ![Podaj współrzędne Maven](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Przeszukaj współrzędne Maven")
 
 3. Wybierz pozycję **Zainstaluj**.
 
 4. W menu klaster upewnij się, że obie biblioteki są zainstalowane i prawidłowo dołączone.
 
-    ![Sprawdzanie]bibliotek(./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "Sprawdź biblioteki")
+    ![Sprawdź biblioteki](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-check.png "Sprawdź biblioteki")
 
 6. Powtórz te kroki dla pakietu Twitter: `twitter4j-core:4.0.7`.
 
@@ -166,11 +166,11 @@ W tym samouczku użyjemy [interfejsów API usługi Azure Cognitive Services anal
 
 3. W obszarze Azure Marketplace wybierz pozycję **SI i usługi Cognitive Services** > **Interfejs API analizy tekstu**.
 
-    ![Tworzenie konta usług Cognitive Services](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Tworzenie konta usług Cognitive Services")
+    ![Utwórz konto usługi poznawczej](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Utwórz konto usługi poznawczej")
 
 4. W oknie dialogowym **Tworzenie** podaj następujące wartości:
 
-    ![Tworzenie konta usług Cognitive Services](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "Tworzenie konta usług Cognitive Services")
+    ![Utwórz konto usługi poznawczej](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "Utwórz konto usługi poznawczej")
 
    - Wprowadź nazwę konta usług Cognitive Services.
    - Wybierz subskrypcję platformy Azure, w której utworzono konto.
@@ -182,13 +182,13 @@ W tym samouczku użyjemy [interfejsów API usługi Azure Cognitive Services anal
 
 5. Po utworzeniu konta na karcie **Przegląd** wybierz pozycję **Pokaż klucze dostępu**.
 
-    ![Wyświetlanie kluczy dostępu](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "Wyświetlanie kluczy dostępu")
+    ![Pokaż klucze dostępu](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "Pokaż klucze dostępu")
 
     Ponadto skopiuj część adresu URL punktu końcowego, jak pokazano na zrzucie ekranu. Ten adres URL będzie potrzebny w dalszej części samouczka.
 
 6. W obszarze **Zarządzanie kluczami** wybierz ikonę kopiowania obok klucza, którego chcesz użyć.
 
-    ![Kopiowanie kluczy dostępu](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-copy-access-keys.png "Kopiowanie kluczy dostępu")
+    ![Kopiuj klucze dostępu](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-copy-access-keys.png "Kopiuj klucze dostępu")
 
 7. Zapisz wartości adresu URL punktu końcowego i klucza dostępu, które zostały pobrane w tym kroku. Będą one potrzebne w dalszej części tego samouczka.
 
@@ -201,11 +201,11 @@ W tej sekcji w obszarze roboczym usługi Databricks zostaną utworzone dwa notes
 
 1. W lewym okienku wybierz pozycję **Obszar roboczy**. Z listy rozwijanej **Obszar roboczy** wybierz pozycje **Utwórz** i **Notes**.
 
-    ![Tworzenie notesu w usłudze Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "Tworzenie notesu w usłudze Databricks")
+    ![Tworzenie notesu w kostkach](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "Tworzenie notesu w kostkach")
 
 2. W oknie dialogowym **Tworzenie notesu** wpisz **SendTweetsToEventHub**, jako język wybierz pozycję **Scala** i wybierz utworzony wcześniej klaster Spark.
 
-    ![Tworzenie notesu w usłudze Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Tworzenie notesu w usłudze Databricks")
+    ![Tworzenie notesu w kostkach](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Tworzenie notesu w kostkach")
 
     Wybierz pozycję **Utwórz**.
 
@@ -620,7 +620,7 @@ Gotowe. Za pomocą usługi Azure Databricks udało się przesłać strumień dan
 
 Po ukończeniu tego samouczka możesz zakończyć działanie klastra. Aby to zrobić, w obszarze roboczym usługi Azure Databricks wybierz pozycję **Klastry** w lewym okienku. W obszarze klastra, którego działanie chcesz zakończyć, przesuń kursor na wielokropek w kolumnie **Akcje**, a następnie wybierz ikonę **Zakończ**.
 
-![Zatrzymywanie klastra usługi Databricks](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Zatrzymywanie klastra usługi Databricks")
+![Zatrzymaj klaster datakostki](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Zatrzymaj klaster datakostki")
 
 Jeśli nie zakończysz działania klastra ręcznie, zostanie on automatycznie zatrzymany, o ile podczas tworzenia klastra zaznaczono pole wyboru **Zakończ po \_\_ min nieaktywności**. W takim przypadku nieaktywny klaster zostanie automatycznie zatrzymany po określonym czasie.
 

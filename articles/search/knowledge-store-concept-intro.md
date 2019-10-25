@@ -1,29 +1,29 @@
 ---
-title: Wprowadzenie do sklepu merytorycznego (wersja zapoznawcza) — Azure Search
-description: Wysyłaj wzbogacone dokumenty do usługi Azure Storage, w której można wyświetlać i przekształcać wzbogacone dokumenty oraz korzystać z nich w Azure Search i innych aplikacjach.
-manager: nitinme
+title: Wprowadzenie do sklepu merytorycznego (wersja zapoznawcza)
+titleSuffix: Azure Cognitive Search
+description: Wysyłaj wzbogacone dokumenty do usługi Azure Storage, które umożliwiają wyświetlanie, przekształcanie i używanie wzbogaconych dokumentów na platformie Azure Wyszukiwanie poznawcze i w innych aplikacjach.
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: overview
-ms.date: 08/02/2019
+manager: nitinme
 ms.author: heidist
-ms.openlocfilehash: 8a0022ce429b1359d8771f5089589fc779b8a751
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 82f8606f4b4201833667347d3ed16fdd73f70a36
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554896"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790367"
 ---
-# <a name="what-is-knowledge-store-in-azure-search"></a>Co to jest sklep merytoryczny w Azure Search?
+# <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Wprowadzenie do magazynów wiedzy na platformie Azure Wyszukiwanie poznawcze
 
 > [!Note]
 > Magazyn wiedzy jest w wersji zapoznawczej i nie jest przeznaczony do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
 >
 
-Magazyn wiedzy to funkcja w Azure Search, która utrzymuje dane wyjściowe z [potoku wzbogacania AI](cognitive-search-concept-intro.md) na potrzeby późniejszej analizy lub przetwarzania podrzędnego. *Wzbogacony dokument* to dane wyjściowe potoku, utworzone na podstawie zawartości wyodrębnionej, strukturalnej i analizowanej przy użyciu procesów AI. W standardowym potoku AI, wzbogacone dokumenty są nietrwałe, używane tylko podczas indeksowania, a następnie odrzucane. W sklepie merytorycznym chronione dokumenty są zachowywane. 
+Magazyn wiedzy to funkcja platformy Azure Wyszukiwanie poznawcze, która utrzymuje dane wyjściowe z [potoku wzbogacania AI](cognitive-search-concept-intro.md) na potrzeby późniejszej analizy lub innego przetwarzania podrzędnego. *Wzbogacony dokument* to dane wyjściowe potoku, utworzone na podstawie zawartości wyodrębnionej, strukturalnej i analizowanej przy użyciu procesów AI. W standardowym potoku AI, wzbogacone dokumenty są nietrwałe, używane tylko podczas indeksowania, a następnie odrzucane. W sklepie merytorycznym chronione dokumenty są zachowywane. 
 
-Jeśli korzystasz z umiejętności systemu AI z Azure Search w przeszłości, wiesz już, że *umiejętności* przenieść dokument przez sekwencję wzbogacania. Wynikiem może być indeks wyszukiwania lub (Nowość w tej wersji zapoznawczej) projekcje w sklepie z bazami danych. Dwa dane wyjściowe, indeks wyszukiwania i magazyn wiedzy mają tę samą zawartość, ale są przechowywane i używane na różne sposoby.
+Jeśli w przeszłości korzystasz z umiejętności poznawczych w usłudze Azure Wyszukiwanie poznawcze, już wiesz, że *umiejętności* przenieść dokument przez sekwencję wzbogacania. Wynikiem może być indeks wyszukiwania lub (Nowość w tej wersji zapoznawczej) projekcje w sklepie z bazami danych. Dwa dane wyjściowe, indeks wyszukiwania i magazyn wiedzy mają tę samą zawartość, ale są przechowywane i używane na różne sposoby.
 
 Fizycznie magazyn wiedzy to [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), Azure Table Storage, Azure Blob Storage lub oba te elementy. Wszystkie narzędzia i procesy, które mogą łączyć się z usługą Azure Storage, mogą zużywać zawartość sklepu z bazami wiedzy.
 
@@ -31,13 +31,13 @@ Fizycznie magazyn wiedzy to [Azure Storage](https://docs.microsoft.com/azure/sto
 
 Projekcje to mechanizm służący do tworzenia struktury danych w sklepie z bazami wiedzy. Na przykład za pomocą projekcji można określić, czy dane wyjściowe mają być zapisywane jako pojedynczy obiekt BLOB, czy jako kolekcja powiązanych tabel. 
 
-Aby korzystać ze sklepu z bazami danych, Dodaj `knowledgeStore` element do zestawu umiejętności, który definiuje operacje krok po kroku w potoku indeksowania. Podczas wykonywania Azure Search tworzy miejsce na koncie usługi Azure Storage i projektuje wzbogacone dokumenty jako obiekty blob lub tabele, w zależności od konfiguracji.
+Aby korzystać ze sklepu z bazami danych, Dodaj `knowledgeStore` element do zestawu umiejętności, który definiuje operacje krok po kroku w potoku indeksowania. Podczas wykonywania usługa Azure Wyszukiwanie poznawcze tworzy miejsce na koncie usługi Azure Storage i projektuje wzbogacone dokumenty jako obiekty blob lub tabele, w zależności od konfiguracji.
 
 ## <a name="benefits-of-knowledge-store"></a>Zalety sklepu z bazami danych
 
 Magazyn wiedzy oferuje strukturę, kontekst i rzeczywistą zawartość — wydobyć z plików danych bez struktury i z częściową strukturą, takich jak obiekty blob, pliki obrazów, które zostały poddane analizie, a nawet dane strukturalne, które są przekształcane w nowe formularze. W [instruktażu krok po kroku](knowledge-store-howto.md) Zapisano dla tej wersji zapoznawczej można zobaczyć, jak na początku dokumentu jest podzielony na partycje w podstrukturach, które zostały przekształcone w nowe struktury i w inny sposób udostępnione dla procesów podrzędnych, takich jak maszyna obciążenia uczenia i analizy danych.
 
-Mimo że warto zobaczyć, co może wyprodukować potok indeksowania oparty na formacie AI, realne możliwości sklepu z bazami danych umożliwiają Przekształć dane. Możesz zacząć od podstawowej zestawu umiejętności, a następnie wykonać iterację w celu dodania rosnących poziomów struktury, którą można następnie połączyć z nowymi strukturami, przydatnymi w innych aplikacjach niż Azure Search.
+Mimo że warto zobaczyć, co można utworzyć za pomocą potoku wzbogacenia, rzeczywista moc magazynu wiedzy jest możliwość zmiany kształtu danych. Możesz zacząć od podstawowej zestawu umiejętności, a następnie wykonać iterację w celu dodania rosnących poziomów struktury, którą można następnie połączyć do nowych struktur, przydatnych w innych aplikacjach poza platformą Azure Wyszukiwanie poznawcze.
 
 Wyliczane są korzyści z używania sklepu z bazami danych:
 
@@ -45,10 +45,10 @@ Wyliczane są korzyści z używania sklepu z bazami danych:
 
 + Uściślij potok indeksowania AI podczas debugowania kroków i definicji zestawu umiejętności. Magazyn wiedzy przedstawia produkt definicji zestawu umiejętności w potoku indeksowania systemu AI. Możesz użyć tych wyników, aby zaprojektować lepszy zestawu umiejętności, ponieważ można zobaczyć dokładnie, jak wyglądają wzbogacenia. Możesz użyć [Eksplorator usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) w usłudze Azure Storage, aby wyświetlić zawartość sklepu z bazami wiedzy.
 
-+ Kształtowanie danych w nowych formularzach. Zmiana kształtu jest skodyfikowana w umiejętności, ale punkt jest, że zestawu umiejętności może teraz zapewnić tę możliwość. [Umiejętność kształtu](cognitive-search-skill-shaper.md) w Azure Search została rozszerzona w celu uwzględnienia tego zadania. Zmiana kształtu pozwala zdefiniować projekcję, która jest wyrównana do zamierzonego użycia danych przy zachowaniu relacji.
++ Kształtowanie danych w nowych formularzach. Zmiana kształtu jest skodyfikowana w umiejętności, ale punkt jest, że zestawu umiejętności może teraz zapewnić tę możliwość. [Umiejętność kształtowania](cognitive-search-skill-shaper.md) w usłudze Azure wyszukiwanie poznawcze została rozszerzona w celu uwzględnienia tego zadania. Zmiana kształtu pozwala zdefiniować projekcję, która jest wyrównana do zamierzonego użycia danych przy zachowaniu relacji.
 
 > [!Note]
-> Nie znasz indeksowania opartego na formacie AI przy użyciu Cognitive Services? Azure Search integruje się z funkcjami obsługi Cognitive Services i języka, aby wyodrębnić i wzbogacić dane źródłowe za pomocą optycznego rozpoznawania znaków (OCR) przez pliki obrazów, rozpoznawanie jednostek i wyodrębnianie kluczowych fraz z plików tekstowych. Aby uzyskać więcej informacji, zobacz [co to jest wyszukiwanie poznawcze?](cognitive-search-concept-intro.md).
+> Nie znasz usługi AI enrichcment przy użyciu Cognitive Services? Platforma Azure Wyszukiwanie poznawcze integruje się z funkcjami obsługi Cognitive Services i języka, aby wyodrębnić i wzbogacić dane źródłowe za pomocą optycznego rozpoznawania znaków (OCR) przez pliki obrazów, rozpoznawanie jednostek i wyodrębnianie kluczowych fraz z plików tekstowych. Aby uzyskać więcej informacji, zobacz [wzbogacanie AI na platformie Azure wyszukiwanie poznawcze](cognitive-search-concept-intro.md).
 
 ## <a name="creating-a-knowledge-store"></a>Tworzenie sklepu merytorycznego
 
@@ -133,7 +133,7 @@ Poniższy kod JSON określa `knowledgeStore`, który jest częścią zestawu umi
 
 ### <a name="sources-of-data-for-a-knowledge-store"></a>Źródła danych dla sklepu z bazami wiedzy
 
-Jeśli magazyn wiedzy jest wyprowadzany z potoku wzbogacenia AI, jakie są dane wejściowe? Oryginalne dane, które mają zostać wyodrębnione, wzbogacone i ostatecznie zapisane w sklepie wiedzy, mogą pochodzić z dowolnego źródła danych platformy Azure obsługiwanego przez Azure Search indeksatorów: 
+Jeśli magazyn wiedzy jest wyprowadzany z potoku wzbogacenia AI, jakie są dane wejściowe? Oryginalne dane, które mają zostać wyodrębnione, wzbogacone i ostatecznie zapisane w sklepie wiedzy, mogą pochodzić od dowolnego źródła danych platformy Azure obsługiwanego przez indeksatory wyszukiwania: 
 
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 
@@ -153,7 +153,7 @@ Tylko dwa interfejsy API mają rozszerzenia wymagane do tworzenia sklepu z bazam
 |--------|----------|-------------|
 | Źródło danych | [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source) (Tworzenie źródła danych)  | Zasób, który identyfikuje zewnętrzne źródło danych platformy Azure, dostarczając dane źródłowe używane do tworzenia wzbogaconych dokumentów.  |
 | zestawu umiejętności | [Create zestawu umiejętności (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zasób koordynujący korzystanie z [wbudowanych umiejętności](cognitive-search-predefined-skills.md) i [niestandardowych umiejętności poznawczych](cognitive-search-custom-skill-interface.md) używanych w potoku wzbogacenia podczas indeksowania. Zestawu umiejętności ma definicję `knowledgeStore` jako element podrzędny. |
-| indeks | [Utwórz indeks](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schemat przedstawiający indeks Azure Search. Pola w indeksie mapują do pól w danych źródłowych lub do pól wyprodukowanych w fazie wzbogacania (na przykład pola nazw organizacji utworzonych przez funkcję rozpoznawania jednostek). |
+| indeks | [Utwórz indeks](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schemat przedstawiający indeks wyszukiwania. Pola w indeksie mapują do pól w danych źródłowych lub do pól wyprodukowanych w fazie wzbogacania (na przykład pola nazw organizacji utworzonych przez funkcję rozpoznawania jednostek). |
 | indeksatora | [Create indeksator (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zasób definiujący składniki używane podczas indeksowania: w tym źródła danych, zestawu umiejętności, skojarzenia pól ze źródeł i pośrednich struktur danych do indeksu docelowego i samego indeksu. Uruchomienie indeksatora jest wyzwalaczem do pozyskiwania i wzbogacania danych. Wyjście jest indeksem wyszukiwania opartym na schemacie indeksu, wypełnionym danymi źródłowymi, wzbogaconym przez umiejętności.  |
 
 ### <a name="physical-composition-of-a-knowledge-store"></a>Fizyczna kompozycja sklepu z bazami danych
@@ -219,7 +219,7 @@ We recommend the Free service for learning purposes, but be aware that the numbe
 
 When using multiple services, create all of your services in the same region for best performance and to minimize costs. You are not charged for bandwidth for inbound data or outbound data that goes to another service in the same region.
 
-**Step 1: [Create an Azure Search resource](search-create-service-portal.md)** 
+**Step 1: [Create an Azure Cognitive Search resource](search-create-service-portal.md)** 
 
 **Step 2: [Create an Azure storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)** 
 

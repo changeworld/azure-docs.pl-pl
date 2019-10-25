@@ -1,5 +1,6 @@
 ---
-title: Skonfiguruj domenę wydawcy aplikacji | Azure
+title: Skonfiguruj domenę wydawcy aplikacji
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak skonfigurować domenę wydawcy aplikacji, aby umożliwić użytkownikom zapoznanie się z informacjami o tym, gdzie są wysyłane.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 26ef28be328e01f8edcf898f123db55f262f286c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257930"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803349"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Instrukcje: Skonfiguruj domenę wydawcy aplikacji (wersja zapoznawcza)
+# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Instrukcje: Konfigurowanie domeny wydawcy aplikacji (wersja zapoznawcza)
 
 Domena wydawcy aplikacji jest wyświetlana użytkownikom z [monitem o zgodę aplikacji](application-consent-experience.md) , aby poinformować użytkowników o tym, gdzie są wysyłane dane. Aplikacje z wieloma dzierżawcami, które są zarejestrowane po 21 maja 2019, które nie mają domeny wydawcy, są wyświetlane jako **niezweryfikowane**. Aplikacje wielodostępne są aplikacjami, które obsługują konta poza pojedynczym katalogiem organizacji; na przykład obsługują wszystkie konta usługi Azure AD lub obsługują wszystkie konta usługi Azure AD i osobiste konta Microsoft.
 
@@ -38,8 +39,8 @@ Poniższa tabela zawiera podsumowanie domyślnego zachowania wartości domeny wy
 
 | Domeny zweryfikowane przez dzierżawcę | Domyślna wartość domeny wydawcy |
 |-------------------------|----------------------------|
-| wartość null | wartość null |
-| *.onmicrosoft.com | *.onmicrosoft.com |
+| null | null |
+| *. onmicrosoft.com | *. onmicrosoft.com |
 | -*. onmicrosoft.com<br/>-domain1.com<br/>-domain2.com (podstawowy) | domain2.com |
 
 Jeśli domena wydawcy aplikacji wielodostępnej nie została ustawiona lub jeśli jest ustawiona na domenę kończącą się na. onmicrosoft.com, monit o zgodę aplikacji będzie zawierał **niezweryfikowane** miejsce w domenie wydawcy.
@@ -89,7 +90,7 @@ Jeśli aplikacja nie jest zarejestrowana w dzierżawie, zobaczysz tylko opcję w
 
 1. Zastąp symbol zastępczy *{The-App-ID-in}* nazwą aplikacji (klienta) odpowiadającą aplikacji.
 
-1. Hostowanie pliku w: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Zastąp symbol zastępczy *{domeną tutaj}* , aby pasował do zweryfikowanej domeny.
+1. Hostowanie pliku: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Zastąp symbol zastępczy *{domeną tutaj}* , aby pasował do zweryfikowanej domeny.
 
 1. Kliknij przycisk **Weryfikuj i Zapisz domenę** .
 
@@ -98,7 +99,7 @@ Jeśli aplikacja nie jest zarejestrowana w dzierżawie, zobaczysz tylko opcję w
 - Jeśli dzierżawca ma zweryfikowane domeny, wybierz jedną z domen z listy rozwijanej **Wybierz zweryfikowaną domenę** .
 
 >[!Note]
-> Oczekiwany nagłówek "Content-Type", który ma zostać zwrócony `application/json`. Może wystąpić błąd, jak wspomniano poniżej, jeśli używasz innych elementów, takich jak`application/json; charset=utf-8` 
+> Oczekiwany nagłówek "Content-Type", który ma zostać zwrócony, jest `application/json`. Jeśli używasz innych elementów, takich jak `application/json; charset=utf-8`, może wystąpić błąd opisany poniżej. 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >

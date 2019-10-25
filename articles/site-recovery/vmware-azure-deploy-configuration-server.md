@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5812cc73fb1da58c591d0593e079851e05bd0940
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f5fe49130742d116775b75f17c726b56150c574f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331960"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792350"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -28,7 +28,7 @@ Serwer konfiguracji należy skonfigurować jako maszynę wirtualną VMware o wys
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W poniższej tabeli przedstawiono podsumowanie minimalnych wymagań sprzętowych dotyczących serwera konfiguracji.
+Poniżej przedstawiono podsumowanie minimalnych wymagań sprzętowych dotyczących serwera konfiguracji.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -37,31 +37,19 @@ W poniższej tabeli przedstawiono podsumowanie minimalnych wymagań sprzętowych
 Użytkownik musi mieć **jeden z następujących** uprawnień ustawionych w usłudze AAD (Azure Active Directory), aby zarejestrować serwer konfiguracji za pomocą usług Azure Site Recovery Services.
 
 1. Aby można było utworzyć aplikację, użytkownik powinien mieć rolę "Deweloper aplikacji".
-   1. Aby sprawdzić, zaloguj się do Azure Portal</br>
-   1. Przejdź do Azure Active Directory > ról i administratorów</br>
-   1. Sprawdź, czy rola "Deweloper aplikacji" jest przypisana do użytkownika. W przeciwnym razie należy użyć użytkownika z tym uprawnieniem lub skontaktować się z [administratorem, aby włączyć uprawnienie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
+    - Aby sprawdzić, zaloguj się do Azure Portal</br>
+    - Przejdź do Azure Active Directory > ról i administratorów</br>
+    - Sprawdź, czy rola "Deweloper aplikacji" jest przypisana do użytkownika. W przeciwnym razie należy użyć użytkownika z tym uprawnieniem lub skontaktować się z [administratorem, aby włączyć uprawnienie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
     
-1. Jeśli nie można przypisać roli dewelopera aplikacji, upewnij się, że flaga "użytkownik może zarejestrować aplikację" została ustawiona jako true dla użytkownika w celu utworzenia tożsamości. Aby włączyć powyższe uprawnienia,
-   1. Zaloguj się w witrynie Azure Portal
-   1. Przejdź do Azure Active Directory > ustawień użytkownika
-   1. W obszarze * * Rejestracje aplikacji "użytkownicy mogą rejestrować aplikacje" należy wybrać opcję "tak".
+2. Jeśli nie można przypisać roli dewelopera aplikacji, upewnij się, że flaga "użytkownik może zarejestrować aplikację" została ustawiona jako true dla użytkownika w celu utworzenia tożsamości. Aby włączyć powyższe uprawnienia,
+    - Zaloguj się w witrynie Azure Portal
+    - Przejdź do Azure Active Directory > ustawień użytkownika
+    - W obszarze * * Rejestracje aplikacji "użytkownicy mogą rejestrować aplikacje" należy wybrać opcję "tak".
 
       ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
 > Active Directory Federation Services (ADFS) **nie jest obsługiwana**. Użyj konta zarządzanego za pomocą [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
-
-## <a name="capacity-planning"></a>Planowanie pojemności
-
-Wymagania dotyczące ustalania wielkości dla serwera konfiguracji zależą od potencjalnej szybkości zmiany danych. Użyj tej tabeli jako przewodnika.
-
-| **TESTY** | **Rozmiar** | **Rozmiar dysku pamięci podręcznej** | **Szybkość zmian danych** | **Chronione maszyny** |
-| --- | --- | --- | --- | --- |
-| 8 procesorów wirtualnych vCPU (2 gniazda * 4 rdzenie \@ 2,5 GHz) |16 GB |300 GB |500 GB lub mniej |Replikacja mniej niż 100 maszyn. |
-| 12 procesorów wirtualnych vCPU (2 gniazda * 6 rdzeni \@ 2,5 GHz) |18 GB |600 GB |500 GB do 1 TB |Replikowanie maszyn 100-150. |
-| 16 procesorów wirtualnych vCPU (2 gniazda * 8 rdzeni \@ 2,5 GHz) |32 GB |1 TB |1 TB do 2 TB |Replikowanie maszyn 150-200. |
-
-Jeśli wykonujesz replikację więcej niż jednej maszyny wirtualnej VMware, zapoznaj się z [zagadnieniami dotyczącymi planowania pojemności](site-recovery-plan-capacity-vmware.md). Uruchom [Narzędzie planista wdrażania](site-recovery-deployment-planner.md) na potrzeby replikacji oprogramowania VMware.
 
 ## <a name="download-the-template"></a>Pobieranie szablonu
 
@@ -149,7 +137,7 @@ Jeśli chcesz dodać dodatkową kartę sieciową do serwera konfiguracji, Dodaj 
 
 ## <a name="upgrade-the-configuration-server"></a>Uaktualnij serwer konfiguracji
 
-Aby uaktualnić serwer konfiguracji do najnowszej wersji, wykonaj następujące [kroki](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Aby uzyskać szczegółowe instrukcje dotyczące uaktualniania wszystkich składników Site Recovery, kliknij [tutaj](service-updates-how-to.md).
+Aby uaktualnić serwer konfiguracji do najnowszej wersji, wykonaj następujące [kroki](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Szczegółowe instrukcje dotyczące uaktualniania wszystkich składników Site Recovery można znaleźć w temacie [Service Update Management](service-updates-how-to.md).
 
 ## <a name="manage-the-configuration-server"></a>Zarządzanie serwerem konfiguracji
 
@@ -159,7 +147,7 @@ Aby uniknąć przerw w trwającej replikacji, upewnij się, że adres IP serwera
 
 1. Jak długo licencja podana na serwerze konfiguracji wdrożona za pomocą OVF jest prawidłowa? Co się stanie, jeśli nie ponownie aktywuję licencji?
 
-    Licencja udostępniona z szablonem komórki jajowe to licencja ewaluacyjna ważna przez 180 dni. Przed wygaśnięciem należy aktywować licencję. W przeciwnym razie może to powodować częste zamykanie serwera konfiguracji i w związku z tym utrudniać działania związane z replikacją.
+    Licencja udostępniona z szablonem komórki jajowe to licencja ewaluacyjna ważna przez 180 dni. Przed wygaśnięciem należy aktywować licencję. W przeciwnym razie może to spowodować częste zamknięcie serwera konfiguracji i w efekcie przeszkodę na działania replikacji. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [zarządzania licencją serwera konfiguracji](vmware-azure-manage-configuration-server.md#update-windows-license).
 
 2. Czy mogę użyć maszyny wirtualnej, na której zainstalowano serwer konfiguracji, w różnych celach?
 

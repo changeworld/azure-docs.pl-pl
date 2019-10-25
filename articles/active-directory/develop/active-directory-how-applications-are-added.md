@@ -1,5 +1,6 @@
 ---
 title: Jak i dlaczego aplikacje są dodawane do Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: Co oznacza, że aplikacja ma zostać dodana do usługi Azure AD i jak to się stało?
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb3ef2a86c523d7cda5bc7da5d83ec4ac741abf
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835391"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803438"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak i dlaczego aplikacje są dodawane do usługi Azure AD
 
@@ -51,7 +52,7 @@ Obiekty aplikacji można tworzyć za poorednictwem wielu ścieżek, w tym:
 * Wiele innych, w tym różne środowiska deweloperskie na platformie Azure i środowisko Eksploratora interfejsu API w centrach deweloperów
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Co to są jednostki usługi i skąd pochodzą?
-Jednostkami [usługi](app-objects-and-service-principals.md#service-principal-object) można zarządzać w Azure Portal za pomocą środowiska [aplikacji dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) . Nazwy główne usługi są zarządzane przez aplikację łączącą się z usługą Azure AD i mogą być uznawane za wystąpienie aplikacji w katalogu. Dla każdej z tych aplikacji może istnieć co najwyżej jeden obiekt aplikacji (który jest zarejestrowany w katalogu "Dom"), a co najmniej jedno obiekty główne usługi reprezentujące wystąpienia aplikacji w każdym katalogu, w którym działa. 
+[Jednostkami](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) [usługi](app-objects-and-service-principals.md#service-principal-object) można zarządzać w Azure Portal za pomocą środowiska aplikacji dla przedsiębiorstw. Nazwy główne usługi są zarządzane przez aplikację łączącą się z usługą Azure AD i mogą być uznawane za wystąpienie aplikacji w katalogu. Dla każdej z tych aplikacji może istnieć co najwyżej jeden obiekt aplikacji (który jest zarejestrowany w katalogu "Dom"), a co najmniej jedno obiekty główne usługi reprezentujące wystąpienia aplikacji w każdym katalogu, w którym działa. 
 
 Nazwa główna usługi może obejmować:
 

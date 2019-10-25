@@ -1,5 +1,6 @@
 ---
-title: Tworzenie wystąpienia poufnej aplikacji klienckiej z opcjami (Biblioteka uwierzytelniania firmy Microsoft dla platformy .NET) | Azure
+title: Tworzenie wystąpienia poufnej aplikacji klienckiej z opcjami (Biblioteka uwierzytelniania firmy Microsoft dla platformy .NET)
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć wystąpienie poufnej aplikacji klienckiej z opcjami konfiguracji przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a05959311b7f62f88a7b474b907982e005b98b
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: e382a8d0b5d6f08eafc5621d0e7591111a5e286b
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532635"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802816"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Tworzenie wystąpienia poufnej aplikacji klienckiej z opcjami konfiguracji przy użyciu MSAL.NET
 
@@ -64,7 +65,7 @@ Konfiguracja aplikacji ASP.NET Core jest opisana w pliku *appSettings. JSON* :
 
 Począwszy od MSAL.NET v3. x, możesz skonfigurować poufną aplikację kliencką z pliku konfiguracyjnego.
 
-W klasie, w której chcesz skonfigurować i utworzyć wystąpienie aplikacji, należy zadeklarować `ConfidentialClientApplicationOptions` obiekt.  Powiąż konfigurację odczytaną ze źródła (w tym plik AppConfig. JSON) z wystąpieniem opcji aplikacji przy użyciu `IConfigurationRoot.Bind()` metody z [pakietu NuGet Microsoft. Extensions. Configuration. Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+W klasie, w której chcesz skonfigurować i utworzyć wystąpienie aplikacji, należy zadeklarować obiekt `ConfidentialClientApplicationOptions`.  Powiąż konfigurację odczytaną ze źródła (w tym plik AppConfig. JSON) z wystąpieniem opcji aplikacji przy użyciu metody `IConfigurationRoot.Bind()` z [pakietu NuGet Microsoft. Extensions. Configuration. Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -74,7 +75,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-Dzięki temu zawartość sekcji "AzureAD" pliku *appSettings. JSON* zostanie powiązana z odpowiednimi właściwościami `ConfidentialClientApplicationOptions` obiektu.  Następnie Skompiluj `ConfidentialClientApplication` obiekt:
+Dzięki temu zawartość sekcji "AzureAD" pliku *appSettings. JSON* zostanie powiązana z odpowiednimi właściwościami obiektu `ConfidentialClientApplicationOptions`.  Następnie Utwórz obiekt `ConfidentialClientApplication`:
 
 ```csharp
 IConfidentialClientApplication app;

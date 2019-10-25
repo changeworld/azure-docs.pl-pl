@@ -1,5 +1,6 @@
 ---
-title: Aplikacja mobilna, która wywołuje interfejsy API sieci Web — konfiguracja kodu aplikacji | Platforma tożsamości firmy Microsoft
+title: Aplikacja mobilna, która wywołuje interfejsy API sieci Web — konfiguracja kodu aplikacji
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć aplikację mobilną wywołującą interfejsy API sieci Web (konfigurację kodu aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bebaa5d35876d562e567a8398cc7a9ce7e6f488
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5f55e73fa1a73908d7e77bacc6af24ea1a40ba92
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413585"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803741"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — Rejestracja aplikacji
 
@@ -52,25 +53,25 @@ To środowisko umożliwi aplikacji uzyskanie rejestracji jednokrotnej (SSO) za p
 
 Należy pamiętać, że w portalu rejestracji aplikacji jest dostępne środowisko w wersji zapoznawczej, które ułatwia Obliczanie identyfikatora URI odpowiedzi obsługiwanej przez brokera dla aplikacji dla systemów iOS i Android:
 
-1. W obszarze Rejestracja aplikacji wybierz pozycję **uwierzytelnianie** i wybór **Wypróbuj nowy obraz środowiska**
-   ![](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+1. W obszarze Rejestracja aplikacji wybierz pozycję **uwierzytelnianie** i wybór **wypróbuj nowe środowisko**
+   ![obraz](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-2. Wybierz pozycję **Dodaj obraz platformy**
-   ![](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+2. Wybierz pozycję **dodaj
+   platformy**![obraz](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-3. Jeśli lista platform jest obsługiwana, wybierz pozycję obraz **systemu iOS**
-   ![.](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
+3. Gdy lista platform jest obsługiwana, wybierz pozycję **iOS**
+   ![obraz](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-4. Wprowadź żądany identyfikator pakietu, a następnie naciśnij pozycję **zarejestruj**
-   ![obraz.](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+4. Wprowadź żądany identyfikator pakietu, a następnie naciśnij pozycję **Register**
+   ![Image](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. Identyfikator URI przekierowania jest obliczany dla Ciebie.
-   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png) obrazu ![
 
 Jeśli wolisz ręcznie skonfigurować identyfikator URI przekierowania, możesz to zrobić za pomocą manifestu aplikacji. Zalecany format jest następujący:
 
 - ***iOS***: `msauth.<BUNDLE_ID>://auth` (na przykład "msauth. com. yourcompany. nazwa_aplikacji://auth")
-- System ***Android***:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Skrót sygnatury systemu Android można wygenerować przy użyciu klawiszy Zwolnij lub Debuguj za pomocą polecenia narzędzia.
 
 ### <a name="username-password"></a>Hasło użytkownika
@@ -81,7 +82,7 @@ Jeśli aplikacja używa tylko nazwy użytkownika/hasła, nie trzeba rejestrować
 
 Interfejsy API wywołania aplikacji mobilnych w imieniu zalogowanego użytkownika. Aplikacja musi zażądać delegowania uprawnień, nazywanych również zakresami. W zależności od wymaganego środowiska można to zrobić statycznie przez Azure Portal lub dynamicznie w czasie wykonywania. Statyczne rejestrowanie uprawnień pozwala administratorom łatwo zatwierdzać aplikację i jest zalecane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Konfiguracja kodu](scenario-mobile-app-configuration.md)

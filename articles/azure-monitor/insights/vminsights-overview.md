@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 2364218a9ccbde1cbfc276e3354cb93e42e5ce0b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c6135f3ab90a2002c3cf0c8d26211d66d0c637e8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553752"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802405"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Co to jest Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)?
 
@@ -33,7 +33,8 @@ Funkcje są zorganizowane w trzy perspektywy:
 - Mapa
 
 >[!NOTE]
->Niedawno [ogłoszono zmiany](https://azure.microsoft.com/updates/upcoming-changes-for-azure-monitor-for-vms-as-we-prepare-for-ga) wprowadzane do funkcji kondycji na podstawie opinii otrzymanej od naszych klientów publicznej wersji zapoznawczej. Mając na względzie liczbę wprowadzonych zmian, będziemy mogli przestać oferować funkcję kondycji dla nowych klientów. Istniejący klienci mogą nadal korzystać z funkcji kondycji. Aby uzyskać więcej informacji, zobacz nasze [często zadawane pytania dotyczące ogólnej dostępności](vminsights-ga-release-faq.md).  
+>Niedawno [ogłoszono zmiany](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
+) wprowadzane do funkcji kondycji na podstawie opinii otrzymanej od naszych klientów publicznej wersji zapoznawczej. Mając na względzie liczbę wprowadzonych zmian, będziemy mogli przestać oferować funkcję kondycji dla nowych klientów. Istniejący klienci mogą nadal korzystać z funkcji kondycji. Aby uzyskać więcej informacji, zobacz nasze [często zadawane pytania dotyczące ogólnej dostępności](vminsights-ga-release-faq.md).  
 
 Integracja z dziennikami Azure Monitor zapewnia zaawansowaną agregację i filtrowanie oraz pozwala na analizowanie trendów danych w czasie. Takie kompleksowe monitorowanie obciążenia nie może być osiągnięte przy użyciu Azure Monitor lub Service Map.  
 

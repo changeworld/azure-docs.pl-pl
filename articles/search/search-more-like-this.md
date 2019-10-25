@@ -1,36 +1,35 @@
 ---
-title: moreLikeThis w Azure Search (wersja zapoznawcza) — Azure Search
-description: Wstępna dokumentacja funkcji moreLikeThis (wersja zapoznawcza) uwidoczniona w interfejsie API REST Azure Search.
-author: brjohnstmsft
+title: Funkcja zapytania moreLikeThis (wersja zapoznawcza)
+titleSuffix: Azure Cognitive Search
+description: Opisuje funkcję moreLikeThis (wersja zapoznawcza), która jest dostępna w wersji zapoznawczej interfejsu API REST usługi Azure Wyszukiwanie poznawcze.
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: d7c816c545c6647907aa9d700a4eb6ed91277465
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.devlang: rest-api
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: b7959beca8a7787a331388b77ebe4060c3675e6d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182306"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793474"
 ---
-# <a name="morelikethis-in-azure-search"></a>moreLikeThis w Azure Search
+# <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (wersja zapoznawcza) na platformie Azure Wyszukiwanie poznawcze
 
 > [!Note]
-> moreLikeThis jest w wersji zapoznawczej i nie jest przeznaczony do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 —](search-api-preview.md) wersja zapoznawcza zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
+> moreLikeThis jest w wersji zapoznawczej i nie jest przeznaczony do użycia w środowisku produkcyjnym. [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
 
-`moreLikeThis=[key]`to parametr zapytania w interfejsie [API dokumentów wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents) , który znajduje dokumenty podobne do dokumentu określonego przez klucz dokumentu. Gdy zostanie wysłane `moreLikeThis`żądanie wyszukiwania, zapytanie jest generowane z wyszukiwanymi terminami wyciągniętymi z danego dokumentu, który opisuje ten dokument. Wygenerowane zapytanie jest następnie używane do wykonywania żądania wyszukiwania. Domyślnie zawartość wszystkich pól, które można przeszukiwać, jest uwzględniana, minus wszystkie pola z ograniczeniami, które `searchFields` zostały określone za pomocą parametru. Nie można użyć `search=[string]`parametruzparametrem wyszukiwania. `moreLikeThis`
+`moreLikeThis=[key]` to parametr zapytania w [interfejsie API dokumentów wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents) , który znajduje dokumenty podobne do dokumentu określonego przez klucz dokumentu. Gdy żądanie Search zostanie wykonane przy użyciu `moreLikeThis`, zostanie wygenerowane zapytanie z wyszukiwanymi terminami z danego dokumentu, które opisują ten dokument. Wygenerowane zapytanie jest następnie używane do wykonywania żądania wyszukiwania. Domyślnie zawartość wszystkich pól, które można przeszukiwać, jest uwzględniana, minus wszystkie pola z ograniczeniami, które zostały określone przy użyciu `searchFields` parametru. Nie można użyć parametru `moreLikeThis` z parametrem wyszukiwania, `search=[string]`.
 
-Domyślnie są brane pod uwagę zawartość wszystkich pól z możliwością wyszukiwania najwyższego poziomu. Jeśli chcesz zamiast tego określić określone pola, możesz użyć `searchFields` parametru. 
+Domyślnie są brane pod uwagę zawartość wszystkich pól z możliwością wyszukiwania najwyższego poziomu. Jeśli zamiast tego chcesz określić określone pola, możesz użyć parametru `searchFields`. 
 
 Nie można użyć moreLikeThis do wyszukiwania podpól w [typie złożonym](search-howto-complex-data-types.md).
 
 ## <a name="examples"></a>Przykłady 
 
-Poniżej znajduje się przykład zapytania moreLikeThis. Zapytanie znajduje dokumenty, których pola opisu są najbardziej podobne do pola dokumentu źródłowego określonego przez `moreLikeThis` parametr.
+Poniżej znajduje się przykład zapytania moreLikeThis. Zapytanie znajduje dokumenty, których pola opisu są najbardziej podobne do pola dokumentu źródłowego zgodnie z parametrem `moreLikeThis`.
 
 ```
 Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2019-05-06-Preview
@@ -50,4 +49,4 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
 Możesz użyć dowolnego narzędzia do testowania sieci Web, aby eksperymentować z tą funkcją.  Zalecamy używanie programu dla tego ćwiczenia.
 
 > [!div class="nextstepaction"]
-> [Eksplorowanie interfejsów API REST Azure Search przy użyciu programu Poster](search-get-started-postman.md)
+> [Poznaj interfejsy API REST platformy Azure Wyszukiwanie poznawcze przy użyciu programu Poster](search-get-started-postman.md)

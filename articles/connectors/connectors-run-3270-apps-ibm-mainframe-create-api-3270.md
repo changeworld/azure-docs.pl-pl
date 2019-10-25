@@ -1,5 +1,5 @@
 ---
-title: Nawiązywanie połączenia z aplikacjami 3270 na komputerze mainframe firmy IBM przy użyciu platformy Azure — Azure Logic Apps
+title: Łączenie z aplikacjami 3270 na komputerze mainframe firmy IBM — Azure Logic Apps
 description: Integrowanie i automatyzowanie 3270 aplikacji opartych na ekranach z platformą Azure przy użyciu łącznika Azure Logic Apps i IBM 3270
 services: logic-apps
 ms.service: logic-apps
@@ -10,17 +10,17 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 50b8fc6b6a350d0a5982cc84f94067979d018cce
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f039d0cbfa2b34fecbcdee53ebe2b56b6e9b6d69
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050674"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787570"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrowanie 3270 aplikacji opartych na ekranach na komputery z systemem Azure przy użyciu łącznika Azure Logic Apps i IBM 3270
 
 > [!NOTE]
-> Ten łącznik jest w [*publicznej wersji*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)zapoznawczej. 
+> Ten łącznik jest w [*publicznej wersji zapoznawczej*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 Korzystając z Azure Logic Apps i łącznika IBM 3270, możesz uzyskiwać dostęp do aplikacji IBM mainframe i uruchamiać je zwykle, przechodząc do ekranu emulatora 3270. Dzięki temu możesz zintegrować aplikacje IBM mainframe z platformą Azure, firmą Microsoft i innymi aplikacjami, usługami i systemami, tworząc zautomatyzowane przepływy pracy za pomocą Azure Logic Apps. Łącznik komunikuje się z mainframe firmy IBM przy użyciu protokołu protokołu TN3270 i jest dostępny we wszystkich regionach Azure Logic Apps z wyjątkiem Azure Government i Azure Chiny 21Vianet. Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
@@ -46,7 +46,7 @@ Po wygenerowaniu pliku metadanych przy użyciu narzędzia do projektowania nale�
 
 * Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Zalecane: [Środowisko usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) 
+* Zalecane: [środowisko usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) 
 
   To środowisko można wybrać jako lokalizację tworzenia i uruchamiania aplikacji logiki. ISE zapewnia dostęp z aplikacji logiki do zasobów chronionych wewnątrz sieci wirtualnych platformy Azure.
 
@@ -78,20 +78,20 @@ Jedynym wymaganiem wstępnym jest [Microsoft .NET Framework 4.6.1](https://aka.m
 
 W aplikacji opartej na ekranach 3270 ekrany i pola danych są unikatowe dla Twoich scenariuszy, więc łącznik 3270 potrzebuje tych informacji na temat aplikacji, którą można podać jako metadane. W tych metadanych opisano informacje pomagające aplikacji logiki identyfikować i rozpoznawać ekrany, opisuje sposób nawigowania między ekranami, gdzie można wprowadzać dane i gdzie oczekiwać wyników. Aby określić i wygenerować te metadane, należy użyć narzędzia do projektowania 3270, które przeprowadzi Cię przez te konkretne *tryby*lub etapy, zgodnie z opisem w dalszej części szczegółów:
 
-* **Przechwyć**: W tym trybie rejestrujesz ekrany wymagane do wykonania konkretnego zadania z aplikacją mainframe, na przykład w celu uzyskania salda banku.
+* **Przechwytywanie**: w tym trybie rejestruje się ekrany wymagane do wykonania określonego zadania z aplikacją mainframe, na przykład w celu uzyskania salda banku.
 
-* **Nawigacja**: W tym trybie należy określić plan lub ścieżkę służącą do nawigowania po ekranach aplikacji mainframe dla określonego zadania.
+* **Nawigacja**: w tym trybie należy określić plan lub ścieżkę służącą do nawigowania po ekranach aplikacji mainframe dla określonego zadania.
 
-* **Metody**: W tym trybie należy zdefiniować metodę, na przykład `GetBalance`, która opisuje ścieżkę nawigacji ekranu. Należy również wybrać pola na każdym ekranie, które staną się parametrami wejściowymi i wyjściowymi metody.
+* **Metody**: w tym trybie należy zdefiniować metodę, na przykład `GetBalance`, która opisuje ścieżkę nawigacji ekranu. Należy również wybrać pola na każdym ekranie, które staną się parametrami wejściowymi i wyjściowymi metody.
 
 ### <a name="unsupported-elements"></a>Nieobsługiwane elementy
 
 Narzędzie projektowe nie obsługuje następujących elementów:
 
-* Mapy częściowej obsługi podstawowych mapowań firmy IBM (MS): W przypadku zaimportowania mapy MS narzędzie do projektowania ignoruje definicje ekranu częściowego.
-* Parametry wejściowe/out: Nie można definiować parametrów in/out.
-* Przetwarzanie menu: Nieobsługiwane w wersji zapoznawczej
-* Przetwarzanie tablicy: Nieobsługiwane w wersji zapoznawczej
+* Mapy częściowej obsługi podstawowych mapowań firmy IBM (MS): w przypadku zaimportowania mapy MS narzędzie do projektowania ignoruje definicje ekranu częściowego.
+* Parametry wejściowe/out: nie można definiować parametrów in/out.
+* Przetwarzanie menu: nieobsługiwane w wersji zapoznawczej
+* Przetwarzanie tablicy: nieobsługiwane w wersji zapoznawczej
 
 <a name="capture-screens"></a>
 
@@ -141,10 +141,10 @@ Aby łącznik mógł nawigować i rozróżnić między ekranami, zazwyczaj możn
 
 W narzędziu projektowym można dodać *atrybuty rozpoznawania*, na przykład tytuł ekranu, taki jak "Pobierz saldo konta" przy użyciu edytora rozpoznawania ekranu. Jeśli masz ścieżkę rozwidlenia, a obie gałęzie zwracają ten sam ekran, ale z różnymi wynikami, potrzebne są inne atrybuty rozpoznawania. W czasie wykonywania łącznik używa tych atrybutów do określenia bieżącej gałęzi i rozwidlenia. Poniżej przedstawiono warunki, których można użyć:
 
-* Określona wartość: Ta wartość pasuje do określonego ciągu w określonej lokalizacji.
+* Określona wartość: Ta wartość jest zgodna z określonym ciągiem w określonej lokalizacji.
 * NIE określona wartość: Ta wartość jest niezgodna z określonym ciągiem w określonej lokalizacji.
-* Ciągiem To pole jest puste.
-* Niepuste: To pole nie jest puste.
+* Puste: to pole jest puste.
+* Niepuste: to pole nie jest puste.
 
 Aby dowiedzieć się więcej, zobacz [przykładowy plan nawigacji](#example-plan) w dalszej części tego tematu.
 
@@ -152,7 +152,7 @@ Aby dowiedzieć się więcej, zobacz [przykładowy plan nawigacji](#example-plan
 
 ## <a name="define-navigation-plans"></a>Definiowanie planów nawigacji
 
-W tym trybie należy zdefiniować przepływ lub etapy nawigowania po ekranach aplikacji mainframe dla określonego zadania. Na przykład czasami może istnieć więcej niż jedna ścieżka, którą aplikacja może wykonać, gdy jedna ścieżka generuje prawidłowy wynik, podczas gdy druga ścieżka generuje błąd. Dla każdego ekranu Określ naciśnięcia klawiszy, które są niezbędne do przejścia do następnego ekranu, na przykład `CICSPROD <enter>`.
+W tym trybie należy zdefiniować przepływ lub etapy nawigowania po ekranach aplikacji mainframe dla określonego zadania. Na przykład czasami może istnieć więcej niż jedna ścieżka, którą aplikacja może wykonać, gdy jedna ścieżka generuje prawidłowy wynik, podczas gdy druga ścieżka generuje błąd. Dla każdego ekranu Określ naciśnięcia klawiszy, które są niezbędne do przejścia do następnego ekranu, takie jak `CICSPROD <enter>`.
 
 > [!TIP]
 > W przypadku automatyzowania kilku zadań wykorzystujących te same ekrany łączenia i rozłączania narzędzie projektowania oferuje specjalne typy planów łączenia i rozłączania. Podczas definiowania tych planów można je dodać do początku i końca planu nawigacji.
@@ -186,7 +186,7 @@ W tym trybie należy zdefiniować przepływ lub etapy nawigowania po ekranach ap
    | Typ planu | Opis |
    |-----------|-------------|
    | **Podstawowych** | W przypadku planów autonomicznych lub połączonych |
-   | **Połącz** | Plany połączeń |
+   | **Połączenie** | Plany połączeń |
    | **Łącz** | Plany rozłączenia |
    |||
 
@@ -245,7 +245,7 @@ Mimo że wiele ekranów w tym miejscu otrzymuje unikalne nazwy, niektóre ekrany
 
   ![Połączony plan](./media/connectors-create-api-3270/combined-plan.png)
 
-#### <a name="example-identify-repeated-screens"></a>Przykład: Zidentyfikuj powtarzające się ekrany
+#### <a name="example-identify-repeated-screens"></a>Przykład: Identyfikowanie powtórzonych ekranów
 
 W przypadku łącznika do nawigowania i rozróżniania ekranów zwykle znajduje się na ekranie unikatowy tekst, którego można użyć jako identyfikatora na przechwyconych ekranach. W przypadku powtarzających się ekranów mogą być potrzebne dodatkowe metody identyfikacji. Przykładowy plan zawiera rozwidlenie, w którym można uzyskać podobne ekrany. Jeden ekran zwraca saldo konta, podczas gdy drugi ekran zwraca komunikat o błędzie.
 
@@ -292,8 +292,8 @@ W tym trybie należy zdefiniować metodę, która jest skojarzona z planem nawig
    | Nazwa właściwości | Możliwe wartości | 
    |---------------|-----------------|
    | **Typ danych** | Bajt, Data i godzina, liczba dziesiętna, int, Long, Short, String |
-   | **Technika wypełnienia pola** | Parametry obsługują te typy wypełniania, wypełniając wartości puste, w razie potrzeby: <p><p>- **Typ**: Wprowadź znaki sekwencyjnie do pola. <p>- **Wypełnienie**: Zastąp zawartość pola znakami, wypełniając wartości puste, jeśli jest to konieczne. <p>- **EraseEofType**: Wyczyść pole, a następnie wprowadź znaki sekwencyjnie do pola. |
-   | **Ciąg formatu** | Niektóre typy danych parametrów używają ciągu formatu, który informuje łącznik 3270 o sposobie konwersji tekstu z ekranu na typ danych .NET: <p><p>- **Data i godzina**: Ciąg formatu daty i godziny jest zgodny z niestandardowym ciągiem [formatu data i godzina programu .NET](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Na przykład Data `06/30/2019` używa ciągu `MM/dd/yyyy`formatu. <p>- **Liczba dziesiętna**: Ciąg formatu dziesiętnego używa [klauzuli COBOL Picture](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Na przykład liczba `100.35` używa ciągu `999V99`formatu. |
+   | **Technika wypełnienia pola** | Parametry obsługują te typy wypełniania, wypełniając wartości puste, w razie potrzeby: <p><p>**typ**- : Wprowadź znaki sekwencyjnie do pola. <p>- **Fill**: Zastąp zawartość pola znakami, wypełniając wartości puste, jeśli jest to konieczne. <p>- **EraseEofType**: Wyczyść pole, a następnie wprowadź znaki sekwencyjnie do pola. |
+   | **Ciąg formatu** | Niektóre typy danych parametrów używają ciągu formatu, który informuje łącznik 3270 o sposobie konwersji tekstu z ekranu na typ danych .NET: <p><p>- **DateTime**: ciąg formatu daty i godziny jest zgodny z [niestandardowymi ciągami formatu data i godzina platformy .NET](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Na przykład Data `06/30/2019` używa ciągu formatu `MM/dd/yyyy`. <p>- **dziesiętne**: ciąg formatu dziesiętnego używa [klauzuli COBOL Picture](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Na przykład liczba `100.35` używa ciągu formatu `999V99`. |
    |||
 
 ## <a name="save-and-view-metadata"></a>Zapisz i Wyświetl metadane
@@ -350,7 +350,7 @@ Po zakończeniu wszystkich tych kroków możesz użyć akcji utworzonej w aplika
 
 1. W ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**, a następnie wybierz pozycję **Dodaj akcję**. 
 
-1. W polu wyszukiwania wybierz pozycję **Enterprise**. W polu wyszukiwania wprowadź "3270" jako filtr. Z listy Akcje wybierz tę akcję: **Uruchamia program mainframe za pośrednictwem połączenia protokołu TN3270**
+1. W polu wyszukiwania wybierz pozycję **Enterprise**. W polu wyszukiwania wprowadź "3270" jako filtr. Z listy Akcje wybierz pozycję Ta akcja: **uruchamia program mainframe w ramach połączenia protokołu TN3270**
 
    ![Wybierz akcję 3270](./media/connectors-create-api-3270/select-3270-action.png)
 
@@ -359,33 +359,33 @@ Po zakończeniu wszystkich tych kroków możesz użyć akcji utworzonej w aplika
 
 1. Jeśli połączenie nie istnieje jeszcze, podaj niezbędne informacje dotyczące połączenia i wybierz pozycję **Utwórz**.
 
-   | Właściwość | Wymagany | Value | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
    | **Nazwa połączenia** | Tak | <*Nazwa połączenia*> | Nazwa połączenia |
-   | **Identyfikator konta integracji** | Tak | <*Integracja — nazwa konta*> | Nazwa konta integracji |
-   | **Adres URL sygnatury dostępu współdzielonego konta integracji** | Tak | <*integration-account-SAS-URL*> | Adres URL sygnatury dostępu współdzielonego (SAS) konta integracji, który można wygenerować na podstawie ustawień konta integracji w Azure Portal. <p>1. W menu konto integracji w obszarze **Ustawienia**wybierz pozycję **adres URL wywołania zwrotnego**. <br>2. W okienku po prawej stronie Skopiuj wygenerowaną wartość **adresu URL wywołania zwrotnego** . |
-   | **Serwer** | Tak | <*PROTOKOŁU TN3270-Server-Name*> | Nazwa serwera dla usługi protokołu TN3270 |
-   | **Port** | Nie | <*PROTOKOŁU TN3270-serwer-port*> | Port używany przez serwer protokołu TN3270. Jeśli pole pozostanie puste, łącznik `23` używa jako wartości domyślnej. |
+   | **Identyfikator konta integracji** | Tak | <*integrację — nazwa konta* > | Nazwa konta integracji |
+   | **Adres URL sygnatury dostępu współdzielonego konta integracji** | Tak | <*Integration-Account-SAS-URL*> | Adres URL sygnatury dostępu współdzielonego (SAS) konta integracji, który można wygenerować na podstawie ustawień konta integracji w Azure Portal. <p>1. w menu konto integracji w obszarze **Ustawienia**wybierz pozycję **adres URL wywołania zwrotnego**. <br>2. w okienku po prawej stronie Skopiuj **wygenerowaną wartość adresu URL wywołania zwrotnego** . |
+   | **Serwer** | Tak | <*protokołu TN3270-Server-name*> | Nazwa serwera dla usługi protokołu TN3270 |
+   | **Port** | Nie | <*protokołu TN3270-Server-port*> | Port używany przez serwer protokołu TN3270. Jeśli pole pozostanie puste, łącznik użyje `23` jako wartości domyślnej. |
    | **Typ urządzenia** | Nie | <*IBM-Terminal-model*> | Nazwa lub numer modelu terminalu IBM do emulowania. Jeśli pole pozostanie puste, łącznik użyje wartości domyślnych. |
-   | **Strona kodowa** | Nie | <*code-page-number*> | Numer strony kodowej dla hosta. Jeśli pole pozostanie puste, łącznik `37` używa jako wartości domyślnej. |
-   | **Nazwa jednostki logicznej** | Nie | <*Nazwa jednostki logicznej*> | Określona nazwa jednostki logicznej do żądania od hosta |
+   | **Strona kodowa** | Nie | *kod <numer strony*> | Numer strony kodowej dla hosta. Jeśli pole pozostanie puste, łącznik użyje `37` jako wartości domyślnej. |
+   | **Nazwa jednostki logicznej** | Nie | <*nazwę jednostki logicznej*> | Określona nazwa jednostki logicznej do żądania od hosta |
    | **Włączyć protokół SSL?** | Nie | Włączone lub wyłączone | Włącz lub wyłącz szyfrowanie SSL. |
    | **Czy zweryfikować certyfikat SSL hosta?** | Nie | Włączone lub wyłączone | Włącz lub wyłącz weryfikację dla certyfikatu serwera. |
    ||||
 
    Na przykład:
 
-   ![Właściwości połączenia](./media/connectors-create-api-3270/connection-properties.png)
+   ![Connection properties (Właściwości połączenia)](./media/connectors-create-api-3270/connection-properties.png)
 
 1. Podaj niezbędne informacje dotyczące akcji:
 
-   | Właściwość | Wymagany | Value | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | **Nazwa hidx** | Tak | <*HIDX — nazwa pliku*> | Wybierz plik HIDX 3270, którego chcesz użyć. |
-   | **Nazwa metody** | Tak | <*Nazwa metody*> | Wybierz metodę w pliku HIDX, który ma być używany. Po wybraniu metody zostanie wyświetlona lista **Dodaj nowy parametr** , aby można było wybrać parametry do użycia z tą metodą. |
+   | **Nazwa hidx** | Tak | <*hidx-nazwa pliku*> | Wybierz plik HIDX 3270, którego chcesz użyć. |
+   | **Nazwa metody** | Tak | <*nazwę metody*> | Wybierz metodę w pliku HIDX, który ma być używany. Po wybraniu metody zostanie wyświetlona lista **Dodaj nowy parametr** , aby można było wybrać parametry do użycia z tą metodą. |
    ||||
 
-   Przykład:
+   Na przykład:
 
    **Wybierz plik HIDX**
 

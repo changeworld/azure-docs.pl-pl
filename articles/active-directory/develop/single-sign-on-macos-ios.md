@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie logowania jednokrotnego w systemach macOS i iOS | Platforma tożsamości firmy Microsoft
+title: Konfigurowanie logowania jednokrotnego w systemach macOS i iOS
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak skonfigurować Logowanie jednokrotne (SSO) w systemach macOS i iOS.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a407b57a380d059703383b02e37decb8761786f4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b43319f3a456c7ea56ee3c6d5b3f9a1a4526bbe0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268936"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802488"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Instrukcje: Konfigurowanie logowania jednokrotnego w systemach macOS i iOS
 
@@ -71,7 +72,7 @@ Aby platforma tożsamości firmy Microsoft mogła dowiedzieć się, które aplik
 
 Sposób, w jaki platforma tożsamości firmy Microsoft informuje aplikacje, które używają tego samego identyfikatora aplikacji, jest przez ich **identyfikatory URI przekierowania**. Każda aplikacja może mieć wiele identyfikatorów URI przekierowania zarejestrowanych w portalu dołączania. Każda aplikacja w Twoim pakiecie będzie miała inny identyfikator URI przekierowania. Na przykład:
 
-Identyfikator URI przekierowania APP1: `msauth.com.contoso.mytestapp1://auth`Identyfikator URI przekierowania APP2: `msauth.com.contoso.mytestapp2://auth`Identyfikator URI przekierowania APP3:`msauth.com.contoso.mytestapp3://auth`
+Identyfikator URI przekierowania APP1: `msauth.com.contoso.mytestapp1://auth` APP2 URI przekierowania: `msauth.com.contoso.mytestapp2://auth` APP3 URI przekierowania: `msauth.com.contoso.mytestapp3://auth`
 
 > [!IMPORTANT]
 > Format identyfikatorów URI przekierowania musi być zgodny z formatem MSAL obsługuje, który jest udokumentowany w [wymaganiach dotyczących formatu identyfikatora URI przekierowania MSAL](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
@@ -80,7 +81,7 @@ Identyfikator URI przekierowania APP1: `msauth.com.contoso.mytestapp1://auth`Ide
 
 Zapoznaj się z artykułem [Dodawanie możliwości](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) firmy Apple, aby włączyć udostępnianie łańcucha kluczy. Ważne jest, aby zdecydować, jak ma być wywoływana łańcucha kluczy, i dodać tę możliwość do wszystkich aplikacji, które będą objęte logowaniem jednokrotnym.
 
-Po poprawnym `entitlements.plist` skonfigurowaniu uprawnień zobaczysz plik w katalogu projektu zawierający coś podobne do tego przykładu:
+Po poprawnym skonfigurowaniu uprawnień zobaczysz plik `entitlements.plist` w katalogu projektu, który zawiera coś podobne do tego przykładu:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -96,7 +97,7 @@ Po poprawnym `entitlements.plist` skonfigurowaniu uprawnień zobaczysz plik w ka
 </plist>
 ```
 
-Po włączeniu uprawnień łańcucha kluczy w każdej aplikacji i przygotowaniu do korzystania z logowania jednokrotnego można skonfigurować `MSALPublicClientApplication` za pomocą grupy dostępu łańcucha kluczy, tak jak w poniższym przykładzie:
+Po włączeniu uprawnień łańcucha kluczy w każdej aplikacji i przygotowaniu się do korzystania z logowania jednokrotnego Skonfiguruj `MSALPublicClientApplication` z grupą dostępu łańcucha kluczy, tak jak w poniższym przykładzie:
 
 Cel-C:
 
@@ -129,7 +130,7 @@ do {
 > Jest to szczególnie zagrożone w przypadku aplikacji korzystających z tokenów do wykonywania zadań w tle.
 > Udostępnianie łańcucha kluczy oznacza, że należy zachować ostrożność, gdy aplikacja korzysta z operacji usuwania Microsoft Identity SDK.
 
-To wszystko! Zestaw SDK tożsamości firmy Microsoft będzie teraz udostępniać poświadczenia dla wszystkich aplikacji. Lista kont również będzie współużytkowana przez wystąpienia aplikacji.
+Gotowe. Zestaw SDK tożsamości firmy Microsoft będzie teraz udostępniać poświadczenia dla wszystkich aplikacji. Lista kont również będzie współużytkowana przez wystąpienia aplikacji.
 
 ## <a name="sso-through-authentication-broker-on-ios"></a>Logowanie jednokrotne za pośrednictwem brokera uwierzytelniania w systemie iOS
 
@@ -137,7 +138,7 @@ MSAL zapewnia obsługę uwierzytelniania obsługiwanego przez brokera Microsoft 
 
 Poniższe kroki umożliwiają włączenie logowania jednokrotnego przy użyciu brokera uwierzytelniania dla aplikacji:
 
-1. Zarejestruj format URI przekierowania zgodnego z brokerem dla aplikacji w informacji. plist aplikacji. Format identyfikatora URI przekierowania zgodnego `msauth.<app.bundle.id>://auth`z brokerem to. Zastąp element "< App .Binding. ID >" "IDENTYFIKATORem pakietu aplikacji. Na przykład:
+1. Zarejestruj format URI przekierowania zgodnego z brokerem dla aplikacji w informacji. plist aplikacji. Format identyfikatora URI przekierowania zgodnego z brokerem jest `msauth.<app.bundle.id>://auth`. Zastąp element "< App .Binding. ID >" "IDENTYFIKATORem pakietu aplikacji. Na przykład:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -156,7 +157,7 @@ Poniższe kroki umożliwiają włączenie logowania jednokrotnego przy użyciu b
     </array>
     ```
 
-1. Dodaj następujący `AppDelegate.m` plik do pliku, aby obsłużyć wywołania zwrotne:
+1. Dodaj następujący plik do pliku `AppDelegate.m`, aby obsłużyć wywołania zwrotne:
 
     Cel-C:
     
@@ -175,7 +176,7 @@ Poniższe kroki umożliwiają włączenie logowania jednokrotnego przy użyciu b
     }
     ```
     
-**Jeśli używasz Xcode 11**, zamiast tego należy umieścić w `SceneDelegate` pliku wywołanie zwrotne MSAL.
+**Jeśli używasz Xcode 11**, zamiast tego należy umieścić wywołanie zwrotne MSAL w pliku `SceneDelegate`.
 W przypadku obsługi UISceneDelegate i UIApplicationDelegate w celu zapewnienia zgodności ze starszymi wersjami systemu iOS należy umieścić wywołanie zwrotne w obu plikach.
 
 Cel-C:

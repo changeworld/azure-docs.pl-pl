@@ -1,26 +1,25 @@
 ---
-title: C# Przykład synonimów — Azure Search
-description: W tym C# przykładzie dowiesz się, jak dodać funkcję synonimów do indeksu w Azure Search. Mapa synonimów jest listą równoważnych terminów. Pola z obsługą synonimów rozwijają zapytania, aby uwzględnić termin podanego przez użytkownika i wszystkie powiązane synonimy.
+title: C# Przykład synonimów
+titleSuffix: Azure Cognitive Search
+description: W tym C# przykładzie dowiesz się, jak dodać funkcję synonimów do indeksu w usłudze Azure wyszukiwanie poznawcze. Mapa synonimów jest listą równoważnych terminów. Pola z obsługą synonimów rozwijają zapytania, aby uwzględnić termin podanego przez użytkownika i wszystkie powiązane synonimy.
 manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: ad71a6ab5090e601ef075617edf08c421abebdb0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647754"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794231"
 ---
-# <a name="example-add-synonyms-for-azure-search-in-c"></a>Przykład: Dodawanie synonimów na potrzeby usługi Azure Search w języku C#
+# <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Przykład: Dodawanie synonimów dla usługi Azure Wyszukiwanie poznawcze wC#
 
 Synonimy rozszerzają zapytanie, dopasowując wyrażenia uznane za semantycznie równoważne z wyrażeniem wejściowym. Przykładowo można sprawić, aby wyraz „samochód” pasował do dokumentów zawierających wyrażenia „auto” lub „pojazd”. 
 
-W usłudze Azure Search synonimy są definiowane w *mapie synonimów* za pośrednictwem *reguł mapowania*, które kojarzą równoważne wyrażenia. Ten przykład obejmuje podstawowe kroki umożliwiające dodawanie i używanie synonimów z istniejącym indeksem. Omawiane kwestie:
+Na platformie Azure Wyszukiwanie poznawcze synonimy są zdefiniowane w formie *synonimu*, za pomocą *reguł mapowania* , które kojarzą równoważne warunki. Ten przykład obejmuje podstawowe kroki umożliwiające dodawanie i używanie synonimów z istniejącym indeksem. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Utwórz mapę synonimów przy użyciu klasy [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) . 
@@ -28,7 +27,7 @@ W usłudze Azure Search synonimy są definiowane w *mapie synonimów* za pośred
 
 Można wysyłać zapytania do pola z włączonym synonimem, jak zwykle. Brak dodatkowej składni zapytania wymaganej do uzyskania dostępu do synonimów.
 
-Możesz utworzyć wiele map synonimów, opublikować je jako zasób obejmujący usługę dostępny dla dowolnych indeksów, a następnie określić, której z nich należy używać na poziomie pola. W czasie realizacji zapytania, poza wyszukiwaniem indeksu, usługa Azure Search wyszukuje mapę synonimów, jeśli mapa została określona dla pól używanych w zapytaniu.
+Możesz utworzyć wiele map synonimów, opublikować je jako zasób obejmujący usługę dostępny dla dowolnych indeksów, a następnie określić, której z nich należy używać na poziomie pola. W czasie zapytania, poza wyszukiwaniem indeksu, usługa Azure Wyszukiwanie poznawcze wykonuje wyszukiwanie w formie synonimu, jeśli jest określona dla pól używanych w zapytaniu.
 
 > [!NOTE]
 > Synonimy mogą być tworzone programowo, ale nie w portalu. Jeśli obsługa funkcji synonimów w witrynie Azure Portal byłaby dla Ciebie przydatna, przekaż swoją opinię na platformie [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
@@ -38,11 +37,11 @@ Możesz utworzyć wiele map synonimów, opublikować je jako zasób obejmujący 
 Wymagania samouczka obejmują poniższe elementy:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
-* [Usługa Azure Search](search-create-service-portal.md)
+* [Usługa Wyszukiwanie poznawcze platformy Azure](search-create-service-portal.md)
 * [Biblioteka Microsoft.Azure.Search .NET](https://aka.ms/search-sdk)
-* [Jak używać usługi Azure Search z poziomu aplikacji .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Jak korzystać z usługi Azure Wyszukiwanie poznawcze z poziomu aplikacji platformy .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Zapytania „przed” i „po” demonstrują wartość synonimów. W tym przykładzie Użyj przykładowej aplikacji, która wykonuje zapytania i zwraca wyniki na przykładowym indeksie. Przykładowa aplikacja tworzy mały indeks o nazwie „hotels” uzupełniony dwoma dokumentami. Aplikacja wykonuje zapytania wyszukiwania przy użyciu wyrażeń i fraz, które nie pojawiają się w indeksie, włącza funkcję synonimów, a następnie ponownie wykonuje te same wyszukiwania. Poniższy kod demonstruje ogólny przepływ.
 
@@ -78,7 +77,7 @@ Zapytania „przed” i „po” demonstrują wartość synonimów. W tym przyk�
       Console.ReadKey();
   }
 ```
-Kroki związane z tworzeniem i uzupełnianiem przykładowego indeksu zostały wyjaśnione w temacie [Jak używać usługi Azure Search z poziomu aplikacji .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+Procedura tworzenia i wypełniania przykładowego indeksu została omówiona w temacie [jak korzystać z usługi Azure wyszukiwanie poznawcze z poziomu aplikacji .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
 ## <a name="before-queries"></a>Zapytania „przed”
 
@@ -129,7 +128,7 @@ Włączenie synonimów to dwuetapowy proces. Najpierw definiujemy i przekazujemy
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
    ```
-   Mapa synonimów musi być zgodna z formatem `solr` w standardzie open source. Format został wyjaśniony w artykule [Synonimy w usłudze Azure Search](search-synonyms.md) w sekcji `Apache Solr synonym format`.
+   Mapa synonimów musi być zgodna z formatem `solr` w standardzie open source. Ten format jest objaśniony w [synonimach na platformie Azure wyszukiwanie poznawcze](search-synonyms.md) w sekcji `Apache Solr synonym format`.
 
 2. Skonfiguruj pola z możliwością wyszukiwania, aby używać mapy synonimów w definicji indeksu. W `EnableSynonymsInHotelsIndex` włączamy synonimy w dwóch polach, `category` i `tags`, ustawiając właściwość `synonymMaps` na nazwę nowo przekazanej mapy synonimów.
    ```csharp
@@ -170,11 +169,11 @@ Możesz znaleźć pełny kod źródłowy przykładowej aplikacji używanej w tym
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Najszybszym sposobem oczyszczenia po przykładzie jest usunięcie grupy zasobów zawierającej usługę Azure Search. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd usługi Azure Search.
+Najszybszym sposobem oczyszczenia po przykładzie jest usunięcie grupy zasobów zawierającej usługę Wyszukiwanie poznawcze platformy Azure. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. Nazwa grupy zasobów w portalu znajduje się na stronie Przegląd usługi Azure Wyszukiwanie poznawcze.
 
 ## <a name="next-steps"></a>Następne kroki
 
 W tym przykładzie przedstawiono funkcję synonimów w C# kodzie, aby utworzyć i opublikować reguły mapowania, a następnie wywołać mapę synonimu zapytania. Dodatkowe informacje można znaleźć w dokumentacji referencyjnej [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) i [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/).
 
 > [!div class="nextstepaction"]
-> [Jak używać synonimów w usłudze Azure Search](search-synonyms.md)
+> [Jak używać synonimów w usłudze Azure Wyszukiwanie poznawcze](search-synonyms.md)

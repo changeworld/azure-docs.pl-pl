@@ -1,29 +1,28 @@
 ---
-title: Uaktualnianie do Azure Search .NET SDK w wersji 10 — Azure Search
+title: Uaktualnianie do Azure Search .NET SDK wersja 10
+titleSuffix: Azure Cognitive Search
 description: Migruj kod do Azure Search .NET SDK wersja 10 ze starszych wersji. Dowiedz się, co nowego i jakie zmiany w kodzie są wymagane.
-author: arv100kri
 manager: nitinme
-services: search
-ms.service: search
+author: arv100kri
+ms.author: arjagann
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: arjagann
-ms.custom: seodec2018
-ms.openlocfilehash: e4633a1c0543331b0ea9820703ed685fb99f2130
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: 4a8550a7f9c6a684a172da6f384039c6050797f6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182371"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793050"
 ---
-# <a name="upgrade-to-the-azure-search-net-sdk-version-10"></a>Uaktualnianie do Azure Search .NET SDK wersja 10
+# <a name="upgrade-to-azure-search-net-sdk-version-10"></a>Uaktualnianie do Azure Search .NET SDK wersja 10
 
 Jeśli korzystasz z wersji 9,0 lub starszej [Azure Search .NET SDK](https://aka.ms/search-sdk), ten artykuł pomoże Ci uaktualnić aplikację pod kątem korzystania z wersji 10.
 
 Aby zapoznać się z bardziej ogólnym przewodnikiem dotyczącym zestawu SDK, łącznie z przykładami, zobacz [jak używać Azure Search z poziomu aplikacji .NET](search-howto-dotnet-sdk.md).
 
-Wersja 10 dodaje kilka funkcji i poprawek błędów, umożliwiając ich przekazanie na ten sam poziom funkcjonalności co Najnowsza wersja `2019-05-06`interfejsu API REST. W przypadkach, gdy zmiana przerywa istniejący kod, przeprowadzimy Cię przez [kroki wymagane do rozwiązania problemu](#UpgradeSteps).
+Wersja 10 dodaje kilka funkcji i poprawek błędów, przenosząc je na ten sam poziom funkcjonalności co Najnowsza wersja interfejsu API REST `2019-05-06`. W przypadkach, gdy zmiana przerywa istniejący kod, przeprowadzimy Cię przez [kroki wymagane do rozwiązania problemu](#UpgradeSteps).
 
 > [!NOTE]
 > Jeśli używasz wersji 8,0-Preview lub starszej, należy najpierw uaktualnić do wersji 9, a następnie uaktualnić do wersji 10. Aby uzyskać instrukcje [, zobacz Uaktualnianie do Azure Search .NET SDK w wersji 9](search-dotnet-sdk-migration-version-9.md) .
@@ -35,20 +34,20 @@ Wersja 10 dodaje kilka funkcji i poprawek błędów, umożliwiając ich przekaza
 ## <a name="whats-new-in-version-10"></a>Co nowego w wersji 10
 Wersja 10 zestawu SDK Azure Search .NET jest przeznaczona dla najnowszej ogólnie dostępnej wersji interfejsu API REST Azure Search (`2019-05-06`) z tymi aktualizacjami:
 
-* Wprowadzenie dwóch nowych umiejętności związanych z [](cognitive-search-skill-conditional.md) umiejętnościami i [tłumaczeniami tekstu](cognitive-search-skill-text-translation.md).
+* Wprowadzenie dwóch nowych [umiejętności związanych z umiejętnościami](cognitive-search-skill-conditional.md) i [tłumaczeniami tekstu](cognitive-search-skill-text-translation.md).
 * Dane wejściowe [umiejętności kształtu](cognitive-search-skill-shaper.md) zostały poddane restrukturyzacji w celu uwzględnienia konsolidacji z zagnieżdżonych kontekstów. Aby uzyskać więcej informacji, zobacz tę [przykładową definicję JSON](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).
 * Dodanie dwóch nowych [funkcji mapowania pól](search-indexer-field-mappings.md):
     - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
     - [urlDecode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
-* W niektórych przypadkach błędy i ostrzeżenia, które są wyświetlane w [stanie wykonywania indeksatora](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) , mogą zawierać dodatkowe szczegóły, które pomagają w debugowaniu. `IndexerExecutionResult`została zaktualizowana w celu odzwierciedlenia tego zachowania.
-* Poszczególne umiejętności zdefiniowane w ramach [zestawu umiejętności](cognitive-search-defining-skillset.md) można opcjonalnie zidentyfikować przez określenie `name` właściwości.
-* `ServiceLimits`pokazuje limity dla [typów złożonych](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) i `IndexerExecutionInfo` pokazuje odpowiednie limity indeksowania/przydziały.
+* W niektórych przypadkach błędy i ostrzeżenia, które są wyświetlane w [stanie wykonywania indeksatora](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) , mogą zawierać dodatkowe szczegóły, które pomagają w debugowaniu. `IndexerExecutionResult` został zaktualizowany w celu odzwierciedlenia tego zachowania.
+* Poszczególne umiejętności zdefiniowane w ramach [zestawu umiejętności](cognitive-search-defining-skillset.md) można opcjonalnie zidentyfikować przez określenie właściwości `name`.
+* `ServiceLimits` pokazuje limity [typów złożonych](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) i `IndexerExecutionInfo` pokazuje odpowiednie limity indeksowania/przydziały.
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Kroki do uaktualnienia
 
-1. Zaktualizuj odwołanie do `Microsoft.Azure.Search` programu NuGet za pomocą konsoli Menedżera pakietów NuGet lub klikając prawym przyciskiem myszy odwołania do projektu i wybierając pozycję "Zarządzaj pakietami NuGet..." w programie Visual Studio.
+1. Zaktualizuj odwołanie NuGet dla `Microsoft.Azure.Search` przy użyciu konsoli Menedżera pakietów NuGet lub klikając prawym przyciskiem myszy odwołania do projektu i wybierając pozycję "Zarządzaj pakietami NuGet..." w programie Visual Studio.
 
 2. Po pobraniu przez program NuGet nowych pakietów i ich zależności, należy ponownie skompilować projekt. 
 
@@ -69,9 +68,9 @@ Istnieje kilka istotnych zmian w wersji 10, które mogą wymagać zmiany kodu op
 
 Definicja [niestandardowej umiejętności internetowego interfejsu API](cognitive-search-custom-skill-web-api.md) została niepoprawnie określona w wersji 9 i starszych. 
 
-Model `WebApiSkill` określony `HttpHeaders` jako właściwość obiektu, która _zawiera_ słownik. Utworzenie zestawu umiejętności z `WebApiSkill` skonstruowaną w ten sposób spowoduje wyjątek, ponieważ interfejs API REST rozważy niewłaściwie sformułowane żądanie. Ten problem został poprawiony, tworząc `HttpHeaders` `WebApiSkill` **Właściwość słownika najwyższego poziomu** w samym modelu, która jest uznawana za prawidłowe żądanie z interfejsu API REST.
+Model dla `WebApiSkill` określony `HttpHeaders` jako właściwość obiektu, która _zawiera_ słownik. Utworzenie elementu zestawu umiejętności z `WebApiSkill` skonstruowany w ten sposób spowoduje wyjątek, ponieważ interfejs API REST rozważy niewłaściwie sformułowane żądanie. Ten problem został poprawiony, wprowadzając `HttpHeaders` **Właściwość słownika najwyższego poziomu** na samym modelu `WebApiSkill`, która jest uznawana za prawidłowe żądanie z interfejsu API REST.
 
-Na przykład, jeśli wcześniej podjęto próbę utworzenia wystąpienia `WebApiSkill` w następujący sposób:
+Na przykład jeśli wcześniej podjęto próbę utworzenia wystąpienia `WebApiSkill` w następujący sposób:
 
 ```csharp
 
@@ -110,18 +109,18 @@ var webApiSkill = new WebApiSkill(
 
 ## <a name="shaper-skill-allows-nested-context-consolidation"></a>Umiejętność kształtu pozwala na konsolidację kontekstów zagnieżdżonych
 
-Umiejętność kształtu może teraz zezwalać na konsolidację danych wejściowych z kontekstów zagnieżdżonych. Aby włączyć tę zmianę, należy ją `InputFieldMappingEntry` zmodyfikować, aby można było utworzyć jej wystąpienie przez określenie `Source` tylko właściwości lub `SourceContext` właściwości i `Inputs` .
+Umiejętność kształtu może teraz zezwalać na konsolidację danych wejściowych z kontekstów zagnieżdżonych. Aby włączyć tę zmianę, `InputFieldMappingEntry` zmodyfikować, aby można było utworzyć wystąpienie przez określenie tylko właściwości `Source` lub zarówno właściwości `SourceContext`, jak i `Inputs`.
 
 Najprawdopodobniej nie musisz wprowadzać żadnych zmian w kodzie; należy jednak zauważyć, że dozwolone są tylko jedną z tych dwóch kombinacji. Oznacza to:
 
-- Tworzenie elementu `InputFieldMappingEntry` , `Source` gdzie jest inicjowany, jest prawidłowe.
-- Tworzenie elementu `InputFieldMappingEntry` `SourceContext` Where i`Inputs` -initializes jest prawidłowy.
+- Tworzenie `InputFieldMappingEntry`, w którym zainicjowano tylko `Source`.
+- Tworzenie `InputFieldMappingEntry`, w którym inicjowane są tylko `SourceContext` i `Inputs`.
 - Wszystkie inne kombinacje obejmujące te trzy właściwości są nieprawidłowe.
 
 Jeśli zdecydujesz się rozpocząć korzystanie z tej nowej funkcji, przed wprowadzeniem tej zmiany upewnij się, że wszyscy klienci zostali zaktualizowani do wersji 10. W przeciwnym razie istnieje możliwość, że aktualizacja przez klienta (przy użyciu starszej wersji zestawu SDK) do umiejętności kształtu może spowodować błędy walidacji.
 
 > [!NOTE]
-> Mimo że model źródłowy `InputFieldMappingEntry` został zmodyfikowany w celu umożliwienia konsolidacji z kontekstów zagnieżdżonych, jego użycie jest prawidłowe tylko w ramach definicji umiejętności kształtu. Korzystanie z tej możliwości w innych umiejętnościach, gdy jest to ważne w czasie kompilacji, spowoduje błąd walidacji w czasie wykonywania.
+> Mimo że źródłowy model `InputFieldMappingEntry` został zmodyfikowany w celu umożliwienia konsolidacji z kontekstów zagnieżdżonych, jego użycie jest prawidłowe tylko w ramach definicji umiejętności kształtu. Korzystanie z tej możliwości w innych umiejętnościach, gdy jest to ważne w czasie kompilacji, spowoduje błąd walidacji w czasie wykonywania.
 
 ## <a name="skills-can-be-identified-by-a-name"></a>Kwalifikacje mogą być identyfikowane przez nazwę
 
@@ -140,24 +139,24 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill`ma przypisaną nazwę `#1`, `WebApiSkill` `#2` jest`ShaperSkill` przypisana`#3` i tak dalej.
+`SentimentSkill` ma przypisaną nazwę `#1`, `WebApiSkill` jest przypisana `#2`, `ShaperSkill` jest przypisana `#3` i tak dalej.
 
-W przypadku wybrania opcji identyfikacji umiejętności według nazwy niestandardowej upewnij się, że wszystkie wystąpienia klientów zostały najpierw zaktualizowane do wersji 10 zestawu SDK. W przeciwnym razie istnieje możliwość, że klient korzystający ze starszej wersji zestawu SDK może `null` `Name` wyróżnić Właściwość umiejętności, powodując, że klient powróci do domyślnego schematu nazewnictwa.
+W przypadku wybrania opcji identyfikacji umiejętności według nazwy niestandardowej upewnij się, że wszystkie wystąpienia klientów zostały najpierw zaktualizowane do wersji 10 zestawu SDK. W przeciwnym razie istnieje możliwość, że klient korzystający ze starszej wersji zestawu SDK może `null` `Name` Właściwość umiejętności, powodując, że klient powróci do domyślnego schematu nazewnictwa.
 
 ## <a name="details-about-errors-and-warnings"></a>Szczegóły dotyczące błędów i ostrzeżeń
 
-`ItemError`i `ItemWarning` modele, które hermetyzują szczegóły błędów i ostrzeżeń (odpowiednio), które wystąpiły podczas wykonywania indeksatora, są modyfikowane w celu uwzględnienia trzech nowych właściwości, które mają na celu pomoc w debugowaniu indeksatora. Te właściwości są następujące:
+`ItemError` i `ItemWarning` modele, które hermetyzują szczegóły błędów i ostrzeżeń (odpowiednio), które wystąpiły podczas wykonywania indeksatora, są modyfikowane w celu uwzględnienia trzech nowych właściwości, które mają na celu pomoc w debugowaniu indeksatora. Te właściwości są następujące:
 
 - `Name`: Nazwa źródła, z którego pochodzi błąd. Na przykład może odnosić się do określonej umiejętności w dołączonym zestawu umiejętności.
-- `Details`: Dodatkowe pełne szczegóły dotyczące błędu lub ostrzeżenia.
-- `DocumentationLink`: Link do przewodnika rozwiązywania problemów dotyczących określonego błędu lub ostrzeżenia.
+- `Details`: dodatkowe pełne szczegóły dotyczące błędu lub ostrzeżenia.
+- `DocumentationLink`: łącze do przewodnika rozwiązywania problemów dotyczących określonego błędu lub ostrzeżenia.
 
 > [!NOTE]
 > Rozpoczęto tworzenie struktury błędów i ostrzeżeń w celu uwzględnienia tych przydatnych szczegółowych informacji, gdy jest to możliwe. Pracujemy nad tym, że w przypadku wszystkich błędów i ostrzeżeń te szczegóły są obecne, ale jest to praca w toku i te dodatkowe szczegóły mogą nie zawsze zostać wypełnione.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zmiany w umiejętnościach kształtu mają największy wpływ na nowy lub istniejący kod. W następnym kroku Pamiętaj, aby ponownie odwiedzić ten przykład ilustrujący strukturę wejściową: [Przykład definicji JSON kwalifikacji kształtu](cognitive-search-skill-shaper.md)
-- Przejdź do [przewodnika Wprowadzenie do wyszukiwania poznawczego](cognitive-search-concept-intro.md).
-- Poznamy Twoją opinię na temat zestawu SDK. Jeśli wystąpią problemy, skontaktuj się z nami, aby uzyskać pomoc dotyczącą [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search). Jeśli znajdziesz błąd, możesz zgłosić problem w [repozytorium GitHub zestawu SDK platformy Azure](https://github.com/Azure/azure-sdk-for-net/issues). Upewnij się, że tytuł problemu jest prefiksem "[Azure Search]".
+- Zmiany w umiejętnościach kształtu mają największy wpływ na nowy lub istniejący kod. W następnym kroku Pamiętaj, aby ponownie odwiedzić ten przykład ilustrujący strukturę wejściową: [przykład definicji JSON kwalifikacji kształtu](cognitive-search-skill-shaper.md)
+- Przejdź do [omówienia wzbogacania AI](cognitive-search-concept-intro.md).
+- Poznamy Twoją opinię na temat zestawu SDK. Jeśli wystąpią problemy, skontaktuj się z nami, aby uzyskać pomoc dotyczącą [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search). Jeśli znajdziesz błąd, możesz zgłosić problem w [repozytorium GitHub zestawu SDK platformy Azure](https://github.com/Azure/azure-sdk-for-net/issues). Upewnij się, że tytuł problemu jest prefiksem "[Azure Wyszukiwanie poznawcze]".
 

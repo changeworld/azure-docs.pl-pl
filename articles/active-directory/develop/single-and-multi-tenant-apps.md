@@ -1,6 +1,7 @@
 ---
-title: Jednym i wieloma dzierżawami aplikacji w usłudze Azure Active Directory
-description: Dowiedz się więcej o funkcjach i różnice między jedną dzierżawą i wielodostępne aplikacje w usłudze Azure AD.
+title: Pojedyncze i wielodostępne aplikacje w Azure Active Directory
+titleSuffix: Microsoft identity platform
+description: Poznaj funkcje i różnice między aplikacjami z jedną dzierżawą i wieloma dzierżawcami w usłudze Azure AD.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,39 +18,39 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6aa8f63b6e7355ae387a321acf77683fac22e028
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111069"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803649"
 ---
-# <a name="tenancy-in-azure-active-directory"></a>Dzierżawy w usłudze Azure Active Directory
+# <a name="tenancy-in-azure-active-directory"></a>Dzierżawa w Azure Active Directory
 
-Azure Active Directory (Azure AD) organizuje obiektów, takich jak użytkownicy i aplikacje w grupy o nazwie *dzierżaw*. Dzierżawcy pozwalają administratorowi ustawić zasady dla użytkowników w organizacji i aplikacje, które organizacji w celu spełnienia ich zabezpieczeń i zasad operacyjnych. 
+Azure Active Directory (Azure AD) organizuje obiekty, takie jak użytkownicy i aplikacje, do grup nazywanych *dzierżawcami*. Dzierżawy umożliwiają administratorowi Ustawianie zasad dla użytkowników w organizacji oraz aplikacji, do których należy organizacja, aby spełniały ich zasady zabezpieczeń i działania. 
 
-## <a name="who-can-sign-in-to-your-app"></a>Kto może logować się do aplikacji?
+## <a name="who-can-sign-in-to-your-app"></a>Kto może zalogować się do swojej aplikacji?
 
-Jeśli chodzi o tworzenie aplikacji, deweloperom możliwość konfigurowania aplikacji jako pojedynczej dzierżawy lub wielodostępne podczas rejestracji aplikacji w [witryny Azure portal](https://portal.azure.com).
-* Aplikacje z jedną dzierżawą są dostępne tylko w dzierżawie, na których zostały one zarejestrowane w znany także jako swojej głównej dzierżawy.
-* Aplikacje z wieloma dzierżawami, są dostępne dla użytkowników w ich dzierżawy głównej i w innych dzierżaw.
+Gdy chodzi o opracowywanie aplikacji, deweloperzy mogą zdecydować się na skonfigurowanie aplikacji jako pojedynczej dzierżawy lub wielu dzierżawców podczas rejestracji aplikacji w [Azure Portal](https://portal.azure.com).
+* Aplikacje z jedną dzierżawą są dostępne tylko w dzierżawie, w której zostały zarejestrowane, nazywane również dzierżawą domową.
+* Aplikacje z wieloma dzierżawcami są dostępne dla użytkowników zarówno w ramach dzierżawy głównej, jak i innych dzierżawców.
 
-W witrynie Azure portal można skonfigurować aplikację na pojedynczej dzierżawy lub wielodostępne, ustawiając odbiorców w następujący sposób.
+W Azure Portal można skonfigurować aplikację jako pojedynczą dzierżawę lub wiele dzierżawców, ustawiając odbiorców w następujący sposób.
 
-| Grupy odbiorców | Jednym/wielu-tenant | Kto może się zarejestrować | 
+| Odbiorcy | Jeden/wiele dzierżawców | Kto może się zalogować | 
 |----------|--------| ---------|
-| Konta, w tym katalogu tylko | Pojedyncza dzierżawa | Wszystkie konta użytkowników i gościa w katalogu, można użyć do aplikacji lub interfejsu API.<br>*Użyj tej opcji, jeśli sprecyzowaną grupę odbiorców jest wewnętrzną aplikacją organizacji.* |
-| Konta w każdym katalogiem usługi Azure AD | Wiele dzierżaw | Wszyscy użytkownicy i gości za pomocą konta służbowego lub szkolnego, od firmy Microsoft, można użyć do aplikacji lub interfejsu API. Obejmuje to szkół i firm, które korzysta z usługi Office 365.<br>*Użyj tej opcji, jeśli sprecyzowaną grupę odbiorców jest firm i klientów edukacyjnych.* |
-| Konta w dowolnym katalogu usługi Azure AD i osobistych kont Microsoft (np. Skype, Xbox, Outlook.com) | Wiele dzierżaw | Wszyscy użytkownicy z pracy lub szkoły lub osobiste konto Microsoft służy do aplikacji lub interfejsu API. Zawiera szkół i firm korzystających z usługi Office 365, a także konta osobiste, które są używane do logowania do usług, takich jak Xbox i Skype.<br>*Użyj tej opcji pod kątem możliwie najszerszej zbiór kont Microsoft.* | 
+| Tylko konta w tym katalogu | Pojedyncza dzierżawa | Wszystkie konta użytkowników i Gości w katalogu mogą korzystać z aplikacji lub interfejsu API.<br>*Użyj tej opcji, jeśli docelowi odbiorcy są wewnętrzną organizacją.* |
+| Konta w dowolnym katalogu usługi Azure AD | Wiele dzierżaw | Wszyscy użytkownicy i Goście z kontem służbowym firmy Microsoft mogą korzystać z aplikacji lub interfejsu API. Obejmuje to szkoły i firmy korzystające z pakietu Office 365.<br>*Użyj tej opcji, jeśli docelowi odbiorcy są klientami biznesowymi lub edukacyjnymi.* |
+| Konta w dowolnym katalogu usługi Azure AD i osobiste konta Microsoft (takie jak Skype, Xbox, Outlook.com) | Wiele dzierżaw | Wszyscy użytkownicy z firmowymi lub szkolnymi konto Microsoft mogą korzystać z aplikacji lub interfejsu API. Obejmuje ona szkoły i firmy korzystające z pakietu Office 365 oraz konta osobiste, które są używane do logowania się do usług, takich jak Xbox i Skype.<br>*Użyj tej opcji, aby wybrać szerszy zbiór kont Microsoft.* | 
 
-## <a name="best-practices-for-multi-tenant-apps"></a>Najlepsze rozwiązania dla aplikacji wielodostępnych
+## <a name="best-practices-for-multi-tenant-apps"></a>Najlepsze rozwiązania dotyczące aplikacji z wieloma dzierżawcami
 
-Tworzyć wspaniałe aplikacje z wieloma dzierżawami może być trudne ze względu na liczbę różnych zasad, które Administratorzy IT mogą skonfigurować w swoich dzierżaw. Jeśli wybierzesz do tworzenia aplikacji z wieloma dzierżawami, wykonaj następujące najlepsze rozwiązania:
+Tworzenie doskonałych aplikacji z wieloma dzierżawcami może być trudne z powodu liczby różnych zasad, które Administratorzy IT mogą ustawiać w swoich dzierżawcach. Jeśli zdecydujesz się na utworzenie aplikacji z wieloma dzierżawcami, postępuj zgodnie z następującymi najlepszymi rozwiązaniami:
 
-* Przetestuj swoją aplikację w dzierżawie, która została skonfigurowana [zasady dostępu warunkowego](conditional-access-dev-guide.md).
-* Postępuj zgodnie z zasadą najniższych dostępu użytkowników, aby upewnić się, że żądane przez aplikację tylko uprawnienia, które jest faktycznie potrzebny. Należy unikać żądające uprawnień, które wymagają zgody administratora, ponieważ może to uniemożliwić użytkownikom pobieranie aplikacji na wszystkich w niektórych organizacjach. 
-* Podaj odpowiednie nazwy i opisy dla wszelkich uprawnień, które należy udostępnić jako część aplikacji. Pomoże to użytkownikom i administratorom wiedzieć, co ich akceptuje po podjęciu próby użycia interfejsów API aplikacji. Aby uzyskać więcej informacji, zobacz sekcję najlepszych praktyk w [Przewodnik po uprawnieniach](v1-permissions-and-consent.md).
+* Przetestuj aplikację w dzierżawie, która ma skonfigurowane [zasady dostępu warunkowego](conditional-access-dev-guide.md).
+* Postępuj zgodnie z zasadą najmniejszego dostępu użytkownika, aby upewnić się, że aplikacja żąda tylko wymaganych uprawnień. Unikaj żądania uprawnień, które wymagają zgody administratora, ponieważ może to uniemożliwić użytkownikom pozyskiwanie aplikacji w niektórych organizacjach. 
+* Podaj odpowiednie nazwy i opisy wszelkich uprawnień, które ujawniasz w ramach aplikacji. Dzięki temu użytkownicy i Administratorzy wiedzą, co zgadza się z użyciem interfejsów API aplikacji. Aby uzyskać więcej informacji, zobacz sekcję najlepsze rozwiązania w [podręczniku uprawnień](v1-permissions-and-consent.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Jak konwertować aplikacji wielodostępnych](howto-convert-app-to-be-multi-tenant.md)
+* [Jak przekonwertować aplikację na wiele dzierżawców](howto-convert-app-to-be-multi-tenant.md)

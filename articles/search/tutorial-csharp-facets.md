@@ -1,41 +1,42 @@
 ---
-title: C#samouczek dotyczący korzystania z zestawów reguł do pomocy Nawigacja — usługa Azure Search
-description: Ten samouczek opiera się na "Podział na strony — Usługa Azure Search w wynikach wyszukiwania" projektu, aby dodać funkcje nawigacji zestawu reguł. Dowiedz się, że aspektami może służyć do łatwego zawęzić kryteria wyszukiwania.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#Samouczek dotyczący używania aspektów do nawigacji
+titleSuffix: Azure Cognitive Search
+description: W tym samouczku przedstawiono projekt "wyniki wyszukiwania na stronie spisu — Wyszukiwanie poznawcze platformy Azure", aby dodać nawigację aspektu. Dowiedz się, jak można użyć aspektów, aby łatwo zawęzić wyszukiwanie.
+manager: nitinme
 author: PeterTurcan
-ms.date: 06/20/2019
-ms.openlocfilehash: 62326ad3bc5f2d740ce744819df559bce8658eb7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 9f0d716e9077b2d9702f26b1afe92d9e4faf4a77
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443771"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794080"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-search"></a>C#Samouczek: Użyj aspektami ułatwiające Nawigacja — usługa Azure Search
+# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C#Samouczek: używanie aspektów w celu ułatwienia nawigacji — Wyszukiwanie poznawcze platformy Azure
 
-Zestawy reguł są używane do pomocy nawigacji, zapewniając użytkownika z zestawu łączy, można użyć do skoncentrowania się ich wyszukiwanie. Zestawy reguł są atrybuty danych (na przykład kategoria lub określoną funkcję hotelu w nasze przykładowe dane).
+Zestawy reguł służą do ułatwienia nawigacji, dostarczając użytkownikowi zestaw linków umożliwiających skoncentrowanie się na wyszukiwaniu. Aspektami są atrybuty danych (takie jak kategoria lub określona funkcja w hotelu w naszych przykładowych danych).
 
-Ten samouczek opiera się na stronicowania projektu utworzonego w [ C# samouczka: Podział na strony — wyniki wyszukiwania, usługa Azure Search](tutorial-csharp-paging.md) samouczka.
+Ten samouczek kompiluje się do projektu stronicowania utworzonego w [ C# samouczku: wyniki wyszukiwania stronicowania — Samouczek platformy Azure wyszukiwanie poznawcze](tutorial-csharp-paging.md) .
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
-> * Ustaw właściwości modelu jako _IsFacetable_
-> * Dodawanie reguł nawigacji do aplikacji
+> * Ustaw właściwości modelu jako _Isuderzający_
+> * Dodawanie nawigacji aspektu do aplikacji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-Masz [ C# samouczka: Podział na strony — wyniki wyszukiwania, usługa Azure Search](tutorial-csharp-paging.md) projektu działanie. Ten projekt może być własną wersję lub go zainstalować z witryny GitHub: [Tworzenie pierwszej aplikacji](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+[ C# Samouczek: wyniki wyszukiwania na stronie stronicowania — usługa Azure wyszukiwanie poznawcze](tutorial-csharp-paging.md) Project w górę i uruchomiona. Ten projekt może być własną wersją lub być instalowany z serwisu GitHub: [Utwórz pierwszą aplikację](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-## <a name="set-model-properties-as-isfacetable"></a>Ustawianie właściwości modelu jako IsFacetable
+## <a name="set-model-properties-as-isfacetable"></a>Ustaw właściwości modelu jako isuderzający
 
-Aby dla właściwości modelu muszą znajdować się w wyszukiwania reguł, muszą być oznakowane za pomocą **IsFacetable**.
+Aby właściwość modelu znajdowała się w wyszukiwaniu aspektów, należy ją oznaczyć przy użyciu właściwości **iskroju**.
 
-1. Sprawdź **hotelu** klasy. **Kategoria** i **tagi**, na przykład, są oznaczone jako **IsFacetable**, ale **HotelName** i **opis** nie są. 
+1. Zapoznaj się z klasą **hotelu** . **Kategoria** i **Tagi**, na **przykład, są oznaczone jako**, ale **hotelname** i **Description** nie są. 
 
     ```cs
     public partial class Hotel
@@ -81,40 +82,40 @@ Aby dla właściwości modelu muszą znajdować się w wyszukiwania reguł, musz
     }
     ```
 
-2. Firma Microsoft nie zmienia się żadnych tagów w ramach tego samouczka, więc Zamknij pliku hotel.cs niezmieniony.
+2. Nie zmienimy żadnych tagów w ramach tego samouczka, dlatego Zamknij plik hotel.cs bez zmian.
 
     > [!Note]
-    > Wyszukiwanie zestawu reguł będzie sygnalizować błąd, jeśli pole wymagane w wyszukiwaniu nie jest oznaczone tagami odpowiednio.
+    > Wyszukiwanie aspektów spowoduje zgłoszenie błędu, jeśli pole wymagane w wyszukiwaniu nie zostanie odpowiednio oznakowane.
 
 
-## <a name="add-facet-navigation-to-your-app"></a>Dodawanie reguł nawigacji do aplikacji
+## <a name="add-facet-navigation-to-your-app"></a>Dodawanie nawigacji aspektu do aplikacji
 
-W tym przykładzie użyjemy umożliwia użytkownikowi wybranie jednej kategorii w hotelu lub rekreacyjne jednego z listy łączy wyświetlane po lewej stronie wyników. Rozpoczyna się użytkownika, wprowadzając niektóre wyszukiwany tekst, a następnie można zawęzić wyniki wyszukiwania, wybierając odpowiednią kategorię i zawęzić wyniki dodatkowo, wybierając rekreacyjne lub użytkownik może wybrać rekreacyjne pierwszy (kolejność nie jest ważna).
+Na potrzeby tego przykładu chcemy umożliwić użytkownikowi wybranie jednej kategorii hotelu lub jednej z części z list linków wyświetlanych na lewo od wyników. Użytkownik rozpoczyna od wprowadzenia tekstu wyszukiwania, a następnie może zawęzić wyniki wyszukiwania, wybierając kategorię i może zawęzić wyniki w dalszej kolejności, wybierając obszar terenowy lub klikając najpierw (zamówienie nie jest ważne).
 
-Potrzebujemy kontrolera w celu przekazania listę zestawów reguł do widoku. Musimy zachować wybór użytkownika w miarę postępów wyszukiwania, a następnie ponownie magazynu tymczasowego zostaną wykorzystane jako ochronę danych przy użyciu mechanizmu.
+Potrzebujemy kontrolera do przekazania list aspektów do widoku. Musimy zachować wybory użytkownika jako postęp wyszukiwania, a następnie używać magazynu tymczasowego jako mechanizmu zachowywania danych.
 
-![Zawęź wyszukiwanie "puli" przy użyciu reguł nawigacji](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
+![Używanie nawigacji aspektu do zawężenia wyszukiwania "Pool"](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
 
-### <a name="add-filter-strings-to-the-searchdata-model"></a>Dodaj parametry filtru do modelu SearchData
+### <a name="add-filter-strings-to-the-searchdata-model"></a>Dodawanie ciągów filtru do modelu SearchData
 
-1. Otwórz plik SearchData.cs i Dodaj właściwości ciągu do **SearchData** klasy do przechowywania ciągów Filtr zestawu reguł.
+1. Otwórz plik SearchData.cs i Dodaj właściwości ciągu do klasy **SearchData** , aby przechowywać ciągi filtru zestawu reguł.
 
     ```cs
         public string categoryFilter { get; set; }
         public string amenityFilter { get; set; }
     ```
 
-### <a name="add-the-facet-action-method"></a>Dodaj metodę akcji reguł
+### <a name="add-the-facet-action-method"></a>Dodaj metodę akcji zestawu reguł
 
-Główny kontroler musi jedną nową akcję, **aspekt**i aktualizacje istniejące **indeksu** i **strony** akcje, a także aktualizacje **RunQueryAsync**  metody.
+Kontroler główny wymaga jednej nowej akcji, **aspektu**i aktualizacji istniejącego **indeksu** oraz akcji **strony** , a także aktualizacji metody **RunQueryAsync** .
 
-1. Otwórz plik głównego kontrolera i Dodaj **przy użyciu** instrukcji, aby umożliwić **listy&lt;ciąg&gt;**  konstruowania.
+1. Otwórz plik kontrolera głównego i Dodaj instrukcję **using** , aby włączyć **listę&lt;ciągu&gt;** .
 
     ```cs
     using System.Collections.Generic;
     ```
 
-2. Zastąp **indeksu (SearchData model)** metody akcji.
+2. Zastąp metodę akcji **index (SearchData model)** .
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -139,7 +140,7 @@ Główny kontroler musi jedną nową akcję, **aspekt**i aktualizacje istniejąc
         }
     ```
 
-3. Zastąp **strony (SearchData model)** metody akcji.
+3. Zastąp metodę akcji **Page (SearchData model)** .
 
     ```cs
         public async Task<ActionResult> Page(SearchData model)
@@ -186,7 +187,7 @@ Główny kontroler musi jedną nową akcję, **aspekt**i aktualizacje istniejąc
         }
     ```
 
-4. Dodaj **aspekt (SearchData model)** metody akcji, zostanie uaktywniony, gdy użytkownik kliknie link zestawu reguł. Model będzie zawierać filtr wyszukiwania kategorii lub rekreacyjne filtr wyszukiwania. Być może dodać go po **strony** akcji.
+4. Dodaj metodę akcji dla **aspektu (SearchData model)** , która ma zostać aktywowana, gdy użytkownik kliknie link aspekt. Model będzie zawierać filtr wyszukiwania kategorii lub filtr wyszukiwania na potrzeby przeszukiwania. Prawdopodobnie należy dodać go po akcji **strony** .
 
     ```cs
         public async Task<ActionResult> Facet(SearchData model)
@@ -227,11 +228,11 @@ Główny kontroler musi jedną nową akcję, **aspekt**i aktualizacje istniejąc
         }
     ```
 
-### <a name="set-up-the-search-filter"></a>Ustawić filtr wyszukiwania
+### <a name="set-up-the-search-filter"></a>Konfigurowanie filtru wyszukiwania
 
-Gdy użytkownik wybierze niektórych reguł, na przykład kliknięciu **możliwości i Spa** kategorii, a następnie tylko hotele, które są zdefiniowane w tej kategorii powinny być zwrócone w wynikach. Aby zawęzić zakres wyszukiwania w ten sposób, musimy skonfigurować _filtru_.
+Gdy użytkownik wybierze określony zestaw reguł, na przykład klikają kategorię możliwości **i spa** , a następnie w wynikach zostaną zwrócone tylko Hotele określone jako Ta kategoria. Aby zawęzić wyszukiwanie w ten sposób, musimy skonfigurować _Filtr_.
 
-1. Zastąp **RunQueryAsync** metoda następującym kodem. Przede wszystkim przyjmuje ciąg filtru kategorii i ciąg filtru rekreacyjne i ustawia **filtru** parametru **obiektu SearchParameters**.
+1. Zastąp metodę **RunQueryAsync** poniższym kodem. Przede wszystkim Pobiera ciąg filtru kategorii i ciąg filtru rzeczy i ustawia parametr **filtru** **SearchParameters**.
 
     ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage, string catFilter, string ameFilter)
@@ -315,13 +316,13 @@ Gdy użytkownik wybierze niektórych reguł, na przykład kliknięciu **możliwo
         }
     ```
 
-    Dodaliśmy **kategorii** i **tagi** właściwości do listy **wybierz** elementów do zwrócenia. To dodawanie nie jest wymagane dla reguł nawigacji do pracy, ale używamy tych informacji, aby zweryfikować, że firma Microsoft filtrowania poprawnie.
+    Do listy **wybranych** elementów, które mają zostać zwrócone, dodaliśmy właściwości **kategorii** i **znaczników** . To dodanie nie jest wymaganiem, aby Nawigacja aspektów działała, ale używamy tych informacji w celu sprawdzenia, czy filtrowanie odbywa się prawidłowo.
 
-### <a name="add-lists-of-facet-links-to-the-view"></a>Dodawanie listy reguł łączy do widoku
+### <a name="add-lists-of-facet-links-to-the-view"></a>Dodawanie list linków aspektów do widoku
 
-Widok będzie wymagać wprowadzono istotne zmiany. 
+Widok będzie wymagał pewnych znaczących zmian. 
 
-1. Zacznij od otwarcia pliku hotels.css (w folderze wwwroot/css) i dodaj następujące klasy.
+1. Zacznij od otwarcia pliku hoteli. CSS (w folderze wwwroot/CSS) i Dodaj następujące klasy.
 
     ```html
     .facetlist {
@@ -343,7 +344,7 @@ Widok będzie wymagać wprowadzono istotne zmiany.
     }
     ```
 
-2. Widoku firma Microsoft organizować dane wyjściowe w tabeli, do starannego wyrównania aspekt Wyświetla z lewej strony oraz wyniki po prawej stronie. Otwórz plik index.cshtml. Zamień całą zawartość HTML &lt;treści&gt; tagów, z następującym kodem.
+2. W przypadku widoku organizujemy dane wyjściowe w tabeli, aby starannie wyrównać listy aspektów po lewej stronie i wyniki po prawej stronie. Otwórz plik index. cshtml. Zastąp całą zawartość &lt;tagów&gt; treści HTML z poniższym kodem.
 
     ```cs
     <body>
@@ -523,40 +524,40 @@ Widok będzie wymagać wprowadzono istotne zmiany.
     </body>
     ```
 
-    Zwróć uwagę na **Html.ActionLink** wywołania. To wywołanie komunikuje się ciągi prawidłowy filtr do kontrolera, gdy użytkownik kliknie łącze zestawu reguł. 
+    Zwróć uwagę na użycie wywołania **HTML. ActionLink** . To wywołanie komunikuje prawidłowe ciągi filtru z kontrolerem, gdy użytkownik kliknie link aspektu. 
 
 ### <a name="run-and-test-the-app"></a>Uruchamianie i testowanie aplikacji
 
-Zaletą aspekt nawigacji do użytkownika jest to, że one zawęzić kryteria wyszukiwania za pomocą jednego kliknięcia pokazujemy w następującej kolejności.
+Zaletą nawigacji aspektu dla użytkownika jest możliwość zawężenia wyszukiwania za pomocą jednego kliknięcia, które można wyświetlić w następującej kolejności.
 
-1. Uruchom aplikację, typu "port lotniczy" jako tekst wyszukiwania. Sprawdź listę zestawów reguł pojawia się po lewej stronie starannego. Te zestawy reguł są wszystkie opcje, które dotyczą hotele, które mają "port lotniczy" w ich dane tekstowe, wraz z liczbą jak często występują one.
+1. Uruchom aplikację, wpisz "lotniska" jako tekst wyszukiwania. Sprawdź, czy lista aspektów pojawia się z widoczną z lewej strony. Te zestawy reguł są stosowane do hoteli, które mają "Lotnisko" w swoich danych tekstowych, wraz z liczbą częstotliwości ich występowania.
 
-    ![Zawęź wyszukiwanie "lotniczego" przy użyciu reguł nawigacji](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
+    ![Zawężanie wyszukiwania "lotniska" przy użyciu nawigacji aspektów](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
 
-2. Kliknij przycisk **możliwości i Spa** kategorii. Sprawdź, czy wszystkie wyniki znajdują się w tej kategorii.
+2. Kliknij kategorię możliwości **i spa** . Sprawdź, czy wszystkie wyniki są w tej kategorii.
 
-    ![Zawężanie wyszukiwania dla "Możliwości i Spa"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
+    ![Zawężanie wyszukiwania do "możliwości i spa"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
 
-3. Kliknij przycisk **śniadanie kontynentalnych** rekreacyjne. Sprawdź, czy wszystkie wyniki wciąż znajdują się w kategorii "Możliwości i Spa", przy użyciu wybranego rekreacyjne.
+3. Kliknij pozycję rekreacyjny **śniadanie** . Upewnij się, że wszystkie wyniki są nadal w kategorii "kurort i spa" z wybranym terenem.
 
-    ![Zawężanie wyszukiwanie "kontynentalnych śniadanie"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
+    ![Zawężanie wyszukiwania do "śniadania kontynentalnego"](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
 
-4. Spróbuj wybrać innej kategorii, następnie co rekreacyjne i wyświetlić wyniki zawężającą. Spróbuj odwrotnie, co rekreacyjne, a następnie jedną kategorię.
+4. Spróbuj wybrać dowolną inną kategorię, a następnie jedną z nich i wyświetlić wąskie wyniki. Następnie Wypróbuj inne sposoby, jedną z nich, a następnie jedną kategorię.
 
     >[!Note]
-    > Po dokonaniu wyboru jednej liście reguł (na przykład kategoria) zastąpią wszelkie poprzednie wybór na liście kategorii.
+    > Po dokonaniu wyboru jednego zaznaczenia na liście aspektów (takiej jak kategoria) zastąpi on poprzedni wybór na liście kategorii.
 
 ## <a name="takeaways"></a>Wnioski
 
-Należy wziąć pod uwagę następujące wnioski z tego projektu:
+Rozważmy następujący wnioski z tego projektu:
 
-* Konieczne jest do oznaczania każdej właściwości jako **IsFacetable**, jeśli mają zostać uwzględnione w nawigacji zestawu reguł.
-* Aspekt nawigacji zapewnia użytkownikowi proste i intuicyjne, sposób zawęzić wyszukiwanie.
-* Aspekt nawigacji najlepiej jest podzielona na sekcje (kategorie hotelu), pozwalającego hotel, cena zakresów, ocena zakresów itp., każda sekcja z odpowiednią nazwą.
+* Koniecznie Oznacz każdą **Właściwość jako**isfacet, jeśli ma zostać uwzględniona w nawigacji aspektu.
+* Nawigacja aspektów zapewnia użytkownikowi łatwy i intuicyjny sposób zawężania wyszukiwania.
+* Nawigacja aspektów najlepiej dzieli się na sekcje (kategorie hotelu, walory hotelowe, zakresy cen, zakresy klasyfikacji itp.), Każda sekcja z odpowiednim nagłówkiem.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W następnym samouczku przyjrzymy się porządkowanie wyników. Do tej pory wyniki są uporządkowane po prostu w kolejności, znajdują się one w bazie danych.
+W następnym samouczku będziemy przeglądać wyniki sortowania. Do tego momentu wyniki są uporządkowane po prostu w kolejności, w jakiej znajdują się w bazie danych.
 
 > [!div class="nextstepaction"]
-> [C#Samouczek: Kolejność wyników — usługi Azure Search](tutorial-csharp-orders.md)
+> [C#Samouczek: kolejność wyników — Wyszukiwanie poznawcze platformy Azure](tutorial-csharp-orders.md)

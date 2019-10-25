@@ -1,29 +1,28 @@
 ---
-title: Jak modelować złożone typy danych — Azure Search
-description: Zagnieżdżone lub hierarchiczne struktury danych można modelować w indeksie Azure Search przy użyciu typów danych ComplexType i Collections.
-author: brjohnstmsft
+title: Jak modelować złożone typy danych
+titleSuffix: Azure Cognitive Search
+description: Zagnieżdżone lub hierarchiczne struktury danych można modelować w indeksie Wyszukiwanie poznawcze platformy Azure przy użyciu typów danych ComplexType i Collections.
 manager: nitinme
+author: brjohnstmsft
 ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.custom: seodec2018
-ms.openlocfilehash: b9c9b35adc0dde032723c3c60adedf5b2e7b4cb6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: af68f232c893259747e6ed106eced70fd8b89351
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183201"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792230"
 ---
-# <a name="how-to-model-complex-data-types-in-azure-search"></a>Jak modelować złożone typy danych w Azure Search
+# <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Jak modelować złożone typy danych w usłudze Azure Wyszukiwanie poznawcze
 
-Zewnętrzne zestawy danych używane do wypełniania indeksu Azure Search mogą pochodzić z wielu kształtów. Czasami zawierają hierarchiczne lub zagnieżdżone podstruktury. Przykłady mogą obejmować wiele adresów pojedynczego klienta, wiele kolorów i rozmiarów dla pojedynczej jednostki SKU, wielu autorów jednej książki itd. W przypadku warunków modelowania można zobaczyć, że te struktury są określane jako *złożone*, złożone, złożone lub *zagregowane* typy danych. Termin Azure Search stosowany dla tego koncepcji to **typ złożony**. W Azure Search typy złożone są modelowane przy użyciu **pól złożonych**. Pole złożone to pole, które zawiera elementy podrzędne (podpola), które mogą być dowolnego typu danych, w tym inne typy złożone. Działa to podobnie jak w przypadku typów danych ze strukturą w języku programowania.
+Zewnętrzne zestawy danych używane do wypełniania indeksu usługi Azure Wyszukiwanie poznawcze mogą pochodzić z wielu kształtów. Czasami zawierają hierarchiczne lub zagnieżdżone podstruktury. Przykłady mogą obejmować wiele adresów pojedynczego klienta, wiele kolorów i rozmiarów dla pojedynczej jednostki SKU, wielu autorów jednej książki itd. W przypadku warunków modelowania można zobaczyć, że te struktury są określane jako *złożone* *, złożone, złożone*lub *zagregowane* typy danych. Termin korzystania z platformy Azure Wyszukiwanie poznawcze dla tego pojęcia to **typ złożony**. W Wyszukiwanie poznawcze poznawczej platformy Azure typy złożone są modelowane przy użyciu **pól złożonych**. Pole złożone to pole, które zawiera elementy podrzędne (podpola), które mogą być dowolnego typu danych, w tym inne typy złożone. Działa to podobnie jak w przypadku typów danych ze strukturą w języku programowania.
 
 Pola złożone reprezentują pojedynczy obiekt w dokumencie lub tablicę obiektów, w zależności od typu danych. Pola typu `Edm.ComplexType` reprezentują pojedyncze obiekty, natomiast pola typu `Collection(Edm.ComplexType)` reprezentują tablice obiektów.
 
-Azure Search natywnie obsługuje złożone typy i kolekcje. Te typy umożliwiają modelowanie prawie każdej struktury JSON w indeksie Azure Search. W poprzednich wersjach Azure Search interfejsów API można zaimportować tylko spłaszczone zestawy wierszy. W najnowszej wersji indeks może teraz ściśle odpowiadać danych źródłowych. Innymi słowy, jeśli dane źródłowe mają typy złożone, indeks może również zawierać typy złożone.
+Platforma Azure Wyszukiwanie poznawcze natywnie obsługuje złożone typy i kolekcje. Te typy umożliwiają modelowanie prawie każdej struktury JSON w indeksie Wyszukiwanie poznawcze platformy Azure. W poprzednich wersjach interfejsów API platformy Azure Wyszukiwanie poznawcze można zaimportować tylko spłaszczone zestawy wierszy. W najnowszej wersji indeks może teraz ściśle odpowiadać danych źródłowych. Innymi słowy, jeśli dane źródłowe mają typy złożone, indeks może również zawierać typy złożone.
 
 Aby rozpocząć, zalecamy użycie [zestawu danych hoteli](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md), który można załadować w kreatorze **importowania danych** w Azure Portal. Kreator wykrywa złożone typy w źródle i sugeruje schemat indeksu na podstawie wykrytych struktur.
 
@@ -34,7 +33,7 @@ Aby rozpocząć, zalecamy użycie [zestawu danych hoteli](https://github.com/Azu
 
 ## <a name="example-of-a-complex-structure"></a>Przykład struktury złożonej
 
-Poniższy dokument JSON składa się z pól prostych i złożonych. Złożone pola, takie jak `Address` i `Rooms`, mają pola podrzędne. `Address`zawiera jeden zestaw wartości dla tych podpól, ponieważ jest to pojedynczy obiekt w dokumencie. W przeciwieństwie `Rooms` , ma wiele zestawów wartości dla swoich pól podrzędnych, jeden dla każdego obiektu w kolekcji.
+Poniższy dokument JSON składa się z pól prostych i złożonych. Pola złożone, takie jak `Address` i `Rooms`, mają podpola. `Address` ma jeden zbiór wartości dla tych podpól, ponieważ jest to pojedynczy obiekt w dokumencie. Z kolei `Rooms` ma wiele zestawów wartości dla pól podrzędnych, jeden dla każdego obiektu w kolekcji.
 
 ```json
 {
@@ -65,10 +64,10 @@ Poniższy dokument JSON składa się z pól prostych i złożonych. Złożone po
 
 Podobnie jak w przypadku dowolnej definicji indeksu, można użyć portalu, [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index)lub [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) , aby utworzyć schemat zawierający typy złożone. 
 
-Poniższy przykład przedstawia schemat indeksu JSON z prostymi polami, kolekcjami i typami złożonymi. Zwróć uwagę, że w ramach typu złożonego każde pole podrzędne ma typ i może mieć atrybuty, tak jak pola najwyższego poziomu. Schemat odnosi się do przykładowych danych powyżej. `Address`to złożone pole, które nie jest kolekcją (Hotel ma jeden adres). `Rooms`to złożone pole kolekcji (Hotel ma wiele pokojów).
+Poniższy przykład przedstawia schemat indeksu JSON z prostymi polami, kolekcjami i typami złożonymi. Zwróć uwagę, że w ramach typu złożonego każde pole podrzędne ma typ i może mieć atrybuty, tak jak pola najwyższego poziomu. Schemat odnosi się do przykładowych danych powyżej. `Address` to złożone pole, które nie jest kolekcją (Hotel ma jeden adres). `Rooms` to złożone pole kolekcji (Hotel ma wiele pokojów).
 
 <!---
-For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
+For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Cognitive Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
 
 Indexers are a different story. When defining an indexer, in particular one used to build a knowledge store, your index can have nested complex types. An indexer is able to hold a chain of complex data structures in-memory, and when it includes a skillset, it can support highly complex data forms. For more information and an example, see [How to get started with knowledge store](knowledge-store-howto.md).
 -->
@@ -104,13 +103,13 @@ Wszystkie reguły ponownego [indeksowania](search-howto-reindex.md) stosowane do
 
 ### <a name="structural-updates-to-the-definition"></a>Aktualizacje strukturalne do definicji
 
-Nowe pola podrzędne można dodawać do pola złożonego w dowolnym momencie bez konieczności ponownego kompilowania indeksu. Na przykład dodanie elementu "kod pocztowy" do `Address` lub " `Rooms` obiektu" jest dozwolone, podobnie jak dodanie pola najwyższego poziomu do indeksu. Istniejące dokumenty mają wartość null dla nowych pól, dopóki te pola nie zostaną jawnie wypełnione przez zaktualizowanie danych.
+Nowe pola podrzędne można dodawać do pola złożonego w dowolnym momencie bez konieczności ponownego kompilowania indeksu. Na przykład dodanie elementu "kod pocztowy" do `Address` lub "udogodnień" do `Rooms` jest dozwolone, podobnie jak dodanie pola najwyższego poziomu do indeksu. Istniejące dokumenty mają wartość null dla nowych pól, dopóki te pola nie zostaną jawnie wypełnione przez zaktualizowanie danych.
 
 Zwróć uwagę, że w ramach typu złożonego każde pole podrzędne ma typ i może mieć atrybuty, podobnie jak pola najwyższego poziomu.
 
 ### <a name="data-updates"></a>Aktualizacje danych
 
-Aktualizowanie istniejących dokumentów w indeksie z `upload` akcją działa tak samo jak w przypadku złożonych i prostych pól — wszystkie pola są zastępowane. Jednak (lub `mergeOrUpload` w przypadku zastosowania do istniejącego dokumentu) nie działa tak samo dla wszystkich pól. `merge` W przeciwnym `merge` razie program nie obsługuje scalania elementów w obrębie kolekcji. To ograniczenie istnieje dla kolekcji typów pierwotnych i złożonych kolekcji. Aby zaktualizować kolekcję, należy pobrać pełną wartość kolekcji, wprowadzić zmiany, a następnie dołączyć nową kolekcję do żądania interfejsu API indeksu.
+Aktualizowanie istniejących dokumentów w indeksie z akcją `upload` działa tak samo jak w przypadku złożonych i prostych pól — wszystkie pola są zastępowane. Jednak `merge` (lub `mergeOrUpload` w przypadku zastosowania do istniejącego dokumentu) nie działa tak samo dla wszystkich pól. W `merge` nie obsługuje scalania elementów w obrębie kolekcji. To ograniczenie istnieje dla kolekcji typów pierwotnych i złożonych kolekcji. Aby zaktualizować kolekcję, należy pobrać pełną wartość kolekcji, wprowadzić zmiany, a następnie dołączyć nową kolekcję do żądania interfejsu API indeksu.
 
 ## <a name="searching-complex-fields"></a>Wyszukiwanie pól złożonych
 
@@ -120,15 +119,15 @@ Zapytania uzyskują więcej złożonych, gdy istnieje wiele warunków i operator
 
     search=Address/City:Portland AND Address/State:OR
 
-Zapytania takie jak takie nie są *skorelowane* dla wyszukiwania pełnotekstowego, w przeciwieństwie do filtrów. W filtrach zapytania dotyczące pól podrzędnych kolekcji złożonej są skorelowane przy użyciu zmiennych zakresu w [ `any` lub `all` ](search-query-odata-collection-operators.md). Powyższe zapytanie Lucene zwraca dokumenty zawierające zarówno "Portland, Maine" i "Portland, Oregon" oraz inne miasta w Oregon. Dzieje się tak, ponieważ każda klauzula ma zastosowanie do wszystkich wartości pola w całym dokumencie, dlatego nie istnieje koncepcja "bieżącego dokumentu podrzędnego". Aby uzyskać więcej informacji na ten temat, zobacz [Omówienie filtrów kolekcji OData w Azure Search](search-query-understand-collection-filters.md).
+Zapytania takie jak takie nie są *skorelowane* dla wyszukiwania pełnotekstowego, w przeciwieństwie do filtrów. W filtrach zapytania dotyczące pól podrzędnych kolekcji złożonej są skorelowane przy użyciu zmiennych zakresu w [`any` lub `all`](search-query-odata-collection-operators.md). Powyższe zapytanie Lucene zwraca dokumenty zawierające zarówno "Portland, Maine" i "Portland, Oregon" oraz inne miasta w Oregon. Dzieje się tak, ponieważ każda klauzula ma zastosowanie do wszystkich wartości pola w całym dokumencie, dlatego nie istnieje koncepcja "bieżącego dokumentu podrzędnego". Aby uzyskać więcej informacji na ten temat, zobacz [Omówienie filtrów kolekcji OData w usłudze Azure wyszukiwanie poznawcze](search-query-understand-collection-filters.md).
 
 ## <a name="selecting-complex-fields"></a>Wybieranie pól złożonych
 
-Ten `$select` parametr służy do wybierania pól, które są zwracane w wynikach wyszukiwania. Aby użyć tego parametru do zaznaczania określonych pól podrzędnych pola złożonego, należy uwzględnić pole nadrzędne i podpole oddzielone ukośnikiem (`/`).
+Parametr `$select` służy do wybierania pól, które są zwracane w wynikach wyszukiwania. Aby użyć tego parametru do zaznaczania określonych pól podrzędnych pola złożonego, należy uwzględnić pole nadrzędne i podpole oddzielone ukośnikiem (`/`).
 
     $select=HotelName, Address/City, Rooms/BaseRate
 
-Jeśli chcesz, aby były one widoczne w wynikach wyszukiwania, pola muszą być oznaczone jako możliwe do pobierania w indeksie. W `$select` instrukcji nie można używać tylko pól oznaczonych jako możliwe do pobierania.
+Jeśli chcesz, aby były one widoczne w wynikach wyszukiwania, pola muszą być oznaczone jako możliwe do pobierania w indeksie. W instrukcji `$select` można używać tylko pól oznaczonych jako możliwe do pobierania.
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>Filtrowanie, zestaw reguł i sortowanie pól złożonych
 
@@ -136,15 +135,15 @@ Tej samej [składni ścieżki OData](query-odata-filter-orderby-syntax.md) używ
 
 ### <a name="faceting-sub-fields"></a>Podpola aspektów
 
-Każde podpole może być oznaczone jako element wyglądu, chyba że jest typu `Edm.GeographyPoint` lub. `Collection(Edm.GeographyPoint)`
+Każde podpole może być oznaczone jako element, chyba że jest typu `Edm.GeographyPoint` lub `Collection(Edm.GeographyPoint)`.
 
-Liczby dokumentów zwracane w wynikach aspektu są obliczane dla dokumentu nadrzędnego (Hotel), a nie do dokumentów podrzędnych w złożonej kolekcji (pokoje). Załóżmy na przykład, że Hotel ma 20 pokojów typu "Suite". Po podanym parametrze `facet=Rooms/Type`aspektu liczba aspektów będzie jedną dla hotelu, a nie 20 dla pokojów.
+Liczby dokumentów zwracane w wynikach aspektu są obliczane dla dokumentu nadrzędnego (Hotel), a nie do dokumentów podrzędnych w złożonej kolekcji (pokoje). Załóżmy na przykład, że Hotel ma 20 pokojów typu "Suite". Podaną `facet=Rooms/Type`tego parametru aspektu liczba aspektów będzie jedną dla hotelu, a nie 20 dla pokojów.
 
 ### <a name="sorting-complex-fields"></a>Sortowanie pól złożonych
 
 Operacje sortowania dotyczą dokumentów (Hotele), a nie dokumentów podrzędnych (pokojów). Gdy istnieje kolekcja typu złożonego, taka jak pokoje, ważne jest, aby pamiętać, że nie można sortować w pokojach. W rzeczywistości nie można sortować według żadnej kolekcji.
 
-Operacje sortowania działają, gdy pola mają jedną wartość na dokument, niezależnie od tego, czy pole jest polem prostym, czy też podpolem w typie złożonym. Na przykład `Address/City` można użyć sortowania, ponieważ istnieje tylko jeden adres na Hotel, więc `$orderby=Address/City` sortuje Hotele według miejscowości.
+Operacje sortowania działają, gdy pola mają jedną wartość na dokument, niezależnie od tego, czy pole jest polem prostym, czy też podpolem w typie złożonym. Na przykład `Address/City` można sortować, ponieważ istnieje tylko jeden adres na Hotel, więc `$orderby=Address/City` sortuje Hotele według miejscowości.
 
 ### <a name="filtering-on-complex-fields"></a>Filtrowanie w polach złożonych
 
@@ -152,11 +151,11 @@ Można odwoływać się do podpól złożonego pola w wyrażeniu filtru. Po pros
 
     $filter=Address/Country eq 'Canada'
 
-Aby odfiltrować w polu kolekcji złożonej, można użyć **wyrażenia lambda** z [ `any` operatorami i `all` ](search-query-odata-collection-operators.md). W takim przypadku **zmienna zakresu** wyrażenia lambda jest obiektem z podpolami. Można odwołać się do tych podpól ze standardową składnią ścieżki OData. Na przykład następujący filtr zwróci wszystkie hotele z co najmniej jedną usługą Deluxe i wszystkie pokoje nieprzeznaczone do palenia:
+Aby odfiltrować w polu kolekcji złożonej, można użyć **wyrażenia lambda** z [operatorami`any` i `all`](search-query-odata-collection-operators.md). W takim przypadku **zmienna zakresu** wyrażenia lambda jest obiektem z podpolami. Można odwołać się do tych podpól ze standardową składnią ścieżki OData. Na przykład następujący filtr zwróci wszystkie hotele z co najmniej jedną usługą Deluxe i wszystkie pokoje nieprzeznaczone do palenia:
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-Podobnie jak w przypadku pól prostych najwyższego poziomu, proste podpola złożonych pól można dołączać tylko do filtrów, jeśli mają atrybut z możliwością `true` filtrowania ustawioną na wartość w definicji indeksu. Aby uzyskać więcej informacji, zobacz [Dokumentacja interfejsu API tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+Podobnie jak w przypadku pól prostych najwyższego poziomu, proste pola podrzędne pól złożonych mogą być uwzględniane tylko w filtrach, jeśli mają atrybut z możliwością **filtrowania** ustawioną `true` w definicji indeksu. Aby uzyskać więcej informacji, zobacz [Dokumentacja interfejsu API tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
 
 ## <a name="next-steps"></a>Następne kroki
 

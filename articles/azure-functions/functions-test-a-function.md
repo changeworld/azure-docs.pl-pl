@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 9155df315a5afb9a0fa7722c955333a47a73085a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 250d470e2450820f57720e0e1a6d274291cf162c
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596854"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809629"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie testowania kodu w Azure Functions
 
@@ -309,7 +309,8 @@ module.exports = {
     IsPastDue: false
 };
 ```
-Ten moduł implementuje Właściwość `IsPastDue`, aby było to wystąpienie fałszywego czasomierza.
+
+Ten moduł implementuje Właściwość `IsPastDue`, aby było to wystąpienie fałszywego czasomierza. Konfiguracje czasomierza, takie jak wyrażenia NCRONTAB, nie są wymagane w tym miejscu, ponieważ zespół testów ma po prostu wywołanie funkcji bezpośrednio w celu przetestowania wyniku.
 
 Następnie użyj rozszerzenia funkcji VS Code, aby [utworzyć nową funkcję http języka JavaScript](/azure/javascript/tutorial-vscode-serverless-node-01) i nadaj jej nazwę *HttpTrigger*. Po utworzeniu funkcji Dodaj nowy plik do tego samego folderu o nazwie **index. test. js**i Dodaj następujący kod:
 

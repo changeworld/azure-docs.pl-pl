@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 265a14fa216741a5a5994389e671e7558a527261
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: d4ca26606eb8be5b9092f40b70b57b9d5d85385c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013714"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804001"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>Wdrażanie aplikacji dwustosowej protokołu IPv6 przy użyciu podstawowego Load Balancer — interfejs wiersza polecenia (wersja zapoznawcza)
 
 W tym artykule opisano sposób wdrażania aplikacji podwójnego stosu (IPv4 + IPv6) Load Balancer przy użyciu interfejsu wiersza polecenia platformy Azure, który obejmuje sieć wirtualną o podwójnej stercie z podsiecią podwójnego stosu, czyli podstawową Load Balancer z dwoma (IPv4 + IPv6) konfiguracjami frontonu, maszynami wirtualnymi z kartami sieciowymi jest to konfiguracja dwuadresowego protokołu IP, podwójne reguły sieciowej grupy zabezpieczeń i dwa publiczne adresy IP.
 
-Aby wdrożyć aplikację z podwójnym stosem (IPV4 + IPv6) przy użyciu usługa Load Balancer w warstwie Standardowa, zobacz Wdrażanie aplikacji dwustosowej przy użyciu [protokołu IPv6 usługa Load Balancer w warstwie Standardowa za pomocą interfejsu wiersza polecenia platformy Azure](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).
+Aby wdrożyć aplikację z podwójnym stosem (IPV4 + IPv6) przy użyciu usługa Load Balancer w warstwie Standardowa, zobacz [wdrażanie aplikacji dwustosowej przy użyciu protokołu IPv6 usługa Load Balancer w warstwie Standardowa za pomocą interfejsu wiersza polecenia platformy Azure](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).
 
 > [!Important]
 > Podwójny stos IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -36,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, utwórz teraz [bezpłatne konto](ht
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten przewodnik Szybki Start wymaga użycia interfejsu wiersza polecenia platformy Azure w wersji 2.0.49 lub nowszej. Aby dowiedzieć się, jaka wersja jest zainstalowana, uruchom polecenie `az --version`. Aby uzyskać informacje na temat instalacji i uaktualnienia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby użyć funkcji IPv6 dla usługi Azure Virtual Network, należy skonfigurować subskrypcję przy użyciu Azure PowerShell w następujący sposób:
+Aby użyć funkcji IPv6 dla usługi Azure Virtual Network, należy skonfigurować subskrypcję przy użyciu interfejsu wiersza polecenia platformy Azure w następujący sposób:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
@@ -53,9 +53,9 @@ Po zakończeniu rejestracji Uruchom następujące polecenie:
 ```azurelci
 az provider register --namespace Microsoft.Network
 ```
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
-Przed utworzeniem sieci wirtualnej o podwójnym stosie należy utworzyć grupę zasobów za pomocą [AZ Group Create](/cli/azure/group). Poniższy przykład tworzy grupę zasobów o nazwie *myRGDualStack* w lokalizacji *Wschodnie* :
+Przed utworzeniem sieci wirtualnej o podwójnym stosie należy utworzyć grupę zasobów za pomocą [AZ Group Create](/cli/azure/group). Poniższy przykład tworzy grupę zasobów o nazwie *DsResourceGroup01* w lokalizacji *Wschodnie* :
 
 ```azurecli
 az group create \
@@ -64,7 +64,7 @@ az group create \
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>Tworzenie publicznych adresów IP adresów IPv4 i IPv6 dla usługi równoważenia obciążenia
-Aby uzyskać dostęp do punktów końcowych protokołów IPv4 i IPv6 w Internecie, należy dysponować adresami IP dla usługi równoważenia obciążenia IPv4 i IPv6. Utwórz publiczny adres IP za pomocą polecenia [az network public-ip create](/cli/azure/network/public-ip). Poniższy przykład tworzy publiczny adres IP IPv4 i IPv6 o nazwie *dsPublicIP_v4* i *dsPublicIP_v6* w grupie zasobów *myRGDualStack* :
+Aby uzyskać dostęp do punktów końcowych protokołów IPv4 i IPv6 w Internecie, należy dysponować adresami IP dla usługi równoważenia obciążenia IPv4 i IPv6. Utwórz publiczny adres IP za pomocą polecenia [az network public-ip create](/cli/azure/network/public-ip). Poniższy przykład tworzy publiczny adres IP IPv4 i IPv6 o nazwie *dsPublicIP_v4* i *dsPublicIP_v6* w grupie zasobów *DsResourceGroup01* :
 
 ```azurecli
 # Create an IPV4 IP address
@@ -384,7 +384,7 @@ Sieć wirtualną o podwójnym stosie IPv6 można wyświetlić w Azure Portal w n
 Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [az group delete](/cli/azure/group#az-group-delete).
 
 ```azurecli
- az group delete --name DsRG1
+ az group delete --name DsResourceGroup01
 ```
 
 ## <a name="next-steps"></a>Następne kroki

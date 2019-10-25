@@ -1,5 +1,6 @@
 ---
-title: Konfigurowalne okresy istnienia tokenów w Azure Active Directory | Microsoft Docs
+title: Konfigurowalne okresy istnienia tokenu w Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak ustawiać okresy istnienia tokenów wystawionych przez usługę Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be2e9d7657d621a285f7177dc6cdd3a01b83470d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 73869773597d372affbf02e6a256642c8c1ce8f4
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024447"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809310"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurowalne okresy istnienia tokenu w Azure Active Directory (wersja zapoznawcza)
 
@@ -44,11 +45,19 @@ Zasady można wyznaczyć jako zasady domyślne dla swojej organizacji. Zasady s�
 
 ## <a name="token-types"></a>Typy tokenów
 
-Można ustawić zasady okresu istnienia tokenu dla tokenów odświeżania, tokenów dostępu, tokenów sesji i tokenów identyfikatorów.
+Można ustawić zasady okresu istnienia tokenu dla tokenów odświeżania, tokenów dostępu, tokenów SAML, tokenów sesji i tokenów identyfikatorów.
 
 ### <a name="access-tokens"></a>Tokeny dostępu
 
 Klienci używają tokenów dostępu w celu uzyskiwania dostępu do chronionego zasobu. Tokenu dostępu można używać tylko dla konkretnej kombinacji użytkownika, klienta i zasobu. Tokeny dostępu nie mogą zostać odwołane i są ważne do czasu ich wygaśnięcia. Złośliwy aktor, który uzyskał token dostępu, może korzystać z niego na potrzeby zakresu jego okresu istnienia. Dostosowanie okresu istnienia tokena dostępu jest kompromisem między zwiększeniem wydajności systemu i zwiększeniem czasu, przez jaki klient zachowuje dostęp po wyłączeniu konta użytkownika. Zwiększona wydajność systemu jest osiągana przez zredukowanie liczby prób uzyskania przez klienta nowego tokenu dostępu.  Wartość domyślna to 1 godzina — po 1 godzinie klient musi używać tokenu odświeżania do (zazwyczaj dyskretnie) uzyskać nowy token odświeżania i token dostępu. 
+
+### <a name="saml-tokens"></a>Tokeny języka SAML
+
+Tokeny SAML są używane przez wiele aplikacji SAAS opartych na sieci Web i są uzyskiwane Azure Active Directory przy użyciu punktu końcowego protokołu SAML2.  Są one również używane przez aplikacje korzystające z protokołu WS-Federation.    Domyślny okres istnienia tokenu to 1 godzina. Po określeniu przez aplikacje i perspektywie okresu ważności tokenu jest określana przez wartość NotOnOrAfter warunków <... > element w tokenie.  Po upływie okresu ważności tokenu klient musi zainicjować nowe żądanie uwierzytelniania, które będzie często spełnione bez interakcyjnego logowania w wyniku tokenu sesji logowania jednokrotnego (SSO).
+
+Wartość NotOnOrAfter można zmienić przy użyciu parametru AccessTokenLifetime w TokenLifetimePolicy.  Zostanie ona ustawiona na okres istnienia skonfigurowany w ramach zasad, jeśli istnieje, oraz współczynnik pochylenia zegara wynoszący pięć minut.
+
+Należy pamiętać, że konfiguracja okresu istnienia tokenu nie wpłynie na potwierdzenie podmiotu NotOnOrAfter określone w elemencie <SubjectConfirmationData>. 
 
 ### <a name="refresh-tokens"></a>Odśwież tokeny
 
@@ -89,7 +98,7 @@ Zasada okresu istnienia tokenu jest typem obiektu zasad, który zawiera reguły 
 | Maksymalny wiek tokenu sesji wieloskładnikowe |MaxAgeSessionMultiFactor |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Do odwołania<sup>1</sup> |
 
 * <sup>1</sup>365 dni to maksymalna jawna długość, którą można ustawić dla tych atrybutów.
-* <sup>2</sup> Aby umożliwić działanie klienta sieci Web Microsoft Teams, zaleca się ustawienie AccessTokenLifetime na ponad 15 minut dla zespołów Microsoft Teams.
+* <sup>2</sup> Aby zapewnić działanie klienta sieci Web Microsoft Teams, zaleca się pozostawienie AccessTokenLifetime do ponad 15 minut dla Microsoft Teams.
 
 ### <a name="exceptions"></a>Wyjątki
 | Właściwość | Mową | Domyślne |
@@ -139,7 +148,7 @@ Wszystkie używane tu przedziały czasu są sformatowane zgodnie C# z obiektem [
 ### <a name="access-token-lifetime"></a>Okres istnienia tokenu dostępu
 **Ciąg:** AccessTokenLifetime
 
-**Ma wpływ na:** Tokeny dostępu, tokeny identyfikatorów
+**Ma wpływ na:** Tokeny dostępu, tokeny identyfikatorów, tokeny SAML
 
 **Podsumowanie:** Ta zasada kontroluje, jak długo tokeny dostępu i identyfikatorów dla tego zasobu są uznawane za ważne. Zmniejszenie właściwości okresu istnienia tokenu dostępu zmniejsza ryzyko związane z tokenem dostępu lub tokenem ID używanym przez złośliwy aktor przez dłuższy czas. (Tokeny te nie mogą zostać odwołane). W wyniku tego jest niekorzystnie wpływać na wydajność, ponieważ tokeny muszą być częściej zastępowane.
 
@@ -389,7 +398,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 | <code>&#8209;DisplayName</code> |Ciąg nazwy zasad. |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;IsOrganizationDefault</code> |W przypadku wartości true ustawia zasady jako domyślne zasady organizacji. W przypadku wartości false nic nie robi. |`-IsOrganizationDefault $true` |
 | <code>&#8209;Type</code> |Typ zasad. W przypadku okresów istnienia tokenu zawsze używaj "TokenLifetimePolicy". | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> [opcjonalne] |Ustawia identyfikator alternatywny dla zasad. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;AlternativeIdentifier</code> [opcjonalnie] |Ustawia identyfikator alternatywny dla zasad. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -402,7 +411,7 @@ Get-AzureADPolicy
 
 | Parametry | Opis | Przykład |
 | --- | --- | --- |
-| <code>&#8209;Id</code> [opcjonalne] |**Objectid (ID)** żądanych zasad. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> [opcjonalnie] |**Objectid (ID)** żądanych zasad. |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -430,10 +439,10 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**Objectid (ID)** żądanych zasad. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |Ciąg nazwy zasad. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code> [opcjonalne] |Tablica JSON skonwertowanej, która zawiera wszystkie reguły zasad. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code> [opcjonalne] |W przypadku wartości true ustawia zasady jako domyślne zasady organizacji. W przypadku wartości false nic nie robi. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> [opcjonalne] |Typ zasad. W przypadku okresów istnienia tokenu zawsze używaj "TokenLifetimePolicy". |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> [opcjonalne] |Ustawia identyfikator alternatywny dla zasad. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;Definition</code> [opcjonalnie] |Tablica JSON skonwertowanej, która zawiera wszystkie reguły zasad. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| <code>&#8209;IsOrganizationDefault</code> [opcjonalnie] |W przypadku wartości true ustawia zasady jako domyślne zasady organizacji. W przypadku wartości false nic nie robi. |`-IsOrganizationDefault $true` |
+| <code>&#8209;Type</code> [opcjonalnie] |Typ zasad. W przypadku okresów istnienia tokenu zawsze używaj "TokenLifetimePolicy". |`-Type "TokenLifetimePolicy"` |
+| <code>&#8209;AlternativeIdentifier</code> [opcjonalnie] |Ustawia identyfikator alternatywny dla zasad. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 

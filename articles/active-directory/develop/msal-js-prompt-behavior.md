@@ -1,6 +1,7 @@
 ---
-title: Monit o zachowanie w interaktywnych żądań (Biblioteka Microsoft Authentication Library dla języka JavaScript) | Azure
-description: Dowiedz się więcej na temat dostosowywania zachowania monitu w wywołań interakcyjnego przy użyciu Biblioteka Microsoft Authentication Library dla języka JavaScript (MSAL.js).
+title: Zachowanie monitu w przypadku żądań interaktywnych (Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript)
+titleSuffix: Microsoft identity platform
+description: Dowiedz się więcej o dostosowywaniu zachowań monitów w wywołaniach interaktywnych przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,20 +18,20 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd0d736345f312f1a1d6f8f029b41429a3e5f0a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42d6c4415a3eeb28c999d95b838c6dd7c0f6e606
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544269"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803013"
 ---
-# <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Zachowanie monitu w MSAL.js interaktywnych żądań
+# <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Zachowanie monitu w MSAL. js Interactive Requests
 
-Po użytkownik ustanowiła active Azure AD sesji z wieloma kontami użytkowników, strony logowania usługi Azure AD będzie domyślnie monitować użytkownika o wybranie konta przed przejściem do logowania. Użytkownicy nie będą widzieć wybór konta wystąpić, jeśli istnieje tylko jednej sesji uwierzytelnionych z usługą Azure AD.
+Gdy użytkownik ustanowił aktywną sesję usługi Azure AD z wieloma kontami użytkowników, na stronie logowania usługi Azure AD zostanie domyślnie wyświetlony monit o wybranie konta przed kontynuowaniem logowania. Jeśli istnieje tylko jedna uwierzytelniona sesja z usługą Azure AD, użytkownicy nie będą widzieć środowiska wyboru konta.
 
-Biblioteka MSAL.js (począwszy od v0.2.4) nie wysyła parametr monitu podczas interaktywnych żądań (`loginRedirect`, `loginPopup`, `acquireTokenRedirect` i `acquireTokenPopup`), a tym samym nie wymusza każde zachowanie monitu. Dyskretnej żądania tokenu przy użyciu `acquireTokenSilent` metody MSAL.js przekazuje parametr monitu ustaw `none`.
+Biblioteka MSAL. js (rozpoczynająca się 0.2.4) nie wysyła parametru monitu podczas żądań interaktywnych (`loginRedirect`, `loginPopup`, `acquireTokenRedirect` i `acquireTokenPopup`), a tym samym nie wymusza żadnego zachowania monitu. W przypadku żądań tokenu dyskretnego za pomocą metody `acquireTokenSilent` MSAL. js przekazuje parametr monitu ustawiony na `none`.
 
-Oparte na scenariusz aplikacji, można kontrolować zachowanie monitu dla interakcyjnych żądań przez ustawienie parametru za pomocą parametrów żądania przekazywane do metody. Na przykład, jeśli chcesz wywołać środowisko wybierania konta:
+Na podstawie scenariusza aplikacji można kontrolować zachowanie monitu dla żądań interaktywnych przez ustawienie parametru monitu w parametrach żądania przesłanych do metod. Na przykład jeśli chcesz wywołać środowisko wybierania konta:
 
 ```javascript
 var request = {
@@ -42,16 +43,16 @@ userAgentApplication.loginRedirect(request);
 ```
 
 
-Następujące wartości monitu mogą być przekazywane podczas uwierzytelniania w usłudze Azure AD:
+Podczas uwierzytelniania za pomocą usługi Azure AD można przekazywać następujące wartości monitu:
 
-**Zaloguj się:** Ta wartość spowoduje to wymuszenie użytkownika o podanie poświadczeń na żądanie uwierzytelnienia.
+**Logowanie:** Ta wartość spowoduje wymuszenie wprowadzenia przez użytkownika poświadczeń w żądaniu uwierzytelniania.
 
-**select_account:** Ta wartość będzie udostępniać użytkownikom środowisko wyboru konta, wyświetlanie listy wszystkich kont w sesji.
+**select_account:** Ta wartość umożliwi użytkownikowi wybranie wszystkich kont w sesji.
 
-**wyrażenie zgody:** Wartość ta będzie wywoływać dialog zgody OAuth, który pozwala użytkownikom na przyznawanie uprawnień aplikacji.
+**zgoda:** Ta wartość spowoduje wyzwolenie dialogu uwierzytelniania OAuth, który umożliwia użytkownikom Przyznawanie uprawnień do aplikacji.
 
-**Brak:** Ta wartość będzie upewnij się, że użytkownik nie widzi wszystkie interaktywne monity. Zalecane jest nie przekazuje tę wartość do interaktywnego metod w MSAL.js, ponieważ może mieć nieoczekiwane zachowania. Zamiast tego należy użyć `acquireTokenSilent` metodę, aby osiągnąć wywołań w trybie dyskretnym.
+**Brak:** Ta wartość zapewni, że użytkownik nie zobaczy żadnego interakcyjnego monitu. Zaleca się, aby nie przekazywać tej wartości do interaktywnych metod w MSAL. js, ponieważ mogą one mieć nieoczekiwane zachowania. Zamiast tego należy użyć metody `acquireTokenSilent`, aby uzyskać dyskretne wywołania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przeczytaj więcej na temat `prompt` parametru w [przyznawanie niejawne protokołu OAuth 2.0](v2-oauth2-implicit-grant-flow.md) Biblioteka MSAL.js, które używa protokołu.
+Przeczytaj więcej na temat `prompt` parametru w [niejawnym protokole OAuth 2,0](v2-oauth2-implicit-grant-flow.md) , który jest używany przez bibliotekę MSAL. js.

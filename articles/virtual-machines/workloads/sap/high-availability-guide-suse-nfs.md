@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 7af5663b399556d66f86213310858780369215af
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0e4daaa3417ce349111fbc811be36a4615058c76
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101051"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791723"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server
 
@@ -51,7 +51,7 @@ ms.locfileid: "70101051"
 [sap-hana-ha]:sap-hana-high-availability.md
 
 W tym artykule opisano sposób wdrażania maszyn wirtualnych, konfigurowania maszyn wirtualnych, instalowania platformy klastra i instalowania serwera NFS o wysokiej dostępności, który może służyć do przechowywania danych udostępnionych systemu SAP o wysokiej dostępności.
-W tym przewodniku opisano sposób konfigurowania serwera NFS o wysokiej dostępności, który jest używany przez dwa systemy SAP, NW1 i NW2. Nazwy zasobów (na przykład Virtual Machines, Virtual Networks) w przykładzie założono, że użyto [szablonu serwera plików SAP][template-file-server] z prefiksem zasobu.
+W tym przewodniku opisano sposób konfigurowania serwera NFS o wysokiej dostępności, który jest używany przez dwa systemy SAP, NW1 i NW2. Nazwy zasobów (na przykład Virtual Machines, Virtual Networks) w przykładzie założono, że użyto [szablonu serwera plików SAP][template-file-server] **z prefiksem**zasobu.
 
 Najpierw przeczytaj następujące informacje i dokumenty SAP
 
@@ -78,7 +78,7 @@ Najpierw przeczytaj następujące informacje i dokumenty SAP
 * [SUSE Linux Enterprise Server for SAP Applications 12 SP3 — wskazówki dotyczące najlepszych rozwiązań][sles-for-sap-bp]
 * [Informacje o wersji w programie SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aby zapewnić wysoką dostępność, rozwiązanie SAP NetWeaver wymaga serwera NFS. Serwer NFS jest skonfigurowany w osobnym klastrze i może być używany przez wiele systemów SAP.
 
@@ -120,7 +120,7 @@ Możesz użyć jednego z szablonów szybkiego startu w usłudze GitHub, aby wdro
    4. Nazwa użytkownika administratora i hasło administratora  
       Zostanie utworzony nowy użytkownik, którego można użyć do zalogowania się na komputerze.
    5. Identyfikator podsieci  
-      Jeśli chcesz wdrożyć maszynę wirtualną w istniejącej sieci wirtualnej, w której zdefiniowano podsieć, należy przypisać do niej identyfikator tej konkretnej podsieci. Ten identyfikator zwykle wygląda tak, jak **&lt;identyfikator&gt;subskrypcji**/subscriptions//resourceGroups/ **&lt;nazwa&gt;grupy zasobów**/Providers/Microsoft.Network/virtualNetworks/ **&lt; &gt;** nazwa**podsieci/Subnets/&gt; nazwy sieci wirtualnej&lt;**
+      Jeśli chcesz wdrożyć maszynę wirtualną w istniejącej sieci wirtualnej, w której zdefiniowano podsieć, należy przypisać do niej identyfikator tej konkretnej podsieci. Identyfikator ma zwykle postać/subscriptions/ **&lt;Identyfikator subskrypcji&gt;** /resourceGroups/ **&lt;nazwa grupy zasobów&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;nazwa sieci wirtualnej&gt;** /subnets/ **&lt;nazwę podsieci&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ręczne wdrażanie systemu Linux za pośrednictwem Azure Portal
 
@@ -188,17 +188,17 @@ Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker SUSE Linux Enterprise 
 
 ### <a name="configure-nfs-server"></a>Konfigurowanie serwera NFS
 
-Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
 
-1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+1. **[A]** rozpoznawanie nazw hostów
 
-   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
+   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
    
-   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska
+   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku
    
    <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
@@ -436,6 +436,10 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 1. **[1]** Dodaj urządzenia DRBD NFS dla oprogramowania SAP system NW1 do konfiguracji klastra
 
+   > [!IMPORTANT]
+   > Ostatnie testy ujawniły sytuacje, w których netcat przestaje odpowiadać na żądania z powodu zaległości i ograniczenia obsługi tylko jednego połączenia. Zasób netcat przestaje nasłuchiwać żądań modułu równoważenia obciążenia platformy Azure, a przestawny adres IP stał się niedostępny.  
+   > W przypadku istniejących klastrów Pacemaker zalecamy zastępowanie netcat z socat, postępując zgodnie z instrukcjami w obszarze zabezpieczenia [wykrywania modułu równoważenia obciążenia platformy Azure](https://www.suse.com/support/kb/doc/?id=7024128). Należy pamiętać, że zmiana będzie wymagała krótkiego przestoju.  
+
    <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
 
    # Enable maintenance mode
@@ -473,7 +477,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    
    sudo crm configure primitive nc_<b>NW1</b>_nfs \
      anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61000</b>" op monitor timeout=20s interval=10 depth=0
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>61000</b>,backlog=10,fork,reuseaddr /dev/null" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW1</b>_nfs \
      fs_<b>NW1</b>_sapmnt exportfs_<b>NW1</b> nc_<b>NW1</b>_nfs vip_<b>NW1</b>_nfs
@@ -518,7 +522,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    
    sudo crm configure primitive nc_<b>NW2</b>_nfs \
      anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61001</b>" op monitor timeout=20s interval=10 depth=0
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>61001</b>,backlog=10,fork,reuseaddr /dev/null" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW2</b>_nfs \
      fs_<b>NW2</b>_sapmnt exportfs_<b>NW2</b> nc_<b>NW2</b>_nfs vip_<b>NW2</b>_nfs

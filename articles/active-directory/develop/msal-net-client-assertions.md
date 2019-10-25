@@ -1,5 +1,6 @@
 ---
-title: Potwierdzenia klientów w bibliotece uwierzytelniania firmy Microsoft dla platformy .NET | Azure
+title: Potwierdzenia klientów w bibliotece uwierzytelniania firmy Microsoft dla platformy .NET
+titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o obsłudze potwierdzeń klientów podpisanych dla poufnych aplikacji klienckich w bibliotece uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: jmprieur
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1ea75499334f3f6eb2f5d3c15526067fcef4eb8
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: fcf11ac8dc39dcb1d70b932dbe870687f5446a52
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442501"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802853"
 ---
 # <a name="confidential-client-assertions"></a>Poufne potwierdzenia klienta
 Aby udowodnić swoją tożsamość, poufne aplikacje klienckie wymieniają klucz tajny z usługą Azure AD. Wpis tajny może być:
@@ -50,14 +51,14 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Oświadczenia oczekiwane przez usługę Azure AD to:
 
-Typ zgłoszenia | Value | Opis
+Typ zgłoszenia | Wartość | Opis
 ---------- | ---------- | ----------
-aud | https://login.microsoftonline.com/{tenantId}/v2.0 | Deklaracja "AUD" (odbiorcy) identyfikuje odbiorców, dla których jest przeznaczony token JWT (w tym przypadku usługa Azure AD), zobacz [RFC 7519, sekcja 4.1.3]
-exp | Czwartek Jun 27 2019 15:04:17 GMT + 0200 (czas letni) | Wartość "EXP" (czas wygaśnięcia) określa czas wygaśnięcia w dniu lub, po którym nie można zaakceptować tokenu JWT do przetworzenia. Patrz [RFC 7519, sekcja 4.1.4]
+AUD | https://login.microsoftonline.com/{tenantId}/v2.0 | Deklaracja "AUD" (odbiorcy) identyfikuje odbiorców, dla których jest przeznaczony token JWT (w tym przypadku usługa Azure AD), zobacz [RFC 7519, sekcja 4.1.3]
+EXP | Czwartek Jun 27 2019 15:04:17 GMT + 0200 (czas letni) | Wartość "EXP" (czas wygaśnięcia) określa czas wygaśnięcia w dniu lub, po którym nie można zaakceptować tokenu JWT do przetworzenia. Patrz [RFC 7519, sekcja 4.1.4]
 ISS | ClientID | Wartość "ISS" (wystawca) identyfikuje podmiot zabezpieczeń, który wystawił token JWT. Przetwarzanie tego żądania jest specyficzne dla aplikacji. Wartość "ISS" jest ciągiem z uwzględnieniem wielkości liter, zawierającym wartość StringOrURI. [RFC 7519, sekcja 4.1.1]
 jti | (identyfikator GUID) | Wartość "JTI" (identyfikator JWT) zapewnia unikatowy identyfikator dla tokenu JWT. Wartość identyfikatora musi być przypisana w sposób, który gwarantuje, że istnieje niewielkie prawdopodobieństwo, że ta sama wartość zostanie przypadkowo przypisana do innego obiektu danych; Jeśli aplikacja używa wielu wystawców, kolizje muszą być blokowane między wartościami wyprodukowanymi przez różne wystawcy. Można użyć roszczeń "JTI", aby uniemożliwić odtwarzanie tokenu JWT. Wartość "JTI" jest ciągiem z uwzględnieniem wielkości liter. [RFC 7519, sekcja 4.1.7]
-nbf | Czwartek Jun 27 2019 14:54:17 GMT + 0200 (czas letni) | Wartość "NBF" (nie wcześniej) określa czas, po którym nie można zatwierdzić tokenu JWT do przetwarzania. [RFC 7519, sekcja 4.1.5]
-sub | ClientID | Wartość "Sub" (podmiot) służy do identyfikowania tematu tokenu JWT. Oświadczenia w tokenie JWT są zwykle instrukcjami dotyczącymi tematu. Wartość podmiotu musi być objęta zakresem lokalnym unikatowym w kontekście wystawcy lub być globalnie unikatowa. Patrz [RFC 7519, sekcja 4.1.2]
+NBF | Czwartek Jun 27 2019 14:54:17 GMT + 0200 (czas letni) | Wartość "NBF" (nie wcześniej) określa czas, po którym nie można zatwierdzić tokenu JWT do przetwarzania. [RFC 7519, sekcja 4.1.5]
+Sub | ClientID | Wartość "Sub" (podmiot) służy do identyfikowania tematu tokenu JWT. Oświadczenia w tokenie JWT są zwykle instrukcjami dotyczącymi tematu. Wartość podmiotu musi być objęta zakresem lokalnym unikatowym w kontekście wystawcy lub być globalnie unikatowa. Patrz [RFC 7519, sekcja 4.1.2]
 
 Oto przykład sposobu przedstawiania tych oświadczeń:
 
@@ -135,7 +136,7 @@ string GetAssertion()
 
 ### <a name="withclientclaims"></a>WithClientClaims
 
-`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`Domyślnie program będzie generował podpisane potwierdzenie zawierające oświadczenia oczekiwane przez usługę Azure AD i dodatkowe oświadczenia klienta, które mają zostać wysłane. Oto fragment kodu dotyczący tego, jak to zrobić.
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` domyślnie spowoduje utworzenie podpisanego potwierdzenia zawierającego oświadczenia oczekiwane przez usługę Azure AD oraz dodatkowe oświadczenia klienta, które chcesz wysłać. Oto fragment kodu dotyczący tego, jak to zrobić.
 
 ```CSharp
 string ipAddress = "192.168.1.2";
@@ -150,4 +151,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Jeśli jedno z oświadczeń w słowniku, w którym się znajdujesz, jest takie samo jak oświadczenie obowiązkowe, zostanie uwzględniona dodatkowa wartość oświadczenia. Spowoduje to zastąpienie oświadczeń obliczanych przez MSAL.NET.
 
-Jeśli chcesz podać własne oświadczenia, w tym obowiązkowe oświadczenia oczekiwane przez usługę Azure AD, Przekaż `false` `mergeWithDefaultClaims` do parametru.
+Jeśli chcesz podać własne oświadczenia, w tym obowiązkowe oświadczenia oczekiwane przez usługę Azure AD, Przekaż `false` dla parametru `mergeWithDefaultClaims`.

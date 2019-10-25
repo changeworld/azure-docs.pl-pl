@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 12ac5c44a0ee479d84616b138f9e2369a195c275
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 69afe2aab3c10707f7160d727b970ad73d59a952
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976466"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791558"
 ---
-# <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Szybki start: Tworzenie obszaru roboczego Azure Databricks w Virtual Network
+# <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Szybki Start: Tworzenie obszaru roboczego Azure Databricks w Virtual Network
 
 Ten przewodnik Szybki Start przedstawia sposób tworzenia obszaru roboczego Azure Databricks w sieci wirtualnej. Utworzysz również Klaster Apache Spark w tym obszarze roboczym.
 
@@ -23,52 +23,52 @@ Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 > [!Note]
 > Tego samouczka nie można przeprowadzić za pomocą **subskrypcji bezpłatnej wersji próbnej platformy Azure**.
-> Jeśli masz bezpłatne konto, przejdź do swojego profilu i Zmień subskrypcję na **płatność zgodnie z rzeczywistym**użyciem. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). Następnie [Usuń limit wydatków](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)i poproś o [zwiększenie limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) dla procesorów wirtualnych vCPU w Twoim regionie. Podczas tworzenia obszaru roboczego Azure Databricks możesz wybrać warstwę cenową **wersji próbnej (Premium-14-Days Free dBu)** , aby umożliwić dostęp do obszaru roboczego bezpłatnie Azure Databricks DBU przez 14 dni.
+> Jeśli masz bezpłatne konto, przejdź do swojego profilu i Zmień subskrypcję na **płatność zgodnie z rzeczywistym**użyciem. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). Następnie [Usuń limit wydatków](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)i [Poproś o zwiększenie limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) dla procesorów wirtualnych vCPU w Twoim regionie. Podczas tworzenia obszaru roboczego Azure Databricks możesz wybrać warstwę cenową **wersji próbnej (Premium-14-Days Free dBu)** , aby umożliwić dostęp do obszaru roboczego bezpłatnie Azure Databricks DBU przez 14 dni.
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-1. W Azure Portal wybierz pozycję **Utwórz zasób** >  > Sieć**sieci wirtualnej**.
+1. W Azure Portal wybierz pozycję **Utwórz zasób** > **Networking** > **sieci wirtualnej**.
 
 2. W obszarze **Utwórz sieć wirtualną**Zastosuj następujące ustawienia: 
 
     |Ustawienie|Sugerowana wartość|Opis|
     |-------|---------------|-----------|
-    |Name (Nazwa)|datakostki — Szybki Start|Wybierz nazwę sieci wirtualnej.|
+    |Nazwa|datakostki — Szybki Start|Wybierz nazwę sieci wirtualnej.|
     |Przestrzeń adresowa|10.1.0.0/16|Zakres adresów sieci wirtualnej w notacji CIDR.|
-    |Subscription|\<Twoja subskrypcja\>|Wybierz subskrypcję platformy Azure, której chcesz użyć.|
-    |Resource group|datakostki — Szybki Start|Wybierz pozycję **Utwórz nową** , a następnie wprowadź nową nazwę grupy zasobów dla swojego konta.|
-    |Location|\<Wybierz region, który jest najbliżej Twoich użytkowników\>|Wybierz lokalizację geograficzną, w której będzie można hostować sieć wirtualną. Użyj lokalizacji znajdującej się najbliżej użytkowników.|
+    |Subskrypcja|\<Twoja subskrypcja\>|Wybierz subskrypcję platformy Azure, której chcesz użyć.|
+    |Grupa zasobów|datakostki — Szybki Start|Wybierz pozycję **Utwórz nową** , a następnie wprowadź nową nazwę grupy zasobów dla swojego konta.|
+    |Lokalizacja|\<Wybierz region, który jest najbliżej Twoich użytkowników\>|Wybierz lokalizację geograficzną, w której będzie można hostować sieć wirtualną. Użyj lokalizacji znajdującej się najbliżej użytkowników.|
     |Nazwa podsieci|default|Wybierz nazwę domyślnej podsieci w sieci wirtualnej.|
     |Zakres adresów podsieci|10.1.0.0/24|Zakres adresów podsieci w notacji CIDR. Musi ona być zawarta w przestrzeni adresowej sieci wirtualnej. Nie można edytować zakresu adresów podsieci, która jest używana.|
 
     ![Tworzenie sieci wirtualnej w Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
 
-3. Po zakończeniu wdrażania przejdź do sieci wirtualnej i wybierz pozycję **przestrzeń adresowa** w obszarze **Ustawienia**. W polu tekstowym *Dodaj dodatkowy zakres adresów*Wstaw `10.179.0.0/16` i wybierz pozycję **Zapisz**.
+3. Po zakończeniu wdrażania przejdź do sieci wirtualnej i wybierz pozycję **przestrzeń adresowa** w obszarze **Ustawienia**. W polu " *Dodaj dodatkowy zakres adresów*" Wstaw `10.179.0.0/16` i wybierz pozycję **Zapisz**.
 
     ![Przestrzeń adresowa sieci wirtualnej platformy Azure](./media/quickstart-create-databricks-workspace-vnet-injection/add-address-space.png)
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
-1. W Azure Portal wybierzpozycję **Utwórz zasoby** > **analizy** > zasobów.
+1. W Azure Portal wybierz pozycję **Utwórz zasób** > **analizie** > **datakostki**.
 
 2. W obszarze **Azure Databricks Service**Zastosuj następujące ustawienia:
 
     |Ustawienie|Sugerowana wartość|Opis|
     |-------|---------------|-----------|
     |Nazwa obszaru roboczego|datakostki — Szybki Start|Wybierz nazwę obszaru roboczego Azure Databricks.|
-    |Subscription|\<Twoja subskrypcja\>|Wybierz subskrypcję platformy Azure, której chcesz użyć.|
-    |Resource group|datakostki — Szybki Start|Wybierz tę samą grupę zasobów, która została użyta dla sieci wirtualnej.|
-    |Location|\<Wybierz region, który jest najbliżej Twoich użytkowników\>|Wybierz tę samą lokalizację, w której znajduje się Twoja sieć wirtualna.|
-    |Warstwa cenowa|Wybierz warstwę Standardowa lub Premium.|Więcej informacji o warstwach cenowych znajduje się na [stronie cennika](https://azure.microsoft.com/pricing/details/databricks/)usługi datacegłs.|
+    |Subskrypcja|\<Twoja subskrypcja\>|Wybierz subskrypcję platformy Azure, której chcesz użyć.|
+    |Grupa zasobów|datakostki — Szybki Start|Wybierz tę samą grupę zasobów, która została użyta dla sieci wirtualnej.|
+    |Lokalizacja|\<Wybierz region, który jest najbliżej Twoich użytkowników\>|Wybierz tę samą lokalizację, w której znajduje się Twoja sieć wirtualna.|
+    |Warstwa cenowa|Wybierz warstwę Standardowa lub Premium.|Więcej informacji o warstwach cenowych znajduje się na [stronie cennika usługi datacegłs](https://azure.microsoft.com/pricing/details/databricks/).|
     |Wdróż Azure Databricks obszar roboczy w Virtual Network|Tak|To ustawienie umożliwia wdrożenie obszaru roboczego Azure Databricks w sieci wirtualnej.|
     |Sieć wirtualna|datakostki — Szybki Start|Wybierz sieć wirtualną utworzoną w poprzedniej sekcji.|
-    |Nazwa podsieci publicznej|public-subnet|Użyj domyślnej nazwy podsieci publicznej.|
+    |Nazwa podsieci publicznej|podsieć publiczna|Użyj domyślnej nazwy podsieci publicznej.|
     |Zakres CIDR podsieci publicznej|10.179.64.0/18|Zakres CIDR dla tej podsieci powinien mieścić się w przedziale od/18 do/26.|
-    |Nazwa podsieci prywatnej|private-subnet|Użyj domyślnej nazwy podsieci prywatnej.|
+    |Nazwa podsieci prywatnej|podsieć prywatna|Użyj domyślnej nazwy podsieci prywatnej.|
     |Zakres CIDR podsieci prywatnej|10.179.0.0/18|Zakres CIDR dla tej podsieci powinien mieścić się w przedziale od/18 do/26.|
 
     ![Utwórz obszar roboczy Azure Databricks na Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
@@ -88,7 +88,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. Wróć do usługi Azure Databricks i wybierz pozycję **Uruchom obszar roboczy** na stronie **Przegląd** .
 
-2. Wybierz > pozycję Klastry **+ Utwórz klaster**. Następnie Utwórz nazwę klastra, na przykład *datakosteks — szybki start-Cluster*i zaakceptuj pozostałe ustawienia domyślne. Wybierz pozycję **Utwórz klaster**.
+2. Wybierz pozycję **klastry** >  **+ Utwórz klaster**. Następnie Utwórz nazwę klastra, na przykład *datakosteks — szybki start-Cluster*i zaakceptuj pozostałe ustawienia domyślne. Wybierz pozycję **Utwórz klaster**.
 
     ![Utwórz klaster Azure Databricks](./media/quickstart-create-databricks-workspace-vnet-injection/create-cluster.png)
 

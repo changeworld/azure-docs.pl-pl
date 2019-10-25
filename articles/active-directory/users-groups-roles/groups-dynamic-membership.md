@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a8823a9b354ca4ae9ecab0eeac265b486116bec
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241169"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808975"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -185,7 +185,7 @@ Podczas określania wartości w wyrażeniu ważne jest używanie poprawnej skła
 
 * Podwójne cudzysłowy są opcjonalne, chyba że wartość jest ciągiem.
 * W operacjach typu String i wyrażeń regularnych nie jest rozróżniana wielkość liter.
-* Gdy wartość ciągu zawiera podwójne cudzysłowy, dla obu cudzysłowów należy użyć znaku ucieczki \`, na przykład user. Department-EQ \` "Sales @ no__t-2" jest poprawną składnią, gdy wartość jest równa "Sales".
+* Gdy wartość ciągu zawiera podwójne cudzysłowy, oba cudzysłowy powinny być wyprowadzane przy użyciu znaku \`, na przykład user. Department-EQ \`"Sales\`" jest poprawną składnią, gdy "Sales" jest wartością.
 * Możesz także przeprowadzić sprawdzanie wartości null, używając wartości null jako wartości, na przykład `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Użycie wartości null
@@ -279,7 +279,7 @@ Poniższe wyrażenie umożliwia wybranie wszystkich użytkowników, którzy maj�
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore-_-syntax"></a>Używanie znaku podkreślenia (\_)
+### <a name="using-the-underscore-_-syntax"></a>Użycie składni podkreślenia (\_)
 
 Składnia podkreślenia (\_) dopasowuje wystąpienia określonej wartości w jednej z wielowartościowych właściwości kolekcji ciągów do dodawania użytkowników lub urządzeń do grupy dynamicznej. Jest używana z operatorami-any lub-ALL.
 
@@ -379,8 +379,10 @@ Można użyć następujących atrybutów urządzeń.
  enrollmentProfileName | Profil rejestracji urządzeń firmy Apple, rejestracja urządzeń — identyfikatory urządzeń firmowych (Android-kiosk) lub nazwa profilu autopilotażu systemu Windows | (Device. enrollmentProfileName-EQ "telefony iPhone")
  isrootd | PRAWDA FAŁSZ | (Device. isrootd-EQ true)
  managementtype | MDM (dla urządzeń przenośnych)<br>Komputer PC (dla komputerów zarządzanych przez agenta komputera usługi Intune) | (Device. managementtype-EQ "MDM")
+ organizationalUnit | prawidłowa lokalna jednostka organizacyjna (OU) | (Device. organizationalUnit — zawiera "laptop")
  deviceId | prawidłowy identyfikator urządzenia usługi Azure AD | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  Obiektu | prawidłowy identyfikator obiektu usługi Azure AD |  (Device. objectId-EQ 76ad43c9-32c5-45e8-A272-7b58b58f596d ")
+ devicePhysicalIds | dowolna wartość ciągu używana przez autopilotaż, taka jak wszystkie urządzenia autopilotażowe, IDZamówienia lub PurchaseOrderID  | (Device. devicePhysicalIDs-any _-zawiera "[ZTDId]") (Device. devicePhysicalIds-any _-EQ "[IDZamówienia]: 179887111881") (Device. devicePhysicalIds-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | dowolny ciąg zgodny z właściwością urządzenia usługi Intune w celu tagowania nowoczesnych urządzeń w miejscu pracy | (Device. systemLabels-zawiera "M365Managed")
 
 > [!Note]  

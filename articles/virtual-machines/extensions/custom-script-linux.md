@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: akjosh
-ms.openlocfilehash: 3a999b93ce7246a91db8dd3df7536513b6e11029
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 86c05519e7027ec8b7434919bf43f9b4602b0300
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174046"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789955"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Korzystanie z rozszerzenia niestandardowego skryptu platformy Azure w wersji 2 z maszynami wirtualnymi z systemem Linux
 Rozszerzenie skryptu niestandardowego wersja 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalacji oprogramowania lub innych zadań związanych z konfiguracją/zarządzaniem. Skrypty można pobrać z usługi Azure Storage lub innej dostępnej lokalizacji w Internecie lub można je udostępnić do środowiska uruchomieniowego rozszerzenia. 
@@ -33,12 +33,12 @@ Istnieją dwa rozszerzenia niestandardowego skryptu systemu Linux:
 * Wersja 1 — Microsoft. OSTCExtensions. CustomScriptForLinux
 * Wersja 2 — Microsoft. Azure. Extensions. CustomScript
 
-Przełącz nowe i istniejące wdrożenia, aby zamiast tego użyć nowej wersji 2. Nowa wersja jest przeznaczona do zastąpienia. W związku z tym migracja jest tak łatwa jak zmiana nazwy i wersji, więc nie trzeba zmieniać konfiguracji rozszerzenia.
+Przełącz nowe i istniejące wdrożenia, aby zamiast tego użyć nowej wersji 2. Nowa wersja jest przeznaczona do użycia bezpośrednio w miejsce starszej. Dlatego migracja jest tak łatwa jak zmiana nazwy i wersji — nie trzeba zmieniać konfiguracji rozszerzenia.
 
 
 ### <a name="operating-system"></a>System operacyjny
 
-Rozszerzenie niestandardowego skryptu dla systemu Linux zostanie uruchomione na obsługiwanym rozszerzeniu system operacyjny rozszerzenia, aby uzyskać więcej informacji, zobacz ten [artykuł](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems).
+Rozszerzenie niestandardowego skryptu dla systemu Linux zostanie uruchomione na obsługiwanym rozszerzeniu system operacyjny rozszerzenia, aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 
 ### <a name="script-location"></a>Lokalizacja skryptu
 
@@ -55,7 +55,7 @@ Jeśli skrypt znajduje się na serwerze lokalnym, może być konieczne otwarcie 
 * Upewnij się, że skrypty nie wymagają wprowadzania danych przez użytkownika po ich uruchomieniu.
 * Aby skrypt mógł zostać uruchomiony, może być 90 min, co spowoduje niepowodzenie aprowizacji rozszerzenia.
 * Nie należy umieszczać ponownych uruchomień wewnątrz skryptu, co spowoduje problemy z innymi zainstalowanymi rozszerzeniami i po ponownym uruchomieniu, rozszerzenie nie będzie kontynuowane po ponownym uruchomieniu. 
-* Jeśli masz skrypt, który powoduje ponowne uruchomienie, zainstaluj aplikacje i uruchom skrypty itp. Należy zaplanować ponowny rozruch przy użyciu zadania firmy CRONUS lub użyć narzędzi takich jak DSC lub Chef Puppet.
+* Jeśli masz skrypt, który spowoduje ponowne uruchomienie komputera, zainstaluj aplikacje i Uruchom skrypty itp. Należy zaplanować ponowny rozruch przy użyciu zadania firmy CRONUS lub użyć narzędzi takich jak DSC lub Chef Puppet.
 * Rozszerzenie spowoduje uruchomienie skryptu tylko raz, aby uruchomić skrypt na każdym rozruchu, a następnie użyć [obrazu Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) i użyć [skryptów dla modułu rozruchu](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) . Alternatywnie możesz użyć skryptu, aby utworzyć systemową jednostkę usługi.
 * Jeśli chcesz zaplanować uruchomienie skryptu, użyj rozszerzenia, aby utworzyć zadanie firmy cronus. 
 * W trakcie działania skryptu będziesz widzieć tylko stan „przechodzenie” z witryny Azure Portal lub interfejsu wiersza polecenia. Jeśli chcesz więcej częste aktualizacje stanu uruchomionego skryptu, musisz utworzyć własne rozwiązanie.
@@ -70,7 +70,7 @@ Konfiguracja rozszerzenia niestandardowego skryptu określa elementy, takie jak 
 
 Poufne dane można przechowywać w chronionej konfiguracji, która jest szyfrowana i odszyfrowywana tylko wewnątrz maszyny wirtualnej. Konfiguracja chroniona jest przydatna, gdy polecenie wykonywania zawiera wpisy tajne, takie jak hasło.
 
-Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji ustawień chronionych przez rozszerzenia. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej.
+Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji ustawień chronionych przez rozszerzenia. Dane ustawienia chronionego rozszerzenia maszyny wirtualnej platformy Azure są szyfrowane i odszyfrowywane tylko na docelowej maszynie wirtualnej.
 
 ```json
 {
@@ -106,27 +106,27 @@ Te elementy powinny być traktowane jako dane poufne i określone w konfiguracji
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Name (Nazwa) | Wartość / przykład | Typ danych | 
+| Nazwa | Wartość/przykład | Typ danych | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
-| publisher | Microsoft. COMPUTE. Extensions | ciąg |
-| type | CustomScript | ciąg |
+| dawc | Microsoft. COMPUTE. Extensions | string |
+| type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
-| fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| Sekcji commandtoexecute (np.) | środowisko Python \<MyPythonScript.py my-param1 > | ciąg |
-| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | ciąg |
-| skipDos2Unix (np.) | false | boolean |
-| timestamp (np.) | 123456789 | 32-bitowa liczba całkowita |
-| storageAccountName (np.) | examplestorageacct | ciąg |
-| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | ciąg |
+| fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | tablica |
+| Sekcji commandtoexecute (np.) | środowisko Python MyPythonScript.py \<my-param1 > | string |
+| napisy | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | string |
+| skipDos2Unix (np.) | false | wartość logiczna |
+| Sygnatura czasowa (np.) | 123456789 | 32-bitowa liczba całkowita |
+| storageAccountName (np.) | examplestorageacct | string |
+| storageAccountKey (np.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | string |
 
 ### <a name="property-value-details"></a>Szczegóły wartości właściwości
-* `skipDos2Unix`: (opcjonalne, wartość logiczna) Pomiń dos2unix konwersję adresów URL lub skryptu plików opartych na skryptach.
-* `timestamp`(opcjonalnie, 32-bitową liczbę całkowitą) Użyj tego pola tylko do wyzwalania ponownego uruchomienia skryptu przez zmianę wartości tego pola.  Dopuszczalna jest dowolna wartość całkowita; musi on być inny niż Poprzednia wartość.
+* `skipDos2Unix`: (opcjonalne, wartość logiczna) pomija dos2unix konwersję adresów URL lub skryptu plików opartych na skrypcie.
+* `timestamp` (opcjonalnie, 32-bitową liczbę całkowitą) Użyj tego pola tylko do wyzwalania ponownego uruchomienia skryptu przez zmianę wartości tego pola.  Dopuszczalna jest dowolna wartość całkowita; musi on być inny niż Poprzednia wartość.
   * `commandToExecute`: (**wymagane** , jeśli skrypt nie jest ustawiony, String) skrypt punktu wejścia do wykonania. Użyj tego pola zamiast tego, jeśli polecenie zawiera wpisy tajne, takie jak hasła.
 * `script`: (**wymagane** , jeśli sekcji commandtoexecute nie został ustawiony, String) skrypt kodowany algorytmem Base64 (i opcjonalnie gzip'ed) wykonywany przez/bin/sh.
-* `fileUris`: (opcjonalne, tablica ciągów) adresy URL dla plików do pobrania.
-* `storageAccountName`: (opcjonalnie, ciąg) nazwa konta magazynu. W przypadku określenia poświadczeń magazynu wszystkie `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.
+* `fileUris`: (opcjonalnie tablica ciągów) adresy URL dla plików do pobrania.
+* `storageAccountName`: (opcjonalnie, String) nazwa konta magazynu. W przypadku określenia poświadczeń magazynu wszystkie `fileUris` muszą być adresami URL dla obiektów blob platformy Azure.
 * `storageAccountKey`: (opcjonalnie, String) klucz dostępu konta magazynu
 
 
@@ -143,9 +143,9 @@ Ustawienia publiczne są wysyłane w postaci zwykłego tekstu do maszyny wirtual
 
 Wartość domyślna to false, co oznacza, że **jest** wykonywana konwersja dos2unix.
 
-Poprzednia wersja CustomScript, Microsoft. OSTCExtensions. CustomScriptForLinux, automatycznie konwertuje pliki DOS do plików systemu UNIX przez `\r\n` przetłumaczenie `\n`na. To tłumaczenie nadal istnieje i jest domyślnie włączone. Ta konwersja jest stosowana do wszystkich plików pobranych z fileUris lub ustawienia skryptu w oparciu o dowolne z poniższych kryteriów.
+Poprzednia wersja CustomScript, Microsoft. OSTCExtensions. CustomScriptForLinux, automatycznie konwertuje pliki DOS do plików systemu UNIX przez przetłumaczenie `\r\n` na `\n`. To tłumaczenie nadal istnieje i jest domyślnie włączone. Ta konwersja jest stosowana do wszystkich plików pobranych z fileUris lub ustawienia skryptu w oparciu o dowolne z poniższych kryteriów.
 
-* Jeśli rozszerzenie jest jednym `.sh`z, `.txt`, `.py`lub `.pl` zostanie przekonwertowane. Ustawienie skryptu będzie zawsze zgodne z tymi kryteriami, ponieważ zakłada się, że skrypt jest wykonywany przy użyciu/bin/sh i jest zapisywany jako script.sh na maszynie wirtualnej.
+* Jeśli rozszerzenie jest jednym z `.sh`, `.txt`, `.py`lub `.pl` zostanie przekonwertowane. Ustawienie skryptu będzie zawsze zgodne z tymi kryteriami, ponieważ zakłada się, że skrypt jest wykonywany przy użyciu/bin/sh i jest zapisywany jako script.sh na maszynie wirtualnej.
 * Jeśli plik zaczyna się od `#!`.
 
 Konwersję dos2unix można pominąć, ustawiając wartość skipDos2Unix na true.
@@ -201,7 +201,7 @@ CustomScript używa następującego algorytmu do wykonania skryptu.
 
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
-Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON opisany w poprzedniej sekcji można użyć w szablonie Azure Resource Manager, aby uruchomić rozszerzenie niestandardowego skryptu podczas wdrażania szablonu Azure Resource Manager. Przykładowy szablon, który zawiera rozszerzenie niestandardowego skryptu, można znaleźć w witrynie [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Rozszerzenia maszyny wirtualnej platformy Azure można wdrażać za pomocą szablonów Azure Resource Manager. Schemat JSON opisany w poprzedniej sekcji można użyć w szablonie Azure Resource Manager, aby uruchomić rozszerzenie niestandardowego skryptu podczas wdrażania szablonu Azure Resource Manager. Przykładowy szablon, który zawiera rozszerzenie niestandardowego skryptu, można znaleźć w witrynie [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 
 ```json
@@ -329,7 +329,7 @@ az vm extension set \
 ```
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Po uruchomieniu rozszerzenia skryptu niestandardowego skrypt jest tworzony lub pobierany do katalogu podobnego do poniższego przykładu. Dane wyjściowe polecenia są również zapisywane w tym katalogu w `stdout` plikach `stderr` i.
+Po uruchomieniu rozszerzenia skryptu niestandardowego skrypt jest tworzony lub pobierany do katalogu podobnego do poniższego przykładu. Dane wyjściowe polecenia są również zapisywane w tym katalogu w plikach `stdout` i `stderr`.
 
 ```bash
 /var/lib/waagent/custom-script/download/0/

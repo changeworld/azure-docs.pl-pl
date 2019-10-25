@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 67a05d065cba8286c837487e21fc2f5be54e2c0b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: c9339b5c7c35378fb85daeae19a6daa01d54f350
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162348"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809646"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Włączanie dostrajania automatycznego w celu monitorowania zapytań i zwiększania wydajności obciążeń
 
@@ -103,6 +103,12 @@ Aby skonfigurować funkcję automatycznego dostrajania, zobacz sekcję [ALTER DA
 ## <a name="disabled-by-the-system"></a>Wyłączone przez system
 
 Dostrajanie automatyczne sprawdza wszystkie akcje wykonywane w bazie danych, a w niektórych przypadkach może określić, że dostrajanie automatyczne nie może prawidłowo współpracować z bazą danych. W takiej sytuacji opcja dostrajania zostanie wyłączona przez system. W większości przypadków dzieje się tak, ponieważ magazyn zapytań nie jest włączony lub jest w stanie tylko do odczytu w określonej bazie danych.
+
+## <a name="permissions"></a>Uprawnienia
+
+Ponieważ Dostosowywanie automatyczne to funkcja platformy Azure, aby móc jej używać, należy użyć wbudowanych ról RBAC platformy Azure. Tylko uwierzytelnianie SQL nie jest wystarczające do korzystania z funkcji z Azure Portal.
+
+Aby można było korzystać z dostrajania automatycznego, minimalnym wymaganym uprawnieniem do udzielenia użytkownikowi jest wbudowana rola [współautor bazy danych SQL](../role-based-access-control/built-in-roles.md#sql-db-contributor) platformy Azure. Możesz również rozważyć użycie wyższych ról przywilejów, takich SQL Server jak współautor, współautor i właściciel.
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfiguruj automatyczne dostrajanie powiadomień e-mail
 

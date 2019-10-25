@@ -9,57 +9,74 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 3b4992a16061bef782f012aa7887b248e3423234
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 0156ab3acd2f4c629b0263356f61c22e62b424d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568355"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792309"
 ---
-**Wymagania dotyczące serwera konfiguracji/przetwarzania**
+**Wymagania dotyczące konfiguracji/serwera przetwarzania**
+
+
+## <a name="hardware-requirements"></a>Wymagania sprzętowe
 
 **Składnik** | **Wymaganie** 
 --- | ---
-**USTAWIENIA SPRZĘTU** | 
 Rdzenie procesora CPU | 8 
 Pamięć RAM | 16 GB
-Liczba dysków | 3, w tym dysku systemu operacyjnego, dysk pamięci podręcznej serwera przetwarzania i dysk przechowywania na potrzeby powrotu po awarii 
+Liczba dysków | 3, w tym dysk systemu operacyjnego, dysk pamięci podręcznej serwera przetwarzania i dysk przechowywania na potrzeby powrotu po awarii 
 Wolne miejsce na dysku (pamięć podręczna serwera przetwarzania) | 600 GB
-Wolnego miejsca na dysku (dysk przechowywania) | 600 GB
+Wolne miejsce na dysku (dysk przechowywania) | 600 GB
  | 
-**USTAWIENIA OPROGRAMOWANIA** | 
+
+## <a name="software-requirements"></a>Wymagania dotyczące oprogramowania
+
+**Składnik** | **Wymaganie** 
+--- | ---
 System operacyjny | Windows Server 2012 R2 <br> Windows Server 2016
 Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
-Role systemu Windows Server | Nie włączaj tych ról: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V 
-Zasady grupy | Nie włączaj tych zasad grupy: <br> -Zapobiegaj dostępowi do wiersza polecenia. <br> -Uniemożliwić dostęp do narzędzi edycji rejestru. <br> — Logika zaufania dla plików załączników. <br> -Włącz wykonywanie skryptu. <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | -Brak wcześniej istniejącej domyślnej witryny sieci Web <br> -Brak przeniosła istniejące wcześniej witryny sieci Web/aplikacja nasłuchuje na porcie 443 <br>-Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie 
+Role systemu Windows Server | Nie należy włączać tych ról: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V 
+Zasady grupy | Nie włączaj tych zasad grupy: <br> -Zapobiegaj dostępowi do wiersza polecenia. <br> — Uniemożliwia dostęp do narzędzi do edytowania rejestru. <br> — Logika zaufania dla plików załączników. <br> — Włącz wykonywanie skryptu. <br> [Dowiedz się więcej](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | -Brak istniejącej domyślnej witryny sieci Web <br> — Żadna istniejąca witryna sieci Web/aplikacja nasłuchu na porcie 443 <br>-Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz ustawienie [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 
 | 
-**USTAWIENIA SIECI** | 
-Typ adresu IP | Static 
+
+## <a name="network-requirements"></a>Wymagania dotyczące sieci
+
+**Składnik** | **Wymaganie** 
+--- | --- 
+Typ adresu IP | Statyczny 
 Porty | 443 (organizowanie kanału sterowania)<br>9443 (transport danych) 
-Typ karty NIC | Innego VMXNET3 (Jeśli na serwerze konfiguracji maszyny Wirtualnej VMware)
+Typ karty sieciowej | VMXNET3 (Jeśli serwer konfiguracji jest maszyną wirtualną VMware)
  |
 **Dostęp do Internetu** (serwer musi mieć dostęp do następujących adresów URL — bezpośrednio lub za pośrednictwem serwera proxy):|
-\*.backup.windowsazure.com | Używany do transferowania i koordynacji replikowanych danych.
-\*.store.core.windows.net | Używany do transferowania i koordynacji replikowanych danych.
-\*.blob.core.windows.net | Umożliwia dostęp do konta magazynu przechowującego zreplikowane dane
-\*.hypervrecoverymanager.windowsazure.com | Służy do operacji zarządzania replikacją i koordynacji
-https:\//management.azure.com | Służy do operacji zarządzania replikacją i koordynacji 
-*.services.visualstudio.com | Używane do celów danych telemetrycznych (jest to opcjonalne)
+\*.backup.windowsazure.com | Używany do transferu i koordynacji replikowanych danych
+\*.store.core.windows.net | Używany do transferu i koordynacji replikowanych danych
+\*.blob.core.windows.net | Służy do uzyskiwania dostępu do konta magazynu przechowującego zreplikowane dane
+\*.hypervrecoverymanager.windowsazure.com | Używany do operacji zarządzania replikacją i koordynacji
+https:\//management.azure.com | Używany do operacji zarządzania replikacją i koordynacji 
+*.services.visualstudio.com | Używane na potrzeby telemetrii (jest opcjonalne)
 time.nist.gov | Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
 time.windows.com | Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
-| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | Konfigurowanie pakietu OVF musi mieć dostęp do tych adresów URL. Są one używane do kontrolowania dostępu i tożsamości zarządzania przez usługę Azure Active Directory
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | Aby zakończyć pobieranie MySQL. </br> W kilku regionach pliki do pobrania może być skierowana do adresu URL usługi CDN. Upewnij się, że adres URL usługi CDN również umieszczona na białej liście, jeśli jest to wymagane.
+| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | Konfiguracja OVF wymaga dostępu do tych adresów URL. Są one używane do kontroli dostępu i zarządzania tożsamościami przez Azure Active Directory
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | Aby ukończyć pobieranie bazy danych MySQL. </br> W kilku regionach pobieranie może zostać przekierowane na adres URL sieci CDN. Upewnij się, że adres URL usługi CDN jest również listy dozwolonych, w razie potrzeby.
 |
-**OPROGRAMOWANIE DO ZAINSTALOWANIA** | 
-Program VMware vSphere PowerCLI | [Interfejs PowerCLI w wersji 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) powinien być zainstalowany, jeśli serwer konfiguracji jest uruchomiony na maszynie Wirtualnej VMware.
-MYSQL | Powinien być zainstalowany MySQL. Można zainstalować ręcznie lub Usługa Site Recovery można go zainstalować. (Zobacz [konfigurowania ustawień](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings) Aby uzyskać więcej informacji)
 
-**Określania rozmiaru wymagania dotyczące serwera konfiguracji/przetwarzania**
+## <a name="required-software"></a>Wymagane oprogramowanie
 
-**CPU** | **Pamięć** | **Dysk pamięci podręcznej** | **Współczynnik zmian danych** | **Zreplikowane maszyny**
+**Składnik** | **Wymaganie** 
+--- | ---
+VMware vSphere PowerCLI | Należy zainstalować [PowerCLI w wersji 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) , jeśli serwer konfiguracji jest uruchomiony na maszynie wirtualnej VMware.
+MYSQL | Należy zainstalować MySQL. Można zainstalować go ręcznie lub Site Recovery może go zainstalować. (Aby uzyskać więcej informacji, zobacz [Konfigurowanie ustawień](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings) ).
+
+## <a name="sizing-and-capacity-requirements"></a>Wymagania dotyczące wielkości i pojemności
+
+Poniższa tabela zawiera podsumowanie wymagań dotyczących pojemności dla serwera konfiguracji. W przypadku replikowania wielu maszyn wirtualnych VMware należy zapoznać się z [zagadnieniami dotyczącymi planowania pojemności](../articles/site-recovery/site-recovery-plan-capacity-vmware.md) i uruchomienia [Narzędzia planista wdrażania usługi Azure Site Recovery](../articles/site-recovery/site-recovery-deployment-planner.md).
+
+
+**TESTY** | **Rozmiar** | **Dysk pamięci podręcznej** | **Szybkość zmian danych** | **Zreplikowane maszyny**
 --- | --- | --- | --- | ---
-8 wirtualnych procesorów CPU<br/><br/> gniazda 2 * 4 rdzenie \@ 2,5 GHz | 16GB | 300 GB | 500 GB lub mniej | < 100 maszyn
-12 procesorów wirtualnych Vcpu<br/><br/> 2 socks * 6 rdzeni \@ 2,5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100-150 maszyn
-16 procesorów wirtualnych Vcpu<br/><br/> 2 socks * 8 rdzeni \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | -150 200 maszyn
+8 procesorów wirtualnych vCPU<br/><br/> 2 gniazda * 4 rdzenie \@ 2,5 GHz | 16 GB | 300 GB | 500 GB lub mniej | Maszyny < 100
+12 procesorów wirtualnych vCPU<br/><br/> 2% SOCKS * 6 rdzeni \@ 2,5 GHz | 18 GB | 600 GB | 500 GB — 1 TB | 100 do 150 maszyn
+16 procesorów wirtualnych vCPU<br/><br/> 2\. SOCKS * 8 rdzeni \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150 – 200 maszyn
 

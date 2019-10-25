@@ -7,27 +7,26 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 536ada668db724ca50d7db820aff173f7222bab2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: b99eafeae60e81fd7d902289a47190a2cbe1daa3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336854"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786990"
 ---
-# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Samouczek: Utwórz i skonfiguruj wystąpienie Azure Active Directory Domain Services
+# <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Samouczek: Tworzenie i Konfigurowanie wystąpienia Azure Active Directory Domain Services
 
 Azure Active Directory Domain Services (AD DS platformy Azure) oferuje zarządzane usługi domenowe, takie jak przyłączanie do domeny, zasady grupy, protokół LDAP, uwierzytelnianie Kerberos/NTLM, które jest w pełni zgodne z systemem Windows Server Active Directory. Te usługi domenowe są używane bez konieczności samodzielnego wdrażania kontrolerów domeny i zarządzania nimi. Platforma Azure AD DS integruje się z istniejącą dzierżawą usługi Azure AD. Ta Integracja umożliwia użytkownikom logowanie się przy użyciu poświadczeń firmowych, a także umożliwia korzystanie z istniejących grup i kont użytkowników w celu zabezpieczenia dostępu do zasobów.
 
-W tym samouczku pokazano, jak utworzyć i skonfigurować wystąpienie usługi Azure AD DS przy użyciu Azure Portal.
+Można utworzyć domenę zarządzaną przy użyciu opcji konfiguracji domyślnej sieci i synchronizacji lub [ręcznie zdefiniować te ustawienia][tutorial-create-instance-advanced]. W tym samouczku pokazano, jak używać opcji domyślnych do tworzenia i konfigurowania wystąpienia usługi Azure AD DS przy użyciu Azure Portal.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Konfigurowanie ustawień systemu DNS i sieci wirtualnej dla domeny zarządzanej
+> * Informacje o wymaganiach dotyczących systemu DNS dla domeny zarządzanej
 > * Tworzenie wystąpienia usługi Azure AD DS
-> * Dodawanie użytkowników administracyjnych do zarządzania domeną
 > * Włączanie synchronizacji skrótów haseł
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [Utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
@@ -52,13 +51,15 @@ Chociaż nie jest to wymagane w przypadku usługi Azure AD DS, zaleca się [skon
 
 W tym samouczku utworzysz i skonfigurujesz wystąpienie usługi Azure AD DS przy użyciu Azure Portal. Aby rozpocząć, najpierw Zaloguj się do [Azure Portal](https://portal.azure.com).
 
-## <a name="create-an-instance-and-configure-basic-settings"></a>Utwórz wystąpienie i skonfiguruj ustawienia podstawowe
+## <a name="create-an-instance"></a>Tworzenie wystąpienia
 
 Aby uruchomić kreatora **włączania Azure AD Domain Services** , wykonaj następujące czynności:
 
 1. W lewym górnym rogu Azure Portal wybierz pozycję **+ Utwórz zasób**.
 1. Wprowadź *usługi domenowe* na pasku wyszukiwania, a następnie wybierz *Azure AD Domain Services* z sugestii wyszukiwania.
 1. Na stronie Azure AD Domain Services wybierz pozycję **Utwórz**. Zostanie uruchomiony Kreator **włączania Azure AD Domain Services** .
+1. Wybierz **subskrypcję** platformy Azure, w której chcesz utworzyć domenę zarządzaną.
+1. Wybierz **grupę zasobów** , do której powinna należeć domena zarządzana. Wybierz opcję **Utwórz nową** lub wybierz istniejącą grupę zasobów.
 
 Podczas tworzenia wystąpienia usługi Azure AD DS należy określić nazwę DNS. Po wybraniu tej nazwy DNS należy wziąć pod uwagę następujące kwestie:
 
@@ -86,80 +87,28 @@ Obowiązują również następujące ograniczenia nazw DNS:
 Wypełnij pola w oknie *podstawy* Azure Portal, aby utworzyć wystąpienie usługi Azure AD DS:
 
 1. Wprowadź **nazwę domeny DNS** dla domeny zarządzanej, biorąc pod uwagę poprzednie punkty.
-1. Wybierz **subskrypcję** platformy Azure, w której chcesz utworzyć domenę zarządzaną.
-1. Wybierz **grupę zasobów** , do której powinna należeć domena zarządzana. Wybierz opcję **Utwórz nową** lub wybierz istniejącą grupę zasobów.
 1. Wybierz **lokalizację** platformy Azure, w której ma zostać utworzona domena zarządzana.
-1. Kliknij przycisk **OK** , aby przejść do sekcji **Sieć** .
 
-![Konfigurowanie ustawień podstawowych dla wystąpienia Azure AD Domain Services](./media/tutorial-create-instance/basics-window.png)
+    ![Konfigurowanie ustawień podstawowych dla wystąpienia Azure AD Domain Services](./media/tutorial-create-instance/basics-window.png)
 
-## <a name="create-and-configure-the-virtual-network"></a>Utwórz i skonfiguruj sieć wirtualną
+Aby szybko utworzyć domenę zarządzaną platformy Azure AD DS, możesz wybrać pozycję **Przegląd + Utwórz** , aby zaakceptować dodatkowe opcje konfiguracji domyślnej. Po wybraniu tej opcji Utwórz konfigurowane są następujące wartości domyślne:
 
-Aby zapewnić łączność, wymagana jest sieć wirtualna platformy Azure i dedykowana podsieć. Usługa Azure AD DS jest włączona w tej podsieci sieci wirtualnej. W tym samouczku utworzysz sieć wirtualną, ale zamiast tego można wybrać użycie istniejącej sieci wirtualnej. W obu przypadkach należy utworzyć dedykowaną podsieć do użycia przez usługę Azure AD DS.
+* Tworzy sieć wirtualną o nazwie *aadds-VNET* , która używa zakresu adresów IP *10.0.1.0/24*.
+* Tworzy podsieć o nazwie *aadds-Subnet* przy użyciu zakresu adresów IP *10.0.1.0/24*.
+* Synchronizuje *wszystkich* użytkowników z usługi Azure AD do domeny zarządzanej AD DS platformy Azure.
 
-Niektóre zagadnienia dotyczące tej dedykowanej podsieci sieci wirtualnej obejmują następujące obszary:
+1. Wybierz pozycję **Przegląd + Utwórz** , aby zaakceptować te domyślne opcje konfiguracji.
 
-* Podsieć musi mieć co najmniej 3-5 dostępnych adresów IP w zakresie adresów, aby umożliwić obsługę zasobów AD DS platformy Azure.
-* Nie wybieraj podsieci *bramy* na potrzeby wdrażania usługi Azure AD DS. Wdrożenie AD DS platformy Azure w podsieci *bramy* nie jest obsługiwane.
-* Nie należy wdrażać żadnych innych maszyn wirtualnych w podsieci. Aplikacje i maszyny wirtualne często używają sieciowych grup zabezpieczeń do zabezpieczania łączności. Uruchomienie tych obciążeń w oddzielnej podsieci pozwala zastosować te sieciowe grupy zabezpieczeń bez zakłócania łączności z domeną zarządzaną.
-* Po włączeniu usługi Azure AD DS nie można przenieść domeny zarządzanej do innej sieci wirtualnej.
+## <a name="deploy-the-managed-domain"></a>Wdróż domenę zarządzaną
 
-Aby uzyskać więcej informacji na temat planowania i konfigurowania sieci wirtualnej, zobacz [zagadnienia dotyczące sieci Azure Active Directory Domain Services][network-considerations].
+Na stronie **Podsumowanie** kreatora przejrzyj ustawienia konfiguracji dla domeny zarządzanej. Możesz wrócić do dowolnego kroku kreatora, aby wprowadzić zmiany. Aby ponownie wdrożyć domenę zarządzaną platformy Azure AD DS w innej dzierżawie usługi Azure AD w spójny sposób przy użyciu tych opcji konfiguracji, można również **pobrać szablon do automatyzacji**.
 
-Wypełnij pola w oknie *sieci* w następujący sposób:
-
-1. W oknie **Sieć** wybierz **pozycję Wybierz sieć wirtualną**.
-1. Na potrzeby tego samouczka wybierz opcję **utworzenia nowej** sieci wirtualnej, w której ma zostać wdrożony AD DS platformy Azure.
-1. Wprowadź nazwę sieci wirtualnej, na przykład *myVnet*, a następnie podaj zakres adresów, na przykład *10.1.0.0/16*.
-1. Utwórz dedykowaną podsieć z nieprawidłową nazwą, taką jak *DomainServices*. Podaj zakres adresów, taki jak *10.1.0.0/24*.
-
-    ![Tworzenie sieci wirtualnej i podsieci do użycia z usługą Azure AD Domain Services](./media/tutorial-create-instance/create-vnet.png)
-
-    Upewnij się, że wybrano zakres adresów należący do zakresu prywatnych adresów IP. Zakresy adresów IP, których nie ma w publicznej przestrzeni adresowej, powodują błędy w usłudze Azure AD DS.
-
-    > [!TIP]
-    > Na stronie **Wybierz sieć wirtualną** zostaną wyświetlone istniejące sieci wirtualne należące do grupy zasobów i wybranej wcześniej lokalizacji platformy Azure. Przed wdrożeniem usługi Azure AD DS należy [utworzyć dedykowaną podsieć][create-dedicated-subnet] .
-
-1. Po utworzeniu sieci wirtualnej i podsieci należy automatycznie wybrać podsieć, na przykład *DomainServices*. Zamiast tego można wybrać alternatywną istniejącą podsieć, która jest częścią wybranej sieci wirtualnej:
-
-    ![Wybierz dedykowaną podsieć w ramach sieci wirtualnej](./media/tutorial-create-instance/choose-subnet.png)
-
-1. Wybierz **przycisk OK** , aby potwierdzić konfigurację sieci wirtualnej.
-
-## <a name="configure-an-administrative-group"></a>Skonfiguruj grupę administracyjną
-
-Specjalna grupa administracyjna o nazwie *Administratorzy usługi AAD* jest używana do zarządzania domeną AD DS platformy Azure. Członkowie tej grupy mają uprawnienia administracyjne na maszynach wirtualnych, które są przyłączone do domeny zarządzanej. Na maszynach wirtualnych przyłączonych do domeny ta grupa jest dodawana do lokalnej grupy administratorów. Członkowie tej grupy mogą również używać Pulpit zdalny do zdalnego nawiązywania połączenia z maszynami wirtualnymi przyłączonymi do domeny.
-
-Nie masz uprawnień *administratora domeny* ani *administratora przedsiębiorstwa* w domenie zarządzanej przy użyciu usługi Azure AD DS. Te uprawnienia są zastrzeżone przez usługę i nie są dostępne dla użytkowników w ramach dzierżawy. Zamiast tego grupa *Administratorzy usługi AAD DC* umożliwia wykonywanie niektórych operacji uprzywilejowanych. Te operacje obejmują Przyłączanie komputerów do domeny, należących do grupy administracyjnej na maszynach wirtualnych przyłączonych do domeny i Konfigurowanie zasady grupy.
-
-Kreator automatycznie tworzy grupę *administratorów DC w usłudze AAD* w katalogu usługi Azure AD. Jeśli masz istniejącą grupę o tej nazwie w katalogu usługi Azure AD, Kreator wybierze tę grupę. Opcjonalnie możesz wybrać opcję dodawania dodatkowych użytkowników do tej grupy *administratorów domeny usługi AAD* w procesie wdrażania. Kroki te można wykonać później.
-
-1. Aby dodać kolejnych użytkowników do tej grupy *administratorów domeny usługi AAD* , wybierz pozycję **Zarządzaj członkostwem w grupie**.
-1. Wybierz przycisk **Dodaj członków** , a następnie wyszukaj i wybierz użytkowników z katalogu usługi Azure AD. Na przykład wyszukaj własne konto i Dodaj je do grupy *administratorów kontrolera domeny usługi AAD* .
-
-    ![Konfigurowanie członkostwa w grupie Administratorzy domeny usługi AAD](./media/tutorial-create-instance/admin-group.png)
-
-1. Gdy skończysz, wybierz opcję **OK**.
-
-## <a name="configure-synchronization"></a>Konfigurowanie synchronizacji
-
-Usługa Azure AD DS pozwala synchronizować *wszystkich* użytkowników i grupy dostępne w usłudze Azure AD albo synchronizację z *zakresem* tylko określonych grup. W przypadku wybrania opcji synchronizowanie *wszystkich* użytkowników i grup nie można później przeprowadzić synchronizacji z zakresem. Aby uzyskać więcej informacji na temat synchronizacji z zakresem, zobacz [Azure AD Domain Services synchronizacji w zakresie][scoped-sync].
-
-1. Na potrzeby tego samouczka wybierz opcję Synchronizuj **wszystkich** użytkowników i grupy. Ten wybór synchronizacji jest opcją domyślną.
-
-    ![Wykonaj pełną synchronizację użytkowników i grup z usługi Azure AD](./media/tutorial-create-instance/sync-all.png)
-
-1. Kliknij przycisk **OK**.
-
-## <a name="deploy-your-managed-domain"></a>Wdróż domenę zarządzaną
-
-Na stronie **Podsumowanie** kreatora przejrzyj ustawienia konfiguracji dla domeny zarządzanej. Możesz wrócić do dowolnego kroku kreatora, aby wprowadzić zmiany.
-
-1. Aby utworzyć domenę zarządzaną, wybierz **przycisk OK**.
+1. Aby utworzyć domenę zarządzaną, wybierz pozycję **Utwórz**. Zostanie wyświetlona informacja o tym, że nie można zmienić pewnych opcji konfiguracji, takich jak nazwa DNS lub Sieć wirtualna, gdy zarządzana AD DS platformy Azure została utworzona. Aby kontynuować, wybierz **przycisk OK**.
 1. Proces aprowizacji domeny zarządzanej może potrwać do godziny. W portalu zostanie wyświetlone powiadomienie pokazujące postęp wdrożenia usługi Azure AD DS. Wybierz powiadomienie, aby zobaczyć szczegółowy postęp wdrażania.
 
     ![Powiadomienie w Azure Portal wdrożenia jest w toku](./media/tutorial-create-instance/deployment-in-progress.png)
 
+1. Strona zostanie załadowana z aktualizacjami w procesie wdrażania, w tym tworzeniem nowych zasobów w katalogu.
 1. Wybierz grupę zasobów, *na przykład grupa zasobów, a*następnie wybierz wystąpienie AD DS platformy Azure z listy zasobów platformy Azure, takich jak *contoso.com*. Karta **Przegląd** pokazuje, że obecnie trwa *wdrażanie*domeny zarządzanej. Nie można skonfigurować domeny zarządzanej, dopóki nie zostanie ona w pełni zainicjowana.
 
     ![Stan usług domenowych w trakcie aprowizacji](./media/tutorial-create-instance/provisioning-in-progress.png)
@@ -168,7 +117,7 @@ Na stronie **Podsumowanie** kreatora przejrzyj ustawienia konfiguracji dla domen
 
     ![Stan usług domenowych po pomyślnym zainicjowaniu obsługi administracyjnej](./media/tutorial-create-instance/successfully-provisioned.png)
 
-Podczas procesu aprowizacji usługa Azure AD DS tworzy dwie aplikacje dla przedsiębiorstw o nazwie *usługi kontrolera domeny* i *AzureActiveDirectoryDomainControllerServices* w katalogu. Te aplikacje przedsiębiorstwa są konieczne do obsługi domeny zarządzanej. Te aplikacje nie są usuwane w żadnym momencie.
+Zastrzegamy Azure AD Domain Services w dzierżawie Azure Active Directory, a zasób Azure AD Domain Services dla usługi jest tworzony w ramach skojarzonej subskrypcji platformy Azure. Podczas procesu aprowizacji usługa Azure AD DS tworzy dwie aplikacje dla przedsiębiorstw o nazwie *usługi kontrolera domeny* i *AzureActiveDirectoryDomainControllerServices* w wystąpieniu usługi Azure Active Directory, w którym włączono platformę Azure Usługi domenowe AD. Te aplikacje przedsiębiorstwa są konieczne do obsługi domeny zarządzanej.  Te aplikacje nie są usuwane w żadnym momencie.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Aktualizowanie ustawień DNS dla sieci wirtualnej platformy Azure
 
@@ -203,14 +152,14 @@ Aby użytkownik mógł zresetować swoje hasło, dzierżawa usługi Azure AD mus
 
 Aby zmienić hasło dla użytkownika tylko w chmurze, użytkownik musi wykonać następujące czynności:
 
-1. Przejdź do strony panelu dostępu usługi Azure AD pod [https://myapps.microsoft.com](https://myapps.microsoft.com)adresem.
+1. Przejdź do strony panelu dostępu usługi Azure AD w [https://myapps.microsoft.com](https://myapps.microsoft.com).
 1. W prawym górnym rogu wybierz swoją nazwę, a następnie wybierz pozycję **profil** z menu rozwijanego.
 
     ![Wybieranie profilu](./media/tutorial-create-instance/select-profile.png)
 
 1. Na stronie **profil** wybierz pozycję **Zmień hasło**.
 1. Na stronie **Zmienianie hasła** wprowadź istniejące hasło (stare), a następnie wprowadź i Potwierdź nowe hasło.
-1. Wybierz **przesłać**.
+1. Wybierz pozycję **Prześlij**.
 
 Po zmianie hasła nowego hasła do użycia w usłudze Azure AD DS i pomyślnym zalogowaniu się do komputerów przyłączonych do domeny zarządzanej zajmie kilka minut.
 
@@ -219,17 +168,18 @@ Po zmianie hasła nowego hasła do użycia w usłudze Azure AD DS i pomyślnym z
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Konfigurowanie ustawień systemu DNS i sieci wirtualnej dla domeny zarządzanej
+> * Informacje o wymaganiach dotyczących systemu DNS dla domeny zarządzanej
 > * Tworzenie wystąpienia usługi Azure AD DS
 > * Dodawanie użytkowników administracyjnych do zarządzania domeną
 > * Włącz konta użytkowników dla AD DS platformy Azure i Generuj skróty haseł
 
-Aby wyświetlić tę domenę zarządzaną w działaniu, należy utworzyć maszynę wirtualną i przyłączyć ją do domeny.
+Przed przyłączeniem maszyn wirtualnych do domeny i wdrożeniem aplikacji korzystających z domeny zarządzanej AD DS platformy Azure Skonfiguruj sieć wirtualną platformy Azure pod kątem obciążeń aplikacji.
 
 > [!div class="nextstepaction"]
-> [Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej](join-windows-vm.md)
+> [Konfigurowanie usługi Azure Virtual Network pod kątem obciążeń aplikacji do korzystania z domeny zarządzanej](tutorial-configure-networking.md)
 
 <!-- INTERNAL LINKS -->
+[tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [network-considerations]: network-considerations.md

@@ -1,24 +1,23 @@
 ---
-title: Typowe błędy i ostrzeżenia — Azure Search
-description: Ten artykuł zawiera informacje i rozwiązania typowych błędów i ostrzeżeń, które mogą wystąpić podczas wzbogacania AI w Azure Search.
-services: search
-manager: heidist
+title: Typowe błędy i ostrzeżenia
+titleSuffix: Azure Cognitive Search
+description: Ten artykuł zawiera informacje i rozwiązania typowych błędów i ostrzeżeń, które mogą wystąpić podczas wzbogacania danych AI na platformie Azure Wyszukiwanie poznawcze.
+manager: nitinme
 author: amotley
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: a8d5fc30299dbb16373b1cfbbd89563bad471f39
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553613"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787977"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Typowe błędy i ostrzeżenia dotyczące potoku wzbogacenia AI w Azure Search
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Typowe błędy i ostrzeżenia dotyczące potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze
 
-Ten artykuł zawiera informacje i rozwiązania typowych błędów i ostrzeżeń, które mogą wystąpić podczas wzbogacania AI w Azure Search.
+Ten artykuł zawiera informacje i rozwiązania typowych błędów i ostrzeżeń, które mogą wystąpić podczas wzbogacania danych AI na platformie Azure Wyszukiwanie poznawcze.
 
 ## <a name="errors"></a>Błędy
 Indeksowanie jest przerywane, gdy licznik błędów przekracza wartość ["maxFailedItems"](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). 
@@ -210,3 +209,14 @@ Jeśli chcesz upewnić się, że cały tekst jest analizowany, rozważ użycie o
 
 ### <a name="web-api-skill-response-contains-warnings"></a>Odpowiedź na umiejętność interfejsu API sieci Web zawiera ostrzeżenia
 Indeksator mógł uruchomić umiejętność w zestawu umiejętności, ale odpowiedź z żądania internetowego interfejsu API wskazywała, że wystąpiły ostrzeżenia podczas wykonywania. Zapoznaj się z ostrzeżeniami, aby zrozumieć, w jaki sposób wpływają dane oraz czy nie są wymagane akcje.
+
+### <a name="the-current-indexer-configuration-does-not-support-incremental-progress"></a>Bieżąca konfiguracja indeksatora nie obsługuje przyrostowego postępu
+To ostrzeżenie występuje tylko w przypadku Cosmos DB źródeł danych.
+
+Przyrostowy postęp podczas indeksowania zapewnia, że jeśli wykonywanie indeksatora zostanie przerwane przez przejściowe błędy lub limit czasu wykonywania, indeksator może zostać pobrany w miejscu, w którym zostanie pozostawiony po następnym uruchomieniu, zamiast konieczności ponownego indeksowania całej kolekcji od podstaw. Jest to szczególnie ważne podczas indeksowania dużych kolekcji.
+
+Możliwość wznowienia nieukończonego zadania indeksowania jest predykatem według dokumentów uporządkowanych według kolumny `_ts`. Indeksator używa sygnatury czasowej, aby określić, który dokument powinien zostać pobrany dalej. Jeśli brakuje kolumny `_ts` lub jeśli indeksator nie może określić, czy kwerenda niestandardowa jest uporządkowana, indeksator rozpoczyna się od początku i zobaczysz to ostrzeżenie.
+
+Możliwe jest przesłonięcie tego zachowania, co umożliwia stopniowe postęp i pomijanie tego ostrzeżenia przy użyciu właściwości konfiguracja `assumeOrderByHighWatermarkColumn`.
+
+[Więcej informacji na temat Cosmos DB postępu przyrostowego i zapytań niestandardowych.](https://go.microsoft.com/fwlink/?linkid=2099593)

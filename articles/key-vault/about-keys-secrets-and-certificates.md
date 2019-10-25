@@ -9,25 +9,25 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cca4f794fd3f84b991c7882307f74bcfadf6835b
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 3024d77c02f623f8b8dc1a8956e692c208c8c9e5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241053"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799401"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Klucze, wpisy tajne i certyfikaty — informacje
 
 Azure Key Vault umożliwia aplikacjom Microsoft Azure i użytkownikom przechowywanie i używanie kilku typów danych tajnych/kluczy:
 
-- Klucze kryptograficzne: Obsługuje wiele typów kluczy i algorytmów oraz umożliwia korzystanie z sprzętowych modułów zabezpieczeń (HSM) dla kluczy o wysokiej wartości. 
-- Klucz Zapewnia bezpieczny magazyn wpisów tajnych, takich jak hasła i parametry połączenia bazy danych.
-- Przystawki Obsługuje certyfikaty, które są oparte na kluczach i wpisach tajnych i dodają funkcję automatycznego odnawiania.
-- Azure Storage: Może zarządzać kluczami konta usługi Azure Storage. Wewnętrznie Key Vault mogą wyświetlać (synchronizować) klucze przy użyciu konta usługi Azure Storage i ponownie generować (obrócić) klucze okresowo. 
+- Klucze kryptograficzne: obsługuje wiele typów kluczy i algorytmów oraz umożliwia korzystanie z sprzętowych modułów zabezpieczeń (HSM) dla kluczy o wysokiej wartości. 
+- Wpisy tajne: zapewnia bezpieczny magazyn wpisów tajnych, takich jak hasła i parametry połączenia bazy danych.
+- Certyfikaty: obsługuje certyfikaty, które są oparte na kluczach i wpisach tajnych i dodają funkcję automatycznego odnawiania.
+- Azure Storage: umożliwia zarządzanie kluczami konta usługi Azure Storage. Wewnętrznie Key Vault mogą wyświetlać (synchronizować) klucze przy użyciu konta usługi Azure Storage i ponownie generować (obrócić) klucze okresowo. 
 
 Aby uzyskać więcej ogólnych informacji na temat Key Vault, zobacz [co to jest Azure Key Vault?](/azure/key-vault/key-vault-overview)
 
-## <a name="azure-key-vault"></a>W usłudze Azure Key Vault
+## <a name="azure-key-vault"></a>Azure Key Vault
 
 Poniższe sekcje zawierają ogólne informacje dotyczące implementacji usługi Key Vault.
 
@@ -35,10 +35,10 @@ Poniższe sekcje zawierają ogólne informacje dotyczące implementacji usługi 
 
 Specyfikacja JavaScript Object Notation (JSON) i podpisywanie i szyfrowanie obiektów JavaScript są ważnymi informacjami w tle.  
 
--   [Klucz internetowy JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
--   [Szyfrowanie sieci Web JSON (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
--   [Algorytmy sieci Web JSON (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
--   [Podpis internetowy JSON (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
+-   [Klucz internetowy JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)  
+-   [Szyfrowanie sieci Web JSON (JWE)](https://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-40)  
+-   [Algorytmy sieci Web JSON (JWA)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
+-   [Podpis internetowy JSON (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
 
 ### <a name="data-types"></a>Typy danych
 
@@ -69,14 +69,14 @@ Identyfikator obiektu ma następujący format ogólny:
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-Gdzie:  
+Miejsce:  
 
 |||  
 |-|-|  
 |`keyvault-name`|Nazwa magazynu kluczy w usłudze Microsoft Azure Key Vault.<br /><br /> Nazwy Key Vault są wybrane przez użytkownika i są unikatowe globalnie.<br /><br /> Nazwa Key Vault musi być ciągiem znaków 3-24, zawierającym tylko 0-9, a-z, A-Z i-.|  
 |`object-type`|Typ obiektu ("klucze" lub "tajemnice").|  
-|`object-name`|A `object-name` to nazwa podana przez użytkownika dla i musi być unikatowa w obrębie Key Vault. Nazwa musi być ciągiem znaków 1-127, zawierającym tylko 0-9, a-z, A-Z i-.|  
-|`object-version`|`object-version` Jest wygenerowanym przez system 32 identyfikatorem ciągu znaków, który jest opcjonalnie używany * o adres unikatowej wersji obiektu.|  
+|`object-name`|`object-name` to nazwa podana przez użytkownika dla i musi być unikatowa w ramach Key Vault. Nazwa musi być ciągiem znaków 1-127, zawierającym tylko 0-9, a-z, A-Z i-.|  
+|`object-version`|`object-version` to wygenerowany przez system, 32 identyfikator ciągu znaków, który jest opcjonalnie używany * o adres unikatowej wersji obiektu.|  
 
 ## <a name="key-vault-keys"></a>Klucze Key Vault
 
@@ -84,17 +84,17 @@ Gdzie:
 
 Klucze kryptograficzne w Key Vault są reprezentowane jako obiekty klucza internetowego JSON [JWK]. Podstawowe specyfikacje JWK/JWA są również rozszerzane w celu włączenia typów kluczy unikatowych dla implementacji Key Vault. Na przykład Importowanie kluczy za pomocą pakietów HSM specyficznych dla dostawcy umożliwia bezpieczne transport kluczy, których można używać tylko w Key Vault sprzętowych modułów zabezpieczeń.  
 
-- **Klucze "miękkie"** : Klucz przetworzony w oprogramowaniu Key Vault, ale jest szyfrowany w spoczynku przy użyciu klucza systemowego, który znajduje się w module HSM. Klienci mogą zaimportować istniejący klucz RSA lub we (krzywa eliptyczna) albo żądanie, które Key Vault wygenerować.
-- **Klucze "twarde"** : Klucz przetworzony w module HSM (sprzętowego modułu zabezpieczeń). Te klucze są chronione w jednym z Key Vault światowych zabezpieczeń środowiska HSM (istnieje jeden świat zabezpieczeń na geografię, aby zachować izolację). Klienci mogą zaimportować klucz RSA lub we w postaci miękkiej lub eksportu z zgodnego urządzenia HSM. Klienci mogą również zażądać Key Vault wygenerowania klucza. Ten typ klucza dodaje atrybut key_hsm do JWK do przenoszenia materiału klucza HSM.
+- **Klucze "miękkie"** : klucz przetworzony w oprogramowaniu Key Vault, ale jest szyfrowany przy użyciu klucza systemowego, który znajduje się w module HSM. Klienci mogą zaimportować istniejący klucz RSA lub we (krzywa eliptyczna) albo żądanie, które Key Vault wygenerować.
+- **Klucze "twarde"** : klucz przetworzony w module HSM (sprzętowego modułu zabezpieczeń). Te klucze są chronione w jednym z Key Vault światowych zabezpieczeń środowiska HSM (istnieje jeden świat zabezpieczeń na geografię, aby zachować izolację). Klienci mogą zaimportować klucz RSA lub we w postaci miękkiej lub eksportu z zgodnego urządzenia HSM. Klienci mogą również zażądać Key Vault wygenerowania klucza. Ten typ klucza dodaje atrybut key_hsm do JWK do przenoszenia materiału klucza HSM.
 
      Aby uzyskać więcej informacji na temat granic geograficznych, zobacz [Microsoft Azure Centrum zaufania](https://azure.microsoft.com/support/trust-center/privacy/)  
 
 Key Vault obsługuje tylko klucze RSA i eliptyczna krzywej eliptycznej. 
 
--   **EC**: "Miękki" klucz krzywej eliptycznej.
--   **EC-HSM**: "Twarda" wartość klucza krzywej eliptycznej.
--   **KLUCZ RSA**: Klucz RSA "Soft".
--   **RSA-HSM**: "Twarda" klucz RSA.
+-   **EC**: "miękki" klucz krzywej eliptycznej.
+-   **EC-HSM**: "twardy" klucz krzywej eliptycznej.
+-   **RSA**: klucz RSA "Soft".
+-   **RSA-HSM**: klucz RSA "twardy".
 
 Key Vault obsługuje klucze RSA o rozmiarach 2048, 3072 i 4096. Key Vault obsługuje typy kluczy krzywej eliptycznej P-256, P-384, P-521 i P-256 K (SECP256K1).
 
@@ -108,7 +108,7 @@ Moduły kryptograficzne, które Key Vault używają, czy moduł HSM lub oprogram
 #### <a name="curve-types"></a>Typy krzywych
 
 -   **P-256** -krzywa NIST p-256, zdefiniowana w trybie [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
--   **P-256 k** — krzywa s SECP256K1, zdefiniowana w [s 2: Zalecane parametry](https://www.secg.org/sec2-v2.pdf)domeny krzywej eliptycznej.
+-   **P-256 k** — krzywa s SECP256K1, zdefiniowana w [s 2: zalecane parametry domeny krzywej eliptycznej](https://www.secg.org/sec2-v2.pdf).
 -   **P-384** -krzywa NIST p-384, zdefiniowana w trybie [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 -   **P-521** -krzywa NIST p-521, zdefiniowana w trybie [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 
@@ -138,23 +138,23 @@ Moduły kryptograficzne, które Key Vault używają, czy moduł HSM lub oprogram
 
 Key Vault obsługuje następujące operacje na obiektach kluczowych:  
 
--   **Utwórz**: Umożliwia klientowi utworzenie klucza w Key Vault. Wartość klucza jest generowana przez Key Vault i jest przechowywana i nie jest wydawana dla klienta. Klucze asymetryczne mogą być tworzone w Key Vault.  
--   **Importuj**: Umożliwia klientowi Importowanie istniejącego klucza do Key Vault. Klucze asymetryczne mogą być importowane do Key Vault przy użyciu wielu różnych metod pakowania w ramach konstrukcji JWK. 
--   **Aktualizacja**: Umożliwia klientowi z wystarczającymi uprawnieniami do modyfikowania metadanych (atrybutów kluczowych) skojarzonych z kluczem, który został wcześniej zapisany w Key Vault.  
--   **Usuń**: Zezwala klientowi z odpowiednimi uprawnieniami do usuwania klucza z Key Vault.  
--   **Lista**: Umożliwia klientowi Wyświetlanie listy wszystkich kluczy w danym Key Vault.  
--   **Wersje list**: Umożliwia klientowi Wyświetlanie listy wszystkich wersji danego klucza w danym Key Vault.  
--   **Pobierz**: Zezwala klientowi na pobieranie publicznych części danego klucza w Key Vault.  
+-   **Utwórz**: umożliwia klientowi utworzenie klucza w Key Vault. Wartość klucza jest generowana przez Key Vault i jest przechowywana i nie jest wydawana dla klienta. Klucze asymetryczne mogą być tworzone w Key Vault.  
+-   **Import**: umożliwia klientowi Importowanie istniejącego klucza do Key Vault. Klucze asymetryczne mogą być importowane do Key Vault przy użyciu wielu różnych metod pakowania w ramach konstrukcji JWK. 
+-   **Aktualizacja**: umożliwia klientowi z wystarczającymi uprawnieniami do modyfikowania metadanych (atrybutów kluczowych) skojarzonych z kluczem, który został wcześniej zapisany w Key Vault.  
+-   **Usuń**: umożliwia klientowi z odpowiednimi uprawnieniami do usuwania klucza z Key Vault.  
+-   **Lista**: umożliwia klientowi Wyświetlanie listy wszystkich kluczy w danym Key Vault.  
+-   **Wersje list**: umożliwia klientowi Wyświetlanie listy wszystkich wersji danego klucza w danym Key Vault.  
+-   **Get**: umożliwia klientowi pobranie publicznych części danego klucza w Key Vault.  
 -   **Kopia zapasowa**: Eksportuje klucz w formularzu chronionym.  
--   **Przywróć**: Importuje poprzednio kopię zapasową klucza.  
+-   **Przywracanie**: importuje poprzednio kopię zapasową klucza.  
 
 Aby uzyskać więcej informacji, zobacz [kluczowe operacje w dokumentacji interfejsu API REST Key Vault](/rest/api/keyvault).  
 
 Po utworzeniu klucza w Key Vault można wykonać następujące operacje kryptograficzne przy użyciu klucza:  
 
--   **Podpisz i Weryfikuj**: W przypadku tej operacji jest to "podpisywanie skrótu" lub "Weryfikuj wartość skrótu", ponieważ Key Vault nie obsługuje mieszania zawartości w ramach tworzenia podpisu. Aplikacje powinny skrótować dane, które mają być podpisane lokalnie, a następnie żądać Key Vault podpisywania skrótu. Weryfikacja podpisywanych skrótów jest obsługiwana jako wygodna operacja dla aplikacji, które mogą nie mieć dostępu do materiału klucza [Public]. Aby zapewnić najlepszą wydajność aplikacji, należy sprawdzić, czy operacje są wykonywane lokalnie.  
--   **Szyfrowanie klucza/Zawijanie**: Klucz przechowywany w Key Vault może służyć do ochrony innego klucza, zazwyczaj klucza szyfrowania zawartości symetrycznej (CEK). Gdy klucz w Key Vault jest asymetryczny, używane jest szyfrowanie klucza. Na przykład RSA-OAEP i operacje WRAPKEY/UNWRAPKEY są równoważne z SZYFROWANIEm/ODSZYFROWYWAniem. Gdy klucz w Key Vault jest symetryczny, używane jest Zawijanie kluczy. Na przykład AES-KW. Operacja WRAPKEY jest obsługiwana jako wygoda dla aplikacji, które mogą nie mieć dostępu do materiału klucza [Public]. W celu uzyskania najlepszej wydajności aplikacji WRAPKEY operacje powinny być wykonywane lokalnie.  
--   **Szyfrowanie i odszyfrowywanie**: Klucz zapisany w Key Vault może służyć do szyfrowania lub odszyfrowywania pojedynczego bloku danych. Rozmiar bloku jest określany na podstawie typu klucza i wybranego algorytmu szyfrowania. Operacja szyfrowania została udostępniona dla wygody dla aplikacji, które mogą nie mieć dostępu do materiału klucza [Public]. W celu uzyskania najlepszej wydajności aplikacji należy wykonać operacje szyfrowania lokalnie.  
+-   **Podpisz i Weryfikuj**: absolutnie ta operacja jest "Podpisz skrótem" lub "Weryfikuj skrót", ponieważ Key Vault nie obsługuje mieszania zawartości w ramach tworzenia podpisu. Aplikacje powinny skrótować dane, które mają być podpisane lokalnie, a następnie żądać Key Vault podpisywania skrótu. Weryfikacja podpisywanych skrótów jest obsługiwana jako wygodna operacja dla aplikacji, które mogą nie mieć dostępu do materiału klucza [Public]. Aby zapewnić najlepszą wydajność aplikacji, należy sprawdzić, czy operacje są wykonywane lokalnie.  
+-   **Szyfrowanie/Zawijanie kluczy**: Klucz przechowywany w Key Vault może służyć do ochrony innego klucza, zazwyczaj klucza szyfrowania zawartości symetrycznej (CEK). Gdy klucz w Key Vault jest asymetryczny, używane jest szyfrowanie klucza. Na przykład RSA-OAEP i operacje WRAPKEY/UNWRAPKEY są równoważne z SZYFROWANIEm/ODSZYFROWYWAniem. Gdy klucz w Key Vault jest symetryczny, używane jest Zawijanie kluczy. Na przykład AES-KW. Operacja WRAPKEY jest obsługiwana jako wygoda dla aplikacji, które mogą nie mieć dostępu do materiału klucza [Public]. W celu uzyskania najlepszej wydajności aplikacji WRAPKEY operacje powinny być wykonywane lokalnie.  
+-   **Szyfrowanie i odszyfrowywanie**: klucz zapisany w Key Vault może służyć do szyfrowania lub odszyfrowywania pojedynczego bloku danych. Rozmiar bloku jest określany na podstawie typu klucza i wybranego algorytmu szyfrowania. Operacja szyfrowania została udostępniona dla wygody dla aplikacji, które mogą nie mieć dostępu do materiału klucza [Public]. W celu uzyskania najlepszej wydajności aplikacji należy wykonać operacje szyfrowania lokalnie.  
 
 Podczas gdy WRAPKEY/UNWRAPKEY użycie kluczy asymetrycznych może wydawać się zbędne (ponieważ operacja jest równoważna z SZYFROWANIEm/ODSZYFROWYWAniem), użycie odrębnych operacji jest ważne. Rozróżnienie zapewnia semantykę i separację autoryzacji tych operacji oraz spójność, gdy inne typy kluczy są obsługiwane przez usługę.  
 
@@ -162,14 +162,14 @@ Key Vault nie obsługuje operacji EKSPORTOWANIA. Po zainicjowaniu klucza w syste
 
 Użytkownicy mogą ograniczyć każdą z operacji kryptograficznych, które Key Vault obsługiwane przez poszczególne klucze przy użyciu właściwości key_ops obiektu JWK.  
 
-Aby uzyskać więcej informacji na temat obiektów JWK, zobacz [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
+Aby uzyskać więcej informacji na temat obiektów JWK, zobacz [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41).  
 
 ###  <a name="key-attributes"></a>Atrybuty klucza
 
 Oprócz materiału kluczowego można określić następujące atrybuty. W żądaniu JSON atrybuty słowo kluczowe i nawiasy klamrowe "{" "}" są wymagane nawet wtedy, gdy nie określono żadnych atrybutów.  
 
-- *włączone*: wartość logiczna, opcjonalna, **wartość**domyślna to true. Określa, czy klucz jest włączony i użyteczny dla operacji kryptograficznych. *Włączony* atrybut jest używany w połączeniu z *NBF* i *EXP*. Gdy operacja przejdzie między *NBF* i *EXP*, będzie dozwolona tylko wtedy, gdy wartość *Enabled* jest ustawiona na **true**. Operacje poza oknem*EXP* protokołu *NBF* / są automatycznie niedozwolone, z wyjątkiem niektórych typów operacji w [określonych warunkach](#date-time-controlled-operations).
-- *nbf*: IntDate, opcjonalnie, domyślnie jest teraz. Atrybut *NBF* (nie wcześniej) określa czas, po którym klucz nie może być używany do operacji kryptograficznych, z wyjątkiem niektórych typów operacji w [określonych warunkach](#date-time-controlled-operations). Przetwarzanie atrybutu *NBF* wymaga, aby bieżąca data/godzina musiała być późniejsza lub równa wartości nie wcześniejsza niż data/godzina określona w atrybucie *NBF* . Key Vault może przewidywać nieco małych Leeway, zwykle nie więcej niż kilka minut, aby uwzględnić pochylenie zegara. Wartość musi być liczbą zawierającą wartość IntDate.  
+- *włączone*: wartość logiczna, opcjonalna, **wartość**domyślna to true. Określa, czy klucz jest włączony i użyteczny dla operacji kryptograficznych. *Włączony* atrybut jest używany w połączeniu z *NBF* i *EXP*. Gdy operacja przejdzie między *NBF* i *EXP*, będzie dozwolona tylko wtedy, gdy wartość *Enabled* jest ustawiona na **true**. Operacje *poza oknem usługi* *NBF* / są automatycznie niedozwolone, z wyjątkiem niektórych typów operacji w [określonych warunkach](#date-time-controlled-operations).
+- *NBF*: IntDate, opcjonalnie, domyślnie jest teraz. Atrybut *NBF* (nie wcześniej) określa czas, po którym klucz nie może być używany do operacji kryptograficznych, z wyjątkiem niektórych typów operacji w [określonych warunkach](#date-time-controlled-operations). Przetwarzanie atrybutu *NBF* wymaga, aby bieżąca data/godzina musiała być późniejsza lub równa wartości nie wcześniejsza niż data/godzina określona w atrybucie *NBF* . Key Vault może przewidywać nieco małych Leeway, zwykle nie więcej niż kilka minut, aby uwzględnić pochylenie zegara. Wartość musi być liczbą zawierającą wartość IntDate.  
 - *EXP*: IntDate, opcjonalne, wartość domyślna to "nieskończona". Atrybut *EXP* (czas wygaśnięcia) określa czas wygaśnięcia dla lub po upływie którego klucz nie może być używany do operacji kryptograficznej, z wyjątkiem niektórych typów operacji w [określonych warunkach](#date-time-controlled-operations). Przetwarzanie atrybutu *EXP* wymaga, aby bieżąca data/godzina musiała być wcześniejsza niż data/godzina wygaśnięcia określona w atrybucie *EXP* . Key Vault może przewidywać nieco małych Leeway, zwykle nie więcej niż kilka minut, do konta w celu przesunięcia zegara. Wartość musi być liczbą zawierającą wartość IntDate.  
 
 Istnieją dodatkowe atrybuty tylko do odczytu, które znajdują się w dowolnej odpowiedzi zawierającej atrybuty klucza:  
@@ -181,11 +181,11 @@ Aby uzyskać więcej informacji na temat IntDate i innych typów danych, zobacz 
 
 #### <a name="date-time-controlled-operations"></a>Operacje kontrolowane przez datę i godzinę
 
-Klucze, które nie są jeszcze prawidłowe i wygasły, poza oknem*EXP* usługi *NBF* / , będądziałały w przypadku operacji odszyfrowania, odpakowania i **weryfikacji** (nie zwróci 403, zabronione). Uzasadnienie użycia nieprawidłowego stanu ma umożliwić przetestowanie klucza przed użyciem produkcji. Uzasadnienie dotyczące korzystania z stanu wygasłego polega na umożliwieniu operacji odzyskiwania danych, które zostały utworzone, gdy klucz był prawidłowy. Ponadto można wyłączyć dostęp do klucza przy użyciu zasad Key Vault lub przez zaktualizowanie atrybutu *Enabled* klucza na **wartość false**.
+Klucze, które nie są jeszcze prawidłowe i wygasły, poza oknem usługi *nbf* / *EXP* będą działały w przypadku operacji **odszyfrowania**, **odpakowania**i **weryfikacji** (nie zwróci 403, zabronione). Uzasadnienie użycia nieprawidłowego stanu ma umożliwić przetestowanie klucza przed użyciem produkcji. Uzasadnienie dotyczące korzystania z stanu wygasłego polega na umożliwieniu operacji odzyskiwania danych, które zostały utworzone, gdy klucz był prawidłowy. Ponadto można wyłączyć dostęp do klucza przy użyciu zasad Key Vault lub przez zaktualizowanie atrybutu *Enabled* klucza na **wartość false**.
 
 Aby uzyskać więcej informacji na temat typów danych, zobacz [typy danych](#data-types).
 
-Aby uzyskać więcej informacji na temat innych możliwych atrybutów, zobacz [klucz internetowy JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).
+Aby uzyskać więcej informacji na temat innych możliwych atrybutów, zobacz [klucz internetowy JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41).
 
 ### <a name="key-tags"></a>Najważniejsze Tagi
 
@@ -201,26 +201,26 @@ Kontrola dostępu do kluczy zarządzanych przez Key Vault jest udostępniana na 
 Następujące uprawnienia można udzielić dla poszczególnych użytkowników/głównych usług, w wpis kontroli dostępu do kluczy w magazynie. Te uprawnienia ściśle duplikują operacje dozwolone dla obiektu klucza.  Udzielanie dostępu do jednostki usługi w magazynie kluczy jest operacją jednorazowej, która pozostanie taka sama dla wszystkich subskrypcji platformy Azure. Można go użyć do wdrożenia dowolnej liczby certyfikatów. 
 
 - Uprawnienia do operacji zarządzania kluczami
-  - *Pobierz*: Odczytaj publiczną część klucza oraz jej atrybuty
-  - *Lista*: Wyświetl listę kluczy lub wersji klucza przechowywanego w magazynie kluczy
-  - *Aktualizacja*: Aktualizowanie atrybutów klucza
-  - *Utwórz*: Utwórz nowe klucze
-  - *Importuj*: Importowanie klucza do magazynu kluczy
-  - *Usuń*: Usuń obiekt klucza
+  - *pobieranie*: odczytywanie publicznej części klucza oraz jego atrybutów
+  - *Lista*: Lista kluczy lub wersji klucza przechowywanego w magazynie kluczy
+  - *Aktualizacja*: aktualizowanie atrybutów klucza
+  - *Tworzenie*: tworzenie nowych kluczy
+  - *Import*: Importowanie klucza do magazynu kluczy
+  - *Usuń*: usuwanie obiektu klucza
   - *Odzyskaj*: Odzyskaj usunięty klucz
   - *kopia zapasowa*: Tworzenie kopii zapasowej klucza w magazynie kluczy
-  - *Przywróć*: Przywracanie klucza kopii zapasowej w magazynie kluczy
+  - *przywracanie*: Przywracanie klucza kopii zapasowej do magazynu kluczy
 
 - Uprawnienia do operacji kryptograficznych
   - *Odszyfruj*: Użyj klucza, aby wyłączyć ochronę sekwencji bajtów
-  - *szyfrowanie*: Użyj klucza do ochrony dowolnej sekwencji bajtów
+  - *Szyfruj*: Użyj klucza do ochrony dowolnej sekwencji bajtów
   - *unwrapKey*: Użyj klucza, aby wyłączyć ochronę opakowanych kluczy symetrycznych
   - *wrapKey*: Użyj klucza do ochrony klucza symetrycznego
   - *Weryfikuj*: Użyj klucza, aby zweryfikować skróty  
-  - *Podpisz*: Użyj klucza do podpisywania skróconych
+  - *Sign*: Użyj klucza do podpisywania skróconych
     
 - Uprawnienia dla operacji uprzywilejowanych
-  - *przeczyszczanie*: Przeczyszczanie (trwałe usuwanie) usuniętego klucza
+  - *przeczyszczanie*: przeczyszczanie (trwałe usuwanie) usuniętego klucza
 
 Aby uzyskać więcej informacji na temat pracy z kluczami, zobacz [najważniejsze operacje w temacie Informacje o interfejsie API REST Key Vault](/rest/api/keyvault). Aby uzyskać informacje dotyczące ustanawiania uprawnień, zobacz temat [magazyny — Tworzenie lub aktualizowanie](/rest/api/keyvault/vaults/createorupdate) i [magazyny — zasady dostępu aktualizacji](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
@@ -238,8 +238,8 @@ Key Vault obsługuje również pole ContentType dla wpisów tajnych. Klienci mog
 
 Oprócz danych tajnych można określić następujące atrybuty:  
 
-- *EXP*: IntDate, opcjonalne, wartość domyślnato nieskończoność. Atrybut *EXP* (czas wygaśnięcia) określa czas wygaśnięcia lub po którym dane tajne nie powinny być pobierane, z wyjątkiem [określonych sytuacji](#date-time-controlled-operations). To pole służy tylko do celów informacyjnych, ponieważ informuje użytkowników usługi magazynu kluczy, że nie można użyć określonego klucza tajnego. Wartość musi być liczbą zawierającą wartość IntDate.   
-- *nbf*: IntDate, opcjonalnie, domyślnie jest **teraz**. Atrybut *NBF* (nie wcześniej) określa czas, po którym dane tajne nie powinny być pobierane, z wyjątkiem [określonych sytuacji](#date-time-controlled-operations). To pole służy tylko do celów informacyjnych. Wartość musi być liczbą zawierającą wartość IntDate. 
+- *EXP*: IntDate, opcjonalne, wartość domyślna to **nieskończoność**. Atrybut *EXP* (czas wygaśnięcia) określa czas wygaśnięcia lub po którym dane tajne nie powinny być pobierane, z wyjątkiem [określonych sytuacji](#date-time-controlled-operations). To pole służy tylko do celów **informacyjnych** , ponieważ informuje użytkowników usługi magazynu kluczy, że nie można użyć określonego klucza tajnego. Wartość musi być liczbą zawierającą wartość IntDate.   
+- *NBF*: IntDate, opcjonalnie, domyślnie jest **teraz**. Atrybut *NBF* (nie wcześniej) określa czas, po którym dane tajne nie powinny być pobierane, z wyjątkiem [określonych sytuacji](#date-time-controlled-operations). To pole służy tylko do celów **informacyjnych** . Wartość musi być liczbą zawierającą wartość IntDate. 
 - *włączone*: wartość logiczna, opcjonalna, **wartość**domyślna to true. Ten atrybut określa, czy można pobrać dane tajne. Atrybut Enabled jest używany w połączeniu z *NBF* i *EXP* , gdy operacja przejdzie między *NBF* i *EXP*, będzie dozwolona tylko wtedy, gdy ustawienie Enabled ma **wartość true**. Operacje poza oknem *NBF* i *EXP* są automatycznie niedozwolone, z wyjątkiem [określonych sytuacji](#date-time-controlled-operations).  
 
 Istnieją dodatkowe atrybuty tylko do odczytu, które znajdują się w dowolnej odpowiedzi zawierającej atrybuty tajne:  
@@ -249,7 +249,7 @@ Istnieją dodatkowe atrybuty tylko do odczytu, które znajdują się w dowolnej 
 
 #### <a name="date-time-controlled-operations"></a>Operacje kontrolowane przez datę i godzinę
 
-Operacja **pobrania** wpisu tajnego będzie działała w przypadku nieprawidłowych i wygasłych wpisów tajnych poza oknem*wygaśnięcia* protokołu *NBF* / . Wywoływanie operacji **Get** wpisu tajnego dla nieprawidłowego hasła tajnego może być używane do celów testowych. Pobieranie (**pobieranie**) wygasłego klucza tajnego może być używane na potrzeby operacji odzyskiwania.
+Operacja **pobrania** wpisu tajnego będzie działała dla nieprawidłowych i wygasłych wpisów tajnych, poza oknem usługi *NBF* * / .* Wywoływanie operacji **Get** wpisu tajnego dla nieprawidłowego hasła tajnego może być używane do celów testowych. Pobieranie (**pobieranie**) wygasłego klucza tajnego może być używane na potrzeby operacji odzyskiwania.
 
 Aby uzyskać więcej informacji na temat typów danych, zobacz [typy danych](#data-types).  
 
@@ -260,16 +260,16 @@ Access Control dla wpisów tajnych zarządzanych w programie Key Vault jest dost
 Następujące uprawnienia mogą być używane dla każdego podmiotu zabezpieczeń w ramach wpisu kontroli dostępu tajnego w magazynie i ściśle duplikaty operacji dozwolonych na obiekcie tajnym:  
 
 - Uprawnienia do operacji zarządzania kluczami tajnymi
-  - *Pobierz*: Odczytaj wpis tajny  
-  - *Lista*: Wyświetlenie listy tajnych lub wersji klucza tajnego przechowywanych w Key Vault  
-  - *Ustaw*: Tworzenie wpisu tajnego  
-  - *Usuń*: Usuń klucz tajny  
-  - *Odzyskaj*: Odzyskiwanie usuniętego klucza tajnego
+  - *pobieranie*: odczytywanie wpisu tajnego  
+  - *Lista*: wyświetlenie wpisów tajnych lub wersji wpisu Secret przechowywanych w Key Vault  
+  - *Ustaw*: Utwórz klucz tajny  
+  - *usuwanie*: Usuwanie wpisu tajnego  
+  - *Odzyskaj*: Odzyskaj usunięty klucz tajny
   - *kopia zapasowa*: Tworzenie kopii zapasowej wpisu tajnego w magazynie kluczy
-  - *Przywróć*: Przywróć kopię zapasową wpisu tajnego do magazynu kluczy
+  - *przywracanie*: Przywracanie wpisu tajnego kopii zapasowej do magazynu kluczy
 
 - Uprawnienia dla operacji uprzywilejowanych
-  - *przeczyszczanie*: Przeczyszczanie (trwałe usuwanie) usuniętego klucza tajnego
+  - *przeczyszczanie*: przeczyszczanie (trwałe usuwanie) usuniętego klucza tajnego
 
 Aby uzyskać więcej informacji na temat pracy z wpisami tajnymi, zobacz [Secret Operations w temacie Informacje o interfejsie API REST Key Vault](/rest/api/keyvault). Aby uzyskać informacje dotyczące ustanawiania uprawnień, zobacz temat [magazyny — Tworzenie lub aktualizowanie](/rest/api/keyvault/vaults/createorupdate) i [magazyny — zasady dostępu aktualizacji](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
@@ -325,12 +325,12 @@ Istnieją dodatkowe atrybuty tylko do odczytu, które znajdują się w odpowiedz
 -   *utworzono*: IntDate: wskazuje, kiedy ta wersja certyfikatu została utworzona.  
 -   *Zaktualizowano*: IntDate: wskazuje, kiedy ta wersja certyfikatu została zaktualizowana.  
 -   *EXP*: IntDate: zawiera wartość daty wygaśnięcia certyfikatu x509.  
--   *nbf*: IntDate: zawiera wartość daty certyfikatu x509.  
+-   *NBF*: IntDate: zawiera wartość daty certyfikatu x509.  
 
 > [!Note] 
 > Jeśli certyfikat Key Vault wygaśnie, klucz z adresami i wpis tajny stają się nieobsługiwane.  
 
-#### <a name="tags"></a>`Tags`
+#### <a name="tags"></a>Tagi
 
  Określony przez klienta słownik par wartości klucza, podobny do tagów w kluczach i wpisach tajnych.  
 
@@ -345,7 +345,7 @@ Po utworzeniu certyfikatu Key Vault od podstaw należy podać zasady. Zasady okr
 
 Na wysokim poziomie zasady certyfikatów zawierają następujące informacje:  
 
--   Właściwości certyfikatu x509: Zawiera nazwę podmiotu, alternatywne nazwy podmiotu i inne właściwości używane do tworzenia żądania certyfikatu x509.  
+-   Właściwości certyfikatu x509: zawiera nazwę podmiotu, alternatywne nazwy podmiotu i inne właściwości używane do tworzenia żądania certyfikatu x509.  
 -   Właściwości klucza: zawiera typ klucza, Długość klucza, możliwe do eksportowania i ponownie używane pola klucza. Te pola instruują Magazyn kluczy, aby utworzyć klucz.  
 -   Właściwości klucza tajnego: zawiera właściwości tajne, takie jak typ zawartości klucza tajnego adresowanego do wygenerowania wartości klucza tajnego w celu pobierania certyfikatu jako klucza tajnego.  
 -   Akcje okresu istnienia: zawiera akcje okresu istnienia dla certyfikatu KV. Każda akcja okresu istnienia zawiera:  
@@ -354,7 +354,7 @@ Na wysokim poziomie zasady certyfikatów zawierają następujące informacje:
 
      - Akcja: Określanie typu akcji — *emailContacts* lub *autorenew*  
 
--   Issuer Parametry dotyczące wystawcy certyfikatu, które mają być używane do wystawiania certyfikatów x509.  
+-   Wystawca: parametry dotyczące wystawcy certyfikatu do użycia w celu wystawiania certyfikatów x509.  
 -   Atrybuty zasad: zawiera atrybuty skojarzone z zasadami  
 
 #### <a name="x509-to-key-vault-usage-mapping"></a>Mapowanie użycia x509 do Key Vault
@@ -418,23 +418,23 @@ Jeśli zasada certyfikatu jest ustawiona na automatyczne odnawianie, zostanie wy
 
 - Uprawnienia do operacji zarządzania certyfikatami
   - *Pobierz*: Pobierz bieżącą wersję certyfikatu lub dowolną wersję certyfikatu 
-  - *Lista*: Wyświetl listę bieżących certyfikatów lub wersji certyfikatu  
-  - *Aktualizacja*: Aktualizowanie certyfikatu
-  - *Utwórz*: Tworzenie certyfikatu Key Vault
-  - *Importuj*: Importuj materiał certyfikatu do Key Vaultego certyfikatu
-  - *Usuń*: Usuń certyfikat, jego zasady i wszystkie jego wersje  
-  - *Odzyskaj*: Odzyskiwanie usuniętego certyfikatu
-  - *kopia zapasowa*: Tworzenie kopii zapasowej certyfikatu w magazynie kluczy
-  - *Przywróć*: Przywracanie kopii zapasowej certyfikatu w magazynie kluczy
+  - *Lista*: lista bieżących certyfikatów lub wersji certyfikatu  
+  - *Aktualizacja*: aktualizowanie certyfikatu
+  - *Tworzenie*: tworzenie certyfikatu Key Vault
+  - *Import*: Importowanie materiału certyfikatu do certyfikatu Key Vault
+  - *usuwanie*: Usuwanie certyfikatu, jego zasad i wszystkich wersji  
+  - *odzyskiwanie*: Odzyskiwanie usuniętego certyfikatu
+  - *kopia zapasowa*: wykonywanie kopii zapasowej certyfikatu w magazynie kluczy
+  - *przywracanie*: Przywracanie certyfikatu z kopią zapasową do magazynu kluczy
   - *managecontacts*: Zarządzaj kontaktami z certyfikatem Key Vault  
   - *manageissuers*: Zarządzanie Key Vault urzędów certyfikacji/wystawców
-  - getemitencis: Pobieranie urzędów certyfikacji/wystawców certyfikatów
-  - *listissuers*: Wyświetlanie listy urzędów certyfikacji/wystawców certyfikatów  
-  - setemitencis: Tworzenie lub aktualizowanie urzędów/wystawców certyfikatu Key Vault  
+  - *getemitencis*: pobieranie urzędów certyfikacji/wystawców certyfikatów
+  - *listissuers*: Wyświetl listę urzędów certyfikacji/wystawców certyfikatów  
+  - *setemitencis*: Tworzenie lub aktualizowanie urzędów/wystawców certyfikatu Key Vault  
   - *deleteissuers*: Usuwanie urzędów certyfikacji i wystawców certyfikatów Key Vault  
  
 - Uprawnienia dla operacji uprzywilejowanych
-  - *przeczyszczanie*: Przeczyszczanie (trwałe usuwanie) usuniętego certyfikatu
+  - *przeczyszczanie*: przeczyszczanie (trwałe usuwanie) usuniętego certyfikatu
 
 Aby uzyskać więcej informacji, zobacz [operacje na certyfikatach w dokumentacji interfejsu API REST Key Vault](/rest/api/keyvault). Aby uzyskać informacje dotyczące ustanawiania uprawnień, zobacz temat [magazyny — Tworzenie lub aktualizowanie](/rest/api/keyvault/vaults/createorupdate) i [magazyny — zasady dostępu aktualizacji](/rest/api/keyvault/vaults/updateaccesspolicy).
 
@@ -454,22 +454,22 @@ Aby uzyskać więcej informacji, zobacz [Azure Key Vault kluczy konta magazynu](
 Podczas autoryzacji użytkownika lub podmiotu zabezpieczeń aplikacji można używać następujących uprawnień do wykonywania operacji na zarządzanym koncie magazynu:  
 
 - Uprawnienia do zarządzanego konta magazynu i operacji w definicji sygnatury dostępu współdzielonego
-  - *Pobierz*: Pobiera informacje o koncie magazynu 
-  - *Lista*: Wyświetlanie listy kont magazynu zarządzanych przez Key Vault
-  - *Aktualizacja*: Aktualizowanie konta magazynu
-  - *Usuń*: Usuwanie konta magazynu  
-  - *Odzyskaj*: Odzyskiwanie usuniętego konta magazynu
+  - *Get*: Pobiera informacje o koncie magazynu 
+  - *Lista*: Wyświetl listę kont magazynu zarządzanych przez Key Vault
+  - *Aktualizacja*: aktualizowanie konta magazynu
+  - *usuwanie*: usuwanie konta magazynu  
+  - *odzyskiwanie*: Odzyskiwanie usuniętego konta magazynu
   - *kopia zapasowa*: Tworzenie kopii zapasowej konta magazynu
-  - *Przywróć*: Przywracanie kopii zapasowej konta magazynu do Key Vault
-  - *Ustaw*: Utwórz lub zaktualizuj konto magazynu
+  - *przywracanie*: Przywracanie kopii zapasowej konta magazynu do Key Vault
+  - *zestaw*: Tworzenie lub aktualizowanie konta magazynu
   - *regeneratekey*: Wygeneruj ponownie określoną wartość klucza dla konta magazynu
   - *getsas*: Uzyskaj informacje na temat definicji sygnatury dostępu współdzielonego dla konta magazynu
-  - *listsas*: Wyświetlanie listy definicji sygnatury dostępu współdzielonego magazynu dla konta magazynu
-  - *deletesas*: Usuwanie definicji sygnatury dostępu współdzielonego z konta magazynu
+  - *listsas*: Wyświetl definicje sygnatury dostępu współdzielonego magazynu dla konta magazynu
+  - *deletesas*: usuwanie definicji sygnatury dostępu współdzielonego z konta magazynu
   - *setsas*: Utwórz lub zaktualizuj nowe definicje/atrybuty sygnatury dostępu współdzielonego dla konta magazynu
 
 - Uprawnienia dla operacji uprzywilejowanych
-  - *przeczyszczanie*: Przeczyszczanie (trwałe usuwanie) zarządzanego konta magazynu
+  - *przeczyszczanie*: przeczyszczanie (trwałe usuwanie) zarządzanego konta magazynu
 
 Aby uzyskać więcej informacji, zobacz [operacje związane z kontem magazynu w temacie Informacje o interfejsie API REST Key Vault](/rest/api/keyvault). Aby uzyskać informacje dotyczące ustanawiania uprawnień, zobacz temat [magazyny — Tworzenie lub aktualizowanie](/rest/api/keyvault/vaults/createorupdate) i [magazyny — zasady dostępu aktualizacji](/rest/api/keyvault/vaults/updateaccesspolicy).
 

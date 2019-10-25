@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe02e9d6c3fa69e0ccd88057e10edb6ea1c6e0d0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 15e98bf83cedc22aa565ba0f98089e9f6f217728
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986042"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787600"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z miejscem pracy w serwisie Facebook
 
@@ -63,7 +63,6 @@ Aby skonfigurować integrację aplikacji Workplace by Facebook z usługą Azure 
 1. W sekcji **Dodaj z galerii** wpisz w polu wyszukiwania pozycję **miejsce pracy według serwisu Facebook** .
 1. Wybierz pozycję **miejsce pracy przez serwis Facebook** w panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-workplace-by-facebook"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD dla miejsca pracy przez serwis Facebook
 
 Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD w miejscu pracy przez serwis Facebook przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w miejscu pracy przez serwis Facebook.
@@ -71,18 +70,18 @@ Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD w miejscu pracy 
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD w miejscu pracy przez serwis Facebook, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-2. **[Skonfiguruj miejsce pracy przez logowanie](#configure-workplace-by-facebook-sso)** jednokrotne w serwisie Facebook, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    1. **[Utwórz miejsce pracy przez użytkownika testowego serwisu Facebook](#create-workplace-by-facebook-test-user)** , aby dysponować odpowiednikiem B. Simon w miejscu pracy przez serwis Facebook, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-3. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+2. **[Skonfiguruj miejsce pracy przez logowanie jednokrotne w serwisie Facebook](#configure-workplace-by-facebook-sso)** , aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    * **[Utwórz miejsce pracy przez użytkownika testowego serwisu Facebook](#create-workplace-by-facebook-test-user)** , aby dysponować odpowiednikiem B. Simon w miejscu pracy przez serwis Facebook, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+3. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie **miejsce pracy według** integracji aplikacji w serwisie Facebook znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
-1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie **miejsce pracy według integracji aplikacji w serwisie Facebook** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
@@ -91,16 +90,16 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<instancename>.facebook.com`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://www.facebook.com/company/<instanceID>`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://www.facebook.com/company/<instanceID>`
 
     > [!NOTE] 
     > Te wartości nie są rzeczywiste. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Aby uzyskać prawidłowe wartości dla społeczności aplikacji Workplace, otwórz stronę uwierzytelniania pulpitu nawigacyjnego firmy aplikacji Workplace.
 
-4. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificatebase64.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-6. W sekcji **Konfigurowanie miejsca pracy według serwisu Facebook** skopiuj odpowiednie adresy URL na podstawie wymagań.
+1. W sekcji **Konfigurowanie miejsca pracy według serwisu Facebook** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -109,10 +108,10 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij przycisk **Utwórz**.
 
@@ -124,7 +123,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **miejsce pracy w serwisie Facebook**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -136,24 +135,36 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-workplace-by-facebook-sso"></a>Konfigurowanie miejsca pracy przez logowanie jednokrotne w usłudze Facebook
 
-1. W osobnym oknie przeglądarki internetowej zaloguj się w swojej witrynie firmowej aplikacji Workplace by Facebook jako administrator.
-  
+1. Aby zautomatyzować konfigurację w miejscu pracy przez serwis Facebook, musisz zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
+
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
+
+1. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **Skonfiguruj miejsce pracy w serwisie Facebook** przekieruje Cię do miejsca pracy przez aplikację w serwisie Facebook. W tym miejscu podaj poświadczenia administratora, aby zalogować się do miejsca pracy w serwisie Facebook. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzuje kroki 3-5.
+
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
+
+1. Jeśli chcesz ręcznie skonfigurować miejsce pracy przez serwis Facebook, Otwórz nowe okno przeglądarki sieci Web i zaloguj się do miejsca pracy przez witrynę firmy w serwisie Facebook jako administrator i wykonaj następujące czynności:
+
     > [!NOTE]
     > W ramach procesu uwierzytelniania SAML aplikacja Workplace może używać ciągów zapytań o rozmiarze do 2,5 kilobajta w celu przekazania parametrów do usługi Azure AD.
 
-2. W **Panelu administracyjnym** przejdź do karty **Zabezpieczenia**.
+1. W okienku nawigacji po lewej stronie przejdź do karty **zabezpieczenia** > **uwierzytelnianie** .
 
     ![Panel administracyjny](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
-3. Na karcie **Uwierzytelnianie** wybierz pozycję **Logowanie jednokrotne**, a następnie wykonaj następujące czynności:
+    a. Zaznacz opcję logowania jednokrotnego **(SSO)** .
+    
+    b. Kliknij pozycję **+ Dodaj nowego dostawcę rejestracji jednokrotnej**.
+
+1. Na karcie **Uwierzytelnianie** wybierz pozycję **Logowanie jednokrotne**, a następnie wykonaj następujące czynności:
 
     ![Karta Uwierzytelnianie](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
 
-    a. W polu tekstowym **Adres URL SAML** wklej wartość **Adres URL logowania** skopiowaną z witryny Azure Portal.
+    a. W polu **Nazwa dostawcy rejestracji jednokrotnej**wprowadź nazwę wystąpienia logowania jednokrotnego, na przykład Azureadsso.
 
-    b. W polu **tekstowym identyfikator URI wystawcy SAML**wklej wartość **identyfikatora usługi Azure AD**, która została skopiowana z Azure Portal.
+    b. W polu tekstowym **Adres URL SAML** wklej wartość **Adres URL logowania** skopiowaną z witryny Azure Portal.
 
-    c. W polu **Przekierowanie po wylogowaniu SAML** (opcjonalnie) wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
+    d. W polu tekstowym **adres URL wystawcy SAML** wklej wartość **identyfikatora usługi Azure AD**, która została skopiowana z Azure Portal.
 
     d. Otwórz w Notatniku swój **certyfikat zakodowany w formacie base-64** pobrany z witryny Azure Portal, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat SAML**.
 
@@ -163,13 +174,13 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     g. Przewiń w dół do końca sekcji i kliknij przycisk **Testuj logowanie jednokrotne**. Zostanie wtedy otworzone okno podręczne ze stroną logowania usługi Azure AD. Wprowadź swoje poświadczenia jak zwykle w celu uwierzytelnienia.
 
-    **Rozwiązywanie problemów:** Upewnij się, że adres e-mail zwracany z usługi Azure AD jest taki sama jak konto firmowe platformy Workplace, do którego się zalogowano.
+    **Rozwiązywanie problemów:** Upewnij się, że adres e-mail zwrotny z usługi Azure AD jest taki sam jak konto w miejscu pracy, na którym się zalogowano.
 
     h. Po pomyślnym zakończeniu testu przewiń w dół do końca strony i kliknij przycisk **Zapisz**.
 
     i. Wszystkim użytkownikom korzystającym z aplikacji Workplace zostanie wyświetlona strona logowania usługi Azure AD w celu uwierzytelnienia.
 
-4. **Przekierowanie po wylogowaniu SAML (opcjonalnie)**  -
+1. **Przekierowanie po wylogowaniu SAML (opcjonalnie)**  -
 
     Możesz opcjonalnie skonfigurować adres URL wylogowywania SAML, który może prowadzić do strony wylogowywania usługi Azure AD. Gdy to ustawienie jest włączone i skonfigurowane, użytkownik nie będzie przekierowywany do strony wylogowywania aplikacji Workplace. Zamiast tego użytkownik zostanie przekierowany do adresu URL dodanego do ustawienia Przekierowanie po wylogowaniu SAML.
 
@@ -180,7 +191,7 @@ Możesz skonfigurować aplikację Workplace, aby wyświetlała monit o sprawdzen
 > [!NOTE]
 > Minimalna wartość sprawdzania protokołu SAML w przypadku aplikacji mobilnych to 1 tydzień.
 
-Możesz też wymusić zresetowanie protokołu SAML dla wszystkich użytkowników za pomocą przycisku: Wymagaj teraz uwierzytelniania SAML dla wszystkich użytkowników.
+Możesz również wymusić Resetowanie SAML dla wszystkich użytkowników za pomocą przycisku: Wymagaj uwierzytelniania SAML dla wszystkich użytkowników.
 
 ### <a name="create-workplace-by-facebook-test-user"></a>Tworzenie użytkownika testowego aplikacji Workplace by Facebook
 
@@ -193,7 +204,7 @@ W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje w aplika
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Workplace by Facebook w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Workplace by Facebook, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
@@ -219,7 +230,7 @@ Po kliknięciu kafelka Workplace by Facebook w panelu dostępu powinno nastąpi�
 
     ![Strona główna](./media/workplacebyfacebook-tutorial/test01.png)
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -230,4 +241,3 @@ Po kliknięciu kafelka Workplace by Facebook w panelu dostępu powinno nastąpi�
 - [Konfigurowanie aprowizacji użytkowników](workplacebyfacebook-provisioning-tutorial.md)
 
 - [Wypróbuj miejsce pracy w usłudze Facebook przy użyciu usługi Azure AD](https://aad.portal.azure.com)
-

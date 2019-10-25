@@ -1,27 +1,27 @@
 ---
-title: 'Przykład: wielopoziomowe aspekty — Azure Search'
+title: 'Przykład: wielopoziomowe zestawy reguł'
+titleSuffix: Azure Cognitive Search
 description: Dowiedz się, jak tworzyć struktury aspektów dla taksonomii wielopoziomowej, tworząc zagnieżdżoną strukturę nawigacji, którą można uwzględnić na stronach aplikacji.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: 8672fa0911d1a031205bb3340fa0c03ab9492a28
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70274081"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792940"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>Przykład: wielopoziomowe aspekty w Azure Search
+# <a name="example-multi-level-facets-in-azure-cognitive-search"></a>Przykład: wielopoziomowe aspekty na platformie Azure Wyszukiwanie poznawcze
 
-Schematy Azure Search nie obsługują jawnie kategorii taksonomii wielopoziomowej, ale można je przybliżać przez manipulowanie zawartością przed indeksowaniem, a następnie zastosowanie specjalnej obsługi wyników. 
+Schematy Wyszukiwanie poznawcze platformy Azure nie obsługują jawnie kategorii taksonomii wielopoziomowej, ale można je przybliżać przez manipulowanie zawartością przed indeksowaniem, a następnie zastosowaniem specjalnej obsługi wyników. 
 
 ## <a name="start-with-the-data"></a>Zacznij od danych
 
-Przykład w tym artykule kompiluje się w poprzednim przykładzie, [modeluje bazę danych spisu AdventureWorks](search-example-adventureworks-modeling.md), aby przedstawić wielopoziomowe aspekty w Azure Search.
+Przykład w tym artykule kompiluje się w poprzednim przykładzie, [modeluje bazę danych spisu AdventureWorks](search-example-adventureworks-modeling.md), aby przedstawić wielopoziomowe aspekty na platformie Azure wyszukiwanie poznawcze.
 
 Program AdventureWorks ma prostą taksonomię dwupoziomową z relacją nadrzędny-podrzędny. W przypadku głębokości taksonomii o stałej długości tej struktury proste zapytanie sprzężenia SQL może służyć do grupowania taksonomii:
 
@@ -39,9 +39,9 @@ LEFT JOIN
 
 ## <a name="indexing-to-a-collection-field"></a>Indeksowanie do pola kolekcji
 
-W indeksie zawierającym tę strukturę Utwórz pole **kolekcji (EDM. String)** w schemacie Azure Search, aby zapisać te dane, upewniając się, że atrybuty pola obejmują wyszukiwanie, filtrowanie, tworzenie i pobieranie.
+W indeksie zawierającym tę strukturę Utwórz pole **kolekcji (EDM. String)** w schemacie wyszukiwanie poznawcze platformy Azure, aby zapisać te dane, upewniając się, że atrybuty pola obejmują wyszukiwanie, filtrowanie, tworzenie i pobieranie.
 
-Teraz podczas indeksowania zawartości odwołującej się do określonej kategorii taksonomii Prześlij taksonomię jako tablicę zawierającą tekst z każdego poziomu taksonomii. Na przykład dla jednostki z `ProductCategoryId = 5 (Mountain Bikes)` Prześlij pole jako `[ "Bikes", "Bikes|Mountain Bikes"]`
+Teraz podczas indeksowania zawartości odwołującej się do określonej kategorii taksonomii Prześlij taksonomię jako tablicę zawierającą tekst z każdego poziomu taksonomii. Na przykład dla jednostki z `ProductCategoryId = 5 (Mountain Bikes)`Prześlij pole jako `[ "Bikes", "Bikes|Mountain Bikes"]`
 
 Zwróć uwagę na umieszczenie kategorii nadrzędnej "Bikes" w podrzędnej wartości kategorii "Mountain Bikes". Każda Podkategoria powinna osadzić całą ścieżkę względem elementu głównego. Separator znaków potoku jest dowolny, ale musi być spójny i nie powinien znajdować się w tekście źródłowym. Znak separatora będzie używany w kodzie aplikacji do odtworzenia drzewa taksonomii z wyników aspektów.
 
@@ -99,4 +99,4 @@ Ta technika będzie skalowana w celu pokrycia bardziej złożonych scenariuszy, 
 
 ## <a name="see-also"></a>Zobacz także
 
-[Przykład: Modelowanie bazy danych magazynu AdventureWorks dla Azure Search](search-example-adventureworks-modeling.md)
+[Przykład: Modelowanie bazy danych magazynu AdventureWorks dla platformy Azure Wyszukiwanie poznawcze](search-example-adventureworks-modeling.md)

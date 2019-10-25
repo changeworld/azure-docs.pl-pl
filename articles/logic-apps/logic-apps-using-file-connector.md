@@ -1,6 +1,6 @@
 ---
-title: Łączenie z systemami plików w środowisku lokalnym — Azure Logic Apps
-description: Automatyzowanie zadań i przepływów pracy, które łączą się z systemami plików w środowisku lokalnym za pomocą łącznika systemu plików za pośrednictwem lokalnej bramy danych w usłudze Azure Logic Apps
+title: Łączenie z systemami plików lokalnie Azure Logic Apps
+description: Automatyzowanie zadań i przepływów pracy łączących się z lokalnymi systemami plików z łącznikiem systemu plików za pomocą lokalnej bramy danych w Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,94 +9,94 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 5a6a57fb05d59e70df13f6800c8fa7bf87df91c6
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 1b5cf27c49a003042086cd9452f288c7f348d343
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295888"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799706"
 ---
-# <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Nawiązać połączenie z lokalnymi systemami plików za pomocą usługi Azure Logic Apps
+# <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Łączenie z lokalnymi systemami plików przy użyciu Azure Logic Apps
 
-Za pomocą łącznika systemu plików i usługi Azure Logic Apps, można tworzyć zautomatyzowane zadania i udostępnić przepływów pracy, które umożliwiają tworzenie i zarządzanie plikami w pliku w środowisku lokalnym, na przykład:  
+Za pomocą łącznika systemu plików i Azure Logic Apps można tworzyć automatyczne zadania i przepływy pracy, które tworzą pliki i zarządzają nimi w lokalnym udziale plików, na przykład:  
 
-- Tworzenie, pobieranie, dołączania, aktualizacji i usuwania plików.
-- Wyświetl listę plików w folderach lub folderów głównych.
-- Pobierz zawartość pliku i metadanych.
+- Twórz, pobieraj, dołączaj, Aktualizuj i usuwaj pliki.
+- Wyświetl listę plików w folderach lub folderach głównych.
+- Pobieranie zawartości i metadanych pliku.
 
-W tym artykule pokazano, jak połączyć do lokalnego systemu plików zgodnie z opisem w tym przykładowym scenariuszu: Skopiuj plik, który zostanie przekazany do usługi Dropbox do udziału plików, a następnie wyślij wiadomość e-mail. Do nawiązania bezpiecznego połączenia i dostęp do systemów lokalnych, użyj aplikacji logiki [lokalnej bramy danych](../logic-apps/logic-apps-gateway-connection.md). Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Aby uzyskać informacje techniczne dotyczące łącznika, zobacz [dokumentacja łącznika systemu plików](/connectors/filesystem/).
+W tym artykule pokazano, jak połączyć się z lokalnym systemem plików zgodnie z opisem w tym przykładowym scenariuszu: Skopiuj plik przekazany do usługi Dropbox do udziału plików, a następnie Wyślij wiadomość e-mail. Aby bezpiecznie połączyć się z systemami lokalnymi i uzyskać do nich dostęp, Aplikacje logiki korzystają z [lokalnej bramy danych](../logic-apps/logic-apps-gateway-connection.md). Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Informacje techniczne dotyczące łącznika można znaleźć w [dokumentacji dotyczącej łącznika systemu plików](/connectors/filesystem/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* Zanim będzie można połączyć aplikacji logiki do systemów lokalnych, takim jak serwer systemu plików, należy [zainstalować i skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md). W ten sposób można określić, aby użyć instalacji bramy, podczas tworzenia połączenia systemu plików z aplikacji logiki.
+* Aby można było połączyć Aplikacje logiki z systemami lokalnymi, takimi jak serwer systemu plików, należy [zainstalować i skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md). Dzięki temu można określić, czy podczas tworzenia połączenia z systemem plików z poziomu aplikacji logiki ma być używana instalacja bramy.
 
-* A [konta usługi Dropbox](https://www.dropbox.com/), której można zarejestrować za darmo. Poświadczenia konta są niezbędne do utworzenia połączenia między aplikacją logiki i kontem usługi Dropbox.
+* [Konto usługi Dropbox](https://www.dropbox.com/), którego możesz zarejestrować się bezpłatnie. Poświadczenia konta są niezbędne do utworzenia połączenia między aplikacją logiki a kontem usługi Dropbox.
 
-* Dostęp do komputera z systemu plików, które chcesz użyć. Na przykład po zainstalowaniu bramy danych na tym samym komputerze w systemie plików, należy poświadczenia konta dla tego komputera.
+* Dostęp do komputera z systemem plików, który ma być używany. Na przykład w przypadku zainstalowania bramy danych na tym samym komputerze, na którym znajduje się system plików, potrzebne są poświadczenia konta dla tego komputera.
 
-* Konto e-mail od dostawcy, który jest obsługiwany przez usługę Logic Apps, takich jak Office 365 Outlook, Outlook.com lub Gmail. W przypadku innych dostawców [przejrzyj tę listę łączników](https://docs.microsoft.com/connectors/). Ta aplikacja logiki korzysta z konta Office 365 Outlook. Jeśli korzystasz z innego konta e-mail, ogólne kroki będą takie same, ale interfejs użytkownika może się trochę różnić.
+* Konto e-mail dostawcy, który jest obsługiwany przez Logic Apps, na przykład Office 365 Outlook, Outlook.com lub gmail. W przypadku innych dostawców [przejrzyj tę listę łączników](https://docs.microsoft.com/connectors/). Ta aplikacja logiki korzysta z konta Office 365 Outlook. Jeśli korzystasz z innego konta e-mail, ogólne kroki będą takie same, ale interfejs użytkownika może się trochę różnić.
 
-* Podstawową wiedzę na temat o [jak tworzyć aplikacje logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). W tym przykładzie należy pustej aplikacji logiki.
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Na potrzeby tego przykładu potrzebujesz pustej aplikacji logiki.
 
-## <a name="add-trigger"></a>Dodawanie wyzwalacza
+## <a name="add-trigger"></a>Dodaj wyzwalacz
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
 
-1. W polu wyszukiwania wprowadź "dropbox" jako filtr. Z listy wyzwalaczy wybierz następujący wyzwalacz: **Po utworzeniu pliku**
+1. W polu wyszukiwania wprowadź ciąg "Dropbox" jako filtr. Z listy Wyzwalacze wybierz ten wyzwalacz: **po utworzeniu pliku**
 
-   ![Wybieranie wyzwalacza usługi Dropbox](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
+   ![Wybierz wyzwalacz usługi Dropbox](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
-1. Zaloguj się przy użyciu poświadczeń konta usługi Dropbox i autoryzować dostęp do danych usługi Dropbox do usługi Azure Logic Apps.
+1. Zaloguj się przy użyciu poświadczeń konta usługi Dropbox i Autoryzuj dostęp do danych usługi Dropbox w celu Azure Logic Apps.
 
-1. Podaj wymagane informacje dotyczące wyzwalacza.
+1. Podaj wymagane informacje dla wyzwalacza.
 
    ![Wyzwalacz usługi Dropbox](media/logic-apps-using-file-connector/dropbox-trigger.png)
 
-## <a name="add-actions"></a>Dodawanie akcji
+## <a name="add-actions"></a>Dodaj akcje
 
-1. W obszarze wyzwalacza wybierz **następny krok**. W polu wyszukiwania wprowadź "file system" jako filtr. Z listy akcji wybierz następującą akcję: **Utwórz plik**
+1. W obszarze wyzwalacza wybierz pozycję **Następny krok**. W polu wyszukiwania wprowadź "system plików" jako filtr. Z listy Akcje wybierz pozycję Ta akcja: **Utwórz plik**
 
-   ![Znajdź łącznika systemu plików](media/logic-apps-using-file-connector/find-file-system-action.png)
+   ![Znajdź łącznik systemu plików](media/logic-apps-using-file-connector/find-file-system-action.png)
 
-1. Jeśli nie masz jeszcze połączenia w systemie plików, zostanie wyświetlony monit utworzyć połączenie.
+1. Jeśli nie masz jeszcze połączenia z systemem plików, zostanie wyświetlony monit o utworzenie połączenia.
 
    ![Tworzenie połączenia](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Właściwość | Wymagany | Value | Opis |
+   | Właściwość | Wymagane | Wartość | Opis |
    | -------- | -------- | ----- | ----------- |
-   | **Nazwa połączenia** | Tak | <*connection-name*> | Nazwę, która ma połączenia |
-   | **Folder główny** | Yes | <*root-folder-name*> | Folder główny systemu plików, na przykład po zainstalowaniu lokalnej bramy danych przykład folderu lokalnego na komputerze, na którym instalowany jest lokalna brama danych, lub folderu do udziału sieciowego, w których komputer może uzyskać dostęp. <p>Na przykład: `\\PublicShare\\DropboxFiles` <p>Folder główny jest folder nadrzędny głównego, który jest używany dla ścieżek względnych dla wszystkich działań związanych z plikami. |
-   | **Typ uwierzytelniania** | Nie | <*Typ uwierzytelnienia*> | Typ uwierzytelniania, który używa systemu plików, na przykład **Windows** |
-   | **Nazwa użytkownika** | Yes | <*domeny*>\\<*nazwy użytkownika*> | Nazwa użytkownika na komputerze, na którym masz systemu plików |
-   | **Hasło** | Tak | < *— hasło*> | Hasło dla komputera, na którym masz systemu plików |
-   | **gateway** | Yes | <*installed-gateway-name*> | Nazwa dla uprzednio zainstalowanej bramy |
+   | **Nazwa połączenia** | Tak | <*Nazwa połączenia*> | Nazwa, która ma być używany dla połączenia |
+   | **Folder główny** | Tak | *nazwa <głównego-folderu*> | Folder główny systemu plików, na przykład jeśli zainstalowano lokalną bramę danych, taką jak folder lokalny na komputerze, na którym jest zainstalowana lokalna Brama danych lub folder udziału sieciowego, do którego komputer ma dostęp. <p>Na przykład: `\\PublicShare\\DropboxFiles` <p>Folder główny jest głównym folderem nadrzędnym, który jest używany dla ścieżek względnych dla wszystkich akcji związanych z plikami. |
+   | **Typ uwierzytelniania** | Nie | <*Typ uwierzytelniania*> | Typ uwierzytelniania używany przez system plików, na przykład **Windows** |
+   | **Nazwa użytkownika** | Tak | <*domeny*>\\<*Nazwa użytkownika*> | Nazwa użytkownika komputera, na którym znajduje się system plików |
+   | **Hasło** | Tak | <*hasło*> | Hasło do komputera, na którym znajduje się system plików |
+   | **punkt** | Tak | <*zainstalowane — nazwa bramy*> | Nazwa zainstalowanej wcześniej bramy |
    |||||
 
 1. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
-   Usługa Logic Apps, konfiguruje i testuje połączenie, upewniając się, że połączenie działa poprawnie. Jeśli połączenie jest skonfigurowane prawidłowo, opcje są wyświetlane dla akcji, która została wybrana wcześniej.
+   Logic Apps konfiguruje i testuje połączenie, upewniając się, że połączenie działa poprawnie. Jeśli połączenie jest prawidłowo skonfigurowane, opcje są wyświetlane dla wybranej wcześniej akcji.
 
-1. W **Utwórz plik** akcji, podaj szczegóły kopiowania plików z usługi Dropbox do folderu głównego w udziale plików lokalnych. Aby dodać dane wyjściowe z poprzednich kroków, kliknij wewnątrz pola wyboru, a następnie wybierz z dostępnych pól, gdy pojawi się lista zawartości dynamicznej.
+1. W akcji **Utwórz plik** Podaj szczegóły kopiowania plików z usługi Dropbox do folderu głównego w lokalnym udziale plików. Aby dodać dane wyjściowe z poprzednich kroków, kliknij wewnątrz pól i wybierz opcję spośród dostępnych pól, gdy zostanie wyświetlona lista zawartość dynamiczna.
 
-   ![Utwórz akcję pliku](media/logic-apps-using-file-connector/create-file-filled.png)
+   ![Akcja tworzenia pliku](media/logic-apps-using-file-connector/create-file-filled.png)
 
-1. Teraz Dodaj akcję programu Outlook, która wysyła wiadomość e-mail, aby odpowiednie użytkownicy wiedzieli o nowy plik. Wprowadź odbiorców, tytuł i treść wiadomości e-mail. W przypadku testowania można użyć własnego adresu e-mail.
+1. Teraz Dodaj akcję programu Outlook, która wysyła wiadomość e-mail, aby użytkownicy wiedzieli o nowym pliku. Wprowadź adresatów, tytuł i treść wiadomości e-mail. Do testowania możesz użyć własnego adresu e-mail.
 
-   ![Akcję wysyłania wiadomości e-mail](media/logic-apps-using-file-connector/send-email.png)
+   ![Wyślij akcję poczty e-mail](media/logic-apps-using-file-connector/send-email.png)
 
-1. Zapisz aplikację logiki. Przetestuj swoją aplikację, przekazując plik do usługi Dropbox.
+1. Zapisz aplikację logiki. Przetestuj aplikację, przekazując plik do usługi Dropbox.
 
-   Twoja aplikacja logiki należy skopiować plik do udziału plików w środowisku lokalnym i Wyślij wiadomość e-mail adresatów o skopiowanego pliku.
+   Aplikacja logiki powinna skopiować plik do lokalnego udziału plików i wysłać adresatom wiadomość e-mail dotyczącą skopiowanego pliku.
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/fileconnector/).
+Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/fileconnector/)łącznika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się, jak [nawiązać połączenie z danymi lokalnymi](../logic-apps/logic-apps-gateway-connection.md) 
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

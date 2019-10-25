@@ -1,5 +1,6 @@
 ---
-title: Aplikacje klienckie (Biblioteka uwierzytelniania firmy Microsoft) | Azure
+title: Aplikacje klienckie (Biblioteka uwierzytelniania firmy Microsoft)
+titleSuffix: Microsoft identity platform
 description: Informacje na temat klienta publicznego i poufnych aplikacji klienckich w bibliotece uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c854cc34a1ea50f37428cfc18146618d516de7d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 76c57d3a13f9f03fa635c6c9425e2049e2a2c885
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69532962"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803202"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Klient publiczny i poufne aplikacje klienckie
 Biblioteka Microsoft Authentication Library (MSAL) definiuje dwóch typów klientów: klientów publicznych i poufnych klientów. Dwa typy klientów są rozróżniane przez ich możliwość bezpiecznego uwierzytelniania z serwerem autoryzacji i zachowania poufności poświadczeń klienta. W przeciwieństwie do biblioteki Azure AD Authentication Library (ADAL) jest używany *kontekst uwierzytelniania* (który jest połączeniem z usługą Azure AD).
@@ -30,12 +31,12 @@ Biblioteka Microsoft Authentication Library (MSAL) definiuje dwóch typów klien
 - **Poufne aplikacje klienckie** to aplikacje działające na serwerach (aplikacje sieci Web, aplikacje interfejsu Web API, a nawet aplikacje usługi/demon). Są one uznawane za trudne do uzyskania dostępu i z tego powodu mogą utrzymać klucz tajny aplikacji. Poufne klienci mogą przechowywać wpisy tajne czasu konfiguracji. Każde wystąpienie klienta ma odrębną konfigurację (w tym identyfikator klienta i klucz tajny klienta). Te wartości są trudne dla użytkowników końcowych do wyodrębnienia. Aplikacja sieci Web to najbardziej typowy klient poufny. Identyfikator klienta jest udostępniany za pośrednictwem przeglądarki sieci Web, ale wpis tajny jest przesyłany tylko w kanale zaplecza i nigdy nie jest bezpośrednio narażony.
 
     Poufne aplikacje klienckie: <BR>
-    ![Web App ](media/msal-client-applications/web-app.png) ![Web API ](media/msal-client-applications/web-api.png) ![Daemon/Service ](media/msal-client-applications/daemon-service.png)
+    ![Web App](media/msal-client-applications/web-app.png) ![Web API](media/msal-client-applications/web-api.png) ![demona/usługa](media/msal-client-applications/daemon-service.png)
 
 - **Publiczne aplikacje klienckie** to aplikacje działające na urządzeniach lub komputerach stacjonarnych lub w przeglądarce sieci Web. Nie są one zaufane, aby bezpiecznie przechowywać wpisy tajne aplikacji, więc uzyskują dostęp tylko do interfejsów API sieci Web w imieniu użytkownika. (Obsługują tylko publiczne przepływy klientów). Klienci publiczni nie mogą przechowywać wpisów tajnych czasu konfiguracji, więc nie mają kluczy tajnych klienta.
 
     Publiczne aplikacje klienckie: <BR>
-    ![Desktop App ](media/msal-client-applications/desktop-app.png) ![Browserless interfejsu API ](media/msal-client-applications/browserless-app.png) ![Mobile App ](media/msal-client-applications/mobile-app.png)
+    ![](media/msal-client-applications/desktop-app.png) aplikacji klasycznej ![interfejs API bezprzeglądarki](media/msal-client-applications/browserless-app.png) ![aplikacji mobilnej](media/msal-client-applications/mobile-app.png)
 
 > [!NOTE]
 > W MSAL. js nie ma rozdzielania publicznych i poufnych aplikacji klienckich.  MSAL. js reprezentuje aplikacje klienckie jako aplikacje oparte na agencie użytkownika, klienci publiczni, w których kod klienta jest wykonywany w agencie użytkownika, takim jak przeglądarka sieci Web. Ci klienci nie przechowują wpisów tajnych, ponieważ kontekst przeglądarki jest otwarty.

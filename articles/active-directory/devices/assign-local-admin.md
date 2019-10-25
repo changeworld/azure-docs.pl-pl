@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cb6cba02a1bdcf9f19c7f02b7e2ca4d01e0d3f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: f50ace6d707db35dfd7cf9f14026d755093a038c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67983664"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802446"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak zarządzać lokalną grupą administratorów na urządzeniach dołączonych do usługi Azure AD
 
 Aby zarządzać urządzeniem z systemem Windows, musisz być członkiem lokalnej grupy administratorów. W ramach procesu dołączania Azure Active Directory (Azure AD) usługa Azure AD aktualizuje członkostwo tej grupy na urządzeniu. Aktualizację członkostwa można dostosować w celu spełnienia wymagań firmy. Aktualizacja członkostwa jest na przykład przydatna, jeśli chcesz umożliwić personelowi pomocy technicznej wykonywanie zadań wymagających uprawnień administratora na urządzeniu.
 
-W tym artykule wyjaśniono, jak działa aktualizacja członkostwa oraz jak można ją dostosować podczas dołączania do usługi Azure AD. Zawartość tego artykułu nie ma zastosowania do hybrydowego  sprzężenia usługi Azure AD.
+W tym artykule wyjaśniono, jak działa aktualizacja członkostwa oraz jak można ją dostosować podczas dołączania do usługi Azure AD. Zawartość tego artykułu nie ma zastosowania do **hybrydowego** sprzężenia usługi Azure AD.
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Po połączeniu urządzenia z systemem Windows z usługą Azure AD przy użyciu funkcji Azure AD Join usługa Azure AD dodaje następujące zasady zabezpieczeń do lokalnej grupy administratorów na urządzeniu:
 
@@ -68,7 +68,7 @@ Administratorzy urządzeń są przypisani do wszystkich urządzeń przyłączony
 
 Domyślnie usługa Azure AD dodaje użytkownika wykonującego usługę Azure AD Join do grupy administratorów na urządzeniu. Aby uniemożliwić regularnym użytkownikom administratorów lokalnych, dostępne są następujące opcje:
 
-- [Windows autopilotaż](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) — system Windows autopilotaż zapewnia możliwość uniemożliwienia Użytkownikowi podstawowemu przełączenia się do administratora lokalnego. Możesz to zrobić, [tworząc profil](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)autopilotażu.
+- [Windows autopilotaż](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) — system Windows autopilotaż zapewnia możliwość uniemożliwienia Użytkownikowi podstawowemu przełączenia się do administratora lokalnego. Możesz to zrobić, [tworząc profil autopilotażu](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile).
 - [Rejestracja Zbiorcza](https://docs.microsoft.com/intune/windows-bulk-enroll) — dołączanie usługi Azure AD, które jest wykonywane w kontekście rejestracji zbiorczej, odbywa się w kontekście użytkownika, który został utworzony przez Ciebie. Użytkownicy logujący się po przyłączeniu urządzenia nie zostaną dodani do grupy administratorów.   
 
 ## <a name="manually-elevate-a-user-on-a-device"></a>Ręczne podnoszenie poziomu uprawnień użytkownika na urządzeniu 
@@ -79,8 +79,8 @@ Począwszy od wersji **Windows 10 1709** , można wykonać to zadanie na podstaw
  
 Dodatkowo można również dodać użytkowników przy użyciu wiersza polecenia:
 
-- Jeśli użytkownicy dzierżawy są synchronizowani z Active Directory lokalnych, użyj `net localgroup administrators /add "Contoso\username"`programu.
-- Jeśli w usłudze Azure AD są tworzone użytkownicy dzierżawy, użyj`net localgroup administrators /add "AzureAD\UserUpn"`
+- Jeśli użytkownicy dzierżawy są synchronizowani z Active Directory lokalnych, użyj `net localgroup administrators /add "Contoso\username"`.
+- Jeśli w usłudze Azure AD utworzono użytkowników dzierżawców, użyj `net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia 
 

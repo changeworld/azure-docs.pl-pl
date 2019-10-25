@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 179676ae2a7d68bc0263f897ffededcf8b7a01f4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: de9fd8c7cd9470a7ccc9136d1eac91fe373fe03c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693387"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787301"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure
 
@@ -50,7 +50,7 @@ Pamięć RAM | 16 GB
 Liczba dysków | 3 dyski<br/><br/> Dyski obejmują dysk systemu operacyjnego, dysk pamięci podręcznej serwera przetwarzania i dysk przechowywania na potrzeby powrotu po awarii.
 Wolne miejsce na dysku | 600 GB miejsca w pamięci podręcznej serwera przetwarzania.
 Wolne miejsce na dysku | 600 GB miejsca na dysk przechowywania.
-System operacyjny  | Windows Server 2012 R2 lub Windows Server 2016 z funkcją środowisko pulpitu |
+System operacyjny  | Windows Server 2012 R2 lub Windows Server 2016 z funkcją środowisko pulpitu <br/><br> Jeśli planujesz użycie wbudowanego głównego serwera docelowego tego urządzenia do powrotu po awarii, upewnij się, że wersja systemu operacyjnego jest taka sama lub wyższa niż zreplikowane elementy.|
 Ustawienia regionalne systemu operacyjnego | Angielski (en-us)
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Niewymagane w przypadku serwera konfiguracji w wersji [9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) lub nowszej. 
 Role systemu Windows Server | Nie włączaj Active Directory Domain Services; Internet Information Services (IIS) lub Hyper-V. 

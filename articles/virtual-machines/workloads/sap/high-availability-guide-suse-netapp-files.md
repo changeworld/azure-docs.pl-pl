@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 572255cfcd34b97a6ba0f784f7fc7ed1c0df040a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3764ae9ff3a20de6d31f0438b73597933080e372
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213252"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791734"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server z Azure NetApp Files dla aplikacji SAP
 
@@ -78,7 +78,7 @@ Przeczytaj najpierw następujące informacje i dokumenty SAP:
 * Uwaga dotycząca oprogramowania SAP [2243692][2243692] zawiera informacje na temat licencjonowania SAP w systemie Linux na platformie Azure.
 * Uwaga dotycząca protokołu SAP [1984787][1984787] zawiera ogólne informacje o SUSE Linux Enterprise Server 12.
 * Uwaga dotycząca programu SAP [1999351][1999351] zawiera dodatkowe informacje dotyczące rozwiązywania problemów z rozszerzoną funkcją monitorowania platformy Azure dla oprogramowania SAP.
-* Społeczność Community wiki] (https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) zawiera wszystkie wymagane uwagi SAP dla systemu Linux.
+* Społeczność społeczności WIKI firmy SAP (https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) ma wszystkie wymagane uwagi SAP dla systemu Linux.
 * [Planowanie i wdrażanie usługi Azure Virtual Machines dla oprogramowania SAP w systemie Linux][planning-guide]
 * [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP w systemie Linux][deployment-guide]
 * [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP w systemie Linux][dbms-guide]
@@ -102,7 +102,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SA
 > Klastrowanie z obsługą protokołu ASCS/wykres WYWOŁUJĄCYCH w systemie SUSE Linux jako system operacyjny gościa na maszynach wirtualnych platformy Azure **nie jest obsługiwane**. Klastrowanie wielu identyfikatorów SID opisuje instalację wielu wystąpień SAP ASCS/wykres WYWOŁUJĄCYCH z różnymi identyfikatorami SID w jednym klastrze Pacemaker
 
 
-### <a name="ascs"></a>(A)SCS
+### <a name="ascs"></a>Z SCS
 
 * Konfiguracja frontonu
   * Adres IP 10.1.1.20
@@ -111,15 +111,15 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SA
 * Port sondy
   * Port 620<strong>&lt;nr&gt;</strong>
 * Reguły równoważenia obciążenia
-  * <strong>32&lt;Nr&gt;</strong>  TCP
-  * <strong>36&lt;Nr&gt;</strong>  TCP
+  * 32<strong>&lt;nr&gt;</strong> TCP
+  * 36<strong>&lt;nr&gt;</strong> TCP
   * 39<strong>&lt;nr&gt;</strong> TCP
-  * <strong>81&lt;Nr&gt;</strong>  TCP
-  * <strong>5&lt;Nr&gt;</strong>13 TCP
-  * <strong>5&lt;Nr&gt;</strong>14 TCP
-  * <strong>5&lt;Nr&gt;</strong>16 TCP
+  * 81<strong>&lt;nr&gt;</strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>13 TCP
+  * 5<strong>&lt;nr&gt;</strong>14 TCP
+  * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-### <a name="ers"></a>ERS
+### <a name="ers"></a>Wykres WYWOŁUJĄCYCH
 
 * Konfiguracja frontonu
   * Adres IP 10.1.1.21
@@ -128,15 +128,15 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SA
 * Port sondy
   * Port 621<strong>&lt;nr&gt;</strong>
 * Reguły równoważenia obciążenia
-  * <strong>32&lt;Nr&gt;</strong>  TCP
-  * <strong>33&lt;Nr&gt;</strong>  TCP
-  * <strong>5&lt;Nr&gt;</strong>13 TCP
-  * <strong>5&lt;Nr&gt;</strong>14 TCP
-  * <strong>5&lt;Nr&gt;</strong>16 TCP
+  * 32<strong>&lt;nr&gt;</strong> TCP
+  * 33<strong>&lt;nr&gt;</strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>13 TCP
+  * 5<strong>&lt;nr&gt;</strong>14 TCP
+  * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Konfigurowanie infrastruktury Azure NetApp Files 
 
-Rozwiązanie SAP NetWeaver wymaga udostępnionego magazynu dla katalogu transportowego i profilu.  Przed przystąpieniem do konfigurowania infrastruktury usługi Azure NetApp Files zapoznaj się z [dokumentacją Azure NetApp Files][anf-azure-doc]. Sprawdź, czy wybrany region platformy Azure oferuje Azure NetApp Files. Poniższy link przedstawia dostępność Azure NetApp Files według regionu platformy Azure: [Azure NetApp Files dostępność według regionów świadczenia usługi Azure][anf-avail-matrix].
+Rozwiązanie SAP NetWeaver wymaga udostępnionego magazynu dla katalogu transportowego i profilu.  Przed przystąpieniem do konfigurowania infrastruktury usługi Azure NetApp Files zapoznaj się z [dokumentacją Azure NetApp Files][anf-azure-doc]. Sprawdź, czy wybrany region platformy Azure oferuje Azure NetApp Files. Poniższy link przedstawia dostępność Azure NetApp Files według regionu platformy Azure: [Azure NetApp Files dostępność według regionu platformy Azure][anf-avail-matrix].
 
 Pliki usługi Azure NetApp są dostępne w kilku [regionach świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Przed wdrożeniem Azure NetApp Files należy zażądać dołączenia do Azure NetApp Files, postępując zgodnie z instrukcjami dotyczącymi [usługi Azure NetApp Files][anf-register]. 
 
@@ -255,7 +255,7 @@ Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker SUSE Linux Enterprise 
 
 ### <a name="installation"></a>Instalacja
 
-Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
 
 1. **[A]** Zainstaluj łącznik SUSE
 
@@ -304,15 +304,15 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo zypper in -t patch SUSE-SLE-HA-12-SP2-2017-886=1
    </code></pre>
 
-3. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+3. **[A]** rozpoznawanie nazw hostów
 
-   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
+   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska   
+   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku   
 
    <pre><code>
    # IP address of cluster node 1
@@ -363,7 +363,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    > [!NOTE]
    > Obecnie Azure NetApp Files obsługuje tylko NFSv3. Nie pomijaj przełącznika nfsvers = 3.
    
-   Uruchom `autofs` ponownie, aby zainstalować nowe udziały
+   Uruchom ponownie `autofs`, aby zainstalować nowe udziały
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -393,6 +393,10 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 1. **[1]** Utwórz zasób wirtualnego adresu IP i sondę kondycji dla wystąpienia ASCS
 
+   > [!IMPORTANT]
+   > Ostatnie testy ujawniły sytuacje, w których netcat przestaje odpowiadać na żądania z powodu zaległości i ograniczenia obsługi tylko jednego połączenia. Zasób netcat przestaje nasłuchiwać żądań modułu równoważenia obciążenia platformy Azure, a przestawny adres IP stał się niedostępny.  
+   > W przypadku istniejących klastrów Pacemaker zalecamy zastępowanie netcat z socat, postępując zgodnie z instrukcjami w obszarze zabezpieczenia [wykrywania modułu równoważenia obciążenia platformy Azure](https://www.suse.com/support/kb/doc/?id=7024128). Należy pamiętać, że zmiana będzie wymagała krótkiego przestoju.  
+
    <pre><code>sudo crm node standby <b>anftstsapcl2</b>
    
    sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
@@ -405,7 +409,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>QAS</b>_ASCS anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k 620<b>00</b>" \
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:620<b>00</b>,backlog=10,fork,reuseaddr /dev/null" \
      op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>QAS</b>_ASCS fs_<b>QAS</b>_ASCS nc_<b>QAS</b>_ASCS vip_<b>QAS</b>_ASCS \
@@ -460,10 +464,10 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>QAS</b>_ERS anything \
-    params binfile="/usr/bin/nc" cmdline_options="-l -k 621<b>01</b>" \
+    params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:621<b>01</b>,backlog=10,fork,reuseaddr /dev/null" \
     op monitor timeout=20s interval=10 depth=0
    
-   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/nc"
+   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/socat"
    # Do you still want to commit (y/n)? y
    
    sudo crm configure group g-<b>QAS</b>_ERS fs_<b>QAS</b>_ERS nc_<b>QAS</b>_ERS vip_<b>QAS</b>_ERS
@@ -658,9 +662,9 @@ W poniższych krokach założono, że serwer aplikacji jest instalowany na serwe
 Następujące elementy są poprzedzone znakiem **[A]** — dotyczy zarówno platformy pas, jak i AAS, **[P]** — dotyczy tylko platformy pas lub **[S]** — dotyczy tylko AAS.
 
 
-1. **[A]**  Konfiguruj system operacyjny
+1. **[A]** Skonfiguruj system operacyjny
 
-   Zmniejsz rozmiar zmieniony pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [niska wydajność zapisu w systemie SLES 11/12 serwery z dużą ilość pamięci RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Zmniejsz rozmiar zanieczyszczonej pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [niska wydajność zapisu na serwerach z systemem SLES 11/12 i dużą ilością pamięci RAM](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>
    sudo vi /etc/sysctl.conf
@@ -669,16 +673,16 @@ Następujące elementy są poprzedzone znakiem **[A]** — dotyczy zarówno plat
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+1. **[A]** rozpoznawanie nazw hostów
 
-   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
+   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
 
    ```bash
    sudo vi /etc/hosts
    ```
 
-   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska
+   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku
 
    <pre><code>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
@@ -732,7 +736,7 @@ Następujące elementy są poprzedzone znakiem **[A]** — dotyczy zarówno plat
    /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
    </code></pre>
 
-   Uruchom `autofs` ponownie, aby zainstalować nowe udziały
+   Uruchom ponownie `autofs`, aby zainstalować nowe udziały
 
    <pre><code>
    sudo systemctl enable autofs
@@ -757,7 +761,7 @@ Następujące elementy są poprzedzone znakiem **[A]** — dotyczy zarówno plat
    /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
    </code></pre>
 
-   Uruchom `autofs` ponownie, aby zainstalować nowe udziały
+   Uruchom ponownie `autofs`, aby zainstalować nowe udziały
 
    <pre><code>
    sudo systemctl enable autofs
@@ -843,7 +847,7 @@ Poniższe testy to kopia przypadków testowych w [przewodnikach z najlepszymi ro
 
 1. Testowanie HAGetFailoverConfig, HACheckConfig i HACheckFailoverConfig
 
-   Uruchom następujące polecenia jako \<sapsid > adm w węźle, w którym jest aktualnie uruchomione wystąpienie ASCS. Jeśli polecenia zakończą się niepowodzeniem, wystąpi błąd: Za mało pamięci, może to być spowodowane przez myślniki w nazwie hosta. Jest to znany problem, który zostanie rozwiązany przez SUSE w pakiecie SAP-SUSE-Cluster-Connector.
+   Uruchom następujące polecenia jako \<sapsid > adm w węźle, w którym jest aktualnie uruchomione wystąpienie ASCS. Jeśli polecenie nie powiedzie się z powodu niewystarczającej ilości pamięci, może to być spowodowane przez myślniki w nazwie hosta. Jest to znany problem, który zostanie rozwiązany przez SUSE w pakiecie SAP-SUSE-Cluster-Connector.
 
    <pre><code>
    anftstsapcl1:qasadm 52> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -957,7 +961,7 @@ Poniższe testy to kopia przypadków testowych w [przewodnikach z najlepszymi ro
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   Uruchom następujące polecenia jako \<sapsid > adm, aby zmigrować wystąpienie ASCS.
+   Uruchom następujące polecenia jako \<sapsid > adm w celu migrowania wystąpienia ASCS.
 
    <pre><code>
    anftstsapcl1:qasadm 53> sapcontrol -nr 00 -host anftstsapvh -user <b>qas</b>adm &lt;password&gt; -function HAFailoverToNode ""
@@ -1231,7 +1235,7 @@ Poniższe testy to kopia przypadków testowych w [przewodnikach z najlepszymi ro
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   Jeśli uruchamiasz polecenie tylko raz, `sapstart` program uruchomi ponownie ten proces. Jeśli uruchomisz go często, `sapstart` program nie uruchomi ponownie procesu, a zasób stanie się zatrzymany. Uruchom następujące polecenia jako główne, aby wyczyścić stan zasobu wystąpienia wykres WYWOŁUJĄCYCH po teście.
+   Jeśli uruchamiasz polecenie tylko raz, `sapstart` uruchomi ponownie ten proces. Jeśli uruchomisz go często, `sapstart` nie uruchomi ponownie procesu, a zasób stanie się zatrzymany. Uruchom następujące polecenia jako główne, aby wyczyścić stan zasobu wystąpienia wykres WYWOŁUJĄCYCH po teście.
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>

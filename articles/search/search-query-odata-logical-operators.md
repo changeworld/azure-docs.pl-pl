@@ -1,13 +1,13 @@
 ---
-title: Odwołanie operatora logicznego OData — Azure Search
-description: Operatory logiczne OData, i,, i nie, w Azure Search zapytaniach.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Odwołanie operatora logicznego OData
+titleSuffix: Azure Cognitive Search
+description: Operatory logiczne OData, i,, i nie, w zapytaniach usługi Azure Wyszukiwanie poznawcze.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,22 +19,22 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: bf4939a40a2fdf1c8fc6cf97beca0184b1604c98
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4e016047d66e49f17c08d4b92a1c865f4b63e39b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647995"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793327"
 ---
-# <a name="odata-logical-operators-in-azure-search---and-or-not"></a>Operatory logiczne OData w Azure Search- `and`, `or`,`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Operatory logiczne OData w usłudze Azure Wyszukiwanie poznawcze — `and`, `or``not`
 
-[Wyrażenia filtru OData](query-odata-filter-orderby-syntax.md) w Azure Search są wyrażeniami logicznymi, `true` które `false`są szacowane do lub. Filtr złożony można napisać, pisząc szereg [prostszych filtrów](search-query-odata-comparison-operators.md) i tworząc je przy użyciu operatorów logicznych z [algebry logicznego](https://en.wikipedia.org/wiki/Boolean_algebra):
+[Wyrażenia filtru OData](query-odata-filter-orderby-syntax.md) na platformie Azure wyszukiwanie poznawcze są wyrażeniami logicznymi, które są szacowane do `true` lub `false`. Filtr złożony można napisać, pisząc szereg [prostszych filtrów](search-query-odata-comparison-operators.md) i tworząc je przy użyciu operatorów logicznych z [algebry logicznego](https://en.wikipedia.org/wiki/Boolean_algebra):
 
-- `and`: Operator binarny, który jest obliczany `true` , jeśli oba wyrażenia podrzędne i po prawej stronie są oceniane do. `true`
-- `or`: Operator binarny, który jest obliczany `true` , jeśli jedno z jego lewy lub prawego podwyrażenia oblicza wartość. `true`
-- `not`: Jednoargumentowy operator, który jest `true` obliczany w przypadku, gdy jego Podwyrażenie ma wartość, i na `false`odwrót.
+- `and`: operator binarny, który jest obliczany do `true`, jeśli oba wyrażenia podrzędne i po prawej stronie są oceniane do `true`.
+- `or`: operator binarny, który jest obliczany do `true`, jeśli jedno z jego lewy lub prawego podwyrażenia szacuje się w `true`.
+- `not`: jednoargumentowy operator, który oblicza `true`, jeśli jego Podwyrażenie ma wartość `false`i na odwrót.
 
-Te, razem z [ `any` operatorami kolekcji i `all` ](search-query-odata-collection-operators.md), umożliwiają konstruowanie filtrów, które mogą wyrażać bardzo złożone kryteria wyszukiwania.
+Są to między innymi [Operatory kolekcji `any` i `all`](search-query-odata-collection-operators.md)umożliwiają konstruowanie filtrów, które mogą wyrażać bardzo złożone kryteria wyszukiwania.
 
 ## <a name="syntax"></a>Składnia
 
@@ -51,28 +51,28 @@ logical_expression ::=
 Dostępny jest również interaktywny diagram składni:
 
 > [!div class="nextstepaction"]
-> [Diagram składni OData dla Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
+> [Diagram składni OData dla Wyszukiwanie poznawcze platformy Azure](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
 
 > [!NOTE]
-> Zapoznaj się z informacjami o [składni wyrażenia OData dla Azure Search](search-query-odata-syntax-reference.md) , aby uzyskać pełną EBNF.
+> Zapoznaj się z informacjami o [składni wyrażenia OData dla usługi Azure wyszukiwanie poznawcze](search-query-odata-syntax-reference.md) , aby uzyskać pełną EBNF.
 
-Istnieją dwie formy wyrażeń`and`logicznych: binary (/`or`), gdzie istnieją dwa wyrażenia podrzędne i jednoargumentowy (`not`), gdzie istnieje tylko jeden. Wyrażenia podrzędne mogą być wyrażeniami logicznymi dowolnego rodzaju:
+Istnieją dwie formy wyrażeń logicznych: dane binarne (`and`/`or`), gdzie istnieją dwa wyrażenia podrzędne i jednoargumentowe (`not`), gdzie istnieje tylko jeden. Wyrażenia podrzędne mogą być wyrażeniami logicznymi dowolnego rodzaju:
 
-- Pola lub zmienne zakresu typu`Edm.Boolean`
-- Funkcje, które zwracają wartości typu `Edm.Boolean`, takie jak `geo.intersects` lub`search.ismatch`
-- [Wyrażenia porównania](search-query-odata-comparison-operators.md), takie jak`rating gt 4`
-- [Wyrażenia kolekcji](search-query-odata-collection-operators.md), takie jak`Rooms/any(room: room/Type eq 'Deluxe Room')`
-- Literały `true` logiczne lub `false`.
-- Inne wyrażenia logiczne konstruowane przy `and`użyciu `or`,, `not`i.
+- Pola lub zmienne zakresów typu `Edm.Boolean`
+- Funkcje, które zwracają wartości typu `Edm.Boolean`, takie jak `geo.intersects` lub `search.ismatch`
+- [Wyrażenia porównania](search-query-odata-comparison-operators.md), takie jak `rating gt 4`
+- [Wyrażenia kolekcji](search-query-odata-collection-operators.md), takie jak `Rooms/any(room: room/Type eq 'Deluxe Room')`
+- Literały logiczne `true` lub `false`.
+- Inne wyrażenia logiczne konstruowane przy użyciu `and`, `or`i `not`.
 
 > [!IMPORTANT]
-> Istnieją sytuacje, w których nie można używać wszystkich rodzajów wyrażeń podrzędnych z `and` / `or`, szczególnie w wyrażeniach lambda. Aby uzyskać szczegółowe informacje, zobacz [Operatory kolekcji OData w Azure Search](search-query-odata-collection-operators.md#limitations) .
+> Istnieją sytuacje, w których nie można używać wszystkich rodzajów wyrażeń podrzędnych z `and`/`or`, w szczególności w wyrażeniach lambda. Aby uzyskać szczegółowe informacje, zobacz [Operatory kolekcji OData w usłudze Azure wyszukiwanie poznawcze](search-query-odata-collection-operators.md#limitations) .
 
-### <a name="logical-operators-and-null"></a>Operatory logiczne i`null`
+### <a name="logical-operators-and-null"></a>Operatory logiczne i `null`
 
-Większość wyrażeń logicznych, takich jak Functions i porównania `null` , nie może generować wartości, a operatory logiczne nie mogą `null` być stosowane do literału `x and null` bezpośrednio (na przykład nie jest to dozwolone). Jednak pola `null`logiczne mogą być, dlatego należy wiedzieć, `and`jak operatory, `or`i `not` działają w obecności wartości null. Jest to podsumowanie w poniższej tabeli, gdzie `b` to pole typu: `Edm.Boolean`
+Większość wyrażeń logicznych, takich jak Functions i porównań, nie może generować wartości `null` i operatory logiczne nie mogą być stosowane bezpośrednio do `null` Literal (na przykład `x and null` nie jest dozwolone). Jednak pola logiczne mogą być `null`, dlatego należy wiedzieć, jak operatory `and`, `or`i `not` działają w obecności wartości null. Jest to podsumowanie w poniższej tabeli, gdzie `b` jest polem typu `Edm.Boolean`:
 
-| Wyrażenie | Wynik gdy `b` jest`null` |
+| Wyrażenie | Wynik po `null` `b` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -87,19 +87,19 @@ Większość wyrażeń logicznych, takich jak Functions i porównania `null` , n
 | `b or true` | `true` |
 | `b or false` | `false` |
 
-Gdy `b` pole logiczne jest wyświetlane przez siebie w wyrażeniu filtru, zachowuje się tak, jakby zostało zapisaniu `b eq true`, więc jeśli `b` jest `null`, wyrażenie daje `false`w wyniku. Podobnie, `not b` zachowuje się jak `not (b eq true)`, `true`dlatego jest oceniane. W ten sposób `null` pola zachowują się tak samo `false`jak. Jest to zgodne z zachowaniem ich w połączeniu z innymi wyrażeniami `and` przy `or`użyciu i, jak pokazano w powyższej tabeli. Pomimo tego, bezpośrednie porównanie z `false` (`b eq false` `false`) będzie nadal oceniane. Innymi słowy, `null` nie jest `false`równe, chociaż zachowuje się tak jak w wyrażeniach logicznych.
+Gdy pole logiczne `b` wyświetlane w wyrażeniu filtru, działa tak, jakby zostało zapisaną `b eq true`, więc jeśli `b` jest `null`, wyrażenie oblicza `false`. Podobnie `not b` zachowuje się jak `not (b eq true)`, dlatego zostanie oszacowany `true`. W ten sposób pola `null` zachowują się tak samo jak `false`. Jest to zgodne z zachowaniem ich w połączeniu z innymi wyrażeniami przy użyciu `and` i `or`, jak pokazano w powyższej tabeli. Pomimo tego bezpośrednie porównanie `false` (`b eq false`) będzie nadal oceniane do `false`. Innymi słowy, `null` nie jest równa `false`, chociaż zachowuje się tak jak w wyrażeniach logicznych.
 
 ## <a name="examples"></a>Przykłady
 
-Dopasowuje dokumenty, `rating` gdy pole jest z zakresu od 3 do 5 włącznie:
+Dopasuj dokumenty, w których pole `rating` ma wartość od 3 do 5 włącznie:
 
     rating ge 3 and rating le 5
 
-Dopasowuje dokumenty, w `ratings` których wszystkie elementy pola są mniejsze niż 3 lub większe niż 5:
+Dopasuj dokumenty, w których wszystkie elementy pola `ratings` są mniejsze niż 3 lub większe niż 5:
 
     ratings/all(r: r lt 3 or r gt 5)
 
-Dopasowuje dokumenty, `location` w których pole znajduje się w danym wielokąta, a dokument nie zawiera terminu "Public".
+Dopasowuje dokumenty, w których pole `location` znajduje się w obrębie danego wielokąta, a dokument nie zawiera terminu "Public".
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))') and not search.ismatch('public')
 
@@ -109,7 +109,7 @@ Dopasowuj dokumenty dla hoteli w Vancouver, Kanada, gdy istnieje Pokój Deluxe z
 
 ## <a name="next-steps"></a>Następne kroki  
 
-- [Filtry w Azure Search](search-filters.md)
-- [Przegląd języka wyrażenia OData dla Azure Search](query-odata-filter-orderby-syntax.md)
-- [Odwołanie do składni wyrażenia OData dla Azure Search](search-query-odata-syntax-reference.md)
-- [Wyszukaj dokumenty &#40;Azure Search interfejs API REST usługi&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filtry na platformie Azure Wyszukiwanie poznawcze](search-filters.md)
+- [Omówienie języka wyrażeń OData dla platformy Azure Wyszukiwanie poznawcze](query-odata-filter-orderby-syntax.md)
+- [Dokumentacja składni wyrażenia OData dla usługi Azure Wyszukiwanie poznawcze](search-query-odata-syntax-reference.md)
+- [Wyszukaj dokumenty &#40;w interfejsie API REST usługi Azure wyszukiwanie poznawcze&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

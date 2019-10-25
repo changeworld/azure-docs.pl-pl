@@ -16,16 +16,16 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c475bfc6179f3604ed6b83cafc75d34f4359513f
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 4e732e62afcc7af0a2b90d7c525a6de5e65195aa
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532839"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809238"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co nowego w Azure Active Directory?
 
->Otrzymuj powiadomienia o tym, kiedy należy ponownie odwiedzić Tę stronę pod kątem aktualizacji przez skopiowanie i wklejenie tego adresu URL: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` do ikony czytnika ![RSS kanału informacyjnego ](./media/whats-new/feed-icon-16x16.png) czytnika kanału informacyjnego.
+>Otrzymuj powiadomienia o tym, kiedy należy ponownie odwiedzić Tę stronę pod kątem aktualizacji przez skopiowanie i wklejenie tego adresu URL: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` do ![ikona czytnika kanału informacyjnego RSS](./media/whats-new/feed-icon-16x16.png) Reader.
 
 Usługa Azure AD otrzymuje ulepszenia na bieżąco. Aby zachować aktualność najnowszych zmian, ten artykuł zawiera informacje na temat:
 
@@ -55,13 +55,13 @@ Więcej informacji na temat nowego interfejsu API riskDetection można znaleźć
 
 ## <a name="september-2019"></a>Wrzesień 2019 r.
 
-### <a name="deprecation-of-the-power-bi-content-packs"></a>Przestarzałe pakiety zawartości Power BI
+### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>Zaplanuj zmianę: zaniechanie Power BI pakietów zawartości
 
-**Typ:** Przestarzałe  
+**Typ:** Planowanie zmiany  
 **Kategoria usługi:** Reporting  
 **Możliwość produktu:** Monitorowanie & raportowania
 
-Power BI Przestarzałe pakiety zawartości z magazynu i od **1 października 2019**, nie obsługujemy pakietu zawartości Power BI usługi Azure AD. Klienci korzystający obecnie z pakietu zawartości mogą nadal z nich korzystać, nawet jeśli źródłowe interfejsy API są starszymi wersjami. Alternatywą dla tego pakietu zawartości jest użycie skoroszytów usługi Azure AD (opartych na Log Analytics) w celu uzyskania szczegółowych informacji dotyczących usług związanych z usługą Azure AD.
+Od 1 października 2019 Power BI rozpocznie się wycofanie wszystkich pakietów zawartości, w tym pakietu zawartości usługi Azure AD Power BI. Alternatywą dla tego pakietu zawartości jest użycie skoroszytów usługi Azure AD w celu uzyskania szczegółowych informacji dotyczących usług związanych z usługą Azure AD. Dostępne są dodatkowe skoroszyty, w tym skoroszyty dotyczące zasad dostępu warunkowego w trybie tylko raportowanie, informacje oparte na zgodzie aplikacji i inne.
 
 Aby uzyskać więcej informacji na temat skoroszytów, zobacz [jak używać skoroszytów Azure monitor dla Azure Active Directory raportów](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). Aby uzyskać więcej informacji na temat wycofania pakietów zawartości, zobacz wpis w blogu dotyczący [ogłaszania Power BI szablonów aplikacji ogólnie dostępna](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
 
@@ -192,18 +192,6 @@ Od 1 lipca 2019 firma Microsoft zatrzymała ofertę serwera usługi MFA dla nowy
 ---
 
 ## <a name="august-2019"></a>Sierpień 2019 r.
-
-### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>Zaplanuj zmianę: zaniechanie Power BI pakietów zawartości
-
-**Typ:** Planowanie zmiany  
-**Kategoria usługi:** Reporting  
-**Możliwość produktu:** Monitorowanie & raportowania
-
-Od 1 października 2019 Power BI rozpocznie się wycofanie wszystkich pakietów zawartości, w tym pakietu zawartości usługi Azure AD Power BI. Alternatywą dla tego pakietu zawartości jest użycie skoroszytów usługi Azure AD w celu uzyskania szczegółowych informacji dotyczących usług związanych z usługą Azure AD. Dostępne są dodatkowe skoroszyty, w tym skoroszyty dotyczące zasad dostępu warunkowego w trybie tylko raportowanie, informacje oparte na zgodzie aplikacji i inne.
-
-Aby uzyskać więcej informacji na temat skoroszytów, zobacz [jak używać skoroszytów Azure monitor dla Azure Active Directory raportów](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). Aby uzyskać więcej informacji na temat wycofania pakietów zawartości, zobacz wpis w blogu dotyczący [ogłaszania Power BI szablonów aplikacji ogólnie dostępna](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
-
----
 
 ### <a name="enhanced-search-filtering-and-sorting-for-groups-is-available-in-the-azure-ad-portal-public-preview"></a>Ulepszone wyszukiwanie, filtrowanie i sortowanie dla grup jest dostępne w portalu usługi Azure AD (publiczna wersja zapoznawcza)
 

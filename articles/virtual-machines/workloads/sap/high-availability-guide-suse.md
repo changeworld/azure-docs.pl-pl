@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: 71c1d1eb91654ea169330715be6bcf2b94207a27
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 569ac844a971970c22f5cc0a511545020fe802c5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099045"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791686"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server dla aplikacji SAP
 
@@ -89,7 +89,7 @@ Serwer plików NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres 
 > [!IMPORTANT]
 > Klastrowanie z obsługą protokołu ASCS/wykres WYWOŁUJĄCYCH w systemie SUSE Linux jako system operacyjny gościa na maszynach wirtualnych platformy Azure **nie jest obsługiwane**. Klastrowanie wielu identyfikatorów SID opisuje instalację wielu wystąpień SAP ASCS/wykres WYWOŁUJĄCYCH z różnymi identyfikatorami SID w jednym klastrze Pacemaker
 
-### <a name="ascs"></a>(A)SCS
+### <a name="ascs"></a>Z SCS
 
 * Konfiguracja frontonu
   * Adres IP 10.0.0.7
@@ -99,15 +99,15 @@ Serwer plików NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres 
   * Port 620<strong>&lt;nr&gt;</strong>
 * Ładowanie 
 * reguły równoważenia
-  * <strong>32&lt;Nr&gt;</strong>  TCP
-  * <strong>36&lt;Nr&gt;</strong>  TCP
+  * 32<strong>&lt;nr&gt;</strong> TCP
+  * 36<strong>&lt;nr&gt;</strong> TCP
   * 39<strong>&lt;nr&gt;</strong> TCP
-  * <strong>81&lt;Nr&gt;</strong>  TCP
-  * <strong>5&lt;Nr&gt;</strong>13 TCP
-  * <strong>5&lt;Nr&gt;</strong>14 TCP
-  * <strong>5&lt;Nr&gt;</strong>16 TCP
+  * 81<strong>&lt;nr&gt;</strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>13 TCP
+  * 5<strong>&lt;nr&gt;</strong>14 TCP
+  * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-### <a name="ers"></a>ERS
+### <a name="ers"></a>Wykres WYWOŁUJĄCYCH
 
 * Konfiguracja frontonu
   * Adres IP 10.0.0.8
@@ -116,11 +116,11 @@ Serwer plików NFS, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres 
 * Port sondy
   * Port 621<strong>&lt;nr&gt;</strong>
 * Reguły równoważenia obciążenia
-  * <strong>32&lt;Nr&gt;</strong>  TCP
-  * <strong>33&lt;Nr&gt;</strong>  TCP
-  * <strong>5&lt;Nr&gt;</strong>13 TCP
-  * <strong>5&lt;Nr&gt;</strong>14 TCP
-  * <strong>5&lt;Nr&gt;</strong>16 TCP
+  * 32<strong>&lt;nr&gt;</strong> TCP
+  * 33<strong>&lt;nr&gt;</strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>13 TCP
+  * 5<strong>&lt;nr&gt;</strong>14 TCP
+  * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>Konfigurowanie serwera NFS o wysokiej dostępności
 
@@ -156,7 +156,7 @@ Możesz użyć jednego z szablonów szybkiego startu w usłudze GitHub, aby wdro
    9. Nazwa użytkownika administratora i hasło administratora  
       Zostanie utworzony nowy użytkownik, którego można użyć do zalogowania się na komputerze.
    10. Identyfikator podsieci  
-   Jeśli chcesz wdrożyć maszynę wirtualną w istniejącej sieci wirtualnej, w której zdefiniowano podsieć, należy przypisać do niej identyfikator tej konkretnej podsieci. Ten identyfikator zwykle wygląda tak, jak **&lt;identyfikator&gt;subskrypcji**/subscriptions//resourceGroups/ **&lt;nazwa&gt;grupy zasobów**/Providers/Microsoft.Network/virtualNetworks/ **&lt; &gt;** nazwa**podsieci/Subnets/&gt; nazwy sieci wirtualnej&lt;**
+   Jeśli chcesz wdrożyć maszynę wirtualną w istniejącej sieci wirtualnej, w której zdefiniowano podsieć, należy przypisać do niej identyfikator tej konkretnej podsieci. Identyfikator ma zwykle postać/subscriptions/ **&lt;Identyfikator subskrypcji&gt;** /resourceGroups/ **&lt;nazwa grupy zasobów&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;nazwa sieci wirtualnej&gt;** /subnets/ **&lt;nazwę podsieci&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ręczne wdrażanie systemu Linux za pośrednictwem Azure Portal
 
@@ -175,7 +175,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
    Używane są SLES dla aplikacji SAP 12 SP1  
    Wybierz utworzony wcześniej zestaw dostępności  
 1. Dodaj co najmniej jeden dysk danych do obu maszyn wirtualnych  
-   Dyski danych są używane dla katalogu >/usr/SAP/`<SAPSID`
+   Dyski danych są używane na potrzeby/usr/SAP/`<SAPSID`> Directory
 1. Tworzenie Load Balancer (wewnętrzny)  
    1. Utwórz adresy IP frontonu
       1. Adres IP 10.0.0.7 dla ASCS
@@ -226,7 +226,7 @@ Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker SUSE Linux Enterprise 
 
 ### <a name="installation"></a>Instalacja
 
-Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
 
 1. **[A]** Zainstaluj łącznik SUSE
 
@@ -276,15 +276,15 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo zypper in -t patch SUSE-SLE-HA-12-SP2-2017-886=1
    </code></pre>
 
-1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+1. **[A]** rozpoznawanie nazw hostów
 
-   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
+   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska   
+   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku   
 
    <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
@@ -362,6 +362,10 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 1. **[1]** Utwórz zasób wirtualnego adresu IP i sondę kondycji dla wystąpienia ASCS
 
+   > [!IMPORTANT]
+   > Ostatnie testy ujawniły sytuacje, w których netcat przestaje odpowiadać na żądania z powodu zaległości i ograniczenia obsługi tylko jednego połączenia. Zasób netcat przestaje nasłuchiwać żądań modułu równoważenia obciążenia platformy Azure, a przestawny adres IP stał się niedostępny.  
+   > W przypadku istniejących klastrów Pacemaker zalecamy zastępowanie netcat z socat, postępując zgodnie z instrukcjami w obszarze zabezpieczenia [wykrywania modułu równoważenia obciążenia platformy Azure](https://www.suse.com/support/kb/doc/?id=7024128). Należy pamiętać, że zmiana będzie wymagała krótkiego przestoju.  
+
    <pre><code>sudo crm node standby <b>nw1-cl-1</b>
    
    sudo crm configure primitive fs_<b>NW1</b>_ASCS Filesystem device='<b>nw1-nfs</b>:/<b>NW1</b>/ASCS' directory='/usr/sap/<b>NW1</b>/ASCS<b>00</b>' fstype='nfs4' \
@@ -374,7 +378,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>NW1</b>_ASCS anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k 620<b>00</b>" \
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:620<b>00</b>,backlog=10,fork,reuseaddr /dev/null" \
      op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW1</b>_ASCS fs_<b>NW1</b>_ASCS nc_<b>NW1</b>_ASCS vip_<b>NW1</b>_ASCS \
@@ -427,10 +431,10 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>NW1</b>_ERS anything \
-    params binfile="/usr/bin/nc" cmdline_options="-l -k 621<b>02</b>" \
+    params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:621<b>02</b>,backlog=10,fork,reuseaddr /dev/null" \
     op monitor timeout=20s interval=10 depth=0
    
-   # WARNING: Resources nc_NW1_ASCS,nc_NW1_ERS violate uniqueness for parameter "binfile": "/usr/bin/nc"
+   # WARNING: Resources nc_NW1_ASCS,nc_NW1_ERS violate uniqueness for parameter "binfile": "/usr/bin/socat"
    # Do you still want to commit (y/n)? y
    
    sudo crm configure group g-<b>NW1</b>_ERS fs_<b>NW1</b>_ERS nc_<b>NW1</b>_ERS vip_<b>NW1</b>_ERS
@@ -622,7 +626,7 @@ W poniższych krokach założono, że serwer aplikacji jest instalowany na serwe
 
 1. Konfigurowanie systemu operacyjnego
 
-   Zmniejsz rozmiar zmieniony pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [niska wydajność zapisu w systemie SLES 11/12 serwery z dużą ilość pamięci RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Zmniejsz rozmiar zanieczyszczonej pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [niska wydajność zapisu na serwerach z systemem SLES 11/12 i dużą ilością pamięci RAM](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>sudo vi /etc/sysctl.conf
 
@@ -633,14 +637,14 @@ W poniższych krokach założono, że serwer aplikacji jest instalowany na serwe
 
 1. Konfiguracja rozpoznawania nazw hostów
 
-   Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
+   Możesz użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. Ten przykład pokazuje, jak używać pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
 
    ```bash
    sudo vi /etc/hosts
    ```
 
-   Wstaw następujące wiersze do/etc/hosts. Zmienianie adresu IP i nazwy hosta do danego środowiska
+   Wstaw następujące wiersze do/etc/hosts. Zmień adres IP i nazwę hosta, aby odpowiadały Twojemu środowisku
 
    <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
@@ -767,7 +771,7 @@ Poniższe testy to kopia przypadków testowych w przewodnikach z najlepszymi roz
 
 1. Test HAGetFailoverConfig, HACheckConfig i HACheckFailoverConfig
 
-   Uruchom następujące polecenia jako \<sapsid > adm w węźle, w którym jest aktualnie uruchomione wystąpienie ASCS. Jeśli polecenia zakończą się niepowodzeniem, wystąpi błąd: Za mało pamięci, może to być spowodowane przez myślniki w nazwie hosta. Jest to znany problem, który zostanie rozwiązany przez SUSE w pakiecie SAP-SUSE-Cluster-Connector.
+   Uruchom następujące polecenia jako \<sapsid > adm w węźle, w którym jest aktualnie uruchomione wystąpienie ASCS. Jeśli polecenie nie powiedzie się z powodu niewystarczającej ilości pamięci, może to być spowodowane przez myślniki w nazwie hosta. Jest to znany problem, który zostanie rozwiązany przez SUSE w pakiecie SAP-SUSE-Cluster-Connector.
 
    <pre><code>nw1-cl-0:nw1adm 54> sapcontrol -nr <b>00</b> -function HAGetFailoverConfig
    
@@ -879,7 +883,7 @@ Poniższe testy to kopia przypadków testowych w przewodnikach z najlepszymi roz
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Uruchom następujące polecenia jako \<sapsid > adm, aby zmigrować wystąpienie ASCS.
+   Uruchom następujące polecenia jako \<sapsid > adm w celu migrowania wystąpienia ASCS.
 
    <pre><code>nw1-cl-0:nw1adm 55> sapcontrol -nr 00 -host nw1-ascs -user nw1adm &lt;password&gt; -function HAFailoverToNode ""
    

@@ -1,5 +1,6 @@
 ---
-title: Przekaż stan niestandardowy w żądaniach uwierzytelniania (Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript) | Azure
+title: Przekaż stan niestandardowy w żądaniach uwierzytelniania (Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript)
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak przekazać niestandardową wartość parametru stanu w żądaniu uwierzytelniania przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,17 +18,17 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ae12624b3d897f05437f7795d1a1eee32ca37a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 8d2fa7d7d294d38d29ce8ace744e13bd1bf2d533
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532745"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803035"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Przekazywanie stanu niestandardowego w żądaniach uwierzytelniania przy użyciu MSAL. js
 Parametr *State* , zdefiniowany przez OAuth 2,0, jest uwzględniony w żądaniu uwierzytelniania i jest również zwracany w odpowiedzi tokenu, aby zapobiec atakom na fałszerstwo żądań między lokacjami. Domyślnie Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js) przekazuje losowo wygenerowane unikatowe wartości parametru *stanu* w żądaniach uwierzytelniania.
 
-Parametru stanu można także użyć do kodowania informacji o stanie aplikacji przed przekierowaniem. Można przekazać stan użytkownika w aplikacji, na przykład stronę lub widok, jako dane wejściowe tego parametru. Biblioteka MSAL. js umożliwia przekazanie stanu niestandardowego jako parametru stanu w `Request` obiekcie:
+Parametru stanu można także użyć do kodowania informacji o stanie aplikacji przed przekierowaniem. Można przekazać stan użytkownika w aplikacji, na przykład stronę lub widok, jako dane wejściowe tego parametru. Biblioteka MSAL. js umożliwia przekazanie stanu niestandardowego jako parametru stanu w obiekcie `Request`:
 
 ```javascript
 // Request type
@@ -57,7 +58,7 @@ let loginRequest = {
 myMSALObj.loginPopup(loginRequest);
 ```
 
-Przesłany stan jest dołączany do unikatowego identyfikatora GUID ustawionego przez MSAL. js podczas wysyłania żądania. Po zwróceniu odpowiedzi MSAL. js sprawdza zgodność stanu, a następnie zwraca niestandardową przekazaną `Response` w obiekcie jako. `accountState`
+Przesłany stan jest dołączany do unikatowego identyfikatora GUID ustawionego przez MSAL. js podczas wysyłania żądania. Gdy odpowiedź zostanie zwrócona, MSAL. js sprawdza zgodność stanu, a następnie zwraca niestandardową przekazana stan w obiekcie `Response` jako `accountState`.
 
 ```javascript
 export type AuthResponse = {

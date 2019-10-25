@@ -7,15 +7,15 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/03/2019
-ms.openlocfilehash: 88a66506b5102a4efaeefe1c7033b337dff9889a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 10/22/2019
+ms.openlocfilehash: 97bcb4e6fad9c766f2ad059469e75ffd5ab8ec8c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949241"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800237"
 ---
-# <a name="public-preview-service-limits"></a>Limity usługi publicznej wersji zapoznawczej
+# <a name="public-preview-service-limits"></a>Limity usługi w publicznej wersji zapoznawczej
 
 W publicznej wersji zapoznawczej usługa Azure Digital bliźniaczych reprezentacji ma następującą tymczasową subskrypcję, wystąpienie i limity szybkości.
 
@@ -70,7 +70,8 @@ Poniższe limity ustawiają łączną liczbę wszystkich wywołań funkcji zdefi
 
 Następujące ograniczenia ograniczają łączną liczbę wszystkich komunikatów, które urządzenia mogą wysłać do wystąpienia usługi Azure Digital bliźniaczych reprezentacji:
 
-- 100 komunikatów na sekundę
+- 100 komunikatów na sekundę na wszystkich urządzeniach
+-   25 komunikatów na sekundę na urządzenie
 
 ## <a name="next-steps"></a>Następne kroki
 

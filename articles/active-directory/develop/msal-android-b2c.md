@@ -1,5 +1,6 @@
 ---
-title: Azure AD B2C (Biblioteka uwierzytelniania firmy Microsoft dla systemu Android) | Azure
+title: Azure AD B2C (Biblioteka uwierzytelniania firmy Microsoft dla systemu Android)
+titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących używania Azure AD B2C z biblioteką uwierzytelniania firmy Microsoft dla systemu Android (MSAL. Systemów
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c55356b19c8150c76858efb4edc593406c1722a4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8b5061f1ab341e5872dfa82c9f5c5b133ae40bdf
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679739"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803243"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Korzystanie z MSAL dla systemu Android z B2C
 
@@ -34,9 +35,9 @@ W programie MSAL for Android zasady B2C (podróże użytkowników) są konfiguro
 
 Dana aplikacja B2C, która ma dwie zasady:
 - Rejestrowanie/logowanie
-    * Wywołano `B2C_1_SISOPolicy`
+    * Wywołane `B2C_1_SISOPolicy`
 - Edytuj profil
-    * Wywołano `B2C_1_EditProfile`
+    * Wywołane `B2C_1_EditProfile`
 
 Plik konfiguracyjny aplikacji deklaruje dwa `authorities`. Jeden dla każdej zasady. Właściwość `type` każdego urzędu jest `B2C`.
 
@@ -58,7 +59,7 @@ Plik konfiguracyjny aplikacji deklaruje dwa `authorities`. Jeden dla każdej zas
 }
 ```
 
-@No__t-0 musi być zarejestrowana w konfiguracji aplikacji, a także w `AndroidManifest.xml` do obsługi przekierowywania podczas [przepływu przydzielenia kodu autoryzacji](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code).
+`redirect_uri` musi być zarejestrowany w konfiguracji aplikacji, a także w `AndroidManifest.xml` do obsługi przekierowywania podczas [przepływu przydzielenia kodu autoryzacji](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code).
 
 ## <a name="initialize-ipublicclientapplication"></a>Zainicjuj IPublicClientApplication
 
@@ -143,7 +144,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>Określanie zasad
 
-Ponieważ zasady w B2C są reprezentowane jako osobne urzędy, wywoływanie zasad innych niż domyślne jest realizowane przez określenie `fromAuthority` klauzuli podczas konstruowania parametrów `acquireToken` lub `acquireTokenSilent`.  Na przykład:
+Ponieważ zasady w B2C są reprezentowane jako osobne urzędy, wywoływanie zasad innych niż domyślne jest realizowane przez określenie klauzuli `fromAuthority` podczas konstruowania parametrów `acquireToken` lub `acquireTokenSilent`.  Na przykład:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -161,7 +162,7 @@ Przepływ użytkownika rejestracji lub logowania na koncie lokalnym pokazuje "**
 
 Zamiast tego kod błędu `AADB2C90118` jest zwracany do aplikacji. Aplikacja powinna obsłużyć ten kod błędu przez uruchomienie określonego przepływu użytkownika, który resetuje hasło.
 
-Aby przechwytywać kod błędu resetowania hasła, można użyć następującej implementacji w `AuthenticationCallback`:
+Aby przechwytywać kod błędu resetowania hasła, w `AuthenticationCallback`można używać następującej implementacji:
 
 ```java
 new AuthenticationCallback() {
@@ -219,7 +220,7 @@ String id = account.getId();
 // Get the IdToken Claims
 //
 // For more information about B2C token claims, see reference documentation
-// https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-reference-tokens
+// https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens
 Map<String, ?> claims = account.getClaims();
 
 // Get the 'preferred_username' claim through a convenience function
@@ -231,15 +232,15 @@ String tenantId = account.getTenantId();
 
 ### <a name="idtoken-claims"></a>IdToken oświadczeń
 
-Oświadczenia zwrócone w IdToken są wypełniane przez usługę tokenu zabezpieczającego (STS), a nie przez MSAL. Niektóre oświadczenia mogą być nieobecne w zależności od używanego dostawcy tożsamości (dostawcy tożsamości). Niektóre dostawców tożsamości nie zapewniają obecnie żądania `preferred_username`. Ponieważ to zgłoszenie jest używane przez MSAL do buforowania, wartość symbolu zastępczego, `MISSING FROM THE TOKEN RESPONSE`, jest używana w tym miejscu. Aby uzyskać więcej informacji na temat oświadczeń usługi B2C IdToken, zobacz [Omówienie tokenów w Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims).
+Oświadczenia zwrócone w IdToken są wypełniane przez usługę tokenu zabezpieczającego (STS), a nie przez MSAL. Niektóre oświadczenia mogą być nieobecne w zależności od używanego dostawcy tożsamości (dostawcy tożsamości). Niektóre dostawców tożsamości nie zapewniają obecnie żądania `preferred_username`. Ponieważ to zgłoszenie jest używane przez MSAL do buforowania, w jego miejsce jest używana wartość zastępcza `MISSING FROM THE TOKEN RESPONSE`. Aby uzyskać więcej informacji na temat oświadczeń usługi B2C IdToken, zobacz [Omówienie tokenów w Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims).
 
 ## <a name="managing-accounts-and-policies"></a>Zarządzanie kontami i zasadami
 
 B2C traktuje każdą zasadę jako oddzielny urząd. W ten sposób tokeny dostępu, tokeny odświeżania i tokeny identyfikatorów zwracane przez poszczególne zasady nie są zamienne. Oznacza to, że każda zasada zwraca oddzielny obiekt `IAccount`, którego tokeny nie mogą być używane do wywoływania innych zasad.
 
-Każda zasada dodaje `IAccount` do pamięci podręcznej dla każdego użytkownika. Jeśli użytkownik zaloguje się do aplikacji i wywoła dwie zasady, będzie miał dwie `IAccount`s. Aby usunąć tego użytkownika z pamięci podręcznej, należy wywołać `removeAccount()` dla każdej zasady.
+Każda zasada dodaje `IAccount` do pamięci podręcznej dla każdego użytkownika. Jeśli użytkownik zaloguje się do aplikacji i wywoła dwie zasady, będzie miał dwa `IAccount`s. Aby usunąć tego użytkownika z pamięci podręcznej, należy wywołać `removeAccount()` dla każdej zasady.
 
-W przypadku odnawiania tokenów dla zasad z `acquireTokenSilent` podaj tę samą `IAccount`, która została zwrócona przez poprzednie wywołania zasad do `AcquireTokenSilentParameters`. Podanie konta zwróconego przez inne zasady spowoduje wystąpienie błędu.
+W przypadku odnawiania tokenów dla zasad z `acquireTokenSilent`Podaj ten sam `IAccount`, który został zwrócony przez poprzednie wywołania zasad do `AcquireTokenSilentParameters`. Podanie konta zwróconego przez inne zasady spowoduje wystąpienie błędu.
 
 ## <a name="next-steps"></a>Następne kroki
 

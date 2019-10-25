@@ -1,6 +1,7 @@
 ---
-title: Platformy wyrażania zgody w usłudze Azure Active Directory
-description: Więcej informacji na temat platformy wyrażania zgody w usłudze Azure Active Directory i jak ją można łatwo tworzyć wielu dzierżawców w sieci web i natywne aplikacje klienckie.
+title: Azure Active Directory struktura wyrażania zgody
+titleSuffix: Microsoft identity platform
+description: Dowiedz się więcej o strukturze wyrażania zgody w Azure Active Directory i sposobach tworzenia wielodostępnych aplikacji sieci Web i natywnych klientów z wieloma dzierżawcami.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,56 +18,56 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9d272c8a01eeed58278a6e7f0cec147b01a10e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: af5b60901e57392aaea504f96572801a878d707c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482935"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803846"
 ---
-# <a name="azure-active-directory-consent-framework"></a>Platformy wyrażania zgody w usłudze Azure Active Directory
+# <a name="azure-active-directory-consent-framework"></a>Azure Active Directory struktura wyrażania zgody
 
-Platformy wyrażania zgody usługi Azure Active Directory (Azure AD) można łatwo tworzyć wielu dzierżawców w sieci web i natywne aplikacje klienckie. Te aplikacje Zezwalaj na logowanie za pomocą kont użytkownika z dzierżawy usługi Azure AD, który jest inny niż ten, na którym aplikacja jest zarejestrowany. Mogą one również potrzebować dostępu do sieci web, interfejsów API, np. interfejsu API programu Microsoft Graph (w celu dostępu do usługi Azure AD, Intune i usługi w usłudze Office 365) i innych usług firmy Microsoft, oprócz własnych interfejsów API sieci web.
+Struktura wyrażania zgody na Azure Active Directory (Azure AD) ułatwia tworzenie wielodostępnych aplikacji sieci Web i natywnych klientów. Te aplikacje umożliwiają logowanie się przy użyciu kont użytkowników z dzierżawy usługi Azure AD, która różni się od tej, w której jest zarejestrowana aplikacja. Mogą także mieć dostęp do interfejsów API sieci Web, takich jak interfejs API Microsoft Graph (Aby uzyskać dostęp do usług Azure AD, Intune i usługi w pakiecie Office 365) oraz innych interfejsów API usług firmy Microsoft, a także własnych interfejsów API sieci Web.
 
-Struktura opiera się na użytkownika lub administratora wyrażenia zgody na aplikację, która prosi do zarejestrowania się w jego katalogu, który może obejmować dostęp do danych katalogu. Na przykład jeśli wymaga aplikacji klienta sieci web na odczytywanie kalendarza informacje o użytkowniku z usługi Office 365, tego użytkownika jest wymagane do wyrażenia zgody aplikacji klienckiej. Po zgoda zostanie podany, aplikacja kliencka będzie do wywołania interfejsu API programu Microsoft Graph w imieniu użytkownika, skorzystaj z informacji kalendarza, zgodnie z potrzebami. [Interfejsu API Microsoft Graph](https://developer.microsoft.com/graph) zapewnia dostęp do danych w usłudze Office 365 (np. kalendarzy i komunikaty z programu Exchange, witrynom i listom z programu SharePoint, dokumentów z poziomu usługi OneDrive, notesów z programu OneNote, zadania w aplikacji Planner i skoroszyty z W programie Excel), a także użytkownicy i grupy z usługi Azure AD i innych obiektów danych z więcej usług w chmurze firmy Microsoft.
+Struktura jest oparta na użytkowniku lub administratorze, który wyraża zgodę na dostęp do aplikacji, która prosi o zarejestrowanie w ich katalogu, co może dotyczyć dostępu do danych katalogu. Na przykład, jeśli aplikacja kliencka sieci Web musi odczytać informacje kalendarza o użytkowniku z pakietu Office 365, ten użytkownik jest zobowiązany do wcześniejszego wyrażania zgody na aplikację klienta. Po udzieleniu zgody aplikacja kliencka będzie w stanie wywołać interfejs API Microsoft Graph w imieniu użytkownika i użyć informacji o kalendarzu zgodnie z wymaganiami. [Interfejs API Microsoft Graph](https://developer.microsoft.com/graph) zapewnia dostęp do danych w pakiecie Office 365 (takich jak kalendarze i komunikaty z programu Exchange, witryn i list z programu SharePoint, dokumentów z usługi OneDrive, notesów z programu OneNote, zadań z programu Planner i skoroszytów w programie Excel), a także użytkowników i grupy z usługi Azure AD i inne obiekty danych z większej liczby usług w chmurze firmy Microsoft.
 
-Platformy wyrażania zgody jest oparta na protokołu OAuth 2.0 i jego różnych przepływów, takie jak udzielić kod autoryzacji poświadczenia przydział i klienta, przy użyciu publicznego lub poufnych klientów. Za pomocą protokołu OAuth 2.0, usługi Azure AD umożliwia tworzenie wiele różnych typów aplikacji klienckich — takie jak w telefonie, tablecie, serwera lub aplikacji sieci web — i uzyskiwania dostępu do wymaganych zasobów.
+Struktura zgody jest oparta na uwierzytelnianiu OAuth 2,0 i jego różnych przepływach, takich jak przyznawanie kodu autoryzacji i udzielanie poświadczeń klienta, przy użyciu klientów publicznych lub poufnych. Dzięki użyciu protokołu OAuth 2,0 usługa Azure AD umożliwia tworzenie wielu różnych typów aplikacji klienckich — takich jak telefon, tablet, serwer lub aplikacja sieci Web — i uzyskiwanie dostępu do wymaganych zasobów.
 
-Aby uzyskać więcej informacji o korzystaniu z platformy wyrażania zgody z przydziałów autoryzacji OAuth 2.0, zobacz [Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OAuth 2.0 i usługi Azure AD](v1-protocols-oauth-code.md) i [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md). Aby uzyskać informacje na temat pobierania autoryzowanego dostępu do usługi Office 365 za pomocą programu Microsoft Graph, zobacz [uwierzytelniania aplikacji za pomocą programu Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
+Aby uzyskać więcej informacji na temat korzystania z struktury zgody z przyznanymi autoryzacją OAuth 2.0, zobacz [Autoryzuj dostęp do aplikacji sieci Web przy użyciu protokołu oauth 2,0 i usługi Azure AD](v1-protocols-oauth-code.md) oraz [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md). Aby uzyskać informacje na temat uzyskiwania autoryzowanego dostępu do pakietu Office 365 za pomocą Microsoft Graph, zobacz [uwierzytelnianie aplikacji z Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
 
-## <a name="consent-experience---an-example"></a>Obsługa zgody — przykład
+## <a name="consent-experience---an-example"></a>Środowisko zgody — przykład
 
-Poniższe kroki pokazują, jak środowisko działa zgody dla deweloperów aplikacji i użytkownika.
+Poniższe kroki pokazują, jak środowisko zgody działa zarówno dla deweloperów aplikacji, jak i dla użytkownika.
 
-1. Załóżmy, że masz klienta aplikacji sieci web, który wymaga, aby żądać określonych uprawnień dostępu do zasobów/interfejsu API. Dowiesz się, jak przeprowadzić tę konfigurację w następnej sekcji, ale zasadniczo witryny Azure portal jest używane do deklarowania żądań dotyczących uprawnień podczas konfiguracji. Podobnie jak inne ustawienia konfiguracji, staną się one częścią rejestracji aplikacji w usłudze Azure AD:
+1. Załóżmy, że masz aplikację klienta sieci Web, która musi zażądać określonych uprawnień dostępu do zasobu/interfejsu API. Dowiesz się, jak wykonać tę konfigurację w następnej sekcji, ale zasadniczo Azure Portal jest używany do deklarowania żądań uprawnień podczas konfiguracji. Podobnie jak inne ustawienia konfiguracji, staną się one częścią rejestracji aplikacji w usłudze Azure AD:
 
     ![Uprawnienia do innych aplikacji](./media/consent-framework/permissions.png)
 
-1. Należy wziąć pod uwagę uprawnienia aplikacji zostały zaktualizowane, aplikacja jest uruchomiona i użytkownik ma użyć go po raz pierwszy. Po pierwsze, aplikacja musi uzyskać kod autoryzacji z usługi Azure AD `/authorize` punktu końcowego. Może wtedy użyć kodu autoryzacji do uzyskania nowego tokenu dostępu i odświeżania.
+1. Należy wziąć pod uwagę, że uprawnienia aplikacji zostały zaktualizowane, aplikacja jest uruchomiona, a użytkownik zamierza korzystać z niego po raz pierwszy. Najpierw aplikacja musi uzyskać kod autoryzacji z punktu końcowego `/authorize` usługi Azure AD. Może wtedy użyć kodu autoryzacji do uzyskania nowego tokenu dostępu i odświeżania.
 
-1. Jeśli użytkownik nie jest już uwierzytelniony, Azure AD `/authorize` punktu końcowego monituje użytkownika do logowania.
+1. Jeśli użytkownik nie jest już uwierzytelniony, punkt końcowy `/authorize` usługi Azure AD poprosi użytkownika o zalogowanie się.
 
-    ![Użytkownik lub administrator, zaloguj się do usługi Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![Użytkownik lub administrator loguje się do usługi Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
 
-1. Po użytkownik zalogował się w usłudze Azure AD określi, jeśli użytkownik powinien być wyświetlony strona zgody użytkownika. Jest to uzależnione do tego, czy użytkownik (lub administrator w jego organizacji) już wyraził zgodę na aplikację. Jeśli zgody nie ma już przyznane, usługi Azure AD monituje użytkownika o zgodę i wyświetli wymagane uprawnienia niezbędne do działania. Zestaw uprawnień, które są wyświetlane w oknie dialogowym wyrażania zgody są zgodne z typami, które wybrano w **delegowane uprawnienia** w witrynie Azure portal.
+1. Po zalogowaniu się użytkownika usługa Azure AD określi, czy użytkownik musi zostać pokazany na stronie zgody. Jest to uzależnione do tego, czy użytkownik (lub administrator w jego organizacji) już wyraził zgodę na aplikację. Jeśli wyrażanie zgody nie zostało jeszcze przyznane, usługa Azure AD wyświetli komunikat z prośbą o zgodę i wyświetli wymagane uprawnienia potrzebne do działania. Zestaw uprawnień, które są wyświetlane w oknie dialogowym wyrażania zgody, są zgodne z wybranymi **uprawnieniami delegowanymi** w Azure Portal.
 
-    ![Przedstawia przykład uprawnienia wyświetlane w oknie dialogowym wyrażania zgody](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![Pokazuje przykład uprawnień wyświetlanych w oknie dialogowym zgody](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
-1. Po użytkownik udziela zgody, Kod autoryzacji jest zwracana do aplikacji jest zrealizowany uzyskiwanie tokenu dostępu i token odświeżania. Aby uzyskać więcej informacji na temat tego przepływu, zobacz [typ aplikacji interfejsu API sieci Web](web-api.md).
+1. Po udzieleniu zgody przez użytkownika kod autoryzacji jest zwracany do aplikacji, która jest realizowana w celu uzyskania tokenu dostępu i tokenu odświeżania. Aby uzyskać więcej informacji o tym przepływie, zobacz [Typ aplikacji interfejsu API sieci Web](web-api.md).
 
-1. Jako administrator możesz także wyrazić zgodę na uprawnienia delegowane aplikacji w imieniu wszystkich użytkowników w dzierżawie. Zgody administratora, okno dialogowe ze zgodą zapobiega wyświetlane dla każdego użytkownika w dzierżawie i może odbywać się [witryny Azure portal](https://portal.azure.com) przez użytkowników z roli administratora. Aby dowiedzieć się, który administrator ról mogą wyrazić zgodę na delegowane uprawnienia, zobacz [uprawnienia roli administratora w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+1. Jako administrator możesz także wyrazić zgodę na uprawnienia delegowane aplikacji w imieniu wszystkich użytkowników w dzierżawie. Zgoda na administrowanie uniemożliwia wyświetlenie okna dialogowego wyrażania zgody dla każdego użytkownika w dzierżawie i może zostać wykonana w [Azure Portal](https://portal.azure.com) przez użytkowników z rolą administratora. Aby dowiedzieć się, które role administratorów mogą wyrazić zgodę na delegowane uprawnienia, zobacz [uprawnienia roli administratora w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 
-    **Do wyrażenia zgody na aplikację na delegowane uprawnienia**
+    **Aby wyrazić zgodę na uprawnienia delegowane aplikacji**
 
-   1. Przejdź do **uprawnienia do interfejsu API** strony aplikacji
-   1. Kliknij pozycję **udzielić zgody administratora** przycisku.
+   1. Przejdź do strony **uprawnień interfejsu API** dla aplikacji
+   1. Kliknij przycisk **Udziel zgody administratora** .
 
-      ![Przyznawanie uprawnień dla zgody administratora jawne](./media/consent-framework/grant-consent.png)
+      ![Przyznawanie uprawnień dla jawnej zgody administratora](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
-   > Udzielanie jawnej zgody, za pomocą **udzielić uprawnień** przycisk jest obecnie wymagane dla aplikacji jednostronicowej (SPA), które używają ADAL.js. W przeciwnym przypadku wystąpi błąd aplikacji przy żądaniu tokenu dostępu.
+   > Przyznawanie jawnej zgody przy użyciu przycisku **Udziel uprawnień** jest obecnie wymagane dla aplikacji jednostronicowych (Spa) korzystających z biblioteki ADAL. js. W przeciwnym przypadku wystąpi błąd aplikacji przy żądaniu tokenu dostępu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Zobacz [sposób konwertowania aplikacji wielodostępnych](howto-convert-app-to-be-multi-tenant.md)
-* Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, [jak zgody jest obsługiwana na poziomie warstwy protokołu OAuth 2.0 w przepływie przyznawania kodu autoryzacji.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+* Zobacz [, jak przekonwertować aplikację w celu korzystania z wielu dzierżawców](howto-convert-app-to-be-multi-tenant.md)
+* Aby uzyskać więcej informacji, Dowiedz się, [jak zgoda jest obsługiwana w warstwie protokołu OAuth 2,0 podczas przepływu przydzielenia kodu autoryzacji.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)

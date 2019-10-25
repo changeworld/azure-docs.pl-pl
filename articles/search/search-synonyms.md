@@ -1,37 +1,35 @@
 ---
-title: Synonimy dla rozszerzenia zapytania w indeksie wyszukiwania — Azure Search
-description: Utwórz mapę synonimów, aby rozszerzyć zakres zapytania wyszukiwania na indeks Azure Search. Zakres jest rozszerzony w celu uwzględnienia odpowiednich warunków na liście.
-author: brjohnstmsft
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+title: Synonimy dla rozszerzenia zapytania w indeksie wyszukiwania
+titleSuffix: Azure Cognitive Search
+description: Utwórz mapę synonimów, aby rozszerzyć zakres zapytania wyszukiwania na indeks Wyszukiwanie poznawcze platformy Azure. Zakres jest rozszerzony w celu uwzględnienia odpowiednich warunków na liście.
 manager: nitinme
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: a17e2ae5313f9d0b662d343230a04dd3e726c16d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c94ad096cf7d0d01bf2076f6748b49cf4ae1bb4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331177"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794221"
 ---
-# <a name="synonyms-in-azure-search"></a>Synonimy w Azure Search
+# <a name="synonyms-in-azure-cognitive-search"></a>Synonimy w usłudze Azure Wyszukiwanie poznawcze
 
 Synonimy w aparatach wyszukiwania kojarzą równoważne warunki, które niejawnie rozszerzają zakres zapytania, bez użytkownika, który ma faktycznie podawać ten termin. Na przykład, uwzględniając termin "Dog" i "synonimy" "Canine" i "Puppy", wszystkie dokumenty zawierające "Dog", "Canine" lub "Puppy" będą należeć do zakresu zapytania.
 
-W Azure Search, rozwinięcie synonimu odbywa się w czasie wykonywania zapytania. Można dodać do usługi mapy synonimów bez zakłócania istniejących operacji. Do definicji pola można dodać właściwość **synonymMaps** bez konieczności odbudowywania indeksu.
+Na platformie Azure Wyszukiwanie poznawcze rozwinięcie synonimu odbywa się w czasie wykonywania zapytania. Można dodać do usługi mapy synonimów bez zakłócania istniejących operacji. Do definicji pola można dodać właściwość **synonymMaps** bez konieczności odbudowywania indeksu.
 
 ## <a name="create-synonyms"></a>Utwórz synonimy
 
-Brak obsługi portalu do tworzenia synonimów, ale można użyć interfejsu API REST lub zestawu .NET SDK. Aby rozpocząć pracę z usługą REST, zalecamy [Korzystanie z programu Poster](search-get-started-postman.md) i formułowanie żądań przy użyciu tego interfejsu API: [Tworzenie map synonimów](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). W C# przypadku deweloperów można rozpocząć pracę z [dodawaniem synonimów w usłudze Azure Search C#przy użyciu ](search-synonyms-tutorial-sdk.md).
+Brak obsługi portalu do tworzenia synonimów, ale można użyć interfejsu API REST lub zestawu .NET SDK. Aby rozpocząć pracę z usługą REST, zalecamy [Korzystanie z programu Poster](search-get-started-postman.md) i formułowanie żądań przy użyciu tego interfejsu API: [Tworzenie map synonimów](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). W C# przypadku deweloperów można rozpocząć pracę z [dodawaniem synonimów w usłudze Azure poznawcze wyszukiwanie C#przy użyciu ](search-synonyms-tutorial-sdk.md).
 
 Opcjonalnie, jeśli używasz [kluczy zarządzanych przez klienta](search-security-manage-encryption-keys.md) do szyfrowania po stronie usługi — w spoczynku, możesz zastosować tę ochronę do zawartości mapy synonimów.
 
 ## <a name="use-synonyms"></a>Użyj synonimów
 
-W Azure Search, obsługa synonimów opiera się na mapach synonimów, które definiujesz i przekazujesz do usługi. Te mapy stanowią zasób niezależny (na przykład indeksy lub źródła danych) i mogą być używane przez dowolne pola do przeszukiwania w dowolnym indeksie w usłudze wyszukiwania.
+Na platformie Azure Wyszukiwanie poznawcze obsługa synonimów opiera się na mapach synonimów, które definiujesz i przekazujesz do usługi. Te mapy stanowią zasób niezależny (na przykład indeksy lub źródła danych) i mogą być używane przez dowolne pola do przeszukiwania w dowolnym indeksie w usłudze wyszukiwania.
 
 Mapy synonimów i indeksy są obsługiwane niezależnie. Po zdefiniowaniu mapy synonimów i przekazaniu jej do usługi można włączyć funkcję synonimu w polu, dodając nową właściwość o nazwie **synonymMaps** w definicji pola. Tworzenie, aktualizowanie i usuwanie mapy synonimów jest zawsze operacją całego dokumentu, co oznacza, że nie można tworzyć, aktualizować ani usuwać części mapowania synonimów przyrostowo. Aktualizacja nawet jednego wpisu wymaga ponownego załadowania.
 

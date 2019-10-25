@@ -1,30 +1,29 @@
 ---
-title: Umiejętność wyszukiwania tekstu scalanie — Azure Search
-description: Scalanie tekstu z kolekcji pól w jedno skonsolidowane pole. Skorzystaj z tej umiejętności poznawczej w potoku wzbogacenia Azure Search.
-services: search
+title: Umiejętność scalania tekstu
+titleSuffix: Azure Cognitive Search
+description: Scalanie tekstu z kolekcji pól w jedno skonsolidowane pole. Korzystaj z tej umiejętności poznawczej w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e88fcc13d97d92cf9b35616ecb7d71c2d24db1f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c44f37c37bff2ddeb0fbba83d170054bf21129a6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265271"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791836"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Umiejętność scalania tekstu
+#   <a name="text-merge-cognitive-skill"></a>Umiejętność scalania tekstu
 
 Umiejętność **scalania tekstu** konsoliduje tekst z kolekcji pól w jedno pole. 
 
 > [!NOTE]
-> Ta umiejętność nie jest powiązana z interfejsem API Cognitive Services i nie jest naliczana opłata za korzystanie z niego. Mimo to należy [dołączyć zasób Cognitive Services](cognitive-search-attach-cognitive-services.md), aby zastąpić opcję bezpłatnych zasobów , która ogranicza liczbę codziennych wzbogacań dziennie.
+> Ta umiejętność nie jest powiązana z interfejsem API Cognitive Services i nie jest naliczana opłata za korzystanie z niego. Mimo to należy [dołączyć zasób Cognitive Services](cognitive-search-attach-cognitive-services.md), aby zastąpić opcję **bezpłatnych** zasobów, która ogranicza liczbę codziennych wzbogacań dziennie.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.MergeSkill
+Microsoft. umiejętności. Text. MergeSkill
 
 ## <a name="skill-parameters"></a>Parametry umiejętności
 
@@ -56,7 +55,7 @@ Dokument JSON, który zapewnia użyteczne dane wejściowe dla tego umiejętnośc
 ```
 
 ##  <a name="sample-output"></a>Przykładowe dane wyjściowe
-Ten przykład pokazuje dane wyjściowe poprzedniej wartości wejściowej, przy założeniu, że *insertPreTag* jest `" "`ustawiona na, a *insertPostTag* jest `""`ustawiona na. 
+Ten przykład pokazuje dane wyjściowe poprzedniej wartości wejściowej, przy założeniu, że *insertPreTag* jest ustawiona na `" "`, a *insertPostTag* jest ustawiony na `""`. 
 
 ```json
 {
@@ -143,6 +142,6 @@ W powyższym przykładzie przyjęto założenie, że istnieje znormalizowane pol
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
++ [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Utwórz indeksator (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

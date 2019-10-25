@@ -1,22 +1,23 @@
 ---
-title: Limity usługi dla warstw i jednostek SKU — Azure Search
-description: Limity usługi używane do planowania pojemności oraz maksymalne limity żądań i odpowiedzi dla Azure Search.
-author: HeidiSteen
+title: Limity usługi dla warstw i jednostek SKU
+titleSuffix: Azure Cognitive Search
+description: Limity usługi używane do planowania pojemności oraz maksymalne limity żądań i odpowiedzi dla Wyszukiwanie poznawcze platformy Azure.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/03/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: d70812779d392cc4555c91599fad37c2d2c68ba5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947776"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793576"
 ---
-# <a name="service-limits-in-azure-search"></a>Limity usługi w Azure Search
-Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokumentów i innych obiektów zależą od tego, czy [Zainicjowano obsługę administracyjną Azure Search](search-create-service-portal.md) w warstwach **bezpłatna**, **podstawowa**, **standardowa**i **zoptymalizowana pod kątem magazynu** .
+# <a name="service-limits-in-azure-cognitive-search"></a>Limity usługi w usłudze Azure Wyszukiwanie poznawcze
+
+Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokumentów i innych obiektów zależą od tego, czy [usługa Azure wyszukiwanie poznawcze](search-create-service-portal.md) jest udostępniana w warstwach **bezpłatna**, **podstawowa**, **standardowa**i **zoptymalizowana pod kątem magazynu** .
 
 + **Bezpłatna** to wielodostępna Usługa udostępniona z subskrypcją platformy Azure. Żądania indeksowania i zapytań są wykonywane na replikach i partycjach, które są używane przez inne dzierżawców.
 
@@ -45,7 +46,7 @@ Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokument
 
 ## <a name="index-limits"></a>Limity indeksu
 
-| Zasób | Bezpłatnie | Basic @ no__t-0<sup>1</sup>  | S1 | S2 | S3 | S3 @ no__t — 0HD | L1 | L2 |
+| Zasób | Bezpłatnie | Podstawowa&nbsp;<sup>1</sup>  | S1 | S2 | S3 | &nbsp;HD S3 | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba indeksów |3 |5 lub 15 |50 |200 |200 |1000 na partycję lub 3000 na usługę |10 |10 |
 | Maksymalna liczba prostych pól na indeks |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
@@ -68,11 +69,11 @@ Aby ustalić, czy usługa ma limity dokumentów, sprawdź kafelek użycie na str
 
   ![Kafelek użycie](media/search-limits-quotas-capacity/portal-usage-tile.png)
 
-<sup>1</sup> pomimo tego, że nie ma żadnych limitów dokumentów specyficznych dla jednostki SKU, każdy indeks jest nadal objęty maksymalnym bezpiecznym limitem zapewniającym stabilność usługi. Ten limit pochodzi z Lucene. Każdy dokument Azure Search jest zaindeksowany wewnętrznie jako jeden lub więcej dokumentów Lucene. Liczba dokumentów Lucene na dokument usługi Azure Search zależy od łącznej liczby elementów w złożonych polach kolekcji. Każdy element jest indeksowany jako oddzielny dokument Lucene. Na przykład dokument z 3 elementami w polu kolekcja złożona zostanie zindeksowany jako 4 dokumenty Lucene-1 dla samego dokumentu i 3 dla elementów. Maksymalna liczba dokumentów Lucene jest około 25 000 000 000 na indeks.
+<sup>1</sup> pomimo tego, że nie ma żadnych limitów dokumentów specyficznych dla jednostki SKU, każdy indeks jest nadal objęty maksymalnym bezpiecznym limitem zapewniającym stabilność usługi. Ten limit pochodzi z Lucene. Każdy dokument usługi Azure Wyszukiwanie poznawcze jest zaindeksowany wewnętrznie jako jeden lub więcej dokumentów Lucene. Liczba dokumentów Lucene dla każdego dokumentu wyszukiwania zależy od łącznej liczby elementów w złożonych polach kolekcji. Każdy element jest indeksowany jako oddzielny dokument Lucene. Na przykład dokument z 3 elementami w polu kolekcja złożona zostanie zindeksowany jako 4 dokumenty Lucene-1 dla samego dokumentu i 3 dla elementów. Maksymalna liczba dokumentów Lucene jest około 25 000 000 000 na indeks.
 
 ### <a name="regions-previously-having-document-limits"></a>Regiony posiadające wcześniej limity dokumentów
 
-Jeśli portal wskazuje limit dokumentu, usługa została utworzona przed późnym 2017 lub została utworzona w centrum danych przy użyciu klastrów o niższej pojemności do hostowania usług Azure Search:
+Jeśli portal wskazuje limit dokumentu, usługa została utworzona przed późnym 2017 lub została utworzona w centrum danych przy użyciu klastrów o niższej pojemności do hostowania usług Azure Wyszukiwanie poznawcze:
 
 + Australia Wschodnia
 + Azja Wschodnia
@@ -82,9 +83,9 @@ Jeśli portal wskazuje limit dokumentu, usługa została utworzona przed późny
 
 W przypadku usług objętych limitami dokumentu obowiązują następujące maksymalne limity:
 
-|  Bezpłatnie | Basic | S1 | S2 | S3 | S3 @ no__t — 0HD |
+|  Bezpłatnie | Basic | S1 | S2 | S3 | &nbsp;HD S3 |
 |-------|-------|----|----|----|-------|
-|  10 000 |1 @ no__t — 0million |15 mln na partycję lub 180 mln na usługę |60 mln na partycję lub 720 mln na usługę |120 mln na partycję lub 1,4 mld na usługę |1 mln na indeks lub 200 mln na partycję |
+|  10 000 |1 @ no__t_0_ mln |15 mln na partycję lub 180 mln na usługę |60 mln na partycję lub 720 mln na usługę |120 mln na partycję lub 1,4 mld na usługę |1 mln na indeks lub 200 mln na partycję |
 
 Jeśli usługa ma limity, które blokują, Utwórz nową usługę i ponownie Opublikuj całą zawartość do tej usługi. Nie istnieje mechanizm bezproblemowego ponownego inicjowania obsługi administracyjnej usługi na nowym sprzęcie w tle.
 
@@ -105,7 +106,7 @@ Aby zachować rozmiar dokumentu w dół, pamiętaj, aby wykluczyć z żądania d
 Maksymalne czasy działania są dostępne w celu zapewnienia równowagi i stabilności usługi jako całości, ale większe zestawy danych mogą wymagać więcej czasu indeksowania niż maksymalna dozwolona wartość. Jeśli zadanie indeksowania nie może zakończyć się w maksymalnym dozwolonym czasie, spróbuj uruchomić je zgodnie z harmonogramem. Harmonogram śledzi Stan indeksowania. Jeśli zaplanowane zadanie indeksowania zostanie przerwane z dowolnego powodu, indeksator może zostać pobrany w miejscu, w którym został on ostatnio pozostawiony podczas następnego zaplanowanego uruchomienia.
 
 
-| Zasób | Bezpłatna wersja @ no__t-0<sup>1</sup> | Basic @ no__t-0<sup>2</sup>| S1 | S2 | S3 | S3 @ no__t-0HD @ no__t-1<sup>3</sup>|L1 |L2 |
+| Zasób | Bezpłatna&nbsp;<sup>1</sup> | Podstawowa&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
 | Maksymalna liczba indeksatorów |3 |5 lub 15|50 |200 |200 |ND |10 |10 |
 | Maksymalna liczba źródeł danych |3 |5 lub 15 |50 |200 |200 |ND |10 |10 |
@@ -115,7 +116,7 @@ Maksymalne czasy działania są dostępne w celu zapewnienia równowagi i stabil
 | Maksymalny czas działania <sup>5</sup> | 1-3 minut |24 godziny |24 godziny |24 godziny |24 godziny |ND  |24 godziny |24 godziny |
 | Maksymalny czas działania dla umiejętności wyszukiwania poznawczego lub indeksowania obiektów BLOB za pomocą analizy obrazów <sup>5</sup> | 3-10 minut |2 godziny |2 godziny |2 godziny |2 godziny |ND  |2 godziny |2 godziny |
 | Indeksator obiektów blob: maksymalny rozmiar obiektu BLOB, MB |16 |16 |128 |256 |256 |ND  |256 |256 |
-| Indeksator obiektów blob: Maksymalna liczba znaków zawartości wyodrębnionych z obiektu BLOB |32 000 |64 000 |4 @ no__t — 0million |4 @ no__t — 0million |4 @ no__t — 0million |ND |4 @ no__t — 0million |4 @ no__t — 0million |
+| Indeksator obiektów blob: Maksymalna liczba znaków zawartości wyodrębnionych z obiektu BLOB |32 000 |64 000 |4 no__t_0_ mln |4 no__t_0_ mln |4 no__t_0_ mln |ND |4 no__t_0_ mln |4 no__t_0_ mln |
 
 <sup>1</sup> bezpłatne usługi mają maksymalny czas wykonywania indeksatora wynoszący 3 minuty dla źródeł obiektów blob i 1 minuty dla wszystkich innych źródeł danych. W przypadku indeksowania AI, które wywołuje Cognitive Services, bezpłatne usługi są ograniczone do 20 bezpłatnych transakcji dziennie, gdzie transakcja jest definiowana jako dokument, który został pomyślnie przeszedł przez potok wzbogacania.
 
@@ -140,13 +141,13 @@ Maksymalna liczba dozwolonych map synonimów jest różna w zależności od wars
 
 Oszacowania zapytań muszą być opracowane niezależnie od każdego klienta. Rozmiar indeksu i złożoność, rozmiar zapytania i złożoność oraz wielkość ruchu to podstawowe znaczniki zapytań. Nie ma możliwości zaoferowania znaczących szacunków, gdy takie czynniki są nieznane.
 
-Oszacowania są bardziej przewidywalne, gdy są obliczane w usługach uruchomionych na dedykowanych zasobach (warstwach Podstawowa i standardowa). Możesz oszacować zapytań bardziej blisko, ponieważ masz kontrolę nad większymi parametrami. Aby uzyskać wskazówki dotyczące podejścia do oceny, zobacz [Azure Search wydajność i optymalizacja](search-performance-optimization.md).
+Oszacowania są bardziej przewidywalne, gdy są obliczane w usługach uruchomionych na dedykowanych zasobach (warstwach Podstawowa i standardowa). Możesz oszacować zapytań bardziej blisko, ponieważ masz kontrolę nad większymi parametrami. Aby uzyskać wskazówki dotyczące sposobu podejścia do oceny, zobacz temat [wydajność i optymalizacja na platformie wyszukiwanie poznawcze Azure](search-performance-optimization.md).
 
 W przypadku warstw zoptymalizowanych pod kątem magazynu należy oczekiwać mniejszej przepływności zapytań i wyższych opóźnień niż w przypadku warstw standardowych.  Metodologia oszacowania wydajności zapytań, która będzie w trakcie pracy, jest taka sama jak w przypadku warstw standardowych.
 
-## <a name="data-limits-cognitive-search"></a>Limity danych (wyszukiwanie poznawcze)
+## <a name="data-limits-ai-enrichment"></a>Limity danych (wzbogacanie AI)
 
-[Potok wyszukiwania poznawczego](cognitive-search-concept-intro.md) , który tworzy wywołania do zasobu analiza tekstu na potrzeby [rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md), [wyodrębniania fraz kluczowych](cognitive-search-skill-keyphrases.md), [analizy tonacji](cognitive-search-skill-sentiment.md)i [wykrywania języka](cognitive-search-skill-language-detection.md) , podlega limitom danych. Maksymalny rozmiar rekordu powinien składać się z 50 000 znaków mierzonych [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Jeśli musisz podzielić dane przed wysłaniem ich do analizatora tonacji, użyj [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
+[Potok wzbogacenia AI](cognitive-search-concept-intro.md) , który tworzy wywołania do zasobu analiza tekstu na potrzeby [rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md), [wyodrębniania fraz kluczowych](cognitive-search-skill-keyphrases.md), [analizy tonacji](cognitive-search-skill-sentiment.md)i [wykrywania języka](cognitive-search-skill-language-detection.md) , podlega limitom danych. Maksymalny rozmiar rekordu powinien składać się z 50 000 znaków mierzonych przez [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Jeśli musisz podzielić dane przed wysłaniem ich do analizatora tonacji, użyj [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
 
 ## <a name="throttling-limits"></a>Limity ograniczania
 
@@ -167,7 +168,7 @@ Limity liczby żądań statycznych dla operacji związanych z indeksem:
 * Maksymalna 32 pól w klauzuli $orderby
 * Maksymalny rozmiar terminu wyszukiwania to 32 766 bajtów (32 KB minus 2 bajty) tekstu zakodowanego w formacie UTF-8
 
-<sup>1</sup> w Azure Search treść żądania podlega górnemu limitowi 16 MB, co nakłada praktyczny limit zawartości poszczególnych pól lub kolekcji, które nie są w inny sposób ograniczone przez limity teoretyczne (zobacz [obsługiwane typy danych](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , aby uzyskać więcej informacje na temat kompozycji i ograniczeń pól).
+<sup>1</sup> na platformie Azure wyszukiwanie poznawcze treść żądania podlega górnemu limitowi 16 MB, co nakłada praktyczny limit zawartości poszczególnych pól lub kolekcji, które nie są w inny sposób ograniczone przez limity teoretyczne (zobacz [obsługiwane typy danych ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)Aby uzyskać więcej informacji na temat kompozycji i ograniczeń pól).
 
 ## <a name="api-response-limits"></a>Limity odpowiedzi interfejsu API
 * Maksymalna 1000 dokumentów zwróconych na stronę wyników wyszukiwania

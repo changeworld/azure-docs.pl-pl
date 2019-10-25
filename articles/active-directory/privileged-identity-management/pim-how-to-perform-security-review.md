@@ -10,38 +10,40 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/21/2018
+ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bd548041b086eef8d788a696497163c756fd5b7
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: c8b9f16d6c7f738e64f154506228c832e31e0f5b
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804423"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809053"
 ---
-# <a name="review-access-to-azure-ad-roles-in-pim"></a>Przeglądanie dostępu do ról usługi Azure AD w usłudze PIM
+# <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Przeglądanie dostępu do ról usługi Azure AD w Privileged Identity Management
 
-Azure Active Directory (AD) Privileged Identity Management (PIM) upraszczają, jak przedsiębiorstwa zarządzają uprzywilejowanym dostępem do zasobów w usłudze Azure AD i innych Usługi online, takich jak Office 365 czy Microsoft Intune.  
+Privileged Identity Management (PIM) upraszcza zarządzanie dostępem uprzywilejowanym do zasobów w usłudze Azure Active Directory (AD) i innych Usługi onlineach firmy Microsoft, takich jak Office 365 czy Microsoft Intune. Wykonaj kroki opisane w tym artykule, aby pomyślnie przejrzeć przypisane role.
 
-Jeśli masz przypisaną rolę administracyjną, administrator ról uprzywilejowanych w organizacji może zażądać regularnego potwierdzenia, że nadal potrzebujesz tej roli dla danego zadania. Możesz otrzymać wiadomość e-mail zawierającą link lub możesz przejść bezpośrednio do [Azure Portal](https://portal.azure.com). Wykonaj kroki opisane w tym artykule, aby przeprowadzić samodzielną weryfikację przypisanych ról.
+Jeśli masz przypisaną rolę administracyjną, administrator ról uprzywilejowanych w organizacji może zażądać regularnego potwierdzenia, że nadal potrzebujesz tej roli dla danego zadania. Możesz otrzymać wiadomość e-mail zawierającą link lub możesz przejść bezpośrednio do [Azure Portal](https://portal.azure.com) i zacząć.
 
 Jeśli jesteś administratorem roli uprzywilejowanej lub administratorem globalnym, który interesuje przeglądy dostępu, uzyskaj więcej informacji na [temat sposobu uruchamiania przeglądu dostępu](pim-how-to-start-security-review.md).
 
-## <a name="add-the-privileged-identity-management-application"></a>Dodawanie aplikacji Privileged Identity Management
-Możesz użyć aplikacji Azure AD Privileged Identity Management (PIM) w [Azure Portal](https://portal.azure.com/) , aby przeprowadzić przegląd.  Jeśli nie masz aplikacji Azure AD Privileged Identity Management w portalu, wykonaj następujące kroki, aby rozpocząć pracę.
+## <a name="add-a-pim-dashboard-tile"></a>Dodawanie kafelka pulpitu nawigacyjnego PIM
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Jeśli nie masz usługi Azure AD Privileged Identity Management przypiętej do pulpitu nawigacyjnego w Azure Portal, wykonaj następujące kroki, aby rozpocząć pracę.
+
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Wybierz swoją nazwę użytkownika w prawym górnym rogu Azure Portal i wybierz katalog, w którym będziesz działać.
 3. Wybierz pozycję **Wszystkie usługi** i użyj pola tekstowego filtru, aby wyszukać usługę **Azure AD Privileged Identity Management**.
 4. Zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie kliknij pozycję **Utwórz**. Zostanie otwarta aplikacja Privileged Identity Management.
 
 ## <a name="approve-or-deny-access"></a>Zatwierdź lub Odmów dostępu
+
 Po zatwierdzeniu lub odrzuceniu dostępu użytkownik otrzymuje jedynie informację o tym, czy nadal używasz tej roli, czy nie. Wybierz pozycję **Zatwierdź** , jeśli chcesz pozostać w roli, lub **Odmów** , jeśli nie potrzebujesz już dostępu. Twój stan nie zmieni się od razu, dopóki recenzent nie zastosuje wyników.
 Wykonaj następujące kroki, aby znaleźć i ukończyć przegląd dostępu:
 
-1. W aplikacji PIM wybierz pozycję **Przejrzyj dostęp uprzywilejowany**. Jeśli masz oczekujące przeglądy dostępu, zostaną one wyświetlone w bloku przeglądy dostępu do usługi Azure AD.
+1. W usłudze Privileged Identity Management wybierz pozycję **Przejrzyj dostęp uprzywilejowany**. Jeśli masz oczekujące przeglądy dostępu, zostaną one wyświetlone na stronie **przeglądy dostępu do** usługi Azure AD.
 2. Wybierz przegląd, który chcesz zakończyć.
 3. Jeśli recenzja nie została utworzona, zostanie wyświetlony jako jedyny użytkownik w przeglądzie. Zaznacz znacznik wyboru obok swojej nazwy.
 4. Wybierz opcję **Zatwierdź** lub **Odmów**. Może być konieczne dołączenie przyczyny decyzji w polu tekstowym **Podaj przyczynę** .  

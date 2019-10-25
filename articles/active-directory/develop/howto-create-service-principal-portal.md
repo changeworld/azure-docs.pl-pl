@@ -1,5 +1,6 @@
 ---
-title: Tworzenie tożsamości dla aplikacji platformy Azure w portalu | Microsoft Docs
+title: Tworzenie tożsamości dla aplikacji platformy Azure w portalu
+titleSuffix: Microsoft identity platform
 description: Zawiera opis sposobu tworzenia nowej aplikacji Azure Active Directory i nazwy głównej usługi, która może być używana z kontrolą dostępu opartą na rolach w usłudze Azure Resource Manager do zarządzania dostępem do zasobów.
 services: active-directory
 documentationcenter: na
@@ -16,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d60c1a01f3a4ca3a191ddb322def7d86a316c58f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324697"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803330"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów
 
@@ -126,7 +127,7 @@ Należy pamiętać, że konieczne może być skonfigurowanie uprawnień do dodaw
 1. W [Azure Portal](https://portal.azure.com)przejdź do magazynu kluczy i wybierz pozycję **zasady dostępu**.  
 1. Wybierz pozycję **Dodaj zasady dostępu**, a następnie wybierz uprawnienia Key, Secret i Certificate, które chcesz udzielić aplikacji.  Wybierz nazwę główną usługi utworzoną wcześniej.
 1. Wybierz pozycję **Dodaj** , aby dodać zasady dostępu, a następnie pozycję **Zapisz** , aby zatwierdzić zmiany.
-    @no__t — zasady dostępu 0Add @ no__t-1
+    ![dodać zasady dostępu](./media/howto-create-service-principal-portal/add-access-policy.png)
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 

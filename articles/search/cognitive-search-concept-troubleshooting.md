@@ -1,28 +1,27 @@
 ---
-title: Wskazówki dotyczące rozwiązywania problemów z wyszukiwaniem poznawcze — Azure Search
-description: Porady i rozwiązywanie problemów związanych z konfigurowaniem potoków wyszukiwania poznawczego w Azure Search.
-services: search
+title: Wskazówki dotyczące rozwiązywania problemów dotyczących wzbogacania AI
+titleSuffix: Azure Cognitive Search
+description: Porady i rozwiązywanie problemów związanych z konfigurowaniem potoków wzbogacania AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 02/02/2019
 ms.author: luisca
-ms.openlocfilehash: ee54d560ae1a294467e4520063153566d2c3b0a2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 485dd47e035f03a8e20ded4c8a424f1658f5246a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265840"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787702"
 ---
-# <a name="troubleshooting-tips-for-cognitive-search"></a>Wskazówki dotyczące rozwiązywania problemów z usługą wyszukiwania poznawczego
+# <a name="troubleshooting-tips-for-ai-enrichment-in-azure-cognitive-search"></a>Wskazówki dotyczące rozwiązywania problemów w przypadku wzbogacania AI na platformie Azure Wyszukiwanie poznawcze
 
-Ten artykuł zawiera listę porad i wskazówek ułatwiających przechodzenie po rozpoczęciu pracy z możliwościami wyszukiwania poznawczego w Azure Search. 
+Ten artykuł zawiera listę porad i wskazówek ułatwiających przechodzenie po rozpoczęciu pracy z funkcjami wzbogacania AI na platformie Azure Wyszukiwanie poznawcze. 
 
-Jeśli jeszcze tego nie zrobiono, przejdź do [samouczka: Dowiedz się, jak wywoływać interfejsy](cognitive-search-quickstart-blob.md) API wyszukiwania poznawczego w celu zastosowania wzbogacania wyszukiwania poznawczego do źródła danych obiektów BLOB.
+Jeśli jeszcze tego nie zrobiono, [zapoznaj się z samouczkiem: informacje o sposobie wywoływania interfejsów API wzbogacania AI](cognitive-search-quickstart-blob.md) w celu zastosowania wzbogacania rozszerzeń AI do źródła danych obiektów BLOB.
 
-## <a name="tip-1-start-with-a-small-dataset"></a>Porada 1: Zacznij od małego zestawu danych
+## <a name="tip-1-start-with-a-small-dataset"></a>Porada 1: Rozpoczynanie pracy z małym zestawem danych
 Najlepszym sposobem, aby szybko znaleźć problemy, jest zwiększenie szybkości, w której można rozwiązać problemy. Najlepszym sposobem zredukowania czasu indeksowania jest zmniejszenie liczby dokumentów do indeksowania. 
 
 Zacznij od utworzenia źródła danych kilku dokumenty/rekordy. Przykładowy dokument powinien być dobrym reprezentacją różnorodnych dokumentów, które będą indeksowane. 
@@ -31,8 +30,8 @@ Uruchom próbkę dokumentu za pomocą kompleksowego potoku i sprawdź, czy wynik
 
 ## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>Porada 2: Upewnij się, że poświadczenia źródła danych są poprawne
 Połączenie ze źródłem danych nie jest sprawdzane do momentu zdefiniowania indeksatora, który go używa. Jeśli zobaczysz jakiekolwiek błędy z informacją, że indeksator nie może uzyskać do danych, upewnij się, że:
-- Parametry połączenia są poprawne. Szczególnie podczas tworzenia tokenów SAS upewnij się, że używasz formatu oczekiwanego przez Azure Search. Zobacz [sekcję](
-https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials) jak określić poświadczenia, aby dowiedzieć się więcej na temat obsługiwanych formatów.
+- Parametry połączenia są poprawne. Szczególnie podczas tworzenia tokenów SAS upewnij się, że używasz formatu oczekiwanego przez usługę Azure Wyszukiwanie poznawcze. Zobacz [sekcję jak określić poświadczenia](
+https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials) , aby dowiedzieć się więcej na temat obsługiwanych formatów.
 - Nazwa kontenera w indeksatorze jest poprawna.
 
 ## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>Porada 3: Zobacz, co działa nawet w przypadku wystąpienia niektórych błędów
@@ -50,7 +49,7 @@ W takim przypadku możesz chcieć poinstruować indeksator, aby ignorował błę
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Porada 4: Spojrzenie na wzbogacone dokumenty pod okapem 
+## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Porada 4: spojrzenie na wzbogacone dokumenty pod okapem 
 Wzbogacone dokumenty są tymczasowymi strukturami utworzonymi podczas wzbogacania, a następnie usuwane po zakończeniu przetwarzania.
 
 Aby przechwycić migawkę wzbogaconego dokumentu utworzoną podczas indeksowania, dodaj pole o nazwie ```enriched``` do indeksu. Indeksator automatycznie zrzuca do tego pola ciąg będący reprezentacją wszystkich wzbogaceń dokumentu.
@@ -59,7 +58,7 @@ Pole ```enriched``` będzie zawierać ciąg, który jest logiczną reprezentacj�
 
 Wzbogacone pole jest przeznaczone tylko do celów debugowania, aby ułatwić zrozumienie kształtu logicznego zawartości, względem której są oceniane wyrażenia. Nie należy zależeć od tego pola do indeksowania.
 
-```enriched``` Dodaj pole jako część definicji indeksu na potrzeby debugowania:
+Dodaj pole ```enriched``` jako część definicji indeksu na potrzeby debugowania:
 
 #### <a name="request-body-syntax"></a>Składnia treści żądania
 ```json
@@ -78,35 +77,35 @@ Wzbogacone pole jest przeznaczone tylko do celów debugowania, aby ułatwić zro
 }
 ```
 
-## <a name="tip-5-expected-content-fails-to-appear"></a>Porada 5: Nie można wyświetlić oczekiwanej zawartości
+## <a name="tip-5-expected-content-fails-to-appear"></a>Porada 5: nie można wyświetlić oczekiwanej zawartości
 
 Brakująca zawartość może być wynikiem porzucenia dokumentów podczas indeksowania. Warstwy Bezpłatna i podstawowa mają niskie limity rozmiaru dokumentu. Każdy plik przekraczający limit jest usuwany podczas indeksowania. Możesz sprawdzić porzucone dokumenty w Azure Portal. Na pulpicie nawigacyjnym usługi wyszukiwania kliknij dwukrotnie kafelek indeksatory. Sprawdź stosunek pomyślnych dokumentów indeksowanych. Jeśli wartość nie jest równa 100%, możesz kliknąć współczynnik, aby uzyskać więcej szczegółów. 
 
-Jeśli problem dotyczy rozmiaru pliku, może zostać wyświetlony następujący błąd: "Rozmiar \<pliku \<obiektu BLOB >" ma rozmiar > bajtów, który przekracza maksymalny rozmiar wyodrębniania dokumentu dla bieżącej warstwy usług ". Aby uzyskać więcej informacji na temat limitów indeksatora, zobacz [limity usługi](search-limits-quotas-capacity.md).
+Jeśli problem dotyczy rozmiaru pliku, może zostać wyświetlony następujący błąd: "obiekt BLOB \<nazwa pliku >" ma rozmiar \<rozmiar pliku > bajty, który przekracza maksymalny rozmiar wyodrębniania dokumentu dla bieżącej warstwy usług ". Aby uzyskać więcej informacji na temat limitów indeksatora, zobacz [limity usługi](search-limits-quotas-capacity.md).
 
 Druga przyczyna niepowodzenia wyświetlania zawartości może być związana z błędami mapowania operacji wejścia/wyjścia. Na przykład nazwa elementu docelowego danych wyjściowych to "ludzie", ale nazwa pola indeksu jest małymi literami "ludzie". System może zwrócić komunikaty o powodzeniu 201 dla całego potoku, aby podejrzewać, że indeksowanie powiedzie się, gdy w rzeczywistości pole jest puste. 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Porada 6: Rozszerzenie przetwarzania wykraczające poza maksymalny czas działania (okno 24-godzinne)
+## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Porada 6: rozszerzona przetwarzanie poza maksymalnym czasem wykonywania (okno 24-godzinne)
 
 Analiza obrazów jest intensywnie czasochłonna dla nawet prostych przypadków, dlatego w przypadku, gdy obrazy są szczególnie duże lub złożone, czasy przetwarzania mogą przekroczyć maksymalny dozwolony czas. 
 
 Maksymalny czas działania zależy od warstwy: kilka minut w warstwie Bezpłatna, indeksowanie 24-godzinne w warstwach płatnych. Jeśli przetwarzanie zakończy się niepowodzeniem w ciągu 24 godzin dla przetwarzania na żądanie, przejdź do harmonogramu, aby indeksator mógł pobrać, gdzie został pozostawiony. 
 
-W przypadku zaplanowanych indeksatorów indeksowanie zostaje wznowione zgodnie z harmonogramem w ostatnim znanym dobrym dokumencie. Korzystając z harmonogramu cyklicznego, indeksator może wykonać swój sposób przez zaległości obrazu w ciągu kilku godzin lub dni, do momentu przetworzenia wszystkich nieprzetwarzanych obrazów. Aby uzyskać więcej informacji na temat składni harmonogramu [, zobacz krok 3. Utwórz indeksator](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) lub Zobacz, [jak zaplanować indeksatory dla Azure Search](search-howto-schedule-indexers.md).
+W przypadku zaplanowanych indeksatorów indeksowanie zostaje wznowione zgodnie z harmonogramem w ostatnim znanym dobrym dokumencie. Korzystając z harmonogramu cyklicznego, indeksator może wykonać swój sposób przez zaległości obrazu w ciągu kilku godzin lub dni, do momentu przetworzenia wszystkich nieprzetwarzanych obrazów. Aby uzyskać więcej informacji na temat składni harmonogramu, zobacz [krok 3. Tworzenie — indeksator](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) lub zapoznaj [się z tematem planowanie indeksatorów dla usługi Azure wyszukiwanie poznawcze](search-howto-schedule-indexers.md).
 
 > [!NOTE]
 > Jeśli indeksator jest ustawiony na określony harmonogram, ale wielokrotnie powtarza się w tym samym dokumencie za każdym razem, gdy zostanie on uruchomiony, indeksator zacznie działać w krótszym interwale (maksymalnie co 24 godziny), aż do pomyślnego przekroczenia postępu Aga podczas.  Jeśli uważasz, że Rozwiązano problem, który spowodował zablokowanie indeksatora w określonym punkcie, można wykonać uruchomienie na żądanie indeksatora, a jeśli ten proces pomyślnie przejdzie, indeks ponownie powróci do jego ustawionego interwału harmonogramu.
 
-W przypadku indeksowania opartego na portalu (zgodnie z opisem w przewodniku Szybki Start) wybranie opcji indeksatora "Uruchom raz" ogranicza przetwarzanie do`"maxRunTime": "PT1H"`1 godziny (). Możesz chcieć wydłużyć przedział czasu przetwarzania.
+W przypadku indeksowania opartego na portalu (zgodnie z opisem w przewodniku Szybki Start) wybranie opcji indeksatora "Uruchom raz" ogranicza przetwarzanie do 1 godziny (`"maxRunTime": "PT1H"`). Możesz chcieć wydłużyć przedział czasu przetwarzania.
 
-## <a name="tip-7-increase-indexing-throughput"></a>Porada 7: Zwiększ przepływność indeksowania
+## <a name="tip-7-increase-indexing-throughput"></a>Porada 7: zwiększenie przepływności indeksowania
 
 W przypadku [indeksowania równoległego](search-howto-large-index.md)należy umieścić dane w wielu kontenerach lub w wielu folderach wirtualnych w tym samym kontenerze. Następnie Utwórz wiele par DataSource i indeksatora. Wszystkie indeksatory mogą używać tego samego zestawu umiejętności i zapisywać w tym samym docelowym indeksie wyszukiwania, dzięki czemu aplikacja wyszukiwania nie musi znać tego partycjonowania.
 Aby uzyskać więcej informacji, zobacz [indeksowanie dużych zestawów danych](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Zobacz także
-+ [Szybki start: Tworzenie potoku wyszukiwania poznawczego w portalu](cognitive-search-quickstart-blob.md)
-+ [Samouczek: Poznaj interfejsy API REST wyszukiwania poznawczego](cognitive-search-tutorial-blob.md)
++ [Szybki Start: Tworzenie potoku wzbogacenia AI w portalu](cognitive-search-quickstart-blob.md)
++ [Samouczek: informacje o interfejsach API REST wzbogacania AI](cognitive-search-tutorial-blob.md)
 + [Określanie poświadczeń źródła danych](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
 + [Indeksowanie dużych zestawów danych](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

@@ -1,5 +1,6 @@
 ---
 title: Uwierzytelnianie przy użyciu Azure Active Directory w chmurach narodowych
+titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o punktach końcowych rejestracji i uwierzytelniania aplikacji dla chmur krajowych.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 70f1f80744043893dd7206bc6388b8e080c07d0f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135852"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803887"
 ---
 # <a name="national-clouds"></a>Chmury narodowe
 
@@ -30,7 +31,7 @@ Chmury krajowe to fizyczne izolowane wystąpienia platformy Azure. Te regiony pl
 
 W tym chmurę globalną usługa Azure Active Directory (Azure AD) jest wdrażana w następujących chmurach narodowych:  
 
-- Azure Government
+- Platforma Azure dla instytucji rządowych
 - Azure (Niemcy)
 - Azure w Chinach — 21Vianet
 
@@ -64,8 +65,8 @@ W poniższej tabeli przedstawiono podstawowe adresy URL dla punktów końcowych 
 
 Możesz tworzyć żądania do autoryzacji usługi Azure AD lub punktów końcowych tokenu przy użyciu odpowiedniego podstawowego adresu URL specyficznego dla regionu. Na przykład w przypadku platformy Azure (Niemcy):
 
-  - Wspólny punkt końcowy autoryzacji `https://login.microsoftonline.de/common/oauth2/authorize`to.
-  - Wspólny punkt końcowy tokenu `https://login.microsoftonline.de/common/oauth2/token`to.
+  - Wspólny punkt końcowy autoryzacji jest `https://login.microsoftonline.de/common/oauth2/authorize`.
+  - Wspólny punkt końcowy tokenu jest `https://login.microsoftonline.de/common/oauth2/token`.
 
 W przypadku aplikacji z jedną dzierżawą Zastąp wartość "Common" w poprzednich adresach URL IDENTYFIKATORem dzierżawy lub nazwą. Może to być na przykład `https://login.microsoftonline.de/contoso.com`.
 

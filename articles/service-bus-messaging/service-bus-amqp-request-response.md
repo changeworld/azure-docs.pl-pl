@@ -1,10 +1,9 @@
 ---
-title: AMQP 1,0 Azure Service Bus w operacjach opartych na odpowiedziach żądania | Microsoft Docs
+title: Operacje żądania/odpowiedzi AMQP 1,0 w Azure Service Bus
 description: Lista operacji na Microsoft Azure Service Bus żądania/odpowiedzi.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
@@ -12,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 10/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 4aea0a092ad836c020e23b81d38246ceead22ea0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b549aee197f35df29a982a1a86644c46b9061c63
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213302"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785271"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1,0 w Microsoft Azure Service Bus: operacje oparte na odpowiedziach na żądanie
 
 Ten artykuł definiuje listę operacji Microsoft Azure Service Bus żądania/odpowiedzi. Te informacje są oparte na roboczym programie AMQP Management w wersji 1,0.  
   
-Szczegółowy poziom danych przesyłanych w sieci protokołu AMQP 1.0 protokołu przewodnik, co wyjaśnia, jak Usługa Service Bus implementuje i opiera się na specyfikacji technicznej OASIS protokołu AMQP, zobacz [protokołu AMQP 1.0 w przewodniku protokołu usługi Azure Service Bus i usługi Event Hubs][przewodnik dotyczący protokołu amqp 1.0].  
+Szczegółowy przewodnik dotyczący protokołu AMQP 1,0, który wyjaśnia, w jaki sposób Service Bus implementuje i kompiluje w specyfikacji technicznej języka Oasis AMQP, patrz [AMQP 1,0 in Azure Service Bus i Event Hubs Przewodnik po]protokole[AMQP 1,0 Guide].  
   
 ## <a name="concepts"></a>Pojęcia  
   
@@ -118,9 +117,9 @@ Jednostki Service Bus muszą być rozkierowane w następujący sposób:
   
 |Typ jednostki|Adres|Przykład|  
 |-----------------|-------------|-------------|  
-|queue|`<queue_name>`|`“myQueue”`<br /><br /> `“site1/myQueue”`|  
-|topic|`<topic_name>`|`“myTopic”`<br /><br /> `“site2/page1/myQueue”`|  
-|subscription|`<topic_name>/Subscriptions/<subscription_name>`|`“myTopic/Subscriptions/MySub”`|  
+|kolejka|`<queue_name>`|`“myQueue”`<br /><br /> `“site1/myQueue”`|  
+|temat|`<topic_name>`|`“myTopic”`<br /><br /> `“site2/page1/myQueue”`|  
+|subskrypcja|`<topic_name>/Subscriptions/<subscription_name>`|`“myTopic/Subscriptions/MySub”`|  
   
 ## <a name="message-operations"></a>Operacje na komunikatach  
   
@@ -128,13 +127,13 @@ Jednostki Service Bus muszą być rozkierowane w następujący sposób:
 
 Rozszerza blokadę komunikatu o czas określony w opisie podmiotu.  
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:renew-lock`|  
+|Operacje|string|Tak|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
  Treść komunikatu żądania musi składać się z sekcji AMQP-Value zawierającej mapę z następującymi wpisami:  
@@ -144,7 +143,7 @@ Komunikat żądania musi zawierać następujące właściwości aplikacji:
 |`lock-tokens`|Tablica identyfikatora UUID|Tak|Tokeny blokady komunikatów do odnowienia.|  
 
 > [!NOTE]
-> Tokeny blokady są `DeliveryTag` właściwością odebranych komunikatów. Zapoznaj się z poniższym przykładem w [zestawie SDK platformy .NET](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) , który pobiera te elementy. Token może być również wyświetlany w elemencie "DeliveryAnnotations" jako "x-opt-Lock-token", ale nie jest to gwarantowane i `DeliveryTag` preferowane. 
+> Tokeny blokady są właściwością `DeliveryTag` dla odebranych komunikatów. Zapoznaj się z poniższym przykładem w [zestawie SDK platformy .NET](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) , który pobiera te elementy. Token może być również wyświetlany w "DeliveryAnnotations" jako "x-opt-Lock-token", ale nie jest to gwarantowane, a `DeliveryTag` powinien być preferowany. 
 > 
   
 #### <a name="response"></a>Odpowiedź  
@@ -153,8 +152,8 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się.|  
-|statusDescription|ciąg|Nie|Opis stanu.|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się.|  
+|statusDescription|string|Nie|Opis stanu.|  
   
 Treść komunikatu odpowiedzi musi składać się z sekcji AMQP-Value zawierającej mapę z następującymi wpisami:  
   
@@ -166,20 +165,20 @@ Treść komunikatu odpowiedzi musi składać się z sekcji AMQP-Value zawierają
 
 Wgląd w wiadomości bez blokowania.  
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:peek-message`|  
+|Operacje|string|Tak|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|`from-sequence-number`|long|Tak|Numer sekwencyjny, od którego ma zostać rozpoczęty wgląd.|  
+|`from-sequence-number`|Długo|Tak|Numer sekwencyjny, od którego ma zostać rozpoczęty wgląd.|  
 |`message-count`|int|Tak|Maksymalna liczba komunikatów do wglądu.|  
   
 #### <a name="response"></a>Odpowiedź  
@@ -188,14 +187,14 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — zawiera więcej komunikatów<br /><br /> 204: Brak zawartości — nie ma więcej komunikatów|  
-|statusDescription|ciąg|Nie|Opis stanu.|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — zawiera więcej komunikatów<br /><br /> 204: Brak zawartości — nie ma więcej komunikatów|  
+|statusDescription|string|Nie|Opis stanu.|  
   
 Treść komunikatu odpowiedzi musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|komunikaty|Lista map|Tak|Lista komunikatów, w których każda mapa Reprezentuje komunikat.|  
+|z chmury do urządzenia|Lista map|Tak|Lista komunikatów, w których każda mapa Reprezentuje komunikat.|  
   
 Mapa reprezentująca komunikat musi zawierać następujące wpisy:  
   
@@ -207,29 +206,29 @@ Mapa reprezentująca komunikat musi zawierać następujące wpisy:
 
 Planuje komunikaty. Ta operacja obsługuje transakcję.
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:schedule-message`|  
+|Operacje|string|Tak|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|komunikaty|Lista map|Tak|Lista komunikatów, w których każda mapa Reprezentuje komunikat.|  
+|z chmury do urządzenia|Lista map|Tak|Lista komunikatów, w których każda mapa Reprezentuje komunikat.|  
   
 Mapa reprezentująca komunikat musi zawierać następujące wpisy:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Identyfikator komunikatu|ciąg|Tak|`amqpMessage.Properties.MessageId`jako ciąg|  
-|Identyfikator sesji|ciąg|Nie|`amqpMessage.Properties.GroupId as string`|  
-|klucz partycji|ciąg|Nie|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
-|za pośrednictwem-Partition-Key|ciąg|Nie|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
+|Identyfikator komunikatu|string|Tak|`amqpMessage.Properties.MessageId` jako ciąg|  
+|Identyfikator sesji|string|Nie|`amqpMessage.Properties.GroupId as string`|  
+|klucz partycji|string|Nie|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|za pośrednictwem-Partition-Key|string|Nie|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |message|Tablica bajtów|Tak|Komunikat kodowany przez sieć AMQP 1,0.|  
   
 #### <a name="response"></a>Odpowiedź  
@@ -238,8 +237,8 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się.|  
-|statusDescription|ciąg|Nie|Opis stanu.|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się.|  
+|statusDescription|string|Nie|Opis stanu.|  
   
 Treść komunikatu odpowiedzi musi składać się z sekcji **AMQP-Value** zawierającej mapę z następującymi wpisami:  
   
@@ -251,13 +250,13 @@ Treść komunikatu odpowiedzi musi składać się z sekcji **AMQP-Value** zawier
 
 Anuluje zaplanowane wiadomości.  
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:cancel-scheduled-message`|  
+|Operacje|string|Tak|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
@@ -272,8 +271,8 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się.|  
-|statusDescription|ciąg|Nie|Opis stanu.|   
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się.|  
+|statusDescription|string|Nie|Opis stanu.|   
   
 ## <a name="session-operations"></a>Operacje sesji  
   
@@ -281,20 +280,20 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
 
 Rozszerza blokadę komunikatu o czas określony w opisie podmiotu.  
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:renew-session-lock`|  
+|Operacje|string|Tak|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Identyfikator sesji|ciąg|Tak|Identyfikator sesji.|  
+|Identyfikator sesji|string|Tak|Identyfikator sesji.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -302,35 +301,35 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — zawiera więcej komunikatów<br /><br /> 204: Brak zawartości — nie ma więcej komunikatów|  
-|statusDescription|ciąg|Nie|Opis stanu.|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — zawiera więcej komunikatów<br /><br /> 204: Brak zawartości — nie ma więcej komunikatów|  
+|statusDescription|string|Nie|Opis stanu.|  
   
 Treść komunikatu odpowiedzi musi składać się z sekcji **AMQP-Value** zawierającej mapę z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|wygaśnięcie|timestamp|Tak|Nowe wygaśnięcie.|  
+|datę|sygnatura czasowa|Tak|Nowe wygaśnięcie.|  
   
 ### <a name="peek-session-message"></a>Wgląd w komunikat sesji  
 
 Wgląd w komunikaty sesji bez blokowania.  
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:peek-message`|  
+|Operacje|string|Tak|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|from-sequence-number|long|Tak|Numer sekwencyjny, od którego ma zostać rozpoczęty wgląd.|  
-|message-count|int|Tak|Maksymalna liczba komunikatów do wglądu.|  
-|Identyfikator sesji|ciąg|Tak|Identyfikator sesji.|  
+|Numer sekwencyjny|Długo|Tak|Numer sekwencyjny, od którego ma zostać rozpoczęty wgląd.|  
+|Liczba komunikatów|int|Tak|Maksymalna liczba komunikatów do wglądu.|  
+|Identyfikator sesji|string|Tak|Identyfikator sesji.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -338,14 +337,14 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — zawiera więcej komunikatów<br /><br /> 204: Brak zawartości — nie ma więcej komunikatów|  
-|statusDescription|ciąg|Nie|Opis stanu.|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — zawiera więcej komunikatów<br /><br /> 204: Brak zawartości — nie ma więcej komunikatów|  
+|statusDescription|string|Nie|Opis stanu.|  
   
 Treść komunikatu odpowiedzi musi składać się z sekcji **AMQP-Value** zawierającej mapę z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|komunikaty|Lista map|Tak|Lista komunikatów, w których każda mapa Reprezentuje komunikat.|  
+|z chmury do urządzenia|Lista map|Tak|Lista komunikatów, w których każda mapa Reprezentuje komunikat.|  
   
  Mapa reprezentująca komunikat musi zawierać następujące wpisy:  
   
@@ -357,20 +356,20 @@ Treść komunikatu odpowiedzi musi składać się z sekcji **AMQP-Value** zawier
 
 Ustawia stan sesji.  
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:set-session-state`|  
+|Operacje|string|Tak|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Identyfikator sesji|ciąg|Tak|Identyfikator sesji.|  
+|Identyfikator sesji|string|Tak|Identyfikator sesji.|  
 |stan sesji|Tablica bajtów|Tak|Nieprzezroczyste dane binarne.|  
   
 #### <a name="response"></a>Odpowiedź  
@@ -379,27 +378,27 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
-|statusDescription|ciąg|Nie|Opis stanu.|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
+|statusDescription|string|Nie|Opis stanu.|  
   
 ### <a name="get-session-state"></a>Pobierz stan sesji  
 
 Pobiera stan sesji.  
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:get-session-state`|  
+|Operacje|string|Tak|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Identyfikator sesji|ciąg|Tak|Identyfikator sesji.|  
+|Identyfikator sesji|string|Tak|Identyfikator sesji.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -407,8 +406,8 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
-|statusDescription|ciąg|Nie|Opis stanu.|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
+|statusDescription|string|Nie|Opis stanu.|  
   
 Treść komunikatu odpowiedzi musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
@@ -420,22 +419,22 @@ Treść komunikatu odpowiedzi musi składać się z sekcji **AMQP-Value** zawier
 
 Wylicza sesje w jednostce obsługi komunikatów.  
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:get-message-sessions`|  
+|Operacje|string|Tak|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|czas ostatniej aktualizacji|timestamp|Tak|Filtr w celu uwzględnienia tylko sesji zaktualizowanych po danym czasie.|  
-|pomiń|int|Tak|Pomiń liczbę sesji.|  
-|top|int|Tak|Maksymalna liczba sesji.|  
+|czas ostatniej aktualizacji|sygnatura czasowa|Tak|Filtr w celu uwzględnienia tylko sesji zaktualizowanych po danym czasie.|  
+|Skocz|int|Tak|Pomiń liczbę sesji.|  
+|Do góry|int|Tak|Maksymalna liczba sesji.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -443,69 +442,69 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — zawiera więcej komunikatów<br /><br /> 204: Brak zawartości — nie ma więcej komunikatów|  
-|statusDescription|ciąg|Nie|Opis stanu.|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — zawiera więcej komunikatów<br /><br /> 204: Brak zawartości — nie ma więcej komunikatów|  
+|statusDescription|string|Nie|Opis stanu.|  
   
 Treść komunikatu odpowiedzi musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|pomiń|int|Tak|Liczba pominiętych sesji, jeśli kod stanu to 200.|  
+|Skocz|int|Tak|Liczba pominiętych sesji, jeśli kod stanu to 200.|  
 |sesje — identyfikatory|Tablica ciągów|Tak|Tablica identyfikatorów sesji, jeśli kod stanu to 200.|  
   
 ## <a name="rule-operations"></a>Operacje reguł  
   
 ### <a name="add-rule"></a>Dodaj regułę  
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:add-rule`|  
+|Operacje|string|Tak|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Nazwa reguły|ciąg|Tak|Nazwa reguły, bez uwzględniania nazw subskrypcji i tematu.|  
+|Nazwa reguły|string|Tak|Nazwa reguły, bez uwzględniania nazw subskrypcji i tematu.|  
 |Reguła — opis|map|Tak|Opis reguły określony w następnej sekcji.|  
   
 Mapa **opisowa reguły** musi zawierać następujące wpisy, w których Filtrowanie **SQL** i filtr **korelacji** wzajemnie się wykluczają:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|sql-filter|map|Tak|`sql-filter`, zgodnie z opisem w następnej sekcji.|  
+|SQL — filtr|map|Tak|`sql-filter`, zgodnie z opisem w następnej sekcji.|  
 |Korelacja — filtr|map|Tak|`correlation-filter`, zgodnie z opisem w następnej sekcji.|  
-|sql-rule-action|map|Tak|`sql-rule-action`, zgodnie z opisem w następnej sekcji.|  
+|SQL-reguła-akcja|map|Tak|`sql-rule-action`, zgodnie z opisem w następnej sekcji.|  
   
 Mapa filtrów SQL musi zawierać następujące wpisy:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Wyrażenia|ciąg|Tak|Wyrażenie filtru SQL.|  
+|wyrażenia|string|Tak|Wyrażenie filtru SQL.|  
   
 Mapa **korelacji filtru** musi zawierać co najmniej jedną z następujących pozycji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Identyfikator korelacji|ciąg|Nie||  
-|Identyfikator komunikatu|ciąg|Nie||  
-|to|ciąg|Nie||  
-|reply-to|ciąg|Nie||  
-|label|ciąg|Nie||  
-|Identyfikator sesji|ciąg|Nie||  
-|Identyfikator odpowiedzi na sesję|ciąg|Nie||  
-|content-type|ciąg|Nie||  
+|Identyfikator korelacji|string|Nie||  
+|Identyfikator komunikatu|string|Nie||  
+|na|string|Nie||  
+|Odpowiedz do|string|Nie||  
+|label|string|Nie||  
+|Identyfikator sesji|string|Nie||  
+|Identyfikator odpowiedzi na sesję|string|Nie||  
+|Typ zawartości|string|Nie||  
 |properties|map|Nie|Mapuje do Service Bus [BrokeredMessage. Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).|  
   
 Mapa **akcji SQL-Rule** musi zawierać następujące wpisy:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Wyrażenia|ciąg|Tak|Wyrażenie akcji SQL.|  
+|wyrażenia|string|Tak|Wyrażenie akcji SQL.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -513,25 +512,25 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
-|statusDescription|ciąg|Nie|Opis stanu.|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
+|statusDescription|string|Nie|Opis stanu.|  
   
 ### <a name="remove-rule"></a>Usuń regułę  
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:remove-rule`|  
+|Operacje|string|Tak|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Nazwa reguły|ciąg|Tak|Nazwa reguły, bez uwzględniania nazw subskrypcji i tematu.|  
+|Nazwa reguły|string|Tak|Nazwa reguły, bez uwzględniania nazw subskrypcji i tematu.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -539,26 +538,26 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
-|statusDescription|ciąg|Nie|Opis stanu.|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
+|statusDescription|string|Nie|Opis stanu.|  
   
 ### <a name="get-rules"></a>Pobierz reguły
 
-#### <a name="request"></a>Żądanie
+#### <a name="request"></a>Prośba
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:
 
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:enumerate-rules`|  
+|Operacje|string|Tak|`com.microsoft:enumerate-rules`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
 
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|top|int|Tak|Liczba reguł do pobrania na stronie.|  
-|pomiń|int|Tak|Liczba reguł do pominięcia. Definiuje początkowy indeks (+ 1) na liście reguł. | 
+|Do góry|int|Tak|Liczba reguł do pobrania na stronie.|  
+|Skocz|int|Tak|Liczba reguł do pominięcia. Definiuje początkowy indeks (+ 1) na liście reguł. | 
 
 #### <a name="response"></a>Odpowiedź
 
@@ -566,60 +565,60 @@ Komunikat odpowiedzi zawiera następujące właściwości:
 
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
 |rules| Tablica map|Tak|Tablica reguł. Każda reguła jest reprezentowana przez mapę.|
 
 Każdy wpis mapy w tablicy zawiera następujące właściwości:
 
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Reguła — opis|Tablica opisanych obiektów|Tak|`com.microsoft:rule-description:list`za pomocą AMQP kodu 0x0000013700000004| 
+|Reguła — opis|Tablica opisanych obiektów|Tak|`com.microsoft:rule-description:list` za pomocą AMQP opisanego kodu 0x0000013700000004| 
 
-`com.microsoft.rule-description:list`jest tablicą opisanych obiektów. Tablica obejmuje następujące elementy:
+`com.microsoft.rule-description:list` jest tablicą opisanych obiektów. Tablica obejmuje następujące elementy:
 
 |Indeks|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-| 0 | Tablica opisanych obiektów | Tak | `filter`zgodnie z poniższym opisem. |
-| 1 | Tablica opisanego obiektu | Tak | `ruleAction`zgodnie z poniższym opisem. |
-| 2 | ciąg | Tak | Nazwa reguły. |
+| 0 | Tablica opisanych obiektów | Tak | `filter` jak określono poniżej. |
+| 1 | Tablica opisanego obiektu | Tak | `ruleAction` jak określono poniżej. |
+| 2 | string | Tak | Nazwa reguły. |
 
-`filter`może być jednego z następujących typów:
+`filter` może być jednego z następujących typów:
 
-| Nazwa deskryptora | Kod deskryptora | Value |
+| Nazwa deskryptora | Kod deskryptora | Wartość |
 | --- | --- | ---|
 | `com.microsoft:sql-filter:list` | 0x000001370000006 | Filtr SQL |
 | `com.microsoft:correlation-filter:list` | 0x000001370000009 | Filtr korelacji |
 | `com.microsoft:true-filter:list` | 0x000001370000007 | Filtr prawdziwy reprezentujący 1 = 1 |
 | `com.microsoft:false-filter:list` | 0x000001370000008 | Filtr fałszywy reprezentujący 1 = 0 |
 
-`com.microsoft:sql-filter:list`to opisana tablica, która obejmuje:
+`com.microsoft:sql-filter:list` to opisana tablica, która obejmuje:
 
 |Indeks|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-| 0 | ciąg | Tak | Wyrażenie filtru SQL |
+| 0 | string | Tak | Wyrażenie filtru SQL |
 
-`com.microsoft:correlation-filter:list`to opisana tablica, która obejmuje:
+`com.microsoft:correlation-filter:list` to opisana tablica, która obejmuje:
 
 |Indeks (jeśli istnieje)|Typ wartości|Zawartość wartości|  
 |---------|----------------|--------------|
-| 0 | ciąg | Identyfikator korelacji |
-| 1 | ciąg | Identyfikator komunikatu |
-| 2 | ciąg | Do |
-| 3 | ciąg | Odpowiedz |
-| 4 | ciąg | Etykieta |
-| 5 | ciąg | Identyfikator sesji |
-| 6 | ciąg | Identyfikator sesji dla odpowiedzi|
-| 7 | ciąg | Typ zawartości |
+| 0 | string | Identyfikator korelacji |
+| 1 | string | Identyfikator komunikatu |
+| 2 | string | Do |
+| 3 | string | Odpowiedz na |
+| 4 | string | Etykieta |
+| 5 | string | Identyfikator sesji |
+| 6 | string | Odpowiedz na identyfikator sesji|
+| 7 | string | Typ zawartości |
 | 8 | Mapa | Mapa właściwości zdefiniowanych przez aplikację |
 
-`ruleAction`może być jeden z następujących typów:
+`ruleAction` może być jeden z następujących typów:
 
-| Nazwa deskryptora | Kod deskryptora | Value |
+| Nazwa deskryptora | Kod deskryptora | Wartość |
 | --- | --- | ---|
 | `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | Akcja reguły pustej — nie istnieje żadna akcja reguły |
 | `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | Akcja reguły SQL |
 
-`com.microsoft:sql-rule-action:list`jest tablicą opisanych obiektów, których pierwszy wpis jest ciągiem zawierającym wyrażenie akcji reguły SQL.
+`com.microsoft:sql-rule-action:list` jest tablicą opisanych obiektów, których pierwszy wpis jest ciągiem zawierającym wyrażenie akcji reguły SQL.
 
 ## <a name="deferred-message-operations"></a>Operacje odroczonego komunikatu  
   
@@ -627,13 +626,13 @@ Każdy wpis mapy w tablicy zawiera następujące właściwości:
 
 Odbiera odroczone komunikaty według numeru sekwencyjnego.  
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:receive-by-sequence-number`|  
+|Operacje|string|Tak|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
@@ -649,43 +648,43 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
-|statusDescription|ciąg|Nie|Opis stanu.|  
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
+|statusDescription|string|Nie|Opis stanu.|  
   
 Treść komunikatu odpowiedzi musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|komunikaty|Lista map|Tak|Lista komunikatów, gdzie każda mapa Reprezentuje komunikat.|  
+|z chmury do urządzenia|Lista map|Tak|Lista komunikatów, gdzie każda mapa Reprezentuje komunikat.|  
   
 Mapa reprezentująca komunikat musi zawierać następujące wpisy:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Lock — token|uuid|Tak|Token blokady, `receiver-settle-mode` jeśli jest 1.|  
+|Lock — token|uuid|Tak|Token blokady, jeśli `receiver-settle-mode` wynosi 1.|  
 |message|Tablica bajtów|Tak|Komunikat kodowany przez sieć AMQP 1,0.|  
   
 ### <a name="update-disposition-status"></a>Aktualizowanie stanu dyspozycji  
 
 Aktualizuje stan dyspozycji odroczonych komunikatów. Ta operacja obsługuje transakcje.
   
-#### <a name="request"></a>Żądanie  
+#### <a name="request"></a>Prośba  
 
 Komunikat żądania musi zawierać następujące właściwości aplikacji:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|operation|ciąg|Tak|`com.microsoft:update-disposition`|  
+|Operacje|string|Tak|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|Nie|Limit czasu serwera operacji (w milisekundach).|  
   
 Treść komunikatu żądania musi składać się z sekcji **AMQP-Value** zawierającej **mapę** z następującymi wpisami:  
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|Dyspozycja — stan|ciąg|Tak|ukończono<br /><br /> przerwane<br /><br /> Wieszon|  
+|Dyspozycja — stan|string|Tak|pełni<br /><br /> przerwane<br /><br /> Wieszon|  
 |tokeny blokady|Tablica identyfikatora UUID|Tak|Tokeny blokady komunikatów do aktualizowania stanu dyspozycji.|  
-|deadletter-reason|ciąg|Nie|Może być ustawiona, jeśli stan dyspozycji jest ustawionyna zawieszone.|  
-|utracony — opis|ciąg|Nie|Może być ustawiona, jeśli stan dyspozycji jest ustawionyna zawieszone.|  
+|utracony — Przyczyna|string|Nie|Może być ustawiona, jeśli stan dyspozycji jest ustawiony na **zawieszone**.|  
+|utracony — opis|string|Nie|Może być ustawiona, jeśli stan dyspozycji jest ustawiony na **zawieszone**.|  
 |właściwości do modyfikacji|map|Nie|Lista Service Bus właściwości komunikatu obsługiwanego przez brokera do zmodyfikowania.|  
   
 #### <a name="response"></a>Odpowiedź  
@@ -694,8 +693,8 @@ Komunikat odpowiedzi musi zawierać następujące właściwości aplikacji:
   
 |Klucz|Typ wartości|Wymagane|Zawartość wartości|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
-|statusDescription|ciąg|Nie|Opis stanu.|
+|Stanu|int|Tak|Kod odpowiedzi HTTP [RFC2616]<br /><br /> 200: OK — powodzenie; w przeciwnym razie nie powiodło się|  
+|statusDescription|string|Nie|Opis stanu.|
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,22 +1,21 @@
 ---
-title: Umiejętność wyszukiwania poznawczego kształtu — Azure Search
-description: Wyodrębnij metadane i informacje strukturalne z danych bez struktury i kształtj je jako typ złożony w potoku wzbogacenia Azure Search.
-services: search
+title: Umiejętności poznawcze kształtu
+titleSuffix: Azure Cognitive Search
+description: Wyodrębnij metadane i informacje strukturalne z danych bez struktury i kształtj je jako typ złożony w potoku wzbogacania AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 84814c317a945fd22ada580dcc3f64ed2adcff7c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: e9ba540ee0eda2be50c88a89a139032d8d99752d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265347"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791876"
 ---
-#   <a name="shaper-cognitive-skill"></a>Umiejętności poznawcze kształtu
+# <a name="shaper-cognitive-skill"></a>Umiejętności poznawcze kształtu
 
 Umiejętność **kształtu** konsoliduje kilka wejść do [typu złożonego](search-howto-complex-data-types.md) , do którego można przystąpić później w potoku wzbogacania. Umiejętność **kształtu** pozwala na zasadniczo utworzyć strukturę, zdefiniować nazwę elementów członkowskich tej struktury i przypisać wartości do każdego elementu członkowskiego. Przykłady skonsolidowanych pól przydatnych w scenariuszach wyszukiwania obejmują łączenie imion i nazwisk w jedną strukturę, miasto i stan w jedną strukturę, a także nazwę i DataUrodzenia w jednej strukturze w celu ustanowienia unikatowej tożsamości.
 
@@ -25,14 +24,14 @@ Ponadto umiejętność **kształtowania** zilustrowana w [scenariuszu 3](#nested
 Nazwa wyjściowa jest zawsze "output". Wewnętrznie potok może mapować inną nazwę, taką jak "analyzedText", jak pokazano w poniższych przykładach, ale umiejętność **kształtowania** zwraca wartość "output" w odpowiedzi. Taka sytuacja może być ważna, jeśli debugujesz wzbogacone dokumenty i zauważysz rozbieżność nazewnictwa, lub jeśli tworzysz umiejętność niestandardową i utworzysz swoją samą strukturę.
 
 > [!NOTE]
-> Umiejętność **kształtu** nie jest powiązana z interfejsem API Cognitive Services i nie jest naliczana opłata za korzystanie z niego. Mimo to należy [dołączyć zasób Cognitive Services](cognitive-search-attach-cognitive-services.md), aby zastąpić opcję bezpłatnych zasobów , która ogranicza liczbę codziennych wzbogacań dziennie.
+> Umiejętność **kształtu** nie jest powiązana z interfejsem API Cognitive Services i nie jest naliczana opłata za korzystanie z niego. Mimo to należy [dołączyć zasób Cognitive Services](cognitive-search-attach-cognitive-services.md), aby zastąpić opcję **bezpłatnych** zasobów, która ogranicza liczbę codziennych wzbogacań dziennie.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Util.ShaperSkill
+Microsoft. umiejętności. util. ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>Scenariusz 1: typy złożone
 
-Rozważmy scenariusz, w którym chcesz utworzyć strukturę o nazwie *analyzedText* , która ma dwa elementy członkowskie: odpowiednio *tekst* i *tonacji*. W indeksie Azure Search pole z możliwością wyszukiwania wieloczęściowego nosi nazwę *typu złożonego* i często jest tworzone, gdy dane źródłowe mają odpowiednią strukturę złożoną, która jest mapowana na ten element.
+Rozważmy scenariusz, w którym chcesz utworzyć strukturę o nazwie *analyzedText* , która ma dwa elementy członkowskie: odpowiednio *tekst* i *tonacji*. W indeksie pole z możliwością wyszukiwania wieloczęściowego jest nazywane *typem złożonym* i często tworzone, gdy dane źródłowe mają odpowiadającą jej strukturę złożoną.
 
 Jednak inne podejście do tworzenia typów złożonych polega na użyciu umiejętności **kształtu** . Uwzględniając te umiejętności w zestawu umiejętności, operacje w pamięci podczas przetwarzania zestawu umiejętności mogą wyprowadzać kształty danych z zagnieżdżonymi strukturami, które następnie można mapować na typ złożony w indeksie. 
 
@@ -110,7 +109,7 @@ Dokument przychodzącego JSON udostępniający użyteczne dane wejściowe dla te
 
 ### <a name="skill-output"></a>Dane wyjściowe kwalifikacji
 
-Umiejętność **kształtu** generuje nowy element o nazwie *analyzedText* z połączonymi elementami *tekstu* i *tonacji*. Dane wyjściowe są zgodne ze schematem indeksu. Zostanie ona zaimportowana i zindeksowana w indeksie Azure Search.
+Umiejętność **kształtu** generuje nowy element o nazwie *analyzedText* z połączonymi elementami *tekstu* i *tonacji*. Dane wyjściowe są zgodne ze schematem indeksu. Zostanie ona zaimportowana i zindeksowana w indeksie Wyszukiwanie poznawcze platformy Azure.
 
 ```json
 {
@@ -249,8 +248,8 @@ W takim przypadku **kształt** tworzy typ złożony. Ta struktura istnieje w pam
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
++ [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Jak używać typów złożonych](search-howto-complex-data-types.md)
-+ [Przegląd sklepu merytorycznego](knowledge-store-concept-intro.md)
++ [Sklep merytoryczny (wersja zapoznawcza)](knowledge-store-concept-intro.md)
 + [Jak rozpocząć pracę ze sklepem merytorycznym](knowledge-store-howto.md)

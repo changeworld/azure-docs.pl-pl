@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/24/2019
-ms.openlocfilehash: 9d132faf0b4d1de232e2b7e6e5ab6730978e27a8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 83c2264cd3aa3025e911db5079747930d1ae096b
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555226"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809458"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Włączanie Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — Omówienie
 
@@ -157,12 +157,12 @@ W poniższej tabeli wymieniono systemy operacyjne Windows i Linux obsługiwane p
 
 Funkcja map w Azure Monitor dla maszyn wirtualnych pobiera swoje dane z programu Microsoft Dependency Agent. Agent zależności korzysta z Log Analytics agenta, aby połączyć się z Log Analytics. Dlatego w systemie musi być zainstalowany i skonfigurowany Agent Log Analytics przy użyciu agenta zależności.
 
-Niezależnie od tego, czy włączasz Azure Monitor dla maszyn wirtualnych dla jednej maszyny wirtualnej platformy Azure, czy korzystasz z metody wdrażania na dużą skalę, użyj rozszerzenia agenta zależności maszyny wirtualnej platformy Azure, aby zainstalować agenta w ramach środowiska.
+Niezależnie od tego, czy włączysz Azure Monitor dla maszyn wirtualnych dla jednej maszyny wirtualnej platformy Azure, czy korzystasz z metody wdrażania na skalę, użyj rozszerzenia agenta zależności maszyny wirtualnej platformy Azure dla [systemu Windows](../../virtual-machines/extensions/agent-dependency-windows.md) lub [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) , aby zainstalować agenta w ramach środowiska.
 
 >[!NOTE]
 >Poniższe informacje opisane w tej sekcji dotyczą również [rozwiązania Service map](service-map.md).  
 
-W środowisku hybrydowym można pobrać i zainstalować agenta zależności ręcznie. Jeśli maszyny wirtualne są hostowane poza platformą Azure, użyj zautomatyzowanej metody wdrażania.
+W środowisku hybrydowym można pobrać i zainstalować agenta zależności ręcznie lub przy użyciu metody zautomatyzowanej.
 
 W poniższej tabeli opisano połączone źródła obsługiwane przez funkcję mapy w środowisku hybrydowym.
 

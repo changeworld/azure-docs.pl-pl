@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61efc9d9d12cb67ea9c22e44ba0060db0f224f73
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 5ad03e69df4ca03d58bba98b912ade354f90042e
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554312"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809199"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Przypisywanie ról usługi Azure AD w Privileged Identity Management
 
@@ -38,25 +38,25 @@ Wykonaj następujące kroki, aby użytkownik mógł kwalifikować się do roli a
 
     Jeśli jeszcze nie uruchomiono Privileged Identity Management w Azure Portal, wybierz pozycję [Rozpocznij korzystanie z Privileged Identity Management](pim-getting-started.md).
 
-1. Kliknij pozycję **role usługi Azure AD**.
+1. Wybierz pozycję **role usługi Azure AD**.
 
-1. Kliknij pozycję **role** lub **Członkowie**.
+1. Wybierz **role** lub **członków**.
 
     ![Role usługi Azure AD z opcjami menu z rolami i członkami](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
-1. Kliknij przycisk **Dodaj członka** , aby otworzyć aplet Dodaj elementy zarządzane.
+1. Wybierz pozycję **Dodaj członka** , aby otworzyć aplet Dodaj elementy zarządzane.
 
-1. Kliknij pozycję **Wybierz rolę**, kliknij rolę, którą chcesz zarządzać, a następnie kliknij przycisk **Wybierz**.
+1. Wybierz pozycję **Wybierz rolę**, wybierz rolę, którą chcesz zarządzać, a następnie wybierz pozycję **Wybierz**.
 
     ![Wybieranie okienka roli z listą ról usługi Azure AD](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
-1. Kliknij pozycję **Wybierz członków**, wybierz użytkowników, którym chcesz przypisać rolę, a następnie kliknij przycisk **Wybierz**.
+1. Wybierz pozycję **Wybierz członków**, wybierz użytkowników, którym chcesz przypisać rolę, a następnie wybierz pozycję **Wybierz**.
 
     ![Wybierz okienko członkowie, w którym można wybrać użytkownika](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
-1. W obszarze Dodawanie elementów członkowskich zarządzanych kliknij przycisk **OK** , aby dodać użytkownika do roli.
+1. W obszarze Dodaj zarządzane elementy członkowskie wybierz **przycisk OK** , aby dodać użytkownika do roli.
 
-1. Na liście ról kliknij właśnie przypisaną rolę, aby wyświetlić listę członków.
+1. Na liście ról wybierz właśnie przypisaną rolę, aby wyświetlić listę członków.
 
      Po przypisaniu roli wybrany użytkownik zostanie wyświetlony na liście członków jako **uprawniony** do roli.
 
@@ -72,15 +72,15 @@ Domyślnie nowi użytkownicy kwalifikują się tylko do roli administratora usł
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 
-1. Kliknij pozycję **role usługi Azure AD**.
+1. Wybierz pozycję **role usługi Azure AD**.
 
-1. Kliknij pozycję **Członkowie**.
+1. Wybierz **członków**.
 
     ![Role usługi Azure AD — Lista członków pokazująca stan roli i aktywacji](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
-1. Kliknij **kwalifikującą się** rolę, która ma być trwała.
+1. Wybierz **kwalifikującą się** rolę, która ma być trwała.
 
-1. Kliknij pozycję **więcej** , a następnie kliknij pozycję **Utwórz uprawnienie**.
+1. Wybierz pozycję **więcej** , a następnie wybierz pozycję **Utwórz uprawnienie**.
 
     ![Okienko zawierające listę użytkowników uprawnionych do roli z otwartymi opcjami menu Więcej](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
 
@@ -116,7 +116,9 @@ Wykonaj następujące kroki, aby usunąć określonego użytkownika z roli admin
 
 ## <a name="authorization-error-when-assigning-roles"></a>Błąd autoryzacji podczas przypisywania ról
 
-Jeśli ostatnio włączono Privileged Identity Management dla subskrypcji platformy Azure i wystąpi błąd autoryzacji podczas próby skorzystania z roli administratora usługi Azure AD, może to być spowodowane faktem, że jednostka usługi MS-PIM nie ma jeszcze odpowiedniej nazwy uprawnienia. Aby przypisać role, nazwa główna usługi MS-PIM musi mieć przypisaną [rolę administratora dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator) w kontroli dostępu opartej na rolach na potrzeby dostępu do zasobów platformy Azure (w przeciwieństwie do ról administracyjnych usługi Azure AD). Zamiast czekać, aż do MS-PIM zostanie przypisana rola administratora dostępu użytkowników, można przypisać ją ręcznie.
+Scenariusz: jako aktywny właściciel lub administrator dostępu użytkowników dla zasobu platformy Azure można zobaczyć zasób wewnątrz Privileged Identity Management ale nie może wykonać żadnych akcji, takich jak przypisanie kwalifikującego się przypisania lub wyświetlenie listy przypisań ról z Strona przeglądu zasobów. Każda z tych akcji powoduje błąd autoryzacji.
+
+Aby przypisać role, nazwa główna usługi MS-PIM musi mieć przypisaną [rolę administratora dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator) w kontroli dostępu opartej na rolach na potrzeby dostępu do zasobów platformy Azure (w przeciwieństwie do ról administracyjnych usługi Azure AD). Zamiast czekać, aż do MS-PIM zostanie przypisana rola administratora dostępu użytkowników, można przypisać ją ręcznie.
 
 Poniższe kroki umożliwiają przypisanie roli administratora dostępu użytkownika do nazwy głównej usługi MS-PIM dla subskrypcji.
 
@@ -147,7 +149,6 @@ Poniższe kroki umożliwiają przypisanie roli administratora dostępu użytkown
    Po kilku chwilach nazwa główna usługi MS-PIM jest przypisana do roli administratora dostępu użytkownika w zakresie subskrypcji.
 
    ![Blok kontroli dostępu (IAM) przedstawiający przypisanie roli administratora dostępu użytkownika do MS-PIM](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
-
 
 ## <a name="next-steps"></a>Następne kroki
 

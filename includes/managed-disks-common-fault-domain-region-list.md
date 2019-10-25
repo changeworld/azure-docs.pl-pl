@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 11924b44a51767df68372cd94c581b2feaa8ac25
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 984b6aed6ae1b36432b932afb7d0f9dfb0b2dc15
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72247108"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72783589"
 ---
 ### <a name="number-of-fault-domains-per-region"></a>Liczba domen błędów na region
 
@@ -46,7 +46,7 @@ ms.locfileid: "72247108"
 | Chiny Wschodnie 2        | 2                       |
 | Chiny Północne         | 2                       |
 | Chiny Północne 2       | 2                       |
-|
+|                     |                         |
 | Australia Wschodnia      | 2                       |
 | Australia Południowo-Wschodnia | 2                       |
 | Australia Środkowa   | 2                       |
@@ -54,8 +54,8 @@ ms.locfileid: "72247108"
 |                     |                         |
 | Brazylia Południowa        | 2                       |
 |                     |                         |
-| Administracja USA — Wirginia     | 2                       |
-| Administracja USA — Teksas        | 2                       |
-| Administracja USA — Arizona      | 2                       |
-| Środkowe stany USA — DoD      | 2                       |
-| Wschodnie stany USA — DoD         | 2                       |
+| US Gov Wirginia     | 2                       |
+| US Gov Teksas        | 2                       |
+| US Gov Arizona      | 2                       |
+| US DoD (region środkowy)      | 2                       |
+| US DoD (region wschodni)         | 2                       |

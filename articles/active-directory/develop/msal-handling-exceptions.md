@@ -1,5 +1,6 @@
 ---
-title: Błędy i wyjątki (MSAL) | Platforma tożsamości firmy Microsoft
+title: Błędy i wyjątki (MSAL)
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak obsługiwać błędy i wyjątki, dostęp warunkowy i wyzwania dotyczące oświadczeń w aplikacjach MSAL.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 09/08/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 635793d18bf33752a2672788bb632571743410b7
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: cc5139cb4d463b88f21b0c7a2c7e0383abdb9e1f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982763"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803124"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Obsługa wyjątków i błędów MSAL
 
@@ -56,7 +57,7 @@ Na przykład `MSALInternalErrorBrokerResponseNotReceived` oznacza, że użytkown
 
 Następujący przykładowy kod języka C przedstawia najlepsze rozwiązania dotyczące obsługi niektórych typowych warunków błędu:
 
-Objective-C
+Obiektowy C
 ```ObjC
     MSALInteractiveTokenParameters *interactiveParameters = ...;
     MSALSilentTokenParameters *silentParameters = ...;
@@ -162,7 +163,7 @@ Objective-C
                              completionBlock:completionBlock];
 ```
 
-Adres
+Swift
 ```swift
     let interactiveParameters: MSALInteractiveTokenParameters = ...
     let silentParameters: MSALSilentTokenParameters = ...
@@ -253,7 +254,7 @@ Jeśli zgłoszono [MsalServiceException](/dotnet/api/microsoft.identity.client.m
 
 Poniżej przedstawiono typowe wyjątki, które mogą zostać zgłoszone i niektóre możliwe środki zaradcze:  
 
-| Wyjątek | Kod błędu | Ograniczenie|
+| Wyjątek | Kod błędu | Środki zaradcze|
 | --- | --- | --- |
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: użytkownik lub administrator nie wyraził zgody na korzystanie z aplikacji o IDENTYFIKATORze "{appId}" o nazwie "{nazwa_aplikacji}". Wyślij interaktywne żądanie autoryzacji dla tego użytkownika i zasobu.| Musisz najpierw uzyskać zgodę użytkownika. Jeśli nie korzystasz z platformy .NET Core (bez interfejsu użytkownika sieci Web), wywołaj (tylko raz) `AcquireTokeninteractive`. Jeśli używasz platformy .NET Core lub nie chcesz wykonywać `AcquireTokenInteractive`, użytkownik może przejść do adresu URL, aby wyrazić zgodę: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read. Aby wywołać `AcquireTokenInteractive`: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: użytkownik musi korzystać z uwierzytelniania wieloskładnikowego (MFA).| Nie ma żadnych środków zaradczych. Jeśli skonfigurowano usługę MFA dla dzierżawy, a Azure Active Directory (AAD) zdecyduje się ją wymusić, należy zawracać do przepływu interaktywnego, takiego jak `AcquireTokenInteractive` lub `AcquireTokenByDeviceCode`.|
@@ -274,7 +275,7 @@ Interakcja ma na celu przeprowadzenie akcji przez użytkownika. Niektóre z tych
 
 MSAL uwidacznia pole `Classification`, które można odczytać, aby zapewnić lepszy interfejs użytkownika, na przykład w celu poinformowania użytkownika o wygaśnięciu hasła lub zapewnieniu zgody na korzystanie z niektórych zasobów. Obsługiwane wartości są częścią wyliczenia `UiRequiredExceptionClassification`:
 
-| Zmianę    | Znaczenie           | Zalecana obsługa |
+| Klasyfikacja    | Znaczenie           | Zalecana obsługa |
 |-------------------|-------------------|----------------------|
 | BasicAction | Warunek może zostać rozpoznany przez interakcję użytkownika podczas przepływu uwierzytelniania interaktywnego. | Call AcquireTokenInteractively (). |
 | AdditionalAction | Warunek można rozwiązać przez dodatkowe interakcje z systemem, poza przepływem uwierzytelniania interaktywnego. | Wywołaj AcquireTokenInteractively (), aby wyświetlić komunikat objaśniający akcję zaradczą. Aplikacja wywołująca może zdecydować się na ukrycie przepływów, które wymagają additional_action, jeśli użytkownik prawdopodobnie nie ukończy akcji zaradczej. |
@@ -285,7 +286,7 @@ MSAL uwidacznia pole `Classification`, które można odczytać, aby zapewnić le
 | AcquireTokenSilentFailed | Zestaw MSAL SDK nie ma wystarczających informacji do pobrania tokenu z pamięci podręcznej. Może to być spowodowane brakiem tokenów w pamięci podręcznej lub nie znaleziono konta. Komunikat o błędzie zawiera więcej szczegółów.  | Call AcquireTokenInteractively (). |
 | Brak    | Nie podano dalszych szczegółów. Warunek może zostać rozpoznany przez interakcję użytkownika podczas przepływu uwierzytelniania interaktywnego. | Call AcquireTokenInteractively (). |
 
-## <a name="code-example"></a>Przykład kodu
+## <a name="code-example"></a>Przykładowy kod
 
 ```csharp
 AuthenticationResult res;
@@ -349,7 +350,7 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 
 MSAL. js udostępnia obiekty błędów, które są abstrakcyjne i klasyfikuje różne typy typowych błędów. Zapewnia także interfejs umożliwiający dostęp do szczegółowych informacji o błędach, takich jak komunikaty o błędach, aby odpowiednio je obsługiwać.
 
-### <a name="error-object"></a>Error — Obiekt
+### <a name="error-object"></a>Obiekt Error
 
 ```javascript
 export class AuthError extends Error {
@@ -367,7 +368,7 @@ Rozszerzając klasę błędu, masz dostęp do następujących właściwości:
 * **AuthError. komunikat:**  Analogicznie jak errorMessage.
 * **AuthError. Stack:** Ślad stosu dla zgłoszonych błędów. Umożliwia śledzenie do punktu początkowego błędu.
 
-### <a name="error-types"></a>Error — Typy
+### <a name="error-types"></a>Typy błędów
 
 Dostępne są następujące typy błędów:
 
@@ -379,7 +380,7 @@ Dostępne są następujące typy błędów:
 
 - `ServerError`: Klasa Error reprezentuje ciągi błędów wysyłane przez serwer uwierzytelniania. Mogą to być błędy, takie jak nieprawidłowe formaty lub parametry żądania albo inne błędy, które uniemożliwiają uwierzytelnienie lub autoryzowanie użytkownika przez serwer.
 
-- `InteractionRequiredAuthError`: Klasa Error, rozszerza `ServerError`, aby reprezentować błędy serwera, które wymagają wywołania interaktywnego. Ten błąd jest zgłaszany przez `acquireTokenSilent`, jeśli użytkownik musi współdziałać z serwerem w celu podania poświadczeń lub zgody na uwierzytelnianie/autoryzację. Kody błędów obejmują `"interaction_required"`, `"login_required"` i `"consent_required"`.
+- `InteractionRequiredAuthError`: Klasa Error, rozszerza `ServerError`, aby reprezentować błędy serwera, które wymagają wywołania interaktywnego. Ten błąd jest zgłaszany przez `acquireTokenSilent`, jeśli użytkownik musi współdziałać z serwerem w celu podania poświadczeń lub zgody na uwierzytelnianie/autoryzację. Kody błędów obejmują `"interaction_required"`, `"login_required"`i `"consent_required"`.
 
 Aby obsłużyć błędy w przepływach uwierzytelniania przy użyciu metod redirect (`loginRedirect`, `acquireTokenRedirect`), należy zarejestrować wywołanie zwrotne, które jest wywoływane z sukcesem lub niepowodzeniem po przekierowaniu przy użyciu metody `handleRedirectCallback()` w następujący sposób:
 
@@ -481,7 +482,7 @@ Gdy wywołujesz interfejs API wymagający dostępu warunkowego, możesz odebrać
 
 Zobacz [żądanie dodatkowych oświadczeń](active-directory-optional-claims.md) , aby uzyskać więcej szczegółów.
 
-### <a name="msal-for-ios-and-macos"></a>MSAL dla systemów iOS i macOS
+### <a name="msal-for-ios-and-macos"></a>Biblioteka MSAL dla systemów iOS i macOS
 
 MSAL dla systemów iOS i macOS umożliwia żądanie określonych oświadczeń w scenariuszach pozyskiwania tokenów interaktywnych i dyskretnych.
 
