@@ -1,6 +1,6 @@
 ---
-title: Opis i dostosowywanie jednostek przesyłania strumieniowego w usłudze Azure Stream Analytics
-description: W tym artykule opisano ustawienia jednostki przesyłania strumieniowego i inne czynniki, które mają wpływ na wydajność w usłudze Azure Stream Analytics.
+title: Jednostki przesyłania strumieniowego w Azure Stream Analytics
+description: W tym artykule opisano ustawienia jednostek przesyłania strumieniowego i inne czynniki wpływające na wydajność w Azure Stream Analytics.
 services: stream-analytics
 author: JSeb225
 ms.author: jeanb
@@ -9,75 +9,75 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 54296f0b4aed22457a5218154111a42ad01ec262
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: a4811da398fde869d8eb5457db11a592006c59a9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329336"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934266"
 ---
-# <a name="understand-and-adjust-streaming-units"></a>Opis i dostosowywanie jednostek przesyłania strumieniowego
+# <a name="understand-and-adjust-streaming-units"></a>Zrozumienie i Dostosowywanie jednostek przesyłania strumieniowego
 
-Przesyłanie strumieniowe jednostki (SUs) reprezentuje zasoby obliczeniowe, które są przydzielane do wykonania zadania usługi Stream Analytics. Im większa liczba jednostek przesyłania strumieniowego, tym większa ilość zasobów procesora i pamięci jest przydzielana do zadania. Pojemność pozwala skupić się na logice zapytania i streszczenia konieczność zarządzania sprzętowe do uruchomienia usługi Stream Analytics, zadania w odpowiednim czasie.
+Jednostki przesyłania strumieniowego (SUs) reprezentują zasoby obliczeniowe, które są przydzieleni do wykonywania zadania Stream Analytics. Im większa liczba jednostek przesyłania strumieniowego, tym większa ilość zasobów procesora i pamięci jest przydzielana do zadania. Ta pojemność umożliwia skoncentrowanie się na logice zapytania i umożliwia streszczenie konieczności zarządzania sprzętem w celu uruchomienia Stream Analytics zadania w odpowiednim czasie.
 
-W celu uzyskania małych opóźnień przetwarzania strumieni całe przetwarzanie dla zadań usługi Azure Stream Analytics jest wykonywane w pamięci. Gdy używany jest za mało pamięci, zadanie przesyłania strumieniowego nie powiedzie się. W wyniku dla zadania produkcji, ważne jest monitorowanie użycia zasobów zadania przesyłania strumieniowego i upewnij się, Brak wystarczających zasobów przydzielonych do zachowania zadania uruchamiania 24/7.
+W celu uzyskania małych opóźnień przetwarzania strumieni całe przetwarzanie dla zadań usługi Azure Stream Analytics jest wykonywane w pamięci. W przypadku braku pamięci zadanie przesyłania strumieniowego kończy się niepowodzeniem. W związku z tym ważne jest, aby dla zadania produkcyjnego monitorować użycie zasobów zadania przesyłania strumieniowego i upewnić się, że przydzielono zasoby wystarczające do zachowania zadań 24/7.
 
-Metryki wykorzystania SU %, której zakres od 0% do 100%, w tym artykule opisano obciążenia zużycie pamięci. Zadanie przesyłania strumieniowego przy użyciu minimalnego rozmiaru ta metryka jest zwykle od 10 do 20%. Jeśli brakuje % wykorzystania SU i Uzyskaj zaległe zdarzenia wejściowe, prawdopodobnie obciążenie wymaga większej ilości zasobów obliczeniowych, co wymaga zwiększenia liczby usług SUs. Najlepiej przechowywać metryki SU poniżej 80%, aby uwzględnić okazjonalne skoki. Firma Microsoft zaleca ustawienie alertu na 80% wykorzystania SU metrykę, aby zapobiec wyczerpanie zasobów. Aby uzyskać więcej informacji, zobacz [Samouczek: Konfigurowanie alertów dotyczących zadań usługi Azure Stream Analytics](stream-analytics-set-up-alerts.md).
+Metryka użycia funkcji SU%, która obejmuje wartości z zakresu od 0 do 100%, opisuje użycie pamięci przez obciążenie. W przypadku zadania przesyłania strumieniowego z minimalnym wpływem ta Metryka jest zwykle z przedziału od 10% do 20%. Jeśli użycie funkcji SU% jest niskie i zdarzenia wejściowe są rejestrowane, obciążenie prawdopodobnie wymaga większej ilości zasobów obliczeniowych, co wymaga zwiększenia liczby programów SUs. Najlepiej zachować metrykę SU poniżej 80%, aby uwzględnić sporadyczne osiągnięcia. Firma Microsoft zaleca ustawienie alertu dotyczącego metryki użycia funkcji SU (80%) w celu zapobieżenia wyczerpaniu zasobów. Aby uzyskać więcej informacji, zobacz [Samouczek: Konfigurowanie alertów dla Azure Stream Analytics zadań](stream-analytics-set-up-alerts.md).
 
-## <a name="configure-stream-analytics-streaming-units-sus"></a>Konfigurowanie usługi Stream Analytics (SUs) jednostki przesyłania strumieniowego
+## <a name="configure-stream-analytics-streaming-units-sus"></a>Konfigurowanie Stream Analytics jednostek przesyłania strumieniowego (SUs)
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/)
 
-2. Na liście zasobów Znajdź zadanie usługi Stream Analytics, które chcesz skalować, a następnie otwórz go. 
+2. Na liście zasobów Znajdź zadanie Stream Analytics, które chcesz skalować, a następnie otwórz je. 
 
-3. Na stronie zadania w obszarze **Konfiguruj** nagłówka, wybierz **skalowania**. 
+3. Na stronie zadanie w obszarze **Konfiguruj** nagłówek wybierz pozycję **Skala**. 
 
-    ![Konfiguracja zadania usługi Stream Analytics portalu Azure][img.stream.analytics.preview.portal.settings.scale]
+    ![Konfiguracja zadania Stream Analytics Azure Portal][img.stream.analytics.preview.portal.settings.scale]
     
-4. Za pomocą suwaka, aby ustawić SUs dla zadania. Należy zauważyć, że są ograniczone do określonych ustawień SU. 
+4. Użyj suwaka, aby ustawić program SUs dla tego zadania. Zwróć uwagę, że masz ograniczone do określonych ustawień SU. 
 
 ## <a name="monitor-job-performance"></a>Monitorowanie wydajności zadania
-W witrynie Azure portal, można śledzić przepływność zadania:
+Za pomocą Azure Portal można śledzić przepływność zadania:
 
-![Usługa Azure Stream Analytics, monitorowanie zadań][img.stream.analytics.monitor.job]
+![Zadania monitorowania Azure Stream Analytics][img.stream.analytics.monitor.job]
 
-Obliczanie przepływności oczekiwanego obciążenia. Przepływność jest mniejsze niż oczekiwane, Dostosuj partycję danych wejściowych, ulepszenia zapytania i Dodaj SUs do zadania.
+Oblicz oczekiwaną przepływność obciążenia. Jeśli przepływność jest mniejsza niż oczekiwana, Dostosuj partycję wejściową, Dostosuj zapytanie i Dodaj program SUs do zadania.
 
-## <a name="how-many-sus-are-required-for-a-job"></a>Ilości jednostek przesyłania strumieniowego są wymagane dla zadania?
+## <a name="how-many-sus-are-required-for-a-job"></a>Ile usług SUs jest wymaganych dla zadania?
 
-Wybór liczby SUs wymagane dla określonego zadania zależy od konfiguracji partycji dla danych wejściowych i zapytania, który jest zdefiniowany w ramach zadania. **Skalowania** strona pozwala na ustawienie odpowiedniej liczby usług SUs. Jest najlepszym rozwiązaniem, aby przydzielić SUs więcej niż jest to potrzebne. Aparat przetwarzania usługi Stream Analytics jest zoptymalizowana opóźnień i przepływności kosztem alokowanie dodatkowej pamięci.
+Wybór liczby wymaganych usług SUs dla określonego zadania zależy od konfiguracji partycji dla danych wejściowych i zapytania zdefiniowanego w ramach zadania. Na stronie **Skala** można ustawić właściwą liczbę usług SUs. Najlepszym rozwiązaniem jest przydzielenie większej liczby usług SUs niż jest to konieczne. Aparat przetwarzania Stream Analytics optymalizuje czas oczekiwania i przepływność przy kosztach przydziału dodatkowej pamięci.
 
-Ogólnie rzecz biorąc, najlepszym rozwiązaniem jest rozpoczęcie od 6 SUs dla zapytań, które nie używają **PARTITION BY**. Następnie określ miejsce sweet przy użyciu metody prób i błędów, w którym możesz zmodyfikować liczbę SUs po przekazać reprezentatywnej ilości danych i sprawdzić metryki użycia % SU. Maksymalna liczba jednostek przesyłania strumieniowego, które mogą być używane przez zadanie usługi Stream Analytics zależy od liczby kroków w zapytaniu, określony dla zadania i liczby partycji w każdym kroku. Dowiedz się więcej na temat limitów [tutaj](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
+Ogólnie rzecz biorąc, najlepszym rozwiązaniem jest rozpoczęcie od 6 usług SUs dla zapytań, które nie używają **partycji przez**program. Następnie należy określić dane słodkie przy użyciu metody próbnej i błędu, w której można zmodyfikować liczbę programów SUs po przekazanie reprezentatywnych ilości danych i sprawdzić metrykę wykorzystania SU%. Maksymalna liczba jednostek przesyłania strumieniowego, które mogą być używane przez zadanie Stream Analytics, zależy od liczby kroków zapytania zdefiniowanego dla zadania i liczby partycji w każdym kroku. Więcej informacji na temat limitów można znaleźć [tutaj](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
 
-Aby uzyskać więcej informacji o wybieraniu odpowiedniej liczby usług SUs zobacz tę stronę: [Skalowanie zadań usługi Azure Stream Analytics w celu zwiększenia przepływności](stream-analytics-scale-jobs.md)
+Aby uzyskać więcej informacji na temat wybierania odpowiedniej liczby usług SUs, zobacz Tę stronę: [skalowanie Azure Stream Analytics zadania w celu zwiększenia przepływności](stream-analytics-scale-jobs.md)
 
 > [!Note]
-> Wybieranie ilości jednostek przesyłania strumieniowego są wymagane dla określonego zadania zależy od konfiguracji partycji dla danych wejściowych i zapytania zdefiniowanego dla tego zadania. Możesz wybrać do limitu przydziału w SUs do danego zadania. Domyślnie każda subskrypcja platformy Azure ma limit przydziału programu SUs do 500 dla wszystkich zadań analizy w określonym regionie. Aby zwiększyć SUs dla Twojej subskrypcji po przekroczeniu tego limitu przydziału, skontaktuj się z pomocą [Microsoft Support](https://support.microsoft.com). Prawidłowe wartości dla SUs poszczególne zadania są 1, 3, 6 i w przyrostach co 6.
+> Wybór liczby programów SUs wymaganych do określonego zadania zależy od konfiguracji partycji dla danych wejściowych i zapytania zdefiniowanego dla tego zadania. Możesz wybrać do przydziału w programie SUs dla zadania. Domyślnie każda subskrypcja platformy Azure ma przydział do 500 usług SUs dla wszystkich zadań analitycznych w określonym regionie. Aby zwiększyć liczbę usług programu SUs dla subskrypcji wykraczających poza ten limit przydziału, skontaktuj się z [Pomoc techniczna firmy Microsoft](https://support.microsoft.com). Prawidłowe wartości dla programu SUs na zadanie to 1, 3, 6 i maksymalnie 6.
 
-## <a name="factors-that-increase-su-utilization"></a>Czynniki, które zwiększają % wykorzystania SU 
+## <a name="factors-that-increase-su-utilization"></a>Czynniki zwiększające użycie SU% 
 
-Elementy danych czasowych zapytania (zorientowane na czas) to podstawowy zestaw operatorów stanowych dostarczane przez usługę Stream Analytics. Stream Analytics zarządza stanem tych operacji wewnętrznie w imieniu użytkownika, zarządzając zużycie pamięci, punkty kontrolne dla odporności i odzyskiwania stanu podczas uaktualnienia usługi. Mimo że usługi Stream Analytics w pełni zarządza każdym stany, istnieje kilka zalecenia dotyczące najlepszych rozwiązań, które należy wziąć pod uwagę użytkowników.
+Dane czasowe (zorientowane czasie) są podstawowym zestawem operatorów stanowych udostępnianych przez Stream Analytics. Stream Analytics zarządza stanem tych operacji wewnętrznie w imieniu użytkownika, przez zarządzanie użyciem pamięci, tworzenie punktów kontrolnych dla odporności i odzyskiwanie stanu podczas uaktualniania usług. Mimo że Stream Analytics w pełni zarządza stanami, istnieją pewne zalecenia dotyczące najlepszych rozwiązań, które użytkownicy powinni wziąć pod uwagę.
 
-Należy zauważyć, że zadanie z logiką złożonego zapytania można wysokiej % wykorzystania SU nawet wtedy, gdy nie jest stale odbierania zdarzeń wejściowych. Może to nastąpić po nagłym skokiem w zdarzeniach wejściowych i wyjściowych. Zadanie może w dalszym ciągu zachować stan pamięci, jeśli zapytanie jest złożone.
+Należy pamiętać, że zadanie ze złożoną logiką zapytań może mieć wysokie użycie elementu SU% nawet wtedy, gdy nie będzie on ciągle otrzymywał zdarzeń wejściowych. Może to nastąpić po nagłym pojściu w zdarzeniach wejściowych i wyjściowych. Zadanie może nadal utrzymać stan w pamięci, jeśli zapytanie jest złożone.
 
-% Wykorzystania SU nagle może porzucić 0 na krótko przed powracające do oczekiwanego poziomu. Dzieje się tak z powodu przejściowych błędów lub uaktualnień zainicjowane przez system. Zwiększenie liczby jednostek przesyłania strumieniowego dla zadania nie może zmniejszyć SU % wykorzystania, jeśli zapytanie nie jest [pełni równoległe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
+Użycie SU% może nagle porzucić do 0 przez krótki czas przed powrotem do oczekiwanego poziomu. Dzieje się tak z powodu błędów przejściowych lub uaktualnień inicjowanych przez system. Zwiększenie liczby jednostek przesyłania strumieniowego dla zadania może nie zmniejszyć użycia elementu SU%, jeśli zapytanie nie jest w [pełni równoległe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Logiki zapytania stanowych w elementach danych czasowych
-Jednym z unikatowych możliwości zadania usługi Azure Stream Analytics jest wykonanie stanowych przetwarzania, takich jak okresowymi danych czasowych sprzężeń i funkcji analitycznych danych czasowych. Każda z tych operatorów przechowuje informacje o stanie. Maksymalny rozmiar okna dla tych elementów zapytania wynosi siedem dni. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Logika zapytań stanowych w elementach czasowych
+Jedną z unikatowych możliwości Azure Stream Analytics zadania jest wykonywanie przetwarzania stanowego, takiego jak agregacje okienkowe, sprzężenia czasowe i funkcje analityczne. Każdy z tych operatorów przechowuje informacje o stanie. Maksymalny rozmiar okna dla tych elementów zapytania wynosi siedem dni. 
 
-Koncepcja okno danych czasowych pojawia się w kilku elementów zapytań usługi Stream Analytics:
-1. Agregacje okna: GRUPY według z wirowania, przeskokiem i przesuwanie systemu windows
+Koncepcja okna danych czasowych pojawia się w kilku Stream Analytics elementach zapytania:
+1. Zagregowane okna: Grupuj według wirowania, przeskoku i ruchomych okien
 
-2. Sprzężenia danych czasowych: Dołącz do przy użyciu funkcji DATEDIFF
+2. Sprzężenia czasowe: SPRZĘŻENIe z funkcją DATEDIFF
 
-3. Funkcje analityczne danych czasowych: ISFIRST, LAST i OPÓŹNIENIEM przy użyciu limitu czasu trwania
+3. Tymczasowe funkcje analityczne: isfirst, LAST i LAG z LIMITem czasu trwania
 
-Następujące czynniki mają wpływ na pamięć używana (część przesyłania strumieniowego metryki jednostek) przez zadania usługi Stream Analytics:
+Poniższe czynniki wpływają na użycie używanej pamięci (część metryk jednostek przesyłania strumieniowego) przez Stream Analytics zadania:
 
-## <a name="windowed-aggregates"></a>Okresowymi
-Używana pamięć (rozmiar danych stanu) dla okna agregacji nie zawsze jest wprost proporcjonalny do rozmiaru okna. Zamiast tego używana pamięć jest proporcjonalna do Kardynalność danych lub liczby grup w każdym przedziale czasowym.
+## <a name="windowed-aggregates"></a>Zagregowane okna
+Używana pamięć (rozmiar stanu) dla agregacji okienkowej nie zawsze jest bezpośrednio proporcjonalna do rozmiaru okna. Zamiast tego używana pamięć jest proporcjonalna do kardynalności danych lub liczby grup w każdym przedziale czasu.
 
 
-Na przykład wysłanie następującego zapytania, liczba skojarzonych `clusterid` to Kardynalność zapytania. 
+Na przykład w poniższym zapytaniu liczba skojarzona z `clusterid` jest kardynalnością zapytania. 
 
    ```sql
    SELECT count(*)
@@ -85,7 +85,7 @@ Na przykład wysłanie następującego zapytania, liczba skojarzonych `clusterid
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Aby rozwiązać problemy spowodowane przez wysoką Kardynalność w poprzednim zapytaniu, możesz wysłać zdarzenia do Centrum zdarzeń, które podzielone między `clusterid`i skalowanie zapytań, umożliwiając systemowi przetwarzanie każdej partycji danych wejściowych osobno przy użyciu **PARTYCJI PRZEZ** jak pokazano w poniższym przykładzie:
+Aby uniknąć problemów spowodowanych przez dużą Kardynalność w poprzedniej kwerendzie, można wysyłać zdarzenia do centrum zdarzeń partycjonowane przez `clusterid`i skalować zapytanie, umożliwiając systemowi przetworzenie każdej partycji wejściowej osobno przy użyciu **partycji przez** pokazanej w poniższym przykładzie:
 
    ```sql
    SELECT count(*) 
@@ -93,14 +93,14 @@ Aby rozwiązać problemy spowodowane przez wysoką Kardynalność w poprzednim z
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 
-Po podzieleniu na partycje zapytanie jest rozmieszczane w wielu węzłach. W wyniku liczbę `clusterid` wartości przychodzących do każdego węzła, zostanie zmniejszona zmniejszając w ten sposób Kardynalność grupy operator. 
+Po podzieleniu na partycje zapytanie jest rozmieszczane w wielu węzłach. W związku z tym liczba wartości `clusterid` w każdym węźle jest zmniejszana, co zmniejsza Kardynalność operatora Group by. 
 
-Za pomocą klucza grupowania, aby uniknąć konieczności korzystania z krokiem redukcji, powinny być dzielone partycji Centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [Przegląd usługi Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md). 
+Partycje centrum zdarzeń należy podzielić przez klucz grupowania, aby uniknąć konieczności zmniejszenia kroku. Aby uzyskać więcej informacji, zobacz [Event Hubs przegląd](../event-hubs/event-hubs-what-is-event-hubs.md). 
 
-## <a name="temporal-joins"></a>Sprzężenia danych czasowych
-Używana pamięć (rozmiar danych stanu) danych czasowych sprzężenia jest proporcjonalna do liczby zdarzeń w pokoju danych czasowych poruszaj sprzężenia, czyli szybkość danych wejściowych zdarzeń mnożenie przez rozmiar pokoju poruszaj. Oznacza to używana przez sprzężenia pamięć jest proporcjonalna do zakresu czasu DateDiff pomnożona przez średni czas występowania zdarzeń.
+## <a name="temporal-joins"></a>Sprzężenia czasowe
+Użycie pamięci (rozmiar stanu) dołączania danych czasowych jest proporcjonalne do liczby zdarzeń w pokoju wiggle czasowym sprzężenia, co jest wskaźnikiem nakładu danych pomnożyć przez rozmiar pokoju wiggle. Innymi słowy, pamięć wykorzystywana przez sprzężenia jest proporcjonalna do zakresu czasu DateDiff pomnożonego przez średni współczynnik zdarzeń.
 
-Liczba niedopasowanych zdarzeń w sprzężeniu wpływa na użycie pamięci przez program dla zapytania. Następujące zapytanie służy do znajdowania wyświetleń reklam, które generują kliknięcia:
+Liczba niedopasowanych zdarzeń w sprzężeniu wpływa na użycie pamięci przez zapytanie. Następujące zapytanie służy do znajdowania wyświetleń reklam, które generują kliknięcia:
 
    ```sql
    SELECT clicks.id
@@ -108,9 +108,9 @@ Liczba niedopasowanych zdarzeń w sprzężeniu wpływa na użycie pamięci przez
    INNER JOIN impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
    ```
 
-W tym przykładzie jest możliwe, że wiele reklam wyświetlanych i kliknij kilka osób i jest to wymagane, aby zachować wszystkie zdarzenia w przedziale czasu. Używana pamięć jest proporcjonalna do wielkości okna i szybkości zdarzeń. 
+W tym przykładzie możliwe jest wyświetlenie wielu reklam, a kilka osób klika je i jest wymagane, aby zachować wszystkie zdarzenia w przedziale czasu. Używana pamięć jest proporcjonalna do wielkości okna i szybkości zdarzeń. 
 
-Aby rozwiązać ten problem, wysyłanie zdarzeń do Centrum zdarzeń dzielone według kluczy sprzężenia (identyfikator: w tym przypadku) i skalowania w poziomie zapytania, umożliwiając systemowi przetwarzania poszczególnych partycji danych wejściowych osobno przy użyciu **PARTITION BY** jak pokazano:
+Aby rozwiązać ten problemy, należy wysłać zdarzenia do centrum zdarzeń partycjonowane przez klucze sprzężenia (w tym przypadku) i skalować zapytanie, umożliwiając systemowi przetworzenie każdej partycji wejściowej osobno przy użyciu **partycji** w następujący sposób:
 
    ```sql
    SELECT clicks.id
@@ -119,34 +119,34 @@ Aby rozwiązać ten problem, wysyłanie zdarzeń do Centrum zdarzeń dzielone we
    ON impression.PartitionId = clicks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
    ```
 
-Po podzieleniu na partycje zapytanie jest rozmieszczane w wielu węzłach. W wyniku liczba zdarzeń przychodzących do każdego węzła jest obniżona, zmniejszając w ten sposób rozmiar stanu przechowywane w oknie sprzężenia. 
+Po podzieleniu na partycje zapytanie jest rozmieszczane w wielu węzłach. W efekcie liczba zdarzeń przychodzących do każdego węzła jest ograniczana, co zmniejsza rozmiar stanu przechowywanego w oknie sprzężenia. 
 
 ## <a name="temporal-analytic-functions"></a>Funkcje analityczne danych czasowych
-Używana pamięć (rozmiar danych stanu) danych czasowych funkcji analitycznej jest proporcjonalna do występowania zdarzeń wielokrotnie DURATION. Pamięci używane przez funkcje analityczne nie jest proporcjonalny do rozmiaru okna, ale raczej partycji liczba w każdym przedziale czasowym.
+Używana pamięć (rozmiar stanu) funkcji analitycznej danych czasowych jest proporcjonalna do współczynnika zdarzeń pomnożyć przez czas trwania. Pamięć wykorzystywana przez funkcje analityczne nie jest proporcjonalna do rozmiaru okna, ale raczej liczba partycji w każdym przedziale czasu.
 
-Korygowanie jest podobne do łączenia danych czasowych. Można skalować w poziomie zapytania za pomocą **PARTITION BY**. 
+Korygowanie jest podobne do sprzężenia czasowego. Zapytanie można skalować w poziomie za pomocą **partycji**. 
 
 ## <a name="out-of-order-buffer"></a>Bufor poza kolejnością 
-Użytkownik może skonfigurować rozmiar buforu poza kolejnością, w przypadku porządkowania okienko konfiguracji. Rozmiar buforu jest używany do przechowywania danych wejściowych na czas trwania okna, zmienić ich kolejność. Rozmiar buforu jest proporcjonalna do zdarzeń wejściowych szybkość, z mnożenie przez rozmiar okna poza kolejnością. Domyślny rozmiar okna wynosi 0. 
+Użytkownik może skonfigurować rozmiar buforu poza kolejnością w okienku Konfiguracja porządkowania zdarzeń. Bufor jest używany do przechowywania danych wejściowych w czasie trwania okna i zmieniania ich kolejności. Rozmiar buforu jest proporcjonalny do współczynnika danych wejściowych zdarzenia pomnożyć przez rozmiar okna poza kolejnością. Domyślny rozmiar okna to 0. 
 
-Korygowanie przepełnienia bufora poza kolejnością, skalowanie w poziomie zapytania za pomocą **PARTITION BY**. Po podzieleniu na partycje zapytanie jest rozmieszczane w wielu węzłach. W rezultacie liczba zdarzeń przychodzących do każdego węzła jest mniejsze, zmniejszając liczbę zdarzeń w każdy bufor zmiany kolejności. 
+Aby skorygować przepełnienie buforu poza kolejnością, Skaluj zapytanie w poziomie przy użyciu **partycji przez**. Po podzieleniu na partycje zapytanie jest rozmieszczane w wielu węzłach. W związku z tym liczba zdarzeń przychodzących do każdego węzła jest ograniczana, co zmniejsza liczbę zdarzeń w każdym buforze zmiany kolejności. 
 
-## <a name="input-partition-count"></a>Liczba partycji danych wejściowych 
-Każda partycja wprowadzania danych wejściowych zadania ma buforu. Większa liczba partycji danych wejściowych, więcej zasobów zużywa zadania. Dla każdej jednostki przesyłania strumieniowego usługi Azure Stream Analytics może przetwarzać około 1 MB/s danych wejściowych. W związku z tym można zoptymalizować, przez dopasowanie liczby Stream Analytics — przesyłanie strumieniowe jednostki z liczbą partycji w Centrum zdarzeń. 
+## <a name="input-partition-count"></a>Liczba partycji wejściowych 
+Każda partycja wejściowa danych wejściowych zadania ma bufor. Większa liczba partycji wejściowych, tym więcej zasobów zużywanych przez zadanie. Dla każdej jednostki przesyłania strumieniowego Azure Stream Analytics może przetworzyć około 1 MB/s danych wejściowych. W związku z tym można zoptymalizować się, dopasowując liczbę Stream Analytics jednostek przesyłania strumieniowego do liczby partycji w centrum zdarzeń. 
 
-Zwykle zadania skonfigurowano jedną jednostkę przesyłania strumieniowego jest wystarczająca dla Centrum zdarzeń za pomocą dwóch partycji (jest to minimum potrzebne do Centrum zdarzeń). Jeśli Centrum zdarzeń ma więcej partycji, zadanie usługi Stream Analytics wykorzystuje więcej zasobów, ale niekoniecznie używa dodatkowej przepływności, dostarczone przez Centrum zdarzeń. 
+Zwykle zadanie skonfigurowane z jedną jednostką przesyłania strumieniowego jest wystarczające dla centrum zdarzeń z dwiema partycjami (co jest minimum dla centrum zdarzeń). Jeśli centrum zdarzeń ma więcej partycji, zadanie Stream Analytics zużywa więcej zasobów, ale niekoniecznie wykorzystuje dodatkową przepływność zapewnioną przez centrum zdarzeń. 
 
-Dla zadania o 6 jednostek przesyłania strumieniowego może być konieczne 4 lub 8 partycje z Centrum zdarzeń. Jednakże Unikaj zbyt dużej liczby partycji niepotrzebne, ponieważ, która powoduje nadmierne użycie zasobów. Na przykład Centrum zdarzeń z 16 partycji lub większe w zadaniu Stream Analytics, które ma 1 jednostka przesyłania strumieniowego. 
+W przypadku zadania z 6 jednostkami przesyłania strumieniowego może być konieczne posiadanie 4 lub 8 partycji z centrum zdarzeń. Należy jednak unikać zbyt wielu niepotrzebnych partycji, ponieważ powoduje nadmierne użycie zasobów. Na przykład centrum zdarzeń z 16 partycjami lub większym w Stream Analytics zadania z 1 jednostką przesyłania strumieniowego. 
 
 ## <a name="reference-data"></a>Dane referencyjne 
-Dane referencyjne w ASA są ładowane do pamięci w celu szybkiego wyszukiwania. Przy użyciu bieżącej implementacji każda operacja łączenia z danymi referencyjnymi przechowuje kopie danych referencyjnych w pamięci, nawet jeśli dołączysz do tych samych danych odwołania wiele razy. Dla zapytań z **PARTITION BY**, każda partycja zawiera kopię danych referencyjnych, dzięki czemu partycje są całkowicie odłączony. Ze skutkiem mnożnik użycia pamięci może szybko uzyskać bardzo duże, Jeśli dołączysz do programu z danymi referencyjnymi wiele razy przy użyciu wielu partycji.  
+Dane referencyjne w ASA są ładowane do pamięci w celu szybkiego odszukania. W przypadku bieżącej implementacji każda operacja sprzężenia z danymi referencyjnymi przechowuje kopię danych referencyjnych w pamięci, nawet jeśli dołączysz te same dane referencyjne wielokrotnie. W przypadku zapytań z **partycją przez**program każda partycja ma kopię danych referencyjnych, więc partycje są całkowicie oddzielone. Dzięki efektowi mnożnika użycie pamięci może szybko uzyskać wysoką wartość, jeśli dołączysz dane odwołań wiele razy z wieloma partycjami.  
 
 ### <a name="use-of-udf-functions"></a>Korzystanie z funkcji UDF
-Po dodaniu funkcji UDF, Azure Stream Analytics ładuje środowisko uruchomieniowe JavaScript do pamięci. Ma to wpływu na SU %.
+Po dodaniu funkcji UDF Azure Stream Analytics ładuje środowisko uruchomieniowe JavaScript do pamięci. Będzie to miało wpływ na wartość% SU.
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Tworzenie zapytań równoległego w usłudze Azure Stream Analytics](stream-analytics-parallelization.md)
-* [Skalowanie zadań usługi Azure Stream Analytics w celu zwiększenia przepływności](stream-analytics-scale-jobs.md)
+## <a name="next-steps"></a>Następne kroki
+* [Tworzenie zapytań działania równoległego w Azure Stream Analytics](stream-analytics-parallelization.md)
+* [Skalowanie zadań Azure Stream Analytics w celu zwiększenia przepływności](stream-analytics-scale-jobs.md)
 
 <!--Image references-->
 

@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: be9301bdc70279974bbdbb5d2cb874e5bccc9358
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 93b5c395a0d121305c092229d862bf9ecaa4789c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898454"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936060"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Szybki Start: sprawdzanie pisowni za pomocą interfejsu API REST sprawdzanie pisowni Bing iC#
 
@@ -94,7 +94,7 @@ Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu
     ```csharp
     var values = new Dictionary<string, string>();
     values.Add("text", text);
-    
+    var content = new FormUrlEncodedContent(values);
     content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
     response = await client.PostAsync(uri, new FormUrlEncodedContent(values));
     ```

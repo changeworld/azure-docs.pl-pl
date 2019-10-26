@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wyodrębnij dane przyjęcia przy użyciu języka Python-format'
+title: 'Szybki Start: wyodrębnianie danych o odbiorze przy użyciu języka Python — formularz rozpoznawania'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy w języku Python, aby wyodrębnić dane z obrazów paragonów sprzedaży.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 44121b959d13a92ca1f4cca0e5a0c00341d1ac18
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: ef5c9e8d548e8acbcbdbe83f6e7c9965c798ad44
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073749"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931258"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Szybki start: Wyodrębnij dane przyjęcia przy użyciu interfejsu API REST aparatu rozpoznawania formularzy w języku Python
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Szybki Start: wyodrębnianie danych przyjęcia przy użyciu interfejsu API REST aparatu rozpoznawania w języku Python
 
 W tym przewodniku szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy platformy Azure w języku Python, aby wyodrębnić i zidentyfikować odpowiednie informacje w paragonach sprzedaży.
 
@@ -36,9 +36,9 @@ Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
 
 Aby rozpocząć analizowanie paragonu, należy wywołać interfejs API **analizy paragonów** przy użyciu poniższego skryptu języka Python. Przed uruchomieniem skryptu wprowadź następujące zmiany:
 
-1. Zamień `<Endpoint>` na punkt końcowy uzyskany za pomocą klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
-1. Zamień `<your receipt URL>` na adres URL obrazu paragonu.
-1. Zamień `<subscription key>` na klucz subskrypcji skopiowany z poprzedniego kroku.
+1. Zamień `<Endpoint>` na punkt końcowy uzyskany w ramach subskrypcji aparatu rozpoznawania formularza.
+1. Zastąp `<your receipt URL>` adresem URL obrazu paragonu.
+1. Zastąp `<subscription key>` kluczem subskrypcji skopiowanym z poprzedniego kroku.
 
     ```python
     import http.client, urllib.request, urllib.parse, urllib.error, base64
@@ -70,7 +70,7 @@ Aby rozpocząć analizowanie paragonu, należy wywołać interfejs API **analizy
 1. Otwórz okno wiersza polecenia.
 1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python form-recognizer-receipts.py`.
 
-Otrzymasz `202 (Success)` odpowiedź, która zawiera nagłówek **operacji-Location** , który skrypt będzie drukowany w konsoli programu. Ten nagłówek zawiera identyfikator operacji, którego można użyć w celu zbadania stanu operacji i pobrania wyników analizy. W poniższym przykładzie wartość ciąg po `operations/` to identyfikator operacji.
+Otrzymasz odpowiedź `202 (Success)`, która zawiera nagłówek z **lokalizacją operacji** , który skrypt będzie drukowany w konsoli programu. Ten nagłówek zawiera identyfikator operacji, którego można użyć w celu zbadania stanu operacji i pobrania wyników analizy. W poniższym przykładzie wartość ciąg po `operations/` jest IDENTYFIKATORem operacji.
 
 ```console
 https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -104,7 +104,7 @@ while True:
 
 ### <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Skrypt będzie drukował odpowiedzi do konsoli do momentu zakończenia operacji analizy. Następnie drukuje wyodrębnione dane tekstowe w formacie JSON. Pole zawiera wszystkie wiersze tekstu wyodrębnione z paragonu, `"understandingResults"` a pole zawiera informacje o kluczu/wartości dla najbardziej odpowiednich części paragonu. `"recognitionResults"`
+Skrypt będzie drukował odpowiedzi do konsoli do momentu zakończenia operacji analizy. Następnie drukuje wyodrębnione dane tekstowe w formacie JSON. Pole `"recognitionResults"` zawiera wszystkie wiersze tekstu wyodrębnione z przyjęcia, a pole `"understandingResults"` zawiera informacje o klucz/wartość dla najbardziej odpowiednich części paragonu.
 
 Zapoznaj się z poniższym obrazem paragonu i odpowiednimi danymi wyjściowymi JSON. Dane wyjściowe zostały skrócone w celu zapewnienia czytelności.
 

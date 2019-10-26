@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 74bb062713eac44310edcc8d1cdaed605e964681
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: e4e65f38f71b458c34a6747c434ebcd1d8a1b350
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264437"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931567"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Szybki Start: Biblioteka klienta aparatu rozpoznawania formularzy dla platformy .NET
 
@@ -43,7 +43,7 @@ Biblioteka klienta aparatu rozpoznawania w programie .NET umożliwia:
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-Po otrzymaniu klucza z subskrypcji próbnej lub zasobu [Utwórz zmienną środowiskową](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza o nazwie `FORM_RECOGNIZER_KEY`.
+Po otrzymaniu klucza z subskrypcji próbnej lub zasobu należy [utworzyć zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza i punktu końcowego, odpowiednio nazwane `FORM_RECOGNIZER_KEY` i `FORM_RECOGNIZER_ENDPOINT`.
 
 ### <a name="create-a-new-c-application"></a>Utwórz nową C# aplikację
 
@@ -120,7 +120,6 @@ Te fragmenty kodu przedstawiają sposób wykonywania następujących zadań za p
 
 Przed zdefiniowaniem jakichkolwiek metod Dodaj następujące definicje zmiennych na początku klasy **programu** . Należy samodzielnie wypełnić niektóre zmienne. 
 
-* Wartość punktu końcowego usługi można znaleźć w sekcji **Przegląd** w Azure Portal. 
 * Aby pobrać adres URL sygnatury dostępu współdzielonego dla danych szkoleniowych, Otwórz Eksplorator usługi Microsoft Azure Storage, kliknij prawym przyciskiem myszy kontener, a następnie wybierz pozycję **Pobierz sygnaturę dostęp współdzielony**. Upewnij się, że uprawnienia do **odczytu** i **listy** są zaznaczone, a następnie kliknij przycisk **Utwórz**. Następnie skopiuj wartość z sekcji **URL** . Powinna mieć postać: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Jeśli potrzebujesz przykładowego formularza do analizy, możesz użyć jednego z plików w folderze **testowym** [zestawu danych przykładowych](https://go.microsoft.com/fwlink/?linkid=2090451). W tym przewodniku są stosowane tylko formularze PDF.
 

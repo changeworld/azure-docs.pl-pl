@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d3794f409b2cdc11373dc330099e5ff93d65a2a1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527101"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934428"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Zarządzanie dostępem użytkowników zewnętrznych w usłudze Azure AD uprawniań (wersja zapoznawcza)
 
@@ -50,11 +50,13 @@ Poniższy diagram i kroki zawierają omówienie sposobu udzielania dostępu uży
 
 ![Diagram przedstawiający cykl życia użytkowników zewnętrznych](./media/entitlement-management-external-users/external-users-lifecycle.png)
 
+1. Należy [dodać połączoną organizację](entitlement-management-organization.md) dla katalogu lub domeny usługi Azure AD, z którą chcesz współpracować.
+
 1. W katalogu utworzysz pakiet dostępu zawierający zasady dla użytkowników, które nie znajdują [się w katalogu](entitlement-management-access-package-create.md#for-users-not-in-your-directory).
 
 1. Wysyłasz [link do mojego portalu dostępu](entitlement-management-access-package-settings.md) do kontaktu w organizacji zewnętrznej, który mogą oni udostępniać użytkownikom w celu żądania pakietu dostępu.
 
-1. Użytkownik zewnętrzny (**osoba żądająca A** w tym przykładzie) używa linku Portal dostępu w celu [zażądania dostępu](entitlement-management-request-access.md) do pakietu dostępu.
+1. Użytkownik zewnętrzny (**osoba żądająca A** w tym przykładzie) używa linku Portal dostępu w celu [zażądania dostępu](entitlement-management-request-access.md) do pakietu dostępu. Sposób logowania użytkownika zależy od typu uwierzytelniania katalogu lub domeny zdefiniowanej w połączonej organizacji.
 
 1. Osoba zatwierdzająca [zatwierdza żądanie](entitlement-management-request-approve.md) (lub żądanie jest zatwierdzane z autozatwierdzeniem).
 
@@ -116,6 +118,6 @@ Możesz również zmienić to ustawienie po utworzeniu katalogu.
 
 ## <a name="next-steps"></a>Następne kroki
 
+- [Dodawanie połączonej organizacji](entitlement-management-organization.md)
 - [Dla użytkowników nieznajdujących się w katalogu](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [Tworzenie wykazu zasobów i zarządzanie nim](entitlement-management-catalog-create.md)
-- [Delegowanie i role](entitlement-management-delegate.md)

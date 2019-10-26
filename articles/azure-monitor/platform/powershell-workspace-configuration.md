@@ -1,19 +1,18 @@
 ---
 title: Tworzenie i Konfigurowanie obszaru roboczego Log Analytics przy użyciu programu PowerShell | Microsoft Docs
 description: Log Analytics obszary robocze w Azure Monitor przechowywanie danych z serwerów w infrastrukturze lokalnej lub w chmurze. Dane dotyczące maszyn można zbierać z usługi Azure Storage, gdy są generowane przez diagnostykę platformy Azure.
-services: log-analytics
-author: bwren
-ms.service: log-analytics
-ms.devlang: powershell
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/19/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 16cad34290ecc518e95ec1a0ce0950722cfe0780
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 05/19/2019
+ms.openlocfilehash: 9d5bbaf02798c0fd87c40f1d952db19aac7b0b7e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71836139"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932077"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Zarządzanie obszarem roboczym Log Analytics w Azure Monitor przy użyciu programu PowerShell
 
@@ -180,7 +179,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 W powyższym przykładzie regexDelimiter został zdefiniowany jako "\\n" dla nowego wiersza. Ogranicznik dziennika może być również sygnaturą czasową.  Są to obsługiwane formaty:
 
-| Format | Format wyrażenia regularnego JSON używa dwóch \\ dla każdego elementu \ w standardowym wyrażeń regularnych, dlatego jeśli testowanie w aplikacji wyrażeń regularnych zmniejsza \\ do \ | | |
+| Format | Format wyrażenia regularnego JSON używa dwóch \\ dla każdego elementu \ w standardowym wyrażeń regularnych, dlatego jeśli testowanie w aplikacji wyrażenia regularnego zmniejsza \\ do \ | | |
 | --- | --- | --- | --- |
 | `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 | `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` | | |
@@ -197,22 +196,22 @@ W powyższym przykładzie regexDelimiter został zdefiniowany jako "\\n" dla now
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Konfigurowanie Log Analytics do wysyłania diagnostyki Azure
 W przypadku monitorowania zasobów platformy Azure bez agentów zasoby muszą mieć włączoną diagnostykę Azure i skonfigurować do zapisu w obszarze roboczym Log Analytics. Takie podejście wysyła dane bezpośrednio do obszaru roboczego i nie wymaga zapisywania danych na koncie magazynu. Obsługiwane są następujące zasoby:
 
-| Typ zasobu | Dziennik | Metryki |
+| Typ zasobu | Dzienniki | Metryki |
 | --- | --- | --- |
-| Bramy aplikacji    | Tak | Tak |
+| Bramy Application Gateway    | Tak | Tak |
 | Konta usługi Automation     | Tak | |
 | Konta zadań wsadowych          | Tak | Tak |
-| Analiza Data Lake     | Tak | |
+| Data Lake Analytics     | Tak | |
 | Magazyn Data Lake         | Tak | |
 | Elastyczna Pula SQL        |     | Tak |
 | Przestrzeń nazw centrum zdarzeń     |     | Tak |
 | Centra IoT                |     | Tak |
-| Key Vault               | Tak | |
+| Magazyn kluczy               | Tak | |
 | Moduły równoważenia obciążenia          | Tak | |
-| Logic Apps              | Tak | Tak |
+| Aplikacje logiki              | Tak | Tak |
 | Sieciowe grupy zabezpieczeń | Tak | |
-| Pamięć podręczna platformy Azure dla usługi Redis             |     | Tak |
-| Wyszukaj usługi         | Tak | Tak |
+| Azure Cache for Redis             |     | Tak |
+| Usługi wyszukiwania         | Tak | Tak |
 | Service Bus przestrzeń nazw   |     | Tak |
 | SQL (V12)               |     | Tak |
 | Witryny sieci Web               |     | Tak |

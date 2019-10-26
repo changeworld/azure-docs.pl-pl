@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: e1cb588d68153a88d8b55b2696b376c4eb8704f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2f46ebcabd98c7a8c3376157c72da9ec5ed424a4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61232255"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935225"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Co to jest usługa Azure Internet of Things (IoT)?
 
@@ -63,7 +63,7 @@ Podłączanie urządzeń w sposób bezpieczny i niezawodny jest często najwięk
 
 * mogą być wdrażane w lokalizacjach zdalnych, gdzie dostęp fizyczny jest bardzo kosztowny;
 
-* mogą być dostępne tylko za pośrednictwem zaplecza rozwiązania. Nie istnieje inny sposób interakcji z urządzeniem;
+* mogą być dostępne tylko za pośrednictwem zaplecza rozwiązania; Nie istnieje inny sposób interakcji z urządzeniem;
 
 * mogą mieć ograniczone zasoby w zakresie zasilania i przetwarzania;
 
@@ -105,23 +105,23 @@ Zaimplementowanie tego rozwiązania IoT umożliwiło firmie szybkie sprawdzanie 
 
 Na platformie Azure istnieje kilka usług powiązanych z IoT i ustalenie, której najlepiej użyć, może być trudne. Niektóre z nich, takie jak IoT Central i akceleratory rozwiązań IoT, zapewniają szablony ułatwiające tworzenie własnych rozwiązań i szybkie rozpoczynanie pracy. Możesz również opracować całkowicie własne rozwiązanie za pomocą innych dostępnych usług — wszystko zależy od tego, ile pomocy chcesz uzyskać oraz ile chcesz mieć kontroli. Oto lista dostępnych usług oraz możliwości ich zastosowań.
 
-1. [**IoT Central**](../iot-central/overview-iot-central.md): jest to rozwiązanie SaaS, które ułatwia łączenie i monitorowanie urządzeń IoT oraz zarządzanie nimi. Aby rozpocząć, wybierz szablon dla danego typu urządzenia, a następnie utwórz i przetestuj podstawową aplikację usługi IoT Central, której będą używać operatorzy urządzeń. Aplikacja usługi IoT Central umożliwi Ci też monitorowanie urządzeń i aprowizację nowych urządzeń. Ta usługa jest przeznaczona dla prostych rozwiązań, które nie wymagają znaczącego dostosowania usług. 
+1. [**IoT Central**](../iot-central/core/overview-iot-central.md): to rozwiązanie SaaS, które ułatwia łączenie i monitorowanie urządzeń IoT oraz zarządzanie nimi. Aby rozpocząć, wybierz szablon dla danego typu urządzenia, a następnie utwórz i przetestuj podstawową aplikację usługi IoT Central, której będą używać operatorzy urządzeń. Aplikacja usługi IoT Central umożliwi Ci też monitorowanie urządzeń i aprowizację nowych urządzeń. Ta usługa jest przeznaczona dla prostych rozwiązań, które nie wymagają znaczącego dostosowania usług. 
 
 2. [**Akceleratory rozwiązań IoT**](/azure/iot-suite): jest to zbiór rozwiązań PaaS, za pomocą których można przyspieszyć opracowywanie rozwiązań IoT. Pracę rozpoczyna się od udostępnionego rozwiązania IoT, a następnie w pełni dostosowuje się to rozwiązanie do własnych potrzeb. Aby dostosować zaplecze, wymagane są umiejętności związane z językiem Java lub platformą .NET, natomiast w celu dostosowania wizualizacji — z językiem JavaScript. 
 
 3. [**IoT Hub**](/azure/iot-hub/): ta usługa pozwala na łączenie się urządzeń z centrum IoT oraz na monitorowanie i kontrolowanie miliardów urządzeń IoT. Jest ona szczególnie przydatna, jeśli jest potrzebna komunikacja dwukierunkowa między urządzeniami IoT a zapleczem. Jest to usługa bazowa dla usługi IoT Central i akceleratorów rozwiązań IoT. 
 
-4. [**Usługa IoT Hub Device Provisioning**](/azure/iot-dps/): jest to usługa pomocnika dla usługi IoT Hub, za pomocą której można bezpiecznie aprowizować urządzenia w centrum IoT. Usługa ta pozwala łatwo błyskawicznie aprowizować miliony urządzeń, zamiast aprowizować je jedno po drugim. 
+4. [**IoT Hub Device Provisioning Service**](/azure/iot-dps/): jest to usługa pomocnika dla usługi IoT Hub, za pomocą której można bezpiecznie aprowizować urządzenia w centrum IoT. Usługa ta pozwala łatwo błyskawicznie aprowizować miliony urządzeń, zamiast aprowizować je jedno po drugim. 
 
 5. [**IoT Edge**](/azure/iot-edge/): ta usługa jest oparta na usłudze IoT Hub. Za jej pomocą można analizować dane na urządzeniach IoT zamiast w chmurze. Dzięki przeniesieniu części obciążenia na brzeg można wysyłać mniej komunikatów do chmury. 
 
 6. [**Azure Digital Twins**](../digital-twins/index.yml): ta usługa umożliwia tworzenie kompleksowych modeli środowiska fizycznego. Umożliwia ona modelowanie relacji i interakcji między osobami, obszarami i urządzeniami. Na przykład można określać potrzeby konserwacyjne dla fabryki, analizować wymagania energetyczne w czasie rzeczywistym dla sieci elektrycznej lub optymalizować użycie dostępnej przestrzeni w biurze.
 
-7. [**Time Series Insights**](/azure/time-series-insights): ta usługa pozwala na przechowywanie i wizualizowanie dużych ilości danych szeregów czasowych generowanych przez urządzenia IoT oraz wykonywanie zapytań na tych danych. Można jej używać razem z usługą IoT Hub. 
+7. [**Time Series Insights**](/azure/time-series-insights): ta usługa pozwala na przechowywanie, wizualizowanie i odpytywanie dużych ilości danych szeregów czasowych generowanych przez urządzenia IoT. Można jej używać razem z usługą IoT Hub. 
 
-8. [**Azure Maps**](/azure/azure-maps): ta usługa udostępnia informacje geograficzne aplikacjom internetowym i mobilnym. Dostępny jest pełny zestaw interfejsów API REST, a także internetowa kontrolka JavaScript, za pomocą których można tworzyć elastyczne aplikacje działające na komputerach oraz aplikacje mobilne dla urządzeń zarówno firmy Apple, jak i z systemem Windows.
+8. [**Azure Maps**](/azure/azure-maps): ta usługa zapewnia informacje geograficzne aplikacjom internetowym i mobilnym. Dostępny jest pełny zestaw interfejsów API REST, a także internetowa kontrolka JavaScript, za pomocą których można tworzyć elastyczne aplikacje działające na komputerach oraz aplikacje mobilne dla urządzeń zarówno firmy Apple, jak i z systemem Windows.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Rzeczywiste przypadki zastosowań biznesowych i opisy używanej architektury można znaleźć na stronie [Microsoft Azure IoT Technical Case Studies](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured) (Techniczne analizy przypadków usługi Microsoft Azure IoT).
 

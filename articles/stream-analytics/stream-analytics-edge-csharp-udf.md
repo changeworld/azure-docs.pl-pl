@@ -1,5 +1,5 @@
 ---
-title: Pisanie C# funkcji zdefiniowanych przez użytkownika dla Azure Stream Analytics zadań brzegowych w programie Visual Studio (wersja zapoznawcza)
+title: Pisanie C# funkcji zdefiniowanych przez użytkownika dla zadań Azure Stream Analytics Edge
 description: Dowiedz się, jak pisać w języku C# funkcje zdefiniowane przez użytkownika dla zadań usługi Stream Analytics Edge w programie Visual Studio.
 services: stream-analytics
 author: mamccrea
@@ -9,14 +9,14 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: cadc603a94d5d17ad2df419f8507c37f9e3272f8
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2ddb5f6c57c49b33c992b13f38c969cbc5e91225
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173308"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925621"
 ---
-# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Samouczek: Pisanie w języku C# funkcji zdefiniowanej przez użytkownika dla zadania usługi Azure Stream Analytics Edge (wersja zapoznawcza)
+# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Samouczek: pisanie funkcji C# zdefiniowanej przez użytkownika dla zadania Azure Stream Analytics Edge (wersja zapoznawcza)
 
 Zdefiniowane przez użytkownika funkcje w języku C# w programie Visual Studio pozwalają rozszerzyć język zapytań usługi Azure Stream Analytics przy użyciu własnych funkcji. Możesz ponownie używać istniejącego kodu (w tym bibliotek DLL), a także korzystać z matematycznej lub złożonej logiki języka C#. Istnieją trzy sposoby implementowania funkcji zdefiniowanych przez użytkownika: pliki CodeBehind w projekcie usługi Stream Analytics, funkcje zdefiniowane przez użytkownika z lokalnego projektu języka C# lub funkcje zdefiniowane przez użytkownika z istniejącego pakietu z konta magazynu. W tym samouczku do zaimplementowania podstawowej funkcji języka C# jest używana metoda CodeBehind. Funkcja zdefiniowana przez użytkownika dla zadań usługi Stream Analytics Edge jest obecnie dostępna w wersji zapoznawczej i nie powinna być używana w przypadku obciążeń produkcyjnych.
 
@@ -62,7 +62,7 @@ Tworzony kontener będzie służyć do przechowywania skompilowanych pakietów j
     |**Ustawienie**  |**Sugerowana wartość**  |
     |---------|---------|
     |Źródło zestawu  |  Odwołanie do projektu lokalnego lub plik CodeBehind   |
-    |Resource  |  Wybierz dane z bieżącego konta   |
+    |Zasób  |  Wybierz dane z bieżącego konta   |
     |Subskrypcja  |  Wybierz subskrypcję.   |
     |Konto magazynu  |  Wybierz konto magazynu.   |
     |Kontener  |  Wybierz kontener utworzony na koncie magazynu.   |
@@ -136,7 +136,7 @@ Funkcję zdefiniowaną przez użytkownika w języku C# można debugować lokalni
 
     ![Dodawanie punktów przerwania do zdefiniowanej przez użytkownika funkcji usługi Stream Analytics w programie Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
 
-2. Naciśnij klawisz **F5** można rozpocząć debugowania. Zgodnie z oczekiwaniami program będzie zatrzymywać się w punktach przerwania.
+2. Naciśnij klawisz **F5**, aby uruchomić debugowanie. Zgodnie z oczekiwaniami program będzie zatrzymywać się w punktach przerwania.
 
     ![Wyświetlanie wyników debugowania zdefiniowanej przez użytkownika funkcji usługi Stream Analytics](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
 

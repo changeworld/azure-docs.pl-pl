@@ -8,18 +8,81 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1df1d5180d951e7a720ec82c548438892a47a426
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 98a9295363461864d3abbb11bbc22b8bd8d6fdfa
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881867"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933181"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Utwórz konto BlockBlobStorage
 
 Rodzaj konta BlockBlobStorage umożliwia tworzenie blokowych obiektów blob z charakterystyką wydajności Premium. Ten typ konta magazynu jest zoptymalizowany pod kątem obciążeń z wysoką stawką transakcji lub wymagających bardzo szybkiego dostępu. W tym artykule przedstawiono sposób tworzenia konta usługi BlockBlobStorage przy użyciu Azure Portal, interfejsu wiersza polecenia platformy Azure lub Azure PowerShell.
 
 Aby uzyskać więcej informacji o kontach BlockBlobStorage, zobacz [Omówienie konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Brak.
+
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+
+Ten artykuł instruktażowy wymaga modułu Azure PowerShell AZ Version 1.2.0 lub nowszego. Uruchom polecenie `Get-Module -ListAvailable Az`, aby określić bieżącą wersję. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+Możesz zalogować się do platformy Azure i uruchamiać polecenia interfejsu wiersza poleceń platformy Azure na jeden z dwóch sposobów:
+
+- Poleceń interfejsu wiersza polecenia można uruchomić z poziomu Azure Portal w Azure Cloud Shell.
+- Interfejs wiersza polecenia można zainstalować i uruchomić polecenie CLI lokalnie.
+
+### <a name="use-azure-cloud-shell"></a>Używanie usługi Azure Cloud Shell
+
+Usługa Azure Cloud Shell jest bezpłatną powłoką Bash, którą można uruchamiać bezpośrednio w witrynie Azure Portal. Interfejs wiersza polecenia platformy Azure jest wstępnie zainstalowany i skonfigurowany do użycia z Twoim kontem. Kliknij przycisk **Cloud Shell** w menu w prawym górnym rogu Azure Portal:
+
+[![Cloud Shell](../common/media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
+
+Przycisk uruchamia interaktywną powłokę, której można użyć, aby wykonać kroki opisane w tym artykule:
+
+[![Zrzut ekranu przedstawiający okno usługi Cloud Shell w portalu](../common/media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
+
+### <a name="install-the-cli-locally"></a>Instalowanie interfejsu wiersza polecenia lokalnie
+
+Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać go lokalnie. Ten artykuł z artykułu wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+
+---
+
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Zaloguj się do [portalu Azure](https://portal.azure.com).
+
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+
+Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby przeprowadzić uwierzytelnianie.
+
+```powershell
+Connect-AzAccount
+```
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+Aby uruchomić Azure Cloud Shell, zaloguj się do [Azure Portal](https://portal.azure.com).
+
+Aby zalogować się do lokalnej instalacji interfejsu wiersza polecenia, uruchom polecenie [AZ login](/cli/azure/reference-index#az-login) :
+
+```cli
+az login
+```
+
+---
+
+## <a name="create-a-blockblobstorage-account"></a>Utwórz konto BlockBlobStorage
 
 ## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Aby utworzyć konto BlockBlobStorage w Azure Portal, wykonaj następujące kroki:
@@ -118,6 +181,8 @@ Aby utworzyć konto blokowego obiektu BLOB przy użyciu interfejsu wiersza polec
     --kind "BlockBlobStorage" \
     --sku "Premium_LRS"
    ```
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 

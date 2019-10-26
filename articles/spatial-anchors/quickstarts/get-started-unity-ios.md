@@ -8,14 +8,14 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: be478a3f77996276f248d9b385954af813ac0397
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2d64835d425e8fa273a2805f307833e071a3a62
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562488"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933487"
 ---
-# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Szybki start: Tworzenie aplikacji Unity dla systemu iOS przy użyciu kotwic przestrzennych platformy Azure
+# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Szybki Start: Tworzenie aplikacji Unity dla systemu iOS z zakotwiczeniami przestrzennymi platformy Azure
 
 W tym przewodniku szybki start opisano, jak utworzyć aplikację Unity dla systemu iOS przy użyciu [kotwic przestrzennych platformy Azure](../overview.md). Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARKit dla systemu iOS utworzoną za pomocą aparatu Unity, która może zapisywać i przywoływać kotwicę przestrzenną.
 
@@ -35,7 +35,7 @@ Omawiane tematy:
 Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz następującymi elementami:
 
 - Maszyna macOS z zainstalowanym systemem <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 +</a>, <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a>i <a href="https://cocoapods.org" target="_blank">CocoaPods</a> .
-- Narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git`polecenie.
+- Narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git`.
 - Deweloperskie urządzenie z systemem iOS, <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">zgodne z zestawem ARKit</a>.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -68,11 +68,23 @@ Po zakończeniu Zatrzymaj aplikację, naciskając przycisk **Zatrzymaj** w Xcode
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
+### <a name="rendering-issues"></a>Problemy z renderowaniem
+
 Jeśli podczas uruchamiania aplikacji nie widzisz aparatu jako tła (np. widzisz puste miejsce, niebieski kolor lub inne tekstury), prawdopodobnie musisz ponownie zaimportować zasoby w aparacie Unity. Zatrzymaj aplikację. Z górnego menu aparatu Unity wybierz pozycje **Assets -> Re-import all (Zasoby -> Zaimportuj ponownie wszystko)** . Następnie ponownie uruchom aplikację.
+
+### <a name="cocoapods-issues-on-macos-catalina-1015"></a>CocoaPods problemy w macOS Catalina (10,15)
+
+Jeśli niedawno Zaktualizowano do macOS Catalina (10,15) i CocoaPods zostały wcześniej zainstalowane, CocoaPods może być w stanie przerwania i nie powiodło się poprawne skonfigurowanie plików projektu i `.xcworkspace`. Aby rozwiązać ten problem, należy ponownie zainstalować program CocoaPods, uruchamiając następujące polecenia:
+
+```shell
+brew update
+brew install cocoapods --build-from-source
+brew link --overwrite cocoapods
+```
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Samouczek: Udostępnianie kotwic przestrzennych na różnych urządzeniach](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Samouczek: udostępnianie kotwic przestrzennych między urządzeniami](../tutorials/tutorial-share-anchors-across-devices.md)

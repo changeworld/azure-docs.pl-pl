@@ -1,17 +1,17 @@
 ---
-title: Testowanie Azure Stream Analytics zapytań lokalnie za pomocą Visual Studio Code (wersja zapoznawcza)
+title: Testowanie Azure Stream Analytics zapytań z Visual Studio Code
 description: W tym artykule opisano sposób testowania zapytań lokalnie za pomocą Azure Stream Analytics narzędzi dla Visual Studio Code.
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 751cdf50fccc654dfab06b4d18428531312d08e6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 2791fb923f193815d718dbd2269cbcd11583a4ea
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673038"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924972"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>Testowanie Stream Analytics zapytań lokalnie za pomocą Visual Studio Code
 
@@ -27,7 +27,7 @@ Skorzystaj z tego [przewodnika Szybki Start](quick-create-vs-code.md) , aby dowi
 
 Możesz użyć rozszerzenia Azure Stream Analytics, aby Visual Studio Code do testowania Stream Analyticsych zadań lokalnie z przykładowymi danymi.
 
-1. Po utworzeniu zadania Stream Analytics Użyj **kombinacji klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń. Następnie wpisz i wybierz **ASA: Dodaj parametr Input @ no__t-0.
+1. Po utworzeniu zadania Stream Analytics Użyj **kombinacji klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń. Następnie wpisz i wybierz **ASA: Dodaj dane wejściowe**.
 
     ![Dodawanie danych wejściowych ASA w programie Visual Studio Code](./media/vscode-local-run/add-input.png)
 

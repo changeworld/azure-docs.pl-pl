@@ -1,24 +1,18 @@
 ---
 title: Wskazówki dotyczące danych osobowych przechowywanych w usłudze Azure Log Analytics | Microsoft Docs
 description: W tym artykule opisano sposób zarządzania danymi osobowymi przechowywanymi w usłudze Azure Log Analytics i metodami ich identyfikacji i usuwania.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/18/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 05/18/2018
+ms.openlocfilehash: 7733b27bb5af01e55cd732c16f6c9cb1e9301819
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617304"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932126"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Wskazówki dotyczące danych osobowych przechowywanych w Log Analytics i Application Insights
 
@@ -33,7 +27,7 @@ Log Analytics to magazyn danych, w którym można znaleźć dane osobowe. Applic
 
 Mimo że będzie to ty i Twoja firma ostatecznie określi strategię, w której będą obsługiwane dane prywatne (Jeśli w ogóle), poniżej przedstawiono kilka możliwych metod. Są one wymienione w kolejności preferencji z punktu widzenia technicznego od najbardziej do najmniej lepszych:
 
-* Jeśli to możliwe, Zatrzymaj zbieranie, zaciemniania, zachowywanie anonimowości lub w inny sposób Dostosuj zbierane dane, aby wykluczyć je z nich jako "prywatne". Jest to zdecydowanie preferowane podejście, co pozwala zaoszczędzić konieczność utworzenia bardzo kosztownej i wpływającej strategii obsługi danych.
+* Jeśli to możliwe, Zatrzymaj zbieranie, zaciemniania, zachowywanie anonimowości lub w inny sposób Dostosuj zbierane dane, aby wykluczyć je z nich jako "prywatne". _Jest to zdecydowanie_ preferowane podejście, co pozwala zaoszczędzić konieczność utworzenia bardzo kosztownej i wpływającej strategii obsługi danych.
 * Gdy nie jest to możliwe, spróbuj znormalizować dane, aby zmniejszyć wpływ na platformę danych i wydajność. Na przykład zamiast rejestrowania jawnego identyfikatora użytkownika, należy utworzyć dane wyszukiwania, które będą skorelować nazwę użytkownika i ich szczegóły do identyfikatora wewnętrznego, który można następnie zarejestrować w innym miejscu. W ten sposób, jeśli jeden z użytkowników poprosił Cię o usunięcie danych osobowych, istnieje możliwość, że tylko usunięcie wiersza z tabeli odnośników odpowiadającego użytkownikowi będzie wystarczające. 
 * Na koniec Jeśli dane prywatne muszą być zbierane, należy skompilować proces wokół ścieżki interfejsu API przeczyszczania i istniejącej ścieżki interfejsu API zapytania, aby spełnić wszelkie zobowiązania, które mogą wystąpić podczas eksportowania i usuwania wszelkich prywatnych danych skojarzonych z użytkownikiem. 
 
@@ -43,39 +37,39 @@ Log Analytics to elastyczny magazyn, który jednocześnie określa schemat dla d
 
 ### <a name="log-data"></a>Dane dziennika
 
-* *Adresy IP*: Log Analytics zbiera różne informacje o adresach IP w wielu różnych tabelach. Na przykład następujące zapytanie pokazuje wszystkie tabele, w których zostały zebrane adresy IPv4 w ciągu ostatnich 24 godzin:
+* *Adresy IP*: log Analytics zbiera różne informacje o adresie IP w wielu różnych tabelach. Na przykład następujące zapytanie pokazuje wszystkie tabele, w których zostały zebrane adresy IPv4 w ciągu ostatnich 24 godzin:
     ```
     search * 
     | where * matches regex @'\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b' //RegEx originally provided on https://stackoverflow.com/questions/5284147/validating-ipv4-addresses-with-regexp
     | summarize count() by $table
     ```
-* *Identyfikatory użytkowników*: Identyfikatory użytkowników są dostępne w wielu różnych rozwiązaniach i tabelach. Można wyszukać konkretną nazwę użytkownika w całym zestawie danych przy użyciu polecenia Search:
+* *Identyfikatory użytkowników*: identyfikatory użytkowników są dostępne w wielu różnych rozwiązaniach i tabelach. Można wyszukać konkretną nazwę użytkownika w całym zestawie danych przy użyciu polecenia Search:
     ```
     search "[username goes here]"
     ```
   Pamiętaj, aby wyszukać nie tylko dla użytkowników, których nazwy są czytelne, ale także identyfikatory GUID, które mogą być bezpośrednio wyśledzone przez określonego użytkownika.
-* *Identyfikatory urządzeń*: Podobnie jak identyfikatory użytkowników, identyfikatory urządzeń są czasami uznawane za prywatne. Użyj takiego samego podejścia jak wymienione powyżej dla identyfikatorów użytkowników, aby identyfikować tabele, w których może to być problem. 
-* *Dane niestandardowe*: Log Analytics umożliwia zbieranie danych w różnych metodach: dzienniki niestandardowe i pola niestandardowe, [interfejs API modułu zbierającego dane http](../../azure-monitor/platform/data-collector-api.md) oraz dane niestandardowe zbierane w ramach dzienników zdarzeń systemu. Wszystkie z nich są podatne na dane prywatne i powinny być zbadane w celu sprawdzenia, czy istnieją takie dane.
-* *Dane przechwycone przez rozwiązanie*: Ponieważ mechanizm rozwiązania jest otwartym zakończono, zalecamy przejrzenie wszystkich tabel generowanych przez rozwiązania w celu zapewnienia zgodności.
+* *Identyfikatory urządzeń*: takie jak identyfikatory użytkowników, identyfikatory urządzeń są czasami uznawane za prywatne. Użyj takiego samego podejścia jak wymienione powyżej dla identyfikatorów użytkowników, aby identyfikować tabele, w których może to być problem. 
+* *Dane niestandardowe*: log Analytics zezwala na zbieranie w różnych metodach: dzienniki niestandardowe i pola niestandardowe, [interfejs API modułu zbierającego dane http](../../azure-monitor/platform/data-collector-api.md) oraz dane niestandardowe zbierane w ramach dzienników zdarzeń systemu. Wszystkie z nich są podatne na dane prywatne i powinny być zbadane w celu sprawdzenia, czy istnieją takie dane.
+* *Dane przechwycone przez rozwiązanie*: ponieważ mechanizm rozwiązania jest otwartym zakończono, zalecamy przejrzenie wszystkich tabel generowanych przez rozwiązania w celu zapewnienia zgodności.
 
 ### <a name="application-data"></a>Dane aplikacji
 
-* *Adresy IP*: Mimo że Application Insights będzie domyślnie zasłaniać wszystkie pola adresu IP do "0.0.0.0", jest to dość typowy wzorzec, aby zastąpić tę wartość rzeczywistym adresem IP użytkownika w celu przechowywania informacji o sesji. Poniższe zapytanie analityczne służy do znajdowania dowolnej tabeli zawierającej wartości w kolumnie adres IP inną niż "0.0.0.0" w ciągu ostatnich 24 godzin:
+* *Adresy IP*: podczas Application Insights domyślnie zasłania wszystkie pola adresu IP do "0.0.0.0", jest to dość typowy wzorzec, który zastępuje tę wartość za pomocą rzeczywistego adresu IP użytkownika w celu przechowywania informacji o sesji. Poniższe zapytanie analityczne służy do znajdowania dowolnej tabeli zawierającej wartości w kolumnie adres IP inną niż "0.0.0.0" w ciągu ostatnich 24 godzin:
     ```
     search client_IP != "0.0.0.0"
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *Identyfikatory użytkowników*: Domyślnie, Application Insights będą używać losowo generowanych identyfikatorów do śledzenia użytkowników i sesji. Jednak często są wyświetlane te pola, które zostały zastąpione, aby przechowywać identyfikator bardziej istotny dla aplikacji. Na przykład: usernames, identyfikatory GUID usługi AAD itd. Te identyfikatory często są uważane za jako dane osobowe, a w związku z tym powinny być odpowiednio obsługiwane. Nasze zalecenie zawsze próbuje zamieszanie lub zachowywanie anonimowości tych identyfikatorów. Pola, w których te wartości są często dostępne, obejmują session_Id, user_Id, user_AuthenticatedId, user_AccountId, a także customDimensions.
-* *Dane niestandardowe*: Application Insights umożliwia dołączenie zestawu niestandardowych wymiarów do dowolnego typu danych. Te wymiary mogą być dowolnymi danymi. Użyj następującego zapytania, aby zidentyfikować wszystkie niestandardowe wymiary zebrane w ciągu ostatnich 24 godzin:
+* *Identyfikatory użytkowników*: domyślnie Application Insights będą używać losowo generowanych identyfikatorów do śledzenia użytkowników i sesji. Jednak często są wyświetlane te pola, które zostały zastąpione, aby przechowywać identyfikator bardziej istotny dla aplikacji. Na przykład: usernames, identyfikatory GUID usługi AAD itd. Te identyfikatory często są uważane za jako dane osobowe, a w związku z tym powinny być odpowiednio obsługiwane. Nasze zalecenie zawsze próbuje zamieszanie lub zachowywanie anonimowości tych identyfikatorów. Pola, w których te wartości są często dostępne, obejmują session_Id, user_Id, user_AuthenticatedId, user_AccountId, a także customDimensions.
+* *Dane niestandardowe*: Application Insights umożliwia dołączanie zestawu niestandardowych wymiarów do dowolnego typu danych. Te wymiary mogą być *dowolnymi* danymi. Użyj następującego zapytania, aby zidentyfikować wszystkie niestandardowe wymiary zebrane w ciągu ostatnich 24 godzin:
     ```
     search * 
     | where isnotempty(customDimensions)
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *Dane znajdujące się w pamięci i w tranzycie*: Application Insights będzie śledzić wyjątki, żądania, wywołania zależności i ślady. Dane prywatne mogą być często zbierane na poziomie kodu i wywołania HTTP. Przejrzyj tabele wyjątki, żądania, zależności i ślady, aby zidentyfikować takie dane. Użyj [inicjatorów](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) telemetrii, gdy jest to możliwe, aby zasłaniać te dane.
-* *Snapshot Debugger przechwytywania*: Funkcja [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) w programie Application Insights umożliwia zbieranie migawek debugowania za każdym razem, gdy wyjątek jest przechwytywany w wystąpieniu produkcyjnym aplikacji. Migawki będą uwidaczniać pełny ślad stosu prowadzący do wyjątków oraz wartości zmiennych lokalnych w każdym kroku stosu. Niestety, ta funkcja nie zezwala na selektywne usuwanie punktów przystawek ani dostęp programistyczny do danych w ramach migawki. W związku z tym, jeśli domyślna częstotliwość przechowywania migawek nie spełnia wymagań dotyczących zgodności, zaleca się wyłączenie tej funkcji.
+* *Dane znajdujące się w pamięci i w tranzycie*: Application Insights będą śledzić wyjątki, żądania, wywołania zależności i ślady. Dane prywatne mogą być często zbierane na poziomie kodu i wywołania HTTP. Przejrzyj tabele wyjątki, żądania, zależności i ślady, aby zidentyfikować takie dane. Użyj [inicjatorów telemetrii](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) , gdy jest to możliwe, aby zasłaniać te dane.
+* *Przechwytywanie Snapshot Debugger*: funkcja [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) w Application Insights umożliwia zbieranie migawek debugowania za każdym razem, gdy wyjątek jest przechwytywany w wystąpieniu produkcyjnym aplikacji. Migawki będą uwidaczniać pełny ślad stosu prowadzący do wyjątków oraz wartości zmiennych lokalnych w każdym kroku stosu. Niestety, ta funkcja nie zezwala na selektywne usuwanie punktów przystawek ani dostęp programistyczny do danych w ramach migawki. W związku z tym, jeśli domyślna częstotliwość przechowywania migawek nie spełnia wymagań dotyczących zgodności, zaleca się wyłączenie tej funkcji.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Jak eksportować i usuwać dane prywatne
 
@@ -88,14 +82,14 @@ Jak wspomniano wcześniej w [strategii dotyczącej obsługi danych osobowych](#s
 W przypadku żądań danych widoku i eksportu należy użyć [interfejsu API zapytania log Analytics](https://dev.loganalytics.io/) lub [interfejsu API zapytania Application Insights](https://dev.applicationinsights.io/quickstart) . Logika umożliwiająca przekonwertowanie kształtu danych na odpowiedni, który zostanie zaimplementowana dla użytkowników. [Azure Functions](https://azure.microsoft.com/services/functions/) jest doskonałym miejscem do hostowania takich logiki.
 
 > [!IMPORTANT]
->  Chociaż większość operacji przeczyszczania może zakończyć się znacznie szybciej niż umowa SLA, formalna **Umowa SLA na zakończenie operacji przeczyszczania jest ustawiana na 30 dni** z powodu dużego wpływu na używanej platformy danych. Jest to proces zautomatyzowany; nie ma sposobu na zażądanie, aby operacja była szybsza.
+>  Chociaż większość operacji przeczyszczania może zakończyć się znacznie szybciej niż umowa SLA, **formalna umowa SLA na zakończenie operacji przeczyszczania jest ustawiana na 30 dni** z powodu dużego wpływu na używanej platformy danych. Jest to proces zautomatyzowany; nie ma sposobu na zażądanie, aby operacja była szybsza.
 
-### <a name="delete"></a>Usuwanie
+### <a name="delete"></a>Usuń
 
 > [!WARNING]
 > Usuwanie w Log Analytics są destrukcyjne i nieodwracalne! W ich wykonaniu należy zachować szczególną ostrożność.
 
-Udostępniono jako część obsługi prywatności ścieżkę interfejsu API przeczyszczania. Ta ścieżka powinna być stosowana oszczędnie ze względu na ryzyko związane z tym, potencjalny wpływ na wydajność oraz możliwość pochylania wszystkich agregacji, pomiarów i innych aspektów danych Log Analytics. Zapoznaj się z sekcją [strategia obsługi danych osobowych](#strategy-for-personal-data-handling) , aby poznać alternatywne podejścia do obsługi prywatnych danych.
+Udostępniono jako część obsługi prywatności ścieżkę interfejsu API *przeczyszczania* . Ta ścieżka powinna być stosowana oszczędnie ze względu na ryzyko związane z tym, potencjalny wpływ na wydajność oraz możliwość pochylania wszystkich agregacji, pomiarów i innych aspektów danych Log Analytics. Zapoznaj się z sekcją [strategia obsługi danych osobowych](#strategy-for-personal-data-handling) , aby poznać alternatywne podejścia do obsługi prywatnych danych.
 
 Przeczyszczanie jest operacją o wysokim poziomie uprawnień, która nie ma uprawnień do Azure Resource Manager wykonania aplikacji ani użytkownika na platformie Azure (w tym nawet Właściciel zasobu). Ta rola jest w trakcie _przeczyszczania danych_ i powinna być ostrożnie delegowana ze względu na potencjalną utratę danych. 
 

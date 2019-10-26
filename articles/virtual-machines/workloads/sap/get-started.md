@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/21/2019
+ms.date: 10/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b857ea5380fb13f8c8b1ff30b9dd9d8b6c723c2
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 639b73c95d5a2cceef24044a5247a401f50da860
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809682"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934933"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariuszy obciążeń SAP
 
@@ -120,6 +120,7 @@ Aby uzyskać informacje na temat integracji usług platformy Azure z składnikam
 
 
 ## <a name="change-log"></a>Dziennik zmian
+- 10/25/2019: zmiany [konfiguracji magazynu maszyn wirtualnych SAP HANA platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) i [SAP HANA skalowanie w poziomie za pomocą węzła wstrzymywania na maszynach wirtualnych platformy Azure z Azure NetApp Files na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) do wyjaśnienia protokołu NFS dla woluminu/Hana/Shared
 - 10/22/2019: zmiana [wysokiej dostępności dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy azure na platformie SUSE Linux Enterprise Server z Azure NETAPP Files dla aplikacji SAP ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) [Wysoka dostępność systemu plików NFS na maszynach wirtualnych platformy azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs), [Konfigurowanie Pacemaker na SUSE Linux Enterprise Server na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker), [wysokiej dostępności programu IBM DB2 LUW na maszynach wirtualnych platformy Azure na platformie SUSE Linux Enterprise Server z usługą Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm), i [wysoka dostępność SAP HANA na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) na potrzeby ochrony przed wykrywaniem modułu równoważenia obciążenia platformy Azure
 - Zmiany sekcji ANF sekcja i nagłówek w [SAP HANA konfiguracjach magazynu maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 - 10/21/2019: wydawanie [SAP HANA skalowanie w poziomie z węzłem gotowości na maszynach wirtualnych platformy Azure z Azure NetApp Files na SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)

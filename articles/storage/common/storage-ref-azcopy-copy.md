@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7f08c175972826a8b226d7e80f563ac71ba23db
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 78482b5d7013ffa3bbb0a34dd04c8c48626dc77a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514759"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926665"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -146,11 +146,11 @@ Skopiuj cały katalog do Blob Storage z AWS S3 przy użyciu klucza dostępu i to
 
 - AzCopy CP "https://s3.amazonaws.com/ [zasobnik]/[folder]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[path/to/Directory]? [SAS] "--rekursywnie = true
 
-Zapoznaj się z https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html, aby lepiej zrozumieć symbol zastępczy [folder].
+Zapoznaj się z https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html , aby lepiej zrozumieć symbol zastępczy [folder].
 
 Skopiuj wszystkie zasobniki do Blob Storage z Amazon Web Services (AWS) przy użyciu klucza dostępu i tokenu SAS. Najpierw Ustaw zmienną środowiskową AWS_ACCESS_KEY_ID i AWS_SECRET_ACCESS_KEY dla źródła AWS S3.
 
-- AzCopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekursywnie = true
+- AzCopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekursywnie = true
 
 Skopiuj wszystkie zasobniki do Blob Storage z regionu Amazon Web Services (AWS) przy użyciu klucza dostępu i tokenu SAS. Najpierw Ustaw zmienną środowiskową AWS_ACCESS_KEY_ID i AWS_SECRET_ACCESS_KEY dla źródła AWS S3.
 
@@ -172,7 +172,7 @@ Skopiuj podzestaw zasobników przy użyciu symbolu wieloznacznego (*) w nazwie z
 
 **--check-Length**                         Sprawdź długość pliku w miejscu docelowym po przeniesieniu. Jeśli występuje niezgodność między źródłem i miejscem docelowym, transfer zostanie oznaczony jako niepowodzenie. (wartość domyślna to true)
 
-**--check-MD5** ciąg Określa, jak ściśle skróty MD5 powinny być sprawdzane podczas pobierania. Dostępne tylko podczas pobierania. Dostępne opcje: NOCHECK, LogOnd, FailIfDifferent, FailIfDifferentOrMissing. (wartość domyślna to "FailIfDifferent") (domyślnie "FailIfDifferent")
+**--check-MD5** ciąg Określa, jak ściśle skróty MD5 powinny być sprawdzane podczas pobierania. Dostępne tylko podczas pobierania. Dostępne opcje: NOCHECK, LogOnd, FailIfDifferent, FailIfDifferentOrMissing. (domyślnie "FailIfDifferent")
 
 **--ciąg dyspozycji** do usuwania zawartości — nagłówek dyspozycji. Zwrócony przy pobieraniu.
 
@@ -204,15 +204,15 @@ Skopiuj podzestaw zasobników przy użyciu symbolu wieloznacznego (*) w nazwie z
 
 **--ciąg include-Pattern** zawiera tylko te pliki podczas kopiowania. Ta opcja obsługuje symbole wieloznaczne (*). Oddziel pliki przy użyciu ";".
 
-**--ciąg na poziomie dziennika** definiuje szczegółowość dziennika dla pliku dziennika, dostępne poziomy: info (wszystkie żądania/odpowiedzi), ostrzeżenie (wolne odpowiedzi), błąd (tylko Nieudane żądania) i brak (bez dzienników wyjściowych). (wartość domyślna to "INFO"). (wartość domyślna: "INFO")
+**--ciąg na poziomie dziennika** definiuje szczegółowość dziennika dla pliku dziennika, dostępne poziomy: info (wszystkie żądania/odpowiedzi), ostrzeżenie (wolne odpowiedzi), błąd (tylko Nieudane żądania) i brak (bez dzienników wyjściowych). (wartość domyślna: "INFO")
 
 **—** przesyłanie ciągu metadanych do usługi Azure Storage przy użyciu tych par klucz-wartość jako metadanych.
 
 **--no-zgadywanie-MIME-Type**                   Uniemożliwia programowi AzCopy wykrywanie typu zawartości na podstawie rozszerzenia lub zawartości pliku.
 
-**--Zastąp** ciąg nadpisać pliki powodujące konflikt i obiekty blob w miejscu docelowym, jeśli ta flaga jest ustawiona na wartość true. (wartość domyślna to "true") Możliwe wartości to "true", "false" i "Prompt". (wartość domyślna to "true")
+**--Zastąp** ciąg nadpisać pliki powodujące konflikt i obiekty blob w miejscu docelowym, jeśli ta flaga jest ustawiona na wartość true. Możliwe wartości to "true", "false" i "Prompt". (wartość domyślna to "true")
 
-**--Strona-ciąg warstwy obiektu** BLOB przekazywanie stronicowego obiektu BLOB do usługi Azure Storage przy użyciu tej warstwy obiektów BLOB. (domyślnie "none"). (domyślnie "none")
+**--Strona-ciąg warstwy obiektu** BLOB przekazywanie stronicowego obiektu BLOB do usługi Azure Storage przy użyciu tej warstwy obiektów BLOB. (domyślnie "none")
 
 **--Preserve-Last-Modified-Time**          Dostępne tylko wtedy, gdy miejscem docelowym jest system plików.
 
@@ -222,9 +222,9 @@ Skopiuj podzestaw zasobników przy użyciu symbolu wieloznacznego (*) w nazwie z
 
 **--S2S-Detect-Source-zmiana**           Sprawdź, czy po wyliczyć źródła uległo zmianie.
 
-**--S2S-Handle-nieprawidłowy** ciąg Określa sposób obsługi nieprawidłowych kluczy metadanych. Dostępne opcje: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (wartość domyślna to "ExcludeIfInvalid"). (domyślnie "ExcludeIfInvalid")
+**--S2S-Handle-nieprawidłowy** ciąg Określa sposób obsługi nieprawidłowych kluczy metadanych. Dostępne opcje: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (domyślnie "ExcludeIfInvalid")
 
-**--S2S-Preserve-dostęp-warstwa**             Zachowaj warstwę dostępu podczas kopiowania usługi do usługi. Zapoznaj się z [usługą Azure Blob Storage: warstwami dostępu gorąca, chłodna i archiwalna](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) , aby upewnić się, że docelowe konto magazynu obsługuje ustawienie Warstwa dostępu. W przypadkach, gdy ustawienie warstwy dostępu nie jest obsługiwane, użyj s2sPreserveAccessTier = false, aby obejść kopiowanie warstwy dostępu. (wartość domyślna to true).  (wartość domyślna to true)
+**--S2S-Preserve-dostęp-warstwa**             Zachowaj warstwę dostępu podczas kopiowania usługi do usługi. Zapoznaj się z [usługą Azure Blob Storage: warstwami dostępu gorąca, chłodna i archiwalna](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) , aby upewnić się, że docelowe konto magazynu obsługuje ustawienie Warstwa dostępu. W przypadkach, gdy ustawienie warstwy dostępu nie jest obsługiwane, użyj s2sPreserveAccessTier = false, aby obejść kopiowanie warstwy dostępu. (wartość domyślna to true)
 
 **--S2S-Preserve-Properties**              Zachowaj pełne właściwości podczas kopiowania usługi do usługi. W przypadku AWS S3 i plików platformy Azure, które nie są pojedynczym źródłem plików, operacja listy nie zwraca pełnych właściwości obiektów i plików. Aby zachować pełne właściwości, AzCopy musi wysłać jedno dodatkowe żądanie dla każdego obiektu lub pliku. (wartość domyślna to true)
 

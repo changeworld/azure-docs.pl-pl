@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: ba03d643c8d3770da60d4225d6c2b84d2a07766f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8860a297332a3572890ceb4c843040f530b8a897
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325534"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935529"
 ---
 # <a name="expressroute-virtual-network-gateway-and-fastpath"></a>Brama sieci wirtualnej usługi ExpressRoute i rozwiązanie FastPath
 Aby połączyć sieć wirtualną platformy Azure i sieć lokalną za pośrednictwem usługi ExpressRoute, najpierw należy utworzyć bramę sieci wirtualnej. Brama sieci wirtualnej służy do dwóch celów: trasy IP programu Exchange między sieciami i kierowanie ruchu sieciowego. W tym artykule opisano typy bram, jednostki SKU bramy i szacowaną wydajność według jednostki SKU. W tym artykule opisano również ExpressRoute [FastPath](#fastpath), funkcję, która umożliwia ruch sieciowy z sieci lokalnej w celu obejścia bramy sieci wirtualnej w celu zwiększenia wydajności.
@@ -42,6 +42,26 @@ W poniższej tabeli przedstawiono typy bram i szacowane wydajności. Ta tabela m
 > Wydajność aplikacji zależy od wielu czynników, takich jak opóźnienie end-to-end i liczba przepływów ruchu, które są otwierane przez aplikację. Liczby w tabeli przedstawiają górny limit, który aplikacja może teoretycznie osiągnąć w idealnym środowisku.
 >
 >
+
+## <a name="gwsub"></a>Podsieć bramy
+
+Przed utworzeniem bramy ExpressRoute należy utworzyć podsieć bramy. Podsieć bramy zawiera adresy IP używane przez maszyny wirtualne i usługi bramy sieci wirtualnej. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane w podsieci bramy i konfigurowane przy użyciu wymaganych ustawień bramy ExpressRoute. Nigdy nie należy wdrażać żadnych innych (na przykład dodatkowych maszyn wirtualnych) do podsieci bramy. Podsieć bramy musi mieć nazwę "GatewaySubnet", aby działała prawidłowo. Nazwa podsieci bramy "GatewaySubnet" pozwala platformie Azure wiedzieć, że jest to podsieć służąca do wdrażania maszyn wirtualnych i usług bramy sieci wirtualnej.
+
+>[!NOTE]
+>[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
+>
+
+Podczas tworzenia podsieci bramy należy określić liczbę zawartych w niej adresów IP. Adresy IP w podsieci bramy są przydzieleni do maszyn wirtualnych bramy i usług bramy. Niektóre konfiguracje wymagają większej liczby adresów IP niż inne. 
+
+Podczas planowania rozmiaru podsieci bramy zapoznaj się z dokumentacją dotyczącą konfiguracji, która ma zostać utworzona. Na przykład Konfiguracja współdzielenia ExpressRoute/VPN Gateway wymaga większej podsieci bramy niż większość innych konfiguracji. Ponadto warto upewnić się, że podsieć bramy zawiera wystarczającą liczbę adresów IP, aby uwzględnić możliwe przyszłe konfiguracje dodatkowe. Chociaż można utworzyć małą podsieć bramy (/29), zalecamy utworzenie podsieci bramy/27 lub większej (/27,/26 itp.), jeśli masz dostępną przestrzeń adresową. Obejmuje to większość konfiguracji.
+
+Poniższy przykład Menedżer zasobów PowerShell przedstawia podsieć bramy o nazwie GatewaySubnet. W notacji CIDR można zobaczyć wartość/27, która pozwala na wystarczającą liczbę adresów IP dla większości konfiguracji, które obecnie istnieją.
+
+```azurepowershell-interactive
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
+```
+
+[!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ### <a name="zrgw"></a>Strefa — nadmiarowe jednostki SKU bramy
 

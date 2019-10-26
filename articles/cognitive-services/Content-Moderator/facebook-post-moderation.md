@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Średnia zawartość w serwisie Facebook — Content Moderator'
+title: 'Samouczek: umiarkowana zawartość w serwisie Facebook — Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku dowiesz się, jak użyć usługi Content Moderator opartej na uczeniu maszynowym do ułatwienia moderowania wpisów i komentarzy w serwisie Facebook.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bd2ed09294ad122b7e8af045f01d3c6f63fcc510
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564947"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936004"
 ---
-# <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Samouczek: Umiarkowane wpisy i polecenia w usłudze Facebook za pomocą usługi Azure Content Moderator
+# <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Samouczek: umiarkowane wpisy i polecenia w usłudze Facebook przy użyciu usługi Azure Content Moderator
 
 W ramach tego samouczka nauczysz się, jak używać usługi Azure Content Moderator, aby ułatwić umiarkowane wpisy i komentarze na stronie w serwisie Facebook. Usługa Facebook wyśle zawartość opublikowaną przez odwiedzających do usługi Content Moderator. Następnie przepływy pracy Content Moderator będą publikować zawartość lub tworzyć przeglądy w ramach narzędzia do przeglądu, w zależności od wyników i progów zawartości. Zobacz [film wideo z pokazem 2017](https://channel9.msdn.com/Events/Build/2017/T6033) , aby zapoznać się z przykładowym scenariuszem.
 
@@ -68,11 +68,11 @@ Zaloguj się do [Azure Portal](https://portal.azure.com/) i wykonaj następując
 1. Przejdź do nowo utworzonego aplikacja funkcji.
 1. W aplikacji przejdź do karty **funkcje platformy** i wybierz pozycję **Konfiguracja**. W sekcji **Ustawienia aplikacji** na następnej stronie wybierz pozycję **nowe ustawienie aplikacji** , aby dodać następujące pary klucz/wartość:
     
-    | Nazwa ustawienia aplikacji | value   | 
+    | Nazwa ustawienia aplikacji | wartość   | 
     | -------------------- |-------------|
     | cm:TeamId   | Identyfikator zespołu usługi Content Moderator  | 
     | cm:SubscriptionKey | Klucz subskrypcji usługi Content Moderator — zobacz [Poświadczenia](review-tool-user-guide/credentials.md) |
-    | cm:region | Nazwa regionu usługi Content Moderator, bez spacji. |
+    | cm:region | Nazwa regionu usługi Content Moderator, bez spacji. Można to znaleźć w polu **Lokalizacja** na karcie **Przegląd** zasobu platformy Azure.|
     | cm:ImageWorkflow | Nazwa przepływu pracy do uruchomienia na obrazach |
     | cm:TextWorkflow | Nazwa przepływu pracy do uruchomienia na tekście |
     | cm:CallbackEndpoint | Adres URL CMListener aplikacja funkcji, który zostanie utworzony w dalszej części tego przewodnika |
@@ -81,7 +81,7 @@ Zaloguj się do [Azure Portal](https://portal.azure.com/) i wykonaj następując
 
     Kliknij przycisk **Zapisz** znajdujący się u góry strony.
 
-1. Wróć do karty **funkcje platformy** . Użyj przycisku w okienku po lewej stronie, aby wyświetlić **nowe okienko funkcji.** **+** Funkcja, którą zamierzasz utworzyć, będzie odbierać zdarzenia z serwisu Facebook.
+1. Wróć do karty **funkcje platformy** . użyj przycisku **+** w okienku po lewej stronie, aby wyświetlić **nowe okienko funkcji** . Funkcja, którą zamierzasz utworzyć, będzie odbierać zdarzenia z serwisu Facebook.
 
     ![Azure Functions okienku z wyróżnionym przyciskiem Dodaj funkcję.](images/new-function.png)
 

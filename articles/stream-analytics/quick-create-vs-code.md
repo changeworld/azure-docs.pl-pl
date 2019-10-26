@@ -1,5 +1,5 @@
 ---
-title: Tworzenie Azure Stream Analytics zadania w chmurze w Visual Studio Code (wersja zapoznawcza)
+title: Tworzenie Azure Stream Analytics zadania w chmurze w Visual Studio Code
 description: W tym przewodniku szybki start pokazano, jak rozpocząć pracę przez utworzenie zadania Stream Analytics, skonfigurowanie danych wejściowych, wyjściowych i Definiowanie zapytania przy użyciu Visual Studio Code.
 ms.service: stream-analytics
 author: mamccrea
@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 3301be3a067982cb90e663fe3782319eb0b90ba0
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 35e2711bbb3cd6dc0662146a566014dd65d879bc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673130"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935089"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Szybki start: Tworzenie Azure Stream Analytics zadania w chmurze w Visual Studio Code (wersja zapoznawcza)
+# <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Szybki Start: Tworzenie Azure Stream Analytics zadania w chmurze w Visual Studio Code (wersja zapoznawcza)
 
 W tym przewodniku szybki start pokazano, jak utworzyć i uruchomić zadanie Stream Analytics przy użyciu rozszerzenia Azure Stream Analytics dla Visual Studio Code. Przykładowe zadanie odczytuje dane przesyłane strumieniowo z urządzenia usługi IoT Hub. Zdefiniujesz zadanie obliczające średnią temperaturę, gdy wynosi ona ponad 27°, i zapisujące wynikowe zdarzenia wyjściowe w magazynie obiektów blob.
 
@@ -22,7 +22,7 @@ W tym przewodniku szybki start pokazano, jak utworzyć i uruchomić zadanie Stre
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-* Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+* Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 * Zainstaluj narzędzie [Visual Studio Code](https://code.visualstudio.com/).
 
@@ -52,7 +52,7 @@ W tym przewodniku szybki start pokazano, jak utworzyć i uruchomić zadanie Stre
 
 Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które następnie zostaną skonfigurowane jako dane wejściowe zadania. Aby przygotować dane wejściowe wymagane przez zadanie, wykonaj następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 2. Wybierz pozycję **Utwórz zasób** > **Internet rzeczy** > **IoT Hub**.
 
@@ -60,14 +60,14 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
    
    |**Ustawienie**  |**Sugerowana wartość**  |**Opis**  |
    |---------|---------|---------|
-   |Subscription  | \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, której chcesz użyć. |
-   |Resource group   |   asaquickstart-resourcegroup  |   Wybierz pozycję **Utwórz nową** i wprowadź nazwę nowej grupy zasobów dla swojego konta. |
+   |Subskrypcja  | \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, której chcesz użyć. |
+   |Grupa zasobów   |   asaquickstart-resourcegroup  |   Wybierz pozycję **Utwórz nową** i wprowadź nazwę nowej grupy zasobów dla swojego konta. |
    |Region  |  \<Wybierz region, który jest najbliżej Twoich użytkowników\> | Wybierz lokalizację geograficzną, w której możesz hostować swoje centrum IoT Hub. Użyj lokalizacji znajdującej się najbliżej użytkowników. |
    |Nazwa centrum IoT Hub  | MyASAIoTHub  |   Wybierz nazwę swojego centrum IoT Hub.   |
 
    ![Tworzenie centrum IoT Hub](./media/quick-create-vs-code/create-iot-hub.png)
 
-4. Wybierz opcję **Dalej: Ustaw rozmiar i skalę**.
+4. Wybierz pozycję **Dalej: Ustaw rozmiar i skalę**.
 
 5. Wybierz wartość pozycji **Warstwa cenowa i warstwa skali**. Na potrzeby tego przewodnika Szybki start wybierz warstwę **F1 — Bezpłatna**, jeśli jest ona nadal dostępna w ramach subskrypcji. Jeśli warstwa bezpłatna jest niedostępna, użyj najniższej dostępnej warstwy. Aby uzyskać więcej informacji, zobacz [cennik usługi IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -97,13 +97,13 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
 
 4. Na stronie **Blob Service** wybierz pozycję **Kontener** i podaj nazwę swojego kontenera, na przykład *container1*. W polu **Poziom dostępu publicznego** pozostaw wartość **Prywatny (bez dostępu anonimowego)** i wybierz przycisk **OK**.
 
-   ![Utwórz kontener obiektu blob](./media/quick-create-vs-code/create-blob-container.png)
+   ![Tworzenie kontenera obiektów blob](./media/quick-create-vs-code/create-blob-container.png)
 
 ## <a name="create-a-stream-analytics-project"></a>Tworzenie projektu usługi Stream Analytics
 
-1. W Visual Studio Code naciśnij **kombinację klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń. Następnie wpisz **ASA** i wybierz **ASA: Utwórz nowy projekt @ no__t-0.
+1. W Visual Studio Code naciśnij **kombinację klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń. Następnie wpisz **ASA** i wybierz **ASA: Utwórz nowy projekt**.
 
-   ![Utwórz nowy projekt](./media/quick-create-vs-code/create-new-project.png)
+   ![Tworzenie nowego projektu](./media/quick-create-vs-code/create-new-project.png)
 
 2. Wprowadź nazwę projektu, na przykład **myASAproj** , i wybierz folder dla projektu.
 
@@ -132,16 +132,16 @@ Przed zdefiniowaniem zadania usługi Stream Analytics przygotuj dane, które nas
    FROM Input
    HAVING Temperature > 27
    ```
-## <a name="test-with-sample-data"></a>Testuj z użyciem danych przykładowych
+## <a name="test-with-sample-data"></a>Testowanie przy użyciu przykładowych danych
 Przed uruchomieniem zapytania w chmurze można przetestować zapytanie z lokalnymi danymi przykładowymi, aby zweryfikować logikę zapytania.
 
 Postępuj zgodnie z instrukcjami w temacie [test z przykładowymi danymi](vscode-local-run.md) , aby uzyskać więcej szczegółów. 
 
  ![Testowanie przy użyciu przykładowych danych w VS Code](./media/quick-create-vs-code/vscode-localrun.gif)
 
-## <a name="define-an-input"></a>Zdefiniuj wejściowe
+## <a name="define-an-input"></a>Zdefiniuj dane wejściowe
 
-1. Wybierz **kombinację klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń i wprowadź **ASA: Dodaj parametr Input @ no__t-0.
+1. Wybierz **kombinację klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń i wprowadź **ASA: Dodaj dane wejściowe**.
 
    ![Dodawanie Stream Analytics danych wejściowych w VS Code](./media/quick-create-vs-code/add-input.png)
 
@@ -159,17 +159,17 @@ Postępuj zgodnie z instrukcjami w temacie [test z przykładowymi danymi](vscode
 
    |Ustawienie|Sugerowana wartość|Opis|
    |-------|---------------|-----------|
-   |Name|Dane wejściowe|Wprowadź nazwę identyfikującą dane wejściowe zadania.|
+   |Nazwa|Dane wejściowe|Wprowadź nazwę identyfikującą dane wejściowe zadania.|
    |IotHubNamespace|MyASAIoTHub|Wybierz lub wprowadź nazwę centrum IoT Hub. Nazwy centrów IoT Hub są wykrywane automatycznie, jeśli są one tworzone w tej samej subskrypcji.|
-   |SharedAccessPolicyName|iothubowner| |
+   |sharedAccessPolicyName|iothubowner| |
 
    ![Konfigurowanie danych wejściowych w Visual Studio Code](./media/quick-create-vs-code/configure-input.png)
 
 
 
-## <a name="define-an-output"></a>Zdefiniuj dane wyjściowe
+## <a name="define-an-output"></a>Definiowanie danych wyjściowych
 
-1. Wybierz **kombinację klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń. Następnie wprowadź **ASA: Dodaj dane wyjściowe @ no__t-0.
+1. Wybierz **kombinację klawiszy Ctrl + Shift + P** , aby otworzyć paletę poleceń. Następnie wprowadź **ASA: Dodawanie danych wyjściowych**.
 
    ![Dodaj dane wyjściowe Stream Analytics w VS Code](./media/quick-create-vs-code/add-output.png)
 
@@ -183,10 +183,10 @@ Postępuj zgodnie z instrukcjami w temacie [test z przykładowymi danymi](vscode
 
    |Ustawienie|Sugerowana wartość|Opis|
    |-------|---------------|-----------|
-   |Name|Output| Wprowadź nazwę identyfikującą dane wyjściowe zadania.|
+   |Nazwa|Dane wyjściowe| Wprowadź nazwę identyfikującą dane wyjściowe zadania.|
    |Konto magazynu|asaquickstartstorage|Wybierz lub wprowadź nazwę konta magazynu. Nazwy kont magazynu są wykrywane automatycznie, jeśli są one tworzone w tej samej subskrypcji.|
    |Kontener|container1|Wybierz istniejący kontener utworzony na koncie magazynu.|
-   |Wzorzec ścieżki|wyjście|Wprowadź nazwę ścieżki pliku, który ma zostać utworzony w kontenerze.|
+   |Wzorzec ścieżki|output|Wprowadź nazwę ścieżki pliku, który ma zostać utworzony w kontenerze.|
 
  ![Konfigurowanie danych wyjściowych w Visual Studio Code](./media/quick-create-vs-code/configure-output.png)
 

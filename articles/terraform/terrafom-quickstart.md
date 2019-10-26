@@ -7,12 +7,12 @@ ms.service: azure
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: nepeters
-ms.openlocfilehash: c53f3a31b46f00d3207cd8f47dcfbfa131c03666
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6f9b6a73e279ca5923e32c7c524f9a55e260526d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173523"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924816"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Tworzenie konfiguracji programu Terraform na platformie Azure
 
@@ -47,8 +47,8 @@ resource "random_integer" "ri" {
 
 resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
   name                = "tfex-cosmos-db-${random_integer.ri.result}"
-  location            = "${azurerm_resource_group.vote-resource-group.location}"
-  resource_group_name = "${azurerm_resource_group.vote-resource-group.name}"
+  location            = azurerm_resource_group.vote-resource-group.location
+  resource_group_name = azurerm_resource_group.vote-resource-group.name
   offer_type          = "Standard"
   kind                = "GlobalDocumentDB"
 
@@ -101,8 +101,8 @@ Konfiguracja obejmuje również blok danych wyjściowych, który zwraca w pełni
 ```hcl
 resource "azurerm_container_group" "vote-aci" {
   name                = "vote-aci"
-  location            = "${azurerm_resource_group.vote-resource-group.location}"
-  resource_group_name = "${azurerm_resource_group.vote-resource-group.name}"
+  location            = azurerm_resource_group.vote-resource-group.location
+  resource_group_name = azurerm_resource_group.vote-resource-group.name
   ip_address_type     = "public"
   dns_name_label      = "vote-aci"
   os_type             = "linux"
@@ -118,8 +118,8 @@ resource "azurerm_container_group" "vote-aci" {
     }
 
     secure_environment_variables = {
-      "COSMOS_DB_ENDPOINT"  = "${azurerm_cosmosdb_account.vote-cosmos-db.endpoint}"
-      "COSMOS_DB_MASTERKEY" = "${azurerm_cosmosdb_account.vote-cosmos-db.primary_master_key}"
+      "COSMOS_DB_ENDPOINT"  = azurerm_cosmosdb_account.vote-cosmos-db.endpoint
+      "COSMOS_DB_MASTERKEY" = azurerm_cosmosdb_account.vote-cosmos-db.primary_master_key
       "TITLE"               = "Azure Voting App"
       "VOTE1VALUE"          = "Cats"
       "VOTE2VALUE"          = "Dogs"
@@ -128,7 +128,7 @@ resource "azurerm_container_group" "vote-aci" {
 }
 
 output "dns" {
-  value = "${azurerm_container_group.vote-aci.fqdn}"
+  value = azurerm_container_group.vote-aci.fqdn
 }
 ```
 

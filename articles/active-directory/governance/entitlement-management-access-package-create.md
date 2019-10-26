@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 70273a45bb60fca57292275ea0bb564e17a6f4e9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389515"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934563"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Tworzenie nowego pakietu dostępu w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
 
@@ -68,9 +68,9 @@ Poniżej przedstawiono procedurę wysokiego poziomu służącą do tworzenia now
 
 1. W menu po lewej stronie kliknij pozycję **pakiety dostępu**.
 
-    ![Zarządzanie prawami w Azure Portal](./media/entitlement-management-shared/elm-access-packages.png)
-
 1. Kliknij pozycję **nowy pakiet dostępu**.
+
+    ![Zarządzanie prawami w Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
 ## <a name="basics"></a>Podstawy
 
@@ -104,7 +104,7 @@ Na karcie **role zasobów** Wybierz zasoby do uwzględnienia w pakiecie dostępu
 
     Jeśli tworzysz pakiet dostępu w istniejącym wykazie, możesz wybrać dowolny zasób, który znajduje się już w katalogu bez jego właściciela.
 
-    Jeśli jesteś administratorem globalnym, administratorem lub właścicielem katalogu, masz dodatkową możliwość wyboru zasobów, których jesteś właścicielem, które nie znajdują się jeszcze w wykazie. W przypadku wybrania zasobów, które nie są obecnie w wybranym wykazie, te zasoby zostaną również dodane do wykazu dla innych administratorów wykazu do tworzenia pakietów dostępu za pomocą programu. Jeśli chcesz tylko wybrać zasoby, które znajdują się obecnie w wybranym wykazie, zaznacz pole wyboru **Zobacz tylko** w górnej części strony wybieranie.
+    Jeśli jesteś administratorem globalnym, administratorem użytkowników lub właścicielem katalogu, masz dodatkową możliwość wyboru zasobów, których jesteś właścicielem, które nie znajdują się jeszcze w wykazie. W przypadku wybrania zasobów, które nie są obecnie w wybranym wykazie, te zasoby zostaną również dodane do wykazu dla innych administratorów wykazu do tworzenia pakietów dostępu za pomocą programu. Jeśli chcesz tylko wybrać zasoby, które znajdują się obecnie w wybranym wykazie, zaznacz pole wyboru **Zobacz tylko** w górnej części okienka wybieranie.
 
 1. Po wybraniu zasobów na liście **rola** wybierz rolę, do której użytkownicy mają być przypisani.
 
@@ -118,7 +118,7 @@ Na karcie **żądania** Utwórz pierwsze zasady, aby określić, kto może zaż�
 
 ![Pakiet dostępu — karta żądania](./media/entitlement-management-access-package-create/requests.png)
 
-Wykonaj kroki opisane w jednej z następujących sekcji.
+W zależności od tego, kto ma być w stanie zażądać tego pakietu dostępu, wykonaj czynności opisane w jednej z następujących sekcji.
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 

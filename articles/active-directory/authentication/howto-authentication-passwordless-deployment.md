@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea4b8ea98365ec13f7f027215a75b9d79ea5c54e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453136"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933119"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Ukończ wdrażanie uwierzytelniania przy użyciu hasła
 
@@ -185,7 +185,7 @@ Poniżej przedstawiono przykładowe przypadki testowe dotyczące uwierzytelniani
 | Użytkownik może zalogować się przy użyciu urządzenia FIDO2 (1809) | Użytkownik może wybrać klucz zabezpieczeń z okna logowania i pomyślnie się zalogować. |
 | Użytkownik może zarejestrować urządzenie FIDO2 (1903) | Użytkownik może zarejestrować urządzenie FIDO2 w ustawieniach > kont > Opcje logowania > klucz zabezpieczeń |
 | Użytkownik może zresetować urządzenie FIDO2 (1903) | Użytkownik może zresetować urządzenie FIDO2 w ustawieniach > kont > Opcje logowania > klucz zabezpieczeń |
-| Użytkownik może zalogować się przy użyciu urządzenia FIDO2 (1809) | Użytkownik może wybrać klucz zabezpieczeń z okna logowania i pomyślnie się zalogować. |
+| Użytkownik może zalogować się przy użyciu urządzenia FIDO2 (1903) | Użytkownik może wybrać klucz zabezpieczeń z okna logowania i pomyślnie się zalogować. |
 
 **Logowanie w usłudze Azure AD Web Apps bezFIDOowego hasła**
 

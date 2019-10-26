@@ -19,12 +19,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 208c644c26006fb99139abe1b05c63f90eff448d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 514a74ed0ae52fb7f2a7b7d7f19c0b364dc2ba91
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803275"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934875"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrowanie aplikacji do MSAL dla systemów iOS i macOS
 
@@ -73,7 +73,7 @@ Istnieją dwa sposoby udostępniania zakresów w MSAL:
 
 * Podaj listę wszystkich uprawnień wymaganych przez aplikacje. Na przykład: 
 
-    `@[@"https://graph.microsot.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
+    `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
     W takim przypadku aplikacja żąda uprawnień `directory.read` i `directory.write`. Użytkownik zostanie poproszony o zgodę na te uprawnienia, jeśli nie wyraził zgodę na ich wcześniejszą aplikację. Aplikacja może również otrzymywać dodatkowe uprawnienia, które użytkownik już wyraził zgodę na aplikację. Użytkownik zostanie poproszony o zgodę na nowe uprawnienia lub uprawnienia, które nie zostały przyznane.
 

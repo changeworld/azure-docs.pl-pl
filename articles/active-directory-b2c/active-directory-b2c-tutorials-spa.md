@@ -10,12 +10,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9b3d18a7f59415b27b1a70067c9a8a610140ca25
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 40b92f24922b146dfdc66c1b0a59aab748dea6f2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672938"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931366"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Samouczek: Włączanie uwierzytelniania w aplikacji jednostronicowej przy użyciu Azure Active Directory B2C (Azure AD B2C)
 
@@ -48,7 +48,7 @@ Ponadto w lokalnym środowisku programistycznym są potrzebne następujące elem
 
 W drugim samouczku, który został ukończony w ramach wymagań wstępnych, zarejestrowano aplikację sieci Web w Azure AD B2C. Aby umożliwić komunikację z przykładową aplikacją w samouczku, musisz dodać do aplikacji w usłudze Azure AD B2C identyfikator URI przekierowania.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 1. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Wybierz pozycję **Aplikacje**, a następnie wybierz aplikację *webapp1*.
@@ -70,8 +70,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 Teraz, gdy uzyskano przykład, zaktualizuj kod przy użyciu nazwy dzierżawy Azure AD B2C i identyfikatora aplikacji zapisanego w poprzednim kroku.
 
-1. `index.html` Otwórz plik w katalogu głównym przykładowego katalogu.
-1. W definicji zmodyfikuj wartość clientId z identyfikatorem aplikacji zapisanym we wcześniejszym kroku. `msalConfig` Następnie zaktualizuj wartość identyfikatora URI **urzędu** przy użyciu nazwy dzierżawy Azure AD B2C. Zaktualizuj także identyfikator URI przy użyciu nazwy przepływu użytkownika rejestracji/logowania utworzonego w jednym z wymagań wstępnych (na przykład *B2C_1_signupsignin1*).
+1. Otwórz plik `index.html` w katalogu głównym przykładowego katalogu.
+1. W definicji `msalConfig` zmodyfikuj wartość **clientId** z identyfikatorem aplikacji zapisanym we wcześniejszym kroku. Następnie zaktualizuj wartość identyfikatora URI **urzędu** przy użyciu nazwy dzierżawy Azure AD B2C. Zaktualizuj także identyfikator URI przy użyciu nazwy przepływu użytkownika rejestracji/logowania utworzonego w jednym z wymagań wstępnych (na przykład *B2C_1_signupsignin1*).
 
     ```javascript
     var msalConfig = {
@@ -87,7 +87,7 @@ Teraz, gdy uzyskano przykład, zaktualizuj kod przy użyciu nazwy dzierżawy Azu
     };
     ```
 
-    Nazwa przepływu użytkownika użyta w tym samouczku to **B2C_1_signupsignin1**. Jeśli używasz innej nazwy przepływu użytkownika, podaj tę nazwę w polu `authority` wartość.
+    Nazwa przepływu użytkownika użyta w tym samouczku to **B2C_1_signupsignin1**. Jeśli używasz innej nazwy przepływu użytkownika, określ tę nazwę w wartości `authority`.
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
@@ -109,11 +109,14 @@ Teraz, gdy uzyskano przykład, zaktualizuj kod przy użyciu nazwy dzierżawy Azu
     Listening on port 6420...
     ```
 
-1. Przejdź do `http://localhost:6420` przeglądarki, aby wyświetlić aplikację.
+1. Przejdź do `http://localhost:6420` w przeglądarce, aby wyświetlić aplikację.
 
 Przykładowa aplikacja obsługuje rejestrację, logowanie, edytowanie profilu i resetowanie hasła. Ten samouczek przedstawia proces logowania użytkownika przy użyciu adresu e-mail.
 
 ### <a name="sign-up-using-an-email-address"></a>Rejestrowanie się przy użyciu adresu e-mail
+
+> [!WARNING]
+> Po zarejestrowaniu lub zalogowaniu może zostać wyświetlony [komunikat o niewystarczających uprawnieniach](#error-insufficient-permissions). Ze względu na bieżącą implementację kodu przykład ten błąd jest oczekiwany. Ten problem zostanie rozwiązany w przyszłej wersji przykładu kodu, w którym to ostrzeżenie zostanie usunięte.
 
 1. Wybierz pozycję **Zaloguj** , aby zainicjować przepływ użytkownika *B2C_1_signupsignin1* określony w poprzednim kroku.
 1. Usługa Azure AD B2C wyświetli stronę logowania z linkiem rejestracji. Ponieważ jeszcze nie masz konta, wybierz link **Utwórz konto teraz** .
@@ -131,7 +134,7 @@ Teraz możesz zalogować się do aplikacji przy użyciu swojego adresu e-mail i 
 
 ### <a name="error-insufficient-permissions"></a>Błąd: niewystarczające uprawnienia
 
-Po zalogowaniu aplikacja wyświetli błąd niewystarczających uprawnień — jest to **oczekiwane**:
+Po zalogowaniu aplikacja może zwrócić błąd niewystarczających uprawnień:
 
 ```Output
 ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.
@@ -139,7 +142,7 @@ Correlation ID: ce15bbcc-0000-0000-0000-494a52e95cd7
 Timestamp: 2019-07-20 22:17:27Z
 ```
 
-Ten błąd występuje, ponieważ aplikacja sieci Web próbuje uzyskać dostęp do internetowego interfejsu API chronionego przez katalog demonstracyjny, *fabrikamb2c*. Ponieważ token dostępu jest prawidłowy tylko dla katalogu usługi Azure AD, wywołanie interfejsu API jest dlatego nieautoryzowane.
+Ten błąd występuje, ponieważ aplikacja sieci Web próbuje uzyskać dostęp do internetowego interfejsu API chronionego przez katalog demonstracyjny, *fabrikamb2c*. Ponieważ token dostępu jest prawidłowy tylko dla katalogu usługi Azure AD, wywołanie interfejsu API jest nieautoryzowane.
 
 Aby naprawić ten błąd, przejdź do następnego samouczka w serii (zobacz [następne kroki](#next-steps)), aby utworzyć chroniony internetowy interfejs API dla katalogu.
 
@@ -155,4 +158,4 @@ W tym artykule zawarto informacje na temat wykonywania następujących czynnośc
 Teraz przejdź do następnego samouczka w serii, aby udzielić dostępu do chronionego internetowego interfejsu API przy użyciu SPA:
 
 > [!div class="nextstepaction"]
-> [Samouczek: Udzielanie dostępu do ASP.NET Core internetowego interfejsu API z SPA przy użyciu Azure AD B2C >](active-directory-b2c-tutorials-spa-webapi.md)
+> [Samouczek: udzielanie dostępu do ASP.NET Core internetowego interfejsu API z SPA przy użyciu Azure AD B2C >](active-directory-b2c-tutorials-spa-webapi.md)

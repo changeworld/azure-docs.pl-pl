@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 0b357a36afc44ceac8ed2c951e0f25901be9d93d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 098dc5e2ab7d4b9533f58e03557db533eaa49a90
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264368"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931279"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Szybki Start: uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST z zwinięciem
 
@@ -38,7 +38,7 @@ Najpierw będziesz potrzebować zestawu danych szkoleniowych w obiekcie blob us�
 
 Aby przeprowadzić uczenie modelu aparatu rozpoznawania formularzy przy użyciu dokumentów w kontenerze obiektów blob platformy Azure, Wywołaj interfejs API **uczenia** , uruchamiając następujące polecenie. Przed uruchomieniem polecenia wprowadź następujące zmiany:
 
-1. Zastąp `<Endpoint>` punktem końcowym uzyskanym z kluczem subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
+1. Zamień `<Endpoint>` na punkt końcowy uzyskany w ramach subskrypcji aparatu rozpoznawania formularza.
 1. Zastąp `<subscription key>` kluczem subskrypcji skopiowanym z poprzedniego kroku.
 1. Zastąp wartość `<SAS URL>` adresem URL sygnatury dostępu współdzielonego (SAS) kontenera usługi Azure Blob Storage. Aby pobrać adres URL SAS, Otwórz Eksplorator usługi Microsoft Azure Storage, kliknij prawym przyciskiem myszy kontener i wybierz polecenie **Pobierz sygnaturę dostępu współdzielonego**. Upewnij się, że uprawnienia do **odczytu** i **listy** są zaznaczone, a następnie kliknij przycisk **Utwórz**. Następnie skopiuj wartość z sekcji **URL** . Powinna mieć postać: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
@@ -93,7 +93,7 @@ Zwróć uwagę na wartość `"modelId"`. Będzie ona potrzebna w poniższych kro
 
 Następnie analizujesz dokument i wyodrębniasz z niego pary klucz-wartość i tabele. Wywołaj interfejs API **analizy modelu** , uruchamiając poniższe polecenie. Przed uruchomieniem polecenia wprowadź następujące zmiany:
 
-1. Zastąp `<Endpoint>` punktem końcowym uzyskanym z klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
+1. Zastąp `<Endpoint>` punktem końcowym uzyskanym z subskrypcji aparatu rozpoznawania formularza.
 1. Zastąp `<modelID>` IDENTYFIKATORem modelu, który został odebrany w poprzedniej sekcji.
 1. Zastąp `<path to your form>` ścieżką pliku formularza (na przykład C:\temp\file.PDF). W tym przewodniku szybki start można użyć plików w folderze **testowym** [zestawu danych przykładowych](https://go.microsoft.com/fwlink/?linkid=2090451).
 1. Zastąp `<file type>` typem pliku. Obsługiwane typy: `application/pdf`, `image/jpeg`, `image/png`.

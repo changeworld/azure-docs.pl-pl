@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/21/2019
+ms.date: 10/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bcd27378039d539e36c72cf6e8fec7e8a1425e54
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1faf6e4c9124d494507a124013d5fd8588f4b41b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750336"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934915"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfiguracje magazynu maszyn wirtualnych platformy Azure SAP HANA
 
@@ -40,7 +40,7 @@ Minimalny SAP HANA warunki certyfikowania dla różnych typów magazynu to:
 
 - Usługa Azure SSD w warstwie Premium —/Hana/log jest wymagana w pamięci podręcznej w usłudze Azure [Akcelerator zapisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator). Wolumin/Hana/Data można umieścić na SSD w warstwie Premium bez platformy Azure akcelerator zapisu lub na dysku Ultra
 - Platforma Azure Ultra Disk co najmniej dla woluminu/Hana/log. Wolumin/Hana/Data można umieścić na SSD w warstwie Premium bez akcelerator zapisu platformy Azure lub w celu szybszego ponownego uruchomienia komputera Ultra Disk
-- Woluminy **NFS v 4.1** na Azure NetApp Files dla/Hana/log **i** /Hana/Data
+- Woluminy **NFS v 4.1** na Azure NetApp Files dla/Hana/log **i** /Hana/Data. Wolumin/Hana/Shared może korzystać z protokołu NFS v3 lub NFS v 4.1. Protokół NFS v 4.1 jest obowiązkowy dla woluminów/Hana/Data i/Hana/log.
 
 Niektóre typy magazynów można łączyć. Na przykład możliwe jest umieszczenie/Hana/Data na Premium Storage i/Hana/log może zostać umieszczony w magazynie Ultra Disk w celu uzyskania wymaganych małych opóźnień. Nie zaleca się jednak mieszania woluminów NFS dla np./Hana/Data i używania jednego z innych certyfikowanych typów magazynów dla/Hana/log
 
@@ -230,10 +230,10 @@ W tej konfiguracji woluminy/Hana/Data i/Hana/log są na tym samym dysku. Sugerow
 Typy maszyn wirtualnych M416xx_v2 nie są jeszcze udostępniane publicznie przez firmę Microsoft. Wymienione wartości mają być punktem początkowym i muszą być oceniane względem rzeczywistych wymagań. Zalety korzystania z usługi Azure Ultra Disk polega na tym, że wartości operacji we/wy i przepływności można dostosować bez konieczności wyłączania maszyny wirtualnej lub zatrzymania obciążenia zastosowanego do systemu.  
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Woluminy NFS v 4.1 na Azure NetApp Files
-Azure NetApp Files zapewnia natywne udziały NFS, które mogą być używane dla woluminów/Hana/Shared,/Hana/Data i/Hana/log. Używanie udziałów systemu plików NFS opartych na ANF dla tych woluminów wymaga użycia protokołu systemu plików NFS w wersji 4.1. Protokół NFS w wersji 3 nie jest obsługiwany w przypadku użycia woluminów związanych z platformą HANA podczas bazowania udziałów w ANF. 
+Azure NetApp Files zapewnia natywne udziały NFS, które mogą być używane dla woluminów/Hana/Shared,/Hana/Data i/Hana/log. Używanie udziałów systemu plików NFS opartych na ANF dla woluminów/Hana/Data i/Hana/log wymaga użycia protokołu systemu plików NFS w wersji 4.1. Protokół NFS v3 nie jest obsługiwany w przypadku używania woluminów/Hana/Data i/Hana/log w przypadku, gdy udziały są oparte na ANF. 
 
 > [!IMPORTANT]
-> Protokół NFS v3 zaimplementowany w Azure NetApp Files nie jest obsługiwany do użycia dla/Hana/Shared,/Hana/Data i/Hana/log
+> Protokół NFS v3 zaimplementowany w Azure NetApp Files nie jest obsługiwany do użycia dla/Hana/Data i/Hana/log. Użycie systemu plików NFS 4,1 jest obowiązkowe dla woluminów/Hana/Data i/Hana/log z punktu widzenia funkcjonalnego. W przypadku woluminu/Hana/Shared można użyć systemu NFS v3 lub protokołu NFS v 4.1 z punktu widzenia funkcjonalnego.
 
 ### <a name="important-considerations"></a>Ważne zagadnienia
 Rozważając Azure NetApp Files dla oprogramowania SAP NetWeaver i SAP HANA, należy pamiętać o następujących kwestiach:
@@ -270,21 +270,21 @@ Podczas projektowania infrastruktury dla oprogramowania SAP na platformie Azure 
 
 W celu spełnienia minimalnych wymagań dotyczących przepływności SAP dla danych i dziennika oraz zgodnie z wytycznymi dla `/hana/shared` zalecane rozmiary będą wyglądać następująco:
 
-| Wolumin | Rozmiar<br /> Warstwa Premium Storage | Rozmiar<br /> Warstwa Ultra Storage |
+| Wolumin | Rozmiar<br /> Warstwa Premium Storage | Rozmiar<br /> Warstwa Ultra Storage | Obsługiwany protokół NFS |
 | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB |
-| /hana/data | 6,3 TiB | 3,2 TiB |
-| /hana/shared | Maks. (512 GB, 1xRAM) na 4 węzły procesu roboczego | Maks. (512 GB, 1xRAM) na 4 węzły procesu roboczego |
+| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
+| /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
+| /hana/shared | Maks. (512 GB, 1xRAM) na 4 węzły procesu roboczego | Maks. (512 GB, 1xRAM) na 4 węzły procesu roboczego | v3 lub v 4.1 |
 
 SAP HANA konfiguracja układu przedstawionego w tym artykule przy użyciu warstwy Azure NetApp Files Ultra Storage będzie wyglądać następująco:
 
-| Wolumin | Rozmiar<br /> Warstwa Ultra Storage |
+| Wolumin | Rozmiar<br /> Warstwa Ultra Storage | Obsługiwany protokół NFS |
 | --- | --- |
-| /hana/log/mnt00001 | 2 TiB |
-| /hana/log/mnt00002 | 2 TiB |
-| /hana/data/mnt00001 | 3,2 TiB |
-| /hana/data/mnt00002 | 3,2 TiB |
-| /hana/shared | 2 TiB |
+| /hana/log/mnt00001 | 2 TiB | v 4.1 |
+| /hana/log/mnt00002 | 2 TiB | v 4.1 |
+| /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
+| /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
+| /hana/shared | 2 TiB | v3 lub v 4.1 |
 
 > [!NOTE]
 > Zalecenia dotyczące ustalania wielkości Azure NetApp Files podane w tym miejscu są celem spełnienia minimalnych wymagań SAP Express do dostawców infrastruktury. W rzeczywistych scenariuszach wdrażania klientów i obciążeń, które mogą nie być wystarczające. Użyj tych zaleceń jako punktu wyjścia i adaptacji na podstawie wymagań określonego obciążenia.  

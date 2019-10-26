@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z danych referencyjnych z bazy danych SQL dla zadania usługi Azure Stream Analytics
-description: W tym artykule opisano sposób użycia bazy danych SQL jako wejściowych danych referencyjnych dla zadania usługi Azure Stream Analytics, w witrynie Azure portal i w programie Visual Studio.
+title: Używanie SQL Database danych referencyjnych w zadaniu Azure Stream Analytics
+description: W tym artykule opisano sposób użycia SQL Database jako referencyjne dane wejściowe dla zadania Azure Stream Analytics w Azure Portal i w programie Visual Studio.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,71 +8,71 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: ae1954b99e268e8bc44c4ba29bbc79d7734fda6e
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 733ac7d1ff1d50e5fdcfa0dec2ad3fd3f30f6d86
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461734"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926687"
 ---
-# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Korzystanie z danych referencyjnych z bazy danych SQL dla zadania usługi Azure Stream Analytics
+# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Korzystanie z danych referencyjnych z SQL Database dla zadania Azure Stream Analytics
 
-Usługa Azure Stream Analytics obsługuje usługi Azure SQL Database jako źródło danych wejściowych danych referencyjnych. Bazy danych SQL można użyć jako danych referencyjnych dla zadania usługi Stream Analytics w witrynie Azure portal i w programie Visual Studio za pomocą narzędzi usługi Stream Analytics. W tym artykule przedstawiono, jak to zrobić w obu tych metod.
+Azure Stream Analytics obsługuje Azure SQL Database jako źródło danych wejściowych w celu uzyskania informacji referencyjnych. SQL Database jako dane referencyjne dla zadania Stream Analytics można użyć w Azure Portal i w programie Visual Studio przy użyciu narzędzi Stream Analytics. W tym artykule przedstawiono sposób wykonywania obu tych metod.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Użyj następujące kroki, aby dodać bazy danych SQL Azure jako odwołanie do źródła danych wejściowych przy użyciu witryny Azure portal:
+Wykonaj następujące kroki, aby dodać Azure SQL Database jako źródłowe źródło danych wejściowych przy użyciu Azure Portal:
 
-### <a name="portal-prerequisites"></a>Wymagania wstępne w portalu
+### <a name="portal-prerequisites"></a>Wymagania wstępne portalu
 
-1. Utwórz zadanie usługi Stream Analytics.
+1. Utwórz zadanie Stream Analytics.
 
-2. Utwórz konto magazynu, który będzie używany przez zadanie usługi Stream Analytics.
+2. Utwórz konto magazynu, które będzie używane przez zadanie Stream Analytics.
 
-3. Tworzenie usługi Azure SQL Database przy użyciu zestawu danych, ma być używany jako odwołanie do danych przez zadanie usługi Stream Analytics.
+3. Utwórz Azure SQL Database z zestawem danych, który ma być używany jako dane referencyjne w ramach zadania Stream Analytics.
 
-### <a name="define-sql-database-reference-data-input"></a>Zdefiniuj wejściowych danych referencyjnych bazy danych SQL
+### <a name="define-sql-database-reference-data-input"></a>Zdefiniuj dane referencyjne SQL Database
 
-1. W ramach zadania usługi Stream Analytics wybierz **dane wejściowe** w obszarze **topologia zadań**. Kliknij przycisk **Dodaj odwołanie do danych wejściowych** i wybierz polecenie **bazy danych SQL**.
+1. W zadaniu Stream Analytics wybierz pozycję **dane wejściowe** w obszarze **topologia zadania**. Kliknij pozycję **Dodaj dane wejściowe odwołania** i wybierz **SQL Database**.
 
-   ![Stream Analytics — dane wejściowe zadania](./media/sql-reference-data/stream-analytics-inputs.png)
+   ![Stream Analytics dane wejściowe zadania](./media/sql-reference-data/stream-analytics-inputs.png)
 
-2. Wypełnij konfiguracji dane wejściowe Stream Analytics. Wybierz nazwę bazy danych, nazwę serwera, nazwę użytkownika i hasło. Dane odwołanie do danych wejściowych w celu okresowego odświeżania, wybierz opcję "On" określić częstotliwość odświeżania w DD:HH:MM. W przypadku dużych zestawów danych w krótkim odświeżania można użyć [zapytania różnicowego](sql-reference-data.md#delta-query).
+2. Wypełnij Stream Analytics konfiguracjami wejściowymi. Wybierz nazwę bazy danych, nazwę serwera, nazwa użytkownika i hasło. Jeśli chcesz, aby dane wejściowe danych referencyjnych były odświeżane okresowo, wybierz pozycję "włączone", aby określić częstotliwość odświeżania w DD: HH: MM. Jeśli masz duże zestawy danych z krótką częstotliwością odświeżania, możesz użyć [zapytania Delta](sql-reference-data.md#delta-query).
 
-   ![Konfiguracja odwołanie do bazy danych SQL](./media/sql-reference-data/sql-input-config.png)
+   ![Konfiguracja referencyjna SQL Database](./media/sql-reference-data/sql-input-config.png)
 
-3. Testovat dotaz migawki, w edytorze zapytań SQL. Aby uzyskać więcej informacji, zobacz [używać edytora zapytań SQL w witrynie Azure portal do nawiązywania połączeń i wykonywanie zapytań dotyczących danych](../sql-database/sql-database-connect-query-portal.md)
+3. Przetestuj zapytanie migawki w edytorze zapytań SQL. Aby uzyskać więcej informacji, zobacz [Używanie edytora zapytań SQL Azure Portal do łączenia i wykonywania zapytań dotyczących danych](../sql-database/sql-database-connect-query-portal.md)
 
-### <a name="specify-storage-account-in-job-config"></a>Wybierz konto magazynu w konfiguracji zadania
+### <a name="specify-storage-account-in-job-config"></a>Określ konto magazynu w konfiguracji zadania
 
-Przejdź do **ustawienia konta magazynu** w obszarze **Konfiguruj** i wybierz **Dodaj konto magazynu**.
+Przejdź do pozycji **Ustawienia konta magazynu** w obszarze **Konfiguruj** i wybierz pozycję **Dodaj konto magazynu**.
 
-   ![Ustawienia konta magazynu programu Stream Analytics](./media/sql-reference-data/storage-account-settings.png)
+   ![Stream Analytics ustawień konta magazynu](./media/sql-reference-data/storage-account-settings.png)
 
 ### <a name="start-the-job"></a>Uruchamianie zadania
 
-Po skonfigurowaniu innych danych wejściowych, danych wyjściowych i zapytania, można uruchomić zadania usługi Stream Analytics.
+Po skonfigurowaniu innych wejść, danych wyjściowych i zapytań można uruchomić zadanie Stream Analytics.
 
 ## <a name="tools-for-visual-studio"></a>Narzędzia dla programu Visual Studio
 
-Użyj następujących kroków, aby dodać usługi Azure SQL Database jako odwołanie do źródła danych wejściowych za pomocą programu Visual Studio:
+Wykonaj następujące kroki, aby dodać Azure SQL Database jako źródłowe źródło danych wejściowych przy użyciu programu Visual Studio:
 
-### <a name="visual-studio-prerequisites"></a>Visual Studio wymagań wstępnych.
+### <a name="visual-studio-prerequisites"></a>Wymagania wstępne programu Visual Studio
 
-1. [Zainstaluj narzędzia Stream Analytics dla programu Visual Studio](stream-analytics-tools-for-visual-studio-install.md). Obsługiwane są następujące wersje programu Visual Studio:
+1. [Zainstaluj narzędzia Stream Analytics Tools for Visual Studio](stream-analytics-tools-for-visual-studio-install.md). Obsługiwane są następujące wersje programu Visual Studio:
 
    * Visual Studio 2015
    * Visual Studio 2019
 
-2. Zapoznanie się z [usługi Stream Analytics tools for Visual Studio](stream-analytics-quick-create-vs.md) Szybki Start.
+2. Zapoznaj się z [narzędziami Stream Analytics Tools for Visual Studio](stream-analytics-quick-create-vs.md) — Szybki Start.
 
-3. Utwórz konto magazynu.
+3. Tworzenie konta magazynu
 
-### <a name="create-a-sql-database-table"></a>Utwórz tabelę bazy danych SQL
+### <a name="create-a-sql-database-table"></a>Tworzenie tabeli SQL Database
 
-Aby utworzyć tabelę do przechowywania danych odwołania, należy użyć programu SQL Server Management Studio. Zobacz [projektowanie pierwszej bazy danych Azure SQL przy użyciu programu SSMS](../sql-database/sql-database-design-first-database.md) Aby uzyskać szczegółowe informacje.
+Użyj SQL Server Management Studio, aby utworzyć tabelę do przechowywania danych referencyjnych. Aby uzyskać szczegółowe informacje, zobacz [projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS](../sql-database/sql-database-design-first-database.md) .
 
-Przykładowa tabela używana w poniższym przykładzie utworzono z następującą instrukcję:
+Przykładowa tabela użyta w poniższym przykładzie została utworzona z następującej instrukcji:
 
 ```SQL
 create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
@@ -82,7 +82,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 1. W programie Visual Studio w menu **Widok** wybierz opcję **Eksplorator serwera**.
 
-2. Kliknij prawym przyciskiem myszy **Azure**, wybierz opcję **nawiązywanie połączenia z subskrypcją platformy Microsoft Azure**i zaloguj się przy użyciu konta platformy Azure.
+2. Kliknij prawym przyciskiem myszy pozycję **Azure**, wybierz pozycję **Połącz z subskrypcją Microsoft Azure**i zaloguj się przy użyciu konta platformy Azure.
 
 ### <a name="create-a-stream-analytics-project"></a>Tworzenie projektu usługi Stream Analytics
 
@@ -90,49 +90,49 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 2. Na liście szablonów po lewej stronie wybierz pozycję **Stream Analytics**, a następnie wybierz pozycję **Azure Stream Analytics Application**. 
 
-3. Wprowadź projektu **nazwa**, **lokalizacji**, i **Nazwa rozwiązania**i wybierz **OK**.
+3. Wprowadź **nazwę**projektu, **lokalizację**i **nazwę rozwiązania**, a następnie wybierz **przycisk OK**.
 
-   ![Nowy projekt usługi Stream Analytics w programie Visual Studio](./media/sql-reference-data/stream-analytics-vs-new-project.png)
+   ![Nowy projekt Stream Analytics w programie Visual Studio](./media/sql-reference-data/stream-analytics-vs-new-project.png)
 
-### <a name="define-sql-database-reference-data-input"></a>Zdefiniuj wejściowych danych referencyjnych bazy danych SQL
+### <a name="define-sql-database-reference-data-input"></a>Zdefiniuj dane referencyjne SQL Database
 
 1. Utwórz nowe dane wejściowe.
 
-   ![Nowe usługi Stream Analytics dane wejściowe w programie Visual Studio](./media/sql-reference-data/stream-analytics-vs-input.png)
+   ![Nowe dane wejściowe Stream Analytics w programie Visual Studio](./media/sql-reference-data/stream-analytics-vs-input.png)
 
-2. Kliknij dwukrotnie **Input.json** w **Eksploratora rozwiązań**.
+2. Kliknij dwukrotnie plik **Input. JSON** w **Eksplorator rozwiązań**.
 
-3. Wypełnij **Stream Analytics dane wejściowe konfiguracji**. Wybierz nazwę bazy danych, nazwę serwera, typ odświeżania i częstotliwość odświeżania. Określ częstotliwość odświeżania w formacie `DD:HH:MM`.
+3. Wypełnij **Stream Analytics konfigurację wejściową**. Wybierz nazwę bazy danych, nazwę serwera, typ odświeżania i częstotliwość odświeżania. Określ częstotliwość odświeżania w formacie `DD:HH:MM`.
 
    ![Konfiguracja danych wejściowych Stream Analytics w programie Visual Studio](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
-   Jeśli wybierzesz opcję "Tylko raz do wykonania" lub "Okresowo wykonania", jeden plik SQL CodeBehind o nazwie **.snapshot.sql [Alias danych wejściowych]** jest generowany w projekcie, w obszarze **Input.json** węzła pliku.
+   Jeśli wybierzesz opcję "wykonaj tylko raz" lub "wykonaj okresowo", jeden plik SQL CodeBehind o nazwie **[Input alias]. snapshot. SQL** jest generowany w projekcie w węźle pliku **Input. JSON** .
 
-   ![Wejściowy kodzie w programie Visual Studio](./media/sql-reference-data/once-or-periodically-codebehind.png)
+   ![Kod wejściowy w programie Visual Studio](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
-   Jeśli zostanie wybrana opcja "Odśwież okresowo z Delta", zostaną wygenerowane dwa pliki SQL CodeBehind: **.snapshot.sql [Alias danych wejściowych]** i **.delta.sql [Alias danych wejściowych]** .
+   W przypadku wybrania opcji "Odświeżaj okresowo z różnicą" zostaną wygenerowane dwa pliki CodeBehind języka SQL: **[alias wejściowy]. snapshot. SQL** i **[Input alias]. Delta. SQL**.
 
-   ![Możesz pisać kod za zaporą w Eksploratorze rozwiązań](./media/sql-reference-data/periodically-delta-codebehind.png)
+   ![Kod związany z Eksploratorem rozwiązań](./media/sql-reference-data/periodically-delta-codebehind.png)
 
-4. Otwórz plik SQL w edytorze, a następnie napisać zapytanie SQL.
+4. Otwórz plik SQL w edytorze i napisz zapytanie SQL.
 
-5. Jeśli używasz programu Visual Studio 2019 r i zainstalowano program SQL Server Data tools, możesz sprawdzić zapytanie, klikając **Execute**. Okno Kreator będzie się pojawiać w celu łatwiejszego nawiązania połączenia z bazą danych SQL i wynik zapytania będą wyświetlane w dolnej części okna.
+5. Jeśli używasz programu Visual Studio 2019 i masz zainstalowane SQL Server narzędzia danych, możesz przetestować zapytanie, klikając pozycję **Wykonaj**. Zostanie wyświetlone okno kreatora, które pomoże Ci połączyć się z bazą danych SQL, a wynik zapytania pojawi się w oknie u dołu.
 
-### <a name="specify-storage-account"></a>Określanie konta usługi storage
+### <a name="specify-storage-account"></a>Określ konto magazynu
 
-Otwórz **JobConfig.json** Aby określić konto magazynu do przechowywania migawek SQL na odwołanie.
+Otwórz plik **JobConfig. JSON** , aby określić konto magazynu do przechowywania migawek odwołań SQL.
 
-   ![Stream Analytics zadania konfiguracji w programie Visual Studio](./media/sql-reference-data/stream-analytics-job-config.png)
+   ![Konfiguracja zadania Stream Analytics w programie Visual Studio](./media/sql-reference-data/stream-analytics-job-config.png)
 
-### <a name="test-locally-and-deploy-to-azure"></a>Lokalne testowanie i wdrażanie na platformie Azure
+### <a name="test-locally-and-deploy-to-azure"></a>Testowanie lokalnego i wdrażanie na platformie Azure
 
-Przed wdrożeniem zadania na platformie Azure, możesz przetestować logiki zapytania lokalnie w odniesieniu do danych wejściowych na żywo. Aby uzyskać więcej informacji na temat tej funkcji, zobacz [danych na żywo lokalnie przy użyciu usługi Azure Stream Analytics tools for Visual Studio (wersja zapoznawcza) Test](stream-analytics-live-data-local-testing.md). Po zakończeniu testowania, kliknij przycisk **przesyłania na platformie Azure**. Odwołanie [tworzenia usługi Stream Analytics, za pomocą narzędzi Azure Stream Analytics dla programu Visual Studio](stream-analytics-quick-create-vs.md) szybkiego startu, aby dowiedzieć się, jak uruchomić zadanie.
+Przed wdrożeniem zadania na platformie Azure można testować logikę zapytania lokalnie w odniesieniu do danych wejściowych na żywo. Aby uzyskać więcej informacji na temat tej funkcji, zobacz [test danych na żywo lokalnie przy użyciu narzędzi Azure Stream Analytics Tools for Visual Studio (wersja zapoznawcza)](stream-analytics-live-data-local-testing.md). Po zakończeniu testowania kliknij przycisk **Prześlij do platformy Azure**. Zapoznaj się z tematem [tworzenie Stream Analytics przy użyciu narzędzi Azure Stream Analytics Tools for Visual Studio](stream-analytics-quick-create-vs.md) — Szybki Start, aby dowiedzieć się, jak uruchomić zadanie.
 
-## <a name="delta-query"></a>Zapytania różnicowego
+## <a name="delta-query"></a>Zapytanie różnicowe
 
-Gdy użycie zapytania różnicowego [tabele danych czasowych w usłudze Azure SQL Database](../sql-database/sql-database-temporal-tables.md) są zalecane.
+W przypadku korzystania z zapytania różnicowego tabele danych czasowych [w Azure SQL Database](../sql-database/sql-database-temporal-tables.md) są zalecane.
 
-1. Tworzenie tabeli danych czasowych w usłudze Azure SQL Database.
+1. Utwórz tabelę danych czasowych w Azure SQL Database.
    
    ```SQL 
       CREATE TABLE DeviceTemporal 
@@ -146,20 +146,20 @@ Gdy użycie zapytania różnicowego [tabele danych czasowych w usłudze Azure SQ
       )  
       WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.DeviceHistory));  -- DeviceHistory table will be used in Delta query
    ```
-2. Tworzenie zapytań migawki. 
+2. Utwórz zapytanie migawki. 
 
-   Użyj  **\@snapshotTime** parametru, aby nakazać środowiska uruchomieniowego usługi Stream Analytics można uzyskać zestawu danych referencyjnych z tabeli bazy danych SQL danych czasowych prawidłowy w czasie systemu. Jeśli nie podano tego parametru, istnieje ryzyko uzyskania niedokładne podstawowego odwołania zestawu danych z powodu wynikających z przesunięcia czasowego zegara. Poniżej przedstawiono przykład Pełna migawka kwerendy:
+   Użyj **\@parametru snapshotTime** , aby nakazać Stream Analytics środowiska uruchomieniowego w celu uzyskania zestawu danych referencyjnych z tabeli danych czasowych usługi SQL Database, która jest ważna w czasie systemowym. Jeśli ten parametr nie jest określony, istnieje ryzyko uzyskania niedokładnego zestawu danych referencyjnych odniesienia z powodu przesunięcia zegara. Poniżej przedstawiono przykładowe zapytanie o pełną migawkę:
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
       FOR SYSTEM_TIME AS OF @snapshotTime
    ```
  
-2. Możesz tworzyć zapytania różnicowego. 
+2. Utwórz zapytanie różnicowe. 
    
-   To zapytanie pobiera wszystkie wiersze w usłudze SQL database, które zostały wstawione lub usuwane w ciągu godziny rozpoczęcia  **\@deltaStartTime**i czas zakończenia  **\@deltaEndTime**. Zapytania różnicowego musi zwracać te same kolumny jako zapytanie migawki, a także kolumny  **_operacji_** . Ta kolumna określa Jeśli wiersz jest wstawionych lub usuniętych między  **\@deltaStartTime** i  **\@deltaEndTime**. Wiersze wynikowe są oznaczane jako **1** rekordy zostały wstawione, lub **2** usunięcie. 
+   To zapytanie pobiera wszystkie wiersze z bazy danych SQL, które zostały wstawione lub usunięte w czasie rozpoczęcia, **\@deltaStartTime**i godzinę zakończenia **\@deltaEndTime**. Zapytanie Delta musi zwracać te same kolumny co zapytanie migawki, a także **_operację_** kolumny. Ta kolumna określa, czy wiersz został wstawiony czy usunięty między **\@deltaStartTime** i **\@deltaEndTime**. Utworzone wiersze są oflagowane jako **1** , jeśli rekordy zostały wstawione lub **2** , jeśli zostały usunięte. 
 
-   W przypadku rekordów, które zostały zaktualizowane tabeli danych czasowych wykonuje księgowych, przechwytując operacji wstawiania i usuwania. Środowisko uruchomieniowe usługi Stream Analytics zastosuje następnie wyniki zapytania różnicowego do poprzedniej migawki, aby zapewnić aktualność danych referencyjnych. Przykładem zapytania różnicowego jest wyświetlane poniżej:
+   W przypadku rekordów, które zostały zaktualizowane, tabela danych czasowych wykonuje operacje we/wykorzystaniu operacji wstawiania i usuwania. Środowisko uruchomieniowe Stream Analytics następnie zastosuje wyniki zapytania różnicowego do poprzedniej migawki, aby zapewnić aktualność danych referencyjnych. Poniżej przedstawiono przykładowe zapytanie różnicowe:
 
    ```SQL
       SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
@@ -171,36 +171,36 @@ Gdy użycie zapytania różnicowego [tabele danych czasowych w usłudze Azure SQ
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```
  
-   Należy pamiętać, że środowisko uruchomieniowe usługi Stream Analytics może okresowo zapytania snapshot oprócz zapytania różnicowego do przechowywania punktów kontrolnych.
+   Należy pamiętać, że środowisko uruchomieniowe Stream Analytics może okresowo uruchamiać zapytanie migawek oprócz zapytania Delta do przechowywania punktów kontrolnych.
 
 ## <a name="test-your-query"></a>Testowanie zapytania
-   Jest to ważne, aby sprawdzić, czy zapytanie zwraca oczekiwanego zestawu danych, który zadanie usługi Stream Analytics będzie używany jako dane referencyjne. Aby przetestować zapytanie, przejdź do danych wejściowych w sekcji topologia zadania w portalu. Następnie można wybrać danych przykładowych na dane wejściowe użytkownika odwołanie do bazy danych SQL. Po próbki staje się dostępna, możesz pobrać plik i sprawdź, czy dane są zwracane jest co oczekiwano. Chcąc Optymalizuj swoje iteracje projektowania i testowania, zalecane jest użycie [usługi Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install). Możesz również dowolne inne narzędzie preferowanym najpierw upewnij się, że zapytanie zwraca odpowiednich wyników ze strony użytkownika usługi Azure SQL Database, a następnie użycie, w ramach zadania usługi Stream Analytics. 
+   Ważne jest, aby sprawdzić, czy zapytanie zwraca oczekiwany zestaw danych, który będzie używany przez zadanie Stream Analytics jako dane referencyjne. Aby przetestować zapytanie, przejdź do pozycji dane wejściowe w obszarze Topologia zadania w portalu. Następnie możesz wybrać przykładowe dane dla danych wejściowych odwołania SQL Database. Po udostępnieniu próbki można pobrać plik i sprawdzić, czy zwracane dane są zgodnie z oczekiwaniami. Jeśli chcesz zoptymalizować iteracje do tworzenia i testowania, zaleca się korzystanie z [Stream Analytics narzędzi dla programu Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install). Możesz również użyć dowolnego innego narzędzia preferencji, aby najpierw upewnić się, że zapytanie zwróci odpowiednie wyniki z Azure SQL Database, a następnie użyje go w zadaniu Stream Analytics. 
 
 ## <a name="faqs"></a>Często zadawane pytania
 
-**Czy zostaną naliczone dodatkowych kosztów, za pomocą wejściowych danych referencyjnych SQL w usłudze Azure Stream Analytics?**
+**Czy ponosimy dodatkowe koszty przy użyciu danych referencyjnych SQL w Azure Stream Analytics?**
 
-Nie dodatkowe [koszt jednostka przesyłania strumieniowego](https://azure.microsoft.com/pricing/details/stream-analytics/) w zadaniu Stream Analytics. Jednak zadanie usługi Stream Analytics musi mieć konto magazynu platformy Azure skojarzone. Zadanie usługi Stream Analytics wysyła zapytanie bazy danych SQL (podczas wykonywania zadania Uruchom i interwał odświeżania) do pobierania zestawu danych referencyjnych i magazynów, które migawki na koncie magazynu. Przechowywania migawek zostaną naliczone dodatkowe opłaty, które szczegółowo opisane w [stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/) dla konta usługi Azure storage.
+W zadaniu Stream Analytics nie ma dodatkowych [kosztów na jednostkę przesyłania strumieniowego](https://azure.microsoft.com/pricing/details/stream-analytics/) . Jednak zadanie Stream Analytics musi mieć skojarzone konto usługi Azure Storage. Zadanie Stream Analytics wysyła zapytanie do bazy danych SQL (podczas rozpoczęcia i interwału odświeżania zadania) w celu pobrania zestawu dane referencyjne i przechowuje tę migawkę na koncie magazynu. Przechowywanie tych migawek spowoduje naliczenie dodatkowych opłat szczegółowych na [stronie cennika](https://azure.microsoft.com/pricing/details/storage/) dla konta usługi Azure Storage.
 
-**Skąd mam wiedzieć, migawki danych odwołania jest pobierane z bazy danych SQL i używane w ramach zadania usługi Azure Stream Analytics?**
+**Jak mogę znane są zapytania o dane referencyjne z bazy danych SQL i używane w zadaniu Azure Stream Analytics?**
 
-Istnieją dwie metryki przefiltrowane według nazwy logicznej (w ramach witryny Azure Portal metryki), które służy do monitorowania prawidłowości danych referencyjnych bazy danych SQL, dane wejściowe.
+Istnieją dwie metryki odfiltrowane według nazwy logicznej (w obszarze metryki Azure Portal), których można użyć do monitorowania kondycji danych wejściowych referencyjnych bazy danych SQL.
 
-   * Liczba: Ta metryka mierzy liczbę rekordów załadowane w z zestawu danych referencyjnych bazy danych SQL.
-   * InputEventBytes: Ta metryka mierzy rozmiar migawek chronionych danych odwołania, które są ładowane w pamięci w procentach zadania usługi Stream Analytics. 
+   * InputEvents: Ta Metryka mierzy liczbę rekordów załadowanych z zestawu danych referencyjnych bazy danych SQL.
+   * InputEventBytes: Ta Metryka mierzy rozmiar migawki danych referencyjnych załadowanej w pamięci zadania Stream Analytics. 
 
-Kombinację obu tych metryk można wywnioskować, jeśli zadanie jest zapytanie do bazy danych SQL, można pobrać zestawu danych referencyjnych i załadowanie go do pamięci.
+Połączenie obu tych metryk może służyć do wnioskowania, czy zadanie wysyła zapytanie do bazy danych SQL w celu pobrania zestawu danych referencyjnych, a następnie ładowania go do pamięci.
 
-**Czy będzie wymagać specjalny rodzaj usługi Azure SQL Database?**
+**Czy jest wymagany specjalny typ Azure SQL Database?**
 
-Usługa Azure Stream Analytics będzie działać z dowolnego typu usługi Azure SQL Database. Jednak ważne jest zrozumienie, że częstotliwość odświeżania dla Twojego wejściowych danych referencyjnych może mieć wpływ na Twoje obciążenie zapytaniami. Aby użyć opcji zapytanie różnicowe, zalecane jest korzystanie z tabel danych czasowych w usłudze Azure SQL Database.
+Azure Stream Analytics będzie współpracować z dowolnym typem Azure SQL Database. Należy jednak pamiętać, że częstotliwość odświeżania ustawiona dla danych wejściowych referencyjnych może mieć wpływ na obciążenie zapytań. Aby można było użyć opcji zapytania Delta, zaleca się korzystanie z tabel danych czasowych w Azure SQL Database.
 
-**Dlaczego Azure Stream Analytics przechowuje migawki na koncie magazynu platformy Azure?**
+**Dlaczego Azure Stream Analytics są przechowywane migawki na koncie usługi Azure Storage?**
 
-Poza tym gwarantuje przeprowadzenie dokładnie jednej aprowizacji zdarzenia oraz co najmniej jednokrotnego dostarczenia zdarzeń. W przypadkach, w którym przejściowe problemy z wpływu na zadania małą ilością powtórzeń jest niezbędne do przywrócenia stanu. Aby włączyć powtarzania, jest wymagane posiadanie migawek przechowywanych na koncie usługi Azure Storage. Aby uzyskać więcej informacji na temat powtarzania punktu kontrolnego, zobacz [punkt kontrolny i powtarzanie pojęcia dotyczące zadań usługi Azure Stream Analytics](stream-analytics-concepts-checkpoint-replay.md).
+Poza tym gwarantuje przeprowadzenie dokładnie jednej aprowizacji zdarzenia oraz co najmniej jednokrotnego dostarczenia zdarzeń. W przypadkach, gdy przejściowe problemy mają wpływ na zadanie, niezbędna jest niewielka ilość powtórzeń w celu przywrócenia stanu. Aby włączyć powtarzanie, musisz mieć te migawki przechowywane na koncie usługi Azure Storage. Aby uzyskać więcej informacji na temat powtarzania punktów kontrolnych, zobacz temat Tworzenie [punktów kontrolnych i powtarzanie w zadaniach Azure Stream Analytics](stream-analytics-concepts-checkpoint-replay.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Przy użyciu danych referencyjnych dla wyszukiwania w usłudze Stream Analytics](stream-analytics-use-reference-data.md)
-* [Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu narzędzi Azure Stream Analytics dla programu Visual Studio](stream-analytics-quick-create-vs.md)
-* [Testowanie danych na żywo lokalnie przy użyciu usługi Azure Stream Analytics tools for Visual Studio (wersja zapoznawcza)](stream-analytics-live-data-local-testing.md)
+* [Używanie danych referencyjnych do wyszukiwania w Stream Analytics](stream-analytics-use-reference-data.md)
+* [Szybki Start: Tworzenie zadania Stream Analytics przy użyciu narzędzi Azure Stream Analytics Tools for Visual Studio](stream-analytics-quick-create-vs.md)
+* [Lokalne testowanie danych na żywo przy użyciu narzędzi Azure Stream Analytics Tools for Visual Studio (wersja zapoznawcza)](stream-analytics-live-data-local-testing.md)

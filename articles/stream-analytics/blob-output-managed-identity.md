@@ -1,17 +1,17 @@
 ---
-title: Uwierzytelnianie zadania Azure Stream Analytics za pomocą tożsamości zarządzanej na platformie Azure Blob Storage dane wyjściowe (wersja zapoznawcza)
+title: Uwierzytelniaj dane wyjściowe obiektów blob z zarządzaną tożsamością Azure Stream Analytics
 description: W tym artykule opisano sposób używania tożsamości zarządzanych do uwierzytelniania zadania Azure Stream Analytics w danych wyjściowych usługi Azure Blob Storage.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 2bde1e8556fb1255e27595630e061f6b80870ce1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4215dc85da6d507b08f23cf248044ea807fe5319
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278696"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935112"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>Uwierzytelnianie zadania Azure Stream Analytics za pomocą tożsamości zarządzanej na platformie Azure Blob Storage dane wyjściowe (wersja zapoznawcza)
 
@@ -21,11 +21,11 @@ W tym artykule pokazano, jak włączyć zarządzaną tożsamość dla danych wyj
 
 ## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>Utwórz zadanie Stream Analytics przy użyciu Azure Portal
 
-1. Utwórz nowe zadanie Stream Analytics lub Otwórz istniejące zadanie w Azure Portal. Na pasku menu znajdującym się po lewej stronie ekranu wybierz pozycję zarządzana **tożsamość** znajdującą się w obszarze **Konfiguruj**. Upewnij się, że wybrano opcję Użyj tożsamości zarządzanej przypisanej do systemu, a następnie kliknij przycisk **Zapisz** u dołu ekranu.
+1. Utwórz nowe zadanie Stream Analytics lub Otwórz istniejące zadanie w Azure Portal. Na pasku menu znajdującym się po lewej stronie ekranu wybierz pozycję **zarządzana tożsamość** znajdującą się w obszarze **Konfiguruj**. Upewnij się, że wybrano opcję Użyj tożsamości zarządzanej przypisanej do systemu, a następnie kliknij przycisk **Zapisz** u dołu ekranu.
 
    ![Konfigurowanie tożsamości zarządzanej Stream Analytics](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-enable-managed-identity.png)
 
-2. W oknie właściwości danych wyjściowych ujścia danych wyjściowych usługi Azure Blob Storage wybierz listę rozwijaną tryb uwierzytelniania i wybierz pozycję **zarządzana tożsamość**. Aby uzyskać informacje dotyczące innych właściwości danych wyjściowych, zobacz informacje o [wyjściach z Azure Stream Analytics](./stream-analytics-define-outputs.md). Gdy skończysz, kliknij przycisk **Zapisz**.
+2. W oknie właściwości danych wyjściowych ujścia danych wyjściowych usługi Azure Blob Storage wybierz listę rozwijaną tryb uwierzytelniania i wybierz pozycję **zarządzana tożsamość**. Aby uzyskać informacje dotyczące innych właściwości danych wyjściowych, zobacz informacje o [wyjściach z Azure Stream Analytics](./stream-analytics-define-outputs.md). Po zakończeniu kliknij przycisk **Zapisz**.
 
    ![Konfigurowanie danych wyjściowych usługi Azure Blob Storage](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
@@ -95,7 +95,7 @@ Za pomocą Azure Resource Manager można w pełni zautomatyzować wdrożenie zad
     }
     ```
 
-    Powyższe zadanie można wdrożyć do przykładowej grupy zasobów przy  użyciu poniższego polecenia interfejsu CLI platformy Azure:
+    Powyższe zadanie można wdrożyć do **przykładowej** grupy zasobów przy użyciu poniższego polecenia interfejsu CLI platformy Azure:
 
     ```azurecli
     az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
@@ -237,5 +237,5 @@ Poniżej znajdują się bieżące ograniczenia tej funkcji:
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zrozumieć dane wyjściowe z usługi Azure Stream Analytics](./stream-analytics-define-outputs.md)
+* [Poznanie danych wyjściowych z Azure Stream Analytics](./stream-analytics-define-outputs.md)
 * [Azure Stream Analytics partycjonowanie niestandardowego obiektu BLOB](./stream-analytics-custom-path-patterns-blob-storage-output.md)

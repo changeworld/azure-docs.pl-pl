@@ -1,94 +1,94 @@
 ---
-title: Zadanie usługi Azure Stream Analytics, aby dane wyjściowe usługi Azure Data Lake Storage Gen1 uwierzytelniania
-description: W tym artykule opisano, jak korzystać z zarządzanych tożsamości do uwierzytelniania usługi Azure Data Lake Storage Gen1 danych wyjściowych zadania usługi Azure Stream Analytics.
+title: Uwierzytelnij Azure Stream Analytics do Azure Data Lake Storage Gen1
+description: W tym artykule opisano sposób używania tożsamości zarządzanych do uwierzytelniania zadania Azure Stream Analytics do Azure Data Lake Storage Gen1 danych wyjściowych.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 695591fedfacb34742335a6e9d6ca32a9c77eb7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148514"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934991"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Uwierzytelnianie Stream Analytics do usługi Azure Data Lake Storage Gen1 za pomocą tożsamości zarządzanych
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Uwierzytelnianie Stream Analytics do Azure Data Lake Storage Gen1 przy użyciu tożsamości zarządzanych
 
-Usługa Azure Stream Analytics obsługuje uwierzytelnianie tożsamości zarządzanej z danymi wyjściowymi Gen1 usługi Azure Data Lake Storage (ADLS). Tożsamość jest zarządzanej aplikacji zarejestrowanych w usłudze Azure Active Directory, który reprezentuje dane zadanie usługi Stream Analytics i może być używany do uwierzytelniania zasobów docelowych. Zarządzanych tożsamości wyeliminować ograniczenia metody uwierzytelniania oparte na użytkownikach, takich jak konieczności ponownego uwierzytelnienia z powodu zmiany hasła lub wygaśnięcia tokenu użytkownika, które występują co 90 dni. Ponadto zarządzanych tożsamości pomóc automatyzację wdrożenia zadania usługi Stream Analytics, które dane wyjściowe do usługi Azure Data Lake Storage Gen1.
+Azure Stream Analytics obsługuje uwierzytelnianie tożsamości zarządzanej z Azure Data Lake Storage (ADLS) Gen1 dane wyjściowe. Tożsamość to aplikacja zarządzana zarejestrowana w usłudze Azure Active Directory, która reprezentuje dane zadanie usługi Stream Analytics i może być używana do uwierzytelniania w zasobie docelowym. Tożsamości zarządzane eliminują ograniczenia metod uwierzytelniania opartych na użytkownikach, takie jak konieczność ponownego uwierzytelnienia z powodu zmiany hasła lub wygaśnięcia tokenu użytkownika, które następuje co 90 dni. Ponadto zarządzane tożsamości pomagają w automatyzowaniu wdrożeń zadań Stream Analytics, które są przekazywane do Azure Data Lake Storage Gen1.
 
-W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządzaną przez zadanie usługi Azure Stream Analytics, która danych wyjściowych do usługi Azure Data Lake magazynu Gen1 za pośrednictwem witryny Azure portal, wdrażanie szablonu usługi Azure Resource Manager i Azure Stream Analytics tools for Visual Studio.
+W tym artykule przedstawiono trzy sposoby włączania zarządzanej tożsamości dla zadania Azure Stream Analytics, które wyprowadza Azure Data Lake Storage Gen1 za pomocą Azure Portal, wdrożenia szablonu Azure Resource Manager i narzędzi Azure Stream Analytics dla programu Visual Studio.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Zacznij od utworzenia nowego zadania usługi Stream Analytics lub przez otwarcie istniejącego zadania w witrynie Azure portal. Na pasku menu, znajdujący się po lewej stronie ekranu, wybierz **tożsamości zarządzanej** znajdujący się w folderze **Konfiguruj**.
+1. Zacznij od utworzenia nowego zadania Stream Analytics lub otwierając istniejące zadanie w Azure Portal. Na pasku menu znajdującym się po lewej stronie ekranu wybierz pozycję **zarządzana tożsamość** znajdującą się w obszarze **Konfiguruj**.
 
-   ![Konfigurowanie tożsamości usługi Stream Analytics zarządzane](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
+   ![Konfigurowanie tożsamości zarządzanej Stream Analytics](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. Wybierz **przypisane użycia systemu tożsamości zarządzanej** z okna, który pojawia się po prawej stronie. Kliknij przycisk **Zapisz** dla jednostki usługi tożsamości zadania usługi Stream Analytics w usłudze Azure Active Directory. Cykl życia tożsamości nowo utworzony będą zarządzane przez platformę Azure. Po usunięciu zadania usługi Stream Analytics skojarzone tożsamości (nazwy głównej usługi) jest automatycznie usuwany przez platformę Azure.
+2. W oknie, które pojawia się po prawej stronie, wybierz pozycję **Użyj zarządzanej tożsamości przypisanej do systemu** . Kliknij przycisk **Zapisz** w jednostce usługi, aby uzyskać tożsamość zadania Stream Analytics w Azure Active Directory. Cykl życia nowo utworzonej tożsamości będzie zarządzany przez platformę Azure. Po usunięciu zadania Stream Analytics skojarzona tożsamość (czyli nazwa główna usługi) zostanie automatycznie usunięta przez platformę Azure.
 
-   Podczas zapisywania konfiguracji identyfikator obiektu (OID) nazwy głównej usługi jest wymieniony jako identyfikator podmiotu zabezpieczeń, jak pokazano poniżej:
+   Po zapisaniu konfiguracji identyfikator obiektu (OID) jednostki usługi jest wymieniony jako identyfikator podmiotu zabezpieczeń, jak pokazano poniżej:
 
    ![Identyfikator jednostki usługi Stream Analytics](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
  
-   Jednostka usługi ma taką samą nazwę jak zadanie usługi Stream Analytics. Na przykład, jeśli nazwa zadania jest **MyASAJob**, nazwa utworzono nazwę główną usługi jest również **MyASAJob**.
+   Nazwa główna usługi ma taką samą nazwę jak zadanie Stream Analytics. Jeśli na przykład nazwa zadania to **MyASAJob**, tworzona jest również nazwa jednostki usługi **MyASAJob**.
 
-3. W oknie właściwości danych wyjściowych ujścia danych wyjściowych Gen1 Azure Data Lake Store kliknij tryb uwierzytelniania, listy rozwijanej i wybierz pozycję ** tożsamości zarządzanej **.
+3. W oknie właściwości danych wyjściowych ujścia danych wyjściowych ADLS Gen1 kliknij listę rozwijaną tryb uwierzytelniania i wybierz pozycję * * tożsamość zarządzana * *.
 
-4. Wypełnij pozostałych właściwości. Aby dowiedzieć się więcej na temat tworzenia danych wyjściowych usługi ADLS, zobacz [tworzenie wyjściowego Data lake Store za pomocą usługi stream analytics](../data-lake-store/data-lake-store-stream-analytics.md). Gdy skończysz, kliknij przycisk **Zapisz**.
+4. Wypełnij pozostałe właściwości. Aby dowiedzieć się więcej na temat tworzenia danych wyjściowych ADLS, zobacz [Tworzenie danych wyjściowych usługi Data Lake Store za pomocą usługi Stream Analytics](../data-lake-store/data-lake-store-stream-analytics.md). Po zakończeniu kliknij przycisk **Zapisz**.
 
    ![Konfigurowanie usługi Azure Data Lake Storage](./media/stream-analytics-managed-identities-adls/stream-analytics-configure-adls.png)
  
-5. Przejdź do strony Przegląd Gen1 usługi ADLS i kliknij **Eksplorator danych**.
+5. Przejdź do strony przeglądu ADLS Gen1 i kliknij pozycję **Eksplorator danych**.
 
-   ![Konfigurowanie danych Lake magazynu — omówienie](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-overview.png)
+   ![Konfigurowanie Data Lake Storage — Omówienie](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-overview.png)
 
-6. W okienku Eksploratora danych, wybierz **dostępu** i kliknij przycisk **Dodaj** w panelu dostępu.
+6. W okienku Eksplorator danych wybierz pozycję **dostęp** , a następnie kliknij pozycję **Dodaj** w okienku dostęp.
 
-   ![Konfigurowanie dostępu do magazynu jeziora danych](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-access.png)
+   ![Konfigurowanie dostępu Data Lake Storage](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-access.png)
 
-7. W polu tekstowym na **zaznacz użytkownika lub grupę** okienko, wpisz nazwę jednostki usługi. Należy pamiętać, że nazwę jednostki usługi jest również nazwa odpowiedniego zadania usługi Stream Analytics. Po rozpoczęciu, wpisując nazwę główną, pojawi się poniżej pola tekstowego. Wybierz nazwę główną usługi żądany, a następnie kliknij przycisk **wybierz**.
+7. W polu tekstowym w okienku **Wybierz użytkownika lub grupę** wpisz nazwę jednostki usługi. Należy pamiętać, że nazwa jednostki usługi jest również nazwą odpowiedniego zadania Stream Analytics. Po rozpoczęciu wpisywania nazwy głównej zostanie ona wyświetlona poniżej pola tekstowego. Wybierz żądaną nazwę główną usługi, a następnie kliknij przycisk **Wybierz**.
 
    ![Wybierz nazwę główną usługi](./media/stream-analytics-managed-identities-adls/stream-analytics-service-principal-name.png)
  
-8. W **uprawnienia** okienku wyboru **zapisu** i **Execute** uprawnienia i przypisz ją do **ten Folder i wszystkie obiekty podrzędne**. Następnie kliknij przycisk **Ok**.
+8. W okienku **uprawnienia** Sprawdź uprawnienia **zapis** i **wykonywanie** i przypisz je do **tego folderu i wszystkich elementów podrzędnych**. Następnie kliknij przycisk **OK**.
 
-   ![Wybierz opcję uprawnień zapisu i wykonywania](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
+   ![Wybierz uprawnienia do zapisu i wykonywania](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
-9. Nazwa główna usługi jest wyświetlana w obszarze **przypisane uprawnienia** na **dostępu** okienko, jak pokazano poniżej. Możesz teraz Przejdź wstecz i uruchomić zadania usługi Stream Analytics.
+9. Nazwa główna usługi jest wymieniona w obszarze **przypisane uprawnienia** w okienku **dostępu** , jak pokazano poniżej. Teraz możesz wrócić i uruchomić zadanie Stream Analytics.
 
-   ![Stream Analytics, dostęp do listy w portalu](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
+   ![Stream Analytics listy dostępu w portalu](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
-   Aby dowiedzieć się więcej na temat uprawnień systemu plików Data Lake Storage Gen1, zobacz [kontroli dostępu w usłudze Azure Data Lake magazynu Gen1](../data-lake-store/data-lake-store-access-control.md).
+   Aby dowiedzieć się więcej na temat uprawnień systemu plików Data Lake Storage Gen1, zobacz [Access Control w Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
 
-## <a name="stream-analytics-tools-for-visual-studio"></a>Narzędzia Stream Analytics tools for Visual Studio
+## <a name="stream-analytics-tools-for-visual-studio"></a>Narzędzia Stream Analytics Tools for Visual Studio
 
-1. W JobConfig.json, ustaw **przypisane użycia systemu tożsamości** do **True**.
+1. W pliku JobConfig. JSON ustaw opcję **Użyj tożsamości przypisanej do systemu** na **wartość true**.
 
-   ![Konfiguracji zadania usługi Stream Analytics zarządzanych tożsamości](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
+   ![Tożsamość zarządzana konfiguracji zadania Stream Analytics](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. W oknie właściwości danych wyjściowych ujścia danych wyjściowych Gen1 Azure Data Lake Store kliknij tryb uwierzytelniania, listy rozwijanej i wybierz pozycję ** tożsamości zarządzanej **.
+2. W oknie właściwości danych wyjściowych ujścia danych wyjściowych ADLS Gen1 kliknij listę rozwijaną tryb uwierzytelniania i wybierz pozycję * * tożsamość zarządzana * *.
 
-   ![Azure Data Lake Store, dane wyjściowe zarządzanych tożsamości](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
+   ![ADLS wyjściowe tożsamości zarządzane](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 
 3. Wypełnij pozostałe właściwości, a następnie kliknij przycisk **Zapisz**.
 
-4. Kliknij przycisk **przesyłania na platformie Azure** w edytorze zapytań.
+4. Kliknij pozycję **Prześlij do platformy Azure** w edytorze zapytań.
 
-   Po przesłaniu zadania narzędzia wykonać dwie czynności:
+   Po przesłaniu zadania narzędzia te wykonują dwie rzeczy:
 
-   * Automatycznie tworzy usługę podmiotu zabezpieczeń dla tożsamości zadania usługi Stream Analytics w usłudze Azure Active Directory. Cykl życia tożsamości nowo utworzony będą zarządzane przez platformę Azure. Po usunięciu zadania usługi Stream Analytics skojarzone tożsamości (nazwy głównej usługi) jest automatycznie usuwany przez platformę Azure.
+   * Automatycznie tworzy nazwę główną usługi dla tożsamości zadania Stream Analytics w Azure Active Directory. Cykl życia nowo utworzonej tożsamości będzie zarządzany przez platformę Azure. Po usunięciu zadania Stream Analytics skojarzona tożsamość (czyli nazwa główna usługi) zostanie automatycznie usunięta przez platformę Azure.
 
-   * Automatycznie ustaw **zapisu** i **Execute** uprawnień dla ADLS Gen1 prefiksu ścieżki używanej w ramach zadania i przypisać ją do tego folderu i wszystkich obiektów podrzędnych.
+   * Automatycznie Ustaw uprawnienia do **zapisu** i **wykonywania** dla ścieżki prefiksu ADLS Gen1 użytej w zadaniu i przypisz ją do tego folderu i wszystkich elementów podrzędnych.
 
-5. Można wygenerować szablonów usługi Resource Manager za pomocą następujących przy użyciu właściwości [Stream Analytics w ciągłej integracji. Pakiet CD Nuget](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) wersji 1.5.0 lub nowszej na maszynie kompilacji (poza programem Visual Studio). Postępuj zgodnie z usługi Resource Manager do wdrażania szablonu kroki opisane w następnej sekcji, aby pobrać usługę podmiotu zabezpieczeń i udzielać dostępu do jednostki za pomocą programu PowerShell usługi.
+5. Szablony Menedżer zasobów można generować z następującą właściwością, korzystając z [Stream Analytics ci. Pakiet NuGet dysku CD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) w wersji 1.5.0 lub nowszej na maszynie kompilacji (poza programem Visual Studio). Wykonaj kroki wdrażania szablonu Menedżer zasobów w następnej sekcji, aby uzyskać nazwę główną usługi i udzielić dostępu do jednostki usługi za pośrednictwem programu PowerShell.
 
-## <a name="resource-manager-template-deployment"></a>Wdrażanie szablonu usługi Resource Manager
+## <a name="resource-manager-template-deployment"></a>Wdrożenie szablonu Menedżer zasobów
 
-1. Możesz utworzyć *Microsoft.StreamAnalytics/streamingjobs* zasobów za pomocą tożsamości zarządzanej, umieszczając następujące właściwości w sekcji zasobów w szablonie usługi Resource Manager:
+1. Zasób *Microsoft. StreamAnalytics/streamingjobs* można utworzyć przy użyciu tożsamości zarządzanej, dołączając następującą właściwość w sekcji resource szablonu Menedżer zasobów:
 
     ```json
     "Identity": {
@@ -96,9 +96,9 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
     },
     ```
 
-   Ta właściwość zawiera informacje dla usługi Azure Resource Manager do tworzenia i zarządzania tożsamościami dla zadania usługi Azure Stream Analytics.
+   Ta właściwość nakazuje Azure Resource Manager tworzenia tożsamości dla zadania Azure Stream Analytics i zarządzania nią.
 
-   **Przykładowe zadania**
+   **Przykładowe zadanie**
    
    ```json
    {
@@ -132,7 +132,7 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
    }
    ```
   
-   **Przykładowa odpowiedź zadania**
+   **Przykładowa odpowiedź na zadanie**
 
    ```json
    {
@@ -152,19 +152,19 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
    }
    ```
 
-   Zanotuj identyfikator podmiotu zabezpieczeń z odpowiedzi zadania, aby udzielić dostępu do wymaganych zasobów usługi ADLS.
+   Zwróć uwagę na identyfikator podmiotu zabezpieczeń z odpowiedzi na zadanie, aby udzielić dostępu do wymaganego zasobu ADLS.
 
-   **Identyfikator dzierżawy** jest identyfikator dzierżawy usługi Azure Active Directory, w którym zostanie utworzona jednostka usługi. Nazwa główna usługi jest tworzony w dzierżawie platformy Azure, która jest zaufana dla subskrypcji.
+   **Identyfikator dzierżawy** jest identyfikatorem dzierżawy Azure Active Directory, w której jest tworzona jednostka usługi. Nazwa główna usługi jest tworzona w dzierżawie platformy Azure, która jest zaufana przez subskrypcję.
 
-   **Typu** wskazuje typ tożsamości zarządzanej, jak wyjaśniono w typach zarządzanych tożsamości. Obsługiwany jest tylko typ przypisana przez System.
+   **Typ** wskazuje typ tożsamości zarządzanej, jak wyjaśniono w typach zarządzanych tożsamości. Obsługiwany jest tylko typ przypisany do systemu.
 
-2. Zapewniają dostęp do jednostki usługi przy użyciu programu PowerShell. Aby udzielić dostępu do jednostki za pomocą programu PowerShell usługi, wykonaj następujące polecenie:
+2. Zapewnianie dostępu do jednostki usługi przy użyciu programu PowerShell. Aby udzielić dostępu do jednostki usługi za pośrednictwem programu PowerShell, wykonaj następujące polecenie:
 
    ```powershell
    Set-AzDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
    ```
 
-   **PrincipalId** jest identyfikator obiektu nazwy głównej usługi i znajduje się na ekranie portalu po utworzeniu nazwy głównej usługi. Jeśli utworzono zadanie przy użyciu wdrożenia szablonu usługi Resource Manager, identyfikator obiektu znajduje się we właściwości Identity odpowiedzi zadania.
+   **PrincipalId** jest identyfikatorem obiektu jednostki usługi i jest wyświetlany na ekranie portalu po utworzeniu jednostki usługi. Jeśli zadanie zostało utworzone przy użyciu wdrożenia szablonu Menedżer zasobów, identyfikator obiektu zostanie wyświetlony we właściwości tożsamość odpowiedzi na zadanie.
 
    **Przykład**
 
@@ -173,17 +173,17 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   Aby dowiedzieć się więcej na temat powyższego polecenia programu PowerShell, zapoznaj się [AzDataLakeStoreItemAclEntry zestaw](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) dokumentacji.
+   Aby dowiedzieć się więcej o powyższym poleceniu programu PowerShell, zapoznaj się z dokumentacją [zestawu AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) .
 
 ## <a name="limitations"></a>Ograniczenia
-Ta funkcja nie obsługuje następujących działań:
+Ta funkcja nie obsługuje następujących czynności:
 
-1. **Dostęp do wielu dzierżawców**: Nazwa główna usługi utworzone dla danego zadania usługi Stream Analytics będą znajdować się w dzierżawie usługi Azure Active Directory, na którym utworzono zadanie i nie można używać wobec zasobu, który znajduje się w innej dzierżawie usługi Azure Active Directory. W związku z tym tylko służy MSI na zasobach ADLS generacji 1, które znajdują się w tej samej dzierżawie usługi Azure Active Directory jako zadanie Azure Stream Analytics. 
+1. **Dostęp z wieloma dzierżawcami**: jednostka usługi utworzona dla danego zadania Stream Analytics będzie znajdować się w dzierżawie Azure Active Directory, w której zadanie zostało utworzone, i nie można jej użyć w odniesieniu do zasobu znajdującego się w innym Azure Active Directory dzierżaw. Z tego względu można używać tylko MSI w przypadku zasobów ADLS generacji 1, które znajdują się w tej samej dzierżawie Azure Active Directory, co zadanie Azure Stream Analytics. 
 
-2. **[Tożsamość użytkownika z przypisaną](../active-directory/managed-identities-azure-resources/overview.md)** : nie jest obsługiwane. Oznacza to, że użytkownik nie będzie mógł wprowadzić własne jednostki usługi, który będzie używany przez ich zadania usługi Stream Analytics. Nazwa główna usługi jest generowany przez usługę Azure Stream Analytics.
+2. **[Tożsamość przypisana przez użytkownika](../active-directory/managed-identities-azure-resources/overview.md)** : nie jest obsługiwana. Oznacza to, że użytkownik nie może wprowadzić własnej nazwy głównej usługi, która będzie używana przez ich Stream Analytics zadanie. Nazwa główna usługi jest generowana przez Azure Stream Analytics.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Tworzenie wyjściowego Data lake Store za pomocą usługi stream analytics](../data-lake-store/data-lake-store-stream-analytics.md)
-* [Testowanie zapytań usługi Stream Analytics lokalnie z programem Visual Studio](stream-analytics-vs-tools-local-run.md)
-* [Testowanie danych na żywo lokalnie przy użyciu usługi Azure Stream Analytics tools for Visual Studio](stream-analytics-live-data-local-testing.md) 
+* [Tworzenie danych wyjściowych usługi Data Lake Store za pomocą usługi Stream Analytics](../data-lake-store/data-lake-store-stream-analytics.md)
+* [Testowanie Stream Analytics zapytań lokalnie za pomocą programu Visual Studio](stream-analytics-vs-tools-local-run.md)
+* [Lokalne testowanie danych na żywo przy użyciu narzędzi Azure Stream Analytics Tools for Visual Studio](stream-analytics-live-data-local-testing.md) 

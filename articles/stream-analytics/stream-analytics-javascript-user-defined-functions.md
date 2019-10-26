@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics | Microsoft Docs '
+title: Funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
 description: W tym samouczku przedstawiono korzystanie z zaawansowanej mechaniki zapytań za pomocą funkcji języka JavaScript zdefiniowanych przez użytkownika
 services: stream-analytics
 author: rodrigoamicrosoft
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 8a26e369783da8b59837e669dcd45a338ce82722
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329382"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934999"
 ---
-# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Samouczek: Funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
+# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Samouczek: funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
  
 Usługa Azure Stream Analytics obsługuje funkcje zdefiniowane przez użytkownika, które napisano w języku JavaScript. Bogaty zestaw metod do obsługi **ciągów**, **wyrażeń regularnych**, **operacji matematycznych**, **tablic** i **danych** oferowanych przez język JavaScript ułatwia tworzenie złożonych transformacji danych w ramach zadań usługi Stream Analytics.
 
@@ -46,16 +46,16 @@ Poniżej przedstawiono niektóre działania, których nie można wykonać w usł
 Mimo że funkcje takie jak **Date.GetDate()** lub **Math.random()** nie są blokowane w definicji funkcji, należy unikać używania ich. Te funkcje **nie zwracają** tego samego wyniku za każdym wywołaniem, a usługa Azure Stream Analytics nie przechowuje dziennika wywołań funkcji i zwróconych wyników. Jeśli funkcja zwraca różne wyniki dla tych samych zdarzeń, powtarzalność nie jest gwarantowana po ponownym uruchomieniu zadania przez użytkownika lub usługę Stream Analytics.
 
 ## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>Dodawanie funkcji języka JavaScript zdefiniowanej przez użytkownika w witrynie Azure Portal
-Aby utworzyć prostą funkcję języka JavaScript zdefiniowane przez użytkownika w ramach istniejącego zadania usługi Stream Analytics, wykonaj następujące kroki:
+Aby utworzyć prostą funkcję języka JavaScript zdefiniowaną przez użytkownika w ramach istniejącego zadania Stream Analytics, wykonaj następujące kroki:
 
 > [!NOTE]
-> Następujące kroki działają na zadania usługi Stream Analytics skonfigurowane do uruchamiania w chmurze. Jeśli zadanie usługi Stream Analytics jest skonfigurowany do uruchamiania w usłudze Azure IoT Edge, zamiast tego użyć programu Visual Studio i [dokonany zapis przy użyciu funkcji zdefiniowanej przez użytkownika C# ](stream-analytics-edge-csharp-udf.md).
+> Te kroki działają na Stream Analytics zadaniach skonfigurowanych do uruchamiania w chmurze. Jeśli zadanie Stream Analytics jest skonfigurowane do uruchamiania na Azure IoT Edge, zamiast tego użyj programu Visual Studio i [Napisz funkcję zdefiniowaną przez użytkownika C#za pomocą polecenia ](stream-analytics-edge-csharp-udf.md).
 
 1.  W witrynie Azure Portal znajdź zadanie usługi Stream Analytics.
 
-2. W obszarze **topologia zadań** nagłówka, wybierz **funkcji**. Zostanie wyświetlona pusta lista funkcji.
+2. W obszarze nagłówek **topologii zadania** wybierz pozycję **funkcje**. Zostanie wyświetlona pusta lista funkcji.
 
-3.  Aby utworzyć nowe funkcji zdefiniowanej przez użytkownika, wybierz **+ Dodaj**.
+3.  Aby utworzyć nową funkcję zdefiniowaną przez użytkownika, wybierz pozycję **+ Dodaj**.
 
 4.  W bloku **Nowa funkcja** wybierz dla elementu **Typ funkcji** pozycję **JavaScript**. Domyślny szablon funkcji zostanie wyświetlony w edytorze.
 
@@ -73,7 +73,7 @@ Aby utworzyć prostą funkcję języka JavaScript zdefiniowane przez użytkownik
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Wywoływanie funkcji w języku JavaScript zdefiniowanej przez użytkownika w zapytaniu
 
-1. W edytorze zapytań w ramach **topologia zadań** nagłówka, wybierz **zapytania**.
+1. W edytorze zapytań w obszarze nagłówek **topologii zadania** wybierz pozycję **zapytanie**.
 2.  Zmodyfikuj zapytanie, a następnie wywołaj funkcję zdefiniowaną przez użytkownika w następujący sposób:
 
     ```SQL
@@ -97,13 +97,13 @@ Funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stre
 
 Między typami obsługiwanymi przez język zapytań usługi Stream Analytics i język JavaScript występują różnice. Poniższa tabela zawiera mapowania konwersji między typami:
 
-Stream Analytics | JavaScript
+Analiza strumienia | JavaScript
 --- | ---
 bigint | Number (maksymalna liczba całkowita, która może być reprezentowana przez język JavaScript, to 2^53)
-DateTime | Date (język JavaScript obsługuje tylko milisekundy)
+Data i godzina | Date (język JavaScript obsługuje tylko milisekundy)
 double | Liczba
-nvarchar(MAX) | String
-Rekord | Object
+nvarchar(MAX) | Ciąg
+Rekord | Obiekt
 Tablica | Tablica
 NULL | Null
 
@@ -111,17 +111,17 @@ NULL | Null
 W tym miejscu przedstawiono konwersje typów języka JavaScript na typy usługi Stream Analytics:
 
 
-JavaScript | Stream Analytics
+JavaScript | Analiza strumienia
 --- | ---
 Liczba | Bigint (jeśli liczba jest zaokrąglona i należy do zakresu long.MinValue-long.MaxValue; w przeciwnym razie to double)
-Date | DateTime
-String | nvarchar(MAX)
-Object | Rekord
+Data | Data i godzina
+Ciąg | nvarchar(MAX)
+Obiekt | Rekord
 Tablica | Tablica
 Null, Undefined | NULL
 Każdy inny typ (na przykład function lub error) | Nieobsługiwane (powoduje wystąpienie błędu w czasie wykonywania)
 
-Język JavaScript jest uwzględniana wielkość liter i wielkość liter w wyrazie pola obiektu w kodzie JavaScript musi odpowiadać wielkości liter pól w danych przychodzących. Należy pamiętać, że zadania o poziomie zgodności 1.0 spowoduje wykonanie konwersji pola instrukcję SQL SELECT, aby zawierać tylko litery. Równy podanemu poziomowi zgodności 1.1 lub nowszej pola z instrukcją SELECT ma tą samą wielkością liter, jak określono w zapytaniu SQL.
+Język JavaScript uwzględnia wielkość liter, a wielkość liter w polach obiektów w kodzie JavaScript musi być zgodna z wielkością liter pól w danych przychodzących. Należy pamiętać, że zadania o poziomie zgodności 1,0 spowodują przekonwertowanie pól z instrukcji SELECT języka SQL na małe litery. W obszarze poziom zgodności 1,1 i wyższych pola z instrukcji SELECT będą mieć taką samą wielkość liter jak określona w zapytaniu SQL.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 Błędy w czasie wykonywania kodu JavaScript są traktowane jako błędy krytyczne i uwidaczniane w dzienniku aktywności. Aby pobrać dziennik, w witrynie Azure Portal przejdź do zadania i wybierz pozycję **Dziennik aktywności**.
@@ -163,7 +163,7 @@ Gdy grupa zasobów, zadanie przesyłania strumieniowego i wszystkie pokrewne zas
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dodatkową pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W ramach tego samouczka utworzono zadanie usługi Stream Analytics, które uruchamia prostą funkcję języka JavaScript zdefiniowaną przez użytkownika. Aby dowiedzieć się więcej o usłudze Stream Analytics, zapoznaj się z artykułami dotyczącymi scenariusza w czasie rzeczywistym:
 

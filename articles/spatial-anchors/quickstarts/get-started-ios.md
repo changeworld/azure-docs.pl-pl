@@ -8,14 +8,14 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56360238db8632e74a95c057a7fe643b5cea3151
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 42a97646a6881ead61ceeaff3fe8c0c8d73d6057
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206830"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929409"
 ---
-# <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Szybki start: Tworzenie aplikacji dla systemu iOS przy użyciu usługi Azure Spatial Anchors w języku Swift lub Objective-C
+# <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Szybki Start: Tworzenie aplikacji dla systemu iOS z zakotwiczeniami przestrzennymi platformy Azure w postaci SWIFT lub w celu-C
 
 W tym przewodniku Szybki start opisano, jak utworzyć aplikację dla systemu iOS przy użyciu usługi [Azure Spatial Anchors](../overview.md) w języku Swift lub Objective-C. Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARKit dla systemu iOS, która może zapisywać i przywoływać kotwicę przestrzenną.
 
@@ -33,7 +33,7 @@ Omawiane tematy:
 Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz następującymi elementami:
 
 - Deweloperska maszyna z systemem macOS oraz zainstalowanymi programami <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10 lub nowszym</a> i <a href="https://cocoapods.org" target="_blank">CocoaPods</a>.
-- Git zainstalowanych za pomocą oprogramowania HomeBrew. Wprowadź następujące polecenie w jednym wierszu w terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git`.
+- Narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git`.
 - Deweloperskie urządzenie z systemem iOS, <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">zgodne z zestawem ARKit</a>.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -68,6 +68,9 @@ Uruchom polecenie `pod install --repo-update` w celu zainstalowania programu Coc
 
 Następnie otwórz plik `.xcworkspace` w programie Xcode.
 
+> [!NOTE]
+> Zapoznaj się z [krokami](#cocoapods-issues-on-macos-catalina-1015) rozwiązywania problemów, jeśli masz problemy z CocoaPod po uaktualnieniu do macOS Catalina (10,15).
+
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
 ```bash
@@ -84,7 +87,7 @@ open ./SampleObjC.xcworkspace
 
 ## <a name="configure-account-identifier-and-key"></a>Konfigurowanie identyfikatora i klucza konta
 
-Następnym krokiem jest, aby skonfigurować aplikację do używania Twojego identyfikatora konta i klucz konta. Skopiowane do edytora tekstu po [Definiowanie zasobów przestrzenne kotwic](#create-a-spatial-anchors-resource).
+Następnym krokiem jest skonfigurowanie aplikacji w taki sposób, aby korzystała z identyfikatora konta i klucza konta. Skopiowano je do edytora tekstu podczas [konfigurowania zasobów kotwic przestrzennych](#create-a-spatial-anchors-resource).
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
@@ -115,13 +118,25 @@ Wybierz pozycję **Build and then run the current scheme (Skompiluj i uruchom bi
 ![Wdrażanie i uruchamianie](./media/get-started-ios/deploy-run.png)
 
 > [!NOTE]
-> Jeśli widzisz błąd `library not found for -lPods-SampleObjC`, prawdopodobnie został otwarty plik `.xcodeproj` zamiast `.xcworkspace`. Otwórz plik `.xcworkspace` i ponów próbę.
+> Jeśli widzisz błąd `library not found for -lPods-SampleObjC`, prawdopodobnie został otwarty plik z rozszerzeniem `.xcodeproj` zamiast `.xcworkspace`. Otwórz plik `.xcworkspace` i ponów próbę.
 
 W programie Xcode zatrzymaj aplikację, naciskając pozycję **Stop**.
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+### <a name="cocoapods-issues-on-macos-catalina-1015"></a>CocoaPods problemy w macOS Catalina (10,15)
+
+Jeśli niedawno Zaktualizowano do macOS Catalina (10,15) i CocoaPods zostały wcześniej zainstalowane, CocoaPods może być w stanie przerwania i nie powiodło się poprawne skonfigurowanie plików projektu i `.xcworkspace`. Aby rozwiązać ten problem, należy ponownie zainstalować program CocoaPods, uruchamiając następujące polecenia:
+
+```shell
+brew update
+brew install cocoapods --build-from-source
+brew link --overwrite cocoapods
+```
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Samouczek: Udostępnianie kotwic przestrzennych na różnych urządzeniach](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Samouczek: udostępnianie kotwic przestrzennych między urządzeniami](../tutorials/tutorial-share-anchors-across-devices.md)

@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: ea145239d38a4030423a4517fe02c62b8eefa08a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 359c4da22374d3bf1ccca2430ec15594408bdb50
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211775"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931536"
 ---
-# <a name="example-detect-sentiment-with-text-analytics"></a>Przykład: Wykryj tonacji z analiza tekstu
+# <a name="example-detect-sentiment-with-text-analytics"></a>Przykład: wykrywanie tonacji z analiza tekstu
 
 [Interfejs API usługi Azure analiza tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) oblicza dane wejściowe tekstu i zwraca wynik tonacji dla każdego dokumentu. Wyniki mieszczą się w zakresie od 0 (wartość ujemna) do 1 (wartość dodatnia).
 
@@ -34,11 +34,11 @@ Analiza tekstu używa algorytmu klasyfikacji uczenia maszynowego do wygenerowani
 
 Analiza opinii odbywa się dla całego dokumentu, w przeciwieństwie do wyodrębniania opinii dla konkretnej jednostki w tekście. W rzeczywistości istnieje tendencja do oceny dokładności oceniania, gdy dokumenty zawierają jedno lub dwa zdania, a nie duży blok tekstu. W fazie oceny obiektywizmu model określa, czy dokumentu jako całość jest obiektywny, czy też zawiera opinię. Dokument, który jest przede wszystkim nie przechodzi do fazy wykrywania tonacji, co skutkuje wynikami 0,50, bez dalszej obróbki. W przypadku dokumentów, które kontynuują się w potoku, następna faza generuje wynik powyżej lub poniżej 0,50. Wynik zależy od stopnia wykrycia elementu tonacji w dokumencie.
 
-## <a name="preparation"></a>Przygotowanie
+## <a name="preparation"></a>Przygotowywanie
 
 Analiza tonacji daje wynik wyższej jakości, gdy podajesz im mniejsze fragmenty tekstu do pracy. Jest to przeciwieństwo wyodrębniania kluczowych fraz, które działa lepiej na większych blokach tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
 
-Musisz mieć dokumenty JSON w tym formacie: Identyfikator, tekst i język.
+Musisz mieć dokumenty JSON w tym formacie: ID, text i Language.
 
 Rozmiar dokumentu musi zawierać 5 120 znaków na dokument. Możesz mieć do 1 000 elementów (identyfikatorów) na kolekcję. Kolekcja jest przesyłana w treści żądania. Poniższy przykład jest przykładem zawartości, która może zostać przesłana do analizy tonacji:
 
@@ -80,7 +80,7 @@ Aby uzyskać więcej informacji na temat definicji żądania, zobacz [wywoływan
 
 + Utwórz żądanie POST. Aby zapoznać się z dokumentacją interfejsu API dla tego żądania, zobacz [interfejs api analiza tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9).
 
-+ Ustaw punkt końcowy HTTP na potrzeby analizy tonacji przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musisz uwzględnić `/text/analytics/v2.1/sentiment` w adresie URL. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
++ Ustaw punkt końcowy HTTP na potrzeby analizy tonacji przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Należy uwzględnić `/text/analytics/v2.1/sentiment` w adresie URL. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
 
 + Ustaw nagłówek żądania w taki sposób, aby zawierał [klucz dostępu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dla operacji analiza tekstu.
 
@@ -96,7 +96,7 @@ Analiza jest wykonywana po odebraniu żądania. Aby uzyskać informacje na temat
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
 
-## <a name="step-3-view-the-results"></a>Krok 3: Wyświetlanie wyników
+## <a name="step-3-view-the-results"></a>Krok 3. Wyświetlanie wyników
 
 Analizator tonacji klasyfikuje tekst jako "dodatnie" lub ujemne. Przypisuje wynik z zakresu od 0 do 1. Wartości zbliżone do 0,5 oznaczają opinię neutralną lub brak opinii. Wynik 0,5 oznacza opinię neutralną. Gdy nie można przeanalizować ciągu dla tonacji lub nie ma tonacji, wynik jest zawsze 0,5 dokładnie. Na przykład jeśli przekażesz ciąg w języku hiszpańskim z kodem języka angielskiego, wynik będzie wynosić 0,5.
 
@@ -134,24 +134,25 @@ Poniższy przykład przedstawia odpowiedzi dla kolekcji dokumentów w tym artyku
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>Publiczna wersja zapoznawcza analiza tonacji v3
 
-[Następna wersja analiza tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) jest teraz dostępna w publicznej wersji zapoznawczej. Zapewnia znaczącą poprawę dokładności i szczegółowości kategoryzacji tekstu interfejsu API i oceniania.
+[Następna wersja analiza tonacji](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c9) jest teraz dostępna w publicznej wersji zapoznawczej. Zapewnia znaczącą poprawę dokładności i szczegółowości kategoryzacji tekstu interfejsu API i oceniania.
 
 > [!NOTE]
 > * Format żądania analiza tonacji v3 i [limity danych](../overview.md#data-limits) są takie same jak w poprzedniej wersji.
 > * W tej chwili analiza tonacji v3:
->    * Obecnie obsługuje język angielski, francuski, włoski, japoński, chiński (uproszczony) i tradycyjny — chiński.
->    * Jest dostępny `Australia East`w następujących regionach: ,`Southeast Asia` `West Europe` `West US 2` ,,,,,,,,, i `Central Canada` `Central US` `East Asia` `East US` `East US 2` `North Europe` `South Central US` `UK South` .
+>    * Obecnie obsługuje angielski (`en`), japoński (`ja`), chiński uproszczony (`zh-Hans`), chiński tradycyjny (`zh-Hant`), francuski (`fr`), włoski (`it`), hiszpański (`es`), holenderski (`nl`), portugalski (`pt`) i niemiecki (`de`).
+>    * Dostępne w następujących regionach: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`i `West US 2`.
 
-|Cecha |Opis  |
+|Funkcja |Opis  |
 |---------|---------|
 |Ulepszona dokładność     | znacznie lepsze niż w poprzednich wersjach wykrywanie pozytywnej, neutralnej, negatywnej i mieszanej tonacji dokumentów tekstowych.           |
 |Wynik tonacji na poziomie dokumentu i zdania     | wykrywanie tonacji zarówno dokumentu, jak i poszczególnych zdań. Jeśli dokument zawiera wiele zdań, wynik tonacji jest również przypisywany do każdego zdania.         |
-|Kategoria tonacji i Ocena     | Interfejs API teraz zwraca tonacji kategorie dla tekstu, oprócz oceny tonacji. Kategorie są `positive`, `negative`, `neutral`, i `mixed`.       |
+|Tonacji etykietowania i oceniania     | Interfejs API teraz zwraca tonacji kategorie dla tekstu, oprócz oceny tonacji. Kategorie są `positive`, `negative`, `neutral`i `mixed`.       |
 | Ulepszone dane wyjściowe | Analiza tonacji teraz zwraca informacje dla całego dokumentu tekstowego i jego poszczególnych zdań. |
+| Model — parametr wersji | Opcjonalny parametr służący do wybierania, która wersja modelu analiza tekstu jest używana w danych. |
 
 ### <a name="sentiment-labeling"></a>Etykietowanie tonacji
 
-Analiza tonacji v3 może zwracać wyniki i etykiety na poziomie zdania i dokumentu. Wyniki i etykiety są `positive`, `negative`, i `neutral`. Na poziomie `mixed` dokumentu można również zwrócić etykietę tonacji (a nie wynik). Tonacji dokumentu jest określany przez zsumowanie wyników zdań.
+Analiza tonacji v3 może zwracać wyniki i etykiety na poziomie zdania i dokumentu. Wyniki i etykiety są `positive`, `negative`i `neutral`. Na poziomie dokumentu może być również zwracana etykieta `mixed` tonacji (a nie wynik). Tonacji dokumentu jest określany przez zsumowanie wyników zdań.
 
 | Tonacji zdania                                                        | Etykieta zwracanego dokumentu |
 |---------------------------------------------------------------------------|----------------|
@@ -159,6 +160,23 @@ Analiza tonacji v3 może zwracać wyniki i etykiety na poziomie zdania i dokumen
 | Co najmniej jedno zdanie negatywne i pozostałe zdania są neutralne.  | `negative`     |
 | Co najmniej jedno wyrażenie negatywne i co najmniej jedno wyrażenie dodatnie.         | `mixed`        |
 | Wszystkie zdania są neutralne.                                                 | `neutral`      |
+
+### <a name="model-versioning"></a>Przechowywanie wersji modelu
+
+Począwszy od wersji 3,0, interfejs API analizy tekstu pozwala wybrać model analiza tekstu używany na danych. Użyj opcjonalnego parametru `model-version`, aby wybrać wersję modelu w żądaniach. Jeśli ten parametr nie jest określony, interfejs API będzie domyślnie `latest`, Najnowsza stabilna wersja modelu.
+
+Dostępne wersje modelu:
+* `2019-10-01` (`latest`)
+
+Każda odpowiedź z punktów końcowych v3 zawiera pole `model-version` określające używaną wersję modelu.
+
+```json
+{
+    “documents”: […]
+    “errors”: []
+    “model-version”: “2019-10-01”
+}
+```
 
 ### <a name="sentiment-analysis-v3-example-request"></a>Przykładowe żądanie analiza tonacji v3
 
@@ -265,7 +283,7 @@ W tym artykule przedstawiono koncepcje i przepływ pracy analizy tonacji przy u�
 
 + [Interfejs API analiza tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) jest dostępny dla wybranych języków.
 + Dokumenty JSON w treści żądania obejmują identyfikator, tekst i kod języka.
-+ Żądanie post jest `/sentiment` punktem końcowym przy użyciu spersonalizowanego [klucza dostępu i punktu końcowego](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , który jest prawidłowy dla Twojej subskrypcji.
++ Żądanie POST jest punktem końcowym `/sentiment` przy użyciu spersonalizowanego [klucza dostępu i punktu końcowego](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , który jest prawidłowy dla Twojej subskrypcji.
 + Dane wyjściowe odpowiedzi, które składają się z wyniku tonacji dla każdego identyfikatora dokumentu, mogą być przesyłane strumieniowo do dowolnej aplikacji, która akceptuje kod JSON. Przykładowe aplikacje to programy Excel i Power BI, aby podać kilka nazw.
 
 ## <a name="see-also"></a>Zobacz także

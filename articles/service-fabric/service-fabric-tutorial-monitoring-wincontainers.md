@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 856e2859c778c9f23bc093c2283571a1440ef701
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: b98917e6f3c0ff6570251751a9958b202908ee3e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68598773"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933911"
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Samouczek: Monitorowanie kontenerów systemu Windows na Service Fabric przy użyciu dzienników Azure Monitor
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Samouczek: monitorowanie kontenerów systemu Windows na Service Fabric przy użyciu dzienników Azure Monitor
 
 Jest to trzecia część samouczka i przeprowadzi Cię przez proces konfigurowania Azure Monitor dzienników do monitorowania kontenerów systemu Windows zorganizowanych w Service Fabric.
 
@@ -186,7 +186,7 @@ Wprowadź następujące zmiany w szablonie *template.json*:
     },
     ```
 
-[W tym miejscu](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) znajduje się przykładowy szablon (używany w pierwszej części tego samouczka) zawierający wszystkie wprowadzone zmiany, do których można się odwołać w razie potrzeby. Te zmiany spowodują dodanie obszaru roboczego usługi Log Analytics do grupy zasobów. Obszar roboczy zostanie skonfigurowany w celu korzystania ze zdarzeń platformy usługi Service Fabric z poziomu tabel magazynu skonfigurowanych za pomocą agenta [Microsoft Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md). Agent usługi Log Analytics (Microsoft Monitoring Agent) został również dodany do każdego węzła w klastrze jako rozszerzenie maszyny wirtualnej. Oznacza to, że podczas skalowania klastra agent jest automatycznie konfigurowany na każdej maszynie i podłączany do tego samego obszaru roboczego.
+[W tym miejscu](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/d2ffa318581fc23ac7f1b0ab2b52db1a0d7b4ba7/5-VM-Windows-OMS-UnSecure/sfclusteroms.json) znajduje się przykładowy szablon (używany w pierwszej części tego samouczka) zawierający wszystkie wprowadzone zmiany, do których można się odwołać w razie potrzeby. Te zmiany spowodują dodanie obszaru roboczego usługi Log Analytics do grupy zasobów. Obszar roboczy zostanie skonfigurowany w celu korzystania ze zdarzeń platformy usługi Service Fabric z poziomu tabel magazynu skonfigurowanych za pomocą agenta [Microsoft Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md). Agent usługi Log Analytics (Microsoft Monitoring Agent) został również dodany do każdego węzła w klastrze jako rozszerzenie maszyny wirtualnej. Oznacza to, że podczas skalowania klastra agent jest automatycznie konfigurowany na każdej maszynie i podłączany do tego samego obszaru roboczego.
 
 Wdróż szablon z wprowadzonymi zmianami, aby uaktualnić bieżący klaster. Po zakończeniu tej operacji w grupie zasobów powinny zostać wyświetlone zasoby usługi log Analytics. Gdy klaster będzie gotowy, wdróż w nim konteneryzowaną aplikację. W następnym kroku zostanie skonfigurowane monitorowanie kontenerów.
 
@@ -227,7 +227,7 @@ Spowoduje to przejście do obszaru roboczego usługi Log Analytics, w którym mo
 
 Po kilku minutach **odśwież** rozwiązanie do monitorowania kontenerów, aby wyświetlić dane przychodzące dotyczące *wydajności komputera*. Pomoże to zrozumieć, w jaki sposób zasoby są używane. Tych metryk można również używać na potrzeby podejmowania odpowiednich decyzji dotyczących skalowania klastra lub potwierdzania, że klaster równoważy obciążenie zgodnie z oczekiwaniami.
 
-*Uwaga: Upewnij się, że filtry czasu zostały odpowiednio ustawione i umożliwiają korzystanie z tych metryk.*
+*Uwaga: upewnij się, że filtry czasu zostały odpowiednio ustawione i umożliwiają korzystanie z tych metryk.*
 
 ![Liczniki wydajności 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
 
@@ -242,7 +242,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 Po skonfigurowaniu monitorowania konteneryzowanej aplikacji spróbuj wykonać następujące czynności:
 
-* Skonfiguruj dzienniki Azure Monitor dla klastra systemu Linux, wykonując podobne kroki jak powyżej. Utwórz odwołanie do [tego szablonu](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux), aby wprowadzić zmiany w szablonie usługi Resource Manager.
+* Skonfiguruj dzienniki Azure Monitor dla klastra systemu Linux, wykonując podobne kroki jak powyżej. Utwórz odwołanie do [tego szablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS), aby wprowadzić zmiany w szablonie usługi Resource Manager.
 * Skonfiguruj dzienniki Azure Monitor, aby skonfigurować [Automatyczne alerty](../log-analytics/log-analytics-alerts.md) w celu ułatwienia wykrywania i diagnostyki.
 * Zapoznaj się z listą [zalecanych liczników wydajności](service-fabric-diagnostics-event-generation-perf.md) usługi Service Fabric w celu skonfigurowania ich na potrzeby klastrów.
 * Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) , które są oferowane w ramach dzienników Azure monitor.

@@ -3,16 +3,16 @@ title: Spis rozwiązań monitorowania na platformie Azure | Microsoft Docs
 description: Monitorowanie rozwiązań w Azure Monitor to zbiór reguł logiki, wizualizacji i pozyskiwania danych, które zapewniają metryki przestawiane wokół określonego obszaru problemu.  Ten artykuł zawiera listę rozwiązań monitorowania dostępnych od firmy Microsoft i szczegółowych informacji o ich metodzie i częstotliwości zbierania danych.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: article
+ms.topic: conceptual
 author: MGoedtel
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 1f93ada1a6fb6b87c79a3713e80ebfefae9fe56f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 6012a74c00b64c818434ea1744d86c6cf67dd463
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900639"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931329"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Szczegóły dotyczące spisu i zbierania danych na potrzeby monitorowania rozwiązań na platformie Azure
 [Rozwiązania do monitorowania](solutions.md) wykorzystują usługi platformy Azure, aby zapewnić dodatkowe informacje o działaniu konkretnej aplikacji lub usługi. Monitorowanie rozwiązań zazwyczaj zbiera dane dzienników i udostępnia zapytania i widoki umożliwiające analizowanie zebranych danych. Możesz dodać rozwiązania do monitorowania do Azure Monitor dla wszystkich używanych aplikacji i usług. Są one zazwyczaj dostępne bezpłatnie, ale zbierają dane, które mogą wywołać opłaty za użycie.

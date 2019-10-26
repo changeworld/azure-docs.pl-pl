@@ -1,90 +1,84 @@
 ---
-title: Importuj dane usługi Azure Log Analytics w usłudze Power BI | Dokumentacja firmy Microsoft
-description: Power BI to usługa analizy biznesowej w chmurze firmy Microsoft, która udostępnia zaawansowane wizualizacje i raporty analizy różnych zestawów danych.  W tym artykule opisano sposób konfigurowania i importowania danych usługi Log Analytics w usłudze Power BI i skonfigurować go do automatycznego odświeżania.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 83edc411-6886-4de1-aadd-33982147b9c3
-ms.service: log-analytics
+title: Importowanie danych Log Analytics platformy Azure do Power BI | Microsoft Docs
+description: Power BI to oparta na chmurze usługa analizy biznesowej firmy Microsoft, która udostępnia rozbudowane wizualizacje i raporty umożliwiające analizę różnych zestawów danych.  W tym artykule opisano sposób konfigurowania i importowania danych Log Analytics do Power BI i konfigurowania ich do automatycznego odświeżania.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0b1627306f1a8e9d9285c72118bfebdcb53d369b
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.date: 05/01/2019
+ms.openlocfilehash: 62a010480dc83561a11c6ee99c76f35b29e808c1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626115"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932112"
 ---
-# <a name="import-azure-monitor-log-data-into-power-bi"></a>Importuj dane dziennika usługi Azure Monitor do usługi Power BI
+# <a name="import-azure-monitor-log-data-into-power-bi"></a>Importuj Azure Monitor dane dziennika do Power BI
 
 
-[Usługa Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) to usługa analizy biznesowej w chmurze firmy Microsoft, która udostępnia zaawansowane wizualizacje i raporty analizy różnych zestawów danych.  Można zaimportować wyników kwerendy dzienników usługi Azure Monitor do zestawu danych usługi Power BI, dzięki czemu można wykorzystać jej funkcje, takie jak łączenie danych z różnych źródeł oraz udostępnianie raportów w sieci web i urządzeń przenośnych.
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) to oparta na chmurze usługa analizy biznesowej firmy Microsoft, która udostępnia rozbudowane wizualizacje i raporty umożliwiające analizę różnych zestawów danych.  Wyniki zapytania dziennika Azure Monitor można zaimportować do Power BI zestawu danych, dzięki czemu można korzystać z jego funkcji, takich jak łączenie danych z różnych źródeł i udostępnianie raportów w sieci Web i na urządzeniach przenośnych.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview"></a>Przegląd
-Aby zaimportować dane z [obszaru roboczego usługi Log Analytics](manage-access.md) w usłudze Azure Monitor do usługi Power BI, utworzysz zestaw danych w usłudze Power BI na podstawie [zapytanie dziennika](../log-query/log-query-overview.md) w usłudze Azure Monitor.  Zapytanie jest uruchamiane w każdym razem, gdy zestaw danych jest odświeżane.  Następnie można tworzyć raporty usługi Power BI, które używają danych z zestawu danych.  Aby utworzyć zestaw danych w usłudze Power BI, wyeksportować zapytanie z usługą Log Analytics do [języku Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification).  Użyj tego, aby utworzyć zapytanie w programie Power BI Desktop, a następnie opublikować go w usłudze Power BI jako zestaw danych.  Szczegóły tego procesu są opisane poniżej.
+Aby zaimportować dane z [obszaru roboczego log Analytics](manage-access.md) w Azure Monitor do Power BI, należy utworzyć zestaw danych w Power BI na podstawie [zapytania dziennika](../log-query/log-query-overview.md) w Azure monitor.  Zapytanie jest uruchamiane za każdym razem, gdy zestaw danych zostanie odświeżony.  Następnie można kompilować Power BI raporty, które używają danych z zestawu danych.  Aby utworzyć zestaw danych w Power BI, należy wyeksportować zapytanie z Log Analytics do [języka Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification).  Następnie należy użyć tego do utworzenia zapytania w Power BI Desktop, a następnie opublikowania go do Power BI jako zestawu danych.  Szczegóły dotyczące tego procesu opisano poniżej.
 
-![Usługi log Analytics w usłudze Power BI](media/powerbi/overview.png)
+![Log Analytics do Power BI](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>Eksportowanie zapytania
-Rozpocznij od utworzenia [zapytanie dziennika](../log-query/log-query-overview.md) zwracającego dane, które chcesz wypełnić zestaw danych usługi Power BI.  Następnie wyeksportować zapytanie do [języku Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) których można używać w programie Power BI Desktop.
+Zacznij od utworzenia [zapytania dziennika](../log-query/log-query-overview.md) , które zwraca dane, które mają zostać wypełnione Power BI zestawu danych.  Następnie należy wyeksportować to zapytanie do [języka Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) , który może być używany przez Power BI Desktop.
 
-1. [Utwórz zapytanie dziennika w usłudze Log Analytics](../log-query/get-started-portal.md) do wyodrębniania danych dla zestawu danych.
-2. Wybierz **wyeksportować** > **usługi Power BI zapytania (M)** .  Zapytanie zostanie wyeksportowany do pliku tekstowego o nazwie **PowerBIQuery.txt**. 
+1. [Utwórz zapytanie dziennika w log Analytics](../log-query/get-started-portal.md) , aby wyodrębnić dane dla zestawu danych.
+2. Wybierz pozycję **eksportuj** > **Power BI zapytanie (M)** .  Spowoduje to wyeksportowanie zapytania do pliku tekstowego o nazwie **PowerBIQuery. txt**. 
 
-    ![Wyszukiwanie w dzienniku eksportu](media/powerbi/export-analytics.png)
+    ![Eksportowanie przeszukiwania dzienników](media/powerbi/export-analytics.png)
 
-3. Otwórz plik tekstowy, a następnie skopiuj jego zawartość.
+3. Otwórz plik tekstowy i skopiuj jego zawartość.
 
-## <a name="import-query-into-power-bi-desktop"></a>Importuj zapytanie do usługi Power BI Desktop
-Usługa Power BI Desktop to aplikacja komputerowa, która pozwala na tworzenie zestawów danych i raportów, które mogą być publikowane w usłudze Power BI.  Można również użyć do utworzenia zapytania za pomocą dodatku Power Query language, wyeksportowany z usługi Azure Monitor. 
+## <a name="import-query-into-power-bi-desktop"></a>Importuj zapytanie do Power BI Desktop
+Power BI Desktop to aplikacja klasyczna, która umożliwia tworzenie zestawów danych i raportów, które mogą być publikowane w programie Power BI.  Można go również użyć do utworzenia zapytania przy użyciu języka Power Query wyeksportowanego z Azure Monitor. 
 
-1. Zainstaluj [Power BI Desktop](https://powerbi.microsoft.com/desktop/) Jeśli nie jest jeszcze, a następnie otworzyć aplikację.
-2. Wybierz **Pobierz dane** > **puste zapytanie** do otwierania kwerendy.  Następnie wybierz pozycję **edytora zaawansowanego** i Wklej zawartość wyeksportowany plik do zapytania. Kliknij przycisk **Gotowe**.
+1. Zainstaluj [Power BI Desktop](https://powerbi.microsoft.com/desktop/) , jeśli jeszcze tego nie zrobiono, a następnie otwórz aplikację.
+2. Wybierz pozycję **Pobierz dane** > **pustej kwerendzie** , aby otworzyć nowe zapytanie.  Następnie wybierz pozycję **Edytor zaawansowany** i wklej zawartość wyeksportowanego pliku do zapytania. Kliknij przycisk **Gotowe**.
 
-    ![Usługa Power BI Desktop zapytania](media/powerbi/desktop-new-query.png)
+    ![Zapytanie Power BI Desktop](media/powerbi/desktop-new-query.png)
 
-5. Zapytanie działa, a jego wyniki są wyświetlane.  Może pojawić się prośba o poświadczenia do połączenia z platformą Azure.  
-6. Wpisz nazwę opisową dla zapytania.  Wartość domyślna to **zapytanie1**. Kliknij przycisk **Zamknij i Zastosuj** można dodać zestaw danych do raportu.
+5. Zapytanie zostanie uruchomione, a jego wyniki są wyświetlane.  Może zostać wyświetlony monit o podanie poświadczeń w celu nawiązania połączenia z platformą Azure.  
+6. Wpisz nazwę opisową zapytania.  Wartość domyślna to **zapytanie1**. Kliknij przycisk **Zamknij i Zastosuj** , aby dodać zestaw danych do raportu.
 
-    ![Usługa Power BI Desktop nazwy](media/powerbi/desktop-results.png)
+    ![Nazwa Power BI Desktop](media/powerbi/desktop-results.png)
 
 
 
-## <a name="publish-to-power-bi"></a>Publikowanie w usłudze Power BI
-Podczas publikowania do usługi Power BI, zostanie utworzony zestaw danych i raport.  Jeśli utworzysz raport programu Power BI Desktop, następnie ta jest publikowana z danymi.  W przeciwnym razie zostanie utworzony pusty raport.  Można zmodyfikować raport w usłudze Power BI lub utworzyć nowy katalog, w oparciu o zestaw danych.
+## <a name="publish-to-power-bi"></a>Publikuj w Power BI
+Po opublikowaniu do Power BI zostanie utworzony zestaw danych i raport.  Jeśli utworzysz raport w Power BI Desktop, zostanie on opublikowany wraz z danymi.  Jeśli nie, zostanie utworzony pusty raport.  Raport można zmodyfikować w Power BI lub utworzyć nowy oparty na zestawie danych.
 
-1. Tworzenie raportu na podstawie danych.  Użyj [dokumentacji usługi Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-report-view) Jeśli nie jesteś zaznajomiony z nim.  
-1. Gdy wszystko będzie gotowe do wysłania do usługi Power BI, kliknij przycisk **Publikuj**.  
-1. Po wyświetleniu monitu wybierz lokalizację docelową na Twoim koncie usługi Power BI.  Jeśli nie masz określonego miejsca docelowego, pamiętając, użyj **Mój obszar roboczy**.
+1. Utwórz raport na podstawie danych.  Zapoznaj się z [dokumentacją Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-report-view) , jeśli nie znasz tego programu.  
+1. Gdy wszystko będzie gotowe do wysłania do Power BI, kliknij przycisk **Publikuj**.  
+1. Po wyświetleniu monitu wybierz lokalizację docelową na koncie Power BI.  Jeśli nie masz określonego miejsca docelowego, użyj **obszaru mój obszar roboczy**.
 
-    ![Publikowanie w usłudze Power BI Desktop](media/powerbi/desktop-publish.png)
+    ![Power BI Desktop publikowanie](media/powerbi/desktop-publish.png)
 
-1. Po zakończeniu publikowania kliknij **Otwórz w usłudze Power BI** otworzyć usługi Power BI przy użyciu nowego zestawu danych.
+1. Po zakończeniu publikowania kliknij pozycję **Otwórz w Power BI** , aby otworzyć Power BI z nowym zestawem danych.
 
 
 ### <a name="configure-scheduled-refresh"></a>Konfigurowanie zaplanowanego odświeżania
-Zestaw danych utworzony w usłudze Power BI mają te same dane, który wcześniej był wyświetlany w programie Power BI Desktop.  Należy odświeżyć zestaw danych, które okresowo, aby ponownie uruchomić zapytanie i wypełnić ją przy użyciu najnowszych danych z usługi Azure Monitor.  
+Zestaw danych utworzony w Power BI będzie miał te same dane, które wcześniej były znajdowane w Power BI Desktop.  Należy okresowo odświeżyć zestaw danych, aby ponownie uruchomić zapytanie i wypełnić je najnowszymi danymi z Azure Monitor.  
 
-1. Kliknij obszar roboczy, do którego został przekazany, raport i wybierz **zestawów danych** menu. 
-1. Wybierz menu kontekstowe obok nowego zestawu danych, a następnie wybierz pozycję **ustawienia**. 
-1. W obszarze **poświadczenia źródła danych** powinny mieć komunikat, że poświadczenia są nieprawidłowe.  Jest to spowodowane nie zostały podane poświadczenia jeszcze dla zestawu danych do użycia podczas odświeżania danych.  
-1. Kliknij przycisk **Edytuj poświadczenia** i określić poświadczenia z uprawnieniami do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor. Jeśli wymagasz uwierzytelniania dwuskładnikowego, wybierz **OAuth2** dla **metodę uwierzytelniania** monit, aby zalogować się przy użyciu swoich poświadczeń.
+1. Kliknij obszar roboczy, do którego został przekazany raport, a następnie wybierz menu **zestawy danych** . 
+1. Wybierz menu kontekstowe obok nowego zestawu danych, a następnie wybierz pozycję **Ustawienia**. 
+1. W obszarze **poświadczenia źródła danych** należy mieć komunikat informujący, że poświadczenia są nieprawidłowe.  Wynika to z faktu, że nie podano jeszcze poświadczeń dla zestawu danych, który ma być używany podczas odświeżania jego danych.  
+1. Kliknij pozycję **Edytuj poświadczenia** i określ poświadczenia z dostępem do obszaru roboczego Log Analytics w Azure monitor. Jeśli wymagane jest uwierzytelnianie dwuskładnikowe, wybierz opcję **OAuth2** , **Aby uzyskać** monit o zalogowanie się przy użyciu poświadczeń.
 
-    ![Usługa Power BI harmonogramu](media/powerbi/powerbi-schedule.png)
+    ![Harmonogram Power BI](media/powerbi/powerbi-schedule.png)
 
-5. W obszarze **zaplanowane odświeżanie** włączyć opcję **aktualne dane**.  Opcjonalnie możesz zmienić **częstotliwość odświeżania** i jeden lub więcej razy określone do uruchomienia odświeżania.
+5. W obszarze **zaplanowane odświeżanie** Włącz opcję, aby zapewnić aktualność **danych**.  Opcjonalnie można zmienić **częstotliwość odświeżania** i co najmniej jeden określony czas, aby uruchomić odświeżanie.
 
-    ![Usługa Power BI odświeżania](media/powerbi/powerbi-schedule-refresh.png)
+    ![Power BI odświeżanie](media/powerbi/powerbi-schedule-refresh.png)
 
 
 
 ## <a name="next-steps"></a>Następne kroki
-* Dowiedz się więcej o [dziennikach](../log-query/log-query-overview.md) do kompilowania zapytań, które można eksportować do usługi Power BI.
-* Dowiedz się więcej o [usługi Power BI](https://powerbi.microsoft.com) do tworzenia wizualizacji w oparciu o usługi Azure Monitor dziennika eksportu.
+* Informacje o [przeszukiwaniu dzienników](../log-query/log-query-overview.md) do tworzenia zapytań, które można eksportować do Power BI.
+* Dowiedz się więcej na temat [Power BI](https://powerbi.microsoft.com) tworzenia wizualizacji na podstawie eksportu Azure monitor dzienników.

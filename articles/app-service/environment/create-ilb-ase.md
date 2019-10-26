@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 08a18dc115990ad7d44a8b20412e07995c9af390
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dad2841d680702786cfc1f175a70390158444e02
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069509"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928627"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Tworzenie i używanie wewnętrznego Load Balancer App Service Environment 
 
@@ -29,9 +29,9 @@ Azure App Service Environment to wdrożenie Azure App Service w podsieci w sieci
 
 W tym artykule przedstawiono sposób tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia. Aby zapoznać się z omówieniem środowiska ASE, zobacz [wprowadzenie do środowisk App Service][Intro]. Aby dowiedzieć się, jak utworzyć zewnętrzny środowisko ASE, zobacz [Tworzenie zewnętrznego środowiska ASE][MakeExternalASE].
 
-## <a name="overview"></a>Omówienie 
+## <a name="overview"></a>Przegląd 
 
-Środowisko ASE można wdrożyć za pomocą punktu końcowego dostępnego z Internetu lub adresu IP w sieci wirtualnej. Aby można było ustawić jako adres IP adres sieci wirtualnej, należy wdrożyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia. W przypadku wdrażania środowiska ASE przy użyciu ILB należy podać nazwę środowiska ASE. Nazwa środowiska ASE jest używana w sufiksie domeny dla aplikacji w środowisku ASE.  Sufiks domeny dla środowiska ILB ASE to &lt;ASE Name&gt;. appservicewebsites.NET. Aplikacje utworzone w środowisku ILB ASE nie są umieszczane w publicznym systemie DNS. 
+Środowisko ASE można wdrożyć za pomocą punktu końcowego dostępnego z Internetu lub adresu IP w sieci wirtualnej. Aby można było ustawić jako adres IP adres sieci wirtualnej, należy wdrożyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia. W przypadku wdrażania środowiska ASE przy użyciu ILB należy podać nazwę środowiska ASE. Nazwa środowiska ASE jest używana w sufiksie domeny dla aplikacji w środowisku ASE.  Sufiks domeny dla środowiska ILB ASE to &lt;ASE Name&gt;. appserviceenvironment.net. Aplikacje utworzone w środowisku ILB ASE nie są umieszczane w publicznym systemie DNS. 
 
 Wcześniejsze wersje programu ILB ASE wymagały podania sufiksu domeny i domyślnego certyfikatu dla połączeń HTTPS. Sufiks domeny nie jest już zbierany podczas tworzenia ILB ASE i nie jest już zbierany certyfikat domyślny. Po utworzeniu ILB ASE teraz certyfikat domyślny jest dostarczany przez firmę Microsoft i jest traktowany jako zaufany przez przeglądarkę. Nadal można ustawiać niestandardowe nazwy domen w aplikacjach w środowisku ASE i ustawiać certyfikaty dla tych niestandardowych nazw domen. 
 
@@ -80,7 +80,7 @@ Aby utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążeni
 
 Aplikację w środowisku ASE z wewnętrznym modułem równoważenia obciążenia tworzy się tak samo jak w normalnym środowisku ASE.
 
-1. W Azure Portal wybierz pozycję **Utwórz zasób** > **Sieć** > Web Web**App**.
+1. W Azure Portal wybierz pozycję **Utwórz zasób** > **aplikacji**internetowej **sieci** Web > .
 
 1. Wprowadź nazwę aplikacji.
 
@@ -102,24 +102,25 @@ W środowisku ASE z wewnętrznym modułem równoważenia obciążenia jest obsł
 
 ## <a name="dns-configuration"></a>Konfiguracja usługi DNS 
 
-Gdy używasz zewnętrznego wirtualnego adresu IP, usługą DNS zarządza platforma Azure. Każda aplikacja utworzona w środowisku ASE jest automatycznie dodawana do usługi Azure DNS, która jest publiczną usługą DNS. W środowisku ASE z wewnętrznym modułem równoważenia obciążenia musisz zarządzać własną usługą DNS. Sufiks domeny używany z ILB ASE zależy od nazwy środowiska ASE. Sufiks domeny to  *&lt;ASE&gt;Name. appserviceenvironment.NET*. Adres IP ILB znajduje się w portalu w obszarze **adresy IP**. 
+Gdy używasz zewnętrznego wirtualnego adresu IP, usługą DNS zarządza platforma Azure. Każda aplikacja utworzona w środowisku ASE jest automatycznie dodawana do usługi Azure DNS, która jest publiczną usługą DNS. W środowisku ASE z wewnętrznym modułem równoważenia obciążenia musisz zarządzać własną usługą DNS. Sufiks domeny używany z ILB ASE zależy od nazwy środowiska ASE. Sufiks domeny ma *&lt;Nazwa środowiska ASE&gt;. appserviceenvironment.NET*. Adres IP ILB znajduje się w portalu w obszarze **adresy IP**. 
 
 Aby skonfigurować serwer DNS:
 
-- Utwórz strefę dla  *&lt;nazwy&gt;środowiska ASE. appserviceenvironment.NET*
-- Utwórz rekord A w tej strefie, który wskazuje * na adres IP ILB 
-- Utwórz strefę w programie  *&lt;ASE&gt;Name. appserviceenvironment.NET* o nazwie SCM
-- Utwórz rekord A w strefie SCM wskazujący adres IP ILB
+- Utwórz strefę dla *nazwy&lt;ASE&gt;. appserviceenvironment.NET*
+- Utwórz rekord A w tej strefie, który wskazuje * na adres IP ILB
+- Utwórz rekord A w tej strefie, który wskazuje na ILB adres IP
+- Utwórz strefę w *&lt;Nazwa środowiska ASE&gt;. appserviceenvironment.NET* o nazwie SCM
+- Utwórz rekord A w strefie SCM, który wskazuje * na adres IP ILB
 
 ## <a name="publish-with-an-ilb-ase"></a>Publikowanie za pomocą środowiska ASE z wewnętrznym modułem równoważenia obciążenia
 
-Dla każdej tworzonej aplikacji istnieją dwa punkty końcowe. W środowisku ILB ASE masz *&lt;&gt;nazwę aplikacji.&lt; Domena&gt;* *&lt; i nazwa&lt;aplikacji ILBASE.SCM.&gt; Domena&gt;ILB ASE*. 
+Dla każdej tworzonej aplikacji istnieją dwa punkty końcowe. W środowisku ILB ASE *&lt;&gt;nazwy aplikacji.&lt;ILB ase&gt;* i *&lt;nazwa aplikacji&gt;. SCM.&lt;ILB ASE domeny&gt;* . 
 
 Nazwa witryny SCM umożliwia przejście do konsoli Kudu, nazywanej **portalem zaawansowanym**, w witrynie Azure Portal. Konsola Kudu umożliwia między innymi wyświetlanie zmiennych środowiskowych, eksplorowanie dysku i używanie konsoli. Aby uzyskać więcej informacji, zobacz [kudu Console for Azure App Service][Kudu]. 
 
 Internetowe systemy ciągłej integracji, takie jak usługi GitHub i Azure DevOps, będą nadal działać ze środowiskiem ASE z wewnętrznym modułem równoważenia obciążenia, jeśli agent kompilacji jest dostępny w Internecie i w tej samej sieci co to środowisko. Dlatego w przypadku usługi Azure DevOps, jeśli agent kompilacji został utworzony w tej samej sieci wirtualnej co środowisko ASE z wewnętrznym modułem równoważenia obciążenia (być może w innej podsieci), to będzie mógł ściągnąć kod z usługi Git Azure DevOps i wdrożyć go w tym środowisku. Jeśli nie chcesz tworzyć własnego agenta kompilacji, musisz użyć systemu ciągłej integracji wykorzystującego model ściągania, takiego jak Dropbox.
 
-Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Ta domena jest wyświetlana w profilu publikowania aplikacji i w bloku portalu aplikacji (**Przegląd** > **Podstawy** oraz **Właściwości**). Jeśli masz ILB ASE z sufiksem  *&lt;domeny ASE Name&gt;. appserviceenvironment.NET*i aplikacją o nazwie Moje *testy*, użyj *testu.&lt; Środowisko ASE&gt;Name. appserviceenvironment.NET* dla usługi FTP i *mytest.SCM.contoso.NET* na potrzeby wdrażania w sieci Web.
+Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Ta domena jest wyświetlana w profilu publikowania aplikacji i w bloku portalu aplikacji (**Przegląd** > **Podstawy** oraz **Właściwości**). Jeśli masz ILB ASE z sufiksem domeny *&lt;ase&gt;. appserviceenvironment.NET*, a aplikacja o nazwie "Moja *test*", użyj *testu.&lt;nazwa środowiska ASE&gt;. appserviceenvironment.NET* dla usługi FTP i  *mytest.scm.contoso.net* do wdrożenia w sieci Web.
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Konfigurowanie ILB ASE z urządzeniem WAF ##
 
@@ -131,7 +132,7 @@ Aby dowiedzieć się więcej o sposobie konfigurowania ILB ASE za pomocą urząd
 
 ILB środowisk ASE, które zostały wprowadzone przed 2019 maja, wymagały ustawienia sufiksu domeny podczas tworzenia środowiska ASE. Wymagały one również przekazania domyślnego certyfikatu opartego na tym sufiksie domeny. Ponadto przy użyciu starszej wersji ILB ASE nie można przeprowadzić logowania jednokrotnego do konsoli kudu z aplikacjami w tym ILB ASE. Podczas konfigurowania systemu DNS dla starszej wersji środowiska ILB ASE należy ustawić symbol wieloznaczny A rekordu w strefie, która pasuje do sufiksu domeny. 
 
-## <a name="get-started"></a>Wprowadzenie ##
+## <a name="get-started"></a>Rozpocznij ##
 
 * Aby rozpocząć pracę z usługą środowisk ASE, zobacz [wprowadzenie do środowisk App Service][Intro]. 
 

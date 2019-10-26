@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a467856550bf2deaab931b3fe2f54b7986f12f8a
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 136a9994415b42c456ebdb0caa8ed6edcc7b4534
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430295"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934373"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD? (Wersja zapoznawcza)
 
@@ -121,6 +121,7 @@ Aby lepiej zrozumieć Zarządzanie uprawnieniami i dokumentację, należy zapozn
 | Typ zasobu | Typ zasobu, który obejmuje grupy, aplikacje i witryny usługi SharePoint Online. |
 | Rola zasobu | Kolekcja uprawnień skojarzonych z zasobem. |
 | Katalog zasobów | Katalog, który ma co najmniej jeden zasób do udostępnienia. |
+| połączona organizacja | Zewnętrzny katalog lub domena usługi Azure AD, z którą istnieje relacja. |
 | przypisani użytkownicy | Przypisanie pakietu dostępu do użytkownika, tak aby użytkownik miał wszystkie role zasobów tego pakietu. |
 | mogły | Proces tworzenia pakietu dostępu dostępnego dla użytkowników do żądania. |
 

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wyodrębnij dane przyjęcia przy użyciu narzędzia do rozpoznawania formularzy'
+title: 'Szybki Start: wyodrębnianie danych przyjęcia przy użyciu narzędzia do rozpoznawania formularzy'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy z zwinięciem, aby wyodrębnić dane z obrazów paragonów sprzedaży.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: badd674030ec014f2e70050c3c45599a26b17882
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c533949cf0ce69ddc5237dd893dd75e43447c4a9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073824"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931581"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Szybki start: Wyodrębnij dane przyjęcia przy użyciu interfejsu API REST aparatu rozpoznawania formularzy z zwinięciem
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Szybki Start: wyodrębnianie danych o odbiorze przy użyciu interfejsu API REST aparatu rozpoznawania formularzy z zwinięciem
 
 W tym przewodniku szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy platformy Azure z zwinięciem, aby wyodrębnić i zidentyfikować odpowiednie informacje w paragonach sprzedaży.
 
@@ -36,15 +36,15 @@ Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
 
 Aby rozpocząć analizowanie paragonu, należy wywołać interfejs API **analizy paragonów** przy użyciu poniższego polecenia. Przed uruchomieniem polecenia wprowadź następujące zmiany:
 
-1. Zamień `<Endpoint>` na punkt końcowy uzyskany za pomocą klucza subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
-1. Zamień `<your receipt URL>` na adres URL obrazu paragonu.
-1. Zamień `<subscription key>` na klucz subskrypcji skopiowany z poprzedniego kroku.
+1. Zamień `<Endpoint>` na punkt końcowy uzyskany w ramach subskrypcji aparatu rozpoznawania formularza.
+1. Zastąp `<your receipt URL>` adresem URL obrazu paragonu.
+1. Zastąp `<subscription key>` kluczem subskrypcji skopiowanym z poprzedniego kroku.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/asyncBatchAnalyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-Otrzymasz `202 (Success)` odpowiedź obejmującą nagłówek operacji w **lokalizacji** . Wartość tego nagłówka zawiera identyfikator operacji, którego można użyć w celu zbadania stanu operacji i uzyskania wyników. W poniższym przykładzie ciąg po `operations/` to identyfikator operacji.
+Otrzymasz odpowiedź `202 (Success)`, która zawiera nagłówek z **lokalizacją operacji** . Wartość tego nagłówka zawiera identyfikator operacji, którego można użyć w celu zbadania stanu operacji i uzyskania wyników. W poniższym przykładzie ciąg po `operations/` jest IDENTYFIKATORem operacji.
 
 ```console
 https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -54,7 +54,7 @@ https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations
 
 Po wywołaniu interfejsu API **Analizowanie paragonów** należy wywołać interfejs API **wyników Get paragonu** w celu uzyskania stanu operacji i wyodrębnionych danych.
 
-1. Zamień `<operationId>` na identyfikator operacji z poprzedniego kroku.
+1. Zastąp `<operationId>` IDENTYFIKATORem operacji z poprzedniego kroku.
 1. Zastąp element `<subscription key>` kluczem subskrypcji.
 
 ```bash
@@ -63,7 +63,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/ope
 
 ### <a name="examine-the-response"></a>Sprawdzanie odpowiedzi
 
-Otrzymasz `200 (Success)` odpowiedź z danymi wyjściowymi JSON. Pierwsze pole `"status"`,, wskazuje stan operacji. Jeśli operacja zostanie ukończona, `"recognitionResults"` pole zawiera wszystkie wiersze tekstu wyodrębnione z paragonu, `"understandingResults"` a pole zawiera informacje o kluczu/wartości dla najbardziej odpowiednich części paragonu. Jeśli operacja nie zostanie ukończona, wartość `"status"` `"Running"` będzie lub `"NotStarted"`i należy ponownie wywołać interfejs API, ręcznie lub za pomocą skryptu. Zalecamy przedziału co najmniej jednej sekundy między wywołaniami.
+Otrzymasz odpowiedź `200 (Success)`ową z danymi wyjściowymi JSON. Pierwsze pole, `"status"`, wskazuje stan operacji. Jeśli operacja zostanie ukończona, pole `"recognitionResults"` zawiera wszystkie wiersze tekstu wyodrębnione z przyjęcia, a pole `"understandingResults"` zawiera informacje o klucz/wartość dla najbardziej odpowiednich części paragonu. Jeśli operacja nie zostanie ukończona, wartość `"status"` będzie `"Running"` lub `"NotStarted"`i należy ponownie wywołać interfejs API, ręcznie lub za pomocą skryptu. Zalecamy przedziału co najmniej jednej sekundy między wywołaniami.
 
 Zapoznaj się z poniższym obrazem paragonu i odpowiednimi danymi wyjściowymi JSON. Dane wyjściowe zostały skrócone w celu zapewnienia czytelności.
 

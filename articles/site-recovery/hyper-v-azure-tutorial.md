@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 44f72df28191d02a6d320671e0173eb1306e0c78
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 446c870ba60d7931fafb9f9b1c7e8fc017f60e4d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845698"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933867"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Konfigurowanie odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure
 
@@ -30,7 +30,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Włączanie replikacji maszyny wirtualnej.
 
 > [!NOTE]
-> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułami w sekcji przewodniki z instrukcjami w [dokumentacji Site Recovery](https://docs.microsoft.com/azure/site-recovery).
+> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułami w sekcji **przewodniki** z instrukcjami w [dokumentacji Site Recovery](https://docs.microsoft.com/azure/site-recovery).
+
+> [!WARNING]
+> Należy pamiętać, że obsługa usługi ASR do korzystania z konfiguracji SCVMM do konta będzie wkrótce przestarzała i dlatego zalecamy zapoznanie się z informacjami dotyczącymi [przestarzałych](scvmm-site-recovery-deprecation.md) przed kontynuowaniem.
+
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -43,7 +47,7 @@ Jest to trzeci samouczek z tej serii. Przyjęto założenie, że zadania został
 
 1. W Azure Portal przejdź do obszaru **magazyny Recovery Services** i wybierz magazyn. **ContosoVMVault** magazynu został przygotowany w poprzednim samouczku.
 2. W **wprowadzenie**wybierz pozycję **Site Recovery**, a następnie wybierz pozycję **Przygotuj infrastrukturę**.
-3. W obszarze **cel** > ochrony, gdzie znajdują się**maszyny?** wybierz pozycję **lokalna**.
+3. W obszarze **cel ochrony** > gdzie znajdują się **maszyny?** wybierz pozycję **lokalnie**.
 4. W obszarze **gdzie chcesz replikować maszyny?** wybierz pozycję **na platformie Azure**.
 5. W obszarze **czy maszyny są zwirtualizowane?** wybierz pozycję **tak, używając funkcji Hyper-V**.
 6. Czy w programie **System Center VMM jest używany do zarządzania hostami funkcji Hyper-V?** wybierz pozycję **nie**.
@@ -68,7 +72,7 @@ Aby skonfigurować środowisko źródłowe, należy utworzyć lokację funkcji H
 
     ![Lokacja funkcji Hyper-V](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
-4. Po utworzeniu lokacji w obszarze **Przygotuj Źródło** > **krok 1: Wybierz lokację**funkcji Hyper-V, wybierz utworzoną witrynę.
+4. Po utworzeniu lokacji w obszarze **Przygotowywanie źródła** > **krok 1: Wybierz lokację funkcji Hyper-V**, wybierz utworzoną witrynę.
 5. Wybierz pozycję **+ serwer funkcji Hyper-V**.
 
     ![Serwer funkcji Hyper-V](./media/hyper-v-azure-tutorial/hyperv-server.png)
@@ -121,7 +125,7 @@ Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu
 
 ## <a name="set-up-a-replication-policy"></a>Konfigurowanie zasad replikacji
 
-1. Wybierz kolejno pozycje **Przygotowanie infrastruktury** > **Ustawienia** > replikacji **+ Utwórz i skojarz**.
+1. Wybierz pozycję **Przygotuj infrastrukturę** > **Ustawienia replikacji** >  **+ Utwórz i skojarz**.
 2. W obszarze **Utwórz i skojarz zasady** określ nazwę zasad. Korzystamy z usługi **ContosoReplicationPolicy**.
 3. W tym samouczku pozostawimy ustawienia domyślne:
     - **Częstotliwość kopiowania** wskazuje, jak często będą replikowane dane różnicowe (po replikacji początkowej). Częstotliwość domyślna to co pięć minut.
@@ -138,10 +142,10 @@ Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu
 2. W obszarze **Źródło** wybierz lokację **ContosoHyperVSite**. Następnie wybierz przycisk **OK**.
 3. W obszarze **cel**Sprawdź, czy element docelowy (Azure), subskrypcję magazynu i model wdrażania **Menedżer zasobów** .
 4. Jeśli używasz ustawień samouczka, wybierz konto magazynu **contosovmsacct1910171607** utworzone w poprzednim samouczku dla replikowanych danych. Wybierz również sieć **ContosoASRnet** , w której maszyny wirtualne platformy Azure będą znajdować się po przejściu do trybu failover.
-5. Na > stronie**Wybierz**maszynę wirtualną wybierz maszynę wirtualną, którą chcesz zreplikować. Następnie wybierz przycisk **OK**.
+5. W obszarze **maszyny wirtualne** > **Wybierz**opcję, a następnie wybierz maszynę wirtualną, którą chcesz replikować. Następnie wybierz przycisk **OK**.
 
    Możesz śledzić postępy akcji **Włącz ochronę** w obszarze **Zadania** > **Zadania usługi Site Recovery**. Po zakończeniu zadania **finalizowania ochrony** Replikacja początkowa zostanie zakończona, a maszyna wirtualna jest gotowa do przejścia w tryb failover.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Uruchamianie próbnego odzyskiwania po awarii](tutorial-dr-drill-azure.md)

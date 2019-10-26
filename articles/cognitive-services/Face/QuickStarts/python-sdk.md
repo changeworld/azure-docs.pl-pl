@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 617e9a40c253d98c32ae8b4c9426f3148c23d125
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b265ec68039f03c09d45c9605965de8ce0baba99
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176136"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935872"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Przewodnik Szybki Start: Tworzenie biblioteki klienckiej dla języka Python
 
@@ -23,24 +23,24 @@ Rozpocznij pracę z biblioteką klienta programu Front dla języka Python. Wykon
 Użyj biblioteki klienta programu Front dla języka Python, aby:
 
 * Wykrywanie twarzy na obrazie
-* Znajdź podobne twarze
+* Wyszukiwanie podobnych twarzy
 * Tworzenie i uczenie grupy osób
 * Identyfikowanie kroju
 * Weryfikuj twarze
 * Utwórz migawkę migracji danych
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [pakiet (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [przykładów](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
+[Dokumentacja referencyjna](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [pakiet (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [przykładów](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-* [Python 3. x](https://www.python.org/)
+* [Python 3.x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Konfigurowanie
 
 ### <a name="create-a-face-azure-resource"></a>Tworzenie zasobu platformy Azure w postaci czołowej
 
-Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azure, które subskrybujesz. Utwórz zasób dla konkretnej aplikacji przy użyciu [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na komputerze lokalnym. Możesz także:
+Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azure, które subskrybujesz. Utwórz zasób dla konkretnej aplikacji przy użyciu [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na komputerze lokalnym. Możesz również wykonać następujące czynności:
 
 * Uzyskaj [klucz wersji próbnej](https://azure.microsoft.com/try/cognitive-services/#decision) ważny przez siedem dni bezpłatnie. Po utworzeniu konta będzie ono dostępne w [witrynie sieci Web systemu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Wyświetl zasób na [Azure Portal](https://portal.azure.com/)
@@ -49,7 +49,7 @@ Po otrzymaniu klucza z subskrypcji próbnej lub zasobu [Utwórz zmienną środow
  
 ### <a name="create-a-new-python-application"></a>Tworzenie nowej aplikacji w języku Python
 
-Utwórz nowy skrypt języka Python @ no__t-0*QuickStart-File.py*, na przykład. Następnie otwórz go w preferowanym edytorze lub środowisku IDE i zaimportuj poniższe biblioteki.
+Utwórz nowy skrypt w języku Python&mdash;*QuickStart-File.py*, na przykład. Następnie otwórz go w preferowanym edytorze lub środowisku IDE i zaimportuj poniższe biblioteki.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
@@ -117,9 +117,9 @@ Poniższy kod wyprowadza dany obraz do ekranu i Rysuje prostokąty wokół twarz
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
 
-![Młode kobieta z czerwonym prostokątem narysowanym wokół powierzchni](../images/face-rectangle-result.png)
+![Młoda kobieta z czerwonym prostokątem narysowanym wokół twarzy](../images/face-rectangle-result.png)
 
-## <a name="find-similar-faces"></a>Znajdź podobne twarze
+## <a name="find-similar-faces"></a>Wyszukiwanie podobnych twarzy
 
 Poniższy kod przyjmuje pojedyncze wykryte twarze i przeszukuje zestaw innych twarzy, aby znaleźć dopasowania. Po znalezieniu dopasowania program drukuje współrzędne prostokąta dopasowanej powierzchni do konsoli. 
 
@@ -260,7 +260,7 @@ Pozostałe operacje tworzenia migawek odbywają się w ramach funkcji asynchroni
 
 Po wykonaniu tych kroków będziesz mieć możliwość uzyskania dostępu do konstrukcji danych własnych z nowej subskrypcji (docelowej).
 
-## <a name="run-the-application"></a>Uruchom aplikację
+## <a name="run-the-application"></a>Uruchamianie aplikacji
 
 Uruchom aplikację za pomocą polecenia `python` w pliku szybkiego startu.
 
@@ -268,7 +268,7 @@ Uruchom aplikację za pomocą polecenia `python` w pliku szybkiego startu.
 python quickstart-file.py
 ```
 
-## <a name="clean-up-resources"></a>Czyszczenie zasobów
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz usunąć zasób lub grupę zasobów. Usunięcie grupy zasobów spowoduje również usunięcie wszystkich skojarzonych z nią zasobów.
 
@@ -291,4 +291,4 @@ W tym przewodniku szybki start przedstawiono, jak wykonywać zadania podstawowe 
 > [Odwołanie interfejs API rozpoznawania twarzy (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
 
 * [Co to jest interfejs API rozpoznawania twarzy?](../overview.md)
-* Kod źródłowy dla tego przykładu można znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py).
+* Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py).

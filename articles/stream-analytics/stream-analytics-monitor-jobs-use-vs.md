@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie i zarządzanie nimi zadań usługi Azure Stream Analytics przy użyciu programu Visual Studio
-description: W tym artykule opisano, jak używać programu Visual Studio, monitorowanie i zarządzanie nią zadań usługi Azure Stream Analytics.
+title: Monitoruj Azure Stream Analytics i zarządzaj nimi za pomocą programu Visual Studio
+description: W tym artykule opisano, jak za pomocą programu Visual Studio monitorować zadania Azure Stream Analytics i zarządzać nimi.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,44 +9,44 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e673d4f1c2d58a61c541cca4f8448dffc003f9fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 684f034393dd3f53900100dd964d9ea07d200897
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479438"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934973"
 ---
-# <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Monitorowanie i zarządzanie nimi zadania usługi Stream Analytics za pomocą programu Visual Studio
+# <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Monitoruj Stream Analytics zadania i zarządzaj nimi za pomocą programu Visual Studio
 
-W tym artykule przedstawiono sposób monitorowania zadania usługi Stream Analytics w taki sposób, w programie Visual Studio. Narzędzia platformy Azure Stream Analytics dla programu Visual Studio zapewnia monitorowania podobne do witryny Azure portal bez konieczności opuszczania środowiska IDE. Możesz rozpocząć tak szybko, jak możesz monitorować zadania **przesyłania na platformie Azure** z Twojej **Script.asaql**, lub możesz monitorować istniejące zadania niezależnie od tego, jak zostały utworzone. 
+W tym artykule przedstawiono sposób monitorowania zadania Stream Analytics w programie Visual Studio. Narzędzia Azure Stream Analytics Tools for Visual Studio zapewniają środowisko monitorowania podobne do Azure Portal bez konieczności opuszczania środowiska IDE. Możesz rozpocząć monitorowanie zadania zaraz po **przesłaniu na platformę Azure** ze **skryptu. asaql**lub monitorować istniejące zadania, niezależnie od sposobu ich tworzenia. 
 
 ## <a name="job-summary"></a>Podsumowanie zadania
 
-**Podsumowanie zadania** i **metryk zadań** udzielić szybkiej migawki zadania. Na pierwszy rzut oka można określić zadania stanu i informacje o zdarzeniach.]
+**Podsumowanie zadania** i **metryki zadań** umożliwiają szybką migawkę zadania. W skrócie możesz określić stan zadania i informacje o zdarzeniu.]
 
 <img src="./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-job-summary-metrics.png" alt="Stream Analytics job summary and job metrics" width="300px"/> 
 
 
-## <a name="job-metrics"></a>Metryki zadania
+## <a name="job-metrics"></a>Metryki zadań
 
-Można zwinąć **Podsumowanie zadania** i kliknij przycisk **metryk zadań** kartę, aby wyświetlić na wykresie ważne metryki. Sprawdzanie i usuń zaznaczenie typy metryk do dodawania i usuwania ich z wykresu.
+Możesz zwinąć **Podsumowanie zadania** i kliknąć kartę **metryki zadania** , aby wyświetlić wykres z ważnymi metrykami. Sprawdź i usuń zaznaczenie typów metryk, aby dodawać i usuwać je z grafu.
 
-![Stream Analytics metryki w programie Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
-
-
-## <a name="error-monitoring"></a>Błąd monitorowania
-
-Można również monitorować błędy, klikając **błędy** kartę.
-
-![Stream Analytics błędów w programie Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
+![Metryki Stream Analytics w programie Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
 
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
-Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+## <a name="error-monitoring"></a>Monitorowanie błędów
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
-* [Tworzenie zadania usługi Azure Stream Analytics za pomocą programu Visual Studio](stream-analytics-quick-create-vs.md)
-* [Instalowanie narzędzi Azure Stream Analytics dla programu Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 
+Błędy można także monitorować, klikając kartę **Błędy** .
+
+![Błędy Stream Analytics w programie Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
+
+
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
+Aby uzyskać dalszą pomoc, wypróbuj nasze [forum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+
+## <a name="next-steps"></a>Następne kroki
+* [Wprowadzenie do Azure Stream Analytics](stream-analytics-introduction.md)
+* [Tworzenie zadania Azure Stream Analytics za pomocą programu Visual Studio](stream-analytics-quick-create-vs.md)
+* [Zainstaluj narzędzia Azure Stream Analytics Tools for Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 
 
 

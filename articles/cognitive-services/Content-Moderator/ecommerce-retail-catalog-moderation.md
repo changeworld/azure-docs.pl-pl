@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: moderowanie obrazów produktów na potrzeby handlu elektronicznego — Content Moderator'
+title: 'Samouczek: umiarkowane obrazy produktów handlu elektronicznego — Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: Skonfiguruj aplikację do analizowania i klasyfikowania obrazów produktów o określonych etykietach (przy użyciu usługi Azure przetwarzanie obrazów i Custom Vision). Oznacz niepożądane obrazy do dalszej weryfikacji (przy użyciu usługi Azure Content Moderator).
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: b118a509f72af2146abf854b881fa34d8de302a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564923"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936048"
 ---
-# <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Samouczek: moderowanie obrazów produktów na potrzeby handlu elektronicznego za pomocą usługi Azure Content Moderator
+# <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Samouczek: umiarkowane obrazy produktów handlu elektronicznego za pomocą usługi Azure Content Moderator
 
 W tym samouczku dowiesz się, jak korzystać z usługi Azure Cognitive Services, w tym Content Moderator, do klasyfikowania i umiarkowanego tworzenia obrazów produktów dla scenariusza handlu elektronicznego. Będziesz używać przetwarzanie obrazów i Custom Vision do stosowania tagów (etykiet) do obrazów, a następnie utworzysz przegląd zespołu, który łączy Content Moderator technologii opartych na uczeniu maszynowym z zespołami ds. recenzji, aby zapewnić inteligentny system moderowania.
 
@@ -65,7 +65,9 @@ W tym samouczku są stosowane trzy usługi poznawcze: w związku z tym wymaga tr
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
-Musisz zaktualizować `___Key` pola za pomocą wartości kluczy subskrypcji (będziesz `CustomVisionKey` otrzymywać później) i `___Uri` może zajść potrzeba zmiany pól, aby zawierały poprawne identyfikatory regionów. W części `YOURTEAMID` pola `ReviewUri` wpisz identyfikator zespołu do przeprowadzania przeglądu, który utworzono wcześniej. Końcowa część `CustomVisionUri` pola zostanie wypełniona później.
+Należy zaktualizować pola `___Key` przy użyciu wartości kluczy subskrypcji i należy zmienić pola `___Uri` na prawidłowe adresy URL punktów końcowych (w dalszej części Custom Vision klucz i punkt końcowy). Te wartości można znaleźć na kartach **szybkiego startu** poszczególnych zasobów platformy Azure. W części `YOURTEAMID` pola `ReviewUri` wpisz identyfikator zespołu do przeprowadzania przeglądu, który utworzono wcześniej. Ostatnia część pola `CustomVisionUri` zostanie wypełniona później.
+
+[!INCLUDE [subdomains note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="primary-method-calls"></a>Główne wywołania metod
 
@@ -91,13 +93,13 @@ Następnie zwróć uwagę na metodę **EvaluateCustomVisionTags**, która klasyf
 
 ![Strona internetowa usługi Custom Vision z obrazami szkoleniowymi przedstawiającymi długopisy, zabawki i flagi](images/tutorial-ecommerce-custom-vision.PNG)
 
-Po przeszkoleniu klasyfikatora Pobierz klucz predykcyjny i adres URL punktu końcowego przewidywania (zobacz [pobieranie adresu URL i klucza predykcyjnego](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) , jeśli potrzebujesz pomocy przy pobieraniu ich) i przypisz te wartości odpowiednio do `CustomVisionKey` pól `CustomVisionUri` i. Te wartości są używane w tej metodzie do wysyłania zapytań do klasyfikatora. Jeśli klasyfikator znajdzie na obrazie zawartość odpowiadającą co najmniej jednemu z tych tagów niestandardowych, metoda ustawi wartość **True** dla odpowiednich parametrów w tablicy **ReviewTags**.
+Po przeprowadzeniu szkolenia do klasyfikatora Pobierz klucz predykcyjny i adres URL punktu końcowego przewidywania (zobacz [pobieranie adresu URL i klucza przewidywania](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) , jeśli potrzebujesz pomocy przy pobieraniu ich) i przypisz te wartości odpowiednio do pól `CustomVisionKey` i `CustomVisionUri`. Te wartości są używane w tej metodzie do wysyłania zapytań do klasyfikatora. Jeśli klasyfikator znajdzie na obrazie zawartość odpowiadającą co najmniej jednemu z tych tagów niestandardowych, metoda ustawi wartość **True** dla odpowiednich parametrów w tablicy **ReviewTags**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 
 ## <a name="create-reviews-for-review-tool"></a>Tworzenie przeglądów dla narzędzia do przeprowadzania przeglądu
 
-W poprzednich sekcjach przedstawiono sposób, w jaki aplikacja skanuje obrazy przychodzące dla dorosłych i erotycznej zawartości (Content Moderator), osobistości (przetwarzanie obrazów) i różnych innych obiektów (Custom Vision). Następnie zapoznaj się z tematem **Metoda do** przeglądu, która przekazuje obrazy ze wszystkimi zastosowanymi tagami (przekazane jako _metadane_) do narzędzia do przeglądu Content Moderator.
+W poprzednich sekcjach przedstawiono sposób, w jaki aplikacja skanuje obrazy przychodzące dla dorosłych i erotycznej zawartości (Content Moderator), osobistości (przetwarzanie obrazów) i różnych innych obiektów (Custom Vision). Następnie zapoznaj się z tematem **Metoda do przeglądu,** która przekazuje obrazy ze wszystkimi zastosowanymi tagami (przekazane jako _metadane_) do narzędzia do przeglądu Content Moderator.
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 

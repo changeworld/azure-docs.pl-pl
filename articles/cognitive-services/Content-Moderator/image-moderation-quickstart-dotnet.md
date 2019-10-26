@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 3fdc3fa0b7c624558aef84f86afd85c5aedb7054
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 13b0952f38fb0c8c922be415f782b3a0a0861729
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757313"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931736"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Szybki Start: analizowanie obrazów pod kątem niepożądanych treściC#
 
@@ -25,7 +25,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Klucz subskrypcji pakietu Content Moderator. Aby subskrybować pakiet Content Moderator i uzyskać klucz, postępuj zgodnie z instrukcjami z tematu [Create a Cognitive Services account (Tworzenie konta usług Cognitive Services)](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+- Klucz subskrypcji pakietu Content Moderator. Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować Content Moderator. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla adresu URL klucza i punktu końcowego, odpowiednio nazwane `CONTENT_MODERATOR_SUBSCRIPTION_KEY` i `CONTENT_MODERATOR_ENDPOINT`.
 - Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/)
 
 
@@ -49,20 +49,20 @@ Następnie skopiujesz kod z tego przewodnika i wkleisz go do projektu, aby zaimp
 
 Dodaj następujące instrukcje `using` na początku pliku *Program.cs*.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-7)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_using)]
 
 ### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usług Content Moderator
 
-Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta usługi Content Moderator dla subskrypcji. W tej samej przestrzeni nazw dodaj kod wraz z klasą **Program**. Następnie trzeba będzie zaktualizować pola **AzureRegion** i **CMSubscriptionKey** przy użyciu wartości identyfikatora regionu i klucza subskrypcji.
+Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta usługi Content Moderator dla subskrypcji. Dodaj klasę obok klasy **program** w tej samej przestrzeni nazw. Musisz zaktualizować pola **AzureBaseURL** i **CMSubscriptionKey** za pomocą wartości adresu URL punktu końcowego i klucza subskrypcji. Te informacje można znaleźć na karcie **Szybki Start** zasobu w Azure Portal.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=83-106)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_client)]
 
 
 ### <a name="set-up-input-and-output-targets"></a>Konfigurowanie wejściowych i wyjściowych elementów docelowych
 
 Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Te pola określają pliki dla wejściowej zawartości obrazu i wyjściowej zawartości JSON.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=48-52)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_fields)]
 
 Należy utworzyć plik wejściowy *ImageFiles. txt* i odpowiednio zaktualizować jego ścieżkę (ścieżki względne są względne dla katalogu wykonywania). Otwórz plik _ImageFiles.txt_ i dodaj adresy URL obrazów do moderowania. Ten przewodnik Szybki start używa następujących adresów URL jako przykładowych danych wejściowych.
 
@@ -75,20 +75,20 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Dodaj następujący kod do pliku *Program.cs* wraz z klasą **Program** w tej samej przestrzeni nazw. Użyjesz wystąpienia tej klasy, aby zarejestrować wyniki moderowania poszczególnych przeglądanych obrazów.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=108-123)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_dataclass)]
 
 
 ### <a name="define-the-image-evaluation-method"></a>Definiowanie metody oceny obrazu
 
 Dodaj następującą metodę do klasy **Program**. Ta metoda ocenia pojedynczy obraz na trzy różne sposoby i zwraca wyniki oceny. Jeśli chcesz dowiedzieć się więcej o sposobie działania poszczególnych operacji, kliknij link w sekcji [Następne kroki](#next-steps).
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=54-80)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_evaluate)]
 
 ### <a name="load-the-input-images"></a>Ładowanie obrazów wejściowych
 
 Dodaj następujący kod do metody **Main** w klasie **Program**. Ten kod konfiguruje program do pobierania danych oceny dla każdego adresu URL obrazu w pliku wejściowym. Te dane są następnie zapisywane w pojedynczym pliku wyjściowym.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=16-45)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?name=snippet_main)]
 
 ## <a name="run-the-program"></a>Uruchamianie programu
 

@@ -1,47 +1,47 @@
 ---
-title: Zapoznaj się z zadań usługi Azure Stream Analytics w programie Visual Studio Code (wersja zapoznawcza)
-description: W tym artykule pokazano, jak wyeksportować zadania usługi Azure Stream Analytics do lokalnego projektu, listy zadań i widoku zadań jednostek.
+title: Eksplorowanie Azure Stream Analytics zadań w Visual Studio Code
+description: W tym artykule pokazano, jak wyeksportować zadanie Azure Stream Analytics do projektu lokalnego, wyświetlić listę zadań i wyświetlić jednostki zadań.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8674d478646c8f9be6b32521c6624752ac6df052
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d3a02d3778f9b4113767c5f755d675aeadd901b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827803"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934215"
 ---
-# <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Eksplorowanie usługi Azure Stream Analytics za pomocą programu Visual Studio Code (wersja zapoznawcza)
+# <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Eksplorowanie Azure Stream Analytics z Visual Studio Code (wersja zapoznawcza)
 
-Usługi Azure Stream Analytics, rozszerzenia programu Visual Studio Code daje deweloperom uproszczone środowisko do zarządzania ich zadań usługi Stream Analytics. Może służyć w Windows, Mac i Linux. Rozszerzenie usługi Azure Stream Analytics możesz wykonywać następujące czynności:
+Azure Stream Analytics rozszerzenia Visual Studio Code oferuje deweloperom lekki komfort zarządzania swoimi zadaniami Stream Analytics. Można go używać w systemach Windows, Mac i Linux. Dzięki rozszerzeniu Azure Stream Analytics można:
 
-- [Utwórz](quick-create-vs-code.md), uruchomić i zatrzymać zadania
-- Istniejące zadania eksportu do lokalnego projektu
-- Wyświetlić zadania oraz jednostki zadania
+- [Tworzenie](quick-create-vs-code.md), uruchamianie i zatrzymywanie zadań
+- Eksportowanie istniejących zadań do projektu lokalnego
+- Wyświetlanie listy zadań i przeglądanie jednostek zadań
 
-## <a name="export-a-job-to-a-local-project"></a>Eksportuj zadania do lokalnego projektu
+## <a name="export-a-job-to-a-local-project"></a>Eksportowanie zadania do projektu lokalnego
 
-Aby wyeksportować zadania do lokalnego projektu, odszukaj zadanie, o których chcesz eksportować w **Stream Analytics Eksplorator** w programie Visual Studio Code. Następnie wybierz folder dla projektu. Projektu są eksportowane do folderu, którą wybierzesz i można kontynuować zarządzanie zadanie z programu Visual Studio Code. Aby uzyskać więcej informacji na temat korzystania z programu Visual Studio Code do zarządzania zadania usługi Stream Analytics, zobacz Visual Studio Code [Szybki Start](quick-create-vs-code.md).
+Aby wyeksportować zadanie do projektu lokalnego, zlokalizuj zadanie, które chcesz wyeksportować w **eksploratorze Stream Analytics** w Visual Studio Code. Następnie wybierz folder dla projektu. Projekt zostanie wyeksportowany do folderu, który wybierzesz, i można nadal zarządzać zadaniem z poziomu Visual Studio Code. Aby uzyskać więcej informacji na temat korzystania z Visual Studio Code do zarządzania zadaniami Stream Analytics, zobacz [Przewodnik Szybki Start](quick-create-vs-code.md)dotyczący usługi Visual Studio Code.
 
-![Eksportuj zadanie ASA w programie Visual Studio Code](./media/vscode-explore-jobs/export-job.png)
+![Eksportowanie zadania ASA w Visual Studio Code](./media/vscode-explore-jobs/export-job.png)
 
-## <a name="list-job-and-view-job-entities"></a>Wyświetlić zadania oraz jednostki zadania
+## <a name="list-job-and-view-job-entities"></a>Zadanie listy i wyświetlanie jednostek zadań
 
-Widok zadania można użyć do interakcji z zadań usługi Azure Stream Analytics z programu Visual Studio.
+Widok zadania służy do współpracy z zadaniami Azure Stream Analytics w programie Visual Studio.
 
 
-1. Kliknij przycisk **Azure** ikonę na pasku działań programu Visual Studio kodu i rozwiń **węzła usługi Stream Analytics**. Zadania powinny być wyświetlane w obszarze subskrypcji.
+1. Kliknij ikonę **platformy Azure** na pasku działania Visual Studio Code a następnie rozwiń **węzeł Stream Analytics**. Zadania powinny być wyświetlane w ramach subskrypcji.
 
-   ![Open Stream Analytics Explorer](./media/vscode-explore-jobs/open-explorer.png)
+   ![Otwórz Eksploratora Stream Analytics](./media/vscode-explore-jobs/open-explorer.png)
 
-2. Rozwiń węzeł swoje zadania, możesz otworzyć i wyświetlić zapytanie dotyczące zadań, konfiguracji, danych wejściowych, danych wyjściowych i funkcji. 
+2. Rozwiń węzeł zadania, możesz otworzyć i wyświetlić zapytanie dotyczące zadania, konfiguracji, danych wejściowych, wyjść i funkcji. 
 
-3. Kliknij prawym przyciskiem myszy węzeł zadania, a następnie wybierz **Otwórz widok zadania w portalu** węzeł, aby otworzyć widok zadań w witrynie Azure portal.
+3. Kliknij prawym przyciskiem myszy węzeł zadania, a następnie wybierz **Widok Otwórz zadanie w węźle Portal** , aby otworzyć widok zadania w Azure Portal.
 
-   ![Widok otwartego zadania w portalu](./media/vscode-explore-jobs/open-job-view.png)
+   ![Otwórz widok zadania w portalu](./media/vscode-explore-jobs/open-job-view.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Tworzenie zadania usługi Azure Stream Analytics w chmurze w programie Visual Studio Code (wersja zapoznawcza)](quick-create-vs-code.md)
+* [Tworzenie Azure Stream Analytics zadania w chmurze w Visual Studio Code (wersja zapoznawcza)](quick-create-vs-code.md)

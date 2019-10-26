@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 40f73a6aabd3631bf2a2f8f1406d2ec9abd55e51
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 51202597aaee2940a764d0385d4d93c7409f4905
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757226"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935929"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Szybki start: analizowanie zawartości tekstowej pod kątem niepożądanego materiału w języku C#
 
@@ -24,7 +24,7 @@ Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Klucz subskrypcji pakietu Content Moderator. Aby subskrybować pakiet Content Moderator i uzyskać klucz, postępuj zgodnie z instrukcjami z tematu [Create a Cognitive Services account (Tworzenie konta usług Cognitive Services)](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+- Klucz subskrypcji pakietu Content Moderator. Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować Content Moderator. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla adresu URL klucza i punktu końcowego, odpowiednio nazwane `CONTENT_MODERATOR_SUBSCRIPTION_KEY` i `CONTENT_MODERATOR_ENDPOINT`.
 - Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/)
 
 > [!NOTE]
@@ -48,19 +48,19 @@ Następnie skopiujesz kod z tego przewodnika i wkleisz go do projektu, aby zaimp
 
 Dodaj następujące instrukcje `using` na początku pliku *Program.cs*.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=1-8)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_using)]
 
 ### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usług Content Moderator
 
-Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta usługi Content Moderator dla subskrypcji. W tej samej przestrzeni nazw dodaj kod wraz z klasą **Program**. Następnie trzeba będzie zaktualizować pola **AzureRegion** i **CMSubscriptionKey** przy użyciu wartości identyfikatora regionu i klucza subskrypcji.
+Dodaj następujący kod do pliku *Program.cs*, aby utworzyć dostawcę klienta usługi Content Moderator dla subskrypcji. Dodaj klasę obok klasy **program** w tej samej przestrzeni nazw. Musisz zaktualizować pola **AzureBaseURL** i **CMSubscriptionKey** za pomocą wartości adresu URL punktu końcowego i klucza subskrypcji. Te informacje można znaleźć na karcie **Szybki Start** zasobu w Azure Portal.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=54-77)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_client)]
 
 ### <a name="set-up-input-and-output-targets"></a>Konfigurowanie wejściowych i wyjściowych elementów docelowych
 
 Dodaj następujące pola statyczne do klasy **Program** w pliku _Program.cs_. Te pola określają pliki dla wejściowej zawartości tekstowej i wyjściowej zawartości JSON.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_fields)]
 
 Należy utworzyć plik wejściowy *textfile. txt* i zaktualizować jego ścieżkę (ścieżki odnoszą się do katalogu wykonywania). Otwórz plik _TextFile.txt_ i dodaj tekst moderowania. Ten przewodnik Szybki start używa następującego przykładowego tekstu:
 
@@ -80,7 +80,7 @@ Dodaj następujący kod do metody **Main**. Metoda **ScreenText** to niezbędna 
 
 Jeśli chcesz dowiedzieć się więcej o sposobie działania operacji, kliknij link w sekcji [Następne kroki](#next-steps).
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=23-48)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?name=snippet_main)]
 
 ## <a name="run-the-program"></a>Uruchamianie programu
 

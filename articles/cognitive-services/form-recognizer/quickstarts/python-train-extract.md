@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 5739827f1f6cf65cfe5c4aa8303c9f37eb569854
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1ec1baa8797935b76963025f82d6c7df43a2a7d5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264410"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931552"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Szybki Start: uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST w języku Python
 
@@ -114,7 +114,7 @@ Zwróć uwagę na wartość `"modelId"`. Będzie on potrzebny do wykonania nast�
 
 Następnie analizujesz dokument i wyodrębniasz z niego pary klucz-wartość i tabele. Wywołaj interfejs API **analizy modelu** , uruchamiając Poniższy skrypt języka Python. Przed uruchomieniem polecenia wprowadź następujące zmiany:
 
-1. Zastąp `<Endpoint>` punktem końcowym uzyskanym z kluczem subskrypcji aparatu rozpoznawania formularza. Można go znaleźć na karcie **Przegląd** zasobów aparatu rozpoznawania formularza.
+1. Zamień `<Endpoint>` na punkt końcowy uzyskany w ramach subskrypcji aparatu rozpoznawania formularza.
 1. Zastąp `<path to your form>` ścieżką pliku formularza (na przykład C:\temp\file.PDF). W tym przewodniku szybki start można użyć plików w folderze **testowym** [zestawu danych przykładowych](https://go.microsoft.com/fwlink/?linkid=2090451).
 1. Zastąp `<modelID>` IDENTYFIKATORem modelu otrzymanego w poprzedniej sekcji.
 1. Zastąp `<file type>` typem pliku. Obsługiwane typy: `application/pdf`, `image/jpeg`, `image/png`.

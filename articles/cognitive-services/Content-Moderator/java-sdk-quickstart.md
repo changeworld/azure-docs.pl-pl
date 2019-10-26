@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Content Moderator Biblioteka kliencka dla języka Java | Microsoft Docs'
+title: 'Szybki Start: Content Moderatora Biblioteka kliencka dla języka Java | Microsoft Docs'
 description: Wprowadzenie do biblioteki klienta Content Moderator dla środowiska Java.
 services: cognitive-services
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: pafarley
-ms.openlocfilehash: 5d1575818ac35c45af8a7df59c0853389d01031c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 61149392368fc34fe388709dd5867250f3542fbc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700251"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935992"
 ---
-# <a name="quickstart-content-moderator-client-library-for-java"></a>Szybki start: Content Moderator Biblioteka kliencka dla języka Java
+# <a name="quickstart-content-moderator-client-library-for-java"></a>Szybki Start: Content Moderatora Biblioteka kliencka dla języka Java
 
 Wprowadzenie do biblioteki klienta Content Moderator dla środowiska Java. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań. Content Moderator to usługa poznawczej, która sprawdza zawartość tekstu, obrazu i wideo dla materiałów, które są potencjalnie obraźliwe, ryzykowne lub w inny sposób niepożądane. W przypadku znalezienia takich treści usługa stosuje odpowiednie etykiety (flagi) do zawartości. Aplikacja może następnie obsłużyć oflagowaną zawartość w celu zachowania zgodności z przepisami lub zapewnienia odpowiedniego środowiska dla użytkowników.
 
@@ -24,7 +24,7 @@ Użyj biblioteki klienta Content Moderator dla języka Java, aby:
 
 * Umiarkowane obrazy dotyczące zawartości dla dorosłych lub erotycznej, tekstu lub ludzkich twarzy.
 
-[](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [Przykłady](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator&sort=0) artefaktów dokumentacji referencyjnej[(Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | 
+[Dokumentacja referencyjna](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [artefaktu (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [przykłady](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -94,7 +94,7 @@ Następnie utwórz plik o nazwie *ContentModeratorQuickstart. Java* w nowym fold
 
 Poniższe klasy obsługują niektóre główne funkcje zestawu SDK języka Java Content Moderator.
 
-|Name (Nazwa)|Opis|
+|Nazwa|Opis|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Ta klasa jest wymagana dla wszystkich funkcji Content Moderator. Tworzysz wystąpienie z informacjami o subskrypcji i używasz ich do tworzenia wystąpień innych klas.|
 |[ImageModeration](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Ta klasa udostępnia funkcje do analizowania obrazów na potrzeby zawartości dla dorosłych, danych osobowych lub osób ludzkich.|
@@ -112,9 +112,9 @@ Te fragmenty kodu przedstawiają sposób wykonywania następujących zadań za p
 ## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
 
 > [!NOTE]
-> W tym kroku przyjęto założenie, że dla klucza Content Moderator została [utworzona zmienna środowiskowa](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) o nazwie `AZURE_CONTENTMODERATOR_KEY`.
+> W tym kroku przyjęto założenie, że [utworzono zmienną środowiskową](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza Content moderator o nazwie `AZURE_CONTENTMODERATOR_KEY`.
 
-W `main` metodzie aplikacji Utwórz obiekt [ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) przy użyciu wartości punktu końcowego subskrypcji i zmiennej środowiskowej klucza subskrypcji. 
+W metodzie `main` aplikacji Utwórz obiekt [ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) przy użyciu wartości punktu końcowego subskrypcji i zmiennej środowiskowej klucza subskrypcji. 
 
 > [!NOTE]
 > Jeśli zmienna środowiskowa została utworzona po uruchomieniu aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę, na których jest uruchomiona, aby uzyskać dostęp do zmiennej.
@@ -140,7 +140,7 @@ Następnie w pliku *ContentModeratorQuickstart. Java* Dodaj następującą defin
 
 ### <a name="iterate-through-images"></a>Wykonaj iterację obrazów
 
-Następnie Dodaj następujący kod na końcu `main` metody. Można też dodać go do oddzielnej metody, która jest wywoływana z `main`. Ten kod jest wykonywany przez każdy wiersz pliku _ImageFiles. txt_ .
+Następnie Dodaj następujący kod na końcu metody `main`. Można też dodać go do oddzielnej metody, która jest wywoływana z `main`. Ten kod jest wykonywany przez każdy wiersz pliku _ImageFiles. txt_ .
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
 
@@ -159,17 +159,17 @@ Ten wiersz kodu sprawdza obraz dla ludzkich twarzy.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_faces)]
 
-Na koniec Zapisz zwrócone informacje na `EvaluationData` liście.
+Na koniec Zapisz zwrócone informacje na liście `EvaluationData`.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_storedata)]
 
 ### <a name="print-results"></a>Drukuj wyniki
 
-Po pętli Dodaj następujący kod, który drukuje wyniki do konsoli programu i do pliku wyjściowego, *src/Main/sources/ModerationOutput. JSON.* `while`
+Po pętli `while` Dodaj następujący kod, który będzie drukował wyniki do konsoli programu i do pliku wyjściowego, *src/Main/sources/ModerationOutput. JSON*.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 
-Zamknij instrukcję i `catch` Dodaj instrukcję, aby ukończyć metodę. `try`
+Zamknij instrukcję `try` i Dodaj instrukcję `catch`, aby ukończyć metodę.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
 
@@ -181,7 +181,7 @@ Aplikację można skompilować przy użyciu:
 gradle build
 ```
 
-Uruchom aplikację za pomocą `gradle run` polecenia:
+Uruchom aplikację za pomocą polecenia `gradle run`:
 
 ```console
 gradle run
@@ -196,7 +196,7 @@ Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz us
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Interfejs wiersza polecenia platformy Azure](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku szybki start przedstawiono sposób używania biblioteki języka Java Content Moderator do wykonywania zadań moderowania. Następnie Dowiedz się więcej o moderowaniu obrazów lub innych nośnikach, odczytując Przewodnik koncepcyjny.
 

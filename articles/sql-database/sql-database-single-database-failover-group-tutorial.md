@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: a80dc8ccaa72a57986ed6c64f7ab7050ab4c7de5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 106351487980d2f76e9122bc7423114e65593b15
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099015"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933241"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Samouczek: Dodawanie Azure SQL Database pojedynczej bazy danych do grupy trybu failover
 
@@ -35,7 +35,7 @@ Aby ukończyć kroki tego samouczka, upewnij się, że dysponujesz następujący
 - Subskrypcja platformy Azure. [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) , jeśli jeszcze go nie masz.
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 Aby ukończyć ten samouczek, upewnij się, że masz następujące elementy:
 
 - Subskrypcja platformy Azure. [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) , jeśli jeszcze go nie masz.
@@ -60,9 +60,8 @@ W tym kroku utworzysz [grupę trybu failover](sql-database-auto-failover-group.m
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Utwórz grupę trybu failover i Dodaj do niej pojedynczą bazę danych przy użyciu Azure Portal. 
 
-
 1. Wybierz pozycję **Azure SQL** w menu po lewej stronie [Azure Portal](https://portal.azure.com). Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz SQL Azure w polu wyszukiwania. Obowiązkowe Wybierz gwiazdkę obok pozycji **Azure SQL** , aby ją dodać do ulubionych, i Dodaj ją jako element w nawigacji po lewej stronie. 
-1. Wybierz pojedynczą bazę danych utworzoną w sekcji 2, na przykład `mySampleDatbase`. 
+1. Wybierz pojedynczą bazę danych utworzoną w sekcji 1, taką jak `mySampleDatabase`. 
 1. Wybierz nazwę serwera w polu **Nazwa serwera** , aby otworzyć ustawienia serwera.
 
    ![Otwórz serwer dla pojedynczej bazy danych](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
@@ -72,11 +71,11 @@ Utwórz grupę trybu failover i Dodaj do niej pojedynczą bazę danych przy uży
     ![Dodaj nową grupę trybu failover](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. Na stronie **Grupa trybu failover** wprowadź lub wybierz następujące wartości, a następnie wybierz pozycję **Utwórz**:
-    - **Nazwa grupy trybu failover**: Wpisz unikatową nazwę grupy trybu failover, `failovergrouptutorial`na przykład. 
-    - **Serwer pomocniczy**: Wybierz opcję *konfigurowania wymaganych ustawień* , a następnie wybierz opcję **utworzenia nowego serwera**. Alternatywnie można wybrać istniejący serwer jako serwer pomocniczy. Po wprowadzeniu następujących wartości wybierz pozycję **Wybierz**. 
-        - **Nazwa serwera**: Wpisz unikatową nazwę serwera pomocniczego, `mysqlsecondary`na przykład. 
-        - **Identyfikator logowania administratora serwera**: Wprowadź`azureuser`
-        - **Hasło**: Wpisz złożone hasło spełniające wymagania dotyczące haseł.
+    - **Nazwa grupy trybu failover**: wpisz unikatową nazwę grupy trybu failover, taką jak `failovergrouptutorial`. 
+    - **Serwer pomocniczy**: wybierz opcję *konfigurowania wymaganych ustawień* , a następnie wybierz pozycję **Utwórz nowy serwer**. Alternatywnie można wybrać istniejący serwer jako serwer pomocniczy. Po wprowadzeniu następujących wartości wybierz pozycję **Wybierz**. 
+        - **Nazwa serwera**: wpisz unikatową nazwę serwera pomocniczego, na przykład `mysqlsecondary`. 
+        - **Identyfikator logowania administratora serwera**: typ `azureuser`
+        - **Hasło**: wpisz złożone hasło spełniające wymagania dotyczące haseł.
         - **Lokalizacja**: Wybierz lokalizację z listy rozwijanej, na przykład `East US`. Ta lokalizacja nie może być taka sama jak lokalizacja serwera podstawowego.
 
     > [!NOTE]
@@ -84,12 +83,12 @@ Utwórz grupę trybu failover i Dodaj do niej pojedynczą bazę danych przy uży
     
       ![Tworzenie serwera pomocniczego dla grupy trybu failover](media/sql-database-single-database-failover-group-tutorial/create-secondary-failover-server.png)
 
-   - **Bazy danych w grupie**: Po wybraniu serwera pomocniczego ta opcja zostanie odblokowana. Wybierz je, aby **wybrać bazy danych do dodania** , a następnie wybierz bazę danych utworzoną w sekcji 1. Dodanie bazy danych do grupy trybu failover spowoduje automatyczne uruchomienie procesu replikacji geograficznej. 
+   - **Bazy danych w grupie**: po wybraniu serwera pomocniczego ta opcja zostanie odblokowana. Wybierz je, aby **wybrać bazy danych do dodania** , a następnie wybierz bazę danych utworzoną w sekcji 1. Dodanie bazy danych do grupy trybu failover spowoduje automatyczne uruchomienie procesu replikacji geograficznej. 
         
     ![Dodawanie bazy danych SQL do grupy trybu failover](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 Utwórz grupę trybu failover i Dodaj do niej pojedynczą bazę danych przy użyciu programu PowerShell. 
 
    > [!NOTE]
@@ -107,6 +106,11 @@ Utwórz grupę trybu failover i Dodaj do niej pojedynczą bazę danych przy uży
    $drServerName = "mysqlsecondary-$(Get-Random)"
    $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
 
+   # The ip address range that you want to allow to access your server 
+   # (leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB)
+   $startIp = "0.0.0.0"
+   $endIp = "0.0.0.0"
+
    # Show randomized variables
    Write-host "DR Server name is" $drServerName 
    Write-host "Failover group name is" $failoverGroupName
@@ -119,7 +123,13 @@ Utwórz grupę trybu failover i Dodaj do niej pojedynczą bazę danych przy uży
       -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
          -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
    $drServer
-   
+
+   # Create a server firewall rule that allows access from the specified IP range
+   Write-host "Configuring firewall for secondary logical server..."
+   $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName `
+      -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
+   $serverFirewallRule   
    
    # Create a failover group between the servers
    $failovergroup = Write-host "Creating a failover group between the primary and secondary server..."
@@ -144,6 +154,17 @@ Utwórz grupę trybu failover i Dodaj do niej pojedynczą bazę danych przy uży
       -FailoverGroupName $failoverGroupName
    Write-host "Successfully added the database to the failover group..." 
    ```
+
+W tej części samouczka są stosowane następujące polecenia cmdlet programu PowerShell:
+
+| Polecenie | Uwagi |
+|---|---|
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tworzy serwer usługi SQL Database hostujący pojedyncze bazy danych i elastyczne pule. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tworzy regułę zapory dla serwera logicznego. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Tworzy nową Azure SQL Database pojedynczą bazę danych. | 
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Tworzy nową grupę trybu failover. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Pobiera co najmniej jedną bazę danych SQL. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Dodaje co najmniej jedną bazę danych SQL platformy Azure do grupy trybu failover. |
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 Utwórz grupę trybu failover i Dodaj do niej pojedynczą bazę danych przy użyciu polecenia AZ CLI. 
@@ -173,6 +194,15 @@ Utwórz grupę trybu failover i Dodaj do niej pojedynczą bazę danych przy uży
       --location $drLocation  \
       --admin-user $adminLogin\
       --admin-password $password
+
+   # Configure a firewall rule for the server
+   echo "Configuring firewall..."
+   az sql server firewall-rule create \
+      --resource-group $resourceGroupName \
+      --server $drServerName \
+      -n AllowYourIp \
+      --start-ip-address $startip \
+      --end-ip-address $endip
    
    # Create a failover group between the servers and add the database
    echo "Creating a failover group between the two servers..."
@@ -185,6 +215,14 @@ Utwórz grupę trybu failover i Dodaj do niej pojedynczą bazę danych przy uży
       --failover-policy Automatic
    ```
 
+W tej części samouczka są stosowane następujące polecenia:
+
+| Polecenie | Uwagi |
+|---|---|
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Tworzy serwer usługi SQL Database hostujący pojedyncze bazy danych i elastyczne pule. |
+| [AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Tworzy reguły zapory serwera. | 
+| [AZ SQL failover-Group Create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Tworzy grupę trybu failover. | 
+
 ---
 
 ## <a name="3---test-failover"></a>3 — Testowanie pracy w trybie failover 
@@ -194,7 +232,7 @@ W tym kroku nastąpi niepowodzenie grupy trybu failover na serwerze pomocniczym,
 Testowanie pracy w trybie failover przy użyciu Azure Portal. 
 
 1. Wybierz pozycję **Azure SQL** w menu po lewej stronie [Azure Portal](https://portal.azure.com). Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz SQL Azure w polu wyszukiwania. Obowiązkowe Wybierz gwiazdkę obok pozycji **Azure SQL** , aby ją dodać do ulubionych, i Dodaj ją jako element w nawigacji po lewej stronie. 
-1. Wybierz pojedynczą bazę danych utworzoną w sekcji 2, na przykład `mySampleDatbase`. 
+1. Wybierz pojedynczą bazę danych utworzoną w sekcji 2, taką jak `mySampleDatbase`. 
 1. Wybierz nazwę serwera w polu **Nazwa serwera** , aby otworzyć ustawienia serwera.
 
    ![Otwórz serwer dla pojedynczej bazy danych](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
@@ -212,7 +250,7 @@ Testowanie pracy w trybie failover przy użyciu Azure Portal.
 1. Sprawdź, który serwer jest teraz podstawowy i który serwer jest serwerem pomocniczym. Jeśli przełączenie w tryb failover powiodło się, te dwa serwery powinny mieć zamienione role. 
 1. Wybierz ponownie **tryb failover** , aby powrócić do awarii serwerów z powrotem do ich pierwotnych ról. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 Testowanie pracy w trybie failover przy użyciu programu PowerShell. 
 
 
@@ -232,7 +270,6 @@ Sprawdź rolę repliki pomocniczej:
       -ServerName $drServerName).ReplicationRole
    ```
 
-
 Przejdź do trybu failover na serwerze pomocniczym: 
 
    ```powershell-interactive
@@ -247,7 +284,7 @@ Przejdź do trybu failover na serwerze pomocniczym:
       -ResourceGroupName $resourceGroupName `
       -ServerName $drServerName `
       -FailoverGroupName $failoverGroupName
-   Write-host "Failed failover group to sucessfully to" $drServerName 
+   Write-host "Failed failover group successfully to" $drServerName 
    ```
 
 Przywróć grupę trybu failover z powrotem do serwera podstawowego:
@@ -264,12 +301,20 @@ Przywróć grupę trybu failover z powrotem do serwera podstawowego:
       -ResourceGroupName $resourceGroupName `
       -ServerName $serverName `
       -FailoverGroupName $failoverGroupName
-   Write-host "Failed failover group to successfully to back to" $serverName
+   Write-host "Failed failover group successfully back to" $serverName
    ```
+
+W tej części samouczka są stosowane następujące polecenia cmdlet programu PowerShell:
+
+| Polecenie | Uwagi |
+|---|---|
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Pobiera lub wyświetla listę grup Azure SQL Database trybu failover. |
+| [Przełącznik-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Wykonuje tryb failover grupy trybu failover Azure SQL Database. |
+
+
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 Testowanie pracy w trybie failover przy użyciu polecenia AZ CLI. 
-
 
 Sprawdź, który serwer jest serwerem pomocniczym:
 
@@ -319,6 +364,13 @@ Przywróć grupę trybu failover z powrotem do serwera podstawowego:
    echo "Successfully failed failover group back to" $serverName
    ```
 
+W tej części samouczka są stosowane następujące polecenia:
+
+| Polecenie | Uwagi |
+|---|---|
+| [AZ SQL failover-Group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Wyświetla listę grup trybu failover na serwerze. |
+| [AZ SQL failover-Group Set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Ustaw podstawową grupę trybu failover, przełączając się na wszystkie bazy danych z bieżącego serwera podstawowego. | 
+
 ---
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
@@ -327,12 +379,12 @@ Wyczyść zasoby, usuwając grupę zasobów.
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Usuń grupę zasobów przy użyciu Azure Portal. 
 
-
 1. Przejdź do grupy zasobów w [Azure Portal](https://portal.azure.com).
 1. Wybierz pozycję **Usuń grupę zasobów** , aby usunąć wszystkie zasoby w grupie, a także samą grupę zasobów. 
-1. Wpisz nazwę grupy zasobów, `myResourceGroup`w polu tekstowym, a następnie wybierz pozycję **Usuń** , aby usunąć grupę zasobów.  
+1. Wpisz nazwę grupy zasobów, `myResourceGroup`, w polu tekstowym, a następnie wybierz pozycję **Usuń** , aby usunąć grupę zasobów.  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+
 Usuń grupę zasobów przy użyciu programu PowerShell. 
 
 
@@ -346,7 +398,14 @@ Usuń grupę zasobów przy użyciu programu PowerShell.
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
+W tej części samouczka są stosowane następujące polecenia cmdlet programu PowerShell:
+
+| Polecenie | Uwagi |
+|---|---|
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów | 
+
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
 Usuń grupę zasobów za pomocą polecenia AZ CLI. 
 
 
@@ -361,29 +420,64 @@ Usuń grupę zasobów za pomocą polecenia AZ CLI.
    echo "Successfully removed resource group" $resourceGroupName
    ```
 
+W tej części samouczka są stosowane następujące polecenia:
+
+| Polecenie | Uwagi |
+|---|---|
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
+
 ---
 
 
 ## <a name="full-scripts"></a>Pełne skrypty
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
 
+W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
+
+| Polecenie | Uwagi |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tworzy serwer usługi SQL Database hostujący pojedyncze bazy danych i elastyczne pule. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tworzy regułę zapory dla serwera logicznego. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Tworzy nową Azure SQL Database pojedynczą bazę danych. | 
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Tworzy nową grupę trybu failover. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Pobiera co najmniej jedną bazę danych SQL. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Dodaje co najmniej jedną bazę danych SQL platformy Azure do grupy trybu failover. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Pobiera lub wyświetla listę grup Azure SQL Database trybu failover. |
+| [Przełącznik-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Wykonuje tryb failover grupy trybu failover Azure SQL Database. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów | 
+
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
-[!code-azurecli-interactive[main](../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Create SQL Database")]
+[!code-azurecli-interactive[main](../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Add single database to a failover group")]
+
+W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
+
+| Polecenie | Uwagi |
+|---|---|
+| [AZ Account Set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Ustawia subskrypcję jako bieżącą aktywną subskrypcję. | 
+| [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Tworzy serwer usługi SQL Database hostujący pojedyncze bazy danych i elastyczne pule. |
+| [AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Tworzy reguły zapory serwera. | 
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Tworzy bazę danych. | 
+| [AZ SQL failover-Group Create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Tworzy grupę trybu failover. | 
+| [AZ SQL failover-Group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Wyświetla listę grup trybu failover na serwerze. |
+| [AZ SQL failover-Group Set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Ustaw podstawową grupę trybu failover, przełączając się na wszystkie bazy danych z bieżącego serwera podstawowego. | 
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-Brak skryptów dostępnych dla Azure Portal.
+Brak skryptów dostępnych dla Azure Portal. 
  
 ---
 
-Inne skrypty Azure SQL Database można znaleźć tutaj: [Azure PowerShell](sql-database-powershell-samples.md) i [interfejs wiersza polecenia platformy Azure](sql-database-cli-samples.md). 
+Inne skrypty Azure SQL Database można znaleźć tutaj: [Azure PowerShell](sql-database-powershell-samples.md) i [interfejsu wiersza polecenia platformy Azure](sql-database-cli-samples.md). 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku dodano Azure SQL Database pojedynczą bazę danych do grupy trybu failover i przetestowano tryb failover. W tym samouczku omówiono:
+W tym samouczku dodano Azure SQL Database pojedynczą bazę danych do grupy trybu failover i przetestowano tryb failover. W tym samouczku omówiono: 
 
 > [!div class="checklist"]
 > - Utwórz Azure SQL Databaseą pojedynczą bazę danych. 

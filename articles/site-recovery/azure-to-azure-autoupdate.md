@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 92a46f7be116d0664b438c9039e311f802c873e5
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: 79a11a58f11486f3eda0205e62e7a4a92ff070b2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708076"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933931"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności w replikacji na platformie Azure na platformę Azure
 
@@ -53,8 +53,8 @@ Po włączeniu replikacji dla maszyny wirtualnej, rozpoczynając [od widoku masz
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>Przełącz ustawienia aktualizacji rozszerzenia w magazynie
 
-1. W magazynie przejdź do obszaru **Zarządzanie** > **infrastrukturą Site Recovery**.
-2. W obszarze dla**opcji Ustawienia aktualizacji rozszerzenia** >  **Virtual Machines platformy Azure**Włącz opcję **Zezwalaj Site Recovery na zarządzanie** przełącznikiem. Aby zarządzać ręcznie, wyłącz ją. 
+1. W magazynie przejdź do pozycji **zarządzaj** > **Site Recovery infrastrukturę**.
+2. W obszarze dla **opcji Ustawienia aktualizacji rozszerzenia** > **Virtual Machines platformy Azure** Włącz opcję **Zezwalaj Site Recovery na zarządzanie** przełącznikiem. Aby zarządzać ręcznie, wyłącz ją. 
 3. Wybierz pozycję **Zapisz**.
 
 ![Ustawienia aktualizacji rozszerzeń](./media/azure-to-azure-autoupdate/vault-toggle.png)
@@ -66,7 +66,8 @@ Po włączeniu replikacji dla maszyny wirtualnej, rozpoczynając [od widoku masz
 > [!Note]
 > Każda opcja powiadamia użytkownika o koncie usługi Automation używanym do zarządzania aktualizacjami. Jeśli ta funkcja jest używana w magazynie po raz pierwszy, domyślnie tworzone jest nowe konto usługi Automation. Alternatywnie możesz dostosować ustawienie i wybrać istniejące konto usługi Automation. Wszystkie kolejne z nich włączają replikacje w tym samym magazynie, użyj wcześniej utworzonej. Obecnie lista rozwijana zawiera tylko konta usługi Automation, które znajdują się w tej samej grupie zasobów co magazyn.  
 
-W przypadku niestandardowego konta automatyzacji Użyj następującego skryptu:
+> [!IMPORTANT]
+> Poniższy skrypt musi być uruchamiany w kontekście konta usługi Automation dla niestandardowego konta usługi Automation, użyj następującego skryptu:
 
 ```azurepowershell
 param(
@@ -505,7 +506,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 ### <a name="manage-updates-manually"></a>Ręczne zarządzanie aktualizacjami
 
-1. Jeśli na maszynach wirtualnych są zainstalowane nowe aktualizacje usługi mobilności, zobaczysz następujące powiadomienie: "Dostępna jest aktualizacja agenta replikacji nowej lokacji. Kliknij, aby zainstalować "
+1. Jeśli na maszynach wirtualnych są zainstalowane nowe aktualizacje usługi mobilności, zobaczysz następujące powiadomienie: "Nowa Site Recovery aktualizacja agenta replikacji jest dostępna. Kliknij, aby zainstalować "
 
      ![Okno zreplikowane elementy](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 2. Wybierz powiadomienie, aby otworzyć stronę wyboru maszyny wirtualnej.
@@ -516,11 +517,11 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 ## <a name="common-issues-and-troubleshooting"></a>Typowe problemy i rozwiązywanie problemów
 
-Jeśli wystąpi problem z aktualizacjami automatycznymi, zobaczysz powiadomienie o błędzie w obszarze **problemy** z konfiguracją na pulpicie nawigacyjnym magazynu.
+Jeśli wystąpi problem z aktualizacjami automatycznymi, zobaczysz powiadomienie o błędzie w obszarze **problemy z konfiguracją** na pulpicie nawigacyjnym magazynu.
 
 Jeśli nie można włączyć aktualizacji automatycznych, zobacz następujące typowe błędy i zalecane akcje:
 
-- **Błąd**: Nie masz uprawnień do utworzenia konta Uruchom jako platformy Azure (jednostki usługi) i udzielenia roli Współautor jednostce usługi.
+- **Błąd**: nie masz uprawnień do utworzenia konta Uruchom jako platformy Azure (nazwy głównej usługi) i Udziel roli współautor do jednostki usługi.
 
    **Zalecana akcja**: Upewnij się, że konto zalogowane jest przypisane jako współautor, i spróbuj ponownie. Zapoznaj się z sekcją wymagane uprawnienia w temacie [Korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi umożliwiającej dostęp do zasobów,](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) Aby uzyskać więcej informacji na temat przypisywania uprawnień.
  
@@ -528,19 +529,19 @@ Jeśli nie można włączyć aktualizacji automatycznych, zobacz następujące t
 
    ![Przycisk naprawy usługi Site Recovery w ustawieniach aktualizacji rozszerzenia](./media/azure-to-azure-autoupdate/repair.png)
 
-- **Błąd**: Konto Uruchom jako nie ma uprawnień dostępu do zasobu usługi Recovery Services.
+- **Błąd**: konto Uruchom jako nie ma uprawnień dostępu do zasobu usługi Recovery Services.
 
     **Zalecana akcja**: Usuń, a następnie [Utwórz ponownie konto Uruchom jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Lub upewnij się, że aplikacja Azure Active Directory konta Uruchom jako usługi Automation ma dostęp do zasobu usługi Recovery Services.
 
-- **Błąd**: Nie znaleziono konta Uruchom jako. Jeden z tych elementów został usunięty lub nie został utworzony — aplikacja Azure Active Directory, nazwa główna usługi, rola, zasób certyfikatu usługi Automation, zasób połączenia usługi Automation lub odcisk palca nie są identyczne między certyfikatem a połączeniem. 
+- **Błąd**: nie można odnaleźć konta Uruchom jako. Jeden z tych elementów został usunięty lub nie został utworzony — aplikacja Azure Active Directory, nazwa główna usługi, rola, zasób certyfikatu usługi Automation, zasób połączenia usługi Automation lub odcisk palca nie są identyczne między certyfikatem a połączeniem. 
 
     **Zalecana akcja**: Usuń, a następnie [Utwórz ponownie konto Uruchom jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
 
--  **Błąd**: Certyfikat Uruchom jako platformy Azure używany przez konto usługi Automation wkrótce wygaśnie. 
+-  **Błąd**: certyfikat Uruchom jako platformy Azure używany przez konto usługi Automation wkrótce wygaśnie. 
 
-    Certyfikat z podpisem własnym utworzony dla konta Uruchom jako wygasa w jednym roku od daty utworzenia. Można go odnowić w dowolnym momencie przed wygaśnięciem jego ważności. Jeśli zarejestrowano się w celu otrzymywania powiadomień pocztą e-mail, otrzymasz również wiadomości e-mail, gdy wymagana jest akcja z Twojej strony. Ten błąd zostanie wyświetlony 2 miesiące przed datą wygaśnięcia i zmieni się na błąd krytyczny, jeśli certyfikat wygasł. Po wygaśnięciu certyfikatu funkcja autoaktualizacji nie będzie działać, dopóki nie odnowisz tego samego.
+    Certyfikat z podpisem własnym utworzony dla konta Uruchom jako wygasa w jednym roku od daty utworzenia. Można go odnowić w dowolnym momencie przed wygaśnięciem jego ważności. Jeśli zarejestrowano się w celu otrzymywania powiadomień pocztą e-mail, otrzymasz również wiadomości e-mail, gdy wymagana jest akcja z Twojej strony. Ten błąd zostanie wyświetlony dwa miesiące przed datą wygaśnięcia i zmieni się na błąd krytyczny, jeśli certyfikat wygasł. Po wygaśnięciu certyfikatu funkcja autoaktualizacji nie będzie działać, dopóki nie odnowisz tego samego.
 
-   **Zalecana akcja**: Kliknij przycisk "Napraw", a następnie "odnów certyfikat", aby rozwiązać ten problem.
+   **Zalecana akcja**: kliknij "Napraw", a następnie "odnów certyfikat", aby rozwiązać ten problem.
     
    ![Odnów certyfikat](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
 

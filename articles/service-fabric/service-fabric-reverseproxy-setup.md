@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 3fd1716fa7b9c32bb5b5e49598139b6a5e728692
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166579"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933894"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Konfigurowanie i Konfigurowanie zwrotnego serwera proxy na platformie Azure Service Fabric
 Zwrotny serwer proxy to opcjonalna usługa Service Fabric platformy Azure, która pomaga mikrousługom działającym w klastrze Service Fabric odnajdywania i komunikowania się z innymi usługami, które mają punkty końcowe http. Aby dowiedzieć się więcej, zobacz [zwrotny serwer proxy na platformie Azure Service Fabric](service-fabric-reverseproxy.md). W tym artykule opisano sposób konfigurowania i konfigurowania zwrotnego serwera proxy w klastrze. 
@@ -44,7 +44,7 @@ W przypadku klastrów na platformie Azure można użyć szablonu Azure Resource 
 
 W przypadku nowego klastra można [utworzyć niestandardowy szablon Menedżer zasobów](service-fabric-cluster-creation-via-arm.md) lub użyć przykładowego szablonu. 
 
-Możesz znaleźć przykładowe szablony Menedżer zasobów, które mogą ułatwić skonfigurowanie bezpiecznego zwrotnego serwera proxy dla klastra platformy Azure w [przykładowych szablonach bezpiecznych zwrotnych serwerów proxy](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample) w witrynie GitHub. Zapoznaj się z tematem [Konfigurowanie zwrotnego serwera proxy HTTPS w zabezpieczonym klastrze](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) w pliku Readme, aby uzyskać instrukcje i szablony służące do konfigurowania bezpiecznego zwrotnego serwera proxy z certyfikatem i do obsługi przerzucania certyfikatów.
+Możesz znaleźć przykładowe szablony Menedżer zasobów, które mogą ułatwić skonfigurowanie bezpiecznego zwrotnego serwera proxy dla klastra platformy Azure w [przykładowych szablonach bezpiecznych zwrotnych serwerów proxy](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample) w witrynie GitHub. Zapoznaj się z tematem [Konfigurowanie zwrotnego serwera proxy HTTPS w zabezpieczonym klastrze](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) w pliku Readme, aby uzyskać instrukcje i szablony służące do konfigurowania bezpiecznego zwrotnego serwera proxy z certyfikatem i do obsługi przerzucania certyfikatów.
 
 W przypadku istniejącego klastra można wyeksportować szablon Menedżer zasobów dla grupy zasobów klastra przy użyciu [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [programu PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli).
 

@@ -1,19 +1,19 @@
 ---
-title: Zrozumieć poziom zgodności dla zadań usługi Azure Stream Analytics
-description: Dowiedz się, jak ustawić poziom zgodności dla zadania usługi Azure Stream Analytics i istotne zmiany w najnowszej poziom zgodności
+title: Azure Stream Analytics poziomów zgodności
+description: Dowiedz się, jak ustawić poziom zgodności dla zadania Azure Stream Analytics i istotne zmiany na najnowszym poziomie zgodności
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: d6d31506a13656a954c48dfee00f14d8ab381fd5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 888c1f0bb38a5317cc27790ea47917c182d49593
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173238"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925643"
 ---
-# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Poziom zgodności dla zadań usługi Azure Stream Analytics
+# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Poziom zgodności dla zadań Azure Stream Analytics
 
 W tym artykule opisano opcję poziomu zgodności w Azure Stream Analytics. Stream Analytics to usługa zarządzana z regularnymi aktualizacjami funkcji i ulepszeniami wydajności. Większość aktualizacji środowiska uruchomieniowego usługi jest automatycznie udostępnianych użytkownikom końcowym. 
 
@@ -21,7 +21,7 @@ Jednak niektóre nowe funkcje w usłudze mogą wprowadzić istotną zmianę, tak
 
 ## <a name="choose-a-compatibility-level"></a>Wybierz poziom zgodności
 
-Poziom zgodności steruje zachowaniem czasu wykonywania zadania usługi stream analytics. 
+Poziom zgodności kontroluje zachowanie zadania usługi Stream Analytics w czasie wykonywania. 
 
 Azure Stream Analytics obecnie obsługuje trzy poziomy zgodności:
 
@@ -40,14 +40,14 @@ Możesz ustawić poziom zgodności dla zadania Stream Analytics w Azure Portal l
 Aby zaktualizować poziom zgodności zadania w Azure Portal:
 
 1. Użyj [Azure Portal](https://portal.azure.com) , aby zlokalizować Stream Analytics zadanie.
-2. **Zatrzymaj** zadanie przed aktualizacją poziomu zgodności. Nie można zaktualizować poziom zgodności, jeśli zadanie jest w stanie uruchomienia.
+2. **Zatrzymaj** zadanie przed aktualizacją poziomu zgodności. Nie można zaktualizować poziomu zgodności, jeśli zadanie jest w stanie uruchomienia.
 3. W obszarze **Konfiguruj** nagłówek wybierz pozycję **poziom zgodności**.
 4. Wybierz żądaną wartość poziomu zgodności.
 5. Wybierz pozycję **Zapisz** w dolnej części strony.
 
-![Stream Analytics poziom zgodności w witrynie Azure portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Stream Analytics poziom zgodności w Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-Po zaktualizowaniu poziom zgodności kompilatora języka T-SQL sprawdza poprawność zadania za pomocą składni, który odpowiada poziomowi zgodności wybranego.
+Podczas aktualizowania poziomu zgodności kompilator T-SQL weryfikuje zadanie przy użyciu składni, która odpowiada wybranemu poziomowi zgodności.
 
 ## <a name="compatibility-level-12-preview"></a>Poziom zgodności 1,2 (wersja zapoznawcza)
 
@@ -81,7 +81,7 @@ Zachowanie upsert jest *wstawiane lub zastępowane*.
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset podczas zapisywania w danych wyjściowych SQL
 
-**Poprzednie poziomy:** Typy [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) zostały dostosowane do czasu UTC.
+**Poprzednie poziomy:** typy [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) zostały dostosowane do czasu UTC.
 
 **poziom 1,2:** DateTimeOffset nie jest już dostosowywany.
 
@@ -115,7 +115,7 @@ Użycie prefiksu "system" dla każdej funkcji zdefiniowanej przez użytkownika p
 
 ## <a name="compatibility-level-11"></a>Poziom zgodności 1,1
 
-Następujące istotne zmiany są wprowadzane przy poziomie zgodności 1.1:
+Następujące istotne zmiany są wprowadzane w obszarze poziom zgodności 1,1:
 
 ### <a name="service-bus-xml-format"></a>Service Bus format XML
 
@@ -132,21 +132,21 @@ Następujące istotne zmiany są wprowadzane przy poziomie zgodności 1.1:
 **poziom 1,1:** uwzględnianie wielkości liter jest zachowywane dla nazw pól podczas przetwarzania przez aparat Azure Stream Analytics.
 
 > [!NOTE]
-> Utrwalanie uwzględnianie wielkości liter nie jest jeszcze dostępna dla zadania Stream Analytics hostowany przy użyciu środowiska krawędzi. W rezultacie wszystkie nazwy pól są konwertowane na małe litery, gdy zadanie jest obsługiwana na urządzeniach brzegowych.
+> Rozróżnianie wielkości liter nie jest jeszcze dostępne dla zadań usługi Stream Analytics hostowanych za pomocą środowiska brzegowego. W związku z tym wszystkie nazwy pól są konwertowane na małe litery, jeśli zadanie jest hostowane na krawędzi.
 
 ### <a name="floatnandeserializationdisabled"></a>FloatNaNDeserializationDisabled
 
-**poziom 1,0:** Polecenie CREATE TABLE nie odfiltruje zdarzeń z NaN (nie liczbą). Na przykład w nieskończoność, - nieskończoność) w kolumnie FLOAT typu, ponieważ są one poza zakresem udokumentowane w przypadku tych liczb.
+**poziom 1,0:** Polecenie CREATE TABLE nie odfiltruje zdarzeń z NaN (nie liczbą). Na przykład nieskończoność, nieskończoność w typie kolumny ZMIENNOPRZECINKOWej, ponieważ znajdują się poza udokumentowanym zakresem dla tych liczb.
 
-**poziom 1,1:** CREATE TABLE pozwala określić mocny schemat. Aparat usługi Stream Analytics weryfikuje, że danych odpowiada tym schemacie. W tym modelu polecenia można filtrować zdarzenia przy użyciu wartości NaN.
+**poziom 1,1:** CREATE TABLE pozwala określić mocny schemat. Aparat Stream Analytics sprawdza, czy dane są zgodne z tym schematem. Przy użyciu tego modelu polecenie umożliwia filtrowanie zdarzeń przy użyciu wartości NaN.
 
 ### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Wyłącz automatyczne przerzutowanie dla ciągów DateTime w formacie JSON
 
 **poziom 1,0:** Analizator JSON automatycznie przekształci wartości ciągu z informacjami o dacie/godzinie/strefie do typu DateTime, a następnie przekonwertuje ją na czas UTC. Takie zachowanie spowodowało utratę informacji o strefie czasowej.
 
-**poziom 1,1:** Nie ma więcej automatycznego przerzutowania wartości ciągu z informacjami o dacie/godzinie/strefie na typ DateTime. W rezultacie są przechowywane informacje dotyczące strefy czasowej.
+**poziom 1,1:** Nie ma więcej automatycznego przerzutowania wartości ciągu z informacjami o dacie/godzinie/strefie na typ DateTime. W związku z tym informacje o strefie czasowej są przechowywane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Rozwiązywanie problemów z danych wejściowych usługi Azure Stream Analytics](stream-analytics-troubleshoot-input.md)
+* [Rozwiązywanie problemów Azure Stream Analytics danych wejściowych](stream-analytics-troubleshoot-input.md)
 * [Stream Analytics kondycji zasobów](stream-analytics-resource-health.md)

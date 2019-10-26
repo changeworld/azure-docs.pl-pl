@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 27884d83b9ca828a81922d27fe958334665e664a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 45cf376d54ef9f2e77acb2ece9529af640938853
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719534"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931775"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>Szybki Start: przetwarzanie obrazówa Biblioteka kliencka dla platformy .NET
 
@@ -25,7 +25,7 @@ Użyj biblioteki klienta przetwarzanie obrazów dla platformy .NET, aby:
 * Analizuj obraz pod kątem tagów, opisu tekstu, twarzy, treści dla dorosłych itd.
 * Rozpoznawanie wydrukowanych i odręcznych tekstu za pomocą interfejsu API odczytu usługi Batch.
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)@no__t — 1[kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [pakiet (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [przykładów](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)  |   |  pakietu[kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) [ | ](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,7 +108,7 @@ Te fragmenty kodu przedstawiają sposób wykonywania następujących zadań przy
 ## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
 
 > [!NOTE]
-> W tym przewodniku szybki start przyjęto założenie, że dla klucza przetwarzanie obrazów została [utworzona zmienna środowiskowa](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) o nazwie `COMPUTER_VISION_SUBSCRIPTION_KEY`.
+> W tym przewodniku szybki start przyjęto założenie, że [zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza przetwarzanie obrazów i punktu końcowego mają odpowiednio nazwę `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
 W nowej metodzie Utwórz wystąpienie klienta z punktem końcowym i kluczem. Utwórz obiekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) z kluczem i użyj go w punkcie końcowym, aby utworzyć obiekt [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) .
 
@@ -199,7 +199,7 @@ Poniższy kod drukuje wykryte atrybuty koloru w obrazie, takie jak kolory dominu
 
 ### <a name="get-domain-specific-content"></a>Pobieranie zawartości specyficznej dla domeny
 
-Przetwarzanie obrazów może korzystać z wyspecjalizowanego modelu do dalszej analizy obrazów. Aby uzyskać więcej informacji, zobacz [zawartość specyficzną dla domeny](../concept-detecting-domain-content.md) . 
+Przetwarzanie obrazów mogą korzystać z wyspecjalizowanych modeli w celu przeprowadzenia dalszej analizy obrazów. Aby uzyskać więcej informacji, zobacz [zawartość specyficzną dla domeny](../concept-detecting-domain-content.md) . 
 
 Poniższy kod analizuje dane dotyczące wykrytych osobistości w obrazie.
 
@@ -211,7 +211,7 @@ Poniższy kod analizuje dane dotyczące wykrytych punktów orientacyjnych w obra
 
 ### <a name="get-the-image-type"></a>Pobierz typ obrazu
 
-Poniższy kod drukuje informacje o typie obrazu @ no__t-0whether, który jest obiektem clipart lub rysowaniem linii.
+Poniższy kod drukuje informacje o typie obrazu&mdash;niezależnie od tego, czy jest to obiekt clipart czy rysunek liniowy.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_type)]
 

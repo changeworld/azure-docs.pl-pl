@@ -1,0 +1,48 @@
+---
+title: Architektura IoT Central centrum dystrybucji cyfrowego | Microsoft Docs
+description: Architektura szablonu aplikacji centrum dystrybucji cyfrowej dla IoT Central
+author: KishorIoT
+ms.author: nandab
+ms.service: iot-central
+ms.topic: overview
+ms.date: 10/20/2019
+ms.openlocfilehash: 75d6591b13e21ce2914c3e407bad970522856c90
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72958000"
+---
+# <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>Architektura IoT Central szablonu aplikacji Digital Distribution Center
+
+Partnerzy & klienci mogą korzystać z szablonu aplikacji & następujące wskazówki umożliwiają tworzenie kompleksowych rozwiązań **centrum dystrybucji cyfrowej** .
+
+> [!div class="mx-imgBorder"]
+> ![centrum dystrybucji cyfrowej](./media/concept-ddc-architecture/digital-distribution-center-architecture.png)
+
+1. Zbiór czujników IoT wysyłających dane telemetryczne do urządzenia bramy
+2. Urządzenia bramy wysyłające dane telemetryczne i agregowane szczegółowe dane do IoT Central
+3. Dane są kierowane do żądanej usługi platformy Azure w celu manipulowania
+4. Za pomocą usług systemu Azure, takich jak ASA lub Azure Functions, można ponownie formatować strumienie danych i wysyłać je do żądanych kont magazynu 
+5. Przetworzone dane są przechowywane w magazynie gorącym dla działań niemal w czasie rzeczywistym lub w chłodnym magazynie w celu uzyskania dodatkowych ulepszeń w oparciu o analizę ML lub wsadową. 
+6. Logic Apps może służyć do zarządzania różnymi przepływami pracy w aplikacjach dla użytkowników końcowych
+
+## <a name="details"></a>Szczegóły
+Poniższa sekcja zawiera opis każdej części architektury koncepcyjnej
+
+## <a name="video-cameras"></a>Kamery wideo 
+Kamery wideo są głównymi czujnikami w tym cyfrowym, połączonym ekosystemem w skali przedsiębiorstwa. Zaawansowana usługa uczenia maszynowego i sztuczna inteligencja, która pozwala na przekształcanie wideo w dane strukturalne i przetwarzanie go na brzegu przed wysłaniem do chmury. Za pomocą kamer IP można przechwytywać obrazy, kompresować je w aparacie, a następnie wysyłać skompresowane dane za pośrednictwem obliczeń brzegowych dla potoku analizy wideo lub używać aparatów GigE wzrok do przechwytywania obrazów na czujniku, a następnie wysyłania tych obrazów bezpośrednio do Azure IoT Edge , która następnie kompresuje przed przetwarzaniem w potoku analizy wideo. 
+
+## <a name="azure-iot-edge-gateway"></a>Azure IoT Edge Gateway
+Obciążenia "aparaty jako czujniki" i "krawędzie" są zarządzane lokalnie przez Azure IoT Edge i strumień aparatu jest przetwarzany przez potok analizy. Potok przetwarzania wideo Analytics w Azure IoT Edge oferuje wiele korzyści, w tym krótszy czas odpowiedzi, zużycie niskiej przepustowości, co pozwala na szybkie przetwarzanie danych. Tylko najważniejsze metadane, szczegółowe informacje i akcje są wysyłane do chmury w celu uzyskania dalszych działań lub badań. 
+
+## <a name="device-management-with-iot-central"></a>Zarządzanie urządzeniami za pomocą IoT Central 
+Azure IoT Central to platforma programistyczna dla rozwiązań, która upraszcza & urządzeń IoT Azure IoT Edge łączności bramy, konfiguracji i zarządzania. Platforma znacznie zmniejsza obciążenie i koszty związane z zarządzaniem urządzeniami IoT, operacjami i powiązanymi rozwiązaniami. Klienci & Partnerzy mogą tworzyć kompleksowe rozwiązania dla przedsiębiorstw, aby uzyskać pętlę do przesyłania opinii cyfrowych w centrach dystrybucji.
+
+## <a name="business-insights--actions-via-data-egress"></a>Informacje biznesowe dotyczące & działań za pośrednictwem danych wychodzących 
+Platforma IoT Central zapewnia zaawansowane opcje rozszerzalności za pośrednictwem funkcji ciągłego eksportowania danych (CDE) i interfejsów API. Szczegółowe informacje biznesowe oparte na przetwarzaniu danych telemetrycznych lub nieprzetworzonej telemetrii są zwykle eksportowane do preferowanych aplikacji biznesowych. Można to osiągnąć za pośrednictwem elementów webhook, Service Bus, Event Hub lub BLOB Storage w celu kompilowania, uczenia i wdrażania modeli uczenia maszynowego & dalszej wzbogacania szczegółowych informacji.
+
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się, jak wdrożyć [szablon centrum dystrybucji cyfrowej](./tutorial-iot-central-digital-distribution-center-pnp.md)
+* Dowiedz się więcej o [szablonach detalicznych IoT Central](./overview-iot-central-retail-pnp.md)
+* Dowiedz się więcej o IoT Central zapoznaj się z [omówieniem IoT Central](../core/overview-iot-central-pnp.md)

@@ -4,14 +4,14 @@ description: Wyświetla listę typów zasobów platformy Azure, które można pr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 10/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 81096a4299ec190cb4299f1b8ea4f9c2533d37ad
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: ba594a2bc0f0cb50eb515a24255a3f9ad56a10a3
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948038"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931873"
 ---
 # <a name="move-operation-support-for-resources"></a>Obsługa operacji przenoszenia dla zasobów
 W tym artykule przedstawiono, czy typ zasobu platformy Azure obsługuje operację przenoszenia. Zawiera również informacje dotyczące specjalnych warunków, które należy wziąć pod uwagę podczas przeniesienia zasobu.
@@ -30,7 +30,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft. usługi azureactivedirectory](#microsoftazureactivedirectory)
 > - [Microsoft. AzureData](#microsoftazuredata)
 > - [Microsoft. AzureStack](#microsoftazurestack)
-> - [Microsoft. Backup](#microsoftbackup)
 > - [Microsoft. Batch](#microsoftbatch)
 > - [Microsoft. Batchai Job](#microsoftbatchai)
 > - [Microsoft. BingMaps](#microsoftbingmaps)
@@ -54,6 +53,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft. CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft. CostManagement](#microsoftcostmanagement)
 > - [Microsoft. CustomerInsights](#microsoftcustomerinsights)
+> - [Microsoft. CustomProviders](#microsoftcustomproviders)
 > - [Microsoft. DataBox](#microsoftdatabox)
 > - [Microsoft. DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft. datacegły](#microsoftdatabricks)
@@ -65,6 +65,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft. DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft. kontach datalakestore](#microsoftdatalakestore)
 > - [Migracja Microsoft.](#microsoftdatamigration)
+> - [Microsoft. dataudział](#microsoftdatashare)
 > - [Microsoft. DBforMariaDB](#microsoftdbformariadb)
 > - [Microsoft. DBforMySQL](#microsoftdbformysql)
 > - [Microsoft. DBforPostgreSQL](#microsoftdbforpostgresql)
@@ -128,7 +129,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft. servicefabric](#microsoftservicefabric)
 > - [Microsoft. ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft. SignalRService](#microsoftsignalrservice)
-> - [Microsoft. SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft. Solutions](#microsoftsolutions)
 > - [Microsoft. SQL](#microsoftsql)
 > - [Microsoft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
@@ -164,7 +164,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | dzierżaw | Nie | Nie |
+> | Dzierżaw | Nie | Nie |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
@@ -246,13 +246,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | rejestracje | Tak | Tak |
 
-## <a name="microsoftbackup"></a>Microsoft. Backup
-
-> [!div class="mx-tableFixed"]
-> | Typ zasobu | Grupa zasobów | Subskrypcja |
-> | ------------- | ----------- | ---------- |
-> | backupvault | Nie | Nie |
-
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
@@ -267,7 +260,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | oparty | Nie | Nie |
 > | fileservers | Nie | Nie |
-> | zadania | Nie | Nie |
+> | Zadania | Nie | Nie |
 > | obszarów roboczych | Nie | Nie |
 
 ## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
@@ -393,7 +386,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | restorepointcollections | Nie | Nie |
 > | sharedvmimages | Nie | Nie |
 > | sharedvmimages/wersje | Nie | Nie |
-> | migawki | Tak | Tak |
+> | Migawki | Tak | Tak |
 > | virtualmachines | Tak | Tak |
 > | virtualmachines/rozszerzenia | Tak | Tak |
 > | virtualmachinescalesets | Tak | Tak |
@@ -463,12 +456,19 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- | ---------- |
 > | węzłów | Tak | Tak |
 
+## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | resourceproviders | Tak | Tak |
+
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | zadania | Nie | Nie |
+> | Zadania | Nie | Nie |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 
@@ -504,7 +504,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | pakiety | Nie | Nie |
+> | Pakiety | Nie | Nie |
 > | pakiety | Nie | Nie |
 
 ## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
@@ -544,6 +544,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | services | Nie | Nie |
 > | usługi/projekty | Nie | Nie |
 > | czasów | Nie | Nie |
+
+## <a name="microsoftdatashare"></a>Microsoft. dataudział
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Grupa zasobów | Subskrypcja |
+> | ------------- | ----------- | ---------- |
+> | accounts | Nie | Nie |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
@@ -644,7 +651,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
 > | oparty | Tak | Tak |
-> | przestrzeni | Tak | Tak |
+> | Przestrzeni | Tak | Tak |
 
 ## <a name="microsoftgenomics"></a>Microsoft. genomika
 
@@ -699,7 +706,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | zadania | Tak | Tak |
+> | Zadania | Tak | Tak |
 
 ## <a name="microsoftinsights"></a>Microsoft. Insights
 
@@ -711,7 +718,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | activitylogalerts | Nie | Nie |
 > | alertrules | Tak | Tak |
 > | autoscalesettings | Tak | Tak |
-> | komponentów | Tak | Tak |
+> | Komponentów | Tak | Tak |
 > | guestdiagnosticsettings | Nie | Nie |
 > | metricalerts | Nie | Nie |
 > | notificationgroups | Nie | Nie |
@@ -954,7 +961,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | przestrzeni | Tak | Tak |
+> | Przestrzeni | Tak | Tak |
 > | przestrzenie nazw/notificationhubs | Tak | Tak |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
@@ -1033,7 +1040,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | przestrzeni | Tak | Tak |
+> | Przestrzeni | Tak | Tak |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
@@ -1054,7 +1061,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | przekazywania | Tak | Tak |
+> | Przekazywania | Tak | Tak |
 > | jobcollections | Tak | Tak |
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
@@ -1088,7 +1095,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | przestrzeni | Tak | Tak |
+> | Przestrzeni | Tak | Tak |
 
 ## <a name="microsoftservicefabric"></a>Microsoft. servicefabric
 
@@ -1123,16 +1130,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
 > | SignalR | Tak | Tak |
-
-## <a name="microsoftsiterecovery"></a>Microsoft. SiteRecovery
-
-> [!div class="mx-tableFixed"]
-> | Typ zasobu | Grupa zasobów | Subskrypcja |
-> | ------------- | ----------- | ---------- |
-> | siterecoveryvault | Nie | Nie |
-
-> [!IMPORTANT]
-> Zobacz [Recovery Services wskazówki dotyczące przenoszenia](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftsolutions"></a>Microsoft. Solutions
 
@@ -1233,7 +1230,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | wiejski | Nie | Nie |
+> | Wiejski | Nie | Nie |
 > | środowiska/źródła zdarzeń | Nie | Nie |
 > | wystąpienia | Nie | Nie |
 > | wystąpienia/środowiska | Nie | Nie |
@@ -1245,14 +1242,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
 > | providerregistrations | Nie | Nie |
-> | produkcyjnych | Nie | Nie |
+> | Produkcyjnych | Nie | Nie |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | wiejski | Tak | Tak |
+> | Wiejski | Tak | Tak |
 > | środowiska/źródła zdarzeń | Tak | Tak |
 > | środowiska/referencedatasets | Tak | Tak |
 
@@ -1287,9 +1284,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Grupa zasobów | Subskrypcja |
 > | ------------- | ----------- | ---------- |
-> | dedicatedcloudnodes | Tak | Tak |
-> | dedicatedcloudservices | Tak | Tak |
-> | virtualmachines | Tak | Tak |
+> | dedicatedcloudnodes | Nie | Nie |
+> | dedicatedcloudservices | Nie | Nie |
+> | virtualmachines | Nie | Nie |
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 

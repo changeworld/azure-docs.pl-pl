@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 546c97421fdb3a581a22e34f6110986a1a0732b6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592486"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929144"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Przewodnik rozwiązywania problemów z typowymi problemami
 
@@ -119,7 +119,7 @@ Jeśli sondowanie zostanie przerwane, możesz użyć następującego polecenia, 
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Upewnij się, że aplikacja jest spakowana w prawidłowym [pliku wykonywalnym jar](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html). Jeśli nie, zostanie wyświetlony błąd podobny do poniższego:
+Upewnij się, że aplikacja znajduje się w pakiecie w prawidłowym [formacie wykonywalnego pliku JAR](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html). Jeśli nie, zostanie wyświetlony błąd podobny do poniższego:
 
 `Error: Invalid or corrupt jarfile /jar/38bc8ea1-a6bb-4736-8e93-e8f3b52c8714`
 
@@ -165,7 +165,7 @@ Zmienne środowiskowe informują platformę chmurową Azure ze sprężyną, dzi�
             </dependency>
         ```
 
-1. Po włączeniu punktu końcowego uruchamiającego uruchamianie sprężyny przejdź do Azure Portal i Znajdź stronę Konfiguracja aplikacji.  Dodaj zmienną środowiskową o nazwie `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE' and the value ` * '. 
+1. Po włączeniu punktu końcowego uruchamiającego uruchamianie sprężyny przejdź do Azure Portal i Znajdź stronę Konfiguracja aplikacji.  Dodaj zmienną środowiskową o nazwie `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` i `*` wartość. 
 
 1. Uruchom ponownie aplikację.
 

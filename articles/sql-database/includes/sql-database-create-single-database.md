@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099131"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933239"
 ---
 W tym kroku utworzysz Azure SQL Database pojedynczą bazę danych. 
 
@@ -31,18 +31,18 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
 3. Na karcie **podstawowe** w sekcji **szczegóły projektu** wpisz lub wybierz następujące wartości:
 
-   - **Subskrypcja**: otwórz listę rozwijaną i wybierz poprawną subskrypcję, jeśli nie została wyświetlona.
-   - **Grupa zasobów**: Wybierz pozycję **Utwórz nowy**, `myResourceGroup`wpisz i wybierz **przycisk OK**.
+   - **Subskrypcja**: Lista rozwijana i wybierz prawidłową subskrypcję, jeśli nie jest wyświetlana.
+   - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wpisz `myResourceGroup`, a następnie wybierz **przycisk OK**.
 
      ![Nowa baza danych SQL — Karta podstawowa](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
 4. W sekcji **szczegóły bazy danych** wpisz lub wybierz następujące wartości:
 
-   - **Nazwa bazy danych**: Wprowadź polecenie `mySampleDatabase`.
-   - **Serwer**: Wybierz pozycję **Utwórz nowy**, wprowadź następujące wartości, a następnie wybierz pozycję **Wybierz**.
-       - **Nazwa serwera**: Typ `mysqlserver`; wraz z liczbami unikatowymi.
-       - **Identyfikator logowania administratora serwera**: Wpisz polecenie `azureuser`.
-       - **Hasło**: Wpisz złożone hasło spełniające wymagania dotyczące haseł.
+   - **Nazwa bazy danych**: wprowadź `mySampleDatabase`.
+   - **Serwer**: wybierz pozycję **Utwórz nowy**, wprowadź następujące wartości, a następnie wybierz pozycję **Wybierz**.
+       - **Nazwa serwera**: wpisz `mysqlserver`; wraz z liczbami unikatowymi.
+       - **Identyfikator logowania administratora serwera**: wpisz `azureuser`.
+       - **Hasło**: wpisz złożone hasło spełniające wymagania dotyczące haseł.
        - **Lokalizacja**: Wybierz lokalizację z listy rozwijanej, na przykład `West US`.
 
          ![Nowy serwer](../media/sql-database-get-started-portal/new-server.png)
@@ -50,8 +50,8 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
       > [!IMPORTANT]
       > Pamiętaj, aby zapisać identyfikator logowania administratora serwera i hasło, aby logować się do serwera i baz danych dla tego przewodnika Szybki start oraz pozostałych. Jeśli zapomnisz swój identyfikator logowania lub hasło, możesz uzyskać identyfikator logowania lub zresetować hasło na stronie **serwera SQL**. Aby otworzyć stronę **serwera SQL**, wybierz nazwę serwera na stronie **Przegląd** po utworzeniu bazy danych.
 
-   - **Chcesz użyć elastycznej puli SQL**: Wybierz opcję **nie** .
-   - **Obliczenia + magazyn**: Wybierz pozycję **Konfiguruj bazę danych**. 
+   - **Chcesz użyć elastycznej puli SQL**: wybierz opcję **Brak** .
+   - **Obliczenia + magazyn**: wybierz pozycję **Konfiguruj bazę danych**. 
 
      ![Szczegóły SQL Database](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
@@ -64,7 +64,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
    - Wybierz przycisk **Zastosuj**.
 
 5. Wybierz kartę **Ustawienia dodatkowe** . 
-6. W sekcji **Źródło danych** w obszarze **Użyj istniejących danych**wybierz opcję `Sample`.
+6. W sekcji **Źródło danych** w obszarze **Użyj istniejących danych**wybierz pozycję `Sample`.
 
    ![Dodatkowe ustawienia bazy danych SQL](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
@@ -76,7 +76,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
 9. W formularzu **SQL Database** wybierz opcję **Utwórz**, aby wdrożyć i aprowizować grupę zasobów, serwer i bazę danych.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -141,6 +141,15 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu programu PowerSh
       -SampleName "AdventureWorksLT"
    $database
    ```
+
+W tej części artykułu są wykorzystywane następujące polecenia cmdlet programu PowerShell:
+
+| Polecenie | Uwagi |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tworzy serwer usługi SQL Database hostujący pojedyncze bazy danych i elastyczne pule. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tworzy regułę zapory dla serwera logicznego. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Tworzy nową Azure SQL Database pojedynczą bazę danych. | 
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
@@ -207,5 +216,16 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu polecenia AZ CLI
       --family Gen5 \
       --capacity 2
    ```
+
+W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
+
+| Polecenie | Uwagi |
+|---|---|
+| [AZ Account Set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Ustawia subskrypcję jako bieżącą aktywną subskrypcję. | 
+| [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Tworzy serwer usługi SQL Database hostujący pojedyncze bazy danych i elastyczne pule. |
+| [AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Tworzy reguły zapory serwera. | 
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Tworzy bazę danych. | 
+
 
 ---

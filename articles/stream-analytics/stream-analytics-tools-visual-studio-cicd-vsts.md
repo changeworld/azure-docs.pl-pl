@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie zadania usługi Azure Stream Analytics z ciągłą integracją/ciągłym wdrażaniem przy użyciu usługi Azure DevOps
+title: Wdrażanie Azure Stream Analytics zadań przy użyciu ciągłej integracji/ciągłego wdrażania i DevOps platformy Azure
 description: W tym artykule opisano sposób wdrażania zadania usługi Stream Analytics z ciągłą integracją/ciągłym wdrażaniem przy użyciu usługi Azure DevOps Services.
 services: stream-analytics
 author: su-jie
@@ -9,14 +9,14 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9e05e4eab8bd3c307334b62df00dc03e56ce60ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7810cf9950d919469c4b47053a878518726f4393
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60763038"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925072"
 ---
-# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Samouczek: Wdrażanie zadania usługi Azure Stream Analytics z ciągłą integracją/ciągłym wdrażaniem przy użyciu usługi Azure Pipelines
+# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Samouczek: wdrażanie zadania usługi Azure Stream Analytics z ciągłą integracją/ciągłym wdrażaniem przy użyciu usługi Azure Pipelines
 W tym samouczku opisano konfigurowanie ciągłej integracji i ciągłego wdrażania na potrzeby zadania usługi Azure Stream Analytics przy użyciu usługi Azure Pipelines. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -83,7 +83,7 @@ Otwórz przeglądarkę internetową i przejdź do nowo utworzonego projektu w us
     
     ![Włączanie stanu wyzwalania ciągłej integracji](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger-status-ci.png)
 
-4. Kompilacje są również wyzwalane przez wypchnięcie lub zaewidencjonowanie. Aby sprawdzić postęp kompilacji, przejdź do karty **Kompilacje**.  Po upewnieniu się, że kompilacja jest wykonywana prawidłowo, musisz określić potok wydania, który wdraża aplikację w klastrze. Kliknij prawym przyciskiem myszy wielokropek obok potoku kompilacji i wybierz pozycję **Edytuj**.
+4. Kompilacje są również wyzwalane przez wypchnięcie lub zaewidencjonowanie. Aby sprawdzić postęp kompilacji, przejdź do karty **kompilacje** .  Po sprawdzeniu, czy kompilacja została wykonana pomyślnie, należy zdefiniować potok wydania, który wdraża aplikację w klastrze. Kliknij prawym przyciskiem myszy wielokropek obok potoku kompilacji i wybierz pozycję **Edytuj**.
 
 5.  W obszarze **Zadania** wprowadź wartość „Hostowana” w polu **Kolejka agentów**.
     
@@ -118,7 +118,7 @@ Otwórz przeglądarkę internetową i przejdź do nowo utworzonego projektu w us
     |**Ustawienie**  |**Sugerowana wartość**  |
     |---------|---------|
     |Subskrypcja  |  Wybierz subskrypcję.   |
-    |Akcja  |  Utwórz lub zaktualizuj grupę zasobów   |
+    |Działanie  |  Utwórz lub zaktualizuj grupę zasobów   |
     |Grupa zasobów  |  Wprowadź nazwę grupy zasobów.   |
     |Szablon  | [ścieżka do Twojego rozwiązania]\bin\Debug\Deploy\\[nazwa Twojego projektu].JobTemplate.json   |
     |Parametry szablonu  | [ścieżka do Twojego rozwiązania]\bin\Debug\Deploy\\[nazwa Twojego projektu].JobTemplate.parameters.json   |
@@ -157,7 +157,7 @@ Gdy grupa zasobów, zadanie przesyłania strumieniowego i wszystkie pokrewne zas
 1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij nazwę utworzonego zasobu.  
 2. Na stronie grupy zasobów kliknij pozycję **Usuń**, wpisz w polu tekstowym nazwę zasobu do usunięcia, a następnie kliknij pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat konfigurowania procesu ciągłej integracji i ciągłego wdrażania przy użyciu narzędzi Azure Stream Analytics Tools for Visual Studio, przejdź do artykułu na temat konfigurowania potoku ciągłej integracji/ciągłego wdrażania:
 
