@@ -1,23 +1,18 @@
 ---
 title: Usługa Azure Application Insights dla aplikacji internetowych w języku JavaScript | Microsoft Docs
 description: Pobieranie liczników wyświetleń stron i sesji, danych klienta sieci Web oraz śledzenie wzorców użycia. Wykrywanie wyjątków i problemów z wydajnością na stronach sieci Web w języku JavaScript.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/20/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: b49206c677e2f1b20c154ae0c9e358e8b2b0bbd8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 09/20/2019
+ms.openlocfilehash: 17765910b379bd4212d171cce6643de561db23ad
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430196"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819381"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 
@@ -178,7 +173,7 @@ Wybierz pozycję **przeglądarka** , a następnie wybierz pozycję **Błędy** l
 
 ### <a name="analytics"></a>Analiza 
 
-Aby wysłać zapytanie do telemetrii zebranej przez zestaw JavaScript SDK, wybierz przycisk **Wyświetl w dziennikach (analiza)** . Dodanie `where` instrukcji `client_Type == "Browser"` spowoduje wykluczenie danych tylko z zestawu SDK języka JavaScript, a wszystkie dane telemetryczne po stronie serwera zebrane przez inne zestawy SDK zostaną wykluczone.
+Aby wysłać zapytanie do telemetrii zebranej przez zestaw JavaScript SDK, wybierz przycisk **Wyświetl w dziennikach (analiza)** . Dodanie `where` instrukcji `client_Type == "Browser"`powoduje, że będą widoczne tylko dane z zestawu SDK języka JavaScript, a wszystkie Telemetria po stronie serwera zebrane przez inne zestawy SDK zostaną wykluczone.
  
 ```kusto
 // average pageView duration by name
@@ -219,7 +214,7 @@ Przykłady możliwy do uruchomienia można znaleźć w temacie [Application Insi
 Istotne zmiany w wersji zestawu SDK V2:
 - Aby umożliwić lepsze sygnatury interfejsu API, niektóre wywołania interfejsu API, takie jak trackPageView, trackexception, zostały zaktualizowane. Uruchamianie w programie IE8 lub w niższych wersjach przeglądarki nie jest obsługiwane.
 - Koperta telemetrii ma zmiany nazwy pola i struktury ze względu na aktualizacje schematu danych.
-- Przeniesiono `context.operation` do `context.telemetryTrace`. Niektóre pola zostały również zmienione (`operation.id` @ no__t-1 @ no__t-2)
+- Przeniesiono `context.operation` do `context.telemetryTrace`. Niektóre pola zostały również zmienione (`operation.id` --> `telemetryTrace.traceID`)
   - Jeśli chcesz ręcznie odświeżyć bieżący identyfikator pageview (na przykład w aplikacjach SPA), można to zrobić za pomocą `appInsights.properties.context.telemetryTrace.traceID = Util.newId()`
 
 Jeśli używasz bieżącego zestawu SDK PRODUKCYJNEgo usługi Application Insights (1.0.20) i chcesz sprawdzić, czy nowy zestaw SDK działa w środowisku uruchomieniowym, zaktualizuj adres URL w zależności od bieżącego scenariusza ładowania zestawu SDK.
