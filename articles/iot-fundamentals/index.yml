@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 09/04/2019
-  ms.openlocfilehash: e74fbe6e358c3a230fe466f3e73850022574a868
-  ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+  ms.openlocfilehash: 866faa560a9ffbc08bf171951b6e1456cabe5a3d
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/11/2019
-  ms.locfileid: "70919076"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72935245"
 highlightedContent:
   items:
   - title: Co to jest usługa Azure IoT?
@@ -56,17 +56,17 @@ conceptualContent:
       text: Zobacz więcej
   - title: Wdrażanie w pełni zarządzanego rozwiązania IoT za pomocą usługi Azure IoT Central
     links:
-    - url: ../iot-central/overview-iot-central.md
+    - url: ../iot-central/core/overview-iot-central.md
       itemType: overview
       text: Co to jest usługa Azure IoT Central?
-    - url: ../iot-central/quick-deploy-iot-central.md
+    - url: ../iot-central/core/quick-deploy-iot-central.md
       itemType: quickstart
       text: Tworzenie aplikacji usługi IoT Central
-    - url: ../iot-central/tutorial-define-device-type.md
+    - url: ../iot-central/core/tutorial-define-device-type.md
       itemType: tutorial
       text: Definiowanie typu urządzenia
     footerLink:
-      url: ../iot-central/index.yml
+      url: ../iot-central/core/index.yml
       text: Zobacz więcej
   - title: Dostosowywanie wstępnie utworzonego rozwiązania IoT za pomocą akceleratorów rozwiązań usługi Azure IoT
     links:

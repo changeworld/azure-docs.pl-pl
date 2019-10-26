@@ -12,7 +12,7 @@
     - name: Łączenie urządzenia z usługą IoT Hub
       href: quickstart-connect-pnp-device.md
     - name: Łączenie urządzenia z usługą IoT Central
-      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      href: ../iot-central/core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Nawiązywanie połączenia z urządzeniem w rozwiązaniu
       href: quickstart-connect-pnp-device-solution.md
 - name: Samouczki

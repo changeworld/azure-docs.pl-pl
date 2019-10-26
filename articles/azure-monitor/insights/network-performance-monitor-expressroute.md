@@ -1,150 +1,144 @@
 ---
-title: Network Performance Monitor rozwiązania w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Użyj możliwości Monitor usługi ExpressRoute w rozwiązania Network Performance Monitor do monitorowania łączności end-to-end i wydajności między oddziałami i platformy Azure, za pośrednictwem usługi Azure ExpressRoute.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Network Performance Monitor rozwiązanie na platformie Azure Log Analytics | Microsoft Docs
+description: Korzystając z funkcji monitorowania ExpressRoute w Network Performance Monitor, można monitorować kompleksową łączność i wydajność między biurami oddziałów i platformą Azure za pośrednictwem usługi Azure ExpressRoute.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/27/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: 7f9c0d905a7b2bc81063e59229d78a1200894d47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/27/2018
+ms.openlocfilehash: 5383402816eddba4c631c240585723b7c7119cef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963732"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898895"
 ---
-# <a name="expressroute-monitor"></a>ExpressRoute Monitor
+# <a name="expressroute-monitor"></a>Monitor ExpressRoute
 
-Można użyć możliwości usługi Azure Monitor usługi ExpressRoute w [rozwiązania Network Performance Monitor](network-performance-monitor.md) do monitorowania łączności end-to-end i wydajności między oddziałami i platformy Azure, za pośrednictwem usługi Azure ExpressRoute. Dostępne są następujące kluczowe korzyści: 
+Korzystając z możliwości usługi Azure ExpressRoute monitor w [Network Performance Monitor](network-performance-monitor.md) , można monitorować kompleksową łączność i wydajność między oddziałami i platformą Azure za pośrednictwem usługi Azure ExpressRoute. Najważniejsze zalety: 
 
-- Obwody automatycznego wykrywania usługi ExpressRoute skojarzonych z Twoją subskrypcją.
-- Śledzenie wykorzystania przepustowości, strat i opóźnień w poziomie obwodu, komunikacji równorzędnej i siecią wirtualną platformy Azure dla usługi ExpressRoute.
-- Odnajdywanie topologii sieci dla obwodów usługi ExpressRoute.
+- Autowykrywanie obwodów usługi ExpressRoute skojarzonych z Twoją subskrypcją.
+- Śledzenie wykorzystania przepustowości, strat i opóźnień w ramach obwodu, komunikacji równorzędnej i poziomu Virtual Network platformy Azure dla usługi ExpressRoute.
+- Odnajdywanie topologii sieci obwodów usługi ExpressRoute.
 
-![ExpressRoute Monitor](media/network-performance-monitor-expressroute/expressroute-intro.png)
+![Monitor ExpressRoute](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>Konfigurowanie 
-Aby otworzyć konfigurację rozwiązania Network Performance Monitor, otwórz [rozwiązania Network Performance Monitor](network-performance-monitor.md) i wybierz **Konfiguruj**.
+Aby otworzyć konfigurację Network Performance Monitor, Otwórz [rozwiązanie Network Performance Monitor](network-performance-monitor.md) i wybierz pozycję **Konfiguruj**.
 
-### <a name="configure-network-security-group-rules"></a>Konfigurowanie reguł sieciowych grup zabezpieczeń 
-W przypadku serwerów na platformie Azure, które są używane do monitorowania za pomocą rozwiązania Network Performance Monitor należy skonfigurować reguły Sieciowej grupy zabezpieczeń sieci zezwalającą na ruch TCP na porcie używanym przez rozwiązania Network Performance Monitor na potrzeby transakcji syntetycznych. Domyślnym portem jest port 8084. Ta konfiguracja pozwala agenta usługi Log Analytics, zainstalowane na maszynach wirtualnych platformy Azure do komunikowania się z lokalną agenta monitorowania. 
+### <a name="configure-network-security-group-rules"></a>Skonfiguruj reguły sieciowej grupy zabezpieczeń 
+W przypadku serwerów na platformie Azure, które są używane do monitorowania za pośrednictwem Network Performance Monitor, skonfiguruj reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) w celu zezwalania na ruch TCP na porcie używanym przez Network Performance Monitor dla transakcji syntetycznych. Domyślnym portem jest 8084. Ta konfiguracja pozwala agentowi Log Analytics zainstalowanemu na maszynach wirtualnych platformy Azure komunikować się z lokalnym agentem monitorowania. 
 
-Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [sieciowe grupy zabezpieczeń](../../virtual-network/manage-network-security-group.md). 
-
->[!NOTE]
-> Przed kontynuowaniem tego kroku Zainstaluj lokalnego agenta serwera i agenta serwer usługi Azure, a następnie uruchom skrypt EnableRules.ps1 programu PowerShell. 
-
- 
-### <a name="discover-expressroute-peering-connections"></a>Odkryj połączenia komunikacji równorzędnej usługi ExpressRoute 
- 
-1. Wybierz **komunikacje równorzędne usługi ExpressRoute** widoku.
-2. Wybierz **odnajdywanie teraz** do odnajdywania wszystkich ExpressRoute prywatnej komunikacji równorzędnej, które są połączone z sieciami wirtualnymi w subskrypcji platformy Azure są połączone z tym obszarem roboczym usługi Azure Log Analytics.
-
-    >[!NOTE]
-    > Rozwiązania aktualnie odnajduje tylko prywatne komunikacje równorzędne usługi ExpressRoute. 
-
-    >[!NOTE]
-    > Tylko do prywatnej komunikacji równorzędnej, połączone z sieciami wirtualnymi skojarzonego z subskrypcją, połączone z tym obszarem roboczym usługi Log Analytics są odnajdywane. Jeśli usługa ExpressRoute jest podłączony do sieci wirtualnej znajdującej się poza subskrypcji połączonej z tym obszarem roboczym, należy utworzyć obszar roboczy usługi Log Analytics w tych subskrypcjach. Następnie można użyć rozwiązania Network Performance Monitor do monitorowania tych komunikacji równorzędnej. 
-
-    ![Konfiguracja Monitora usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-configure.png)
- 
-   Po zakończeniu odnajdywania odnalezionych połączenia prywatnej komunikacji równorzędnej są wymienione w tabeli. Monitorowanie te komunikacje równorzędne początkowo jest w stanie wyłączenia. 
-
-### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>Aby włączyć monitorowanie połączeń komunikacji równorzędnej usługi ExpressRoute 
-
-1. Wybierz połączenie komunikacji równorzędnej prywatnej, który chcesz monitorować.
-2. W okienku po prawej stronie wybierz **monitorowanie tej komunikacji równorzędnej** pole wyboru. 
-3. Jeśli zamierzasz utworzyć zdarzenia dotyczące kondycji dla tego połączenia, wybierz opcję **Włącz monitorowanie kondycji dla tej komunikacji równorzędnej**. 
-4. Wybierz opcję monitorowania warunków. Można ustawić niestandardowe progi dla generowanie zdarzeń kondycji, wprowadzając wartości progowe. Zawsze, gdy wartość warunku przekroczy wartość progu wybranego połączenia komunikacji równorzędnej, jest generowane zdarzenie kondycji. 
-5. Wybierz **dodawanie agentów** wybrać agentów monitorowania, których zamierzasz używać na potrzeby monitorowania tego połączenia komunikacji równorzędnej. Upewnij się, możesz dodać agentów na obu końcach połączenia. Należy co najmniej jednego agenta w sieci wirtualnej nawiązanie połączenia komunikacji równorzędnej. Należy również co najmniej jednego agenta w środowisku lokalnym, nawiązanie połączenia komunikacji równorzędnej. 
-6. Wybierz **Zapisz** Aby zapisać konfigurację. 
-
-   ![Konfiguracja monitorowania usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
-
-
-Po włączeniu zasady i wybierz wartości i agentów należy poczekać 30 do 60 minut dla wartości wypełnić i **monitorowania usługi ExpressRoute** Kafelki, aby można było wyświetlane. Jeśli widzisz monitorowania Kafelki, elementy do obwodów usługi ExpressRoute i połączeń zasobów teraz są monitorowane przez rozwiązania Network Performance Monitor. 
+Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [Network Security Groups](../../virtual-network/manage-network-security-group.md). 
 
 >[!NOTE]
-> Ta funkcja działa niezawodnie na obszarach roboczych, które zostały uaktualnione do nowego języka zapytań.
+> Przed kontynuowaniem tego kroku należy zainstalować agenta lokalnego serwera i agenta serwera Azure, a następnie uruchomić skrypt programu PowerShell skrypt enablerules. ps1. 
+
+ 
+### <a name="discover-expressroute-peering-connections"></a>Odnajdywanie połączeń komunikacji równorzędnej ExpressRoute 
+ 
+1. Wybierz widok **komunikacji równorzędnej ExpressRoute** .
+2. Wybierz pozycję **Odkryj teraz** , aby odnaleźć wszystkie prywatne sieci równorzędne ExpressRoute połączone z sieciami wirtualnymi w ramach subskrypcji platformy Azure połączonej z tym obszarem roboczym usługi Azure log Analytics.
+
+    >[!NOTE]
+    > Obecnie rozwiązanie odnajduje tylko prywatne połączenia równorzędne ExpressRoute. 
+
+    >[!NOTE]
+    > Odnajdywane są tylko prywatne elementy równorzędne połączone z sieciami wirtualnymi skojarzonymi z subskrypcją połączoną z tym obszarem roboczym Log Analytics. Jeśli ExpressRoute jest połączony z sieciami wirtualnymi spoza subskrypcji połączonej z tym obszarem roboczym, Utwórz obszar roboczy Log Analytics w tych subskrypcjach. Następnie użyj Network Performance Monitor do monitorowania tych komunikacji równorzędnej. 
+
+    ![Konfiguracja monitora ExpressRoute](media/network-performance-monitor-expressroute/expressroute-configure.png)
+ 
+   Po zakończeniu odnajdywania odnalezione połączenia prywatnej komunikacji równorzędnej są wyświetlane w tabeli. Monitorowanie tych komunikacji równorzędnej jest początkowo w stanie wyłączenia. 
+
+### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>Włącz monitorowanie połączeń komunikacji równorzędnej ExpressRoute 
+
+1. Wybierz połączenie prywatnej komunikacji równorzędnej, które chcesz monitorować.
+2. W okienku po prawej stronie zaznacz pole wyboru **Monitoruj tę komunikację równorzędną** . 
+3. Jeśli zamierzasz utworzyć zdarzenia dotyczące kondycji dla tego połączenia, wybierz pozycję **Włącz monitorowanie kondycji dla tej komunikacji równorzędnej**. 
+4. Wybierz pozycję warunki monitorowania. Możesz ustawić progi niestandardowe dla generowania zdarzeń dotyczących kondycji, wprowadzając wartości progowe. Za każdym razem, gdy wartość warunku spadnie powyżej wartości progowej dla połączenia komunikacji równorzędnej, generowane jest zdarzenie kondycji. 
+5. Wybierz pozycję **Dodaj agentów** , aby wybrać agentów monitorowania, których zamierzasz używać do monitorowania tego połączenia komunikacji równorzędnej. Upewnij się, że dodano agentów na obu końcach połączenia. Potrzebujesz co najmniej jednego agenta w sieci wirtualnej podłączonej do tej komunikacji równorzędnej. Wymagany jest również co najmniej jeden lokalny Agent połączony z tą komunikację równorzędną. 
+6. Wybierz pozycję **Zapisz** , aby zapisać konfigurację. 
+
+   ![Konfiguracja monitorowania ExpressRoute](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
+
+
+Po włączeniu reguł i wybraniu wartości i agentów odczekaj od 30 do 60 minut na wypełnianie wartości i wyświetlenie kafelków **monitorowania ExpressRoute** . Gdy widzisz kafelki monitorowania, obwody usługi ExpressRoute i zasoby połączeń są teraz monitorowane przez Network Performance Monitor. 
+
+>[!NOTE]
+> Ta funkcja działa w niezawodnym obszarze roboczym, który został uaktualniony do nowego języka zapytań.
 
 ## <a name="walkthrough"></a>Przewodnik 
 
-Pulpit nawigacyjny rozwiązania Network Performance Monitor zawiera przegląd kondycji obwodów usługi ExpressRoute i połączeń komunikacji równorzędnej. 
+Pulpit nawigacyjny Network Performance Monitor zawiera omówienie kondycji obwodów usługi ExpressRoute i połączeń komunikacji równorzędnej. 
 
-![Pulpit nawigacyjny monitora wydajności sieci](media/network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
+![Pulpit nawigacyjny Network Performance Monitor](media/network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
 
 ### <a name="circuits-list"></a>Lista obwodów 
 
-Umożliwia wyświetlenie listy wszystkich monitorowanych obwodów usługi ExpressRoute, wybierz Kafelek obwodów usługi ExpressRoute. Można wybrać obwodu i wyświetlić jego stan kondycji, wykresy trendów utraty pakietów, wykorzystania przepustowości i opóźnień. Wykresy są interaktywne. Możesz wybrać przedział czasu niestandardowych do kreślenia wykresów. Przeciągnij mysz nad obszarem na wykresie, aby powiększyć obraz i wyświetlić punkty danych szczegółowych. 
+Aby wyświetlić listę wszystkich monitorowanych obwodów usługi ExpressRoute, wybierz kafelek obwodów usługi ExpressRoute. Możesz wybrać obwód i wyświetlić jego stan kondycji, wykresy trendu dotyczące utraty pakietów, wykorzystania przepustowości i opóźnień. Wykresy są interaktywne. Można wybrać niestandardowe okno czasowe do kreślenia wykresów. Przeciągnij wskaźnik myszy nad obszar na wykresie, aby powiększyć i zobaczyć szczegółowe punkty danych. 
 
 ![Lista obwodów usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
 
-### <a name="trends-of-loss-latency-and-throughput"></a>Trendy utraty, opóźnienia i przepływności 
+### <a name="trends-of-loss-latency-and-throughput"></a>Trendy utraty, opóźnień i przepływności 
 
-Wykresy wykorzystania, opóźnienia i straty przepustowości są interaktywne. Można powiększyć dowolną sekcję te wykresy za pomocą myszy kontrolek. Również widać przepustowości, opóźnienia i utratę danych dla innych interwałów. W lewym górnym rogu w obszarze **akcje** przycisku Wybierz **daty/godziny**. 
+Wykresy o wykorzystaniu przepustowości, opóźnieniu i utracie są interaktywne. Możesz powiększyć do dowolnej sekcji tych wykresów za pomocą kontrolek myszy. Można także zobaczyć przepustowość, opóźnienie i dane utraty dla innych interwałów. W lewym górnym rogu przycisku **Akcje** wybierz pozycję **Data/godzina**. 
 
-![Czas oczekiwania usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-latency.png) 
+![Opóźnienie ExpressRoute](media/network-performance-monitor-expressroute/expressroute-latency.png) 
 
-### <a name="peerings-list"></a>Lista połączeń komunikacji równorzędnej 
+### <a name="peerings-list"></a>Lista komunikacji równorzędnych 
 
-Aby wyświetlić listę wszystkich połączeń z sieciami wirtualnymi za pośrednictwem prywatnej komunikacji równorzędnej, wybierz **prywatne komunikacje równorzędne** Kafelek na pulpicie nawigacyjnym. W tym miejscu można wybrać wirtualnej połączenia sieciowego i wyświetlić jego stan kondycji, wykresy trendów utraty pakietów, wykorzystania przepustowości i opóźnień. 
+Aby wyświetlić listę wszystkich połączeń z sieciami wirtualnymi za pośrednictwem prywatnej komunikacji równorzędnej, wybierz kafelek **prywatne elementy równorzędne** na pulpicie nawigacyjnym. W tym miejscu możesz wybrać połączenie sieci wirtualnej i wyświetlić jego stan kondycji, wykresy trendu dotyczące utraty pakietów, wykorzystania przepustowości i opóźnień. 
 
-![Komunikacje równorzędne usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
+![Komunikacja równorzędna ExpressRoute](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 
 ### <a name="circuit-topology"></a>Topologia obwodu 
 
-Zaznacz, aby wyświetlić topologię obwodu **topologii** kafelka. Ta akcja spowoduje przejście do widoku topologii wybranego obwód lub komunikacji równorzędnej. Diagram topologii zapewnia opóźnienia dla każdego segmentu w sieci, a każdy przeskok warstwy 3 jest reprezentowany przez węzeł diagramu. Wybieranie przeskoków, co spowoduje wyświetlenie więcej szczegółów na temat przeskoków. Aby zwiększyć poziom widoczności do uwzględnienia w środowisku lokalnym przeskoków, przesuń suwak w obszarze **filtry**. Przenoszenie paska suwaka do lewej lub prawej zwiększa lub zmniejsza liczbę przeskoków na wykresie topologii. Opóźnienie w każdym segmencie jest widoczny, co umożliwia szybsze izolacji segmentów z dużym opóźnieniem w sieci.
+Aby wyświetlić topologię obwodu, wybierz kafelek **topologia** . Ta akcja powoduje przejście do widoku topologia wybranego obwodu lub komunikacji równorzędnej. Diagram topologii zapewnia opóźnienie dla każdego segmentu w sieci, a każdy przeskok warstwy 3 jest reprezentowany przez węzeł diagramu. Wybranie przeskoku spowoduje wyświetlenie większej liczby szczegółów dotyczących przeskoku. Aby zwiększyć poziom widoczności w celu uwzględnienia przeskoków lokalnych, przesuń suwak w obszarze **filtry**. Przesuwanie paska suwaka w lewo lub w prawo powoduje zwiększenie lub zmniejszenie liczby przeskoków w grafie topologii. Opóźnienie w poszczególnych segmentach jest widoczne, co umożliwia szybszą izolację segmentów o dużej opóźnieniu w sieci.
 
-![Topologia usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-topology.png)
+![Topologia ExpressRoute](media/network-performance-monitor-expressroute/expressroute-topology.png)
 
-### <a name="detailed-topology-view-of-a-circuit"></a>Widok szczegółowy topologii obwodu 
+### <a name="detailed-topology-view-of-a-circuit"></a>Szczegółowy widok topologii obwodu 
 
-Ten widok przedstawia połączeń sieci wirtualnej. 
+Ten widok przedstawia połączenia sieci wirtualnej. 
 
-![Połączenia sieci wirtualnej usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-vnet.png)
+![ExpressRoute połączenia sieci wirtualnej](media/network-performance-monitor-expressroute/expressroute-vnet.png)
  
 ## <a name="diagnostics"></a>Diagnostyka 
 
-Rozwiązanie Network Performance Monitor ułatwia diagnozowanie problemów z połączeniem kilka obwodu. Poniżej wymieniono niektóre problemy, które można zobaczyć.
+Network Performance Monitor pomaga zdiagnozować kilka problemów z łącznością z obwodem. Poniżej wymieniono niektóre problemy, które można wyświetlić.
 
-Można wyświetlić kody powiadomień oraz ustawianie alertów dotyczących je przy użyciu **LogAnalytics**. Na **diagnostyki NPM** stronie widać opisy dla każdego komunikatu diagnostyczne wyzwolone.
+Można wyświetlić kody powiadomień i ustawić dla nich alerty za pośrednictwem **LogAnalytics**. Na stronie **Diagnostyka npm** można zobaczyć opisy dla każdego wyzwalanego komunikatu diagnostycznego.
 
-| Kod powiadomienia (Dzienniki) | Opis |
+| Kod powiadomienia (dzienniki) | Opis |
 | --- | --- |
-| 5501 | Nie można przejść wzdłuż połączenia pomocniczego obwodu usługi ExpressRoute |
-| 5502 | Nie można przejść wzdłuż połączenia podstawowego obwodu usługi ExpressRoute |
-| 5503 | Nie znaleziono żadnego obwodu dla subskrypcji połączonej z obszarem roboczym | 
-| 5508 | Nie można określić, czy ruch przechodzi przez żadne obwody dla ścieżki |
+| 5501 | Nie można przejść przez pomocnicze połączenie obwodu usługi ExpressRoute |
+| 5502 | Nie można przejść przez podstawowe połączenie obwodu usługi ExpressRoute |
+| 5503 | Nie znaleziono obwodu dla subskrypcji połączonej z obszarem roboczym | 
+| 5508 | Nie można określić, czy ruch przechodzi przez wszystkie obwody ścieżki |
 | 5510 | Ruch nie przechodzi przez zamierzony obwód | 
 | 5511 | Ruch nie przechodzi przez zamierzoną sieć wirtualną | 
 
-**Obwód nie działa.** Rozwiązanie Network Performance Monitor powiadamia użytkownika, jak łączność między zasobami lokalnymi i sieciami wirtualnymi platformy Azure zostaną utracone. To powiadomienie ułatwia podjęcie działań aktywnego przed otrzymujesz za użytkownika i ograniczyć przestoje.
+**Obwód nie działa.** Network Performance Monitor powiadamia, gdy tylko połączenie między zasobami lokalnymi i sieciami wirtualnymi platformy Azure zostanie utracone. To powiadomienie ułatwia podejmowanie aktywnej akcji przed odebraniem eskalacji użytkowników i skróceniem przestojów.
 
-![Obwód usługi ExpressRoute nie działa](media/network-performance-monitor-expressroute/expressroute-circuit-down.png)
+![Obwód ExpressRoute nie działa](media/network-performance-monitor-expressroute/expressroute-circuit-down.png)
  
 
-**Ruch nie przepływają przez zamierzony obwód.** Rozwiązanie Network Performance Monitor powiadamia zawsze wtedy, gdy ruch nie przepływają przez zamierzony obwód usługi ExpressRoute. Ten problem może się zdarzyć, jeśli obwód nie działa, a ruch przepływają przez kopii zapasowej trasy. On również może nastąpić, jeśli występuje problem z routingiem. Te informacje pomagają aktywnie zarządzać problemach konfiguracji zasad routingu i upewnij się, że najbardziej optymalnego i bezpiecznego marszrucie jest używany. 
-
- 
-
-**Ruch nie przepływają przez obwód podstawowy.** Rozwiązanie Network Performance Monitor powiadamia użytkownika, gdy ruch przepływają przez pomocniczego obwodu usługi ExpressRoute. Mimo że nie będzie środowisko wszelkie problemy z łącznością, w tym przypadku, proaktywnie Rozwiązywanie problemów z obwód podstawowy sprawia, że możesz lepiej przygotować. 
-
- 
-![Przepływ ruchu usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-traffic-flow.png)
-
-
-**Obniżenie wydajności ze względu na użycie szczytowe.** Można skorelować trend wykorzystania przepustowości przy użyciu trend opóźnienia, aby ustalić, czy jest obniżenie obciążenie platformy Azure z powodu szczytowego wykorzystania przepustowości, czy nie. Następnie można podjąć odpowiednie działania w związku z tym.
-
-![Wykorzystanie przepustowości usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-peak-utilization.png)
+**Ruch nie przechodzi przez zamierzony obwód.** Network Performance Monitor powiadamia użytkownika, gdy ruch nie przechodzi przez zamierzony obwód ExpressRoute. Ten problem może wystąpić, jeśli obwód nie działa i ruch przechodzi przez trasę kopii zapasowej. Może się również zdarzyć, że występuje problem z routingiem. Te informacje ułatwiają aktywne zarządzanie wszelkimi problemami z konfiguracją w zasadach routingu i upewnij się, że jest używana najbardziej optymalna i bezpieczna trasa. 
 
  
 
-## <a name="next-steps"></a>Kolejne kroki
-[Przeszukiwanie dzienników](../../azure-monitor/log-query/log-query-overview.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.
+**Ruch, który nie przechodzi przez obwód podstawowy.** Network Performance Monitor powiadamia, gdy ruch przechodzi przez pomocniczy obwód ExpressRoute. Mimo że w tym przypadku nie wystąpią żadne problemy z łącznością, proaktywnie Rozwiązywanie problemów z obwodem podstawowym jest lepiej przygotowane. 
+
+ 
+![Przepływ ruchu ExpressRoute](media/network-performance-monitor-expressroute/expressroute-traffic-flow.png)
+
+
+**Spadek wydajności z powodu szczytowego użycia.** Możesz skorelować trend wykorzystania przepustowości z trendem opóźnień, aby ustalić, czy spadek obciążenia platformy Azure jest spowodowany szczytem wykorzystania przepustowości. Następnie można odpowiednio podjąć odpowiednie działania.
+
+![Wykorzystanie przepustowości ExpressRoute](media/network-performance-monitor-expressroute/expressroute-peak-utilization.png)
+
+ 
+
+## <a name="next-steps"></a>Następne kroki
+[Wyszukaj dzienniki](../../azure-monitor/log-query/log-query-overview.md) , aby wyświetlić szczegółowe rekordy danych wydajności sieci.

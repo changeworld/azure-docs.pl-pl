@@ -120,7 +120,7 @@
         - name: 'Przykłady interfejsu API REST w języku C#'
           href: samples-rest.md
         - name: Inne przykłady dla platformy Azure
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator'
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator'
     - name: Seria seminariów internetowych na temat platformy Azure
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
     - name: Ceny i limity
