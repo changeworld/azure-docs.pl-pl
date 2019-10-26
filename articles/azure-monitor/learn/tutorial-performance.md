@@ -1,21 +1,19 @@
 ---
 title: Diagnozowanie problemów z wydajnością za pomocą usługi Azure Application Insights | Microsoft Docs
 description: Samouczek omawiający znajdowanie i diagnozowanie problemów z wydajnością aplikacji za pomocą usługi Azure Application Insights.
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 9768191d98bf1987ac24564869107cdd6bf19e8d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69032020"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900456"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Znajdowanie i diagnozowanie problemów z wydajnością za pomocą usługi Azure Application Insights
 
@@ -79,7 +77,7 @@ Usługa Application Insights zbiera informacje o wydajności różnych operacji 
 ## <a name="use-logs-data-for-server"></a>Użyj danych dzienników dla serwera
  Dzienniki udostępniają bogaty język zapytań, który pozwala analizować wszystkie dane zbierane przez Application Insights. Możesz jej używać do wykonywania głębokiej analizy danych żądań i wydajności.
 
-1. Wróć do panelu Szczegóły operacji i kliknij ![Logs widoku ikon](media/tutorial-performance/app-viewinlogs-icon.png)**w dziennikach (analiza)**
+1. Wróć do panelu Szczegóły operacji, a następnie kliknij pozycję ![](media/tutorial-performance/app-viewinlogs-icon.png)**Widok ikon dzienników w dziennikach (analiza)**
 
 2. Dzienniki są otwierane za pomocą zapytania dla każdego z widoków w panelu.  Zapytania te można uruchomić w proponowanej formie lub dostosować do własnych wymagań.  Pierwsze zapytanie pokazuje czas trwania operacji w miarę upływu czasu.
 
@@ -100,7 +98,7 @@ Oprócz identyfikowania procesów serwera do zoptymalizowania, usługa Applicati
 ## <a name="use-logs-data-for-client"></a>Użyj danych dzienników dla klienta
 Podobnie jak w przypadku danych zbieranych pod kątem wydajności serwera, Application Insights wszystkie dane klienta są dostępne do głębokiej analizy przy użyciu dzienników.
 
-1. Wróć do podsumowania przeglądarki, a następnie kliknij przycisk ![Logs ikonę ](media/tutorial-performance/app-viewinlogs-icon.png) **Widok w dziennikach (analiza)**
+1. Wróć do podsumowania przeglądarki i kliknij ikonę ![dzienniki](media/tutorial-performance/app-viewinlogs-icon.png) **Widok w dziennikach (analiza)**
 
 2. Dzienniki są otwierane za pomocą zapytania dla każdego z widoków w panelu. Pierwsze zapytanie pokazuje czas trwania dla różnych wyświetleń stron w miarę upływu czasu.
 

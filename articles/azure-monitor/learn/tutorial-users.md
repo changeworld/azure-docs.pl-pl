@@ -1,21 +1,19 @@
 ---
 title: Poznawanie zachowań klientów w usłudze Azure Application Insights | Microsoft Docs
 description: Samouczek dotyczący korzystania z usługi Application Insights, dzięki któremu dowiesz się, jak klienci używają aplikacji.
-keywords: ''
-services: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 90357c13003820a25ee52aab5cda83029c9d85ff
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 08da1ad5d934116db8f110d7b75a8e0a60ffc84a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601557"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894669"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Korzystanie z usługi Azure Application Insights, aby dowiedzieć się, jak klienci używają aplikacji
 
@@ -35,9 +33,9 @@ Usługa Azure Application Insights zbiera informacje o użyciu, aby pomóc zrozu
 
 W celu ukończenia tego samouczka:
 
-- Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
-    - ASP.NET i tworzenie aplikacji internetowych
-    - Programowanie na platformie Azure
+- Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi obciążeniami:
+    - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
+    - Tworzenie aplikacji na platformie Azure
 - Pobierz i zainstaluj rozszerzenie [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
 - Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](../../azure-monitor/app/asp-net.md). 
 - [Wyślij dane telemetryczne z aplikacji](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app) w celu dodania niestandardowych zdarzeń/wyświetleń strony
@@ -59,11 +57,11 @@ Panel **Użytkownicy** pozwala analizować na różne sposoby ważne informacje 
 
     ![Zmiana zakresu czasu](media/tutorial-users/TimeRange.png)
 
-4. Kliknij listę rozwijaną **Podział według**, aby dodać do wykresu podział według właściwości użytkownika.  Wybierz pozycję **Kraj lub region**.  Wykres zawiera te same dane, ale umożliwia wyświetlanie informacji o podziale liczbę użytkowników dla każdego kraju/regionu.
+4. Kliknij listę rozwijaną **Podział według**, aby dodać do wykresu podział według właściwości użytkownika.  Wybierz pozycję **Kraj lub region**.  Wykres zawiera te same dane, ale umożliwia wyświetlenie podziału liczby użytkowników w poszczególnych krajach/regionach.
 
     ![Wykres dla kraju lub regionu](media/tutorial-users/CountryorRegion.png)
 
-5. Umieść kursor nad różne słupki na wykresie i zanotuj, czy liczba, dla każdego kraju/regionu odzwierciedlają tylko przedział czasu, które są reprezentowane przez ten pasek.
+5. Umieść kursor na różnych paskach wykresu i Zauważ, że liczba dla każdego kraju/regionu odzwierciedla tylko przedział czasu reprezentowany przez ten pasek.
 6. Spójrz na kolumnę **Szczegółowe informacje** po prawej stronie, która umożliwia analizowanie danych użytkowników.  Zawiera ona takie informacje jak liczba unikatowych sesji w danym okresie i rekordy ze wspólnymi właściwościami, które tworzą znaczącą część danych użytkowników. 
 
     ![Kolumna szczegółowych informacji](media/tutorial-users/insights.png)
@@ -86,7 +84,7 @@ Panel **Sesje** jest podobny do panelu **Użytkownicy**.  Panel **Użytkownicy**
     ![Oś czasu sesji](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Grupowanie podobnych użytkowników
-A **kohorta** to zbiór użytkowników, pogrupowane według podobnej charakterystyce.  Kohorty umożliwiają filtrowanie danych w innych panelach, co pozwala analizować poszczególne grupy użytkowników.  Można na przykład analizować tylko użytkowników, którzy ukończyli zakup.
+**Kohorta** to zbiór użytkowników pogrupowanych według podobnych właściwości.  Kohorty umożliwiają filtrowanie danych w innych panelach, co pozwala analizować poszczególne grupy użytkowników.  Można na przykład analizować tylko użytkowników, którzy ukończyli zakup.
 
 1.  Wybierz pozycję **Kohorty** z menu.
 2.  Kliknij przycisk **Nowa**, aby utworzyć nową kohortę.
@@ -163,7 +161,7 @@ Panel **Przechowywanie** ułatwia sprawdzenie, którzy użytkownicy wrócą do a
 6.  Kliknij pozycję **Dodaj użytkowników**, aby dodać wykres z informacjami o użytkowniku.  Jeśli chcesz, edytuj szczegóły wykresu, a następnie kliknij pozycję **Zakończono edytowanie**, aby zapisać wykres.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Wiesz już, jak analizować użytkowników, więc możesz przejść do następnego samouczka, aby dowiedzieć się, jak tworzyć niestandardowe pulpity nawigacyjne, które łączą te informacje z innymi przydatnymi danymi dotyczącymi aplikacji.
 
 > [!div class="nextstepaction"]

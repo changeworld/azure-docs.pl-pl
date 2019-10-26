@@ -3,22 +3,23 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric to | Microsoft
 description: Service Fabric opisuje sfctl interfejsu wiersza polecenia.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 998a94350250402d4face64f64e12f32cf5b2a36
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 9a09d8c36fd282450767880a9ad144e1192dcd2e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036487"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901581"
 ---
 # <a name="sfctl-is"></a>sfctl is
 Wykonywanie zapytań i wysyłanie poleceń do usługi infrastruktury.
@@ -27,7 +28,7 @@ Wykonywanie zapytań i wysyłanie poleceń do usługi infrastruktury.
 
 |Polecenie|Opis|
 | --- | --- |
-| Polecenie | Wywołuje polecenie administracyjne w danym wystąpieniu usługi infrastruktury. |
+| command | Wywołuje polecenie administracyjne w danym wystąpieniu usługi infrastruktury. |
 | query | Wywołuje zapytanie tylko do odczytu dla danego wystąpienia usługi infrastruktury. |
 
 ## <a name="sfctl-is-command"></a>sfctl jest poleceniem
@@ -40,17 +41,17 @@ W przypadku klastrów, dla których skonfigurowano co najmniej jedno wystąpieni
 |Argument|Opis|
 | --- | --- |
 | --polecenie [wymagane] | Tekst polecenia, który ma zostać wywołany. Zawartość polecenia jest specyficzna dla infrastruktury. |
-| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez schematu identyfikatora URI "Sieć szkieletowa\:". Ten parametr jest wymagany tylko w przypadku klastra, na którym działa więcej niż jedno wystąpienie usługi infrastruktury. |
-| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+| --ID usługi | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez schematu identyfikatora URI "Fabric\:". Ten parametr jest wymagany tylko w przypadku klastra, na którym działa więcej niż jedno wystąpienie usługi infrastruktury. |
+| --timeout-t | Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 ## <a name="sfctl-is-query"></a>sfctl jest kwerendą
@@ -63,17 +64,17 @@ W przypadku klastrów, dla których skonfigurowano co najmniej jedno wystąpieni
 |Argument|Opis|
 | --- | --- |
 | --polecenie [wymagane] | Tekst polecenia, który ma zostać wywołany. Zawartość polecenia jest specyficzna dla infrastruktury. |
-| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez schematu identyfikatora URI "Sieć szkieletowa\:". Ten parametr jest wymagany tylko w przypadku klastra, na którym działa więcej niż jedno wystąpienie usługi infrastruktury. |
-| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+| --ID usługi | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez schematu identyfikatora URI "Fabric\:". Ten parametr jest wymagany tylko w przypadku klastra, na którym działa więcej niż jedno wystąpienie usługi infrastruktury. |
+| --timeout-t | Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 

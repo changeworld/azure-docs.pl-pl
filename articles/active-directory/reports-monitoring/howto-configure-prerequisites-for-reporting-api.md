@@ -1,5 +1,5 @@
 ---
-title: Wymagania wstępne dotyczące uzyskiwania dostępu do interfejsu API raportowania Azure Active Directory | Microsoft Docs
+title: Wymagania wstępne dotyczące interfejsu API raportowania Azure Active Directory | Microsoft Docs
 description: Informacje o wymaganiach wstępnych dotyczących uzyskiwania dostępu do interfejsu API raportowania usługi Azure AD
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 08/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b6fab4a4a36691bbdeb11975c7a93b97ab86cb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: af5e198a900241bc7bb0b6aff9a57eed59d1cd86
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241479"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895229"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Wymagania wstępne dotyczące uzyskiwania dostępu do interfejsu API raportowania Azure Active Directory
 
@@ -48,7 +48,7 @@ Aby uzyskać dostęp do danych raportowania za pomocą interfejsu API, należy p
 - Administrator globalny
 
 
-## <a name="register-an-application"></a>Zarejestruj aplikację
+## <a name="register-an-application"></a>Rejestrowanie aplikacji
 
 Rejestracja jest wymagana nawet w przypadku uzyskiwania dostępu do interfejsu API raportowania przy użyciu skryptu. Rejestracja zapewnia **Identyfikator aplikacji**, który jest wymagany dla wywołań autoryzacji i umożliwia kodowi otrzymywanie tokenów.
 
@@ -80,7 +80,7 @@ Aby skonfigurować katalog do uzyskiwania dostępu do interfejsu API raportowani
 
     b. W polu **Typ obsługiwanych kont**wybierz opcję **konta tylko w tej organizacji**.
 
-    c. W polu tekstowym **adres URL przekierowania** wybierz pozycję `https://localhost` **Sieć Web** wpisz.
+    d. W polu tekstowym **adres URL przekierowania** wybierz pozycję **sieć Web** wpisz `https://localhost`.
 
     d. Wybierz pozycję **Zarejestruj**. 
 
@@ -89,7 +89,7 @@ Aby skonfigurować katalog do uzyskiwania dostępu do interfejsu API raportowani
 
 W zależności od interfejsu API, do którego chcesz uzyskać dostęp, musisz udzielić aplikacji następujących uprawnień:  
 
-| interfejs API | Uprawnienie |
+| API | Uprawnienie |
 | --- | --- |
 | Azure Active Directory systemu Windows | Odczytaj dane katalogu |
 | Microsoft Graph | Odczytaj wszystkie dane dziennika inspekcji |
@@ -118,7 +118,7 @@ W poniższej sekcji przedstawiono kroki dla obu interfejsów API. Jeśli nie chc
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-5. Uwaga: **Microsoft Graph** jest domyślnie dodawany podczas rejestrowania interfejsu API.
+5. Uwaga: podczas rejestrowania interfejsu API **Microsoft Graph** jest domyślnie dodawane.
 
     ![Zarejestruj aplikację](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
@@ -183,7 +183,7 @@ Te wartości są potrzebne podczas konfigurowania wywołań do interfejsu API ra
 
     b. Zgodnie z **wygaśnięciem**wybierz pozycję **za 2 lata**.
 
-    c. Kliknij polecenie **Zapisz**.
+    d. Kliknij przycisk **Save** (Zapisz).
 
     d. Skopiuj wartość klucza.
 
@@ -195,30 +195,30 @@ W tej sekcji wymieniono typowe komunikaty o błędach, które można napotkać p
 
 Obecnie nie obsługujemy punktu końcowego Microsoft Graph v2 — upewnij się, że uzyskujesz dostęp do dzienników aktywności przy użyciu punktu końcowego Microsoft Graph v1.
 
-### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Błąd: Nie można pobrać ról użytkownika z grafu usługi AD
+### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Błąd: nie można pobrać ról użytkownika z grafu usługi AD
 
  Zaloguj się do swojego konta przy użyciu obu przycisków logowania w interfejsie użytkownika programu Graph Explorer, aby uniknąć błędu podczas próby zalogowania się za pomocą Eksploratora grafów. 
 
 ![Eksplorator programu Graph](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Błąd: Nie można przeprowadzić kontroli licencji Premium na podstawie grafu usługi AD 
+### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Błąd: nie można przeprowadzić kontroli licencji Premium z grafu usługi AD 
 
 Jeśli ten komunikat o błędzie jest uruchamiany podczas próby dostępu do logowania za pomocą Eksploratora grafów, wybierz pozycję **Modyfikuj uprawnienia** pod Twoim kontem na lewym pasku nawigacyjnym, a następnie wybierz kolejno pozycje **Tasks. ReadWrite** i **Directory. Read. All**. 
 
 ![Modyfikuj interfejs użytkownika uprawnień](./media/troubleshoot-graph-api/modify-permissions.png)
 
 
-### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Błąd: Dzierżawca nie jest B2C lub dzierżawa nie ma licencji Premium
+### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Błąd: Dzierżawca nie jest B2C lub dzierżawca nie ma licencji Premium
 
 Uzyskiwanie dostępu do raportów logowania wymaga licencji Azure Active Directory Premium 1 (P1). Jeśli ten komunikat o błędzie jest wyświetlany podczas uzyskiwania dostępu do logowania, upewnij się, że dzierżawa jest licencjonowana przy użyciu licencji usługi Azure AD P1.
 
-### <a name="error-the-allowed-roles-does-not-include-user"></a>Błąd: Dozwolone role nie obejmują użytkownika. 
+### <a name="error-the-allowed-roles-does-not-include-user"></a>Błąd: dozwolone role nie obejmują użytkownika. 
 
  Należy unikać błędów próbujących uzyskać dostęp do dzienników inspekcji lub logowania przy użyciu interfejsu API. Upewnij się, że Twoje konto jest częścią roli **czytelnik zabezpieczeń** lub **czytelnik raportu** w dzierżawie Azure Active Directory.
 
-### <a name="error-application-missing-aad-read-directory-data-permission"></a>Błąd: Brak uprawnienia do odczytu danych katalogu usługi AAD w aplikacji 
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>Błąd: brak uprawnienia do odczytu danych katalogu usługi AAD w aplikacji 
 
-### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Błąd: Brak uprawnienia MSGraph interfejsu API "Odczyt wszystkich danych dziennika inspekcji" w aplikacji
+### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Błąd: brak uprawnienia do aplikacji MSGraph API "Odczyt wszystkich danych dziennika inspekcji"
 
 Wykonaj kroki opisane w sekcji [wymagania wstępne, aby uzyskać dostęp do interfejsu API raportowania Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md) , aby upewnić się, że aplikacja działa z odpowiednim zestawem uprawnień. 
 

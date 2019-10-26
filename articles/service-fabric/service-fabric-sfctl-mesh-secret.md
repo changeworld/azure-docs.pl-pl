@@ -3,22 +3,23 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric — wpis tajny
 description: Opisuje polecenie Service Fabric interfejsu wiersza polecenia w sieci sfctl.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 5e58e6a401cc166c176dc465d58ba9e8a8ed83b0
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 706f3250236bf7cab591530c1cefba8e503225fe
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035971"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901203"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
 Pobierz i Usuń zasoby z siatką kluczy tajnych.
@@ -27,7 +28,7 @@ Pobierz i Usuń zasoby z siatką kluczy tajnych.
 
 |Polecenie|Opis|
 | --- | --- |
-| usuwanie | Usuwa zasób tajny. |
+| delete | Usuwa zasób tajny. |
 | list | Wyświetla listę wszystkich zasobów tajnych. |
 | pokaż | Pobiera tajny zasób o podaną nazwę. |
 
@@ -40,16 +41,16 @@ Usuwa określony zasób tajny i wszystkie jego nazwane wartości.
 
 |Argument|Opis|
 | --- | --- |
-| --Name-n [wymagane] | Nazwa wpisu tajnego. |
+| --Name-n [wymagane] | Nazwa zasobu tajnego. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 ## <a name="sfctl-mesh-secret-list"></a>Lista wpisów tajnych sfctl siatki
@@ -61,10 +62,10 @@ Pobiera informacje o wszystkich zasobach tajnych w danej grupie zasobów. Inform
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 ## <a name="sfctl-mesh-secret-show"></a>Pokaż wpis tajny siatki sfctl
@@ -76,16 +77,16 @@ Pobiera informacje o zasobie tajnym o podanej nazwie. Informacje obejmują opis 
 
 |Argument|Opis|
 | --- | --- |
-| --Name-n [wymagane] | Nazwa wpisu tajnego. |
+| --Name-n [wymagane] | Nazwa zasobu tajnego. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 

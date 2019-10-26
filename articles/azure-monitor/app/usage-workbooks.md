@@ -1,130 +1,125 @@
 ---
-title: Tworzenie interaktywnych raportów, skoroszytów w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Uprość złożone raportowanie za pomocą wbudowanych i niestandardowych sparametryzowane skoroszytów
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Twórz interaktywne raporty przy użyciu skoroszytów Azure Monitor | Dokumentacja firmy Microsoft
+description: Uprość złożone raportowanie za pomocą wstępnie skompilowanych i niestandardowych skoroszytów z parametrami
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 6d84ad69b067f730bbfbcad9e46bdc9ae2036ead
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bbbf511286c63acf4a939e0a0e7d9c3dc9efa75b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569607"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899389"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Tworzenie interaktywnych raportów, skoroszytów w usłudze Azure Monitor
+# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Tworzenie interaktywnych raportów przy użyciu skoroszytów Azure Monitor
 
-Skoroszyty połączenie tekstu, [zapytań analitycznych](https://docs.microsoft.com/azure/application-insights/app-insights-analytics), metryk usługi Azure i parametrów w zaawansowanych interaktywnych raportów. Skoroszyty są edytowalne przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
+Skoroszyty łączą tekst, [kwerendy analityczne](https://docs.microsoft.com/azure/application-insights/app-insights-analytics), metryki platformy Azure i parametry w rozbudowanych raportach interaktywnych. Skoroszyty są edytowane przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
 
-Skoroszyty są przydatne w scenariuszach, takich jak:
+Skoroszyty są przydatne w scenariuszach takich jak:
 
-* Eksplorowanie użycia aplikacji, kiedy nie wiesz wcześniej istotne metryki: liczby użytkowników, danych, współczynniki konwersji itp. W przeciwieństwie do innych narzędzi analitycznych użycia skoroszytów pozwalają połączyć wiele rodzajów wizualizacji i analiz, dzięki czemu idealne narzędzie do tego rodzaju dowolnych eksploracji.
-* Do zespołu wyjaśniające, jak działa funkcja nowo wydanego, przedstawiający użytkownika Liczba interakcji kluczy i innych metryk.
-* Udostępnianie wyników, a / B eksperymentów w swojej aplikacji z innymi członkami zespołu. Można wyjaśnić cele eksperymentu z tekstem, a następnie Pokaż każdego metryki użycia i zapytania usługi Analytics używane do oceny eksperymentów, wraz z wyczyść wezwaniem dla tego, czy wszystkie metryki został powyżej lub poniżej docelowymi.
-* Raportowanie wpływ awarii na użycie aplikacji, łącząc dane, tekst wyjaśnienie i dyskusję na temat następnych kroków, aby uniknąć przerw w przyszłości.
+* Zbadaj użycie aplikacji, jeśli nie znasz już interesujących Cię metryk: liczbie użytkowników, stawek za przechowywanie, stawek za konwersję itp. W przeciwieństwie do innych narzędzi analitycznych użycia, skoroszyty umożliwiają łączenie wielu rodzajów wizualizacji i analiz, dzięki czemu są wspaniałe dla tego rodzaju eksploracji o dowolnej postaci.
+* Objaśnienie do zespołu sposobu wykonywania nowo wydanej funkcji, pokazując liczbę użytkowników dla interakcji z kluczami i innymi metrykami.
+* Udostępnianie wyników eksperymentu A/B w aplikacji innym członkom zespołu. Można wyjaśnić cele eksperymentu z tekstem, a następnie pokazać wszystkie metryki użycia i zapytania analityczne używane do szacowania eksperymentu, a także wyraźne wywołania dla tego, czy każda Metryka była większa niż wartość docelowa.
+* Raportowanie wpływu awarii na korzystanie z aplikacji, łączenie danych, wyjaśnienie tekstu i Omówienie następnych kroków w celu zapobieżenia awarii w przyszłości.
 
-## <a name="starting-with-a-template-or-saved-workbook"></a>Uruchamianie przy użyciu szablonu lub zapisany skoroszyt
+## <a name="starting-with-a-template-or-saved-workbook"></a>Rozpoczynanie pracy z szablonem lub zapisanym skoroszytem
 
-Skoroszyt składa się z sekcji składający się z można edytować niezależnie wykresów, tabel, tekst, a kontrolki wejściowe. Aby lepiej zrozumieć skoroszyty, najlepiej otwórz je w. 
+Skoroszyt składa się z sekcji składających się niezależnie od edytowalnych wykresów, tabel, tekstu i kontrolek wejściowych. Aby lepiej zrozumieć skoroszyty, najlepiej otworzyć jeden z nich. 
 
-Wybierz **skoroszyty** z menu po lewej stronie z wewnątrz usługi Application Insights środowisko dla aplikacji.
+Wybierz pozycję **skoroszyty** z menu po lewej stronie w obszarze Application Insights środowiska aplikacji.
 
-![Zrzut ekranu przedstawiający nawigacji do skoroszytów](./media/usage-workbooks/001-workbooks.png)
+![Zrzut ekranu przedstawiający nawigację do skoroszytów](./media/usage-workbooks/001-workbooks.png)
 
-Spowoduje to uruchomienie galerii skoroszytu, wprowadzając szereg wbudowanych skoroszyty, aby pomóc Ci rozpocząć pracę.
+Spowoduje to uruchomienie galerii skoroszytów z liczbą wstępnie skompilowanych skoroszytów, które pomogą Ci rozpocząć pracę.
 
-![Zrzut ekranu przedstawiający galerii skoroszytu](./media/usage-workbooks/002-workbook-gallery.png)
+![Zrzut ekranu przedstawiający galerię skoroszytów](./media/usage-workbooks/002-workbook-gallery.png)
 
-Rozpoczniemy od **domyślnego szablonu**, który znajduje się pod nagłówkiem **— szybki start**.
+Zaczniemy od **szablonu domyślnego**, który znajduje się w nagłówku **szybkiego startu**.
 
-![Zrzut ekranu przedstawiający galerii skoroszytu](./media/usage-workbooks/003-default-template.png)
+![Zrzut ekranu przedstawiający galerię skoroszytów](./media/usage-workbooks/003-default-template.png)
 
-## <a name="editing-rearranging-cloning-and-deleting-workbook-sections"></a>Edytowanie, rozmieszczanie, klonowanie i usuwanie sekcji skoroszytu
+## <a name="editing-rearranging-cloning-and-deleting-workbook-sections"></a>Edytowanie, ponowne rozmieszczanie, klonowanie i usuwanie sekcji skoroszytu
 
-Skoroszyty mają dwa tryby: **tryb edycji**, i **trybie do czytania**. Po pierwszym uruchomieniu skoroszyt domyślny zostanie on otwarty w **tryb edycji**. Pokazuje całą zawartość skoroszytu, w tym wszelkie kroki i parametry, które w przeciwnym razie są ukryte. **Tryb odczytu** przedstawia uproszczoną styl widoku. Dzięki temu można natychmiast warstwę abstrakcji złożoności, które pojawiły się w tworzenie raportu przy zachowaniu bazowego mechanics tylko kilka kliknięć, gdy są potrzebne do modyfikacji.
+Skoroszyty mają dwa tryby: **tryb edycji**i **tryb odczytywania**. Gdy domyślny skoroszyt zostanie uruchomiony po raz pierwszy, zostanie otwarty w **trybie edycji**. Spowoduje to wyświetlenie całej zawartości skoroszytu, w tym wszystkich kroków i parametrów, które są w inny sposób ukryte. **Tryb odczytu** przedstawia uproszczony widok stylu raportu. Dzięki temu można uzyskać streszczenie złożoności, która pomogła utworzyć raport przy zachowaniu zasadniczej Mechanics tylko kilku kliknięć, gdy jest to potrzebne do modyfikacji.
 
-![Application Insights skoroszyty sekcji formanty edycji](./media/usage-workbooks/editing-controls-new.png)
+![Kontrolki edycji sekcji Application Insights skoroszytów](./media/usage-workbooks/editing-controls-new.png)
 
-1. Po zakończeniu edycji sekcji, kliknij **przeprowadzić edycję** w lewym dolnym rogu sekcji.
+1. Po zakończeniu edycji sekcji kliknij pozycję **Zakończono edycję** w lewym dolnym rogu sekcji.
 
-2. Aby utworzyć duplikat sekcji, kliknij przycisk **Sklonuj tę sekcję** ikony. Tworzenie duplikatów sekcje to doskonały sposób iteracji w zapytaniu bez utraty poprzednich iteracji.
+2. Aby utworzyć duplikat sekcji, kliknij ikonę **klonowania tej sekcji** . Tworzenie zduplikowanych sekcji to doskonały sposób na iterację zapytania bez utraty poprzednich iteracji.
 
-3. Aby przenieść w górę do sekcji w skoroszycie, kliknij przycisk **Przenieś w górę** lub **Przenieś w dół** ikony.
+3. Aby przenieść sekcję w górę w skoroszycie, kliknij ikonę **Przenieś w górę** lub **Przenieś w dół** .
 
-4. Aby trwale usunąć sekcję, kliknij przycisk **Usuń** ikony.
+4. Aby trwale usunąć sekcję, kliknij ikonę **Usuń** .
 
-## <a name="adding-text-and-markdown-sections"></a>Dodawanie tekstu i sekcje znaczników Markdown
+## <a name="adding-text-and-markdown-sections"></a>Dodawanie sekcji tekstu i promocji
 
-Dodawanie nagłówków, wyjaśnień i komentarz do skoroszyty pomaga przekształcić zbiór tabel i wykresów narracji. Sekcje tekstu w pomocy technicznej skoroszyty [składnię języka znaczników Markdown](https://daringfireball.net/projects/markdown/) formatowania, takich jak nagłówki, pogrubienie, kursywa i list punktowanych tekstu.
+Dodawanie nagłówków, objaśnień i komentarzy do skoroszytów ułatwia przekształcenie zestawu tabel i wykresów w narrację. Sekcje tekstowe w skoroszytach obsługują [składnię promocji](https://daringfireball.net/projects/markdown/) na potrzeby formatowania tekstu, takie jak nagłówki, pogrubienie, kursywa i listy punktowane.
 
-Aby dodać sekcję tekstu do skoroszytu, należy użyć **Dodaj tekst** przycisk w dolnej części skoroszytu lub u dołu dowolną sekcję.
+Aby dodać sekcję tekstową do skoroszytu, użyj przycisku **Dodaj tekst** w dolnej części skoroszytu lub w dolnej części każdej sekcji.
 
 ## <a name="adding-query-sections"></a>Dodawanie sekcji zapytania
 
-![Sekcja zapytań w skoroszycie](./media/usage-workbooks/analytics-section-new.png)
+![Sekcja zapytania w skoroszytach](./media/usage-workbooks/analytics-section-new.png)
 
-Aby dodać sekcję zapytania do skoroszytu, użyj **Dodaj zapytanie** przycisk w dolnej części skoroszytu lub u dołu dowolną sekcję.
+Aby dodać sekcję zapytania do skoroszytu, użyj przycisku **Dodaj zapytanie** w dolnej części skoroszytu lub w dolnej części każdej sekcji.
 
-Sekcje zapytania są bardzo elastyczne i może służyć do odpowiedzi na pytania, takie jak:
+Sekcje zapytań są wysoce elastyczne i mogą być używane do udzielania odpowiedzi na pytania, takie jak:
 
-* Jak wiele wyjątków throw witryny w przedziale czasu jako spadek użycia?
-* Jaki był Rozkład czasów ładowania strony użytkownikom, którzy wyświetlają niektóre strony?
-* Ilu użytkowników wyświetlane niektóre zbiór stron w witrynie, ale nie inny zestaw stron? Może to być przydatne do zrozumienia, jeśli masz klastrów użytkowników, którzy korzystają z różnych podzbiory funkcji witryny sieci (Użyj `join` operator `kind=leftanti` modyfikator w [język zapytania Kusto](/azure/kusto/query/)).
+* Ile wyjątków zostało zgłoszonych przez lokację w tym samym okresie jako odrzucanie w użyciu?
+* Jaki był rozkład czasów ładowania stron dla użytkowników przeglądających stronę?
+* Ilu użytkowników jest wyświetlanych w witrynie, ale nie na innych zestawach stron? Może to być przydatne w przypadku klastrów użytkowników, którzy korzystają z różnych podzestawów funkcjonalności lokacji (Użyj operatora `join` z modyfikatorem `kind=leftanti` w [języku zapytania Kusto](/azure/kusto/query/)).
 
-Możesz również nie są tylko ograniczone do wykonywania zapytań w kontekście aplikacji uruchomiony ten skoroszyt z. Wiele aplikacji usługi Application Insights monitorowane, jak i obszarów roboczych usługi Log Analytics można badać, tak długo, jak długo mają uprawnienia dostępu do tych zasobów.
+Nie można również wykonywać zapytania tylko w kontekście aplikacji, z której został uruchomiony skoroszyt. Możesz wykonywać zapytania dla wielu Application Insights monitorowanych aplikacji, a także Log Analytics obszarów roboczych, o ile masz uprawnienia dostępu do tych zasobów.
 
-Do wykonywania zapytań z użycia zasobów usługi Application Insights zewnętrznego dodatkowe **aplikacji** identyfikatora.
+Aby wykonać zapytanie dotyczące dodatkowych zewnętrznych zasobów Application Insights, użyj identyfikatora **aplikacji** .
 
 ```
 union app('app01').requests, app('app02').requests, requests
 | summarize count() by bin(timestamp, 1h)
 ```  
 
-To zapytanie jest używane do łączenia żądań z trzech różnych aplikacji. Aplikacja o nazwie app01, aplikacji o nazwie app02 i żądań z lokalnego zasobu usługi Application Insights.
+To zapytanie łączy żądania z trzech różnych aplikacji. Aplikacja o nazwie app01, aplikacja o nazwie app02 i żądania z lokalnego zasobu Application Insights.
 
-Aby pobrać dane z użytku zewnętrznego obszaru roboczego usługi Log Analytics **obszaru roboczego** identyfikatora.
+Aby ściągnąć dane z zewnętrznego obszaru roboczego Log Analytics, użyj identyfikatora **obszaru roboczego** .
 
-Aby dowiedzieć się więcej na temat zapytania obejmujące wiele zasobów się [oficjalne wskazówki](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).
+Aby dowiedzieć się więcej o zapytaniach między zasobami, zapoznaj się z [oficjalnymi wskazówkami](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).
 
-### <a name="advanced-analytic-query-settings"></a>Zaawansowane ustawienia zapytania analizy
+### <a name="advanced-analytic-query-settings"></a>Zaawansowane ustawienia zapytania analitycznego
 
-Każda sekcja ma swoje własne ustawienia zaawansowane, które są dostępne za pośrednictwem ikony ustawień ![Application Insights skoroszyty sekcji formanty edycji](./media/usage-workbooks/005-settings.png) znajdującej się po prawej stronie **Dodaj parametry** przycisku.
+Każda sekcja ma własne ustawienia zaawansowane, które są dostępne za pośrednictwem ikony ustawień ![Application Insights skoroszytów edycji sekcji](./media/usage-workbooks/005-settings.png) znajdujące się po prawej stronie przycisku **Dodaj parametry** .
 
-![Application Insights skoroszyty sekcji formanty edycji](./media/usage-workbooks/0006-settings-expanded.png)
+![Kontrolki edycji sekcji Application Insights skoroszytów](./media/usage-workbooks/0006-settings-expanded.png)
 
    |         |          |
    | ---------------- |:-----|
-   | **Szerokości niestandardowe**    | Ustaw, aby element dowolnego rozmiaru, dzięki czemu można umieścić wiele elementów w jednym wierszu, co pozwala lepiej zorganizować dla wykresów i tabel w zaawansowanych interaktywnych raportów.  |
-   | **Jako widoczny warunkowo** | Użyj tego możesz ukrywać kroki na podstawie parametru w trybie do czytania. |
-   | **Eksportuj parametr**| Pozwala to na podstawie wiersza wybranego w siatce lub na wykresie, aby spowodować, że dalszych krokach zmienić wartości lub stanie się widoczna.  |
-   | **Wyświetl zapytanie poza trybem edycji** | Spowoduje to wyświetlenie zapytania powyżej wykres lub tabelę, nawet w trybie do czytania.
-   | **Pokaż przycisk Otwórz w przycisk Analiza poza trybem edycji** | Spowoduje to dodanie niebieską ikoną Analytics rogu wykresu, aby zezwolić na dostęp jednym kliknięciem.|
+   | **Szerokość niestandardowa**    | Ustaw tę opcję, aby utworzyć element jako dowolny rozmiar, więc można dopasować wiele elementów w jednym wierszu, co pozwala lepiej organizować wykresy i tabele w Zaawansowane raporty interaktywne.  |
+   | **Warunkowo widoczne** | Służy do ukrywania kroków w oparciu o parametr w trybie do czytania. |
+   | **Eksportowanie parametru**| Dzięki temu w wybranym wierszu siatki lub wykresu mogą wystąpić dalsze kroki zmiany wartości lub staną się widoczne.  |
+   | **Pokaż zapytanie, gdy nie jest edytowane** | Spowoduje to wyświetlenie zapytania powyżej wykresu lub tabeli, nawet w trybie do czytania.
+   | **Pokaż przycisk Otwórz w analizie, gdy nie jest edytowany** | Spowoduje to dodanie ikony Blue Analytics do prawego rogu wykresu, aby zezwolić na dostęp za pomocą jednego kliknięcia.|
 
-Większość z tych ustawień jest dość intuicyjne, aby dowiedzieć się, ale **Eksportuj parametr** warto zbadać skoroszytu korzystającej z tej funkcji.
+Większość z tych ustawień jest dość intuicyjna, ale w celu zrozumienia **eksportu parametru** lepiej jest sprawdzić skoroszyt, który korzysta z tej funkcji.
 
-Jedną z wbudowanych skoroszyty zawiera informacje dotyczące aktywnych użytkowników.
+Jeden z wstępnie skompilowanych skoroszytów zawiera informacje dotyczące aktywnych użytkowników.
 
-Pierwsza część skoroszytu są oparte na danych analitycznych zapytań:
+Pierwsza sekcja skoroszytu opiera się na danych zapytania analitycznego:
 
-![Application Insights skoroszyty sekcji formanty edycji](./media/usage-workbooks/003-active-users.png)
+![Kontrolki edycji sekcji Application Insights skoroszytów](./media/usage-workbooks/003-active-users.png)
 
-Druga sekcja również na podstawie zapytania analizy danych, ale wybranie wiersza w pierwszej tabeli interaktywnie aktualizuje zawartość wykresu:
+Druga sekcja jest również oparta na danych zapytania analitycznego, ale wybranie wiersza w pierwszej tabeli spowoduje interaktywną aktualizację zawartości wykresu:
 
-![Application Insights skoroszyty sekcji formanty edycji](./media/usage-workbooks/004-active-users-trend.png)
+![Kontrolki edycji sekcji Application Insights skoroszytów](./media/usage-workbooks/004-active-users-trend.png)
 
- Jest to możliwe za pośrednictwem **po wybraniu elementu Eksportuj parametr** Zaawansowane ustawienia, które są włączone w tabeli zapytania usługi Analytics.
+ Jest to możliwe poprzez użycie **elementu, gdy element jest zaznaczony, wyeksportuj** zaawansowane ustawienia parametrów, które są włączone w kwerendzie analizy tabeli.
 
-![Application Insights skoroszyty sekcji formanty edycji](./media/usage-workbooks/007-settings-export.png)
+![Kontrolki edycji sekcji Application Insights skoroszytów](./media/usage-workbooks/007-settings-export.png)
 
-Drugie zapytanie analizy następnie korzysta z wartości eksportowanych wybranie wiersza. Jeśli żaden wiersz nie jest zaznaczone, domyślnie w wierszu odpowiadającym wartości całkowitej. 
+Drugie zapytanie analityczne następnie wykorzystuje eksportowane wartości, gdy wiersz jest zaznaczony. Jeśli nie wybrano żadnego wiersza, domyślnie jest to wiersz reprezentujący wartości całkowite. 
 
 ```
 let start = startofday(ago({TimeRange} + {Metric}));
@@ -139,60 +134,60 @@ union customEvents, pageViews
 | render timechart 
 ```
 
-## <a name="adding-metrics-sections"></a>Dodawanie sekcji metryki
+## <a name="adding-metrics-sections"></a>Dodawanie sekcji metryk
 
-Metryki sekcje zapewniają pełny dostęp, aby dołączyć dane metryk usługi Azure Monitor do interaktywnych raportów. Wiele wbudowanych skoroszyty będzie zawierać zarówno zapytania analizy danych, jak i dane metryk, umożliwiając w pełni wykorzystać zalety obu funkcji wszystko w jednym miejscu. Istnieje również możliwość ściągać dane metryk z dowolnej subskrypcji, do których masz dostęp do zasobów.
+Sekcje metryk zapewniają pełny dostęp do dołączania danych metryk Azure Monitor do raportów interaktywnych. Wiele wstępnie skompilowanych skoroszytów będzie zawierać zarówno dane zapytania analitycznego, jak i dane metryk, dzięki czemu można w pełni wykorzystać zalety obu funkcji w jednym miejscu. Istnieje również możliwość ściągania danych metryk z zasobów we wszystkich subskrypcjach, do których masz dostęp.
 
-Oto przykład danych maszyny wirtualnej są pobierane do skoroszytu umożliwia wizualizację siatki wydajność procesora CPU:
+Poniżej znajduje się przykład danych maszyny wirtualnej, które są ściągane do skoroszytu w celu zapewnienia wizualizacji wydajności procesora CPU:
 
-![Application Insights skoroszyty sekcji formanty edycji](./media/usage-workbooks/008-metrics-grid.png)
+![Kontrolki edycji sekcji Application Insights skoroszytów](./media/usage-workbooks/008-metrics-grid.png)
 
-## <a name="adding-parameter-sections"></a>Dodając parametr sekcje
+## <a name="adding-parameter-sections"></a>Dodawanie sekcji parametrów
 
-Parametry skoroszytu umożliwiają zmianę wartości w skoroszycie, bez konieczności ręcznego edytowania sekcje zapytania lub tekstu.  Eliminuje wymóg konieczności zrozumienie podstawowych języka zapytań usługi analytics i znacznie rozszerza raportowanie oparte na skoroszycie potencjalnych odbiorców.
+Parametry skoroszytu umożliwiają zmianę wartości w skoroszycie bez konieczności ręcznej edycji sekcji zapytania lub tekstu.  Eliminuje to konieczność zrozumienia bazowego języka zapytań analitycznych i znacząco rozszerza potencjalną grupę raportów opartych na skoroszycie.
 
-Wartości parametrów są zastępowane w zapytania, tekst lub inne sekcje parametr, umieszczając nazwę parametru w nawiasach klamrowych, takich jak ``{parameterName}``.  Nazwy parametrów są ograniczone do podobnych reguł identyfikatorów języka JavaScript, po prostu alfabetu lub podkreślenia, następują znaki alfanumeryczne oraz podkreślenia. Na przykład **a1** jest dozwolony, ale **1a** jest niedozwolone.
+Wartości parametrów są zamieniane w kwerendy, tekst lub inne sekcje parametrów przez umieszczenie nazwy parametru w nawiasach klamrowych, na przykład ``{parameterName}``.  Nazwy parametrów są ograniczone do podobnych reguł, takich jak identyfikatory JavaScript, podstawowe znaki alfabetyczne lub podkreślenia, po których następuje znaki alfanumeryczne lub podkreślenia. Na przykład **a1** jest dozwolony, ale **1a** nie jest dozwolone.
 
-Parametry są liniowe, począwszy od góry skoroszytu i przepływają w dół do dalszych krokach.  Parametrów zadeklarowanych w dalszej części skoroszytu można zastąpić te, które zostały zgłoszone dalsze w górę.  Umożliwia to użycie zapytania, aby uzyskać dostęp do wartości z parametrów zdefiniowanych dalsze Konfigurowanie parametrów.  W ramach kroku parametr sam parametry są również liniowego, od lewej do prawej, w której parametry, z prawej strony mogą być zależne od parametru zadeklarowana we wcześniejszej części tego samego kroku.
+Parametry są liniowe, zaczynając od góry skoroszytu i przepływają w dół do kolejnych kroków.  Parametry zadeklarowane później w skoroszycie mogą przesłonić te, które zostały zadeklarowane w dalszej części.  Umożliwia to również parametry, które używają zapytań w celu uzyskania dostępu do wartości z określonych parametrów.  W samym kroku parametru parametry są również liniowe, od lewej do prawej, gdzie parametry po prawej stronie mogą zależeć od parametru zadeklarowanego wcześniej w tym samym kroku.
  
-Istnieją cztery typy parametrów, które są obecnie obsługiwane:
+Istnieją cztery różne typy parametrów, które są obecnie obsługiwane:
 
   |         |          |
    | ---------------- |:-----|
-   | **Text**    | użytkownik będzie edytować pole tekstowe, a opcjonalnie można podać zapytanie, aby podać wartość domyślną. |
-   | **Lista rozwijana** | Użytkownik wybierze z zestawu wartości. |
-   | **Selektor zakresu czasu**| Użytkownik wybierać zestaw wstępnie zdefiniowanych wartości zakresu czasu lub masz do wyboru niestandardowego zakresu czasu.|
-   | **Wybór zasobów** | Użytkownik wybierze z zasobów wybranych do skoroszytu.|
+   | **Tekst**    | użytkownik edytuje pole tekstowe i opcjonalnie można podać zapytanie w celu wypełnienia wartości domyślnej. |
+   | **Lista rozwijana** | Użytkownik zdecyduje się na podstawie zestawu wartości. |
+   | **Selektor zakresu czasu**| Użytkownik zdecyduje się na podstawie wstępnie zdefiniowanego zestawu wartości zakresu czasu lub wybierać z niestandardowego zakresu czasu.|
+   | **Selektor zasobów** | Użytkownik zdecyduje się wybrać spośród zasobów wybranych dla skoroszytu.|
 
-### <a name="using-a-text-parameter"></a>Za pomocą parametru tekstu
+### <a name="using-a-text-parameter"></a>Używanie parametru tekstowego
 
-Wartość użytkownik wpisze w polu tekstowym jest zastępowany bezpośrednio w zapytaniu bez anulowania zapewnianego element i cytowanie. Jeśli wartość potrzebne jest ciągiem, zapytanie powinien mieć parametru w cudzysłowie (takich jak **'{parameter}'** ).
+Wartość typu użytkownika w polu tekstowym jest zastępowana bezpośrednio w zapytaniu bez ucieczki ani tworzenia. Jeśli potrzebna wartość jest ciągiem, zapytanie powinno zawierać cudzysłowy wokół parametru (na przykład **"{parameter}"** ).
 
-Dzięki temu wartość w polu tekstowym, aby używać w dowolnym miejscu. Może być nazwa tabeli, nazwa kolumny, nazwa funkcji, operatora, itp.
+Pozwala to na użycie wartości w polu tekstowym w dowolnym miejscu. Może to być nazwa tabeli, nazwa kolumny, nazwa funkcji, operator itp.
 
-Typ parametru tekst ma ustawienie **Pobierz wartość domyślną z zapytania analizy**, co pozwala autor skoroszytu korzystać z zapytania, aby wypełnić wartością domyślną dla tego pola tekstowego.
+Typ parametru tekstowego ma ustawienie **Pobierz wartość domyślną z zapytania analizy**, co umożliwia autorowi skoroszytu użycie zapytania w celu wypełnienia wartości domyślnej dla tego pola tekstowego.
 
-Korzystając z wartością domyślną z zapytania analizy, tylko pierwsza wartość pierwszego wiersza (wiersz 0, kolumnę 0) jest używany jako wartość domyślną. W związku z tym zalecane jest aby ograniczyć zapytanie w taki sposób, aby zwrócić tylko jeden wiersz i jedną kolumnę. Inne dane zwracane przez zapytanie jest ignorowany. 
+W przypadku używania wartości domyślnej z kwerendy analitycznej jako wartości domyślnej jest używana tylko pierwsza wartość pierwszego wiersza (wiersz 0, kolumna 0). W związku z tym zaleca się ograniczenie zapytania, aby zwracał tylko jeden wiersz i jedną kolumnę. Wszystkie inne dane zwrócone przez zapytanie są ignorowane. 
 
-Niezależnie od wartości zwracane przez zapytanie zostanie zastąpione bezpośrednio z nie anulowania zapewnianego element lub cytowanie. Jeśli zapytanie nie zwraca żadnych wierszy, wynik parametru jest ciągiem pustym (Jeśli parametr nie jest wymagane) lub niezdefiniowana (Jeśli parametr jest wymagany).
+Niezależnie od wartości zwracanej przez zapytanie zostaną zamienione bezpośrednio bez ucieczki ani nie. Jeśli zapytanie nie zwraca żadnych wierszy, wynik parametru jest ciągiem pustym (Jeśli parametr nie jest wymagany) lub niezdefiniowany (Jeśli parametr jest wymagany).
 
-### <a name="using-a-dropdown"></a>Za pomocą listy rozwijanej
+### <a name="using-a-dropdown"></a>Korzystanie z listy rozwijanej
 
-Lista rozwijana typ parametru pozwala utworzyć kontrolkę listy rozwijanej zezwalający na wybór jednego lub wielu wartości.
+Typ parametru listy rozwijanej pozwala utworzyć kontrolkę listy rozwijanej, umożliwiając wybór jednej lub wielu wartości.
 
-Listy rozwijanej jest wypełniana przez zapytania usługi analytics. Jeżeli zapytanie zwraca jedną kolumnę, wartości w tej kolumnie są **wartość** i **etykiety** z rozwijanej listy formantów. Jeżeli zapytanie zwraca dwie kolumny, pierwsza kolumna jest **wartość**, a druga kolumna **etykiety** wyświetlane na liście rozwijanej.  Jeżeli zapytanie zwraca trzy kolumny, kolumna 3 jest używana do wskazania wybór domyślny na tej liście rozwijanej.  W tej kolumnie mogą być dowolnego typu, ale najprostszych jest użycie bool lub typów numerycznych, gdzie 0 to wartość false, a 1 to wartość true.
+Lista rozwijana jest wypełniana przez zapytanie analityczne. Jeśli zapytanie zwraca jedną kolumnę, wartości w tej kolumnie są zarówno **wartością** , jak i **etykietą** w kontrolce listy rozwijanej. Jeśli zapytanie zwraca dwie kolumny, pierwsza kolumna jest **wartością**, a druga kolumna to **etykieta** wyświetlana na liście rozwijanej.  Jeśli zapytanie zwraca trzy kolumny, trzecia kolumna służy do wskazania domyślnego wyboru na liście rozwijanej.  Ta kolumna może być dowolnego typu, ale najprostszą jest użycie typów bool lub numeric, gdzie 0 to false, a 1 to wartość true.
 
- Jeśli kolumna ma typ ciągu, wartości null lub być pusty ciąg jest uważany za wartość false, a wszelkie inne wartości jest uważany za spełniony. Dla pojedynczego wyboru list rozwijanych pierwsza wartość z wartością true służy jako domyślny wybór.  Dla wielu wybór listy rozwijane wszystkie wartości z wartością true są używane jako zestaw domyślnie wybrana. Elementy na liście rozwijanej są wyświetlane w kolejności, niezależnie od zapytanie zwróciło wierszy. 
+ Jeśli kolumna jest typu String, ciąg o wartości null/pusty jest uznawany za fałszywy, a każda inna wartość jest uznawana za wartość true. W przypadku list rozwijanych z pojedynczym wyborem jako domyślny wybór jest używana pierwsza wartość o wartości true.  W przypadku listy rozwijanej z wieloma wyboru wszystkie wartości o wartości true są używane jako domyślny wybrany zestaw. Elementy na liście rozwijanej są wyświetlane w dowolnej kolejności, w której zapytanie zwróciło wiersze. 
 
-Przyjrzyjmy się parametry, które są obecne w raporcie aktywnych użytkowników. Kliknij symbol edycji **TimeRange**.
+Przyjrzyjmy się parametrom znajdującym się w raporcie aktywni użytkownicy. Kliknij przycisk Edytuj symbol obok pozycji **TimeRange**.
 
-![Application Insights skoroszyty sekcji formanty edycji](./media/usage-workbooks/009-time-range.png)
+![Kontrolki edycji sekcji Application Insights skoroszytów](./media/usage-workbooks/009-time-range.png)
 
-Spowoduje to uruchomienie elementu menu Edycja parametru:
+Spowoduje to uruchomienie elementu menu Edytuj parametr:
 
-![Application Insights skoroszyty sekcji formanty edycji](./media/usage-workbooks/010-time-range-edit.png)
+![Kontrolki edycji sekcji Application Insights skoroszytów](./media/usage-workbooks/010-time-range-edit.png)
 
-Zapytanie używa funkcji języka zapytań usługi analytics o nazwie **datatable** , która umożliwia generowanie tabeli dowolnego pełnej zawartości, z powietrza alokowania elastycznego! Na przykład, następujące zapytanie usługi analytics:
+Zapytanie używa funkcji języka zapytań analitycznych o nazwie **DataTable** , która pozwala wygenerować arbitralną tabelę, pełną zawartość z wąskim powietrzem. Na przykład następujące zapytanie analityczne:
 
 ```
 datatable( column1:string, column2:string )
@@ -204,9 +199,9 @@ datatable( column1:string, column2:string )
 
 Generuje wynik:
 
-![Application Insights skoroszyty sekcji formanty edycji](./media/usage-workbooks/011-data-table.png)
+![Kontrolki edycji sekcji Application Insights skoroszytów](./media/usage-workbooks/011-data-table.png)
 
-Przykład bardziej odpowiednie się za pomocą listy rozwijanej wybierz z zestawu kraje/regiony według nazwy:
+Bardziej zastosowanym przykładem jest użycie listy rozwijanej w celu wybrania z zestawu krajów/regionów według nazwy:
 
 ```
 customEvents
@@ -217,49 +212,49 @@ customEvents
 | order by client_CountryOrRegion asc
 ```
 
-Zapytanie spowoduje wyświetlenie wyników w następujący sposób:
+Wyniki zapytania będą wyświetlane w następujący sposób:
 
-![Lista rozwijana krajów](./media/usage-workbooks/012-country-dropdown.png)
+![Lista rozwijana kraju](./media/usage-workbooks/012-country-dropdown.png)
 
-Listy rozwijane są bardzo zaawansowanych narzędzi do dostosowywania i tworzenia interakcyjnych raportów.
+Listy rozwijane to niezwykle zaawansowane narzędzia do dostosowywania i tworzenia interaktywnych raportów.
 
 ### <a name="time-range-parameters"></a>Parametry zakresu czasu
 
-Można tworzyć własne parametr zakres czasu niestandardowych za pomocą listy rozwijanej Typ parametru, również można użyć typ parametru zakresu czasu out-of-box, jeśli nie potrzebujesz tego samego stopień elastyczności. 
+Chociaż można utworzyć własny niestandardowy parametr zakresu czasu za pośrednictwem typu parametru listy rozwijanej, można również użyć typu parametru zakres czasu, jeśli nie jest potrzebny ten sam stopień elastyczności. 
 
-Typy parametrów zakresu czasu ma 15 zakresów dla domyślnych, które bardziej szczegółowo w ciągu pięciu minut do ostatnich 90 dni. Istnieje również opcję, aby umożliwić wybranie niestandardowego zakresu czasu, który umożliwia operatorowi raportu wybierz przycisk start jawnego i Zatrzymaj wartości zakresu czasu.
+Typy parametrów zakresu czasu mają 15 zakresów domyślnych, które przechodzą z pięciu minut do ostatnich 90 dni. Dostępna jest również opcja zezwalająca na wybór niestandardowego zakresu czasu, co umożliwia operatorowi raportu wybranie jawnych wartości początkowych i końcowych dla zakresu czasu.
 
-### <a name="resource-picker"></a>Wybór zasobów
+### <a name="resource-picker"></a>Selektor zasobów
 
-Typ parametru selektor zasobów daje możliwość zakres raportu do określonych typów zasobów. Na przykład wstępnie skoroszytu, który korzysta z zasobów typu selektora **Insights błąd** skoroszytu.
+Typ parametru selektora zasobów umożliwia określanie zakresu raportu do określonych typów zasobów. Przykładem prekompilowanego skoroszytu, który korzysta z typu selektora zasobów, jest skoroszyt o **niepowodzeniach szczegółowych** informacji.
 
-![Lista rozwijana krajów](./media/usage-workbooks/013-resource-picker.png)
+![Lista rozwijana kraju](./media/usage-workbooks/013-resource-picker.png)
 
-## <a name="saving-and-sharing-workbooks-with-your-team"></a>Zapisywanie i udostępnianie skoroszytów swojemu zespołowi
+## <a name="saving-and-sharing-workbooks-with-your-team"></a>Zapisywanie i udostępnianie skoroszytów z zespołem
 
-Skoroszyty są zapisywane w ramach zasobu usługi Application Insights w **Moje raporty** sekcja, która jest prywatny, w przypadku lub **udostępnione raporty** sekcja, która jest dostępny dla wszystkich użytkowników z dostępem do Zasób usługi Application Insights. Aby wyświetlić wszystkie skoroszyty w zasobie, kliknij **Otwórz** przycisk na pasku akcji.
+Skoroszyty są zapisywane w ramach zasobu Application Insights, w sekcji **Moje raporty** , które są prywatne dla Ciebie lub w sekcji **raporty udostępnione** dostępne dla wszystkich użytkowników mających dostęp do zasobów Application Insights. Aby wyświetlić wszystkie skoroszyty w zasobie, kliknij przycisk **Otwórz** na pasku akcji.
 
-Aby udostępnić skoroszytu, w którym znajduje się obecnie w **Moje raporty**:
+Aby udostępnić skoroszyt, który jest obecnie w **Moje raporty**:
 
 1. Kliknij przycisk **Otwórz** na pasku akcji
-2. Kliknij przycisk "..." obok skoroszytu, który chcesz udostępnić
+2. Kliknij przycisk "..." przycisk obok skoroszytu, który chcesz udostępnić
 3. Kliknij przycisk **Przenieś do raportów udostępnionych**.
 
-Aby udostępnić skoroszyt za pomocą łącza lub za pośrednictwem poczty e-mail, kliknij przycisk **udostępnianie** na pasku akcji. Należy pamiętać, że adresaci łącza muszą mieć dostęp do tego zasobu w witrynie Azure portal, aby wyświetlić skoroszyt. Aby dokonać edycji, adresaci muszą dysponować co najmniej uprawnienia współautora dla zasobu.
+Aby udostępnić skoroszyt za pomocą linku lub poczty e-mail, kliknij pozycję **Udostępnij** na pasku akcji. Należy pamiętać, że adresaci linku potrzebują dostępu do tego zasobu w Azure Portal, aby wyświetlić skoroszyt. Aby wprowadzić zmiany, adresaci muszą mieć co najmniej uprawnienia współautora dla zasobu.
 
-Aby przypiąć łącze do skoroszytu na pulpicie nawigacyjnym platformy Azure:
+Aby przypiąć link do skoroszytu na pulpicie nawigacyjnym platformy Azure:
 
 1. Kliknij przycisk **Otwórz** na pasku akcji
-2. Kliknij przycisk "..." obok skoroszytu, który chcesz przypiąć
+2. Kliknij przycisk "..." przycisk obok skoroszytu, który chcesz przypiąć
 3. Kliknij pozycję **Przypnij do pulpitu nawigacyjnego**.
 
-## <a name="contributing-workbook-templates"></a>Współtworzenie szablony skoroszytów
+## <a name="contributing-workbook-templates"></a>Współtworzenie szablonów skoroszytów
 
-Utworzony szablon awesome skoroszytu i chcesz udostępnić go społeczności? Aby dowiedzieć się więcej, odwiedź nasz [repozytorium GitHub](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md).
+Czy utworzono szablon skoroszytu awesome i chcesz go udostępnić społeczności? Aby dowiedzieć się więcej, odwiedź nasze [repozytorium GitHub](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-- Aby umożliwić użycie środowiska, Rozpocznij wysyłanie [zdarzenia niestandardowe](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) lub [wyświetlenia strony](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Jeśli już wysyłać niestandardowe zdarzenia lub wyświetlenia stron, zapoznaj się z narzędzia obciążenia, aby dowiedzieć się, jak używać usługi przez użytkowników.
+## <a name="next-steps"></a>Następne kroki
+- Aby włączyć środowiska użycia, Rozpocznij wysyłanie [zdarzeń niestandardowych](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) lub [wyświetleń stron](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Jeśli masz już wysłane zdarzenia niestandardowe lub widoki stron, zapoznaj się z narzędziami użycia, aby dowiedzieć się, jak użytkownicy korzystają z usługi.
     - [Użytkownicy, sesje, zdarzenia](../../azure-monitor/app/usage-segmentation.md)
     - [Lejki](../../azure-monitor/app/usage-funnels.md)
     - [Przechowywanie](../../azure-monitor/app/usage-retention.md)

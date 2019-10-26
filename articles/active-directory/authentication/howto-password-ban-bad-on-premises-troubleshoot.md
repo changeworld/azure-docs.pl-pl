@@ -4,19 +4,19 @@ description: Opis typowego rozwiązywania problemów z ochroną hasłem w usłud
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 690d49a94ff4f516e24494622ca378eb0794fee9
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 62395b0b6f1ed152292106a774c1e2f7c6d4f11f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314928"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893287"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Rozwiązywanie problemów z ochroną hasłem usługi Azure AD
 
@@ -40,7 +40,7 @@ Głównym objawem tego problemu jest 30018 zdarzeń w dzienniku zdarzeń adminis
 
 1. Komputer hosta serwera proxy blokuje dostęp do punktu końcowego RPC (dynamiczny lub statyczny), który jest wysłuchiwany przez usługę serwera proxy
 
-   Instalator serwera proxy ochrony hasłem usługi Azure AD automatycznie tworzy regułę ruchu przychodzącego zapory systemu Windows, która umożliwia dostęp do wszystkich portów przychodzących nasłuchiwania przez usługę serwera proxy ochrony hasłem usługi Azure AD. Jeśli ta reguła zostanie później usunięta lub wyłączona, agenci DC nie będą mogli komunikować się z usługą proxy. Jeśli wbudowana zapora systemu Windows została wyłączona zamiast innego produktu zapory, należy skonfigurować zaporę tak, aby zezwalała na dostęp do wszystkich portów przychodzących nasłuchiwanych przez usługę serwera proxy ochrony hasłem usługi Azure AD. Ta konfiguracja może być bardziej szczegółowa, jeśli usługa serwera proxy została skonfigurowana do nasłuchiwania na określonym statycznym porcie RPC (za `Set-AzureADPasswordProtectionProxyConfiguration` pomocą polecenia cmdlet).
+   Instalator serwera proxy ochrony hasłem usługi Azure AD automatycznie tworzy regułę ruchu przychodzącego zapory systemu Windows, która umożliwia dostęp do wszystkich portów przychodzących nasłuchiwania przez usługę serwera proxy ochrony hasłem usługi Azure AD. Jeśli ta reguła zostanie później usunięta lub wyłączona, agenci DC nie będą mogli komunikować się z usługą proxy. Jeśli wbudowana zapora systemu Windows została wyłączona zamiast innego produktu zapory, należy skonfigurować zaporę tak, aby zezwalała na dostęp do wszystkich portów przychodzących nasłuchiwanych przez usługę serwera proxy ochrony hasłem usługi Azure AD. Ta konfiguracja może być bardziej szczegółowa, jeśli usługa serwera proxy została skonfigurowana do nasłuchiwania na określonym statycznym porcie RPC (za pomocą polecenia cmdlet `Set-AzureADPasswordProtectionProxyConfiguration`).
 
 1. Komputer hosta proxy nie jest skonfigurowany tak, aby umożliwić kontrolerom domeny możliwość zalogowania się na komputerze. To zachowanie jest kontrolowane przez przypisanie uprawnień użytkownika "dostęp do tego komputera z sieci". Wszystkie kontrolery domeny we wszystkich domenach w lesie muszą mieć przyznane to uprawnienie. To ustawienie jest często ograniczone w ramach większego nakładu pracy w sieci.
 
@@ -50,9 +50,9 @@ Głównym objawem tego problemu jest 30018 zdarzeń w dzienniku zdarzeń adminis
 
 1. Upewnij się, że las i wszystkie serwery proxy są zarejestrowane w ramach tej samej dzierżawy platformy Azure.
 
-   To wymaganie można sprawdzić, uruchamiając `Get-AzureADPasswordProtectionProxy` polecenia `Get-AzureADPasswordProtectionDCAgent` cmdlet i programu PowerShell, a następnie `AzureTenant` porównując właściwość każdego zwróconego elementu. W celu poprawnej operacji raportowana nazwa dzierżawy musi być taka sama dla wszystkich agentów kontrolerów domeny i serwerów proxy.
+   To wymaganie można sprawdzić, uruchamiając `Get-AzureADPasswordProtectionProxy` i `Get-AzureADPasswordProtectionDCAgent` poleceń cmdlet programu PowerShell, a następnie porównując Właściwość `AzureTenant` każdego zwróconego elementu. W celu poprawnej operacji raportowana nazwa dzierżawy musi być taka sama dla wszystkich agentów kontrolerów domeny i serwerów proxy.
 
-   Jeśli istnieje warunek niezgodności rejestracji dzierżawy platformy Azure, ten problem może zostać rozwiązany przez `Register-AzureADPasswordProtectionProxy` uruchomienie poleceń cmdlet `Register-AzureADPasswordProtectionForest` i/lub programu PowerShell zgodnie z wymaganiami, co pozwala upewnić się, że do wszystkich rejestracji są używane poświadczenia z tej samej dzierżawy platformy Azure.
+   Jeśli istnieje warunek niezgodności rejestracji dzierżawy platformy Azure, ten problem może zostać rozwiązany przez uruchomienie poleceń cmdlet programu PowerShell `Register-AzureADPasswordProtectionProxy` i/lub `Register-AzureADPasswordProtectionForest`, aby upewnić się, że do wszystkich rejestracji są używane poświadczenia z tej samej dzierżawy platformy Azure.
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>Agent DC nie może zaszyfrować lub odszyfrować plików zasad haseł
 
@@ -166,7 +166,7 @@ Ponieważ termin ostateczny jest sprawdzany tylko podczas początkowego rozruchu
 > [!IMPORTANT]
 > Firma Microsoft zaleca, aby wygasły od razu uaktualniony publiczny Agent DC do najnowszej wersji.
 
-Aby łatwo wykryć agentów DC w środowisku, które muszą zostać uaktualnione, należy uruchomić `Get-AzureADPasswordProtectionDCAgent` polecenie cmdlet, na przykład:
+Aby łatwo wykryć agentów DC w środowisku, które wymagają uaktualnienia, można uruchomić polecenie cmdlet `Get-AzureADPasswordProtectionDCAgent`, na przykład:
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -187,7 +187,7 @@ PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
 PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
 ```
 
-W żadnej wersji nie ograniczono czasu na oprogramowanie serwera proxy ochrony hasłem usługi Azure AD. Firma Microsoft w dalszym ciągu zaleca uaktualnienie kontrolerów DC i proxy do najnowszych wersji. `Get-AzureADPasswordProtectionProxy` Polecenie cmdlet może służyć do znajdowania agentów proxy, którzy wymagają uaktualnień, podobnie jak powyżej w przypadku agentów DC.
+W żadnej wersji nie ograniczono czasu na oprogramowanie serwera proxy ochrony hasłem usługi Azure AD. Firma Microsoft w dalszym ciągu zaleca uaktualnienie kontrolerów DC i proxy do najnowszych wersji. Za pomocą polecenia cmdlet `Get-AzureADPasswordProtectionProxy` można znaleźć agentów proxy, którzy wymagają uaktualnień, podobnie jak powyżej w przypadku agentów DC.
 
 Zapoznaj się z tematem [Uaktualnianie agenta kontrolera domeny](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) i [Uaktualnianie agenta proxy](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) , aby uzyskać więcej szczegółowych informacji na temat określonych procedur uaktualniania.
 
@@ -197,7 +197,7 @@ Jeśli wystąpi sytuacja, w której usługa agenta kontrolera domeny powoduje pr
 
 Kolejną środkiem naprawczym byłoby ustawienie trybu włączania na wartość nie w portalu ochrony hasłem usługi Azure AD. Po pobraniu zaktualizowanych zasad każda usługa agenta kontrolera domeny przejdzie w tryb quiescent, w którym wszystkie hasła są akceptowane jako-is. Aby uzyskać więcej informacji, zobacz [Tryb wymuszania](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
 
-## <a name="removal"></a>Usunięcie
+## <a name="removal"></a>Praw
 
 Jeśli podjęto decyzję o odinstalowaniu oprogramowania ochrony hasłem usługi Azure AD i oczyszczeniu wszystkich powiązanych Stanów z domen i lasów, to zadanie można wykonać, wykonując następujące czynności:
 
@@ -216,7 +216,7 @@ Jeśli podjęto decyzję o odinstalowaniu oprogramowania ochrony hasłem usługi
 
    Nie pomijaj gwiazdki ("*") na końcu wartości zmiennej $keywords.
 
-   Obiekty uzyskane za pośrednictwem `Get-ADObject` polecenia mogą być następnie potoku `Remove-ADObject`lub usunięte ręcznie.
+   Obiekty uzyskane za pośrednictwem polecenia `Get-ADObject` mogą być następnie potoku do `Remove-ADObject`lub usunięte ręcznie.
 
 4. Ręcznie usuń wszystkie punkty połączenia z agentem DC w każdym kontekście nazewnictwa domen. W zależności od tego, jak szeroko wdrożono oprogramowanie, może istnieć jeden z tych obiektów na kontroler domeny w lesie. Lokalizację tego obiektu można odnaleźć za pomocą następującego polecenia Active Directory PowerShell:
 
@@ -226,7 +226,7 @@ Jeśli podjęto decyzję o odinstalowaniu oprogramowania ochrony hasłem usługi
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Obiekty uzyskane za pośrednictwem `Get-ADObject` polecenia mogą być następnie potoku `Remove-ADObject`lub usunięte ręcznie.
+   Obiekty uzyskane za pośrednictwem polecenia `Get-ADObject` mogą być następnie potoku do `Remove-ADObject`lub usunięte ręcznie.
 
    Nie pomijaj gwiazdki ("*") na końcu wartości zmiennej $keywords.
 

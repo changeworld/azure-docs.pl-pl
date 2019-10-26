@@ -1,33 +1,27 @@
 ---
 title: Tworzenie obszaru roboczego Log Analytics przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
 description: Dowiedz się, jak utworzyć obszar roboczy Log Analytics, aby umożliwić zarządzanie rozwiązaniami i zbieraniem danych w środowiskach w chmurze i lokalnych przy użyciu interfejsu wiersza polecenia platformy Azure.
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/12/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 7ee8302a026cf7584996bca481e79190586b77b3
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 03/12/2019
+ms.openlocfilehash: 18bfc99ded6e3e9171fbb20fbf329700817829de
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838849"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894994"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Tworzenie obszaru roboczego Log Analytics przy użyciu interfejsu wiersza polecenia platformy Azure 2,0
 
-Interfejs wiersza polecenia platformy Azure 2,0 służy do tworzenia zasobów platformy Azure i zarządzania nimi z poziomu wiersza poleceń lub skryptów. Ten przewodnik Szybki Start przedstawia sposób wdrażania obszaru roboczego Log Analytics w programie Azure Monitor przy użyciu interfejsu wiersza polecenia platformy Azure 2,0. Obszar roboczy Log Analytics jest unikatowym środowiskiem dla Azure Monitor danych dziennika. Każdy obszar roboczy ma własne repozytorium danych i konfigurację, a źródła danych i rozwiązania są skonfigurowane do przechowywania danych w określonym obszarze roboczym. Musisz mieć Log Analytics obszar roboczy, jeśli zamierzasz zbierać dane z następujących źródeł:
+Interfejs wiersza polecenia platformy Azure 2.0 umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi z poziomu wiersza polecenia lub za pomocą skryptów. Ten przewodnik Szybki Start przedstawia sposób wdrażania obszaru roboczego Log Analytics w programie Azure Monitor przy użyciu interfejsu wiersza polecenia platformy Azure 2,0. Obszar roboczy Log Analytics jest unikatowym środowiskiem dla Azure Monitor danych dziennika. Każdy obszar roboczy ma własne repozytorium danych i konfigurację, a źródła danych i rozwiązania są skonfigurowane do przechowywania danych w określonym obszarze roboczym. Musisz mieć Log Analytics obszar roboczy, jeśli zamierzasz zbierać dane z następujących źródeł:
 
 * Zasoby platformy Azure w ramach subskrypcji  
 * Komputery lokalne monitorowane przez System Center Operations Manager  
 * Kolekcje urządzeń z System Center Configuration Manager  
-* Dane diagnostyczne lub dzienniki z usługi Azure Storage  
+* Dane diagnostyczne lub dziennika z usługi Azure Storage  
  
 W przypadku innych źródeł, takich jak maszyny wirtualne platformy Azure i maszyny wirtualne z systemem Windows lub Linux w danym środowisku, zobacz następujące tematy:
 
@@ -39,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpł
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki Start będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom `az --version`, aby znaleźć wersję. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2,0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.30 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 Utwórz obszar roboczy za pomocą [AZ Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). Poniższy przykład tworzy obszar roboczy w lokalizacji *Wschodnie* przy użyciu szablonu Menedżer zasobów z komputera lokalnego. Szablon JSON jest skonfigurowany tak, aby monitował o nazwę obszaru roboczego i określać wartość domyślną dla innych parametrów, które prawdopodobnie będą używane jako Konfiguracja standardowa w danym środowisku. Możesz również przechowywać szablon na koncie usługi Azure Storage w celu uzyskania dostępu współdzielonego w organizacji. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
@@ -115,7 +109,7 @@ Następujące parametry ustawiają wartość domyślną:
 
 2. Edytuj szablon w celu spełnienia wymagań. Zapoznaj się z tematem dokumentacja [szablonu Microsoft. OperationalInsights/Workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) , aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
 3. Zapisz ten plik jako **deploylaworkspacetemplate. JSON** w folderze lokalnym.   
-4. Możesz przystąpić do wdrożenia tego szablonu. Użyj następujących poleceń z folderu zawierającego szablon. Po wyświetleniu monitu o nazwę obszaru roboczego Podaj nazwę globalnie unikatową we wszystkich subskrypcjach platformy Azure.
+4. Wszystko jest teraz gotowe do wdrożenia tego szablonu. Użyj następujących poleceń z folderu zawierającego szablon. Po wyświetleniu monitu o nazwę obszaru roboczego Podaj nazwę globalnie unikatową we wszystkich subskrypcjach platformy Azure.
 
     ```azurecli
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json

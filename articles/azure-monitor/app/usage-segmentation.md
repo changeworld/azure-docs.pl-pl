@@ -1,71 +1,66 @@
 ---
-title: Analiza użytkowników, sesji i zdarzeń w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Analiza demograficznych użytkowników aplikacji sieci web.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Analiza użytkowników, sesji i zdarzeń na platformie Azure Application Insights | Dokumentacja firmy Microsoft
+description: Analiza demograficzna użytkowników aplikacji sieci Web.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 16b0b734b6b680bea75786bfdbe77eac5e590cfe
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372303"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899393"
 ---
-# <a name="users-sessions-and-events-analysis-in-application-insights"></a>Użytkownicy, sesje i zdarzenia analizy w usłudze Application Insights
+# <a name="users-sessions-and-events-analysis-in-application-insights"></a>Analiza użytkowników, sesji i zdarzeń w Application Insights
 
-Dowiedz się, ułatwiają użytkownikom korzystanie z aplikacji sieci web, które strony są najbardziej interesują, gdzie znajdują się użytkownicy, a jakie przeglądarek i systemów operacyjnych używają. Analizy biznesowe i dane telemetrii użycia za pomocą [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
+Dowiedz się, w jaki sposób użytkownicy korzystają z aplikacji sieci Web, jakie są najbardziej interesujące strony, w których znajdują się Twoje osoby, oraz jakich przeglądarek i systemów operacyjnych używają. Analizuj dane telemetryczne biznesowe i użycia przy użyciu [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 ![Zrzut ekranu przedstawiający Application Insights użytkowników](./media/usage-segmentation/0001-users.png)
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
-Jeśli jeszcze nie widać danych użytkownicy, sesje lub zdarzenia bloków w portalu usługi Application Insights [Dowiedz się, jak rozpocząć pracę z narzędziami użycia](usage-overview.md).
+Jeśli nie widzisz jeszcze danych w blokach użytkownicy, sesje lub zdarzenia w portalu Application Insights, [Dowiedz się, jak rozpocząć pracę z narzędziami użycia](usage-overview.md).
 
-## <a name="the-users-sessions-and-events-segmentation-tool"></a>Narzędzie segmentacji użytkowników, sesje i zdarzenia
+## <a name="the-users-sessions-and-events-segmentation-tool"></a>Narzędzie do segmentacji użytkowników, sesji i zdarzeń
 
-Trzy bloków użycia umożliwia tego samego narzędzia kątami danych telemetrycznych z aplikacji sieci web z trzema perspektyw. Filtrowania i dzielenia danych, można uzyskiwanie szczegółowych informacji dotyczących użycia względne różnych stron i funkcji.
+Trzy z nich używają tego samego narzędzia do wycinania i zbierania danych telemetrycznych z aplikacji internetowej z trzech perspektyw. Filtrując i dzieląc dane, możesz uzyskać wgląd w szczegółowe informacje o względnym użyciu różnych stron i funkcji.
 
-* **Narzędzie Użytkownicy**: Jak wiele osób używana aplikacja i jej funkcji.  Użytkownicy są zliczane przy użyciu identyfikatorów anonimowe, przechowywane w plikach cookie przeglądarki. Jedna osoba, za pomocą różnych przeglądarek lub maszyny, będzie traktowane jako więcej niż jednego użytkownika.
-* **Narzędzia sesje**: Ile sesji aktywności użytkownika wprowadzono niektórych stron i funkcji aplikacji. Sesja jest liczony po pół godziny braku aktywności użytkownika lub po 24 godziny ciągłego użycia.
-* **Narzędzie zdarzeń**: Jak często są używane niektórych stron i funkcji aplikacji. Widok strony jest liczona przeglądarki załadowanie strony z aplikacji, pod warunkiem, że [instrumentowany jego](../../azure-monitor/app/javascript.md). 
+* **Narzędzie użytkownicy**: ile osób użyło Twojej aplikacji i jej funkcji.  Użytkownicy są zliczane przy użyciu identyfikatorów anonimowych przechowywanych w plikach cookie przeglądarki. Jedna osoba korzystająca z różnych przeglądarek lub maszyn będzie liczyć jako więcej niż jednego użytkownika.
+* **Narzędzie sesje**: ile sesji działania użytkownika obejmowało niektóre strony i funkcje aplikacji. Sesja jest liczona po połowie godziny nieaktywności użytkownika lub po 24 godzinach ciągłego użycia.
+* **Narzędzie zdarzenia**: jak często są używane pewne strony i funkcje aplikacji. Widok strony jest liczony, gdy przeglądarka ładuje stronę z aplikacji, pod warunkiem, że zostały [one Instrumentacją](../../azure-monitor/app/javascript.md). 
 
-    Zdarzenie niestandardowe reprezentuje jedno wystąpienie określonego zdarzenia w swojej aplikacji, a często interakcji użytkownika, takie jak kliknięcie przycisku lub zakończenie niektóre zadania. Wstaw kod w aplikacji [generowanie zdarzeń niestandardowych](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+    Zdarzenie niestandardowe reprezentuje jedno wystąpienie coś w aplikacji, często interakcję użytkownika, jak kliknięcie przycisku lub zakończenie pewnego zadania. Wstaw kod w aplikacji, aby [generować niestandardowe zdarzenia](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-## <a name="querying-for-certain-users"></a>Wykonywanie zapytań w przypadku niektórych użytkowników
+## <a name="querying-for-certain-users"></a>Wykonywanie zapytań dla określonych użytkowników
 
-Zapoznaj się z różnych grup użytkowników przez dostosowanie opcji zapytania w górnej części narzędzie Użytkownicy:
+Poznaj różne grupy użytkowników, dostosowując opcje zapytania w górnej części narzędzia Użytkownicy:
 
-* Pokaż: Wybierz kohorta użytkowników w celu analizowania.
-* Kto korzystał: Wybierz niestandardowe zdarzenia i wyświetlenia stron.
-* During: Wybierz zakres czasu.
-* Według: Wybierz sposób zasobnika danych przez pewien czas lub innej właściwości, takie jak przeglądarki lub Miasto.
-* Podziel według: Wybierz właściwości, za pomocą którego do podziału lub segmentu danych. 
-* Dodaj filtry: Ogranicz zapytanie, aby niektórych użytkowników, sesje lub zdarzenia na podstawie ich właściwości, takie jak przeglądarki lub Miasto. 
+* Pokaż: Wybierz kohorta użytkowników do przeanalizowania.
+* Kto użył: wybierz niestandardowe zdarzenia i wyświetlenia stron.
+* W trakcie: Wybierz zakres czasu.
+* Według: Wybierz sposób tworzenia pakietów danych przez okres lub inną właściwość, taką jak Browser lub miasto.
+* Podziel przez: wybierz właściwość, według której chcesz podzielić lub segmentować dane. 
+* Dodaj filtry: Ogranicz zapytania do określonych użytkowników, sesji lub zdarzeń na podstawie ich właściwości, takich jak Browser lub miasto. 
  
 ## <a name="saving-and-sharing-reports"></a>Zapisywanie i udostępnianie raportów 
-Możesz zapisać użytkowników raportów, prywatne tylko w sekcji Moje raporty lub udostępnione z inne osoby z uprawnieniami do tego zasobu usługi Application Insights, w sekcji raportów udostępnionych.
+Możesz zapisywać raporty użytkowników, prywatnie, bezpośrednio w sekcji Moje raporty lub udostępnione wszystkim osobom z dostępem do tego zasobu Application Insights w sekcji Raporty udostępnione.
 
-Aby udostępnić link do raportu użytkownicy, sesje lub zdarzenia; Kliknij przycisk **udziału** na pasku narzędzi, a następnie skopiuj link.
+Aby udostępnić łącze do raportu użytkowników, sesji lub zdarzeń; Kliknij przycisk **Udostępnij** na pasku narzędzi, a następnie skopiuj link.
 
-Udostępnianie kopii danych w raporcie użytkownicy, sesje lub zdarzenia; Kliknij przycisk **udziału** na pasku narzędzi, następnie kliknij przycisk **ikona programu Word** utworzyć dokument programu Word z danymi. Ewentualnie kliknij przycisk **ikona programu Word** powyżej wykresu głównego.
+Aby udostępnić kopię danych w raporcie użytkownicy, sesje lub zdarzenia; Kliknij przycisk **Udostępnij** na pasku narzędzi, a następnie kliknij **ikonę słowa** , aby utworzyć dokument programu Word zawierający dane. Lub kliknij **ikonę słowa** powyżej wykresu głównego.
 
-## <a name="meet-your-users"></a>Spełnia użytkowników
+## <a name="meet-your-users"></a>Poznaj użytkowników
 
-**Spełniać użytkownicy** sekcja zawiera informacje o około pięciu przykładowych użytkowników dopasowane przez bieżącego zapytania. Biorąc pod uwagę i eksplorować zachowania użytkowników indywidualnych, oprócz wartości zagregowane, może zapewnić wgląd w sposób osoby faktycznie używają Twojej aplikacji.
+Sekcja **zapoznaj się z użytkownikami** zawiera informacje o pięciu przykładowych użytkownikach pasujących do bieżącego zapytania. Biorąc pod uwagę i eksplorowanie zachowań osób, oprócz agregacji, program może zapewnić wgląd w sposób, w jaki ludzie rzeczywiście korzystają z Twojej aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby umożliwić użycie środowiska, Rozpocznij wysyłanie [zdarzenia niestandardowe](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) lub [wyświetlenia strony](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Jeśli już wysyłać niestandardowe zdarzenia lub wyświetlenia stron, zapoznaj się z narzędzia obciążenia, aby dowiedzieć się, jak używać usługi przez użytkowników.
+- Aby włączyć środowiska użycia, Rozpocznij wysyłanie [zdarzeń niestandardowych](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) lub [wyświetleń stron](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Jeśli masz już wysłane zdarzenia niestandardowe lub widoki stron, zapoznaj się z narzędziami użycia, aby dowiedzieć się, jak użytkownicy korzystają z usługi.
     - [Lejki](usage-funnels.md)
     - [Przechowywanie](usage-retention.md)
     - [User Flows (Przepływy użytkowników)](usage-flows.md)

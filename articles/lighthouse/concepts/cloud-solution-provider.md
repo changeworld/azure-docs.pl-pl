@@ -4,15 +4,15 @@ description: W przypadku partnerów programu CSP delegowane zarządzanie zasobam
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/17/2019
+ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: cdb9eaf0b1f1a6e7a136432586ad186308e4e3d3
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: cf9b834d79fa36bbe327a72089388b3f1a1a0c14
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550297"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901832"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse i program dostawcy rozwiązań w chmurze
 
@@ -36,6 +36,11 @@ Korzystając z funkcji zarządzania zasobami delegowanymi przez platformę Azure
 Aby dołączać subskrypcję utworzoną za pomocą programu CSP, wykonaj kroki opisane w sekcji Dołączanie [subskrypcji do zarządzania zasobami delegowanymi przez platformę Azure](../how-to/onboard-customer.md). Każdy użytkownik, który ma rolę Agent administracyjny w dzierżawie, może wykonać to dołączenie.
 
 ![Zarządzanie dzierżawcą przy użyciu AOBO i zarządzania zasobami delegowanymi przez platformę Azure](../media/csp-2.jpg)
+
+> [!NOTE]
+> Na [stronie **moi klienci** w Azure Portal](../how-to/view-manage-customers.md) teraz znajduje się sekcja **dostawca rozwiązań w chmurze (wersja zapoznawcza)** , która wyświetla informacje o rozliczeniach i zasoby dla klientów programu CSP, którzy [podpisali umowę klienta firmy Microsoft (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) i są zgodnie z planem platformy Azure. Aby uzyskać więcej informacji, zobacz artykuł Wprowadzenie [do rozliczeń umowy partnerskiej firmy Microsoft](https://docs.microsoft.com/azure/billing/mpa-overview).
+>
+> Klienci korzystający z programu CSP mogą pojawić się w tej sekcji niezależnie od tego, czy zostały dołączone do zarządzania zasobami delegowanymi przez platformę Azure. Jeśli są one dostępne, pojawią się również w sekcji **klienci** zgodnie z opisem w temacie [Wyświetlanie i zarządzanie klientami oraz delegowanymi zasobami](../how-to/view-manage-customers.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

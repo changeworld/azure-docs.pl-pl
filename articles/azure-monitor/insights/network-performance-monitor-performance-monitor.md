@@ -1,138 +1,132 @@
 ---
-title: Funkcja monitorowania wydajności w rozwiązania Network Performance Monitor w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Funkcja monitora wydajności w Monitorze wydajności sieci pomaga monitorować łączność sieciową w różnych punktach w sieci. Można monitorować wdrożeń w chmurze i lokalizacjami lokalnymi, wiele centrów danych i biur oddziałów i kluczowych dla działalności aplikacji wielowarstwowej lub mikrousług.
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Funkcja monitora wydajności w Network Performance Monitor rozwiązanie na platformie Azure Log Analytics | Microsoft Docs
+description: Funkcja monitora wydajności w Network Performance Monitor ułatwia monitorowanie łączności sieciowej w różnych punktach w sieci. Możesz monitorować wdrożenia w chmurze i lokalne lokalizacje, wiele centrów danych i oddziałów oraz wielowarstwowe aplikacje lub mikrousługi.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/20/2018
+author: abshamsft
 ms.author: absha
-ms.openlocfilehash: bb99689409ddff311e556250083b99842bc59927
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/20/2018
+ms.openlocfilehash: 745ec6ee8e69ad911e42b6360b3408d79d660718
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963510"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898832"
 ---
-# <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor rozwiązania: Monitorowanie wydajności
+# <a name="network-performance-monitor-solution-performance-monitoring"></a>Rozwiązanie Network Performance Monitor: monitorowanie wydajności
 
-Funkcja monitorowania wydajności w [rozwiązania Network Performance Monitor](network-performance-monitor.md) pomaga w monitorowaniu połączenia sieciowego w różnych punktach w sieci. Można monitorować wdrożeń w chmurze i lokalizacjami lokalnymi, wiele centrów danych i biur oddziałów i kluczowych dla działalności aplikacji wielowarstwowej lub mikrousług. Za pomocą Monitora wydajności można wykrywać problemy z siecią, zanim użytkownicy zaczną zgłaszać skargi. Najważniejsze zalety są, możesz: 
+Funkcja monitora wydajności w [Network Performance Monitor](network-performance-monitor.md) ułatwia monitorowanie łączności sieciowej w różnych punktach w sieci. Możesz monitorować wdrożenia w chmurze i lokalne lokalizacje, wiele centrów danych i oddziałów oraz wielowarstwowe aplikacje lub mikrousługi. Korzystając z monitora wydajności, można wykrywać problemy z siecią przed zaskargą użytkowników. Kluczowe zalety: 
 
-- Monitorowanie strat i opóźnień w różnych podsieciach oraz ustawianie alertów.
-- Monitorowanie wszystkich ścieżek (w tym nadmiarowe ścieżki) w sieci.
-- Rozwiązywanie problemów przejściowych i w momencie sieci, które trudno odtworzyć.
-- Ustalanie konkretnych segmentów sieci, czyli odpowiedzialnych za pogorszenie wydajności.
-- Monitorowanie kondycji sieci bez potrzeby używania protokołu SNMP.
+- Monitorowanie strat i opóźnień w różnych podsieciach oraz Ustawianie alertów.
+- Monitoruj wszystkie ścieżki (w tym nadmiarowe ścieżki) w sieci.
+- Rozwiązywanie problemów z siecią przejściową i punktem w czasie, które są trudne do replikacji.
+- Określ konkretny segment w sieci, który jest odpowiedzialny za obniżenie wydajności.
+- Monitoruj kondycję sieci bez konieczności stosowania protokołu SNMP.
 
 
 ![Monitor wydajności sieci](media/network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
 ## <a name="configuration"></a>Konfigurowanie
-Aby otworzyć konfigurację rozwiązania Network Performance Monitor, otwórz [rozwiązania Network Performance Monitor](network-performance-monitor.md)i wybierz **Konfiguruj**.
+Aby otworzyć konfigurację Network Performance Monitor, Otwórz [rozwiązanie Network Performance Monitor](network-performance-monitor.md)i wybierz pozycję **Konfiguruj**.
 
 ![Konfigurowanie rozwiązania Network Performance Monitor](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
 
-### <a name="create-new-networks"></a>Tworzenie nowych sieci
+### <a name="create-new-networks"></a>Utwórz nowe sieci
 
-Sieć w rozwiązania Network Performance Monitor jest kontenerem logicznym dla podsieci. Pomaga organizować Monitorowanie infrastruktury sieci, zgodnie z potrzebami. Można utworzyć sieć przy użyciu przyjaznej nazwy i dodać podsieci do niego zgodnie z logiki biznesowej. Na przykład można utworzyć sieci o nazwie Londyn i Dodaj wszystkie podsieci w centrum danych w Londynie. Lub można utworzyć sieci o nazwie *ContosoFrontEnd* i dodać do tej sieci wszystkie podsieci o nazwie Contoso, które pełnią fronton aplikacji. Rozwiązanie automatycznie tworzy domyślnej sieci, który zawiera wszystkie wykryte w danym środowisku podsieci. 
+Sieć w Network Performance Monitor jest kontenerem logicznym dla podsieci. Ułatwia ona organizowanie monitorowania infrastruktury sieciowej zgodnie z potrzebami. Można utworzyć sieć z przyjazną nazwą i dodać do niej podsieci zgodnie z logiką biznesową. Można na przykład utworzyć sieć o nazwie Londyn i dodać wszystkie podsieci w centrum danych w Londynie. Możesz też utworzyć sieć o nazwie *ContosoFrontEnd* i dodać ją do tej sieci, aby wszystkie podsieci o nazwie contoso obsługiwały fronton aplikacji. Rozwiązanie automatycznie tworzy sieć domyślną, która zawiera wszystkie podsieci wykryte w danym środowisku. 
 
-Zawsze, gdy użytkownik utworzy sieć podsieci należy dodać do niego. Następnie tej podsieci jest usuwany z domyślnej sieci. Jeśli usuniesz sieci, wszystkie jego podsieci automatycznie powrót do domyślnej sieci. Sieć domyślna działa jako kontener dla wszystkich podsieci, które nie są zawarte w dowolnej sieci zdefiniowanej przez użytkownika. Nie można edytować ani usunąć domyślnej sieci. Zawsze pozostaje w systemie. Można utworzyć dowolną liczbę sieci niestandardowe. W większości przypadków podsieci w Twojej organizacji są rozmieszczone w więcej niż jedną sieć. Utwórz co najmniej jedną sieć, aby zgrupować podsieci dla logiki biznesowej.
+Po każdym utworzeniu sieci należy dodać do niej podsieć. Następnie ta podsieć zostanie usunięta z domyślnej sieci. W przypadku usunięcia sieci wszystkie jej podsieci są automatycznie zwracane do sieci domyślnej. Sieć domyślna działa jako kontener dla wszystkich podsieci, które nie znajdują się w żadnej sieci zdefiniowanej przez użytkownika. Nie można edytować ani usunąć sieci domyślnej. Zawsze pozostaje w systemie. W razie potrzeby można utworzyć dowolną liczbę sieci niestandardowych. W większości przypadków podsieci w organizacji są rozmieszczone w więcej niż jednej sieci. Utwórz co najmniej jedną sieć do grupowania podsieci dla logiki biznesowej.
 
 Aby utworzyć nową sieć:
 
 
-1. Wybierz **sieci** kartę.
-1. Wybierz **sieci Dodaj**, a następnie wprowadź nazwę sieci i opis. 
-2. Wybierz co najmniej jednej podsieci, a następnie wybierz **Dodaj**. 
-3. Wybierz **Zapisz** Aby zapisać konfigurację. 
+1. Wybierz kartę **sieci** .
+1. Wybierz pozycję **Dodaj sieć**, a następnie wprowadź nazwę i opis sieci. 
+2. Wybierz co najmniej jedną podsieć, a następnie wybierz pozycję **Dodaj**. 
+3. Wybierz pozycję **Zapisz** , aby zapisać konfigurację. 
 
 
-### <a name="create-monitoring-rules"></a>Tworzenie reguły monitorowania 
+### <a name="create-monitoring-rules"></a>Utwórz reguły monitorowania 
 
-Monitor wydajności generuje zdarzenia kondycji w przypadku naruszenia progu wydajności połączenia sieciowe między dwiema podsieciami lub między dwiema sieciami. System może automatycznie informacje tych progów. Można również podać progami niestandardowymi. System automatycznie tworzy domyślną regułę, która generuje zdarzenie kondycji zawsze wtedy, gdy stratę lub opóźnienie między jakaś para sieci lub podsieci łączy naruszenia progu system do opanowania. Ten proces pomaga w rozwiązaniu Monitorowanie infrastruktury sieci, dopóki nie utworzono żadnych reguł monitorowania, jawnie. Jeśli domyślna reguła jest włączona, wszystkie węzły wysyłać transakcji syntetycznych wszystkie węzły, które jest włączony dla monitorowania. Reguła domyślna jest przydatne w przypadku małych sieciach. Przykładem jest scenariusz, w którym małej liczby serwerów z systemem mikrousługi i chcesz upewnić się, że wszystkie serwery mają łączność do siebie nawzajem.
+Monitor wydajności generuje zdarzenia dotyczące kondycji, gdy próg wydajności połączeń sieciowych między dwiema podsieciami lub między dwiema sieciami został naruszony. System może poznawać te progi automatycznie. Można również podać progi niestandardowe. System automatycznie tworzy regułę domyślną, która generuje zdarzenie kondycji zawsze, gdy utrata lub opóźnienie między dowolnymi łączami sieci lub podsieci narusza próg wyznaczony przez system. Ten proces ułatwia monitorowanie infrastruktury sieciowej przez rozwiązanie, dopóki nie zostaną jawnie utworzone reguły monitorowania. Jeśli domyślna reguła jest włączona, wszystkie węzły wysyłają transakcje syntetyczne do wszystkich innych węzłów włączonych do monitorowania. Reguła domyślna jest przydatna w przypadku małych sieci. Przykładem jest scenariusz, w którym masz niewielką liczbę serwerów z mikrousługą i chcesz upewnić się, że wszystkie serwery mają łączność ze sobą.
 
 >[!NOTE]
-> Firma Microsoft zaleca wyłączenie domyślną regułę, a następnie tworzy niestandardowe reguły monitorowania, szczególnie w dużych sieciach, w którym można korzystać z dużą liczbę węzłów do monitorowania. Niestandardowe reguły monitorowania może zmniejszyć ruch generowany przez rozwiązania i pomagają organizować monitorowania sieci.
+> Zalecamy wyłączenie reguły domyślnej i utworzenie niestandardowych reguł monitorowania, szczególnie w przypadku dużych sieci, w których jest używana duża liczba węzłów do monitorowania. Niestandardowe reguły monitorowania mogą zmniejszyć ruch generowany przez rozwiązanie i pomóc w organizowaniu monitorowania sieci.
 
-Utwórz reguły monitorowania zgodnie z logiki biznesowej. Przykładem jest, jeśli chcesz monitorować wydajność na łączność sieciową z dwiema lokacjami pakietu office, aby centrali. Grupa wszystkich podsieci w site1 pakietu office w sieci O1. Następnie zgrupuj wszystkich podsieci w site2 pakietu office w sieci O2. Na koniec grupy wszystkich podsieci w siedzibie głównej w sieci H. Utwórz dwie reguły monitorowania — jeden między O1 i H, a druga między O2 i H. 
+Utwórz reguły monitorowania zgodnie z logiką biznesową. Przykładem może być monitorowanie wydajności łączności sieciowej dwóch lokacji biurowych do centrali. Grupuj wszystkie podsieci w pakiecie Office site1 w sieci O1. Następnie pogrupuj wszystkie podsieci w pakiecie Office site2 w obszarze Network O2. Na koniec Grupuj wszystkie podsieci w centrali w sieci H. Utwórz dwie reguły monitorowania — jeden między O1 i H, a drugi między O2 a H. 
 
 Aby utworzyć niestandardowe reguły monitorowania:
 
-1. Wybierz **Dodaj regułę** na **Monitor** kartę, a następnie wprowadź nazwę reguły i opis.
-2. Wybierz pary łączy sieciowych lub podsieci do monitorowania z listy. 
-3. Wybierz sieć, która zawiera podsieci, z listy rozwijanej sieć. Następnie wybierz podsieci, z listy rozwijanej odpowiednie podsieci. Aby monitorować wszystkie podsieci w połączenia sieciowego, należy zaznaczyć **wszystkie podsieci**. Podobnie wybierz podsieci, które chcesz. Aby wykluczyć monitorowania dla łącza podsieci w szczególności z wybranych, wybierz **dodać wyjątek**. 
-4. Wybieranie między ICMP i TCP protokołów do wykonania transakcji syntetycznych. 
-5. Jeśli nie chcesz utworzyć zdarzenia dotyczące kondycji dla elementów został wybrany, wyczyść **Włącz monitorowanie kondycji połączeń objętych tą regułą**. 
-6. Wybierz opcję monitorowania warunków. Aby ustawić niestandardowe progi dla generowania zdarzenia kondycji, należy wprowadzić wartości progowe. Zawsze, gdy wartość warunku przekroczy próg wybranych dla wybranej sieci lub pary podsieci, jest generowane zdarzenie kondycji. 
-7. Wybierz **Zapisz** Aby zapisać konfigurację. 
+1. Wybierz pozycję **Dodaj regułę** na karcie **monitor** , a następnie wprowadź nazwę i opis reguły.
+2. Wybierz parę łączy sieciowych lub podsieci do monitorowania z list. 
+3. Z listy rozwijanej sieć wybierz sieć zawierającą odpowiednie podsieci. Następnie wybierz podsieci z listy rozwijanej odpowiadająca podsieć. Jeśli chcesz monitorować wszystkie podsieci w łączu sieciowym, zaznacz opcję **wszystkie podsieci**. Analogicznie, wybierz inne podsieci, których chcesz użyć. Aby wykluczyć monitorowanie określonych linków podsieci z wybranych opcji, wybierz pozycję **Dodaj wyjątek**. 
+4. Wybór protokołów ICMP i TCP do wykonania transakcji syntetycznych. 
+5. Jeśli nie chcesz tworzyć zdarzeń dotyczących kondycji dla wybranych elementów, wyczyść pole wyboru **Włącz monitorowanie kondycji dla linków objętych tą regułą**. 
+6. Wybierz pozycję warunki monitorowania. Aby ustawić progi niestandardowe dla generowania zdarzeń kondycji, wprowadź wartości progowe. Zawsze, gdy wartość warunku przekroczy wybrany próg dla wybranej pary sieciowej lub podsieci, zostanie wygenerowane zdarzenie kondycji. 
+7. Wybierz pozycję **Zapisz** , aby zapisać konfigurację. 
 
-Po zapisaniu regułę monitorowania tej reguły można zintegrować z zarządzaniem alertami, wybierając **tworzenia alertu**. Reguła alertu jest tworzony automatycznie przy użyciu zapytania wyszukiwania. Inne wymagane parametry są wypełniane automatycznie. Reguła alertu można otrzymywać alertów opartych na wiadomościach e-mail, oprócz istniejące alerty w ramach rozwiązania Network Performance Monitor. Alerty również mogą powodować naprawcze przy użyciu elementów runbook lub mogą oni także integrować z istniejącymi rozwiązaniami do zarządzania usługi przy użyciu elementów webhook. Wybierz **Zarządzanie Alert** Aby edytować ustawienia alertów. 
+Po zapisaniu reguły monitorowania można zintegrować tę regułę z Alert Management, wybierając pozycję **Utwórz alert**. Reguła alertu jest tworzona automatycznie przy użyciu zapytania wyszukiwania. Inne wymagane parametry są wypełniane automatycznie. Korzystając z reguły alertów, można odbierać alerty na podstawie poczty e-mail, a także istniejące alerty w ramach Network Performance Monitor. Alerty mogą również wyzwalać akcje zaradcze w elementach Runbook lub integrować je z istniejącymi rozwiązaniami do zarządzania usługami za pomocą elementów webhook. Wybierz pozycję **Zarządzaj alertami** , aby edytować ustawienia alertu. 
 
-Teraz można utworzyć więcej reguł monitora wydajności lub przejdź do pulpitu nawigacyjnego rozwiązania, aby użyć funkcji.
+Możesz teraz utworzyć więcej reguł monitora wydajności lub przejść do pulpitu nawigacyjnego rozwiązania, aby korzystać z tej funkcji.
 
 ### <a name="choose-the-protocol"></a>Wybierz protokół
 
-Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do obliczania metryki wydajności sieci, takie jak czas oczekiwania przed utratą i łącze pakietów. Aby lepiej zrozumieć tę koncepcję, należy wziąć pod uwagę agenta rozwiązania Network Performance Monitor, połączyć jeden z końców połączenia sieciowego. Ten agent rozwiązania Network Performance Monitor wysyła pakiety sondy do agenta rozwiązania Network Performance Monitor drugiego podłączony do końca innej sieci. Drugi agent odpowiada za pomocą pakietów odpowiedzi. Ten proces jest powtarzany kilka razy. Mierząc liczba odpowiedzi i czas potrzebny na odebranie odpowiedzi, pierwszy agent rozwiązania Network Performance Monitor ocenia opóźnienie linku oraz operacjach porzucania pakietów. 
+Network Performance Monitor używa transakcji syntetycznych w celu obliczenia metryk wydajności sieci, takich jak utrata pakietów i opóźnienie łącza. Aby lepiej zrozumieć te koncepcje, należy wziąć pod uwagę Network Performance Monitor agenta połączonego z jednym końcem łącza sieciowego. Ten Network Performance Monitor Agent wysyła pakiety sondy do drugiego agenta Network Performance Monitor połączonego z innym końcem sieci. Drugi Agent odpowiedzi z pakietami odpowiedzi. Ten proces jest powtarzany kilka razy. Mierząc liczbę odpowiedzi i czas potrzebny do odebrania każdej odpowiedzi, pierwszy Agent Network Performance Monitor ocenia opóźnienia linków i porzucania pakietów. 
 
-Format, rozmiar i kolejność tych pakietów jest określany przez protokół, który wybierzesz podczas tworzenia reguły monitorowania. Oparte na protokole pakietów, urządzenia sieciowe pośredniego, takich jak routery i przełączniki, może przetwarzać te pakiety inaczej. W związku z tym wybranego protokołu ma wpływ na dokładność wyników. Wybór protokołu określa również, czy należy wykonać wszelkie ręcznie wykonane czynności po wdrożeniu rozwiązania Network Performance Monitor. 
+Format, rozmiar i sekwencję tych pakietów są określane przez protokół wybierany podczas tworzenia reguł monitorowania. W zależności od protokołu pakietów pośredniczące urządzenia sieciowe, takie jak routery i przełączniki, mogą przetwarzać te pakiety inaczej. W związku z tym wybór protokołu ma wpływ na dokładność wyników. Wybór protokołu określa również, czy przed wdrożeniem rozwiązania Network Performance Monitor należy wykonać wszelkie czynności ręczne. 
 
-Rozwiązanie Network Performance Monitor zapewnia wybór między protokołów ICMP i TCP do wykonywania transakcji syntetycznych. Jeśli wybierzesz protokołu ICMP, podczas tworzenia reguły transakcji syntetycznych, agenci rozwiązania Network Performance Monitor korzystać komunikatów ECHA ICMP do obliczania opóźnienie sieci i utraty pakietów. Ten sam komunikat, który jest wysyłany przez narzędzie konwencjonalne korzysta z ECHA ICMP. Użycie jako protokołu TCP, rozwiązania Network Performance Monitor agenci wysyłają TCP SYN za pośrednictwem sieci pakietów. W tym kroku następuje po zakończeniu uzgadnianie protokołu TCP, a następnie połączenie zostanie usunięte przy użyciu pakietów RST. 
+Network Performance Monitor oferuje wybór między protokołami ICMP i TCP na potrzeby wykonywania transakcji syntetycznych. W przypadku wybrania protokołu ICMP podczas tworzenia reguły transakcji syntetycznej agenci Network Performance Monitor używają komunikatów ICMP ECHO do obliczenia opóźnienia sieci i utraty pakietów. ECHO ICMP używa tego samego komunikatu, który jest wysyłany przez konwencjonalne Narzędzie ping. W przypadku korzystania z protokołu TCP jako protokół Network Performance Monitor agenci wysyłają pakiety TCP SYN przez sieć. W tym kroku następuje zakończenie uzgadniania protokołu TCP, a połączenie jest usuwane przy użyciu pakietów RST. 
 
-Przed wybraniem protokół, należy wziąć pod uwagę następujące informacje: 
+Przed wybraniem protokołu należy wziąć pod uwagę następujące informacje: 
 
-* **Odnajdywanie wielu tras sieciowych.** Protokół TCP jest bardziej precyzyjne operacje podczas rozpoznawania wiele tras i wymaga mniejszej liczby agentów w każdej podsieci. Na przykład jeden lub dwaj agenci, które używają protokołu TCP, można wykryć wszystkie nadmiarowe ścieżki między podsieciami. Konieczne jest kilku agentów, korzystających z protokołu ICMP w celu uzyskania podobnych wyników. Za pomocą protokołu ICMP, jeśli masz wiele tras między dwiema podsieciami, potrzebujesz więcej niż 5 n agentów w podsieci źródłowych i docelowych.
+* **Odnajdywanie wielu tras sieciowych.** Protokół TCP jest dokładniejszy podczas odnajdywania wielu tras i potrzebuje mniejszej liczby agentów w każdej podsieci. Na przykład jeden lub dwa Agenci używający protokołu TCP mogą odnajdywać wszystkie nadmiarowe ścieżki między podsieciami. Potrzebujesz kilku agentów, którzy używają protokołu ICMP, aby osiągnąć podobne wyniki. Przy użyciu protokołu ICMP, jeśli masz wiele tras między dwiema podsieciami, potrzebujesz więcej niż 5N agentów w podsieci źródłowej lub docelowej.
 
-* **Dokładność wyników.** Routery i przełączniki zwykle można przypisać niższego priorytetu do pakietów ECHA protokołu ICMP w porównaniu do pakietów protokołu TCP. W niektórych sytuacjach po obciążonej urządzeń sieciowych, dane uzyskane przez protokół TCP lepiej odzwierciedla, strat i opóźnień napotykanych przez aplikacje. Dzieje się tak, ponieważ większość ruchu aplikacji przepływu za pośrednictwem protokołu TCP. W takich przypadkach ICMP zapewnia mniej dokładne wyniki, w porównaniu do protokołu TCP. 
+* **Dokładność wyników.** Routery i przełączniki umożliwiają przypisanie niższych priorytetów do pakietów echa protokołu ICMP w porównaniu z pakietami TCP. W niektórych sytuacjach, gdy urządzenia sieciowe są mocno załadowane, dane uzyskane przez TCP lepiej odzwierciedlają utratę i opóźnienia w przypadku aplikacji. Dzieje się tak, ponieważ większość przepływów ruchu aplikacji za pośrednictwem protokołu TCP. W takich przypadkach protokół ICMP zapewnia mniej dokładne wyniki w porównaniu z protokołem TCP. 
 
-* **Konfiguracja zapory.** Protokół TCP wymaga, że pakiety TCP są wysyłane do portu docelowego. Domyślnym portem używanym przez agentów rozwiązania Network Performance Monitor jest port 8084. Po skonfigurowaniu agentów można zmienić port. Upewnij się, że zapór sieci lub reguł Sieciowej grupy zabezpieczeń sieci (na platformie Azure) zezwalają na ruch na porcie. Należy również upewnić się, że konfiguracja zapory lokalnej na komputerach, na których zainstalowano agentów, aby zezwolić na ruch na tym porcie. Skrypty programu PowerShell umożliwiają skonfigurowanie reguł zapory na komputerach z systemem Windows, ale musisz ręcznie Skonfiguruj zaporę, sieci. Z kolei ICMP nie działają przy użyciu portu. W większości przypadków enterprise ruch protokołu ICMP jest dozwolone za pośrednictwem zapór pozwalają na korzystanie z narzędzia diagnostyczne sieci, takich jak narzędzie ping. Jeśli możesz wywołać jedną maszynę z innego, można użyć protokołu ICMP, bez konieczności ręcznego konfigurowania zapory.
+* **Konfiguracja zapory.** Protokół TCP wymaga, aby pakiety TCP były wysyłane do portu docelowego. Domyślnym portem używanym przez agentów Network Performance Monitor jest 8084. Port można zmienić podczas konfigurowania agentów. Upewnij się, że zapory sieciowe lub reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) (na platformie Azure) zezwalają na ruch na porcie. Należy również upewnić się, że Zapora lokalna na komputerach, na których są zainstalowane agenci, jest skonfigurowana tak, aby zezwalać na ruch na tym porcie. Skrypty programu PowerShell umożliwiają konfigurowanie reguł zapory na komputerach z systemem Windows, ale należy ręcznie skonfigurować zaporę sieciową. Z kolei protokół ICMP nie działa przy użyciu portu. W większości scenariuszy przedsiębiorstwa ruch ICMP jest dozwolony przez zapory, aby umożliwić korzystanie z narzędzi diagnostyki sieci, takich jak narzędzie ping. Jeśli można wysłać polecenie ping do jednego komputera z innego, można użyć protokołu ICMP bez konieczności ręcznego konfigurowania zapór.
 
 >[!NOTE] 
-> Niektóre zapory mogą blokować protokołu ICMP, co może prowadzić do retransmisji, które skutkuje dużą liczbę zdarzeń w systemie zarządzania informacjami i zdarzeniami zabezpieczeń. Upewnij się, że protokół, który wybierzesz nie jest blokowany przez zapory sieciowej lub sieciowej grupy zabezpieczeń. W przeciwnym razie rozwiązania Network Performance Monitor nie może monitorować segmencie sieci. Zalecamy użycie protokołu TCP do monitorowania. Użyj protokołu ICMP w scenariuszach, w której nie można użyć protokołu TCP, takie jak czas: 
+> Niektóre zapory mogą blokować protokół ICMP, co może prowadzić do ponownej transmisji, co spowoduje powstanie dużej liczby zdarzeń w systemie informacji zabezpieczających i zarządzania zdarzeniami. Upewnij się, że wybrany protokół nie jest blokowany przez zaporę sieciową lub sieciowej grupy zabezpieczeń. W przeciwnym razie Network Performance Monitor nie może monitorować segmentu sieci. Zalecamy używanie protokołu TCP do monitorowania. Protokołu ICMP należy używać w scenariuszach, w których nie można używać protokołu TCP, np.: 
 >
-> - Możesz użyć węzłów klienckimi systemami Windows, ponieważ pierwotne gniazda TCP nie jest dozwolone w klientach Windows.
-> - Zapory sieciowe lub sieciowej grupy zabezpieczeń blokuje TCP.
-> - Nie wiem, jak przełączyć protokołu.
+> - Używasz węzłów opartych na kliencie systemu Windows, ponieważ nieprzetworzone gniazda TCP nie są dozwolone na klientach z systemem Windows.
+> - Zapora sieciowa lub sieciowej grupy zabezpieczeń blokuje protokół TCP.
+> - Nie wiesz, jak przełączyć protokół.
 
-Jeśli została wybrana opcja używania protokołu ICMP, podczas wdrażania, możesz przełączyć TCP w dowolnym momencie poprzez edycję domyślna reguła monitorowania.
+Jeśli podczas wdrażania wybrano opcję użycia protokołu ICMP, można w dowolnym momencie przełączyć się do protokołu TCP, edytując domyślną regułę monitorowania.
 
-1. Przejdź do **wydajność sieci** > **Monitor** > **skonfigurować**   >  **Monitor**. Następnie wybierz pozycję **domyślną regułę**. 
-2. Przewiń do **protokołu** sekcji i wybierz protokół, dla którego chcesz użyć. 
-3. Wybierz **Zapisz** Aby zastosować ustawienia. 
+1. Przejdź do **wydajności sieci**> **monitorowanie** > **Skonfiguruj** > **monitorowanie**. Następnie wybierz pozycję **domyślna reguła**. 
+2. Przewiń do sekcji **Protokół** i wybierz protokół, który ma być używany. 
+3. Wybierz pozycję **Zapisz** , aby zastosować ustawienie. 
 
-Nawet jeśli domyślna reguła używa określonego protokołu, można utworzyć nowe reguły z innym protokołem. Możesz nawet utworzyć różne zasady, gdzie niektóre reguły używają protokołu ICMP, a inne korzystają z protokołu TCP. 
+Nawet jeśli reguła domyślna używa określonego protokołu, można utworzyć nowe reguły z innym protokołem. Można nawet utworzyć kombinację reguł, w których niektóre reguły używają protokołu ICMP, a inne korzystają z protokołu TCP. 
 
 ## <a name="walkthrough"></a>Przewodnik 
 
-Teraz sprawdźmy proste śledztwa główną przyczynę zdarzenie kondycji.
+Teraz Obejrzyj proste badanie dotyczące głównej przyczyny zdarzenia dotyczącego kondycji.
 
-Na pulpicie nawigacyjnym rozwiązania zdarzenie kondycji pokazuje, że połączenia sieciowego jest w złej kondycji. Aby zbadać problem, wybierz **sieci łączy monitorowanych** kafelka.
+Na pulpicie nawigacyjnym rozwiązania zdarzenie kondycji pokazuje, że łącze sieciowe jest w złej kondycji. Aby zbadać ten problem, wybierz kafelek **monitorowane linki sieciowe** .
 
-Strona szczegółów pokazuje, że **DMZ2 DMZ1** połączenia sieciowego jest w złej kondycji. Wybierz **Wyświetl linki podsieci** dla tego połączenia sieciowego. 
+Strona przechodzenia do szczegółów pokazuje, że łącze sieciowe **DMZ2-DMZ1** jest w złej kondycji. Wybierz pozycję **Wyświetl linki podsieci** dla tego linku sieciowego. 
 
 
-Na stronie szczegółów znajdują się wszystkie łącza podsieci w **DMZ2 DMZ1** połączenia sieciowego. Dla obu łączy podsieci opóźnienie przekroczyła wartość progową, co sprawia, że połączenia sieciowego jest nieprawidłowy. Widać również trendy opóźnienie oba linki podsieci. Użycie wybór czasu kontrolować na wykresie, aby skoncentrować się na zakres wymagany czas. Możesz zobaczyć pora dnia po osiągnięciu szczyt w opóźnienia. Przeszukiwanie dzienników, które później dla tego przedziału czasu w celu zbadania problemu. Wybierz **Wyświetl linki węzłów** dalszych szczegółów. 
+Na stronie przechodzenie do szczegółów są wyświetlane wszystkie linki podsieci w łączu sieciowym **DMZ2-DMZ1** . W przypadku łączy podsieci czas oczekiwania przekracza próg, co sprawia, że łącze sieciowe jest w złej kondycji. Widoczne są również trendy opóźnienia obu łączy podsieci. Użyj kontrolki wybór czasu na wykresie, aby skoncentrować się na wymaganym zakresie czasu. Możesz zobaczyć pora dnia, gdy opóźnienie osiągnie swój szczyt. Przeszukaj dzienniki później dla tego okresu, aby sprawdzić problem. Wybierz pozycję **Wyświetl linki węzłów** , aby przejść do szczegółów. 
  
- ![Strona łącza podsieci](media/network-performance-monitor-performance-monitor/subnetwork-links.png) 
+ ![Strona linków podsieci](media/network-performance-monitor-performance-monitor/subnetwork-links.png) 
 
-Podobnie jak w poprzedniej strony, strony Przechodzenie do szczegółów dla łącza podsieci w szczególności zawiera także jej składników węzła łącza. Można wykonać podobne działania w tym miejscu tak jak w poprzednim kroku. Wybierz **wyświetlanie topologii** Aby wyświetlić topologię między dwoma węzłami. 
+Podobnie jak w przypadku poprzedniej strony, Strona przechodzenia do szczegółów dla danego linku podsieci zawiera listę linków węzła składnika. Podobne akcje można wykonać w tym miejscu, tak jak w poprzednim kroku. Wybierz pozycję **Wyświetl topologię** , aby wyświetlić topologię między dwoma węzłami. 
  
- ![Strona łącza węzłów](media/network-performance-monitor-performance-monitor/node-links.png) 
+ ![Strona linków węzłów](media/network-performance-monitor-performance-monitor/node-links.png) 
 
-Wszystkie ścieżki między dwoma węzłami wybranego na wykresie mapy topologii. Można wizualizować topologii przeskoku przeskoku trasy między dwoma węzłami na mapie topologii. Pozwala ona jasny obraz, o ile istnieją między dwoma węzłami i jakie ścieżki zająć pakiety danych. Wąskie gardła wydajności sieci są wyświetlane w kolorze czerwonym. Aby zlokalizować połączenia uszkodzoną siecią lub urządzenie sieciowe uszkodzony, Przyjrzyj się czerwony elementy na mapie topologii. 
+Wszystkie ścieżki między dwoma wybranymi węzłami są kreślone na mapie topologii. Można wizualizować topologię przeskoków między dwoma węzłami na mapie topologii. Zawiera jasne zdjęcie, ile tras istnieje między dwoma węzłami i jakie ścieżki pobiera pakiet danych. Wąskie gardła wydajności sieci są wyświetlane na czerwono. Aby zlokalizować błędne połączenie sieciowe lub wadliwe urządzenie sieciowe, poszukaj czerwonych elementów na mapie topologii. 
 
- ![Pulpit nawigacyjny topologii za pomocą mapy topologii](media/network-performance-monitor-performance-monitor/topology-dashboard.png) 
+ ![Pulpit nawigacyjny topologii z mapą topologii](media/network-performance-monitor-performance-monitor/topology-dashboard.png) 
 
-Możesz przejrzeć utraty, opóźnienia i liczbę przeskoków w każdej ścieżce **akcji** okienka. Użyj paska przewijania, aby wyświetlić szczegóły ścieżki w złej kondycji. Użyj filtrów, aby zaznacz ścieżki o złej kondycji przeskoku jest wykreślany topologii dla wybranej ścieżki. Aby powiększyć lub pomniejszyć mapy topologii, należy użyć kółka myszy. 
+W okienku **Akcja** można sprawdzić utratę, opóźnienie i liczbę przeskoków w każdej ścieżce. Użyj paska przewijania, aby wyświetlić szczegóły ścieżek w złej kondycji. Użyj filtrów, aby wybrać ścieżki z przeskokiem w złej kondycji w celu wykreślenia topologii tylko dla wybranych ścieżek. Aby powiększyć lub pomniejszyć mapę topologii, użyj kółka myszy. 
 
-Na poniższej ilustracji głównej przyczyny problemów do określonej sekcji sieci są wyświetlane w czerwonym ścieżek i przeskoków. Wybierz węzeł na mapie topologii, aby wyświetlić właściwości węzła, który zawiera adres FQDN i adresu IP. Wybierając skoku zawiera adres IP przeskoku. 
+Na poniższej ilustracji główne przyczyny problemów z obszarami problemu w danej sekcji sieci są wyświetlane w czerwonej ścieżce i przeskokach. Wybierz węzeł na mapie topologii, aby wyświetlić właściwości węzła, w tym nazwę FQDN i adres IP. Wybranie skoku pokazuje adres IP przeskoku. 
  
-![Mapy topologii z wybrane — właściwości węzła](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
+![Mapa topologii z wybranymi właściwościami węzła](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
-## <a name="next-steps"></a>Kolejne kroki
-[Przeszukiwanie dzienników](../../azure-monitor/log-query/log-query-overview.md) do wyświetlania rekordów danych wydajności szczegółowe sieci.
+## <a name="next-steps"></a>Następne kroki
+[Wyszukaj dzienniki](../../azure-monitor/log-query/log-query-overview.md) , aby wyświetlić szczegółowe rekordy danych wydajności sieci.

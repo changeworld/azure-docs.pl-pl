@@ -1,23 +1,18 @@
 ---
 title: Monitorowanie witryny programu SharePoint za pomocą usługi Application Insights
 description: Rozpocznij monitorowanie nowej aplikacji przy użyciu nowego klucza instrumentacji
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2bfe5910-d673-4cf6-a5c1-4c115eae1be0
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/11/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 027d5485b29deb434953470023d8a290cc0af58a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/11/2018
+ms.openlocfilehash: 271ef590d7cdbefc824a7f80aef110b0c08b6d6d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60784602"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899882"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Monitorowanie witryny programu SharePoint za pomocą usługi Application Insights
 Usługa Azure Application Insights monitoruje dostępność, wydajność i użycie Twoich aplikacji. Tutaj dowiesz się, jak skonfigurować je dla witryny programu SharePoint.
@@ -50,7 +45,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 </script>
 ```
 
-Wstaw skrypt tuż przed tagiem &lt;/head&gt; na każdej stronie, którą chcesz śledzić. Jeśli witryna ma stronę wzorcową, możesz umieścić skrypt na tej stronie. Na przykład w projekcie MVC programu ASP.NET możesz go umieścić w pliku View\Shared\_Layout.cshtml
+Wstaw skrypt tuż przed tagiem &lt;/Head&gt; każdej strony, którą chcesz śledzić. Jeśli witryna sieci Web ma stronę wzorcową, możesz umieścić skrypt w tym miejscu. Na przykład w projekcie MVC programu ASP.NET możesz go umieścić w pliku View\Shared\_Layout.cshtml
 
 Skrypt zawiera klucz instrumentacji, który kieruje dane telemetryczne do zasobu usługi Application Insights.
 

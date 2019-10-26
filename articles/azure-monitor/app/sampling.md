@@ -1,24 +1,19 @@
 ---
 title: Próbkowanie danych telemetrycznych na platformie Azure Application Insights | Microsoft Docs
 description: Jak zachować ilość danych telemetrycznych pod kontrolą.
-services: application-insights
-documentationcenter: windows
-author: cijothomas
-manager: carmonm
-ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: cijothomas
+ms.author: cithomas
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.author: cithomas
-ms.openlocfilehash: 83243ba7df48db5cd7757a464f0818ef69c4559e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 82c0855e3ea3b6a89c1b20569971b0dc6b3d449c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372566"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899864"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -33,7 +28,7 @@ Próbkowanie powoduje zmniejszenie kosztów ruchu i danych oraz pozwala unikną�
 * Próbkowanie adaptacyjne jest domyślnie włączone we wszystkich najnowszych wersjach programu ASP.NET i ASP.NET Core Software Development Kit (SDK).
 * Możesz również ustawić próbkowanie ręcznie. Tę konfigurację można skonfigurować w portalu na *stronie użycie i szacowane koszty*w zestawie SDK ASP.NET w pliku ApplicationInsights. config, w zestawie SDK ASP.NET Core za pomocą kodu lub zestawu Java SDK w pliku ApplicationInsights. XML.
 * Jeśli rejestrujesz zdarzenia niestandardowe i chcesz się upewnić, że zestaw zdarzeń jest zachowywany lub odrzucony, zdarzenia muszą mieć tę samą wartość OperationId.
-* W każdym rekordzie w właściwości `itemCount` jest raportowany dzielnik próbkowania *n* , który w polu wyszukiwania pojawia się pod przyjazną nazwą "liczba żądań" lub "liczba zdarzeń". próbkowanie @no__t 0when nie jest w trakcie operacji.
+* W każdym rekordzie w właściwości `itemCount` jest raportowany dzielnik próbkowania *n* , który w polu wyszukiwania pojawia się pod przyjazną nazwą "liczba żądań" lub "liczba zdarzeń". `itemCount==1`, gdy próbkowanie nie jest w trakcie działania.
 * W przypadku pisania zapytań analitycznych należy [wziąć pod uwagę próbkowanie](../../azure-monitor/log-query/aggregations.md). W szczególności, a nie do zwykłego zliczania rekordów, należy używać `summarize sum(itemCount)`.
 
 ## <a name="types-of-sampling"></a>Typy próbkowania
@@ -381,7 +376,7 @@ Próbkowanie do pozyskiwania nie działa, gdy jest wykonywane próbkowanie lub n
 ## <a name="sampling-for-web-pages-with-javascript"></a>Próbkowanie dla stron sieci Web za pomocą języka JavaScript
 Na stronie sieci Web można skonfigurować stałe próbkowanie z dowolnego serwera. 
 
-Podczas [konfigurowania stron sieci Web dla Application Insights](../../azure-monitor/app/javascript.md)należy zmodyfikować fragment kodu JavaScript uzyskany w portalu Application Insights. (W aplikacjach ASP.NET fragment kodu zwykle znajduje się w _Layout. cshtml).  Wstaw wiersz podobny do `samplingPercentage: 10,` przed kluczem Instrumentacji:
+Podczas [konfigurowania stron sieci Web dla Application Insights](../../azure-monitor/app/javascript.md)należy zmodyfikować fragment kodu JavaScript uzyskany w portalu Application Insights. (W aplikacjach ASP.NET fragment kodu zwykle znajduje się w _Layout. cshtml).  Wstaw wiersz, taki jak `samplingPercentage: 10,` przed kluczem Instrumentacji:
 
     <script>
     var appInsights= ... 

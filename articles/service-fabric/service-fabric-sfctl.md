@@ -3,25 +3,26 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric — sfctl | Mi
 description: Opisuje Service Fabric narzędzia sfctl interfejsu wiersza polecenia.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 35b881268ca21a840836c96388a4562a54d17d3b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 7e7fc7bbc65e92960d7839f6531ef1f7c1935ed3
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035820"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900878"
 ---
 # <a name="sfctl"></a>sfctl
-Polecenia służące do zarządzania klastrami i jednostkami Service Fabric. Ta wersja jest zgodna z środowiskiem uruchomieniowym Service Fabric 6,4.
+Polecenia służące do zarządzania klastrami i jednostkami Service Fabric. Ta wersja jest zgodna z środowiskiem uruchomieniowym Service Fabric 6,5.
 
 Polecenia są zgodne ze wzorcem rzeczownik-czasownik. Aby uzyskać więcej informacji, zobacz podgrupy.
 
@@ -30,9 +31,10 @@ Polecenia są zgodne ze wzorcem rzeczownik-czasownik. Aby uzyskać więcej infor
 | --- | --- |
 | [Aplikacja](service-fabric-sfctl-application.md) | Twórz i usuwaj aplikacje i typy aplikacji oraz zarządzaj nimi. |
 | [Chaos](service-fabric-sfctl-chaos.md) | Uruchamianie, zatrzymywanie i raportowanie w usłudze testowej chaos. |
-| [cluster](service-fabric-sfctl-cluster.md) | Wybieranie klastrów Service Fabric i zarządzanie nimi. |
+| [hosta](service-fabric-sfctl-cluster.md) | Wybieranie klastrów Service Fabric i zarządzanie nimi. |
 | [Compose](service-fabric-sfctl-compose.md) | Twórz i usuwaj Docker Compose aplikacje oraz zarządzaj nimi. |
 | [wbudowane](service-fabric-sfctl-container.md) | Uruchom polecenia związane z kontenerem w węźle klastra. |
+| [wydarzeniach](service-fabric-sfctl-events.md) | Pobierz zdarzenia ze sklepu Events (Jeśli usługa EventStore jest już zainstalowana). |
 | [była](service-fabric-sfctl-is.md) | Wykonywanie zapytań i wysyłanie poleceń do usługi infrastruktury. |
 | [siatka](service-fabric-sfctl-mesh.md) | Usuwanie aplikacji siatki Service Fabric i zarządzanie nimi. |
 | [większości](service-fabric-sfctl-node.md) | Zarządzaj węzłami, które tworzą klaster. |
@@ -40,7 +42,7 @@ Polecenia są zgodne ze wzorcem rzeczownik-czasownik. Aby uzyskać więcej infor
 | [wartość](service-fabric-sfctl-property.md) | Właściwości magazynu i zapytania w obszarze nazwy Service Fabric. |
 | [niesiona](service-fabric-sfctl-replica.md) | Zarządzanie replikami należącymi do partycji usług. |
 | [rpm](service-fabric-sfctl-rpm.md) | Wykonywanie zapytań i wysyłanie poleceń do usługi Repair Manager. |
-| [sa-cluster](service-fabric-sfctl-sa-cluster.md) | Zarządzaj autonomicznymi klastrami Service Fabric. |
+| [sa — klaster](service-fabric-sfctl-sa-cluster.md) | Zarządzaj autonomicznymi klastrami Service Fabric. |
 | [usługi](service-fabric-sfctl-service.md) | Tworzenie, usuwanie usług, typów usług i pakietów usług oraz zarządzanie nimi. |
 | [Ustawienia](service-fabric-sfctl-settings.md) | Skonfiguruj ustawienia lokalne dla tego wystąpienia sfctl. |
 | [zachować](service-fabric-sfctl-store.md) | Wykonaj podstawowe operacje na poziomie plików w magazynie obrazów klastra. |

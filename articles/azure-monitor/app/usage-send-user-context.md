@@ -1,62 +1,56 @@
 ---
-title: Wyślij kontekstu użytkownika identyfikatorów, aby umożliwić użycie środowisk w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Śledzić, jak użytkownik przejdzie przez usługę, przypisując każdego z nich unikatowy, trwały ciąg Identyfikatora w usłudze Application Insights.
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: csharp
+title: Wyślij identyfikatory kontekstu użytkownika, aby włączyć środowiska użycia na platformie Azure Application Insights | Microsoft Docs
+description: Śledź, w jaki sposób użytkownicy przechodzą przez usługę, przypisując każdemu z nich unikatowy, trwały ciąg identyfikatora w Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7c458867b89a76a2f19bbd632c8a884c629f5765
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf639be5db90e3632b8931564ac397c42e1d8403
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371839"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899360"
 ---
-# <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Wyślij kontekstu użytkownika identyfikatorów, aby zapewnić użycie w usłudze Azure Application Insights
+# <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Wyślij identyfikatory kontekstu użytkownika, aby włączyć środowiska użycia na platformie Azure Application Insights
 
 ## <a name="tracking-users"></a>Śledzenie użytkowników
 
-Usługa Application Insights umożliwia monitorowanie i śledzenie użytkowników za pomocą zestawu narzędzi do użycia produktu:
+Application Insights umożliwia monitorowanie i śledzenie użytkowników za pomocą zestawu narzędzi do użycia produktów:
 
 - [Użytkownicy, sesje, zdarzenia](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [Lejki](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-- [Przechowywanie](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) kohorty
+- [Przechowywanie](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Kohorty
 - [Skoroszyty](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
-Aby móc śledzić zmiany w czasie działania użytkownika, usługi Application Insights wymaga Identyfikatora dla każdego użytkownika lub sesję. Uwzględnij następujące identyfikatory w każdej niestandardowe zdarzenie lub wyświetlenie strony.
+Aby śledzić, co użytkownik robi w czasie, Application Insights wymaga identyfikatora dla każdego użytkownika lub sesji. Uwzględnij następujące identyfikatory w każdym zdarzeniu niestandardowym lub w dowolnym widoku strony.
 
-- Użytkownicy, Lejki, przechowywania i kohorty: Zawiera identyfikatora użytkownika.
-- Sesje: Zawiera identyfikatora sesji.
+- Użytkownicy, Lejki, przechowywanie i kohorty: zawierają identyfikator użytkownika.
+- Sesje: Uwzględnij identyfikator sesji.
 
 > [!NOTE]
-> Jest to zaawansowane artykułu konspekt ręczne wykonanie czynności dla śledzenia działań użytkownika za pomocą usługi Application Insights. Z wieloma aplikacjami sieci web **te kroki nie mogą być wymagane**, jako domyślne serwerowe zestawy SDK w połączeniu z [/przeglądarki klienta kodu JavaScript SDK](../../azure-monitor/app/website-monitoring.md ), często są wystarczające do automatycznego śledzenia działanie użytkownika. Jeśli nie skonfigurowano [monitorowania po stronie klienta](../../azure-monitor/app/website-monitoring.md ) oprócz SDK po stronie serwera, należy to najpierw zrobić i sprawdzić, jeśli narzędzia do analizy zachowania użytkownika działają w oczekiwany sposób.
+> Jest to zaawansowany artykuł zawierający opis ręcznych kroków śledzenia aktywności użytkowników przy użyciu Application Insights. W przypadku wielu aplikacji sieci Web **te czynności mogą nie być wymagane**, ponieważ domyślne zestawy SDK po stronie serwera, które są używane w połączeniu z [zestawem JavaScript klienta/po stronie przeglądarki](../../azure-monitor/app/website-monitoring.md ), są często wystarczające do automatycznego śledzenia aktywności użytkownika. Jeśli nie skonfigurowano [monitorowania po stronie klienta](../../azure-monitor/app/website-monitoring.md ) oprócz zestawu SDK po stronie serwera, należy najpierw wykonać te czynności i sprawdzić, czy narzędzia analityczne zachowania użytkownika działają zgodnie z oczekiwaniami.
 
-## <a name="choosing-user-ids"></a>Wybieranie nazw użytkowników
+## <a name="choosing-user-ids"></a>Wybieranie identyfikatorów użytkowników
 
-Identyfikatory użytkowników ma utrwalić między sesjami użytkownika, aby śledzić zachowanie użytkowników wraz z upływem czasu. Istnieją różne podejścia do utrwalania identyfikatora.
+Identyfikatory użytkowników powinny być przechowywane między sesjami użytkowników w celu śledzenia sposobu zachowania użytkowników w czasie. Istnieją różne podejścia do utrwalania tego identyfikatora.
 
-- Definicja użytkownika, która już istnieje w usłudze.
-- Jeśli usługa ma dostęp do przeglądarki, jego można przekazać przeglądarki pliku cookie z Identyfikatorem w nim. Identyfikator będzie utrzymywać się WE, tak długo, jak plik cookie pozostanie w przeglądarce użytkownika.
-- Jeśli to konieczne, nowego Identyfikatora można użyć w każdej sesji, ale wyniki dotyczące użytkowników będzie ograniczona. Na przykład nie będzie można zobaczyć, jak zmienia zachowanie użytkownika wraz z upływem czasu.
+- Definicja użytkownika, który już istnieje w usłudze.
+- Jeśli usługa ma dostęp do przeglądarki, może przekazać do przeglądarki plik cookie z IDENTYFIKATORem. Identyfikator będzie trwały, o ile plik cookie pozostanie w przeglądarce użytkownika.
+- W razie potrzeby można użyć nowego identyfikatora każdej sesji, ale wyniki dotyczące użytkowników będą ograniczone. Na przykład nie będzie można zobaczyć, jak zmienia się zachowanie użytkownika w czasie.
 
-Identyfikator powinien być identyfikatorem Guid lub inny ciąg dostatecznie złożone i jednoznacznie zidentyfikować każdego użytkownika. Na przykład można długo losową liczbę.
+Identyfikator powinien być GUID lub innym złożonym ciągiem, aby identyfikować każdy użytkownik w unikatowy sposób. Na przykład może to być długa liczba losowa.
 
-Jeśli identyfikator zawiera identyfikujących informacje o użytkowniku, nie jest odpowiednia wartość do wysłania do usługi Application Insights jako identyfikator użytkownika. Możesz wysłać identyfikator jako [uwierzytelniony identyfikator użytkownika](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), ale nie spełnia wymagań identyfikator użytkownika dla scenariuszy użycia.
+Jeśli identyfikator zawiera informacje osobiste dotyczące użytkownika, nie jest to odpowiednia wartość do wysłania do Application Insights jako identyfikator użytkownika. Ten identyfikator można wysłać jako [Identyfikator użytkownika uwierzytelnionego](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), ale nie spełnia on wymagań dotyczących identyfikatora użytkownika dla scenariuszy użycia.
 
-## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>Aplikacje ASP.NET: Ustawianie kontekstu użytkownika w ITelemetryInitializer
+## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET Apps: Ustawianie kontekstu użytkownika w ITelemetryInitializer
 
-Utwórz inicjatora telemetrii w sposób opisany szczegółowo [tutaj](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer). Przekaż identyfikator sesji za pośrednictwem danych telemetrycznych żądań i ustaw Context.User.Id i Context.Session.Id.
+Utwórz inicjator telemetrii, jak opisano [tutaj](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)szczegółowo. Przekaż identyfikator sesji za pomocą telemetrii żądania, a następnie ustaw Context.User.Id i Context.Session.Id.
 
-W tym przykładzie Ustawia identyfikator użytkownika identyfikator, który wygasa po sesji. Jeśli to możliwe Użyj Identyfikatora użytkownika, która utrwala między sesjami.
+Ten przykład ustawia identyfikator użytkownika na identyfikator, który wygasa po sesji. Jeśli to możliwe, należy użyć identyfikatora użytkownika, który utrzymuje się między sesjami.
 
 ### <a name="telemetry-initializer"></a>Inicjator telemetrii
 
@@ -134,11 +128,11 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby umożliwić użycie środowiska, Rozpocznij wysyłanie [zdarzenia niestandardowe](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) lub [wyświetlenia strony](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Jeśli już wysyłać niestandardowe zdarzenia lub wyświetlenia stron, zapoznaj się z narzędzia obciążenia, aby dowiedzieć się, jak używać usługi przez użytkowników.
-    - [Przegląd wykorzystania](usage-overview.md)
+- Aby włączyć środowiska użycia, Rozpocznij wysyłanie [zdarzeń niestandardowych](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) lub [wyświetleń stron](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Jeśli masz już wysłane zdarzenia niestandardowe lub widoki stron, zapoznaj się z narzędziami użycia, aby dowiedzieć się, jak użytkownicy korzystają z usługi.
+    - [Przegląd użycia](usage-overview.md)
     - [Użytkownicy, sesje i zdarzenia](usage-segmentation.md)
     - [Lejki](usage-funnels.md)
     - [Przechowywanie](usage-retention.md)

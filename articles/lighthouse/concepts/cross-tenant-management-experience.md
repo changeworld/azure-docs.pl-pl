@@ -4,19 +4,19 @@ description: Zarządzanie zasobami delegowanymi przez platformę Azure umożliwi
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/18/2019
+ms.date: 10/24/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8d7b1f24d5dcf3d66ffd04704c79a284c4810365
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: eb4ec10755b7ca2227623ba0842d2b1175635594
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598449"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901811"
 ---
 # <a name="cross-tenant-management-experiences"></a>Środowiska zarządzania wieloma dzierżawami
 
-W tym artykule opisano scenariusze, które mogą być używane przez dostawcę usług w ramach [zarządzania zasobami delegowanymi przez platformę Azure](../concepts/azure-delegated-resource-management.md) w celu zarządzania zasobami platformy Azure dla wielu klientów z poziomu dzierżawy w [Azure Portal](https://portal.azure.com).
+Jako dostawca usług możesz użyć [delegowanego zarządzania zasobami platformy Azure](../concepts/azure-delegated-resource-management.md) do zarządzania zasobami platformy Azure dla wielu klientów z poziomu dzierżawy w [Azure Portal](https://portal.azure.com). Większość zadań i usług można wykonywać na delegowanych zasobach platformy Azure między zarządzanymi dzierżawcami. W tym artykule opisano niektóre z ulepszonych scenariuszy, w których zarządzanie zasobami delegowanymi przez platformę Azure może być skuteczne.
 
 > [!NOTE]
 > Zarządzanie zasobami delegowanymi przez platformę Azure może być również używane w przedsiębiorstwie, które ma wiele dzierżawców, aby uprościć administrację między dzierżawcami.
@@ -37,9 +37,15 @@ Korzystając z funkcji zarządzania zasobami delegowanymi przez platformę Azure
 
 ![Zasoby klienta zarządzane za poorednictwem jednej dzierżawy dostawcy usług](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
-## <a name="supported-services-and-scenarios"></a>Obsługiwane usługi i scenariusze
+## <a name="apis-and-management-tool-support"></a>Obsługa interfejsów API i narzędzi do zarządzania
 
-Obecnie środowisko zarządzania między dzierżawcami obsługuje następujące scenariusze z delegowanymi zasobami klientów:
+Zadania zarządzania można wykonywać w odniesieniu do zasobów delegowanych bezpośrednio w portalu lub za pomocą interfejsów API i narzędzi do zarządzania (takich jak interfejs wiersza polecenia platformy Azure i Azure PowerShell). Wszystkie istniejące interfejsy API mogą być używane podczas pracy z delegowanymi zasobami, o ile funkcjonalność jest obsługiwana w przypadku zarządzania między dzierżawcami, a użytkownik ma odpowiednie uprawnienia.
+
+Udostępniamy również interfejsy API do wykonywania zadań zarządzania zasobami delegowanymi przez platformę Azure. Aby uzyskać więcej informacji, zobacz sekcję dotyczącą **odwołania** .
+
+## <a name="enhanced-services-and-scenarios"></a>Ulepszone usługi i scenariusze
+
+Większość zadań i usług można wykonać w odniesieniu do zasobów delegowanych między zarządzanymi dzierżawcami. Poniżej przedstawiono niektóre kluczowe scenariusze, w których zarządzanie wieloma dzierżawcami może być skuteczne.
 
 [Azure Automation](https://docs.microsoft.com/azure/automation/):
 
@@ -55,7 +61,7 @@ Obecnie środowisko zarządzania między dzierżawcami obsługuje następujące 
 
 [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/):
 
-- Wyświetlanie alertów dotyczących delegowanych subskrypcji w Azure Portal lub programowo przy użyciu wywołań interfejsu API REST, z możliwością wyświetlania alertów we wszystkich subskrypcjach
+- Wyświetlanie alertów dla delegowanych subskrypcji z możliwością wyświetlania alertów we wszystkich subskrypcjach
 - Wyświetl szczegóły dziennika aktywności dla delegowanych subskrypcji
 - Log Analytics: wykonywanie zapytań dotyczących danych ze zdalnych obszarów roboczych klientów w wielu dzierżawcach
 - Tworzenie alertów w dzierżawach klientów, które wyzwalają automatyzację, taką jak Azure Automation elementów Runbook lub Azure Functions, w dzierżawie dostawcy usług za pomocą elementów webhook
@@ -121,16 +127,9 @@ Obecnie środowisko zarządzania między dzierżawcami obsługuje następujące 
 We wszystkich scenariuszach należy pamiętać o następujących bieżących ograniczeniach:
 
 - Żądania obsługiwane przez Azure Resource Manager można wykonać przy użyciu funkcji zarządzania zasobami delegowanymi przez platformę Azure. Identyfikatory URI operacji dla tych żądań zaczynają się od `https://management.azure.com`. Jednak żądania, które są obsługiwane przez wystąpienie typu zasobu (takie jak dostęp do magazynu kluczy lub dostęp do danych magazynu), nie są obsługiwane przez delegowane zarządzanie zasobami platformy Azure. Identyfikatory URI operacji dla tych żądań zwykle zaczynają się od adresu, który jest unikatowy dla Twojego wystąpienia, takiego jak `https://myaccount.blob.core.windows.net` lub `https://mykeyvault.vault.azure.net/`. Te ostatnie również są zazwyczaj operacjami na danych, a nie operacjami zarządzania. 
-- Przypisania ról muszą używać [wbudowanych ról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kontroli dostępu opartej na ROLACH (RBAC). Wszystkie wbudowane role są obecnie obsługiwane przez delegowane zarządzanie zasobami platformy Azure z wyjątkiem właściciela, administratora dostępu użytkowników lub wszelkich wbudowanych ról z uprawnieniami [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) . Role niestandardowe i [role administratora klasycznej subskrypcji](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nie są również obsługiwane.
+- Przypisania ról muszą używać [wbudowanych ról](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kontroli dostępu opartej na ROLACH (RBAC). Wszystkie wbudowane role są obecnie obsługiwane przez delegowane zarządzanie zasobami platformy Azure z wyjątkiem właściciela lub wszelkich wbudowanych ról z uprawnieniem [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) . Rola Administrator dostępu użytkowników jest obsługiwana tylko w przypadku ograniczonego użycia w [przypisywaniu ról do zarządzanych tożsamości](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Role niestandardowe i [role administratora klasycznej subskrypcji](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nie są obsługiwane.
 - Obecnie nie można dołączyć subskrypcji (lub grupy zasobów w ramach subskrypcji) do zarządzania zasobami delegowanymi przez platformę Azure, jeśli subskrypcja używa Azure Databricks. Podobnie, jeśli subskrypcja została zarejestrowana w celu dołączenia do dostawcy zasobów **Microsoft. ManagedServices** , nie będzie można w tej chwili utworzyć obszaru roboczego dla tej subskrypcji.
 - W trakcie dodawania subskrypcji i grup zasobów na potrzeby zarządzania zasobami delegowanymi przez platformę Azure, które mają blokadę zasobów, te blokady nie uniemożliwią wykonywania akcji przez użytkowników w dzierżawie zarządzającej. [Odmów przypisań](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) , które chronią zasoby zarządzane przez system, takie jak te utworzone przez aplikacje zarządzane przez platformę Azure lub plany platformy Azure (przypisań odmowy przypisanych do systemu), uniemożliwiają użytkownikom z dzierżawy zarządzającej wykonywanie tych zasobów. Jednak w tej chwili użytkownicy w dzierżawie klienta nie mogą tworzyć własnych przypisań Odmów (przypisań Odmów przez użytkownika).
-
-## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>Korzystanie z interfejsów API i narzędzi do zarządzania w ramach zarządzania przez wiele dzierżawców
-
-Obsługiwane usługi i scenariusze wymienione powyżej umożliwiają wykonywanie zadań zarządzania bezpośrednio w portalu lub za pomocą interfejsów API i narzędzi do zarządzania (takich jak interfejs wiersza polecenia platformy Azure i Azure PowerShell). Wszystkie istniejące interfejsy API mogą być używane podczas pracy z delegowanymi zasobami (dla usług, które są obsługiwane).
-
-Istnieją także interfejsy API specyficzne dla wykonywania zadań zarządzania zasobami delegowanymi przez platformę Azure. Aby uzyskać więcej informacji, zobacz sekcję dotyczącą **odwołania** .
-
 
 ## <a name="next-steps"></a>Następne kroki
 

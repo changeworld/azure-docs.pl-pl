@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 85905f97500848be0e17da7d8a65209878713fc2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: c994b77105fe94eef418c0befc4c135ec09ada14
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516541"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900931"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Szybki Start: komunikacja z aplikacją urządzenia w C# usłudze za pośrednictwem IoT Hub strumieni urządzenia (wersja zapoznawcza)
 
@@ -33,6 +33,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 * Podgląd strumieni urządzeń jest obecnie obsługiwany tylko w przypadku centrów IoT, które zostały utworzone w następujących regionach:
   * Środkowe stany USA
   * Środkowe stany USA — EUAP
+  * Europa Północna
+  * Azja Południowo-Wschodnia
 
 * Dwie przykładowe aplikacje, które są uruchamiane w tym przewodniku Szybki Start C#, są zapisywane. Potrzebujesz zestaw .NET Core SDK 2.1.0 na komputerze deweloperskim lub nowszym.
   * Pobierz [zestaw .NET Core SDK dla wielu platform z platformy .NET](https://www.microsoft.com/net/download/all).

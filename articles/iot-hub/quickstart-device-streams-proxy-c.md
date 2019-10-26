@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 4474a36c2b87a618a9f755d2f42e330e837568f4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5d610f14dc037d1585b7f8ec1e0dd28944847b7a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516504"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900868"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Szybki Start: Włączanie protokołu SSH i RDP przez strumień urządzenia IoT Hub przy użyciu aplikacji serwera proxy języka C (wersja zapoznawcza)
 
@@ -56,6 +56,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
   * Środkowe stany USA
   * Środkowe stany USA — EUAP
+  * Europa Północna
+  * Azja Południowo-Wschodnia
 
 * Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/vs/) przy użyciu programu [Desktop C++ Development z](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) włączonym obciążeniem.
 * Zainstaluj najnowszą wersję usługi [Git](https://git-scm.com/download/).
@@ -149,7 +151,7 @@ Ta sekcja umożliwia ustanowienie kompleksowego strumienia do tunelowania ruchu 
 
 ### <a name="run-the-device-local-proxy-application"></a>Uruchamianie aplikacji serwera proxy urządzenia lokalnego
 
-1. Edytuj plik źródłowy **iothub_client_c2d_streaming_proxy_sample. c** w folderze `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` i podaj parametry połączenia urządzenia, adres IP/nazwa hosta urządzenia docelowego i port SSH 22:
+1. Edytuj plik źródłowy **iothub_client_c2d_streaming_proxy_sample. c** w folderze `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`i podaj parametry połączenia urządzenia, adres IP/nazwa hosta urządzenia docelowego i port SSH 22:
 
    ```C
    /* Paste in your device connection string  */

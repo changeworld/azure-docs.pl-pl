@@ -1,36 +1,30 @@
 ---
-title: Tworzenie wykresów i diagramów z usługi Azure Monitor dziennika zapytań | Dokumentacja firmy Microsoft
-description: W tym artykule opisano różne wizualizacje w usłudze Azure Monitor, aby wyświetlić dane dziennika na różne sposoby.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Tworzenie wykresów i diagramów z zapytań dzienników Azure Monitor | Microsoft Docs
+description: Opisuje różne wizualizacje w Azure Monitor do wyświetlania danych dzienników na różne sposoby.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 07d0866bd697587da170a00e8077a57035989d32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/16/2018
+ms.openlocfilehash: 34975a1752467c61ea5b329210473eee266c98d1
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60594113"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900398"
 ---
-# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Tworzenie wykresów i diagramów z usługi Azure Monitor dziennika zapytań
+# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Tworzenie wykresów i diagramów z zapytań dzienników Azure Monitor
 
 > [!NOTE]
-> Należy wykonać [zaawansowane agregacji w zapytaniach dzienników usługi Azure Monitor](advanced-aggregations.md) przed wykonaniem tej lekcji.
+> Przed ukończeniem tej lekcji należy wykonać [Zaawansowane agregacje w zapytaniach dziennika Azure monitor](advanced-aggregations.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym artykule opisano różne wizualizacje w usłudze Azure Monitor, aby wyświetlić dane dziennika na różne sposoby.
+W tym artykule opisano różne wizualizacje w Azure Monitor do wyświetlania danych dzienników na różne sposoby.
 
 ## <a name="charting-the-results"></a>Tworzenie wykresów wyników
-Rozpocznij od przejrzenia liczbę komputerów, które istnieją na system operacyjny, w ciągu ostatniej godziny:
+Zacznij od przejrzenia liczby komputerów dla każdego systemu operacyjnego w ciągu ostatniej godziny:
 
 ```Kusto
 Heartbeat
@@ -38,17 +32,17 @@ Heartbeat
 | summarize count(Computer) by OSType  
 ```
 
-Domyślnie wyniki są wyświetlane jako tabelę:
+Domyślnie wyniki są wyświetlane w postaci tabeli:
 
 ![Tabela](media/charts/table-display.png)
 
-Uzyskanie lepszego widoku, wybierz **wykresu**i wybierz polecenie **kołowy** możliwość wizualizowania wyników:
+Aby uzyskać lepszy widok, wybierz pozycję **Wykres**i wybierz opcję **kołowy** , aby wizualizować wyniki:
 
 ![Wykres kołowy](media/charts/charts-and-diagrams-pie.png)
 
 
 ## <a name="timecharts"></a>Timecharts
-Pokaż average, 50. i 95. percentyle czasu procesora w pojemnikach równej 1 godz. Zapytanie generuje wiele serii, a następnie możesz wybrać serii do wyświetlenia na wykresie czasu:
+Pokaż średnie, pięćdziesiąt i używany 95. percentyly czasu procesora w pojemnikach o wartości 1 godziny. Zapytanie generuje wiele serii, a następnie można wybrać serie do wyświetlenia na wykresie czasu:
 
 ```Kusto
 Perf
@@ -57,13 +51,13 @@ Perf
 | summarize avg(CounterValue), percentiles(CounterValue, 50, 95)  by bin(TimeGenerated, 1h)
 ```
 
-Wybierz **wiersza** wykresu opcja wyświetlania:
+Wybierz opcję wyświetlania wykresu **liniowego** :
 
 ![Wykres liniowy](media/charts/charts-and-diagrams-multiSeries.png)
 
-### <a name="reference-line"></a>Linii odwołania
+### <a name="reference-line"></a>Wiersz odwołania
 
-Linię odwołania może pomóc w prosty sposób identyfikowania Metryka przekracza określony próg. Aby dodać wiersz do wykresu, należy rozszerzyć zestaw danych o stałej kolumny:
+Wiersz odwołania może ułatwić identyfikację, czy Metryka przekroczyła określony próg. Aby dodać linię do wykresu, rozwiń zestaw danych za pomocą kolumny stałej:
 
 ```Kusto
 Perf
@@ -73,10 +67,10 @@ Perf
 | extend Threshold = 20
 ```
 
-![Linii odwołania](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
+![Wiersz odwołania](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>Wiele wymiarów
-Wiele wyrażeń w `by` klauzuli `summarize` utworzyć wiele wierszy w wynikach, jeden dla każdej kombinacji wartości.
+Wiele wyrażeń w `by` klauzuli `summarize` tworzy wiele wierszy w wynikach, po jednym dla każdej kombinacji wartości.
 
 ```Kusto
 SecurityEvent
@@ -84,21 +78,21 @@ SecurityEvent
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)
 ```
 
-Po wyświetleniu wyników jako wykres używa pierwszej kolumny z `by` klauzuli. W poniższym przykładzie przedstawiono wykres skumulowany kolumnowy przy użyciu _identyfikator zdarzenia._ Musi mieć wymiary `string` typu, więc w tym przykładzie _EventID_ jest rzutowany na ciąg. 
+Po wyświetleniu wyników w postaci wykresu zostanie użyta pierwsza kolumna z klauzuli `by`. Poniższy przykład przedstawia skumulowany wykres kolumnowy przy użyciu _EventId._ Wymiary muszą być typu `string`, więc w tym przykładzie _EventID_ jest rzutowany na ciąg. 
 
-![EventID wykres słupkowy](media/charts/charts-and-diagrams-multiDimension1.png)
+![EventID wykresu słupkowego](media/charts/charts-and-diagrams-multiDimension1.png)
 
 Możesz przełączać się między, wybierając listę rozwijaną z nazwą kolumny. 
 
-![Wykres słupkowy dla konta](media/charts/charts-and-diagrams-multiDimension2.png)
+![Pasek kont wykresu słupkowego](media/charts/charts-and-diagrams-multiDimension2.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne lekcje dotyczące korzystania z [język zapytania Kusto](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z innymi lekcjami dotyczącymi używania [języka zapytań Kusto](/azure/kusto/query/) z danymi dziennika Azure Monitor:
 
 - [Operacje na ciągach](string-operations.md)
-- [Operacje daty i godziny](datetime-operations.md)
+- [Operacje na dacie i godzinie](datetime-operations.md)
 - [Funkcje agregacji](aggregations.md)
-- [Zaawansowane agregacji](advanced-aggregations.md)
-- [JSON i struktur danych](json-data-structures.md)
-- [Pisanie zapytań zaawansowanych](advanced-query-writing.md)
-- [Sprzężenia](joins.md)
+- [Agregacje zaawansowane](advanced-aggregations.md)
+- [JSON i struktury danych](json-data-structures.md)
+- [Zaawansowane zapisywanie zapytań](advanced-query-writing.md)
+- [Łącze](joins.md)

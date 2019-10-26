@@ -1,26 +1,20 @@
 ---
 title: Telemetria usługi Application Insights i użycie funkcji CodeLens programu Visual Studio | Microsoft Docs
 description: Szybki dostęp do żądania usługi Application Insights i wyjątków telemetrii za pomocą funkcji CodeLens w programie Visual Studio.
-services: application-insights
-documentationcenter: .net
-author: NumberByColors
-manager: carmonm
-ms.assetid: 93559e44-23cb-4b9d-8425-60f7f0d0a82c
-ms.service: application-insights
-ms.custom: vs-azure
-ms.workload: azure-vs
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: d4f7cfab8291fcb6d0160035b9e421a8d47b2396
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: vs-azure
+ms.openlocfilehash: 4232431be221fca076a6bff9305093354f08c44d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255181"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899333"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Telemetria usługi Application Insights i użycie funkcji CodeLens programu Visual Studio
 Metody w kodzie aplikacji internetowej mogą być adnotowane przy użyciu telemetrii dotyczącej wyjątków czasu wykonywania i czasu odpowiedzi na żądanie. W przypadku instalowania usługi [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) w aplikacji dane telemetryczne pojawią się w funkcji [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) programu Visual Studio — w uwagach na górze każdej funkcji, w których są wyświetlane użyteczne informacje, takie jak liczba miejsc, w których odwoływano się do funkcji i nazwisko ostatniej osoby, która ją edytowała.
@@ -41,7 +35,7 @@ Poszukaj danych telemetrycznych usługi Application Insights we wskaźnikach Cod
 > 
 
 ## <a name="exceptions-in-codelens"></a>Wyjątki w funkcji CodeLens
-![TBD](./media/visual-studio-codelens/codelens-exceptions.png)
+![do ustalenia](./media/visual-studio-codelens/codelens-exceptions.png)
 
 Wskaźnik CodeLens wyjątku pokazuje liczbę wyjątków, które wystąpiły w ciągu ostatnich 24 godzin w 15 najczęściej występujących wyjątkach w aplikacji w tym okresie podczas przetwarzania żądania obsłużonego przez metodę.
 
@@ -63,7 +57,7 @@ Aby uzyskać szczegółowe informacje, kliknij wskaźnik CodeLens wyjątków:
 > 
 
 ## <a name="requests-in-codelens"></a>Żądania w funkcji CodeLens
-![TBD](./media/visual-studio-codelens/codelens-requests.png)
+![do ustalenia](./media/visual-studio-codelens/codelens-requests.png)
 
 Wskaźnik CodeLens żądania pokazuje liczbę żądań HTTP, które zostały obsłużone przez metodę w ciągu ostatnich 24 godzin oraz wartość procentową żądań, które nie powiodły się.
 

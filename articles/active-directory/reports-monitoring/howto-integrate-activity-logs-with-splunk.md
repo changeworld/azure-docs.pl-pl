@@ -1,5 +1,5 @@
 ---
-title: Integrowanie dzienników Azure Active Directory z usługą Splunk przy użyciu Azure Monitor | Microsoft Docs
+title: Integrowanie usługi Splunk przy użyciu Azure Monitor | Microsoft Docs
 description: Dowiedz się, jak zintegrować dzienniki Azure Active Directory z usługą SumoLogic przy użyciu Azure Monitor
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26df2b37a249f808cc044b41960ca1e210a311a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c083ba97fc2f2b1d53458c2fb1176c0ebf1024ec
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988217"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895160"
 ---
-# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Instrukcje: Integrowanie dzienników Azure Active Directory z usługą Splunk przy użyciu Azure Monitor
+# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Instrukcje: Integrowanie dzienników Azure Active Directory z Splunk za pomocą Azure Monitor
 
 W tym artykule dowiesz się, jak zintegrować dzienniki usługi Azure Active Directory (Azure AD) z usługą Splunk przy użyciu Azure Monitor. Najpierw należy skierować dzienniki do centrum zdarzeń platformy Azure, a następnie zintegrować centrum zdarzeń z Splunk.
 

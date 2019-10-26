@@ -1,23 +1,18 @@
 ---
 title: Monitorowanie użycia i wydajności klasycznych aplikacji systemu Windows
 description: Analizowanie użycia i wydajności klasycznej aplikacji systemu Windows za pomocą usługi Application Insights.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 19040746-3315-47e7-8c60-4b3000d2ddc4
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/09/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ed6df8b4724dbb297a0c64fd869d3377545a7595
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/09/2019
+ms.openlocfilehash: 18681f7130b3706f846b031dbb4852cda8b90d39
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932330"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899243"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Monitorowanie użycia i wydajności klasycznych aplikacji systemu Windows
 

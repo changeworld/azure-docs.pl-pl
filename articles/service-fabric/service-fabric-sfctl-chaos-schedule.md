@@ -3,22 +3,23 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric sfctl chaos | 
 description: Opisuje polecenia harmonogramu poleceń sfctl chaos w usłudze Service Fabric.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 1664978110b7c700906cbf4e6c80806ac70f1f05
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 443a8186ac6e57360105e59e30f84db997cd2251
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036522"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897539"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Pobierz i Ustaw harmonogram chaos.
@@ -39,42 +40,42 @@ Pobiera wersję harmonogramu chaos w użyciu oraz harmonogram chaos, który okre
 
 |Argument|Opis|
 | --- | --- |
-| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+| --timeout-t | Limit czasu serwera na potrzeby wykonywania operacji w sekundach. Ten limit czasu określa czas, przez jaki klient chce czekać na zakończenie wymaganej operacji. Wartość domyślna tego parametru to 60 sekund.  Domyślne\: 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos, zestaw harmonogramu
 Ustaw harmonogram używany przez chaos.
 
-Chaos automatycznie planuje przebiegi zgodnie z harmonogramem chaos. Wersja podanego harmonogramu wejściowego musi być zgodna z wersją harmonogramu chaos na serwerze. Jeśli podana wersja nie jest zgodna z wersją na serwerze, harmonogram chaos nie zostanie zaktualizowany. Jeśli podana wersja jest zgodna z wersją na serwerze, zostanie zaktualizowany harmonogram chaos, a wersja harmonogramu chaos na serwerze jest zwiększana o jeden i zawija się z powrotem do 0 po 2 147 483 647. Jeśli Chaos jest uruchomiona w trakcie tego wywołania, wywołanie zakończy się niepowodzeniem.
+Chaos automatycznie planuje przebiegi zgodnie z harmonogramem chaos. Harmonogram chaos zostanie zaktualizowany, jeśli podana wersja jest zgodna z wersją na serwerze. Podczas aktualizowania harmonogramu chaos wersja na serwerze jest zwiększana o 1. Wersja na serwerze będzie zawijana z powrotem do 0 po osiągnięciu dużej liczby. Jeśli Chaos jest uruchomiona w trakcie tego wywołania, wywołanie zakończy się niepowodzeniem.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
 | --Chaos-Parameters-dictionary | Zakodowana lista JSON reprezentująca Mapowanie nazw ciągów do ChaosParameters do użycia przez zadania. |
-| --expiry-date-utc | Data i godzina zatrzymania korzystania z harmonogramu w celu zaplanowania chaos.  Domyślnie\: 9999-12-31T23\:59\:59.999 z. |
+| --Data wygaśnięcia — czas UTC | Data i godzina zatrzymania korzystania z harmonogramu w celu zaplanowania chaos.  Domyślne\: 9999-12-31T23\:59\:59.999 Z. |
 | --zadania | Zakodowana w notacji JSON lista ChaosScheduleJobs reprezentująca, kiedy ma być uruchomiona chaos, i z parametrami, które mają być uruchamiane chaos z. |
-| --start-date-utc | Data i godzina rozpoczęcia korzystania z harmonogramu w celu zaplanowania chaos.  Domyślne\: 1601-01-01T00\:00\:00.000 z. |
-| --timeout-t | Limit czasu serwera (w sekundach).  Wartość\: domyślna 60. |
+| --Data rozpoczęcia — UTC | Data i godzina rozpoczęcia korzystania z harmonogramu w celu zaplanowania chaos.  Wartość domyślna\: 1601-01-01T00\:00\:00.000 Z. |
+| --timeout-t | Domyślne\: 60. |
 | --Version | Numer wersji harmonogramu. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: json, jsonc, Table, TSV.  Domyślny\: kod JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać\:więcej informacji i przykładów, zobacz http//jmespath.org/. |
+| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 ### <a name="examples"></a>Przykłady

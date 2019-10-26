@@ -1,21 +1,19 @@
 ---
 title: Diagnozowanie wyjątków czasu wykonywania za pomocą usługi Azure Application Insights | Microsoft Docs
 description: Samouczek omawiający znajdowanie i diagnozowanie wyjątków czasu wykonywania w aplikacji za pomocą usługi Azure Application Insights.
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 19455998ca13b9abf48bb1cb3856e38b5c47ef52
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 70ecc5dc95aced3eb901f24910339eb059ba0c17
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595607"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900466"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Znajdowanie i diagnozowanie wyjątków czasu wykonywania za pomocą usługi Azure Application Insights
 
@@ -34,9 +32,9 @@ Usługa Azure Application Insights gromadzi dane telemetryczne z Twojej aplikacj
 
 W celu ukończenia tego samouczka:
 
-- Zainstaluj [Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi pakietami roboczymi:
-    - ASP.NET i tworzenie aplikacji internetowych
-    - Programowanie na platformie Azure
+- Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi obciążeniami:
+    - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
+    - Tworzenie aplikacji na platformie Azure
 - Pobierz i zainstaluj rozszerzenie [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
 - Włącz rozszerzenie [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger).
 - Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](../../azure-monitor/app/asp-net.md). 
@@ -75,7 +73,7 @@ Usługa Application Insights zbiera wszelkie błędy z Twojej aplikacji i pozwal
     ![Szczegóły wyjątku](media/tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Identyfikowanie błędnego kodu
-Rozszerzenie Snapshot Debugger zbiera migawki najczęściej występujących wyjątków w Twojej aplikacji, aby pomóc Ci w diagnozowaniu głównej przyczyny problemu w środowisku produkcyjnym.  Migawki debugowania można wyświetlić w portalu, aby zobaczyć stos wywołań i sprawdzić zmienne w każdej ramce tego stosu. Później masz możliwość debugowania kod źródłowy, pobierając migawkę i otwierając go w programie Visual Studio Enterprise 2019 r.
+Rozszerzenie Snapshot Debugger zbiera migawki najczęściej występujących wyjątków w Twojej aplikacji, aby pomóc Ci w diagnozowaniu głównej przyczyny problemu w środowisku produkcyjnym.  Migawki debugowania można wyświetlić w portalu, aby zobaczyć stos wywołań i sprawdzić zmienne w każdej ramce tego stosu. Później istnieje możliwość debugowania kodu źródłowego przez pobranie migawki i otwarcie jej w programie Visual Studio 2019 Enterprise.
 
 1. We właściwościach wyjątku kliknij pozycję **Otwórz migawkę debugowania**.
 2. Zostanie otwarty panel **Migawka debugowania** ze stosem wywołań dla żądania.  Kliknij dowolną metodę, aby wyświetlić wartości wszystkich zmiennych lokalnych w momencie żądania.  Zaczynając od pierwszej metody w tym przykładzie, widać zmienne lokalne bez wartości.
@@ -111,7 +109,7 @@ Jeśli usługa Application Insights zostanie połączona z systemem śledzenia, 
 
     ![Nowy element roboczy](media/tutorial-runtime-exceptions/new-work-item.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz, gdy już wiesz, jak identyfikować wyjątki czasu wykonywania, przejdź do następnego samouczka, aby dowiedzieć się, jak identyfikować i diagnozować problemy z wydajnością.
 
 > [!div class="nextstepaction"]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: atsenthi
-ms.openlocfilehash: 4a865102cbc33da4140f3e25e4b4926eade8e162
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 241349724929845afa2fd2a4bacabf9b5017cc7c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599970"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901565"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Tworzenie klastra Service Fabric przy użyciu Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ ms.locfileid: "68599970"
 
 [Klaster Service Fabric platformy Azure](service-fabric-deploy-anywhere.md) to połączony z siecią zestaw maszyn wirtualnych, w których są wdrażane i zarządzane mikrousługi.  Klaster Service Fabric uruchomiony na platformie Azure to zasób platformy Azure, który jest wdrażany przy użyciu Azure Resource Manager. W tym artykule opisano sposób wdrażania bezpiecznego klastra Service Fabric na platformie Azure przy użyciu Menedżer zasobów. Możesz użyć domyślnego szablonu klastra lub szablonu niestandardowego.  Jeśli nie masz jeszcze szablonu niestandardowego, możesz [dowiedzieć się, jak go utworzyć](service-fabric-cluster-creation-create-template.md).
 
-Zabezpieczenia klastra są konfigurowane podczas pierwszej konfiguracji klastra i nie można ich później zmienić. Przed skonfigurowaniem klastra zapoznaj się z artykułem [scenariusze zabezpieczeń klastra Service Fabric][service-fabric-cluster-security]. Na platformie Azure Service Fabric używa certyfikatu x509 do zabezpieczania klastra i jego punktów końcowych, uwierzytelniania klientów i szyfrowania danych. Azure Active Directory jest również zalecane do zabezpieczenia dostępu do punktów końcowych zarządzania. Przed utworzeniem klastra należy utworzyć dzierżawy i użytkowników usługi Azure AD.  Aby uzyskać więcej informacji, przeczytaj temat [Konfigurowanie usługi Azure AD do uwierzytelniania klientów](service-fabric-cluster-creation-setup-aad.md).
+Typ zabezpieczeń wybrany do zabezpieczenia klastra (tj. tożsamość systemu Windows, certyfikat x509 itp.) musi być określony dla początkowego tworzenia klastra i nie można go zmienić później. Przed skonfigurowaniem klastra zapoznaj się z artykułem [scenariusze zabezpieczeń klastra Service Fabric][service-fabric-cluster-security]. Na platformie Azure Service Fabric używa certyfikatu x509 do zabezpieczania klastra i jego punktów końcowych, uwierzytelniania klientów i szyfrowania danych. Azure Active Directory jest również zalecane do zabezpieczenia dostępu do punktów końcowych zarządzania. Aby uzyskać więcej informacji, przeczytaj temat [Konfigurowanie usługi Azure AD do uwierzytelniania klientów](service-fabric-cluster-creation-setup-aad.md).
 
-Jeśli tworzysz klaster produkcyjny do uruchamiania obciążeń produkcyjnych, zalecamy zapoznanie się z listą kontrolną gotowości do [produkcji](service-fabric-production-readiness-checklist.md).
+Jeśli tworzysz klaster produkcyjny do uruchamiania obciążeń produkcyjnych, zalecamy zapoznanie się z [listą kontrolną gotowości do produkcji](service-fabric-production-readiness-checklist.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -44,10 +44,10 @@ W tym artykule należy wdrożyć klaster przy użyciu modułów Service Fabric M
 * [Interfejs wiersza polecenia platformy Azure w wersji 2,0 i nowszej][azure-CLI]
 
 Dokumentację referencyjną Service Fabric modułów można znaleźć tutaj:
-* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
+* [AZ. servicefabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [AZ SF CLI module](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
-### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Przed uruchomieniem dowolnego polecenia z tego artykułu, najpierw Zaloguj się do platformy Azure.
 
@@ -173,7 +173,7 @@ Użyj następującego polecenia, aby utworzyć klaster, jeśli masz certyfikat, 
 Jeśli jest to certyfikat podpisany przez urząd certyfikacji, który będzie używany do innych celów, należy również podać odrębną grupę zasobów dla magazynu kluczy. Zalecamy umieszczenie magazynu kluczy w jego własnej grupie zasobów. Ta akcja umożliwia usunięcie grup zasobów obliczeniowych i magazynu, w tym grupy zasobów zawierającej klaster Service Fabric bez utraty kluczy i wpisów tajnych. **Grupa zasobów zawierająca Magazyn kluczy *musi znajdować się w tym samym regionie* co klaster, który go używa.**
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>Użyj domyślnego piątego węzła, jednego szablonu typu węzła, który jest dostarczany w module
-Używany szablon jest dostępny w [przykładach platformy Azure: Szablon systemu Windows [](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure) i](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) szablon Ubuntu
+Używany szablon jest dostępny w [przykładach na platformie Azure: szablon systemu Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) i [szablon Ubuntu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
 Wdróż klaster przy użyciu programu PowerShell:
 
@@ -290,7 +290,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-W tym momencie masz bezpieczny klaster działający na platformie Azure. Następnie [Połącz](service-fabric-connect-to-secure-cluster.md) się z klastrem i Dowiedz się, jak zarządzać wpisami [tajnymi aplikacji](service-fabric-application-secret-management.md).
+W tym momencie masz bezpieczny klaster działający na platformie Azure. Następnie połącz się z [klastrem](service-fabric-connect-to-secure-cluster.md) i Dowiedz się, jak zarządzać wpisami [tajnymi aplikacji](service-fabric-application-secret-management.md).
 
 Aby poznać składnię i właściwości JSON dotyczące korzystania z szablonu, zobacz [Dokumentacja szablonu Microsoft. servicefabric/klastrów](/azure/templates/microsoft.servicefabric/clusters).
 

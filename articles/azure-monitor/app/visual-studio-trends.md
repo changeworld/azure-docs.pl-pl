@@ -1,26 +1,20 @@
 ---
 title: Analizowanie trendów w programie Visual Studio | Microsoft Docs
 description: Analizuj, wizualizuj i eksploruj trendy w telemetrii usługi Application Insights w programie Visual Studio.
-services: application-insights
-documentationcenter: .net
-author: NumberByColors
-manager: carmonm
-ms.assetid: 3150c6fc-2691-44f6-a290-fc5cd68e692a
-ms.service: application-insights
-ms.custom: vs-azure
-ms.workload: azure-vs
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 2b08dfd87910cbb9f23f6b108a970d160612e1a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: vs-azure
+ms.openlocfilehash: da1cd3ed9d07b1eb1304f6b26999af92d2704537
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255902"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899317"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analizowanie trendów w programie Visual Studio
 Narzędzie Trendy usługi Application Insights wizualizuje sposób, w jaki ważne zdarzenia telemetrii aplikacji internetowej zmieniają się z upływem czasu, co ułatwia szybkie identyfikowanie problemów i anomalii. Łącząc Cię z bardziej szczegółowymi informacjami diagnostycznymi, narzędzie Trendy może ułatwić zwiększenie wydajności aplikacji, śledzenie przyczyn wyjątków oraz odkrywanie szczegółowych danych w zdarzeniach niestandardowych.
@@ -69,7 +63,7 @@ Następnie kliknij pozycję **Analizuj telemetrię**, aby uruchomić zapytanie.
 Aby poruszać się między bąbelkami w wizualizacji:
 
 * Kliknij, aby wybrać bąbelek, który aktualizuje filtry w dolnej części okna, podsumowując tylko te zdarzenia, które wystąpiły w określonym czasie
-* Kliknij dwukrotnie bąbelek, aby przejść do narzędzia Search i wyświetlić wszystkie zdarzenia telemetrii, które wystąpiły w tym okresie
+* Kliknij dwukrotnie dymek, aby przejść do narzędzia wyszukiwania i zobaczyć wszystkie zdarzenia telemetrii, które wystąpiły w tym okresie czasu
 * Naciśnij klawisz Ctrl i kliknij bąbelek, aby usunąć jego zaznaczenie w wizualizacji.
 
 > [!TIP]
@@ -78,7 +72,7 @@ Aby poruszać się między bąbelkami w wizualizacji:
 > 
 
 ## <a name="filter"></a>Filtr
-Odkryj bardziej szczegółowe trendy, używając kontrolek filtrów w dolnej części okna. Aby zastosować filtr, kliknij jego nazwę. Możliwość szybkiego przełączania się między różnymi filtrami ułatwia odkrywanie trendów, które mogą ukrywać się w konkretnym wymiarze telemetrii. Jeśli zastosujesz filtr w jednym wymiarze, na przykład Typ wyjątku, nadal możesz klikać filtry w innych wymiarach, nawet pomimo tego, że są one wyszarzone. Aby anulować zastosowanie filtru, kliknij go ponownie. Naciśnij klawisz Ctrl i kliknij, aby wybrać wiele filtrów w tym samym wymiarze.
+Odkryj bardziej szczegółowe trendy, używając kontrolek filtrów w dolnej części okna. Aby zastosować filtr, kliknij jego nazwę. Możliwość szybkiego przełączania się między różnymi filtrami ułatwia odkrywanie trendów, które mogą ukrywać się w konkretnym wymiarze telemetrii. Jeśli zastosujesz filtr w jednym wymiarze, na przykład typ wyjątku, filtry w innych wymiarach pozostaną kliknięcia, nawet jeśli są wyszarzone. Aby cofnąć zastosowanie filtru, kliknij go ponownie. Naciśnij klawisz Ctrl i kliknij, aby wybrać wiele filtrów w tym samym wymiarze.
 
 ![Filtry trendów](./media/visual-studio-trends/TrendsFiltering-750.png)
 
@@ -94,7 +88,7 @@ Aby anulować zastosowanie jednego z tych filtrów, kliknij przycisk **Usuń wyb
 ![Wiele filtrów](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>Znajdowanie anomalii
-Narzędzie Trendy umożliwia wyróżnianie bąbelków zdarzeń, które są nieprawidłowe w porównaniu do innych bąbelków w tym samym szeregu czasowym. Z menu rozwijanego Typ widoku wybierz pozycję **Liczby w przedziale czasu (wyróżnij anomalie)** lub **Wartości procentowe w przedziale czasu (wyróżnij anomalie)** . Czerwone bąbelki są nieprawidłowe. Anomalie są zdefiniowane jako bąbelki zawierające liczby/wartości procentowe przekraczające 2,1 raza standardowe odchylenie od liczb/wartości procentowych, które wystąpiły w ostatnich dwóch okresach (48 godzin w przypadku przeglądania ostatnich 24 godzin, itp.).
+Narzędzie Trendy umożliwia wyróżnianie bąbelków zdarzeń, które są nieprawidłowe w porównaniu do innych bąbelków w tym samym szeregu czasowym. Z menu rozwijanego Typ widoku wybierz pozycję **Liczby w przedziale czasu (wyróżnij anomalie)** lub **Wartości procentowe w przedziale czasu (wyróżnij anomalie)** . Czerwone bąbelki są nieprawidłowe. Anomalie są zdefiniowane jako bąbelki z liczbami/procentami przekraczającymi 2,1 razy standardowe odchylenie liczby/procenty, które wystąpiły w ostatnich dwóch okresach (48 godz. w przypadku wyświetlenia ostatnich 24 godzin itp.).
 
 ![Kolorowe punkty oznaczają anomalie](./media/visual-studio-trends/TrendsAnomalies-750.png)
 

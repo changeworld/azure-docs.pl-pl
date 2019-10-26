@@ -1,21 +1,19 @@
 ---
 title: Szybki start — Azure Application Insights | Microsoft Docs
 description: Zawiera instrukcje umożliwiające szybkie skonfigurowanie ASP.NET Core aplikacji sieci Web na potrzeby monitorowania za pomocą Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 313e0c6cb487ed986c38610131c4bc19f2eeb846
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ec39380409d5170efb56530c86a41d934e41728a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916187"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900567"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET Core
 
@@ -25,11 +23,11 @@ Ten przewodnik Szybki Start przeprowadzi Cię przez proces dodawania zestawu SDK
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start:
+Aby ukończyć ten przewodnik Szybki Start:
 
 - [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi obciążeniami:
-  - ASP.NET i tworzenie aplikacji internetowych
-  - Programowanie na platformie Azure
+  - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
+  - Tworzenie aplikacji na platformie Azure
 - [Instalowanie zestawu SDK programu .NET Core 2.0](https://www.microsoft.com/net/core)
 - Wymagana jest subskrypcja platformy Azure i istniejąca aplikacja internetowa .NET Core.
 
@@ -39,9 +37,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
-## <a name="enable-application-insights"></a>Włącz usługę Application Insights
+## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
 
 Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowolnej aplikacji połączonej z Internetem, niezależnie od tego, czy jest to aplikacja lokalna czy aplikacja w chmurze. Aby rozpocząć wyświetlanie tych danych, wykonaj poniższe czynności.
 
@@ -52,11 +50,11 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
     Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
 
-   | Ustawienia        |  Value           | Opis  |
+   | Ustawienia        |  Wartość           | Opis  |
    | ------------- |:-------------|:-----|
    | **Nazwa**      | Wartość unikatowa w skali globalnej | Nazwa identyfikująca monitorowaną aplikację |
    | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów hostującej dane usługi App Insights |
-   | **Location** | East US | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
+   | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
 2. Kliknij przycisk **Utwórz**.
 
@@ -66,11 +64,11 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
     ![Dodawanie telemetrii usługi Application Insights](./media/dotnetcore-quick-start/2vsaddappinsights.png)
 
-2. Kliknij przycisk wprowadzenie
+2. Kliknij przycisk **wprowadzenie**
 
 3. Wybierz swoje konto i subskrypcję, > wybierz **istniejący zasób** utworzony w Azure Portal > kliknij pozycję **zarejestruj**.
 
-4. Wybierz **pozycję projekt** > **Zarządzanie** > **pakietami NuGet źródło pakietów: NuGet.org** > **zaktualizować** pakiety SDK Application Insights do najnowszej wersji stabilnej.
+4. Wybierz **projekt** > **zarządzać pakietami NuGet** > **Źródło pakietów: nuget.org** > **zaktualizować** pakiety SDK Application Insights do najnowszej wersji.
 
 5. Wybierz pozycję **Debuguj**  >  **Uruchom bez debugowania** (Ctrl+F5), aby uruchomić aplikację
 
@@ -89,7 +87,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
    ![Mapa aplikacji](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Kliknij ![ikonę **Analiza aplikacji** widok ikona](./media/dotnetcore-quick-start/006.png) mapy aplikacji **w obszarze Analiza**. Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
+3. Kliknij ikonę **Analiza aplikacji** ![ikonę mapy aplikacji](./media/dotnetcore-quick-start/006.png) **Widok w obszarze Analiza**. Spowoduje to otwarcie strony **Analiza usługi Application Insights**, która udostępnia zaawansowany język zapytań na potrzeby analizy wszystkich danych zbieranych przez usługę Application Insights. W tym przypadku jest generowane zapytanie, które renderuje liczbę żądań w formie wykresu. Możesz pisać własne zapytania do analizy innych danych.
 
    ![Wykres analizy żądań użytkowników w danym okresie](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -99,9 +97,9 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 5. Po lewej stronie kliknij pozycję **metryki**. Użyj Eksploratora metryk do zbadania kondycji i wykorzystania zasobu. Możesz kliknąć pozycję **Dodaj nowy wykres**, aby utworzyć dodatkowe widoki niestandardowe, lub wybrać pozycję **Edytuj**, aby zmodyfikować istniejące typy wykresów, wysokość, paletę kolorów, grupowanie i metryki. Na przykład można utworzyć wykres, który wyświetla średni czas ładowania strony w przeglądarce, wybierając pozycję "czas ładowania strony w przeglądarce" z listy rozwijanej metryki i "Średnia" z agregacji. Aby dowiedzieć się więcej o usłudze Azure Eksplorator metryk odwiedź stronę Rozpoczynanie [pracy z usługą azure Eksplorator metryk](../../azure-monitor/platform/metrics-getting-started.md).
 
-     ![Karta metryki: Średni wykres czasu ładowania strony przez przeglądarkę](./media/dotnetcore-quick-start/8metrics.png)
+     ![Karta metryk: Średni wykres czasu ładowania strony przeglądarki](./media/dotnetcore-quick-start/8metrics.png)
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 - Zewnętrzne wideo krok po kroku dotyczące [konfigurowania Application Insights z użyciem platformy .NET Core i programu Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) od podstaw.
 - Zewnętrzne wideo krok po kroku dotyczące [konfigurowania Application Insights przy użyciu platformy .NET Core i Visual Studio Code](https://youtu.be/ygGt84GDync) od podstaw.

@@ -1,18 +1,18 @@
 ---
 title: Opis obsługi czasu w Azure Stream Analytics
-description: Dowiedz się, jak działa obsługa czasu i jak rozwiązywać problemy z obsługą czasu w Azure Stream Analytics.
+description: Dowiedz się, w jaki sposób obsługa czasu działa w Azure Stream Analytics, jak w jaki sposób wybrać najlepszy czas rozpoczęcia, jak obsługiwać zdarzenia opóźnione i wczesne oraz metryki obsługi czasu.
 author: jasonwhowell
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 10d300638f95fe275a23dfbc239f8f961f46b127
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ae53663f78b684d41c36607760e30db9e48a6434
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598019"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901418"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Opis obsługi czasu w Azure Stream Analytics
 

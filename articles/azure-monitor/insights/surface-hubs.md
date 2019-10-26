@@ -1,88 +1,82 @@
 ---
-title: Monitoruj urządzenia Surface Hub z usługą Azure Monitor | Dokumentacja firmy Microsoft
-description: Rozwiązanie Surface Hub umożliwia śledzenie kondycji usługi urządzeń Surface Hub i zrozumieć, jak są one używane.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 8b4e56bc-2d4f-4648-a236-16e9e732ebef
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Monitoruj centra Surface Hub za pomocą Azure Monitor | Microsoft Docs
+description: Użyj rozwiązania Surface Hub, aby śledzić kondycję centrów Surface Hub i zrozumieć, jak są używane.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/16/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 7e0dbb4c3cd8ae4bb552e7b7f0748f1bde2f51de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/16/2018
+ms.openlocfilehash: 7ced5f678b9f8b2d4aa073a984276f41b8b7c4b9
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232785"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900619"
 ---
-# <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Monitorowanie urządzeń Surface Hub z usługą Azure Monitor, aby śledzić ich kondycję
+# <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Monitorowanie urządzeń Surface Hub przy użyciu Azure Monitor do śledzenia ich kondycji
 
-![Urządzenia Surface Hub symboli](./media/surface-hubs/surface-hub-symbol.png)
+![Symbol Surface Hub](./media/surface-hubs/surface-hub-symbol.png)
 
-W tym artykule opisano, jak używać rozwiązania Surface Hub w usłudze Azure Monitor do monitorowania urządzeń Microsoft Surface Hub. To rozwiązanie pomaga śledzić kondycję swojej urządzeń Surface Hub w dobrze zrozumieć, jak są one używane.
+W tym artykule opisano, jak można użyć rozwiązania Surface Hub w programie Azure Monitor do monitorowania urządzeń z programem Microsoft Surface Hub. Rozwiązanie pomaga śledzić kondycję centrów Surface Hub oraz zrozumieć, jak są używane.
 
-Każdego urządzenia Surface Hub ma zainstalowany program Microsoft Monitoring Agent. Jej za pomocą agenta, że w przypadku wysłania danych z Twojego urządzenia Surface Hub do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor. Pliki dziennika są odczytywane z urządzeń Surface Hub i są następnie są wysyłane do usługi Azure Monitor. Zagadnienia, takie jak serwery, jest w trybie offline, Kalendarz nie synchronizuje lub jeśli konta urządzeń nie może zalogować się do usługi Skype są wyświetlane na pulpicie nawigacyjnym urządzenia Surface Hub w usłudze Azure Monitor. Przy użyciu danych na pulpicie nawigacyjnym, możesz zidentyfikować urządzenia nie są uruchomione lub są inne problemy oraz potencjalnie zastosować poprawki dotyczące wykrytych problemów.
+Każda Surface Hub ma zainstalowany Microsoft Monitoring Agent. Za pośrednictwem agenta można wysyłać dane z Surface Hub do Log Analytics obszaru roboczego w Azure Monitor. Pliki dziennika są odczytywane z centrów Surface Hub i są następnie wysyłane do Azure Monitor. Problemy, takie jak serwery w trybie offline, niesynchronizowane z kalendarzem lub jeśli konto urządzenia nie może się zalogować do programu Skype, są wyświetlane na pulpicie nawigacyjnym Surface Hub w Azure Monitor. Za pomocą danych na pulpicie nawigacyjnym można identyfikować urządzenia, które nie są uruchomione lub które mają inne problemy, a także mogą dotyczyć wykrytych problemów.
 
-## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
-Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie. Aby można było zarządzać swoje urządzeń Surface Hub w usłudze Azure Monitor, będą potrzebne następujące czynności:
+## <a name="install-and-configure-the-solution"></a>Instalowanie i Konfigurowanie rozwiązania
+Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie. Aby zarządzać centrami powierzchni w Azure Monitor, potrzebne są następujące elementy:
 
-* A [subskrypcja usługi Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) poziom, który będzie obsługiwać liczbę urządzeń, które chcesz monitorować. Cennik usługi log Analytics różni się w zależności od tego, ile urządzeń są rejestrowane, a także jak dużo danych go procesów. Należy wziąć pod uwagę podczas planowania wdrożenia urządzenia Surface Hub.
+* Poziom [subskrypcji log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) , który będzie obsługiwał liczbę urządzeń, które mają być monitorowane. Ceny Log Analytics różnią się w zależności od liczby zarejestrowanych urządzeń i ilości przetwarzanych danych. W tym celu należy wziąć pod uwagę podczas planowania wdrożenia Surface Hub.
 
-Następnie spowoduje dodanie do istniejącego obszaru roboczego usługi Log Analytics lub Utwórz nową. Szczegółowe instrukcje dotyczące przy użyciu jednej z metod wynosi [Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal](../learn/quick-create-workspace.md). Po skonfigurowaniu obszaru roboczego usługi Log Analytics, istnieją dwa sposoby rejestrowania urządzeń Surface Hub:
+Następnie dodasz istniejący obszar roboczy Log Analytics lub utworzysz nowy. Szczegółowe instrukcje dotyczące korzystania z jednej z tych metod znajdują się w [obszarze roboczym log Analytics w Azure Portal](../learn/quick-create-workspace.md). Po skonfigurowaniu obszaru roboczego Log Analytics istnieją dwa sposoby rejestrowania urządzeń Surface Hub:
 
-* Automatycznie za pomocą usługi Intune
-* Ręcznie za pomocą **ustawienia** na urządzeniu Surface Hub.
+* Automatycznie za poorednictwem usługi Intune
+* Ręcznie za poorednictwem **ustawień** na urządzeniu Surface Hub.
 
 ## <a name="set-up-monitoring"></a>Konfigurowanie monitorowania
-Można monitorować kondycję i działanie usługi Surface Hub przy użyciu usługi Azure Monitor. Możesz zarejestrować urządzenia Surface Hub przy użyciu usługi Intune lub lokalnie, używając **ustawienia** na urządzeniu Surface Hub.
+Kondycję i aktywność Surface Hub można monitorować przy użyciu Azure Monitor. Surface Hub można zarejestrować za pomocą usługi Intune lub lokalnie za pomocą **ustawień** na Surface Hub.
 
-## <a name="connect-surface-hubs-to-azure-monitor-through-intune"></a>Łączenie urządzenia Surface Hub do monitorowania platformy Azure za pomocą usługi Intune
-Identyfikator obszaru roboczego i klucz obszaru roboczego należy dla obszaru roboczego usługi Log Analytics, która ma zarządzać usługi urządzeń Surface Hub. Możesz uzyskać te z ustawienia obszaru roboczego w witrynie Azure portal.
+## <a name="connect-surface-hubs-to-azure-monitor-through-intune"></a>Łączenie urządzeń Surface Hub z Azure Monitor przy użyciu usługi Intune
+Musisz mieć identyfikator obszaru roboczego i klucz obszaru roboczego dla obszaru roboczego Log Analytics, który będzie zarządzać centrami Surface Hub. Można je pobrać z ustawień obszaru roboczego w Azure Portal.
 
-Usługa Intune jest produktem firmy Microsoft, która umożliwia centralne zarządzanie ustawienia konfiguracji obszaru roboczego usługi Log Analytics, które są stosowane do co najmniej jednej z Twoich urządzeń. Wykonaj następujące kroki, aby skonfigurować urządzenia za pomocą usługi Intune:
+Usługa Intune to produkt firmy Microsoft, który umożliwia centralne zarządzanie ustawieniami konfiguracji obszaru roboczego Log Analytics, które są stosowane do jednego lub kilku urządzeń. Wykonaj następujące kroki, aby skonfigurować urządzenia przy użyciu usługi Intune:
 
 1. Zaloguj się do usługi Intune.
-2. Przejdź do **ustawienia** > **połączonych źródeł**.
+2. Przejdź do **ustawień** > **połączone źródła**.
 3. Utwórz lub Edytuj zasady na podstawie szablonu Surface Hub.
-4. Przejdź do sekcji usługi Azure Operational Insights, zasad i Dodaj usługi Log Analytics *identyfikator obszaru roboczego* i *klucz obszaru roboczego* do zasad.
+4. Przejdź do sekcji Azure Operational Insights zasad i Dodaj *Identyfikator obszaru roboczego* log Analytics i *klucz obszaru roboczego* do zasad.
 5. Zapisz zasady.
-6. Skojarzyć zasady z odpowiedniej grupy urządzeń.
+6. Skojarz zasady z odpowiednią grupą urządzeń.
 
    ![Zasady usługi Intune](./media/surface-hubs/intune.png)
 
-Usługa Intune następnie synchronizuje ustawienia usługi Log Analytics za pomocą urządzeń w grupie docelowej rejestrujesz je w obszarze roboczym usługi Log Analytics.
+Następnie usługa Intune synchronizuje ustawienia Log Analytics z urządzeniami w grupie docelowej, rejestrując je w obszarze roboczym Log Analytics.
 
-## <a name="connect-surface-hubs-to-azure-monitor-using-the-settings-app"></a>Łączenie urządzeń Surface Hub do usługi Azure Monitor, przy użyciu aplikacji ustawienia
-Identyfikator obszaru roboczego i klucz obszaru roboczego należy dla obszaru roboczego usługi Log Analytics, która ma zarządzać usługi urządzeń Surface Hub. Możesz uzyskać te elementy w ustawieniach obszaru roboczego usługi Log Analytics w witrynie Azure portal.
+## <a name="connect-surface-hubs-to-azure-monitor-using-the-settings-app"></a>Łączenie urządzeń Surface Hub z Azure Monitor przy użyciu aplikacji ustawienia
+Musisz mieć identyfikator obszaru roboczego i klucz obszaru roboczego dla obszaru roboczego Log Analytics, który będzie zarządzać centrami Surface Hub. Można je pobrać z ustawień obszaru roboczego Log Analytics w Azure Portal.
 
-Jeśli nie używasz usługi Intune do zarządzania środowiskiem, możesz zarejestrować urządzenia ręcznie za pomocą **ustawienia** na każdym urządzeniu Surface Hub:
+Jeśli nie korzystasz z usługi Intune do zarządzania środowiskiem, możesz zarejestrować urządzenia ręcznie, korzystając z **ustawień** poszczególnych Surface Hub:
 
-1. Na urządzeniu Surface Hub Otwórz **ustawienia**.
-2. Wprowadź poświadczenia administratora urządzenia, po wyświetleniu monitu.
-3. Kliknij przycisk **to urządzenie**, a w obszarze **monitorowanie**, kliknij przycisk **skonfigurować ustawienia usługi Analiza dzienników**.
-4. Wybierz **Włącz monitorowanie**.
-5. W oknie dialogowym Ustawienia usługi Log Analytics, wpisz usługi Log Analytics **identyfikator obszaru roboczego** i wpisz **klucz obszaru roboczego**.  
-   ![Ustawienia](./media/surface-hubs/settings.png)
-6. Kliknij przycisk **OK** aby zakończyć konfigurację.
+1. W Surface Hub Otwórz pozycję **Ustawienia**.
+2. Po wyświetleniu monitu wprowadź poświadczenia administratora urządzenia.
+3. Kliknij **to urządzenie**, a następnie w obszarze **monitorowanie**kliknij pozycję **Konfiguruj log Analytics ustawienia**.
+4. Wybierz pozycję **Włącz monitorowanie**.
+5. W oknie dialogowym Ustawienia Log Analytics wpisz Log Analytics **Identyfikator obszaru roboczego** i wpisz **klucz obszaru roboczego**.  
+   ](./media/surface-hubs/settings.png) ustawienia ![
+6. Kliknij przycisk **OK** , aby zakończyć konfigurację.
 
-Zostanie wyświetlone potwierdzenie, informujące o tym, czy konfiguracja została pomyślnie zastosowana do urządzenia. Jeśli tak jest, pojawi się komunikat z informacją, że agent pomyślnie nawiązano połączenie do usługi Azure Monitor. Urządzenie zostanie następnie uruchomione wysyłania danych do usługi Azure Monitor, w którym można wyświetlać i działa na nim.
+Zostanie wyświetlone potwierdzenie, że konfiguracja została pomyślnie zastosowana na urządzeniu. Jeśli tak, zostanie wyświetlony komunikat z informacją, że Agent pomyślnie nawiązał połączenie z Azure Monitor. Następnie urządzenie rozpocznie wysyłanie danych do Azure Monitor, w którym można je wyświetlić i wykonać na nim działania.
 
-## <a name="monitor-surface-hubs"></a>Monitor urządzenia Surface Hub
-Monitorowanie usługi urządzeń Surface Hub przy użyciu usługi Azure Monitor jest podobne do monitorowania innymi zarejestrowanymi urządzeniami.
+## <a name="monitor-surface-hubs"></a>Monitorowanie urządzeń Surface Hub
+Monitorowanie centrów Surface Hub przy użyciu Azure Monitor jest podobne do monitorowania wszelkich innych zarejestrowanych urządzeń.
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-Po kliknięciu kafelka Surface Hub kondycji urządzenia jest wyświetlany.
+Po kliknięciu kafelka Surface Hub zostanie wyświetlony stan kondycji urządzenia.
 
-   ![Pulpicie nawigacyjnym urządzenia Surface Hub](./media/surface-hubs/surface-hub-dashboard.png)
+   ![Pulpit nawigacyjny Surface Hub](./media/surface-hubs/surface-hub-dashboard.png)
 
-Możesz utworzyć [alerty](../platform/alerts-overview.md) oparte na istniejące lub niestandardowych wyszukiwań w dziennikach. Korzystając z danych usługi Azure Monitor zbiera dane z usługi urządzeń Surface Hub, możesz wyszukać problemów i powiązane alerty warunki, które definiują dla urządzeń.
+Możesz tworzyć [alerty](../platform/alerts-overview.md) na podstawie istniejących lub niestandardowych wyszukiwań w dziennikach. Korzystając z Azure Monitor danych zbieranych z centrów Surface Hub, można wyszukiwać problemy i alerty dotyczące warunków zdefiniowanych dla urządzeń.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Użyj [rejestrowania zapytań w usłudze Azure Monitor](../log-query/log-query-overview.md) Aby przeglądać szczegółowe dane na urządzeniu Surface Hub.
-* Tworzenie [alerty](../platform/alerts-overview.md) być powiadamiana wystąpić problemy z usługi urządzeń Surface Hub.
+## <a name="next-steps"></a>Następne kroki
+* Użyj [zapytań dzienników w Azure monitor](../log-query/log-query-overview.md) , aby wyświetlić szczegółowe dane Surface Hub.
+* Utwórz [alerty](../platform/alerts-overview.md) , aby powiadomić Cię, gdy wystąpią problemy z centrami Surface Hub.

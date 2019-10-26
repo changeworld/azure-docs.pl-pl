@@ -1,24 +1,18 @@
 ---
 title: Wykonywanie zapytań między zasobami przy użyciu Azure Monitor | Microsoft Docs
 description: W tym artykule opisano, jak można wykonywać zapytania względem zasobów z wielu obszarów roboczych i aplikacji usługi App Insights w ramach subskrypcji.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/05/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: a1ea4012b7cda5b5deab82027e5547a9c9ef786f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 06/05/2019
+ms.openlocfilehash: e74c81956ab0590b8b7237d3ecf60ae242a43b73
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650151"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894485"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Wykonywanie zapytań dotyczących dzienników wielu zasobów w Azure Monitor  
 
@@ -45,7 +39,7 @@ Identyfikację obszaru roboczego można wykonać na jeden z kilku sposobów:
 
     `workspace("contosoretail-it").Update | count`
 
-* Kwalifikowana nazwa — to "pełna nazwa" obszaru roboczego, składająca się z nazwy subskrypcji, grupy zasobów i nazwy składnika w tym formacie: subscriptionname */resourceName/ComponentName*. 
+* Kwalifikowana nazwa — to "pełna nazwa" obszaru roboczego, składająca się z nazwy subskrypcji, grupy zasobów i nazwy składnika w tym formacie: *subscriptionname/resourceName/ComponentName*. 
 
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
@@ -59,7 +53,7 @@ Identyfikację obszaru roboczego można wykonać na jeden z kilku sposobów:
 
 * Identyfikator zasobu platformy Azure — unikatowa tożsamość obszaru roboczego zdefiniowana przez platformę Azure. Identyfikator zasobu jest używany, gdy nazwa zasobu jest niejednoznaczna.  W przypadku obszarów roboczych format: */subscriptions/subscriptionId/ResourceGroups/resourceGroup/Providers/Microsoft. OperationalInsights/Workspaces/ComponentName*.  
 
-    Przykład:
+    Na przykład:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -110,7 +104,7 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Używanie zapytania między zasobami dla wielu zasobów
 W przypadku korzystania z zapytań między zasobami w celu skorelowania danych z wielu obszarów roboczych Log Analytics i zasobów Application Insights, zapytanie może stać się skomplikowane i trudne do utrzymania. W celu oddzielenia logiki zapytania od zakresu zasobów zapytania, które upraszczają strukturę zapytań, należy korzystać z [funkcji w kwerendach dzienników Azure monitor](functions.md) . W poniższym przykładzie pokazano, jak można monitorować wiele zasobów Application Insights i wizualizować liczbę żądań nieudanych przez nazwę aplikacji. 
 
-Utwórz zapytanie podobne do zakresu zasobów Application Insights. `withsource= SourceApp` Polecenie dodaje kolumnę, która określa nazwę aplikacji, która wysłała dziennik. [Zapisz zapytanie jako funkcję](functions.md#create-a-function) z aliasem _applicationsScoping_.
+Utwórz zapytanie podobne do zakresu zasobów Application Insights. Polecenie `withsource= SourceApp` dodaje kolumnę, która określa nazwę aplikacji, która wysłała dziennik. [Zapisz zapytanie jako funkcję](functions.md#create-a-function) z aliasem _applicationsScoping_.
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources

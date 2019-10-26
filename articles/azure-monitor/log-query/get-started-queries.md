@@ -1,24 +1,18 @@
 ---
 title: Rozpoczynanie pracy z zapytaniami dzienników w Azure Monitor | Microsoft Docs
 description: Ten artykuł zawiera samouczek dotyczący rozpoczynania pisania zapytań dzienników w Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/09/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: MT
+ms.date: 05/09/2019
+ms.openlocfilehash: d9116ba1b43959402223e0cbd1e4f729e053b9b6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076763"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894300"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Wprowadzenie do zapytań dzienników w Azure Monitor
 
@@ -63,7 +57,7 @@ Pokazane powyżej zapytanie zwraca 10 wyników z tabeli *SecurityEvent* w okreś
 * Znak potoku (|) oddziela polecenia, więc dane wyjściowe pierwszego z nich w danych wejściowych z następującego polecenia. Można dodać dowolną liczbę elementów potokowych.
 * Po potoku jest polecenie **Take** , które zwraca określoną liczbę dowolnych rekordów z tabeli.
 
-W rzeczywistości można uruchomić zapytanie nawet bez dodawania `| take 10` , które nadal będzie prawidłowe, ale może to spowodować zwrócenie do 10 000 wyników.
+W rzeczywistości można uruchomić zapytanie nawet bez dodawania `| take 10`, które nadal będą prawidłowe, ale może to spowodować zwrócenie do 10 000 wyników.
 
 ### <a name="search-queries"></a>Zapytania wyszukiwania
 Zapytania wyszukiwania są mniej strukturalne i zwykle bardziej dopasowane do znajdowania rekordów zawierających określoną wartość w dowolnej z ich kolumn:
@@ -73,13 +67,13 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-To zapytanie przeszukuje tabelę *SecurityEvent* pod kątem rekordów zawierających frazę "Cryptographic". Z tych rekordów zostaną zwrócone i wyświetlone 10 rekordów. W przypadku pominięcia `in (SecurityEvent)` części i uruchomienia `search "Cryptographic"`, wyszukiwanie przejdzie nad *wszystkie* tabele, co zajmie więcej czasu i jest mniej wydajne.
+To zapytanie przeszukuje tabelę *SecurityEvent* pod kątem rekordów zawierających frazę "Cryptographic". Z tych rekordów zostaną zwrócone i wyświetlone 10 rekordów. Jeśli pominięto część `in (SecurityEvent)` i po prostu uruchamiasz `search "Cryptographic"`, wyszukiwanie przejdzie przez *wszystkie* tabele, co zajmie więcej czasu i jest mniej wydajne.
 
 > [!WARNING]
 > Zapytania wyszukiwania są zwykle wolniejsze niż zapytania oparte na tabelach, ponieważ muszą przetwarzać więcej danych. 
 
 ## <a name="sort-and-top"></a>Sortuj i Top
-Mimo że warto pobrać kilka rekordów, wyniki są wybierane i wyświetlane w określonej kolejności. Aby uzyskać widok uporządkowany, można **posortować** według preferowanej kolumny:
+Mimo **że warto pobrać** kilka rekordów, wyniki są wybierane i wyświetlane w określonej kolejności. Aby uzyskać widok uporządkowany, można **posortować** według preferowanej kolumny:
 
 ```Kusto
 SecurityEvent   
@@ -116,7 +110,7 @@ Podczas pisania warunków filtrowania można użyć następujących wyrażeń:
 |:---|:---|:---|
 | == | Sprawdź równość<br>(z uwzględnieniem wielkości liter) | `Level == 8` |
 | =~ | Sprawdź równość<br>(bez uwzględniania wielkości liter) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| !=, <> | Sprawdzanie nierówności<br>(oba wyrażenia są identyczne) | `Level != 4` |
+| ! =, < > | Sprawdzanie nierówności<br>(oba wyrażenia są identyczne) | `Level != 4` |
 | *i* *lub* | Wymagane między warunkami| `Level == 16 or CommandLine != ""` |
 
 Aby filtrować według wielu warunków, można użyć **i**:
@@ -135,14 +129,14 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Wartości mogą mieć różne typy, więc może być konieczne rzutowanie ich w celu przeprowadzenia porównania w poprawnym typie. Na przykład kolumna *poziomu* SecurityEvent jest typu String, więc musisz rzutować ją na typ liczbowy, na przykład *int* lub *Long*, zanim będzie można używać operatorów numerycznych:`SecurityEvent | where toint(Level) >= 10`
+> Wartości mogą mieć różne typy, więc może być konieczne rzutowanie ich w celu przeprowadzenia porównania w poprawnym typie. Na przykład kolumna *poziomu* SecurityEvent jest typu String, dlatego należy rzutować ją na typ liczbowy, na przykład *int* lub *Long*, zanim będzie można używać operatorów numerycznych: `SecurityEvent | where toint(Level) >= 10`
 
 ## <a name="specify-a-time-range"></a>Określ zakres czasu
 
 ### <a name="time-picker"></a>Wybór godziny
 Selektor godziny znajduje się obok przycisku Uruchom i wskazuje, że wysyłamy zapytania tylko do rekordów z ostatnich 24 godzin. Jest to domyślny zakres czasu stosowany do wszystkich zapytań. Aby uzyskać tylko rekordy z ostatniej godziny, wybierz pozycję _Ostatnia godzina_ i ponownie uruchom zapytanie.
 
-![Selektor godziny](media/get-started-queries/timepicker.png)
+![Selektor czasu](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>Filtr czasu w zapytaniu
@@ -154,7 +148,7 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-W filtrze `ago(30m)` powyżej "30 minut temu", więc to zapytanie zwraca tylko rekordy z ostatnich 30 minut. Inne jednostki czasu obejmują dni (2D), minuty (25m) i sekundy (dziesiątkach).
+W filtrze powyżej `ago(30m)` oznacza "30 minut temu", więc ta kwerenda zwraca tylko rekordy z ostatnich 30 minut. Inne jednostki czasu obejmują dni (2D), minuty (25m) i sekundy (dziesiątkach).
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Projekt i rozszerzona: Wybieranie i kolumny obliczeniowe
@@ -226,7 +220,7 @@ Perf
 ```
 
 ### <a name="summarize-by-a-time-column"></a>Podsumowanie według kolumny czasu
-Grupowanie wyników może być również oparte na kolumnie czas lub innej ciągłej wartości. Po prostu Podsumowując `by TimeGenerated` , można utworzyć grupy dla każdej pojedynczej milisekundy w zakresie czasu, ponieważ są to unikatowe wartości. 
+Grupowanie wyników może być również oparte na kolumnie czas lub innej ciągłej wartości. Po prostu Podsumowując `by TimeGenerated` można utworzyć grupy dla każdej pojedynczej milisekundy w zakresie czasu, ponieważ są to unikatowe wartości. 
 
 Aby utworzyć grupy na podstawie wartości ciągłych, najlepiej podzielić zakres na jednostki możliwe do zarządzania przy użyciu usługi **bin**. Poniższe zapytanie analizuje rekordy *wydajności* , które mierzą ilość wolnej pamięci (*dostępna pamięć (MB*) na określonym komputerze. Oblicza średnią wartość każdego ciągu 1 godziny w ciągu ostatnich 7 dni:
 

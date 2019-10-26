@@ -1,5 +1,5 @@
 ---
-title: Raport dotyczący ryzykownych logowań w portalu usługi Azure Active Directory | Microsoft Docs
+title: Raport dotyczący ryzykownych logowań w portalu | Microsoft Docs
 description: Dowiedz się więcej o raporcie dotyczącym ryzykownych logowań w portalu usługi Azure Active Directory
 services: active-directory
 author: cawrites
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72493400ba20ef3c838a636b66afdf26aa00ff62
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 31a002af32ac6c07e6358a3ccd0f1420d3e8c9ef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127434"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895181"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Raport dotyczący ryzykownych logowań w portalu usługi Azure Active Directory
 
@@ -81,7 +81,7 @@ W oparciu o badanie ryzykownego logowania można przekazać informacje zwrotne d
 
 Ten raport udostępnia również opcję:
 
-- Wyszukaj zasoby
+- Wyszukiwanie zasobów
 - Pobierania danych raportu
 
 ![Ryzykowne logowania](./media/concept-risky-sign-ins/93.png)
@@ -98,7 +98,7 @@ Raport dotyczący ryzykownych logowań w wersjach Premium usługi Azure AD oferu
 
 Po wybraniu wykrywania ryzyka zostanie wyświetlony szczegółowy widok raportu dla tego wykrywania ryzyka, który umożliwia:
 
-- Skonfigurowanie [zasad podejmowania działań naprawczych dotyczących ryzyka związanego z użytkownikiem](../identity-protection/howto-user-risk-policy.md).  
+- Opcja skonfigurowania [zasad podejmowania działań naprawczych dotyczących ryzyka związanego z użytkownikiem](../identity-protection/howto-user-risk-policy.md)  
 
 - Przejrzyj oś czasu wykrywania w celu wykrycia ryzyka  
 
@@ -109,7 +109,7 @@ Po wybraniu wykrywania ryzyka zostanie wyświetlony szczegółowy widok raportu 
 ![Ryzykowne logowania](./media/concept-risky-sign-ins/457.png)
 
 > [!IMPORTANT]
-> Czasami może się okazać, że wykrywanie ryzyka nie ma odpowiedniego wpisu logowania w [raporcie logowania](concept-sign-ins.md). Wynika to z faktu, że usługa Identity Protection szacuje ryzyko dla logowania interaktywnego i nieinterakcyjnego, podczas gdy raport logowania zawiera tylko interakcyjne logowania.
+> Czasami może się okazać, że wykrywanie ryzyka nie ma odpowiedniego wpisu logowania w [raporcie logowania](concept-sign-ins.md). Wynika to z faktu, że usługa Identity Protection szacuje ryzyko dla logowania **interaktywnego** i **nieinterakcyjnego** , podczas gdy raport logowania zawiera tylko interakcyjne logowania.
 
 Po wybraniu użytkownika jest dla niego wyświetlany szczegółowy widok raportu, który umożliwia wykonanie następujących czynności:
 
@@ -117,7 +117,7 @@ Po wybraniu użytkownika jest dla niego wyświetlany szczegółowy widok raportu
 
 - Resetowanie hasła użytkownika.
 
-- Odrzuć wszystkie zdarzenia
+- Odrzucanie wszystkich zdarzeń.
 
 - Zbadaj zgłoszone wykrywania ryzyka dla użytkownika. 
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c7257ec35f9a53f84edebd5e15b7144c49daf682
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 4acfe148e424d41308e310abd2a10e4e21133799
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514957"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900845"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Szybki Start: komunikacja z aplikacją urządzenia w języku Node. js za pośrednictwem IoT Hub strumieni urządzenia (wersja zapoznawcza)
 
@@ -44,9 +44,10 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Podgląd strumieni urządzeń jest obecnie obsługiwany tylko dla centrów IoT utworzonych w następujących regionach:
 
-*  **Środkowe stany USA**
-
-*  **Środkowe stany USA — EUAP**
+  * Środkowe stany USA
+  * Środkowe stany USA — EUAP
+  * Europa Północna
+  * Azja Południowo-Wschodnia
 
 Aby uruchomić aplikację po stronie usługi w tym przewodniku Szybki Start, musisz mieć Node. js v10. x. x lub nowszy na komputerze deweloperskim.
 

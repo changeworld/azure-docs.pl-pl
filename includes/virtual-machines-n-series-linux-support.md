@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0ed7fbf5e2b4f7f9b554f718d88c62e7a266f4ad
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 224180bdebdf94c6d2360df8ea6615add4675921
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903859"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72902253"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Obsługiwane dystrybucje i sterowniki
 
@@ -26,7 +26,7 @@ Sterowniki NVIDIA CUDA dla maszyn wirtualnych z serii NC, NCv2, Seria NCV3, ND i
 
 | Dystrybucja | Sterownik |
 | --- | -- | 
-| Ubuntu 16.04 LTS, 18.04 LTS<br/><br/> Red Hat Enterprise Linux 7,3, 7,4, 7,5, 7,6<br/><br/> CentOS-based 7,3, 7,4, 7,5, 7,6, CentOS-based 7,4 | NVIDIA CUDA 10,1, gałąź sterownika R418 |
+| Ubuntu 16,04 LTS, 18,04 LTS<br/><br/> Red Hat Enterprise Linux 7,3, 7,4, 7,5, 7,6<br/><br/> CentOS-based 7,3, 7,4, 7,5, 7,6, CentOS-based 7,4 | NVIDIA CUDA 10,1, gałąź sterownika R418 |
 
 ### <a name="nvidia-grid-drivers"></a>Sterowniki sieci NVIDIA
 
@@ -34,7 +34,7 @@ Firma Microsoft redystrybuuje Instalatory sterowników NVIDIA GRID dla maszyn wi
 
 | Dystrybucja | Sterownik |
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,0 do 7,6<br/><br/>CentOS-based 7,0 do 7,6<br/><br/>SUSE Linux Enterprise Server 12 z dodatkiem SP2 | NVIDIA GRID 9,0, gałąź sterownika R430|
+|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,0 do 7,6<br/><br/>CentOS-based 7,0 do 7,6<br/><br/>SUSE Linux Enterprise Server 12 z dodatkiem SP2 | NVIDIA GRID 9,1, gałąź sterownika R430|
 
 > [!WARNING] 
 > Instalacja oprogramowania innych firm na produktach systemu Red Hat może wpłynąć na warunki wsparcia systemu Red Hat. Zobacz [artykuł bazy wiedzy systemu Red Hat](https://access.redhat.com/articles/1067).

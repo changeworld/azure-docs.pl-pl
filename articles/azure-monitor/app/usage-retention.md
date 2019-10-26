@@ -1,55 +1,50 @@
 ---
-title: Analiza zachowania użytkowników dla aplikacji sieci web za pomocą usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Ilu użytkowników wraca do swojej aplikacji?
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Analiza przechowywania użytkowników dla aplikacji sieci Web za pomocą platformy Azure Application Insights | Dokumentacja firmy Microsoft
+description: Ile użytkowników wraca do swojej aplikacji?
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/03/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bda79520dd86cc14161f6f22cd24feb2e35849ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 05/03/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: 5f5f6235354adc565815ac2eab0a1c774267102d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372638"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899416"
 ---
-# <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analiza zachowania użytkownika dla aplikacji sieci web za pomocą usługi Application Insights
+# <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analiza przechowywania użytkowników dla aplikacji sieci Web za pomocą Application Insights
 
-Funkcja przechowywania w [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) pomaga analizować, ilu użytkowników wraca do swojej aplikacji i jak często wykonywać określone zadania lub osiąganiu celów. Na przykład po uruchomieniu witryny gier, możesz porównać liczby użytkowników, którzy wróć do witryny po utracie grę z liczbą którzy powrotu po wygraną. Ta wiedza może pomóc ulepszyć środowisko użytkownika i jej strategią biznesową.
+Funkcja przechowywania w [usłudze Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) pomaga analizować liczbę użytkowników, którzy zwracają do aplikacji, oraz częstotliwość wykonywania określonych zadań lub osiągania celów. Na przykład po uruchomieniu witryny gry można porównać liczby użytkowników, którzy powracają do lokacji po utracie gry z liczbą zwracaną po wygraniu. Ta wiedza może pomóc w ulepszaniu środowiska użytkownika i strategii biznesowej.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
-Jeśli jeszcze nie widzisz danych w portalu usługi Application Insights za pomocą narzędzia przechowywanie [Dowiedz się, jak rozpocząć pracę z narzędziami użycia](usage-overview.md).
+Jeśli nie widzisz jeszcze danych w narzędziu do przechowywania w portalu Application Insights, [Dowiedz się, jak rozpocząć pracę z narzędziami użycia](usage-overview.md).
 
-## <a name="the-retention-tool"></a>Narzędzie utrzymywania
+## <a name="the-retention-tool"></a>Narzędzie przechowywania
 
 ![Narzędzie utrzymywania](./media/usage-retention/retention.png)
 
-1. Pasek narzędzi umożliwia użytkownikom tworzenie nowych raportów przechowywania, Otwórz istniejące raporty przechowywania, Zapisz bieżący raport do przechowywania lub Zapisz jako, Cofnij zmiany wprowadzone do zapisanymi raportami, odświeżanie danych w raporcie, udostępnianie raportu pocztą e-mail lub linku bezpośredniego i dostęp do dokumentacji Strona. 
-2. Domyślnie przechowywania zawiera wszystkich użytkowników, którzy spowodowali niczego następnie wrócił i czy jakichkolwiek innych czynności w okresie. Możesz wybrać inną kombinację zdarzeń, aby zawęzić zakres działań określonego użytkownika.
-3. Dodaj co najmniej jeden filtr właściwości. Na przykład można skoncentrować się na użytkowników w danym kraju lub regionie. Kliknij przycisk **aktualizacji** znacznika wyboru. 
-4. Wykres całkowitego przechowywania przedstawia podsumowanie utrzymania użytkowników w wybranym okresie. 
-5. Siatka zawiera liczbę użytkowników przechowywane zgodnie z konstruktora zapytań w #2. Każdy wiersz reprezentuje kohorta użytkowników, który wykonał dowolnego zdarzenia w przedstawionym okresie. Każda komórka w wierszu pokazuje, ile tego kohorty zwracany przynajmniej raz w późniejszym terminie. Niektórzy użytkownicy mogą zwracać w więcej niż jeden okres. 
-6. Kart ze szczegółowymi Pokaż najlepsze wydarzenia inicjujący pięć i najważniejsze pięć zdarzenia zwróconego umożliwić użytkownikom lepsze zrozumienie ich przechowywania raportów. 
+1. Na pasku narzędzi użytkownicy mogą tworzyć nowe raporty dotyczące przechowywania, otwierać istniejące raporty dotyczące przechowywania, zapisywać bieżący raport o przechowywaniu lub zapisywać jako, przywracać zmiany wprowadzone w zapisanych raportach, odświeżać dane w raporcie, udostępniać raporty pocztą e-mail lub łącze bezpośrednie i uzyskiwać dostęp do dokumentacji stronic. 
+2. Domyślnie przechowywanie pokazuje wszystkich użytkowników, którzy zostali dołączeni i pozostali w danym okresie. Możesz wybrać inną kombinację zdarzeń, aby zawęzić koncentrację do określonych działań użytkownika.
+3. Dodaj co najmniej jeden filtr dla właściwości. Na przykład możesz skupić się na użytkownikach w określonym kraju lub regionie. Po ustawieniu filtrów kliknij przycisk **Aktualizuj** . 
+4. Ogólny wykres przechowywania przedstawia podsumowanie przechowywania użytkowników w wybranym okresie. 
+5. Siatka pokazuje liczbę użytkowników zachowywanych zgodnie z konstruktorem zapytań w #2. Każdy wiersz reprezentuje kohorta użytkowników, którzy wykonali każde zdarzenie w pokazanym okresie. Każda komórka w wierszu pokazuje, ile z kohorta zwraca co najmniej raz w późniejszym czasie. Niektórzy użytkownicy mogą wrócić w ciągu kilku okresów. 
+6. Karty Insights pokazują pięć najważniejszych zdarzeń inicjujących i pięć najważniejszych zdarzeń, które umożliwiają użytkownikom lepsze zrozumienie ich raportu przechowywania. 
 
-![Umieść kursor myszy przechowywania](./media/usage-retention/hover.png)
+![Przesuwanie kursora myszy](./media/usage-retention/hover.png)
 
-Użytkownicy mogą umieść kursor nad komórek w narzędziu przechowywania dostępu wyjaśniający, co oznacza komórki porady przycisk i narzędzia analizy do. Przycisk Analiza przejście do narzędzia analizy za pomocą wstępnie wypełnionych zapytania do generowania użytkowników z komórki. 
+Użytkownicy mogą przemieszczać się nad komórkami w narzędziu do przechowywania, aby uzyskać dostęp do przycisku analizy i etykietek narzędzi objaśniających znaczenie komórki. Przycisk analiza umożliwia użytkownikom narzędzia do analizy z wstępnie wypełnionym zapytaniem, które generuje użytkowników z komórki. 
 
-## <a name="use-business-events-to-track-retention"></a>Umożliwia śledzenie przechowywania zdarzeń biznesowych
+## <a name="use-business-events-to-track-retention"></a>Śledzenie przechowywania przy użyciu zdarzeń służbowych
 
-Aby uzyskać najbardziej przydatne analizy przechowywania, mierzenie zdarzenia, które reprezentują działalności znaczące. 
+Aby uzyskać najbardziej przydatną analizę przechowywania, należy mierzyć zdarzenia reprezentujące znaczące działania biznesowe. 
 
-Na przykład wielu użytkowników może otworzyć stronę w aplikacji bez gry, który jest wyświetlany. Śledzenia po prostu wyświetleń stron w związku z tym zapewniają oszacowanie niedokładne ile osób powrócić do Zagraj w grę po korzystających z wcześniej. Aby uzyskać jasny obraz przekazujących dane graczy, aplikacja powinna Wyślij zdarzenie niestandardowe po użytkownik faktycznie odgrywa.  
+Na przykład wielu użytkowników może otworzyć stronę w aplikacji bez odtwarzania widocznej gry. Śledzenie tylko wyświetleń stron spowodowałoby niedokładne oszacowanie liczby osób, które zwracają grę, gdy wcześniej cieszą się. Aby uzyskać jasne zdjęcie dla zwracanych odtwarzaczy, aplikacja powinna wysyłać niestandardowe zdarzenie, gdy użytkownik rzeczywiście się odtwarza.  
 
-Jest dobrą praktyką jest Zakoduj zdarzenia niestandardowe, które reprezentują akcji klucza biznesowych i ich używać do przechowywania analizy. Aby przechwycić wynik gier, należy napisać linię kodu w celu wysyłania zdarzeń niestandardowych do usługi Application Insights. Jeśli można go zapisać w kodzie strony sieci web lub w środowisku Node.JS, wygląda następująco:
+Dobrym sposobem jest kod zdarzeń niestandardowych, które reprezentują kluczowe akcje biznesowe i służą do analizy przechowywania. Aby przechwycić wynik gry, należy napisać wiersz kodu w celu wysłania niestandardowego zdarzenia do Application Insights. Jeśli napiszesz go w kodzie strony sieci Web lub w Node. JS, wygląda to następująco:
 
 ```JavaScript
     appinsights.trackEvent("won game");
@@ -61,12 +56,12 @@ Lub w kodzie serwera ASP.NET:
    telemetry.TrackEvent("won game");
 ```
 
-[Dowiedz się więcej na temat pisania niestandardowych zdarzeń](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+[Dowiedz się więcej na temat pisania zdarzeń niestandardowych](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Aby umożliwić użycie środowiska, Rozpocznij wysyłanie [zdarzenia niestandardowe](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) lub [wyświetlenia strony](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Jeśli już wysyłać niestandardowe zdarzenia lub wyświetlenia stron, zapoznaj się z narzędzia obciążenia, aby dowiedzieć się, jak używać usługi przez użytkowników.
+## <a name="next-steps"></a>Następne kroki
+- Aby włączyć środowiska użycia, Rozpocznij wysyłanie [zdarzeń niestandardowych](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) lub [wyświetleń stron](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Jeśli masz już wysłane zdarzenia niestandardowe lub widoki stron, zapoznaj się z narzędziami użycia, aby dowiedzieć się, jak użytkownicy korzystają z usługi.
     - [Użytkownicy, sesje, zdarzenia](usage-segmentation.md)
     - [Lejki](usage-funnels.md)
     - [User Flows (Przepływy użytkowników)](usage-flows.md)

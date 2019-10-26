@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15f7e830079c224e9e15dd45d14c1741376f8762
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6d28b9c31b8fbad8a565ff8cbdf717bfb3bc1309
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851695"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896469"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw w Azure Active Directory
 
-Aby przypisać użytkownika lub grupę do aplikacji dla przedsiębiorstw, musisz mieć odpowiednie uprawnienia do zarządzania aplikacją dla przedsiębiorstw, a użytkownik musi być administratorem globalnym katalogu. W przypadku aplikacji firmy Microsoft (takich jak aplikacje pakietu Office 365) należy używać programu PowerShell do przypisywania użytkowników do aplikacji dla przedsiębiorstw.
+Aby przypisać użytkownika lub grupę do aplikacji dla przedsiębiorstw, należy przypisać dowolne z tych ról administratora: Administrator globalny, administrator aplikacji, administrator aplikacji w chmurze lub przypisany jako właściciel aplikacji przedsiębiorstwa.  W przypadku aplikacji firmy Microsoft (takich jak aplikacje pakietu Office 365) należy używać programu PowerShell do przypisywania użytkowników do aplikacji dla przedsiębiorstw.
 
 > [!NOTE]
 > Wymagania dotyczące licencjonowania funkcji omówionych w tym artykule znajdują się na [stronie cennika Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory).
@@ -87,7 +87,7 @@ Aby przypisać użytkownika lub grupę do aplikacji dla przedsiębiorstw, musisz
 
 Więcej informacji o sposobie przypisywania użytkownika do roli aplikacji można znaleźć w dokumentacji usługi [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)
 
-Aby przypisać grupę do aplikacji dla przedsiębiorstw, należy zamienić `Get-AzureADUser` `Get-AzureADGroup`ją na.
+Aby przypisać grupę do aplikacji dla przedsiębiorstw, należy zamienić `Get-AzureADUser` z `Get-AzureADGroup`.
 
 ### <a name="example"></a>Przykład
 
@@ -109,11 +109,11 @@ Ten przykład przypisuje użytkownikowi Britta Simon do aplikacji [analizy w mie
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
 
-1. Uruchom polecenie `$sp.AppRoles` , aby wyświetlić role dostępne dla aplikacji do analizy w miejscu pracy. W tym przykładzie chcemy przypisać rolę analityka (ograniczony dostęp) Britta Simon.
+1. Uruchom polecenie `$sp.AppRoles`, aby wyświetlić role dostępne dla aplikacji do analizy w miejscu pracy. W tym przykładzie chcemy przypisać rolę analityka (ograniczony dostęp) Britta Simon.
 
    ![Pokazuje role dostępne dla użytkownika przy użyciu roli analiza w miejscu pracy](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
-1. Przypisz nazwę roli do `$app_role_name` zmiennej.
+1. Przypisz nazwę roli do zmiennej `$app_role_name`.
 
     ```powershell
     # Assign the values to the variables

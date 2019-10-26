@@ -1,23 +1,23 @@
 ---
 title: Struktura dzienników Azure Monitor | Microsoft Docs
 description: Wymagane jest zapytanie dziennika do pobrania danych dziennika z Azure Monitor.  W tym artykule opisano sposób używania nowych zapytań dzienników w Azure Monitor i przedstawiono koncepcje, które należy zrozumieć przed utworzeniem jednego.
-services: log-analytics
-author: bwren
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: b1d22729724c2d1a8e3705e017762dcef588245e
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/22/2019
+ms.openlocfilehash: 091d7f598a9841ae45b4248ad8a07a355203445a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034869"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894247"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktura dzienników Azure Monitor
 Możliwość szybkiego uzyskiwania wglądu w dane przy użyciu [zapytania dziennika](log-query-overview.md) jest zaawansowaną funkcją Azure monitor. Aby tworzyć wydajne i użyteczne zapytania, należy zapoznać się z podstawowymi pojęciami, takimi jak miejsce, w którym znajdują się dane i jak są one strukturalne. Ten artykuł zawiera podstawowe pojęcia, które należy wykonać, aby rozpocząć pracę.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Dane w dziennikach Azure Monitor są przechowywane w obszarze roboczym Log Analytics lub w aplikacji Application Insights. Oba są obsługiwane przez [usługę Azure Eksplorator danych](/azure/data-explorer/) , co oznacza, że korzystają z zaawansowanego aparatu danych i języka zapytań.
 
 Dane w obu obszarach roboczych i aplikacjach są zorganizowane w tabele, z których każdy przechowuje różne rodzaje danych i ma własny unikatowy zestaw właściwości. Większość [źródeł danych](../platform/data-sources.md) będzie zapisywać w własnych tabelach w log Analytics obszarze roboczym, podczas gdy Application Insights będzie zapisywać do wstępnie zdefiniowanego zestawu tabel w aplikacji Application Insights. Zapytania dzienników są bardzo elastyczne, co pozwala na łatwe łączenie danych z wielu tabel, a nawet użycie zapytania między zasobami w celu łączenia danych z tabel w wielu obszarach roboczych lub do pisania zapytań, które łączą dane obszaru roboczego i aplikacji.
@@ -26,7 +26,7 @@ Na poniższej ilustracji przedstawiono przykłady źródeł danych, które zapis
 
 ![Tabele](media/logs-structure/queries-tables.png)
 
-## <a name="log-analytics-workspace"></a>Obszar roboczy usługi Log Analytics
+## <a name="log-analytics-workspace"></a>Log Analytics obszar roboczy
 Wszystkie dane zbierane przez dzienniki Azure Monitor z wyjątkiem Application Insights są przechowywane w [log Analytics obszarze roboczym](../platform/manage-access.md). W zależności od konkretnych wymagań można utworzyć co najmniej jeden obszar roboczy. [Źródła danych](../platform/data-sources.md) , takie jak dzienniki aktywności i dzienniki diagnostyczne z zasobów platformy Azure, agentów na maszynach wirtualnych i danych z rozwiązań szczegółowych i monitorowania, będą zapisywać dane w co najmniej jednym obszarze roboczym skonfigurowanym w ramach dołączania. Inne usługi, takie jak [Azure Security Center](/azure/security-center/) i [Azure](/azure/sentinel/) , wykorzystują również obszar roboczy log Analytics do przechowywania danych, dzięki czemu można je analizować przy użyciu zapytań dzienników oraz dane monitorowania z innych źródeł.
 
 Różne rodzaje danych są przechowywane w różnych tabelach w obszarze roboczym, a każda tabela ma unikatowy zestaw właściwości. Standardowy zestaw tabel jest dodawany do obszaru roboczego, gdy zostanie utworzony, a nowe tabele są dodawane do różnych źródeł danych, rozwiązań i usług w miarę ich dołączania. Można również tworzyć tabele niestandardowe przy użyciu [interfejsu API modułu zbierającego dane](../platform/data-collector-api.md).
@@ -59,12 +59,12 @@ W przeciwieństwie do obszaru roboczego Log Analytics, aplikacja Application Ins
 | browserTimings      | Dane dotyczące wydajności klienta, takie jak czas przetwarzania danych przychodzących. |
 | customEvents        | Zdarzenia niestandardowe utworzone przez aplikację. |
 | customMetrics       | Metryki niestandardowe utworzone przez aplikację. |
-| zależności        | Wywołania z aplikacji do składników zewnętrznych. |
-| wyjątki          | Wyjątki zgłoszone przez środowisko uruchomieniowe aplikacji. |
-| pageViews           | Dane o każdym widoku witryny sieci Web z informacjami o przeglądarce. |
+| Tamten        | Wywołania z aplikacji do składników zewnętrznych. |
+| Wyłączenia          | Wyjątki zgłoszone przez środowisko uruchomieniowe aplikacji. |
+| PageViews           | Dane o każdym widoku witryny sieci Web z informacjami o przeglądarce. |
 | Liczniki wydajności | Pomiary wydajności z zasobów obliczeniowych obsługujących aplikację. |
-| Żądania            | Szczegóły każdego żądania aplikacji.  |
-| ścieżki              | Wyniki z rozproszonego śledzenia. |
+| żądań            | Szczegóły każdego żądania aplikacji.  |
+| Ścieżki              | Wyniki z rozproszonego śledzenia. |
 
 Możesz wyświetlić schemat dla każdej tabeli na karcie **schemat** w log Analytics aplikacji.
 
@@ -73,10 +73,10 @@ Możesz wyświetlić schemat dla każdej tabeli na karcie **schemat** w log Anal
 ## <a name="standard-properties"></a>Właściwości standardowe
 Chociaż każda tabela w dziennikach Azure Monitor ma swój własny schemat, istnieją standardowe właściwości współużytkowane przez wszystkie tabele. Aby uzyskać szczegółowe informacje o każdej z nich, zobacz temat [standardowe właściwości w dziennikach Azure monitor](../platform/log-standard-properties.md) .
 
-| Obszar roboczy usługi Log Analytics | Aplikacja Application Insights | Opis |
+| Log Analytics obszar roboczy | Aplikacja Application Insights | Opis |
 |:---|:---|:---|
-| TimeGenerated | timestamp  | Data i godzina utworzenia rekordu. |
-| Type          | itemType   | Nazwa tabeli, z której został pobrany rekord. |
+| TimeGenerated | sygnatura czasowa  | Data i godzina utworzenia rekordu. |
+| Typ          | ItemType   | Nazwa tabeli, z której został pobrany rekord. |
 | _ResourceId   |            | Unikatowy identyfikator zasobu, z którym jest skojarzony rekord. |
 | _IsBillable   |            | Określa, czy są naliczane opłaty za pozyskiwane dane. |
 | _BilledSize   |            | Określa rozmiar w bajtach danych, które będą rozliczane. |

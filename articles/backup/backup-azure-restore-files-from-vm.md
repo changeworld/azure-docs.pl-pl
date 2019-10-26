@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Odzyskiwanie plików i folderów z kopii zapasowej maszyny wirtualnej platformy Azure'
+title: 'Azure Backup: odzyskiwanie plików i folderów z kopii zapasowej maszyny wirtualnej platformy Azure'
 description: Odzyskiwanie plików z punktu odzyskiwania maszyny wirtualnej platformy Azure
 ms.reviewer: pullabhk
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1c0d470f12cf54c900fec3c453b7e5f07d0b2325
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210374"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900315"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -67,33 +67,33 @@ Aby przywrócić pliki lub foldery z punktu odzyskiwania, przejdź do maszyny wi
 
     - download.microsoft.com
     - Adresy URL usługi odzyskiwania (nazwa geograficzna odnosi się do regionu, w którym znajduje się magazyn usługi odzyskiwania)
-        - https:\//pod01-rec2.geo-Name.Backup.windowsazure.com (dla usługi Azure Public Georegiony)
-        - https:\//pod01-rec2.geo-Name.Backup.windowsazure.CN (w przypadku platformy Azure — Chiny)
-        - https:\//pod01-rec2.geo-Name.Backup.windowsazure.us (dla instytucji rządowych USA platformy Azure)
-        - https:\//pod01-rec2.geo-Name.Backup.windowsazure.de (dla platformy Azure (Niemcy)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (dla usługi Azure Public Georegiony)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (w przypadku platformy Azure — Chiny)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (dla instytucji rządowych USA platformy Azure)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (dla platformy Azure (Niemcy)
     - Port wychodzący 3260
 
 > [!Note]
 > 
-> * Pobrana nazwa pliku skryptu będzie miała **nazwę geograficzną** , która ma zostać wypełniona w adresie URL. Na przykład: Pobrana Nazwa skryptu rozpoczyna \'się\'od VMName\'\_\'geoname\'_\'GUID, na przykład ContosoVM_wcus_12345678....<br><br>
-> * Adres URL to "https:\//pod01-rec2.wcus.Backup.windowsazure.com"
+> * Pobrana nazwa pliku skryptu będzie miała **nazwę geograficzną** , która ma zostać wypełniona w adresie URL. Na przykład: pobrana Nazwa skryptu rozpoczyna się od \'VMname\'\_\'geoname\'_\'\'identyfikator GUID, na przykład ContosoVM_wcus_12345678.....<br><br>
+> * Adres URL to "https:\//pod01-rec2.wcus.backup.windowsazure.com"
 
 
    W przypadku systemu Linux skrypt wymaga składników "Open-iSCSI" i "lshw", aby nawiązać połączenie z punktem odzyskiwania. Jeśli składniki nie istnieją na komputerze, na którym skrypt jest uruchamiany, skrypt monituje o zgodę na zainstalowanie składników programu. Wyrażanie zgody na zainstalowanie niezbędnych składników.
 
    Dostęp do download.microsoft.com jest wymagany do pobierania składników używanych do tworzenia bezpiecznego kanału między komputerem, na którym skrypt jest uruchamiany, a danymi w punkcie odzyskiwania.
 
-   Skrypt można uruchomić na dowolnym komputerze, który ma ten sam (lub zgodny) system operacyjny co maszyna wirtualna z kopią zapasową. Zapoznaj [](backup-azure-restore-files-from-vm.md#system-requirements) się z tabelą zgodną z systemem operacyjnym w przypadku zgodnych systemów operacyjnych. Jeśli chroniona maszyna wirtualna platformy Azure korzysta z funkcji miejsca do magazynowania systemu Windows (dla maszyn wirtualnych z systemem Windows Azure) lub tablic LVM/RAID (dla maszyn wirtualnych z systemem Linux), nie można uruchomić pliku wykonywalnego ani skryptu na tej samej maszynie wirtualnej. Zamiast tego Uruchom plik wykonywalny lub skrypt na dowolnej innej maszynie z zgodnym systemem operacyjnym.
+   Skrypt można uruchomić na dowolnym komputerze, który ma ten sam (lub zgodny) system operacyjny co maszyna wirtualna z kopią zapasową. Zapoznaj się z [tabelą zgodną](backup-azure-restore-files-from-vm.md#system-requirements) z systemem operacyjnym w przypadku zgodnych systemów operacyjnych. Jeśli chroniona maszyna wirtualna platformy Azure korzysta z funkcji miejsca do magazynowania systemu Windows (dla maszyn wirtualnych z systemem Windows Azure) lub tablic LVM/RAID (dla maszyn wirtualnych z systemem Linux), nie można uruchomić pliku wykonywalnego ani skryptu na tej samej maszynie wirtualnej. Zamiast tego Uruchom plik wykonywalny lub skrypt na dowolnej innej maszynie z zgodnym systemem operacyjnym.
 
 ### <a name="identifying-volumes"></a>Identyfikowanie woluminów
 
 #### <a name="for-windows"></a>W przypadku systemu Windows
 
-Po uruchomieniu pliku wykonywalnego system operacyjny instaluje nowe woluminy i przypisuje litery dysku. Aby przeglądać te dyski, można użyć Eksploratora Windows lub Eksploratora plików. Litery dysku przypisane do woluminów mogą nie być takie same jak oryginalna maszyna wirtualna, ale nazwa woluminu jest zachowywana. Na przykład jeśli wolumin na oryginalnej maszynie wirtualnej to "dysk danych (E:`\`)", wolumin ten można dołączyć na komputerze lokalnym jako "dysk danych (" dowolna litera ":`\`). Przeglądaj wszystkie woluminy wymienione w danych wyjściowych skryptu do momentu znalezienia plików/folderów.  
+Po uruchomieniu pliku wykonywalnego system operacyjny instaluje nowe woluminy i przypisuje litery dysku. Aby przeglądać te dyski, można użyć Eksploratora Windows lub Eksploratora plików. Litery dysku przypisane do woluminów mogą nie być takie same jak oryginalna maszyna wirtualna, ale nazwa woluminu jest zachowywana. Jeśli na przykład wolumin na oryginalnej maszynie wirtualnej to "dysk danych (E:`\`)", wolumin ten można dołączyć na komputerze lokalnym jako "dysk danych (" dowolna litera ":`\`). Przeglądaj wszystkie woluminy wymienione w danych wyjściowych skryptu do momentu znalezienia plików/folderów.  
 
    ![Menu odzyskiwania plików](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-#### <a name="for-linux"></a>For Linux
+#### <a name="for-linux"></a>W przypadku systemu Linux
 
 W systemie Linux woluminy punktu odzyskiwania są instalowane do folderu, w którym skrypt jest uruchamiany. Odpowiednio są wyświetlane dołączone dyski, woluminy i odpowiednie ścieżki instalacji. Te ścieżki instalacji są widoczne dla użytkowników, którzy mają dostęp na poziomie głównym. Przeglądaj woluminy wymienione w danych wyjściowych skryptu.
 
@@ -101,7 +101,7 @@ W systemie Linux woluminy punktu odzyskiwania są instalowane do folderu, w któ
 
 ## <a name="closing-the-connection"></a>Zamykanie połączenia
 
-Po zidentyfikowaniu plików i skopiowaniu ich do lokalizacji magazynu lokalnego należy usunąć (lub odinstalować) dodatkowe dyski. Aby odinstalować dyski, w menu **odzyskiwanie plików** w Azure Portal kliknij polecenie odinstalowania **dysków**.
+Po zidentyfikowaniu plików i skopiowaniu ich do lokalizacji magazynu lokalnego należy usunąć (lub odinstalować) dodatkowe dyski. Aby odinstalować dyski, w menu **odzyskiwanie plików** w Azure Portal kliknij polecenie **odinstalowania dysków**.
 
 ![Odinstalowywanie dysków](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
@@ -168,7 +168,7 @@ Następujące polecenie wyświetla szczegółowe informacje o wszystkich dyskach
 $ mdadm –detail –scan
 ```
 
- Odpowiedni dysk RAID jest wyświetlany jako`/dev/mdm/<RAID array name in the protected VM>`
+ Odpowiedni dysk RAID jest wyświetlany jako `/dev/mdm/<RAID array name in the protected VM>`
 
 Użyj polecenia Instaluj, jeśli dysk RAID ma woluminy fizyczne.
 
@@ -190,7 +190,7 @@ W poniższej tabeli przedstawiono zgodność między systemami operacyjnymi serw
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Dla systemu operacyjnego Linux
 
@@ -213,11 +213,40 @@ W systemie Linux system operacyjny komputera służącego do przywracania plikó
 
 Skrypt wymaga również, aby składniki Python i bash były bezpiecznie wykonywane i połączone z punktem odzyskiwania.
 
-|Składnik | Version  |
+|Składnik | Wersja  |
 | --------------- | ---- |
 | bash | 4 i nowsze |
-| python | 2.6.6 i nowsze  |
-| TLS | 1,2 powinna być obsługiwana  |
+| Python | 2.6.6 i nowsze  |
+| Protokół | 1,2 powinna być obsługiwana  |
+
+## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Odzyskiwanie plików z kopii zapasowych maszyn wirtualnych z dużymi dyskami
+
+W tej sekcji wyjaśniono, jak przeprowadzić odzyskiwanie plików z kopii zapasowych maszyn wirtualnych platformy Azure, których liczba dysków jest > 16, a każdy rozmiar dysku to > 4 TB.
+
+Ponieważ proces odzyskiwania plików dołącza wszystkie dyski z kopii zapasowej, w przypadku dużej liczby dysków (> 16) lub dużych dysków (> 4 TB każdy) zalecane są następujące punkty akcji.
+
+- Zachowaj oddzielny serwer przywracania (maszyny wirtualne D2v3 maszyny wirtualnej platformy Azure) do odzyskiwania plików. Można użyć tylko odzyskiwania plików, a następnie wyłączyć, gdy nie jest to wymagane. Przywracanie na oryginalnej maszynie nie jest zalecane, ponieważ ma znaczący wpływ na maszynę wirtualną.
+- Następnie uruchom skrypt jeden raz, aby sprawdzić, czy operacja odzyskiwania plików powiodła się.
+- Jeśli proces odzyskiwania plików zawiesza się (dyski nigdy nie są zainstalowane lub są zainstalowane, ale nie są wyświetlane woluminy), wykonaj następujące czynności.
+  - Jeśli serwer przywracania jest maszyną wirtualną z systemem Windows
+    - Upewnij się, że system operacyjny to WS 2012 +.
+    - Upewnij się, że klucze rejestru zostały ustawione zgodnie z sugerowaną poniżej na serwerze przywracania, i upewnij się, że serwer jest ponownie uruchamiany. Liczba obok identyfikatora GUID może być z zakresu od 0001-0005. W poniższym przykładzie jest to 0,004. Przejdź przez ścieżkę klucza rejestru do sekcji parametry.
+
+    ![iSCSI-reg-Key-Changes. png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+
+```registry
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
+```
+
+- Jeśli serwer przywracania jest maszyną wirtualną z systemem Linux
+  - W pliku/etc/iSCSI/iscsid.conf Zmień ustawienie z
+    - Node. poł. [0]. Timeo. noop_out_timeout = 5 do węzła. poł. [0]. Timeo. noop_out_timeout = 30
+- Po wykonaniu poniższych czynności ponownie uruchom skrypt. Po wprowadzeniu tych zmian bardzo prawdopodobne jest, że odzyskiwanie plików powiedzie się.
+- Za każdym razem, gdy użytkownik pobiera skrypt, Azure Backup inicjuje proces przygotowywania punktu odzyskiwania do pobrania. W przypadku dużych dysków może to zająć dużo czasu. W przypadku kolejnych serii żądań przygotowanie docelowe przejdzie do spirali pobierania. W związku z tym zaleca się pobranie skryptu z portalu/programu PowerShell/interfejsu wiersza polecenia, odczekaj 20-30 minut (heurystyczne), a następnie uruchom go. W tym czasie obiekt docelowy powinien być gotowy do połączenia ze skryptem.
+- Po odzyskaniu plików upewnij się, że Wróć do portalu, aby kliknąć opcję "odinstalowanie dysków" dla punktów odzyskiwania, w których nie można było zainstalować woluminów. Zasadniczo ten krok spowoduje wyczyszczenie wszystkich istniejących procesów/sesji i zwiększenie możliwości odzyskania.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -225,15 +254,15 @@ Jeśli występują problemy podczas odzyskiwania plików z maszyn wirtualnych, z
 
 | Komunikat o błędzie/scenariusz | Prawdopodobna przyczyna | Zalecana akcja |
 | ------------------------ | -------------- | ------------------ |
-| Plik wyjściowy exe: *Wyjątek podczas łączenia z elementem docelowym* |Skrypt nie może uzyskać dostępu do punktu odzyskiwania.    | Sprawdź, czy maszyna spełnia poprzednie wymagania dotyczące dostępu. |  
-| Plik wyjściowy exe: *Element docelowy został już zalogowany za pośrednictwem sesji iSCSI.* | Skrypt został już wykonany na tym samym komputerze, a dyski zostały podłączone | Woluminy punktu odzyskiwania zostały już dołączone. Mogą nie być zainstalowane z tymi samymi literami dysków oryginalnej maszyny wirtualnej. Przeglądaj wszystkie dostępne woluminy w Eksploratorze plików dla pliku |
-| Plik wyjściowy exe: *Ten skrypt jest nieprawidłowy, ponieważ dyski zostały odinstalowane za pośrednictwem portalu/przekroczyły limit 12-godzinny. Pobierz nowy skrypt z portalu.* |    Dyski zostały odinstalowane z portalu lub Przekroczono limit 12-godzinny | Ten konkretny plik exe jest teraz nieprawidłowy i nie można go uruchomić. Jeśli chcesz uzyskać dostęp do plików tego punktu odzyskiwania, odwiedź portal, aby uzyskać nowy plik exe|
-| Na komputerze, na którym jest uruchamiany plik wykonywalny: Nowe woluminy nie są odinstalowywane po kliknięciu przycisku Odinstaluj | Inicjator iSCSI na komputerze nie odpowiada/nie odświeża połączenia z elementem docelowym i utrzymuje pamięć podręczną. |  Po kliknięciu przycisku **Odinstaluj**odczekaj kilka minut. Jeśli nowe woluminy nie zostaną odinstalowane, przejrzyj wszystkie woluminy. Przeglądanie wszystkich woluminów zmusza inicjatora do odświeżenia połączenia, a wolumin zostanie odinstalowany z komunikatem o błędzie, że dysk nie jest dostępny.|
-| Plik wyjściowy exe: Skrypt jest uruchamiany pomyślnie, ale w danych wyjściowych skryptu nie jest wyświetlany nowy wolumin. |    Jest to błąd przejściowy    | Woluminy byłyby już dołączone. Otwórz Eksploratora, aby przeglądać. Jeśli używasz tego samego komputera do uruchamiania skryptów za każdym razem, Rozważ ponowne uruchomienie komputera, a lista powinna zostać wyświetlona w kolejnych uruchomieniach programu exe. |
-| Specyficzne dla systemu Linux: Nie można wyświetlić żądanych woluminów | System operacyjny maszyny, na której jest uruchamiany skrypt, może nie rozpoznać podstawowego systemu plików chronionej maszyny wirtualnej | Sprawdź, czy punkt odzyskiwania jest spójny pod kątem awarii lub spójny z plikiem. Jeśli plik jest spójny, uruchom skrypt na innym komputerze, którego system operacyjny rozpozna system plików chronionej maszyny wirtualnej |
-| Specyficzne dla systemu Windows: Nie można wyświetlić żądanych woluminów | Dyski mogły zostać dołączone, ale nie skonfigurowano woluminów | Na ekranie Zarządzanie dyskami Zidentyfikuj dodatkowe dyski związane z punktem odzyskiwania. Jeśli którykolwiek z tych dysków jest w stanie offline, spróbuj przełączyć je w tryb online, klikając dysk prawym przyciskiem myszy, a następnie kliknij pozycję "online".|
+| Wyjściowy plik exe: *wyjątek podczas łączenia z elementem docelowym* |Skrypt nie może uzyskać dostępu do punktu odzyskiwania.    | Sprawdź, czy maszyna spełnia poprzednie wymagania dotyczące dostępu. |  
+| Wyjściowy plik exe: *element docelowy został już zalogowany za pośrednictwem sesji iSCSI.* | Skrypt został już wykonany na tym samym komputerze, a dyski zostały podłączone | Woluminy punktu odzyskiwania zostały już dołączone. Mogą nie być zainstalowane z tymi samymi literami dysków oryginalnej maszyny wirtualnej. Przeglądaj wszystkie dostępne woluminy w Eksploratorze plików dla pliku |
+| Wyjściowy plik exe: *ten skrypt jest nieprawidłowy, ponieważ dyski zostały odinstalowane za pośrednictwem portalu/przekroczyły limit 12 godzin. Pobierz nowy skrypt z portalu.* |    Dyski zostały odinstalowane z portalu lub Przekroczono limit 12-godzinny | Ten konkretny plik exe jest teraz nieprawidłowy i nie można go uruchomić. Jeśli chcesz uzyskać dostęp do plików tego punktu odzyskiwania, odwiedź portal, aby uzyskać nowy plik exe|
+| Na komputerze, na którym jest uruchamiany plik wykonywalny: nowe woluminy nie są odinstalowywane po kliknięciu przycisku Odinstaluj | Inicjator iSCSI na komputerze nie odpowiada/nie odświeża połączenia z elementem docelowym i utrzymuje pamięć podręczną. |  Po kliknięciu przycisku **Odinstaluj**odczekaj kilka minut. Jeśli nowe woluminy nie zostaną odinstalowane, przejrzyj wszystkie woluminy. Przeglądanie wszystkich woluminów zmusza inicjatora do odświeżenia połączenia, a wolumin zostanie odinstalowany z komunikatem o błędzie, że dysk nie jest dostępny.|
+| Wyjściowy plik exe: skrypt jest uruchamiany pomyślnie, ale w danych wyjściowych skryptu nie są wyświetlane nowe woluminy |    Jest to błąd przejściowy    | Woluminy byłyby już dołączone. Otwórz Eksploratora, aby przeglądać. Jeśli używasz tego samego komputera do uruchamiania skryptów za każdym razem, Rozważ ponowne uruchomienie komputera, a lista powinna zostać wyświetlona w kolejnych uruchomieniach programu exe. |
+| Specyficzne dla systemu Linux: nie można wyświetlić żądanych woluminów | System operacyjny maszyny, na której jest uruchamiany skrypt, może nie rozpoznać podstawowego systemu plików chronionej maszyny wirtualnej | Sprawdź, czy punkt odzyskiwania jest spójny pod kątem awarii lub spójny z plikiem. Jeśli plik jest spójny, uruchom skrypt na innym komputerze, którego system operacyjny rozpozna system plików chronionej maszyny wirtualnej |
+| Specyficzne dla systemu Windows: nie można wyświetlić żądanych woluminów | Dyski mogły zostać dołączone, ale nie skonfigurowano woluminów | Na ekranie Zarządzanie dyskami Zidentyfikuj dodatkowe dyski związane z punktem odzyskiwania. Jeśli którykolwiek z tych dysków jest w stanie offline, spróbuj przełączyć je w tryb online, klikając dysk prawym przyciskiem myszy, a następnie kliknij pozycję "online".|
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 W tej sekcji omówiono różne miary zabezpieczeń związane z wdrażaniem odzyskiwania plików z kopii zapasowych maszyn wirtualnych platformy Azure, dzięki czemu użytkownicy mają świadomość aspektów zabezpieczeń funkcji.
 

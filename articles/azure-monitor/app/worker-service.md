@@ -1,23 +1,18 @@
 ---
 title: Application Insights aplikacji usługi Worker (aplikacje inne niż HTTP) | Microsoft Docs
 description: Monitorowanie aplikacji platformy .NET Core/. NET Framework bez protokołu HTTP przy użyciu Application Insights.
-services: application-insights
-documentationcenter: .net
-author: cijothomas
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/15/2019
+author: cijothomas
 ms.author: cithomas
-ms.openlocfilehash: 2185f5b0c4148e643e90741235054fd06fdbb151
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/15/2019
+ms.openlocfilehash: ccc7218575638c7ede2c56a99e41dd68cbd475c0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174617"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899229"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights aplikacji usługi Worker (aplikacje inne niż HTTP)
 
@@ -135,10 +130,10 @@ Alternatywnie Określ klucz Instrumentacji w jednej z następujących zmiennych 
 Na przykład: `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 LUB `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-Zazwyczaj `APPINSIGHTS_INSTRUMENTATIONKEY` określa klucz Instrumentacji dla aplikacji wdrożonych do Web Apps jako zadania w sieci Web.
+Zwykle `APPINSIGHTS_INSTRUMENTATIONKEY` określa klucz Instrumentacji dla aplikacji wdrożonych do Web Apps jako zadania w sieci Web.
 
 > [!NOTE]
-> Klucz Instrumentacji określony w kodzie usługi WINS przez zmienną środowiskową `APPINSIGHTS_INSTRUMENTATIONKEY`, który usługi WINS przekracza inne opcje.
+> Klucz Instrumentacji określony w kodzie usługi WINS przez zmienną środowiskową `APPINSIGHTS_INSTRUMENTATIONKEY`, w którym usługa WINS jest połączona z innymi opcjami.
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>ASP.NET Core zadań w tle za pomocą usług hostowanych
 W [tym](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio) dokumencie opisano sposób tworzenia zadań tła w aplikacji ASP.NET Core 2.1/2.2.
@@ -358,7 +353,7 @@ Należy pamiętać, że `ApplicationInsightsServiceOptions` w tym zestawie SDK z
 
 Najczęściej używane ustawienia w `ApplicationInsightsServiceOptions`
 
-|Ustawienie | Opis | Domyślny
+|Ustawienie | Opis | Domyślne
 |---------------|-------|-------
 |EnableQuickPulseMetricStream | Włącz/Wyłącz funkcję LiveMetrics | true
 |EnableAdaptiveSampling | Włącz/Wyłącz próbkowanie adaptacyjne | true
@@ -367,7 +362,7 @@ Najczęściej używane ustawienia w `ApplicationInsightsServiceOptions`
 
 Aby uzyskać najbardziej aktualną listę, zobacz [ustawienia konfigurowalne w `ApplicationInsightsServiceOptions`](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .
 
-### <a name="sampling"></a>Sond
+### <a name="sampling"></a>Próbkowanie
 
 Zestaw Application Insights SDK dla usługi Worker obsługuje zarówno stałe, jak i adaptacyjne próbkowanie. Próbkowanie adaptacyjne jest domyślnie włączone. Konfigurowanie próbkowania dla usługi Worker odbywa się tak samo jak w przypadku [aplikacji ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-adaptive-sampling-for-aspnet-core-applications).
 

@@ -11,18 +11,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 3876c6f80e9f18059ab4abac67732cdbf2ca24fa
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248298"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893432"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zasady blokowania haseł i kont w domenach zarządzanych
 
 Aby zarządzać zabezpieczeniami użytkowników w Azure Active Directory Domain Services (Azure AD DS), można zdefiniować szczegółowe zasady haseł kontrolujące ustawienia blokady konta lub minimalną długość i złożoność hasła. Domyślne szczegółowe zasady haseł są tworzone i stosowane dla wszystkich użytkowników w domenie zarządzanej AD DS platformy Azure. Aby zapewnić szczegółową kontrolę i spełnić określone potrzeby biznesowe lub dotyczące zgodności, można utworzyć dodatkowe zasady i zastosować je do określonych grup użytkowników.
 
 W tym artykule opisano sposób tworzenia i konfigurowania szczegółowych zasad haseł na platformie Azure AD DS przy użyciu Centrum administracyjne usługi Active Directory.
+
+> [!NOTE]
+> Zasady dotyczące haseł są dostępne tylko dla domen zarządzanych platformy Azure AD DS utworzonych przy użyciu modelu wdrażania Menedżer zasobów. W przypadku starszych domen zarządzanych utworzonych przy użyciu klasycznego, należy [przeprowadzić migrację z klasycznego modelu sieci wirtualnej do Menedżer zasobów][migrate-from-classic].
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -34,6 +37,7 @@ Aby wykonać ten artykuł, potrzebne są następujące zasoby i uprawnienia:
   * W razie konieczności [Utwórz dzierżawę Azure Active Directory][create-azure-ad-tenant] lub [skojarz subskrypcję platformy Azure z Twoim kontem][associate-azure-ad-tenant].
 * Azure Active Directory Domain Services zarządzana domena włączona i skonfigurowana w dzierżawie usługi Azure AD.
   * W razie potrzeby Uzupełnij samouczek, aby [utworzyć i skonfigurować wystąpienie Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+  * Wystąpienie usługi Azure AD DS musi zostać utworzone przy użyciu Menedżer zasobów modelu wdrażania. W razie potrzeby [Przeprowadź migrację z klasycznego modelu sieci wirtualnej do Menedżer zasobów][migrate-from-classic].
 * Maszyna wirtualna zarządzania systemem Windows Server, która jest dołączona do domeny zarządzanej AD DS platformy Azure.
   * W razie potrzeby Ukończ samouczek, aby [utworzyć maszynę wirtualną zarządzania][tutorial-create-management-vm].
 * Konto użytkownika, które jest członkiem grupy *administratorów DC usługi Azure AD* w dzierżawie usługi Azure AD.
@@ -130,3 +134,4 @@ Aby uzyskać więcej informacji na temat zasad haseł i korzystania z centrum ad
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
+[migrate-from-classic]: migrate-from-classic-vnet.md

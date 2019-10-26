@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights — często zadawane pytania | Microsoft Docs
 description: Często zadawane pytania dotyczące Application Insights.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
-ms.service: application-insights
-ms.workload: mobile
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/16/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 09/16/2019
+ms.openlocfilehash: 55a096cd4971664e55bb2cfd17f9f8927d7c32f5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802301"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899521"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: często zadawane pytania
 
@@ -90,7 +85,7 @@ Szczegóły są zależne od typu projektu. Dla aplikacji sieci Web:
 Zapoznaj się z [informacjami o wersji](release-notes.md) zestawu SDK, które są odpowiednie dla danego typu aplikacji.
 
 ## <a name="update"></a>Jak mogę zmienić zasób platformy Azure, do którego mój projekt wysyła dane?
-W Eksplorator rozwiązań kliknij prawym przyciskiem myszy pozycję `ApplicationInsights.config` i wybierz polecenie **aktualizuj Application Insights**. Dane można wysyłać do istniejącego lub nowego zasobu na platformie Azure. Kreator aktualizacji zmienia klucz Instrumentacji w pliku ApplicationInsights. config, który określa, gdzie zestaw SDK serwera wysyła dane. Chyba że usuniesz opcję "Aktualizuj wszystko", zostanie również zmieniony klucz, w którym pojawia się na stronach sieci Web.
+W Eksplorator rozwiązań kliknij prawym przyciskiem myszy `ApplicationInsights.config` i wybierz polecenie **aktualizuj Application Insights**. Dane można wysyłać do istniejącego lub nowego zasobu na platformie Azure. Kreator aktualizacji zmienia klucz Instrumentacji w pliku ApplicationInsights. config, który określa, gdzie zestaw SDK serwera wysyła dane. Chyba że usuniesz opcję "Aktualizuj wszystko", zostanie również zmieniony klucz, w którym pojawia się na stronach sieci Web.
 
 ## <a name="what-is-status-monitor"></a>Co to jest monitor stanu?
 
@@ -138,7 +133,7 @@ Dowiedz się więcej na temat [ASP.NET](api-filtering-sampling.md) lub [Java](ja
 Wyszukujemy adres IP (IPv4 lub IPv6) klienta sieci Web za pomocą [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
 * Telemetria przeglądarki: Zbieramy adres IP nadawcy.
-* Dane telemetryczne serwera: moduł Application Insights zbiera adres IP klienta. Nie jest zbierane, jeśli ustawiono `X-Forwarded-For`.
+* Dane telemetryczne serwera: moduł Application Insights zbiera adres IP klienta. Nie jest zbierane, jeśli `X-Forwarded-For` jest ustawiony.
 * Aby dowiedzieć się więcej o sposobie zbierania danych o adresie IP i geolokalizacji w Application Insights zapoznaj się z tym [artykułem](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
@@ -206,7 +201,7 @@ Użyj pojedynczego zasobu dla wszystkich składników lub ról w jednym systemie
 
 [Próbkowanie](sampling.md) zmniejsza liczbę elementów telemetrycznych (żądań, zdarzeń niestandardowych itd.), które są faktycznie wysyłane z aplikacji do portalu. W obszarze wyszukiwanie zostanie wyświetlona liczba elementów, które faktycznie zostały odebrane. Na wykresach metryk, które wyświetlają liczbę zdarzeń, zobaczysz liczbę oryginalnych zdarzeń, które wystąpiły. 
 
-Każdy przesłany element przenosi Właściwość `itemCount`, która pokazuje, ile oryginalnych zdarzeń reprezentuje element. Aby obserwować próbkowanie w operacji, można uruchomić to zapytanie w analizie:
+Każdy przesłany element ma właściwość `itemCount`, która pokazuje, ile oryginalnych zdarzeń reprezentuje element. Aby obserwować próbkowanie w operacji, można uruchomić to zapytanie w analizie:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()

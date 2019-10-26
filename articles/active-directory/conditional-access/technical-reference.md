@@ -4,19 +4,19 @@ description: Zapoznaj się z omówieniem obsługiwanych ustawień w zasadach dos
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: reference
 ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 834b13c512bca1b7c43c3c8e93a72383a82db198
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274190"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893472"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory informacje o ustawieniach dostępu warunkowego
 
@@ -145,7 +145,7 @@ Aby automatycznie wdrożyć to rozszerzenie w przeglądarkach programu Chrome, U
 | Ścieżka | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Nazwa | 1 |
 | Typ | REG_SZ (ciąg) |
-| Dane | ppnbnpeolgkicgegkbkbjmhlideopiji; https @ no__t-0//clients2. Google. com/Service/UPDATE2/CRX |
+| Dane | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
 
 Aby uzyskać pomoc techniczną dla programu Chrome w **Windows 8.1 i 7**, Utwórz następujący klucz rejestru:
 

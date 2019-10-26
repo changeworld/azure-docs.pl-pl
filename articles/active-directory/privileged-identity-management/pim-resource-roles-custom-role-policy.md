@@ -1,5 +1,5 @@
 ---
-title: Używanie ról niestandardowych dla zasobów platformy Azure w programie PIM-Azure Active Directory | Microsoft Docs
+title: Używanie ról niestandardowych dla zasobów platformy Azure w Privileged Identity Management-Azure Active Directory | Microsoft Docs
 description: Dowiedz się, jak używać ról niestandardowych dla zasobów platformy Azure w Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 03/30/2018
+ms.date: 10/23/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d36514c97cf1f45ee0a435d3b716019d2762e5a
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 8e940dd0e4c653ed4921a9e8f245aab34107ba95
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804177"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895711"
 ---
-# <a name="use-custom-roles-for-azure-resources-in-pim"></a>Używanie ról niestandardowych dla zasobów platformy Azure w usłudze PIM
+# <a name="use-custom-roles-for-azure-resources-in-privileged-identity-management"></a>Używanie ról niestandardowych dla zasobów platformy Azure w Privileged Identity Management
 
-Może być konieczne zastosowanie rygorystycznych ustawień usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) do niektórych członków roli, a jednocześnie zapewnianie większej autonomii dla innych osób. Rozważmy scenariusz, w którym organizacja zatrudnia kilka jednostek kontraktu, aby pomóc w rozwoju aplikacji, która będzie działać w ramach subskrypcji platformy Azure.
+Może być konieczne zastosowanie rygorystycznych ustawień Privileged Identity Management (PIM) dla niektórych użytkowników w roli uprzywilejowanej w organizacji Azure Active Directory (Azure AD), a jednocześnie zapewnianie większej autonomii dla innych osób. Rozważmy na przykład scenariusz, w którym organizacja zatrudnia kilka jednostek kontraktu, aby pomóc w rozwoju aplikacji, która będzie działać w ramach subskrypcji platformy Azure.
 
 Jako administrator zasobów chcesz, aby pracownicy mogli uzyskać dostęp bez konieczności zatwierdzania. Jednak wszystkie stowarzyszone kontrakty muszą zostać zatwierdzone, jeśli żądają dostępu do zasobów organizacji.
 
-Wykonaj kroki opisane w następnej sekcji, aby skonfigurować ustawienia usługi PIM dla ról zasobów platformy Azure.
+Wykonaj kroki opisane w następnej sekcji, aby skonfigurować ustawienia Privileged Identity Management ustawień dla ról zasobów platformy Azure.
 
 ## <a name="create-the-custom-role"></a>Utwórz rolę niestandardową
 
@@ -40,15 +40,15 @@ Podczas tworzenia roli niestandardowej należy uwzględnić opisową nazwę, aby
 
 ## <a name="apply-pim-settings"></a>Zastosuj ustawienia PIM
 
-Po utworzeniu roli w dzierżawie w Azure Portal przejdź do okienka **zasoby Privileged Identity Management — Azure** . Wybierz zasób, do którego zostanie zastosowana rola.
+Po utworzeniu roli w organizacji usługi Azure AD przejdź do strony **Privileged Identity Management — zasoby platformy Azure** w Azure Portal. Wybierz zasób, do którego zostanie zastosowana rola.
 
 ![Okienko "Privileged Identity Management — zasoby platformy Azure"](media/pim-resource-roles-custom-role-policy/aadpim-manage-azure-resource-some-there.png)
 
-[Skonfiguruj ustawienia roli PIM](pim-resource-roles-configure-role-settings.md) , które powinny być stosowane do tych członków roli.
+[Skonfiguruj Privileged Identity Management ustawienia roli](pim-resource-roles-configure-role-settings.md) , które powinny być stosowane dla tych członków roli.
 
 Na koniec [Przypisz role](pim-resource-roles-assign-roles.md) do odrębnej grupy elementów członkowskich, które mają być używane z tymi ustawieniami.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-role-settings.md)
+- [Skonfiguruj ustawienia roli zasobów platformy Azure w Privileged Identity Management](pim-resource-roles-configure-role-settings.md)
 - [Role niestandardowe na platformie Azure](../../role-based-access-control/custom-roles.md)

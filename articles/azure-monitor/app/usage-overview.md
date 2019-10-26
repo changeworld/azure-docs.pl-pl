@@ -1,22 +1,18 @@
 ---
 title: Analiza użycia za pomocą usługi Azure Application Insights | Dokumentacja firmy Microsoft
 description: Zapoznaj się z użytkownikami i Dowiedz się, co robią z Twoją aplikacją.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/19/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 77aa39ae68800128409beb17ce3eb636ddcf28d1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/19/2019
+ms.openlocfilehash: 7131cf1902cc92fed66ae4db59449700973c6913
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128959"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899430"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analiza użycia za pomocą usługi Application Insights
 
@@ -30,7 +26,7 @@ Najlepsze środowisko jest uzyskiwane przez zainstalowanie Application Insights 
 
     * *Nie chcesz instalować kodu serwera? Po prostu [Utwórz zasób usługi Azure Application Insights](../../azure-monitor/app/create-new-resource.md ).*
 
-2. **Kod strony sieci Web:** Przed zamknięciem ``</head>``Dodaj następujący skrypt do strony sieci Web. Zastąp klucz Instrumentacji odpowiednią wartością dla Application Insights zasobu:
+2. **Kod strony sieci Web:** Dodaj następujący skrypt do strony sieci Web przed zamknięciem ``</head>``. Zastąp klucz Instrumentacji odpowiednią wartością dla Application Insights zasobu:
     
     ```html
     <script type="text/javascript">
@@ -159,9 +155,9 @@ W inicjatorze aplikacji sieci Web, np. Global.asax.cs:
 **Aplikacje ASP.NET Core**
 
 > [!NOTE]
-> Dodawanie inicjatora `ApplicationInsights.config` przy użyciu `TelemetryConfiguration.Active` lub użycie nie jest prawidłowe dla aplikacji ASP.NET Core. 
+> Dodawanie inicjatora przy użyciu `ApplicationInsights.config` lub `TelemetryConfiguration.Active` jest nieprawidłowe dla aplikacji ASP.NET Core. 
 
-W przypadku aplikacji [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) dodanie nowego `TelemetryInitializer` jest wykonywane przez dodanie go do kontenera iniekcji zależności, jak pokazano poniżej. Jest to wykonywane w `ConfigureServices` metodzie `Startup.cs` klasy.
+W przypadku aplikacji [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) dodanie nowego `TelemetryInitializer` odbywa się przez dodanie go do kontenera iniekcji zależności, jak pokazano poniżej. Odbywa się to w `ConfigureServices` metodzie klasy `Startup.cs`.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

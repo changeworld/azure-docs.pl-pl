@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/11/2019
+ms.date: 10/24/2019
 ms.author: ramkris
-ms.openlocfilehash: 9da994550609b0be44362e0f0059844b288aabbd
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0ff281e54df0273cc4c72d1780f4a99fe9719aec
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388061"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900187"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Biblioteka modułu wykonawczego platformy .NET: informacje o pobieraniu 
 
@@ -70,67 +70,71 @@ ms.locfileid: "72388061"
 
 * Dodano .NET Standard 2,0 jako jedną z obsługiwanych platform docelowych, aby Biblioteka wykonawców zbiorczych działała z aplikacjami .NET Core.
 
-### <a name="a-name184184"></a>@no__t — 01.8.4
+### <a name="a-name185185"></a><a name="1.8.5"/>1.8.5
+
+* Usunięto blokadę w wersji zestawu SDK. Pakiet jest teraz zależny od zestawu SDK > = 2.5.1.
+
+### <a name="a-name184184"></a><a name="1.8.4"/>1.8.4
 
 * Naprawiono obsługę identyfikatorów podczas wywoływania BulkImport z listą obiektów POCO z wartościami liczbowymi.
 
-### <a name="a-name183183"></a>@no__t — 01.8.3
+### <a name="a-name183183"></a><a name="1.8.3"/>1.8.3
 
 * Naprawiono TotalElapsedTime w odpowiedzi BulkDelete, aby prawidłowo zmierzyć łączny czas, łącznie z próbami.
 
-### <a name="a-name182182"></a>@no__t — 01.8.2
+### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
 * Stałe użycie procesora CPU w niektórych scenariuszach.
 * Śledzenie używa teraz TraceSource. Użytkownicy mogą definiować odbiorniki dla źródła `BulkExecutorTrace`.
 * Rozwiązano rzadki scenariusz, który może spowodować blokadę podczas wysyłania dokumentów o rozmiarze zbliżonym do 2 MB.
 
-### <a name="a-name160160"></a>@no__t — 01.6.0
+### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 
 * Zaktualizowano moduł wykonujący zbiorczo, aby teraz używał najnowszej wersji zestawu SDK Azure Cosmos DB .NET (2.4.0)
 
-### <a name="a-name150150"></a>@no__t — 01.5.0
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
 
 * Dodano obsługę zbiorczego wykonawcy wykresu do akceptowania czasu wygaśnięcia dla wierzchołków i krawędzi
 
-### <a name="a-name141141"></a>@no__t — 01.4.1
+### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
 
 * Rozwiązano problem, który spowodował wyjątek podczas elastycznego skalowania Azure Cosmos DB podczas uruchamiania w trybie bramy.
 
-### <a name="a-name140140"></a>@no__t — 01.4.0
+### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
 
 * Dodano obsługę BulkDelete dla kont interfejsu API SQL w celu akceptowania klucza partycji, spójnych kolekcji identyfikatorów dokumentów do usunięcia.
 
-### <a name="a-name130130"></a>@no__t — 01.3.0
+### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
 * Rozwiązano problem, który spowodował problem z formatowaniem w agencie użytkownika używanym przez program wykonujący zbiorczo.
 
-### <a name="a-name120120"></a>@no__t — 01.2.0
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 
 * Ulepszono Importowanie i aktualizowanie interfejsów API do zbiorczego wykonawcy w celu nieprzezroczystego dostosowania do elastycznego skalowania kontenera Cosmos, gdy magazyn przekracza bieżącą pojemność bez zgłaszania wyjątków.
 
-### <a name="a-name112112"></a>@no__t — 01.1.2
+### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
 * Niezależność od zestawu SDK platformy .NET DocumentDB do wersji 2.1.3.
 
-### <a name="a-name111111"></a>@no__t — 01.1.1
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 
 * Rozwiązano problem, który spowodował wygenerowanie zbiorczego błędu JSRT podczas importowania do stałych kolekcji.
 
-### <a name="a-name110110"></a>@no__t — 01.1.0
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
 * Dodano obsługę operacji BulkDelete Azure Cosmos DB dla kont interfejsu API SQL.
 * Dodano obsługę operacji BulkImport dla kont z interfejsem API Azure Cosmos DB dla MongoDB.
 * DoDocumentDB zależności zestawu SDK platformy .NET do wersji 2.0.0. 
 
-### <a name="a-name102102"></a>@no__t — 01.0.2
+### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2
 
 * Dodano obsługę operacji BulkImport dla kont interfejsu API Gremlin Azure Cosmos DB.
 
-### <a name="a-name101101"></a>@no__t — 01.0.1
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 
 * Drobna poprawka błędu Azure Cosmos DB dla operacji BulkImport dla kont interfejsu API SQL.
 
-### <a name="a-name100100"></a>@no__t — 01.0.0
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
 * Dodano obsługę operacji BulkImport i BulkUpdate dla kont interfejsu API SQL Azure Cosmos DB.
 

@@ -1,62 +1,58 @@
 ---
-title: Włączanie rozszerzenia Snapshot Debugger dla aplikacji .NET w usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: Włączanie rozszerzenia Snapshot Debugger dla aplikacji .NET w usłudze Azure App Service
-services: application-insights
-documentationcenter: ''
-author: brahmnes
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Włącz Snapshot Debugger dla aplikacji .NET w Azure App Service | Microsoft Docs
+description: Włącz Snapshot Debugger dla aplikacji .NET w programie Azure App Service
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 03/07/2019
+author: brahmnes
 ms.author: bfung
-ms.openlocfilehash: 3e8ce3c2eff7b1f7184bb37f141e62563d4fe714
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 03/07/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: 0f6eb6376075337edd7656e4bc83b5b7fddde479
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612683"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899890"
 ---
-# <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Włączanie rozszerzenia Snapshot Debugger dla aplikacji .NET w usłudze Azure App Service
+# <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Włącz Snapshot Debugger dla aplikacji .NET w programie Azure App Service
 
-Rozszerzenie Snapshot Debugger obecnie działa w przypadku aplikacji ASP.NET i ASP.NET Core, które są uruchomione w usłudze Azure App Service w planach usługi Windows.
+Snapshot Debugger obecnie działa dla aplikacji ASP.NET i ASP.NET Core, które działają w Azure App Service planach usług systemu Windows.
 
-## <a id="installation"></a> Włączanie rozszerzenia Snapshot Debugger
-Aby włączyć rozszerzenie Snapshot Debugger dla aplikacji, postępuj zgodnie z poniższymi instrukcjami. Jeśli używasz innego typu usługi platformy Azure, poniżej przedstawiono instrukcje umożliwiające rozszerzenie Snapshot Debugger innych obsługiwanych platform:
-* [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [Usługi Azure Service Fabric](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [Zestawy skalowania maszyn wirtualnych i maszyn wirtualnych platformy Azure](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* [Lokalnych maszyn wirtualnych lub fizycznych](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+## <a id="installation"></a>Włącz Snapshot Debugger
+Aby włączyć Snapshot Debugger dla aplikacji, postępuj zgodnie z poniższymi instrukcjami. Jeśli używasz innego typu usługi platformy Azure, poniżej przedstawiono instrukcje dotyczące włączania Snapshot Debugger na innych obsługiwanych platformach:
+* [usług Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Usługi Service Fabric platformy Azure](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Virtual Machines i zestawy skalowania maszyn wirtualnych](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Lokalne maszyny wirtualne lub fizyczne](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Jeśli używasz wersji zapoznawczej platformy .NET Core, wykonaj instrukcje dotyczące [Włączanie rozszerzenia Snapshot Debugger dla innych środowisk](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) najpierw obejmujący [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet pakietu z aplikacją, a następnie wypełnij resztę z poniższymi instrukcjami. 
+Jeśli używasz wersji zapoznawczej programu .NET Core, postępuj zgodnie z instrukcjami dotyczącymi [włączania Snapshot Debugger w innych środowiskach](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) , aby dołączyć pakiet NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) do aplikacji. a następnie uzupełnij pozostałe instrukcje poniżej. 
 
-Application Insights Snapshot Debugger jest wstępnie zainstalowany jako część środowiska uruchomieniowego usług aplikacji, ale należy włączyć je w celu get migawek dla aplikacji usługi app Service. Po wdrożeniu aplikacji, nawet wtedy, gdy zestaw SDK usługi Application Insights wprowadzono w kodzie źródłowym, postępuj zgodnie z instrukcjami poniżej, aby włączyć rozszerzenie snapshot debugger.
+Application Insights Snapshot Debugger jest wstępnie zainstalowana jako część środowiska uruchomieniowego App Services, ale musisz ją włączyć, aby uzyskać migawki dla aplikacji App Service. Po wdrożeniu aplikacji, nawet jeśli w kodzie źródłowym dołączono zestaw SDK Application Insights, wykonaj poniższe kroki, aby włączyć debuger migawek.
 
-1. Przejdź do **App Services** okienko w witrynie Azure portal.
-2. Przejdź do **Ustawienia > Application Insights** okienka.
+1. Przejdź do okienka **App Services** w Azure Portal.
+2. Przejdź do okna **ustawienia > Application Insights** .
 
-   ![Włączanie usługi App Insights w portalu usługi App Services](./media/snapshot-debugger/applicationinsights-appservices.png)
+   ![Włączanie usługi App Insights w portalu App Services](./media/snapshot-debugger/applicationinsights-appservices.png)
 
-3. Albo postępuj zgodnie z instrukcjami w okienku, aby utworzyć nowy zasób lub wybierz istniejący zasób usługi App Insights w celu monitorowania aplikacji. Upewnij się, oba przełączniki dla rozszerzenia Snapshot Debugger są również **na**.
+3. Postępuj zgodnie z instrukcjami w okienku, aby utworzyć nowy zasób, lub wybierz istniejący zasób usługi App Insights, aby monitorować aplikację. Upewnij się również, że oba przełączniki Snapshot Debugger są **włączone**.
 
    ![Dodaj rozszerzenie witryny usługi App Insights][Enablement UI]
 
-4. Rozszerzenie Snapshot Debugger jest teraz włączony, za pomocą ustawienia aplikacji usługi aplikacji.
+4. Snapshot Debugger jest teraz włączona przy użyciu ustawienia aplikacji App Services.
 
-    ![Ustawienia aplikacji dla rozszerzenia Snapshot Debugger][snapshot-debugger-app-setting]
+    ![Ustawienie aplikacji dla Snapshot Debugger][snapshot-debugger-app-setting]
 
-## <a name="disable-snapshot-debugger"></a>Wyłącz rozszerzenia Snapshot Debugger
+## <a name="disable-snapshot-debugger"></a>Wyłącz Snapshot Debugger
 
-Wykonaj te same czynności, jak w przypadku **Włączanie rozszerzenia Snapshot Debugger**, ale przełączyć oba przełączniki dla rozszerzenia Snapshot Debugger do **poza**.
-Zaleca się, że masz rozszerzenia Snapshot Debugger włączone na wszystkie Twoje aplikacje działają nawet pod dużym diagnostyka wyjątków aplikacji.
+Wykonaj te same czynności co w przypadku **Snapshot Debugger Włącz**, ale Przełącz oba przełączniki Snapshot Debugger na **wyłączone**.
+Zalecamy, aby na wszystkich Twoich aplikacjach była włączona Snapshot Debugger, co ułatwia diagnostykę wyjątków aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Generowanie ruchu do aplikacji, które mogą wyzwalać wyjątek. Poczekaj 10 do 15 minut dla migawek do wysłania do wystąpienia usługi Application Insights.
-- Zobacz [migawek](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) w witrynie Azure portal.
-- Aby uzyskać pomoc dotyczącą rozwiązywania problemów rozszerzenia Snapshot Debugger, zobacz [Rozwiązywanie problemów z rozszerzenia Snapshot Debugger](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
+- Generuj ruch do aplikacji, która może wyzwolić wyjątek. Następnie odczekaj od 10 do 15 minut na wysłanie migawek do wystąpienia Application Insights.
+- Zobacz [migawki](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) w Azure Portal.
+- Aby uzyskać pomoc dotyczącą rozwiązywania problemów Snapshot Debugger, zobacz [Snapshot Debugger Rozwiązywanie problemów](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
 
 [Enablement UI]: ./media/snapshot-debugger/enablement-ui.png
 [snapshot-debugger-app-setting]:./media/snapshot-debugger/snapshot-debugger-app-setting.png

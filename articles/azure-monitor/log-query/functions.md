@@ -1,36 +1,30 @@
 ---
 title: Funkcje w kwerendach dzienników Azure Monitor | Microsoft Docs
 description: W tym artykule opisano, jak używać funkcji do wywoływania zapytania z innego zapytania dziennika w Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 75beb7b66863efd2fb3679f034a3663dca4a6d2f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/15/2018
+ms.openlocfilehash: 8d8473b88327d3d17346a0351d0a9fc510152cd8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076700"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894175"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Używanie funkcji w kwerendach dzienników Azure Monitor
 
 Aby użyć zapytania dziennika z innym zapytaniem, można je zapisać jako funkcję. Pozwala to uprościć złożone zapytania, dzieląc je na części i umożliwia ponowne użycie wspólnego kodu z wieloma zapytaniami.
 
-## <a name="create-a-function"></a>Utwórz funkcję
+## <a name="create-a-function"></a>Tworzenie funkcji
 
 Utwórz funkcję z Log Analytics w Azure Portal, klikając przycisk **Zapisz** , a następnie podając informacje w poniższej tabeli.
 
 | Ustawienie | Opis |
 |:---|:---|
-| Name           | Nazwa wyświetlana zapytania w **Eksploratorze zapytań**. |
+| Nazwa           | Nazwa wyświetlana zapytania w **Eksploratorze zapytań**. |
 | Zapisz jako        | Funkcja |
 | Alias funkcji | Krótka nazwa służąca do korzystania z funkcji w innych zapytaniach. Nie może zawierać spacji i musi być unikatowa. |
 | Kategoria       | Kategoria do organizowania zapisanych zapytań i funkcji w **Eksploratorze zapytań**. |

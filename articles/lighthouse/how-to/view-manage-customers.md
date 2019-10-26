@@ -4,15 +4,15 @@ description: Jako dostawca usług korzystający z funkcji zarządzania zasobami 
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: f6c98a67394db8028901f3f1f8e799af4c7a8c5f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302747"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898913"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Wyświetlanie klientów i delegowanych zasobów oraz zarządzanie nimi
 
@@ -20,7 +20,7 @@ Dostawcy usług korzystający z funkcji [zarządzania zasobami delegowanymi prze
 
 Aby uzyskać dostęp do strony **moi klienci** w Azure Portal, wybierz pozycję **wszystkie usługi**, a następnie wyszukaj pozycję **moi klienci** i wybierz ją. Można ją również znaleźć, wpisując "My Customers" w polu wyszukiwania w górnej części Azure Portal.
 
-Należy pamiętać, że na stronie **My Customers** są wyświetlane tylko informacje o klientach, którzy mają delegowane subskrypcje lub grupy zasobów. Jeśli pracujesz z innymi klientami (na przykład za pomocą [programu Cloud Solution Provider](https://docs.microsoft.com/partner-center/csp-overview)), nie zobaczysz tutaj informacji o tych klientach, chyba że połączysz swoje zasoby w celu zarządzania delegowanymi zasobami.
+Należy pamiętać, że w górnej części strony **moi klienci** są wyświetlane tylko informacje o klientach, którzy mają delegowane subskrypcje lub grupy zasobów. Jeśli pracujesz z innymi klientami (na przykład za pomocą [programu Cloud Solution Provider](https://docs.microsoft.com/partner-center/csp-overview)), nie zobaczysz tutaj informacji o tych klientach, chyba że połączysz swoje zasoby w celu zarządzania delegowanymi zasobami. Na stronie, w sekcji **dostawca rozwiązań w chmurze (wersja zapoznawcza)** przedstawiono informacje o rozliczeniach i zasoby dla klientów programu CSP, którzy [podpisali umowę klienta firmy Microsoft (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) i są objęte planem platformy Azure, niezależnie od tego, czy zostały one dołączone Zarządzanie zasobami delegowanymi przez platformę Azure. Aby uzyskać więcej informacji, zobacz artykuł Wprowadzenie [do rozliczeń umowy partnerskiej firmy Microsoft](https://docs.microsoft.com/azure/billing/mpa-overview).
 
 > [!NOTE]
 > Klienci mogą wyświetlać informacje o dostawcach usług, przechodząc do **dostawców usług** w Azure Portal. Aby uzyskać więcej informacji, zobacz [Wyświetlanie i zarządzanie dostawcami usług](view-manage-service-providers.md).

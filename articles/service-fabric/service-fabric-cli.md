@@ -2,18 +2,18 @@
 title: Wprowadzenie do interfejsu wiersza polecenia usługi Azure Service Fabric
 description: Dowiedz się, jak korzystać z interfejsu wiersza polecenia usługi Azure Service Fabric. Dowiedz się, jak nawiązać połączenie z klastrem i zarządzać aplikacjami.
 services: service-fabric
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: e0146504bd06a3c56de8113cc59c9eedd375d06f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803241"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901379"
 ---
 # <a name="azure-service-fabric-cli"></a>Interfejs wiersza polecenia usługi Azure Service Fabric
 
@@ -25,7 +25,7 @@ Interfejs wiersza polecenia usługi Azure Service Fabric jest narzędziem wiersz
 
 Przed instalacją upewnij się, że w środowisku zainstalowano zarówno język Python, jak i narzędzie pip. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją Szybki start dotyczącą narzędzia pip](https://pip.pypa.io/en/latest/quickstart/) i oficjalną [dokumentacją dotyczącą instalowania języka Python](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-Interfejs wiersza polecenia obsługuje język Python w wersji 2.7, 3.5 i 3.6 oraz 3.7. Python 3.x jest zalecana wersja, ponieważ środowisko Python 2.7 wkrótce skontaktuje wsparcie.
+Interfejs wiersza polecenia obsługuje środowisko Python w wersji 2,7, 3,5, 3,6 i 3,7. Zalecana wersja to Python 3. x, ponieważ środowisko Python 2,7 wkrótce osiągnie koniec wsparcia.
 
 ### <a name="service-fabric-target-runtime"></a>Docelowe środowisko uruchomieniowe usługi Service Fabric
 
@@ -33,7 +33,8 @@ Interfejs wiersza polecenia usługi Service Fabric jest przeznaczony do obsługi
 
 | Wersja interfejsu wiersza polecenia   | Obsługiwana wersja środowiska uruchomieniowego |
 |---------------|---------------------------|
-| Najnowsze (~ = 7)  | Najnowsze (~ = 6.4)            |
+| Najnowsze (~ = 8)  | Najnowsza (~ = 6,5)            |
+| 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
@@ -58,11 +59,11 @@ Dostępnych jest szereg sposobów instalowania narzędzia pip i środowiska Pyth
 
 W przypadku systemów Windows 10, Windows Server 2016 i Windows Server 2012 R2 należy postępować zgodnie z oficjalnymi instrukcjami standardowej instalacji. Instalator środowiska Python domyślnie instaluje też narzędzie pip.
 
-1. Przejdź do oficjalnej [strony pobierania środowiska Python](https://www.python.org/downloads/)i pobrać najnowszą wersję środowiska Python 3.7.
+1. Przejdź do oficjalnej [strony pobierania środowiska Python](https://www.python.org/downloads/)i Pobierz najnowszą wersję środowiska Python 3,7.
 
 2. Uruchom instalatora.
 
-3. W dolnej części monitu wybierz **Dodaj 3.7 języka Python do ścieżki**.
+3. W dolnej części monitu wybierz pozycję **Dodaj język Python 3,7 do ścieżki**.
 
 4. Wybierz pozycję **Install Now (Zainstaluj teraz)** i dokończ instalację.
 
@@ -73,7 +74,7 @@ python --version
 pip --version
 ```
 
-Następnie uruchom następujące polecenie, aby zainstalować Azure usługi Service FABRIC (sfctl) i przeglądać na stronie pomocy interfejsu wiersza polecenia:
+Następnie uruchom następujące polecenie, aby zainstalować interfejs wiersza polecenia platformy Azure Service Fabric (sfctl) i wyświetlić stronę pomocy interfejsu wiersza polecenia:
 
 ```bat
 pip install sfctl
@@ -115,7 +116,7 @@ sudo pip3 install sfctl
 
 ### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (obsługa wersji zapoznawczej usługi Service Fabric)
 
-Aby zainstalować interfejs wiersza polecenia usługi Service Fabric w systemie Red Hat, uruchom następujące polecenia:
+Aby zainstalować interfejs wiersza polecenia Service Fabric na Red Hat, uruchom następujące polecenia:
 
 ```bash
 sudo yum install -y python34
@@ -124,7 +125,7 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-W przypadku testowania instalacji można odwołać się do kroków wymienionych w **podsystem Ubuntu i Windows, Linux** sekcji
+W celu przetestowania instalacji można zapoznać się z krokami opisanymi w sekcji **Ubuntu i podsystem Windows dla systemu Linux** .
 
 <a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS
@@ -135,7 +136,7 @@ W przypadku systemu MacOS zaleca się użycie [menedżera pakietów HomeBrew](ht
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Następnie z poziomu terminala Zainstaluj 3.7 języka Python, pip i interfejs wiersza polecenia usługi Service Fabric, uruchamiając następujące polecenia:
+Następnie z terminalu zainstaluj środowisko Python 3,7, PIP i interfejs wiersza polecenia Service Fabric, uruchamiając następujące polecenia:
 
 ```bash
 brew install python3
@@ -241,7 +242,7 @@ Sprawdź, czy punkt końcowy określonego klastra jest dostępny i przeprowadza 
 
 ### <a name="detailed-logs"></a>Szczegółowe dzienniki
 
-Szczegółowe dzienniki często bywają przydatne w przypadku debugowania lub zgłaszania problemu. `--debug` Flagi zwiększa poziom szczegółowości danych wyjściowych.
+Szczegółowe dzienniki często bywają przydatne w przypadku debugowania lub zgłaszania problemu. Flaga `--debug` zwiększa poziom szczegółowości danych wyjściowych.
 
 ### <a name="command-help-and-syntax"></a>Polecenia — pomoc i składnia
 
@@ -266,7 +267,7 @@ pip uninstall sfctl
 pip install sfctl
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Deploy an application with the Azure Service Fabric CLI (Wdrażanie aplikacji przy użyciu interfejsu wiersza polecenia usługi Azure Service Fabric)](service-fabric-application-lifecycle-sfctl.md)
 * [Wprowadzenie do usługi Service Fabric w systemie Linux](service-fabric-get-started-linux.md)

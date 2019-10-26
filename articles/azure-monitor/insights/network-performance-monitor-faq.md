@@ -1,23 +1,18 @@
 ---
 title: Często zadawane pytania — Network Performance Monitor rozwiązanie na platformie Azure | Microsoft Docs
 description: W tym artykule opisano często zadawane pytania dotyczące Network Performance Monitor na platformie Azure. Network Performance Monitor (NPM) ułatwia monitorowanie wydajności sieci niemal w czasie rzeczywistym oraz wykrywanie i lokalizowanie wąskich gardeł wydajności sieci.
-services: log-analytics
-documentationcenter: ''
-author: vinynigam
-manager: agummadi
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 10/12/2018
+author: vinynigam
 ms.author: vinigam
-ms.openlocfilehash: b3274c214aa60c930e62e651af960d5f01cbdd20
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
-ms.translationtype: MT
+ms.date: 10/12/2018
+ms.openlocfilehash: 26e9215c7e00eca59d33f7e8d259a689ad642f19
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782121"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898850"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Rozwiązanie Network Performance Monitor — często zadawane pytania
 
@@ -64,7 +59,7 @@ Aby węzeł obsługiwał monitorowanie przy użyciu protokołu TCP:
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Jak mogę zmienić port TCP używany przez NPM do monitorowania?
-Można zmienić port TCP używany przez NPM do monitorowania, uruchamiając skrypt [skrypt enablerules. ps1](https://aka.ms/npmpowershellscript) . Musisz wprowadzić numer portu, który ma być używany jako parametr. Na przykład, aby włączyć protokół TCP na porcie 8060, `EnableRules.ps1 8060`Uruchom polecenie. Upewnij się, że używasz tego samego portu TCP na wszystkich węzłach używanych do monitorowania.
+Można zmienić port TCP używany przez NPM do monitorowania, uruchamiając skrypt [skrypt enablerules. ps1](https://aka.ms/npmpowershellscript) . Musisz wprowadzić numer portu, który ma być używany jako parametr. Na przykład aby włączyć protokół TCP na porcie 8060, uruchom `EnableRules.ps1 8060`. Upewnij się, że używasz tego samego portu TCP na wszystkich węzłach używanych do monitorowania.
 
 Skrypt konfiguruje tylko zaporę systemu Windows lokalnie. Jeśli masz reguły zapory sieciowej lub sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), upewnij się, że zezwalają na ruch przeznaczony dla portu TCP używanego przez NPM.
 
@@ -165,17 +160,17 @@ E2EMedianLatency to opóźnienie, które jest aktualizowane co trzy minuty po ag
 
 ### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Dlaczego liczby opóźnień przeskoków z skoku różnią się od HopLatencyValues 
 HopLatencyValues są źródłem do punktu końcowego.
-Na przykład: Przeskoki-A, B, C. AvgHopLatency-10, 15, 20. Oznacza to, że źródło do opóźnienia = 10, źródło do B opóźnienia = 15 i opóźnienie źródła do C wynosi 20. Interfejs użytkownika obliczy opóźnienie przeskoków A B jako 5 w topologii
+Na przykład: przeskoki-A, B, C. AvgHopLatency-10, 15, 20. Oznacza to, że źródło do opóźnienia = 10, źródło do B opóźnienia = 15 i opóźnienie źródła do C wynosi 20. Interfejs użytkownika obliczy opóźnienie przeskoków A B jako 5 w topologii
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>Rozwiązanie pokazuje 100% strat, ale istnieje łączność między źródłem a miejscem docelowym
 Taka sytuacja może wystąpić, Jeśli Zapora hosta lub pośrednia Zapora (Zapora sieciowa lub usługa Azure sieciowej grupy zabezpieczeń) blokuje komunikację między agentem źródłowym a miejscem docelowym przez port używany do monitorowania przez NPM (domyślnie port jest 8084, chyba że klient został zmieniony.
 
-* Aby sprawdzić, czy Zapora hosta nie blokuje komunikacji na wymaganym porcie, Wyświetl stan kondycji węzłów źródłowych i docelowych z następującego widoku: Network Performance Monitor > Konfiguracja-> węzły. 
+* Aby sprawdzić, czy Zapora hosta nie blokuje komunikacji na wymaganym porcie, Wyświetl stan kondycji węzłów źródłowych i docelowych z następującego widoku: Network Performance Monitor-> Konfiguracja-> węzły. 
   Jeśli są w złej kondycji, Wyświetl instrukcje i wykonaj działania naprawcze. Jeśli węzły są w dobrej kondycji, przejdź do kroku b. poniżej.
 * Aby sprawdzić, czy pośrednia Zapora sieciowa lub usługa Azure sieciowej grupy zabezpieczeń nie blokuje komunikacji na wymaganym porcie, użyj narzędzia PsPing innej firmy, korzystając z poniższych instrukcji:
   * Narzędzie psping jest dostępne do pobrania w [tym miejscu](https://technet.microsoft.com/sysinternals/psping.aspx) 
   * Uruchom następujące polecenie w węźle źródłowym.
-    * psping-n 15 \<węzeł docelowy adres\>IP:p ortnumber domyślnie używa portu 8084. Na wypadek, gdyby został jawnie zmieniony za pomocą skryptu skrypt enablerules. ps1, wprowadź niestandardowy numer portu, którego używasz). To jest polecenie ping z maszyny Azure do lokalnego
+    * psping-n 15 \<adres IP węzła docelowego\>:p ortNumber domyślnie używa portu 8084. Na wypadek, gdyby został jawnie zmieniony za pomocą skryptu skrypt enablerules. ps1, wprowadź niestandardowy numer portu, którego używasz). To jest polecenie ping z maszyny Azure do lokalnego
 * Sprawdź, czy polecenia ping zostały wykonane pomyślnie. W przeciwnym razie wskazuje, że pośrednia Zapora sieciowa lub usługa Azure sieciowej grupy zabezpieczeń blokuje ruch na tym porcie.
 * Teraz uruchom polecenie z węzła docelowego do adresu IP węzła źródłowego.
 
@@ -219,7 +214,7 @@ Może się tak zdarzyć, jeśli co najmniej jeden ma wartość PRAWDA:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>W funkcji Monitor łączności usług czas odpowiedzi usługi to, ale utrata połączenia sieciowego, a także opóźnienia są prawidłowe
 Taka sytuacja może wystąpić, jeśli usługa docelowa nie jest aplikacją internetową, ale test jest skonfigurowany jako test sieci Web. Edytuj konfigurację testu i wybierz typ testowy jako sieć zamiast sieci Web.
 
-## <a name="miscellaneous"></a>Różne
+## <a name="miscellaneous"></a>Różne postanowienia
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Czy istnieje wpływ na wydajność w węźle używanym do monitorowania?
 Proces NPM jest skonfigurowany do zatrzymania, jeśli wykorzystuje ponad 5% zasobów procesora CPU hosta. Ma to na celu zapewnienie, że można nadal korzystać z węzłów dla ich zwykłych obciążeń bez wpływu na wydajność.
@@ -228,7 +223,7 @@ Proces NPM jest skonfigurowany do zatrzymania, jeśli wykorzystuje ponad 5% zaso
 NPM tworzy tylko lokalną regułę zapory systemu Windows w węzłach, na których jest uruchomiony skrypt skrypt enablerules. ps1 PowerShell, aby umożliwić agentom tworzenie połączeń TCP ze sobą na określonym porcie. Rozwiązanie nie modyfikuje żadnej reguły zapory sieciowej ani sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń).
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Jak sprawdzić kondycję węzłów używanych do monitorowania?
-Można wyświetlić stan kondycji węzłów używanych do monitorowania z następującego widoku: Network Performance Monitor > Konfiguracja-> węzły. Jeśli węzeł jest w złej kondycji, możesz wyświetlić szczegóły błędu i wykonać sugerowaną akcję.
+Aby wyświetlić stan kondycji węzłów używanych do monitorowania, należy wykonać następujące czynności: Network Performance Monitor-> Configuration-> nodes. Jeśli węzeł jest w złej kondycji, możesz wyświetlić szczegóły błędu i wykonać sugerowaną akcję.
 
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>Czy NPMe liczby opóźnień raportów w mikrosekundach?
 NPM zaokrągla liczbę opóźnień w interfejsie użytkownika i w milisekundach. Te same dane są przechowywane na wyższym poziomie szczegółowości (czasami do czterech miejsc dziesiętnych).

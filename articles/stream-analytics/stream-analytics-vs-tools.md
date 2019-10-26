@@ -1,6 +1,6 @@
 ---
 title: Wyświetlanie Azure Stream Analytics zadań w programie Visual Studio
-description: W tym artykule opisano sposób wyświetlania zadań Azure Stream Analytics i zarządzania nimi w programie Visual Studio.
+description: Dowiedz się, jak wyświetlać, uruchamiać i zatrzymywać, testować połączenia, sprawdzać wyniki oraz eksportować Azure Stream Analytics zadania przy użyciu programu Visual Studio.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: ae532ed19c2273e43aa739e84d5a68cadb717b86
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d73955436e651dfdb9db9d602481213fcc2cf502
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173026"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893551"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Wyświetlanie Azure Stream Analytics zadań przy użyciu programu Visual Studio
 
@@ -38,8 +38,6 @@ Widok zadania służy do współpracy z zadaniami Azure Stream Analytics w progr
 
     ![Lista Eksploratora serwera Stream Analytics](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-
-
 2. Rozwiń węzeł zadania, a następnie kliknij dwukrotnie węzeł **widok zadania** , aby otworzyć widok zadań.
     
    ![Rozwinięty węzeł zadania](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
@@ -50,13 +48,11 @@ Zadania Azure Stream Analytics mogą być w pełni zarządzane z poziomu widoku 
     
    ![Kontrolki zadania Stream Analytics](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
-
 ## <a name="check-job-results"></a>Sprawdź wyniki zadania
 
 Narzędzia Stream Analytics Tools for Visual Studio obecnie obsługują Podgląd danych wyjściowych dla Azure Data Lake Storage i magazynu obiektów BLOB. Aby wyświetlić wyniki, wystarczy dwukrotnie kliknąć węzeł dane wyjściowe diagramu zadania w **widoku zadania** i wprowadzić odpowiednie poświadczenia.
 
    ![Dane wyjściowe obiektu BLOB zadania Stream Analytics](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
-
 
 ## <a name="export-jobs-to-a-project"></a>Eksportowanie zadań do projektu
 
@@ -87,6 +83,6 @@ Wyniki **połączenia testowego** są wyświetlane w oknie **dane wyjściowe** .
 ## <a name="next-steps"></a>Następne kroki
 
 * [Monitoruj Azure Stream Analytics zadania i zarządzaj nimi za pomocą programu Visual Studio](stream-analytics-monitor-jobs-use-vs.md)
-* [Szybki start: Tworzenie zadania Stream Analytics przy użyciu programu Visual Studio](stream-analytics-quick-create-vs.md)
-* [Samouczek: Wdróż zadanie Azure Stream Analytics przy użyciu ciągłej integracji/ciągłego wdrażania Azure Pipelines](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [Szybki Start: Tworzenie zadania Stream Analytics przy użyciu programu Visual Studio](stream-analytics-quick-create-vs.md)
+* [Samouczek: Wdrażanie zadania Azure Stream Analytics przy użyciu ciągłej integracji/ciągłego wdrażania za pomocą Azure Pipelines](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Ciągła integracja i ciągłe opracowywanie za pomocą narzędzi usługi Stream Analytics](stream-analytics-tools-for-visual-studio-cicd.md)

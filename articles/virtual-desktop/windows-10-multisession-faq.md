@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: a44f1e93302b90b88ef63030fab17433855af4ff
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f1ba54547b947e18d2d42520c0fb51a0855fb37c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143663"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901605"
 ---
-# <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise — często zadawane pytania dotyczące wielu sesji
+# <a name="windows-10-enterprise-multi-session-faq"></a>Wiele sesji systemu Windows 10 Enterprise — często zadawane pytania
 
 W tym artykule zawarto odpowiedzi na często zadawane pytania i opisano najlepsze rozwiązania dotyczące wielu sesji dla systemu Windows 10 Enterprise.
  
@@ -28,7 +28,7 @@ Liczba interaktywnych sesji, które mogą być aktywne w tym samym czasie, zale�
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Dlaczego moja aplikacja raportuje wiele sesji systemu Windows 10 Enterprise jako system operacyjny serwera?
 
-Wiele sesji systemu Windows 10 Enterprise to wersja wirtualna systemu Windows 10 Enterprise. Jedna z różnic polega na tym, że ten system operacyjny (OS) [](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) raportuje element ProductType jako wartość 2 o takiej samej wartości jak w przypadku systemu Windows Server. Ta właściwość utrzymuje system operacyjny zgodny z istniejącymi narzędziami do zarządzania hostami usług pulpitu zdalnego, aplikacjami obsługującymi wiele sesji hosta usług pulpitu zdalnego i większością optymalizacji wydajności systemu niskiego poziomu dla środowisk hosta usług pulpitu zdalnego. Niektóre Instalatory aplikacji mogą blokować instalację w wielu sesjach systemu Windows 10, w zależności od tego, czy wykrywane są ustawienia ProductType dla klienta. Jeśli Twoja aplikacja nie zostanie zainstalowana, skontaktuj się z dostawcą aplikacji w celu uzyskania zaktualizowanej wersji. 
+Wiele sesji systemu Windows 10 Enterprise to wersja wirtualna systemu Windows 10 Enterprise. Jedna z różnic polega na tym, że ten system operacyjny (OS) raportuje element [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) jako wartość 3 o takiej samej wartości jak system Windows Server. Ta właściwość utrzymuje system operacyjny zgodny z istniejącymi narzędziami do zarządzania hostami usług pulpitu zdalnego, aplikacjami obsługującymi wiele sesji hosta usług pulpitu zdalnego i większością optymalizacji wydajności systemu niskiego poziomu dla środowisk hosta usług pulpitu zdalnego. Niektóre Instalatory aplikacji mogą blokować instalację w wielu sesjach systemu Windows 10, w zależności od tego, czy wykrywane są ustawienia ProductType dla klienta. Jeśli Twoja aplikacja nie zostanie zainstalowana, skontaktuj się z dostawcą aplikacji w celu uzyskania zaktualizowanej wersji. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Czy można uruchomić wiele sesji systemu Windows 10 Enterprise w środowisku lokalnym?
 
@@ -76,6 +76,6 @@ Aby uzyskać pełną listę odpowiednich licencji, zobacz [Cennik pulpitu wirtua
 
 Aby dowiedzieć się więcej o wielu sesjach systemu Windows Virtual Desktop i Windows 10 Enterprise:
 
-- Przeczytaj [dokumentację dotyczącą systemu Windows Virtual Desktop w wersji](overview.md) zapoznawczej
+- Przeczytaj [dokumentację dotyczącą systemu Windows Virtual Desktop w wersji zapoznawczej](overview.md)
 - Odwiedź naszą [TechCommunity pulpitu wirtualnego systemu Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
 - Konfigurowanie wdrożenia pulpitu wirtualnego systemu Windows przy użyciu [samouczków pulpitu wirtualnego systemu Windows](tenant-setup-azure-active-directory.md)

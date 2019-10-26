@@ -4,26 +4,26 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 15ed78095cf3ff465b24d181d2fb2d4c4dde2f69
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4acf90a512634ebd3ed15d45c350b9f78ec82ae1
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183440"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72902252"
 ---
-## <a name="net-sample-code-repositories"></a>Repozytoria kodu przykładowej platformy .NET
+## <a name="net-sample-code-repositories"></a>Przykładowe repozytoria kodu platformy .NET
 
-Oto lista nasze repozytoria próbki dla biblioteki klienta .NET magazynu platformy Azure.
+Poniżej znajduje się lista wszystkich naszych przykładowych repozytoriów dla biblioteki klienta .NET usługi Azure Storage.
 
-* [Aplikacja sieci Web galerii fotografii systemu Azure Blob Storage](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)
-* [Przykłady magazynu obiektów Blob platformy Azure dla platformy .NET](https://azure.microsoft.com/resources/samples/storage-blob-dotnet-getting-started/)
-* [Dyski z kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu migawek przyrostowych](https://azure.microsoft.com/resources/samples/storage-blob-dotnet-back-up-with-incremental-snapshots/)
-* [Rozpoczęcie korzystania z szyfrowania po stronie klienta platformy Azure na platformie .NET](https://azure.microsoft.com/resources/samples/storage-dotnet-client-side-encryption/)
-* [Wprowadzenie do usługi plików platformy Azure na platformie .NET](https://azure.microsoft.com/resources/samples/storage-file-dotnet-getting-started/)
-* [Wprowadzenie do usługi Azure Queue Service na platformie .NET](https://azure.microsoft.com/resources/samples/storage-queue-dotnet-getting-started/)
-* [Wprowadzenie do dostawcy zasobów usługi Azure Storage na platformie .NET](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/)
-* [Rozpoczynanie pracy z usługą Azure Table Storage na platformie .NET](https://azure.microsoft.com/resources/samples/storage-table-dotnet-getting-started/)
-* [Rozpoczęcie korzystania z udostępnionych Access Signatures (SAS)](https://azure.microsoft.com/resources/samples/storage-dotnet-sas-getting-started/)
-* [Zarządzanie zadaniami importowania i eksportowania za pomocą interfejsu API REST](https://azure.microsoft.com/resources/samples/storage-dotnet-import-export-job-management/)
-* [MyDriving — usługa Azure IOT i przenośnych przykładowej aplikacji](https://azure.microsoft.com/resources/samples/mydriving/)
-* [Przykłady biblioteki klienta magazynu dla platformy .NET](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted)
+* [Aplikacja internetowa Galeria zdjęć w usłudze Azure Blob Storage](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)
+* [Przykłady Blob Storage platformy Azure dla platformy .NET](https://azure.microsoft.com/resources/samples/storage-blob-dotnet-getting-started/)
+* [Tworzenie kopii zapasowych dysków maszyny wirtualnej platformy Azure przy użyciu migawek przyrostowych](https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots)
+* [Wprowadzenie z szyfrowaniem po stronie klienta platformy Azure w programie .NET](https://github.com/Azure-Samples/storage-dotnet-client-side-encryption)
+* [Wprowadzenie z usługą plików platformy Azure w środowisku .NET](https://azure.microsoft.com/resources/samples/storage-file-dotnet-getting-started/)
+* [Wprowadzenie z usługą kolejki platformy Azure na platformie .NET](https://azure.microsoft.com/resources/samples/storage-queue-dotnet-getting-started/)
+* [Wprowadzenie z dostawcą zasobów usługi Azure Storage na platformie .NET](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/)
+* [Rozpoczynanie pracy z usługą Azure Table Storage na platformie .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started)
+* [Wprowadzenie z sygnaturami dostępu współdzielonego (SAS)](https://azure.microsoft.com/resources/samples/storage-dotnet-sas-getting-started/)
+* [Zarządzanie zadaniami importowania i eksportowania za pomocą interfejsu API REST](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
+* [Moja nauka — Przykładowa aplikacja usługi Azure IOT i aplikacji mobilnej](https://github.com/Azure-Samples/mydriving/)
+* [Przykłady biblioteki klienta magazynu .NET](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted)

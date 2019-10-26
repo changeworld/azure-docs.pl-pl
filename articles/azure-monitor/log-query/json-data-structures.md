@@ -1,42 +1,36 @@
 ---
-title: Praca z ciągami zapytań dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera samouczek dotyczący korzystania z usługi Azure Monitor Log Analytics w witrynie Azure portal do tworzenia zapytań i analizowania danych dziennika w usłudze Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Praca z ciągami w zapytaniach dziennika Azure Monitor | Microsoft Docs
+description: Ten artykuł zawiera samouczek dotyczący używania Log Analytics Azure Monitor w Azure Portal do wykonywania zapytań i analizowania danych dziennika w Azure Monitor.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 718b12c8a66d66a75796f88ef31b5f0f62abbbc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/16/2018
+ms.openlocfilehash: 82ac27e10a74dc99adb7615d604502e696aa9edb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60519660"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894322"
 ---
-# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Praca z formatami JSON i danych struktury w zapytaniach dzienników usługi Azure Monitor
+# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Praca ze strukturami JSON i danych w zapytaniach dziennika Azure Monitor
 
 > [!NOTE]
-> Należy wykonać [Rozpoczynanie pracy z usługą Azure Monitor Log Analytics](get-started-portal.md) i [wprowadzenie do usługi Azure Monitor dziennika zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
+> Przed ukończeniem tej lekcji należy ukończyć pracę [z Azure Monitor Log Analytics](get-started-portal.md) i [zacząć korzystać z zapytań dziennika Azure monitor](get-started-queries.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Obiekty zagnieżdżone są obiektami, które zawierają inne obiekty w tablicy lub mapę pary klucz wartość. Te obiekty są reprezentowane jako ciągi formatu JSON. W tym artykule opisano, jak JSON służy do pobierania danych i analizowanie obiektów zagnieżdżonych.
+Obiekty zagnieżdżone to obiekty, które zawierają inne obiekty w tablicy lub mapę par klucz-wartość. Te obiekty są reprezentowane jako ciągi JSON. W tym artykule opisano, jak kod JSON jest używany do pobierania danych i analizowania obiektów zagnieżdżonych.
 
-## <a name="working-with-json-strings"></a>Praca z ciągami formatu JSON
-Użyj `extractjson` umożliwiają dostęp do określonego elementu JSON w znanej ścieżce. Ta funkcja wymaga, aby wyrażenie ścieżki, która używa następujących konwencji.
+## <a name="working-with-json-strings"></a>Praca z ciągami JSON
+Użyj `extractjson`, aby uzyskać dostęp do określonego elementu JSON w znanej ścieżce. Ta funkcja wymaga wyrażenia ścieżki, które używa następujących konwencji.
 
-- _$_ Aby odwołać się do folderu głównego
-- Notacja nawias kwadratowy lub kropki służą do odwoływania się do indeksów i elementy, jak pokazano w poniższych przykładach.
+- _$_ do odwoływania się do folderu głównego
+- Aby odwoływać się do indeksów i elementów, jak pokazano w poniższych przykładach, użyj notacji z nawiasem lub kropką.
 
 
-Użyj nawiasów, indeksy i kropki do oddzielania elementów:
+Użyj nawiasów dla indeksów i kropek, aby oddzielić elementy:
 
 ```Kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
@@ -44,7 +38,7 @@ print hosts_report
 | extend status = extractjson("$.hosts[0].status", hosts_report)
 ```
 
-Jest to ten sam wynik, za pomocą tylko notacji nawiasy:
+Jest to ten sam wynik przy użyciu tylko notacji z nawiasów kwadratowych:
 
 ```Kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
@@ -52,7 +46,7 @@ print hosts_report
 | extend status = extractjson("$['hosts'][0]['status']", hosts_report)
 ```
 
-Jeśli istnieje tylko jeden element, można użyć tylko kropkowego:
+Jeśli istnieje tylko jeden element, można użyć tylko notacji kropkowej:
 
 ```Kusto
 let hosts_report='{"location":"North_DC", "status":"running", "rate":5}';
@@ -64,7 +58,7 @@ print hosts_report
 ## <a name="working-with-objects"></a>Praca z obiektami
 
 ### <a name="parsejson"></a>parsejson
-Aby uzyskać dostęp do wielu elementów w strukturze json, łatwiej jest uzyskać dostęp jako obiekt dynamiczny. Użyj `parsejson` można rzutować danych tekstowych, aby obiekt dynamiczny. Po konwersji typu dynamicznego, dodatkowe funkcje może służyć do analizowania danych.
+Aby uzyskać dostęp do wielu elementów w strukturze JSON, łatwiej jest uzyskać do nich dostęp jako obiekt dynamiczny. Użyj `parsejson` do rzutowania danych tekstowych na obiekt dynamiczny. Po przekonwertowaniu na typ dynamiczny, za pomocą dodatkowych funkcji można analizować dane.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -75,7 +69,7 @@ print hosts_object
 
 
 ### <a name="arraylength"></a>arraylength
-Użyj `arraylength` do liczby elementów w tablicy:
+Użyj `arraylength`, aby obliczyć liczbę elementów w tablicy:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -84,7 +78,7 @@ print hosts_object
 ```
 
 ### <a name="mvexpand"></a>mvexpand
-Użyj `mvexpand` można przerwać właściwości obiektu w oddzielnych wierszach.
+Użyj `mvexpand`, aby przerwać właściwości obiektu w osobnych wierszach.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -95,7 +89,7 @@ print hosts_object
 ![mvexpand](media/json-data-structures/mvexpand.png)
 
 ### <a name="buildschema"></a>buildschema
-Użyj `buildschema` można pobrać schematu, który dopuszcza wszystkie wartości obiektu:
+Użyj `buildschema`, aby uzyskać schemat, który dopuszcza wszystkie wartości obiektu:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -103,7 +97,7 @@ print hosts_object
 | summarize buildschema(hosts_object)
 ```
 
-Dane wyjściowe są schematu w formacie JSON:
+Dane wyjściowe są schematem w formacie JSON:
 ```json
 {
     "hosts":
@@ -117,9 +111,9 @@ Dane wyjściowe są schematu w formacie JSON:
     }
 }
 ```
-Te dane wyjściowe w tym artykule opisano nazwy pola obiektów i ich zgodnych typów danych. 
+Dane wyjściowe opisują nazwy pól obiektów i ich zgodne typy danych. 
 
-Zagnieżdżone obiekty mogą mieć różne schematy w następującym przykładzie:
+Obiekty zagnieżdżone mogą mieć różne schematy, takie jak w poniższym przykładzie:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"status":"stopped", "rate":"3", "range":100}]}');
@@ -128,15 +122,15 @@ print hosts_object
 ```
 
 
-![Tworzenie schematu](media/json-data-structures/buildschema.png)
+![Schemat kompilacji](media/json-data-structures/buildschema.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne lekcje dotyczące korzystania z zapytań dzienników w usłudze Azure Monitor:
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z innymi lekcjami dotyczącymi używania zapytań dzienników w Azure Monitor:
 
 - [Operacje na ciągach](string-operations.md)
-- [Operacje daty i godziny](datetime-operations.md)
+- [Operacje na dacie i godzinie](datetime-operations.md)
 - [Funkcje agregacji](aggregations.md)
-- [Zaawansowane agregacji](advanced-aggregations.md)
-- [Pisanie zapytań zaawansowanych](advanced-query-writing.md)
-- [Sprzężenia](joins.md)
-- [Wykresy](charts.md)
+- [Agregacje zaawansowane](advanced-aggregations.md)
+- [Zaawansowane zapisywanie zapytań](advanced-query-writing.md)
+- [Łącze](joins.md)
+- [Schematy](charts.md)

@@ -1,5 +1,5 @@
 ---
-title: Wymagania licencyjne dotyczące korzystania z programu PIM-Azure Active Directory | Microsoft Docs
+title: Wymagania licencyjne dotyczące używania Privileged Identity Management-Azure Active Directory | Microsoft Docs
 description: Opisuje wymagania licencyjne dotyczące korzystania z Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 01/16/2019
+ms.date: 10/23/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83c31c2731a8e872dfd2750fced8b91d283d0892
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: e6e336ec40ba2b9f6d3018e6a4f5b2ac721077aa
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804060"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895114"
 ---
-# <a name="license-requirements-to-use-pim"></a>Wymagania licencyjne dotyczące korzystania z programu PIM
+# <a name="license-requirements-to-use-privileged-identity-management"></a>Wymagania licencyjne dotyczące używania Privileged Identity Management
 
-Aby można było użyć usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM), katalog musi mieć ważną licencję. Ponadto licencje muszą być przypisane do administratorów i odpowiednich użytkowników. W tym artykule opisano wymagania licencyjne dotyczące korzystania z programu PIM.
+Aby można było użyć usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM), katalog musi mieć ważną licencję. Ponadto licencje muszą być przypisane do administratorów i odpowiednich użytkowników. W tym artykule opisano wymagania licencyjne dotyczące korzystania z Privileged Identity Management.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby można było korzystać z usługi PIM, katalog musi mieć jedną z następujących licencji płatnych lub próbnych:
+Aby można było korzystać z Privileged Identity Management, katalog musi mieć jedną z następujących licencji płatnych lub wersji próbnej:
 
 - Usługa Azure AD — warstwa Premium P2
 - Enterprise Mobility + Security (EMS) E5
@@ -40,7 +40,7 @@ Aby uzyskać więcej informacji, zobacz [Co to jest usługa Azure Active Directo
 
 ## <a name="which-users-must-have-licenses"></a>Którzy użytkownicy muszą mieć licencje?
 
-Każdy administrator lub użytkownik, który współdziała z usługą lub otrzymuje korzyść z usługi PIM, musi mieć licencję. Przykłady:
+Każdy administrator lub użytkownik, który współdziała z programem lub otrzymuje korzyść z Privileged Identity Management musi mieć licencję. Przykłady obejmują:
 
 - Administratorzy z rolami usługi Azure AD zarządzanymi przy użyciu programu PIM
 - Administratorzy z rolami zasobów platformy Azure zarządzanymi przy użyciu usług PIM
@@ -55,16 +55,16 @@ Aby uzyskać informacje na temat sposobu przypisywania licencji do użycia, zoba
 
 ## <a name="what-happens-when-a-license-expires"></a>Co się stanie po wygaśnięciu licencji?
 
-Jeśli licencja na Azure AD — wersja Premium P2, EMS E5 lub wersja próbna wygaśnie, funkcje PIM nie będą już dostępne w Twoim katalogu:
+Jeśli licencja na Azure AD — wersja Premium P2, EMS E5 lub wersja próbna wygaśnie, funkcje Privileged Identity Management nie będą już dostępne w Twoim katalogu:
 
 - Nie wpłynie to na trwałe przypisania roli do ról usługi Azure AD.
-- Usługa PIM w Azure Portal, a także polecenia cmdlet interfejs API programu Graph i interfejsy programu PowerShell w usłudze PIM nie będą już dostępne, aby użytkownicy mogli aktywować role uprzywilejowane, zarządzać dostępem uprzywilejowanym lub wykonywać przeglądy dostępu ról uprzywilejowanych.
+- Usługa Privileged Identity Management w Azure Portal, jak również polecenia cmdlet interfejs API programu Graph i interfejsy programu PowerShell dla programu Privileged Identity Management, nie będą już dostępne dla użytkowników w celu aktywowania uprzywilejowanych ról, zarządzania dostępem uprzywilejowanym lub wykonywania przeglądy dostępu ról uprzywilejowanych.
 - Uprawnione przypisania ról usługi Azure AD zostaną usunięte, ponieważ użytkownicy nie będą już mogli aktywować uprzywilejowanych ról.
-- Wszystkie bieżące przeglądy dostępu ról usługi Azure AD zostaną zakończone, a ustawienia konfiguracji PIM zostaną usunięte.
-- Program PIM nie będzie już wysyłać wiadomości e-mail w ramach zmian przypisania roli.
+- Wszystkie bieżące przeglądy dostępu ról usługi Azure AD zostaną zakończone, a ustawienia konfiguracji Privileged Identity Management zostaną usunięte.
+- Privileged Identity Management nie będą już wysyłać wiadomości e-mail w ramach zmian przypisania roli.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Wdrażanie usługi PIM](pim-deployment-plan.md)
-- [Rozpoczynanie korzystania z usługi PIM](pim-getting-started.md)
-- [Role, którymi nie można zarządzać w usłudze PIM](pim-roles.md)
+- [Wdróż Privileged Identity Management](pim-deployment-plan.md)
+- [Zacznij korzystać z Privileged Identity Management](pim-getting-started.md)
+- [Role, którymi nie można zarządzać w Privileged Identity Management](pim-roles.md)

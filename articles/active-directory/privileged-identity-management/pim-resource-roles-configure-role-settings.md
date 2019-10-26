@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie ustawień roli zasobów platformy Azure w programie PIM-Azure Active Directory | Microsoft Docs
+title: Konfigurowanie ustawień roli zasobów platformy Azure w Privileged Identity Management-Azure Active Directory | Microsoft Docs
 description: Dowiedz się, jak skonfigurować ustawienia roli zasobów platformy Azure w Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/23/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88645d07ff213b0b7a56f2b081f0aaed01fd2929
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5f322fed83f89fea64c8d834dd0c72ab9c279c11
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804204"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895795"
 ---
-# <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM
+# <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Skonfiguruj ustawienia roli zasobów platformy Azure w Privileged Identity Management
 
 Podczas konfigurowania ustawień roli zasobów platformy Azure należy zdefiniować ustawienia domyślne, które są stosowane do przypisań ról zasobów platformy Azure w usłudze Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Poniższe procedury służą do konfigurowania przepływu pracy zatwierdzania i określania, kto może zatwierdzać lub odrzucać żądania.
 
@@ -30,25 +30,25 @@ Podczas konfigurowania ustawień roli zasobów platformy Azure należy zdefiniow
 
 Wykonaj następujące kroki, aby otworzyć ustawienia roli zasobów platformy Azure.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu użytkownika, który jest członkiem roli [administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu użytkownika z rolą [administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 
-1. Kliknij pozycję **zasoby platformy Azure**.
+1. Wybierz pozycję **zasoby platformy Azure**.
 
-1. Kliknij zasób, którym chcesz zarządzać, na przykład subskrypcję lub grupę zarządzania.
+1. Wybierz zasób, którym chcesz zarządzać, na przykład subskrypcję lub grupę zarządzania.
 
     ![Strona zasobów platformy Azure z listą zasobów, które mogą być zarządzane](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. Kliknij pozycję **Ustawienia roli**.
+1. Wybierz pozycję **Ustawienia roli**.
 
     ![Strona ustawień roli z listą ról zasobów platformy Azure](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
-1. Kliknij rolę, której ustawienia chcesz skonfigurować.
+1. Wybierz rolę, której ustawienia chcesz skonfigurować.
 
     ![Strona szczegółów ustawienia roli wyświetlanie kilku ustawień przypisywania i aktywacji](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. Kliknij przycisk **Edytuj** , aby otworzyć okienko ustawienia roli.
+1. Wybierz pozycję **Edytuj** , aby otworzyć okienko ustawienia roli.
 
     ![Strona edytowania ustawień roli z opcjami aktualizowania ustawień przypisywania i aktywacji](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
@@ -56,68 +56,68 @@ Wykonaj następujące kroki, aby otworzyć ustawienia roli zasobów platformy Az
 
 ## <a name="assignment-duration"></a>Czas trwania przypisywania
 
-Można wybrać jedną z dwóch opcji czasu trwania przypisania dla każdego typu przypisania (kwalifikujące się i aktywne) podczas konfigurowania ustawień dla roli. Te opcje stają się domyślnym maksymalnym czasem trwania, gdy członek jest przypisany do roli w programie PIM.
+Można wybrać jedną z dwóch opcji czasu trwania przypisania dla każdego typu przypisania (kwalifikujące się i aktywne) podczas konfigurowania ustawień dla roli. Te opcje stają się domyślnym maksymalnym czasem trwania, gdy użytkownik jest przypisany do roli w Privileged Identity Management.
 
 Można wybrać jedną **z następujących opcji** czasu trwania przypisania:
 
 | | |
 | --- | --- |
-| **Zezwalaj na trwałe przypisanie** | Administratorzy zasobów mogą przypisywać trwałe członkowstwo kwalifikujące się. |
+| **Zezwalaj na trwałe przypisanie** | Administratorzy zasobów mogą przypisywać trwałe, kwalifikujące się przypisanie. |
 | **Unieważnij przypisanie kwalifikujące się po** | Administratorzy zasobów mogą wymagać, aby wszystkie kwalifikujące się przypisania mieli określoną datę początkową i końcową. |
 
 Można też wybrać jedną z następujących opcji **aktywnego** przydziału czasu trwania:
 
 | | |
 | --- | --- |
-| **Zezwalaj na trwałe aktywne przypisanie** | Administratorzy zasobów mogą przypisywać trwałe aktywne członkowstwo. |
+| **Zezwalaj na trwałe aktywne przypisanie** | Administratorzy zasobów mogą przypisywać trwałe aktywne przydziały. |
 | **Wygasa aktywne przypisanie po** | Administratorzy zasobów mogą wymagać, aby wszystkie aktywne przypisania miały określoną datę początkową i końcową. |
 
-> [!NOTE] 
-> Wszystkie przypisania o określonej dacie końcowej mogą zostać odnowione przez administratorów zasobów. Ponadto członkowie mogą inicjować żądania samoobsługi w celu [przedłużenia lub odnowienia przypisań ról](pim-resource-roles-renew-extend.md).
+> [!NOTE]
+> Wszystkie przypisania o określonej dacie końcowej mogą zostać odnowione przez administratorów zasobów. Ponadto użytkownicy mogą inicjować żądania samoobsługi w celu [przedłużenia lub odnowienia przypisań ról](pim-resource-roles-renew-extend.md).
 
 ## <a name="require-multi-factor-authentication"></a>Wymagaj uwierzytelniania wieloskładnikowego
 
-Program PIM zapewnia opcjonalne Wymuszanie usługi Azure Multi-Factor Authentication (MFA) dla dwóch różnych scenariuszy.
+Privileged Identity Management zapewnia opcjonalne wymuszanie Multi-Factor Authentication platformy Azure dla dwóch różnych scenariuszy.
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>Wymagaj Multi-Factor Authentication przy aktywnym przypisaniu
 
-W niektórych przypadkach może być konieczne przypisanie składowej do roli przez krótki czas trwania (na przykład jeden dzień). W takim przypadku nie potrzebują przypisanych członków do żądania aktywacji. W tym scenariuszu program PIM nie może wymusić uwierzytelniania MFA, gdy członek korzysta z przypisywania ról, ponieważ są one już aktywne w roli od momentu, w którym są przypisane.
+W niektórych przypadkach może być konieczne przypisanie użytkownika lub grupy do roli przez krótki czas trwania (na przykład jeden dzień). W takim przypadku przypisani użytkownicy nie muszą zażądać aktywacji. W tym scenariuszu Privileged Identity Management nie może wymusić uwierzytelniania wieloskładnikowego, gdy użytkownik korzysta z przypisania roli, ponieważ jest już aktywne w roli od momentu, w którym jest przypisany.
 
-Aby upewnić się, że administrator zasobów spełniający przypisanie, należy wymusić uwierzytelnianie wieloskładnikowe na aktywnym przypisaniu, zaznaczając pole **wymagaj Multi-Factor Authentication w aktywnym przypisaniu** .
+Aby upewnić się, że administrator zasobów spełniający przypisanie, należy wymusić uwierzytelnianie wieloskładnikowe przy aktywnym przypisaniu, zaznaczając pole **wymagaj Multi-Factor Authentication w aktywnym przypisaniu** .
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Wymagaj Multi-Factor Authentication podczas aktywacji
 
-Przed aktywowaniem usługi MFA można wymagać od uprawnionych członków roli. Ten proces zapewnia, że użytkownik, który żąda aktywacji, jest odpowiedzialny za uzyskanie odpowiednich pewności. Wymuszanie tej opcji chroni zasoby o znaczeniu krytycznym w sytuacjach, gdy naruszone konto użytkownika mogło ulec naruszeniu.
+Możesz wymagać od użytkowników, którzy kwalifikują się do roli, aby udowodnić, którzy korzystają z usługi Azure Multi-Factor Authentication, zanim będą mogli ją aktywować. Uwierzytelnianie wieloskładnikowe gwarantuje, że użytkownik jest odpowiedzialny za to, że są one z rozsądną pewnością. Wymuszanie tej opcji chroni zasoby o znaczeniu krytycznym w sytuacjach, gdy naruszone konto użytkownika mogło ulec naruszeniu.
 
-Aby wymagać, aby uprawniony członek mógł uruchomić usługę MFA przed aktywacją, zaznacz pole **wymagaj Multi-Factor Authentication przy aktywacji** .
+Aby wymagać uwierzytelniania wieloskładnikowego przed aktywacją, zaznacz pole **wymagaj Multi-Factor Authentication przy aktywacji** .
 
-Aby uzyskać więcej informacji, zobacz [uwierzytelnianie wieloskładnikowe (MFA) i program PIM](pim-how-to-require-mfa.md).
+Aby uzyskać więcej informacji, zobacz temat [uwierzytelnianie wieloskładnikowe i Privileged Identity Management](pim-how-to-require-mfa.md).
 
-## <a name="activation-maximum-duration"></a>Maksymalny czas trwania uaktywniania
+## <a name="activation-maximum-duration"></a>Maksymalny czas trwania aktywacji
 
-Suwak **Maksymalny czas trwania aktywacji** umożliwia ustawienie maksymalnego czasu (w godzinach), przez który rola pozostaje aktywna przed wygaśnięciem. Ta wartość może należeć do zakresu od 1 do 24 godzin.
+Suwak **Maksymalny czas trwania aktywacji** umożliwia ustawienie maksymalnego czasu (w godzinach), przez który rola pozostaje aktywna przed wygaśnięciem. Ta wartość może należeć do przemieścić od jednej do 24 godzin.
 
 ## <a name="require-justification"></a>Wymagaj uzasadnienia
 
-Możesz wymagać, aby członkowie mogli wprowadzić uzasadnienie aktywnego przypisania lub kiedy aktywują. Aby wymagać uzasadnienia, zaznacz pole wyboru **Wymagaj uzasadnienia przy aktywnym przypisaniu** lub wybierz opcję **Wymagaj uzasadnienia przy aktywacji** .
+Możesz wymagać od użytkowników wprowadzenia uzasadnienia biznesowego podczas aktywacji. Aby wymagać uzasadnienia, zaznacz pole wyboru **Wymagaj uzasadnienia przy aktywnym przypisaniu** lub wybierz opcję **Wymagaj uzasadnienia przy aktywacji** .
 
-## <a name="require-approval-to-activate"></a>Wymagaj zatwierdzenia w celu aktywacji
+## <a name="require-approval-to-activate"></a>Wymagaj zatwierdzenia do aktywacji
 
 Jeśli chcesz wymagać zatwierdzenia w celu aktywowania roli, wykonaj następujące czynności.
 
 1. Zaznacz pole wyboru **Wymagaj zatwierdzenia do uaktywnienia** .
 
-1. Kliknij przycisk **Wybierz osoby zatwierdzające** , aby otworzyć okienko Wybierz członka lub grupę.
+1. Wybierz pozycję **Wybierz osoby zatwierdzające** , aby otworzyć stronę **Wybierz członka lub grupę** .
 
-    ![Wybierz okienko elementów członkowskich lub grup, aby wybrać osoby zatwierdzające](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Wybierz okienko użytkownika lub grupy, aby wybrać osoby zatwierdzające](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Wybierz co najmniej jednego członka lub grupę, a następnie kliknij przycisk **Wybierz**. Możesz dodać dowolną kombinację elementów członkowskich i grup. Musisz wybrać co najmniej jedną osobę zatwierdzającą. Brak domyślnych osób zatwierdzających.
+1. Wybierz co najmniej jednego użytkownika lub grupę, a następnie kliknij przycisk **Wybierz**. Możesz dodać dowolną kombinację użytkowników i grup. Musisz wybrać co najmniej jedną osobę zatwierdzającą. Brak domyślnych osób zatwierdzających.
 
     Wybrane opcje zostaną wyświetlone na liście wybranych osób zatwierdzających.
 
-1. Po określeniu wszystkich ustawień roli kliknij pozycję **Aktualizuj** , aby zapisać zmiany.
+1. Po określeniu wszystkich ustawień roli wybierz pozycję **Aktualizuj** , aby zapisać zmiany.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Przypisywanie ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-assign-roles.md)
-- [Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-alerts.md)
+- [Przypisywanie ról zasobów platformy Azure w Privileged Identity Management](pim-resource-roles-assign-roles.md)
+- [Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w Privileged Identity Management](pim-resource-roles-configure-alerts.md)

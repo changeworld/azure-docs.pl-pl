@@ -1,24 +1,18 @@
 ---
 title: wyrażenie Resource () w kwerendzie dziennika Azure Monitor | Microsoft Docs
 description: Wyrażenie zasobu jest używane w zasobie zorientowanym na zasoby Azure Monitor zapytania dziennika do pobierania danych z wielu zasobów.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 09/10/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: deca6e7ef1c231a82a73067971d86a6e9cdd0599
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: MT
+ms.date: 09/10/2018
+ms.openlocfilehash: 4787dc8a8cc06e0ad0be88597dab3481284fb58b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71817412"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900209"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>wyrażenie Resource () w zapytaniu dziennika Azure Monitor
 
@@ -27,7 +21,7 @@ Wyrażenie `resource` jest używane w zapytaniu Azure Monitor [objętym zakresem
 
 ## <a name="syntax"></a>Składnia
 
-*identyfikator*`resource(` `)`
+*identyfikator* `resource(``)`
 
 ## <a name="arguments"></a>Argumenty
 

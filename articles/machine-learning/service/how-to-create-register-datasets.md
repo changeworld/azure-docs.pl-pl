@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 10/10/2019
-ms.openlocfilehash: 54f8a1248688a6d62192e4f34cf6b98a94086da8
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a558658d7c853560f0939c99dc5dce739d985944
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274762"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900716"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Tworzenie zestawów danych i uzyskiwanie do nich dostępu (wersja zapoznawcza) w Azure Machine Learning
 
@@ -82,7 +82,7 @@ datastore = Datastore.get(workspace, datastore_name)
 ```
 #### <a name="create-tabulardatasets"></a>Utwórz TabularDatasets
 
-Użyj metody [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) w klasie `TabularDatasetFactory`, aby odczytać pliki w formacie CSV lub TSV i utworzyć niezarejestrowane TabularDataset. W przypadku odczytywania z wielu plików wyniki zostaną zagregowane w jednej reprezentacji tabelarycznej.
+Użyj metody [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) na `TabularDatasetFactory` klasie, aby odczytać pliki w formacie CSV lub TSV i utworzyć niezarejestrowane TabularDataset. W przypadku odczytywania z wielu plików wyniki zostaną zagregowane w jednej reprezentacji tabelarycznej.
 
 ```Python
 # create a TabularDataset from multiple paths in datastore
@@ -101,13 +101,13 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Ocalałe|Pclass|Nazwa|Biciu|Wiek|SibSp|Rodz/dz.|Równ|Bezprzewodow|Kabin|Zaokrętowanie
+| |PassengerId|Ocalałe|Pclass|Nazwa|Biciu|Wiek|SibSp|Parch|Równ|Bezprzewodow|Kabin|Zaokrętowanie
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|0|3|Braund, Mr. Owen Harris|mężczyzna|22,0|1|0|A/5 21171|7,2500||S
 1|2|1|1|Cumings, Pani. Jan Bradley (Florencji Briggs th...|kobieta|38,0|1|0|KOMPUTER 17599|71,2833|C85|C
 2|3|1|3|Heikkinen, chybień. Laina|kobieta|26,0|0|0|STON/O2. 3101282|7,9250||S
 
-Aby odczytać z Azure SQL Database, użyj metody [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) w klasie `TabularDatasetFactory`.
+Użyj metody [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) w klasie `TabularDatasetFactory`, aby odczytać z Azure SQL Database.
 
 ```Python
 
@@ -120,7 +120,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 W TabularDatasets można określić sygnaturę czasową z kolumny w danych lub dane wzorca ścieżki są przechowywane w, aby włączyć cechę szeregów czasowych, która umożliwia łatwe i wydajne filtrowanie według czasu.
 
-Użyj metody [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) w klasie `TabularDataset`, aby określić kolumnę sygnatury czasowej i włączyć filtrowanie według czasu. Więcej przykładów i szczegółów można znaleźć [tutaj](https://aka.ms/azureml-tsd-notebook).
+Użyj metody [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) na `TabularDataset` klasie, aby określić kolumnę sygnatury czasowej i włączyć filtrowanie według czasu. Więcej przykładów i szczegółów można znaleźć [tutaj](https://aka.ms/azureml-tsd-notebook).
 
 ```Python
 # create a TabularDataset with time series trait
@@ -141,7 +141,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-filedatasets"></a>Utwórz FileDatasets
 
-Użyj metody [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) w klasie `FileDatasetFactory`, aby załadować pliki w dowolnym formacie i utworzyć niezarejestrowane FileDataset.
+Użyj metody [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) na `FileDatasetFactory` klasie, aby załadować pliki w dowolnym formacie i utworzyć niezarejestrowane FileDataset.
 
 ```Python
 # create a FileDataset from multiple paths in datastore
@@ -187,11 +187,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="version-datasets"></a>Zestawy danych wersji
 
-Nowy zestaw danych można zarejestrować pod tą samą nazwą, tworząc nową wersję. Wersja zestawu danych to sposób zakładania stanu danych, dzięki czemu można zastosować określoną wersję zestawu danych na potrzeby eksperymentowania lub kopiowania w przyszłości. Typowe scenariusze, które należy wziąć pod uwagę w przypadku przechowywania wersji: 
-
-* Gdy nowe dane są dostępne do ponownego szkolenia.
-* W przypadku stosowania różnych metod przygotowywania lub opracowywania funkcji.
-
+Nowy zestaw danych można zarejestrować pod tą samą nazwą, tworząc nową wersję. Wersja zestawu danych to sposób zakładania stanu danych, dzięki czemu można zastosować określoną wersję zestawu danych na potrzeby eksperymentowania lub kopiowania w przyszłości. Dowiedz się więcej o [wersjach zestawu danych](how-to-version-track-datasets.md).
 ```Python
 # create a TabularDataset from Titanic training data
 web_paths = [
@@ -231,6 +227,6 @@ df = titanic_ds.to_pandas_dataframe()
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się [, jak uczenie się z zestawami danych](how-to-train-with-datasets.md)
+* Dowiedz się [, jak uczenie się z zestawami danych](how-to-train-with-datasets.md).
 * Używaj automatycznej uczenia maszynowego do [uczenia się z TabularDatasets](https://aka.ms/automl-dataset).
 * Aby uzyskać więcej przykładów szkolenia z zestawami danych, zobacz [przykładowe notesy](https://aka.ms/dataset-tutorial).

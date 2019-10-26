@@ -1,21 +1,19 @@
 ---
 title: 'Szybki start: Monitorowanie witryn internetowych za pomocą usługi Azure Monitor Application Insights | Microsoft Docs'
 description: Zawiera instrukcje pozwalające szybko skonfigurować monitorowanie witryny internetowej po stronie klienta/przeglądarki za pomocą usługi Azure Monitor Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/15/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: f423e96055c23ae1521466f0e697d7ad2254f8c0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: eecc3d739cb5500abdbd04a9aaca1ddcf86e352b
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813901"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899268"
 ---
 # <a name="start-monitoring-your-website"></a>Rozpoczynanie monitorowania witryny internetowej
 
@@ -25,7 +23,7 @@ Ten przewodnik Szybki start przeprowadzi Cię przez proces dodawania [zestawu SD
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start:
+Aby ukończyć ten przewodnik Szybki Start:
 
 - Konieczna jest subskrypcja platformy Azure.
 
@@ -33,9 +31,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
-## <a name="enable-application-insights"></a>Włącz usługę Application Insights
+## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
 
 Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowolnej aplikacji połączonej z Internetem uruchomionej lokalnie lub w chmurze. Aby rozpocząć wyświetlanie tych danych, wykonaj poniższe czynności.
 
@@ -50,7 +48,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
    | ------------- |:-------------|:-----|
    | **Nazwa**      | Wartość unikatowa w skali globalnej | Nazwa identyfikująca monitorowaną aplikację |
    | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów hostującej dane usługi App Insights |
-   | **Location** | East US | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
+   | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
 2. Kliknij przycisk **Utwórz**.
 

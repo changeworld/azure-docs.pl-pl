@@ -1,33 +1,27 @@
 ---
-title: Sprzężenia w zapytaniach dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera lekcji dotyczących używania sprzężeń w zapytaniach dzienników usługi Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Sprzężenia w kwerendach dziennika Azure Monitor | Microsoft Docs
+description: W tym artykule opisano sposób korzystania z sprzężeń w zapytaniach dziennika Azure Monitor.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 2ea5b4e3af6591e6e25a863998baa7cecb3e29e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/16/2018
+ms.openlocfilehash: 526c359367271c69ccd461e4421c3223b00fbc36
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60520115"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900280"
 ---
-# <a name="joins-in-azure-monitor-log-queries"></a>Sprzężenia w zapytaniach dzienników usługi Azure Monitor
+# <a name="joins-in-azure-monitor-log-queries"></a>Sprzężenia w kwerendach dziennika Azure Monitor
 
 > [!NOTE]
-> Należy wykonać [Rozpoczynanie pracy z usługą Azure Monitor Log Analytics](get-started-portal.md) i [zapytań dzienników usługi Azure Monitor](get-started-queries.md) przed wykonaniem tej lekcji.
+> Przed ukończeniem tej lekcji należy ukończyć pracę [z Azure Monitor Log Analytics](get-started-portal.md) i [Azure monitor zapytania dziennika](get-started-queries.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Przyłączenia pozwalają analizować dane z wielu tabel w jednym zapytaniu. Scalają wiersze dwa zestawy danych, dopasowując wartości określone kolumny.
+Sprzężenia umożliwiają analizowanie danych z wielu tabel w tym samym zapytaniu. Scalanie wierszy dwóch zestawów danych przez dopasowanie wartości określonych kolumn.
 
 
 ```Kusto
@@ -44,15 +38,15 @@ SecurityEvent
 | top 10 by Duration desc
 ```
 
-W tym przykładzie pierwszego zestawu danych służy do przefiltrowania wszystkich zdarzeń logowania. To jest sprzężony z drugiego zestawu danych, który filtruje dla wszystkich zdarzeń wylogowania. Przewidywany kolumny są _komputera_, _konta_, _TargetLogonId_, i _TimeGenerated_. Zestawy danych są powiązane za pomocą udostępnionego kolumny _TargetLogonId_. Wynikiem jest jeden rekord dla korelacji, który ma czas logowania i wylogowywania.
+W tym przykładzie pierwszy zestaw danych filtruje wszystkie zdarzenia logowania. Jest to przyłączone do drugiego zestawu danych, który filtruje wszystkie zdarzenia wylogowania. Rzutowane kolumny to _Computer_, _Account_, _TargetLogonId_i _TimeGenerated_. Zestawy danych są skorelowane przez wspólną kolumnę _TargetLogonId_. Dane wyjściowe są pojedynczym rekordem na korelację, która ma zarówno czas logowania, jak i wylogowania.
 
-Jeśli oba zestawy danych ma kolumny z tej samej nazwy, kolumny zestawu danych po prawej stronie zapewnianą numer indeksu, dlatego w tym przykładzie wyniki będą widoczne _TargetLogonId_ przy użyciu wartości z tabeli po lewej stronie i  _TargetLogonId1_ przy użyciu wartości z tabeli po prawej stronie. W tym przypadku drugi _TargetLogonId1_ kolumny został usunięty przy użyciu `project-away` operatora.
+Jeśli oba zestawy danych mają kolumny o tych samych nazwach, kolumny zestawu danych po prawej stronie będą mieć numer indeksu, więc w tym przykładzie wyniki będą wyświetlane jako _TargetLogonId_ z wartościami z tabeli po lewej stronie i _TargetLogonId1_ z wartościami z tabeli po prawej stronie. W takim przypadku druga kolumna _TargetLogonId1_ została usunięta przy użyciu operatora `project-away`.
 
 > [!NOTE]
-> Aby zwiększyć wydajność, należy zachować tylko odpowiednich kolumn sprzężonych-zestawów danych, za pomocą `project` operatora.
+> Aby zwiększyć wydajność, należy zachować tylko odpowiednie kolumny połączonych zestawów danych przy użyciu operatora `project`.
 
 
-Użyj następującej składni, aby dołączyć dwa zestawy danych i połączone klucz ma pod inną nazwą, między dwiema tabelami:
+Użyj następującej składni, aby dołączyć dwa zestawy danych, a przyłączony klucz ma inną nazwę między dwiema tabelami:
 ```
 Table1
 | join ( Table2 ) 
@@ -60,7 +54,7 @@ on $left.key1 == $right.key2
 ```
 
 ## <a name="lookup-tables"></a>Tabele odnośników
-Typowym zastosowaniem sprzężeń używa statycznego mapowania wartości za pomocą `datatable` , mogą pomóc w transformacji wyniki w sposób bardziej zawartości. Na przykład aby wzbogacić zabezpieczeń dane zdarzeń z nazwą zdarzenia dla każdego zdarzenia identyfikatora.
+Typowym zastosowaniem sprzężeń jest użycie statycznego mapowania wartości przy użyciu `datatable`, które mogą pomóc w przekształcaniu wyników na bardziej możliwe do wysłania. Na przykład, aby wzbogacić dane zdarzenia zabezpieczeń z nazwą zdarzenia dla każdego identyfikatora zdarzenia.
 
 ```Kusto
 let DimTable = datatable(EventID:int, eventName:string)
@@ -81,35 +75,35 @@ SecurityEvent
 | summarize count() by eventName
 ```
 
-![Dołącz do przy użyciu elementu datatable](media/joins/dim-table.png)
+![Dołącz do elementu DataTable](media/joins/dim-table.png)
 
-## <a name="join-kinds"></a>Dołącz do typów
-Określ typ sprzężenia z _rodzaj_ argumentu. Każdy typ wykonuje różne dopasowanie między rekordami w danej tabeli, zgodnie z opisem w poniższej tabeli.
+## <a name="join-kinds"></a>Rodzaje sprzężeń
+Określ typ sprzężenia z argumentem _rodzaju_ . Każdy typ wykonuje różne dopasowania między rekordami podanych tabel, zgodnie z opisem w poniższej tabeli.
 
-| Typ przyłączenia | Opis |
+| Typ sprzężenia | Opis |
 |:---|:---|
-| innerunique | Jest to domyślny tryb złączenia. Najpierw znajdują się wartości dopasowane kolumny w tabeli po lewej stronie, a zduplikowane wartości są usuwane.  Następnie zestaw unikatowych wartości jest dopasowywana tabelą po prawej stronie. |
-| wewnętrzny | Tylko pasujące rekordy w obu tabelach są uwzględnione w wynikach. |
-| wartości leftouter | Wszystkie rekordy w tabeli po lewej stronie i rekordy w tabeli po prawej znajdują się w wynikach. Właściwości niedopasowane dane wyjściowe zawierają wartości null.  |
-| leftanti | Rekordy z lewej strony, które nie mają zgodne z prawej strony znajdują się w wynikach. Tabela wyników zawiera tylko kolumny z tabeli po lewej stronie. |
-| leftsemi | Rekordy z lewej strony, które mają zgodne z prawej strony znajdują się w wynikach. Tabela wyników zawiera tylko kolumny z tabeli po lewej stronie. |
+| innerunique | Jest to domyślny tryb sprzężenia. Najpierw zostaną znalezione wartości dopasowanej kolumny z lewej tabeli, a zduplikowane wartości są usuwane.  Następnie zestaw unikatowych wartości jest dopasowywany do prawej tabeli. |
+| fabryk | Tylko pasujące rekordy w obu tabelach są uwzględniane w wynikach. |
+| leftouter | Wszystkie rekordy w tabeli po lewej i pasujące rekordy w prawej tabeli są zawarte w wynikach. Niedopasowane właściwości wyjściowe zawierają wartości null.  |
+| leftanti | Rekordy z lewej strony, które nie mają dopasowań z prawej strony, są zawarte w wynikach. Tabela wyników zawiera tylko kolumny z tabeli po lewej. |
+| leftsemi | Rekordy z lewej strony, które mają dopasowania od prawej strony, są zawarte w wynikach. Tabela wyników zawiera tylko kolumny z tabeli po lewej. |
 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-Należy wziąć pod uwagę następujące kwestie, aby uzyskać optymalną wydajność:
+W celu uzyskania optymalnej wydajności należy rozważyć następujące kwestie:
 
-- Umożliwia filtr czasu dla każdej tabeli ograniczenie rekordy, które muszą być obliczane w celu utworzenia sprzężenia.
-- Użyj `where` i `project` zmniejszenie liczby wierszy i kolumn w tabelach danych wejściowych przed sprzężenia.
-- Jeśli jedna tabela jest zawsze mniejsza niż ten drugi, użyć jej jako z lewej strony sprzężenia.
+- Użyj filtru czasu dla każdej tabeli, aby zmniejszyć liczbę rekordów, które muszą zostać ocenione dla sprzężenia.
+- Użyj `where` i `project`, aby zmniejszyć liczbę wierszy i kolumn w tabelach wejściowych przed sprzężeniem.
+- Jeśli jedna tabela jest zawsze mniejsza niż druga, użyj jej jako lewej strony sprzężenia.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne lekcje dotyczące korzystania z usługi Azure Monitor dziennika zapytań:
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z innymi lekcjami dotyczącymi używania zapytań dzienników Azure Monitor:
 
 - [Operacje na ciągach](string-operations.md)
 - [Funkcje agregacji](aggregations.md)
-- [Zaawansowane agregacji](advanced-aggregations.md)
-- [JSON i struktur danych](json-data-structures.md)
-- [Pisanie zapytań zaawansowanych](advanced-query-writing.md)
-- [Wykresy](charts.md)
+- [Agregacje zaawansowane](advanced-aggregations.md)
+- [JSON i struktury danych](json-data-structures.md)
+- [Zaawansowane zapisywanie zapytań](advanced-query-writing.md)
+- [Schematy](charts.md)

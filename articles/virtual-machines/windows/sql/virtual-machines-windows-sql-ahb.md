@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 05cd68c7be005a5b148b7d3e691c46a0d067b0c0
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: aac20034fb4a528e48d5b383f39205a952878539
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262870"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900692"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Zmień model licencji dla SQL Server maszyny wirtualnej na platformie Azure
 W tym artykule opisano, jak zmienić model licencji dla SQL Server maszyny wirtualnej (VM) na platformie Azure przy użyciu nowego dostawcy zasobów maszyny wirtualnej SQL, **Microsoft. SqlVirtualMachine**.
@@ -31,7 +31,7 @@ Model płatność zgodnie z rzeczywistym użyciem oznacza, że koszt korzystania
 
 Korzyść użycia hybrydowego platformy Azure umożliwia korzystanie z licencji SQL Server z programem Software Assurance ("kwalifikowana Licencja") na maszynach wirtualnych platformy Azure. W przypadku Korzyść użycia hybrydowego platformy Azure klienci nie są obciążani opłatami za korzystanie z licencji SQL Server na maszynie wirtualnej. Jednak nadal muszą płacić za koszt zasobów obliczeniowych w chmurze (czyli stawka podstawowa), magazyn i kopie zapasowe. Muszą również uiścić opłaty za we/wy powiązane z użyciem usług (stosownie do obowiązujących).
 
-Zgodnie z postanowieniami produktu firmy Microsoft: "Klienci muszą wskazywać, że używają Azure SQL Database (wystąpienie zarządzane, Pula elastyczna i pojedyncza baza danych), Azure Data Factory, SQL Server Integration Services lub SQL Server Virtual Machines w Korzyść użycia hybrydowego platformy Azure dla SQL Server podczas konfigurowania obciążenia na platformie Azure ".
+Zgodnie z postanowieniami dotyczącymi produktów firmy Microsoft: "klienci muszą wskazywać, że używają Azure SQL Database (wystąpienia zarządzane, Pula elastyczna i pojedyncza baza danych), Azure Data Factory, SQL Server Integration Services lub SQL Server Virtual Machines na platformie Azure Korzyść hybrydowa dla SQL Server podczas konfigurowania obciążeń na platformie Azure ".
 
 Aby wskazać użycie Korzyść użycia hybrydowego platformy Azure dla SQL Server na maszynie wirtualnej platformy Azure i być zgodne, masz trzy opcje:
 
@@ -44,7 +44,7 @@ Typ licencji SQL Server jest ustawiany podczas aprowizacji maszyny wirtualnej. M
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Użycie dostawcy zasobów maszyny wirtualnej SQL wymaga rozszerzenia SQL Server IaaS. W związku z tym potrzebne są następujące elementy:
-- [Subskrypcji platformy Azure](https://azure.microsoft.com/free/).
+- [Subskrypcja platformy Azure](https://azure.microsoft.com/free/).
 - [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default). 
 - [Maszyna wirtualna SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) zarejestrowana w [dostawcy zasobów maszyny wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md).
 
@@ -87,7 +87,7 @@ Poniższy fragment kodu umożliwia przełączenie modelu "Przenieś własną lic
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 Aby zmienić model licencji, możesz użyć programu PowerShell.
 
 Poniższy fragment kodu zmienia model licencji z płatność zgodnie z rzeczywistym użyciem, aby zapewnić własną licencję (lub za pomocą Korzyść użycia hybrydowego platformy Azure):
@@ -149,12 +149,12 @@ Typ licencji maszyny wirtualnej SQL Server można zmienić jako płatność zgod
 
 ## <a name="known-errors"></a>Znane błędy
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Nie znaleziono zasobu "Microsoft. SqlVirtualMachine/SqlVirtualMachines\</Resource-Group >" w grupie zasobów\<"Resource-Group >".
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Nie znaleziono zasobu "Microsoft. SqlVirtualMachine/SqlVirtualMachines/\<Resource-Group >" w grupie zasobów "\<grupy zasobów >".
 Ten błąd występuje podczas próby zmiany modelu licencji na SQL Server maszynie wirtualnej, która nie została zarejestrowana w dostawcy zasobów maszyny wirtualnej SQL:
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
-Należy zarejestrować dostawcę zasobów w [ramach subskrypcji](virtual-machines-windows-sql-register-with-resource-provider.md#register-the-sql-vm-resource-provider-with-a-subscription), a następnie [zarejestrować SQL Serverą maszynę wirtualną przy użyciu dostawcy zasobów](virtual-machines-windows-sql-register-with-resource-provider.md). 
+Musisz zarejestrować swoją subskrypcję u dostawcy zasobów, a następnie [zarejestrować SQL Serverą maszynę wirtualną przy użyciu dostawcy zasobów](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>Nie można zweryfikować argumentu dla parametru "SKU"
 Ten błąd może wystąpić podczas próby zmiany modelu licencji SQL Server VM przy użyciu wersji Azure PowerShell nowszej niż 4,0:

@@ -14,21 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/28/2019
 ms.author: atsenthi
-ms.openlocfilehash: 6c195357c4a037534307571a53589b2ae861d88b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 77814d04daca0ebb649ffa2e8ff46becddec4f0f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67486019"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901501"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Konfigurowanie Azure Active Directory na potrzeby uwierzytelniania klientów
 
-W przypadku klastrów działających na platformie Azure zaleca się zabezpieczenie dostępu do punktów końcowych zarządzania przez Azure Active Directory (Azure AD).  W tym artykule opisano sposób konfigurowania usługi Azure AD w celu uwierzytelniania klientów w klastrze Service Fabric, co należy wykonać przed [utworzeniem klastra](service-fabric-cluster-creation-via-arm.md).  Usługa Azure AD umożliwia organizacjom (znanym jako dzierżawy) zarządzanie dostępem użytkowników do aplikacji. Aplikacje są podzielone na te z interfejsem użytkownika logowania opartego na sieci Web i z natywną obsługą klienta. 
+W przypadku klastrów działających na platformie Azure zaleca się zabezpieczenie dostępu do punktów końcowych zarządzania przez Azure Active Directory (Azure AD). W tym artykule opisano sposób konfigurowania usługi Azure AD w celu uwierzytelniania klientów w klastrze Service Fabric.
 
-Klaster usługi Service Fabric udostępnia kilka punktów wejścia dla swoich funkcji zarządzania, w tym internetowe narzędzie [Service Fabric Explorer][service-fabric-visualizing-your-cluster] i [program Visual Studio][service-fabric-manage-application-in-visual-studio]. W związku z tym utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jedną aplikację internetową i jedną aplikację natywną.  Po utworzeniu aplikacji przypiszesz użytkowników do ról tylko do odczytu i administratora.
+W tym artykule termin "aplikacja" będzie używany do odwoływania się do [aplikacji Azure Active Directory](../active-directory/develop/developer-glossary.md#client-application), a nie aplikacji Service Fabric. rozróżnienie zostanie przeprowadzone w razie potrzeby. Usługa Azure AD umożliwia organizacjom (znanym jako dzierżawy) zarządzanie dostępem użytkowników do aplikacji.
+
+Klaster usługi Service Fabric udostępnia kilka punktów wejścia dla swoich funkcji zarządzania, w tym internetowe narzędzie [Service Fabric Explorer][service-fabric-visualizing-your-cluster] i [program Visual Studio][service-fabric-manage-application-in-visual-studio]. W efekcie utworzysz dwie aplikacje usługi Azure AD w celu kontrolowania dostępu do klastra: jedną aplikację sieci Web i jedną aplikację natywną. Po utworzeniu aplikacji przypiszesz użytkowników do ról tylko do odczytu i administratorów.
 
 > [!NOTE]
-> Przed utworzeniem klastra musisz wykonać następujące kroki. Ponieważ skrypty oczekują określenia nazw klastra i punktów końcowych, wartości powinny być zaplanowane i inne od wartości już utworzonych.
+> W systemie Linux przed utworzeniem klastra należy wykonać poniższe czynności. W systemie Windows istnieje również możliwość [skonfigurowania uwierzytelniania usługi Azure AD dla istniejącego klastra](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule przyjęto założenie, że dzierżawa została już utworzona. Jeśli tak nie jest, zacznij od zapoznania się z artykułem [Jak uzyskać dzierżawę usługi Azure Active Directory][active-directory-howto-tenant].
@@ -53,11 +55,11 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 > [!NOTE]
 > W przypadku chmur krajowych (na przykład Azure Government, Azure — Chiny, Azure — Niemcy) należy także określić parametr `-Location`.
 
-Możesz znaleźć *TenantId* przez wykonanie polecenia `Get-AzureSubscription`programu PowerShell. Wykonanie tego polecenia wyświetla TenantId dla każdej subskrypcji.
+Możesz znaleźć *TenantId* przez wykonanie polecenia programu PowerShell `Get-AzureSubscription`. Wykonanie tego polecenia wyświetla TenantId dla każdej subskrypcji.
 
 Wartość *ClusterName* służy jako prefiks aplikacji usługi Azure AD tworzonych przez skrypt. Nie musi ona dokładnie pasować do rzeczywistej nazwy klastra. Ma na celu tylko ułatwienie mapowania artefaktów usługi Azure AD do klastra usługi Service Fabric, w którym są używane.
 
-Wartość *WebApplicationReplyUrl* to domyślny punkt końcowy zwracany przez usługę Azure AD do użytkowników, gdy zakończą logowanie. Ustaw ten punkt końcowy jako punkt końcowy narzędzia Service Fabric Explorer dla klastra. Domyślnie to:
+Wartość *WebApplicationReplyUrl* to domyślny punkt końcowy zwracany przez usługę Azure AD do użytkowników, gdy zakończą logowanie. Ustaw ten punkt końcowy jako punkt końcowy Service Fabric Explorer dla klastra. Jeśli tworzysz aplikacje usługi Azure AD do reprezentowania istniejącego klastra, upewnij się, że ten adres URL jest zgodny z punktem końcowym istniejącego klastra. Jeśli tworzysz aplikacje dla nowego klastra, Zaplanuj punkt końcowy, w którym klaster będzie miał, i upewnij się, że nie korzystasz z punktu końcowego istniejącego klastra. Domyślnie punkt końcowy Service Fabric Explorer jest:
 
 https://&lt;domena_klastra&gt;:19080/Explorer
 
@@ -66,7 +68,7 @@ Zostanie wyświetlony monit logowania na konto z uprawnieniami administratora dz
    * *NazwaKlastra*\_Cluster
    * *NazwaKlastra*\_Client
 
-Skrypt drukuje kod JSON wymagany przez szablon Azure Resource Manager podczas [tworzenia klastra](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access). dobrym pomysłem jest pozostawienie otwartego okna programu PowerShell.
+Skrypt drukuje kod JSON wymagany przez szablon Azure Resource Manager podczas [tworzenia klastra z obsługą usługi AAD](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access), dlatego dobrym pomysłem jest pozostawienie otwartego okna programu PowerShell.
 
 ```json
 "azureActiveDirectory": {
@@ -85,26 +87,26 @@ Po pomyślnym zalogowaniu się do usługi Azure AD w Service Fabric Explorer prz
 
 ![Okno dialogowe certyfikatu SFX][sfx-select-certificate-dialog]
 
-#### <a name="reason"></a>Reason
+#### <a name="reason"></a>Przyczyna
 Użytkownik nie ma przypisanej roli w aplikacji klastra usługi Azure AD. W rezultacie uwierzytelnianie usługi Azure AD kończy się niepowodzeniem w klastrze Service Fabric. Service Fabric Explorer powracać do uwierzytelniania certyfikatów.
 
 #### <a name="solution"></a>Rozwiązanie
-Postępuj zgodnie z instrukcjami dotyczącymi konfigurowania usługi Azure AD i przypisz role użytkowników. Ponadto zalecamy włączenie pozycji "przypisanie użytkownika wymagane w celu uzyskania dostępu do aplikacji" zgodnie z oczekiwaniami `SetupApplications.ps1` .
+Postępuj zgodnie z instrukcjami dotyczącymi konfigurowania usługi Azure AD i przypisz role użytkowników. Ponadto zalecamy włączenie "przypisania użytkownika wymagane w celu uzyskania dostępu do aplikacji", jak `SetupApplications.ps1`.
 
-### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>Połączenie z programem PowerShell kończy się niepowodzeniem z powodu błędu: "Określone poświadczenia są nieprawidłowe"
+### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>Połączenie z programem PowerShell kończy się niepowodzeniem z powodu błędu: "określone poświadczenia są nieprawidłowe"
 #### <a name="problem"></a>Problem
-W przypadku używania programu PowerShell do nawiązywania połączenia z klastrem przy użyciu trybu zabezpieczeń "usługi azureactivedirectory" po pomyślnym zalogowaniu się do usługi Azure AD połączenie kończy się niepowodzeniem z powodu błędu: "Określone poświadczenia są nieprawidłowe."
+W przypadku używania programu PowerShell do nawiązywania połączenia z klastrem przy użyciu trybu zabezpieczeń "usługi azureactivedirectory" po pomyślnym zalogowaniu się do usługi Azure AD połączenie kończy się niepowodzeniem z powodu błędu: "podane poświadczenia są nieprawidłowe".
 
 #### <a name="solution"></a>Rozwiązanie
 To rozwiązanie jest takie samo jak powyżej.
 
 ### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer zwraca błąd podczas logowania: "AADSTS50011"
 #### <a name="problem"></a>Problem
-Podczas próby zalogowania się do usługi Azure AD w Service Fabric Explorer strona zwraca błąd: "AADSTS50011: &lt;Adres URL&gt; adresu odpowiedzi nie jest zgodny z adresami odpowiedzi skonfigurowanymi dla aplikacji &lt;:&gt;GUID.
+Podczas próby zalogowania się do usługi Azure AD w Service Fabric Explorer strona zwraca błąd: "AADSTS50011: adres odpowiedzi &lt;adres URL&gt; nie pasuje do adresów odpowiedzi skonfigurowanych dla aplikacji: &lt;identyfikator GUID&gt;".
 
 ![Adres odpowiedzi SFX jest niezgodny][sfx-reply-address-not-match]
 
-#### <a name="reason"></a>Reason
+#### <a name="reason"></a>Przyczyna
 Aplikacja klastra (sieci Web) reprezentująca Service Fabric Explorer próbuje uwierzytelnić się w usłudze Azure AD, a w ramach żądania zawiera adres URL zwrotu przekierowania. Ale adres URL nie jest wyświetlany na liście **adresów URL odpowiedzi** aplikacji usługi Azure AD.
 
 #### <a name="solution"></a>Rozwiązanie
@@ -125,7 +127,7 @@ Aby dowiedzieć się więcej, zobacz [polecenie cmdlet Connect-ServiceFabricClus
 Tak. Pamiętaj jednak, aby dodać adres URL Service Fabric Explorer do aplikacji klastra (sieci Web). W przeciwnym razie Service Fabric Explorer nie działa.
 
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Dlaczego nadal potrzebuję certyfikatu serwera, gdy usługa Azure AD jest włączona?
-FabricClient i FabricGateway wykonują wzajemne uwierzytelnianie. Podczas uwierzytelniania za pomocą usługi Azure AD integracja z usługą Azure AD zapewnia tożsamość klienta na serwerze, a certyfikat serwera służy do weryfikowania tożsamości serwera. Aby uzyskać więcej informacji na temat Service Fabric certyfikatów, zobacz [X. 509 certyfikaty i Service Fabric][x509-certificates-and-service-fabric].
+FabricClient i FabricGateway wykonują wzajemne uwierzytelnianie. Podczas uwierzytelniania usługi Azure AD integracja z usługą Azure AD zapewnia tożsamość klienta na serwerze, a certyfikat serwera jest używany przez klienta do weryfikowania tożsamości serwera. Aby uzyskać więcej informacji na temat Service Fabric certyfikatów, zobacz [X. 509 certyfikaty i Service Fabric][x509-certificates-and-service-fabric].
 
 ## <a name="next-steps"></a>Następne kroki
 Po skonfigurowaniu Azure Active Directory aplikacji i ustawianiu ról dla użytkowników [Skonfiguruj i Wdróż klaster](service-fabric-cluster-creation-via-arm.md).

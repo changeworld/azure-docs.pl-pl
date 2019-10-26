@@ -1,5 +1,5 @@
 ---
-title: Tworzenie przeglądu dostępu do ról zasobów platformy Azure w programie PIM-Azure Active Directory | Microsoft Docs
+title: Tworzenie przeglądu dostępu do ról zasobów platformy Azure w Privileged Identity Management-Azure Active Directory | Microsoft Docs
 description: Dowiedz się, jak utworzyć przegląd dostępu ról zasobów platformy Azure w Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/29/2019
+ms.date: 10/23/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba674c143cd8d85b9764c8ade776b52dd1d3598d
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 56ccab2162a8f0ea9405d834e3f25558d8236b52
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804147"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895426"
 ---
-# <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>Tworzenie przeglądu dostępu do ról zasobów platformy Azure w usłudze PIM
+# <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Tworzenie przeglądu dostępu do ról zasobów platformy Azure w Privileged Identity Management
 
 Dostęp do ról uprzywilejowanych zasobów platformy Azure dla pracowników zmienia się w czasie. Aby zmniejszyć ryzyko związane ze starymi przypisaniami ról, należy regularnie przeglądać dostęp. Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) można tworzyć przeglądy dostępu dla uprzywilejowanych ról zasobów platformy Azure. Istnieje również możliwość skonfigurowania cyklicznych przeglądów dostępu, które są wykonywane automatycznie.
 
@@ -30,7 +30,7 @@ W tym artykule opisano sposób tworzenia co najmniej jednej oceny dostępu dla u
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>Otwarte przeglądy dostępu
 
@@ -38,17 +38,15 @@ W tym artykule opisano sposób tworzenia co najmniej jednej oceny dostępu dla u
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 
-1. W menu po lewej stronie kliknij pozycję **zasoby platformy Azure**.
+1. W menu po lewej stronie wybierz pozycję **zasoby platformy Azure**.
 
-1. Kliknij zasób, którym chcesz zarządzać, na przykład subskrypcję lub grupę zarządzania.
+1. Wybierz zasób, którym chcesz zarządzać, na przykład subskrypcję lub grupę zarządzania.
 
-1. W obszarze Zarządzanie kliknij pozycję **przeglądy dostępu**.
+1. W obszarze Zarządzaj wybierz pozycję **przeglądy dostępu**.
 
     ![Zasoby platformy Azure — lista przeglądów dostępu pokazująca stan wszystkich przeglądów](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
-
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
-
 
 ## <a name="start-the-access-review"></a>Rozpocznij przegląd dostępu
 

@@ -4,36 +4,118 @@ description: Opisuje funkcje, które mają być używane w szablonie Azure Resou
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7e13e2bed4e881d12737d8e0df0ff0ba2bb2bca9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: cf791bd262849cd93a155a19ade8f8fc377f8da6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827476"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894200"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla Azure Resource Manager szablonów
 
 Menedżer zasobów udostępnia następujące funkcje pobierania wartości zasobów:
 
+* [extensionResourceId](#extensionresourceid)
 * [staw](#list)
 * [udostępnia](#providers)
 * [odwoła](#reference)
 * [resourceGroup](#resourcegroup)
 * [Identyfikator](#resourceid)
-* [ramach](#subscription)
+* [Subskrypcja](#subscription)
+* [subscriptionResourceId](#subscriptionresourceid)
+* [tenantResourceId](#tenantresourceid)
 
 Aby uzyskać wartości z parametrów, zmiennych lub bieżącego wdrożenia, zobacz [funkcje wartości wdrożenia](resource-group-template-functions-deployment.md).
+
+## <a name="extensionresourceid"></a>extensionResourceId
+
+```json
+extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
+```
+
+Zwraca identyfikator zasobu dla [zasobu rozszerzenia](extension-resource-types.md), który jest typem zasobu, który jest stosowany do innego zasobu, aby można go było dodać do jego możliwości.
+
+### <a name="parameters"></a>Parametry
+
+| Parametr | Wymagane | Typ | Opis |
+|:--- |:--- |:--- |:--- |
+| resourceId |Tak |string |Identyfikator zasobu dla zasobu, do którego zastosowano zasób rozszerzenia. |
+| resourceType |Tak |string |Typ zasobu, w tym przestrzeń nazw dostawcy zasobów. |
+| resourceName1 |Tak |string |Nazwa zasobu. |
+| resourceName2 |Nie |string |Następny segment nazwy zasobu, w razie konieczności. |
+
+Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
+
+### <a name="return-value"></a>Wartość zwracana
+
+Podstawowy format identyfikatora zasobu zwracanego przez tę funkcję to:
+
+```json
+{scope}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Segment zakresu zależy od rozszerzonego zasobu.
+
+Gdy zasób rozszerzenia zostanie zastosowany do **zasobu**, identyfikator zasobu jest zwracany w następującym formacie:
+
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseResourceProviderNamespace}/{baseResourceType}/{baseResourceName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Gdy zasób rozszerzenia zostanie zastosowany do **grupy zasobów**, format jest:
+
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Gdy zasób rozszerzenia zostanie zastosowany do **subskrypcji**, format jest:
+
+```json
+/subscriptions/{subscriptionId}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+Gdy zasób rozszerzenia zostanie zastosowany do **grupy zarządzania**, format jest:
+
+```json
+/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+### <a name="extensionresourceid-example"></a>przykład extensionResourceId
+
+Poniższy przykład zwraca identyfikator zasobu dla blokady grupy zasobów.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "lockName":{
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "lockResourceId": {
+            "type": "string",
+            "value": "[extensionResourceId(resourceGroup().Id , 'Microsoft.Authorization/locks', parameters('lockName'))]"
+        }
+    }
+}
+```
 
 <a id="listkeys" />
 <a id="list" />
 
 ## <a name="list"></a>staw
 
-`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
+```json
+list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
+```
 
-Składnia tej funkcji różni się od nazwy operacji na liście. Każda implementacja zwraca wartości dla typu zasobu, który obsługuje operację listy. Nazwa operacji musi rozpoczynać się od `list`. Niektóre typowe zastosowania to `listKeys` i `listSecrets`. 
+Składnia tej funkcji różni się od nazwy operacji na liście. Każda implementacja zwraca wartości dla typu zasobu, który obsługuje operację listy. Nazwa operacji musi rozpoczynać się od `list`. Niektóre typowe zastosowania są `listKeys` i `listSecrets`. 
 
 ### <a name="parameters"></a>Parametry
 
@@ -41,13 +123,13 @@ Składnia tej funkcji różni się od nazwy operacji na liście. Każda implemen
 |:--- |:--- |:--- |:--- |
 | resourceName lub resourceIdentifier |Tak |string |Unikatowy identyfikator zasobu. |
 | apiVersion |Tak |string |Wersja interfejsu API stanu środowiska uruchomieniowego zasobu. Zwykle w formacie **rrrr-mm-dd**. |
-| functionValues |Nie |object | Obiekt, który zawiera wartości dla funkcji. Podaj tylko ten obiekt dla funkcji, które obsługują otrzymywanie obiektów z wartościami parametrów, takimi jak **listAccountSas** na koncie magazynu. Przykład przekazywania wartości funkcji przedstawiono w tym artykule. | 
+| functionValues |Nie |obiekt | Obiekt, który zawiera wartości dla funkcji. Podaj tylko ten obiekt dla funkcji, które obsługują otrzymywanie obiektów z wartościami parametrów, takimi jak **listAccountSas** na koncie magazynu. Przykład przekazywania wartości funkcji przedstawiono w tym artykule. | 
 
 ### <a name="valid-uses"></a>Prawidłowe zastosowania
 
-Funkcji list można używać tylko we właściwościach definicji zasobu i w sekcji dane wyjściowe szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](resource-group-create-multiple.md#property-iteration), można użyć funkcji listy dla `input`, ponieważ wyrażenie jest przypisane do właściwości zasobów. Nie można ich używać z `count`, ponieważ liczba musi być określona przed rozpoznaniem funkcji list.
+Funkcji list można używać tylko we właściwościach definicji zasobu i w sekcji dane wyjściowe szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](resource-group-create-multiple.md#property-iteration), można użyć funkcji listy dla `input`, ponieważ wyrażenie jest przypisane do właściwości zasobów. Nie można ich używać z `count`, ponieważ liczba musi być określona przed rozliczeniem funkcji list.
 
-### <a name="implementations"></a>Metod
+### <a name="implementations"></a>Implementacje
 
 W poniższej tabeli przedstawiono możliwe zastosowania list *.
 
@@ -130,9 +212,9 @@ W poniższej tabeli przedstawiono możliwe zastosowania list *.
 | Microsoft. ServiceBus/przestrzenie nazw/kolejki/reguł autoryzacji | [listkeys](/rest/api/servicebus/queues/listkeys) |
 | Microsoft. ServiceBus/przestrzenie nazw/tematy/reguł autoryzacji | [listkeys](/rest/api/servicebus/topics/listkeys) |
 | Microsoft. SignalRService/sygnalizujący | [listkeys](/rest/api/signalr/signalr/listkeys) |
-| Microsoft. Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
-| Microsoft. Storage/storageAccounts | [listkeys](/rest/api/storagerp/storageaccounts/listkeys) |
-| Microsoft. Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
+| Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
+| Microsoft.Storage/storageAccounts | [listkeys](/rest/api/storagerp/storageaccounts/listkeys) |
+| Microsoft.Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
 | Microsoft. StorSimple/menedżerowie/urządzenia | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
 | Microsoft. StorSimple/menedżerowie/urządzenia | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
 | Microsoft. StorSimple/menedżerowie | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
@@ -262,7 +344,9 @@ Aby uzyskać token SAS, należy przekazać obiekt przez czas wygaśnięcia. Czas
 
 ## <a name="providers"></a>udostępnia
 
-`providers(providerNamespace, [resourceType])`
+```json
+providers(providerNamespace, [resourceType])
+```
 
 Zwraca informacje o dostawcy zasobów i jego obsługiwanych typach zasobów. Jeśli nie podano typu zasobu, funkcja zwraca wszystkie obsługiwane typy dla dostawcy zasobów.
 
@@ -335,9 +419,11 @@ W przypadku zasobu dostawcy zasobów **Microsoft. Web** i typu **witryny** powy�
 }
 ```
 
-## <a name="reference"></a>reference
+## <a name="reference"></a>Odwoła
 
-`reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
+```json
+reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
+```
 
 Zwraca obiekt reprezentujący stan środowiska uruchomieniowego zasobu.
 
@@ -347,7 +433,7 @@ Zwraca obiekt reprezentujący stan środowiska uruchomieniowego zasobu.
 |:--- |:--- |:--- |:--- |
 | resourceName lub resourceIdentifier |Tak |string |Nazwa lub unikatowy identyfikator zasobu. W przypadku odwoływania się do zasobu w bieżącym szablonie podaj tylko nazwę zasobu jako parametr. W przypadku odwoływania się do wcześniej wdrożonego zasobu podaj identyfikator zasobu. |
 | apiVersion |Nie |string |Wersja interfejsu API określonego zasobu. Uwzględnij ten parametr, jeśli zasób nie jest obsługiwany w ramach tego samego szablonu. Zwykle w formacie **rrrr-mm-dd**. Aby uzyskać prawidłowe wersje interfejsu API dla zasobu, zobacz [Dokumentacja szablonu](/azure/templates/). |
-| Szczegółowe |Nie |string |Wartość określająca, czy ma zostać zwrócony pełny obiekt zasobów. Jeśli nie określisz wartości `'Full'`, zwracany jest tylko obiekt właściwości zasobu. Pełny obiekt zawiera wartości, takie jak identyfikator zasobu i lokalizacja. |
+| Szczegółowe |Nie |string |Wartość określająca, czy ma zostać zwrócony pełny obiekt zasobów. Jeśli nie określisz `'Full'`, zwracany jest tylko obiekt właściwości zasobu. Pełny obiekt zawiera wartości, takie jak identyfikator zasobu i lokalizacja. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -434,7 +520,7 @@ W przypadku konstruowania w pełni kwalifikowanego odwołania do zasobu kolejno�
 
 Na przykład:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` jest prawidłowy `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` nie jest poprawny
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` jest prawidłowy `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` jest niepoprawny
 
 ### <a name="reference-example"></a>Przykład odwołania
 
@@ -558,7 +644,9 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 ## <a name="resourcegroup"></a>resourceGroup
 
-`resourceGroup()`
+```json
+resourceGroup()
+```
 
 Zwraca obiekt, który reprezentuje bieżącą grupę zasobów. 
 
@@ -635,9 +723,11 @@ Poprzedni przykład zwraca obiekt w następującym formacie:
 }
 ```
 
-## <a name="resourceid"></a>Identyfikator
+## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
+```json
+resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
+```
 
 Zwraca unikatowy identyfikator zasobu. Ta funkcja jest używana, gdy nazwa zasobu jest niejednoznaczna lub nie została zainicjowana w ramach tego samego szablonu. 
 
@@ -645,7 +735,7 @@ Zwraca unikatowy identyfikator zasobu. Ta funkcja jest używana, gdy nazwa zasob
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Identyfikator |Nie |ciąg (w formacie identyfikatora GUID) |Wartość domyślna to bieżąca subskrypcja. Określ tę wartość, jeśli chcesz pobrać zasób w innej subskrypcji. |
+| subscriptionId |Nie |ciąg (w formacie identyfikatora GUID) |Wartość domyślna to bieżąca subskrypcja. Określ tę wartość, jeśli chcesz pobrać zasób w innej subskrypcji. |
 | resourceGroupName |Nie |string |Wartość domyślna to bieżąca Grupa zasobów. Określ tę wartość, jeśli chcesz pobrać zasób z innej grupy zasobów. |
 | resourceType |Tak |string |Typ zasobu, w tym przestrzeń nazw dostawcy zasobów. |
 | resourceName1 |Tak |string |Nazwa zasobu. |
@@ -655,10 +745,17 @@ Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więc
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Identyfikator jest zwracany w następującym formacie:
+Identyfikator zasobu jest zwracany w następującym formacie:
 
-**/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}**
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
 
+Aby uzyskać identyfikator w innych formatach, zobacz:
+
+* [extensionResourceId](#extensionresourceid)
+* [subscriptionResourceId](#subscriptionresourceid)
+* [tenantResourceId](#tenantresourceid)
 
 ### <a name="remarks"></a>Uwagi
 
@@ -686,14 +783,6 @@ Aby uzyskać identyfikator zasobu dla zasobu w innej subskrypcji i grupie zasob�
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
-```
-
-W przypadku użycia z [wdrożeniem na poziomie subskrypcji](deploy-to-subscription.md)funkcja `resourceId()` może pobrać tylko identyfikator zasobów wdrożonych na tym poziomie. Można na przykład uzyskać identyfikator definicji zasad lub definicji roli, ale nie identyfikator konta magazynu. W przypadku wdrożeń dla grupy zasobów, przeciwieństwem jest true. Nie można uzyskać identyfikatora zasobu wdrożonego na poziomie subskrypcji.
-
-Aby uzyskać identyfikator zasobu na poziomie subskrypcji podczas wdrażania w zakresie subskrypcji, użyj:
-
-```json
-"[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
 ```
 
 Często należy używać tej funkcji w przypadku korzystania z konta magazynu lub sieci wirtualnej w alternatywnej grupie zasobów. Poniższy przykład pokazuje, jak można łatwo używać zasobu z zewnętrznej grupy zasobów:
@@ -774,14 +863,16 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi są następ
 
 | Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | Ciąg | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | Ciąg | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | Ciąg | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | Ciąg | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
-## <a name="subscription"></a>Ramach
+## <a name="subscription"></a>subskrypcja
 
-`subscription()`
+```json
+subscription()
+```
 
 Zwraca szczegółowe informacje o subskrypcji dla bieżącego wdrożenia. 
 
@@ -815,6 +906,120 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
     }
 }
 ```
+
+## <a name="subscriptionresourceid"></a>subscriptionResourceId
+
+```json
+subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)
+```
+
+Zwraca unikatowy identyfikator zasobu wdrożonego na poziomie subskrypcji.
+
+### <a name="parameters"></a>Parametry
+
+| Parametr | Wymagane | Typ | Opis |
+|:--- |:--- |:--- |:--- |
+| subscriptionId |Nie |ciąg (w formacie identyfikatora GUID) |Wartość domyślna to bieżąca subskrypcja. Określ tę wartość, jeśli chcesz pobrać zasób w innej subskrypcji. |
+| resourceType |Tak |string |Typ zasobu, w tym przestrzeń nazw dostawcy zasobów. |
+| resourceName1 |Tak |string |Nazwa zasobu. |
+| resourceName2 |Nie |string |Następny segment nazwy zasobu, w razie konieczności. |
+
+Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
+
+### <a name="return-value"></a>Wartość zwracana
+
+Identyfikator jest zwracany w następującym formacie:
+
+```json
+/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+### <a name="remarks"></a>Uwagi
+
+Ta funkcja służy do pobierania identyfikatora zasobu dla zasobów [wdrożonych w subskrypcji](deploy-to-subscription.md) , a nie w grupie zasobów. Zwrócony identyfikator różni się od wartości zwracanej przez funkcję [ResourceID](#resourceid) przez nie uwzględniając wartości grupy zasobów.
+
+### <a name="subscriptionresourceid-example"></a>przykład subscriptionResourceID
+
+Poniższy szablon przypisuje wbudowaną rolę. Można wdrożyć je w grupie zasobów lub w ramach subskrypcji. Używa funkcji subscriptionResourceId, aby uzyskać identyfikator zasobu dla ról wbudowanych.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "principalId": {
+            "type": "string",
+            "metadata": {
+                "description": "The principal to assign the role to"
+            }
+        },
+        "builtInRoleType": {
+            "type": "string",
+            "allowedValues": [
+                "Owner",
+                "Contributor",
+                "Reader"
+            ],
+            "metadata": {
+                "description": "Built-in role to assign"
+            }
+        },
+        "roleNameGuid": {
+            "type": "string",
+            "defaultValue": "[newGuid()]",
+            "metadata": {
+                "description": "A new GUID used to identify the role assignment"
+            }
+        }
+    },
+    "variables": {
+        "Owner": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+        "Contributor": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+        "Reader": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[parameters('roleNameGuid')]",
+            "properties": {
+                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+                "principalId": "[parameters('principalId')]"
+            }
+        }
+    ]
+}
+```
+
+## <a name="tenantresourceid"></a>tenantResourceId
+
+```json
+tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
+```
+
+Zwraca unikatowy identyfikator zasobu wdrożonego na poziomie dzierżawy.
+
+### <a name="parameters"></a>Parametry
+
+| Parametr | Wymagane | Typ | Opis |
+|:--- |:--- |:--- |:--- |
+| resourceType |Tak |string |Typ zasobu, w tym przestrzeń nazw dostawcy zasobów. |
+| resourceName1 |Tak |string |Nazwa zasobu. |
+| resourceName2 |Nie |string |Następny segment nazwy zasobu, w razie konieczności. |
+
+Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
+
+### <a name="return-value"></a>Wartość zwracana
+
+Identyfikator jest zwracany w następującym formacie:
+
+```json
+/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+### <a name="remarks"></a>Uwagi
+
+Ta funkcja służy do pobierania identyfikatora zasobu dla zasobu, który jest wdrażany w dzierżawie. Zwrócony identyfikator różni się od wartości zwracanych przez inne funkcje identyfikatora zasobu, nie uwzględniając wartości grup zasobów lub subskrypcji.
 
 ## <a name="next-steps"></a>Następne kroki
 

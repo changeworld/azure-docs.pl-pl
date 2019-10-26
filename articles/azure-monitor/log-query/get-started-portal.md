@@ -1,19 +1,18 @@
 ---
 title: Wprowadzenie do Azure Monitor Log Analytics | Microsoft Docs
 description: Ten artykuł zawiera samouczek dotyczący używania Log Analytics w Azure Portal do zapisywania zapytań.
-services: log-analytics
-author: bwren
-manager: carmonm
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 07/19/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 950768326228960192f48d99e5c5fa849b2c2bda
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: MT
+ms.date: 07/19/2019
+ms.openlocfilehash: 1babd0828e21f0125dba55199d808a579a10f049
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076822"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900346"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Wprowadzenie do Log Analytics w Azure Monitor
 
@@ -41,11 +40,11 @@ Log Analytics jest narzędziem sieci Web służącym do zapisywania i wykonywani
 ## <a name="firewall-requirements"></a>Wymagania dotyczące zapory
 Aby można było używać Log Analytics, przeglądarka wymaga dostępu do następujących adresów. Jeśli przeglądarka uzyskuje dostęp do Azure Portal przez zaporę, należy włączyć dostęp do tych adresów.
 
-| Identyfikator URI | IP | Porty |
+| adresu | IP | Porty |
 |:---|:---|:---|
-| portal.loganalytics.io | Dynamiczne | 80,443 |
-| api.loganalytics.io | Dynamiczne | 80,443 |
-| docs.loganalytics.io | Dynamiczne | 80,443 |
+| portal.loganalytics.io | Dynamiczny | 80 443 |
+| api.loganalytics.io | Dynamiczny | 80 443 |
+| docs.loganalytics.io | Dynamiczny | 80 443 |
 
 ## <a name="basic-queries"></a>Zapytania podstawowe
 Zapytania mogą służyć do wyszukiwania terminów, identyfikowania trendów, analizowania wzorców i udostępniania wielu szczegółowych informacji na podstawie danych. Zacznij od podstawowego zapytania:
@@ -69,8 +68,8 @@ W tym przykładzie **Wyszukiwanie** jest objęte zakresem tabeli _zdarzeń_ , a 
 ## <a name="running-a-query"></a>Uruchamianie zapytania
 Uruchom zapytanie, klikając przycisk **Run (Uruchom** ) lub naciskając **klawisze SHIFT + ENTER**. Należy wziąć pod uwagę następujące szczegóły, które określają kod, który zostanie uruchomiony i zwrócone dane:
 
-- Podziały wierszy: Pojedynczy podział sprawia, że zapytanie jest łatwiejsze do odczytania. Wiele podziałów wierszy dzieli je na osobne zapytania.
-- Biera Umieść kursor w miejscu wewnątrz zapytania, aby go wykonać. Bieżące zapytanie jest uznawane za kod w górę do momentu znalezienia pustego wiersza.
+- Podziały wierszy: pojedynczy Break sprawia, że zapytanie jest łatwiejsze do odczytania. Wiele podziałów wierszy dzieli je na osobne zapytania.
+- Kursor: Umieść kursor w miejscu wewnątrz zapytania, aby go wykonać. Bieżące zapytanie jest uznawane za kod w górę do momentu znalezienia pustego wiersza.
 - Zakres czasu — domyślnie jest ustawiony zakres czasu z _ostatnich 24 godzin_ . Aby użyć innego zakresu, użyj selektora czasu lub Dodaj jawny filtr zakresu czasu do zapytania.
 
 
@@ -79,7 +78,7 @@ Schemat jest kolekcją tabel zgrupowanych wizualnie w ramach kategorii logicznej
 
 ![Schemat](media/get-started-portal/schema.png)
 
-W każdej tabeli dane są zorganizowane w kolumnach z różnymi typami danych, wskazanymi przez ikony obok nazwy kolumny. Na przykład _zdarzeń_ tabeli pokazano na zrzucie ekranu zawiera kolumny, takie jak _komputera_ czyli tekstu, _EventCategory_ która jest liczbą, i _TimeGenerated_ czyli daty/godziny.
+W każdej tabeli dane są zorganizowane w kolumnach z różnymi typami danych, wskazanymi przez ikony obok nazwy kolumny. Na przykład tabela _zdarzeń_ pokazana na zrzucie ekranu zawiera kolumny, takie jak _komputer_ z tekstem, _EventCategory_ , który jest liczbą, a _TimeGenerated_ , czyli Data/godzina.
 
 ## <a name="filter-the-results"></a>Filtrowanie wyników
 Zacznij od pobrania wszystkiego w tabeli _zdarzeń_ .
@@ -90,13 +89,13 @@ Event
 
 Log Analytics automatycznie zakresy wyników według:
 
-- Zakres czasu:  Domyślnie zapytania są ograniczone do ostatnich 24 godzin.
-- Liczba wyników: Wyniki są ograniczone do maksymalnie 10 000 rekordów.
+- Zakres czasu: domyślnie zapytania są ograniczone do ostatnich 24 godzin.
+- Liczba wyników: wyniki są ograniczone do maksymalnie 10 000 rekordów.
 
 To zapytanie jest bardzo ogólne i zwraca zbyt wiele wyników, aby być przydatne. Wyniki można filtrować przez elementy tabeli lub przez jawne dodanie filtru do zapytania. Filtrowanie wyników przez elementy tabeli ma zastosowanie do istniejącego zestawu wyników, podczas gdy filtr do samego zapytania zwróci nowy zestaw wyników filtrowanych i w związku z tym może generować dokładniejsze wyniki.
 
 ### <a name="add-a-filter-to-the-query"></a>Dodawanie filtru do zapytania
-Obok każdego rekordu znajduje się strzałka z lewej strony. Strzałki można otworzyć szczegóły dla określonego rekordu.
+Obok każdego rekordu znajduje się strzałka z lewej strony. Kliknij tę strzałkę, aby otworzyć Szczegóły dla określonego rekordu.
 
 Umieść kursor nad nazwą kolumny ikon "+" i "-", aby wyświetlić. Aby dodać filtr, który zwróci tylko rekordy o tej samej wartości, kliknij znak "+". Kliknij przycisk "-", aby wykluczyć rekordy z tą wartością, a następnie kliknij przycisk **Uruchom** , aby ponownie uruchomić zapytanie.
 
@@ -105,7 +104,7 @@ Umieść kursor nad nazwą kolumny ikon "+" i "-", aby wyświetlić. Aby dodać 
 ### <a name="filter-through-the-table-elements"></a>Filtruj elementy tabeli
 Teraz skupmy się na zdarzeniach o ważności _błędu_. Ta wartość jest określona w kolumnie o nazwie _EventLevelName_. Musisz przewinąć w prawo, aby wyświetlić tę kolumnę.
 
-Kliknij ikonę filtru obok tytułu kolumny, a w oknie podręcznym wybierz wartości, które zaczynają się od _błędu_tekstu:
+Kliknij ikonę filtru obok tytułu kolumny, a w oknie podręcznym wybierz wartości, które _zaczynają_ się od _błędu_tekstu:
 
 ![Filtr](media/get-started-portal/filter.png)
 
@@ -135,7 +134,7 @@ W przypadku wybrania niestandardowego zakresu czasu wybrane wartości są w form
 Jeśli zapytanie jawnie zawiera filtr dla _TimeGenerated_, tytuł selektora czas będzie wyświetlany _w zapytaniu_. Wybór ręczny zostanie wyłączony w celu uniknięcia konfliktu.
 
 
-## <a name="charts"></a>Wykresy
+## <a name="charts"></a>schematy
 Oprócz zwracania wyników w tabeli wyniki zapytania mogą być prezentowane w formatach wizualnych. Użyj poniższego zapytania jako przykładu:
 
 ```Kusto
@@ -169,11 +168,11 @@ Aby przypiąć diagram lub tabelę do jednego z udostępnionych pulpitów nawiga
 
 Niektóre uproszczenia są stosowane do wykresu po przypięciu do pulpitu nawigacyjnego:
 
-- Kolumny i wiersze tabeli: Aby można było przypiąć tabelę do pulpitu nawigacyjnego, musi ona mieć co najmniej cztery kolumny. Wyświetlane są tylko pierwsze siedem wierszy.
-- Ograniczenie czasu: Zapytania są automatycznie ograniczone do ostatnich 14 dni.
-- Ograniczenie liczby bin: Jeśli zostanie wyświetlony wykres, który zawiera wiele dyskretnych pojemników, mniej wypełnione pojemniki są automatycznie pogrupowane w jeden zasobnik.
+- Kolumny i wiersze tabeli: Aby przypiąć tabelę do pulpitu nawigacyjnego, musi ona mieć cztery lub mniej kolumn. Wyświetlane są tylko pierwsze siedem wierszy.
+- Ograniczenie czasu: zapytania są automatycznie ograniczone do ostatnich 14 dni.
+- Ograniczenie liczby bin: Jeśli zostanie wyświetlony wykres, który zawiera wiele dyskretnych pojemników, mniej wypełnione pojemniki są automatycznie pogrupowane w _jeden zasobnik._
 
-## <a name="save-queries"></a>Zapisywanie zapytań
+## <a name="save-queries"></a>Zapisz zapytania
 Po utworzeniu przydatnego zapytania warto je zapisać lub udostępnić innym osobom. Ikona **Zapisz** znajduje się na górnym pasku.
 
 Można zapisać całą stronę zapytania lub pojedyncze zapytanie jako funkcję. Funkcje to kwerendy, do których można odwoływać się inne zapytania. Aby zapisać zapytanie jako funkcję, należy podać alias funkcji, który jest nazwą używaną do wywołania tego zapytania, w odniesieniu do innych zapytań.
@@ -194,8 +193,8 @@ Ikona Eksplorator zapytań znajduje się w prawym górnym rogu. Ta lista zawiera
 Log Analytics obsługuje kilka metod eksportowania:
 
 - Excel: Zapisz wyniki jako plik CSV.
-- Power BI: Wyeksportuj wyniki do Power BI. Aby uzyskać szczegółowe informacje, zobacz [importowanie Azure monitor danych dziennika do Power BI](../../azure-monitor/platform/powerbi.md) .
-- Udostępnianie linku: Zapytanie może być udostępniane jako link, który można następnie wysłać i wykonać przez innych użytkowników, którzy mają dostęp do tego samego obszaru roboczego.
+- Power BI: Eksportuj wyniki do Power BI. Aby uzyskać szczegółowe informacje, zobacz [importowanie Azure monitor danych dziennika do Power BI](../../azure-monitor/platform/powerbi.md) .
+- Udostępnianie linku: samo zapytanie może być udostępniane jako link, który można następnie wysłać i wykonać przez innych użytkowników, którzy mają dostęp do tego samego obszaru roboczego.
 
 ## <a name="next-steps"></a>Następne kroki
 

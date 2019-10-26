@@ -1,24 +1,18 @@
 ---
 title: Azure Key Vault rozwiązanie w Azure Monitor | Microsoft Docs
 description: Aby przejrzeć dzienniki Azure Key Vault, można użyć rozwiązania Azure Key Vault w Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: 5e25e6d6-dd20-4528-9820-6e2958a40dae
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/27/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 1e0e9a0d76e644ec48ecd423a105dd89629d290c
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 03/27/2019
+ms.openlocfilehash: 8863280407de5d02b53a203b2b6385477aa9f8ae
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997702"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899209"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Rozwiązanie Azure Key Vault Analytics w Azure Monitor
 
@@ -35,7 +29,7 @@ Aby użyć rozwiązania, należy włączyć rejestrowanie diagnostyki Azure Key 
 >
 >
 
-## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
+## <a name="install-and-configure-the-solution"></a>Instalowanie i Konfigurowanie rozwiązania
 Aby zainstalować i skonfigurować rozwiązanie Azure Key Vault, należy wykonać następujące instrukcje:
 
 1. Aby dodać rozwiązanie Azure Key Vault do obszaru roboczego Log Analytics, Użyj procesu opisanego w temacie [Dodawanie rozwiązań Azure monitor z Galeria rozwiązań](../../azure-monitor/insights/solutions.md) .
@@ -57,7 +51,7 @@ Aby zainstalować i skonfigurować rozwiązanie Azure Key Vault, należy wykona�
 8. Kliknij przycisk *Zapisz* , aby włączyć rejestrowanie diagnostyki w log Analytics obszarze roboczym.
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Włączanie diagnostyki Key Vault przy użyciu programu PowerShell
-Poniższy skrypt programu PowerShell zawiera przykład użycia `Set-AzDiagnosticSetting` programu w celu włączenia rejestrowania diagnostycznego dla Key Vault:
+Poniższy skrypt programu PowerShell zawiera przykład użycia `Set-AzDiagnosticSetting`, aby włączyć rejestrowanie diagnostyczne dla Key Vault:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -101,7 +95,7 @@ Po kliknięciu kafelka **Key Vault Analytics** można wyświetlić podsumowania 
     Na dowolnej stronie przeszukiwania dzienników można wyświetlać wyniki według czasu, szczegółowych wyników i historii przeszukiwania dzienników. Możesz również filtrować według aspektów, aby zawęzić wyniki.
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor rekordy dziennika
-Azure Key Vault rozwiązanie analizuje rekordy, które mają typy magazynów kluczy , które są zbierane z [dzienników AuditEvent](../../key-vault/key-vault-logging.md) w Diagnostyka Azure.  Właściwości tych rekordów znajdują się w poniższej tabeli:  
+Azure Key Vault rozwiązanie analizuje rekordy, które mają typy **magazynów** kluczy, które są zbierane z [dzienników AuditEvent](../../key-vault/key-vault-logging.md) w Diagnostyka Azure.  Właściwości tych rekordów znajdują się w poniższej tabeli:  
 
 | Właściwość | Opis |
 |:--- |:--- |
@@ -120,8 +114,8 @@ Azure Key Vault rozwiązanie analizuje rekordy, które mają typy magazynów klu
 | `Resource` |Nazwa magazynu kluczy |
 | `ResourceGroup` |Grupa zasobów magazynu kluczy |
 | `ResourceId` |Identyfikator zasobu usługi Azure Resource Manager W przypadku dzienników Key Vault jest to Key Vault identyfikator zasobu. |
-| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
-| `ResourceType` | *VAULTS* |
+| `ResourceProvider` |*Programu. KEYVAULT* |
+| `ResourceType` | *MAGAZYNÓW* |
 | `ResultSignature` |Stan HTTP (na przykład *OK*) |
 | `ResultType` |Wynik żądania interfejsu API REST (na przykład *sukcesu*) |
 | `SubscriptionId` |Identyfikator subskrypcji platformy Azure dla subskrypcji zawierającej Key Vault |
@@ -138,14 +132,14 @@ Aby użyć zaktualizowanego rozwiązania:
 1. [Skonfiguruj diagnostykę do wysłania bezpośrednio do obszaru roboczego Log Analytics z Key Vault](#enable-key-vault-diagnostics-in-the-portal)  
 2. Włącz rozwiązanie Azure Key Vault przy użyciu procesu opisanego w temacie [Dodawanie rozwiązań Azure monitor z Galeria rozwiązań](../../azure-monitor/insights/solutions.md)
 3. Zaktualizuj wszystkie zapisane zapytania, pulpity nawigacyjne lub alerty, aby użyć nowego typu danych
-   + Typ jest zmieniany z: Magazyny kluczy do AzureDiagnostics. Do filtrowania dzienników Key Vault można użyć elementu ResourceType.
-   + Zamiast: `KeyVaults`, użyj`AzureDiagnostics | where ResourceType'=="VAULTS"`
-   + Pola (Nazwy pól są rozróżniane wielkości liter)
+   + Typ jest zmieniany z: magazyny kluczy do AzureDiagnostics. Do filtrowania dzienników Key Vault można użyć elementu ResourceType.
+   + Zamiast: `KeyVaults`, użyj `AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + Pola: (nazwy pól są rozróżniane wielkości liter)
    + Dla każdego pola, które ma sufiks \_s, \_d lub \_g w nazwie, Zmień pierwszy znak na małe litery
-   + Dla każdego pola, które ma sufiks o \_wartości w nazwie, dane są dzielone na poszczególne pola na podstawie zagnieżdżonych nazw pól. Na przykład nazwa UPN obiektu wywołującego jest przechowywana w polu`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + Dla każdego pola, które ma sufiks \_o w nazwie, dane są dzielone na poszczególne pola na podstawie zagnieżdżonych nazw pól. Na przykład nazwa UPN obiektu wywołującego jest przechowywana w polu `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    + Zmieniono CallerIpAddress pola na CallerIPAddress
    + Pole RemoteIPCountry nie jest już obecne
-4. Usuń rozwiązanie *Key Vault Analytics (przestarzałe)* . Jeśli używasz programu PowerShell, użyj polecenia`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
+4. Usuń rozwiązanie *Key Vault Analytics (przestarzałe)* . Jeśli używasz programu PowerShell, użyj `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 Dane zbierane przed zmianą nie będą widoczne w nowym rozwiązaniu. Można kontynuować zapytania o te dane przy użyciu starych typów i nazw pól.
 

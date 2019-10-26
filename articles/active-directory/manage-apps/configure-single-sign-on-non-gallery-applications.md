@@ -12,16 +12,16 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 057fa4dc9080ea0216765d89fa6f9d54c60ccec1
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 74f4e8750497fc1ae9875caeb60de65b5f6cd808
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422814"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896034"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Konfigurowanie logowania jednokrotnego opartego na protokole SAML w aplikacjach bez galerii
 
-Po dodaniu aplikacji [galerii](add-gallery-app.md) lub [aplikacji sieci Web bez galerii](add-non-gallery-app.md) do aplikacji usługi Azure AD Enterprise jedna z opcji logowania jednokrotnego jest dostępna przy użyciu [protokołu SAML](what-is-single-sign-on.md#saml-sso). Wybierz pozycję SAML wszędzie tam, gdzie to możliwe, dla aplikacji, które uwierzytelniają się przy użyciu jednego z protokołów SAML. Za pomocą logowania jednokrotnego SAML usługa Azure AD uwierzytelnia się w aplikacji przy użyciu konta usługi Azure AD użytkownika. Usługa Azure AD komunikuje się informacji logowania jednokrotnego do aplikacji za pośrednictwem protokołu połączenia. Użytkowników można mapować na określone role aplikacji na podstawie reguł zdefiniowanych w oświadczeniach SAML. W tym artykule opisano sposób konfigurowania logowania jednokrotnego opartego na protokole SAML dla aplikacji spoza galerii. 
+Po [dodaniu aplikacji galerii](add-gallery-app.md) lub [aplikacji sieci Web bez galerii](add-non-gallery-app.md) do aplikacji usługi Azure AD Enterprise jedna z opcji logowania jednokrotnego jest dostępna przy użyciu [protokołu SAML](what-is-single-sign-on.md#saml-sso). Wybierz pozycję SAML wszędzie tam, gdzie to możliwe, dla aplikacji, które uwierzytelniają się przy użyciu jednego z protokołów SAML. Za pomocą logowania jednokrotnego SAML usługa Azure AD uwierzytelnia się w aplikacji przy użyciu konta usługi Azure AD użytkownika. Usługa Azure AD komunikuje informacje logowania do aplikacji za pomocą protokołu połączenia. Użytkowników można mapować na określone role aplikacji na podstawie reguł zdefiniowanych w oświadczeniach SAML. W tym artykule opisano sposób konfigurowania logowania jednokrotnego opartego na protokole SAML dla aplikacji spoza galerii. 
 
 > [!NOTE]
 > Dodawanie aplikacji galerii? Instrukcje dotyczące instalacji krok po kroku znajdują się na [liście samouczków aplikacji SaaS](../saas-apps/tutorial-list.md)
@@ -36,11 +36,11 @@ Jeśli aplikacja nie została dodana do dzierżawy usługi Azure AD, zobacz [Dod
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator aplikacji w chmurze lub administrator aplikacji dla dzierżawy usługi Azure AD.
 
-2. Przejdź do **Azure Active Directory** > **aplikacji przedsiębiorstwa** i wybierz aplikację z listy. 
+2. Przejdź do **Azure Active Directory** > **aplikacje dla przedsiębiorstw** i wybierz aplikację z listy. 
    
    - Aby wyszukać aplikację, w menu **Typ aplikacji** wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Zastosuj**. Wprowadź nazwę aplikacji w polu wyszukiwania, a następnie wybierz aplikację z wyników.
 
-3. W sekcji **Zarządzanie** wybierz pozycję **Logowanie**jednokrotne. 
+3. W sekcji **Zarządzanie** wybierz pozycję **Logowanie jednokrotne**. 
 
 4. Wybierz pozycję **SAML**. Zostanie wyświetlona strona **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML-Preview** .
 
@@ -53,16 +53,16 @@ Jeśli aplikacja nie została dodana do dzierżawy usługi Azure AD, zobacz [Dod
     | Podstawowe ustawienia konfiguracji SAML | Zainicjowane przez dostawcę usługi | Zainicjowane przez dostawcę tożsamości | Opis |
     |:--|:--|:--|:--|
     | **Identyfikator (identyfikator jednostki)** | Wymagane w przypadku niektórych aplikacji | Wymagane w przypadku niektórych aplikacji | Jednoznacznie identyfikuje aplikację. Usługa Azure AD wysyła identyfikator do aplikacji jako parametr odbiorców tokenu SAML. Aplikacja powinna go zweryfikować. Ta wartość jest widoczna również jako identyfikator jednostki w dowolnych metadanych SAML udostępnianych przez aplikację. *Tę wartość można znaleźć jako element **Issuer** w **AuthnRequest** (żądanie SAML) wysyłanej przez aplikację.* |
-    | **Adres URL odpowiedzi** | Optional | Wymagane | Określa miejsce, w którym aplikacja oczekuje otrzymać token języka SAML. Adres URL odpowiedzi jest również nazywany adresem URL usługi Assertion Consumer Service (ACS). Aby określić wiele adresów URL odpowiedzi, można użyć pól dodatkowych adresów URL odpowiedzi. Na przykład mogą być potrzebne dodatkowe adresy URL odpowiedzi dla wielu poddomen. Lub w celach testowych można jednocześnie określić wiele adresów URL odpowiedzi (lokalnego hosta i publicznych adresów URL). |
+    | **Adres URL odpowiedzi** | Wymagane | Wymagane | Określa miejsce, w którym aplikacja oczekuje otrzymać token języka SAML. Adres URL odpowiedzi jest również nazywany adresem URL usługi Assertion Consumer Service (ACS). Aby określić wiele adresów URL odpowiedzi, można użyć pól dodatkowych adresów URL odpowiedzi. Na przykład mogą być potrzebne dodatkowe adresy URL odpowiedzi dla wielu poddomen. Lub w celach testowych można jednocześnie określić wiele adresów URL odpowiedzi (lokalnego hosta i publicznych adresów URL). |
     | **Adres URL logowania** | Wymagane | Nie podawaj | Gdy użytkownik otwiera ten adres URL, dostawca usługi przekierowuje go do usługi Azure AD w celu uwierzytelnienia i zalogowania. Usługa Azure AD używa adresu URL do uruchomienia aplikacji z usługi Office 365 lub panelu dostępu usługi Azure AD. Gdy to pole jest puste, usługa Azure AD wykonuje logowanie zainicjowane przez dostawcy tożsamości, gdy użytkownik uruchomi aplikację z pakietu Office 365, panelu dostępu usługi Azure AD lub adresu URL rejestracji jednokrotnej usługi Azure AD.|
-    | **Stan przekazywania** | Optional | Optional | Określa aplikacji, dokąd przekierować użytkownika po zakończeniu uwierzytelniania. Zazwyczaj wartość jest prawidłowym adresem URL dla aplikacji. Jednak niektóre aplikacje używają tego pola inaczej. Aby uzyskać więcej informacji, skontaktuj się z dostawcą aplikacji.
-    | **Adres URL wylogowywania** | Optional | Optional | Służy do wysyłania odpowiedzi na wylogowanie SAML z powrotem do aplikacji.
+    | **Stan przekazywania** | Opcjonalne | Opcjonalne | Określa aplikacji, dokąd przekierować użytkownika po zakończeniu uwierzytelniania. Zazwyczaj wartość jest prawidłowym adresem URL dla aplikacji. Jednak niektóre aplikacje używają tego pola inaczej. Aby uzyskać więcej informacji, skontaktuj się z dostawcą aplikacji.
+    | **Adres URL wylogowywania** | Opcjonalne | Opcjonalne | Służy do wysyłania odpowiedzi na wylogowanie SAML z powrotem do aplikacji.
 
 Aby uzyskać więcej informacji, zobacz Logowanie jednokrotne [protokołu SAML](../develop/single-sign-on-saml-protocol.md).
 
 ## <a name="step-2-configure-user-attributes-and-claims"></a>Krok 2. Konfigurowanie atrybutów użytkownika i oświadczeń 
 
-Gdy użytkownik uwierzytelnia się w aplikacji, usługa Azure AD wystawia aplikację tokenem SAML z informacjami (lub oświadczeniami) dotyczącymi użytkownika, który jednoznacznie identyfikuje je. Domyślnie te informacje obejmują nazwę użytkownika, adres e-mail, imię i nazwisko. Może być konieczne dostosowanie tych oświadczeń, jeśli na przykład aplikacja wymaga określonych wartości oświadczenia lub formatu **nazwy** innej niż nazwa użytkownika. Wymagania dotyczące aplikacji galerii są opisane w samouczkach specyficznych dla [aplikacji](../saas-apps/tutorial-list.md). można też polecić dostawcę aplikacji. Poniżej przedstawiono ogólne kroki konfigurowania atrybutów użytkownika i oświadczeń.
+Gdy użytkownik uwierzytelnia się w aplikacji, usługa Azure AD wystawia aplikację tokenem SAML z informacjami (lub oświadczeniami) dotyczącymi użytkownika, który jednoznacznie identyfikuje je. Domyślnie te informacje obejmują nazwę użytkownika, adres e-mail, imię i nazwisko. Może być konieczne dostosowanie tych oświadczeń, jeśli na przykład aplikacja wymaga określonych wartości oświadczenia lub formatu **nazwy** innej niż nazwa użytkownika. Wymagania dotyczące aplikacji galerii są opisane w [samouczkach specyficznych dla aplikacji](../saas-apps/tutorial-list.md). można też polecić dostawcę aplikacji. Poniżej przedstawiono ogólne kroki konfigurowania atrybutów użytkownika i oświadczeń.
 
 1. W sekcji **atrybuty użytkownika i oświadczenia** wybierz ikonę **Edytuj** (ołówek) w prawym górnym rogu.
 
@@ -74,7 +74,7 @@ Gdy użytkownik uwierzytelnia się w aplikacji, usługa Azure AD wystawia aplika
  
 4. Aby skonfigurować oświadczenia grupy, wybierz ikonę **edycji** dla **grup zwracanych w polu oświadczenia** . Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie oświadczeń grupy](../hybrid/how-to-connect-fed-group-claims.md).
 
-5. Aby dodać zastrzeżenie, wybierz pozycję **Dodaj nowe zastrzeżenie** w górnej części strony. Wprowadź **nazwę** i wybierz odpowiednie źródło. W przypadku wybrania źródła **atrybutów** należy wybrać **atrybut źródłowy** , który ma być używany. W przypadku wybrania źródła **tłumaczenia** należy wybrać transformację i **parametr 1** , które mają być używane. Aby uzyskać szczegółowe informacje, zobacz [Dodawanie oświadczeń specyficznych dla aplikacji](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#adding-application-specific-claims). Zapisz zmiany po zakończeniu. 
+5. Aby dodać zastrzeżenie, wybierz pozycję **Dodaj nowe zastrzeżenie** w górnej części strony. Wprowadź **nazwę** i wybierz odpowiednie źródło. W przypadku wybrania źródła **atrybutów** należy wybrać **atrybut źródłowy** , który ma być używany. W przypadku wybrania źródła **tłumaczenia** należy wybrać **transformację** i **parametr 1** , które mają być używane. Aby uzyskać szczegółowe informacje, zobacz [Dodawanie oświadczeń specyficznych dla aplikacji](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#adding-application-specific-claims). Zapisz zmiany po zakończeniu. 
 
 6. Wybierz pozycję **Zapisz**. Nowe zgłoszenie pojawi się w tabeli.
 
@@ -102,7 +102,7 @@ W usłudze Azure AD można pobrać aktywny certyfikat w formacie base64 lub RAW 
    - *Poprawna opcja podpisywania i algorytm.*
    - *Poprawne adresy e-mail powiadomień.* Gdy aktywny certyfikat zbliża się do daty wygaśnięcia, usługa Azure AD wyśle powiadomienie na adres e-mail skonfigurowany w tym polu.
 
-2. Aby pobrać certyfikat, wybierz jedną z opcji format Base64, format nieprzetworzony lub XML metadanych Federacji. Usługa Azure AD udostępnia również **adres URL metadanych federacji aplikacji** , w którym można uzyskać dostęp do metadanych specyficznych dla aplikacji `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`w formacie.
+2. Aby pobrać certyfikat, wybierz jedną z opcji format Base64, format nieprzetworzony lub XML metadanych Federacji. Usługa Azure AD udostępnia również **adres URL metadanych federacji aplikacji** , w którym można uzyskać dostęp do metadanych specyficznych dla aplikacji w formacie `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`.
 
 3. Aby zarządzać, utworzyć lub zaimportować certyfikat, wybierz ikonę **edycji** (ołówek) w prawym górnym rogu sekcji **certyfikat podpisywania SAML** .
 
@@ -114,7 +114,7 @@ W usłudze Azure AD można pobrać aktywny certyfikat w formacie base64 lub RAW 
    - Aby utworzyć nowy certyfikat, wybierz pozycję **nowy certyfikat**, wybierz **datę wygaśnięcia**, a następnie wybierz pozycję **Zapisz**. Aby uaktywnić certyfikat, wybierz menu kontekstowe ( **...** ) i wybierz pozycję **Ustaw certyfikat jako aktywny**.
    - Aby przekazać certyfikat z kluczem prywatnym i poświadczeniami PFX, wybierz pozycję **Importuj certyfikat** i przejdź do certyfikatu. Wprowadź **hasło PFX**, a następnie wybierz pozycję **Dodaj**.  
    - Aby skonfigurować zaawansowane opcje podpisywania certyfikatu, należy użyć następujących opcji. Opisy tych opcji można znaleźć w artykule [Zaawansowane opcje podpisywania certyfikatu](certificate-signing-options.md) .
-      - Z listy rozwijanej **Opcja podpisywania** wybierz pozycję Podpisz **odpowiedź SAML**, podpisz **potwierdzenie SAML**lub podpisz **odpowiedź i potwierdzenie protokołu SAML**.
+      - Z listy rozwijanej **Opcja podpisywania** wybierz pozycję **Podpisz odpowiedź SAML**, **Podpisz potwierdzenie SAML**lub **Podpisz odpowiedź i potwierdzenie protokołu SAML**.
       - Z listy rozwijanej **algorytm podpisywania** wybierz pozycję **SHA-1** lub **SHA-256**.
    - Aby powiadomić dodatkowe osoby, gdy aktywny certyfikat zbliża się do daty wygaśnięcia, wprowadź adresy e-mail w polach **powiadomienia e-mail adresy** .
 
@@ -122,22 +122,22 @@ W usłudze Azure AD można pobrać aktywny certyfikat w formacie base64 lub RAW 
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Krok 4. Konfigurowanie aplikacji do korzystania z usługi Azure AD
 
-Sekcja **Konfigurowanie \<> ApplicationName** zawiera listę wartości, które należy skonfigurować w aplikacji, aby używały usługi Azure AD jako dostawcy tożsamości SAML. Wymagane wartości różnią się w zależności od aplikacji. Aby uzyskać szczegółowe informacje, zobacz dokumentację języka SAML aplikacji. Aby znaleźć dokumentację, przejdź do nagłówka **Konfigurowanie \<nazwy aplikacji >** i wybierz pozycję **Wyświetl instrukcje krok po kroku**. Dokumentacja zostanie wyświetlona na stronie **Konfigurowanie logowania** . Ta strona przeprowadzi Cię przez użytkownika w celu wypełniania    **\<** wartości adresu URL logowania, identyfikatora usługi Azure AD i adresu URL wylogowywania w nagłówku > konfigurowania nazwy aplikacji.
+Sekcja **konfigurowanie \<applicationName >** zawiera listę wartości, które należy skonfigurować w aplikacji, aby używały usługi Azure AD jako dostawcy tożsamości SAML. Wymagane wartości różnią się w zależności od aplikacji. Aby uzyskać szczegółowe informacje, zobacz dokumentację języka SAML aplikacji. Aby znaleźć dokumentację, przejdź do nagłówka **konfiguracja \<nazwa aplikacji >** i wybierz pozycję **Wyświetl instrukcje krok po kroku**. Dokumentacja zostanie wyświetlona na stronie **Konfigurowanie logowania** . Ta strona przeprowadzi Cię przez użytkownika w celu wypełniania wartości **adresu URL logowania**, **identyfikatora usługi Azure AD**i **adresu URL wylogowywania** w nagłówku **\<konfiguracja aplikacji >** .
 
-1. Przewiń w dół do sekcji **Konfigurowanie \<> ApplicationName** . 
+1. Przewiń w dół do sekcji **konfigurowanie \<applicationName >** . 
    
    ![Krok 4 — Konfigurowanie aplikacji](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 
 1. Skopiuj wartość z każdego wiersza w tej sekcji zgodnie z wymaganiami i postępuj zgodnie z instrukcjami dla aplikacji dotyczącymi dodawania wartości do aplikacji. W przypadku aplikacji galerii można wyświetlić dokumentację, wybierając opcję **Wyświetl instrukcje krok po kroku**. 
    - Wartości **adresu URL logowania** i **wylogowania** są rozpoznawane w tym samym punkcie końcowym, który jest punktem końcowym obsługi żądania SAML dla wystąpienia usługi Azure AD. 
-   - **Identyfikator usługi Azure AD** jest wartością wystawcy  w tokenie SAML wystawionym dla aplikacji.
+   - **Identyfikator usługi Azure AD** jest wartością **wystawcy** w tokenie SAML wystawionym dla aplikacji.
 2. Po wklejeniu wszystkich wartości do odpowiednich pól wybierz pozycję **Zapisz**.
 
 ## <a name="step-5-validate-single-sign-on"></a>Krok 5. Weryfikuj Logowanie jednokrotne
 
 Po skonfigurowaniu aplikacji do korzystania z usługi Azure AD jako dostawcy tożsamości opartej na protokole SAML można przetestować ustawienia, aby sprawdzić, czy logowanie jednokrotne działa dla Twojego konta. 
 
-2. Przewiń do sekcji **Weryfikowanie logowania <applicationName>**  jednokrotnego.
+2. Przewiń do sekcji **Weryfikowanie logowania jednokrotnego przy użyciu <applicationName>** .
 
    ![Krok 5. Sprawdzanie poprawności logowania jednokrotnego](media/configure-single-sign-on-non-gallery-applications/step-five-validate.png)
 
@@ -150,7 +150,7 @@ Jeśli zostanie wyświetlony komunikat o błędzie, wykonaj następujące czynno
 
 1. Skopiuj szczegóły i wklej je w polu **Jak wygląda błąd?** .
 
-    ![Uzyskaj wskazówki dotyczące rozwiązywania](media/configure-single-sign-on-portal/error-guidance.png)
+    ![Uzyskiwanie wskazówek dotyczących rozwiązywania](media/configure-single-sign-on-portal/error-guidance.png)
 
 2. Wybierz pozycję **Uzyskaj wskazówki dotyczące rozpoznawania**. Zostaną wyświetlone główna przyczyna i wskazówki dotyczące rozwiązywania.  W tym przykładzie użytkownik nie został przypisany do aplikacji.
 
@@ -158,7 +158,7 @@ Jeśli zostanie wyświetlony komunikat o błędzie, wykonaj następujące czynno
 
 4. Uruchamiaj test ponownie, dopóki nie zostanie pomyślnie zakończony.
 
-Aby uzyskać więcej informacji, zobacz Debugowanie logowania jednokrotnego opartego na [protokole SAML do aplikacji w Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md).
+Aby uzyskać więcej informacji, zobacz Debugowanie logowania jednokrotnego [opartego na protokole SAML do aplikacji w Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828612"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896952"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfiguracja magazynu dla maszyn wirtualnych SQL Server
 
@@ -130,15 +130,12 @@ Platforma Azure używa następujących ustawień do utworzenia puli magazynów n
 | Rozmiary dysków |1 TB każdego |
 | Cache |Odczyt |
 | Rozmiar alokacji |rozmiar jednostki alokacji systemu plików NTFS 64 KB |
-| Natychmiastowe inicjowanie pliku |Enabled (Włączony) |
-| Zablokuj strony w pamięci |Enabled (Włączony) |
-| Odzyskiwanie |Odzyskiwanie proste (bez odporności) |
-| Liczba kolumn |Liczba dysków z danymi<sup>1</sup> |
-| Lokalizacja bazy danych TempDB |Przechowywane na dyskach danych<sup>2</sup> |
+| Odzyskiwanie | Odzyskiwanie proste (bez odporności) |
+| Liczba kolumn |Liczba dysków z danymi do 8<sup>1</sup> |
+
 
 <sup>1</sup> po utworzeniu puli magazynów nie można zmienić liczby kolumn w puli magazynów.
 
-<sup>2</sup> to ustawienie dotyczy tylko pierwszego dysku tworzonego przy użyciu funkcji konfiguracji magazynu.
 
 ## <a name="workload-optimization-settings"></a>Ustawienia optymalizacji obciążenia
 

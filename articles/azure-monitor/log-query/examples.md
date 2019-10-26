@@ -1,24 +1,18 @@
 ---
 title: Przykłady zapytań w dzienniku Azure Monitor | Microsoft Docs
 description: Przykłady zapytań dzienników w Azure Monitor przy użyciu języka zapytań Kusto.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 10/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.openlocfilehash: 2ded97e427c8ecf4584ee486408de14a26f014eb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718916"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900368"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Przykłady zapytań w dzienniku Azure Monitor
 Ten artykuł zawiera różne przykłady [zapytań](log-query-overview.md) używających [języka zapytań Kusto](/azure/kusto/query/) do pobierania różnych typów danych dziennika z Azure monitor. Różne metody służą do konsolidowania i analizowania danych, dzięki czemu można używać tych przykładów do identyfikowania różnych strategii, których można użyć do własnych wymagań.  
@@ -79,7 +73,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Dopasuj rekordy stanu chronionego przy użyciu rekordów pulsu
 
 Ten przykład wyszukuje powiązane rekordy stanu ochrony i rekordy pulsu, dopasowane zarówno na komputerze, jak i w czasie.
-Zwróć uwagę, że pole Time jest zaokrąglane do najbliższej minuty. W tym celu użyto obliczeń bin dla środowiska uruchomieniowego: `round_time=bin(TimeGenerated, 1m)`.
+Zwróć uwagę, że pole Time jest zaokrąglane do najbliższej minuty. W tym celu użyto obliczeń bin w czasie wykonywania: `round_time=bin(TimeGenerated, 1m)`.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -237,7 +231,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Liczba zdarzeń zabezpieczeń według identyfikatora działania
 
 
-Ten przykład opiera się na stałej strukturze kolumny **aktywności** : \<ID @ no__t-2 @ no__t-3 @ No__t-4Name @ no__t-5.
+Ten przykład opiera się na stałej strukturze kolumny **aktywności** : identyfikator \<\>-\<nazwa\>.
 Analizuje ona wartość **działania** w dwie nowe kolumny i zlicza wystąpienia każdego **activityIDu**.
 
 ```Kusto
@@ -278,7 +272,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Nazwa i identyfikator działania analizy
-Dwa poniższe przykłady polegają na stałej strukturze kolumny **aktywności** : \<ID @ no__t-2 @ no__t-3 @ No__t-4Name @ no__t-5. W pierwszym przykładzie używa operatora **Parse** do przypisywania wartości do dwóch nowych kolumn: **ActivityId** i **activityDesc**.
+Dwa poniższe przykłady polegają na stałej strukturze kolumny **aktywności** : \<identyfikator\>-\<\>. W pierwszym przykładzie używa operatora **Parse** do przypisywania wartości do dwóch nowych kolumn: **ActivityId** i **activityDesc**.
 
 ```Kusto
 SecurityEvent

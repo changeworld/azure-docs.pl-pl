@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: 599dd2b44f934bb864acfa9ffe8d03fa0e8bb850
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2f89b57257088b0b647fd5f0159a58c2ac03bda7
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757461"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897257"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Zmiany w dokumentacji dotyczące SQL Server na platformie Azure Virtual Machines
 
@@ -28,6 +28,7 @@ System Azure umożliwia wdrożenie maszyny wirtualnej za pomocą obrazu SQL Serv
 
 | Wprowadzane | Szczegóły |
 | --- | --- |
+| **Rejestracja dostawcy zasobów zbiorczych** | Teraz można [zarejestrowanie zbiorcze](virtual-machines-windows-sql-bulk-register-with-resource-provider.md) maszyn wirtualnych SQL przy użyciu dostawcy zasobów. | 
 | **Konfiguracja magazynu zoptymalizowanego pod kątem wydajności** | Teraz można w [pełni dostosować konfigurację magazynu](virtual-machines-windows-sql-server-storage-configuration.md#new-vms) podczas tworzenia nowej maszyny wirtualnej SQL Server. |
 | **Udział plików w warstwie Premium dla FCI** | Teraz można utworzyć wystąpienie klastra trybu failover przy użyciu [udziału plików Premium](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) zamiast oryginalnej metody [bezpośrednie miejsca do magazynowania](virtual-machines-windows-portal-sql-create-failover-cluster.md). 
 | &nbsp; | &nbsp; |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 52f86f85ec303d23a78fd942276bfe46d0f12832
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f00e7663c4ed2211927f5c8d1c131d85bc6c96dd
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030416"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900898"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurowanie systemu DNS do rozpoznawania nazw dla prywatnego dostępu vCenter w chmurze z lokalnych stacji roboczych
 
@@ -80,7 +80,7 @@ zone “cloudsimple.io”
 
 Usługa przesyłania dalej warunkowego przekazuje wszystkie żądania rozpoznawania nazw DNS do wywskazanego serwera. W przypadku tej konfiguracji każde żądanie do *. cloudsimple.io jest przekazywane do serwerów DNS znajdujących się w chmurze prywatnej. W poniższych przykładach pokazano, jak skonfigurować usługi przesyłania dalej na różnych typach serwerów DNS.
 
-### <a name="create-a-conditional-forwarded-on-a-bind-dns-server"></a>Tworzenie warunkowego przekazywania na serwerze DNS BIND
+### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Tworzenie usługi przesyłania dalej warunkowej na serwerze DNS BIND
 
 Określony plik i parametry do skonfigurowania mogą się różnić w zależności od konfiguracji poszczególnych ustawień DNS.
 

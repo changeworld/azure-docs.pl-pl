@@ -4,19 +4,19 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 41ec1940409953c7e12ffa9e919397a800591fed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 18c6929bba139a1307a5dacc8d773c988a9b060e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183442"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72902251"
 ---
-## <a name="java-sample-code-repositories"></a>Repozytoria kodu przykładowej języka Java
+## <a name="java-sample-code-repositories"></a>Przykładowe repozytoria kodu Java
 
-Oto lista nasze repozytoria próbki dla biblioteki klienta Java usługi Azure Storage.
+Poniżej znajduje się lista wszystkich naszych przykładowych repozytoriów dla biblioteki klienta Java usługi Azure Storage.
 
-* [Rozpoczynanie pracy z usługą Storage — Zarządzanie konta magazynu w języku Java](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/)
-* [Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java](https://azure.microsoft.com/resources/samples/storage-blob-java-getting-started/)
-* [Wprowadzenie do usługi plików platformy Azure w języku Java](https://azure.microsoft.com/resources/samples/storage-file-java-getting-started/)
-* [Wprowadzenie do usługi Azure Queue Service w języku Java](https://azure.microsoft.com/resources/samples/storage-queue-java-getting-started/)
-* [Wprowadzenie do usługi Azure Table Service w języku Java](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
+* [Wprowadzenie z magazynem — Zarządzanie kontem magazynu w języku Java](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/)
+* [Wprowadzenie z usługą Azure Blob Service w języku Java](https://github.com/Azure-Samples/storage-blob-java-getting-started)
+* [Wprowadzenie z usługą plików platformy Azure w języku Java](https://github.com/Azure-Samples/storage-file-java-getting-started)
+* [Wprowadzenie z usługą Azure Queue Service w języku Java](https://github.com/Azure-Samples/storage-queue-java-getting-started)
+* [Wprowadzenie do usługi Azure Table Service w języku Java](https://github.com/Azure-Samples/storage-table-java-getting-started)

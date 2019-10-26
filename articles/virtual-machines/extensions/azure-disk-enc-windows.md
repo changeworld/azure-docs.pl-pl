@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 00891122015bb3e6adb500b6f6c30fa031161b92
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 056bd1293e0593a7fb7f9909cfd85043577686c4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598002"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901333"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption dla systemu Windows (Microsoft. Azure. Security. AzureDiskEncryption)
 
@@ -36,11 +36,11 @@ Aby uzyskać pełną listę wymagań wstępnych, zobacz [Azure Disk Encryption d
 
 ## <a name="extension-schemata"></a>Schematu rozszerzenia
 
-Istnieją dwa schematu Azure Disk Encryption: v 1.1, nowszy, zalecany schemat, który nie korzysta z właściwości Azure Active Directory (AAD) i v 0,1, starszy schemat, który wymaga właściwości usługi AAD. Musisz użyć wersji schematu odpowiadającej używanemu rozszerzeniu: schemat v 1.1 dla rozszerzenia AzureDiskEncryption w wersji 1,1, schemat v 0,1 dla rozszerzenia AzureDiskEncryption w wersji 0,1.
+Istnieją dwa schematu rozszerzenia Windows AzureDiskEncryption: v 2.2, nowszy, zalecany schemat, który nie korzysta z właściwości Azure Active Directory (AAD), i 1.1, starsze schemat, który wymaga właściwości usługi AAD. Należy użyć wersji schematu odpowiadającej używanemu rozszerzeniu: schemat v 2.2 dla rozszerzenia AzureDiskEncryption w wersji 2,2, schematu v 1.1 dla rozszerzenia AzureDiskEncryption w wersji 1,1.
 
-### <a name="schema-v11-no-aad-recommended"></a>Schemat v 1.1: Brak usługi AAD (zalecane)
+### <a name="schema-v22-no-aad-recommended"></a>Schemat v 2.2: Brak usługi AAD (zalecane)
 
-Schemat v 1.1 jest zalecany i nie wymaga Azure Active Directory właściwości.
+Schemat v 2.2 jest zalecany dla wszystkich nowych maszyn wirtualnych i nie wymaga Azure Active Directory właściwości.
 
 ```json
 {
@@ -67,9 +67,9 @@ Schemat v 1.1 jest zalecany i nie wymaga Azure Active Directory właściwości.
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Schemat v 0,1: z usługą AAD 
+### <a name="schema-v11-with-aad"></a>Schemat v 1.1: z usługą AAD 
 
-Schemat 0,1 wymaga `aadClientID` i `aadClientSecret` lub `AADClientCertificate`.
+Schemat 1,1 wymaga `aadClientID` i `aadClientSecret` lub `AADClientCertificate` i nie jest zalecany dla nowych maszyn wirtualnych.
 
 Używanie `aadClientSecret`:
 
@@ -139,10 +139,10 @@ Używanie `AADClientCertificate`:
 | apiVersion | 2015-06-15 | date |
 | dawc | Microsoft. Azure. Security | string |
 | type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0,1, 1,1 | int |
-| (schemat 0,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Ident | 
-| (schemat 0,1) AADClientSecret | hasło | string |
-| (schemat 0,1) AADClientCertificate | odcisk palca | string |
+| typeHandlerVersion | 1,1, 2,2 | string |
+| (schemat 1,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Ident | 
+| (schemat 1,1) AADClientSecret | hasło | string |
+| (schemat 1,1) AADClientCertificate | odcisk palca | string |
 | DiskFormatQuery | {"dev_path": "", "name": "", "file_system": ""} | Słownik JSON |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | "RSA-OAEP", "RSA-OAEP-256", "RSA1_5" | string |

@@ -1,36 +1,30 @@
 ---
-title: Zaawansowane agregacji w zapytaniach dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Opisuje niektóre bardziej zaawansowane opcje agregacji, dostępne dla usługi Azure Monitor dziennika zapytań.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Agregacje zaawansowane w zapytaniach dziennika Azure Monitor | Microsoft Docs
+description: Opisuje niektóre bardziej zaawansowane opcje agregacji dostępne do Azure Monitor zapytań dzienników.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 56e87da0353a41504035a070d4c10bab0dda2279
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/16/2018
+ms.openlocfilehash: f34e71c4e15e3bb09676e366313e90a7261439e5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551757"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900443"
 ---
-# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Zaawansowane agregacji w zapytaniach dzienników usługi Azure Monitor
+# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Agregacje zaawansowane w zapytaniach dziennika Azure Monitor
 
 > [!NOTE]
-> Należy wykonać [agregacji w zapytaniach usługi Azure Monitor](./aggregations.md) przed wykonaniem tej lekcji.
+> Przed ukończeniem tej lekcji należy ukończyć [agregacje w Azure monitor zapytaniach](./aggregations.md) .
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym artykule opisano niektóre bardziej zaawansowane opcje agregacji, dostępne dla zapytań usługi Azure Monitor.
+W tym artykule opisano niektóre bardziej zaawansowane opcje agregacji dostępne dla Azure Monitor zapytań.
 
-## <a name="generating-lists-and-sets"></a>Generowanie listy i zestawy
-Możesz użyć `makelist` z danymi obrotu przez kolejność wartości w określonej kolumnie. Można na przykład, zapoznaj się z najbardziej typowych kolejność zdarzeń miejsce na maszynach. Zasadniczo można przestawiać danych przez kolejność EventIDs na każdym komputerze. 
+## <a name="generating-lists-and-sets"></a>Generowanie list i zestawów
+Za pomocą `makelist` można przestawiać dane według kolejności wartości w określonej kolumnie. Na przykład możesz chcieć poznać najczęściej występujące zdarzenia dotyczące zamówienia na Twoich komputerach. Dane można zasadniczo przestawiać według kolejności EventIDs na poszczególnych komputerach. 
 
 ```Kusto
 Event
@@ -39,15 +33,15 @@ Event
 | summarize makelist(EventID) by Computer
 ```
 
-|Computer (Komputer)|list_EventID|
+|Computer|list_EventID|
 |---|---|
-| KOMPUTER1 | [704,701,1501,1500,1085,704,704,701] |
-| computer2 | [326,105,302,301,300,102] |
+| Komputer1 | [704, no, 1501, 1500, 1085, 704, 704 |
+| KOMPUTER2 | [326 105 302 301 300 102] |
 | Przyciski ... | Przyciski ... |
 
-`makelist` generuje listę w kolejności, który danych został przekazany do niego. Aby posortować zdarzenia od najstarszych do najnowszych, należy użyć `asc` w instrukcji order zamiast `desc`. 
+`makelist` generuje listę w kolejności, w jakiej przekazano do niej dane. Aby sortować zdarzenia z najstarszych do najnowszych, użyj `asc` w instrukcji Order zamiast `desc`. 
 
-Jest to również przydatne do tworzenia listy tylko unikatowe wartości. Jest to nazywane _ustaw_ i mogą być generowane z `makeset`:
+Warto również utworzyć listę tylko odrębnych wartości. Jest to tzw. _zestaw_ , który można wygenerować za pomocą `makeset`:
 
 ```Kusto
 Event
@@ -56,16 +50,16 @@ Event
 | summarize makeset(EventID) by Computer
 ```
 
-|Computer (Komputer)|list_EventID|
+|Computer|list_EventID|
 |---|---|
-| KOMPUTER1 | [704,701,1501,1500,1085] |
-| computer2 | [326,105,302,301,300,102] |
+| Komputer1 | [704, no, 1501, 1500, 1085] |
+| KOMPUTER2 | [326 105 302 301 300 102] |
 | Przyciski ... | Przyciski ... |
 
-Podobnie jak `makelist`, `makeset` również współpracuje z uporządkowane danych i wygeneruje tablic, na podstawie kolejności wierszy, które są przekazywane do niego.
+Podobnie jak `makelist`, `makeset` również działa z uporządkowanymi danymi i generuje tablice na podstawie kolejności wierszy, które są do niego przenoszone.
 
-## <a name="expanding-lists"></a>Rozwijanie listy
-Odwróconą operacją `makelist` lub `makeset` jest `mvexpand`, który rozwija listę wartości do rozdzielania wierszy. Można go rozszerzyć w dowolnej liczbie kolumn dynamiczne, zarówno w formacie JSON, jak i w tablicy. Na przykład, można sprawdzić *pulsu* tabeli dla rozwiązań wysyłanie danych z komputerów, które wysłali pulsu w ciągu ostatniej godziny:
+## <a name="expanding-lists"></a>Rozwijanie list
+Operacja odwrotna `makelist` lub `makeset` jest `mvexpand`, która rozwija listę wartości do oddzielnych wierszy. Może ona zostać rozszerzona na dowolną liczbę kolumn dynamicznych, zarówno JSON, jak i tablicę. Można na przykład sprawdzić tabelę *pulsu* dla rozwiązań wysyłających dane z komputerów, które wysłały puls w ciągu ostatniej godziny:
 
 ```Kusto
 Heartbeat
@@ -73,14 +67,14 @@ Heartbeat
 | project Computer, Solutions
 ```
 
-| Computer (Komputer) | Rozwiązania | 
+| Computer | Rozwiązania | 
 |--------------|----------------------|
-| KOMPUTER1 | "zabezpieczenia", "aktualizacje", "śledzenia zmian" |
-| computer2 | "zabezpieczenia", "aktualizacji" |
-| KOMPUTER3 | "ochrony przed złośliwym kodem", "śledzenia zmian" |
+| Komputer1 | "zabezpieczenia", "aktualizacje", "śledzenia zmian" |
+| KOMPUTER2 | "zabezpieczenia", "aktualizacje" |
+| computer3 | "oprogramowanie chroniące przed złośliwym kodem", "śledzenia zmian" |
 | Przyciski ... | Przyciski ... |
 
-Użyj `mvexpand` pokazanie każdej wartości w osobnym wierszu zamiast rozdzielana przecinkami lista:
+Użyj `mvexpand`, aby pokazać każdą wartość w osobnym wierszu zamiast listy rozdzielanej przecinkami:
 
 ```Kusto
 Heartbeat
@@ -89,19 +83,19 @@ Heartbeat
 | mvexpand Solutions
 ```
 
-| Computer (Komputer) | Rozwiązania | 
+| Computer | Rozwiązania | 
 |--------------|----------------------|
-| KOMPUTER1 | "zabezpieczenia" |
-| KOMPUTER1 | "aktualizacji" |
-| KOMPUTER1 | "śledzenia zmian" |
-| computer2 | "zabezpieczenia" |
-| computer2 | "aktualizacji" |
-| KOMPUTER3 | "ochrony przed złośliwym kodem" |
-| KOMPUTER3 | "śledzenia zmian" |
+| Komputer1 | bezpieczeństw |
+| Komputer1 | dostępności |
+| Komputer1 | Śledzenia zmian |
+| KOMPUTER2 | bezpieczeństw |
+| KOMPUTER2 | dostępności |
+| computer3 | Antimalware |
+| computer3 | Śledzenia zmian |
 | Przyciski ... | Przyciski ... |
 
 
-Następnie można użyć `makelist` ponownie do grupowania elementów ze sobą, a teraz wyświetlić listę komputerów, na rozwiązanie:
+Następnie można ponownie użyć `makelist`, aby zgrupować elementy, a ten czas zapoznaj się z listą komputerów na rozwiązanie:
 
 ```Kusto
 Heartbeat
@@ -113,14 +107,14 @@ Heartbeat
 
 |Rozwiązania | list_Computer |
 |--------------|----------------------|
-| "zabezpieczenia" | ["computer1", "computer2"] |
-| "aktualizacji" | ["computer1", "computer2"] |
-| "śledzenia zmian" | ["computer1", "computer3"] |
-| "ochrony przed złośliwym kodem" | ["computer3"] |
+| bezpieczeństw | ["Komputer1", "KOMPUTER2"] |
+| dostępności | ["Komputer1", "KOMPUTER2"] |
+| Śledzenia zmian | ["Komputer1", "computer3"] |
+| Antimalware | ["computer3"] |
 | Przyciski ... | Przyciski ... |
 
 ## <a name="handling-missing-bins"></a>Obsługa brakujących pojemników
-Przydatne stosowania `mvexpand` potrzeby wypełnij wartości domyślne dla brakujących pojemniki. Na przykład załóżmy, że szukasz czas działania określonego komputera, eksplorując pulsu. Chcesz zobaczyć źródło pulsu, która jest również _kategorii_ kolumny. Zwykle, możemy użyć prostego Podsumuj instrukcji w następujący sposób:
+Przydatną aplikacją `mvexpand` jest potrzeba wypełnienia wartości domyślnych w przypadku brakujących pojemników. Załóżmy na przykład, że szukasz czasu przestoju konkretnej maszyny przez Eksplorowanie jej pulsu. Warto również zobaczyć Źródło pulsu, który znajduje się w kolumnie _Kategoria_ . Zwykle będziemy używać prostej instrukcji podsumowującej w następujący sposób:
 
 ```Kusto
 Heartbeat
@@ -128,28 +122,28 @@ Heartbeat
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
 
-| Category | TimeGenerated | count_ |
+| Kategoria | TimeGenerated | liczbą |
 |--------------|----------------------|--------|
-| Agent bezpośredni | 2017-06-06T17:00:00Z | 15 |
-| Agent bezpośredni | 2017-06-06T18:00:00Z | 60 |
-| Agent bezpośredni | 2017-06-06T20:00:00Z | 55 |
-| Agent bezpośredni | 2017-06-06T21:00:00Z | 57 |
-| Agent bezpośredni | 2017-06-06T22:00:00Z | 60 |
+| Agent bezpośredni | 2017 — 06-06T17:00:00Z | 15 |
+| Agent bezpośredni | 2017 — 06-06T18:00:00Z | 60 |
+| Agent bezpośredni | 2017 — 06-06T20:00:00Z | 55 |
+| Agent bezpośredni | 2017 — 06-06T21:00:00Z | 57 |
+| Agent bezpośredni | 2017 — 06-06T22:00:00Z | 60 |
 | Przyciski ... | Przyciski ... | Przyciski ... |
 
-Te wyniki do zasobnika skojarzony z "2017-06-06T19:00:00Z" Brak, ponieważ nie ma żadnych danych pulsu dla danej godziny. Użyj `make-series` funkcję, aby przypisać wartość domyślną do pustych zasobników. Spowoduje to wygenerowanie wiersz dla każdej kategorii, zawierającą dwie kolumny tablicy dodatkowe: jeden dla wartości i jeden dla zgodnego przedziałów czasu:
+W tych rezultatach brakuje zasobnika skojarzonego z "2017-06-06T19:00:00Z", ponieważ nie ma żadnych danych pulsu dla tej godziny. Użyj funkcji `make-series`, aby przypisać wartość domyślną do pustych zasobników. Spowoduje to wygenerowanie wiersza dla każdej kategorii zawierającej dwie dodatkowe kolumny tablicowe, jedną dla wartości i jeden dla zgodnych przedziałów czasu:
 
 ```Kusto
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| Category | count_ | TimeGenerated |
+| Kategoria | liczbą | TimeGenerated |
 |---|---|---|
-| Agent bezpośredni | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
+| Agent bezpośredni | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
 | Przyciski ... | Przyciski ... | Przyciski ... |
 
-Trzeci element *count_* tablicy to 0, zgodnie z oczekiwaniami i jest zgodne sygnatura czasowa "2017-06-06T19:00:00.0000000Z" w _TimeGenerated_ tablicy. Ten format tablicy jest trudne do odczytania, mimo że. Użyj `mvexpand` rozwiń tablice i generuje ten sam format danych wyjściowych wygenerowanych przez `summarize`:
+Trzeci element tablicy *count_* ma wartość 0 zgodnie z oczekiwaniami i istnieje zgodna sygnatura czasowa "2017-06-06T19:00:00.0000000 z" w tablicy _TimeGenerated_ . Ten format tablicy jest trudny do odczytania. Użyj `mvexpand`, aby rozwinąć tablice i wygenerować ten sam format danych wyjściowych, jak wygenerowany przez `summarize`:
 
 ```Kusto
 Heartbeat
@@ -158,20 +152,20 @@ Heartbeat
 | project Category, TimeGenerated, count_
 ```
 
-| Category | TimeGenerated | count_ |
+| Kategoria | TimeGenerated | liczbą |
 |--------------|----------------------|--------|
-| Agent bezpośredni | 2017-06-06T17:00:00Z | 15 |
-| Agent bezpośredni | 2017-06-06T18:00:00Z | 60 |
-| Agent bezpośredni | 2017-06-06T19:00:00Z | 0 |
-| Agent bezpośredni | 2017-06-06T20:00:00Z | 55 |
-| Agent bezpośredni | 2017-06-06T21:00:00Z | 57 |
-| Agent bezpośredni | 2017-06-06T22:00:00Z | 60 |
+| Agent bezpośredni | 2017 — 06-06T17:00:00Z | 15 |
+| Agent bezpośredni | 2017 — 06-06T18:00:00Z | 60 |
+| Agent bezpośredni | 2017 — 06-06T19:00:00Z | 0 |
+| Agent bezpośredni | 2017 — 06-06T20:00:00Z | 55 |
+| Agent bezpośredni | 2017 — 06-06T21:00:00Z | 57 |
+| Agent bezpośredni | 2017 — 06-06T22:00:00Z | 60 |
 | Przyciski ... | Przyciski ... | Przyciski ... |
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Zawężanie wyników zestaw elementów: `let`, `makeset`, `toscalar`, `in`
-Typowym scenariuszem jest wybierz nazwy niektórych konkretnych jednostek, w oparciu o określone kryteria, a następnie przeprowadź filtrowanie inny zestaw danych do tego zestawu jednostek. Na przykład możesz znaleźć komputery, które są znane brakujące aktualizacje i identyfikowania adresów IP, że te komputery przestawione do:
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Zawężanie wyników do zestawu elementów: `let`, `makeset`, `toscalar``in`
+Typowym scenariuszem jest wybranie nazw niektórych określonych jednostek na podstawie zestawu kryteriów, a następnie odfiltrowanie innych danych do tego zestawu jednostek. Na przykład można znaleźć komputery, na których wiadomo, że brakuje aktualizacji i zidentyfikować adresy IP, do których te komputery wezwały:
 
 
 ```Kusto
@@ -184,14 +178,14 @@ WindowsFirewall
 | where Computer in (ComputersNeedingUpdate)
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz inne lekcje dotyczące korzystania z [język zapytania Kusto](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
+Zapoznaj się z innymi lekcjami dotyczącymi używania [języka zapytań Kusto](/azure/kusto/query/) z danymi dziennika Azure Monitor:
 
 - [Operacje na ciągach](string-operations.md)
-- [Operacje daty i godziny](datetime-operations.md)
+- [Operacje na dacie i godzinie](datetime-operations.md)
 - [Funkcje agregacji](aggregations.md)
-- [Zaawansowane agregacji](advanced-aggregations.md)
-- [JSON i struktur danych](json-data-structures.md)
-- [Sprzężenia](joins.md)
-- [Wykresy](charts.md)
+- [Agregacje zaawansowane](advanced-aggregations.md)
+- [JSON i struktury danych](json-data-structures.md)
+- [Łącze](joins.md)
+- [Schematy](charts.md)

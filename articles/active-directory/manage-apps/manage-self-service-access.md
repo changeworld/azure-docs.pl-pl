@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować przypisanie aplikacji samoobsługowej | Dokumentacja firmy Microsoft
-description: Włącz samoobsługowego dostępu do aplikacji umożliwia użytkownikom znajdowanie własnych aplikacji
+title: Jak skonfigurować przypisanie aplikacji samoobsługi | Microsoft Docs
+description: Włącz dostęp do aplikacji samoobsługi, aby umożliwić użytkownikom znajdowanie własnych aplikacji
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -12,83 +12,83 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 10/23/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66b842fc1b438e2d0046b4359712c3537f568e5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dbeb25f1190754b4264cfbab9d8a03a6b65c4dff
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824438"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895967"
 ---
-# <a name="how-to-configure-self-service-application-assignment"></a>Jak skonfigurować przypisanie aplikacji samoobsługowej
+# <a name="how-to-configure-self-service-application-assignment"></a>Jak skonfigurować przypisanie aplikacji samoobsługi
 
-Zanim użytkownicy mogą odnajdować samodzielnie aplikacje z panelu dostępu, musisz włączyć **samoobsługowego dostępu do aplikacji** do dowolnych aplikacji, które użytkownicy mogą samodzielnie odnajdywanie i żądania dostępu do.
+Zanim użytkownicy będą mogli automatycznie wykrywać aplikacje z poziomu ich panelu dostępu, musisz włączyć **dostęp do aplikacji samoobsługowej** do wszystkich aplikacji, które mają pozwolić użytkownikom na samodzielne odnajdowanie i żądać dostępu do programu. Ta funkcja jest dostępna dla aplikacji, które zostały dodane z [galerii usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app), [platformy Azure serwer proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) lub zostały dodane za pośrednictwem [zgody użytkownika lub administratora](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience). 
 
-Ta funkcja jest doskonałym sposobem do umożliwia oszczędność czasu i pieniędzy jako grupa IT i zdecydowanie zaleca się jako część wdrożenia nowoczesnych aplikacji w usłudze Azure Active Directory.
+Ta funkcja to świetny sposób oszczędzania czasu i pieniędzy jako grupy IT i jest wysoce zalecany w ramach wdrożenia nowoczesnych aplikacji z Azure Active Directory.
 
-Dzięki tej funkcji można wykonywać następujące czynności:
+Korzystając z tej funkcji, można:
 
--   Zezwala użytkownikom na własnym odnajdywanie aplikacji z [panelu dostępu do aplikacji](https://myapps.microsoft.com/) bez bothering grupę IT.
+-   Zezwól użytkownikom na samodzielne Odnajdowanie aplikacji z poziomu [panelu dostępu do aplikacji](https://myapps.microsoft.com/) bez BOTHERING grupy IT.
 
--   Dodaj tych użytkowników do wstępnie skonfigurowanej grupy, dzięki czemu można zobaczyć, który zażądał dostępu, usunięcie dostępu i zarządzać przypisane role.
+-   Dodaj tych użytkowników do wstępnie skonfigurowanej grupy, aby zobaczyć, kto zażądał dostępu, usunąć dostęp i zarządzać przypisanymi do nich rolami.
 
--   Opcjonalnie zezwolić na osobę zatwierdzającą w firmie można zatwierdzić żądań dostępu do aplikacji, dzięki czemu nie trzeba grupę IT.
+-   Opcjonalnie można zezwolić podmiotowi gospodarczemu na zatwierdzanie żądań dostępu do aplikacji, aby grupa IT nie miała do niej uprawnień.
 
 -   Opcjonalnie można skonfigurować maksymalnie 10 osób, które mogą zatwierdzać dostęp do tej aplikacji.
 
--   Opcjonalnie zezwolić na działalność osoby zatwierdzającej do ustawiania hasła tych użytkowników, można użyć zalogować się do aplikacji, po prawej od osoby zatwierdzającej firm [panelu dostępu do aplikacji](https://myapps.microsoft.com/).
+-   Opcjonalnie Zezwól podmiotowi gospodarczemu na ustawienie haseł, których mogą używać użytkownicy do logowania się do aplikacji, bezpośrednio z poziomu [panelu dostępu do aplikacji](https://myapps.microsoft.com/)osoby zatwierdzającej.
 
--   Opcjonalnie automatycznie przypisywać samoobsługi bezpośrednio przypisać użytkowników do roli aplikacji.
+-   Opcjonalnie można automatycznie przypisywać użytkownikom samoobsługi bezpośrednio przypisane do roli aplikacji.
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Włącz samoobsługowego dostępu do aplikacji umożliwia użytkownikom znajdowanie własnych aplikacji
+## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Włącz dostęp do aplikacji samoobsługi, aby umożliwić użytkownikom znajdowanie własnych aplikacji
 
-Opcjonalnie samoobsługowego dostępu do aplikacji jest to doskonały sposób, aby zezwolić użytkownikom na własnym odnajdywanie aplikacji, umożliwiają grupie biznesowej zatwierdzać dostęp do tych aplikacji. Możesz zezwolić grupie biznesowej do zarządzania poświadczeniami przypisane do tych użytkowników po prawej stronie hasło logowania jednokrotnego w aplikacji w swoich panelach dostępu.
+Samoobsługowy dostęp do aplikacji to doskonały sposób na umożliwienie użytkownikom samodzielnego odnajdywania aplikacji, opcjonalnie Zezwalanie grupie biznesowej na zatwierdzanie dostępu do tych aplikacji. Można zezwolić grupie biznesowej na zarządzanie poświadczeniami przypisanymi do tych użytkowników w celu logowania jednokrotnego w aplikacjach bezpośrednio z poziomu panelu dostępu.
 
-Aby włączyć samoobsługowego dostępu do aplikacji do aplikacji, wykonaj następujące czynności:
+Aby włączyć samoobsługowy dostęp do aplikacji, wykonaj następujące czynności:
 
-1.  Otwórz [ **witryny Azure Portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1.  Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny.**
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu nawigacji głównego po lewej stronie ekranu.
+2.  Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3.  Wpisz ciąg **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz element **Azure Active Directory** .
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** z poziomu menu nawigacji po lewej stronie ekranu w usłudze Azure Active Directory.
+4.  Kliknij pozycję **aplikacje przedsiębiorstwa** w menu nawigacji po lewej stronie Azure Active Directory.
 
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5.  Kliknij pozycję **wszystkie aplikacje** , aby wyświetlić listę wszystkich aplikacji.
 
-    * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+    * Jeśli nie widzisz aplikacji, która ma być wyświetlana w tym miejscu, użyj kontrolki **filtru** w górnej części **listy wszystkie aplikacje** i ustaw opcję **Pokaż** na **wszystkie aplikacje.**
 
-6.  Wybierz aplikację, aby umożliwić Samoobsługowe dostęp do, z listy.
+6.  Wybierz aplikację, z której chcesz włączyć dostęp do funkcji samoobsługi z listy.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **samoobsługi** z poziomu menu nawigacji po lewej stronie ekranu w aplikacji.
+7.  Po załadowaniu aplikacji kliknij pozycję **samoobsługa** w menu nawigacji po lewej stronie aplikacji.
 
-8.  Aby włączyć samoobsługowego dostępu do aplikacji dla tej aplikacji, należy wyłączyć **zezwalać użytkownikom na żądanie dostępu do tej aplikacji?** Przełącz, aby **tak.**
+8.  Aby włączyć samoobsługowy dostęp do aplikacji dla tej aplikacji, Włącz opcję **zezwól użytkownikom na żądanie dostępu do tej aplikacji?** Przełącz na **wartość tak.**
 
-9.  Następnie, aby wybrać grupę, do których użytkownicy, którzy żądają dostępu do tej aplikacji można dodać, kliknij selektor obok etykiety **grupę, do której należy dodać przypisanych użytkowników?** i wybrać grupę.
+9.  Aby wybrać grupę, do której mają zostać dodane użytkownicy żądający dostępu do tej aplikacji, kliknij selektor obok etykiety, **do której Grupa powinna zostać dodana** , a następnie wybierz grupę.
   
     > [!NOTE]
-    > Grupy zsynchronizowane ze środowiska lokalnego nie są obsługiwane do użytku z grupy, do którego należy dodać użytkowników, którzy żądają dostępu do tej aplikacji.
+    > Grupy zsynchronizowane z poziomu lokalnego nie są obsługiwane dla grupy, do której użytkownicy żądający dostępu do tej aplikacji powinni zostać dodani.
   
-10. **Opcjonalnie:** Jeśli chcesz wymagane zatwierdzenie firmy, zanim użytkownicy mogą dostęp, należy ustawić **wymagają zatwierdzenia, zanim zostanie przyznany dostęp do tej aplikacji?** Przełącz, aby **tak**.
+10. **Opcjonalne:** Jeśli chcesz wymagać zatwierdzenia biznesowego, zanim użytkownicy będą mieć dostęp, ustaw opcję **Wymagaj zatwierdzenia przed udzieleniem dostępu do tej aplikacji?** Przełącz na **wartość tak**.
 
-11. **Opcjonalnie: Dla aplikacji za pomocą logowania jednokrotnego hasła na tylko** Jeśli chcesz zezwolić na te osoby zatwierdzające w firmie określić hasła, które są wysyłane do tej aplikacji dla zatwierdzonych użytkowników, ustawić **zezwalać osobom zatwierdzającym Ustawianie haseł użytkownika dla tego Aplikacja?**  Przełącz, aby **tak**.
+11. **Opcjonalne: w przypadku aplikacji korzystających tylko z logowania** jednokrotnego, jeśli chcesz zezwolić tym osobom, aby osoby zatwierdzające firmy określiły hasła wysyłane do tej aplikacji dla zatwierdzonych użytkowników, ustaw dla tych osób **osoby zatwierdzające, aby ustawić dla nich hasła użytkownika Aplikacja?** Przełącz na **wartość tak**.
 
-12. **Opcjonalnie:** Aby określić osoby zatwierdzające w firmie, którzy mogą zatwierdzać dostęp do tej aplikacji, kliknij selektor obok etykiety **kto może zatwierdzać dostęp do tej aplikacji?** wybrać maksymalnie 10 osoby zatwierdzające w firmie indywidualnych.
+12. **Opcjonalne:** Aby określić osoby zatwierdzające w firmie, które mogą zatwierdzać dostęp do tej aplikacji, kliknij selektor obok etykiety, **która może zatwierdzić dostęp do tej aplikacji?** , aby wybrać maksymalnie 10 osób zatwierdzających w biznesie.
 
      > [!NOTE]
      > Grupy nie są obsługiwane.
      >
      >
 
-13. **Opcjonalnie:** **W przypadku aplikacji, które ujawniają role**, jeśli chcesz przypisać samoobsługi dla zatwierdzonych użytkowników do roli, kliknij selektor **do jakiej roli powinni być przypisani użytkownicy w tej aplikacji?** do wybierz rolę, do którego należy je przypisywać tych użytkowników.
+13. **Opcjonalne:** **w przypadku aplikacji, które uwidaczniają role**, aby przypisać użytkowników, którzy mają zostać przypisani do roli, kliknij selektor obok elementu, **do którego rola powinna być przypisana do tej aplikacji?** aby wybrać rolę, do której Ci użytkownicy należy przypisać.
 
-14. Kliknij przycisk **Zapisz** znajdujący się u góry bloku, aby zakończyć.
+14. Kliknij przycisk **Zapisz** w górnej części bloku, aby zakończyć.
 
-Po ukończeniu konfiguracji samoobsługowego aplikacji użytkownicy mogą przejść do ich [panelu dostępu do aplikacji](https://myapps.microsoft.com/) i kliknij przycisk **+ Dodaj** przycisk, aby znaleźć aplikacje, dla których włączono Samoobsługowe dostęp. Osoby zatwierdzające w firmie również wyświetlone powiadomienie w ich [panelu dostępu do aplikacji](https://myapps.microsoft.com/). Można włączyć wiadomość e-mail z powiadomieniem je, gdy użytkownik poprosi o dostęp do aplikacji, która wymaga zatwierdzenia. 
+Po zakończeniu konfigurowania aplikacji samoobsługi użytkownicy mogą przechodzić do [panelu dostępu do aplikacji](https://myapps.microsoft.com/) i klikać przycisk **+ Dodaj** , aby znaleźć aplikacje, dla których włączono funkcję samoobsługowego dostępu. Osoby zatwierdzające firmy widzą również powiadomienie w [panelu dostępu do aplikacji](https://myapps.microsoft.com/). Możesz włączyć wiadomość e-mail z powiadomieniem, gdy użytkownik zażądał dostępu do aplikacji, która wymaga zatwierdzenia. 
 
-Te zatwierdzenia obsługuje pojedynczy przepływów pracy, co oznacza, że jeśli określisz wiele osób zatwierdzających, wszelkie jedną osobą zatwierdzającą może osoba zatwierdzająca dostęp do aplikacji.
+Te zatwierdzenia obsługują tylko jednorazowe przepływy pracy zatwierdzania, co oznacza, że jeśli określisz wiele osób zatwierdzających, każda osoba zatwierdzająca może uzyskać dostęp do aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
-[Konfigurowanie usługi Azure Active Directory do samoobsługowego zarządzania grupami](../users-groups-roles/groups-self-service-management.md)
+## <a name="next-steps"></a>Następne kroki
+[Konfigurowanie Azure Active Directory do samoobsługowego zarządzania grupami](../users-groups-roles/groups-self-service-management.md)

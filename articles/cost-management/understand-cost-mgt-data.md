@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/23/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 6870297eea194b89a84a89e1e8ef8decf5c1788e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0b93f898924d73636c31826b6b63a228f75fc8ba
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374531"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900168"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
 Ten artykuł pomaga lepiej zrozumieć dane dotyczące kosztów i użycia platformy Azure, które znajdują się w Azure Cost Management. Wyjaśniono, jak często dane są przetwarzane, zbierane, wyświetlane i zamykane. Opłaty są naliczane miesięcznie za użycie platformy Azure. Mimo że cykle rozliczeń to okresy miesięczne, daty rozpoczęcia i zakończenia cyklu różnią się w zależności od typu subskrypcji. Częstotliwość, z jaką Cost Management odbiera dane użycia, różnią się w zależności od różnych czynników. Takie czynniki obejmują czas potrzebny na przetworzenie danych oraz częstotliwość, z jaką usługi platformy Azure emitują użycie do systemu rozliczeń.
 
-Cost Management obejmuje użycie i zakupy, w tym rezerwacje i oferty innych firm dla kont Umowa Enterprise (EA). Konta Microsoft Customer Agreement (MCA) i indywidualne subskrypcje z stawką płatność zgodnie z rzeczywistym użyciem obejmują wyłącznie użycie z usług Azure i Marketplace. Pomoc techniczna i inne koszty nie są uwzględniane. Koszty są szacowane do momentu wygenerowania faktury i nie są one uwzględniane w kredytach.
+Cost Management obejmuje użycie i zakupy, w tym rezerwacje i oferty innych firm dla kont Umowa Enterprise (EA). Konta umów dla klientów firmy Microsoft i poszczególnych subskrypcji z użyciem stawek płatność zgodnie z rzeczywistym użyciem obejmują wyłącznie użycie z usług Azure i Marketplace. Pomoc techniczna i inne koszty nie są uwzględniane. Koszty są szacowane do momentu wygenerowania faktury i nie są one uwzględniane w kredytach.
 
 ## <a name="supported-microsoft-azure-offers"></a>Obsługiwane Microsoft Azure oferty
 
@@ -34,7 +34,7 @@ Poniższe informacje przedstawiają obecnie obsługiwane [oferty Microsoft Azure
 | **Umowa Enterprise (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014 maja<sup>1</sup> |
 | **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | ND | Marzec 2019<sup>3</sup> |
 | **Umowa klienta firmy Microsoft** | [Plan Microsoft Azure dla tworzenia i testowania](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | ND | Marzec 2019<sup>3</sup> |
-| **Umowa partnerska firmy Microsoft** | Plan platformy Microsoft Azure | CSP_2015-05-01, CSP_MG_2017-12-01, CSPDEVTEST_2018-05-01 | ND | Październik 2019 |
+| **Umowa klienta firmy Microsoft obsługiwana przez partnerów** | Plan platformy Microsoft Azure | CSP_2015-05-01, CSP_MG_2017-12-01 i CSPDEVTEST_2018-05-01<br><br>Identyfikator przydziału jest ponownie używany dla umowy klienta firmy Microsoft i starszych subskrypcji CSP. Obecnie obsługiwane są tylko subskrypcje umów dla klientów firmy Microsoft. | ND | Październik 2019 |
 | **Microsoft Developer Network (MSDN)** | [Platformy MSDN](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2 października, 2018<sup>2</sup> |
 | **Płatność zgodnie z rzeczywistym użyciem** | [Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2 października, 2018<sup>2</sup> |
 | **Płatność zgodnie z rzeczywistym użyciem** | [Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2 października, 2018<sup>2</sup> |

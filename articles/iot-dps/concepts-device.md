@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: dc4ffc4965d6a3c05693c7566a2c51538584f372
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173380"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897585"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub Device Provisioning Service pojęć dotyczących urządzeń
 
@@ -44,7 +44,7 @@ Wpisy tajne urządzenia mogą być również przechowywane w oprogramowaniu (pam
 
 ## <a name="registration-id"></a>Identyfikator rejestracji
 
-Identyfikator rejestracji służy do unikatowego identyfikowania urządzenia w usłudze Device Provisioning. Identyfikator rejestracji musi być unikatowy w [zakresie identyfikatora](#id-scope)usługi aprowizacji. Każde urządzenie musi mieć identyfikator rejestracji. Identyfikator rejestracji to alfanumeryczne, małe litery i może zawierać łączniki.
+Identyfikator rejestracji służy do unikatowego identyfikowania urządzenia w usłudze Device Provisioning. Identyfikator urządzenia musi być unikatowy w [zakresie identyfikatora](#id-scope)usługi aprowizacji. Każde urządzenie musi mieć identyfikator rejestracji. Identyfikator rejestracji jest alfanumeryczny, bez uwzględniania wielkości liter i może zawierać znaki specjalne, w tym dwukropek, kropkę, podkreślenie i łącznik.
 
 * W przypadku modułu TPM Identyfikator rejestracji jest dostarczany przez moduł TPM.
 * W przypadku zaświadczania opartego na X. 509 identyfikator rejestracji jest podawany jako nazwa podmiotu certyfikatu.

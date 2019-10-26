@@ -1,18 +1,18 @@
 ---
 title: Przegląd zapytań dzienników w Azure Monitor | Microsoft Docs
 description: Odpowiedzi na często zadawane pytania dotyczące zapytań dzienników i ułatwiają rozpoczęcie korzystania z nich.
-services: log-analytics
-author: bwren
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/19/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 89633d77a6270b5c34cd9b4f52bc7286f84b1976
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.date: 06/19/2019
+ms.openlocfilehash: 08af0ff3121d6721c9f5c1457655c345f50f91e0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827309"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900267"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Przegląd zapytań dzienników w Azure Monitor
 Zapytania dzienników ułatwiają całkowite wykorzystanie wartości danych zebranych w [dziennikach Azure monitor](../platform/data-platform-logs.md). Zaawansowany język zapytań umożliwia sprzęganie danych z wielu tabel, agregowanie dużych zestawów danych i wykonywanie złożonych operacji przy minimalnym kodzie. Niemal każde pytanie może być odpowiedzią i analizą wykonywaną, o ile dane pomocnicze zostały zebrane, i zrozumieć, jak utworzyć odpowiednie zapytanie.
@@ -96,7 +96,7 @@ Oprócz interakcyjnej pracy z kwerendami dzienników i ich wyników w Log Analyt
 - **Pulpitów nawigacyjnych.** Możesz przypiąć wyniki dowolnego zapytania do [pulpitu nawigacyjnego platformy Azure](../learn/tutorial-logs-dashboards.md) , który umożliwia wspólne wizualizację danych dzienników i metryk, a opcjonalnie udostępnianie innym użytkownikom platformy Azure.
 - **Widoki.**  Wizualizacje danych, które mają być dołączone do pulpitów nawigacyjnych użytkowników, można tworzyć za pomocą [projektanta widoków](../platform/view-designer.md).  Zapytania dziennika zapewniają dane używane przez [kafelki](../platform/view-designer-tiles.md) i [części wizualizacji](../platform/view-designer-parts.md) w każdym widoku.  
 - **Eksportowanie.**  Podczas importowania danych dziennika z Azure Monitor do programu Excel lub [Power BI](../platform/powerbi.md), należy utworzyć zapytanie dziennika w celu zdefiniowania danych do wyeksportowania.
-- **PowerShell.** Skrypt programu PowerShell można uruchomić z poziomu wiersza polecenia lub Azure Automation elementu Runbook, który używa [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) , aby pobrać dane dziennika z Azure monitor.  To polecenie cmdlet wymaga zapytania, aby określić dane do pobrania.
+- **Narzędzia.** Skrypt programu PowerShell można uruchomić z poziomu wiersza polecenia lub Azure Automation elementu Runbook, który używa [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) , aby pobrać dane dziennika z Azure monitor.  To polecenie cmdlet wymaga zapytania, aby określić dane do pobrania.
 - **Interfejs API dzienników Azure Monitor.**  [Interfejs API dzienników Azure monitor](https://dev.loganalytics.io) umożliwia wszystkim klientom interfejsu API REST pobieranie danych dziennika z obszaru roboczego.  Żądanie interfejsu API zawiera zapytanie, które jest uruchamiane względem Azure Monitor, aby określić dane do pobrania.
 
 

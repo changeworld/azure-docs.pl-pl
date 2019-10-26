@@ -1,19 +1,18 @@
 ---
 title: Zakres zapytania dziennika w Azure Monitor Log Analytics | Microsoft Docs
 description: Opisuje zakres i zakres czasu dla zapytania dziennika w Azure Monitor Log Analytics.
-services: log-analytics
-author: bwren
-manager: carmonm
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/25/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: e67dcb1236fd5ef113835dfe99de444fc2594481
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 06/25/2019
+ms.openlocfilehash: 03e5e1bc79702a979be352095bb4833a7f5fe1c6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405758"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900234"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Zakres i zakres czasu zapytania dziennika w Azure Monitor Log Analytics
 Po uruchomieniu [zapytania dziennika](log-query-overview.md) w [log Analytics w Azure Portal](get-started-portal.md), zestaw danych ocenianych przez zapytanie zależy od zakresu i wybranego zakresu czasu. W tym artykule opisano zakres i zakres czasu oraz sposób, w jaki można ustawić każdą z nich w zależności od wymagań. Opisano w nim również zachowanie różnych typów zakresów.
@@ -24,23 +23,23 @@ Zakres zapytania definiuje rekordy, które są oceniane przez zapytanie. Zwykle 
 
 Zakres jest zawsze wyświetlany w lewym górnym rogu okna Log Analytics. Ikona wskazuje, czy zakres jest obszarem roboczym Log Analytics czy Application Insights aplikacją. Żadna ikona nie wskazuje innego zasobu platformy Azure.
 
-![Scope](media/scope/scope.png)
+![Zakres](media/scope/scope.png)
 
 Zakres jest określany przez metodę, która jest używana do uruchamiania Log Analytics, a w niektórych przypadkach można zmienić zakres, klikając go. W poniższej tabeli wymieniono różne typy używanych zakresów i różne szczegóły dotyczące każdego z nich.
 
 | Zakres zapytania | Rekordy w zakresie | Jak wybrać | Zmienianie zakresu |
 |:---|:---|:---|:---|
-| Obszar roboczy usługi Log Analytics | Wszystkie rekordy w obszarze roboczym Log Analytics. | Wybierz pozycję **dzienniki** z menu **Azure monitor** lub z menu **log Analytics obszary robocze** .  | Można zmienić zakres na dowolny inny typ zasobu. |
+| Log Analytics obszar roboczy | Wszystkie rekordy w obszarze roboczym Log Analytics. | Wybierz pozycję **dzienniki** z menu **Azure monitor** lub z menu **log Analytics obszary robocze** .  | Można zmienić zakres na dowolny inny typ zasobu. |
 | Aplikacja Application Insights | Wszystkie rekordy w aplikacji Application Insights. | Wybierz pozycję **Analiza** na stronie **Przegląd** Application Insights. | Można zmieniać zakres tylko do innej aplikacji Application Insights. |
-| Resource group | Rekordy utworzone przez wszystkie zasoby w grupie zasobów. Może zawierać dane z wielu obszarów roboczych Log Analytics. | Wybierz pozycję **dzienniki** z menu Grupa zasobów. | Nie można zmienić zakresu.|
-| Subscription | Rekordy utworzone przez wszystkie zasoby w subskrypcji. Może zawierać dane z wielu obszarów roboczych Log Analytics. | Z menu subskrypcja wybierz pozycję **dzienniki** .   | Nie można zmienić zakresu. |
+| Grupa zasobów | Rekordy utworzone przez wszystkie zasoby w grupie zasobów. Może zawierać dane z wielu obszarów roboczych Log Analytics. | Wybierz pozycję **dzienniki** z menu Grupa zasobów. | Nie można zmienić zakresu.|
+| Subskrypcja | Rekordy utworzone przez wszystkie zasoby w subskrypcji. Może zawierać dane z wielu obszarów roboczych Log Analytics. | Z menu subskrypcja wybierz pozycję **dzienniki** .   | Nie można zmienić zakresu. |
 | Inne zasoby platformy Azure | Rekordy utworzone przez zasób. Może zawierać dane z wielu obszarów roboczych Log Analytics.  | Wybierz pozycję **dzienniki** z menu zasób.<br>LUB<br>Wybierz pozycję **dzienniki** z menu **Azure monitor** a następnie wybierz nowy zakres. | Można zmienić tylko zakres na ten sam typ zasobu. |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>Ograniczenia dotyczące zakresu zasobów
 
 Gdy zakres zapytania jest obszarem roboczym Log Analytics lub aplikacją Application Insights, dostępne są wszystkie opcje w portalu i wszystkie polecenia zapytań. W przypadku określania zakresu zasobu następujące opcje w portalu nie są dostępne, ponieważ są skojarzone z pojedynczym obszarem roboczym lub aplikacją:
 
-- Zapisanie
+- Zapisz
 - Eksplorator zapytań
 - Nowa reguła alertu
 
@@ -64,13 +63,13 @@ Jeśli zakres obejmuje obszary robocze w 20 lub więcej regionach, uruchomienie 
 ![Zapytanie nie powiodło się](media/scope/query-failed.png)
 
 
-## <a name="time-range"></a>Zakres czasu
+## <a name="time-range"></a>Przedział czasu
 Zakres czasu określa zestaw rekordów, które są oceniane dla zapytania w oparciu o czas utworzenia rekordu. Jest to zdefiniowane przez standardową właściwość dla każdego rekordu w obszarze roboczym lub aplikacji, zgodnie z opisem w poniższej tabeli.
 
-| Location | Właściwość |
+| Lokalizacja | Właściwość |
 |:---|:---|
-| Obszar roboczy usługi Log Analytics          | TimeGenerated |
-| Aplikacja Application Insights | timestamp     |
+| Log Analytics obszar roboczy          | TimeGenerated |
+| Aplikacja Application Insights | sygnatura czasowa     |
 
 Ustaw zakres czasu, wybierając go z selektora czas u góry okna Log Analytics.  Możesz wybrać wstępnie zdefiniowany okres lub wybrać opcję **niestandardowe** , aby określić konkretny zakres czasu.
 

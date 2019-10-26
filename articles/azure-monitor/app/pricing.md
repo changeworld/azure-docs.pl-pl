@@ -1,24 +1,19 @@
 ---
 title: Zarządzanie użyciem i kosztami dla usługi Azure Application Insights | Microsoft Docs
 description: Zarządzanie woluminami telemetrii i monitorowanie kosztów w Application Insights.
-services: application-insights
-documentationcenter: ''
-author: DaleKoetke
-manager: carmonm
-ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 10/03/2019
+author: DaleKoetke
 ms.author: dalek
-ms.openlocfilehash: f9d92f03b1f55ad9d1f1e272886095ae48033266
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.date: 10/03/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: 5d8c0420f680371ab63a2ddd09071769586a42ca
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750393"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900023"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -77,13 +72,15 @@ Platforma Azure oferuje bardzo przydatne funkcje w [Azure Cost Management i cent
 
 Więcej informacji o użyciu można uzyskać, [pobierając użycie z witryny Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). W pobranym arkuszu kalkulacyjnym można zobaczyć użycie na zasób platformy Azure dziennie. W tym arkuszu kalkulacyjnym programu Excel można znaleźć użycie z zasobów Application Insights, wybierając najpierw filtrowanie w kolumnie "kategoria licznika", aby pokazać "Application Insights" i "Log Analytics", a następnie dodać filtr w kolumnie "identyfikator wystąpienia", która jest "zawiera Microsoft. Insights/Components.  Większość Application Insights użycie jest raportowane na miernikach z kategorią licznika Log Analytics, ponieważ istnieje pojedyncze zaplecze dzienników dla wszystkich składników Azure Monitor.  Tylko zasoby Application Insights ze starszych warstw cenowych i wieloetapowych testów sieci Web są zgłaszane z kategorią miernika Application Insights.  Użycie jest wyświetlane w kolumnie "zużyta ilość", a jednostka dla każdego wpisu jest pokazywana w kolumnie "jednostka miary".  Dostępne są więcej szczegółów, które ułatwiają [zrozumienie Microsoft Azure rachunku](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
-## <a name="managing-your-data-volume"></a>Zarządzanie ilością danych 
+## <a name="understanding-ingested-data-volume"></a>Zrozumienie ilości pozyskiwanych danych
 
-Aby zrozumieć, ile danych jest wysyłanych przez aplikację, możesz:
+Aby zrozumieć, ile danych jest wprowadzanych do Application Insights, możesz:
 
-* Przejdź do okienka **użycie i szacowane koszty** , aby wyświetlić wykres dziennego wolumenu danych. 
-* W Eksplorator metryk Dodaj nowy wykres. Dla metryki wykresu wybierz pozycję **wolumin punktu danych**. Włącz **grupowanie**, a następnie Grupuj według **typu danych**.
-* Użyj typu danych `systemEvents`. Na przykład aby zobaczyć ilość danych pozyskaną w ciągu ostatniego dnia, zapytanie będzie:
+1. Przejdź do okienka **użycie i szacowane koszty** , aby zobaczyć dzienny wykres ilości danych w sposób opisany powyżej.
+2. W Eksplorator metryk Dodaj nowy wykres. Dla metryki wykresu wybierz pozycję **wolumin punktu danych**. Włącz **grupowanie**, a następnie Grupuj według **typu danych**.
+3. Użyj tabeli `systemEvents`, jak pokazano poniżej. 
+
+Na przykład można użyć tabeli `systemEvents`, aby zobaczyć ilość danych pozyskaną w ciągu ostatnich 24 godzin przy użyciu zapytania:
 
 ```kusto
 systemEvents 
@@ -94,7 +91,20 @@ systemEvents
 | summarize sum(BillingTelemetrySizeInBytes)
 ```
 
+Lub aby wyświetlić wykres ilości danych według typu danych z ostatnich 30 dni, można użyć:
+
+```kusto
+systemEvents 
+| where timestamp >= ago(30d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
+```
+
 Tego zapytania można użyć w [alercie dziennika platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) w celu skonfigurowania alertów dla woluminów danych. 
+
+## <a name="managing-your-data-volume"></a>Zarządzanie ilością danych 
 
 Ilość wysyłanych danych może być zarządzana przy użyciu następujących technik:
 
@@ -172,8 +182,6 @@ Aby zmienić przechowywanie, z zasobu Application Insights przejdź na stronę *
 
 Przechowywanie można także [ustawić programowo przy użyciu programu PowerShell](powershell.md#set-the-data-retention) przy użyciu parametru `retentionInDays`. Ponadto w przypadku ustawienia przechowywania danych na 30 dni można wyzwolić natychmiastowe przeczyszczanie starszych danych przy użyciu parametru `immediatePurgeDataOn30Days`, co może być przydatne w scenariuszach związanych ze zgodnością. Ta funkcja przeczyszczania jest dostępna tylko za pośrednictwem Azure Resource Manager i powinna być używana z najwyższą starannością. 
 
-Gdy rozliczenia zaczynają obowiązywać dłużej niż w grudniu 2019, opłaty za dane przechowywane dłużej niż 90 dni będą naliczane zgodnie z tą samą stawką, w której jest naliczana opłata za przechowywanie danych Log Analytics Azure. Dowiedz się więcej na [stronie cennika Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). Bądź na bieżąco z zmiennym postępem przechowywania w ramach [tej sugestii](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
-
 ## <a name="data-transfer-charges-using-application-insights"></a>Opłaty za transfer danych przy użyciu Application Insights
 
 Wysyłanie danych do Application Insights może spowodować naliczenie opłat za przepustowość danych. Zgodnie z opisem na [stronie cennika przepustowości platformy Azure](https://azure.microsoft.com/pricing/details/bandwidth/)transfer danych między usługami platformy Azure znajdującymi się w dwóch regionach jest naliczany jako wychodzący transfer danych. Transfer danych przychodzących jest bezpłatny. Ta opłata jest jednak bardzo mała (kilka%) w porównaniu z kosztami Application Insights pozyskiwania danych dziennika. W związku z tym, kontrolując koszty Log Analytics muszą skupić się na pozyskiwanym woluminie danych i mamy wskazówki ułatwiające zrozumienie tego w [tym miejscu](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume).   
@@ -250,4 +258,5 @@ Można napisać skrypt do ustawienia warstwy cenowej za pomocą usługi Azure Re
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: ../../azure-monitor/app/app-insights-overview.md
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/

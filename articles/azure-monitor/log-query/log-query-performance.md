@@ -1,39 +1,33 @@
 ---
-title: Pisanie zapytań wydajne dzienników w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Odwołania do zasobów do nauki, jak pisać zapytania w usłudze Log Analytics.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Pisanie wydajnych zapytań dzienników w Azure Monitor | Microsoft Docs
+description: Odwołania do zasobów na potrzeby uczenia się, jak pisać zapytania w Log Analytics.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/17/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 25d6b582ed4d4e24df3841f4191471296e25abd8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/17/2019
+ms.openlocfilehash: a5ee03f6c42f076549856161a6ebe0b1888fe4aa
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60519364"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894132"
 ---
-# <a name="writing-efficient-log-queries-in-azure-monitor"></a>Pisanie zapytań wydajne dzienników w usłudze Azure Monitor
-Ten artykuł zawiera zalecenia dotyczące pisania zapytań wydajne dziennika w usłudze Azure Monitor. Korzystając z następujących strategii, można zagwarantować, że Twoje zapytania będą uruchamiane szybko i przy minimalnym dla.
+# <a name="writing-efficient-log-queries-in-azure-monitor"></a>Pisanie wydajnych zapytań dzienników w Azure Monitor
+Ten artykuł zawiera zalecenia dotyczące pisania wydajnych zapytań dzienników w Azure Monitor. Korzystając z tych strategii, można zagwarantować, że zapytania będą działać szybko i przy minimalnym przeniesieniu.
 
-## <a name="scope-your-query"></a>Ustal zakres zapytania
-Istnienie zapytania przetwarzania większej ilości danych niż jest potrzebna może prowadzić do kwerendy długotrwałych i często skutkuje zbyt dużej ilości danych w wynikach do skutecznego analizowania. W skrajnych przypadkach zapytanie może nawet limit czasu i zakończyć się niepowodzeniem.
+## <a name="scope-your-query"></a>Określanie zakresu zapytania
+Wykonanie zapytania przetwarza więcej danych, niż jest to konieczne, może prowadzić do długotrwałej kwerendy i często powodować zbyt dużą ilość danych w wynikach do efektywnego analizowania. W skrajnych przypadkach zapytanie może nawet przekroczyć limit czasu i zakończyć się niepowodzeniem.
 
-### <a name="specify-your-data-source"></a>Określ źródło danych
-Pierwszym krokiem podczas pisania efektywnej kwerendy jest ograniczenie jego zakres, aby jego źródłom danych wymagane. Określanie tabeli jest zawsze preferowana względem uruchomiona usługa search szerokości tekstu, takie jak `search *`. Kwerendy określonej tabeli, uruchom zapytanie nazwę tabeli, tak jak poniżej:
+### <a name="specify-your-data-source"></a>Określanie źródła danych
+Pierwszy krok tworzenia wydajnego zapytania ogranicza swój zakres do wymaganych źródeł danych. Określanie tabeli jest zawsze preferowane w przypadku uruchamiania wyszukiwania szerokiego tekstu, takiego jak `search *`. Aby wykonać zapytanie dotyczące określonej tabeli, uruchom zapytanie z nazwą tabeli w następujący sposób:
 
 ``` Kusto
 requests | ...
 ```
 
-Możesz użyć [wyszukiwania](/azure/kusto/query/searchoperator) do wyszukiwania wartości w wielu kolumnach w określonych tabel przy użyciu zapytania, podobnie do poniższego:
+Możesz użyć [wyszukiwania](/azure/kusto/query/searchoperator) , aby wyszukać wartość w wielu kolumnach w określonych tabelach przy użyciu kwerendy podobnej do następującej:
 
 ``` Kusto
 search in (exceptions) "The server was not found"
@@ -41,14 +35,14 @@ search in (exceptions) "The server was not found"
 search in (exceptions, customEvents) "timeout"
 ```
 
-Użyj [Unii](/azure/kusto/query/unionoperator) kwerendy kilka tabel, podobnie do poniższego:
+Użyj [Union](/azure/kusto/query/unionoperator) , aby wykonać zapytanie do kilku tabel w następujący sposób:
 
 ``` Kusto
 union requests, traces | ...
 ```
 
 ### <a name="specify-a-time-range"></a>Określ zakres czasu
-Należy również ograniczyć zapytanie do zakresu czasu dla danych, która jest wymagana. Domyślnie zapytanie obejmuje dane zebrane w ciągu ostatnich 24 godzin. Możesz zmienić tę opcję w [selektor zakresu czasu](get-started-portal.md#select-a-time-range) lub jawnie dodać do zapytania. Zaleca się dodać filtr czasu natychmiast po nazwę tabeli, tak, aby pozostała część zapytania tylko przetwarza dane, w tym zakresie:
+Należy również ograniczyć zapytanie do wymaganego zakresu czasu danych. Domyślnie zapytanie będzie zawierać dane zebrane w ciągu ostatnich 24 godzin. Można zmienić tę opcję w [selektorze zakresu czasu](get-started-portal.md#select-a-time-range) lub dodać ją jawnie do zapytania. Najlepiej dodać filtr czasu bezpośrednio po nazwie tabeli, aby pozostała część zapytania przetwarzał tylko dane z tego zakresu:
 
 ``` Kusto
 requests | where timestamp > ago(1h)
@@ -56,17 +50,17 @@ requests | where timestamp > ago(1h)
 requests | where timestamp between (ago(1h) .. ago(30m))
 ```
    
-### <a name="get-only-the-latest-records"></a>Pobieranie najnowszych danych
+### <a name="get-only-the-latest-records"></a>Pobierz tylko najnowsze rekordy
 
-Aby zwrócić tylko najnowszych danych, użyj *górnej* zalogowany operatora, jak poniższe zapytanie, które zwraca 10 najnowszych rekordów *ślady* tabeli:
+Aby zwrócić tylko najnowsze rekordy, użyj operatora *Top* , jak w poniższym zapytaniu, które zwraca najnowsze 10 rekordów zarejestrowanych w tabeli *TRACES* :
 
 ``` Kusto
 traces | top 10 by timestamp
 ```
 
    
-### <a name="filter-records"></a>Filtrowanie rekordów
-Aby zapoznać się z tylko dzienniki, które odpowiadają określony warunek, należy użyć *gdzie* operatora, jak następującego zapytania, które zwraca tylko rekordy, w którym _severityLevel_ wartość jest większa niż 0:
+### <a name="filter-records"></a>Filtruj rekordy
+Aby przejrzeć tylko te dzienniki, które pasują do danego warunku, użyj operatora *WHERE* w następującej kwerendzie, która zwraca tylko rekordy, w których wartość _severityLevel_ jest większa niż 0:
 
 ``` Kusto
 traces | where severityLevel > 0
@@ -74,12 +68,12 @@ traces | where severityLevel > 0
 
 
 
-## <a name="string-comparisons"></a>Porównywanie ciągów
-Gdy [oceny ciągi](/azure/kusto/query/datatypes-string-operators), zazwyczaj należy korzystać `has` zamiast `contains` podczas wyszukiwania dla pełnego tokenów. `has` jest bardziej wydajne, ponieważ nie ma on wyszukiwania podciągów.
+## <a name="string-comparisons"></a>Porównania ciągów
+Podczas [oceniania ciągów](/azure/kusto/query/datatypes-string-operators), zazwyczaj należy używać `has` zamiast `contains` podczas wyszukiwania pełnych tokenów. `has` jest wydajniejszy, ponieważ nie musi wyszukiwać podciągów.
 
 ## <a name="returned-columns"></a>Zwrócone kolumny
 
-Użyj [projektu](/azure/kusto/query/projectoperator) zawęzić zestaw kolumn, które są przetwarzane w celu tylko te, które należy:
+Użyj [programu Project](/azure/kusto/query/projectoperator) , aby zawęzić zestaw kolumn przetwarzanych tylko do tych, które są potrzebne:
 
 ``` Kusto
 traces 
@@ -87,9 +81,9 @@ traces
 | ...
 ```
 
-Za pomocą [rozszerzyć](/azure/kusto/query/extendoperator) do obliczania wartości i utworzyć własne kolumny, zazwyczaj będzie bardziej wydajne, aby filtrować według kolumny tabeli.
+Chociaż możesz użyć opcji [Przekrocz](/azure/kusto/query/extendoperator) , aby obliczyć wartości i utworzyć własne kolumny, zwykle bardziej wydajne będzie filtrowanie według kolumny tabeli.
 
-Na przykład pierwszy poniższe zapytanie filtrujące na _operacji\_nazwa_ może być bardziej efektywne niż druga, która tworzy nową _subskrypcji_ kolumny i filtry na nim:
+Na przykład pierwsze zapytanie poniżej, które filtruje w _operacji\_nazwa_ będzie bardziej wydajne niż druga, która tworzy nową kolumnę _subskrypcji_ i filtry na niej:
 
 ``` Kusto
 customEvents 
@@ -100,9 +94,9 @@ customEvents
 | where subscription == "acb"
 ```
 
-## <a name="using-joins"></a>Za pomocą sprzężeń
-Korzystając z [sprzężenia](/azure/kusto/query/joinoperator) operatora, wybierz tabelę, z mniejszą liczbę wierszy w lewej części zapytania.
+## <a name="using-joins"></a>Korzystanie z sprzężeń
+W przypadku korzystania z operatora [Join](/azure/kusto/query/joinoperator) wybierz tabelę zawierającą mniej wierszy, które mają znajdować się po lewej stronie zapytania.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji o najlepszych praktykach zapytań, zobacz [zapytania najlepszych rozwiązań](/azure/kusto/query/best-practices).
+## <a name="next-steps"></a>Następne kroki
+Aby dowiedzieć się więcej o najlepszych rozwiązaniach dotyczących zapytań, zobacz [najlepsze rozwiązania dotyczące zapytań](/azure/kusto/query/best-practices).

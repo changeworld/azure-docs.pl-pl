@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 726ac906b5f237cfc40a8399b7b1bef3071f98f3
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72035669"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901801"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 
@@ -73,7 +73,7 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
    Pole | Opis | Wartość dla samouczka
    ----|---|---
    Nazwa obliczeniowa |Unikatowa nazwa identyfikująca kontekst obliczeniowy.|automl — obliczenia
-   @No__t_1size &nbsp;machine wirtualnych| Wybierz rozmiar maszyny wirtualnej dla obliczenia.|Standard_DS12_V2
+   Rozmiar&nbsp;maszyny wirtualnej&nbsp;| Wybierz rozmiar maszyny wirtualnej dla obliczenia.|Standard_DS12_V2
    Minimalna/Maksymalna liczba węzłów (w ustawieniach zaawansowanych)| Aby profilować dane, musisz określić co najmniej jeden węzeł.|Minimalna liczba węzłów: 1<br>Maksymalna liczba węzłów: 6
 
    >[!NOTE]
@@ -118,7 +118,7 @@ Wykonaj następujące kroki konfiguracji i uruchamiania na stronie docelowej obs
    >[!NOTE]
    > W tym samouczku nie ustawisz oceny metryki lub maksymalnej liczby rdzeni na wartość progową iteracji. Nie można natomiast blokować algorytmów.
    
-   Zaawansowane &nbsp;settings|Opis|@No__t_1tutorial &nbsp;for wartości
+   Zaawansowane &nbsp;settings|Opis|&nbsp;wartości dla&nbsp;— samouczek
    ------|---------|---
    Metryka podstawowa| Metryka oceny, według której będzie mierzony algorytm uczenia maszynowego.|AUC_weighted
    Kryteria wyjścia| Jeśli kryteria są spełnione, zadanie szkolenia zostanie zatrzymane. |Uczenie &nbsp;job &nbsp;time: 5 <br> <br> Maksymalna &nbsp; # &nbsp;of &nbsp;iterations&#58;10
@@ -169,6 +169,8 @@ W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy mod
     
 Teraz masz działającą usługę sieci Web do generowania prognoz.
 
+Przejdź do [**następnych kroków**](#next-steps) , aby dowiedzieć się więcej na temat korzystania z nowej usługi sieci Web i testowania prognoz przy użyciu Power BI wbudowanej Azure Machine Learning obsługi.
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Pliki wdrożeń są większe niż pliki danych i eksperymenty, dzięki czemu są one droższe do przechowywania. Usuń tylko pliki wdrożenia, aby zminimalizować koszty dla konta, lub jeśli chcesz zachować obszar roboczy i pliki eksperymentów. W przeciwnym razie Usuń całą grupę zasobów, jeśli nie planujesz używać żadnego z tych plików.  
@@ -192,7 +194,7 @@ Usuń tylko wystąpienie wdrożenia z Azure Portal, jeśli chcesz zachować grup
 W tym samouczku zautomatyzowanym uczenia maszynowego została użyta Strona docelowa obszaru roboczego do utworzenia i wdrożenia modelu klasyfikacji. Zobacz następujące artykuły, aby uzyskać więcej informacji i następnych kroków:
 
 > [!div class="nextstepaction"]
-> [Korzystanie z usługi sieci Web](how-to-consume-web-service.md)
+> [Korzystanie z usługi sieci Web](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + Dowiedz się więcej na temat [przetwarzania wstępnego](how-to-create-portal-experiments.md#preprocess).
 + Dowiedz się więcej na temat [profilowania danych](how-to-create-portal-experiments.md#profile).

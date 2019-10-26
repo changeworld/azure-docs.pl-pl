@@ -1,99 +1,93 @@
 ---
-title: Optymalizuj środowisko programu SQL Server z usługą Azure Monitor | Dokumentacja firmy Microsoft
-description: Dzięki usłudze Azure Monitor rozwiązania SQL Health Check można użyć do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Zoptymalizuj środowisko SQL Server przy użyciu Azure Monitor | Microsoft Docs
+description: Za pomocą Azure Monitor można użyć rozwiązania sprawdzania kondycji SQL w celu oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/28/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/28/2019
+ms.openlocfilehash: 7808ead7ec4191bdf17e3ab225aeaa909abd7d08
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62120636"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900677"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optymalizowanie środowiska SQL za pomocą rozwiązania sprawdzanie kondycji serwera SQL w usłudze Azure Monitor
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Zoptymalizuj środowisko SQL za pomocą rozwiązania do sprawdzania kondycji SQL Server w Azure Monitor
 
-![Sprawdzanie kondycji SQL symboli](./media/sql-assessment/sql-assessment-symbol.png)
+![Symbol sprawdzania kondycji SQL](./media/sql-assessment/sql-assessment-symbol.png)
 
-Rozwiązanie SQL Health Check można użyć do oceny ryzyka i kondycji środowisk serwera w regularnych odstępach czasu. Ten artykuł pomoże można zainstalować rozwiązania, można wykonać akcje naprawcze o potencjalnych problemach.
+Możesz użyć rozwiązania sprawdzania kondycji SQL, aby ocenić ryzyko i kondycję środowisk serwera w regularnych odstępach czasu. Ten artykuł pomoże Ci zainstalować rozwiązanie, aby móc podejmować działania naprawcze w celu uzyskania potencjalnych problemów.
 
-To rozwiązanie zapewnia priorytetową listą zalecenia dotyczące infrastruktury serwerowej wdrożone. Zalecenia są podzielone w sześciu obszarach zainteresowań, które pomagają w szybkim zrozumieć ryzyko i podejmij działania naprawcze.
+To rozwiązanie zapewnia priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera. Zalecenia są podzielone na sześć obszarów koncentracji, które pomagają szybko zrozumieć ryzyko i podejmować działania naprawcze.
 
-Zalecenia są oparte na wiedzy i doświadczenia zdobyte przez inżynierów firmy Microsoft z tysięcy wizyt klienta. Każdy zalecenie zawiera wskazówki na temat przyczyny problemu może być ważne i jak implementować sugerowane zmiany.
+Zalecenia zostały utworzone na podstawie wiedzy i doświadczenia zdobytych przez inżynierów firmy Microsoft z tysięcy wizyt klientów. Każde zalecenie zawiera wskazówki dotyczące przyczyny problemu oraz sposobu implementacji sugerowanych zmian.
 
-Możesz wybrać obszary koncentracji uwagi, które są najważniejsze dla Twojej organizacji i śledzenie postępów uruchamiania środowiska ryzyka bezpłatne i w dobrej kondycji.
+Możesz wybrać obszary koncentracji, które są najważniejsze dla Twojej organizacji, i śledzić postęp w kierunku działania wolnego i zdrowego środowiska.
 
-Po dodaniu rozwiązania i ocena jest zakończone, podsumowanie informacje o obszarach zainteresowań jest wyświetlany na **SQL Health Check** pulpit nawigacyjny dla infrastruktury w danym środowisku. W poniższych sekcjach opisano sposób użycia informacji o **SQL Health Check** pulpitu nawigacyjnego, w którym można wyświetlać i następnie podjąć zalecane akcje dla infrastruktury programu SQL Server.
+Po dodaniu rozwiązania i zakończeniu oceny informacje podsumowujące dotyczące obszarów koncentracji są wyświetlane na pulpicie nawigacyjnym **sprawdzania kondycji SQL** dla infrastruktury w środowisku. W poniższych sekcjach opisano, jak korzystać z informacji na pulpicie nawigacyjnym **sprawdzania kondycji SQL** , gdzie można wyświetlać i podejmować zalecane akcje dla infrastruktury SQL Server.
 
-![Obraz przedstawiający Kafelek SQL Health Check](./media/sql-assessment/sql-healthcheck-summary-tile.png)
+![obraz kafelka kontroli kondycji SQL](./media/sql-assessment/sql-healthcheck-summary-tile.png)
 
-![Obraz przedstawiający pulpit nawigacyjny z SQL Health Check](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
+![obraz pulpitu nawigacyjnego sprawdzania kondycji SQL](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Rozwiązanie SQL Health Check wymaga obsługiwanej wersji programu .NET Framework 4, zainstalowane na każdym komputerze, który zawiera program Microsoft Monitoring Agent (MMA) zainstalowane.  MMA agent jest używana przez System Center 2016 — Operations Manager i Operations Manager 2012 R2 oraz usługi Azure Monitor.  
-* Rozwiązanie obsługuje program SQL Server w wersji 2012, 2014 i 2016.
-* Obszar roboczy usługi Log Analytics można dodać rozwiązania SQL Health Check z witryny Azure marketplace w witrynie Azure portal.  Aby zainstalować rozwiązania, musi być administratorem lub współautorem w subskrypcji platformy Azure.
+* Rozwiązanie sprawdzania kondycji SQL wymaga obsługiwanej wersji programu .NET Framework 4 zainstalowanej na każdym komputerze, na którym zainstalowano Microsoft Monitoring Agent (MMA).  Agent MMA jest używany przez program System Center 2016 — Operations Manager i Operations Manager 2012 R2 i Azure Monitor.  
+* Rozwiązanie obsługuje SQL Server w wersji 2012, 2014 i 2016.
+* Log Analytics obszar roboczy, aby dodać rozwiązanie sprawdzania kondycji SQL z witryny Azure Marketplace w Azure Portal.  Aby można było zainstalować rozwiązanie, musisz być administratorem lub współautorem w subskrypcji platformy Azure.
 
   > [!NOTE]
-  > Po dodaniu rozwiązania pliku AdvisorAssessment.exe jest dodawane do serwerów przy użyciu agentów. Dane konfiguracji jest odczytać i następnie wysyłane do usługi Azure Monitor w chmurze do przetwarzania. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane.
+  > Po dodaniu rozwiązania do serwerów z agentami zostanie dodany plik AdvisorAssessment. exe. Dane konfiguracji są odczytywane, a następnie wysyłane do Azure Monitor w chmurze w celu przetworzenia. Logika jest stosowana do odebranych danych, a usługa w chmurze rejestruje dane.
   >
   >
 
-Aby przeprowadzić sprawdzenie kondycji serwerów programu SQL Server, wymagają agenta i łączność z usługi Azure Monitor, przy użyciu jednej z następujących obsługiwanych metod:
+Aby przeprowadzić kontrolę kondycji na serwerach SQL Server, wymagają one agenta i łączności Azure Monitor przy użyciu jednej z następujących obsługiwanych metod:
 
-1. Zainstaluj [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) Jeśli serwer nie jest już monitorowane przez program System Center 2016 — Operations Manager lub Operations Manager 2012 R2.
-2. Jeśli grupa zarządzania nie jest zintegrowana z usługą Azure Monitor jest monitorowana przy użyciu programu System Center 2016 — Operations Manager lub Operations Manager 2012 R2, serwer może być wieloadresowe z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal monitorowane przez program Operations Manager.  
-3. W przeciwnym razie, jeśli grupa zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny do zbierania danych przez usługę, wykonaj czynności w ramach [dodać komputery zarządzane z wykorzystaniem agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po włączeniu rozwiązania w Twoim obszarze roboczym.  
+1. Zainstaluj [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) , jeśli serwer nie jest jeszcze monitorowany przez program System Center 2016 — Operations Manager lub Operations Manager 2012 R2.
+2. Jeśli jest on monitorowany w programie System Center 2016 — Operations Manager lub Operations Manager 2012 R2, a grupa zarządzania nie jest zintegrowana z Azure Monitor, serwer może być wieloadresowy z Log Analytics do zbierania danych i przekazywania ich do usługi i nadal monitorowane przez Operations Manager.  
+3. W przeciwnym razie, jeśli grupa zarządzania Operations Manager jest zintegrowana z usługą, należy dodać kontrolery domeny dla zbierania danych przez usługę zgodnie z instrukcjami w obszarze [Dodawanie komputerów zarządzanych przez agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po włączeniu rozwiązania w obszary.  
 
-Agent na serwerze SQL, które raporty z grupą zarządzania programu Operations Manager służy do zbierania danych, przekazuje do jego serwera zarządzania w przypisanej, a następnie będą wysyłane bezpośrednio z serwera zarządzania do usługi Azure Monitor.  Dane nie są zapisywane w bazach danych programu Operations Manager.  
+Agent na SQL Server, który raportuje do Operations Manager grupy zarządzania, zbiera dane, przesyła dalej do przypisanego do niego serwera zarządzania, a następnie jest wysyłany bezpośrednio z serwera zarządzania do Azure Monitor.  Dane nie są zapisywane w Operations Manager bazach danych.  
 
-Jeśli program SQL Server jest monitorowane przez program Operations Manager, należy skonfigurować konto usługi Operations Manager uruchom jako. Zobacz [programu Operations Manager uruchom jako konta usługi Azure Monitor](#operations-manager-run-as-accounts-for-log-analytics) poniżej Aby uzyskać więcej informacji.
+Jeśli SQL Server jest monitorowane przez Operations Manager, należy skonfigurować Operations Manager konto Uruchom jako. Aby uzyskać więcej informacji [, zobacz Operations Manager kont Uruchom jako dla Azure monitor](#operations-manager-run-as-accounts-for-log-analytics) poniżej.
 
-## <a name="sql-health-check-data-collection-details"></a>Sprawdzanie kondycji SQL szczegółów kolekcji danych
-Sprawdzanie kondycji SQL zbiera dane z następujących źródeł przy użyciu agenta, które mają włączone:
+## <a name="sql-health-check-data-collection-details"></a>Szczegóły zbierania danych sprawdzania kondycji SQL
+Sprawdzenie kondycji SQL zbiera dane z następujących źródeł przy użyciu dostępnego agenta:
 
 * Instrumentacja zarządzania Windows (WMI)
 * Rejestr
 * Liczniki wydajności
-* Wyniki widoku dynamicznego zarządzania programu SQL Server
+* SQL Server dynamiczne wyniki widoku zarządzania
 
-Dane są zbierane w programie SQL Server i przekazywane do usługi Log Analytics, co siedem dni.
+Dane są zbierane na SQL Server i przekazywane do Log Analytics co siedem dni.
 
-## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Uruchom jako konta programu Operations Manager dla usługi Log Analytics
-Usługa log Analytics używa grupy zarządzania i agent programu Operations Manager do zbierania i wysyłania danych do usługi Log Analytics. Log Analytics kompilacji od pakietów administracyjnych dla obciążeń w celu zapewnienia wartości — Dodawanie usług. Każde obciążenie wymaga uprawnień specyficznego dla obciążenia do uruchamiania pakietów administracyjnych w innym kontekście bezpieczeństwa, takie jak konto użytkownika domeny. Konieczne jest zapewnienie informacji o poświadczeniach, konfigurując konto Operations Manager uruchom jako.
+## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Operations Manager konta Uruchom jako dla Log Analytics
+Log Analytics używa agenta Operations Manager i grupy zarządzania do zbierania i wysyłania danych do usługi Log Analytics. Log Analytics kompiluje w pakietach administracyjnych dla obciążeń w celu zapewnienia usług dodawania wartości. Każde obciążenie wymaga uprawnień specyficznych dla obciążenia do uruchamiania pakietów administracyjnych w innym kontekście zabezpieczeń, na przykład na koncie użytkownika domeny. Aby podać informacje dotyczące poświadczeń, należy skonfigurować konto Uruchom jako Operations Manager.
 
-Skorzystaj z poniższych informacji, aby ustawić konto Operations Manager uruchom jako dla SQL Health Check.
+Poniższe informacje służą do ustawiania konta Uruchom jako Operations Manager na potrzeby sprawdzania kondycji SQL.
 
-### <a name="set-the-run-as-account-for-sql-health-check"></a>Ustaw konto Uruchom jako dla SQL Health Check
- Jeśli używane są pakiet administracyjny programu SQL Server, należy użyć tej konfiguracji Uruchom jako.
+### <a name="set-the-run-as-account-for-sql-health-check"></a>Ustaw konto Uruchom jako dla kontroli kondycji SQL
+ Jeśli używasz już pakietu administracyjnego SQL Server, należy użyć tej konfiguracji Uruchom jako.
 
-#### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>Aby skonfigurować konto SQL Uruchom jako w konsoli operacje
+#### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>Aby skonfigurować konto Uruchom jako dla programu SQL Server w konsoli operacje
 > [!NOTE]
-> Domyślnie przepływy pracy w pakiecie administracyjnym jest uruchamiany w kontekście zabezpieczeń konta System lokalny. Jeśli używasz programu Microsoft Monitoring Agent podłączony bezpośrednio do usługi zamiast raportowania bezpośrednio do grupy zarządzania programu Operations Manager, należy pominąć kroki od 1 do 5 poniżej i uruchomić T-SQL lub programu PowerShell, określając NT AUTHORITY\SYSTEM jako Nazwa użytkownika.
+> Domyślnie przepływy pracy w pakiecie administracyjnym są uruchamiane w kontekście zabezpieczeń konta systemu lokalnego. Jeśli używasz Microsoft Monitoring Agent połączonego bezpośrednio z usługą, a nie bezpośrednio z grupą zarządzania Operations Manager, Pomiń kroki 1-5 poniżej i uruchom przykład T-SQL lub PowerShell, określając NT NT\SYSTEM jako Nazwa użytkownika.
 >
 >
 
-1. W programie Operations Manager, otwórz konsolę operacje, a następnie kliknij przycisk **administracji**.
-2. W obszarze **Konfiguracja Uruchom jako**, kliknij przycisk **profile**i Otwórz **SQL oceny profilu Uruchom jako**.
-3. Na **konta Uruchom jako** kliknij **Dodaj**.
-4. Wybierz konto Uruchom jako Windows, który zawiera poświadczenia wymagane dla programu SQL Server, lub kliknij przycisk **New** ją utworzyć.
+1. W Operations Manager Otwórz konsolę operacje, a następnie kliknij pozycję **Administracja**.
+2. W obszarze **Konfiguracja Uruchom jako**kliknij pozycję **Profile**, a następnie otwórz **SQL Assessment profil Uruchom jako**.
+3. Na stronie **konta Uruchom jako** kliknij przycisk **Dodaj**.
+4. Wybierz konto Uruchom jako systemu Windows zawierające poświadczenia potrzebne do SQL Server lub kliknij pozycję **Nowy** , aby je utworzyć.
 
    > [!NOTE]
-   > Typ konta Uruchom jako musi być Windows. Konto Uruchom jako musi być również częścią lokalnej grupy administratorów na wszystkich serwerach Windows hostingu wystąpienia programu SQL Server.
+   > Typ konta Uruchom jako musi być w systemie Windows. Konto Uruchom jako musi być również częścią lokalnej grupy administratorów na wszystkich serwerach z systemem Windows hostującym wystąpienia SQL Server.
    >
    >
-5. Kliknij pozycję **Zapisz**.
-6. Modyfikuj, a następnie wykonaj w poniższym przykładzie języka T-SQL w każdym wystąpieniu programu SQL Server do udzielania minimalne uprawnienia wymagane dla konta Uruchom jako do sprawdzania kondycji. Jednakże nie trzeba to zrobić, jeśli konto Uruchom jako jest już częścią roli serwera sysadmin w wystąpieniach programu SQL Server.
+5. Kliknij przycisk **Save** (Zapisz).
+6. Zmodyfikuj i wykonaj następujące przykładowe polecenie T-SQL na każdym wystąpieniu SQL Server, aby przyznać minimalnym uprawnieniam wymaganym dla konta Uruchom jako, aby przeprowadzić kontrolę kondycji. Nie trzeba jednak tego robić, jeśli konto Uruchom jako jest już częścią roli serwera sysadmin w SQL Server wystąpieniach.
 
 ```
     ---
@@ -114,8 +108,8 @@ Skorzystaj z poniższych informacji, aby ustawić konto Operations Manager uruch
 
 ```
 
-#### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>Aby skonfigurować konto SQL Uruchom jako przy użyciu programu Windows PowerShell
-Otwórz okno programu PowerShell i uruchom następujący skrypt, po zaktualizowaniu z informacjami:
+#### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>Aby skonfigurować konto Uruchom jako SQL przy użyciu programu Windows PowerShell
+Otwórz okno programu PowerShell i uruchom następujący skrypt po zaktualizowaniu go wraz z informacjami:
 
 ```
     import-module OperationsManager
@@ -126,105 +120,105 @@ Otwórz okno programu PowerShell i uruchom następujący skrypt, po zaktualizowa
     Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
 ```
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>Zrozumienie, jak zalecenia są uszeregowane według priorytetów
-Każdy zalecenie wprowadzone otrzymuje wartość wagi, która identyfikuje względnego zalecenia. Dziesięć najważniejszych zalecenia są wyświetlane.
+## <a name="understanding-how-recommendations-are-prioritized"></a>Informacje o priorytetach zaleceń
+Każda z zaleceń otrzymuje wartość ważenia, która identyfikuje względną ważność zalecenia. Wyświetlane są tylko dziesięć najważniejszych zaleceń.
 
 ### <a name="how-weights-are-calculated"></a>Jak są obliczane wagi
-Wagi są wartości zagregowane, oparte na trzech kluczowych czynników:
+Wagi są wartościami zagregowanymi opartymi na trzech kluczowych czynnikach:
 
-* *Prawdopodobieństwo* czy problemu może powodować problemy. Większe prawdopodobieństwo równa większe, ogólny wynik zalecenia.
-* *Wpływ* problemu w Twojej organizacji, jeśli to spowodować problem. Większy wpływ równa większe, ogólny wynik zalecenia.
-* *Nakład pracy* wymagane do wykonania zalecenia. Wyższe nakład pracy jest równa mniejszych, ogólny wynik zalecenia.
+* *Prawdopodobieństwo* zidentyfikowania problemu spowoduje problemy. Wyższe prawdopodobieństwo jest równe większym ogólnym wynikom zalecenia.
+* *Wpływ* problemu w organizacji, jeśli spowoduje to wystąpienie problemu. Wyższy wpływ jest równy większym ogólnym wynikom zalecenia.
+* *Nakład pracy* wymagany do wdrożenia zalecenia. Wyższy nakład pracy odpowiada mniejszemu ogólnemu wynikowi zalecenia.
 
-Wagi dla każde zalecenie jest wyrażona jako procent łączny wynik dostępne dla każdego obszaru. Na przykład jeśli zalecenie w obszarze zabezpieczeń i zgodności fokus ma wynik % 5, zaimplementowaniu tej rekomendacji zwiększy ogólnej % ocena, 5 zabezpieczeń i zgodności.
+Waga dla każdego zalecenia jest wyrażona jako wartość procentowa łącznego wyniku dostępnego dla każdego obszaru koncentracji uwagi. Na przykład jeśli zalecenie w obszarze koncentracji zabezpieczenia i zgodność ma wynik 5%, wdrożenie tego zalecenia spowoduje zwiększenie ogólnego oceny zabezpieczeń i zgodności o 5%.
 
-### <a name="focus-areas"></a>Obszarach zainteresowań
-**Zabezpieczenia i zgodność** — ten obszar koncentracji uwagi przedstawiono zalecenia dotyczące potencjalne zagrożenia bezpieczeństwa i naruszeń zasad firmowych i wymagania techniczne, prawne i przepisami zgodności.
+### <a name="focus-areas"></a>Obszary koncentracji uwagi
+**Bezpieczeństwo i zgodność** — w tym obszarze znajdują się zalecenia dotyczące potencjalnych zagrożeń bezpieczeństwa i naruszeń, zasad firmowych oraz wymagań dotyczących zgodności z przepisami technicznymi i prawnymi.
 
-**Dostępność i ciągłość prowadzenia działalności biznesowej** — ten obszar koncentracji uwagi przedstawiono zalecenia dotyczące dostępności usług, odporności infrastruktury i ochrony działalności.
+**Dostępność i ciągłość** działania — w tym obszarze przedstawiono zalecenia dotyczące dostępności usług, odporności infrastruktury i ochrony firmy.
 
-**Wydajność i skalowalność** — ten obszar koncentracji uwagi zawiera zalecenia, aby pomóc Twojej organizacji infrastruktury IT, rozwoju, upewnij się, że środowisko IT spełnia bieżące wymagania dotyczące wydajności i może reagować na zmieniające się infrastruktury wymagania związane z.
+**Wydajność i skalowalność** — ten obszar skupiania zawiera zalecenia ułatwiające rozwój infrastruktury IT w organizacji, upewnij się, że środowisko IT spełnia bieżące wymagania dotyczące wydajności i jest w stanie reagować na zmieniające się potrzeby związane z infrastrukturą.
 
-**Uaktualnianie, wdrażania i migracji** — ten obszar koncentracji uwagi zawiera zalecenia ułatwiające uaktualnienie i migrację oraz wdrożenie programu SQL Server w istniejącej infrastrukturze.
+**Uaktualnianie, migracja i wdrażanie** — w tym obszarze fokusu przedstawiono zalecenia ułatwiające uaktualnianie, migrowanie i wdrażanie SQL Server w istniejącej infrastrukturze.
 
-**Operacje i monitorowanie** — ten obszar koncentracji uwagi zawiera zalecenia, aby usprawnić operacji IT, implementować konserwacji zapobiegawczej i zwiększyć wydajność.
+**Operacje i monitorowanie** — ten obszar koncentracji pokazuje zalecenia ułatwiające usprawnienie operacji IT, implementowanie konserwacji zapobiegawczej i maksymalizowanie wydajności.
 
-**Zarządzanie zmianami i konfiguracją** — ten obszar koncentracji uwagi przedstawiono zalecenia dotyczące ochrony codziennej pracy, należy zapewnić, że zmiany nie negatywny mają wpływ na infrastrukturę, ustanowić procedury sterowania zmianami i do śledzenia i inspekcji konfiguracje systemu.
+**Zarządzanie zmianami i konfiguracją** — ten obszar skupiania zawiera zalecenia pomagające w ochronie codziennych operacji. Upewnij się, że zmiany nie wpłyną negatywnie na infrastrukturę, ustal procedury kontroli zmian i śledź i Przeprowadź inspekcję systemu komputerów.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Należy dążyć do oceniania 100% w każdym obszarze koncentracji uwagi?
-Niekoniecznie. Zalecenia są oparte na wiedzy i doświadczenia zebrane przez inżynierów firmy Microsoft w tysiącach wizyt klienta. Nie dwóch serwerów infrastruktury, są takie same i zalecenia może być bardziej lub mniej istotne dla Ciebie. Na przykład niektóre zalecenia dotyczące zabezpieczeń może być mniej istotne, jeśli maszyny wirtualne nie są połączone z Internetem. Niektóre zalecenia dotyczące dostępności może być mniej istotne dla usługi, które zapewniają zbierania danych ad hoc — niski priorytet i raportowania. Problemy, które są ważne do dojrzałego może być mniej ważne uruchomieniowy. Można zidentyfikować obszary koncentracji uwagi, które mają priorytetów i przyjrzyj się jak wyniki zmieniają się wraz z upływem czasu.
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Czy chcesz zwrócić uwagę na 100% w każdym obszarze fokusu?
+Niekoniecznie. Zalecenia są oparte na wiedzy i doświadczeniach zdobytych przez inżynierów firmy Microsoft w tysiącach wizyt klientów. Jednak żadne dwie infrastruktury serwera nie są takie same, a konkretne zalecenia mogą być bardziej lub mniej odpowiednie dla użytkownika. Na przykład niektóre zalecenia dotyczące zabezpieczeń mogą być mniej istotne, jeśli maszyny wirtualne nie są dostępne w Internecie. Niektóre zalecenia dotyczące dostępności mogą być mniej istotne w przypadku usług zapewniających zbieranie i raportowanie danych ad hoc o niskim priorytecie. Problemy, które są ważne dla dorosłych firm, mogą być mniej ważne do uruchomienia. Możesz chcieć określić, które obszary koncentracji są priorytetami, a następnie sprawdzić, jak wyniki zmieniają się wraz z upływem czasu.
 
-Każdy zalecenie obejmuje wskazówki na temat ważnych. Do oceny, czy implementacja zalecenie jest odpowiednia dla Ciebie, biorąc pod uwagę rodzaj usług IT i potrzeby biznesowe Twojej organizacji, należy skorzystać z poniższych wskazówek.
+Każde zalecenie zawiera wskazówki dotyczące przyczyny tego znaczenia. Należy użyć tych wskazówek, aby sprawdzić, czy wdrożenie zalecenia jest odpowiednie dla Ciebie, ze względu na charakter usług IT i potrzeby biznesowe Twojej organizacji.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Sprawdzanie kondycji zalecenia obszar koncentracji uwagi
-Korzystać z rozwiązania do oceny, w usłudze Azure Monitor, musisz mieć zainstalowane oprogramowanie.  Po jego zainstalowaniu, można wyświetlić podsumowanie zalecenia za pomocą kafelka SQL Health Check na **Przegląd** strony dla usługi Azure Monitor w witrynie Azure portal.
+## <a name="use-health-check-focus-area-recommendations"></a>Użyj zaleceń dotyczących obszaru fokusu sprawdzania kondycji
+Aby móc korzystać z rozwiązania do oceny w Azure Monitor, musisz mieć zainstalowane rozwiązanie.  Po zainstalowaniu programu można wyświetlić podsumowanie zaleceń przy użyciu kafelka Sprawdzenie kondycji SQL na stronie **przegląd** Azure Monitor w Azure Portal.
 
-Wyświetlanie ocen zgodności podsumowania dla Twojej infrastruktury, a następnie wejdź do zalecenia.
+Wyświetl podsumowanie ocen zgodności dla infrastruktury, a następnie zapoznaj się z zaleceniami.
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aby wyświetlić zalecenia dotyczące obszar koncentracji uwagi i podejmij działania naprawcze
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aby wyświetlić zalecenia dotyczące obszaru koncentracji uwagi i podjąć działania naprawcze
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Monitor**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Monitor**.
-3. W **Insights** części menu, wybierz opcję **więcej**.  
-4. Na **Przegląd** kliknij **SQL Health Check** kafelka.
-5. Na **sprawdzanie kondycji** strony, przejrzyj dane podsumowania w jednym z bloków obszaru fokus, a następnie kliknij jedną, aby wyświetlić zalecenia dla tego obszaru.
-6. Na wszystkich stronach obszar koncentracji uwagi można wyświetlać zaleceń z priorytetami wprowadzone dla danego środowiska. Kliknij przycisk rekomendacji w obszarze **wpływ na obiekty** Aby wyświetlić szczegóły dotyczące Dlaczego tworzone są zalecenia.<br><br> ![Obraz przedstawiający zalecenia SQL Health Check](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. Można wykonać akcje naprawcze sugerowane w **sugerowane akcje**. Jeśli element został rozwiązany, oceny nowszych zarejestruje które zalecane akcje zostały wykonane i zwiększy ocenę zgodności. Poprawiony elementy są wyświetlane jako **obiektów przekazywane**.
+3. W sekcji **szczegółowe informacje** w menu wybierz pozycję **więcej**.  
+4. Na stronie **Przegląd** kliknij kafelek **Sprawdzanie kondycji SQL** .
+5. Na stronie **Sprawdzanie kondycji** Przejrzyj informacje podsumowujące na jednym z bloków obszaru fokusu, a następnie kliknij jeden, aby wyświetlić zalecenia dotyczące tego obszaru.
+6. Na dowolnej stronie obszaru fokusu można wyświetlić zalecenia z priorytetami wykonane dla danego środowiska. Kliknij zalecenie w obszarze powiązane **obiekty** , aby wyświetlić szczegóły dotyczące przyczyny tego zalecenia.<br><br> ![obraz zaleceń dotyczących sprawdzania kondycji SQL](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
+7. W **sugerowanych akcjach**można wykonać akcje naprawcze. Gdy element został rozkierowany, późniejsze oceny będą rejestrować te zalecane akcje, a Ocena zgodności ulegnie zwiększeniu. Poprawione elementy są wyświetlane jako **obiekty zakończone**.
 
-## <a name="ignore-recommendations"></a>Zignoruj zalecenia
-Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy, który będzie użyć usługi Azure Monitor, aby zapobiec zaleceń znajdujących się w wynikach oceny.
+## <a name="ignore-recommendations"></a>Ignoruj zalecenia
+Jeśli masz zalecenia, które chcesz zignorować, możesz utworzyć plik tekstowy, który będzie używany przez Azure Monitor, aby zapobiec wyświetlaniu zaleceń w wynikach oceny.
 
-### <a name="to-identify-recommendations-that-you-will-ignore"></a>Aby zidentyfikować zaleceń, które będzie ignorować
-1. W menu usługi Azure Monitor, kliknij **dzienniki**.
-2. Użyj następującego zapytania do zaleceń listy, które nie powiodły, na komputerach w danym środowisku.
+### <a name="to-identify-recommendations-that-you-will-ignore"></a>Aby zidentyfikować rekomendacje, które zostaną zignorowane
+1. W menu Azure Monitor kliknij pozycję **dzienniki**.
+2. Użyj następującego zapytania, aby wyświetlić listę zaleceń, których nie powiodło się w przypadku komputerów w danym środowisku.
 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-    Poniżej przedstawiono zrzut ekranu przedstawiający zapytanie dziennika:<br><br> ![zalecenia nie powiodło się](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    Oto zrzut ekranu przedstawiający zapytanie dziennika:<br><br> ![zalecenia zakończone niepowodzeniem](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
-3. Wybierz zaleceń, które chcesz zignorować. Użyjesz wartości RecommendationId w następnej procedurze.
+3. Wybierz zalecenia, które chcesz zignorować. W następnej procedurze użyjesz wartości dla RecommendationId.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Tworzenie i używanie pliku tekstowego IgnoreRecommendations.txt
-1. Utwórz plik o nazwie IgnoreRecommendations.txt.
-2. Wklej lub wpisz każdy RecommendationId dla każdego zalecenia mają usługi Azure Monitor, aby zignorować w osobnym wierszu i następnie zapisz i zamknij plik.
-3. Umieść plik w następującym folderze na każdym komputerze, którego usługi Azure Monitor, aby zignorować zalecenia.
-   * Na komputerach za pomocą programu Microsoft Monitoring Agent (połączenie bezpośrednio lub za pośrednictwem programu Operations Manager) - *SystemDrive*: \Program Files\Microsoft Monitoring Agent\Agent
-   * Na serwerze zarządzania programu Operations Manager — *SystemDrive*: System Center 2012 R2\Operations Manager\Server \Program Files\Microsoft
-   * Na serwerze zarządzania programu Operations Manager 2016 - *SystemDrive*: \Program Files\Microsoft programu System Center 2016\Operations Manager\Server
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Aby utworzyć plik tekstowy IgnoreRecommendations. txt i korzystać z niego
+1. Utwórz plik o nazwie IgnoreRecommendations. txt.
+2. Wklej lub wpisz każdą RecommendationId każdego zalecenia, które Azure Monitor mają być ignorowane w osobnym wierszu, a następnie Zapisz i zamknij plik.
+3. Umieść plik w następującym folderze na każdym komputerze, na którym ma Azure Monitor ignorowanie zaleceń.
+   * Na komputerach z Microsoft Monitoring Agent (połączone bezpośrednio lub za pomocą Operations Manager)- *dysk_systemowy*: \Program Files\Microsoft monitoring Agent\Agent
+   * Na serwerze zarządzania Operations Manager- *dysk_systemowy*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
+   * Na Operations Manager 2016 Management Server- *dysk_systemowy*: \Program Files\Microsoft System Center 2016 \ Operations Manager\Server
 
-### <a name="to-verify-that-recommendations-are-ignored"></a>Aby zweryfikować, że zalecenia są ignorowane
-1. Po następnego zaplanowanego uruchomienia oceny domyślnie co 7 dni, określonego zalecenia są oznaczone jako ignorowane i nie będą wyświetlane na pulpicie nawigacyjnym oceny.
-2. Aby wyświetlić listę wszystkich zaleceń dotyczących zignorowane, można użyć następujących zapytań przeszukiwania dzienników.
+### <a name="to-verify-that-recommendations-are-ignored"></a>Aby sprawdzić, czy zalecenia są ignorowane
+1. Po następnym zaplanowanym przebiegu oceny domyślnie co 7 dni określone zalecenia są oznaczone jako ignorowane i nie będą wyświetlane na pulpicie nawigacyjnym oceny.
+2. Aby wyświetlić listę wszystkich ignorowanych zaleceń, można użyć poniższych zapytań wyszukiwania w dzienniku.
 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-3. Jeśli użytkownik zdecyduje później chcesz wyświetlone zalecenia zignorowane, Usuń wszystkie pliki IgnoreRecommendations.txt lub RecommendationIDs można usunąć z nich.
+3. Jeśli zdecydujesz się później, aby zobaczyć zignorowane zalecenia, Usuń wszystkie pliki IgnoreRecommendations. txt lub Usuń z nich RecommendationIDs.
 
-## <a name="sql-health-check-solution-faq"></a>Rozwiązanie SQL Health Check — często zadawane pytania
-*Jak często kontrola kondycji czy działa?*
+## <a name="sql-health-check-solution-faq"></a>Sprawdzanie kondycji rozwiązania SQL — często zadawane pytania
+*Jak często jest uruchamiane Sprawdzanie kondycji?*
 
-* Test jest uruchamiany co siedem dni.
+* Sprawdzanie jest przeprowadzane co siedem dni.
 
-*Czy istnieje sposób, aby skonfigurować częstotliwość uruchamiania wyboru?*
+*Czy istnieje sposób skonfigurowania, jak często jest przeprowadzane sprawdzanie?*
 
-* Nie w tej chwili.
+* Obecnie nie.
 
-*Jeśli inny serwer został odnaleziony, po rozwiązania SQL Health Check zostały dodane, zostanie on sprawdzony?*
+*Jeśli po dodaniu rozwiązania sprawdzania kondycji SQL zostanie odnaleziony inny serwer, zostanie on sprawdzony?*
 
-* Tak, gdy okaże się, że jest zaznaczona od czasu, co siedem dni.
+* Tak, po jego znalezieniu jest on sprawdzany w dniu, co siedem dni.
 
-*Jeśli zlikwidować serwer gdy zostanie ono zostać usunięte z kontroli kondycji?*
+*Jeśli serwer zostanie zlikwidowany, gdy zostanie usunięty ze sprawdzenia kondycji?*
 
-* Jeśli serwer nie przedstawi danych dla 3 tygodnie, jego usunięcie.
+* Jeśli serwer nie przesyła danych przez 3 tygodnie, zostanie usunięty.
 
-*Co to jest nazwa procesu, który wykonuje zbierania danych?*
+*Jaka jest nazwa procesu, który wykonuje zbieranie danych?*
 
-* AdvisorAssessment.exe
+* AdvisorAssessment. exe
 
-*Jak długo trwa dla danych, które mają być zbierane?*
+*Jak długo trwa zbieranie danych?*
 
-* Kolekcja rzeczywistych danych na serwerze zajmuje około godzinę. Może trwać dłużej na serwerach, które mają dużą liczbę baz danych lub wystąpienia programu SQL.
+* Rzeczywista zbieranie danych na serwerze trwa około 1 godziny. Może upłynąć dłużej na serwerach, które mają dużą liczbę wystąpień SQL lub baz danych.
 
 *Jakiego typu dane są zbierane?*
 
@@ -232,23 +226,23 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
   * WMI
   * Rejestr
   * Liczniki wydajności
-  * SQL dynamicznych widoków zarządzania (DMV).
+  * Dynamiczne widoki zarządzania SQL (DMV).
 
-*Czy istnieje sposób, aby skonfigurować po zebraniu danych?*
+*Czy istnieje sposób skonfigurowania zbierania danych?*
 
-* Nie w tej chwili.
+* Obecnie nie.
 
-*Dlaczego trzeba skonfigurować konto Uruchom jako?*
+*Dlaczego należy skonfigurować konto Uruchom jako?*
 
-* Dla programu SQL Server są uruchamiane niewielkiej liczby zapytań SQL. Aby je uruchomić należy użyć konta Uruchom jako z uprawnieniami VIEW SERVER STATE do bazy danych SQL.  Ponadto aby kwerendy WMI, wymagane są poświadczenia administratora lokalnego.
+* W przypadku SQL Server uruchamiana jest niewielka liczba zapytań SQL. Aby można było je uruchomić, należy użyć konta Uruchom jako z uprawnieniami do wyświetlania stanu serwera do bazy danych SQL.  Ponadto w celu wysyłania zapytań do usługi WMI wymagane są poświadczenia administratora lokalnego.
 
-*Dlaczego są wyświetlane tylko 10 najlepszych zaleceń?*
+*Dlaczego są wyświetlane tylko 10 najważniejszych zaleceń?*
 
-* Zamiast daje wyczerpujący przytłaczająca listę zadań, zaleca się skupić się na temat zaleceń z priorytetami najpierw. Po ich wykonaniu, dodatkowe zalecenia staną się dostępne. Jeśli wolisz wyświetlić szczegółową listę, możesz wyświetlić wszystkie zalecenia przy użyciu przeszukiwania dzienników usługi Log Analytics.
+* Zamiast zapewniać wyczerpującą listę zadań, zalecamy najpierw skupić się na rozwiązaniu zaleceń z priorytetami. Po wprowadzeniu dodatkowych rekomendacji staną się dostępne. Jeśli wolisz wyświetlić listę Szczegółowa, możesz wyświetlić wszystkie zalecenia, korzystając z przeszukiwania dzienników Log Analytics.
 
-*Czy istnieje sposób, aby zignorować zalecenie?*
+*Czy istnieje sposób na ignorowanie rekomendacji?*
 
-* Tak, zobacz [Zignoruj zalecenia](#ignore-recommendations) powyższej sekcji.
+* Tak, zobacz sekcję [Ignorowanie rekomendacji](#ignore-recommendations) powyżej.
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Zaloguj się zapytania](../log-query/log-query-overview.md) Aby dowiedzieć się, jak analizować szczegółowe dane SQL Health Check i zalecenia.
+## <a name="next-steps"></a>Następne kroki
+* [Rejestruj zapytania](../log-query/log-query-overview.md) , aby dowiedzieć się, jak analizować szczegółowe dane i zalecenia dotyczące kontroli kondycji SQL.

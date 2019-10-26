@@ -1,84 +1,77 @@
 ---
-title: Cennik usługi Azure Network Performance Monitor — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Często zadawane pytania — Azure Network Performance Monitor
-services: monitoring-and-diagnostics
-documentationcenter: na
-author: agummadi
-manager: cherylmc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: log-analytics
+title: Często zadawane pytania dotyczące cen dla systemu Azure Network Performance Monitor | Microsoft Docs
+description: Często zadawane pytania — Network Performance Monitor platformy Azure
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/02/2018
+author: agummadi
 ms.author: agummadi
-ms.openlocfilehash: 68e84d8ac82d5cdd52bf92df858730315514c17c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 04/02/2018
+ms.openlocfilehash: 3d69637c2851764363209ed8dfbe8c24c636ffba
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612854"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898787"
 ---
-# <a name="pricing-changes-for-azure-network-performance-monitor"></a>Zmiany cennika dla usługi Azure Network Performance Monitor
+# <a name="pricing-changes-for-azure-network-performance-monitor"></a>Zmiany cen dla Network Performance Monitor platformy Azure
 
-Firma Microsoft ma wysłuchaliśmy opinii użytkowników i niedawno wprowadziła [nowego cennika](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) dla różnych monitorowanie usług platformy Azure. W tym artykule przechwytuje zmianach cen. związane z platformą Azure [rozwiązania Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) w formie pytań i odpowiedzi łatwych do zrozumienia.
+Poznamy Twoją opinię i ostatnio wprowadzono [nowe środowisko cenowe](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) dla różnych usług monitorowania na platformie Azure. W tym artykule zawarto informacje o zmianach cen związanych z usługą Azure [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (npm) w łatwym do odczytu formacie pytania i odpowiedzi.
 
-Rozwiązanie Network Performance Monitor obejmuje trzy składniki:
+Network Performance Monitor składa się z trzech składników:
 * [Monitor wydajności](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
 * [Monitor punktu końcowego usługi](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [ExpressRoute Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [Monitor ExpressRoute](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
-W poniższych sekcjach opisano zmiany cen dla składników programu NPM.
+W poniższych sekcjach opisano zmiany cen składników NPM.
 
 ## <a name="performance-monitor"></a>Monitorowanie wydajności
 
-**Jak oceniasz użycie monitora wydajności rozliczane starego modelu?**
+**Jak wykorzystanie monitora wydajności jest rozliczane w starym modelu?**
 
-Okres rozliczeniowy NPM zależała od użycia i zużycia dwa składniki:
-* **Węzły**: Wszystkie transakcje syntetyczne pochodzą i zakończyć w węzłach. Węzły są również określane jako agentów lub agentów zarządzania firmy Microsoft.
-* **Dane**: Wyniki badań różnych sieci są przechowywane w obszarze roboczym usługi Log Analytics.
+Naliczanie opłat za NPM było oparte na użyciu i zużyciu dwóch składników:
+* **Węzły**: wszystkie transakcje syntetyczne pochodzą i kończą się w węzłach. Węzły są również określane jako agenci lub agenci zarządzania firmy Microsoft.
+* **Dane**: wyniki różnych testów sieciowych są przechowywane w obszarze roboczym log Analytics.
 
-W obszarze starego modelu rozliczenia została obliczona na podstawie liczby węzłów i ilość wygenerowanych danych. 
+W ramach starego modelu rachunek został obliczony na podstawie liczby węzłów i ilości wygenerowanych danych. 
 
-**Jak jest rozliczane użycie monitora wydajności w nowym modelu?**
+**Jak jest naliczana opłata za użycie monitora wydajności w ramach nowego modelu?**
 
-Tej funkcji Monitora wydajności w programie NPM jest teraz rozliczana oparte na kombinacji: 
+Funkcja monitora wydajności w programie NPM jest teraz rozliczana na podstawie kombinacji: 
 
-* Łącza podsieci monitorowane
+* Monitorowane linki podsieci
 * Ilość danych
 
-**Co to jest link podsieci?**
+**Co to jest link do podsieci?**
 
-Monitor wydajności monitoruje łączność między co najmniej dwóch lokalizacjach sieciowych. Połączenie między grupy węzłów lub agenci w jednej podsieci i Grupa węzłów, w innej podsieci, nosi nazwę łącza podsieci.
+Monitor wydajności monitoruje łączność między dwiema lub większą liczbą lokalizacji w sieci. Połączenie między grupą węzłów lub agentów w jednej podsieci i grupą węzłów w innej podsieci nosi nazwę linku podsieci.
 
-**Masz dwie podsieci, (A i B) i mam kilku agentów dla każdej podsieci. Monitor wydajności monitoruje łączność z wszystkich agentów w podsieci A wszystkich agentów w podsieci B. Zostanie naliczona na podstawie liczby połączeń między podsieci?**
+**Mam dwie podsieci (a i B) i mam kilku agentów w każdej podsieci. Monitor wydajności monitoruje łączność ze wszystkich agentów w podsieci A do wszystkich agentów w podsieci B. Czy zostanie naliczona opłata na podstawie liczby połączeń między podsieciami?**
 
-Nie. Na potrzeby rozliczeń wszystkie połączenia z podsiecią A podsieci B są grupowane w jedno łącze podsieci. Są naliczane dla pojedynczego połączenia. Monitor wydajności w dalszym ciągu monitorować łączność między różnymi agentów w każdej podsieci.
+Nie. W przypadku rozliczeń wszystkie połączenia z podsieci A do podsieci B są pogrupowane w jedno łącze podsieci. Opłaty są naliczane za jedno połączenie. Monitor wydajności będzie kontynuował Monitorowanie łączności między różnymi agentami w każdej podsieci.
 
-**Co to są koszty monitorowania łącza podsieci?**
+**Jakie są koszty monitorowania linku podsieci?**
 
-Koszty monitorowania łącze pojedynczej podsieci przez cały miesiąc, zobacz [polecenie Ping dla siatki](https://azure.microsoft.com/pricing/details/network-watcher/) sekcji.
+Koszt monitorowania pojedynczej podsieci w całym miesiącu znajduje się w sekcji [polecenie ping](https://azure.microsoft.com/pricing/details/network-watcher/) Grid.
 
-**Jakie są opłaty za dane, które generuje monitora wydajności?**
+**Jakie są opłaty za dane generowane przez Monitor wydajności?**
 
-Opłata za pozyskiwanie (przekazywanie danych do obszaru roboczego usługi Log Analytics, w usłudze Azure Monitor, przetwarzania i indeksowanie) jest dostępny na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/log-analytics/) dla usługi Log Analytics w sekcji wprowadzanie danych. Opłata za przechowywanie danych (czyli dane zachowane w opcji klienta, poza pierwszym miesiącu) jest dostępna również na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/log-analytics/), w sekcji przechowywania danych.
+Opłata za pozyskiwanie (przekazywanie danych do Log Analytics obszaru roboczego w Azure Monitor, przetwarzania i indeksowania) jest dostępna na [stronie cennika](https://azure.microsoft.com/pricing/details/log-analytics/) dla log Analytics, w sekcji pozyskiwanie danych. Opłata za przechowywanie danych (czyli dane przechowywane w opcji klienta poza pierwszym miesiącem) jest również dostępna na [stronie cennika](https://azure.microsoft.com/pricing/details/log-analytics/)w sekcji przechowywanie danych.
 
 
-## <a name="expressroute-monitor"></a>ExpressRoute Monitor
+## <a name="expressroute-monitor"></a>Monitor ExpressRoute
 
-**Jakie są opłaty za użycie przez Monitor usługi ExpressRoute?**
+**Jakie są opłaty za użycie monitora ExpressRoute?**
 
-Opłaty za Monitor usługi ExpressRoute są rozliczani według ilości danych wygenerowanych podczas monitorowania. Aby uzyskać więcej informacji zobacz sekcję "kiedy opłaty za dane, które generuje monitora wydajności?"
+Opłaty za monitor ExpressRoute są naliczane na podstawie ilości danych wygenerowanych podczas monitorowania. Aby uzyskać więcej informacji, zobacz "Jakie są opłaty za dane generowane przez Monitor wydajności?".
 
-**Monitor usługi ExpressRoute I służy do monitorowania wielu obwodów usługi ExpressRoute. Czy jest naliczana na podstawie liczby monitorowane obwody?**
+**Używam monitora ExpressRoute do monitorowania wielu obwodów usługi ExpressRoute. Czy opłaty są naliczane na podstawie liczby monitorowanych obwodów?**
 
-Nie są naliczane na podstawie liczba obwodów lub typu komunikacji równorzędnej (na przykład prywatnej komunikacji równorzędnej, komunikacja równorzędna firmy Microsoft). Opłaty są naliczane zależnie od ilości danych, jak wyjaśniono wcześniej.
+Opłata nie jest naliczana na podstawie liczby obwodów lub typu komunikacji równorzędnej (na przykład prywatnej komunikacji równorzędnej, komunikacji równorzędnej firmy Microsoft). Opłata jest naliczana na podstawie ilości danych, jak wyjaśniono wcześniej.
 
-**Co to jest ilość danych generowane, gdy usługa ExpressRoute monitoruje jednego obwodu?**
+**Jaka jest ilość danych generowanych podczas ExpressRoute monitorowania pojedynczego obwodu?**
 
-Ilość danych generowanych na miesiąc, gdy usługa ExpressRoute monitoruje prywatne połączenie komunikacji równorzędnej, jest następujący:
+Ilość wygenerowanych danych miesięcznie, gdy ExpressRoute monitoruje połączenie prywatne komunikacji równorzędnej:
 
 |Percentyl      |Dane/miesiąc (MB)|
 | :---:          |           ---:|
@@ -90,34 +83,34 @@ Ilość danych generowanych na miesiąc, gdy usługa ExpressRoute monitoruje pry
 |95<sup>th</sup> |           1560|
 
 
-Zgodnie z poniższą tabelą klientów na 50. percentyl płać 192 MB danych. W USD 2,30 USD/GB w pierwszym miesiącu, koszt monitorowania obwodu jest USD $0.43 (= 192 * 2,30 / 1024).
+Zgodnie z tą tabelą Klienci z 50. percentyla są obciążani za 192 MB danych. W cenie USD 2.30/GB za pierwszy miesiąc koszt związany z monitorowaniem obwodu to $0,43 USD (= 192 * 2,30/1024).
 
-**Co to są przyczyny różnice w ilości danych?**
+**Jakie są przyczyny różnic w ilości danych?**
 
-Ilość danych wygenerowanych monitorowania zależy od wielu czynników, takich jak:
-* Liczba agentów. Zwiększa dokładność izolację awarii wraz ze wzrostem liczby agentów.
+Ilość wygenerowanych danych monitorowania zależy od kilku czynników, takich jak:
+* Liczba agentów. Dokładność izolacji błędów zwiększa się wraz ze wzrostem liczby agentów.
 * Liczba przeskoków w sieci.
-* Liczba ścieżek między źródłową i docelową.
+* Liczba ścieżek między źródłem a miejscem docelowym.
 
-Klienci w wyższej percentyle (w powyższej tabeli) zwykle monitorować jego obwodów z kilku punktów firmę vantage w swoich sieciach lokalnych. Wielu agentów są umieszczane również bardziej w sieci, dalej od routera krawędź dostawcy usługi. Agenci często są umieszczane w kilku lokacjach użytkownika, gałęzie i regałów w centrach danych.
+Klienci o wyższych percentylach (w powyższej tabeli) zwykle monitorują swoje obwody z kilku punktów Vantage w sieci lokalnej. Wiele agentów jest również umieszczonych w sieci, w dalszej odległości od routera brzegowego dostawcy usług. Agenci są często umieszczani w kilku lokacjach użytkowników, gałęziach i stojakach w centrach danych.
 
 ## <a name="service-endpoint-monitor"></a>Monitor punktu końcowego usługi
 
-**Jakie są opłaty za korzystanie z monitorowania punktu końcowego usługi?**
+**Jakie opłaty są naliczane za użycie monitora punktu końcowego usługi?**
 
-Opłaty za użycie monitorowania punktu końcowego usługi są obliczane na podstawie:
+Opłaty za użycie monitora punktu końcowego usługi są obliczane na podstawie:
 * Liczba połączeń
 * Ilość danych
 
 **Co to jest połączenie?**
 
-Połączenie jest test osiągalności jeden punkt końcowy (adres URL lub sieci usługi) z jednego agenta przez cały miesiąc. Na przykład monitorowania połączenia do bing.com z trzech agentów definiuje trzy połączenia.
+Połączenie jest testem osiągalności do jednego punktu końcowego (URL lub usługi sieciowej) z jednego agenta przez cały miesiąc. Na przykład monitorowanie połączenia z bing.com od trzech agentów stanowi trzy połączenia.
 
-**Co to są kosztów monitorowania punktu końcowego usługi?**
+**Jakie są koszty monitora punktu końcowego usługi?**
 
-Zapoznaj się [monitorowanie połączeń](https://azure.microsoft.com/pricing/details/network-watcher/) części kosztu monitorowania punktu końcowego dla całego miesiąca. Opłaty za dane są dostępne na [stronę z cennikiem](https://azure.microsoft.com/pricing/details/log-analytics/) dla usługi Log Analytics w sekcji wprowadzanie danych.
+Zapoznaj się z sekcją [monitorowanie połączeń](https://azure.microsoft.com/pricing/details/network-watcher/) , aby uzyskać koszt monitorowania punktu końcowego przez cały miesiąc. Opłaty za dane są dostępne na [stronie cennika](https://azure.microsoft.com/pricing/details/log-analytics/) log Analytics w sekcji pozyskiwanie danych.
 
-## <a name="references"></a>Odwołania
+## <a name="references"></a>Informacje
 
-[Log Analytics, często zadawane pytania dotyczące cennika](https://azure.microsoft.com/pricing/details/log-analytics/): W sekcji często zadawane pytania dotyczące zawiera informacje o warstwie bezpłatnej, za węzeł, a także inne informacje o cenach.
+[Log Analytics — często zadawane pytania](https://azure.microsoft.com/pricing/details/log-analytics/): sekcja często zadawanych pytań zawiera informacje o cenach za węzeł warstwy Bezpłatna i innych.
 

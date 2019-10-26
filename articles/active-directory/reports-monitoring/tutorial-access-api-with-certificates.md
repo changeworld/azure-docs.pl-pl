@@ -1,5 +1,5 @@
 ---
-title: Samouczek pobieranie danych przy użyciu interfejsu API raportowania usługi Azure AD z certyfikatami | Microsoft Docs
+title: Samouczek dotyczący interfejsu API raportowania usługi AD z certyfikatami | Microsoft Docs
 description: W tym samouczku wyjaśniono, jak używać interfejsu API raportowania usługi Azure AD przy użyciu poświadczeń certyfikatu w celu pobrania danych z katalogów bez interwencji użytkownika.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdab5bc4be366f778213127a307fb4fcf7cf38a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3fe5f2a6d1957a544c63cb8a7c223ba9734786f8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989480"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895127"
 ---
-# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Samouczek: Pobieranie danych przy użyciu interfejsu API raportowania usługi Azure Active Directory z certyfikatami
+# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Samouczek: pobieranie danych przy użyciu interfejsu API raportowania Azure Active Directory z certyfikatami
 
 [Interfejsy API raportowania usługi Azure Active Directory (Azure AD)](concept-reporting-api.md) umożliwiają dostęp programowy do danych za pomocą zestawu interfejsów API opartych na architekturze REST. Te interfejsy API można wywoływać przy użyciu różnych języków i narzędzi do programowania. Jeśli chcesz uzyskać dostęp do interfejsu API raportowania usługi Azure AD bez interwencji użytkownika, musisz skonfigurować dostęp do korzystania z certyfikatów.
 
@@ -44,7 +44,7 @@ W ramach tego samouczka nauczysz się używać certyfikatu testowego w celu uzys
     - Tokeny dostępu użytkownika, kluczy aplikacji i certyfikatów korzystających z bibliotek ADAL
     - Stronicowane wyniki obsługi interfejsu API programu Graph
 
-6. Jeśli po raz pierwszy używasz modułu **Install-MSCloudIdUtilsModule**, w przeciwnym razie zaimportuj go za pomocą polecenia **Import-Module** programu PowerShell. Twoja sesja powinna wyglądać podobnie do tego ekranu: ![Program Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Jeśli po raz pierwszy używasz modułu **Install-MSCloudIdUtilsModule**, w przeciwnym razie zaimportuj go za pomocą polecenia **Import-Module** programu PowerShell. Twoja sesja powinna wyglądać podobnie do tego ekranu: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Użyj polecenia **New-SelfSignedCertificate** programu PowerShell polecenia cmdlet, aby utworzyć certyfikat testowy.
 
@@ -63,7 +63,7 @@ W ramach tego samouczka nauczysz się używać certyfikatu testowego w celu uzys
 
 1. Przejdź do [Azure Portal](https://portal.azure.com), wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **rejestracje aplikacji** i wybierz aplikację z listy. 
 
-2. Wybierz pozycję **Ustawienia** > **klucze** i wybierz pozycję **Przekaż klucz publiczny**.
+2. Wybierz pozycję **ustawienia** > **klucze** i wybierz pozycję **Przekaż klucz publiczny**.
 
 3. Wybierz plik certyfikatu z poprzedniego kroku, a następnie wybierz pozycję **Zapisz**. 
 

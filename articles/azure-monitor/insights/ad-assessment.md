@@ -1,24 +1,18 @@
 ---
 title: Zoptymalizuj Środowisko Active Directory przy użyciu Azure Monitor | Microsoft Docs
 description: Możesz użyć rozwiązania do sprawdzania kondycji Active Directory, aby ocenić ryzyko i kondycję środowisk w regularnych odstępach czasu.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/10/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: a0ffe7b8726ee78ca81751687bebd3c435365576
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/10/2019
+ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883085"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899201"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Zoptymalizuj Środowisko Active Directory przy użyciu rozwiązania do sprawdzania kondycji Active Directory w Azure Monitor
 
@@ -47,7 +41,7 @@ Po dodaniu rozwiązania i zakończeniu sprawdzania informacje podsumowujące dot
 * Log Analytics obszar roboczy, aby dodać rozwiązanie Active Directory Sprawdzanie kondycji z witryny Azure Marketplace w Azure Portal. Nie jest wymagana żadna dodatkowa konfiguracja.
 
   > [!NOTE]
-  > Po dodaniu rozwiązania do serwerów z agentami zostanie dodany plik AdvisorAssessment. exe. Dane konfiguracji są odczytywane, a następnie wysyłane do Azure Monitor w chmurze w celu przetworzenia. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane.
+  > Po dodaniu rozwiązania do serwerów z agentami zostanie dodany plik AdvisorAssessment. exe. Dane konfiguracji są odczytywane, a następnie wysyłane do Azure Monitor w chmurze w celu przetworzenia. Logika jest stosowana do odebranych danych, a usługa w chmurze rejestruje dane.
   >
   >
 
@@ -125,7 +119,7 @@ Wyświetl podsumowanie ocen zgodności dla infrastruktury, a następnie zapoznaj
 
     ![obraz przedstawiający zalecenia dotyczące sprawdzania kondycji](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 
-4. W sugerowanych akcjach można wykonać akcjenaprawcze. Gdy element został rozkierowany, w późniejszych wersjach oceny są uwzględniane zalecane akcje i zostanie zwiększony wynik oceny zgodności. Poprawione elementy są wyświetlane jako **obiekty zakończone**.
+4. W **sugerowanych akcjach**można wykonać akcje naprawcze. Gdy element został rozkierowany, w późniejszych wersjach oceny są uwzględniane zalecane akcje i zostanie zwiększony wynik oceny zgodności. Poprawione elementy są wyświetlane jako **obiekty zakończone**.
 
 ## <a name="ignore-recommendations"></a>Ignoruj zalecenia
 
@@ -179,7 +173,7 @@ Po następnym zaplanowanym zaplanowaniu kondycji domyślnie co siedem dni okreś
 
 *Czy istnieje sposób skonfigurowania, jak często jest przeprowadzane sprawdzanie kondycji?*
 
-* Nie w tej chwili.
+* Obecnie nie.
 
 *Jeśli po dodaniu rozwiązania do sprawdzania kondycji zostanie odnaleziony inny serwer dla programu, zostanie on sprawdzony*
 
@@ -191,7 +185,7 @@ Po następnym zaplanowanym zaplanowaniu kondycji domyślnie co siedem dni okreś
 
 *Jaka jest nazwa procesu, który wykonuje zbieranie danych?*
 
-* AdvisorAssessment.exe
+* AdvisorAssessment. exe
 
 *Jak długo trwa zbieranie danych?*
 
@@ -199,7 +193,7 @@ Po następnym zaplanowanym zaplanowaniu kondycji domyślnie co siedem dni okreś
 
 *Czy istnieje sposób skonfigurowania zbierania danych?*
 
-* Nie w tej chwili.
+* Obecnie nie.
 
 *Dlaczego są wyświetlane tylko 10 najważniejszych zaleceń?*
 

@@ -10,16 +10,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: jehollan
-ms.openlocfilehash: b581d7c9b5876813e36ebbf41be713b44dd97735
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8e07032f84ead4bb003176af84cb4c731819ffa4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096094"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900066"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions w Kubernetes z KEDA
 
-Środowisko uruchomieniowe Azure Functions zapewnia elastyczność hostingu, gdzie i w jaki sposób.  [KEDA](https://github.com/kedacore/kore) (Kubernetes automatyczne skalowanie oparte na zdarzeniach) bezproblemowo dopasowuje się do środowiska uruchomieniowego Azure Functions i narzędzi, aby zapewnić skalowanie oparte na zdarzeniach w Kubernetes.
+Środowisko uruchomieniowe Azure Functions zapewnia elastyczność hostingu, gdzie i w jaki sposób.  Pary [KEDA](https://github.com/kedacore/kore) (Skalowanie automatyczne oparte na zdarzeniach Kubernetes) bezproblemowo z Azure Functions środowiska uruchomieniowego i narzędzi, aby zapewnić skalowanie oparte na zdarzeniach w Kubernetes.
 
 ## <a name="how-kubernetes-based-functions-work"></a>Jak działają funkcje oparte na Kubernetes
 
@@ -33,7 +33,7 @@ Aby uruchomić funkcje w klastrze Kubernetes, należy zainstalować składnik KE
 
 ### <a name="installing-with-the-azure-functions-core-tools"></a>Instalowanie przy użyciu Azure Functions Core Tools
 
-Domyślnie podstawowe narzędzia instalują zarówno składniki KEDA, jak i Osiris, które obsługują odpowiednio skalowanie oparte na zdarzeniach i HTTP.  Instalacja używa `kubectl` programu uruchomionego w bieżącym kontekście.
+Domyślnie podstawowe narzędzia instalują zarówno składniki KEDA, jak i Osiris, które obsługują odpowiednio skalowanie oparte na zdarzeniach i HTTP.  Instalacja używa `kubectl` uruchomione w bieżącym kontekście.
 
 Zainstaluj KEDA w klastrze, uruchamiając następujące polecenie instalacji:
 
@@ -51,17 +51,24 @@ func init --docker-only
 
 Aby skompilować obraz i wdrożyć funkcje w usłudze Kubernetes, uruchom następujące polecenie:
 
+> [!NOTE]
+> Podstawowe narzędzia będą korzystać z interfejsu wiersza polecenia platformy Docker do kompilowania i publikowania obrazu. Upewnij się, że Aparat Docker został już zainstalowany i połączony z kontem przy użyciu `docker login`.
+
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
 
-> Zamień `<name-of-function-deployment>` na nazwę aplikacji funkcji.
+> Zastąp `<name-of-function-deployment>` nazwą aplikacji funkcji.
 
-Spowoduje to utworzenie zasobu `Deployment` Kubernetes `ScaledObject` , zasobu i `Secrets` `local.settings.json` , zawierającego zmienne środowiskowe zaimportowane z pliku.
+Spowoduje to utworzenie zasobu Kubernetes `Deployment`, zasobu `ScaledObject` i `Secrets`, który zawiera zmienne środowiskowe zaimportowane z pliku `local.settings.json`.
+
+### <a name="deploying-a-function-app-from-a-private-registry"></a>Wdrażanie aplikacji funkcji z rejestru prywatnego
+
+Powyższy przepływ działa również w przypadku rejestrów prywatnych.  Jeśli pobierasz obraz kontenera z rejestru prywatnego, Dołącz flagę `--pull-secret`, która odwołuje się do wpisu tajnego Kubernetes z poświadczeniami rejestru prywatnego podczas uruchamiania `func kubernetes deploy`.
 
 ## <a name="removing-a-function-app-from-kubernetes"></a>Usuwanie aplikacji funkcji z Kubernetes
 
-Po wdrożeniu można usunąć funkcję, usuwając skojarzone `Deployment`, `ScaledObject` `Secrets` utworzone.
+Po wdrożeniu można usunąć funkcję, usuwając skojarzone `Deployment`, `ScaledObject``Secrets` utworzone.
 
 ```cli
 kubectl delete deploy <name-of-function-deployment>
@@ -87,7 +94,7 @@ KEDA jest obecnie w wersji beta z obsługą następujących wyzwalaczy usługi A
 * [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji, zobacz następujące zasoby:
+Więcej informacji zawierają następujące zasoby:
 
 * [Tworzenie funkcji przy użyciu obrazu niestandardowego](functions-create-function-linux-custom-image.md)
 * [Kodowanie i testowanie usługi Azure Functions lokalnie](functions-develop-local.md)

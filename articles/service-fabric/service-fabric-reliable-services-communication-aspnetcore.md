@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 39e6273382133493a77321deed2baec4718bc912
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b2a1b1426af3e72756a7a85a173ef4a2a5671b02
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383662"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900192"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core na platformie Azure Service Fabric Reliable Services
 
@@ -340,6 +340,9 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 
 W tej konfiguracji `KestrelCommunicationListener` automatycznie wybierze nieużywany port z zakresu portów aplikacji.
 
+W przypadku protokołu HTTPS powinien mieć punkt końcowy skonfigurowany przy użyciu protokołu HTTPS bez portu określonego w pliku servicemanifest. XML i przekazać nazwę punktu końcowego do konstruktora KestrelCommunicationListener.
+
+
 ## <a name="service-fabric-configuration-provider"></a>Dostawca konfiguracji Service Fabric
 Konfiguracja aplikacji w ASP.NET Core jest oparta na parach klucz-wartość ustanowionych przez dostawcę konfiguracji. Zapoznaj się z [konfiguracją w ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/) , aby dowiedzieć się więcej na temat ogólnej obsługi konfiguracji ASP.NET Core.
 
@@ -513,7 +516,7 @@ Usługi stanowe, które są wywoływane tylko z poziomu klastra, powinny używa�
 
 |  |  | **Uwagi** |
 | --- | --- | --- |
-| Serwer sieci Web | Kestrel | @No__t-0 nie jest przeznaczona do użycia przez usługi stanowe, w których repliki współużytkują proces hosta. |
+| Serwer sieci Web | Kestrel | `HttpSysCommunicationListener` nie jest przeznaczona do użycia przez usługi stanowe, w których repliki współużytkują proces hosta. |
 | Konfiguracja portu | przypisane dynamicznie | Wielokrotne repliki usługi stanowej mogą współużytkować proces hosta lub system operacyjny hosta i w ten sposób potrzebować unikatowych portów. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | W przypadku dynamicznego przypisywania portów to ustawienie uniemożliwia opisywany wcześniej problem dotyczący tożsamości. |
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/21/2019
-ms.openlocfilehash: 1e847fd2ac39c93b28925cff3fe0a4c17a69da9f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.date: 10/23/2019
+ms.openlocfilehash: bb47f0d2e02ce5cd055ebaae2e2a2f33ce77cd43
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750469"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901400"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
@@ -65,7 +65,7 @@ Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości baz
   Można umieścić kilka pojedynczych baz danych na tym samym serwerze SQL Database w tej samej grupie trybu failover. W przypadku dodania pojedynczej bazy danych do grupy trybu failover automatycznie zostanie utworzona pomocnicza baza danych z tą samą wersją i rozmiarem obliczeniowym na serwerze pomocniczym.  Ten serwer został określony podczas tworzenia grupy trybu failover. Po dodaniu bazy danych, która ma już pomocniczą bazę danych na serwerze pomocniczym, łącze replikacji geograficznej jest dziedziczone przez grupę. Po dodaniu bazy danych, która ma już pomocniczą bazę danych na serwerze, który nie jest częścią grupy trybu failover, na serwerze pomocniczym zostanie utworzony nowy element pomocniczy.
   
   > [!IMPORTANT]
-  > W wystąpieniu zarządzanym są replikowane wszystkie bazy danych użytkowników. Nie można wybrać podzestawu baz danych użytkowników na potrzeby replikacji w grupie trybu failover.
+  > Upewnij się, że serwer pomocniczy nie ma bazy danych o tej samej nazwie, chyba że jest to istniejąca pomocnicza baza danych. W grupach trybu failover dla wystąpienia zarządzanego są replikowane wszystkie bazy danych użytkowników. Nie można wybrać podzestawu baz danych użytkowników na potrzeby replikacji w grupie trybu failover.
 
 - **Dodawanie baz danych w puli elastycznej do grupy trybu failover**
 
@@ -89,6 +89,9 @@ Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości baz
 - **Zasady automatycznego trybu failover**
 
   Domyślnie grupa trybu failover jest konfigurowana z użyciem zasad automatycznego trybu failover. Usługa SQL Database wyzwala tryb failover po wykryciu awarii i wygaśnięciu okresu prolongaty. System musi sprawdzić, czy nie można zmniejszyć przestoju dzięki wbudowanej [infrastrukturze wysokiej dostępności usługi SQL Database](sql-database-high-availability.md) ze względu na skalę wpływu. Jeśli chcesz kontrolować przepływ pracy trybu failover z poziomu aplikacji, możesz wyłączyć automatyczne przełączanie do trybu failover.
+  
+  > [!NOTE]
+  > Ze względu na to, że weryfikacja skali przestoju i szybkość, z jaką można ją ograniczyć, wiąże się z działaniami ludzkimi przez zespół operacyjny, okres prolongaty nie może być ustawiony poniżej jednej godziny.  To ograniczenie ma zastosowanie do wszystkich baz danych w grupie trybu failover niezależnie od ich stanu synchronizacji danych. 
 
 - **Zasady trybu failover tylko do odczytu**
 
@@ -150,7 +153,7 @@ Podczas projektowania usługi z zachowaniem ciągłości działania postępuj zg
   Można utworzyć co najmniej jedną grupę trybu failover między dwoma serwerami w różnych regionach (serwery podstawowe i pomocnicze). Każda grupa może zawierać jedną lub kilka baz danych, które są odzyskiwane jako jednostki na wypadek, a niektóre podstawowe bazy danych staną się niedostępne z powodu awarii w regionie podstawowym. Grupa trybu failover tworzy geograficzną i pomocniczą bazę danych z tym samym celem usługi co podstawowy. W przypadku dodania istniejącej relacji replikacji geograficznej do grupy trybu failover upewnij się, że dla elementu podrzędnego jest skonfigurowana ta sama warstwa usługi i rozmiar obliczeń jako podstawowa.
   
   > [!IMPORTANT]
-  > Tworzenie grup trybu failover między dwoma serwerami w różnych subskrypcjach nie jest obecnie obsługiwane w przypadku pojedynczych baz danych i pul elastycznych.
+  > Tworzenie grup trybu failover między dwoma serwerami w różnych subskrypcjach nie jest obecnie obsługiwane w przypadku pojedynczych baz danych i pul elastycznych. Przeniesienie podstawowego lub pomocniczego serwera do innej subskrypcji po utworzeniu grupy trybu failover może spowodować błędy żądań trybu failover i innych operacji.
 
 - **Używanie odbiornika do odczytu i zapisu w obciążeniu OLTP**
 
@@ -326,7 +329,7 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
-| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |To polecenie tworzy grupę trybu failover i rejestruje ją na serwerze podstawowym i pomocniczym|
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup) |To polecenie tworzy grupę trybu failover i rejestruje ją na serwerze podstawowym i pomocniczym|
 | [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Usuwa grupę trybu failover z serwera i usuwa wszystkie pomocnicze bazy danych uwzględnione w grupie |
 | [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Pobiera konfigurację grupy trybu failover |
 | [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Modyfikuje konfigurację grupy trybu failover |
@@ -342,7 +345,7 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
-| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |To polecenie tworzy grupę trybu failover i rejestruje ją na serwerze podstawowym i pomocniczym|
+| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |To polecenie tworzy grupę trybu failover i rejestruje ją na serwerze podstawowym i pomocniczym|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Modyfikuje konfigurację grupy trybu failover|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Pobiera konfigurację grupy trybu failover|
 | [Przełącznik-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Wyzwala tryb failover grupy trybu failover na serwerze pomocniczym|

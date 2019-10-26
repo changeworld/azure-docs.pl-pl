@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: f1dfbbc6036273e6ddf724e185e23073e7a78505
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: HT
+ms.openlocfilehash: 6d40f7d81faa77a48a32aadefdf44ed89e184efb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809124"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900813"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Samouczek: część 2 — Wyświetlanie rozesłanych komunikatów
 
@@ -116,9 +116,9 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi Stream Analytics
 
-4. W obszarze **topologia zadania**wybierz pozycję **dane wejściowe**.
+1. W obszarze **topologia zadania**wybierz pozycję **dane wejściowe**.
 
-5. W okienku **dane** wejściowe wybierz pozycję **Dodaj strumień wejściowy** i wybierz pozycję IoT Hub. Na wyświetlonym ekranie wypełnij następujące pola:
+2. W okienku **dane** wejściowe wybierz pozycję **Dodaj strumień wejściowy** i wybierz pozycję IoT Hub. Na wyświetlonym ekranie wypełnij następujące pola:
 
    **Alias wejściowy**: w tym samouczku jest używany alias **contosoinputs**.
 
@@ -138,7 +138,7 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
    ![Konfigurowanie danych wejściowych dla zadania usługi Stream Analytics](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
-6. Wybierz pozycję **Zapisz**.
+3. Wybierz pozycję **Zapisz**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Dodawanie danych wyjściowych do zadania usługi Stream Analytics
 

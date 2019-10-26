@@ -1,77 +1,72 @@
 ---
-title: Wyświetlanie i analizowanie danych w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Pomoc dla użytkowników przeszukiwania dzienników usługi Log Analytics do usługi Azure Monitor dziennika zapytań środowiska.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Wyświetlanie i analizowanie danych na platformie Azure Log Analytics | Microsoft Docs
+description: Pomoc dla użytkowników przeszukiwania dzienników Log Analytics w celu Azure Monitor środowiska zapytania dziennika.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/16/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: dc3a754bd1a9f689f4b24b9ee2c1e4cbc0611684
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/16/2019
+ms.openlocfilehash: b738d532cb458506ca50a07dea11687040f99e02
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60519905"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900341"
 ---
-# <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Przejście ze przeszukiwania dzienników usługi Log Analytics do dzienników usługi Azure Monitor
-Nowe środowisko w celu analizowania dzienników usługi Azure Monitor ostatnio zamieniono przeszukiwania dzienników w usłudze Log Analytics. Strona wyszukiwania dziennika jest obecnie dostępna za pośrednictwem **dzienniki (wersja klasyczna)** elementu menu w **obszarów roboczych usługi Log Analytics** strony w platformie Azure, ale portalu zostaną usunięte 15 lutego 2019 r. W tym artykule opisano różnice między obydwoma środowiskami, aby ułatwić przejście z wyszukiwania w dziennikach. 
+# <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Przejście z przeszukiwania dzienników Log Analytics do dzienników Azure Monitor
+Przeszukiwanie dzienników w Log Analytics zostało ostatnio zastąpione nowym doświadczeniem do analizowania dzienników Azure Monitor. Strona przeszukiwania dzienników jest obecnie nadal dostępna za pomocą elementu menu **dzienniki (klasyczne)** na stronie **obszary robocze log Analytics** w Azure Portal, ale zostanie usunięta 15 lutego 2019. W tym artykule opisano różnice między tymi dwoma środowiskami, które ułatwiają przejście z przeszukiwania dzienników. 
 
-## <a name="filter-results-of-a-query"></a>Filtrowanie wyników zapytania
-Podczas wyszukiwania dziennika listy filtrów są wyświetlane jako wyniki wyszukiwania są dostarczane. Wybierz filtr, a następnie kliknij przycisk **Zastosuj** Aby uruchomić zapytanie za pomocą wybranego filtru.
+## <a name="filter-results-of-a-query"></a>Filtruj wyniki zapytania
+W przeszukiwaniu dzienników Lista filtrów jest wyświetlana w miarę dostarczania wyników wyszukiwania. Wybierz filtr, a następnie kliknij przycisk **Zastosuj** , aby uruchomić zapytanie z wybranym filtrem.
 
-![Filtr wyszukiwania dziennika](media/log-search-transition/filter-log-search.png)
+![Filtr przeszukiwania dzienników](media/log-search-transition/filter-log-search.png)
 
-Dzienniki usługi Azure Monitor, wybierz *filtru (wersja zapoznawcza)* Aby wyświetlić filtry. Kliknij ikonę filtru, aby wyświetlić dodatkowe filtry. Wybierz filtr, a następnie kliknij przycisk **Zastosuj i uruchom** Aby uruchomić zapytanie za pomocą wybranego filtru.
+W obszarze Dzienniki Azure Monitor wybierz opcję *Filtr (wersja zapoznawcza)* , aby wyświetlić filtry. Kliknij ikonę filtru, aby wyświetlić filtry dodawania. Wybierz filtr, a następnie kliknij przycisk **zastosuj & Uruchom** , aby uruchomić zapytanie z wybranym filtrem.
 
-![Filtruj dzienniki](media/log-search-transition/filter-logs.png)
+![Filtr dzienników](media/log-search-transition/filter-logs.png)
 
 ## <a name="extract-custom-fields"></a>Wyodrębnij pola niestandardowe 
-Podczas wyszukiwania dziennika wyodrębnić [pól niestandardowych](../platform/custom-fields.md) z widoku listy, obejmującym pole menu akcji _Wyodrębnij pola z tabeli_.
+W przeszukiwaniu dzienników można wyodrębnić [pola niestandardowe](../platform/custom-fields.md) z widoku listy, gdzie menu pola zawiera akcję _Wyodrębnij pola z tabeli_.
 
-![Zaloguj się Search wyodrębnianie pól](media/log-search-transition/extract-fields-log-search.png)
+![Przeszukiwanie dzienników — pola wyodrębniania](media/log-search-transition/extract-fields-log-search.png)
 
-W dziennikach w usłudze Azure Monitor pól niestandardowych prowadzenie widoku tabeli. Rozwiń rekord, klikając strzałkę po lewej stronie, a następnie kliknij przycisk wielokropka, aby uzyskać dostęp do _wyodrębniania pól_ akcji.
+W dziennikach Azure Monitor można wyodrębnić pola niestandardowe z widoku tabeli. Rozwiń rekord, klikając strzałkę po lewej stronie, a następnie kliknij wielokropek, aby uzyskać dostęp do akcji _Wyodrębnij pola_ .
 
 ![Dzienniki wyodrębniania pól](media/log-search-transition/extract-fields-logs.png)
 
-## <a name="functions-and-computer-groups"></a>Funkcje i grupami komputerów
-Aby zapisać wyszukiwanie w przeszukiwania dzienników, wybierz pozycję **zapisane wyszukiwania** i **Dodaj** nazwy, kategorii i tekst zapytania. Tworzenie [grupa](../platform/computer-groups.md) , dodając alias funkcji.
+## <a name="functions-and-computer-groups"></a>Funkcje i grupy komputerów
+Aby zapisać wyszukiwanie w przeszukiwaniu dzienników, wybierz pozycję **zapisane wyszukiwania** i **Dodaj** , aby podać nazwę, kategorię i tekst zapytania. Utwórz [grupę komputerów](../platform/computer-groups.md) przez dodanie aliasu funkcji.
 
-![Zapisz wyszukiwanie w Dzienniku](media/log-search-transition/save-search-log-search.png)
+![Zapisz przeszukiwanie dzienników](media/log-search-transition/save-search-log-search.png)
 
-Aby zapisać bieżącego zapytania w dziennikach w usłudze Azure Monitor, zaznacz **Zapisz**. Zmiana **Zapisz jako** do _funkcja_ i podaj **Alias funkcji** do utworzenia [funkcji](functions.md). Wybierz _Zapisz to zapytanie jako grupę komputerów_ do użycia funkcja alias [grupa](../platform/computer-groups.md).
+Aby zapisać bieżące zapytanie w dziennikach Azure Monitor, wybierz pozycję **Zapisz**. Zmień wartość _funkcji_ **Zapisz jako** na i podaj **alias funkcji** , aby utworzyć [funkcję](functions.md). Wybierz opcję _Zapisz to zapytanie jako grupę komputerów_ , aby użyć aliasu funkcji dla [grupy komputerów](../platform/computer-groups.md).
 
 ![Zapisz zapytanie dziennika](media/log-search-transition/save-query-logs.png)
 
 ## <a name="saved-queries"></a>Zapisane zapytania
-Podczas wyszukiwania dziennika zapisane kwerendy są dostępne za pośrednictwem elementu pasek akcji **zapisane wyszukiwania**. W dziennikach w usłudze Azure Monitor, dostęp do zapisanych zapytań z [Eksplorator zapytań](../log-query/get-started-portal.md#save-queries).
+W przeszukiwaniu dzienników zapisane zapytania są dostępne przez **zapisane wyszukiwania**elementów paska akcji. W dziennikach Azure Monitor dostęp do zapisanych zapytań z [Eksploratora zapytań](../log-query/get-started-portal.md#save-queries).
 
 ![Eksplorator zapytań](media/log-search-transition/query-explorer.png)
 
-## <a name="drill-down-on-summarized-rows"></a>Przejść do szczegółów w wierszach podsumowania
-Wyszukiwanie w dzienniku można kliknąć wiersz w podsumowane zapytanie w celu uruchomienia innej zapytanie, które wyświetla szczegółowe rekordy, w tym wierszu.
+## <a name="drill-down-on-summarized-rows"></a>Przechodzenie do szczegółów w wierszach podsumowania
+W obszarze Wyszukiwanie w dzienniku można kliknąć wiersz w podsumowaniu zapytania, aby uruchomić kolejne zapytanie zawierające szczegółowe rekordy w tym wierszu.
 
-![Dziennik wyszukiwania Przechodzenie do szczegółów](media/log-search-transition/drilldown-search.png)
+![Przechodzenie do szczegółów przeszukiwania dzienników](media/log-search-transition/drilldown-search.png)
 
-W dziennikach w usłudze Azure Monitor należy zmodyfikować zapytanie, aby zwrócić tych rekordów. Rozwiń jeden z wierszy w wynikach, a następnie kliknij przycisk **+** obok wartości, aby dodać go do kwerendy. Następnie przekształcić w komentarz **Podsumuj** polecenia, a następnie ponownie uruchom zapytanie.
+W dziennikach Azure Monitor należy zmodyfikować zapytanie, aby zwracało te rekordy. Rozwiń jeden z wierszy w wynikach i kliknij **+** obok wartości, aby dodać ją do zapytania. Następnie Dodaj komentarz do polecenia **podsumowywania** i ponownie uruchom zapytanie.
 
-![Usługa Azure Monitor rejestruje Przechodzenie do szczegółów](media/log-search-transition/drilldown-logs.png)
+![Azure Monitor przechodzenie do szczegółów](media/log-search-transition/drilldown-logs.png)
 
 ## <a name="take-action"></a>Wykonywanie akcji
-Podczas wyszukiwania dziennika możesz [uruchamiania elementu runbook](take-action.md) z wyników wyszukiwania, wybierając **reakcję**.
+W przeszukiwaniu dzienników można [uruchomić element Runbook](take-action.md) z wyniku wyszukiwania, wybierając pozycję **Wykonaj akcję**.
 
 ![Wykonywanie akcji](media/log-search-transition/take-action-log-search.png)
 
-W dziennikach usługi Azure Monitor [Tworzenie alertu z zapytania dotyczącego dziennika](../platform/alerts-log.md). Skonfigurować grupy akcji z jedną lub więcej akcji, które będą uruchamiane w odpowiedzi na alert.
+W dziennikach Azure Monitor [Utwórz alert z zapytania dziennika](../platform/alerts-log.md). Skonfiguruj grupę akcji z co najmniej jedną akcją, która będzie uruchamiana w odpowiedzi na alert.
 
-![grupy akcji](media/log-search-transition/action-group.png)
+![Grupa akcji](media/log-search-transition/action-group.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o nowym [usługi Azure Monitor dzienników środowisko](get-started-portal.md).
+- Dowiedz się więcej na temat nowego [środowiska Azure monitor dzienników](get-started-portal.md).

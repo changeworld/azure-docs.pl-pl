@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: a31f839b4bad79a52f5cab386d17e3084314784b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f260e019ffa6eb89e8a2c1e17d2bf239e74290c2
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026111"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900109"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zaawansowanych funkcji harmonogramu w usłudze Azure Kubernetes Service (AKS)
 
@@ -179,7 +179,7 @@ Dobrym przykładem jest aplikacja sieci Web, która również korzysta z pamięc
 | webapp-1   | webapp-2   | webapp-3   |
 | pamięć podręczna 1    | pamięć podręczna 2    | pamięć podręczna — 3    |
 
-Ten przykład to bardziej złożone wdrożenie niż użycie selektorów węzłów lub koligacji węzłów. Wdrożenie zapewnia kontrolę nad sposobem, w jaki Kubernetes planuje się w węzłach i może logicznie izolować zasoby. Aby zapoznać się z kompletnym przykładem tej aplikacji sieci Web za pomocą usługi Azure cache for Redis, zobacz sekcję [dotyczącą obszaru kolokacji w tym samym węźle][k8s-pod-affinity].
+Ten przykład to bardziej złożone wdrożenie niż użycie selektorów węzłów lub koligacji węzłów. Wdrożenie zapewnia kontrolę nad sposobem, w jaki Kubernetes planuje się w węzłach i może logicznie izolować zasoby. Aby zapoznać się z kompletnym przykładem tej aplikacji sieci Web za pomocą usługi Azure cache for Redis, zobacz temat [lokalizowanie zasobników w tym samym węźle][k8s-pod-affinity].
 
 ## <a name="next-steps"></a>Następne kroki
 

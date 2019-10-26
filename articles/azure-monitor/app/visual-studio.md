@@ -1,33 +1,27 @@
 ---
-title: Debugowanie aplikacji przy użyciu usługi Azure Application Insights w programie Visual Studio | Dokumentacja firmy Microsoft
+title: Debugowanie aplikacji za pomocą usługi Azure Application Insights w programie Visual Studio | Microsoft Docs
 description: Analiza wydajności i diagnostyka aplikacji internetowej podczas debugowania oraz w środowisku produkcyjnym.
-services: application-insights
-documentationcenter: .net
-author: NumberByColors
-manager: carmonm
-ms.assetid: 2059802b-1131-477e-a7b4-5f70fb53f974
-ms.service: application-insights
-ms.custom: vs-azure
-ms.workload: azure-vs
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/07/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 1b2f429129c0bb9098f4f5029cb07ce06bc5db13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/07/2017
+ms.reviewer: mbullwin
+ms.custom: vs-azure
+ms.openlocfilehash: 32596b058918d3a8859dc356f8f0b1223b7f755a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255131"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899273"
 ---
-# <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Debugowanie aplikacji przy użyciu usługi Azure Application Insights w programie Visual Studio
+# <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Debuguj aplikacje za pomocą usługi Azure Application Insights w programie Visual Studio
 W programie Visual Studio (w wersji 2015 i nowszych) można analizować wydajność i diagnozować problemy w aplikacji internetowej platformy ASP.NET zarówno podczas debugowania, jak i w środowisku produkcyjnym, przy użyciu telemetrii z usługi [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 Jeśli aplikację internetową platformy ASP.NET utworzono przy użyciu programu Visual Studio 2017 lub nowszego, zawiera już ona zestaw SDK usługi Application Insights. W przeciwnym razie, jeśli jeszcze tego nie zrobiono, należy [dodać usługę Application Insights do aplikacji](../../azure-monitor/app/asp-net.md).
 
-Monitorowanie aplikacji w środowisku produkcyjnym zwykle polega na przeglądaniu danych telemetrycznych z usługi Application Insights w witrynie [Azure Portal](https://portal.azure.com), w której można ustawiać alerty i stosować zaawansowane narzędzia do monitorowania. Jednak na potrzeby debugowania można również wyszukiwać i analizować dane telemetryczne w programie Visual Studio. Aby analizować dane telemetryczne, zarówno z witryny produkcyjnej i debugowanie uruchomienia na komputerze deweloperskim, można użyć programu Visual Studio. W tym ostatnim przypadku można analizować przebiegi debugowania, nawet jeśli nie skonfigurowano jeszcze zestawu SDK na potrzeby wysyłania danych telemetrycznych do witryny Azure Portal. 
+Monitorowanie aplikacji w środowisku produkcyjnym zwykle polega na przeglądaniu danych telemetrycznych z usługi Application Insights w witrynie [Azure Portal](https://portal.azure.com), w której można ustawiać alerty i stosować zaawansowane narzędzia do monitorowania. Jednak na potrzeby debugowania można również wyszukiwać i analizować dane telemetryczne w programie Visual Studio. Możesz użyć programu Visual Studio do analizowania danych telemetrycznych z witryny produkcyjnej oraz z uruchamiania debugowania na komputerze deweloperskim. W tym ostatnim przypadku można analizować przebiegi debugowania, nawet jeśli nie skonfigurowano jeszcze zestawu SDK na potrzeby wysyłania danych telemetrycznych do witryny Azure Portal. 
 
 ## <a name="run"></a> Debugowanie projektu
 Uruchom aplikację internetową w trybie debugowania lokalnego, naciskając klawisz F5. Otwórz różne strony w celu wygenerowania telemetrii.
@@ -39,7 +33,7 @@ W programie Visual Studio zobaczysz liczbę zdarzeń, które zostały zarejestro
 Kliknij ten przycisk, aby wyszukać dane telemetryczne. 
 
 ## <a name="application-insights-search"></a>Wyszukiwanie usługi Application Insights
-Okno wyszukiwania usługi Application Insights pokazuje zarejestrowane zdarzenia. (Jeśli zalogowano do platformy Azure podczas konfigurowania usługi Application Insights, można wyszukiwać te same zdarzenia w witrynie Azure portal.)
+Okno wyszukiwania usługi Application Insights pokazuje zarejestrowane zdarzenia. (Jeśli użytkownik jest zalogowany do platformy Azure podczas konfigurowania Application Insights, można wyszukać te same zdarzenia w Azure Portal).
 
 ![Kliknij prawym przyciskiem myszy projekt i wybierz kolejno opcje Application Insights, Wyszukiwanie](./media/visual-studio/34.png)
 
@@ -66,8 +60,8 @@ Kliknij wyjątek, aby uzyskać ślad stosu. Jeśli kod aplikacji jest otwarty w 
 
 ![Ślad stosu wyjątków](./media/visual-studio/17.png)
 
-## <a name="view-request-and-exception-summaries-in-the-code"></a>Wyświetlanie podsumowania żądań i wyjątków w kodzie
-W wierszu Code Lens powyżej każdej metody procedury obsługi można zobaczyć liczbę żądań i wyjątków zarejestrowanych przez usługę Application Insights w ciągu ostatnich 24 godzin.
+## <a name="view-request-and-exception-summaries-in-the-code"></a>Wyświetlanie podsumowań żądań i wyjątków w kodzie
+W wierszu soczewki kodu powyżej każdej metody obsługi zostanie wyświetlona liczba żądań i wyjątków zarejestrowanych przez Application Insights w ciągu ostatnich 24 godzin.
 
 ![Ślad stosu wyjątków](./media/visual-studio/21.png)
 
@@ -77,33 +71,33 @@ W wierszu Code Lens powyżej każdej metody procedury obsługi można zobaczyć 
 
 [Więcej informacji o usłudze Application Insights w wierszach Code Lens](../../azure-monitor/app/visual-studio-codelens.md)
 
-## <a name="trends"></a>Trends
+## <a name="trends"></a>Trendy
 Trends to narzędzie do wizualizacji zachowania aplikacji wraz z upływem czasu. 
 
 Na przycisku paska narzędzi Application Insights lub w oknie Application Insights Search wybierz pozycję **Eksploruj trendy telemetryczne**. Wybierz jedno z pięciu typowych zapytań, aby rozpocząć. W zależności od typów telemetrii, zakresów czasu i innych właściwości możesz analizować różne zestawy danych . 
 
 Aby znaleźć anomalie w danych, wybierz jedną z opcji anomalii w menu rozwijanym „Typ widoku”. Opcje filtrowania u dołu okna ułatwiają sprecyzowanie konkretnych podzestawów w telemetrii.
 
-![Trends](./media/visual-studio/51.png)
+![Trendy](./media/visual-studio/51.png)
 
 [Więcej informacji na temat narzędzia Trends](../../azure-monitor/app/visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Monitorowanie lokalne
-(Z programu Visual Studio 2015 Update 2) Jeśli nie skonfigurowano zestawu SDK do wysyłania telemetrii do portalu usługi Application Insights (tak, aby w pliku ApplicationInsights.config, istnieje nie klucza Instrumentacji) w oknie diagnostyki przedstawia dane telemetryczne z ostatniej sesji debugowania. 
+(Z programu Visual Studio 2015 Update 2) Jeśli zestaw SDK nie został skonfigurowany do wysyłania telemetrii do portalu Application Insights (tak, że w pliku ApplicationInsights. config nie ma klucza Instrumentacji), w oknie Diagnostyka zostanie wyświetlona wartość telemetrii z najnowszej sesji debugowania. 
 
 Jest to pożądane, jeśli poprzednia wersji aplikacji została już opublikowana. Lepiej, aby telemetria z sesji debugowania nie była mieszana z telemetrią z opublikowanej aplikacji w portalu Application Insights.
 
 Jest to również przydatne, jeśli masz trochę [niestandardowej telemetrii](../../azure-monitor/app/api-custom-events-metrics.md), którą chcesz debugować przed wysłaniem telemetrii do portalu.
 
-* *Na początku usługa Application Insights została skonfigurowana do wysyłania telemetrii do portalu, ale teraz chcę widzieć telemetrię tylko w programie Visual Studio.*
+* *W pierwszej kolejności Application Insights, aby wysyłać dane telemetryczne do portalu. Ale teraz chcę widzieć telemetrię tylko w programie Visual Studio.*
   
   * W ustawieniach okna wyszukiwania istnieje możliwość wyszukiwania lokalnych danych diagnostycznych, nawet jeśli aplikacja wysyła telemetrię do portalu.
-  * Aby zatrzymać przesyłanie telemetrii do portalu, zakomentuj wiersz `<instrumentationkey>...` w pliku ApplicationInsights.config. Gdy wszystko będzie gotowe, odkomentuj wiersz, aby wznowić wysyłanie telemetrii do portalu.
+  * Aby zatrzymać wysyłanie danych telemetrycznych do portalu, Skomentuj wiersz `<instrumentationkey>...` z ApplicationInsights. config. Gdy wszystko będzie gotowe do ponownego wysłania telemetrii do portalu, Usuń komentarz.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 |  |  |
 | --- | --- |
 | **[Dodawanie większej ilości danych](../../azure-monitor/app/asp-net-more.md)**<br/>Monitorowanie użycia, dostępności, zależności i wyjątków. Integrowanie śladów ze struktur rejestrowania. Zapisywanie niestandardowych danych telemetrycznych. |![Visual Studio](./media/visual-studio/64.png) |
-| **[Praca z portalem usługi Application Insights](../../azure-monitor/app/overview-dashboard.md)**<br/>Wyświetlać pulpity nawigacyjne, zaawansowane narzędzia diagnostyczne i analityczne, alerty, mapa zależności na żywo, aplikacji i danych telemetrycznych wyeksportowany. |![Visual Studio](./media/visual-studio/62.png) |
+| **[Praca z portalem usługi Application Insights](../../azure-monitor/app/overview-dashboard.md)**<br/>Wyświetlaj pulpity nawigacyjne, zaawansowane narzędzia diagnostyczne i analityczne, alerty, Mapa zależności na żywo aplikacji oraz wyeksportowane dane telemetryczne. |![Visual Studio](./media/visual-studio/62.png) |
 

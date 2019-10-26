@@ -1,18 +1,18 @@
 ---
 title: HDInsight 4,0 — Omówienie — Azure
 description: Porównanie funkcji i ograniczeń usług HDInsight 3.6 i HDInsight 4.0 oraz rekomendacje dotyczące uaktualniania.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 74cd6a6919db1c01535fb984d1e8e0d0ad2d5ade
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 10/22/2019
+ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879326"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901533"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Omówienie usługi Azure HDInsight 4,0
 
@@ -40,7 +40,7 @@ Infrastruktura Hive obsługuje obecnie dynamiczne zmaterializowane widoki lub ws
 
 Usługa HDI 4.0 zawiera infrastrukturę Apache Hive 3, która wymaga zgodności pod względem niepodzielności, spójności, izolacji i trwałości (ACID) dla tabel transakcyjnych rezydujących w magazynie Hive. Tabele zgodne ze standardem ACID oraz przechowywane w nich dane są dostępne i zarządzane za pośrednictwem programu Hive. Dane przechowywane w tabelach CRUD, które zapewniają możliwość tworzenia, pobierania, aktualizacji i usuwania, muszą być w formacie pliku ORC (Optimized Row Column), ale tabele umożliwiające tylko wstawianie danych obsługują wszystkie formaty plików.
 
-* Standard ACID w wersji 2 wprowadza ulepszenia wydajności zarówno w formacie magazynu, jak i aparatu wykonywania. 
+* Standard ACID w wersji 2 wprowadza ulepszenia wydajności zarówno w formacie magazynu, jak i aparatu wykonywania.
 
 * Standard ACID jest domyślnie włączony, co umożliwia pełną obsługę aktualizacji danych.
 
@@ -71,7 +71,6 @@ Nie musisz się już martwić przypadkowymi próbami uzyskania dostępu do tabel
 
 Dowiedz się więcej o platformie [Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html).
 
-
 ### <a name="apache-oozie"></a>Apache Oozie
 
 Usługa HDI 4.0 zawiera system Apache Oozie 4.3.1 z następującymi zmianami:
@@ -91,9 +90,9 @@ Nie ma żadnej obsługiwanej ścieżki uaktualnienia z poprzednich wersji usług
 ## <a name="limitations"></a>Ograniczenia
 
 * Usługa HDInsight 4,0 nie obsługuje MapReduce dla Apache Hive. Zamiast tego należy użyć środowiska Apache Tez. Dowiedz się więcej o środowisku [Apache Tez](https://tez.apache.org/).
-* Usługa HDInsight 4,0 nie obsługuje Apache Storm. 
-* Widok Hive nie jest już dostępny w usłudze HDInsight 4,0. 
-* Interpreter powłoki w rozwiązaniu Apache Zeppelin nie jest obsługiwany w klastrach Spark i klastrach zapytań interakcyjnych.
+* Usługa HDInsight 4,0 nie obsługuje Apache Storm.
+* Widok Hive nie jest już dostępny w usłudze HDInsight 4,0.
+* Interpreter powłoki w programie Apache Zeppelin nie jest obsługiwany w przypadku klastrów Spark i Interactive zapytania zapytań.
 * Nie można *wyłączyć* funkcji LLAP w klastrze Spark LLAP. Można tylko wyłączyć funkcję LLAP.
 * Usługa Azure Data Lake Storage Gen2 nie pozwala zapisywać notesów Juypter w klastrze Spark.
 

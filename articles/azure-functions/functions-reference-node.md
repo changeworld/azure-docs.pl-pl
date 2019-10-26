@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 86bacbe22ce23fc4b0355374d81a96310e59178a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fbecb1d02c2d262487683cb493db2d5a8f0d1c3e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255020"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898939"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów Azure Functions JavaScript
 
@@ -421,7 +421,7 @@ W poniższej tabeli przedstawiono wersję środowiska Node. js używaną przez k
 | Wersja funkcji | Wersja środowiska Node. js | 
 |---|---|
 | 1.x | 6.11.2 (zablokowany przez środowisko uruchomieniowe) |
-| 2.x  | _Active LTS_ i _Maintenance LTS_ w wersji Node. js (zalecane: ~ 10). Docelowa wersja na platformie Azure przez ustawienie [Ustawienia aplikacji](functions-how-to-use-azure-function-app-settings.md#settings) WEBSITE_NODE_DEFAULT_VERSION na `~10`.|
+| 2.x  | _Active LTS_ i _Maintenance LTS_ w wersji Node. js (zalecane: ~ 10). Aby określić wersję na platformie Azure, należy ustawić dla [Ustawienia aplikacji](functions-how-to-use-azure-function-app-settings.md#settings) WEBSITE_NODE_DEFAULT_VERSION wartość `~10`.|
 
 Bieżącą wersję używaną przez środowisko uruchomieniową można zobaczyć, sprawdzając powyższe ustawienie aplikacji lub drukując `process.version` z dowolnej funkcji.
 
@@ -449,7 +449,7 @@ Istnieją dwa sposoby instalowania pakietów na aplikacja funkcji:
 ### <a name="deploying-with-dependencies"></a>Wdrażanie z zależnościami
 1. Zainstaluj wszystkie wymagane pakiety lokalnie, uruchamiając `npm install`.
 
-2. Wdróż swój kod i upewnij się, że w tym wdrożeniu znajduje się folder `node_modules`. 
+2. Wdróż swój kod i upewnij się, że folder `node_modules` jest uwzględniony we wdrożeniu. 
 
 
 ### <a name="using-kudu"></a>Korzystanie z kudu
@@ -465,7 +465,7 @@ Istnieją dwa sposoby instalowania pakietów na aplikacja funkcji:
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
 
-W funkcjach, [Ustawienia aplikacji](functions-app-settings.md), takie jak parametry połączenia usługi, są ujawniane jako zmienne środowiskowe podczas wykonywania. Możesz uzyskać dostęp do tych ustawień przy użyciu `process.env`, jak pokazano poniżej w drugim i trzecim wywołaniach do `context.log()`, gdzie rejestrujemy zmienne środowiskowe `AzureWebJobsStorage` i `WEBSITE_SITE_NAME`:
+W funkcjach, [Ustawienia aplikacji](functions-app-settings.md), takie jak parametry połączenia usługi, są ujawniane jako zmienne środowiskowe podczas wykonywania. Możesz uzyskać dostęp do tych ustawień przy użyciu `process.env`, jak pokazano w drugim i trzecim wywołaniach do `context.log()`, gdzie rejestrujemy `AzureWebJobsStorage` i `WEBSITE_SITE_NAME` zmienne środowiskowe:
 
 ```javascript
 module.exports = async function (context, myTimer) {
@@ -503,7 +503,7 @@ FunctionApp
  | - package.json
 ```
 
-@No__t-0 dla `myNodeFunction` powinna zawierać właściwość `scriptFile` wskazującą plik z wyeksportowaną funkcją do uruchomienia.
+`function.json` dla `myNodeFunction` powinna zawierać właściwość `scriptFile` wskazującą plik z wyeksportowaną funkcją do uruchomienia.
 
 ```json
 {
@@ -677,8 +677,9 @@ const util = require('util');
 const readFileAsync = util.promisify(fs.readFile);
 
 module.exports = async function (context) {
+    let data;
     try {
-        const data = await readFileAsync('./hello.txt');
+        data = await readFileAsync('./hello.txt');
     } catch (err) {
         context.log.error('ERROR', err);
         // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation

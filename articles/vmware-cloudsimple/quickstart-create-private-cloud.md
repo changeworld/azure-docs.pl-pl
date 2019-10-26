@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b38779681dfe612369fefb9d752389395965e7b4
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: c32045c6d68a813eaeb6e4e5de433160c2a30634
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285789"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901455"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Szybki Start — Konfigurowanie środowiska chmury prywatnej
 
@@ -42,7 +42,7 @@ Chmurami prywatnymi zarządza się za pomocą portalu CloudSimple. Mają własny
 
 5. W portalu CloudSimple Podaj nazwę chmury prywatnej.
 6. Wybierz **lokalizację** chmury prywatnej.
-7. Wybierz **Typ węzła**spójny z zakupionymi informacjami na platformie Azure.
+7. Wybierz **Typ węzła**, spójny z zainicjowaną obsługą na platformie Azure.
 8. Określ **liczbę węzłów**.  Aby można było utworzyć chmurę prywatną, wymagane są co najmniej trzy węzły.
 
     ![Tworzenie chmury prywatnej — informacje podstawowe](media/create-private-cloud-basic-info.png)

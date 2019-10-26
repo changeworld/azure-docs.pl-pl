@@ -1,31 +1,25 @@
 ---
-title: Wyświetlanie danych analitycznych usługi Azure Web Apps | Dokumentacja firmy Microsoft
-description: Rozwiązanie Azure Web Apps Analytics umożliwia uzyskiwanie szczegółowych informacji o usłudze Azure Web Apps przy zbieraniu różnych metryk we wszystkich zasobach aplikacji sieci Web platformy Azure.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 20ff337f-b1a3-4696-9b5a-d39727a94220
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Wyświetl dane analityczne Web Apps platformy Azure | Microsoft Docs
+description: Możesz użyć rozwiązania Azure Web Apps Analytics, aby uzyskać wgląd w informacje o usłudze Azure Web Apps, zbierając różne metryki dla wszystkich zasobów aplikacji sieci Web platformy Azure.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 07/02/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1ebe0b9d3cbe14bf35e05db3349a5aebb11b5716
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/02/2018
+ms.openlocfilehash: 6b0a4276e27cdcbfaad133a69ac2f4cc3b750805
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60494751"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899075"
 ---
-# <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Wyświetl dane analityczne metryk we wszystkich zasobach aplikacji sieci Web platformy Azure
+# <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Wyświetl dane analityczne dla metryk we wszystkich zasobach aplikacji sieci Web platformy Azure
 
-![Symbol aplikacji sieci Web](./media/azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
+![Symbol Web Apps](./media/azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
 
 > [!NOTE]
-> Rozwiązanie analiza aplikacji sieci Web platformy Azure została przeniesiona do pomoc techniczna w społeczności.  
->- Rozwiązanie nie jest już dostępna w witrynie Azure Marketplace, ale mogą być instalowane z [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-webappazure-oms-monitoring/) gdzie nie jest obsługiwany przez społeczność.
->- Klienci, którzy już zainstalowano rozwiązania można nadal z niego korzystać ze zmianami.  
->- Firma Microsoft zaleca się, że używasz [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) do monitorowania aplikacji sieci web.
+> Rozwiązanie do analizy aplikacji sieci Web platformy Azure zostało przeniesione do pomocy technicznej społeczności.  
+>- Rozwiązanie nie jest już dostępne w witrynie Azure Marketplace, ale można je zainstalować z [szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-webappazure-oms-monitoring/) , gdzie są obsługiwane przez społeczność.
+>- Klienci, którzy już zainstalowali rozwiązanie, mogą w dalszym ciągu używać go ze zmianami.  
+>- Firma Microsoft zaleca używanie [Application Insights](../../azure-monitor/app/app-insights-overview.md) do monitorowania aplikacji sieci Web.

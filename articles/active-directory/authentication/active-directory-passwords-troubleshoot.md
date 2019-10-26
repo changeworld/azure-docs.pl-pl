@@ -4,7 +4,7 @@ description: Rozwiązywanie problemów z samoobsługowym resetowania haseł w us
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4f236f2f2fdbf2736f87f754f48387f9f41850d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 003ceb19fafade4972ebb0cf4e60ceda34dc1928
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024624"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893442"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Rozwiązywanie problemów z funkcją samoobsługowego resetowania hasła
 
@@ -127,7 +127,7 @@ Najlepszym rozwiązaniem w przypadku rozwiązywania problemów z funkcją zapisy
 | 31018| KeyPairCreationSuccess| To zdarzenie wskazuje, że klucz szyfrowania hasła został pomyślnie utworzony. Ten klucz służy do szyfrowania haseł z chmury do wysłania do środowiska lokalnego.|
 | 32000| UnknownError| To zdarzenie wskazuje, że podczas operacji zarządzania hasłami wystąpił nieznany błąd. Aby uzyskać więcej informacji, zobacz tekst wyjątku w zdarzeniu. Jeśli masz problemy, spróbuj wyłączyć i ponownie włączyć funkcję zapisywania zwrotnego haseł. Jeśli to nie pomoże, Dołącz kopię dziennika zdarzeń wraz z IDENTYFIKATORem śledzenia, który został określony dla inżyniera pomocy technicznej.|
 | 32001| Wystąpił błąd| To zdarzenie wskazuje, że wystąpił błąd podczas nawiązywania połączenia z usługą resetowania hasła w chmurze. Ten błąd występuje zazwyczaj, gdy Usługa lokalna nie może nawiązać połączenia z usługą sieci Web resetowania hasła.|
-| 32002| ServiceBusError| To zdarzenie wskazuje, że wystąpił błąd podczas nawiązywania połączenia z wystąpieniem Service Bus dzierżawy. Taka sytuacja może wystąpić, jeśli blokujesz połączenia wychodzące w środowisku lokalnym. Sprawdź zaporę, aby zezwolić na połączenia za pośrednictwem protokołu TCP 443 i do https://ssprsbprodncu-sb.accesscontrol.windows.net/, a następnie spróbuj ponownie. Jeśli nadal występują problemy, spróbuj wyłączyć i ponownie włączyć funkcję zapisywania zwrotnego haseł.|
+| 32002| ServiceBusError| To zdarzenie wskazuje, że wystąpił błąd podczas nawiązywania połączenia z wystąpieniem Service Bus dzierżawy. Taka sytuacja może wystąpić, jeśli blokujesz połączenia wychodzące w środowisku lokalnym. Sprawdź zaporę, aby upewnić się, że zezwalasz na połączenia za pośrednictwem protokołu TCP 443 i https://ssprdedicatedsbprodncu.servicebus.windows.net , a następnie spróbuj ponownie. Jeśli nadal występują problemy, spróbuj wyłączyć i ponownie włączyć funkcję zapisywania zwrotnego haseł.|
 | 32003| InPutValidationError| To zdarzenie oznacza, że dane wejściowe przesłane do naszego interfejsu API usługi sieci Web były nieprawidłowe. Spróbuj ponownie wykonać operację.|
 | 32004| DecryptionError| To zdarzenie wskazuje, że wystąpił błąd podczas odszyfrowywania hasła, które dotarło do chmury. Może to być spowodowane niezgodnością klucza odszyfrowywania między usługą w chmurze i środowiskiem lokalnym. Aby rozwiązać ten problem, Wyłącz, a następnie ponownie włącz funkcję zapisywania zwrotnego haseł w środowisku lokalnym.|
 | 32005| ConfigurationError| Podczas dołączania zapisujemy informacje specyficzne dla dzierżawy w pliku konfiguracji w środowisku lokalnym. To zdarzenie wskazuje, że wystąpił błąd podczas zapisywania tego pliku lub gdy usługa została uruchomiona, wystąpił błąd podczas odczytu pliku. Aby rozwiązać ten problem, spróbuj wyłączyć i ponownie włączyć funkcję zapisywania zwrotnego haseł w celu wymuszenia ponownego zapisania pliku konfiguracji.|
@@ -135,14 +135,14 @@ Najlepszym rozwiązaniem w przypadku rozwiązywania problemów z funkcją zapisy
 | 32008| ValidationError| To zdarzenie wskazuje, że odebrano nieprawidłową odpowiedź z usługi sieci Web resetowania hasła. Aby rozwiązać ten problem, spróbuj wyłączyć i ponownie włączyć funkcję zapisywania zwrotnego haseł.|
 | 32009| AuthTokenError| To zdarzenie wskazuje, że nie można uzyskać tokenu autoryzacji dla konta administratora globalnego określonego podczas instalacji Azure AD Connect. Ten błąd może być spowodowany przez nieprawidłową nazwę użytkownika lub hasło określone dla konta administratora globalnego. Ten błąd może również wystąpić, jeśli określone konto administratora globalnego jest federacyjne. Aby rozwiązać ten problem, należy ponownie uruchomić konfigurację przy użyciu prawidłowej nazwy użytkownika i hasła oraz upewnić się, że administrator jest kontem zarządzanym (tylko w chmurze lub z synchronizacją).|
 | 32010| CryptoError| To zdarzenie wskazuje, że wystąpił błąd podczas generowania klucza szyfrowania hasła lub odszyfrowywania hasła przychodzącego z usługi w chmurze. Ten błąd najkorzystnie wskazuje na problem z Twoim środowiskiem. Zapoznaj się ze szczegółowymi informacjami o dzienniku zdarzeń, aby dowiedzieć się więcej o tym, jak rozwiązać ten problem. Możesz również spróbować wyłączyć i ponownie włączyć usługę zapisywania zwrotnego haseł.|
-| 32011| OnBoardingServiceError| To zdarzenie oznacza, że Usługa lokalna nie może prawidłowo skomunikować się z usługą sieci Web resetowania hasła w celu zainicjowania procesu dołączania. Może to być spowodowane regułą zapory lub problemem z uzyskaniem tokenu uwierzytelniania dla dzierżawy. Aby rozwiązać ten problem, upewnij się, że nie blokujesz połączeń wychodzących za pośrednictwem protokołów TCP 443 i TCP 9350-9354 lub https://ssprsbprodncu-sb.accesscontrol.windows.net/. Upewnij się również, że konto administratora usługi Azure AD, które jest używane do dołączania, nie jest federacyjne.|
-| 32013| OffBoardingError| To zdarzenie oznacza, że Usługa lokalna nie może prawidłowo skomunikować się z usługą sieci Web resetowania hasła w celu zainicjowania procesu odłączania. Może to być spowodowane regułą zapory lub problemem z uzyskaniem tokenu autoryzacji dla dzierżawy. Aby rozwiązać ten problem, należy się upewnić, że połączenia wychodzące nie są blokowane przez 443 lub do https://ssprsbprodncu-sb.accesscontrol.windows.net/, a konto administratora Azure Active Directory używane do odłączania nie jest federacyjne.|
+| 32011| OnBoardingServiceError| To zdarzenie oznacza, że Usługa lokalna nie może prawidłowo skomunikować się z usługą sieci Web resetowania hasła w celu zainicjowania procesu dołączania. Może to być spowodowane regułą zapory lub problemem z uzyskaniem tokenu uwierzytelniania dla dzierżawy. Aby rozwiązać ten problem, upewnij się, że nie blokujesz połączeń wychodzących za pośrednictwem protokołów TCP 443 i TCP 9350-9354 lub https://ssprdedicatedsbprodncu.servicebus.windows.net. Upewnij się również, że konto administratora usługi Azure AD, które jest używane do dołączania, nie jest federacyjne.|
+| 32013| OffBoardingError| To zdarzenie oznacza, że Usługa lokalna nie może prawidłowo skomunikować się z usługą sieci Web resetowania hasła w celu zainicjowania procesu odłączania. Może to być spowodowane regułą zapory lub problemem z uzyskaniem tokenu autoryzacji dla dzierżawy. Aby rozwiązać ten problem, upewnij się, że nie blokujesz połączeń wychodzących przez 443 lub do https://ssprdedicatedsbprodncu.servicebus.windows.net i że konto administratora Azure Active Directory używane do odłączania nie jest federacyjne.|
 | 32014| ServiceBusWarning| To zdarzenie wskazuje, że musiałeś ponowić próbę nawiązania połączenia z wystąpieniem Service Bus dzierżawy. W normalnych warunkach nie powinna to stanowić problemu, ale jeśli widzisz to zdarzenie wiele razy, rozważ sprawdzenie połączenia sieciowego w celu Service Bus, szczególnie jeśli jest to połączenie o dużej opóźnieniu lub niskiej przepustowości.|
 | 32015| ReportServiceHealthError| W celu monitorowania kondycji usługi zapisywania zwrotnego haseł wysyłamy dane pulsu do usługi sieci Web resetowania hasła co pięć minut. To zdarzenie wskazuje, że wystąpił błąd podczas wysyłania informacji o kondycji z powrotem do usługi sieci Web w chmurze. Te informacje o kondycji nie obejmują informacji o identyfikowalnym obiekcie (OII) ani danych osobowych (dane osobowe), a także są całkowicie Pulse i podstawowe statystyki usługi, dzięki czemu możemy zapewnić informacje o stanie usługi w chmurze.|
 | 33001| ADUnKnownError| To zdarzenie wskazuje, że wystąpił nieznany błąd zwrócony przez Active Directory. Aby uzyskać więcej informacji, sprawdź dziennik zdarzeń serwera Azure AD Connect pod kątem zdarzeń ze źródła ADSync.|
 | 33002| ADUserNotFoundError| To zdarzenie oznacza, że użytkownik próbujący zresetować lub zmienić hasło nie został znaleziony w katalogu lokalnym. Ten błąd może wystąpić, jeśli użytkownik został usunięty z lokalizacji lokalnej, ale nie w chmurze. Ten błąd może również wystąpić, jeśli wystąpił problem z synchronizacją. Sprawdź dzienniki synchronizacji i ostatnie szczegóły uruchamiania synchronizacji, aby uzyskać więcej informacji.|
 | 33003| ADMutliMatchError| Gdy żądanie resetowania lub zmiany hasła pochodzi z chmury, używamy kotwicy w chmurze określonej podczas procesu instalacji Azure AD Connect, aby określić, jak połączyć żądanie z powrotem do użytkownika w środowisku lokalnym. To zdarzenie oznacza, że znaleźliśmy dwóch użytkowników w katalogu lokalnym z tym samym atrybutem zakotwiczenia w chmurze. Sprawdź dzienniki synchronizacji i ostatnie szczegóły uruchamiania synchronizacji, aby uzyskać więcej informacji.|
-| 33004| ADPermissionsError| To zdarzenie oznacza, że konto usługi Active Directory Management Agent (ADMA) nie ma odpowiednich uprawnień dla danego konta, aby ustawić nowe hasło. Upewnij się, że konto ADMA w lesie użytkownika ma zresetować i zmienić uprawnienia do hasła dla wszystkich obiektów w lesie. Aby uzyskać więcej informacji na temat sposobu ustawiania uprawnień, zobacz krok 4. Konfigurowanie odpowiednich uprawnień Active Directory.|
+| 33004| ADPermissionsError| To zdarzenie oznacza, że konto usługi Active Directory Management Agent (ADMA) nie ma odpowiednich uprawnień dla danego konta, aby ustawić nowe hasło. Upewnij się, że konto ADMA w lesie użytkownika ma zresetować i zmienić uprawnienia do hasła dla wszystkich obiektów w lesie. Aby uzyskać więcej informacji na temat sposobu ustawiania uprawnień, zobacz krok 4. Konfigurowanie odpowiednich uprawnień Active Directory. Ten błąd może również wystąpić, gdy atrybut użytkownika AdminCount jest ustawiony na 1.|
 | 33005| ADUserAccountDisabled| To zdarzenie oznacza, że podjęto próbę zresetowania lub zmiany hasła dla konta, które zostało wyłączone lokalnie. Włącz konto, a następnie spróbuj ponownie wykonać operację.|
 | 33006| ADUserAccountLockedOut| To zdarzenie oznacza, że podjęto próbę zresetowania lub zmiany hasła dla konta, które zostało zablokowane w środowisku lokalnym. Blokady mogą wystąpić, gdy użytkownik próbował wykonać operację zmiany lub resetowania hasła zbyt wiele razy w krótkim czasie. Odblokuj konto, a następnie spróbuj ponownie wykonać operację.|
 | 33007| ADUserIncorrectPassword| To zdarzenie oznacza, że użytkownik określił nieprawidłowe bieżące hasło podczas wykonywania operacji zmiany hasła. Określ prawidłowe bieżące hasło i spróbuj ponownie.|
@@ -167,7 +167,7 @@ Najbardziej typowym punktem awarii jest to, że porty zapory i serwera proxy ora
 
 W przypadku Azure AD Connect w wersji wersji 1.1.443.0 lub nowszej wymagany jest wychodzący dostęp HTTPS do następujących:
 
-* @no__t — 0.passwordreset.microsoftonline.com
+* \*. passwordreset.microsoftonline.com
 * \*.servicebus.windows.net
 
 Aby uzyskać więcej informacji, odwołując się do zaktualizowanej listy [zakresów adresów IP centrum](https://www.microsoft.com/download/details.aspx?id=41653) danych, Microsoft Azure które są aktualizowane w każdą środę i które mają obowiązywać w następnym poniedziałek.
@@ -175,7 +175,7 @@ Aby uzyskać więcej informacji, odwołując się do zaktualizowanej listy [zakr
 Aby uzyskać więcej informacji, zapoznaj się z wymaganiami wstępnymi dotyczącymi łączności w artykule [wymagania wstępne dotyczące Azure AD Connect](../hybrid/how-to-connect-install-prerequisites.md) .
 
 > [!NOTE]
-> SSPR może również się nie powieść, jeśli konto nie zostanie skonfigurowane dla konta "hasło nigdy nie wygasa" lub "użytkownik nie może zmienić hasła" na koncie w AD DS lokalnym. 
+> SSPR może również zakończyć się niepowodzeniem, jeśli ustawienia "hasło nigdy nie wygasa" lub "użytkownik nie może zmienić hasła" są skonfigurowane na koncie w AD DS lokalnym. 
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Uruchom ponownie usługę synchronizacji Azure AD Connect
 
@@ -232,7 +232,7 @@ Azure AD Connect wymaga uprawnień do Active Directory **resetowania hasła** , 
 
 1. Zaloguj się na serwerze Azure AD Connect i uruchom **Synchronization Service Manager** , wybierając pozycję **Start** > **synchronizacji usługi**.
 1. Na karcie **Łączniki** wybierz pozycję lokalna **Active Directory Domain Services** łącznika, a następnie wybierz pozycję **Właściwości**.  
-   ![Synchronization Service Manager pokazujący, jak edytować właściwości @ no__t-1  
+   ![Synchronization Service Manager pokazujący, jak edytować właściwości](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
 1. W oknie podręcznym wybierz pozycję **Połącz z lasem Active Directory** i zanotuj Właściwość **Nazwa użytkownika** . Ta właściwość jest kontem AD DS używanym przez Azure AD Connect do przeprowadzenia synchronizacji katalogów. Aby Azure AD Connect do wykonywania funkcji zapisywania zwrotnego haseł, konto AD DS musi mieć uprawnienie resetowania hasła.  
 

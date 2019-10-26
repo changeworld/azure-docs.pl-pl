@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 37e833e5ba2fcbc9fcfe0a27d5b607a5c6cdd55b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39abe054869bf68a254b9305a680ecc892359300
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079529"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898867"
 ---
 # <a name="download-the-template-for-a-vm"></a>Pobieranie szablonu dla maszyny wirtualnej
 Podczas tworzenia maszyny wirtualnej na platformie Azure przy użyciu portalu lub programu PowerShell automatycznie tworzony jest szablon Menedżer zasobów. Możesz użyć tego szablonu, aby szybko zduplikować wdrożenie. Szablon zawiera informacje na temat wszystkich zasobów w grupie zasobów. W przypadku maszyny wirtualnej oznacza to, że szablon zawiera wszystkie elementy, które są tworzone w ramach obsługi maszyny wirtualnej w tej grupie zasobów, w tym zasoby sieciowe.
@@ -32,17 +32,13 @@ Podczas tworzenia maszyny wirtualnej na platformie Azure przy użyciu portalu lu
 5. Wybierz pozycję **Pobierz** z menu u góry i Zapisz plik zip na komputerze lokalnym.
 6. Otwórz plik zip i Wyodrębnij pliki do folderu. Plik. zip zawiera:
    
-   * Wdróż. ps1
-   * deploy.sh 
-   * Deployer. RB
-   * DeploymentHelper.cs
    * Parameters. JSON
-   * template.json
+   * Template. JSON
 
 Plik Template. JSON jest szablonem.
 
 ## <a name="download-the-template-using-powershell"></a>Pobieranie szablonu przy użyciu programu PowerShell
-Plik szablonu JSON można także pobrać przy użyciu polecenia cmdlet [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) . Możesz użyć `-path` parametru, aby podać nazwę pliku i ścieżkę pliku. JSON. Ten przykład pokazuje, jak pobrać szablon dla grupy zasobów o nazwie Moja **zasobów** do folderu **C:\users\public\downloads** na komputerze lokalnym.
+Plik szablonu JSON można także pobrać przy użyciu polecenia cmdlet [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) . Można użyć parametru `-path`, aby podać nazwę pliku i ścieżkę pliku JSON. Ten przykład pokazuje, jak pobrać szablon dla grupy zasobów o nazwie Moja **zasobów** do folderu **C:\users\public\downloads** na komputerze lokalnym.
 
 ```powershell
     Export-AzResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9030a1d9d0b1e3f9b84f6636b0d3d758ab4cfa3b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4a2fe8238a1ac6f668450aca4e2fd6d2b4ba04a5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599993"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901547"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Tworzenie szablonu Menedżer zasobów klastra Service Fabric
 
@@ -38,7 +38,7 @@ Przykładowe szablony Menedżer zasobów są dostępne w [przykładach platformy
 W tym artykule jest stosowany przykładowy szablon i szablon szablonu [bezpiecznego klastra z pięcioma węzłami][service-fabric-secure-cluster-5-node-1-nodetype] . Pobierz *azuredeploy. JSON* i *azuredeploy. Parameters. JSON* na komputer i Otwórz oba pliki w ulubionym edytorze tekstu.
 
 > [!NOTE]
-> W przypadku chmur narodowych (Azure Government platformy Azure, Chin, platformy Azure (Niemcy), należy `fabricSettings` również dodać następujące elementy `AADLoginEndpoint`do szablonu `AADCertEndpointFormat`:, `AADTokenEndpointFormat` i.
+> W przypadku chmur narodowych (Azure Government platformy Azure, Chin, platformy Azure (Niemcy), należy również dodać następujące `fabricSettings` do szablonu: `AADLoginEndpoint`, `AADTokenEndpointFormat` i `AADCertEndpointFormat`.
 
 ## <a name="add-certificates"></a>Dodawanie certyfikatów
 Należy dodać certyfikaty do szablonu Menedżer zasobów klastra, odwołując się do magazynu kluczy, który zawiera klucze certyfikatów. Dodaj te parametry i wartości magazynu kluczy w pliku parametrów szablonu Menedżer zasobów (*azuredeploy. Parameters. JSON*).
@@ -146,7 +146,7 @@ Certyfikat uwierzytelniania klastra musi być skonfigurowany zarówno w ramach z
 Konfigurację usługi Azure AD można dodać do szablonu Menedżer zasobów klastra, odwołując się do magazynu kluczy, który zawiera klucze certyfikatów. Dodaj te parametry i wartości usługi Azure AD w pliku parametrów szablonu Menedżer zasobów (*azuredeploy. Parameters. JSON*). 
 
 > [!NOTE]
-> Przed utworzeniem klastra należy utworzyć dzierżawy i użytkowników usługi Azure AD.  Aby uzyskać więcej informacji, przeczytaj temat [Konfigurowanie usługi Azure AD do uwierzytelniania klientów](service-fabric-cluster-creation-setup-aad.md).
+> W systemie Linux przed utworzeniem klastra należy utworzyć dzierżawy i użytkowników usługi Azure AD.  Aby uzyskać więcej informacji, przeczytaj temat [Konfigurowanie usługi Azure AD do uwierzytelniania klientów](service-fabric-cluster-creation-setup-aad.md).
 
 ```json
 {
@@ -259,16 +259,16 @@ Na poniższym diagramie przedstawiono lokalizację magazynu kluczy i konfiguracj
 ![Menedżer zasobów mapowanie zależności][cluster-security-arm-dependency-map]
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, gdy masz szablon klastra, Dowiedz się, jak [wdrożyć klaster na platformie Azure](service-fabric-cluster-creation-via-arm.md).  Jeśli jeszcze tego nie zrobiono, przed wdrożeniem klastra produkcyjnego zapoznaj się z listą kontrolną gotowości do [produkcji](service-fabric-production-readiness-checklist.md) .
+Teraz, gdy masz szablon klastra, Dowiedz się, jak [wdrożyć klaster na platformie Azure](service-fabric-cluster-creation-via-arm.md).  Jeśli jeszcze tego nie zrobiono, przed wdrożeniem klastra produkcyjnego zapoznaj się z [listą kontrolną gotowości do produkcji](service-fabric-production-readiness-checklist.md) .
 
 Aby dowiedzieć się więcej o składni i właściwościach JSON dla zasobów wdrożonych w tym artykule, zobacz:
 
-* [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
-* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft. servicefabric/klastry](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
-* [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
+* [Microsoft. Network/adresów publicipaddress](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft. COMPUTE/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md

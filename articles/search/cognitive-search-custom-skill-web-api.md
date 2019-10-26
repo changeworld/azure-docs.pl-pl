@@ -1,23 +1,24 @@
 ---
-title: Niestandardowa umiejętność interfejsu API sieci Web w potoku wzbogacania
-titleSuffix: Azure Cognitive Search
-description: Zwiększaj możliwości usługi Azure Wyszukiwanie poznawcze umiejętności, wywołując do interfejsów API sieci Web. Za pomocą niestandardowej funkcji interfejsu API sieci Web Zintegruj swój kod niestandardowy.
+title: Niestandardowa umiejętność wyszukiwania poznawczego — Azure Search
+description: Zwiększaj możliwości umiejętności wyszukiwania poznawczego, wywołując do interfejsów API sieci Web
+services: search
 manager: nitinme
 author: luiscabrer
-ms.author: luisca
-ms.service: cognitive-search
+ms.service: search
+ms.workload: search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 54c51993733091d326c59c4ac4ec3662cc704021
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: HT
+ms.date: 05/02/2019
+ms.author: luisca
+ms.openlocfilehash: fda4f96c2c73c5a2d39435a509afcf654ed77b70
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784904"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901313"
 ---
-# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Niestandardowa umiejętność interfejsu API sieci Web w potoku wzbogacenia Wyszukiwanie poznawcze platformy Azure
+# <a name="custom-web-api-skill"></a>Niestandardowa umiejętność interfejsu API sieci Web
 
-Niestandardowa umiejętność **interfejsu API sieci Web** umożliwia zwiększenie wzbogacenia AI przez wywołanie do punktu końcowego internetowego interfejsu API dostarczającego operacje niestandardowe. Podobnie jak w przypadku wbudowanych umiejętności, **niestandardowa umiejętność interfejsu API sieci Web** ma dane wejściowe i wyjściowe. W zależności od danych wejściowych internetowy interfejs API odbiera ładunek JSON podczas uruchamiania indeksatora i wyprowadza ładunek JSON jako odpowiedź wraz z kodem stanu sukcesu. Oczekiwano, że odpowiedź będzie miała dane wyjściowe określone przez niestandardową umiejętność. Jakakolwiek inna odpowiedź jest traktowana jako błąd i nie są wykonywane żadne wzbogacania.
+Niestandardowa umiejętność **interfejsu API sieci Web** umożliwia przeprowadzenie wyszukiwania poznawczego przez wywoływanie do punktu końcowego interfejsu API sieci Web dostarczającego operacje niestandardowe. Podobnie jak w przypadku wbudowanych umiejętności, **niestandardowa umiejętność interfejsu API sieci Web** ma dane wejściowe i wyjściowe. W zależności od danych wejściowych internetowy interfejs API odbiera ładunek JSON podczas uruchamiania indeksatora i wyprowadza ładunek JSON jako odpowiedź wraz z kodem stanu sukcesu. Oczekiwano, że odpowiedź będzie miała dane wyjściowe określone przez niestandardową umiejętność. Jakakolwiek inna odpowiedź jest traktowana jako błąd i nie są wykonywane żadne wzbogacania.
 
 Struktura ładunków JSON została opisana w dalszej części tego dokumentu.
 
@@ -41,6 +42,7 @@ W parametrach jest rozróżniana wielkość liter.
 | httpHeaders | Kolekcja par klucz-wartość, gdzie klucze reprezentują nazwy i wartości nagłówków, reprezentujące wartości nagłówka, które będą wysyłane do internetowego interfejsu API wraz z ładunkiem. Następujące nagłówki nie są dozwolone w tej kolekcji: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
 | timeout | Obowiązkowe Gdy ta wartość jest określona, wskazuje limit czasu dla klienta http wykonującego wywołanie interfejsu API. Musi być sformatowana jako wartość XSD "dayTimeDuration" (ograniczony podzbiór wartości [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Na przykład `PT60S` przez 60 sekund. Jeśli nie zostanie ustawiona, zostanie wybrana wartość domyślna wynosząca 30 sekund. Limit czasu można ustawić na maksymalnie 230 sekund i co najmniej 1 sekundę. |
 | batchSize | Obowiązkowe Wskazuje, ile "rekordów danych" (patrz struktura ładunku _JSON_ poniżej) zostanie wysłana na wywołanie interfejsu API. Jeśli nie zostanie ustawiona, zostanie wybrana wartość domyślna 1000. Zalecamy użycie tego parametru, aby osiągnąć odpowiednią kompromis między indeksowaniem przepływności i obciążeniem interfejsu API |
+| degreeOfParallelism | Obowiązkowe Gdy ta wartość jest określona, wskazuje liczbę wywołań, które indeksator wykona równolegle do określonego punktu końcowego. Możesz zmniejszyć tę wartość, jeśli punkt końcowy kończy się niepowodzeniem z zbyt dużą liczbą żądań lub zgłoś go, jeśli punkt końcowy jest w stanie zaakceptować więcej żądań i chcesz zwiększyć wydajność indeksatora.  Jeśli nie zostanie ustawiona, zostanie użyta wartość domyślna 5. Dla degreeOfParallelism można ustawić maksymalnie 10 i co najmniej 1. |
 
 ## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
 
@@ -203,5 +205,5 @@ W przypadku niedostępności internetowego interfejsu API lub zwrócenie błędu
 
 + [Umiejętności dotyczące oszczędzania mocy: repozytorium umiejętności niestandardowych](https://aka.ms/powerskills)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
-+ [Dodaj niestandardową umiejętność do potoku wzbogacania AI](cognitive-search-custom-skill-interface.md)
-+ [Przykład: Tworzenie niestandardowej umiejętności dla wzbogacania AI (poznawcze — wyszukiwanie-tworzenie-niestandardowe-umiejętność-example.md)
++ [Dodaj niestandardową umiejętność wyszukiwania poznawczego](cognitive-search-custom-skill-interface.md)
++ [Przykład: Tworzenie niestandardowej umiejętności dla wyszukiwania poznawczego](cognitive-search-create-custom-skill-example.md)

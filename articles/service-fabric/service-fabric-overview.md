@@ -15,30 +15,28 @@ ms.workload: NA
 ms.date: 04/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: da7e41ae77226c2a18b92329507855ac30891058
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0226c9f1b90495cdfd47a5c5c7a415a36761753d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816089"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901590"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Omówienie usługi Azure Service Fabric
-Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług i kontenerów oraz zarządzanie nimi. Ponadto usługa Service Fabric pozwala sprostać istotnym wyzwaniom związanym z opracowywaniem natywnych aplikacji chmurowych i zarządzaniem nimi. Deweloperzy i administratorzy mogą uniknąć złożonych problemów związanych z infrastrukturą i skoncentrować się na implementowaniu wymagających obciążeń o znaczeniu strategicznym, które są skalowalne, niezawodne i łatwe w zarządzaniu. Usługa Service Fabric to platforma następnej generacji do tworzenia działających w kontenerach aplikacji w skali chmury warstwy pierwszej dla przedsiębiorstw i zarządzania nimi.
+Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług i kontenerów oraz zarządzanie nimi. Ponadto usługa Service Fabric pozwala sprostać istotnym wyzwaniom związanym z opracowywaniem natywnych aplikacji w chmurze i zarządzaniem nimi. Deweloperzy i administratorzy mogą uniknąć złożonych problemów związanych z infrastrukturą i skoncentrować się na implementowaniu wymagających obciążeń o znaczeniu strategicznym, które są skalowalne, niezawodne i łatwe w zarządzaniu. Usługa Service Fabric to platforma następnej generacji do tworzenia działających w kontenerach aplikacji w skali chmury warstwy pierwszej dla przedsiębiorstw i zarządzania nimi.
 
 Ten krótki klip wideo zawiera wprowadzenie do usługi Service Fabric i mikrousług:
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="compliance"></a>Zgodność
-Dostawca zasobów usługi Azure Service Fabric jest dostępny we wszystkich regionach świadczenia usługi Azure i jest zgodny ze wszystkimi certyfikatami zgodności, które obejmuje platforma Azure; obejmuje to następujące elementy: SOC, ISO, PCI DSS, HIPAA i Rodo. Aby uzyskać pełną listę certyfikatów zgodności, zapoznaj się z poniższymi tematami: [Oferty zgodności](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
+Dostawca zasobów usługi Azure Service Fabric jest dostępny we wszystkich regionach świadczenia usługi Azure i jest zgodny ze wszystkimi certyfikatami zgodności, które obejmuje platforma Azure; obejmuje to następujące elementy: SOC, ISO, PCI DSS, HIPAA i Rodo. Aby uzyskać pełną listę certyfikatów zgodności, zapoznaj się z poniższymi tematami: [oferty zgodności](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
 ## <a name="applications-composed-of-microservices"></a>Aplikacje złożone z mikrousług 
 Usługa Service Fabric umożliwia tworzenie skalowalnych i niezawodnych aplikacji złożonych z mikrousług — działających z dużą gęstością w udostępnionej puli maszyn, nazywanej klastrem — i zarządzanie nimi. Zapewnia zaawansowane i lekkie środowisko uruchomieniowe, umożliwiające tworzenie skalowalnych, rozproszonych mikrousług stanowych i bezstanowych działających w kontenerach. Udostępnia również kompleksowe funkcje zarządzania aplikacjami, umożliwiające inicjowanie obsługi, wdrażanie, monitorowanie, uaktualnianie/poprawianie i usuwanie wdrożonych aplikacji, w tym usług konteneryzowanych.
 
 Usługa Service Fabric jest obecnie podstawą działania wielu usług firmy Microsoft, takich jak Azure SQL Database, Azure Cosmos DB, Cortana, Microsoft Power BI, Microsoft Intune, Azure Event Hubs, Azure IoT Hub, Dynamics 365, Skype dla firm i wiele kluczowych usług platformy Azure.
 
-Usługa Service Fabric została zaprojektowana z myślą o tworzeniu natywnych aplikacji chmurowych, które można skalować stosownie do potrzeb, od małych początkowych rozmiarów do ogromnej skali z setkami, a nawet tysiącami maszyn.
-
-Współczesne usługi internetowe złożone są z mikrousług. Przykładami mikrousług są bramy protokołów, profile użytkowników, koszyki zakupów, usługi przetwarzania spisów, kolejki czy pamięci podręczne. Usługa Service Fabric to platforma mikrousług nadająca każdej mikrousłudze (lub każdemu kontenerowi) unikatową nazwę, która może być bezstanowa lub stanowa.
+Usługa Service Fabric została zaprojektowana z myślą o tworzeniu natywnych aplikacji chmurowych, które można skalować stosownie do potrzeb, od małych początkowych rozmiarów do ogromnej skali z setkami, a nawet tysiącami maszyn. Współczesne usługi internetowe złożone są z mikrousług. Przykładami mikrousług są bramy protokołów, profile użytkowników, koszyki zakupów, usługi przetwarzania spisów, kolejki czy pamięci podręczne. 
 
 Usługa Service Fabric zapewnia kompleksowe środowisko uruchomieniowe i funkcje zarządzania cyklem życia dla aplikacji złożonych z takich mikrousług. Mikrousługi są hostowane w kontenerach wdrażanych i aktywowanych w klastrze usługi Service Fabric. Przejście od maszyn wirtualnych do kontenerów umożliwia zwiększenie gęstości o rząd wielkości. Gęstość można zwiększyć o kolejny rząd wielkości, przechodząc od kontenerów do mikrousług w kontenerach. Na przykład jeden klaster usługi Azure SQL Database obejmuje setki maszyn, na których działają dziesiątki tysięcy kontenerów, w których hostowane są łącznie setki tysięcy baz danych. Każda baza danych jest stanową mikrousługą usługi Service Fabric. 
 
