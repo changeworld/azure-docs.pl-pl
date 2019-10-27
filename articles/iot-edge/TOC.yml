@@ -110,13 +110,7 @@
 - name: Przewodniki z instrukcjami
   items:
     - name: Rejestrowanie urządzenia usługi IoT Edge
-      items:
-        - name: Portal Azure
-          href: how-to-register-device-portal.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: how-to-register-device-cli.md
-        - name: Visual Studio Code
-          href: how-to-register-device-vscode.md
+      href: how-to-register-device.md
     - name: Instalowanie usługi IoT Edge i zarządzanie nią
       items:
         - name: Linux
