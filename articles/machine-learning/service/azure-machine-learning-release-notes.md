@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: afad2648ec73b02d4e06ad55f850a518d2488f68
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8ec05db9bf372f31b6c3cfadf1eda75ba8f7d2b
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756053"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965189"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
@@ -580,13 +580,13 @@ W czasie tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefo
 ### <a name="azure-machine-learning-data-prep-sdk-v118"></a>Azure Machine Learning zestawu SDK 1.1.8 przygotowywania danych
 
 + **Nowe funkcje**
- + Obiekty przepływu danych można teraz powtarzać, generując sekwencję rekordów. Zapoznaj się z dokumentacją dotyczącą `Dataflow.to_record_iterator`.
+  + Obiekty przepływu danych można teraz powtarzać, generując sekwencję rekordów. Zapoznaj się z dokumentacją dotyczącą `Dataflow.to_record_iterator`.
 
 + **Poprawki i ulepszenia błędów**
- + Zwiększona niezawodność zestawu preprodukcyjny SDK.
- + Ulepszona obsługa Pandas dataframes z indeksami kolumn niebędącymi ciągami.
- + Ulepszona wydajność `to_pandas_dataframe` w zestawach danych.
- + Naprawiono usterkę polegającą na tym, że wykonanie zestawów danych w środowisku wielowęzłowym nie powiodło się.
+  + Zwiększona niezawodność zestawu preprodukcyjny SDK.
+  + Ulepszona obsługa Pandas dataframes z indeksami kolumn niebędącymi ciągami.
+  + Ulepszona wydajność `to_pandas_dataframe` w zestawach danych.
+  + Naprawiono usterkę polegającą na tym, że wykonanie zestawów danych w środowisku wielowęzłowym nie powiodło się.
 
 ## <a name="2019-07-01"></a>2019-07-01
 
@@ -811,7 +811,7 @@ Użyj maszyny wirtualnej z notesem jako bezpiecznego, gotowego do użycia w prze
 
 Azure Machine Learning zestawu SDK dla języka Python v 1.0.30.
 
-[@No__t_1](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?view=azure-ml-py) nastąpiło dodanie nowej wersji opublikowanego potoku przy zachowaniu tego samego punktu końcowego.
+[`PipelineEndpoint`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?view=azure-ml-py) nastąpiło dodanie nowej wersji opublikowanego potoku przy zachowaniu tego samego punktu końcowego.
 
 ## <a name="2019-04-17"></a>2019-04-17
 

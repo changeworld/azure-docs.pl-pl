@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie urządzenia usługi IoT Edge — Machine Learning na platformie Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Skonfiguruj maszynę wirtualną platformy Azure z systemem Linux jako urządzenie usługi Azure IoT Edge, która pełni rolę przezroczystej bramy.
+title: Skonfiguruj Machine Learning urządzenia IoT Edge na Azure IoT Edge | Microsoft Docs
+description: Skonfiguruj maszynę wirtualną platformy Azure z systemem Linux jako urządzenie Azure IoT Edge, które działa jako przezroczysta brama.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,80 +8,80 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a2096004a7b389f627c528a8dfb4768ac001f390
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: b9f9fe78db2d8bcf50a076fdfc3eba7b1f347201
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155623"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965390"
 ---
-# <a name="tutorial-configure-an-iot-edge-device"></a>Samouczek: Konfigurowanie urządzenia usługi IoT Edge
+# <a name="tutorial-configure-an-iot-edge-device"></a>Samouczek: Konfigurowanie urządzenia IoT Edge
 
 > [!NOTE]
-> Ten artykuł jest częścią serii, samouczek dotyczący przy użyciu usługi Azure Machine Learning w usłudze IoT Edge. Jeśli została wyświetlona bezpośrednio w tym artykule, firma Microsoft zachęca rozpoczynać się [najpierw artykuł](tutorial-machine-learning-edge-01-intro.md) z tej serii, aby uzyskać najlepsze wyniki.
+> Ten artykuł jest częścią serii samouczka dotyczącego używania Azure Machine Learning w IoT Edge. Jeśli ten artykuł został osiągnięty bezpośrednio, zachęcamy do rozpoczęcia od [pierwszego artykułu](tutorial-machine-learning-edge-01-intro.md) z serii w celu uzyskania najlepszych wyników.
 
-W tym artykule możemy skonfigurować maszynę wirtualną platformy Azure z systemem Linux jako urządzenia Azure IoT Edge, która pełni rolę przezroczystej bramy. Konfiguracja przezroczystej bramy umożliwia urządzeniom na łączenie z usługą Azure IoT Hub za pośrednictwem bramy, nie wiedząc o tym znajdującą się bramy. W tym samym czasie dla użytkownika obsługującego urządzeń w usłudze IoT Hub nie rozpoznaje urządzenie bramy pośredniej. Ostatecznie używamy przezroczystej bramy można dodać analiz krawędziowych do naszego systemu, dodając moduły usługi IoT Edge do bramy.
+W tym artykule skonfigurujemy maszynę wirtualną platformy Azure z systemem Linux jako urządzenie Azure IoT Edge, które działa jako niewidoczna brama. Konfiguracja nieprzezroczystej bramy umożliwia urządzeniom łączenie się z usługą Azure IoT Hub za pomocą bramy bez znajomości bramy. W tym samym czasie użytkownik korzystający z urządzeń w IoT Hub nie rozpoznaje pośredniego urządzenia bramy. Ostatecznie używamy przezroczystej bramy do dodawania analiz brzegowych do naszego systemu przez dodanie modułów IoT Edge do bramy.
 
-Kroki opisane w tym artykule są najczęściej wykonywane przez dewelopera w chmurze.
+Kroki opisane w tym artykule są zwykle wykonywane przez dewelopera chmury.
 
-## <a name="generate-certificates"></a>Generowanie certyfikatów
+## <a name="generate-certificates"></a>Generowanie certyfikatów klienta
 
-Dla urządzeń do działania jako brama musi mieć możliwość nawiązania bezpiecznego połączenia podrzędnego urządzeń. Usługa Azure IoT Edge umożliwia użycie infrastruktury kluczy publicznych (PKI) do skonfigurowania bezpiecznych połączeń między urządzeniami. W tym przypadku możemy zezwolenie podrzędnym urządzenia połączyć się z urządzenia usługi IoT Edge, działając jako przezroczystej bramy. Aby zachować bezpieczeństwo uzasadnione, podrzędnym urządzenia powinny potwierdzenia tożsamości urządzenia usługi IoT Edge. Aby uzyskać więcej informacji na temat wykorzystania certyfikatów przez urządzenia usługi IoT Edge, zobacz [szczegóły użycia certyfikatu usługi Azure IoT Edge](iot-edge-certs.md).
+Aby urządzenie działało jako brama, musi być w stanie bezpiecznie połączyć się z urządzeniami podrzędnymi. Azure IoT Edge umożliwia konfigurowanie bezpiecznych połączeń między urządzeniami przy użyciu infrastruktury kluczy publicznych (PKI). W takim przypadku zezwalamy urządzeniu podrzędnemu na łączenie się z urządzeniem IoT Edge działającym jako niejawna brama. Aby zachować uzasadnione zabezpieczenia, urządzenie podrzędne powinno potwierdzić tożsamość urządzenia IoT Edge. Aby uzyskać więcej informacji na temat sposobu używania certyfikatów przez urządzenia IoT Edge, zobacz [Azure IoT Edge szczegóły użycia certyfikatu](iot-edge-certs.md).
 
-W tej sekcji utworzymy certyfikatów z podpisem własnym za pomocą obrazu platformy Docker, które możemy następnie skompilować i uruchomić. Wybraliśmy używać obrazu platformy Docker do ukończenia tego kroku, jak znacząco zmniejszyć liczbę kroków potrzebnych do tworzenia certyfikatów na komputerze deweloperskim Windows. Zobacz [generowanie certyfikatów z Windows](how-to-create-transparent-gateway.md#generate-certificates-with-windows) Aby uzyskać szczegółowe informacje na temat sposobu tworzenia certyfikatów bez korzystania z kontenera. [Generowanie certyfikatów z systemem Linux](how-to-create-transparent-gateway.md#generate-certificates-with-linux) ma zbiór instrukcji, które firma Microsoft zautomatyzowane przy użyciu obrazu platformy Docker.
+W tej sekcji tworzymy certyfikaty z podpisem własnym przy użyciu obrazu platformy Docker, który następnie kompilujemy i uruchamiamy. Wybrano użycie obrazu platformy Docker w celu wykonania tego kroku, ponieważ znacznie zmniejszyło liczbę kroków niezbędnych do utworzenia certyfikatów na komputerze deweloperskim systemu Windows. Zobacz [generowanie certyfikatów w systemie Windows](how-to-create-transparent-gateway.md#generate-certificates-with-windows) , aby uzyskać szczegółowe informacje na temat tworzenia certyfikatów bez używania kontenera. [Generowanie certyfikatów przy użyciu systemu Linux](how-to-create-transparent-gateway.md#generate-certificates-with-linux) zawiera zestaw instrukcji zautomatyzowanych za pomocą obrazu platformy Docker.
 
-1. Zaloguj się do tworzenia maszyny wirtualnej.
+1. Zaloguj się do maszyny wirtualnej deweloperskiej.
 
-2. Otwórz wiersz polecenia i uruchom następujące polecenie, aby utworzyć katalog na maszynie Wirtualnej.
+2. Otwórz wiersz polecenia i uruchom następujące polecenie, aby utworzyć katalog na maszynie wirtualnej.
 
     ```cmd
     mkdir c:\edgeCertificates
     ```
 
-3. Rozpocznij **Docker for Windows** z menu Windows Start.
+3. Rozpocznij **Docker for Windows** z menu Start systemu Windows.
 
 4. Otwórz program Visual Studio Code.
 
-5. Wybierz **pliku** > **Otwórz Folder...**  i wybierz polecenie **C:\\źródła\\IoTEdgeAndMlSample\\CreateCertificates**.
+5. Wybierz pozycję **plik** > **Otwórz folder...** i wybierz pozycję **C:\\Source\\IoTEdgeAndMlSample\\\ Certificates**.
 
-6. Kliknij prawym przyciskiem myszy w pliku dockerfile, a następnie wybierz **tworzenia obrazu**.
+6. Kliknij prawym przyciskiem myszy pliku dockerfile i wybierz polecenie **Kompiluj obraz**.
 
-7. W oknie dialogowym, zaakceptuj wartość domyślną dla nazwy obrazu i tagu: **createcertificates:latest**.
+7. W oknie dialogowym Zaakceptuj wartość domyślną dla nazwy i tagu obrazu: \ **Certificates: Najnowsza**.
 
 8. Poczekaj na zakończenie kompilacji.
 
     > [!NOTE]
-    > Zobaczysz ostrzeżenie dotyczące o brakuje klucza publicznego. Jest ona bezpiecznie zignorować to ostrzeżenie. Podobnie zobaczysz ostrzeżenie zaleca wyboru/reset uprawnień na obrazie, który jest bezpiecznie zignorować ten obraz.
+    > Może pojawić się ostrzeżenie dotyczące brakującego klucza publicznego. Można bezpiecznie zignorować to ostrzeżenie. Podobnie zobaczysz ostrzeżenie o zabezpieczeniach, które zaleca sprawdzanie/Resetowanie uprawnień do obrazu, co jest bezpieczne do ignorowania dla tego obrazu.
 
-9. W oknie terminalu programu Visual Studio Code uruchomienia kontenera createcertificates.
+9. W oknie terminalu Visual Studio Code Uruchom kontener servicecertificates.
 
     ```cmd
     docker run --name createcertificates --rm -v c:\edgeCertificates:/edgeCertificates createcertificates /edgeCertificates
     ```
 
-10. Wyświetli monit o platformy docker w celu uzyskania dostępu do **c:\\**  dysku. Wybierz **udostępnić go**.
+10. Platforma Docker wyświetli monit o dostęp do dysku **c:\\** . Wybierz pozycję **Udostępnij**.
 
-11. Wprowadź swoje poświadczenia, po wyświetleniu monitu.
+11. Po wyświetleniu monitu podaj swoje poświadczenia.
 
-12. Raz kontenera zakończy działa, sprawdź następujące pliki w **c:\\edgeCertificates**:
+12. Po zakończeniu działania kontenera sprawdź następujące pliki w **c:\\edgeCertificates**:
 
-    * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
-    * c:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
-    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pem
-    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
-    * c:\\edgeCertificates\\private\\new-edge-device.key.pem
+    * c:\\edgeCertificates\\certyfikatów\\Azure-IoT-test-Only. root. ca. CERT. pem
+    * c:\\edgeCertificates\\certyfikatów\\New-Edge-Device-Full-Chain. CERT. pem
+    * c:\\edgeCertificates\\certyfikatów\\New-Edge-Device. CERT. pem
+    * c:\\edgeCertificates\\certyfikatów\\New-Edge-Device. CERT. pfx
+    * c:\\edgeCertificates\\prywatny\\New-Edge-Device. Key. pem
 
-## <a name="upload-certificates-to-azure-key-vault"></a>Przekaż certyfikaty usługi Azure Key Vault
+## <a name="upload-certificates-to-azure-key-vault"></a>Przekaż certyfikaty do Azure Key Vault
 
-Nasze certyfikaty Przechowuj w bezpiecznym miejscu i udostępnić je przy użyciu wielu urządzeń, firma Microsoft przekaże certyfikatów w usłudze Azure Key Vault. Jak widać na powyższej liście, mamy dwa rodzaje plików certyfikatów: Plik PFX i podaj PEM. Plik PFX będzie traktowany jako certyfikaty magazynu kluczy do przesłania do usługi Key Vault. Pliki PEM to zwykły tekst, a firma Microsoft będzie traktowana jako wpisy tajne z magazynu Key. Firma Microsoft będzie używać usługi Key Vault, skojarzone z obszarem roboczym usługi Azure Machine Learning, które zostały utworzone przez uruchomienie [notesów usługi Azure](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks).
+Aby bezpiecznie przechowywać certyfikaty i udostępnić je z wielu urządzeń, przekażemy certyfikaty do Azure Key Vault. Jak widać na liście powyżej, istnieją dwa typy plików certyfikatów: PFX i PEM. Będziemy traktować plik PFX jako Key Vault certyfikaty do przekazania do Key Vault. Pliki PEM są zwykłym tekstem, a firma Microsoft traktuje je jako wpisy tajne Key Vault. Będziemy używać Key Vault skojarzonych z obszarem roboczym usługi Azure Machine Learning utworzonym przez uruchomienie [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks).
 
-1. Z [witryny Azure portal](https://portal.azure.com), przejdź do obszaru roboczego usługi Azure Machine Learning.
+1. W [Azure Portal](https://portal.azure.com)przejdź do obszaru roboczego usługi Azure Machine Learning.
 
-2. Na stronie Przegląd obszaru roboczego usługi Azure Machine Learning, należy znaleźć nazwę **usługi Key Vault**.
+2. Na stronie Przegląd w obszarze roboczym usługi Azure Machine Learning Znajdź nazwę **Key Vault**.
 
-    ![Skopiuj nazwę usługi key vault](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
+    ![Kopiuj nazwę magazynu kluczy](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 
-3. Na komputerze deweloperskim należy przekazać certyfikaty do usługi Key Vault. Zastąp **\<subscriptionId\>** i **\<keyvaultname\>** przy użyciu informacji o zasobach.
+3. Na komputerze deweloperskim Przekaż certyfikaty do Key Vault. Zastąp **\<Identyfikator subskrypcji\>** i **\<magazyn** kluczyname\>informacjami o zasobach.
 
     ```powershell
     c:\source\IoTEdgeAndMlSample\CreateCertificates\upload-keyvaultcerts.ps1 -SubscriptionId <subscriptionId> -KeyVaultName <keyvaultname>
@@ -89,57 +89,57 @@ Nasze certyfikaty Przechowuj w bezpiecznym miejscu i udostępnić je przy użyci
 
 4. Jeśli zostanie wyświetlony monit, zaloguj się do platformy Azure.
 
-5. Skrypt będzie uruchamiany przez kilka minut przy użyciu danych wyjściowych, który zawiera listę nowych wpisów usługi Key Vault.
+5. Skrypt będzie uruchamiany przez kilka minut z danymi wyjściowymi zawierającymi nowe wpisy Key Vault.
 
-    ![Dane wyjściowe skryptu usługi Key Vault](media/tutorial-machine-learning-edge-05-configure-edge-device/key-vault-entries-output.png)
+    ![Key Vault dane wyjściowe skryptu](media/tutorial-machine-learning-edge-05-configure-edge-device/key-vault-entries-output.png)
 
 ## <a name="create-iot-edge-device"></a>Tworzenie urządzenia usługi IoT Edge
 
-Aby połączyć urządzenie z systemem Azure IoT Edge do usługi IoT hub, najpierw utworzymy tożsamość urządzenia w Centrum. Firma Microsoft mogą parametrów połączenia z tożsamości urządzenia w chmurze i umożliwia konfigurowanie środowiska uruchomieniowego w naszym urządzeniu usługi IoT Edge. Gdy urządzenia został skonfigurowany i nawiązuje połączenie z koncentratorem, możemy wdrażać moduły oraz wysyłać wiadomości. Możemy również zmienić konfiguracji fizycznego urządzenia usługi IoT Edge, zmieniając konfigurację odpowiedniej tożsamości urządzenia w usłudze IoT hub.
+Aby podłączyć urządzenie Azure IoT Edge do usługi IoT Hub, najpierw tworzymy tożsamość urządzenia w centrum. Przyjmujemy parametry połączenia z tożsamości urządzenia w chmurze i używają jej do konfigurowania środowiska uruchomieniowego na naszym urządzeniu IoT Edge. Po skonfigurowaniu urządzenia i połączeniu z centrum można wdrażać moduły i wysyłać komunikaty. Można również zmienić konfigurację urządzenia fizycznego IoT Edge, zmieniając konfigurację odpowiedniej tożsamości urządzenia w usłudze IoT Hub.
 
-W tym samouczku utworzymy nową tożsamość urządzenia przy użyciu programu Visual Studio Code. Można również wykonać te kroki przy użyciu [witryny Azure portal](how-to-register-device-portal.md), lub [wiersza polecenia platformy Azure](how-to-register-device-cli.md).
+W tym samouczku utworzymy nową tożsamość urządzenia przy użyciu Visual Studio Code. Te kroki można również wykonać przy użyciu [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)lub [interfejsu wiersza polecenia platformy Azure](how-to-register-device.md#register-with-the-azure-cli).
 
-1. Na komputerze deweloperskim Otwórz program Visual Studio Code.
+1. Na komputerze deweloperskim Otwórz Visual Studio Code.
 
-2. Otwórz **urządzeń usługi Azure IoT Hub** ramki w widoku Eksploratora Visual Studio Code.
+2. Otwórz ramkę **urządzeń IoT Hub platformy Azure** w widoku Eksploratora Visual Studio Code.
 
-3. Kliknij przycisk wielokropka i wybierz pozycję **Utwórz urządzenie brzegowe IoT**.
+3. Kliknij wielokropek i wybierz pozycję **utwórz IoT Edge urządzenie**.
 
-4. Nazwij urządzenia. Dla wygody używany **aaTurbofanEdgeDevice** tak sortuje wcześniej wszystkich urządzeń klienckich utworzony wcześniej przez kontroler urządzenia, aby wysłać dane testowe.
+4. Nadaj urządzeniu nazwę. Dla wygody używamy usługi **aaTurbofanEdgeDevice** , więc sortuje przed wszystkimi urządzeniami klienckimi utworzonymi wcześniej za pomocą zespołu usługi, aby wysyłać dane testowe.
 
-5. Nowe urządzenie pojawi się na liście urządzeń.
+5. Nowe urządzenie zostanie wyświetlone na liście urządzeń.
 
-    ![AaTurbofanEdgeDevice nowego widoku w Eksploratorze programu VS Code](media/tutorial-machine-learning-edge-05-configure-edge-device/iot-hub-devices-list.png)
+    ![Wyświetlanie nowych aaTurbofanEdgeDevice w Eksploratorze VS Code](media/tutorial-machine-learning-edge-05-configure-edge-device/iot-hub-devices-list.png)
 
-## <a name="deploy-azure-virtual-machine"></a>Wdrażanie maszyny wirtualnej platformy Azure
+## <a name="deploy-azure-virtual-machine"></a>Wdróż maszynę wirtualną platformy Azure
 
-Używamy [usługi Azure IoT Edge w systemie Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) obrazu z witryny Azure Marketplace do utworzenia naszej urządzenia usługi IoT Edge na potrzeby tego samouczka. Usługa Azure IoT Edge w obrazie systemu Ubuntu instaluje najnowsze środowisko uruchomieniowe usługi Azure IoT Edge i jego zależności przy uruchamianiu. Wdrożymy maszyny Wirtualnej, przy użyciu skryptu programu PowerShell `Create-EdgeVM.ps1`; szablon usługi Resource Manager `IoTEdgeVMTemplate.json`; a skrypt powłoki, `install packages.sh`.
+Na potrzeby tego samouczka użyjemy [Azure IoT Edge na](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) obrazie Ubuntu z IoT Edge witryny Azure Marketplace. Azure IoT Edge w obrazie Ubuntu instaluje najnowsze środowisko uruchomieniowe Azure IoT Edge i jego zależności podczas uruchamiania. Wdrażamy maszynę wirtualną przy użyciu skryptu programu PowerShell, `Create-EdgeVM.ps1`; szablon Menedżer zasobów, `IoTEdgeVMTemplate.json`; i skrypt powłoki `install packages.sh`.
 
-### <a name="enable-programmatic-deployment"></a>Włączyć wdrożenia programowe
+### <a name="enable-programmatic-deployment"></a>Włącz wdrażanie programistyczne
 
-Aby użyć obrazu z witryny marketplace w ramach wdrożenia inicjowane przez skrypty, musimy włączyć wdrożenia programowe obrazu.
+Aby użyć obrazu z portalu Marketplace we wdrożeniu inicjowanym przez skrypty, musimy włączyć wdrożenie programistyczne dla obrazu.
 
 1. Zaloguj się do Portalu Azure.
 
 1. Wybierz pozycję **Wszystkie usługi**.
 
-1. Na pasku wyszukiwania wprowadź i wybierz **Marketplace**.
+1. Na pasku wyszukiwania wprowadź i wybierz pozycję **Marketplace**.
 
-1. Na pasku wyszukiwania wprowadź i wybierz **usługi Azure IoT Edge w systemie Ubuntu**.
+1. Na pasku wyszukiwania wprowadź i wybierz **Azure IoT Edge w Ubuntu**.
 
-1. Wybierz **mają zostać wdrożone programowo? Rozpoczynanie pracy** hiperłącze.
+1. **Czy chcesz wdrożyć program programowo? Rozpocznij** hiperlink.
 
-1. Wybierz **Włącz** przycisk następnie **Zapisz**.
+1. Wybierz przycisk **Włącz** , a następnie **Zapisz**.
 
-    ![Włączyć wdrożenia programowe dla maszyn wirtualnych](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
+    ![Włącz wdrażanie programistyczne dla maszyny wirtualnej](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
 
-1. Zostanie wyświetlone powiadomienie sukces.
+1. Zostanie wyświetlone powiadomienie o powodzeniu.
 
 ### <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Następnie uruchom skrypt, aby utworzyć maszynę wirtualną dla urządzenia usługi IoT Edge.
+Następnie uruchom skrypt, aby utworzyć maszynę wirtualną dla urządzenia IoT Edge.
 
-1. Otwórz okno programu PowerShell i przejdź do **EdgeVM** katalogu.
+1. Otwórz okno programu PowerShell i przejdź do katalogu **EdgeVM** .
 
     ```powershell
     cd c:\source\IoTEdgeAndMlSample\EdgeVM
@@ -151,72 +151,72 @@ Następnie uruchom skrypt, aby utworzyć maszynę wirtualną dla urządzenia us�
     .\Create-EdgeVm.ps1
     ```
 
-3. Po wyświetleniu monitu podaj wartości dla każdego parametru. Dla subskrypcji grupy zasobów i lokalizacji, w której firma Microsoft zaleca się używać tego samego dostępne dla Ciebie dla wszystkich zasobów w tym samouczku.
+3. Po wyświetleniu monitu podaj wartości dla każdego parametru. W przypadku subskrypcji, grupy zasobów i lokalizacji zalecamy użycie takich samych, jak w przypadku wszystkich zasobów w tym samouczku.
 
-    * **Identyfikator subskrypcji platformy Azure**: znaleziono w witrynie Azure portal
-    * **Nazwa grupy zasobów**: zapamiętania nazwę do grupowania zasobów na potrzeby tego samouczka
-    * **Lokalizacja**: Lokalizacja platformy Azure, w którym zostanie utworzona maszyna wirtualna. Na przykład westus2 lub northeurope. Aby uzyskać więcej informacji, zobacz wszystko [lokalizacje platformy Azure](https://azure.microsoft.com/global-infrastructure/locations/).
-    * **AdminUsername**: Nazwa konta administratora, którego użyjesz zalogować się do maszyny wirtualnej
-    * **AdminPassword**: hasło, aby ustawić AdminUsername na maszynie wirtualnej
+    * **Identyfikator subskrypcji platformy Azure**: znaleziono w Azure Portal
+    * **Nazwa grupy zasobów**: dopamiętanie nazwy do grupowania zasobów dla tego samouczka
+    * **Lokalizacja**: Lokalizacja platformy Azure, w której zostanie utworzona maszyna wirtualna. Na przykład westus2 lub northeurope. Aby uzyskać więcej informacji, Zobacz wszystkie [lokalizacje platformy Azure](https://azure.microsoft.com/global-infrastructure/locations/).
+    * **AdminUsername**: nazwa konta administratora, którego będziesz używać do logowania się do maszyny wirtualnej
+    * **AdminPassword**: hasło do ustawienia dla AdminUsername na maszynie wirtualnej
 
-4. Dla skryptu można było skonfigurować maszynę Wirtualną należy zalogować się do platformy Azure przy użyciu poświadczeń skojarzonych z subskrypcją platformy Azure, której używasz.
+4. Aby skrypt mógł skonfigurować maszynę wirtualną, należy zalogować się do platformy Azure przy użyciu poświadczeń skojarzonych z subskrypcją platformy Azure, której używasz.
 
-5. Skrypt potwierdza informacje dotyczące tworzenia maszyny Wirtualnej. Wybierz **y** lub **Enter** aby kontynuować.
+5. Skrypt potwierdza informacje dotyczące tworzenia maszyny wirtualnej. Wybierz pozycję **y** lub **Enter** , aby kontynuować.
 
 6. Skrypt jest uruchamiany przez kilka minut, ponieważ wykonuje następujące czynności:
 
-    * Utwórz grupę zasobów, jeśli go jeszcze nie istnieje
+    * Utwórz grupę zasobów, jeśli jeszcze nie istnieje
     * Tworzenie maszyny wirtualnej
-    * Dodać wyjątki sieciowej grupy zabezpieczeń dla maszyny Wirtualnej dla portów 22 (SSH), 5671 (AMQP), 5672 (AMPQ) i 443 (SSL)
-    * Zainstaluj [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest))
+    * Dodaj wyjątki sieciowej grupy zabezpieczeń dla maszyny wirtualnej dla portów 22 (SSH), 5671 (AMQP), 5672 (AMPQ) i 443 (SSL)
+    * Instalowanie [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
 
-7. Skrypt generuje parametry połączenia SSH do łączenia się z maszyną Wirtualną. Skopiuj parametry połączenia do kolejnego kroku.
+7. Skrypt wyprowadza parametry połączenia SSH w celu nawiązania połączenia z maszyną wirtualną. Skopiuj parametry połączenia dla następnego kroku.
 
-    ![Skopiuj parametry połączenia SSH dla maszyny Wirtualnej](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
+    ![Kopiuj parametry połączenia SSH dla maszyny wirtualnej](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
 
 ## <a name="connect-to-your-iot-edge-device"></a>Nawiązywanie połączenia z urządzeniem usługi IoT Edge
 
-W kolejnych sekcjach kilka Konfigurowanie maszyny wirtualnej platformy Azure, którą utworzyliśmy. Pierwszym krokiem jest nawiązanie połączenia z maszyną wirtualną.
+W następnych sekcjach opisano konfigurację utworzonej maszyny wirtualnej platformy Azure. Pierwszym krokiem jest nawiązanie połączenia z maszyną wirtualną.
 
-1. Otwórz wiersz polecenia, a następnie wklej parametry połączenia SSH, który został skopiowany z danych wyjściowych skryptu. Wprowadź dane dla nazwy użytkownika, sufiks i region, zgodnie z podanych wartości do skryptu programu PowerShell w poprzedniej sekcji.
+1. Otwórz wiersz polecenia i wklej parametry połączenia SSH skopiowane z danych wyjściowych skryptu. Wprowadź własne informacje dotyczące nazwy użytkownika, sufiksu i regionu zgodnie z wartościami podanymi w skrypcie programu PowerShell w poprzedniej sekcji.
 
     ```cmd
     ssh -l <username> iotedge-<suffix>.<region>.cloudapp.azure.com
     ```
 
-2. Po wyświetleniu monitu, aby zweryfikować autentyczności hosta, wpisz **tak** i wybierz **Enter**.
+2. Po wyświetleniu monitu o potwierdzenie autentyczności hosta wpisz **Yes** i wybierz **Enter**.
 
 3. Po wyświetleniu monitu podaj hasło.
 
-4. Ubuntu wyświetla komunikat powitalny, a następnie powinien zostać wyświetlony monit podobny `<username>@<machinename>:~$`.
+4. Ubuntu wyświetla komunikat powitalny, a następnie powinien zostać wyświetlony monit o podanie `<username>@<machinename>:~$`.
 
-## <a name="download-key-vault-certificates"></a>Pobierz certyfikaty usługi Key Vault
+## <a name="download-key-vault-certificates"></a>Pobierz certyfikaty Key Vault
 
-W tym artykule certyfikaty przekazany do usługi Key Vault, aby były one dostępne dla naszej urządzenia usługi IoT Edge i naszych urządzenia liścia, to urządzenie podrzędne, które używa urządzenia usługi IoT Edge jako bramy do komunikowania się z usługą IoT Hub. Firma Microsoft zajmuje się urządzenia typu liść w dalszej części tego samouczka. W tej sekcji należy pobrać certyfikatów na urządzeniu usługi IoT Edge.
+Wcześniej w tym artykule zostały przekazane certyfikaty do Key Vault, aby udostępnić je dla naszych IoT Edge urządzeń i urządzeń typu liść, które są urządzeniem podrzędnym korzystającym z urządzenia IoT Edge jako bramy do komunikacji z IoT Hub. W dalszej części tego samouczka zajmiemy się urządzeniem typu liść. W tej sekcji Pobierz certyfikaty do urządzenia IoT Edge.
 
-1. W sesji SSH na maszynie wirtualnej systemu Linux Zaloguj się do platformy Azure przy użyciu wiersza polecenia platformy Azure.
+1. W sesji SSH na maszynie wirtualnej z systemem Linux Zaloguj się do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure.
 
     ```bash
     az login
     ```
 
-1. Zostanie wyświetlony monit Otwórz w przeglądarce <https://microsoft.com/devicelogin> i wprowadź unikatowy kod. Te kroki można wykonać na komputerze lokalnym. Zamknij okno przeglądarki, po zakończeniu uwierzytelniania.
+1. Zostanie wyświetlony monit o otwarcie przeglądarki w celu <https://microsoft.com/devicelogin> i udostępnienia unikatowego kodu. Te kroki można wykonać na komputerze lokalnym. Zamknij okno przeglądarki po zakończeniu uwierzytelniania.
 
-1. Po pomyślnym uwierzytelnieniu maszyny Wirtualnej systemu Linux Zaloguj i wyświetlić listę swoich subskrypcji platformy Azure.
+1. Po pomyślnym uwierzytelnieniu maszyna wirtualna z systemem Linux zaloguje się i wyświetli subskrypcje platformy Azure.
 
-1. ASet subskrypcji platformy Azure, którego chcesz używać dla poleceń interfejsu wiersza polecenia platformy Azure.
+1. ASet subskrypcję platformy Azure, która ma być używana dla poleceń interfejsu wiersza polecenia platformy Azure.
 
     ```bash
     az account set --subscription <subscriptionId>
     ```
 
-1. Utwórz katalog na maszynie Wirtualnej certyfikatów.
+1. Utwórz katalog na maszynie wirtualnej dla certyfikatów.
 
     ```bash
     sudo mkdir /edgeMlCertificates
     ```
 
-1. Pobierz certyfikaty, które są przechowywane w usłudze key vault: nowy edge — urządzenia — pełnej chain.cert.pem, nowe device.key.pem krawędzi i azure-iot-test-only.root.ca.cert.pem
+1. Pobierz certyfikaty przechowywane w magazynie kluczy: New-Edge-Device-Full-Chain. CERT. pem, New-Edge-Device. Key. pem i Azure-IoT-test-Only. root. ca. CERT. pem
 
     ```bash
     key_vault_name="<key vault name>"
@@ -225,35 +225,35 @@ W tym artykule certyfikaty przekazany do usługi Key Vault, aby były one dostę
     sudo az keyvault secret download --vault-name $key_vault_name --name azure-iot-test-only-root-ca-cert-pem -f /edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem
     ```
 
-## <a name="update-the-iot-edge-device-configuration"></a>Aktualizowanie konfiguracji urządzenia usługi IoT Edge
+## <a name="update-the-iot-edge-device-configuration"></a>Aktualizowanie konfiguracji urządzenia IoT Edge
 
-Środowisko uruchomieniowe usługi IoT Edge korzysta /etc/iotedge/config.yaml pliku do utrwalenia jego konfiguracji. Musimy zaktualizować trzy informacje w tym pliku:
+Środowisko uruchomieniowe IoT Edge używa pliku/etc/iotedge/config.YAML, aby zachować jego konfigurację. Musimy zaktualizować trzy informacje w tym pliku:
 
-* **Parametry połączenia urządzenia**: parametry połączenia z tożsamości tego urządzenia w usłudze IoT Hub
-* **Certyfikaty:** certyfikaty na potrzeby połączeń z urządzeniami podrzędne
-* **Nazwa hosta:** w pełni kwalifikowana nazwa domeny (FQDN) urządzenia usługi IoT Edge dla maszyny Wirtualnej.
+* **Parametry połączenia urządzenia**: parametry połączenia z tożsamości tego urządzenia w IoT Hub
+* **Certyfikaty:** certyfikaty do użycia na potrzeby połączeń z urządzeniami podrzędnymi
+* **Nazwa hosta:** w pełni kwalifikowana nazwa domeny (FQDN) urządzenia IoT Edge maszyny wirtualnej.
 
-*Usługi Azure IoT Edge w systemie Ubuntu* obrazu, które firma Microsoft użyte do utworzenia maszyny Wirtualnej IoT Edge jest dostarczany za pomocą skryptu powłoki, która aktualizuje config.yaml przy użyciu parametrów połączenia.
+*Azure IoT Edge na* obrazie Ubuntu, który został użyty do utworzenia maszyny wirtualnej IoT Edge, zawiera skrypt powłoki, który aktualizuje plik config. YAML przy użyciu parametrów połączenia.
 
-1. W programie Visual Studio Code kliknij prawym przyciskiem myszy na urządzeniu usługi IoT Edge, a następnie wybierz **parametry połączenia urządzenia kopii**.
+1. W Visual Studio Code kliknij prawym przyciskiem myszy urządzenie IoT Edge, a następnie wybierz polecenie **Kopiuj parametry połączenia urządzenia**.
 
-    ![Skopiuj parametry połączenia z programu Visual Studio Code](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
+    ![Kopiuj parametry połączenia z Visual Studio Code](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
 
-2. W sesji SSH Uruchom polecenie, aby zaktualizować plik config.yaml parametrami połączenia urządzenia.
+2. W sesji SSH Uruchom polecenie, aby zaktualizować plik config. YAML za pomocą parametrów połączenia urządzenia.
 
     ```bash
     sudo /etc/iotedge/configedge.sh "<your_iothub_edge_device_connection_string>"
     ```
 
-Następnie zaktualizujemy certyfikatów i nazwy hosta przez bezpośrednią edycję config.yaml.
+Następnie będziemy aktualizować certyfikaty i nazwy hostów przez bezpośrednie edytowanie pliku config. YAML.
 
-1. Otwórz plik config.yaml.
+1. Otwórz plik config. YAML.
 
     ```bash
     sudo nano /etc/iotedge/config.yaml
     ```
 
-2. Zaktualizuj certyfikaty części config.yaml, usuwając wiodące `#` i ustawianie ścieżki, więc plik wygląda następująco:
+2. Zaktualizuj sekcję certyfikaty w pliku config. YAML, usuwając wiodącą `#` i ustawiając ścieżkę, tak aby plik wyglądał jak Poniższy przykład:
 
     ```yaml
     certificates:
@@ -262,13 +262,13 @@ Następnie zaktualizujemy certyfikatów i nazwy hosta przez bezpośrednią edycj
       trusted_ca_certs: "/edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem"
     ```
 
-    Upewnij się, że "certyfikatów:" nie ma przypisanego poprzedzających białe znaki i każdy z certyfikatów jest poprzedzony przez dwie spacje.
+    Upewnij się, że "certyfikaty:" nie zawierają poprzedzających odstępów i że każdy z certyfikatów jest poprzedzony dwiema spacjami.
 
-    Kliknij prawym przyciskiem myszy w systemie nano zostaną Wklej zawartość Schowka do bieżącego położenia kursora. Aby zastąpić ciąg, użyj strzałek z klawiatury, aby przejść do ciągu, który chcesz zamienić, Usuń ciąg, a następnie kliknij prawym przyciskiem myszy, aby wkleić z buforu.
+    Kliknięcie prawym przyciskiem myszy w programie nano spowoduje wklejenie zawartości schowka do bieżącego położenia kursora. Aby zastąpić ciąg, użyj strzałek klawiatury, aby przejść do ciągu, który ma zostać zamieniony, usuń ciąg, a następnie kliknij prawym przyciskiem myszy, aby wkleić go do buforu.
 
-3. W witrynie Azure portal przejdź do maszyny wirtualnej. Skopiuj nazwę DNS (nazwę FQDN komputera) z **Przegląd** sekcji.
+3. W Azure Portal przejdź do maszyny wirtualnej. Skopiuj nazwę DNS (FQDN maszyny) z sekcji **Przegląd** .
 
-4. Wklej nazwę FQDN, w sekcji hostname config.yml. Upewnij się, że nazwa jest tylko małe litery.
+4. Wklej nazwę FQDN do sekcji hostname pliku config. yml. Upewnij się, że nazwa zawiera tylko małe litery.
 
     ```yaml
     hostname: '<machinename>.<region>.cloudapp.azure.com'
@@ -276,29 +276,29 @@ Następnie zaktualizujemy certyfikatów i nazwy hosta przez bezpośrednią edycj
 
 5. Zapisz i zamknij plik (`Ctrl + X`, `Y`, `Enter`).
 
-6. Ponownie uruchom demona iotedge.
+6. Uruchom ponownie demona iotedge.
 
     ```bash
     sudo systemctl restart iotedge
     ```
 
-7. Sprawdzanie stanu demona usługi IoT Edge (po wykonaniu polecenia, wpisz ": q" Aby zakończyć działanie).
+7. Sprawdź stan demona IoT Edge (po poleceniu wpisz ": q", aby wyjść).
 
     ```bash
     systemctl status iotedge
     ```
 
-8. Jeśli widzisz błędy (kolor tekstu z prefiksem "\[błąd\]") w dziennikach demona Sprawdź stan szczegółowe informacje o błędzie.
+8. Jeśli widzisz błędy (kolor tekstu poprzedzony prefiksem "\[ERROR\]") w dziennikach demona przeglądu stanu dla szczegółowych informacji o błędzie.
 
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Właśnie został ukończony, konfigurowanie maszyny Wirtualnej platformy Azure jako usługi Azure IoT Edge przezroczystej bramy. Rozpoczęliśmy, generując Certyfikaty testowe, które możemy przekazać do usługi Azure Key Vault. Następnie użyliśmy skryptu i szablon usługi Resource Manager do wdrażania maszyn wirtualnych przy użyciu "Ubuntu Server 16.04 LTS i środowisko uruchomieniowe usługi Azure IoT Edge" obrazu z witryny Azure marketplace. Skryptu trwało dodatkowego kroku instalowania interfejsu wiersza polecenia platformy Azure ([zainstalować interfejs wiersza polecenia w usłudze Azure za pomocą narzędzia apt](https://docs.microsoft.com/cli/azure/install-azure-cli-apt)). Za pomocą maszyny Wirtualnej w górę i działa firma Microsoft połączone za pośrednictwem protokołu SSH, zalogowali się do platformy Azure, pobierane certyfikaty z usługi Key Vault i wprowadzono kilka aktualizacji w konfiguracji środowiska uruchomieniowego usługi IoT Edge, aktualizując plik config.yaml. Aby uzyskać więcej informacji o korzystaniu z usługi IoT Edge jako bramy, zobacz [jak IoT Edge urządzenia mogą być używane jako brama](iot-edge-as-gateway.md). Aby uzyskać więcej informacji na temat konfigurowania urządzenia usługi IoT Edge rolę przezroczystej bramy, zobacz [Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy](how-to-create-transparent-gateway.md).
+Właśnie zakończono konfigurowanie maszyny wirtualnej platformy Azure jako nieprzezroczystej bramy Azure IoT Edge. Rozpoczęto od generowania certyfikatów testowych, które zostały przekazane do Azure Key Vault. Następnie używamy skryptu i szablonu Menedżer zasobów, aby wdrożyć maszynę wirtualną za pomocą obrazu "Ubuntu Server 16,04 LTS Azure IoT Edge + środowisko uruchomieniowe" w portalu Azure Marketplace. Skrypt przejął dodatkowy krok instalacji interfejsu wiersza polecenia platformy Azure ([Zainstaluj interfejs wiersza polecenia platformy Azure z apt](https://docs.microsoft.com/cli/azure/install-azure-cli-apt)). Po nawiązaniu połączenia z maszyną wirtualną za pośrednictwem protokołu SSH zarejestrowano na platformie Azure, pobrano certyfikaty z Key Vault i wprowadzono kilka aktualizacji konfiguracji środowiska uruchomieniowego IoT Edge, aktualizując plik config. YAML. Aby uzyskać więcej informacji na temat używania IoT Edge jako bramy, zobacz [jak urządzenie IoT Edge może być używane jako brama](iot-edge-as-gateway.md). Aby uzyskać więcej informacji na temat konfigurowania urządzenia IoT Edge jako nieprzezroczystej bramy, zobacz [Konfigurowanie urządzenia IoT Edge do działania jako nieprzezroczyste bramy](how-to-create-transparent-gateway.md).
 
-Przejdź do następnego artykułu, aby tworzyć moduły usługi IoT Edge.
+Przejdź do następnego artykułu, aby skompilować moduły IoT Edge.
 
 > [!div class="nextstepaction"]
-> [Tworzenie i wdrażanie niestandardowych modułów usługi IoT Edge](tutorial-machine-learning-edge-06-custom-modules.md)
+> [Tworzenie i wdrażanie niestandardowych modułów IoT Edge](tutorial-machine-learning-edge-06-custom-modules.md)

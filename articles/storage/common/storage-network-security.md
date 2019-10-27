@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 908e44ef17dcfcf7042eab32cfd6d1fc3a565ac7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: af5b2a8c6894846ec529763f80c78bc50debabe6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927116"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965508"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage
 
@@ -358,11 +358,11 @@ Regułami sieci IP dla kont magazynu można zarządzać za pomocą Azure Portal,
 
 ## <a name="exceptions"></a>Wyjątki
 
-Reguły sieciowe pomagają w tworzeniu bezpiecznego środowiska na potrzeby dostępu do aplikacji i danych w większości scenariuszy. Niektóre aplikacje korzystają jednak z usług, których nie można jednoznacznie odizolować za pomocą sieci wirtualnej lub reguł adresów IP. Jednak te usługi muszą zostać przyznane kontu magazynu w celu włączenia pełnej funkcjonalności aplikacji. Aby włączyć niektóre scenariusze dostępu do danych, dzienników lub analiz, można użyć wyjątku ***Zezwalaj na zaufane usługi firmy Microsoft..*** ..
+Reguły sieciowe pomagają w tworzeniu bezpiecznego środowiska dla połączeń między aplikacjami i danymi w większości scenariuszy. Niektóre aplikacje korzystają jednak z usług, których nie można jednoznacznie odizolować za pomocą sieci wirtualnej lub reguł adresów IP. Jednak te usługi muszą zostać przyznane do magazynu, aby umożliwić pełne działanie aplikacji. W takich sytuacjach można użyć ustawienia Zezwalaj na ***Zaufane usługi firmy Microsoft...*** , aby włączyć dostęp do danych, dzienników lub analizy.
 
 ### <a name="trusted-microsoft-services"></a>Zaufane usługi firmy Microsoft
 
-Nie można udzielić dostępu do niektórych usług firmy Microsoft z sieci za pośrednictwem istniejących reguł sieci. Możesz zezwolić na podzbiór takich zaufanych usług firmy Microsoft, aby uzyskać dostęp do konta magazynu, zachowując reguły sieciowe dla innych aplikacji. Te usługi mogą następnie używać silnego uwierzytelniania do łączenia się z kontem magazynu. Włączamy dwa typy zaufanych dostępu dla usług firmy Microsoft.
+Niektóre usługi firmy Microsoft działają z sieci, które nie mogą być uwzględnione w regułach sieci. Możesz zezwolić na podzbiór takich zaufanych usług firmy Microsoft, aby uzyskać dostęp do konta magazynu, zachowując reguły sieciowe dla innych aplikacji. Te usługi mogą następnie używać silnego uwierzytelniania do bezpiecznego łączenia się z kontem magazynu. Włączamy dwa typy zaufanych dostępu dla usług firmy Microsoft.
 
 - Do zasobów niektórych usług można udzielić dostępu do operacji wyboru, takich jak zapisywanie dzienników lub tworzenie kopii zapasowej.
 - Określonemu wystąpieniu niektórych usług można udzielić dostępu, [przypisując rolę RBAC](storage-auth-aad.md#assign-rbac-roles-for-access-rights) do wystąpienia zasobu.
@@ -384,7 +384,7 @@ W przypadku włączenia wyjątku **Zezwalaj na zaufane usługi firmy Microsoft..
 | Sieci systemu Azure         | Microsoft.Network          | Przechowywanie i analizowanie dzienników ruchu sieciowego. [Dowiedz się więcej](/azure/network-watcher/network-watcher-packet-capture-overview). |
 | Azure Site Recovery      | Microsoft. SiteRecovery     | Włącz replikację na potrzeby odzyskiwania po awarii maszyn wirtualnych platformy Azure IaaS w przypadku korzystania z pamięci podręcznej z włączoną zaporą, źródła lub docelowego konta magazynu.  [Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
-**Zezwalaj na zaufane usługi firmy Microsoft..** . Exception umożliwia określonym wystąpieniu tych usług uzyskanie dostępu do konta magazynu, jeśli [zarządzana przez system tożsamość](../../active-directory/managed-identities-azure-resources/overview.md) dla tego wystąpienia ma przypisaną rolę RBAC.
+**Zezwalaj na zaufane usługi firmy Microsoft..** . Exception umożliwia określonym wystąpieniu tych usług dostęp do konta magazynu, jeśli [zarządzana przez system tożsamość](../../active-directory/managed-identities-azure-resources/overview.md) dla tego wystąpienia ma przypisaną rolę RBAC.
 
 | Usługa                  | Nazwa dostawcy zasobów          | Przeznaczenie                            |
 | :----------------------- | :------------------------------ | :--------------------------------- |
@@ -396,7 +396,7 @@ W przypadku włączenia wyjątku **Zezwalaj na zaufane usługi firmy Microsoft..
 
 ### <a name="storage-analytics-data-access"></a>Dostęp do danych w usłudze Storage Analytics
 
-W niektórych przypadkach dostęp do odczytywania dzienników diagnostycznych i metryk jest wymagany spoza granicy sieci. Podczas konfigurowania dostępu do zaufanych usług do konta magazynu można zezwolić na dostęp do odczytu dla plików dziennika, metryk tabel lub obu. [Dowiedz się więcej na temat pracy z usługą analiza magazynu.](/azure/storage/storage-analytics)
+W niektórych przypadkach dostęp do odczytu dzienników diagnostycznych i metryk jest wymagany spoza granicy sieci. Podczas konfigurowania dostępu do zaufanych usług do konta magazynu można zezwolić na dostęp do odczytu dla plików dziennika, metryk tabel lub obu. [Dowiedz się więcej na temat pracy z usługą analiza magazynu.](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>Zarządzanie wyjątkami
 

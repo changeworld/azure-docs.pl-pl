@@ -1,37 +1,37 @@
 ---
-title: 'Resetuj, komunikacja równorzędna obwodu — ExpressRoute:  Azure | Microsoft Docs'
-description: Jak wyłączyć lub włączyć komunikacja równorzędna obwodu usługi ExpressRoute.
+title: 'Resetowanie komunikacji równorzędnej obwodu — ExpressRoute: Azure | Microsoft Docs'
+description: Jak wyłączyć i włączyć komunikację równorzędną obwodu ExpressRoute.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 10/25/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 8541362a16c7d12a0e3a4cf009ed9cd5faf9f1cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 841c68b43e7f31693863268c3a7b2bd544c5e7ae
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366304"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965347"
 ---
-# <a name="reset-expressroute-circuit-peerings"></a>Resetuj komunikacja równorzędna obwodu usługi ExpressRoute
+# <a name="reset-expressroute-circuit-peerings"></a>Resetowanie komunikacji równorzędnej obwodu ExpressRoute
 
-W tym artykule opisano, jak wyłączyć lub włączyć komunikację równorzędną dla obwodu usługi ExpressRoute za pomocą programu PowerShell. Po wyłączeniu komunikację równorzędną, sesji protokołu BGP, zarówno połączenia podstawowego, jak i połączenia pomocniczego obwodu usługi ExpressRoute zostanie zamknięty. Użytkownik utraci łączność za pośrednictwem komunikacji równorzędnej do firmy Microsoft. Po włączeniu komunikacji równorzędnej sesji protokołu BGP, zarówno połączenia podstawowego, jak i połączenia pomocniczego obwodu usługi ExpressRoute zostanie wznowione. Odzyska łączność za pośrednictwem komunikacji równorzędnej do firmy Microsoft. Można włączać i wyłączać Peering firmy Microsoft i Azure prywatnej komunikacji równorzędnej na obwód usługi ExpressRoute w niezależnie. Podczas pierwszej konfiguracji komunikacji równorzędnej na obwód usługi ExpressRoute, komunikację równorzędną są domyślnie włączone.
+W tym artykule opisano sposób wyłączania i włączania komunikacji równorzędnej obwodu usługi ExpressRoute przy użyciu programu PowerShell. Wyłączenie komunikacji równorzędnej spowoduje wyłączenie sesji protokołu BGP zarówno w ramach połączenia podstawowego, jak i pomocniczego obwodu usługi ExpressRoute. Utracisz łączność za pośrednictwem tej komunikacji równorzędnej z firmą Microsoft. Po włączeniu komunikacji równorzędnej zostanie przeprowadzona sesja protokołu BGP z połączeniem podstawowym i pomocniczym połączeniem obwodu usługi ExpressRoute. Połączenie zostanie odwiązane za pośrednictwem komunikacji równorzędnej z firmą Microsoft. Komunikacja równorzędna firmy Microsoft i prywatna Komunikacja równorzędna Azure można włączyć i wyłączyć niezależnie od obwodu usługi ExpressRoute. Podczas pierwszej konfiguracji komunikacji równorzędnej w obwodzie ExpressRoute, Komunikacja równorzędna jest domyślnie włączona.
 
-Istnieje kilka scenariuszy, gdzie może okazać się przydatne, resetowanie komunikacji równorzędnej usługi ExpressRoute.
-* Testowanie projektu odzyskiwania po awarii i implementacji. Na przykład masz dwa obwody usługi ExpressRoute. Można wyłączyć komunikacje równorzędne jednym obwodu i wymusić ruchu sieciowego do trybu failover z obwodem usługi.
-* Włączanie dwukierunkowego przekazywania wykrywania (BFD) na platformie Azure prywatną komunikację równorzędną dla obwodu usługi ExpressRoute. BFD jest domyślnie włączona, jeśli obwód usługi ExpressRoute jest tworzony po 1 sierpnia 2018 r. Jeśli Twój obwód została utworzona wcześniej, BFD nie została włączona. Można włączyć BFD przez wyłączenie obsługi komunikacji równorzędnej, a następnie ponowne włączanie go. Należy zauważyć, że BFD jest tylko obsługiwana w prywatnej komunikacji równorzędnej Azure.
+Istnieje kilka scenariuszy, w których może być przydatne Resetowanie komunikacji równorzędnej ExpressRoute.
+* Przetestuj projekt i implementację odzyskiwania po awarii. Na przykład masz dwa obwody usługi ExpressRoute. Można wyłączyć komunikację równorzędną jednego obwodu i wymusić przełączenie ruchu sieciowego do trybu failover w innym obwodzie.
+* Włącz wykrywanie dwukierunkowego przekazywania (BFD) w prywatnej komunikacji równorzędnej Azure lub komunikacji równorzędnej firmy Microsoft w obwodzie usługi ExpressRoute. BFD jest domyślnie włączona w prywatnej komunikacji równorzędnej Azure, jeśli obwód usługi ExpressRoute został utworzony po 1 2018 sierpnia i w przypadku komunikacji równorzędnej firmy Microsoft, jeśli obwód ExpressRoute jest tworzony po dniu 1 2019 października. Jeśli obwód został utworzony przed tym, BFD nie został włączony. Możesz włączyć BFD, wyłączając komunikację równorzędną i włączając ją ponownie. 
 
-### <a name="working-with-azure-powershell"></a>Praca z programem Azure PowerShell
+### <a name="working-with-azure-powershell"></a>Praca z Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="reset-a-peering"></a>Resetuj komunikację równorzędną
+## <a name="reset-a-peering"></a>Resetowanie komunikacji równorzędnej
 
-1. Jeśli korzystasz z programu PowerShell lokalnie, otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i nawiąż połączenie z kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
+1. Jeśli używasz programu PowerShell lokalnie, Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i Połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
    ```azurepowershell
    Connect-AzAccount
@@ -46,12 +46,12 @@ Istnieje kilka scenariuszy, gdzie może okazać się przydatne, resetowanie komu
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
-4. Uruchom następujące polecenia, aby pobrać obwód usługi ExpressRoute.
+4. Uruchom następujące polecenia, aby pobrać obwód ExpressRoute.
 
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
-5. Zidentyfikuj, komunikację równorzędną, którą chcesz włączyć lub wyłączyć. *Komunikacja równorzędna* jest tablicą. W poniższym przykładzie komunikacji równorzędnej [0] jest prywatnej komunikacji równorzędnej Azure i komunikacji równorzędnej [1] Peering firmy Microsoft.
+5. Określ komunikację równorzędną, którą chcesz wyłączyć lub włączyć. *Komunikacja równorzędna* jest tablicą. W poniższym przykładzie Komunikacja równorzędna [0] polega na prywatnej komunikacji równorzędnej Azure i komunikacji równorzędnej [1] komunikacji równorzędnej firmy Microsoft.
 
    ```azurepowershell-interactive
    Name                             : ExpressRouteARMCircuit
@@ -140,9 +140,9 @@ Istnieje kilka scenariuszy, gdzie może okazać się przydatne, resetowanie komu
    $ckt.Peerings[0].State = "Disabled"
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
-   Komunikacja równorzędna powinna być w stanie, gdy ustawiasz. 
+   Komunikacja równorzędna powinna znajdować się w stanie ustawionym przez użytkownika. 
 
-## <a name="next-steps"></a>Kolejne kroki
-Jeśli potrzebujesz pomocy, aby rozwiązać problem z usługi ExpressRoute, zapoznaj się z następującymi artykułami:
+## <a name="next-steps"></a>Następne kroki
+Jeśli potrzebujesz pomocy w rozwiązywaniu problemów z programem ExpressRoute, zapoznaj się z następującymi artykułami:
 * [Weryfikowanie połączenia usługi ExpressRoute](expressroute-troubleshooting-expressroute-overview.md)
 * [Rozwiązywanie problemów z wydajnością sieci](expressroute-troubleshooting-network-performance.md)

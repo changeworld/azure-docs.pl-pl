@@ -1,5 +1,5 @@
 ---
-title: Ogólne rozwiązywanie problemów z wydajnością dla maszyny wirtualnej platformy Azure z systemem Linux lub Windows
+title: Rozwiązywanie problemów z wydajnością maszyny wirtualnej platformy Azure w systemie Linux lub Windows
 description: W tym artykule opisano ogólne Rozwiązywanie problemów z wydajnością maszyny wirtualnej za pośrednictwem monitorowania i poszanowania wąskich gardeł oraz możliwe Korygowanie problemów, które mogą wystąpić.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 3fdac123ee7bda9d91d96940aebd6bddf4ea00f8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790818"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965482"
 ---
-# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Rozwiązywanie ogólnych problemów z wydajnością dla maszyny wirtualnej platformy Azure z systemem Linux lub Windows
+# <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Rozwiązywanie problemów z wydajnością maszyny wirtualnej platformy Azure w systemie Linux lub Windows
 
 W tym artykule opisano ogólne Rozwiązywanie problemów z wydajnością maszyny wirtualnej za pośrednictwem monitorowania i poszanowania wąskich gardeł oraz możliwe Korygowanie problemów, które mogą wystąpić. Oprócz monitorowania można również użyć że program perfinsights, który może dostarczyć raport z zaleceniami dotyczącymi najlepszych rozwiązań i kluczowych wąskich gardeł wokół operacji we/wy/procesora/pamięci. Że program perfinsights jest dostępna dla maszyn wirtualnych z [systemami Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) i [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) na platformie Azure.
 

@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10911e5100add2dca84475857a6909fb20d452c4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: d1b4d33ca5f195d7b4aabc1bc905bd8db1406e8f
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891541"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964097"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: Dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -35,18 +35,18 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start
 > Istnieją dwie opcje uruchamiania aplikacji Szybki start:
-> * [Ekspresowo] [Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [Ręcznie] [Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * [Ekspresowe] [Opcja 1. Zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Ręczne] [Opcja 2. Zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1. Zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
 >
 > 1. Przejdź do nowego okienka [Azure Portal-rejestracje aplikacji](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) .
 > 1. Wprowadź nazwę aplikacji i kliknij pozycję **Zarejestruj**.
 > 1. Postępuj zgodnie z instrukcjami, aby jednym kliknięciem pobrać i automatycznie skonfigurować nową aplikację.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Opcja 2. Zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Zarejestruj swoją aplikację
+> #### <a name="step-1-register-your-application"></a>Krok 1. Rejestrowanie aplikacji
 > Aby ręcznie zarejestrować aplikację i dodać informacje na temat rejestracji aplikacji do rozwiązania, wykonaj następujące czynności:
 >
 > 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
@@ -55,13 +55,13 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 > 1. Wybierz pozycję **Nowa rejestracja**.
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >      - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `ASPNET-Quickstart`.
->      - Dodaj `http://localhost:44368/` w obszarze **URI przekierowania**, a następnie kliknij pozycję **zarejestruj**.
+>      - Dodaj `http://localhost:44368/` w **identyfikatorze URI przekierowania**, a następnie kliknij pozycję **zarejestruj**.
 >      - W okienku nawigacji po lewej stronie w sekcji Zarządzanie wybierz pozycję **uwierzytelnianie** .
->          - W podsekcji niejawna stawka wybierz pozycję **identyfikatory tokenów**.
+>          - W podsekcji **niejawna** stawka wybierz pozycję **identyfikatory tokenów**.
 >          - A następnie wybierz pozycję **Zapisz**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: konfigurowanie aplikacji w witrynie Azure Portal
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1. Konfigurowanie aplikacji w witrynie Azure Portal
 > Aby przykład kodu z tego samouczka działał, należy jako adres URL odpowiedzi dodać adres `https://localhost:44368/`.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Wprowadź tę zmianę automatycznie]()
@@ -69,16 +69,16 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Already configured](media/quickstart-v2-aspnet-webapp/green-check.png) (Już skonfigurowano) Twoja aplikacja została skonfigurowana za pomocą tego atrybutu
 
-#### <a name="step-2-download-your-project"></a>Krok 2: pobieranie projektu
+#### <a name="step-2-download-your-project"></a>Krok 2. Pobieranie projektu
 
 [Pobierz rozwiązanie Visual Studio 2019](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: konfigurowanie projektu programu Visual Studio
+#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3. Konfigurowanie projektu programu Visual Studio
 
 1. Wyodrębnij plik zip do folderu lokalnego bliższego folderowi głównemu, na przykład **C:\Azure-Samples**
 1. Otwórz rozwiązanie w programie Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
-1. W zależności od wersji programu Visual Studio, może być konieczne kliknięcie prawym przyciskiem myszy projektu `AppModelv2-WebApp-OpenIDConnect-DotNet` i **przywrócenie pakietów NuGet**
-1. Otwórz konsolę Menedżera pakietów (Widok-> innej konsoli Menedżera pakietów systemu Windows — >) i uruchom`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
+1. W zależności od wersji programu Visual Studio, może być konieczne kliknięcie prawym przyciskiem myszy `AppModelv2-WebApp-OpenIDConnect-DotNet` projektu i **przywrócenie pakietów NuGet**
+1. Otwórz konsolę Menedżera pakietów (Widok-> innej konsoli Menedżera pakietów systemu Windows — >) i uruchom `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 1. Przeprowadź edycję pliku **Web.config** i zastąp parametry `ClientId` oraz `Tenant` następującymi:
 
     ```xml
@@ -90,16 +90,16 @@ W tym przewodniku Szybki start dowiesz się, w jaki sposób aplikacja internetow
 > > Ten przewodnik Szybki Start obsługuje Enter_the_Supported_Account_Info_Here. 
 
 > [!div renderon="docs"]
-> Gdzie:
+> Miejsce:
 > - `Enter_the_Application_Id_here` jest identyfikatorem dla zarejestrowanej aplikacji.
 > - `Enter_the_Tenant_Info_Here` jest jedną z poniższych opcji:
->   - Jeśli aplikacja obsługuje **tylko moją organizację**, Zastąp tę wartość identyfikatorem **dzierżawy** lub **nazwą dzierżawy** (na przykład contoso.onmicrosoft.com).
+>   - Jeśli aplikacja obsługuje **tylko moją organizację**, Zastąp tę wartość **identyfikatorem dzierżawy** lub **nazwą dzierżawy** (na przykład contoso.onmicrosoft.com).
 >   - Jeśli aplikacja obsługuje tryb**Konta w dowolnym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości `organizations`
 >   - Jeśli aplikacja obsługuje tryb **Wszyscy użytkownicy kont Microsoft**, zastąp tę wartość za pomocą wartości `common`
 >
 > > [!TIP]
 > > - Aby znaleźć wartości *Identyfikator aplikacji*, *Identyfikator katalogu (dzierżawy)* i *Obsługiwane typy kont*, przejdź do strony **Przegląd**
-> > - Upewnij się, że `redirectUri` wartość w **pliku Web. config** odpowiada identyfikatorowi **URI przekierowania** zdefiniowanego dla rejestracji aplikacji w usłudze Azure AD (jeśli nie, przejdź do menu **uwierzytelniania** dla rejestracji aplikacji i zaktualizuj **Identyfikator URI przekierowania).** do dopasowania)
+> > - Upewnij się, że wartość `redirectUri` w **pliku Web. config** odpowiada **identyfikatorowi URI przekierowania** zdefiniowanego dla rejestracji aplikacji w usłudze Azure AD (jeśli nie, przejdź do menu **uwierzytelniania** dla rejestracji aplikacji i zaktualizuj **Identyfikator URI przekierowania** ). do dopasowania)
 
 ## <a name="more-information"></a>Więcej informacji
 
@@ -154,7 +154,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Gdzie  |  |
+> |Lokalizacja  |  |
 > |---------|---------|
 > | `ClientId`     | Identyfikator aplikacji z aplikacji zarejestrowanej w witrynie Azure Portal |
 > | `Authority`    | Punkt końcowy usługi STS na potrzeby uwierzytelnienia użytkownika. Zazwyczaj jest to adres <https://login.microsoftonline.com/{tenant}/v2.0> dla chmury publicznej, gdzie parametr {tenant} jest nazwą dzierżawy, identyfikatorem dzierżawy lub ma wartość *common* na potrzeby odwołania do wspólnego punktu końcowego (używany dla aplikacji z wieloma dzierżawami) |
@@ -167,7 +167,7 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> Ustawienie `ValidateIssuer = false` to uproszczenie dla tego przewodnika Szybki Start. W rzeczywistych aplikacjach należy sprawdzić poprawność wystawcy.
+> Ustawieniem `ValidateIssuer = false` jest uproszczenie dla tego przewodnika Szybki Start. W rzeczywistych aplikacjach należy sprawdzić poprawność wystawcy.
 > Zapoznaj się z przykładami, aby dowiedzieć się, jak to zrobić.
 
 ### <a name="initiate-an-authentication-challenge"></a>Inicjowanie żądania uwierzytelnienia

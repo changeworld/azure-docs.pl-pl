@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/22/2019
-ms.openlocfilehash: 1d75b9e7d997b0c62c7e235187907f0556318efe
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/25/2019
+ms.openlocfilehash: 434ecbcf5158009b8e74ae392aeea95b5ea8b281
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970401"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72963440"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Reguły zapory serwera Azure Database for MySQL
 Zapory uniemożliwiają dostęp do serwera bazy danych do momentu określenia komputerów, które mają uprawnienia. Zapora przyznaje dostęp do serwera na podstawie źródłowego adresu IP każdego żądania.
@@ -43,6 +43,9 @@ Aby umożliwić aplikacjom z platformy Azure Łączenie się z serwerem Azure Da
 
 ![Konfigurowanie zezwalania na dostęp do usług platformy Azure w portalu](./media/concepts-firewall-rules/allow-azure-services.png)
 
+### <a name="connecting-from-a-vnet"></a>Łączenie z sieci wirtualnej
+Aby bezpiecznie połączyć się z serwerem Azure Database for MySQL z sieci wirtualnej, należy rozważyć użycie [punktów końcowych usługi sieci wirtualnej](./concepts-data-access-and-security-vnet.md). 
+
 ## <a name="programmatically-managing-firewall-rules"></a>Programowe zarządzanie regułami zapory
 Oprócz Azure Portal reguły zapory można zarządzać programowo przy użyciu interfejsu wiersza polecenia platformy Azure. Zobacz też [Tworzenie reguł zapory Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure i zarządzanie nimi](./howto-manage-firewall-using-cli.md)
 
@@ -65,3 +68,4 @@ Należy wziąć pod uwagę następujące kwestie, gdy dostęp do usługi Microso
 
 * [Tworzenie reguł zapory Azure Database for MySQL i zarządzanie nimi za pomocą Azure Portal](./howto-manage-firewall-using-portal.md)
 * [Tworzenie reguł zapory Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure i zarządzanie nimi](./howto-manage-firewall-using-cli.md)
+- [Punkty końcowe usługi sieci wirtualnej w Azure Database for MySQL](./concepts-data-access-and-security-vnet.md)

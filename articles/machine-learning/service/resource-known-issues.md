@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a3ba28960327f1e0a56b1ac838b2cb90ab6ac72a
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 0dd0b8cf39da8039b3a59bf243284e0d5062bd78
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675644"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965593"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Znane problemy i rozwiązywanie problemów Azure Machine Learning
 
@@ -43,7 +43,7 @@ Możesz chcieć uruchomić eksperyment zawierający tylko zestaw danych, aby wiz
  
 Przed usunięciem można połączyć zestaw danych z dowolnym modułem przekształcania danych (Wybierz kolumny w zestawie danych, edytować metadane, podzielić dane itp.) i uruchomić eksperyment. Następnie można wizualizować zestaw danych. 
 
-Poniższy obraz pokazuje, jak: ![visulize — ](./media/resource-known-issues/aml-visualize-data.png) danych
+Poniższy obraz pokazuje, jak: ![visulize — dane](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>Problemy z instalacją zestawu SDK
 
@@ -86,6 +86,16 @@ Automatyczne Uczenie maszynowe w przepływie dwuosiowym obecnie nie obsługuje p
 ### <a name="experiment-charts"></a>Wykresy eksperymentu
 
 Binarne wykresy klasyfikacji (precyzja-odwoływanie, ROC, krzywa zysku itp.) pokazana w zautomatyzowanych iteracjach eksperymentów w przypadku nieprawidłowego renderowania w interfejsie użytkownika od 4/12. Wykresy wykresów są obecnie wyświetlane z wynikami odwrotnymi, gdzie lepsze są modele z niższymi wynikami. Zbadano rozwiązanie.
+
+## <a name="datasets-and-data-preparation"></a>Zestawy danych i przygotowanie
+
+### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Nie można odczytać pliku Parquet z HTTP lub ADLS Gen 2
+
+Wystąpił znany problem w usłudze Azure SDK w wersji 1.1.25, która powoduje awarię podczas tworzenia zestawu danych przez odczytywanie plików Parquet z http lub ADLS Gen 2. Aby rozwiązać ten problem, Uaktualnij do wersji nowszej niż 1.1.26 lub zmień wersję na starszą niż 1.1.24.
+
+```python
+pip install --upgrade azureml-dataprep
+```
 
 ## <a name="databricks"></a>Usługa Databricks
 
@@ -183,7 +193,7 @@ Jeśli używasz udziału plików dla innych obciążeń, takich jak transfer dan
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Awarie usług WebServices w usłudze Azure Kubernetes 
 
-Wiele błędów sieci Web w usłudze Azure Kubernetes można debugować, łącząc się z klastrem przy użyciu `kubectl`. @No__t_0 klastra usługi Azure Kubernetes Service można uzyskać, uruchamiając
+Wiele błędów sieci Web w usłudze Azure Kubernetes można debugować, łącząc się z klastrem przy użyciu `kubectl`. `kubeconfig.json` klastra usługi Azure Kubernetes Service można uzyskać, uruchamiając
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -232,7 +242,7 @@ W oparciu o ogólną obserwację poniżej przedstawiono zalecenia dotyczące pla
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (Brak modułu o nazwie)
 Jeśli używasz programu ModuleErrors podczas przesyłania eksperymentów na platformie Azure ML, oznacza to, że skrypt szkoleniowy oczekuje na zainstalowanie pakietu, ale nie został dodany. Po podaniu nazwy pakietu platforma Azure ML zainstaluje pakiet w środowisku używanym do uczenia się. 
 
-Jeśli używasz [szacowania](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) do przesyłania eksperymentów, możesz określić nazwę pakietu za pośrednictwem `pip_packages` lub `conda_packages` parametru w szacowania, na podstawie którego źródła chcesz zainstalować pakiet. Można również określić plik yml ze wszystkimi zależnościami przy użyciu `conda_dependencies_file`or wyświetlić wszystkie wymagania dotyczące PIP w pliku txt przy użyciu parametru `pip_requirements_file`.
+Jeśli używasz [szacowania](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) do przesyłania eksperymentów, możesz określić nazwę pakietu za pośrednictwem `pip_packages` lub `conda_packages` parametru w szacowania, na podstawie którego źródła chcesz zainstalować pakiet. Można również określić plik yml ze wszystkimi zależnościami przy użyciu `conda_dependencies_file`lub wyświetlić wszystkie wymagania dotyczące PIP w pliku txt przy użyciu parametru `pip_requirements_file`.
 
 Usługa Azure ML udostępnia również strukturę specyficzną dla szacowania dla Tensorflow, PyTorch, łańcucha i skryptu sklearn. Przy użyciu tych szacowania upewnij się, że zależności struktury są zainstalowane w Twoim imieniu w środowisku używanym do uczenia się. Istnieje możliwość określenia dodatkowych zależności, jak opisano powyżej. 
  

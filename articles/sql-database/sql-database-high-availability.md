@@ -11,16 +11,16 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ab3971b4fb6065701d693debf55242be7b15295e
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390697"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965975"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Wysoka dostępność i Azure SQL Database
 
-Celem architektury wysokiej dostępności w Azure SQL Database jest zagwarantowanie, że baza danych działa i działa 99,99% czasu, bez zakłócania wpływu operacji konserwacji i przestojów. Platforma Azure automatycznie obsługuje krytyczne zadania obsługi, takie jak stosowanie poprawek, kopii zapasowych, uaktualnień systemu Windows i programu SQL, a także niezaplanowanych zdarzeń, takich jak sprzęt, oprogramowanie lub awarie sieci.  Gdy bazowe wystąpienie programu SQL Server jest poprawione lub działa w trybie failover, przestoje nie jest zauważalne, jeśli w aplikacji jest stosowana [logika ponawiania](sql-database-develop-overview.md#resiliency) . Azure SQL Database można szybko odzyskać nawet w najbardziej krytycznych okolicznościach, dzięki czemu dane są zawsze dostępne.
+Celem architektury wysokiej dostępności w Azure SQL Database jest zagwarantowanie, że baza danych działa i działa 99,99% czasu, bez zakłócania wpływu operacji konserwacji i przestojów. Platforma Azure automatycznie obsługuje krytyczne zadania obsługi, takie jak stosowanie poprawek, kopii zapasowych, uaktualnienia systemu Windows i programu SQL, a także niezaplanowanych zdarzeń, takich jak sprzętowe, programowe lub awarie sieci.  Gdy bazowe wystąpienie programu SQL Server jest poprawione lub działa w trybie failover, przestoje nie jest zauważalne, jeśli w aplikacji jest stosowana [logika ponawiania](sql-database-develop-overview.md#resiliency) . Azure SQL Database można szybko odzyskać nawet w najbardziej krytycznych okolicznościach, dzięki czemu dane są zawsze dostępne.
 
 Rozwiązanie wysokiej dostępności zostało zaprojektowane z myślą o zapewnieniu, że przekazane dane nigdy nie zostaną utracone z powodu niepowodzeń, że operacje konserwacji nie wpłyną na obciążenie, a baza danych nie będzie single point of failure w architekturze oprogramowania. Nie ma okien obsługi ani przestojów, które powinny wymagać zatrzymania obciążenia, gdy baza danych jest uaktualniana lub utrzymywana. 
 
@@ -89,12 +89,14 @@ Strefa o wysokiej dostępności nadmiarowa jest zilustrowana na poniższym diagr
 
 [Szybsze odzyskiwanie bazy danych (ADR)](sql-database-accelerated-database-recovery.md) to nowa funkcja aparatu bazy danych SQL, która znacznie zwiększa dostępność bazy danych, szczególnie w przypadku długotrwałych transakcji. Reguły ADR są obecnie dostępne dla pojedynczych baz danych, pul elastycznych i Azure SQL Data Warehouse.
 
-## <a name="testing-database-fault-resiliency"></a>Testowanie odporności błędów bazy danych
+## <a name="testing-application-fault-resiliency"></a>Testowanie odporności błędów aplikacji
 
-Wysoka dostępność to fundamenentala platforma Azure SQL Database platformy i działa w sposób przezroczysty dla aplikacji bazy danych. Jednak firma Microsoft rozpoznaje, że można testować, w jaki sposób automatyczne operacje trybu failover inicjowane podczas planowanych lub nieplanowanych zdarzeń byłyby wpływać na aplikację przed wdrożeniem jej w środowisku produkcyjnym. Można wywołać specjalny interfejs API w celu ponownego uruchomienia bazy danych lub puli elastycznej, która spowoduje wyzwolenie pracy w trybie failover. W przypadku nadmiarowej bazy danych lub puli elastycznej, wywołanie interfejsu API spowoduje przekierowanie połączeń klienta do nowego elementu podstawowego w innym elemencie AZ. W związku z tym oprócz testowania pracy w trybie failover wpływa na istniejące sesje baz danych, można również sprawdzić, czy ma to wpływ na kompleksową wydajność. Ponieważ operacja ponownego uruchomienia jest niepożądana, a duża liczba z nich może wzważyć platformę, tylko jedno wywołanie trybu failover jest dozwolone co 30 minut dla każdej bazy danych lub puli elastycznej. Aby uzyskać szczegółowe informacje, zobacz [tryb failover bazy danych](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) i [tryb failover puli elastycznej](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover).       
+Wysoka dostępność to podstawowa część platformy Azure SQL Database, która działa w sposób przezroczysty dla aplikacji bazy danych. Jednak firma Microsoft rozpoznaje, że można testować, w jaki sposób automatyczne operacje trybu failover inicjowane podczas planowanych lub nieplanowanych zdarzeń byłyby wpływać na aplikację przed wdrożeniem jej w środowisku produkcyjnym. Można wywołać specjalny interfejs API w celu ponownego uruchomienia bazy danych lub puli elastycznej, która spowoduje wyzwolenie pracy w trybie failover. W przypadku strefowo nadmiarowej bazy danych lub puli elastycznej wywołanie interfejsu API spowoduje przekierowanie połączeń klientów do nowego elementu podstawowego w strefie dostępności innej niż strefa dostępności starego elementu podstawowego. W związku z tym oprócz testowania pracy w trybie failover wpływa na istniejące sesje baz danych, można również sprawdzić, czy zmienia ona kompleksową wydajność ze względu na zmiany opóźnienia sieci. Ponieważ operacja ponownego uruchomienia jest niepożądana, a duża liczba z nich może nałożyć na platformę, tylko jedno wywołanie trybu failover jest dozwolone co 30 minut dla każdej bazy danych lub puli elastycznej. 
+
+Przejście w tryb failover można zainicjować za pomocą interfejsu API REST lub programu PowerShell. W przypadku interfejsu API REST zobacz [tryb failover bazy danych](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) i [tryb failover puli elastycznej](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover). W przypadku programu PowerShell zobacz [Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover) i [Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover). Wywołania interfejsu API REST można także wykonywać z interfejsu wiersza polecenia platformy Azure przy użyciu poleceń [AZ REST](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest) .
 
 > [!IMPORTANT]
-> Polecenie przełączenia w tryb failover nie jest obecnie dostępne dla baz danych Hypescale i zarządzanych instancses.  
+> Polecenie przełączenia w tryb failover nie jest obecnie dostępne w warstwie usługi i w przypadku wystąpienia zarządzanego.
 
 ## <a name="conclusion"></a>Podsumowanie
 

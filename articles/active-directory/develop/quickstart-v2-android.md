@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: twhitney
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e11e47952f70ce0cd212ca93eff1c38f2b3993a8
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 2704a6e1af2f06b49b1d3817ad7a30bf53419ffe
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678049"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964002"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki Start: Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z poziomu aplikacji systemu Android
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
 Ten przewodnik Szybki Start używa przykładu kodu, aby zademonstrować, jak aplikacja systemu Android może zalogować się do konta osobistego, służbowego lub szkolnego, a następnie uzyskać token dostępu i wywołać interfejs API Microsoft Graph.
 
@@ -42,7 +42,7 @@ Ten przewodnik Szybki Start używa przykładu kodu, aby zademonstrować, jak apl
 
 Aby zarejestrować obiekt aplikacji i ręcznie dodać informacje o rejestracji obiektu aplikacji do przykładowego projektu, wykonaj następujące kroki:
 
-1. Przejdź do [Azure Portal](https://aka.ms/MobileAppReg).
+1. Przejdź do witryny [Azure Portal](https://aka.ms/MobileAppReg).
 1. Otwórz [blok rejestracje aplikacji](https://portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) i kliknij pozycję **+ Nowa rejestracja**.
 1. Wprowadź **nazwę** rejestracji aplikacji, a następnie, bez ustawienia identyfikatora URI przekierowania, kliknij pozycję **zarejestruj**.
 1. W sekcji **Zarządzanie** wybierz pozycję **uwierzytelnianie** >  **+ Dodaj platformę** > **Android**. (Może być konieczne wybranie pozycji **Wypróbuj nowe środowisko** w górnej części bloku, aby zobaczyć ten ekran)
@@ -54,12 +54,12 @@ Aby zarejestrować obiekt aplikacji i ręcznie dodać informacje o rejestracji o
 
 1. Uruchom narzędzie narzędziowe skopiowane z portalu w oknie terminalu.
 1. Wprowadź wygenerowany skrót sygnatury do portalu w obszarze **skrót sygnatury**.
-1. Kliknij `Configure` i Utwórz kopię **konfiguracji MSAL**. Skopiujesz go i wkleisz w pliku konfiguracji w następnym kroku. Kliknij przycisk **Gotowe**.
+1. Kliknij przycisk `Configure` i Utwórz kopię **konfiguracji MSAL**. Skopiujesz go i wkleisz w pliku konfiguracji w następnym kroku. Kliknij przycisk **Gotowe**.
 
 ## <a name="step-3-add-your-app-registration"></a>Krok 3. Dodawanie rejestracji aplikacji
 
 1. Otwórz przykładowy projekt w Android Studio.
-1. W **aplikacji** > **res** > **RAW**, Otwórz plik **auth_config_multiple_account. JSON**.  Wklej zawartość konfiguracji MSAL. Spowoduje to dodanie identyfikatora klienta, identyfikatora dzierżawy i redirect_uri z portalu. Będzie wyglądać podobnie do tego, ale z wartościami wypełnionymi dla identyfikatora klienta, identyfikatora dzierżawy i redirect_uri:
+1. W **aplikacji** > **res** > **RAW**Otwórz plik **auth_config_multiple_account. JSON**.  Wklej zawartość konfiguracji MSAL. Spowoduje to dodanie identyfikatora klienta, identyfikatora dzierżawy i redirect_uri z portalu. Będzie wyglądać podobnie do tego, ale z wartościami wypełnionymi dla identyfikatora klienta, identyfikatora dzierżawy i redirect_uri:
 
     ```json
     {
@@ -81,7 +81,7 @@ Aby zarejestrować obiekt aplikacji i ręcznie dodać informacje o rejestracji o
     ```
 
 1. Otwórz **aplikację** > **res** > **RAW**, Otwórz plik **AUTH_CONFIG_SINGLE_ACCOUNT. JSON**i wklej zawartość konfiguracji MSAL. Będzie wyglądać podobnie do pliku **auth_config_multiple_account. JSON** .
-1. W **aplikacji** > **manifesty** > **pliku AndroidManifest. XML**, Znajdź działanie @no__t 5. Ten wpis umożliwia firmie Microsoft wywoływanie z powrotem do aplikacji po zakończeniu uwierzytelniania:
+1. W > **manifestów** **aplikacji** > **pliku androidmanifest. XML**Znajdź aktywność `BrowserTabActivity`. Ten wpis umożliwia firmie Microsoft wywoływanie z powrotem do aplikacji po zakończeniu uwierzytelniania:
 
     ```xml
     ...
@@ -110,12 +110,12 @@ Aby zarejestrować obiekt aplikacji i ręcznie dodać informacje o rejestracji o
             </activity>
     ```
     
-1. Zastąp nazwę pakietu identyfikatorem zarejestrowanego w Azure Portal dla wartości `android:host=`.  W takim przypadku będzie to: `com.azuresamples.msalandroidapp`.
+1. Zastąp nazwę pakietu identyfikatorem zarejestrowanego w Azure Portal dla `android:host=` wartości.  W takim przypadku będzie to: `com.azuresamples.msalandroidapp`.
 
     > [!IMPORTANT]
     > Wartość w systemie **Android: Path** **musi** mieć wiodący znak "/" lub pojawić się czerwona linia poniżej wartości, a Przykładowa aplikacja nie zostanie uruchomiona.
      
-1. Zastąp skrót klucza uzyskany przez uruchomienie narzędzia wiersza wcześniej i wprowadzonym w Azure Portal, dla wartości `android:path=`. Wartość skrótu podpisu nie powinna być zakodowana w adresie URL.
+1. Zastąp skrót klucza uzyskany przez uruchomienie narzędzia klawisza wcześniej i wprowadzonego w Azure Portal, dla wartości `android:path=`. Wartość skrótu podpisu nie powinna być zakodowana w adresie URL.
 
 ## <a name="step-4-run-the-sample-app"></a>Krok 4. Uruchamianie przykładowej aplikacji
 
@@ -138,7 +138,7 @@ W trybie wielu kont można powtórzyć te same czynności.  Ponadto możesz usun
 
 Kod jest zorganizowany w fragmenty, które pokazują, jak napisać jedną i wiele kont aplikacji MSAL. Pliki kodu są zorganizowane w następujący sposób:
 
-| Plik  | Demonstracje  |
+| Plik  | Pokazuje  |
 |---------|---------|
 | MainActivity | Zarządza interfejsem użytkownika |
 | MSGraphRequestWrapper  | Wywołuje interfejs API Microsoft Graph przy użyciu tokenu dostarczonego przez MSAL |
@@ -172,7 +172,7 @@ Powoduje to, że Gradle pobrać i skompilować MSAL z Maven Central.
 
 ### <a name="msal-imports"></a>MSAL Importy
 
-Importy istotne dla biblioteki MSAL są `com.microsoft.identity.client.*`.  Na przykład zobaczysz `import com.microsoft.identity.client.PublicClientApplication;`, która jest przestrzenią nazw dla klasy `PublicClientApplication`, która reprezentuje publiczną aplikację kliencką.
+Importy istotne dla biblioteki MSAL są `com.microsoft.identity.client.*`.  Na przykład zobaczysz `import com.microsoft.identity.client.PublicClientApplication;`, która jest przestrzenią nazw klasy `PublicClientApplication`, która reprezentuje publiczną aplikację kliencką.
 
 ### <a name="singleaccountmodefragmentjava"></a>SingleAccountModeFragment. Java
 
@@ -182,7 +182,7 @@ Aplikacje pojedynczego konta są używane tylko przez jednego użytkownika.  Na 
 
 #### <a name="single-account-msal-initialization"></a>Inicjalizacja MSAL jednego konta
 
-W `onCreateView()` pojedyncze konto `PublicClientApplication` jest tworzone przy użyciu informacji konfiguracyjnych przechowywanych w pliku `auth_config_single_account.json`.  W ten sposób można zainicjować bibliotekę MSAL do użycia w aplikacji MSAL pojedynczego konta:
+W `onCreateView()``PublicClientApplication` pojedyncze konto jest tworzone przy użyciu informacji konfiguracyjnych przechowywanych w pliku `auth_config_single_account.json`.  W ten sposób można zainicjować bibliotekę MSAL do użycia w aplikacji MSAL pojedynczego konta:
 
 ```java
 ...
@@ -209,9 +209,9 @@ PublicClientApplication.createSingleAccountPublicClientApplication(getContext(),
 
 #### <a name="sign-in-a-user"></a>Zaloguj użytkownika
 
-Kod służący do logowania użytkownika jest w `initializeUI()` w ramach procedury obsługi kliknij `signInButton`.
+Kod służący do logowania użytkownika znajduje się w `initializeUI()`, w `signInButton` kliknij procedurę obsługi.
 
-Wywołaj `signIn()` przed próbą uzyskania tokenów. `signIn()` zachowuje się tak, jakby została wywołana `acquireToken()`, co spowoduje wyświetlenie interakcyjnego monitu o zalogowanie użytkownika.
+Wywołaj `signIn()` przed próbą uzyskania tokenów. `signIn()` zachowuje się tak, jakby `acquireToken()` został wywołany, co powoduje wyświetlenie interakcyjnego monitu o zalogowanie użytkownika.
 
 Logowanie użytkownika jest operacją asynchroniczną. Jest przesyłane wywołanie zwrotne, które wywołuje interfejs API Microsoft Graph i aktualizuje interfejs użytkownika po zalogowaniu się użytkownika:
 
@@ -221,7 +221,7 @@ mSingleAccountApp.signIn(getActivity(), null, getScopes(), getAuthInteractiveCal
 
 #### <a name="sign-out-a-user"></a>Wylogowywanie użytkownika
 
-Kod do wylogowania użytkownika jest w `initializeUI()` w ramach procedury obsługi kliknij `signOutButton`.  Podpisywanie użytkownika jest operacją asynchroniczną. Podpisywanie użytkownika spowoduje również wyczyszczenie pamięci podręcznej tokenów dla tego konta. Zostanie utworzone wywołanie zwrotne, aby zaktualizować interfejs użytkownika po wylogowaniu się konta użytkownika:
+Kod do wylogowania użytkownika znajduje się w `initializeUI()`, w `signOutButton` obsługi kliknij.  Podpisywanie użytkownika jest operacją asynchroniczną. Podpisywanie użytkownika spowoduje również wyczyszczenie pamięci podręcznej tokenów dla tego konta. Zostanie utworzone wywołanie zwrotne, aby zaktualizować interfejs użytkownika po wylogowaniu się konta użytkownika:
 
 ```java
 mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallback() {
@@ -240,7 +240,7 @@ mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallb
 
 #### <a name="get-a-token-interactively-or-silently"></a>Uzyskaj token interaktywnie lub w trybie dyskretnym
 
-Aby przedstawić najmniejszą liczbę monitów dla użytkownika, zazwyczaj otrzymujesz token w trybie dyskretnym. Następnie, jeśli wystąpi błąd, spróbuj uzyskać dostęp do tokenu interaktywnie. Podczas pierwszego wywołania aplikacji `signIn()` efektywnie działa jako wywołanie do `acquireToken()`, co spowoduje wyświetlenie monitu o podanie poświadczeń użytkownika.
+Aby przedstawić najmniejszą liczbę monitów dla użytkownika, zazwyczaj otrzymujesz token w trybie dyskretnym. Następnie, jeśli wystąpi błąd, spróbuj uzyskać dostęp do tokenu interaktywnie. Podczas pierwszego wywołania aplikacji `signIn()`, efektywnie działa jako wywołanie do `acquireToken()`, co spowoduje wyświetlenie monitu o podanie poświadczeń użytkownika.
 
 Niektóre sytuacje, w których użytkownik może zostać poproszony o wybranie konta, wprowadzenie ich poświadczeń lub zgoda na uprawnienia wymagane przez aplikację:
 
@@ -251,7 +251,7 @@ Niektóre sytuacje, w których użytkownik może zostać poproszony o wybranie k
 * Gdy aplikacja żąda dostępu do zasobu po raz pierwszy
 * Gdy wymagane jest uwierzytelnianie wieloskładnikowe lub inne zasady dostępu warunkowego
 
-Kod umożliwiający interaktywny dostęp do tokenu, który jest z INTERFEJSem użytkownika, który będzie obejmował użytkownika, jest w `initializeUI()` w ramach procedury obsługi kliknij `callGraphApiInteractiveButton`:
+Kod umożliwiający interaktywny dostęp do tokenu, który jest z INTERFEJSem użytkownika, który będzie obejmował użytkownika, znajduje się w `initializeUI()`, w `callGraphApiInteractiveButton` programu obsługi kliknij:
 
 ```java
 /**
@@ -266,7 +266,7 @@ Kod umożliwiający interaktywny dostęp do tokenu, który jest z INTERFEJSem u�
 mSingleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-Jeśli użytkownik został już zalogowany, `acquireTokenSilentAsync()` zezwala aplikacjom na żądanie tokenów dyskretnie, jak pokazano w `initializeUI()`, w ramach procedury obsługi `callGraphApiSilentButton`:
+Jeśli użytkownik został już zalogowany, `acquireTokenSilentAsync()` zezwala aplikacjom na żądanie tokenów dyskretnie, jak pokazano w `initializeUI()`, w `callGraphApiSilentButton` obsługi kliknij:
 
 ```java
 /**
@@ -278,7 +278,7 @@ Jeśli użytkownik został już zalogowany, `acquireTokenSilentAsync()` zezwala 
 
 #### <a name="load-an-account"></a>Załaduj konto
 
-Kod do załadowania konta jest w `loadAccount()`.  Załadowanie konta użytkownika jest operacją asynchroniczną, więc wywołania zwrotne do obsłużenia, gdy następuje załadowanie konta, zmiany lub błąd, są przesyłane do MSAL.  Poniższy kod obsługuje również `onAccountChanged()`, które występują po usunięciu konta, użytkownik zmieni inne konto i tak dalej.
+Kod do załadowania konta znajduje się w `loadAccount()`.  Załadowanie konta użytkownika jest operacją asynchroniczną, więc wywołania zwrotne do obsłużenia, gdy następuje załadowanie konta, zmiany lub błąd, są przesyłane do MSAL.  Poniższy kod obsługuje również `onAccountChanged()`, które występują po usunięciu konta, użytkownik zmieni się na inne konto i tak dalej.
 
 ```java
 private void loadAccount() {
@@ -308,7 +308,7 @@ private void loadAccount() {
 
 #### <a name="call-microsoft-graph"></a>Microsoft Graph wywołania
 
-Gdy użytkownik jest zalogowany, wywołanie do Microsoft Graph jest nawiązywane za pośrednictwem żądania HTTP przez `callGraphAPI()`. Ta funkcja to otoka, która upraszcza przykład, wykonując pewne zadania, takie jak uzyskanie tokenu dostępu z `authenticationResult` i pakowanie wywołania do MSGraphRequestWrapper i wyświetlanie wyników wywołania.
+Gdy użytkownik jest zalogowany, wywołanie do Microsoft Graph jest nawiązywane za pośrednictwem żądania HTTP przez `callGraphAPI()`. Ta funkcja to otoka, która upraszcza przykład, wykonując pewne zadania, takie jak pobieranie tokenu dostępu z `authenticationResult` i pakowanie wywołania do MSGraphRequestWrapper i wyświetlanie wyników wywołania.
 
 ```java
 private void callGraphAPI(final IAuthenticationResult authenticationResult) {
@@ -367,7 +367,7 @@ Przykładem aplikacji z wieloma kontami jest aplikacja poczty, która umożliwia
 
 #### <a name="multiple-account-msal-initialization"></a>Inicjowanie wielu kont MSAL
 
-W `onCreateView()` obiekt aplikacji z wieloma kontami (`IMultipleAccountPublicClientApplication`) jest tworzony przy użyciu informacji konfiguracyjnych przechowywanych w `auth_config_multiple_account.json file`:
+W `onCreateView()`obiekt aplikacji z wieloma kontami (`IMultipleAccountPublicClientApplication`) jest tworzony przy użyciu informacji konfiguracyjnych przechowywanych w `auth_config_multiple_account.json file`:
 
 ```java
 // Creates a PublicClientApplication object with res/raw/auth_config_single_account.json
@@ -387,11 +387,11 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(getContext(
         });
 ```
 
-Utworzony obiekt `MultipleAccountPublicClientApplication` jest przechowywany w zmiennej składowej klasy, dzięki czemu można go użyć do współdziałania z biblioteką MSAL w celu uzyskania tokenów i załadowania i usunięcia konta użytkownika.
+Utworzony obiekt `MultipleAccountPublicClientApplication` jest przechowywany w zmiennej składowej klasy, dzięki czemu może służyć do współdziałania z biblioteką MSAL w celu uzyskania tokenów i załadowania i usunięcia konta użytkownika.
 
 #### <a name="load-an-account"></a>Załaduj konto
 
-Wiele aplikacji konta zazwyczaj wywołuje `GetAccounts()`, aby wybrać konto, które ma być używane dla operacji MSAL. Kod do załadowania konta jest w `loadAccount()`.  Ładowanie konta użytkownika jest operacją asynchroniczną. Wywołanie zwrotne obsługuje sytuacje, w których konto jest załadowane, zmienia się lub występuje błąd.
+Wiele aplikacji konta zazwyczaj wywołuje `GetAccounts()`, aby wybrać konto, które ma być używane dla operacji MSAL. Kod do załadowania konta znajduje się w `loadAccount()`.  Ładowanie konta użytkownika jest operacją asynchroniczną. Wywołanie zwrotne obsługuje sytuacje, w których konto jest załadowane, zmienia się lub występuje błąd.
 
 ```java
 /**
@@ -420,14 +420,14 @@ private void loadAccount() {
 
 Niektóre sytuacje, w których użytkownik może zostać poproszony o wybranie konta, wprowadzenie ich poświadczeń lub zgoda na uprawnienia wymagane przez aplikację:
 
-* Użytkownik po raz pierwszy loguje się do aplikacji
+* Gdy nowi użytkownicy logują się do aplikacji po raz pierwszy.
 * Jeśli użytkownik resetuje hasło, musi wprowadzić swoje poświadczenia 
 * Jeśli wyrażanie zgody zostało odwołane 
 * Jeśli aplikacja jawnie wymaga zgody 
 * Gdy aplikacja żąda dostępu do zasobu po raz pierwszy
 * Gdy wymagane jest uwierzytelnianie wieloskładnikowe lub inne zasady dostępu warunkowego
 
-Aplikacje z wieloma kontami powinny zwykle uzyskiwać tokeny interaktywnie, czyli interfejsem użytkownika, który obejmuje użytkownika, z wywołaniem do `acquireToken()`.  Kod umożliwiający interaktywny dostęp do tokenu znajduje się w `initializeUI()` w ramach procedury obsługi kliknij `callGraphApiInteractiveButton`:
+Wiele aplikacji konta powinna zwykle uzyskiwać tokeny interaktywnie, czyli interfejsem użytkownika, który obejmuje użytkownika, z wywołaniem do `acquireToken()`.  Kod umożliwiający interaktywny dostęp do tokenu znajduje się w `initializeUI()`, w `callGraphApiInteractiveButton` programu obsługi kliknij:
 
 ```java
 /**
@@ -444,7 +444,7 @@ Aplikacje z wieloma kontami powinny zwykle uzyskiwać tokeny interaktywnie, czyl
 mMultipleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-Aplikacje nie powinny wymagać od użytkownika logowania się za każdym razem, gdy żądają tokenu. Jeśli użytkownik został już zalogowany, `acquireTokenSilentAsync()` zezwala aplikacjom na żądanie tokenów bez monitowania użytkownika, jak pokazano w `initializeUI()` w programie obsługi `callGraphApiSilentButton`:
+Aplikacje nie powinny wymagać od użytkownika logowania się za każdym razem, gdy żądają tokenu. Jeśli użytkownik został już zalogowany, `acquireTokenSilentAsync()` zezwala aplikacjom na żądanie tokenów bez monitowania użytkownika, jak pokazano w `initializeUI()` w `callGraphApiSilentButton` kliknij program obsługi:
 
 ```java
 /**
@@ -461,7 +461,7 @@ getAuthSilentCallback());
 
 #### <a name="remove-an-account"></a>Usuwanie konta
 
-Kod służący do usuwania konta i wszystkie tokeny w pamięci podręcznej dla konta jest w `initializeUI()` w programie obsługi dla przycisku Usuń konto. Aby można było usunąć konto, musisz mieć obiekt konta, który uzyskano z funkcji MSAL, takich jak `getAccounts()` i `acquireToken()`. Ponieważ usunięcie konta jest operacją asynchroniczną, podano wywołanie zwrotne `onRemoved` w celu zaktualizowania interfejsu użytkownika.
+Kod służący do usuwania konta oraz wszystkie tokeny w pamięci podręcznej dla konta, są w `initializeUI()` w programie obsługi dla przycisku Usuń konto. Aby można było usunąć konto, musisz mieć obiekt konta, który uzyskano z funkcji MSAL, takich jak `getAccounts()` i `acquireToken()`. Ponieważ usunięcie konta jest operacją asynchroniczną, do zaktualizowania interfejsu użytkownika jest dostarczane `onRemoved` wywołanie zwrotne.
 
 ```java
 /**
@@ -512,19 +512,19 @@ W przeciwieństwie do pliku konfiguracji [auth_config_single_account. JSON](#aut
 
 ## <a name="next-steps"></a>Następne kroki
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Zapoznaj się z instrukcjami dotyczącymi tworzenia aplikacji używanej w tym przewodniku Szybki Start
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Dowiedz się więcej na temat czynności, które są wymagane to utworzenia aplikacji użytej w tym przewodniku Szybki start
 
-Wypróbuj Samouczek systemu Android, aby zapoznać się z kompletnym przewodnikiem krok po kroku dotyczącym tworzenia aplikacji i nowych funkcji, w tym pełen opis tego przewodnika Szybki Start.
+Wypróbuj samouczek systemu Android, aby uzyskać instrukcje krok po kroku dotyczące tworzenia aplikacji i nowych funkcji, w tym pełne objaśnienie informacji zawartych w tym przewodniku Szybki start.
 
 > [!div class="nextstepaction"]
-> [Zadzwoń interfejs API programu Graph samouczka systemu Android](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
+> [Samouczek: wywołanie interfejsu API programu Graph dla systemu Android](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
 
-### <a name="msal-for-android-library-wiki"></a>MSAL dla biblioteki systemu Android — wiki
+### <a name="msal-for-android-library-wiki"></a>Strona typu wiki: biblioteka MSAL dla systemu Android
 
 Przeczytaj więcej informacji na temat biblioteki MSAL dla systemu Android:
 
 > [!div class="nextstepaction"]
-> [MSAL dla biblioteki systemu Android — wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
+> [Strona typu wiki: biblioteka MSAL dla systemu Android](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

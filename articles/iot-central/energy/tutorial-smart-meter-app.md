@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: ba031000ed64ff00e9c502378bd2bbca2f363433
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fd6062250b288f9c1f04b7e7853e7fdd84d612c0
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955347"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965827"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Samouczek: Tworzenie i przechodzenie przez szablon aplikacji do monitorowania mierników inteligentnych 
 
@@ -102,5 +102,6 @@ Jeśli zdecydujesz, aby nie używać tej aplikacji, Usuń aplikację, wykonując
 
 
 ## <a name="next-steps"></a>Następne kroki
-* Aby dowiedzieć się więcej o architekturze aplikacji mierników inteligentnych, zapoznaj się z artykułem koncepcji. 
+* Informacje o architekturze aplikacji mierników inteligentnych odwołują się do [artykułu koncepcji](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
 * Twórz bezpłatnie szablony aplikacji mierników inteligentnych: [inteligentnego pomiaru aplikacji](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
+* Dowiedz się więcej na temat IoT Central, zobacz [omówienie IoT Central](https://docs.microsoft.com/azure/iot-central/)

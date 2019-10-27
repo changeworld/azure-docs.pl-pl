@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: f58ac4448f50e8e02f2838fef02c9f884f69266b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 3b552d37ce176e76bc0a4230a24a910543e5ea0d
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177456"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965120"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Skalowanie automatyczne i strefowo nadmiarowa brama aplikacji (wersja 2) 
 
@@ -41,8 +41,8 @@ Jednostka SKU Standard_v2 i WAF_v2 jest dostępna w następujących regionach: P
 
 W przypadku jednostki SKU v2 model cenowy jest oparty na zużyciu i nie jest już dołączony do liczby wystąpień ani rozmiarów. Cennik wersji 2 jednostki SKU ma dwa składniki:
 
-- **Stała cena** — cena godzinowa (lub częściowa godzina) do aprowizacji bramy Standard_v2 lub WAF_v2.
-- **Cena jednostkowa wydajności** — koszt oparty na zużyciu jest naliczany wraz z kosztem stałym. Opłata za jednostkę wydajności jest też obliczana godzinowo lub częściowo godzinowo. Jednostka wydajności ma trzy wymiary: jednostkę obliczeniową, połączenia trwałe i przepływność. Jednostka obliczeniowa jest miarą użycia wydajności procesora. Czynniki wpływające na jednostkę obliczeniową to połączenia TLS/s, obliczenia ponownego zapisu adresów URL i przetwarzanie reguł WAF. Połączenie trwałe to miara ustanowionych połączeń TCP z bramą aplikacji w danym interwale rozliczeniowym. Przepływność jest średnimi Megabitami/s przetworzonymi przez system w danym interwale rozliczeniowym.
+- **Stała cena** — cena godzinowa (lub częściowa godzina) do aprowizacji bramy Standard_v2 lub WAF_v2. Należy pamiętać, że 0 dodatkowe wystąpienia w dalszym ciągu zapewniają wysoką dostępność usługi, która jest zawsze dostępna ze stałą ceną.
+- **Cena jednostkowa wydajności** — koszt oparty na zużyciu jest naliczany wraz z kosztem stałym. Opłata za jednostkę wydajności jest też obliczana godzinowo lub częściowo godzinowo. Jednostka wydajności ma trzy wymiary: jednostkę obliczeniową, połączenia trwałe i przepływność. Jednostka obliczeniowa jest miarą użycia wydajności procesora. Czynniki wpływające na jednostkę obliczeniową to połączenia TLS/s, obliczenia ponownego zapisu adresów URL i przetwarzanie reguł WAF. Połączenie trwałe to miara ustanowionych połączeń TCP z bramą aplikacji w danym interwale rozliczeniowym. Przepływność jest średnimi Megabitami/s przetworzonymi przez system w danym interwale rozliczeniowym.  Rozliczenia odbywają się na poziomie jednostki pojemności dla wszystkiego powyżej liczby wystąpień zarezerwowanych.
 
 Każda jednostka pojemności składa się z maksymalnie: 1 jednostki obliczeniowej lub 2500 połączeń trwałych lub przepływności 2,22 MB/s.
 
@@ -77,7 +77,7 @@ Jednostki pojemności = 744 (godz.) * 10 jednostek wydajności na wystąpienie *
 
 **Przykład 2**
 
-Application Gateway standard_v2 jest inicjowany przez miesiąc i w tym momencie otrzymuje 25 nowych połączeń SSL/s, średniego transferu danych 8,88 MB/s. Przy założeniu, że połączenia są krótkotrwałe, cena będzie:
+Application Gateway standard_v2 jest inicjowany przez miesiąc, z 0 minimalnymi wystąpieniami, a w tym czasie otrzymuje 25 nowych połączeń SSL/s, średnia 8,88-MB/s transferu danych. Przy założeniu, że połączenia są krótkotrwałe, cena będzie:
 
 Stała cena = 744 (godziny) * $0,20 = $148,8
 
@@ -85,10 +85,37 @@ Cena jednostkowa wydajności = 744 (godz.) * Max (25/50 jednostek obliczeniowych
 
 Łączna cena = $148.8 + 23.81 = $172,61
 
+Jak widać, opłaty są naliczane za 4 jednostki wydajności, a nie dla całego wystąpienia. 
+
 > [!NOTE]
 > Funkcja Max zwraca największą wartość w parze wartości.
 
+
 **Przykład 3**
+
+Application Gateway standard_v2 jest inicjowana przez miesiąc z co najmniej 5 wystąpieniami. Przy założeniu, że ruch i połączenia są krótkotrwałe, cena będzie następująca:
+
+Stała cena = 744 (godziny) * $0,20 = $148,8
+
+Cena jednostki wydajności = 744 (godz.) * Max (0/50 jednostek obliczeniowych dla połączeń/s, 0/2.22 Jednostka pojemności dla przepływności) * $0,008 = 744 * 50 * 0,008 = $297,60
+
+Łączna cena = $148.80 + 297.60 = $446,4
+
+W tym przypadku opłaty są naliczane w całości z 5 wystąpień, nawet jeśli nie ma żadnego ruchu.
+
+**Przykład 4**
+
+Application Gateway standard_v2 jest inicjowana przez miesiąc z co najmniej 5 wystąpieniami, ale ten czas jest średnim transferem danych 125 – MB/s i 25 połączeniami SSL na sekundę. Przy założeniu, że ruch i połączenia są krótkotrwałe, cena będzie następująca:
+
+Stała cena = 744 (godziny) * $0,20 = $148,8
+
+Cena jednostkowa wydajności = 744 (godz.) * Max (25/50 jednostek obliczeniowych dla połączeń/s, jednostka pojemności 125/2.22 dla przepływności) * $0,008 = 744 * 57 * 0,008 = $339,26
+
+Łączna cena = $148.80 + 339.26 = $488,06
+
+W tym przypadku opłaty są naliczane za całe 5 wystąpień oraz 7 jednostek pojemności (czyli 7/10 wystąpienia).  
+
+**Przykład 5**
 
 Application Gateway WAF_v2 jest inicjowany przez miesiąc. W tym czasie otrzymujesz 25 nowych połączeń SSL/s, średnia z 8,88-MB/s transmisji danych i wysyła żądania 80 na sekundę. Przy założeniu, że połączenia są krótkotrwałe i obliczenia jednostek obliczeniowych dla aplikacji obsługują 10 RPS pliku na jednostkę obliczeniową, cena będzie:
 
@@ -105,7 +132,7 @@ Cena jednostkowa wydajności = 744 (godz.) * Max (maksymalna liczba jednostek ob
 
 Application Gateway i WAF można skonfigurować do skalowania w dwóch trybach:
 
-- **Skalowanie** automatyczne — z włączonym skalowaniem automatycznym jednostki SKU Application Gateway i WAF v2 są skalowane w górę lub w dół na podstawie wymagań dotyczących ruchu aplikacji. Ten tryb oferuje lepszą elastyczność aplikacji i eliminuje konieczność odgadnięcia rozmiaru bramy aplikacji lub liczby wystąpień. Ten tryb pozwala także zaoszczędzić koszt przez niewymaganie, aby brama działała na szczytowej pojemności dla przewidywanego maksymalnego obciążenia ruchem. Należy określić minimalną i opcjonalną maksymalną liczbę wystąpień. Minimalna pojemność zapewnia, że Application Gateway i WAF v2 nie spadnie poniżej minimalnej określonej liczby wystąpień, nawet w przypadku braku ruchu. Każde wystąpienie liczy się jako 10 dodatkowych jednostek pojemności zarezerwowanych. 0 oznacza brak zarezerwowanej pojemności i ma charakter wyłącznie Skalowanie automatyczne. Należy pamiętać, że 0 dodatkowe wystąpienia w dalszym ciągu zapewniają wysoką dostępność usługi, która jest zawsze dostępna ze stałą ceną. Opcjonalnie można również określić maksymalną liczbę wystąpień, która zapewnia, że Application Gateway nie będzie skalowana poza określoną liczbę wystąpień. Opłaty są naliczane za ilość ruchu obsługiwanego przez bramę. Liczba wystąpień może być z zakresu od 0 do 125. Wartość domyślna maksymalna liczba wystąpień to 20, jeśli nie zostanie określona. 
+- **Skalowanie** automatyczne — z włączonym skalowaniem automatycznym jednostki SKU Application Gateway i WAF v2 są skalowane w górę lub w dół na podstawie wymagań dotyczących ruchu aplikacji. Ten tryb oferuje lepszą elastyczność aplikacji i eliminuje konieczność odgadnięcia rozmiaru bramy aplikacji lub liczby wystąpień. Ten tryb pozwala także zaoszczędzić koszt przez niewymaganie, aby brama działała na szczytowej pojemności dla przewidywanego maksymalnego obciążenia ruchem. Należy określić minimalną i opcjonalną maksymalną liczbę wystąpień. Minimalna pojemność zapewnia, że Application Gateway i WAF v2 nie spadnie poniżej minimalnej określonej liczby wystąpień, nawet w przypadku braku ruchu. Każde wystąpienie liczy się jako 10 dodatkowych jednostek pojemności zarezerwowanych. 0 oznacza brak zarezerwowanej pojemności i ma charakter wyłącznie Skalowanie automatyczne. Należy pamiętać, że 0 dodatkowe wystąpienia w dalszym ciągu zapewniają wysoką dostępność usługi, która jest zawsze dostępna ze stałą ceną. Opcjonalnie można również określić maksymalną liczbę wystąpień, która zapewnia, że Application Gateway nie będzie skalowana poza określoną liczbę wystąpień. Opłaty są naliczane za ilość ruchu obsługiwanego przez bramę. Liczba wystąpień może być z zakresu od 0 do 125. Wartość domyślna maksymalna liczba wystąpień to 20, jeśli nie zostanie określona.
 - **Ręczne** — możesz alternatywnie wybrać tryb ręczny, w którym Brama nie będzie automatycznie skalowana. W tym trybie, jeśli ruch jest większy niż obsługiwane Application Gateway lub WAF, może to spowodować utratę ruchu. W trybie ręcznym określenie liczby wystąpień jest obowiązkowe. Liczba wystąpień może się różnić od 1 do 125 wystąpień.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porównanie funkcji między jednostką SKU V1 i jednostką SKU v2

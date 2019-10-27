@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 455058b8831f6cfaaa0bbc0dd4258633e2b98562
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a8f8b91e2990b85f5bcbd5aef5d70d3b6fb800e1
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957622"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965542"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Tworzenie rozwiązań energetycznych za pomocą IoT Central 
 Inteligentne liczniki i panele słoneczne odgrywają ważną rolę w transformację branży energetycznej. Inteligentne liczniki zapewniają większą kontrolę i szczegółowe informacje o zużyciu energii, a rozwój paneli słonecznych prowadzi do przełomowej generacji energii. Aplikacje monitorujące inteligentne Mierniki i panel słoneczny są przykładowymi szablonami pokazującymi różne możliwości. Partnerzy mogą wykorzystać te szablony do kompilowania rozwiązań energetycznych w IoT Central do ich konkretnych potrzeb. Nie są wymagane żadne nowe kodowanie i nie ma dodatkowych kosztów, aby wdrażać te aplikacje i korzystać z nich. Dowiedz się więcej o szablonach aplikacji energetycznej i ich możliwościach.
@@ -62,6 +62,7 @@ Po wdrożeniu aplikacji zobaczysz symulowane dane panelu słonecznego w ciągu 1
 
 ## <a name="next-steps"></a>Następne kroki
 Aby rozpocząć tworzenie rozwiązania energetycznego:
-* Bezpłatne wdrażanie szablonów aplikacji: [inteligentnego miernika](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)aplikacja, [panel słoneczny](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* Dowiedz się więcej na temat IoT Central: [omówienie IoT Central](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
-
+* Bezpłatnie Twórz szablony aplikacji: [inteligentnego miernika](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)aplikacja, [panel słoneczny](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
+* Informacje o [pojęciach dotyczących monitorowania mierników inteligentnych](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
+* Informacje o [pojęciach dotyczących monitorowania panelu słonecznego](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
+* Dowiedz się więcej na temat [platformy IoT Central](https://docs.microsoft.com/azure/iot-central/)

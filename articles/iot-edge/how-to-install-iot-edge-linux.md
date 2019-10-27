@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 9bc4d60eab0dac80d1b2b524f32bc506a66dee18
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: aca417ebbc6f9af80058ddece32842f38918ce60
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516668"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964759"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Zainstaluj środowisko uruchomieniowe Azure IoT Edge w systemach Linux opartych na Debian
 
@@ -167,7 +167,7 @@ Pojedyncze urządzenie IoT Edge może być inicjowane ręcznie przy użyciu para
 
 ### <a name="option-1-manual-provisioning"></a>Opcja 1: Ręczne inicjowanie obsługi
 
-Aby ręcznie zainicjować obsługę administracyjną urządzenia, należy podać je za pomocą [parametrów połączenia urządzenia](how-to-register-device-portal.md) , które można utworzyć, rejestrując nowe urządzenie w centrum IoT.
+Aby ręcznie zainicjować obsługę administracyjną urządzenia, należy podać je za pomocą [parametrów połączenia urządzenia](how-to-register-device.md#register-in-the-azure-portal) , które można utworzyć, rejestrując nowe urządzenie w centrum IoT.
 
 Otwórz plik konfiguracji.
 

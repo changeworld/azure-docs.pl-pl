@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/22/2019
-ms.openlocfilehash: 89c4bce33b80e988a9da363a89854e921bee30b0
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/25/2019
+ms.openlocfilehash: 82e07edc615fd8c1ef0ebc84cf57035727bbcdf6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973657"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965260"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Reguły zapory serwera Azure Database for MariaDB
 Zapory uniemożliwiają dostęp do serwera bazy danych do momentu określenia komputerów, które mają uprawnienia. Zapora przyznaje dostęp do serwera na podstawie źródłowego adresu IP każdego żądania.
@@ -43,10 +43,13 @@ Aby umożliwić aplikacjom z platformy Azure Łączenie się z serwerem Azure Da
 
 ![Konfigurowanie zezwalania na dostęp do usług platformy Azure w portalu](./media/concepts-firewall-rules/allow-azure-services.png)
 
+### <a name="connecting-from-a-vnet"></a>Łączenie z sieci wirtualnej
+Aby bezpiecznie połączyć się z serwerem Azure Database for MariaDB z sieci wirtualnej, należy rozważyć użycie [punktów końcowych usługi sieci wirtualnej](./concepts-data-access-security-vnet.md). 
+
 ## <a name="programmatically-managing-firewall-rules"></a>Programowe zarządzanie regułami zapory
 Oprócz Azure Portal reguły zapory można zarządzać programowo przy użyciu interfejsu wiersza polecenia platformy Azure. 
 
-<!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
+Zobacz też [Tworzenie reguł zapory Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia platformy Azure i zarządzanie nimi](./howto-manage-firewall-cli.md).
 
 ## <a name="troubleshooting-firewall-issues"></a>Rozwiązywanie problemów z zaporą
 Należy wziąć pod uwagę następujące kwestie, gdy dostęp do usługi Microsoft Azure Database for MariaDB Server nie zachowuje się zgodnie z oczekiwaniami:
@@ -65,6 +68,5 @@ Należy wziąć pod uwagę następujące kwestie, gdy dostęp do usługi Microso
 
 ## <a name="next-steps"></a>Następne kroki
 - [Tworzenie reguł zapory Azure Database for MariaDB i zarządzanie nimi za pomocą Azure Portal](./howto-manage-firewall-portal.md)
-
-<!--
-- [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md) -->
+- [Tworzenie reguł zapory Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia platformy Azure i zarządzanie nimi](./howto-manage-firewall-cli.md)
+- [Punkty końcowe usługi sieci wirtualnej w Azure Database for MariaDB](./concepts-data-access-security-vnet.md)

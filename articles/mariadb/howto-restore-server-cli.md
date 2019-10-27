@@ -1,49 +1,47 @@
 ---
-title: Jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database dla serwera MariaDB
-description: Dowiedz się, jak utworzyć kopię zapasową i przywrócić serwer w usłudze Azure Database dla serwera MariaDB przy użyciu wiersza polecenia platformy Azure.
-author: rachel-msft
-ms.author: raagyema
+title: Jak utworzyć kopię zapasową i przywrócić serwer w Azure Database for MariaDB
+description: Dowiedz się, jak utworzyć kopię zapasową i przywrócić serwer w Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia platformy Azure.
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: 409fe7b76306036cad19980459ca718c87118d8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/25/2019
+ms.openlocfilehash: ae2e8049c58be312eed380fe2197985e61d28a26
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171391"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965227"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwer w usłudze Azure Database dla serwera MariaDB przy użyciu wiersza polecenia platformy Azure
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Jak utworzyć kopię zapasową i przywrócić serwer w Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia platformy Azure
 
-## <a name="backup-happens-automatically"></a>Kopia zapasowa odbywa się automatycznie
-
-Azure Database dla serwera MariaDB są kopie zapasowe serwerów okresowo do włączania funkcji przywracania. Za pomocą tej funkcji można przywrócić serwera i jego baz danych do wcześniejszych punktu w czasie na nowym serwerze.
+Kopie zapasowe serwerów Azure Database for MariaDB są podejmowane okresowo w celu włączenia funkcji przywracania. Korzystając z tej funkcji, można przywrócić serwer i wszystkie jego bazy danych do wcześniejszego punktu w czasie na nowym serwerze.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik, potrzebne są:
+Aby ukończyć ten przewodnik, musisz:
 
-- [— Azure Database dla serwera MariaDB i bazy danych](quickstart-create-mariadb-server-database-using-azure-cli.md)
+- [Serwer Azure Database for MariaDB i baza danych](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Ten poradnik wymaga użycie wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Aby sprawdzić, która wersja, w wierszu polecenia wiersza polecenia platformy Azure, wprowadź `az --version`. Aby zainstalować lub uaktualnić, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj]( /cli/azure/install-azure-cli).
+> Ten przewodnik zawiera informacje wymagające użycia interfejsu wiersza polecenia platformy Azure w wersji 2,0 lub nowszej. Aby potwierdzić wersję programu, w wierszu polecenia wiersza poleceń platformy Azure wpisz `az --version`. Aby zainstalować lub uaktualnić, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="set-backup-configuration"></a>Ustaw konfigurację tworzenia kopii zapasowych
+## <a name="set-backup-configuration"></a>Ustawianie konfiguracji kopii zapasowej
 
-Upewnij się nad wyborem między skonfigurowaniem serwera kopii zapasowych lokalnie nadmiarowy lub geograficznie nadmiarowych kopii zapasowych podczas tworzenia serwera.
+Wybór między konfiguracją serwera na potrzeby lokalnie nadmiarowych kopii zapasowych lub geograficznie nadmiarowych kopii zapasowych podczas tworzenia serwera.
 
 > [!NOTE]
-> Po utworzeniu serwera typu nadmiarowości, który ma, nie mogą być przełączane lokalnie nadmiarowy, Magazyn geograficznie nadmiarowy vs.
+> Po utworzeniu serwera, jego rodzaju nadmiarowości, czyli geograficznie nadmiarowej a lokalnie nadmiarowy, nie można przełączyć.
 >
 
-Podczas tworzenia serwera za pomocą `az mariadb server create` polecenia `--geo-redundant-backup` parametru decyduje o swoją opcję nadmiarowości kopii zapasowej. Jeśli `Enabled`, geograficznie nadmiarowych kopii zapasowych są pobierane. Lub, jeśli `Disabled` są pobierane lokalnie nadmiarowych kopii zapasowych.
+Podczas tworzenia serwera za pomocą polecenia `az mariadb server create`, parametr `--geo-redundant-backup` decyduje o opcji nadmiarowości kopii zapasowej. W przypadku `Enabled`są pobierane geograficznie nadmiarowe kopie zapasowe. Lub jeśli `Disabled` lokalnie nadmiarowe kopie zapasowe są wykonywane.
 
-Okres przechowywania kopii zapasowej jest ustawiana przez parametr `--backup-retention`.
+Okres przechowywania kopii zapasowych jest ustawiany przez `--backup-retention`parametru.
 
-Aby uzyskać więcej informacji na temat ustawiania tych wartości podczas tworzenia, zobacz [serwera MariaDB Szybki Start interfejs wiersza polecenia platformy Azure Database for](quickstart-create-mariadb-server-database-using-azure-cli.md).
+Aby uzyskać więcej informacji na temat ustawiania tych wartości podczas tworzenia, zobacz [Przewodnik Szybki Start dotyczący interfejsu wiersza polecenia Azure Database for MariaDB Server](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
 Okres przechowywania kopii zapasowej serwera można zmienić w następujący sposób:
 
@@ -51,80 +49,84 @@ Okres przechowywania kopii zapasowej serwera można zmienić w następujący spo
 az mariadb server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
-Poprzedni przykład zmienia okres przechowywania kopii zapasowych mydemoserver 10 dni.
+Poprzedni przykład zmienia okres przechowywania kopii zapasowych z mydemoserver do 10 dni.
 
-Okres przechowywania kopii zapasowej decyduje jak daleko w czasie, które mogą być pobierane przywracania w momencie, ponieważ jest on oparty na dostępnych kopii zapasowych. W momencie przywracania jest dokładniejszym opisem zawartym w następnej sekcji.
+Okres przechowywania kopii zapasowej decyduje o tym, jak daleko w czasie można pobrać przywracanie do punktu w czasie, ponieważ jest ono oparte na dostępnych kopiach zapasowych. Przywracanie do określonego momentu zostało opisane w następnej sekcji.
 
-## <a name="server-point-in-time-restore"></a>Serwer w momencie przywracania
+## <a name="server-point-in-time-restore"></a>Przywracanie do punktu w czasie serwera
 
-Możesz przywrócić serwer do wcześniejszego punktu w czasie. Przywróconych danych jest kopiowany do nowego serwera, a istniejący serwer pozostanie niezmieniona. Na przykład jeśli tabela jest przypadkowo w południe już dziś, można przywrócić do czasu, po prostu przed południem. Następnie możesz pobrać brakujące tabeli i danych z przywróconej kopii serwera.
+Serwer można przywrócić do wcześniejszego punktu w czasie. Przywrócone dane zostaną skopiowane na nowy serwer, a istniejący serwer jest pozostawiony jako. Na przykład jeśli tabela jest przypadkowo porzucana dzisiaj, można przywrócić ją do godziny tuż przed południem. Następnie można pobrać brakującą tabelę i dane z przywróconej kopii serwera.
 
-Aby przywrócić serwer, należy użyć wiersza polecenia platformy Azure [przywracania serwera mariadb az](/cli/azure/mariadb/server#az-mariadb-server-restore) polecenia.
+Aby przywrócić serwer, użyj interfejsu wiersza polecenia platformy Azure [AZ MariaDB Server Restore](/cli/azure/mariadb/server#az-mariadb-server-restore) .
 
-### <a name="run-the-restore-command"></a>Uruchom polecenie restore
+### <a name="run-the-restore-command"></a>Uruchom polecenie Restore
 
-Aby przywrócić serwer w wierszu polecenia wiersza polecenia platformy Azure, wprowadź następujące polecenie:
+Aby przywrócić serwer, w wierszu polecenia platformy Azure wpisz następujące polecenie:
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time 2018-03-13T13:59:00Z --source-server mydemoserver
 ```
 
-`az mariadb server restore` Polecenie wymaga następujących parametrów:
+Polecenie `az mariadb server restore` wymaga następujących parametrów:
 
 | Ustawienie | Sugerowana wartość | Opis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Grupa zasobów, w której istnieje na serwerze źródłowym.  |
+| resource-group |  myresourcegroup |  Grupa zasobów, w której znajduje się serwer źródłowy.  |
 | name | mydemoserver-restored | Nazwa nowego serwera utworzonego za pomocą polecenie przywracania. |
-| restore-point-in-time | 2018-03-13T13:59:00Z | Wybierz punkt w czasie do przywrócenia. Ta data i godzina musi przypadać w okresie przechowywania kopii zapasowej serwera źródłowego. Użyj formatu ISO8601 daty i godziny. Na przykład takie jak możesz użyć własnej lokalnej strefy czasowej, `2018-03-13T05:59:00-08:00`. Można również użyć formatu UTC Zulu, na przykład `2018-03-13T13:59:00Z`. |
+| restore-point-in-time | 2018 R-03-13T13:59:00Z | Wybierz punkt w czasie, do którego chcesz przywrócić. Ta data i godzina musi przypadać w okresie przechowywania kopii zapasowej serwera źródłowego. Użyj formatu daty i godziny ISO8601. Na przykład możesz użyć własnej lokalnej strefy czasowej, takiej jak `2018-03-13T05:59:00-08:00`. Można również użyć formatu UTC Zulu, na przykład `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | Nazwa lub identyfikator serwera źródłowego, z którego ma zostać przeprowadzone przywrócenie. |
 
-Gdy można przywrócić serwer do wcześniejszego punktu w czasie, tworzony jest nowy serwer. Oryginalny serwer i jego baz danych z określonego punktu w czasie są kopiowane do nowego serwera.
+WWhen przywrócisz serwer do wcześniejszego punktu w czasie, zostanie utworzony nowy serwer. Oryginalny serwer i jego bazy danych z określonego punktu w czasie są kopiowane na nowy serwer.
 
-Wartości lokalizacji i cen warstwy dla przywróconego serwera pozostają takie same, jak oryginalny serwer.
+Wartości lokalizacji i warstwy cenowej dla przywróconego serwera pozostają takie same, jak oryginalny serwer. 
 
-Po ukończeniu procesu przywracania zlokalizuj nowy serwer, a następnie sprawdź, czy dane są przywracane zgodnie z oczekiwaniami.
+Po zakończeniu procesu przywracania Znajdź nowy serwer i sprawdź, czy dane są przywracane zgodnie z oczekiwaniami. Nowy serwer ma taką samą nazwę logowania administratora serwera i hasło, które były prawidłowe dla istniejącego serwera w momencie zainicjowania przywracania. Hasło można zmienić na stronie **Przegląd** nowego serwera.
+
+Nowy serwer utworzony podczas przywracania nie ma reguł zapory lub punktów końcowych usługi sieci wirtualnej, które istniały na oryginalnym serwerze. Te reguły należy skonfigurować oddzielnie dla tego nowego serwera.
 
 ## <a name="geo-restore"></a>Przywracanie geograficzne
 
-Skonfigurowanie serwera na potrzeby geograficznie nadmiarowych kopii zapasowych można utworzyć nowy serwer z kopii zapasowej tego istniejącego serwera. Ten nowy serwer można utworzyć w dowolnym regionie, że usługi Azure Database dla serwera MariaDB jest dostępny.  
+Jeśli serwer został skonfigurowany pod kątem kopii zapasowych geograficznie nadmiarowych, można utworzyć nowy serwer z kopii zapasowej istniejącego serwera. Ten nowy serwer można utworzyć w dowolnym regionie, który Azure Database for MariaDB jest dostępny.  
 
-Aby utworzyć serwer przy użyciu kopii zapasowej nadmiarowej geograficznie, należy użyć wiersza polecenia platformy Azure `az mariadb server georestore` polecenia.
+Aby utworzyć serwer przy użyciu geograficznie nadmiarowej kopii zapasowej, użyj interfejsu wiersza polecenia platformy Azure `az mariadb server georestore`.
 
 > [!NOTE]
-> Gdy tworzona jest najpierw serwer nie może być natychmiast dostępne dla przywracania geograficznego. Może upłynąć kilka godzin metadane potrzebne do wypełnienia.
+> Gdy serwer jest tworzony po raz pierwszy, może nie być od razu dostępny do przywracania geograficznego. Wypełnienie wymaganych metadanych może potrwać kilka godzin.
 >
 
-Przywracania geograficznego serwera, w wierszu polecenia wiersza polecenia platformy Azure wprowadź następujące polecenie:
+Aby przywrócić lokalizację geograficzną serwera, w wierszu polecenia platformy Azure wpisz następujące polecenie:
 
 ```azurecli-interactive
 az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
 
-To polecenie tworzy nowy serwer o nazwie *mydemoserver georestored* we wschodnim regionie USA, który będzie należał do *myresourcegroup*. Jest ogólnego przeznaczenia 5 ogólnego serwera z 8 rdzeniami wirtualnymi. Serwer jest tworzony z geograficznie nadmiarowej kopii zapasowej *mydemoserver*, która jest również w grupie zasobów *myresourcegroup*
+To polecenie tworzy nowy serwer o nazwie *mydemoserver-georestore* w regionie Wschodnie stany USA, który będzie należeć do *zasobu*. Jest to Ogólnego przeznaczenia, serwer generacji 5 z 8 rdzeni wirtualnych. Serwer jest tworzony na podstawie geograficznie nadmiarowej kopii zapasowej *mydemoserver*, która również znajduje się w *grupie zasobów* .
 
-Jeśli chcesz utworzyć nowy serwer w innej grupie zasobów z istniejącego serwera, następnie w `--source-server` parametru zakwalifikowanie nazwę serwera, jak w poniższym przykładzie:
+Jeśli chcesz utworzyć nowy serwer w innej grupie zasobów z istniejącego serwera, w `--source-server` parametr należy zakwalifikować nazwę serwera, tak jak w poniższym przykładzie:
 
 ```azurecli-interactive
 az mariadb server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforMariaDB/servers/mydemoserver" --location eastus --sku-name GP_Gen5_8
 
 ```
 
-`az mariadb server georestore` Polecenie wymaga następujących parametrów:
+Polecenie `az mariadb server georestore` wymaga następujących parametrów:
 
 | Ustawienie | Sugerowana wartość | Opis  |
 | --- | --- | --- |
-|resource-group| myresourcegroup | Nazwa grupy zasobów, nowy serwer będzie znajdować się.|
-|name | mydemoserver-georestored | Nazwa nowego serwera. |
-|source-server | mydemoserver | Nazwa istniejącego serwera, którego geograficznie nadmiarowy tworzenia kopii zapasowych są używane. |
+|resource-group| myresourcegroup | Nazwa grupy zasobów, do której należy nowy serwer.|
+|name | mydemoserver-georestore | Nazwa nowego serwera. |
+|source-server | mydemoserver | Nazwa istniejącego serwera, którego są używane geograficznie nadmiarowe kopie zapasowe. |
 |location | eastus | Lokalizacja nowego serwera. |
-|sku-name| GP_Gen5_8 | Ten parametr ustawia cen warstwy, Generowanie obliczeń i liczba rdzeni wirtualnych nowego serwera. GP_Gen5_8 mapuje do ogólnego przeznaczenia 5 ogólnego serwera z 8 rdzeniami wirtualnymi.|
+|sku-name| GP_Gen5_8 | Ten parametr ustawia warstwę cenową, generowanie obliczeń i liczbę rdzeni wirtualnych nowego serwera. GP_Gen5_8 mapuje do Ogólnego przeznaczenia, generacji 5 Server z 8 rdzeni wirtualnych.|
 
->[!Important]
->Podczas tworzenia nowego serwera przez Przywracanie geograficzne, dziedziczy takim samym rozmiarze magazynu i warstwę cenową co serwer źródłowy. Te wartości nie można zmienić podczas tworzenia. Po utworzeniu nowego serwera, jego rozmiar magazynu można przeskalować w górę.
+Podczas tworzenia nowego serwera przy użyciu przywracania geograficznego program dziedziczy ten sam rozmiar magazynu i warstwę cenową co serwer źródłowy. Nie można zmienić tych wartości podczas tworzenia. Po utworzeniu nowego serwera jego rozmiar magazynu może być skalowany w górę.
 
-Po ukończeniu procesu przywracania zlokalizuj nowy serwer, a następnie sprawdź, czy dane są przywracane zgodnie z oczekiwaniami.
+Po zakończeniu procesu przywracania Znajdź nowy serwer i sprawdź, czy dane są przywracane zgodnie z oczekiwaniami. Nowy serwer ma taką samą nazwę logowania administratora serwera i hasło, które były prawidłowe dla istniejącego serwera w momencie zainicjowania przywracania. Hasło można zmienić na stronie **Przegląd** nowego serwera.
 
-## <a name="next-steps"></a>Kolejne kroki
+Nowy serwer utworzony podczas przywracania nie ma reguł zapory lub punktów końcowych usługi sieci wirtualnej, które istniały na oryginalnym serwerze. Te reguły należy skonfigurować oddzielnie dla tego nowego serwera.
 
-- Dowiedz się więcej o usłudze [kopie zapasowe](concepts-backup.md).
-- Dowiedz się więcej o [ciągłość prowadzenia działalności biznesowej](concepts-business-continuity.md) opcje.
+## <a name="next-steps"></a>Następne kroki
+
+- Dowiedz się więcej o [kopiach zapasowych](concepts-backup.md) usługi
+- Informacje o [replikach](concepts-read-replicas.md)
+- Dowiedz się więcej o opcjach [ciągłości biznesowej](concepts-business-continuity.md)

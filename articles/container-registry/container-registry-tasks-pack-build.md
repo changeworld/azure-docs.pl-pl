@@ -3,16 +3,17 @@ title: Tworzenie obrazu Azure Container Registry z poziomu aplikacji
 description: Użyj polecenia AZ ACR Pack Build, aby skompilować obraz kontenera z aplikacji i wypchnąć do Azure Container Registry bez użycia pliku dockerfile.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 10/24/2019
 ms.author: danlep
-ms.openlocfilehash: b544820a0c496e0814de44790ea9c28878031a7d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 34ef0fe4be00cfa7ce3e73c23eec636784071e56
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293907"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965911"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Kompilowanie i wypychanie obrazu z aplikacji przy użyciu natywnej Buildpack w chmurze
 
@@ -32,25 +33,23 @@ Podczas uruchamiania `az acr pack build` należy określić co najmniej następu
 * Rejestr kontenerów platformy Azure, w którym jest uruchamiane polecenie
 * Nazwa obrazu i tag dla obrazu uzyskanego
 * Jedna z [obsługiwanych lokalizacji kontekstu](container-registry-tasks-overview.md#context-locations) dla zadań ACR, takich jak katalog lokalny, repozytorium GitHub lub zdalne plik tar
-* Nazwa obrazu konstruktora Buildpack, na przykład `cloudfoundry/cnb:0.0.12-bionic`.  
+* Nazwa obrazu programu Buildpack Builder odpowiednie dla Twojej aplikacji. Azure Container Registry pamięci podręcznej obrazów konstruktora, takich jak `cloudfoundry/cnb:0.0.34-cflinuxfs3`, dla szybszych kompilacji.  
 
 `az acr pack build` obsługuje inne funkcje poleceń ACR zadania, w tym [uruchomienia zmiennych](container-registry-tasks-reference-yaml.md#run-variables) i [dzienników uruchamiania zadań](container-registry-tasks-overview.md#view-task-logs) , które są przesyłane strumieniowo, a także zapisane do późniejszego pobrania.
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Przykład: kompilowanie obrazu Node. js za pomocą konstruktora Cloud Foundry
 
-Poniższy przykład tworzy obraz kontenera z aplikacji node. js w repozytorium [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) przy użyciu konstruktora `cloudfoundry/cnb:0.0.12-bionic`:
+Poniższy przykład tworzy obraz kontenera z aplikacji node. js w repozytorium [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) przy użyciu konstruktora `cloudfoundry/cnb:0.0.34-cflinuxfs3`. Ten konstruktor jest buforowany przez Azure Container Registry, więc parametr `--pull` nie jest wymagany:
 
 ```azurecli
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --pull --builder cloudfoundry/cnb:0.0.12-bionic \
+    --builder cloudfoundry/cnb:0.0.34-cflinuxfs3 \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-Ten przykład kompiluje obraz `node-app` ze znacznikiem `1.0` i wypchnięcie go do rejestru kontenerów *rejestru* . W tym miejscu docelowa Nazwa rejestru jest jawnie poprzedzona nazwą obrazu. Jeśli nie zostanie określony, adres URL rejestru zostanie automatycznie poprzedzony nazwą obrazu.
-
-Parametr `--pull` Określa, że polecenie ściąga najnowszą wersję obrazu konstruktora.
+Ten przykład kompiluje obraz `node-app` ze znacznikiem `1.0` i wypchnięcie go do rejestru kontenerów *rejestru* . W tym przykładzie docelowa Nazwa rejestru jest jawnie poprzedzona nazwą obrazu. Jeśli nie zostanie określony, nazwa serwera logowania rejestru zostanie automatycznie poprzedzona nazwą obrazu.
 
 Dane wyjściowe polecenia pokazują postęp kompilowania i wypychania obrazu. 
 
@@ -70,7 +69,7 @@ Przejdź do `localhost:1337` w ulubionej przeglądarce, aby wyświetlić przykł
 
 ## <a name="example-build-java-image-with-heroku-builder"></a>Przykład: kompilowanie obrazu Java za pomocą konstruktora Heroku
 
-Poniższy przykład tworzy obraz kontenera z aplikacji Java w repozytorium [buildpack/Sample-Java-App](https://github.com/buildpack/sample-java-app) , korzystając z konstruktora `heroku/buildpacks:18`:
+Poniższy przykład tworzy obraz kontenera z aplikacji Java w repozytorium [buildpack/Sample-Java-App](https://github.com/buildpack/sample-java-app) , używając konstruktora `heroku/buildpacks:18`. Parametr `--pull` określa, że polecenie powinno pobrać najnowszy obraz konstruktora. 
 
 ```azurecli
 az acr pack build \
@@ -81,8 +80,6 @@ az acr pack build \
 ```
 
 Ten przykład kompiluje obraz `java-app` oznaczony przy użyciu identyfikatora uruchomienia polecenia i wypchnięcie go do rejestru kontenerów *rejestru* .
-
-Parametr `--pull` Określa, że polecenie ściąga najnowszą wersję obrazu konstruktora.
 
 Dane wyjściowe polecenia pokazują postęp kompilowania i wypychania obrazu. 
 

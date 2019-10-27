@@ -4,14 +4,14 @@ description: Opisuje funkcje, które mają być używane w szablonie Azure Resou
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 10/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf791bd262849cd93a155a19ade8f8fc377f8da6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dc39c727526f55039a5e18a8fd2aeeb4f25234a6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894200"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965628"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla Azure Resource Manager szablonów
 
@@ -749,6 +749,12 @@ Identyfikator zasobu jest zwracany w następującym formacie:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+W przypadku użycia w ramach [wdrożenia na poziomie subskrypcji](deploy-to-subscription.md)identyfikator zasobu jest zwracany w następującym formacie:
+
+```json
+/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
 Aby uzyskać identyfikator w innych formatach, zobacz:
