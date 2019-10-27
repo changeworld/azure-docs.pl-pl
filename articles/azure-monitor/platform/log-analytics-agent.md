@@ -1,24 +1,18 @@
 ---
 title: Zbieranie danych dziennika za pomocą usługi Azure Log Analytics Agent | Microsoft Docs
 description: Ten temat pomaga zrozumieć, jak zbierać dane i monitorować komputery hostowane na platformie Azure, lokalnie lub w innym środowisku chmury przy użyciu Log Analytics.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/07/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1eec8b79579a1c4d5c889b830706299ccc25e88b
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/07/2019
+ms.openlocfilehash: 8070abad675acc69f5b1da232b60179078adbc57
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035634"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932238"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Zbieranie danych dziennika za pomocą agenta Log Analytics
 

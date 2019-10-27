@@ -1,24 +1,18 @@
 ---
 title: Jak rozwiązywać problemy z agentem Log Analytics dla systemu Windows | Microsoft Docs
 description: Opisz objawy, przyczyny i rozwiązywanie typowych problemów z Log Analytics agentem dla systemu Windows w Azure Monitor.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 96f020f24e27ff799f9bfbc08d899e8375b86094
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 06/12/2019
+ms.openlocfilehash: a218ac09c7a0983796700229c65ae523b61dae10
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431826"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932759"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Jak rozwiązywać problemy z agentem Log Analytics dla systemu Windows 
 
@@ -67,7 +61,7 @@ Istnieje kilka sposobów, aby sprawdzić, czy Agent pomyślnie komunikuje się z
 
     ![Wyniki wykonywania narzędzia TestCloudConnection](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- Przefiltruj dziennik zdarzeń *Operations Manager* przez **źródła zdarzeń**@no__t-*2 usługa kondycji moduły*, *HealthService*i *Łącznik usługi* i przefiltruj według *ostrzeżenia* na **poziomie zdarzenia** i *błędu* , aby Upewnij się, czy zapisały zdarzenia z poniższej tabeli. Jeśli są, przejrzyj kroki rozwiązywania dotyczące każdego możliwego zdarzenia.
+- Filtrowanie dziennika zdarzeń *Operations Manager* według **źródeł zdarzeń** - *Usługa kondycji modułów*, *HealthService*i *Łącznik usługi* oraz filtrowanie według *ostrzeżeń* i *błędów* na **poziomie zdarzeń** Upewnij się, czy zapisały zdarzenia z poniższej tabeli. Jeśli są, przejrzyj kroki rozwiązywania dotyczące każdego możliwego zdarzenia.
 
     |Identyfikator zdarzenia |Źródło |Opis |Rozdzielczość |
     |---------|-------|------------|-----------|

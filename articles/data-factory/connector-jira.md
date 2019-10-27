@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z programu Jira przy użyciu usługi Azure Data Factory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z programu Jira do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
+title: Kopiowanie danych z JIRA za pomocą Azure Data Factory | Microsoft Docs
+description: Informacje o kopiowaniu danych z programu JIRA do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,53 +10,50 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: c6cf30a8d4f750aa8e1c2b7531c4a604642e88b4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: c48533175d21475a1c42eddc9dc6123f8e4050fb
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092028"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935551"
 ---
-# <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Kopiowanie danych z programu Jira przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
+# <a name="copy-data-from-jira-using-azure-data-factory"></a>Kopiowanie danych z JIRA za pomocą Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z programu Jira. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z JIRA. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
-> [!IMPORTANT]
-> Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę funkcję i przekaż nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
-
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik JIRA jest obsługiwany dla następujących działań:
 
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Możesz skopiować dane z programu Jira do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z JIRA można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
+Azure Data Factory udostępnia wbudowany sterownik umożliwiający połączenie, dlatego nie trzeba ręcznie instalować żadnego sterownika przy użyciu tego łącznika.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje na temat właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika programu Jira.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika JIRA.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 
-Następujące właściwości są obsługiwane w przypadku programu Jira połączone usługi:
+Dla połączonej usługi JIRA są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **Jira** | Tak |
-| host | Adres IP lub hosta nazwę usługi programu Jira. (na przykład jira.example.com)  | Yes |
-| port | Port TCP używany przez serwer programu Jira do nasłuchiwania połączeń klientów. Wartością domyślną jest 443, jeśli połączenie za pośrednictwem protokołu HTTPS lub 8080, jeśli połączenie nawiązywane za pośrednictwem protokołu HTTP.  | Nie |
-| username | Nazwa użytkownika, który umożliwia dostęp do usługi Jira.  | Yes |
-| password | Hasło odpowiadający nazwie użytkownika, podanym w polu Nazwa użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| type | Właściwość Type musi mieć wartość: **JIRA** | Tak |
+| Host | Adres IP lub nazwa hosta usługi JIRA. (na przykład jira.example.com)  | Tak |
+| port | Port TCP, którego serwer JIRA używa do nasłuchiwania połączeń klientów. Wartość domyślna to 443 w przypadku nawiązywania połączenia za pośrednictwem protokołu HTTPS lub 8080 w przypadku nawiązywania połączenia za pośrednictwem protokołu HTTP.  | Nie |
+| nazwa użytkownika | Nazwa użytkownika służąca do uzyskiwania dostępu do usługi JIRA.  | Tak |
+| hasło | Hasło odpowiadające nazwie użytkownika podanej w polu Nazwa użytkownika. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
-| useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
-| usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| useHostVerification | Określa, czy nazwa hosta ma być wymagana w certyfikacie serwera, aby odpowiadała nazwie hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| usePeerVerification | Określa, czy należy zweryfikować tożsamość serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 
 **Przykład:**
 
@@ -80,14 +77,14 @@ Następujące właściwości są obsługiwane w przypadku programu Jira połącz
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych w usłudze Jira.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych JIRA.
 
-Aby skopiować dane z programu Jira, należy ustawić właściwość typu zestawu danych na **JiraObject**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z JIRA, ustaw właściwość Type zestawu danych na **JiraObject**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **JiraObject** | Tak |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| tableName | Nazwa tabeli. | Nie (Jeśli określono "zapytanie" w źródle aktywności) |
 
 **Przykład**
 
@@ -108,16 +105,16 @@ Aby skopiować dane z programu Jira, należy ustawić właściwość typu zestaw
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło programu Jira.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło JIRA.
 
 ### <a name="jirasource-as-source"></a>JiraSource jako źródło
 
-Aby skopiować dane z programu Jira, należy ustawić typ źródła w działaniu kopiowania, aby **JiraSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z JIRA, ustaw typ źródła w działaniu Copy na **JiraSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **JiraSource** | Tak |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **JiraSource** | Tak |
+| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono "TableName" w zestawie danych) |
 
 **Przykład:**
 
@@ -156,4 +153,4 @@ Aby skopiować dane z programu Jira, należy ustawić typ źródła w działaniu
 Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

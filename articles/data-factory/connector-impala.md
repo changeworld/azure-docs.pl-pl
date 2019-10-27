@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z aparatu Impala przy użyciu usługi Azure Data Factory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z aparatu Impala do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi fabryka danych.
+title: Kopiowanie danych z Impala za pomocą Azure Data Factory | Microsoft Docs
+description: Informacje o kopiowaniu danych z programu Impala do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku usługi Fabryka danych.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,59 +12,56 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 4bebdbda8fbba10b3e8817d3958e75d39522538a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 54f46c09cfab64d53e8f5f503ca46004289f18c2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092036"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935566"
 ---
-# <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Kopiowanie danych z aparatu Impala przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
+# <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Kopiowanie danych z Impala za pomocą Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z aparatu Impala. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z Impala. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
-> [!IMPORTANT]
-> Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę funkcję i przekazać opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
-
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik Impala jest obsługiwany dla następujących działań:
 
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Możesz skopiować dane z aparatu Impala, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła lub ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z Impala można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła lub ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Data Factory oferuje wbudowane sterowników, aby włączyć łączność. W związku z tym nie trzeba ręcznie zainstalować sterownik, aby użyć tego łącznika.
+Data Factory udostępnia wbudowany sterownik umożliwiający nawiązywanie połączeń. W związku z tym nie trzeba ręcznie instalować sterownika, aby można było używać tego łącznika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpocznij
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi Data Factory określonych łącznik Impala.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika Impala.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 
-Następujące właściwości są obsługiwane dla aparatu Impala połączoną usługę.
+Następujące właściwości są obsługiwane dla połączonej usługi Impala.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa **Impala**. | Yes |
-| host | Adres IP lub hosta nazwę serwera Impala (czyli 192.168.222.160).  | Yes |
-| port | Port TCP używany serwer Impala do nasłuchiwania połączeń klientów. Wartość domyślna to 21050.  | Nie |
-| authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to **anonimowe**, **SASLUsername**, i **UsernameAndPassword**. | Yes |
-| username | Nazwa użytkownika używana do uzyskiwania dostępu do serwera Impala. Wartością domyślną jest anonimowe, gdy używasz SASLUsername.  | Nie |
-| password | Hasło, które odnosi się do nazwy użytkownika, gdy używasz UsernameAndPassword. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| type | Właściwość Type musi być ustawiona na wartość **Impala**. | Tak |
+| Host | Adres IP lub nazwa hosta serwera Impala (czyli 192.168.222.160).  | Tak |
+| port | Port TCP, którego serwer Impala używa do nasłuchiwania połączeń klientów. Wartość domyślna to 21050.  | Nie |
+| authenticationType | Typ uwierzytelniania do użycia. <br/>Dozwolone wartości to **anonimowe**, **SASLUsername**i **UsernameAndPassword**. | Tak |
+| nazwa użytkownika | Nazwa użytkownika używana do uzyskiwania dostępu do serwera Impala. Wartość domyślna to anonimowe użycie SASLUsername.  | Nie |
+| hasło | Hasło odpowiadające nazwie użytkownika podczas korzystania z UsernameAndPassword. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to **false**.  | Nie |
-| trustedCertPath | Pełna ścieżka pliku PEM, który zawiera certyfikatów zaufanego urzędu certyfikacji służącego do weryfikowania serwera, po nawiązaniu połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko wtedy, gdy używasz protokołu SSL na środowiskiem Integration Runtime. Wartość domyślna to plik cacerts.pem zainstalowane za pomocą środowiska integration runtime.  | Nie |
-| useSystemTrustStore | Określa, czy ma być używany certyfikat urzędu certyfikacji z magazynu zaufania systemu lub z określonego pliku PEM. Wartość domyślna to **false**.  | Nie |
-| allowHostNameCNMismatch | Określa, czy wymagają nazwy certyfikatów wystawionych przez urząd certyfikacji SSL Period z nazwą hosta serwera, po nawiązaniu połączenia za pośrednictwem protokołu SSL. Wartość domyślna to **false**.  | Nie |
+| trustedCertPath | Pełna ścieżka pliku PEM zawierającego certyfikaty zaufanych urzędów certyfikacji używane do weryfikacji serwera podczas łączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko w przypadku korzystania z protokołu SSL na samodzielnym Integration Runtime. Wartość domyślna to plik cacerts. pem instalowany z programem Integration Runtime.  | Nie |
+| useSystemTrustStore | Określa, czy certyfikat urzędu certyfikacji ma być używany z magazynu zaufania systemu czy z określonego pliku PEM. Wartość domyślna to **false**.  | Nie |
+| allowHostNameCNMismatch | Określa, czy ma być wymagana nazwa certyfikatu SSL wystawionego przez urząd certyfikacji, aby odpowiadała nazwie hosta serwera podczas łączenia za pośrednictwem protokołu SSL. Wartość domyślna to **false**.  | Nie |
 | allowSelfSignedServerCert | Określa, czy zezwalać na certyfikaty z podpisem własnym z serwera. Wartość domyślna to **false**.  | Nie |
-| connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| Właściwością connectvia | [Środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. |Nie |
 
 **Przykład:**
 
@@ -93,16 +90,16 @@ Następujące właściwości są obsługiwane dla aparatu Impala połączoną us
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych aparatu Impala.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Impala.
 
-Aby skopiować dane z aparatu Impala, należy ustawić właściwość typu zestawu danych na **ImpalaObject**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z Impala, ustaw właściwość Type zestawu danych na **ImpalaObject**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ImpalaObject** | Tak |
-| schema | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
-| table | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
-| tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i`table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| schematy | Nazwa schematu. |Nie (Jeśli określono "zapytanie" w źródle aktywności)  |
+| Tabele | Nazwa tabeli. |Nie (Jeśli określono "zapytanie" w źródle aktywności)  |
+| tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i `table` dla nowego obciążenia. | Nie (Jeśli określono "zapytanie" w źródle aktywności) |
 
 **Przykład**
 
@@ -123,16 +120,16 @@ Aby skopiować dane z aparatu Impala, należy ustawić właściwość typu zesta
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez typ źródła Impala.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez typ źródła Impala.
 
 ### <a name="impala-as-a-source-type"></a>Impala jako typ źródła
 
-Aby skopiować dane z aparatu Impala, należy ustawić typ źródła w działaniu kopiowania, aby **ImpalaSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji.
+Aby skopiować dane z Impala, ustaw typ źródła w działaniu Copy na **ImpalaSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu źródła działania kopiowania musi być równa **ImpalaSource**. | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ImpalaSource**. | Tak |
+| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Może to być na przykład `"SELECT * FROM MyTable"`. | Nie (Jeśli określono "TableName" w zestawie danych) |
 
 **Przykład:**
 
@@ -172,4 +169,4 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

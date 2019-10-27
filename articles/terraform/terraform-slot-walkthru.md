@@ -9,24 +9,24 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: fbc6d30f8bc161ecf1a4e4093d0b69e99eec527b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169830"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924987"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Program Terraform służy do aprowizowania infrastruktury za pomocą miejsc wdrożenia platformy Azure
 
 [Miejsc wdrożenia platformy Azure](/azure/app-service/deploy-staging-slots) możesz użyć do przełączania się między różnymi wersjami aplikacji. Ta możliwość pozwala zminimalizować wpływ uszkodzonych wdrożeń. 
 
-W tym artykule przedstawiono w formie przewodnika przykładowe zastosowanie miejsc wdrożenia do wdrożenia dwóch aplikacji za pomocą usługi GitHub i na platformie Azure. Jedna aplikacja jest hostowana w miejscu produkcyjnym. Druga aplikacja jest hostowana w miejscu przejściowym. (Określenia „produkcyjne” i „przejściowe” są arbitralne i mogą być dowolnymi określeniami odpowiednimi dla Twojego scenariusza). Po skonfigurowaniu miejsc wdrożenia możesz użyć programu Terraform do przełączania się między dwoma miejscami według potrzeb.
+W tym artykule przedstawiono w formie przewodnika przykładowe zastosowanie miejsc wdrożenia do wdrożenia dwóch aplikacji za pomocą usługi GitHub i na platformie Azure. Jedna aplikacja jest hostowana w miejscu produkcyjnym. Druga aplikacja jest hostowana w miejscu przejściowym. (Nazwy "produkcyjne" i "przemieszczanie" są dowolne i mogą być dowolne, które reprezentują swój scenariusz). Po skonfigurowaniu miejsc wdrożenia można użyć Terraform do wymiany między dwoma gniazdami w razie potrzeby.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Subskrypcja platformy Azure**: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Konto w serwisie GitHub**: Konto w serwisie [GitHub](https://www.github.com) jest potrzebne do rozwidlenia testowego repozytorium GitHub i używania go.
+- **Konto usługi GitHub**: konto usługi [GitHub](https://www.github.com) jest potrzebne do rozwidlenia testowego repozytorium GitHub i używania go.
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Tworzenie i stosowanie planu programu Terraform
 
@@ -85,8 +85,8 @@ W tym artykule przedstawiono w formie przewodnika przykładowe zastosowanie miej
 
     resource "azurerm_app_service_plan" "slotDemo" {
         name                = "slotAppServicePlan"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
         sku {
             tier = "Standard"
             size = "S1"
@@ -95,17 +95,17 @@ W tym artykule przedstawiono w formie przewodnika przykładowe zastosowanie miej
 
     resource "azurerm_app_service" "slotDemo" {
         name                = "slotAppService"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
     }
 
     resource "azurerm_app_service_slot" "slotDemo" {
         name                = "slotAppServiceSlotOne"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
-        app_service_name    = "${azurerm_app_service.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
+        app_service_name    = azurerm_app_service.slotDemo.name
     }
     ```
 

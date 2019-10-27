@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 99f8c2b40445fe282800d096353bee1c7a934ebe
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: b644d293afd429bdc68fba66c119eb7146d0daf0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918124"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935463"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Uruchamianie platformy Apache Oozie w klastrach usługi HDInsight Hadoop przy użyciu pakiet Enterprise Security
 
@@ -25,7 +25,7 @@ Apache Oozie to przepływ pracy i system koordynacji, który zarządza zadaniami
 
 Można również użyć Oozie do planowania zadań specyficznych dla systemu, takich jak programy Java lub skrypty powłoki.
 
-## <a name="prerequisite"></a>Wymagania wstępne
+## <a name="prerequisite"></a>Warunek wstępny
 
 - Klaster Azure HDInsight Hadoop z pakiet Enterprise Security (ESP). Zobacz [Konfigurowanie klastrów usługi HDInsight przy użyciu protokołu ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -41,7 +41,7 @@ Aby uzyskać więcej informacji na temat Secure Shell (SSH), zobacz [nawiązywan
    ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
    ```
 
-2. Aby sprawdzić pomyślne uwierzytelnianie Kerberos, użyj `klist` polecenia. W przeciwnym razie użyj `kinit` do uruchomienia uwierzytelniania Kerberos.
+2. Aby sprawdzić poprawność uwierzytelniania Kerberos, użyj polecenia `klist`. W przeciwnym razie użyj `kinit`, aby uruchomić uwierzytelnianie Kerberos.
 
 3. Zaloguj się do bramy usługi HDInsight, aby zarejestrować token OAuth wymagane w celu uzyskania dostępu do Azure Data Lake Storage:   
      ```bash
@@ -61,9 +61,9 @@ Definicje przepływów pracy Oozie są zapisywane w języku definicji procesu Ap
    tar -xvf oozie-examples.tar.gz
    hdfs dfs -put examples /user/<DomainUser>/
    ```
-   Zamień `DomainUser` na nazwę użytkownika domeny. 
-   Zamień `DomainUserPath` na ścieżkę katalogu macierzystego użytkownika domeny. 
-   Zamień `ClusterVersion` na wersję platformy Cluster Hortonworks Data Platform (HDP).
+   Zastąp `DomainUser` nazwą użytkownika domeny.
+   Zastąp `DomainUserPath` ścieżką katalogu macierzystego użytkownika domeny.
+   Zastąp `ClusterVersion` wersją platformy danych klastra.
 
 2. Użyj następującej instrukcji, aby utworzyć i edytować nowy plik:
    ```bash
@@ -167,7 +167,7 @@ Definicje przepływów pracy Oozie są zapisywane w języku definicji procesu Ap
        <end name="end" />
     </workflow-app>
    ```
-4. Zamień `clustername` na nazwę klastra. 
+4. Zastąp `clustername` nazwą klastra. 
 
 5. Aby zapisać plik, wybierz kombinację klawiszy Ctrl + X. Wprowadź polecenie `Y`. Następnie wybierz klawisz **Enter**.
 
@@ -186,12 +186,12 @@ Definicje przepływów pracy Oozie są zapisywane w języku definicji procesu Ap
 
      Akcje programu Hive używają poświadczeń zdefiniowanych w sekcji poświadczeń do uwierzytelniania za pomocą słowa kluczowego `cred` w elemencie Action.
 
-6. Użyj następującego polecenia, aby skopiować `workflow.xml` plik do: `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`
+6. Użyj następującego polecenia, aby skopiować plik `workflow.xml` do `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`:
      ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
      ```
 
-7. Zastąp `domainuser` wartość nazwą użytkownika domeny.
+7. Zastąp `domainuser` nazwą użytkownika domeny.
 
 ## <a name="define-the-properties-file-for-the-oozie-job"></a>Zdefiniuj plik właściwości dla zadania Oozie
 
@@ -219,11 +219,11 @@ Definicje przepływów pracy Oozie są zapisywane w języku definicji procesu Ap
        hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   * Użyj identyfikatora URI `nameNode` dla właściwości, jeśli masz Azure Data Lake Storage Gen1 jako podstawowy magazyn klastra. `adl://home` Jeśli używasz usługi Azure Blob Storage, Zmień to na `wasb://home`. Jeśli używasz Azure Data Lake Storage Gen2, Zmień to na `abfs://home`.
-   * Zastąp `domainuser` wartość nazwą użytkownika domeny.  
-   * Zamień `ClusterShortName` na krótką nazwę klastra. Na przykład, jeśli nazwa klastra to https:// *[przykład link]* sechadoopcontoso.azurehdisnight.NET, `clustershortname` jest to pierwsze sześć znaków klastra: **sechad**.  
-   * Zamień `jdbcurlvalue` na adres URL JDBC z konfiguracji programu Hive. Przykładem jest JDBC: hive2://headnodehost: 10001/; transportmode = http.      
-   * Aby zapisać plik, wybierz CTRL + X, ENTER `Y`, a następnie wybierz **Enter**.
+   * Użyj `adl://home` URI dla właściwości `nameNode`, jeśli masz Azure Data Lake Storage Gen1 jako podstawowy magazyn klastra. Jeśli używasz usługi Azure Blob Storage, Zmień ją na `wasb://home`. Jeśli używasz Azure Data Lake Storage Gen2, Zmień to na `abfs://home`.
+   * Zastąp `domainuser` nazwą użytkownika domeny.  
+   * Zastąp `ClusterShortName` krótką nazwą klastra. Na przykład jeśli nazwa klastra to https:// *[przykład link]* sechadoopcontoso.azurehdisnight.net, `clustershortname` to pierwsze sześć znaków klastra: **sechad**.  
+   * Zastąp `jdbcurlvalue` adresem URL JDBC z konfiguracji programu Hive. Przykładem jest JDBC: hive2://headnodehost: 10001/; transportmode = http.      
+   * Aby zapisać plik, wybierz kombinację klawiszy Ctrl + X, wprowadź `Y`, a następnie wybierz klawisz **Enter**.
 
    Ten plik właściwości musi być obecny lokalnie podczas uruchamiania zadań Oozie.
 

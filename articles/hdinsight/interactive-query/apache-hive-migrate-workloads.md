@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0363f2d8da1ca1371fd55107c6487c3d96f6d00e
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1b270663a83461ecd777599fead9d717e93482c0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091469"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72930888"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrowanie obciążeń platformy Azure HDInsight 3,6 do usługi HDInsight 4,0
 
@@ -30,14 +30,14 @@ W tym artykule opisano następujące zagadnienia:
 Jedną z zalet programu Hive jest możliwość eksportowania metadanych do zewnętrznej bazy danych (określanej jako magazyn metadanych Hive). **Magazyn metadanych Hive** jest odpowiedzialny za przechowywanie statystyk tabeli, w tym lokalizacji magazynu tabel, nazw kolumn i informacji o indeksie tabeli. Schemat bazy danych magazynu metadanych różni się między wersjami programu Hive. Wykonaj poniższe czynności, aby uaktualnić magazyn metadanych Hive usługi HDInsight 3,6 w taki sposób, aby był zgodny z usługą HDInsight 4,0.
 
 1. Utwórz nową kopię zewnętrznego magazynu metadanych. Usługi HDInsight 3,6 i HDInsight 4,0 wymagają różnych schematów magazynu metadanych i nie mogą współdzielić pojedynczego magazynu. Zobacz [Używanie zewnętrznych magazynów metadanych w usłudze Azure HDInsight](../hdinsight-use-external-metadata-stores.md) , aby dowiedzieć się więcej na temat dołączania zewnętrznego magazynu Metadata do klastra usługi HDInsight. 
-2. Uruchom akcję skryptu względem klastra HDI 3,6 z "węzłami głównymi" jako typem węzła do wykonania. Wklej następujący identyfikator URI do pola tekstowego oznaczonego jako "bash skryptu URI https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh":. W polu tekstowym oznaczonym jako "argumenty" wprowadź wartość Nazwa serwera, bazy danych, nazwę użytkownika i hasło dla skopiowanego magazyn metadanych Hive, rozdzielone spacjami. Podczas określania serwera ServerName nie należy umieszczać ". database.windows.net".
+2. Uruchom akcję skryptu względem klastra HDI 3,6 z "węzłami głównymi" jako typem węzła do wykonania. Wklej następujący identyfikator URI do pola tekstowego oznaczonego jako "bash skryptu URI": https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh. W polu tekstowym oznaczonym jako "argumenty" wprowadź wartość Nazwa serwera, bazy danych, nazwę użytkownika i hasło dla **skopiowanego** magazyn metadanych Hive, rozdzielone spacjami. Podczas określania serwera ServerName nie należy umieszczać ". database.windows.net".
 
 > [!Warning]
 > Uaktualnienie, które konwertuje schemat metadanych usługi HDInsight 3,6 do schematu usługi HDInsight 4,0, nie może zostać cofnięte.
 
 ## <a name="migrate-hive-tables-to-hdinsight-40"></a>Migrowanie tabel programu Hive do usługi HDInsight 4,0
 
-Po ukończeniu poprzedniego zestawu kroków w celu migrowania magazynu metadanych Hive do usługi HDInsight 4,0 tabele i bazy danych zarejestrowane w magazynie metadanych będą widoczne w klastrze usługi HDInsight 4,0 przez wykonanie `show tables` lub `show databases` z poziomu klastra. . Aby uzyskać informacje na temat wykonywania zapytań w klastrach usługi HDInsight 4,0, zobacz [wykonywanie zapytań w różnych wersjach usługi HDInsight](#query-execution-across-hdinsight-versions) .
+Po ukończeniu poprzedniego zestawu kroków w celu migrowania magazynu metadanych Hive do usługi HDInsight 4,0 tabele i bazy danych zarejestrowane w magazynie metadanych będą widoczne w klastrze usługi HDInsight 4,0 przez wykonanie `show tables` lub `show databases` z poziomu klastra. Aby uzyskać informacje na temat wykonywania zapytań w klastrach usługi HDInsight 4,0, zobacz [wykonywanie zapytań w różnych wersjach usługi HDInsight](#query-execution-across-hdinsight-versions) .
 
 Jednak rzeczywiste dane z tabel nie są dostępne, dopóki klaster nie będzie miał dostępu do niezbędnych kont magazynu. Aby upewnić się, że klaster usługi HDInsight 4,0 ma dostęp do tych samych danych co stary klaster usługi HDInsight 3,6, wykonaj następujące czynności:
 
@@ -66,9 +66,9 @@ Przed wykonaniem migracji może być konieczne dostosowanie właściwości hurto
 Po poprawnym ustawieniu właściwości tabeli należy wykonać narzędzie migracji magazynu Hive z jednego z węzłów głównych klastra przy użyciu powłoki SSH:
 
 1. Nawiąż połączenie z klastrem węzła głównego przy użyciu protokołu SSH. Aby uzyskać instrukcje, zobacz [nawiązywanie połączenia z usługą HDInsight przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)
-1. Otwórz powłokę logowania jako użytkownika programu Hive, uruchamiając`sudo su - hive`
-1. Określ wersję stosu Hortonworks Data Platform, wykonując `ls /usr/hdp`. Spowoduje to wyświetlenie ciągu wersji, którego należy użyć w następnym poleceniu.
-1. Wykonaj następujące polecenie w powłoce. Zamień `${{STACK_VERSION}}` na ciąg wersji z poprzedniego kroku:
+1. Otwórz powłokę logowania jako użytkownika programu Hive, uruchamiając `sudo su - hive`
+1. Określ wersję stosu platformy danych, wykonując `ls /usr/hdp`. Spowoduje to wyświetlenie ciągu wersji, którego należy użyć w następnym poleceniu.
+1. Wykonaj następujące polecenie w powłoce. Zastąp `${{STACK_VERSION}}` ciągiem wersji z poprzedniego kroku:
 
 ```bash
 /usr/hdp/${{STACK_VERSION}}/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
@@ -99,7 +99,7 @@ W usłudze HDInsight 3,6 klient z graficznym interfejsem użytkownika służący
 
 Uruchom akcję skryptu względem klastra z "węzłami głównymi" jako typ węzła do wykonania. Wklej następujący identyfikator URI do pola tekstowego oznaczonego jako "bash skryptu URI": https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-Zaczekaj od 5 do 10 minut, a następnie uruchom program Data Analytics Studio przy\<użyciu tego adresu URL: https://ClusterName >. azurehdinsight. NET/Das/
+Zaczekaj od 5 do 10 minut, a następnie uruchom program Data Analytics Studio przy użyciu tego adresu URL: https://\<ClusterName >. azurehdinsight. NET/Das/
 
 Jeśli nie widzisz zapytań, które zostały uruchomione w podglądzie zapytań, należy wykonać następujące czynności:
 

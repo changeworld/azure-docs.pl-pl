@@ -1,24 +1,18 @@
 ---
 title: Pola niestandardowe w Azure Monitor | Microsoft Docs
 description: Funkcja pól niestandardowych Azure Monitor umożliwia tworzenie własnych pól z możliwością wyszukiwania z rekordów w Log Analytics obszarze roboczym, które są dodawane do właściwości zebranego rekordu.  W tym artykule opisano proces tworzenia pola niestandardowego i zawiera szczegółowy przewodnik z przykładowym wydarzeniem.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: jwhit
-editor: tysonn
-ms.assetid: 31572b51-6b57-4945-8208-ecfc3b5304fc
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/23/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: f6b9c21a3d65e75abe11e705eba058b1d1fb17ff
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 08/23/2019
+ms.openlocfilehash: 1fa8fb8ee944103626966839def358e68a55d8ac
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012733"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932607"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Tworzenie pól niestandardowych w obszarze roboczym Log Analytics w Azure Monitor
 
@@ -57,16 +51,16 @@ Pierwszym krokiem jest zidentyfikowanie rekordów, które będą uzyskać pole n
 ### <a name="step-2---perform-initial-extract"></a>Krok 2. wykonanie początkowego wyodrębnienia.
 Po zidentyfikowaniu rekordów, które będą miały pole niestandardowe, należy zidentyfikować dane, które mają zostać wyodrębnione.  Log Analytics będzie używać tych informacji do identyfikowania podobnych wzorców w podobnych rekordach.  W kroku po tym będzie można sprawdzić poprawność wyników i podać dalsze szczegóły dotyczące Log Analytics do użycia w analizie.
 
-1. Zaznacz tekst w przykładowym rekordzie, który ma zostać wypełniony pola niestandardowego.  Następnie zostanie wyświetlone okno dialogowe umożliwiające podanie nazwy i typu danych dla pola oraz wykonanie początkowego wyodrębnienia.  **Znaki\_CF** zostaną automatycznie dołączone.
-2. Kliknij pozycję Wyodrębnij, aby przeprowadzić analizę zebranych rekordów.  
+1. Zaznacz tekst w przykładowym rekordzie, który ma zostać wypełniony pola niestandardowego.  Następnie zostanie wyświetlone okno dialogowe umożliwiające podanie nazwy i typu danych dla pola oraz wykonanie początkowego wyodrębnienia.  Znaki **\_CF** zostaną automatycznie dołączane.
+2. Kliknij pozycję **Wyodrębnij** , aby przeprowadzić analizę zebranych rekordów.  
 3. W sekcjach **Podsumowanie** i **wyniki wyszukiwania** są wyświetlane wyniki wyodrębniania, aby można było sprawdzić jego dokładność.  W obszarze **Podsumowanie** są wyświetlane kryteria służące do identyfikowania rekordów i liczby dla każdej z zidentyfikowanych wartości danych.  **Wyniki wyszukiwania** zawierają szczegółową listę rekordów spełniających kryteria.
 
 ### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>Krok 3 — Weryfikowanie dokładności wyodrębniania i Tworzenie pola niestandardowego
 Po wykonaniu początkowego wyodrębnienia Log Analytics wyświetli wyniki na podstawie danych, które zostały już zebrane.  Jeśli wyniki wyglądają prawidłowo, możesz utworzyć pole niestandardowe bez dalszej pracy.  Jeśli nie, możesz udoskonalić wyniki, aby Log Analytics mógł ulepszyć logikę.
 
-1. Jeśli jakiekolwiek wartości w początkowym ekstrakcie nie są poprawne, kliknij ikonę **Edytuj** obok niedokładnego rekordu i wybierz opcję **Modyfikuj to** wyróżnienie, aby zmodyfikować zaznaczenie.
+1. Jeśli jakiekolwiek wartości w początkowym ekstrakcie nie są poprawne, kliknij ikonę **Edytuj** obok niedokładnego rekordu i wybierz opcję **Modyfikuj to wyróżnienie** , aby zmodyfikować zaznaczenie.
 2. Wpis jest kopiowany do sekcji **dodatkowe przykłady** poniżej **głównego przykładu**.  Możesz dostosować tutaj wyróżnienie, aby pomóc Log Analytics zrozumieć wybór, który powinien zostać wykonany.
-3. Kliknij pozycję Wyodrębnij, aby użyć tych nowych informacji do oszacowania wszystkich istniejących rekordów.  Wyniki mogą być modyfikowane w przypadku rekordów innych niż te, które zostały zmodyfikowane na podstawie tej nowej analizy.
+3. Kliknij pozycję **Wyodrębnij** , aby użyć tych nowych informacji do oszacowania wszystkich istniejących rekordów.  Wyniki mogą być modyfikowane w przypadku rekordów innych niż te, które zostały zmodyfikowane na podstawie tej nowej analizy.
 4. Kontynuuj dodawanie poprawek do momentu, aż wszystkie rekordy w ekstrakcie poprawnie zidentyfikują dane w celu wypełnienia nowego pola niestandardowego.
 5. Kliknij przycisk **Zapisz wyodrębnienie** , gdy masz zadowalające wyniki.  Pole niestandardowe jest teraz zdefiniowane, ale nie zostanie jeszcze dodane do żadnych rekordów.
 6. Poczekaj na zebranie nowych rekordów spełniających określone kryteria, a następnie ponownie uruchom przeszukiwanie dzienników. Nowe rekordy powinny mieć pole niestandardowe.
@@ -75,7 +69,7 @@ Po wykonaniu początkowego wyodrębnienia Log Analytics wyświetli wyniki na pod
 ## <a name="viewing-custom-fields"></a>Wyświetlanie pól niestandardowych
 Możesz wyświetlić listę wszystkich pól niestandardowych w grupie zarządzania z menu **Ustawienia zaawansowane** w obszarze roboczym Log Analytics w Azure Portal.  Wybierz pozycję **dane** , a następnie **pola niestandardowe** , aby wyświetlić listę wszystkich pól niestandardowych w obszarze roboczym.  
 
-![Pola niestandardowe](media/custom-fields/list.png)
+![Niestandardowe pola](media/custom-fields/list.png)
 
 ## <a name="removing-a-custom-field"></a>Usuwanie pola niestandardowego
 Istnieją dwa sposoby usunięcia pola niestandardowego.  Pierwsza to opcja **usuwania** dla każdego pola podczas wyświetlania kompletnej listy, jak opisano powyżej.  Druga metoda polega na pobraniu rekordu i kliknięciu przycisku z lewej strony pola.  Menu będzie zawierać opcję usunięcia pola niestandardowego.
@@ -107,7 +101,7 @@ Zobaczymy, że nazwa usługi jest prawidłowo identyfikowana dla niektórych rek
 
 ![Wyniki wyszukiwania](media/custom-fields/search-results-01.png)
 
-Zaczynamy od rekordu **karty wydajności usługi WMI** .  Kliknij ikonę edycji, a następnie **zmodyfikuj to**wyróżnienie.  
+Zaczynamy od rekordu **karty wydajności usługi WMI** .  Kliknij ikonę edycji, a następnie **zmodyfikuj to wyróżnienie**.  
 
 ![Modyfikuj wyróżnienie](media/custom-fields/modify-highlight.png)
 

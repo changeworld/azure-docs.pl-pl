@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 6c7cf82381dfb895fdaa0f130e33b2dc9a6e7403
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169751"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928496"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpieczanie ruchu między różnymi sieciami przy użyciu zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
 
@@ -69,7 +69,11 @@ Aby wyświetlić zasady sieciowe w działaniu, Utwórz i rozwiń zasady, które 
 * Zezwalaj na ruch na podstawie etykiet pod.
 * Zezwalaj na ruch na podstawie przestrzeni nazw.
 
-Najpierw Utwórzmy klaster AKS, który obsługuje zasady sieciowe. Funkcja zasad sieciowych można włączyć tylko podczas tworzenia klastra. Nie można włączyć zasad sieciowych w istniejącym klastrze AKS.
+Najpierw Utwórzmy klaster AKS, który obsługuje zasady sieciowe. 
+
+> [!IMPORTANT]
+>
+> Funkcja zasad sieciowych można włączyć tylko podczas tworzenia klastra. Nie można włączyć zasad sieciowych w istniejącym klastrze AKS.
 
 Aby korzystać z zasad sieciowych platformy Azure, musisz użyć [wtyczki CNI platformy Azure][azure-cni] i zdefiniować własną sieć wirtualną oraz podsieci. Aby uzyskać szczegółowe informacje na temat planowania wymaganych zakresów podsieci, zobacz [Konfigurowanie zaawansowanej sieci][use-advanced-networking]. Zasad sieciowych Calico można użyć z tą samą wtyczką CNI platformy Azure lub z dodatkiem plug-in korzystającą wtyczki kubenet CNI.
 

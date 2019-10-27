@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 07/15/2019
+ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 109db23976f6332b24bcfa565812bd9491062691
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 25017e6ea0be5d4320832298cdadbec7ec5a05cc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330729"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929379"
 ---
 # <a name="collect-data-for-models-in-production"></a>Zbieranie danych dla modeli w środowisku produkcyjnym
 
@@ -47,9 +47,12 @@ Dane wyjściowe są zapisywane w obiekcie blob platformy Azure. Ponieważ dane s
 Ścieżka do danych wyjściowych w obiekcie BLOB jest następująca:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
+
+>[!Note]
+> W wersjach zestawu SDK przed `0.1.0a16` argument `designation` miał nazwę `identifier`. Jeśli kod został opracowany przy użyciu wcześniejszej wersji, należy odpowiednio zaktualizować.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -80,8 +83,8 @@ Aby je włączyć, należy:
 
     ```python
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", identifier="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
-    prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
+    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
+    prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
     *Identyfikator korelacji* jest opcjonalnym parametrem, nie trzeba go konfigurować, jeśli model nie jest wymagany. Posiadanie korelacji w miejscu ułatwia mapowanie z innymi danymi. (Przykłady obejmują: LoanNumber, CustomerId itd.)
@@ -122,7 +125,7 @@ Jeśli masz już usługę z zależnościami zainstalowanymi w **pliku środowisk
 
 1. W obszarze **Ustawienia zaawansowane**Usuń zaznaczenie opcji **Włącz zbieranie danych modelu**. 
 
-    [@no__t — zbieranie danych 1check](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
+    [![Sprawdź zbieranie danych](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
    W tym oknie możesz również wybrać opcję "Włącz diagnostykę Appinsights", aby śledzić kondycję usługi.  
 
@@ -139,11 +142,11 @@ Zbieranie danych można zatrzymać w dowolnym momencie. Aby wyłączyć zbierani
 
   1. Przejdź do pozycji **wdrożenia** -> **Select Service** -> **Edit**.
 
-     [@no__t — opcja 1Edit](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+     [Opcja edycji![](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. W obszarze **Ustawienia zaawansowane**Usuń zaznaczenie opcji **Włącz zbieranie danych modelu**. 
 
-     [@no__t — zbieranie danych 1Uncheck](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+     [![usunąć zaznaczenia kolekcji danych](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. Wybierz pozycję **Aktualizuj** , aby zastosować zmianę.
 
@@ -165,12 +168,12 @@ Aby szybko uzyskać dostęp do danych z obiektu BLOB:
 1. Otwórz obszar roboczy.
 1. Kliknij pozycję **Magazyn**.
 
-    [@no__t — 1Storage](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+    [Magazyn![](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
 1. Postępuj zgodnie ze ścieżką do danych wyjściowych w obiekcie blob przy użyciu następującej składni:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
@@ -181,26 +184,26 @@ Aby szybko uzyskać dostęp do danych z obiektu BLOB:
 
 1. Wybierz pozycję **Pobierz dane** i kliknij pozycję [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 
-    [Konfiguracja obiektu BLOB @no__t 1PBI](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+    [Konfiguracja obiektu BLOB![PBI](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
 1. Dodaj nazwę konta magazynu i wprowadź swój klucz magazynu. Te informacje można znaleźć w **ustawieniach** obiektu blob, > > klucze dostępu. 
 
 1. Wybierz kontener **modeldata** , a następnie kliknij pozycję **Edytuj**. 
 
-    [@no__t — Nawigator 1PBI](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
+    [![Nawigator PBI](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. W edytorze zapytań kliknij kolumnę "name" (nazwa) i Dodaj konto magazynu 1. Ścieżka modelu do filtru. Uwaga: Jeśli chcesz tylko przeglądać pliki z określonego roku lub miesiąca, po prostu rozwiń ścieżkę filtru. Na przykład po prostu zapoznaj się z danymi w marcu:/modeldata/SubscriptionID >/ResourceGroupName >/WorkspaceName >/WebServiceName >/ModelName >/modelversion >/Identifier >/rok >/3
+1. W edytorze zapytań kliknij kolumnę "name" (nazwa) i Dodaj konto magazynu 1. Ścieżka modelu do filtru. Uwaga: Jeśli chcesz tylko przeglądać pliki z określonego roku lub miesiąca, po prostu rozwiń ścieżkę filtru. Na przykład po prostu zapoznaj się z danymi w marcu:/modeldata/SubscriptionID >/ResourceGroupName >/WorkspaceName >/WebServiceName >/ModelName >/modelversion >/designation >/rok >/3
 
 1. Odfiltruj dane, które są istotne dla Ciebie, na podstawie **nazwy**. Jeśli przechowujesz **prognozy** i **dane wejściowe**, musisz utworzyć zapytanie dla każdej z nich.
 
 1. Kliknij podwójną strzałkę w dół w kolumnie **zawartość** , aby połączyć pliki. 
 
-    [@no__t — zawartość 1PBI](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
+    [![zawartość PBI](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
 1. Kliknij przycisk OK, a dane zostaną wstępnie Załaduj.
 
-    [@no__t — 1pbiCombine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
+    [![pbiCombine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
 1. Teraz możesz kliknąć przycisk **Zamknij i zastosować** .
 
@@ -217,11 +220,11 @@ Aby szybko uzyskać dostęp do danych z obiektu BLOB:
 
 1. W obszarze roboczym datakostki wybierz pozycję **Przekaż dane**.
 
-    [@no__t — przekazywanie 1DB](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
+    [przekazywanie![DB](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
 1. Utwórz nową tabelę i wybierz **inne źródła danych** — > Azure Blob Storage — > Utwórz tabelę w notesie.
 
-    [@no__t — tabela 1DB](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+    [tabela![DB](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
 1. Zaktualizuj lokalizację danych. Oto przykład:
 
@@ -230,7 +233,7 @@ Aby szybko uzyskać dostęp do danych z obiektu BLOB:
     file_type = "csv"
     ```
  
-    [@no__t — 1DBsetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
+    [![DbSetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
 1. Postępuj zgodnie z instrukcjami szablonu, aby wyświetlić i przeanalizować dane. 
 

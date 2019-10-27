@@ -1,24 +1,18 @@
 ---
 title: Projektowanie wdrożenia dzienników Azure Monitor | Microsoft Docs
 description: W tym artykule opisano zagadnienia i zalecenia dla klientów przygotowujące się do wdrożenia obszaru roboczego w Azure Monitor.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 24eb8440ed4746b51b92ce371b5d58b8d55de9a3
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/20/2019
+ms.openlocfilehash: ae737b908aad95f61cef922b493b41752da68f14
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177606"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932353"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Projektowanie wdrożenia dzienników Azure Monitor
 
@@ -43,7 +37,7 @@ Ten artykuł zawiera szczegółowe omówienie zagadnień dotyczących projektowa
 Określenie liczby potrzebnych obszarów roboczych ma wpływ na co najmniej jedno z następujących wymagań:
 
 * Jesteś firmą globalną i potrzebujesz danych dzienników przechowywanych w określonych regionach w celu zachowania poufności danych lub jej zgodności.
-* Korzystasz z platformy Azure i chcesz uniknąć naliczania opłat za transfer danych wychodzących przez posiadanie obszaru roboczego w tym samym regionie co zarządzane przez niego zasoby platformy Azure.
+* Korzystasz z platformy Azure i chcesz uniknąć naliczania opłat za transfer danych wychodzących przez umieszczenie obszaru roboczego w tym samym regionie co zarządzane przez niego zasoby platformy Azure.
 * Zarządzasz wieloma wydziałami lub grupami biznesowymi, a każdy z nich ma wyświetlać własne dane, ale nie dane od innych. Ponadto nie istnieje wymóg biznesowy dla skonsolidowanego działu krzyżowego ani widoku grupy biznesowej.
 
 Obecnie organizacje IT są modelowane zgodnie z scentralizowanym, zdecentralizowanym lub mieszanym hybrydem obu struktur. W związku z tym następujące modele wdrażania obszarów roboczych są często używane do mapowania na jedną z następujących struktur organizacyjnych:
@@ -63,7 +57,7 @@ Jeśli używasz System Center Operations Manager 2012 R2 lub nowszego:
 * Komputery z systemem Linux, które są zgłaszane do grupy zarządzania, muszą być skonfigurowane do bezpośredniego raportowania do obszaru roboczego Log Analytics. Jeśli komputery z systemem Linux są już zgłaszane bezpośrednio do obszaru roboczego i chcesz monitorować je za pomocą Operations Manager, wykonaj następujące kroki, aby [zgłosić Operations Manager do grupy zarządzania](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group). 
 * Program Log Analytics Agent systemu Windows można zainstalować na komputerze z systemem Windows i mieć do niego raport Operations Manager zintegrowany z obszarem roboczym i innym obszarze roboczym.
 
-## <a name="access-control-overview"></a>Kontrola dostępu — Omówienie
+## <a name="access-control-overview"></a>Omówienie kontroli dostępu
 
 Za pomocą kontroli dostępu opartej na rolach (RBAC) można przyznać użytkownikom i grupom tylko dostęp do danych monitorowania w obszarze roboczym. Pozwala to na dostosowanie się do modelu operacyjnego organizacji IT przy użyciu jednego obszaru roboczego do przechowywania zebranych danych włączonych dla wszystkich zasobów. Można na przykład udzielić dostępu do zespołu odpowiedzialnego za usługi infrastruktury hostowane na maszynach wirtualnych platformy Azure, a w związku z tym będzie miał dostęp tylko do dzienników generowanych przez maszyny wirtualne. Jest to nasz nowy model dziennika kontekstu zasobów. Podstawą tego modelu jest dla każdego rekordu dziennika wyemitowanego przez zasób platformy Azure, który jest automatycznie kojarzony z tym zasobem. Dzienniki są przekazywane do centralnego obszaru roboczego, który szanuje zakres i RBAC w oparciu o zasoby.
 
@@ -93,7 +87,7 @@ Użytkownicy mają dwie opcje uzyskiwania dostępu do danych:
     > [!NOTE]
     > Dzienniki są dostępne dla zapytań kontekstu zasobów tylko wtedy, gdy zostały prawidłowo skojarzone z odpowiednim zasobem. Obecnie następujące zasoby mają ograniczenia:
     > - Komputery poza platformą Azure
-    > - Service Fabric
+    > - Sieć szkieletowa usługi
     > - Application Insights
     >
     > Możesz sprawdzić, czy dzienniki są prawidłowo skojarzone ze swoimi zasobami, uruchamiając zapytanie i sprawdzając odpowiednie rekordy. Jeśli prawidłowy identyfikator zasobu znajduje się we właściwości [_ResourceId](log-standard-properties.md#_resourceid) , dane są dostępne dla zapytań skoncentrowanych na zasobach.
@@ -145,7 +139,7 @@ Operation
 ``` 
 
 
-## <a name="recommendations"></a>Mając
+## <a name="recommendations"></a>Polecane elementy
 
 ![Przykład projektu kontekstu zasobów](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 

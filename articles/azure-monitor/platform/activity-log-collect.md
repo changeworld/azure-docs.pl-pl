@@ -1,24 +1,18 @@
 ---
 title: Zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym Log Analytics | Microsoft Docs
 description: Zbierz dziennik aktywności platformy Azure w Azure Monitor dziennikach i użyj rozwiązania do monitorowania, aby przeanalizować i przeszukać dziennik aktywności platformy Azure we wszystkich subskrypcjach platformy Azure.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/30/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: c9fdd0c530ca34305aa3a9197c3bb938d4fb9f1f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.date: 09/30/2019
+ms.openlocfilehash: 514dcf05eaa37bd338ef6359977b9a5508838459
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528703"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932861"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym Log Analytics w Azure Monitor
 [Dziennik aktywności platformy Azure](activity-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. W tym artykule opisano, jak zebrać dziennik aktywności do obszaru roboczego Log Analytics i jak korzystać z rozwiązania do [monitorowania](../insights/solutions.md)Activity Log Analytics, które udostępnia zapytania dziennika i widoki służące do analizowania tych danych. 

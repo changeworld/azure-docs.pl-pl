@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3576f7cc0297ff1e9b10373ccc27b09e1a0ae8ae
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 07c23d3b93c85e3409814ab0eb635a51344e2ab2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436692"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929250"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Dostęp do danych w usługach Azure Storage
 
@@ -55,7 +55,7 @@ Po zarejestrowaniu rozwiązania usługi Azure Storage jako magazynu danych autom
 
 ### <a name="using-the-python-sdk"></a>Używanie zestawu Python SDK
 
-Wszystkie metody Register znajdują się w klasie [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) i mają postać register_azure_ *.
+Wszystkie metody Register znajdują się na klasie [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) i mają postać register_azure_ *.
 
 Informacje potrzebne do wypełniania metody Register () można znaleźć za pośrednictwem [Azure Portal](https://ms.portal.azure.com). W lewym okienku wybierz pozycję **konta magazynu** , a następnie wybierz konto magazynu, które chcesz zarejestrować. Na stronie **Przegląd** znajdują się takie informacje, jak nazwa konta i kontener lub nazwa udziału plików. Aby uzyskać informacje o uwierzytelnianiu, takie jak klucz konta lub token sygnatury dostępu współdzielonego, przejdź do pozycji **klucze konta** w okienku **Ustawienia** po lewej stronie. 
 
@@ -63,7 +63,7 @@ W poniższych przykładach pokazano, jak zarejestrować kontener obiektów blob 
 
 + W przypadku **magazynu danych kontenera obiektów blob platformy Azure**Użyj [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)
 
-    Poniższy kod tworzy i rejestruje magazyn danych, `my_datastore`, do obszaru roboczego, `ws`. Ten magazyn danych uzyskuje dostęp do kontenera obiektów blob platformy Azure, `my_blob_container`, na koncie usługi Azure Storage `my_storage_account` przy użyciu podanego klucza konta.
+    Poniższy kod tworzy i rejestruje magazyn danych `my_datastore`, w obszarze roboczym, `ws`. Ten magazyn danych uzyskuje dostęp do kontenera obiektów blob platformy Azure, `my_blob_container`na koncie usługi Azure Storage `my_storage_account` przy użyciu podanego klucza konta.
 
     ```Python
        datastore = Datastore.register_azure_blob_container(workspace=ws, 
@@ -73,10 +73,11 @@ W poniższych przykładach pokazano, jak zarejestrować kontener obiektów blob 
                                                           account_key='your storage account key',
                                                           create_if_not_exists=True)
     ```
+    Jeśli Twoje konto magazynu znajduje się w sieci wirtualnej, obsługiwane jest tylko tworzenie magazynu danych obiektów blob platformy Azure. Ustaw parametr `grant_workspace_access` na `True`, aby udzielić obszaru roboczego dostępu do konta magazynu.
 
 + W przypadku **magazynu danych udziału plików platformy Azure**Użyj [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-). 
 
-    Poniższy kod tworzy i rejestruje magazyn danych, `my_datastore`, do obszaru roboczego, `ws`. Ten magazyn danych uzyskuje dostęp do udziału plików platformy Azure, `my_file_share`, na koncie usługi Azure Storage, `my_storage_account` przy użyciu podanego klucza konta.
+    Poniższy kod tworzy i rejestruje magazyn danych `my_datastore`, w obszarze roboczym, `ws`. Ten magazyn danych uzyskuje dostęp do udziału plików platformy Azure, `my_file_share`na koncie usługi Azure Storage `my_storage_account` przy użyciu podanego klucza konta.
 
     ```Python
        datastore = Datastore.register_azure_file_share(workspace=ws, 
@@ -126,7 +127,7 @@ for name, datastore in datastores.items():
     print(name, datastore.datastore_type)
 ```
 
-Podczas tworzenia obszaru roboczego kontener obiektów blob platformy Azure i udział plików platformy Azure są rejestrowane odpowiednio do obszaru roboczego o nazwie `workspaceblobstore` i `workspacefilestore`. Przechowują informacje o połączeniu kontenera obiektów blob oraz udział plików, który jest zainicjowany na koncie magazynu dołączonym do obszaru roboczego. @No__t-0 jest ustawiony jako domyślny magazyn danych.
+Podczas tworzenia obszaru roboczego kontener obiektów blob platformy Azure i udział plików platformy Azure są rejestrowane odpowiednio do obszaru roboczego o nazwie `workspaceblobstore` i `workspacefilestore`. Przechowują informacje o połączeniu kontenera obiektów blob oraz udział plików, który jest zainicjowany na koncie magazynu dołączonym do obszaru roboczego. `workspaceblobstore` jest ustawiony jako domyślny magazyn danych.
 
 Aby uzyskać domyślny magazyn danych obszaru roboczego:
 
@@ -134,7 +135,7 @@ Aby uzyskać domyślny magazyn danych obszaru roboczego:
 datastore = ws.get_default_datastore()
 ```
 
-Aby zdefiniować inny domyślny magazyn danych dla bieżącego obszaru roboczego, użyj metody [`set_default_datastore()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-) dla obiektu obszaru roboczego:
+Aby zdefiniować inny domyślny magazyn danych dla bieżącego obszaru roboczego, użyj metody [`set_default_datastore()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-) w obiekcie obszaru roboczego:
 
 ```Python
 #define default datastore for current workspace
@@ -161,7 +162,7 @@ datastore.upload(src_dir='your source directory',
                  show_progress=True)
 ```
 
-Parametr `target_path` Określa lokalizację w udziale plików (lub kontenerze obiektów BLOB) do przekazania. Wartość domyślna to `None`. w takim przypadku dane są przekazywane do katalogu głównego. Gdy `overwrite=True` istniejące dane w `target_path` są zastępowane.
+`target_path` parametr określa lokalizację w udziale plików (lub kontenerze obiektów BLOB) do przekazania. Wartość domyślna to `None`. w takim przypadku dane są przekazywane do katalogu głównego. Gdy `overwrite=True` istniejące dane w `target_path` zostanie nadpisany.
 
 Lub Przekaż listę pojedynczych plików do magazynu danych za pomocą metody `upload_files()`.
 
@@ -201,13 +202,13 @@ datastore.as_mount()
 datastore.path('./bar').as_download()
 ```
 > [!NOTE]
-> Każdy określony `datastore` lub `datastore.path` jest rozpoznawany jako nazwa zmiennej środowiskowej formatu `"$AZUREML_DATAREFERENCE_XXXX"`, którego wartość reprezentuje ścieżkę instalacji/pobierania w docelowym obliczeniu. Ścieżka magazynu danych w docelowym obliczeniach może nie być taka sama jak ścieżka wykonywania skryptu szkoleniowego.
+> Każdy określony `datastore` lub obiekt `datastore.path` jest rozpoznawany jako nazwa zmiennej środowiskowej `"$AZUREML_DATAREFERENCE_XXXX"`, której wartość reprezentuje ścieżkę instalacji/pobierania w docelowym obliczeniu. Ścieżka magazynu danych w docelowym obliczeniach może nie być taka sama jak ścieżka wykonywania skryptu szkoleniowego.
 
 ### <a name="examples"></a>Przykłady 
 
 Poniższe przykłady kodu są specyficzne dla klasy [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) do uzyskiwania dostępu do danych podczas szkoleń. 
 
-`script_params` to słownik zawierający parametry do entry_script. Użyj go, aby przekazać magazyn danych i opisać, w jaki sposób dane są dostępne w obiekcie docelowym obliczeń. Dowiedz się więcej z naszego kompleksowego [samouczka](tutorial-train-models-with-aml.md).
+`script_params` jest słownikiem zawierającym parametry do entry_script. Użyj go, aby przekazać magazyn danych i opisać, w jaki sposób dane są dostępne w obiekcie docelowym obliczeń. Dowiedz się więcej z naszego kompleksowego [samouczka](tutorial-train-models-with-aml.md).
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -243,16 +244,16 @@ Magazyny danych obsługują obecnie przechowywanie informacji o połączeniu z u
 |Wystąpienia obliczeniowe|[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)                                       |[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)                                      |[AzureDataLakeDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakedatastore?view=azure-ml-py) |[AzureDataLakeGen2Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) [AzurePostgreSqlDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_postgre_sql_datastore.azurepostgresqldatastore?view=azure-ml-py) [AzureSqlDatabaseDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_sql_database_datastore.azuresqldatabasedatastore?view=azure-ml-py) |
 |--------------------------------|----------------------------------------------------------|----------------------------------------------------------|------------------------|----------------------------------------------------------------------------------------|
 | Lokalna|[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|ND         |ND                                                                         |
-| Azure Machine Learning obliczeń |[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml @ no__t-4pipelines](concept-ml-pipelines.md)|[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml @ no__t-4pipelines](concept-ml-pipelines.md)|ND         |ND                                                                         |
+| Azure Machine Learning obliczeń |[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml&nbsp;potoki](concept-ml-pipelines.md)|[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml&nbsp;potoki](concept-ml-pipelines.md)|ND         |ND                                                                         |
 | Maszyny wirtualne               |[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                           | [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |ND         |ND                                                                         |
 | HDInsight                      |[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            | [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |ND         |ND                                                                         |
-| Transfer danych                  |[ML @ no__t-1pipelines](concept-ml-pipelines.md)                                               |ND                                           |[ML @ no__t-1pipelines](concept-ml-pipelines.md)            |[ML @ no__t-1pipelines](concept-ml-pipelines.md)                                                                            |
-| Usługa Databricks                     |[ML @ no__t-1pipelines](concept-ml-pipelines.md)                                              |ND                                           |[ML @ no__t-1pipelines](concept-ml-pipelines.md)             |ND                                                                         |
-| Azure Batch                    |[ML @ no__t-1pipelines](concept-ml-pipelines.md)                                               |ND                                           |ND         |ND                                                                         |
-| Usługa Azure datalake Analytics       |ND                                           |ND                                           |[ML @ no__t-1pipelines](concept-ml-pipelines.md)             |ND                                                                         |
+| Transfer danych                  |[Potoki&nbsp;ML](concept-ml-pipelines.md)                                               |ND                                           |[Potoki&nbsp;ML](concept-ml-pipelines.md)            |[Potoki&nbsp;ML](concept-ml-pipelines.md)                                                                            |
+| Usługa Databricks                     |[Potoki&nbsp;ML](concept-ml-pipelines.md)                                              |ND                                           |[Potoki&nbsp;ML](concept-ml-pipelines.md)             |ND                                                                         |
+| Azure Batch                    |[Potoki&nbsp;ML](concept-ml-pipelines.md)                                               |ND                                           |ND         |ND                                                                         |
+| Usługa Azure datalake Analytics       |ND                                           |ND                                           |[Potoki&nbsp;ML](concept-ml-pipelines.md)             |ND                                                                         |
 
 > [!NOTE]
-> Mogą istnieć scenariusze, w których wysoce iteracyjne i duże procesy przetwarzania danych są wykonywane szybciej przy użyciu `as_download()` zamiast `as_mount()`; można to zweryfikować eksperymentowo.
+> Mogą istnieć scenariusze, w których wysoce iteracyjne i duże procesy przetwarzania danych są uruchamiane szybciej przy użyciu `as_download()` zamiast `as_mount()`; można to zweryfikować eksperymentowo.
 
 ### <a name="accessing-source-code-during-training"></a>Uzyskiwanie dostępu do kodu źródłowego podczas szkolenia
 

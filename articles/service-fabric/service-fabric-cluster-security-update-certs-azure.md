@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: d84525e869d47fc609ee8aac7feb7feda36a5f23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599955"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934021"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Dodawanie lub usuwanie certyfikatów klastra Service Fabric na platformie Azure
 Zaleca się zapoznanie się ze sposobem, w jaki Service Fabric używa certyfikatów X. 509, i zna [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md). Przed kontynuowaniem należy zrozumieć, czym jest certyfikat klastra i co jest używane w programie.
@@ -53,13 +53,13 @@ Jeśli zamiarem jest usunięcie certyfikatu oznaczonego jako podstawowa, należy
 W tych krokach przyjęto założenie, że wiesz już, jak działa Menedżer zasobów i wdrożono co najmniej jeden klaster Service Fabric przy użyciu szablonu Menedżer zasobów oraz szablon użyty do skonfigurowania klastra. Założono również, że masz doświadczenie w korzystaniu z formatu JSON.
 
 > [!NOTE]
-> Jeśli szukasz przykładowego szablonu i parametrów, których można użyć do wykonywania kolejnych czynności lub jako punktu początkowego, Pobierz go z [repozytorium git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample). 
+> Jeśli szukasz przykładowego szablonu i parametrów, których można użyć do wykonywania kolejnych czynności lub jako punktu początkowego, Pobierz go z [repozytorium git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample). 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>Edytowanie szablonu Menedżer zasobów
 
-Na przykład w przykład 5-VM-1-elementów NodeType-Secure_Step2. JSON zawiera wszystkie zmiany, które będziemy wprowadzać. przykład jest dostępny w [repozytorium git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample).
+Na przykład w przykład 5-VM-1-elementów NodeType-Secure_Step2. JSON zawiera wszystkie zmiany, które będziemy wprowadzać. przykład jest dostępny w [repozytorium git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample).
 
 **Upewnij się, że wykonaj wszystkie kroki**
 
@@ -106,7 +106,7 @@ Na przykład w przykład 5-VM-1-elementów NodeType-Secure_Step2. JSON zawiera w
          }
     ``` 
 
-    Jeśli chcesz wycofać **certyfikat**, określ nowy certyfikat jako podstawowy i Przenieś bieżący podstawowy jako pomocniczy. Powoduje to Przerzucanie bieżącego certyfikatu podstawowego do nowego certyfikatu w jednym kroku wdrożenia.
+    Jeśli chcesz **wycofać certyfikat**, określ nowy certyfikat jako podstawowy i Przenieś bieżący podstawowy jako pomocniczy. Powoduje to Przerzucanie bieżącego certyfikatu podstawowego do nowego certyfikatu w jednym kroku wdrożenia.
     
     ```JSON
           "properties": {
@@ -117,7 +117,7 @@ Na przykład w przykład 5-VM-1-elementów NodeType-Secure_Step2. JSON zawiera w
          }
     ``` 
 
-4. Wprowadź zmiany **we wszystkich** definicjach zasobów **Microsoft. COMPUTE/virtualMachineScaleSets** — zlokalizuj definicję zasobu Microsoft. COMPUTE/virtualMachineScaleSets. Przewiń do "wydawcy": "Microsoft. Azure. servicefabric" w obszarze "virtualMachineProfile".
+4. Wprowadź zmiany **we wszystkich** definicjach zasobów **Microsoft. COMPUTE/virtualMachineScaleSets** — zlokalizuj definicję zasobu Microsoft. COMPUTE/virtualMachineScaleSets. Przewiń do "Wydawca": "Microsoft. Azure. servicefabric" w obszarze "virtualMachineProfile".
 
     W ustawieniach wydawcy Service Fabric powinna zostać wyświetlona coś podobnego do tego.
     
@@ -138,7 +138,7 @@ Na przykład w przykład 5-VM-1-elementów NodeType-Secure_Step2. JSON zawiera w
     
     ![Json_Pub_Setting2][Json_Pub_Setting2]
     
-    Jeśli chcesz wycofać **certyfikat**, określ nowy certyfikat jako podstawowy i Przenieś bieżący podstawowy jako pomocniczy. Powoduje to Przerzucanie bieżącego certyfikatu do nowego certyfikatu w jednym kroku wdrożenia.     
+    Jeśli chcesz **wycofać certyfikat**, określ nowy certyfikat jako podstawowy i Przenieś bieżący podstawowy jako pomocniczy. Powoduje to Przerzucanie bieżącego certyfikatu do nowego certyfikatu w jednym kroku wdrożenia.     
 
     ```json
                    "certificate": {
@@ -178,7 +178,7 @@ Na przykład w przykład 5-VM-1-elementów NodeType-Secure_Step2. JSON zawiera w
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Edytuj plik szablonu, aby odzwierciedlić nowe parametry, które zostały dodane powyżej
-Jeśli używasz przykładu z [repozytorium git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) , aby wykonać następujące czynności, możesz zacząć wprowadzać zmiany w przykładzie 5-VM-1-elementów NodeType-Secure. PARAMETERS_STEP2. JSON 
+Jeśli używasz przykładu z [repozytorium git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) , aby wykonać następujące czynności, możesz zacząć wprowadzać zmiany w przykładzie 5-VM-1-elementów NodeType-Secure. PARAMETERS_STEP2. JSON 
 
 Edytuj plik parametrów szablonu Menedżer zasobów, Dodaj dwa nowe parametry dla secCertificateThumbprint i secCertificateUrlValue. 
 

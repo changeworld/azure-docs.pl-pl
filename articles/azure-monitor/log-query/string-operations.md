@@ -1,24 +1,18 @@
 ---
 title: Pracuj z ciągami w zapytaniach dziennika Azure Monitor | Microsoft Docs
 description: Opisuje sposób edytowania, porównywania, wyszukiwania i wykonywania różnych operacji na ciągach w kwerendach dziennika Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.date: 08/16/2018
+ms.openlocfilehash: 0d7bf025b414df819887192bb59f7fd8da64b5d9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741464"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932932"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Pracuj z ciągami w zapytaniach dziennika Azure Monitor
 
@@ -34,7 +28,7 @@ Każdy znak w ciągu ma numer indeksu, zgodnie z jego lokalizacją. Pierwszy zna
 
 
 ## <a name="strings-and-escaping-them"></a>Ciągi i ucieczki
-Wartości ciągów są opakowane z pojedynczym lub podwójnym cudzysłowem. Ukośnik odwrotny\\() jest używany do ucieczki znaków następującego znaku, takiego jak \t dla karty, \n dla wiersza i \" znaku cudzysłowu.
+Wartości ciągów są opakowane z pojedynczym lub podwójnym cudzysłowem. Ukośnik odwrotny (\\) jest używany do ucieczki znaków znaku po nim, takich jak \t dla karty, \n dla wiersza i \" samego znaku cudzysłowu.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -44,7 +38,7 @@ print "this is a 'string' literal in double \" quotes"
 print 'this is a "string" literal in single \' quotes'
 ```
 
-Aby zapobiec\\działaniu jako znak ucieczki, Dodaj "\@" jako prefiks do ciągu:
+Aby zapobiec działaniu jako znak ucieczki "\\", Dodaj "\@" jako prefiks do ciągu:
 
 ```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
@@ -53,16 +47,16 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Porównania ciągów
 
-Operator       |Opis                         |Z uwzględnieniem wielkości liter|Przykład (yields `true`)
+Operator       |Opis                         |Z uwzględnieniem wielkości liter|Przykład (daje `true`)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Równa się                              |Tak           |`"aBc" == "aBc"`
-`!=`           |Nierówne                          |Tak           |`"abc" != "ABC"`
+`!=`           |Nie równa się                          |Tak           |`"abc" != "ABC"`
 `=~`           |Równa się                              |Nie            |`"abc" =~ "ABC"`
-`!~`           |Nierówne                          |Nie            |`"aBc" !~ "xyz"`
+`!~`           |Nie równa się                          |Nie            |`"aBc" !~ "xyz"`
 `has`          |Po prawej stronie jest całym terminem po lewej stronie |Nie|`"North America" has "america"`
 `!has`         |Po prawej stronie nie ma pełnego terminu po lewej stronie       |Nie            |`"North America" !has "amer"` 
-`has_cs`       |Po prawej stronie jest całym terminem po lewej stronie |Yes|`"North America" has_cs "America"`
-`!has_cs`      |Po prawej stronie nie ma pełnego terminu po lewej stronie       |Yes            |`"North America" !has_cs "amer"` 
+`has_cs`       |Po prawej stronie jest całym terminem po lewej stronie |Tak|`"North America" has_cs "America"`
+`!has_cs`      |Po prawej stronie nie ma pełnego terminu po lewej stronie       |Tak            |`"North America" !has_cs "amer"` 
 `hasprefix`    |Po prawej stronie jest termin prefiksu po lewej stronie         |Nie            |`"North America" hasprefix "ame"`
 `!hasprefix`   |Po prawej stronie nie jest terminem prefiksu po lewej stronie     |Nie            |`"North America" !hasprefix "mer"` 
 `hasprefix_cs`    |Po prawej stronie jest termin prefiksu po lewej stronie         |Tak            |`"North America" hasprefix_cs "Ame"`
@@ -70,10 +64,10 @@ Operator       |Opis                         |Z uwzględnieniem wielkości liter
 `hassuffix`    |Po prawej stronie jest sufiks terminu po lewej stronie         |Nie            |`"North America" hassuffix "ica"`
 `!hassuffix`   |Po prawej stronie nie ma sufiksu terminu po lewej stronie     |Nie            |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |Po prawej stronie jest sufiks terminu po lewej stronie         |Tak            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Po prawej stronie nie ma sufiksu terminu po lewej stronie     |Yes            |`"North America" !hassuffix_cs "icA"`
+`!hassuffix_cs`   |Po prawej stronie nie ma sufiksu terminu po lewej stronie     |Tak            |`"North America" !hassuffix_cs "icA"`
 `contains`     |Prawa strona występuje jako podsekwencja po lewej stronie  |Nie            |`"FabriKam" contains "BRik"`
 `!contains`    |Prawa strona nie występuje po lewej stronie           |Nie            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |Prawa strona występuje jako podsekwencja po lewej stronie  |Yes           |`"FabriKam" contains_cs "Kam"`
+`contains_cs`   |Prawa strona występuje jako podsekwencja po lewej stronie  |Tak           |`"FabriKam" contains_cs "Kam"`
 `!contains_cs`  |Prawa strona nie występuje po lewej stronie           |Tak           |`"Fabrikam" !contains_cs "Kam"`
 `startswith`   |Po prawej stronie jest początkową podsekwencją lewej strony|Nie            |`"Fabrikam" startswith "fab"`
 `!startswith`  |Po prawej stronie nie jest początkową podsekwencją lewej strony|Nie        |`"Fabrikam" !startswith "kam"`
@@ -84,7 +78,7 @@ Operator       |Opis                         |Z uwzględnieniem wielkości liter
 `endswith_cs`     |Po prawej stronie jest zamykaną podsekwencją lewej strony|Tak             |`"Fabrikam" endswith "Kam"`
 `!endswith_cs`    |Po prawej stronie nie jest zamykana podsekwencja po lewej stronie|Tak         |`"Fabrikam" !endswith "brik"`
 `matches regex`|po lewej stronie zawiera dopasowanie po prawej stronie        |Tak           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Równa się jednemu z elementów       |Yes           |`"abc" in ("123", "345", "abc")`
+`in`           |Równa się jednemu z elementów       |Tak           |`"abc" in ("123", "345", "abc")`
 `!in`          |Nie równa się żadnym elementom   |Tak           |`"bca" !in ("123", "345", "abc")`
 
 
@@ -97,12 +91,12 @@ Zlicza wystąpienia podciągu w ciągu. Można dopasować zwykłe ciągi lub uż
 countof(text, search [, kind])
 ```
 
-### <a name="arguments"></a>Argumenty:
-- `text`-Ciąg wejściowy 
-- `search`-Zwykłego ciągu lub wyrażenia regularnego do dopasowania wewnątrz tekstu.
-- `kind` - normalne | _wyrażenie regularne_ (domyślnie: Normal).
+### <a name="arguments"></a>Argumentu
+- `text` — ciąg wejściowy 
+- `search` — ciąg zwykły lub wyrażenie regularne, aby dopasować tekst wewnątrz tekstu.
+- `kind` - _normalne_ | _wyrażenia regularnego_ (wartość domyślna: Normal).
 
-### <a name="returns"></a>Zwraca
+### <a name="returns"></a>Typu
 
 Liczba określająca, ile razy można dopasować ciąg wyszukiwania w kontenerze. Dopasowania w postaci zwykłego ciągu mogą się pokrywać, gdy nie są zgodne wyrażenia regularne.
 
@@ -139,12 +133,12 @@ extract(regex, captureGroup, text [, typeLiteral])
 
 ### <a name="arguments"></a>Argumenty
 
-- `regex`-Wyrażenie regularne.
-- `captureGroup`-Dodatnia stała całkowita wskazująca grupę przechwytywania do wyodrębnienia. 0 dla całego dopasowania, 1 dla wartości dopasowanej przez pierwszy znak "(" nawias ")" w wyrażeniu regularnym, 2 lub więcej dla kolejnych nawiasów.
-- `text`-Ciąg do wyszukania.
-- `typeLiteral`-Opcjonalny literał typu (na przykład typeof (Long)). Jeśli jest podany, wyodrębniony podciąg jest konwertowany na ten typ.
+- `regex` — wyrażenie regularne.
+- `captureGroup` — dodatnia stała całkowita wskazująca grupę przechwytywania do wyodrębnienia. 0 dla całego dopasowania, 1 dla wartości dopasowanej przez pierwszy znak "(" nawias ")" w wyrażeniu regularnym, 2 lub więcej dla kolejnych nawiasów.
+- `text` — ciąg do wyszukania.
+- `typeLiteral` — opcjonalny literał typu (na przykład typeof (Long)). Jeśli jest podany, wyodrębniony podciąg jest konwertowany na ten typ.
 
-### <a name="returns"></a>Zwraca
+### <a name="returns"></a>Typu
 Podciąg dopasowany do wskazanej grupy przechwytywania grupa przechwytywania, opcjonalnie przekonwertowany na typeLiteral.
 Jeśli nie ma dopasowania lub konwersja typu nie powiedzie się, zwraca wartość null.
 
@@ -179,7 +173,7 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 ## <a name="isempty-isnotempty-notempty"></a>IsEmpty, isnotempty, noskłonność
 
 - *IsEmpty* zwraca wartość true, jeśli argument jest ciągiem pustym lub wartością null (patrz również *IsNull*).
-- *isnotempty* zwraca wartość true, jeśli argument nie jest ciągiem pustym ani wartością null (Zobacz również *IsNotNull*). alias:noskłonność.
+- *isnotempty* zwraca wartość true, jeśli argument nie jest ciągiem pustym ani wartością null (Zobacz również *IsNotNull*). alias: *noskłonność*.
 
 ### <a name="syntax"></a>Składnia
 
@@ -246,11 +240,11 @@ replace(regex, rewrite, input_text)
 
 ### <a name="arguments"></a>Argumenty
 
-- `regex`-Wyrażenie regularne, które ma zostać dopasowane przez. Może zawierać grupy przechwytywania w nawiasach klamrowych ().
-- `rewrite`— Wyrażenie regularne zastąpienia dla dowolnego dopasowania wykonanego przez zgodne wyrażenie regularne. Użyj \ 0, aby odwołać się do całego dopasowania, \ 1 dla pierwszej grupy przechwytywania, \ 2 itd. dla kolejnych grup przechwytywania.
-- `input_text`-Ciąg wejściowy do wyszukania.
+- `regex` — wyrażenie regularne, które ma zostać dopasowane przez. Może zawierać grupy przechwytywania w nawiasach klamrowych ().
+- `rewrite` — wyrażenie zastępcze zastąpienia dla dowolnego dopasowania wykonanego przez zgodne wyrażenie regularne. Użyj \ 0, aby odwołać się do całego dopasowania, \ 1 dla pierwszej grupy przechwytywania, \ 2 itd. dla kolejnych grup przechwytywania.
+- `input_text` — ciąg wejściowy do wyszukania.
 
-### <a name="returns"></a>Zwraca
+### <a name="returns"></a>Typu
 Tekst po zamianie wszystkich odpowiedników wyrażenia regularnego na oceny ponownego zapisu. Dopasowania nie nakładają się.
 
 ### <a name="examples"></a>Przykłady
@@ -266,7 +260,7 @@ Mogą mieć następujące wyniki:
 
 Działanie                                        |zastąpienie
 ------------------------------------------------|----------------------------------------------------------
-4663 — podjęto próbę uzyskania dostępu do obiektu  |Identyfikator działania 4663: Podjęto próbę uzyskania dostępu do obiektu.
+4663 — podjęto próbę uzyskania dostępu do obiektu  |Identyfikator działania 4663: podjęto próbę uzyskania dostępu do obiektu.
 
 
 ## <a name="split"></a>split
@@ -278,11 +272,11 @@ Dzieli dany ciąg zgodnie z określonym ogranicznikiem i zwraca tablicę wynikow
 split(source, delimiter [, requestedIndex])
 ```
 
-### <a name="arguments"></a>Argumenty:
+### <a name="arguments"></a>Argumentu
 
-- `source`-Ciąg, który ma zostać podzielony według określonego ogranicznika.
-- `delimiter`— Ogranicznik, który będzie używany w celu podzielenia ciągu źródłowego.
-- `requestedIndex`— Opcjonalny indeks oparty na wartości zero. Jeśli jest podany, zwracana tablica ciągów będzie przechowywać tylko ten element (jeśli istnieje).
+- `source` — ciąg, który ma zostać podzielony według określonego ogranicznika.
+- `delimiter` — ogranicznik, który będzie używany w celu podzielenia ciągu źródłowego.
+- `requestedIndex` — opcjonalny indeks (liczony od zera). Jeśli jest podany, zwracana tablica ciągów będzie przechowywać tylko ten element (jeśli istnieje).
 
 
 ### <a name="examples"></a>Przykłady
@@ -335,11 +329,11 @@ Wyodrębnia podciąg z danego ciągu źródłowego, rozpoczynając od określone
 substring(source, startingIndex [, length])
 ```
 
-### <a name="arguments"></a>Argumenty:
+### <a name="arguments"></a>Argumentu
 
-- `source`-Ciąg źródłowy, z którego zostanie pobrany podciąg.
-- `startingIndex`— Znak początkowy na podstawie zera dla żądanego podciągu.
-- `length`-Opcjonalny parametr, który może służyć do określania żądanych długości zwracanego podciągu.
+- `source` — ciąg źródłowy, z którego zostanie pobrany podciąg.
+- `startingIndex` — znak początkowy na podstawie zera dla żądanego podciągu.
+- `length` — opcjonalny parametr, za pomocą którego można określić żądaną długość zwróconego podciągu.
 
 ### <a name="examples"></a>Przykłady
 ```Kusto
@@ -368,7 +362,7 @@ print toupper("hello"); // result: "HELLO"
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Kontynuuj korzystanie z zaawansowanych samouczków:
 * [Funkcje agregacji](aggregations.md)
 * [Agregacje zaawansowane](advanced-aggregations.md)

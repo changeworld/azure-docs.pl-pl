@@ -1,6 +1,6 @@
 ---
-title: Renderowanie pokrycia w usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat renderowania pokrycia w usługi Azure Maps
+title: Pokrycie renderowania w Azure Maps | Microsoft Docs
+description: Dowiedz się więcej na temat pokrycia renderowania w Azure Maps
 author: jingjing-z
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7feea92d48a826000fd8aa878b95658b79d6d908
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5affc9952cfe13ebfeede126051f2236499d1343
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869992"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934294"
 ---
-# <a name="azure-maps-render-coverage"></a>Pokrycie renderowaniem usługi Azure Maps
+# <a name="azure-maps-render-coverage"></a>Pokrycie Azure Maps renderowania
 
-Usługi Azure Maps używa rastrowych kafelków i wektorowych kafelków w celu utworzenia mapy. W jego najniższej rozdzielczości cały świat pasuje do pojedynczego kafelka. Jego największą rozdzielczością pojedynczego kafelka reprezentuje 38 metrów kwadratowych. Jak można powiększyć mapę, w związku z tym, widać coraz więcej szczegółów na temat kontynentach, regiony, miasta i poszczególnych Streets (ulice). Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md).
+Azure Maps używa zarówno kafelków rastrowych, jak i kafelków wektorowych do tworzenia map. W najniższym rozwiązaniu cały świat jest dopasowany do jednego kafelka. Przy najwyższej rozdzielczości pojedynczy kafelek reprezentuje 38 metrów kwadratowych. W miarę powiększania mapy można zobaczyć bardziej szczegółowe informacje dotyczące kontynentów, regionów, miast i indywidualnych ulic. Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md).
 
-Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystkich regionach. Poniższe tabele zawierają informacje o poziom szczegółowości renderowanych można oczekiwać, że w każdym regionie.
+Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystkich regionów. W poniższych tabelach przedstawiono informacje o tym, jaki poziom renderowanych szczegółów można oczekiwać z każdego regionu.
 
-## <a name="legend"></a>Legenda
+## <a name="legend"></a>Legendy
 
-| Symbol | Znaczenie |
+| Symboliczn | Znaczenie |
 |--------|---------|
-| ✓ | Region jest przedstawiana za pomocą szczegółowych danych.   |
-| Ø | Region jest przedstawiana za pomocą danych. |
+| ✓ | Region jest reprezentowany ze szczegółowymi danymi.   |
+| O | Region jest reprezentowany przez uproszczone dane. |
 
 
 ## <a name="africa"></a>Afryka 
 
 
-| Kraj/region | Kafelki rastrowych Unified | Wektorowych kafelków Unified |
+| Kraj/region | Zunifikowane kafelki rastrowe | Zunifikowane kafelki wektorowe |
 | ------ | :------------------: | :------------------: |
-| Algeria                          | ✓ | ✓ |
+| Algieria                          | ✓ | ✓ |
 | Angola                           | ✓ | ✓ |
 | Benin                            | ✓ | ✓ |
 | Botswana                         | ✓ | ✓ |
@@ -42,26 +42,26 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Burundi                          | ✓ | ✓ |
 | Wyspy Zielonego Przylądka                       | ✓ | ✓ |
 | Kamerun                         | ✓ | ✓ |
-| Republika Środkowoafrykańska         | ✓ | Ø |
-| Czad                             | ✓ | Ø |
-| Komory                          | ✓ | Ø |
+| Republika Środkowoafrykańska         | ✓ | O |
+| Czad                             | ✓ | O |
+| Komory                          | ✓ | O |
 | Demokratyczna Republika Konga | ✓ | ✓ |
-| Côte d’Ivoire                    | ✓ | Ø |
-| Dżibuti                         | ✓ | Ø |
+| Côte d’Ivoire                    | ✓ | O |
+| Dżibuti                         | ✓ | O |
 | Egipt                            | ✓ | ✓ |
-| Gwinea Równikowa                | ✓ | Ø |
-| Erytrea                          | ✓ | Ø |
-| Etiopia                         | ✓ | Ø |
+| Gwinea Równikowa                | ✓ | O |
+| Erytrea                          | ✓ | O |
+| Etiopia                         | ✓ | O |
 | Gabon                            | ✓ | ✓ |
-| Gambia                           | ✓ | Ø |
+| Przybrzeżn                           | ✓ | O |
 | Ghana                            | ✓ | ✓ |
-| Gwinea                           | ✓ | Ø |
-| Gwinea Bissau                    | ✓ | Ø |
-| Kenya                            | ✓ | ✓ |
+| Gwinea                           | ✓ | O |
+| Gwinea Bissau                    | ✓ | O |
+| Kenia                            | ✓ | ✓ |
 | Lesotho                          | ✓ | ✓ |
-| Liberia                          | ✓ | Ø |
-| Libya                            | ✓ | Ø |
-| Madagaskar                       | ✓ | Ø |
+| Liberia                          | ✓ | O |
+| Libia                            | ✓ | O |
+| Madagaskar                       | ✓ | O |
 | Malawi                           | ✓ | ✓ |
 | Mali                             | ✓ | ✓ |
 | Mauretania                       | ✓ | ✓ |
@@ -74,8 +74,8 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Nigeria                          | ✓ | ✓ |
 | Reunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
-| Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha | ✓ | Ø |
-| Wyspy Świętego Tomasza i Książęca            | ✓ | Ø |
+| Saint Helena, Wyspa Wniebowstąpienia i Tristan da Cunha | ✓ | O |
+| Wyspy Świętego Tomasza i Książęca            | ✓ | O |
 | Senegal                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |
 | Somalia                          | ✓ | ✓ |
@@ -83,7 +83,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Sudan południowy                      | ✓ | ✓ |
 | Sudan                            | ✓ | ✓ |
 | Suazi                        | ✓ | ✓ |
-| Zjednoczona Republika Tanzanii      | ✓ | ✓ |
+| Zjednoczone Republiki Tanzanii      | ✓ | ✓ |
 | Togo                             | ✓ | ✓ |
 | Tunezja                          | ✓ | ✓ |
 | Uganda                           | ✓ | ✓ |
@@ -92,7 +92,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 
 ## <a name="americas"></a>Ameryki
 
-| Kraj/region | Kafelki rastrowych Unified | Wektorowych kafelków Unified |
+| Kraj/region | Zunifikowane kafelki rastrowe | Zunifikowane kafelki wektorowe |
 | ------ | :------------------: | :------------------: |
 | Anguilla                  | ✓ | ✓ |
 | Antigua i Barbuda       | ✓ | ✓ |
@@ -102,7 +102,7 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Barbados                  | ✓ | ✓ |
 | Belize                    | ✓ | ✓ |
 | Bermudy                   | ✓ | ✓ |
-| Wielonarodowe Państwo Boliwii | ✓ | ✓ |
+| Stan Plurinational Boliwii | ✓ | ✓ |
 | Bonaire, Sint Eustatius i Saba | ✓ | ✓ |
 | Brazylia                    | ✓ | ✓ |
 | Kanada                    | ✓ | ✓ |
@@ -112,19 +112,19 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Kostaryka                | ✓ | ✓ |
 | Kuba                      | ✓ | ✓ |
 | Curaçao                   | ✓ | ✓ |
-| Dominika                  | ✓ | ✓ |
-| Republika Dominikańska        | ✓ | ✓ |
+| Mini                  | ✓ | ✓ |
+| Dominikana        | ✓ | ✓ |
 | Ekwador                   | ✓ | ✓ |
-| Falklandy | ✓ | ✓ |
+| Falklandy (Malwiny) | ✓ | ✓ |
 | Gujana Francuska             | ✓ | ✓ |
-| Grenlandia                 | ✓ | Ø |
+| Grenlandia                 | ✓ | O |
 | Grenada                   | ✓ | ✓ |
 | Gwadelupa                | ✓ | ✓ |
 | Gwatemala                 | ✓ | ✓ |
 | Gujana                    | ✓ | ✓ |
 | Haiti                     | ✓ | ✓ |
 | Honduras                  | ✓ | ✓ |
-| Jamaica                   | ✓ | ✓ |
+| Jamajka                   | ✓ | ✓ |
 | Martynika                | ✓ | ✓ |
 | Meksyk                    | ✓ | ✓ |
 | Montserrat                | ✓ | ✓ |
@@ -135,17 +135,17 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Peru                      | ✓ | ✓ |
 | Portoryko               | ✓ | ✓ |
 | Quebec (Kanada)           | ✓ | ✓ |
-| Saint-Barthélemy          | ✓ | ✓ |
+| Saint Barthélemy          | ✓ | ✓ |
 | Saint Kitts i Nevis     | ✓ | ✓ |
 | Saint Lucia               | ✓ | ✓ |
 | Saint-Martin (francuski)     | ✓ | ✓ |
-| Saint Pierre i Miquelon | ✓ | ✓ |
+| Saint-Pierre i Miquelon | ✓ | ✓ |
 | Saint Vincent i Grenadyny | ✓ | ✓ |
 | Sint Maarten (holenderski)      | ✓ | ✓ |
 | Georgia Południowa i Sandwich Południowy | ✓ | ✓ |
 | Surinam                  | ✓ | ✓ |
 | Trynidad i Tobago       | ✓ | ✓ |
-| Wyspy Turks i Caicos  | ✓ | ✓ |
+| Turks i Caicos  | ✓ | ✓ |
 | Stany Zjednoczone             | ✓ | ✓ |
 | Urugwaj                   | ✓ | ✓ |
 | Wenezuela                 | ✓ | ✓ |
@@ -154,111 +154,110 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 
 ## <a name="asia"></a>Azja 
 
-| Kraj/region | Kafelki rastrowych Unified | Wektorowych kafelków Unified |
+| Kraj/region | Zunifikowane kafelki rastrowe | Zunifikowane kafelki wektorowe |
 | ------ | :------------------: | :------------------: |
-| Afganistan               |   | Ø |
+| Afganistan               |   | O |
 | Bahrajn                   | ✓ | ✓ |
-| Bangladesz                |   | Ø |
-| Bhutan                    |   | Ø |
-| Brytyjskie Terytorium Oceanu Indyjskiego |   | Ø |
+| Bangladesz                |   | O |
+| Bhutan                    |   | O |
+| Brytyjskie Terytorium Oceanu Indyjskiego |   | O |
 | Brunei                    | ✓ | ✓ |
-| Kambodża                  |   | Ø |
-| Chiny                     |   | Ø |
-| Wyspy Kokosowe (Keelinga)   |   | Ø |
-| Koreańska Republika Ludowo-Demokratyczna |   | Ø |
-| Dokdo/Takeshima       |   | Ø |
-| SRA Hongkong             | ✓ | ✓ |
-| Indie                     | Ø | ✓ | 
+| Kambodża                  |   | O |
+| Chiny                     |   | O |
+| Wyspy Kokosowe (Keelinga)   |   | O |
+| Koreańska Republika Ludowo-Demokratyczna |   | O |
+| Hongkong SAR             | ✓ | ✓ |
+| Indie                     | O | ✓ | 
 | Indonezja                 | ✓ | ✓ |
-| Iran                      |   | Ø |
+| Iran                      |   | O |
 | Irak                      | ✓ | ✓ |
 | Izrael                    |   | ✓ |
-| Japonia                     |   | Ø |
+| Japonia                     |   | O |
 | Jordania                    | ✓ | ✓ |
-| Kazakhstan                |   | ✓ |
+| Kazachstan                |   | ✓ |
 | Kuwejt                    | ✓ | ✓ |
-| Kyrgyzstan                |   | Ø |
-| Laotańska Republika Ludowo-Demokratyczna |   | Ø |
+| Kirgistan                |   | O |
+| Laotańska Republika Ludowo-Demokratyczna |   | O |
 | Liban                   | ✓ | ✓ |
-| SRA Makau                 | ✓ | ✓ |
+| Makau SAR                 | ✓ | ✓ |
 | Malezja                  | ✓ | ✓ |
-| Malediwy                  |   | Ø |
-| Mongolia                  |   | Ø |
-| Myanmar                   |   | Ø |
-| Nepal                     |   | Ø |
+| Malediwy                  |   | O |
+| Mongolia                  |   | O |
+| Myanmar                   |   | O |
+| Nepal                     |   | O |
 | Oman                      | ✓ | ✓ |
-| Pakistan                  |   | Ø |
+| Pakistan                  |   | O |
 | Filipiny               | ✓ | ✓ |
 | Katar                     | ✓ | ✓ |
-| Republika Korei         | ✓ | Ø |
+| Republika Korei         | ✓ | O |
 | Arabia Saudyjska              | ✓ | ✓ |
-| Wyspy Senkaku/Diaoyutai           |   | ✓ |
+| Wyspy Senkaku           |   | ✓ |
 | Singapur                 | ✓ | ✓|
-| Sri Lanka                 |   | Ø |
-| Arabska Republika Syryjska      |   | Ø |
+| Sri Lanka                 |   | O |
+| Arabska Republika Syryjska      |   | O |
 | Tajwan                    | ✓ | ✓ |
-| Tadżykistan                |   | Ø |
+| Tadżykistan                |   | O |
 | Tajlandia                  | ✓ | ✓ |
-| Timor-Leste               |   | Ø |
-| Turkmenistan              |   | Ø |
+| Timor — Wschodni               |   | O |
+| Turkmenistan              |   | O |
 | Zjednoczone Emiraty Arabskie      | ✓ | ✓ |
-| Odległe Mniejsze Wyspy Stanów Zjednoczonych |   | Ø |
-| Uzbekistan                |   | Ø |
-| Vietnam                   | ✓ | ✓ |
+| Odległe Mniejsze Wyspy Stanów Zjednoczonych |   | O |
+| Uzbekistan                |   | O |
+| Wietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
-## <a name="oceania"></a>Oceania
+## <a name="oceania"></a>Oceanii
 
-| Kraj/region | Kafelki rastrowych Unified | Wektorowych kafelków Unified |
+| Kraj/region | Zunifikowane kafelki rastrowe | Zunifikowane kafelki wektorowe |
 | ------ | :------------------: | :------------------: |
 | Samoa Amerykańskie            |   | ✓ |
 | Australia                 | ✓ | ✓ |
-| Wyspy Cooka              |   | Ø |
-| Fidżi                      |   | Ø |
-| Polinezja Francuska          |   | Ø |
+| Wyspy Cooka              |   | O |
+| Fidżi                      |   | O |
+| Polinezja Francuska          |   | O |
 | Guam                      | ✓ | ✓ |
-| Kiribati                  |   | Ø |
-| Wyspy Marshalla          |   | Ø |
-| Mikronezja                |   | Ø |
-| Nauru                     |   | Ø |
-| Nowa Kaledonia             |   | Ø |
+| Kiribati                  |   | O |
+| Wyspy Marshalla          |   | O |
+| Mikronezja                |   | O |
+| Nauru                     |   | O |
+| Nowa Kaledonia             |   | O |
 | Nowa Zelandia               | ✓ | ✓ |
-| Niue                      |   | Ø |
-| Wyspa Norfolk            |   | Ø |
-| Palau                     |   | Ø |
-| Papua-Nowa Gwinea          |   | Ø |
-| Wyspy Pitcairn                  |   | Ø |
-| Samoa                     |   | Ø |
-| Wyspy Salomona           |   | Ø|
-| Tokelau                   |   | Ø |
-| Tonga                     |   | Ø |
-| Tuvalu                    |   | Ø |
-| Vanuatu                   |   | Ø |
-| Wallis i Futuna         |   | Ø |
+| Niue                      |   | O |
+| Wyspa Norfolk            |   | O |
+| Palau                     |   | O |
+| Papua Nowa Gwinea          |   | O |
+| Pitcairn                  |   | O |
+| Zachodniego                     |   | O |
+| Wyspy Salomona           |   | O|
+| Tokelau                   |   | O |
+| Tonga                     |   | O |
+| Tuvalu                    |   | O |
+| Vanuatu                   |   | O |
+| Wallis i Futuna         |   | O |
 
 
 ## <a name="europe"></a>Europa
 
-| Kraj/region | Kafelki rastrowych Unified | Wektorowych kafelków Unified |
+| Kraj/region | Zunifikowane kafelki rastrowe | Zunifikowane kafelki wektorowe |
 | ------ | :------------------: | :------------------: |
 | Albania                   | ✓ | ✓ |
 | Andora                   | ✓ | ✓ |
-| Armenia                   | ✓ | Ø |
+| Armenia                   | ✓ | O |
 | Austria                   | ✓ | ✓ |
-| Azerbejdżan                | ✓ | Ø |
-| Białoruś                   | Ø | ✓ |
+| Azerbejdżan                | ✓ | O |
+| Białoruś                   | O | ✓ |
 | Belgia                   | ✓ | ✓ |
-| Bosnia-Herzegovina        | ✓ | ✓ |
+| Bośnia i Hercegowina        | ✓ | ✓ |
 | Bułgaria                  | ✓ | ✓ |
 | Chorwacja                   | ✓ | ✓ |
 | Cypr                    | ✓ | ✓ |
-| Czechy            | ✓ | ✓ |
+| Republika Czeska            | ✓ | ✓ |
 | Dania                   | ✓ | ✓ |
 | Estonia                   | ✓ | ✓ |
-| Wyspy Owcze             | ✓ | Ø |
+| Wyspy Owcze             | ✓ | O |
 | Finlandia                   | ✓ | ✓ |
 | Francja                    | ✓ | ✓ |
-| Gruzja                   | ✓ | Ø |
+| Gruzja                   | ✓ | O |
 | Niemcy                   | ✓ | ✓ |
 | Gibraltar                 | ✓ | ✓ |
 | Grecja                    | ✓ | ✓ |
@@ -274,10 +273,10 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Liechtenstein             | ✓ | ✓ |
 | Litwa                 | ✓ | ✓ |
 | Luksemburg                | ✓ | ✓ |
-| Macedonia Północna           | ✓ | ✓ |
+| Północna Macedonia           | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
 | Mołdawia                   | ✓ | ✓ |
-| Monaco                    | ✓ | ✓ |
+| Monako                    | ✓ | ✓ |
 | Czarnogóra                | ✓ | ✓ |
 | Holandia               | ✓ | ✓ |
 | Norwegia                    | ✓ | ✓ |
@@ -299,8 +298,8 @@ Jednak mapy nie ma takiego samego poziomu informacji i dokładność we wszystki
 | Zjednoczone Królestwo            | ✓ | ✓ |
 | Watykan              | ✓ | ✓ |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat renderowania usługi Azure Maps, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md).
+Aby uzyskać więcej informacji na temat renderowania Azure Maps, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md).
 
-Dowiedz się więcej o [obszary pokrycia dla map, usługa routingu](routing-coverage.md). 
+Dowiedz się więcej o [obszarach pokrycia dla usługi routingu Maps](routing-coverage.md). 

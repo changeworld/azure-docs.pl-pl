@@ -1,48 +1,42 @@
 ---
-title: Automatyczne skrypt, aby utworzyć aplikację sieci Web programu Service Manager do łączenia za pomocą łącznika zarządzania usługami IT na platformie Azure | Dokumentacja firmy Microsoft
-description: Tworzenie aplikacji sieci Web programu Service Manager przy użyciu zautomatyzowanego skryptu, aby połączyć się z łącznika zarządzania usługami IT na platformie Azure i centralne monitorowanie i zarządzanie elementy robocze ITSM.
-services: log-analytics
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Zautomatyzowany skrypt służący do tworzenia Service Manager aplikacji sieci Web w celu nawiązania połączenia z łącznik zarządzania usługami IT na platformie Azure | Microsoft Docs
+description: Utwórz Service Manager aplikację sieci Web za pomocą zautomatyzowanego skryptu, aby nawiązać połączenie z usługą łącznik zarządzania usługami IT na platformie Azure i centralnie monitorować elementy robocze narzędzia ITSM oraz zarządzać nimi.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/23/2018
+author: JYOTHIRMAISURI
 ms.author: v-jysur
-ms.openlocfilehash: 42adbf7a6f0e7bb462e6bc9b690c61d4ade0cae2
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 01/23/2018
+ms.openlocfilehash: 443fe6aa7e97e666075a2fbb985a9b8b00baf81a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479702"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932253"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Tworzenie aplikacji sieci Web programu Service Manager przy użyciu zautomatyzowanego skryptu
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Tworzenie aplikacji sieci Web Service Manager przy użyciu skryptu automatycznego
 
-Użyj następującego skryptu, aby utworzyć aplikację sieci Web dla swojego wystąpienia programu Service Manager. Więcej informacji na temat połączeń programu Service Manager jest tutaj: [Aplikacja sieci Web programu Service Manager](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Użyj poniższego skryptu, aby utworzyć aplikację sieci Web dla wystąpienia Service Manager. Więcej informacji na temat połączenia Service Manager jest tutaj: [aplikacja sieci Web Service Manager](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 Uruchom skrypt, podając następujące wymagane szczegóły:
 
 - Szczegóły subskrypcji platformy Azure
 - Nazwa grupy zasobów
-- Location
-- Szczegóły serwera programu Service Manager (nazwa serwera, domeny, nazwę użytkownika i hasło)
+- Lokalizacja
+- Szczegóły serwera Service Manager (nazwa serwera, domena, nazwa użytkownika i hasło)
 - Prefiks nazwy witryny dla aplikacji sieci Web
-- ServiceBus Namespace.
+- ServiceBus przestrzeń nazw.
 
-Skrypt spowoduje utworzenie aplikacji sieci Web przy użyciu nazwy, który określiłeś (wraz z kilku dodatkowe ciągi, aby była unikatowa). Generuje on **adres URL aplikacji sieci Web**, **identyfikator klienta**, i **klucz tajny klienta**.
+Skrypt utworzy aplikację sieci Web przy użyciu podanej nazwy (wraz z kilkoma dodatkowymi ciągami, aby była unikatowa). Generuje **adres URL aplikacji sieci Web**, **Identyfikator klienta**i **klucz tajny klienta**.
 
-Zapisz te wartości. wartości te będą potrzebne podczas tworzenia połączenia za pomocą łącznika zarządzania usługami IT.
+Zapisz te wartości, które będą potrzebne podczas tworzenia połączenia z łącznik zarządzania usługami IT.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
- Windows Management Framework 5.0 lub nowszy.
-Domyślnie system Windows 10 ma 5.1. Możesz pobrać struktury z [tutaj](https://www.microsoft.com/download/details.aspx?id=50395):
+ Windows Management Framework 5,0 lub nowszy.
+Domyślnie system Windows 10 ma 5,1. Możesz pobrać strukturę z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=50395):
 
 Użyj następującego skryptu:
 

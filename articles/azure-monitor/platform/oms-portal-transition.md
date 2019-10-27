@@ -1,23 +1,18 @@
 ---
 title: Portal pakietu OMS przeniesiony do platformy Azure | Microsoft Docs
 description: Dostęp do portalu pakietu OMS jest wykonywany przy użyciu wszystkich funkcji przenoszonych do Azure Portal. Ten artykuł zawiera szczegółowe informacje na temat tego przejścia.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: e8fd49781301406e0c35e1de57cea3040167c6c3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 08/22/2019
+ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915864"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932147"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS przeniesiony do platformy Azure
 
@@ -64,7 +59,7 @@ W obu tych przypadkach administrator musi ręcznie przypisać odpowiednią rolę
 
 | Uprawnienie do portalu pakietu OMS | Rola platformy Azure |
 |:---|:---|
-| Tylko do odczytu | Czytelnik usługi Log Analytics |
+| ReadOnly | Czytelnik usługi Log Analytics |
 | Współautor | Współautor usługi Log Analytics |
 | Administrator | Właściciel | 
  
@@ -93,7 +88,7 @@ Aplikacja mobilna pakietu OMS zostanie również przemieszczona przy użyciu por
 
 W związku z tym Application Insights Connector była przestarzała i usuwana z portalu Azure Marketplace wraz z zaniechaniem korzystania z Portal OMS w dniu 30 marca 2019. Istniejące połączenia będą nadal działały do 30 czerwca 2019. W przypadku wycofania portalu pakietu OMS nie istnieje sposób konfigurowania i usuwania istniejących połączeń z portalu. Ta wartość będzie obsługiwana przy użyciu interfejsu API REST, który zostanie udostępniony w styczniu 2019, a powiadomienie zostanie ogłoszone w [usłudze Azure Updates](https://azure.microsoft.com/updates/). 
 
-## <a name="azure-network-security-group-analytics"></a>Analiza sieciowej grupy zabezpieczeń platformy Azure
+## <a name="azure-network-security-group-analytics"></a>Azure Network Security Group Analytics
 [Azure Network Security Group Analytics rozwiązanie](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) zostanie zastąpione ostatnio uruchomionymi [Analiza ruchu](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) , które zapewniają wgląd w aktywność użytkowników i aplikacji w sieciach w chmurze. Analiza ruchu pomaga w inspekcji aktywności sieciowej organizacji, zabezpieczaniu aplikacji i danych, optymalizowaniu wydajności obciążeń i utrzymania zgodności. 
 
 To rozwiązanie analizuje dzienniki przepływu sieciowej grupy zabezpieczeń i udostępnia szczegółowe informacje w następujących tematach.

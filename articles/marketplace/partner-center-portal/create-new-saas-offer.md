@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: a757ee03b8d8c7c93b191054182d077408c162db
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: da6fee7158344d331c6c2a68f0fab1b13cc3a291
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819826"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934098"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -196,7 +196,7 @@ Kontrakt standardowy można znaleźć tutaj: https://go.microsoft.com/fwlink/?li
 
 #### <a name="terms-of-use"></a>Warunki użytkowania
 
-Jeśli postanowienia licencyjne różnią się od kontraktu standardowego, możesz wybrać w tym miejscu własne warunki prawne użytkowania. W tym polu można także wprowadzić do 10 000 znaków tekstu. Jeśli warunki użytkowania wymagają dłuższego opisu, wprowadź w tym polu link pojedynczego adresu URL, w którym można znaleźć dodatkowe postanowienia licencyjne. Będzie ona wyświetlana klientom jako aktywne łącze.
+Jeśli postanowienia licencyjne różnią się od kontraktu standardowego, możesz wybrać w tym miejscu własne warunki prawne użytkowania. Można je wprowadzić jako zwykły tekst lub jako pojedynczy adres URL łączący z postanowieniami licencyjnymi.
 
 Aby móc wypróbować aplikację, klienci muszą zaakceptować te warunki. 
 

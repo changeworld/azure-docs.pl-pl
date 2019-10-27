@@ -1,20 +1,18 @@
 ---
 title: Dokumentacja pliku host. JSON dla Azure Functions 2. x
 description: Dokumentacja referencyjna dotycząca pliku Azure Functions hosta. JSON z użyciem środowiska uruchomieniowego v2.
-services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 2a61a2ba74ccdaa69b26cae65dd4f74a7b837ccf
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596871"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72927448"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host. JSON dla Azure Functions 2. x  
 
@@ -150,9 +148,7 @@ Lista funkcji uruchomionych przez hosta zadań. Pusta tablica oznacza uruchamian
 ## <a name="functiontimeout"></a>functionTimeout
 
 Wskazuje czas trwania dla wszystkich funkcji. Jest on zgodny z formatem ciągu TimeSpan. W planie zużycia bezserwerowego prawidłowy zakres to od 1 sekundy do 10 minut, a wartość domyślna to 5 minut.  
-W przypadku planu dedykowanego (App Service) nie ma żadnego całkowitego limitu i domyślnie zależy od wersji środowiska uruchomieniowego: 
-+ Wersja 1. x: wartość domyślna to *null*, co oznacza brak limitu czasu.   
-+ Wersja 2. x: wartość domyślna to 30 minut. Wartość `-1` wskazuje wykonanie nieograniczone.
+W przypadku planu dedykowanego (App Service) nie ma żadnego całkowitego limitu, a wartość domyślna to 30 minut. Wartość `-1` wskazuje wykonanie nieograniczone.
 
 ```json
 {

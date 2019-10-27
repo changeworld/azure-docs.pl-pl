@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: fbc024b6ae6e3ebfed6f64067158352e8201aef5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e0ac349554fa580c4ac88b26e76d0bea1ecf738b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642567"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932712"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>Omówienie procesu migracji automatycznej dla klasycznych reguł alertów
 
 Zgodnie z [dotychczas ogłoszone](monitoring-classic-retirement.md), klasyczne alerty w Azure monitor są wycofywane we wrześniu 2019 (wersja była pierwotnie 2019 lipca). W ramach procesu wycofywania, [Narzędzie do migracji](alerts-using-migration-tool.md) jest dostępne w Azure Portal, aby klienci mogli wyzwolić migrację. Jeśli nie korzystasz z narzędzia migracji do 31 sierpnia 2019, Azure Monitor rozpocznie proces automatycznej migracji alertów klasycznych od 1 września 2019.
-W tym artykule przedstawiono proces migracji automatycznej i pomoc w rozwiązywaniu wszelkich problemów, które mogą zostać uruchomione.
+Ten artykuł przeprowadzi Cię przez proces migracji automatycznej i pomaga w rozwiązywaniu wszelkich problemów, które mogą zostać uruchomione.
 
   > [!NOTE]
   > Ten artykuł dotyczy tylko chmury publicznej platformy Azure. Proces wycofywania dla Azure Monitor klasycznych alertów w chmurze Azure Government i Azure Chiny 21Vianet będą ogłaszane w przyszłości.

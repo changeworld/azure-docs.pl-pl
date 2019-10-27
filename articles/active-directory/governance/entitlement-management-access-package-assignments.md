@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 694c8866a69d8488511be1670ba3d3013a4a3423
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: a20ff526ba00f5b6521198122972071360bb58d6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392516"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934491"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Wyświetlanie, Dodawanie i usuwanie przypisań pakietu dostępu w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
 
@@ -70,11 +70,9 @@ W niektórych przypadkach może być konieczne bezpośrednie przypisanie określ
 
     ![Przypisania — Dodawanie użytkownika do pakietu dostępu](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. Kliknij przycisk **Dodaj użytkowników** , aby wybrać użytkowników, do których chcesz przypisać pakiet dostępu.
+1. Kliknij przycisk **Dodaj użytkowników** , aby wybrać użytkowników, do których chcesz przypisać ten pakiet dostępu.
 
-1. Z listy **Wybierz zasady** wybierz zasadę z ustawieniem [Brak (tylko przypisania bezpośrednie administratora)](entitlement-management-access-package-request-policy.md#none-administrator-direct-assignments-only) .
-
-    Jeśli ten pakiet dostępu nie ma tego typu zasad, możesz kliknąć przycisk **Utwórz nowe zasady** , aby dodać jeden.
+1. Z listy **Wybierz zasady** wybierz zasady, według których będą podlegać przyszłe żądania i cykl życia użytkowników. Jeśli chcesz, aby wybrani użytkownicy mieli inne ustawienia zasad, kliknij pozycję **Utwórz nowe zasady** , aby dodać nowe zasady.
 
 1. Ustaw datę i godzinę, o której chcesz rozpocząć i zakończyć przypisanie wybranych użytkowników. Jeśli data zakończenia nie zostanie podana, zostaną użyte ustawienia cyklu życia zasad.
 

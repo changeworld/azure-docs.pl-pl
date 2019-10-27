@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 46d6cba1d702773639420a3bc5ac74b9c16ce706
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813623"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933810"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Macierz obsługi odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V w lokacji dodatkowej
 
@@ -21,7 +21,9 @@ W tym artykule opisano, co jest obsługiwane w przypadku używania usługi [Azur
 > [!NOTE]
 > Replikację można przeprowadzić tylko w lokacji dodatkowej, gdy hosty funkcji Hyper-V są zarządzane w chmurach programu VMM.
 
-  
+> [!WARNING]
+> Należy pamiętać, że obsługa usługi ASR do korzystania z konfiguracji SCVMM do konta będzie wkrótce przestarzała i dlatego zalecamy zapoznanie się z informacjami dotyczącymi [przestarzałych](scvmm-site-recovery-deprecation.md) przed kontynuowaniem.
+
 
 ## <a name="host-servers"></a>Serwery hosta
 
@@ -65,7 +67,7 @@ Maszyna wirtualna gościa — system Windows/Linux — statyczny adres IP | Tak
 Maszyna wirtualna gościa — wiele kart sieciowych | Tak
 
 
-## <a name="storage"></a>Magazyn
+## <a name="storage"></a>Usługa Storage
 
 ### <a name="host-storage"></a>Magazyn hosta
 
@@ -73,7 +75,7 @@ Maszyna wirtualna gościa — wiele kart sieciowych | Tak
 --- | --- 
 NFS | ND
 SMB 3.0 |  Tak
-SAN (ISCSI) | Tak
+SIEĆ SAN (ISCSI) | Tak
 Wiele ścieżek (MPIO) | Tak
 
 ### <a name="guest-or-physical-server-storage"></a>Magazyn Gości lub serwer fizyczny
@@ -81,7 +83,7 @@ Wiele ścieżek (MPIO) | Tak
 **Konfiguracja** | **Obsługiwane**
 --- | --- | 
 VMDK |  ND
-VHD/VHDX | Tak (do 16 dysków)
+DYSK VHD/VHDX | Tak (do 16 dysków)
 Maszyna wirtualna generacji 2 | Tak
 Udostępniony dysk klastra | Nie
 Zaszyfrowany dysk | Nie

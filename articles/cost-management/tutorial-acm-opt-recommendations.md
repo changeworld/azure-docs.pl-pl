@@ -1,111 +1,111 @@
 ---
-title: Samouczek — ograniczyć koszty platformy Azure z zaleceniami dotyczącymi optymalizacji | Dokumentacja firmy Microsoft
-description: Ten samouczek ułatwia obniżenie kosztów platformy Azure, gdy działa zgodnie z zaleceniami optymalizacji.
+title: Samouczek — redukcja kosztów platformy Azure z zaleceniami dotyczącymi optymalizacji | Microsoft Docs
+description: Ten samouczek ułatwia obniżenie kosztów platformy Azure w przypadku wykonywania zaleceń dotyczących optymalizacji.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/30/2019
+ms.date: 10/24/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 9306e44655bd172343f20ac4fda2b2c56afcfb88
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 603de4d9bed936ecb91f130b0e30f6d1383a9092
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164490"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935827"
 ---
-# <a name="tutorial-optimize-costs-from-recommendations"></a>Samouczek: Optymalizowanie kosztów od zalecanych
+# <a name="tutorial-optimize-costs-from-recommendations"></a>Samouczek: Optymalizacja kosztów z zaleceń
 
-Usługa Azure Cost Management działa dzięki usłudze Azure Advisor, aby przedstawić zalecenia w zakresie optymalizacji kosztów. Usługa Azure Advisor ułatwia optymalizacji i zwiększyć wydajność, określając bezczynności i niedostatecznie używanych zasobów. W tym samouczku przedstawiono przykład gdzie identyfikowanie niedostatecznie używanych zasobów platformy Azure, a następnie podjęcia działania w celu ograniczenia kosztów.
+Usługa Azure Cost Management współdziała z usługą Azure Advisor podczas ustalania zaleceń dotyczących optymalizacji kosztów. Narzędzie Azure Advisor pomaga przeprowadzić optymalizację i zwiększyć wydajność, identyfikując zasoby w stanie bezczynności i niedostatecznie używane. Ten samouczek przeprowadzi Cię przez przykład w celu zidentyfikowania nieużywanych zasobów platformy Azure, a następnie podjęcia działań w celu obniżenia kosztów.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Wyświetlanie kosztów optymalizacji zalecenia, aby wyświetlić potencjalnych przypadków niewydajnego użycia
-> * Zajmującym się zalecenie, aby zmienić rozmiar maszyny wirtualnej do bardziej ekonomiczna opcja
-> * Sprawdź akcji, aby upewnić się, że maszyna wirtualna został pomyślnie zmieniony
+> * Wyświetl zalecenia dotyczące optymalizacji kosztów, aby wyświetlić potencjalne nieefektywność użycia
+> * Wykonaj zalecenie dotyczące zmiany rozmiaru maszyny wirtualnej na bardziej opłacalną
+> * Sprawdź akcję, aby upewnić się, że rozmiar maszyny wirtualnej został pomyślnie zmieniony
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Zalecenia są dostępne dla różnych zakresów i typy konta platformy Azure, w tym [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) klientów. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Aby wyświetlać dane kosztów, musisz mieć co najmniej prawa dostępu do odczytu co najmniej jednego z poniższych zakresów. Aby uzyskać więcej informacji na temat zakresów, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
+Zalecenia są dostępne dla różnych zakresów i typów kont platformy Azure. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Aby wyświetlać dane kosztów, musisz mieć co najmniej prawa dostępu do odczytu co najmniej jednego z poniższych zakresów. Aby uzyskać więcej informacji na temat zakresów, zobacz [Opis i współpraca z zakresami](understand-work-scopes.md).
 
 - Subskrypcja
 - Grupa zasobów
 
-Konieczne jest posiadanie aktywnej maszyny wirtualne z co najmniej 14 dni aktywności.
+Musisz mieć aktywne maszyny wirtualne z co najmniej 14 dni działania.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com/).
 
-## <a name="view-cost-optimization-recommendations"></a>Wyświetl zalecenia dotyczące optymalizacji kosztów
+## <a name="view-cost-optimization-recommendations"></a>Wyświetlanie zaleceń dotyczących optymalizacji kosztów
 
-Aby wyświetlić zaleceń dotyczących optymalizacji kosztów w ramach subskrypcji, otwórz żądany zakres w witrynie Azure portal i wybierz pozycję **zalecenia usługi Advisor**.
+Aby wyświetlić zalecenia dotyczące optymalizacji kosztów dla subskrypcji, otwórz żądany zakres w Azure Portal i wybierz zalecenia usługi **Advisor**.
 
-Aby wyświetlić zalecenia dotyczące grupy zarządzania, otwórz żądany zakres w witrynie Azure portal i wybierz pozycję **analiza kosztów** w menu. Użyj **zakres** skażone, aby przełączyć się do innego zakresu, takich jak grupy zarządzania. Wybierz **zalecenia usługi Advisor** w menu. Aby uzyskać więcej informacji na temat zakresów, zobacz [poznawanie i Praca z zakresami](understand-work-scopes.md).
+Aby wyświetlić zalecenia dotyczące grupy zarządzania, otwórz żądany zakres w Azure Portal a następnie wybierz pozycję **Analiza kosztów** w menu. Użyj **zakresu** pill, aby przełączyć się do innego zakresu, takiego jak grupa zarządzania. Wybierz opcję **rekomendacje klasyfikatora** w menu. Aby uzyskać więcej informacji na temat zakresów, zobacz [Opis i współpraca z zakresami](understand-work-scopes.md).
 
-![Klasyfikator zarządzania zalecenia dotyczące kosztów wyświetlane w witrynie Azure portal](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
+![Zalecenia dotyczące Cost Management Advisor pokazane w Azure Portal](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
-Lista zaleceń identyfikuje przypadków niewydajnego użycia lub pokazuje, że zalecenia zakupu, które mogą pomóc Ci zaoszczędzić dodatkowe. Łączne **potencjalne oszczędności roczne** zawiera łączną kwotę, który potrafi zapisać, zamknąć lub cofnięcie przydziału wszystkich maszyn wirtualnych, które spełniają reguły rekomendacji. Jeśli nie chcesz je wyłączyć, należy rozważyć zmianę rozmiaru ich do mniej kosztowne jednostki SKU maszyny Wirtualnej.
+Lista zaleceń określa nieefektywność użycia lub zawiera zalecenia dotyczące zakupu, które mogą pomóc w zapisaniu dodatkowych pieniędzy. Łączne **potencjalne oszczędności roczne** przedstawiają łączną kwotę, którą można zapisać w przypadku wyłączenia lub cofnięcia przydziału wszystkich maszyn wirtualnych spełniających reguły rekomendacji. Jeśli nie chcesz ich wyłączać, Rozważ zmianę ich rozmiarów na tańszą jednostkę SKU maszyny wirtualnej.
 
-**Wpływ** kategorii, wraz z **potencjalne oszczędności roczne**, pomagają identyfikować zaleceń, które potencjalnie można zapisać w miarę możliwości.
+Kategoria **wpływ** , wraz z **potencjalnymi oszczędnościami rocznymi**, została zaprojektowana w celu ułatwienia identyfikacji zaleceń, które mogą zaoszczędzić możliwie największej ilości.
 
-Zalecenia o dużym znaczeniu:
-- [Kup wystąpienia zarezerwowane maszyn wirtualnych, aby zaoszczędzić pieniądze w porównaniu z kosztami płatności](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
-- [Optymalizowanie maszyny wirtualnej, który możesz wydać przez zmianą rozmiaru lub zamykanie niedostatecznie używanych wystąpień](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Użyj magazynu w warstwie standardowa można przechowywać migawki dysków zarządzanych](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+Zalecenia dotyczące wysokiego wpływu obejmują:
+- [Kup zarezerwowane wystąpienia maszyn wirtualnych, aby zaoszczędzić pieniądze w porównaniu z kosztami płatność zgodnie z rzeczywistym użyciem](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
+- [Optymalizowanie wydatków maszyn wirtualnych przez zmianę rozmiarów lub zamykanie nieużywanych wystąpień](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
+- [Przechowywanie Managed Disks migawek przy użyciu magazynu w warstwie Standardowa](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
 
-Średni wpływ zalecenia obejmują:
-- [Usuń potoki usługi Azure Data Factory, które kończą się niepowodzeniem](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
-- [Obniżenie kosztów przez wyeliminowanie niezaznaczone elastycznie obwodów usługi ExpressRoute](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
-- [Obniżenie kosztów przez usunięcie lub ponowne konfigurowanie bezczynne bramy sieci wirtualnej](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
+Zalecenia dotyczące średniego wpływu:
+- [Usuń potoki Azure Data Factory, które kończą się niepowodzeniem](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
+- [Zmniejsz koszty, eliminując nieobsługiwane obwody usługi ExpressRoute](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
+- [Obniżenie kosztów przez usunięcie lub ponowne skonfigurowanie bezczynnych bram sieci wirtualnej](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
 
-## <a name="act-on-a-recommendation"></a>Działają zgodnie z zaleceniem
+## <a name="act-on-a-recommendation"></a>Wykonaj zalecenie
 
-Usługa Azure Advisor monitoruje wykorzystanie maszyn wirtualnych przez 14 dni, a następnie identyfikuje niedostatecznie używanych maszyn wirtualnych. Maszyny wirtualne, których użycie procesora CPU osiągnie wartość 5% lub mniej, a użycie sieci to 7 MB lub mniej przez cztery lub więcej dni są traktowane jako niskie użycie maszyn wirtualnych.
+Azure Advisor monitoruje użycie maszyn wirtualnych przez siedem dni, a następnie identyfikuje nieużywane maszyny wirtualne. Maszyny wirtualne, których wykorzystanie procesora CPU wynosi pięć% lub mniej, a użycie sieci wynosi siedem MB lub mniej przez cztery lub więcej dni, są uznawane za maszyny wirtualne o niskim obciążeniu.
 
-5% lub mniej ustawienie wykorzystanie procesora CPU jest ustawieniem domyślnym, ale można dostosować ustawienia. Aby uzyskać więcej informacji na temat dostosowywania ustawienie zobacz [skonfigurować średni reguły wykorzystanie procesora CPU lub zaleceń dotyczących maszyny wirtualnej o niskim użyciu](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
+Wartość domyślna to 5% lub mniejsze użycie procesora CPU, ale można dostosować ustawienia. Aby uzyskać więcej informacji na temat dostosowywania ustawienia, zobacz [Konfigurowanie średniej zasady użycia procesora CPU lub zalecenia dotyczącego niskiego użycia maszyny wirtualnej](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
 
-Chociaż w niektórych scenariuszach może spowodować niewielkie wykorzystanie zgodnie z projektem, często można oszczędzić pieniądze, zmieniając rozmiar maszyn wirtualnych do rozmiarów mniej kosztowne. Rzeczywiste oszczędności mogą się różnić, jeśli akcja zmiany rozmiaru. Przejdźmy teraz przez przykład zmiany rozmiaru maszyny wirtualnej.
+Mimo że niektóre scenariusze mogą spowodować niskie wykorzystanie według projektu, często można zaoszczędzić pieniądze, zmieniając rozmiar maszyn wirtualnych na mniej kosztowne. Rzeczywiste oszczędności mogą się różnić w przypadku wybrania akcji zmiany rozmiaru. Zapoznaj się z przykładem zmiany rozmiarów maszyny wirtualnej.
 
-Na liście zalecenia, kliknij **odpowiedniego rozmiaru lub zamknięcia systemu skutkowało niewystarczającym wykorzystaniem maszyn wirtualnych** zalecenia. Na liście kandydatów maszyny wirtualnej wybierz maszynę wirtualną, aby zmienić rozmiar, a następnie kliknij maszynę wirtualną. Szczegóły maszyny wirtualnej są wyświetlane, dzięki czemu można sprawdzić metryki wykorzystania. **Potencjalne oszczędności roczne** wartość to, co można zapisać przypadku zamknięcie lub Usuń maszynę Wirtualną. Zmiana rozmiaru maszyny Wirtualnej będzie prawdopodobnie zaoszczędzić pieniądze, ale nie zapisuje cała kwota potencjalne oszczędności roczne.
+Na liście zaleceń kliknij odpowiednie zalecenie dotyczące **niedostatecznego rozmiaru lub zamknięcia nieużywanych maszyn wirtualnych** . Na liście kandydatów maszyn wirtualnych wybierz maszynę wirtualną, której rozmiar chcesz zmienić, a następnie kliknij maszynę wirtualną. Szczegóły maszyny wirtualnej są wyświetlane, aby można było sprawdzić metryki wykorzystania. Wartość możliwego **oszczędności rocznego** to to, co można zapisać w przypadku wyłączenia lub usunięcia maszyny wirtualnej. Zmianę rozmiaru maszyny wirtualnej prawdopodobnie spowoduje zaoszczędzenie pieniędzy, ale nie będzie można zaoszczędzić pełnych oszczędności rocznie.
 
-![Przykład szczegóły zalecenia](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
+![Przykład szczegółów rekomendacji](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
-Szczegóły maszyny Wirtualnej Sprawdź wykorzystanie maszyny wirtualnej, aby potwierdzić, że jest kandydat odpowiedniego rozmiaru.
+Sprawdź, czy w obszarze Szczegóły maszyny wirtualnej jest używane maszyna wirtualna, aby upewnić się, że jest to odpowiedni kandydat zmiany rozmiaru.
 
-![Maszyna wirtualna w poniższym przykładzie omówiono przedstawiający wykorzystanie historycznych](./media/tutorial-acm-opt-recommendations/vm-details.png)
+![Przykładowe szczegóły maszyny wirtualnej przedstawiające wykorzystanie historyczne](./media/tutorial-acm-opt-recommendations/vm-details.png)
 
-Należy pamiętać, rozmiar bieżącej maszyny wirtualnej. Po upewnieniu się, że powinno zmienić rozmiar maszyny wirtualnej, należy zamknąć szczegóły maszyny Wirtualnej tak, aby wyświetlić listę maszyn wirtualnych.
+Zanotuj rozmiar bieżącej maszyny wirtualnej. Po zweryfikowaniu, że rozmiar maszyny wirtualnej powinien zostać zmieniony, Zamknij Szczegóły maszyny wirtualnej, aby wyświetlić listę maszyn wirtualnych.
 
-Z listy kandydatów do zamknięty lub zmienianie jej rozmiaru wybierz **rozmiaru maszyny wirtualnej**.
-![Przykład zalecenia z możliwością zmiany rozmiaru maszyny wirtualnej](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+Na liście kandydatów do zamknięcia lub zmiany rozmiaru wybierz pozycję * * Zmień rozmiar *&lt;FromVirtualMachineSKU&gt;* na *&lt;ToVirtualMachineSKU&gt;* * *.
+![przykładowe zalecenie z opcją zmiany rozmiaru maszyny wirtualnej](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
-Następnie zobaczysz listę opcji dostępnych zmiany rozmiaru. Wybierz ten, który zapewni najlepszą wydajność i efektywność kosztową dla danego scenariusza. W poniższym przykładzie wybrana opcja zmienia rozmiar z **DS14\_V2** do **DS13\_V2**. Z zaleceniem zapisuje 551.30 $/ miesiąc lub 6,615.60 $/ rok.
+Następnie zostanie wyświetlona lista dostępnych opcji zmiany rozmiaru. Wybierz ten, który zapewni najlepszą wydajność i efektywność dla Twojego scenariusza. W poniższym przykładzie wybrana opcja zmienia rozmiar z **Standard_D8s_v3** na **Standard_D2s_v3**.
 
-![Przykład listę dostępnych rozmiarów maszyn wirtualnych, w którym można wybrać rozmiar](./media/tutorial-acm-opt-recommendations/choose-size.png)
+![Przykładowa lista dostępnych rozmiarów maszyn wirtualnych, w których można wybrać rozmiar](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
-Po wybraniu odpowiedniego rozmiaru, kliknij przycisk **wybierz** rozpoczął akcji zmiany rozmiaru.
+Po wybraniu odpowiedniego rozmiaru kliknij pozycję **Zmień** rozmiar, aby uruchomić akcję Zmień rozmiar.
 
-Zmiana rozmiaru wymaga aktywnie uruchomionej maszyny wirtualnej, aby ponownie uruchomić. Jeśli maszyna wirtualna znajduje się w środowisku produkcyjnym, zaleca się uruchomienie operacji zmiany rozmiaru po godzinach pracy. Planowanie ponownego uruchomienia, można zmniejszyć spowodowany przez niedostępność chwilowo przerw w działaniu.
+Zmiany rozmiarów wymagają uruchomionej aktywnej maszyny wirtualnej w celu ponownego uruchomienia. Jeśli maszyna wirtualna znajduje się w środowisku produkcyjnym, zalecamy wykonanie operacji zmiany rozmiaru po godzinach pracy. Zaplanowanie ponownego uruchomienia może zmniejszyć liczbę przerw spowodowanych przez chwilę niedostępności.
 
-## <a name="verify-the-action"></a>Sprawdź akcji
+## <a name="verify-the-action"></a>Weryfikuj akcję
 
-Podczas zmiany rozmiaru maszyny Wirtualnej zakończy się pomyślnie, wyświetlane jest powiadomienie dotyczące urządzenia Azure.
+Po pomyślnym zakończeniu zmiany rozmiarów maszyny wirtualnej zostanie wyświetlone powiadomienie platformy Azure.
 
-![Pomyślnie zmieniono rozmiar maszyny wirtualnej powiadomień](./media/tutorial-acm-opt-recommendations/resized-notification.png)
+![Powiadomienie o pomyślnym zmianie rozmiaru maszyny wirtualnej](./media/tutorial-acm-opt-recommendations/resized-notification.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Wyświetlanie kosztów optymalizacji zalecenia, aby wyświetlić potencjalnych przypadków niewydajnego użycia
-> * Zajmującym się zalecenie, aby zmienić rozmiar maszyny wirtualnej do bardziej ekonomiczna opcja
-> * Sprawdź akcji, aby upewnić się, że maszyna wirtualna został pomyślnie zmieniony
+> * Wyświetl zalecenia dotyczące optymalizacji kosztów, aby wyświetlić potencjalne nieefektywność użycia
+> * Wykonaj zalecenie dotyczące zmiany rozmiaru maszyny wirtualnej na bardziej opłacalną
+> * Sprawdź akcję, aby upewnić się, że rozmiar maszyny wirtualnej został pomyślnie zmieniony
 
-Jeśli nie zostały już przeczytane Cost Management najlepsze rozwiązania dotyczące, zawiera ogólne wskazówki i zasady, które należy wziąć pod uwagę, aby pomóc w zarządzaniu kosztami.
+Jeśli nie odczytano jeszcze artykułu Cost Management Best Practices, przedstawiono wskazówki i zasady wysokiego poziomu, które należy wziąć pod uwagę w celu ułatwienia zarządzania kosztami.
 
 > [!div class="nextstepaction"]
-> [Najlepsze rozwiązania Cost Management](cost-mgt-best-practices.md)
+> [Cost Management najlepszych praktyk](cost-mgt-best-practices.md)

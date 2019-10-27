@@ -7,17 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 2d8e9c3531e031538c593cfd60d83b4ae97b4f4c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 98cc20ee8a6308350ffc142a13413bd26567a3e1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813734"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933501"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektura — replikacja funkcji Hyper-V do lokacji dodatkowej
 
 Ten artykuł zawiera opis składników i procesów związanych z replikacją lokalnych maszyn wirtualnych funkcji Hyper-V w chmurach programu System Center Virtual Machine Manager (VMM) do lokacji dodatkowej z programem VMM za pomocą usługi [Azure Site Recovery](site-recovery-overview.md) w witrynie Azure Portal.
 
+> [!WARNING]
+> Należy pamiętać, że obsługa usługi ASR do korzystania z konfiguracji SCVMM do konta będzie wkrótce przestarzała i dlatego zalecamy zapoznanie się z informacjami dotyczącymi [przestarzałych](scvmm-site-recovery-deprecation.md) przed kontynuowaniem.
 
 ## <a name="architectural-components"></a>Składniki architektury
 

@@ -3,26 +3,21 @@ title: Rozpoczynanie pracy z zapytaniami dzienników w Azure Monitor | Microsoft
 description: Ten artykuł zawiera samouczek dotyczący rozpoczynania pisania zapytań dzienników w Azure Monitor.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: conceptual
+ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 05/09/2019
-ms.openlocfilehash: d9116ba1b43959402223e0cbd1e4f729e053b9b6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.date: 10/24/2019
+ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894300"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933037"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Wprowadzenie do zapytań dzienników w Azure Monitor
 
-
-> [!NOTE]
-> Przed ukończeniem tego samouczka należy zakończyć pracę [z Azure Monitor Log Analytics](get-started-portal.md) .
-
 > [!NOTE]
 > Można to zrobić w Twoim środowisku, jeśli zbierasz dane z co najmniej jednej maszyny wirtualnej. Jeśli nie, użyj naszego [środowiska demonstracyjnego](https://portal.loganalytics.io/demo), co obejmuje wiele przykładowych danych.
-
 
 W tym samouczku dowiesz się, jak pisać zapytania dzienników w Azure Monitor. Pouczysz się, jak:
 
@@ -36,6 +31,10 @@ W tym samouczku dowiesz się, jak pisać zapytania dzienników w Azure Monitor. 
 
 Aby zapoznać się z samouczkiem dotyczącym używania Log Analytics w Azure Portal, zobacz [wprowadzenie do Azure Monitor Log Analytics](get-started-portal.md).<br>
 Aby uzyskać więcej informacji na temat zapytań dzienników w Azure Monitor, zobacz [Omówienie zapytań dzienników w programie Azure monitor](log-query-overview.md).
+
+Wykonaj poniższe czynności, korzystając z wersji wideo z tego samouczka:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>Pisanie nowego zapytania
 Zapytania mogą rozpoczynać się od nazwy tabeli lub polecenia *wyszukiwania* . Należy zacząć od nazwy tabeli, ponieważ definiuje jasno zakres zapytania i poprawia wydajność zapytań oraz przydatność wyników.

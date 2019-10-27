@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Service Fabric Diagnostyka zwrotnego serwera proxy | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak monitorować i diagnozować przetwarzania żądania na zwrotny serwer proxy.
+title: Diagnostyka zwrotnego serwera proxy platformy Azure Service Fabric | Microsoft Docs
+description: Dowiedz się, jak monitorować i diagnozować przetwarzanie żądań przy użyciu zwrotnego serwera proxy.
 services: service-fabric
 documentationcenter: .net
 author: kavyako
@@ -13,36 +13,36 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: c9c8c649208cff95f4ee515d39cc8cca3e2c64bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6074b799e992371d41de050f68690e450f008789
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726846"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933964"
 ---
-# <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Monitorowanie i diagnozowanie przetwarzania żądania na zwrotny serwer proxy
+# <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Monitorowanie i diagnozowanie przetwarzania żądań na odwrotnym serwerze proxy
 
-Począwszy od wersji 5.7 wersję usługi Service Fabric, zdarzenia zwrotnego serwera proxy są dostępne dla kolekcji. Zdarzenia są dostępne w dwóch kanałów, jeden z tylko zdarzenia błędu dotyczące niepowodzenia przetwarzania żądania zwrotnego serwera proxy i drugi kanał zawierający pełne zdarzenia z wpisy dla zarówno udane, jak i nieudane żądania.
+Począwszy od wersji 5,7 Service Fabric, zdarzenia zwrotnego serwera proxy są dostępne dla kolekcji. Zdarzenia są dostępne w dwóch kanałach — jeden z błędami przetwarzania żądania na odwrotnym serwerze proxy i drugim kanale zawierającym pełne zdarzenia z wpisami dla żądań zakończonych powodzeniem i niepowodzeniem.
 
-Zapoznaj się [zbierania zdarzeń zwrotny serwer proxy](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) umożliwia zbieranie zdarzeń z tych kanałów w lokalnych i w klastrach usługi Azure Service Fabric.
+Zapoznaj się z tematem [zbieranie zdarzeń zwrotnego serwera proxy](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) , aby włączyć zbieranie zdarzeń z tych kanałów w klastrach lokalnych i Azure Service Fabric.
 
 ## <a name="troubleshoot-using-diagnostics-logs"></a>Rozwiązywanie problemów przy użyciu dzienników diagnostycznych
-Poniżej przedstawiono kilka przykładów na temat sposobu interpretacji do wspólnych dzienników błędów, napotykane przez jeden:
+Poniżej przedstawiono kilka przykładów interpretacji typowych dzienników błędów, które mogą wystąpić:
 
 1. Zwrotny serwer proxy zwraca kod stanu odpowiedzi 504 (limit czasu).
 
-    Jedną z przyczyn może być spowodowany usługi kończy się niepowodzeniem na udzielenie odpowiedzi przed upływem limitu czasu żądania.
-   Pierwsze zdarzenie poniżej dzienniki szczegółów żądania otrzymane pod zwrotny serwer proxy. 
-   Drugie zdarzenie wskazuje, że żądanie nie powiodło się podczas przekazywania danych do usługi, ze względu na "wewnętrzny błąd = ERROR_WINHTTP_TIMEOUT" 
+    Przyczyną może być niepowodzenie odpowiedzi usługi w okresie limitu czasu żądania.
+   Pierwsze wydarzenie poniżej rejestruje szczegóły żądania otrzymanego na odwrotnym serwerze proxy. 
+   Drugie zdarzenie wskazuje, że żądanie nie powiodło się podczas przesyłania dalej do usługi z powodu "błędu wewnętrznego = ERROR_WINHTTP_TIMEOUT" 
 
-    Ładunek zawiera:
+    Ładunek obejmuje:
 
-   * **traceId**: Ten identyfikator GUID może służyć do skorelowania wszystkie zdarzenia odpowiadający pojedynczego żądania. W poniższych dwóch zdarzeń, traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**, co oznacza, że należą one do tego samego żądania.
-   * **requestUrl**: Adres URL (adres URL zwrotny serwer proxy) z którym żądanie zostało wysłane.
-   * **czasownik**: Czasownik HTTP.
-   * **Obiekt remoteAddress**: Adres klienta wysyłającego żądanie.
-   * **resolvedServiceUrl**: URL punktu końcowego usługi, do którego przychodzącego żądania został rozwiązany. 
-   * **Szczegóły błędu**: Dodatkowe informacje o błędzie.
+   * **traceId**: ten identyfikator GUID może służyć do skorelowania wszystkich zdarzeń odpowiadających pojedynczemu żądaniu. W poniższych dwóch zdarzeniach traceId = **2f87b722-e254-4ac2-A802-fd315c1a0271**, co oznacza, że należą one do tego samego żądania.
+   * **requestUrl**: adres URL (zwrotny adres URL serwera proxy), do którego wysłano żądanie.
+   * **zlecenie**: zlecenie http.
+   * **remoteAddress**: adres klienta wysyłającego żądanie.
+   * **resolvedServiceUrl**: adres URL punktu końcowego usługi, do którego zostało rozwiązane żądanie przychodzące. 
+   * **errorDetails**: dodatkowe informacje o błędzie.
 
      ```
      {
@@ -83,10 +83,10 @@ Poniżej przedstawiono kilka przykładów na temat sposobu interpretacji do wsp�
 
 2. Zwrotny serwer proxy zwraca kod stanu odpowiedzi 404 (nie znaleziono). 
     
-    Oto przykład zdarzenia gdzie zwrotny serwer proxy zwraca 404, ponieważ nie udało się odnaleźć zgodnego punktu końcowego usługi.
-    Wpisy ładunku zainteresowania w tym miejscu są:
-   * **processRequestPhase**: Wskazuje fazy podczas przetwarzania żądania wystąpił błąd, ***TryGetEndpoint*** tj Podczas próby pobrania punktu końcowego usługi do przekazywania. 
-   * **Szczegóły błędu**: Wyświetla listę kryteriów wyszukiwania punktu końcowego. Tutaj widać, że określony listenerName = **FrontEndListener** lista punktów końcowych repliki zawiera tylko odbiornik o nazwie **OldListener**.
+    Oto przykładowe zdarzenie, w przypadku którego zwrotny serwer proxy zwraca 404, ponieważ nie może znaleźć pasującego punktu końcowego usługi.
+    Poniżej znajdują się poniższe wpisy ładunku:
+   * **processRequestPhase**: wskazuje fazę podczas przetwarzania żądania, gdy wystąpił błąd, ***TryGetEndpoint*** tj. podczas próby pobrania punktu końcowego usługi do usługi. 
+   * **errorDetails**: Wyświetla listę kryteriów wyszukiwania punktów końcowych. W tym miejscu można zobaczyć, że określony odbiornik to **FrontEndListener** , a lista punktów końcowych repliki zawiera odbiornik o nazwie **OldListener**.
     
      ```
      {
@@ -104,16 +104,16 @@ Poniżej przedstawiono kilka przykładów na temat sposobu interpretacji do wsp�
      }
      }
      ```
-     Inny przykład, w którym zwrotny serwer proxy może zwrócić kod 404 Nie znaleziono jest: Parametr konfiguracji ApplicationGateway\Http **SecureOnlyMode** ma wartość true, przy użyciu zwrotnego serwera proxy nasłuchuje **HTTPS**, ale wszystkie punkty końcowe repliki są niezabezpieczone (nasłuchiwania protokołu HTTP).
-     Reverse proxy zwraca 404, ponieważ nie można odnaleźć punktu końcowego nasłuchiwanie przy użyciu protokołu HTTPS do przesyłania żądania. Analizowanie parametrów, w przypadku ładunku ułatwia zawęzić problemu:
+     Innym przykładem, jeśli zwrotny serwer proxy może zwrócić 404 nie znaleziono: parametr konfiguracji ApplicationGateway\Http **SecureOnlyMode** jest ustawiony na wartość true przy użyciu zwrotnego serwera proxy nasłuchującego na **protokole https**, jednak wszystkie punkty końcowe repliki są niezabezpieczone ( nasłuchiwanie na protokole HTTP).
+     Zwrotny serwer proxy zwraca 404, ponieważ nie może znaleźć punktu końcowego nasłuchującego na protokole HTTPS, aby przesłać żądanie. Analizowanie parametrów w ładunku zdarzeń ułatwia zawężenie problemu:
     
      ```
       "errorDetails": "SecureOnlyMode = true, gateway protocol = https, listenerName = NewListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Http:\/\/localhost:8491\/LocationApp\/\", \"NewListener\":\"Http:\/\/localhost:8492\/LocationApp\/\"}}"
      ```
 
-3. Żądanie zwrotny serwer proxy kończy się niepowodzeniem z błędem przekroczenia limitu czasu. 
-    Dzienniki zdarzeń zawierają zdarzenia ze szczegółami odebrane żądanie (nie pokazane tutaj).
-    Następne zdarzenie pokazuje, że usługa zwrócił kod stanu 404 i zwrotny serwer proxy inicjuje ponownie rozwiązanie. 
+3. Żądanie do zwrotnego serwera proxy kończy się niepowodzeniem z powodu błędu limitu czasu. 
+    Dzienniki zdarzeń zawierają zdarzenie z odebranymi szczegółami żądania (nie są tu wyświetlane).
+    Następne zdarzenie pokazuje, że usługa odpowiedziała za pomocą kodu stanu 404 i zwrotny serwer proxy inicjuje ponowne rozwiązanie. 
 
     ```
     {
@@ -134,11 +134,11 @@ Poniżej przedstawiono kilka przykładów na temat sposobu interpretacji do wsp�
       }
     }
     ```
-    Podczas zbierania wszystkich zdarzeń, zostanie wyświetlony train zdarzeń przedstawiający każdego rozwiązania i próba do przodu.
-    Ostatnie zdarzenie w serii pokazuje, że przetwarzanie żądania nie powiodło się z limitem czasu, oraz liczbę prób pomyślne rozwiązanie.
+    Podczas zbierania wszystkich zdarzeń zobaczysz pociąg zdarzeń pokazujący każdą próbę rozwiązania problemu i przesyłania dalej.
+    Ostatnie zdarzenie w serii pokazuje, że przetwarzanie żądania nie powiodło się z powodu przekroczenia limitu czasu, wraz z liczbą udanych prób rozpoznania.
     
     > [!NOTE]
-    > Zaleca się zachować zbierania zdarzeń pełne kanału, które są domyślnie wyłączone i włącz ją do rozwiązywania problemów w oparciu o potrzeby.
+    > Zaleca się, aby pełne zbieranie zdarzeń kanałów były domyślnie wyłączone i włączane na potrzeby rozwiązywania problemów.
 
     ```
     {
@@ -157,13 +157,13 @@ Poniżej przedstawiono kilka przykładów na temat sposobu interpretacji do wsp�
     }
     ```
     
-    Jeśli kolekcja jest włączona tylko zdarzenia krytyczne/błąd, zostanie wyświetlony jedno zdarzenie ze szczegółowymi informacjami o limit czasu i liczby prób rozwiązania. 
+    Jeśli zbieranie danych jest włączone tylko dla zdarzeń krytycznych/błędów, zobaczysz jedno zdarzenie ze szczegółowymi informacjami o limicie czasu i liczbie prób rozwiązania. 
     
-    Usługi, które ma zostać wysłany kod stanu 404 do użytkownika, należy dodać nagłówek "X-ServiceFabric" w odpowiedzi. Po dodaniu do odpowiedzi nagłówek zwrotny serwer proxy przekazuje kod stanu do klienta.  
+    Usługi, które zamierzają wysłać kod stanu 404 z powrotem do użytkownika, powinien dodać nagłówek "X-servicefabric" w odpowiedzi. Po dodaniu nagłówka do odpowiedzi zwrotny serwer proxy przekazuje kod stanu z powrotem do klienta.  
 
-4. Przypadków, gdy klient rozłączył się żądanie.
+4. Przypadki, gdy klient odłączył żądanie.
 
-    Następujące zdarzenie jest rejestrowane, gdy zwrotny serwer proxy jest przekazywania odpowiedzi do klienta, ale klient odłączy się:
+    Następujące zdarzenie jest rejestrowane, gdy zwrotny serwer proxy przesyła odpowiedź do klienta, ale klient rozłącza:
 
     ```
     {
@@ -181,24 +181,24 @@ Poniżej przedstawiono kilka przykładów na temat sposobu interpretacji do wsp�
       }
     }
     ```
-5. Zwrotny serwer Proxy zwraca 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
+5. Zwrotny serwer proxy zwraca 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
 
-    FABRIC_E_SERVICE_DOES_NOT_EXIST błąd jest zwracany, jeśli nie określono schemat identyfikatora URI punktu końcowego usługi w manifeście usługi.
+    Błąd FABRIC_E_SERVICE_DOES_NOT_EXIST jest zwracany, jeśli nie określono schematu identyfikatora URI dla punktu końcowego usługi w manifeście usługi.
 
     ```
     <Endpoint Name="ServiceEndpointHttp" Port="80" Protocol="http" Type="Input"/>
     ```
 
-    Aby rozwiązać ten problem, należy określić schemat identyfikatora URI w manifeście.
+    Aby rozwiązać ten problem, określ schemat identyfikatora URI w manifeście.
     ```
     <Endpoint Name="ServiceEndpointHttp" UriScheme="http" Port="80" Protocol="http" Type="Input"/>
     ```
 
 > [!NOTE]
-> Obecnie nie są rejestrowane zdarzenia związane z przetwarzania żądania protokołu websocket. Zostanie ona dodana w następnej wersji.
+> Zdarzenia związane z przetwarzaniem żądań protokołu WebSocket nie są obecnie rejestrowane. Ta wartość zostanie dodana w następnej wersji.
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Zdarzenie agregacji i kolekcji przy użyciu Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) umożliwiające zbieranie danych dziennika w klastrach platformy Azure.
-* Aby wyświetlić zdarzenia usługi Service Fabric w programie Visual Studio, zobacz [monitorowanie i diagnozowanie lokalnie](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
-* Zapoznaj się [Konfigurowanie zwrotnego serwera proxy do nawiązywania bezpiecznej usługami](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) dla usługi Azure Resource Manager przykłady szablonów, aby skonfigurować bezpieczny zwrotny serwer proxy, za pomocą certyfikatu usługi różne opcje weryfikacji.
-* Odczyt [usługi Service Fabric zwrotny serwer proxy](service-fabric-reverseproxy.md) Aby dowiedzieć się więcej.
+## <a name="next-steps"></a>Następne kroki
+* [Agregacja i zbieranie zdarzeń przy użyciu Diagnostyka Azure systemu Windows](service-fabric-diagnostics-event-aggregation-wad.md) do włączania zbierania dzienników w klastrach platformy Azure.
+* Aby wyświetlić zdarzenia Service Fabric w programie Visual Studio, zobacz temat [monitorowanie i diagnozowanie lokalne](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
+* Zapoznaj się z tematem [Konfigurowanie zwrotnego serwera proxy w celu nawiązania połączenia z bezpiecznymi usługami](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) dla przykładów szablonów Azure Resource Manager, aby skonfigurować bezpieczny zwrotny serwer proxy przy użyciu różnych opcji weryfikacji certyfikatu usługi
+* Przeczytaj [Service Fabric odwrotny serwer proxy](service-fabric-reverseproxy.md) , aby dowiedzieć się więcej.

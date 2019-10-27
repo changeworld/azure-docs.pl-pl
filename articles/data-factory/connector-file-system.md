@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 6b1e1dfec69d73b7fe2648a1eb9ead2ae4622bc5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 39e1099f1700e9ade412bb4cb81bc38e814ecfae
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897744"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935657"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Kopiowanie danych do lub z systemu plików przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -100,21 +100,15 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej z
 
 Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . 
 
-- W przypadku **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, JSON, Avro i binarny zestaw danych](#format-based-dataset) .
-- W przypadku innych formatów, takich jak **Format Orc**, zapoznaj się z sekcją [innego formatu zestawu danych](#other-format-dataset) .
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a>Parquet, rozdzielony tekst, JSON, Avro i binarny zestaw danych
-
-Aby skopiować dane do i z **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie zestawu danych opartym na formacie i obsługiwanymi ustawieniami . Następujące właściwości są obsługiwane dla systemu plików w obszarze Ustawienia `location` w zestawie danych opartym na formacie:
+Następujące właściwości są obsługiwane dla systemu plików w obszarze Ustawienia `location` w zestawie danych opartym na formacie:
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Właściwość Type w obszarze `location` w zestawie danych musi być ustawiona na wartość **FileServerLocation**. | Tak      |
 | folderPath | Ścieżka do folderu. Jeśli chcesz użyć symboli wieloznacznych do filtrowania folderów, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
 | fileName   | Nazwa pliku pod podanym folderPath. Jeśli chcesz użyć symboli wieloznacznych do filtrowania plików, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
-
-> [!NOTE]
-> Zestaw **danych typu** dataudziałowy z formatem Parquet/tekstem wymienionym w następnej sekcji jest nadal obsługiwany w przypadku działania Copy/Lookup/GetMetadata w celu zapewnienia zgodności z poprzednimi wersjami, ale nie działa z mapowaniem przepływu danych. Zalecamy użycie nowego modelu do przechodzenia do przodu, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania tych nowych typów.
 
 **Przykład:**
 
@@ -142,9 +136,10 @@ Aby skopiować dane do i z **Parquet, rozdzielonego tekstu, JSON, Avro i formatu
 }
 ```
 
-### <a name="other-format-dataset"></a>Inny zestaw danych formatu
+### <a name="legacy-dataset-model"></a>Model starszego zestawu danych
 
-Aby skopiować dane do i z systemu plików w **formacie Orc**, obsługiwane są następujące właściwości:
+>[!NOTE]
+>Następujący model zestawu danych jest nadal obsługiwany w przypadku zapewnienia zgodności z poprzednimi wersjami. Zalecane jest użycie nowego modelu wymienionego w powyższej sekcji, co przechodzenie do przodu, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania nowego modelu.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -198,12 +193,9 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 ### <a name="file-system-as-source"></a>System plików jako źródło
 
-- Aby skopiować z **Parquet, rozdzielony tekst, JSON, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, JSON, Avro i binarną](#format-based-source) .
-- Aby skopiować inne formaty, takie jak **Format Orc**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, JSON, Avro i format binarny
-
-Aby skopiować dane z **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym w formacie](format-binary.md) źródłowym i obsługiwanym przez program. Ustawienia. Następujące właściwości są obsługiwane dla systemu plików w obszarze Ustawienia `storeSettings` w źródle kopiowania opartego na formacie:
+Następujące właściwości są obsługiwane dla systemu plików w obszarze Ustawienia `storeSettings` w źródle kopiowania opartego na formacie:
 
 | Właściwość                 | Opis                                                  | Wymagane                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -214,9 +206,6 @@ Aby skopiować dane z **Parquet, rozdzielonego tekstu, JSON, Avro i formatu bina
 | modifiedDatetimeStart    | Filtr plików oparty na atrybucie: ostatnio modyfikowane. Pliki zostaną wybrane, jeśli ich czas ostatniej modyfikacji należy do przedziału czasu między `modifiedDatetimeStart` i `modifiedDatetimeEnd`. Czas jest stosowany do strefy czasowej UTC w formacie "2018 r-12-01T05:00:00Z". <br> Właściwości mogą mieć wartość NULL, co oznacza, że żaden filtr atrybutu pliku nie zostanie zastosowany do zestawu danych.  Gdy `modifiedDatetimeStart` ma wartość DateTime, ale `modifiedDatetimeEnd` jest NULL, oznacza to, że pliki, których ostatni zmodyfikowany atrybut jest większy lub równy wartości DateTime, zostaną zaznaczone.  Gdy `modifiedDatetimeEnd` ma wartość DateTime, ale Właściwość `modifiedDatetimeStart` ma wartość NULL, oznacza to, że pliki, których ostatni zmodyfikowany atrybut jest mniejszy niż wartość DateTime zostanie zaznaczona. | Nie                                            |
 | modifiedDatetimeEnd      | Tak samo jak powyżej.                                               | Nie                                            |
 | maxConcurrentConnections | Liczba połączeń, które mają być jednocześnie połączone z magazynem magazynu. Określ tylko wtedy, gdy chcesz ograniczyć współbieżne połączenie z magazynem danych. | Nie                                            |
-
-> [!NOTE]
-> W przypadku formatu tekstu Parquet/Unlimited Źródło działania kopiowania typu **FileSystemSource** wymienione w następnej sekcji jest nadal obsługiwane w przypadku zgodności z poprzednimi wersjami. Zalecamy użycie nowego modelu do przechodzenia do przodu, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania tych nowych typów.
 
 **Przykład:**
 
@@ -259,9 +248,10 @@ Aby skopiować dane z **Parquet, rozdzielonego tekstu, JSON, Avro i formatu bina
 ]
 ```
 
-#### <a name="other-format-source"></a>Inne źródło formatowania
+#### <a name="legacy-source-model"></a>Starszy model źródłowy
 
-Aby skopiować dane z systemu plików w **formacie Orc**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+>[!NOTE]
+>Następujący model źródłowy kopiowania jest nadal obsługiwany w przypadku zapewnienia zgodności z poprzednimi wersjami. Zalecane jest użycie nowego modelu wymienionego powyżej, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania nowego modelu.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -303,21 +293,15 @@ Aby skopiować dane z systemu plików w **formacie Orc**, w sekcji **Źródło**
 
 ### <a name="file-system-as-sink"></a>System plików jako ujścia
 
-- Aby skopiować do **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**, zapoznaj się z sekcją [Parquet, rozdzielonym tekstem, JSON, Avro i binarnym ujścia formatu](#format-based-sink) .
-- Aby skopiować do innych formatów, takich jak **Format Orc**, zapoznaj się z sekcją [inne format ujścia](#other-format-sink) .
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-sink"></a>Parquet, rozdzielony tekst, JSON, Avro i ujścia formatu binarnego
-
-Aby skopiować dane w **Parquet, rozdzielonym formacie tekstowym, JSON, Avro i binarnym**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i formatem [binarnym](format-binary.md) w artykule dotyczącym ujścia działania kopiowania opartego na formacie i obsługiwanego Ustawienia. Następujące właściwości są obsługiwane dla systemu plików w obszarze Ustawienia `storeSettings` w ujściach kopiowania opartych na formacie:
+Następujące właściwości są obsługiwane dla systemu plików w obszarze Ustawienia `storeSettings` w ujściach kopiowania opartych na formacie:
 
 | Właściwość                 | Opis                                                  | Wymagane |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | Właściwość Type w obszarze `storeSettings` musi być ustawiona na wartość **FileServerWriteSetting**. | Tak      |
 | copyBehavior             | Definiuje zachowanie kopiowania, gdy źródłem są pliki z magazynu danych opartego na plikach.<br/><br/>Dozwolone wartości to:<br/><b>-PreserveHierarchy (domyślnie)</b>: zachowuje hierarchię plików w folderze docelowym. Ścieżka względna pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna pliku docelowego do folderu docelowego.<br/><b>-FlattenHierarchy</b>: wszystkie pliki z folderu źródłowego znajdują się na pierwszym poziomie folderu docelowego. Pliki docelowe mają automatycznie generowane nazwy. <br/><b>-MergeFiles</b>: Scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli nazwa pliku jest określona, scalona nazwa pliku jest podaną nazwą. W przeciwnym razie jest to automatycznie wygenerowana nazwa pliku. | Nie       |
 | maxConcurrentConnections | Liczba połączeń, które mają być jednocześnie połączone z magazynem danych. Określ tylko wtedy, gdy chcesz ograniczyć współbieżne połączenie z magazynem danych. | Nie       |
-
-> [!NOTE]
-> W przypadku formatu tekstu Parquet/Unlimited typ **FileSystemSink** ujścia działania kopiowania w następnej sekcji jest nadal obsługiwany w przypadku zgodności z poprzednimi wersjami. Zalecamy użycie nowego modelu do przechodzenia do przodu, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania tych nowych typów.
 
 **Przykład:**
 
@@ -354,9 +338,10 @@ Aby skopiować dane w **Parquet, rozdzielonym formacie tekstowym, JSON, Avro i b
 ]
 ```
 
-#### <a name="other-format-sink"></a>Inny ujścia formatu
+#### <a name="legacy-sink-model"></a>Model starszej ujścia
 
-Aby skopiować dane do systemu plików w **formacie Orc**, w sekcji **ujścia** są obsługiwane następujące właściwości:
+>[!NOTE]
+>Następujący model ujścia kopiowania jest nadal obsługiwany w przypadku zapewnienia zgodności z poprzednimi wersjami. Zalecane jest użycie nowego modelu wymienionego powyżej, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania nowego modelu.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |

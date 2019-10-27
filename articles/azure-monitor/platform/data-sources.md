@@ -1,22 +1,18 @@
 ---
 title: Źródła danych w Azure Monitor | Microsoft Docs
 description: Opisuje dane dostępne do monitorowania kondycji i wydajności zasobów platformy Azure oraz działających na nich aplikacji.
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/23/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 164d1db1a80ef577792740f67a27a856a4ba4c3b
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 05/23/2019
+ms.openlocfilehash: 7c03c0c649876143eaa75c98fa0c9001f2b24fbd
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972933"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932383"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Źródła danych monitorowania dla Azure Monitor
 Azure Monitor jest oparta na [wspólnej platformie danych monitorowania](data-platform.md) , która obejmuje [dzienniki](data-platform-logs.md) i [metryki](data-platform-metrics.md). Zbieranie danych do tej platformy pozwala analizować dane z wielu zasobów wspólnie przy użyciu wspólnego zestawu narzędzi w Azure Monitor. Dane monitorowania mogą być również wysyłane do innych lokalizacji w celu obsługi niektórych scenariuszy, a niektóre zasoby mogą zapisywać w innych lokalizacjach, zanim będą mogły być zbierane w dziennikach lub metrykach.

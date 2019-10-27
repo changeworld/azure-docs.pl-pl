@@ -7,32 +7,32 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 7ff164b378ac6981fcb9686d6264b0bcf50cfafb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a01c95cbe9281c915e89572c07fcbc203193b962
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814813"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935496"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Format JSON w Azure Data Factory
 
 Postępuj zgodnie z tym artykułem, jeśli chcesz **przeanalizować pliki JSON lub zapisać dane w formacie JSON**. 
 
-Format JSON jest obsługiwany dla następujących łączników: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [system plików](connector-file-system.md), [FTP](connector-ftp.md), [Magazyn Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)i [SFTP](connector-sftp.md).
+Format JSON jest obsługiwany dla następujących łączników: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [system plików](connector-file-system.md), [FTP](connector-ftp.md), [Google Magazyn w chmurze](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)i [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych JSON.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych JSON.
 
 | Właściwość         | Opis                                                  | Wymagane |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Właściwość Type zestawu danych musi być ustawiona na wartość **JSON**. | Tak      |
-| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w sekcji `location`. **Zobacz szczegóły w sekcji łącznik — > Właściwości zestawu danych**. | Tak      |
-| encodingName     | Typ kodowania używany do odczytu/zapisu plików testowych. <br>Dozwolone są następujące wartości: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", " IBM852 "," IBM855 "," IBM857 "," IBM860 "," IBM861 "," IBM863 "," IBM864 "," IBM865 "," IBM869 "," IBM870 "," IBM01140 "," IBM01141 "," IBM01142 "," IBM01143 "," IBM01144 "," IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 "," ISO-8859-15 "," WINDOWS-874 "," WINDOWS-1250 "," WINDOWS-1251 "," WINDOWS-1252 "," WINDOWS-1254 "," WINDOWS-1255 "," WINDOWS-1256 "," WINDOWS-1257 "," WINDOWS-1258 ".| Nie       |
+| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Zobacz szczegóły w sekcji łącznik — > Właściwości zestawu danych**. | Tak      |
+| encodingName     | Typ kodowania używany do odczytu/zapisu plików testowych. <br>Dozwolone wartości są następujące: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", " IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "WINDOWS-8859-15", "WINDOWS-874", "WINDOWS-1250", " WINDOWS-1252 "," WINDOWS-1253 "," WINDOWS-1254 "," WINDOWS-1255 "," WINDOWS-1256 "," WINDOWS-1257 "," WINDOWS-1258 ".| Nie       |
 | compressionCodec | Koder-dekoder kompresji używany do odczytu/zapisu plików tekstowych. <br>Dozwolone wartości to **bzip2**, **gzip**, **Wklęśnięcie**, **ZipDeflate**, **przyciąganie**lub **lz4**. do użycia podczas zapisywania pliku. <br>Działanie kopiowania obecnie nie obsługuje "przyciągania" & "lz4". | Nie       |
-| compressionLevel | Współczynnik kompresji. <br>Dozwolone wartości to **optymalne** lub **najszybszy**.<br>- **Najlepszy** Operacja kompresji powinna zostać ukończona tak szybko, jak to możliwe, nawet jeśli plik nie jest optymalnie kompresowany.<br>- **Optymalny**: Operacja kompresji powinna być optymalnie skompresowana, nawet jeśli ukończenie operacji trwa dłużej. Aby uzyskać więcej informacji, zobacz [poziom kompresji](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) tematu. | Nie       |
+| compressionLevel | Współczynnik kompresji. <br>Dozwolone wartości to **optymalne** lub **najszybszy**.<br>- **najszybszy:** operacja kompresji powinna zostać ukończona tak szybko, jak to możliwe, nawet jeśli plik nie jest optymalnie kompresowany.<br>- **optymalnie**: operacja kompresji powinna być optymalnie skompresowana, nawet jeśli wykonanie operacji trwa dłużej. Aby uzyskać więcej informacji, zobacz temat [poziom kompresji](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Nie       |
 
 Poniżej znajduje się przykład zestawu danych JSON w usłudze Azure Blob Storage:
 
@@ -61,11 +61,11 @@ Poniżej znajduje się przykład zestawu danych JSON w usłudze Azure Blob Stora
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło i ujścia danych JSON.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło i ujścia danych JSON.
 
 ### <a name="json-as-source"></a>KOD JSON jako źródło
 
-W sekcji ***\*źródło\**** działania kopiowania są obsługiwane następujące właściwości.
+Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*źródło\**** .
 
 | Właściwość      | Opis                                                  | Wymagane |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -74,7 +74,7 @@ W sekcji ***\*źródło\**** działania kopiowania są obsługiwane następując
 
 ### <a name="json-as-sink"></a>JSON jako ujścia
 
-W sekcji ***\*ujścia\**** działania kopiowania są obsługiwane następujące właściwości.
+Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*ujścia\**** .
 
 | Właściwość      | Opis                                                  | Wymagane |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -82,7 +82,7 @@ W sekcji ***\*ujścia\**** działania kopiowania są obsługiwane następujące 
 | formatSettings | Grupa właściwości. Zapoznaj się z tabelą **ustawień zapisu JSON** poniżej. | Nie       |
 | storeSettings | Grupa właściwości do zapisywania danych w magazynie danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia zapisu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
 
-Obsługiwane **Ustawienia zapisu** w formacie `formatSettings`JSON w obszarze:
+Obsługiwane **Ustawienia zapisu** w formacie JSON w `formatSettings`:
 
 | Właściwość      | Opis                                                  | Wymagane                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
@@ -181,8 +181,13 @@ Działanie kopiowania może automatycznie wykrywać i analizować następujące 
     ]
     ```
 
+## <a name="mapping-data-flow-properties"></a>Mapowanie właściwości przepływu danych
+
+Dowiedz się więcej o [przekształceniu źródłowym](data-flow-source.md) i [transformacji ujścia](data-flow-sink.md) w mapowaniu przepływu danych.
+
 ## <a name="next-steps"></a>Następne kroki
 
-- [Omówienie działania kopiowania](copy-activity-overview.md)
+- [Przegląd działania kopiowania](copy-activity-overview.md)
+- [Mapowanie przepływu danych](concepts-data-flow-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 - [Działanie GetMetadata](control-flow-get-metadata-activity.md)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 4035746772b44d7267d6a9cd90c7bdc02c804a8a
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 20f325ff64581396f5f7ab2ce05a2479cdb45118
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147073"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933543"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii funkcji Hyper-V do platformy Azure
 
@@ -39,6 +39,8 @@ W poniższej tabeli i grafice przedstawiono ogólny widok składników służąc
 ![Architektura](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
+> [!WARNING]
+> Należy pamiętać, że obsługa usługi ASR do korzystania z konfiguracji SCVMM do konta będzie wkrótce przestarzała i dlatego zalecamy zapoznanie się z informacjami dotyczącymi [przestarzałych](scvmm-site-recovery-deprecation.md) przed kontynuowaniem.
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Składniki architektury — funkcja Hyper-V z programem VMM
 
@@ -70,7 +72,7 @@ W poniższej tabeli i grafice przedstawiono ogólny widok składników służąc
 1. Po włączeniu ochrony dla maszyny wirtualnej funkcji Hyper-V, w witrynie Azure Portal lub środowisku lokalnym, zostanie uruchomione zadanie **Włącz ochronę**.
 2. To zadanie sprawdza, czy maszyna spełnia wymagania wstępne, a następnie wywołuje metodę [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx), aby skonfigurować replikację za pomocą określonych ustawień.
 3. Zadanie uruchamia replikację początkową, wywołując metodę [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx), aby zainicjować pełną replikację maszyny wirtualnej i wysłać dyski wirtualne maszyny wirtualnej na platformę Azure.
-4. To zadanie możesz monitorować na karcie **Zadania**.      ![Lista zadań](media/hyper-v-azure-architecture/image1.png) ![Szczegóły zadania Włącz ochronę](media/hyper-v-azure-architecture/image2.png)
+4. Zadanie można monitorować na karcie **zadania** .      ![listy zadań](media/hyper-v-azure-architecture/image1.png) ![włączyć ochronę przechodzenia do szczegółów](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Początkowa replikacja danych
@@ -131,9 +133,9 @@ Jeśli wystąpi błąd replikacji, może zostać użyty wbudowany mechanizm pona
 Po ponownym uruchomieniu infrastruktury lokalnej można wrócić do trybu powrotu po awarii. Powrót po awarii występuje w trzech etapach:
 
 1. Rozpocznij pracę w trybie failover z platformy Azure do lokacji lokalnej:
-    - **Minimalizacja przestojów**: Jeśli używasz tej opcji, Site Recovery synchronizuje dane przed przełączeniem w tryb failover. Sprawdza on zmiany bloków danych i pobiera je do lokacji lokalnej, podczas gdy maszyna wirtualna platformy Azure działa, co minimalizuje przestoje. Gdy ręcznie określisz, że praca w trybie failover powinna zakończyć działanie, maszyna wirtualna platformy Azure zostanie wyłączona, zostaną skopiowane wszystkie końcowe zmiany różnicowe i rozpocznie się przełączanie do trybu failover.
-    - **Pełne pobieranie**: W przypadku tej opcji dane są synchronizowane podczas pracy w trybie failover. Ta opcja powoduje pobranie całego dysku. Jest to szybsze, ponieważ nie są obliczane sumy kontrolne, ale występuje więcej przestojów. Użyj tej opcji, jeśli korzystasz z maszyn wirtualnych platformy Azure z repliką przez jakiś czas lub jeśli lokalna maszyna wirtualna została usunięta.
-    - **Utwórz maszynę wirtualną**: Możesz wybrać opcję powrotu po awarii do tej samej maszyny wirtualnej lub do alternatywnej maszyny wirtualnej. Możesz określić, że Site Recovery powinna utworzyć maszynę wirtualną, jeśli jeszcze nie istnieje.
+    - **Minimalizuj czas przestoju**: Jeśli używasz tej opcji, Site Recovery synchronizuje dane przed przełączeniem w tryb failover. Sprawdza on zmiany bloków danych i pobiera je do lokacji lokalnej, podczas gdy maszyna wirtualna platformy Azure działa, co minimalizuje przestoje. Gdy ręcznie określisz, że praca w trybie failover powinna zakończyć działanie, maszyna wirtualna platformy Azure zostanie wyłączona, zostaną skopiowane wszystkie końcowe zmiany różnicowe i rozpocznie się przełączanie do trybu failover.
+    - **Pełne pobieranie**: w przypadku tej opcji dane są synchronizowane podczas pracy w trybie failover. Ta opcja powoduje pobranie całego dysku. Jest to szybsze, ponieważ nie są obliczane sumy kontrolne, ale występuje więcej przestojów. Użyj tej opcji, jeśli korzystasz z maszyn wirtualnych platformy Azure z repliką przez jakiś czas lub jeśli lokalna maszyna wirtualna została usunięta.
+    - **Tworzenie maszyny wirtualnej**: możesz wybrać powrót po awarii do tej samej maszyny wirtualnej lub do alternatywnej maszyny wirtualnej. Możesz określić, że Site Recovery powinna utworzyć maszynę wirtualną, jeśli jeszcze nie istnieje.
 
 2. Po zakończeniu synchronizacji początkowej należy wybrać opcję ukończenia pracy w trybie failover. Po zakończeniu możesz zalogować się na lokalnej maszynie wirtualnej, aby sprawdzić, czy wszystko działa zgodnie z oczekiwaniami. W Azure Portal można zobaczyć, że maszyny wirtualne platformy Azure zostały zatrzymane.
 3.  Następnie należy zatwierdzić tryb failover, aby zakończyć pracę, i ponownie rozpocząć dostęp do obciążenia z lokalnej maszyny wirtualnej.

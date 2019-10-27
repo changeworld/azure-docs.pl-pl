@@ -1,24 +1,18 @@
 ---
 title: Zbieranie niestandardowych dzienników w Azure Monitor | Microsoft Docs
 description: Azure Monitor może zbierać zdarzenia z plików tekstowych zarówno na komputerach z systemem Windows, jak i Linux.  W tym artykule opisano sposób definiowania nowego dziennika niestandardowego i szczegółów rekordów tworzonych w Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: aca7f6bb-6f53-4fd4-a45c-93f12ead4ae1
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/26/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 957df2d03352756c74a5450de240afde2615e50b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/26/2019
+ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177620"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932511"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Niestandardowe dzienniki w Azure Monitor
 
@@ -83,7 +77,7 @@ Poniższa tabela zawiera przykłady prawidłowych wzorców do określenia różn
 
 | Opis | Ścieżka |
 |:--- |:--- |
-| Wszystkie pliki w *C:\LOGS* z rozszerzeniem txt w agencie systemu Windows |C:\Logs @ no__t-0\*.txt |
+| Wszystkie pliki w *C:\LOGS* z rozszerzeniem txt w agencie systemu Windows |C:\Logs\\\*. txt |
 | Wszystkie pliki w *C:\LOGS* o nazwie rozpoczynającej się od nazwy log i. txt w agencie systemu Windows |C:\Logs\ log\*.txt |
 | Wszystkie pliki w */var/log/Audit* z rozszerzeniem txt w agencie systemu Linux |/var/log/Audit/*. txt |
 | Wszystkie pliki w */var/log/Audit* o nazwie rozpoczynającej się od pliku log i rozszerzenia. txt w agencie systemu Linux |/var/log/Audit/log\*.txt |
@@ -95,7 +89,7 @@ Poniższa tabela zawiera przykłady prawidłowych wzorców do określenia różn
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Podaj nazwę i opis dziennika
 Określona nazwa zostanie użyta dla typu dziennika zgodnie z powyższym opisem.  Będzie ona zawsze kończyć się _CLem w celu odróżnienia go jako dziennika niestandardowego.
 
-1. Wpisz nazwę dziennika.  Sufiks **\_CL** jest dostarczany automatycznie.
+1. Wpisz nazwę dziennika.  Zostanie automatycznie udostępniony sufiks **\_CL** .
 2. Dodaj opcjonalny **Opis**.
 3. Kliknij przycisk **dalej** , aby zapisać definicję dziennika niestandardowego.
 
@@ -129,7 +123,7 @@ Niestandardowe rekordy dziennika mają typ o podanej nazwie dziennika i właści
 | TimeGenerated |Data i godzina zebrania rekordu przez Azure Monitor.  Jeśli w dzienniku jest wykorzystywany ogranicznik oparty na czasie, to jest to czas uzyskany od wpisu. |
 | SourceSystem |Typ agenta, z którego zebrano rekord. <br> OpsManager — Agent systemu Windows, bezpośrednie połączenie lub System Center Operations Manager <br> Linux — Wszyscy agenci systemu Linux |
 | RawData |Pełny tekst zebranego wpisu. Najprawdopodobniej chcesz [przeanalizować te dane do poszczególnych właściwości](../log-query/parse-text.md). |
-| ManagementGroupName |Nazwa grupy zarządzania dla agentów programu System Center Operations Manager.  W przypadku innych agentów jest to AOI-\<workspace ID @ no__t-1 |
+| ManagementGroupName |Nazwa grupy zarządzania dla agentów programu System Center Operations Manager.  W przypadku innych agentów jest to AOI\<identyfikator obszaru roboczego\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Przykładowe wskazówki dotyczące dodawania dziennika niestandardowego
@@ -147,7 +141,7 @@ Udostępniamy jeden z plików dziennika i widzisz zdarzenia, które będą zbier
 ![Przekazywanie i analizowanie przykładowego dziennika](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>Dodaj ścieżki zbierania dzienników
-Pliki dziennika znajdują się w *C:\MyApp\Logs*.  Nowy plik zostanie utworzony każdego dnia o nazwie zawierającej datę w wzorcu *appYYYYMMDD. log*.  Wystarczającym wzorcem dla tego dziennika będzie *C:\MyApp\Logs @ no__t-1\*.log*.
+Pliki dziennika znajdują się w *C:\MyApp\Logs*.  Nowy plik zostanie utworzony każdego dnia o nazwie zawierającej datę w wzorcu *appYYYYMMDD. log*.  Wystarczającym wzorcem dla tego dziennika będzie *C:\MyApp\Logs\\\*. log*.
 
 ![Ścieżka do kolekcji dzienników](media/data-sources-custom-logs/collection-path.png)
 

@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor interfejs API modułu zbierającego dane HTTP | Microsoft Docs
 description: Korzystając z Azure Monitor interfejsu API modułu zbierającego dane HTTP, można dodać dane po JSON do Log Analytics obszaru roboczego z dowolnego klienta, który może wywołać interfejs API REST. W tym artykule opisano sposób korzystania z interfejsu API i przedstawiono przykłady sposobu publikowania danych przy użyciu różnych języków programowania.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: jwhit
-editor: ''
-ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 50f973de8d1ca983725bc9e9e64eefc9de5237fa
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 10/01/2019
+ms.openlocfilehash: 136644dbcfe9e2835f799b284d21263913bc67b4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802128"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932589"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wysyłanie danych dziennika do Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak za pomocą interfejsu API modułu zbierającego dane HTTP wysyłać dane dziennika do Azure Monitor z klienta interfejsu API REST.  Opisano w nim sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględniania ich w żądaniu oraz żądania autoryzowane przez Azure Monitor.  Przykłady dla programu PowerShell, C#i języka Python.
@@ -45,8 +39,8 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 | Atrybut | Właściwość |
 |:--- |:--- |
 | Metoda |POUBOJOWEGO |
-| Identyfikator URI |https://@no__t -0CustomerId\>.ods.opinsights.azure.com/API/Logs? API-Version = 2016-04-01 |
-| Typ zawartości |Aplikacja/JSON |
+| ADRESU |https://\<IDKlienta\>. ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
+| Typ zawartości |application/json |
 
 ### <a name="request-uri-parameters"></a>Parametry identyfikatora URI żądania
 | Parametr | Opis |
@@ -56,7 +50,7 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 | Wersja interfejsu API |Wersja interfejsu API, która ma być używana z tym żądaniem. Obecnie jest to 2016-04-01. |
 
 ### <a name="request-headers"></a>Nagłówki żądań
-| nagłówek | Opis |
+| Nagłówek | Opis |
 |:--- |:--- |
 | Autoryzacja |Podpis autoryzacji. W dalszej części artykułu można zapoznać się z informacjami na temat tworzenia nagłówka HMAC-SHA256. |
 | Typ dziennika |Określ typ rekordu przesyłanego danych. Może zawierać tylko litery, cyfry i znaki podkreślenia (_) i nie może przekraczać 100 znaków. |
@@ -141,8 +135,8 @@ Aby zidentyfikować typ danych właściwości, Azure Monitor dodaje sufiks do na
 
 | Typ danych właściwości | Przedrostk |
 |:--- |:--- |
-| String |_s |
-| Boolean |_b |
+| Ciąg |_s |
+| Wartość logiczna |_b |
 | Double |_d |
 | Data/godzina |_t |
 | Identyfikator GUID (przechowywany jako ciąg) |_g |
@@ -199,13 +193,13 @@ W tej tabeli przedstawiono pełny zestaw kodów stanu, które mogą zostać zwr�
 | 400 |Złe żądanie |MissingContentType |Typ zawartości nie został określony. |
 | 400 |Złe żądanie |MissingLogType |Nie określono wymaganego typu dziennika wartości. |
 | 400 |Złe żądanie |UnsupportedContentType |Typ zawartości nie został ustawiony na wartość **Application/JSON**. |
-| 403 |Zabrania |InvalidAuthorization |Usługa nie może uwierzytelnić żądania. Sprawdź, czy identyfikator obszaru roboczego i klucz połączenia są prawidłowe. |
+| 403 |Forbidden |InvalidAuthorization |Usługa nie może uwierzytelnić żądania. Sprawdź, czy identyfikator obszaru roboczego i klucz połączenia są prawidłowe. |
 | 404 |Nie znaleziono | | Podany adres URL jest nieprawidłowy lub żądanie jest zbyt duże. |
 | 429 |Zbyt wiele żądań | | W usłudze występuje duża ilość danych z Twojego konta. Spróbuj ponownie wykonać żądanie później. |
 | 500 |Wewnętrzny błąd serwera |UnspecifiedError |Usługa napotkała błąd wewnętrzny. Spróbuj ponownie wykonać żądanie. |
 | 503 |Usługa jest niedostępna |Niedostępny |Usługa jest obecnie niedostępna do odbierania żądań. Spróbuj ponownie wykonać żądanie. |
 
-## <a name="query-data"></a>Dane zapytania
+## <a name="query-data"></a>Zapytania o dane
 Aby wykonać zapytanie o dane przesyłane przez Azure Monitor interfejs API modułu zbierającego dane HTTP, Wyszukaj rekordy o **typie** , który jest równy podanej wartości **LogType** , dołączonej do **_CL**. Na przykład jeśli użyto **MyCustomLog**, zwróć wszystkie rekordy z `MyCustomLog_CL`.
 
 ## <a name="sample-requests"></a>Przykładowe żądania
@@ -220,7 +214,7 @@ Dla każdego przykładu wykonaj następujące kroki, aby ustawić zmienne nagł�
 
 Alternatywnie można zmienić zmienne dla typu dziennika i danych JSON.
 
-### <a name="powershell-sample"></a>Przykład programu PowerShell
+### <a name="powershell-sample"></a>Przykładowy skrypt programu PowerShell
 ```powershell
 # Replace with your Workspace ID
 $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  
@@ -303,7 +297,7 @@ Function Post-LogAnalyticsData($customerId, $sharedKey, $body, $logType)
 Post-LogAnalyticsData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
 ```
 
-### <a name="c-sample"></a>C#Northwind
+### <a name="c-sample"></a>Przykład w języku C#
 ```csharp
 using System;
 using System.Net;

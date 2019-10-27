@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 009ae89327272ae4b9acd82eb415aad724d14988
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176662"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934363"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Wdrażanie modułu zabezpieczeń na urządzeniu IoT Edge
 
@@ -107,7 +107,7 @@ Istnieją trzy kroki umożliwiające utworzenie wdrożenia IoT Edge dla Azure Se
 1. Kliknij przycisk **Save** (Zapisz).
 1. Przewiń w dół karty i wybierz pozycję **Konfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge**. 
    
-1. Zmień **obraz** pod **węzłem Edge Hub** na **MCR.Microsoft.com/azureiotedge-Hub:1.0.9-RC2**.
+1. Zmień **obraz** pod **węzłem Edge Hub** na **MCR.Microsoft.com/azureiotedge-Hub:1.0.8.3**.
 
 1. Sprawdź, czy **Opcje tworzenia** są ustawione na: 
          
@@ -169,7 +169,7 @@ Jeśli wystąpi problem, dzienniki kontenerów są najlepszym sposobem poznania 
    | Nazwa | IMAGE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
-   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
+   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Jeśli nie ma minimalnych wymaganych kontenerów, sprawdź, czy IoT Edge manifest wdrożenia jest wyrównany z zalecanymi ustawieniami. Aby uzyskać więcej informacji, zobacz [wdrażanie modułu IoT Edge](#deployment-using-azure-portal).

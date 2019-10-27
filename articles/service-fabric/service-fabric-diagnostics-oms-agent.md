@@ -1,6 +1,6 @@
 ---
-title: Dzienniki usługi Azure Service Fabric — monitorowanie wydajności za pomocą usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować agenta usługi Log Analytics do monitorowania kontenerów i liczniki wydajności dla klastrów usługi Azure Service Fabric.
+title: Service Fabric platformy Azure — monitorowanie wydajności z dziennikami Azure Monitor | Microsoft Docs
+description: Dowiedz się, jak skonfigurować agenta Log Analytics na potrzeby monitorowania kontenerów i liczników wydajności dla klastrów Service Fabric platformy Azure.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,92 +14,92 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 819f6ee4ab079361279a567bceeb74c33fe14186
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ec68712c898eefc37a8f7b2fe2dbfdb119592de
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60952387"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934009"
 ---
-# <a name="performance-monitoring-with-azure-monitor-logs"></a>Monitorowanie wydajności za pomocą dzienników usługi Azure Monitor
+# <a name="performance-monitoring-with-azure-monitor-logs"></a>Monitorowanie wydajności za pomocą dzienników Azure Monitor
 
-W tym artykule opisano kroki, aby dodać agenta usługi Log Analytics, ponieważ rozszerzenie zestawu skalowania maszyny wirtualnej, do klastra i podłącz go do istniejącego obszaru roboczego usługi Azure Log Analytics. Umożliwia to zbieranie danych diagnostycznych o kontenerach, aplikacji i monitorowanie wydajności. Dodając ją jako rozszerzenie do zasobu zestawu skalowania maszyny wirtualnej, usługi Azure Resource Manager zapewnia, że pobiera zainstalowany w każdym węźle, nawet podczas skalowania klastra.
+W tym artykule opisano procedurę dodawania agenta Log Analytics jako rozszerzenia zestawu skalowania maszyn wirtualnych do klastra i łączenia go z istniejącym obszarem roboczym usługi Azure Log Analytics. Umożliwia to zbieranie danych diagnostycznych dotyczących kontenerów, aplikacji i monitorowania wydajności. Przez dodanie go jako rozszerzenia do zasobu zestawu skalowania maszyn wirtualnych, Azure Resource Manager zapewnia, że zostanie on zainstalowany w każdym węźle, nawet podczas skalowania klastra.
 
 > [!NOTE]
-> W tym artykule założono, że masz już skonfigurowany obszar roboczy usługi Azure Log Analytics. Jeśli tego nie zrobisz, przejdź do [Konfigurowanie dzienników usługi Azure Monitor](service-fabric-diagnostics-oms-setup.md)
+> W tym artykule przyjęto założenie, że masz już skonfigurowany obszar roboczy usługi Azure Log Analytics. Jeśli nie, przejdź do sekcji [Konfigurowanie dzienników Azure monitor](service-fabric-diagnostics-oms-setup.md)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="add-the-agent-extension-via-azure-cli"></a>Dodaj rozszerzenie agenta za pomocą wiersza polecenia platformy Azure
+## <a name="add-the-agent-extension-via-azure-cli"></a>Dodawanie rozszerzenia agenta za pomocą interfejsu wiersza polecenia platformy Azure
 
-Najlepszym sposobem, aby dodać agenta usługi Log Analytics do klastra za pośrednictwem skalowania maszyn wirtualnych jest ustawiana interfejsami API dostępnymi z wiersza polecenia platformy Azure. Jeśli nie masz jeszcze skonfigurowane interfejsu wiersza polecenia platformy Azure, przejdź do witryny Azure portal i otworzyć [Cloud Shell](../cloud-shell/overview.md) wystąpienia lub [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Najlepszym sposobem dodawania agenta Log Analytics do klastra jest za pośrednictwem interfejsów API zestawu skalowania maszyn wirtualnych dostępnych w interfejsie wiersza polecenia platformy Azure. Jeśli nie masz jeszcze skonfigurowanego interfejsu wiersza polecenia platformy Azure, przejdź do Azure Portal i Otwórz wystąpienie [Cloud Shell](../cloud-shell/overview.md) lub [Zainstaluj interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-1. Gdy wymagane są usługi Cloud Shell, upewnij się, że pracujesz w tej samej subskrypcji co zasób. Sprawdź to za pomocą `az account show` i upewnij się, wartości "name" zgodne z subskrypcji usługi klastra.
+1. Po zażądaniu Cloud Shell upewnij się, że Pracujesz w tej samej subskrypcji co zasób. Sprawdź to `az account show` i upewnij się, że wartość "name" jest zgodna z subskrypcją klastra.
 
-2. W portalu przejdź do grupy zasobów, w którym znajduje się obszar roboczy usługi Log Analytics. Klikaj zasób analizy dziennika (typ zasobu będą obszaru roboczego usługi Log Analytics). Po przejściu na stronie Przegląd zasobów, kliknij pozycję **Zaawansowane ustawienia** w sekcji Ustawienia w menu po lewej stronie.
+2. W portalu przejdź do grupy zasobów, w której znajduje się obszar roboczy Log Analytics. Kliknij zasób usługi log Analytics (typ zasobu zostanie Log Analytics obszarze roboczym). Gdy jesteś na stronie Przegląd zasobów, kliknij pozycję **Ustawienia zaawansowane** w sekcji Ustawienia w menu po lewej stronie.
 
-    ![Strona właściwości analizy dzienników](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
+    ![Strona właściwości usługi log Analytics](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
 
-3. Kliknij pozycję **serwerów Windows** jeśli są stałego klaster Windows i **serwerów z systemem Linux** w przypadku tworzenia klastra z systemem Linux. Ta strona zostanie wyświetlona Twoja `workspace ID` i `workspace key` (oznaczone jako klucza podstawowego w portalu). Należy zarówno do kolejnego kroku.
+3. Kliknij pozycję **serwery z systemem Windows** , jeśli tworzysz klaster systemu Windows i serwery z systemem **Linux** w przypadku tworzenia klastra z systemem Linux. Na tej stronie zostaną wyświetlone `workspace ID` i `workspace key` (wymienione jako klucz podstawowy w portalu). W następnym kroku będą potrzebne oba elementy.
 
-4. Uruchom polecenie, aby zainstalować agenta usługi Log Analytics do klastra, przy użyciu `vmss extension set` interfejs API usługi Cloud Shell:
+4. Uruchom polecenie, aby zainstalować agenta Log Analytics w klastrze przy użyciu interfejsu API `vmss extension set` w Cloud Shell:
 
-    W przypadku klastra Windows:
+    W przypadku klastra systemu Windows:
 
     ```sh
     az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
-    W przypadku klastra systemu Linux:
+    W przypadku klastra z systemem Linux:
 
     ```sh
     az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
-    Oto przykład agenta usługi Log Analytics są dodane do klastra Windows.
+    Oto przykład agenta Log Analytics dodawanego do klastra systemu Windows.
 
-    ![Zaloguj się Analytics agent polecenia interfejsu wiersza polecenia](media/service-fabric-diagnostics-oms-agent/cli-command.png)
+    ![Polecenie interfejsu wiersza polecenia Log Analytics Agent](media/service-fabric-diagnostics-oms-agent/cli-command.png)
 
-5. Powinno to zająć mniej niż 15 minut, aby dodać agenta do węzłów. Możesz sprawdzić, czy agenci zostały dodane za pomocą `az vmss extension list` interfejsu API:
+5. To potrwa mniej niż 15 minut, aby pomyślnie dodać agenta do węzłów. Można sprawdzić, czy agenci zostali dodani za pomocą interfejsu API `az vmss extension list`:
 
     ```sh
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
     ```
 
-## <a name="add-the-agent-via-the-resource-manager-template"></a>Dodawanie agenta za pomocą szablonu usługi Resource Manager
+## <a name="add-the-agent-via-the-resource-manager-template"></a>Dodaj agenta za pomocą szablonu Menedżer zasobów
 
-Szablony przykładowych Resource Manager, Wdróż obszaru roboczego usługi Azure Log Analytics i Dodaj agenta do każdego z węzłów, które jest dostępne dla [Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) lub [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
+Przykładowe szablony Menedżer zasobów, które wdrażają obszar roboczy platformy Azure Log Analytics i dodają agenta do każdego z węzłów, są dostępne dla [systemu Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) lub [Linux](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS).
 
-Możesz pobrać i zmodyfikować ten szablon służy do wdrażania klastra, który najlepiej odpowiada Twoim potrzebom.
+Możesz pobrać i zmodyfikować ten szablon, aby wdrożyć klaster, który najlepiej odpowiada Twoim potrzebom.
 
-## <a name="view-performance-counters"></a>Przeglądanie liczników wydajności
+## <a name="view-performance-counters"></a>Wyświetlanie liczników wydajności
 
-Teraz, że dodano agenta usługi Log Analytics, head w tryb failover do portalu usługi Log Analytics, aby wybrać, liczniki wydajności, które chcesz zbierać.
+Teraz, po dodaniu agenta Log Analytics, przejdź do portalu Log Analytics, aby wybrać liczniki wydajności, które chcesz zebrać.
 
-1. W witrynie Azure portal przejdź do grupy zasobów, w którym utworzono rozwiązania analiza usługi Service Fabric. Wybierz **ServiceFabric\<nameOfLog AnalyticsWorkspace\>** .
+1. W Azure Portal przejdź do grupy zasobów, w której utworzono rozwiązanie Service Fabric Analytics. Wybierz pozycję **servicefabric\<NameOfLog AnalyticsWorkspace\>** .
 
 2. Kliknij pozycję **Log Analytics**.
 
-3. Kliknij przycisk **Zaawansowane ustawienia**.
+3. Kliknij pozycję **Ustawienia zaawansowane**.
 
-4. Kliknij przycisk **danych**, następnie kliknij przycisk **Windows lub Linux, liczniki wydajności**. Znajduje się lista domyślne liczniki, które użytkownik może włączyć i interwał dla kolekcji można ustawić także. Można również dodać [dodatkowe liczniki wydajności](service-fabric-diagnostics-event-generation-perf.md) do zbierania. W tym odwołuje się do prawidłowego formatu [artykułu](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
+4. Kliknij pozycję **dane**, a następnie kliknij pozycję **liczniki wydajności systemu Windows lub Linux**. Istnieje lista domyślnych liczników, które można włączyć, i można ustawić interwał dla kolekcji. Możesz również dodać [Dodatkowe liczniki wydajności](service-fabric-diagnostics-event-generation-perf.md) do zbierania. W tym [artykule](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)jest przywoływany właściwy format.
 
-5. Kliknij przycisk **Zapisz**, następnie kliknij przycisk **OK**.
+5. Kliknij przycisk **Zapisz**, a następnie kliknij przycisk **OK**.
 
 6. Zamknij blok ustawienia zaawansowane.
 
-7. Pod nagłówkiem Ogólne kliknij **podsumowanie obszaru roboczego**.
+7. W obszarze Ogólne kliknij pozycję **Podsumowanie obszaru roboczego**.
 
-8. Zostaną wyświetlone Kafelki w formie wykresu dla każdego rozwiązania włączone, w tym dla usługi Service Fabric. Kliknij przycisk **usługi Service Fabric** wykres, aby kontynuować do rozwiązania analiza usługi Service Fabric.
+8. Zostaną wyświetlone kafelki w formie wykresu dla każdej z włączonych rozwiązań, w tym jeden dla Service Fabric. Kliknij wykres **Service Fabric** , aby kontynuować Service Fabric Analytics rozwiązanie.
 
-9. Na kanał operacyjny i zdarzenia interfejsu reliable services, pojawi się kilka Kafelki z wykresami. Graficzna reprezentacja danych przepływających w wybranych liczników będą wyświetlane metryki węzła.
+9. Zobaczysz kilka kafelków z wykresami dotyczącymi zdarzeń kanałów operacyjnych i niezawodnych usług. Graficzna reprezentacja danych przepływających dla wybranych liczników będzie wyświetlana w obszarze metryki węzła.
 
-10. Kliknij wykres metryki kontenera, aby wyświetlić dodatkowe szczegóły. Można także badać dane licznika wydajności, podobnie jak filtrować dane według węzłów, nazwa licznika wydajności i wartości za pomocą języka zapytania Kusto i zdarzenia klastra.
+10. Kliknij wykres metryki kontenera, aby wyświetlić dodatkowe szczegóły. Można również wykonywać zapytania dotyczące danych licznika wydajności podobnie jak zdarzenia klastra i filtrować w węzłach, nazwach liczników wydajności i wartościach przy użyciu języka zapytań Kusto.
 
-![Zapytanie licznika wydajności analizy dzienników](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
+![Zapytanie o licznik wydajności Log Analytics](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Zbierz odpowiednie [liczniki wydajności](service-fabric-diagnostics-event-generation-perf.md). Aby skonfigurować agenta usługi Log Analytics można zebrać liczników wydajności określonych, zapoznaj się z [Konfigurowanie źródeł danych](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources).
-* Skonfiguruj dzienniki usługi Azure Monitor, aby skonfigurować [automatyczne alerty](../log-analytics/log-analytics-alerts.md) ułatwiające wykrywanie i przeprowadzanie diagnostyki
-* Alternatywnie można zebrać liczników wydajności za pośrednictwem [rozszerzenie diagnostyki platformy Azure i wysyłać je do usługi Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)
+* Zbierz odpowiednie [liczniki wydajności](service-fabric-diagnostics-event-generation-perf.md). Aby skonfigurować agenta Log Analytics do zbierania określonych liczników wydajności, zapoznaj się z tematem [Konfigurowanie źródeł danych](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources).
+* Konfigurowanie dzienników Azure Monitor, aby skonfigurować [Automatyczne alerty](../log-analytics/log-analytics-alerts.md) w celu ułatwienia wykrywania i diagnostyki
+* Alternatywnie można zbierać liczniki wydajności przy użyciu [rozszerzenia Diagnostyka Azure i wysyłać je do Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

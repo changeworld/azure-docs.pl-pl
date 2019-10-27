@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: aba3dd34383edbfb555adcc2063e4a2b76af1959
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 78a0dafeedc9aac4db69903b9f1193574cbd39c7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389313"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934746"
 ---
 ## <a name="for-users-in-your-directory"></a>Dla użytkowników w katalogu
 
 Wykonaj te kroki, jeśli chcesz zezwolić użytkownikom w katalogu na żądanie tego pakietu dostępu. Podczas definiowania zasad żądań można określić poszczególnych użytkowników lub bardziej często grup użytkowników. Na przykład organizacja może mieć już grupę, taką jak **Wszyscy pracownicy**.  Jeśli ta grupa zostanie dodana w zasadach dla użytkowników, którzy mogą żądać dostępu, wówczas każdy członek tej grupy może następnie zażądać dostępu.
 
-1. W polu **Użytkownicy, którzy mogą żądać dostępu** do listy, wybierz pozycję **dla użytkowników w katalogu**.
+1. W sekcji **Użytkownicy, którzy mogą zażądać dostępu** , kliknij pozycję **dla użytkowników w katalogu**.
 
     Po wybraniu tej opcji pojawią się nowe opcje, które umożliwią dokładniejsze określenie, kto w katalogu może zażądać tego pakietu dostępu.
 
@@ -52,7 +52,7 @@ Wykonaj te kroki, jeśli chcesz zezwolić użytkownikom znajdującym się poza k
 > [!NOTE]
 > Konto użytkownika-gościa zostanie utworzone dla użytkownika, który jeszcze nie znajduje się w katalogu, którego żądanie jest zatwierdzone lub zaakceptowane. Gość zostanie zaproszony, ale nie otrzyma wiadomości e-mail z zaproszeniem. Zamiast tego otrzymają wiadomość e-mail, gdy zostanie dostarczone przypisanie pakietu dostępu. Domyślnie, gdy użytkownik tego gościa nie ma już żadnych przypisań pakietów dostępu, ponieważ ostatnie przypisanie wygasło lub zostało anulowane, konto użytkownika Gość zostanie zablokowane przed zalogowaniem się i usunięciem. Jeśli chcesz, aby użytkownicy-Goście pozostali w Twoim katalogu przez czas nieokreślony, nawet jeśli nie mają przypisanych pakietów dostępu, możesz zmienić ustawienia konfiguracji zarządzania uprawnieniami. Aby uzyskać więcej informacji na temat obiektu użytkownika-gościa, zobacz [właściwości Azure Active Directory użytkownika współpracy B2B](../articles/active-directory/b2b/user-properties.md).
 
-1. W polu **Użytkownicy, którzy mogą żądać dostępu do** listy, wybierz opcję **dla użytkowników nienależących do katalogu**.
+1. W sekcji **Użytkownicy, którzy mogą zażądać dostępu** , kliknij pozycję **dla użytkowników, którzy nie są w Twoim katalogu**.
 
     Po wybraniu tej opcji pojawiają się nowe opcje.
 
@@ -65,20 +65,20 @@ Wykonaj te kroki, jeśli chcesz zezwolić użytkownikom znajdującym się poza k
     | **Określone organizacje połączone** | Wybierz tę opcję, jeśli chcesz wybrać z listy organizacji, które wcześniej dodaliśmy do administratora. Wszyscy użytkownicy z wybranych organizacji będą mogli zażądać tego pakietu dostępu. |
     | **Wszystkie połączone organizacje** | Wybierz tę opcję, jeśli chcesz, aby wszyscy użytkownicy ze wszystkich połączonych organizacji mogli żądać tego pakietu dostępu. |
 
-    Połączona organizacja to zewnętrzny katalog usługi Azure AD lub domena, z którą często pracujesz.
+    Połączona organizacja to zewnętrzny katalog usługi Azure AD lub domena, z którą istnieje relacja.
 
 1. W przypadku wybrania opcji **określone połączone organizacje**kliknij pozycję **Dodaj katalogi** , aby wybrać z listy połączonych organizacji, które zostały wcześniej dodane przez administratora.
 
-1. Wprowadź nazwę domeny, aby wyszukać połączoną organizację o tej nazwie domeny.
+1. Wpisz nazwę lub nazwę domeny, aby wyszukać połączoną wcześniej organizację.
 
     ![Dostęp do pakietu-żądania — wybierz katalogi](./media/active-directory-entitlement-management-request-policy/select-directories.png)
 
-    Jeśli organizacja, z którą chcesz współpracować, nie znajduje się na liście, możesz poprosił administratora, aby dodał ją jako podłączoną organizację. 
+    Jeśli organizacja, z którą chcesz współpracować, nie znajduje się na liście, możesz poprosił administratora, aby dodał ją jako podłączoną organizację. Aby uzyskać więcej informacji, zobacz [Dodawanie połączonej organizacji](../articles/active-directory/governance/entitlement-management-organization.md).
 
 1. Po wybraniu wszystkich połączonych organizacji kliknij pozycję **Wybierz**.
 
     > [!NOTE]
-    > Wszyscy użytkownicy z wybranych połączonych organizacji będą mogli zażądać tego pakietu dostępu. Obejmuje to użytkowników ze wszystkich poddomen skojarzonych z połączonymi organizacjami.
+    > Wszyscy użytkownicy z wybranych połączonych organizacji będą mogli zażądać tego pakietu dostępu. Obejmuje to użytkowników w usłudze Azure AD ze wszystkich poddomen skojarzonych z organizacją, chyba że te domeny są blokowane przez listę dozwolonych lub zablokowanych warunków B2B platformy Azure. Aby uzyskać więcej informacji, zobacz [Zezwalanie lub blokowanie zaproszeń użytkownikom B2B z określonych organizacji](../articles/active-directory/b2b/allow-deny-list.md).
 
 1. Przejdź do sekcji [zatwierdzenie](#approval) .
 
@@ -86,11 +86,11 @@ Wykonaj te kroki, jeśli chcesz zezwolić użytkownikom znajdującym się poza k
 
 Wykonaj następujące kroki, aby obejść żądania dostępu i umożliwić administratorom bezpośrednie przypisanie określonych użytkowników do tego pakietu dostępu. Użytkownicy nie będą musieli żądać pakietu dostępu. Nadal można ustawiać ustawienia cyklu życia, ale nie ma żadnych ustawień żądania.
 
-1. W polu **Użytkownicy, którzy mogą żądać dostępu do** listy, wybierz opcję **Brak (tylko przypisania bezpośrednie administratora**.
+1. W sekcji **Użytkownicy, którzy mogą zażądać dostępu** , kliknij pozycję **Brak (tylko przypisania bezpośrednie administratora**).
 
     ![Dostęp do pakietów — brak przypisań tylko administrator](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    Po utworzeniu pakietu dostępu można bezpośrednio przypisać określonych użytkowników wewnętrznych i zewnętrznych do pakietu dostępu. W przypadku określenia użytkownika zewnętrznego w katalogu zostanie utworzone konto użytkownika-gościa. Aby uzyskać informacje na temat bezpośredniego przypisywania użytkownika, zobacz [Wyświetlanie i zmiana przypisań dla pakietu dostępu](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
+    Po utworzeniu pakietu dostępu można bezpośrednio przypisać określonych użytkowników wewnętrznych i zewnętrznych do pakietu dostępu. W przypadku określenia użytkownika zewnętrznego w katalogu zostanie utworzone konto użytkownika-gościa. Aby uzyskać informacje na temat bezpośredniego przypisywania użytkownika, zobacz [Wyświetlanie, Dodawanie i usuwanie przypisań dla pakietu dostępu](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
 
 1. Przejdź do sekcji [Włączanie żądań](#enable-requests) .
 
@@ -100,6 +100,8 @@ W sekcji zatwierdzenie należy określić, czy zatwierdzenie ma być wymagane, j
 
 - Tylko jeden z wybranych osób zatwierdzających lub osoby zatwierdzające rezerw muszą zatwierdzić żądanie. Zatwierdzenie ze wszystkich osób zatwierdzających nie jest wymagane.
 - Decyzja o zatwierdzeniu zależy od osoby zatwierdzającej, która najpierw przegląda żądanie.
+
+Wykonaj następujące kroki, aby określić ustawienia zatwierdzania dla wcześniej wybranych użytkowników.
 
 1. Aby wymagać zatwierdzenia dla żądań od wybranych użytkowników, ustaw przełącznik **Wymagaj zatwierdzenia** na **wartość tak**. Aby żądania były automatycznie zatwierdzane, ustaw przełącznik na wartość **nie**.
 

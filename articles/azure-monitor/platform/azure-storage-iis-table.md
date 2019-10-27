@@ -1,92 +1,86 @@
 ---
-title: Magazyn obiektów blob na użytek usług IIS i magazynu table storage dla zdarzeń w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Usługa Azure Monitor może odczytywać dzienniki dla usług platformy Azure, które zapisać diagnostyki w usłudze table storage lub dzienniki programu IIS zapisywane do magazynu obiektów blob.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Korzystanie z usługi BLOB Storage na potrzeby usług IIS i magazynu tabel dla zdarzeń w Azure Monitor | Microsoft Docs
+description: Azure Monitor może odczytać dzienniki usług platformy Azure, które zapisują dane diagnostyczne do magazynu tabel lub dzienników usług IIS zapisanych w usłudze BLOB Storage.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 04/12/2017
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 901544886e0a0c90c29e83fc71f7a7a25ffc6862
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/12/2017
+ms.openlocfilehash: 8f70ecc96269783c29c566fb89bd617f034316b1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244884"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932671"
 ---
-# <a name="collect-azure-diagnostic-logs-from-azure-storage"></a>Zbieraj dzienniki diagnostyczne platformy Azure z usługi Azure Storage
+# <a name="collect-azure-diagnostic-logs-from-azure-storage"></a>Zbieranie dzienników diagnostycznych platformy Azure z usługi Azure Storage
 
-Usługa Azure Monitor może odczytywać dzienniki Aby uzyskać następujące usługi, które zapisać diagnostyki w usłudze table storage lub dzienniki programu IIS zapisywane do magazynu obiektów blob:
+Azure Monitor może odczytać dzienniki następujących usług, które zapisują dane diagnostyczne do magazynu tabel lub dzienników usług IIS zapisane w usłudze BLOB Storage:
 
-* Usługa Service Fabric clusters (wersja zapoznawcza)
-* Maszyny wirtualne
-* Role sieć Web/proces roboczy
+* Klastry Service Fabric (wersja zapoznawcza)
+* Virtual Machines
+* Role sieci Web/procesu roboczego
 
-Usługa Azure Monitor umożliwia zbieranie danych do obszaru roboczego usługi Log Analytics dla tych zasobów, należy włączyć diagnostyki platformy Azure.
+Aby Azure Monitor mogły zbierać dane do Log Analytics obszaru roboczego dla tych zasobów, należy włączyć diagnostykę platformy Azure.
 
-Po włączeniu diagnostyki, można użyć witryny Azure portal lub programu PowerShell Konfiguruj obszar roboczy, aby zebrać dzienniki.
+Po włączeniu diagnostyki można użyć Azure Portal lub programu PowerShell w celu skonfigurowania dzienników.
 
-Narzędzie diagnostyczne systemu Azure to rozszerzenie platformy Azure, która umożliwia zbieranie danych diagnostycznych z roli proces roboczy, roli sieci web lub maszyny wirtualnej działającej na platformie Azure. Dane są przechowywane na koncie usługi Azure storage, a następnie mogą zostać zebrane przez usługi Azure Monitor.
+Diagnostyka Azure to rozszerzenie platformy Azure, które umożliwia zbieranie danych diagnostycznych z roli procesu roboczego, roli sieci Web lub maszyny wirtualnej działającej na platformie Azure. Dane są przechowywane na koncie usługi Azure Storage, a następnie mogą być zbierane przez Azure Monitor.
 
-Dla usługi Azure Monitor do zbierania tych dzienników diagnostyki platformy Azure dzienniki musi być w następujących lokalizacjach:
+Aby Azure Monitor zebrać te dzienniki Diagnostyka Azure, dzienniki muszą się znajdować w następujących lokalizacjach:
 
 | Typ dziennika | Typ zasobu | Lokalizacja |
 | --- | --- | --- |
-| Dzienniki usług IIS |Maszyny wirtualne <br> Role sieci Web <br> Role procesów roboczych |Narzędzie diagnostyczne iis logfiles (magazyn obiektów Blob) |
-| Dziennik systemu |Maszyny wirtualne |LinuxsyslogVer2v0 (Table Storage) |
-| Zdarzeń operacyjnych usługi Service Fabric |Węzły usługi Service Fabric |WADServiceFabricSystemEventTable |
-| Usługa Service Fabric Reliable Actor zdarzenia |Węzły usługi Service Fabric |WADServiceFabricReliableActorEventTable |
-| Zdarzenia usługi Reliable Service Fabric usługi |Węzły usługi Service Fabric |WADServiceFabricReliableServiceEventTable |
-| Dzienniki zdarzeń Windows |Węzły usługi Service Fabric <br> Maszyny wirtualne <br> Role sieci Web <br> Role procesów roboczych |WADWindowsEventLogsTable (Table Storage) |
-| Dzienniki Windows ETW |Węzły usługi Service Fabric <br> Maszyny wirtualne <br> Role sieci Web <br> Role procesów roboczych |WADETWEventTable (Table Storage) |
+| Dzienniki usług IIS |Virtual Machines <br> Role sieci Web <br> Role procesu roboczego |funkcji wad-IIS-LogFiles (Blob Storage) |
+| Dziennik systemu |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
+| Service Fabric zdarzenia operacyjne |Service Fabric węzły |WADServiceFabricSystemEventTable |
+| Service Fabric niezawodne zdarzenia aktora |Service Fabric węzły |WADServiceFabricReliableActorEventTable |
+| Service Fabric niezawodne zdarzenia usługi |Service Fabric węzły |WADServiceFabricReliableServiceEventTable |
+| Dzienniki zdarzeń systemu Windows |Service Fabric węzły <br> Virtual Machines <br> Role sieci Web <br> Role procesu roboczego |WADWindowsEventLogsTable (Table Storage) |
+| Dzienniki funkcji ETW systemu Windows |Service Fabric węzły <br> Virtual Machines <br> Role sieci Web <br> Role procesu roboczego |WADETWEventTable (Table Storage) |
 
 > [!NOTE]
-> Dzienniki usług IIS z witryn sieci Web platformy Azure nie są obecnie obsługiwane.
+> Dzienniki usług IIS z usługi Azure Websites nie są obecnie obsługiwane.
 >
 >
 
-W przypadku maszyn wirtualnych ma możliwości zainstalowania [agenta usługi Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md) połączenie z maszyną wirtualną, aby włączyć dodatkowe informacje szczegółowe. Oprócz możliwości analizowania dzienników usług IIS i dzienniki zdarzeń, możesz wykonać dodatkową analizę, takich jak śledzenie zmian konfiguracji, ocena SQL i oceny aktualizacji.
+W przypadku maszyn wirtualnych można zainstalować [agenta log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md) na maszynie wirtualnej, aby umożliwić dodatkowe szczegółowe informacje. Oprócz możliwości analizowania dzienników usług IIS i dzienników zdarzeń można przeprowadzić dodatkową analizę, w tym śledzenie zmian konfiguracji, ocenę SQL i ocenę aktualizacji.
 
-## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Włącz diagnostykę platformy Azure na maszynie wirtualnej do dziennika zdarzeń i IIS zbierania dzienników
+## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Włączanie diagnostyki platformy Azure na maszynie wirtualnej w przypadku dzienników zdarzeń i zbierania dzienników usług IIS
 
-Poniższa procedura umożliwia Włącz diagnostykę platformy Azure na maszynie wirtualnej, do dziennika zdarzeń i IIS zbieranie dzienników przy użyciu portalu Microsoft Azure.
+Poniższa procedura umożliwia włączenie diagnostyki platformy Azure na maszynie wirtualnej na potrzeby zbierania dzienników zdarzeń i dzienników usług IIS przy użyciu Microsoft Azure Portal.
 
-### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Aby włączyć diagnostyki platformy Azure na maszynie wirtualnej w witrynie Azure portal
+### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Aby włączyć diagnostykę platformy Azure na maszynie wirtualnej z Azure Portal
 
-1. Zainstaluj agenta maszyny Wirtualnej, podczas tworzenia maszyny wirtualnej. Jeśli maszyna wirtualna już istnieje, sprawdź, czy Agent maszyny Wirtualnej jest już zainstalowany.
+1. Zainstaluj agenta maszyny wirtualnej podczas tworzenia maszyny wirtualnej. Jeśli maszyna wirtualna już istnieje, sprawdź, czy Agent maszyny wirtualnej jest już zainstalowany.
 
-   * W witrynie Azure portal przejdź do maszyny wirtualnej, wybierz opcję **opcjonalna konfiguracja**, następnie **diagnostyki** i ustaw **stan** do **na** .
+   * W Azure Portal przejdź do maszyny wirtualnej, wybierz opcję **Konfiguracja opcjonalna**, a następnie **Diagnostyka** i ustaw **stan** na **włączone**.
 
-     Po zakończeniu maszyna wirtualna ma rozszerzenie diagnostyki platformy Azure zainstalowany i uruchomiony. To rozszerzenie jest odpowiedzialny za zbieranie danych diagnostycznych.
-2. Aby włączyć monitorowanie i skonfigurować rejestrowanie zdarzeń w istniejącej maszyny Wirtualnej. Można włączyć diagnostykę na poziomie maszyny Wirtualnej. Aby włączyć diagnostykę, a następnie skonfiguruj rejestrowanie zdarzeń, wykonaj następujące czynności:
+     Po zakończeniu maszyna wirtualna ma zainstalowane i uruchomione rozszerzenie Diagnostyka Azure. To rozszerzenie jest odpowiedzialne za gromadzenie danych diagnostycznych.
+2. Włącz monitorowanie i Konfigurowanie rejestrowania zdarzeń na istniejącej maszynie wirtualnej. Można włączyć diagnostykę na poziomie maszyny wirtualnej. Aby włączyć diagnostykę, a następnie skonfigurować rejestrowanie zdarzeń, wykonaj następujące czynności:
 
    1. Wybierz maszynę wirtualną.
-   2. Kliknij przycisk **monitorowania**.
-   3. Kliknij przycisk **diagnostyki**.
-   4. Ustaw **stan** do **ON**.
-   5. Zaznacz każdy dziennik diagnostyczny, które mają być zbierane.
+   2. Kliknij pozycję **monitorowanie**.
+   3. Kliknij pozycję **Diagnostyka**.
+   4. Ustaw **stan** na **włączone**.
+   5. Wybierz każdy dziennik diagnostyczny, który chcesz zebrać.
    6. Kliknij przycisk **OK**.
 
-## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Włącz diagnostykę platformy Azure w rolę sieci Web dla usług IIS zbierania dzienników i zdarzeń
+## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Włącz diagnostykę platformy Azure w roli sieci Web dla dziennika i zbierania zdarzeń IIS
 
-Zapoznaj się [jak do włączenia diagnostyki w usłudze w chmurze](../../cloud-services/cloud-services-dotnet-diagnostics.md) ogólne kroki na temat włączania diagnostyki platformy Azure. W poniższych instrukcjach dzięki tym informacjom i dostosować go do użycia z usługą Log Analytics.
+Zapoznaj się z [tematem Włączanie diagnostyki w usłudze w chmurze,](../../cloud-services/cloud-services-dotnet-diagnostics.md) aby zapoznać się z ogólnymi krokami dotyczącymi włączania diagnostyki Azure. Poniższe instrukcje wykorzystują te informacje i dostosowują je do użytku z Log Analytics.
 
-Z włączoną diagnostykę platformy Azure:
+Usługa Azure Diagnostics jest włączona:
 
-* Dzienniki usług IIS są przechowywane domyślnie przesłanych interwałem transferu okres zaplanowanego transferu danych dziennika.
-* Dzienniki zdarzeń Windows nie są przesyłane domyślnie.
+* Dzienniki usług IIS są domyślnie przechowywane z danymi dziennika transferowanymi w interwale transferu scheduledTransferPeriod.
+* Dzienniki zdarzeń systemu Windows nie są domyślnie transferowane.
 
 ### <a name="to-enable-diagnostics"></a>Aby włączyć diagnostykę
 
-Aby włączyć dzienniki zdarzeń Windows lub zmienić okres zaplanowanego transferu, konfigurowanie diagnostyki Azure za pomocą pliku konfiguracji XML (diagnostics.wadcfg), jak pokazano na [krok 4: Tworzenie pliku konfiguracji diagnostyki i zainstalować rozszerzenie](../../cloud-services/cloud-services-dotnet-diagnostics.md)
+Aby włączyć dzienniki zdarzeń systemu Windows lub zmienić scheduledTransferPeriod, skonfiguruj Diagnostyka Azure przy użyciu pliku konfiguracyjnego XML (Diagnostics. wadcfg), jak pokazano w [kroku 4: Tworzenie pliku konfiguracji diagnostyki i Instalowanie rozszerzenia](../../cloud-services/cloud-services-dotnet-diagnostics.md)
 
-Przykładowy plik konfiguracji zbiera dzienniki usług IIS i wszystkie zdarzenia z dzienników aplikacji i systemu:
+Poniższy przykładowy plik konfiguracji zbiera dzienniki usług IIS i wszystkie zdarzenia z dzienników aplikacji i systemu:
 
 ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -110,7 +104,7 @@ Przykładowy plik konfiguracji zbiera dzienniki usług IIS i wszystkie zdarzenia
     </DiagnosticMonitorConfiguration>
 ```
 
-Upewnij się, że Twoje appSettings Określa konto magazynu, jak w poniższym przykładzie:
+Upewnij się, że ConfigurationSettings określa konto magazynu, tak jak w poniższym przykładzie:
 
 ```xml
     <ConfigurationSettings>
@@ -118,53 +112,53 @@ Upewnij się, że Twoje appSettings Określa konto magazynu, jak w poniższym pr
     </ConfigurationSettings>
 ```
 
-**AccountName** i **AccountKey** wartości znajdują się w witrynie Azure portal na pulpicie nawigacyjnym konta magazynu w obszarze Zarządzaj kluczami dostępu. Protokół dla parametrów połączenia musi być **https**.
+Wartości **AccountName** i **AccountKey** są dostępne w Azure Portal na pulpicie nawigacyjnym konta magazynu w obszarze Zarządzaj kluczami dostępu. Protokół dla parametrów połączenia musi być typu **https**.
 
-Po zastosowaniu zaktualizowanej konfiguracji diagnostycznych do usługi w chmurze i zapisuje diagnostyczne do usługi Azure Storage, następnie można przystąpić do konfigurowania obszaru roboczego usługi Log Analytics.
+Po zastosowaniu zaktualizowanej konfiguracji diagnostyki do usługi w chmurze i zapisaniu jej w usłudze Azure Storage, możesz przystąpić do konfigurowania obszaru roboczego Log Analytics.
 
-## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Zbieranie dzienników z usługi Azure Storage za pomocą witryny Azure portal
+## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Używanie Azure Portal do zbierania dzienników z usługi Azure Storage
 
-Aby skonfigurować obszar roboczy usługi Log Analytics w usłudze Azure Monitor do zbierania dzienników dla następujących usług platformy Azure, można użyć witryny Azure portal:
+Za pomocą Azure Portal można skonfigurować Log Analytics obszar roboczy w Azure Monitor, aby zebrać dzienniki dla następujących usług platformy Azure:
 
-* Klastry usługi Service Fabric
-* Maszyny wirtualne
-* Role sieć Web/proces roboczy
+* Klastry Service Fabric
+* Virtual Machines
+* Role sieci Web/procesu roboczego
 
-W witrynie Azure portal przejdź do obszaru roboczego usługi Log Analytics i wykonywać następujące zadania:
+W Azure Portal przejdź do obszaru roboczego Log Analytics i wykonaj następujące zadania:
 
-1. Kliknij przycisk *dzienniki kont magazynu*
-2. Kliknij przycisk *Dodaj* zadań
-3. Wybierz konto magazynu, który zawiera dzienniki diagnostyczne
-   * To konto może być klasycznego konta magazynu lub konto magazynu usługi Azure Resource Manager
-4. Wybierz typ danych, które chcesz zebrać dzienniki
-   * Dostępne są następujące dzienniki usług IIS; Zdarzenia; SYSLOG (Linux); Dzienniki zdarzeń systemu Windows; Usługa Service Fabric zdarzenia
-5. Wartość źródła jest automatycznie wypełniane na podstawie typu danych i nie można jej zmienić
+1. Kliknij pozycję *dzienniki kont magazynu*
+2. Kliknij przycisk *Dodaj* zadanie.
+3. Wybierz konto magazynu zawierające dzienniki diagnostyki
+   * To konto może być kontem klasycznego magazynu lub kontem magazynu Azure Resource Manager
+4. Wybierz typ danych, dla których mają być zbierane dzienniki
+   * Dostępne są dzienniki usług IIS; Wydarzeniach Dziennik systemu (Linux); Dzienniki ETW; Zdarzenia Service Fabric
+5. Wartość dla źródła jest automatycznie wypełniana na podstawie typu danych i nie można jej zmienić.
 6. Kliknij przycisk OK, aby zapisać konfigurację
 
-Powtórz kroki od 2 do 6 dla dodatkowych kont magazynu i typy danych, które mają być zbierane do obszaru roboczego.
+Powtórz kroki 2-6 dla dodatkowych kont magazynu i typów danych, które mają być zbierane w obszarze roboczym.
 
-W ciągu 30 minut jesteś w stanie wyświetlić dane z konta magazynu, w obszarze roboczym usługi Log Analytics. Widoczne są tylko dane, które są zapisywane do magazynu, po zastosowaniu konfiguracji. Obszar roboczy nie odczytuje już istniejące dane z konta magazynu.
+W ciągu około 30 minut można zobaczyć dane z konta magazynu w obszarze roboczym Log Analytics. Po zastosowaniu konfiguracji będą widoczne tylko dane, które są zapisywane w magazynie. Obszar roboczy nie odczytuje wcześniej istniejących danych z konta magazynu.
 
 > [!NOTE]
-> Nie można zweryfikować portalu, że źródło istnieje na koncie magazynu lub jeśli nowe dane zostaną zapisane.
+> Portal nie sprawdza, czy źródło istnieje na koncie magazynu lub czy nowe dane są zapisywane.
 >
 >
 
-## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Włącz diagnostykę platformy Azure na maszynie wirtualnej w dzienniku zdarzeń i IIS dziennika kolekcji przy użyciu programu PowerShell
+## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Włączanie diagnostyki platformy Azure na maszynie wirtualnej w poszukiwaniu dzienników zdarzeń i zbierania dzienników usług IIS przy użyciu programu PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Użyj kroków w [konfigurowania usługi Azure Monitor do indeksowania usługi Diagnostyka Azure](powershell-workspace-configuration.md#configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage) odczytywać diagnostyki platformy Azure, które są zapisywane w usłudze table storage przy użyciu programu PowerShell.
+Wykonaj kroki opisane w artykule [konfigurowanie Azure monitor, aby zindeksować diagnostykę Azure](powershell-workspace-configuration.md#configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage) , aby użyć programu PowerShell do odczytu z usługi Azure Diagnostics, która jest zapisywana w usłudze Table Storage.
 
-Przy użyciu programu Azure PowerShell można bardziej precyzyjnie określić zdarzenia, które są zapisywane do usługi Azure Storage.
-Aby uzyskać więcej informacji, zobacz [Włączanie diagnostyki w usłudze Azure Virtual Machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
+Za pomocą Azure PowerShell można dokładniej określić zdarzenia, które są zapisywane w usłudze Azure Storage.
+Aby uzyskać więcej informacji, zobacz [Włączanie diagnostyki na platformie Azure Virtual Machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
-Można włączyć i aktualizować diagnostyki platformy Azure za pomocą następującego skryptu programu PowerShell.
-Umożliwia także ten skrypt z konfiguracją niestandardowego rejestrowania.
-Zmodyfikuj skrypt można ustawić konta magazynu, nazwę usługi i nazwę maszyny wirtualnej.
+Możesz włączyć i zaktualizować diagnostykę platformy Azure przy użyciu poniższego skryptu programu PowerShell.
+Można również użyć tego skryptu z konfiguracją rejestrowania niestandardowego.
+Zmodyfikuj skrypt, aby ustawić konto magazynu, nazwę usługi i nazwę maszyny wirtualnej.
 Skrypt używa poleceń cmdlet dla klasycznych maszyn wirtualnych.
 
-Przejrzyj następujący przykładowy skrypt, skopiuj go, zmodyfikuj go zgodnie z potrzebami, Zapisz plik jako plik skryptu programu PowerShell, a następnie uruchom skrypt.
+Zapoznaj się z poniższym przykładem skryptu, skopiuj go, zmodyfikuj zgodnie z wymaganiami, Zapisz przykład jako plik skryptu programu PowerShell, a następnie uruchom skrypt.
 
 ```powershell
     #Connect to Azure
@@ -198,8 +192,8 @@ Przejrzyj następujący przykładowy skrypt, skopiuj go, zmodyfikuj go zgodnie z
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Zbieranie dzienników i metryk dla usług platformy Azure](collect-azure-metrics-logs.md) obsługiwanych usług platformy Azure.
-* [Włączanie rozwiązań](../../azure-monitor/insights/solutions.md) zapewniające wgląd w dane.
-* [Używają zapytań wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) do analizowania danych.
+* [Zbieraj dzienniki i metryki dla usług platformy Azure](collect-azure-metrics-logs.md) dla obsługiwanych usług platformy Azure.
+* [Umożliwiaj rozwiązanie](../../azure-monitor/insights/solutions.md) w celu zapewnienia wglądu w dane.
+* Przeanalizuj dane przy [użyciu zapytań wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) .

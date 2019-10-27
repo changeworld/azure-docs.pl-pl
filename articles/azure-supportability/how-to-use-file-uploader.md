@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure nowe wskazówki dotyczące narzędzia do przekazywania plików żądania obsługi | Microsoft Docs
-description: Zawiera opis wytycznych dotyczących korzystania z Microsoft Azure nowym narzędziu do przekazywania plików żądania obsługi
+title: Żądanie pomocy technicznej platformy Azure — wskazówki dotyczące przekazywania plików
+description: Opisuje wytyczne dotyczące korzystania z Microsoft Azure opcji przekazywania pliku żądania obsługi
 author: genlin
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
@@ -8,22 +8,22 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f01c70a2a077e28e8de5118332b780f27dc9ec93
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8c22ce859aa58aeb8339b16265f6614bd7e723f8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248691"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936075"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure nowe wskazówki dotyczące narzędzia do przekazywania plików żądania obsługi
-Po [utworzeniu żądania obsługi](https://portal.azure.com/#create/Microsoft.Support)narzędzie do przekazywania plików może pomóc w łatwym przekazywaniu plików diagnostycznych lub wszelkich innych plików, które Twoim zdaniem są istotne dla zdarzenia.  
+Gdy tworzysz [żądanie obsługi](https://portal.azure.com/#create/Microsoft.Support), opcja przekazywania plików może pomóc w łatwym przekazywaniu plików diagnostycznych lub wszelkich innych plików, które Twoim zdaniem są istotne dla zdarzenia.  
 
 > [!NOTE]
 > Aby chronić prywatność, nie dołączaj żadnych informacji osobistych do przekazywania.
 >
 >
 
-W przypadku korzystania z narzędzia przekazywania plików postępuj zgodnie z poniższymi wskazówkami:
+W przypadku korzystania z opcji przekazywania plików postępuj zgodnie z poniższymi wskazówkami:
 
 * Wszystkie pliki muszą mieć rozszerzenie nazwy pliku, na przykład docx lub xlsx. Zapoznaj się z tabelą, aby uzyskać listę dozwolonych rozszerzeń nazw plików.
 * Nazwa pliku nie może być dłuższa niż 110 znaków.

@@ -1,73 +1,67 @@
 ---
-title: Zbieraj i Analizuj liczników wydajności w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Liczniki wydajności są zbierane przez usługi Azure Monitor do analizowania wydajności agentów systemów Windows i Linux.  W tym artykule opisano sposób konfigurowania zbiór liczników wydajności zarówno Windows, i agenci dla systemu Linux, ich szczegóły są przechowywane w obszarze roboczym i analizowanie ich w witrynie Azure portal.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
-ms.service: log-analytics
+title: Zbieranie i analizowanie liczników wydajności w Azure Monitor | Microsoft Docs
+description: Liczniki wydajności są zbierane przez Azure Monitor w celu przeanalizowania wydajności agentów systemu Windows i Linux.  W tym artykule opisano sposób konfigurowania kolekcji liczników wydajności dla agentów systemu Windows i Linux. szczegóły są przechowywane w obszarze roboczym i sposób analizowania ich w Azure Portal.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2018
+ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205752"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932437"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows i Linux źródła danych dotyczących wydajności w usłudze Azure Monitor
-Liczniki wydajności, Windows i Linux zapewniają wgląd w wydajność składniki sprzętowe, systemów operacyjnych i aplikacji.  Usługa Azure Monitor można zebrać liczników wydajności w krótkich odstępach czasu do analizy prawie czasie rzeczywistym (nRT, NEAR) oprócz agregowania danych wydajności dla dłuższy okres analizy i raportowania.
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Źródła danych wydajności systemów Windows i Linux w Azure Monitor
+Liczniki wydajności w systemach Windows i Linux zapewniają wgląd w wydajność składników sprzętowych, systemów operacyjnych i aplikacji.  Azure Monitor może zbierać liczniki wydajności w częstych odstępach czasu dla analizy prawie w czasie rzeczywistym (NRT), a także do agregowania danych dotyczących wydajności na potrzeby analizy i raportowania w dłuższym okresie.
 
 ![Liczniki wydajności](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurowanie liczników wydajności
-Skonfiguruj liczniki wydajności z [menu danych w zaawansowanych ustawieniach](agent-data-sources.md#configuring-data-sources).
+Skonfiguruj liczniki wydajności z [menu dane w oknie Ustawienia zaawansowane](agent-data-sources.md#configuring-data-sources).
 
-Podczas pierwszej konfiguracji liczników Windows lub Linux wydajności dla nowego obszaru roboczego, możesz skorzystać z opcji, aby szybko utworzyć kilka typowych liczników.  Na liście obok każdego z nich znajduje się pole wyboru.  Upewnij się, że wszystkie liczniki, które chcesz utworzyć są zaznaczone, a następnie kliknij przycisk **Dodaj wybrane liczniki wydajności**.
+Podczas pierwszej konfiguracji liczników wydajności systemu Windows lub Linux dla nowego obszaru roboczego można szybko utworzyć kilka typowych liczników.  Na liście obok każdego z nich znajduje się pole wyboru.  Upewnij się, że wszystkie liczniki, które chcesz utworzyć, są zaznaczone, a następnie kliknij przycisk **Dodaj wybrane liczniki wydajności**.
 
-Liczniki wydajności Windows możesz wybrać konkretne wystąpienie dla każdego licznika wydajności. Liczniki wydajności systemu Linux wystąpienia poszczególnych liczników, które możesz wybrać mają zastosowanie do wszystkie liczniki podrzędnych licznika nadrzędnej. W poniższej tabeli przedstawiono typowe wystąpienia dostępne liczniki wydajności systemu Linux i Windows.
+W przypadku liczników wydajności systemu Windows można wybrać określone wystąpienie dla każdego licznika wydajności. W przypadku liczników wydajności systemu Linux wystąpienie każdego wybranego licznika ma zastosowanie do wszystkich liczników podrzędnych licznika nadrzędnego. W poniższej tabeli przedstawiono typowe wystąpienia, które są dostępne dla liczników wydajności systemu Linux i Windows.
 
 | Nazwa wystąpienia | Opis |
 | --- | --- |
-| \_Łączna liczba |Łączna liczba wszystkich wystąpień |
+| \_łącznie |Suma wszystkich wystąpień |
 | \* |Wszystkie wystąpienia |
-| (/&#124;/var) |Dopasowuje wystąpienia o nazwie: / lub /var |
+| (/&#124;/var) |Dopasowuje wystąpienia o nazwie:/lub/var |
 
 ### <a name="windows-performance-counters"></a>Liczniki wydajności systemu Windows
 
-![Skonfiguruj liczniki wydajności Windows](media/data-sources-performance-counters/configure-windows.png)
+![Konfigurowanie liczników wydajności systemu Windows](media/data-sources-performance-counters/configure-windows.png)
 
-Wykonaj poniższą procedurę, aby dodać nowy licznik wydajności Windows do zbierania.
+Postępuj zgodnie z tą procedurą, aby dodać nowy licznik wydajności systemu Windows do zbierania danych.
 
-1. Wpisz nazwę licznika w polu tekstowym w formacie *\counter obiektu (wystąpienia)* .  Gdy zaczniesz pisać, zostanie wyświetlona pasującego listę typowych liczników.  Można albo wybierz licznik z listy lub wpisz własny.  Możesz też zwrócić wszystkie wystąpienia określonego licznika, określając *object\counter*.  
+1. Wpisz nazwę licznika w polu tekstowym w *obiekcie format (wystąpienie) \Counter*.  Po rozpoczęciu wpisywania zostanie wyświetlona zgodna lista typowych liczników.  Możesz wybrać licznik z listy lub wpisać własny.  Możesz również zwrócić wszystkie wystąpienia dla określonego licznika, określając *object\counter*.  
 
-    Podczas zbierania liczników wydajności programu SQL Server z nazwanego wystąpienia, wszystkie nazwane wystąpienia liczników rozpoczyna się od *MSSQL$* i następuje nazwa wystąpienia.  Na przykład, aby zbieranie danych licznika Współczynnik trafień w pamięci podręcznej dziennika dla wszystkich baz danych z obiektu wydajności bazy danych SQL o nazwie wystąpienia INST2, należy określić `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
+    Podczas zbierania SQL Server liczników wydajności z nazwanych wystąpień wszystkie liczniki nazwanego wystąpienia zaczynają się od *MSSQL $* i po nim nazwa wystąpienia.  Na przykład, aby zebrać licznik Współczynnik trafień pamięci podręcznej dzienników dla wszystkich baz danych z obiektu wydajności bazy danych dla nazwanego wystąpienia SQL INST2, określ `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
 
-2. Kliknij przycisk **+** lub naciśnij **Enter** można dodać licznika do listy.
-3. Podczas dodawania licznika, który używa domyślnej wartości 10 sekund na jego **interwał próbkowania**.  Można zmienić tego na wartość większą do 1800 sekund (30 minut) Jeśli chcesz zmniejszyć wymagania dotyczące magazynu danych wydajności zebranych.
-4. Po zakończeniu dodawania liczników, kliknij przycisk **Zapisz** znajdujący się u góry ekranu, aby zapisać konfigurację.
+2. Kliknij przycisk **+** lub naciśnij klawisz **Enter** , aby dodać licznik do listy.
+3. Po dodaniu licznika zostanie użyta wartość domyślna wynosząca 10 sekund dla **interwału próbkowania**.  Można zmienić tę wartość na wyższą niż 1800 sekund (30 minut), jeśli chcesz zmniejszyć wymagania dotyczące magazynu zebranych danych wydajności.
+4. Po zakończeniu dodawania liczników kliknij przycisk **Zapisz** znajdujący się u góry ekranu, aby zapisać konfigurację.
 
 ### <a name="linux-performance-counters"></a>Liczniki wydajności systemu Linux
 
-![Skonfiguruj liczniki wydajności systemu Linux](media/data-sources-performance-counters/configure-linux.png)
+![Konfigurowanie liczników wydajności systemu Linux](media/data-sources-performance-counters/configure-linux.png)
 
-Wykonaj poniższą procedurę, aby dodać nowy licznik wydajności systemu Linux w celu zbierania.
+Postępuj zgodnie z tą procedurą, aby dodać nowy licznik wydajności systemu Linux do zebrania.
 
-1. Domyślnie wszystkie zmiany konfiguracji są automatycznie przekazywane do wszystkich agentów.  Agenci dla systemu Linux, aby uzyskać plik konfiguracji są wysyłane do Fluentd modułów zbierających dane.  Jeśli chcesz zmodyfikować ten plik ręcznie na każdym agencie systemu Linux, usuń zaznaczenie pola *Zastosuj poniższą konfigurację do moich maszyn z systemem Linux* i wykonaj poniższe wskazówki.
-2. Wpisz nazwę licznika w polu tekstowym w formacie *\counter obiektu (wystąpienia)* .  Gdy zaczniesz pisać, zostanie wyświetlona pasującego listę typowych liczników.  Można albo wybierz licznik z listy lub wpisz własny.  
-3. Kliknij przycisk **+** lub naciśnij **Enter** można dodać licznika listę innych liczników dla tego obiektu.
-4. Wszystkie liczniki dla obiektu używać tego samego **interwał próbkowania**.  Wartość domyślna to 10 sekund.  Możesz zmienić na wyższa wartość do 1800 sekund (30 minut) Jeśli chcesz zmniejszyć wymagania dotyczące magazynu danych wydajności zebranych.
-5. Po zakończeniu dodawania liczników, kliknij przycisk **Zapisz** znajdujący się u góry ekranu, aby zapisać konfigurację.
+1. Domyślnie wszystkie zmiany konfiguracji są automatycznie wypychane do wszystkich agentów.  W przypadku agentów systemu Linux plik konfiguracji jest wysyłany do programu zbierającego dane.  Jeśli chcesz zmodyfikować ten plik ręcznie na każdym agencie systemu Linux, usuń zaznaczenie pola wyboru *Zastosuj poniższą konfigurację do maszyn z systemem Linux* i postępuj zgodnie z poniższymi wskazówkami.
+2. Wpisz nazwę licznika w polu tekstowym w *obiekcie format (wystąpienie) \Counter*.  Po rozpoczęciu wpisywania zostanie wyświetlona zgodna lista typowych liczników.  Możesz wybrać licznik z listy lub wpisać własny.  
+3. Kliknij przycisk **+** lub naciśnij klawisz **Enter** , aby dodać licznik do listy innych liczników dla obiektu.
+4. Wszystkie liczniki dla obiektu używają tego samego **interwału próbkowania**.  Wartość domyślna to 10 sekund.  Tę zmianę można zmienić na maksymalnie 1800 sekund (30 minut), jeśli chcesz zmniejszyć wymagania dotyczące magazynu zebranych danych wydajności.
+5. Po zakończeniu dodawania liczników kliknij przycisk **Zapisz** znajdujący się u góry ekranu, aby zapisać konfigurację.
 
-#### <a name="configure-linux-performance-counters-in-configuration-file"></a>Skonfiguruj liczniki wydajności systemu Linux w pliku konfiguracji
-Zamiast konfigurować liczniki wydajności systemu Linux przy użyciu portalu Azure, masz możliwość edytowania plików konfiguracji agenta systemu Linux.  Metryki wydajności do zbierania są kontrolowane przez tę konfigurację w **/etc/opt/microsoft/omsagent/\<identyfikator obszaru roboczego\>/conf/omsagent.conf**.
+#### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfigurowanie liczników wydajności systemu Linux w pliku konfiguracyjnym
+Zamiast konfigurować liczniki wydajności systemu Linux przy użyciu Azure Portal istnieje możliwość edytowania plików konfiguracji w agencie systemu Linux.  Metryki wydajności do zebrania są kontrolowane przez konfigurację w **/etc/opt/microsoft/omsagent/\<\>obszaru roboczego**.
 
-Każdy obiekt lub kategorii metryki wydajności do zbierania powinna być zdefiniowana w pliku konfiguracyjnym jako pojedynczy `<source>` elementu. Składnia jest zgodny ze wzorcem poniżej.
+Każdy obiekt lub kategoria metryk wydajności do zebrania należy zdefiniować w pliku konfiguracji jako pojedynczy element `<source>`. Składnia jest zgodna z wzorcem poniżej.
 
     <source>
       type oms_omi  
@@ -78,76 +72,76 @@ Każdy obiekt lub kategorii metryki wydajności do zbierania powinna być zdefin
     </source>
 
 
-W poniższej tabeli opisano parametry w tym elemencie.
+Parametry w tym elemencie są opisane w poniższej tabeli.
 
 | Parametry | Opis |
 |:--|:--|
-| obiekt\_nazwy | Nazwa obiektu dla kolekcji. |
-| instance\_regex |  A *wyrażenia regularnego* Definiowanie które wystąpienia do zbierania. Wartość: `.*` określa wszystkie wystąpienia. Aby zbierać metryki procesora tylko \_łączna liczba wystąpień, można określić `_Total`. Aby zbierać metryki tylko crond lub sshd wystąpień procesu, można określić: `(crond\|sshd)`. |
-| Licznik\_nazwa\_wyrażeń regularnych | A *wyrażenia regularnego* definiowania, które liczników (dla obiektu) do zbierania. Aby zebrać wszystkie liczniki dla obiektu, należy określić: `.*`. Aby zebrać tylko zamiany miejsca liczniki dla obiektów pamięci, na przykład można określić: `.+Swap.+` |
-| interval | Częstotliwość, na którym są zbierane liczniki obiektu. |
+| Nazwa\_obiektu | Nazwa obiektu dla kolekcji. |
+| wystąpienie\_wyrażenie regularne |  *Wyrażenie regularne* definiujące, które wystąpienia mają być zbierane. Wartość: `.*` określa wszystkie wystąpienia. Aby zbierać metryki procesora tylko dla \_wystąpienia całkowitego, można określić `_Total`. Aby zbierać metryki procesów tylko dla wystąpień z identyfikatorem "lub" SSHD, można określić: `(crond\|sshd)`. |
+| Nazwa\_licznika\_wyrażenie regularne | *Wyrażenie regularne* definiujące, które liczniki (dla obiektu) mają być zbierane. Aby zebrać wszystkie liczniki dla obiektu, określ: `.*`. Aby zebrać tylko liczniki przestrzeni wymiany dla obiektu pamięci, można na przykład określić: `.+Swap.+` |
+| interval | Częstotliwość, z jaką są zbierane liczniki obiektu. |
 
 
-Poniższa tabela zawiera listę obiektów i liczników, które można określić w pliku konfiguracji.  Dostępne są dodatkowe liczniki dla określonych aplikacji zgodnie z opisem w [zbierania liczników wydajności dla aplikacji systemu Linux w usłudze Azure Monitor](data-sources-linux-applications.md).
+W poniższej tabeli wymieniono obiekty i liczniki, które można określić w pliku konfiguracji.  Dostępne są dodatkowe liczniki dla niektórych aplikacji, zgodnie z opisem w temacie [Zbieranie liczników wydajności dla aplikacji systemu Linux w Azure monitor](data-sources-linux-applications.md).
 
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|
-| Dysk logiczny | % Wolnych węzłów i |
-| Dysk logiczny | % Wolnego miejsca |
+| Dysk logiczny | % Wolnego węzłów i |
+| Dysk logiczny | Wolne miejsce (%) |
 | Dysk logiczny | % Użytych węzłów i |
-| Dysk logiczny | Procent wykorzystania miejsca |
-| Dysk logiczny | Bajty odczytu z dysku/s |
+| Dysk logiczny | Zajęte miejsce (%) |
+| Dysk logiczny | Bajty odczytu dysku/s |
 | Dysk logiczny | Odczyty dysku/s |
-| Dysk logiczny | Transfery dyskowe/s |
-| Dysk logiczny | Bajty zapisu na dysku/s |
+| Dysk logiczny | Transfery dysku/s |
+| Dysk logiczny | Bajty zapisu dysku/s |
 | Dysk logiczny | Zapisy dysku/s |
 | Dysk logiczny | Wolne megabajty |
 | Dysk logiczny | Bajty dysku logicznego/s |
-| Memory (Pamięć) | % Dostępnej pamięci. |
-| Memory (Pamięć) | % Dostępnego obszaru wymiany |
-| Memory (Pamięć) | Procent wykorzystania pamięci |
-| Memory (Pamięć) | Używany obszar wymiany % |
-| Memory (Pamięć) | Dostępna pamięć (MB) |
-| Memory (Pamięć) | Dostępny obszar wymiany |
-| Memory (Pamięć) | Odczyty stron/s |
-| Memory (Pamięć) | Zapisy stron/s |
-| Memory (Pamięć) | Strony/s |
-| Memory (Pamięć) | Miejsce używany obszar wymiany (MB) |
-| Memory (Pamięć) | Używana pamięć (MB) |
+| Pamięć | Dostępna pamięć (%) |
+| Pamięć | Dostępny obszar wymiany (%) |
+| Pamięć | Używana pamięć (%) |
+| Pamięć | Używany obszar wymiany (%) |
+| Pamięć | Dostępna pamięć (MB) |
+| Pamięć | Dostępny obszar wymiany (MB) |
+| Pamięć | Odczyty stron/s |
+| Pamięć | Zapisy stron/s |
+| Pamięć | Stron/s |
+| Pamięć | Używany obszar wymiany (MB) |
+| Pamięć | Używana pamięć (MB) |
 | Sieć | Całkowita liczba przesłanych bajtów |
 | Sieć | Całkowita liczba odebranych bajtów |
-| Sieć | Całkowita liczba bajtów |
-| Sieć | Wszystkie pakiety przesyłane |
-| Sieć | Łączna liczba odebranych pakietów |
-| Sieć | Rx łączna liczba błędów |
-| Sieć | Tx łączna liczba błędów |
-| Sieć | Łączna liczba konfliktów |
-| Dysk fizyczny | Średni Czas dysku w s/Odczyt |
-| Dysk fizyczny | Średni Dysku w s/Transfer |
-| Dysk fizyczny | Średni Dysku w s/Zapis |
+| Sieć | Łączna liczba bajtów |
+| Sieć | Całkowita liczba przesłanych pakietów |
+| Sieć | Całkowita liczba odebranych pakietów |
+| Sieć | Całkowita liczba błędów odbierania |
+| Sieć | Całkowita liczba błędów transmisji |
+| Sieć | Łączna liczba kolizji |
+| Dysk fizyczny | Średni czas dysku w s/odczyt |
+| Dysk fizyczny | Średni czas dysku w s/transfer |
+| Dysk fizyczny | Średni czas dysku w s/zapis |
 | Dysk fizyczny | Bajty dysku fizycznego/s |
-| Process | Czas uprzywilejowany PCT |
-| Process | Czas użytkownika protokołu PCT |
-| Process | Używana pamięć (KB pamięci) |
-| Process | Wirtualnej pamięci wspólnej |
+| Proces | Czas uprzywilejowany PCT |
+| Proces | Czas użytkownika PCT |
+| Proces | Używana pamięć (w kilobajtach) |
+| Proces | Wirtualna pamięć udostępniona |
 | Procesor | Czas DPC (%) |
 | Procesor | Czas bezczynności (%) |
 | Procesor | Czas przerwań (%) |
-| Procesor | Czas oczekiwania operacji We/Wy % |
-| Procesor | Czas nieuprzywilejowany (%) |
-| Procesor | Czas uprzywilejowany % |
+| Procesor | Czas oczekiwania operacji we/wy (%) |
+| Procesor | % Całkiem czasu |
+| Procesor | Czas uprzywilejowany (%) |
 | Procesor | Czas procesora (%) |
 | Procesor | Czas użytkownika (%) |
 | System | Wolna pamięć fizyczna |
 | System | Wolne miejsce w plikach stronicowania |
 | System | Wolna pamięć wirtualna |
 | System | Procesy |
-| System | Rozmiar zapisanych w plikach stronicowania |
-| System | Czas pracy |
+| System | Rozmiar zapisany w plikach stronicowania |
+| System | Czas |
 | System | Użytkownicy |
 
 
-Poniżej przedstawiono konfigurację domyślną dla metryki wydajności.
+Poniżej przedstawiono domyślną konfigurację metryk wydajności.
 
     <source>
       type oms_omi
@@ -182,48 +176,48 @@ Poniżej przedstawiono konfigurację domyślną dla metryki wydajności.
     </source>
 
 ## <a name="data-collection"></a>Zbieranie danych
-Usługa Azure Monitor umożliwia zbieranie informacji o wszystkich liczników wydajności określonej w ich określonego interwału dla wszystkich agentów, które mają zainstalowanych liczników.  Dane nie są agregowane, a dane pierwotne są dostępne we wszystkich widokach zapytanie dziennika, przez czas określony przez subskrypcję.
+Azure Monitor zbiera wszystkie określone liczniki wydajności w określonym interwale próbkowania na wszystkich agentach, na których zainstalowano ten licznik.  Dane nie są agregowane i dane pierwotne są dostępne we wszystkich widokach zapytania dziennika przez czas określony przez subskrypcję.
 
 ## <a name="performance-record-properties"></a>Właściwości rekordu wydajności
-Rekordy wydajności mają typ **wydajności** i mają właściwości podane w poniższej tabeli.
+Rekordy wydajności mają typ **wydajności** i mają właściwości opisane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Computer (Komputer) |Komputer, który zostały zebrane zdarzenia. |
+| Computer |Komputer, z którego zostało zebrane zdarzenie. |
 | CounterName |Nazwa licznika wydajności |
-| CounterPath |Pełna ścieżka licznika w formie \\ \\ \<komputera >\\obiekt(wystąpienie)\\licznika. |
+| CounterPath |Pełna ścieżka licznika w formularzu \\\\\<komputerze >\\obiekt (wystąpienie)\\licznik. |
 | CounterValue |Wartość liczbowa licznika. |
-| InstanceName |Nazwa wystąpienia zdarzenia.  Pusty, jeśli żadne wystąpienie. |
-| Nazwa obiektu |Nazwa obiektu wydajności |
-| SourceSystem |Typ agenta, które zostały zebrane dane. <br><br>Połącz OpsManager — Windows agent, bezpośrednio lub SCOM <br> Linux — Wszyscy agenci systemu Linux  <br> AzureStorage — Diagnostyka Azure |
-| TimeGenerated |Data i godzina, które zostało pobrane dane. |
+| Nazwa InstanceName |Nazwa wystąpienia zdarzenia.  Puste, jeśli żadne wystąpienie nie jest. |
+| Obiektu |Nazwa obiektu wydajności |
+| SourceSystem |Typ agenta, z którego zostały zebrane dane. <br><br>OpsManager — Agent systemu Windows, bezpośrednie połączenie lub SCOM <br> Linux — Wszyscy agenci systemu Linux  <br> AzureStorage — Diagnostyka Azure |
+| TimeGenerated |Data i godzina próbkowania danych. |
 
-## <a name="sizing-estimates"></a>Szacuje zmiany rozmiaru
- Przybliżone oszacowanie dla kolekcji określonego licznika w odstępach 10-sekundowych jest około 1 MB na dzień dla każdego wystąpienia.  Można oszacować wymagania dotyczące magazynu określonego licznika przy użyciu następującej formuły.
+## <a name="sizing-estimates"></a>Ustalanie wielkości oszacowań
+ Przybliżone oszacowanie dla zbierania określonego licznika w 10-sekundowych odstępach wynosi około 1 MB dziennie na wystąpienie.  Wymagania dotyczące magazynu określonego licznika można oszacować przy użyciu następującej formuły.
 
     1 MB x (number of counters) x (number of agents) x (number of instances)
 
-## <a name="log-queries-with-performance-records"></a>Dziennik zapytań przy użyciu rekordów wydajności
-Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobierają rekordy wydajności.
+## <a name="log-queries-with-performance-records"></a>Rejestruj zapytania z rekordami wydajności
+W poniższej tabeli przedstawiono różne przykłady zapytań dzienników, które pobierają rekordy wydajności.
 
 | Zapytanie | Opis |
 |:--- |:--- |
-| Perf |Wszystkie dane dotyczące wydajności |
-| Perf &#124; where Computer == "MyComputer" |Wszystkie dane dotyczące wydajności z określonego komputera |
-| Perf &#124; w przypadku, gdy CounterName == "Bieżąca długość kolejki dysku" |Wszystkie dane dotyczące wydajności dla określonego licznika |
-| Perf &#124; gdzie ObjectName == "Procesor" i CounterName == "% czasu procesora" i InstanceName == "_łącznie" &#124; Podsumuj AVGCPU = avg(CounterValue) według komputera |Średnie wykorzystanie procesora CPU na wszystkich komputerach |
-| Perf &#124; w przypadku, gdy CounterName == "% czasu procesora" &#124; summarize AggregatedValue = max(CounterValue) według komputera |Maksymalne wykorzystanie procesora CPU na wszystkich komputerach |
-| Perf &#124; gdzie ObjectName == "DyskLogiczny" i CounterName == "Bieżąca długość kolejki dysku" i komputer == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) przez InstanceName |Średnia długość kolejki na bieżącym dysku we wszystkich wystąpieniach danego komputera |
-| Perf &#124; w przypadku, gdy CounterName == "Transfery dyskowe/s" &#124; summarize AggregatedValue = percentyl (CounterValue 95) według komputera |95\. percentyl z transfery dyskowe/s na wszystkich komputerach |
-| Perf &#124; w przypadku, gdy CounterName == "% czasu procesora" i InstanceName == "_łącznie" &#124; summarize AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), komputer |Średnia co godzinę użycia procesora CPU na wszystkich komputerach |
-| Perf &#124; gdzie komputer == "Mój komputer" i CounterName startswith_cs "%" i InstanceName == "_łącznie" &#124; summarize AggregatedValue = bin (TimeGenerated, 1 godz.), CounterName percentyl (CounterValue 70) | Co godzinę 70 percentyl licznika procent co % dla określonego komputera |
-| Perf &#124; w przypadku, gdy CounterName == "% czasu procesora" i InstanceName == "_łącznie" i komputer == "Mój komputer" &#124; podsumowanie ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = (CounterValue, 75.), percentyl ["max(CounterValue)"] = max(CounterValue) przez bin (TimeGenerated, 1 godz.), komputer |Co godzinę średnią, minimalną, maksymalną i percentyl 75 użycie procesora CPU dla określonego komputera |
-| Perf &#124; gdzie ObjectName == "MSSQL$ INST2: bazy danych" i InstanceName == "master" | Wszystkie dane dotyczące wydajności z obiektu wydajności bazy danych dla bazy danych master z nazwanego wystąpienia programu SQL Server INST2.  
+| Wydajność |Wszystkie dane dotyczące wydajności |
+| Wydajność &#124; , w której komputer = = "MójKomputer" |Wszystkie dane dotyczące wydajności z określonego komputera |
+| Wydajność &#124; , gdzie CounterName = = "Bieżąca długość kolejki dysku" |Wszystkie dane dotyczące wydajności dla określonego licznika |
+| Wydajność &#124; , w której ObjectName = = "Processor" i CounterName = = "% Time procesora" i InstanceName = = &#124; "_TOTAL" podsumowuje AVGCPU = AVG (CounterValue) według komputera |Średnie użycie procesora CPU na wszystkich komputerach |
+| Wydajność &#124; , gdzie CounterName = = "% Time procesora &#124; " podsumowuje AggregatedValue = Max (CounterValue) według komputera |Maksymalne wykorzystanie procesora CPU na wszystkich komputerach |
+| Wydajność &#124; , gdzie ObjectName = = "dysk logiczny" i CounterName = = "Bieżąca długość kolejki dysku" i Computer = = "Moja ComputerName" &#124; podsumowuje AggregatedValue = AVG (CounterValue) przez InstanceName |Średnia bieżąca długość kolejki dysku we wszystkich wystąpieniach danego komputera |
+| Wydajność &#124; , gdzie CounterName = = "transfery dysku/ &#124; s" podsumowuje AggregatedValue = percentyl (CounterValue, 95) przez komputer |używany 95. percentyl transferu dysku/s na wszystkich komputerach |
+| Wydajność &#124; , gdzie CounterName = = "% Time procesora" i InstanceName = = "_Total &#124; " podsumowuje AggregatedValue = AVG (CounterValue) według bin (TimeGenerated, 1 godz), komputer |Średnia godzinowa użycia procesora CPU na wszystkich komputerach |
+| Wydajność &#124; , gdzie Computer = = "MójKomputer" i CounterName startswith_cs "%" i InstanceName = = "_Total &#124; " podsumowuje AggregatedValue = percentyl (CounterValue, 70) według bin (TimeGenerated, 1 godz), CounterName | Co godzinę 70 percentyl każdego licznika% procent dla określonego komputera |
+| Wydajność &#124; , gdzie CounterName = = "% Time procesora" i InstanceName = = "_Total" i Computer = = "MójKomputer &#124; " podsumowuje ["min (CounterValue)"] = min (CounterValue), ["AVG (CounterValue)"] = średnia (CounterValue), ["percentile75 (CounterValue)"] = percentyl (CounterValue, 75), ["Max (CounterValue)"] = Max (CounterValue) według bin (TimeGenerated, 1 godz), Computer |Średnia godzinowa, minimalna, maksymalna i 75-percentyl użycia procesora CPU dla określonego komputera |
+| Wydajność &#124; , gdzie ObjectName = = "MSSQL $ INST2: Databases" i InstanceName = = "Master" | Wszystkie dane dotyczące wydajności z obiektu wydajności bazy danych dla bazy danych Master z nazwanego wystąpienia SQL Server INST2.  
 
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Liczniki wydajności są zbierane z poziomu aplikacji systemu Linux](data-sources-linux-applications.md) tym MySQL i Apache HTTP Server.
-* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
-* Zebrane dane, aby wyeksportować [usługi Power BI](powerbi.md) dodatkowych wizualizacji i analizy.
+## <a name="next-steps"></a>Następne kroki
+* [Zbieraj liczniki wydajności z aplikacji systemu Linux, w](data-sources-linux-applications.md) tym MySQL i Apache HTTP Server.
+* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań.  
+* Eksportuj zebrane dane do [Power BI](powerbi.md) , aby uzyskać dodatkowe wizualizacje i analizę.

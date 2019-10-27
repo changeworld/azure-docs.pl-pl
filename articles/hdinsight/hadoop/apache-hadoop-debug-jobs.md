@@ -1,5 +1,5 @@
 ---
-title: 'Apache Hadoop debugowania: Wyświetlanie dzienników i Interpretowanie komunikatów o błędach — Azure HDInsight'
+title: 'Debugowanie Apache Hadoop: Wyświetlanie dzienników i Interpretowanie komunikatów o błędach — Azure HDInsight'
 description: Informacje o komunikatach o błędach, które mogą zostać wyświetlone podczas administrowania usługą HDInsight przy użyciu programu PowerShell, oraz czynności, które można wykonać w celu odzyskania.
 ms.reviewer: jasonh
 author: ashishthaps
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 847b36c2aab761383a4a25bd4da5c626c4744ce1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059216"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935477"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Analizowanie dzienników Apache Hadoop w usłudze Azure HDInsight
 
@@ -32,7 +32,7 @@ Podczas tworzenia klastra usługi HDInsight są automatycznie tworzone sześć t
 * ambariserverlog
 * ambariagentlog
 
-Nazwy plików tabeli to **\<a ClusterName > DDMonYYYYatHHMMSSsss\<TableName >** .
+Nazwy plików tabeli to **u\<clustername > DDMonYYYYatHHMMSSsss\<tablename >** .
 
 Te tabele zawierają następujące pola:
 
@@ -41,20 +41,20 @@ Te tabele zawierają następujące pola:
 * EventTimestamp
 * Host
 * MALoggingHash
-* Message
-* Nie
+* Wiadomość
+* N
 * PreciseTimeStamp
-* Role
+* Rola
 * RowIndex
 * Dzierżawa
-* TIMESTAMP
+* ZNACZNIK czasu
 * TraceLevel
 
 ### <a name="tools-for-accessing-the-logs"></a>Narzędzia do uzyskiwania dostępu do dzienników
 Dostępnych jest wiele narzędzi do uzyskiwania dostępu do danych w tych tabelach:
 
 * Visual Studio
-* Eksplorator usługi Azure Storage
+* Eksplorator magazynu Azure
 * Power Query dla programu Excel
 
 #### <a name="use-power-query-for-excel"></a>Użyj Power Query dla programu Excel
@@ -71,7 +71,7 @@ Power Query można zainstalować z [Microsoft Power Query dla programu Excel](ht
    
     ![Dzienniki usługi HDInsight Hadoop przechowywane w usłudze Azure Table Storage](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-table-names.png)
 5. Kliknij prawym przyciskiem myszy tabelę hadoopservicelog w okienku **Nawigator** i wybierz pozycję **Edytuj**. Zobaczysz cztery kolumny. Opcjonalnie Usuń **klucz partycji**, **klucz wiersza**i kolumny **sygnatur czasowych** , zaznaczając je, a następnie klikając pozycję **Usuń kolumny** na Wstążce.
-6. Kliknij ikonę rozwijania w kolumnie zawartość, aby wybrać kolumny, które chcesz zaimportować do arkusza kalkulacyjnego programu Excel. Dla tej demonstracji wybieram element TraceLevel i ComponentName: Może to zawierać podstawowe informacje o składnikach, w których wystąpiły problemy.
+6. Kliknij ikonę rozwijania w kolumnie zawartość, aby wybrać kolumny, które chcesz zaimportować do arkusza kalkulacyjnego programu Excel. Dla tej demonstracji wybieram element TraceLevel i ComponentName: może to dać mi podstawowe informacje o składnikach, w których wystąpiły problemy.
    
     ![Dzienniki usługi HDInsight Hadoop Wybieranie kolumn Excel](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png "Dzienniki usługi HDInsight Hadoop Wybieranie kolumn Excel")
 7. Kliknij przycisk **OK** , aby zaimportować dane.
@@ -89,7 +89,7 @@ Teraz można użyć programu Excel do filtrowania i sortowania według potrzeb. 
 3. W programie **Cloud Explorer**wybierz pozycję **typy zasobów**.  Druga dostępna opcja to **grupy zasobów**.
 4. Rozwiń węzeł **konta magazynu**, domyślne konto magazynu dla klastra, a następnie wybierz pozycję **tabele**.
 5. Kliknij dwukrotnie pozycję **hadoopservicelog**.
-6. Dodaj filtr. Przykład:
+6. Dodaj filtr. Na przykład:
    
         TraceLevel eq 'ERROR'
    
@@ -98,16 +98,15 @@ Teraz można użyć programu Excel do filtrowania i sortowania według potrzeb. 
     Aby uzyskać więcej informacji na temat konstruowania filtrów, zobacz [konstruowanie ciągów filtru dla projektanta tabel](../../vs-azure-tools-table-designer-construct-filter-strings.md).
 
 ## <a name="logs-written-to-azure-blob-storage"></a>Dzienniki zapisane na platformie Azure Blob Storage
+
 Dzienniki zapisane w tabelach platformy Azure zapewniają jeden poziom wglądu w informacje o tym, co dzieje się z klastrem usługi HDInsight. Jednak te tabele nie udostępniają dzienników na poziomie zadania, które mogą być pomocne w dalszych krokach w przypadku wystąpienia problemów. Aby zapewnić ten kolejny poziom szczegółowości, klastry usługi HDInsight są skonfigurowane do zapisywania dzienników zadań na koncie usługi Blob Storage dla każdego zadania przesyłanego za poorednictwem Templeton. Praktycznie oznacza to, że zadania są przesyłane za pomocą poleceń cmdlet Microsoft Azure PowerShell lub interfejsów API przesyłania zadań platformy .NET, a nie do klastra przesłanych za pośrednictwem protokołu RDP/wiersza polecenia. 
 
 Aby wyświetlić dzienniki, zobacz [dostęp Apache Hadoop dzienników aplikacji przędzy w usłudze HDInsight opartej na systemie Linux](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
-
-Aby uzyskać więcej informacji o dziennikach aplikacji, zobacz [upraszczanie dzienników użytkowników i zarządzanie dostępem w Apache HADOOP przędzy](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
-
-
 ## <a name="view-cluster-health-and-job-logs"></a>Wyświetlanie kondycji klastra i dzienników zadań
+
 ### <a name="access-the-ambari-ui"></a>Dostęp do interfejsu użytkownika Ambari
+
 W Azure Portal kliknij nazwę klastra usługi HDInsight, aby otworzyć okienko klaster. W okienku klaster kliknij pozycję **pulpit nawigacyjny**.
 
 ![Pulpit nawigacyjny uruchamiania klastra usługi HDInsight](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
@@ -133,184 +132,184 @@ Komunikaty o błędach opisane w tej sekcji są udostępniane, aby pomóc użytk
 Niektóre z tych komunikatów o błędach mogą być również widoczne w Azure Portal, gdy jest używany do zarządzania klastrami usługi HDInsight. Jednak inne komunikaty o błędach, które mogą wystąpić, są mniej szczegółowe ze względu na ograniczenia dotyczące akcji zaradczych możliwych w tym kontekście. Inne komunikaty o błędach są udostępniane w kontekstach, w których ograniczenie jest oczywiste. 
 
 ### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
-* **Opis**: Podaj szczegóły usługi Azure SQL Database dla co najmniej jednego składnika, aby użyć niestandardowych ustawień dla Hive i magazynów metadanych Oozie.
-* Środki zaradcze: Użytkownik musi podać prawidłowy Magazyn bazy danych SQL Azure i ponowić próbę wykonania żądania.  
+* **Opis**: Podaj szczegóły usługi Azure SQL Database dla co najmniej jednego składnika, aby użyć niestandardowych ustawień dla programu Hive i magazynów metadanych Oozie.
+* Środki **zaradcze**: użytkownik musi podać prawidłowy Magazyn bazy danych SQL Azure i ponowić próbę wykonania żądania.  
 
 ### <a id="AzureRegionNotSupported"></a>AzureRegionNotSupported
-* **Opis**: Nie można utworzyć klastra w regionie *nameOfYourRegion*. Użyj prawidłowego regionu usługi HDInsight i ponów próbę żądania.
-* Środki zaradcze: Klient powinien utworzyć region klastra, który jest w tej chwili obsługiwany: Azja Południowo-Wschodnia, Europa Zachodnia, Europa Północna, Wschodnie stany USA lub zachodnie stany USA.  
+* **Opis**: nie można utworzyć klastra w regionie *nameOfYourRegion*. Użyj prawidłowego regionu usługi HDInsight i ponów próbę żądania.
+* Środki **zaradcze**: klient powinien utworzyć region klastra, który jest w tej chwili obsługiwany: Azja Południowo-Wschodnia, Europa Północna, Europa Zachodnia, Wschodnie stany USA lub zachodnie stany USA.  
 
 ### <a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound
-* **Opis**: Serwer nie może znaleźć żądanego rekordu klastra.  
-* Środki zaradcze: Spróbuj ponownie wykonać operację.
+* **Opis**: serwer nie może znaleźć żądanego rekordu klastra.  
+* Środki **zaradcze**: spróbuj ponownie wykonać operację.
 
 ### <a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord
-* **Opis**: Nazwa DNS klastra *yourDnsName* jest nieprawidłowa. Upewnij się, że nazwa zaczyna się od znaków alfanumerycznych i zawiera znaki specjalne "-".  
-* Środki zaradcze: Upewnij się, że używasz prawidłowej nazwy DNS dla klastra, który rozpoczyna się i zamyka alfanumeryczne i nie zawiera znaków specjalnych innych niż kreska "-", a następnie ponów próbę wykonania operacji.
+* **Opis**: nazwa DNS klastra *yourDnsName* jest nieprawidłowa. Upewnij się, że nazwa zaczyna się od znaków alfanumerycznych i zawiera znaki specjalne "-".  
+* Środki **zaradcze**: Upewnij się, że użyto prawidłowej nazwy DNS dla klastra rozpoczynającego się i kończącego znakiem alfanumerycznym i nie zawiera żadnych znaków specjalnych innych niż kreska "-", a następnie spróbuj ponownie wykonać operację.
 
 ### <a id="ClusterNameUnavailable"></a>ClusterNameUnavailable
 * **Opis**: Nazwa klastra *yourClusterName* jest niedostępna. Wybierz inną nazwę.  
-* Środki zaradcze: Użytkownik powinien określić wartość ClusterName, która jest unikatowa i nie istnieje, i ponowić próbę. Jeśli użytkownik korzysta z portalu, interfejs użytkownika będzie powiadamiał o tym, czy nazwa klastra jest już używana podczas tworzenia kroków.
+* Środki **zaradcze**: użytkownik powinien określić wartość ClusterName, która jest unikatowa i nie istnieje, i ponowić próbę. Jeśli użytkownik korzysta z portalu, interfejs użytkownika będzie powiadamiał o tym, czy nazwa klastra jest już używana podczas tworzenia kroków.
 
 ### <a id="ClusterPasswordInvalid"></a>ClusterPasswordInvalid
-* **Opis**: Hasło klastra jest nieprawidłowe. Hasło musi składać się z co najmniej 10 znaków i musi zawierać co najmniej jedną cyfrę, wielkie litery, małe litery i znaki specjalne bez spacji i nie może zawierać nazwy użytkownika w ramach tej funkcji.  
-* Środki zaradcze: Podaj prawidłowe hasło klastra, a następnie spróbuj ponownie wykonać operację.
+* **Opis**: hasło klastra jest nieprawidłowe. Hasło musi składać się z co najmniej 10 znaków i musi zawierać co najmniej jedną cyfrę, wielkie litery, małe litery i znaki specjalne bez spacji i nie może zawierać nazwy użytkownika w ramach tej funkcji.  
+* Środki **zaradcze**: Podaj prawidłowe hasło klastra, a następnie spróbuj ponownie wykonać operację.
 
 ### <a id="ClusterUserNameInvalid"></a>ClusterUserNameInvalid
 * **Opis**: Nazwa użytkownika klastra jest nieprawidłowa. Upewnij się, że nazwa użytkownika nie zawiera znaków specjalnych ani spacji.  
-* Środki zaradcze: Podaj prawidłową nazwę użytkownika klastra, a następnie spróbuj ponownie wykonać operację.
+* Środki **zaradcze**: Podaj prawidłową nazwę użytkownika klastra i spróbuj ponownie wykonać operację.
 
 ### <a id="ClusterUserNameInvalidReservedWord"></a>ClusterUserNameInvalidReservedWord
-* **Opis**: Nazwa DNS klastra *yourDnsClusterName* jest nieprawidłowa. Upewnij się, że nazwa zaczyna się od znaków alfanumerycznych i zawiera znaki specjalne "-".  
-* Środki zaradcze: Podaj prawidłową nazwę użytkownika klastra DNS i spróbuj ponownie wykonać operację.
+* **Opis**: nazwa DNS klastra *yourDnsClusterName* jest nieprawidłowa. Upewnij się, że nazwa zaczyna się od znaków alfanumerycznych i zawiera znaki specjalne "-".  
+* Środki **zaradcze**: Podaj prawidłową nazwę użytkownika klastra DNS i spróbuj ponownie wykonać operację.
 
 ### <a id="ContainerNameMisMatchWithDnsName"></a>ContainerNameMisMatchWithDnsName
-* **Opis**: Nazwa kontenera w identyfikatorze URI *yourcontainerURI* i nazwa DNS *yourDnsName* w treści żądania muszą być takie same.  
-* Środki zaradcze: Upewnij się, że nazwa kontenera i nazwa DNS są takie same, a następnie spróbuj ponownie wykonać operację.
+* **Opis**: nazwa kontenera w identyfikatorze URI *YOURCONTAINERURI* i nazwa DNS *yourDnsName* w treści żądania muszą być takie same.  
+* Środki **zaradcze**: Upewnij się, że nazwa kontenera i nazwa DNS są takie same, a następnie spróbuj ponownie wykonać operację.
 
 ### <a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound
-* **Opis**: Nieprawidłowa konfiguracja klastra. Nie można znaleźć żadnych definicji węzłów danych w rozmiarze węzła.  
-* Środki zaradcze: Spróbuj ponownie wykonać operację.
+* **Opis**: nieprawidłowa konfiguracja klastra. Nie można znaleźć żadnych definicji węzłów danych w rozmiarze węzła.  
+* Środki **zaradcze**: spróbuj ponownie wykonać operację.
 
 ### <a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure
-* **Opis**: Usuwanie wdrożenia nie powiodło się dla klastra  
-* Środki zaradcze: Spróbuj ponownie wykonać operację usuwania.
+* **Opis**: usuwanie wdrożenia nie powiodło się dla klastra  
+* Środki **zaradcze**: ponów próbę wykonania operacji usuwania.
 
 ### <a id="DnsMappingNotFound"></a>DnsMappingNotFound
-* **Opis**: Błąd konfiguracji usługi. Nie znaleziono wymaganych informacji dotyczących mapowania DNS.  
-* Środki zaradcze: Usuń klaster i Utwórz nowy klaster.
+* **Opis**: błąd konfiguracji usługi. Nie znaleziono wymaganych informacji dotyczących mapowania DNS.  
+* Środki **zaradcze**: Usuń klaster i Utwórz nowy klaster.
 
 ### <a id="DuplicateClusterContainerRequest"></a>DuplicateClusterContainerRequest
-* **Opis**: Próba utworzenia duplikatu kontenera klastra. Rekord istnieje dla elementu *nameOfYourContainer* , ale elementy ETag nie są zgodne.
-* Środki zaradcze: Podaj unikatową nazwę kontenera, a następnie spróbuj ponownie wykonać operację tworzenia.
+* **Opis**: podjęto próbę utworzenia duplikatu kontenera klastra. Rekord istnieje dla elementu *nameOfYourContainer* , ale elementy ETag nie są zgodne.
+* Środki **zaradcze**: Podaj unikatową nazwę dla kontenera, a następnie spróbuj ponownie wykonać operację tworzenia.
 
 ### <a id="DuplicateClusterInHostedService"></a>DuplicateClusterInHostedService
-* **Opis**: Usługa hostowana *nameOfYourHostedService* już zawiera klaster. Usługa hostowana nie może zawierać wielu klastrów  
-* Środki zaradcze: Hostowanie klastra w innej usłudze hostowanej.
+* **Opis**: *nameOfYourHostedService* usługi hostowanej zawiera już klaster. Usługa hostowana nie może zawierać wielu klastrów  
+* Środki **zaradcze**: hostowanie klastra w innej usłudze hostowanej.
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
-* **Opis**: Serwer nie może zaktualizować stanu wdrożenia klastra.  
-* Środki zaradcze: Spróbuj ponownie wykonać operację. Jeśli wystąpi wiele razy, skontaktuj się z CSS.
+* **Opis**: serwer nie może zaktualizować stanu wdrożenia klastra.  
+* Środki **zaradcze**: spróbuj ponownie wykonać operację. Jeśli wystąpi wiele razy, skontaktuj się z CSS.
 
 ### <a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered
-* **Opis**: *YourClusterName* klastra został usunięty w ramach konserwacji. Utwórz ponownie klaster.
-* Środki zaradcze: Utwórz ponownie klaster.
+* **Opis**: *yourClusterName* klastra został usunięty w ramach konserwacji. Utwórz ponownie klaster.
+* Środki **zaradcze**: Utwórz ponownie klaster.
 
 ### <a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound
-* **Opis**: Nieprawidłowa konfiguracja klastra. W rozmiarach węzłów nie znaleziono wymaganej konfiguracji węzła głównego.
-* Środki zaradcze: Spróbuj ponownie wykonać operację.
+* **Opis**: nieprawidłowa konfiguracja klastra. W rozmiarach węzłów nie znaleziono wymaganej konfiguracji węzła głównego.
+* Środki **zaradcze**: spróbuj ponownie wykonać operację.
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
-* **Opis**: Nie można utworzyć usługi hostowanej *nameOfYourHostedService*. Spróbuj ponownie wykonać żądanie.  
-* Środki zaradcze: Ponów żądanie.
+* **Opis**: nie można utworzyć *nameOfYourHostedService*usługi hostowanej. Spróbuj ponownie wykonać żądanie.  
+* Środki **zaradcze**: ponów próbę wykonania żądania.
 
 ### <a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment
-* **Opis**: Usługa hostowana *nameOfYourHostedService* ma już wdrożenie produkcyjne. Usługa hostowana nie może zawierać wielu wdrożeń produkcyjnych. Spróbuj ponownie wykonać żądanie, używając innej nazwy klastra.
-* Środki zaradcze: Użyj innej nazwy klastra i ponów próbę wykonania żądania.
+* **Opis**: usługa hostowana *nameOfYourHostedService* ma już wdrożenie produkcyjne. Usługa hostowana nie może zawierać wielu wdrożeń produkcyjnych. Spróbuj ponownie wykonać żądanie, używając innej nazwy klastra.
+* Środki **zaradcze**: Użyj innej nazwy klastra i ponów próbę wykonania żądania.
 
 ### <a id="HostedServiceNotFound"></a>HostedServiceNotFound
-* **Opis**: Nie można znaleźć *NameOfYourHostedService* usługi hostowanej dla klastra.  
-* Środki zaradcze: Jeśli klaster jest w stanie błędu, usuń go, a następnie spróbuj ponownie.
+* **Opis**: nie można odnaleźć *nameOfYourHostedService* usługi hostowanej dla klastra.  
+* Środki **zaradcze**: Jeśli klaster jest w stanie błędu, usuń go, a następnie spróbuj ponownie.
 
 ### <a id="HostedServiceWithNoDeployment"></a>HostedServiceWithNoDeployment
-* **Opis**: *NameOfYourHostedService* usługi hostowanej nie ma skojarzonego wdrożenia.  
-* Środki zaradcze: Jeśli klaster jest w stanie błędu, usuń go, a następnie spróbuj ponownie.
+* **Opis**: *nameOfYourHostedService* usługi hostowanej nie ma skojarzonego wdrożenia.  
+* Środki **zaradcze**: Jeśli klaster jest w stanie błędu, usuń go, a następnie spróbuj ponownie.
 
 ### <a id="InsufficientResourcesCores"></a>InsufficientResourcesCores
-* **Opis**: *YourSubscriptionId* identyfikatora subskrypcji nie ma rdzeni, aby utworzyć *yourClusterName*klastra. Wymagane: *resourcesRequired*, dostępne: *resourcesAvailable*.  
-* Środki zaradcze: Zwolnij zasoby w ramach subskrypcji lub Zwiększ zasoby dostępne dla subskrypcji i spróbuj ponownie utworzyć klaster.
+* **Opis**: *yourSubscriptionId* identyfikatora subskrypcji nie ma rdzeni, aby utworzyć *yourClusterName*klastra. Wymagane: *resourcesRequired*, dostępne: *resourcesAvailable*.  
+* Środki **zaradcze**: Zwolnij zasoby w ramach subskrypcji lub Zwiększ zasoby dostępne dla subskrypcji i spróbuj ponownie utworzyć klaster.
 
 ### <a id="InsufficientResourcesHostedServices"></a>InsufficientResourcesHostedServices
-* **Opis**: *YourSubscriptionId* o identyfikatorze subskrypcji nie ma przydziału dla nowego usłudze hostowanej do utworzenia *yourClusterName*klastra.  
-* Środki zaradcze: Zwolnij zasoby w ramach subskrypcji lub Zwiększ zasoby dostępne dla subskrypcji i spróbuj ponownie utworzyć klaster.
+* **Opis**: Identyfikator subskrypcji *yourSubscriptionId* nie ma przydziału dla nowego usłudze hostowanej do tworzenia *yourClusterName*klastra.  
+* Środki **zaradcze**: Zwolnij zasoby w ramach subskrypcji lub Zwiększ zasoby dostępne dla subskrypcji i spróbuj ponownie utworzyć klaster.
 
 ### <a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest
 * **Opis**: Serwer napotkał błąd wewnętrzny. Spróbuj ponownie wykonać żądanie.  
-* Środki zaradcze: Ponów żądanie.
+* Środki **zaradcze**: ponów próbę wykonania żądania.
 
 ### <a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation
-* **Opis**: Lokalizacja usługi Azure Storage *Dataregionname* nie jest prawidłową lokalizacją. Upewnij się, że region jest poprawny, i ponów próbę żądania.
-* Środki zaradcze: Wybierz lokalizację magazynu obsługującą usługi HDInsight, sprawdź, czy klaster jest w tej samej lokalizacji, a następnie spróbuj ponownie wykonać operację.
+* **Opis**: Lokalizacja usługi Azure Storage *dataregionname* nie jest prawidłową lokalizacją. Upewnij się, że region jest poprawny, i ponów próbę żądania.
+* Środki **zaradcze**: Wybierz lokalizację magazynu obsługującą usługi HDInsight, sprawdź, czy klaster znajduje się na tym samym dysku, a następnie spróbuj ponownie wykonać operację.
 
 ### <a id="InvalidNodeSizeForDataNode"></a>InvalidNodeSizeForDataNode
 * **Opis**: Nieprawidłowy rozmiar maszyny wirtualnej dla węzłów danych. Tylko rozmiar dużej maszyny wirtualnej jest obsługiwany dla wszystkich węzłów danych.  
-* Środki zaradcze: Określ obsługiwany rozmiar węzła dla węzła danych, a następnie spróbuj ponownie wykonać operację.
+* Środki **zaradcze**: Określ obsługiwany rozmiar węzła dla węzła danych, a następnie spróbuj ponownie wykonać operację.
 
 ### <a id="InvalidNodeSizeForHeadNode"></a>InvalidNodeSizeForHeadNode
 * **Opis**: Nieprawidłowy rozmiar maszyny wirtualnej dla węzła głównego. Tylko rozmiar maszyny wirtualnej "ExtraLarge" jest obsługiwany dla węzła głównego.  
-* Środki zaradcze: Określ obsługiwany rozmiar węzła dla węzła głównego, a następnie spróbuj ponownie wykonać operację.
+* Środki **zaradcze**: Określ obsługiwany rozmiar węzła dla węzła głównego, a następnie spróbuj ponownie wykonać operację.
 
 ### <a id="InvalidRightsForDeploymentDeletion"></a>InvalidRightsForDeploymentDeletion
-* **Opis**: Używany identyfikator subskrypcji *yourSubscriptionId* nie ma wystarczających uprawnień do wykonania operacji usuwania dla *yourClusterName*klastra.  
-* Środki zaradcze: Jeśli klaster jest w stanie błędu, Porzuć go, a następnie spróbuj ponownie.  
+* **Opis**: używany identyfikator subskrypcji *yourSubscriptionId* nie ma wystarczających uprawnień do wykonania operacji usuwania dla *yourClusterName*klastra.  
+* Środki **zaradcze**: Jeśli klaster jest w stanie błędu, Porzuć go i spróbuj ponownie.  
 
 ### <a id="InvalidStorageAccountBlobContainerName"></a>InvalidStorageAccountBlobContainerName
-* **Opis**: Nazwa kontenera obiektów BLOB konta magazynu zewnętrznego *yourContainerName* jest nieprawidłowa. Upewnij się, że nazwa rozpoczyna się od litery i zawiera tylko małe litery, cyfry i myślnik.  
-* Środki zaradcze: Określ prawidłową nazwę kontenera obiektów BLOB konta magazynu, a następnie spróbuj ponownie wykonać operację.
+* **Opis**: nazwa kontenera obiektów BLOB zewnętrznego konta magazynu *yourContainerName* jest nieprawidłowa. Upewnij się, że nazwa rozpoczyna się od litery i zawiera tylko małe litery, cyfry i myślnik.  
+* Środki **zaradcze**: Określ prawidłową nazwę kontenera obiektów BLOB konta magazynu i spróbuj ponownie wykonać operację.
 
 ### <a id="InvalidStorageAccountConfigurationSecretKey"></a>InvalidStorageAccountConfigurationSecretKey
 * **Opis**: Konfiguracja konta magazynu zewnętrznego *yourStorageAccountName* jest wymagana, aby można było ustawić szczegóły klucza tajnego.  
-* Środki zaradcze: Podaj prawidłowy klucz tajny dla konta magazynu, a następnie spróbuj ponownie wykonać operację.
+* Środki **zaradcze**: Określ prawidłowy klucz tajny dla konta magazynu, a następnie spróbuj ponownie wykonać operację.
 
 ### <a id="InvalidVersionHeaderFormat"></a>InvalidVersionHeaderFormat
-* **Opis**: *YourVersionHeader* nagłówka wersji nie ma prawidłowego formatu rrrr-mm-dd.  
-* Środki zaradcze: Określ prawidłowy format nagłówka wersji i ponów próbę żądania.
+* **Opis**: *yourVersionHeader* nagłówka wersji jest w nieprawidłowym formacie RRRR-MM-DD.  
+* Środki **zaradcze**: Określ prawidłowy format nagłówka wersji i ponów próbę żądania.
 
 ### <a id="MoreThanOneHeadNode"></a>MoreThanOneHeadNode
-* **Opis**: Nieprawidłowa konfiguracja klastra. Znaleziono więcej niż jedną konfigurację węzła głównego.  
-* Środki zaradcze: Edytuj konfigurację, aby określić tylko jeden węzeł główny.
+* **Opis**: nieprawidłowa konfiguracja klastra. Znaleziono więcej niż jedną konfigurację węzła głównego.  
+* Środki **zaradcze**: edytuj konfigurację, aby określić tylko jeden węzeł główny.
 
 ### <a id="OperationTimedOutRetryRequest"></a>OperationTimedOutRetryRequest
-* **Opis**: Nie można ukończyć operacji w dozwolonym czasie lub maksymalna liczba ponownych prób. Spróbuj ponownie wykonać żądanie.  
-* Środki zaradcze: Ponów żądanie.
+* **Opis**: nie można ukończyć operacji w dozwolonym czasie lub maksymalna liczba ponownych prób. Spróbuj ponownie wykonać żądanie.  
+* Środki **zaradcze**: ponów próbę wykonania żądania.
 
 ### <a id="ParameterNullOrEmpty"></a>ParameterNullOrEmpty
-* **Opis**: Parametr *yourParameterName* nie może mieć wartości null ani być pusty.  
-* Środki zaradcze: Określ prawidłową wartość parametru.
+* **Opis**: parametr *yourParameterName* nie może mieć wartości null ani być pusty.  
+* Środki **zaradcze**: Określ prawidłową wartość parametru.
 
 ### <a id="PreClusterCreationValidationFailure"></a>PreClusterCreationValidationFailure
-* **Opis**: Co najmniej jeden z danych wejściowych żądania utworzenia klastra jest nieprawidłowy. Upewnij się, że wartości wejściowe są poprawne, i ponów próbę żądania.  
-* Środki zaradcze: Upewnij się, że wartości wejściowe są poprawne, i ponów próbę żądania.
+* **Opis**: co najmniej jeden z danych wejściowych żądania utworzenia klastra jest nieprawidłowy. Upewnij się, że wartości wejściowe są poprawne, i ponów próbę żądania.  
+* Środki **zaradcze**: Upewnij się, że wartości wejściowe są poprawne, i ponów próbę żądania.
 
 ### <a id="RegionCapabilityNotAvailable"></a>RegionCapabilityNotAvailable
-* **Opis**: Funkcja regionu jest niedostępna dla regionu *yourRegionName* i identyfikatora subskrypcji *yourSubscriptionId*.  
-* Środki zaradcze: Określ region obsługujący klastry usługi HDInsight. Ogólnie Obsługiwane regiony są następujące: Azja Południowo-Wschodnia, Europa Zachodnia, Europa Północna, Wschodnie stany USA lub zachodnie stany USA.
+* **Opis**: funkcja regionu jest niedostępna dla regionu *YourRegionName* i identyfikatora subskrypcji *yourSubscriptionId*.  
+* Środki **zaradcze**: Określ region obsługujący klastry usługi HDInsight. Ogólnie Obsługiwane regiony to: Azja Południowo-Wschodnia, Europa Zachodnia, Europa Północna, Wschodnie stany USA lub zachodnie stany USA.
 
 ### <a id="StorageAccountNotColocated"></a>StorageAccountNotColocated
-* **Opis**: Konto magazynu *yourStorageAccountName* jest w regionie *currentRegionName*. Powinien być taki sam jak region klastra *yourClusterRegionName*.  
-* Środki zaradcze: Określ konto magazynu w tym samym regionie, w którym znajduje się klaster, lub jeśli Twoje dane są już na koncie magazynu, Utwórz nowy klaster w tym samym regionie, w którym znajduje się istniejące konto magazynu. Jeśli używasz portalu, interfejs użytkownika powiadomi o tym problem z wyprzedzeniem.
+* **Opis**: konto magazynu *yourStorageAccountName* jest w regionie *currentRegionName*. Powinien być taki sam jak region klastra *yourClusterRegionName*.  
+* Środki **zaradcze**: Określ konto magazynu w tym samym regionie, w którym znajduje się klaster, lub jeśli dane są już na koncie magazynu, Utwórz nowy klaster w tym samym regionie, w którym znajduje się istniejące konto magazynu. Jeśli używasz portalu, interfejs użytkownika powiadomi o tym problem z wyprzedzeniem.
 
 ### <a id="SubscriptionIdNotActive"></a>SubscriptionIdNotActive
-* **Opis**: Określony identyfikator subskrypcji *yourSubscriptionId* nie jest aktywny.  
-* Środki zaradcze: Aktywuj ponownie subskrypcję lub Uzyskaj nową prawidłową subskrypcję.
+* **Opis**: dany identyfikator subskrypcji *yourSubscriptionId* nie jest aktywny.  
+* Środki **zaradcze**: Aktywuj ponownie subskrypcję lub Uzyskaj nową prawidłową subskrypcję.
 
 ### <a id="SubscriptionIdNotFound"></a>SubscriptionIdNotFound
-* **Opis**: Nie można znaleźć identyfikatora subskrypcji *yourSubscriptionId* .  
-* Środki zaradcze: Upewnij się, że identyfikator subskrypcji jest prawidłowy, a następnie spróbuj ponownie wykonać operację.
+* **Opis**: nie można odnaleźć identyfikatora subskrypcji *yourSubscriptionId* .  
+* Środki **zaradcze**: Sprawdź, czy identyfikator subskrypcji jest prawidłowy, a następnie spróbuj ponownie wykonać operację.
 
 ### <a id="UnableToResolveDNS"></a>UnableToResolveDNS
-* **Opis**: Nie można rozpoznać *YOURDNSURL*DNS. Upewnij się, że podano w pełni kwalifikowany adres URL dla punktu końcowego obiektu BLOB.  
-* Środki zaradcze: Podaj prawidłowy adres URL obiektu BLOB. Adres URL musi być w pełni prawidłowy, w tym zaczynający się od *http://* i kończącego na *. com*.
+* **Opis**: nie można rozpoznać *yourDnsUrl*DNS. Upewnij się, że podano w pełni kwalifikowany adres URL dla punktu końcowego obiektu BLOB.  
+* Środki **zaradcze**: Podaj prawidłowy adres URL obiektu BLOB. Adres URL musi być w pełni prawidłowy, w tym zaczynający się od *http://* i kończącego na *. com*.
 
 ### <a id="UnableToVerifyLocationOfResource"></a>UnableToVerifyLocationOfResource
-* **Opis**: Nie można zweryfikować lokalizacji *yourDnsUrl*zasobów. Upewnij się, że podano w pełni kwalifikowany adres URL dla punktu końcowego obiektu BLOB.  
-* Środki zaradcze: Podaj prawidłowy adres URL obiektu BLOB. Adres URL musi być w pełni prawidłowy, w tym zaczynający się od *http://* i kończącego na *. com*.
+* **Opis**: nie można zweryfikować lokalizacji *yourDnsUrl*zasobów. Upewnij się, że podano w pełni kwalifikowany adres URL dla punktu końcowego obiektu BLOB.  
+* Środki **zaradcze**: Podaj prawidłowy adres URL obiektu BLOB. Adres URL musi być w pełni prawidłowy, w tym zaczynający się od *http://* i kończącego na *. com*.
 
 ### <a id="VersionCapabilityNotAvailable"></a>VersionCapabilityNotAvailable
-* **Opis**: Funkcja wersji nie jest dostępna dla wersji *specifiedVersion* i subskrypcji o identyfikatorze *yourSubscriptionId*.  
-* Środki zaradcze: Wybierz dostępną wersję, a następnie spróbuj ponownie wykonać operację.
+* **Opis**: funkcja wersji nie jest dostępna dla wersji *specifiedVersion* i subskrypcji o identyfikatorze *yourSubscriptionId*.  
+* Środki **zaradcze**: Wybierz wersję, która jest dostępna, i spróbuj ponownie wykonać operację.
 
 ### <a id="VersionNotSupported"></a>VersionNotSupported
-* **Opis**: Wersja *specifiedVersion* nie jest obsługiwana.
-* Środki zaradcze: Wybierz obsługiwaną wersję, a następnie spróbuj ponownie wykonać operację.
+* **Opis**: wersja *specifiedVersion* nie jest obsługiwana.
+* Środki **zaradcze**: wybierz obsługiwaną wersję, a następnie spróbuj ponownie wykonać operację.
 
 ### <a id="VersionNotSupportedInRegion"></a>VersionNotSupportedInRegion
-* **Opis**: Wersja *specifiedVersion* jest niedostępna w regionie usługi Azure *specifiedRegion*.  
-* Środki zaradcze: Wybierz wersję obsługiwaną w określonym regionie, a następnie spróbuj ponownie wykonać operację.
+* **Opis**: wersja *specifiedVersion* jest niedostępna w regionie usługi Azure *specifiedRegion*.  
+* Środki **zaradcze**: Wybierz wersję obsługiwaną w określonym regionie, a następnie spróbuj ponownie wykonać operację.
 
 ### <a id="WasbAccountConfigNotFound"></a>WasbAccountConfigNotFound
-* **Opis**: Nieprawidłowa konfiguracja klastra. Nie znaleziono wymaganej konfiguracji konta WASB na koncie zewnętrznym.  
-* Środki zaradcze: Sprawdź, czy konto istnieje i czy jest poprawnie określone w konfiguracji, a następnie spróbuj ponownie wykonać operację.
+* **Opis**: nieprawidłowa konfiguracja klastra. Nie znaleziono wymaganej konfiguracji konta WASB na koncie zewnętrznym.  
+* Środki **zaradcze**: Sprawdź, czy konto istnieje i czy jest poprawnie określone w konfiguracji, a następnie spróbuj ponownie wykonać operację.
 
 ## <a name="next-steps"></a>Następne kroki
 

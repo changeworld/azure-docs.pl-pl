@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 3c9e5185bfcaf99765ec29874cea407fe55bfb17
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 131a71e27bba1c37b6d50b718b8eac788109a59f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058326"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933768"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — Zabezpieczanie klastra przy użyciu zasad zabezpieczeń na platformie Azure Kubernetes Service (AKS)
 
@@ -106,10 +106,10 @@ NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP  
 privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-Zasady zabezpieczeń *uprzywilejowany* pod są stosowane do każdego uwierzytelnionego użytkownika w klastrze AKS. To przypisanie jest kontrolowane przez ClusterRoles i ClusterRoleBindings. Użyj polecenia [polecenia kubectl Get clusterrolebindings][kubectl-get] i Wyszukaj wartość default: *instrukcja uprzywilejowana:* Binding:
+Zasady zabezpieczeń *uprzywilejowany* pod są stosowane do każdego uwierzytelnionego użytkownika w klastrze AKS. To przypisanie jest kontrolowane przez ClusterRoles i ClusterRoleBindings. Użyj polecenia [polecenia kubectl Get clusterrolebindings][kubectl-get] i Wyszukaj *wartość domyślną: Privileged* : Binding:
 
 ```console
-kubectl get clusterrolebindings default:priviledged -o yaml
+kubectl get clusterrolebindings default:privileged -o yaml
 ```
 
 Jak pokazano w następujących wąskich danych wyjściowych, *PSP: ClusterRole z ograniczeniami* jest przypisany do dowolnego *systemu: Użytkownicy uwierzytelnieni* . Ta możliwość zapewnia podstawowy poziom ograniczeń bez zdefiniowanych zasad.
@@ -119,12 +119,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   [...]
-  name: default:priviledged
+  name: default:privileged
   [...]
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: psp:priviledged
+  name: psp:privileged
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
@@ -135,7 +135,7 @@ Ważne jest, aby zrozumieć, jak te domyślne zasady współdziałają z żądan
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>Tworzenie użytkownika testowego w klastrze AKS
 
-Domyślnie w przypadku używania polecenia [AZ AKS Get-Credentials][az-aks-get-credentials] poświadczenia *administratora* dla klastra AKS są `kubectl` dodawane do konfiguracji. Użytkownik administracyjny pomija wymuszanie zasad zabezpieczeń pod. Jeśli używasz integracji Azure Active Directory dla klastrów AKS, możesz zalogować się przy użyciu poświadczeń użytkownika niebędącego administratorem, aby zobaczyć wymuszanie zasad w akcji. W tym artykule utworzyszmy konto użytkownika testowego w klastrze AKS, którego możesz użyć.
+Domyślnie w przypadku używania polecenia [AZ AKS Get-Credentials][az-aks-get-credentials] poświadczenia *administratora* dla klastra AKS są dodawane do konfiguracji `kubectl`. Użytkownik administracyjny pomija wymuszanie zasad zabezpieczeń pod. Jeśli używasz integracji Azure Active Directory dla klastrów AKS, możesz zalogować się przy użyciu poświadczeń użytkownika niebędącego administratorem, aby zobaczyć wymuszanie zasad w akcji. W tym artykule utworzyszmy konto użytkownika testowego w klastrze AKS, którego możesz użyć.
 
 Utwórz przykładową przestrzeń nazw o nazwie *PSP-AKS* dla zasobów testowych przy użyciu polecenia [Utwórz przestrzeń nazw polecenia kubectl][kubectl-create] . Następnie utwórz konto usługi o nazwie *nieadministracyjne — użytkownik* korzystający z polecenia [polecenia kubectl Create Account][kubectl-create] :
 
@@ -156,7 +156,7 @@ kubectl create rolebinding \
 
 ### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>Utwórz polecenia aliasu dla administratora i użytkownika niebędącego administratorem
 
-Aby wyróżnić różnicę między zwykłym użytkownikiem administratora podczas korzystania `kubectl` z programu i użytkownik niebędący administratorem utworzony w poprzednich krokach, Utwórz dwa aliasy wiersza polecenia:
+Aby wyróżnić różnicę między zwykłym użytkownikiem administratora podczas korzystania z `kubectl` i użytkownika niebędącego administratorem utworzonym w poprzednich krokach, Utwórz dwa aliasy wiersza polecenia:
 
 * Alias **polecenia kubectl-admin** jest przeznaczony dla regularnego użytkownika administratora i jest objęty zakresem przestrzeni nazw *PSP-AKS* .
 * Alias **polecenia kubectl-nonadminuser** jest przeznaczony dla *użytkownika niebędącego administratorem* utworzonego w poprzednim kroku i jest objęty zakresem przestrzeni nazw *PSP-AKS* .
@@ -170,7 +170,7 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>Testowanie tworzenia uprzywilejowanego pod
 
-Najpierw Przetestuj, co się dzieje, gdy planujesz go z kontekstem `privileged: true`zabezpieczeń. Ten kontekst zabezpieczeń przekazuje uprawnienia administratora. W poprzedniej sekcji, która wykazała domyślne zasady zabezpieczeń AKS pod, zasady z *ograniczeniami* powinny odmówić tego żądania.
+Najpierw Przetestuj, co się dzieje, gdy planujesz go w kontekście zabezpieczeń `privileged: true`. Ten kontekst zabezpieczeń przekazuje uprawnienia administratora. W poprzedniej sekcji, która wykazała domyślne zasady zabezpieczeń AKS pod, zasady z *ograniczeniami* powinny odmówić tego żądania.
 
 Utwórz plik o nazwie `nginx-privileged.yaml` i wklej następujący manifest YAML:
 
@@ -226,7 +226,7 @@ Utwórz pod za pomocą polecenia [polecenia kubectl Apply][kubectl-apply] i okre
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-Usługa Kubernetes Scheduler akceptuje żądanie pod. Jeśli jednak przyjrzyjsz się statusowi elementu using `kubectl get pods`, wystąpił błąd:
+Usługa Kubernetes Scheduler akceptuje żądanie pod. Jeśli jednak przyjrzyjsz się statusowi pod `kubectl get pods`, wystąpił błąd:
 
 ```console
 $ kubectl-nonadminuser get pods
@@ -267,7 +267,7 @@ kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Tworzenie testów pod kątem określonego kontekstu użytkownika
 
-W poprzednim przykładzie obraz kontenera automatycznie próbował użyć elementu głównego do powiązania NGINX z portem 80. To żądanie zostało odrzucone przez domyślne zasady zabezpieczeń *ograniczone* pod względem zasad, więc uruchomienie nie powiodło się. Spróbujmy teraz uruchomić te same NGINX pod kątem określonego kontekstu użytkownika, takich jak `runAsUser: 2000`.
+W poprzednim przykładzie obraz kontenera automatycznie próbował użyć elementu głównego do powiązania NGINX z portem 80. To żądanie zostało odrzucone przez domyślne zasady zabezpieczeń *ograniczone* pod względem zasad, więc uruchomienie nie powiodło się. Spróbujmy teraz uruchomić ten sam NGINX pod kątem określonego kontekstu użytkownika, takiego jak `runAsUser: 2000`.
 
 Utwórz plik o nazwie `nginx-unprivileged-nonroot.yaml` i wklej następujący manifest YAML:
 
@@ -290,7 +290,7 @@ Utwórz pod za pomocą polecenia [polecenia kubectl Apply][kubectl-apply] i okre
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 ```
 
-Usługa Kubernetes Scheduler akceptuje żądanie pod. Jeśli jednak przyjrzyjsz się statusowi elementu using `kubectl get pods`, Wystąpił inny błąd niż w poprzednim przykładzie:
+Usługa Kubernetes Scheduler akceptuje żądanie pod. Jeśli jednak przeszukasz stan usługi pod przy użyciu `kubectl get pods`, Wystąpił inny błąd niż w poprzednim przykładzie:
 
 ```console
 $ kubectl-nonadminuser get pods
@@ -445,7 +445,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>Ponownie przetestuj tworzenie nieuprzywilejowanego konta
 
-Po zastosowaniu zasad zabezpieczeń niestandardowych pod kątem stosowania zasad i powiązania dla konta użytkownika w celu korzystania z nich spróbuj ponownie utworzyć nieuprzywilejowany element. Użyj tego samego `nginx-privileged.yaml` manifestu, aby utworzyć pod przy użyciu polecenia [polecenia kubectl Apply][kubectl-apply] :
+Po zastosowaniu zasad zabezpieczeń niestandardowych pod kątem stosowania zasad i powiązania dla konta użytkownika w celu korzystania z nich spróbuj ponownie utworzyć nieuprzywilejowany element. Użyj tego samego manifestu `nginx-privileged.yaml`, aby utworzyć pod za pomocą polecenia [polecenia kubectl Apply][kubectl-apply] :
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml

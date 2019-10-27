@@ -1,49 +1,43 @@
 ---
-title: Operatory przydatne w usłudze Azure Monitor rejestrowania zapytań | Dokumentacja firmy Microsoft
-description: Typowe funkcje na potrzeby różnych scenariuszy, w usłudze Azure Monitor rejestrowania zapytań.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Przydatne operatory w kwerendach dzienników Azure Monitor | Microsoft Docs
+description: Typowe funkcje do użycia dla różnych scenariuszy w kwerendach dzienników Azure Monitor.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/21/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: d11445c3f31f9aced6fdb9783575d10a026de1f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2018
+ms.openlocfilehash: 022a9f638b3a7d8ae4ebeff8062f258ada7a14f8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61424142"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932876"
 ---
-# <a name="useful-operators-in-azure-monitor-log-queries"></a>Operatory przydatne w zapytaniach dzienników usługi Azure Monitor
+# <a name="useful-operators-in-azure-monitor-log-queries"></a>Przydatne operatory w kwerendach dzienników Azure Monitor
 
-W poniższej tabeli przedstawiono niektóre typowe funkcje na potrzeby różnych scenariuszy w zapytaniach dzienników usługi Azure Monitor.
+W poniższej tabeli przedstawiono niektóre typowe funkcje do użycia w różnych scenariuszach w zapytaniach dziennika Azure Monitor.
 
 ## <a name="useful-operators"></a>Przydatne operatory
 
-Category                                |Funkcja analizy odpowiednie
+Kategoria                                |Odpowiednia funkcja analizy
 ----------------------------------------|----------------------------------------
-Wybór i kolumny aliasów            |`project`, `project-away`, `extend`
-Tabele tymczasowe i stałe          |`let scalar_alias_name = …;` <br> `let table_alias_name =  …  …  … ;`| 
-Porównywanie i operatory ciągów         |`startswith`, `!startswith`, `has`, `!has` <br> `contains`, `!contains`, `containscs` <br> `hasprefix`, `!hasprefix`, `hassuffix`, `!hassuffix`, `in`, `!in` <br> `matches regex` <br> `==`, `=~`, `!=`, `!~`
-Typowe funkcje ciągów                 |`strcat()`, `replace()`, `tolower()`, `toupper()`, `substring()`, `strlen()`
+Wybór i aliasy kolumn            |`project`, `project-away`, `extend`
+Tymczasowe tabele i stałe          |`let scalar_alias_name = …;` <br> `let table_alias_name =  …  …  … ;`| 
+Operatory porównania i ciągów         |`startswith`, `!startswith`, `has``!has` <br> `contains`, `!contains`, `containscs` <br> `hasprefix`, `!hasprefix`, `hassuffix`, `!hassuffix`, `in``!in` <br> `matches regex` <br> `==`, `=~`, `!=``!~`
+Typowe funkcje ciągów                 |`strcat()`, `replace()`, `tolower()`, `toupper()`, `substring()``strlen()`
 Typowe funkcje matematyczne                   |`sqrt()`, `abs()` <br> `exp()`, `exp2()`, `exp10()`, `log()`, `log2()`, `log10()`, `pow()` <br> `gamma()`, `gammaln()`
-Analiza tekstu                            |`extract()`, `extractjson()`, `parse`, `split()`
-Ograniczanie danych wyjściowych                         |`take`, `limit`, `top`, `sample`
-Funkcje daty                          |`now()`, `ago()` <br> `datetime()`, `datepart()`, `timespan` <br> `startofday()`, `startofweek()`, `startofmonth()`, `startofyear()` <br> `endofday()`, `endofweek()`, `endofmonth()`, `endofyear()` <br> `dayofweek()`, `dayofmonth()`, `dayofyear()` <br> `getmonth()`, `getyear()`, `weekofyear()`, `monthofyear()`
-Grupowanie i agregacji                |`summarize by` <br> `max()`, `min()`, `count()`, `dcount()`, `avg()`, `sum()` <br> `stddev()`, `countif()`, `dcountif()`, `argmax()`, `argmin()` <br> `percentiles()`, `percentile_array()`
-Sprzężenia i unie                        |`join kind=leftouter`, `inner`, `rightouter`, `fullouter`, `leftanti` <br> `union`
-Sortowania, kolejność                             |`sort`, `order` 
-Obiekt dynamiczny (JSON i array)         |`parsejson()` <br> `makeset()`, `makelist()` <br> `split()`, `arraylength()` <br> `zip()`, `pack()`
-Operatory logiczne                       |`and`, `or`, `iff(condition, value_t, value_f)` <br> `binary_and()`, `binary_or()`, `binary_not()`, `binary_xor()`
-Uczenie maszynowe                        |`evaluate autocluster`, `basket`, `diffpatterns`, `extractcolumns`
+Analizowanie tekstu                            |`extract()`, `extractjson()`, `parse``split()`
+Ograniczanie danych wyjściowych                         |`take`, `limit`, `top``sample`
+Funkcje daty                          |`now()`, `ago()` <br> `datetime()`, `datepart()`, `timespan` <br> `startofday()`, `startofweek()`, `startofmonth()``startofyear()` <br> `endofday()`, `endofweek()`, `endofmonth()``endofyear()` <br> `dayofweek()`, `dayofmonth()`, `dayofyear()` <br> `getmonth()`, `getyear()`, `weekofyear()``monthofyear()`
+Grupowanie i agregacja                |`summarize by` <br> `max()`, `min()`, `count()`, `dcount()`, `avg()``sum()` <br> `stddev()`, `countif()`, `dcountif()`, `argmax()`, `argmin()` <br> `percentiles()`, `percentile_array()`
+Sprzężenia i związki                        |`join kind=leftouter`, `inner`, `rightouter`, `fullouter`, `leftanti` <br> `union`
+Sortuj, Porządkuj                             |`sort`, `order` 
+Obiekt dynamiczny (JSON i Array)         |`parsejson()` <br> `makeset()`, `makelist()` <br> `split()`, `arraylength()` <br> `zip()`, `pack()`
+Operatory logiczne                       |`and`, `or`, `iff(condition, value_t, value_f)` <br> `binary_and()`, `binary_or()`, `binary_not()``binary_xor()`
+Uczenie maszynowe                        |`evaluate autocluster`, `basket`, `diffpatterns``extractcolumns`
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przejdź przez lekcji [Pisanie zapytań dzienników w usłudze Azure Monitor](get-started-queries.md).
+- Zapoznaj się z lekcjami dotyczącymi [pisania zapytań dzienników w Azure monitor](get-started-queries.md).

@@ -1,0 +1,65 @@
+---
+title: Rozwiązywanie problemów z połączeniami w celu Azure Database for PostgreSQL-Citus
+description: Dowiedz się, jak rozwiązywać problemy z połączeniem do Azure Database for PostgreSQL-Citus
+keywords: Połączenie PostgreSQL, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
+author: jonels-msft
+ms.author: jonels
+ms.service: postgresql
+ms.topic: conceptual
+ms.date: 10/8/2019
+ms.openlocfilehash: b812b730cebba4dbf0735f49f544e53bf7f8787c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72952149"
+---
+# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Rozwiązywanie problemów z połączeniami w celu Azure Database for PostgreSQL-Citus
+
+Problemy z połączeniem mogą być spowodowane przez kilka rzeczy, takich jak:
+
+* Ustawienia zapory
+* Limit czasu połączenia
+* Nieprawidłowe informacje logowania
+* Osiągnięto limit połączeń dla grupy serwerów
+* Problemy związane z infrastrukturą usługi
+* Konserwacja usługi
+* Węzeł koordynatora przechodzi do trybu failover na nowym sprzęcie
+
+Ogólnie rzecz biorąc problemy z połączeniem do przeskalowania można podzielić na następujące:
+
+* Błędy przejściowe (krótko-lub sporadyczne)
+* Błędy trwałe lub nieprzejściowe (błędy, które regularnie powtarzają się)
+
+## <a name="troubleshoot-transient-errors"></a>Rozwiązywanie problemów z błędami przejściowymi
+
+Błędy przejściowe występują z kilku powodów. Najbardziej typową czynnością jest konserwacja systemu, błąd ze sprzętem lub oprogramowaniem, a także rdzeń wirtualny uaktualnienia węzłów koordynatora.
+
+Włączenie wysokiej dostępności dla węzłów grupy serwerów ze skalowaniem może wyeliminować te rodzaje problemów automatycznie. Jednak aplikacja powinna być nadal przygotowana, aby skrócić swoje połączenie. Ponadto inne zdarzenia mogą zająć więcej czasu, na przykład wtedy, gdy duża transakcja powoduje długotrwałe odzyskiwanie.
+
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Kroki rozwiązywania przejściowych problemów z łącznością
+
+1. Sprawdź [pulpit nawigacyjny usługi Microsoft Azure](https://azure.microsoft.com/status) , aby uzyskać znane awarie, które wystąpiły w czasie, w którym aplikacja zgłosiła błędy.
+2. Aplikacje łączące się z usługą w chmurze, takie jak funkcja Citus, powinny oczekiwać błędów przejściowych i reagować na nie. Na przykład aplikacje powinny implementować logikę ponowień, aby obsługiwać te błędy zamiast obsłużyć je jako błędy aplikacji dla użytkowników.
+3. Ponieważ Grupa serwerów zbliża się do limitów zasobów, błędy mogą wyglądać jak przejściowe problemy z łącznością. Zwiększenie ilości pamięci RAM lub dodanie węzłów procesu roboczego i ponowne zrównoważenie danych może pomóc.
+4. Jeśli problemy z łącznością będą kontynuowane lub trwają dłużej niż 60 sekund lub występuje więcej niż raz dziennie, należy wysłać żądanie pomocy technicznej platformy Azure, wybierając pozycję **Uzyskaj pomoc techniczną** w witrynie [pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options) .
+
+## <a name="troubleshoot-persistent-errors"></a>Rozwiązywanie problemów z trwałymi błędami
+
+Jeśli aplikacja trwale nie może nawiązać połączenia ze zbyt dużą skalą (Citus), najczęstsze przyczyny są błędnej konfiguracji zapory lub błędu użytkownika.
+
+* Konfiguracja zapory węzła koordynatora: Upewnij się, że Zapora serwera w ramach skalowania jest skonfigurowana tak, aby zezwalać na połączenia z klienta, w tym serwery proxy i bramy.
+* Konfiguracja zapory klienta: Zapora na kliencie musi zezwalać na połączenia z serwerem bazy danych. Niektóre zapory wymagają zezwolenia nie tylko na aplikacje według nazwy, ale dopuszczają adresy IP i porty serwera.
+* Błąd użytkownika: podwójne sprawdzenie parametrów połączenia. Mogą istnieć niewpisane parametry, takie jak nazwa serwera, lub niezapomniany sufiks *\@ServerName* w nazwie użytkownika.
+
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroki rozwiązywania problemów z łącznością trwałą
+
+1. Skonfiguruj [reguły zapory](howto-hyperscale-manage-firewall-using-portal.md) w taki sposób, aby zezwalały na adres IP klienta. Wyłącznie do celów testowania tymczasowego, należy skonfigurować regułę zapory przy użyciu adresu 0.0.0.0 jako początkowy adres IP i przy użyciu wartości 255.255.255.255 jako końcowego adresu IP. Ta zasada otwiera serwer do wszystkich adresów IP. Jeśli reguła rozwiązuje problem z łącznością, usuń ją i Utwórz regułę zapory dla odpowiednio ograniczonego adresu IP lub zakresu adresów.
+2. Na wszystkich zaporach między klientem a Internetem upewnij się, że port 5432 jest otwarty dla połączeń wychodzących.
+3. Sprawdź parametry połączenia i inne ustawienia połączenia.
+4. Sprawdź kondycję usługi na pulpicie nawigacyjnym.
+
+## <a name="next-steps"></a>Następne kroki
+
+* Poznaj koncepcje [reguł zapory w Azure Database for PostgreSQL-Citus](concepts-hyperscale-firewall-rules.md)
+* Zobacz, jak [zarządzać regułami zapory dla Azure Database for PostgreSQL-Citus](howto-hyperscale-manage-firewall-using-portal.md)

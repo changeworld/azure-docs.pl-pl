@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: atsenthi
-ms.openlocfilehash: 6276f347f0cc0ecc03acc95282e83c243679957a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8503b3c8a630575b917e3710ce4d7c5d6fbe70cb
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802433"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934035"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry uaktualniania aplikacji
 W tym artykule opisano różne parametry, które są stosowane podczas uaktualniania aplikacji Service Fabric platformy Azure. Parametry uaktualniania aplikacji kontrolują limity czasu i kontroli kondycji, które są stosowane podczas uaktualniania i określają zasady, które należy zastosować w przypadku niepowodzenia uaktualnienia. Parametry aplikacji dotyczą uaktualnień przy użyciu:
@@ -57,10 +57,6 @@ UnmonitoredManual | PS | Wskazuje, że tryb uaktualniania jest niemonitorowany. 
 ### <a name="optional-parameters"></a>Parametry opcjonalne
 
 Parametry oceny kondycji są opcjonalne. Jeśli nie zostaną określone kryteria oceny kondycji, gdy rozpocznie się uaktualnianie, Service Fabric korzysta z zasad dotyczących kondycji aplikacji określonych w ApplicationManifest. xml wystąpienia aplikacji.
-
-Użyj poziomego paska przewijania w dolnej części tabeli, aby wyświetlić pole pełny opis.
-
-(PS = PowerShell, VS = Visual Studio)
 
 > [!div class="mx-tdBreakAll"]
 > | Parametr | Dotyczy | Opis |

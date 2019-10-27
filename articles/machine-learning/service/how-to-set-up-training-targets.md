@@ -3,20 +3,20 @@ title: Tworzenie i używanie obiektów docelowych obliczeń do szkolenia modelu
 titleSuffix: Azure Machine Learning
 description: Skonfiguruj środowiska szkoleniowe (cele obliczeniowe) dla szkolenia modelu uczenia maszynowego. Można łatwo przełączać się między środowiskami szkoleniowymi. Zacznij szkolenie lokalnie. Jeśli konieczne jest skalowanie w poziomie, przełącz się do elementu docelowego obliczeń opartego na chmurze.
 services: machine-learning
-author: heatherbshapiro
-ms.author: hshapiro
+author: rastala
+ms.author: roastala
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 95ded3c184836ac58a0f97d1bf30dd2e3c123ccb
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 46a212719846eddc7d21f3aeb0815dfbf4119e15
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755968"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935366"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu 
 
@@ -295,7 +295,7 @@ Aby zobaczyć cele obliczeń dla obszaru roboczego, wykonaj następujące czynno
  
 1. W obszarze __aplikacje__wybierz pozycję __obliczenia__.
 
-    [Karta obliczeniowa ![View](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [Karta obliczeniowa widoku![](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Tworzenie obiektu docelowego obliczeń
 

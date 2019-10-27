@@ -1,23 +1,18 @@
 ---
 title: Czas pozyskiwania danych dziennika w Azure Monitor | Microsoft Docs
 description: Wyjaśnia różne czynniki wpływające na opóźnienie w zbieraniu danych dzienników w Azure Monitor.
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: tysonn
-ms.service: log-analytics
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: 5947c4c28736f8488ea0e48941214df42c6af72a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 07/18/2019
+ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639501"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932579"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Czas pozyskiwania danych dziennika w Azure Monitor
 Azure Monitor to usługa danych o dużej skali, która umożliwia tysiącom klientów wysyłanie terabajtów danych co miesiąc w coraz większej tempie. Często zadawane pytania dotyczące czasu potrzebnego do uzyskania danych dziennika stają się dostępne po ich zebraniu. W tym artykule wyjaśniono różne czynniki wpływające na to opóźnienie.
@@ -81,7 +76,7 @@ Ten proces trwa około 5 minut, gdy istnieje niska ilość danych, ale mniej cza
 ## <a name="checking-ingestion-time"></a>Sprawdzanie czasu pozyskiwania
 Czas pozyskiwania może różnić się w zależności od różnych zasobów w różnych warunkach. Zapytania dzienników służą do identyfikowania określonego zachowania środowiska. W poniższej tabeli opisano, jak można określić różne godziny dla rekordu, które są tworzone i wysyłane do Azure Monitor.
 
-| Krok | Właściwość lub funkcja | Komentarze |
+| Czynność | Właściwość lub funkcja | Komentarze |
 |:---|:---|:---|
 | Rekord utworzony w źródle danych | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Jeśli źródło danych nie ustawi tej wartości, zostanie ona ustawiona na ten sam czas co _TimeReceived. |
 | Rekord otrzymany przez Azure Monitor punkt końcowy pozyskiwania | [_TimeReceived](log-standard-properties.md#_timereceived) | |
@@ -101,7 +96,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
 
-Poprzednie sprawdzenia percentylu są przydatne do znajdowania ogólnych trendów w czasie oczekiwania. Aby zidentyfikować krótkoterminowe gwałtowne opóźnienia, użycie wartości Maximum (`max()`) może być bardziej efektywne.
+Poprzednie sprawdzenia percentylu są przydatne do znajdowania ogólnych trendów w czasie oczekiwania. Aby identyfikować krótkoterminowe gwałtowne opóźnienia, użycie wartości maksymalnej (`max()`) może być bardziej efektywne.
 
 Jeśli chcesz przejść do szczegółów czasu pozyskiwania dla określonego komputera w danym okresie, użyj następującego zapytania, które również wizualizuje dane z ostatniego dnia na wykresie: 
 

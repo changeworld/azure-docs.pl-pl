@@ -1,50 +1,44 @@
 ---
-title: wyrażenie Workspace() w zapytaniu dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Wyrażenie obszar roboczy jest używany w zapytaniu dzienników usługi Azure Monitor do pobierania danych z określonego obszaru roboczego w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji.
-services: log-analytics
-documentationcenter: ''
+title: wyrażenie Workspace () w kwerendzie dziennika Azure Monitor | Microsoft Docs
+description: Wyrażenie obszaru roboczego jest używane w zapytaniu dziennika Azure Monitor do pobierania danych z określonego obszaru roboczego w tej samej grupie zasobów, innej grupie zasobów lub innej subskrypcji.
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: b4bc652d54150b72cc64898464b3511a860bf011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/10/2018
+ms.openlocfilehash: f26b9534fbf95cc301ae782d47ab7030988fa469
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60785680"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932854"
 ---
-# <a name="workspace-expression-in-azure-monitor-log-query"></a>wyrażenie Workspace() w zapytaniu dzienników usługi Azure Monitor
+# <a name="workspace-expression-in-azure-monitor-log-query"></a>wyrażenie obszaru roboczego () w zapytaniu dziennika Azure Monitor
 
-`workspace` Wyrażenie jest używane w zapytaniu usługi Azure Monitor do pobierania danych z określonego obszaru roboczego w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji. Jest to przydatne dołączyć dane dziennika w zapytaniu usługi Application Insights i wykonywać zapytania względem danych w wielu obszarach roboczych w zapytaniu dziennika.
+Wyrażenie `workspace` jest używane w zapytaniu Azure Monitor do pobierania danych z określonego obszaru roboczego w tej samej grupie zasobów, innej grupie zasobów lub innej subskrypcji. Jest to przydatne do uwzględniania danych dziennika w kwerendzie Application Insights i wykonywania zapytań dotyczących danych w wielu obszarach roboczych w zapytaniu dziennika.
 
 
 ## <a name="syntax"></a>Składnia
 
-`workspace(`*Identyfikator*`)`
+*identyfikator* `workspace(``)`
 
 ## <a name="arguments"></a>Argumenty
 
-- *Identyfikator*: Identyfikuje obszaru roboczego przy użyciu jednego z formatów w poniższej tabeli.
+- *Identyfikator*: określa obszar roboczy przy użyciu jednego z formatów w poniższej tabeli.
 
-| Identyfikator | Opis | Przykład
+| Identyfikatora | Opis | Przykład
 |:---|:---|:---|
-| Nazwa zasobu | Ludzi czytelna nazwa obszaru roboczego (zwane również "Nazwa składnika") | Workspace("contosoretail") |
-| Kwalifikowana nazwa | Pełna nazwa obszaru roboczego w postaci: "componentName-subscriptionName/resourceGroup" | workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| ID | Identyfikator GUID obszaru roboczego | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
-| Identyfikator zasobu platformy Azure | Identyfikator zasobu platformy Azure | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
+| Nazwa zasobu | Czytelna dla człowieka nazwa obszaru roboczego ("Nazwa składnika") | obszar roboczy ("ContosoRetail") |
+| Kwalifikowana nazwa | Pełna nazwa obszaru roboczego w postaci: "subscriptionname/resourceName/ComponentName" | obszar roboczy ("contoso/ContosoResource/ContosoWorkspace") |
+| ID | Identyfikator GUID obszaru roboczego | obszar roboczy ("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| Identyfikator zasobu platformy Azure | Identyfikator zasobu platformy Azure | obszar roboczy ("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
 ## <a name="notes"></a>Uwagi
 
-* Musi mieć dostęp do odczytu do obszaru roboczego.
-* Powiązane wyrażenie jest `app` umożliwiająca zapytania w aplikacjach usługi Application Insights.
+* Musisz mieć dostęp do odczytu do obszaru roboczego.
+* Wyrażenie pokrewne jest `app`, które umożliwia wykonywanie zapytań w aplikacjach Application Insights.
 
 ## <a name="examples"></a>Przykłady
 
@@ -69,8 +63,8 @@ union
 | where TimeGenerated between(todatetime("2018-02-08 15:00:00") .. todatetime("2018-12-08 15:05:00"))
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz [wyrażenie aplikacji](app-expression.md) do odwoływania się do aplikacji usługi Application Insights.
-- Przeczytaj o tym, jak [danych usługi Azure Monitor](log-query-overview.md) są przechowywane.
-- Dostęp do pełną dokumentację dotyczącą [język zapytania Kusto](/azure/kusto/query/).
+- Zobacz [wyrażenie aplikacji](app-expression.md) , aby odwołać się do aplikacji Application Insights.
+- Przeczytaj o sposobie przechowywania [danych Azure monitor](log-query-overview.md) .
+- Uzyskaj dostęp do pełnej dokumentacji dotyczącej [języka zapytań Kusto](/azure/kusto/query/).

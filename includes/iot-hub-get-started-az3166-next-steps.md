@@ -4,17 +4,17 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 06/09/2018
 ms.author: liydu
-ms.openlocfilehash: 783921009a1668647a238f1c344885ec807d5b8a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 869d2170167651ee1c6b6e21ecb4b47959641162
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183886"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72958702"
 ---
-Aby kontynuować, aby rozpocząć pracę z usługą Azure IoT Hub i zapoznać się z innymi scenariuszami IoT, przy użyciu mxchip IoT DevKit, zobacz następujące tematy:
+Aby kontynuować Rozpoczynanie pracy z usługą Azure IoT Hub i poznać inne scenariusze IoT przy użyciu usługi IoT DevKit, zobacz następujące tematy:
 
-- [Połącz IoT Mxchip z aplikacją usługi Azure IoT Central](../articles/iot-central/howto-connect-devkit.md)
-- [Połącz mxchip IoT DevKit do zdalnego monitorowania usługi Azure IoT akceleratora rozwiązań](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
+- [Łączenie usługi IoT DevKit z aplikacją IoT Central platformy Azure](../articles/iot-central/core/howto-connect-devkit.md)
+- [Łączenie programu IoT DevKit z akceleratorem rozwiązania do zdalnego monitorowania usługi Azure IoT](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
 - [Tłumaczenie wiadomości głosowych za pomocą usług Azure Cognitive Services](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-translator.md)
 - [Pobieranie wiadomości z usługi Twitter za pomocą usługi Azure Functions](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 - [Wysyłanie komunikatów do serwera MQTT przy użyciu interfejsów Eclipse Paho API](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)

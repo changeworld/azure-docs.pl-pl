@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 49567ae52b8ea706ebf7e093880e919cc8bbdbad
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 370717e09e788faa56662c4c88e2e7c0de21eef7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901644"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933149"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Sterownik systemu plików obiektów blob platformy Azure (ABFS): dedykowany sterownik magazynu platformy Azure dla usługi Hadoop
 
@@ -49,6 +49,9 @@ Sterownik ABFS obsługuje dwie metody uwierzytelniania, dzięki czemu aplikacja 
 - **Klucz współużytkowany:** Pozwala to użytkownikom na dostęp do wszystkich zasobów na koncie. Klucz jest szyfrowany i przechowywany w konfiguracji usługi Hadoop.
 
 - **Azure Active Directory token okaziciela OAuth:** Tokeny okaziciela usługi Azure AD są uzyskiwane i odświeżane przez sterownik przy użyciu tożsamości użytkownika końcowego lub skonfigurowanej jednostki usługi. Przy użyciu tego modelu uwierzytelniania cały dostęp jest autoryzowany dla każdego wywołania przy użyciu tożsamości skojarzonej z podanym tokenem i oceniany względem przypisanej listy Access Control POSIX (ACL).
+
+   > [!NOTE] 
+   > Azure Data Lake Storage Gen2 obsługuje tylko punkty końcowe usługi Azure AD v 1.0.
 
 ### <a name="configuration"></a>Konfigurowanie
 

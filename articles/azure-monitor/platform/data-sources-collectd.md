@@ -1,24 +1,18 @@
 ---
 title: Zbieranie danych z zebranych w Azure Monitor | Microsoft Docs
 description: Zebrany to demon Open Source systemu Linux, który okresowo zbiera dane z aplikacji i informacji o poziomie systemu.  Ten artykuł zawiera informacje dotyczące zbierania danych z zebranych w Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/27/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: b1f02e01fef95bdd06930aa30479dd16d40675ce
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 11/27/2018
+ms.openlocfilehash: 4bf58a7e446cb13366a230a35c83e6bf0acaa09a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812570"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932518"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Zbieraj dane z zebranych w agencie systemu Linux w Azure Monitor
 [Zebrany](https://collectd.org/) to demon Open Source systemu Linux, który okresowo zbiera metryki wydajności aplikacji i informacji o poziomie systemu. Przykładowe aplikacje obejmują wirtualna maszyna Java (JVM), MySQL Server i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych o wydajności z zebranych w Azure Monitor.
@@ -52,12 +46,12 @@ Ponadto w przypadku korzystania z wersji zebranych przed 5,5 Użyj poniższej ko
        </URL>
     </Plugin>
 
-Zebrana konfiguracja używa domyślnej wtyczki @ no__t-0 do wysyłania danych metryk wydajności przez port 26000 do agenta Log Analytics dla systemu Linux. 
+Zebrana konfiguracja używa wtyczki domyślnej`write_http` do wysyłania danych metryk wydajności przez port 26000 do Log Analytics agenta dla systemu Linux. 
 
 > [!NOTE]
 > Ten port można skonfigurować do niestandardowego portu zdefiniowanego w razie potrzeby.
 
-Agent Log Analytics dla systemu Linux nasłuchuje również na porcie 26000 dla zebranych metryk, a następnie konwertuje je na metryki schematu Azure Monitor. Poniżej przedstawiono konfigurację Log Analytics agenta dla systemu Linux `collectd.conf`.
+Agent Log Analytics dla systemu Linux nasłuchuje również na porcie 26000 dla zebranych metryk, a następnie konwertuje je na metryki schematu Azure Monitor. Poniżej przedstawiono `collectd.conf`konfiguracji agenta Log Analytics dla systemu Linux.
 
     <source>
       type http
@@ -77,7 +71,7 @@ Agent Log Analytics dla systemu Linux nasłuchuje również na porcie 26000 dla 
 - Agent Log Analytics dla systemu Linux v 1.1.0-217 lub nowszego jest wymagany dla kolekcji metryk zebranych.
 
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 Poniżej przedstawiono podstawowe kroki konfigurowania kolekcji zbieranych danych w Azure Monitor.
 
 1. Skonfiguruj zebrane dane w celu wysłania danych do agenta Log Analytics dla systemu Linux przy użyciu wtyczki write_http.  
@@ -86,7 +80,7 @@ Poniżej przedstawiono podstawowe kroki konfigurowania kolekcji zbieranych danyc
 
 ### <a name="configure-collectd-to-forward-data"></a>Konfigurowanie zebranych danych do przesyłania dalej 
 
-1. Aby skierować dane zebrane do agenta Log Analytics dla systemu Linux, należy dodać `oms.conf` do katalogu konfiguracji zebranych. Miejsce docelowe tego pliku zależy od dystrybucji komputera z systemem Linux.
+1. Aby skierować dane zebrane do agenta Log Analytics dla systemu Linux, `oms.conf` należy dodać do katalogu konfiguracji zebranych. Miejsce docelowe tego pliku zależy od dystrybucji komputera z systemem Linux.
 
     Jeśli zebrany katalog konfiguracji znajduje się w/etc/collectd.d/:
 
@@ -97,7 +91,7 @@ Poniżej przedstawiono podstawowe kroki konfigurowania kolekcji zbieranych danyc
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >W przypadku wersji zebranych przed 5,5 należy zmodyfikować Tagi w `oms.conf`, jak pokazano powyżej.
+    >W przypadku wersji zebranych przed 5,5 należy zmodyfikować Tagi w `oms.conf` jak pokazano powyżej.
     >
 
 2. Kopiuj zebrane. conf do katalogu konfiguracji omsagent wybranego obszaru roboczego.
@@ -114,7 +108,7 @@ Aby zachować znany model między metrykami infrastruktury już zebranymi przez 
 
 | Pole metryki zebranej | Pole Azure Monitor |
 |:--|:--|
-| `host` | Komputerem |
+| `host` | Computer |
 | `plugin` | Brak |
 | `plugin_instance` | Nazwa wystąpienia<br>Jeśli **plugin_instance** ma *wartość null* , InstanceName = " *_Total*" |
 | `type` | Obiektu |

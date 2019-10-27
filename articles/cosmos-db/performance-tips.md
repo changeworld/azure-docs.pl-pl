@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/25/2019
 ms.locfileid: "71261308"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności Azure Cosmos DB i .NET
@@ -46,8 +46,8 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
      |Tryb połączenia  |Obsługiwany protokół  |Obsługiwane zestawy SDK  |Port API/usługi  |
      |---------|---------|---------|---------|
-     |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Bezpośrednie    |     TCP    |  Zestaw SDK .NET    | Porty w zakresie 10000-20000 |
+     |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL (443), Mongo (10250, 10255, 10256), tabela (443), Cassandra (10350), Graph (443)    |
+     |Direct    |     TCP    |  Zestaw SDK dla platformy .NET    | Porty w zakresie 10000-20000 |
 
      Azure Cosmos DB oferuje prosty i otwarty model programowania RESTful za pośrednictwem protokołu HTTPS. Ponadto oferuje wydajny protokół TCP, który jest również RESTful w swoim modelu komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Zarówno bezpośrednie TCP, jak i HTTPS używają protokołu SSL do uwierzytelniania początkowego i szyfrowania ruchu sieciowego. Aby uzyskać najlepszą wydajność, Użyj protokołu TCP, gdy jest to możliwe.
 
@@ -94,7 +94,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
     Jeśli to możliwe, należy umieścić dowolne aplikacje wywołujące Azure Cosmos DB w tym samym regionie, w którym znajduje się baza danych usługi Azure Cosmos. Dla przybliżonego porównania, wywołania do Azure Cosmos DB w tym samym regionie, kompletne w ciągu 1-2 MS, ale opóźnienie między zachodnim i wschodnim wybrzeżem Stanów Zjednoczonych jest > 50 ms. To opóźnienie może się różnić od żądania żądania w zależności od trasy wykonywanej przez żądanie, gdy przechodzi od klienta do granicy centrum danych platformy Azure. Najniższe możliwe opóźnienie jest realizowane przez zagwarantowanie, że aplikacja wywołująca znajduje się w tym samym regionie platformy Azure, co punkt końcowy Azure Cosmos DB aprowizacji. Aby uzyskać listę dostępnych regionów, zobacz [regiony platformy Azure](https://azure.microsoft.com/regions/#services).
 
-    ![Ilustracja zasad połączenia Azure Cosmos DB](./media/performance-tips/same-region.png)
+    ![ilustracja zasad połączenia Azure Cosmos DB](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
 4. **Zwiększ liczbę wątków/zadań**
 
@@ -123,16 +123,16 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
    <a id="max-connection"></a>
 4. **Zwiększ System.Net MaxConnections na hosta podczas korzystania z trybu bramy**
 
-    Żądania Azure Cosmos DB są wykonywane za pośrednictwem protokołu HTTPS/REST podczas korzystania z trybu bramy i podlegają domyślnemu limitowi połączeń na nazwę hosta lub adres IP. Może być konieczne ustawienie dla elementu MaxConnections wyższej wartości (100-1000), aby Biblioteka klienta mogła używać wielu jednoczesnych połączeń do Azure Cosmos DB. W 1.8.0 .NET SDK i nowszych wartość domyślna dla ServicePointManager [. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) to 50 i aby zmienić wartość, można ustawić [dokumenty. Client. ConnectionPolicy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) na wyższą wartość.   
+    Żądania Azure Cosmos DB są wykonywane za pośrednictwem protokołu HTTPS/REST podczas korzystania z trybu bramy i podlegają domyślnemu limitowi połączeń na nazwę hosta lub adres IP. Może być konieczne ustawienie dla elementu MaxConnections wyższej wartości (100-1000), aby Biblioteka klienta mogła używać wielu jednoczesnych połączeń do Azure Cosmos DB. W 1.8.0 .NET SDK i nowszych wartość domyślna dla [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) to 50 i aby zmienić wartość, można ustawić [dokumenty. Client. ConnectionPolicy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) na wyższą wartość.   
 5. **Dostrajanie równoległych zapytań dla kolekcji partycjonowanych**
 
      Zestaw SDK programu SQL .NET w wersji 1.9.0 lub nowszej obsługuje zapytania równoległe, które umożliwiają równoległe wykonywanie zapytań do kolekcji partycjonowanej. Aby uzyskać więcej informacji, zobacz [przykłady kodu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) związane z pracą z zestawami SDK. Zapytania równoległe są przeznaczone do poprawiania opóźnienia zapytań i przepływności w porównaniu z ich odpowiednikami seryjnymi. Zapytania równoległe zawierają dwa parametry, które użytkownicy mogą dostosowywać do własnych wymagań, (a) MaxDegreeOfParallelism: aby kontrolować maksymalną liczbę partycji, a następnie można wykonywać zapytania równoległe i (b) MaxBufferedItemCount: w celu kontrolowania liczby wstępnie pobrane wyniki.
 
-    (a) ***stopień\: dostrajania*** równoległych zapytań równoległych działa przez wykonywanie zapytań na wielu partycjach równolegle. Jednak dane z pojedynczej partycji są pobierane sekwencyjnie w odniesieniu do zapytania. Ustawienie zestawu [SDK V2](sql-api-sdk-dotnet.md) lub `MaxConcurrency` [zestawu SDK v3](sql-api-sdk-dotnet-standard.md) na liczbę partycji ma największą szansę na osiągnięcie najbardziej wydajnego zapytania, pod warunkiem, że wszystkie inne warunki systemu pozostają takie same. `MaxDegreeOfParallelism` Jeśli nie znasz liczby partycji, możesz ustawić stopień równoległości na wysoki, a system wybierze minimalną (liczbę partycji, dane wejściowe podane przez użytkownika) jako stopień równoległości.
+    (a) ***stopień strojenia równoległości\:*** równoległym działaniem zapytań równoległych do wielu partycji. Jednak dane z pojedynczej partycji są pobierane sekwencyjnie w odniesieniu do zapytania. Ustawienie `MaxDegreeOfParallelism` w [zestawie SDK V2](sql-api-sdk-dotnet.md) lub `MaxConcurrency` w [zestawie SDK v3](sql-api-sdk-dotnet-standard.md) na liczbę partycji ma największą szansę na osiągnięcie najbardziej wydajnego zapytania, pod warunkiem, że wszystkie inne warunki systemu pozostają takie same. Jeśli nie znasz liczby partycji, możesz ustawić stopień równoległości na wysoki, a system wybierze minimalną (liczbę partycji, dane wejściowe podane przez użytkownika) jako stopień równoległości.
 
     Należy pamiętać, że zapytania równoległe generują najlepsze korzyści, jeśli dane są równomiernie dystrybuowane we wszystkich partycjach w odniesieniu do zapytania. Jeśli partycjonowana kolekcja jest partycjonowana w taki sposób, że wszystkie lub większość danych zwróconych przez zapytanie jest skoncentrowana na kilku partycjach (jedna partycja w najgorszym przypadku), wydajność zapytania zostałaby przekazana przez te partycje.
 
-    (b) ***dostrajanie\:***  równoległe zapytania MaxBufferedItemCount zaprojektowano w celu wstępnego pobrania wyników podczas przetwarzania bieżącej partii wyników przez klienta. Wstępne pobieranie pomaga w ogólnym ulepszaniu opóźnienia zapytania. MaxBufferedItemCount jest parametrem, aby ograniczyć liczbę wstępnie pobranych wyników. Ustawienie MaxBufferedItemCount na oczekiwaną liczbę zwracanych wyników (lub wyższą liczbę) umożliwia zapytanie, aby otrzymać maksymalną korzyść z pobierania wstępnego.
+    (b) ***dostrajania MaxBufferedItemCount\:*** Parallel Query została zaprojektowana w celu wstępnego pobrania, podczas gdy bieżąca partia wyników jest przetwarzana przez klienta. Wstępne pobieranie pomaga w ogólnym ulepszaniu opóźnienia zapytania. MaxBufferedItemCount jest parametrem, aby ograniczyć liczbę wstępnie pobranych wyników. Ustawienie MaxBufferedItemCount na oczekiwaną liczbę zwracanych wyników (lub wyższą liczbę) umożliwia zapytanie, aby otrzymać maksymalną korzyść z pobierania wstępnego.
 
     Wstępne pobieranie działa tak samo, niezależnie od stopnia równoległości i istnieje pojedynczy bufor dla danych ze wszystkich partycji.  
 6. **Włącz funkcję GC po stronie serwera**
@@ -165,13 +165,13 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
    > [!NOTE] 
    > Właściwość maxItemCount nie powinna być używana tylko do celów stronicowania. Jest to główne użycie, aby zwiększyć wydajność zapytań, zmniejszając maksymalną liczbę elementów zwracanych na jednej stronie.  
 
-   Możesz również ustawić rozmiar strony przy użyciu dostępnych zestawów SDK Azure Cosmos DB. Właściwość [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) w FeedOptions umożliwia ustawienie maksymalnej liczby elementów, które mają być zwracane w operacji wyliczania. Gdy `maxItemCount` jest ustawiona na-1, zestaw SDK automatycznie znajdzie najbardziej optymalną wartość w zależności od rozmiaru dokumentu. Na przykład:
+   Możesz również ustawić rozmiar strony przy użyciu dostępnych zestawów SDK Azure Cosmos DB. Właściwość [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) w FeedOptions umożliwia ustawienie maksymalnej liczby elementów, które mają być zwracane w operacji wyliczania. Gdy `maxItemCount` ma wartość-1, zestaw SDK automatycznie znajdzie najbardziej optymalną wartość w zależności od rozmiaru dokumentu. Na przykład:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
    ```
     
-   Po wykonaniu zapytania dane uzyskane są wysyłane w ramach pakietu TCP. Jeśli określisz zbyt niską wartość `maxItemCount`dla, liczba podróży wymagana do wysłania danych w ramach pakietu TCP jest wysoka, co ma wpływ na wydajność. Dlatego jeśli nie masz pewności, jaka wartość jest ustawiona dla `maxItemCount` właściwości, najlepiej ustawić ją na wartość-1 i pozwolić zestawowi SDK na wybranie wartości domyślnej. 
+   Po wykonaniu zapytania dane uzyskane są wysyłane w ramach pakietu TCP. Jeśli określisz zbyt niską wartość dla `maxItemCount`, liczba podróży wymagana do wysłania danych w ramach pakietu TCP jest wysoka, co ma wpływ na wydajność. Dlatego jeśli nie masz pewności, jaka wartość jest ustawiana dla właściwości `maxItemCount`, najlepiej ustawić ją na wartość-1 i pozwolić zestawowi SDK na wybranie wartości domyślnej. 
 
 11. **Zwiększ liczbę wątków/zadań**
 
@@ -183,9 +183,9 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
     - W przypadku aplikacji wykonywalnych można to zrobić, usuwając zaznaczenie opcji **preferuj 32-bitową** w oknie **właściwości projektu** na karcie **kompilacja** .
 
-    - W przypadku projektów testowych opartych na VSTest można to zrobić, **wybierając**->pozycję Testuj testy**Ustawienia**->**domyślne architektura procesora jako x64**z opcji menu **test programu Visual Studio** .
+    - W przypadku projektów testowych opartych na VSTest można to zrobić, wybierając pozycję **testuj**->**Testuj ustawienia**->**domyślnej architektury procesora jako x64**z opcji menu **test programu Visual Studio** .
 
-    - W przypadku lokalnie wdrożonych aplikacji sieci Web ASP.NET można to zrobić, sprawdzając, **jak używać 64-bitowej wersji IIS Express dla witryn i projektów sieci Web**, w obszarze **Narzędzia**->**Opcje**->**projekty i rozwiązania** **Projekty sieci Web.** ->
+    - W przypadku lokalnie wdrożonych aplikacji sieci Web ASP.NET można to zrobić, sprawdzając, czy **używane są 64-bitowe wersje IIS Express dla witryn i projektów sieci Web**, w obszarze **narzędzia**->**opcje**->**projekty i rozwiązania**-> **Projekty sieci Web**.
 
     - W przypadku aplikacji sieci Web ASP.NET wdrożonych na platformie Azure można to zrobić, wybierając **platformę jako 64-bitową** w **ustawieniach aplikacji** na Azure Portal.
 
@@ -215,7 +215,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
     Złożoność zapytania wpływa na liczbę jednostek żądań używanych dla operacji. Liczba predykatów, charakter predykatów, liczba UDF i rozmiar zestawu danych źródłowych wpływają na koszt operacji zapytania.
 
-    Aby zmierzyć obciążenie związane z jakąkolwiek operacją (tworzenie, aktualizowanie lub usuwanie), należy sprawdzić nagłówek [x-MS-Request-obciążeni](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (lub równoważną właściwość RequestCharge w ResourceResponse\<t > lub FeedResponse\<T > w zestawie SDK platformy .NET) na Zmierz liczbę jednostek żądań używanych przez te operacje.
+    Aby zmierzyć obciążenie związane z jakąkolwiek operacją (tworzenie, aktualizowanie lub usuwanie), Sprawdź nagłówek [x-MS-Request-obciążeni](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (lub równoważną właściwość RequestCharge w ResourceResponse\<t > lub FeedResponse\<t > w zestawie .NET SDK), aby zmierzyć Liczba jednostek żądań używanych przez te operacje.
 
     ```csharp
     // Measure the performance (request units) of writes
