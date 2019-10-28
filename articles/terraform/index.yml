@@ -4,18 +4,17 @@ summary: Dowiedz się, jak za pomocą programu Terraform niezawodnie aprowizowa�
 metadata:
   title: Dokumentacja programu Terraform na platformie Azure — samouczki, przykłady, dokumentacja i zasoby
   description: Dowiedz się, jak za pomocą programu Terraform niezawodnie aprowizować maszyny wirtualne i inną infrastrukturę na platformie Azure.
-  services: azure
   ms.service: terraform
-  ms.topic: landing-page
   author: TomArcherMsft
   ms.author: tarcher
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 35391f886d473b91ab99d27bff64d64903ba0545
-  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.topic: landing-page
+  ms.date: 10/26/2019
+  ms.openlocfilehash: dbc4ed58b32312023b3248662357777d8567fff9
+  ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71173540"
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72969499"
 landingContent:
 - title: Informacje o programie Terraform na platformie Azure
   linkLists:
@@ -34,7 +33,7 @@ landingContent:
     - text: Instalowanie i konfigurowanie programu Terraform
       url: /azure/virtual-machines/linux/terraform-install-configure?/azure/terraform/toc.json&bc=/azure/bread/toc.json
     - text: Tworzenie konfiguracji programu Terraform na platformie Azure
-      url: terrafom-quickstart.md
+      url: terraform-create-configuration.md
     - text: Instalowanie rozszerzenia Terraform dla programu Visual Studio Code
       url: terraform-vscode-extension.md
     - text: Tworzenie szablonu podstawowego Terraform przy użyciu narzędzia Yeoman
@@ -58,7 +57,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Tworzenie maszyny wirtualnej programu z włączoną tożsamością usługi zarządzanej
-      url: terraform-vm-msi.md
+      url: terraform-vm-managed-identities-for-azure-resources.md
     - text: Tworzenie klastra maszyn wirtualnych przy użyciu modułów Terraform
       url: terraform-create-vm-cluster-module.md
     - text: Tworzenie klastra maszyn wirtualnych przy użyciu programu Terraform i HCL

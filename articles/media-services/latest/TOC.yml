@@ -5,6 +5,7 @@
     - name: Informacje o usłudze Media Services
       href: media-services-overview.md
     - name: Co nowego w usłudze Media Services
+      displayName: release notes
       href: release-notes.md
 - name: Samouczki
   expanded: true
