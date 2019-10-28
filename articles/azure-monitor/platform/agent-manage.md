@@ -1,24 +1,18 @@
 ---
 title: Zarządzanie agentem usługi Azure Log Analytics | Microsoft Docs
 description: W tym artykule opisano różne zadania zarządzania, które zwykle są wykonywane podczas cyklu życia Log Analytics agenta systemu Windows lub Linux wdrożonego na komputerze.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/14/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 0c128aaf8102b3072b6a63c80ea860ceefbf5124
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 06/14/2019
+ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67146304"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932802"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Zarządzanie agentem Log Analytics dla systemów Windows i Linux i obsługa go
 
@@ -30,17 +24,17 @@ Log Analytics agenta dla systemów Windows i Linux można uaktualnić do najnows
 
 | Środowisko | Metoda instalacji | Metoda uaktualniania |
 |--------|----------|-------------|
-| Azure VM | Rozszerzenie maszyny wirtualnej agenta Log Analytics dla systemu Windows/Linux | Agent jest automatycznie uaktualniany, chyba że skonfigurowano szablon Azure Resource Manager, aby zrezygnował z ustawienia właściwości *włączoną flagą autoupgrademinorversion* na **wartość false**. |
+| Maszyna wirtualna platformy Azure | Rozszerzenie maszyny wirtualnej agenta Log Analytics dla systemu Windows/Linux | Agent jest automatycznie uaktualniany, chyba że skonfigurowano szablon Azure Resource Manager, aby zrezygnował z ustawienia właściwości *włączoną flagą autoupgrademinorversion* na **wartość false**. |
 | Niestandardowe obrazy maszyn wirtualnych platformy Azure | Ręczna instalacja agenta Log Analytics dla systemu Windows/Linux | Aktualizowanie maszyn wirtualnych do najnowszej wersji agenta należy wykonać z poziomu wiersza polecenia z uruchomionym pakietem Instalatora Windows lub z samowyodrębniającym się zestawem skryptów powłoki programu Linux.|
 | Maszyny wirtualne spoza platformy Azure | Ręczna instalacja agenta Log Analytics dla systemu Windows/Linux | Aktualizowanie maszyn wirtualnych do najnowszej wersji agenta należy wykonać z poziomu wiersza polecenia z uruchomionym pakietem Instalatora Windows lub z samowyodrębniającym się zestawem skryptów powłoki programu Linux. |
 
 ### <a name="upgrade-windows-agent"></a>Uaktualnij agenta systemu Windows 
 
-Aby zaktualizować agenta na maszynie wirtualnej z systemem Windows do najnowszej wersji, która nie jest zainstalowana przy użyciu rozszerzenia maszyny wirtualnej log Analytics, można uruchomić polecenie z poziomu wiersza polecenia, skryptu lub innego rozwiązania do automatyzacji lub przy\<użyciu\>Instalatora MMASetup-platform. msi Kreatora.  
+Aby zaktualizować agenta na maszynie wirtualnej z systemem Windows do najnowszej wersji, która nie jest zainstalowana przy użyciu rozszerzenia maszyny wirtualnej Log Analytics, można uruchomić polecenie z poziomu wiersza polecenia, skryptu lub innego rozwiązania do automatyzacji albo za pomocą Kreatora instalacji programu MMASetup\<platform\>. msi.  
 
 Możesz pobrać najnowszą wersję agenta systemu Windows z obszaru roboczego Log Analytics, wykonując poniższe kroki.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **log Analytics obszary robocze**.
 
@@ -58,7 +52,7 @@ Możesz pobrać najnowszą wersję agenta systemu Windows z obszaru roboczego Lo
 
 1. Zaloguj się na komputerze przy użyciu konta z uprawnieniami administracyjnymi.
 
-2. Wykonaj **MMASetup-\<platform\>. exe** , aby uruchomić Kreatora instalacji.
+2. Wykonaj polecenie **MMASetup\<platform\>. exe** , aby uruchomić Kreatora instalacji.
 
 3. Na pierwszej stronie Kreatora instalacji kliknij przycisk **dalej**.
 
@@ -66,13 +60,13 @@ Możesz pobrać najnowszą wersję agenta systemu Windows z obszaru roboczego Lo
 
 5. W oknie dialogowym **konfiguracja Microsoft Monitoring Agent** kliknij przycisk **Uaktualnij**. Na stronie stan zostanie wyświetlony postęp uaktualniania.
 
-6. Po pomyślnym **ukończeniu konfiguracji Microsoft Monitoring Agent.** Kliknij przycisk **Zakończ**.
+6. Po **pomyślnym ukończeniu konfiguracji Microsoft Monitoring Agent.** Kliknij przycisk **Zakończ**.
 
 #### <a name="to-upgrade-from-the-command-line"></a>Aby uaktualnić z wiersza polecenia
 
 1. Zaloguj się na komputerze przy użyciu konta z uprawnieniami administracyjnymi.
 
-2. Do wyodrębnienia plików instalacyjnych agenta z wiersza `MMASetup-<platform>.exe /c` polecenia z podwyższonym poziomem uprawnień i pojawi się monit o ścieżkę, do której mają zostać wyodrębnione pliki. Alternatywnie możesz określić ścieżkę, przekazując argumenty `MMASetup-<platform>.exe /c /t:<Full Path>`.
+2. Aby wyodrębnić pliki instalacyjne agenta, w wierszu polecenia z podwyższonym poziomem uprawnień `MMASetup-<platform>.exe /c` i zostanie wyświetlony monit o podanie ścieżki, do której zostaną wyodrębnione pliki. Alternatywnie możesz określić ścieżkę, przekazując argumenty `MMASetup-<platform>.exe /c /t:<Full Path>`.
 
 3. Uruchom następujące polecenie, gdzie D:\ jest lokalizacją pliku dziennika uaktualnienia.
 
@@ -82,7 +76,7 @@ Możesz pobrać najnowszą wersję agenta systemu Windows z obszaru roboczego Lo
 
 ### <a name="upgrade-linux-agent"></a>Uaktualnij agenta systemu Linux 
 
-Aktualizacja z wcześniejszych wersji (> 1.0.0-47) jest obsługiwana. Wykonanie instalacji przy użyciu `--upgrade` polecenia spowoduje uaktualnienie wszystkich składników agenta do najnowszej wersji.
+Aktualizacja z wcześniejszych wersji (> 1.0.0-47) jest obsługiwana. Wykonanie instalacji za pomocą polecenia `--upgrade` spowoduje uaktualnienie wszystkich składników agenta do najnowszej wersji.
 
 Uruchom następujące polecenie, aby uaktualnić agenta.
 
@@ -137,7 +131,7 @@ $mma.ReloadConfiguration()
 ```
 
 >[!NOTE]
->Jeśli używasz wiersza polecenia lub skryptu wcześniej do zainstalowania lub skonfigurowania agenta, `EnableAzureOperationalInsights` został on zastąpiony przez `AddCloudWorkspace` i `RemoveCloudWorkspace`.
+>Jeśli wcześniej użyto wiersza polecenia lub skryptu w celu zainstalowania lub skonfigurowania agenta, `EnableAzureOperationalInsights` został zastąpiony przez `AddCloudWorkspace` i `RemoveCloudWorkspace`.
 >
 
 ### <a name="linux-agent"></a>Agent systemu Linux
@@ -244,16 +238,16 @@ Aby odinstalować agenta systemu Windows lub Linux przy użyciu wiersza poleceni
 3. W obszarze **programy i funkcje**kliknij pozycję **Microsoft Monitoring Agent**, kliknij przycisk **Odinstaluj**, a następnie kliknij przycisk **tak**.
 
 >[!NOTE]
->Kreatora instalacji agenta można również uruchomić przez dwukrotne kliknięcie **MMASetup-\<\>platform. exe**, które jest dostępne do pobrania z obszaru roboczego w Azure Portal.
+>Kreatora instalacji agenta można również uruchomić przez dwukrotne kliknięcie **MMASetup\<platformy\>. exe**, które jest dostępne do pobrania z obszaru roboczego w Azure Portal.
 
 #### <a name="uninstall-from-the-command-line"></a>Odinstalowywanie z wiersza polecenia
 Pobrany plik dla agenta to samodzielny pakiet instalacyjny utworzony przy użyciu programu IExpress. Program instalacyjny agenta i plików pomocniczych są zawarte w pakiecie i muszą zostać wyodrębnione w celu poprawnego odinstalowania przy użyciu wiersza polecenia pokazanego w poniższym przykładzie.
 
 1. Zaloguj się na komputerze przy użyciu konta z uprawnieniami administracyjnymi.
 
-2. Do wyodrębnienia plików instalacyjnych agenta z wiersza `extract MMASetup-<platform>.exe` polecenia z podwyższonym poziomem uprawnień i pojawi się monit o ścieżkę, do której mają zostać wyodrębnione pliki. Alternatywnie możesz określić ścieżkę, przekazując argumenty `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Aby uzyskać więcej informacji na temat przełączników wiersza polecenia obsługiwanych przez program IExpress, zobacz [przełączniki wiersza polecenia dla programu IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) , a następnie zaktualizujmy ten przykład do własnych potrzeb.
+2. Do wyodrębnienia plików instalacyjnych agenta z wiersza polecenia z podwyższonym poziomem uprawnień `extract MMASetup-<platform>.exe` i zostanie wyświetlony monit o ścieżkę, do której mają zostać wyodrębnione pliki. Alternatywnie możesz określić ścieżkę, przekazując argumenty `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Aby uzyskać więcej informacji na temat przełączników wiersza polecenia obsługiwanych przez program IExpress, zobacz [przełączniki wiersza polecenia dla programu IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) , a następnie zaktualizujmy ten przykład do własnych potrzeb.
 
-3. W wierszu polecenia wpisz `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`polecenie.
+3. W wierszu polecenia wpisz `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
 
 ### <a name="linux-agent"></a>Agent systemu Linux
 Aby usunąć agenta, uruchom poniższe polecenie na komputerze z systemem Linux. Argument *--purge* powoduje całkowite usunięcie agenta i jego konfiguracji.
@@ -292,11 +286,11 @@ Wykonaj następujące kroki, aby skonfigurować agenta Log Analytics dla systemu
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. Edytuj plik`/etc/opt/omi/conf/omiserver.conf`
+1. Edytuj `/etc/opt/omi/conf/omiserver.conf` pliku
 
-2. Upewnij się, że wiersz zaczynający się `httpsport=` od definiuje port 1270. Takie jak:`httpsport=1270`
+2. Upewnij się, że wiersz zaczynający się od `httpsport=` definiuje port 1270. Takie jak: `httpsport=1270`
 
-3. Uruchom ponownie serwer OMI:`sudo /opt/omi/bin/service_control restart`
+3. Uruchom ponownie serwer OMI: `sudo /opt/omi/bin/service_control restart`
 
 ## <a name="next-steps"></a>Następne kroki
 

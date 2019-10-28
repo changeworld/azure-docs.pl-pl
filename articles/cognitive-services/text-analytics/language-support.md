@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 953699793d81485e3828b9fb46de8523d2b7674e
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 846650fce6701bb7e382df049902f427390b3051
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129998"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931207"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejs API analizy tekstu
 
@@ -23,11 +23,11 @@ W tym artykule wyjaśniono, które języki są obsługiwane dla każdej operacji
 
 ## <a name="language-detection"></a>Wykrywanie języka
 
-Interfejs API analizy tekstu może wykryć szeroką gamę języków, wariantów, dialektów i niektórych języków regionalnych/kulturowych.  Wykrywanie języka zwraca "skrypt" języka. Na przykład dla frazy "mam Dog", będzie ona zwracała `en` się `en-US`zamiast. Jedynym szczególnym przypadkiem jest chiński, w którym funkcja wykrywania języka zwróci `zh_CHS` wartość `zh_CHT` lub jeśli może ustalić skrypt, w którym znajduje się tekst. W sytuacjach, gdy nie można zidentyfikować określonego skryptu dla dokumentu w języku chińskim, zostanie on `zh`zwrócony po prostu.
+Interfejs API analizy tekstu może wykryć szeroką gamę języków, wariantów, dialektów i niektórych języków regionalnych/kulturowych.  Wykrywanie języka zwraca "skrypt" języka. Na przykład dla frazy "mam pies" zwróci `en`, a nie `en-US`. Jedynym szczególnym przypadkiem jest chiński, w którym funkcja wykrywania języka zwróci `zh_CHS` lub `zh_CHT`, jeśli może ustalić skrypt, w którym znajduje się dostarczony tekst. W sytuacjach, gdy nie można zidentyfikować określonego skryptu dla dokumentu w języku chińskim, zostanie on zwrócony po prostu `zh`.
 
 Nie publikujemy dokładnej listy języków dla tej funkcji, ale może wykryć szeroką gamę języków, wariantów, dialektów i niektórych języków regionalnych/kulturowych. 
 
-Jeśli masz zawartość wyrażoną w rzadziej używanym języku, możesz spróbować wykrywanie języka, aby sprawdzić, czy zwróci kod. Odpowiedź dla języków, których nie można wykryć, `unknown`to.
+Jeśli masz zawartość wyrażoną w rzadziej używanym języku, możesz spróbować wykrywanie języka, aby sprawdzić, czy zwróci kod. Odpowiedź dla języków, których nie można wykryć, jest `unknown`.
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analiza tonacji, wyodrębnianie kluczowych fraz i nazwanego rozpoznawania jednostek
 
@@ -38,7 +38,7 @@ W przypadku analizy tonacji, wyodrębniania kluczowych fraz i rozpoznawania jedn
 * Niemiecki
 * Hiszpański
 
-Tylko jednostki i`Organization`nazwane są zwracane dla innych języków. `Location` `Person`
+Tylko `Person`, `Location` i `Organization` nazwane jednostki są zwracane dla innych języków.
 
 ## <a name="language-list-and-status"></a>Lista i stan języka
 
@@ -51,11 +51,11 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 | Chiński (uproszczony) | `zh-hans`| ✔ \***     |             | ✔         |    |
 | Chiński (tradycyjny) | `zh-hant`| ✔ \***     |             |          |    |
 | Duński      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
-| Holenderski       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
+| Holenderski       | `nl`          | ✔ \***     | ✔          |  ✔ \*           |     |
 | Polski     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
 | Fiński     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
 | Francuski      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
-| Niemiecki      | `de`          | ✔ \*     | ✔           |  ✔           |     |
+| Niemiecki      | `de`          | ✔ \***     | ✔           |  ✔           |     |
 | Grecki       | `el`          | ✔ \*     |             |            |     |
 | Węgierski   | `hu`          |           |             |  ✔ \*          |     | 
 | Włoski     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
@@ -63,18 +63,18 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 | Koreański      | `ko`          |          | ✔           |  ✔ \*          |     |
 | Norweski (bokmål) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
 | Polski      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
-| Portugalski (Portugalia) | `pt-PT`| ✔        |  ✔          | ✔ \*      |`pt`również zaakceptowane|
+| Portugalski (Portugalia) | `pt-PT`| ✔ \***        |  ✔          | ✔ \*      |`pt` również zaakceptowana|
 | Portugalski (Brazylia)   | `pt-BR`|          |  ✔   |  ✔ \*       |     |
 | Rosyjski     | `ru`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Hiszpański     | `es`          | ✔        | ✔           |   ✔ \*\*      |     | 
+| Hiszpański     | `es`          | ✔ \***       | ✔           |   ✔ \*\*      |     | 
 | Szwedzki     | `sv`          | ✔ \*     | ✔           |   ✔ \*          |     |
 | Turecki     | `tr`          | ✔ \*     |             |   ✔ \*          |  |
 
-\*Obsługa języka jest w wersji zapoznawczej
+Obsługa języków \* jest w wersji zapoznawczej
 
-\*\*Dla tego języka są dostępne zarówno [rozpoznawanie jednostek nazwanych](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) , jak i [Konsolidacja jednostek](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) .  
+dla tego języka są dostępne zarówno\* \*[o nazwie rozpoznawanie jednostek](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) , jak i [Konsolidacja jednostek](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) .  
 
-\** * Dostępne w [publicznej wersji Zapoznawczej analiza tonacji v3](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview)
+\** * dostępne w [wersji Zapoznawczej analiza tonacji v3](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview)
 
 ## <a name="see-also"></a>Zobacz także
 
