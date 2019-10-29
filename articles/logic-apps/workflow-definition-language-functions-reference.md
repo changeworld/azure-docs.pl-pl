@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/23/2019
-ms.openlocfilehash: d16df46ada2254f5bfc671db55e82fc89ef450b6
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c6051508a067e17afbc25702c26608da4cd4ca2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679037"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968934"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>Przewodnik referencyjny do korzystania z funkcji w wyrażeniach dla Azure Logic Apps i Microsoft Flow
 
@@ -252,7 +252,7 @@ Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną l
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Zwróć treść określonej części w danych wyjściowych akcji z wieloma częściami. |
 | [wydajności](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Zwraca dane wyjściowe akcji w czasie wykonywania. |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Zwraca wartość parametru, który jest opisany w definicji przepływu pracy. |
-| [wynika](../logic-apps/workflow-definition-language-functions-reference.md#result) | Zwraca dane wejściowe i wyjściowe ze wszystkich akcji w określonym zakresie akcji, takich jak `For_each`, `Until` i `Scope`. |
+| [wynika](../logic-apps/workflow-definition-language-functions-reference.md#result) | Zwraca dane wejściowe i wyjściowe ze wszystkich akcji w określonym zakresie akcji, takich jak `For_each`, `Until`i `Scope`. |
 | [uruchamiać](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Zwraca dane wyjściowe wyzwalacza w czasie wykonywania lub z innych par nazw i wartości JSON. Zobacz również [triggerOutputs](#triggerOutputs) i [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Zwraca dane wyjściowe wyzwalacza `body` w czasie wykonywania. Zobacz [wyzwalacz](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Zwróć pojedynczą wartość odpowiadającą nazwie klucza w danych wyjściowych wyzwalacza *form-Data* lub *form* . |
@@ -350,7 +350,7 @@ actionBody('<actionName>')
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | -----| ----------- |
-| *akcja < — dane wyjściowe* > | Ciąg | @No__t_0 dane wyjściowe z określonej akcji |
+| *akcja < — dane wyjściowe* > | Ciąg | `body` dane wyjściowe z określonej akcji |
 ||||
 
 *Przykład*
@@ -491,7 +491,7 @@ add(<summand_1>, <summand_2>)
 
 | Parametr | Wymagane | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*>, <*summand_2* > | Tak | Liczba całkowita, zmiennoprzecinkowa lub mieszana | Liczby do dodania |
+| <*summand_1*>, <*summand_2*> | Tak | Liczba całkowita, zmiennoprzecinkowa lub mieszana | Liczby do dodania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
@@ -1049,7 +1049,7 @@ body('<actionName>')
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | -----| ----------- |
-| *akcja < — dane wyjściowe* > | Ciąg | @No__t_0 dane wyjściowe z określonej akcji |
+| *akcja < — dane wyjściowe* > | Ciąg | `body` dane wyjściowe z określonej akcji |
 ||||
 
 *Przykład*
@@ -1237,7 +1237,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | Parametr | Wymagane | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
 | <*sygnatura czasowa* > | Tak | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*destinationTimeZone* > | Tak | Ciąg | Nazwa docelowej strefy czasowej. Aby uzyskać więcej informacji na temat nazw stref czasowych, zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*destinationTimeZone* > | Tak | Ciąg | Nazwa docelowej strefy czasowej. W przypadku nazw stref czasowych zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być konieczne usunięcie znaków interpunkcyjnych z nazwy strefy czasowej. |
 | <*format* > | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
@@ -1279,8 +1279,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | Parametr | Wymagane | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
 | <*sygnatura czasowa* > | Tak | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*sourceTimeZone* > | Tak | Ciąg | Nazwa źródłowej strefy czasowej. Aby uzyskać więcej informacji na temat nazw stref czasowych, zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
-| <*destinationTimeZone* > | Tak | Ciąg | Nazwa docelowej strefy czasowej. Aby uzyskać więcej informacji na temat nazw stref czasowych, zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*sourceTimeZone* > | Tak | Ciąg | Nazwa źródłowej strefy czasowej. W przypadku nazw stref czasowych zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być konieczne usunięcie znaków interpunkcyjnych z nazwy strefy czasowej. |
+| <*destinationTimeZone* > | Tak | Ciąg | Nazwa docelowej strefy czasowej. W przypadku nazw stref czasowych zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być konieczne usunięcie znaków interpunkcyjnych z nazwy strefy czasowej. |
 | <*format* > | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
@@ -1322,7 +1322,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | Parametr | Wymagane | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
 | <*sygnatura czasowa* > | Tak | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*sourceTimeZone* > | Tak | Ciąg | Nazwa źródłowej strefy czasowej. Aby uzyskać więcej informacji na temat nazw stref czasowych, zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*sourceTimeZone* > | Tak | Ciąg | Nazwa źródłowej strefy czasowej. W przypadku nazw stref czasowych zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być konieczne usunięcie znaków interpunkcyjnych z nazwy strefy czasowej. |
 | <*format* > | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
@@ -3318,7 +3318,7 @@ Oto zaktualizowany obiekt JSON:
 
 ### <a name="result"></a>Wynika
 
-Zwraca dane wejściowe i wyjściowe ze wszystkich akcji, które znajdują się w określonej akcji w zakresie, takiej jak akcja `For_each`, `Until` lub `Scope`. Ta funkcja jest przydatna zwracająca wyniki akcji zakończonej niepowodzeniem, aby można było zdiagnozować i obsłużyć wyjątki. Aby uzyskać więcej informacji, zobacz [pobieranie kontekstu i wyników dla niepowodzeń](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+Zwraca dane wejściowe i wyjściowe ze wszystkich akcji, które znajdują się w określonej akcji w zakresie, takiej jak akcja `For_each`, `Until`lub `Scope`. Ta funkcja jest przydatna zwracająca wyniki akcji zakończonej niepowodzeniem, aby można było zdiagnozować i obsłużyć wyjątki. Aby uzyskać więcej informacji, zobacz [pobieranie kontekstu i wyników dla niepowodzeń](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
 
 ```
 result('<scopedActionName>')
@@ -3892,7 +3892,7 @@ take([<collection>], <count>)
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| *podzbiór*< > lub [*podzbiór*< >] | Odpowiednio ciąg lub tablicę | Ciąg lub tablica, która ma określoną liczbę elementów pobranych z przodu oryginalnej kolekcji |
+| *podzbiór*<> lub [*podzbiór*< >] | Odpowiednio ciąg lub tablicę | Ciąg lub tablica, która ma określoną liczbę elementów pobranych z przodu oryginalnej kolekcji |
 ||||
 
 *Przykład*
@@ -4363,7 +4363,7 @@ uriPathAndQuery('<uri>')
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| *ścieżka < — > wartości zapytania* | Ciąg | @No__t_0 i `query` wartości dla określonego identyfikatora URI. Jeśli `path` nie określa wartości, zwróć znak "/". |
+| *ścieżka < — > wartości zapytania* | Ciąg | `path` i `query` wartości dla określonego identyfikatora URI. Jeśli `path` nie określa wartości, zwróć znak "/". |
 ||||
 
 *Przykład*

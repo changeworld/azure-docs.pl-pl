@@ -1,21 +1,21 @@
 ---
 title: Planowanie środowiska Azure Time Series Insights w wersji zapoznawczej | Microsoft Docs
 description: Zaplanuj środowisko Azure Time Series Insights w wersji zapoznawczej.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: b97db5fcebeea67cc593a4d2c1fd677a55ad8559
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dc4336629a4c3b9da906daefca160c5a305603dc
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550181"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990837"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 
@@ -26,7 +26,7 @@ W tym artykule opisano najlepsze rozwiązania dotyczące szybkiego planowania i 
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Najlepsze rozwiązania dotyczące planowania i przygotowywania
 
-Aby rozpocząć pracę z Time Series Insights, najlepiej zrozumieć następujące informacje:
+Najlepsze rozwiązania związane z planowaniem i przygotowywaniem środowiska są opisane w następujących artykułach:
 
 * Co otrzymujesz po [udostępnieniu środowiska Time Series Insights w wersji zapoznawczej](#the-preview-environment).
 * Jakie [są identyfikatory szeregów czasowych i właściwości sygnatur czasowych](#configure-time-series-ids-and-timestamp-properties).
@@ -43,22 +43,33 @@ Po udostępnieniu środowiska Time Series Insights w wersji zapoznawczej można 
 * Środowisko wersji zapoznawczej Azure Time Series Insights
 * Konto usługi Azure Storage ogólnego przeznaczenia w wersji 1
 
+W ramach procesu inicjowania obsługi administracyjnej należy określić, czy ma zostać włączona obsługa magazynu w postaci ciepłej. Magazyn ciepły zapewnia obsługę zapytań warstwowych. Po włączeniu należy określić okres przechowywania w zakresie od 7 do 30 dni. Zapytania wykonywane w ramach okresu przechowywania ciepłego magazynu zwykle zapewniają krótszy czas odpowiedzi. Gdy zapytanie obejmuje okres przechowywania w sieci ciepłej, jest ono obsługiwane w chłodnym magazynie.
+
+Zapytania dotyczące sklepu w sklepie są bezpłatne, podczas gdy zapytania dotyczące magazynu zimnego są ponoszone. Ważne jest, aby zrozumieć wzorce zapytań i odpowiednio zaplanować konfigurację magazynu ciepłego. Zalecamy, aby interakcyjna analiza najnowszych danych znajdował się w magazynie ciepłym i analizie wzorców oraz długoterminowe trendy znajdowały się na zimno.
+
+> [!NOTE]
+> Obecnie obsługujemy maksymalnie 1 000 właściwości z magazynem ciepłym.
+
 Aby rozpocząć, potrzebne są trzy dodatkowe elementy:
 
 * [Model szeregów czasowych](./time-series-insights-update-tsm.md)
 * [Źródło zdarzenia połączone z Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md)
 * [Zdarzenia przepływające do źródła zdarzeń](./time-series-insights-send-events.md) , które są zamapowane na model i są w prawidłowym formacie JSON
 
+## <a name="review-preview-limits"></a>Przejrzyj limity wersji zapoznawczej
+
+[!INCLUDE [Review Time Series Insights Preview limits](../../includes/time-series-insights-preview-limits.md)]
+
 ## <a name="configure-time-series-ids-and-timestamp-properties"></a>Konfigurowanie identyfikatorów szeregów czasowych i właściwości sygnatur czasowych
 
 Aby utworzyć nowe środowisko Time Series Insights, wybierz identyfikator szeregów czasowych. Wykonanie tej czynności jako partycji logicznej dla danych. Upewnij się, że identyfikatory szeregów czasowych są gotowe.
 
 > [!IMPORTANT]
-> Identyfikatorów szeregów czasowych *nie można później zmienić*. Sprawdź każdy z nich przed ostatecznym zaznaczeniem i pierwszym użyciem.
+> Identyfikatorów szeregów czasowych *nie można zmienić później*. Sprawdź każdy z nich przed ostatecznym zaznaczeniem i pierwszym użyciem.
 
 Można wybrać maksymalnie trzy klucze, aby jednoznacznie odróżnić zasoby. Aby uzyskać więcej informacji, zapoznaj się z [najlepszymi rozwiązaniami dotyczącymi wybierania identyfikatora szeregów czasowych](./time-series-insights-update-how-to-id.md) i [danych wejściowych](./time-series-insights-update-storage-ingress.md).
 
-Właściwość sygnatury czasowej jest również ważna. Tę właściwość można wyznaczyć podczas dodawania źródeł zdarzeń. Każde źródło zdarzenia ma opcjonalną właściwość sygnatury czasowej, która jest używana do śledzenia źródeł zdarzeń w czasie. W wartościach sygnatury czasowej jest uwzględniana wielkość liter i muszą one być sformatowane do poszczególnych specyfikacji każdego źródła zdarzenia.
+Właściwość **sygnatury czasowej** jest również ważna. Tę właściwość można wyznaczyć podczas dodawania źródeł zdarzeń. Każde źródło zdarzenia ma opcjonalną właściwość sygnatury czasowej, która jest używana do śledzenia źródeł zdarzeń w czasie. W wartościach sygnatury czasowej jest uwzględniana wielkość liter i muszą one być sformatowane do poszczególnych specyfikacji każdego źródła zdarzenia.
 
 > [!TIP]
 > Sprawdź wymagania dotyczące formatowania i analizowania źródeł zdarzeń.
@@ -80,7 +91,7 @@ Możesz sprawdzić sposób wysyłania zdarzeń do Time Series Insights. W idealn
 Dobrym regułą dla elementu kciuk:
 
 * Przechowuj metadane w modelu szeregów czasowych.
-* Tryb szeregów czasowych, pola wystąpień i zdarzenia obejmują tylko niezbędne informacje, takie jak identyfikator szeregów czasowych lub sygnatura czasowa.
+* Upewnij się, że tryb szeregów czasowych, pola wystąpień i zdarzenia zawierają tylko niezbędne informacje, takie jak identyfikator szeregów czasowych lub właściwość sygnatury czasowej.
 
 Aby uzyskać więcej informacji, zobacz [Shape Events](./time-series-insights-send-events.md#supported-json-shapes).
 
@@ -89,7 +100,5 @@ Aby uzyskać więcej informacji, zobacz [Shape Events](./time-series-insights-se
 ## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj [Azure Advisor](../advisor/advisor-overview.md) , aby zaplanować opcje konfiguracji odzyskiwania firmy.
-
 - Przeczytaj więcej na temat [magazynu i transferu danych](./time-series-insights-update-storage-ingress.md) przychodzących w wersji zapoznawczej Time Series Insights.
-
 - Dowiedz się więcej na temat [modelowania danych](./time-series-insights-update-tsm.md) w wersji zapoznawczej Time Series Insights.

@@ -4,14 +4,14 @@ description: Pokazuje, jak typy zasobów obsługują usuwanie w trybie pełnym w
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: de1b5080e72f79626ca0c749efe4122721f14922
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 03e91e4be967e822d17144af848f51e73851b1e6
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528589"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969177"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Usuwanie zasobów platformy Azure na potrzeby wdrożeń w trybie pełnym
 
@@ -61,7 +61,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft. ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft. ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft. ContainerService](#microsoftcontainerservice)
-> - [Microsoft. ContentModerator](#microsoftcontentmoderator)
 > - [Microsoft. CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft. CostManagement](#microsoftcostmanagement)
 > - [Microsoft. CustomerLockbox](#microsoftcustomerlockbox)
@@ -277,6 +276,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | aliasy | Nie |
 > | denyAssignments | Nie |
 > | elevateAccess | Nie |
+> | findOrphanRoleAssignments | Nie |
 > | Zamki | Nie |
 > | uprawnienia | Nie |
 > | policyAssignments | Nie |
@@ -394,6 +394,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | billingAccounts/createBillingRoleAssignment | Nie |
 > | billingAccounts/createInvoiceSectionOperations | Nie |
 > | billingAccounts/klienci | Nie |
+> | billingAccounts/klienci/billingPermissions | Nie |
 > | billingAccounts/klienci/billingSubscriptions | Nie |
 > | billingAccounts/klienci/initiateTransfer | Nie |
 > | billingAccounts/klienci/zasady | Nie |
@@ -451,6 +452,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
 > | blockchainMembers | Tak |
+> | cordaMembers | Tak |
 > | obserwatorzy | Tak |
 
 ## <a name="microsoftblueprint"></a>Microsoft. plan
@@ -641,6 +643,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | proximityPlacementGroups | Tak |
 > | restorePointCollections | Tak |
 > | restorePointCollections/restorePoints | Nie |
+> | sharedVMExtensions | Tak |
+> | sharedVMExtensions/wersje | Nie |
 > | sharedVMImages | Tak |
 > | sharedVMImages/wersje | Nie |
 > | Migawki | Tak |
@@ -700,6 +704,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | rejestry/buildTasks | Tak |
 > | rejestry/buildTasks/kroki | Nie |
 > | rejestry/eventGridFilters | Nie |
+> | rejestry/generateCredentials | Nie |
 > | rejestry/getBuildSourceUploadUrl | Nie |
 > | rejestry/getpoświadczenia | Nie |
 > | rejestry/importImage | Nie |
@@ -710,7 +715,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | rejestry/uruchomienia | Nie |
 > | rejestry/uruchomienia/Anuluj | Nie |
 > | rejestry/scheduleRun | Nie |
+> | rejestry/scopeMaps | Nie |
 > | rejestry/zadania | Tak |
+> | rejestry/tokeny | Nie |
 > | rejestry/updatePolicies | Nie |
 > | rejestry/elementy webhook | Tak |
 > | rejestry/elementy webhook/getCallbackConfig | Nie |
@@ -724,14 +731,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | containerServices | Tak |
 > | managedClusters | Tak |
 > | openShiftManagedClusters | Tak |
-
-## <a name="microsoftcontentmoderator"></a>Microsoft. ContentModerator
-
-> [!div class="mx-tableFixed"]
-> | Typ zasobu | Usuwanie w trybie pełnym |
-> | ------------- | ----------- |
-> | aplikacji | Tak |
-> | updateCommunicationPreference | Nie |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft. CortanaAnalytics
 
@@ -821,8 +820,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | wykazy danych/źródła danych/skany | Nie |
 > | wykazy danych/źródła danych/skany/zestawy danych | Nie |
 > | wykazy danych/źródła danych/skanowania/wyzwalacze | Nie |
-> | webcatalogs/scantargets | Nie |
-> | webcatalogs/scantargets/zbiory danych | Nie |
 
 ## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
 
@@ -887,6 +884,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | serwery | Tak |
 > | serwery/doradcy | Nie |
+> | serwery/privateEndpointConnectionProxies | Nie |
+> | serwery/privateEndpointConnections | Nie |
+> | serwery/privateLinkResources | Nie |
 > | serwery/queryTexts | Nie |
 > | serwery/recoverableServers | Nie |
 > | serwery/topQueryStatistics | Nie |
@@ -900,6 +900,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | serwery | Tak |
 > | serwery/doradcy | Nie |
+> | serwery/privateEndpointConnectionProxies | Nie |
+> | serwery/privateEndpointConnections | Nie |
+> | serwery/privateLinkResources | Nie |
 > | serwery/queryTexts | Nie |
 > | serwery/recoverableServers | Nie |
 > | serwery/topQueryStatistics | Nie |
@@ -914,6 +917,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | serverGroups | Tak |
 > | serwery | Tak |
 > | serwery/doradcy | Nie |
+> | serwery/klucze | Nie |
 > | serwery/privateEndpointConnectionProxies | Nie |
 > | serwery/privateEndpointConnections | Nie |
 > | serwery/privateLinkResources | Nie |
@@ -943,6 +947,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | applicationgroups | Tak |
 > | applicationgroups/aplikacje | Nie |
+> | applicationgroups/komputery stacjonarne | Nie |
 > | applicationgroups/startmenuitems | Nie |
 > | hostpools | Tak |
 > | hostpools/sessionhosts | Nie |
@@ -1088,6 +1093,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
 > | autoManagedVmConfigurationProfiles | Tak |
+> | configurationProfileAssignments | Nie |
 > | guestConfigurationAssignments | Nie |
 > | programy | Nie |
 > | softwareUpdateProfile | Nie |
@@ -1129,6 +1135,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
 > | Win64 | Tak |
+> | Maszyny/rozszerzenia | Tak |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
@@ -1235,6 +1242,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | obszarów roboczych | Tak |
 > | obszary robocze/obliczenia | Nie |
+> | obszary robocze/eventGridFilters | Nie |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
@@ -1322,6 +1330,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | MediaServices/liveEvents | Tak |
 > | MediaServices/liveEvents/liveOutputs | Nie |
 > | MediaServices/liveOutputOperations | Nie |
+> | MediaServices/mediaGraphs | Nie |
 > | MediaServices/streamingEndpointOperations | Nie |
 > | MediaServices/streamingEndpoints | Tak |
 > | MediaServices/streamingLocators | Nie |
@@ -1520,6 +1529,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Usuwanie w trybie pełnym |
 > | ------------- | ----------- |
 > | policyEvents | Nie |
+> | policyMetadata | Nie |
 > | policyStates | Nie |
 > | policyTrackedResources | Nie |
 > | korygowania | Nie |
@@ -1610,6 +1620,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | komputerów | Nie |
 > | wdrożenia/operacje | Nie |
+> | deploymentScripts | Tak |
+> | deploymentScripts/dzienniki | Nie |
 > | linki | Nie |
 > | notifyResourceJobs | Nie |
 > | udostępnia | Nie |
@@ -1659,6 +1671,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | applicationWhitelistings | Nie |
 > | assessmentMetadata | Nie |
 > | oceny | Nie |
+> | automatyzacji | Tak |
 > | AutoProvisioningSettings | Nie |
 > | Zachowania zgodności prawnymi | Nie |
 > | dataCollectionAgents | Nie |

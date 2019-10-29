@@ -10,25 +10,31 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 10/27/2019
 ms.author: juliako
-ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672654"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968731"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Informacje o wersji Azure Media Services Video Indexer
 
-Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedstawiono informacje o:
+Aby zachować aktualność najnowszych zmian, ten artykuł zawiera informacje na temat:
 
-* Zainstalowane najnowsze wersje
+* Najnowsze wersje
 * Znane problemy
 * Poprawki błędów
 * Przestarzałe funkcje
 
-## <a name="september-2019"></a>2019 września
+## <a name="october-2019"></a>Październik 2019
+ 
+* Wyszukaj animowane znaki w galerii
+
+    W przypadku indeksowania animowanych znaków można teraz wyszukiwać je w postaci szpaltowej wideo na koncie. Aby uzyskać więcej informacji, zobacz [rozpoznawanie znaków animowanych](animated-characters-recognition.md).
+
+## <a name="september-2019"></a>Wrzesień 2019 r.
  
 Wiele zaliczek zapowiedziano w IBC 2019:
  
@@ -37,7 +43,7 @@ Wiele zaliczek zapowiedziano w IBC 2019:
     Możliwość wykrywania grup AD rozpoznaje znaki w animowanej zawartości, poprzez integrację z niestandardową wizją. Aby uzyskać więcej informacji, zobacz [wykrywanie znaków animowanych](animated-characters-recognition.md).
 * Identyfikacja w wielu językach (publiczna wersja zapoznawcza)
 
-    Wykrywaj segmenty w wielu językach w ścieżce audio i twórz na ich podstawie wielojęzyczne transkrypcje. Wstępna pomoc techniczna: Angielski, hiszpański, niemiecki i francuski. Aby uzyskać więcej informacji, zobacz [Automatyczne identyfikowanie i transkrypcja zawartości w wielu językach](multi-language-identification-transcription.md).
+    Wykrywaj segmenty w wielu językach w ścieżce audio i twórz na ich podstawie wielojęzyczne transkrypcje. Wstępna pomoc techniczna: angielski, hiszpański, niemiecki i francuski. Aby uzyskać więcej informacji, zobacz [Automatyczne identyfikowanie i transkrypcja zawartości w wielu językach](multi-language-identification-transcription.md).
 * Wyodrębnianie jednostek nazwanych dla osób i lokalizacji
 
     Wyodrębnianie marek, lokalizacji i osób z mowy i tekstu wizualnego za pośrednictwem przetwarzania języka naturalnego (NLP).
@@ -48,7 +54,7 @@ Wiele zaliczek zapowiedziano w IBC 2019:
     
     Temat inferencing model obsługuje teraz bardziej szczegółowy stopień szczegółowości taksonomii IPTC. Przeczytaj wszystkie szczegółowe informacje o [Azure Media Services nowych innowacyjności opartych na AI](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/).
 
-## <a name="august-2019"></a>2019 sierpnia
+## <a name="august-2019"></a>Sierpień 2019 r.
  
 ### <a name="video-indexer-deployed-in-uk-south"></a>Video Indexer wdrożony w programie Południowe Zjednoczone Królestwo
 
@@ -85,7 +91,7 @@ Obsługa ciągu zapytania URL o 4096 (zamiast 2048) na indeksowaniu wideo.
 
 Projekty można teraz tworzyć w oparciu o wideo indeksowane w różnych językach (tylko interfejsy API).
 
-## <a name="july-2019"></a>Lipiec 2019
+## <a name="july-2019"></a>Lipiec 2019 r.
 
 ### <a name="editor-as-a-widget"></a>Edytor jako widżet
 
@@ -95,7 +101,7 @@ Edytor Video Indexer AI jest teraz dostępny jako widżet, który ma zostać osa
 
 Klienci mogą udostępniać formaty plików VTT, narzędzia SRT i TTML jako dane wejściowe dla modeli języka na stronie dostosowywania portalu.
 
-## <a name="june-2019"></a>Czerwiec 2019
+## <a name="june-2019"></a>Czerwiec 2019 r.
 
 ### <a name="video-indexer-deployed-to-japan-east"></a>Video Indexer wdrożone na Japonia Wschodnia
 
@@ -117,7 +123,7 @@ Możesz teraz zobaczyć podgląd obrazu za każdym razem na osi czasu odtwarzacz
 
 Teraz można wyświetlić podgląd wszystkich szczegółowych informacji, które są wybrane w wyniku wybrania konkretnego przedziału czasu wglądu w edytorze.
 
-## <a name="may-2019"></a>2019 maja
+## <a name="may-2019"></a>Maj 2019 r.
 
 ### <a name="update-custom-language-model-from-closed-caption-file"></a>Aktualizowanie niestandardowego modelu języka z pliku napisów
 

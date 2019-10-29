@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86ab995327522ac5dead9b3f944e0760084aedce
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e57a216efee39df0ad22712b281073a68600e0df
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389083"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990738"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Zażądaj dostępu do pakietu dostępu w usłudze Azure AD uprawnień do zarządzania (wersja zapoznawcza)
 
@@ -58,12 +58,13 @@ Po znalezieniu pakietu dostępu w portalu dostępu można przesłać żądanie.
 
 1. Znajdź na liście pakiet dostępu.  W razie potrzeby można wyszukać, wpisując ciąg wyszukiwania, a następnie wybierając pozycję **Nazwa**, **wykaz**lub filtr **zasobów** .
 
-    ![Portal dostępu — Wyszukiwanie zasobów](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
+    ![Portal dostępu — Wyszukiwanie zasobów](./media/entitlement-management-request-access/my-access-resource-search.png)
+
 1. Kliknij znacznik wyboru, aby wybrać pakiet dostępu.
 
-    ![Portal dostępu — dostęp — pakiety](./media/entitlement-management-shared/my-access-access-packages.png)
-
 1. Kliknij pozycję **Zażądaj dostępu** , aby otworzyć okienko żądania dostępu.
+
+    ![Portal dostępu — dostęp — pakiety](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
 1. Jeśli zostanie wyświetlone pole **uzasadnienie biznesowe** , wpisz uzasadnienie dostępu.
 
@@ -78,6 +79,12 @@ Po znalezieniu pakietu dostępu w portalu dostępu można przesłać żądanie.
 1. Kliknij pozycję **historia żądań** , aby wyświetlić listę żądań i stan.
 
     Jeśli pakiet dostępu wymaga zatwierdzenia, żądanie jest teraz w stanie oczekiwania na zatwierdzenie.
+
+### <a name="select-a-policy"></a>Wybieranie zasad
+
+Jeśli zażądano dostępu do pakietu dostępu z wieloma zasadami, które mają zastosowanie, może zostać wyświetlony monit o wybranie zasad. Na przykład Menedżer pakietów dostępu może skonfigurować pakiet dostępu z dwiema zasadami dla dwóch grup pracowników wewnętrznych. Pierwsze zasady mogą zezwalać na dostęp przez 60 dni i wymagać zatwierdzenia. Drugie zasady mogą zezwalać na dostęp przez 2 dni i nie wymagać zatwierdzania. Jeśli wystąpi ten scenariusz, należy wybrać zasady, które mają być używane.
+
+![Portal dostępu — dostęp do żądania — wiele zasad](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
 ## <a name="cancel-a-request"></a>Anuluj żądanie
 
@@ -94,12 +101,6 @@ W przypadku przesyłania żądania dostępu, gdy żądanie jest nadal w stanie *
     ![Portal dostępu — Anuluj żądanie](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
 1. Kliknij pozycję **historia żądań** , aby potwierdzić, że żądanie zostało anulowane.
-
-## <a name="select-a-policy"></a>Wybieranie zasad
-
-Jeśli żądasz dostępu do pakietu dostępu z wieloma zasadami, które mają zastosowanie, może zostać wyświetlony monit o wybranie zasad. Na przykład Menedżer pakietów dostępu może skonfigurować pakiet dostępu z dwiema zasadami dla dwóch grup pracowników wewnętrznych. Pierwsze zasady mogą zezwalać na dostęp przez 60 dni i wymagać zatwierdzenia. Drugie zasady mogą zezwalać na dostęp przez 2 dni i nie wymagać zatwierdzania. Jeśli wystąpi ten scenariusz, należy wybrać zasady, które mają być używane.
-
-**Rola wymagana wstępnie:** Obiektu żądającego
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rozwiązywanie problemów Azure Backup niepowodzenie: stan agenta gościa jest niedostępny'
+title: 'Rozwiązywanie problemów z błędem Azure Backup: problemy z agentem i rozszerzeniem'
 description: Objawy, przyczyny i rozwiązania błędów Azure Backup związanych z agentami, rozszerzeniem i dyskami.
 ms.reviewer: saurse
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9d76dfa338a697825868c31cfe6fc11e5235730b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b344af71eac04cc355ba157e18d9de9d84a9cc63
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533725"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969078"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędem Azure Backup: problemy z agentem lub rozszerzeniem
 
@@ -58,7 +58,7 @@ Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup ba
 Zalecana akcja:<br>
 Aby rozwiązać ten problem, Usuń blokadę z grupy zasobów maszyny wirtualnej, a następnie ponów operację, aby wyzwolić czyszczenie.
 > [!NOTE]
-> Usługa Backup tworzy oddzielną grupę zasobów niż grupa zasobów maszyny wirtualnej do przechowywania kolekcji punktów przywracania. Klienci nie mogą zablokować grupy zasobów utworzonej do użycia przez usługę kopii zapasowej. Format nazewnictwa grupy zasobów utworzonej przez usługę kopii zapasowej to: AzureBackupRG_ `<Geo>`_ `<number>` na przykład: AzureBackupRG_northeurope_1
+> Usługa Backup tworzy oddzielną grupę zasobów niż grupa zasobów maszyny wirtualnej do przechowywania kolekcji punktów przywracania. Klienci nie mogą zablokować grupy zasobów utworzonej do użycia przez usługę kopii zapasowej. Format nazewnictwa grupy zasobów utworzonej przez usługę kopii zapasowej to: AzureBackupRG_`<Geo>`_`<number>` EG: AzureBackupRG_northeurope_1
 
 **Krok 1. [Usuwanie blokady z grupy zasobów punktu przywracania](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Krok 2. [czyszczenie kolekcji punktów przywracania](#clean_up_restore_point_collection)**<br>
@@ -225,7 +225,7 @@ Wykonanie tych kroków powoduje ponowne zainstalowanie rozszerzenia podczas kole
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Usuń blokadę z grupy zasobów punktu odzyskiwania
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
-2. Przejdź do **opcji wszystkie zasoby**, wybierz grupę zasobów kolekcji punktów przywracania w następującym formacie AzureBackupRG_ `<Geo>`_ `<number>`.
+2. Przejdź do **opcji wszystkie zasoby**, wybierz grupę zasobów kolekcji punktów przywracania w następującym formacie AzureBackupRG_`<Geo>`_`<number>`.
 3. W sekcji **Ustawienia** wybierz pozycję **blokady** , aby wyświetlić blokady.
 4. Aby usunąć blokadę, wybierz wielokropek, a następnie kliknij przycisk **Usuń**.
 
@@ -254,12 +254,12 @@ Po usunięciu blokady Wyzwalaj tworzenie kopii zapasowej ad hoc/ręcznie. Dzięk
 Aby ręcznie wyczyścić kolekcję punktów przywracania, która nie została wyczyszczona ze względu na blokadę grupy zasobów, spróbuj wykonać następujące czynności:
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
-2. W menu **centrum** kliknij pozycję **wszystkie zasoby**, a następnie wybierz grupę zasobów o następującym formacie AzureBackupRG_ `<Geo>`_ `<number>`, w której znajduje się maszyna wirtualna.
+2. W menu **centrum** kliknij pozycję **wszystkie zasoby**, wybierz grupę zasobów z następującym formatem AzureBackupRG_`<Geo>`_`<number>` lokalizację maszyny wirtualnej.
 
     ![Usuń blokadę](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Kliknij pozycję Grupa zasobów, zostanie wyświetlony blok **Przegląd** .
-4. Wybierz opcję **Pokaż ukryte typy** , aby wyświetlić wszystkie ukryte zasoby. Wybierz kolekcje punktów przywracania o następującym formacie AzureBackupRG_ `<VMName>`_ `<number>`.
+4. Wybierz opcję **Pokaż ukryte typy** , aby wyświetlić wszystkie ukryte zasoby. Wybierz kolekcje punktów przywracania o następującym formacie AzureBackupRG_`<VMName>`_`<number>`.
 
     ![Usuń blokadę](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 

@@ -3,7 +3,7 @@ title: Dodaj Event Hubs Źródło zdarzenia do Azure Time Series Insights | Micr
 description: W tym artykule opisano sposób dodawania źródła zdarzeń połączonego z usługą Azure Event Hubs do środowiska Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: aaddfb19889e31bb8e0d52d1df2d6b034b6e7f6b
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 3adf8b71d264b01f13f5aac7002b7ec455a31d60
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274364"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990081"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Dodawanie źródła zdarzeń centrum zdarzeń do środowiska Time Series Insights
 
@@ -40,11 +40,11 @@ Aby dodać nową grupę odbiorców w centrum zdarzeń:
 
 1. W [Azure Portal](https://portal.azure.com)zlokalizuj i Otwórz centrum zdarzeń z przestrzeni nazw centrum zdarzeń.
 
-    [@no__t — 1Open przestrzeń nazw centrum zdarzeń](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
+    [![otworzyć przestrzeni nazw centrum zdarzeń](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
 
 1. W obszarze **jednostki**wybierz pozycję **grupy odbiorców**, a następnie wybierz pozycję **Grupa odbiorców**.
 
-   [![Event Hub — Dodaj grupę odbiorców](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png#lightbox)
+   [![centrum zdarzeń — Dodaj grupę odbiorców](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png#lightbox)
 
 1. Na stronie **grupy odbiorców** wprowadź nową unikatową wartość dla **nazwy**.  Użyj tej samej nazwy podczas tworzenia nowego źródła zdarzeń w środowisku Time Series Insights.
 
@@ -58,7 +58,7 @@ Aby dodać nową grupę odbiorców w centrum zdarzeń:
 
 1. W obszarze **topologia środowiska**wybierz pozycję **źródła zdarzeń**, a następnie wybierz pozycję **Dodaj**.
 
-   [![Under źródła zdarzeń, wybierz przycisk Dodaj](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
+   [![w obszarze źródła zdarzeń wybierz przycisk Dodaj](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
 1. Wprowadź wartość dla **nazwy źródła zdarzenia** , która jest unikatowa dla tego środowiska Time Series Insights, na przykład **strumień zdarzeń**.
 
@@ -68,11 +68,11 @@ Aby dodać nową grupę odbiorców w centrum zdarzeń:
 
    * Jeśli masz istniejące centrum zdarzeń w jednej z subskrypcji, wybierz pozycję **Użyj centrum zdarzeń z dostępnych subskrypcji**. Ta opcja jest najprostszym podejściem.
 
-     [![Select opcji importowania źródła zdarzeń](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
+     [![wybrać opcji importowania źródła zdarzeń](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
 
     *  W poniższej tabeli opisano wymagane właściwości opcji **Użyj centrum zdarzeń z dostępnych subskrypcji** :
 
-       [@no__t — szczegóły 1Subscription i centrum zdarzeń](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
+       [![szczegóły subskrypcji i centrum zdarzeń](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
 
        | Właściwość | Opis |
        | --- | --- |

@@ -3,7 +3,7 @@ title: Jak monitorować i zmniejszać ograniczenia w Azure Time Series Insights 
 description: W tym artykule opisano sposób monitorowania, diagnozowania i rozwiązywania problemów z wydajnością, które powodują opóźnienia i ograniczanie przepustowości w Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 389e1472e1e1fcbed6dd3b6c1d155199246d877f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4e82cdf43f568b6415cb7cb00ce0244654559b7d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332977"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990145"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i ograniczanie ograniczania przepustowości w celu zmniejszenia opóźnień w Azure Time Series Insights
 
@@ -44,15 +44,15 @@ Alerty mogą ułatwić diagnozowanie i łagodzenie problemów z opóźnieniami s
 
 1. W Azure Portal wybierz pozycję **alerty**.
 
-   [@no__t — 1Alerts](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [Alerty![](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
 1. Zostanie wyświetlony panel **Utwórz regułę** . Wybierz pozycję **Dodaj** w obszarze **warunek**.
 
-   [@no__t — alert 1Add](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [![Dodawanie alertu](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
 1. Następnie skonfiguruj dokładne warunki logiki sygnału.
 
-   [Logika sygnałów @no__t 1Configure](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [Konfiguracja logiki sygnałów![](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    W tym miejscu możesz skonfigurować alerty przy użyciu następujących warunków:
 
@@ -70,7 +70,7 @@ Alerty mogą ułatwić diagnozowanie i łagodzenie problemów z opóźnieniami s
 
 1. Po skonfigurowaniu żądanej logiki sygnałów Przejrzyj wybraną regułę alertów wizualnie.
 
-   [@no__t — 1Ingress](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [![ruchu przychodzącego](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Ograniczanie i zarządzanie ruchem przychodzącym
 

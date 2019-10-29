@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8038f7c909cfeaf15039afa7335dd6b0460a2622
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 191161c8185f45712052000285013a6e61c9fa6a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293468"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968918"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Dostosowywanie konfiguracji sieci dla docelowej maszyny wirtualnej platformy Azure
 
@@ -31,15 +31,12 @@ Podczas replikowania maszyn wirtualnych platformy Azure można dostarczyć nast�
 - [Publiczny adres IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Grupa zabezpieczeń sieci](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) dla podsieci i karty sieciowej
 
- > [!IMPORTANT]
-  > Te ustawienia są obsługiwane tylko w ramach operacji przełączania do trybu failover, a nie do testowania pracy w trybie failover.
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Upewnij się, że konfiguracje po stronie odzyskiwania są planowane z wyprzedzeniem.
 - Utwórz z góry zasoby sieciowe. Podaj je jako dane wejściowe, aby usługa Azure Site Recovery mogła przestrzegać tych ustawień i upewnić się, że maszyna wirtualna trybu failover będzie zgodna z tymi ustawieniami.
 
-## <a name="customize-failover-networking-configurations"></a>Dostosowywanie konfiguracji sieci trybu failover
+## <a name="customize-failover-and-test-failover-networking-configurations"></a>Dostosuj tryb failover i przetestuj konfiguracje sieci trybu failover
 
 1. Przejdź do **pozycji zreplikowane elementy**. 
 2. Wybierz żądaną maszynę wirtualną platformy Azure.
@@ -47,13 +44,16 @@ Podczas replikowania maszyn wirtualnych platformy Azure można dostarczyć nast�
 
      ![Dostosowywanie konfiguracji sieci trybu failover](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. Wybierz pozycję **Edytuj** obok karty sieciowej, którą chcesz skonfigurować. W następnym bloku, który zostanie otwarty, wybierz odpowiednie wstępnie utworzone zasoby w miejscu docelowym.
+4. Wybierz testową sieć wirtualną w trybie failover. Możesz pozostawić to pole puste i wybrać je w czasie testu pracy w trybie failover.
+5. Sieć trybu failover jest **wybierana** obok karty sieciowej, która ma zostać skonfigurowana. W następnym bloku, który zostanie otwarty, wybierz odpowiednie wstępnie utworzone zasoby w lokalizacji testowej pracy w trybie failover i w trybie failover.
 
     ![Edytowanie konfiguracji karty sieciowej](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-5. Kliknij przycisk **OK**.
+6. Kliknij przycisk **OK**.
 
 Site Recovery będzie teraz przestrzegać tych ustawień i upewnić się, że maszyna wirtualna w trybie failover jest połączona z wybranym zasobem za pośrednictwem odpowiedniej karty sieciowej.
+
+Gdy Wyzwalasz test pracy w trybie failover za pośrednictwem planu odzyskiwania, zawsze będzie ona zwracać do sieci wirtualnej platformy Azure. Ta sieć wirtualna zostanie użyta na potrzeby testowego przełączania do trybu failover dla maszyn, na których nie zostały wstępnie skonfigurowane ustawienia testowej pracy w trybie failover.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -72,9 +72,8 @@ Walidacje wewnętrznego modułu równoważenia obciążenia:
 - Jeśli docelowa maszyna wirtualna jest skonfigurowana do umieszczania w strefie dostępności, sprawdź, czy moduł równoważenia obciążenia jest nadmiarowy strefy lub nie jest częścią żadnej strefy dostępności. (Podstawowe usługi równoważenia obciążenia SKU nie obsługują stref i nie będą wyświetlane na liście rozwijanej w tym przypadku).
 - Upewnij się, że wewnętrzny moduł równoważenia obciążenia ma wstępnie utworzoną pulę zaplecza i konfigurację frontonu.
 
-
 Publiczny adres IP:
-    
+
 - Subskrypcja i region publicznego adresu IP i docelowej maszyny wirtualnej powinny być takie same.
 - Jednostka SKU publicznego adresu IP maszyny wirtualnej i jednostka SKU wewnętrznego modułu równoważenia obciążenia muszą być takie same.
 

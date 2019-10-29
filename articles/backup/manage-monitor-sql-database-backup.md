@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie SQL Servermi bazami danych na maszynie wirtualnej platformy Azure i monitorowanie ich przy użyciu Azure Backup
+title: Monitorowanie SQL Server baz danych na maszynie wirtualnej platformy Azure i zarządzanie nimi — Azure Backup
 description: W tym artykule opisano sposób zarządzania i monitorowania SQL Server baz danych, które są uruchomione na maszynie wirtualnej platformy Azure.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 7440859748a613f7d6af751974e07289175ed7ac
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934812"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968365"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Zarządzanie kopiami zapasowymi baz danych SQL Server i ich monitorowanie
 
@@ -32,7 +32,6 @@ Azure Backup przedstawia wszystkie zadania wyzwalane ręcznie w portalu **zadani
 
 Aby uzyskać szczegółowe informacje na temat scenariuszy monitorowania, przejdź do [obszaru monitorowanie w Azure Portal](backup-azure-monitoring-built-in-monitor.md) i [monitorowanie przy użyciu Azure monitor](backup-azure-monitoring-use-azuremonitor.md).  
 
-
 ## <a name="view-backup-alerts"></a>Wyświetlanie alertów dotyczących kopii zapasowych
 
 Ponieważ kopie zapasowe dzienników są wykonywane co 15 minut, monitorowanie zadań tworzenia kopii zapasowej może być żmudnym. Azure Backup łatwość monitorowania przez wysyłanie alertów e-mail. Alerty e-mail są następujące:
@@ -43,7 +42,7 @@ Ponieważ kopie zapasowe dzienników są wykonywane co 15 minut, monitorowanie z
 
 Aby monitorować alerty kopii zapasowej bazy danych:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 2. Na pulpicie nawigacyjnym magazynu wybierz pozycję **alerty i zdarzenia**.
 
@@ -57,14 +56,14 @@ Aby monitorować alerty kopii zapasowej bazy danych:
 
 Można zatrzymać tworzenie kopii zapasowej bazy danych SQL Server na kilka sposobów:
 
-* Zatrzymaj wszystkie przyszłe zadania tworzenia kopii zapasowej i Usuń wszystkie punkty odzyskiwania.
-* Zatrzymaj wszystkie przyszłe zadania tworzenia kopii zapasowej i pozostaw punkty odzyskiwania bez zmian.
+- Zatrzymaj wszystkie przyszłe zadania tworzenia kopii zapasowej i Usuń wszystkie punkty odzyskiwania.
+- Zatrzymaj wszystkie przyszłe zadania tworzenia kopii zapasowej i pozostaw punkty odzyskiwania bez zmian.
 
 Jeśli zdecydujesz się na pozostawienie punktów odzyskiwania, pamiętaj o następujących szczegółach:
 
-* Wszystkie punkty odzyskiwania pozostaną nienaruszone, a całe oczyszczanie zatrzyma się przy zatrzymaniu ochrony z zachowaniem danych.
-* Zostanie naliczona opłata za chronione wystąpienie i zużyty magazyn. Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
-* Jeśli usuniesz źródło danych bez zatrzymywania kopii zapasowych, nowe kopie zapasowe zakończą się niepowodzeniem.
+- Wszystkie punkty odzyskiwania pozostaną nienaruszone, a całe oczyszczanie zatrzyma się przy zatrzymaniu ochrony z zachowaniem danych.
+- Zostanie naliczona opłata za chronione wystąpienie i zużyty magazyn. Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
+- Jeśli usuniesz źródło danych bez zatrzymywania kopii zapasowych, nowe kopie zapasowe zakończą się niepowodzeniem.
 
 Aby zatrzymać ochronę bazy danych:
 
@@ -82,22 +81,20 @@ Aby zatrzymać ochronę bazy danych:
 
     ![Wybieranie pozycji Zatrzymaj tworzenie kopii zapasowej](./media/backup-azure-sql-database/stop-db-button.png)
 
-
 5. W menu **Zatrzymaj kopię zapasową** wybierz, czy chcesz zachować, czy usunąć dane. Jeśli chcesz, podaj przyczynę i komentarz.
 
     ![Zachowaj lub Usuń dane z menu Zatrzymaj kopię zapasową](./media/backup-azure-sql-database/stop-backup-button.png)
 
 6. Wybierz pozycję **Zatrzymaj tworzenie kopii zapasowej**.
 
-
 > [!NOTE]
 >
 >Aby uzyskać więcej informacji na temat opcji Usuń dane, zobacz często zadawane pytania poniżej:
->* [Czy po usunięciu bazy danych z wystąpienia z ochroną chronioną będą wykonywane kopie zapasowe?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
->* [Czy w przypadku zatrzymania operacji tworzenia kopii zapasowej bazy danych z ochroną chronioną jej zachowaniem?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>
+>- [Czy po usunięciu bazy danych z wystąpienia z ochroną chronioną będą wykonywane kopie zapasowe?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>- [Czy w przypadku zatrzymania operacji tworzenia kopii zapasowej bazy danych z ochroną chronioną jej zachowaniem?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
-
 
 ## <a name="resume-protection-for-a-sql-database"></a>Wznawianie ochrony bazy danych SQL
 
@@ -115,12 +112,13 @@ Aby wznowić ochronę bazy danych SQL:
 
 Można uruchamiać różne typy kopii zapasowych na żądanie:
 
-* Pełna kopia zapasowa
-* Pełna kopia zapasowa tylko do kopiowania
-* Różnicowa kopia zapasowa
-* Kopia zapasowa dziennika
+- Pełna kopia zapasowa
+- Pełna kopia zapasowa tylko do kopiowania
+- Różnicowa kopia zapasowa
+- Kopia zapasowa dziennika
 
-Podczas gdy trzeba określić czas przechowywania dla pełnej kopii zapasowej, zakres przechowywania dla pełnej kopii zapasowej w trybie ad-hoc zostanie automatycznie ustawiony na 45 dni od bieżącego czasu. <br/>
+Podczas gdy trzeba określić czas przechowywania dla pełnej kopii zapasowej, zakres przechowywania dla pełnej kopii zapasowej w trybie ad-hoc zostanie automatycznie ustawiony na 45 dni od bieżącego czasu.
+
 Aby uzyskać więcej informacji, zobacz [SQL Server typów kopii zapasowych](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>Wyrejestrowywanie wystąpienia programu SQL Server
@@ -141,35 +139,34 @@ Wyrejestruj wystąpienie SQL Server po wyłączeniu ochrony, ale przed usunięci
 
    ![Wybieranie pozycji Usuń](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
-
 ## <a name="modify-policy"></a>Modyfikuj zasady
+
 Zmodyfikuj zasady, aby zmienić częstotliwość tworzenia kopii zapasowych lub zakres przechowywania.
 
 > [!NOTE]
 > Każda zmiana w okresie przechowywania będzie stosowana z mocą wsteczną do wszystkich starszych punktów odzyskiwania poza nowymi.
 
-Na pulpicie nawigacyjnym magazynu przejdź do pozycji **Zarządzaj** > **zasadami tworzenia kopii zapasowych** i wybierz zasady, które chcesz edytować.
+Na pulpicie nawigacyjnym magazynu przejdź do pozycji **zarządzaj** > **zasady tworzenia kopii zapasowych** i wybierz zasady, które chcesz edytować.
 
   ![Zarządzanie zasadami tworzenia kopii zapasowych](./media/backup-azure-sql-database/modify-backup-policy.png)
 
   ![Modyfikowanie zasad tworzenia kopii zapasowych](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
-Modyfikacje zasad będą mieć wpływ na wszystkie powiązane elementy kopii zapasowej i wyzwalają odpowiednie zadania **konfigurowania ochrony** . 
+Modyfikacje zasad będą mieć wpływ na wszystkie powiązane elementy kopii zapasowej i wyzwalają odpowiednie zadania **konfigurowania ochrony** .
 
-#### <a name="inconsistent-policy"></a>Niespójne zasady 
+### <a name="inconsistent-policy"></a>Niespójne zasady
 
 Czasami operacja modyfikowania zasad może prowadzić do **niespójnej** wersji zasad dla niektórych elementów kopii zapasowej. Dzieje się tak, gdy odpowiednie zadanie **konfigurowania ochrony** nie powiedzie się dla elementu kopii zapasowej po wyzwoleniu operacji modyfikowania zasad. Jest on wyświetlany w następujący sposób w widoku elementu kopii zapasowej:
- 
+
   ![Niespójne zasady](./media/backup-azure-sql-database/inconsistent-policy.png)
 
 Możesz naprawić wersję zasad dla wszystkich elementów, których dotyczy problem, w jednym kliknięciem:
 
   ![Napraw niespójne zasady](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
- 
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Ponowne rejestrowanie rozszerzenia na maszynie wirtualnej SQL Server
 
-Czasami może to mieć wpływ na rozszerzenie obciążenia maszyny wirtualnej z jednego powodu. W takich przypadkach wszystkie operacje wyzwalane na maszynie wirtualnej rozpoczną się niepowodzeniem. Może być konieczne ponowne zarejestrowanie rozszerzenia na maszynie wirtualnej. Operacja **ponownego rejestrowania ponownie** zainstaluje rozszerzenie kopii zapasowej obciążenia na maszynie wirtualnej w celu kontynuowania operacji.  <br>
+Czasami może to mieć wpływ na rozszerzenie obciążenia maszyny wirtualnej z jednego powodu. W takich przypadkach wszystkie operacje wyzwalane na maszynie wirtualnej rozpoczną się niepowodzeniem. Może być konieczne ponowne zarejestrowanie rozszerzenia na maszynie wirtualnej. Operacja **ponownego rejestrowania ponownie** zainstaluje rozszerzenie kopii zapasowej obciążenia na maszynie wirtualnej w celu kontynuowania operacji.
 
 Użyj tej opcji z zachowaniem ostrożności; Ta operacja jest wyzwalana na maszynie wirtualnej z już prawidłowym rozszerzeniem. spowoduje to ponowne uruchomienie rozszerzenia. Może to spowodować niepowodzenie wszystkich zadań w toku. Przed wyzwoleniem operacji ponownego rejestrowania należy również sprawdzić obecność jednego lub kilku [objawów](backup-sql-server-azure-troubleshoot.md#re-registration-failures) .
 

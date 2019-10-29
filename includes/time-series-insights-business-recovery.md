@@ -1,15 +1,16 @@
 ---
 ms.topic: include
 ms.service: time-series-insights
-author: kingdomofends
-ms.author: adgera
+author: deepakpalled
+ms.author: dpalled
+manager: cshankar
 ms.date: 10/09/2019
-ms.openlocfilehash: 61842a8f410d972c21614f625f7d4f36476cb239
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 038d25a01c02799f48b8430fb6ac3facc1cd3bd6
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72259102"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990881"
 ---
 ## <a name="business-disaster-recovery"></a>Odzyskiwanie po awarii firmy
 
@@ -23,7 +24,7 @@ Dodatkowe funkcje wysokiej dostępności zapewniane przez platformę Azure (a ta
 
 - **Tryb failover**: platforma Azure zapewnia [replikację geograficzną i równoważenie obciążenia](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region).
 - **Przywracanie** i **odzyskiwanie**danych: platforma Azure oferuje [kilka opcji umożliwiających zachowanie i odzyskiwanie danych](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption).
-- **Site Recovery**: platforma Azure udostępnia funkcje usługi Site Recovery za pomocą [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
+- **Azure Site Recovery**: platforma Azure udostępnia funkcje usługi Site Recovery za pomocą [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
 - **Azure Backup**: [Azure Backup](https://docs.microsoft.com/azure/backup/backup-architecture) obsługuje kopie zapasowe maszyn wirtualnych platformy Azure zarówno lokalnie, jak i w chmurze.
 
 Upewnij się, że zostały włączone odpowiednie funkcje platformy Azure w celu zapewnienia globalnej wysokiej dostępności dla urządzeń i użytkowników w różnych regionach.
@@ -35,8 +36,8 @@ Upewnij się, że zostały włączone odpowiednie funkcje platformy Azure w celu
 
 Niektóre usługi Azure IoT obejmują również wbudowane funkcje odzyskiwania po awarii firmy:
 
-- [IoT Hub odzyskiwanie awaryjne o wysokiej dostępności](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), w tym nadmiarowość wewnątrz regionu
-- [Zasady Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
+- [Usługa Azure IoT Hub odzyskiwanie awaryjne o wysokiej dostępności](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), które obejmuje nadmiarowość wewnątrz regionu
+- [Zasady usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
 - [Nadmiarowość usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 Integracja Time Series Insights z innymi usługami zapewnia dodatkowe możliwości odzyskiwania po awarii. Na przykład dane telemetryczne wysyłane do centrum zdarzeń mogą zostać utrwalone w kopii zapasowej bazy danych usługi Azure Blob Storage.
@@ -50,13 +51,13 @@ Można jednak określić, że wymagana jest kompletna kopia zapasowa środowiska
 - Jako *wystąpienie trybu failover* przeznaczone dla Time Series Insights do przekierowywania danych i ruchu do
 - Aby zachować informacje o danych i inspekcji
 
-Ogólnie rzecz biorąc, najlepszym sposobem duplikowania środowiska Time Series Insights jest utworzenie drugiego środowiska Time Series Insights w ramach kopii zapasowej regionu platformy Azure. Zdarzenia są również wysyłane do tego środowiska pomocniczego ze swojego podstawowego źródła zdarzeń. Upewnij się, że używasz drugiej, dedykowanej grupy odbiorców. Postępuj zgodnie ze wskazówkami dotyczącymi odzyskiwania po awarii firmy, zgodnie z wcześniejszym opisem.
+Ogólnie rzecz biorąc, najlepszym sposobem duplikowania środowiska Time Series Insights jest utworzenie drugiego środowiska Time Series Insights w ramach kopii zapasowej regionu platformy Azure. Zdarzenia są również wysyłane do tego środowiska pomocniczego ze swojego podstawowego źródła zdarzeń. Upewnij się, że używasz drugiej dedykowanej grupy odbiorców. Postępuj zgodnie ze wskazówkami dotyczącymi odzyskiwania po awarii firmy, zgodnie z wcześniejszym opisem.
 
 Aby utworzyć zduplikowane środowisko:
 
 1. Utwórz środowisko w drugim regionie. Aby uzyskać więcej informacji, zobacz [Tworzenie nowego środowiska Time Series Insights w Azure Portal](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
 1. Utwórz drugą dedykowaną grupę odbiorców dla źródła zdarzeń.
-1. Połącz to źródło zdarzeń z nowym środowiskiem. Upewnij się, że wyznaczysz drugą, dedykowaną grupę odbiorców.
+1. Połącz to źródło zdarzeń z nowym środowiskiem. Upewnij się, że wyznaczysz drugą dedykowaną grupę odbiorców.
 1. Zapoznaj się z dokumentacją [IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) Time Series Insights i [Event Hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) .
 
 Jeśli wystąpi zdarzenie:

@@ -3,20 +3,19 @@ title: Udostępnianie widoków niestandardowych usługi Azure Time Series Insigh
 description: W tym artykule opisano sposób opracowywania sparametryzowanych adresów URL w usłudze Azure Time Series Insights na potrzeby łatwego udostępniania widoku klienta.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: e862cd604263c5125259344baf2e990ad56a3291
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: e62455a0c8412a579c0fab9d7fabd6016f47dbf3
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675820"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991114"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Udostępnianie widoku niestandardowego przy użyciu sparametryzowanego adresu URL
 
@@ -66,7 +65,7 @@ Akceptowane wartości odpowiadają menu **szybkiego czasu** Eksploratora Time Se
 
 ### <a name="optional-parameters"></a>Parametry opcjonalne
 
-@No__t_0 parametr określa warunki widoku Time Series Insights:
+`timeSeriesDefinitions=<collection of term objects>` parametr określa warunki widoku Time Series Insights:
 
 | Parametr | Element adresu URL | Opis |
 | --- | --- | --- |
@@ -78,7 +77,7 @@ Akceptowane wartości odpowiadają menu **szybkiego czasu** Eksploratora Time Se
 
 * Para klucz-wartość `multiChartStack=<true/false>` umożliwia tworzenie stosów na wykresie.
 * Para klucz-wartość `multiChartSameScale=<true/false>` umożliwia tej samej skali osi Y w warunkach w ramach opcjonalnego parametru.  
-* @No__t_0 umożliwia dostosowanie suwaka interwału, aby zapewnić bardziej szczegółowy lub gładszy, bardziej Zagregowany widok wykresu.  
+* `timeBucketUnit=<Unit>&timeBucketSize=<integer>` umożliwia dostosowanie suwaka interwału, aby zapewnić bardziej szczegółowy lub gładszy, bardziej Zagregowany widok wykresu.  
 * Parametr `timezoneOffset=<integer>` umożliwia ustawienie strefy czasowej na potrzeby wyświetlania wykresu jako przesunięcia do czasu UTC.
 
 | Pary | Opis |
@@ -114,11 +113,11 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 
 Powyższy adres URL opisuje i kompiluje widok Eksploratora Time Series Insights:
 
-[Warunki Eksploratora usługi ![Time Series Insights](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
+[![Time Series Insights Explorer — warunki](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
 
 Widok pełny (łącznie z wykresem):
 
-[Widok ![Chart](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+[Widok wykresu![](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 

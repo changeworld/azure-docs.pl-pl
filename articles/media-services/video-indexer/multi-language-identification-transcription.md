@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: 983b66be6b51c9af5987e539ea1175a65c9269b3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862046"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968740"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Automatycznie zidentyfikuj i transkrypcja zawartość w wielu językach (wersja zapoznawcza)
 
@@ -39,7 +39,7 @@ Można wybrać **wykrywanie wielu języków** podczas przekazywania i indeksowan
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>Wybieranie identyfikacji wielojęzycznej na indeksowanie za pomocą interfejsu API
 
-Podczas indeksowania lub ponownego [indeksowania](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) wideo przy użyciu interfejsu API, wybierz `multi-language detection` opcję w `sourceLanguage` parametrze.
+Podczas indeksowania lub ponownego [indeksowania](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) wideo przy użyciu interfejsu API, wybierz opcję `multi-language detection` w parametrze `sourceLanguage`.
 
 ### <a name="model-output"></a>Dane wyjściowe modelu
 
@@ -75,7 +75,7 @@ Ponadto każde wystąpienie w sekcji transkrypcji będzie zawierać język, w kt
 
 ## <a name="guidelines-and-limitations"></a>Wytyczne i ograniczenia
 
-* Zestaw obsługiwanych języków: Angielski, francuski, niemiecki, hiszpański.
+* Zestaw obsługiwanych języków: angielski, francuski, niemiecki, hiszpański.
 * Obsługa zawartości wielojęzycznej przy użyciu maksymalnie trzech obsługiwanych języków.
 * Jeśli dźwięk zawiera języki inne niż lista obsługiwanych powyżej, wynik jest nieoczekiwany.
 * Minimalna długość segmentu do wykrycia dla każdego języka — 15 sekund.
@@ -86,9 +86,8 @@ Ponadto każde wystąpienie w sekcji transkrypcji będzie zawierać język, w kt
 * Tworzenie i edytowanie projektu nie jest obecnie dostępne w przypadku wideo w wielu językach.
 * Niestandardowe modele językowe nie są dostępne w przypadku korzystania z wykrywania wielu języków.
 * Dodawanie słów kluczowych nie jest obsługiwane.
-* Interfejs API "Update transkrypcji" nie jest obsługiwany.
 * W przypadku eksportowania plików napisów oznaczenie języka nie zostanie wyświetlone.
-
+* Interfejs API transkrypcji aktualizacji nie obsługuje plików z wieloma językami.
 
 ## <a name="next-steps"></a>Następne kroki
 

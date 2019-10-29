@@ -1,26 +1,23 @@
 ---
-title: Program Terraform i miejsca wdrożenia dostawcy platformy Azure
+title: Samouczek — Inicjowanie obsługi infrastruktury przy użyciu miejsc wdrożenia platformy Azure za pomocą Terraform
 description: Samouczek dotyczący korzystania z programu Terraform w połączeniu z miejscami wdrożenia dostawcy platformy Azure
-services: terraform
-ms.service: azure
-keywords: terraform, devops, maszyna wirtualna, Azure, miejsca wdrożenia
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: fbc6d30f8bc161ecf1a4e4093d0b69e99eec527b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/26/2019
+ms.openlocfilehash: 209bc23c6f8e96734506e3017ed2b16e51c77a00
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924987"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969288"
 ---
-# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Program Terraform służy do aprowizowania infrastruktury za pomocą miejsc wdrożenia platformy Azure
+# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Samouczek: Inicjowanie obsługi infrastruktury przy użyciu miejsc wdrożenia platformy Azure za pomocą Terraform
 
 [Miejsc wdrożenia platformy Azure](/azure/app-service/deploy-staging-slots) możesz użyć do przełączania się między różnymi wersjami aplikacji. Ta możliwość pozwala zminimalizować wpływ uszkodzonych wdrożeń. 
 
-W tym artykule przedstawiono w formie przewodnika przykładowe zastosowanie miejsc wdrożenia do wdrożenia dwóch aplikacji za pomocą usługi GitHub i na platformie Azure. Jedna aplikacja jest hostowana w miejscu produkcyjnym. Druga aplikacja jest hostowana w miejscu przejściowym. (Nazwy "produkcyjne" i "przemieszczanie" są dowolne i mogą być dowolne, które reprezentują swój scenariusz). Po skonfigurowaniu miejsc wdrożenia można użyć Terraform do wymiany między dwoma gniazdami w razie potrzeby.
+W tym artykule przedstawiono w formie przewodnika przykładowe zastosowanie miejsc wdrożenia do wdrożenia dwóch aplikacji za pomocą usługi GitHub i na platformie Azure. Jedna aplikacja jest hostowana w miejscu produkcyjnym. Druga aplikacja jest hostowana w miejscu przejściowym. (Nazwy "produkcyjne" i "przemieszczanie" są dowolne. Mogą one być odpowiednie dla danego scenariusza.) Po skonfigurowaniu miejsc wdrożenia Użyj Terraform do wymiany między dwoma gniazdami zgodnie z potrzebami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -64,13 +61,11 @@ W tym artykule przedstawiono w formie przewodnika przykładowe zastosowanie miej
     cd deploy
     ```
 
-1. Za pomocą [edytora vi](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html) utwórz plik o nazwie `deploy.tf`. Ten plik będzie zawierać [konfigurację programu Terraform](https://www.terraform.io/docs/configuration/index.html).
+1. W usłudze Cloud Shell utwórz plik o nazwie `deploy.tf`.
 
     ```bash
-    vi deploy.tf
+    code deploy.tf
     ```
-
-1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
 1. Wklej następujący kod do edytora:
 
@@ -109,13 +104,7 @@ W tym artykule przedstawiono w formie przewodnika przykładowe zastosowanie miej
     }
     ```
 
-1. Naciśnij klawisz Esc, aby wyjść z trybu wstawiania.
-
-1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
-
-    ```bash
-    :wq
-    ```
+1. Zapisz plik ( **&lt;Ctrl > S**) i wyjdź z edytora ( **&lt;Ctrl > Q**).
 
 1. Teraz, gdy utworzono plik, zweryfikuj jego zawartość.
 
@@ -207,7 +196,7 @@ Po rozwidleniu repozytorium projektu testowego skonfiguruj miejsca wdrożenia, w
 
 1. Na karcie **Opcja wdrożenia** wybierz pozycję **OK**.
 
-W tym momencie miejsce produkcyjne jest wdrożone. Aby wdrożyć miejsce przejściowe, wykonaj wszystkie poprzednie kroki w tej sekcji z następującymi zmianami:
+W tym momencie wdrożono miejsce produkcyjne. Aby wdrożyć miejsce przejściowe, wykonaj poprzednie kroki z następującymi modyfikacjami:
 
 - W kroku 3 wybierz zasób **slotAppServiceSlotOne**.
 
@@ -219,8 +208,6 @@ W tym momencie miejsce produkcyjne jest wdrożone. Aby wdrożyć miejsce przejś
 
 W poprzednich sekcjach skonfigurowano dwa miejsca — **slotAppService** i **slotAppServiceSlotOne**— na potrzeby wdrażania z różnych gałęzi w usłudze GitHub. Sprawdzimy podgląd aplikacji internetowych, aby zweryfikować, że zostały wdrożone pomyślnie.
 
-Wykonaj poniższe kroki dwukrotnie. W kroku 3 za pierwszym razem wybierz pozycję **slotAppService**, a za drugim razem pozycję **slotAppServiceSlotOne**.
-
 1. W menu głównym witryny Azure Portal wybierz pozycję **Grupy zasobów**.
 
 1. Wybierz pozycję **slotDemoResourceGroup**.
@@ -231,18 +218,15 @@ Wykonaj poniższe kroki dwukrotnie. W kroku 3 za pierwszym razem wybierz pozycj�
 
     ![Wybieranie adresu URL na karcie przeglądu w celu renderowania aplikacji](./media/terraform-slot-walkthru/resource-url.png)
 
-> [!NOTE]
-> Utworzenie i wdrożenie witryny z usługi GitHub na platformie Azure może potrwać kilka minut.
->
->
+1. W zależności od wybranej aplikacji są wyświetlane następujące wyniki:
+    - **slotAppService** Web App — niebieska Strona z tytułem strony **aplikacji demonstracyjnej o gnieździe 1**. 
+    - **slotAppServiceSlotOne** Web App — Zielona Strona z tytułem strony **aplikacji demonstracyjnej o gnieździe 2**.
 
-Dla aplikacji internetowej **slotAppService** jest wyświetlana niebieska strona z tytułem **Slot Demo App 1**. Dla aplikacji internetowej **slotAppServiceSlotOne** jest wyświetlana zielona strona z tytułem **Slot Demo App 2**.
-
-![Wyświetlanie podglądu aplikacji w celu przetestowania, czy zostały wdrożone poprawnie](./media/terraform-slot-walkthru/app-preview.png)
+    ![Wyświetlanie podglądu aplikacji w celu przetestowania, czy zostały wdrożone poprawnie](./media/terraform-slot-walkthru/app-preview.png)
 
 ## <a name="swap-the-two-deployment-slots"></a>Zamiana dwóch miejsc wdrożenia
 
-Aby przetestować zamianę dwóch miejsc wdrożenia, wykonaj następujące kroki:
+Aby przetestować wymianę dwóch miejsc wdrożenia, wykonaj następujące czynności:
  
 1. Przejdź do karty przeglądarki z uruchomioną aplikacją **slotAppService** (aplikacja z niebieską stroną). 
 
@@ -256,13 +240,11 @@ Aby przetestować zamianę dwóch miejsc wdrożenia, wykonaj następujące kroki
     cd clouddrive/swap
     ```
 
-1. Za pomocą edytora vi utwórz plik o nazwie `swap.tf`.
+1. W usłudze Cloud Shell utwórz plik o nazwie `swap.tf`.
 
     ```bash
-    vi swap.tf
+    code swap.tf
     ```
-
-1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
 1. Wklej następujący kod do edytora:
 
@@ -278,13 +260,7 @@ Aby przetestować zamianę dwóch miejsc wdrożenia, wykonaj następujące kroki
     }
     ```
 
-1. Naciśnij klawisz Esc, aby wyjść z trybu wstawiania.
-
-1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
-
-    ```bash
-    :wq
-    ```
+1. Zapisz plik ( **&lt;Ctrl > S**) i wyjdź z edytora ( **&lt;Ctrl > Q**).
 
 1. Zainicjuj narzędzie Terraform.
 
@@ -304,7 +280,7 @@ Aby przetestować zamianę dwóch miejsc wdrożenia, wykonaj następujące kroki
     terraform apply
     ```
 
-1. Gdy program Terraform zakończy zamianę miejsc, wróć do przeglądarki renderującej aplikację internetową **slotAppService** i odśwież stronę. 
+1. Po zamianie gniazd na Terraform Wróć do przeglądarki. Odśwież stronę. 
 
 Aplikacja internetowa w miejscu przejściowym **slotAppServiceSlotOne** została umieszczona w miejscu produkcyjnym i jest teraz renderowana w kolorze zielonym. 
 
@@ -317,3 +293,8 @@ terraform apply
 ```
 
 Po zamianie aplikacji zobaczysz oryginalną konfigurację.
+
+## <a name="next-steps"></a>Następne kroki
+
+> [!div class="nextstepaction"] 
+> [Terraform na platformie Azure](/azure/ansible/)

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9178b8007d707af2df150102b2d344a44106a9ca
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755184"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990616"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy w zakresie spójności, dostępności i wydajności 
 
@@ -62,6 +62,10 @@ W poniższej tabeli zdefiniowano relacje między modelem spójności i trwałoś
 *K* = liczba wersji *"K"* (tj. aktualizacji) elementu.
 
 *T* = przedział czasu *"T"* od momentu ostatniej aktualizacji.
+
+## <a name="strong-consistency-and-multi-master"></a>Silna spójność i wiele wzorców
+
+Kont Cosmos skonfigurowanych dla wielu wzorców nie można skonfigurować pod kątem silnej spójności, ponieważ nie jest to możliwe w systemie rozproszonym, aby zapewnić cel punktu odzyskiwania równy zero i RTO równy zero. Ponadto nie ma korzyści z opóźnienia zapisu w przypadku używania silnej spójności z wieloma wzorcami, ponieważ każdy zapis w dowolnym regionie musi być replikowany i zatwierdzony do wszystkich skonfigurowanych regionów w ramach konta. Powoduje to takie samo opóźnienie zapisu jak pojedyncze konto główne.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/18/2019
+ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78243f02cbbe3d06b94ee52d6193865dbfa27121
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: da3e1b6439b033742af62d548775cfb628e955b7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488999"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990702"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Zatwierdzanie lub odrzucanie żądań dostępu w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
 
@@ -36,7 +36,7 @@ Korzystając z usługi Azure AD uprawnia do zarządzania, można skonfigurować 
 
 Pierwszym krokiem w celu zatwierdzenia lub odmowy żądań dostępu jest znalezienie i otwarcie żądania dostępu oczekujące na zatwierdzenie. Istnieją dwa sposoby otwierania żądania dostępu.
 
-**Rola wymagana wstępnie:** Osoba zatwierdzająca
+**Rola wymagana wstępnie:** Osoby zatwierdzającej
 
 1. Poszukaj wiadomości e-mail z Microsoft Azure, która prosi o zatwierdzenie lub odrzucenie żądania. Oto przykład wiadomości e-mail:
 
@@ -48,7 +48,7 @@ Pierwszym krokiem w celu zatwierdzenia lub odmowy żądań dostępu jest znalezi
 
 Jeśli nie masz wiadomości e-mail, możesz znaleźć żądania dostępu oczekujące na zatwierdzenie, wykonując następujące kroki.
 
-1. Zaloguj się do portalu My Access pod adresem [https://myaccess.microsoft.com](https://myaccess.microsoft.com).
+1. Zaloguj się do portalu My Access w [https://myaccess.microsoft.com](https://myaccess.microsoft.com).
 
 1. W menu po lewej stronie kliknij pozycję **zatwierdzenia** , aby wyświetlić listę żądań dostępu oczekujących na zatwierdzenie.
 
@@ -58,7 +58,7 @@ Jeśli nie masz wiadomości e-mail, możesz znaleźć żądania dostępu oczekuj
 
 Po otwarciu żądania dostępu oczekującego na zatwierdzenie możesz zobaczyć szczegóły, które ułatwią zatwierdzenie lub odrzucenie decyzji.
 
-**Rola wymagana wstępnie:** Osoba zatwierdzająca
+**Rola wymagana wstępnie:** Osoby zatwierdzającej
 
 1. Kliknij link **Wyświetl** , aby otworzyć okienko żądanie dostępu.
 
@@ -66,11 +66,11 @@ Po otwarciu żądania dostępu oczekującego na zatwierdzenie możesz zobaczyć 
 
     Szczegóły obejmują imię i nazwisko użytkownika, organizację, datę rozpoczęcia dostępu i daty zakończenia, jeśli zostały podane, uzasadnienie biznesowe, czas przesyłania żądania oraz czas wygaśnięcia żądania.
 
-1. Kliknij  przycisk Zatwierdź lub **Odmów**.
+1. Kliknij przycisk **Zatwierdź** lub **Odmów**.
 
 1. W razie potrzeby wprowadź przyczynę.
 
-    ![Portal dostępu moje dostęp — żądanie dostępu](./media/entitlement-management-shared/my-access-approve-request.png)
+    ![Portal dostępu moje dostęp — żądanie dostępu](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. Kliknij pozycję **Prześlij** , aby przesłać swoją decyzję.
 

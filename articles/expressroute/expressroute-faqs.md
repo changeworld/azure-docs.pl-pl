@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: df8b1c8fd31eed0a09b878f09faadb23f6b72aaa
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 50617eda56c2eaec9fac315013114f173e85edbc
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965445"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990791"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -66,6 +66,7 @@ ExpressRoute obsługuje [trzy domeny routingu](expressroute-circuit-peerings.md)
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI — dostępne za pośrednictwem społeczności regionalnej platformy Azure, zobacz [tutaj](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) , jak sprawdzić region dzierżawy Power BI.
 * Usługa Active Directory systemu Azure
+* [Pulpit wirtualny systemu Windows](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (społeczność usług globalnych platformy Azure)
 * Większość usług platformy Azure jest obsługiwanych. Skontaktuj się bezpośrednio z usługą, która ma zostać użyta, aby zweryfikować pomoc techniczną.<br><br>**Następujące usługi nie są obsługiwane**:
     * CDN

@@ -3,20 +3,19 @@ title: 'Szybki Start: Eksplorator Azure Time Series Insights | Microsoft Docs'
 description: W tym przewodniku szybki start pokazano, jak rozpocząć pracę z Eksploratorem Azure Time Series Insights w przeglądarce sieci Web, aby wizualizować duże ilości danych IoT. Poznaj najważniejsze funkcje w środowisku pokazu.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/23/2019
-ms.openlocfilehash: 83446facc734c0bfa24b7e78916d652467d01415
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 156e95c88bc3c66890ba9c8baf9b281330b60186
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978676"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990906"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Szybki start: poznawanie usługi Azure Time Series Insights
 
@@ -39,45 +38,45 @@ Ten przewodnik Szybki Start dla programu Time Series Insights Explorer oferuje f
 
 1. Zostanie wyświetlona strona Time Series Insights Quick przewodnika. Wybierz pozycję **dalej** , aby rozpocząć szybkie samouczki.
 
-   [@no__t — 1Select dalej](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
+   [![wybierz pozycję Dalej](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
 
 ## <a name="explore-the-demo-environment"></a>Eksplorowanie środowiska demonstracyjnego
 
 1. Zostanie wyświetlony **panel wybór czasu** . Użyj tego panelu, aby wybrać przedział czasu do wizualizacji.
 
-   [Panel wyboru @no__t 1Time](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
+   [Panel wyboru![czas](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
 
 1. Wybierz przedział czasu i przeciągnij go w regionie. Następnie wybierz pozycję **Wyszukaj**.
 
-   [@no__t — 1Select przedział czasu](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [![wybrać przedział czasu](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
 
    Usługa Time Series Insights wyświetli wizualizację wykresu dla określonego przedziału czasu. Na wykresie liniowym można wykonywać różne czynności. Na przykład można filtrować, przypinać, sortować i stosu.
 
    Aby powrócić do **panelu wyboru czasu**, wybierz strzałkę w dół, jak pokazano:
 
-   [@no__t — 1Chart](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [Wykres![](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
 
 1. Wybierz pozycję **Dodaj** na **panelu warunki** , aby dodać nowy termin wyszukiwania.
 
-   [@no__t — element 1Add](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [![dodać elementu](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
 
 1. Na wykresie możesz wybrać region, kliknąć prawym przyciskiem myszy ten region i wybrać polecenie **Eksploruj zdarzenia**.
 
-   [@no__t — zdarzenia 1Explore](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [![Eksplorowanie zdarzeń](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
 
    Siatka danych pierwotnych jest wyświetlana w regionie, w którym jest przeprowadzana Eksplorowanie.
 
-   [@no__t — widok 1Grid](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+   [Widok siatki![](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
 
 ## <a name="select-and-filter-data"></a>Wybieranie i filtrowanie danych
 
 1. Edytuj swoje warunki, aby zmienić wartości na wykresie. Dodaj kolejny termin, aby skorelować krzyżowo różne typy wartości.
 
-   [@no__t — 1Add termin](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+   [![dodać termin](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
 
 1. Wprowadź termin filtru w polu **Seria filtru** dla filtrowania serii Improvised. Na potrzeby tego przewodnika Szybki start wprowadź termin **Station5** (Stacja5), aby skorelować temperaturę i ciśnienie dla tej stacji.
 
-   [@no__t — seria 1Filter](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
+   [Seria filtru![](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
 
 Po zakończeniu przewodnika Szybki start możesz poeksperymentować z zestawem danych przykładowych, aby tworzyć różne wizualizacje.
 

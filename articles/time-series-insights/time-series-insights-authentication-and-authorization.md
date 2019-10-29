@@ -3,7 +3,7 @@ title: Uwierzytelnianie i Autoryzowanie przy użyciu interfejsu API w Azure Time
 description: W tym artykule opisano sposób konfigurowania uwierzytelniania i autoryzacji dla aplikacji niestandardowej, która wywołuje interfejs API Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: e98c004b802711c83558bf4d7ec86c418679836b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4fd68f770cbe48b15646ec41c0bf94be5e760a50
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981151"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990180"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Uwierzytelnianie i autoryzacja interfejsu API Azure Time Series Insights
 
@@ -59,15 +59,15 @@ Na **krok 3**oddzielenie poświadczeń aplikacji i użytkownika pozwala:
 
 1. Dla środowiska Time Series Insights wybierz pozycję **zasady dostępu do danych** i wybierz pozycję **Dodaj**.
 
-   [@no__t 1Add nowe zasady dostępu do danych w środowisku Time Series Insights](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
+   [![dodać nowe zasady dostępu do danych do środowiska Time Series Insights](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
 1. W oknie dialogowym **Wybieranie użytkownika** wklej **nazwę aplikacji** lub **Identyfikator aplikacji** z sekcji Azure Active Directory rejestracji aplikacji.
 
-   [@no__t — 1Find aplikację w oknie dialogowym Wybieranie użytkownika](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
+   [![znaleźć aplikacji w oknie dialogowym Wybieranie użytkownika](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-1. Wybierz rolę. Wybierz opcję **czytelnik** , aby wykonać zapytanie dotyczące danych lub **współautora** , aby wykonać zapytanie o dane i zmienić dane referencyjne Wybierz **przycisk OK**.
+1. Wybierz rolę. Wybierz opcję **czytelnik** , aby wykonać zapytanie dotyczące danych lub **współautora** , aby wykonać zapytanie o dane i zmienić dane referencyjne Kliknij przycisk **OK**.
 
-   [1Pick-Reader lub współautor w oknie dialogowym Wybieranie roli użytkownika @no__t](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
+   [![Wybieranie czytnika lub współautora w oknie dialogowym Wybieranie roli użytkownika](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
 1. Zapisz zasady, wybierając **przycisk OK**.
 
@@ -99,7 +99,7 @@ Na **krok 3**oddzielenie poświadczeń aplikacji i użytkownika pozwala:
     string accessToken = token.AccessToken;
     ```
 
-1. Token można następnie przesłać w nagłówku `Authorization`, gdy aplikacja wywoła interfejs API Time Series Insights.
+1. Token można następnie przesłać do nagłówka `Authorization`, gdy aplikacja wywołuje interfejs API Time Series Insights.
 
 ## <a name="common-headers-and-parameters"></a>Wspólne nagłówki i parametry
 
@@ -110,7 +110,7 @@ W tej sekcji opisano typowe nagłówki i parametry żądań HTTP służące do w
 Aby wykonać uwierzytelnione zapytania dotyczące [Time Series Insights interfejsów API REST](https://docs.microsoft.com/rest/api/time-series-insights/), należy przesłać prawidłowy token okaziciela OAuth 2,0 w [nagłówku autoryzacji](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) za pomocą wybranego przez siebie klienta REST (Poster, JavaScript, C#). 
 
 > [!IMPORTANT]
-> Token musi być wystawiony dokładnie dla zasobu `https://api.timeseries.azure.com/` (znanego również jako "odbiorcy" tokenu).
+> Token musi być wystawiony dokładnie dla `https://api.timeseries.azure.com/` zasobu (znany również jako "odbiorcy" tokenu).
 > * Z tego względu Twój **AuthURLcy** Twojego [ogłaszania](https://www.getpostman.com/) jest zgodny z: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
 
 > [!TIP]
@@ -120,19 +120,19 @@ Aby wykonać uwierzytelnione zapytania dotyczące [Time Series Insights interfej
 
 Wymagane nagłówki żądania:
 
-- `Authorization` w celu uwierzytelniania i autoryzacji należy przesłać prawidłowy token okaziciela OAuth 2,0 w nagłówku autoryzacji. Token musi być wystawiony dokładnie dla zasobu `https://api.timeseries.azure.com/` (znanego również jako "odbiorcy" tokenu).
+- `Authorization` uwierzytelniania i autoryzacji, należy przesłać prawidłowy token okaziciela OAuth 2,0 w nagłówku autoryzacji. Token musi być wystawiony dokładnie dla `https://api.timeseries.azure.com/` zasobu (znany również jako "odbiorcy" tokenu).
 
 Opcjonalne nagłówki żądań:
 
-- `Content-type` — obsługiwana jest tylko `application/json`.
+- Obsługiwane są `application/json` tylko `Content-type`.
 - `x-ms-client-request-id` — identyfikator żądania klienta. Usługa rejestruje tę wartość. Umożliwia usłudze śledzenie operacji między usługami.
 - `x-ms-client-session-id` — identyfikator sesji klienta. Usługa rejestruje tę wartość. Umożliwia usłudze Śledzenie grupy powiązanych operacji między usługami.
 - `x-ms-client-application-name` — nazwa aplikacji, która wygenerowała to żądanie. Usługa rejestruje tę wartość.
 
 Nagłówki odpowiedzi:
 
-- `Content-type` — obsługiwana jest tylko `application/json`.
-- `x-ms-request-id` — identyfikator żądania wygenerowany przez serwer. Można go użyć do skontaktowania się z firmą Microsoft w celu zbadania żądania.
+- Obsługiwane są `application/json` tylko `Content-type`.
+- Identyfikator żądania wygenerowany przez serwer `x-ms-request-id`. Można go użyć do skontaktowania się z firmą Microsoft w celu zbadania żądania.
 
 ### <a name="http-parameters"></a>Parametry HTTP
 
@@ -143,7 +143,7 @@ Parametry ciągu zapytania wymaganego adresu URL:
 
 Opcjonalne parametry ciągu zapytania URL:
 
-- `timeout=<timeout>` — limit czasu po stronie serwera dla wykonywania żądania. Dotyczy tylko [zdarzeń Get Environment](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) i [Get Environment](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API. Wartość limitu czasu powinna mieć format czasu trwania ISO 8601, na przykład `"PT20S"` i musi należeć do zakresu `1-30 s`. Wartość domyślna to `30 s`.
+- `timeout=<timeout>` — limit czasu po stronie serwera dla wykonywania żądania. Dotyczy tylko [zdarzeń Get Environment](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) i [Get Environment](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API. Wartość limitu czasu powinna mieć format czasu trwania ISO 8601, na przykład `"PT20S"` i powinna znajdować się w zakresie `1-30 s`. Wartość domyślna to `30 s`.
 
 ## <a name="next-steps"></a>Następne kroki
 

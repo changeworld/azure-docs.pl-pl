@@ -3,21 +3,20 @@ title: Wysyłanie zdarzeń do środowiska Azure Time Series Insights | Microsoft
 description: Informacje na temat konfigurowania centrum zdarzeń i uruchamiania przykładowej aplikacji w celu wypchnięcia zdarzeń, które można wyświetlić w Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: accf3adea08e713a7a2f06bb175c759ae66a72c0
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 2878a77918fdd1c1cd298ae536bcdd3bec065e91
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274540"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991123"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Wysyłanie zdarzeń do środowiska Time Series Insights przy użyciu centrum zdarzeń
 
@@ -30,14 +29,14 @@ W tym artykule opisano sposób tworzenia i konfigurowania centrum zdarzeń w us�
 1. Wybierz centrum zdarzeń.
 1. Podczas tworzenia centrum zdarzeń tworzona jest przestrzeń nazw centrum zdarzeń. Jeśli nie utworzono jeszcze centrum zdarzeń w przestrzeni nazw, w menu w obszarze **jednostki**Utwórz centrum zdarzeń.  
 
-    [![List centrów zdarzeń](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
+    [![listę centrów zdarzeń](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
 
 1. Po utworzeniu centrum zdarzeń wybierz je na liście centrów zdarzeń.
 1. W menu w obszarze **jednostki**wybierz pozycję **Event Hubs**.
 1. Wybierz nazwę centrum zdarzeń, aby je skonfigurować.
 1. W obszarze **Przegląd**wybierz pozycję **grupy użytkowników**, a następnie wybierz pozycję **Grupa odbiorców**.
 
-    [@no__t — 1Create grupy konsumentów](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
+    [![utworzyć grupę odbiorców](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
 
 1. Upewnij się, że utworzono grupę odbiorców, która jest używana wyłącznie przez źródło zdarzeń Time Series Insights.
 
@@ -46,11 +45,11 @@ W tym artykule opisano sposób tworzenia i konfigurowania centrum zdarzeń w us�
 
 1. W menu w obszarze **Ustawienia**wybierz pozycję **zasady dostępu współdzielonego**, a następnie wybierz pozycję **Dodaj**.
 
-    [![Select zasady dostępu współdzielonego, a następnie wybierz przycisk Dodaj](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
+    [![wybierz pozycję Zasady dostępu współdzielonego, a następnie wybierz przycisk Dodaj.](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
 
 1. W okienku **Dodaj nowe zasady dostępu współdzielonego** Utwórz współużytkowany dostęp o nazwie **MySendPolicy**. Te zasady dostępu współdzielonego służą do wysyłania zdarzeń C# w przykładach w dalszej części tego artykułu.
 
-    [![In pole Nazwa zasad, wprowadź MySendPolicy](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
+    [![w polu Nazwa zasad wpisz MySendPolicy](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
 
 1. W **obszarze**Zażądaj zaznacz pole wyboru **Wyślij** .
 
@@ -72,18 +71,18 @@ Aktualizacja Time Series Insights używa wystąpień do dodawania danych konteks
 
 1. Przejdź do **zasad dostępu Współdzielonego** > **MySendPolicy**. Skopiuj wartość **parametrów połączenia — klucz podstawowy**.
 
-    [![Copy wartość parametrów połączenia klucza podstawowego](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
+    [![skopiować wartości parametrów połączenia klucza podstawowego](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
 
 1. Przejdź do pozycji https://tsiclientsample.azurewebsites.net/windFarmGen.html (Plik > Nowy > Inny). W adresie URL są uruchamiane symulowane urządzenia Windmill.
 1. W polu **Parametry połączenia centrum zdarzeń** na stronie sieci Web wklej parametry połączenia, które zostały skopiowane do [pola wejściowego Windmill](#push-events-to-windmills-sample).
   
-    [![Paste parametry połączenia klucza podstawowego w polu parametrów połączenia centrum zdarzeń](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
+    [![wkleić parametry połączenia klucza podstawowego w polu parametrów połączenia centrum zdarzeń](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
 
 1. Wybierz **pozycję kliknij, aby rozpocząć**. Symulator generuje kod JSON wystąpienia, którego można używać bezpośrednio.
 
 1. Wróć do centrum zdarzeń w Azure Portal. Na stronie **Przegląd** zostaną wyświetlone nowe zdarzenia, które są odbierane przez centrum zdarzeń.
 
-    [![An — Omówienie centrum zdarzeń, w którym są wyświetlane metryki centrum zdarzeń](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
+    [![stronie Przegląd centrum zdarzeń, która zawiera metryki centrum zdarzeń](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
 
 ## <a name="supported-json-shapes"></a>Obsługiwane kształty JSON
 

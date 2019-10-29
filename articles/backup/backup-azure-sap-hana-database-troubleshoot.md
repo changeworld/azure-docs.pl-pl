@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów podczas tworzenia kopii zapasowych baz danych SAP HANA przy użyciu Azure Backup | Microsoft Docs
+title: Rozwiązywanie problemów z kopiami zapasowymi SAP HANA baz danych — Azure Backup
 description: Opisuje sposób rozwiązywania typowych błędów, które mogą wystąpić podczas tworzenia kopii zapasowej SAP HANA baz danych przy użyciu Azure Backup.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 00e37030417da97d2c57b0fb5872422e7048a2bc
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954449"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968452"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Rozwiązywanie problemów z tworzeniem kopii zapasowych baz danych SAP HANA na platformie Azure
 
@@ -32,13 +32,13 @@ Co robi skrypt przed rejestracją:
     - Odczyt wykazu: odczytywanie wykazu kopii zapasowych.
     - SAP_INTERNAL_HANA_SUPPORT: Aby uzyskać dostęp do kilku tabel prywatnych.
 2. Dodaje klucz do Hdbuserstore dla wtyczki HANA w celu obsługi wszystkich operacji (zapytań bazy danych, operacji przywracania, konfigurowania i uruchamiania kopii zapasowej).
-   
+
    Aby potwierdzić utworzenie klucza, uruchom polecenie HDBSQL na maszynie HANA z poświadczeniami SIDADM:
 
     ``` hdbsql
     hdbuserstore list
     ```
-    
+
     W danych wyjściowych polecenia powinien być wyświetlany klucz {SID} {dbname}, który jest wyświetlany jako AZUREWLBACKUPHANAUSER.
 
 > [!NOTE]
@@ -50,7 +50,7 @@ Po wybraniu bazy danych do wykonania kopii zapasowej usługa Azure Backup konfig
 
 - [catalog_backup_using_backint: true]
 - [enable_accumulated_catalog_backup: false]
-- [parallel_data_backup_backint_channels:1]
+- [parallel_data_backup_backint_channels: 1]
 - [log_backup_timeout_s: 900)]
 - [backint_response_timeout: 7200]
 
@@ -67,7 +67,8 @@ Załóżmy, że utworzono kopię zapasową wystąpienia SDC HANA "H21". Na stron
 
 ![SDC przywracania danych wejściowych](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
-Zwróć uwagę na następujące kwestie
+Pamiętaj o następujących kwestiach:
+
 - Domyślnie przywrócona Nazwa bazy danych zostanie uzupełniona nazwą elementu kopii zapasowej, np., H21 (SDC)
 - Wybranie elementu docelowego jako H11 nie spowoduje automatycznej zmiany przywróconej nazwy bazy danych. **Powinien być edytowany w H11 (SDC)** . W przypadku SDC nazwa przywróconej bazy danych będzie IDENTYFIKATORem wystąpienia docelowego z małymi literami i "SDC" dołączonym w nawiasach.
 - Ponieważ SDC może mieć tylko jedną bazę danych, należy również kliknąć pole wyboru, aby umożliwić przesłonięcie istniejących danych bazy danych z użyciem danych punktu odzyskiwania.
@@ -81,7 +82,7 @@ W przypadku wielu baz danych kontenerów dla platformy HANA Standardowa konfigur
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-data| Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
+Data| Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
 | Nie można nawiązać połączenia z systemem HANA. Sprawdź, czy system jest uruchomiony.| Usługa Azure Backup nie może połączyć się z platformą HANA, ponieważ baza danych HANA nie działa. Lub HANA jest uruchomiony, ale nie zezwala na łączenie się z usługą Azure Backup. | Sprawdź, czy baza danych lub usługa HANA nie działa. Jeśli baza danych lub usługa HANA jest uruchomiona, sprawdź, czy [zostały ustawione wszystkie uprawnienia](#setting-up-permissions). Jeśli brakuje klucza, uruchom ponownie skrypt rejestracyjny, aby utworzyć nowy klucz. |
 

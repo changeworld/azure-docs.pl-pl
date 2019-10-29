@@ -1,22 +1,19 @@
 ---
-title: Testowanie modułów programu Terraform na platformie Azure za pomocą struktury Terratest
+title: Samouczek — testowanie modułów Terraform na platformie Azure za pomocą Terratest
 description: Dowiedz się, jak używać struktury Terratest do testowania modułów programu Terraform.
-services: terraform
-ms.service: azure
-keywords: terraform, devops, konto magazynu, azure, terratest, test jednostkowy, test integracyjny
+ms.service: terraform
 author: tomarchermsft
-manager: gwallace
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/23/2019
-ms.openlocfilehash: e4965ba47a99e3cd189763d994bef6381badd9ba
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.date: 10/26/2019
+ms.openlocfilehash: bdb76fe2f87806c02a861ea84361b61a3e94b554
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881792"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969217"
 ---
-# <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Testowanie modułów programu Terraform na platformie Azure za pomocą struktury Terratest
+# <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Samouczek: testowanie modułów Terraform na platformie Azure za pomocą Terratest
 
 > [!NOTE]
 > Przykładowy kod w tym artykule nie działa w wersji 0,12 (i nowszych).
@@ -40,7 +37,7 @@ Przed rozpoczęciem zainstaluj następujące oprogramowanie:
 
 - **Język programowania Go**: przypadki testowe programu Terraform pisze się w języku [Go](https://golang.org/dl/).
 - **DEP**: [dep](https://github.com/golang/dep#installation) to narzędzie do zarządzania zależnościami dla języka Go.
-- **Interfejs wiersza polecenia Azure**: [interfejs wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) to narzędzie wiersza polecenia umożliwiające zarządzanie zasobami platformy Azure. (Program Terraform obsługuje uwierzytelnianie na platformie Azure za pomocą jednostki usługi lub [interfejsu wiersza polecenia platformy Azure](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html)).
+- **Interfejs wiersza polecenia Azure**: [interfejs wiersza polecenia Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) to narzędzie wiersza polecenia umożliwiające zarządzanie zasobami platformy Azure. (Program Terraform obsługuje uwierzytelnianie na platformie Azure za pomocą jednostki usługi lub [interfejsu wiersza polecenia platformy Azure](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html)).
 - **mage**: używamy [pliku wykonywalnego mage](https://github.com/magefile/mage/releases), aby przedstawić, jak można uprościć uruchamianie przypadków struktury Terratest. 
 
 ## <a name="create-a-static-webpage-module"></a>Tworzenie modułu statycznej strony internetowej
@@ -91,7 +88,7 @@ Jak wspomniano we wcześniejszej części tego artykułu, ten moduł również g
 
 ```hcl
 output "homepage_url" {
-  value = "${azurerm_storage_blob.homepage.url}"
+  value = azurerm_storage_blob.homepage.url
 }
 ```
 
@@ -106,30 +103,30 @@ Logika modułu statycznej strony internetowej jest zaimplementowana w pliku `./m
 ```hcl
 resource "azurerm_resource_group" "main" {
   name     = "${var.website_name}-staging-rg"
-  location = "${var.location}"
+  location = var.location
 }
 
 resource "azurerm_storage_account" "main" {
   name                     = "${lower(replace(var.website_name, "/[[:^alnum:]]/", ""))}data001"
-  resource_group_name      = "${azurerm_resource_group.main.name}"
-  location                 = "${azurerm_resource_group.main.location}"
+  resource_group_name      = azurerm_resource_group.main.name
+  location                 = azurerm_resource_group.main.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
 resource "azurerm_storage_container" "main" {
   name                  = "wwwroot"
-  resource_group_name   = "${azurerm_resource_group.main.name}"
-  storage_account_name  = "${azurerm_storage_account.main.name}"
+  resource_group_name   = azurerm_resource_group.main.name
+  storage_account_name  = azurerm_storage_account.main.name
   container_access_type = "blob"
 }
 
 resource "azurerm_storage_blob" "homepage" {
   name                   = "index.html"
-  resource_group_name    = "${azurerm_resource_group.main.name}"
-  storage_account_name   = "${azurerm_storage_account.main.name}"
-  storage_container_name = "${azurerm_storage_container.main.name}"
-  source                 = "${var.html_path}"
+  resource_group_name    = azurerm_resource_group.main.name
+  storage_account_name   = azurerm_storage_account.main.name
+  storage_container_name = azurerm_storage_container.main.name
+  source                 = var.html_path
   type                   = "block"
   content_type           = "text/html"
 }
@@ -173,7 +170,7 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
   html_path    = "empty.html"
 }
 ```
@@ -317,11 +314,11 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
 }
 
 output "homepage" {
-  value = "${module.staticwebpage.homepage_url}"
+  value = module.staticwebpage.homepage_url
 }
 ```
 
@@ -521,5 +518,5 @@ Zamiast uruchamiania polecenia `az login` przed testami, możesz przeprowadzić 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać więcej informacji na temat struktury Terratest, zobacz [stronę struktury Terratest w witrynie GitHub](https://github.com/gruntwork-io/terratest).
-* Aby uzyskać informacje o narzędziu mage, zobacz [stronę narzędzia mage w witrynie GitHub](https://github.com/magefile/mage) i [witrynę internetową narzędzia mage](https://magefile.org/).
+> [!div class="nextstepaction"] 
+> [Terratest stronę usługi GitHub](https://github.com/gruntwork-io/terratest).

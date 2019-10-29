@@ -1,21 +1,21 @@
 ---
 title: Shape Events z podglądem Azure Time Series Insights | Microsoft Docs
 description: Dowiedz się, jak kształtować zdarzenia za pomocą wersji zapoznawczej Azure Time Series Insights.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed0594373c8702ab01b50facaf0ef5ece2d6c7e1
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: f8a50e062d2dac1f30f8b745f351570262daac53
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274278"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990891"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Shape Events z podglądem Azure Time Series Insights
 
@@ -28,10 +28,10 @@ Zastanów się, jak wysyłasz zdarzenia do Time Series Insights wersji zapoznawc
 * Wysyłaj dane za pośrednictwem sieci tak efektywnie, jak to możliwe.
 * Przechowuj swoje dane w sposób, który ułatwia agregowanie go do danego scenariusza.
 
-Aby uzyskać najlepszą możliwą wydajność zapytań, wykonaj następujące czynności:
+Aby uzyskać najlepszą wydajność zapytań, wykonaj następujące czynności:
 
 * Nie wysyłaj niepotrzebnych właściwości. Time Series Insights w wersji zapoznawczej naliczane są opłaty za użycie. Najlepiej przechowywać i przetwarzać dane, które będą używane do wykonywania zapytań.
-* Użyj pól wystąpienia dla danych statycznych. To rozwiązanie pomaga uniknąć wysyłania danych statycznych przez sieć. Pola wystąpienia, składnik modelu szeregów czasowych, działają jak dane referencyjne w Time Series Insights ogólnie dostępnej usługi. Aby dowiedzieć się więcej o polach wystąpienia, zobacz [modele szeregów czasowych](./time-series-insights-update-tsm.md).
+* Użyj pól wystąpienia dla danych statycznych. To rozwiązanie pomaga uniknąć wysyłania danych statycznych przez sieć. Pola wystąpienia, składnik modelu szeregów czasowych, działają jak dane referencyjne w usłudze Time Series Insights, która jest ogólnie dostępna. Aby dowiedzieć się więcej na temat pól wystąpień, zobacz [model szeregów czasowych](./time-series-insights-update-tsm.md).
 * Udostępnianie właściwości wymiaru między dwoma lub więcej zdarzeniami. Ta metoda zapewnia wydajniejsze wysyłanie danych przez sieć.
 * Nie używaj głębokiego zagnieżdżania tablic. Wersja zapoznawcza Time Series Insights obsługuje do dwóch poziomów zagnieżdżonych tablic, które zawierają obiekty. Time Series Insights w wersji zapoznawczej spłaszcza tablice w komunikatach do wielu zdarzeń z parami wartości właściwości.
 * Jeśli istnieje tylko kilka miar dla wszystkich lub większości zdarzeń, lepiej jest wysłać te miary jako oddzielne właściwości w obrębie tego samego obiektu. Ich wysyłanie osobno zmniejsza liczbę zdarzeń i może poprawić wydajność zapytań, ponieważ wymaga przetworzenia mniejszych zdarzeń.
@@ -40,7 +40,9 @@ Aby uzyskać najlepszą możliwą wydajność zapytań, wykonaj następujące cz
 
 Poniższy przykład jest oparty na scenariuszu, w którym co najmniej dwa urządzenia wysyłają pomiary lub sygnały. Pomiary lub sygnały mogą być *natężeniem przepływu*, *ciśnieniem oleju*, *temperatury*i *wilgotności*.
 
-W poniższym przykładzie istnieje pojedynczy komunikat IoT Hub platformy Azure, w którym tablica zewnętrzna zawiera wspólną sekcję wspólnych wartości wymiarów. Zewnętrzna tablica używa danych wystąpienia szeregów czasowych, aby zwiększyć wydajność wiadomości. Wystąpienie szeregów czasowych zawiera metadane urządzenia, które nie zmieniają się przy każdym zdarzeniu, ale zapewnia przydatne właściwości analizy danych. Aby zaoszczędzić w bajtach przesyłanych przez sieć i zwiększyć efektywność komunikatów, należy rozważyć tworzenie partii wspólnych wartości wymiarów i korzystanie z metadanych wystąpienia szeregów czasowych.
+W przykładzie istnieje pojedynczy komunikat IoT Hub platformy Azure, w którym tablica zewnętrzna zawiera wspólną sekcję wspólnych wartości wymiarów. Zewnętrzna tablica używa danych wystąpienia szeregów czasowych, aby zwiększyć wydajność wiadomości. 
+
+Wystąpienie szeregów czasowych zawiera metadane urządzenia. Te metadane nie zmieniają się przy każdym zdarzeniu, ale udostępniają przydatne właściwości analizy danych. Aby zaoszczędzić w bajtach przesyłanych przez sieć i zwiększyć efektywność komunikatów, należy rozważyć tworzenie wsadowe wspólnych wartości wymiarów i korzystanie z metadanych wystąpienia szeregów czasowych.
 
 ### <a name="example-json-payload"></a>Przykładowy ładunek JSON
 
@@ -119,15 +121,15 @@ Time Series Insights Podgląd łączy tabelę (po spłaszczeniu) podczas wykonyw
 W powyższym przykładzie należy zwrócić uwagę na następujące kwestie:
 
 * Właściwości statyczne są przechowywane w Time Series Insights wersji zapoznawczej w celu zoptymalizowania danych wysyłanych przez sieć.
-* Time Series Insights dane podglądu są przyłączone w czasie zapytania przy użyciu identyfikatora szeregów czasowych, który jest zdefiniowany w wystąpieniu.
-* Używane są dwie warstwy zagnieżdżania, które są najbardziej obsługiwane przez Time Series Insights wersja zapoznawcza. Należy unikać głęboko zagnieżdżonych tablic.
+* Time Series Insights dane podglądu są przyłączone w czasie zapytania za pomocą identyfikatora szeregów czasowych zdefiniowanego w wystąpieniu.
+* Używane są dwie warstwy zagnieżdżania. Ta liczba jest największa, która obsługuje Time Series Insights w wersji zapoznawczej. Należy unikać głęboko zagnieżdżonych tablic.
 * Ponieważ istnieją pewne miary, są one wysyłane jako osobne właściwości w ramach tego samego obiektu. W przykładzie **Seria. Szybkość przepływu psi**, **Seria. Moduł PSI i serie ciśnienia oleju silnikowego** **. Szybkość przepływu ft3/s** są unikatowymi kolumnami.
 
 >[!IMPORTANT]
-> Pola wystąpienia nie są przechowywane przy użyciu telemetrii. Są one przechowywane z metadanymi w **modelu szeregów czasowych**.
+> Pola wystąpienia nie są przechowywane przy użyciu telemetrii. Są one przechowywane z metadanymi w modelu szeregów czasowych.
 > Powyższa tabela przedstawia widok zapytania.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby zapoznać się z zaleceniami, zobacz [Azure Time Series Insights Składnia zapytania w wersji zapoznawczej](./time-series-insights-query-data-csharp.md). Dowiesz się więcej na temat składni zapytania dla interfejsu API REST usługi Time Series Insights w wersji zapoznawczej.
+- Aby zapoznać się z zaleceniami, zobacz [Azure Time Series Insights Składnia zapytania w wersji zapoznawczej](./time-series-insights-query-data-csharp.md). Dowiesz się więcej na temat składni zapytania dla interfejsu API REST usługi Time Series Insights Preview na potrzeby dostępu do danych.
 - Aby dowiedzieć się więcej o obsługiwanych kształtach JSON, zobacz [obsługiwane kształty JSON](./time-series-insights-send-events.md#supported-json-shapes).

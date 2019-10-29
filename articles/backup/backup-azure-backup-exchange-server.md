@@ -1,5 +1,5 @@
 ---
-title: Tworzenie kopii zapasowych serwera programu Exchange do usługi Azure Backup przy użyciu programu System Center 2012 R2 DPM
+title: Tworzenie kopii zapasowej serwera programu Exchange w celu Azure Backup za pomocą programu System Center DPM
 description: Dowiedz się, jak utworzyć kopię zapasową serwera programu Exchange w celu Azure Backup przy użyciu programu System Center 2012 R2 DPM
 ms.reviewer: kasinh
 author: dcurwin
@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0c8975aed79e78b4bb66ce1516b85ceeb78628e8
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 21f38105913e03adfbf400e82d3572e6e5084538
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689421"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968502"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Tworzenie kopii zapasowych serwera programu Exchange do usługi Azure Backup przy użyciu programu System Center 2012 R2 DPM
+
 W tym artykule opisano sposób konfigurowania serwera programu System Center 2012 R2 Data Protection Manager (DPM) do tworzenia kopii zapasowej serwera programu Microsoft Exchange w celu Azure Backup.  
 
 ## <a name="updates"></a>Aktualizacje
+
 Aby pomyślnie zarejestrować serwer programu DPM przy użyciu Azure Backup, należy zainstalować najnowszy pakiet zbiorczy aktualizacji dla programu System Center 2012 R2 DPM i najnowszą wersję agenta Azure Backup. Pobierz najnowszy pakiet zbiorczy aktualizacji z [wykazu Microsoft](https://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager).
 
 > [!NOTE]
@@ -27,6 +29,7 @@ Aby pomyślnie zarejestrować serwer programu DPM przy użyciu Azure Backup, nal
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Przed kontynuowaniem upewnij się, że spełniono wszystkie [wymagania wstępne](backup-azure-dpm-introduction.md#prerequisites-and-limitations) dotyczące używania Microsoft Azure Backup ochrony obciążeń. Wymagania wstępne obejmują następujące elementy:
 
 * Utworzono magazyn kopii zapasowych w witrynie platformy Azure.
@@ -36,12 +39,14 @@ Przed kontynuowaniem upewnij się, że spełniono wszystkie [wymagania wstępne]
 * W przypadku ochrony programu Exchange 2016 należy przeprowadzić uaktualnienie do programu DPM 2012 R2 UR9 lub nowszego
 
 ## <a name="dpm-protection-agent"></a>Agent ochrony DPM
+
 Aby zainstalować agenta ochrony programu DPM na serwerze Exchange, wykonaj następujące kroki:
 
 1. Upewnij się, że zapory są prawidłowo skonfigurowane. Zobacz [Configure firewall Exceptions for the Agent](https://technet.microsoft.com/library/Hh758204.aspx).
 2. Zainstaluj agenta na serwerze programu Exchange, klikając pozycję **zarządzanie > agenci > Zainstaluj** w Konsola administratora programu DPM. Szczegółowe instrukcje znajdują się w temacie [Install the DPM Protection Agent](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Tworzenie grupy ochrony dla serwera programu Exchange
+
 1. W Konsola administratora programu DPM kliknij pozycję **Ochrona**, a następnie kliknij przycisk **Nowy** na Wstążce narzędzi, aby otworzyć kreatora **tworzenia nowej grupy ochrony** .
 2. Na ekranie **powitalnym** kreatora kliknij przycisk **dalej**.
 3. Na ekranie **Wybierz typ grupy ochrony** wybierz pozycję **serwery** , a następnie kliknij przycisk **dalej**.
@@ -78,7 +83,7 @@ Aby zainstalować agenta ochrony programu DPM na serwerze Exchange, wykonaj nast
    > Jeśli nie wybierzesz opcji "pełna kopia zapasowa" dla co najmniej jednej kopii DAG bazy danych, dzienniki nie zostaną obcięte.
    >
    >
-10. Skonfiguruj cele krótkoterminowej **kopii zapasowej**, a następnie kliknij przycisk **dalej**.
+10. Skonfiguruj cele **krótkoterminowej kopii zapasowej**, a następnie kliknij przycisk **dalej**.
 11. Sprawdź ilość dostępnego miejsca na dysku, a następnie kliknij przycisk **dalej**.
 12. Wybierz czas, w którym serwer programu DPM utworzy replikację początkową, a następnie kliknij przycisk **dalej**.
 13. Wybierz opcje sprawdzania spójności, a następnie kliknij przycisk **dalej**.
@@ -103,10 +108,11 @@ Aby zainstalować agenta ochrony programu DPM na serwerze Exchange, wykonaj nast
 19. Kliknij przycisk **Zamknij**.
 
 ## <a name="recover-the-exchange-database"></a>Odzyskiwanie bazy danych programu Exchange
+
 1. Aby odzyskać bazę danych programu Exchange, kliknij pozycję **odzyskiwanie** w Konsola administratora programu DPM.
 2. Znajdź bazę danych programu Exchange, którą chcesz odzyskać.
 3. Z listy rozwijanej *godzina odzyskiwania* wybierz punkt odzyskiwania online.
-4. Kliknij przycisk Odzyskaj, aby uruchomić **Kreatora odzyskiwania**.
+4. Kliknij przycisk **Odzyskaj** , aby uruchomić **Kreatora odzyskiwania**.
 
 W przypadku punktów odzyskiwania online istnieje pięć typów odzyskiwania:
 
@@ -119,4 +125,5 @@ W przypadku punktów odzyskiwania online istnieje pięć typów odzyskiwania:
     ![Wybierz replikację online](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
 ## <a name="next-steps"></a>Następne kroki
+
 * [Azure Backup często zadawane pytania](backup-azure-backup-faq.md)

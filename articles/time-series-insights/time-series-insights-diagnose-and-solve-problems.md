@@ -3,7 +3,7 @@ title: Diagnozowanie, rozwiązywanie problemów i rozwiązywanie problemów w Az
 description: W tym artykule opisano, jak zdiagnozować, rozwiązać problemy i rozwiązać typowe problemy, które mogą wystąpić w środowisku Azure Time Series Insightsu.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78a991fb310c635648513e6472543b9f5c01119d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7c9dcdf43e819e20126f948fa08f4f8f476036ac
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330876"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991274"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w środowisku Time Series Insights
 
@@ -40,11 +40,11 @@ Azure Time Series Insights obsługuje tylko dane JSON. Aby zapoznać się z przy
 
 * W przypadku usługi IoT Hub w usłudze Azure IoT Hub należy podać klucz z uprawnieniami do **łączenia usług** . **Iothubowner** lub zasady **usługi** będą działały, ponieważ oba mają uprawnienia do **łączenia usług** .
 
-   [@no__t — uprawnienia do nawiązywania połączenia z usługą 1IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [uprawnienia![IoT Hub usługi Connect](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * W przypadku centrum zdarzeń w usłudze Azure Event Hubs należy podać klucz, który ma uprawnienia do **nasłuchiwania** . Każda z zasad **odczytu** lub **zarządzania** będzie działała, ponieważ obie osoby mają uprawnienia do **nasłuchiwania** .
 
-   [@no__t — uprawnienia do nasłuchiwania w centrum 1Event](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [![uprawnień nasłuchiwania centrum zdarzeń](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Przyczyna C: podana Grupa odbiorców nie ma wyłącznej Time Series Insights
 
@@ -69,7 +69,7 @@ Limit ograniczania jest wymuszany na podstawie typu i pojemności jednostki SKU 
 
 Na poniższej ilustracji przedstawiono środowisko Time Series Insights, które ma jednostkę SKU S1 i pojemność 3. Może on przypadać na 3 000 000 zdarzeń dziennie.
 
-[1Environment — bieżąca pojemność jednostki SKU @no__t](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[Bieżąca pojemność jednostki SKU środowiska![](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Załóżmy na przykład, że środowisko przejmuje komunikaty z centrum zdarzeń. Dzienny współczynnik transferu danych przychodzących to ~ 67 000 komunikatów. Ta częstotliwość tłumaczy na około 46 komunikatów co minutę. 
 

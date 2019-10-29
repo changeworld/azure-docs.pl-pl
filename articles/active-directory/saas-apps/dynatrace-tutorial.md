@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/11/2019
+ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1db69cfbf86cf9f33b84273b9e4da6696897467d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0ba96dd2fcfb995afa6e3b1302a2c8b075abfd90
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376462"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968699"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dynatrace"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą dynaTrace
 
@@ -48,7 +48,7 @@ W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure A
 * DynaTrace obsługuje Inicjowanie obsługi użytkowników **just in Time**
 
 > [!NOTE]
-> Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
+> Identyfikator tej aplikacji to stała wartość ciągu. Tylko jedno wystąpienie można skonfigurować w jednej dzierżawie.
 
 ## <a name="adding-dynatrace-from-the-gallery"></a>Dodawanie dynaTrace z galerii
 
@@ -56,7 +56,7 @@ Aby skonfigurować integrację programu dynaTrace z usługą Azure AD, musisz do
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
-1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Przejdź do **aplikacji przedsiębiorstwa**, a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
 1. W sekcji **Dodaj z galerii** wpisz **dynaTrace** w polu wyszukiwania.
 1. Wybierz pozycję **dynaTrace** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
@@ -68,10 +68,10 @@ Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą dynaT
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą dynaTrace, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 1. **[Skonfiguruj Logowanie jednokrotne](#configure-dynatrace-sso)** w usłudze dynaTrace, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    1. **[Utwórz użytkownika testowego dynaTrace](#create-dynatrace-test-user)** , aby dysponować odpowiednikiem B. Simon w dynaTrace, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+    * **[Utwórz użytkownika testowego dynaTrace](#create-dynatrace-test-user)** , aby dysponować odpowiednikiem B. Simon w dynaTrace, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
 1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
@@ -84,17 +84,27 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawowej konfiguracji SAML** section aplikacja została wstępnie skonfigurowana w trybie **dostawcy tożsamości** Initiated, a wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **zapisz** Button.
+1. W sekcji **Podstawowa konfiguracja SAML** aplikacja została wstępnie skonfigurowana w trybie inicjalizacji **dostawcy tożsamości** , a wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **Zapisz** .
 
-1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+1. Kliknij pozycję **Ustaw dodatkowe adresy URL** i wykonaj następujące kroki, aby skonfigurować aplikację w trybie inicjowania programu **SP** :
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://sso.dynatrace.com/`
 
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji**. Wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-1. W sekcji **Konfigurowanie dynaTrace** skopiuj odpowiednie adresy URL na podstawie wymagania.
+1. W sekcji **certyfikat podpisywania SAML** wybierz przycisk **Edytuj** , aby otworzyć okno dialogowe **certyfikat podpisywania SAML** . Wykonaj następujące czynności:
+
+    ![Edytowanie certyfikatu podpisywania SAML](common/edit-certificate.png)
+
+    a. **Opcja podpisywania** jest wstępnie wypełniona. Sprawdź ustawienia zgodnie z potrzebami organizacji.
+
+    b. Kliknij przycisk **Save** (Zapisz).
+
+    ![Opcja podpisywania Communifire](./media/dynatrace-tutorial/tutorial-dynatrace-signing-option.png)
+
+1. W sekcji **Konfiguracja dynaTrace** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -120,23 +130,23 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
     ![Link Dodaj użytkownika](common/add-assign-user.png)
 
 1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Dodaj przypisanie** kliknij przycisk **Przypisz** .
 
 ## <a name="configure-dynatrace-sso"></a>Konfigurowanie logowania jednokrotnego dynaTrace
 
-Aby skonfigurować Logowanie jednokrotne na stronie **dynaTrace** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej dynaTrace](https://www.dynatrace.com/services-support/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować Logowanie jednokrotne na stronie **dynaTrace** , musisz wysłać pobrany plik **XML metadanych Federacji** oraz odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej dynaTrace](https://www.dynatrace.com/services-support/). Ustawi on to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-dynatrace-test-user"></a>Utwórz użytkownika testowego dynaTrace
 
-W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w dynaTrace. DynaTrace obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze dynaTrace, zostanie utworzony nowy po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie B. Simon został utworzony w dynaTrace. DynaTrace obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze dynaTrace, zostanie utworzony nowy po uwierzytelnieniu.
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
@@ -144,11 +154,10 @@ Po kliknięciu kafelka dynaTrace w panelu dostępu należy automatycznie zalogow
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Wypróbuj dynaTrace z usługą Azure AD](https://aad.portal.azure.com/)
-

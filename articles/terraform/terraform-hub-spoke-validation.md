@@ -1,22 +1,19 @@
 ---
-title: Weryfikowanie sieci gwiazdy i satelity za pomocą Terraform na platformie Azure
+title: Samouczek — Weryfikowanie sieci piasty i szprych na platformie Azure przy użyciu Terraform
 description: Samouczek dotyczący weryfikowania topologii sieci Hub i szprychy ze wszystkimi sieciami wirtualnymi połączonymi ze sobą.
-services: terraform
-ms.service: azure
-keywords: Terraform, Hub i szprych, sieci, sieci hybrydowe, DevOps, maszyna wirtualna, Azure, Komunikacja równorzędna VNET,
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: b0b761fcd79f7129befefa37ce11d9c70cf7cb96
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169715"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969336"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Samouczek: Weryfikowanie sieci gwiazdy i satelity za pomocą Terraform na platformie Azure
+# <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Samouczek: sprawdzanie poprawności sieci piasty i szprych na platformie Azure przy użyciu Terraform
 
 W tym artykule opisano wykonywanie plików Terraform utworzonych w poprzednim artykule w tej serii. Wynikiem jest weryfikacja łączności między demonstracją sieciami wirtualnymi.
 
@@ -39,7 +36,7 @@ Ten samouczek obejmuje następujące zadania:
 
 ## <a name="verify-your-configuration"></a>Weryfikowanie konfiguracji
 
-Po spełnieniu [wymagań wstępnych](#prerequisites)upewnij się, że istnieją odpowiednie pliki konfiguracyjne.
+Po spełnieniu [wymagań wstępnych](#prerequisites)Sprawdź, czy istnieją odpowiednie pliki konfiguracyjne.
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
@@ -59,7 +56,7 @@ Po spełnieniu [wymagań wstępnych](#prerequisites)upewnij się, że istnieją 
     cd hub-spoke
     ```
 
-1. Uruchom polecenie, aby upewnić się `.tf` , że pliki konfiguracji utworzone w poprzednich samouczkach są wymienione poniżej: `ls`
+1. Uruchom `ls` polecenie, aby sprawdzić, czy na liście znajdują się pliki konfiguracji `.tf` utworzone w poprzednich samouczkach:
 
     ![Pliki konfiguracji demonstracyjnej Terraform](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
 
@@ -73,7 +70,7 @@ Po spełnieniu [wymagań wstępnych](#prerequisites)upewnij się, że istnieją 
     
     ![Przykładowe wyniki polecenia "Terraform init"](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
     
-1. `terraform plan` Uruchom polecenie, aby zobaczyć efekt wdrożenia przed wykonaniem:
+1. Uruchom `terraform plan` polecenie, aby zobaczyć efekt wdrożenia przed wykonaniem:
 
     ```bash
     terraform plan
@@ -103,15 +100,15 @@ W tej sekcji przedstawiono sposób testowania łączności z symulowanego środo
 
 1. Obok tekstu **logowania przy użyciu lokalnego konta maszyny wirtualnej**Skopiuj polecenie **SSH** do Schowka.
 
-1. W wierszu polecenia systemu Linux Uruchom `ssh` połączyć się z symulowanego lokalnego środowiska. Użyj hasła określonego w `on-prem.tf` pliku parametrów.
+1. W wierszu polecenia systemu Linux Uruchom `ssh`, aby nawiązać połączenie z symulowanym środowiskiem lokalnym. Użyj hasła określonego w pliku parametrów `on-prem.tf`.
 
-1. Uruchom polecenie `ping` , aby przetestować łączność z maszyną wirtualną serwera przesiadkowego w sieci wirtualnej centrum:
+1. Uruchom `ping` polecenie, aby przetestować łączność z maszyną wirtualną serwera przesiadkowego w sieci wirtualnej centrum:
 
    ```bash
    ping 10.0.0.68
    ```
 
-1. Uruchom polecenie `ping` , aby przetestować łączność z maszynami wirtualnymi serwera przesiadkowego w każdym szprychie:
+1. Uruchom `ping` polecenie, aby przetestować łączność z maszynami wirtualnymi serwera przesiadkowego w każdym szprychie:
 
    ```bash
    ping 10.1.0.68
@@ -142,7 +139,7 @@ Gdy nie jest już potrzebne, Usuń zasoby utworzone w serii samouczków.
     cd ..
     ```
 
-1. `hub-scope` Usuń katalog (z uwzględnieniem wszystkich jego plików):
+1. Usuń katalog `hub-scope` (z uwzględnieniem wszystkich jego plików):
 
     ```bash
     rm -r hub-spoke

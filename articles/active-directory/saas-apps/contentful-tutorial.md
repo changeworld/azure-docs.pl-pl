@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ffad0656169c49268eac6aa4a107f3445cba614
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fd218c61114c1e15009ace5a9a9bd7a536996e86
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600357"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968672"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu zawartości
 
@@ -48,7 +48,7 @@ W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure A
 * Zawartość obsługuje Inicjowanie obsługi użytkowników **just in Time**
 
 > [!NOTE]
-> Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
+> Identyfikator tej aplikacji to stała wartość ciągu. Tylko jedno wystąpienie można skonfigurować w jednej dzierżawie.
 
 ## <a name="adding-contentful-from-the-gallery"></a>Dodawanie zawartości z galerii
 
@@ -59,7 +59,7 @@ Aby skonfigurować integrację zawartości w usłudze Azure AD, musisz dodać za
 1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
 1. W sekcji **Dodaj z galerii** wpisz **zawartość** w polu wyszukiwania.
-1. Wybierz pozycję **zawartość** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
+1. W wynikach wybierz pozycję **zawartość** , a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-contentful"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD dla zawartości
 
@@ -86,22 +86,22 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. Jeśli chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , w sekcji **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
 
-    W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://be.contentful.com/sso/<organization_id>/consume`
+    - W polu tekstowym **adres URL odpowiedzi** Skopiuj adres URL ACS (usługa konsumencka odbiorcy) ze strony Konfiguracja logowania jednokrotnego w temacie zawartość. Będzie wyglądać następująco: `https://be.contentful.com/sso/<organization_id>/consume`
 
-1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+1. Kliknij pozycję **Ustaw dodatkowe adresy URL** i wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w trybie inicjowania programu **SP** :
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://be.contentful.com/sso/<organization_id>/login`
+    - W polu tekstowym **adres URL logowania** Skopiuj ten sam adres URL usługi ACS (usługa konsumencka odbiorcy). Będzie wyglądać następująco: `https://be.contentful.com/sso/<organization_id>/login`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta](mailto:support@contentful.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Aby zaktualizować te wartości przy użyciu adresu URL i adresu URL logowania, należy skopiować adres URL usług ACS (usługi Konsumenckej potwierdzenia) ze strony konfiguracji logowania jednokrotnego w temacie zawartość.
 
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (RAW)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificateraw.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. W sekcji **Skonfiguruj zawartość zawartości** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+1. W sekcji **Skonfiguruj zawartość zawartości** Skopiuj adres URL logowania, aby skonfigurować zawartość logowania jednokrotnego.
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+    ![Kopiowanie adresów URL konfiguracji](media/contentful-tutorial/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -129,13 +129,22 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części strony.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części strony.
+1. W oknie dialogowym **Dodaj przypisanie** kliknij przycisk **Przypisz** .
 
 ## <a name="configure-contentful-sso"></a>Skonfiguruj zawartość Logowanie jednokrotne
 
-Aby skonfigurować Logowanie jednokrotne na stronie z **zawartością** , musisz wysłać pobrany **certyfikat (RAW)** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej z zawartością](mailto:support@contentful.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Wykonaj następujące kroki, aby skonfigurować Logowanie jednokrotne na stronie z **zawartością** .
+
+1. W obszarze [zawartość](https://app.contentful.com)przejdź do strony Konfiguracja logowania jednokrotnego w obszarze **Ustawienia organizacji**.
+1. Kliknij pozycję **Skonfiguruj Logowanie jednokrotne**.
+1. Skopiuj i wklej adres URL logowania z sekcji **Konfiguracja zawartości** w usłudze Azure AD.
+1. Skopiuj i wklej certyfikat z pliku certyfikatu Base64 pobranego z usługi Azure AD.
+1. Skonfiguruj nazwę rejestracji Jednokrotnej dla logowania zainicjowanego przez usługę SP.
+1. Kliknij pozycję **Włącz logowanie jednokrotne**.
+
+Jeśli to nie zadziała, skontaktuj się z [zespołem pomocy technicznej ds](mailto:support@contentful.com). klientów.
 
 ### <a name="create-contentful-test-user"></a>Tworzenie użytkownika testowego zawartości
 
@@ -149,9 +158,9 @@ Po kliknięciu kafelka zawartość w panelu dostępu należy automatycznie zalog
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

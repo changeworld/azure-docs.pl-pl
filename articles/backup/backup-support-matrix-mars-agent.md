@@ -1,5 +1,5 @@
 ---
-title: Macierz obsługi dla agenta Microsoft Azure Recovery Services (MARS)
+title: Macierz obsługi dla agenta Microsoft Azure Recovery Services
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej podczas tworzenia kopii zapasowej maszyn, na których jest uruchomiony agent Microsoft Azure Recovery Services (MARS).
 author: dcurwin
 ms.service: backup
@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 1559bb096baaa8f19718bf0c3bcd6b2dc767235b
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 6f7bb1cfdb36bcaa8545fba8767b20d974c8e073
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210130"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968379"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -21,6 +21,7 @@ Za pomocą [usługi Azure Backup](backup-overview.md) można tworzyć kopie zapa
 ## <a name="the-mars-agent"></a>Agent MARS
 
 Azure Backup używa agenta MARS do tworzenia kopii zapasowych danych z maszyn lokalnych i maszyn wirtualnych platformy Azure w magazynie kopii zapasowych Recovery Services na platformie Azure. Agent MARS może:
+
 - Uruchom na lokalnych maszynach z systemem Windows, aby można było tworzyć kopie zapasowe bezpośrednio do magazynu Recovery Services kopii zapasowych na platformie Azure.
 - Uruchom na maszynach wirtualnych z systemem Windows, aby można było tworzyć kopie zapasowe bezpośrednio w magazynie.
 - Uruchom na serwerze Microsoft Azure Backup Server (serwera usługi MAB) lub w programie System Center Data Protection Manager (DPM). W tym scenariuszu maszyny i obciążenia wykonują kopie zapasowe w programie serwera usługi MAB lub na serwerze programu DPM. Następnie Agent MARS tworzy kopię zapasową tego serwera w magazynie na platformie Azure.
@@ -37,17 +38,16 @@ Zainstaluj na serwerze kopii zapasowej | Po skonfigurowaniu programu DPM lub ser
 > Domyślnie maszyny wirtualne platformy Azure, dla których włączono obsługę kopii zapasowej, mają instalację rozszerzenia Azure Backup. To rozszerzenie tworzy kopię zapasową całej maszyny wirtualnej. Możesz zainstalować i uruchomić agenta MARS na maszynie wirtualnej platformy Azure obok rozszerzenia, jeśli chcesz utworzyć kopię zapasową określonych folderów i plików, a nie na całej maszynie wirtualnej.
 > Po uruchomieniu agenta MARS na maszynie wirtualnej platformy Azure program tworzy kopię zapasową plików lub folderów znajdujących się w magazynie tymczasowym na maszynie wirtualnej. Tworzenie kopii zapasowych kończy się niepowodzeniem, jeśli pliki lub foldery zostaną usunięte z magazynu tymczasowego lub jeśli magazyn tymczasowy zostanie usunięty.
 
-
 ## <a name="cache-folder-support"></a>Obsługa folderu pamięci podręcznej
 
 W celu utworzenia kopii zapasowej danych przy użyciu agenta MARS Agent tworzy migawkę danych i zapisuje ją w folderze lokalnego pamięci podręcznej, zanim wyśle dane do platformy Azure. Folder pamięci podręcznej (Scratch) ma kilka wymagań:
 
-**Pamięć podręczna** | **Szczegóły**
+**Chow** | **Szczegóły**
 --- | ---
-Size |  Ilość wolnego miejsca w folderze pamięci podręcznej powinna wynosić co najmniej 5 do 10 procent całkowitego rozmiaru danych kopii zapasowej.
-Location | Folder pamięci podręcznej musi być przechowywany lokalnie na komputerze, na którym jest wykonywana kopia zapasowa, i musi być w trybie online. Folder pamięci podręcznej nie powinien znajdować się w udziale sieciowym na nośniku wymiennym ani w woluminie w trybie offline.
+Rozmiar |  Ilość wolnego miejsca w folderze pamięci podręcznej powinna wynosić co najmniej 5 do 10 procent całkowitego rozmiaru danych kopii zapasowej.
+Lokalizacja | Folder pamięci podręcznej musi być przechowywany lokalnie na komputerze, na którym jest wykonywana kopia zapasowa, i musi być w trybie online. Folder pamięci podręcznej nie powinien znajdować się w udziale sieciowym na nośniku wymiennym ani w woluminie w trybie offline.
 Folder | Folder pamięci podręcznej powinien być zaszyfrowany na deduplikowanym woluminie lub w folderze skompresowanym, który jest rozrzedzony, lub ma punkt ponownej analizy.
-Zmiany lokalizacji | Można zmienić lokalizację pamięci podręcznej, zatrzymując aparat kopii zapasowych (`net stop bengine`) i kopiując folder pamięci podręcznej na nowy dysk. (Upewnij się, że nowy dysk ma wystarczającą ilość miejsca). Następnie zaktualizuj dwa wpisy rejestru w obszarze **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** i **config/CloudBackupProvider/ScratchLocation**) do nowej lokalizacji i ponownie uruchom aparat.
+Zmiany lokalizacji | Można zmienić lokalizację pamięci podręcznej przez zatrzymanie aparatu kopii zapasowej (`net stop bengine`) i skopiowanie folderu pamięci podręcznej na nowy dysk. (Upewnij się, że nowy dysk ma wystarczającą ilość miejsca). Następnie zaktualizuj dwa wpisy rejestru w obszarze **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** i **config/CloudBackupProvider/ScratchLocation**) do nowej lokalizacji i ponownie uruchom aparat.
 
 ## <a name="networking-and-access-support"></a>Obsługa sieci i dostępu
 
@@ -58,8 +58,8 @@ Agent MARS musi mieć dostęp do tych adresów URL:
 - http://www.msftncsi.com/ncsi.txt
 - *.Microsoft.com
 - *.WindowsAzure.com
-- *.MicrosoftOnline.com
-- *.Windows.net
+- *. MicrosoftOnline.com
+- *. Windows.net
 
 ### <a name="throttling-support"></a>Obsługa ograniczania przepustowości
 
@@ -88,45 +88,43 @@ Windows Server 2019 (wersje Standard, Datacenter, Essentials) | Tak | Tak | — 
 
 Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne serwera usługi MAB i DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 
-
 ## <a name="backup-limits"></a>Limity kopii zapasowych
 
 Azure Backup ogranicza rozmiar źródła danych pliku lub folderu, dla którego można utworzyć kopię zapasową. Elementy, których kopię zapasową utworzono z pojedynczego woluminu, nie mogą przekroczyć rozmiarów podsumowanych w tej tabeli:
 
 **System operacyjny** | **Limit rozmiaru**
 --- | ---
-Windows Server 2012 lub nowszy |  54 400 GB
-Windows Server 2008 R2 SP1 |    1 700 GB
-Windows Server 2008 SP2 | 1 700 GB
-Windows 8 lub nowszy  | 54 400 GB
-Windows 7   | 1 700 GB
-
+Windows Server 2012 lub nowszy |54 400 GB
+Windows Server 2008 R2 SP1 |1 700 GB
+Windows Server 2008 SP2| 1 700 GB
+Windows 8 lub nowszy| 54 400 GB
+Windows 7| 1 700 GB
 
 ## <a name="supported-file-types-for-backup"></a>Obsługiwane typy plików dla kopii zapasowej
 
 **Typ** | **Pomoc techniczna**
 --- | ---
-Zaszyfrowane   | Obsługiwane.
+Szyfrowane| Obsługiwane.
 Skompresowane | Obsługiwane.
 Rozrzedzone | Obsługiwane.
-Skompresowane i rozrzedzone | Obsługiwane.
-Twarde linki  | Nieobsługiwane. Pominięto.
-Punkt ponownej analizy   | Nieobsługiwane. Pominięto.
-Zaszyfrowane i rozrzedzone |  Nieobsługiwane. Pominięto.
-Strumień skompresowany   | Nieobsługiwane. Pominięto.
-Strumień rozrzedzony   | Nieobsługiwane. Pominięto.
-OneDrive (synchronizowane pliki to strumienie rozrzedzone)  | Nieobsługiwane.
+Skompresowane i rozrzedzone |Obsługiwane.
+Twarde linki| Nieobsługiwane. Pominięto.
+Punkt ponownej analizy| Nieobsługiwane. Pominięto.
+Zaszyfrowane i rozrzedzone |Nieobsługiwane. Pominięto.
+Strumień skompresowany| Nieobsługiwane. Pominięto.
+Strumień rozrzedzony| Nieobsługiwane. Pominięto.
+OneDrive (synchronizowane pliki to strumienie rozrzedzone)| Nieobsługiwane.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Obsługiwane dyski lub woluminy na potrzeby tworzenia kopii zapasowych
 
 **Dysk/wolumin** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
-Woluminy tylko do odczytu   | Nieobsługiwane | Usługa kopiowania woluminów w tle (VSS) działa tylko wtedy, gdy wolumin jest zapisywalny.
-Woluminy offline | Nieobsługiwane |   Usługa VSS działa tylko wtedy, gdy wolumin jest w trybie online.
-Udział sieciowy   | Nieobsługiwane |   Wolumin musi być lokalny na serwerze.
-Woluminy chronione przez funkcję BitLocker | Nieobsługiwane |   Wolumin musi zostać odblokowany przed rozpoczęciem tworzenia kopii zapasowej.
-Identyfikacja systemu plików  | Nieobsługiwane |   Obsługiwany jest tylko system plików NTFS.
-Nośnik wymienny | Nieobsługiwane |   Wszystkie źródła elementów kopii zapasowej muszą mieć ustalony stan.
+Woluminy tylko do odczytu| Brak obsługi | Usługa kopiowania woluminów w tle (VSS) działa tylko wtedy, gdy wolumin jest zapisywalny.
+Woluminy offline| Brak obsługi |Usługa VSS działa tylko wtedy, gdy wolumin jest w trybie online.
+Udział sieciowy| Brak obsługi |Wolumin musi być lokalny na serwerze.
+Woluminy chronione przez funkcję BitLocker| Brak obsługi |Wolumin musi zostać odblokowany przed rozpoczęciem tworzenia kopii zapasowej.
+Identyfikacja systemu plików| Brak obsługi |Obsługiwany jest tylko system plików NTFS.
+Nośnik wymienny| Brak obsługi |Wszystkie źródła elementów kopii zapasowej muszą mieć *ustalony* stan.
 Deduplikowane dyski | Obsługiwane | Azure Backup konwertuje deduplikowane dane na normalne dane. Optymalizuje, szyfruje, przechowuje i wysyła dane do magazynu.
 
 ## <a name="support-for-initial-offline-backup"></a>Obsługa początkowej kopii zapasowej offline
@@ -145,5 +143,6 @@ Za pomocą funkcji [natychmiastowego przywracania](backup-instant-restore-capabi
 Kopie zapasowe nie mogą zostać przywrócone na komputerze docelowym, na którym działa Starsza wersja systemu operacyjnego. Na przykład kopie zapasowe wykonane z komputera z systemem Windows 7 można przywrócić w systemie Windows 8 lub nowszym. Ale nie można przywrócić kopii zapasowej wykonanej z komputera z systemem Windows 8 na komputerze z systemem Windows 7.
 
 ## <a name="next-steps"></a>Następne kroki
+
 - Dowiedz się więcej o [architekturze tworzenia kopii zapasowych korzystającej z agenta Mars](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Dowiedz się, co jest obsługiwane podczas [uruchamiania agenta Mars na serwera usługi MAB lub serwerze DPM](backup-support-matrix-mabs-dpm.md).

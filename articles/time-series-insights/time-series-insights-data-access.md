@@ -3,7 +3,7 @@ title: Konfigurowanie zabezpieczeń w celu uzyskania dostępu do wersji zapoznaw
 description: W tym artykule opisano sposób konfigurowania zabezpieczeń i uprawnień jako zasad dostępu do zarządzania i zasad dostępu do danych w celu zabezpieczenia Azure Time Series Insights wersji zapoznawczej.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 670615980b7fd78441a08ba987073dc139b3792a
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 3d835916ab1a9d99149800a50690876080a8c5fd
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274437"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990165"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Przyznawanie dostępu do danych w środowisku
 
@@ -34,11 +34,11 @@ Wykonaj następujące kroki, aby udzielić dostępu do danych dla podmiotu zabez
 
 1. Wybierz pozycję **zasady dostępu do danych**, a następnie wybierz pozycję **+ Dodaj**.
 
-    [![Data-dostęp-jeden](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
+    [![danych — dostęp — jeden](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
 
 1. Wybierz **pozycję Wybierz użytkownika**. Wyszukaj nazwę użytkownika lub adres e-mail, aby zlokalizować użytkownika, który chcesz dodać. Wybierz pozycję **Wybierz** , aby potwierdzić wybór.
 
-    [![Data-dostęp-dwa](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
+    [![dostęp do danych — dwa](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
 
 1. Wybierz **pozycję Wybierz rolę**. Wybierz odpowiednią rolę dostępu dla użytkownika:
 
@@ -48,15 +48,15 @@ Wykonaj następujące kroki, aby udzielić dostępu do danych dla podmiotu zabez
 
    Wybierz **przycisk OK** , aby potwierdzić wybór roli.
 
-    [![Data-dostęp-trzy](media/data-access/data-access-three.png)](media/data-access/data-access-three.png#lightbox)
+    [![danych — dostęp — trzy](media/data-access/data-access-three.png)](media/data-access/data-access-three.png#lightbox)
 
 1. Na stronie **Wybieranie roli użytkownika** wybierz **przycisk OK** .
 
-    [![Data-dostęp-cztery](media/data-access/data-access-four.png)](media/data-access/data-access-four.png#lightbox)
+    [![dostęp do danych — cztery](media/data-access/data-access-four.png)](media/data-access/data-access-four.png#lightbox)
 
 1. Upewnij się, że na stronie **zasady dostępu do danych** są wyświetlane Użytkownicy i role dla każdego użytkownika.
 
-    [![Data-Access-5](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
+    [![dostęp do danych — pięć](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
 
 ## <a name="provide-guest-access-from-another-aad-tenant"></a>Zapewnianie dostępu gościa z innej dzierżawy usługi AAD
 
@@ -66,19 +66,19 @@ Wykonaj następujące kroki, aby przyznać dostęp gościa do środowiska Time S
 
 1. Wybierz pozycję **zasady dostępu do danych**, a następnie wybierz pozycję **+ Zaproś**.
 
-    [![Data-dostęp-szósty](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
+    [![danych — szósty](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
 
 1. Wprowadź adres e-mail użytkownika, który chcesz zaprosić. Ten adres e-mail musi być skojarzony z usługą Azure AD. Opcjonalnie możesz dołączyć osobistą wiadomość z zaproszeniem.
 
-    [![Data-dostęp-siedem](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
+    [![dostęp do danych — siedem](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
 
 1. Wyszukaj dymek potwierdzenia, który pojawia się na ekranie.
 
-    [![Data-dostęp-osiem](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
+    [![danych — dostęp-osiem](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
 
 1. Wybierz **pozycję Wybierz użytkownika**. Wyszukaj adres e-mail zaproszonego użytkownika-gościa, aby zlokalizować użytkownika, który chcesz dodać. Następnie **Wybierz pozycję** , aby potwierdzić wybór.
 
-    [![Data-Access-dziewięciu](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
+    [![dostęp do danych — dziewięć](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
 
 1. Wybierz **pozycję Wybierz rolę**. Wybierz odpowiednią rolę dostępu dla użytkownika-gościa:
 
@@ -88,29 +88,29 @@ Wykonaj następujące kroki, aby przyznać dostęp gościa do środowiska Time S
 
    Wybierz **przycisk OK** , aby potwierdzić wybór roli.
 
-    [![Data-Access-dziesięć](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
+    [![dostęp do danych — dziesięć](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
 
 1. Na stronie **Wybieranie roli użytkownika** wybierz **przycisk OK** .
 
 1. Upewnij się, że na stronie **zasady dostępu do danych** jest wyświetlana lista użytkowników-Gości i role poszczególnych użytkowników-Gości.
 
-    [![Data-dostęp-jedenaście](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
+    [![dostęp do danych — jedenaście](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
 
 1. Teraz użytkownik-Gość musi wykonać kroki, aby uzyskać dostęp do środowiska znajdującego się w dzierżawie platformy Azure, do którego zostały zaproszone. Najpierw akceptują przesłane przez Ciebie zaproszenia. To zaproszenie jest wysyłane pocztą e-mail na adres e-mail użyty w kroku 5. Wybierają pozycję **Rozpocznij** , aby zaakceptować.
 
-    [![Data-dostęp-12](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
+    [![dostęp do danych — dwanaście](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
 
 1. Następnie użytkownik-Gość akceptuje uprawnienia skojarzone z organizacją administratora.
 
-    [![Data-Access-trzynaście](media/data-access/data-access-thirteen.png)](media/data-access/data-access-thirteen.png#lightbox)
+    [![Data-dostęp-trzynaście](media/data-access/data-access-thirteen.png)](media/data-access/data-access-thirteen.png#lightbox)
 
 1. Gdy użytkownik-Gość zostanie zalogowany na adres e-mail, który został użyty do jego zaproszenia i zaakceptuje zaproszenie, przejdzie do insights.azure.com. Po tym miejscu wybierz awatar obok swojego adresu e-mail w prawym górnym rogu ekranu.
 
-    [![Data-dostęp-czternaście](media/data-access/data-access-fourteen.png)](media/data-access/data-access-fourteen.png#lightbox)
+    [![dostęp do danych-czternaście](media/data-access/data-access-fourteen.png)](media/data-access/data-access-fourteen.png#lightbox)
 
 1. Następnie użytkownik-Gość wybiera dzierżawę platformy Azure z menu rozwijanego katalog. Ta dzierżawa jest taka, do której zostały zaproszone.
 
-    [![Data-Access-piętnaście](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
+    [![dostęp do danych — piętnaście](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
 
 Po wybraniu dzierżawy przez użytkownika Gość zobaczysz środowisko Time Series Insights, do którego podano dostęp. Mają teraz wszystkie możliwości skojarzone z rolą podaną w **kroku 5**.
 

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszynach wirtualnych platformy Azure za pomocą programu PowerShell — Azure Backup
+title: Tworzenie kopii zapasowych bazy danych SQL w usłudze Azure VM & Przywracanie za pomocą programu PowerShell — Azure Backup
 description: Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszynach wirtualnych platformy Azure przy użyciu Azure Backup i programu PowerShell.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 242eaf06b9cd0b3783a626ab13eb0cb92300652f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 229d960f7851b5fab8504b6c2a109bece6c7b31f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249067"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969092"
 ---
-# <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszynach wirtualnych platformy Azure przy użyciu programu PowerShell
+# <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Tworzenie kopii zapasowych i przywracanie baz danych SQL na maszynach wirtualnych platformy Azure przy użyciu programu PowerShell
 
 W tym artykule opisano sposób użycia Azure PowerShell do tworzenia kopii zapasowych i odzyskiwania bazy danych SQL w ramach maszyny wirtualnej platformy Azure przy użyciu magazynu [Azure Backup](backup-overview.md) Recovery Services.
 
@@ -471,7 +471,7 @@ Jeśli dane wyjściowe zostaną utracone lub chcesz uzyskać odpowiedni identyfi
 
 ### <a name="change-policy-for-backup-items"></a>Zmień zasady dla elementów kopii zapasowej
 
-Użytkownik może zmodyfikować istniejące zasady lub zmienić zasady kopii zapasowej elementu z Policy1 na Policy2. Aby przełączyć zasady dla elementu kopii zapasowej, po prostu Pobierz odpowiednie zasady i wykonaj kopię zapasową, a następnie użyj polecenia [enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) z elementem kopii zapasowej jako parametru.
+Użytkownik może zmodyfikować istniejące zasady lub zmienić zasady kopii zapasowej elementu z Policy1 na Policy2. Aby przełączyć zasady dla elementu kopii zapasowej, należy pobrać odpowiednie zasady i wykonać kopię zapasową, a następnie użyć polecenia [enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) z elementem kopii zapasowej jako parametru.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień maszyny wirtualnej za pomocą usługi Azure Backup
+title: Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień maszyny wirtualnej za pomocą Azure Backup
 description: Dowiedz się, jak utworzyć kopię zapasową maszyny wirtualnej platformy Azure za pomocą usługi Azure Backup
 author: dcurwin
 manager: carmonm
@@ -7,21 +7,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 042fa44b8f24bb729b94c7631db9469de8493ba4
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cfbec94a2922995eed546d526c1f469e2ea54118
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639773"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969046"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z ustawień maszyny wirtualnej
 
 W tym artykule opisano sposób tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu usługi [Azure Backup](backup-overview.md) . Możesz tworzyć kopie zapasowe maszyn wirtualnych platformy Azure przy użyciu kilku metod:
 
-- Pojedyncza maszyna wirtualna platformy Azure: W instrukcjach przedstawionych w tym artykule opisano sposób tworzenia kopii zapasowej maszyny wirtualnej platformy Azure bezpośrednio z ustawień maszyny wirtualnej.
-- Wiele maszyn wirtualnych platformy Azure: Można skonfigurować magazyn Recovery Services i skonfigurować tworzenie kopii zapasowych dla wielu maszyn wirtualnych platformy Azure. Postępuj zgodnie z instrukcjami w [tym artykule](backup-azure-arm-vms-prepare.md) w tym scenariuszu.
-
-
+- Pojedyncza maszyna wirtualna platformy Azure: instrukcje zawarte w tym artykule opisują sposób tworzenia kopii zapasowej maszyny wirtualnej platformy Azure bezpośrednio z ustawień maszyny wirtualnej.
+- Wiele maszyn wirtualnych platformy Azure: można skonfigurować magazyn Recovery Services i skonfigurować kopie zapasowe dla wielu maszyn wirtualnych platformy Azure. Postępuj zgodnie z instrukcjami w [tym artykule](backup-azure-arm-vms-prepare.md) w tym scenariuszu.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -37,8 +35,7 @@ Aby utworzyć kopię zapasową maszyn wirtualnych platformy Azure, Azure Backup 
 
 ## <a name="back-up-from-azure-vm-settings"></a>Tworzenie kopii zapasowej z ustawień maszyny wirtualnej platformy Azure
 
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Kliknij pozycję **wszystkie usługi** i w obszarze filtr wpisz polecenie **maszyny wirtualne**, a następnie kliknij pozycję **maszyny wirtualne**.
 3. Z listy maszyn wirtualnych wybierz maszynę wirtualną, dla której chcesz utworzyć kopię zapasową.
 4. W menu maszyny wirtualnej kliknij pozycję **kopia zapasowa**.
@@ -69,15 +66,13 @@ Aby utworzyć kopię zapasową maszyn wirtualnych platformy Azure, Azure Backup 
     - Do momentu ukończenia początkowej kopii zapasowej **stan ostatniej kopii zapasowej** zostanie wyświetlony jako **ostrzeżenie (początkowa kopia zapasowa oczekuje)** .
     - Aby sprawdzić, kiedy zostanie uruchomiona Następna zaplanowana kopia zapasowa, kliknij nazwę zasad kopii zapasowych.
 
-
 > [!NOTE]
-> Usługa Azure Backup tworzy oddzielną grupę zasobów (inną niż grupa zasobów maszyny wirtualnej) do przechowywania migawki, przy użyciu formatu nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów będą przechowywane przez czas trwania w dniach, jak określono w sekcji "zachowywanie migawki natychmiastowego odzyskiwania" zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure. Zastosowanie blokady do tej grupy zasobów może spowodować błędy kopii zapasowych.<br>
+> Usługa Azure Backup tworzy oddzielną grupę zasobów (inną niż grupa zasobów maszyny wirtualnej) do przechowywania migawki przy użyciu formatu nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów będą przechowywane przez czas trwania w dniach, jak określono w sekcji "zachowywanie migawki natychmiastowego odzyskiwania" zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure. Zastosowanie blokady do tej grupy zasobów może spowodować błędy kopii zapasowych.<br>
 Ta grupa zasobów powinna być również wykluczona z dowolnych ograniczeń nazw/tagów, ponieważ zasady ograniczeń blokują tworzenie kolekcji punktów zasobów w tym momencie, powodując błędy kopii zapasowych.
-
 
 ## <a name="run-a-backup-immediately"></a>Natychmiastowe uruchamianie kopii zapasowej
 
-1. Aby natychmiast uruchomić kopię zapasową, w menu maszyny wirtualnej kliknij pozycję **Utwórz** > kopię zapasową**teraz**.
+1. Aby natychmiast uruchomić kopię zapasową, w menu maszyny wirtualnej kliknij pozycję **kopia zapasowa** > **kopia zapasowa teraz**.
 
     ![Uruchom kopię zapasową](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
@@ -86,9 +81,6 @@ Ta grupa zasobów powinna być również wykluczona z dowolnych ograniczeń nazw
     ![Dzień przechowywania kopii zapasowych](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
 3. Powiadomienia portalu informują o tym, że zadanie tworzenia kopii zapasowej zostało wyzwolone. Aby monitorować postęp tworzenia kopii zapasowej, kliknij przycisk **Wyświetl wszystkie zadania**.
-
-
-
 
 ## <a name="back-up-from-the-recovery-services-vault"></a>Tworzenie kopii zapasowej z magazynu Recovery Services
 

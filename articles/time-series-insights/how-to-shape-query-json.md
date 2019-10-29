@@ -2,19 +2,19 @@
 title: Najlepsze rozwiązania dotyczące kształtowania JSON w zapytaniach Azure Time Series Insights | Microsoft Docs
 description: Dowiedz się, jak poprawić wydajność zapytań Azure Time Series Insights.
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 10/09/2019
-ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 4916397d05ad9d5fcae7624bf558eb7dc5be940f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 09090354012d2cd3ba050ff9c94593947f27b006
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274407"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990280"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Shape JSON w celu zmaksymalizowania wydajności zapytań 
 
@@ -35,6 +35,9 @@ Pomyśl o sposobie wysyłania zdarzeń do Time Series Insights. Mianowicie:
 1. Upewnij się, że nie osiągnięto limitów maksymalnej właściwości Time Series Insights:
    - 600 właściwości (kolumny) dla środowisk S1.
    - 800 właściwości (kolumny) dla środowisk S2.
+
+> [!TIP]
+> Przejrzyj [limity i planowanie](time-series-insights-update-plan.md) w wersji zapoznawczej Azure Time Series Insights.
 
 Poniższe wskazówki ułatwiają zapewnienie najlepszej możliwej wydajności zapytań:
 
@@ -94,16 +97,16 @@ Należy wziąć pod uwagę następujący ładunek JSON wysłany do środowiska T
 
    | deviceId | Identyfikatora | deviceLocation |
    | --- | --- | --- |
-   | FXXX | WIERSZ @ no__t — 0DATA | Unia Europejska |
-   | FYYY | WIERSZ @ no__t — 0DATA | Stany Zjednoczone |
+   | FXXX | DANE wiersza\_ | Unia Europejska |
+   | FYYY | DANE wiersza\_ | Stany Zjednoczone |
 
 * Time Series Insights tabeli zdarzeń po spłaszczeniu:
 
    | deviceId | Identyfikatora | deviceLocation | sygnatura czasowa | wiele. Szybkość przepływu ft3/s | wiele. Psi ciśnienie oleju silnikowego |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | WIERSZ @ no__t — 0DATA | Unia Europejska | 2018 R-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | WIERSZ @ no__t — 0DATA | Unia Europejska | 2018 R-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | WIERSZ @ no__t — 0DATA | Stany Zjednoczone | 2018 R-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | DANE wiersza\_ | Unia Europejska | 2018 R-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | DANE wiersza\_ | Unia Europejska | 2018 R-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | DANE wiersza\_ | Stany Zjednoczone | 2018 R-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
 > - Kolumna **deviceId** służy jako nagłówek kolumny dla różnych urządzeń w flotie. Właściwość **deviceId** , która ma własną nazwę właściwości, ogranicza łączną liczbę urządzeń do 595 (dla środowisk S1) lub 795 (dla środowisk S2) z innymi pięcioma kolumnami.
@@ -164,21 +167,21 @@ Przykładowy ładunek JSON:
 
    | deviceId | Seria. tagId | Identyfikatora | deviceLocation | type | jednostka |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | WIERSZ @ no__t — 0DATA | Unia Europejska | Szybkość przepływu | ft3/s |
-   | FXXX | oilPressure | WIERSZ @ no__t — 0DATA | Unia Europejska | Ciśnienie oleju silnikowego | psi |
-   | FYYY | pumpRate | WIERSZ @ no__t — 0DATA | Stany Zjednoczone | Szybkość przepływu | ft3/s |
-   | FYYY | oilPressure | WIERSZ @ no__t — 0DATA | Stany Zjednoczone | Ciśnienie oleju silnikowego | psi |
+   | FXXX | pumpRate | DANE wiersza\_ | Unia Europejska | Szybkość przepływu | ft3/s |
+   | FXXX | oilPressure | DANE wiersza\_ | Unia Europejska | Ciśnienie oleju silnikowego | psi |
+   | FYYY | pumpRate | DANE wiersza\_ | Stany Zjednoczone | Szybkość przepływu | ft3/s |
+   | FYYY | oilPressure | DANE wiersza\_ | Stany Zjednoczone | Ciśnienie oleju silnikowego | psi |
 
 * Time Series Insights tabeli zdarzeń po spłaszczeniu:
 
    | deviceId | Seria. tagId | Identyfikatora | deviceLocation | type | jednostka | sygnatura czasowa | Serie. wartość |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | WIERSZ @ no__t — 0DATA | Unia Europejska | Szybkość przepływu | ft3/s | 2018 R-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | WIERSZ @ no__t — 0DATA | Unia Europejska | Ciśnienie oleju silnikowego | psi | 2018 R-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | WIERSZ @ no__t — 0DATA | Unia Europejska | Szybkość przepływu | ft3/s | 2018 R-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | WIERSZ @ no__t — 0DATA | Unia Europejska | Ciśnienie oleju silnikowego | psi | 2018 R-01-17T01:17:00Z | 49,2 |
-   | FYYY | pumpRate | WIERSZ @ no__t — 0DATA | Stany Zjednoczone | Szybkość przepływu | ft3/s | 2018 R-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | WIERSZ @ no__t — 0DATA | Stany Zjednoczone | Ciśnienie oleju silnikowego | psi | 2018 R-01-17T01:18:00Z | 22,2 |
+   | FXXX | pumpRate | DANE wiersza\_ | Unia Europejska | Szybkość przepływu | ft3/s | 2018 R-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | DANE wiersza\_ | Unia Europejska | Ciśnienie oleju silnikowego | psi | 2018 R-01-17T01:17:00Z | 34,7 |
+   | FXXX | pumpRate | DANE wiersza\_ | Unia Europejska | Szybkość przepływu | ft3/s | 2018 R-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | DANE wiersza\_ | Unia Europejska | Ciśnienie oleju silnikowego | psi | 2018 R-01-17T01:17:00Z | 49,2 |
+   | FYYY | pumpRate | DANE wiersza\_ | Stany Zjednoczone | Szybkość przepływu | ft3/s | 2018 R-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | DANE wiersza\_ | Stany Zjednoczone | Ciśnienie oleju silnikowego | psi | 2018 R-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
 > - Kolumny **deviceId** i **Series. tagId** pełnią rolę nagłówków kolumn dla różnych urządzeń i tagów w flotie. Użycie każdego z nich jako własnego atrybutu ogranicza zapytanie do 594 (dla środowisk S1) lub 794 (dla środowisk S2) Łączna liczba urządzeń z innymi sześcioma kolumnami.
@@ -195,7 +198,7 @@ Dla właściwości o dużej liczbie możliwych wartości najlepiej wysyłać jak
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj więcej na temat wysyłania [komunikatów dotyczących urządzeń IoT Hub do chmury](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+- Przeczytaj więcej na temat wysyłania [komunikatów dotyczących urządzeń IoT Hub do chmury](../iot-hub/iot-hub-devguide-messages-construct.md).
 
 - Przeczytaj [Azure Time Series Insights składnię zapytania](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) , aby dowiedzieć się więcej o składni zapytań dla interfejsu API REST Time Series Insights dostępu do danych.
 

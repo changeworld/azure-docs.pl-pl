@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1c0d470f12cf54c900fec3c453b7e5f07d0b2325
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: df8e309ecb2a81205684c60076015f79ac8c4c8f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900315"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968483"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -74,10 +74,9 @@ Aby przywrócić pliki lub foldery z punktu odzyskiwania, przejdź do maszyny wi
     - Port wychodzący 3260
 
 > [!Note]
-> 
-> * Pobrana nazwa pliku skryptu będzie miała **nazwę geograficzną** , która ma zostać wypełniona w adresie URL. Na przykład: pobrana Nazwa skryptu rozpoczyna się od \'VMname\'\_\'geoname\'_\'\'identyfikator GUID, na przykład ContosoVM_wcus_12345678.....<br><br>
-> * Adres URL to "https:\//pod01-rec2.wcus.backup.windowsazure.com"
-
+>
+> - Pobrana nazwa pliku skryptu będzie miała **nazwę geograficzną** , która ma zostać wypełniona w adresie URL. Na przykład: pobrana Nazwa skryptu rozpoczyna się od \'VMname\'\_\'geoname\'_\'\'identyfikator GUID, na przykład ContosoVM_wcus_12345678.....<br><br>
+> - Adres URL to "https:\//pod01-rec2.wcus.backup.windowsazure.com"
 
    W przypadku systemu Linux skrypt wymaga składników "Open-iSCSI" i "lshw", aby nawiązać połączenie z punktem odzyskiwania. Jeśli składniki nie istnieją na komputerze, na którym skrypt jest uruchamiany, skrypt monituje o zgodę na zainstalowanie składników programu. Wyrażanie zgody na zainstalowanie niezbędnych składników.
 
@@ -223,7 +222,7 @@ Skrypt wymaga również, aby składniki Python i bash były bezpiecznie wykonywa
 
 W tej sekcji wyjaśniono, jak przeprowadzić odzyskiwanie plików z kopii zapasowych maszyn wirtualnych platformy Azure, których liczba dysków jest > 16, a każdy rozmiar dysku to > 4 TB.
 
-Ponieważ proces odzyskiwania plików dołącza wszystkie dyski z kopii zapasowej, w przypadku dużej liczby dysków (> 16) lub dużych dysków (> 4 TB każdy) zalecane są następujące punkty akcji.
+Ponieważ proces odzyskiwania plików dołącza wszystkie dyski z kopii zapasowej, w przypadku dużej liczby dysków (> 16) lub dużych dysków (> 4 TB każdego) zalecane są następujące punkty akcji.
 
 - Zachowaj oddzielny serwer przywracania (maszyny wirtualne D2v3 maszyny wirtualnej platformy Azure) do odzyskiwania plików. Można użyć tylko odzyskiwania plików, a następnie wyłączyć, gdy nie jest to wymagane. Przywracanie na oryginalnej maszynie nie jest zalecane, ponieważ ma znaczący wpływ na maszynę wirtualną.
 - Następnie uruchom skrypt jeden raz, aby sprawdzić, czy operacja odzyskiwania plików powiodła się.

@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 2174e359f739cfdf3791c8ec64d1a95be2873555
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930906"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990653"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -556,7 +556,7 @@ W tym kroku utworzysz zestawy danych reprezentujące dane wejściowe i wyjściow
    | 4 |2016-11-16T03:00:00 |2016 – 11-16 -03. txt |
    | 5 |2016-11-16T04:00:00 |2016 – 11-16 -04. txt |
 
-    Należy pamiętać, że wszystkie pliki w folderze wejściowym są częścią wycinka o powyższym czasie początkowym. Po przetworzeniu tego wycinka działanie niestandardowe skanuje każdy plik i tworzy wiersz w pliku wyjściowym z liczbą wystąpień wyszukiwanego terminu ("Microsoft"). Jeśli w inputfolder znajdują się trzy pliki, w pliku wyjściowym znajdują się trzy wiersze: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt itd.
+    Należy pamiętać, że wszystkie pliki w folderze wejściowym są częścią wycinka o powyższym czasie początkowym. Po przetworzeniu tego wycinka działanie niestandardowe skanuje każdy plik i tworzy wiersz w pliku wyjściowym z liczbą wystąpień wyszukiwanego terminu ("Microsoft"). Jeśli w folderze wejściowym znajdują się trzy pliki, w pliku wyjściowym znajdują się trzy wiersze: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt itd.
 3. Aby wdrożyć **OutputDataset**, kliknij przycisk **Wdróż** na pasku poleceń.
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Tworzenie i uruchamianie potoku korzystającego z działania niestandardowego

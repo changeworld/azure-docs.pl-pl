@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: 8a26e369783da8b59837e669dcd45a338ce82722
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9ddf8a2a11cb863a0016726074c5279bfde96959
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934999"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990223"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Samouczek: funkcje języka JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
  
@@ -71,6 +71,9 @@ Aby utworzyć prostą funkcję języka JavaScript zdefiniowaną przez użytkowni
 6.  Wybierz pozycję **Zapisz**. Funkcja zostanie wyświetlona na liście funkcji.
 7.  Wybierz nową funkcję **hex2Int** i sprawdź definicję funkcji. Wszystkie aliasy funkcji mają dodany prefiks **UDF**. Musisz *dołączyć prefiks* podczas wywoływania funkcji w zapytaniu usługi Stream Analytics. Należy wtedy użyć wywołania **UDF.hex2Int**.
 
+## <a name="testing-javascript-udfs"></a>Testowanie UDF JavaScript 
+Możesz testować i debugować logikę UDF języka JavaScript w dowolnej przeglądarce. Debugowanie i testowanie logiki tych funkcji zdefiniowanych przez użytkownika nie jest obecnie obsługiwane w portalu Stream Analytics. Gdy funkcja działa zgodnie z oczekiwaniami, można ją dodać do zadania Stream Analytics, jak wspomniano powyżej, a następnie wywołać ją bezpośrednio z zapytania.
+
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Wywoływanie funkcji w języku JavaScript zdefiniowanej przez użytkownika w zapytaniu
 
 1. W edytorze zapytań w obszarze nagłówek **topologii zadania** wybierz pozycję **zapytanie**.
@@ -125,7 +128,6 @@ Język JavaScript uwzględnia wielkość liter, a wielkość liter w polach obie
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 Błędy w czasie wykonywania kodu JavaScript są traktowane jako błędy krytyczne i uwidaczniane w dzienniku aktywności. Aby pobrać dziennik, w witrynie Azure Portal przejdź do zadania i wybierz pozycję **Dziennik aktywności**.
-
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Inne wzorce funkcji języka JavaScript zdefiniowanej przez użytkownika
 

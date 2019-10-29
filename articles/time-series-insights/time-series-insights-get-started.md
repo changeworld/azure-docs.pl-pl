@@ -3,7 +3,7 @@ title: Tworzenie środowiska usługi Azure Time Series Insights | Microsoft Docs
 description: W tym artykule opisano sposób tworzenia nowego środowiska Time Series Insights przy użyciu Azure Portal.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1956fd9eaaa537d7ffa992070fc5cffd567954ce
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 1b51931385eb7e2e0bf2a1baf5cc4c3379eab2df
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274821"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991231"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Tworzenie nowego środowiska usługi Time Series Insights w witrynie Azure Portal
 
@@ -34,13 +34,13 @@ Wykonaj następujące kroki, aby utworzyć środowisko:
 
 1. Wybierz kategorię **Internet rzeczy** i wybierz pozycję **Time Series Insights**.
 
-   [![Create środowiska Time Series Insights](media/time-series-insights-get-started/1-new-tsi.png)](media/time-series-insights-get-started/1-new-tsi.png#lightbox))
+   [![utworzyć Time Series Insights środowiska](media/time-series-insights-get-started/1-new-tsi.png)](media/time-series-insights-get-started/1-new-tsi.png#lightbox))
 
 1. Na stronie **Time Series Insights** wybierz pozycję **Utwórz**.
 
 1. Wypełnij wymagane parametry. W poniższej tabeli opisano każdy parametr:
    
-   [@no__t — 1Create Time Series Insights grupę zasobów](media/time-series-insights-get-started/2-create-tsi.png)](media/time-series-insights-get-started/2-create-tsi.png#lightbox)
+   [![utworzyć Time Series Insights grupę zasobów](media/time-series-insights-get-started/2-create-tsi.png)](media/time-series-insights-get-started/2-create-tsi.png#lightbox)
    
    Ustawienie|Sugerowana wartość|Opis
    ---|---|---
@@ -55,13 +55,13 @@ Wykonaj następujące kroki, aby utworzyć środowisko:
 
 1. Aby monitorować proces wdrażania, wybierz symbol **powiadomienia** (ikona dzwonka).
 
-   [@no__t — 1Watch powiadomienia](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
+   [![Obejrzyj powiadomienia](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
 
     Po pomyślnym wdrożeniu możesz wybrać pozycję **Przejdź do zasobu** , aby skonfigurować inne właściwości, ustawić zabezpieczenia z zasadami dostępu do danych, dodać źródła zdarzeń i inne akcje.
 
 1. W obszarze **Przegląd**zasobów wybierz **ikonę pinezki** w prawym górnym rogu, aby łatwo uzyskać dostęp do środowiska Time Series Insights w przyszłości.
 
-   [@no__t — 1Create Time Series Insights numeru PIN do pulpitu nawigacyjnego](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
+   [![utworzyć Time Series Insights numeru PIN do pulpitu nawigacyjnego](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 

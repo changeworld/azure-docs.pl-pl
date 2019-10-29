@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 72de5857786f284bfc4afda1db093d5343bd7a43
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f36560dbaea5b3efe29d38ca750fc732b9281360
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954474"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969136"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Tworzenie kopii zapasowych SQL Server na platformie Azure przy użyciu Azure Backup Server
+
 Ten artykuł przeprowadzi Cię przez kroki konfiguracji tworzenia kopii zapasowych baz danych SQL Server przy użyciu programu Microsoft Azure Backup Server (serwera usługi MAB).
 
 Zarządzanie kopią zapasową bazy danych SQL Server na platformie Azure i odzyskiwanie z platformy Azure obejmuje trzy kroki:
@@ -25,9 +26,11 @@ Zarządzanie kopią zapasową bazy danych SQL Server na platformie Azure i odzys
 3. Odzyskaj bazę danych z platformy Azure.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
-Przed rozpoczęciem upewnij się, że zainstalowano [i przygotowano Azure Backup Server](backup-azure-microsoft-azure-backup.md).
+
+Przed rozpoczęciem upewnij się, że [zainstalowano i przygotowano Azure Backup Server](backup-azure-microsoft-azure-backup.md).
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Tworzenie zasad tworzenia kopii zapasowych w celu ochrony baz danych SQL Server na platformie Azure
+
 1. W interfejsie użytkownika Azure Backup Server kliknij obszar roboczy **Ochrona** .
 2. Na Wstążce narzędzi kliknij przycisk **New (nowy** ), aby utworzyć nową grupę ochrony.
 
@@ -66,7 +69,7 @@ Przed rozpoczęciem upewnij się, że zainstalowano [i przygotowano Azure Backup
 
     ![Metoda replikacji początkowej](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Początkowa kopia zapasowa wymaga przeniesienia całego źródła danych (SQL Server Database) z serwera produkcyjnego (SQL Server Machine) do serwera usługi MAB. Te dane mogą być duże, a transfer danych przez sieć może przekroczyć przepustowość. Z tego powodu Administratorzy mogą zdecydować się na przeniesienie początkowej kopii zapasowej: **Ręcznie** (przy użyciu nośnika wymiennego), aby uniknąć przeciążenia przepustowości lub **automatycznie za pośrednictwem sieci** (w określonym czasie).
+    Początkowa kopia zapasowa wymaga przeniesienia całego źródła danych (SQL Server Database) z serwera produkcyjnego (SQL Server Machine) do serwera usługi MAB. Te dane mogą być duże, a transfer danych przez sieć może przekroczyć przepustowość. Z tego powodu Administratorzy mogą zdecydować się na przeniesienie początkowej kopii zapasowej: **ręcznie** (przy użyciu nośnika wymiennego), aby uniknąć przeciążenia przepustowości lub **automatycznie za pośrednictwem sieci** (w określonym czasie).
 
     Po zakończeniu początkowej kopii zapasowej pozostałe kopie zapasowe są przyrostowymi kopiami zapasowymi na początkowej kopii zapasowej. Przyrostowe kopie zapasowe mają być małe i łatwo przesyłane przez sieć.
 10. Wybierz, kiedy ma być uruchamiane sprawdzanie spójności, a następnie kliknij przycisk **dalej**.
@@ -111,6 +114,7 @@ Przed rozpoczęciem upewnij się, że zainstalowano [i przygotowano Azure Backup
     ![Tworzenie grupy ochrony w toku](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>Tworzenie kopii zapasowej bazy danych SQL Server na żądanie
+
 Podczas poprzednich kroków zostały utworzone zasady tworzenia kopii zapasowych, "punkt odzyskiwania" jest tworzony tylko w przypadku wystąpienia pierwszej kopii zapasowej. Zamiast czekać, aż harmonogram zostanie rozpoczęty, poniższe kroki wyzwalają ręczne utworzenie punktu odzyskiwania.
 
 1. Przed utworzeniem punktu odzyskiwania poczekaj, aż w grupie ochrony zostanie wyświetlony stan **OK** dla bazy danych.
@@ -127,12 +131,13 @@ Podczas poprzednich kroków zostały utworzone zasady tworzenia kopii zapasowych
     ![Konsola monitorowania](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>Odzyskiwanie bazy danych SQL Server z platformy Azure
+
 Poniższe kroki są wymagane do odzyskania chronionej jednostki (SQL Server Database) z platformy Azure.
 
 1. Otwórz konsolę zarządzania serwerem programu DPM. Przejdź do obszaru roboczego **odzyskiwania** , w którym można zobaczyć serwery z kopią zapasową programu DPM. Przeglądaj wymaganą bazę danych (w tym przypadku ReportServer $ MSDPM2012). Wybierz **odzyskiwanie z** czasu kończącego się w **trybie online**.
 
     ![Wybierz punkt odzyskiwania](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-2. Kliknij prawym przyciskiem myszy nazwę bazy danych, a następnie kliknij polecenie Odzyskaj.
+2. Kliknij prawym przyciskiem myszy nazwę bazy danych, a następnie kliknij polecenie **Odzyskaj**.
 
     ![Odzyskaj z platformy Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
 3. Program DPM wyświetla szczegóły punktu odzyskiwania. Kliknij przycisk **Dalej**. Aby zastąpić bazę danych, wybierz typ odzyskiwania **Odzyskaj do oryginalnego wystąpienia SQL Server**. Kliknij przycisk **Dalej**.
@@ -141,7 +146,7 @@ Poniższe kroki są wymagane do odzyskania chronionej jednostki (SQL Server Data
 
     W tym przykładzie program DPM umożliwia odzyskiwanie bazy danych do innego wystąpienia SQL Server lub do autonomicznego folderu sieciowego.
 4. Na ekranie **Określ opcje odzyskiwania** możesz wybrać opcje odzyskiwania, takie jak ograniczanie przepustowości sieci, aby ograniczyć przepustowość używaną przez funkcję odzyskiwania. Kliknij przycisk **Dalej**.
-5. Na ekranie **Podsumowanie** widoczne są wszystkie konfiguracje odzyskiwania. Kliknijprzycisk Odzyskaj.
+5. Na ekranie **Podsumowanie** widoczne są wszystkie konfiguracje odzyskiwania. Kliknij przycisk **Odzyskaj**.
 
     Stan odzyskiwania przedstawia odzyskaną bazę danych. Możesz kliknąć przycisk **Zamknij** , aby zamknąć kreatora i wyświetlić postęp w obszarze roboczym **monitorowanie** .
 
@@ -149,5 +154,6 @@ Poniższe kroki są wymagane do odzyskania chronionej jednostki (SQL Server Data
 
     Po zakończeniu odzyskiwania przywrócona baza danych jest spójna z aplikacją.
 
-### <a name="next-steps"></a>Następne kroki:
+### <a name="next-steps"></a>Następne kroki
+
 • [Azure Backup często zadawane pytania](backup-azure-backup-faq.md)

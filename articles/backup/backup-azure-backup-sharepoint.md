@@ -8,57 +8,69 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 875c2002d477a95b44ad1491cb716e2ef70697e7
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 830dc313ea321f74c495f46c7c2d4ea5f9d4e5b5
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954847"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968559"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Tworzenie kopii zapasowej farmy programu SharePoint na platformie Azure przy użyciu programu DPM
+
 Można utworzyć kopię zapasową farmy programu SharePoint w celu Microsoft Azure przy użyciu programu System Center Data Protection Manager (DPM) w taki sam sposób, jak w przypadku tworzenia kopii zapasowych innych źródeł danych. Azure Backup zapewnia elastyczność harmonogramu tworzenia kopii zapasowych w celu tworzenia codziennych, cotygodniowych, comiesięcznych i corocznych punktów kopii zapasowych oraz zapewnia opcje zasad przechowywania dla różnych punktów kopii zapasowych. Program DPM oferuje możliwość przechowywania kopii dysków lokalnych w celu uzyskania krótkich celów związanych z odzyskiwaniem (RTO) oraz przechowywania kopii na platformie Azure w celu zapewnienia ekonomicznego i długoterminowego przechowywania.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Obsługiwane wersje programu SharePoint i powiązane z nimi scenariusze ochrony
+
 Azure Backup programu DPM obsługuje następujące scenariusze:
 
-| Obciążenie | Version | Wdrożenie programu SharePoint | Typ wdrożenia programu DPM | DPM — System Center 2012 R2 | Ochrona i odzyskiwanie |
+| Obciążenie | Wersja | Wdrożenie programu SharePoint | Typ wdrożenia programu DPM | DPM — System Center 2012 R2 | Ochrona i odzyskiwanie |
 | --- | --- | --- | --- | --- | --- |
-| Program SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Program SharePoint wdrożony jako serwer fizyczny lub maszyna wirtualna z funkcją Hyper-V/VMware <br> -------------- <br> SQL AlwaysOn |Serwer fizyczny lub lokalna maszyna wirtualna funkcji Hyper-V |Obsługuje tworzenie kopii zapasowych na platformie Azure z pakietu zbiorczego aktualizacji 5 |Ochrona farmy programu SharePoint — opcje odzyskiwania: Farma odzyskiwania, baza danych i plik lub element listy z punktów odzyskiwania dysku.  Odzyskiwanie farmy i bazy danych z punktów odzyskiwania platformy Azure. |
+| Sharepoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3,0 |Program SharePoint wdrożony jako serwer fizyczny lub maszyna wirtualna z funkcją Hyper-V/VMware <br> -------------- <br> SQL AlwaysOn |Serwer fizyczny lub lokalna maszyna wirtualna funkcji Hyper-V |Obsługuje tworzenie kopii zapasowych na platformie Azure z pakietu zbiorczego aktualizacji 5 |Ochrona farmy programu SharePoint opcje odzyskiwania: Farma odzyskiwania, baza danych i plik lub element listy z punktów odzyskiwania dysku.  Odzyskiwanie farmy i bazy danych z punktów odzyskiwania platformy Azure. |
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
+
 Przed utworzeniem kopii zapasowej farmy programu SharePoint na platformie Azure istnieje kilka rzeczy, które należy potwierdzić.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
+
 Przed kontynuowaniem upewnij się, że zostały spełnione wszystkie [wymagania wstępne dotyczące używania Microsoft Azure Backup](backup-azure-dpm-introduction.md#prerequisites-and-limitations) w celu ochrony obciążeń. Niektóre zadania związane z wymaganiami wstępnymi obejmują: Tworzenie magazynu kopii zapasowych, pobieranie poświadczeń magazynu, instalowanie Azure Backup agenta i rejestrowanie programu DPM/Azure Backup Server z magazynem.
 
 ### <a name="dpm-agent"></a>Agent programu DPM
+
 Agent programu DPM musi być zainstalowany na serwerze, na którym działa program SharePoint, serwery z systemem SQL Server i wszystkie inne serwery, które są częścią farmy programu SharePoint. Więcej informacji o sposobie konfigurowania agenta ochrony znajduje się w temacie [Setup Protection Agent](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Jedynym wyjątkiem jest zainstalowanie agenta tylko na jednym serwerze frontonu sieci Web (WFE). Program DPM wymaga agenta na jednym serwerze WFE tylko jako punktu wejścia do ochrony.
 
 ### <a name="sharepoint-farm"></a>Farma programu SharePoint
+
 Dla każdego 10 000 000 elementów w farmie musi znajdować się co najmniej 2 GB miejsca na woluminie, na którym znajduje się folder programu DPM. To miejsce jest wymagane do generacji katalogu. Aby program DPM odzyskał określone elementy (Kolekcje witryn, witryny, listy, biblioteki dokumentów, foldery, pojedyncze dokumenty i elementy listy), generacja wykazu tworzy listę adresów URL zawartych w poszczególnych bazach danych zawartości. Listę adresów URL można wyświetlić w okienku element możliwy do odzyskania w obszarze zadania **odzyskiwania** Konsola administratora programu DPM.
 
-### <a name="sql-server"></a>SQL Server
-Program DPM działa jako konto LocalSystem. Aby utworzyć kopię zapasową SQL Server baz danych, program DPM musi mieć uprawnienia administratora systemu na tym koncie dla serwera, na którym działa program SQL Server. Przed utworzeniem kopii zapasowej należy ustawić NT NT\SYSTEM na serwerze, na którym działa SQL Server.
+### <a name="sql-server"></a>Oprogramowanie SQL Server
+
+Program DPM działa jako konto LocalSystem. Aby utworzyć kopię zapasową SQL Server baz danych, program DPM musi mieć uprawnienia administratora systemu na tym koncie dla serwera, na którym działa program SQL Server. Przed utworzeniem kopii zapasowej należy ustawić NT *NT\SYSTEM na serwerze, na którym* działa SQL Server.
 
 Jeśli farma programu SharePoint ma SQL Server baz danych, które są skonfigurowane przy użyciu aliasów SQL Server, Zainstaluj składniki klienta SQL Server na serwerze frontonu sieci Web, który będzie chroniony przez program DPM.
 
-### <a name="sharepoint-server"></a>Oprogramowanie SharePoint Server
+### <a name="sharepoint-server"></a>SharePoint Server
+
 Chociaż wydajność jest zależna od wielu czynników, takich jak rozmiar farmy programu SharePoint, jako ogólne wskazówki jeden serwer DPM może chronić 25 TB farmy programu SharePoint.
 
 ### <a name="dpm-update-rollup-5"></a>Pakiet zbiorczy aktualizacji programu DPM 5
+
 Aby rozpocząć ochronę farmy programu SharePoint na platformie Azure, musisz zainstalować pakiet zbiorczy aktualizacji programu DPM 5 lub nowszy. Pakiet zbiorczy aktualizacji 5 umożliwia ochronę farmy programu SharePoint na platformie Azure, jeśli Farma jest skonfigurowana przy użyciu funkcji SQL AlwaysOn.
 Aby uzyskać więcej informacji, zapoznaj się z wpisem w blogu zawierającym [pakiet zbiorczy aktualizacji programu DPM 5](https://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)
 
 ### <a name="whats-not-supported"></a>Jakie operacje nie są obsługiwane
+
 * Program DPM, który chroni farmę programu SharePoint, nie chroni indeksów wyszukiwania lub baz danych usług aplikacji. Należy osobno skonfigurować ochronę tych baz danych.
 * Program DPM nie udostępnia kopii zapasowych baz danych programu SharePoint SQL Server hostowanych w udziałach serwera plików skalowalnego w poziomie (SOFS).
 
 ## <a name="configure-sharepoint-protection"></a>Konfigurowanie ochrony programu SharePoint
+
 Przed użyciem programu DPM do ochrony programu SharePoint należy skonfigurować usługę składnika zapisywania usługi VSS programu SharePoint (usługę składnika zapisywania usługi WSS) przy użyciu programu **ConfigureSharePoint. exe**.
 
 **ConfigureSharePoint. exe** można znaleźć w folderze [ścieżka instalacji programu DPM] \Bin na serwerze frontonu sieci Web. To narzędzie udostępnia agentowi ochrony poświadczenia farmy programu SharePoint. Jest on uruchamiany na jednym serwerze WFE. Jeśli masz wiele serwerów WFE, wybierz opcję tylko jeden podczas konfigurowania grupy ochrony.
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>Aby skonfigurować usługę składnika zapisywania usługi VSS programu SharePoint
+
 1. Na serwerze WFE, w wierszu polecenia, przejdź do [lokalizacja instalacji programu DPM] \Bin\
 2. Wprowadź ConfigureSharePoint-EnableSharePointProtection.
 3. Wprowadź poświadczenia administratora farmy. To konto musi być członkiem lokalnej grupy administratorów na serwerze WFE. Jeśli administrator farmy nie jest administratorem lokalnym, przyznaj następujące uprawnienia na serwerze WFE:
@@ -71,11 +83,13 @@ Przed użyciem programu DPM do ochrony programu SharePoint należy skonfigurowa�
 >
 
 ## <a name="back-up-a-sharepoint-farm-by-using-dpm"></a>Tworzenie kopii zapasowej farmy programu SharePoint przy użyciu programu DPM
+
 Po skonfigurowaniu programu DPM i farmy programu SharePoint w sposób opisany wcześniej program SharePoint może być chroniony przez program DPM.
 
 ### <a name="to-protect-a-sharepoint-farm"></a>Aby chronić farmę programu SharePoint
+
 1. Na karcie **Ochrona** w Konsola administratora programu DPM kliknij pozycję **Nowy**.
-    ![Karta Nowa ochrona](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
+    ![nową kartę ochrony](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
 2. Na stronie **Wybierz typ grupy ochrony** w kreatorze **tworzenia nowej grupy ochrony** wybierz pozycję **serwery**, a następnie kliknij przycisk **dalej**.
 
     ![Wybierz typ grupy ochrony](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
@@ -142,8 +156,9 @@ Po skonfigurowaniu programu DPM i farmy programu SharePoint w sposób opisany wc
     ![Podsumowanie](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-dpm"></a>Przywracanie elementu programu SharePoint z dysku przy użyciu programu DPM
+
 W poniższym przykładzie *element odzyskiwania programu SharePoint* został przypadkowo usunięty i należy go odzyskać.
-![Protection4 SharePoint programu DPM](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
+![programu DPM Protection4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
 1. Otwórz **Konsola administratora programu DPM**. Wszystkie farmy programu SharePoint, które są chronione przez program DPM, są wyświetlane na karcie **Ochrona** .
 
@@ -158,7 +173,7 @@ W poniższym przykładzie *element odzyskiwania programu SharePoint* został prz
 5. Można także przeglądać różne punkty odzyskiwania i wybierać bazę danych lub element do odzyskania. Wybierz **datę > czas odzyskiwania**, a następnie wybierz prawidłową **bazę danych > farmy programu SharePoint > > elementu punktu odzyskiwania**.
 
     ![Protection7 SharePoint programu DPM](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Kliknij prawym przyciskiem myszy element, a następnie wybierz polecenie Odzyskaj, aby otworzyć **Kreatora odzyskiwania**. Kliknij przycisk **Dalej**.
+6. Kliknij prawym przyciskiem myszy element, a następnie wybierz polecenie **Odzyskaj** , aby otworzyć **Kreatora odzyskiwania**. Kliknij przycisk **Dalej**.
 
     ![Przegląd wyboru odzyskiwania](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. Wybierz typ odzyskiwania, który chcesz wykonać, a następnie kliknij przycisk **dalej**.
@@ -190,7 +205,7 @@ W poniższym przykładzie *element odzyskiwania programu SharePoint* został prz
     > Możesz wybrać opcję ograniczenia użycia przepustowości sieci. Pozwala to zminimalizować wpływ na serwer produkcyjny w godzinach produkcyjnych.
     >
     >
-11. Przejrzyj informacje podsumowujące, a następnie kliknij przycisk Odzyskaj, aby rozpocząć odzyskiwanie pliku.
+11. Przejrzyj informacje podsumowujące, a następnie kliknij przycisk **Odzyskaj** , aby rozpocząć odzyskiwanie pliku.
 
     ![Podsumowanie odzyskiwania](./media/backup-azure-backup-sharepoint/recovery-summary.png)
 12. Teraz wybierz kartę **monitorowanie** w **Konsola administratora programu DPM** , aby wyświetlić **stan** odzyskiwania.
@@ -203,6 +218,7 @@ W poniższym przykładzie *element odzyskiwania programu SharePoint* został prz
     >
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>Przywracanie bazy danych programu SharePoint z platformy Azure przy użyciu programu DPM
+
 1. Aby odzyskać bazę danych zawartości programu SharePoint, Przejrzyj różne punkty odzyskiwania (jak pokazano wcześniej) i wybierz punkt odzyskiwania, który chcesz przywrócić.
 
     ![Protection8 SharePoint programu DPM](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection9.png)
@@ -223,12 +239,13 @@ W poniższym przykładzie *element odzyskiwania programu SharePoint* został prz
     Po zakończeniu wykazania stan zmieni się na *powodzenie*. Kliknij przycisk **Zamknij**.
 
     ![Protection12 SharePoint programu DPM](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. Kliknij obiekt programu SharePoint wyświetlony na karcie **odzyskiwanie** programu DPM, aby uzyskać strukturę bazy danych zawartości. Kliknij prawym przyciskiem myszy element, a następniekliknij polecenie Odzyskaj.
+4. Kliknij obiekt programu SharePoint wyświetlony na karcie **odzyskiwanie** programu DPM, aby uzyskać strukturę bazy danych zawartości. Kliknij prawym przyciskiem myszy element, a następnie kliknij polecenie **Odzyskaj**.
 
     ![Protection13 SharePoint programu DPM](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. W tym momencie wykonaj kroki odzyskiwania opisane wcześniej w tym artykule, aby odzyskać bazę danych zawartości programu SharePoint z dysku.
 
 ## <a name="next-steps"></a>Następne kroki
+
 * Dowiedz się więcej o ochronie programu SharePoint w programie DPM — zobacz [serie wideo — ochrona programu SharePoint w programie DPM](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
 * Przejrzyj [Informacje o wersji programu System Center 2012 — Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
 * Przejrzyj [Informacje o wersji Data Protection Manager w programie System Center 2012 z dodatkiem SP1](https://technet.microsoft.com/library/jj860394.aspx)

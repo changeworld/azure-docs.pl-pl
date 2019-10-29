@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 3/29/2019
+ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: 9c65d6055807ee2735f1915e8ca289dc0754535b
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: fc97f9d78e84882675c3dd011a64e1e50c4cc907
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736391"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968324"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Informacje o sieci na platformie Azure do replikacji platformy Azure
 
@@ -48,7 +48,7 @@ Jeśli używasz serwera proxy zapory opartego na adresie URL w celu kontrolowani
 
 **Adres URL** | **Szczegóły**  
 --- | ---
-*.blob.core.windows.net | Wymagane, aby dane mogły być zapisywane na koncie magazynu pamięci podręcznej w regionie źródłowym z poziomu maszyny wirtualnej. Jeśli znasz wszystkie konta magazynu pamięci podręcznej dla maszyn wirtualnych, możesz dozwolonych określone adresy URL konta magazynu (np. cache1.blob.core.windows.net i cache2.blob.core.windows.net) zamiast *. blob.core.windows.net
+*.blob.core.windows.net | Wymagane, aby dane mogły być zapisywane na koncie magazynu pamięci podręcznej w regionie źródłowym z poziomu maszyny wirtualnej. Jeśli znasz wszystkie konta magazynu pamięci podręcznej dla maszyn wirtualnych, możesz zezwolić na dostęp do adresów URL określonych kont magazynu (np. cache1.blob.core.windows.net i cache2.blob.core.windows.net) zamiast *. blob.core.windows.net
 login.microsoftonline.com | Wymagany do autoryzacji i uwierzytelniania do adresów URL usługi Site Recovery.
 *.hypervrecoverymanager.windowsazure.com | Wymagane, aby komunikacja z usługą Site Recovery mogła się odbywać z poziomu maszyny wirtualnej. W przypadku, gdy serwer proxy zapory obsługuje adresy IP, można użyć odpowiedniego "Site Recovery".
 *.servicebus.windows.net | Wymagane, aby dane dotyczące monitorowania i diagnostyki Site Recovery mogły być zapisywane z poziomu maszyny wirtualnej. W przypadku, gdy serwer proxy zapory obsługuje adresy IP, można użyć odpowiadającego "Site Recovery monitorowanie".
@@ -60,9 +60,9 @@ Jeśli używasz serwera proxy zapory opartego na protokole IP lub reguł sieciow
 - Wszystkie zakresy adresów IP, które odpowiadają kontom magazynu w regionie źródłowym
     - Utwórz opartą na [znaczniku usługi magazynu](../virtual-network/security-overview.md#service-tags) regułę sieciowej grupy zabezpieczeń dla regionu źródłowego.
     - Zezwalaj na te adresy, aby dane mogły być zapisywane na koncie magazynu pamięci podręcznej z poziomu maszyny wirtualnej.
-- Tworzenie [tag usługi Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na podstawie reguły sieciowej grupy zabezpieczeń do zezwalania na dostęp do wszystkich adresów IP odpowiadającej usługi AAD
-    - Nowe adresy zostaną dodane do usługi Azure Active Directory (AAD) w przyszłości, należy utworzyć nowe reguły sieciowej grupy zabezpieczeń.
-- Site Recovery adresy IP punktów końcowych usługi — dostępne w [pliku XML](https://aka.ms/site-recovery-public-ips) i zależą od lokalizacji docelowej.
+- Utwórz opartą na [usłudze Azure Active Directory regułę sieciowej grupy zabezpieczeń (AAD)](../virtual-network/security-overview.md#service-tags) , aby umożliwić dostęp do wszystkich adresów IP odpowiadających usłudze AAD
+    - Jeśli nowe adresy są dodawane do Azure Active Directory (AAD) w przyszłości, należy utworzyć nowe reguły sieciowej grupy zabezpieczeń.
+- Site Recovery adresy IP punktów końcowych usługi — dostępne w [pliku XML](https://aka.ms/site-recovery-public-ips) i zależą od lokalizacji docelowej. Zaleca się zezwolenie na dostęp do tagu **"AzureSiteRecovery"** Site Recovery dostępu do usługi.
 - Zalecamy utworzenie wymaganych reguł sieciowej grupy zabezpieczeń na testowym sieciowej grupy zabezpieczeń i sprawdzenie, czy nie ma żadnych problemów przed utworzeniem reguł na sieciowej grupy zabezpieczeń produkcyjnej.
 
 
@@ -74,12 +74,12 @@ Zakresy adresów IP Site Recovery są następujące:
    Azja Południowo-Wschodnia | 52.187.58.193 | 13.76.179.223
    Indie Środkowe | 52.172.187.37 | 104.211.98.185
    Indie Południowe | 52.172.46.220 | 104.211.224.190
-   Środkowo-północne stany USA | 23.96.195.247 | 168.62.249.226
+   Północno-środkowe stany USA | 23.96.195.247 | 168.62.249.226
    Europa Północna | 40.69.212.238 | 52.169.18.8
    Europa Zachodnia | 52.166.13.64 | 40.68.93.145
-   East US | 13.82.88.226 | 104.45.147.24
+   Wschodnie stany USA | 13.82.88.226 | 104.45.147.24
    Zachodnie stany USA | 40.83.179.48 | 104.40.26.199
-   Środkowo-południowe stany USA | 13.84.148.14 | 104.210.146.250
+   Południowo-środkowe stany USA | 13.84.148.14 | 104.210.146.250
    Środkowe stany USA | 40.69.144.231 | 52.165.34.144
    Wschodnie stany USA 2 | 52.184.158.163 | 40.79.44.59
    Japonia Wschodnia | 52.185.150.140 | 138.91.1.105
@@ -89,26 +89,26 @@ Zakresy adresów IP Site Recovery są następujące:
    Australia Południowo-Wschodnia | 13.70.159.158 | 191.239.160.45
    Kanada Środkowa | 52.228.36.192 | 40.85.226.62
    Kanada Wschodnia | 52.229.125.98 | 40.86.225.142
-   Środkowo-zachodnie stany USA | 52.161.20.168 | 13.78.149.209
+   Zachodnio-środkowe stany USA | 52.161.20.168 | 13.78.149.209
    Zachodnie stany USA 2 | 52.183.45.166 | 13.66.228.204
    Zachodnie Zjednoczone Królestwo | 51.141.3.203 | 51.141.14.113
    Południowe Zjednoczone Królestwo | 51.140.43.158 | 51.140.189.52
-   Zjednoczone Królestwo (południe) 2 | 13.87.37.4| 13.87.34.139
-   Zjednoczone Królestwo (północ) | 51.142.209.167 | 13.87.102.68
+   Południowe Zjednoczone Królestwo 2 | 13.87.37.4| 13.87.34.139
+   Północne Zjednoczone Królestwo | 51.142.209.167 | 13.87.102.68
    Korea Środkowa | 52.231.28.253 | 52.231.32.85
    Korea Południowa | 52.231.198.185 | 52.231.200.144
    Francja Środkowa | 52.143.138.106 | 52.143.136.55
    Francja Południowa | 52.136.139.227 |52.136.136.62
    Australia Środkowa| 20.36.34.70 | 20.36.46.142
    Australia Środkowa 2| 20.36.69.62 | 20.36.74.130
-   Zachodnia Republika Południowej Afryki | 102.133.72.51 | 102.133.26.128
+   Północna Republika Południowej Afryki | 102.133.72.51 | 102.133.26.128
    Północna Republika Południowej Afryki | 102.133.160.44 | 102.133.154.128
-   Administracja USA — Wirginia | 52.227.178.114 | 23.97.0.197
+   US Gov Wirginia | 52.227.178.114 | 23.97.0.197
    US Gov Iowa | 13.72.184.23 | 23.97.16.186
-   Administracja USA — Arizona | 52.244.205.45 | 52.244.48.85
-   Administracja USA — Teksas | 52.238.119.218 | 52.238.116.60
-   US DoD — wschodnie stany | 52.181.164.103 | 52.181.162.129
-   US DoD — środkowe stany | 52.182.95.237 | 52.182.90.133
+   US Gov Arizona | 52.244.205.45 | 52.244.48.85
+   US Gov Teksas | 52.238.119.218 | 52.238.116.60
+   US DoD (region wschodni) | 52.181.164.103 | 52.181.162.129
+   US DoD (region środkowy) | 52.182.95.237 | 52.182.90.133
    Chiny Północne | 40.125.202.254 | 42.159.4.151
    Chiny Północne 2 | 40.73.35.193 | 40.73.33.230
    Chiny Wschodnie | 42.159.205.45 | 42.159.132.40
@@ -117,6 +117,8 @@ Zakresy adresów IP Site Recovery są następujące:
    Niemcy Środkowo-Zachodnie | 51.116.156.176 | 51.116.154.192
    Szwajcaria Zachodnia | 51.107.231.223| 51.107.154.128
    Szwajcaria Północna | 51.107.68.31| 51.107.58.128
+   Norwegia Wschodnia | 51.120.100.64| 51.120.98.128
+   Norwegia Zachodnia | 51.120.220.65| 51.120.218.160
 
 ## <a name="example-nsg-configuration"></a>Przykładowa konfiguracja sieciowej grupy zabezpieczeń
 
@@ -124,6 +126,9 @@ Ten przykład pokazuje, jak skonfigurować reguły sieciowej grupy zabezpieczeń
 
 - Jeśli używasz reguł sieciowej grupy zabezpieczeń do kontrolowania łączności wychodzącej, Użyj reguł "Zezwalaj na ruch wychodzący protokołu HTTPS" na port: 443 dla wszystkich wymaganych zakresów adresów IP.
 - Przykład zakłada, że lokalizacją źródłową maszyny wirtualnej jest "Wschodnie stany USA", a lokalizacja docelowa to "środkowe stany USA".
+
+> [!NOTE]
+> Zaleca się użycie **znacznika AzureSiteRecovery** zamiast adresów IP, aby zezwolić na dostęp do **usługi Site Recovery**.
 
 ### <a name="nsg-rules---east-us"></a>Reguły sieciowej grupy zabezpieczeń — Wschodnie stany USA
 
@@ -137,7 +142,7 @@ Ten przykład pokazuje, jak skonfigurować reguły sieciowej grupy zabezpieczeń
 
 3. Utwórz reguły wychodzącego protokołu HTTPS (443) dla adresów IP Site Recovery, które odpowiadają lokalizacji docelowej:
 
-   **Location** | **Site Recovery adres IP** |  **Site Recovery monitorowania adresu IP**
+   **Lokalizacja** | **Site Recovery adres IP** |  **Site Recovery monitorowania adresu IP**
     --- | --- | ---
    Środkowe stany USA | 40.69.144.231 | 52.165.34.144
 
@@ -151,9 +156,10 @@ Te reguły są wymagane, aby można było włączyć replikację z regionu docel
 
 3. Utwórz reguły wychodzącego protokołu HTTPS (443) dla Site Recovery adresów IP, które odpowiadają lokalizacji źródłowej:
 
-   **Location** | **Site Recovery adres IP** |  **Site Recovery monitorowania adresu IP**
+   **Lokalizacja** | **Site Recovery adres IP** |  **Site Recovery monitorowania adresu IP**
     --- | --- | ---
-   East US | 13.82.88.226 | 104.45.147.24
+   Wschodnie stany USA | 13.82.88.226 | 104.45.147.24
+
 
 ## <a name="network-virtual-appliance-configuration"></a>Konfiguracja wirtualnego urządzenia sieciowego
 

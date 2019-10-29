@@ -1,5 +1,5 @@
 ---
-title: Przywróć klucz Key Vault i wpis tajny szyfrowanych maszyn wirtualnych przy użyciu Azure Backup
+title: Przywróć klucz tajny & Key Vault dla zaszyfrowanej maszyny wirtualnej za pomocą Azure Backup
 description: Dowiedz się, jak przywrócić klucz Key Vault i wpis tajny w Azure Backup przy użyciu programu PowerShell
 ms.reviewer: geg
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: dacurwin
-ms.openlocfilehash: cca8cf3a222b71954e6727e184ff5d16839a6a68
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 289042f70c44ab3b818a5350cc2e3db19e4d8a26
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954554"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969115"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Przywróć klucz Key Vault i wpis tajny szyfrowanych maszyn wirtualnych przy użyciu Azure Backup
 
@@ -31,6 +31,7 @@ W tym artykule omówiono korzystanie z kopii zapasowej maszyny wirtualnej platfo
 
 > [!NOTE]
 > Po przywróceniu dysku dla zaszyfrowanej maszyny wirtualnej upewnij się, że:
+>
 > * $details jest wypełniana przy użyciu szczegółów zadania przywracania dysku, jak wspomniano w [sekcji kroki w programie PowerShell w temacie Przywracanie dysków](backup-azure-vms-automation.md#restore-an-azure-vm)
 > * Maszynę wirtualną należy utworzyć z przywróconych dysków dopiero **po przywróceniu klucza i wpisu tajnego do magazynu kluczy**.
 
@@ -52,7 +53,7 @@ Get-AzStorageBlobContent -Blob $encryptedBlobName -Container $containerName -Des
 $encryptionObject = Get-Content -Path $destination_path  | ConvertFrom-Json
 ```
 
-## <a name="restore-key"></a>Przywracanie klucza
+## <a name="restore-key"></a>Przywróć klucz
 
 Po wygenerowaniu pliku JSON w powyższej ścieżce docelowej wygeneruj plik Key BLOB z poziomu JSON i powróć do niego, aby przywrócić klucz polecenia cmdlet (KEK) z powrotem do magazynu kluczy.
 
@@ -95,7 +96,8 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
   ```
 
 > [!NOTE]
-> * Wartość $secretname można uzyskać, odwołując się do danych wyjściowych $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl i przy użyciu tekstu po kluczach tajnych/np https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 . adres URL tajnego wpisu danych wyjściowych to i nazwa wpisu tajnego to B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+>
+> * Wartość $secretname można uzyskać, odwołując się do danych wyjściowych $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl i przy użyciu tekstu po kluczach tajnych/np. adres URL tajnego wpisu wyjściowego to https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163, a wpis tajny to B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * Wartość tagu DiskEncryptionKeyFileName jest taka sama jak nazwa klucza tajnego.
 >
 >
@@ -108,7 +110,7 @@ Jeśli utworzono kopię zapasową zaszyfrowanej maszyny wirtualnej przy użyciu 
 
 Wymienione powyżej podejście będzie działało dla wszystkich punktów odzyskiwania. Jednak starsze podejście do pobierania kluczy i wpisów tajnych z punktu odzyskiwania jest prawidłowe dla punktów odzyskiwania starszych niż 11 lipca 2017 dla maszyn wirtualnych szyfrowanych przy użyciu klucz szyfrowania bloków i KEK. Po zakończeniu przywracania zadania dyskowego dla zaszyfrowanej maszyny wirtualnej przy użyciu [kroków programu PowerShell](backup-azure-vms-automation.md#restore-an-azure-vm)upewnij się, że $RP jest wypełnione prawidłową wartością.
 
-### <a name="restore-key"></a>Przywracanie klucza
+### <a name="restore-key"></a>Przywróć klucz
 
 Użyj następujących poleceń cmdlet, aby uzyskać informacje o kluczu (KEK) z punktu odzyskiwania i pobrać je z powrotem do polecenia cmdlet, aby przywrócić je w magazynie kluczy.
 
@@ -130,7 +132,8 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 ```
 
 > [!NOTE]
-> * Wartość $secretname można uzyskać, odwołując się do danych wyjściowych $rp 1. KeyAndSecretDetails. SecretUrl i Using Text po kluczach tajnych/np. wyjściowy https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 adres URL tajny to i nazwa wpisu tajnego to B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+>
+> * Wartość $secretname można uzyskać, odwołując się do danych wyjściowych $rp 1. KeyAndSecretDetails. SecretUrl i używanie tekstu po kluczach tajnych/np. adres URL tajnego wpisu wyjściowego to https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163, a wpis tajny to B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * Wartość tagu DiskEncryptionKeyFileName jest taka sama jak nazwa klucza tajnego.
 > * Wartość DiskEncryptionKeyEncryptionKeyURL można uzyskać z magazynu kluczy po przywróceniu kluczy z powrotem i przy użyciu polecenia cmdlet [Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey)
 >

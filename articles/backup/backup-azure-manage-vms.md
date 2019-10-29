@@ -8,17 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 24e36e231d80a82362333b7a711f94cf627816ac
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 3781ac1be547f6733417c4f0cae9f3e8681ea9e8
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029263"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969232"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure za pomocą usługi Azure Backup
 
 W tym artykule opisano sposób zarządzania maszynami wirtualnymi platformy Azure, których kopia zapasowa została utworzona przy użyciu [usługi Azure Backup](backup-overview.md). Artykuł zawiera również podsumowanie informacji o kopii zapasowej, które można znaleźć na pulpicie nawigacyjnym magazynu.
-
 
 W Azure Portal pulpit nawigacyjny magazynu Recovery Services zapewnia dostęp do informacji o magazynie, w tym:
 
@@ -77,11 +76,12 @@ Aby zarządzać zasadami tworzenia kopii zapasowych:
      ![Wybieranie zasad kopii zapasowych](./media/backup-azure-manage-vms/backup-policy-create-new.png)
 
 ## <a name="run-an-on-demand-backup"></a>Uruchamianie kopii zapasowej na żądanie
+
 Można uruchomić kopię zapasową maszyny wirtualnej na żądanie po skonfigurowaniu jej ochrony. Pamiętaj o tych szczegółach:
 
-- Jeśli początkowa kopia zapasowa jest w stanie oczekiwania, kopia zapasowa na żądanie tworzy pełną kopię maszyny wirtualnej w magazynie Recovery Services.
-- Jeśli początkowa kopia zapasowa zostanie ukończona, kopia zapasowa na żądanie będzie wysyłać tylko zmiany z poprzedniej migawki do magazynu Recovery Services. Oznacza to, że późniejsze kopie zapasowe są zawsze przyrostowe.
-- Zakres przechowywania kopii zapasowej na żądanie jest wartością przechowywania określoną podczas wyzwalania kopii zapasowej.
+* Jeśli początkowa kopia zapasowa jest w stanie oczekiwania, kopia zapasowa na żądanie tworzy pełną kopię maszyny wirtualnej w magazynie Recovery Services.
+* Jeśli początkowa kopia zapasowa zostanie ukończona, kopia zapasowa na żądanie będzie wysyłać tylko zmiany z poprzedniej migawki do magazynu Recovery Services. Oznacza to, że późniejsze kopie zapasowe są zawsze przyrostowe.
+* Zakres przechowywania kopii zapasowej na żądanie jest wartością przechowywania określoną podczas wyzwalania kopii zapasowej.
 
 Aby wyzwolić kopię zapasową na żądanie:
 
@@ -147,32 +147,32 @@ Aby wznowić ochronę maszyny wirtualnej:
 
 Istnieją dwa sposoby usuwania danych kopii zapasowej maszyny wirtualnej:
 
-- Na pulpicie nawigacyjnym elementu magazynu wybierz pozycję Zatrzymaj tworzenie kopii zapasowej i postępuj zgodnie z instrukcjami dla opcji [Zatrzymaj ochronę i Usuń dane kopii zapasowej](#stop-protection-and-delete-backup-data) .
+* Na pulpicie nawigacyjnym elementu magazynu wybierz pozycję Zatrzymaj tworzenie kopii zapasowej i postępuj zgodnie z instrukcjami dla opcji [Zatrzymaj ochronę i Usuń dane kopii zapasowej](#stop-protection-and-delete-backup-data) .
 
   ![Wybieranie pozycji Zatrzymaj tworzenie kopii zapasowej](./media/backup-azure-manage-vms/stop-backup-buttom.png)
 
-- Na pulpicie nawigacyjnym elementu magazynu wybierz pozycję Usuń dane kopii zapasowej. Ta opcja jest włączona, jeśli wybrano opcję [zatrzymania ochrony i zachowania danych kopii zapasowej](#stop-protection-and-retain-backup-data) podczas zatrzymywania ochrony maszyny wirtualnej
+* Na pulpicie nawigacyjnym elementu magazynu wybierz pozycję Usuń dane kopii zapasowej. Ta opcja jest włączona, jeśli wybrano opcję [zatrzymania ochrony i zachowania danych kopii zapasowej](#stop-protection-and-retain-backup-data) podczas zatrzymywania ochrony maszyny wirtualnej
 
   ![Wybierz pozycję Usuń kopię zapasową](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-  - Na [pulpicie nawigacyjnym elementu magazynu](#view-vms-on-the-dashboard)wybierz pozycję **Usuń dane kopii zapasowej**.
-  - Wpisz nazwę elementu kopii zapasowej, aby potwierdzić, że chcesz usunąć punkty odzyskiwania.
+  * Na [pulpicie nawigacyjnym elementu magazynu](#view-vms-on-the-dashboard)wybierz pozycję **Usuń dane kopii zapasowej**.
+  * Wpisz nazwę elementu kopii zapasowej, aby potwierdzić, że chcesz usunąć punkty odzyskiwania.
 
     ![Usuwanie danych kopii zapasowej](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
-  - Aby usunąć dane kopii zapasowej dla elementu, wybierz pozycję **Usuń**. Komunikat z powiadomieniem informuje o tym, że dane kopii zapasowej zostały usunięte.
+  * Aby usunąć dane kopii zapasowej dla elementu, wybierz pozycję **Usuń**. Komunikat z powiadomieniem informuje o tym, że dane kopii zapasowej zostały usunięte.
 
   > [!NOTE]
   > Usunięcie danych kopii zapasowej powoduje usunięcie wszystkich skojarzonych punktów odzyskiwania. Nie można wybrać określonych punktów odzyskiwania do usunięcia.
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Element kopii zapasowej, w którym podstawowe źródło danych już nie istnieje
 
-- Jeśli maszyny wirtualne platformy Azure skonfigurowane dla usługi Azure Backup zostaną usunięte lub przeniesione bez zatrzymywania ochrony, wówczas zarówno zaplanowane zadania tworzenia kopii zapasowej, jak i zadania tworzenia kopii zapasowych na żądanie (ad hoc) zakończą się niepowodzeniem z powodu błędu UserErrorVmNotFoundV2. Wstępne sprawdzanie kopii zapasowej będzie wyświetlane jako krytyczne tylko dla niezakończonych zadań tworzenia kopii zapasowych ad hoc (zakończone niepowodzeniem zaplanowane zadania nie są wyświetlane). 
-- Te elementy kopii zapasowej pozostają aktywne w systemie zgodnie z zasadami tworzenia kopii zapasowych i przechowywania ustawionych przez użytkownika. Dane kopii zapasowej dla tych maszyn wirtualnych platformy Azure będą przechowywane zgodnie z zasadami przechowywania. Wygasłe punkty odzyskiwania (z wyjątkiem ostatniego punktu odzyskiwania) są czyszczone zgodnie z zakresem przechowywania określonym w zasadach tworzenia kopii zapasowych.
-- Użytkownicy są zalecani do usunięcia elementów kopii zapasowych, w których pierwotne źródło danych już nie istnieje, aby uniknąć dodatkowego kosztu, jeśli element kopii zapasowej/dane dla zasobów usuwania nie są już wymagane, ponieważ ostatni punkt odzyskiwania jest zachowywany w nieskończoność, a użytkownik jest obciążany jako według cennika kopii zapasowych.
-
+* Jeśli maszyny wirtualne platformy Azure skonfigurowane dla usługi Azure Backup zostaną usunięte lub przeniesione bez zatrzymywania ochrony, wówczas zarówno zaplanowane zadania tworzenia kopii zapasowej, jak i zadania tworzenia kopii zapasowych na żądanie (ad hoc) zakończą się niepowodzeniem z powodu błędu UserErrorVmNotFoundV2. Wstępne sprawdzanie kopii zapasowej będzie wyświetlane jako krytyczne tylko dla niezakończonych zadań tworzenia kopii zapasowych ad hoc (zakończone niepowodzeniem zaplanowane zadania nie są wyświetlane).
+* Te elementy kopii zapasowej pozostają aktywne w systemie zgodnie z zasadami tworzenia kopii zapasowych i przechowywania ustawionych przez użytkownika. Dane kopii zapasowej dla tych maszyn wirtualnych platformy Azure będą przechowywane zgodnie z zasadami przechowywania. Wygasłe punkty odzyskiwania (z wyjątkiem ostatniego punktu odzyskiwania) są czyszczone zgodnie z zakresem przechowywania określonym w zasadach tworzenia kopii zapasowych.
+* Użytkownicy są zalecani do usunięcia elementów kopii zapasowych, w których pierwotne źródło danych już nie istnieje, aby uniknąć dodatkowego kosztu, jeśli element kopii zapasowej/dane dla zasobów usuwania nie są już wymagane, ponieważ ostatni punkt odzyskiwania jest zachowywany w nieskończoność, a użytkownik jest obciążany jako według cennika kopii zapasowych.
 
 ## <a name="next-steps"></a>Następne kroki
-- Dowiedz się, jak [utworzyć kopię zapasową maszyn wirtualnych platformy Azure z ustawień maszyny wirtualnej](backup-azure-vms-first-look-arm.md).
-- Dowiedz się, jak [przywrócić maszyny wirtualne](backup-azure-arm-restore-vms.md).
-- Dowiedz się, jak [monitorować kopie zapasowe maszyn wirtualnych platformy Azure](backup-azure-monitor-vms.md).
+
+* Dowiedz się, jak [utworzyć kopię zapasową maszyn wirtualnych platformy Azure z ustawień maszyny wirtualnej](backup-azure-vms-first-look-arm.md).
+* Dowiedz się, jak [przywrócić maszyny wirtualne](backup-azure-arm-restore-vms.md).
+* Dowiedz się, jak [monitorować kopie zapasowe maszyn wirtualnych platformy Azure](backup-azure-monitor-vms.md).

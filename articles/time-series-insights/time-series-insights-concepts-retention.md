@@ -3,7 +3,7 @@ title: Informacje o przechowywaniu danych w środowisku Azure Time Series Insigh
 description: W tym artykule opisano dwa ustawienia kontrolujące przechowywanie danych w środowisku Azure Time Series Insightsu.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2939e37c891a6ecc0421062493cab2e5d79223b5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9dd771d44452ddc36913caf04f3c3a2d15ff1f08
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330927"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990122"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Informacje o przechowywaniu danych w Azure Time Series Insights
 
@@ -88,7 +88,7 @@ Po wznowieniu transferu danych przychodzących:
 
 W Event Hubs, których dotyczy problem, Rozważ zmianę właściwości **przechowywania wiadomości** , aby zminimalizować utratę danych podczas wstrzymania ruchu przychodzącego w Time Series Insights.
 
-[@no__t — przechowywanie komunikatów w centrum 1Event.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[![przechowywanie komunikatów centrum zdarzeń.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
 Jeśli nie skonfigurowano żadnych właściwości dla źródła zdarzeń (`timeStampPropertyName`), Time Series Insights domyślnie do sygnatury czasowej przybycia w centrum zdarzeń jako oś X. Jeśli `timeStampPropertyName` jest skonfigurowany jako coś innego, środowisko szuka skonfigurowanego `timeStampPropertyName` w pakiecie danych podczas analizowania zdarzeń.
 

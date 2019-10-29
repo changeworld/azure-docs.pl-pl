@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: f1aa2c4b6fbe554304bfff239c6220d245fe7467
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 91e71e2ab4c028e44f667133237cefb2263ae49a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219453"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969055"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure przy użyciu programu PowerShell
 
@@ -28,9 +28,9 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-- [Dowiedz się więcej](backup-azure-recovery-services-vault-overview.md) o magazynach Recovery Services.
-- [Zapoznaj](backup-architecture.md#architecture-direct-backup-of-azure-vms) się z architekturą kopii zapasowej maszyny wirtualnej platformy Azure, [zapoznaj się](backup-azure-vms-introduction.md) z procesem tworzenia kopii zapasowej oraz [Przejrzyj](backup-support-matrix-iaas.md) pomoc techniczną, ograniczenia i wymagania wstępne.
-- Zapoznaj się z hierarchią obiektów programu PowerShell dla Recovery Services.
+* [Dowiedz się więcej](backup-azure-recovery-services-vault-overview.md) o magazynach Recovery Services.
+* [Zapoznaj](backup-architecture.md#architecture-direct-backup-of-azure-vms) się z architekturą kopii zapasowej maszyny wirtualnej platformy Azure, [zapoznaj się](backup-azure-vms-introduction.md) z procesem tworzenia kopii zapasowej oraz [Przejrzyj](backup-support-matrix-iaas.md) pomoc techniczną, ograniczenia i wymagania wstępne.
+* Zapoznaj się z hierarchią obiektów programu PowerShell dla Recovery Services.
 
 ## <a name="recovery-services-object-hierarchy"></a>Hierarchia obiektów Recovery Services
 
@@ -83,7 +83,6 @@ Aby rozpocząć:
 
     W danych wyjściowych polecenia **RegistrationState** należy zmienić na **zarejestrowane**. W przeciwnym razie po prostu uruchom ponownie polecenie cmdlet **[register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)** .
 
-
 ## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
 Poniższe kroki umożliwiają utworzenie magazynu Recovery Services. Magazyn Recovery Services jest inny niż magazyn kopii zapasowych.
@@ -93,11 +92,13 @@ Poniższe kroki umożliwiają utworzenie magazynu Recovery Services. Magazyn Rec
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "West US"
     ```
+
 2. Użyj polecenia cmdlet [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault?view=azps-1.4.0) , aby utworzyć magazyn Recovery Services. Należy określić tę samą lokalizację dla magazynu, która została użyta dla grupy zasobów.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
+
 3. Określ typ nadmiarowości magazynu do użycia; można użyć [magazynu lokalnie nadmiarowego (LRS)](../storage/common/storage-redundancy-lrs.md) lub [magazynu geograficznie nadmiarowego (GRS)](../storage/common/storage-redundancy-grs.md). W poniższym przykładzie pokazano opcję-BackupStorageRedundancy dla testvault jest ustawiona na wartość geomiarowa.
 
     ```powershell
@@ -130,7 +131,6 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-
 ## <a name="back-up-azure-vms"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
 
 Użyj magazynu Recovery Services, aby chronić maszyny wirtualne. Przed zastosowaniem ochrony ustaw kontekst magazynu (typ danych chronionych w magazynie) i Sprawdź zasady ochrony. Zasady ochrony to harmonogram, w którym uruchamiane są zadania tworzenia kopii zapasowej, oraz czas zachowywania każdej migawki kopii zapasowej.
@@ -151,6 +151,7 @@ Planujemy zaniechanie ustawienia kontekstu magazynu zgodnie z zaleceniami Azure 
 $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault"
 $targetVault.ID
 ```
+
 Lub
 
 ```powershell
@@ -193,10 +194,10 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 
 Zasady ochrony kopii zapasowej są skojarzone z co najmniej jedną zasadą przechowywania. Zasady przechowywania określają czas przechowywania punktu odzyskiwania przed jego usunięciem.
 
-- Użyj [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) , aby wyświetlić domyślne zasady przechowywania.
-- Podobnie można użyć [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) , aby uzyskać domyślne zasady harmonogramu.
-- Polecenie cmdlet [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) tworzy obiekt programu PowerShell, który zawiera informacje o zasadach kopii zapasowych.
-- Obiekty zasad harmonogramu i przechowywania są używane jako dane wejściowe do polecenia cmdlet New-AzRecoveryServicesBackupProtectionPolicy.
+* Użyj [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) , aby wyświetlić domyślne zasady przechowywania.
+* Podobnie można użyć [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) , aby uzyskać domyślne zasady harmonogramu.
+* Polecenie cmdlet [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) tworzy obiekt programu PowerShell, który zawiera informacje o zasadach kopii zapasowych.
+* Obiekty zasad harmonogramu i przechowywania są używane jako dane wejściowe do polecenia cmdlet New-AzRecoveryServicesBackupProtectionPolicy.
 
 Domyślnie w obiekcie zasad harmonogramu jest zdefiniowany czas rozpoczęcia. Użyj poniższego przykładu, aby zmienić godzinę rozpoczęcia na żądaną godzinę rozpoczęcia. Wymagana godzina rozpoczęcia powinna być również w formacie UTC. W poniższym przykładzie przyjęto założenie, że wymagany czas rozpoczęcia to 01:00 czasu UTC dla codziennych kopii zapasowych.
 
@@ -380,7 +381,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -Workl
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Usuń dane kopii zapasowej
+#### <a name="delete-backup-data"></a>Usuwanie danych kopii zapasowej
 
 Aby całkowicie usunąć przechowywane dane kopii zapasowej w magazynie, po prostu Dodaj flagę "-RemoveRecoveryPoints"/Przełącz do [polecenia "Disable" ochrony](#retain-data).
 
@@ -473,7 +474,6 @@ Podaj dodatkowy parametr **TargetResourceGroupName** , aby określić RG, do kt�
 >
 >
 
-
 ```powershell
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
@@ -507,10 +507,9 @@ Po przywróceniu dysków przejdź do następnej sekcji, aby utworzyć maszynę w
 
 Aby zastąpić dyski i informacje o konfiguracji, wykonaj następujące czynności:
 
-- Krok 1: [Przywracanie dysków](backup-azure-vms-automation.md#restore-the-disks)
-- Krok 2: [Odłączanie dysku danych przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
-- Krok 3: [Dołączanie dysku danych do maszyny wirtualnej z systemem Windows przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
-
+* Krok 1. [przywracanie dysków](backup-azure-vms-automation.md#restore-the-disks)
+* Krok 2. [Odłączanie dysku danych przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+* Krok 3: [dołączanie dysku danych do maszyny wirtualnej z systemem Windows przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
 
 ## <a name="create-a-vm-from-restored-disks"></a>Tworzenie maszyny wirtualnej na podstawie przywróconych dysków
 
@@ -647,6 +646,7 @@ W poniższej sekcji przedstawiono kroki niezbędne do utworzenia maszyny wirtual
       $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
       $osBlob.ICloudBlob.SetMetadata()
       ```
+
    Po **udostępnieniu klucza/wpisów tajnych** i określeniu szczegółów szyfrowania w obiekcie blob systemu operacyjnego Podłącz dyski przy użyciu skryptu podanego poniżej.
 
     Jeśli źródłowy Magazyn kluczy/klucz tajny jest dostępny, nie trzeba wykonywać powyższych skryptów.
@@ -747,9 +747,9 @@ W poniższej sekcji przedstawiono kroki niezbędne do utworzenia maszyny wirtual
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+
 > [!NOTE]
 > Pamiętaj o ręcznym usunięciu plików JASON utworzonych w ramach procesu odzyskiwania zaszyfrowanej maszyny wirtualnej.
-
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Przywracanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 

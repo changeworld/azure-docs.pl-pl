@@ -3,20 +3,19 @@ title: Jak skonfigurować przechowywanie w środowisku Azure Time Series Insight
 description: W tym artykule opisano sposób konfigurowania przechowywania w środowisku Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bf6788bac7003bec0ccfc171d622cd9b28bf43e0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ff4d326af691ae27894dc94d7581ba68951f090e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330885"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990057"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Konfigurowanie przechowywania w Time Series Insights
 
@@ -41,7 +40,7 @@ Aby uzyskać szczegółowe informacje dotyczące lepszego zrozumienia tych ustaw
 
 1. W obszarze **Ustawienia** wybierz pozycję **Konfiguruj**.
 
-    [@no__t 1Select ustawienia, a następnie skonfiguruj](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+    [![wybierz ustawienia, a następnie skonfiguruj](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 1. Wybierz **czas przechowywania danych (w dniach)** , aby skonfigurować przechowywanie przy użyciu suwaka lub wpisz liczbę w polu tekstowym.
 
@@ -49,7 +48,7 @@ Aby uzyskać szczegółowe informacje dotyczące lepszego zrozumienia tych ustaw
 
 1. Przełącz ustawienie **zachowania Przekrocz limit magazynu** . Wybierz opcję **Przeczyść stare dane** lub **Wstrzymaj** zachowanie transferu danych przychodzących.
 
-    [![Data przechowywania — Zaakceptuj i Zapisz.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![przechowywanie danych — zaakceptuj i Zapisz.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
 1. Zaakceptuj pole wyboru informujące o tym, że dokumentacja została sprawdzona, i poznanie potencjalnych zagrożeń związanych z utratą danych. Wybierz pozycję **Zapisz** , aby skonfigurować zmiany.
 
