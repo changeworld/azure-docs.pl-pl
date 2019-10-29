@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: d976826fe90946697a32c5b1edb9dd323b01cc1c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 10/28/2019
+ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105469"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991350"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Używanie tunelowania SSH do uzyskiwania dostępu do interfejsu użytkownika, JobHistory, NameNode, Apache Oozie i innych interfejsów użytkownika
 
@@ -50,16 +50,16 @@ Jeśli używasz akcji skryptu do dostosowania klastra, wszystkie usługi lub nar
     > Obsługa serwera proxy SOCKS wbudowana w ustawienia internetowe systemu Windows nie obsługuje SOCKS5 i nie działa z krokami przedstawionymi w tym dokumencie. Poniższe przeglądarki korzystają z ustawień serwera proxy systemu Windows i nie są obecnie wykonywane z krokami przedstawionymi w tym dokumencie:
     >
     > * Microsoft Edge
-    > * Microsoft Internet Explorer
+    > * Program Microsoft Internet Explorer
     >
     > Google Chrome korzysta również z ustawień serwera proxy systemu Windows. Można jednak zainstalować rozszerzenia, które obsługują SOCKS5. Zalecamy [FoxyProxy Standard](https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp).
 
 ## <a name="usessh"></a>Tworzenie tunelu przy użyciu polecenia SSH
 
-Użyj następującego polecenia, aby utworzyć tunel SSH przy użyciu `ssh` polecenia. Zastąp `sshuser` użytkownikowi SSH dla klastra usługi HDInsight i Zastąp `clustername` ciąg nazwą klastra usługi HDInsight:
+Użyj następującego polecenia, aby utworzyć tunel SSH przy użyciu polecenia `ssh`. Zastąp `sshuser` użytkownikiem SSH dla klastra usługi HDInsight i Zastąp `CLUSTERNAME` nazwą klastra usługi HDInsight:
 
 ```cmd
-ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
+ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 ```
 
 To polecenie tworzy połączenie, które kieruje ruch do lokalnego portu 9876 do klastra za pośrednictwem protokołu SSH. Dostępne opcje to:
@@ -68,9 +68,9 @@ To polecenie tworzy połączenie, które kieruje ruch do lokalnego portu 9876 do
 * **C** — Kompresuj wszystkie dane, ponieważ ruch internetowy jest w większości tekstu.
 * **2** — Wymuś wymuszenie tylko protokołu SSH w wersji 2.
 * Tryb " **q** -quiet".
-* Nie należy wyłączać alokacji **pseudo-TTY** , ponieważ wystarczy przesłać dalej port.
+* **T** -Wyłącz alokację pseudo-TTY, ponieważ po prostu przesyłasz dalej port.
 * **n** -Zapobiegaj odczytywaniu stdin, ponieważ właśnie przekazujesz port.
-* **N** -nie wykonuj polecenia zdalnego, ponieważ po prostu przesyłasz dalej port.
+* **N** -nie wykonuj polecenia zdalnego, ponieważ właśnie przekazujesz port.
 * **f** -Run w tle.
 
 Po zakończeniu wykonywania polecenia ruch wysyłany do portu 9876 na komputerze lokalnym jest kierowany do węzła głównego klastra.
@@ -84,11 +84,14 @@ Po zakończeniu wykonywania polecenia ruch wysyłany do portu 9876 na komputerze
 1. Otwórz polecenie Wyróżnij i upewnij się, że w menu po lewej stronie została wybrana **sesja** . Jeśli sesja została już zapisana, wybierz nazwę sesji z listy **zapisane sesje** i wybierz pozycję **Załaduj**.
 
 1. Jeśli nie masz jeszcze zapisanej sesji, wprowadź informacje dotyczące połączenia:
-    * **Nazwa hosta (lub adres IP)** — adres SSH dla klastra usługi HDInsight. Na przykład **mycluster-SSH.azurehdinsight.NET**
-    * **Port** — 22
-    * **Typ połączenia** — SSH
 
-1. Wybierz **Zapisz**
+    |Właściwość |Wartość |
+    |---|---|
+    |Nazwa hosta (lub adres IP)|Adres SSH dla klastra usługi HDInsight. Na przykład **mójklaster-ssh.azurehdinsight.net**.|
+    |Port|22|
+    |Typ połączenia|SSH|
+
+1. Wybierz pozycję **Zapisz**.
 
     ![Sesja tworzenia usługi HDInsight](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
@@ -96,15 +99,15 @@ Po zakończeniu wykonywania polecenia ruch wysyłany do portu 9876 na komputerze
 
 1. Podaj następujące informacje na temat **opcji kontrolujących formularz przekazywania portów SSH** :
 
-   * **Source port** (Port źródłowy) — port na komputerze klienckim, który ma być przekierowany. Na przykład **9876**.
+    |Właściwość |Wartość |
+    |---|---|
+    |Port źródłowy|Port na kliencie, który ma zostać przesłany dalej. Na przykład **9876**.|
+    |Cel|Adres SSH dla klastra usługi HDInsight. Na przykład **mójklaster-ssh.azurehdinsight.net**.|
+    |Dynamiczny|Umożliwia dynamiczne Routing serwerów proxy SOCKS.|
 
-   * **Miejsce docelowe** — adres SSH dla klastra usługi HDInsight. Na przykład **mójklaster-ssh.azurehdinsight.net**.
+    ![Opcje tunelowania konfiguracji.](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
-   * **Dynamic** (Dynamiczny) — umożliwia dynamiczny routing serwera proxy SOCKS.
-
-     ![Opcje tunelowania konfiguracji.](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
-
-1. Wybierz pozycję **Dodaj** , aby dodać ustawienia, a następnie kliknij przycisk **Otwórz** , aby otworzyć połączenie SSH.
+1. Wybierz pozycję **Dodaj** , aby dodać ustawienia, a następnie wybierz pozycję **Otwórz** , aby otworzyć połączenie SSH.
 
 1. Po wyświetleniu monitu zaloguj się do serwera programu.
 
@@ -126,10 +129,10 @@ Po zakończeniu wykonywania polecenia ruch wysyłany do portu 9876 na komputerze
 
 Po ustanowieniu klastra wykonaj następujące kroki, aby sprawdzić, czy można uzyskać dostęp do usługi Web interfejsów użytkownika w sieci Web programu Ambari:
 
-1. W przeglądarce przejdź do `http://headnodehost:8080`. `headnodehost` Adres jest wysyłany przez tunel do klastra i rozwiązywany do węzła głównego, na którym działa Ambari. Po wyświetleniu monitu wprowadź nazwę użytkownika administratora (administratora) i hasło do klastra. Użytkownik może zostać poproszony po raz drugi przez interfejs użytkownika sieci Web Ambari. Jeśli tak, wprowadź ponownie te informacje.
+1. W przeglądarce przejdź do `http://headnodehost:8080`. Adres `headnodehost` jest wysyłany przez tunel do klastra i rozwiązywany do węzła głównego, na którym działa Ambari. Po wyświetleniu monitu wprowadź nazwę użytkownika administratora (administratora) i hasło do klastra. Użytkownik może zostać poproszony po raz drugi przez interfejs użytkownika sieci Web Ambari. Jeśli tak, wprowadź ponownie te informacje.
 
    > [!NOTE]  
-   > W przypadku używania `http://headnodehost:8080` adresu do łączenia się z klastrem nawiązuje się połączenie za pośrednictwem tunelu. Komunikacja jest zabezpieczona przy użyciu tunelu SSH zamiast protokołu HTTPS. Aby nawiązać połączenie przez Internet przy użyciu protokołu `https://clustername.azurehdinsight.net`https, `clustername` Użyj polecenia, gdzie jest nazwą klastra.
+   > W przypadku łączenia się z klastrem przy użyciu adresu `http://headnodehost:8080` nawiązywane jest połączenie za pośrednictwem tunelu. Komunikacja jest zabezpieczona przy użyciu tunelu SSH zamiast protokołu HTTPS. Aby nawiązać połączenie przez Internet przy użyciu protokołu HTTPS, użyj `https://clustername.azurehdinsight.net`, gdzie `clustername` jest nazwą klastra.
 
 2. Z poziomu interfejsu użytkownika sieci Web Ambari wybierz opcję HDFS z listy znajdującej się po lewej stronie.
 

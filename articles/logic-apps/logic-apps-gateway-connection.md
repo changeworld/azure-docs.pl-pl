@@ -1,6 +1,6 @@
 ---
-title: Dostęp do źródeł danych w środowisku lokalnym z Azure Logic Apps
-description: Nawiązywanie połączenia z lokalnymi źródłami danych z usługi Logic Apps przez tworzenie lokalnej bramy danych
+title: Dostęp do źródeł danych w środowisku lokalnym — Azure Logic Apps
+description: Nawiązywanie połączenia z lokalnymi źródłami danych z Azure Logic Apps przez tworzenie zasobu lokalnej bramy danych platformy Azure
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 4b333df740fbd4c2243ea3f166593ca0a6f4bbad
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6a01999eff6accf1b8d7f56729d9dce77fbedb0a
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675674"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988708"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Nawiązywanie połączenia z lokalnymi źródłami danych z Azure Logic Apps
 
@@ -77,7 +77,7 @@ Po zainstalowaniu bramy na komputerze lokalnym Utwórz zasób platformy Azure dl
 
 1. W obszarze **lokalne bramy danych**wybierz pozycję **Dodaj**.
 
-   ![Dodawanie bramy danych](./media/logic-apps-gateway-connection/add-gateway.png)
+   ![Dodawanie nowego zasobu platformy Azure dla bramy danych](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
 1. W obszarze **Utwórz bramę połączenia**podaj te informacje dla zasobu bramy. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
@@ -92,7 +92,7 @@ Po zainstalowaniu bramy na komputerze lokalnym Utwórz zasób platformy Azure dl
 
    Oto przykład, w którym jest wyświetlana instalacja bramy znajdująca się w tym samym regionie, co zasób bramy i jest połączona z tym samym kontem platformy Azure:
 
-   ![Podaj szczegóły w celu utworzenia zasobu bramy danych](./media/logic-apps-gateway-connection/gateway-details.png)
+   ![Podaj szczegóły w celu utworzenia zasobu bramy danych](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -155,7 +155,7 @@ Aby utworzyć inny zasób bramy, Połącz instalację bramy z innym zasobem bram
 
    Na przykład:
 
-   ![Usuń bramę](./media/logic-apps-gateway-connection/gateway-delete.png)
+   ![Usuwanie zasobu bramy na platformie Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
 
 <a name="faq"></a>
 

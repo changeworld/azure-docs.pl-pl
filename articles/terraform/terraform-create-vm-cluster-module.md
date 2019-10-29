@@ -1,22 +1,19 @@
 ---
-title: Tworzenie klastra maszyn wirtualnych na platformie Azure za pomocą modułów Terraform
+title: Samouczek — Tworzenie klastra maszyn wirtualnych platformy Azure z usługą Terraform przy użyciu rejestru modułów
 description: Dowiedz się, jak za pomocą modułów Terraform utworzyć klaster maszyn wirtualnych systemu Windows na platformie Azure
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtual machine, network, modules
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 325a029a9ea1c0102dad0e970f177e7ba7db6d52
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/26/2019
+ms.openlocfilehash: ba99f9cdc20448398b339041aeab41fb75495e5d
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934187"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969494"
 ---
-# <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Tworzenie klastra maszyn wirtualnych za pomocą narzędzia Terraform korzystającego z rejestru modułów
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Samouczek: Tworzenie klastra maszyn wirtualnych platformy Azure z usługą Terraform przy użyciu rejestru modułu
 
 W tym artykule opisano proces tworzenia małego klastra maszyn wirtualnych za pomocą modułu Terraform [Azure Compute](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
@@ -104,5 +101,5 @@ Uruchom polecenie `terraform apply`, aby aprowizować maszyny wirtualne na platf
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przeglądanie listy [modułów Azure Terraform](https://registry.terraform.io/modules/Azure)
-- Tworzenie [zestawu skalowania maszyn wirtualnych za pomocą narzędzia Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)
+> [!div class="nextstepaction"] 
+> [Przeglądaj listę modułów usługi Azure Terraform](https://registry.terraform.io/modules/Azure)

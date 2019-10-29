@@ -10,22 +10,21 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8a0b0dde50de1806762076025e4f74f19388f81b
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203786"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989596"
 ---
 # <a name="what-is-personalizer"></a>Co to jest usługa Personalizacja?
 
-Usługa Personalizacja platformy Azure to chmurowa usługa interfejsu API, która pozwala wybrać najlepsze środowiska dla użytkowników na podstawie ich zachowania w czasie rzeczywistym.
+Personalizacja Azure to oparta na chmurze usługa interfejsu API, która pozwala na wybranie najlepszego środowiska do wyświetlania użytkownikom, uczenie się od ich zbiorczego zachowania w czasie rzeczywistym.
 
 * Podaj informacje o użytkownikach i zawartości oraz Odbierz najważniejsze akcje, aby pokazać użytkowników. 
 * Nie ma potrzeby czyszczenia i etykietowania danych przed użyciem narzędzia Personalizacja.
 * Prześlij opinię na temat personalizowania, gdy jest to wygodne. 
 * Wyświetlanie analizy w czasie rzeczywistym. 
-* Użyj personalizacji jako części większego nakładu na naukę danych, aby zweryfikować istniejące eksperymenty.
 
 ## <a name="how-does-personalizer-work"></a>Jak działa program Personalizuj?
 
@@ -37,9 +36,9 @@ Personalizacja korzysta z modeli uczenia maszynowego w celu ustalenia, jakie dzi
 
 1. Wybierz środowisko w aplikacji, aby spersonalizować.
 1. Utwórz i skonfiguruj wystąpienie usługi personalizacji w Azure Portal. Każde wystąpienie jest pętlą personalizacji.
-1. Użyj zestawu SDK do wywołania narzędzia personalizacji z informacjami (_funkcjami_) dotyczącymi użytkowników i zawartością (_Akcje_). Nie musisz podawać czystych danych z etykietami przed użyciem narzędzia Personalizacja. 
+1. Użyj [interfejsu API rangi](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) , aby wywołać narzędzia do personalizowania z informacjami (_funkcjami_) dotyczącymi użytkowników i zawartością (_Akcje_). Nie musisz podawać czystych danych z etykietami przed użyciem narzędzia Personalizacja. Interfejsy API mogą być wywoływane bezpośrednio lub przy użyciu zestawów SDK dostępnych dla różnych języków programowania.
 1. W aplikacji klienckiej Pokaż użytkownika akcję wybraną przez program Personalizujer.
-1. Użyj zestawu SDK, aby przekazać Opinie do personalizacji wskazujące, czy użytkownik zaznaczył akcję Personalizuj. To jest _[wynik nagrody](concept-rewards.md)_ .
+1. Za pomocą [interfejsu API nagradzania](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) można przekazać Opinie do programu Personalizacja wskazujące, czy użytkownik zaznaczył akcję Personalizuj. To jest _[wynik nagrody](concept-rewards.md)_ .
 1. Wyświetl analizę w Azure Portal, aby oszacować, jak działa system oraz jak dane pomagają w personalizacji.
 
 ## <a name="where-can-i-use-personalizer"></a>Gdzie mogę używać personalizacji?

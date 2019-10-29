@@ -1,22 +1,19 @@
 ---
-title: Tworzenie centralnej sieci wirtualnej z usługą Terraform na platformie Azure
+title: Samouczek — Tworzenie sieci wirtualnej centrum na platformie Azure przy użyciu Terraform
 description: Samouczek przedstawiający sposób tworzenia koncentratora sieci wirtualnej na platformie Azure, który działa jako wspólny punkt połączenia między innymi sieciami
-services: terraform
-ms.service: azure
-keywords: Terraform, Hub i szprych, sieci, sieci hybrydowe, DevOps, maszyna wirtualna, Azure, Komunikacja równorzędna VNet, Hub-szprycha i koncentrator.
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 12538c0348efc1621d3f8f6ee0cb93d73c712898
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 231f8c6b98db785f3ef155af271be7e354998d54
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173428"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969422"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>Samouczek: Tworzenie centralnej sieci wirtualnej z usługą Terraform na platformie Azure
+# <a name="tutorial-create-a-hub-virtual-network-in-azure-using-terraform"></a>Samouczek: Tworzenie centralnej sieci wirtualnej na platformie Azure przy użyciu Terraform
 
 Sieć wirtualna centrum działa jako centralny punkt łączności z siecią lokalną. Sieć wirtualna hostuje usługi udostępnione używane przez obciążenia hostowane w sieci wirtualnych szprychy. W celach demonstracyjnych w tym samouczku nie zaimplementowano żadnych usług udostępnionych.
 
@@ -82,14 +79,14 @@ Utwórz plik konfiguracji Terraform, który deklaruje sieć wirtualną centrum.
     }
 
     resource "azurerm_resource_group" "hub-vnet-rg" {
-      name     = "${local.hub-resource-group}"
-      location = "${local.hub-location}"
+      name     = local.hub-resource-group
+      location = local.hub-location
     }
 
     resource "azurerm_virtual_network" "hub-vnet" {
       name                = "${local.prefix-hub}-vnet"
-      location            = "${azurerm_resource_group.hub-vnet-rg.location}"
-      resource_group_name = "${azurerm_resource_group.hub-vnet-rg.name}"
+      location            = azurerm_resource_group.hub-vnet-rg.location
+      resource_group_name = azurerm_resource_group.hub-vnet-rg.name
       address_space       = ["10.0.0.0/16"]
 
       tags {
@@ -99,49 +96,49 @@ Utwórz plik konfiguracji Terraform, który deklaruje sieć wirtualną centrum.
 
     resource "azurerm_subnet" "hub-gateway-subnet" {
       name                 = "GatewaySubnet"
-      resource_group_name  = "${azurerm_resource_group.hub-vnet-rg.name}"
-      virtual_network_name = "${azurerm_virtual_network.hub-vnet.name}"
+      resource_group_name  = azurerm_resource_group.hub-vnet-rg.name
+      virtual_network_name = azurerm_virtual_network.hub-vnet.name
       address_prefix       = "10.0.255.224/27"
     }
 
     resource "azurerm_subnet" "hub-mgmt" {
       name                 = "mgmt"
-      resource_group_name  = "${azurerm_resource_group.hub-vnet-rg.name}"
-      virtual_network_name = "${azurerm_virtual_network.hub-vnet.name}"
+      resource_group_name  = azurerm_resource_group.hub-vnet-rg.name
+      virtual_network_name = azurerm_virtual_network.hub-vnet.name
       address_prefix       = "10.0.0.64/27"
     }
 
     resource "azurerm_subnet" "hub-dmz" {
       name                 = "dmz"
-      resource_group_name  = "${azurerm_resource_group.hub-vnet-rg.name}"
-      virtual_network_name = "${azurerm_virtual_network.hub-vnet.name}"
+      resource_group_name  = azurerm_resource_group.hub-vnet-rg.name
+      virtual_network_name = azurerm_virtual_network.hub-vnet.name
       address_prefix       = "10.0.0.32/27"
     }
 
     resource "azurerm_network_interface" "hub-nic" {
       name                 = "${local.prefix-hub}-nic"
-      location             = "${azurerm_resource_group.hub-vnet-rg.location}"
-      resource_group_name  = "${azurerm_resource_group.hub-vnet-rg.name}"
+      location             = azurerm_resource_group.hub-vnet-rg.location
+      resource_group_name  = azurerm_resource_group.hub-vnet-rg.name
       enable_ip_forwarding = true
 
       ip_configuration {
-        name                          = "${local.prefix-hub}"
-        subnet_id                     = "${azurerm_subnet.hub-mgmt.id}"
+        name                          = local.prefix-hub
+        subnet_id                     = azurerm_subnet.hub-mgmt.id
         private_ip_address_allocation = "Dynamic"
       }
 
       tags {
-        environment = "${local.prefix-hub}"
+        environment = local.prefix-hub
       }
     }
 
     #Virtual Machine
     resource "azurerm_virtual_machine" "hub-vm" {
       name                  = "${local.prefix-hub}-vm"
-      location              = "${azurerm_resource_group.hub-vnet-rg.location}"
-      resource_group_name   = "${azurerm_resource_group.hub-vnet-rg.name}"
-      network_interface_ids = ["${azurerm_network_interface.hub-nic.id}"]
-      vm_size               = "${var.vmsize}"
+      location              = azurerm_resource_group.hub-vnet-rg.location
+      resource_group_name   = azurerm_resource_group.hub-vnet-rg.name
+      network_interface_ids = [azurerm_network_interface.hub-nic.id]
+      vm_size               = var.vmsize
 
       storage_image_reference {
         publisher = "Canonical"
@@ -159,8 +156,8 @@ Utwórz plik konfiguracji Terraform, który deklaruje sieć wirtualną centrum.
 
       os_profile {
         computer_name  = "${local.prefix-hub}-vm"
-        admin_username = "${var.username}"
-        admin_password = "${var.password}"
+        admin_username = var.username
+        admin_password = var.password
       }
 
       os_profile_linux_config {
@@ -168,23 +165,23 @@ Utwórz plik konfiguracji Terraform, który deklaruje sieć wirtualną centrum.
       }
 
       tags {
-        environment = "${local.prefix-hub}"
+        environment = local.prefix-hub
       }
     }
 
     # Virtual Network Gateway
     resource "azurerm_public_ip" "hub-vpn-gateway1-pip" {
       name                = "hub-vpn-gateway1-pip"
-      location            = "${azurerm_resource_group.hub-vnet-rg.location}"
-      resource_group_name = "${azurerm_resource_group.hub-vnet-rg.name}"
+      location            = azurerm_resource_group.hub-vnet-rg.location
+      resource_group_name = azurerm_resource_group.hub-vnet-rg.name
 
       allocation_method = "Dynamic"
     }
 
     resource "azurerm_virtual_network_gateway" "hub-vnet-gateway" {
       name                = "hub-vpn-gateway1"
-      location            = "${azurerm_resource_group.hub-vnet-rg.location}"
-      resource_group_name = "${azurerm_resource_group.hub-vnet-rg.name}"
+      location            = azurerm_resource_group.hub-vnet-rg.location
+      resource_group_name = azurerm_resource_group.hub-vnet-rg.name
 
       type     = "Vpn"
       vpn_type = "RouteBased"
@@ -195,37 +192,37 @@ Utwórz plik konfiguracji Terraform, który deklaruje sieć wirtualną centrum.
 
       ip_configuration {
         name                          = "vnetGatewayConfig"
-        public_ip_address_id          = "${azurerm_public_ip.hub-vpn-gateway1-pip.id}"
+        public_ip_address_id          = azurerm_public_ip.hub-vpn-gateway1-pip.id
         private_ip_address_allocation = "Dynamic"
-        subnet_id                     = "${azurerm_subnet.hub-gateway-subnet.id}"
+        subnet_id                     = azurerm_subnet.hub-gateway-subnet.id
       }
       depends_on = ["azurerm_public_ip.hub-vpn-gateway1-pip"]
     }
 
     resource "azurerm_virtual_network_gateway_connection" "hub-onprem-conn" {
       name                = "hub-onprem-conn"
-      location            = "${azurerm_resource_group.hub-vnet-rg.location}"
-      resource_group_name = "${azurerm_resource_group.hub-vnet-rg.name}"
+      location            = azurerm_resource_group.hub-vnet-rg.location
+      resource_group_name = azurerm_resource_group.hub-vnet-rg.name
 
       type           = "Vnet2Vnet"
       routing_weight = 1
 
-      virtual_network_gateway_id      = "${azurerm_virtual_network_gateway.hub-vnet-gateway.id}"
-      peer_virtual_network_gateway_id = "${azurerm_virtual_network_gateway.onprem-vpn-gateway.id}"
+      virtual_network_gateway_id      = azurerm_virtual_network_gateway.hub-vnet-gateway.id
+      peer_virtual_network_gateway_id = azurerm_virtual_network_gateway.onprem-vpn-gateway.id
 
-      shared_key = "${local.shared-key}"
+      shared_key = local.shared-key
     }
 
     resource "azurerm_virtual_network_gateway_connection" "onprem-hub-conn" {
       name                = "onprem-hub-conn"
-      location            = "${azurerm_resource_group.onprem-vnet-rg.location}"
-      resource_group_name = "${azurerm_resource_group.onprem-vnet-rg.name}"
+      location            = azurerm_resource_group.onprem-vnet-rg.location
+      resource_group_name = azurerm_resource_group.onprem-vnet-rg.name
       type                            = "Vnet2Vnet"
       routing_weight = 1
-      virtual_network_gateway_id      = "${azurerm_virtual_network_gateway.onprem-vpn-gateway.id}"
-      peer_virtual_network_gateway_id = "${azurerm_virtual_network_gateway.hub-vnet-gateway.id}"
+      virtual_network_gateway_id      = azurerm_virtual_network_gateway.onprem-vpn-gateway.id
+      peer_virtual_network_gateway_id = azurerm_virtual_network_gateway.hub-vnet-gateway.id
 
-      shared_key = "${local.shared-key}"
+      shared_key = local.shared-key
     }
     ```
     

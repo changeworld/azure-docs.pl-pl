@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z usługą Atlassian Cloud | Microsoft Docs'
+title: 'Samouczek: integracja Azure Active Directory z chmurą Atlassian | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i usługą Atlassian Cloud.
 services: active-directory
 documentationCenter: na
@@ -13,91 +13,93 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/07/2019
+ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdbfb07b73d591bbab64f38e8c986fb1b7e072a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f901bd37a54d12dc2afe805f71c7b018a277e34
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106584"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969626"
 ---
-# <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Samouczek: Integracja Atlassian chmury z usługi Azure Active Directory
+# <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Samouczek: integracja chmury Atlassian z usługą Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować Atlassian chmury z usługi Azure Active Directory (Azure AD). Po zintegrowaniu Atlassian chmury z usługą Azure AD możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować chmurę Atlassian z usługą Azure Active Directory (Azure AD). W przypadku integracji chmury Atlassian z usługą Azure AD można:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do chmury Atlassian.
-* Umożliwianie użytkownikom można automatycznie zalogowany do chmury Atlassian za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do chmury Atlassian.
+* Zezwól użytkownikom na automatyczne logowanie do usługi Atlassian Cloud przy użyciu kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać miesięcznej bezpłatnej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
-* Chmura Atlassian logowania jednokrotnego (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz skorzystać z miesięcznej [bezpłatnej wersji](https://azure.microsoft.com/pricing/free-trial/)próbnej.
+* Subskrypcja z włączonym logowaniem jednokrotnym w chmurze Atlassian.
 * Aby włączyć logowanie jednokrotne SAML (Security Assertion Markup Language) dla produktów Atlassian Cloud, należy skonfigurować usługę Atlassian Access. Dowiedz się więcej o usłudze [Atlassian Access]( https://www.atlassian.com/enterprise/cloud/identity-manager).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Usługa Atlassian Cloud obsługuje logowanie jednokrotne inicjowane za pomocą **SP oraz IDP**
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. 
+
+* Usługa Atlassian Cloud obsługuje logowanie jednokrotne inicjowane za pomocą **SP oraz IDP**
 
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>Dodawanie usługi Atlassian Cloud z galerii
 
 Aby skonfigurować integrację usługi Atlassian Cloud z usługą Azure AD, należy dodać usługę Atlassian Cloud z galerii do listy zarządzanych aplikacji SaaS.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **chmury Atlassian** w polu wyszukiwania.
-1. Wybierz **chmury Atlassian** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Atlassian Cloud** w polu wyszukiwania.
+1. Wybierz pozycję **Atlassian Cloud** w panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD przy użyciu chmury Atlassian za pomocą użytkownika testu o nazwie **B.Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w chmurze Atlassian.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą chmury Atlassian przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w chmurze Atlassian.
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD przy użyciu chmury Atlassian, wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą chmury Atlassian, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego chmury Atlassian](#configure-atlassian-cloud-sso)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą B.Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć B.Simon do użycia usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego w chmurze Atlassian](#create-atlassian-cloud-test-user)**  — aby odpowiednikiem B.Simon w chmurze Atlassian, która jest połączona z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-sso)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj Logowanie jednokrotne w chmurze Atlassian](#configure-atlassian-cloud-sso)** , aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    * **[Utwórz użytkownika testowego w chmurze Atlassian](#create-atlassian-cloud-test-user)** , aby dysponować odpowiednikiem B. Simon w chmurze Atlassian, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **chmury Atlassian** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji w **chmurze Atlassian** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb, wprowadź wartości dla następujących pól:
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , w sekcji **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
 
     a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://auth.atlassian.com/saml/<unique ID>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`
 
-    c. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
+    d. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
     d. W polu tekstowym **Stan przekaźnika** wpisz adres URL, korzystając z następującego wzorca: `https://<instancename>.atlassian.net`
 
     > [!NOTE]
-    > Podane wyżej wartości nie są rzeczywiste. Należy je zastąpić rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Otrzymasz te wartości rzeczywiste z **Atlassian konfiguracji SAML w chmurze** ekranu, która została wyjaśniona później w **skonfigurować Atlassian chmury logowania jednokrotnego** samouczka.
+    > Podane wyżej wartości nie są rzeczywiste. Należy je zastąpić rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Te prawdziwe wartości są uzyskiwane z poziomu ekranu **Konfiguracja SAML chmury Atlassian** , który został wyjaśniony w dalszej części tego samouczka **Konfigurowanie usługi Atlassian w chmurze logowanie** jednokrotne.
 
 1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<instancename>.atlassian.net`
 
     > [!NOTE]
-    > Wartość adresu URL logowania nie jest prawdziwa. Wklej wartość z wystąpienia elementu, którego używasz do logowania do portalu administracyjnego Atlassian chmury.
+    > Wartość adresu URL logowania nie jest prawdziwa. Wklej wartość z wystąpienia, którego używasz do logowania się do portalu administracyjnego w chmurze Atlassian.
 
     ![Konfigurowanie logowania jednokrotnego](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-10.png)
 
@@ -105,9 +107,9 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     ![image](common/edit-attribute.png)
 
-1. Na **Ustaw się logowanie jednokrotne z SAML** strony w **certyfikat podpisywania SAML** sekcji, Znajdź **certyfikat (Base64)** i wybierz **Pobierz** do pobrania certyfikatu i zapisz go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificatebase64.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
 1. W sekcji **Skonfiguruj usługę Atlassian Cloud** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
@@ -117,78 +119,78 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
-
-### <a name="configure-atlassian-cloud-sso"></a>Konfigurowanie chmury Atlassian logowania jednokrotnego
-
-1. Aby zautomatyzować konfigurację w chmurze Atlassian, musisz zainstalować **rozszerzenia przeglądarki do bezpiecznego Moje aplikacje logowania** , klikając **zainstalować rozszerzenie**.
-
-    ![Moje rozszerzenie aplikacji](common/install-myappssecure-extension.png)
-
-2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **chmury Atlassian Instalatora** nastąpi bezpośrednie przekierowanie do aplikacji w chmurze Atlassian. W tym miejscu podaj poświadczenia administratora do logowania się do chmury Atlassian. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzuje kroki 3–7.
-
-    ![Konfiguracja instalacji](common/setup-sso.png)
-
-3. Jeśli chcesz ręcznie skonfigurować Atlassian chmury, Otwórz nowe okno przeglądarki sieci web i logowania do witryny firmy Atlassian chmury z uprawnieniami administratora i wykonaj następujące czynności:
-
-4. Musisz zweryfikować swoją domenę przed przejściem do konfigurowania logowania jednokrotnego. Aby uzyskać więcej informacji, zobacz dokument [Weryfikacja domeny Atlassian](https://confluence.atlassian.com/cloud/domain-verification-873871234.html).
-
-5. W okienku po lewej stronie wybierz **zabezpieczeń** > **SAML logowania jednokrotnego**. Jeśli nie zostało to jeszcze zrobione, zasubskrybuj usługę Atlassian Identity Manager.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-11.png)
-
-6. W oknie **Add SAML configuration** (Dodawanie konfiguracji SAML) wykonaj następujące czynności:
-
-    ![Konfigurowanie logowania jednokrotnego](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-12.png)
-
-    a. W **dostawcy tożsamości identyfikator jednostki** pole, Wklej **usługi Azure AD identyfikator** skopiowaną z witryny Azure portal.
-
-    b. W **dostawcy tożsamości adres URL logowania jednokrotnego** pole, Wklej **adres URL logowania** skopiowaną z witryny Azure portal.
-
-    c. Otwórz pobrany certyfikat w witrynie Azure Portal w pliku TXT, skopiuj wartość (bez wierszy *Begin Certificate* i *End Certificate*), a następnie wklej ją w polu **Public X509 certificate** (Publiczny certyfikat X509).
-
-    d. Kliknij pozycję **Save Configuration** (Zapisz konfigurację).
-
-7. Aby upewnić się, że skonfigurowano poprawne adresy URL, zaktualizuj ustawienia usługi Azure AD, wykonując następujące czynności:
-
-    ![Konfigurowanie logowania jednokrotnego](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-13.png)
-
-    a. W oknie SAML kopiować **identyfikator tożsamości SP** a następnie w witrynie Azure portal w obszarze chmura Atlassian **podstawową konfigurację protokołu SAML**, wklej ją w **identyfikator** pole.
-
-    b. W oknie SAML kopiować **URL usługi konsumenta potwierdzenie SP** a następnie w witrynie Azure portal w obszarze chmura Atlassian **podstawową konfigurację protokołu SAML**, wklej ją w **adres URL odpowiedzi**pole. Adres URL logowania jest adresem URL dzierżawy Twojej usługi Atlassian Cloud.
-
-    > [!NOTE]
-    > Jeśli jesteś istniejącym klientem, po zaktualizowaniu wartości **Identyfikator tożsamości SP** i **Adres URL usługi Assertion Consumer Service SP** w witrynie Azure Portal wybierz opcję **Tak, zaktualizuj konfigurację**. Jeśli jesteś nowym klientem, możesz pominąć ten krok.
+    d. Adres URL wylogowywania
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie B.Simon.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić B.Simon do udzielania dostępu do chmury Atlassian za pomocą platformy Azure logowania jednokrotnego.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do chmury Atlassian.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz **chmury Atlassian**.
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **Atlassian Cloud**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **B.Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+## <a name="configure-atlassian-cloud-sso"></a>Konfigurowanie logowania jednokrotnego w chmurze Atlassian
+
+1. Aby zautomatyzować konfigurację w chmurze Atlassian, musisz zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
+
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
+
+1. Po dodaniu rozszerzenia do przeglądarki kliknij pozycję **Setup Atlassian Cloud** , aby kierować do aplikacji w chmurze Atlassian. Z tego miejsca podaj poświadczenia administratora, aby zalogować się do chmury Atlassian. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i zautomatyzuje kroki 3–7.
+
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
+
+1. Jeśli chcesz ręcznie skonfigurować chmurę Atlassian, Otwórz nowe okno przeglądarki sieci Web i zaloguj się do firmowej witryny usługi Atlassian w chmurze jako administrator i wykonaj następujące czynności:
+
+1. Musisz zweryfikować swoją domenę przed przejściem do konfigurowania logowania jednokrotnego. Aby uzyskać więcej informacji, zobacz dokument [Weryfikacja domeny Atlassian](https://confluence.atlassian.com/cloud/domain-verification-873871234.html).
+
+1. W lewym okienku wybierz pozycję **zabezpieczenia** > **Logowanie jednokrotne w protokole SAML**. Jeśli nie zostało to jeszcze zrobione, zasubskrybuj usługę Atlassian Identity Manager.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-11.png)
+
+1. W oknie **Add SAML configuration** (Dodawanie konfiguracji SAML) wykonaj następujące czynności:
+
+    ![Konfigurowanie logowania jednokrotnego](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-12.png)
+
+    a. W polu **Identyfikator jednostki dostawcy tożsamości** wklej **Identyfikator usługi Azure AD** , który został skopiowany z Azure Portal.
+
+    b. W polu **adres URL logowania JEDNOkrotnego dostawcy tożsamości** wklej **adres URL logowania** skopiowany z Azure Portal.
+
+    d. Otwórz pobrany certyfikat w witrynie Azure Portal w pliku TXT, skopiuj wartość (bez wierszy *Begin Certificate* i *End Certificate*), a następnie wklej ją w polu **Public X509 certificate** (Publiczny certyfikat X509).
+
+    d. Kliknij pozycję **Save Configuration** (Zapisz konfigurację).
+
+1. Aby upewnić się, że skonfigurowano poprawne adresy URL, zaktualizuj ustawienia usługi Azure AD, wykonując następujące czynności:
+
+    ![Konfigurowanie logowania jednokrotnego](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-13.png)
+
+    a. W oknie SAML Skopiuj **Identyfikator tożsamości Sp** , a następnie w Azure Portal w obszarze Atlassian Cloud **Basic SAML Configuration**, wklej go w polu **identyfikatora** .
+
+    b. W oknie SAML Skopiuj **adres URL usługi odbiorcy potwierdzenia Sp** , a następnie w Azure Portal, w obszarze Atlassian Cloud **Basic SAML Configuration**, wklej go w polu **adres URL odpowiedzi** . Adres URL logowania jest adresem URL dzierżawy Twojej usługi Atlassian Cloud.
+
+    > [!NOTE]
+    > Jeśli jesteś istniejącym klientem, po zaktualizowaniu wartości **Identyfikator tożsamości SP** i **Adres URL usługi Assertion Consumer Service SP** w witrynie Azure Portal wybierz opcję **Tak, zaktualizuj konfigurację**. Jeśli jesteś nowym klientem, możesz pominąć ten krok.
 
 ### <a name="create-atlassian-cloud-test-user"></a>Tworzenie użytkownika testowego usługi Atlassian Cloud
 
@@ -198,27 +200,29 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie do usługi Atlassian Cl
 
     ![Link Użytkownicy usługi Atlassian Cloud](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-14.png)
 
-2. Aby utworzyć użytkownika w usłudze Atlassian Cloud, wybierz pozycję **Zaproś użytkownika**.
+1. Aby utworzyć użytkownika w usłudze Atlassian Cloud, wybierz pozycję **Zaproś użytkownika**.
 
     ![Tworzenie użytkownika usługi Atlassian Cloud](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-15.png)
 
-3. W polu **Adres e-mail** wprowadź adres e-mail użytkownika, a następnie przypisz dostęp do aplikacji.
+1. W polu **Adres e-mail** wprowadź adres e-mail użytkownika, a następnie przypisz dostęp do aplikacji.
 
     ![Tworzenie użytkownika usługi Atlassian Cloud](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-16.png)
 
-4. Aby wysłać wiadomość e-mail z zaproszeniem do użytkownika, wybierz pozycję **Zaproś użytkowników**. Wiadomość e-mail z zaproszeniem zostanie wysłana do użytkownika, a po zaakceptowaniu zaproszenia użytkownik będzie aktywny w systemie.
+1. Aby wysłać wiadomość e-mail z zaproszeniem do użytkownika, wybierz pozycję **Zaproś użytkowników**. Wiadomość e-mail z zaproszeniem zostanie wysłana do użytkownika, a po zaakceptowaniu zaproszenia użytkownik będzie aktywny w systemie.
 
 > [!NOTE]
 > Możesz również zbiorczo utworzyć użytkowników, wybierając przycisk **Tworzenie zbiorcze** w sekcji **Użytkownicy**.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
-Po wybraniu kafelka Atlassian chmury w panelu dostępu powinny być automatycznie zarejestrowaniu w usłudze Atlassian Cloud, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka Atlassian Cloud w panelu dostępu należy automatycznie zalogować się do chmury Atlassian, dla której skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wypróbuj chmurę Atlassian z usługą Azure AD](https://aad.portal.azure.com/)

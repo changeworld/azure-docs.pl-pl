@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: fbe41bdc5f253f1a605aa291a31191b7339b9850
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: ff21a1325e341f119fc8615ca03b41b8068aca19
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030584"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991423"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz Event Grid dla Azure Functions
 
@@ -252,7 +252,6 @@ W poniższych przykładach pokazano powiązanie wyzwalacza w pliku *Function. JS
     ) 
     String content, 
     final ExecutionContext context) {
-      // log 
       context.getLogger().info("Event content: " + content);      
   }
 ```
@@ -289,7 +288,6 @@ Po przybyciu ładunek JSON zdarzenia jest deserializowany do ```EventSchema``` P
     ) 
     EventSchema event, 
     final ExecutionContext context) {
-      // log 
       context.getLogger().info("Event content: ");
       context.getLogger().info("Subject: " + event.subject);
       context.getLogger().info("Time: " + event.eventTime); // automatically converted to Date by the runtime

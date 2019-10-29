@@ -3,21 +3,20 @@ title: Zarządzanie danymi referencyjnymi w środowisku Azure Time Series Insigh
 description: W tym artykule opisano sposób zarządzania danymi referencyjnymi dla środowiska Azure Time Series Insights przez utworzenie niestandardowej aplikacji zapisaną w języku C# .NET (c-Sharp).
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4f206b63be38c902f93a084889e60184ce03e07
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 4eb8a22ee56203fe84df6ee1cff779e3f3bdf491
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958042"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990042"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Zarządzanie danymi referencyjnymi GA dla środowiska Azure Time Series Insights za pomocąC#
 
@@ -29,18 +28,18 @@ Przed skompilowaniem i uruchomieniem przykładowego kodu wykonaj następujące c
 
 1. [Utwórz zestaw danych referencyjnych](time-series-insights-add-reference-data-set.md).
 
-1. Skonfiguruj token dostępu autoryzacji dla aplikacji. Upewnij się, że token jest uzyskiwany za pomocą interfejsu API Azure Active Directory. Ten token powinien zostać przekazany w nagłówku `Authorization` każdego żądania interfejsu API zapytania.
+1. Skonfiguruj token dostępu autoryzacji dla aplikacji. Upewnij się, że token jest uzyskiwany za pomocą interfejsu API Azure Active Directory. Ten token należy przekazać w nagłówku `Authorization` każdego żądania interfejsu API zapytań.
 
    Informacje o sposobie konfigurowania aplikacji nieinterakcyjnych znajdują się w temacie [uwierzytelnianie i autoryzacja](time-series-insights-authentication-and-authorization.md).
 
 1. Edytuj przykładowy kod, aby zastąpić przykładowe stałe oznaczone w **#DUMMY #** , blisko początku kodu.
 
 > [!NOTE]
-> Zapoznaj się z przykładowym kodem ["ga" w https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
+> Zapoznaj się z przykładowym kodem "GA" w [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="project-dependencies"></a>Zależności projektu
 
-W tym przykładzie Dodaj pakiety NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` i `Newtonsoft.Json`.
+Dodaj pakiety NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` i `Newtonsoft.Json` na potrzeby tego przykładu.
 
 ## <a name="c-sample-code"></a>C#przykładowy kod
 

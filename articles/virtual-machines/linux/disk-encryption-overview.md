@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 053c52d7d1a0282d72ad76408b77c96aa3b0e3e4
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: a3d48d53c2d4d0c859b58a94b12ffa94590b18a5
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174700"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989632"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption dla maszyn wirtualnych z systemem Linux 
 
@@ -23,7 +23,7 @@ Jeśli używasz [Azure Security Center](../../security-center/index.yml), zostan
 ![Alert szyfrowania dysku Azure Security Center](media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
-> - Jeśli usługa Azure AD została wcześniej Azure Disk Encryption użyta w celu zaszyfrowania maszyny wirtualnej, należy użyć tej opcji, aby zaszyfrować maszynę wirtualną. Aby uzyskać szczegółowe informacje, zobacz [Azure Disk Encryption w usłudze Azure AD (w poprzedniej wersji)](disk-encryption-overview-aad.md) . 
+> - Jeśli w celu zaszyfrowania maszyny wirtualnej użyto wcześniej Azure Disk Encryption z usługą Azure AD, musisz użyć tej opcji, aby zaszyfrować maszynę wirtualną. Aby uzyskać szczegółowe informacje, zobacz [Azure Disk Encryption w usłudze Azure AD (w poprzedniej wersji)](disk-encryption-overview-aad.md) . 
 > - Niektóre zalecenia mogą zwiększyć użycie zasobów, sieci lub obliczeń, co skutkuje dodatkowymi kosztami licencji lub subskrypcji. Aby tworzyć zasoby na platformie Azure w obsługiwanych regionach, musisz mieć prawidłową aktywną subskrypcję platformy Azure.
 
 Podstawowe informacje o Azure Disk Encryption dla systemu Linux można uzyskać w ciągu kilku minut od [utworzenia i zaszyfrowania maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure](disk-encryption-cli-quickstart.md) z przewodnikiem Szybki start lub [tworzenia i szyfrowania maszyny wirtualnej z systemem Linux przy użyciu programu Azure PowerShell — szybki start](disk-encryption-powershell-quickstart.md).
@@ -44,7 +44,7 @@ Po zakończeniu procesu szyfrowania dysku systemu operacyjnego na maszynach wirt
 
 Azure Disk Encryption jest również dostępna dla maszyn wirtualnych z magazynem w warstwie Premium. 
 
-### <a name="supported-operating-systems"></a>Supported operating systems
+### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
 Azure Disk Encryption jest obsługiwane w podzestawie [dystrybucji systemu Linux z zatwierdzona przez platformę Azure](endorsed-distros.md), które jest samym podzbiorem wszystkich możliwych dystrybucji serwerów z systemem Linux.
 
@@ -61,20 +61,20 @@ Dystrybucje serwera z systemem Linux, które nie są zatwierdzone przez platform
 | RHEL | 7,6 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 7,5 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 7,4 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
-| RHEL | 7,3 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
-| RHEL | 7,2 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
-| RHEL | 6,8 | Dysk danych (patrz Uwaga poniżej) |
-| RHEL | 6,7 | Dysk danych (patrz Uwaga poniżej) |
+| RHEL | 7.3 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 7.2 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 6.8 | Dysk danych (patrz Uwaga poniżej) |
+| RHEL | 6.7 | Dysk danych (patrz Uwaga poniżej) |
 | CentOS | 7,7 | System operacyjny i dysk z danymi |
 | CentOS | 7,6 | System operacyjny i dysk z danymi |
 | CentOS | 7,5 | System operacyjny i dysk z danymi |
 | CentOS | 7,4 | System operacyjny i dysk z danymi |
-| CentOS | 7,3 | System operacyjny i dysk z danymi |
+| CentOS | 7.3 | System operacyjny i dysk z danymi |
 | CentOS | 7.2 n | System operacyjny i dysk z danymi |
-| CentOS | 6,8 | Dysk danych |
-| openSUSE | 42,3 | Dysk danych |
-| SLES | 12 — SP4 | Dysk danych |
-| SLES | 12 — SP3 | Dysk danych |
+| CentOS | 6.8 | Dysk z danymi |
+| openSUSE | 42,3 | Dysk z danymi |
+| SLES | 12 — SP4 | Dysk z danymi |
+| SLES | 12 — SP3 | Dysk z danymi |
 
 > [!NOTE]
 > Nowa implementacja elementu ADE jest obsługiwana w przypadku systemu operacyjnego RHEL i dysku danych dla obrazów z opcją płatność zgodnie z rzeczywistym użyciem. ADE nie jest obecnie obsługiwane w przypadku obrazów RHEL z własnymi subskrypcjami (BYOS). 
@@ -96,7 +96,7 @@ Przykładem poleceń, których można użyć do zainstalowania dysków danych i 
 ## <a name="networking-requirements"></a>Wymagania dotyczące sieci
 
 Aby włączyć funkcję Azure Disk Encryption, maszyny wirtualne z systemem Linux muszą spełniać następujące wymagania dotyczące konfiguracji punktu końcowego sieci:
-  - Aby uzyskać token, aby połączyć się z magazynem kluczy, maszyna wirtualna z systemem Linux musi mieć możliwość nawiązania połączenia z punktem końcowym Azure Active Directory, @no__t -0login. microsoftonline. com @ no__t-1.
+  - Aby uzyskać token, aby połączyć się z magazynem kluczy, maszyna wirtualna z systemem Linux musi mieć możliwość nawiązania połączenia z punktem końcowym Azure Active Directory \[login.microsoftonline.com\].
   - Aby można było napisać klucze szyfrowania do magazynu kluczy, maszyna wirtualna z systemem Linux musi mieć możliwość nawiązania połączenia z punktem końcowym magazynu kluczy.
   - Maszyna wirtualna z systemem Linux musi mieć możliwość nawiązania połączenia z punktem końcowym usługi Azure Storage, który obsługuje repozytorium rozszerzeń platformy Azure i konto usługi Azure Storage, które obsługuje pliki VHD.
   -  Jeśli zasady zabezpieczeń ograniczają dostęp z maszyn wirtualnych platformy Azure do Internetu, można rozwiązać poprzedni identyfikator URI i skonfigurować określoną regułę, aby zezwolić na połączenia wychodzące z adresami IP. Aby uzyskać więcej informacji, zobacz [Azure Key Vault za zaporą](../../key-vault/key-vault-access-behind-firewall.md).  

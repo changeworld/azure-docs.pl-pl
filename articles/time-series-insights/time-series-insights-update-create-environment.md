@@ -1,21 +1,21 @@
 ---
 title: 'Samouczek: Konfigurowanie środowiska Azure Time Series Insights w wersji zapoznawczej | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować środowisko wersji zapoznawczej usługi Azure Time Series Insights.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
 ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: e42f6d7c5e3deff3eb5851f3ea192b4756d2fe04
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1af622f4b483abec757d1392bfa4fefe91c8bc49
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553480"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990008"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Samouczek: Konfigurowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 
@@ -45,7 +45,7 @@ W tej sekcji utworzysz trzy symulowane urządzenia, które wysyłają dane do wy
 
 1. Przejdź do [strony akceleratorów rozwiązań Azure IoT](https://www.azureiotsolutions.com/Accelerators). Na stronie będzie widocznych kilka gotowych przykładów. Zaloguj się przy użyciu konta platformy Azure. Następnie wybierz pozycję **Symulacja urządzenia**.
 
-   [![Azure strony akceleratorów rozwiązań IoT](media/v2-update-provision/device-one-accelerator.png)](media/v2-update-provision/device-one-accelerator.png#lightbox)
+   [Strona akceleratorów rozwiązań usługi Azure IoT![](media/v2-update-provision/device-one-accelerator.png)](media/v2-update-provision/device-one-accelerator.png#lightbox)
 
    Wybierz pozycję **Wypróbuj teraz**.
 
@@ -54,13 +54,13 @@ W tej sekcji utworzysz trzy symulowane urządzenia, które wysyłają dane do wy
     | Parametr | Działanie |
     | --- | --- |
     | **Nazwa wdrożenia** | Wprowadź unikatową wartość nowej grupy zasobów. Znajdujące się na liście zasoby platformy Azure są tworzone i przypisywane do grupy zasobów. |
-    | **Subskrypcja platformy Azure** | Wybierz subskrypcję, która została użyta do utworzenia środowiska Time Series Insightsowego. |
+    | **Subskrypcja platformy Azure** | Wybierz subskrypcję, w której zostanie utworzone środowisko Time Series Insights. |
     | **Lokalizacja platformy Azure** | Wybierz region, który został użyty do utworzenia środowiska Time Series Insightsowego. |
     | **Opcje wdrażania** | Wybierz pozycję **Udostępnij nowe IoT Hub**. |
  
     Wybierz pozycję **Utwórz rozwiązanie**. Ukończenie wdrażania rozwiązania może potrwać do 20 minut.
 
-    [Strona rozwiązania symulacji urządzenia ![Create](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
+    [Strona tworzenia rozwiązania symulacji urządzenia![](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
 ## <a name="create-a-preview-payg-environment"></a>Tworzenie środowiska w wersji zapoznawczej PAYG
 
@@ -70,7 +70,7 @@ W tej sekcji opisano sposób tworzenia środowiska Azure Time Series Insights w 
 
 1. Wybierz pozycję **Utwórz zasób**  > **Internet rzeczy**  > **Time Series Insights**.
 
-   [![Select Internet rzeczy, a następnie wybierz pozycję Time Series Insights](media/v2-update-provision/payg-one-azure.png)](media/v2-update-provision/payg-one-azure.png#lightbox)
+   [![wybierz pozycję Internet rzeczy, a następnie wybierz pozycję Time Series Insights](media/v2-update-provision/payg-one-azure.png)](media/v2-update-provision/payg-one-azure.png#lightbox)
 
 1. W okienku **Tworzenie środowiska Time Series Insights** na karcie **podstawowe** ustaw następujące parametry:
 
@@ -81,18 +81,21 @@ W tej sekcji opisano sposób tworzenia środowiska Azure Time Series Insights w 
     | **Grupa zasobów** | Wybierz istniejącą grupę zasobów lub Utwórz nową grupę zasobów dla zasobu środowiska Azure Time Series Insights wersji zapoznawczej. Grupa zasobów jest kontenerem zasobów platformy Azure. Najlepszym rozwiązaniem jest użycie tej samej grupy zasobów co inne zasoby IoT, które są tworzone przez symulatora urządzeń. |
     | **Lokalizacja** | Wybierz region centrum danych dla środowiska Azure Time Series Insights w wersji zapoznawczej. Aby uniknąć dodatkowego opóźnienia, najlepszym rozwiązaniem jest utworzenie środowiska Azure Time Series Insights w wersji zapoznawczej w tym samym regionie, w którym znajduje się inne zasoby IoT. |
     | **Warstwa** |  Wybierz pozycję **PAYG** (*płatność zgodnie z rzeczywistym*użyciem). Jest to jednostka SKU produktu Azure Time Series Insights w wersji zapoznawczej. |
-    | **Identyfikator właściwości** | Wprowadź wartość, która jednoznacznie identyfikuje wystąpienie szeregów czasowych. Wartość wprowadzona w polu **Identyfikator właściwości** jest niezmienna. Nie można go zmienić później. Na potrzeby tego samouczka wprowadź **iothub-Connection-Device-ID**. Aby dowiedzieć się więcej na temat identyfikatora szeregów czasowych, zobacz [najlepsze rozwiązania dotyczące wybierania identyfikatora szeregów czasowych](./time-series-insights-update-how-to-id.md). |
-    | **Nazwa konta magazynu** | Wprowadź globalnie unikatową nazwę nowego konta magazynu, które ma zostać utworzone. |
+    | **Identyfikator właściwości** | Wprowadź wartość, która jednoznacznie identyfikuje wystąpienie szeregów czasowych. Wartość wprowadzona w polu **ID właściwości** jest niezmienna i nie można jej później zmienić. Na potrzeby tego samouczka wprowadź **iothub-Connection-Device-ID**. Aby dowiedzieć się więcej na temat identyfikatora szeregów czasowych, zobacz [najlepsze rozwiązania dotyczące wybierania identyfikatora szeregów czasowych](./time-series-insights-update-how-to-id.md). |
+    | **Nazwa konta magazynu** | Wprowadź globalnie unikatową nazwę nowego konta magazynu dla magazynu chłodnego.|
+    |**Replikacja konta magazynu**|Wybierz strategię replikacji, która działa dla Twojej firmy. Aby dowiedzieć się więcej na temat różnych strategii replikacji, zobacz [nadmiarowość usługi Azure Storage](../storage/common/storage-redundancy.md). |
+    |**Włącz sklep ciepły**|Utwórz opcjonalny magazyn ciepły. Można je usunąć w dowolnym momencie. Sklep ciepły umożliwia szybsze i nieograniczone zapytania dotyczące najnowszych danych (do ostatnich 31 dni)  |
+    |**Przechowywanie danych (w dniach)**|Wybierz przechowywanie danych w sklepie ciepłym. Wartość domyślna to 7 dni i można ją przedłużyć do 31 dni |
    
    Wybierz pozycję **Dalej: Źródło zdarzenia**.
 
-   [![Pane tworzenia środowiska Time Series Insights](media/v2-update-provision/payg-two-create.png)](media/v2-update-provision/payg-two-create.png#lightbox)
+   [![okienko do tworzenia środowiska Time Series Insights](media/v2-update-provision/payg-two-create.png)](media/v2-update-provision/payg-two-create.png#lightbox)
 
 1. Na karcie **Źródło zdarzenia** ustaw następujące parametry:
 
    | Parametr | Działanie |
    | --- | --- |
-   | **Utworzyć źródło zdarzeń?** | Wybierz pozycję **tak**.|
+   | **Utworzyć źródło zdarzeń?** | Wybierz pozycję **Tak**.|
    | **Nazwa** | Wprowadź unikatową wartość dla nazwy źródła zdarzenia. |
    | **Typ źródła** | Wybierz **IoT Hub**. |
    | **Wybierz centrum** | Wybierz **pozycję Wybierz istniejące**. |
@@ -104,29 +107,29 @@ W tej sekcji opisano sposób tworzenia środowiska Azure Time Series Insights w 
 
    Wybierz pozycję **Przegląd + utwórz**.
 
-   [![Configure źródła zdarzeń](media/v2-update-provision/payg-five-event-source.png)](media/v2-update-provision/payg-five-event-source.png#lightbox)
+   [![skonfigurować źródło zdarzenia](media/v2-update-provision/payg-five-event-source.png)](media/v2-update-provision/payg-five-event-source.png#lightbox)
 
 1. Na karcie **Przegląd + tworzenie** Przejrzyj wybrane opcje, a następnie wybierz pozycję **Utwórz**.
 
-    [![Review + Utwórz stronę, przy użyciu przycisku Utwórz](media/v2-update-provision/payg-six-review.png)](media/v2-update-provision/payg-six-review.png#lightbox)
+    [![przegląd + Tworzenie strony z przyciskiem Utwórz](media/v2-update-provision/payg-six-review.png)](media/v2-update-provision/payg-six-review.png#lightbox)
 
     Możesz zobaczyć stan wdrożenia:
 
-    [![Notification wdrożenie zostało ukończone](media/v2-update-provision/payg-seven-deploy.png)](media/v2-update-provision/payg-seven-deploy.png#lightbox)
+    [![powiadomienia o ukończeniu wdrożenia](media/v2-update-provision/payg-seven-deploy.png)](media/v2-update-provision/payg-seven-deploy.png#lightbox)
 
 1. Jeśli jesteś posiadaczem dzierżawy, masz dostęp do środowiska Azure Time Series Insights w wersji zapoznawczej. Aby to sprawdzić:
 
    1. Wyszukaj grupę zasobów, a następnie wybierz środowisko Azure Time Series Insights w wersji zapoznawczej:
 
-      [środowisko ![Selected](media/v2-update-provision/payg-eight-environment.png)](media/v2-update-provision/payg-eight-environment.png#lightbox)
+      [![wybrane środowisko](media/v2-update-provision/payg-eight-environment.png)](media/v2-update-provision/payg-eight-environment.png#lightbox)
 
    1. Na stronie Podgląd Azure Time Series Insights wybierz pozycję **zasady dostępu do danych**:
 
-      [zasady dostępu ![Data](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox)
+      [zasady dostępu do danych![](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox)
 
    1. Sprawdź, czy na liście znajdują się Twoje poświadczenia:
 
-      [poświadczenia ![Listed](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
+      [![na liście poświadczeń](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
 
    Jeśli Twoje poświadczenia nie znajdują się na liście, musisz udzielić sobie uprawnień dostępu do środowiska. Aby dowiedzieć się więcej o ustawianiu uprawnień, zobacz [Grant data access (Przyznawanie dostępu do danych)](./time-series-insights-data-access.md).
 
@@ -136,11 +139,11 @@ Teraz, gdy wdrożono środowisko Time Series Insights, przesyłaj strumieniowo d
 
 1. Przejdź z powrotem do [strony akceleratorów rozwiązań usługi Azure IoT](https://www.azureiotsolutions.com/Accelerators). Znajdź swoje rozwiązanie na pulpicie nawigacyjnym akceleratora rozwiązania. Następnie wybierz pozycję **Uruchom**:
 
-    [![Launch rozwiązanie do symulacji urządzeń](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+    [![uruchomić rozwiązanie do symulacji urządzeń](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
 
 1. Nastąpi przekierowanie do strony **Symulacja urządzeń Microsoft Azure IoT**. W prawym górnym rogu strony wybierz pozycję **Nowa symulacja**.
 
-    [Strona symulacji ![Azure IoT](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
+    [Strona symulacji usługi Azure IoT![](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
 
 1. W okienku **Konfiguracja symulacji** ustaw następujące parametry:
 
@@ -152,13 +155,13 @@ Teraz, gdy wdrożono środowisko Time Series Insights, przesyłaj strumieniowo d
     | **Model urządzenia** | **Nazwa**: wprowadź **chłodzenie**. <br />**Kwota**: wprowadź wartość **3**. |
     | **Docelowa usługa IoT Hub** | Wybierz pozycję **Użyj dostarczonej wstępnie usługi IoT Hub**. |
 
-    [![Parameters ustawić](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
+    [![parametry do ustawienia](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
 
     Wybierz pozycję **Rozpocznij symulację**.
 
     Na pulpicie nawigacyjnym symulacji urządzenia Zwróć uwagę na informacje wyświetlane dla **aktywnych urządzeń** i **komunikatów na sekundę**.
 
-    [![Azure pulpitu nawigacyjnego symulacji IoT](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
+    [Pulpit nawigacyjny symulacji usługi Azure IoT![](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
 ## <a name="analyze-data"></a>Analizuj dane
 
@@ -166,27 +169,27 @@ W tej sekcji przeprowadzimy podstawową analizę danych szeregów czasowych przy
 
 1. Przejdź do eksploratora wersji zapoznawczej usługi Azure Time Series Insights, wybierając adres URL na stronie zasobu w witrynie [Azure Portal](https://portal.azure.com/).
 
-    [adres URL Eksploratora Time Series Insights ![The w wersji zapoznawczej](media/v2-update-provision/analyze-one-portal.png)](media/v2-update-provision/analyze-one-portal.png#lightbox)
+    [![adres URL Eksploratora Time Series Insights Preview](media/v2-update-provision/analyze-one-portal.png)](media/v2-update-provision/analyze-one-portal.png#lightbox)
 
 1. W Eksploratorze wybierz węzeł **wystąpienia szeregów czasowych** , aby zobaczyć wszystkie Azure Time Series Insights wystąpienia w wersji zapoznawczej w środowisku.
 
-    [![List nienadrzędnych wystąpień](media/v2-update-provision/analyze-two-unparented.png)](media/v2-update-provision/analyze-two-unparented.png#lightbox)
+    [![lista niewidocznych wystąpień](media/v2-update-provision/analyze-two-unparented.png)](media/v2-update-provision/analyze-two-unparented.png#lightbox)
 
 1. Wybierz pierwsze wystąpienie szeregów czasowych. Następnie wybierz pozycję **Pokaż ciśnienie**.
 
-    [![Selected wystąpienie szeregów czasowych z poleceniem menu w celu wyświetlenia średniego ciśnienia](media/v2-update-provision/analyze-three-show-pressure.png)](media/v2-update-provision/analyze-three-show-pressure.png#lightbox)
+    [![wybrane wystąpienie szeregów czasowych z poleceniem menu w celu wyświetlenia średniego ciśnienia](media/v2-update-provision/analyze-three-show-pressure.png)](media/v2-update-provision/analyze-three-show-pressure.png#lightbox)
 
     Zostanie wyświetlony wykres szeregów czasowych. Zmień **Interwał** na **15s**.
 
-    [wykres serii ![Time](media/v2-update-provision/analyze-four-chart.png)](media/v2-update-provision/analyze-four-chart.png#lightbox)
+    [![wykres szeregów czasowych](media/v2-update-provision/analyze-four-chart.png)](media/v2-update-provision/analyze-four-chart.png#lightbox)
 
 1. Powtórz krok 3 z innymi dwoma wystąpieniami szeregów czasowych. Można wyświetlić wszystkie wystąpienia szeregów czasowych, jak pokazano na tym wykresie:
 
-    [![Chart dla wszystkich szeregów czasowych](media/v2-update-provision/analyze-five-chart.png)](media/v2-update-provision/analyze-five-chart.png#lightbox)
+    [![wykres dla wszystkich szeregów czasowych](media/v2-update-provision/analyze-five-chart.png)](media/v2-update-provision/analyze-five-chart.png#lightbox)
 
 1. W polu opcja **przedziału** czasu zmodyfikuj zakres godzin, aby zobaczyć trendy szeregów czasowych w ciągu ostatniej godziny:
 
-    [![Set przedział czasu na godzinę](media/v2-update-provision/analyze-six-time.png)](media/v2-update-provision/analyze-six-time.png#lightbox)
+    [![Ustaw zakres czasu na godzinę](media/v2-update-provision/analyze-six-time.png)](media/v2-update-provision/analyze-six-time.png#lightbox)
 
 ## <a name="define-and-apply-a-model"></a>Definiowanie i stosowanie modelu
 
@@ -194,11 +197,11 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
 1. W eksploratorze wybierz kartę **Model**:
 
-   [Karta ![Model w Eksploratorze](media/v2-update-provision/define-one-model.png)](media/v2-update-provision/define-one-model.png#lightbox)
+   [Karta![model w Eksploratorze](media/v2-update-provision/define-one-model.png)](media/v2-update-provision/define-one-model.png#lightbox)
 
 1. Wybierz pozycję **Dodaj** , aby dodać typ:
 
-   [![The Dodaj przycisk dla typów](media/v2-update-provision/define-two-add.png)](media/v2-update-provision/define-two-add.png#lightbox)
+   [![przycisku Dodaj dla typów](media/v2-update-provision/define-two-add.png)](media/v2-update-provision/define-two-add.png#lightbox)
 
 1. Następnie należy zdefiniować trzy zmienne dla typu: *ciśnienie*, *temperatura*i *wilgotność*. W okienku **Dodawanie typu** ustaw następujące parametry:
 
@@ -215,7 +218,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
      | **Wartość** | Wybierz opcję **pressure (Double)** . Automatyczne wypełnianie **wartości** może potrwać kilka minut po rozpoczęciu otrzymywania zdarzeń przez Azure Time Series Insights Preview. |
      | **Operacja agregacji** | Wybierz opcję **AVG** (średnia). |
 
-      [![Selections definiowania nacisku](media/v2-update-provision/define-three-variable.png)](media/v2-update-provision/define-three-variable.png#lightbox)
+      [![wybór dla definiowania nacisku](media/v2-update-provision/define-three-variable.png)](media/v2-update-provision/define-three-variable.png#lightbox)
 
       Aby dodać następną zmienną, wybierz pozycję **Dodaj zmienną**.
 
@@ -227,7 +230,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
      | **Wartość** | Wybierz opcję **temperature (Double)** . Automatyczne wypełnianie **wartości** może potrwać kilka minut po rozpoczęciu otrzymywania zdarzeń przez Azure Time Series Insights Preview. |
      | **Operacja agregacji** | Wybierz opcję **AVG** (średnia).|
 
-      [![Selections definiowania temperatury](media/v2-update-provision/define-four-avg.png)](media/v2-update-provision/define-four-avg.png#lightbox)
+      [![wybór dla definiowania temperatury](media/v2-update-provision/define-four-avg.png)](media/v2-update-provision/define-four-avg.png#lightbox)
 
       Aby dodać następną zmienną, wybierz pozycję **Dodaj zmienną**.
 
@@ -239,17 +242,17 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
       | **Wartość** | Wybierz opcję **humidity (Double)** . Automatyczne wypełnianie **wartości** może potrwać kilka minut po rozpoczęciu otrzymywania zdarzeń przez Azure Time Series Insights Preview. |
       | **Operacja agregacji** | Wybierz **MAX**.|
 
-      [![Selections definiowania temperatury](media/v2-update-provision/define-five-humidity.png)](media/v2-update-provision/define-five-humidity.png#lightbox)
+      [![wybór dla definiowania temperatury](media/v2-update-provision/define-five-humidity.png)](media/v2-update-provision/define-five-humidity.png#lightbox)
 
     Wybierz pozycję **Utwórz**.
 
     Możesz zobaczyć dodany typ:
 
-    [![Information o dodanym typie](media/v2-update-provision/define-six-type.png)](media/v2-update-provision/define-six-type.png#lightbox)
+    [![informacje o dodanym typie](media/v2-update-provision/define-six-type.png)](media/v2-update-provision/define-six-type.png#lightbox)
 
 1. Następnym krokiem jest dodanie hierarchii. W obszarze **hierarchie**wybierz pozycję **Dodaj**:
 
-    [Karta ![Hierarchies z przyciskiem Dodaj](media/v2-update-provision/define-seven-hierarchy.png)](media/v2-update-provision/define-seven-hierarchy.png#lightbox)
+    [Karta hierarchie![z przyciskiem Dodaj](media/v2-update-provision/define-seven-hierarchy.png)](media/v2-update-provision/define-seven-hierarchy.png#lightbox)
 
 1. W okienku **Edytuj hierarchię** ustaw następujące parametry:
 
@@ -262,15 +265,15 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
    Wybierz pozycję **Zapisz**.
 
-    [pola ![Hierarchy za pomocą przycisku Utwórz](media/v2-update-provision/define-eight-add-hierarchy.png)](media/v2-update-provision/define-eight-add-hierarchy.png#lightbox)
+    [![pól hierarchii za pomocą przycisku tworzenia](media/v2-update-provision/define-eight-add-hierarchy.png)](media/v2-update-provision/define-eight-add-hierarchy.png#lightbox)
 
    Zobaczysz utworzoną hierarchię:
 
-    [![Information o hierarchii](media/v2-update-provision/define-nine-created.png)](media/v2-update-provision/define-nine-created.png#lightbox)
+    [![informacje o hierarchii](media/v2-update-provision/define-nine-created.png)](media/v2-update-provision/define-nine-created.png#lightbox)
 
 1. Wybierz **wystąpienia**. Wybierz pierwsze wystąpienie, a następnie wybierz pozycję **Edytuj**:
 
-    [![Selecting przycisku edycji dla wystąpienia](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
+    [![wybranie przycisku edycji dla wystąpienia](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
 
 1. W okienku **Edytuj wystąpienia** ustaw następujące parametry:
 
@@ -283,7 +286,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
     | **City** | Wpisz **Seattle**. |
     | **Building** | Wpisz **Space Needle**. |
 
-    [pola ![Instance za pomocą przycisku Zapisz](media/v2-update-provision/define-eleven-chiller.png)](media/v2-update-provision/define-eleven-chiller.png#lightbox)
+    [![pól wystąpienia za pomocą przycisku Zapisz](media/v2-update-provision/define-eleven-chiller.png)](media/v2-update-provision/define-eleven-chiller.png#lightbox)
 
    Wybierz pozycję **Zapisz**.
 
@@ -313,23 +316,23 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
 1. Wybierz kartę **Analiza** , a następnie Odśwież stronę. W obszarze **Hierarchia lokalizacji**rozwiń węzeł wszystkie poziomy hierarchii, aby wyświetlić wystąpienia szeregów czasowych:
 
-   [Karta ![The Analizuj](media/v2-update-provision/define-twelve.png)](media/v2-update-provision/define-twelve.png#lightbox)
+   [![karcie analiza](media/v2-update-provision/define-twelve.png)](media/v2-update-provision/define-twelve.png#lightbox)
 
 1. Aby poznać wystąpienia szeregów czasowych w ciągu ostatniej godziny, Zmień **szybkie czasy** na **ostatnią godzinę**:
 
-    [pole ![The szybkie godziny z wybraną ostatnią godziną](media/v2-update-provision/define-thirteen-explore.png)](media/v2-update-provision/define-thirteen-explore.png#lightbox)
+    [![pole szybkie godziny z wybraną ostatnią godziną](media/v2-update-provision/define-thirteen-explore.png)](media/v2-update-provision/define-thirteen-explore.png#lightbox)
 
 1. W obszarze **centrum nauki pacyficznego**wybierz wystąpienie szeregów czasowych, a następnie wybierz pozycję **Pokaż maksymalną wilgotność**.
 
-    [![Selected wystąpienie szeregów czasowych i wybór menu Pokaż maksymalną wilgotność](media/v2-update-provision/define-fourteen-show-max.png)](media/v2-update-provision/define-fourteen-show-max.png#lightbox)
+    [![wybrane wystąpienie szeregów czasowych i wybór menu Pokaż maksymalną wilgotność](media/v2-update-provision/define-fourteen-show-max.png)](media/v2-update-provision/define-fourteen-show-max.png#lightbox)
 
 1. Zostanie otwarta seria czasu dla **maksymalnej wilgotności** z rozmiarem interwału wynoszącym **1 minutę** . Aby odfiltrować zakres, wybierz region. Aby analizować zdarzenia w przedziale czasowym, kliknij wykres prawym przyciskiem myszy, a następnie wybierz polecenie **powiększenie**:
 
-   [![Selected zakres przy użyciu polecenia Zoom w menu skrótów](media/v2-update-provision/define-fifteen-filter.png)](media/v2-update-provision/define-fifteen-filter.png#lightbox)
+   [![zaznaczonego zakresu z poleceniem zoom w menu skrótów](media/v2-update-provision/define-fifteen-filter.png)](media/v2-update-provision/define-fifteen-filter.png#lightbox)
 
 1. Aby wyświetlić szczegóły zdarzenia, wybierz region, a następnie kliknij prawym przyciskiem myszy wykres:
 
-   [![Detailed listę zdarzeń](media/v2-update-provision/define-eighteen.png)](media/v2-update-provision/define-eighteen.png#lightbox)
+   [![Szczegółowa lista zdarzeń](media/v2-update-provision/define-eighteen.png)](media/v2-update-provision/define-eighteen.png#lightbox)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -346,7 +349,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Tworzenie i używanie akceleratora symulacji urządzenia.
 > * Tworzenie środowiska wersji zapoznawczej usługi Azure Time Series Insights dostępnej w modelu PAYG.
-> * Łączenie środowiska wersji zapoznawczej usługi Azure Time Series Insights z centrum zdarzeń.
+> * Podłącz środowisko Azure Time Series Insights w wersji zapoznawczej do centrum IoT Hub.
 > * Uruchamianie przykładowego akceleratora rozwiązań umożliwiającego strumieniowe przesyłanie danych do środowiska wersji zapoznawczej usługi Azure Time Series Insights.
 > * Wykonywanie podstawowej analizy danych.
 > * Definiowanie hierarchii oraz typu modelu szeregów czasowych i kojarzenie ich z wystąpieniami.

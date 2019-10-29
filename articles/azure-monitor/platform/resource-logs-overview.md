@@ -7,12 +7,12 @@ ms.topic: reference
 author: rboucher
 ms.author: robb
 ms.date: 10/22/2019
-ms.openlocfilehash: e1bf6a55568671ddb8f6999356cc9be43ce6a728
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b953f9b5e5fd8c853746caad3047986786bd1317
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804029"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989621"
 ---
 # <a name="azure-resource-logs-overview"></a>Omówienie dzienników zasobów platformy Azure
 Dzienniki zasobów platformy Azure [są](platform-logs-overview.md) wyemitowane przez zasoby platformy Azure, które opisują ich operacje wewnętrzne. Wszystkie dzienniki zasobów udostępniają wspólny schemat najwyższego poziomu z elastycznością dla każdej usługi do emisji unikatowych właściwości dla własnych zdarzeń.
@@ -25,8 +25,8 @@ Dzienniki zasobów są generowane automatycznie przez obsługiwane zasoby platfo
 
 | Cel | Scenariusz |
 |:---|:---|:---|
-| [Obszar roboczy usługi Log Analytics](resource-logs-collect-storage.md) | Analizuj dzienniki z innymi danymi monitorowania i korzystaj z funkcji Azure Monitor, takich jak zapytania dzienników i alerty dzienników. |
-| [Magazyn platformy Azure](archive-diagnostic-logs.md) | Archiwizuj dzienniki na potrzeby inspekcji lub tworzenia kopii zapasowych. |
+| [Obszar roboczy usługi Log Analytics](resource-logs-collect-workspace.md) | Analizuj dzienniki z innymi danymi monitorowania i korzystaj z funkcji Azure Monitor, takich jak zapytania dzienników i alerty dzienników. |
+| [Magazyn platformy Azure](resource-logs-collect-storage.md) | Archiwizuj dzienniki na potrzeby inspekcji lub tworzenia kopii zapasowych. |
 | [Centrum zdarzeń](resource-logs-stream-event-hubs.md) | Przesyłanie strumieniowe dzienników do systemów rejestrowania i telemetrii innych firm.  |
 
 ## <a name="compute-resources"></a>Zasoby obliczeniowe
