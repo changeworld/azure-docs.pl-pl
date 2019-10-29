@@ -27,8 +27,10 @@
       href: stream-analytics-javascript-user-defined-functions.md
     - name: 4 — Wdrażanie za pomocą ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '5 — Uruchamianie funkcji zdefiniowanej przez użytkownika w języku C# za pomocą funkcji IoT Edge'
+    - name: '5 — Uruchamianie funkcji zdefiniowanej przez użytkownika w języku C#'
       href: stream-analytics-edge-csharp-udf.md
+    - name: 6 — Tworzenie niestandardowego deserializatora platformy .NET
+      href: custom-deserializer.md
 - name: Przykłady
   items:
     - name: Przykłady kodu
@@ -47,6 +49,8 @@
           href: stream-analytics-define-inputs.md
         - name: Wejścia danych referencyjnych
           href: stream-analytics-use-reference-data.md
+        - name: Pisanie niestandardowych deserializatorów platformy .NET
+          href: custom-deserializer-examples.md
     - name: Typy wyjść zadania
       items:
         - name: Przegląd danych wyjściowych
@@ -173,7 +177,7 @@
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Konfigurowanie potoku ciągłej integracji/ciągłego dostarczania
           href: stream-analytics-tools-for-visual-studio-cicd.md
-        - name: Pisanie funkcji zdefiniowanej przez użytkownika na platformie .NET dla usługi Edge
+        - name: Pisanie funkcji zdefiniowanej przez użytkownika dla platformy .NET
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:

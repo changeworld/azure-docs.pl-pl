@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 5de0fe47d8ca6372c35cc4f148f97b366a1a742c
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
-ms.translationtype: HT
+ms.openlocfilehash: a273b89d864d97d9bc71acff476371f77cfff066
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971394"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754834"
 ---
-# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Samouczek: Tworzenie aplikacji konsolowej Node.js przy użyciu zestawu SDK dla języka JavaScript na potrzeby zarządzania danymi interfejsu API SQL usługi Azure Cosmos DB
+# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Samouczek: Tworzenie aplikacji konsolowej środowiska Node. js za pomocą zestawu JavaScript SDK do zarządzania Azure Cosmos DB danych interfejsu API SQL
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -27,7 +27,7 @@ ms.locfileid: "69971394"
 
 Jako deweloper być może masz aplikacje, które używają danych dokumentów NoSQL. Konto interfejsu API SQL w usłudze Azure Cosmos DB umożliwia przechowywanie tych danych dokumentów i uzyskiwanie do nich dostępu. W tym samouczku pokazano, jak utworzyć aplikację konsolową Node.js na potrzeby tworzenia zasobów usługi Azure Cosmos DB i wykonywania zapytań względem nich.
 
-W tym samouczku wykonasz następujące czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie konta usługi Azure Cosmos DB i łączenie się z nim
@@ -99,7 +99,7 @@ Gdy aplikacja już istnieje, musisz się upewnić, że może ona komunikować si
 
    Zestaw SDK dla języka JavaScript używa terminów *kontener* i *element* w znaczeniu ogólnym. Kontener może być kolekcją, wykresem lub tabelą. Element może być dokumentem, krawędzią/wierzchołkiem lub wierszem i stanowi zawartość znajdująca się w kontenerze. 
    
-   `module.exports = config;`kod służy do eksportowania ```config``` obiektu, dzięki czemu można odwoływać się do niego ```app.js``` w pliku.
+   kod `module.exports = config;` służy do eksportowania obiektu ```config```, dzięki czemu można odwoływać się do niego w pliku ```app.js```.
 
 ## <a id="Connect"></a>Łączenie się z kontem usługi Azure Cosmos DB
 
@@ -150,7 +150,7 @@ Teraz, gdy masz kod służący do zainicjowania klienta usługi Azure Cosmos DB,
 
    Bazę danych można utworzyć przy użyciu funkcji `createIfNotExists` lub funkcji create klasy **Databases**. Baza danych jest logicznym kontenerem elementów podzielonym na partycje w kontenerach. 
 
-2. Skopiuj i wklej metody **createDatabase** i **readDatabase** do pliku app.js pod definicją ```databaseId``` i ```containerId```. Funkcja **dbdatabase** utworzy nową bazę danych o identyfikatorze ```FamilyDatabase``` ```config``` , określoną na podstawie obiektu, jeśli jeszcze nie istnieje. Funkcja **readDatabase** odczyta definicję bazy danych w celu sprawdzenia, czy baza danych istnieje.
+2. Skopiuj i wklej metody **createDatabase** i **readDatabase** do pliku app.js pod definicją ```databaseId``` i ```containerId```. Funkcja **Dbdatabase** utworzy nową bazę danych o identyfikatorze ```FamilyDatabase```, określoną na podstawie obiektu ```config```, jeśli jeszcze nie istnieje. Funkcja **readDatabase** odczyta definicję bazy danych w celu sprawdzenia, czy baza danych istnieje.
 
    ```javascript
    /**
@@ -414,7 +414,7 @@ Element można utworzyć za pomocą funkcji create klasy **Items**. Gdy korzysta
    ```
 
 
-## <a id="Query"></a>Wykonywanie zapytania względem zasobów usługi Azure Cosmos DB
+## <a id="Query"></a>Wykonanie zapytania względem zasobów usługi Azure Cosmos DB
 
 Usługa Azure Cosmos DB obsługuje zaawansowane zapytania względem dokumentów JSON przechowywanych w poszczególnych kontenerach. Następujący przykładowy kod przedstawia zapytanie, które można uruchomić względem dokumentów w kontenerze.
 
@@ -662,7 +662,7 @@ Zainstaluj zależności projektu za pomocą menedżera npm. Użyj następująceg
 
 * ```npm install``` 
 
-Następnie w pliku ```config.js``` zaktualizuj wartości config.endpoint i config.primaryKey, zgodnie z opisem w sekcji [Krok 3. Ustawianie konfiguracji aplikacji](#Config).  
+Następnie w pliku ```config.js``` zaktualizuj wartości config. Endpoint i config. Key zgodnie z opisem w [sekcji Krok 3. Ustawianie konfiguracji aplikacji](#Config).  
 
 W terminalu znajdź swój plik ```app.js```, a następnie uruchom następujące polecenie:  
 

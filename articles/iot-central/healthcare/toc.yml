@@ -13,7 +13,9 @@
     - name: Architektura ciągłego monitorowania pacjenta
       href: concept-continuous-patient-monitoring-architecture.md
     - name: Łączność
-      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+      href: ../core/overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+    - name: Co to są szablony aplikacji?
+      href: ../core/concepts-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie pulpitu nawigacyjnego klasyfikacji danych medycznych
@@ -48,8 +50,6 @@
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: Tworzenie reguł niestandardowych
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Tworzenie niestandardowych analiz przy użyciu usługi Databricks
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: Tworzenie niestandardowych analiz przy użyciu usługi Databricks
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: Administracja

@@ -1,0 +1,62 @@
+- name: Dokumentacja usługi Event Grid w usłudze IoT Edge
+  href: index.yml
+- name: Przejdź do dokumentacji usługi Azure Event Grid
+  href: ../overview.md
+- name: Omówienie
+  items:
+    - name: Co to jest usługa Event Grid w usłudze IoT Edge?
+      href: overview.md
+- name: Samouczki
+  items:
+    - name: Publikowanie i subskrybowanie zdarzeń lokalnie
+      href: pub-sub-events-webhook-local.md
+    - name: Publikowanie i subskrybowanie zdarzeń w chmurze
+      href: pub-sub-events-webhook-cloud.md
+    - name: Przesyłanie dalej zdarzeń do usługi Azure Event Grid
+      href: forward-events-event-grid-cloud.md
+    - name: Przesyłanie dalej zdarzeń do usługi Azure IoT Hub
+      href: forward-events-iothub.md
+    - name: Reagowanie na zdarzenia usługi Blob Storage lokalnie
+      href: react-blob-storage-events-locally.md
+- name: Przykłady
+  href: 'https://github.com/Azure/event-grid-iot-edge'
+- name: Pojęcia
+  items:
+    - name: Event Grid — pojęcia
+      href: concepts.md
+    - name: Zabezpieczenia i uwierzytelnianie
+      href: security-authentication.md
+    - name: Schematy zdarzeń
+      href: event-schemas.md
+    - name: Dostarczanie i ponawianie prób
+      href: delivery-retry.md
+    - name: Dzielenie na partie danych wyjściowych
+      href: delivery-output-batching.md
+    - name: Filtrowanie zaawansowane
+      href: advanced-filtering.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Utrwalanie stanu
+      items:
+        - name: Linux
+          href: persist-state-linux.md
+        - name: Windows
+          href: persist-state-windows.md
+    - name: Konfigurowanie protokołów interfejsu API
+      href: configure-api-protocol.md
+    - name: Konfigurowanie uwierzytelniania klienta
+      href: configure-client-auth.md
+    - name: Konfigurowanie uwierzytelniania subskrybenta elementu webhook
+      href: configure-webhook-subscriber-auth.md
+    - name: Konfigurowanie uwierzytelniania tożsamości
+      href: configure-identity-auth.md
+    - name: Rozwiązywanie problemów
+      href: troubleshoot.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs API REST
+      href: api.md
+    - name: Konfigurowanie usługi Event Grid
+      href: configure-event-grid.md
+    - name: Schemat konfiguracji bliźniaczej reprezentacji modułu
+      href: twin-json.md

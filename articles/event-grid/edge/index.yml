@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: Dokumentacja usługi Event Grid w usłudze IoT Edge
+summary: Dowiedz się, jak używać usługi Event Grid w usłudze IoT Edge, aby reagować na istotne zdarzenia wygenerowane na urządzeniach brzegowych w czasie zbliżonym do rzeczywistego.
+metadata:
+  title: Dokumentacja usługi Event Grid w usłudze IoT Edge
+  description: Dowiedz się, jak używać usługi Event Grid w usłudze IoT Edge, aby reagować na istotne zdarzenia wygenerowane na urządzeniach brzegowych w czasie zbliżonym do rzeczywistego.
+  services: event-grid
+  ms.service: event-grid
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 10/12/2019
+  ms.openlocfilehash: 4b79d64240b96ed41b535f8dbcd1155d67e76282
+  ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 10/28/2019
+  ms.locfileid: "72991617"
+landingContent:
+- title: Informacje o usłudze Event Grid w usłudze IoT Edge
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Event Grid w usłudze IoT Edge?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Event Grid — pojęcia
+      url: concepts.md
+    - text: Schematy zdarzeń
+      url: event-schemas.md
+    - text: Dzielenie na partie danych wyjściowych
+      url: delivery-output-batching.md
+    - text: Filtrowanie zaawansowane
+      url: advanced-filtering.md
+    - text: Dostarczanie i ponawianie prób
+      url: delivery-retry.md
+- title: Scenariusze
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Publikowanie i subskrybowanie zdarzeń lokalnie
+      url: pub-sub-events-webhook-local.md
+    - text: Publikowanie i subskrybowanie zdarzeń w chmurze
+      url: pub-sub-events-webhook-cloud.md
+    - text: Przesyłanie dalej zdarzeń do usługi Azure Event Grid
+      url: forward-events-event-grid-cloud.md
+    - text: Przesyłanie dalej zdarzeń do usługi Azure IoT Hub
+      url: forward-events-event-grid-cloud.md
+    - text: Reagowanie na zdarzenia usługi Azure Blob Storage lokalnie
+      url: react-blob-storage-events-locally.md
+- title: Bezpieczeństwo
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zabezpieczenia i uwierzytelnianie
+      url: security-authentication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie uwierzytelniania klienta
+      url: configure-client-auth.md
+    - text: Konfigurowanie uwierzytelniania subskrybenta elementu webhook
+      url: configure-webhook-subscriber-auth.md
+    - text: Konfigurowanie uwierzytelniania tożsamości
+      url: configure-identity-auth.md
