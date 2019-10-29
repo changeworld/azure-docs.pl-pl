@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: f8493794df2ec0c6123a85cc5405b18fbe1f6786
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: dfb550fd0bc93a6b865495bf2c19f394fb0737ed
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957811"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987877"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Co to jest usługa Azure IoT Central (funkcje w wersji zapoznawczej)?
 
@@ -26,10 +26,6 @@ ms.locfileid: "72957811"
 Azure IoT Central to platforma aplikacji IoT, która zmniejsza obciążenie i koszty tworzenia i obsługi rozwiązań IoT klasy korporacyjnej oraz zarządzania nimi. Wybranie opcji kompilowania za pomocą usługi Azure IoT Central umożliwia skoncentrowanie się na czasie, pieniędzy i energii na transformacje swojej firmy za pomocą danych IoT, a nie jedynie utrzymywanie i aktualizowanie złożonej i ciągle rosnącej infrastruktury IoT.
 
 Interfejs użytkownika sieci Web umożliwia monitorowanie warunków urządzenia, tworzenie reguł oraz zarządzanie milionami urządzeń i ich danych w całym cyklu życia. Ponadto umożliwia ona działanie w usłudze Device Insights poprzez rozszerzenie usługi IoT Intelligence na aplikacje biznesowe.
-
-Poniższy klip wideo zawiera omówienie usługi Azure IoT Central:
-
->[!VIDEO https://azure.microsoft.com/resources/videos/iot-central-updates/]
 
 Ten artykuł zawiera opis dla IoT Central platformy Azure:
 

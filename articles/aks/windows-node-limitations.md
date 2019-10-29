@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: a0fe65428a3329d4843ec913e934fb7a91b13759
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2cec24e5ea50360531e247b37369802f3ef4e336
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000214"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990293"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Bieżące ograniczenia dotyczące pul węzłów systemu Windows Server i obciążeń aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -89,6 +89,10 @@ Azure Dev Spaces jest obecnie dostępna tylko dla pul węzłów opartych na syst
 ## <a name="can-my-windows-server-containers-use-gmsa"></a>Czy moje kontenery systemu Windows Server używają gMSA?
 
 Obsługa kont usług zarządzanych przez grupę (gMSA) nie jest obecnie dostępna w AKS.
+
+## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Czy mogę używać Azure Monitor do kontenerów z węzłami i kontenerami systemu Windows?
+
+Tak, jednak Azure Monitor nie zbiera dzienników (stdout) z kontenerów systemu Windows. Nadal możesz dołączyć strumień strumieni strumienia stdout z kontenera systemu Windows.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Co zrobić, jeśli potrzebuję funkcji, która nie jest obsługiwana?
 

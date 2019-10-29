@@ -1,6 +1,6 @@
 ---
-title: Pokrycie mobilności w usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o mobilności pokrycia w usługi Azure Maps
+title: Zasięg mobilności w Azure Maps | Microsoft Docs
+description: Informacje na temat zakresu mobilności w Azure Maps
 author: walsehgal
 ms.author: v-musehg
 ms.date: 06/05/2019
@@ -8,129 +8,129 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 11ebaec75b1220f39fe059ea7825cdccafda2f5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5d214d58c1d2123acabda797b576e8ad961d3f2
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735619"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990799"
 ---
-# <a name="azure-maps-mobility-coverage"></a>Usługi Azure Maps mobilności pokrycia
+# <a name="azure-maps-mobility-coverage"></a>Azure Maps zasięg mobilności
 
-Usługi Azure Maps [usługi mobilności](https://aka.ms/AzureMapsMobilityService) umożliwia funkcji publicznych przesyłania, udostępnianie roweru i udziału scooter routing za pomocą wielomodalnymi przełączył opcje planowania. Publiczne działało, ta usługa zapewnia wyszukiwanie pobliskiej stacji zostanie zatrzymana, linie i zawiera informacje, takie jak publiczny zaplanowanych, jak i w czasie rzeczywistym przesyłania odbiorów listę zatrzymuje i przewodniki dotyczące tras, a także szczegółowe i multimodalnego trasy krok po kroku i alerty usług. Usługa mobilności zwraca również wartość w czasie rzeczywistym informacje o dostępności statyczne car i oraz udostępniać pojazdów i udostępnionego rowery skutery.
+[Usługa mobilności](https://aka.ms/AzureMapsMobilityService) Azure Maps umożliwia korzystanie z funkcji tranzytu publicznego, udziału rowerowego i routingu Scooter z opcjami planowania podróży Multimodal. W przypadku tranzytu publicznego usługa oferuje wyszukiwanie w pobliżu stacji, zatrzymań i linii oraz zawiera informacje, takie jak zaplanowana i w czasie rzeczywistym Procedura wejścia, lista zatrzymań i trasy tras, a także szczegółowe i Multimodal trasy krok po kroku i alerty usługi. Usługa mobilności zwraca również informacje o dostępności w czasie rzeczywistym i statycznej w celu samodzielnego udostępniania samochodów i udostępnionych rowerów i Scooters.
 
-Usługi Azure Maps nie ma takiego samego poziomu informacji i dokładność dla wszystkich miast i krajów/regionów. Możliwość wywołania przesyłania danych zależy od miasta i danych nie może zawierać wszystkie opcje przesyłania publicznych i agencje, które pełnią miasta.
+Azure Maps nie ma tego samego poziomu informacji i dokładności dla wszystkich miast i krajów/regionów. Możliwość wywołania danych tranzytowych zależy od miasta, a dane mogą nie zawierać wszystkich opcji tranzytu publicznego i agencji, które obsługują miasto.
 
-Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps mobilności.
+Poniższa tabela zawiera informacje o zapotrzebowaniu dotyczące usługi mobilności Azure Maps.
 
 
-| Symbol | Znaczenie |
+| Symboliczn | Znaczenie |
 |--------|---------|
-| *      |Prawie zapełnione pokrycia dla kraju/regionu.|
+| *      |Prawie pełne pokrycie kraju/regionu.|
 
 ## <a name="americas"></a>Ameryki
 
-| Country/region |  City (Miasto) |
+| Kraj/region |  Miasto (obszar Metro) |
 |----------------|---------|
-| Argentyna       | <p>Bahía Blanca, Buenos Aires, Caleta Olivia, Chivilcoy, Comodoro Rivadavia, nikaraguańska, Corrientes, Pico ogólne, La Rioja, Plata del marca, Mendoza, Miramar, Neuquén, Oberá, Olavarría, Paraná, Posadas, Rio Tercero, Rosario, Salta, Bariloche de Carlos sieci San, Luis sieci San Pedro sieci SAN, Santa Fe, Tandil Ushuaia, Victoria, Villa María</p>|
-| Barbados       |  Barbados* |
-| Brazylia         | <p>Angra dos ponownie Anápolis, Apucarana, Aracaju, Araraquara, Araxa, Araçatuba, Bage, Barretos, Bauru, Belem, Horizonte mieść, Blumenau, Boa Vista, Brazylia, Caldas Novas, Campina Grande, Campinas, mieść Campo, Campo Grande, Caraguatatuba, Cascavel, Cataguases, E Leopoldina Região, Catalão, czy Caxias Sul Chapecó, Cianorte, Conselheiro Lafaiete, Corumbá, Criciúma, Cruzeiro wykonaj Sul Cuiabá, Curitiba, Curitibanos, Curvelo, Diamantina, Divinópolis, Dourados, Estrela, Fernando de Noronha, Florianópolis, Fortaleza, Foz czy Iguaçu Franca, Garanhuns, Goiania, Governador Valadares, Guarapuava, Imperatriz, Ipatinga, Irati, Itabira, Itabuna, Itajaí, Ituiutaba, Jaraguá wykonaj Sul Joao Pessoa, Joinville, Juazeiro czy Norte, Juiz de Fora, Jundiaí, Lages, Londrina, Macapa, Macaé, Maceió, e Mafra Rio Negro Manaus, Manhuacu, Maringá, Marília, Monte Carmelo, Montes Claros, Mossoró, Natal, Osorio, Ourinhos, Ouro Preto, Palmas, Paracatu, Parnaíba, Fundo Passo, Passos, Mias de Patos Patrocínio, Pelotas, Piracicaba, Pocos de Caldas, Ponta Grossa Porto Alegre, Porto Ferreira, Porto Seguro, Porto Velho, Praia Grande, Arrecife, Ribeirão Preto, Rio, Rio Branco, Rondonópolis, Salinas, Salwador, Santa Cruz do Sul, Santa Maria, Ricie Santa czy Sapucaí, Santarem, Santos, Sao Gabriel czy Oeste, Sao Joao del Rei , Tiradentes e Regiao, Sao Jose czy Rio Preto, Sao Mateus, Sao Paulo, Sorocaba, Carlos So, Wyspy Francisco wykonaj Sul, dos José SO Campos Lourenço So, Luís So, Taubaté, Telemaco Borba, Teofilo Otoni, Teresina, Toledo, Lagoas TRS, Tucurui, Ubatuba, Uberaba, Uberlândia Ubá, Uruguaiana, Varginha, Vicosa, Videira & Fraiburgo, Vitória, Vitória da Conquista, Volta Redonda, Votuporanga </p>|
-| Kanada | Banff (AB), Brandon (MB), Calgary (AB), krzemowa Comox (BC), krzemowa Cowichan (BC), Edmonton (AB), Fort St. John, Fredericton (NB), większa Sudbury (funkcja włączona), Vancouver większa (BC), Halifax (NS), Kamloops (BC), Kelowna (BC), Kingston (funkcja włączona), Londyn (funkcja włączona), Moncton (NB) Montreal (QC), Nanaimo (BC), Ottawie (funkcja włączona), Wyspa Księcia George (BC), City Québec (QC), jelenie Red (AB), Regina (SK), Rimouski (QC), Saskatoon (SK), Sherbrooke (QC), Squamish (BC), St. John's (NL), Wybrzeże zachód słońca, Bay linie (funkcja włączona), Toronto (funkcja włączona), Victoria (BC), Whistler (BC ), Windsor (funkcja włączona), Winnipeg (MB), Woodstock</p>|
-| Chile  | <p>Antofagasta, Arica, Aysén, Chillán, Concepción, Constitución, Copiapó, Curicó, Iquique, La Sereną y Coquimbo, Linares, Los Angeles (Chile), Los Lagos, arenie Punta, Rancagua, Santiago, Talca, Temuco, Valdivia, Valparaíso, Viña del marca</p>|
-| Brytyjska | <p>Barranquilla, Bogotá, Bucaramanga, Cali, Cartagena, Ibagué, Medellín, Pasto, Popayán, Santa Marta, Sincelejo, Valledupar</p>|  
-| Kostaryka | San José|
-| Ekwador | Manta Cuenca, Guayaquil,|
-| Meksyk | Aguascalientes, Mexico City, Guadalajara, Lion, Merida, Monterrey, Puebla, Querétaro, San Luis Potosi|
+| Argentyna       | <p>Bahía Blanca, Buenos Aires, Caleta Olivia, Chivilcoy, Comodoro Rivadavia, Córdoba, Corrientes, General piaskownicę Pico, La Rioja, Mar del Plata, Mendoza, Miramar, Neuquén, Oberá, Olavarría, Paraná, Posadas, Rio Tercero, Rosario, Salta, San Carlos de Bariloche, San Luis, San Pedro, Santa Fe, Tandil, Ushuaia, stan Wiktoria, Villa María</p>|
+| Barbados       |  Barbados |
+| Brazylia         | <p>Angra dos Reis, Anápolis, Apucarana, Aracaju, Araraquara, Araxa, Araçatuba, bage, Barretos, Bauru, Belem, Belo Horizonte, Blumenau, Boa Vista, Brazylia, Caldas Novas, Campina Grande, Campinas, Campo Belo, Campo Grande, Caraguatatuba, Cascavel, Cataguases, Leopoldina e Região, Catalão, Caxias do Sul, Chapecó, Cianorte, Conselheiro Lafaiete, Corumbá, Criciúma, Cruzeiro do Sul, Cuiabá, Curitiba, Curitibanos, Curvelo, Diamantina, Divinópolis, Dourados, Estrela, Fernando de Noronha, Florianópolis, Fortaleza, Foz do Iguaçu, Franca, Garanhuns, Goiania, Governador Valadares, Guarapuava, Imperatriz, Ipatinga, Irati, Itabira, Itabuna, Itajaí, Ituiutaba, Jaraguá do Sul, Joao Pessoa, Joinville, Juazeiro do Norte, Juiz de Fora, Jundiaí, Lages, Londrina, Macapa, Macaé, Maceió, Mafra e Rio Negro, Manaus, Manhuacu, Maringá, Marília, Monte Carmelo, Montes Claros, Mossoró, urodzenie, Osorio, Ourinhos, Ouro Preto, Palmas, Paracatu, Parnaíba, Passo Fundo, Passos, Patos de Minas, Patrocínio, Pelotas, Piracicaba, Pocos de Caldas, Ponta Grossa, Porto Alegre, Porto Ferreira, Porto Seguro, Porto Velho, Praia Grande, Recife, Ribeirão Preto, Rio, Rio Branco, Rondonópolis, Salinas, Salwador, Santa Cruz do Sul, Santa Maria, Santa Rita do Sapucaí, Santarem, Santos, Wyspy Świętego Gabriel do Oeste, Wyspy Świętego Joao del Rei , Tiradentes e Regiao, Wyspy Świętego, Preto Rio, oficera Wysp Świętego, Wyspy Świętego, Sorocaba, so Carlos, so Francisco do Sul, so José dos Campos, so Lourenço, so Luís, Taubaté, Telemaco Borba, Teofilo Otoni, Teresina, Toledo, Três Lagoas, Tucurui, Ubatuba, Uberaba Uberlândia, Ubá, Uruguaiana, Varginha, Vicosa, Videira & Fraiburgo, Vitória, Vitória da Conquista, Volta Redonda, Votuporanga </p>|
+| Kanada | Banff (AB), Brandon (MB), Calgary (AB), Comox (BC), Cowichan (BC), Edmonton (AB), Fort St. Jan, Fredericton (NB), większe Sudbury (włączone), większe Vancouver (BC), Halifax (NS), Kamloops (BC), Kelowna (BC), Kingston (ON), Londyn (ON), Moncton (NB), Montrealu (QC), Nanaimo (BC), Ottawa (ON), Wyspa Księcia George (BC), Québec City (QC), Red Deer (AB), Regina (SK), Rimouski (QC), Saskatoon (SK), Sherbrooke (QC), Squamish (BC), St. Jan (NL), słońca Wybrzeże, Thunder Bay (ON), Toronto (ON), stan Wiktoria (BC), Whistler (BC ), Windsor (ON), Winnipeg (MB), Woodstock</p>|
+| Chile  | <p>Antofagasta, Arica, Aysén, Chillán, Concepción, Constitución, Copiapó, Curicó, Iquique, La Serena y Coquimbo, Linares, Los Angeles (Chile), Los Lagos, Punta, Rancagua,, Talca, Temuco, Valdivia, Valparaíso, Viña del mar</p>|
+| Kolumbia | <p>Barranquilla, Bogotá, Bucaramanga, cali, Kartageny, Ibagué, Medellín, Pasto, Popayán, Santa Marta, Sincelejo, Valledupar</p>|  
+| Kostaryka | José San|
+| Ekwador | Cuenca, Guayaquil, Manta|
+| Meksyk | Aguascalientes, Meksyk, Guadalajara, Lion, Merida, Monterrey, Puebla, Querétaro, San Luis Potosi|
 | Nikaragua | Managua | 
-| Panamá | Panamá*| 
+| Panama | Panama| 
 | Peru | Cusco, Lima |
-| Portoryko | Juan sieci SAN |
-| Urugwaj | Montevideo, Punta del Este |
-| Stany Zjednoczone | <p>Albany (NY), Kraków (NM), mocowania (AK) Appleton Oshkosh Neenah (WI), Asheville (NC), (OH) Ateny, Atlancie (GA), Austin (Teksas), Bakersfield (CA), Baltimore), Bellevue (Waszyngton), Powiat Berkshire (MA), Birmingham (AL), Bloomington (Indie), Boise (ID) (Bostonie MA), Powiat Brevard Boulder (CO) (Floryda), pole (NY), Butte (MT), zielonego Cod), Powiat Centrum (PA), Group Independent JPEG (IL), Charleston (SC), Charlotte (NC), Chicago (IL), Charlottesville (oceny luk w zabezpieczeniach), Cheyenne (WY), Charleston (WV), Chattanooga (TN), Cincinnati (OH) Powiat cytrusów (Floryda), Cleveland (OH), krzemowa Coachella (CA), sprężyny Kolorado (CO), Kolumbii (TN), Columbus (OH), Boże Ciało (Teksas), Dallas/dalej warto (Teksas), Dayton (OH), Delaware, Denver (CO), Moines Des (IA), Detroit (MI), Duluth (MN), El Paso (Teksas), Eugene (lub ), Fairbanks (AK), Fargo (ND), Flagstaff (AZ), Gainesville (Floryda), Collins Fort krzesiwowych (MI) (CO), Fresno (CA), Fayetteville (NC), Wayne Fort (Indie), Grand rozwidlenia (ND) Rapids Grand MI, kolor zielony Bay (WI), Greensboro (NC), Greenville (SC), Gunnison (CO), dróg Hampton (oceny luk w zabezpieczeniach ), Hanford (CA), Hartford (CT), Hernando Powiat (Floryda), Krakowie (HI), Houston (Teksas), Humboldta Powiat (CA), Huntsville (AL), Indianapolis (Indie), Ithaca (NY), Jackson (MS), Jackson (TN), konferencji w Jacksonville — St. John's Województwo (Floryda), Johnson city (TN) Jonesboro (AR) Joplin (MO), Juneau (AK), Kalamazoo (MI), Kansas City (MO), Kauai (HI), Ketchum (ID), Knoxville (TN), Lafayette (Indie), Lancaster (PA), Lansing (MI), Las Vegas (NV), Lawrence (Znaczniki), Powiat Lee (Floryda), Lexington (KY), Powiat Lincoln (lub), Little Rock (AR), Los Angeles ( CA), Louisville (KY), Madison (WI), McAllen (Teksas), Memphis (TN), Miami (Floryda), Milwaukee/Waukesha (WI), Paul Minneapolis St. (MN), Missoula (MT), Modesto (USA), Moline (IL), Powiat Monroe (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), Navajo kraj), Nowe Haven (CT), nowy Orlean (LA) NYC JORK), Ocala (Floryda), hrabstwa Okaloosa (Floryda), Miasto Oklahoma (OK), Omaha (NE), Orlando (Floryda), Panama City (Floryda), Pensacola (Floryda), Peoria (IL), Philadelphia (PA), Phoenix (AZ), energię (PA), Portland, (ME), Portland (lub), Racine (WI) Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), dolina Roanoke VA - Lynchburg, Rochester (NY) Skaliste Park narodowy górski) nieautoryzowane krzemowa (lub), Roseburg (lub), Roseville (CA), Sacramento (CA), Salem (lub), City Lake soli (UT), San Antonio (Teksas) (w San Diego CA), sieci San Luis Obispo (CA), Barbara Santa (CA), Santa Fe (NM), Sarasota (Floryda), Savannah (GA), Seacoast Region (NH) Seattle Tacoma Bellevue (Waszyngton) SF kieszeni obszar (CA), City Sioux (IA), spadki Sioux (SD), Sitka (AK), Spokane (Waszyngton), Springfield (IL), Springfield (urządzeń pamięci masowej) Św. (UT), St. Louis (MO), Stockton (CA), Syrakuzach Utica (NY), Tallahassee (Floryda), Tampa Sankt Petersburg (Floryda), Haute Terre (Indie), Toledo (OH), Topeka (Znaczniki), City przechodzenia (MI), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Powiat Volusia (Floryda), Waco (Teksas) Waszyngton (DC), Waterbury (CT), Wichita (Znaczniki), Wilmington (NC), Yakima (Waszyngton), Powiat Jorku (PA), Powiat Yuma (AZ)</p>|
-| \+ USA Wyspy Dziewicze | Federalna Wyspy Dziewicze * |
+| Portoryko | Juan San |
+| Urugwaj | Montevideo (, Punta del Este |
+| Stany Zjednoczone Ameryki | <p>Albany (NY), Albuquerque (NM), mocowanie (klucza uwierzytelniania), Appleton-Oshkosh-Neenah (WI), Asheville (NC), Ateny (na przykład), Atlanta (GA), Austin (TX), Bakersfield (CA), Baltimore, Bellevue (WA), Berkshire County (MA), Birmingham (AL), Bloomington (w), Boise (ID), Boston ( MA), Boulder (CO) Brevard County (FL), Buffalo (NY), Butte (MT), Wyspy Zielonego dorsza), Centre (PA), Champaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (), Charlottesville (VA), Chattanooga (TN), Cheyenne (WY), Chicago (IL), Cincinnati (), Powiaty cytrusów (FL), Cleveland (), Coachella Dolina (CA), Kolorado sprężyny (CO), Kolumbia (TN), Columbus ("), korpus Christi (TX), Dallas/razem (TX), Dayton (), Delaware, Denver (CO), Des Moines (IA), Detroit (MI), Duluth (MN), El Paso (TX), Eugene (lub ), Fairbanks (klucza uwierzytelniania), Fargo (ND), Fayetteville (NC), Flagstaff (AZ), krzesiwowych (MI) Fort Collins (CO), Fort Wayne (w), Fresno (CA), Gainesville (FL), Grand rozwidlenia (ND), Grand Rapids (MI), Zielona kieszeń (WI), Greensboro (, NC), Greenville (SC), Gunnison (CO), Hampton dróg (VA ), Hanford (CA), Hartford (CT), Hernando County (FL), Honolulu (HI), Houston (TX), Humboldt County (CA), Huntsville (AL), Indianapolis (w), Ithaca (NY), Jacksona (MS), Jacksona (TN), Jacksonville-St. Jan — powiat (FL), Johnsonem City (TN), Jonesboro (AR), Joplin (MO), Juneau (klucza uwierzytelniania), Kalamazoo (MI), Kansas (miasto), Kauai (HI), Ketchum (ID), Knoxville (TN), Lafayette (IN), Lancaster (PA), Lansing (MI), Las Vegas (NV), Lawrence (KS), Lewandowski powiat (FL), Lexington (KY), Lincoln County (lub), mały skała (AR), Los Angeles ( CA), Louisville (KY), Madison (WI), McAllen (TX), Memphis (TN), Miami (FL), Milwaukee/Waukesha (WI), Minneapolis-Saint Paul (MN), Missoula (MT), Modesto (USA), Moline (IL), Monroe County (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), biały nawaho kraj), New Haven (CT), New Orleans (LA), NYC-NJ), Ocala (FL), Okaloosa County (FL), Oklahoma City (OK), Omaha (NE), Orlando (FL), Panama City (FL), Pensacola (FL), Peoria (IL), Philadelphia (PA), Phoenix (AZ), Pittsburgh (PA), Portland (ME), Portland (lub), Racine (WI), Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke Dolina (VA-Lynchburg), Rochester (NY), Rocky górski Narodowy), nieautoryzowane doliny (lub), Roseburg (lub), Roseville (CA), Sacramento (CA), Salem (lub), sól Lake City (UT), San Antonio (TX), San Diego ( CA), San Luis Obispo (CA), Santa Barbara (CA), Santa Fe (NM), Sarasota (FL), Savannah (GA), Seacoast region (NH), Seattle-Tacoma-Bellevue (WA), SF (CA), Sioux City (IA), Sioux (SD), sitka (klucza uwierzytelniania), Spokane (WA), Springfield (IL), Springfield (masa), St. George (UT), St. Louis (MO), Stockton (CA), Syracuse-Utica (NY), Tallahassee (FL), Tampa-St. Petersburg (FL), Terre Haute (w), Toledo (), Topeka (KS), przechodzenie do miasta (MI), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Volusia powiat (FL), Waco (TX), Waszyngton (DC), Waterbury (CT), Wichita (KS), Wilmington (NC), Yakima (WA), Jorku</p>|
+| \+ Wyspy Dziewicze Stanów Zjednoczonych | Wyspy Dziewicze Stanów Zjednoczonych * |
 
 
 ## <a name="asia-pacific"></a>Azja i Pacyfik
 
-| Country/region |  City (Miasto) |
+| Kraj/region |  Miasto (obszar Metro) |
 |--------|---------|
-| Australia      | <p>Adelajda, sprężyny Alice, Bowen, Brisbane, Bundaberg QLD, Burnie, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, Wyspa magnetycznych, Bay Maryborough Hervey, Melbourne, Nowa Południowa Walia, Perth, RockHampton, Południowo-Wschodniej Queensland, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
-| Chiny | <p> Changchun, Changsha, Chengdu, Chongqing, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, Yixing, Zhuhai, Szanghaj, Pekin, Zhengzhou Guangzhou, Shenzhen,</P>| 
-| SRA Hongkong | SRA Hongkong *|
-| SRA Makau | Macau*|
-| Indie | Ahmedabad Bengaluru, Delhi, Mumbaj (Bombaj), Mysuru|
-| Indonezja | Bandung Banyuwangi, Batam, Denpasar, Dżakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
-| Japonia | Shizuoka Prefektura, Tokio, Wakkanai, Saitama Yamanashi |
-| Malezja | Ipoh, Penang Johar Bahru, Kuala Lumpur, |
-| Nowa Zelandia | Auckland, Christchurch, Dunedin, Queenstown Timaru, Wellington|
+| Australia      | <p>Adelajda, Alicja sprężyny, Bowen, Brisbane, Bundaberg QLD, granie, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, Wyspa magnetyczna, Maryborough-Hervey Bay, Melbourne, Nowa Południowa Walia, Perth, RockHampton, Południowo-Wschodnia Queensland, Sydney, Toowoomba, Townsville, stan Wiktoria, Warwick, Yeppoon</p> |
+| Chiny | <p> Changchun, Changsha, Chengdu, Czungking, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, Yixing, Zhuhai, Szanghaj Guangzhou, Shenzhen, Zhengzhou</P>| 
+| Hongkong SAR | Hongkong SAR *|
+| Makau SAR | Makau SAR *|
+| Indie | Ahmedabad, Bengaluru, Delhi, Mumbaj, Mysuru|
+| Indonezja | Bandung, Banyuwangi, Batam, Denpasar, Dżakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
+| Japonia | Shizuoka Prefektura, Tokio, Wakkanai, Yamanashi Prefektura |
+| Malezja | Ipoh, Johar Bahru, Kuala Lumpur, Penang |
+| Nowa Zelandia | Auckland, Christchurch, Dunedin, Queenstown, Timaru, Wellington|
 | Filipiny | Manila |
-| Singapur | Singapur * |
+| Singapur | Singapurze |
 | Korea Południowa | Busan, Seul |
-| Tajwan | Changhua hrabstwa, Tajpej | 
-| Tajlandia | Bangkok, Chiang Mai | 
-| Vietnam | Hanoi, Ho Chi Minh City | 
+| Tajwan | Changhua, Tajpej | 
+| Tajlandia | Bangkok, Chiang poczty | 
+| Wietnam | Hanoi, Minh City (miasto) | 
 
 
 ## <a name="europe"></a>Europa
 
-| Country/region |  City (Miasto) |
+| Kraj/region |  Miasto (obszar Metro) |
 |----------------|---------|
-| Andora        | Vella la Andora |
-| Ateny         | Chios | 
-| Austria        | Wiedeń |
-| Białoruś        | Gomel, Grodno, Polotsk & Novopolotsk, Zhlobin, Vileyka, Maladziečna, Minsk, Rechytsa | 
-| Belgia        | Belgia * |
+| Andora        | Andora La Vella |
+| Atenach         | Chios | 
+| Austria        | Konwencj |
+| Białoruś        | Gomel, Grodno, Polotsk & Novopolotsk, Zhlobin, Vileyka, Maladziečna, Mińsk, Rechytsa | 
+| Belgia        | Belgijsk |
 | Boliwia        | La Paz, Santa Cruz de la Sierra | 
-| Bośnia i Hercegowina | Sarajevo | 
-| Bułgaria       | <p>Balchik, Blagoevgrad, Burgas, Dobrich, Gabrovo, Haskova, Kardzhali, Lovech, Nessebar, Pazardzhik, Plewny, Płowdiw, Ruse, Shumen, Sliven, Stara Zagora, Vratsa, Yambol, Varna, Weliko, Sofia</P> |
-| Chorwacja | Crikvenica Dubrovnik, Rijeka, Slovanski Brod, Zagrzeb | 
-| Cypr | Nikozja Larnaca, Limassol, | 
-| Czechy | Brno, Jablonec, Karlovy różnią się Liberec, Ostrawa, Praga | 
-| Dania   | Dania * |
-| Estonia   | Estonia * |   
-| Finlandia   | Hämeenlinna, Helsinki, Joensuu, Jyväskylä, Kajaani, Kouvola - Kotka, Kuopio, Lappeenranta, Mikkeli, Oulu, Seinäjoki, Tampere, Turku, Vaasa|
-| Francja    | <p>Amberieu-en-Bugey Amiens, Angers, Annecy, Annonay, Arras, Aubenas, Bayonne, Besançon, Blois, Bordeaux, Boulogne sur Mer, Brest, Briançon cannes, Châlons-en szampan Chartres, Clermont-Ferrand, Colmar, języka Dax, Dijon, Grenoble, Haguenau, La Rochelle, Le Oznacza obiektywu Lille, Lorient, Lyon, komputerów Mac, Marsylii & Provence, Metz, Millau, Mont-de-Marsan, Montpellier, Mulhouse, Nancy Nantes nieuprzywilejowany Nimes, Normandia, Nyons, Paryż, Poitiers, Privas, Quimper, Rennes, Saint Saint-Malo, Saint Étienne, Saint-Nazaire, Przewodniki Saintes Sarrebourg, Sete, Strasburgu, Tarbes, system,</P> | 
-| \+ Gujana Francuska | Cayenne |
+| Bośnia i Hercegowina | Sarajewo | 
+| Bułgaria       | <p>Balchik, Blagoevgrad, Burgas, Dobrich, Gabrovo, Haskovo, Kardzhali, Lovech, Nessebar, Pazardzhik, Pleven, Plovdiv, Ruse, Shumen, Sliven, Stara Zagora, Vratsa, Yambol, Varna, Weliko, Sofia</P> |
+| Chorwacja | Crikvenica, Dubrovnik, Rijeka, Slovanski Brod, Zagrzeb | 
+| Cypr | Larnaca, Limassol, Nikozja | 
+| Republika Czeska | Brno, Jablonec, Karlovy Zróżnicuj, Liberec, Ostrava, Praga | 
+| Dania   | Danii |
+| Estonia   | Estońskiej |   
+| Finlandia   | Hämeenlinna, Helsinki, Joensuu, Jyväskylä, Kajaani, Kouvola-kotka, Kuopio, Lappeenranta, Mikkeli, Oulu, Seinäjoki, Tampere, Turku, Vaasa|
+| Francja    | <p>Amberieu-EN-Bugey, Amiens, Angers, Annecy, Annonay, Arras, Aubenas, Bayonne, Besançon, Blois, Bordeaux, Boulogne sur Mer, Brest, Briançon, Cannes, Châlons-en-szampan, Chartres, Clermont-Ferrand, Colmar, DAX, Dijon, Grenoble, Haguenau, La Rochelle, Le Mans, Lens, Lille, Lorient, Lyon, Mac, Marsylii & Provence, Metz, Millau, Mont-de-Marsan, Montpellier, Mulhouse, Nancy, Nantes, Nice, Nimes, Normandia, Nyons, Paryż, Poitiers, Privas, Quimper, Rennes, Saint Malo, Saint-Étienne, Saint-Nazaire, Saintes, Sarrebourg, Sete, Strasburgu, Tarbes, Toulouse, wycieczki</P> | 
+| \+ Gujana Francuska | Kajenna |
 | \+ Nowa Kaledonia | Nouméa  |
-| Gruzja | Tbilisi | 
-| Niemcy | <p>Berlin, Brandenburgii, Bremen & Niedersachsen, Kolonia, Eisenach, Frankfurt, Hamburg, Karlsruhe, Mainz, München - Monachium, Region Neckar Ren Ruhra ren regionu, Stuttgart, Titisee-Neustadt, Ulm</P> | 
-| Grecja | <p>Ateny, Arta, Amorgos, Chanii, Korfu, Chios Kos, Heraklion, Ioannina, Kavala, Kalamata, Komotini, Kos, Larissa, Meganisi, Mykonos, Patra, Rethimno, Rhodes, na wyspie Santoryn, Serres, Syros, Tinos, Saloniki, Veria, Volos, Xanthi </P> |
-| Węgry | Budapest, Szeged, Székesfehérvár |
-| Islandia | Ísland — Islandii * | 
-| Irlandia | Irlandia * |   
-| Włochy   | <p>Agrigento, Alessandria, Ancona, Bari, Sardynii Bolonia — Bologne, Cagliari —, Campobasso, Catania e Messina, Cosenza, Crema, Cremona, Crotone, Cuneo, Genua Firenze - Genova Florencja, Foggia, -, Iglesias, La Spezia, Lecce, Matera, Neapol Mediolan — Mediolan, Napoli — , Padova Palermo, Parma, Perugia, Pescara, Piza, Potenza, Syrakuzach Rzym - Siracusa Rzym, Siena e Grosseto, -, Taranto, Wenecji Torino - Turyn Trento, Trieste, Udine, Wenecja - </p> |
+| Gruzja | Tibilisi | 
+| Niemcy | <p>Berlin, Brandenburg, Bremen & Niedersachsen, Kolonia, Eisenach, Frankfurt, Hamburg, Karlsruhe, Mainz, München-Monachium, Rhein-Neckar region, Rhein-Ruhr region, Stuttgart, Titisee-Neustadt, Ulm</P> | 
+| Grecja | <p>Ateny, Arta, Amorgos, Chania, Corfu, Chios Kos, Heraklion, Ioannina, Kavala, Kalamata, Komotini, Kos, Larissa, Meganisi, Mykonos, Patra, Rethimno, Rhodes, Santorini, Serres, Syros, Tinos,, Veria, Volos, </P> |
+| Węgry | Budapeszt, Szeged, Székesfehérvár |
+| Islandia | Ísland — Islandia * | 
+| Irlandia | Irlandii |   
+| Włochy   | <p>Agrigento, Alessandria, Ancona, Bari, Bologna-Bologne, Cagliari-Sardynii, Campobasso, Catania e Messina, Cosenza, Crema, Cremona, Crotone, Cuneo, Firenze-Florencji, Foggia, Genova-Genoa, Iglesias, La Spezia, Lecce, Matera, Milano-Mediolan, Napoli-Naples , Padova, Palermo, Parma, Perugia, Pescara, Pisa, Potenza, Roma-Rzym, Siena e Grosseto, Siracusa-Syracuse, Taranto, Torino-Turin, Trento, Trieste, Udine, Venezia-Venice, </p> |
 | Łotwa | Rīga |
-| Litwa | Druskininkai Kauno, Klaipėda, Panevėžys, Wilno |
-| Luksemburg | Luksemburg * |
-| Mołdawia | Chisinau |
+| Litwa | Druskininkai, Kauno, Klaipėda, Panevėžys, Wilno |
+| Luksemburg | Luksemburg |
+| Mołdawia | Kiszyniów |
 | Czarnogóra | Podgorica |
-| Holandia | Holandia * |
-| Norwegia | Norwegia * | 
-| Polska | <p>Wrocław Białystok, Bydgoszcz, Elbląg, Gorzow, Kętrzyna, Kraków, Leszno, Lodz, Lublin, Mrągowo, Olsztyn, Poznań, Rzeszów, Sanok, Starachowice, Świonujście, szczecina, Tricity, Warszawa, Wodzisław Śląski, Wrocław, Zakopane</p> |
+| Holandia | Królestw |
+| Norwegia | Norwegia | 
+| Polska | <p>Wrocław, Białystok, Bydgoszcz, Elbląg, Gorzow, Kętrzyna, Kraków, Leszno, Lodz, Lublin, Mrągowo, Olsztyn, Poznań, Rzeszów, Sanok, Starachowice, Świonujście, Szczecin, Tricity, Warszawa, Wodzisław Śląski, Wrocław, Zakopane</p> |
 | Portugalia | Bragança, Coimbra, Funchal, Leiria, Lisboa, Portimao, Porto|
-| Republika Malta | Malta* | 
-| Rumunia | <p>Alba Iulia, Arad, Bistrița, Brăila, Braşov, Bukareszt, Buzau, Cluj Napoca, Constanța, Craiova, Deva, Focșani, Galati, Iaşi, Miercurea Ciuc, Oradea, Piatra Neamt, Pitești, Ploieşti, Reșița, Satu Mare, Sibiu, Suceava, Targu Mures, Timisoary, Tulcea, Zalau</p> | 
-| Rosja  | Rostov-on-Don Wołgograd, Jekaterynburg, Kazań, Gizigalay, Krasnodar, Moskwa, Nalchik, Niżni Nowogród, Nowosybirsk, Noyabrsk, Omsk, jako trwałą, St Petersburg, Twer, Tomsk |
-| Serbia  | Belgrad, Kragujevac, sieciowej usługi informacyjnej, nowy Sad Valjevo, Subotica | 
-| Słowacja | Bańska Bystrzyca, Bratysława, Kosice, Presov Prievidza, Trencin | 
+| Malta | Malta | 
+| Rumunia | <p>Alba Iulia, Arad, Bistrița, Brăila, Braşov, Bukareszt, Buzau, Cluj Napoca, Constanța, Craiova, Deva, Focșani, Galati, Iaşi, Miercurea Ciuc, Oradea, Piatra Neamt, Pitești, Ploieşti, Reșița, Satu Mare, Sibiu, Suceava, Targu Mures, Timisoara, Tulcea, Zalau</p> | 
+| Rosja  | Rostov-on-Jan, Wołgograd, Jekaterynburg, Kazan, Kirov, Krasnodar, Moskwa, Nalchik, Nizhny Nowogród, Nowosybirsk, Noyabrsk, Omsk, uprawnienie, Sankt Petersburg, Tver, Tomsk ( |
+| Serbia  | Beograd, Kragujevac, NIS, Nowy Sad, Valjevo, Subotica | 
+| Słowacja | Banská Bystrica, Bratysława, Kosice, Presov, Prievidza, Trencin | 
 | Słowenia | Koper, Lublana | 
-| Hiszpania    | <p>Corunna, Alicante, Almería, Asturii, Avila, Badajoz, Bay Cadiz, Barcelona, Bilbao, Burgos, Caceres, Campo de Gibraltaru, Castellon de la Plana, Ceuta, Ciudad Real, Cordoba, Cuenca, El Hierro, Ferrol, Gran Canaria, Granada, Huelva, Huesca, Ibiza, Jaén - Úbeda , La Palma Lanzarote, Lleida, Logroño, Lugo, Madryt, Malaga, Mallorca - Majorca Melilli, Minorka, Merida, Murcja, Palencia, Pamplona, Salamanca, Sebastian sieci San, Santander, Santiago de Compostela, Segovia, Sewilli, Soria, Tarragona - Reus, Tenerife, Toledo Walencja Valladolid, Vigo, Vitoria Gasteiz, Zaragoza - Saragossa</p> |
-| Szwecja | Goteborg/Göteborga/Jonkoping Malmö kommun - Malmö, Norrköping och Linköping, Sztokholm, Sundsvall |
-| Szwajcaria | M.in. Basel, Geneva, Yverdon-les-Bains Zurych | 
-| Turcja | Adana Mersin, Ankara, Antalya, Balıkesir, Bilecik, Bolu, Bursa, Denizli, Duzce, Elazig, Eskisehir, Stambuł, Istambuł; Aydin, Kahramanmaras, Kayseri, Konya, Malatya, Muğla, Samsun, Şanlıurfa |    
-| Zjednoczone Królestwo | Podlasie Middlands wschodnie, Londyn i południowo-wschodnia, północny wschód, Północny zachód, Irlandii Północnej, Szkocja, Południowy Zachód, Walia, West Middlands, Yorkshire |
-| Ukraina | Kharkiv, Zhytomyr, Kiev, Lwów, Chernivtsi |
+| Hiszpania    | <p>Corunna, Alicante, Almería, Asturias, Avila, Badajoz, Bay z Cadiz, Barcelona, Bilbao, Burgos, Caceres, Campo de Gibraltar, Castellon de la Plana, Ceuta, Ciudad Real, Cordoba, Cuenca, El Hierro, Ferrol, Gran Canaria, Granada, Huelva, Huesca, Ibiza, Jaén, Úbeda , La Palma, Lanzarote, Lleida, Logroño, Lugo, Madryt, Malaga, Mallorca-Majorca, Melilli, Menorca, Merida, Murcia, Palencia, Pamplona, Salamanca, San Sebastian, Santander, i Compostela, Segovia, Seville, Soria, Tarragona-Reus, Tenerife, Toledo, Walencja, Valladolid, Vigo, Vitoria-Gasteiz, Zaragoza-Saragossa</p> |
+| Szwecja | Goteborg/Gothenburg/Jonkoping, Malmö kommun-Malmö, Norrköping Och Linköping, Sztokholm, Sundsvall |
+| Szwajcaria | Basel, Genewa, Yverdon-les-Bains, Zurych | 
+| Turcja | Adana-Mersin, Ankara, Antalya, Balıkesir, bilecik, Bolu, Bursa, Denizli, duzce, Elazig, Eskisehir, Stambuł, Izmir-Aydin, Kahramanmaras, Kayseri, Konya, Malatya, Muğla, Samsun, Şanlıurfa |    
+| Zjednoczone Królestwo | Wschodnie Anglia, wschód Midlands, Londyn i Południowo-Wschodnia, północno-wschodnia, północne Zachodnie, Irlandia Północna, Szkocja, południowe zachodnie, Walia, zachodnie Midlands, Yorkshire |
+| Ukraina | Kharkiv, Zhytomyr, Kijów, Lviv, Chernivtsi |
 
 
 ## <a name="middle-east-and-africa"></a>Bliski Wschód i Afryka
 
-| Country/region |  City (Miasto) |
+| Kraj/region |  Miasto (obszar Metro) |
 |---------|---------|
-| Bahrajn | Bahrajn * |
-| Egipt | Cairo    |
-| Izrael| Izrael *  |
-| Kenya | Nairobi  | 
-| Madagaskar | Antananarivo |
+| Bahrajn | Bahrajnu |
+| Egipt | Kair    |
+| Izrael| Izrael  |
+| Kenia | Nairobi  | 
+| Madagaskar | Antananarywa |
 | Maroko | Casablanca, Khouribga, Tétouan|
 | Arabia Saudyjska | Thuwal |
 | Republika Południowej Afryki | Kapsztad |
@@ -138,19 +138,19 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps mobilnośc
 | Zjednoczone Emiraty Arabskie  | Abu Zabi, Dubaj |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak utworzyć żądanie przesyłane dane przy użyciu usługi mobilności:
-
-> [!div class="nextstepaction"]
-> [Jak utworzyć żądanie przesyłane dane](how-to-request-transit-data.md)
-
-Dowiedz się, jak żądania danych w czasie rzeczywistym przy użyciu usługi mobilności:
+Dowiedz się, jak żądać danych tranzytowych przy użyciu usługi mobilności:
 
 > [!div class="nextstepaction"]
-> [Jak utworzyć żądanie danych w czasie rzeczywistym](how-to-request-real-time-data.md)
+> [Jak żądać danych tranzytowych](how-to-request-transit-data.md)
 
-Zapoznaj się z dokumentacją interfejsu API usługi Azure Maps Mobility Service
+Informacje na temat żądania danych w czasie rzeczywistym przy użyciu usługi mobilności:
+
+> [!div class="nextstepaction"]
+> [Jak żądać danych w czasie rzeczywistym](how-to-request-real-time-data.md)
+
+Poznaj dokumentację interfejsu API usługi mobilności Azure Maps
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API usługi mobilności](https://aka.ms/AzureMapsMobilityService)
