@@ -12,12 +12,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: 789144730d99a0686856cee29f77227698154cbc
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.openlocfilehash: 59f8fcefd48425fb49d6a828046764a213bea18f
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71220012"
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965717"
 landingContent:
 - title: Informacje o usłudze Data Lake Analytics
   linkLists:
@@ -76,7 +76,7 @@ landingContent:
     - text: Dodawanie użytkownika w witrynie Azure Portal
       url: data-lake-analytics-add-users.md
     - text: Zarządzanie usługą Azure Data Lake Analytics przy użyciu zasad
-      url: data-lake-analytics-policies.md
+      url: data-lake-analytics-account-policies.md
 - title: Ciągła integracja i ciągłe wdrażanie
   linkLists:
   - linkListType: how-to-guide
@@ -89,3 +89,13 @@ landingContent:
       url: data-lake-analytics-cicd-test.md
     - text: Korzystanie zestawu U-SQL SDK
       url: data-lake-analytics-u-sql-sdk.md
+- title: Informacje o platformie Spark dla deweloperów języka U-SQL
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Informacje o platformie Apache Spark dla deweloperów języka U-SQL
+      url: data-lake-analytics-understand-spark-for-usql-developers.md
+    - text: Omówienie formatów danych platformy Apache Spark
+      url: data-lake-analytics-understand-spark-data-formats.md
+    - text: Omówienie pojęć związanych z kodem platformy Apache Spark
+      url: data-lake-analytics-understand-spark-code-concepts.md

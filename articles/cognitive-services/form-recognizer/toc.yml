@@ -23,6 +23,10 @@
               href: quickstarts/python-receipts.md
     - name: Korzystanie z zestawu .NET SDK
       href: quickstarts/dotnet-sdk.md
+- name: Samouczki
+  items:
+    - name: Korzystanie z usługi Rozpoznawanie formularzy w usłudze Logic Apps
+      href: tutorial-form-recognizer-with-logic-apps.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie zestawu danych szkoleniowych

@@ -36,7 +36,7 @@
           href: log-query/get-started-portal.md
         - name: Rejestrowanie zapytań
           href: log-query/get-started-queries.md
-        - name: Wizualizacja danych dziennika
+        - name: Pulpit nawigacyjny z danymi dziennika
           href: learn/tutorial-logs-dashboards.md
         - name: Alerty dotyczące danych dziennika
           href: learn/tutorial-response.md
@@ -50,7 +50,7 @@
           href: learn/tutorial-alert.md
         - name: Informacje o użytkownikach aplikacji
           href: learn/tutorial-users.md
-        - name: Tworzenie niestandardowych pulpitów nawigacyjnych
+        - name: Pulpit nawigacyjny z danymi aplikacji
           href: learn/tutorial-app-dashboards.md
     - name: Archiwizowanie danych dzienników i metryk platformy
       href: learn/tutorial-archive-data.md
@@ -889,7 +889,11 @@
         - name: Skoroszyty
           href: app/usage-workbooks.md
         - name: Pulpity nawigacyjne
-          href: app/app-insights-dashboards.md
+          items:
+            - name: Pulpit nawigacyjny przy użyciu danych dziennika
+              href: learn/tutorial-logs-dashboards.md
+            - name: Pulpit nawigacyjny przy użyciu danych aplikacji
+              href: learn/tutorial-app-dashboards.md
         - name: Wysyłanie danych do narzędzia Grafana
           href: platform/grafana-plugin.md
     - name: Generowanie alertów
@@ -1098,10 +1102,8 @@
           href: platform/metrics-supported.md
         - name: Obsługiwane metryki dla nowszych alertów
           href: platform/alerts-metric-near-real-time.md
-    - name: Dzienniki diagnostyczne
-      items:
-        - name: 'Usługi, kategorie i schematy dla dzienników diagnostycznych'
-          href: platform/diagnostic-logs-schema.md
+    - name: 'Usługi, kategorie i schematy dziennika zasobów'
+      href: platform/diagnostic-logs-schema.md
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Interfejs wiersza polecenia platformy Azure — usługa Application Insights (wersja zapoznawcza)
@@ -1110,9 +1112,11 @@
       href: app/azure-functions-supported-features.md
     - name: Azure PowerShell
       items:
+        - name: 'Alerty, metryki, dziennik aktywności, automatyczne skalowanie'
+          href: /powershell/module/az.monitor
         - name: Application Insights
           href: /powershell/module/az.applicationinsights
-        - name: Dzienniki
+        - name: Log Analytics
           href: /powershell/module/az.operationalinsights
     - name: Interfejs API REST
       items:

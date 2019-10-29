@@ -1,60 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja bezpiecznego tworzenia
+summary: Dowiedz się, jak tworzyć i wdrażać bezpieczne aplikacje na platformie Azure dzięki naszym przykładowym aplikacjom, najlepszym rozwiązaniom i wskazówkom.
 metadata:
-  document_id: null
   title: Dokumentacja bezpiecznego tworzenia na platformie Microsoft Azure
-  meta.description: Learn how to develop secure apps on Azure.
+  description: Dowiedz się, jak tworzyć bezpieczne aplikacje na platformie Azure.
   services: security
-  author: TerryLanfear
-  manager: rkarlin
   ms.service: security
   ms.subservice: develop
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/30/2019
+  author: TerryLanfear
   ms.author: terrylan
-abstract:
-  description: 'Dowiedz się, jak tworzyć i wdrażać bezpieczne aplikacje na platformie Azure dzięki naszym przykładowym aplikacjom, najlepszym rozwiązaniom i wskazówkom.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/security/develop/secure-dev-overview
-            html: <p>Tworzenie bezpiecznej aplikacji internetowej na platformie Azure</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
-            title: Rozpoczęcie pracy
-          - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
-            html: <p>Pięć najważniejszych kwestii związanych z bezpieczeństwem aplikacji internetowych</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
-            title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-  - title: Bezpieczne aplikacje przykładowe
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/secure-web-app">Aplikacja internetowa w kontenerze systemu Linux</a>
-          - html: <a href="/azure/security/develop/secure-aad-app">Aplikacja internetowa z usługą Azure Active Directory</a>
-          - html: <a href="/azure/security/develop/secure-pci-web-app">Payment Card Industry</a>
-  - title: Pojęcia
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/secure-dev-overview">Najlepsze rozwiązania dotyczące bezpiecznego tworzenia</a>
-  - title: Zasoby
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/security-code-analysis-overview">Microsoft Security Code Analysis</a>
-          - html: <a href="/azure/security/develop/threat-modeling-tool">Narzędzie do modelowania zagrożeń</a>
+  manager: rkarlin
+  ms.date: 10/24/2019
+  ms.openlocfilehash: 53e59e7d5ef28d8cb09015b7de296b298af9c3f7
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72934062"
+landingContent:
+- title: Opracowywanie bezpiecznych aplikacji przykładowych
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Aplikacja internetowa w kontenerze systemu Linux
+      url: secure-web-app.md
+    - text: Aplikacja internetowa z usługą Azure Active Directory
+      url: secure-aad-app.md
+    - text: Payment Card Industry
+      url: secure-pci-web-app.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Najlepsze rozwiązania dotyczące bezpiecznego tworzenia
+      url: secure-dev-overview.md
+    - text: Faza projektowania
+      url: secure-design.md
+    - text: Faza programowania
+      url: secure-develop.md
+    - text: Faza wdrażania
+      url: secure-deploy.md
+- title: Dodawanie narzędzi do analizy do bezpiecznego tworzenia
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Security Code Analysis
+      url: security-code-analysis-overview.md
+    - text: Threat Modeling
+      url: threat-modeling-tool.md
+- title: Rozwijanie umiejętności
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 5 najważniejszych elementów zabezpieczeń
+      url: https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider
+    - text: Zabezpieczanie aplikacji w chmurze na platformie Azure
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps

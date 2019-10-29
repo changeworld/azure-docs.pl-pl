@@ -1,0 +1,43 @@
+### YamlMime:Landing
+title: Dokumentacja usługi Azure Service Health
+summary: Usługa Azure Service Health to zestaw środowisk, które udostępniają spersonalizowane wskazówki i pomoc techniczną, gdy wystąpią problemy z usługami platformy Azure, które mogą mieć wpływ na Ciebie. Usługa Azure Service Health składa się z stanu platformy Azure, usługi Service Health i funkcji Resource Health.
+metadata:
+  title: Dokumentacja usługi Azure Service Health
+  description: Usługa Azure Service Health to zestaw środowisk, które udostępniają spersonalizowane wskazówki i pomoc techniczną, gdy napotkasz problemy z usługami platformy Azure. Usługa Azure Service Health może generować powiadomienia, pomagać zrozumieć znaczenie problemów i informować na bieżąco o rozwiązywaniu problemów. Usługa Azure Service Health może też ułatwić przygotowanie się do zaplanowanej konserwacji i zmian, które mogą wpłynąć na dostępność zasobów.
+  services: service-health
+  ms.service: service-health
+  ms.topic: landing-page
+  author: rboucher
+  ms.author: robb
+  ms.date: 10/08/2019
+  ms.openlocfilehash: 83380e57a5d67431fccf1d808b8c8f69eddc5962
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72966009"
+landingContent:
+- title: Informacje o usłudze Azure Service Health
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Service Health
+      url: overview.md
+    - text: Stan platformy Azure
+      url: azure-status-overview.md
+    - text: Usługa Service Health
+      url: service-health-overview.md
+    - text: Kondycja zasobów
+      url: resource-health-overview.md
+  - linkListType: video
+    links:
+    - text: Wprowadzenie wideo do usługi Azure Service Health
+      url: https://www.microsoft.com/videoplayer/embed/RE2OgX6
+- title: Otrzymuj powiadomienia
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Otrzymuj powiadomienia, gdy wystąpi problem z usługą platformy Azure, z której korzystasz
+      url: alerts-activity-log-service-notifications.md
+    - text: Otrzymuj powiadomienia w przypadku utraty dostępności zasobu platformy Azure
+      url: resource-health-alert-arm-template-guide.md

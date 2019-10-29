@@ -361,6 +361,8 @@
               href: hyper-v-azure-failback.md
         - name: Zarządzanie
           items:
+            - name: Szczegóły nadchodzącego zakończenia obsługi konfiguracji programu SCVMM w usłudze ASR
+              href: scvmm-site-recovery-deprecation.md
             - name: Uaktualnianie serwerów z systemem Windows Server skonfigurowanych przy użyciu usługi Site Recovery
               href: upgrade-2012R2-to-2016.md
             - name: Usuwanie serwerów i wyłączanie ochrony

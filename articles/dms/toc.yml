@@ -55,6 +55,8 @@
       href: pre-reqs.md
     - name: Topologie sieci na potrzeby migracji wystąpienia zarządzanego usługi Azure SQL DB
       href: resource-network-topologies.md
+    - name: Role niestandardowe na potrzeby migracji w trybie online z programu SQL Server do wystąpienia zarządzanego usługi Azure SQL DB
+      href: resource-custom-roles-sql-db-managed-instance.md
     - name: Znane problemy i rozwiązywanie problemów
       items:
         - name: Rozwiązywanie problemów z połączeniem ze źródłową bazą danych

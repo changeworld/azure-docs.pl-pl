@@ -32,9 +32,13 @@
                   href: hpc-cache-ingest-manual.md
     - name: Łączenie z pamięcią podręczną
       href: hpc-cache-mount.md
+    - name: Zarządzanie pamięcią podręczną
+      href: hpc-cache-manage.md
 - name: Zasoby
   items:
     - name: Otwieranie biletu pomocy technicznej
       href: hpc-cache-support-ticket.md
     - name: Odzyskiwanie sprawności po awarii regionalnej
       href: hpc-region-recovery.md
+    - name: Używanie usługi Azure NetApp Files z usługą Azure HPC Cache
+      href: hpc-cache-netapp.md

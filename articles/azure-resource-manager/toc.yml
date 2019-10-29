@@ -304,10 +304,14 @@
           href: resource-group-template-functions-resource.md
         - name: Funkcje ciągów
           href: resource-group-template-functions-string.md
-    - name: Usuwanie w trybie pełnym
-      href: complete-mode-deletion.md
-    - name: Limit wystąpień zasobów
-      href: resources-without-rg-limit.md
+    - name: Możliwości dotyczące zasobów
+      items:
+        - name: Usuwanie w trybie pełnym
+          href: complete-mode-deletion.md
+        - name: Typy zasobów rozszerzenia
+          href: extension-resource-types.md
+        - name: Limit wystąpień zasobów
+          href: resources-without-rg-limit.md
     - name: Dostawcy zasobów według usługi
       href: azure-services-resource-providers.md
     - name: REST — Resource Manager

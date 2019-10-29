@@ -42,6 +42,8 @@
           items:
             - name: Delegowanie do twórców katalogów
               href: entitlement-management-delegate-catalog.md
+            - name: Dodawanie połączonej organizacji
+              href: entitlement-management-organization.md
             - name: Zarządzanie dostępem dla użytkowników zewnętrznych
               href: entitlement-management-external-users.md
             - name: Wyświetlanie raportów i dzienników

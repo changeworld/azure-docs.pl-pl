@@ -1,0 +1,122 @@
+- name: Dokumentacja usługi Azure IoT Central dla instytucji rządowych
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Tworzenie rozwiązań dla instytucji rządowych za pomocą usługi Azure IoT Central
+      href: overview-iot-central-government.md
+- name: Samouczki
+  items:
+    - name: Analiza w sklepie — finalizacja zakupu
+      items:
+        - name: Tworzenie aplikacji połączonego zarządzania odpadami
+          href: tutorial-connected-waste-management.md
+        - name: Tworzenie aplikacji do monitorowania zużycia wody
+          href: tutorial-water-consumption-monitoring.md
+        - name: Tworzenie aplikacji do monitorowania jakości wody
+          href: tutorial-water-quality-monitoring.md
+- name: Pojęcia
+  items:
+    - name: Architektura referencyjna połączonego zarządzania odpadami
+      href: concepts-connectedwastemanagement-architecture.md
+    - name: Architektura referencyjna monitorowania zużycia wody
+      href: concepts-waterconsumptionmonitoring-architecture.md
+    - name: Architektura referencyjna monitorowania jakości wody
+      href: concepts-waterqualitymonitoring-architecture.md
+    - name: Łączność
+      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Łączenie urządzeń
+      items:
+        - name: Przygotowywanie i łączenie zestawu deweloperskiego IoT MXChip
+          href: ../core/howto-connect-devkit-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Przygotowywanie i łączenie urządzenia Rigado Cascade 500
+          href: ../core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Monitorowanie łączności urządzeń przy użyciu interfejsu wiersza polecenia platformy Azure
+          href: ../core/howto-monitor-devices-azure-cli-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: Zarządzanie urządzeniami
+      items:
+        - name: Zarządzanie urządzeniami
+          href: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Uruchamianie zadania
+          href: ../core/howto-run-a-job.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Korzystanie z grup urządzeń
+          href: ../core/howto-use-device-groups-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Wersjonowanie szablonu urządzenia
+          href: ../core/howto-version-device-template-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: Monitorowanie i analizowanie
+      items:
+        - name: Analizowanie danych urządzenia
+          href: ../core/howto-create-analytics-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Tworzenie elementów webhook w regułach
+          href: ../core/howto-create-webhooks-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: Akcje i rozszerzalność
+      items:
+        - name: Konfigurowanie ciągłego eksportu danych
+          href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Tworzenie reguł niestandardowych
+          href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Tworzenie niestandardowych analiz przy użyciu usługi Databricks
+          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Tworzenie niestandardowych analiz przy użyciu usługi Databricks
+          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: Administracja
+      items:
+        - name: Zmienianie ustawień aplikacji
+          href: ../core/howto-administer-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Eksportowanie aplikacji
+          href: ../core/howto-use-app-templates-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Zarządzanie użytkownikami i rolami
+          href: ../core/howto-manage-users-roles-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Zarządzanie rachunkiem
+          href: ../core/howto-view-bill-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Dostosowywanie interfejsu użytkownika aplikacji
+          href: ../core/howto-customize-ui-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Dodawanie kafelków do pulpitu nawigacyjnego
+          href: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Zarządzanie z poziomu witryny Azure Portal
+          href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Zarządzanie z poziomu interfejsu wiersza polecenia platformy Azure
+          href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Zarządzanie z poziomu programu Azure PowerShell
+          href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Zarządzanie z poziomu portalu CSP
+          href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: Personalizacja
+      items:
+        - name: Tworzenie osobistych pulpitów nawigacyjnych usługi Azure IoT Central
+          href: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Zarządzanie osobistymi preferencjami
+          href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+        - name: Przełączanie czatu na żywo
+          href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+- name: Powiązane
+  items:
+    - name: Usługi platformy
+      items:
+        - name: Usługa IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Usługa IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Usługi oparte na lokalizacji
+          href: /azure/location-based-services
+        - name: Zestawy SDK usług
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: IoT Edge
+      items:
+        - name: Azure IoT Edge
+          href: /azure/iot-edge
+        - name: Zestawy SDK urządzeń IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: Zasoby
+  items:
+    - name: Dokumentacja referencyjna interfejsu API
+      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
+    - name: Żądania danych klienta
+      href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
+    - name: Obsługiwane przeglądarki
+      href: ../core/iot-central-supported-browsers.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json

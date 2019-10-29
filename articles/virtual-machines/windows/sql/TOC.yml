@@ -62,22 +62,31 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Korzystanie z programu Azure PowerShell
           href: virtual-machines-windows-ps-sql-create.md
-    - name: Rejestrowanie dostawcy zasobów
-      href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: Zmienianie modelu licencjonowania
-      href: virtual-machines-windows-sql-ahb.md
-    - name: Zmienianie wersji
-      href: virtual-machines-windows-sql-change-edition.md
+    - name: Rejestrowanie za pomocą dostawcy zasobów maszyny wirtualnej SQL
+      displayName: 'resource provider, registration'
+      items:
+        - name: Pojedyncza maszyna wirtualna
+          href: virtual-machines-windows-sql-register-with-resource-provider.md
+        - name: Rejestrowanie zbiorcze wielu maszyn wirtualnych
+          href: virtual-machines-windows-sql-bulk-register-with-resource-provider.md
+    - name: Zarządzanie
+      items:
+        - name: Model licencjonowania
+          displayName: 'ahb, ahub, payg, change, modify, update'
+          href: virtual-machines-windows-sql-ahb.md
+        - name: Wersja
+          displayName: 'change, modify, update'
+          href: virtual-machines-windows-sql-change-edition.md
+        - name: Usługa Azure Storage na potrzeby tworzenia kopii zapasowych i przywracania
+          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
     - name: Migrate (Migracja)
       items:
-        - name: Migracja bazy danych SQL Server
+        - name: Migracja bazy danych programu SQL Server do maszyny wirtualnej
           href: virtual-machines-windows-migrate-sql.md
         - name: Przenoszenie maszyny wirtualnej do nowego regionu
           href: virtual-machines-windows-sql-move-different-region.md
     - name: Konfigurowanie wysokiej dostępności
       items:
-        - name: Tworzenie kopii zapasowej i przywracanie za pomocą usługi Azure Storage
-          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
         - name: Zawsze włączona grupa dostępności
           items:
             - name: Interfejs wiersza polecenia maszyny wirtualnej Azure SQL

@@ -1,134 +1,109 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Monitor
+summary: Monitorowanie platformy Azure i usług lokalnych. Agregowanie i analizowanie metryk, dzienników i śladów. Wyzwalanie alertów i wysyłanie powiadomień lub wywoływanie zautomatyzowanych rozwiązań.
 metadata:
-  title: Dokumentacja usługi Azure Monitor | Microsoft Docs
-  description: 'Usługa Azure Monitor, która zawiera teraz usługi Log Analytics i Application Insights, udostępnia zaawansowane narzędzia do zbierania i analizowania danych telemetrycznych, dzięki czemu można zmaksymalizować wydajność i dostępność aplikacji i zasobów lokalnych i w chmurze.'
+  title: Dokumentacja usługi Azure Monitor
+  description: Usługa Azure Monitor, która zawiera teraz usługi Log Analytics i Application Insights, udostępnia zaawansowane narzędzia do zbierania i analizowania danych telemetrycznych, dzięki czemu można zmaksymalizować wydajność i dostępność aplikacji i zasobów lokalnych i w chmurze.
   services: azure-monitor
-  author: bwren
-  manager: carmonm
   ms.service: azure-monitor
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 01/25/2019
-  ms.author: bwren
-abstract:
-  description: 'Usługa Azure Monitor, która zawiera teraz usługi Log Analytics i Application Insights, udostępnia zaawansowane narzędzia do zbierania i analizowania danych telemetrycznych, dzięki czemu można zmaksymalizować wydajność i dostępność aplikacji i zasobów lokalnych i w chmurze. Pomaga interpretować działanie aplikacji i proaktywnie identyfikuje problemy dotyczące aplikacji i zasobów, od których zależą.'
-sections:
-  - title: Sugerowana zawartość
-    items:
-      - type: paragraph
-        text: 'Użyj linków poniżej, aby zobaczyć listę sugerowanej zawartości dla usług Log Analytics i Application Insights.'
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/azure-monitor/azure-monitor-log-hub">Log Analytics</a>
-          - html: <a href="/azure/azure-monitor/azure-monitor-app-hub">Application Insights</a>
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak zbierać i analizować metryki i dzienniki zebrane z zasobów platformy Azure.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/Chart.svg'
-            text: Monitorowanie metryk
-            href: /azure/monitoring-and-diagnostics/monitor-quick-resource-metric-alert-portal
-          - image:
-              src: /azure/azure-monitor/media/index/log-analytics.svg
-            text: Analizowanie dzienników
-            href: /azure/log-analytics/query-language/get-started-analytics-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/virtualmachine.svg'
-            text: Maszyny wirtualne platformy Azure
-            href: /azure/log-analytics/log-analytics-quick-collect-azurevm
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
-            text: Komputer z systemem Linux
-            href: /azure/log-analytics/log-analytics-quick-collect-linux-computer
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
-            text: Komputer z systemem Windows
-            href: /azure/log-analytics/log-analytics-quick-collect-windows-computer
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_alert.svg'
-            text: Alerty i inspekcja subskrypcji
-            href: /azure/monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription
-      - type: paragraph
-        text: 'Dowiedz się, jak rozpocząć monitorowanie aplikacji przy użyciu usługi Azure Monitor Application Insights.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/dotnet.svg'
-            text: .NET
-            href: /azure/application-insights/quick-monitor-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
-            text: .NET Core
-            href: /azure/application-insights/app-insights-dotnetcore-quick-start
-          - image:
-              src: 'https://docs.microsoft.com/media/common/nodejs.svg'
-            text: Node.js
-            href: /azure/application-insights/app-insights-nodejs-quick-start
-          - image:
-              src: /azure/application-insights/media/index/mobile-center.png
-            text: Komórkowy
-            href: /azure/application-insights/app-insights-mobile-center-quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_web-color.svg'
-            text: Witryna internetowa
-            href: /azure/application-insights/app-insights-website-monitoring
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak analizować i wizualizować dane oraz wykonywać związane z nimi czynności.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/log-analytics/log-analytics-tutorial-viewdata">Wyświetlanie lub analizowanie zebranych danych</a>
-          - html: <a href="/azure/log-analytics/log-analytics-tutorial-dashboards">Tworzenie i udostępnianie pulpitów nawigacyjnych</a>
-          - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule">Automatyczne skalowanie na podstawie wydajności aplikacji lub harmonogramu</a>
-          - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data">Archiwizowanie danych monitorowania</a>
-      - type: paragraph
-        text: 'Dowiedz się, jak stale poprawiać wydajność i użycie aplikacji internetowych.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/application-insights/app-insights-tutorial-runtime-exceptions">Wyszukiwanie i diagnozowanie wyjątków w czasie wykonywania</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-performance">Wyszukiwanie i diagnozowanie problemów z wydajnością</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-alert">Monitorowanie kondycji aplikacji i powiązane alerty</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-users">Analizowanie użycia przez klientów i informacji</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-dashboards">Tworzenie niestandardowych pulpitów nawigacyjnych wskaźników KPI</a>
-  - title: Bezpłatne szkolenie wideo firmy PluralSight
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Administrator platformy Azure
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-  - title: Przykłady
-    items:
-      - type: paragraph
-        text: Poniższe przykłady ułatwiają konfigurowanie usługi Log Analytics i zarządzanie nią.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/log-analytics/powershell-samples">Azure PowerShell</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: <p><a href="/powershell/module/az.operationalinsights">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/loganalytics">Dokumentacja interfejsu API REST</a></p>
+  author: rboucher
+  ms.author: robb
+  ms.date: 10/08/2019
+  ms.openlocfilehash: 5ea61f712898c13864e28a4f091521d36f52884c
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965854"
+landingContent:
+- title: Informacje o usłudze Azure Monitor
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest Azure Monitor?
+      url: overview.md
+    - text: Co to są dzienniki usługi Azure Monitor/usługa Log Analytics?
+      url: overview.md
+    - text: Strona centrum zawartości dzienników usługi Azure Monitor/usługi Log Analytics
+      url: azure-monitor-log-hub.md
+    - text: Co to jest usługa Application Insights?
+      url: app/app-insights-overview.md
+    - text: Strona centrum zawartości usługi Application Insights
+      url: azure-monitor-app-hub.md
+- title: Informacje o danych monitorowania
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Omówienie źródeł danych
+      url: platform/data-sources.md
+    - text: Omówienie platformy danych
+      url: platform/data-platform.md
+- title: 10-minutowe przewodniki Szybki start
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Monitorowanie i alerty dotyczące metryk
+      url: platform/alerts-metric.md
+    - text: Analizowanie dzienników
+      url: log-query/get-started-portal.md
+    - text: Maszyny wirtualne platformy Azure w usłudze Log Analytics
+      url: learn/quick-collect-azurevm.md
+    - text: Maszyny wirtualne z systemem Linux w usłudze Log Analytics
+      url: learn/quick-collect-linux-computer.md
+    - text: Maszyny wirtualne z systemem Windows w usłudze Log Analytics
+      url: learn/quick-collect-windows-computer.md
+    - text: Alert dotyczący zdarzeń subskrypcji
+      url: platform/alerts-activity-log.md
+- title: Monitorowanie aplikacji
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: .NET
+      url: learn/quick-monitor-portal.md
+    - text: .NET Core
+      url: learn/dotnetcore-quick-start.md
+    - text: Node.js
+      url: learn/nodejs-quick-start.md
+    - text: Komórkowy
+      url: azure-monitor-app-hub.md
+    - text: Witryna internetowa
+      url: app/website-monitoring.md
+- title: Szkolenia
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Bezpłatne szkolenia w witrynie Pluralsight — administrator platformy Azure
+      url: https://go.microsoft.com/fwlink/?linkid=2012827
+- title: Dokumentacja — interfejs wiersza polecenia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Metryki, autoskalowanie, ustawienia diagnostyczne, alerty
+      url: /cli/azure/monitor?view=azure-cli-latest
+    - text: Log Analytics
+      url: /cli/azure/ext/log-analytics/monitor?view=azure-cli-latest
+    - text: Application Insights
+      url: /cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest
+- title: Dokumentacja — program PowerShell
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Metryki, autoskalowanie, ustawienia diagnostyczne, alerty
+      url: /powershell/module/az.monitor/?view=azps-2.6.0
+    - text: Log Analytics
+      url: /powershell/module/az.operationalinsights
+    - text: Application Insights
+      url: /powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.7.0&viewFallbackFrom=azps-2.5.0
+- title: Dokumentacja — interfejs API REST
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Metryki, autoskalowanie, ustawienia diagnostyczne, alerty
+      url: /rest/api/monitor
+    - text: Log Analytics
+      url: /rest/api/loganalytics
+    - text: Application Insights
+      url: /rest/api/application-insights/
+    - text: Piaskownica interfejsu API REST usługi Application Insights
+      url: https://dev.applicationinsights.io
