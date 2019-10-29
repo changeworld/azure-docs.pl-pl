@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 75b8ea5e8dcaed533eac424bb8df1d1862889490
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7f0d846a83312e28c305100e7c8dc74cc8140d7d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592375"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023846"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -66,7 +66,7 @@ Możesz całkowicie zablokować obciążenia, aby uzyskać dostęp do publicznyc
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Dostęp do prywatnego zasobu linku przy użyciu przepływu pracy zatwierdzania 
 Możesz połączyć się z zasobem link prywatny przy użyciu następujących metod zatwierdzania połączeń:
-- **Automatycznie** zatwierdzane podczas posiadania lub masz uprawnienia do określonego zasobu łącza prywatnego. Wymagane uprawnienie jest oparte na typie zasobu link prywatny w następującym formacie: Microsoft. \<Provider >/< resource_type >/privateEndpointConnectionApproval/action
+- **Automatycznie** zatwierdzane podczas posiadania lub masz uprawnienia do określonego zasobu łącza prywatnego. Wymagane uprawnienie jest oparte na typie zasobu link prywatny w następującym formacie: Microsoft.\<dostawcę >/< resource_type >/privateEndpointConnectionApproval/action
 - **Ręczne** żądanie, gdy nie masz wymaganego uprawnienia i chcesz zażądać dostępu. Zostanie zainicjowany przepływ pracy zatwierdzania. Prywatny punkt końcowy i kolejne połączenie prywatnego punktu końcowego zostaną utworzone w stanie "oczekiwanie". Właściciel zasobu link prywatny jest odpowiedzialny za zaakceptowanie połączenia. Po jego zatwierdzeniu prywatny punkt końcowy jest włączony do wysyłania ruchu normalnie, jak pokazano na poniższym diagramie przepływu pracy zatwierdzania.  
 
 ![zatwierdzenie przepływu pracy](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -91,7 +91,7 @@ Interfejs sieciowy skojarzony z prywatnym punktem końcowym zawiera pełen zesta
 Aby skonfigurować ustawienia DNS dla prywatnych punktów końcowych, można użyć następujących opcji: 
 - **Użyj pliku hosta (zalecane tylko do testowania)** . Aby zastąpić serwer DNS, można użyć pliku hosta na maszynie wirtualnej.  
 - **Użyj prywatnej strefy DNS**. Za pomocą prywatnych stref DNS można zastąpić rozpoznawanie nazw DNS dla danego prywatnego punktu końcowego. Prywatna strefa DNS może być połączona z siecią wirtualną w celu rozpoznania określonych domen.
-- **Użyj niestandardowego serwera DNS**. Możesz użyć własnego serwera DNS do zastąpienia rozpoznawania nazw DNS dla danego zasobu linku prywatnego. Jeśli serwer DNS jest hostowany w sieci wirtualnej, można utworzyć regułę przekazywania DNS w celu użycia prywatnej strefy DNS w celu uproszczenia konfiguracji wszystkich prywatnych zasobów łączy.
+- **Użyj niestandardowego serwera DNS**. Możesz użyć własnego serwera DNS do zastąpienia rozpoznawania nazw DNS dla danego zasobu linku prywatnego. Jeśli [serwer DNS](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server) jest hostowany w sieci wirtualnej, można utworzyć regułę przekazywania DNS w celu użycia prywatnej strefy DNS w celu uproszczenia konfiguracji wszystkich prywatnych zasobów łączy.
  
 > [!IMPORTANT]
 > Nie zaleca się przesłonięcia strefy, która aktywnie używa do rozpoznawania publicznych punktów końcowych. Połączenia z zasobami nie będą działać prawidłowo, bez przekazywania DNS do publicznej usługi DNS. Aby uniknąć problemów, Utwórz inną nazwę domeny lub postępuj według sugerowanej nazwy dla każdej usługi poniżej. 

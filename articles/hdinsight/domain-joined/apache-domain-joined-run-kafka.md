@@ -1,20 +1,20 @@
 ---
-title: Samouczek — Apache Kafka z pakiet Enterprise Security w usłudze Azure HDInsight
+title: Samouczek — Apache Kafka & Enterprise Security — Azure HDInsight
 description: Samouczek — informacje na temat konfigurowania zasad Apache Ranger dla Kafka w usłudze Azure HDInsight przy użyciu pakiet Enterprise Security.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 6d92ebc743bae97ecfa1591add27f470792dcafc
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: cb99b747cb5de01c616c4cab0ac6c14823f7d4db
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037170"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044631"
 ---
-# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Samouczek: Konfigurowanie zasad platformy Apache Kafka w usłudze HDInsight przy użyciu pakietu Enterprise Security (wersja zapoznawcza)
+# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Samouczek: konfigurowanie zasad platformy Apache Kafka w usłudze HDInsight przy użyciu pakietu Enterprise Security (wersja zapoznawcza)
 
 Dowiedz się, jak skonfigurować zasady platformy Apache Ranger na potrzeby klastrów Apache Kafka pakietów Enterprise Security Package (ESP). Klastry ESP są łączone z domeną, co pozwala użytkownikom na uwierzytelnianie przy użyciu poświadczeń domeny. Korzystając z tego artykułu, utworzysz dwie zasady platformy Ranger, aby ograniczyć dostęp do tematów `sales` i `marketingspend`.
 
@@ -26,7 +26,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Tworzenie tematów w klastrze platformy Kafka
 > * Testowanie zasad platformy Ranger
 
-## <a name="prerequisite"></a>Wymagania wstępne
+## <a name="prerequisite"></a>Warunek wstępny
 
 [Klaster Kafka usługi HDInsight z pakiet Enterprise Security](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -48,13 +48,13 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user** i **marketing_
 
 1. Otwórz **interfejs użytkownika administratora platformy Ranger**.
 
-2. Wybierz pozycję  **\<ClusterName > _kafka** w obszarze **Kafka**. Lista może zawierać tylko jedne wstępnie skonfigurowane zasady.
+2. Wybierz pozycję **\<clustername > _kafka** w obszarze **Kafka**. Lista może zawierać tylko jedne wstępnie skonfigurowane zasady.
 
 3. Wybierz pozycję **Dodaj nowe zasady** i wprowadź następujące wartości:
 
    |Ustawienie  |Sugerowana wartość  |
    |---------|---------|
-   |Nazwa zasad  |  hdi sales* policy   |
+   |Policy Name (Nazwa zasad)  |  hdi sales* policy   |
    |Temat   |  sales* |
    |Select User (Wybierz użytkownika)  |  sales_user1 |
    |Uprawnienia  | publish, consume, create |
@@ -74,7 +74,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user** i **marketing_
 
    |Ustawienie  |Sugerowana wartość  |
    |---------|---------|
-   |Nazwa zasad  |  hdi marketing policy   |
+   |Policy Name (Nazwa zasad)  |  hdi marketing policy   |
    |Temat   |  marketingspend |
    |Select User (Wybierz użytkownika)  |  marketing_user1 |
    |Uprawnienia  | publish, consume, create |
@@ -112,7 +112,7 @@ Aby utworzyć dwa tematy — `salesevents` i `marketingspend`:
 
 1. Pobierz [przykłady odbiorców i producentów przyłączonych do domeny na platformie Apache Kafka](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-1. Wykonaj kroki 2 i 3 w sekcji **Kompilowanie i wdrażanie przykładu** w artykule [Samouczek: Korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)
+1. Wykonaj kroki 2 i 3 w sekcji **Kompilowanie i wdrażanie przykładu** samouczka [Korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)
 
 1. Uruchom następujące polecenia:
 
@@ -145,7 +145,7 @@ W oparciu o skonfigurowane zasady platformy Ranger użytkownik **sales_user** mo
 
    Przykład: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Wykonaj krok 3 w sekcji **Kompilowanie i wdrażanie przykładu** w artykule [Samouczek: korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example), aby zapewnić dostępność pliku `kafka-producer-consumer.jar` także dla użytkownika **sales_user**.
+4. Wykonaj krok 3 w sekcji **Tworzenie i wdrażanie przykładu** w [samouczku: użyj interfejsów API Apache Kafka producenta i konsumenta](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) , aby upewnić się, że `kafka-producer-consumer.jar` jest również dostępna do **sales_user**.
 
 5. Upewnij się, że użytkownik **sales_user1** może tworzyć do tematu `salesevents`, wykonując następujące polecenie:
 
@@ -189,11 +189,11 @@ W oparciu o skonfigurowane zasady platformy Ranger użytkownik **sales_user** mo
 
 Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń klaster Kafka, który został utworzony w następujących krokach:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 1. W polu **Wyszukaj** w górnej części wpisz **HDInsight**.
 1. Wybierz pozycję **Klastry usługi HDInsight** w obszarze **Usługi**.
 1. Na wyświetlonej liście klastrów usługi HDInsight kliknij symbol **...** obok klastra utworzonego na potrzeby tego samouczka. 
-1. Kliknij przycisk **Usuń**. Kliknij przycisk **Yes** (Tak).
+1. Kliknij polecenie **Usuń**. Kliknij przycisk **Yes** (Tak).
 
 ## <a name="next-steps"></a>Następne kroki
 

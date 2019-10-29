@@ -9,16 +9,16 @@ ms.author: karler
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: fc6ccaae698043db631c7724c6aabbca16f4328f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: de21791e1ae11554f7a57c17c3935c0993bea1f9
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172840"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025364"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Szybki start: Przekazywanie, wyświetlanie i usuwanie obiektów BLOB za pomocą usługi Azure Storage v10 SDK dla języka JavaScript/HTML w przeglądarce
+# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Szybki Start: przekazywanie, wyświetlanie i usuwanie obiektów BLOB za pomocą usługi Azure Storage v10 SDK dla języka JavaScript/HTML w przeglądarce
 
 W tym przewodniku szybki start dowiesz się, jak używać [zestawu SDK usługi Azure Storage v10 for JavaScript-BLOB](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) Library do zarządzania obiektami BLOB z kodu JavaScript działającego w całości w przeglądarce. Podejście użyte w tym miejscu pokazuje, jak użyć wymaganych środków zabezpieczeń do zapewnienia chronionego dostępu do konta magazynu obiektów blob.
 
@@ -81,13 +81,13 @@ az storage account generate-sas \
 
 Serie wartości występujące po każdym parametrze mogą wydawać się niezrozumiałe. Te wartości parametrów odpowiadają pierwszym literom odpowiednich uprawnień. W poniższej tabeli wyjaśniono pochodzenie tych wartości:
 
-| Parametr        | Value   | Opis  |
+| Parametr        | Wartość   | Opis  |
 |------------------|---------|---------|
-| *uprawnienia*    | racwdl  | Ta sygnatura dostępu współdzielonego umożliwia używanie poleceń *read*, *append*, *create*, *write*, *delete* i *list*. |
+| *permissions*    | racwdl  | Ta sygnatura dostępu współdzielonego umożliwia używanie poleceń *read*, *append*, *create*, *write*, *delete* i *list*. |
 | *resource-types* | sco     | Ta sygnatura dostępu współdzielonego dotyczy następujących zasobów: *usługa*, *kontener* i *obiekt*. |
 | *services*       | b       | Ta sygnatura dostępu współdzielonego dotyczy usługi *obiektów blob*. |
 
-Po wygenerowaniu sygnatury dostępu współdzielonego skopiuj wartość zwracaną i Zapisz ją w miejscu do użycia w nadchodzącym kroku. Jeśli sygnatura dostępu współdzielonego została wygenerowana przy użyciu metody innej niż interfejs wiersza polecenia platformy Azure, `?` należy usunąć pierwotną wartość, jeśli jest ona obecna. Ten znak jest separatorem adresów URL, który jest już podany w szablonie adresu URL w dalszej części tego tematu, w którym jest używane sygnatura dostępu współdzielonego.
+Po wygenerowaniu sygnatury dostępu współdzielonego skopiuj wartość zwracaną i Zapisz ją w miejscu do użycia w nadchodzącym kroku. Jeśli sygnatura dostępu współdzielonego została wygenerowana przy użyciu metody innej niż interfejs wiersza polecenia platformy Azure, należy usunąć początkową `?`, jeśli jest obecna. Ten znak jest separatorem adresów URL, który jest już podany w szablonie adresu URL w dalszej części tego tematu, w którym jest używane sygnatura dostępu współdzielonego.
 
 > [!IMPORTANT]
 > W środowisku produkcyjnym zawsze przekazuj tokeny sygnatur dostępu współdzielonego przy użyciu protokołu SSL. Ponadto tokeny sygnatur dostępu współdzielonego powinny być generowane na serwerze i wysyłane do strony HTML w celu przekazania ich z powrotem do usługi Azure Blob Storage. Jedna z metod polega na wygenerowaniu tokenów sygnatur dostępu współdzielonego przy użyciu funkcji bezserwerowej. Witryna Azure Portal zawiera szablony funkcji umożliwiające generowanie sygnatury dostępu współdzielonego za pomocą funkcji języka JavaScript.
@@ -124,9 +124,9 @@ Najpierw utwórz nowy folder o nazwie *Azure-Blobs-JavaScript* i otwórz go w vs
 
 ### <a name="configure-the-debugger"></a>Skonfiguruj debuger
 
-Aby skonfigurować rozszerzenie debugera w VS Code, wybierz pozycję **debuguj > Dodaj konfigurację...** , a następnie wybierz pozycję **Chrome** lub **Microsoft Edge**, w zależności od rozszerzenia zainstalowanego wcześniej w sekcji wymagania wstępne. Ta akcja powoduje utworzenie pliku *Launch. JSON* i otwarcie go w edytorze.
+Aby skonfigurować rozszerzenie debugera w VS Code, wybierz pozycję **debuguj > Dodaj konfigurację...** , a następnie wybierz pozycję **Chrome** lub **Edge**, w zależności od rozszerzenia zainstalowanego wcześniej w sekcji wymagania wstępne. Ta akcja powoduje utworzenie pliku *Launch. JSON* i otwarcie go w edytorze.
 
-Następnie zmodyfikuj plik *Launch. JSON* , tak aby `url` zawierał `/index.html` wartość:
+Następnie zmodyfikuj plik *Launch. JSON* w taki sposób, aby wartość `url` zawierała `/index.html`, jak pokazano:
 
 ```json
 {
@@ -168,27 +168,27 @@ Po wprowadzeniu zmian w *pliku index. html*należy ponownie załadować stronę,
 
 ### <a name="add-the-blob-storage-client-library"></a>Dodaj bibliotekę klienta magazynu obiektów BLOB
 
-Aby włączyć wywołania interfejsu API magazynu obiektów blob, najpierw [Pobierz zestaw SDK usługi Azure Storage dla języka JavaScript — Biblioteka klienta obiektów BLOB](https://aka.ms/downloadazurestoragejsblob), Wyodrębnij zawartość pliku zip i umieść plik *Azure-Storage. blob. js* w folderze *Azure-Blobs-JavaScript* .
+Aby włączyć wywołania interfejsu API magazynu obiektów blob, najpierw [Pobierz zestaw SDK usługi Azure Storage dla języka JavaScript — Biblioteka klienta obiektów BLOB](https://aka.ms/downloadazurestoragejsblob), Wyodrębnij zawartość pliku zip i umieść plik *Azure-Storage-BLOB. js* w folderze *Azure-Blobs-JavaScript* .
 
-Następnie wklej następujący kod HTML do *pliku index. html* po `</body>` tagu zamykającym, zastępując komentarz symbol zastępczy.
+Następnie wklej następujący kod HTML do *pliku index. html* po tagu zamykającym `</body>`, zastępując komentarz zastępczy.
 
 ```html
-<script src="azure-storage.blob.js" charset="utf-8"></script>
+<script src="azure-storage-blob.js" charset="utf-8"></script>
 
 <script>
 // You'll add code here in the following sections.
 </script>
 ```
 
-Ten kod dodaje odwołanie do pliku skryptu i zapewnia miejsce na własny kod JavaScript. Na potrzeby tego przewodnika Szybki Start korzystamy z pliku skryptu *Azure-Storage. blob. js* , aby można było go otworzyć w vs Code, odczytać jego zawartość i ustawić punkty przerwania. W środowisku produkcyjnym należy użyć bardziej kompaktowego pliku *Azure-Storage. blob. min. js* , który jest również dostępny w pliku zip.
+Ten kod dodaje odwołanie do pliku skryptu i zapewnia miejsce na własny kod JavaScript. Na potrzeby tego przewodnika Szybki Start korzystamy z pliku skryptu *Azure-Storage-BLOB. js* , aby można było go otworzyć w vs Code, odczytać jego zawartość i ustawić punkty przerwania. W środowisku produkcyjnym należy użyć bardziej kompaktowego pliku *Azure-Storage. blob. min. js* , który jest również dostępny w pliku zip.
 
 Więcej informacji na temat każdej funkcji magazynu obiektów BLOB można znaleźć w [dokumentacji referencyjnej](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index). Należy pamiętać, że niektóre funkcje w zestawie SDK są dostępne tylko w programie Node. js lub są dostępne tylko w przeglądarce.
 
-Kod w *Azure-Storage. blob. js* eksportuje zmienną globalną o `azblob`nazwie, która będzie używana w kodzie JavaScript w celu uzyskania dostępu do interfejsów API magazynu obiektów BLOB.
+Kod w *Azure-Storage-BLOB. js* eksportuje zmienną globalną o nazwie `azblob`, która będzie używana w kodzie JavaScript w celu uzyskania dostępu do interfejsów API magazynu obiektów BLOB.
 
 ### <a name="add-the-initial-javascript-code"></a>Dodaj początkowy kod JavaScript
 
-Następnie wklej poniższy kod do `<script>` elementu pokazanego w poprzednim bloku kodu, zastępując komentarz symbol zastępczy.
+Następnie wklej następujący kod do elementu `<script>` pokazanego w poprzednim bloku kodu, zastępując komentarz symbol zastępczy.
 
 ```javascript
 const createContainerButton = document.getElementById("create-container-button");
@@ -206,7 +206,7 @@ const reportStatus = message => {
 }
 ```
 
-Ten kod tworzy pola dla każdego elementu HTML, który będzie używany przez Poniższy kod, i implementuje `reportStatus` funkcję do wyświetlania danych wyjściowych.
+Ten kod tworzy pola dla każdego elementu HTML, który będzie używany przez Poniższy kod, i implementuje funkcję `reportStatus`, aby wyświetlić dane wyjściowe.
 
 W poniższych sekcjach Dodaj każdy nowy blok kodu JavaScript po poprzednim bloku.
 
@@ -318,7 +318,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Ten kod łączy przycisk **Wybierz i przekaż pliki** do ukrytego `file-input` elementu. W ten sposób zdarzenie przycisku `click` wyzwala zdarzenie wejściowe `click` pliku i wyświetla selektor plików. Po wybraniu plików i zamknięciu okna dialogowego `input` zdarzenie występuje, `uploadFiles` a funkcja jest wywoływana. Ta funkcja wywołuje funkcję [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) tylko dla przeglądarki dla każdego wybranego pliku. Każde wywołanie zwraca obietnicę, która jest dodawana do listy, dzięki czemu można oczekiwać, że wszystkie jednocześnie czekają na przekazanie plików.
+Ten kod łączy przycisk **Wybierz i przekaż pliki** do ukrytego elementu `file-input`. W ten sposób zdarzenie `click`ego przycisku wyzwala zdarzenie `click` danych wejściowych i wyświetla selektor plików. Po wybraniu opcji pliki i zamknięciu okna dialogowego wystąpi zdarzenie `input`, a funkcja `uploadFiles` zostanie wywołana. Ta funkcja wywołuje funkcję [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) tylko dla przeglądarki dla każdego wybranego pliku. Każde wywołanie zwraca obietnicę, która jest dodawana do listy, dzięki czemu można oczekiwać, że wszystkie jednocześnie czekają na przekazanie plików.
 
 ### <a name="delete-blobs"></a>Usuwanie obiektów blob
 
@@ -346,7 +346,7 @@ const deleteFiles = async () => {
 deleteButton.addEventListener("click", deleteFiles);
 ```
 
-Ten kod wywołuje funkcję [BlobURL. Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) , aby usunąć każdy plik wybrany na liście. Następnie wywołuje `listFiles` funkcję wskazaną wcześniej w celu odświeżenia zawartości listy **plików** .
+Ten kod wywołuje funkcję [BlobURL. Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) , aby usunąć każdy plik wybrany na liście. Następnie wywołuje funkcję `listFiles` widoczną wcześniej w celu odświeżenia zawartości listy **plików** .
 
 ### <a name="run-and-test-the-web-application"></a>Uruchamianie i testowanie aplikacji sieci Web
 

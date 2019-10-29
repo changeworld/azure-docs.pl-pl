@@ -8,14 +8,18 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a8f8b91e2990b85f5bcbd5aef5d70d3b6fb800e1
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: aaf591bcc75521cb83d8c74f5220d37f77f1f349
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965542"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027653"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Tworzenie rozwiązań energetycznych za pomocą IoT Central 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
+
 Inteligentne liczniki i panele słoneczne odgrywają ważną rolę w transformację branży energetycznej. Inteligentne liczniki zapewniają większą kontrolę i szczegółowe informacje o zużyciu energii, a rozwój paneli słonecznych prowadzi do przełomowej generacji energii. Aplikacje monitorujące inteligentne Mierniki i panel słoneczny są przykładowymi szablonami pokazującymi różne możliwości. Partnerzy mogą wykorzystać te szablony do kompilowania rozwiązań energetycznych w IoT Central do ich konkretnych potrzeb. Nie są wymagane żadne nowe kodowanie i nie ma dodatkowych kosztów, aby wdrażać te aplikacje i korzystać z nich. Dowiedz się więcej o szablonach aplikacji energetycznej i ich możliwościach.
 
 
@@ -36,8 +40,8 @@ Możesz bezpłatnie wypróbować [aplikację do monitorowania mierników intelig
 
 Po wdrożeniu aplikacji zobaczysz dane symulowanego miernika na pulpicie nawigacyjnym, jak pokazano na poniższej ilustracji. Ten szablon to przykładowa aplikacja, którą można łatwo rozciągnąć i dostosować do określonych przypadków użycia.
 
-> [!div class="mx-imgBorder"]
-> ![pulpit nawigacyjny aplikacji mierników inteligentnych](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
+[!div class="mx-imgBorder"]
+![pulpit nawigacyjny aplikacji mierników inteligentnych](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
 
 
 ## <a name="what-is-the-solar-panel-monitoring-application"></a>Co to jest aplikacja monitorująca panel słoneczny?

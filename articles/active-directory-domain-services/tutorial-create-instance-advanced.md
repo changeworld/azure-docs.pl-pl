@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 2ed488f5f4380c44772d63d208e2c7a68934aca8
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5b6543326fe7f44bc75545894a1d2a1d324be0e8
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757910"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023970"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Samouczek: Tworzenie i Konfigurowanie wystąpienia Azure Active Directory Domain Services z zaawansowanymi opcjami konfiguracji
 
@@ -88,7 +88,11 @@ Obowiązują również następujące ograniczenia nazw DNS:
 Wypełnij pola w oknie *podstawy* Azure Portal, aby utworzyć wystąpienie usługi Azure AD DS:
 
 1. Wprowadź **nazwę domeny DNS** dla domeny zarządzanej, biorąc pod uwagę poprzednie punkty.
-1. Wybierz **lokalizację** platformy Azure, w której ma zostać utworzona domena zarządzana.
+1. Wybierz **lokalizację** platformy Azure, w której ma zostać utworzona domena zarządzana. W przypadku wybrania regionu, który obsługuje Strefy dostępności, zasoby AD DS platformy Azure są dystrybuowane między strefami w celu zapewnienia dodatkowej nadmiarowości.
+
+    Strefy dostępności to unikatowe fizyczne lokalizacje w regionie świadczenia usługi Azure. Każda strefa składa się z co najmniej jednego centrum danych wyposażonego w niezależne zasilanie, chłodzenie i sieć. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach.
+
+    Nie ma niczego do skonfigurowania na potrzeby dystrybuowania AD DS platformy Azure między strefami. Platforma Azure automatycznie obsługuje dystrybucję zasobów. Aby uzyskać więcej informacji i sprawdzić dostępność regionów, zobacz [co to są strefy dostępności na platformie Azure?][availability-zones]
 
     ![Konfigurowanie ustawień podstawowych dla wystąpienia Azure AD Domain Services](./media/tutorial-create-instance-advanced/basics-window.png)
 
@@ -167,7 +171,7 @@ Na stronie **Podsumowanie** kreatora przejrzyj ustawienia konfiguracji dla domen
 
     ![Stan usług domenowych po pomyślnym zainicjowaniu obsługi administracyjnej](./media/tutorial-create-instance-advanced/successfully-provisioned.png)
 
-Podczas procesu aprowizacji usługa Azure AD DS tworzy dwie aplikacje dla przedsiębiorstw o nazwie *usługi kontrolera domeny* i *AzureActiveDirectoryDomainControllerServices* w katalogu. Te aplikacje przedsiębiorstwa są konieczne do obsługi domeny zarządzanej. Te aplikacje nie są usuwane w żadnym momencie.
+Domena zarządzana jest skojarzona z dzierżawą usługi Azure AD. Podczas procesu aprowizacji usługa Azure AD DS tworzy dwie aplikacje dla przedsiębiorstw o nazwie *usługi kontrolera domeny* i *AzureActiveDirectoryDomainControllerServices* w dzierżawie usługi Azure AD. Te aplikacje przedsiębiorstwa są konieczne do obsługi domeny zarządzanej. Nie usuwaj tych aplikacji.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Aktualizowanie ustawień DNS dla sieci wirtualnej platformy Azure
 
@@ -238,6 +242,7 @@ Aby wyświetlić tę domenę zarządzaną w działaniu, należy utworzyć maszyn
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

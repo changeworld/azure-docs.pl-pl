@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 0cf5486e77e69f83973f7e62669e5ab45d1c94a2
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 477fdc2291d875c57bfb0ae3cb87b6df9bd41398
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679197"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024305"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Wymiana komunikatów w chmurze przy użyciu Azure Logic Apps i Azure Service Bus
 
@@ -79,7 +79,7 @@ Upewnij się, że aplikacja logiki ma uprawnienia do uzyskiwania dostępu do prz
 
    Wszystkie wyzwalacze Service Bus są wyzwalaczami *długiego sondowania* . Ten opis oznacza, że podczas uruchamiania wyzwalacza, wyzwalacz przetwarza wszystkie komunikaty, a następnie czeka 30 sekund, aby więcej komunikatów pojawiło się w ramach subskrypcji kolejki lub tematu. Jeśli w ciągu 30 sekund nie pojawią się żadne komunikaty, uruchomienie wyzwalacza zostanie pominięte. W przeciwnym razie wyzwalacz będzie kontynuował odczytywanie wiadomości do momentu, gdy subskrypcja kolejki lub tematu nie jest pusta. Sonda następnego wyzwalacza zależy od interwału cyklu określonego we właściwościach wyzwalacza.
 
-   Niektóre wyzwalacze, takie jak **po nadejściu co najmniej jednego komunikatu w kolejce (AutoComplete)** , mogą zwracać jeden lub komunikaty. Kiedy te wyzwalacze są wyzwalane, zwracają między jedną i liczbę komunikatów, które są określone przez wartość właściwości **Maksymalna liczba komunikatów** wyzwalacza.
+   Niektóre wyzwalacze, takie jak **po nadejściu co najmniej jednego komunikatu w kolejce (AutoComplete)** , mogą zwrócić jeden lub więcej komunikatów. Kiedy te wyzwalacze są wyzwalane, zwracają między jedną i liczbę komunikatów, które są określone przez wartość właściwości **Maksymalna liczba komunikatów** wyzwalacza.
 
 1. Jeśli wyzwalacz nawiązuje połączenie z przestrzenią nazw Service Bus po raz pierwszy, wykonaj następujące kroki, gdy projektant aplikacji logiki monituje o informacje o połączeniu.
 

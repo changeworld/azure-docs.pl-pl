@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 59770bccec57220560eeb5a5204e574ce172fc80
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 0f463291a0405178c5bdfbb890a6f954e13b204d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296480"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023945"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu Azure Portal
 
@@ -75,7 +75,7 @@ Wdrożenie usługi wymaga około 5 minut.  Po jego wdrożeniu zostanie wyświetl
 
 1. Przejdź do strony **Przegląd** usługi i wybierz pozycję **serwer konfiguracji**.
 
-1. W sekcji **repozytorium domyślne** ustaw wartość **Identyfikator URI** na "https://github.com/Azure-Samples/piggymetrics", ustaw **etykietę** na "config", a następnie wybierz pozycję **Zastosuj** , aby zapisać zmiany.
+1. W sekcji **repozytorium domyślne** ustaw wartość **Identyfikator URI** na "https\://GitHub.com/Azure-Samples/piggymetrics", ustaw wartość **etykieta** na "config", a następnie wybierz pozycję **Zastosuj** , aby zapisać zmiany.
 
     ![Zrzut ekranu przedstawiający Portal ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 

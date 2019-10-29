@@ -8,19 +8,21 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: f87e1a7893fa8c2ea22711f90696a5d2836eb3ac
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 8272764e967fccfbfa88d54e688f9d7aaf4e0917
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965608"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027683"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central — architektura aplikacji licznika inteligentnego
 
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 Ten artykuł zawiera omówienie architektury szablonu aplikacji do monitorowania mierników inteligentnych. Na poniższym diagramie przedstawiono powszechnie używaną architekturę dla inteligentnego miernika aplikacji na platformie Azure przy użyciu platformy IoT Central.
 
-> [!div class="mx-imgBorder"]
-> ![architektury mierników inteligentnych](media/concept-iot-central-smart-meter/smart-meter-app-architecture.png)
+[!div class="mx-imgBorder"]
+![architektury mierników inteligentnych](media/concept-iot-central-smart-meter/smart-meter-app-architecture.png)
 
 Niniejsza architektura zawiera następujące składniki. Niektóre rozwiązania mogą nie wymagać każdego składnika wymienionego w tym miejscu.
 

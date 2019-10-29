@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: 8f9b60c6e181c9f47635e7d46ce103032d395028
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1d357566a7b2478fff77ed4d88af4ee8a9535050
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087353"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044735"
 ---
-# <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Scenariusz: "licznik alarmowy: USTERKa: blokowanie miękkie — błąd procesora CPU z klastra usługi Azure HDInsight
+# <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Scenariusz: "licznik alarm: USTERKa: blokowanie nietrwałe — procesor CPU" z klastra usługi Azure HDInsight
 
 W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku współpracy z klastrami usługi Azure HDInsight.
 
@@ -26,7 +26,7 @@ Dziennik systemowy jądra zawiera komunikat o błędzie: `watchdog: BUG: soft lo
 
 [Usterka](https://bugzilla.kernel.org/show_bug.cgi?id=199437) w jądrze systemu Linux powoduje nietrwałe zawieszanie procesora.
 
-## <a name="resolution"></a>Rozwiązanie
+## <a name="resolution"></a>Rozdzielczość
 
 Zastosuj poprawkę jądra. Poniższy skrypt uaktualnia jądro systemu Linux i ponownie uruchamia maszyny w różnym czasie w ciągu 24 godzin. Wykonaj akcję skryptu w dwóch partiach. Pierwsza partia znajduje się na wszystkich węzłach poza węzłem głównym. Druga partia jest w węźle głównym. Nie uruchamiaj na węzłach głównych i w innych węzłach w tym samym czasie.
 
@@ -36,11 +36,11 @@ Zastosuj poprawkę jądra. Poniższy skrypt uaktualnia jądro systemu Linux i po
 
 1. Wybierz pozycję **Prześlij nowy** i wprowadź dane wejściowe w następujący sposób:
 
-    | Właściwość | Value |
+    | Właściwość | Wartość |
     | --- | --- |
     | Typ skryptu | -Niestandardowe |
-    | Name |Poprawka problemu dotyczącego nieelastycznego blokowania jądra |
-    | Identyfikator URI skryptu powłoki systemowej |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
+    | Nazwa |Poprawka problemu dotyczącego nieelastycznego blokowania jądra |
+    | Identyfikator URI skryptu bash |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | Typy węzłów |Proces roboczy, dozorcy |
     | Parametry |ND |
 
@@ -50,7 +50,7 @@ Zastosuj poprawkę jądra. Poniższy skrypt uaktualnia jądro systemu Linux i po
 
 1. Poczekaj na pomyślne wykonanie.
 
-1. Wykonaj akcję skryptu w węźle głównym, wykonując te same kroki co krok 3, ale tym razem z typami węzłów: MTP.
+1. Wykonaj akcję skryptu w węźle głównym, wykonując te same kroki co krok 3, ale tym razem z typami węzłów: główna.
 
 1. Poczekaj na pomyślne wykonanie.
 
@@ -60,6 +60,6 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 * Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Połącz się [@AzureSupport](https://twitter.com/azuresupport) za pomocą — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
+* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalne Microsoft Azure konto, aby usprawnić obsługę klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
 * Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

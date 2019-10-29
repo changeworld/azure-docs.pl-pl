@@ -9,14 +9,17 @@ ms.service: iot-central
 services: iot-central
 ms.custom:
 - iot-p0-scenario
-ms.openlocfilehash: 5db494b17b131e79bc84ccd6cfa2888bf3632e1d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b0200be389e6f0d59690f041695da368de6828ba
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957454"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027387"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Tworzenie rozwiązań detalicznych za pomocą usługi Azure IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 Azure IoT Central to platforma aplikacji Internet rzeczy (IoT) dla konstruktorów rozwiązań, która upraszcza tworzenie aplikacji & Zarządzanie skalowalnymi aplikacjami. W tym artykule wyróżnimy kilka szablonów aplikacji dotyczących handlu detalicznego w ramach IoT Central. Konstruktory rozwiązań mogą korzystać z opublikowanych szablonów do kompilowania rozwiązań IoT w celu zoptymalizowania łańcucha dostaw, ulepszania środowiska w sklepie dla klientów i śledzenia bardziej wydajnego spisu.
 
 > [!div class="mx-imgBorder"]

@@ -6,14 +6,16 @@ ms.author: nandab
 ms.service: iot-central
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 75d6591b13e21ce2914c3e407bad970522856c90
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1ce0896d3b9fd60190625b49d0e4580a2038e638
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958000"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027368"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>Architektura IoT Central szablonu aplikacji Digital Distribution Center
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Partnerzy & klienci mogą korzystać z szablonu aplikacji & następujące wskazówki umożliwiają tworzenie kompleksowych rozwiązań **centrum dystrybucji cyfrowej** .
 

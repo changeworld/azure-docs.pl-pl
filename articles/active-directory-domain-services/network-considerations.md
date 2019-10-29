@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 325b9e8edc997e41e48e11b3ee752bc38d7dc4a1
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315005"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024004"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Zagadnienia dotyczące projektowania sieci wirtualnej i opcje konfiguracji Azure AD Domain Services
 
@@ -62,7 +62,7 @@ Możesz połączyć obciążenia aplikacji hostowane w innych sieciach wirtualny
 * Wirtualne sieci równorzędne
 * Wirtualna sieć prywatna (VPN)
 
-### <a name="virtual-network-peering"></a>Komunikacja równorzędna sieci wirtualnej
+### <a name="virtual-network-peering"></a>Virtual Network komunikacji równorzędnej
 
 Komunikacja równorzędna sieci wirtualnych jest mechanizmem, który łączy dwie sieci wirtualne w tym samym regionie za pomocą sieci szkieletowej platformy Azure. Globalne wirtualne sieci równorzędne mogą łączyć się z siecią wirtualną w różnych regionach platformy Azure. Po nawiązaniu połączenia równorzędnego dwie sieci wirtualne zezwalają na zasoby, takie jak maszyny wirtualne, komunikują się ze sobą bezpośrednio przy użyciu prywatnych adresów IP. Za pomocą komunikacji równorzędnej sieci wirtualnej można wdrożyć domenę zarządzaną platformy Azure AD DS przy użyciu obciążeń aplikacji wdrożonych w innych sieciach wirtualnych.
 
@@ -91,8 +91,8 @@ W przypadku domeny zarządzanej AD DS platformy Azure tworzone są pewne zasoby 
 | Zasób platformy Azure                          | Opis |
 |:----------------------------------------|:---|
 | Karta sieciowa                  | Usługa Azure AD DS hostuje domenę zarządzaną na dwóch kontrolerach domeny (DC) działających w systemie Windows Server jako maszyn wirtualnych platformy Azure. Każda maszyna wirtualna ma interfejs sieci wirtualnej, który łączy się z podsiecią sieci wirtualnej. |
-| Dynamiczny publiczny adres IP w warstwie Podstawowa         | Usługa Azure AD DS komunikuje się z usługą synchronizacji i zarządzania przy użyciu publicznego adresu IP jednostki SKU. Aby uzyskać więcej informacji o publicznych adresach IP, zobacz [typy adresów IP i metody alokacji na platformie Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
-| Moduł równoważenia obciążenia w warstwie Podstawowa Azure               | Usługa Azure AD DS używa podstawowego modułu równoważenia obciążenia SKU do translacji adresów sieciowych (NAT) i równoważenia obciążenia (gdy jest używany z bezpiecznym protokołem LDAP). Aby uzyskać więcej informacji na temat modułów równoważenia obciążenia platformy Azure, zobacz [co to jest Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
+| Dynamiczny publiczny adres IP w warstwie Standardowa         | Usługa Azure AD DS komunikuje się z usługą synchronizacji i zarządzania przy użyciu publicznego adresu IP jednostki SKU. Aby uzyskać więcej informacji o publicznych adresach IP, zobacz [typy adresów IP i metody alokacji na platformie Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
+| Moduł równoważenia obciążenia w warstwie Standardowa platformy Azure               | Usługa Azure AD DS korzysta ze standardowego modułu równoważenia obciążenia jednostki SKU do translacji adresów sieciowych (NAT) i równoważenia obciążenia (gdy jest używany z bezpiecznym protokołem LDAP). Aby uzyskać więcej informacji na temat modułów równoważenia obciążenia platformy Azure, zobacz [co to jest Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
 | Reguły translatora adresów sieciowych (NAT) | Usługa Azure AD DS tworzy i używa trzech reguł translatora adresów sieciowych w ramach modułu równoważenia obciążenia — jednej reguły dla bezpiecznego ruchu HTTP i dwóch reguł bezpiecznego komunikacji zdalnej programu PowerShell. |
 | Reguły modułu równoważenia obciążenia                     | W przypadku skonfigurowania domeny zarządzanej AD DS platformy Azure pod kątem bezpiecznego protokołu LDAP na porcie TCP 636, trzy reguły są tworzone i używane w module równoważenia obciążenia do dystrybucji ruchu. |
 
@@ -105,12 +105,12 @@ W przypadku domeny zarządzanej AD DS platformy Azure tworzone są pewne zasoby 
 
 Następujące reguły sieciowej grupy zabezpieczeń są wymagane dla usługi Azure AD DS, aby zapewnić uwierzytelnianie i usługi zarządzania. Nie Edytuj ani nie usuwaj tych reguł sieciowej grupy zabezpieczeń dla podsieci sieci wirtualnej, w której wdrożono domenę zarządzaną platformy Azure AD DS.
 
-| Numer portu | Protocol | Obiekt źródłowy                             | Destination | Action | Wymagane | Cel |
+| Numer portu | Protocol (Protokół) | Źródło                             | Cel | Działanie | Wymagane | Przeznaczenie |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Tak      | Synchronizacja z dzierżawą usługi Azure AD. |
-| 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Tak      | Zarządzanie domeną. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Tak      | Zarządzanie domeną. |
-| 636         | TCP      | Any                                | Any         | Allow  | Nie       | Włączone tylko w przypadku konfigurowania bezpiecznego protokołu LDAP (LDAPs). |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Dowolne         | Zezwól  | Tak      | Synchronizacja z dzierżawą usługi Azure AD. |
+| 3389        | TCP      | CorpNetSaw                         | Dowolne         | Zezwól  | Tak      | Zarządzanie domeną. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Dowolne         | Zezwól  | Tak      | Zarządzanie domeną. |
+| 636         | TCP      | Dowolne                                | Dowolne         | Zezwól  | Nie       | Włączone tylko w przypadku konfigurowania bezpiecznego protokołu LDAP (LDAPs). |
 
 > [!WARNING]
 > Nie edytuj ręcznie tych zasobów sieciowych i konfiguracji. W przypadku kojarzenia nieskonfigurowanej grupy zabezpieczeń sieci lub tabeli tras zdefiniowanych przez użytkownika z podsiecią, w której wdrożono AD DS platformy Azure, możesz przerwać możliwość usługi i zarządzania domeną przez firmę Microsoft. Nieprzerwana synchronizacja dzierżawy usługi Azure AD i domeny zarządzanej platformy Azure AD DS.
@@ -142,7 +142,7 @@ Następujące reguły sieciowej grupy zabezpieczeń są wymagane dla usługi Azu
 * Służy do wykonywania zadań zarządzania przy użyciu komunikacji zdalnej programu PowerShell w domenie zarządzanej AD DS platformy Azure.
 * Bez dostępu do tego portu domeny zarządzanej AD DS platformy Azure nie można zaktualizować, skonfigurować, utworzyć kopii zapasowej ani monitorować.
 * W przypadku domen zarządzanych AD DS platformy Azure, które korzystają z sieci wirtualnej opartej na Menedżer zasobów, można ograniczyć dostęp przychodzący do tego portu do znacznika usługi *AzureActiveDirectoryDomainServices* .
-    * W przypadku starszych domen zarządzanych przez platformę Azure AD DS przy użyciu klasycznej sieci wirtualnej można ograniczyć dostęp przychodzący do tego portu do następujących źródłowych adresów IP: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*i *104.40.87.209*.
+    * W przypadku starszych domen zarządzanych przez platformę Azure AD DS przy użyciu klasycznej sieci wirtualnej można ograniczyć dostęp przychodzący do tego portu do następujących źródłowych adresów IP: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223* , *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*i *104.40.87.209*.
 
 ## <a name="user-defined-routes"></a>Trasy definiowane przez użytkownika
 

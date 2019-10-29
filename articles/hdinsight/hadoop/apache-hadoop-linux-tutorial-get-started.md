@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie klastrów Apache Hadoop Menedżer zasobów — Azure HDInsight'
+title: 'Szybki Start: Apache Hadoop & Menedżer zasobów — Azure HDInsight'
 description: W tym przewodniku szybki start utworzysz Klaster Apache Hadoop w usłudze Azure HDInsight przy użyciu szablonu Menedżer zasobów
 keywords: wprowadzenie do usługi hadoop,hadoop linux,hadoop szybki start,wprowadzenie do usługi hive,hive szybki start
 ms.service: hdinsight
@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 6c4ff1df0ec56339721b3cdab9bb62b0ee8ba94f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: b554fcd4d4175aeac88df14eebbbaf4a8ba49f4c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067670"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044800"
 ---
-# <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Szybki start: Tworzenie klastra Apache Hadoop w usłudze Azure HDInsight przy użyciu szablonu Menedżer zasobów
+# <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Szybki Start: Tworzenie klastra Apache Hadoop w usłudze Azure HDInsight przy użyciu szablonu Menedżer zasobów
 
 W tym przewodniku szybki start dowiesz się, jak utworzyć klaster Apache Hadoop w usłudze Azure HDInsight przy użyciu szablonu Menedżer zasobów.
 
@@ -42,7 +42,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
     |**Lokalizacja**     | Wybierz lokalizację platformy Azure, w której chcesz utworzyć klaster.  Wybierz lokalizację znajdującą się blisko, aby zapewnić lepszą wydajność. |
     |**Nazwa klastra**     | Wprowadź nazwę klastra usługi Hadoop. Ponieważ wszystkie klastry w usłudze HDInsight używają tej samej przestrzeni nazw DNS, ta nazwa musi być unikatowa. Nazwa może zawierać tylko małe litery, cyfry i łączniki oraz musi zaczynać się literą.  Przed i za każdym łącznikiem musi znajdować się znak inny niż łącznik.  Nazwa musi również zawierać od 3 do 59 znaków. |
     |**Typ klastra**     | Wybierz pozycję **hadoop**. |
-    |**Nazwa użytkownika i hasło logowania do klastra**     | Domyślna nazwa logowania to **admin**. Hasło musi składać się z co najmniej 10 znaków i musi zawierać co najmniej jedną cyfrę, jedną wielką i jedną małą literę oraz jeden znak inny niż alfanumeryczny (z wyjątkiem znaków ' " ` \). Upewnij się, że **nie zostało podane** typowe hasło, takie jak „Pass@word1”.|
+    |**Nazwa użytkownika i hasło logowania do klastra**     | Domyślna nazwa logowania to **admin**. Hasło musi składać się z co najmniej 10 znaków i musi zawierać co najmniej jedną cyfrę, jedną wielką i jedną małą literę oraz jeden znak inny niż alfanumeryczny (z wyjątkiem znaków "" "\). Upewnij się, że **nie zostało podane** typowe hasło, takie jak „Pass@word1”.|
     |**Nazwa użytkownika i hasło protokołu SSH**     | Domyślna nazwa użytkownika to **sshuser**.  Nazwę użytkownika SSH można zmienić.  Hasło użytkownika SSH ma te same wymagania co hasło logowania klastra.|
 
     Niektóre właściwości zostały umieszczone w kodzie w szablonie.  Te wartości można skonfigurować z szablonu. Aby uzyskać więcej informacji o tych właściwościach, zobacz artykuł [Create Hadoop clusters in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) (Tworzenie klastrów platformy Hadoop w usłudze HDInsight).
@@ -50,7 +50,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
     > [!NOTE]  
     > Te wartości muszą być unikatowe i zgodne z wytycznymi dotyczącymi nazewnictwa. Szablon nie wykonuje testów walidacyjnych. Jeśli okaże się, że podane wartości są już używane lub nie są zgodne z wytycznymi, po przesłaniu szablonu wystąpi błąd.  
 
-    Usługa ![HDInsight w systemie Linux umożliwia rozpoczęcie pracy z szablonem Menedżer zasobów w portalu](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "Wdrażanie klastra Hadoop w usłudze HDInsight przy użyciu Azure Portal i szablonu Menedżera grupy zasobów")
+    ![Usługa HDInsight w systemie Linux umożliwia rozpoczęcie pracy z szablonem Menedżer zasobów w portalu](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "Wdrażanie klastra Hadoop w usłudze HDInsight przy użyciu Azure Portal i szablonu Menedżera grupy zasobów")
 
 3. Zaznacz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**, a następnie kliknij przycisk **Kup**. Otrzymasz powiadomienie, że wdrożenie jest w toku.  Utworzenie klastra trwa około 20 minut.
 

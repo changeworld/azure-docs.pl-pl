@@ -1,5 +1,5 @@
 ---
-title: Korzystanie C# z usług Apache Hive i Apache chlewnej na Apache Hadoop w usłudze HDInsight — Azure
+title: C#, Apache Hive & Apache chlewnej w Apache Hadoop — Azure HDInsight
 description: Dowiedz się, C# jak używać funkcji zdefiniowanych przez użytkownika (UDF) z Apache Hive i Apache chlewnej streaming w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: fa40f206447f631c78052bda085b26a56e481194
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 222b91b2efefa81186d32fee7229aa0cc4f13a63
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066918"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044590"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Korzystanie C# z funkcji zdefiniowanych przez użytkownika z usługami Apache Hive i Apache chlewnej na Apache Hadoop w usłudze HDInsight
 
@@ -22,7 +22,7 @@ Dowiedz się, C# jak używać funkcji zdefiniowanych przez użytkownika (UDF) z 
 > [!IMPORTANT]
 > Kroki opisane w tym dokumencie działają zarówno w przypadku klastrów usługi HDInsight opartych na systemie Linux, jak i Windows. Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [przechowywanie wersji składników usługi HDInsight](../hdinsight-component-versioning.md).
 
-Zarówno Hive, jak i świnie mogą przekazywać dane do aplikacji zewnętrznych do przetworzenia. Ten proces jest nazywany _przesyłaniem strumieniowym_. W przypadku korzystania z aplikacji .NET dane są przesyłane do aplikacji w STDIN, a aplikacja zwraca wyniki na STDOUT. Aby odczytać i zapisać dane z stdin i stdout, można użyć `Console.ReadLine()` i `Console.WriteLine()` z aplikacji konsolowej.
+Zarówno Hive, jak i świnie mogą przekazywać dane do aplikacji zewnętrznych do przetworzenia. Ten proces jest nazywany _przesyłaniem strumieniowym_. W przypadku korzystania z aplikacji .NET dane są przesyłane do aplikacji w STDIN, a aplikacja zwraca wyniki na STDOUT. Aby odczytywać i zapisywać dane z STDIN i STDOUT, można użyć `Console.ReadLine()` i `Console.WriteLine()` z aplikacji konsolowej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,7 +42,7 @@ Zarówno Hive, jak i świnie mogą przekazywać dane do aplikacji zewnętrznych 
 
 ## <a name="net-on-hdinsight"></a>Platforma .NET w usłudze HDInsight
 
-* Klastry __HDInsight oparte na systemie Linux__ używające systemu [https://mono-project.com) mono (](https://mono-project.com) do uruchamiania aplikacji .NET. W usłudze HDInsight w wersji 3,6 jest dołączony system mono w wersji.
+* __Oparte na systemie Linux__ klastry usługi HDInsight używające systemu [mono (https://mono-project.com)](https://mono-project.com) do uruchamiania aplikacji .NET. W usłudze HDInsight w wersji 3,6 jest dołączony system mono w wersji.
 
     Aby uzyskać więcej informacji na temat zgodności z programem mono z wersjami .NET Framework, zobacz Zgodność z usługą [mono](https://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -50,7 +50,7 @@ Zarówno Hive, jak i świnie mogą przekazywać dane do aplikacji zewnętrznych 
 
 Aby uzyskać więcej informacji na temat wersji programu .NET Framework i narzędzia mono dołączonego do wersji usługi HDInsight, zobacz [wersje składników usługi HDInsight](../hdinsight-component-versioning.md).
 
-## <a name="create-the-c-projects"></a>Tworzenie projektów C\#
+## <a name="create-the-c-projects"></a>Tworzenie projektów\# C
 
 ### <a name="apache-hive-udf"></a>Apache Hive UDF
 
@@ -147,7 +147,7 @@ Aby uzyskać więcej informacji na temat wersji programu .NET Framework i narzę
     }
     ```
 
-    Ten kod analizuje wiersze wysyłane z świni i ponownie formatuje linie, które zaczynają `java.lang.Exception`się od.
+    Ten kod analizuje wiersze wysyłane z świni i ponownie formatuje linie, które zaczynają się od `java.lang.Exception`.
 
 3. Zapisz **program.cs**, a następnie Skompiluj projekt.
 
@@ -203,9 +203,9 @@ Aby uzyskać więcej informacji na temat wersji programu .NET Framework i narzę
     ```
 
     > [!IMPORTANT]
-    > Usuń komentarz z `add file` instrukcji, która jest zgodna z typem domyślnego magazynu używanego w klastrze.
+    > Usuń komentarz do instrukcji `add file`, która pasuje do typu domyślnego magazynu używanego przez klaster.
 
-    To zapytanie wybiera `clientid`pola, `devicemake`, i `devicemodel` z `hivesampletable`i przekazuje pola do aplikacji HiveCSharp. exe. Zapytanie oczekuje, że aplikacja zwróci trzy pola, które są przechowywane jako `clientid`, `phoneLabel`i `phoneHash`. Zapytanie oczekuje również znalezienia HiveCSharp. exe w katalogu głównym domyślnego kontenera magazynu.
+    To zapytanie wybiera pola `clientid`, `devicemake`i `devicemodel` z `hivesampletable`i przekazuje pola do aplikacji HiveCSharp. exe. Zapytanie oczekuje, że aplikacja zwróci trzy pola, które są przechowywane jako `clientid`, `phoneLabel`i `phoneHash`. Zapytanie oczekuje również znalezienia HiveCSharp. exe w katalogu głównym domyślnego kontenera magazynu.
 
 5. Kliknij pozycję **Prześlij** , aby przesłać zadanie do klastra usługi HDInsight. Zostanie otwarte okno **podsumowania zadania Hive** .
 
@@ -226,7 +226,7 @@ Aby uzyskać więcej informacji na temat wersji programu .NET Framework i narzę
     > bin\pig
     > ```
 
-    Zostanie `grunt>` wyświetlony monit.
+    Zostanie wyświetlony monit `grunt>`.
 
 3. Wprowadź następujące, aby uruchomić zadanie trzody chlewnej używające aplikacji .NET Framework:
 
@@ -236,10 +236,10 @@ Aby uzyskać więcej informacji na temat wersji programu .NET Framework i narzę
         DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
         DUMP DETAILS;
 
-    Instrukcja tworzy alias dla aplikacji pigudf. exe i `CACHE` ładuje go z magazynu domyślnego dla klastra. `streamer` `DEFINE` Później jest używany `STREAM` z operatorem do przetwarzania pojedynczych wierszy zawartych w dzienniku i zwracania danych jako serii kolumn. `streamer`
+    Instrukcja `DEFINE` tworzy alias `streamer` dla aplikacji pigudf. exe, a `CACHE` ładuje go z magazynu domyślnego dla klastra. Później `streamer` jest używany z operatorem `STREAM` do przetwarzania pojedynczych wierszy zawartych w dzienniku i zwracania danych jako serii kolumn.
 
     > [!NOTE]
-    > Nazwa aplikacji, która jest używana na potrzeby przesyłania strumieniowego, musi być \` otoczona znakiem (odwróconym znacznikiem), gdy jest on używany w połączeniu z `SHIP`.
+    > Nazwa aplikacji, która jest używana na potrzeby przesyłania strumieniowego, musi być ujęta w znak \` (odwrócony), gdy jest używany alias, i "(apostrof), gdy jest używana z `SHIP`.
 
 4. Po wprowadzeniu ostatniego wiersza zadanie powinno zostać uruchomione. Zwraca dane wyjściowe podobne do następującego tekstu:
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: dad99a7e3d0463263e912aa05b5312edbcb89c0b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 28c7166c3569505d595c55178cf721ee432bd642
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597677"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024158"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania przy użyciu zadania kompilacji emulatora usługi Azure Cosmos DB w usłudze Azure DevOps
 
@@ -35,11 +35,11 @@ Następnie wybierz organizację, w której chcesz zainstalować rozszerzenie.
 
 ![Wybierz organizację usługi Azure DevOps, w której chcesz zainstalować rozszerzenie](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
-## <a name="create-a-build-definition"></a>Utwórz definicję kompilacji
+## <a name="create-a-build-definition"></a>Tworzenie definicji kompilacji
 
 Teraz, gdy rozszerzenie jest zainstalowane, zaloguj się do swojego konta usługi Azure DevOps i znajdź swój projekt na pulpicie nawigacyjnym projektów. Do projektu możesz dodać [potok kompilacji](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) lub zmodyfikować istniejący potok kompilacji. Jeśli masz już potok kompilacji, możesz przejść od razu do sekcji [Dodawanie zadania kompilacji emulatora do definicji kompilacji](#addEmulatorBuildTaskToBuildDefinition).
 
-1. Aby utworzyć nową definicję kompilacji, przejdź do karty **Builds** (Kompilacje) w usłudze Azure DevOps. Wybierz pozycję **+New** (+Nowe). \>**Nowy potok kompilacji**
+1. Aby utworzyć nową definicję kompilacji, przejdź do karty **Builds** (Kompilacje) w usłudze Azure DevOps. Wybierz pozycję **+New** (+Nowe). \> **Nowy potok kompilacji**
 
    ![Tworzenie nowego potoku kompilacji](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
@@ -50,7 +50,7 @@ Teraz, gdy rozszerzenie jest zainstalowane, zaloguj się do swojego konta usług
 3. Na koniec wybierz odpowiedni szablon dla potoku kompilacji. Do celów tego samouczka wybierzemy szablon **ASP.NET**. 
 
 > [!NOTE]
-> Pula agentów wybrana dla tego elementu konfiguracji powinna mieć zainstalowaną Docker for Windows, chyba że instalacja zostanie wykonana ręcznie w poprzednim zadaniu jako część elementu konfiguracji. Aby uzyskać wybór pul agentów, zobacz artykuł dotyczący [agentów hostowanych firmy Microsoft](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) . zalecamy rozpoczęcie od `Hosted VS2017` lub `Hosted VS2019`. 
+> Pula agentów wybrana dla tego elementu konfiguracji powinna mieć zainstalowaną Docker for Windows, chyba że instalacja zostanie wykonana ręcznie w poprzednim zadaniu jako część elementu konfiguracji. Aby uzyskać wybór pul agentów, zobacz artykuł dotyczący [agentów hostowanych firmy Microsoft](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) . zalecamy rozpoczęcie od `Hosted VS2017`.
 
 Mamy już potok kompilacji, który możemy skonfigurować, aby użyć zadania kompilacji emulatora usługi Azure Cosmos DB. 
 

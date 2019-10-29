@@ -1,5 +1,5 @@
 ---
-title: Generowanie zaleceń przy użyciu oprogramowania Apache Mahout i HDInsight (SSH) — Azure
+title: Generowanie rekomendacji przy użyciu oprogramowania Apache Mahout w usłudze Azure HDInsight
 description: Dowiedz się, jak wygenerować zalecenia dotyczące filmów za pomocą usługi HDInsight (Hadoop) za pomocą biblioteki Apache Mahout Machine Learning.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: a3919cf84714b69776222fa35d3163e0915869f7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 3923abd10fc3a64773d561b1f375f9e2f00a7e56
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881982"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044562"
 ---
 # <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>Generowanie zaleceń dotyczących filmów przy użyciu platformy Apache Mahout z Apache Hadoop w usłudze HDInsight (SSH)
 
@@ -39,19 +39,19 @@ Jedną z funkcji dostarczanych przez Mahout jest aparat rekomendacji. Ten aparat
 
 Poniższy przepływ pracy to uproszczony przykład, który używa danych filmowych:
 
-* **Wspólne wystąpienie**: Jan, Alicja i Robert wszystkie Niemniej w przypadku *konfliktów gwiazdy*, *Empire wraca*i *zwracają Jedi*. Mahout określa, że użytkownicy, którzy lubią jeden z tych filmów, lubią również pozostałe dwa.
+* **Wspólne wystąpienie**: Jan, Alicja i Robert wszystkie Niemniej *,* *Empire uderzają z powrotem*i *zwracają Jedi*. Mahout określa, że użytkownicy, którzy lubią jeden z tych filmów, lubią również pozostałe dwa.
 
 * **Wspólne wystąpienie**: Robert i Alicja również polubili *Menace Fantom*, *atakujący klony*i *Revenge Sith*. Mahout określa, że użytkownicy, którzy lubią poprzednie trzy filmy, również lubią te trzy filmy.
 
-* **Zalecenie dotyczące podobieństwa**: Ponieważ Jan polubili pierwsze trzy filmy, Mahout przegląda filmy, które przypominają inne podobne preferencje, ale Jan nie czuje się (Lubię/sklasyfikowany). W takim przypadku Mahout zaleca *Fantom Menace*, *ataki klonów*i *Revenge Sith*.
+* **Zalecenie dotyczące podobieństwa**: ze względu na to, że Jan polubili pierwsze trzy filmy, Mahout przegląda filmy, które przypominają inne podobne preferencje, ale Jan nie czuje się (podobieństwo/sklasyfikowany). W takim przypadku Mahout zaleca *Fantom Menace*, *ataki klonów*i *Revenge Sith*.
 
 ### <a name="understanding-the-data"></a>Zrozumienie danych
 
-Wygodnie [GroupLens Research](https://grouplens.org/datasets/movielens/) udostępnia dane klasyfikacji dla filmów w formacie zgodnym z Mahout. Te dane są dostępne w domyślnym magazynie klastra pod adresem `/HdiSamples/HdiSamples/MahoutMovieData`.
+Wygodnie [GroupLens Research](https://grouplens.org/datasets/movielens/) udostępnia dane klasyfikacji dla filmów w formacie zgodnym z Mahout. Te dane są dostępne w domyślnym magazynie klastra w `/HdiSamples/HdiSamples/MahoutMovieData`.
 
-Istnieją dwa pliki `moviedb.txt` i `user-ratings.txt`. Ten `user-ratings.txt` plik jest używany podczas analizy. `moviedb.txt` Służy do udostępniania informacji tekstowych przyjaznych dla użytkownika podczas przeglądania wyników.
+Istnieją dwa pliki, `moviedb.txt` i `user-ratings.txt`. Plik `user-ratings.txt` jest używany podczas analizy. `moviedb.txt` służy do dostarczania przyjaznych dla użytkownika informacji tekstowych podczas wyświetlania wyników.
 
-Dane zawarte w User-ratings. txt `userID`mają strukturę,, `userRating`, i `movieID` `timestamp`, która wskazuje, jak wysoce każdy użytkownik ocenia film. Oto przykład danych:
+Dane zawarte w User-ratings. txt mają strukturę `userID`, `movieID`, `userRating`i `timestamp`, która wskazuje, jak wysoce każdy użytkownik ocenia film. Oto przykład danych:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -85,7 +85,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
         3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
         4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-    Pierwsza kolumna to `userID`. Wartości zawarte w "[" i "]" są `movieId`następujące:.`recommendationScore`
+    Pierwsza kolumna jest `userID`. Wartości zawarte w "[" i "]" są `movieId`:`recommendationScore`.
 
 2. Możesz użyć danych wyjściowych wraz z MovieDB. txt, aby uzyskać więcej informacji na temat zaleceń. Najpierw skopiuj pliki przy użyciu następujących poleceń:
 
@@ -178,7 +178,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
 ## <a name="delete-temporary-data"></a>Usuń dane tymczasowe
 
-Zadania Mahout nie usuwają danych tymczasowych, które są tworzone podczas przetwarzania zadania. `--tempDir` Parametr jest określony w przykładowym zadaniu do izolowania plików tymczasowych do określonej ścieżki w celu łatwego usunięcia. Aby usunąć pliki tymczasowe, użyj następującego polecenia:
+Zadania Mahout nie usuwają danych tymczasowych, które są tworzone podczas przetwarzania zadania. Parametr `--tempDir` jest określony w przykładowym zadaniu do izolowania plików tymczasowych w określonej ścieżce, aby można było łatwo usunąć. Aby usunąć pliki tymczasowe, użyj następującego polecenia:
 
 ```bash
 hdfs dfs -rm -f -r /temp/mahouttemp

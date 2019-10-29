@@ -1,5 +1,5 @@
 ---
-title: Apache Hive z narzędziami Data Lake Tools for Visual Studio — Azure HDInsight
+title: Apache Hive & Data Lake Tools for Visual Studio — Azure HDInsight
 description: Dowiedz się, jak za pomocą narzędzi Data Lake Tools for Visual Studio uruchamiać zapytania Apache Hive za pomocą Apache Hadoop w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 37652a8ca9750e6b33bd2744bda386eaba92b025
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076282"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044531"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Uruchamianie zapytań Apache Hive przy użyciu narzędzi Data Lake Tools for Visual Studio
 
@@ -63,23 +63,23 @@ Zapytania ad hoc mogą być wykonywane w trybie **wsadowym** lub **interaktywnym
 
     Edytor Hive obsługuje funkcję IntelliSense. Narzędzia Data Lake Tools for Visual Studio obsługują ładowanie zdalnych metadanych podczas edycji skryptu Hive. Na przykład, jeśli wpiszesz `SELECT * FROM`, IntelliSense wyświetla wszystkie sugerowane nazwy tabel. Po określeniu nazwy tabeli funkcja IntelliSense wyświetla nazwy kolumn. Narzędzia obsługują większość instrukcji DML programu Hive, podzapytań i wbudowanych sterowników UDF. Funkcja IntelliSense zasugeruje tylko metadane klastra zaznaczonego na pasku narzędzi usługi HDInsight.
 
-    ![Zrzut ekranu przykładu 1 funkcji IntelliSense narzędzi HDInsight Visual Studio Tools](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
+    ![Zrzut ekranu przykładu funkcji IntelliSense Visual Studio Tools usługi HDInsight 1](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "Funkcja IntelliSense języka U-SQL")
    
-    ![Zrzut ekranu przykładu 2 funkcji IntelliSense narzędzi HDInsight Visual Studio Tools](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
+    ![Zrzut ekranu przykładu funkcji IntelliSense Visual Studio Tools usługi HDInsight](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "Funkcja IntelliSense języka U-SQL")
 
 7. Wybierz pozycję **Prześlij** lub **Prześlij (zaawansowane)** .
 
    W przypadku wybrania zaawansowanych opcji przesyłania należy skonfigurować dla skryptu wartości takie jak **Nazwa zadania**, **Argumenty**, **Dodatkowe konfiguracje** i **Katalog stanu**:
 
-    ![Zrzut ekranu zapytania programu Hive w usłudze HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Przesłanie zapytań")
+    ![Zrzut ekranu zapytania programu Hive usługi HDInsight Hadoop](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Prześlij zapytania")
 
 ### <a name="hive-application"></a>Aplikacja Hive
 
 1. Otwórz **program Visual Studio**.
 
-2. Na pasku menu Przejdź do menu **plik** > **Nowy** > **projekt**.
+2. Na pasku menu Przejdź do **pliku** > **Nowy** > **projekt**.
 
-3. W oknie **Nowy projekt** przejdź do **szablonów** > **aplikacji Hive** **Azure Data Lake** > **Hive (HDInsight)**  > . 
+3. W oknie **Nowy projekt** przejdź do **szablonów** > **Azure Data Lake** > **Hive (HDInsight)**  > **aplikacji Hive**. 
 
 4. Podaj nazwę dla tego projektu, a następnie wybierz przycisk **OK**.
 
@@ -98,20 +98,20 @@ Zapytania ad hoc mogą być wykonywane w trybie **wsadowym** lub **interaktywnym
 
    * `DROP TABLE`: Jeśli tabela istnieje, ta instrukcja usunie ją.
 
-   * `CREATE EXTERNAL TABLE`: Tworzy nową tabelę "External" w gałęzi. Tabele zewnętrzne przechowują definicję tabeli w gałęzi Hive (dane są pozostawione w oryginalnej lokalizacji).
+   * `CREATE EXTERNAL TABLE`: tworzy nową tabelę "External" w gałęzi. Tabele zewnętrzne przechowują definicję tabeli w gałęzi Hive (dane są pozostawione w oryginalnej lokalizacji).
 
      > [!NOTE]  
      > Tabele zewnętrzne powinny być używane, gdy oczekuje się, że dane podstawowe mają być aktualizowane przez zewnętrzne źródło. Na przykład zadanie MapReduce lub usługa platformy Azure.
      >
      > Porzucenie tabeli **zewnętrznej nie powoduje usunięcia danych** , tylko definicji tabeli.
 
-   * `ROW FORMAT`: Informuje Hive, jak dane są sformatowane. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
+   * `ROW FORMAT`: informuje Hive, jak dane są formatowane. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
 
-   * `STORED AS TEXTFILE LOCATION`: Instruuje gałąź, że dane są przechowywane w przykładowym katalogu danych i są przechowywane jako tekst.
+   * `STORED AS TEXTFILE LOCATION`: instruuje gałąź, że dane są przechowywane w przykładowym katalogu danych i są przechowywane jako tekst.
 
-   * `SELECT`: Wybierz liczbę wszystkich wierszy, w których kolumna `t4` zawiera wartość. `[ERROR]` Ta instrukcja zwraca wartość `3` , ponieważ istnieją trzy wiersze, które zawierają tę wartość.
+   * `SELECT`: Wybierz liczbę wszystkich wierszy, w których `t4` kolumna zawiera wartość `[ERROR]`. Ta instrukcja zwraca wartość `3`, ponieważ istnieją trzy wiersze, które zawierają tę wartość.
 
-   * `INPUT__FILE__NAME LIKE '%.log'`-Informuje gałąź, że będziemy zwracać tylko dane z plików kończących się na. log. Ta klauzula ogranicza wyszukiwanie do pliku Sample. log, który zawiera dane.
+   * `INPUT__FILE__NAME LIKE '%.log'` — informuje gałąź, że będziemy zwracać tylko dane z plików kończących się na. log. Ta klauzula ogranicza wyszukiwanie do pliku Sample. log, który zawiera dane.
 
 6. Na pasku narzędzi wybierz klaster usługi **HDInsight** , który ma być używany dla tego zapytania. Wybierz pozycję **Prześlij** , aby uruchomić instrukcje jako zadanie Hive.
 
@@ -121,11 +121,11 @@ Zapytania ad hoc mogą być wykonywane w trybie **wsadowym** lub **interaktywnym
 
    ![Podsumowanie zadania zawierające ukończone zadanie](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
-8. Użyj linku **dane wyjściowe zadania** , aby wyświetlić dane wyjściowe tego zadania. Zostanie wyświetlona `[ERROR] 3`, która jest wartością zwracaną przez to zapytanie.
+8. Użyj linku **dane wyjściowe zadania** , aby wyświetlić dane wyjściowe tego zadania. Wyświetla `[ERROR] 3`, która jest wartością zwracaną przez to zapytanie.
 
 ### <a name="additional-example"></a>Dodatkowy przykład
 
-Ten przykład opiera się `log4jLogs` na tabeli utworzonej w poprzednim kroku.
+Ten przykład opiera się na tabeli `log4jLogs` utworzonej w poprzednim kroku.
 
 1. W **Eksplorator serwera**kliknij prawym przyciskiem myszy klaster i wybierz polecenie **Napisz zapytanie Hive**.
 
@@ -139,18 +139,18 @@ Ten przykład opiera się `log4jLogs` na tabeli utworzonej w poprzednim kroku.
 
     Te instrukcje wykonują następujące czynności:
 
-    * `CREATE TABLE IF NOT EXISTS`: Tworzy tabelę, jeśli jeszcze nie istnieje. `EXTERNAL` Ponieważ słowo kluczowe nie jest używane, ta instrukcja tworzy tabelę wewnętrzną. Tabele wewnętrzne są przechowywane w magazynie danych programu Hive i są zarządzane przez program Hive.
+    * `CREATE TABLE IF NOT EXISTS`: tworzy tabelę, jeśli jeszcze nie istnieje. Ponieważ słowo kluczowe `EXTERNAL` nie jest używane, ta instrukcja tworzy tabelę wewnętrzną. Tabele wewnętrzne są przechowywane w magazynie danych programu Hive i są zarządzane przez program Hive.
     
     > [!NOTE]  
-    > W przeciwieństwie do `EXTERNAL` tabel, upuszczenie wewnętrznej tabeli spowoduje również usunięcie danych źródłowych.
+    > W przeciwieństwie do tabel `EXTERNAL`, upuszczenie wewnętrznej tabeli spowoduje również usunięcie danych źródłowych.
 
-    * `STORED AS ORC`: Dane są przechowywane w formacie zoptymalizowanego wiersza kolumnowy (ORC). ORC to wysoce zoptymalizowany i wydajny format służący do przechowywania danych programu Hive.
+    * `STORED AS ORC`: przechowuje dane w formacie ORC (zoptymalizowany wiersz kolumnowy). ORC to wysoce zoptymalizowany i wydajny format służący do przechowywania danych programu Hive.
     
-    * `INSERT OVERWRITE ... SELECT`: Wybiera wiersze z `log4jLogs` tabeli, która zawiera `[ERROR]`, a następnie `errorLogs` wstawia dane do tabeli.
+    * `INSERT OVERWRITE ... SELECT`: wybiera wiersze z tabeli `log4jLogs` zawierającej `[ERROR]`, a następnie wstawia dane do tabeli `errorLogs`.
 
 3. Wykonaj zapytanie w trybie **wsadowym** .
 
-4. Aby sprawdzić, czy zadanie utworzyło tabelę, użyj **Eksplorator serwera** i rozwiń węzeł Azure**HDInsight** > klastrze **usługi** > HDInsight > **baz danych** > programu Hive jako**domyślnych**. Zostanie wyświetlona tabela **errorLogs** i tabela **log4jLogs** .
+4. Aby sprawdzić, czy zadanie utworzyło tabelę, użyj **Eksplorator serwera** i rozwiń węzeł **Azure** > **HDInsight** > klastrze usługi hdinsight > **bazach danych programu Hive** > **domyślnego**. Zostanie wyświetlona tabela **errorLogs** i tabela **log4jLogs** .
 
 ## <a id="nextsteps"></a>Następne kroki
 

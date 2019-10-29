@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 163259af3797b652c9605c171447f4a7d2576c87
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 961b54a4d7c9caee98497e5d2b8db86284084d15
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842711"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023880"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Włączanie Azure Active Directory Domain Services przy użyciu programu PowerShell
 
@@ -130,6 +130,12 @@ $Vnet= New-AzVirtualNetwork `
 
 Teraz Utwórzmy domenę zarządzaną platformy Azure AD DS. Ustaw identyfikator subskrypcji platformy Azure, a następnie podaj nazwę domeny zarządzanej, na przykład *contoso.com*. Identyfikator subskrypcji można uzyskać za pomocą polecenia cmdlet [Get-AzSubscription][Get-AzSubscription] .
 
+W przypadku wybrania regionu, który obsługuje Strefy dostępności, zasoby AD DS platformy Azure są dystrybuowane między strefami w celu zapewnienia dodatkowej nadmiarowości.
+
+Strefy dostępności to unikatowe fizyczne lokalizacje w regionie świadczenia usługi Azure. Każda strefa składa się z co najmniej jednego centrum danych wyposażonego w niezależne zasilanie, chłodzenie i sieć. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach.
+
+Nie ma niczego do skonfigurowania na potrzeby dystrybuowania AD DS platformy Azure między strefami. Platforma Azure automatycznie obsługuje dystrybucję zasobów. Aby uzyskać więcej informacji i sprawdzić dostępność regionów, zobacz [co to są strefy dostępności na platformie Azure?][availability-zones]
+
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
 $ManagedDomainName = "contoso.com"
@@ -148,11 +154,13 @@ Gdy Azure Portal pokazuje, że domena zarządzana AD DS platformy Azure zakończ
 
 * Zaktualizuj ustawienia DNS dla sieci wirtualnej, aby maszyny wirtualne mogły znaleźć domenę zarządzaną do przyłączania do domeny lub uwierzytelniania.
     * Aby skonfigurować system DNS, wybierz domenę zarządzaną platformy Azure AD DS w portalu. W oknie **Przegląd** zostanie wyświetlony monit o automatyczne skonfigurowanie tych ustawień DNS.
+* Jeśli utworzono domenę zarządzaną platformy Azure AD DS w regionie, który obsługuje Strefy dostępności, Utwórz sieciową grupę zabezpieczeń, aby ograniczyć ruch w sieci wirtualnej dla domeny zarządzanej AD DS platformy Azure. Tworzony jest standardowy moduł równoważenia obciążenia platformy Azure, który wymaga wprowadzenia tych reguł. Ta sieciowa Grupa zabezpieczeń zabezpiecza AD DS platformy Azure i jest wymagana do poprawnego działania domeny zarządzanej.
+    * Aby utworzyć grupę zabezpieczeń sieci i wymagane reguły, wybierz domenę zarządzaną platformy Azure AD DS w portalu. W oknie **Przegląd** zostanie wyświetlony monit o automatyczne utworzenie i skonfigurowanie sieciowej grupy zabezpieczeń.
 * [Włącz synchronizację haseł w Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , aby użytkownicy końcowi mogli logować się do domeny zarządzanej przy użyciu swoich poświadczeń firmowych.
 
 ## <a name="complete-powershell-script"></a>Ukończ skrypt programu PowerShell
 
-Poniższy kompletny skrypt programu PowerShell łączy wszystkie zadania przedstawione w tym artykule. Skopiuj skrypt i Zapisz go w pliku z `.ps1` rozszerzeniem. Uruchom skrypt w lokalnej konsoli programu PowerShell lub [Azure Cloud Shell][cloud-shell].
+Poniższy kompletny skrypt programu PowerShell łączy wszystkie zadania przedstawione w tym artykule. Skopiuj skrypt i Zapisz go w pliku z rozszerzeniem `.ps1`. Uruchom skrypt w lokalnej konsoli programu PowerShell lub [Azure Cloud Shell][cloud-shell].
 
 > [!NOTE]
 > Aby włączyć usługę Azure AD DS, musisz być administratorem globalnym dla dzierżawy usługi Azure AD. Musisz również mieć co najmniej uprawnienia *współautora* w ramach subskrypcji platformy Azure.
@@ -233,6 +241,8 @@ Gdy Azure Portal pokazuje, że domena zarządzana AD DS platformy Azure zakończ
 
 * Zaktualizuj ustawienia DNS dla sieci wirtualnej, aby maszyny wirtualne mogły znaleźć domenę zarządzaną do przyłączania do domeny lub uwierzytelniania.
     * Aby skonfigurować system DNS, wybierz domenę zarządzaną platformy Azure AD DS w portalu. W oknie **Przegląd** zostanie wyświetlony monit o automatyczne skonfigurowanie tych ustawień DNS.
+* Jeśli utworzono domenę zarządzaną platformy Azure AD DS w regionie, który obsługuje Strefy dostępności, Utwórz sieciową grupę zabezpieczeń, aby ograniczyć ruch w sieci wirtualnej dla domeny zarządzanej AD DS platformy Azure. Tworzony jest standardowy moduł równoważenia obciążenia platformy Azure, który wymaga wprowadzenia tych reguł. Ta sieciowa Grupa zabezpieczeń zabezpiecza AD DS platformy Azure i jest wymagana do poprawnego działania domeny zarządzanej.
+    * Aby utworzyć grupę zabezpieczeń sieci i wymagane reguły, wybierz domenę zarządzaną platformy Azure AD DS w portalu. W oknie **Przegląd** zostanie wyświetlony monit o automatyczne utworzenie i skonfigurowanie sieciowej grupy zabezpieczeń.
 * [Włącz synchronizację haseł w Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , aby użytkownicy końcowi mogli logować się do domeny zarządzanej przy użyciu swoich poświadczeń firmowych.
 
 ## <a name="next-steps"></a>Następne kroki
@@ -258,3 +268,4 @@ Aby wyświetlić domenę zarządzaną AD DS platformy Azure w działaniu, można
 [New-AzVirtualNetwork]: /powershell/module/Az.Network/New-AzVirtualNetwork
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
 [cloud-shell]: /azure/cloud-shell/cloud-shell-windows-users
+[availability-zones]: ../availability-zones/az-overview.md

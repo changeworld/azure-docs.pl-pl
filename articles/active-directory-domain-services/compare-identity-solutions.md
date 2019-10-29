@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: e3a8a537ae8c971119cfd08fbf80dc169df1d384
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f1759bd2cc82073378c5668682f4cecf8482c2d3
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619306"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042259"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porównaj Active Directory Domain Services samozarządzane, Azure Active Directory i zarządzane Azure Active Directory Domain Services
 
@@ -37,7 +37,7 @@ W tym artykule omówiono porównanie i różnice między tym, jak te rozwiązani
 Jeśli masz aplikacje i usługi, które wymagają dostępu do tradycyjnych mechanizmów uwierzytelniania, takich jak Kerberos lub NTLM, istnieją dwa sposoby zapewnienia Active Directory Domain Services w chmurze:
 
 * Domena *zarządzana* utworzona przy użyciu Azure Active Directory Domain Services. Firma Microsoft tworzy wymagane zasoby i zarządza nimi.
-* Samodzielna domena, którą tworzysz i konfigurujesz przy użyciu tradycyjnych zasobów, takich jak maszyny wirtualne, system operacyjny gościa systemu Windows Server i Active Directory Domain Services. Następnie można nadal administrować tymi zasobami.
+* *Samodzielna* domena, którą tworzysz i konfigurujesz przy użyciu tradycyjnych zasobów, takich jak maszyny wirtualne, system operacyjny gościa systemu Windows Server i Active Directory Domain Services. Następnie można nadal administrować tymi zasobami.
 
 Dzięki usłudze Azure AD DS podstawowe składniki usługi są wdrażane i obsługiwane przez firmę Microsoft jako środowisko domeny *zarządzanej* . Nie można wdrażać, instalować, poprawiać i zabezpieczać infrastruktury AD DS dla składników, takich jak maszyny wirtualne, system operacyjny Windows Server lub kontrolery domeny (DC). Usługa Azure AD DS udostępnia mniejszy podzbiór funkcji dla tradycyjnego, samodzielnego środowiska AD DS, co zmniejsza stopień złożoności projektu i zarządzania. Na przykład nie ma żadnych linków AD, domen, witryn i replikacji do projektowania i konserwowania. W przypadku aplikacji i usług, które działają w chmurze i potrzebują dostępu do tradycyjnych mechanizmów uwierzytelniania, takich jak Kerberos lub NTLM, usługa Azure AD DS zapewnia środowisko domeny zarządzanej z minimalną ilością kosztów administracyjnych.
 
@@ -94,9 +94,9 @@ Na urządzeniu przyłączonym do usługi Azure AD lub zarejestrowaniu uwierzytel
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Urządzenie kontrolowane przez            | Azure AD                                            | Domena zarządzana AD DS platformy Azure                                                |
 | Reprezentacja w katalogu | Obiekty urządzeń w katalogu usługi Azure AD            | Obiekty komputerów w domenie zarządzanej AD DS platformy Azure                        |
-| Authentication                  | Protokoły oparte na połączeniach OAuth/OpenID Connect              | Protokoły Kerberos i NTLM                                               |
-| Zarządzanie                      | Oprogramowanie do zarządzania urządzeniami przenośnymi (MDM), takie jak usługa Intune | Zasady grupy                                                              |
-| Networking                      | Działa za pośrednictwem Internetu                             | Wymaga, aby komputery znajdować się w tej samej sieci wirtualnej co domena zarządzana |
+| Uwierzytelnianie                  | Protokoły oparte na połączeniach OAuth/OpenID Connect              | Protokoły Kerberos i NTLM                                               |
+| Zarządzanie                      | Oprogramowanie do zarządzania urządzeniami przenośnymi (MDM), takie jak usługa Intune | zasady grupy                                                              |
+| Networking                      | Działa za pośrednictwem Internetu                             | Połączenie z siecią wirtualną, w której wdrożono domenę zarządzaną, musi być połączone z usługą lub za pomocą komunikacji równorzędnej |
 | Doskonały dla...                    | Urządzenia mobilne lub stacjonarne użytkowników końcowych                  | Maszyny wirtualne serwera wdrożone na platformie Azure                                              |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,5 +1,5 @@
 ---
-title: InvalidNetworkSecurityGroupSecurityRules — klaster kończy się niepowodzeniem w usłudze Azure HDInsight
+title: Błąd InvalidNetworkSecurityGroupSecurityRules — usługa Azure HDInsight
 description: Tworzenie klastra kończy się niepowodzeniem z błędem ErrorCode InvalidNetworkSecurityGroupSecurityRules
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: 7df978ad059cfe4ccd233400510b779b16472844
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 749cfbb3aeb0d82a81a8383919b9a6568419e967
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087386"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044754"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>Scenariusz: InvalidNetworkSecurityGroupSecurityRules — Tworzenie klastra kończy się niepowodzeniem w usłudze Azure HDInsight
 
@@ -20,13 +20,13 @@ W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązani
 
 ## <a name="issue"></a>Problem
 
-Kod `InvalidNetworkSecurityGroupSecurityRules` błędu jest wyświetlany z opisem podobnym do "reguły zabezpieczeń w sieciowej grupie zabezpieczeń skonfigurowanej z podsiecią, nie zezwala na dostęp do wymaganych połączeń przychodzących i/lub wychodzących".
+Zostanie wyświetlony kod błędu `InvalidNetworkSecurityGroupSecurityRules` z opisem podobnym do "reguły zabezpieczeń w sieciowej grupie zabezpieczeń skonfigurowanej z podsiecią nie zezwalać na wymaganą łączność ruchu przychodzącego i/lub wychodzącego".
 
 ## <a name="cause"></a>Przyczyna
 
 Przyczyną jest problem z regułami [sieciowej grupy zabezpieczeń](../../virtual-network/virtual-network-vnet-plan-design-arm.md) dla ruchu przychodzącego skonfigurowanych dla klastra.
 
-## <a name="resolution"></a>Rozwiązanie
+## <a name="resolution"></a>Rozdzielczość
 
 Przejdź do Azure Portal i zidentyfikuj sieciowej grupy zabezpieczeń, która jest skojarzona z podsiecią, w której jest wdrażany klaster. W sekcji **reguły zabezpieczeń ruchu przychodzącego** upewnij się, że reguły zezwalają na dostęp przychodzący do portu 443 dla adresów IP wymienionych w [tym miejscu](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip).
 
@@ -36,6 +36,6 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 * Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Połącz się [@AzureSupport](https://twitter.com/azuresupport) za pomocą — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
+* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalne Microsoft Azure konto, aby usprawnić obsługę klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
 * Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

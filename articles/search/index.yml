@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Dokumentacja wyszukiwania poznawczego na platformie Azure
+title: Dokumentacja usługi Azure Search
 summary: Przeszukuj prywatną, niejednorodną zawartość w chmurze, korzystając z opcji wzbogacania przy użyciu sztucznej inteligencji dla zawartości bez struktury lub niemożliwej do przeszukiwania w nieprzetworzonej postaci.
 metadata:
-  title: Dokumentacja wyszukiwania poznawczego na platformie Azure
+  title: Dokumentacja usługi Azure Search
   description: Przeszukuj prywatną, niejednorodną zawartość w chmurze, korzystając z opcji wzbogacania przy użyciu sztucznej inteligencji dla zawartości bez struktury lub niemożliwej do przeszukiwania w nieprzetworzonej postaci.
   services: search
   ms.service: service
@@ -11,26 +11,26 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: 5bf7ec2b629fc765ef5c6393b042b608a48ec804
-  ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+  ms.openlocfilehash: 5521f784704fe4d97ed30de0ec5367b9b4bb4f5f
+  ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/23/2019
+  ms.lasthandoff: 10/29/2019
   ms.locfileid: "72790054"
 landingContent:
-- title: Informacje o wyszukiwaniu poznawczym
+- title: Informacje o usłudze Azure Search
   linkLists:
   - linkListType: overview
     links:
-    - text: Co to jest wyszukiwanie poznawcze na platformie Azure?
+    - text: Co to jest usługa Azure Search?
       url: search-what-is-azure-search.md
   - linkListType: architecture
     links:
-    - text: Jak działa wyszukiwanie pełnotekstowe w wyszukiwaniu poznawczym
+    - text: Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Search
       url: search-lucene-query-architecture.md
   - linkListType: video
     links:
-    - text: Co to jest wyszukiwanie poznawcze (1 min 27 s)
+    - text: Co to jest Azure Search (1 min 27 s)
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
 - title: Rozpoczęcie pracy
   linkLists:
@@ -42,13 +42,9 @@ landingContent:
       url: search-get-started-portal.md
     - text: Tworzenie potoku wzbogacania
       url: cognitive-search-quickstart-blob.md
-  - linkListType: tutorial
-    links:
-    - text: Tworzenie aplikacji
-      url: tutorial-csharp-create-first-app.md
   - linkListType: learn
     links:
-    - text: Wprowadzenie do wyszukiwania poznawczego na platformie Azure
+    - text: Wprowadzenie do usługi Azure Search
       url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
 - title: Używanie z magazynem obiektów blob
   linkLists:
@@ -76,6 +72,10 @@ landingContent:
       url: search-indexer-overview.md
   - linkListType: how-to-guide
     links:
+    - text: Indeksowanie danych z usługi Blob Storage
+      url: search-howto-indexing-azure-blob-storage.md
+    - text: Indeksowanie obiektów blob JSON
+      url: search-howto-index-json-blobs.md
     - text: Indeksowanie danych z usługi Azure SQL Database
       url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
     - text: Indeksowanie danych z usługi Cosmos DB
@@ -90,7 +90,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Potok wzbogacania sztucznej inteligencji
+    - text: Co to jest wyszukiwanie poznawcze?
       url: cognitive-search-concept-intro.md
     - text: Zestawy umiejętności
       url: cognitive-search-defining-skillset.md
@@ -108,7 +108,7 @@ landingContent:
       url: knowledge-store-create-portal.md
   - linkListType: reference
     links:
-    - text: Wbudowane umiejętności
+    - text: Wstępnie zdefiniowane umiejętności
       url: cognitive-search-predefined-skills.md
 - title: Wysyłanie zapytań dotyczących danych
   linkLists:

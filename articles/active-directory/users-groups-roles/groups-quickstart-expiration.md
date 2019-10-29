@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aabfe803a6ee40491dd95fe7def9a31838c80e65
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7d98dd0f4f9cdc506b8807932a255d14d3022d49
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928976"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024608"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Szybki start: konfigurowanie wygasania grup usługi Office 365 w usłudze Azure Active Directory
 
@@ -27,13 +27,13 @@ W tym przewodniku Szybki start ustawisz zasady wygasania grup usługi Office 365
 
 Zasady wygasania są proste:
 
-- Grupy z działaniami użytkownika są automatycznie odnawiane jako czas wygaśnięcia w sąsiedztwie (wersja zapoznawcza)
+- Grupy z działaniami użytkownika są automatycznie odnawiane jako zbliżające się czas wygaśnięcia
 - Właściciele grupy są powiadamiani o konieczności odnowienia wygasającej grupy
 - Grupa, która nie zostanie odnowiona, zostanie usunięta
 - Usunięta grupa usługi Office 365 może zostać przywrócona w ciągu 30 dni przez właściciela grupy lub administratora usługi Azure AD
 
 > [!NOTE]
-> Grupy teraz używają usługi Azure AD Intelligence do automatycznego odnawiania w oparciu o to, czy zostały one ostatnio użyte (obecnie w publicznej wersji zapoznawczej, więc nie jest wymagane rejestrowanie się). Ta funkcja jest oparta na aktywności użytkownika w grupach w ramach usług Office 365, takich jak Outlook, SharePoint, Teams, Yammer i inne.
+> Grupy teraz używają usługi Azure AD Intelligence do automatycznego odnawiania w zależności od tego, czy zostały one ostatnio użyte. Ta decyzja o odnowieniu jest oparta na aktywności użytkownika w grupach w ramach usług Office 365, takich jak Outlook, SharePoint, Teams, Yammer i inne.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 

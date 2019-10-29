@@ -1,6 +1,6 @@
 ---
-title: MapReduce i ustawieniami SSH połączenia z usługą Apache Hadoop w HDInsight — Azure
-description: Dowiedz się, jak uruchamiać zadania MapReduce, przy użyciu technologii Apache Hadoop w HDInsight za pomocą protokołu SSH.
+title: Połączenie MapReduce i SSH z usługą Apache Hadoop — Azure HDInsight
+description: Dowiedz się, jak używać protokołu SSH do uruchamiania zadań MapReduce przy użyciu Apache Hadoop w usłudze HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,76 +8,76 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5eac6cd60b9e58dea8901fad076bb481d5f2eb06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4075de1a184896d598c11d09ae2b2bda5e257ed
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078284"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044504"
 ---
-# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight przy użyciu protokołu SSH
+# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Korzystanie z MapReduce z usługą Apache Hadoop w usłudze HDInsight przy użyciu protokołu SSH
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Dowiedz się, jak przesyłać zadania MapReduce z połączeń protokołu Secure Shell (SSH) do HDInsight.
+Dowiedz się, jak przesyłać zadania MapReduce z połączenia Secure Shell (SSH) do usługi HDInsight.
 
 > [!NOTE]
-> Jeśli znasz już przy użyciu serwerów Apache Hadoop oparte na systemie Linux, ale dopiero zaczynasz korzystać z HDInsight, zobacz [porady HDInsight opartych na systemie Linux](../hdinsight-hadoop-linux-information.md).
+> Jeśli znasz już serwery Apache Hadoop oparte na systemie Linux, ale jesteś nowym elementem usługi HDInsight, zobacz [wskazówki dotyczące usługi HDInsight opartej](../hdinsight-hadoop-linux-information.md)na systemie Linux.
 
 ## <a id="prereq"></a>Wymagania wstępne
 
-* Klaster HDInsight opartych na systemie Linux (platformą Hadoop w HDInsight)
+* Klaster usługi HDInsight oparty na systemie Linux (Hadoop w usłudze HDInsight)
 
-* Klient SSH. Aby uzyskać więcej informacji, zobacz [użycia protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* Klient SSH. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a id="ssh"></a>Połącz przy użyciu protokołu SSH
+## <a id="ssh"></a>Nawiązywanie połączenia przy użyciu protokołu SSH
 
-Połącz się z klastrem przy użyciu protokołu SSH. Na przykład następujące polecenie umożliwia nawiązanie klastra o nazwie **myhdinsight** jako **sshuser** konta:
+Połącz się z klastrem przy użyciu protokołu SSH. Na przykład następujące polecenie nawiązuje połączenie z klastrem o nazwie Moja **HDInsight** jako kontem **sshuser** :
 
 ```bash
 ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
-**Jeśli używasz klucza certyfikatu do uwierzytelniania SSH**, konieczne może być na przykład określ lokalizację klucza prywatnego w systemie klienta:
+**Jeśli używasz klucza certyfikatu do uwierzytelniania SSH**, może być konieczne określenie lokalizacji klucza prywatnego w systemie klienta, na przykład:
 
 ```bash
 ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
-**Jeśli używasz hasła do uwierzytelniania SSH**, należy podać hasło po wyświetleniu monitu.
+**Jeśli używasz hasła do uwierzytelniania SSH**, musisz podać hasło po wyświetleniu monitu.
 
-Aby uzyskać więcej informacji dotyczących korzystania z protokołu SSH z usługą HDInsight, zobacz [użycia protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Aby uzyskać więcej informacji na temat używania protokołu SSH z usługą HDInsight, zobacz [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a id="hadoop"></a>Używać poleceń platformy Hadoop
+## <a id="hadoop"></a>Korzystanie z poleceń Hadoop
 
-1. Po połączeniu się z klastrem HDInsight, użyj następującego polecenia, aby uruchomić zadanie MapReduce:
+1. Po nawiązaniu połączenia z klastrem usługi HDInsight Użyj następującego polecenia, aby uruchomić zadanie MapReduce:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    To polecenie uruchamia `wordcount` klasy, która jest zawarta w `hadoop-mapreduce-examples.jar` pliku. Używa ona `/example/data/gutenberg/davinci.txt` dokumentu jako dane wejściowe i wyjściowe są przechowywane w `/example/data/WordCountOutput`.
+    To polecenie uruchamia klasę `wordcount`, która jest zawarta w pliku `hadoop-mapreduce-examples.jar`. Używa `/example/data/gutenberg/davinci.txt` dokumentu jako danych wejściowych, a dane wyjściowe są przechowywane w `/example/data/WordCountOutput`.
 
     > [!NOTE]
-    > Aby uzyskać więcej informacji dotyczących tego zadania MapReduce i przykładowe dane, zobacz [używanie MapReduce na platformie Apache Hadoop w HDInsight](hdinsight-use-mapreduce.md).
+    > Aby uzyskać więcej informacji na temat tego zadania MapReduce i przykładowych danych, zobacz [Korzystanie z MapReduce w Apache Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md).
 
-2. Zadanie emituje szczegółowe informacje, jak są przetwarzane i jego zwraca informacje podobne do następującego tekstu po zakończeniu zadania:
+2. Zadanie emituje szczegóły w miarę procesów i zwraca informacje podobne do następującego tekstu po zakończeniu zadania:
 
         File Input Format Counters
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
 
-3. Po zakończeniu zadania, użyj następującego polecenia, aby wyświetlić listę plików danych wyjściowych:
+3. Po zakończeniu zadania użyj następującego polecenia, aby wyświetlić listę plików wyjściowych:
 
     ```bash
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    To polecenie wyświetla dwa pliki `_SUCCESS` i `part-r-00000`. `part-r-00000` Plik zawiera dane wyjściowe dla tego zadania.
+    To polecenie wyświetla dwa pliki, `_SUCCESS` i `part-r-00000`. Plik `part-r-00000` zawiera dane wyjściowe dla tego zadania.
 
     > [!NOTE]  
-    > Niektóre zadania MapReduce może podzielić wyniki w wielu **część r-###** plików. Jeśli tak, użyj ### przyrostka, aby wskazać kolejność plików.
+    > Niektóre zadania MapReduce mogą dzielić wyniki w wielu plikach **części-r-#** # # #. Jeśli tak, użyj sufiksu # # # # #, aby wskazać kolejność plików.
 
 4. Aby wyświetlić dane wyjściowe, użyj następującego polecenia:
 
@@ -85,7 +85,7 @@ Aby uzyskać więcej informacji dotyczących korzystania z protokołu SSH z usł
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    To polecenie wyświetla listę słów, które są zawarte w **wasb://example/data/gutenberg/davinci.txt** pliku oraz liczbę wystąpień każdego wyrazu. Następujący tekst jest przykładem danych, który jest zawarty w pliku:
+    To polecenie wyświetla listę wyrazów, które znajdują się w pliku **wasb://example/Data/Gutenberg/DaVinci.txt** oraz liczbę przypadków wystąpienia każdego wyrazu. Następujący tekst to przykład danych zawartych w pliku:
 
         wreathed        3
         wreathing       1
@@ -97,15 +97,15 @@ Aby uzyskać więcej informacji dotyczących korzystania z protokołu SSH z usł
 
 ## <a id="summary"></a>Podsumowanie
 
-Jak widać, polecenia Hadoop zapewniają prosty sposób uruchamiania zadań MapReduce w klastrze usługi HDInsight, a następnie przejrzyj dane wyjściowe zadania.
+Jak widać, polecenia usługi Hadoop umożliwiają łatwe uruchamianie zadań MapReduce w klastrze usługi HDInsight, a następnie wyświetlanie danych wyjściowych zadania.
 
 ## <a id="nextsteps"></a>Następne kroki
 
-Aby uzyskać ogólne informacje na temat zadań MapReduce w HDInsight:
+Aby uzyskać ogólne informacje na temat zadań MapReduce w usłudze HDInsight:
 
-* [Korzystanie z technologii MapReduce w usłudze HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Korzystanie z MapReduce w usłudze HDInsight Hadoop](hdinsight-use-mapreduce.md)
 
-Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
+Aby uzyskać informacje o innych sposobach pracy z usługą Hadoop w usłudze HDInsight:
 
-* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
-* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Używanie Apache Hive z Apache Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z usługi Apache świni z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
