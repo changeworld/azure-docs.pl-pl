@@ -10,24 +10,24 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 321f12fef44cae43caf53d78b2908e68f9edd0a8
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429037"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043906"
 ---
 # <a name="active-and-inactive-events"></a>Zdarzenia aktywne i nieaktywne
 
 Gdy aplikacja wywołuje interfejs API rangi, otrzymujesz akcję, którą aplikacja powinna wyświetlić w polu rewardActionId.  Od tego momentu Personalizacja będzie oczekiwać, że nastąpi wywołanie z tym samym eventId. Wynik nagrody będzie używany do uczenia modelu, który będzie używany w przyszłych wywołaniach rangi. Jeśli dla eventId nie zostanie odebrane żadne wynagrodzenie, zostanie zastosowane defaul wynagrodzenie. Domyślne nagrody są ustalane w witrynie Azure Portal.
 
-W niektórych przypadkach może być konieczne wywołanie przez aplikację rangi oddzwonu, nawet jeśli wynik zostanie użyty lub displayedn do użytkownika. Może się tak zdarzyć w sytuacjach, gdy na przykład strona renderowania podwyższonej zawartości zostanie zastąpiona kampanią marketingową. Jeśli wynik wywołania rangi nie był nigdy używany i użytkownik nie zobaczy go, może być niewłaściwy do uczenia się z jakimkolwiek wynagrodzeniem, w ogóle lub w inny sposób.
+W niektórych przypadkach może być konieczne wywołanie rangi przez aplikację, aby nie wie, czy wynik zostanie użyty lub wyświetlony użytkownikowi. Może się tak zdarzyć w sytuacjach, gdy na przykład strona renderowania podwyższonej zawartości zostanie zastąpiona kampanią marketingową. Jeśli wynik wywołania rangi nie był nigdy używany i użytkownik nie zobaczy go, może być niewłaściwy do uczenia się z jakimkolwiek wynagrodzeniem, w ogóle lub w inny sposób.
 Zwykle zdarza się to, gdy:
 
 * Może być wstępnie wyrenderowany niektóre elementy interfejsu użytkownika, które użytkownik może lub może nie zobaczyć. 
 * Aplikacja może przeprowadzać personalizację predykcyjną, w której są wykonywane wywołania rangi z mniejszym kontekstem w czasie rzeczywistym, a ich dane wyjściowe mogą być używane przez aplikację. 
 
-W takich przypadkach prawidłowym sposobem korzystania z programu Personalizuj jest wywoływanie rangi żądającej zdarzenia jako _nieaktywnego_. Personalizacja nie będzie oczekiwać odnoszącego się do tego zdarzenia i nie będzie stosowała wynagrodzenia domyślnego. Letr w logice biznesowej, jeśli aplikacja używa informacji z wywołania rangi, wystarczy _aktywować_ zdarzenie. Od momentu, gdy zdarzenie jest aktywne, Personalizacja będzie oczekiwać odzyskania dla zdarzenia lub zastosować wynagrodzenie domyślne, jeśli żadne jawne wywołanie nie zostanie wykonane do interfejsu API nagradzania.
+W takich przypadkach prawidłowym sposobem korzystania z programu Personalizuj jest wywoływanie rangi żądającej zdarzenia jako _nieaktywnego_. Personalizacja nie będzie oczekiwać odnoszącego się do tego zdarzenia i nie będzie stosowała wynagrodzenia domyślnego. W dalszej części logiki biznesowej, jeśli aplikacja używa informacji z wywołania rangi, wystarczy _aktywować_ zdarzenie. Od momentu, gdy zdarzenie jest aktywne, Personalizacja będzie oczekiwać odzyskania dla zdarzenia lub zastosować wynagrodzenie domyślne, jeśli żadne jawne wywołanie nie zostanie wykonane do interfejsu API nagradzania.
 
 ## <a name="get-inactive-events"></a>Pobierz zdarzenia nieaktywne
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 79a11a58f11486f3eda0205e62e7a4a92ff070b2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0a8f47e0eea8908fcf6aa11c694e09efef14bbf1
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933931"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053529"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności w replikacji na platformie Azure na platformę Azure
 
@@ -31,7 +31,7 @@ Użycie Site Recovery do zarządzania aktualizacjami powoduje wdrożenie globaln
 Domyślny harmonogram elementu Runbook powtarza się codziennie o godzinie 12:00 w strefie czasowej zreplikowanej maszyny wirtualnej. Harmonogram elementów Runbook można także zmienić za pomocą konta usługi Automation.
 
 > [!NOTE]
-> Począwszy od pakietu zbiorczego aktualizacji 35, można wybrać istniejące konto usługi Automation, które ma być używane na potrzeby aktualizacji. Przed tą aktualizacją Site Recovery utworzyć to konto domyślnie. Ta opcja jest dostępna po włączeniu replikacji dla maszyny wirtualnej. Jeśli zmienisz to ustawienie, będzie ono stosowane dla wszystkich maszyn wirtualnych platformy Azure chronionych w tym samym magazynie.
+> Począwszy od pakietu zbiorczego aktualizacji 35, można wybrać istniejące konto usługi Automation, które ma być używane na potrzeby aktualizacji. Przed tą aktualizacją Site Recovery utworzyć to konto domyślnie. Należy pamiętać, że tę opcję można wybrać tylko po włączeniu replikacji dla maszyny wirtualnej. Nie jest on dostępny dla replikowanej maszyny wirtualnej. Wybrane ustawienie będzie stosowane dla wszystkich maszyn wirtualnych platformy Azure chronionych w tym samym magazynie.
  
 > Włączenie funkcji Aktualizacje automatyczne nie wymaga ponownego uruchomienia maszyn wirtualnych platformy Azure lub ma wpływ na trwającą replikację.
 

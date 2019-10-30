@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: dd7e3ed767539f8de46e5f77a39b1e7bac0cb3b0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b408d2cc0754cc1f2dd8671d037d4f9d348e883b
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965824"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027634"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Samouczek: Tworzenie i przechodzenie przez szablon aplikacji monitorującej panel słoneczny 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Ten samouczek przeprowadzi Cię przez proces tworzenia aplikacji monitorującej panel słoneczny, która obejmuje przykładowy model urządzenia z symulowanymi danymi. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -41,8 +43,8 @@ Tę aplikację można utworzyć w trzech prostych krokach:
 
 2. Wybierz kartę **energia** , a następnie kliknij pozycję **Utwórz aplikację** w obszarze kafelek **monitorowanie** aplikacji. 
 
-    > [!div class="mx-imgBorder"]
-    > ![](media/tutorial-iot-central-solar-panel/solar-panel-build.png) aplikacji kompilacji
+    [!div class="mx-imgBorder"]
+    ![](media/tutorial-iot-central-solar-panel/solar-panel-build.png) aplikacji kompilacji
   
 3. **Utworzenie aplikacji** spowoduje otwarcie **nowej aplikacji** . Wypełnij żądane szczegóły, jak pokazano na poniższej ilustracji:
     * **Nazwa aplikacji**: wybierz nazwę aplikacji IoT Central. 
@@ -70,37 +72,37 @@ Adatum to fikcyjna firma energetyczna, która monitoruje panele słoneczne i zar
 * Śledź łączną generację energii na potrzeby planowania i rozliczeń
 * Operacje związane z poleceniami i kontrolkami, takie jak panel Uaktywnij i aktualizują wersję oprogramowania układowego. W szablonie przyciski poleceń pokazują możliwe funkcje i nie wysyłają prawdziwych poleceń.
 
-> [!div class="mx-imgBorder"]
-> ![pulpitu nawigacyjnego monitorowania panelu słonecznego](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
+[!div class="mx-imgBorder"]
+![pulpitu nawigacyjnego monitorowania panelu słonecznego](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
 
 ### <a name="devices"></a>Urządzenia
 Aplikacja jest dostępna z przykładowym urządzeniem panelu słonecznym. Aby wyświetlić szczegóły urządzenia, kliknij kartę **urządzenia** .
 
-> [!div class="mx-imgBorder"]
-> ![urządzeń z panelem słonecznym](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
+[!div class="mx-imgBorder"]
+![urządzeń z panelem słonecznym](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
 
 
 Kliknij link przykładowe urządzenie **SP0123456789** , aby wyświetlić szczegóły urządzenia. Na stronie **Właściwości aktualizacji** można zaktualizować właściwości z możliwością zapisu urządzenia i wizualizować zaktualizowane wartości na pulpicie nawigacyjnym. 
 
-> [!div class="mx-imgBorder"]
-> ![właściwości panelu słonecznego](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
+[!div class="mx-imgBorder"]
+![właściwości panelu słonecznego](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
 
 
 ### <a name="device-template"></a>Szablon urządzenia
 Kliknij kartę **Szablony urządzeń** , aby wyświetlić model urządzenia w panelu. Model zawiera wstępnie zdefiniowane interfejsy dla danych, właściwości, poleceń i widoków.
 
-> [!div class="mx-imgBorder"]
-> ](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png) szablon ![urządzeń z panelem słonecznym
+[!div class="mx-imgBorder"]
+](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png) szablon ![urządzeń z panelem słonecznym
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Jeśli zdecydujesz, aby nie używać tej aplikacji, Usuń aplikację, wykonując następujące czynności:
 
-1. Z menu po lewej stronie Otwórz kartę Administracja
+1. W okienku po lewej stronie Otwórz kartę Administracja
 2. Wybierz pozycję Ustawienia aplikacji, a następnie kliknij przycisk Usuń u dołu strony. 
 
-    > [!div class="mx-imgBorder"]
-    > ![usunąć aplikacji](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
+    [!div class="mx-imgBorder"]
+    ![usunąć aplikacji](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
 
 
 ## <a name="next-steps"></a>Następne kroki

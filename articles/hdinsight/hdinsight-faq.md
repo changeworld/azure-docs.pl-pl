@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
-ms.translationtype: MT
+ms.openlocfilehash: 5b9011e2a95dc1bdb86311111123db3c994f3aee
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827603"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044942"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: często zadawane pytania
 
@@ -46,11 +46,11 @@ W tej sekcji przedstawiono błędy typowych problemów z pojemnością i technik
 
 #### <a name="error-the-deployment-would-exceed-the-quota-of-800"></a>Błąd: wdrożenie spowodowałoby przekroczenie limitu przydziału "800"
 
-Platforma Azure ma limit przydziału 800 wdrożeń na grupę zasobów. Do poszczególnych grup zasobów, subskrypcji, kont i innych zakresów są stosowane różne przydziały. Na przykład subskrypcja może być skonfigurowana w taki sposób, aby ograniczyć liczbę rdzeni dla regionu. Jeśli spróbujesz wdrożyć maszynę wirtualną o większej liczbie rdzeni niż dozwolona, zostanie wyświetlony komunikat o błędzie z informacją o przekroczeniu limitu przydziału.
+Platforma Azure ma limit przydziału, który wynosi 800 wdrożeń na grupę zasobów. Do poszczególnych grup zasobów, subskrypcji, kont i innych zakresów są stosowane różne przydziały. Na przykład subskrypcja może być skonfigurowana w taki sposób, aby ograniczyć liczbę rdzeni dla regionu. Jeśli spróbujesz wdrożyć maszynę wirtualną o większej liczbie rdzeni niż dozwolona, zostanie wyświetlony komunikat o błędzie z informacją o przekroczeniu limitu przydziału.
 
 Aby rozwiązać ten problem, Usuń wdrożenia, które nie są już potrzebne, przy użyciu Azure Portal, interfejsu wiersza polecenia lub programu PowerShell.
 
-Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów dotyczących przydziałów zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).
+Aby uzyskać więcej informacji, zobacz [Resolve errors for resource quotas (Rozwiązywanie błędów z limitami przydziałów zasobów)](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).
 
 #### <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>Błąd: maksymalny węzeł przekracza dostępne rdzenie w tym regionie
 
@@ -60,7 +60,7 @@ Aby zażądać zwiększenia limitu przydziału, wykonaj następujące kroki:
 
 1. Przejdź do [Azure Portal](https://portal.azure.com)i wybierz pozycję **Pomoc i obsługa techniczna**.
    
-1. Wybierz pozycję **nowe żądanie obsługi**.
+1. Wybierz pozycję **Nowe żądanie obsługi**.
    
 1. Na karcie **podstawowe** na stronie **nowe żądanie obsługi** podaj następujące informacje:
    
@@ -68,7 +68,7 @@ Aby zażądać zwiększenia limitu przydziału, wykonaj następujące kroki:
    - **Subskrypcja:** Wybierz subskrypcję, którą chcesz zmodyfikować.
    - **Typ limitu przydziału:** Wybierz pozycję **HDInsight**.
 
-Aby uzyskać więcej informacji, zobacz [Tworzenie biletu pomocy technicznej w celu zwiększenia rdzenia](hdinsight-capacity-planning.md#quotas).
+Aby uzyskać więcej informacji, zobacz [Tworzenie biletu pomocy technicznej w celu zwiększenia liczby rdzeni](hdinsight-capacity-planning.md#quotas).
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>Jakie są różne typy węzłów w klastrze usługi HDInsight?
 
@@ -96,7 +96,7 @@ Jednak pomoc techniczna firmy Microsoft zespoły mogą oferować pomoc techniczn
 
 Aby uzyskać listę obsługiwanych składników, zobacz [co to są składniki Apache Hadoop i wersje dostępne w usłudze HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
 
-Obsługa poszczególnych składników może być również różna w zależności od typu klastra. Na przykład platforma Spark nie jest obsługiwana w klastrze Kafka i na odwrót.
+Obsługa poszczególnych składników może być również zależna od typu klastra. Na przykład platforma Spark nie jest obsługiwana w klastrze Kafka i na odwrót.
 
 W przypadku aplikacji i usług poza procesem tworzenia klastra skontaktuj się z dostawcą lub dostawcą usług, aby uzyskać pomoc techniczną. Możesz również użyć wielu witryn pomocy technicznej społeczności. Przykłady to [forum MSDN dotyczące usługi HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) i [Stack Overflow](https://stackoverflow.com/). Projekty Apache zawierają również witryny projektu w [witrynie Apache](https://apache.org/). Przykładem jest usługa [Hadoop](https://hadoop.apache.org/). 
 
@@ -114,7 +114,7 @@ Nie, nie można uruchamiać Apache Kafka i Apache Spark w tym samym klastrze us�
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Jak mogę zmienić strefę czasową w Ambari?
 
-1. Otwórz interfejs użytkownika sieci Web Ambari pod adresem https://CLUSTERNAME.azurehdinsight.net, gdzie CLUSTERname jest nazwą klastra.
+1. Otwórz interfejs użytkownika sieci Web Ambari w https://CLUSTERNAME.azurehdinsight.net, gdzie CLUSTERname jest nazwą klastra.
 2. W prawym górnym rogu wybierz pozycję Administrator | Ustawienia. 
 
    ![Ustawienia Ambari](media/hdinsight-faq/ambari-settings.png)
@@ -165,7 +165,7 @@ Tak, możesz udostępnić niestandardowy magazyn metadanych w wielu klastrach, o
 
 Jeśli zablokujesz porty 22 i 23, nie będziesz mieć dostępu do klastra za pośrednictwem protokołu SSH. Te porty nie są używane przez usługę HDInsight.
 
-Więcej informacji można znaleźć w następujących dokumentach:
+Aby uzyskać więcej informacji, zobacz następujące dokumenty:
 
 - [Kontrolowanie ruchu sieciowego](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
 
@@ -179,7 +179,7 @@ Tak, można wdrożyć dodatkową maszynę wirtualną w tej samej podsieci, w kt�
 
 - Węzły brzegowe: można dodać kolejny węzeł krawędzi do klastra, zgodnie z opisem w temacie [używanie pustych węzłów brzegowych w klastrach Apache Hadoop w usłudze HDInsight](hdinsight-apps-use-edge-node.md).
 
-- Węzły autonomiczne: można dodać autonomiczną maszynę wirtualną do tej samej podsieci i uzyskać dostęp do klastra z tej maszyny wirtualnej przy użyciu prywatnego punktu końcowego `https://<CLUSTERNAME>-int.azurehdinsight.net`. Aby uzyskać więcej informacji, zobacz [sterowanie ruchem sieciowym](hdinsight-plan-virtual-network-deployment.md#networktraffic).
+- Węzły autonomiczne: można dodać autonomiczną maszynę wirtualną do tej samej podsieci i uzyskać dostęp do klastra z tej maszyny wirtualnej za pomocą prywatnego punktu końcowego `https://<CLUSTERNAME>-int.azurehdinsight.net`. Aby uzyskać więcej informacji, zobacz [sterowanie ruchem sieciowym](hdinsight-plan-virtual-network-deployment.md#networktraffic).
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Czy mogę dodać istniejący klaster usługi HDInsight do innej sieci wirtualnej?
 
@@ -239,7 +239,14 @@ W scenariuszach, w których należy kontrolować harmonogram, można wykonać na
 
 Aby uzyskać więcej informacji o konfigurowaniu i uruchamianiu zadania firmy CRONUS, zobacz [Jak mogę skonfigurować zadanie firmy CRONUS](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job)?
 
-## <a name="storage"></a>Magazyn
+### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Dlaczego LLAP są dostępne w klastrach Spark ESP?
+W klastrach ESP Spark LLAP jest włączony ze względów bezpieczeństwa (np. Apache Ranger), a nie wydajności. Należy używać większych maszyn wirtualnych węzłów, aby uwzględnić użycie zasobów LLAP (np. minimum D13V2). 
+
+### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>Jak dodać grupy usługi AAD addional po utworzeniu klastra ESP?
+Istnieją dwa sposoby osiągnięcia tego celu: 1 — można utworzyć ponownie klaster i dodać dodatkową grupę podczas tworzenia klastra. Jeśli używasz synchronizacji w zakresie w usłudze AAD-DS, upewnij się, że Grupa B jest uwzględniona w synchronizacji z zakresem.
+2\. Dodaj grupę jako zagnieżdżoną podgrupę poprzedniej grupy, która została użyta do utworzenia klastra ESP. Jeśli na przykład utworzono klaster ESP z grupą `A`, można później dodać grupę `B` jako zagnieżdżoną podgrupę `A` i po upływie około godziny, będzie ona synchronizowana i dostępna w klastrze automatycznie. 
+
+## <a name="storage"></a>Usługa Storage
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Czy można dodać Azure Data Lake Storage Gen2 do istniejącego klastra usługi HDInsight jako dodatkowe konto magazynu?
 
@@ -294,7 +301,7 @@ Nie, nie można zwiększyć rozmiaru dysku dowolnego węzła procesu roboczego, 
 
 ### <a name="can-i-add-an-edge-node-after-the-cluster-has-been-created"></a>Czy mogę dodać węzeł brzegowy po utworzeniu klastra?
 
-Klaster usługi HDInsight lub nowy klaster podczas tworzenia klastra. Aby uzyskać więcej informacji, zobacz [używanie pustych węzłów brzegowych w klastrach Apache Hadoop w usłudze HDInsight](hdinsight-apps-use-edge-node.md).
+Klaster usługi HDInsight lub nowy klaster podczas tworzenia klastra. Aby uzyskać więcej informacji, zobacz [Use empty edge nodes on Apache Hadoop clusters in HDInsight](hdinsight-apps-use-edge-node.md) (Używanie pustych węzłów brzegowych w klastrach Apache Hadoop w usłudze HDInsight).
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Jak połączyć się z węzłem brzegowym?
 
@@ -304,20 +311,20 @@ Po utworzeniu węzła brzegowego można nawiązać z nim połączenie przy użyc
 
 Za pomocą utrwalonych skryptów można dostosować nowe węzły procesu roboczego dodawane do klastra za pomocą operacji skalowania. Utrwalone skrypty nie mają zastosowania do węzłów brzegowych.
 
-## <a name="rest-api"></a>INTERFEJS API REST
+## <a name="rest-api"></a>Interfejs API REST
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Jakie są wywołania interfejsu API REST w celu ściągnięcia tez widoku zapytania z klastra?
 
 Aby ściągnąć niezbędne informacje w formacie JSON, można użyć następujących punktów końcowych REST. Użyj nagłówków uwierzytelniania podstawowego, aby wykonać żądania.
 
-- Tez Widok zapytania: *https: \/ @ no__t-2 @ no__t-3cluster name >. azurehdinsight. NET/WS/V1/oś czasu/HIVE_QUERY_ID/*
-- Tez Dag: *https: \/ @ no__t-2 @ no__t-3cluster name >. azurehdinsight. NET/WS/V1/oś czasu/TEZ_DAG_ID/*
+- Tez Widok zapytania: *https:\//\<Nazwa klastra >. azurehdinsight. NET/WS/V1/oś czasu/HIVE_QUERY_ID/*
+- Tez Dag: *https:\//\<nazwy klastra >. azurehdinsight. NET/WS/V1/oś czasu/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Jak mogę pobrać szczegółów konfiguracji z klastra HDI przy użyciu użytkownika Azure Active Directory?
 
 Aby wynegocjować odpowiednie tokeny uwierzytelniania z użytkownikiem usługi AAD, przejdź przez bramę, używając następującego formatu:
 
-* https://@no__t — 0.azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https://`<cluster dnsname>`. azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Jak mogę używać Ambari RESTful API do monitorowania wydajności PRZĘDZy?
 
@@ -347,7 +354,7 @@ Jeśli wywołasz polecenie z spoza sieci wirtualnej lub z sieci wirtualnej niepo
 > [!NOTE]
 > Zwinięcie wyświetli monit o podanie hasła. Wprowadź prawidłowe hasło dla nazwy użytkownika logowania klastra.
 
-## <a name="billing"></a>Godzin
+## <a name="billing"></a>Rozliczenia
 
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>Ile kosztuje Wdrożenie klastra usługi HDInsight?
 
@@ -355,7 +362,7 @@ Aby uzyskać więcej informacji na temat cen i często zadawanych pytań dotycz�
 
 ### <a name="when-does-hdinsight-billing-start--stop"></a>Kiedy rozliczanie usługi HDInsight rozpocznie się & Zatrzymaj?
 
-Rozliczanie klastra usługi HDInsight zaczyna się od momentu utworzenia klastra i zostaje zatrzymane po usunięciu klastra. Opłaty są naliczane proporcjonalnie do liczby minut.
+Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane proporcjonalnie do liczby minut.
 
 ### <a name="how-do-i-cancel-my-subscription"></a>Jak mogę anulować subskrypcję?
 
@@ -365,7 +372,7 @@ Aby uzyskać informacje o sposobach anulowania subskrypcji, zobacz [Anulowanie s
 
 Aby uzyskać informacje o subskrypcji po jej anulowaniu, zobacz [co się stanie po usunięciu subskrypcji?](/azure/billing/billing-how-to-cancel-azure-subscription)
 
-## <a name="hive"></a>Ładowana
+## <a name="hive"></a>Hive
 
 ### <a name="why-does-the-hive-version-appear-as-121000-instead-of-21-in-the-ambari-ui-even-though-i-am-running-an-hdinsight-36-cluster"></a>Dlaczego wersja programu Hive jest wyświetlana jako 1.2.1000 zamiast 2,1 w interfejsie użytkownika Ambari, mimo że jest uruchomiony klaster HDInsight 3,6?
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d73c0f4dbfcc2c67a222f91693ebe8ed9ea83d98
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1e184691ebbd34de0f69e93419d9c34ab18edbe6
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266142"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025950"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub
 
@@ -24,7 +24,7 @@ Należy wykonać trzy ogólne kroki, aby skonfigurować pomyślne, przezroczyste
 
 1. Urządzenie bramy musi być w stanie bezpiecznie łączyć się z urządzeniami podrzędnymi, odbierać komunikaty z urządzeń podrzędnych i kierować komunikaty do odpowiednich miejsc docelowych. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia IoT Edge do działania jako nieprzezroczyste bramy](how-to-create-transparent-gateway.md).
 2. **Urządzenie podrzędne musi mieć tożsamość urządzenia, aby można było uwierzytelnić się przy użyciu IoT Hub i wiedzieć o komunikacji za pomocą swojego urządzenia bramy.**
-3. Urządzenie podrzędne musi mieć możliwość bezpiecznego łączenia się z urządzeniem bramy. Aby uzyskać więcej informacji, zobacz [połączyć podrzędny urządzenie bramy usługi Azure IoT Edge](how-to-connect-downstream-device.md).
+3. Urządzenie podrzędne musi mieć możliwość bezpiecznego łączenia się z urządzeniem bramy. Aby uzyskać więcej informacji, zobacz [łączenie urządzenia podrzędnego z bramą Azure IoT Edge](how-to-connect-downstream-device.md).
 
 Urządzenia podrzędne mogą uwierzytelniać się za pomocą IoT Hub przy użyciu jednej z trzech metod: klucze symetryczne (czasami określane jako klucze dostępu współdzielonego), certyfikaty z podpisem własnym X. 509 lub certyfikaty z certyfikatem X. 509 (CA). Kroki uwierzytelniania są podobne do kroków użytych w celu skonfigurowania dowolnego urządzenia niezwiązanego z usługą IoT-Edge z IoT Hub z małymi różnicami w celu zadeklarować relacji bramy.
 
@@ -72,10 +72,10 @@ Po utworzeniu tożsamości urządzenia IoT w portalu można pobrać jej klucze p
 
 Parametry połączenia klucza symetrycznego dla urządzeń podrzędnych muszą mieć następujące składniki: 
 
-* Centrum IoT, z którym łączy się urządzenie:`Hostname={iothub name}.azure-devices.net`
-* Identyfikator urządzenia zarejestrowany w centrum:`DeviceID={device ID}`
-* Klucz podstawowy lub pomocniczy:`SharedAccessKey={key}`
-* Urządzenie bramy, za pomocą którego urządzenie nawiązuje połączenie. Podaj wartość **hostname** IoT Edge z pliku config. YAML urządzenia bramy:`GatewayHostName={gateway hostname}`
+* Centrum IoT, z którym łączy się urządzenie: `Hostname={iothub name}.azure-devices.net`
+* Identyfikator urządzenia zarejestrowany w centrum: `DeviceID={device ID}`
+* Klucz podstawowy lub pomocniczy: `SharedAccessKey={key}`
+* Urządzenie bramy, za pomocą którego urządzenie nawiązuje połączenie. Podaj wartość **hostname** z pliku config. YAML urządzenia bramy IoT Edge: `GatewayHostName={gateway hostname}`
 
 Wszystkie razem, kompletne parametry połączenia wyglądają następująco:
 
@@ -101,7 +101,7 @@ Aby uzyskać więcej informacji na temat sposobu używania uwierzytelniania X. 5
 
 W przypadku uwierzytelniania z podpisem własnym X. 509, czasami określanego jako Uwierzytelnianie odciskiem palca, należy utworzyć nowe certyfikaty do umieszczenia na urządzeniu IoT. Te certyfikaty mają odcisk palca, które udostępniają IoT Hub na potrzeby uwierzytelniania. 
 
-Najprostszym sposobem na przetestowanie tego scenariusza jest użycie tego samego komputera, który został użyty do utworzenia certyfikatów w programie [Skonfiguruj urządzenie IoT Edge jako niejawną bramę](how-to-create-transparent-gateway.md). Ten komputer powinien być już skonfigurowany przy użyciu odpowiedniego narzędzia, certyfikatu głównego urzędu certyfikacji i certyfikatu pośredniego urzędu certyfikacji w celu utworzenia certyfikatów urządzeń IoT. Możesz później skopiować certyfikaty końcowe i ich klucze prywatne do urządzenia podrzędnego. Postępując zgodnie z instrukcjami w artykule dotyczącym bramy, skonfigurujesz OpenSSL na maszynie, a następnie Sklonowano repozytorium IoT Edge, aby uzyskać dostęp do skryptów tworzenia certyfikatów. Następnie został utworzony katalog roboczy, który wywoła  **\<WRKDIR >** do przechowywania certyfikatów. Domyślne certyfikaty są przeznaczone do programowania i testowania, więc tylko ostatnie 30 dni. Należy utworzyć certyfikat głównego urzędu certyfikacji i certyfikat pośredni. 
+Najprostszym sposobem na przetestowanie tego scenariusza jest użycie tego samego komputera, który został użyty do utworzenia certyfikatów w programie [Konfigurowanie urządzenia IoT Edge jako niejawnej bramy](how-to-create-transparent-gateway.md). Ten komputer powinien być już skonfigurowany przy użyciu odpowiedniego narzędzia, certyfikatu głównego urzędu certyfikacji i certyfikatu pośredniego urzędu certyfikacji w celu utworzenia certyfikatów urządzeń IoT. Możesz później skopiować certyfikaty końcowe i ich klucze prywatne do urządzenia podrzędnego. Postępując zgodnie z instrukcjami w artykule dotyczącym bramy, skonfigurujesz OpenSSL na maszynie, a następnie Sklonowano repozytorium IoT Edge, aby uzyskać dostęp do skryptów tworzenia certyfikatów. Następnie został utworzony katalog roboczy, który wywoła **\<WRKDIR >** do przechowywania certyfikatów. Domyślne certyfikaty są przeznaczone do programowania i testowania, więc tylko ostatnie 30 dni. Należy utworzyć certyfikat głównego urzędu certyfikacji i certyfikat pośredni. 
 
 1. Przejdź do katalogu roboczego w oknie bash lub PowerShell. 
 
@@ -155,11 +155,11 @@ W przypadku uwierzytelniania podpisanego za pomocą certyfikatu X. 509 urząd ce
 
 Ta sekcja jest oparta na instrukcji przedstawionych w IoT Hub artykule [Konfigurowanie zabezpieczeń X. 509 w usłudze Azure IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md). Postępuj zgodnie z instrukcjami w tej sekcji, aby dowiedzieć się, które wartości należy użyć do skonfigurowania urządzenia podrzędnego, które nawiązuje połączenie za pomocą bramy. 
 
-Najprostszym sposobem na przetestowanie tego scenariusza jest użycie tego samego komputera, który został użyty do utworzenia certyfikatów w programie [Konfigurowanie urządzenia IoT Edge jako niejawnej bramy](how-to-create-transparent-gateway.md). Ten komputer powinien być już skonfigurowany przy użyciu odpowiedniego narzędzia, certyfikatu głównego urzędu certyfikacji i certyfikatu pośredniego urzędu certyfikacji w celu utworzenia certyfikatów urządzeń IoT. Możesz później skopiować certyfikaty końcowe i ich klucze prywatne do urządzenia podrzędnego. Postępując zgodnie z instrukcjami w artykule dotyczącym bramy, skonfigurujesz OpenSSL na maszynie, a następnie Sklonowano repozytorium IoT Edge, aby uzyskać dostęp do skryptów tworzenia certyfikatów. Następnie został utworzony katalog roboczy, który wywoła  **\<WRKDIR >** do przechowywania certyfikatów. Domyślne certyfikaty są przeznaczone do programowania i testowania, więc tylko ostatnie 30 dni. Należy utworzyć certyfikat głównego urzędu certyfikacji i certyfikat pośredni. 
+Najprostszym sposobem na przetestowanie tego scenariusza jest użycie tego samego komputera, który został użyty do utworzenia certyfikatów w programie [Konfigurowanie urządzenia IoT Edge jako niejawnej bramy](how-to-create-transparent-gateway.md). Ten komputer powinien być już skonfigurowany przy użyciu odpowiedniego narzędzia, certyfikatu głównego urzędu certyfikacji i certyfikatu pośredniego urzędu certyfikacji w celu utworzenia certyfikatów urządzeń IoT. Możesz później skopiować certyfikaty końcowe i ich klucze prywatne do urządzenia podrzędnego. Postępując zgodnie z instrukcjami w artykule dotyczącym bramy, skonfigurujesz OpenSSL na maszynie, a następnie Sklonowano repozytorium IoT Edge, aby uzyskać dostęp do skryptów tworzenia certyfikatów. Następnie został utworzony katalog roboczy, który wywoła **\<WRKDIR >** do przechowywania certyfikatów. Domyślne certyfikaty są przeznaczone do programowania i testowania, więc tylko ostatnie 30 dni. Należy utworzyć certyfikat głównego urzędu certyfikacji i certyfikat pośredni. 
 
 1. Postępuj zgodnie z instrukcjami znajdującymi się w sekcji [Rejestrowanie certyfikatów urzędu certyfikacji x. 509 w usłudze IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) tematu *Konfigurowanie zabezpieczeń X. 509 w usłudze Azure IoT Hub*. W tej sekcji wykonaj następujące czynności: 
 
-   1. Przekaż certyfikat głównego urzędu certyfikacji. Jeśli używasz certyfikatów utworzonych w przezroczystym artykule bramy, Przekaż  **\<WRKDIR >/certs/Azure-IoT-test-Only.root.ca.CERT.pem** jako plik certyfikatu głównego. 
+   1. Przekaż certyfikat głównego urzędu certyfikacji. Jeśli używasz certyfikatów utworzonych w przezroczystym artykule bramy, Przekaż **\<WRKDIR >/certs/Azure-IoT-test-Only.root.ca.CERT.pem** jako plik certyfikatu głównego. 
    2. Sprawdź, czy jesteś własnym certyfikatem głównego urzędu certyfikacji. Można zweryfikować posiadanie narzędzi certyfikatów w \<WRKDIR >. 
 
       ```powershell
@@ -388,4 +388,4 @@ DeviceClient client = new DeviceClient(connectionString, protocol, publicKeyCert
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wykonanie tego artykułu powinno spowodować, że urządzenie IoT Edge działa jako niewidoczna brama i urządzenie podrzędne zarejestrowane w usłudze IoT Hub. Następnie należy skonfigurować urządzenia podrzędne, aby ufać urządzeniu bramy i wysyłać do niego komunikaty. Aby uzyskać więcej informacji, zobacz [połączyć podrzędny urządzenie bramy usługi Azure IoT Edge](how-to-connect-downstream-device.md).
+Wykonanie tego artykułu powinno spowodować, że urządzenie IoT Edge działa jako niewidoczna brama i urządzenie podrzędne zarejestrowane w usłudze IoT Hub. Następnie należy skonfigurować urządzenia podrzędne, aby ufać urządzeniu bramy i wysyłać do niego komunikaty. Aby uzyskać więcej informacji, zobacz [łączenie urządzenia podrzędnego z bramą Azure IoT Edge](how-to-connect-downstream-device.md).

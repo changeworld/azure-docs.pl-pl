@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: Wdrażanie i konfigurowanie usługi Azure Firewall przy użyciu witryny Azure Portal'
+title: 'Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal'
 description: W ramach tego samouczka dowiesz się, jak wdrożyć i skonfigurować usługę Azure Firewall przy użyciu witryny Azure Portal.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0892bde09891d2edbd7f8cc8715ccc0d2f047ed4
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 9eda37f80b6ba537b4b8f9ef87cb8b03bb4129e0
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113475"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024815"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: Wdrażanie i konfigurowanie usługi Azure Firewall przy użyciu witryny Azure Portal
+# <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
 Kontrolowanie dostępu do sieciowego ruchu wychodzącego jest ważną częścią ogólnego planu zabezpieczeń sieci. Na przykład możesz chcieć ograniczyć dostęp do witryn sieci Web. Można też ograniczyć liczbę wychodzących adresów IP i portów, do których można uzyskać dostęp.
 
@@ -52,12 +52,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Najpierw utwórz grupę zasobów zawierającą zasoby wymagane do wdrożenia zapory. Następnie utwórz sieć wirtualną, podsieci i serwery do obsługi testowania.
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Grupa zasobów zawiera wszystkie zasoby wymagane w tym samouczku.
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-2. Na stronie głównej Azure Portal wybierz pozycję **grupy** > zasobów**Dodaj**.
+2. Na stronie głównej Azure Portal wybierz pozycję **grupy zasobów** > **Dodaj**.
 3. W polu **Nazwa grupy zasobów** wpisz **Test-FW-RG**.
 4. W polu **Subskrypcja** wybierz subskrypcję.
 5. W polu **Lokalizacja grupy zasobów** wybierz lokalizację. Wszystkie kolejne zasoby, które utworzysz, muszą znajdować się w tej samej lokalizacji.
@@ -85,9 +85,9 @@ Ta sieć wirtualna będzie zawierać trzy podsieci.
 
 Następnie należy utworzyć podsieci dla serwera przesiadkowego oraz podsieci dla serwerów obciążeń.
 
-1. Na stronie głównej Azure Portal wybierz pozycję **grupy** > zasobów**test-PD-RG**.
+1. Na stronie głównej Azure Portal wybierz pozycję **grupy zasobów** > **test-PD-RG**.
 2. Wybierz sieć wirtualną **test-PD-VN** .
-3. Wybierz kolejno pozycje **podsieci** >  **+ podsieć**.
+3. Wybierz **podsieci** >  **+ podsieć**.
 4. W polu **Nazwa** wpisz wartość **Workload-SN**.
 5. W polu **Zakres adresów** wpisz wartość **10.0.2.0/24**.
 6. Kliknij przycisk **OK**.
@@ -102,9 +102,9 @@ Teraz utwórz maszyny wirtualne przesiadkową i obciążeń, a następnie umieś
 2. Wybierz pozycję **Compute**, a następnie z listy Polecane wybierz pozycję **Windows Server 2016 Datacenter**.
 3. Wprowadź poniższe wartości dla maszyny wirtualnej:
 
-   |Ustawienie  |Value  |
+   |Ustawienie  |Wartość  |
    |---------|---------|
-   |Resource group     |**Test-PD-RG**|
+   |Grupa zasobów     |**Test-PD-RG**|
    |Nazwa maszyny wirtualnej     |**SRV — Przeskocz**|
    |Region     |Taki sam jak poprzedni|
    |Nazwa użytkownika administratora     |**azureuser**|
@@ -113,11 +113,11 @@ Teraz utwórz maszyny wirtualne przesiadkową i obciążeń, a następnie umieś
 4. W obszarze **reguły portów ruchu przychodzącego**dla **publicznych portów przychodzących**wybierz opcję **Zezwalaj na wybrane porty**.
 5. W obszarze **Wybierz porty wejściowe** wybierz pozycję **RDP (3389)** .
 
-6. Zaakceptuj inne ustawienia domyślne i wybierz **pozycję Dalej: Dyski**.
-7. Zaakceptuj ustawienia domyślne dysku i wybierz **pozycję Dalej: Sieć**.
+6. Zaakceptuj pozostałe wartości domyślne i wybierz pozycję **Dalej: dyski**.
+7. Zaakceptuj ustawienia domyślne dysku i wybierz pozycję **Dalej: sieć**.
 8. Upewnij się, że wybrano sieć wirtualną **Test-FW-VN** i podsieć **Jump-SN**.
 9. Dla **publicznego adresu IP**zaakceptuj domyślną nową nazwę publicznego adresu IP (SRV-skoku-IP).
-11. Zaakceptuj inne ustawienia domyślne i wybierz **pozycję Dalej: Zarządzanie**.
+11. Zaakceptuj pozostałe wartości domyślne i wybierz pozycję **Dalej: Zarządzanie**.
 12. Wybierz pozycję **wyłączone** , aby wyłączyć diagnostykę rozruchu. Zaakceptuj inne ustawienia domyślne i wybierz pozycję **Recenzja + Utwórz**.
 13. Przejrzyj ustawienia na stronie Podsumowanie, a następnie wybierz pozycję **Utwórz**.
 
@@ -125,26 +125,26 @@ Skorzystaj z informacji podanych w poniższej tabeli, aby skonfigurować inną m
 
 |Ustawienie  |Wartość  |
 |---------|---------|
-|Subnet|**Workload-SN**|
-|Publiczny adres IP|**Brak**|
-|Publiczne porty wejściowe|**Brak**|
+|Podsieć|**Obciążenie — SN**|
+|Publiczny adres IP|**Dawaj**|
+|Publiczne porty wejściowe|**Dawaj**|
 
 ## <a name="deploy-the-firewall"></a>Wdrażanie zapory
 
 Wdróż zaporę w sieci wirtualnej.
 
 1. Na stronie głównej portalu wybierz pozycję **Utwórz zasób**.
-2. W polu wyszukiwania wpisz zaporę i naciśnij klawisz **Enter**.
+2. W polu wyszukiwania wpisz **zaporę** i naciśnij klawisz **Enter**.
 3. Wybierz opcję **Zapora** , a następnie wybierz pozycję **Utwórz**.
 4. Na stronie **Tworzenie zapory** strony skorzystaj z poniższej tabeli, aby skonfigurować zaporę:
 
-   |Ustawienie  |Value  |
+   |Ustawienie  |Wartość  |
    |---------|---------|
-   |Subscription     |\<Twoja subskrypcja\>|
-   |Resource group     |**Test-PD-RG** |
-   |Name     |**Test-FW01**|
-   |Location     |Wybierz tę samą lokalizację, której użyto poprzednio|
-   |Wybierz sieć wirtualną     |**Użyj istniejącej**: **Test-PD-VN**|
+   |Subskrypcja     |\<Twoja subskrypcja\>|
+   |Grupa zasobów     |**Test-PD-RG** |
+   |Nazwa     |**Test-FW01**|
+   |Lokalizacja     |Wybierz tę samą lokalizację, której użyto poprzednio|
+   |Wybieranie sieci wirtualnej     |**Użyj istniejącej**: **test-PD-VN**|
    |Publiczny adres IP     |**Utwórz nową**. Publiczny adres IP musi mieć typ Standardowa jednostka SKU.|
 
 5. Wybierz pozycję **Przegląd + utwórz**.
@@ -168,8 +168,8 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 8. Wybierz pozycję **Utwórz**.
 9. Wybierz pozycję **Odśwież**, a następnie wybierz tabelę **Zapora trasy tras** .
 10. Wybierz pozycję **podsieci** , a następnie wybierz pozycję **Skojarz**.
-11. Wybierz pozycję **Virtual Network** > **test-PD-VN**.
-12. Wobszarze podsieć wybierz pozycję **obciążenie — SN**. Upewnij się, że dla tej trasy jest zaznaczona tylko podsieć **obciążenia-SN** , w przeciwnym razie Zapora nie będzie działała poprawnie.
+11. Wybierz **sieć wirtualną** > **test-PD-VN**.
+12. W obszarze **podsieć**wybierz pozycję **obciążenie — SN**. Upewnij się, że dla tej trasy jest zaznaczona tylko podsieć **obciążenia-SN** , w przeciwnym razie Zapora nie będzie działała poprawnie.
 
 13. Kliknij przycisk **OK**.
 14. Wybierz pozycję **trasy** , a następnie wybierz pozycję **Dodaj**.
@@ -214,8 +214,10 @@ Jest to reguła sieci, która umożliwia ruchowi wychodzącemu dostęp do dwóch
 7. W polu **Protokół** wybierz **UDP**.
 8. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
 9. W polu Adres docelowy wpisz wartość **209.244.0.3,209.244.0.4**
-10. W polu **Porty docelowe** wpisz wartość **53**.
-11. Wybierz pozycję **Dodaj**.
+
+   Są to publiczne serwery DNS obsługiwane przez usługę CenturyLink.
+1. W polu **Porty docelowe** wpisz wartość **53**.
+2. Wybierz pozycję **Dodaj**.
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Zmienianie podstawowego i pomocniczego adresu DNS dla interfejsu sieciowego **Srv-Work**
 
@@ -234,10 +236,10 @@ W celach testowych w tym samouczku Skonfiguruj podstawowe i pomocnicze adresy se
 Teraz Przetestuj zaporę, aby upewnić się, że działa zgodnie z oczekiwaniami.
 
 1. W witrynie Azure Portal sprawdź ustawienia sieci dla maszyny wirtualnej **Srv-Work** i zanotuj prywatny adres IP.
-2. Połącz pulpit zdalny z maszyną wirtualną z przeskokiem **SRV** i zaloguj się. W tym miejscu Otwórz połączenie pulpitu zdalnego z prywatnym adresem IP **SRV** .
+2. Połącz pulpit zdalny z maszyną wirtualną z **przeskokiem SRV** i zaloguj się. W tym miejscu Otwórz połączenie pulpitu zdalnego z prywatnym adresem IP **SRV** .
 
 3. Otwórz program Internet Explorer i przejdź do https://www.google.com.
-4. Wybierz pozycję **OK** > **Zamknij** na stronie Alerty zabezpieczeń programu Internet Explorer.
+4. Wybierz **przycisk OK** > **Zamknij** na stronie Alerty zabezpieczeń programu Internet Explorer.
 
    Powinna zostać wyświetlona strona główna Google.
 
@@ -257,4 +259,4 @@ Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie b�
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)
+> [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

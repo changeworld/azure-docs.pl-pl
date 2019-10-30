@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: d6063daa649b507057fd2a4468c32dad1cd35eec
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b741e928ed80a045b61d79f99d2436577ca864b0
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030429"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027723"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Korzystanie z klienta Apache Z usługi Beeline z usługą Apache Hive
 
@@ -59,19 +59,21 @@ Zastąp `<username>` nazwą konta w domenie z uprawnieniami dostępu do klastra.
 
 ### <a name="over-public-or-private-endpoints"></a>Za pośrednictwem publicznych lub prywatnych punktów końcowych
 
-Podczas nawiązywania połączenia z klastrem przy użyciu publicznych lub prywatnych punktów końcowych należy podać nazwę konta logowania klastra (wartość domyślna `admin`) i hasło. Na przykład w celu nawiązania połączenia z adresem `<clustername>.azurehdinsight.net` przy użyciu Z usługi Beeline z systemu klienckiego. To połączenie jest nawiązywane za pośrednictwem portu `443` i szyfrowane przy użyciu protokołu SSL:
+Podczas nawiązywania połączenia z klastrem przy użyciu publicznych lub prywatnych punktów końcowych należy podać nazwę konta logowania klastra (domyślnie `admin`) i hasło. Na przykład w celu nawiązania połączenia z adresem `<clustername>.azurehdinsight.net` przy użyciu Z usługi Beeline z systemu klienckiego. To połączenie jest nawiązywane za pośrednictwem portu `443` i szyfrowane przy użyciu protokołu SSL:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
 ```
 
 lub dla prywatnego punktu końcowego:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
 ```
 
-Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zastąp `admin` kontem logowania klastra dla klastra. Zastąp `password` hasłem dla konta logowania klastra.
+Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zastąp `<username>` kontem logowania klastra dla klastra. Uwaga w przypadku klastrów ESP Użyj pełnej nazwy UPN (np. user@domain.com). Zastąp `password` hasłem dla konta logowania klastra.
+
+Prywatne punkty końcowe wskazują podstawowy moduł równoważenia obciążenia, do którego można uzyskać dostęp tylko z sieci wirtualnych komunikacji równorzędnej w tym samym regionie. Aby uzyskać więcej informacji, zobacz [ten](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) temat. Można użyć `curl` polecenie z opcją `-v` do rozwiązywania problemów z łącznością z publicznymi lub prywatnymi punktami końcowymi przed użyciem z usługi Beeline.
 
 ---
 
@@ -84,16 +86,18 @@ Apache Spark udostępnia własną implementację serwera hiveserver2, która jes
 Użyte parametry połączenia są nieco inne. Zamiast `httpPath=/hive2` jest `httpPath/sparkhive2`:
 
 ```bash 
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
 ```
 
 lub dla prywatnego punktu końcowego:
 
 ```bash 
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
 ```
 
-Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zastąp `admin` kontem logowania klastra dla klastra. Zastąp `password` hasłem dla konta logowania klastra.
+Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zastąp `<username>` kontem logowania klastra dla klastra. Uwaga w przypadku klastrów ESP Użyj pełnej nazwy UPN (np. user@domain.com). Zastąp `password` hasłem dla konta logowania klastra.
+
+Prywatne punkty końcowe wskazują podstawowy moduł równoważenia obciążenia, do którego można uzyskać dostęp tylko z sieci wirtualnych komunikacji równorzędnej w tym samym regionie. Aby uzyskać więcej informacji, zobacz [ten](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) temat. Można użyć `curl` polecenie z opcją `-v` do rozwiązywania problemów z łącznością z publicznymi lub prywatnymi punktami końcowymi przed użyciem z usługi Beeline.
 
 ---
 
@@ -135,7 +139,7 @@ Ten przykład jest oparty na użyciu klienta Z usługi Beeline z połączenia SS
 
 3. Polecenia z usługi Beeline rozpoczynają się od znaku `!`, na przykład `!help` wyświetla pomoc. Jednak dla niektórych poleceń można pominąć `!`. Na przykład `help` również działa.
 
-    @No__t-0, który jest używany do wykonywania instrukcji HiveQL. Jednak HiveQL jest tak często używany, aby można było pominąć poprzednią `!sql`. Następujące dwie instrukcje są równoważne:
+    `!sql`, który jest używany do wykonywania instrukcji HiveQL. Jednak HiveQL jest tak często używany, aby można było pominąć poprzednią `!sql`. Następujące dwie instrukcje są równoważne:
 
     ```hiveql
     !sql show tables;
@@ -260,7 +264,7 @@ Jest to kontynuacja z poprzedniego przykładu. Wykonaj następujące kroki, aby 
     > [!NOTE]  
     > W przeciwieństwie do tabel zewnętrznych, porzucanie tabeli wewnętrznej również usuwa dane źródłowe.
 
-3. Aby zapisać plik, użyj **klawiszy Ctrl**+ **_X**, a następnie wprowadź **Y**, a na koniec **wprowadź**.
+3. Aby zapisać plik, użyj **klawisza Ctrl**+ **_X**, a następnie wprowadź **Y**, a na koniec **wprowadź**.
 
 4. Użyj następującego polecenia, aby uruchomić plik za pomocą Z usługi Beeline:
 

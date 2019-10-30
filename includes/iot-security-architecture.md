@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f01d4a3a53ac9acf1350e4eea0526cf8584140a4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789095"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034550"
 ---
 Podczas projektowania systemu ważne jest, aby zrozumieć potencjalne zagrożenia dla tego systemu i odpowiednio dodać odpowiednie zabezpieczenia, gdy system został zaprojektowany i opracowany. Ważne jest, aby zaprojektować produkt od samego początku z myślą o bezpieczeństwie, ponieważ zrozumienie, jak osoba atakująca może naruszyć bezpieczeństwo systemu, pozwala upewnić się, że na początku są stosowane odpowiednie środki zaradcze.
 
@@ -116,7 +116,7 @@ Brama pola jest różna od zwykłego routera ruchu sieciowego, który miał akty
 
 ### <a name="the-cloud-gateway-zone"></a>Strefa bramy chmury
 
-Brama w chmurze to system, który umożliwia zdalną komunikację z i do urządzeń lub bram pól w różnych lokacjach w publicznej przestrzeni sieciowej, zazwyczaj w ramach systemu kontroli i danych opartych na chmurze, a także do Federacji takich systemów. W niektórych przypadkach Brama chmury może natychmiast ułatwić dostęp do specjalnych urządzeń z terminali, takich jak tablety lub telefony. W kontekście omówionym tutaj "Chmura" odwołuje się do dedykowanego systemu przetwarzania danych, który nie jest powiązany z tą samą lokacją jak podłączone urządzenia lub bramy pól. Ponadto w strefie chmury środki operacyjne uniemożliwiają dostęp fizyczny i nie muszą być narażone na infrastrukturę publiczną.  
+Brama chmurowa to system, który umożliwia zdalną komunikację z i do urządzeń lub bram pól w różnych lokacjach w publicznej przestrzeni sieciowej, zazwyczaj w kierunku systemu kontroli i danych opartych na chmurze, a także do Federacji takich systemów. W niektórych przypadkach Brama chmury może natychmiast ułatwić dostęp do specjalnych urządzeń z terminali, takich jak tablety lub telefony. W kontekście omówionym tutaj "Chmura" odwołuje się do dedykowanego systemu przetwarzania danych, który nie jest powiązany z tą samą lokacją jak podłączone urządzenia lub bramy pól. Ponadto w strefie chmury środki operacyjne uniemożliwiają dostęp fizyczny i nie muszą być narażone na infrastrukturę publiczną.  
 
 Brama chmury może być potencjalnie zamapowana na nakładkę wirtualizacji sieci w celu izolowania bramy chmury oraz wszystkich dołączonych urządzeń lub bram pól z dowolnego innego ruchu sieciowego. Sama Brama w chmurze nie jest systemem sterowania urządzeniami ani funkcją przetwarzania ani magazynu dla danych urządzenia; Interfejs tych obiektów z bramą w chmurze. Strefa bramy chmury obejmuje samą bramę w chmurze wraz ze wszystkimi bramami i urządzeniami pól, bezpośrednio lub pośrednio dołączonymi do niej. Granica strefy to odrębny obszar powierzchni, w którym wszystkie strony zewnętrzne komunikują się.
 
@@ -253,7 +253,7 @@ Każde urządzenie i Brama pola mają pewną postać magazynu (tymczasową dla k
 
 ### <a name="device-and-event-processingcloud-gateway-zone"></a>Przetwarzanie urządzeń i zdarzeń/strefa bramy w chmurze
 
-Brama chmurowa to system, który umożliwia zdalną komunikację z i do urządzeń lub bram usługi Field z kilku różnych lokacji w publicznej przestrzeni sieciowej, zwykle do systemu kontroli i danych opartych na chmurze, a także do Federacji takich systemów. W niektórych przypadkach Brama chmury może natychmiast ułatwić dostęp do specjalnych urządzeń z terminali, takich jak tablety lub telefony. W kontekście omówionym tutaj "Chmura" odwołuje się do dedykowanego systemu przetwarzania danych, który nie jest powiązany z tą samą lokacją jak podłączone urządzenia lub bramy pól, i gdzie środki operacyjne uniemożliwiają dostęp fizyczny, ale nie musi to być " Infrastruktura publiczna. Brama chmury może być potencjalnie zamapowana na nakładkę wirtualizacji sieci w celu izolowania bramy chmury oraz wszystkich dołączonych urządzeń lub bram pól z dowolnego innego ruchu sieciowego. Sama Brama w chmurze nie jest systemem sterowania urządzeniami ani funkcją przetwarzania ani magazynu dla danych urządzenia; Interfejs tych obiektów z bramą w chmurze. Strefa bramy chmury obejmuje samą bramę w chmurze wraz ze wszystkimi bramami i urządzeniami pól, bezpośrednio lub pośrednio dołączonymi do niej.
+Brama chmurowa to system, który umożliwia zdalną komunikację z i do urządzeń lub bram pól w różnych lokacjach w publicznej przestrzeni sieciowej, zazwyczaj w kierunku systemu kontroli i danych opartych na chmurze, a także do Federacji takich systemów. W niektórych przypadkach Brama chmury może natychmiast ułatwić dostęp do specjalnych urządzeń z terminali, takich jak tablety lub telefony. W kontekście omówionym tutaj "Chmura" odwołuje się do dedykowanego systemu przetwarzania danych, który nie jest powiązany z tą samą lokacją jak podłączone urządzenia lub bramy pól, i gdzie środki operacyjne uniemożliwiają dostęp fizyczny, ale nie musi to być " Infrastruktura publiczna. Brama chmury może być potencjalnie zamapowana na nakładkę wirtualizacji sieci w celu izolowania bramy chmury oraz wszystkich dołączonych urządzeń lub bram pól z dowolnego innego ruchu sieciowego. Sama Brama w chmurze nie jest systemem sterowania urządzeniami ani funkcją przetwarzania ani magazynu dla danych urządzenia; Interfejs tych obiektów z bramą w chmurze. Strefa bramy chmury obejmuje samą bramę w chmurze wraz ze wszystkimi bramami i urządzeniami pól, bezpośrednio lub pośrednio dołączonymi do niej.
 
 Brama w chmurze jest głównie niestandardową wbudowaną częścią oprogramowania działającego jako usługa z uwidocznionymi punktami końcowymi, do których są nawiązywane połączenia między bramą i urządzeniami W związku z tym musi być zaprojektowana z myślą o bezpieczeństwie. Postępuj zgodnie z procesem [SDL](https://www.microsoft.com/sdl) dla projektowania i kompilowania tej usługi.
 

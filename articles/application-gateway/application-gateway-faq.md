@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: cbb4668ae87404771513ca5825482efe9206308d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858528"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025001"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -22,7 +23,7 @@ Poniżej znajdują się często zadawane pytania dotyczące usługi Azure Applic
 
 ## <a name="general"></a>Ogólne
 
-### <a name="what-is-application-gateway"></a>Co to jest usługa Application Gateway?
+### <a name="what-is-application-gateway"></a>Co to jest Application Gateway
 
 Usługa Azure Application Gateway udostępnia kontroler dostarczania aplikacji (ADC) jako usługę. Oferuje różne możliwości równoważenia obciążenia warstwy 7 dla aplikacji. Ta usługa jest wysoce dostępna, skalowalna i w pełni zarządzana przez platformę Azure.
 
@@ -186,7 +187,7 @@ Zobacz [Kolejność reguł przetwarzania](https://docs.microsoft.com/azure/appli
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>W przypadku sond niestandardowych, co oznacza pole hosta?
 
-Pole host Określa nazwę, do której ma zostać wysłana sonda po skonfigurowaniu wielu lokacjach na Application Gateway. W przeciwnym razie użyj "127.0.0.1". Ta wartość różni się od nazwy hosta maszyny wirtualnej. Jego format to \<protokół\>://\<hosta\>:\<ścieżka\>portu\<.\>
+Pole host Określa nazwę, do której ma zostać wysłana sonda po skonfigurowaniu wielu lokacjach na Application Gateway. W przeciwnym razie użyj "127.0.0.1". Ta wartość różni się od nazwy hosta maszyny wirtualnej. Jego format to \<Protocol\>://\<hosta\>:\<port\>\<Path\>.
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Czy mogę zezwolić Application Gateway na dostęp tylko do kilku źródłowych adresów IP?
 
@@ -269,7 +270,7 @@ Application Gateway obsługuje do 100 certyfikatów SSL.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Jak wiele certyfikatów uwierzytelniania do ponownego zaszyfrowania zaplecza Application Gateway obsługiwać?
 
-Application Gateway obsługuje do 10 certyfikatów uwierzytelniania. Wartość domyślna to 5.
+Application Gateway obsługuje do 100 certyfikatów uwierzytelniania.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Czy Application Gateway natywnie integrowana z usługą Azure Key Vault?
 
@@ -335,13 +336,13 @@ Application Gateway udostępnia trzy dzienniki:
 
 * **ApplicationGatewayAccessLog**: Dziennik dostępu zawiera wszystkie żądania przesłane do frontonu bramy aplikacji. Dane obejmują adres IP obiektu wywołującego, żądanie adresu URL, opóźnienie odpowiedzi, Kod powrotu i bajty. Dziennik dostępu jest zbierany co 300 sekund. Zawiera jeden rekord na bramę aplikacji.
 * **ApplicationGatewayPerformanceLog**: Dziennik wydajności przechwytuje informacje o wydajności dla każdej bramy aplikacji. Informacje obejmują przepływność w bajtach, Łączna Liczba obsłużonych żądań, liczbę żądań zakończonych niepowodzeniem oraz liczbę wystąpień zaplecza w dobrej kondycji
-* **ApplicationGatewayFirewallLog**: W przypadku bram aplikacji skonfigurowanych za pomocą usługi WAF Dziennik zapory zawiera żądania, które są rejestrowane w trybie wykrywania lub w trybie zapobiegania.
+* **ApplicationGatewayFirewallLog**: w przypadku bram aplikacji skonfigurowanych za pomocą usługi WAF Dziennik zapory zawiera żądania, które są rejestrowane w trybie wykrywania lub w trybie zapobiegania.
 
 Aby uzyskać więcej informacji, zobacz temat [kondycja zaplecza, dzienniki diagnostyczne i metryki dla Application Gateway](application-gateway-diagnostics.md).
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Jak mogę wiedzieć, czy moje elementy członkowskie puli zaplecza są w dobrej kondycji?
 
-Sprawdź kondycję przy użyciu polecenia cmdlet `Get-AzApplicationGatewayBackendHealth` programu PowerShell lub portalu. Aby uzyskać więcej informacji, zobacz [Application Gateway Diagnostics](application-gateway-diagnostics.md).
+Sprawdź kondycję przy użyciu polecenia cmdlet programu PowerShell `Get-AzApplicationGatewayBackendHealth` lub portalu. Aby uzyskać więcej informacji, zobacz [Application Gateway Diagnostics](application-gateway-diagnostics.md).
 
 ### <a name="whats-the-retention-policy-for-the-diagnostic-logs"></a>Jakie są zasady przechowywania dzienników diagnostycznych?
 

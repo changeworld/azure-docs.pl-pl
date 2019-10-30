@@ -10,12 +10,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: 02d9a33018f87e6dbb9c7a797c16e5484c523b11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 81a31c0a03ef836d95a5a4f3cd4f4cd7b7e113e2
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955102"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027359"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Samouczek: Dostosowywanie pulpitu nawigacyjnego operatora i zarządzanie urządzeniami w usłudze Azure IoT Central
 
@@ -36,14 +36,14 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Przed rozpoczęciem pracy z tym samouczkiem, Konstruktor powinien zakończyć pracę z pierwszym samouczkiem, aby utworzyć aplikację analityczną usługi Azure IoT Central w sklepie i dodać urządzenia:
 
-* [Tworzenie aplikacji analizy w sklepie na platformie Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) (wymagane)
+* [Tworzenie aplikacji analizy w sklepie na platformie Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) (wymagane)
 
 ## <a name="change-the-dashboard-name"></a>Zmień nazwę pulpitu nawigacyjnego
 Aby dostosować pulpit nawigacyjny operatora, edytuj domyślny pulpit nawigacyjny w aplikacji. Opcjonalnie możesz utworzyć dodatkowe nowe pulpity nawigacyjne. Pierwszym krokiem dostosowania pulpitu nawigacyjnego w aplikacji jest zmiana nazwy.
 
 1. Przejdź do witryny sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) .
 
-1. Otwórz aplikację monitorowania warunków utworzoną w samouczku [Tworzenie aplikacji analizy w sklepie w usłudze Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) .
+1. Otwórz aplikację monitorowania warunków utworzoną w samouczku [Tworzenie aplikacji analizy w sklepie w usłudze Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) .
 
 1. Na pasku narzędzi pulpitu nawigacyjnego wybierz pozycję **Edytuj** . W trybie edycji można dostosować wygląd, układ i zawartość pulpitu nawigacyjnego.
 
@@ -142,7 +142,7 @@ Aby zmienić rozmieszczenie pozostałych kafelków:
 ## <a name="add-telemetry-tiles-to-display-conditions"></a>Dodawanie kafelków telemetrycznych do warunków wyświetlania
 Po dostosowaniu układu pulpitu nawigacyjnego możesz dodać kafelki, aby wyświetlić dane telemetryczne. Aby utworzyć kafelek telemetrię, wybierz szablon urządzenia i wystąpienie urządzenia, a następnie wybierz dane telemetryczne dotyczące urządzenia, aby wyświetlić je na kafelku. Szablon aplikacji **Analiza w sklepie — wyewidencjonowywanie** zawiera kilka kafelków telemetrycznych na pulpicie nawigacyjnym. Cztery kafelki w dwóch strefach wyewidencjonowania wyświetlają dane telemetryczne z czujnika symulowanego zajętości. Kafelek **ruch osób** wyświetla liczbę w dwóch strefach wyewidencjonowania. 
 
-W tej sekcji dodasz dwa więcej kafelków telemetrycznych, aby pokazać dane telemetryczne środowiska z czujników RuuviTag dodanych w samouczku [Tworzenie aplikacji do analizy w Sklepie Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) . 
+W tej sekcji dodasz dwa więcej kafelków telemetrycznych, aby pokazać dane telemetryczne środowiska z czujników RuuviTag dodanych w samouczku [Tworzenie aplikacji do analizy w Sklepie Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) . 
 
 Aby dodać kafelki do wyświetlania danych o środowisku z czujników RuuviTag:
 
@@ -259,4 +259,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Teraz, po dostosowaniu pulpitu nawigacyjnego w aplikacji do analizy w sklepie IoT Central Azure, poniżej przedstawiono sugerowany następny krok:
 
 > [!div class="nextstepaction"]
-> [Eksportowanie danych i wizualizacja szczegółowych informacji](./tutorial-in-store-analytics-export-data-visualize-insights-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)
+> [Eksportowanie danych i wizualizacja szczegółowych informacji](./tutorial-in-store-analytics-export-data-visualize-insights-pnp.md)

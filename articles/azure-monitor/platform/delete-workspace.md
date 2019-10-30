@@ -1,18 +1,18 @@
 ---
-title: Usuwanie i przywracanie obszaru roboczego usługi Azure Log Analytics | Microsoft Docs
+title: Usuwanie i odzyskiwanie obszaru roboczego usługi Azure Log Analytics | Microsoft Docs
 description: Dowiedz się, jak usunąć obszar roboczy Log Analytics, jeśli został on utworzony w prywatnej subskrypcji lub zmienić strukturę modelu obszaru roboczego.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 10/11/2019
-ms.openlocfilehash: f15e9c2a5980c8fb6d98f7bf9187b030e6910523
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/28/2019
+ms.openlocfilehash: 709d63b2c764049a698bc538d9ec451b4e75feaa
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932369"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044239"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Usuwanie i przywracanie obszaru roboczego usługi Azure Log Analytics
 
@@ -54,12 +54,14 @@ Obszar roboczy można usunąć przy użyciu [programu PowerShell](https://docs.m
 
 Jeśli masz uprawnienia współautora do subskrypcji i grupy zasobów, do której został skojarzony obszar roboczy przed operacją usuwania nietrwałego, możesz odzyskać ją w okresie usuwania nietrwałego, w tym jego dane, konfigurację i połączone agenci. Po okresie usuwania nietrwałego obszar roboczy nie jest możliwy do odzyskania i zostaje przypisany do trwałego usunięcia. Nazwy usuniętych obszarów roboczych są zachowywane w okresie usuwania nietrwałego i nie mogą być używane podczas próby utworzenia nowego obszaru roboczego.  
 
-Obszar roboczy można odzyskać przez ponowne utworzenie obszaru roboczego przy użyciu metod tworzenia obszaru roboczego [programu PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) lub [interfejsu API REST]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , o ile te właściwości zostaną wypełnione informacjami o usuniętych obszarach roboczych, takich jak:
+Obszar roboczy można odzyskać przez ponowne utworzenie go przy użyciu następujących metod tworzenia obszaru roboczego: program [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) lub [interfejs API REST]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , o ile następujące właściwości są wypełniane informacjami o usuniętych obszarach roboczych:
 
 * Identyfikator subskrypcji
 * Nazwa grupy zasobów
 * Nazwa obszaru roboczego
 * Region
+
+Obszar roboczy i wszystkie jego dane zostaną przywrócone po operacji odzyskiwania. Rozwiązania i połączone usługi zostały trwale usunięte z obszaru roboczego, gdy zostało usunięte, i należy je ponownie skonfigurować w celu przeniesienia obszaru roboczego do wcześniej skonfigurowanego stanu. Niektóre dane mogą nie być dostępne dla zapytań po odzyskaniu obszaru roboczego do momentu ponownego zainstalowania skojarzonych rozwiązań, a ich schematy zostaną dodane do obszaru roboczego.
 
 > [!NOTE]
 > * Odzyskiwanie obszaru roboczego nie jest obsługiwane w [Azure Portal](https://portal.azure.com). 

@@ -1,5 +1,5 @@
 ---
-title: Funkcja Java zdefiniowana przez użytkownika (UDF) z Apache Hive w usłudze HDInsight — Azure
+title: Funkcja Java zdefiniowana przez użytkownika (UDF) z Apache Hive usługą Azure HDInsight
 description: Dowiedz się, jak utworzyć opartą na języku Java funkcję (UDF), która działa z Apache Hive. Ten przykład UDF konwertuje tabelę ciągów tekstowych na małe litery.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 43208636fb275c38573f820ef8245d7652b4aa86
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 5690f2cc5bc85d7bcdbf1d05930a05bcc2e764c0
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181180"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044779"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Używanie formatu UDF języka Java z Apache Hive w usłudze HDInsight
 
@@ -24,7 +24,7 @@ Dowiedz się, jak utworzyć opartą na języku Java funkcję (UDF), która dzia�
 * Klaster usługi Hadoop w usłudze HDInsight. Zobacz Rozpoczynanie [pracy z usługą HDInsight w systemie Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * [Java developer Kit (JDK) w wersji 8](https://aka.ms/azure-jdks)
 * Pakiet [Apache Maven](https://maven.apache.org/download.cgi) został prawidłowo [zainstalowany](https://maven.apache.org/install.html) zgodnie z usługą Apache.  Maven to system kompilacji projektu dla projektów języka Java.
-* [Schemat identyfikatora URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Będzie to wasb://dla usługi Azure Storage, abfs://dla Azure Data Lake Storage Gen2 lub adl://dla Azure Data Lake Storage Gen1. Jeśli w usłudze Azure Storage włączono opcję bezpiecznego transferu, identyfikator URI mógłby `wasbs://`być.  Zobacz również [bezpieczny transfer](../../storage/common/storage-require-secure-transfer.md).
+* [Schemat identyfikatora URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) magazynu podstawowego klastrów. Będzie to wasb://dla usługi Azure Storage, abfs://dla Azure Data Lake Storage Gen2 lub adl://dla Azure Data Lake Storage Gen1. Jeśli w usłudze Azure Storage włączono opcję bezpiecznego transferu, identyfikator URI będzie `wasbs://`.  Zobacz również [bezpieczny transfer](../../storage/common/storage-require-secure-transfer.md).
 
 * Edytor tekstu lub środowisko IDE języka Java
 
@@ -51,20 +51,20 @@ cd C:\HDI
 
     To polecenie tworzy katalog o nazwie `exampleudf`, który zawiera projekt Maven.
 
-2. Po utworzeniu projektu Usuń `exampleudf/src/test` katalog, który został utworzony w ramach projektu, wprowadzając następujące polecenie:
+2. Po utworzeniu projektu Usuń katalog `exampleudf/src/test`, który został utworzony w ramach projektu, wprowadzając następujące polecenie:
 
     ```cmd
     cd ExampleUDF
     rmdir /S /Q "src/test"
     ```
 
-3. Otwórz `pom.xml` , wprowadzając następujące polecenie:
+3. Otwórz `pom.xml`, wprowadzając poniższe polecenie:
 
     ```cmd
     notepad pom.xml
     ```
 
-    Następnie zastąp istniejący `<dependencies>` wpis następującym kodem XML:
+    Następnie zastąp istniejący wpis `<dependencies>` następującym kodem XML:
 
     ```xml
     <dependencies>
@@ -85,7 +85,7 @@ cd C:\HDI
 
     Te wpisy określają wersję usługi Hadoop i Hive zawartą w usłudze HDInsight 3,6. Informacje o wersjach usługi Hadoop i Hive dostarczanych z usługą HDInsight można znaleźć w dokumencie dotyczącym [wersji składnika usługi HDInsight](../hdinsight-component-versioning.md) .
 
-    `<build>` Dodaj sekcję `</project>` przed wierszem na końcu pliku. Ta sekcja powinna zawierać następujący kod XML:
+    Dodaj sekcję `<build>` przed wierszem `</project>` na końcu pliku. Ta sekcja powinna zawierać następujący kod XML:
 
     ```xml
     <build>
@@ -180,7 +180,7 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>Kompiluj i zainstaluj funkcję UDF
 
-W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytkownika, jeśli jest inna. Zamień `mycluster` na rzeczywistą nazwę klastra.
+W poniższych poleceniach Zastąp `sshuser` wartością rzeczywistej nazwy użytkownika, jeśli różni się. Zastąp `mycluster` rzeczywistą nazwą klastra.
 
 1. Skompiluj i Spakuj system UDF, wprowadzając następujące polecenie:
 
@@ -188,9 +188,9 @@ W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytk
     mvn compile package
     ```
 
-    To polecenie kompiluje i pakuje `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` plik UDF do pliku.
+    To polecenie kompiluje i pakuje plik UDF do pliku `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar`.
 
-2. Użyj polecenia `scp` , aby skopiować plik do klastra usługi HDInsight, wprowadzając następujące polecenie:
+2. Użyj `scp` polecenie, aby skopiować plik do klastra usługi HDInsight, wprowadzając następujące polecenie:
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
@@ -218,7 +218,7 @@ W poniższych poleceniach Zastąp `sshuser` wartość rzeczywistą nazwą użytk
 
     W tym poleceniu przyjęto założenie, że dla konta logowania dla klastra użyto domyślnych ustawień **administratora** .
 
-2. Po nadejściu `jdbc:hive2://localhost:10001/>` monitu wprowadź następujące polecenie, aby dodać funkcję UDF do Hive i uwidocznić ją w ramach funkcji.
+2. Po nadejściu monitu o `jdbc:hive2://localhost:10001/>` wprowadź następujące polecenie, aby dodać funkcję UDF do Hive i udostępnić ją w postaci funkcji.
 
     ```hiveql
     ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;

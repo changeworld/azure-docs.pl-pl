@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 3bc5bc99984367b44b38a65266d2915c47ca6fd0
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757352"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044099"
 ---
 # <a name="learn-image-moderation-concepts"></a>Poznaj pojęcia związane z moderowaniem obrazu
 
@@ -147,4 +147,4 @@ Aby uzyskać więcej złożonychych przypadków, użyj [Narzędzia do przeglądu
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przetestuj [konsolę interfejsu API moderowania obrazów](try-image-api.md) i użyj przykładów kodu interfejsu API REST. Zapoznaj się również z [przewodnikiem Szybki Start dotyczącym moderowania obrazów](image-moderation-quickstart-dotnet.md) w przypadku znajomości C#programów Visual Studio i.
+Przetestuj [konsolę interfejsu API moderowania obrazów](try-image-api.md) i użyj przykładów kodu interfejsu API REST. Zapoznaj się również z sekcją moderowanie obrazów [zestawu .NET SDK](dotnet-sdk-quickstart.md) , jeśli znasz program Visual Studio i C#.

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji detalicznej na platformie Azure IoT Central | Microsoft Docs
+title: Tworzenie aplikacji do analizy w sklepie na platformie Azure IoT Central | Microsoft Docs
 description: W tym samouczku pokazano, jak utworzyć aplikację detaliczną analizy w sklepie w IoT Central. Utworzysz go, dołączysz i dodasz urządzenia czujnika.
 services: iot-central
 ms.service: iot-central
@@ -10,12 +10,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: 528658b85542580df5eeb62f0c146aadef44f517
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 571c172054e52960c3dba8d41469ba304f3493eb
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956411"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026434"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Samouczek: Tworzenie aplikacji do analizy w sklepie na platformie Azure IoT Central
 
@@ -284,4 +284,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Teraz, po utworzeniu aplikacji do monitorowania warunków IoT Central platformy Azure, Oto sugerowany następny krok:
 
 > [!div class="nextstepaction"]
-> [Dostosowywanie pulpitu nawigacyjnego operatora](./tutorial-in-store-analytics-customize-dashboard-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)
+> [Dostosowywanie pulpitu nawigacyjnego operatora](./tutorial-in-store-analytics-customize-dashboard-pnp.md)

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: f9b23e00c954e8babb1fe920bca1aa2ea5f9298e
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b219eb50254ecd347f731d332c3236be028834ba
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799476"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045096"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpieczanie dostępu i danych w Azure Logic Apps
 
@@ -266,11 +266,11 @@ Wiele wyzwalaczy i akcji ma ustawienia umożliwiające ukrycie danych wejściowy
 
 1. W [Azure Portal](https://portal.azure.com)Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-   ![Otwieranie przykładowej aplikacji logiki](./media/logic-apps-securing-a-logic-app/sample-logic-app.png)
+   ![Otwórz aplikację logiki w Projektancie aplikacji logiki](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
 1. Na wyzwalaczu lub akcji, w której chcesz zabezpieczyć dane, wybierz przycisk wielokropka ( **...** ), a następnie wybierz pozycję **Ustawienia**.
 
-   ![Otwórz "Ustawienia"](./media/logic-apps-securing-a-logic-app/open-settings.png)
+   ![Otwórz wyzwalacz lub ustawienia akcji](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
 1. Włącz opcję **Zabezpiecz dane wejściowe**, **bezpieczne wyjście**lub oba te elementy. Po zakończeniu wybierz pozycję **Gotowe**.
 
@@ -278,11 +278,11 @@ Wiele wyzwalaczy i akcji ma ustawienia umożliwiające ukrycie danych wejściowy
 
    Akcja lub wyzwalacz zawiera teraz ikonę kłódki na pasku tytułu.
 
-   ![Ikona kłódki na pasku tytułu](./media/logic-apps-securing-a-logic-app/title-bar-lock-icon.png)
+   ![Akcja lub pasek tytułu wyzwalacza pokazuje ikonę kłódki](./media/logic-apps-securing-a-logic-app/lock-icon-action-trigger-title-bar.png)
 
    Tokeny, które reprezentują zabezpieczone dane wyjściowe z poprzednich akcji, również pokazują ikony blokady. Na przykład po wybraniu takich danych wyjściowych z listy zawartości dynamicznej do użycia w akcji token pokazuje ikonę kłódki.
 
-   ![Wybierz dane wyjściowe](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
+   ![Wybierz token dla zabezpieczonych danych wyjściowych](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
 
 1. Po uruchomieniu aplikacji logiki można wyświetlić historię tego uruchomienia.
 
@@ -292,7 +292,7 @@ Wiele wyzwalaczy i akcji ma ustawienia umożliwiające ukrycie danych wejściowy
 
       W przypadku wybrania opcji zabezpieczenia danych wejściowych i wyjściowych te wartości zostaną wyświetlone jako ukryte.
 
-      ![Dane ukryte w historii uruchamiania](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
+      ![Ukryte dane wejściowe i wyjściowe w historii uruchamiania](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
 <a name="secure-data-code-view"></a>
 
@@ -349,7 +349,7 @@ Poniżej przedstawiono kilka [kwestii, które](#obfuscation-considerations) nale
 
   Po ręcznym włączeniu **zabezpieczeń danych wejściowych** w wyzwalaczu lub akcji Logic Apps zabezpiecza te dane wejściowe w historii uruchamiania. Jeśli akcja w trybie podrzędnym jawnie używa widocznego wyjścia z tego wyzwalacza lub akcji jako danych wejściowych, Logic Apps ukrywa dane wejściowe akcji podrzędnej w historii uruchamiania, ale *nie włącza* **zabezpieczeń danych wejściowych** w tej akcji i nie ukrywa tej akcji. wydajności.
 
-  ![Zabezpieczanie danych wejściowych i wpływu na wpływ na większość akcji](./media/logic-apps-securing-a-logic-app/secure-inputs-flow.png)
+  ![Zabezpieczanie danych wejściowych i wpływu na wpływ na większość akcji](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
   Jeśli akcje redagowania, analizy JSON i odpowiedzi jawnie używają widocznych danych wyjściowych wyzwalacza lub akcji, które mają zabezpieczone dane wejściowe, Logic Apps ukrywają dane wejściowe i wyjściowe akcji, ale *nie włączą* **zabezpieczonych danych wejściowych** tej akcji konfigurowania. Jeśli akcja w trybie podrzędnym jawnie używa ukrytych danych wyjściowych z akcji Redaguj, Analizuj dane JSON lub odpowiedzi jako dane wejściowe, Logic Apps *nie ukrywa danych wejściowych lub wyjściowych akcji podrzędnej*.
 

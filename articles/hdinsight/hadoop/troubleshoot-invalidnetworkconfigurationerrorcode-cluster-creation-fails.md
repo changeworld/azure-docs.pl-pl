@@ -1,5 +1,5 @@
 ---
-title: InvalidNetworkConfigurationErrorCode z tworzenia klastra w usłudze Azure HDInsight
+title: Błąd InvalidNetworkConfigurationErrorCode — usługa Azure HDInsight
 description: Różne przyczyny niepowodzenia tworzenia klastrów z InvalidNetworkConfigurationErrorCode w usłudze Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: a6b207086325018deb63383a0775af8dfe195ac4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5b8d031af9dbe6019d71e2a1caa3d3f25d4024ea
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091723"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044467"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Tworzenie klastra kończy się niepowodzeniem z InvalidNetworkConfigurationErrorCode w usłudze Azure HDInsight
 
 W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku współpracy z klastrami usługi Azure HDInsight.
 
-Jeśli widzisz kod `InvalidNetworkConfigurationErrorCode` błędu z opisem "Virtual Network konfiguracja jest niezgodna z wymaganiem usługi HDInsight", zwykle wskazuje to na problem z [konfiguracją sieci wirtualnej](../hdinsight-plan-virtual-network-deployment.md) dla klastra. W oparciu o resztę opisu błędu, postępuj zgodnie z poniższymi sekcjami, aby rozwiązać problem.
+Jeśli widzisz kod błędu `InvalidNetworkConfigurationErrorCode` z opisem "Virtual Network konfiguracja nie jest zgodna z wymaganiem usługi HDInsight", zwykle wskazuje to na problem z [konfiguracją sieci wirtualnej](../hdinsight-plan-virtual-network-deployment.md) dla klastra. W oparciu o resztę opisu błędu, postępuj zgodnie z poniższymi sekcjami, aby rozwiązać problem.
 
 ## <a name="hostname-resolution-failed"></a>"Rozpoznawanie nazwy hosta nie powiodło się"
 
@@ -30,13 +30,13 @@ Opis błędu zawiera komunikat "rozpoznawanie nazwy hosta nie powiodło się".
 
 Ten błąd wskazuje na problem z niestandardową konfiguracją DNS. Serwery DNS w sieci wirtualnej mogą przekazywać zapytania DNS do tłumaczeń cyklicznych platformy Azure w celu rozpoznania nazw hostów w tej sieci wirtualnej (zobacz [rozpoznawanie nazw w sieciach wirtualnych](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) , aby uzyskać szczegółowe informacje). Dostęp do cyklicznych tłumaczeń platformy Azure jest udostępniany za pośrednictwem wirtualnego adresu IP 168.63.129.16. Ten adres IP jest dostępny tylko z maszyn wirtualnych platformy Azure. Dlatego nie będzie działała, jeśli używany jest serwer DNS lokalnego lub serwer DNS jest maszyną wirtualną platformy Azure, która nie jest częścią sieci wirtualnej klastra.
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
-1. Użyj protokołu SSH do maszyny wirtualnej, która jest częścią klastra, i uruchom `hostname -f`polecenie. Spowoduje to zwrócenie `<host_fqdn>` w pełni kwalifikowanej nazwy domeny hosta (nazywanej w poniższych instrukcjach).
+1. Użyj polecenia SSH do maszyny wirtualnej, która jest częścią klastra, i uruchom polecenie `hostname -f`. Spowoduje to zwrócenie w pełni kwalifikowanej nazwy domeny hosta (nazywanej `<host_fqdn>` w poniższych instrukcjach).
 
-1. Następnie uruchom polecenie `nslookup <host_fqdn>` (na `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`przykład). Jeśli to polecenie rozwiąże nazwę z adresem IP, oznacza to, że serwer DNS działa prawidłowo. W takim przypadku Zgłoś sprawę pomocy technicznej z usługą HDInsight i zbadamy swój problem. W przypadku pomocy technicznej należy uwzględnić wykonane kroki rozwiązywania problemów. Pomoże nam to przyspieszyć rozwiązywanie problemów.
+1. Następnie uruchom polecenie `nslookup <host_fqdn>` (na przykład `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Jeśli to polecenie rozwiąże nazwę z adresem IP, oznacza to, że serwer DNS działa prawidłowo. W takim przypadku Zgłoś sprawę pomocy technicznej z usługą HDInsight i zbadamy swój problem. W przypadku pomocy technicznej należy uwzględnić wykonane kroki rozwiązywania problemów. Pomoże nam to przyspieszyć rozwiązywanie problemów.
 
-1. Jeśli powyższe polecenie nie zwraca adresu IP, uruchom `nslookup <host_fqdn> 168.63.129.16` polecenie (na `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`przykład). Jeśli to polecenie jest w stanie rozpoznać adres IP, oznacza to, że serwer DNS nie przekazuje zapytania do usługi DNS systemu Azure lub nie jest to maszyna wirtualna, która jest częścią tej samej sieci wirtualnej co klaster.
+1. Jeśli powyższe polecenie nie zwraca adresu IP, uruchom `nslookup <host_fqdn> 168.63.129.16` (na przykład `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Jeśli to polecenie jest w stanie rozpoznać adres IP, oznacza to, że serwer DNS nie przekazuje zapytania do usługi DNS systemu Azure lub nie jest to maszyna wirtualna, która jest częścią tej samej sieci wirtualnej co klaster.
 
 1. Jeśli nie masz maszyny wirtualnej platformy Azure, która może działać jako niestandardowy serwer DNS w sieci wirtualnej klastra, musisz najpierw ją dodać. Utwórz maszynę wirtualną w sieci wirtualnej, która zostanie skonfigurowana jako usługa przesyłania dalej DNS.
 
@@ -56,7 +56,7 @@ Opis błędu zawiera komunikat "nie można nawiązać połączenia z kontem usł
 
 Usługi Azure Storage i SQL nie mają stałych adresów IP, dlatego musimy zezwolić na połączenia wychodzące do wszystkich adresów IP, aby umożliwić uzyskiwanie dostępu do tych usług. Dokładne kroki rozwiązania zależą od tego, czy skonfigurowano sieciową grupę zabezpieczeń (sieciowej grupy zabezpieczeń), czy reguły zdefiniowane przez użytkownika (UDR). Szczegółowe informacje o tych konfiguracjach można znaleźć w sekcji Sprawdzanie [ruchu sieciowego za pomocą usługi HDInsight z grupami zabezpieczeń sieci i trasami zdefiniowanymi przez użytkownika](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) .
 
-### <a name="resolution"></a>Rozwiązanie
+### <a name="resolution"></a>Rozdzielczość
 
 * Jeśli klaster używa [sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)](../../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
@@ -76,6 +76,6 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 * Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Połącz się [@AzureSupport](https://twitter.com/azuresupport) za pomocą — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
+* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalne Microsoft Azure konto, aby usprawnić obsługę klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
 * Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

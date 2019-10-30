@@ -1,7 +1,7 @@
 ---
 title: Wysoka wydajność, wnioskowanie Międzyplatformowe z ONNX
 titleSuffix: Azure Machine Learning
-description: Dowiedz się więcej na temat ONNX i środowiska uruchomieniowego ONNX w celu przyspieszenia modeli
+description: Dowiedz się, jak za pomocą programu Open neuronowych Network Exchange (ONNX) można zoptymalizować wnioskowanie o modelu uczenia maszynowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f6e9e6b44e4a8fcc52f6d8ae19af60d64972b3a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: dc4a5984f42e87aa42c6873bb1ee63d66744e633
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035402"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053580"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX i Azure Machine Learning: Tworzenie i przyspieszenie modeli ML
 
@@ -32,19 +32,19 @@ Firma Microsoft i społeczność partnerów utworzyli ONNX jako otwarty standard
 
 [![Diagram przepływu ONNX przedstawiający szkolenia, konwertery i wdrażanie](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
-## <a name="get-onnx-models"></a>Modele ONNX
+## <a name="get-onnx-models"></a>Pobierz modele ONNX
 
-Możesz uzyskać modelami ONNX na kilka sposobów:
+Modele ONNX można uzyskać na kilka sposobów:
 + Uczenie nowego modelu ONNX w Azure Machine Learning (Zobacz przykłady w dolnej części tego artykułu)
 + Konwertuj istniejący model z innego formatu na ONNX (zobacz [samouczki](https://github.com/onnx/tutorials)) 
 + Pobierz wstępnie szkolony model ONNX z [modelu ONNX zoo](https://github.com/onnx/models) (Zobacz przykłady w dolnej części tego artykułu)
-+ Generowanie dostosowane modelu ONNX z [Azure Custom Vision service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
++ Generuj dostosowany model ONNX z [usługi Azure Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
 
 Wiele modeli, w tym Klasyfikacja obrazu, wykrywanie obiektów i przetwarzanie tekstu, można reprezentować jako modele ONNX. Jednak niektóre modele mogą nie być możliwe do pomyślnego przekonwertowania. W przypadku uruchomienia w tej sytuacji należy rozwiązać problem w witrynie GitHub odpowiedniego konwertera, który został użyty. Możesz kontynuować korzystanie z istniejącego modelu formatu do momentu rozwiązania problemu.
 
-## <a name="deploy-onnx-models-in-azure"></a>Wdrażaj modele ONNX na platformie Azure
+## <a name="deploy-onnx-models-in-azure"></a>Wdrażanie modeli ONNX na platformie Azure
 
-Za pomocą Azure Machine Learning można wdrażać i monitorować modele ONNX oraz zarządzać nimi. Przy użyciu standardu [przepływ pracy wdrażania](concept-model-management-and-deployment.md) i ONNX środowiska uruchomieniowego, można utworzyć punktu końcowego REST, hostowane w chmurze. Zobacz przykładowe notesy Jupyter na końcu tego artykułu, aby wypróbować je samodzielnie. 
+Za pomocą Azure Machine Learning można wdrażać i monitorować modele ONNX oraz zarządzać nimi. Korzystając ze standardowego [przepływu pracy wdrażania](concept-model-management-and-deployment.md) i środowiska uruchomieniowego ONNX, można utworzyć punkt końcowy REST hostowany w chmurze. Zobacz przykładowe notesy Jupyter na końcu tego artykułu, aby wypróbować je samodzielnie. 
 
 ### <a name="install-and-use-onnx-runtime-with-python"></a>Instalowanie i używanie środowiska uruchomieniowego ONNX z językiem Python
 
@@ -56,38 +56,38 @@ pip install onnxruntime       # CPU build
 pip install onnxruntime-gpu   # GPU build
 ```
 
-Aby wywołać ONNX w czasie wykonywania w skrypcie języka Python, należy użyć:    
+Aby wywołać środowisko uruchomieniowe ONNX w skrypcie języka Python, użyj:    
 ```python
 import onnxruntime
 session = onnxruntime.InferenceSession("path to model")
 ```
 
-Dokumentację, zwykle towarzyszący modelu informujący o tym, dane wejściowe i wyjściowe dla przy użyciu modelu. Można również użyć narzędzia wizualizacji takich jak [Netron](https://github.com/lutzroeder/Netron) do wyświetlenia modelu. Środowisko uruchomieniowe ONNX umożliwia także zapytania metadanych modelu, dane wejściowe i wyjściowe:    
+Dokumentacja towarzysząca modelowi zwykle informuje dane wejściowe i wyjściowe dotyczące korzystania z modelu. Możesz również użyć narzędzia do wizualizacji, takiego jak [Netron](https://github.com/lutzroeder/Netron) , aby wyświetlić model. Środowisko uruchomieniowe ONNX umożliwia również wykonywanie zapytań dotyczących metadanych modelu, danych wejściowych i wyjść:    
 ```python
 session.get_modelmeta()
 first_input_name = session.get_inputs()[0].name
 first_output_name = session.get_outputs()[0].name
 ```
 
-Do wnioskowania model, użyj `run` i przekazywania na liście, danymi wyjściowymi zwracane (pozostaw puste, jeśli chcesz, aby wszystkie z nich) oraz mapę wartości wejściowych. Wynik jest lista dane wyjściowe.  
+Aby wywnioskować model, użyj `run` i przekaż listę danych wyjściowych, które chcesz zwrócić (pozostaw puste, jeśli chcesz wszystkie), i mapę wartości wejściowych. Wynik jest listą danych wyjściowych.  
 ```python
 results = session.run(["output1", "output2"], {
                       "input1": indata1, "input2": indata2})
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-Aby uzyskać pełną dokumentację interfejsu API języka Python, zobacz [dokumentacja środowiska uruchomieniowego ONNX](https://aka.ms/onnxruntime-python).    
+Aby uzyskać pełną dokumentację interfejsu API języka Python, zobacz [dokumenty referencyjne środowiska uruchomieniowego ONNX](https://aka.ms/onnxruntime-python).    
 
 ## <a name="examples"></a>Przykłady
 
-Zobacz [jak-to-użyj-usługi Azure ml/wdrażanie/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) na przykład notesów, które umożliwiają tworzenie i wdrażanie modelami ONNX.
+Zapoznaj się z artykułem [How to-use-Azure/Deployment/Onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) na przykład notesów, które tworzą i wdrażają modele Onnx.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="more-info"></a>Więcej informacji
 
-Dowiedz się więcej o ONNX lub współtworzenia projektu:
-+ [ONNX projektu witryny sieci Web](https://onnx.ai)
+Dowiedz się więcej na temat ONNX lub współtworzenia projektu:
++ [Witryna sieci Web projektu ONNX](https://onnx.ai)
 + [Kod ONNX w serwisie GitHub](https://github.com/onnx/onnx)
 
 Dowiedz się więcej na temat środowiska uruchomieniowego ONNX lub współtworzenia projektu:

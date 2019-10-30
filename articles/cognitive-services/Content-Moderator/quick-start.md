@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bb4fc076d01c1108278cea0cebba958b4ea94660
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757362"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044051"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Szybki Start: Wypróbuj Content Moderator w sieci Web
 
@@ -68,6 +68,6 @@ Lub przejdź do następnych kroków, aby rozpocząć korzystanie z interfejsów 
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak używać interfejsów API moderowania w aplikacji.
-- Implementowanie moderowania obrazu. Użyj [konsoli interfejsu API](try-image-api.md) lub [ C# przewodnika Szybki Start](image-moderation-quickstart-dotnet.md) , aby skanować obrazy i wykrywać potencjalną zawartość dla dorosłych i erotycznej przy użyciu tagów, wyników pewności i innych wyodrębnionych informacji.
-- Implementowanie moderowania tekstu. Użyj [konsoli interfejsu API](try-text-api.md) lub Użyj [ C# przewodnika Szybki Start](text-moderation-quickstart-dotnet.md) , aby przeskanować zawartość tekstową w celu uzyskania potencjalnej wulgarności, niepotrzebnej do użycia maszynowo klasyfikacji tekstu (wersja zapoznawcza) i danych osobowych.
+- Implementowanie moderowania obrazu. Użyj [konsoli interfejsu API](try-image-api.md) lub postępuj zgodnie z [przewodnikiem Szybki Start zestawu .NET SDK](dotnet-sdk-quickstart.md) , aby skanować obrazy i wykrywać potencjalną zawartość dla dorosłych i erotycznej przy użyciu tagów, wyników pewności i innych wyodrębnionych informacji.
+- Implementowanie moderowania tekstu. Użyj [konsoli interfejsu API](try-text-api.md) lub Użyj [przewodnika Szybki Start zestawu .NET SDK](dotnet-sdk-quickstart.md) , aby skanować zawartość tekstową w celu uzyskania potencjalnej wulgarności, niepotrzebnej do użycia maszynowo klasyfikacji tekstu (wersja zapoznawcza) i danych osobowych.
 - Implementowanie moderowania wideo. Postępuj zgodnie z [przewodnikiem dotyczącym C# moderowania wideo](video-moderation-api.md) , aby skanować wideo i wykrywać potencjalną zawartość dla dorosłych i erotycznej. 

@@ -1,5 +1,6 @@
 ---
 title: 'Szybki Start: Content Moderatora Biblioteka kliencka dla języka Python | Microsoft Docs'
+titleSuffix: Azure Cognitive Services
 description: Rozpocznij pracę z biblioteką klienta Content Moderator dla języka Python.
 services: cognitive-services
 author: PatrickFarley
@@ -7,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 28c70e7d226e8f4b2458234e1f14754cdbb1825c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755251"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044030"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Szybki Start: Content Moderatora Biblioteka kliencka dla języka Python
 
@@ -295,7 +296,7 @@ Użyj poniższego kodu, aby usunąć daną listę obrazów.
 
 ## <a name="create-a-review"></a>Utwórz recenzję
 
-Za pomocą zestawu SDK języka Python Content Moderator można pokazywać zawartość do [Narzędzia do przeglądu](https://contentmoderator.cognitive.microsoft.com) , aby można było je sprawdzić. Aby dowiedzieć się więcej na temat narzędzia do przeglądu, zobacz [Przewodnik koncepcyjny](./review-tool-user-guide/human-in-the-loop.md).
+Za pomocą zestawu SDK języka Python Content Moderator można pokazywać zawartość do [Narzędzia do przeglądu](https://contentmoderator.cognitive.microsoft.com) , aby można było je sprawdzić. Aby dowiedzieć się więcej na temat narzędzia do przeglądu, zobacz [Przewodnik dotyczący koncepcyjnego narzędzia do przeglądu](./review-tool-user-guide/human-in-the-loop.md).
 
 Poniższy kod używa klasy [ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) w celu utworzenia przeglądu, pobrania jego identyfikatora i sprawdzenia jego szczegółów po odebraniu danych ludzkich za pośrednictwem portalu internetowego narzędzia do przeglądu.
 
@@ -312,7 +313,7 @@ Dodaj następujący kod, aby utworzyć i opublikować przegląd dla danego adres
 
 ### <a name="get-review-details"></a>Pobierz szczegóły przeglądu
 
-Użyj poniższego kodu, aby sprawdzić szczegóły danego przeglądu. Po utworzeniu recenzji możesz samodzielnie przejść do narzędzia do przeglądu i korzystać z zawartości. Po zakończeniu możesz ponownie uruchomić ten kod i pobrać wyniki procesu recenzowania.
+Użyj poniższego kodu, aby sprawdzić szczegóły danego przeglądu. Po utworzeniu recenzji możesz samodzielnie przejść do narzędzia do przeglądu i korzystać z zawartości. Aby dowiedzieć się, jak to zrobić, zobacz [Przewodnik dotyczący przeglądów](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images). Po zakończeniu możesz ponownie uruchomić ten kod i pobrać wyniki procesu recenzowania.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 

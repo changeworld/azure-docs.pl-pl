@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: aa3b6ce886b06c32e9e4515469099a5b31ff49e3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ce8ea76cfc1f3f30418b66cd21de43d244da6764
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757203"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043976"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Umiarkowane obrazy z konsoli interfejsu API
 
@@ -102,4 +102,4 @@ W celu wykrycia tekstu w obrazach można użyć funkcji Content Moderator OCR.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Użyj interfejsu API REST w kodzie lub Rozpocznij od [moderowania obrazu .NET szybkiego](image-moderation-quickstart-dotnet.md) startu, aby zintegrować z Twoją aplikacją.
+Użyj interfejsu API REST w kodzie lub postępuj zgodnie z [przewodnikiem Szybki Start dla zestawu .NET SDK](dotnet-sdk-quickstart.md) , aby dodać moderowanie obrazów do aplikacji.

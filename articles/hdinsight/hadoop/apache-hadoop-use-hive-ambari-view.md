@@ -1,5 +1,5 @@
 ---
-title: Używanie widoków Apache Ambari do pracy z usługą Hive w usłudze HDInsight (Apache Hadoop) — Azure
+title: Korzystanie z widoku programu Apache Ambari Hive z Apache Hadoop w usłudze Azure HDInsight
 description: Dowiedz się, jak przesyłać zapytania programu Hive za pomocą widoku programu Hive z przeglądarki sieci Web. Widok Hive jest częścią Ambari internetowego interfejsu użytkownika dostarczonego z klastrem usługi HDInsight opartego na systemie Linux.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077012"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044825"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Korzystanie z widoku platformy Apache Ambari z usługą Apache Hadoop w usłudze HDInsight
 
@@ -30,7 +30,7 @@ Dowiedz się, jak uruchamiać zapytania programu Hive za pomocą widoku Hive w p
 
 1. Na [Azure Portal](https://portal.azure.com/)wybierz swój klaster.  Instrukcje można znaleźć w temacie Wyświetlanie [i wyświetlanie klastrów](../hdinsight-administer-use-portal-linux.md#showClusters) . Klaster zostanie otwarty w nowym bloku portalu.
 
-2. W obszarze **pulpity nawigacyjne klastra**wybierz pozycję **widoki Ambari**. Po wyświetleniu monitu o uwierzytelnienie Użyj nazwy konta `admin`i hasła klastra, które zostały podane podczas tworzenia klastra.
+2. W obszarze **pulpity nawigacyjne klastra**wybierz pozycję **widoki Ambari**. Po wyświetleniu monitu o uwierzytelnienie Użyj nazwy konta (domyślnej `admin`) i hasła podanego podczas tworzenia klastra.
 
 3. Z listy widoki wybierz pozycję __Widok Hive__.
 
@@ -61,16 +61,16 @@ Dowiedz się, jak uruchamiać zapytania programu Hive za pomocą widoku Hive w p
 
     Te instrukcje wykonują następujące czynności:
 
-   * `DROP TABLE`: Usuwa tabelę i plik danych, jeśli tabela już istnieje.
+   * `DROP TABLE`: usuwa tabelę i plik danych. w przypadku, gdy tabela już istnieje.
 
-   * `CREATE EXTERNAL TABLE`: Tworzy nową tabelę "zewnętrzna" w gałęzi Hive.
+   * `CREATE EXTERNAL TABLE`: tworzy nową tabelę "zewnętrzna" w gałęzi Hive.
      Tabele zewnętrzne przechowują tylko definicję tabeli w programie Hive. Dane pozostaną w oryginalnej lokalizacji.
 
-   * `ROW FORMAT`: Pokazuje, w jaki sposób dane są formatowane. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
+   * `ROW FORMAT`: pokazuje, jak są formatowane dane. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
 
-   * `STORED AS TEXTFILE LOCATION`: Pokazuje, gdzie są przechowywane dane i czy są przechowywane jako tekst.
+   * `STORED AS TEXTFILE LOCATION`: pokazuje, gdzie są przechowywane dane i czy są przechowywane jako tekst.
 
-   * `SELECT`: Wybiera liczbę wszystkich wierszy, w których kolumna T4 zawiera wartość [ERROR].
+   * `SELECT`: wybiera liczbę wszystkich wierszy, w których kolumna T4 zawiera wartość [ERROR].
 
    > [!IMPORTANT]  
    > Pozostaw __Domyślnie__wybraną __bazę danych__ . Przykłady w tym dokumencie wykorzystują domyślną bazę danych dołączoną do usługi HDInsight.
@@ -119,7 +119,7 @@ Na karcie **zapytanie** można opcjonalnie zapisywać zapytania. Po zapisaniu za
 ![Karta Apache Hive widoku zapisane zapytania](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> Zapisane zapytania są przechowywane w domyślnym magazynie klastra. Zapisane zapytania można znaleźć pod ścieżką `/user/<username>/hive/scripts`. Są one przechowywane jako pliki w postaci `.hql` zwykłego tekstu.
+> Zapisane zapytania są przechowywane w domyślnym magazynie klastra. Zapisane zapytania można znaleźć pod ścieżką `/user/<username>/hive/scripts`. Są one przechowywane jako pliki `.hql` zwykłego tekstu.
 >
 > Jeśli usuniesz klaster, ale zachowasz magazyn, możesz pobrać zapytania za pomocą narzędzia, takiego jak [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) lub Data Lake Storage Explorer (z witryny [Azure Portal](https://portal.azure.com)).
 
@@ -137,7 +137,7 @@ Na przykład jeśli zdefiniowano UDF o następujących właściwościach:
 
 * Nazwa zasobu: myudfs
 
-* Resource path: /myudfs.jar
+* Ścieżka zasobu:/myudfs.jar
 
 * Nazwa UDF: myawesomeudf
 

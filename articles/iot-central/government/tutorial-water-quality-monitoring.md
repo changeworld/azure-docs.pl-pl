@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c2e68e83999ace4094d060a21e91b87347b03e9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 94e8695e01ca5e5c456ce230c4cc84b41685fd9c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955109"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026524"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-iot-central"></a>Samouczek: Tworzenie aplikacji do monitorowania jakości wody w IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 W tym samouczku przedstawiono tworzenie aplikacji do monitorowania jakości wody na platformie Azure IoT Central z szablonu aplikacji do monitorowania jakości wody IoT Central. 
 
@@ -50,7 +52,7 @@ Aby utworzyć nową aplikację do monitorowania jakości wody w systemie Azure I
 
     ![Określanie konta organizacji](./media/tutorial-waterqualitymonitoring/sign-in.png)
 
-2. Kliknij pozycję **Kompiluj** w menu nawigacji po lewej stronie i wybierz kartę **Administracja** . Na stronie Administracja jest wyświetlana kilka szablonów aplikacji rządowych.
+2. W lewym okienku kliknij pozycję **kompilacja** , a następnie wybierz pozycję Karta **rządowa** . Na stronie Administracja jest wyświetlana kilka szablonów aplikacji rządowych.
 
     ![Kompiluj szablony aplikacji dla instytucji rządowych](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
@@ -254,8 +256,8 @@ Jako Konstruktor można zmienić kilka ustawień, aby dostosować środowisko u�
 
 Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń aplikację, wykonując następujące czynności:
 
-1. Otwórz kartę Administracja w menu nawigacji po lewej stronie aplikacji IoT Central. 
-2. Wybierz pozycję Ustawienia aplikacji, a następnie kliknij przycisk Usuń u dołu strony. 
+1. Otwórz kartę Administracja w lewym okienku aplikacji IoT Central.
+2. Wybierz pozycję Ustawienia aplikacji, a następnie kliknij przycisk Usuń u dołu strony.
 
     ![Usuwanie aplikacji](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)        
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c8be547790452774992b9226ca8010532263aaff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8eb329ae019f125b98c475b4a77d19e9cafe23fa
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814521"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053820"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Powrót po awarii maszyny wirtualnej platformy Azure między regionami platformy Azure
 
@@ -46,9 +46,9 @@ Po ponownym włączeniu ochrony maszyn wirtualnych można wrócić do regionu po
 
 2. W obszarze **zreplikowane elementy**wybierz maszynę wirtualną, a następnie wybierz pozycję **tryb failover**.
 3. W obszarze **tryb failover**wybierz punkt odzyskiwania, w którym ma zostać przełączona praca awaryjna:
-    - **Najnowsza (domyślnie)** : Przetwarza wszystkie dane w usłudze Site Recovery i zapewnia najniższy cel punktu odzyskiwania (RPO).
-    - **Najnowszy przetworzony**: Przywraca maszynę wirtualną do najnowszego punktu odzyskiwania, który został przetworzony przez Site Recovery.
-    - **Niestandardowy**: Przełączenie w tryb failover do określonego punktu odzyskiwania. Ta opcja jest przydatna na potrzeby wykonywania testu trybu failover.
+    - **Najnowsza (domyślnie)** : przetwarza wszystkie dane w usłudze Site Recovery i zapewnia najniższy cel punktu odzyskiwania (RPO).
+    - **Najnowsza przetworzony**: przywraca maszynę wirtualną do najnowszego punktu odzyskiwania, który został przetworzony przez Site Recovery.
+    - **Niestandardowa**: przełączenie w tryb failover do określonego punktu odzyskiwania. Ta opcja jest przydatna na potrzeby wykonywania testu trybu failover.
 4. Wybierz opcję **Zamknij maszynę przed rozpoczęciem pracy w trybie failover** , jeśli chcesz, aby Site Recovery próby zamknięcia maszyn wirtualnych w regionie Dr przed wyzwoleniem trybu failover. Tryb failover kontynuuje działanie nawet wtedy, gdy wyłączenie nie powiedzie się. 
 5. Postęp przełączania w tryb failover można śledzić na karcie **Zadania**.
 6. Po zakończeniu pracy w trybie failover Zweryfikuj maszynę wirtualną, logując się do niej. Punkt odzyskiwania można zmienić odpowiednio do potrzeb.
@@ -56,6 +56,9 @@ Po ponownym włączeniu ochrony maszyn wirtualnych można wrócić do regionu po
 8. Maszyna wirtualna powinna być wyświetlana jako przełączona w tryb failover i ponownie zakończona.
 
     ![Maszyna wirtualna w regionach podstawowym i pomocniczym](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
+
+> [!NOTE]
+> W przypadku maszyn, na których uruchomiono rozszerzenie Site Recovery w wersji 9.28. x. x i [pakiet zbiorczy aktualizacji 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery oczyszczanie maszyn w pomocniczym regionie odzyskiwania po awarii, nafter powrót po awarii jest zakończony, a maszyny wirtualne są chronione. Nie ma potrzeby ręcznego usuwania maszyn wirtualnych i kart interfejsu sieciowego.
 
 ## <a name="next-steps"></a>Następne kroki
 

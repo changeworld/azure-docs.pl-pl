@@ -6,23 +6,23 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
-ms.date: 10/03/2019
+ms.date: 10/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5d8c0420f680371ab63a2ddd09071769586a42ca
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4c56c8f98e536060ea18eb6b9d3a37179eebc89f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900023"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044318"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
 > [!NOTE]
 > W tym artykule opisano sposób zrozumienia i kontrolowania kosztów Application Insights.  W powiązanym artykule, [monitorowaniu użycia i szacowanych kosztów](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) opisano sposób wyświetlania użycia i szacowane koszty w wielu funkcjach monitorowania platformy Azure dla różnych modeli cen.
 
-Application Insights zaprojektowano w celu uzyskania wszystkiego, czego potrzebujesz, aby monitorować dostępność, wydajność i użycie aplikacji sieci Web, niezależnie od tego, czy są one hostowane na platformie Azure, czy lokalnie. Application Insights obsługuje popularne języki i struktury, takie jak .NET, Java i Node. js, i integruje się z procesami DevOps i narzędziami, takimi jak Azure DevOps, JIRA i usługi PagerDuty. Ważne jest, aby zrozumieć, co określa koszty monitorowania aplikacji. W tym artykule zawarto informacje na temat dysków, które monitorują aplikacje i jak można je aktywnie monitorować i kontrolować.
+Application Insights zaprojektowano w celu uzyskania wszystkiego, czego potrzebujesz, aby monitorować dostępność, wydajność i użycie aplikacji sieci Web, niezależnie od tego, czy są one hostowane na platformie Azure, czy lokalnie. Application Insights obsługuje popularne języki i struktury, takie jak .NET, Java i Node. js, i integruje się z procesami DevOps i narzędziami, takimi jak Azure DevOps, JIRA i usługi PagerDuty. Ważne jest, aby zrozumieć, co określa koszty monitorowania aplikacji. W tym artykule opisano, jakie dyski są monitorowane przez aplikację oraz jak można je aktywnie monitorować i kontrolować.
 
-Jeśli masz pytania dotyczące sposobu działania cen dla Application Insights, możesz ogłosić pytanie na naszym [forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc).
+Jeśli masz pytania dotyczące sposobu działania cen dla Application Insights, możesz ogłosić pytanie na naszym [forum](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc).
 
 ## <a name="pricing-model"></a>Model cen
 
@@ -34,17 +34,17 @@ Cennik [usługi Azure Application Insights][start] to model z **płatnością zg
 
 Jeśli jeszcze nie korzystasz z Application Insights, możesz użyć [kalkulatora cen Azure monitor](https://azure.microsoft.com/pricing/calculator/?service=monitor) , aby oszacować koszt używania Application Insights. Zacznij od wprowadzenia "Azure Monitor" w polu wyszukiwania i kliknięcia kafelka Azure Monitor wyników. Przewiń w dół stronę do Azure Monitor i wybierz pozycję Application Insights z listy rozwijanej Typ.  W tym miejscu możesz wprowadzić liczbę GB danych, które mają być zbierane miesięcznie, a więc pytanie, jak dużo danych będzie Application Insights zbierać monitorowanie aplikacji. 
 
-Istnieją dwa podejścia do rozwiązania tego zagadnienia: użycie domyślnego monitorowania i próbkowania adaptacyjnego, które jest dostępne w zestawie SDK ASP.NET, lub oszacowanie potencjalnego pozyskiwania danych na podstawie tego, co inni klienci będą mogli zobaczyć. 
+Istnieją dwa podejścia do rozwiązania tego zagadnienia: użycie domyślnego monitorowania i próbkowania adaptacyjnego, które jest dostępne w zestawie SDK ASP.NET, lub oszacowanie potencjalnego pozyskiwania danych na podstawie tego, co inni klienci będą mogli zobaczyć.
 
 ### <a name="data-collection-when-using-sampling"></a>Zbieranie danych przy użyciu próbkowania
 
-Przy [pobieraniu próbkowania](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)zestawu SDK ASP.NET wolumin danych jest dostosowywany automatycznie, aby zachować w ramach określonego maksymalnego natężenia ruchu dla domyślnego monitorowania Application Insights. Jeśli aplikacja tworzy niską ilość danych telemetrycznych, na przykład podczas debugowania lub z powodu niskiego użycia, elementy nie zostaną porzucone przez procesor próbkowania, o ile ilość poniżej skonfigurowanych zdarzeń na sekundę. W przypadku aplikacji o dużym nasileniu, z domyślnym progiem 5 zdarzeń na sekundę, próbkowanie adaptacyjne ograniczy liczbę codziennych zdarzeń do 432 000. Przy użyciu typowego średniego rozmiaru zdarzenia o wartości 1 KB odpowiada to 13,4 GB danych telemetrycznych na każdy węzeł obsługujący aplikację (ponieważ próbkowanie jest wykonywane lokalnie dla każdego węzła). 
+Przy [pobieraniu próbkowania](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)zestawu SDK ASP.NET wolumin danych jest dostosowywany automatycznie, aby zachować w ramach określonego maksymalnego natężenia ruchu dla domyślnego monitorowania Application Insights. Jeśli aplikacja tworzy niską ilość danych telemetrycznych, na przykład podczas debugowania lub z powodu niskiego użycia, elementy nie zostaną porzucone przez procesor próbkowania, o ile ilość poniżej skonfigurowanych zdarzeń na sekundę. W przypadku aplikacji o dużym nasileniu z domyślnym progiem pięciu zdarzeń na sekundę próbkowanie adaptacyjne ograniczy liczbę codziennych zdarzeń do 432 000. Przy użyciu typowego średniego rozmiaru zdarzenia o wartości 1 KB odpowiada to 13,4 GB danych telemetrycznych na każdy węzeł obsługujący aplikację (ponieważ próbkowanie jest wykonywane lokalnie dla każdego węzła). 
 
-W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, można zastosować [próbkowanie](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) pozyskiwania próbek, gdy dane są odbierane przez Application Insights na podstawie procentu ilości danych do zachowania lub [próbkowania o stałym rozmiarze dla ASP.NET, ASP.NET Core i Java witryny internetowe](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) umożliwiające zmniejszenie ruchu wysyłanego z serwera sieci Web i przeglądarek sieci Web
+W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, można zastosować [próbkowanie](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)pozyskiwania, które próbki, gdy dane są odbierane przez Application Insights na podstawie procentu ilości danych do zachowania lub [próbkowania o stałym stopniu dla ASP.NET, ASP.NET Core i Java witryny internetowe](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) umożliwiające zmniejszenie ruchu wysyłanego z serwera sieci Web i przeglądarek sieci Web
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Dowiedz się, co zbiera podobne odbiorcy
 
-Na stronie Kalkulator cen usługi Azure Monitoring dla Application Insights w przypadku włączenia funkcji "oszacowanie ilości danych opartych na działaniu aplikacji" można podać dane wejściowe aplikacji (żądania miesięcznie i wyświetlenia stron miesięcznie). Zbieraj dane telemetryczne po stronie klienta, a następnie Kalkulator wskaże medianę i 90% ilość danych zbieranych przez podobne aplikacje. Oczywiście te aplikacje rozciągają się na zakres konfiguracji Application Insights (np. niektóre z nich mają [próbkowanie](../../azure-monitor/app/sampling.md)domyślne, niektóre nie mają żadnego próbkowania itp.), dlatego nadal masz kontrolę, aby zmniejszyć ilość danych, które pozostały poniżej poziomu średniego przy użyciu próbkowania. Jest to jednak punkt początkowy, który umożliwia zapoznanie się z innymi, podobnym klientom. 
+Na stronie Kalkulator cen usługi Azure Monitoring dla Application Insights w przypadku włączenia funkcji "oszacowanie ilości danych opartych na działaniu aplikacji" można podać dane wejściowe aplikacji (żądania miesięcznie i wyświetlenia stron miesięcznie). Zbieraj dane telemetryczne po stronie klienta, a następnie Kalkulator wskaże medianę i 90% ilość danych zbieranych przez podobne aplikacje. Te aplikacje obejmują zakres konfiguracji Application Insights (np. niektóre z [próbkami](../../azure-monitor/app/sampling.md)domyślnymi, niektóre nie mają próbek itp.), dlatego nadal masz kontrolę, aby zmniejszyć ilość danych, które są znacznie mniejsze niż poziom średni przy użyciu próbkowania. Jest to jednak punkt początkowy, który umożliwia zapoznanie się z innymi, podobnym klientom. 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Zapoznaj się z użyciem i szacunkowymi kosztami
 
@@ -66,43 +66,66 @@ Opłaty za Application Insights są dodawane do rachunku na korzystanie z platfo
 
 ![W menu po lewej stronie wybierz pozycję rozliczenia](./media/pricing/02-billing.png)
 
-## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Wyświetlanie Application Insights użycia na rachunku na platformie Azure 
+### <a name="using-data-volume-metrics"></a>Korzystanie z metryk ilości danych
+<a id="understanding-ingested-data-volume"></a>
 
-Platforma Azure oferuje bardzo przydatne funkcje w [Azure Cost Management i centrum rozliczeń](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Na przykład funkcja "analiza kosztów" umożliwia wyświetlanie wydatków dotyczących zasobów platformy Azure. Dodawanie filtru według typu zasobu (do Microsoft. Insights/Components for Application Insights) umożliwi śledzenie wydatków.
+Aby dowiedzieć się więcej na temat woluminów danych, wybierz **metryki** dla zasobu Application Insights, Dodaj nowy wykres. Dla metryki wykresu w obszarze **metryki oparte na dzienniku**wybierz pozycję **wolumin punktu danych**. Kliknij przycisk **Zastosuj podział**, a następnie wybierz pozycję Grupuj według **typu Telemetryitem**.
 
-Więcej informacji o użyciu można uzyskać, [pobierając użycie z witryny Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). W pobranym arkuszu kalkulacyjnym można zobaczyć użycie na zasób platformy Azure dziennie. W tym arkuszu kalkulacyjnym programu Excel można znaleźć użycie z zasobów Application Insights, wybierając najpierw filtrowanie w kolumnie "kategoria licznika", aby pokazać "Application Insights" i "Log Analytics", a następnie dodać filtr w kolumnie "identyfikator wystąpienia", która jest "zawiera Microsoft. Insights/Components.  Większość Application Insights użycie jest raportowane na miernikach z kategorią licznika Log Analytics, ponieważ istnieje pojedyncze zaplecze dzienników dla wszystkich składników Azure Monitor.  Tylko zasoby Application Insights ze starszych warstw cenowych i wieloetapowych testów sieci Web są zgłaszane z kategorią miernika Application Insights.  Użycie jest wyświetlane w kolumnie "zużyta ilość", a jednostka dla każdego wpisu jest pokazywana w kolumnie "jednostka miary".  Dostępne są więcej szczegółów, które ułatwiają [zrozumienie Microsoft Azure rachunku](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
+![Używanie metryk do przeglądania ilości danych](./media/pricing/10-billing.png)
 
-## <a name="understanding-ingested-data-volume"></a>Zrozumienie ilości pozyskiwanych danych
-
-Aby zrozumieć, ile danych jest wprowadzanych do Application Insights, możesz:
-
-1. Przejdź do okienka **użycie i szacowane koszty** , aby zobaczyć dzienny wykres ilości danych w sposób opisany powyżej.
-2. W Eksplorator metryk Dodaj nowy wykres. Dla metryki wykresu wybierz pozycję **wolumin punktu danych**. Włącz **grupowanie**, a następnie Grupuj według **typu danych**.
-3. Użyj tabeli `systemEvents`, jak pokazano poniżej. 
+### <a name="queries-to-understand-data-volume-details"></a>Zapytania, aby zrozumieć szczegóły ilości danych
 
 Na przykład można użyć tabeli `systemEvents`, aby zobaczyć ilość danych pozyskaną w ciągu ostatnich 24 godzin przy użyciu zapytania:
 
 ```kusto
 systemEvents 
-| where timestamp >= ago(1d)
+| where timestamp >= ago(24h)
 | where type == "Billing" 
 | extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
 | extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
 | summarize sum(BillingTelemetrySizeInBytes)
 ```
 
-Lub aby wyświetlić wykres ilości danych według typu danych z ostatnich 30 dni, można użyć:
+Lub aby wyświetlić wykres ilości danych (w bajtach) według typu danych z ostatnich 30 dni, można użyć:
 
 ```kusto
 systemEvents 
-| where timestamp >= ago(30d)
+| where timestamp >= startofday(ago(30d))
 | where type == "Billing" 
 | extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
 | extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
 | summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
 ```
 
-Tego zapytania można użyć w [alercie dziennika platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) w celu skonfigurowania alertów dla woluminów danych. 
+Zwróć uwagę, że to zapytanie może być używane w [alercie dziennika platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) w celu skonfigurowania alertów dotyczących woluminów danych.  
+
+Aby dowiedzieć się więcej o zmianach danych telemetrycznych, sprawdźmy liczbę zdarzeń według typu przy użyciu zapytania:
+
+```kusto
+systemEvents 
+| where timestamp >= startofday(ago(30d))
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| summarize count() by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
+```
+
+Jeśli podobne zmiany są widoczne w licznikach, które są widoczne w woluminie w bajtach, można skupić się na typach danych zdarzeń, które pokazują zwiększoną liczbę.  Na przykład jeśli zaobserwowano, że liczba niezwiększonych zależności, jest to zapytanie, aby zrozumieć, które operacje są odpowiedzialne za zwiększenie:
+
+```kusto
+dependencies 
+| where timestamp >= startofday(ago(30d))
+| summarize count() by operation_Name, bin(timestamp, 1d)  
+| render barchart  
+```
+
+
+## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Wyświetlanie Application Insights użycia na rachunku na platformie Azure 
+
+Platforma Azure oferuje bardzo przydatne funkcje w [Azure Cost Management i centrum rozliczeń](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Na przykład funkcja "analiza kosztów" umożliwia wyświetlanie wydatków dotyczących zasobów platformy Azure. Dodawanie filtru według typu zasobu (do Microsoft. Insights/Components for Application Insights) umożliwi śledzenie wydatków.
+
+Więcej informacji o użyciu można uzyskać, [pobierając użycie z Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal).
+W pobranym arkuszu kalkulacyjnym można zobaczyć użycie na zasób platformy Azure dziennie. W tym arkuszu kalkulacyjnym programu Excel można znaleźć użycie z zasobów Application Insights, wybierając najpierw filtrowanie w kolumnie "kategoria licznika", aby pokazać "Application Insights" i "Log Analytics", a następnie dodać filtr w kolumnie "identyfikator wystąpienia", która jest "zawiera Microsoft. Insights/Components.  Większość Application Insights użycie jest raportowane na miernikach z kategorią licznika Log Analytics, ponieważ istnieje pojedyncze zaplecze dzienników dla wszystkich składników Azure Monitor.  Tylko zasoby Application Insights ze starszych warstw cenowych i wieloetapowych testów sieci Web są zgłaszane z kategorią miernika Application Insights.  Użycie jest wyświetlane w kolumnie "zużyta ilość", a jednostka dla każdego wpisu jest pokazywana w kolumnie "jednostka miary".  Dostępne są więcej szczegółów, które ułatwiają [zrozumienie Microsoft Azure rachunku](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
+
 
 ## <a name="managing-your-data-volume"></a>Zarządzanie ilością danych 
 
@@ -244,7 +267,7 @@ Ponieważ ta warstwa ma zastosowanie tylko do klientów z subskrypcją pakietu O
   * W zestawie SDK w wersji 2,2 i nowszych zarówno [zestaw Application Insights Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) i [zestaw SDK sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) są raportowane przez każdego hosta aplikacji jako węzeł. Przykłady to nazwa komputera dla serwerów fizycznych i hostów maszyn wirtualnych lub nazwa wystąpienia usług Cloud Services.  Jedyny wyjątek to aplikacja, która korzysta tylko z [platformy .NET Core](https://dotnet.github.io/) i zestawu SDK Application Insights Core. W takim przypadku tylko jeden węzeł jest raportowany dla wszystkich hostów, ponieważ nazwa hosta jest niedostępna. 
   * W przypadku wcześniejszych wersji zestawu SDK zestaw SDK [sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) działa jak nowsze wersje zestawu SDK, ale [podstawowy zestaw SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) raportuje tylko jeden węzeł, niezależnie od liczby hostów aplikacji. 
   * Jeśli aplikacja używa zestawu SDK do ustawiania **roleInstance** na wartość niestandardową, domyślnie ta sama wartość jest używana do określenia liczby węzłów. 
-  * W przypadku korzystania z nowej wersji zestawu SDK z aplikacją uruchomioną z komputerów klienckich lub urządzeń przenośnych liczba węzłów może zwracać liczbę bardzo dużą (z powodu dużej liczby komputerów klienckich lub urządzeń przenośnych). 
+  * W przypadku korzystania z nowej wersji zestawu SDK z aplikacją uruchomioną z poziomu komputerów klienckich lub urządzeń przenośnych liczba węzłów może zwracać liczbę, która jest duża (z powodu dużej liczby komputerów klienckich lub urządzeń przenośnych). 
 
 ## <a name="automation"></a>Automation
 

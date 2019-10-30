@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 53d06f84172da0c4717cabe79f4f5152e73e9555
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754263"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044126"
 ---
 # <a name="create-human-reviews"></a>Tworzenie przeglądów ludzkich
 
@@ -56,4 +56,4 @@ Przeglądy tekstu działają podobnie jak przeglądy obrazów. Zamiast przekazyw
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku przedstawiono sposób konfigurowania i używania przeglądów z poziomu [Narzędzia do przeglądu](https://contentmoderator.cognitive.microsoft.com)Content Moderator. Następnie zapoznaj się z [przewodnikiem interfejsu API REST](../try-review-api-review.md) lub [przewodnikiem po zestawie SDK platformy .NET](../moderation-reviews-quickstart-dotnet.md) , aby dowiedzieć się, jak tworzyć przeglądy programowo.
+W tym przewodniku przedstawiono sposób konfigurowania i używania przeglądów z poziomu [Narzędzia do przeglądu](https://contentmoderator.cognitive.microsoft.com)Content Moderator. Następnie zapoznaj się z [przewodnikiem interfejsu API REST](../try-review-api-review.md) lub [zestawem SDK platformy .NET](../dotnet-sdk-quickstart.md) w celu zapoznania się z programem programistycznym.

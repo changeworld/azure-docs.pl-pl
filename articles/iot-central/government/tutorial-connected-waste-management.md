@@ -7,14 +7,17 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9af8a94953d7893c71cfc413f9259ec8582a8899
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a0bf3b555334b67659975c150711eab02b957c6e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955151"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026612"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Samouczek: Tworzenie połączonej aplikacji zarządzania odpadami w IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 W tym samouczku przedstawiono sposób tworzenia aplikacji do zarządzania odpadami w usłudze Azure IoT Central przy użyciu szablonu IoT Central **połączonego zarządzania odpadami** . 
 
 W tym samouczku dowiesz się, jak: 
@@ -45,7 +48,7 @@ Aby utworzyć nową aplikację usługi Azure IoT Central połączonego zarządza
 
     ![Określanie konta organizacji](./media/tutorial-connectedwastemanagement/sign-in.png)
 
-2. Kliknij pozycję **Kompiluj** w menu nawigacji po lewej stronie i wybierz kartę **Administracja** . Na stronie Administracja jest wyświetlana kilka szablonów aplikacji rządowych.
+2. W lewym okienku kliknij pozycję **kompilacja** , a następnie wybierz pozycję Karta **rządowa** . Na stronie Administracja jest wyświetlana kilka szablonów aplikacji rządowych.
 
     ![Kompiluj szablony aplikacji dla instytucji rządowych](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
 
@@ -255,8 +258,8 @@ Jako Konstruktor można zmienić kilka ustawień, aby dostosować środowisko u�
 
 Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń aplikację, wykonując następujące czynności:
 
-1. Otwórz kartę Administracja w menu nawigacji po lewej stronie aplikacji IoT Central. 
-2. Wybierz pozycję Ustawienia aplikacji, a następnie kliknij przycisk Usuń u dołu strony. 
+1. Otwórz kartę Administracja w lewym okienku aplikacji IoT Central.
+2. Wybierz pozycję Ustawienia aplikacji, a następnie kliknij przycisk Usuń u dołu strony.
 
   
 

@@ -6,14 +6,14 @@ ms.author: dacoulte
 ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 27cf1539fc98b2ad7f1b82e194989c1619ab99fb
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: fe0f16fd4c07eac92ab3c1ae2c6f78b0bd1595eb
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980708"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053496"
 ---
-# <a name="azure-policy-definition-structure"></a>Struktura definicji Azure Policy
+# <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
 Definicje zasad zasobów są używane przez Azure Policy do ustanawiania konwencji dotyczących zasobów. Każda definicja zawiera opis zgodności zasobów i działania, które należy wykonać, gdy zasób nie jest zgodny.
 Dzięki zdefiniowaniu Konwencji można kontrolować koszty i łatwiej zarządzać zasobami. Można na przykład określić, że dozwolone są tylko niektóre typy maszyn wirtualnych. Lub można wymagać, aby wszystkie zasoby miały określony tag. Zasady są dziedziczone przez wszystkie zasoby podrzędne. Jeśli zasady są stosowane do grupy zasobów, mają zastosowanie do wszystkich zasobów w tej grupie zasobów.
@@ -22,13 +22,13 @@ Schemat definicji zasad znajduje się tutaj: [https://schema.management.azure.co
 
 Aby utworzyć definicję zasad, należy użyć formatu JSON. Definicja zasad zawiera elementy dla:
 
-- tryb
-- parametry
+- Wyst
+- parameters
 - Nazwa wyświetlana
-- opis
+- description
 - Reguła zasad
   - Ocena logiczna
-  - skuteczność
+  - Skuteczność
 
 Na przykład poniższy kod JSON przedstawia zasady, które ograniczają miejsce wdrożenia zasobów:
 
@@ -77,20 +77,20 @@ Wszystkie przykłady Azure Policy znajdują się na [Azure Policy próbkach](../
 - `all`: Oceń grupy zasobów i wszystkie typy zasobów
 - `indexed`: Oceń tylko typy zasobów obsługujące Tagi i lokalizację
 
-Zaleca się, aby w większości przypadków ustawić **tryb** na `all`. Wszystkie definicje zasad utworzone za pomocą portalu używają trybu `all`. Jeśli używasz programu PowerShell lub interfejsu wiersza polecenia platformy Azure, możesz określić parametr **mode** ręcznie. Jeśli definicja zasad nie zawiera wartości **trybu** , domyślnie `all` w Azure PowerShell i do `null` w interfejsie wiersza polecenia platformy Azure. Tryb `null` jest taki sam jak w przypadku używania `indexed` w celu zapewnienia zgodności z poprzednimi wersjami.
+Zalecamy skonfigurowanie **trybu** do `all` w większości przypadków. Wszystkie definicje zasad utworzone za pomocą portalu używają trybu `all`. Jeśli używasz programu PowerShell lub interfejsu wiersza polecenia platformy Azure, możesz określić parametr **mode** ręcznie. Jeśli definicja zasad nie zawiera wartości **trybu** , domyślnie `all` w Azure PowerShell i `null` w interfejsie wiersza polecenia platformy Azure. Tryb `null` jest taki sam jak w przypadku używania `indexed` w celu zapewnienia zgodności z poprzednimi wersjami.
 
-`indexed` należy używać podczas tworzenia zasad, które wymuszają Tagi lub lokalizacje. Chociaż nie jest to wymagane, uniemożliwiają one nie obsługujące tagów i lokalizacji, ponieważ nie są one zgodne z wynikami sprawdzania zgodności. Wyjątkiem są **grupy zasobów**. Zasady, które wymuszają lokalizację lub Tagi w grupie zasobów, powinny ustawiać **tryb** na `all`, a w odniesieniu do typu `Microsoft.Resources/subscriptions/resourceGroups`. Aby zapoznać się z przykładem, zobacz [Wymuszaj Tagi grupy zasobów](../samples/enforce-tag-rg.md). Aby uzyskać listę zasobów, które obsługują Tagi, zobacz [obsługa tagów dla zasobów platformy Azure](../../../azure-resource-manager/tag-support.md).
+`indexed` należy używać podczas tworzenia zasad, które wymuszają Tagi lub lokalizacje. Chociaż nie jest to wymagane, uniemożliwiają one nie obsługujące tagów i lokalizacji, ponieważ nie są one zgodne z wynikami sprawdzania zgodności. Wyjątkiem są **grupy zasobów**. Zasady, które wymuszają lokalizację lub Tagi w grupie zasobów, powinny ustawiać **tryb** , aby `all`, a w odniesieniu do typu `Microsoft.Resources/subscriptions/resourceGroups`. Aby zapoznać się z przykładem, zobacz [Wymuszaj Tagi grupy zasobów](../samples/enforce-tag-rg.md). Aby uzyskać listę zasobów, które obsługują Tagi, zobacz [obsługa tagów dla zasobów platformy Azure](../../../azure-resource-manager/tag-support.md).
 
 ### <a name="resource-provider-modes"></a>Tryby dostawcy zasobów
 
-Jedynym obsługiwanym trybem dostawcy zasobów jest `Microsoft.ContainerService.Data` w celu zarządzania regułami kontrolera [usługi Azure Kubernetes](../../../aks/intro-kubernetes.md).
+Obecnie obsługiwany jest jedyny tryb dostawcy zasobów `Microsoft.ContainerService.Data` do zarządzania regułami kontrolera [usługi Azure Kubernetes](../../../aks/intro-kubernetes.md).
 
 > [!NOTE]
 > [Azure Policy Kubernetes](rego-for-aks.md) jest w publicznej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
 
 ## <a name="parameters"></a>Parametry
 
-Parametry pomagają uprościć zarządzanie zasadami przez zmniejszenie liczby definicji zasad. Należy traktować parametry, takie jak pola w formularzu — `name`, `address`, `city`, `state`. Te parametry zawsze pozostają takie same, ale ich wartości zmieniają się w zależności od poszczególnych wypełniania formularza.
+Parametry pomagają uprościć zarządzanie zasadami przez zmniejszenie liczby definicji zasad. Należy traktować parametry, takie jak pola w formularzu — `name`, `address`, `city``state`. Te parametry zawsze pozostają takie same, ale ich wartości zmieniają się w zależności od poszczególnych wypełniania formularza.
 Parametry działają w ten sam sposób podczas kompilowania zasad. Dzięki dołączeniu parametrów w definicji zasad można ponownie użyć tych zasad dla różnych scenariuszy przy użyciu różnych wartości.
 
 > [!NOTE]
@@ -100,13 +100,13 @@ Parametry działają w ten sam sposób podczas kompilowania zasad. Dzięki doł�
 
 Parametr ma następujące właściwości, które są używane w definicji zasad:
 
-- **name**: Nazwa parametru. Używane przez funkcję wdrożenia `parameters` w ramach reguły zasad. Aby uzyskać więcej informacji, zobacz [Używanie wartości parametru](#using-a-parameter-value).
+- **name**: Nazwa parametru. Używane przez funkcję wdrażania `parameters` w ramach reguły zasad. Aby uzyskać więcej informacji, zobacz [Używanie wartości parametru](#using-a-parameter-value).
 - `type`: określa, czy parametr to **ciąg**, **Tablica**, **obiekt**, **wartość logiczna**, **Liczba całkowita**, **zmiennoprzecinkowa**lub **DateTime**.
 - `metadata`: definiuje podwłaściwości używane głównie przez Azure Portal do wyświetlania informacji przyjaznych dla użytkownika:
   - `description`: wyjaśnienie, w jaki sposób jest używany parametr. Może służyć do podania przykładów akceptowalnych wartości.
   - `displayName`: przyjazna nazwa wyświetlana w portalu dla parametru.
   - `strongType`: (opcjonalnie) używany podczas przypisywania definicji zasad za pomocą portalu. Zawiera listę kontekstową. Aby uzyskać więcej informacji, zobacz [strongtype](#strongtype).
-  - `assignPermissions`: (opcjonalnie) ustawiono jako _true_ , aby mieć Azure Portal tworzenia przypisań ról podczas przypisywania zasad. Ta właściwość jest przydatna w przypadku, gdy chcesz przypisać uprawnienia poza zakresem przypisania. Istnieje jedno przypisanie roli w ramach zasad (lub definicji roli we wszystkich zasadach z inicjatywy). Wartość parametru musi być prawidłowym zasobem lub zakresem.
+  - `assignPermissions`: (opcjonalnie) ustawiono _wartość true_ , aby mieć Azure Portal tworzenia przypisań ról podczas przypisywania zasad. Ta właściwość jest przydatna w przypadku, gdy chcesz przypisać uprawnienia poza zakresem przypisania. Istnieje jedno przypisanie roli w ramach zasad (lub definicji roli we wszystkich zasadach z inicjatywy). Wartość parametru musi być prawidłowym zasobem lub zakresem.
 - `defaultValue`: (opcjonalnie) ustawia wartość parametru w przypisaniu, jeśli nie podano wartości.
   Wymagane podczas aktualizowania istniejącej definicji zasad, która jest przypisana.
 - `allowedValues`: (opcjonalnie) zawiera tablicę wartości akceptowanych przez parametr podczas przypisywania.
@@ -134,7 +134,7 @@ Można na przykład zdefiniować definicję zasad, aby ograniczyć lokalizacje, 
 
 ### <a name="using-a-parameter-value"></a>Używanie wartości parametru
 
-W regule zasad można odwoływać się do parametrów przy użyciu następującej składni funkcji wartości wdrożenia `parameters`:
+W regule zasad można odwoływać się do parametrów za pomocą następującej składni funkcji `parameters` wdrożenia:
 
 ```json
 {
@@ -223,18 +223,18 @@ Operatory logiczne można zagnieżdżać. W poniższym przykładzie przedstawion
 
 Warunek oblicza, czy **pole** lub metoda dostępu do **wartości** spełniają określone kryteria. Obsługiwane są następujące warunki:
 
-- `"equals": "value"`
-- `"notEquals": "value"`
-- `"like": "value"`
-- `"notLike": "value"`
-- `"match": "value"`
-- `"matchInsensitively": "value"`
-- `"notMatch": "value"`
-- `"notMatchInsensitively": "value"`
-- `"contains": "value"`
-- `"notContains": "value"`
-- `"in": ["value1","value2"]`
-- `"notIn": ["value1","value2"]`
+- `"equals": "stringValue"`
+- `"notEquals": "stringValue"`
+- `"like": "stringValue"`
+- `"notLike": "stringValue"`
+- `"match": "stringValue"`
+- `"matchInsensitively": "stringValue"`
+- `"notMatch": "stringValue"`
+- `"notMatchInsensitively": "stringValue"`
+- `"contains": "stringValue"`
+- `"notContains": "stringValue"`
+- `"in": ["stringValue1","stringValue2"]`
+- `"notIn": ["stringValue1","stringValue2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
 - `"less": "value"`
@@ -244,9 +244,9 @@ Warunek oblicza, czy **pole** lub metoda dostępu do **wartości** spełniają o
 - `"exists": "bool"`
 
 W przypadku używania warunków **like** i **notLike** , w wartości należy podać symbol wieloznaczny `*`.
-Wartość nie może mieć więcej niż jednego symbolu wieloznacznego `*`.
+Wartość nie może mieć więcej niż jednego `*`symbolu wieloznacznego.
 
-W przypadku używania warunków **Match** i **notMatch** podaj wartość `#` w celu dopasowania do cyfry, `?` dla litery, `.`, aby dopasować dowolny znak, i dowolny inny znak, aby dopasować go do rzeczywistego znaku.
+W przypadku używania warunków **Match** i **notMatch** Podaj `#` w celu dopasowania do cyfry, `?` dla litery, `.` aby dopasować dowolny znak i dowolny inny znak, aby dopasować go do rzeczywistego znaku.
 **dopasowanie** i **notMatch** uwzględnia wielkość liter. Alternatywy bez uwzględniania wielkości liter są dostępne w **matchInsensitively** i **notMatchInsensitively**. Aby zapoznać się z przykładami, zobacz [Zezwalanie na kilka wzorców nazw](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Pola
@@ -267,22 +267,22 @@ Obsługiwane są następujące pola:
 - `tags`
 - `tags['<tagName>']`
   - Ta składnia nawiasów umożliwia obsługę nazw tagów, które mają znaki interpunkcyjne, takie jak łącznik, kropka lub spacja.
-  - Gdzie **\<tagName @ no__t-2** to nazwa tagu, dla którego ma zostać zweryfikowany warunek.
-  - Przykłady: `tags['Acct.CostCenter']` gdzie **ACCT. CostCenter** jest nazwą tagu.
+  - Gdzie **\<tagName\>** jest nazwą tagu, aby zweryfikować warunek.
+  - Przykłady: `tags['Acct.CostCenter']`, gdzie **ACCT. CostCenter** jest nazwą tagu.
 - `tags['''<tagName>''']`
   - Ta składnia nawiasów umożliwia obsługę nazw tagów, które zawierają apostrofy przez ucieczki z podwójnym apostrofem.
-  - Gdzie **"\<tagName @ no__t-2"** to nazwa tagu, dla którego ma zostać zweryfikowany warunek.
-  - Przykład: `tags['''My.Apostrophe.Tag''']` gdzie **"\<tagName @ no__t-3"** jest nazwą tagu.
+  - Gdzie **"\<tagName\>"** jest nazwą tagu, dla którego ma zostać zweryfikowany warunek.
+  - Przykład: `tags['''My.Apostrophe.Tag''']` gdzie **"\<tagName\>"** jest nazwą tagu.
 - Aliasy właściwości — Aby uzyskać listę, zobacz [aliasy](#aliases).
 
 > [!NOTE]
-> `tags.<tagName>`, `tags[tagName]` i `tags[tag.with.dots]` są nadal akceptowalnymi sposobami deklarowania pola tag. Jednak preferowane wyrażenia są wymienione powyżej.
+> `tags.<tagName>`, `tags[tagName]`i `tags[tag.with.dots]` są nadal akceptowalnymi sposobami deklarowania pola Tagi. Jednak preferowane wyrażenia są wymienione powyżej.
 
 #### <a name="use-tags-with-parameters"></a>Używanie tagów z parametrami
 
 Wartość parametru może być przekazanie do pola tagu. Przekazywanie parametru do pola tagu zwiększa elastyczność definicji zasad podczas przypisywania zasad.
 
-W poniższym przykładzie `concat` służy do tworzenia wyszukiwania pól tagów dla tagu o nazwie **TagName** parametru. Jeśli ten tag nie istnieje, efekt **dołączania** jest używany do dodawania znacznika przy użyciu wartości tego samego nazwanego tagu ustawionego w nadrzędnej grupie zasobów poddane inspekcji przy użyciu funkcji wyszukiwania `resourcegroup()`.
+W poniższym przykładzie `concat` jest używany do tworzenia wyszukiwania pól tagów dla tagu o nazwie **TagName** parametru. Jeśli ten tag nie istnieje, efekt **dołączania** jest używany do dodawania znacznika przy użyciu wartości tego samego nazwanego tagu ustawionego w nadrzędnej grupie zasobów poddane inspekcji przy użyciu funkcji wyszukiwania `resourcegroup()`.
 
 ```json
 {
@@ -310,7 +310,7 @@ Warunki mogą być również tworzone przy użyciu **wartości**. **wartość** 
 
 #### <a name="value-examples"></a>Przykłady wartości
 
-Ta reguła zasad używa tego przykładu **wartości** do porównania wyniku funkcji `resourceGroup()` i zwróconej właściwości **name** do warunku **przypominającego** `*netrg`. Reguła odmówi żadnego zasobu, który nie jest **typu** `Microsoft.Network/*` w żadnej grupie zasobów, której nazwa jest zakończona w `*netrg`.
+Ta reguła zasad używa tego przykładu **wartości** do porównania wyniku funkcji `resourceGroup()` i zwróconej właściwości **name** do warunku **przypominającego** `*netrg`. Zasada odmówi, że żaden zasób nie jest **typu** `Microsoft.Network/*` w żadnej grupie zasobów, której nazwa jest zakończona w `*netrg`.
 
 ```json
 {
@@ -366,7 +366,7 @@ Użycie _funkcji szablonu_ w **wartości** pozwala na wiele złożonych zagnież
 }
 ```
 
-Powyższa Przykładowa reguła zasad używa [podciągu ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) , aby porównać pierwsze trzy znaki **nazwy** z **ABC**. Jeśli **Nazwa** jest krótsza niż trzy znaki, funkcja `substring()` spowoduje wystąpienie błędu. Ten błąd powoduje, że zasady stają się efektem **odmowy** .
+Powyższa Przykładowa reguła zasad używa [podciągu ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) , aby porównać pierwsze trzy znaki **nazwy** z **ABC**. Jeśli **Nazwa** jest krótsza niż trzy znaki, funkcja `substring()` powoduje błąd. Ten błąd powoduje, że zasady stają się efektem **odmowy** .
 
 Zamiast tego należy użyć funkcji [if ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) , aby sprawdzić, czy pierwsze trzy znaki **nazwy** są równe **ABC** bez dopuszczania **nazwy** krótszej niż trzy znaki w celu spowodowania błędu:
 
@@ -384,7 +384,7 @@ Zamiast tego należy użyć funkcji [if ()](../../../azure-resource-manager/reso
 }
 ```
 
-Po zmodyfikowaniu zasady zasad `if()` sprawdza długość **nazwy** przed próbą uzyskania `substring()` na wartości mniejszej niż trzy znaki. Jeśli **Nazwa** jest za krótka, zamiast tego jest zwracana wartość "nie zaczyna się od ABC" i porównana z opcją **ABC**. Zasób z krótką nazwą, która nie zaczyna się od **ABC** , nadal kończy się niepowodzeniem reguły zasad, ale nie powoduje już błędu podczas obliczania.
+Po zmodyfikowaniu reguły zasad, `if()` sprawdza długość **nazwy** przed próbą uzyskania `substring()` na wartości mniejszej niż trzy znaki. Jeśli **Nazwa** jest za krótka, zamiast tego jest zwracana wartość "nie zaczyna się od ABC" i porównana z opcją **ABC**. Zasób z krótką nazwą, która nie zaczyna się od **ABC** , nadal kończy się niepowodzeniem reguły zasad, ale nie powoduje już błędu podczas obliczania.
 
 ### <a name="effect"></a>Efekt
 
@@ -455,7 +455,7 @@ Ponadto funkcja `field` jest dostępna dla reguł zasad. `field` jest używany g
 
 #### <a name="policy-function-example"></a>Przykład funkcji zasad
 
-W tym przykładzie reguła zasad używa funkcji zasobów `resourceGroup` w celu uzyskania właściwości **name** połączonej z `concat` tablicą i funkcją obiektu w celu utworzenia warunku `like`, który wymusza nazwę zasobu, rozpoczynając od nazwy grupy zasobów.
+Ten przykład reguły używa funkcji zasobów `resourceGroup` w celu uzyskania właściwości **name** połączonej z `concat` tablicą i funkcją obiektu w celu skompilowania `like` warunku, który wymusza nazwę zasobu, aby rozpoczynać się od nazwy grupy zasobów.
 
 ```json
 {
@@ -477,7 +477,7 @@ Aliasy właściwości są używane do uzyskiwania dostępu do określonych wła�
 
 Lista aliasów zawsze rośnie. Aby dowiedzieć się, jakie aliasy są obecnie obsługiwane przez Azure Policy, należy użyć jednej z następujących metod:
 
-- Azure PowerShell
+- Program Azure PowerShell
 
   ```azurepowershell-interactive
   # Login first with Connect-AzAccount if not using Cloud Shell
@@ -509,14 +509,14 @@ Lista aliasów zawsze rośnie. Aby dowiedzieć się, jakie aliasy są obecnie ob
 
 ### <a name="understanding-the--alias"></a>Informacje o aliasie [*]
 
-Kilka dostępnych aliasów ma wersję, która jest wyświetlana jako nazwa "normal" (normalna), a druga, która ma do niej dołączony **[\*]** . Na przykład:
+Kilka dostępnych aliasów ma wersję, która jest wyświetlana jako nazwa "normal" (normalna) i jest do niej dołączona inna, która ma **[\*]** . Na przykład:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 Alias "normal" reprezentuje pole jako pojedynczą wartość. To pole jest przeznaczone do dokładnego dopasowania scenariuszy porównywania, gdy cały zestaw wartości musi być dokładnie zdefiniowany, nie więcej i nie rzadziej.
 
-Alias **[\*]** umożliwia porównanie wartości poszczególnych elementów w tablicy i konkretnych właściwości każdego elementu. Takie podejście umożliwia porównanie właściwości elementów dla elementu "If None of", "if any" lub "If all of". Przy użyciu **ipRules [\*]** , przykładem będzie sprawdzanie, czy każda _Akcja_ jest _odrzucana_, ale nie martw się o liczbę istniejących reguł lub _wartość_ IP. Ta przykładowa reguła sprawdza, czy istnieją dopasowań **ipRules [\*]. Value** do **10.0.4.1** i stosuje element **effecttype** tylko wtedy, gdy nie znajdzie co najmniej jednego dopasowania:
+Alias **[\*]** umożliwia porównanie wartości poszczególnych elementów w tablicy i określonych właściwościach każdego elementu. Takie podejście umożliwia porównanie właściwości elementów dla elementu "If None of", "if any" lub "If all of". Przy użyciu **ipRules [\*]** , przykładem będzie sprawdzanie, czy każda _Akcja_ jest _odrzucana_, ale nie martw się o liczbę istniejących reguł lub _wartość_ IP. Ta przykładowa reguła sprawdza dowolnych dopasowań **ipRules [\*]. Value** do **10.0.4.1** i stosuje element **effecttype** tylko wtedy, gdy nie znajdzie co najmniej jednego dopasowania:
 
 ```json
 "policyRule": {
@@ -621,7 +621,7 @@ Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwóch ta
 ## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
-- Przejrzyj [Informacje o skutkach zasad](effects.md).
+- Przejrzyj [wyjaśnienie działania zasad](effects.md).
 - Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
 - Dowiedz się, jak [uzyskać dane zgodności](../how-to/getting-compliance-data.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).

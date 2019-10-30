@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: ff50619d7b3d5bc803e8ee8d9e4cbf4389a4191f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 47258f27f44b6a21c5da72e4631591e695024400
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978082"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053274"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Pobieranie danych zgodności zasobów platformy Azure
 
@@ -49,14 +49,14 @@ Oceny przypisanych zasad i inicjatyw odbywają się w wyniku różnych zdarzeń:
 
 Skanowanie w celu uzyskania subskrypcji lub grupy zasobów można rozpocząć przy użyciu wywołania interfejsu API REST. To skanowanie jest procesem asynchronicznym. W związku z tym punkt końcowy REST do uruchomienia skanowania nie czeka na zakończenie skanowania. Zamiast tego zapewnia identyfikator URI, aby wykonać zapytanie o stan żądana oceny.
 
-W każdym identyfikatorze URI interfejsu API REST istnieją zmienne, które są używane do zamiany na własne wartości:
+Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
 
-- `{YourRG}` — Zamień na nazwę grupy zasobów
-- `{subscriptionId}` — Zastąp IDENTYFIKATORem subskrypcji
+- `{YourRG}` Zastąp nazwą grupy zasobów
+- `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
 
 Skanowanie obsługuje Obliczanie zasobów w ramach subskrypcji lub grupy zasobów. Rozpocznij skanowanie według zakresu za pomocą polecenia interfejsu API REST **post** przy użyciu następujących struktur identyfikatorów URI:
 
-- Ramach
+- Subskrypcja
 
   ```http
   POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
@@ -74,7 +74,7 @@ Wywołanie zwraca stan **Zaakceptowany 202** . Uwzględniony w nagłówku odpowi
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
 ```
 
-`{ResourceContainerGUID}` jest generowana statycznie dla żądanego zakresu. Jeśli w zakresie jest już uruchomione skanowanie na żądanie, nowe skanowanie nie zostanie uruchomione. Zamiast tego nowe żądanie ma ten sam identyfikator URI **lokalizacji** `{ResourceContainerGUID}` dla stanu. Polecenie API REST **Get** do identyfikatora URI **lokalizacji** zwraca **202 zaakceptowane** podczas obliczania. Po zakończeniu skanowania ewaluacyjnego zostanie zwrócony stan **200 OK** . Treść ukończonego skanowania jest odpowiedzią JSON o stanie:
+`{ResourceContainerGUID}` jest generowana statycznie dla żądanego zakresu. Jeśli w zakresie jest już uruchomione skanowanie na żądanie, nowe skanowanie nie zostanie uruchomione. Zamiast tego nowe żądanie ma ten sam identyfikator URI `{ResourceContainerGUID}` **lokalizacji** dla stanu. Polecenie API REST **Get** do identyfikatora URI **lokalizacji** zwraca **202 zaakceptowane** podczas obliczania. Po zakończeniu skanowania ewaluacyjnego zostanie zwrócony stan **200 OK** . Treść ukończonego skanowania jest odpowiedzią JSON o stanie:
 
 ```json
 {
@@ -89,13 +89,13 @@ W poniższej tabeli przedstawiono, w jaki sposób różne skutki zasad działaj�
 
 | Stan zasobu | Efekt | Ocena zasad | Stan zgodności |
 | --- | --- | --- | --- |
-| Istniejący | Odmów, Audit, Append @ no__t-0, DeployIfNotExist @ no__t-1, AuditIfNotExist @ no__t-2 | Oznacza | Niezgodne |
-| Istniejący | Odmów, Audit, Append @ no__t-0, DeployIfNotExist @ no__t-1, AuditIfNotExist @ no__t-2 | False | zgodnych |
-| New | Inspekcja, AuditIfNotExist @ no__t-0 | Oznacza | Niezgodne |
-| New | Inspekcja, AuditIfNotExist @ no__t-0 | False | zgodnych |
+| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Prawda | Niezgodne |
+| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Fałsz | Zgodność |
+| Nowość | Audit, AuditIfNotExist\* | Prawda | Niezgodne |
+| Nowość | Audit, AuditIfNotExist\* | Fałsz | Zgodność |
 
-\* efekty append, DeployIfNotExist i AuditIfNotExist wymagają, aby instrukcja IF była prawdziwa.
-Efekty muszą także wymagać, aby warunek istnienia miał wartość FALSE, aby nie był zgodny. W przypadku wartości TRUE warunek IF wyzwala ocenę stanu istnienia powiązanych zasobów.
+\* Efekty Append, DeployIfNotExist i AuditIfNotExist wymagają instrukcji IF z wartością TRUE.
+Ponadto efekty wymagają, aby warunek istnienia miał wartość FALSE, aby być niezgodnymi. W przypadku wartości TRUE warunek IF wyzwala ocenę warunku istnienia dla powiązanych zasobów.
 
 Załóżmy na przykład, że masz grupę zasobów — ContsoRG z pewnymi kontami magazynu (wyróżnioną kolorem czerwonym), które są dostępne w sieciach publicznych.
 
@@ -145,32 +145,10 @@ Gdy zasoby są określone jako **niezgodne**, istnieje wiele możliwych przyczyn
 
 ## <a name="command-line"></a>Wiersz polecenia
 
-Te same informacje dostępne w portalu można pobrać przy użyciu interfejsu API REST (w tym z [ARMClient](https://github.com/projectkudu/ARMClient)) lub Azure PowerShell. Aby uzyskać szczegółowe informacje na temat interfejsu API REST, zobacz informacje dotyczące [Azure Policy Insights](/rest/api/policy-insights/) . Strony referencyjne interfejsu API REST mają zielony przycisk "Wypróbuj go" dla każdej operacji, która pozwala na wypróbowanie jej w przeglądarce.
+Te same informacje dostępne w portalu można pobrać przy użyciu interfejsu API REST (w tym z [ARMClient](https://github.com/projectkudu/ARMClient)), Azure PowerShell i interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza).
+Aby uzyskać szczegółowe informacje na temat interfejsu API REST, zobacz informacje dotyczące [Azure Policy Insights](/rest/api/policy-insights/) . Strony referencyjne interfejsu API REST mają zielony przycisk "Wypróbuj go" dla każdej operacji, która pozwala na wypróbowanie jej w przeglądarce.
 
-Aby skorzystać z poniższych przykładów w Azure PowerShell, Skonstruuj token uwierzytelniania przy użyciu tego przykładowego kodu. Następnie zastąp $restUri ciągiem w przykładach, aby pobrać obiekt JSON, który można następnie przeanalizować.
-
-```azurepowershell-interactive
-# Login first with Connect-AzAccount if not using Cloud Shell
-
-$azContext = Get-AzContext
-$azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
-$profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
-$token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
-$authHeader = @{
-    'Content-Type'='application/json'
-    'Authorization'='Bearer ' + $token.AccessToken
-}
-
-# Define the REST API to communicate with
-# Use double quotes for $restUri as some endpoints take strings passed in single quotes
-$restUri = "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04"
-
-# Invoke the REST API
-$response = Invoke-RestMethod -Uri $restUri -Method POST -Headers $authHeader
-
-# View the response object (as JSON)
-$response
-```
+Użyj ARMClient lub podobnego narzędzia do obsługi uwierzytelniania na platformie Azure na potrzeby przykładów interfejsu API REST.
 
 ### <a name="summarize-results"></a>Podsumowanie wyników
 
@@ -262,7 +240,7 @@ Przykładowa odpowiedź poniżej została przycięta do jednego niezgodnego zaso
 }
 ```
 
-### <a name="view-events"></a>Wyświetl zdarzenia
+### <a name="view-events"></a>Wyświetl wydarzenia
 
 Po utworzeniu lub zaktualizowaniu zasobu zostanie wygenerowane wyniki oceny zasad. Wyniki są nazywane _zdarzeniami zasad_. Użyj poniższego identyfikatora URI, aby wyświetlić ostatnie zdarzenia zasad skojarzone z subskrypcją.
 
@@ -270,7 +248,7 @@ Po utworzeniu lub zaktualizowaniu zasobu zostanie wygenerowane wyniki oceny zasa
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2018-04-04
 ```
 
-Wyniki przypominają następujący przykład:
+Wyniki powinny wyglądać podobnie do następujących:
 
 ```json
 {
@@ -286,10 +264,10 @@ Wyniki przypominają następujący przykład:
 
 Aby uzyskać więcej informacji na temat wykonywania zapytań dotyczących zdarzeń zasad, zobacz artykuł dotyczący [zdarzeń Azure Policy](/rest/api/policy-insights/policyevents) .
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 Moduł Azure PowerShell dla Azure Policy jest dostępny w Galeria programu PowerShell jako [AZ. PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights).
-Za pomocą PowerShellGet można zainstalować moduł przy użyciu `Install-Module -Name Az.PolicyInsights` (Upewnij się, że zainstalowano najnowszą [Azure PowerShell](/powershell/azure/install-az-ps) ):
+Za pomocą PowerShellGet można zainstalować moduł przy użyciu `Install-Module -Name Az.PolicyInsights` (Upewnij się, że masz zainstalowane najnowsze [Azure PowerShell](/powershell/azure/install-az-ps) ):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
@@ -410,7 +388,7 @@ PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
 Trent Baker
 ```
 
-## <a name="azure-monitor-logs"></a>Dzienniki Azure Monitor
+## <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 
 Jeśli masz [obszar roboczy log Analytics](../../../log-analytics/log-analytics-overview.md) z `AzureActivity` z [rozwiązania Activity Log Analytics](../../../azure-monitor/platform/activity-log-collect.md) powiązanego z subskrypcją, możesz również wyświetlić wyniki niezgodności z cyklu oceny przy użyciu prostych zapytań Kusto i tabeli `AzureActivity`. Dzięki szczegółowym dziennikom Azure Monitor alerty można skonfigurować tak, aby oglądać niezgodność.
 
@@ -420,8 +398,8 @@ Jeśli masz [obszar roboczy log Analytics](../../../log-analytics/log-analytics-
 ## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
-- Zapoznaj się ze [strukturą definicji Azure Policy](../concepts/definition-structure.md).
-- Przejrzyj [Informacje o skutkach zasad](../concepts/effects.md).
+- Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
+- Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
 - Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
 - Dowiedz się, jak [skorygować niezgodne zasoby](remediate-resources.md).
 - Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

@@ -1,5 +1,5 @@
 ---
-title: Apache Spark danych z Apache Kafka do Azure Cosmos DB usługi Azure HDInsight
+title: Apache Spark & Apache Kafka z usługą Cosmos DB Azure HDInsight
 description: Dowiedz się, jak za pomocą Apache Spark strukturalnych przesyłania strumieniowego odczytywać dane z Apache Kafka a następnie zapisywać je w Azure Cosmos DB. Ten przykład obejmuje strumieniowe przesyłanie danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0d8c6929705ab29ced25a847bf7c5a72d57aa49b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: faae65c6664123bd673711674a36edc928c74278
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037289"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044911"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Używanie Apache Spark strukturalnych przesyłania strumieniowego z Apache Kafka i Azure Cosmos DB
 
@@ -69,7 +69,7 @@ Mimo że można utworzyć ręcznie klastry usługi Azure Virtual Network, Kafka 
 
     ![Niestandardowe wartości wdrożenia usługi HDInsight](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-    * **Subskrypcja**: Wybierz swoją subskrypcję platformy Azure.
+    * **Subskrypcja**: wybierz subskrypcję platformy Azure.
 
     * **Grupa zasobów**: Utwórz grupę lub wybierz istniejącą. Ta grupa zawiera klaster usługi HDInsight.
 
@@ -79,18 +79,18 @@ Mimo że można utworzyć ręcznie klastry usługi Azure Virtual Network, Kafka 
 
     * **Nazwa klastra podstawowego**: Ta wartość jest używana jako podstawowa nazwa klastrów Spark i Kafka. Na przykład wprowadzenie **myhdi** tworzy klaster Spark o nazwie __Spark-Myhdi__ i klaster Kafka o nazwie **Kafka-myhdi**.
 
-    * **Wersja klastra**: Wersja klastra usługi HDInsight.
+    * **Wersja klastra**: wersja klastra usługi HDInsight.
 
         > [!IMPORTANT]  
         > Ten przykład jest testowany z usługą HDInsight 3,6 i może nie współpracować z innymi typami klastrów.
 
     * **Nazwa użytkownika logowania klastra**: Nazwa użytkownika administratora dla klastrów Spark i Kafka.
 
-    * **Hasło logowania klastra**: Hasło administratora dla klastrów Spark i Kafka.
+    * **Hasło logowania do klastra**: hasło administratora dla klastrów Spark i Kafka.
 
-    * **Nazwa użytkownika ssh**: Użytkownik SSH do utworzenia dla klastrów Spark i Kafka.
+    * **Nazwa użytkownika ssh**: użytkownik SSH do utworzenia dla klastrów Spark i Kafka.
 
-    * **Hasło ssh**: Hasło użytkownika SSH dla klastrów Spark i Kafka.
+    * **Hasło ssh**: hasło użytkownika SSH dla klastrów Spark i Kafka.
 
 3. Przeczytaj **Warunki i postanowienia**, a następnie wybierz pozycję **Wyrażam zgodę na powyższe warunki i postanowienia**.
 
@@ -158,7 +158,7 @@ $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ```
 
 > [!NOTE]  
-> Przykład bash oczekuje `$CLUSTERNAME` , że zawiera nazwę klastra Kafka.
+> Przykład bash oczekuje `$CLUSTERNAME`, aby zawierać nazwę klastra Kafka.
 >
 > W tym przykładzie za pomocą narzędzia [JQ](https://stedolan.github.io/jq/) można analizować dane z dokumentu JSON.
 

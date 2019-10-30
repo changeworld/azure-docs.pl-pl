@@ -1,6 +1,6 @@
 ---
-title: Zadania menedżera grupy danych dla celów naukowych zespołu
-description: Szczegółowy przewodnik dotyczący zadań dla Menedżera grupy w projekcie zespołowym analizy danych.
+title: Zadania kierownika ds. przetwarzania danych zespołowych
+description: Postępuj zgodnie z szczegółowym opisem zadań wykonywanych przez Menedżera grupy w projekcie zespołu analizy danych.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f95bb30f547e863fc7a796e69fffe1e2334e489c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a3d23950f5cbfaac00b03b25e3c19078c76ad0a5
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326806"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053303"
 ---
-# <a name="team-data-science-process-group-manager-tasks"></a>Zadania menedżera grupy danych dla celów naukowych zespołu
+# <a name="team-data-science-process-group-manager-tasks"></a>Zadania kierownika ds. przetwarzania danych zespołowych
 
 W tym artykule opisano zadania, które *Menedżer grupy* ukończy dla organizacji analizy danych. Menedżer grupy zarządza całą jednostką analizy danych w przedsiębiorstwie. Jednostka do nauki o danych może mieć kilka zespołów, z których każdy pracuje w wielu projektach naukowych w różnych firmach. Celem Menedżera grupy jest ustanowienie środowiska grupy współpracy, które jest standaryzacją w [zespołowym procesie nauki o danych](overview.md) (przetwarzania TDSP). Aby zapoznać się z zarysem wszystkich ról pracowników i skojarzonych zadań obsłużonych przez zespół ds. analizy danych na przetwarzania TDSP, zobacz temat [role i zadania zespołowego procesu nauka danych zespołu](roles-tasks.md).
 
@@ -57,7 +57,7 @@ Poniższy samouczek zawiera szczegółowe instrukcje.
    
    ![Tworzenie projektu](./media/group-manager-tasks/create-project.png)
 
-Zostanie otwarta strona **Podsumowanie** projektu **GroupCommon** . Adres URL strony to *https: \/ @ no__t-2 @ no__t-3servername >/\<organization-name >/GroupCommon*.
+Zostanie otwarta strona **Podsumowanie** projektu **GroupCommon** . Adres URL strony to *https:\//\<servername >/\<nazwa organizacji >/GroupCommon*.
 
 ![Strona podsumowania projektu](./media/group-manager-tasks/project-summary.png)
 
@@ -65,9 +65,9 @@ Zostanie otwarta strona **Podsumowanie** projektu **GroupCommon** . Adres URL st
 
 Azure Repos hostuje następujące typy repozytoriów dla grupy:
 
-- **Najpopularniejsze repozytoria grupy**: Repozytoria ogólnego przeznaczenia, które wiele zespołów w jednostce analizy danych może przyjąć dla wielu projektów analizy danych. 
-- **Repozytoria zespołu**:  Repozytoria dla określonych zespołów w jednostce analizy danych. Te repozytoria są specyficzne dla potrzeb zespołu i mogą być używane dla wielu projektów w ramach tego zespołu, ale nie są wystarczająco ogólne, aby można było ich używać w wielu zespołach w ramach jednostki analizy danych.
-- **Repozytoria projektu**: Repozytoria dla określonych projektów. Takie repozytoria mogą nie być generalnie wystarczające dla wielu projektów w zespole lub dla innych zespołów w jednostce analizy danych.
+- **Najpopularniejsze**repozytoria grup: repozytoria ogólnego przeznaczenia, które wiele zespołów w jednostce analizy danych może przyjąć dla wielu projektów analizy danych. 
+- **Repozytoria zespołu**: repozytoria dla określonych zespołów w jednostce analizy danych. Te repozytoria są specyficzne dla potrzeb zespołu i mogą być używane dla wielu projektów w ramach tego zespołu, ale nie są wystarczająco ogólne, aby można było ich używać w wielu zespołach w ramach jednostki analizy danych.
+- **Repozytoria projektu**: repozytoria dla określonych projektów. Takie repozytoria mogą nie być generalnie wystarczające dla wielu projektów w zespole lub dla innych zespołów w jednostce analizy danych.
 
 W celu skonfigurowania wspólnych repozytoriów grup w projekcie: 
 - Zmień nazwę domyślnego repozytorium **GroupCommon** na **GroupProjectTemplate**
@@ -121,13 +121,13 @@ Aby zaimportować repozytoria zespołu przetwarzania TDSP:
    
    ![Wybierz pozycję Importuj](./media/group-manager-tasks/import-repo.png)
    
-1. W oknie dialogowym **Importowanie repozytorium git** wybierz pozycję **git** jako **Typ źródła**i wprowadź wartość *https: \//GitHub. com/Azure/Azure-TDSP-ProjectTemplate. git* dla **adresu URL klonowania**. Następnie wybierz pozycję **Importuj**. Zawartość repozytorium Microsoft przetwarzania TDSP Team ProjectTemplate jest zaimportowana do repozytorium GroupProjectTemplate. 
+1. W oknie dialogowym **Importowanie repozytorium git** wybierz pozycję **git** jako **Typ źródła**i wprowadź wartość *https:\//GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* dla **adresu URL klonowania**. Następnie wybierz pozycję **Importuj**. Zawartość repozytorium Microsoft przetwarzania TDSP Team ProjectTemplate jest zaimportowana do repozytorium GroupProjectTemplate. 
    
    ![Importuj repozytorium zespołu przetwarzania TDSP firmy Microsoft](./media/group-manager-tasks/import-repo-2.png)
    
 1. W górnej części strony **repozytoria** wybierz pozycję repozytorium **GroupUtilities** .
    
-1. Powtórz proces importowania, aby zaimportować zawartość repozytorium Microsoft przetwarzania TDSP Team **Utilities** , *https: \//GitHub. com/Azure/Azure-TDSP-Utilities. git*do repozytorium **GroupUtilities** . 
+1. Powtórz proces importowania, aby zaimportować zawartość repozytorium Microsoft przetwarzania TDSP Team **Utilities** , *https:\//GitHub.com/Azure/Azure-TDSP-Utilities.git*, do repozytorium **GroupUtilities** . 
    
 Każdy z dwóch repozytoriów grup zawiera teraz wszystkie pliki, z wyjątkiem tych znajdujących się w katalogu *. git* , z odpowiedniego repozytorium programu Microsoft przetwarzania tdspe. 
 
@@ -166,7 +166,7 @@ Aby dostosować zawartość repozytorium:
 Jeśli chcesz wprowadzić zmiany przy użyciu komputera lokalnego lub DSVM i wypchnąć zmiany do repozytoriów grup, upewnij się, że spełniono wymagania wstępne dotyczące pracy z usługami git i DSVMs:
 
 - Subskrypcja platformy Azure, jeśli chcesz utworzyć DSVM.
-- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zobacz [dodatku platformami i narzędziami](platforms-and-tools.md#appendix).
+- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zapoznaj się z [dodatkiem platformy i narzędzia](platforms-and-tools.md#appendix).
 - Jeśli chcesz użyć DSVM, system Windows lub Linux DSVM utworzony i skonfigurowany na platformie Azure. Aby uzyskać więcej informacji i instrukcje, zapoznaj się z [dokumentacją Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
 - W przypadku systemu Windows DSVM na komputerze zainstalowano program [git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . W pliku *README.MD* przewiń w dół do sekcji **pobieranie i instalacja** , a następnie wybierz **najnowszy Instalator**. Pobierz instalatora *exe* ze strony Instalatora i uruchom go. 
 - W przypadku systemu Linux DSVM klucz publiczny skonfigurowany na DSVM i dodany do usługi Azure DevOps. Aby uzyskać więcej informacji i instrukcje, zobacz sekcję **Tworzenie klucza publicznego SSH** w [dodatku platformy i narzędzia](platforms-and-tools.md#appendix). 
@@ -183,7 +183,7 @@ Najpierw skopiuj lub *Sklonuj* repozytorium na komputerze lokalnym.
    
 1. Na komputerze lokalnym Utwórz następujące katalogi:
    
-   - W przypadku systemu Windows: **C:\GitRepos\GroupCommon**
+   - Dla systemu Windows: **C:\GitRepos\GroupCommon**
    - W przypadku systemu Linux, **$/GitRepos/GroupCommon** w katalogu macierzystym 
    
 1. Przejdź do utworzonego katalogu.
@@ -215,7 +215,7 @@ git push
 ```
 
 > [!NOTE]
-> Jeśli po raz pierwszy zatwierdzisz repozytorium git, może być konieczne skonfigurowanie parametrów globalnych *User.Name* i *User. email* przed uruchomieniem `git commit` polecenia. Uruchom dwa poniższe polecenia:
+> Jeśli po raz pierwszy zatwierdzisz repozytorium git, może być konieczne skonfigurowanie parametrów globalnych *User.Name* i *User. email* przed uruchomieniem polecenia `git commit`. Uruchom następujące dwa polecenia:
 > 
 > `git config --global user.name <your name>`
 > 
@@ -239,7 +239,7 @@ Aby dodać członków do grupy:
    
 1. W oknie dialogowym **Dodawanie użytkowników i grup** Wyszukaj i wybierz członków do dodania do grupy, a następnie wybierz pozycję **Zapisz zmiany**. 
    
-   ![Dodaj użytkowników i grupy](./media/group-manager-tasks/add-users.png)
+   ![Dodawanie użytkowników i grup](./media/group-manager-tasks/add-users.png)
    
 
 Aby skonfigurować uprawnienia dla członków:
@@ -258,6 +258,6 @@ Aby skonfigurować uprawnienia dla członków:
 
 Poniżej znajdują się linki do szczegółowych opisów innych ról i zadań w procesie nauki danych zespołu:
 
-- [Zadania kierownik zespołu dla zespołu do nauki o danych](team-lead-tasks.md)
-- [Zadania potencjalnych klientów dla zespołu do nauki o danych w projekcie](project-lead-tasks.md)
+- [Zadania lidera zespołu dla zespołu ds. analizy danych](team-lead-tasks.md)
+- [Zadania lidera projektu dla zespołu ds. analizy danych](project-lead-tasks.md)
 - [Projekt poszczególnych zadań współautora dla zespołu ds. analizy danych](project-ic-tasks.md)

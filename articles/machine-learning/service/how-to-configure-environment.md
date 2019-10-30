@@ -1,7 +1,7 @@
 ---
 title: Konfigurowanie środowiska deweloperskiego języka Python
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak skonfigurować środowisko programistyczne podczas pracy z Azure Machine Learning. W tym artykule dowiesz się, jak używać środowisk Conda, tworzyć pliki konfiguracji i konfigurować własny serwer notesu oparty na chmurze, notesy Jupyter, Azure Databricks, środowisk IDE, edytory kodu i Data Science Virtual Machine.
+description: Dowiedz się, jak skonfigurować środowisko deweloperskie dla Azure Machine Learning. Używaj środowisk Conda, twórz pliki konfiguracji i Konfiguruj własny, oparty na chmurze serwer notesu, notesy Jupyter, Azure Databricks, środowisk IDE, edytory kodu i Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66073052b290a1345dc0bb63ed6df0934fd81c64
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 7ad9d721b102ab48f2ebb9c0361153bc3974492a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804157"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053569"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Skonfiguruj środowisko programistyczne dla Azure Machine Learning
 
@@ -185,7 +185,7 @@ Jeśli używasz komputera lokalnego (co może być również zdalną maszyną wi
 
 1. Użyj następujących poleceń, aby zainstalować pakiety:
 
-    To polecenie powoduje zainstalowanie podstawowego zestawu SDK Azure Machine Learning przy użyciu dodatków do notesu i `automl`. @No__t_0 Extra jest dużą instalacją i można ją usunąć z nawiasów, jeśli nie zamierzasz uruchamiać zautomatyzowanych eksperymentów w usłudze Machine Learning. @No__t_0 Extra również zawiera domyślnie zestaw SDK przygotowywania danych Azure Machine Learning jako zależność.
+    To polecenie powoduje zainstalowanie podstawowego zestawu SDK Azure Machine Learning przy użyciu dodatków do notesu i `automl`. `automl` Extra jest dużą instalacją i można ją usunąć z nawiasów, jeśli nie zamierzasz uruchamiać zautomatyzowanych eksperymentów w usłudze Machine Learning. `automl` Extra również zawiera domyślnie zestaw SDK przygotowywania danych Azure Machine Learning jako zależność.
 
     ```shell
     pip install azureml-sdk[notebooks,automl]
@@ -320,7 +320,7 @@ Po uruchomieniu klastra [Utwórz bibliotekę](https://docs.databricks.com/user-g
 
 1. Wybierz **tylko jedną** opcję (nie jest obsługiwana żadna inna instalacja zestawu SDK)
 
-   |@No__t_1extras &nbsp;package zestawu SDK|Źródło|PyPi &nbsp;Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
+   |Dodatki&nbsp;pakietu SDK&nbsp;|Źródło|PyPi &nbsp;Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
    |----|---|---|
    |Dla kostek datakostki| Przekaż Język Python lub PyPI | Azure-SDK [datakostki]|
    |Dla kostek datakostks — with-<br> możliwości zautomatyzowanej ML| Przekaż Język Python lub PyPI | Azure-SDK [automl]|

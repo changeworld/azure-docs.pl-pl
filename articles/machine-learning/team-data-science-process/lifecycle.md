@@ -1,6 +1,6 @@
 ---
-title: Cykl życia zespołowego danych dla celów naukowych
-description: Kroki niezbędne do wykonania swoje projekty do nauki o danych
+title: Cykl życia procesu nauki o danych zespołowych
+description: Zespół ds. analizy danych (przetwarzania TDSP) zapewnia Zalecany cykl życia, który służy do tworzenia struktury projektów analizy danych.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,44 +11,44 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 40d1af6e6258b5026853532f7963a76d4fc389db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00efe89314d4a1a5c3302e820b8609adf194aa59
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837902"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053237"
 ---
-# <a name="the-team-data-science-process-lifecycle"></a>Cykl życia zespołowego danych dla celów naukowych
+# <a name="the-team-data-science-process-lifecycle"></a>Cykl życia procesu nauki o danych zespołowych
 
-Team Data Science naukowych oferuje zalecane cyklu życia, który umożliwia tworzenie struktury projektów do nauki o danych. Cykl życia zawiera opis kroków, od początku do końca, że projekty zazwyczaj należy wykonać podczas są wykonywane. Jeśli używasz innego cyklu życia do nauki o danych, takich jak między branży standardowego procesu do wyszukiwania danych [(WYSOKĄ-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), Knowledge Discovery w bazach danych [(KDD)](https://wikipedia.org/wiki/Data_mining#Process), lub proces niestandardowej w organizacji , nadal można korzystać z przetwarzania TDSP opartego na zadaniach. 
+Zespół ds. analizy danych (przetwarzania TDSP) zapewnia Zalecany cykl życia, który służy do tworzenia struktury projektów analizy danych. Cykl życia przedstawia kroki od początku do końca, które projekty zwykle są wykonywane podczas wykonywania. W przypadku korzystania z innego cyklu życia nauki dotyczącego danych, takiego jak standardowy proces produkcji na potrzeby wyszukiwania danych [("wyrazisty DM")](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), odnajdywania wiedzy w bazach danych [(KDD)](https://wikipedia.org/wiki/Data_mining#Process)lub własnego procesu niestandardowego w organizacji, można nadal używać przetwarzania TDSP opartego na zadaniach. 
 
-Ten cykl życia jest przeznaczona dla projektów do nauki o danych, które są przeznaczone do wysłania jako część inteligentnych aplikacji. Te aplikacje wdrażania modeli uczenia i sztucznej inteligencji maszynowego do analizy predykcyjnej. Poznawcze nauki o danych i analizy ad-hoc projektów mogą również skorzystać z użycia tego procesu. Jednak w tych projektach, niektóre kroki opisane w tym miejscu może być niepotrzebne. 
+Ten cykl życia jest przeznaczony dla projektów analizy danych przeznaczonych do dostarczania w ramach inteligentnych aplikacji. Te aplikacje wdrażają Uczenie maszynowe lub sztuczne modele analiz do analizy predykcyjnej. Projekty naukowe i projekty analizy ad hoc mogą również korzystać z tego procesu. Jednak w przypadku tych projektów niektóre kroki opisane w tym miejscu mogą nie być wymagane. 
 
 ## <a name="five-lifecycle-stages"></a>Pięć etapów cyklu życia
 
-Cykl życia przetwarzania TDSP składa się z pięć etapów głównych, które są wykonywane wielokrotnie. Etapy te obejmują:
+Cykl życia przetwarzania TDSP składa się z pięciu głównych etapów, które są wykonywane iteracyjnie. Te etapy obejmują:
 
-   1. [Poznawanie firmy](lifecycle-business-understanding.md)
-   2. [Pozyskiwanie danych i opis](lifecycle-data.md)
-   3. [Modelowanie](lifecycle-modeling.md)
+   1. [Zrozumienie biznesowe](lifecycle-business-understanding.md)
+   2. [Pozyskiwanie i zrozumienie danych](lifecycle-data.md)
+   3. [Modelu](lifecycle-modeling.md)
    4. [Wdrożenie](lifecycle-deployment.md)
    5. [Akceptacja klienta](lifecycle-acceptance.md)
 
-Oto wizualnej reprezentacji cyklu przetwarzania TDSP: 
+Oto wizualna reprezentacja cyklu życia przetwarzania TDSP: 
 
 ![Cykl życia przetwarzania TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
-Cykl życia przetwarzania TDSP w modelu za pomocą sekwencji iterowanej czynności, które zawiera wskazówek na temat zadań potrzebnych do korzystania z modeli predykcyjnych. Możesz wdrożyć modele predykcyjne w środowisku produkcyjnym, który ma być używany do tworzenia inteligentnych aplikacji. Celem tego cyklu życia procesu jest nadal można przenieść projektu do nauki o danych do punktu końcowego wyczyść zaangażowania. Do nauki o danych jest zadaniem w zakresie badań i odnajdywania. Możliwość komunikowania się zadania do Twojego zespołu i klientów za pomocą dobrze zdefiniowanych zestaw artefaktów, korzystających z szablonów standardowych pomaga uniknąć nieporozumień. Za pomocą tych szablonów również zwiększa prawdopodobieństwo pomyślnego ukończenia projektu nauki o danych złożonych.
+Cykl życia przetwarzania TDSP jest modelowany jako sekwencja iteracji kroków, które zapewniają wskazówki dotyczące zadań wymaganych do korzystania z modeli predykcyjnych. Należy wdrożyć modele predykcyjne w środowisku produkcyjnym, które planujesz użyć do kompilowania inteligentnych aplikacji. Celem tego cyklu procesu jest kontynuowanie przenoszenia projektu analizy danych w kierunku jasnego punktu końcowego zaangażowania. Nauka danych jest ćwiczeniem do badań i odnajdywania. Możliwość przekazywania zadań do zespołu i klientów przy użyciu dobrze zdefiniowanego zestawu artefaktów, które używają standardowych szablonów, pomaga uniknąć nieprawidłowych interpretacji. Korzystanie z tych szablonów zwiększa również prawdopodobieństwo pomyślnego ukończenia złożonego projektu analizy danych.
 
-Na każdym etapie firma Microsoft zapewnia następujące informacje:
+Dla każdego etapu udostępniamy następujące informacje:
 
-   * **Cele**: Określonych celów.
-   * **Jak to zrobić**: Zarys określonych zadań i wskazówki na temat sposobu ich ukończenia.
-   * **Artefakty**: Elementy dostarczane i pomocy technicznej, aby je utworzyć.
+   * **Cele**: określone cele.
+   * **Jak to zrobić**: zarys określonych zadań i wskazówki dotyczące ich kończenia.
+   * **Artefakty**: elementy dostarczane i pomoc techniczna do ich tworzenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Firma Microsoft oferuje instruktaży pełnej end-to-end, które przedstawiają wszystkie kroki w procesie dla konkretnych scenariuszy. [Przykładowe przewodniki](walkthroughs.md) artykuł zawiera listę scenariuszy wraz z linkami i opisy miniatur. Przewodniki pokazują, jak połączyć chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
+Zapewniamy kompleksowe przewodniki przedstawiające wszystkie kroki procesu dla konkretnych scenariuszy. [Przykładowy artykuł instruktażowy](walkthroughs.md) zawiera listę scenariuszy z linkami i opisami miniatur. Instruktaże ilustrują sposób łączenia chmur, narzędzi lokalnych i usług do przepływu pracy lub potoku w celu utworzenia inteligentnej aplikacji. 
 
-Przykłady sposób wykonywania kroków w TDSPs, które używają usługi Azure Machine Learning Studio, zobacz [przetwarzania TDSP za pomocą usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Aby zapoznać się z przykładami wykonywania kroków w TDSPs, które używają Azure Machine Learning Studio, zobacz [Korzystanie z przetwarzania TDSP z Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

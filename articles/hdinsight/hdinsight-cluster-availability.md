@@ -1,20 +1,20 @@
 ---
-title: Jak monitorować dostępność klastra za pomocą Ambari i dzienników Azure Monitor
+title: 'Monitorowanie: Apache Ambari & Azure Monitor dzienników — Azure HDInsight'
 description: Informacje na temat używania dzienników Ambari i Azure Monitor do monitorowania kondycji i dostępności klastra.
 keywords: monitorowanie, Ambari, monitor, log Analytics, alert, dostępność, kondycja
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-author: tylerfox
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: tyfox
-ms.openlocfilehash: 153c28dc8a06968dc9dd3cfda021496672a094d5
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: eeaef8851035bbb8d2f39bcf9f366118545fcf0f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076548"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044476"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Jak monitorować dostępność klastra za pomocą Ambari i dzienników Azure Monitor
 
@@ -26,7 +26,7 @@ Ten dokument pokazuje, jak używać tych narzędzi do monitorowania klastra i pr
 
 ### <a name="dashboard"></a>Pulpit nawigacyjny
 
-Dostęp do pulpitu nawigacyjnego Ambari można uzyskać przez kliknięcie linku **macierzystego Ambari** w sekcji **pulpity nawigacyjne klastra** w bloku przegląd usługi HDInsight w Azure Portal jak pokazano poniżej. Można też uzyskać do niego dostęp, wprowadzając następujący adres URL w przeglądarce [https://\<ClusterName\>. azurehdinsight.NET](https://clustername.azurehdinsight.net/)
+Dostęp do pulpitu nawigacyjnego Ambari można uzyskać przez kliknięcie linku **macierzystego Ambari** w sekcji **pulpity nawigacyjne klastra** w bloku przegląd usługi HDInsight w Azure Portal jak pokazano poniżej. Można też uzyskać do niego dostęp, wprowadzając następujący adres URL w przeglądarce [https://\<clustername\>. azurehdinsight.NET](https://clustername.azurehdinsight.net/)
 
 ![Widok portalu zasobów usługi HDInsight](media/hdinsight-cluster-availability/portal-oms-overview1.png)
 
@@ -83,7 +83,7 @@ Opcjonalnie możesz również skonfigurować powiadomienia e-mail dotyczące ale
 
 ![Akcja zarządzania Ambariami](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Zostanie otwarte okno dialogowe umożliwiające zarządzanie powiadomieniami o alertach. **+** Kliknij w dolnej części okna dialogowego i wypełnij pola wymagane, aby podać Ambari z serwerem poczty e-mail, z którego mają być wysyłane wiadomości e-mail.
+Zostanie otwarte okno dialogowe umożliwiające zarządzanie powiadomieniami o alertach. Kliknij **+** w dolnej części okna dialogowego i wypełnij pola wymagane, aby podać Ambari z serwerem poczty e-mail, z którego będą wysyłane wiadomości e-mail.
 
 > [!TIP]
 > Konfigurowanie powiadomień e-mail Ambari może być dobrym sposobem na otrzymywanie alertów w jednym miejscu podczas zarządzania wieloma klastrami usługi HDInsight.
@@ -123,7 +123,7 @@ Przykładowo Uruchom przykładowe zapytanie o **szybkości dostępności** , kli
 > [!NOTE] 
 > Częstotliwość dostępności jest mierzona w okresie 24-godzinnym, więc klaster będzie musiał działać przez co najmniej 24 godziny, zanim zobaczysz dokładne stawki dostępności.
 
-Możesz przypiąć tę tabelę do udostępnionego pulpitu nawigacyjnego, klikając pozycję **Przypnij** w prawym górnym rogu. Jeśli nie masz żadnych zapisywalnych udostępnionych pulpitów nawigacyjnych, możesz zobaczyć, jak utworzyć jedną z nich: [Tworzenie i udostępnianie pulpitów nawigacyjnych w Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
+Możesz przypiąć tę tabelę do udostępnionego pulpitu nawigacyjnego, klikając pozycję **Przypnij** w prawym górnym rogu. Jeśli nie masz żadnych zapisywalnych udostępnionych pulpitów nawigacyjnych, możesz zobaczyć, jak utworzyć je w tym miejscu: [Tworzenie i udostępnianie pulpitów nawigacyjnych w Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
 
 ### <a name="azure-monitor-alerts"></a>Alerty Azure Monitor
 
@@ -147,7 +147,7 @@ Spowoduje to otwarcie bloku **Konfiguruj logikę sygnału** .
 
 Skonfiguruj sekcję **logika alertów** w następujący sposób:
 
-*Na podstawie: Liczba wyników, warunek: Większe niż, próg: 2,0.*
+*Na podstawie: liczba wyników, warunek: większe niż, próg: 0.*
 
 Ponieważ to zapytanie zwraca tylko niedostępne węzły jako wyniki, jeśli liczba wyników jest większa niż 0, alert powinien zostać wywołany.
 

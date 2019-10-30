@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: fb92e882607575e99ae800bd9c6d7c36b5d89d8e
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f720e22542533d17fc7ab581f8ba8d9c03a89570
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034546"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025577"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Samouczek: tworzenie automatycznych przepływów pracy opartych na zatwierdzaniu przy użyciu Azure Logic Apps
 
@@ -41,7 +41,7 @@ Po ukończeniu aplikacja logiki będzie ogólnie wyglądać jak ten przepływ pr
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) .
 
-* Konto MailChimp, które zawiera i listę o nazwie "test-Members-ML", w której aplikacja logiki może dodawać adresy e-mail dla zatwierdzonych członków. Jeśli nie masz konta, [zarejestruj się w celu uzyskania bezpłatnego konta](https://login.mailchimp.com/signup/), a następnie Dowiedz się, [jak utworzyć listę MailChimp](https://us17.admin.mailchimp.com/lists/#).
+* Konto MailChimp zawierające listę o nazwie "test-Members-ML", w której aplikacja logiki może dodawać adresy e-mail dla zatwierdzonych członków. Jeśli nie masz konta, [zarejestruj się w celu uzyskania bezpłatnego konta](https://login.mailchimp.com/signup/), a następnie Dowiedz się, [jak utworzyć listę MailChimp](https://us17.admin.mailchimp.com/lists/#).
 
 * Konto e-mail w pakiecie Office 365 Outlook lub Outlook.com, które obsługuje przepływy pracy zatwierdzania. W tym artykule wykorzystano konto usługi Office 365 Outlook. Jeśli korzystasz z innego konta e-mail, ogólne kroki pozostają takie same, ale Twój interfejs użytkownika może wyglądać trochę inaczej.
 

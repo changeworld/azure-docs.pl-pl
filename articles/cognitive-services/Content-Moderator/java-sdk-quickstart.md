@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 61149392368fc34fe388709dd5867250f3542fbc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f31d54314c6d6bd7a7f9ae2d134c1281bfe9294
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935992"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044092"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Szybki Start: Content Moderatora Biblioteka kliencka dla języka Java
 
@@ -125,14 +125,14 @@ W metodzie `main` aplikacji Utwórz obiekt [ContentModeratorClient](https://docs
 
 ### <a name="get-images"></a>Pobierz obrazy
 
-W folderze **src/Main/** folder projektu Utwórz folder **zasobów** i przejdź do niego. Następnie utwórz nowy plik tekstowy, *ImageFiles. txt*. W tym pliku należy dodać adresy URL obrazów do analizowania&mdash;jednego adresu URL w każdym wierszu. Możesz użyć następującej przykładowej zawartości:
+W folderze **src/Main/** folder projektu Utwórz folder **zasobów** i przejdź do niego. Następnie utwórz nowy plik tekstowy, *ImageFiles. txt*. W tym pliku należy dodać adresy URL obrazów do analizowania&mdash;jednego adresu URL w każdym wierszu. Możesz użyć następujących przykładowych obrazów:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
 
-### <a name="use-helper-class"></a>Użyj klasy pomocnika
+### <a name="define-helper-class"></a>Zdefiniuj klasę pomocnika
 
 Następnie w pliku *ContentModeratorQuickstart. Java* Dodaj następującą definicję klasy wewnątrz klasy **ContentModeratorQuickstart** . Ta wewnętrzna Klasa zostanie później użyta w procesie moderowania obrazu.
 

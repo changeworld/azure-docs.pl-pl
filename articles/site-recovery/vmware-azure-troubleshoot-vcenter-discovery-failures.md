@@ -1,18 +1,18 @@
 ---
-title: Rozwiązywanie problemów z powrotem po awarii do stanu lokalnego podczas odzyskiwania po awarii maszyny wirtualnej VMware na platformie Azure przy użyciu Azure Site Recovery | Microsoft Docs
+title: Rozwiązywanie problemów z powrotem po awarii do stanu lokalnego podczas odzyskiwania po awarii maszyny wirtualnej VMware na platformie Azure za pomocą Azure Site Recovery
 description: W tym artykule opisano sposoby rozwiązywania problemów z odzyskiwaniem po awarii i ochroną podczas odzyskiwania po awarii maszyny wirtualnej VMware na platformę Azure przy użyciu Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: raynew
-ms.openlocfilehash: c27e72333618f73b67eec9b5c0c3a70239a1c0b3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/29/2019
+ms.author: mayg
+ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970850"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053847"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>Rozwiązywanie problemów z awariami odnajdywania w programie vCenter
 
@@ -20,7 +20,7 @@ Ten artykuł pomaga w rozwiązywaniu problemów występujących w wyniku awarii 
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Wartości inne niż liczbowe we właściwości maxSnapShots
 
-W wersjach wcześniejszych niż 9,20, program vCenter rozłącza się, gdy pobiera nieliczbową wartość właściwości `snapshot.maxSnapShots` właściwości na maszynie wirtualnej.
+W wersjach wcześniejszych niż 9,20 program vCenter rozłącza się, gdy pobiera nieliczbową wartość właściwości `snapshot.maxSnapShots` właściwości na maszynie wirtualnej.
 
 Ten problem jest identyfikowany przez błąd o IDENTYFIKATORze 95126.
 

@@ -1,6 +1,6 @@
 ---
-title: Przenoszenie danych do i z usługi Azure Blob storage — zespołu danych dla celów naukowych
-description: Przenoszenie danych do i z usługi Azure Blob storage
+title: Przenoszenie danych do i z usługi Azure Blob Storage — proces nauki danych zespołu
+description: Przenoszenie danych do i z usługi Azure Blob Storage za pomocą Eksplorator usługi Azure Storage, AzCopy, Python i SSIS.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,47 +11,47 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b45f9950ef63bc29d23d78d20909f223cb30350
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: d885a7fad6e958507e7d9df34bd2b1fb222c6f86
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998159"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053661"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage"></a>Przenoszenie danych do i z usługi Azure Blob storage
+# <a name="move-data-to-and-from-azure-blob-storage"></a>Przenoszenie danych do i z usługi Azure Blob Storage
 
-Proces analizy danych zespołu wymaga, aby dane można pozyskane lub ładowany w różnych środowiskach innego magazynu należy przetworzyć lub analizowany w najlepszy sposób na każdym etapie procesu.
+Proces nauki danych zespołu wymaga pozyskania lub załadowania danych do różnych środowisk magazynu, które mają być przetwarzane lub analizowane w najbardziej odpowiednim przypadku na każdym etapie procesu.
 
-## <a name="different-technologies-for-moving-data"></a>Różne technologie przenoszenia danych
+## <a name="different-technologies-for-moving-data"></a>Różne technologie do przemieszczania danych
 
-Następujące artykuły zawierają instrukcje dotyczące przenoszenia danych do i z usługi Azure Blob storage przy użyciu różnych technologii.
+W poniższych artykułach opisano sposób przenoszenia danych do i z usługi Azure Blob Storage przy użyciu różnych technologii.
 
-* [— Eksplorator usługi Azure Storage](move-data-to-azure-blob-using-azure-storage-explorer.md)
+* [Azure Storage — Eksplorator](move-data-to-azure-blob-using-azure-storage-explorer.md)
 * [Narzędzie AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 * [Python](move-data-to-azure-blob-using-python.md)
 * [SSIS](move-data-to-azure-blob-using-ssis.md)
 
-Jakiej metody jest dla Ciebie najlepsza, zależy od danego scenariusza. [Scenariusze zaawansowanej analizy w usłudze Azure Machine Learning](plan-sample-scenarios.md) artykuł pomaga określić zasoby, których potrzebujesz różnych przepływy pracy do nauki o danych używane w procesie zaawansowanej analizy.
+Która metoda jest Najlepsza dla Ciebie, zależy od danego scenariusza. [Scenariusze dotyczące zaawansowanej analizy w Azure Machine Learning](plan-sample-scenarios.md) artykule ułatwiają określenie potrzebnych zasobów dla różnych przepływów pracy analizy danych używanych w procesie zaawansowanego analizowania.
 
 > [!NOTE]
-> Pełne wprowadzenie do usługi Azure blob storage, zapoznaj się [podstawowe informacje o usłudze Azure Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) i [usługi Azure Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> Pełny Wprowadzenie do usługi Azure Blob Storage można znaleźć w [temacie Podstawowe informacje](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) dotyczące usługi Azure BLOB i [usłudze Azure Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 > 
 > 
 
 ## <a name="using-azure-data-factory"></a>Używanie usługi Azure Data Factory
 
-Alternatywnie, można użyć [usługi Azure Data Factory](https://azure.microsoft.com/services/data-factory/) do: 
+Alternatywnie można użyć [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) do: 
 
-* Tworzenie i zaplanować potok, który pobiera dane z usługi Azure blob storage 
-* Przekaż go do opublikowanej usługi sieci web Azure Machine Learning 
-* wyniki analizy predykcyjnej i 
+* Tworzenie i planowanie potoku pobierającego dane z usługi Azure Blob Storage 
+* Przekaż go do opublikowanej usługi sieci Web Azure Machine Learning. 
+* Otrzymuj wyniki analizy predykcyjnej i 
 * Przekaż wyniki do magazynu. 
 
-Aby uzyskać więcej informacji, zobacz [tworzyć potoki predykcyjne przy użyciu usługi Azure Data Factory i Azure Machine Learning](../../data-factory/transform-data-using-machine-learning.md).
+Aby uzyskać więcej informacji, zobacz [Tworzenie potoków predykcyjnych przy użyciu Azure Data Factory i Azure Machine Learning](../../data-factory/transform-data-using-machine-learning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule założono, że masz subskrypcję platformy Azure, konta magazynu i odpowiedniego klucza magazynu dla tego konta. Przed Trwa przekazywanie/pobieranie danych, musisz wiedzieć, usługa Azure storage konta nazwy i klucza konta usługi.
+W tym artykule przyjęto założenie, że masz subskrypcję platformy Azure, konto magazynu i odpowiedni klucz magazynu dla tego konta. Przed przekazaniem/pobraniem danych należy znać nazwę konta i klucz konta usługi Azure Storage.
 
-* Aby skonfigurować subskrypcję platformy Azure, zobacz [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
-* Aby uzyskać instrukcje dotyczące tworzenia konta magazynu oraz w celu uzyskania konta i informacje o kluczu, zobacz [kontach magazynu Azure o](../../storage/common/storage-create-storage-account.md).
+* Aby skonfigurować subskrypcję platformy Azure, zobacz [bezpłatna miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Instrukcje dotyczące tworzenia konta magazynu i uzyskiwania informacji o kontach i kluczach znajdują się w temacie [Informacje o kontach usługi Azure Storage](../../storage/common/storage-create-storage-account.md).
 

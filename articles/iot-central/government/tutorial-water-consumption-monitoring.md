@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 543d019628e0f3c8423a71a4aa8d5b24a60e82e3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 59dae65d32f1b816e59ee883cb4529c6f1fd212c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956719"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026560"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Samouczek: Tworzenie aplikacji do monitorowania zużycia wody w IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Ten samouczek przedstawia sposób tworzenia aplikacji do monitorowania zużycia wody przez usługę Azure IoT Central przy użyciu szablonu aplikacji do monitorowania zużycia wody IoT Central. 
 
@@ -47,7 +49,7 @@ Aby utworzyć nową aplikację monitorowania zużycia wody w usłudze Azure IoT 
 
     ![Określanie konta organizacji](media/tutorial-waterconsumptionmonitoring/sign-in.png)
 
-2. Kliknij pozycję **Kompiluj** w menu nawigacji po lewej stronie i wybierz kartę **Administracja** . Na stronie Administracja jest wyświetlana kilka szablonów aplikacji rządowych.
+2. W lewym okienku kliknij pozycję **kompilacja** , a następnie wybierz pozycję Karta **rządowa** . Na stronie Administracja jest wyświetlana kilka szablonów aplikacji rządowych.
 
    ![Kompiluj szablony aplikacji dla instytucji rządowych](./media/tutorial-waterconsumptionmonitoring/iotcentral-government-tab-overview1.png)
 
@@ -241,7 +243,7 @@ Jako Konstruktor można zmienić kilka ustawień, aby dostosować środowisko u�
 
 Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń aplikację, wykonując następujące czynności:
 
-1. Otwórz kartę Administracja w menu nawigacji po lewej stronie aplikacji IoT Central. 
+1. Otwórz kartę Administracja w lewym okienku aplikacji IoT Central. 
 2. Wybierz pozycję Ustawienia aplikacji, a następnie kliknij przycisk Usuń u dołu strony. 
 
 

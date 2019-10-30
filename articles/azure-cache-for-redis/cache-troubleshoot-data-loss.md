@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yegu
-ms.openlocfilehash: 523f4a302eb1f4679eb34bc959efc895fa5408ec
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4fee7c84b394e84369b28d2a4191d0e581f3beba
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821043"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044358"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-data-loss"></a>Rozwiązywanie problemów z usługą Azure cache pod kątem utraty danych Redis
 
@@ -101,7 +101,7 @@ Jeśli okaże się, że większość lub wszystkie klucze zniknęły z pamięci 
 |---|---|
 | [Opróżnianie klucza](#key-flushing) | Klucze zostały ręcznie przeczyszczone |
 | [Nieprawidłowy wybór bazy danych](#incorrect-database-selection) | Redis jest ustawiona do korzystania z bazy danych innej niż domyślna |
-| [Niepowodzenie wystąpienia Redis](#redis-instance-failure) | Klucze są usuwane przez jawne polecenia usuwania |
+| [Niepowodzenie wystąpienia Redis](#redis-instance-failure) | Serwer Redis jest niedostępny |
 
 ### <a name="key-flushing"></a>Opróżnianie klucza
 

@@ -1,19 +1,19 @@
 ---
-title: Często zadawane pytania dotyczące odzyskiwania po awarii oprogramowania VMware do platformy Azure za pomocą Azure Site Recovery | Microsoft Docs
+title: Często zadawane pytania dotyczące odzyskiwania po awarii oprogramowania VMware na platformę Azure za pomocą Azure Site Recovery
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii lokalnych maszyn wirtualnych VMware na platformę Azure przy użyciu Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 06/27/2019
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f09acb0110f436e7af936d79da9db1bab4ea23a9
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002274"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053678"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Często zadawane pytania dotyczące replikacji oprogramowania VMware do platformy Azure
 
@@ -51,7 +51,7 @@ Można replikować dowolne aplikacje lub obciążenia działające na maszynie w
 
 Tak, klienci programu Microsoft Software Assurance mogą korzystać z usługi [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) , aby zaoszczędzić na kosztach licencjonowania dla maszyn z systemem Windows Server migrowanych do platformy Azure lub do odzyskiwania po awarii przy użyciu platformy Azure.
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 ### <a name="what-access-to-vmware-servers-does-site-recovery-need"></a>Jakiego dostępu do serwerów VMware Site Recovery potrzebować?
 
@@ -259,7 +259,7 @@ Zalecamy regularne zaplanowaną kopię zapasową serwera konfiguracji.
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Czy podczas konfigurowania serwera konfiguracji można ręcznie pobrać i zainstalować program MySQL?
 
-Tak. Pobierz program MySQL i umieść go w folderze C:\Temp\ASRSetup. Następnie zainstaluj ją ręcznie. Po skonfigurowaniu maszyny wirtualnej serwera konfiguracji i zaakceptowaniu postanowień program MySQL zostanie wyświetlony w obszarze **Pobierz i zainstaluj**.
+Tak. Pobierz program MySQL i umieść go w folderze C:\Temp\ASRSetup. Następnie zainstaluj ją ręcznie. Po skonfigurowaniu maszyny wirtualnej serwera konfiguracji i zaakceptowaniu postanowień program MySQL zostanie wyświetlony **w obszarze** **Pobierz i zainstaluj**.
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Czy mogę uniknąć pobierania MySQL, ale Site Recovery go zainstalować?
 
@@ -287,7 +287,7 @@ Tak, ale należy zauważyć, że maszyna fizyczna może się nie powracać do ma
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Gdzie można pobrać klucze rejestracji magazynu?
 
-W magazynie Recovery Services wybierz pozycję **serwery konfiguracji** w obszarze **Site Recovery zarządzanie infrastrukturą** > . Następnie w obszarze **serwery**wybierz pozycję **Pobierz klucz rejestracji** , aby pobrać plik poświadczeń magazynu.
+W magazynie Recovery Services wybierz pozycję **serwery konfiguracji** w **infrastrukturze Site Recovery** > **Zarządzaj**. Następnie w obszarze **serwery**wybierz pozycję **Pobierz klucz rejestracji** , aby pobrać plik poświadczeń magazynu.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Czy można użyć jednego serwera konfiguracji do ochrony wielu wystąpień programu vCenter?
 

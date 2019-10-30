@@ -12,14 +12,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 33078439e8f055d746fad9949a9b0d7651e120f7
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 001a6d5ef742874698cd7a67014179a2f8528fc6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543811"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053461"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Co to jest protokół IPv6 dla usługi Azure Virtual Network? (wersja zapoznawcza)
+# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Co to jest protokół IPv6 dla usługi Azure Virtual Network? (Wersja zapoznawcza)
 
 Protokół IPv6 dla usługi Azure Virtual Network (VNet) umożliwia hostowanie aplikacji na platformie Azure z łącznością IPv6 i IPv4 zarówno w ramach sieci wirtualnej, jak i z Internetu. Ze względu na wyczerpanie publicznych adresów IPv4, nowe sieci na potrzeby mobilności i Internet rzeczy (IoT) są często kompilowane w protokole IPv6. Nawet długi ustanowiony usługodawca internetowy i sieci komórkowe są przekształcane na protokół IPv6. Usługi obsługujące tylko protokół IPv4 mogą znajdować się w realnej niekorzystnych wadach na istniejących i powstających rynkach. Dwustosowa łączność z protokołem IPv4/IPv6 umożliwia usługom hostowanym przez platformę Azure przechodzenie między tymi różnicami w ramach tej technologii dzięki globalnie dostępnym usługom z podwójnym stosem, które łatwo łączą się z istniejącym protokołem IPv4 i tymi nowymi urządzeniami IPv6
 
@@ -35,7 +35,7 @@ Na poniższym diagramie przedstawiono proste wdrożenie podwójnego stosu (IPv4/
 
 ## <a name="benefits"></a>Korzyści
 
-Korzyści z używania usługi Azure Virtual Network IPv6:
+Zalety protokołu IPv6 dla sieci wirtualnej platformy Azure:
 
 - Ułatwia rozszerzanie zasięgów aplikacji hostowanych na platformie Azure na rosnące rynki przenośne i Internet rzeczy.
 - Podwójne stosy maszyn wirtualnych IPv4/IPv6 zapewniają największą elastyczność wdrażania usług. Pojedyncze wystąpienie usługi może łączyć się z klientami internetowymi obsługującymi zarówno protokół IPv4, jak i IPv6.
@@ -44,34 +44,39 @@ Korzyści z używania usługi Azure Virtual Network IPv6:
 
 ## <a name="capabilities"></a>Możliwości
 
-Protokół IPv6 dla sieci wirtualnej obejmuje następujące możliwości:
+Protokół IPv6 dla sieci wirtualnej platformy Azure obejmuje następujące możliwości:
 
 - Klienci platformy Azure mogą definiować własną przestrzeń adresową sieci wirtualnej IPv6, aby sprostać wymaganiom aplikacji, klientom lub bezproblemowo integrować się z lokalną przestrzenią adresów IP.
 - Dwie sieci wirtualne (IPv4 i IPv6) z dwoma podsieciami stosu umożliwiają aplikacjom łączenie się z zasobami IPv4 i IPv6 w sieci wirtualnej lub w Internecie.
     > [!IMPORTANT]
-    > Podsieci dla protokołu IPv6 muszą mieć wartość dokładnie/64.  Zapewnia to zgodność w przypadku podjęcia decyzji o włączeniu routingu podsieci do sieci lokalnej, ponieważ niektóre routery mogą akceptować tylko trasy IPv6/64.  
+    > Podsieci dla protokołu IPv6 muszą mieć wartość dokładnie/64.  Zapewnia to w przyszłości zgodność w celu włączenia routingu podsieci do sieci lokalnej, ponieważ niektóre routery mogą akceptować tylko trasy IPv6/64.  
 - Ochrona zasobów przy użyciu reguł IPv6 dla sieciowych grup zabezpieczeń.
+    - I ochrona rozproszonego odmowy usługi platformy Azure (DDoS) jest rozszerzona na publiczny adres IP dostępny dla Internetu
 - Dostosuj Routing ruchu IPv6 w sieci wirtualnej przy użyciu tras zdefiniowanych przez użytkownika — szczególnie w przypadku korzystania z wirtualnych urządzeń sieciowych w celu rozszerzenia aplikacji.
-- Zezwól klientom internetowym na bezproblemowy dostęp do aplikacji dwustosowej przy użyciu dowolnie wybranego protokołu z obsługą Azure DNS dla rekordów IPv6 (AAAA). 
-- Obsługa publicznego modułu równoważenia obciążenia IPv6 w warstwie Standardowa na potrzeby tworzenia odpornych skalowalnych aplikacji, która obejmuje następujące elementy:
-    - Opcjonalna sonda kondycji IPv6 w celu określenia, które wystąpienia puli zaplecza są kondycją i w ten sposób mogą odbierać Nowe przepływy. .  
+- System Linux i Windows Virtual Machines mogą korzystać z protokołu IPv6 dla sieci wirtualnej platformy Azure
+- [Standardowa obsługa Load Balancer publicznego IPv6](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) do tworzenia odpornych, skalowalnych aplikacji, takich jak:
+    - Opcjonalna sonda kondycji IPv6 w celu określenia, które wystąpienia puli zaplecza są kondycją i w ten sposób mogą odbierać Nowe przepływy.
     - Opcjonalne reguły ruchu wychodzącego zapewniające pełną kontrolę deklaratywną nad łącznością wychodzącą w celu skalowania i dostrajania tej możliwości do konkretnych potrzeb.
     - Opcjonalna wiele konfiguracji frontonu, które umożliwiają pojedynczemu modułowi równoważenia obciążenia używanie wielu publicznych adresów IP IPv6 — ten sam protokół frontonu i port mogą być ponownie używane między adresami frontonu.
-- Publiczny adres IP na poziomie wystąpienia zapewnia łączność z Internetem IPv6 bezpośrednio z poszczególnymi maszynami wirtualnymi.
-- Łatwo dodawaj łączność IPv6 do istniejących wdrożeń obsługujących tylko protokół IPv4 z uaktualnieniem w miejscu.
-- Twórz podwójne aplikacje stosujące automatyczne skalowanie do obciążenia przy użyciu zestawów skalowania maszyn wirtualnych.
-- Obsługa portalu w wersji zapoznawczej obejmuje interaktywne tworzenie/Edytowanie/usuwanie podwójnych sieci wirtualnych (IPv4 + IPv6) i podsieci, reguły grupy zabezpieczeń sieci IPv6, trasy zdefiniowane przez użytkownika IPv6 i publiczne adresy IP protokołu IPv6.  
+    - Opcjonalne porty IPv6 mogą być ponownie używane w wystąpieniach zaplecza przy użyciu funkcji *zmiennoprzecinkowego adresu IP* reguł równoważenia obciążenia 
+- [Standardowa obsługa Load BALANCER wewnętrznego IPv6](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) do tworzenia odpornych aplikacji wielowarstwowych w ramach usługi Azure sieci wirtualnych.  
+- Obsługa publicznej Load Balancer publicznych adresów IPv6 w celu zapewnienia zgodności ze starszymi wdrożeniami
+- [Publiczne adresy IP i zakresy adresów zastrzeżonego protokołu IPv6](ipv6-public-ip-address-prefix.md) zapewniają stabilne, przewidywalne adresy IPv6, które ułatwiają listy dozwolonych aplikacji hostowanych na platformie Azure dla Twojej firmy i klientów.
+- Publiczny adres IP na poziomie wystąpienia zapewnia łączność z Internetem IPv6 bezpośrednio z indywidualnymi maszynami wirtualnymi.
+- [Dodawanie protokołu IPv6 do istniejących wdrożeń obsługujących tylko protokół IPv4](ipv6-add-to-existing-vnet-powershell.md)— ta funkcja umożliwia łatwe dodawanie łączności IPv6 do istniejących wdrożeń obsługujących tylko protokół IPv4 bez konieczności ponownego tworzenia wdrożeń.  W trakcie tego procesu nie ma to oddziaływania na ruch sieciowy IPv4, więc w zależności od aplikacji i systemu operacyjnego może być możliwe dodanie protokołu IPv6 nawet do usług Live Services.    
+- Zezwól klientom internetowym na bezproblemowy dostęp do aplikacji dwustosowej przy użyciu dowolnie wybranego protokołu z obsługą Azure DNS dla rekordów IPv6 (AAAA). 
+- Twórz podwójne aplikacje stosujące automatyczne skalowanie do obciążenia za pomocą zestawów skalowania maszyn wirtualnych przy użyciu protokołu IPv6.
+- [Komunikacja równorzędna Virtual Network (VNET)](virtual-network-peering-overview.md) — zarówno w regionalnym, jak i globalnym obszarze komunikacji równorzędnej — umożliwia bezproblemowe połączenia z podwójnym stosem sieci wirtualnych — oba punkty końcowe IPv4 i IPv6 na maszynach wirtualnych w sieciach równorzędnych będą mogły komunikować się ze sobą. Możesz nawet równorzędnie podwójnie łączyć się z protokołem IPv4 sieci wirtualnych w miarę przenoszenia wdrożeń do podwójnego stosu. 
+- Narzędzia do rozwiązywania problemów i diagnostyki protokołu IPv6 są dostępne w przypadku metryk/alertów modułu równoważenia obciążenia oraz funkcji Network Watcher, takich jak przechwytywanie pakietów, dzienniki przepływów sieciowej grupy zabezpieczeń, rozwiązywanie problemów z połączeniami i monitorowanie połączeń.   
+
+## <a name="scope"></a>Zakres
+IPv6 dla sieci wirtualnej platformy Azure to fundamentowy zestaw funkcji, który umożliwia klientom hostowanie aplikacji podwójnego stosu (IPv4 + IPv6) na platformie Azure.  Zamierzamy dodać obsługę protokołu IPv6 do większej liczby funkcji sieciowych platformy Azure w miarę upływu czasu i ostatecznie zaoferować wersje podwójnego stosu usługi Azure PaaS Services, ale w międzyczasie wszystkie usługi Azure PaaS są dostępne za pośrednictwem punktów końcowych protokołu IPv4 na podwójnym stosie Virtual Machines.   
 
 ## <a name="limitations"></a>Ograniczenia
-Wersja zapoznawcza protokołu IPv6 dla usługi Azure Virtual Network ma następujące ograniczenia:
-- Protokół IPv6 dla usługi Azure Virtual Network (wersja zapoznawcza) jest dostępny we wszystkich globalnych regionach platformy Azure, ale tylko na platformie Azure — nie w chmurach dla instytucji rządowych.
-- Obsługa portalu dla składników usługa Load Balancer w warstwie Standardowa jest tylko do wyświetlania.  Dostępna jest jednak Pełna pomoc techniczna i dokumentacja (z przykładami) dla wdrożeń usługa Load Balancer w warstwie Standardowa przy użyciu programu Azure PowerShell i interfejsu wiersza polecenia (CLI).   
-- Obsługa Network Watcher w wersji zapoznawczej jest ograniczona do dzienników przepływów sieciowej grupy zabezpieczeń i przechwytywania pakietów sieciowych.
-- Wirtualne sieci równorzędne (w regionach lub globalnie) nie są obsługiwane w wersji zapoznawczej.
-- W przypadku korzystania z zewnętrznej Load Balancer zewnętrznego IPv6 stosowane są następujące ograniczenia: 
-  - Reguły wychodzące mogą odwoływać się do wielu publicznych adresów IP frontonu, ale **nie** mogą odwoływać się do publicznego prefiksu IPv6. Publiczny prefiks adresu IP obsługuje tylko prefiksy IPv4.
-  - Reguły równoważenia obciążenia IPv6 **nie** mogą korzystać z funkcji *zmiennoprzecinkowego adresu IP* . Ponowne użycie portów w wystąpieniach zaplecza jest obsługiwane tylko z protokołem IPv4.
-- Funkcja prefiksu publicznego adresu IP platformy Azure nie obsługuje bloku adresów IPv6 dostępnych z Internetu.
+Bieżąca wersja protokołu IPv6 dla usługi Azure Virtual Network ma następujące ograniczenia:
+- Protokół IPv6 dla usługi Azure Virtual Network (wersja zapoznawcza) jest dostępny we wszystkich globalnych regionach platformy Azure, ale tylko na platformie Azure, a nie w chmurach dla instytucji rządowych.
+- Bramy Express Route i sieci VPN nie można używać w sieci wirtualnej z włączonym protokołem IPv6, bezpośrednio lub za pomocą komunikacji równorzędnej z "UseRemoteGateway". 
+- Platforma Azure (AKS itp.) nie obsługuje komunikacji IPv6 dla kontenerów.  
 
 ## <a name="pricing"></a>Cennik
 
@@ -79,5 +84,6 @@ Opłaty za zasoby i przepustowość platformy IPv6 są naliczone według stawki 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [wdrożyć aplikację podwójnego stosu IPv6 przy użyciu Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-powershell.md).
-- Dowiedz się, jak [wdrożyć aplikację podwójnego stosu IPv6 przy użyciu interfejsu wiersza polecenia platformy Azure](virtual-network-ipv4-ipv6-dual-stack-cli.md).
+- Dowiedz się, jak [wdrożyć aplikację podwójnego stosu IPv6 przy użyciu Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
+- Dowiedz się, jak [wdrożyć aplikację podwójnego stosu IPv6 przy użyciu interfejsu wiersza polecenia platformy Azure](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).
+- Dowiedz się, jak [wdrożyć aplikację podwójnego stosu IPv6 przy użyciu szablonów Menedżer zasobów (JSON)](ipv6-configure-standard-load-balancer-template-json.md)

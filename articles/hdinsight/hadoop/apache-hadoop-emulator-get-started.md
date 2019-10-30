@@ -1,5 +1,5 @@
 ---
-title: Dowiedz się, jak korzystać z Apache Hadoop piaskownicy — emulator — Azure HDInsight
+title: Dowiedz się, jak korzystać z piaskownicy Apache Hadoop, emulatora — Azure HDInsight
 description: 'Aby rozpocząć uczenie się dotyczące korzystania z ekosystemu Apache Hadoop, można skonfigurować piaskownicę usługi Hadoop z Hortonworks na maszynie wirtualnej platformy Azure. '
 keywords: Emulator Hadoop, Piaskownica w usłudze Hadoop
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066693"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044768"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Wprowadzenie do Apache Hadoop piaskownicy, emulatora na maszynie wirtualnej
 
@@ -44,14 +44,14 @@ Aby pobrać starszą piaskownicę wersji HDP, zobacz linki w obszarze **starsze 
 
     ![normalne uruchomienie programu VirtualBox Manager](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
-1. Otwórz przeglądarkę internetową i przejdź do wyświetlanego adresu URL ( `http://127.0.0.1:8888`zazwyczaj).
+1. Otwórz przeglądarkę internetową i przejdź do wyświetlanego adresu URL (zwykle `http://127.0.0.1:8888`).
 
 ## <a name="set-sandbox-passwords"></a>Ustaw hasła piaskownicy
 
 1. **W kroku wprowadzenie** na stronie piaskownicy Hortonworks wybierz pozycję **Wyświetl opcje zaawansowane**. Skorzystaj z informacji na tej stronie, aby zalogować się do piaskownicy przy użyciu protokołu SSH. Użyj podanej nazwy i hasła.
 
    > [!NOTE]
-   > Jeśli nie zainstalowano klienta SSH, można użyć protokołu SSH opartego na sieci Web, który jest udostępniony przez maszynę wirtualną **http://localhost:4200/** pod adresem.
+   > Jeśli nie zainstalowano klienta SSH, można użyć protokołu SSH opartego na sieci Web, który jest udostępniony przez maszynę wirtualną w **http://localhost:4200/** .
 
     Przy pierwszym połączeniu przy użyciu protokołu SSH zostanie wyświetlony monit o zmianę hasła dla konta głównego. Wprowadź nowe hasło, które będzie używane podczas logowania przy użyciu protokołu SSH.
 
@@ -69,7 +69,7 @@ Aby pobrać starszą piaskownicę wersji HDP, zobacz linki w obszarze **starsze 
 2. Po rozpoczęciu powłoki Użyj następujących danych, aby wyświetlić tabele dostarczone z piaskownicą:
 
         show tables;
-3. Aby pobrać 10 wierszy z tabeli, `sample_07` Użyj następujących danych:
+3. Aby pobrać 10 wierszy z tabeli `sample_07`, użyj następujących danych:
 
         select * from sample_07 limit 10;
 

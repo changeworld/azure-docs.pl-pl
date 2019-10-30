@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: a5daac9fb34f36620176111e866f493d47f63bba
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 906beabe527db41f41793a7fb1f76aef27487cdd
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513929"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044977"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database często zadawane pytania dotyczące skalowania
 
@@ -46,9 +46,9 @@ Warstwy usług oparte na rdzeń wirtualny są zróżnicowane w zależności od d
 | **Rozmiar obliczeń**|Pojedyncza baza danych/Pula elastyczna * | od 1 do 80 rdzeni wirtualnych | od 1 do 80 rdzeni wirtualnych * | od 1 do 80 rdzeni wirtualnych |
 | |Wystąpienie zarządzane | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych | ND | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych |
 | **Typ magazynu** | Wszystko |Magazyn zdalny w warstwie Premium (na wystąpienie) | Niepołączony magazyn z lokalną pamięcią podręczną dysków SSD (na wystąpienie) | Lokalny magazyn SSD o wysokiej szybkości (na wystąpienie) |
-| **Rozmiar magazynu** | Pojedyncza baza danych/Pula elastyczna | 5 GB – 4 TB | Do 100 TB | 5 GB – 4 TB |
+| **Rozmiar magazynu** | Pojedyncza baza danych/Pula elastyczna *| 5 GB – 4 TB | Do 100 TB | 5 GB – 4 TB |
 | | Wystąpienie zarządzane  | 32 GB – 8 TB | ND | 32 GB – 4 TB |
-| **Wejścia** | Pojedyncza baza danych * * | 500 operacji we/wy na sekundę z 7000 maksymalną liczbą IOPS | Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia. | 5000 operacji we/wy z maksymalną liczbą IOPS 200 000|
+| **Wejścia** | Pojedyncza baza danych | 500 operacji we/wy na sekundę z 7000 maksymalną liczbą IOPS | Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia. | 5000 operacji we/wy z maksymalną liczbą IOPS 200 000|
 | | Wystąpienie zarządzane | Zależy od rozmiaru pliku | ND | 1375 operacji we/wy na sekundę |
 |**Dostępność**|Wszystko|1 replika, brak skalowania do odczytu, brak lokalnej pamięci podręcznej | Wiele replik, do 4 odczyt skalowalny w poziomie, częściowa lokalna pamięć podręczna | 3 repliki, odczyt skalowalny w poziomie, strefa nadmiarowa, pełny magazyn lokalny |
 |**Kopii zapasowych**|Wszystko|RA-GRS, 7-35 dni (domyślnie 7 dni)| RA-GRS, 7 dni, stałe odzyskiwanie do czasu w czasie (kopie) | RA-GRS, 7-35 dni (domyślnie 7 dni) |
@@ -155,9 +155,9 @@ W przypadku aplikacji o krytycznym znaczeniu, które wymagają wysokiej dostępn
 
 Dziennik transakcji ze skalą jest praktycznie nieskończony. Nie trzeba martwić się o uruchamianie miejsca w dzienniku w systemie, który ma wysoką przepływność dzienników. Jednak szybkość generowania dzienników może być ograniczona w przypadku ciągłego agresywnego zapisywania obciążeń. Szczytowa szybkość generowania dziennika to 100 MB/s.
 
-### <a name="does-my-tempdb-scale-as-my-database-grows"></a>@No__t_0 skalowanie w miarę wzrostu rozmiaru bazy danych
+### <a name="does-my-tempdb-scale-as-my-database-grows"></a>`tempdb` skalowanie w miarę wzrostu rozmiaru bazy danych
 
-Baza danych `tempdb` znajduje się w lokalnym magazynie dysków SSD i jest konfigurowana na podstawie wymaganego rozmiaru obliczeń. @No__t_0 jest zoptymalizowany pod kątem zapewniania maksymalnej wydajności. nie można skonfigurować rozmiaru `tempdb` i jest on zarządzany przez Ciebie.
+Baza danych `tempdb` znajduje się w lokalnym magazynie dysków SSD i jest konfigurowana na podstawie wymaganego rozmiaru obliczeń. `tempdb` jest zoptymalizowany pod kątem zapewniania maksymalnej wydajności. nie można skonfigurować rozmiaru `tempdb` i jest on zarządzany przez Ciebie.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Czy rozmiar bazy danych jest automatycznie zwiększany, czy muszę zarządzać rozmiarem plików danych
 
@@ -340,7 +340,7 @@ Użytkownik końcowy. Nie automatycznie.
 
 ### <a name="does-the-size-of-my-tempdb-database-also-grow-as-the-compute-is-scaled-up"></a>Czy rozmiar bazy danych `tempdb` zwiększa się również, gdy obliczenia są skalowane
 
-Tak. @No__t_0 baza danych będzie skalowana automatycznie w miarę wzrostu obliczeń.  
+Tak. `tempdb` baza danych będzie skalowana automatycznie w miarę wzrostu obliczeń.  
 
 ### <a name="can-i-provision-multiple-primary-compute-replicas-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Czy można zainicjować obsługę wielu podstawowych replik obliczeniowych, takich jak system z wieloma wzorcami, gdzie wiele podstawowych głowic obliczeniowych może obsługiwać wyższy poziom współbieżności
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dd8858786d59563542c95d43d4e480ab1c11383
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933780"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024781"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania dla grup pakietu Office 365
 
@@ -28,7 +28,7 @@ W tym artykule opisano sposób zarządzania cyklem życia grup pakietu Office 36
 
 Po ustawieniu grupy do wygaśnięcia:
 
-- Grupy z działaniami użytkownika są automatycznie odnawiane jako czas wygaśnięcia w sąsiedztwie (wersja zapoznawcza)
+- Grupy z działaniami użytkownika są automatycznie odnawiane jako zbliżające się czas wygaśnięcia
 - Właściciele grupy są powiadamiani o odnowieniu grupy, jeśli grupa nie została ododnowiona.
 - Wszystkie grupy, które nie są odnawiane, zostaną usunięte
 - Wszystkie usunięte grupy pakietu Office 365 można przywrócić w ciągu 30 dni przez właścicieli grup lub administratora.
@@ -40,7 +40,7 @@ Obecnie można skonfigurować tylko jedną zasadę wygasania dla wszystkich grup
 
 Aby uzyskać informacje na temat pobierania i instalowania poleceń cmdlet programu PowerShell usługi Azure AD, zobacz [Azure Active Directory PowerShell dla programu Graph 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
-## <a name="activity-based-automatic-renewal-preview"></a>Automatyczne odnawianie oparte na działaniach (wersja zapoznawcza)
+## <a name="activity-based-automatic-renewal"></a>Automatyczne odnawianie oparte na działaniach
 
 W przypadku usługi Azure AD Intelligence grupy są teraz automatycznie odnawiane na podstawie tego, czy zostały one ostatnio używane. Ta funkcja eliminuje konieczność wykonywania ręcznej akcji przez właścicieli grup, ponieważ jest ona oparta na aktywności użytkownika w grupach w ramach usług Office 365, takich jak Outlook, SharePoint, Teams lub Yammer. Na przykład, jeśli właściciel lub członek grupy wykonuje coś takiego jak przekazywanie dokumentu w programie SharePoint, odwiedź kanał zespołów lub Wyślij wiadomość e-mail do grupy w programie Outlook, Grupa zostanie automatycznie odnowiona, a właściciel nie otrzyma żadnych powiadomień o odnowieniu.
 

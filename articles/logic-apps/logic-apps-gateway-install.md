@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 7533b391917175fd9dea395f58906a9f78a61488
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6467937e2aca08e234cb136c5f610503627921fb
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675685"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042204"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla Azure Logic Apps
 
@@ -89,15 +89,15 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
 
 1. Po otwarciu Instalatora wybierz pozycję **dalej**.
 
-   ![Wprowadzenie do Instalatora](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![Ekran Wprowadzenie dla Instalatora bramy](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
 1. Wybierz pozycję **lokalna Brama danych (zalecane)** , która jest trybem standardowym, a następnie wybierz przycisk **dalej**.
 
-   ![Wybierz tryb bramy](./media/logic-apps-gateway-install/select-gateway-mode.png)
+   ![Wybierz tryb uruchamiania dla bramy danych](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
 1. Zapoznaj się z minimalnymi wymaganiami, Zachowaj domyślną ścieżkę instalacji, zaakceptuj warunki użytkowania, a następnie wybierz pozycję **Zainstaluj**.
 
-   ![Przejrzyj wymagania i zaakceptuj warunki użytkowania](./media/logic-apps-gateway-install/accept-terms.png)
+   ![Przejrzyj wymagania i zaakceptuj warunki użytkowania](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
 1. Po pomyślnym zainstalowaniu bramy Podaj adres e-mail swojego konta platformy Azure, a następnie wybierz pozycję **Zaloguj się**, na przykład:
 
@@ -107,7 +107,7 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
 
 1. Wybierz pozycję **zarejestruj nową bramę na tym komputerze** > **dalej**. Ten krok rejestruje instalację bramy w [usłudze bramy w chmurze](#gateway-cloud-service).
 
-   ![Rejestrowanie bramy](./media/logic-apps-gateway-install/register-gateway.png)
+   ![Zarejestruj bramę na komputerze lokalnym](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
 1. Podaj te informacje na potrzeby instalacji bramy:
 
@@ -115,7 +115,7 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
    * Klucz odzyskiwania, który musi mieć co najmniej osiem znaków, które mają być używane.
    * Potwierdzenie klucza odzyskiwania
 
-   ![Konfigurowanie bramy](./media/logic-apps-gateway-install/set-up-gateway.png)
+   ![Podaj informacje dotyczące instalacji bramy](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
    > Zapisz i Zachowaj klucz odzyskiwania w bezpiecznym miejscu. Ten klucz będzie potrzebny, jeśli kiedykolwiek chcesz zmienić lokalizację, przenieść, odzyskać lub przejmowanie instalacji bramy.
@@ -124,7 +124,7 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
 
 1. Sprawdź region usługi bramy w chmurze i [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) używany przez instalację bramy. Domyślnie ten region jest taka sama jak lokalizacja dzierżawy usługi Azure AD dla Twojego konta platformy Azure.
 
-   ![Sprawdź region](./media/logic-apps-gateway-install/check-region.png)
+   ![Potwierdź region usługi bramy i usługi Service Bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
 1. Aby zaakceptować domyślny region, wybierz pozycję **Konfiguruj**. Jeśli jednak domyślny region nie jest tym, który znajduje się najbliżej Ciebie, możesz zmienić region.
 
@@ -134,15 +134,15 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
 
    1. Obok bieżącego regionu wybierz pozycję **Zmień region**.
 
-      ![Zmień region](./media/logic-apps-gateway-install/change-region.png)
+      ![Zmień bieżący region bramy](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
    1. Na następnej stronie Otwórz listę **Wybierz region** , wybierz żądany region, a następnie wybierz pozycję **gotowe**.
 
-      ![Wybierz inny region](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![Wybierz inny region dla usługi bramy](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
 1. Przejrzyj informacje w oknie potwierdzenie końcowe. Ten przykład używa tego samego konta dla Logic Apps, Power BI, PowerApps i Microsoft Flow, aby brama była dostępna dla wszystkich tych usług. Gdy wszystko będzie gotowe, wybierz pozycję **Zamknij**.
 
-   ![Zakończono bramę](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![Potwierdź informacje o bramie danych](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
 1. Teraz [Utwórz zasób platformy Azure na potrzeby instalacji bramy](../logic-apps/logic-apps-gateway-connection.md).
 
@@ -185,7 +185,7 @@ Jeśli konieczna jest zmiana lokalizacji bramy, przeniesienie instalacji bramy n
 
 1. Wybierz spośród dostępnych klastrów i bram, a następnie wprowadź klucz odzyskiwania dla wybranej bramy, na przykład:
 
-   ![Wybierz bramę](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![Wybierz bramę i Podaj klucz odzyskiwania](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
 1. Aby zmienić region, wybierz pozycję **Zmień region**, a następnie wybierz nowy region.
 
@@ -270,9 +270,9 @@ Poniżej przedstawiono sposoby dopasowywania lokalnych kont Active Directory za 
 
 Aby uzyskać więcej informacji, zobacz następujące tematy:
 
-* [Lokalna brama danych — często zadawane pytania](/data-integration/gateway/service-gateway-onprem-faq)
-* [Rozwiązywanie problemów z lokalną bramą danych](/data-integration/gateway/service-gateway-tshoot)
-* [Monitorowanie i Optymalizowanie wydajności bramy](/data-integration/gateway/service-gateway-performance)
+* [Lokalna brama danych — często zadawane pytania](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [Rozwiązywanie problemów z lokalną bramą danych](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Monitorowanie i Optymalizowanie wydajności bramy](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Następne kroki
 

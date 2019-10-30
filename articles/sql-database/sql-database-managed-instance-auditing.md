@@ -13,12 +13,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: a4941038288b90bcbfd61660458c564ce64add9e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 23e3a15ac26cdf0950ee31fddad2af4a3b7414c2
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958503"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025382"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Wprowadzenie do Azure SQL Database inspekcji wystąpienia zarządzanego
 
@@ -59,7 +59,7 @@ W poniższej sekcji opisano konfigurację inspekcji wystąpienia zarządzanego.
 
         ![Przycisk właściwości kontenera obiektów BLOB](./media/sql-managed-instance-auditing/4_container_properties_button.png)
 
-     1. Skopiuj adres URL kontenera, klikając ikonę kopiowania i zapisując adres URL (na przykład w Notatniku) do użytku w przyszłości. Format adresu URL kontenera powinien być`https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. Skopiuj adres URL kontenera, klikając ikonę kopiowania i zapisując adres URL (na przykład w Notatniku) do użytku w przyszłości. Format adresu URL kontenera powinien być `https://<StorageName>.blob.core.windows.net/<ContainerName>`
 
         ![Adres URL kopiowania kontenera obiektów BLOB](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
@@ -73,7 +73,7 @@ W poniższej sekcji opisano konfigurację inspekcji wystąpienia zarządzanego.
 
         - Skonfiguruj sygnaturę dostępu współdzielonego w następujący sposób:
 
-          - **Dozwolone usługi**: Blob
+          - **Dozwolone usługi**: obiekt BLOB
 
           - **Data rozpoczęcia**: aby uniknąć problemów dotyczących strefy czasowej, zaleca się użycie wczoraj daty
 
@@ -104,7 +104,7 @@ W poniższej sekcji opisano konfigurację inspekcji wystąpienia zarządzanego.
         GO
         ```
 
-     1. Wykonaj następującą instrukcję T-SQL, aby utworzyć nową inspekcję serwera (wybierz własną nazwę inspekcji, użyj adresu URL kontenera utworzonego w poprzednich krokach). Jeśli nie zostanie określony `RETENTION_DAYS` , wartością domyślną jest 0 (nieograniczony czas przechowywania):
+     1. Wykonaj następującą instrukcję T-SQL, aby utworzyć nową inspekcję serwera (wybierz własną nazwę inspekcji, użyj adresu URL kontenera utworzonego w poprzednich krokach). Jeśli nie zostanie określony, `RETENTION_DAYS` wartością domyślną jest 0 (nieograniczony czas przechowywania):
 
         ```SQL
         CREATE SERVER AUDIT [<your_audit_name>]
@@ -130,7 +130,7 @@ W poniższej sekcji opisano konfigurację inspekcji wystąpienia zarządzanego.
 
      1. Obowiązkowe Zaloguj się do konta platformy Azure:
 
-        ![Logowanie do platformy Azure](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
+        ![Zaloguj się w usłudze Azure](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
 
      1. Wybierz subskrypcję, konto magazynu i kontener obiektów blob z listy rozwijanej lub Utwórz własny kontener, klikając pozycję **Utwórz**. Po zakończeniu kliknij przycisk **OK**:
 
@@ -153,7 +153,7 @@ W poniższej sekcji opisano konfigurację inspekcji wystąpienia zarządzanego.
 
 Dodatkowe informacje:
 
-- [Inspekcja różnic między pojedynczymi bazami danych, elastyczną pulą, s i wystąpieniami zarządzanymi w Azure SQL Database i bazach danych w SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
+- [Inspekcja różnic między pojedynczymi bazami danych, pulami elastycznymi i wystąpieniami zarządzanymi w Azure SQL Database i bazach danych w SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
 - [UTWÓRZ INSPEKCJĘ SERWERA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -171,7 +171,7 @@ Dzienniki inspekcji z wystąpienia zarządzanego mogą być wysyłane do nawet c
 
 5. Wybierz lokalizację docelową dla zdarzeń inspekcji — centrum zdarzeń, dzienniki Azure Monitor lub oba te elementy. Skonfiguruj dla każdego obiektu docelowego wymagane parametry (np. Log Analytics obszar roboczy).
 
-6. Kliknij polecenie **Zapisz**.
+6. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie ustawień diagnostycznych](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
@@ -202,7 +202,7 @@ Dzienniki inspekcji z wystąpienia zarządzanego mogą być wysyłane do nawet c
 
 Istnieje kilka metod, których można użyć do wyświetlania dzienników inspekcji obiektów BLOB.
 
-- Użyj funkcji `sys.fn_get_audit_file` system (T-SQL), aby zwrócić dane dziennika inspekcji w formacie tabelarycznym. Aby uzyskać więcej informacji na temat korzystania z tej funkcji, zobacz [dokumentację sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
+- Użyj funkcji systemowej `sys.fn_get_audit_file` (T-SQL), aby zwrócić dane dziennika inspekcji w formacie tabelarycznym. Aby uzyskać więcej informacji na temat korzystania z tej funkcji, zobacz [dokumentację sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - Dzienniki inspekcji można eksplorować przy użyciu narzędzia, takiego jak [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/). W usłudze Azure Storage dzienniki inspekcji są zapisywane jako kolekcja plików obiektów BLOB w kontenerze zdefiniowanym do przechowywania dzienników inspekcji. Aby uzyskać więcej szczegółowych informacji na temat hierarchii folderu magazynu, konwencji nazewnictwa i formatu dziennika, zobacz [dokumentacja formatu dziennika inspekcji obiektów BLOB](https://go.microsoft.com/fwlink/?linkid=829599).
 
@@ -214,7 +214,7 @@ Aby korzystać z danych inspekcji dzienników z centrum zdarzeń, należy skonfi
 
 ### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Wykorzystywanie i analizowanie dzienników przechowywanych w dziennikach Azure Monitor
 
-Jeśli dzienniki inspekcji są zapisywane w dziennikach Azure Monitor, są one dostępne w obszarze roboczym Log Analytics, gdzie można uruchamiać zaawansowane wyszukiwania na danych inspekcji. Jako punkt początkowy przejdź do obszaru roboczego log Analytics i w obszarze *Ogólne* kliknij pozycję *dzienniki* , a następnie wprowadź proste zapytanie, takie jak: `search "SQLSecurityAuditEvents"` aby wyświetlić dzienniki inspekcji.  
+Jeśli dzienniki inspekcji są zapisywane w dziennikach Azure Monitor, są one dostępne w obszarze roboczym Log Analytics, gdzie można uruchamiać zaawansowane wyszukiwania na danych inspekcji. Jako punkt początkowy przejdź do obszaru roboczego Log Analytics i w obszarze *Ogólne* kliknij pozycję *dzienniki* , a następnie wprowadź proste zapytanie, takie jak: `search "SQLSecurityAuditEvents"`, aby wyświetlić dzienniki inspekcji.  
 
 Dzienniki Azure Monitor udostępniają usługi operacyjne w czasie rzeczywistym przy użyciu zintegrowanego wyszukiwania i niestandardowych pulpitów nawigacyjnych, które umożliwiają łatwe analizowanie milionów rekordów na wszystkich obciążeniach i serwerach. Aby uzyskać dodatkowe informacje dotyczące Azure Monitor języka i poleceń wyszukiwania dzienników, zobacz artykuł [Azure monitor Logs Search Reference](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
@@ -224,19 +224,18 @@ Dzienniki Azure Monitor udostępniają usługi operacyjne w czasie rzeczywistym 
 
 Kluczowe różnice między inspekcją w bazach danych w Azure SQL Database i bazach danych w SQL Server są następujące:
 
-- Przy użyciu opcji wdrożenia wystąpienia zarządzanego w Azure SQL Database Inspekcja działa na poziomie serwera i przechowuje `.xel` pliki dziennika w usłudze Azure Blob Storage.
-- Korzystając z opcji wdrażania pojedynczej bazy danych i elastycznej puli w Azure SQL Database, inspekcja działa na poziomie bazy danych.
+- Przy użyciu opcji wdrożenie wystąpienia zarządzanego w Azure SQL Database Inspekcja działa na poziomie serwera i przechowuje `.xel` pliki dziennika w usłudze Azure Blob Storage.
 - W SQL Server maszynach lokalnych/wirtualnych Inspekcja działa na poziomie serwera, ale przechowuje zdarzenia dotyczące systemu plików system/dzienniki zdarzeń systemu Windows.
 
 Inspekcja systemu XEvent w wystąpieniu zarządzanym obsługuje cele usługi Azure Blob Storage. Dzienniki plików i systemu Windows **nie są obsługiwane**.
 
-Kluczowe różnice w `CREATE AUDIT` składni inspekcji usługi Azure Blob Storage są następujące:
+Kluczowe różnice w składni `CREATE AUDIT` na potrzeby inspekcji w usłudze Azure Blob Storage są następujące:
 
-- Dostępna jest nowa `TO URL` składnia i umożliwia określenie adresu URL kontenera magazynu obiektów blob platformy Azure, w `.xel` którym umieszczane są pliki.
-- Podano nową `TO EXTERNAL MONITOR` składnię umożliwiającą włączenie elementów docelowych dzienników koncentratora i Azure monitor.
+- Podano nową składnię `TO URL` i umożliwia określenie adresu URL kontenera magazynu obiektów blob platformy Azure, w którym umieszczane są pliki `.xel`.
+- Podano nową składnię `TO EXTERNAL MONITOR`, aby włączyć również elementy docelowe dzienników centrów i Azure Monitor.
 - Składnia `TO FILE` nie jest **obsługiwana** , ponieważ SQL Database nie może uzyskać dostępu do udziałów plików systemu Windows.
 - Opcja zamykania **nie jest obsługiwana**.
-- `queue_delay`wartość 0 **nie jest obsługiwana**.
+- `queue_delay` 0 nie jest **obsługiwana**.
 
 ## <a name="next-steps"></a>Następne kroki
 

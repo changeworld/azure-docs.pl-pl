@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 8ae5c9b6b52ea13e3d0981664e8c920cc5b47a01
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 2e96a2a2dd5504c906b5fb84b643467a83518f21
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263561"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027581"
 ---
 # <a name="overview-custom-rules-for-web-application-firewall-v2"></a>Przegląd: Reguły niestandardowe dla zapory aplikacji sieci Web v2
 
@@ -32,6 +32,9 @@ Jeśli chcesz użyć *lub* dla dwóch różnych warunków, te dwa warunki muszą
 > Maksymalna liczba reguł niestandardowych WAF to 100. Aby uzyskać więcej informacji na temat limitów Application Gateway, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../azure-subscription-service-limits.md#application-gateway-limits).
 
 Wyrażenia regularne są również obsługiwane w regułach niestandardowych, podobnie jak w podstawowych zestawach reguł. Aby zapoznać się z przykładami tych reguł, zobacz sekcję "Przykładowe 3" i "przykład 5" w temacie [Tworzenie i używanie niestandardowych reguł zapory aplikacji sieci Web](create-custom-waf-rules.md).
+
+> [!NOTE]
+> Reguły niestandardowe nie są dostępne w wersji 1 SKU WAF.
 
 ## <a name="allowing-or-blocking-traffic"></a>Zezwalanie lub blokowanie ruchu
 

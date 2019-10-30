@@ -10,12 +10,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: b982956af276eaba31be52ba426562f9fc5137dd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 057602e9a595f1cb76927810801bd87e4f124d31
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956495"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026375"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Samouczek: eksportowanie danych z platformy Azure IoT Central i wizualizacja szczegółowych informacji w programie Power BI
 
@@ -33,7 +33,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-* Aby wykonać poprzednie dwa samouczki, [Utwórz aplikację analizy w sklepie na platformie azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) i [Dostosuj pulpit nawigacyjny operatora i Zarządzaj urządzeniami w usłudze Azure IoT Central](./tutorial-in-store-analytics-customize-dashboard-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+* Aby wykonać poprzednie dwa samouczki, [Utwórz aplikację analizy w sklepie na platformie azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) i [Dostosuj pulpit nawigacyjny operatora i Zarządzaj urządzeniami w usłudze Azure IoT Central](./tutorial-in-store-analytics-customize-dashboard-pnp.md).
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Konto usługi Power BI. Jeśli nie masz konta Power BI, przed rozpoczęciem Zarejestruj się, aby uzyskać [bezpłatną Power BI Pro wersję próbną](https://app.powerbi.com/signupredirect?pbi_source=web) .
 
@@ -149,7 +149,7 @@ Masz teraz trzeci zestaw danych przesyłania strumieniowego, który przechowuje 
 
 W tym rozwiązaniu aplikacja logiki odczytuje dane telemetryczne z centrum zdarzeń, analizuje je, a następnie wysyła je do utworzonych zestawów danych przesyłania strumieniowego Power BI.
 
-Przed utworzeniem aplikacji logiki potrzebne są identyfikatory urządzeń dwóch czujników RuuviTag podłączonych do aplikacji IoT Central w samouczku [Tworzenie aplikacji do analizy w sklepie na platformie Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) :
+Przed utworzeniem aplikacji logiki potrzebne są identyfikatory urządzeń dwóch czujników RuuviTag podłączonych do aplikacji IoT Central w samouczku [Tworzenie aplikacji do analizy w sklepie na platformie Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) :
 
 1. Zaloguj się do aplikacji do **analizy w sklepie — Wyewidencjonuj** IoT Central.
 1. Wybierz pozycję **urządzenia** w lewym okienku. Następnie wybierz pozycję **RuuviTag**.

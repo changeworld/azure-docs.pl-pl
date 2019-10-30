@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 9cded164b63bbb72e4a353e9a542c9e054c14d93
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b1ec40485e775b7e50b5f7d82014aef77f14fb3e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821143"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025286"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>Interfejsy API realizacji SaaS w wersji 2 
 
@@ -87,7 +87,7 @@ Poniższa tabela zawiera definicje typowych parametrów i jednostek używanych p
 | `offerId`                | Unikatowy identyfikator ciągu dla każdej oferty (na przykład: "offer1").  |
 | `planId`                 | Unikatowy identyfikator ciągu dla każdego planu/jednostki SKU (na przykład "Silver"). |
 | `operationId`            | Identyfikator GUID dla określonej operacji.  |
-|  `action`                | Akcja wykonywana na zasobie, `unsubscribe`, `suspend`, `reinstate` lub `changePlan`, `changeQuantity`, `transfer`.  |
+|  `action`                | Akcja wykonywana na zasobie, `Unsubscribe`, `Suspend`, `Reinstate`lub `ChangePlan`, `ChangeQuantity`, `Transfer`. |
 |   |   |
 
 Unikatowe identyfikatory globalne ([GUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier)) to 128-bitowe (32-szesnastkowo), które są zazwyczaj generowane automatycznie. 
@@ -707,7 +707,7 @@ Wewnętrzny błąd serwera.
 
 #### <a name="get-operation-status"></a>Pobierz stan operacji
 
-Umożliwia wydawcy śledzenie stanu określonej wyzwalanej operacji asynchronicznej (takiej jak `subscribe`, `unsubscribe`, `changePlan` lub `changeQuantity`).
+Umożliwia wydawcy śledzenie stanu określonej wyzwalanej operacji asynchronicznej (takiej jak `Subscribe`, `Unsubscribe`, `ChangePlan`lub `ChangeQuantity`).
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Pobierz<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -850,11 +850,11 @@ Wydawca musi zaimplementować element webhook w tej usłudze SaaS, aby aktywnie 
 }
 ```
 Gdzie akcja może być jedną z następujących czynności: 
-- `unsubscribe` (gdy zasób został usunięty)
-- `changePlan` (po zakończeniu operacji zmiany planu)
-- `changeQuantity` (gdy operacja zmiany ilości została ukończona)
-- `suspend` (gdy zasób został zawieszony)
-- `reinstate` (gdy zasób został przywrócony po zawieszeniu)
+- `Unsubscribe` (gdy zasób został usunięty)
+- `ChangePlan` (po zakończeniu operacji zmiany planu)
+- `ChangeQuantity` (gdy operacja zmiany ilości została ukończona)
+- `Suspend` (gdy zasób został zawieszony)
+- `Reinstate` (gdy zasób został przywrócony po zawieszeniu)
 
 Stan może mieć jedną z następujących wartości: 
 - **NotStarted** <br>

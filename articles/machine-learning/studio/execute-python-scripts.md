@@ -1,7 +1,7 @@
 ---
 title: Wykonywanie skryptów uczenia maszynowego w języku Python
 titleSuffix: Azure Machine Learning Studio
-description: Dowiedz się, jak używać języka Python w Azure Machine Learning Studio.
+description: Dowiedz się, jak używać modułu skryptu języka Python do używania kodu Python w Machine Learning Studio (klasyczne) eksperymenty i usługi sieci Web.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 64030cac73b6fbd750b2ed681d85642cc6ad1146
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bfc2efca0786838d528b3019a3aff405f46ef645
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308865"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053789"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Wykonywanie skryptów uczenia maszynowego w języku Python w usłudze Azure Machine Learning Studio
 
@@ -25,7 +25,7 @@ W tym artykule opisano, jak używać modułu skryptu języka Python do użycia k
 
 ## <a name="using-the-execute-python-script-module"></a>Korzystanie z modułu skryptu języka Python
 
-Interfejs podstawowy do języka Python w programie Studio polega na użyciu modułu [skryptu języka Python][execute-python-script] . Akceptuje do trzech danych wejściowych i tworzy do dwóch wyjść, podobnie jak moduł [wykonywania skryptu języka R][execute-r-script] . Kod języka Python jest wprowadzany do pola parametru za pomocą specjalnie wywołanej `azureml_main`funkcji punktu wejścia o nazwie.
+Interfejs podstawowy do języka Python w programie Studio polega na użyciu modułu [skryptu języka Python][execute-python-script] . Akceptuje do trzech danych wejściowych i tworzy do dwóch wyjść, podobnie jak moduł [wykonywania skryptu języka R][execute-r-script] . Kod języka Python jest wprowadzany do pola parametru za pomocą specjalnie nazwanej funkcji punktu wejścia o nazwie `azureml_main`.
 
 ![Wykonaj moduł skryptu języka Python](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -33,7 +33,7 @@ Interfejs podstawowy do języka Python w programie Studio polega na użyciu modu
 
 ### <a name="input-parameters"></a>Parametry wejściowe
 
-Dane wejściowe modułu języka Python są ujawniane jako Pandas dataframes. `azureml_main` Funkcja akceptuje do dwóch opcjonalnych ramek dataPandas jako parametry.
+Dane wejściowe modułu języka Python są ujawniane jako Pandas dataframes. Funkcja `azureml_main` akceptuje do dwóch opcjonalnych ramek danych Pandas jako parametry.
 
 Mapowanie między portami wejściowymi i parametrami funkcji jest pozycyjne:
 
@@ -41,13 +41,13 @@ Mapowanie między portami wejściowymi i parametrami funkcji jest pozycyjne:
 - Drugie dane wejściowe (jeśli są połączone) są mapowane na drugi parametr funkcji.
 - Trzecia wartość wejściowa jest używana do [importowania dodatkowych modułów języka Python](#import-modules).
 
-Poniżej przedstawiono bardziej szczegółową semantykę sposobu mapowania portów wejściowych do parametrów `azureml_main` funkcji.
+Poniżej przedstawiono bardziej szczegółową semantykę sposobu, w jaki porty wejściowe są mapowane do parametrów funkcji `azureml_main`.
 
 ![Tabela konfiguracji portów wejściowych i wynikający z tego sygnatury języka Python](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
 ### <a name="output-return-values"></a>Wyjściowe wartości zwracane
 
-Funkcja musi zwracać pojedynczą Pandas Dataframe spakowany w sekwencji w języku Python, taką jak krotka, lista lub tablica numpy. [](https://docs.python.org/2/c-api/sequence.html) `azureml_main` Pierwszy element tej sekwencji jest zwracany do pierwszego portu wyjściowego modułu. Drugi port wyjściowy modułu jest używany do [wizualizacji](#visualizations) i nie wymaga wartości zwracanej. Ten schemat jest przedstawiony poniżej.
+Funkcja `azureml_main` musi zwracać pojedynczą Pandas Dataframe spakowaną w [sekwencji](https://docs.python.org/2/c-api/sequence.html) w języku Python, taką jak krotka, lista lub tablica numpy. Pierwszy element tej sekwencji jest zwracany do pierwszego portu wyjściowego modułu. Drugi port wyjściowy modułu jest używany do [wizualizacji](#visualizations) i nie wymaga wartości zwracanej. Ten schemat jest przedstawiony poniżej.
 
 ![Mapowanie portów wejściowych do parametrów i zwracanie wartości do portu wyjściowego](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
@@ -60,16 +60,16 @@ Zestawy danych programu Studio nie są takie same jak Panda dataframes. W efekci
 | Ciągi i wartości liczbowe| Przetłumaczone jako |
 | Pandas "NA" | Przetłumaczone jako "brakująca wartość" |
 | Wektory indeksu | Ich |
-| Nazwy kolumn niebędących ciągami | Wywoływanie `str` nazw kolumn |
+| Nazwy kolumn niebędących ciągami | Wywołaj `str` w nazwach kolumn |
 | Zduplikowane nazwy kolumn | Dodaj sufiks liczbowy: (1), (2), (3) i tak dalej.
 
-**Wszystkie wejściowe ramki danych w funkcji języka Python zawsze mają 64-bitowy indeks liczbowy z przedziału od 0 do liczby wierszy minus 1*
+**wszystkie wejściowe ramki danych w funkcji języka Python zawsze mają 64-bitowy indeks liczbowy z przedziału od 0 do liczby wierszy pomniejszonych o 1*
 
 ## <a id="import-modules"></a>Importowanie istniejących modułów skryptów języka Python
 
 Zaplecze używane do wykonywania języka Python opiera się na [Anaconda](https://www.anaconda.com/distribution/), szeroko używanym do nauki dystrybucji języka Python. Jest on dostępny w pobliżu 200 najpopularniejszych pakietów języka Python używanych w obciążeniu zorientowanym na dane. Program Studio nie obsługuje obecnie korzystania z systemów zarządzania pakietami, takich jak PIP lub Conda, do instalowania bibliotek zewnętrznych i zarządzania nimi.  Jeśli okaże się, że musisz uwzględnić dodatkowe biblioteki, użyj następującego scenariusza jako przewodnika.
 
-Typowy przypadek użycia polega na dołączeniu istniejących skryptów języka Python do eksperymentów w programie Studio. Moduł [wykonywania skryptu języka Python][execute-python-script] akceptuje plik zip zawierający moduły Python na trzecim porcie wejściowym. Plik jest rozpakowany przez strukturę wykonywania w czasie wykonywania, a zawartość jest dodawana do ścieżki biblioteki interpretera języka Python. Funkcja `azureml_main` punktu wejścia może następnie zaimportować te moduły bezpośrednio. 
+Typowy przypadek użycia polega na dołączeniu istniejących skryptów języka Python do eksperymentów w programie Studio. Moduł [wykonywania skryptu języka Python][execute-python-script] akceptuje plik zip zawierający moduły Python na trzecim porcie wejściowym. Plik jest rozpakowany przez strukturę wykonywania w czasie wykonywania, a zawartość jest dodawana do ścieżki biblioteki interpretera języka Python. Funkcja punktu wejścia `azureml_main` może następnie importować te moduły bezpośrednio. 
 
 Rozważmy na przykład plik Hello.py zawierający prostą funkcję "Hello, World".
 
@@ -95,7 +95,7 @@ Możesz uzyskać dostęp do danych przechowywanych na koncie usługi Azure Blob 
 
 1. Pobierz [pakiet BLOB Storage platformy Azure dla języka Python](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) lokalnie.
 1. Przekaż plik zip do obszaru roboczego programu Studio jako zestaw danych.
-1. Utwórz obiekt BlobService za pomocą`protocol='http'`
+1. Utwórz obiekt BlobService za pomocą `protocol='http'`
 
 ```
 from azure.storage.blob import BlockBlobService

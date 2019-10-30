@@ -1,21 +1,21 @@
 ---
-title: Migrowanie maszyn lokalnych na platformę Azure przy użyciu usługi Azure Site Recovery | Microsoft Docs
+title: Migrowanie maszyn lokalnych na platformę Azure za pomocą Azure Site Recovery
 description: W tym artykule opisano sposób migrowania maszyn lokalnych na platformę Azure przy użyciu usługi Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 10/29/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7534313a5862ececf4757be807e59b6df39f6430
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 5fa0f05f37164c24ba6441d0c4cb2abc59f331d7
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873364"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053048"
 ---
-# <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
+# <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych na platformę Azure
 
 
 W tym artykule opisano sposób migrowania maszyn lokalnych na platformę Azure przy użyciu [Azure Site Recovery](site-recovery-overview.md). Ogólnie rzecz biorąc, Site Recovery jest używany do zarządzania odzyskiwaniem po awarii maszyn lokalnych i maszyn wirtualnych platformy Azure. Można go również użyć do migracji. Migracja używa tych samych kroków co w przypadku odzyskiwania po awarii z jednym wyjątkiem. W przypadku migracji maszyny przełączone do trybu failover z lokacji lokalnej są ostatnim krokiem. W przeciwieństwie do odzyskiwania po awarii, nie można wrócić do trybu failover w scenariuszu migracji.
@@ -32,8 +32,7 @@ Ten samouczek pokazuje, jak przeprowadzić migrację lokalnych maszyn wirtualnyc
 
 
 > [!TIP]
-> Usługa Azure Migrate oferuje teraz wersję zapoznawczą nowego, bezagentowego środowiska do migrowania maszyn wirtualnych VMware na platformę Azure. [Dowiedz się więcej](https://aka.ms/migrateVMs-signup).
-
+> Teraz można migrować serwery lokalne na platformę Azure przy użyciu usługi Azure Migrate. [Dowiedz się więcej](../migrate/migrate-services-overview.md)
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -53,8 +52,8 @@ Wybierz, co chcesz replikować, i miejsce, do którego chcesz przeprowadzać rep
 2. W menu zasobów kliknij pozycję **Site Recovery** > **Przygotowanie infrastruktury** > **Cel ochrony**.
 3. W obszarze **Cel ochrony** wybierz elementy do migracji.
     - **VMware**: wybierz kolejno pozycje **Na platformę Azure** > **Tak, przy użyciu funkcji VMWare vSphere Hypervisor**.
-    - **Maszyna fizyczna**: wybierz kolejno pozycje **Na platformę Azure** > **Niezwirtualizowane/inne**.
-    - **Hyper-V**: wybierz kolejno pozycje **Na platformę Azure** > **Tak, przy użyciu funkcji Hyper-V**. Jeśli program VMM zarządza maszynami wirtualnymi funkcji Hyper-V, wybierz pozycję **Tak**.
+    - **Komputer fizyczny**: wybierz kolejno pozycje **Na platformę Azure** > **Niezwirtualizowane/inne**.
+    - **Hyper-V**: wybierz kolejno pozycje **Azure** > **Tak, przy użyciu funkcji Hyper-V**. Jeśli program VMM zarządza maszynami wirtualnymi funkcji Hyper-V, wybierz pozycję **Tak**.
 
 
 ## <a name="set-up-the-source-environment"></a>Konfigurowanie środowiska źródłowego
@@ -112,11 +111,11 @@ Uruchom tryb failover dla maszyn, które chcesz migrować.
    - Kończy proces migracji, kończy replikację lokalnej maszyny wirtualnej i kończy Site Recovery rozliczeń za maszynę wirtualną.
    - W tym kroku oczyszczane są dane replikacji. Nie są jednak usuwane migrowane maszyny wirtualne.
 
-     ![Zakończ migrację](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
+     ![Kończenie migracji](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 
 
 > [!WARNING]
-> **Nie anuluj trybu failover, który jest w toku**: Przed rozpoczęciem pracy w trybie failover zatrzymywana jest replikacja maszyny wirtualnej. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.
+> **Nie anuluj trybu failover po rozpoczęciu przełączania**: replikacja maszyny wirtualnej zostanie zatrzymana przed uruchomieniem trybu failover. Jeśli anulujesz tryb failover po rozpoczęciu przełączania, zostanie ono zatrzymane, ale maszyna wirtualna nie zostanie ponownie zreplikowana.
 
 W niektórych scenariuszach tryb failover wymaga dodatkowego przetwarzania, którego przeprowadzenie zajmuje około 8–10 minut. Dłuższe czasy testowania trybu failover można zauważyć w przypadku serwerów fizycznych, maszyn VMware z systemem Linux, maszyn wirtualnych VMware, które nie mają włączonej usługi DHCP, oraz maszyn wirtualnych VMware, które nie mają następujących sterowników rozruchowych: storvsc, VMBus, storflt, Intelide, ATAPI.
 
@@ -159,7 +158,7 @@ Niektóre czynności można zautomatyzować w ramach procesu migracji przy użyc
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przeprowadzono migrację lokalnych maszyn wirtualnych do maszyn wirtualnych platformy Azure. Teraz
+W tym samouczku przeprowadzono migrację lokalnych maszyn wirtualnych do maszyn wirtualnych platformy Azure. Znajdź
 
 > [!div class="nextstepaction"]
 > [Skonfiguruj odzyskiwanie po awarii](azure-to-azure-replicate-after-migration.md) w regionie pomocniczym platformy Azure dla maszyn wirtualnych platformy Azure.

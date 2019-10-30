@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: e542d4685829886084bbc8adf6831647b9a1256a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 28d813e2f137ecf721165e9ea5af2e36efee872a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809657"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053480"
 ---
 # <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Szybki Start: Tworzenie potoku wzbogacania AI przy użyciu umiejętności poznawczych w Azure Search
 
-Azure Search integruje się z [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), dodając wyodrębnianie zawartości, przetwarzanie języka naturalnego (NLP) oraz umiejętności przetwarzania obrazów do Azure Searchego potoku indeksowania, dzięki czemu zawartość nie może być wyszukiwana lub bez struktury. 
+Azure Search integruje się z [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), dodawaniem funkcji wyodrębniania zawartości, przetwarzania języka naturalnego (NLP) i przetwarzania obrazów (tagowania obrazów, wykrywania obiektów, OCR) do Azure Searchego potoku indeksowania, dzięki czemu nie można wyszukiwać ani nie ma możliwości przeszukiwania zawartości bez struktury. 
 
-Wiele zasobów Cognitive Services, takich jak [OCR](cognitive-search-skill-ocr.md), [wykrywanie języka](cognitive-search-skill-language-detection.md), [rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md) do nazwy kilku — może być dołączane do procesu indeksowania. Algorytmy sztucznej inteligencji usług Cognitive Services są używane do znajdowania wzorców, funkcji i cech charakterystycznych w danych źródłowych, zwracając struktury i zawartości tekstowe, które można wykorzystać w rozwiązaniach wyszukiwania pełnotekstowego opartych na usłudze Azure Search.
+Wiele zasobów Cognitive Services, takich jak [znakowanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-tagging-images), [wykrywanie obiektów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-object-detection), [rozpoznawanie](cognitive-search-skill-ocr.md), [wykrywanie języka](cognitive-search-skill-language-detection.md), [rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md) do nazwy kilka — może być dołączane do procesu indeksowania. Algorytmy sztucznej inteligencji usług Cognitive Services są używane do znajdowania wzorców, funkcji i cech charakterystycznych w danych źródłowych, zwracając struktury i zawartości tekstowe, które można wykorzystać w rozwiązaniach wyszukiwania pełnotekstowego opartych na usłudze Azure Search.
 
 W tym przewodniku Szybki start utworzysz swój pierwszy potok wzbogacania w witrynie [Azure Portal](https://portal.azure.com), zanim napiszesz jakikolwiek wiersz kodu:
 
