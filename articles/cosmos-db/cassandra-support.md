@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: b48384b8333a5affc76d8af8e057bd911f14068b
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 7f2a8ead8195328552a138b71e304c5f5a0857e2
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043486"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064049"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkcje bazy danych Apache Cassandra obsługiwane przez interfejs API Cassandra usługi Azure Cosmos DB 
 
@@ -157,7 +157,7 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Mapowanie spójności 
 
-Interfejs API Cassandra usługi Azure Cosmos DB zapewnia możliwość wyboru spójności operacji odczytu.  Mapowanie spójności jest szczegółowo opisane w [tym miejscu](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping).
+Interfejs API Cassandra usługi Azure Cosmos DB zapewnia możliwość wyboru spójności operacji odczytu.  Mapowanie spójności jest szczegółowo opisane w [tym miejscu](consistency-levels-across-apis.md#cassandra-mapping).
 
 ## <a name="permission-and-role-management"></a>Zarządzanie uprawnieniami i rolami
 
@@ -165,7 +165,7 @@ Azure Cosmos DB obsługuje kontrolę dostępu opartą na rolach (RBAC) na potrze
 
 ## <a name="keyspace-and-table-options"></a>Opcje przestrzeni kluczy i tabeli
 
-Opcje dla nazwy regionu, klasy, replication_factor i centrum danych w poleceniu "Utwórz przestrzeń kluczy" są obecnie ignorowane. System używa podstawowej metody replikacji [dystrybucji](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood) Azure Cosmos DB, aby dodać regiony. Jeśli potrzebujesz obecności danych między regionami, możesz ją włączyć na poziomie konta przy użyciu programu PowerShell, interfejsu wiersza polecenia lub portalu, aby dowiedzieć się więcej, zobacz artykuł [jak dodać regiony](how-to-manage-database-account.md#addremove-regions-from-your-database-account) . Nie można wyłączyć Durable_writes, ponieważ Azure Cosmos DB gwarantuje, że każdy zapis jest trwały. W każdym regionie Azure Cosmos DB replikuje dane w zestawie replik, który składa się z 4 replik i nie można zmodyfikować tej [konfiguracji](global-dist-under-the-hood.md) zestawu replik.
+Opcje dla nazwy regionu, klasy, replication_factor i centrum danych w poleceniu "Utwórz przestrzeń kluczy" są obecnie ignorowane. System używa podstawowej metody replikacji [dystrybucji](global-dist-under-the-hood.md) Azure Cosmos DB, aby dodać regiony. Jeśli potrzebujesz obecności danych między regionami, możesz ją włączyć na poziomie konta przy użyciu programu PowerShell, interfejsu wiersza polecenia lub portalu, aby dowiedzieć się więcej, zobacz artykuł [jak dodać regiony](how-to-manage-database-account.md#addremove-regions-from-your-database-account) . Nie można wyłączyć Durable_writes, ponieważ Azure Cosmos DB gwarantuje, że każdy zapis jest trwały. W każdym regionie Azure Cosmos DB replikuje dane w zestawie replik, który składa się z 4 replik i nie można zmodyfikować tej [konfiguracji](global-dist-under-the-hood.md) zestawu replik.
  
 Wszystkie opcje są ignorowane podczas tworzenia tabeli, z wyjątkiem gc_grace_seconds, które powinny mieć wartość zero.
 Przestrzeń kluczy i tabela mają dodatkową opcję o nazwie "cosmosdb_provisioned_throughput" o minimalnej wartości 400 RU/s. Przepływność przestrzeni kluczy umożliwia udostępnianie przepływności w wielu tabelach i jest przydatne w scenariuszach, gdy wszystkie tabele nie korzystają z zainicjowanej przepływności. Polecenie ALTER TABLE umożliwia zmianę zainicjowanej przepływności w regionach. 

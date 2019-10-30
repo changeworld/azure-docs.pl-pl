@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 0f463291a0405178c5bdfbb890a6f954e13b204d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: MT
+ms.openlocfilehash: e6a1dba603cbeea276dc6153f82ae599e3d29b3d
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023945"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101354"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu Azure Portal
 
@@ -44,7 +44,7 @@ Aby ukończyć ten przewodnik Szybki Start:
 1. [Zainstaluj oprogramowanie Git](https://git-scm.com/)
 2. [Zainstaluj program JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
 3. [Zainstaluj Maven 3,0 lub nowszy](https://maven.apache.org/download.cgi)
-4. [Zainstalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+4. [Instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0.67 lub nowszej](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Zarejestruj się w celu uzyskania subskrypcji platformy Azure](https://azure.microsoft.com/free/)
 
 ## <a name="install-the-azure-cli-extension"></a>Instalowanie rozszerzenia interfejsu wiersza polecenia platformy Azure

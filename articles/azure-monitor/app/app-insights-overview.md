@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 58c63c229510b476ea19a9650c8eed0fc2d72ac2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 089b37761c11c02e34c35eb378c64862bc4fbc98
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677832"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064134"
 ---
 # <a name="what-is-application-insights"></a>Co to jest usługa Application Insights?
 Application Insights, funkcja [Azure monitor](../overview.md), to rozszerzalna usługa zarządzania wydajnością aplikacji (APM) dla deweloperów sieci Web na wielu platformach. Użyj tej usługi do monitorowania aplikacji internetowej na żywo. Usługa automatycznie wykryje nieprawidłowości w zakresie wydajności. Obejmuje ona zaawansowane narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć sposób korzystania z aplikacji przez użytkowników.  Usługa ta pomaga w ciągłym doskonaleniu wydajności i użyteczności tworzonych rozwiązań. Działa w przypadku aplikacji na różnych platformach, w tym .NET, Node.js i Java EE, hostowanych lokalnie w środowisku hybrydowym lub w dowolnej chmurze publicznej. Integruje się ona z procesem DevOps i ma punkty połączenia z szeroką gamą narzędzi programistycznych. Może monitorować i analizować dane telemetryczne z aplikacji mobilnych dzięki integracji z usługą Visual Studio App Center.
@@ -106,6 +106,7 @@ Istnieje kilka sposobów, aby rozpocząć. Zacznij od tego, co najlepiej sprawdz
   * [Aplikacje konsolowe platformy .NET](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
+  * [Python (wersja zapoznawcza)](../../azure-monitor/app/opencensus-python.md)
   * [Inne platformy](../../azure-monitor/app/platforms.md)
 * **[Instrumentacja stron internetowych](../../azure-monitor/app/javascript.md)** dla widoku strony, wywołań AJAX i innej telemetrii po stronie klienta.
 * **[Analizowanie użycia aplikacji mobilnej](../../azure-monitor/learn/mobile-center-quickstart.md)** dzięki integracji z usługą Visual Studio App Center.
@@ -124,6 +125,8 @@ Rozpocznij pracę w czasie programowania za pomocą rozwiązań:
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
+* [Python (wersja zapoznawcza)](../../azure-monitor/app/opencensus-python.md)
+
 
 ## <a name="support-and-feedback"></a>Pomoc techniczna i opinie
 * Pytania i problemy:

@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596da9cfe0e914183bd3b2603ffa1047f1d9352b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: f5a9f83a8f6e8d5e83f30d30da2b1c4c0f722dc3
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310021"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063056"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Czym są tożsamości zarządzane dla zasobów platformy Azure?
 
@@ -75,7 +75,7 @@ Na poniższym diagramie pokazano, jak tożsamości usługi zarządzanej współp
 
 4. Teraz, gdy maszyna wirtualna zyskała tożsamość, używamy informacji o jednostce usługi w celu przyznania maszynie wirtualnej dostępu do zasobów platformy Azure. Aby wywołać usługę Azure Resource Manager, należy użyć kontroli dostępu opartej na rolach (RBAC) w usłudze Azure AD w celu przypisania odpowiedniej roli do jednostki usługi maszyny wirtualnej. Aby wywołać usługę Key Vault, należy przyznać kodowi dostęp do określonego wpisu tajnego lub klucza w usłudze Key Vault.
 
-5. Kod uruchomiony na maszynie wirtualnej może zażądać tokenu z punktu końcowego usługi metadanych wystąpienia platformy Azure, dostępne tylko z poziomu maszyny wirtualnej:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. Kod uruchomiony na maszynie wirtualnej może zażądać tokenu z punktu końcowego usługi metadanych wystąpienia platformy Azure, dostępne tylko z poziomu maszyny wirtualnej: `http://169.254.169.254/metadata/identity/oauth2/token`
     - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
     - Parametr wersji interfejsu API określa wersję usługi IMDS, użyj wartości api-version=2018-02-01 lub nowszej.
 
@@ -96,7 +96,7 @@ Na poniższym diagramie pokazano, jak tożsamości usługi zarządzanej współp
    > [!Note]
    > Ten krok można również wykonać przed krokiem 3.
 
-5. Kod uruchomiony na maszynie wirtualnej może zażądać tokenu z punktu końcowego tożsamości usługi Azure Instance Metadata Service, dostępnego tylko z poziomu maszyny wirtualnej:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. Kod uruchomiony na maszynie wirtualnej może zażądać tokenu z punktu końcowego tożsamości usługi Azure Instance Metadata Service, dostępnego tylko z poziomu maszyny wirtualnej: `http://169.254.169.254/metadata/identity/oauth2/token`
     - Parametr zasobu określa usługę, do której jest wysyłany token. Aby przeprowadzić uwierzytelnianie w usłudze Azure Resource Manager, należy użyć elementu `resource=https://management.azure.com/`.
     - Parametr Identyfikator klienta określa tożsamość, dla której jest żądany token. Ta wartość jest wymagana do przeprowadzenia uściślania, gdy na jednej maszynie wirtualnej znajduje się więcej niż jedna tożsamość przypisana przez użytkownika.
     - Parametr wersji interfejsu API określa wersję usługi Azure Instance Metadata Service. Należy użyć wersji `api-version=2018-02-01` lub nowszej.
@@ -122,23 +122,25 @@ Dowiedz się, jak używać tożsamości zarządzanej z maszyną wirtualną z sys
 
 Dowiedz się, jak używać tożsamości zarządzanej z maszyną wirtualną z systemem Linux:
 
+* [Azure Container Registry dostępu](../../container-registry/container-registry-authentication-managed-identity.md)
 * [Uzyskiwanie dostępu do usługi Azure Data Lake Store](tutorial-linux-vm-access-datalake.md)
 * [Uzyskiwanie dostępu do usługi Azure Resource Manager](tutorial-linux-vm-access-arm.md)
 * [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu klucza dostępu](tutorial-linux-vm-access-storage.md)
 * [Uzyskiwanie dostępu do usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego](tutorial-linux-vm-access-storage-sas.md)
 * [Uzyskiwanie dostępu do zasobu spoza usługi Azure AD przy użyciu usługi Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
-* [Azure Container Registry dostępu](../../container-registry/container-registry-authentication-managed-identity.md)
 
 Dowiedz się, jak używać tożsamości zarządzanej z innymi usługami platformy Azure:
 
-* [Usługa Azure App Service](/azure/app-service/overview-managed-identity)
-* [Azure Functions](/azure/app-service/overview-managed-identity)
-* [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
-* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
-* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
+* [Azure App Service](/azure/app-service/overview-managed-identity)
 * [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
 * [Azure Container Registry zadania](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
+* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
+* [Azure Functions](/azure/app-service/overview-managed-identity)
+* [Azure Kubernetes Service](/azure/aks/use-managed-identity)
+* [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
+* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
+
 
 ## Jakie usługi platformy Azure obsługują funkcję?<a name="which-azure-services-support-managed-identity"></a>
 
