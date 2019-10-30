@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 7a9f726273dc3c5b336b22588d49704ffc2d8192
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 2e5eaed40c954df5e7c731bb3fbd5d9424ea9b97
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043372"
+ms.locfileid: "73053298"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnozowanie i rozwiązywanie problemów podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 
@@ -105,7 +105,7 @@ Ten błąd występuje, jeśli projekt Azure Functions (lub dowolny projekt, do k
 Aby obejść tę sytuację, Usuń ręczne odwołanie do narzędzia NuGet, które zostało dodane i pozwól, aby Azure Cosmos DB odwołanie do zestawu SDK przez pakiet rozszerzenia Cosmos DB Azure Functions.
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Zmienianie interwału sondowania funkcji platformy Azure na potrzeby wykrywania zmian
-Zgodnie z wcześniejszym opisem dla [# # # moje zmiany nie zostały odebrane](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-be-received), funkcja platformy Azure będzie w stanie uśpienia przez konfigurowalny czas (domyślnie 5 sekund) przed sprawdzeniem nowych zmian (aby uniknąć używania wysokiego ru). Ten czas uśpienia można skonfigurować za pomocą ustawienia `FeedPollDelay/feedPollDelay` w [konfiguracji](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) wyzwalacza (oczekiwana jest wartość w milisekundach).
+Zgodnie z wcześniejszym opisem w przypadku, gdy zmiany nie zostaną [odebrane](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), funkcja platformy Azure będzie w stanie uśpienia przez konfigurowalny czas (domyślnie 5 sekund) przed sprawdzeniem nowych zmian (aby uniknąć używania wysokiego poziomu ru). Ten czas uśpienia można skonfigurować za pomocą ustawienia `FeedPollDelay/feedPollDelay` w [konfiguracji](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) wyzwalacza (oczekiwana jest wartość w milisekundach).
 
 ## <a name="next-steps"></a>Następne kroki
 
