@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: Dokumentacja dotycząca podstaw zabezpieczeń platformy Azure
+summary: Dowiedz się, jak zabezpieczyć rozwiązania w chmurze na platformie Azure, korzystając z naszych najlepszych rozwiązań i wskazówek.
+metadata:
+  title: Dokumentacja dotycząca podstaw zabezpieczeń platformy Azure
+  description: Dowiedz się, jak zabezpieczyć rozwiązania w chmurze na platformie Azure.
+  services: security
+  ms.service: security
+  ms.subservice: fundamentals
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 10/28/2019
+  ms.openlocfilehash: 4744c6668de55b28725f1e1662f93030b5f61007
+  ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 10/29/2019
+  ms.locfileid: "73055915"
+landingContent:
+- title: Informacje o zabezpieczeniach platformy Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wprowadzenie do zabezpieczeń platformy Azure
+      url: overview.md
+    - text: Możliwości techniczne zabezpieczeń
+      url: technical-capabilities.md
+  - linkListType: concept
+    links:
+    - text: Jak firma Microsoft zabezpiecza infrastrukturę platformy Azure
+      url: infrastructure.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wspólna odpowiedzialność w chmurze
+      url: shared-responsibility.md
+    - text: Usługi i technologie zabezpieczeń
+      url: services-technologies.md
+    - text: Wbudowane mechanizmy zabezpieczeń
+      url: security-controls.md
+- title: Eliminowanie zagrożeń
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Security Center
+      url: ../../security-center/security-center-intro.md
+  - linkListType: concept
+    links:
+    - text: Zarządzanie i monitorowanie
+      url: management-monitoring-overview.md
+    - text: Zaawansowane wykrywanie zagrożeń
+      url: threat-detection.md
+- title: Najlepsze rozwiązania dotyczące zabezpieczania rozwiązań w chmurze
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Bezpieczeństwo sieci
+      url: network-best-practices.md
+    - text: Obciążenia IaaS
+      url: iaas.md
+    - text: Zarządzanie tożsamościami i kontrola dostępu
+      url: identity-management-best-practices.md
+    - text: Zabezpieczenia bazy danych
+      url: database-best-practices.md
+    - text: Wdrożenia PaaS
+      url: paas-deployments.md
+    - text: Bezpieczeństwo i szyfrowanie danych
+      url: data-encryption-best-practices.md
+    - text: Bezpieczeństwo działania
+      url: operational-best-practices.md
+- title: Ochrona zasobów platformy Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Szyfrowanie w spoczynku
+      url: encryption-atrest.md
+    - text: Ochrona danych
+      url: database-security-overview.md
+    - text: Bezpieczeństwo sieci
+      url: network-overview.md
+    - text: Zabezpieczenia maszyn wirtualnych
+      url: virtual-machines-overview.md
+    - text: Zabezpieczenia dotyczące zarządzania tożsamościami
+      url: identity-management-overview.md
+  - linkListType: learn
+    links:
+    - text: Zabezpieczanie aplikacji w chmurze
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps/
+- title: Rozwijanie umiejętności w zakresie zabezpieczeń
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Implementowanie zabezpieczeń sieciowych
+      url: https://docs.microsoft.com/learn/paths/implement-network-security
+    - text: Zarządzanie tożsamościami i dostępem
+      url: https://docs.microsoft.com/learn/paths/manage-identity-and-access
+    - text: Implementowanie zabezpieczeń zarządzania zasobami
+      url: https://docs.microsoft.com/learn/paths/implement-resource-mgmt-security
+    - text: Implementowanie zabezpieczeń hosta maszyny wirtualnej
+      url: https://docs.microsoft.com/learn/paths/implement-host-security

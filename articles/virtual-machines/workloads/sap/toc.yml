@@ -188,6 +188,8 @@
               href: high-availability-guide-suse-pacemaker.md
             - name: Program Pacemaker w systemie RHEL
               href: high-availability-guide-rhel-pacemaker.md
+            - name: Scenariusze wysokiej dostępności łączności publicznego punktu końcowego dla maszyn wirtualnych korzystających z usługi Azure Load Balancer w warstwie Standardowa w rozwiązaniu SAP
+              href: high-availability-guide-standard-load-balancer-outbound-connections.md
         - name: Instalacja programu SAP
           items:
             - name: System Windows z udostępnionym dyskiem na potrzeby wystąpienia (A)SCS

@@ -81,6 +81,10 @@
           items:
             - name: Tworzenie strefowo nadmiarowej bramy sieci wirtualnej
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: Tożsamość
+          items:
+            - name: Utwórz wystąpienie usługi Azure Active Directory Domain Services
+              href: ../active-directory-domain-services/tutorial-create-instance.md
 - name: Odzyskiwanie po awarii
   items:
     - name: Korzystanie z usługi Azure Site Recovery

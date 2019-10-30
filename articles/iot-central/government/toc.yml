@@ -6,14 +6,12 @@
       href: overview-iot-central-government.md
 - name: Samouczki
   items:
-    - name: Analiza w sklepie — finalizacja zakupu
-      items:
-        - name: Tworzenie aplikacji połączonego zarządzania odpadami
-          href: tutorial-connected-waste-management.md
-        - name: Tworzenie aplikacji do monitorowania zużycia wody
-          href: tutorial-water-consumption-monitoring.md
-        - name: Tworzenie aplikacji do monitorowania jakości wody
-          href: tutorial-water-quality-monitoring.md
+    - name: Tworzenie aplikacji połączonego zarządzania odpadami
+      href: tutorial-connected-waste-management.md
+    - name: Tworzenie aplikacji do monitorowania zużycia wody
+      href: tutorial-water-consumption-monitoring.md
+    - name: Tworzenie aplikacji do monitorowania jakości wody
+      href: tutorial-water-quality-monitoring.md
 - name: Pojęcia
   items:
     - name: Architektura referencyjna połączonego zarządzania odpadami
@@ -22,10 +20,10 @@
       href: concepts-waterconsumptionmonitoring-architecture.md
     - name: Architektura referencyjna monitorowania jakości wody
       href: concepts-waterqualitymonitoring-architecture.md
-    - name: Łączność
-      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
 - name: Przewodniki z instrukcjami
   items:
+    - name: Łączenie aplikacji z usługą Dynamics 365 Field Service
+      href: how-to-configure-connected-field-services.md
     - name: Łączenie urządzeń
       items:
         - name: Przygotowywanie i łączenie zestawu deweloperskiego IoT MXChip
@@ -56,8 +54,6 @@
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Tworzenie reguł niestandardowych
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
-        - name: Tworzenie niestandardowych analiz przy użyciu usługi Databricks
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Tworzenie niestandardowych analiz przy użyciu usługi Databricks
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Administracja
@@ -114,8 +110,6 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zasoby
   items:
-    - name: Dokumentacja referencyjna interfejsu API
-      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
     - name: Żądania danych klienta
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Obsługiwane przeglądarki

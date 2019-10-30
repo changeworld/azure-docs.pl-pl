@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: e60c4da08d92cce1cd5964f78e8198f6c04069ef
-  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.openlocfilehash: 0deccf53fba8d9250832f8b543b8201fcbecab64
+  ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/27/2019
-  ms.locfileid: "72965884"
+  ms.lasthandoff: 10/29/2019
+  ms.locfileid: "73042049"
 highlightedContent:
   items:
   - title: Co to jest usługa IoT Central?
@@ -23,7 +23,7 @@ highlightedContent:
     url: ./core/overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
   - title: Co to są szablony aplikacji?
     itemType: concept
-    url: ./core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./core/concepts-app-templates.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
   - title: Architektura usługi Azure IoT Central
     itemType: architecture
     url: ./core/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
@@ -86,7 +86,7 @@ productDirectory:
     links:
     - text: Tworzenie rozwiązań dla handlu detalicznego za pomocą usługi Azure IoT Central
       url: ./retail/overview-iot-central-retail-pnp.md
-    - text: Tworzenie aplikacji handlu detalicznego
+    - text: Tworzenie aplikacji do analizy w sklepie
       url: ./retail/tutorial-in-store-analytics-create-app-pnp.md
     - text: Tworzenie aplikacji inteligentnego zarządzania magazynem
       url: ./retail/tutorial-iot-central-smart-inventory-management-pnp.md
@@ -126,7 +126,7 @@ additionalContent:
   - items:
     - title: Interfejsy API usługi IoT Central
       summary: Poznaj interfejsy API usługi IoT Central.
-      url: https://docs.microsoft.com/rest/api/azure/
+      url: https://docs.microsoft.com/rest/api/iotcentral/
     - title: Usługa IoT Central na platformie Microsoft Learn
       summary: Zapoznaj się z usługą IoT Central w bezpłatnym środowisku piaskownicy.
-      url: https://aka.ms/iotcentralapimslearnjourney
+      url: https://docs.microsoft.com/learn/browse/?products=azure-iot-central
