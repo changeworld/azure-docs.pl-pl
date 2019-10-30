@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: d7a9f365c9e2b6039451375f4ad50a7ce04cdd5b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c4faa29e092c7cbb550bca1daa87ce369bf03a14
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029735"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099541"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Szybki Start: Dodawanie flag funkcji do aplikacji ASP.NET Core
 
@@ -96,7 +96,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
 
 1. Dodaj wpis tajny o nazwie **ConnectionStrings:AppConfig** do narzędzia Secret Manager.
 
-    Ten wpis tajny zawiera parametry połączenia w celu uzyskania dostępu do magazynu konfiguracji aplikacji. Zastąp wartość `<your_connection_string>` w poniższym poleceniu parametrami połączenia dla magazynu konfiguracji aplikacji.
+    Ten wpis tajny zawiera parametry połączenia w celu uzyskania dostępu do magazynu konfiguracji aplikacji. Zastąp wartość `<your_connection_string>` w następującym poleceniu parametrami połączenia dla magazynu konfiguracji aplikacji.
 
     To polecenie należy wykonać w tym samym katalogu, w którym znajduje się plik *csproj*.
 
@@ -115,6 +115,11 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
     ```
 
 1. Zaktualizuj metodę `CreateWebHostBuilder`, aby użyć konfiguracji aplikacji przez wywołanie metody `config.AddAzureAppConfiguration()`.
+    
+    > [!IMPORTANT]
+    > `CreateHostBuilder` zastępuje `CreateWebHostBuilder` w programie .NET Core 3,0.  Wybierz poprawną składnię opartą na Twoim środowisku.
+
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>Aktualizacja `CreateWebHostBuilder` dla platformy .NET Core 2. x
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -122,13 +127,25 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(options => {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .UseFeatureFlags();
-                });
+                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
             })
             .UseStartup<Startup>();
     ```
+
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>Aktualizacja `CreateHostBuilder` dla platformy .NET Core 3. x
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+        })
+        .UseStartup<Startup>());
+    ```
+
 
 1. Otwórz *Startup.cs*i Dodaj odwołania do programu .NET Core Feature Manager:
 
@@ -200,7 +217,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Otwórz *_Layout. cshtml* w *widokach*\\*udostępniony* katalog i Zastąp kod kreskowy `<nav>` w obszarze `<body>` @ no__t-6 @ no__t-7 następującym kodem:
+1. Otwórz *_Layout. cshtml* w *widokach*\\*udostępniony* katalog i Zastąp `<nav>` kod kreskowy w obszarze `<body>` > `<header>` przy użyciu następującego kodu:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -267,7 +284,7 @@ Dodaj do projektu [Narzędzie do zarządzania kluczami tajnymi](https://docs.mic
     |---|---|
     | Beta | Włączone |
 
-1. Uruchom ponownie aplikację, przełączając się z powrotem do wiersza polecenia i naciskając `Ctrl-C`, aby anulować uruchomiony proces `dotnet`, a następnie ponownie uruchomić `dotnet run`.
+1. Uruchom ponownie aplikację, przełączając się z powrotem do wiersza polecenia, a następnie naciskając `Ctrl-C`, aby anulować uruchomiony proces `dotnet`, a następnie ponownie uruchomić `dotnet run`.
 
 1. Odśwież stronę przeglądarki, aby zobaczyć nowe ustawienia konfiguracji.
 
