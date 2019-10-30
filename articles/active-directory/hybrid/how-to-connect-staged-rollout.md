@@ -10,12 +10,12 @@ ms.date: 10/28/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 254fa924ea2104e76a475c106f16f4672dd1eec1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: HT
+ms.openlocfilehash: 9c8f4250d2df7703ad2960c2d68cd015cb6ec2bc
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033318"
+ms.locfileid: "73052888"
 ---
 # <a name="cloud-authentication-staged-rollout-public-preview"></a>Uwierzytelnianie w chmurze: wdrażanie etapowe (publiczna wersja zapoznawcza)
 
@@ -80,6 +80,8 @@ Te scenariusze nie są obsługiwane w przypadku wdrażania etapowego:
 ## <a name="get-started-with-staged-rollout"></a>Wprowadzenie do wdrożenia przemieszczanego
 
 Jeśli chcesz przetestować logowanie za pomocą funkcji synchronizacji skrótów haseł (PHS) przy użyciu wdrożenia przemieszczanego, wykonaj poniższe czynności przed włączeniem wstępnego wdrożenia synchronizacji skrótów haseł.
+
+Aby uzyskać więcej informacji na temat używanych poleceń cmdlet programu PowerShell, zobacz artykuł [AzureAD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)
 
 ## <a name="pre-work-for-password-hash-sync"></a>Pre-Work dla synchronizacji skrótów haseł
 
@@ -239,3 +241,6 @@ Oto jak można śledzić logowania użytkowników, które są nadal wykonywane n
 -   **P: Czy można użyć programu PowerShell, aby wykonać etapowe wdrażanie?**
 
 -   Odp.: tak, Znajdź dokumentację, aby za pomocą programu PowerShell wykonać wdrożenie etapowe.
+
+## <a name="next-steps"></a>Następne kroki
+- [AzureAD 2,0 — wersja zapoznawcza](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
