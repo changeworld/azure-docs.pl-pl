@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 066c154c0ba3e62ac4f441e268c657dd5e991220
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 452dfcc04d9fc9048493222ad2a82a5bcc8b78f4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102124"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162870"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatyczna kopia zapasowa v2 dla Virtual Machines platformy Azure (Menedżer zasobów)
 
@@ -41,8 +41,8 @@ Aby użyć zautomatyzowanej kopii zapasowej v2, zapoznaj się z następującymi 
 
 **Wersja SQL Server/Edition**:
 
-- SQL Server 2016: Developer, Standard lub Enterprise
-- SQL Server 2017: Developer, Standard lub Enterprise
+- SQL Server 2016: developer, Standard lub Enterprise
+- SQL Server 2017: developer, Standard lub Enterprise
 
 > [!IMPORTANT]
 > Automatyczna kopia zapasowa v2 działa z SQL Server 2016 lub nowszym. Jeśli używasz SQL Server 2014, możesz użyć zautomatyzowanej kopii zapasowej V1, aby utworzyć kopię zapasową baz danych. Aby uzyskać więcej informacji, zobacz [Automatyczne tworzenie kopii zapasowych dla SQL Server 2014 Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md).
@@ -83,13 +83,13 @@ W poniższej tabeli opisano opcje, które można skonfigurować dla zautomatyzow
 ## <a name="understanding-full-backup-frequency"></a>Informacje o częstotliwości pełnej kopii zapasowej
 Ważne jest, aby zrozumieć różnicę między codziennym i tygodniowym pełnymi kopiami zapasowymi. Rozważmy poniższe dwa przykładowe scenariusze.
 
-### <a name="scenario-1-weekly-backups"></a>Scenariusz 1: Cotygodniowe kopie zapasowe
+### <a name="scenario-1-weekly-backups"></a>Scenariusz 1: cotygodniowe kopie zapasowe
 Masz SQL Server maszynę wirtualną, która zawiera wiele dużych baz danych.
 
 W poniedziałek należy włączyć automatyczne tworzenie kopii zapasowej v2 z następującymi ustawieniami:
 
-- Harmonogram tworzenia kopii zapasowych: **Ręcznie**
-- Częstotliwość pełnej kopii zapasowej: **Co tydzień**
+- Harmonogram tworzenia kopii zapasowych: **Ręczne**
+- Częstotliwość pełnej kopii zapasowej: **co tydzień**
 - Godzina rozpoczęcia pełnej kopii zapasowej: **01:00**
 - Przedział czasu pełnej kopii zapasowej: **1 godzina**
 
@@ -101,13 +101,13 @@ Po ponownym osiągnięciu wtorku, automatyczne tworzenie kopii zapasowej rozpocz
 
 Ten scenariusz pokazuje, że automatyczna kopia zapasowa działa tylko w określonym przedziale czasu, a dla każdej bazy danych kopia zapasowa jest wykonywana raz na tydzień. Wynika to również z możliwości tworzenia kopii zapasowych w wielu dniach w przypadku, gdy nie można wykonać wszystkich kopii zapasowych w jednym dniu.
 
-### <a name="scenario-2-daily-backups"></a>Scenariusz 2: Codzienne kopie zapasowe
+### <a name="scenario-2-daily-backups"></a>Scenariusz 2: codzienne kopie zapasowe
 Masz SQL Server maszynę wirtualną, która zawiera wiele dużych baz danych.
 
 W poniedziałek należy włączyć automatyczne tworzenie kopii zapasowej v2 z następującymi ustawieniami:
 
-- Harmonogram tworzenia kopii zapasowych: Ręczne
-- Częstotliwość pełnej kopii zapasowej: Codziennie
+- Harmonogram tworzenia kopii zapasowych: ręczne
+- Częstotliwość pełnej kopii zapasowej: codziennie
 - Godzina rozpoczęcia pełnej kopii zapasowej: 22:00
 - Przedział czasu pełnej kopii zapasowej: 6 godzin
 
@@ -170,7 +170,7 @@ Jeśli zainstalowano rozszerzenie agenta SQL Server IaaS, powinno ono zostać wy
 Jeśli nie jest zainstalowana lub nie można zainicjować obsługi administracyjnej, można zainstalować ją za pomocą poniższego polecenia. Oprócz nazwy maszyny wirtualnej i grupy zasobów należy również określić region ( **$region**), w którym znajduje się maszyna wirtualna.
 
 ```powershell
-$region = “EASTUS2”
+$region = "EASTUS2"
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region 
@@ -211,7 +211,7 @@ Możesz użyć programu PowerShell, aby włączyć automatyczne tworzenie kopii 
 Najpierw wybierz lub Utwórz konto magazynu dla plików kopii zapasowej. Poniższy skrypt wybiera konto magazynu lub tworzy je, jeśli nie istnieje.
 
 ```powershell
-$storage_accountname = “yourstorageaccount”
+$storage_accountname = "yourstorageaccount"
 $storage_resourcegroupname = $resourcegroupname
 
 $storage = Get-AzStorageAccount -ResourceGroupName $resourcegroupname `
@@ -276,8 +276,8 @@ Poniższy skrypt zawiera zestaw zmiennych, które można dostosować w celu wł�
 ```powershell
 $vmname = "yourvmname"
 $resourcegroupname = "vmresourcegroupname"
-$region = “Azure region name such as EASTUS2”
-$storage_accountname = “storageaccountname”
+$region = "Azure region name such as EASTUS2"
+$storage_accountname = "storageaccountname"
 $storage_resourcegroupname = $resourcegroupname
 $retentionperiod = 10
 $backupscheduletype = "Manual"
@@ -332,7 +332,7 @@ Innym rozwiązaniem jest skorzystanie z wbudowanej funkcji Poczta bazy danych na
 ## <a name="next-steps"></a>Następne kroki
 Zautomatyzowana kopia zapasowa v2 konfiguruje zarządzane kopie zapasowe na maszynach wirtualnych platformy Azure Dlatego ważne jest zapoznanie się [z dokumentacją dotyczącą zarządzanej kopii zapasowej](https://msdn.microsoft.com/library/dn449496.aspx) w celu zrozumienia zachowania i konsekwencji.
 
-Dodatkowe wskazówki dotyczące tworzenia kopii zapasowych i przywracania dla SQL Server na maszynach wirtualnych platformy Azure można znaleźć w następującym artykule: [Tworzenie kopii zapasowych i przywracanie SQL Server na platformie Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md).
+Dodatkowe wskazówki dotyczące tworzenia kopii zapasowych i przywracania dla SQL Server na maszynach wirtualnych platformy Azure można znaleźć w następującym artykule: [Tworzenie kopii zapasowych i przywracanie SQL Server na platformie azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md).
 
 Aby uzyskać informacje o innych dostępnych zadaniach automatyzacji, zobacz [SQL Server rozszerzenia agenta IaaS](virtual-machines-windows-sql-server-agent-extension.md).
 

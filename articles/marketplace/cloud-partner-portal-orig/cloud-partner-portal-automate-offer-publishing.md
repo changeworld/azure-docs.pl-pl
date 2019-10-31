@@ -1,33 +1,33 @@
 ---
-title: Automatyzowanie publikowanie oferty | Portal Azure Marketplace
-description: Wyjaśnia, jak programowo zautomatyzowany przepływ pracy publikowania maszyny wirtualnej.
+title: Automatyzuj publikowanie ofert | Portal Azure Marketplace
+description: Wyjaśnia, jak programowo zautomatyzować przepływ pracy publikowania maszyn wirtualnych.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 0a927c72a82c6aa3c79988c599ea8b840821a2b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50b785ed9456b0b112dea01a219e988b81094571
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935899"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154639"
 ---
-<a name="automate-offer-publishing"></a>Automatyzowanie publikowanie oferty
+<a name="automate-offer-publishing"></a>Automatyzuj publikowanie ofert
 =========================
 
-Można także programowo zautomatyzować maszyny Wirtualnej, opublikowanie przepływu pracy, przy użyciu interfejsów API w [dokumentacja interfejsu API](./cloud-partner-portal-api-overview.md) sekcji. Istnieją dwa różne scenariusze brane pod uwagę podczas planowania usługi automation: oferują publikowanie początkowej i kolejnych oferty publikowania.
+Można również programowo zautomatyzować przepływ pracy publikowania maszyn wirtualnych przy użyciu interfejsów API w sekcji [Dokumentacja interfejsu API](./cloud-partner-portal-api-overview.md) . Istnieją dwa różne scenariusze, które należy wziąć pod uwagę podczas planowania automatyzacji: oferowanie publikowania początkowego i późniejszej publikacji oferty.
 
 
-<a name="offer-initial-publishing"></a>Początkowa publikowanie oferty
+<a name="offer-initial-publishing"></a>Oferuj publikację początkową
 -------------------------
 
-Po opublikowaniu oferty po raz pierwszy wymaga kilku dodatkowych czynności przed przekazaniem do usługi w portalu marketplace.  Na przykład należy przygotować metadanych i utworzona wersja robocza oferty. Początkowy przepływ pracy dotyczący publikowania przedstawiono na poniższym diagramie.
+Po opublikowaniu oferty po raz pierwszy wymagane jest wykonanie kilku dodatkowych czynności przed przekazaniem ich do portalu Marketplace.  Na przykład należy przygotować metadane i utworzyć wersję roboczą oferty. Początkowy przepływ pracy publikowania jest pokazywany na poniższym diagramie.
 
-![Interakcje początkową oferują publikacji](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
+![Interakcje publikacji początkowej oferty](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
 
-Następujący przykładowy kod przedstawia te kroki.
+Poniższy przykładowy kod demonstruje te kroki.
 
 ``` csharp
   CreateOfferAndPublish()
@@ -55,7 +55,7 @@ Następujący przykładowy kod przedstawia te kroki.
   ValidateAndGoLive()    
   {
       // Confirm the version in preview slot is the version that needs to go live
-      offer = CloudPartnerPortal.Client.GetOffer(offerName, “Preview”);
+      offer = CloudPartnerPortal.Client.GetOffer(offerName, "Preview");
       if(!offer[skuName].containsVersion(VMDisk.Version))
       {
           UpdateOfferAndPublish()
@@ -74,12 +74,12 @@ Następujący przykładowy kod przedstawia te kroki.
 ```
 
 
-<a name="subsequent-offer-publishing"></a>Publikowanie oferty kolejnych
+<a name="subsequent-offer-publishing"></a>Kolejna publikacja oferty
 ---------------------------
 
-Po zintegrowaniu oferty maszyny wirtualnej (VM) do potoku ciągłej integracji, możesz zautomatyzować publikowanie przepływu pracy do uruchamiania za każdym razem, gdy jest tworzony nowy wirtualny dysk twardy (VHD).  Poniższy diagram oraz przykładowy kod przedstawia ten przepływ pracy.
+Po zintegrowaniu oferty maszyny wirtualnej z potokiem ciągłej integracji można zautomatyzować przepływ pracy publikowania do uruchamiania za każdym razem, gdy tworzony jest nowy wirtualny dysk twardy (VHD).  Ten przepływ pracy jest zilustrowany na poniższym diagramie i przykładowym kodzie.
 
-![Kolejne interakcje oferują publikacji](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
+![Interakcje kolejnych publikacji oferty](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
 
 ``` csharp
     UpdateOfferAndPublish()
@@ -127,7 +127,7 @@ Po zintegrowaniu oferty maszyny wirtualnej (VM) do potoku ciągłej integracji, 
     ValidateAndGoLive()
     {
         // Confirm the version in preview slot is the version that needs to go live
-        offer = CloudPartnerPortal.Client.GetOffer(offerName, “Preview”);
+        offer = CloudPartnerPortal.Client.GetOffer(offerName, "Preview");
         if(!offer[skuName].containsVersion(VMDisk.Version))
         {
             UpdateOfferAndPublish()

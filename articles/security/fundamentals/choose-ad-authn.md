@@ -4,17 +4,17 @@ description: Ten przewodnik pomaga CEOs, dyrektorzy działu informatyki, CISOs, 
 keywords: ''
 author: martincoetzer
 ms.author: martinco
-ms.date: 04/12/2018
+ms.date: 10/30/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 524e923f005e2631e42f1d6b89b13cafdd646c2a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529393"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159710"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz właściwą metodę uwierzytelniania dla Azure Active Directory rozwiązanie do tworzenia tożsamości hybrydowej 
 
@@ -69,7 +69,7 @@ Szczegółowe informacje na temat decyzji:
 
 1. Usługa Azure AD może obsłużyć logowanie do użytkowników bez polegania na składnikach lokalnych do weryfikowania haseł.
 2. Usługa Azure AD może wycofać Logowanie użytkownika do zaufanego dostawcy uwierzytelniania, takiego jak AD FS firmy Microsoft.
-3. Jeśli zachodzi potrzeba zastosowania zasad zabezpieczeń Active Directory na poziomie użytkownika, takich jak konto wygasłe, wyłączone konto, wygasłe hasło, konto zablokowane i logowanie przy każdym logowaniu użytkownika, usługa Azure AD wymaga pewnych składników lokalnych.
+3. W przypadku konieczności zastosowania zasad zabezpieczeń Active Directory na poziomie użytkownika, takich jak konto wygasłe, wyłączone konto, wygasłe hasło, konto zablokowane i logowanie przy każdym logowaniu użytkownika, usługa Azure AD wymaga pewnych składników lokalnych.
 4. Funkcje logowania, które nie są natywnie obsługiwane przez usługę Azure AD:
    * Zaloguj się przy użyciu kart inteligentnych lub certyfikatów.
    * Zaloguj się przy użyciu lokalnego serwera usługi MFA.
@@ -88,7 +88,7 @@ Szczegółowe informacje na temat decyzji:
 
 * **Środowisko użytkownika**. Aby ulepszyć środowisko logowania użytkowników, wdróż bezproblemową rejestrację jednokrotną przy użyciu synchronizacji skrótów haseł. Bezproblemowe logowanie jednokrotne eliminuje zbędne monity, gdy użytkownicy są zalogowani.
 
-* **Scenariusze zaawansowane**. Jeśli organizacja zdecyduje się na to, można używać szczegółowych informacji z tożsamości z raportami Azure AD Identity Protection z Azure AD — wersja Premium P2. Przykładem jest raport o przeciekach poświadczeń. Funkcja Windows Hello dla firm ma [określone wymagania w przypadku używania synchronizacji skrótów haseł](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) Wymagaj synchronizacji skrótów haseł w celu aprowizacji użytkowników przy użyciu poświadczeń firmowych w domenie zarządzanej.
+* **Scenariusze zaawansowane**. Jeśli organizacja zdecyduje się na to, można używać szczegółowych informacji z tożsamości z raportami Azure AD Identity Protection z Azure AD — wersja Premium P2. Przykładem jest raport o przeciekach poświadczeń. Funkcja Windows Hello dla firm ma [określone wymagania w przypadku używania synchronizacji skrótów haseł](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) wymaga synchronizacji skrótów haseł w celu aprowizacji użytkowników przy użyciu poświadczeń firmowych w domenie zarządzanej.
 
     Organizacje, które wymagają uwierzytelniania wieloskładnikowego z synchronizacją skrótów haseł, muszą korzystać z uwierzytelniania wieloskładnikowego usługi Azure AD lub [niestandardowych formantów dostępu warunkowego](../../active-directory/conditional-access/controls.md#custom-controls-preview). Organizacje te nie mogą korzystać z metod uwierzytelniania wieloskładnikowego innych firm ani lokalnych, które opierają się na Federacji.
 
@@ -120,7 +120,7 @@ Zapoznaj się z artykułem [implementowanie synchronizacji skrótów haseł](../
 
     Oprócz uwierzytelniania przekazywanego istnieje inna korzyść w zakresie wdrażania synchronizacji skrótów haseł. Działa jako metoda uwierzytelniania kopii zapasowej, gdy podstawowa metoda uwierzytelniania nie jest już dostępna.
 
-* **Zagadnienia**. Możesz użyć synchronizacji skrótów haseł jako metody uwierzytelniania za pomocą kopii zapasowej na potrzeby uwierzytelniania przekazywanego, gdy agenci nie mogą zweryfikować poświadczeń użytkownika z powodu znacznego błędu lokalnego. Przełączenie w tryb failover do synchronizacji skrótów haseł nie odbywa się automatycznie i należy użyć Azure AD Connect do ręcznego przełączania metody logowania. 
+* **Zagadnienia**. Możesz użyć synchronizacji skrótów haseł jako metody uwierzytelniania za pomocą kopii zapasowej na potrzeby uwierzytelniania przekazywanego, gdy agenci nie mogą zweryfikować poświadczeń użytkownika z powodu znacznego błędu lokalnego. Przełączenie w tryb failover w celu synchronizacji skrótów haseł nie odbywa się automatycznie i należy użyć Azure AD Connect do ręcznego przełączania metody logowania. 
 
     Aby poznać inne zagadnienia dotyczące uwierzytelniania przekazywanego, w tym alternatywnej obsługi identyfikatorów, zobacz [często zadawane pytania](../../active-directory/hybrid/how-to-connect-pta-faq.md).
 
@@ -178,7 +178,7 @@ Na poniższym diagramie przedstawiono składniki architektury wysokiego poziomu 
 |Czy istnieje wymagania dotyczące certyfikatu SSL?|Nie|Nie|Tak|
 |Czy istnieje rozwiązanie do monitorowania kondycji?|Niewymagane|Stan agenta udostępniany przez [Centrum administracyjne Azure Active Directory](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |Czy użytkownicy uzyskują Logowanie jednokrotne do zasobów w chmurze z urządzeń przyłączonych do domeny w sieci firmowej?|Tak, aby [bezproblemowe logowanie jednokrotne](../../active-directory/hybrid/how-to-connect-sso.md)|Tak, aby [bezproblemowe logowanie jednokrotne](../../active-directory/hybrid/how-to-connect-sso.md)|Tak|
-|Jakie typy logowania są obsługiwane?|UserPrincipalName + hasło<br><br>Zintegrowane uwierzytelnianie systemu Windows za pomocą [bezproblemowego logowania jednokrotnego](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternatywny identyfikator logowania](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + hasło<br><br>Zintegrowane uwierzytelnianie systemu Windows za pomocą [bezproblemowego logowania jednokrotnego](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternatywny identyfikator logowania](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + hasło<br><br>sAMAccountName + hasło<br><br>Zintegrowane uwierzytelnianie systemu Windows<br><br>[Certyfikat i uwierzytelnianie karty inteligentnej](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternatywny identyfikator logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|Jakie typy logowania są obsługiwane?|UserPrincipalName + hasło<br><br>Uwierzytelnianie zintegrowane z systemem Windows za pomocą [bezproblemowego logowania jednokrotnego](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternatywny identyfikator logowania](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + hasło<br><br>Uwierzytelnianie zintegrowane z systemem Windows za pomocą [bezproblemowego logowania jednokrotnego](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[Alternatywny identyfikator logowania](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + hasło<br><br>sAMAccountName + hasło<br><br>Uwierzytelnianie zintegrowane systemu Windows<br><br>[Certyfikat i uwierzytelnianie karty inteligentnej](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternatywny identyfikator logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Czy funkcja Windows Hello dla firm jest obsługiwana?|[Model zaufania kluczy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Model zaufania kluczy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Wymaga poziomu funkcjonalności domeny systemu Windows Server 2016*|[Model zaufania kluczy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model zaufania certyfikatów](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Jakie są opcje uwierzytelniania wieloskładnikowego?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Formanty niestandardowe z dostępem warunkowym *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Formanty niestandardowe z dostępem warunkowym *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Serwer usługi Azure MFA](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Uwierzytelnianie wieloskładnikowe innej firmy](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Formanty niestandardowe z dostępem warunkowym *](../../active-directory/conditional-access/controls.md)|
 |Jakie Stany kont użytkowników są obsługiwane?|Wyłączone konta<br>(opóźnienie do 30 minut)|Wyłączone konta<br><br>Konto zablokowane<br><br>Konto wygasło<br><br>Hasło wygasło<br><br>Godziny logowania|Wyłączone konta<br><br>Konto zablokowane<br><br>Konto wygasło<br><br>Hasło wygasło<br><br>Godziny logowania|
@@ -203,11 +203,9 @@ Użyj lub Włącz synchronizację skrótów haseł dla wybranej metody uwierzyte
 
    * Organizacje, które wcześniej włączyły synchronizację skrótów haseł, zmieniły metodę uwierzytelniania tak, aby używały synchronizacji skrótów haseł. Są one z powrotem w trybie online w ciągu kilku godzin. Dzięki dostępowi do poczty e-mail za pośrednictwem pakietu Office 365 działały one w celu rozwiązywania problemów i uzyskiwania dostępu do innych obciążeń opartych na chmurze.
 
-   * Organizacje, które wcześniej nie włączyły synchronizacji skrótów haseł, musiały korzystać z niezaufanych zewnętrznych systemów poczty e-mail, aby umożliwić komunikację w celu rozwiązywania problemów. W takich przypadkach trwają one tygodnie do przywrócenia lokalnej infrastruktury tożsamości, zanim użytkownicy będą mogli ponownie zalogować się do aplikacji opartych na chmurze.
+   * Organizacje, które wcześniej nie włączyły synchronizacji skrótów haseł, musiały korzystać z niezaufanych zewnętrznych systemów poczty e-mail, aby umożliwić komunikację w celu rozwiązywania problemów. W takich przypadkach przeprowadzono te tygodnie do przywrócenia lokalnej infrastruktury tożsamości, zanim użytkownicy będą mogli ponownie zalogować się do aplikacji opartych na chmurze.
 
 3. **Ochrona tożsamości**. Jednym z najlepszych sposobów ochrony użytkowników w chmurze jest Azure AD Identity Protection z Azure AD — wersja Premium P2. Firma Microsoft nieustannie skanuje Internet pod kątem list użytkowników i haseł, które są niewłaściwymi aktorami sprzedawanymi i udostępnianymi w ciemnej sieci Web. Usługa Azure AD może korzystać z tych informacji w celu sprawdzenia, czy dowolna z nazw użytkowników i haseł w organizacji zostanie naruszona. Ma to na celu włączenie synchronizacji skrótów haseł niezależnie od używanej metody uwierzytelniania, niezależnie od tego, czy jest to uwierzytelnianie federacyjne, czy przekazywane. Ujawnione poświadczenia są prezentowane jako raport. Te informacje służą do blokowania lub wymuszania zmiany haseł przez użytkowników podczas próby zalogowania się przy użyciu nieujawnionych haseł.
-
-Na koniec, zgodnie z firmą [Gartner](https://info.microsoft.com/landingIAMGartnerreportregistration.html), firma Microsoft ma najbardziej pełen zestaw funkcji zarządzania tożsamościami i dostępem. Firma Microsoft obsługuje [450 000 000 000 żądań uwierzytelniania](https://www.microsoft.com/en-us/security/intelligence-report) co miesiąc, aby zapewnić dostęp do tysięcy aplikacji SaaS, takich jak pakiet Office 365 z praktycznie dowolnego urządzenia. 
 
 ## <a name="conclusion"></a>Podsumowanie
 
@@ -221,4 +219,4 @@ W dzisiejszym świecie zagrożenia są obecne przez 24 godziny dziennie i pochod
 
 [Rozpocznij pracę](../../active-directory/fundamentals/get-started-azure-ad.md) z usługą Azure AD i Wdróż odpowiednie rozwiązanie uwierzytelniania dla swojej organizacji.
 
-Jeśli myślisz o migracji z Federacji do uwierzytelniania w chmurze, Dowiedz się więcej [na temat zmiany metody logowania](../../active-directory/hybrid/plan-connect-user-signin.md). Aby ułatwić planowanie i implementowanie migracji, należy użyć [tych planów wdrażania projektu](https://aka.ms/deploymentplans).
+Jeśli myślisz o migracji z Federacji do uwierzytelniania w chmurze, Dowiedz się więcej [na temat zmiany metody logowania](../../active-directory/hybrid/plan-connect-user-signin.md). Aby ułatwić planowanie i implementowanie migracji, należy użyć [tych planów wdrażania projektu](https://aka.ms/deploymentplans) lub rozważyć użycie nowej funkcji wdrożenia [etapowego](../../active-directory/hybrid/how-to-connect-staged-rollout.md) w celu przeprowadzenia migracji użytkowników federacyjnych do korzystania z uwierzytelniania w chmurze w podejściu przygotowanym.

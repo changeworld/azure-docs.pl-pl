@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0e6a234e8b69eb48f00687916d4a7b48d3ba1040
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: af1a0db397510014301a58aea7238b695a6c0740
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301187"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146446"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Skalowanie w poziomie usług Azure Analysis Services
 
@@ -138,7 +138,7 @@ Na stronie Przegląd serwera istnieją dwie nazwy serwerów. Jeśli nie skonfigu
 
 W przypadku połączeń klienckich użytkowników końcowych, takich jak Power BI Desktop, Excel i aplikacje niestandardowe, użyj **nazwy serwera**. 
 
-W przypadku programu SSMS, SSDT i parametrów połączenia w programie PowerShell, aplikacji funkcji platformy Azure i biblioteki AMO Użyj **nazwy serwera zarządzania**. Nazwa serwera zarządzania zawiera specjalny kwalifikator `:rw` (do odczytu i zapisu). Wszystkie operacje przetwarzania są wykonywane na podstawowym serwerze zarządzania.
+W przypadku programów SSMS, Visual Studio i parametrów połączenia w programie PowerShell, aplikacji funkcji platformy Azure i biblioteki AMO Użyj **nazwy serwera zarządzania**. Nazwa serwera zarządzania zawiera specjalny kwalifikator `:rw` (do odczytu i zapisu). Wszystkie operacje przetwarzania są wykonywane na podstawowym serwerze zarządzania.
 
 ![Nazwy serwerów](media/analysis-services-scale-out/aas-scale-out-name.png)
 

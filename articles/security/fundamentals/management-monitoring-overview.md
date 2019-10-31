@@ -13,29 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9ed2d00d6f229d958e0df024c70381051840548c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727003"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162747"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Omówienie zarządzania i monitorowania zabezpieczeń platformy Azure
 Ten artykuł zawiera omówienie funkcji zabezpieczeń i usług oferowanych przez platformę Azure w celu ułatwienia zarządzania i monitorowania usług Azure Cloud Services i Virtual Machines.
-
-## <a name="shared-responsibility"></a>Wspólna odpowiedzialność
-
-Bezpieczeństwo usług w chmurze firmy Microsoft to partnerstwo i współdzielona odpowiedzialność między ty i firmą Microsoft. Firma Microsoft jest odpowiedzialna za platformę Azure i fizyczne zabezpieczenia swoich centrów danych (przy użyciu ochrony zabezpieczeń, takich jak zamknięte drzwi wejścia, horyzonty i osłony). Platforma Azure zapewnia silne zabezpieczenia w chmurze w warstwie oprogramowania, która spełnia wymagania klientów w zakresie zabezpieczeń, ochrony prywatności i zgodności.
-
-Dysponujesz swoimi danymi i tożsamościami, ponosisz odpowiedzialność za ochronę ich, bezpieczeństwo zasobów lokalnych oraz bezpieczeństwo składników w chmurze, w których masz kontrolę. Firma Microsoft zapewnia kontrolę zabezpieczeń i możliwości, które ułatwiają ochronę danych i aplikacji. Stopień odpowiedzialności za bezpieczeństwo jest oparty na typie usługi w chmurze.
-
-Poniższy wykres podsumowuje saldo odpowiedzialności między firmą Microsoft a klientem.
-
-![Wspólna odpowiedzialność](./media/management-monitoring-overview/shared-responsibility.png)
-
-Aby uzyskać więcej informacji na temat zarządzania zabezpieczeniami, zobacz [Zarządzanie zabezpieczeniami na platformie Azure](management.md).
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
@@ -52,7 +40,7 @@ Na platformie Azure możesz używać oprogramowania chroniącego przed złośliw
 
 Program Microsoft chroniący przed złośliwym kodem dla platformy Azure Cloud Services i Virtual Machines oferuje możliwość instalacji agenta ochrony przed złośliwym kodem dla ról PaaS i maszyn wirtualnych. W oparciu o program System Center Endpoint Protection ta funkcja zapewnia sprawdzoną lokalną technologię zabezpieczeń w chmurze.
 
-Oferujemy także ścisłą integrację ze szczegółowymi produktami trendu [i](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) na platformie Azure. Głębokie zabezpieczenia to rozwiązanie antywirusowe, a SecureCloud to rozwiązanie do szyfrowania. Głębokie zabezpieczenia są wdrażane w maszynach wirtualnych za pośrednictwem modelu rozszerzeń. Za pomocą interfejsu użytkownika Azure Portal i programu PowerShell można wybrać opcję użycia głębokiego zabezpieczenia w nowych maszynach wirtualnych, które są już wdrożone, lub istniejących maszyn wirtualnych, które wcześniej są wdrażane.
+Oferujemy [także ścisłą](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) integrację ze szczegółowymi produktami trendu i [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) na platformie Azure. Głębokie zabezpieczenia to rozwiązanie antywirusowe, a SecureCloud to rozwiązanie do szyfrowania. Głębokie zabezpieczenia są wdrażane w maszynach wirtualnych za pośrednictwem modelu rozszerzeń. Za pomocą interfejsu użytkownika Azure Portal i programu PowerShell można wybrać opcję użycia głębokiego zabezpieczenia w nowych maszynach wirtualnych, które są już wdrożone, lub istniejących maszyn wirtualnych, które wcześniej są wdrażane.
 
 Program Symantec Endpoint Protection (SEP) jest również obsługiwany na platformie Azure. Za pomocą integracji portalu można określić, że ma być używany SEP na maszynie wirtualnej. Polecenie SEP można zainstalować na nowej maszynie wirtualnej za pośrednictwem Azure Portal lub można ją zainstalować na istniejącej maszynie wirtualnej za pomocą programu PowerShell.
 
@@ -66,15 +54,15 @@ Dowiedz się więcej:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Uwierzytelnianie wieloskładnikowe systemu Azure to metoda uwierzytelniania, która wymaga użycia więcej niż jednej metody weryfikacji. Powoduje to dodanie krytycznej drugiej warstwy zabezpieczeń do logowania i transakcji użytkownika.
+Azure Multi-Factor Authentication to metoda uwierzytelniania, która wymaga użycia więcej niż jednej metody weryfikacji. Powoduje to dodanie krytycznej drugiej warstwy zabezpieczeń do logowania i transakcji użytkownika.
 
-Usługa uwierzytelnianie wieloskładnikowe pomaga w zabezpieczeniu dostępu do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostego procesu logowania. Zapewnia silne uwierzytelnianie za pomocą zakresu opcji weryfikacji (połączenie telefoniczne, wiadomość tekstowa lub powiadomienie lub kod weryfikacyjny aplikacji mobilnej) oraz tokenów OATH innych firm.
+Multi-Factor Authentication pomaga chronić dostęp do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostego procesu logowania. Zapewnia silne uwierzytelnianie za pomocą zakresu opcji weryfikacji (połączenie telefoniczne, wiadomość tekstowa lub powiadomienie lub kod weryfikacyjny aplikacji mobilnej) oraz tokenów OATH innych firm.
 
 Dowiedz się więcej:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Co to jest usługa Multi-Factor Authentication platformy Azure?](/azure/active-directory/authentication/multi-factor-authentication)
-* [Jak działa usługa Azure MFA Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Jak działa usługa Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 
@@ -112,7 +100,7 @@ Dowiedz się więcej:
 * [Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Wprowadzenie do Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md)
 
-## <a name="identity-protection"></a>Identity Protection
+## <a name="identity-protection"></a>Ochrona tożsamości
 
 Azure AD Identity Protection zapewnia skonsolidowany widok podejrzanych działań związanych z logowaniem i potencjalnych luk w zabezpieczeniach firmy. Ochrona tożsamości wykrywa podejrzane działania dla użytkowników i tożsamości uprzywilejowanych (administratorów) na podstawie sygnałów takich jak:
 
@@ -125,9 +113,9 @@ Dostarczając powiadomienia i zalecaną korektę, Ochrona tożsamości pomaga w 
 Dowiedz się więcej:
 
 * [Ochrona tożsamości w usłudze Azure Active Directory](/azure/active-directory/active-directory-identityprotection)
-* [Kanał 9: Usługa Azure AD i tożsamość show: Wersja zapoznawcza programu Identity Protection](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Channel 9: usługa Azure AD i tożsamość show: wersja zapoznawcza usługi Identity Protection](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-## <a name="security-center"></a>Centrum zabezpieczeń
+## <a name="security-center"></a>Security Center
 
 Azure Security Center pomaga zapobiegać zagrożeniom, wykrywać je i reagować na nie. Security Center zapewnia większą widoczność i kontrolę nad bezpieczeństwem zasobów platformy Azure. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami w ramach subskrypcji platformy Azure. Pomaga wykrywać zagrożenia, które w przeciwnym razie mogą być niezauważalne i działać z szerokim ekosystemem rozwiązań zabezpieczających.
 
@@ -150,3 +138,7 @@ Intelligent Security Graph zapewnia ochronę przed zagrożeniami w czasie rzeczy
 
 * [Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
 
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z [udostępnionym modelem odpowiedzialności](shared-responsibility.md) , które zadania zabezpieczeń są obsługiwane przez firmę Microsoft i które zadania są obsługiwane przez użytkownika.
+
+Aby uzyskać więcej informacji na temat zarządzania zabezpieczeniami, zobacz [Zarządzanie zabezpieczeniami na platformie Azure](management.md).

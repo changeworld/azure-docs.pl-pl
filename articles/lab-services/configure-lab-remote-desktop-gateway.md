@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie laboratorium, aby użyć bramy usług pulpitu zdalnego w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować laboratorium Azure DevTest Labs przy użyciu bramy usług pulpitu zdalnego w celu zapewnienia bezpiecznego dostępu do laboratorium, maszyny wirtualne bez konieczności udostępniania portów protokołu RDP.
+title: Skonfiguruj laboratorium do używania bramy Pulpit zdalny w Azure DevTest Labs | Microsoft Docs
+description: Dowiedz się, jak skonfigurować laboratorium w Azure DevTest Labs przy użyciu bramy usług pulpitu zdalnego w celu zapewnienia bezpiecznego dostępu do maszyn wirtualnych laboratorium bez konieczności ujawniania portu RDP.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,105 +12,105 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 430734878c01d10a4e7dd385dc75d8d502a2d82c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0f879a6389c7a77708e8041dd8b82dc3785679fa
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079004"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162637"
 ---
-# <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurowanie środowiska laboratoryjnego w usłudze Azure DevTest Labs, aby użyć bramy usług pulpitu zdalnego
-W usłudze Azure DevTest Labs można skonfigurować bramy usług pulpitu zdalnego dla swojego laboratorium zapewnić bezpieczny dostęp do maszyn wirtualnych laboratorium (VM) bez konieczności udostępniania portów protokołu RDP. Laboratorium udostępnia centralne miejsce dla użytkowników do wyświetlania i nawiązać połączenie z wszystkich maszyn wirtualnych, które mają dostęp do laboratorium. **Connect** znajdujący się na **maszyny wirtualnej** strony tworzy plik RDP specyficzny dla komputera, który można otworzyć, aby połączyć się z komputerem. Dodatkowo można dostosować i bezpieczne połączenie RDP, łącząc swoje laboratorium w bramie usług pulpitu zdalnego. 
+# <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurowanie laboratorium w Azure DevTest Labs, aby można było korzystać z bramy usług pulpitu zdalnego
+W Azure DevTest Labs można skonfigurować bramę usług pulpitu zdalnego dla laboratorium, aby zapewnić bezpieczny dostęp do maszyn wirtualnych laboratorium (VM) bez konieczności ujawniania portu RDP. Laboratorium to centralne miejsce, w którym użytkownicy laboratorium mogą wyświetlać i łączyć się ze wszystkimi maszynami wirtualnymi, do których mają dostęp. Przycisk **Połącz** na stronie **maszyny wirtualnej** tworzy plik RDP specyficzny dla komputera, który można otworzyć w celu nawiązania połączenia z maszyną. Możesz bardziej dostosować i zabezpieczyć połączenie RDP, łącząc laboratorium z bramą usług pulpitu zdalnego. 
 
-To podejście jest bardziej bezpieczne, ponieważ użytkownik laboratorium uwierzytelnia się bezpośrednio na maszynie bramy, lub można użyć poświadczeń firmowych na komputerze przyłączonym do domeny bramy, aby nawiązać połączenie ich maszyn. Laboratorium obsługuje również przy użyciu tokenu uwierzytelniania na maszynie bramy, która umożliwia użytkownikom nawiązywanie połączenia z ich maszyn wirtualnych laboratorium bez portu RDP, połączenie z Internetem. W tym artykule przedstawiono przykład, w jaki sposób skonfigurować konfigurację laboratorium, które używa uwierzytelniania tokenu, połączyć się z maszyn w laboratorium.
+Ta metoda jest bezpieczniejsza, ponieważ użytkownik laboratorium uwierzytelnia się bezpośrednio na maszynie bramy lub może używać poświadczeń firmowych na komputerze bramy przyłączonym do domeny, aby połączyć się z ich maszynami. Laboratorium obsługuje również uwierzytelnianie tokenu na maszynie bramy, która umożliwia użytkownikom łączenie się z maszynami wirtualnymi w laboratorium bez konieczności podawania portu RDP Internetu. W tym artykule przedstawiono przykład sposobu konfigurowania laboratorium, które używa uwierzytelniania tokenu do łączenia się z maszynami laboratorium.
 
 ## <a name="architecture-of-the-solution"></a>Architektura rozwiązania
 
 ![Architektura rozwiązania](./media/configure-lab-remote-desktop-gateway/architecture.png)
 
-1. [Zawartość pliku RDP Pobierz](/rest/api/dtl/virtualmachines/getrdpfilecontents) akcji jest wywoływana, gdy wybierzesz **Connect** button.1. 
-1. Akcja zawartość pliku RDP Pobierz wywołuje `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` do wysłania żądania tokenu uwierzytelniania.
-    1. `{gateway-hostname}` jest nazwą hosta bramy, określone w **ustawienia Lab** strony dla laboratorium w witrynie Azure portal. 
-    1. `{lab-machine-name}` jest nazwą komputera, do którego próbujesz się połączyć.
-    1. `{port-number}` jest to port, na którym połączenie musi zapewnić. Port ten jest zazwyczaj 3389. Jeśli laboratorium korzysta z maszyny Wirtualnej [udostępnione IP](devtest-lab-shared-ip.md) funkcji w usłudze DevTest Labs, port będzie różna.
-1. Brama usług pulpitu zdalnego odracza wywołanie funkcji z `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` funkcji platformy Azure w celu wygenerowania tokenu uwierzytelniania. Usługa DevTest Labs automatycznie zawiera klucz funkcji w nagłówku żądania. Klucz funkcji jest do zapisania w usłudze key vault w laboratorium. Nazwa tego wpisu tajnego mają być wyświetlane jako **klucz tajny tokenu bramy** na **ustawienia Lab** strony dla laboratorium.
-1. Oczekiwano funkcji platformy Azure do zwracania tokenu dla tokenu uwierzytelniania certyfikatów na maszynie bramy.  
-1. Plik RDP, Pobierz zawartość akcji, a następnie zwraca pełne pliku RDP, w tym informacje o uwierzytelnianiu.
-1. Możesz otworzyć plik RDP, za pomocą preferowanego programu połączenie RDP. Należy pamiętać, że nie wszystkie programy połączenia RDP obsługuje uwierzytelnianie przy użyciu tokenów. Token uwierzytelniania mają datę wygaśnięcia, ustawiane przez aplikację funkcji. Nawiązywanie połączenia maszynę Wirtualną laboratorium, przed wygaśnięciem tokenu.
-1. Gdy na maszynie bramy usług pulpitu zdalnego uwierzytelnia token w pliku RDP, połączenie jest przekazywany do komputera laboratorium.
+1. Akcja [Pobierz zawartość pliku RDP](/rest/api/dtl/virtualmachines/getrdpfilecontents) jest wywoływana po wybraniu przycisku **Połącz** . 1. 
+1. Akcja Pobierz zawartość pliku RDP wywołuje `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`, aby zażądać tokenu uwierzytelniania.
+    1. `{gateway-hostname}` to nazwa hosta bramy określona na stronie **ustawień laboratorium** dla laboratorium w Azure Portal. 
+    1. `{lab-machine-name}` to nazwa komputera, na którym próbujesz nawiązać połączenie.
+    1. `{port-number}` to port, na którym należy nawiązać połączenie. Zazwyczaj ten port to 3389. Jeśli maszyna wirtualna laboratorium używa [udostępnionej funkcji IP](devtest-lab-shared-ip.md) w DevTest Labs, port będzie się różnić.
+1. Brama usług pulpitu zdalnego odkłada wywołania z `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` do funkcji platformy Azure w celu wygenerowania tokenu uwierzytelniania. Usługa DevTest Labs automatycznie uwzględnia klucz funkcji w nagłówku żądania. Klucz funkcji należy zapisać w magazynie kluczy laboratorium. Nazwa wpisu tajnego, który ma być pokazywany jako **wpis tajny tokenu bramy** na stronie **ustawień laboratorium** dla laboratorium.
+1. Funkcja platformy Azure powinna zwrócić token uwierzytelniania tokenów opartych na certyfikatach na maszynę bramy.  
+1. Akcja Pobierz zawartość pliku RDP zwraca pełny plik RDP, w tym informacje o uwierzytelnianiu.
+1. Plik RDP jest otwierany przy użyciu preferowanego programu połączenia RDP. Należy pamiętać, że nie wszystkie programy połączeń RDP obsługują uwierzytelnianie tokenu. Token uwierzytelniania ma datę wygaśnięcia ustawioną przez aplikację funkcji. Nawiązać połączenie z maszyną wirtualną laboratorium przed wygaśnięciem tokenu.
+1. Gdy komputer bramy usług pulpitu zdalnego uwierzytelnia token w pliku RDP, połączenie zostanie przekazane do maszyny laboratoryjnej.
 
-### <a name="solution-requirements"></a>Wymagania rozwiązania
-Aby pracować z funkcją uwierzytelniania tokenu usługi DevTest Labs, istnieje kilka wymagań konfiguracji dla maszyny bramy, usług nazw domen (DNS) i funkcji.
+### <a name="solution-requirements"></a>Wymagania dotyczące rozwiązania
+Aby można było korzystać z funkcji uwierzytelniania tokenów DevTest Labs, istnieją pewne wymagania dotyczące konfiguracji dla maszyn bramy, usług nazw domen (DNS) i funkcji.
 
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>Wymagania dotyczące maszyn bramy usług pulpitu zdalnego
-- Certyfikat SSL należy zainstalować na maszynie bramy do obsługi ruchu HTTPS. Certyfikat musi odpowiadać w pełni kwalifikowana nazwa domeny (FQDN) modułu równoważenia obciążenia kolektywu serwerów bramy lub nazwę FQDN samą maszynę, jeśli istnieje tylko jedna maszyna. Certyfikaty SSL z symbolami wieloznacznymi nie działają.  
-- Certyfikat podpisywania zainstalowanym maszyny bramy. Tworzenie certyfikatu podpisywania przy użyciu [SigningCertificate.ps1 Utwórz](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) skryptu.
-- Zainstaluj [uwierzytelniania łączonego](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) moduł, który obsługuje uwierzytelnianie przy użyciu tokenów dla bramy usług pulpitu zdalnego. Przykładem takich modułów jest `RDGatewayFedAuth.msi` dostarczany z [obrazów programu System Center Virtual Machine Manager (VMM)](/system-center/vmm/install-console?view=sc-vmm-1807). Aby uzyskać więcej informacji na temat programu System Center, zobacz [dokumentacja programu System Center](https://docs.microsoft.com/system-center/) i [cennik](https://www.microsoft.com/cloud-platform/system-center-pricing).  
-- Serwer bramy może obsługiwać żądań kierowanych do `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`.
+- Certyfikat SSL musi być zainstalowany na maszynie bramy, aby obsługiwał ruch HTTPS. Certyfikat musi odpowiadać w pełni kwalifikowanej nazwie domeny (FQDN) modułu równoważenia obciążenia dla farmy bramy lub nazwy FQDN samej maszyny, jeśli istnieje tylko jeden komputer. Certyfikaty SSL z użyciem symboli wieloznacznych nie działają.  
+- Certyfikat podpisywania zainstalowany na maszynach bramy. Utwórz certyfikat podpisywania za pomocą skryptu [Create-SigningCertificate. ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) .
+- Zainstaluj [podłączany moduł uwierzytelniania](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) obsługujący uwierzytelnianie tokenu dla bramy usług pulpitu zdalnego. Przykładem takiego modułu jest `RDGatewayFedAuth.msi`, który jest dostarczany z [obrazami System Center Virtual Machine Manager (VMM)](/system-center/vmm/install-console?view=sc-vmm-1807). Aby uzyskać więcej informacji na temat programu System Center, zobacz [dokumentację programu System Center](https://docs.microsoft.com/system-center/) i [szczegóły cennika](https://www.microsoft.com/cloud-platform/system-center-pricing).  
+- Serwer bramy może obsługiwać żądania wysyłane do `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`.
 
-    Nazwa hosta bramy jest nazwę FQDN modułu równoważenia obciążenia kolektywu serwerów bramy lub nazwę FQDN samą maszynę, jeśli istnieje tylko jedna maszyna. `{lab-machine-name}` Nazywa się komputer laboratorium, na którym próbujesz nawiązać połączenie, oraz `{port-number}` jest port, na którym będzie nawiązywane połączenie.  Domyślnie ten port jest 3389.  Jednak jeśli maszyna wirtualna używa [udostępnione IP](devtest-lab-shared-ip.md) funkcji w usłudze DevTest Labs, port będzie różna.
-- [Routing żądań aplikacji w](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) modułu dla programu Internet Information Server (IIS) może służyć do przekierowania `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` żądania funkcji platformy azure, która obsługuje żądania, które można pobrać tokenu uwierzytelniania.
+    Brama-hostname to nazwa FQDN modułu równoważenia obciążenia farmy bramy lub nazwa FQDN maszyny, jeśli istnieje tylko jedna maszyna. `{lab-machine-name}` to nazwa maszyny laboratorium, z którą próbujesz nawiązać połączenie, a `{port-number}` to port, na którym zostanie nawiązane połączenie.  Domyślnie ten port to 3389.  Jeśli jednak maszyna wirtualna korzysta z funkcji [udostępnionych adresów IP](devtest-lab-shared-ip.md) w DevTest Labs, port będzie się różnić.
+- Moduł [żądania routingu aplikacji](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) dla programu Internet Information Server (IIS) może służyć do przekierowywania żądań `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` do funkcji platformy Azure, która obsługuje żądanie pobrania tokenu uwierzytelniania.
 
 
 ## <a name="requirements-for-azure-function"></a>Wymagania dotyczące funkcji platformy Azure
-Żądanie obsługi funkcji platformy Azure z formatem `https://{function-app-uri}/app/host/{lab-machine-name}/port/{port-number}` i zwraca token uwierzytelniania oparte na tym samym podpisywania certyfikatu zainstalowanego na komputerach bramy. `{function-app-uri}` Jest identyfikator uri umożliwiający dostęp do funkcji. Klucz funkcji jest automatycznie przekazane w nagłówku żądania. Dla funkcji przykładowe, zobacz [ https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs ](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs). 
+Funkcja platformy Azure obsługuje żądanie z formatem `https://{function-app-uri}/app/host/{lab-machine-name}/port/{port-number}` i zwraca token uwierzytelniania na podstawie tego samego certyfikatu podpisywania zainstalowanego na maszynach bramy. `{function-app-uri}` jest identyfikatorem URI używanym do uzyskiwania dostępu do funkcji. Klucz funkcji jest automatycznie przekazywać w nagłówku żądania. Aby uzyskać przykładową funkcję, zobacz [https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs). 
 
 
 ## <a name="requirements-for-network"></a>Wymagania dotyczące sieci
 
-- DNS dla nazwy FQDN skojarzone z certyfikatowi SSL zainstalowanemu na maszynach bramy musi kierować ruch do maszyny bramy lub moduł równoważenia obciążenia kolektywu serwerów maszyny bramy.
-- Jeśli na maszynie laboratorium korzysta z prywatnych adresów IP, musi być ścieżkę sieciową z maszyny bramy maszyny laboratorium, przez udostępnianie tej samej sieci wirtualnej lub za pomocą wirtualnych sieciach równorzędnych.
+- System DNS dla nazwy FQDN skojarzonej z certyfikatem SSL zainstalowanym na maszynach bramy musi kierować ruch do maszyny bramy lub modułu równoważenia obciążenia farmy maszyn bramy.
+- Jeśli maszyna laboratoryjna używa prywatnych adresów IP, musi istnieć ścieżka sieciowa z maszyny bramy do maszyny laboratorium, przez udostępnianie tej samej sieci wirtualnej lub za pomocą równorzędnych sieci wirtualnych.
 
-## <a name="configure-the-lab-to-use-token-authentication"></a>Konfigurowanie laboratorium, aby użyć uwierzytelniania tokenu 
-W tej sekcji przedstawiono sposób konfigurowania laboratorium na maszynie bramy usług pulpitu zdalnego, który obsługuje uwierzytelnianie przy użyciu tokenów. Ta sekcja nie obejmuje sposób konfigurowania kolektywu serwerów bramy usług pulpitu zdalnego, sam. Aby uzyskać te informacje, zobacz [przykładu można utworzyć bramy usług pulpitu zdalnego](#sample-to-create-a-remote-desktop-gateway) sekcji na końcu tego artykułu. 
+## <a name="configure-the-lab-to-use-token-authentication"></a>Konfigurowanie laboratorium do używania uwierzytelniania tokenu 
+W tej sekcji pokazano, jak skonfigurować laboratorium do korzystania z maszyny bramy usług pulpitu zdalnego obsługującej uwierzytelnianie tokenu. Ta sekcja nie obejmuje sposobu konfigurowania farmy bramy usług pulpitu zdalnego. Aby uzyskać te informacje, zapoznaj się z sekcją [przykład, aby utworzyć bramę usług pulpitu zdalnego](#sample-to-create-a-remote-desktop-gateway) na końcu tego artykułu. 
 
-Przed uaktualnieniem lab ustawienia należy przechowywać klucz wymaganej do wykonania pomyślnie funkcja zwraca token uwierzytelniania w usłudze key vault w laboratorium. Wartość klucza funkcji można uzyskać **Zarządzaj** strony dla tej funkcji w witrynie Azure portal. Aby uzyskać więcej informacji na temat sposobu zapisywania wpisu tajnego w magazynie kluczy, zobacz [dodać wpis tajny do usługi Key Vault](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault). Zapisz nazwę wpisu tajnego do późniejszego użycia.
+Przed zaktualizowaniem ustawień laboratorium należy zapisać klucz wymagany do pomyślnego wykonania funkcji w celu zwrócenia tokenu uwierzytelniania w magazynie kluczy laboratorium. Wartość klucza funkcji można uzyskać na stronie **Zarządzanie** dla funkcji w Azure Portal. Aby uzyskać więcej informacji na temat sposobu zapisywania wpisu tajnego w magazynie kluczy, zobacz [Dodawanie wpisu tajnego do Key Vault](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault). Zapisz nazwę wpisu tajnego do późniejszego użycia.
 
-Aby znaleźć identyfikator magazynu kluczy w laboratorium, uruchom następujące polecenie z wiersza polecenia platformy Azure: 
+Aby znaleźć identyfikator magazynu kluczy laboratorium, uruchom następujące polecenie interfejsu wiersza polecenia platformy Azure: 
 
 ```azurecli
 az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' --resource-group {lab-resource-group-name} --query properties.vaultName
 ```
 
-Konfigurowanie laboratorium, aby użyć uwierzytelniania tokenu za pomocą tych kroków:
+Skonfiguruj laboratorium do używania uwierzytelniania przy użyciu następujących kroków:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
-1. Wybierz z listy labs, Twoje **laboratorium**.
-1. Na stronie laboratorium wybierz **konfiguracji i zasad**.
-1. W menu po lewej stronie w **ustawienia** zaznacz **ustawienia Lab**.
-1. W **pulpitu zdalnego** sekcji, wprowadź w pełni kwalifikowaną nazwę domeny (FQDN) lub adres IP na maszynie bramy usług pulpitu zdalnego lub farmy dla **hostname bramy** pola. Ta wartość musi odpowiadać nazwa FQDN certyfikat SSL używany na maszynach bramy.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
+1. Z listy laboratoriów wybierz **laboratorium**.
+1. Na stronie laboratorium wybierz pozycję **Konfiguracja i zasady**.
+1. W menu po lewej stronie w sekcji **Ustawienia** wybierz pozycję **Ustawienia laboratorium**.
+1. W sekcji **pulpit zdalny** wprowadź w pełni kwalifikowaną nazwę domeny (FQDN) lub adres IP komputera bramy usług pulpitu zdalnego lub farmy dla pola **Nazwa hosta bramy** . Ta wartość musi być zgodna z nazwą FQDN certyfikatu SSL używanego na maszynach bramy.
 
-    ![Opcje dotyczące usług pulpitu zdalnego w ustawieniach laboratorium](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
-1. W **pulpitu zdalnego** sekcji dla **tokenu bramy** klucz tajny, wprowadź nazwę klucza tajnego, utworzony wcześniej. Ta wartość nie jest sam klucz funkcji, ale nazwa wpisu tajnego w magazynie kluczy laboratorium, który zawiera klucz funkcji.
+    ![Opcje pulpitu zdalnego w ustawieniach laboratorium](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
+1. W sekcji **pulpit zdalny** dla wpisu tajnego **tokenu bramy** wprowadź nazwę wpisu tajnego, który został utworzony wcześniej. Ta wartość nie jest samym kluczem funkcji, ale nazwą wpisu tajnego w magazynie kluczy laboratorium, który zawiera klucz funkcji.
 
-    ![Klucz tajny tokenu bramy w ustawieniach laboratorium](./media/configure-lab-remote-desktop-gateway/gateway-token-secret.png)
-1. **Zapisz** zmiany.
+    ![Wpis tajny tokenu bramy w ustawieniach laboratorium](./media/configure-lab-remote-desktop-gateway/gateway-token-secret.png)
+1. **Zapisz** Wprowadzane.
 
     > [!NOTE] 
-    > Klikając **Zapisz**, wyrażasz zgodę na [postanowienia licencyjne bramy usług pulpitu zdalnego firmy](https://www.microsoft.com/licensing/product-licensing/products). Aby uzyskać więcej informacji na temat bramy zdalnej, zobacz [usług pulpitu zdalnego — Zapraszamy](https://aka.ms/rds) i [wdrożyć środowisko pulpitu zdalnego](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+    > Klikając przycisk **Zapisz**, wyrażasz zgodę na [postanowienia licencyjne bramy pulpit zdalny](https://www.microsoft.com/licensing/product-licensing/products). Aby uzyskać więcej informacji na temat bramy zdalnej, zobacz [Zapraszamy do usługi pulpitu zdalnego](https://aka.ms/rds) i [wdrażania środowiska pulpitu zdalnego](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 
-W przypadku konfigurowania laboratorium przez automatyzację preferowaną, zobacz [DevTestLabGateway.ps1 zestaw](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) uzyskać przykładowy skrypt programu PowerShell ustawić **hostname bramy** i **klucz tajny tokenu bramy**ustawienia. [Repozytorium Azure DevTest Labs w witrynie GitHub](https://github.com/Azure/azure-devtestlab) także szablonu usługi Azure Resource Manager, który tworzy lub aktualizuje laboratorium obejmującym **hostname bramy** i **klucz tajny tokenu bramy**ustawienia.
+Jeśli preferowane jest skonfigurowanie laboratorium za pośrednictwem automatyzacji, zobacz [Set-DevTestLabGateway. ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) , aby uzyskać przykładowy skrypt programu PowerShell w celu ustawienia **nazwy hosta bramy** i **klucza tajnego tokenu bramy** . [Azure DevTest Labs repozytorium GitHub](https://github.com/Azure/azure-devtestlab) udostępnia również szablon Azure Resource Manager, który tworzy lub aktualizuje laboratorium przy użyciu ustawień **nazwy hosta bramy** i **wpisu tajnego tokenu bramy** .
 
-## <a name="configure-network-security-group"></a>Skonfiguruj grupy zabezpieczeń sieci
-Aby dodatkowo zabezpieczyć laboratorium, można dodać sieciowej grupy zabezpieczeń (NSG) do sieci wirtualnej, używanych przez maszyny wirtualne laboratorium. Aby uzyskać instrukcje dotyczące sposobu konfigurowania sieciowej grupy zabezpieczeń, zobacz [tworzenie, zmienianie lub usuwanie grupy zabezpieczeń sieci](../virtual-network/manage-network-security-group.md).
+## <a name="configure-network-security-group"></a>Konfigurowanie sieciowej grupy zabezpieczeń
+Aby dodatkowo zabezpieczyć laboratorium, do sieci wirtualnej używanej przez maszyny wirtualne laboratorium można dodać grupę zabezpieczeń sieci (sieciowej grupy zabezpieczeń). Instrukcje dotyczące sposobu konfigurowania sieciowej grupy zabezpieczeń można znaleźć w temacie [Create, Change lub delete a Network Security Group](../virtual-network/manage-network-security-group.md).
 
-Oto przykład sieciowej grupy zabezpieczeń, która pozwala tylko na ruch, który najpierw przechodzi przez bramę do osiągnięcia maszyn w laboratorium. Źródło w tej regule jest adres IP komputera jednej bramy lub adres IP modułu równoważenia obciążenia przed maszyny bramy.
+Oto przykład sieciowej grupy zabezpieczeń, który zezwala tylko na ruch, który najpierw przechodzi przez bramę, aby dotrzeć do maszyn laboratorium. Źródłem w tej regule jest adres IP pojedynczej bramy lub adres IP modułu równoważenia obciążenia przed maszynami bramy.
 
-![Sieciowa grupa zabezpieczeń — zasady](./media/configure-lab-remote-desktop-gateway/network-security-group-rules.png)
+![Sieciowe grupy zabezpieczeń — reguły](./media/configure-lab-remote-desktop-gateway/network-security-group-rules.png)
 
-## <a name="sample-to-create-a-remote-desktop-gateway"></a>Przykładu można utworzyć bramy usług pulpitu zdalnego
+## <a name="sample-to-create-a-remote-desktop-gateway"></a>Przykład tworzenia bramy usług pulpitu zdalnego
 
 > [!NOTE] 
-> Korzystając z przykładowych szablonów, zgadzasz się [postanowienia licencyjne bramy usług pulpitu zdalnego firmy](https://www.microsoft.com/licensing/product-licensing/products). Aby uzyskać więcej informacji na temat bramy zdalnej, zobacz [usług pulpitu zdalnego — Zapraszamy](https://aka.ms/rds) i [wdrożyć środowisko pulpitu zdalnego](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+> Za pomocą przykładowych szablonów wyrażasz zgodę na [pulpit zdalny postanowień licencyjnych dotyczących bramy](https://www.microsoft.com/licensing/product-licensing/products). Aby uzyskać więcej informacji na temat bramy zdalnej, zobacz [Zapraszamy do usługi pulpitu zdalnego](https://aka.ms/rds) i [wdrażania środowiska pulpitu zdalnego](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
-[Repozytorium Azure DevTest Labs w witrynie GitHub](https://github.com/Azure/azure-devtestlab) zawiera kilka przykładów ułatwiające Instalatora zasobów wymaganych do uwierzytelniania tokenu i bramy usług pulpitu zdalnego za pomocą usługi DevTest Labs. Te przykłady obejmują szablony usługi Azure Resource Manager dla maszyny bramy, ustawienia lab i aplikacji funkcji.
+[Azure DevTest Labs repozytorium GitHub](https://github.com/Azure/azure-devtestlab) zawiera kilka przykładów, które ułatwiają konfigurowanie zasobów wymaganych do korzystania z uwierzytelniania tokenów i bramy usług pulpitu zdalnego z DevTest Labs. Te przykłady obejmują szablony Azure Resource Manager dla maszyn bramy, ustawień laboratorium i aplikacji funkcji.
 
-Wykonaj następujące kroki, aby skonfigurować przykładowe rozwiązanie kolektywu serwerów bramy usług pulpitu zdalnego.
+Wykonaj następujące kroki, aby skonfigurować przykładowe rozwiązanie dla farmy bramy usług pulpitu zdalnego.
 
-1. Utwórz certyfikat podpisywania.  Uruchom [tworzenie SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1). Zapisz odcisku palca, hasło i kodowanie Base64 utworzonego certyfikatu.
-2. Uzyskaj certyfikat protokołu SSL. Nazwa FQDN skojarzony z certyfikatem SSL musi być dla domeny, które możesz kontrolować. Zapisz odcisku palca, hasło i kodowanie Base64 dla tego certyfikatu. Aby uzyskać odcisk palca przy użyciu programu PowerShell, użyj następujących poleceń.
+1. Utwórz certyfikat podpisywania.  Uruchom [Create-SigningCertificate. ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1). Zapisz odcisk palca, hasło i kodowanie Base64 utworzonego certyfikatu.
+2. Pobierz certyfikat SSL. Nazwa FQDN skojarzona z certyfikatem SSL musi być dla kontrolowanej domeny. Zapisz odcisk palca, hasło i kodowanie Base64 dla tego certyfikatu. Aby uzyskać odcisk palca przy użyciu programu PowerShell, użyj następujących poleceń.
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
@@ -123,50 +123,50 @@ Wykonaj następujące kroki, aby skonfigurować przykładowe rozwiązanie kolekt
     ```powershell
     [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(‘path-to-certificate’))
     ```
-3. Pobieranie plików z [ https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway).
+3. Pobierz pliki z [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway).
 
-    Ten szablon wymaga dostępu do kilku szablonów usługi Resource Manager i powiązanych zasobów, w tym samym podstawowy identyfikator URI. Skopiuj wszystkie pliki z [ https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway ](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway) i RDGatewayFedAuth.msi na kontener obiektów blob na koncie magazynu.  
-4. Deploy **azuredeploy.json** from [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway). Szablon przyjmuje następujące parametry:
-    - adminUsername — wymagane.  Nazwa użytkownika administratora dla maszyny bramy.
-    - adminPassword — wymagane. Hasło dla konta administratora dla maszyny bramy.
-    - instanceCount — liczba maszyn w celu utworzenia bramy.  
-    - alwaysOn — wskazuje, czy zachować utworzoną aplikację usługi Azure Functions w stanie dostępu do ciepłych, czy nie. Utrzymywanie aplikacji usługi Azure Functions pozwoli uniknąć opóźnień, gdy użytkownicy najpierw spróbują połączyć się z ich maszynę Wirtualną laboratorium, ale niesie ze sobą skutki kosztów.  
-    - tokenLifetime — czas, który będzie prawidłowy token utworzony. Format to: mm: ss.
-    - sslCertificate — Base64 kodowanie certyfikatu SSL na maszynie bramy.
-    - Parametr sslCertificatePassword — hasło certyfikatu SSL na maszynie bramy.
-    - sslCertificateThumbprint — odcisk palca certyfikatu do identyfikacji w lokalnym magazynie certyfikatów certyfikatu SSL.
-    - signCertificate — Base64 kodowanie podpisywania certyfikatu na maszynie bramy.
-    - signCertificatePassword — hasło podpisywania certyfikatu na maszynie bramy.
-    - signCertificateThumbprint — odcisk palca certyfikatu do identyfikacji w lokalnym magazynie certyfikatów podpisywania certyfikatu.
-    - _artifactsLocation — identyfikator URI lokalizacji, gdzie można znaleźć wszystkie zasoby pomocnicze. Ta wartość musi być w pełni kwalifikowaną UIR, nie ścieżkę względną.
-    - _artifactsLocationSasToken — token sygnatury dostępu współdzielonego (SAS) umożliwiają dostęp do zasobów pomocniczych, jeśli lokalizacja znajduje się konto magazynu platformy Azure.
+    Szablon wymaga dostępu do kilku innych Menedżer zasobów szablonów i powiązanych zasobów pod tym samym podstawowym identyfikatorem URI. Skopiuj wszystkie pliki z [https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway) i RDGatewayFedAuth. msi do kontenera obiektów BLOB na koncie magazynu.  
+4. Wdróż plik **azuredeploy. JSON** z [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway). Szablon przyjmuje następujące parametry:
+    - adminUsername — wymagane.  Nazwa użytkownika administratora dla maszyn bramy.
+    - adminPassword — wymagane. Hasło konta administratora dla maszyn bramy.
+    - instanceCount — liczba maszyn bramy do utworzenia.  
+    - alwaysOn — wskazuje, czy aplikacja utworzona Azure Functions ma być w stanie ciepłym. Utrzymywanie Azure Functions aplikacji będzie unikać opóźnień, gdy użytkownicy próbują nawiązać połączenie z maszyną wirtualną laboratorium, ale ma to wpływ na koszty.  
+    - tokenLifetime — długość czasu, przez jaki utworzony token będzie prawidłowy. Format to gg: MM: SS.
+    - sslCertificate — kodowanie Base64 certyfikatu SSL dla maszyny bramy.
+    - sslCertificatePassword — hasło certyfikatu SSL dla maszyny bramy.
+    - sslCertificateThumbprint — odcisk palca certyfikatu służący do identyfikacji w lokalnym magazynie certyfikatów certyfikatu SSL.
+    - signCertificate — kodowanie Base64 dla certyfikatu podpisywania dla maszyny bramy.
+    - signCertificatePassword — hasło do podpisywania certyfikatu dla maszyny bramy.
+    - signCertificateThumbprint — odcisk palca certyfikatu służący do identyfikacji w lokalnym magazynie certyfikatów certyfikatu podpisywania.
+    - _artifactsLocation — lokalizacja URI, w której można znaleźć wszystkie zasoby pomocnicze. Ta wartość musi być w pełni kwalifikowana UIR, a nie ścieżką względną.
+    - _artifactsLocationSasToken — token sygnatury dostępu współdzielonego (SAS) służący do uzyskiwania dostępu do zasobów pomocniczych, jeśli lokalizacja jest kontem usługi Azure Storage.
 
-    Szablon można wdrożyć za pomocą wiersza polecenia platformy Azure przy użyciu następującego polecenia:
+    Szablon można wdrożyć przy użyciu interfejsu wiersza polecenia platformy Azure, korzystając z następujących poleceń:
 
     ```azurecli
-    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation=”{storage-account-endpoint}/{container-name}” -–parameters _artifactsLocationSasToken = “?{sas-token}”
+    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
     ```
 
     Poniżej przedstawiono opisy parametrów:
 
-    - {— Konta — punkt końcowy magazynu} można uzyskać, uruchamiając `az storage account show --name {storage-acct-name} --query primaryEndpoints.blob`.  {Storage-acct-name} jest nazwą konta magazynu, który zawiera pliki, które można przekazać.  
-    - {Nazwa kontenera} jest nazwą kontenera w elemencie {storage-acct-name}, w którym przechowywane są pliki, które można przekazać.  
-    - {Token sygnatury dostępu współdzielonego} można uzyskać, uruchamiając `az storage container generate-sas --name {container-name} --account-name {storage-acct-name} --https-only –permissions drlw –expiry {utc-expiration-date}`. 
-        - {Storage-acct-name} jest nazwą konta magazynu, który zawiera pliki, które można przekazać.  
-        - {Nazwa kontenera} jest nazwą kontenera w elemencie {storage-acct-name}, w którym przechowywane są pliki, które można przekazać.  
-        - {Utc wygaśnięcia — data} to dzień, w formacie UTC, jaką wygaśnięcia tokenu sygnatury dostępu Współdzielonego i tokenu sygnatury dostępu Współdzielonego już nie można uzyskać dostępu do konta magazynu.
+    - {Storage-account-Endpoint} można uzyskać, uruchamiając `az storage account show --name {storage-acct-name} --query primaryEndpoints.blob`.  {Storage-ACCT-Name} to nazwa konta magazynu zawierającego przekazane pliki.  
+    - {Container-Name} to nazwa kontenera w {Storage-ACCT-Name}, który zawiera przekazane pliki.  
+    - {SAS-token} można uzyskać, uruchamiając `az storage container generate-sas --name {container-name} --account-name {storage-acct-name} --https-only –permissions drlw –expiry {utc-expiration-date}`. 
+        - {Storage-ACCT-Name} to nazwa konta magazynu zawierającego przekazane pliki.  
+        - {Container-Name} to nazwa kontenera w {Storage-ACCT-Name}, który zawiera przekazane pliki.  
+        - {UTC-Data wygaśnięcia} to data, w formacie UTC, z której token sygnatury dostępu współdzielonego wygaśnie i nie będzie można już używać tokenu SAS do uzyskiwania dostępu do konta magazynu.
 
-    Zapisz wartości gatewayFQDN i gatewayIP z danych wyjściowych z wdrożenia szablonu. Należy także Zapisz wartość klucza funkcji dla nowo utworzonej funkcji można znaleźć w [ustawień aplikacji funkcji](../azure-functions/functions-how-to-use-azure-function-app-settings.md) kartę.
-5. Konfigurowanie systemu DNS, dzięki czemu tego certyfikatu nazwa FQDN protokołu SSL Określa, że adres IP gatewayIP z poprzedniego kroku.
+    Zapisz wartości dla gatewayFQDN i gatewayIP z danych wyjściowych wdrożenia szablonu. Należy również zapisać wartość klucza funkcji dla nowo utworzonej funkcji, którą można znaleźć na karcie [Ustawienia aplikacji funkcji](../azure-functions/functions-how-to-use-azure-function-app-settings.md) .
+5. Skonfiguruj system DNS tak, aby nazwa FQDN certyfikatu protokołu SSL kierowanego do adresu IP gatewayIP z poprzedniego kroku.
 
-    Po utworzeniu kolektywu serwerów bramy usług pulpitu zdalnego i odpowiednie aktualizacje rekordów DNS zostały wprowadzone, jest gotowy do użycia przez laboratorium w usłudze DevTest Labs. **Hostname bramy** i **klucz tajny tokenu bramy** ustawienia muszą zostać skonfigurowane do użycia z maszyny bramy została wdrożona. 
+    Po utworzeniu farmy Pulpit zdalny Gateway i wprowadzeniu odpowiednich aktualizacji DNS będzie ona gotowa do użycia w laboratorium w DevTest Labs. Ustawienia **nazwy hosta bramy** i **wpisu tajnego tokenu bramy** muszą być skonfigurowane do używania wdrożonych maszyn bramy. 
 
     > [!NOTE]
-    > Jeśli na maszynie laboratorium korzysta z prywatnych adresów IP, musi być ścieżkę sieciową z maszyny bramy na komputerze laboratoryjnym, albo przy użyciu wirtualnej sieci równorzędnej lub udostępnianie tej samej sieci wirtualnej.
+    > Jeśli maszyna laboratoryjna używa prywatnych adresów IP, musi istnieć ścieżka sieciowa z komputera bramy do maszyny laboratorium, przez udostępnienie tej samej sieci wirtualnej lub za pomocą równorzędnej sieci wirtualnej.
 
-    Po skonfigurowaniu bramy i laboratorium plik połączenia tworzony po kliknięciu przez użytkownika laboratorium **Connect** automatycznie będą zawierać informacje wymagane do łączenia z przy użyciu tokenu uwierzytelniania.     
+    Po skonfigurowaniu zarówno bramy, jak i laboratorium, plik połączenia utworzony podczas kliknięcia przez użytkownika laboratorium w programie **Connect** będzie automatycznie zawierać informacje niezbędne do nawiązania połączenia przy użyciu uwierzytelniania tokenu.     
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujący artykuł, aby dowiedzieć się więcej na temat usług pulpitu zdalnego: [Dokumentacja usługi usług pulpitu zdalnego](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z następującym artykułem, aby dowiedzieć się więcej o Usługi pulpitu zdalnego: [usługi pulpitu zdalnego dokumentacja](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
 
 

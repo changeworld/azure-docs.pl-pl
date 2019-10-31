@@ -43,6 +43,8 @@
       items:
         - name: Jak działa uwierzytelnianie wieloskładnikowe
           href: concept-mfa-howitworks.md
+        - name: Włączanie usługi MFA
+          href: concept-mfa-get-started.md
         - name: Licencjonowanie użytkowników
           href: concept-mfa-licensing.md
         - name: Zarządzanie dostawcą uwierzytelniania
@@ -135,6 +137,10 @@
           href: howto-authentication-passwordless-deployment.md
         - name: Klucze zabezpieczeń bez hasła
           href: howto-authentication-passwordless-security-key.md
+        - name: Windows 10 bez hasła
+          href: howto-authentication-passwordless-security-key-windows.md
+        - name: Środowisko lokalne bez hasła
+          href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Logowanie za pomocą telefonu bez hasła
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello dla firm

@@ -9,34 +9,50 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 8c57698471d1363438c10e5806f9ed6f1da5333f
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: f14da7d8e64c58a54a9da4d851ac22fd710ea8ca
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039091"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163752"
 ---
 # <a name="how-to-use-persistent-storage-in-azure-spring-cloud"></a>Jak korzystać z magazynu trwałego w chmurze Azure wiosennej
 
-Chmura sprężynowa platformy Azure oferuje dwa typy magazynów dla aplikacji: trwałe i tymczasowe.  Chmura sprężynowa platformy Azure domyślnie umożliwia przechowywanie tymczasowe dla każdego wystąpienia aplikacji. Magazyn tymczasowy jest ograniczony do 5 GB, a jego domyślna ścieżka instalacji to `/tmp`.
+Chmura sprężynowa platformy Azure oferuje dwa typy magazynów dla aplikacji: trwałe i tymczasowe.  Chmura sprężynowa platformy Azure domyślnie umożliwia przechowywanie tymczasowe dla każdego wystąpienia aplikacji. Magazyn tymczasowy jest ograniczony do 5 GB z domyślną ścieżką instalacji: `/tmp`.
 
 > [!WARNING]
 > Ponowne uruchomienie wystąpienia aplikacji spowoduje trwałe usunięcie skojarzonego magazynu tymczasowego.
 
-Magazyn trwały jest kontenerem udziałów plików zarządzanym przez platformę Azure, który jest przydzielony do zakresu poszczególnych aplikacji. Dane przechowywane w magazynie trwałym są współużytkowane przez wszystkie wystąpienia aplikacji. Wystąpienie usługi w chmurze Azure wiosennej może mieć maksymalnie 10 aplikacji z włączonym dyskiem trwałym, a każda aplikacja ma 50 GB magazynu trwałego. Domyślna ścieżka instalacji dla trwałego magazynu to `/persistent`.
-
-## <a name="enable-persistent-storage-using-the-azure-portal"></a>Włącz magazyn trwały przy użyciu Azure Portal
-
-1. Na stronie usługi w chmurze Azure wiosny wybierz pozycję **pulpit nawigacyjny aplikacji**, a następnie wybierz aplikację wymagającą trwałego magazynu.
-1. Na karcie **Omówienie** Znajdź atrybut **Magazyn trwały** i wybierz pozycję **wyłączone**.
-1. Kliknij pozycję **Włącz** , aby włączyć magazyn trwały, a następnie wybierz przycisk **OK** , aby zastosować zmianę.
-
-Gdy magazyn trwały jest włączony, jego rozmiar i ścieżka są wyświetlane w atrybucie **Magazyn trwały** na stronie **Przegląd** .
+Magazyn trwały jest kontenerem udziałów plików zarządzanym przez platformę Azure przydzieloną na aplikację. Dane przechowywane w magazynie trwałym są współużytkowane przez wszystkie wystąpienia aplikacji. Wystąpienie usługi w chmurze Azure wiosennej może mieć maksymalnie 10 aplikacji z włączonym dyskiem trwałym. Każda aplikacja otrzymuje 50 GB magazynu trwałego. Domyślna ścieżka instalacji dla trwałego magazynu to `/persistent`.
 
 > [!WARNING]
 > *Wyłączenie* trwałego magazynu spowoduje cofnięcie przydziału magazynu dla tej aplikacji.  Wszystkie dane na tym koncie magazynu zostaną utracone. 
 
-## <a name="enable-persistent-storage-using-the-azure-cli"></a>Włącz magazyn trwały przy użyciu interfejsu wiersza polecenia platformy Azure
+## <a name="enable-persistent-storage-using-the-azure-portal"></a>Włącz magazyn trwały przy użyciu Azure Portal
+
+1. Na ekranie głównym Azure Portal wybierz pozycję **wszystkie zasoby**.
+
+     >![Znajdź ikonę wszystkie zasoby](media/portal-all-resources.jpg)
+
+1. Znajdź i wybierz zasób chmury Azure wiosny, który potrzebuje trwałego magazynu.  W tym przykładzie aplikacja jest nazywana *jpspring*.
+
+    > ![Znajdź swój applicationb](media/select-service.jpg)
+
+1. W polu Nagłówek **ustawień** wybierz pozycję **aplikacje**.
+
+1. Usługi w chmurze wiosny będą wyświetlane w tabeli.  Wybierz usługę, do której chcesz dodać magazyn trwały.  W tym przykładzie wybierzemy naszą usługę **bramy** .
+
+    > ![Wybierz swoją usługę](media/select-gateway.jpg)
+
+1. W bloku konfiguracja usługi wybierz pozycję **Konfiguracja** .
+
+1. Wybierz kartę **Magazyn trwały** i Włącz trwały magazyn.
+
+    > ![Włącz magazyn trwały](media/enable-persistent-storage.jpg)
+
+Gdy magazyn trwały jest włączony, jego rozmiar i ścieżka są wyświetlane na tej stronie.
+
+## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Modyfikowanie trwałego magazynu za pomocą interfejsu wiersza polecenia platformy Azure
 
 Utwórz aplikację z włączonym dyskiem trwałym:
  
@@ -48,7 +64,7 @@ Włącz magazyn trwały w istniejącej aplikacji:
 
 ```azurecli
 az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
-```
+``` 
 
 Wyłącz magazyn trwały w istniejącej aplikacji:
 

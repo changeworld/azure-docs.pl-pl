@@ -11,12 +11,12 @@ manager: carmonm
 ms.topic: conceptual
 tags: connectors
 ms.date: 10/14/2019
-ms.openlocfilehash: 6c86ef26bbf7bd9dbce8aa77aef2213b14b57f5f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 880ae4b661d247889815fc5b9ad08a759fe0aa5b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311914"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161637"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatyzowanie przepływów pracy dla SQL Server lub Azure SQL Database przy użyciu Azure Logic Apps
 
@@ -68,7 +68,7 @@ W Azure Logic Apps każda aplikacja logiki musi rozpoczynać się od [wyzwalacza
 
 1. Ustaw właściwości **interwału** i **częstotliwości** , które określają, jak często aplikacja logiki ma sprawdzać tabelę.
 
-   Ten wyzwalacz zwraca tylko jeden wiersz z wybranej tabeli, nic nie jest inne. Aby wykonać inne zadania, Dodaj inne akcje, które wykonują żądane zadania. Na przykład, aby wyświetlić dane w tym wierszu, można dodać inne akcje, które tworzą plik, który zawiera pola z zwróconego wiersza, a następnie wysyła alerty e-mail. Aby dowiedzieć się więcej o innych dostępnych akcjach dla tego łącznika, zobacz [stronę odwołania łącznika](/connectors/sql/).
+   Ten wyzwalacz zwraca tylko jeden wiersz z wybranej tabeli, nic nie jest inne. Aby wykonać inne zadania, Dodaj inne akcje, które wykonują żądane zadania. Na przykład, aby wyświetlić dane w tym wierszu, można dodać inne akcje, które tworzą plik, który zawiera pola z zwróconego wiersza, a następnie wysyła alerty e-mail. Aby dowiedzieć się więcej o innych dostępnych akcjach dla tego łącznika, zobacz [stronę odwołania łącznika](https://docs.microsoft.com/connectors/sql/).
 
 1. Gdy skończysz, na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
@@ -84,7 +84,7 @@ W Azure Logic Apps [Akcja](../logic-apps/logic-apps-overview.md#logic-app-concep
 
 1. W obszarze wyzwalacza lub akcji, w której chcesz dodać akcję SQL, wybierz pozycję **nowy krok**.
 
-   ![Wybierz pozycję "nowy krok"](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
+   ![Dodawanie nowego kroku do aplikacji logiki](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
    Aby dodać akcję między istniejącymi krokami, przesuń wskaźnik myszy na strzałkę łączącą. Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
 
@@ -92,13 +92,13 @@ W Azure Logic Apps [Akcja](../logic-apps/logic-apps-overview.md#logic-app-concep
 
    W tym przykładzie zostanie użyta akcja **Pobierz wiersz** , która pobiera jeden rekord.
 
-   ![Znajdź i wybierz akcję SQL "Pobierz wiersz"](./media/connectors-create-api-sqlazure/select-sql-get-row.png)
+   ![Znajdź i wybierz akcję SQL "Pobierz wiersz"](./media/connectors-create-api-sqlazure/find-select-sql-get-row-action.png)
 
-   Ta akcja zwraca tylko jeden wiersz z wybranej tabeli, nic innego. Aby wyświetlić dane w tym wierszu, możesz dodać inne akcje, które tworzą plik, który zawiera pola z zwróconego wiersza, i Zapisz ten plik na koncie magazynu w chmurze. Aby dowiedzieć się więcej o innych dostępnych akcjach dla tego łącznika, zobacz [stronę odwołania łącznika](/connectors/sql/).
+   Ta akcja zwraca tylko jeden wiersz z wybranej tabeli, nic innego. Aby wyświetlić dane w tym wierszu, możesz dodać inne akcje, które tworzą plik, który zawiera pola z zwróconego wiersza, i Zapisz ten plik na koncie magazynu w chmurze. Aby dowiedzieć się więcej o innych dostępnych akcjach dla tego łącznika, zobacz [stronę odwołania łącznika](https://docs.microsoft.com/connectors/sql/).
 
 1. Jeśli zostanie wyświetlony monit o utworzenie połączenia, [Utwórz połączenie SQL teraz](#create-connection). Jeśli połączenie istnieje, wybierz **nazwę tabeli**i wprowadź **Identyfikator wiersza** dla żądanego rekordu.
 
-   ![Wprowadź nazwę tabeli i Identyfikator wiersza](./media/connectors-create-api-sqlazure/table-row-id.png)
+   ![Wprowadź nazwę tabeli i Identyfikator wiersza](./media/connectors-create-api-sqlazure/specify-table-row-id-property-value.png)
 
 1. Gdy skończysz, na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
@@ -132,7 +132,7 @@ Czasami musisz współpracować z zestawami wyników tak długo, że łącznik n
 
 ## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
 
-Aby uzyskać informacje techniczne na temat wyzwalaczy, akcji i limitów tego łącznika, zobacz [stronę referencyjną łącznika](/connectors/sql/).
+Aby uzyskać informacje techniczne na temat wyzwalaczy, akcji i limitów tego łącznika, zobacz [stronę referencyjną łącznika](https://docs.microsoft.com/connectors/sql/).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7684acbd26848bbccb09416df44a9669965dcfe9
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: f76a2eb098e2d96f617d19de089e56c7e8a497fd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720140"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162770"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji Azure Media Services
 
@@ -29,8 +29,8 @@ Te informacje o wersji Azure Media Services podsumowują zmiany z poprzednich we
 
 Chcemy poznać naszych klientów, aby móc skupić się na rozwiązywaniu problemów, które mają wpływ na Ciebie. Aby zgłosić problem lub zadawać pytania, Prześlij wpis na [forum MSDN Azure Media Services]. 
 
-## <a name="a-idissuesknown-issues"></a>@no__t — problemy 0Known
-### <a name="a-idgeneral_issuesmedia-services-general-issues"></a>@no__t — ogólne problemy dotyczące usług 0Media Services
+## <a name="a-idissuesknown-issues"></a><a id="issues"/>znane problemy
+### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services ogólne problemy
 
 | Problem | Opis |
 | --- | --- |
@@ -43,10 +43,10 @@ Chcemy poznać naszych klientów, aby móc skupić się na rozwiązywaniu proble
 | Nie można serializować Media Services obiektów zestawu SDK platformy .NET. w związku z tym wynik nie współpracuje z usługą Azure cache for Redis. |Jeśli próbujesz serializować obiekt elementu zawartości zestawu SDK w celu dodania go do usługi Azure cache for Redis, zostanie zgłoszony wyjątek. |
 |Interfejs API REST reaguje na komunikat o błędzie informujący o tym, że nie można uzyskać dostępu do filtru przy użyciu tej wersji interfejsu API REST "podczas próby pobrania filtru na poziomie zasobu lub konta.|Filtr został utworzony lub zmodyfikowany przy użyciu nowszej wersji interfejsu API, która jest używana do próby pobrania filtru. Taka sytuacja może wystąpić, jeśli dwie wersje interfejsu API są używane przez kod lub narzędzia używane przez klienta.  Najlepszym rozwiązaniem jest uaktualnienie kodu lub narzędzi w celu użycia nowszych lub dwóch wersji interfejsu API.|
 
-## <a name="a-idrest_version_historyrest-api-version-history"></a>historia wersji interfejsu API @no__t 0REST
+## <a name="a-idrest_version_historyrest-api-version-history"></a>historia wersji interfejsu API REST usługi <a id="rest_version_history"/>
 Informacje o historii wersji interfejsu API REST Media Services można znaleźć w [Dokumentacja interfejsu API REST Azure Media Services].
 
-## <a name="september-2019"></a>2019 września
+## <a name="september-2019"></a>Wrzesień 2019 r.
 
 ### <a name="deprecation-of-media-processors"></a>Wycofanie procesorów multimediów
 
@@ -54,7 +54,7 @@ Ogłaszamy przestarzałe *Azure Media Indexer* i *Azure Media Indexer 2 wersji z
 
 Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer i Azure Media Indexer 2 do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
 
-## <a name="august-2019"></a>2019 sierpnia
+## <a name="august-2019"></a>Sierpień 2019 r.
 
 ### <a name="deprecation-of-media-processors"></a>Wycofanie procesorów multimediów
 
@@ -62,7 +62,7 @@ Ogłaszamy przestarzałe procesory nośników z *systemami Windows Azure Media E
 
 Aby uzyskać szczegółowe informacje, zobacz [Migrowanie WAME do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) i [Migrowanie azwa do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
 
-## <a name="march-2019"></a>Marzec 2019
+## <a name="march-2019"></a>Marzec 2019 r.
 
 Funkcja w wersji zapoznawczej Azure Media Services była przestarzała.
 
@@ -153,7 +153,7 @@ Aby uzyskać więcej informacji o tych właściwościach, zobacz [StreamingEndpo
 
  Teraz można użyć Media Services, aby uzyskać dostęp do danych telemetrycznych/metryk dla swoich usług. Korzystając z bieżącej wersji Media Services, można zbierać dane telemetryczne dotyczące kanału na żywo, punktu końcowego przesyłania strumieniowego i obiektów archiwum. Aby uzyskać więcej informacji, zobacz [Media Services telemetrii](media-services-telemetry-overview.md).
 
-## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>July 2016
+## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>lipca 2016
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Aktualizacje pliku manifestu (*. ISM) generowane przez zadania kodowania
 Gdy zadanie kodowania jest przesyłane do Media Encoder Standard lub Media Encoder Premium, zadanie kodowania generuje [plik manifestu przesyłania strumieniowego](media-services-deliver-content-overview.md) (*. ISM) w wyjściowym elemencie zawartości. W najnowszej wersji usługi została zaktualizowana Składnia tego pliku manifestu przesyłania strumieniowego.
 
@@ -455,13 +455,13 @@ Następujące polecenia cmdlet programu PowerShell Media Services są teraz zawa
     Na przykład: `Get-AzureMediaServicesAccount`
 * New-AzureMediaServicesAccount 
   
-    Na przykład: `New-AzureMediaServicesAccount -Name “MediaAccountName” -Location “Region” -StorageAccountName “StorageAccountName”`
+    Na przykład: `New-AzureMediaServicesAccount -Name "MediaAccountName" -Location "Region" -StorageAccountName "StorageAccountName"`
 * New-AzureMediaServicesKey 
   
-    Na przykład: `New-AzureMediaServicesKey -Name “MediaAccountName” -KeyType Secondary -Force`
+    Na przykład: `New-AzureMediaServicesKey -Name "MediaAccountName" -KeyType Secondary -Force`
 * Remove-AzureMediaServicesAccount 
   
-    Na przykład: `Remove-AzureMediaServicesAccount -Name “MediaAccountName” -Force`
+    Na przykład: `Remove-AzureMediaServicesAccount -Name "MediaAccountName" -Force`
 
 ## <a id="june_changes_13"></a>Wydanie z czerwca 2013
 ### <a name="june_13_general_changes"></a>Media Services zmiany

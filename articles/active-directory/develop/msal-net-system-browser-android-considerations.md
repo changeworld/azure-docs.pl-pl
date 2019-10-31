@@ -1,7 +1,7 @@
 ---
-title: Uwagi dotyczące platformy Xamarin Android (Microsoft Authentication Library for .NET)
+title: Zagadnienia dotyczące przeglądarki systemu Android system dla platformy Xamarin (Microsoft Authentication Library for .NET)
 titleSuffix: Microsoft identity platform
-description: Informacje o określonych kwestiach dotyczących korzystania z platformy Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
+description: Dowiedz się więcej o określonych kwestiach dotyczących używania przeglądarek systemu w programie Xamarin Android podczas korzystania z biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5caad4b136c9ef2686cc4befc70e6720e27855
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f83283cc02c60eb452d0e414c0b21843b48f343b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802756"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150363"
 ---
-# <a name="xamarin-android-specific-considerations-with-msalnet"></a>Zagadnienia specyficzne dla platformy Xamarin Android z MSAL.NET
+#  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Zagadnienia dotyczące przeglądarki systemu Android system z MSAL.NET
+
 W tym artykule omówiono określone zagadnienia dotyczące korzystania z przeglądarki systemowej w programie Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 
 Począwszy od MSAL.NET 2.4.0 — wersja zapoznawcza, MSAL.NET obsługuje przeglądarki inne niż Chrome i nie wymagają już, aby program Chrome był instalowany na urządzeniu z systemem Android w celu uwierzytelnienia.

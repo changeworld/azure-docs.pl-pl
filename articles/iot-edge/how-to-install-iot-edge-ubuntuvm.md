@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: 0e5bec7d3e1ecd63541a319cd5a9151560ef4139
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: fec39a9e788debcd9c3ac707a0431e268d87ed35
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964648"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146182"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Uruchom Azure IoT Edge na Ubuntu Virtual Machines
 
@@ -36,7 +36,7 @@ Podczas pierwszego Azure IoT Edge rozruchu na maszynie wirtualnej Ubuntu jest pr
     1.  Skopiuj parametry połączenia z urządzeniem IoT Edge utworzonym w IoT Hub (możesz użyć polecenia [Pobierz parametry połączenia w procedurze Azure Portal,](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) Jeśli nie znasz tego procesu)
     1.  Wybierz nowo utworzony zasób maszyny wirtualnej z Azure Portal i Otwórz opcję **Uruchom polecenie**
     1.  Wybierz opcję **RunShellScript**
-    1.  Wykonaj Poniższy skrypt za pomocą okna poleceń z parametrami połączenia urządzenia: `/etc/iotedge/configedge.sh “{device_connection_string}”`
+    1.  Wykonaj Poniższy skrypt za pomocą okna poleceń z parametrami połączenia urządzenia: `/etc/iotedge/configedge.sh "{device_connection_string}"`
     1.  Wybierz pozycję **Uruchom**
     1.  Poczekaj chwilę, a na ekranie powinien zostać wyświetlony komunikat o powodzeniu wskazujący, że parametry połączenia zostały prawidłowo ustawione.
 

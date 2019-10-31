@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja usługi Azure Active Directory z aplikacją Palo Alto Networks Captive Portal | Microsoft Docs'
+title: 'Samouczek: integracja Azure Active Directory z portalem programu Palo Alto Networks Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a aplikacją Palo Alto Networks Captive Portal.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 67a0b476-2305-4157-8658-2ec3625850d5
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c3651e81cd3916bccc859bc3bc010511b2a114a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f926741bde3bdcc69cb4ea30f54daca79606047e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095260"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160160"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Palo Alto Networks Captive Portal
+# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Samouczek: integracja Azure Active Directory z portalem programu Palo Alto Networks
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Palo Alto Networks Captive Portal z usługą Azure Active Directory (Azure AD).
 
@@ -58,7 +59,7 @@ Aby rozpocząć pracę, w galerii dodaj aplikację Palo Alto Networks Captive Po
 
 1. W witrynie [Azure Portal](https://portal.azure.com) w menu po lewej stronie wybierz usługę **Azure Active Directory**.
 
-    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
 2. Wybierz pozycję **Aplikacje dla przedsiębiorstw** > **Wszystkie aplikacje**.
 
@@ -66,32 +67,32 @@ Aby rozpocząć pracę, w galerii dodaj aplikację Palo Alto Networks Captive Po
 
 3. Wybierz pozycję **Nowa aplikacja**.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
 4. W polu wyszukiwania wprowadź **Palo Alto Networks Captive Portal**. W wynikach wyszukiwania wybierz pozycję **Palo Alto Networks Captive Portal**, a następnie wybierz pozycję **Dodaj**.
 
      ![Pozycja Palo Alto Networks - Captive Portal na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 Skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Palo Alto Networks Captive Portal, korzystając z danych testowego użytkownika o nazwie *Britta Simon*. Aby logowanie jednokrotne działało, należy ustanowić relację między użytkownikiem usługi Azure AD i tym samym użytkownikiem w aplikacji Palo Alto Networks Captive Portal. 
 
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Palo Alto Networks Captive Portal, należy wykonać następujące zadania:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** : włącz tę funkcję, aby umożliwić użytkownikowi korzystanie z niej.
-2. **[Konfigurowanie logowania jednokrotnego w aplikacji Palo Alto Networks Captive Portal](#configure-palo-alto-networks-captive-portal-single-sign-on)** : skonfiguruj ustawienia logowania jednokrotnego w aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** : przetestuj logowanie jednokrotne w usłudze Azure AD przy użyciu użytkownika *Britta Simon*.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** : skonfiguruj użytkownika Britta Simon w celu korzystania z logowania jednokrotnego w usłudze Azure AD.
-5. **Tworzenie użytkownika testowego w aplikacji Palo Alto Networks Captive Portal**: utwórz w aplikacji Palo Alto Networks Captive Portal odpowiednik użytkownika *Britta Simon*, który jest połączony z użytkownikiem usługi Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** : Sprawdź, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego w usłudze Azure AD](#configure-azure-ad-single-sign-on)** : Zezwól użytkownikowi na korzystanie z tej funkcji.
+2. Konfigurowanie logowania jednokrotnego w **[portalu Palo Alto Networks](#configure-palo-alto-networks-captive-portal-single-sign-on)** : Skonfiguruj ustawienia logowania jednokrotnego w aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** : testowanie logowania jednokrotnego w usłudze Azure AD za pomocą użytkownika *Britta Simon*.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** : Konfigurowanie usługi Britta Simon do korzystania z logowania jednokrotnego w usłudze Azure AD.
+5. **Utwórz użytkownika testowego portalu Palo Alto Networks**: Utwórz odpowiedni użytkownika *Britta Simon* w portalu internetowym w Palo Alto Networks, który jest połączony z użytkownikiem usługi Azure AD.
+6. **[Testuj Logowanie jednokrotne](#test-single-sign-on)** : Sprawdź, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 Najpierw włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal:
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Palo Alto Networks - Captive Portal** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W okienku **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
 
@@ -146,7 +147,7 @@ Następnie utwórz użytkownika testowego o nazwie *Britta Simon* w witrynie Azu
 
 1. W witrynie Azure Portal wybierz kolejno pozycje **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
 2. Wybierz przycisk **Nowy użytkownik**.
 
@@ -154,11 +155,11 @@ Następnie utwórz użytkownika testowego o nazwie *Britta Simon* w witrynie Azu
 
 3. W okienku **Użytkownik** wykonaj następujące czynności:
 
-    ![Okno dialogowe użytkownika](common/user-properties.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
     1. W polu **Nazwa** wprowadź ciąg **BrittaSimon**.
   
-    2. Aby uzyskać **nazwa_użytkownika**, wprowadź **BrittaSimon\@\<your_company_domain\>** . Na przykład **BrittaSimon\@contoso.com**.
+    2. W obszarze **Nazwa użytkownika**wprowadź **BrittaSimon\@\<your_company_domain\>** . Na przykład **BrittaSimon\@contoso.com**.
 
     3. W polu **Hasło** wprowadź hasło. Zalecamy zapisanie i zachowanie wprowadzonego hasła. Możesz zaznaczyć pole wyboru **Pokaż hasło**, aby wyświetlić hasło.
 
@@ -178,15 +179,15 @@ Następnie przyznaj dostęp do aplikacji Palo Alto Networks Captive Portal, aby 
 
 3. W menu wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 4. Wybierz przycisk **Dodaj użytkownika**. Następnie w okienku **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy**.
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. W okienku **Użytkownicy i grupy** na liście **Użytkownicy** wybierz pozycję **Britta Simon**. Wybierz **wybierz**.
+5. W okienku **Użytkownicy i grupy** na liście **Użytkownicy** wybierz pozycję **Britta Simon**. Wybierz przycisk **Wybierz**.
 
-6. Aby dodać wartość roli do potwierdzenia SAML, w okienku **Wybieranie roli**  wybierz odpowiednią rolę użytkownika. Wybierz **wybierz**.
+6. Aby dodać wartość roli do potwierdzenia SAML, w okienku **Wybieranie roli**  wybierz odpowiednią rolę użytkownika. Wybierz przycisk **Wybierz**.
 
 7. W okienku **Dodawanie przypisania** wybierz pozycję **Przypisz**.
 
@@ -201,11 +202,11 @@ Następnie utwórz użytkownika o nazwie *Britta Simon* w aplikacji Palo Alto Ne
 
 Aplikacja Palo Alto Networks Captive Portal jest instalowana za zaporą na maszynie wirtualnej systemu Windows. Aby przetestować logowanie jednokrotne w aplikacji Palo Alto Networks Captive Portal, zaloguj się na maszynie wirtualnej z systemem Windows przy użyciu protokołu RDP (Remote Desktop Protocol). W sesji protokołu RDP otwórz przeglądarkę i przejdź do dowolnej witryny internetowej. Zostanie otwarty adres URL logowania jednokrotnego i pojawi się monit o uwierzytelnienie. Po zakończeniu uwierzytelniania będzie można uzyskiwać dostęp do witryn internetowych.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 - [Tutorials about integrating SaaS apps with Azure Active Directory (Samouczki dotyczące integrowania aplikacji SaaS z usługą Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Dostęp warunkowy w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Dostęp warunkowy w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

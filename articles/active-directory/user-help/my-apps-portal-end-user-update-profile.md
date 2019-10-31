@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14146be73de309a7119f5c7b416c4e02f3bb4285
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383080"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160752"
 ---
 # <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Aktualizowanie informacji o profilu i koncie z portalu My Apps
 
@@ -77,7 +77,7 @@ Jeśli chcesz zmienić hasło dla konta służbowego, możesz wybrać pozycję *
 
     ![Strona zmiany hasła](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Wybierz **przesłać**.
+3. Wybierz pozycję **Prześlij**.
 
     Hasło zostało zmienione. Użytkownik musi zalogować się do wszystkich aplikacji, które zostały wcześniej zalogowane przy użyciu konta służbowego.
 
@@ -86,13 +86,13 @@ Jeśli chcesz zmienić hasło dla konta służbowego, możesz wybrać pozycję *
 Jeśli nie pamiętasz hasła, nigdy nie otrzymasz go od działu pomocy technicznej Twojej firmy lub nie masz zablokowanego konta, możesz zresetować swoje hasło.
 
 >[!Important]
->Administrator musi włączyć tę funkcję i należy zarejestrować się, aby wziąć udział. Aby uzyskać szczegółowe informacje na temat rejestrowania i resetowania hasła, zobacz [Rejestrowanie w celu](active-directory-passwords-reset-register.md) samoobsługowego resetowania hasła i [resetowania hasła służbowego](user-help-reset-password.md).
+>Administrator musi włączyć tę funkcję i należy zarejestrować się, aby wziąć udział. Aby uzyskać szczegółowe informacje na temat rejestrowania i resetowania hasła, zobacz [Rejestrowanie w celu samoobsługowego resetowania hasła](active-directory-passwords-reset-register.md) i [resetowania hasła służbowego](active-directory-passwords-update-your-own-password.md).
 
 ## <a name="change-your-security-verification-information"></a>Zmienianie informacji weryfikacyjnych dotyczących zabezpieczeń
 
 Jeśli Twoja organizacja wymaga korzystania z weryfikacji dwuetapowej, możesz dodawać, aktualizować i usuwać skojarzone informacje o zabezpieczeniach ze strony **dodatkowej weryfikacji zabezpieczeń** .
 
-Weryfikacja dwuskładnikowa wymaga użycia dwóch informacji weryfikacyjnych, takich jak hasło i numer PIN, zanim będzie można uzyskać dostęp do swojego konta lub informacji w organizacji. Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej, zobacz [Konfigurowanie mojego konta na potrzeby weryfikacji](multi-factor-authentication-end-user-first-time.md)dwuetapowej.
+Weryfikacja dwuskładnikowa wymaga użycia dwóch informacji weryfikacyjnych, takich jak hasło i numer PIN, zanim będzie można uzyskać dostęp do swojego konta lub informacji w organizacji. Aby uzyskać więcej informacji na temat weryfikacji dwuskładnikowej, zobacz [Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md).
 
 ### <a name="to-change-your-security-information"></a>Aby zmienić informacje o zabezpieczeniach
 
@@ -108,7 +108,7 @@ Weryfikacja dwuskładnikowa wymaga użycia dwóch informacji weryfikacyjnych, ta
 
     - **Skonfiguruj aplikację Microsoft Authenticator.** Możesz skonfigurować aplikację Microsoft Authenticator, która będzie działała jako metoda weryfikacji. Aby uzyskać więcej informacji na temat aplikacji Microsoft Authenticator, zobacz [co to jest aplikacja Microsoft Authenticator?](user-help-auth-app-overview.md)
 
-3. Wybierz **Zapisz** Aby zapisać zmiany.
+3. Wybierz pozycję **Zapisz** , aby zapisać zmiany.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>Przejrzyj instrukcję dotyczącą warunków użytkowania w organizacji
 

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Użyj Azure Database Migration Service, aby przeprowadzić migrację w trybie online systemu Oracle do Azure Database for PostgreSQL | Microsoft Docs'
+title: 'Samouczek: Aby przeprowadzić migrację w trybie online systemu Oracle do programu Azure Database for PostgreSQL, użyj Azure Database Migration Service Microsoft Docs'
 description: Dowiedz się, jak przeprowadzić migrację online z programu Oracle lokalnie lub na maszynach wirtualnych do Azure Database for PostgreSQL przy użyciu Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 8944a5adbe1b9e129b4a95c64aaa7a75fb96ac82
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1ac5e4dd28f7565f546c700a4bbb0076fd793bb7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845541"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163427"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Samouczek: Migrowanie bazy danych Oracle do Azure Database for PostgreSQL online przy użyciu usługi DMS (wersja zapoznawcza)
 
@@ -84,7 +84,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
       SHUTDOWN IMMEDIATE;
       ```
 
-      Poczekaj na `'ORACLE instance shut down'`potwierdzenie.
+      Poczekaj na `'ORACLE instance shut down'`potwierdzenia.
 
     * Uruchom nowe wystąpienie i zainstaluj (ale nie Otwórz) bazy danych, aby włączyć lub wyłączyć archiwizowanie komp uruchomione następujące polecenie:
 
@@ -114,12 +114,12 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
       SELECT log_mode FROM v$database;
       ```
 
-      Należy odebrać odpowiedź `'ARCHIVELOG'`. Jeśli odpowiedź to `'NOARCHIVELOG'`, to wymagania nie jest spełnione.
+      Powinna zostać wyświetlona odpowiedź `'ARCHIVELOG'`. Jeśli odpowiedź jest `'NOARCHIVELOG'`, wymagania nie są spełnione.
 
   * Włącz dodatkowe rejestrowanie dla replikacji przy użyciu jednej z następujących opcji.
 
     * **Opcja 1**.
-      Zmień dodatkowe rejestrowanie na poziomie bazy danych, aby uwzględnić wszystkie tabele z klucz podstawowy i unikatowym indeksem. Zapytanie wykrywania zwróci wartość `'IMPLICIT'`.
+      Zmień dodatkowe rejestrowanie na poziomie bazy danych, aby uwzględnić wszystkie tabele z klucz podstawowy i unikatowym indeksem. Zapytanie wykrywania zwróci `'IMPLICIT'`.
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA (PRIMARY KEY, UNIQUE) COLUMNS;
@@ -132,7 +132,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
       ```
 
     * **Opcja 2**.
-      Zmień dodatkowe rejestrowanie na poziomie bazy danych, aby objęło wszystkie tabele, i zapytanie wykrywania zwraca `'YES'`.
+      Zmień dodatkowe rejestrowanie na poziomie bazy danych, aby objęło wszystkie tabele, a zapytanie wykrywania zwraca `'YES'`.
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
@@ -164,19 +164,19 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
       SELECT supplemental_log_data_min FROM v$database;
       ```
 
-    Należy odebrać odpowiedź `'YES'`.
+    Powinna zostać wyświetlona odpowiedź `'YES'`.
 
 ## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>Oceń wysiłki dla programu Oracle do Azure Database for PostgreSQL migracji
 
-Zalecamy użycie ora2pg do oceny nakładu pracy wymaganego do migracji z programu Oracle do Azure Database for PostgreSQL. Za pomocą `ora2pg -t SHOW_REPORT` dyrektywy można utworzyć raport zawierający listę wszystkich obiektów programu Oracle, szacowany koszt migracji (w dniach deweloperskich) oraz niektóre obiekty bazy danych, które mogą wymagać specjalnej uwagi w ramach konwersji.
+Zalecamy użycie ora2pg do oceny nakładu pracy wymaganego do migracji z programu Oracle do Azure Database for PostgreSQL. Użyj dyrektywy `ora2pg -t SHOW_REPORT`, aby utworzyć raport zawierający listę wszystkich obiektów programu Oracle, szacowany koszt migracji (w dniach deweloperskich) i niektóre obiekty bazy danych, które mogą wymagać specjalnej uwagi w ramach konwersji.
 
 Większość klientów poświęca dużo czasu na zapoznanie się z raportem oceny i uwzględnieniem automatycznego i ręcznego nakładu pracy.
 
-Aby skonfigurować i uruchomić program ora2pg w celu utworzenia raportu z oceny, **Zobacz premigration: Sekcja** oceny programu [Oracle do Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf). Przykładowy raport oceny ora2pg jest dostępny w [tym miejscu](http://ora2pg.darold.net/report.html).
+Aby skonfigurować i uruchomić program ora2pg w celu utworzenia raportu z oceny, zobacz sekcję **premigration: Assessment** w programie [Oracle do Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf). Przykładowy raport oceny ora2pg jest dostępny w [tym miejscu](http://ora2pg.darold.net/report.html).
 
 ## <a name="export-the-oracle-schema"></a>Eksportowanie schematu programu Oracle
 
-Zalecamy użycie ora2pg do konwersji schematu Oracle i innych obiektów Oracle (typy, procedury, funkcje itp.) do schematu, który jest zgodny z Azure Database for PostgreSQL. ora2pg zawiera wiele dyrektyw, które ułatwiają wstępne Definiowanie niektórych typów danych. Na przykład można użyć dyrektywy, `DATA_TYPE` aby zastąpić wszystkie cyfry (*, 0) wartością bigint, a nie wartością numeryczną (38).
+Zalecamy użycie ora2pg do konwersji schematu Oracle i innych obiektów Oracle (typy, procedury, funkcje itp.) do schematu, który jest zgodny z Azure Database for PostgreSQL. ora2pg zawiera wiele dyrektyw, które ułatwiają wstępne Definiowanie niektórych typów danych. Na przykład można użyć dyrektywy `DATA_TYPE`, aby zastąpić wszystkie cyfry (*, 0) wartością bigint, a nie wartością numeryczną (38).
 
 Aby wyeksportować wszystkie obiekty bazy danych w plikach. SQL, można uruchomić ora2pg. Następnie można przejrzeć pliki. SQL przed zaimportowaniem ich do Azure Database for PostgreSQL przy użyciu PSQL lub można wykonać. Skrypt SQL w PgAdmin.
 
@@ -190,7 +190,7 @@ Na przykład:
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
 ```
 
-Aby skonfigurować i uruchomić ora2pg na potrzeby konwersji schematu, zobacz **migracja: Sekcja schemat i** dane programu [Oracle do Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf).
+Aby skonfigurować i uruchomić ora2pg na potrzeby konwersji schematu, zobacz sekcję **migracja: schemat i dane** w programie [Oracle do Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf).
 
 ## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>Skonfiguruj schemat w Azure Database for PostgreSQL
 
@@ -219,7 +219,7 @@ Jeśli utworzysz schemat PostgreSQL przy użyciu narzędzi takich jak ora2pg prz
     ![Wyświetlanie subskrypcji w portalu](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> Jeśli zachodzi potrzeba mapowania nazw tabel źródłowych do tabel o różnych nazwach, [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) wiadomości e-mail i możemy udostępnić skrypt służący do automatyzowania procesu.
+> Jeśli zachodzi potrzeba mapowania nazw tabel źródłowych do tabel o różnych nazwach, [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) poczty e-mail i możemy udostępnić skrypt służący do automatyzowania procesu.
 
 ### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>Gdy schemat tabeli PostgreSQL nie istnieje
 
@@ -229,7 +229,7 @@ Aby Azure Database Migration Service utworzyć schemat dla Ciebie, upewnij się,
 > [!IMPORTANT]
 > Azure Database Migration Service wymaga, aby wszystkie tabele zostały utworzone w taki sam sposób, przy użyciu Azure Database Migration Service lub narzędzia, takiego jak ora2pg, ale nie obu.
 
-Aby rozpocząć pracę:
+Aby rozpocząć:
 
 1. Utwórz schemat w docelowej bazie danych zgodnie z wymaganiami dotyczącymi aplikacji. Domyślnie nazwy kolumn i schematu tabeli PostgreSQL są mniejsze. Z drugiej strony, schemat i kolumny tabeli programu Oracle są domyślnie pisane wielkimi literami.
 2. W kroku wybierz schematy Określ docelową bazę danych i schemat docelowy.
@@ -241,13 +241,13 @@ Aby rozpocząć pracę:
 
     | Źródłowy schemat programu Oracle | Docelowa baza danych PostgreSQL. schemat | Usługa DMS utworzyła schemat. tabela. kolumna |
     | ------------- | ------------- | ------------- |
-    | HR | targetHR. Public | Public. kraje. country_id |
-    | HR | targetHR.trgthr | trgthr. kraje. country_id |
-    | HR | targetHR.TARGETHR | "TARGETHR"." KRAJE "." COUNTRY_ID" |
-    | HR | targetHR.HR | "HR". " KRAJE "." COUNTRY_ID" |
-    | HR | targetHR.Hr | \* Nie można zmapować przypadków mieszanych |
+    | Kadry | targetHR. Public | Public. kraje. country_id |
+    | Kadry | targetHR.trgthr | trgthr. kraje. country_id |
+    | Kadry | targetHR.TARGETHR | "TARGETHR"." KRAJE "." COUNTRY_ID" |
+    | Kadry | targetHR.HR | "HR". " KRAJE "." COUNTRY_ID" |
+    | Kadry | targetHR.Hr | \* Nie można zmapować przypadków mieszanych |
 
-    \* Aby utworzyć mieszany schemat przypadków i nazwy tabel w docelowym PostgreSQL, skontaktuj [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)się z firmą. Możemy udostępnić skrypt pozwalający skonfigurować mieszany schemat tabeli przypadków w docelowej bazie danych PostgreSQL.
+    \* Aby utworzyć mieszany schemat przypadków i nazwy tabel w docelowym PostgreSQL, skontaktuj się z [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com). Możemy udostępnić skrypt pozwalający skonfigurować mieszany schemat tabeli przypadków w docelowej bazie danych PostgreSQL.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Rejestrowanie dostawcy zasobów Microsoft.DataMigration
 
@@ -320,7 +320,7 @@ Po utworzeniu usługi znajdź ją w witrynie Azure Portal, otwórz ją, a nastę
 
 ## <a name="upload-oracle-oci-driver"></a>Przekazywanie sterownika OCI firmy Oracle
 
-1. Wybierz pozycję **Zapisz**, a następnie na ekranie **Zainstaluj sterownik OCI** Zaloguj się do swojego konta Oracle i Pobierz sterownik **instantclient-basiclite-Windows. x64-12.2.0.1.0. zip** (37 128 586 bajtów) (suma kontrolna SHA1: 865082268) w [tym miejscu](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst).
+1. Wybierz pozycję **Zapisz**, a następnie na ekranie **Zainstaluj sterownik OCI** Zaloguj się do swojego konta Oracle i Pobierz sterownik **instantclient-basiclite-Windows. x64-12.2.0.1.0. zip** (37 128 586 bajtów) (suma kontrolna SHA1:865082268) z tego [miejsca ](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst).
 2. Pobierz sterownik do folderu udostępnionego.
 
    Upewnij się, że folder jest współużytkowany przy użyciu podanej nazwy użytkownika z minimalnym dostępem tylko do odczytu. Azure Database Migration Service dostępu do udziału i odczytuje z niego dane w celu przekazania sterownika OCI do platformy Azure przez personifikowanie określonej nazwy użytkownika.
@@ -339,7 +339,7 @@ Po utworzeniu usługi znajdź ją w witrynie Azure Portal, otwórz ją, a nastę
 
     Jeśli docelowa baza danych zawiera tę samą nazwę bazy danych co źródłowa baza danych, Azure Database Migration Service domyślnie wybiera docelową bazę danych.
 
-    ![Mapuj do docelowych baz danych](media/tutorial-oracle-azure-postgresql-online/dms-map-target-details.png)
+    ![Mapowanie do docelowych baz danych](media/tutorial-oracle-azure-postgresql-online/dms-map-target-details.png)
 
 3. Wybierz pozycję **Zapisz**. Na ekranie **Podsumowanie migracji** w polu tekstowym **Nazwa działania** określ nazwę działania migracji, a następnie sprawdź podsumowanie, aby upewnić się, że szczegółowe informacje źródłowe i docelowe pasują do wcześniej podanych.
 

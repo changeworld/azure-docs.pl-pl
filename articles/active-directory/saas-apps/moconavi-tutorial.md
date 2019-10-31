@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą moconavi | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i moconavi.
+title: 'Samouczek: integracja Azure Active Directory z usługą moconavi | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i moconavi.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,51 +8,52 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e1916224-e1c2-426f-b233-0a2518fa41db
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 872a2daf30a2173c7cde93e534b8e7525c88a4d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 038520e662a205bc173035fd19656cbaf4800239
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096844"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160524"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą moconavi
+# <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Samouczek: integracja Azure Active Directory z usługą moconavi
 
-W tym samouczku dowiesz się, jak zintegrować moconavi w usłudze Azure Active Directory (Azure AD).
-Integrowanie moconavi z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę moconavi z usługą Azure Active Directory (Azure AD).
+Integracja moconavi z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do moconavi.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do moconavi (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi moconavi.
+* Możesz pozwolić użytkownikom na automatyczne logowanie do moconavi (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą moconavi, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą moconavi, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* moconavi logowanie jednokrotne włączone subskrypcji
+* subskrypcja z włączonym logowaniem jednokrotnym w moconavi
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* obsługuje moconavi **SP** jednokrotne logowanie inicjowane przez
+* moconavi obsługuje logowanie jednokrotne w usłudze **SP**
 
 ## <a name="adding-moconavi-from-the-gallery"></a>Dodawanie moconavi z galerii
 
-Aby skonfigurować integrację moconavi w usłudze Azure AD, należy dodać moconavi z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu moconavi z usługą Azure AD, musisz dodać moconavi z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać moconavi z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -60,37 +61,37 @@ Aby skonfigurować integrację moconavi w usłudze Azure AD, należy dodać moco
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **moconavi**, wybierz opcję **moconavi** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **moconavi**, wybierz pozycję **moconavi** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
      ![moconavi na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą moconavi w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w moconavi musi zostać ustanowione.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą moconavi na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w moconavi.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą moconavi, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi moconavi, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie moconavi logowania jednokrotnego](#configure-moconavi-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego moconavi](#create-moconavi-test-user)**  — aby mają odpowiednika w pozycji Britta simon w moconavi połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie](#configure-moconavi-single-sign-on)** jednokrotne w usłudze moconavi, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego moconavi](#create-moconavi-test-user)** , aby uzyskać odpowiednik Britta Simon w moconavi, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z moconavi, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą moconavi, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **moconavi** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **moconavi** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -102,22 +103,22 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z moconavi, wykonaj n
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![moconavi domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier-reply.png)
+    ![moconavi domenę i adresy URL Logowanie jednokrotne](common/sp-identifier-reply.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<yourserverurl>/moconavi-saml2/saml/login`
 
     b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<yourserverurl>/moconavi-saml2`
 
-    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<yourserverurl>/moconavi-saml2/saml/SSO`
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<yourserverurl>/moconavi-saml2/saml/SSO`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta moconavi](mailto:support@recomot.co.jp) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem obsługi klienta moconavi](mailto:support@recomot.co.jp) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. Na **Konfigurowanie moconavi** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie moconavi** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -125,11 +126,11 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z moconavi, wykonaj n
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-moconavi-single-sign-on"></a>Konfigurowanie moconavi logowania jednokrotnego
+### <a name="configure-moconavi-single-sign-on"></a>Konfigurowanie logowania jednokrotnego moconavi
 
-Aby skonfigurować logowanie jednokrotne na **moconavi** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure, aby [zespołem pomocy technicznej moconavi](mailto:support@recomot.co.jp). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować Logowanie jednokrotne na stronie **moconavi** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej moconavi](mailto:support@recomot.co.jp). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -149,22 +150,22 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do moconavi.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi moconavi.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **moconavi**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **moconavi**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **moconavi**.
+2. Na liście Aplikacje wybierz pozycję **moconavi**.
 
     ![Link moconavi na liście aplikacji](common/all-applications.png)
 
@@ -182,21 +183,21 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-moconavi-test-user"></a>Tworzenie użytkownika testowego moconavi
+### <a name="create-moconavi-test-user"></a>Utwórz użytkownika testowego moconavi
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w moconavi. Praca z [zespołem pomocy technicznej moconavi](mailto:support@recomot.co.jp) Aby dodać użytkowników na platformie moconavi. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w moconavi. Aby dodać użytkowników na platformie moconavi, Pracuj z [zespołem pomocy technicznej moconavi](mailto:support@recomot.co.jp) . Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-1. Zainstaluj moconavi ze sklepu Microsoft.
+1. Zainstaluj moconavi ze sklepu Microsoft Store.
 
-2. Rozpocznij moconavi.
+2. Uruchom moconavi.
 
-3. Kliknij przycisk **połączyć ustawienie** przycisku.
+3. Kliknij przycisk **Ustawienia połączenia** .
 
     ![Testowanie logowania jednokrotnego](./media/moconavi-tutorial/testing1.png)
 
-4. Wprowadź `https://mcs-admin.moconavi.biz/gateway` do **nawiązywanie połączenia z adresem URL** pola tekstowego, a następnie kliknij przycisk **gotowe** przycisku.
+4. Wprowadź `https://mcs-admin.moconavi.biz/gateway` w polu tekstowym **Połącz z adresem URL** , a następnie kliknij przycisk **gotowe** .
 
     ![Testowanie logowania jednokrotnego](./media/moconavi-tutorial/testing2.png)
 
@@ -204,25 +205,25 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w moconavi. Praca z [
 
     ![Testowanie logowania jednokrotnego](./media/moconavi-tutorial/testing3.png)
 
-    a. Wprowadź **klucz uwierzytelniania danych wejściowych**:`azureAD` do **klucz uwierzytelniania danych wejściowych** pola tekstowego.
+    a. Wprowadź **klucz uwierzytelniania wejściowego**:`azureAD` w polu tekstowym **klucz uwierzytelniania wejściowego** .
 
-    b. Wprowadź **identyfikator użytkownika wprowadzania**: `your ad account` do **identyfikator użytkownika wprowadzania** pole tekstowe.
+    b. Wprowadź **wejściowy identyfikator użytkownika**: `your ad account` do **wejściowego pola tekstowego identyfikatora użytkownika** .
 
-    c. Kliknij przycisk **logowania**.
+    d. Kliknij przycisk **Zaloguj**.
 
-6. Wprowadź swoje hasło usługi Azure AD, aby **hasło** pola tekstowego, a następnie kliknij przycisk **logowania** przycisku.
+6. Wprowadź hasło w polu tekstowym **hasło** usługi Azure AD, a następnie kliknij przycisk **Zaloguj** .
 
     ![Testowanie logowania jednokrotnego](./media/moconavi-tutorial/testing4.png)
 
-7. Uwierzytelnianie usługi Azure AD zakończy się po wyświetleniu menu.
+7. Uwierzytelnianie usługi Azure AD powiedzie się po wyświetleniu menu.
 
     ![Testowanie logowania jednokrotnego](./media/moconavi-tutorial/testing5.png)
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

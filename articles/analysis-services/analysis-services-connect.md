@@ -4,25 +4,25 @@ description: Dowiedz się, jak nawiązać połączenie i pobrać dane z serwera 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8059ac748f73ad8f9036f8e675e876e3a8716be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295173"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147319"
 ---
 # <a name="connecting-to-servers"></a>Łączenie z serwerami
 
-W tym artykule opisano nawiązywanie połączenia z serwerem za pomocą aplikacji do modelowania i zarządzania danymi, takich jak SQL Server Management Studio (SSMS) lub SQL Server Data Tools (SSDT). Lub, z aplikacjami raportowania klienta, takimi jak Microsoft Excel, Power BI Desktop lub aplikacje niestandardowe. Połączenia z Azure Analysis Services korzystają z protokołu HTTPS.
+W tym artykule opisano nawiązywanie połączenia z serwerem za pomocą aplikacji do modelowania i zarządzania danymi, takich jak SQL Server Management Studio (SSMS) lub Visual Studio z projektami Analysis Services lub z aplikacjami raportowania klienta, takimi jak Microsoft Excel, Power BI Aplikacje klasyczne lub niestandardowe. Połączenia z Azure Analysis Services korzystają z protokołu HTTPS.
 
 ## <a name="client-libraries"></a>Biblioteki klienckie
 
 [Pobierz najnowsze biblioteki klienckie](analysis-services-data-providers.md)
 
-Wszystkie połączenia z serwerem, niezależnie od typu, wymagają zaktualizowanych bibliotek klienta biblioteki AMO, ADOMD.NET i OLEDB do łączenia się z serwerem Analysis Services i interfejsem. W przypadku programów SSMS, SSDT, Excel 2016 i nowszych oraz Power BI najnowsze biblioteki klienckie są instalowane lub aktualizowane w comiesięcznych wersjach. Jednak w niektórych przypadkach możliwe, że aplikacja może nie mieć najnowszej wersji. Na przykład gdy zasady opóźnią aktualizacje lub aktualizacje pakietu Office 365 są w odłożonym kanale.
+Wszystkie połączenia z serwerem, niezależnie od typu, wymagają zaktualizowanych bibliotek klienta biblioteki AMO, ADOMD.NET i OLEDB do łączenia się z serwerem Analysis Services i interfejsem. W przypadku programów SSMS, Visual Studio, Excel 2016 i nowszych oraz Power BI najnowsze biblioteki klienckie są instalowane lub aktualizowane za pomocą comiesięcznych wersji. Jednak w niektórych przypadkach możliwe, że aplikacja może nie mieć najnowszej wersji. Na przykład gdy zasady opóźnią aktualizacje lub aktualizacje pakietu Office 365 są w odłożonym kanale.
 
 ## <a name="server-name"></a>Nazwa serwera
 

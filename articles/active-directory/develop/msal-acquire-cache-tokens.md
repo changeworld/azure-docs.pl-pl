@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie tokenami (Biblioteka uwierzytelniania firmy Microsoft)
+title: Pozyskiwanie i buforowanie tokenów przy użyciu MSAL
 titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o uzyskiwaniu i buforowaniu tokenów przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa6a939fce3eae8b1367c2d01e947e813fa5437
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 0d47fa92de8365ed3a5e0349b78899ff7fde1375
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803286"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150643"
 ---
-# <a name="acquiring-and-caching-tokens-using-msal"></a>Pobieranie i buforowanie tokenów przy użyciu MSAL
+# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Uzyskiwanie i buforowanie tokenów przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL)
+
 [Tokeny dostępu](access-tokens.md) umożliwiają klientom bezpieczne wywoływanie interfejsów API sieci Web chronionych przez platformę Azure. Istnieje wiele sposobów uzyskania tokenu przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL). Niektóre sposoby wymagają interakcji z użytkownikami za pomocą przeglądarki sieci Web. Niektóre nie wymagają interakcji z użytkownikiem. Ogólnie rzecz biorąc, sposób uzyskania tokenu zależy od tego, czy aplikacja to publiczna aplikacja kliencka (aplikacja klasyczna lub mobilna), czy poufna aplikacja kliencka (aplikacja sieci Web, internetowy interfejs API lub aplikacja demona, taka jak usługa systemu Windows).
 
 MSAL buforuje token po jego uzyskaniu.  Kod aplikacji powinien próbować uzyskać token dyskretnie (z pamięci podręcznej), najpierw przed uzyskaniem tokenu przy użyciu innych metod.

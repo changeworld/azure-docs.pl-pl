@@ -1,10 +1,10 @@
 ---
 title: Izolacja w chmurze publicznej platformy Azure | Microsoft Docs
-description: Dowiedz się więcej na temat usług obliczeniowych opartych na chmurze, które obejmują szeroki wybór wystąpień obliczeniowych & usług, które mogą być automatycznie skalowane w górę i w dół w celu spełnienia potrzeb aplikacji lub przedsiębiorstwa.
+description: Dowiedz się, jak platforma Azure zapewnia izolację zarówno złośliwych, jak i niezłośliwych użytkowników, a także oferuje różne opcje izolacji dla architektów.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,38 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123071"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159757"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
-##  <a name="introduction"></a>Wprowadzenie
-### <a name="overview"></a>Przegląd
-Aby pomóc aktualnym i potencjalnym klientom platformy Azure zrozumieć i korzystać z różnych funkcji związanych z zabezpieczeniami dostępnych w i otaczających platformę Azure, firma Microsoft opracowała szereg oficjalnych dokumentów, omówienia zabezpieczeń, najlepsze rozwiązania i Zestawie.
-Tematy obejmują zakres i głębokość oraz są aktualizowane okresowo. Ten dokument jest częścią tej serii, jak przedstawiono w poniższej sekcji streszczenie.
+System Azure umożliwia uruchamianie aplikacji i maszyn wirtualnych w ramach udostępnionej infrastruktury fizycznej. Jedną z ekonomicznych motywacji do uruchamiania aplikacji w środowisku chmury jest możliwość dystrybucji kosztów zasobów udostępnionych między wieloma klientami. Ta metoda korzystania z wielu dzierżawców zwiększa wydajność dzięki możliwości multipleksowania zasobów między różnymi klientami przy niskich kosztach. Niestety, wprowadza również ryzyko związane z udostępnianiem serwerów fizycznych i innych zasobów infrastruktury w celu uruchamiania poufnych aplikacji i maszyn wirtualnych, które mogą należeć do dowolnego lub potencjalnie złośliwego użytkownika.
 
-### <a name="azure-platform"></a>Platforma Azure
-Azure to otwarta i elastyczna platforma usług w chmurze, która obsługuje szeroką gamę systemów operacyjnych, języków programowania, struktur, narzędzi, baz danych i urządzeń. Można na przykład:
-- Uruchamianie kontenerów systemu Linux z integracją platformy Docker;
-- Twórz aplikacje w językach JavaScript, Python, .NET, PHP, Java i Node. js; lub
-- Twórz zaplecza dla urządzeń z systemem iOS, Android i Windows.
-
-Microsoft Azure obsługuje te same technologie, które miliony deweloperów i specjalistów IT już bazują i ufają.
-
-Podczas kompilowania lub migrowania zasobów IT do usługi w chmurze publicznej można polegać na możliwościach tej organizacji, aby chronić aplikacje i dane za pomocą usług i kontroli, które zapewniają Zarządzanie zabezpieczeniami zasobów opartych na chmurze.
-
-Infrastruktura platformy Azure została zaprojektowana kompleksowo, począwszy od obiektu po aplikacje hostujące jednocześnie miliony klientów, i zapewnia wiarygodną podstawę zaspokajania potrzeb firm w zakresie bezpieczeństwa. Ponadto platforma Azure oferuje szeroki zakres konfigurowalnych opcji zabezpieczeń oraz możliwość sterowania nimi, co pozwala dostosować zabezpieczenia w taki sposób, aby spełniały unikatowe wymagania realizowanych wdrożeń. Ten dokument pomaga spełnić te wymagania.
-
-### <a name="abstract"></a>Abstrakcyjny
-
-Microsoft Azure pozwala uruchamiać aplikacje i maszyny wirtualne w udostępnionej infrastrukturze fizycznej. Jedną z ekonomicznych motywacji do uruchamiania aplikacji w środowisku chmury jest możliwość dystrybucji kosztów zasobów udostępnionych między wieloma klientami. Ta metoda korzystania z wielu dzierżawców zwiększa wydajność dzięki możliwości multipleksowania zasobów między różnymi klientami przy niskich kosztach. Niestety, wprowadza również ryzyko związane z udostępnianiem serwerów fizycznych i innych zasobów infrastruktury w celu uruchamiania poufnych aplikacji i maszyn wirtualnych, które mogą należeć do dowolnego lub potencjalnie złośliwego użytkownika.
-
-W tym artykule opisano sposób, w jaki usługa Microsoft Azure zapewnia izolację zarówno złośliwych, jak i niezłośliwych użytkowników, oraz służy jako przewodnik tworzenia rozwiązań w chmurze, oferując różne opcje izolacji dla architektów. Ten oficjalny dokument koncentruje się na technologii platformy Azure i kontrolach zabezpieczeń dostępnych dla klientów i nie podejmuje próby rozwiązania problemów z umowy SLA, modelami cenowymi i DevOps.
+W tym artykule opisano, jak platforma Azure zapewnia izolację zarówno złośliwych, jak i niezłośliwych użytkowników, oraz służy jako przewodnik tworzenia rozwiązań w chmurze, oferując różne opcje izolacji dla architektów.
 
 ## <a name="tenant-level-isolation"></a>Izolacja poziomu dzierżawy
 Jedną z głównych korzyści związanych z chmurą obliczeniową jest koncepcja współdzielonej wspólnej infrastruktury na wielu klientach jednocześnie, co prowadzi do oszczędności skali. Koncepcja ta jest nazywana wielodostępem. Firma Microsoft działa w sposób ciągły, aby zapewnić, że architektura wielodostępności platformy Microsoft Cloud Azure obsługuje standardy zabezpieczeń, poufności, prywatności, integralności i dostępności.
@@ -73,7 +54,7 @@ Użytkownicy, grupy i aplikacje z tego katalogu mogą zarządzać zasobami w ram
 
 W przypadku potrzeb diagnostycznych i konserwacyjnych wymagany jest model operacyjny, który korzysta z systemu podniesienia uprawnień just-in-Time. Azure AD Privileged Identity Management (PIM) wprowadza koncepcję uprawnionego administratora. [Uprawnieni Administratorzy](../../active-directory/privileged-identity-management/pim-configure.md) powinni być użytkownikami, którzy potrzebują uprzywilejowanego dostępu, a następnie, ale nie codziennie. Rola pozostaje nieaktywna, a gdy użytkownik potrzebuje dostępu, przechodzi proces aktywacji i staje się aktywnym administratorem na określony z góry czas.
 
-![Usługa Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
+![Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
 
 Azure Active Directory hostuje każdą dzierżawę w swoim własnym chronionym kontenerze, przy użyciu zasad i uprawnień do i w kontenerze, który jest własnością i jest zarządzany przez dzierżawcę.
 
@@ -245,7 +226,7 @@ Rozwiązanie do szyfrowania dysków dla systemu Windows jest oparte na [szyfrowa
 Rozwiązanie obsługuje następujące scenariusze dla maszyn wirtualnych IaaS, gdy są one włączone w Microsoft Azure:
 -   Integracja z usługą Azure Key Vault
 
--   Maszyny wirtualne w warstwie Standardowa: Maszyny wirtualne IaaS serii a, D, DS, G, GS i tak dalej.
+-   Maszyny wirtualne w warstwie Standardowa: A, D, DS, G, GS i tak dalej, maszyny wirtualne IaaS serii
 
 -   Włączanie szyfrowania na maszynach wirtualnych z systemem Windows i Linux IaaS
 
@@ -284,7 +265,7 @@ Usługa SQL Database jest usługą relacyjnej bazy danych w chmurze firmy Micros
 
 [Microsoft SQL Azure](../../sql-database/sql-database-single-database-get-started.md) Baza danych jest usługą relacyjnej bazy danych opartą na chmurze, która jest oparta na SQL Server technologiach. Zapewnia wysoką dostępność, skalowalną i wielodostępną usługę bazy danych hostowaną przez firmę Microsoft w chmurze.
 
-Z perspektywy aplikacji SQL Azure oferuje następującą hierarchię: Każdy poziom zawiera więcej poziomów poniżej.
+Z perspektywy aplikacji SQL Azure udostępnia następujące hierarchie: każdy poziom zawiera jeden do wielu poziomów poniżej.
 
 ![Model aplikacji SQL Azure](./media/isolation-choices/azure-isolation-fig10.png)
 
@@ -350,4 +331,3 @@ Microsoft Azure oferuje różne usługi obliczeniowe oparte na chmurze, które o
 - [Izolacja magazynu](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 
 Microsoft Azure oddziela z magazynu obliczenia oparte na maszynach wirtualnych klienta. Takie Separacja umożliwia niezależne skalowanie i przechowywanie danych, co ułatwia zapewnienie wielu dzierżawców i izolację. W związku z tym usługa Azure Storage działa na osobnym sprzęcie bez łączności sieciowej z usługą Azure COMPUTE, z wyjątkiem logicznego. Wszystkie żądania są wykonywane za pośrednictwem protokołu HTTP lub HTTPS na podstawie wyboru klienta.
-

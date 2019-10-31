@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 3877648723a8866ec7d9c5f1987ae3a276114d5e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898713"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152063"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Catalog.
@@ -25,16 +25,16 @@ Data Catalog rozwiązuje problemy z odnajdywaniem źródła danych i "ciemne dan
 ## <a name="what-are-its-target-audiences"></a>Co to są docelowe odbiorcy?
 Data Catalog jest przeznaczona dla użytkowników technicznych i nietechnicznych, w tym:
 
-* Deweloperzy danych i pracownicy analizy biznesowej i analizy: Osoby odpowiedzialne za tworzenie danych i zawartości analiz dla innych osób do użycia.
-* Stewards danych: Osoby, które mają wiedzę na temat danych, znaczenie i sposób ich użycia.
-* Konsumenci danych: Osoby, które muszą mieć możliwość łatwego odnajdywania, zrozumienia i łączenia danych potrzebnych do wykonywania swoich zadań, za pomocą wybranego przez siebie narzędzia.
-* Środkowe IT: Osoby, które wymagają, aby setki źródeł danych były wykrywalne przez użytkowników biznesowych i którzy musieli zachować nadzór nad sposobem używania danych i przez kogo.
+* Deweloperzy danych i specjaliści w zakresie analizy biznesowej i analizy: osoby odpowiedzialne za tworzenie danych i zawartości analitycznej dla innych osób.
+* Data Stewards: ludzie, którzy znają dane, co oznacza i w jaki sposób ma być używany.
+* Konsumenci danych: osoby, które muszą mieć możliwość łatwego odnajdywania, zrozumienia i łączenia danych potrzebnych do wykonywania swoich zadań przy użyciu wybranego przez siebie narzędzia.
+* Środkowe IT: ludzie, którzy muszą udostępniać setki źródeł danych użytkownikom biznesowym i którzy muszą zachować nadzór nad sposobem używania danych i przez kogo.
 
 ## <a name="what-is-its-availability-by-region"></a>Jaka jest dostępność według regionów?
 Usługi Data Catalog są obecnie dostępne w następujących centrach danych:
 
 * Zachodnie stany USA
-* East US
+* Wschodnie stany USA
 * Europa Zachodnia
 * Europa Północna
 * Australia Wschodnia
@@ -87,7 +87,7 @@ Określone właściwości różnią się od źródła danych do źródła danych
 >
 
 > [!NOTE]
-> Dla źródeł danych, takich jak SQL Server Analysis Services, które mają właściwość **opisu** pierwszej klasy, narzędzie rejestracji Data Catalog źródła danych wyodrębnia tę wartość właściwości. W przypadku SQL Server relacyjnych baz danych, które nie mają właściwości **opisu** pierwszej klasy, narzędzie rejestracji Data Catalog źródła danych wyodrębnia wartość z rozszerzonej właściwości **MS_Description** dla obiektów i kolumn. Aby uzyskać więcej informacji, zobacz [Używanie rozszerzonych właściwości obiektów bazy danych](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Dla źródeł danych, takich jak SQL Server Analysis Services, które mają właściwość **opisu** pierwszej klasy, narzędzie rejestracji Data Catalog źródła danych wyodrębnia tę wartość właściwości. W przypadku *lokalnych* baz danych SQL Server relacyjnych, które nie posiadają właściwości **opisu** pierwszej klasy, Narzędzie rejestracji Data Catalog źródła danych wyodrębni wartość z **MS_Description** rozszerzonej właściwości dla obiektów i kolumn. Aby uzyskać więcej informacji, zobacz [Używanie rozszerzonych właściwości obiektów bazy danych](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
 >
 >
 

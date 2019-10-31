@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/08/2019
-ms.openlocfilehash: 63ddb329e37ea3da589e7d2eeaebabb42aa2b467
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 24a2b8a3c190ed440684ea3aa0ab35ebbf93fca0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555523"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161973"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów Diagnostyka Azure
 W tym artykule opisano Rozwiązywanie problemów związanych z używaniem Diagnostyka Azure. Aby uzyskać więcej informacji na temat diagnostyki platformy Azure, zobacz [omówienie Diagnostyka Azure](diagnostics-extension-overview.md).
@@ -30,13 +30,13 @@ Poniżej przedstawiono ścieżki do ważnych dzienników i artefaktów. Te infor
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 | Artefakt | Ścieżka |
 | --- | --- |
-| **Plik konfiguracji Diagnostyka Azure** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \Config.txt |
+| **Plik konfiguracji Diagnostyka Azure** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<wersja > \Config.txt |
 | **Pliki dziennika** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \ |
 | **Magazyn lokalny dla danych diagnostycznych** | Folderze c:\resources\directory \<CloudServiceDeploymentID >. > \<RoleName. DiagnosticStore\WAD0107\Tables |
 | **Plik konfiguracyjny monitorowania agenta** | Folderze c:\resources\directory \<CloudServiceDeploymentID >. > \<RoleName. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Diagnostyka Azure pakiet rozszerzenia** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > |
+| **Diagnostyka Azure pakiet rozszerzenia** | Wersja%SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\< |
 | **Ścieżka narzędzia do zbierania dzienników** | %SystemDrive%\Packages\GuestAgent\ |
-| **Plik dziennika MonAgentHost** | Folderze c:\resources\directory \<CloudServiceDeploymentID >. > \<RoleName. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **Plik dziennika MonAgentHost** | Folderze c:\resources\directory\<CloudServiceDeploymentID >.\<rolename >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
 ### <a name="virtual-machines"></a>Maszyny wirtualne
 | Artefakt | Ścieżka |
@@ -48,7 +48,7 @@ Poniżej przedstawiono ścieżki do ważnych dzienników i artefaktów. Te infor
 | **Plik stanu** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version > \Status |
 | **Diagnostyka Azure pakiet rozszerzenia** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion >|
 | **Ścieżka narzędzia do zbierania dzienników** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **Plik dziennika MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **Plik dziennika MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Dane metryk nie są wyświetlane w Azure Portal
 Diagnostyka Azure udostępnia dane metryk, które mogą być wyświetlane w Azure Portal. Jeśli masz problemy z wyświetlaniem danych w portalu, sprawdź tabelę WADMetrics \* na koncie magazynu Diagnostyka Azure, aby sprawdzić, czy są tam odpowiednie rekordy metryk.
@@ -64,14 +64,14 @@ Jeśli nie ma żadnych danych dla określonej metryki, sprawdź **konfigurację 
 - \ ASP.NET aplikacje (__łącznie__) \Errors łącznie/s
 - \ASP.NET\Requests w kolejce
 - \ASP.NET\Requests odrzucone
-- \Processor (w3wp) \% czas procesora
+- \Processor (w3wp)\% czas procesora
 - \Process (w3wp) \private bajtów
-- \Process (WaIISHost) \% czas procesora
+- \Process (WaIISHost)\% czas procesora
 - \Process (WaIISHost) \private bajtów
-- \Process (WaWorkerHost) \% czas procesora
+- \Process (WaWorkerHost)\% czas procesora
 - \Process (WaWorkerHost) \private bajtów
 - \Memory\Page błędy/s
-- Czas \% \.NET pamięci środowiska CLR (_Global_) w GC
+- Czas\% w \.NET CLR Memory (_Global_) w GC
 - \Dysk logiczny (C:) \Bajty zapisu/s
 - \Dysk logiczny (C:) \Bajty bajty odczytu/s
 - \Dysk logiczny (D:) \Bajty zapisu/s
@@ -208,8 +208,8 @@ Ten kod generuje cztery tabele:
 
 | Wydarzenie | Nazwa tabeli |
 | --- | --- |
-| Provider = "prov1" &lt;Event ID = "1"/&gt; |WADEvent + MD5 ("prov1") + "1" |
-| Provider = "prov1" &lt;Event ID = "2" eventDestination = "dest1"/&gt; |WADdest1 |
+| Provider = "prov1" &lt;identyfikator zdarzenia = "1"/&gt; |WADEvent + MD5 ("prov1") + "1" |
+| Provider = "prov1" &lt;identyfikator zdarzenia = "2" eventDestination = "dest1"/&gt; |WADdest1 |
 | Provider = "prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("prov1") |
 | Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
@@ -260,7 +260,7 @@ Agent monitorowania zbiera dzienniki i artefakty jako pliki `.tsf`. Plik `.tsf` 
 Nowy plik o nazwie `<relevantLogFile>.csv` jest tworzony w tej samej ścieżce co odpowiadający plik `.tsf`.
 
 >[!NOTE]
-> Wystarczy uruchomić to narzędzie tylko w odniesieniu do głównego pliku. TSF (na przykład PerformanceCountersTable. TSF). Pliki towarzyszące (na przykład PerformanceCountersTables_ \* \*001. TSF, PerformanceCountersTables_ \* \*002. TSF itd.) są automatycznie przetwarzane.
+> Wystarczy uruchomić to narzędzie tylko w odniesieniu do głównego pliku. TSF (na przykład PerformanceCountersTable. TSF). Pliki towarzyszące (na przykład PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF itd.) są automatycznie przetwarzane.
 
 ### <a name="more-about-missing-trace-logs"></a>Więcej informacji o braku dzienników śledzenia
 

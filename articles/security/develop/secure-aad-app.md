@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: v-fehase
-ms.openlocfilehash: 87df7824a182e68d849fdf967f96b2974b7e0c16
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148174"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159837"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Opracowywanie bezpiecznej aplikacji dla aplikacji usługi Azure AD
 ## <a name="overview"></a>Przegląd
@@ -235,7 +235,7 @@ $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1
 
 #Configure the HTTP settings for the application gateway back end
 
-$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
+$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name "setting01" -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
 
 #Create a load-balancer routing rule that configures the load balancer
 
@@ -259,13 +259,13 @@ Azure App Service umożliwia tworzenie i hostowanie aplikacji sieci Web przy uż
 #### <a name="create-an-app-service-plan-in-free-tier"></a>Utwórz plan App Service w warstwie Bezpłatna
     New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $webappname -Tier Free
 
-#### <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
+#### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
     New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $webappname
 
     Write-Host "Configure a CNAME record that maps $fqdn to $webappname.azurewebsites.net"
     Read-Host "Press [Enter] key when ready ..."
 
-#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Przed kontynuowaniem przejdź do interfejsu użytkownika konfiguracji systemu nazw domen platformy Azure dla domeny niestandardowej i postępuj zgodnie z https://aka.ms/appservicecustomdns instrukcjami w obszarze w celu skonfigurowania rekordu CNAME dla nazwy hosta "www" i wskaż nazwę domyślnej domeny aplikacji sieci Web
+#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Przed kontynuowaniem przejdź do interfejsu użytkownika konfiguracji systemu nazw domen platformy Azure dla domeny niestandardowej, a następnie postępuj zgodnie z instrukcjami w https://aka.ms/appservicecustomdns, aby skonfigurować rekord CNAME dla nazwy hosta "www" i wskazać jako domyślną nazwę domeny aplikacji sieci Web
 
 #### <a name="upgrade-app-service-plan-to-shared-tier-minimum-required-by-custom-domains"></a>Uaktualnij plan App Service do warstwy udostępnionej (minimum wymagane przez domeny niestandardowe)
     Set-AzAppServicePlan -Name $webappname -ResourceGroupName $webappname -Tier Shared
@@ -293,7 +293,7 @@ Wystąpienia App Service mogą być zintegrowane z sieciami wirtualnymi. Ta Inte
     *Nowa integracja sieci wirtualnej dla App Service*
 1. Na następnej stronie wybierz pozycję **Dodaj sieć wirtualną (wersja zapoznawcza)** .
 
-1. W następnym menu wybierz sieć wirtualną utworzoną w ramach wdrożenia, które zaczyna się `aad-vnet`od. Można utworzyć nową podsieć lub wybrać istniejącą.
+1. W następnym menu wybierz sieć wirtualną utworzoną we wdrożeniu, która rozpoczyna się od `aad-vnet`. Można utworzyć nową podsieć lub wybrać istniejącą.
    W takim przypadku należy utworzyć nową podsieć. Ustaw **zakres adresów** na **10.0.3.0/24** i nadaj nazwę podsieci **aplikacji**podsieć.
 
    ![App Service konfigurację sieci wirtualnej](./media/secure-web-app/app-vnet-config.png)
@@ -320,7 +320,7 @@ Po włączeniu integracji sieci wirtualnej możesz dodać sieciowe grupy zabezpi
 
    *Konfigurowanie sieciowej grupy zabezpieczeń*
 
-4. W regułach ruchu wychodzącego dla bramy sieciowej grupy zabezpieczeń Dodaj regułę, która zezwala na połączenia wychodzące z wystąpieniem App Service, tworząc regułę, która odwołuje się do tagu usługi.`AppService`
+4. W regułach ruchu wychodzącego dla bramy sieciowej grupy zabezpieczeń Dodaj regułę, która zezwala na połączenia wychodzące z wystąpieniem App Service, tworząc regułę, która odwołuje się do tagu usługi `AppService`
 
    ![Dodaj reguły ruchu wychodzącego dla sieciowej grupy zabezpieczeń](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
@@ -350,7 +350,7 @@ Aby zastosować ustawienia, przejdź do karty sieć App Service, wybierz kartę 
 *Zezwalanie na dostęp do App Service tylko za pomocą adresu IP bramy*
 
 ### <a name="azure-domain-name-system"></a>System nazw domen platformy Azure 
-System nazw domen platformy Azure lub system nazw domen Azure jest odpowiedzialny za tłumaczenie (lub rozwiązanie) nazwy witryny sieci Web lub usługi na adres IP. System nazw domen platformy Azure https://docs.microsoft.com/azure/dns/dns-overview) (to usługa hostingu domen systemu nazw domen, która zapewnia rozpoznawanie nazw przy użyciu infrastruktury platformy Azure. Hostowanie domen na platformie Azure pozwala użytkownikom na Zarządzanie rekordami systemu nazw domen przy użyciu tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń, co w przypadku innych usług platformy Azure. System nazw domen platformy Azure obsługuje również prywatne domeny systemu nazw domen.
+System nazw domen platformy Azure lub system nazw domen Azure jest odpowiedzialny za tłumaczenie (lub rozwiązanie) nazwy witryny sieci Web lub usługi na adres IP. System nazw domen platformy Azure (https://docs.microsoft.com/azure/dns/dns-overview) to usługa hostingu domen systemu nazw domen, która zapewnia rozpoznawanie nazw przy użyciu infrastruktury platformy Azure. Hostowanie domen na platformie Azure pozwala użytkownikom na Zarządzanie rekordami systemu nazw domen przy użyciu tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń, co w przypadku innych usług platformy Azure. System nazw domen platformy Azure obsługuje również prywatne domeny systemu nazw domen.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 Azure Disk Encryption korzysta z funkcji BitLocker systemu Windows w celu zapewnienia szyfrowania woluminów dla dysków danych. Rozwiązanie integruje się z Azure Key Vault w celu ułatwienia kontroli kluczy szyfrowania dysków i zarządzania nimi.
@@ -389,22 +389,22 @@ Dzięki Azure Security Center klienci mogą centralnie stosować zasady zabezpie
    - Azure Security Center i Azure Advisor zapewniają dodatkową ochronę i powiadomienia. Azure Security Center udostępnia również system reputacji.
 ### <a name="logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji
 Usługi platformy Azure w szerokim zakresie rejestrują aktywność systemu i użytkownika, a także kondycję systemu:
-   - Dzienniki aktywności: [Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji. Dzienniki aktywności mogą pomóc w ustaleniu inicjatora, czasu wystąpienia i stanu operacji.
-   - Dzienniki diagnostyczne: [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki wyemitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Przechowywanie jest możliwe do skonfigurowania przez użytkownika, do 730 dni, w celu spełnienia wymagań dotyczących przechowywania specyficznych dla organizacji.
+   - Dzienniki aktywności: [dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji. Dzienniki aktywności mogą pomóc w ustaleniu inicjatora, czasu wystąpienia i stanu operacji.
+   - Dzienniki diagnostyczne: [dzienniki diagnostyczne](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) obejmują wszystkie dzienniki emitowane przez każdy zasób. Dzienniki te obejmują Dzienniki systemu Windows, dzienniki usługi Azure Storage, dzienniki inspekcji Key Vault i Application Gateway dostępu i dzienników zapory. Wszystkie dzienniki diagnostyczne zapisu na scentralizowanym i zaszyfrowanym koncie usługi Azure Storage w celu archiwizacji. Przechowywanie jest możliwe do skonfigurowania przez użytkownika, do 730 dni, w celu spełnienia wymagań dotyczących przechowywania specyficznych dla organizacji.
 ### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
    Te dzienniki są konsolidowane w [Azure monitor dziennikach](https://azure.microsoft.com/services/log-analytics/) na potrzeby przetwarzania, przechowywania i raportowania na pulpicie nawigacyjnym. Po zebraniu dane są zorganizowane w oddzielne tabele dla każdego typu danych w obszarze obszary robocze Log Analytics, co umożliwia analizowanie wszystkich danych razem niezależnie od oryginalnego źródła. Ponadto Azure Security Center integruje się z dziennikami Azure Monitor, dzięki czemu klienci mogą korzystać z zapytań Kusto w celu uzyskania dostępu do danych zdarzeń zabezpieczeń i połączyć je z danymi z innych usług.
 
    Następujące rozwiązania do [monitorowania](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) platformy Azure są dołączone jako część tej architektury
 
-   - [Active Directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Rozwiązanie Active Directory Sprawdzanie kondycji ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu i zawiera priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
-   - [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Rozwiązanie Agent Health zgłasza liczbę wdrożonych agentów i ich dystrybucję geograficzną, a także liczbę agentów, które nie odpowiadają, i liczbę agentów, które przesyłają dane operacyjne.
-   - [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Activity Log Analytics rozwiązanie pomaga w analizie dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klienta.
+   - [Active Directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): rozwiązanie Active Directory Health Check ocenia ryzyko i kondycję środowisk serwera w regularnych odstępach czasu i zawiera priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera.
+   - [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): rozwiązanie Agent Health zgłasza liczbę wdrożonych agentów i ich dystrybucję geograficzną, a także liczbę agentów, które nie odpowiadają, i liczbę agentów, które przesyłają dane operacyjne.
+   - [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): rozwiązanie Activity Log Analytics pomaga w analizie dzienników aktywności platformy Azure we wszystkich subskrypcjach platformy Azure dla klienta.
 ### <a name="azure-monitor"></a>Azure Monitor
    [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/)ułatwia użytkownikom śledzenie wydajności, zachowanie bezpieczeństwa i identyfikowanie trendów przez umożliwienie organizacjom inspekcji, tworzenia alertów i archiwizowania danych, w tym śledzenia wywołań interfejsu API w swoich zasobach platformy Azure.
 ### <a name="application-insights"></a>Application Insights 
    [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) to rozszerzalna usługa zarządzania wydajnością aplikacji dla deweloperów sieci Web na wielu platformach. Application Insights wykrywa anomalie wydajności i klienci mogą używać jej do monitorowania działającej aplikacji sieci Web. Zawiera ona zaawansowane narzędzia analityczne, które ułatwiają klientom diagnozowanie problemów i zrozumienie, jakie użytkownicy faktycznie robią z ich aplikacjami. Zaprojektowano, aby pomóc klientom w ciągłym ulepszaniu wydajności i użyteczności.
 
-### <a name="azure-key-vault"></a>W usłudze Azure Key Vault
+### <a name="azure-key-vault"></a>Azure Key Vault
    Utwórz magazyn dla organizacji, w której mają być przechowywane klucze, i obsługuj odpowiedzialności za zadania operacyjne, takie jak poniżej
 
    - Dane przechowywane w Key Vault obejmują   
@@ -443,14 +443,14 @@ Usługi platformy Azure w szerokim zakresie rejestrują aktywność systemu i u�
 1.  Przejdź z powrotem do Azure Portal. W okienku nawigacji po lewej stronie wybierz usługę Azure Active Directory a następnie wybierz pozycję Rejestracje aplikacji.
 2.  Na ekranie wynikowym wybierz aplikację WebApp-OpenIDConnect-DotNet-Code-v2.
 3.  Na karcie uwierzytelnianie w sekcji identyfikatory URI przekierowania wybierz pozycję Sieć Web w polu kombi i Dodaj następujące identyfikatory URI przekierowania.
-    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.nethttps://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o w sekcji Ustawienia zaawansowane Ustaw adres URL wylogowywania na https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc
+    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o w sekcji Ustawienia zaawansowane Ustaw adres URL wylogowywania na https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc
 4.  Na karcie znakowanie o aktualizacji adresu URL strony głównej na adres usługi App Service, na przykład https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net.
         o Zapisz konfigurację.
 5.  Jeśli aplikacja wywołuje internetowy interfejs API, upewnij się, że zastosowano niezbędne zmiany w projekcie appSettings. JSON, więc wywoła opublikowany adres URL API zamiast localhost.
 Publikowanie przykładu
     1.  Na karcie Omówienie App Service Pobierz profil publikowania, klikając link Pobierz profil publikowania i Zapisz go. Można również użyć innych mechanizmów wdrażania, takich jak z kontroli źródła.
     2.  Przełącz się do programu Visual Studio i przejdź do projektu WebApp-OpenIDConnect-DotNet-Code-v2. Kliknij prawym przyciskiem myszy projekt w Eksplorator rozwiązań i wybierz polecenie Publikuj. Kliknij przycisk Importuj profil na dolnym pasku i zaimportuj wcześniej pobrany profil publikacji.
-    3.  Kliknij pozycję Konfiguruj i na karcie połączenie zaktualizuj docelowy adres URL, aby był to adres https na stronie sieci Web na przykład https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net. Kliknij przycisk Dalej.
+    3.  Kliknij pozycję Konfiguruj i na karcie połączenie zaktualizuj docelowy adres URL, tak aby był to adres https na stronie głównej adresu URL, na przykład https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net. Kliknij polecenie Dalej.
     4.  Na karcie Ustawienia upewnij się, że nie wybrano opcję Włącz uwierzytelnianie organizacyjne. Kliknij pozycję Zapisz. Kliknij pozycję Publikuj na ekranie głównym.
     5.  Program Visual Studio opublikuje projekt i automatycznie otworzy w przeglądarce adres URL projektu. Jeśli zostanie wyświetlona domyślna strona sieci Web projektu, publikacja zakończyła się pomyślnie.
 #### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Zaimplementuj Multi-Factor Authentication dla Azure Active Directory
@@ -512,9 +512,9 @@ Aby utworzyć ten obszar roboczy
    *Wyszukaj Log Analytics obszary robocze*
 
    2. Na następnej stronie wybierz pozycję **Dodaj** , a następnie podaj nazwę, grupę zasobów i lokalizację dla obszaru roboczego.
-   ![Utwórz obszar roboczy usługi Log Analytics](./media/secure-aad-app/sentinel-log-analytics-create.png)
+   ![utworzyć Log Analytics obszaru roboczego](./media/secure-aad-app/sentinel-log-analytics-create.png)
 
-   *Utwórz obszar roboczy usługi Log Analytics*
+   *Tworzenie obszaru roboczego Log Analytics*
 
    3. Użyj pola wyszukiwania, aby wyszukać **platformę Azure**.
 
@@ -537,7 +537,7 @@ Aby utworzyć ten obszar roboczy
    Aby na przykład połączyć się z bramą aplikacji, wykonaj następujące czynności:
 
    1. Otwórz blok wystąpienia usługi Azure Application Gateway.
-   2. W obszarze **monitorowanie**, wybierz opcję **ustawień diagnostycznych**.
+   2. W obszarze **monitorowanie**wybierz pozycję **Ustawienia diagnostyczne**.
    3. Wybierz pozycję **Dodaj ustawienie diagnostyczne**.
 
    ![Dodawanie Application Gateway diagnostyki](./media/secure-aad-app/sentinel-gateway-connector.png)
@@ -560,4 +560,4 @@ Aby utworzyć ten obszar roboczy
 
 - [Zdefiniowanych](secure-design.md)
 - [Opracowywanie](secure-develop.md)
-- [Wdróż](secure-deploy.md)
+- [Wdrażanie](secure-deploy.md)

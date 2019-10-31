@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/22/2019
-ms.openlocfilehash: ca0997010fef40c0927960c04588c031dd85fff8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 10/30/2019
+ms.openlocfilehash: b27c9991fd86334c87806772cbd641dd72aad1f6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795280"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163975"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Samouczek: Migrowanie SQL Server lokalnych użytkowników i grup systemu Windows do Azure SQL Database wystąpienia zarządzanego przy użyciu składni języka T-SQL
 
@@ -41,6 +41,8 @@ Aby ukończyć ten samouczek, obowiązują następujące wymagania wstępne:
 - Dostęp do Active Directory w celu tworzenia użytkowników/grup.
 - Istniejące SQL Server w środowisku lokalnym.
 - Istniejące wystąpienie zarządzane. Zobacz [Szybki Start: tworzenie Azure SQL Database wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).
+  - `sysadmin` w wystąpieniu zarządzanym musi być używany do tworzenia nazw logowania usługi Azure AD.
+- [Utwórz administratora usługi Azure AD dla wystąpienia zarządzanego](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 - Możesz połączyć się z wystąpieniem zarządzanym w sieci. Dodatkowe informacje można znaleźć w następujących artykułach: 
     - [Połącz aplikację z Azure SQL Database wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md)
     - [Szybki Start: Konfigurowanie połączenia typu punkt-lokacja z wystąpieniem zarządzanym Azure SQL Database z lokalnego](sql-database-managed-instance-configure-p2s.md)
@@ -214,7 +216,7 @@ Skorzystaj z naszego [przewodnika Szybki Start: Przywracanie bazy danych do wyst
 
 Wykonaj polecenie ALTER USER, aby zakończyć proces migracji na wystąpieniu zarządzanym.
 
-1. Zaloguj się do wystąpienia zarządzanego przy użyciu konta administratora SQL dla wystąpienia zarządzanego. Następnie utwórz dane logowania usługi Azure AD w zarządzanym wystąpieniu przy użyciu następującej składni:
+1. Zaloguj się do wystąpienia zarządzanego przy użyciu konta administratora SQL dla wystąpienia zarządzanego. Następnie utwórz dane logowania usługi Azure AD w zarządzanym wystąpieniu przy użyciu następującej składni. Aby uzyskać więcej informacji, zobacz [Samouczek: zabezpieczenia wystąpienia zarządzanego w Azure SQL Database przy użyciu podmiotów zabezpieczeń serwera usługi Azure AD (Logins)](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 

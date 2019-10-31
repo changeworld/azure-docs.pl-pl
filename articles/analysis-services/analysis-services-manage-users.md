@@ -4,15 +4,15 @@ description: Informacje o uwierzytelnianiu i uprawnieniach użytkowników w prog
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc66b34492b34a6e0f239d19ee10fbd79b683a14
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a48292b7600d8b9e400bf1e2d61aec313ce29f4b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294930"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146877"
 ---
 # <a name="authentication-and-user-permissions"></a>Uwierzytelnianie i uprawnienia użytkownika
 
@@ -28,11 +28,11 @@ Wszystkie aplikacje i narzędzia klienckie używają co najmniej jednej z Analys
 
 Wszystkie trzy biblioteki klienta obsługują zarówno przepływ interaktywny usługi Azure AD, jak i nieinteraktywne metody uwierzytelniania. W aplikacjach korzystających z AMOMD i MSOLAP można używać dwóch metod nieinteraktywnych, hasła Active Directory i Active Directory zintegrowanych metod uwierzytelniania. Te dwie metody nigdy nie powodują wyskakujących okien dialogowych.
 
-Aplikacje klienckie, takie jak program Excel i Power BI Desktop, oraz narzędzia, takie jak SSMS i SSDT, instalują najnowsze wersje bibliotek po aktualizacji do najnowszej wersji. Power BI Desktop, SSMS i SSDT są aktualizowane co miesiąc. Program Excel jest [aktualizowany przy użyciu pakietu Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Aktualizacje pakietu Office 365 są rzadziej, a niektóre organizacje korzystają z odroczonego kanału, co oznacza, że aktualizacje są odroczone do trzech miesięcy.
+Aplikacje klienckie, takie jak program Excel i Power BI Desktop, oraz narzędzia, takie jak SSMS i Analysis Services projekty, dla programu Visual Studio instalują najnowsze wersje bibliotek po aktualizacji do najnowszej wersji. Power BI Desktop, SSMS i Analysis Services projekty są aktualizowane co miesiąc. Program Excel jest [aktualizowany przy użyciu pakietu Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Aktualizacje pakietu Office 365 są rzadziej, a niektóre organizacje korzystają z odroczonego kanału, co oznacza, że aktualizacje są odroczone do trzech miesięcy.
 
 W zależności od używanej aplikacji lub narzędzia klienckiego typ uwierzytelniania oraz sposób logowania mogą się różnić. Każda aplikacja może obsługiwać różne funkcje do łączenia się z usługami w chmurze, takimi jak Azure Analysis Services.
 
-Power BI Desktop, SSDT i SSMS obsługują Active Directory uwierzytelniania uniwersalnego, interaktywną metodę, która również obsługuje usługę Azure Multi-Factor Authentication (MFA). Usługa Azure MFA pomaga w zabezpieczeniu dostępu do danych i aplikacji przy jednoczesnym zapewnieniu prostego procesu logowania. Zapewnia silne uwierzytelnianie z kilkoma opcjami weryfikacji (połączenie telefoniczne, wiadomość tekstowa, karty inteligentne z numerem PIN lub powiadomieniem aplikacji mobilnej). Interaktywna usługa MFA z usługą Azure AD może spowodować wyskakujące okno dialogowe umożliwiające weryfikację. **Zalecane jest uwierzytelnianie uniwersalne**.
+Power BI Desktop, Visual Studio i SSMS obsługują Active Directory uwierzytelnianie uniwersalne, interaktywną metodę, która również obsługuje usługę Azure Multi-Factor Authentication (MFA). Usługa Azure MFA pomaga w zabezpieczeniu dostępu do danych i aplikacji przy jednoczesnym zapewnieniu prostego procesu logowania. Zapewnia silne uwierzytelnianie z kilkoma opcjami weryfikacji (połączenie telefoniczne, wiadomość tekstowa, karty inteligentne z numerem PIN lub powiadomieniem aplikacji mobilnej). Interaktywna usługa MFA z usługą Azure AD może spowodować wyskakujące okno dialogowe umożliwiające weryfikację. **Zalecane jest uwierzytelnianie uniwersalne**.
 
 Jeśli logujesz się do platformy Azure przy użyciu konta systemu Windows, a uwierzytelnianie uniwersalne nie jest wybrane lub jest niedostępne (Excel), jest wymagane [Active Directory Federation Services (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) . W przypadku federacji użytkownicy usługi Azure AD i Office 365 są uwierzytelniani przy użyciu poświadczeń lokalnych i mogą uzyskiwać dostęp do zasobów platformy Azure.
 
@@ -46,9 +46,9 @@ Serwery Azure Analysis Services obsługują połączenia z programu [SSMS v 17.1
 
 *  Obsługuje Multi-Factor Authentication (MFA). Usługa Azure MFA pomaga w zabezpieczeniu dostępu do danych i aplikacji z zakresu opcji weryfikacji: połączenia telefonicznego, wiadomości tekstowej, kart inteligentnych z numerem PIN lub powiadomień aplikacji mobilnej. Interaktywna usługa MFA z usługą Azure AD może spowodować wyskakujące okno dialogowe umożliwiające weryfikację.
 
-### <a name="sql-server-data-tools-ssdt"></a>SQL Server Data Tools (SSDT)
+### <a name="visual-studio"></a>Visual Studio
 
-SSDT nawiązuje połączenie z Azure Analysis Services przy użyciu uwierzytelniania uniwersalnego Active Directory z obsługą usługi MFA. Użytkownicy są monitowani o zalogowanie się do platformy Azure przy pierwszym wdrożeniu. Użytkownicy muszą zalogować się do platformy Azure przy użyciu konta z uprawnieniami administratora serwera na serwerze, na którym są wdrażane. Po pierwszym zalogowaniu się do platformy Azure jest przypisywany token. SSDT buforuje token w pamięci dla przyszłych ponownych połączeń.
+Program Visual Studio nawiązuje połączenie z Azure Analysis Services przy użyciu uwierzytelniania uniwersalnego Active Directory z obsługą usługi MFA. Użytkownicy są monitowani o zalogowanie się do platformy Azure przy pierwszym wdrożeniu. Użytkownicy muszą zalogować się do platformy Azure przy użyciu konta z uprawnieniami administratora serwera na serwerze, na którym są wdrażane. Po pierwszym zalogowaniu się do platformy Azure jest przypisywany token. Token znajduje się w pamięci podręcznej w przypadku przyszłych ponownych połączeń.
 
 ### <a name="power-bi-desktop"></a>Power BI Desktop
 
@@ -60,7 +60,7 @@ Użytkownicy programu Excel mogą łączyć się z serwerem przy użyciu konta s
 
 ## <a name="user-permissions"></a>Uprawnienia użytkowników
 
-**Administratorzy serwera** są określeni dla wystąpienia serwera Azure Analysis Services. Łączą się z narzędziami takimi jak Azure Portal, SSMS i SSDT, aby wykonywać zadania takie jak dodawanie baz danych i zarządzanie rolami użytkowników. Domyślnie użytkownik tworzący serwer jest automatycznie dodawany jako administrator serwera Analysis Services. Innych administratorów można dodać za pomocą Azure Portal lub SSMS. Administratorzy serwera muszą mieć konto w dzierżawie usługi Azure AD w tej samej subskrypcji. Aby dowiedzieć się więcej, zobacz [Zarządzanie administratorami serwerów](analysis-services-server-admins.md). 
+**Administratorzy serwera** są określeni dla wystąpienia serwera Azure Analysis Services. Łączą się z narzędziami takimi jak Azure Portal, SSMS i Visual Studio, aby wykonywać zadania takie jak dodawanie baz danych i zarządzanie rolami użytkowników. Domyślnie użytkownik tworzący serwer jest automatycznie dodawany jako administrator serwera Analysis Services. Innych administratorów można dodać za pomocą Azure Portal lub SSMS. Administratorzy serwera muszą mieć konto w dzierżawie usługi Azure AD w tej samej subskrypcji. Aby dowiedzieć się więcej, zobacz [Zarządzanie administratorami serwerów](analysis-services-server-admins.md). 
 
 **Użytkownicy bazy danych** nawiązują połączenie z modelowymi bazami danych przy użyciu aplikacji klienckich, takich jak Excel lub Power BI. Należy dodać użytkowników do ról bazy danych. Role bazy danych definiują uprawnienia administratora, procesu lub odczytu bazy danych. Ważne jest, aby zrozumieć użytkowników bazy danych w roli z uprawnieniami administratora, które różnią się od administratorów serwerów. Jednak domyślnie Administratorzy serwera są również administratorami baz danych. Aby dowiedzieć się więcej, zobacz [Zarządzanie rolami bazy danych i użytkownikami](analysis-services-database-users.md).
 
@@ -74,7 +74,7 @@ Role na tym poziomie dotyczą użytkowników lub kont wymagających wykonywania 
 
  Role zdefiniowane dla modelu tabelarycznego to role bazy danych. Oznacza to, że role zawierają składowe składające się z użytkowników usługi Azure AD i grup zabezpieczeń z określonymi uprawnieniami, które definiują akcję, którą mogą wykonać te elementy członkowskie w bazie danych modelu. Rola bazy danych jest tworzona jako oddzielny obiekt w bazie danych i ma zastosowanie tylko do bazy danych, w której została utworzona.   
   
- Domyślnie podczas tworzenia nowego projektu modelu tabelarycznego projekt modelu nie ma żadnych ról. Role można definiować przy użyciu okna dialogowego Menedżer ról w SSDT. Gdy role są zdefiniowane w projekcie projektu modelu, są stosowane tylko do bazy danych obszaru roboczego modelu. Po wdrożeniu modelu te same role są stosowane do wdrożonego modelu. Po wdrożeniu modelu Administratorzy serwerów i baz danych mogą zarządzać rolami i członkami przy użyciu programu SSMS. Aby dowiedzieć się więcej, zobacz [Zarządzanie rolami bazy danych i użytkownikami](analysis-services-database-users.md).
+ Domyślnie podczas tworzenia nowego projektu modelu tabelarycznego projekt modelu nie ma żadnych ról. Role można definiować przy użyciu okna dialogowego Menedżer ról w programie Visual Studio. Gdy role są zdefiniowane w projekcie projektu modelu, są stosowane tylko do bazy danych obszaru roboczego modelu. Po wdrożeniu modelu te same role są stosowane do wdrożonego modelu. Po wdrożeniu modelu Administratorzy serwerów i baz danych mogą zarządzać rolami i członkami przy użyciu programu SSMS. Aby dowiedzieć się więcej, zobacz [Zarządzanie rolami bazy danych i użytkownikami](analysis-services-database-users.md).
   
 ## <a name="next-steps"></a>Następne kroki
 

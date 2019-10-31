@@ -4,15 +4,15 @@ description: Dowiedz się, jak utworzyć plik połączenia danych pakietu Office
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e12717b37171df55c7559bb1b05c467f332236bc
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5aa9645ec3138ed661305e1019b3e6dadfe4d212
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294839"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146685"
 ---
 # <a name="create-an-office-data-connection-file"></a>Tworzenie pliku połączenia danych pakietu Office
 
@@ -29,7 +29,7 @@ Informacje przedstawione w tym artykule opisują sposób tworzenia pliku połąc
 
 3. W `<odc:CommandText>Model</odc:CommandText>` Zmień `Model` na nazwę modelu lub perspektywy. 
 
-4. Zapisz plik z rozszerzeniem `.odc` w folderze C:\Users @ no__t-1*username*\Documents\My sources.
+4. Zapisz plik z rozszerzeniem `.odc` w folderze C:\Users\\*username*\Documents\My Data Sources.
 
 5. Kliknij plik prawym przyciskiem myszy, a następnie kliknij polecenie **Otwórz w programie Excel**. Lub w programie Excel na Wstążce **dane** kliknij pozycję **istniejące połączenia**, wybierz plik, a następnie kliknij przycisk **Otwórz**.
 

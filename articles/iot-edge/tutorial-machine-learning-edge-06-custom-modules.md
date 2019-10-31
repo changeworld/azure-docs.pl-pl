@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e629cbdce55f236e095f606f56adec453b0b17c7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5fa13f209d6f4df0ebd531f803e75cdb657abf5c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299861"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163123"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Samouczek: Tworzenie i wdrażanie niestandardowych modułów IoT Edge
 
@@ -22,7 +22,7 @@ ms.locfileid: "71299861"
 
 W tym artykule tworzymy trzy moduły IoT Edge, które odbierają komunikaty z urządzeń typu liść, uruchamiają dane za pośrednictwem modelu uczenia maszynowego, a następnie przesyłają szczegółowe informacje do IoT Hub.
 
-IoT Edge Hub ułatwia komunikację modułu z modułem. Używanie Centrum IoT Edge jako brokera komunikatów zachowuje moduły niezależne od siebie. Moduły muszą tylko określić danych wejściowych, które akceptują wiadomości i danych wyjściowych, do których one zapisywania komunikatów.
+IoT Edge Hub ułatwia komunikację modułu z modułem. Używanie Centrum IoT Edge jako brokera komunikatów zachowuje moduły niezależne od siebie. Moduły muszą określać dane wejściowe, na których są akceptowane wiadomości i dane wyjściowe, do których są zapisywane wiadomości.
 
 Chcemy, aby IoT Edge urządzenie miało cztery rzeczy dla nas:
 
@@ -60,7 +60,7 @@ Podczas wykonywania drugiego z naszych dwóch Azure Notebooks utworzyliśmy i op
 
 1. Otwórz sesję pulpitu zdalnego na komputerze deweloperskim.
 
-2. Otwórz folder **C:\\Source\\IoTEdgeAndMlSample** w Visual Studio Code.
+2. Otwórz folder **C:\\source\\IoTEdgeAndMlSample** w Visual Studio Code.
 
 3. Kliknij prawym przyciskiem myszy panel Eksplorator (w pustym obszarze) i wybierz polecenie **nowe IoT Edge rozwiązanie**.
 
@@ -78,7 +78,7 @@ Podczas wykonywania drugiego z naszych dwóch Azure Notebooks utworzyliśmy i op
 
 9. Sprawdź rozwiązanie i zwróć uwagę na utworzone pliki:
 
-   * **deployment.template.json:** Ten plik zawiera definicje wszystkich modułów w rozwiązaniu. W tym pliku znajdują się trzy sekcje, do których należy zwrócić uwagę:
+   * **Deployment. Template. JSON:** Ten plik zawiera definicje wszystkich modułów w rozwiązaniu. W tym pliku znajdują się trzy sekcje, do których należy zwrócić uwagę:
 
      * **Poświadczenia rejestru:** Definiuje zbiór niestandardowych rejestrów kontenerów używanych w rozwiązaniu. Teraz powinien zawierać rejestr z obszaru roboczego uczenia maszynowego, w którym jest przechowywany obraz Azure Machine Learning. Możesz mieć dowolną liczbę rejestrów kontenerów, ale dla uproszczenia będziemy używać tego rejestru dla wszystkich modułów
 
@@ -87,12 +87,12 @@ Podczas wykonywania drugiego z naszych dwóch Azure Notebooks utworzyliśmy i op
          "<your registry>": {
            "username": "$CONTAINER_REGISTRY_USERNAME_<your registry>",
            "password": "$CONTAINER_REGISTRY_PASSWORD_<your registry>",
-           "address": "<your registry>.azurecr.io”
+           "address": "<your registry>.azurecr.io"
          }
        }
        ```
 
-     * **Moduły** Ta sekcja zawiera zestaw modułów zdefiniowanych przez użytkownika, które przechodzą do tego rozwiązania. Zauważ, że ta sekcja zawiera obecnie dwa moduły: SimulatedTemperatureSensor i turbofanRulClassifier. SimulatedTemperatureSensor został zainstalowany przez szablon Visual Studio Code, ale nie jest potrzebny dla tego rozwiązania. Definicję modułu SimulatedTemperatureSensor można usunąć z sekcji modułów. Należy zauważyć, że definicja modułu turbofanRulClassifier wskazuje obraz w rejestrze kontenerów. Po dodaniu kolejnych modułów do rozwiązania zostaną one wyświetlone w tej sekcji.
+     * **Moduły:** Ta sekcja zawiera zestaw modułów zdefiniowanych przez użytkownika, które przechodzą do tego rozwiązania. Zauważ, że ta sekcja zawiera obecnie dwa moduły: SimulatedTemperatureSensor i turbofanRulClassifier. SimulatedTemperatureSensor został zainstalowany przez szablon Visual Studio Code, ale nie jest potrzebny dla tego rozwiązania. Definicję modułu SimulatedTemperatureSensor można usunąć z sekcji modułów. Należy zauważyć, że definicja modułu turbofanRulClassifier wskazuje obraz w rejestrze kontenerów. Po dodaniu kolejnych modułów do rozwiązania zostaną one wyświetlone w tej sekcji.
 
        ```json
        "modules": {
@@ -169,18 +169,18 @@ Następnie dodamy moduł routera do naszego rozwiązania. Moduł routera obsług
 
 3. Nazwij moduł **turbofanRouter**.
 
-4. Po wyświetleniu monitu dotyczącego repozytorium obrazów platformy Docker Użyj rejestru z obszaru roboczego usługi Machine Learning (możesz znaleźć rejestr w węźle registryCredentials pliku *Deployment. Template. JSON* ). Ta wartość to w pełni kwalifikowany adres do rejestru, taki jak  **\<\>Registry. azurecr.IO/turbofanrouter**.
+4. Po wyświetleniu monitu dotyczącego repozytorium obrazów platformy Docker Użyj rejestru z obszaru roboczego usługi Machine Learning (możesz znaleźć rejestr w węźle registryCredentials pliku *Deployment. Template. JSON* ). Ta wartość to w pełni kwalifikowany adres do rejestru, taki jak **\<rejestru\>. azurecr.IO/turbofanrouter**.
 
     > [!NOTE]
     > W tym artykule używamy Azure Container Registry utworzonych przez obszar roboczy usługi Azure Machine Learning, który został użyty do uczenia i wdrożenia naszego klasyfikatora. Jest to wyłącznie wygoda. Możemy utworzyć nowy rejestr kontenerów i opublikować tam nasze moduły.
 
-5. Otwórz nowe okno terminalu w Visual Studio Code (**Wyświetl** > **Terminal**) i skopiuj pliki z katalogu modułów.
+5. Otwórz nowe okno terminalu w Visual Studio Code (**Wyświetl** **Terminal** > ) i skopiuj pliki z katalogu modułów.
 
     ```cmd
     copy c:\source\IoTEdgeAndMlSample\EdgeModules\modules\turbofanRouter\*.cs c:\source\IoTEdgeAndMlSample\EdgeSolution\modules\turbofanRouter\
     ```
 
-6. Po wyświetleniu monitu o zastąpienie `y` program.cs naciśnij klawisz `Enter`, a następnie kliknij przycisk.
+6. Po wyświetleniu monitu o zastąpienie program.cs naciśnij przycisk `y`, a następnie kliknij pozycję `Enter`.
 
 ### <a name="build-router-module"></a>Moduł tworzenia routera
 
@@ -221,7 +221,7 @@ Następnie dodamy moduł routera do naszego rozwiązania. Moduł routera obsług
 
 5. Zapisz i zamknij plik Tasks. JSON.
 
-6. Uruchom kompilację `Ctrl + Shift + B` z > lub**Uruchom zadanie kompilacji**.
+6. Uruchom kompilację za pomocą **`Ctrl + Shift + B` lub > ** **uruchomienia zadania kompilacji**.
 
 ### <a name="set-up-module-routes"></a>Konfigurowanie tras modułu
 
@@ -248,7 +248,7 @@ Jak wspomniano powyżej, środowisko uruchomieniowe IoT Edge używa tras skonfig
    "classifierToRouter": "FROM /messages/modules/turbofanRulClassifier/outputs/amloutput INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/rulInput\")"
    ```
 
-#### <a name="outputs"></a>outputs
+#### <a name="outputs"></a>Dane wyjściowe
 
 Dodaj cztery dodatkowe trasy do $edgeHub parametru trasy, aby obsłużyć dane wyjściowe modułu routera.
 
@@ -314,15 +314,15 @@ Moduł zapisywania Avro ma dwie obowiązki w naszym rozwiązaniu, do przechowywa
 
 ### <a name="create-module-and-copy-files"></a>Utwórz moduł i skopiuj pliki
 
-1. W palecie poleceń Wyszukaj, a następnie wybierz **pozycję Python: Select Interpreter** (Python: wybierz interpreter).
+1. W palecie poleceń Wyszukaj, a następnie wybierz pozycję **Python: Wybierz interpreter**.
 
 1. Wybierz interpreter znaleziony w C:\\Python37.
 
-1. Otwórz ponownie paletę poleceń i Wyszukaj pozycję **Terminal: Wybierz domyślną powłokę**.
+1. Otwórz ponownie paletę poleceń i Wyszukaj pozycję **Terminal: wybierz pozycję Default Shell**.
 
 1. Po wyświetleniu monitu wybierz pozycję **wiersz polecenia**.
 
-1. Otwórz nową powłokę **terminalu,**  > **Nowy**Terminal terminalu.
+1. Otwórz nową powłokę terminalu, **terminal** > **nowym terminalu**.
 
 1. Kliknij prawym przyciskiem myszy folder modules w Visual Studio Code i wybierz polecenie **Dodaj moduł IoT Edge**.
 
@@ -338,7 +338,7 @@ Moduł zapisywania Avro ma dwie obowiązki w naszym rozwiązaniu, do przechowywa
    copy C:\source\IoTEdgeAndMlSample\EdgeModules\modules\avroFileWriter\*.py C:\source\IoTEdgeAndMlSample\EdgeSolution\modules\avroFileWriter\
    ```
 
-1. Jeśli zostanie wyświetlony monit o zastąpienie Main.py `y` , wpisz, `Enter`a następnie kliknij przycisk.
+1. Jeśli zostanie wyświetlony monit o zastąpienie main.py, wpisz `y` a następnie kliknij przycisk `Enter`.
 
 1. Zwróć uwagę, że filemanager.py i schema.py zostały dodane do rozwiązania, a main.py zostało zaktualizowane.
 
@@ -379,7 +379,7 @@ Jak wspomniano w wprowadzaniu, moduł składnika zapisywania opiera się na obec
 
 #### <a name="add-directory-to-the-module"></a>Dodaj katalog do modułu
 
-Aby dodać katalog do kontenera modułu, zmodyfikujemy wieloetapowe dockerfile skojarzony z modułem avroFileWriter. Do modułu są skojarzone trzy wieloetapowe dockerfile: Pliku dockerfile. amd64, pliku dockerfile. amd64. Debug i pliku dockerfile. arm32v7. Te pliki powinny być utrzymywane w synchronizacji w przypadku, gdy chcemy debugować lub wdrożyć na urządzeniu arm32. W tym artykule należy skoncentrować się tylko na pliku dockerfile. amd64.
+Aby dodać katalog do kontenera modułu, zmodyfikujemy wieloetapowe dockerfile skojarzony z modułem avroFileWriter. Istnieją trzy wieloetapowe dockerfile skojarzone z modułem: pliku dockerfile. amd64, pliku dockerfile. amd64. Debug i pliku dockerfile. arm32v7. Te pliki powinny być utrzymywane w synchronizacji w przypadku, gdy chcemy debugować lub wdrożyć na urządzeniu arm32. W tym artykule należy skoncentrować się tylko na pliku dockerfile. amd64.
 
 1. Na komputerze deweloperskim Otwórz plik **pliku dockerfile. amd64** .
 
@@ -406,7 +406,7 @@ Aby dodać katalog do kontenera modułu, zmodyfikujemy wieloetapowe dockerfile s
    CMD [ "python3", "-u", "./main.py" ]
    ```
 
-   Polecenia `mkdir` i`chown` instruują proces kompilacji platformy Docker w celu utworzenia katalogu najwyższego poziomu o nazwie/avrofiles w obrazie, a następnie aby moduleuser właściciela tego katalogu. Należy pamiętać, że te polecenia są wstawiane po dodaniu użytkownika modułu do obrazu za pomocą `useradd` polecenia, a przed przełączeniem kontekstu do moduleuser (User moduleuser).
+   `mkdir` i `chown` polecenia instruują proces kompilacji platformy Docker, aby utworzyć katalog najwyższego poziomu o nazwie/avrofiles w obrazie, a następnie uczynić moduleuser właścicielem tego katalogu. Należy pamiętać, że te polecenia są wstawiane po dodaniu użytkownika modułu do obrazu za pomocą polecenia `useradd` i przed przełączeniem kontekstu do moduleuser (USER moduleuser).
 
 3. Wprowadź odpowiednie zmiany w pliku dockerfile. amd64. Debug i pliku dockerfile. arm32v7.
 
@@ -416,7 +416,7 @@ Ostatnim krokiem tworzenia powiązania jest aktualizacja plików Deployment. Tem
 
 1. Otwórz plik Deployment. Template. JSON.
 
-2. Zmodyfikuj definicję modułu dla avroFileWriter przez dodanie `Binds` parametru, który wskazuje katalog kontenera/avrofiles do katalogu lokalnego na urządzeniu brzegowym. Definicja modułu powinna być zgodna z tym przykładem:
+2. Zmodyfikuj definicję modułu dla avroFileWriter przez dodanie parametru `Binds`, który wskazuje katalog kontenera/avrofiles do katalogu lokalnego na urządzeniu brzegowym. Definicja modułu powinna być zgodna z tym przykładem:
 
    ```json
    "avroFileWriter": {
@@ -441,7 +441,7 @@ Ostatnim krokiem tworzenia powiązania jest aktualizacja plików Deployment. Tem
 
 ### <a name="bind-mount-for-access-to-configyaml"></a>Powiąż instalację, aby uzyskać dostęp do pliku config. YAML
 
-Musimy dodać jeszcze jedno powiązanie dla modułu zapisywania. To powiązanie daje modułowi dostęp do odczytu parametrów połączenia z pliku/etc/iotedge/config.YAML na urządzeniu IoT Edge. Potrzebujemy parametrów połączenia w celu utworzenia elementu usługi iothubclient, aby umożliwić wywołanie metody asynchronicznej\_przekazywania\_obiektów BLOB w celu przekazywania plików do centrum IoT. Kroki związane z dodawaniem tego powiązania są podobne do tych w poprzedniej sekcji.
+Musimy dodać jeszcze jedno powiązanie dla modułu zapisywania. To powiązanie daje modułowi dostęp do odczytu parametrów połączenia z pliku/etc/iotedge/config.YAML na urządzeniu IoT Edge. Do utworzenia elementu usługi iothubclient potrzebne są parametry połączenia, dzięki czemu możemy wywołać metodę przekazywania\_obiektu BLOB\_metody asynchronicznej w celu przekazywania plików do centrum IoT Hub. Kroki związane z dodawaniem tego powiązania są podobne do tych w poprzedniej sekcji.
 
 #### <a name="update-directory-permission"></a>Uprawnienie do aktualizacji katalogu
 
@@ -469,7 +469,7 @@ Musimy dodać jeszcze jedno powiązanie dla modułu zapisywania. To powiązanie 
 
 1. Na komputerze deweloperskim Otwórz plik **pliku dockerfile. amd64** .
 
-2. Dodaj do pliku dodatkowy zestaw `mkdir` poleceń `chown` i, aby wygląda następująco:
+2. Dodaj do pliku dodatkowy zestaw `mkdir` i `chown`, aby wyglądać następująco:
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -500,7 +500,7 @@ Musimy dodać jeszcze jedno powiązanie dla modułu zapisywania. To powiązanie 
 
 1. Otwórz plik **Deployment. Template. JSON** .
 
-2. Zmodyfikuj definicję modułu dla avroFileWriter przez dodanie drugiego wiersza do `Binds` parametru, który wskazuje katalog kontenera (/App/iotconfig) do katalogu lokalnego na urządzeniu (/etc/iotedge).
+2. Zmodyfikuj definicję modułu dla avroFileWriter przez dodanie drugiego wiersza do parametru `Binds`, który wskazuje katalog kontenera (/App/iotconfig) do katalogu lokalnego na urządzeniu (/etc/iotedge).
 
    ```json
    "avroFileWriter": {
@@ -537,7 +537,7 @@ Moduł zapisywania wykonuje zależność od dwóch bibliotek języka Python, fas
    pyyaml
    ```
 
-2. Otwórz plik **pliku dockerfile. amd64** i Dodaj `pip install` polecenie, aby uaktualnić setuptools.
+2. Otwórz plik **pliku dockerfile. amd64** i dodaj polecenie `pip install`, aby uaktualnić setuptools.
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -614,7 +614,7 @@ W przypadku routera i klasyfikatora oczekuje się otrzymywania zwykłych komunik
 
 7. Wybierz pozycję **Wybierz kontener**.
 
-8. Wybierz konto magazynu używane w tym samouczku, którego nazwa jest taka sama jak **\<iotedgeandml\>Unique sufiks**.
+8. Wybierz konto magazynu używane w tym samouczku, którego nazwa jest taka sama jak **iotedgeandml\<unikalnego sufiksu\>** .
 
 9. Wybierz kontener **ruldata** , a następnie kliknij przycisk **Wybierz**.
 
@@ -639,7 +639,7 @@ W przypadku routera i klasyfikatora oczekuje się otrzymywania zwykłych komunik
 
 13. Wybierz opcję **trasa testowa**. Jeśli test zakończy się pomyślnie, zobaczysz komunikat pasujący do zapytania.
 
-14. Kliknij pozycję **Zapisz**.
+14. Kliknij przycisk **Save** (Zapisz).
 
 #### <a name="update-turbofandevicetostorage-route"></a>Aktualizowanie trasy turbofanDeviceToStorage
 

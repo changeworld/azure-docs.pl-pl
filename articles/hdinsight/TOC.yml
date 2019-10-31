@@ -137,6 +137,8 @@
               href: ./hdinsight-autoscale-clusters.md
             - name: Korzystanie z zewnętrznych magazynów metadanych
               href: ./hdinsight-use-external-metadata-stores.md
+            - name: Niestandardowa baza danych Ambari
+              href: ./hdinsight-custom-ambari-db.md
             - name: Zarządzanie dziennikami klastra usługi HDInsight
               href: ./hdinsight-log-management.md
             - name: Dodawanie kont magazynu

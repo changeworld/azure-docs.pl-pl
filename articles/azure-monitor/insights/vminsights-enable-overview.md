@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 09/24/2019
-ms.openlocfilehash: 83c2264cd3aa3025e911db5079747930d1ae096b
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.date: 10/29/2019
+ms.openlocfilehash: 7e3dad5405289ee2d1f4ec8f7a586da70db9d56f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809458"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162260"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Włączanie Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — Omówienie
 
@@ -37,14 +37,20 @@ Przed rozpoczęciem upewnij się, że rozumiesz informacje w poniższych sekcjac
 Azure Monitor dla maszyn wirtualnych obsługuje obszar roboczy Log Analytics w następujących regionach:
 
 - Zachodnio-środkowe stany USA
+- Zachodnie stany USA<sup>1</sup>
 - Zachodnie stany USA 2<sup>1</sup>
+- Południowo-środkowe stany USA<sup>1</sup>
 - Wschodnie stany USA
 - Wschód stany USA 2<sup>1</sup>
+- Środkowe stany USA<sup>1</sup>
+- Północno-środkowe stany USA<sup>1</sup>
 - Kanada Środkowa
 - Południowe Zjednoczone Królestwo
 - Europa Północna<sup>1</sup>
 - Europa Zachodnia
+- Azja Wschodnia<sup>1</sup>
 - Azja Południowo-Wschodnia
+- Indie Środkowe<sup>1</sup>
 - Japonia Wschodnia<sup>1</sup>
 - Australia Wschodnia<sup>1</sup>
 - Australia Południowo-Wschodnia<sup>1</sup>
@@ -199,6 +205,9 @@ Włącz Azure Monitor dla maszyn wirtualnych przy użyciu jednej z metod opisany
 ## <a name="performance-counters-enabled"></a>Liczniki wydajności włączone 
 
 Azure Monitor dla maszyn wirtualnych konfiguruje Log Analytics obszaru roboczego do zbierania liczników wydajności, z których korzysta. W poniższej tabeli wymieniono obiekty i liczniki, które są zbierane co 60 sekund.
+
+>[!NOTE]
+>Poniższa lista liczników wydajności włączonych przez Azure Monitor dla maszyn wirtualnych nie ogranicza możliwości włączania dodatkowych liczników potrzebnych do zbierania danych z maszyn wirtualnych, które są raportowane do obszaru roboczego. Ponadto, Jeśli wyłączysz te liczniki, uniemożliwi to zestaw wykresów wydajności dołączonych do funkcji wydajności, które pokazują wykorzystanie zasobów z maszyn wirtualnych.
 
 ### <a name="windows-performance-counters"></a>Liczniki wydajności systemu Windows
 

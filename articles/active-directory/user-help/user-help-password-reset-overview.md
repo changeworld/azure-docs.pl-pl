@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66cb7218b5217565529e1e15d875c23dff10e06f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 15fbc526822f3b6659bc190ee67c6c17ff96b067
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382274"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160607"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>Zresetuj własne hasło służbowe — Omówienie
 
@@ -35,4 +35,4 @@ Aby uzyskać szczegółowe informacje i instrukcje dotyczące rejestrowania kont
 |Artykuł |Opis |
 |------|------------|
 | [Zarejestruj się w celu samoobsługowego resetowania hasła](active-directory-passwords-reset-register.md) ] Instrukcje dotyczące weryfikowania metod uwierzytelniania i rejestrowania się w celu samoobsługowego resetowania hasła, aby można było zresetować własne hasło.|
-| [Zresetuj hasło](user-help-reset-password.md) ] Instrukcje dotyczące resetowania lub odblokowywania hasła dla konta służbowego.|
+| [Zresetuj hasło](active-directory-passwords-update-your-own-password.md) ] Instrukcje dotyczące resetowania lub odblokowywania hasła dla konta służbowego.|

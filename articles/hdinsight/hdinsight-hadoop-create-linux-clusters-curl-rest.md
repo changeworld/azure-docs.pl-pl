@@ -1,6 +1,6 @@
 ---
-title: Tworzenie klastrów usługi Apache Hadoop przy użyciu interfejsu API REST usługi Azure — platformy Azure
-description: Dowiedz się, jak tworzyć klastry HDInsight po przesłaniu szablonów usługi Azure Resource Manager do interfejsu API REST platformy Azure.
+title: Tworzenie klastrów Apache Hadoop przy użyciu interfejsu API REST platformy Azure — Azure
+description: Dowiedz się, jak tworzyć klastry usługi HDInsight, przesyłając szablony Azure Resource Manager do interfejsu API REST platformy Azure.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,29 +8,29 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: d771d91feaba942b88a0ddb68f0d997fad4a981e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 963dc71097a1ac53df77f3ab9c804b53597adeb5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059420"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151996"
 ---
-# <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Tworzenie klastrów usługi Apache Hadoop przy użyciu interfejsu API REST platformy Azure
+# <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Tworzenie klastrów Apache Hadoop przy użyciu interfejsu API REST platformy Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Dowiedz się, jak utworzyć klaster usługi HDInsight przy użyciu szablonu usługi Azure Resource Manager i interfejsu API REST platformy Azure.
+Dowiedz się, jak utworzyć klaster usługi HDInsight przy użyciu szablonu Azure Resource Manager i interfejsu API REST platformy Azure.
 
-Interfejs API REST platformy Azure umożliwia wykonywanie operacji zarządzania w usługach hostowanych na platformie Azure, w tym tworzenia nowych zasobów, takich jak klastry HDInsight.
+Interfejs API REST platformy Azure umożliwia wykonywanie operacji zarządzania usługami hostowanymi na platformie Azure, w tym tworzeniem nowych zasobów, takich jak klastry usługi HDInsight.
 
 > [!NOTE]  
-> Kroki opisane w tej dokumentów użyj [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) narzędzie w celu komunikowania się z interfejsu API REST platformy Azure.
+> W procedurach przedstawionych w tym dokumencie użyto narzędzia [zwinięcie (https://curl.haxx.se/)](https://curl.haxx.se/) , aby komunikować się z interfejsem API REST platformy Azure.
 
 ## <a name="create-a-template"></a>Tworzenie szablonu
 
-Szablony usługi Azure Resource Manager są dokumentami JSON, które opisują **grupy zasobów** i wszystkie zasoby w niej (np. HDInsight). To podejście oparte na szablonach umożliwia definiowanie zasobów, które wymagają for HDInsight w jednym szablonie.
+Szablony Azure Resource Manager są dokumentami JSON opisującymi **grupę zasobów** i wszystkie znajdujące się w niej zasoby (takie jak HDInsight). Takie podejście oparte na szablonach umożliwia definiowanie zasobów potrzebnych dla usługi HDInsight w jednym szablonie.
 
-Następujący dokument JSON jest łączenie plików szablonu oraz parametrów z [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), co powoduje utworzenie klastra opartego na systemie Linux przy użyciu hasła w celu zabezpieczenia konta użytkownika SSH.
+Następujący dokument JSON jest połączeniem plików szablonów i parametrów z [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), który tworzy klaster oparty na systemie Linux przy użyciu hasła do zabezpieczenia konta użytkownika ssh.
 
    ```json
    {
@@ -145,7 +145,7 @@ Następujący dokument JSON jest łączenie plików szablonu oraz parametrów z 
                                "name": "headnode",
                                "targetInstanceCount": "2",
                                "hardwareProfile": {
-                                   "vmSize": "Standard_D3"
+                                   "vmSize": "{}" 
                                },
                                "osProfile": {
                                    "linuxOperatingSystemProfile": {
@@ -158,7 +158,7 @@ Następujący dokument JSON jest łączenie plików szablonu oraz parametrów z 
                                "name": "workernode",
                                "targetInstanceCount": "[parameters('clusterWorkerNodeCount')]",
                                "hardwareProfile": {
-                                   "vmSize": "Standard_D3"
+                                   "vmSize": "{}"
                                },
                                "osProfile": {
                                    "linuxOperatingSystemProfile": {
@@ -205,60 +205,60 @@ Następujący dokument JSON jest łączenie plików szablonu oraz parametrów z 
    }
    ```
 
-W tym przykładzie jest używany w krokach w tym dokumencie. Zastąp przykład *wartości* w **parametry** sekcji z wartościami dla klastra.
+Ten przykład jest używany w procedurach przedstawionych w tym dokumencie. Zastąp przykładowe *wartości* w sekcji **Parameters** wartościami dla danego klastra.
 
 > [!IMPORTANT]  
-> Szablon używa domyślną liczbę węzłów procesu roboczego (4) dla klastra usługi HDInsight. Jeśli planowane jest na więcej niż 32 węzły procesu roboczego, musisz wybrać rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci ram.
+> Szablon używa domyślnej liczby węzłów procesu roboczego (4) dla klastra usługi HDInsight. Jeśli planujesz więcej niż 32 węzłów procesu roboczego, musisz wybrać rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM.
 >
 > Aby uzyskać więcej informacji o rozmiarach węzła i powiązanych kosztach, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Zaloguj się do Twojej subskrypcji platformy Azure.
 
-Wykonaj kroki opisane w temacie [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) i nawiąż połączenie z subskrypcją za pomocą `az login` polecenia.
+Wykonaj kroki opisane w temacie Wprowadzenie do [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) i nawiąż połączenie z subskrypcją za pomocą polecenia `az login`.
 
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
 > [!NOTE]  
-> Te kroki są skrócone wersję *Tworzenie jednostki usługi przy użyciu hasła* części [interfejsu wiersza polecenia użyj Azure, aby utworzyć jednostkę usługi, aby uzyskiwać dostęp do zasobów](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) dokumentu. Te kroki tworzenia jednostki usługi, który jest używany do uwierzytelniania interfejsu API REST platformy Azure.
+> Te kroki są skróconą wersją sekcji *Tworzenie nazwy głównej usługi z hasłem* w [interfejsie wiersza polecenia Użyj platformy Azure, aby utworzyć nazwę główną usługi do uzyskiwania dostępu do zasobów](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) . W tych krokach opisano tworzenie jednostki usługi, która jest używana do uwierzytelniania w interfejsie API REST platformy Azure.
 
-1. Z poziomu wiersza polecenia użyj następującego polecenia, aby wyświetlić listę subskrypcji platformy Azure.
+1. W wierszu polecenia Użyj następującego polecenia, aby wyświetlić listę Twoich subskrypcji platformy Azure.
 
    ```bash
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    Na liście, wybierz subskrypcję, dla której chcesz użyć i zanotuj **Subscription_ID** i __Tenant_ID__ kolumn. Zapisz te wartości.
+    Z listy wybierz subskrypcję, której chcesz użyć, i zanotuj kolumny **Subscription_ID** i __Tenant_ID__ . Zapisz te wartości.
 
-2. Użyj następującego polecenia, aby utworzyć aplikację w usłudze Azure Active Directory.
+2. Użyj następującego polecenia, aby utworzyć aplikację w Azure Active Directory.
 
    ```bash
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    Zastąp wartości `--display-name`, `--homepage`, i `--identifier-uris` własnymi wartościami. Podaj hasło dla nowego wpisu w usłudze Active Directory.
+    Zastąp wartości `--display-name`, `--homepage`i `--identifier-uris` własnymi wartościami. Podaj hasło dla nowego wpisu Active Directory.
 
    > [!NOTE]  
-   > `--home-page` i `--identifier-uris` wartości nie muszą odwoływać się do rzeczywistej stronie sieci web hostowanych w Internecie. Klienci muszą mieć unikatowe identyfikatory URI.
+   > Wartości `--home-page` i `--identifier-uris` nie muszą odwoływać się do rzeczywistej strony sieci Web hostowanej w Internecie. Muszą to być unikatowe identyfikatory URI.
 
-   Wartość zwracana z tego polecenia jest __Identyfikatora aplikacji__ nowej aplikacji. Zapisz tę wartość.
+   Wartością zwracaną z tego polecenia jest __Identyfikator aplikacji__ dla nowej aplikacji. Zapisz tę wartość.
 
-3. Użyj następującego polecenia, aby utworzyć nazwę główną usługi za pomocą **Identyfikatora aplikacji**.
+3. Użyj następującego polecenia, aby utworzyć nazwę główną usługi przy użyciu **identyfikatora aplikacji**.
 
    ```bash
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     Wartość zwracana z tego polecenia jest __obiektu o identyfikatorze__. Zapisz tę wartość.
+     Wartością zwracaną z tego polecenia jest __Identyfikator obiektu__. Zapisz tę wartość.
 
-4. Przypisz **właściciela** roli do jednostki usługi przy użyciu **obiektu o identyfikatorze** wartość. Użyj **identyfikator subskrypcji** uzyskanymi wcześniej.
+4. Przypisz rolę **właściciela** do jednostki usługi przy użyciu wartości **identyfikatora obiektu** . Użyj pozyskanego wcześniej **identyfikatora subskrypcji** .
 
    ```bash
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
-## <a name="get-an-authentication-token"></a>Uzyskiwanie tokenu uwierzytelniania
+## <a name="get-an-authentication-token"></a>Pobierz token uwierzytelniania
 
-Użyj następującego polecenia, aby można było pobrać tokenu uwierzytelniania:
+Użyj następującego polecenia, aby pobrać token uwierzytelniania:
 
 ```bash
 curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
@@ -270,11 +270,11 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-Ustaw `$TENANTID`, `$APPID`, i `$PASSWORD` wartości uzyskane lub użyte wcześniej.
+Ustaw `$TENANTID`, `$APPID`i `$PASSWORD` do wartości uzyskanych lub użytych wcześniej.
 
-Jeśli to żądanie zakończy się pomyślnie, otrzymasz odpowiedź serię 200 i treść odpowiedzi zawiera dokument JSON.
+Jeśli to żądanie powiedzie się, otrzymasz odpowiedź serii 200, a treść odpowiedzi zawiera dokument JSON.
 
-Dokument JSON, w zwróconym przez to żądanie zawiera element o nazwie **access_token**. Wartość **access_token** jest używany do uwierzytelniania żądań interfejsu API REST.
+Dokument JSON zwrócony przez to żądanie zawiera element o nazwie **access_token**. Wartość **access_token** jest używana do uwierzytelniania żądań do interfejsu API REST.
 
 ```json
 {
@@ -286,14 +286,14 @@ Dokument JSON, w zwróconym przez to żądanie zawiera element o nazwie **access
 }
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
-Użyj następującego polecenia do utworzenia grupy zasobów.
+Aby utworzyć grupę zasobów, należy wykonać następujące czynności.
 
-* Ustaw `$SUBSCRIPTIONID` do subskrypcji identyfikator otrzymane podczas tworzenia jednostki usługi.
-* Ustaw `$ACCESSTOKEN` do tokena dostępu, odbierane w poprzednim kroku.
-* Zastąp `DATACENTERLOCATION` za pomocą chcesz utworzyć grupę zasobów i zasobów, w centrum danych. Na przykład "Południowo-środkowe stany USA".
-* Ustaw `$RESOURCEGROUPNAME` nazwy, o których chcesz użyć dla tej grupy:
+* Ustaw `$SUBSCRIPTIONID` na identyfikator subskrypcji otrzymany podczas tworzenia nazwy głównej usługi.
+* Ustaw `$ACCESSTOKEN` na token dostępu otrzymany w poprzednim kroku.
+* Zastąp `DATACENTERLOCATION` centrum danych, w którym chcesz utworzyć grupę zasobów i zasoby. Na przykład "Południowo-środkowe stany USA".
+* Ustaw `$RESOURCEGROUPNAME` na nazwę, która ma być używana dla tej grupy:
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
@@ -304,13 +304,13 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-Jeśli to żądanie zakończy się pomyślnie, otrzymasz odpowiedź serię 200 i treść odpowiedzi zawiera dokument JSON zawierający informacje o grupie. `"provisioningState"` Element zawiera wartość `"Succeeded"`.
+Jeśli to żądanie powiedzie się, otrzymasz odpowiedź serii 200, a treść odpowiedzi zawiera dokument JSON zawierający informacje o grupie. Element `"provisioningState"` zawiera wartość `"Succeeded"`.
 
 ## <a name="create-a-deployment"></a>Tworzenie wdrożenia
 
-Użyj następującego polecenia, aby wdrożyć szablon do grupy zasobów.
+Użyj następującego polecenia, aby wdrożyć szablon w grupie zasobów.
 
-* Ustaw `$DEPLOYMENTNAME` nazwy, o których chcesz użyć dla tego wdrożenia.
+* Ustaw `$DEPLOYMENTNAME` na nazwę, która ma być używana dla tego wdrożenia.
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -320,14 +320,14 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 ```
 
 > [!NOTE]  
-> Jeśli szablon został zapisany do pliku, można użyć następującego polecenia zamiast `-d "{ template and parameters}"`:
+> Jeśli szablon został zapisany w pliku, można użyć następującego polecenia zamiast `-d "{ template and parameters}"`:
 >
 > `--data-binary "@/path/to/file.json"`
 
-Jeśli to żądanie zakończy się pomyślnie, otrzymasz odpowiedź serię 200 i treść odpowiedzi zawiera dokument JSON zawierający informacje o operacji wdrażania.
+Jeśli to żądanie powiedzie się, otrzymasz odpowiedź serii 200, a treść odpowiedzi zawiera dokument JSON zawierający informacje o operacji wdrażania.
 
 > [!IMPORTANT]  
-> Wdrożenie zostało przesłane, ale nie została ukończona. Może potrwać kilka minut, zwykle około 15 na zakończenie wdrożenia.
+> Wdrożenie zostało przesłane, ale nie zostało ukończone. Ukończenie wdrożenia może potrwać kilka minut, zwykle około 15.
 
 ## <a name="check-the-status-of-a-deployment"></a>Sprawdź stan wdrożenia
 
@@ -339,29 +339,29 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-To polecenie zwraca dokument JSON zawierający informacje o operacji wdrażania. `"provisioningState"` Element zawiera stan wdrożenia. Jeśli ten element zawiera wartość `"Succeeded"`, a następnie wdrożenia została ukończona pomyślnie.
+To polecenie zwraca dokument JSON zawierający informacje o operacji wdrażania. Element `"provisioningState"` zawiera stan wdrożenia. Jeśli ten element zawiera wartość `"Succeeded"`, wdrożenie zakończyło się pomyślnie.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, że udało Ci się utworzyć klaster usługi HDInsight, użyj następującego polecenia na temat sposobu pracy z klastrem.
+Teraz, gdy klaster usługi HDInsight został pomyślnie utworzony, Skorzystaj z poniższych informacji, aby dowiedzieć się, jak korzystać z klastra.
 
-### <a name="apache-hadoop-clusters"></a>Klastry platformy Apache Hadoop
+### <a name="apache-hadoop-clusters"></a>Klastry Apache Hadoop
 
-* [Use Apache Hive z HDInsight](hadoop/hdinsight-use-hive.md)
-* [Apache Pig za pomocą HDInsight](hadoop/hdinsight-use-pig.md)
-* [Używanie technologii MapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Korzystanie z Apache Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
+* [Korzystanie z Apache świni z usługą HDInsight](hadoop/hdinsight-use-pig.md)
+* [Korzystanie z MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Klastry Apache HBase
 
-* [Rozpoczynanie pracy z usługą Apache HBase na HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Twórz aplikacje Java dla bazy danych Apache HBase na HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
+* [Wprowadzenie do platformy Apache HBase w usłudze HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Tworzenie aplikacji Java dla platformy Apache HBase w usłudze HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="apache-storm-clusters"></a>Klastrów Apache Storm
+### <a name="apache-storm-clusters"></a>Klastry Apache Storm
 
-* [Opracowywanie topologii języka Java dla usługi Storm Apache na HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Używanie składników języka Python w Storm Apache na HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Wdrażanie i monitorowanie topologii za pomocą Storm Apache na HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Tworzenie topologii języka Java dla Apache Storm w usłudze HDInsight](storm/apache-storm-develop-java-topology.md)
+* [Używanie składników języka Python w Apache Storm w usłudze HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Wdrażanie i monitorowanie topologii za pomocą Apache Storm w usłudze HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)

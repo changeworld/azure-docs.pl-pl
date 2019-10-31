@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 8ce5083d444aa05b59677fb46e7aa80200835412
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512773"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147077"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Biblioteki klienckie do łączenia się z Azure Analysis Services
 
-Biblioteki klienckie są niezbędne dla aplikacji i narzędzi klienckich do łączenia się z serwerami Analysis Services. Aplikacje klienckie firmy Microsoft, takie jak Power BI Desktop, Excel, SQL Server Management Studio (SSMS) i SQL Server Data Tools (SSDT), instalują wszystkie trzy biblioteki klienckie i aktualizują je wraz z regularnymi aktualizacjami aplikacji. W niektórych przypadkach może być konieczne zainstalowanie nowszych wersji bibliotek klienckich. Niestandardowe aplikacje klienckie wymagają również zainstalowania bibliotek klienckich.
+Biblioteki klienckie są niezbędne dla aplikacji i narzędzi klienckich do łączenia się z serwerami Analysis Services. Aplikacje klienckie firmy Microsoft, takie jak Power BI Desktop, Excel, SQL Server Management Studio (SSMS) i Analysis Services Extension dla programu Visual Studio, instalują wszystkie trzy biblioteki klienckie i aktualizują je wraz z regularnymi aktualizacjami aplikacji. W niektórych przypadkach może być konieczne zainstalowanie nowszych wersji bibliotek klienckich. Niestandardowe aplikacje klienckie wymagają również zainstalowania bibliotek klienckich.
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Pobierz najnowsze biblioteki klienckie (Instalator Windows)  
 
@@ -58,7 +58,7 @@ Biblioteki klienckie dla połączeń klientów różnią się od dostawców dany
 
 ### <a name="amo"></a>AMO  
 
- Biblioteka AMO jest zarządzaną biblioteką kliencką służącą do administrowania serwerem i definicji danych. Jest ona instalowana i używana przez narzędzia i aplikacje klienckie. Na przykład SQL Server Management Studio (SSMS) używa usługi AMO do nawiązywania połączenia z Analysis Services. Połączenie korzystające z biblioteki AMO jest zwykle minimalne, składające się z `"data source=\<servername>"`. Po nawiązaniu połączenia użyj interfejsu API do pracy z kolekcjami baz danych i obiektami głównymi. Zarówno SSDT, jak i SSMS używają biblioteki AMO do nawiązywania połączenia z wystąpieniem Analysis Services.  
+ Biblioteka AMO jest zarządzaną biblioteką kliencką służącą do administrowania serwerem i definicji danych. Jest ona instalowana i używana przez narzędzia i aplikacje klienckie. Na przykład SQL Server Management Studio (SSMS) używa usługi AMO do nawiązywania połączenia z Analysis Services. Połączenie korzystające z biblioteki AMO jest zwykle minimalne, składające się z `"data source=\<servername>"`. Po nawiązaniu połączenia użyj interfejsu API do pracy z kolekcjami baz danych i obiektami głównymi. Zarówno program Visual Studio, jak i narzędzie SSMS używają biblioteki AMO do nawiązywania połączenia z wystąpieniem Analysis Services.  
 
   
 ### <a name="adomd"></a>ADOMD
