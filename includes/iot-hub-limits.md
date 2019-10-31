@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b8d4c2691af8429e7b3a6c1916d12f1af609e744
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2d9549c88ace63997ff6d17568b6ba5131e8a15f
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391729"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73083745"
 ---
 W poniższej tabeli wymieniono limity związane z różnymi warstwami usług S1, S2, S3 i F1. Aby uzyskać informacje o kosztach poszczególnych *jednostek* w poszczególnych warstwach, zobacz [cennik usługi Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -27,7 +27,7 @@ W poniższej tabeli wymieniono limity dotyczące zasobów IoT Hub.
 
 | Zasób | Limit |
 | --- | --- |
-| Maksymalna liczba płatnych centrów IoT na subskrypcję platformy Azure |50 |
+| Maksymalna liczba płatnych centrów IoT na subskrypcję platformy Azure |100 |
 | Maksymalna liczba bezpłatnych centrów IoT na subskrypcję platformy Azure |1 |
 | Maksymalna liczba znaków w IDENTYFIKATORze urządzenia | 128 |
 | Maksymalna liczba tożsamości urządzeń<br/> zwróconych w pojedynczym wywołaniu |1000 |
@@ -53,7 +53,7 @@ W poniższej tabeli wymieniono limity dotyczące zasobów IoT Hub.
 | Maksymalny transfer danych strumienia urządzeń | 300 MB dziennie (tylko dla S1, S2, S3 i F1) |
 
 > [!NOTE]
-> Jeśli potrzebujesz więcej niż 50 płatnych centrów IoT w ramach subskrypcji platformy Azure, skontaktuj się z pomoc techniczna firmy Microsoft.
+> Jeśli potrzebujesz więcej niż 100 płatnych centrów IoT w ramach subskrypcji platformy Azure, skontaktuj się z pomoc techniczna firmy Microsoft.
 
 > [!NOTE]
 > Obecnie całkowita liczba urządzeń i modułów, które mogą być zarejestrowane w pojedynczym Centrum IoT Hub, jest ograniczona do 1 000 000. Jeśli chcesz zwiększyć ten limit, skontaktuj się z [Pomoc techniczna firmy Microsoft](https://azure.microsoft.com/support/options/).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: cc0539462fad0a73d5fc7eb75d2078e513df4e5d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 12976e2b2dd37b640efe1823fc8d2ca7048ebcdb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926532"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097364"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z Azure Files w systemie Linux
 
@@ -80,7 +80,7 @@ Sprawdź, czy reguły sieci wirtualnej i zapory są skonfigurowane poprawnie na 
 
 W systemie Linux pojawia się komunikat o błędzie podobny do następującego:
 
-**Przekroczono limit przydziału dysku\<filename > [uprawnienie odmowa]**
+**Przekroczono limit przydziału dysku \<filename > [uprawnienie odmowa]**
 
 ### <a name="cause"></a>Przyczyna
 
@@ -126,7 +126,7 @@ Niektóre dystrybucje systemu Linux nie obsługują jeszcze funkcji szyfrowania 
 
 ### <a name="solution"></a>Rozwiązanie
 
-Funkcja szyfrowania dla protokołu SMB 3.0 dla systemu Linux została wprowadzona w jądrze 4.11. Ta funkcja umożliwia instalowanie udziału plików platformy Azure ze środowiska lokalnego lub z innego regionu platformy Azure. Ta funkcja jest zawarta w dystrybucjach systemu Linux wymienionych w artykule [Minimalne zalecane wersje z odpowiednimi możliwościami instalacji (protokół SMB w wersji 2.1 a protokół SMB w wersji 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30). Inne dystrybucje wymagają jądra 4.11 i nowszych wersji.
+Funkcja szyfrowania dla protokołu SMB 3.0 dla systemu Linux została wprowadzona w jądrze 4.11. Ta funkcja umożliwia instalowanie udziału plików platformy Azure ze środowiska lokalnego lub z innego regionu platformy Azure. Niektóre dystrybucje systemu Linux mogą mieć przewoźnych zmian z jądra 4,11 do starszych wersji jądra systemu Linux, które utrzymują. Aby pomóc w ustaleniu, czy wersja systemu Linux obsługuje protokół SMB 3,0 z szyfrowaniem, zapoznaj się z tematem [używanie Azure Files z systemem Linux](storage-how-to-use-files-linux.md). 
 
 Jeśli Twój klient SMB w systemie Linux nie obsługuje szyfrowania, zainstaluj usługę Azure Files przy użyciu protokołu SMB 2.1 z maszyny wirtualnej platformy Azure z systemem Linux, która znajduje się w tym samym centrum danych co udział plików. Upewnij się, że ustawienie [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) jest wyłączone na koncie magazynu. 
 
@@ -281,7 +281,7 @@ Ten problem z ponownym nawiązywaniem połączenia w jądrze systemu Linux jest 
 - [CIFS: naprawianie potencjalnego uszkodzenia pamięci podczas ponownego nawiązywania połączenia](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: naprawianie możliwego podwójnego blokowania obiektu mutex podczas ponownego nawiązywania połączenia (dla jądra v 4.9 i nowszego)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Te zmiany mogą jednak nie być jeszcze przeniesione do wszystkich dystrybucji systemu Linux. Tę poprawkę i inne poprawki ponownego nawiązywania połączenia można znaleźć w sekcji [Minimalne zalecane wersje z odpowiednimi możliwościami instalacji (protokół SMB w wersji 2.1 a protokół SMB w wersji 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) artykułu [Używanie usługi Azure Files z systemem Linux](storage-how-to-use-files-linux.md). Tę poprawkę można uzyskać, wykonując uaktualnienie do jednej z tych zalecanych wersji jądra.
+Te zmiany mogą jednak nie być jeszcze przeniesione do wszystkich dystrybucji systemu Linux. Jeśli używasz popularnej dystrybucji systemu Linux, możesz zaewidencjonować [Azure Files użycia z systemem Linux](storage-how-to-use-files-linux.md) , aby zobaczyć, która wersja dystrybucji ma niezbędne zmiany jądra.
 
 ### <a name="workaround"></a>Obejście
 
