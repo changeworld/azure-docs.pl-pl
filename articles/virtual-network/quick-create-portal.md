@@ -1,7 +1,7 @@
 ---
 title: Tworzenie sieci wirtualnej — Szybki start — Azure Portal
 titlesuffix: Azure Virtual Network
-description: W tym przewodniku Szybki start dowiesz się, jak utworzyć sieć wirtualną przy użyciu witryny Azure Portal. Sieć wirtualna pozwala zasobów platformy Azure, takie jak maszyny wirtualne, bezpiecznego komunikowania się ze sobą i z Internetem
+description: W tym przewodniku Szybki start dowiesz się, jak utworzyć sieć wirtualną przy użyciu witryny Azure Portal. Sieć wirtualna umożliwia zasoby platformy Azure, takie jak maszyny wirtualne, bezpiecznie komunikują się ze sobą i z Internetem
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: bbc40ae358a6ac7f58e01de997728db21c7eb3bc
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f95174efbffedd09946f5910a39285e7bec062c1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839711"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161486"
 ---
-# <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Szybki start: Tworzenie sieci wirtualnej przy użyciu witryny Azure Portal
+# <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Szybki start: tworzenie sieci wirtualnej przy użyciu witryny Azure Portal
 
-Sieć wirtualna jest podstawowym blokiem sieci prywatnej, na platformie Azure. Dzięki temu zasoby platformy Azure, takie jak maszyny wirtualne (VM) do bezpiecznego komunikowania się ze sobą i z Internetem. W tym przewodniku Szybki Start dowiesz się, jak utworzyć sieć wirtualną przy użyciu witryny Azure portal. Następnie możesz można wdrażanie dwóch maszyn wirtualnych w sieci wirtualnej, bezpiecznego komunikowania się między dwiema maszynami wirtualnymi i połączonych z maszynami wirtualnymi z Internetu.
+Sieć wirtualna jest podstawowym blokiem konstrukcyjnym sieci prywatnej na platformie Azure. Pozwala ona na bezpieczne komunikowanie się ze sobą i z Internetem za pomocą zasobów platformy Azure, takich jak maszyny wirtualne. W tym przewodniku szybki start dowiesz się, jak utworzyć sieć wirtualną przy użyciu Azure Portal. Następnie można wdrożyć dwie maszyny wirtualne w sieci wirtualnej, bezpiecznie komunikować się między nimi i łączyć się z maszynami wirtualnymi za pośrednictwem Internetu.
 
 
 Jeśli nie masz subskrypcji platformy Azure, utwórz teraz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
@@ -40,15 +40,15 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Name (Nazwa) | Wpisz *myVirtualNetwork*. |
+    | Nazwa | Wpisz *myVirtualNetwork*. |
     | Przestrzeń adresowa | Wprowadź adres *10.1.0.0/16*. |
-    | Subscription | Wybierz subskrypcję.|
-    | Resource group | Wybierz pozycję **Utwórz nową**, wprowadź nazwę *myResourceGroup*, a następnie wybierz przycisk **OK**. |
-    | Location | Wybierz pozycję **Wschodnie stany USA**.|
+    | Subskrypcja | Wybierz subskrypcję.|
+    | Grupa zasobów | Wybierz pozycję **Utwórz nową**, wprowadź nazwę *myResourceGroup*, a następnie wybierz przycisk **OK**. |
+    | Lokalizacja | Wybierz pozycję **Wschodnie stany USA**.|
     | Podsieć — nazwa | Wprowadź nazwę *mojaPodsiecWirtualna*. |
     | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź *10.1.0.0/24*. |
 
-1. Pozostaw pozostałe domyślne, a następnie wybierz pozycję **Utwórz**.
+1. Pozostaw resztę jako domyślną i wybierz pozycję **Utwórz**.
 
 ## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 
@@ -56,23 +56,23 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne:
 
 ### <a name="create-the-first-vm"></a>Tworzenie pierwszej maszyny wirtualnej
 
-1. W lewym górnym rogu ekranu wybierz **Utwórz zasób** > **obliczenia** > **systemie Windows Datacenter 2019**.
+1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **COMPUTE** > **Windows Server 2019 centrum**danych.
 
 1. W obszarze **Tworzenie maszyny wirtualnej — ustawienia podstawowe** wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Value |
+    | Ustawienie | Wartość |
     | ------- | ----- |
     | **SZCZEGÓŁY PROJEKTU** | |
-    | Subscription | Wybierz subskrypcję. |
-    | Resource group | Wybierz pozycję **myResourceGroup**. Ten został utworzony w poprzedniej sekcji. |
+    | Subskrypcja | Wybierz subskrypcję. |
+    | Grupa zasobów | Wybierz pozycję **myResourceGroup**. Utworzono to w poprzedniej sekcji. |
     | **SZCZEGÓŁY WYSTĄPIENIA** |  |
     | Nazwa maszyny wirtualnej | Wprowadź nazwę *myVm1*. |
     | Region | Wybierz pozycję **Wschodnie stany USA**. |
     | Opcje dostępności | Pozostaw wartość domyślną **Brak wymaganej nadmiarowości infrastruktury**. |
-    | Image | Pozostaw wartość domyślną **systemie Windows Datacenter 2019**. |
-    | Size | Pozostaw wartość domyślną **Standardowy DS1, wersja 2**. |
+    | Obraz | Pozostaw domyślne **centrum systemu Windows Server 2019**. |
+    | Rozmiar | Pozostaw wartość domyślną **Standardowy DS1, wersja 2**. |
     | **KONTO ADMINISTRATORA** |  |
-    | Nazwa użytkownika | Wprowadź nazwę użytkownika wybrane. |
+    | Nazwa użytkownika | Wprowadź wybraną nazwę użytkownika. |
     | Hasło | Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Potwierdź hasło | Ponownie wprowadź hasło. |
     | **REGUŁY PORTÓW WEJŚCIOWYCH** |  |
@@ -80,21 +80,21 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne:
     | **OSZCZĘDZAJ PIENIĄDZE** |  |
     | Masz już licencję systemu Windows? | Pozostaw wartość domyślną **Nie**. |
 
-1. Wybierz opcję **Dalej: Dyski**.
+1. Wybierz pozycję **Dalej: dyski**.
 
-1. W obszarze **Tworzenie maszyny wirtualnej — dyski** pozostaw wartości domyślne i wybierz przycisk **Dalej: Sieć**.
+1. W obszarze **Utwórz maszynę wirtualną**, pozostaw wartości domyślne, a następnie wybierz pozycję **Dalej: sieć**.
 
 1. W obszarze **Tworzenie maszyny wirtualnej — sieć** wybierz następujące informacje:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
     | Sieć wirtualna | Pozostaw wartość domyślną **myVirtualNetwork**. |
-    | Subnet | Pozostaw wartość domyślną **myVirtualSubnet (10.1.0.0/24)** . |
+    | Podsieć | Pozostaw wartość domyślną **myVirtualSubnet (10.1.0.0/24)** . |
     | Publiczny adres IP | Pozostaw wartość domyślną **(nowy) myVm-ip**. |
     | Publiczne porty wejściowe | Wybierz pozycję **Zezwalaj na wybrane porty**. |
     | Wybierz porty wejściowe | Wybierz pozycje **HTTP** i **RDP**.
 
-1. Wybierz opcję **Dalej: Zarządzanie**.
+1. Wybierz pozycję **Dalej: Zarządzanie**.
 
 1. W obszarze **Tworzenie maszyny wirtualnej — zarządzanie** dla opcji **Konto magazynu diagnostyki** wybierz ustawienie **Utwórz nowe**.
 
@@ -102,16 +102,16 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Name (Nazwa) | Wprowadź nazwę *myvmstorageaccount*. Jeśli ta nazwa jest zajęta, utwórz unikatową nazwę.|
+    | Nazwa | Wprowadź nazwę *myvmstorageaccount*. Jeśli ta nazwa jest wykonywana, utwórz unikatową nazwę.|
     | Rodzaj konta | Pozostaw wartość domyślną **Magazyn (ogólnego przeznaczenia, wersja 1)** . |
     | Wydajność | Pozostaw wartość domyślną **Standardowa**. |
     | Replikacja | Pozostaw wartość domyślną **Magazyn lokalnie nadmiarowy (LRS)** . |
 
 1. Kliknij przycisk **OK**
 
-1. Wybierz pozycję **Przegląd + utwórz**. Nastąpi przekierowanie do **przeglądu + Utwórz** strony, gdzie Azure zatwierdził Twoją konfigurację.
+1. Wybierz pozycję **Przegląd + utwórz**. Nastąpi przejście do strony **Recenzja i tworzenie** , w której platforma Azure weryfikuje konfigurację.
 
-1. Po wyświetleniu **sprawdzanie poprawności zakończone powodzeniem** komunikatu wybierz **Utwórz**.
+1. Gdy zobaczysz komunikat o **przekazaniu walidacji** , wybierz pozycję **Utwórz**.
 
 ### <a name="create-the-second-vm"></a>Tworzenie drugiej maszyny wirtualnej
 
@@ -124,11 +124,11 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne:
 
 1. Wybierz pozycję **Przegląd + utwórz**. Nastąpi przekierowanie do strony**Przeglądanie + tworzenie**, a platforma Azure zweryfikuje konfigurację.
 
-1. Po wyświetleniu **sprawdzanie poprawności zakończone powodzeniem** komunikatu wybierz **Utwórz**.
+1. Gdy zobaczysz komunikat o **przekazaniu walidacji** , wybierz pozycję **Utwórz**.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Nawiązywanie połączenia z maszyną wirtualną z Internetu
 
-Po utworzeniu *myVm1*, połączenie z Internetem.
+Po utworzeniu *myVm1*Połącz się z Internetem.
 
 1. Na pasku wyszukiwania portalu wpisz *myVm1*.
 
@@ -144,7 +144,7 @@ Po utworzeniu *myVm1*, połączenie z Internetem.
 
     1. Po wyświetleniu monitu wybierz pozycję **Połącz**.
 
-    1. Wprowadź nazwę użytkownika i hasło, które zostały określone podczas tworzenia maszyny Wirtualnej.
+    1. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej.
 
         > [!NOTE]
         > Może okazać się konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby podać poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
@@ -161,7 +161,7 @@ Po utworzeniu *myVm1*, połączenie z Internetem.
 
 1. Wprowadź polecenie `ping myVm2`.
 
-    Zostanie wyświetlony komunikat podobny do następującego:
+    Zostanie wyświetlony komunikat podobny do tego:
 
     ```powershell
     Pinging myVm2.0v0zze1s0uiedpvtxz5z0r0cxg.bx.internal.clouda
@@ -179,10 +179,10 @@ Po utworzeniu *myVm1*, połączenie z Internetem.
 1. Aby umożliwić wykonanie polecenia ping na maszynie *myVm2* w celu komunikacji z maszyną *myVm1* w późniejszym kroku, wprowadź następujące polecenie:
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
 
-    To polecenie umożliwia ICMP dla ruchu przychodzącego przez zaporę Windows:
+    To polecenie zezwala na ruch przychodzący protokołu ICMP przez zaporę systemu Windows:
 
 1. Zamknij podłączanie pulpitu zdalnego z maszyną wirtualną *myVm1*.
 
@@ -205,15 +205,15 @@ Po utworzeniu *myVm1*, połączenie z Internetem.
         Minimum = 0ms, Maximum = 1ms, Average = 0ms
     ```
 
-    Otrzymasz odpowiedzi od *myVm1*, ponieważ dozwolone protokołu ICMP przez zaporę Windows na *myVm1* maszyny Wirtualnej w kroku 3.
+    Otrzymujesz odpowiedzi z *myVm1*, ponieważ zezwolono na ICMP przez zaporę systemu Windows na maszynie wirtualnej *myVm1* w kroku 3.
 
 1. Zamknij podłączanie pulpitu zdalnego z maszyną wirtualną *myVm2*.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu przy użyciu sieci wirtualnej i maszynach wirtualnych, Usuń grupę zasobów i wszystkie zawarte w niej zasoby:
+Gdy skończysz korzystać z sieci wirtualnej i maszyn wirtualnych, Usuń grupę zasobów i wszystkie zawarte w niej zasoby:
 
-1. Wprowadź *myResourceGroup* w **wyszukiwania** polu w górnej części portalu i wybierz **myResourceGroup** w wynikach wyszukiwania.
+1. Wprowadź w polu **wyszukiwania** w górnej części portalu **i wybierz pozycję** *moja zasobów z* wyników wyszukiwania.
 
 1. Wybierz pozycję **Usuń grupę zasobów**.
 
@@ -221,6 +221,6 @@ Po zakończeniu przy użyciu sieci wirtualnej i maszynach wirtualnych, Usuń gru
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start utworzono domyślną sieć wirtualną i dwie maszyny wirtualne. Możesz połączyć w jedną maszynę Wirtualną z Internetu i bezpiecznie przekazywane między dwiema maszynami wirtualnymi. Aby dowiedzieć się więcej na temat ustawień sieci wirtualnych, zobacz [Manage a virtual network](manage-virtual-network.md) (Zarządzanie siecią wirtualną).
+W tym przewodniku szybki start utworzono domyślną sieć wirtualną i dwie maszyny wirtualne. Nawiązano połączenie z jedną maszyną wirtualną z Internetu i bezpiecznie komunikuje się między tymi dwiema maszynami wirtualnymi. Aby dowiedzieć się więcej na temat ustawień sieci wirtualnych, zobacz [Manage a virtual network](manage-virtual-network.md) (Zarządzanie siecią wirtualną).
 
-Domyślnie platforma Azure umożliwia nieograniczony bezpiecznej komunikacji między maszynami wirtualnymi. Z drugiej strony zezwala tylko na połączenia przychodzące pulpitu zdalnego z maszynami wirtualnymi Windows z Internetu. Aby dowiedzieć się więcej na temat konfigurowania różnych typów komunikacji sieciowej między maszynami wirtualnymi, przejdź do samouczka [Filtrowanie ruchu sieciowego](tutorial-filter-network-traffic.md).
+Domyślnie platforma Azure umożliwia nieograniczony dostęp do bezpiecznej komunikacji między maszynami wirtualnymi. Z drugiej strony zezwala tylko na połączenia przychodzące pulpitu zdalnego z maszynami wirtualnymi Windows z Internetu. Aby dowiedzieć się więcej na temat konfigurowania różnych typów komunikacji sieciowej między maszynami wirtualnymi, przejdź do samouczka [Filtrowanie ruchu sieciowego](tutorial-filter-network-traffic.md).

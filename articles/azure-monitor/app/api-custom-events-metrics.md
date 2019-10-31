@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: ca77cf6b838d2e10eab422f37ff55fbb43a2dba0
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 515d1da5333bb29237baa4bd941275f32ba754d3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677840"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161581"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API dla niestandardowych zdarzeń i metryk
 
@@ -614,7 +614,7 @@ Jeśli [próbkowanie](../../azure-monitor/app/sampling.md) jest w operacji, wła
 
 ## <a name="trackdependency"></a>TrackDependency
 
-Użyj wywołania TrackDependency, aby śledzić czasy odpowiedzi i szybkość powodzeń wywołań do zewnętrznego fragmentu kodu. Wyniki są wyświetlane na wykresach zależności w portalu.
+Użyj wywołania TrackDependency, aby śledzić czasy odpowiedzi i szybkość powodzeń wywołań do zewnętrznego fragmentu kodu. Wyniki są wyświetlane na wykresach zależności w portalu. Poniższego fragmentu kodu należy dodać wszędzie tam, gdzie jest wykonywane wywołanie zależności.
 
 *C#*
 

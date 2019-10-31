@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 8bdc77ba81c5a9ec47a02ef5a1ede82365314941
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 648c5ca1eb1cb1c0f1832654fc66d436b9318af3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968852"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161923"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Przywracanie SQL Server baz danych na maszynach wirtualnych platformy Azure
 
@@ -68,19 +68,19 @@ Przywróć w następujący sposób:
     - Najstarsze i najnowsze punkty przywracania.
     - Stan kopii zapasowej dziennika dla ostatnich 24 godzin dla baz danych, które są w pełni i w trybie odzyskiwania zbiorczego i są skonfigurowane do tworzenia kopii zapasowych dzienników transakcyjnych.
 
-6. Wybierz pozycję **Przywróć bazę danych**.
+6. Wybierz pozycję **Przywróć**.
 
-    ![Wybieranie pozycji Przywróć bazę danych](./media/backup-azure-sql-database/restore-db-button.png)
+    ![Wybierz pozycję Przywróć](./media/backup-azure-sql-database/restore-db.png)
 
-7. W obszarze **Konfiguracja przywracania**określ miejsce przywracania danych:
+7. W obszarze **Konfiguracja przywracania**Określ, gdzie (lub jak) przywrócić dane:
    - **Lokalizacja alternatywna**: Przywracanie bazy danych do alternatywnej lokalizacji i zachowywanie oryginalnej źródłowej bazy danych.
    - **Zastąp bazę**danych: Przywróć dane do tego samego wystąpienia SQL Server co oryginalne źródło. Ta opcja zastępuje oryginalną bazę danych.
 
-     > [!Important]
-     > Jeśli wybrana baza danych należy do grupy dostępności Always On, SQL Server nie zezwala na zastąpienie bazy danych. Dostępna jest tylko **Lokalizacja alternatywna** .
-     >
-
-     ![Menu Konfiguracja przywracania](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)
+           > [!IMPORTANT]
+           > If the selected database belongs to an Always On availability group, SQL Server doesn't allow the database to be overwritten. Only **Alternate Location** is available.
+           >
+   - **Przywróć jako pliki**: zamiast przywracać jako bazę danych, Przywróć pliki kopii zapasowej, które mogą być odzyskiwane jako baza danych później na dowolnym komputerze, na którym znajdują się pliki, przy użyciu SQL Server Management Studio.
+     menu ![przywracania konfiguracji](./media/backup-azure-sql-database/restore-configuration.png)
 
 ### <a name="restore-to-an-alternate-location"></a>Przywracanie do lokalizacji alternatywnej
 
@@ -90,7 +90,7 @@ Przywróć w następujący sposób:
 4. Jeśli ma to zastosowanie, wybierz opcję **Zastąp, jeśli baza danych o takiej samej nazwie już istnieje w wybranym wystąpieniu programu SQL**.
 5. Kliknij przycisk **OK**.
 
-    ![Podawanie wartości menu Konfiguracja przywracania](./media/backup-azure-sql-database/restore-configuration-menu.png)
+    ![Podawanie wartości menu Konfiguracja przywracania](./media/backup-azure-sql-database/restore-configuration.png)
 
 6. W obszarze **Wybierz punkt przywracania**wybierz, czy chcesz [przywrócić do określonego punktu w czasie](#restore-to-a-specific-point-in-time) , czy [przywrócić do określonego punktu odzyskiwania](#restore-to-a-specific-restore-point).
 
@@ -107,6 +107,25 @@ Przywróć w następujący sposób:
 
     > [!NOTE]
     > Przywracanie do punktu w czasie jest dostępne tylko dla kopii zapasowych dzienników dla baz danych, które są w trybie odzyskiwania pełnym i zbiorczym.
+
+### <a name="restore-as-files"></a>Przywróć jako pliki
+
+Aby przywrócić dane kopii zapasowej jako pliki. bak zamiast bazy danych, wybierz polecenie **Przywróć jako pliki**. Po zrzucie plików do określonej ścieżki można wykonać te pliki na dowolnym komputerze, na którym chcesz je przywrócić jako bazę danych. Aby móc przenieść te pliki na dowolną maszynę, można teraz przywrócić dane między subskrypcjami i regionami.
+
+1. W menu **Przywróć konfigurację** w obszarze **gdzie należy przywrócić**wybierz pozycję **Przywróć jako pliki**.
+2. Wybierz nazwę SQL Server, do której chcesz przywrócić pliki kopii zapasowej.
+3. W **ścieżce docelowej na serwerze** wprowadź ścieżkę folderu na serwerze wybranym w kroku 2. Jest to lokalizacja, w której usługa będzie zrzucać wszystkie niezbędne pliki kopii zapasowej. Zwykle ścieżka udziału sieciowego lub ścieżka zainstalowanego udziału plików platformy Azure, gdy zostanie określona jako ścieżka docelowa, zapewnia łatwiejszy dostęp do tych plików przez inne maszyny w tej samej sieci lub z tym samym udziałem plików platformy Azure.
+4. Kliknij przycisk **OK**.
+
+![Wybierz pozycję Przywróć jako pliki](./media/backup-azure-sql-database/restore-as-files.png)
+
+5. Wybierz **punkt przywracania** , za pomocą którego zostaną przywrócone wszystkie dostępne pliki. bak.
+
+![Wybierz punkt przywracania](./media/backup-azure-sql-database/restore-point.png)
+
+6. Wszystkie pliki kopii zapasowej skojarzone z wybranym punktem odzyskiwania są zrzucane do ścieżki docelowej. Pliki można przywrócić jako bazę danych na dowolnym komputerze, na którym znajdują się one przy użyciu SQL Server Management Studio.
+
+![Przywrócono pliki kopii zapasowej w ścieżce docelowej](./media/backup-azure-sql-database/sql-backup-files.png)
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Przywracanie do określonego punktu w czasie
 

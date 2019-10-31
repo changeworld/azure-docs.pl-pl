@@ -1,0 +1,347 @@
+---
+title: Logowanie do maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu Azure Active Directory (wersja zapoznawcza)
+description: Logowanie do maszyny wirtualnej platformy Azure z systemem Windows za pomocą usługi Azure AD
+services: active-directory
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: conceptual
+ms.date: 10/29/2019
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: sandeo
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d6f0d732917a6587307e6d60581e0189687cc7e9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73164772"
+---
+# <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logowanie do maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu uwierzytelniania Azure Active Directory (wersja zapoznawcza)
+
+Organizacje mogą teraz korzystać z uwierzytelniania Azure Active Directory (AD) na maszynach wirtualnych platformy Azure z systemem **Windows Server 2019 Datacenter Edition** lub **Windows 10 1809** lub nowszym. Uwierzytelnianie na maszynach wirtualnych za pomocą usługi Azure AD zapewnia możliwość centralnego kontrolowania i wymuszania zasad. Narzędzia, takie jak Access Control oparte na rolach na platformie Azure (RBAC) i dostęp warunkowy usługi Azure AD, umożliwiają kontrolowanie dostępu do maszyny wirtualnej. W tym artykule pokazano, jak utworzyć i skonfigurować maszynę wirtualną z systemem Windows Server 2019 do korzystania z uwierzytelniania usługi Azure AD.
+
+|     |
+| --- |
+| Logowanie za pomocą usługi Azure AD na potrzeby maszyn wirtualnych systemu Windows Azure jest publiczną funkcją w wersji zapoznawczej programu Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure|
+|     |
+
+Istnieje wiele zalet używania uwierzytelniania usługi Azure AD do logowania się do maszyn wirtualnych z systemem Windows na platformie Azure, w tym:
+
+- Korzystaj z tych samych federacyjnych lub zarządzanych poświadczeń usługi Azure AD, których zwykle używasz.
+- Nie trzeba już zarządzać kontami administratorów lokalnych.
+- Usługa Azure RBAC umożliwia udzielenie odpowiedniego dostępu do maszyn wirtualnych na podstawie potrzeb i usunięcie go, gdy nie jest już potrzebny.
+- Przed zezwoleniem na dostęp do maszyny wirtualnej dostęp warunkowy usługi Azure AD może wymusić dodatkowe wymagania, takie jak: 
+   - Uwierzytelnianie wieloskładnikowe
+   - Ryzyko związane z logowaniem
+- Automatyzacja i skalowanie funkcji Azure AD Join dla maszyn wirtualnych z systemem Windows opartych na platformie Azure.
+
+## <a name="requirements"></a>Wymagania
+
+### <a name="supported-azure-regions-and-windows-distributions"></a>Obsługiwane regiony platformy Azure i dystrybucje systemu Windows
+
+Następujące dystrybucje systemu Windows są obecnie obsługiwane w ramach wersji zapoznawczej tej funkcji:
+
+- System Windows Server 2019 Datacenter
+- System Windows 10 1809 i nowsze
+
+Poniższe regiony platformy Azure są obecnie obsługiwane w ramach wersji zapoznawczej tej funkcji:
+
+- Wszystkie regiony globalne platformy Azure
+
+> [!IMPORTANT]
+> Aby korzystać z tej funkcji w wersji zapoznawczej, należy wdrożyć tylko obsługiwaną dystrybucję systemu Windows i w obsługiwanym regionie platformy Azure. Ta funkcja nie jest obecnie obsługiwana w Azure Government lub suwerennych chmurach.
+
+### <a name="network-requirements"></a>Wymagania dotyczące sieci
+
+Aby włączyć uwierzytelnianie usługi Azure AD dla maszyn wirtualnych z systemem Windows na platformie Azure, musisz upewnić się, że konfiguracja sieci maszyn wirtualnych zezwala na dostęp wychodzący do następujących punktów końcowych przez port TCP 443:
+
+- https://enterpriseregistration.windows.net
+- https://login.microsoftonline.com
+- https://device.login.microsoftonline.com
+- https://pas.windows.net
+
+## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Włączanie logowania za pomocą usługi Azure AD w programie dla maszyn wirtualnych z systemem Windows na platformie Azure
+
+Aby korzystać z logowania za pomocą usługi Azure AD w programie dla maszyny wirtualnej z systemem Windows na platformie Azure, musisz najpierw włączyć opcję logowania usługi Azure AD dla maszyny wirtualnej z systemem Windows, a następnie skonfigurować przypisania ról RBAC dla użytkowników, którzy mają uprawnienia do logowania się do maszyny wirtualnej.
+Istnieje wiele sposobów włączania logowania do usługi Azure AD dla maszyny wirtualnej z systemem Windows:
+
+- Korzystanie z Azure Portal środowiska podczas tworzenia maszyny wirtualnej z systemem Windows
+- Korzystanie z Azure Cloud Shell środowiska podczas tworzenia maszyny wirtualnej z systemem Windows lub dla istniejącej maszyny wirtualnej z systemem Windows
+
+### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Korzystanie z Azure Portal tworzenia środowiska maszyny wirtualnej w celu włączenia logowania do usługi Azure AD
+
+Możesz włączyć logowanie za pomocą usługi Azure AD dla systemu Windows Server 2019 Datacenter lub Windows 10 1809 i nowszych obrazów maszyn wirtualnych. 
+
+Aby utworzyć maszynę wirtualną z systemem Windows Server 2019 Datacenter na platformie Azure przy użyciu usługi Azure AD Logon: 
+
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)przy użyciu konta, które ma dostęp do tworzenia maszyn wirtualnych, a następnie wybierz pozycję **+ Utwórz zasób**.
+1. Wpisz **Windows Server** na pasku wyszukiwania portalu Marketplace.
+   1. Kliknij pozycję **Windows Server** i wybierz opcję **Windows Server 2019 Datacenter** z listy rozwijanej wybierz plan oprogramowania.
+   1. Kliknij pozycję **Utwórz**.
+1. Na karcie Zarządzanie, Włącz opcję **Zaloguj się przy użyciu poświadczeń usługi AAD (wersja zapoznawcza)** w sekcji Azure Active Directory od pozycji wyłączone do **usługi.**
+1. Upewnij **się, że w sekcji**tożsamość jest ustawiona **tożsamość zarządzana przypisana przez system** . Ta akcja powinna nastąpić automatycznie po włączeniu logowania przy użyciu poświadczeń usługi Azure AD.
+1. Przejdź do reszty środowiska tworzenia maszyny wirtualnej. W tej wersji zapoznawczej konieczne będzie utworzenie nazwy użytkownika i hasła administratora dla maszyny wirtualnej.
+
+![Logowanie przy użyciu poświadczeń usługi Azure AD Tworzenie maszyny wirtualnej](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-login-with-azure-ad.png)
+
+> [!NOTE]
+> Aby można było zalogować się do maszyny wirtualnej przy użyciu poświadczeń usługi Azure AD, należy najpierw skonfigurować przypisania ról dla maszyny wirtualnej zgodnie z opisem w jednej z poniższych sekcji.
+
+### <a name="using-the-azure-cloud-shell-experience-to-enable-azure-ad-login"></a>Korzystanie z Azure Cloud Shell środowiska w celu włączenia logowania do usługi Azure AD
+
+Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Typowe narzędzia platformy Azure są wstępnie zainstalowane i skonfigurowane w usłudze Cloud Shell na potrzeby użycia z poziomu konta. Po prostu wybierz przycisk Kopiuj, aby skopiować kod, wklej go w Cloud Shell, a następnie naciśnij klawisz ENTER, aby go uruchomić. Usługę Cloud Shell można otworzyć na kilka sposobów:
+
+Wybierz pozycję Wypróbuj w prawym górnym rogu bloku kodu.
+Otwórz usługę Cloud Shell w swojej przeglądarce.
+Wybierz przycisk Cloud Shell w menu w prawym górnym rogu [Azure Portal](https://portal.azure.com).
+
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Aby odnaleźć wersję, uruchom polecenie az --version. Jeśli musisz zainstalować lub uaktualnić program, zobacz artykuł [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+1. Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create). 
+1. Utwórz maszynę wirtualną za pomocą polecenia [AZ VM Create](https://docs.microsoft.com/cli/azure/vm#az-vm-create) przy użyciu obsługiwanej dystrybucji w obsługiwanym regionie. 
+1. Zainstaluj rozszerzenie maszyny wirtualnej do logowania do usługi Azure AD. 
+
+W poniższym przykładzie wdrożono maszynę wirtualną o nazwie myVM, która używa Win2019Datacenter, do grupy zasobów o nazwie Moja zasobów w regionie southcentralus. W poniższych przykładach można podać własną grupę zasobów i nazwy maszyn wirtualnych zgodnie z potrzebami.
+
+```AzureCLI
+az group create --name myResourceGroup --location southcentralus
+
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM \
+    --image Win2019Datacenter \
+    --assign-identity \
+    --admin-username azureuser \
+    --admin-password yourpassword
+```
+
+Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut.
+
+Na koniec Zainstaluj rozszerzenie maszyny wirtualnej do logowania do usługi Azure AD, aby włączyć logowanie do usługi Azure AD dla maszyny wirtualnej z systemem Windows. Rozszerzenia maszyn wirtualnych to małe aplikacje, które zapewniają konfigurację po wdrożeniu i zadania automatyzacji na maszynach wirtualnych platformy Azure. Użyj opcji [AZ VM Extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) Set, aby zainstalować rozszerzenie AADLoginForWindows na maszynie wirtualnej o nazwie myVM w grupie zasobów:
+
+> [!NOTE]
+> Możesz zainstalować rozszerzenie AADLoginForWindows na istniejącej maszynie wirtualnej z systemem Windows Server 2019 lub Windows 10 1809 lub nowszym, aby umożliwić jej uwierzytelnianie w usłudze Azure AD. Poniżej przedstawiono przykład polecenia AZ CLI.
+
+```AzureCLI
+az vm extension set \
+    --publisher Microsoft.Azure.ActiveDirectory \
+    --name AADLoginForWindows \
+    --resource-group myResourceGroup \
+    --vm-name myVM
+```
+
+`provisioningState` `Succeeded` jest pokazywana, gdy rozszerzenie zostanie zainstalowane na maszynie wirtualnej.
+
+## <a name="configure-role-assignments-for-the-vm"></a>Konfigurowanie przypisań ról dla maszyny wirtualnej
+
+Po utworzeniu maszyny wirtualnej należy skonfigurować zasady RBAC platformy Azure, aby określić, kto może logować się do maszyny wirtualnej. Do autoryzacji logowania maszyn wirtualnych służą dwie role RBAC:
+
+- **Logowanie administratora maszyny wirtualnej**: Użytkownicy z przypisaną rolą mogą logować się do maszyny wirtualnej platformy Azure z uprawnieniami administratora.
+- **Logowanie użytkownika maszyny wirtualnej**: Użytkownicy z przypisaną rolą mogą logować się do maszyny wirtualnej platformy Azure przy użyciu zwykłych uprawnień użytkownika.
+
+> [!NOTE]
+> Aby zezwolić użytkownikowi na logowanie do maszyny wirtualnej za pośrednictwem protokołu RDP, należy przypisać rolę logowania administratora maszyny wirtualnej lub użytkownika maszyny wirtualnej. Użytkownik platformy Azure z rolami właściciela lub współautora przypisany do maszyny wirtualnej nie ma automatycznie uprawnień do logowania się do maszyny wirtualnej za pośrednictwem protokołu RDP. Ma to na celu zapewnienie przeprowadzenia inspekcji między zbiorem osób kontrolujących maszyny wirtualne a zestawem osób, które mogą uzyskiwać dostęp do maszyn wirtualnych.
+
+Istnieje wiele sposobów konfigurowania przypisań ról dla maszyny wirtualnej:
+
+- Korzystanie z portalu usługi Azure AD
+- Korzystanie z Azure Cloud Shell
+
+### <a name="using-azure-ad-portal-experience"></a>Korzystanie z portalu usługi Azure AD
+
+Aby skonfigurować przypisania ról dla maszyn wirtualnych z systemem Windows Server 2019 Datacenter z obsługą usługi Azure AD:
+
+1. Przejdź do strony przeglądu określonej maszyny wirtualnej
+1. Wybierz pozycję **Kontrola dostępu (IAM)** z opcji menu
+1. Wybierz pozycję **Dodaj**, a następnie **Dodaj przypisanie roli** , aby otworzyć okienko Dodawanie przypisania roli.
+1. Z listy rozwijanej **rola** wybierz rolę, taką jak **Identyfikator logowania administratora maszyny wirtualnej** lub **Logowanie użytkownika maszyny wirtualnej**.
+1. W polu **Wybierz** wybierz użytkownika, grupę, nazwę główną usługi lub tożsamość zarządzaną. Jeśli nie widzisz podmiotu zabezpieczeń na liście, możesz wpisać tekst w polu **Wybierz**, aby wyszukać w katalogu nazwy wyświetlane, adresy e-mail i identyfikatory obiektów.
+1. Wybierz pozycję **Zapisz**, aby przypisać rolę.
+
+Po kilku chwilach podmiot zabezpieczeń ma przypisaną rolę w wybranym zakresie.
+
+![Przypisywanie ról do użytkowników, którzy będą uzyskiwać dostęp do maszyny wirtualnej](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-access-control-assign-role.png)
+
+### <a name="using-the-azure-cloud-shell-experience"></a>Korzystanie z Azure Cloud Shell
+
+Poniższy przykład używa [AZ role przypisanie Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) , aby przypisać rolę logowania administratora maszyny wirtualnej do maszyny wirtualnej dla bieżącego użytkownika platformy Azure. Nazwa użytkownika aktywnego konta platformy Azure zostanie uzyskana za pomocą [AZ Account show](https://docs.microsoft.com/cli/azure/account#az-account-show), a zakres jest USTAWIANY na maszynę wirtualną utworzoną w poprzednim kroku przy użyciu [AZ VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show). Zakres może być również przypisany do grupy zasobów lub poziomu subskrypcji i obowiązują normalne uprawnienia dziedziczenia RBAC. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control).
+
+```AzureCLI
+username=$(az account show --query user.name --output tsv)
+vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
+
+az role assignment create \
+    --role "Virtual Machine Administrator Login" \
+    --assignee $username \
+    --scope $vm
+```
+
+> [!NOTE]
+> Jeśli domena usługi AAD i nazwa użytkownika logowania nie są zgodne, należy określić identyfikator obiektu konta użytkownika z `--assignee-object-id`, a nie tylko nazwę użytkownika dla `--assignee`. Identyfikator obiektu dla konta użytkownika można uzyskać za pomocą elementu [AZ AD User list](https://docs.microsoft.com/cli/azure/ad/user#az-ad-user-list).
+
+Aby uzyskać więcej informacji na temat używania RBAC do zarządzania dostępem do zasobów subskrypcji platformy Azure, zobacz następujące artykuły:
+
+- [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+- [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+
+## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Logowanie przy użyciu poświadczeń usługi Azure AD z maszyną wirtualną z systemem Windows
+
+> [!IMPORTANT]
+> Połączenie zdalne z maszynami wirtualnymi przyłączonymi do usługi Azure AD jest dozwolone tylko z komputerów z systemem Windows 10, które są przyłączone do usługi Azure AD lub hybrydowej usługi Azure AD przyłączone do tego **samego** katalogu co maszyna wirtualna Ponadto do protokołu RDP przy użyciu poświadczeń usługi Azure AD użytkownik musi należeć do jednej z dwóch ról RBAC, identyfikatora logowania administratora maszyny wirtualnej lub logowania użytkownika maszyny wirtualnej.
+
+Aby zalogować się do maszyny wirtualnej z systemem Windows Server 2019 przy użyciu usługi Azure AD: 
+
+1. Przejdź do strony Przegląd maszyny wirtualnej, która została włączona z logowaniem do usługi Azure AD.
+1. Wybierz pozycję **Połącz** , aby otworzyć blok Połącz z maszyną wirtualną.
+1. Wybierz opcję **Pobierz plik RDP**.
+1. Wybierz pozycję **Otwórz** , aby uruchomić klienta Podłączanie pulpitu zdalnego.
+1. Wybierz pozycję **Połącz** , aby uruchomić okno dialogowe logowania systemu Windows.
+1. Zaloguj się przy użyciu poświadczeń usługi Azure AD.
+
+Użytkownik jest zalogowany do maszyny wirtualnej systemu Windows Server 2019 Azure z uprawnieniami roli przypisanymi, takimi jak użytkownik maszyny wirtualnej lub administrator maszyny wirtualnej. 
+
+> [!NOTE]
+> Możesz zapisać. Plik RDP lokalnie na komputerze, aby uruchomić przyszłe połączenia pulpitu zdalnego z maszyną wirtualną zamiast konieczności przechodzenia do strony przeglądu maszyn wirtualnych w Azure Portal i przy użyciu opcji Połącz.
+
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
+
+### <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia
+
+Aby maszyna wirtualna mogła ukończyć proces przyłączania do usługi Azure AD, rozszerzenie AADLoginForWindows musi zostać pomyślnie zainstalowane. Jeśli instalacja rozszerzenia maszyny wirtualnej nie powiedzie się poprawnie, wykonaj następujące czynności.
+
+1. Połącz protokół RDP z maszyną wirtualną przy użyciu konta administratora lokalnego i przejrzyj CommandExecution. log w obszarze  
+   
+   C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
+
+   > [!NOTE]
+   > Jeśli rozszerzenie zostanie ponownie uruchomione po awarii początkowej, dziennik z błędem wdrożenia zostanie zapisany jako CommandExecution_YYYYMMDDHHMMSSSSS. log. 
+
+1. Otwórz wiersz polecenia na maszynie wirtualnej i sprawdź, czy te zapytania dotyczą punktu końcowego Instance Metadata Service (IMDS) uruchomionego na hoście platformy Azure:
+
+   | Polecenie do uruchomienia | Oczekiwane dane wyjściowe |
+   | --- | --- |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Popraw informacje o maszynie wirtualnej platformy Azure |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Prawidłowy identyfikator dzierżawy skojarzony z subskrypcją platformy Azure |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Prawidłowy token dostępu wystawiony przez Azure Active Directory dla zarządzanej tożsamości przypisanej do tej maszyny wirtualnej |
+
+   > [!NOTE]
+   > Token dostępu można zdekodować przy użyciu narzędzia, takiego jak [http://calebb.net/](http://calebb.net/). Sprawdź, czy identyfikator "AppID" w tokenie dostępu jest zgodny z zarządzaną tożsamością przypisaną do maszyny wirtualnej.
+
+1. Upewnij się, że wymagane punkty końcowe są dostępne z maszyny wirtualnej przy użyciu wiersza polecenia:
+   
+   - zwinięcie https://login.microsoftonline.com/ -D —
+   - zwinięcie https://login.microsoftonline.com/`<TenantID>` /-D —
+
+   > [!NOTE]
+   > Zastąp `<TenantID>` IDENTYFIKATORem dzierżawy usługi Azure AD skojarzonym z subskrypcją platformy Azure.
+
+   - zwinięcie https://enterpriseregistration.windows.net/ -D-
+   - zwinięcie https://device.login.microsoftonline.com/ -D-
+   - zwinięcie https://pas.windows.net/ -D-
+
+1. Stan urządzenia można wyświetlić, uruchamiając `dsregcmd /status`. Celem jest stan urządzenia, który ma być wyświetlany jako `AzureAdJoined : YES`.
+
+   > [!NOTE]
+   > Działanie funkcji Azure AD Join jest przechwytywane w Podglądzie zdarzeń w dzienniku Registration\Admin urządzenia użytkownika.
+
+Jeśli rozszerzenie AADLoginForWindows kończy się niepowodzeniem z określonym kodem błędu, można wykonać następujące czynności:
+
+#### <a name="issue-1-aadloginforwindows-extension-fails-to-install-with-terminal-error-code-1007-and-exit-code--2145648574"></a>Problem 1: nie można zainstalować rozszerzenia AADLoginForWindows z kodem błędu terminalu "1007" i kodem zakończenia:-2145648574.
+
+Ten kod zakończenia tłumaczy na DSREG_E_MSI_TENANTID_UNAVAILABLE, ponieważ rozszerzenie nie może zbadać informacji o dzierżawie usługi Azure AD.
+
+1. Upewnij się, że maszyna wirtualna platformy Azure może pobrać TenantID z Instance Metadata Service.
+
+   - Połącz protokół RDP z maszyną wirtualną jako administrator lokalny i sprawdź, czy punkt końcowy zwraca prawidłowy identyfikator dzierżawy, uruchamiając to polecenie w wierszu polecenia z podwyższonym poziomem uprawnień na maszynie wirtualnej:
+      
+      - zwinięcie-H metadane: true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01
+
+1. Administrator maszyny wirtualnej próbuje zainstalować rozszerzenie AADLoginForWindows, ale tożsamość zarządzana przypisana przez system nie została najpierw włączona. Przejdź do bloku tożsamość maszyny wirtualnej. Na karcie przypisane do systemu sprawdź, czy stan jest włączony.
+
+#### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Problem 2: nie można zainstalować rozszerzenia AADLoginForWindows z kodem zakończenia:-2145648607
+
+Ten kod zakończenia tłumaczy na DSREG_AUTOJOIN_DISC_FAILED, ponieważ rozszerzenie nie może dotrzeć do punktu końcowego https://enterpriseregistration.windows.net.
+
+1. Sprawdź, czy wymagane punkty końcowe są dostępne z maszyny wirtualnej przy użyciu wiersza polecenia:
+
+   - zwinięcie https://login.microsoftonline.com/ -D —
+   - zwinięcie https://login.microsoftonline.com/`<TenantID>` /-D —
+   
+   > [!NOTE]
+   > Zastąp `<TenantID>` IDENTYFIKATORem dzierżawy usługi Azure AD skojarzonym z subskrypcją platformy Azure. Jeśli musisz znaleźć identyfikator dzierżawy, możesz umieścić wskaźnik myszy nad nazwą konta, aby uzyskać identyfikator katalogu/dzierżawy, lub wybrać Azure Active Directory właściwości > > identyfikator katalogu w Azure Portal.
+
+   - zwinięcie https://enterpriseregistration.windows.net/ -D-
+   - zwinięcie https://device.login.microsoftonline.com/ -D-
+   - zwinięcie https://pas.windows.net/ -D-
+
+1. Jeśli którekolwiek z poleceń zakończy się niepowodzeniem z "nie można rozpoznać `<URL>`hosta", spróbuj uruchomić to polecenie, aby określić serwer DNS, który jest używany przez maszynę wirtualną.
+   
+   `nslookup <URL>`
+
+   > [!NOTE] 
+   > Zastąp `<URL>` z w pełni kwalifikowanymi nazwami domen używanymi przez punkty końcowe, takimi jak "login.microsoftonline.com".
+
+1. Następnie sprawdź, czy określono publiczny serwer DNS, aby można było pomyślnie wykonać polecenie:
+
+   `nslookup <URL> 208.67.222.222`
+
+1. W razie potrzeby zmień serwer DNS przypisany do sieciowej grupy zabezpieczeń, do której należy maszyna wirtualna platformy Azure.
+
+#### <a name="issue-3-aadloginforwindows-extension-fails-to-install-with-exit-code-51"></a>Problem 3: nie można zainstalować rozszerzenia AADLoginForWindows z kodem zakończenia: 51
+
+Kod zakończenia 51 tłumaczy na "to rozszerzenie nie jest obsługiwane w systemie operacyjnym maszyny wirtualnej".
+
+W publicznej wersji zapoznawczej rozszerzenie AADLoginForWindows jest przeznaczone tylko do zainstalowania w systemie Windows Server 2019 lub Windows 10 (kompilacja 1809 lub nowsza). Upewnij się, że wersja systemu Windows jest obsługiwana. Jeśli kompilacja systemu Windows nie jest obsługiwana, Odinstaluj rozszerzenie maszyny wirtualnej.
+
+### <a name="troubleshoot-sign-in-issues"></a>Rozwiązywanie problemów z logowaniem
+
+Niektóre typowe błędy podczas próby połączenia RDP z poświadczeniami usługi Azure AD nie obejmują żadnych przypisanych ról RBAC, nieautoryzowanego klienta lub metody logowania funkcji 2FA. Skorzystaj z poniższych informacji, aby rozwiązać te problemy.
+
+Stan urządzenia i logowania jednokrotnego można wyświetlić, uruchamiając `dsregcmd /status`. Celem jest stan urządzenia, który ma być wyświetlany jako `AzureAdJoined : YES` i `SSO State` do wyświetlania `AzureAdPrt : YES`.
+
+Ponadto logowanie za pomocą protokołu RDP przy użyciu kont usługi Azure AD jest przechwytywane w Podglądzie zdarzeń w dzienniku zdarzeń AAD\Operational.
+
+#### <a name="rbac-role-not-assigned"></a>Rola RBAC nie została przypisana
+
+Jeśli po zainicjowaniu połączenia pulpitu zdalnego z maszyną wirtualną zobaczysz następujący komunikat o błędzie: 
+
+- Twoje konto jest skonfigurowane tak, aby uniemożliwić korzystanie z tego urządzenia. Aby uzyskać więcej informacji, skontaktuj się z administratorem systemu
+
+![Twoje konto jest skonfigurowane tak, aby uniemożliwić korzystanie z tego urządzenia.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
+
+Sprawdź, czy [skonfigurowano zasady RBAC](https://docs.microsoft.com/azure/virtual-machines/linux/login-using-aad#configure-rbac-policy-for-the-virtual-machine) dla maszyny wirtualnej, która udziela użytkownikowi identyfikatora logowania administratora maszyny wirtualnej lub roli logowania użytkownika maszyny wirtualnej:
+ 
+#### <a name="unauthorized-client"></a>Nieautoryzowany klient
+
+Jeśli po zainicjowaniu połączenia pulpitu zdalnego z maszyną wirtualną zobaczysz następujący komunikat o błędzie: 
+
+- Twoje poświadczenia nie działają
+
+![Twoje poświadczenia nie działają](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
+
+Należy sprawdzić, czy komputer z systemem Windows 10 używany do inicjowania połączenia pulpitu zdalnego jest przyłączony do usługi Azure AD, czy też hybrydowa usługa Azure AD przyłączona do tego samego katalogu usługi Azure AD, do którego jest dołączona maszyna wirtualna. Aby uzyskać więcej informacji na temat tożsamości urządzeń, zobacz artykuł [co to jest tożsamość urządzenia](https://docs.microsoft.com/azure/active-directory/devices/overview).
+
+> [!NOTE]
+> System Windows 10 20H1 dodaje obsługę zarejestrowanego komputera z usługą Azure AD w celu zainicjowania połączenia pulpitu zdalnego z maszyną wirtualną. Dołącz do niejawnego programu testów systemu Windows, aby wypróbować tę funkcję i poznać nowe funkcje systemu Windows 10.
+
+Sprawdź również, czy rozszerzenie AADLoginForWindows nie zostało odinstalowane po zakończeniu dołączania do usługi Azure AD.
+ 
+#### <a name="mfa-sign-in-method-required"></a>Wymagana metoda logowania MFA
+
+Jeśli po zainicjowaniu połączenia pulpitu zdalnego z maszyną wirtualną zobaczysz następujący komunikat o błędzie: 
+
+- Metoda logowania, której próbujesz użyć, jest niedozwolona. Wypróbuj inną metodę logowania lub skontaktuj się z administratorem systemu.
+
+![Metoda logowania, której próbujesz użyć, jest niedozwolona.](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
+
+Jeśli skonfigurowano zasady dostępu warunkowego, które wymagają wykonania MFA przed uzyskaniem dostępu do zasobu RBAC, należy się upewnić, że komputer z systemem Windows 10 inicjujący połączenie pulpitu zdalnego z maszyną wirtualną używa metody silnego uwierzytelniania, takiej jak jako funkcja Windows Hello. Jeśli nie używasz metody silnego uwierzytelniania dla połączenia pulpitu zdalnego, zostanie wyświetlony następujący błąd.
+ 
+## <a name="preview-feedback"></a>Podgląd opinii
+
+Podziel się swoją opinią na temat tej funkcji w wersji zapoznawczej lub zgłoś problemy przy użyciu jej na [forum opinii usługi Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat Azure Active Directory, zobacz [co to jest Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)

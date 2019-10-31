@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: ed13735b4da4818e969c4dddff68b55af6e71a15
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 108eeb03c0ed484e40b884372018bbbef686ee62
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855423"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159858"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Wskazówki dotyczące dostrajania wydajności dotyczące burzy w usłudze HDInsight i Azure Data Lake Storage Gen2
 
@@ -21,8 +21,8 @@ Informacje o czynnikach, które należy wziąć pod uwagę podczas dostrajania w
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Konto Azure Data Lake Storage Gen2**. Aby uzyskać instrukcje dotyczące sposobu tworzenia takiego elementu, [zobacz Szybki Start: Utwórz konto magazynu dla analizy analitycznej](data-lake-storage-quickstart-create-account.md).
+* **Subskrypcja platformy Azure**. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+* **Konto Azure Data Lake Storage Gen2**. Aby uzyskać instrukcje dotyczące sposobu tworzenia takiego elementu, zobacz [Szybki Start: Tworzenie konta magazynu na potrzeby analizy analitycznej](data-lake-storage-quickstart-create-account.md).
 * **Klaster usługi Azure HDInsight** z dostępem do konta Data Lake Storage Gen2. Zobacz [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Upewnij się, że Pulpit zdalny dla klastra są włączone.
 * **Uruchamianie klastra burzy w Data Lake Storage Gen2**. Aby uzyskać więcej informacji, zobacz [burza w usłudze HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
 * **Wskazówki dotyczące dostrajania wydajności na Data Lake Storage Gen2**.  Ogólne pojęcia dotyczące wydajności znajdują się w temacie [Data Lake Storage Gen2 wskazówki dotyczące dostrajania wydajności](data-lake-storage-performance-tuning-guidance.md).   
@@ -110,8 +110,8 @@ W przypadku osiągnięcia limitów przepustowości zapewnianej przez Data Lake S
 
 Aby sprawdzić, czy masz ograniczone ograniczenia, Włącz rejestrowanie debugowania po stronie klienta:
 
-1. W **Ambari** > **burzy** **&lt;&gt;** konfiguracji — Zaawansowana burza-proces roboczy-Log4J, zmiana poziomu głównego = "informacje" na poziom główny = >  >   **&lt; "Debugowanie"&gt;** . Uruchom ponownie wszystkie węzły/usługi, aby konfiguracja zaczęła obowiązywać.
-2. Monitoruj dzienniki topologii burzy w węzłach procesu roboczego&lt;(w&gt;obszarze&gt;/var/log/Storm/Worker-Artifacts//&lt;topologyname port/Worker.log), aby uzyskać Data Lake Storage Gen2 wyjątków ograniczania.
+1. W **Ambari** > **burzy** > **config** > **zaawansowanej burzy-Worker-Log4J**, zmień **&lt;głównego poziomu = "info"&gt;** na **&lt;root Level = "debug"&gt;** . Uruchom ponownie wszystkie węzły/usługi, aby konfiguracja zaczęła obowiązywać.
+2. Monitoruj dzienniki topologii burzy w węzłach procesu roboczego (w obszarze/var/log/Storm/Worker-Artifacts/&lt;Topologyname&gt;/&lt;port&gt;/Worker.log) w celu Data Lake Storage Gen2 wyjątków ograniczania.
 
 ## <a name="next-steps"></a>Następne kroki
 W [tym blogu](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)można odwoływać się do dodatkowej dostrajania wydajności dla burzy.

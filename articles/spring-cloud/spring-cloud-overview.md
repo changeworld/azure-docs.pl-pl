@@ -6,21 +6,20 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 10/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: c58e6b2a0c0de8295df65b44fbdeaeb2d4461948
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d79ad88cf87e0ac8a08245558233eb92008f11e2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166528"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163669"
 ---
-# <a name="what-is-azure-spring-cloud"></a>Co to jest chmura sprężynowa platformy Azure?
+# <a name="what-is-azure-spring-cloud"></a>Co to jest usługa Azure Spring Cloud?
 
 Chmura sprężynowa platformy Azure ułatwia wdrażanie aplikacji mikrousług opartych na rozruchu sprężyny na platformie Azure bez zmian w kodzie.  Chmura sprężynowa platformy Azure umożliwia deweloperom skoncentrowanie się na kodzie przez Zarządzanie cyklem życia aplikacji w chmurze.  Chmura Wiosenna umożliwia zarządzanie cyklem życia przy użyciu kompleksowych funkcji monitorowania i diagnostyki, zarządzania konfiguracją, odnajdywania usług, integracji ciągłej i ciągłego wdrażania, a także innych elementów.
 
 W ramach ekosystemu platformy Azure chmura sprężynowa platformy Azure umożliwia łatwe powiązanie z innymi usługami platformy Azure, w tym z magazynem, bazami danych, monitorowaniem i innymi.
 
-Chmura Wiosenna platformy Azure jest obecnie w wersji zapoznawczej.  Aby uzyskać dostęp do tej usługi, gdy jest ona w wersji zapoznawczej, [Wypełnij ten formularz](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-).
+Chmura Wiosenna platformy Azure jest obecnie w wersji zapoznawczej.  Aby uzyskać dostęp do tej usługi, gdy jest ona w wersji zapoznawczej, [Wypełnij ten formularz](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).  Chociaż chmura Wiosenna platformy Azure jest dostępna w wersji zapoznawczej, firma Microsoft oferuje ograniczoną pomoc techniczną bez umowy SLA.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, zapoznaj się z tematem [często zadawanych pytań](https://azure.microsoft.com/support/faq/).
 
 Aby rozpocząć, Skorzystaj z przewodnika Szybki Start dla chmury przewodowej przy użyciu [interfejsu wiersza polecenia platformy Azure](spring-cloud-quickstart-launch-app-cli.md), [Azure Portal](spring-cloud-quickstart-launch-app-portal.md)lub [Maven](spring-cloud-quickstart-launch-app-maven.md).
 

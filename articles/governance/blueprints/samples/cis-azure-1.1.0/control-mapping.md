@@ -6,19 +6,19 @@ ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: fa683206ec1ff4d02298fd2689791601ff11f85c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 64af398ec4829a0336294b33fef102392b9a4099
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297795"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163874"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Rekomendacja zaleceń przykładowego planu testów usługi CIS Microsoft Azure
 
 W tym artykule szczegółowo przedstawiono sposób, w jaki plan platformy Azure Microsoft Azure fundacje planów testów porównawczych jest mapowany na zaleceń usługi CIS Microsoft Azure dotyczącej testów porównawczych. Aby uzyskać więcej informacji na temat zaleceń, zobacz artykuł dotyczący [testów usług CIS Microsoft Azure](https://www.cisecurity.org/benchmark/azure/).
 
 Poniżej przedstawiono mapowania zaleceń dotyczących usługi **CIS Microsoft Azure testy porównawcze 1.1.0** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania rekomendacji.
-Liczne zamapowane zalecenia są implementowane z inicjatywy [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz **\[Preview @ no__t-2 inspekcji usługi CIS Microsoft Azure fundacje testy porównawcze w wersji testowej 1.1.0 i Wdróż określone rozszerzenia maszyny wirtualnej w celu obsługi funkcji inspekcji** wbudowanych w ramach zasad.
+Liczne zamapowane zalecenia są implementowane z inicjatywy [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz pozycję **\[wersja Zapoznawcza\] inspekcji usługi CIS Microsoft Azure fundacje test porównawczy v**
 
 > [!IMPORTANT]
 > Każda kontrolka poniżej jest skojarzona z co najmniej jedną definicją [Azure Policy](../../../policy/overview.md) . Te zasady mogą pomóc w [ocenie zgodności](../../../policy/how-to/get-compliance-data.md) z kontrolką; Niemniej jednak często nie jest to 1:1 ani kompletna zgodność między kontrolką a co najmniej jedną zasadą. W związku z tym **zgodność** w Azure Policy odnosi się tylko do samych zasad; nie gwarantuje to, że jest w pełni zgodne ze wszystkimi wymaganiami formantu. Ponadto Standard zgodności zawiera kontrolki, które nie są obecnie rozwiązywane przez żadną Azure Policy definicje. W związku z tym zgodność w Azure Policy jest tylko częściowym widokiem ogólnego stanu zgodności. Skojarzenia między kontrolkami i definicjami Azure Policy dla tego przykładowego planu zgodności mogą ulec zmianie z upływem czasu. Aby wyświetlić historię zmian, zobacz [historię zatwierdzeń usługi GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md).
@@ -346,7 +346,7 @@ Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , kt�
 
 Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która pomaga zapewnić, że kontrola dostępu oparta na rolach służy do zarządzania uprawnieniami zarządzanymi w klastrach usługi Kubernetes
 
-- \[Preview @ no__t-1: Access Control oparte na rolach (RBAC) powinny być używane w usługach Kubernetes Services
+- Wersja zapoznawcza \[\]: Access Control oparty na rolach (RBAC) należy używać w usługach Kubernetes Services
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9,2 Upewnij się, że aplikacja internetowa przekierowuje cały ruch HTTP do protokołu HTTPS w Azure App Service
 
@@ -362,7 +362,7 @@ Po przejrzeniu mapowania kontroli w ramach planu porównawczego usługi CIS Micr
 > [Plan porównawczy usług CIS Microsoft Azure — omówienie](./index.md)
 > [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
 
-Dodatkowe artykuły na temat strategii i sposobu ich używania:
+Dodatkowe artykuły o planach i sposobach ich użycia:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

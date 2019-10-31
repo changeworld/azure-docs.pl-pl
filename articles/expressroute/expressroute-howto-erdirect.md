@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie usługi ExpressRoute bezpośrednio — Azure | Dokumentacja firmy Microsoft
-description: Ta strona służy do konfigurowania bezpośrednich usługi ExpressRoute.
+title: Konfigurowanie usługi ExpressRoute Direct — Azure | Microsoft Docs
+description: Ta strona pomaga skonfigurować program ExpressRoute Direct.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0fec7234d18659051c61fda593b1ba0fb846c220
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9dcefb2d47b6862466b64b3568e1a530a2fdb8cb
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964261"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161599"
 ---
-# <a name="how-to-configure-expressroute-direct"></a>Jak skonfigurować bezpośrednio z usługi ExpressRoute
+# <a name="how-to-configure-expressroute-direct"></a>Jak skonfigurować ExpressRoute Direct
 
-Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośrednio do globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Aby uzyskać więcej informacji, zobacz [dotyczące usługi ExpressRoute bezpośrednie łączenie](expressroute-erdirect-about.md).
+Funkcja ExpressRoute Direct umożliwia bezpośrednie nawiązywanie połączenia z siecią globalną firmy Microsoft w przypadku lokalizacji komunikacji równorzędnej strategicznie dystrybuowanej na całym świecie. Aby uzyskać więcej informacji, zobacz [Informacje o programie ExpressRoute Direct Connect](expressroute-erdirect-about.md).
 
-## <a name="resources"></a>Utwórz zasób
+## <a name="resources"></a>Tworzenie zasobu
 
-1. Logowanie do platformy Azure i wybierz subskrypcję. Zasób bezpośrednio z usługi ExpressRoute i obwodów usługi ExpressRoute musi być w tej samej subskrypcji.
+1. Zaloguj się do platformy Azure i wybierz subskrypcję. Zasoby ExpressRoute Direct i obwody usługi ExpressRoute muszą znajdować się w tej samej subskrypcji.
 
    ```powershell
    Connect-AzAccount 
 
-   Select-AzSubscription -Subscription “<SubscriptionID or SubscriptionName>”
+   Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. Wyświetl listę wszystkich lokalizacji, w którym są obsługiwane bezpośrednio z usługi ExpressRoute.
+2. Wyświetl listę wszystkich lokalizacji, w których obsługiwana jest ExpressRoute Direct.
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -61,7 +61,7 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. Określa, czy lokalizacja z wymienionych powyżej ma dostępną przepustowość
+3. Ustal, czy powyższa Lokalizacja ma dostępną przepustowość
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -83,14 +83,14 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
                           }
                         ]
    ```
-4. Tworzenie zasobu usługi ExpressRoute bezpośrednio na podstawie lokalizacji wybrano tak powyżej
+4. Utwórz zasób ExpressRoute Direct na podstawie wybranej powyżej lokalizacji
 
-   Usługa ExpressRoute bezpośrednio obsługuje QinQ i Dot1Q hermetyzacji. Jeśli wybrano QinQ, każdy obwód usługi ExpressRoute zostanie dynamicznie przypisany S Tag i będą unikatowe w obrębie całej zasobów bezpośrednio z usługi ExpressRoute. Każdy Tag języka C, w ramach obwodu muszą być unikatowe w ramach obwodu, ale nie między bezpośrednio usługi ExpressRoute.  
+   ExpressRoute Direct obsługuje hermetyzację QinQ i Dot1Q. W przypadku wybrania QinQ każdy obwód ExpressRoute zostanie dynamicznie przypisany do znacznika S-i będzie unikatowy przez cały zasób ExpressRoute Direct. Każdy tag C w obwodzie musi być unikatowy w obwodzie, ale nie w ramach bezpośredniego ExpressRoute.  
 
-   Jeśli Dot1Q hermetyzacji jest zaznaczone, można zarządzać unikatowości tagu języka C (VLAN), w całej zasobów bezpośrednio z usługi ExpressRoute.  
+   W przypadku wybrania hermetyzacji Dot1Q należy zarządzać unikatowością tagów języka C (VLAN) w całym zasobie ExpressRoute Direct.  
 
    > [!IMPORTANT]
-   > Bezpośrednie usługi ExpressRoute może być tylko jeden typ hermetyzacji. Hermetyzacja nie można zmienić po utworzeniu bezpośrednio z usługi ExpressRoute.
+   > ExpressRoute Direct może być tylko jednym typem hermetyzacji. Nie można zmienić hermetyzacji po ExpressRoute bezpośredniej.
    > 
  
    ```powershell 
@@ -98,7 +98,7 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
    ```
 
    > [!NOTE]
-   > Można również ustawić atrybut hermetyzacji do Dot1Q. 
+   > Atrybut hermetyzacji może również być ustawiony na Dot1Q. 
    >
 
    **Przykładowe dane wyjściowe:**
@@ -150,23 +150,23 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
    Circuits                   : []
    ```
 
-## <a name="state"></a>Zmień stan administrator łączy
+## <a name="state"></a>Zmień stan administratora linków
 
-  Ten proces powinien służyć do przeprowadzenia testu warstwy 1, zapewnia, że każdy obejmującej wiele połączeń jest prawidłowo poprawionego do każdego routera dla podstawowego i pomocniczego.
-1. Szczegółowe informacje bezpośrednio z usługi ExpressRoute.
+  Ten proces powinien służyć do przeprowadzenia testu warstwy 1, co gwarantuje, że każde połączenie krzyżowe jest prawidłowo poprawione na każdy router dla podstawowego i pomocniczego.
+1. Pobierz szczegóły ExpressRoute bezpośredniego.
 
    ```powershell
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
    ```
-2. Włącz łącze. Powtórz ten krok, aby ustawić każdy link włączony.
+2. Ustaw link do włączenia. Powtórz ten krok, aby ustawić wszystkie łącza do włączone.
 
-   Łącza [0] jest podstawowy port i łącza [1] jest dodatkowych portów.
+   Linki [0] są portem podstawowym, a linki [1] są portem pomocniczym.
 
    ```powershell
-   $ERDirect.Links[0].AdminState = “Enabled”
+   $ERDirect.Links[0].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
-   $ERDirect.Links[1].AdminState = “Enabled”
+   $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
    **Przykładowe dane wyjściowe:**
@@ -218,25 +218,25 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
    Circuits                   : []
    ```
 
-   Użyj tej samej procedury z `AdminState = “Disabled”` włączyć porty w dół.
+   Aby wyłączyć porty, Użyj tej samej procedury co `AdminState = "Disabled"`.
 
 ## <a name="circuit"></a>Tworzenie obwodu
 
-Domyślnie można utworzyć 10 obwodów w ramach subskrypcji, gdzie jest zasobów bezpośrednio z usługi ExpressRoute. Może to być zwiększana przez dział pomocy technicznej. Odpowiedzialność za śledzenia Aprowizowana wykorzystania przepustowości. Elastycznie przepustowość jest suma przepustowości wszystkich obwodów zasobu bezpośrednio z usługi ExpressRoute i wykorzystywanych przepustowość jest użycie fizycznego bazowego interfejsy fizyczne.
+Domyślnie można utworzyć 10 obwodów w ramach subskrypcji, w której znajduje się zasób ExpressRoute Direct. Można to zwiększyć przez pomoc techniczną. Użytkownik jest odpowiedzialny za śledzenie zarówno alokowanej, jak i wykorzystywanej przepustowości. Przystosowana przepustowość to suma przepustowości wszystkich obwodów w ramach zasobu ExpressRoute Direct, a wykorzystanie przepustowości jest fizycznym użyciem podstawowych interfejsów fizycznych.
 
-Brak przepustowości obwodu dodatkowe, które mogą zostać użyte na bezpośrednio ExpressRoute tylko do obsługi scenariuszy opisanych powyżej. Są to: 40Gbps i 100Gbps.
+Dostępne są dodatkowe przepustowości obwodów, które mogą być używane w ExpressRoute bezpośrednio tylko w celu obsługi scenariuszy opisanych powyżej. Są to: 40Gbps i 100Gbps.
 
-**SkuTier** może być lokalny, standardowa lub Premium.
+**SkuTier** może być lokalna, standardowa lub Premium.
 
-**SkuFamily** musi być MeteredData tylko jako nieograniczona liczba nie jest obsługiwana na bezpośrednio z usługi ExpressRoute.
+**SkuFamily** muszą być MeteredData tylko jako nieograniczone nie są obsługiwane w przypadku ExpressRoute Direct.
 
-Utwórz obwód zasobu bezpośrednio z usługi ExpressRoute.
+Utwórz obwód w zasobie ExpressRoute Direct.
 
   ```powershell
   New-AzExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
-  Inne przepustowości obejmują: 5.0, 10.0 i 40.0
+  Inne przepustowości obejmują: 5,0, 10,0 i 40,0
 
   **Przykładowe dane wyjściowe:**
 
@@ -270,6 +270,6 @@ Utwórz obwód zasobu bezpośrednio z usługi ExpressRoute.
   GatewayManagerEtag     
   ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat usługi ExpressRoute bezpośrednio zobacz [Przegląd](expressroute-erdirect-about.md).
+Aby uzyskać więcej informacji na temat usługi ExpressRoute Direct, zobacz [Omówienie](expressroute-erdirect-about.md).

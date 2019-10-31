@@ -7,18 +7,18 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 8c8dbc8534720189c40624cfda97ce09a612e453
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c1e04cb2bfd5ae532b556ed53d585aae90c312e6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297205"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163050"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Sterowanie mapowaniem przykładu planu PCI-DSS v 3.2.1
 
 W poniższym artykule szczegółowo opisano sposób, w jaki usługa Azure planuje plan PCI-DSS v 3.2.1, jest mapowana na kontrolki PCI-DSS v 3.2.1. Aby uzyskać więcej informacji na temat kontrolek, zobacz [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
-Następujące mapowania są do kontrolek **PCI-DSS v 3.2.1:2018 r** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz **\[Preview @ no__t-2 inspekcji PCI v 3.2.1:2018 r Controls i Wdróż określone rozszerzenia maszyn wirtualnych, aby zapewnić obsługę zasad inspekcji** wbudowanej.
+Następujące mapowania są do kontrolek **PCI-DSS v 3.2.1:2018 r** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz pozycję **\[wersja Zapoznawcza\] inspekcji PCI v 3.2.1:2018 r Controls i Wdróż określone rozszerzenia maszyn wirtualnych, aby zapewnić obsługę zasad inspekcji** wbudowanej.
 
 > [!IMPORTANT]
 > Każda kontrolka poniżej jest skojarzona z co najmniej jedną definicją [Azure Policy](../../../policy/overview.md) . Te zasady mogą pomóc w [ocenie zgodności](../../../policy/how-to/get-compliance-data.md) z kontrolką; Niemniej jednak często nie jest to 1:1 ani kompletna zgodność między kontrolką a co najmniej jedną zasadą. W związku z tym **zgodność** w Azure Policy odnosi się tylko do samych zasad; nie gwarantuje to, że jest w pełni zgodne ze wszystkimi wymaganiami formantu. Ponadto Standard zgodności zawiera kontrolki, które nie są obecnie rozwiązywane przez żadną Azure Policy definicje. W związku z tym zgodność w Azure Policy jest tylko częściowym widokiem ogólnego stanu zgodności. Skojarzenia między kontrolkami i definicjami Azure Policy dla tego przykładowego planu zgodności mogą ulec zmianie z upływem czasu. Aby wyświetlić historię zmian, zobacz [historię zatwierdzeń usługi GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
@@ -100,12 +100,12 @@ Platforma Azure implementuje funkcję kontroli dostępu opartej na rolach (RBAC)
 
 Ten plan pomaga wymusić silne hasła, przypisując definicje [Azure Policy](../../../policy/overview.md) , które umożliwiają inspekcję maszyn wirtualnych z systemem Windows, które nie wymuszają minimalnej siły i innych wymagań dotyczących hasła Świadomość maszyn wirtualnych w przypadku naruszenia zasad dotyczących siły haseł ułatwia podejmowanie działań naprawczych w celu zapewnienia zgodności haseł dla wszystkich kont użytkowników maszyny wirtualnej z zasadami.
 
-- \[Preview @ no__t-1: Inspekcja maszyn wirtualnych z systemem Windows bez maksymalnego wieku hasła wynoszącego 70 dni
-- \[Preview @ no__t-1: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają maksymalnego wieku hasła wynoszącego 70 dni
-- \[Preview @ no__t-1: Inspekcja maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
-- \[Preview @ no__t-1: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
-- \[Preview @ no__t-1: Inspekcja maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
-- \[Preview @ no__t-1: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
+- Wersja zapoznawcza \[\]: Inspekcja maszyn wirtualnych z systemem Windows bez maksymalnego wieku hasła 70 dni
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają maksymalnego wieku hasła wynoszącego 70 dni
+- \[Podgląd\]: Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
+- Wersja zapoznawcza \[\]: Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, które zezwalają na ponowne korzystanie z poprzednich 24 haseł
+- \[Podgląd\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
 
 ## <a name="103-and-1054-audit-generation"></a>10,3 i Generowanie inspekcji 10.5.4
 
@@ -134,7 +134,7 @@ Po przejrzeniu mapowania kontroli planu PCI-DSS v 3.2.1 zapoznaj się z następu
 > [Plan PCI-DSS v 3.2.1 — omówienie](./index.md)
 > [PCI-DSS v 3.2.1 plan — kroki wdrażania](./deploy.md)
 
-## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>Dodatkowe artykuły na temat strategii i sposobu ich używania:
+Dodatkowe artykuły o planach i sposobach ich użycia:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

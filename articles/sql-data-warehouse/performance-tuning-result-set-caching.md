@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: c659db91b8ca1ad65b00124bed347b8046328d2e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 6dd3172dd9098db0cb7ec09e812eec65f717340a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045008"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163204"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Dostrajanie wydajności z buforowaniem zestawu wyników  
 Gdy buforowanie zestawu wyników jest włączone, Azure SQL Data Warehouse automatycznie buforuje wyniki zapytania w bazie danych użytkownika do powtarzanego użycia.  Dzięki temu kolejne wykonania zapytania będą uzyskiwać wyniki bezpośrednio z utrwalonej pamięci podręcznej, więc ponowne obliczenie nie jest konieczne.   Buforowanie zestawu wyników zwiększa wydajność zapytań i zmniejsza użycie zasobów obliczeniowych.  Ponadto zapytania korzystające z zbuforowanego zestawu wyników nie używają żadnych miejsc współbieżności, więc nie są wliczane do istniejących limitów współbieżności. W celu zapewnienia bezpieczeństwa użytkownicy mogą uzyskiwać dostęp do buforowanych wyników tylko wtedy, gdy mają one takie same uprawnienia dostępu do danych, jak użytkownicy tworzący buforowane wyniki.  
@@ -37,7 +37,24 @@ Po włączeniu buforowania zestawu wyników dla bazy danych wyniki są buforowan
 - Zapytania korzystające z tabel z włączonymi zabezpieczeniami na poziomie wierszy lub zabezpieczeniami
 - Zapytania zwracające dane z rozmiarem wiersza większym niż 64 KB
 
-Zapytania z dużymi zestawami wyników (na przykład > 1 000 000 wierszy) mogą spowodować wolniejszą wydajność podczas pierwszego uruchomienia podczas tworzenia pamięci podręcznej wyników.
+> [!IMPORTANT]
+> Operacje tworzenia pamięci podręcznej zestawu wyników i pobierania danych z pamięci podręcznej odbywają się w węźle kontrolnym wystąpienia magazynu danych. Gdy buforowanie zestawu wyników jest włączone, uruchomione kwerendy, które zwracają duży zestaw wyników (na przykład > 1 milion wierszy) mogą spowodować wysokie użycie procesora CPU w węźle kontrolnym i spowalniać ogólną odpowiedź na zapytanie w wystąpieniu.  Te zapytania są często używane podczas operacji eksploracji danych lub ETL. Aby uniknąć naciskania węzła kontrolnego i spowodować problem z wydajnością, użytkownicy powinni wyłączyć buforowanie zestawu wyników w bazie danych przed uruchomieniem tych typów zapytań.  
+
+Uruchom to zapytanie przez czas wykonywania operacji buforowania przez zestaw wyników dla zapytania:
+
+```sql
+SELECT step_index, operation_type, location_type, status, total_elapsed_time, command 
+FROM sys.dm_pdw_request_steps 
+WHERE request_id  = <'request_id'>; 
+```
+
+Oto przykładowe dane wyjściowe zapytania wykonanego z wyłączonym buforowaniem zestawu wyników.
+
+![Zapytanie-kroki-with-RSC-disabled](media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+
+Oto przykładowe dane wyjściowe zapytania wykonywanego z włączonym buforowaniem zestawu wyników.
+
+![Zapytanie-kroki-with-RSC-Enabled](media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
 
 ## <a name="when-cached-results-are-used"></a>Gdy są używane buforowane wyniki
 

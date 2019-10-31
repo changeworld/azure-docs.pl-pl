@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: 22521a3619482361c8f556b05436bb3b78c7dc9b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0031a0c96ecadbb3c7d3a479384bee92ba4d102c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932337"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161989"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Obsługiwane usługi, schematy i kategorie dla dzienników zasobów platformy Azure
 
@@ -222,8 +222,6 @@ Schemat dzienników diagnostycznych zasobów różni się w zależności od kate
 |Microsoft. Network/applicationGateways|ApplicationGatewayAccessLog|Application Gateway dziennika dostępu|
 |Microsoft. Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway dziennik wydajności|
 |Microsoft. Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway dziennika zapory|
-|Microsoft. Network/securegateways|AzureFirewallApplicationRule|Reguła aplikacji zapory platformy Azure|
-|Microsoft. Network/securegateways|AzureFirewallNetworkRule|Reguła sieci zapory platformy Azure|
 |Microsoft. Network/azurefirewalls|AzureFirewallApplicationRule|Reguła aplikacji zapory platformy Azure|
 |Microsoft. Network/azurefirewalls|AzureFirewallNetworkRule|Reguła sieci zapory platformy Azure|
 |Microsoft. Network/virtualNetworkGateways|GatewayDiagnosticLog|Dzienniki diagnostyczne bramy|

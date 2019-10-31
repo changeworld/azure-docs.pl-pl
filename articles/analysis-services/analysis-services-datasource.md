@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512445"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146944"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w Azure Analysis Services
 
@@ -38,7 +38,7 @@ Obsługiwane jest <a name="azsqlmanaged">2</a> Azure SQL Database wystąpienia z
 <a name="gen2">4</a> — ADLS Gen2 nie jest obecnie obsługiwane.
 
 
-@No__t_1 **dostawcy**  
+  **dostawcy**  
 Modele w pamięci i DirectQuery łączące się ze źródłami danych platformy Azure używają .NET Framework Dostawca danych do SQL Server.
 
 ## <a name="other-data-sources"></a>Inne źródła danych
@@ -97,12 +97,12 @@ W przypadku migrowania lokalnego modelu SQL Server Analysis Services tabelaryczn
 
 **Aby określić dostawcę**
 
-1. W programie SSDT > **Eksplorator modelu tabelarycznego** > **źródła danych**, kliknij prawym przyciskiem myszy połączenie ze źródłem danych, a następnie kliknij polecenie **Edytuj źródło danych**.
+1. W programie Visual Studio > **Eksploratorze modeli tabelarycznych** > **źródła danych**, kliknij prawym przyciskiem myszy połączenie ze źródłem danych, a następnie kliknij polecenie **Edytuj źródło danych**.
 2. W obszarze **Edytuj połączenie**kliknij pozycję **Zaawansowane** , aby otworzyć okno właściwości zaawansowana.
 3. W obszarze **Ustaw zaawansowane właściwości** > **dostawcy**wybierz odpowiedniego dostawcę.
 
 ## <a name="impersonation"></a>Chodzi
-W niektórych przypadkach może być konieczne określenie innego konta personifikacji. Konto personifikacji można określić w programie Visual Studio (SSDT) lub w programie SSMS.
+W niektórych przypadkach może być konieczne określenie innego konta personifikacji. Konto personifikacji można określić w programie Visual Studio lub SSMS.
 
 Dla lokalnych źródeł danych:
 

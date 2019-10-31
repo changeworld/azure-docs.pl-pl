@@ -68,6 +68,8 @@
       href: environment-setup.md
     - name: Zalecenia dotyczące przepustowości dla sesji zdalnych
       href: bandwidth-recommendations.md
+    - name: Określanie opóźnienia połączenia użytkownika
+      href: connection-latency.md
     - name: Dostęp delegowany w usłudze Windows Virtual Desktop
       href: delegated-access-virtual-desktop.md
     - name: Metody równoważenia obciążenia puli hostów

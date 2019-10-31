@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: baefc16c821c0e335707430763b5025abf4c001b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a7daf460e65c294b464f9a5deb5d9676b762c5f7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298044"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163586"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Wdróż platformę wdrażania Microsoft Cloud dla przykładowego planu usługi Azure Foundation
 
@@ -110,7 +110,7 @@ Poniższa tabela zawiera listę parametrów artefaktów strategii:
 |Dozwolone jednostki SKU maszyny wirtualnej|Przypisywanie zasad|Policy_Allowed-VM-SKU|Dozwolone jednostki SKU maszyny wirtualnej|
 |Dołącz TAG CostCenter do grup zasobów|Przypisywanie zasad|Policy_CostCenter_Tag|Dołącz TAG CostCenter i jego wartość z grupy zasobów|
 |Typy zasobów, których nie chcesz zezwalać w danym środowisku|Przypisywanie zasad|Zasady _Allowed — typy zasobów|Które zasoby platformy Azure, które mają być dozwolone w danym środowisku|
-|Wdróż Key Vault|Szablon usługi Resource Manager|KV — AccessPolicy|**Zablokowany** — Grupa usługi Azure AD lub @no__t użytkownika — 1, aby przyznać uprawnienia w usłudze Key Vault|
+|Wdróż Key Vault|Szablon usługi Resource Manager|KV — AccessPolicy|**Zablokowany** — Grupa usługi Azure AD lub <Object ID> użytkownika, aby przyznać uprawnienia w programie Key Vault|
 |Wdróż Log Analytics|Szablon usługi Resource Manager|LogAnalytics_DataRetention|Dane z **zablokowanej** liczby dni zostaną zachowane w log Analytics|
 |Wdróż Log Analytics|Szablon usługi Resource Manager|LogAnalytics_Location|Region **zablokowany** używany podczas ustanawiania obszaru roboczego|
 
@@ -121,7 +121,7 @@ Po przejrzeniu kroków związanych z wdrażaniem przykładu planu CAF Foundation
 > [!div class="nextstepaction"]
 > [Plan CAF Foundation — Omówienie](./index.md)
 
-Dodatkowe artykuły na temat strategii i sposobu ich używania:
+Dodatkowe artykuły o planach i sposobach ich użycia:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

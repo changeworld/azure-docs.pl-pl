@@ -4,15 +4,15 @@ description: Dowiedz się, jak monitorować metryki serwera Analysis Services w 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a66089d01ed9eabdb78975eb1738b87c99fbf311
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 57bcffad2634ea556cc0dd53763011f921acc5e0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294871"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146801"
 ---
 # <a name="monitor-server-metrics"></a>Monitorowanie metryk serwera
 
@@ -27,7 +27,7 @@ Aby bardziej szczegółowo przeprowadzić diagnostykę, śledzić wydajność i 
 
     ![Monitorowanie w witrynie Azure Portal](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. W obszarze **Dostępne metryki**wybierz metryki do uwzględnienia na wykresie. 
+2. W obszarze **Metryka**wybierz metryki do uwzględnienia na wykresie. 
 
     ![Monitorowanie wykresu](./media/analysis-services-monitor/aas-monitor-chart.png)
 
@@ -89,5 +89,5 @@ Użyj tej tabeli, aby określić, które metryki najlepiej sprawdzają się w sc
 
 ## <a name="next-steps"></a>Następne kroki
 [Przegląd Azure Monitor](../azure-monitor/overview.md)      
-[Wprowadzenie do usługi Azure Eksplorator metryk](../azure-monitor/platform/metrics-getting-started.md)@no__t — 1  
+[Wprowadzenie do usługi Azure Eksplorator metryk](../azure-monitor/platform/metrics-getting-started.md)      
 [Metryki w interfejsie API REST Azure Monitor](/rest/api/monitor/metrics)

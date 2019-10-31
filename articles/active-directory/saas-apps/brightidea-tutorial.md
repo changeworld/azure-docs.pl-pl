@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Brightidea | Microsoft Docs'
+title: 'Samouczek: integracja Azure Active Directory z usługą Brightidea | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Brightidea.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3adae3e0-f43b-492f-b373-6a512d2d6046
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,21 +16,21 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa15a91a6b82a8858bf46a08e8a9dbe11a51d8d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff89f7323ba4cdf14ed1c052b2dd4e4e06356e00
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105934"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157619"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Brightidea
+# <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Samouczek: integracja Azure Active Directory z usługą Brightidea
 
 Z tego samouczka dowiesz się, jak zintegrować aplikację Brightidea z usługą Azure Active Directory (Azure AD).
 Integracja aplikacji Brightidea z usługą Azure AD zapewnia następujące korzyści:
 
 * W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Brightidea.
 * Swoim użytkownikom możesz zezwolić na automatyczne logowanie do aplikacji Brightidea (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -56,7 +57,7 @@ Aby skonfigurować integrację aplikacji Brightidea z usługą Azure AD, musisz 
 
 **Aby dodać aplikację Brightidea z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -64,27 +65,27 @@ Aby skonfigurować integrację aplikacji Brightidea z usługą Azure AD, musisz 
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz nazwę **Brightidea**, wybierz pozycję **Brightidea** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
      ![Aplikacja Brightidea na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w aplikacji Brightidea, korzystając z danych użytkownika testowego **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Brightidea.
 
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji Brightidea, należy ukończyć poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w aplikacji Brightidea](#configure-brightidea-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
 5. **[Tworzenie użytkownika testowego aplikacji Brightidea](#create-brightidea-test-user)** — aby mieć w aplikacji Brightidea odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -94,7 +95,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Brightidea
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Brightidea** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -114,7 +115,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Brightidea
 
     ![wybierz plik metadanych](common/browse-upload-metadata.png)
 
-    c. Po pomyślnym przekazaniu pliku metadanych wartości **Identyfikator** i **Adres URL odpowiedzi** zostaną automatycznie wypełnione w polu tekstowym sekcji Brightidea:
+    d. Po pomyślnym przekazaniu pliku metadanych wartości **Identyfikator** i **Adres URL odpowiedzi** zostaną automatycznie wypełnione w polu tekstowym sekcji Brightidea:
 
     ![image](common/idp-intiated.png)
 
@@ -129,7 +130,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Brightidea
 
 4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
 6. W sekcji **Konfigurowanie aplikacji Brightidea** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
@@ -145,11 +146,11 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Brightidea
 
 1. W innym oknie przeglądarki internetowej zaloguj się do aplikacji Brightidea przy użyciu poświadczeń administratora.
 
-2. Aby uzyskać dostęp do funkcji logowania jednokrotnego w systemie Brightidea, wybierz pozycję **Enterprise Setup (Konfiguracja przedsiębiorstwa)**  -> **kartę Authentication (Uwierzytelnianie)** . Zobaczysz dwie karty podrzędne: Auth Selection (Wybór uwierzytelniania) i SAML Profiles (Profile SAML).
+2. Aby przejść do funkcji logowania jednokrotnego w systemie Brightidea, przejdź do karty **Konfiguracja przedsiębiorstwa** -> **uwierzytelnianie**. Zobaczysz dwie podkarty: wybór uwierzytelniania & profile SAML.
 
     ![Konfiguracja aplikacji Brightidea](./media/brightidea-tutorial/configure1.png)
 
-3. Wybierz kartę **Auth Selection** (Wybór uwierzytelniania). Domyślnie wyświetlane są na niej tylko dwie standardowe metody: Logowanie i rejestracja aplikacji Brightidea. Po dodaniu metody logowania jednokrotnego zostanie ona wyświetlona na liście.
+3. Wybierz kartę **Auth Selection** (Wybór uwierzytelniania). Domyślnie wyświetlane są tylko dwie metody standardowe: Brightidea logowania & rejestracji. Po dodaniu metody logowania jednokrotnego zostanie ona wyświetlona na liście.
 
     ![Konfiguracja aplikacji Brightidea](./media/brightidea-tutorial/configure2.png)
 
@@ -174,7 +175,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Brightidea
      
    * W polu tekstowym **Screen Name** (Nazwa ekranowa) wprowadź wartość `givenName`.
      
-   * Kliknij przycisk **Zapisz zmiany**.  
+   * Kliknij przycisk **Save Changes** (Zapisz zmiany).  
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -192,14 +193,14 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    a. W **nazwa** wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wpisz **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -233,15 +234,15 @@ W tej sekcji w aplikacji Brightidea tworzony jest użytkownik o nazwie Britta Si
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Brightidea na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Brightidea, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

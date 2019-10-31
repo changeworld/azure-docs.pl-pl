@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a96aab3fc5dfa62039732f7860f1e96e3f60e445
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b515a7954d82cdd377cec72fa8525fbd9691351d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964031"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149498"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Szybki Start: Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z aplikacji dla systemu iOS lub macOS
 
-Ten przewodnik Szybki Start zawiera przykładowy kod, który pokazuje, w jaki sposób Natywna aplikacja systemu iOS lub macOS może logować się do osobistych, służbowych i szkolnych kont, uzyskać token dostępu i wywoływać interfejs API Microsoft Graph.
+Ten przewodnik Szybki Start zawiera przykładowy kod, który pokazuje, jak Natywna aplikacja dla systemu iOS lub macOS może używać platformy tożsamości firmy Microsoft do logowania się do osobistych, służbowych kont służbowych, uzyskiwania tokenu dostępu i wywoływania interfejsu API Microsoft Graph.
 
 Ten przewodnik Szybki Start dotyczy zarówno aplikacji iOS, jak i macOS. Niektóre kroki są wymagane tylko w przypadku aplikacji dla systemu iOS. Te kroki wywołują, że są tylko dla systemu iOS.
 

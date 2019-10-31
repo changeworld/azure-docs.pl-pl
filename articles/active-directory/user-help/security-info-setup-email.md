@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec93574a8da051b5cf77a37af1030d0c22dfc4a9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c8f5590cb528082a73cbdf92850218993a1a6b95
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382903"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161017"
 ---
 # <a name="set-up-security-info-preview-to-use-your-email-address"></a>Skonfiguruj informacje zabezpieczające (wersja zapoznawcza), aby użyć Twojego adresu e-mail
 
@@ -36,7 +36,7 @@ W zależności od ustawień organizacji może być możliwe użycie adresu e-mai
 
 ### <a name="to-set-up-your-email-address"></a>Aby skonfigurować swój adres e-mail
 
-1. Zaloguj się do swojego konta służbowego, a następnie przejdź do https://myprofile.microsoft.com/ strony.
+1. Zaloguj się do swojego konta służbowego, a następnie przejdź na stronę https://myprofile.microsoft.com/.
 
     ![Strona mój profil zawierająca wyróżnione linki do informacji zabezpieczających](media/security-info/securityinfo-myprofile-page.png)
 
@@ -95,6 +95,6 @@ Dostępne są dodatkowe opcje dotyczące sposobu, w jaki Twoja organizacja konta
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zagubione lub zapomniane hasło możesz zresetować w [portalu resetowania hasła](https://passwordreset.microsoftonline.com/) lub wykonując kroki przedstawione w artykule [Resetowanie hasła służbowego](user-help-reset-password.md).
+- Zagubione lub zapomniane hasło możesz zresetować w [portalu resetowania hasła](https://passwordreset.microsoftonline.com/) lub wykonując kroki przedstawione w artykule [Resetowanie hasła służbowego](active-directory-passwords-update-your-own-password.md).
 
 - Wskazówki i pomoc dotyczące rozwiązywania problemów z logowaniem znajdują się w artykule [Nie można zalogować się na konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 6f7bb1cfdb36bcaa8545fba8767b20d974c8e073
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 57e8eab6413efa25eb03c48a968ca2b671b8c8d6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968379"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162120"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -25,6 +25,9 @@ Azure Backup używa agenta MARS do tworzenia kopii zapasowych danych z maszyn lo
 - Uruchom na lokalnych maszynach z systemem Windows, aby można było tworzyć kopie zapasowe bezpośrednio do magazynu Recovery Services kopii zapasowych na platformie Azure.
 - Uruchom na maszynach wirtualnych z systemem Windows, aby można było tworzyć kopie zapasowe bezpośrednio w magazynie.
 - Uruchom na serwerze Microsoft Azure Backup Server (serwera usługi MAB) lub w programie System Center Data Protection Manager (DPM). W tym scenariuszu maszyny i obciążenia wykonują kopie zapasowe w programie serwera usługi MAB lub na serwerze programu DPM. Następnie Agent MARS tworzy kopię zapasową tego serwera w magazynie na platformie Azure.
+
+> [!NOTE]
+>Azure Backup nie obsługuje automatycznego dostosowywania zegara dla czasu letniego (DST). Zmodyfikuj zasady, aby zapewnić, że zmiany czasu letniego są brane pod uwagę, aby zapobiec niezgodności między rzeczywistym czasem a zaplanowaną godziną tworzenia kopii zapasowej.
 
 Opcje tworzenia kopii zapasowej zależą od tego, gdzie jest zainstalowany agent programu. Aby uzyskać więcej informacji, zobacz [Azure Backup architektury przy użyciu agenta Mars](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Aby uzyskać informacje na temat architektury kopii zapasowych serwera usługi MAB i programu DPM, zobacz [Tworzenie kopii zapasowej w programie DPM lub serwera usługi MAB](backup-architecture.md#architecture-back-up-to-dpmmabs). Zapoznaj się również z [wymaganiami](backup-support-matrix-mabs-dpm.md) dotyczącymi architektury tworzenia kopii zapasowych.
 

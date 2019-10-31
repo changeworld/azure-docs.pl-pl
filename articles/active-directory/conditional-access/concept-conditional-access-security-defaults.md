@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 502fb8b49770b4933c44aa1eb447abb746943c0d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bde1741d12cc7ef181fb60bc7eecbec1fed8cbd0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554814"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151219"
 ---
 # <a name="what-are-security-defaults"></a>Co to są wartości domyślne zabezpieczeń?
 
@@ -32,7 +32,7 @@ Następujące konfiguracje zabezpieczeń zostaną włączone w dzierżawie.
 
 ## <a name="unified-multi-factor-authentication-registration"></a>Ujednolicona Rejestracja Multi-Factor Authentication
 
-Wszyscy użytkownicy w dzierżawie muszą zarejestrować się w celu uwierzytelniania wieloskładnikowego (MFA) w formie usługi Azure Multi-Factor Authentication. Użytkownicy mają 14 dni na zarejestrowanie Multi-Factor Authentication przy użyciu aplikacji Microsoft Authenticator. Po upływie 14 dni użytkownik nie będzie mógł się zalogować do momentu zakończenia rejestracji Multi-Factor Authentication.
+Wszyscy użytkownicy w dzierżawie muszą zarejestrować się w celu korzystania z uwierzytelniania wieloskładnikowego (MFA) w formie usługi Azure Multi-Factor Authentication. Użytkownicy mają 14 dni na zarejestrowanie Multi-Factor Authentication przy użyciu aplikacji Microsoft Authenticator. Po upływie 14 dni użytkownik nie będzie mógł się zalogować do momentu zakończenia rejestracji Multi-Factor Authentication.
 
 Rozumiemy, że niektórzy użytkownicy mogą znajdować się poza biurem lub nie będą logować się w ciągu 14 dni bezpośrednio po włączeniu ustawień domyślnych zabezpieczeń. Aby zapewnić, że każdy użytkownik ma dużo czasu na zarejestrowanie się w celu Multi-Factor Authentication, okres 14 dni jest unikatowy dla każdego użytkownika. 14-dniowy okres użytkownika rozpoczyna się po pierwszym pomyślnym zalogowaniu interakcyjnym po włączeniu domyślnych ustawień zabezpieczeń.
 
@@ -113,6 +113,7 @@ Poniżej przedstawiono wskazówki krok po kroku dotyczące konfigurowania równo
 - [Wymagaj uwierzytelniania wieloskładnikowego dla administratorów](howto-conditional-access-policy-admin-mfa.md)
 - [Wymagaj uwierzytelniania wieloskładnikowego na potrzeby zarządzania na platformie Azure](howto-conditional-access-policy-azure-management.md)
 - [Blokuj starsze uwierzytelnianie](howto-conditional-access-policy-block-legacy.md)
+- [Wymagaj uwierzytelniania wieloskładnikowego dla wszystkich użytkowników](howto-conditional-access-policy-all-users-mfa.md)
 
 ## <a name="enabling-security-defaults"></a>Włączanie ustawień domyślnych zabezpieczeń
 

@@ -49,6 +49,8 @@
       href: manage-stale-devices.md
     - name: Włączanie roamingu stanu dla przedsiębiorstw
       href: enterprise-state-roaming-enable.md
+    - name: Maszyny wirtualne platformy Azure z systemem Windows i usługa Azure AD
+      href: howto-vm-sign-in-azure-ad-windows.md
     - name: Infrastruktura pulpitów wirtualnych
       href: howto-device-identity-virtual-desktop-infrastructure.md
     - name: Wdrażanie stacji roboczych zarządzanych przez platformę Azure

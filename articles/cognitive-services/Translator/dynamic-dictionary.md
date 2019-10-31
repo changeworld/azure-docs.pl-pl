@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: f586702350b38c6d546767f64a8e2f6115b59817
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c268616c015c1c8735b2bdddc057f235d02cdc2a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595291"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161746"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>Jak używać słownika dynamicznego
 
@@ -27,15 +27,15 @@ Jeśli znasz już tłumaczenie, które chcesz zastosować do wyrazu lub frazy, m
 
 **Wymagania**
 
-* Języki `From` i`To` muszą być różne. 
-* Zamiast korzystać z funkcji `From` automatycznego wykrywania, należy dołączyć parametr do żądania tłumaczenia interfejsu API. 
+* Języki `From` i `To` muszą być różne. 
+* Zamiast korzystać z funkcji automatycznego wykrywania, należy w żądaniu translacji interfejsu API uwzględnić parametr `From`. 
 
 **Przykład: en-de:**
 
-Dane wejściowe źródła: Słowo < msTrans: tłumaczenie słownika =\"wordomatic\"> Word lub phrase </msTrans: słownik > jest wpisem słownika.
+Dane wejściowe źródła: słowo < msTrans: tłumaczenie słownika =\"wordomatic\"> wyrazu lub frazy </msTrans: dictionary > to wpis słownika.
 
-Docelowy wynik: Das Wort "wordomatic" ist Ein Wörterbucheintrag.
+Docelowa produkcja wyjściowa: Das Wort "wordomatic" ist Ein Wörterbucheintrag.
 
 Ta funkcja działa tak samo jak w przypadku trybu HTML i bez niego.
 
-Ta funkcja powinna być stosowana oszczędnie. Odpowiednim i znacznie lepszym sposobem dostosowywania tłumaczenia jest użycie translatora niestandardowego. W przypadku translatora niestandardowego w pełni stosowane są prawdopodobieństwa kontekstowe i statystyczne. Jeśli masz lub możesz utworzyć dane szkoleniowe, które pokazują swoją służbę lub frazę w kontekście, uzyskasz dużo lepszych wyników. Więcej informacji na temat usługi tłumaczenia niestandardowego można znaleźć [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator)pod adresem.
+Ta funkcja powinna być stosowana oszczędnie. Odpowiednim i znacznie lepszym sposobem dostosowywania tłumaczenia jest użycie translatora niestandardowego. W przypadku translatora niestandardowego w pełni stosowane są prawdopodobieństwa kontekstowe i statystyczne. Jeśli masz lub możesz utworzyć dane szkoleniowe, które pokazują swoją służbę lub frazę w kontekście, uzyskasz dużo lepszych wyników. Więcej informacji na temat usługi tłumaczenia niestandardowego można znaleźć pod adresem [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator).

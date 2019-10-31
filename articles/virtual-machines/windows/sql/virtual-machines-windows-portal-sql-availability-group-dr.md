@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: f74f9ba55f3593ed31994b83bb9bda1501445e0a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9949c389ad0511c3ed5923e0451bc96e7063621f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100665"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159745"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Skonfiguruj zawsze włączona Grupa dostępności na maszynach wirtualnych platformy Azure w różnych regionach
 
@@ -130,7 +130,7 @@ Uruchom skrypt programu PowerShell z nazwą sieci klastra, adresem IP i portem s
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
    $IPResourceName = "<IPResourceName>" # The cluster name for the new IP Address resource.
-   $ILBIP = “<n.n.n.n>” # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.
+   $ILBIP = "<n.n.n.n>" # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.
    [int]$ProbePort = <nnnnn> # The probe port you set on the ILB.
 
    Import-Module FailoverClusters
@@ -152,7 +152,7 @@ Aby przetestować łączność odbiornika z regionem zdalnym, można przełączy
 
 1. W **Eksplorator obiektów**Połącz się z wystąpieniem SQL Server, które obsługuje replikę podstawową.
 1. W obszarze **zawsze włączone grupy dostępności**, **grupy dostępności**, kliknij prawym przyciskiem myszy grupę dostępności, a następnie kliknij pozycję **Właściwości**.
-1. Na stronie **Ogólne** w obszarze **repliki dostępności**Ustaw replikę pomocniczą w lokacji odzyskiwania w taki sposób, aby korzystała z synchronicznego trybu dostępności **zatwierdzania** i trybu **automatycznego** trybu failover.
+1. Na stronie **Ogólne** w obszarze **repliki dostępności**Ustaw replikę pomocniczą w lokacji odzyskiwania w taki sposób, aby korzystała z **synchronicznego trybu dostępności zatwierdzania** i trybu **automatycznego** trybu failover.
 1. Jeśli istnieje replika pomocnicza w tej samej lokacji co replika podstawowa w celu zapewnienia wysokiej dostępności, ustaw tę replikę na **asynchroniczne zatwierdzenie** i **ręcznie**.
 1. Kliknij przycisk OK.
 1. W **Eksplorator obiektów**kliknij prawym przyciskiem myszy grupę dostępności, a następnie kliknij pozycję **Pokaż pulpit nawigacyjny**.
@@ -164,16 +164,16 @@ Aby przetestować łączność odbiornika z regionem zdalnym, można przełączy
 
 Po przetestowaniu łączności należy przenieść replikę podstawową z powrotem do głównego centrum danych i ustawić tryb dostępności z powrotem na normalne ustawienia operacyjne. W poniższej tabeli przedstawiono normalne ustawienia operacyjne dla architektury opisanej w tym dokumencie:
 
-| Location | Wystąpienie serwera | Role | Tryb dostępności | Tryb pracy awaryjnej
+| Lokalizacja | Wystąpienie serwera | Rola | Tryb dostępności | Tryb pracy awaryjnej
 | ----- | ----- | ----- | ----- | -----
-| Podstawowe centrum danych | SQL-1 | Podstawowy | Wykonywane | Automatyczne
-| Podstawowe centrum danych | SQL-2 | Pomocnicza | Wykonywane | Automatyczne
-| Pomocnicze lub zdalne centrum danych | SQL-3 | Pomocnicza | Komunikacji | Ręczne
+| Podstawowe centrum danych | SQL — 1 | Podstawowy | Wykonywane | Automatyczny
+| Podstawowe centrum danych | SQL — 2 | Pomocniczy | Wykonywane | Automatyczny
+| Pomocnicze lub zdalne centrum danych | SQL — 3 | Pomocniczy | Komunikacji | Ręczna
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Więcej informacji o planowanym i wymuszonym ręcznym przejściu w tryb failover
 
-Więcej informacji znajduje się w następujących tematach:
+Aby uzyskać więcej informacji, zobacz następujące tematy:
 
 - [Wykonaj zaplanowaną ręczną pracę awaryjną grupy dostępności (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [Wykonaj wymuszoną ręczną pracę awaryjną grupy dostępności (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
@@ -181,6 +181,6 @@ Więcej informacji znajduje się w następujących tematach:
 ## <a name="additional-links"></a>Dodatkowe linki
 
 * [Zawsze włączone grupy dostępności](https://msdn.microsoft.com/library/hh510230.aspx)
-* [Usługa Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)
+* [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Moduły równoważenia obciążenia platformy Azure](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Zestawy dostępności platformy Azure](../manage-availability.md)

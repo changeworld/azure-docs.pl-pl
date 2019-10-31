@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 12ef5586ac1e7ecf27824f95add3355451cf555a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592307"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163774"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -66,7 +66,7 @@ Poniżej przedstawiono znane ograniczenia chmury wiosennej platformy Azure, gdy 
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Jak mogę przekazać Opinie i zgłosić problemy?
 
-Jeśli masz utworzone wystąpienia usługi wiosennej w chmurze Azure wiosennej, możesz utworzyć [żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Jeśli nie zostało to jeszcze dołączone do chmury wiosennej platformy Azure, możesz przejść do obszaru [opinii platformy Azure](https://feedback.azure.com/) , aby zażądać funkcji lub przekazać opinię.
+Jeśli napotykasz jakiekolwiek problemy z chmurą Azure wiosennej, Utwórz [żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Aby uzyskać informacje na temat żądań funkcji, przejdź do [odpowiedzi na platformę Azure](https://feedback.azure.com/forums/34192--general-feedback) .
 
 ## <a name="development"></a>Tworzenie oprogramowania
 

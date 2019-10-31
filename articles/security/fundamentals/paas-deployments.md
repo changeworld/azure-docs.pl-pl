@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 67a34b2b0a997a118cb2fe1b99de04bd58063307
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999042"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159879"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
@@ -34,28 +34,14 @@ Ten artykuł zawiera informacje ułatwiające:
 [Opracowywanie bezpiecznych aplikacji na platformie Azure](abstract-develop-secure-apps.md) to ogólny przewodnik dotyczący pytań zabezpieczających i kontrolek, które należy wziąć pod uwagę w każdej fazie cyklu projektowania oprogramowania podczas tworzenia aplikacji dla chmury.
 
 ## <a name="cloud-security-advantages"></a>Zalety chmury
-Istnieją zalety zabezpieczeń w chmurze. W środowisku lokalnym organizacje mogą korzystać z niewypełnienia obowiązków i ograniczonych zasobów w celu inwestowania w zabezpieczeniach, co tworzy środowisko, w którym atakujący mogą wykorzystać luki we wszystkich warstwach.
+Ważne jest zrozumienie [działu odpowiedzialności](shared-responsibility.md) między ty i firmą Microsoft. W środowisku lokalnym jest własnością całego stosu, ale podczas przechodzenia do chmury niektóre odpowiedzialności są przekazywane do firmy Microsoft.
 
-![Zalety zabezpieczeń chmury era](./media/paas-deployments/advantages-of-cloud.png)
+Istnieją [zalety zabezpieczeń w chmurze](shared-responsibility.md#cloud security advantages). W środowisku lokalnym organizacje mogą korzystać z niewypełnienia obowiązków i ograniczonych zasobów w celu inwestowania w zabezpieczeniach, co tworzy środowisko, w którym atakujący mogą wykorzystać luki we wszystkich warstwach.
 
 Organizacje mogą ulepszyć czas wykrywania zagrożeń i czasy odpowiedzi przy użyciu opartych na chmurze funkcji zabezpieczeń i analizy chmury.  Dzięki przesunięciu obowiązków do dostawcy usług w chmurze organizacje mogą uzyskać więcej informacji o zabezpieczeniach, co umożliwia im ponowne przydzielanie zasobów zabezpieczeń i budżetu do innych priorytetów firmy.
 
-## <a name="division-of-responsibility"></a>Dział odpowiedzialności
-Ważne jest zrozumienie działu odpowiedzialności między ty i firmą Microsoft. W środowisku lokalnym jest własnością całego stosu, ale podczas przechodzenia do chmury niektóre odpowiedzialności są przekazywane do firmy Microsoft. W poniższej macierzy odpowiedzialności są wyświetlane obszary stosu w ramach wdrożenia SaaS, PaaS i IaaS, które są odpowiedzialne za firmę Microsoft.
-
-![Strefy odpowiedzialności](./media/paas-deployments/responsibility-zones.png)
-
-W przypadku wszystkich typów wdrożeń w chmurze masz własne dane i tożsamości. Użytkownik jest odpowiedzialny za ochronę danych i tożsamości, zasobów lokalnych i kontrolowanych przez Ciebie składników w chmurze (które różnią się w zależności od typu usługi).
-
-Obowiązki, które są zawsze zachowywane przez użytkownika, niezależnie od typu wdrożenia, to:
-
-- Data
-- Punkty końcowe
-- Konto
-- Zarządzanie dostępem
-
 ## <a name="security-advantages-of-a-paas-cloud-service-model"></a>Zalety zabezpieczeń modelu usług w chmurze PaaS
-Korzystając z tej samej macierzy kompetencyjnej, przyjrzyjmy się zabezpieczeniom dotyczącym wdrożenia usługi Azure PaaS, a w środowisku lokalnym.
+Przyjrzyjmy się zabezpieczeniom dotyczącym wdrożenia usługi Azure PaaS, a w środowisku lokalnym.
 
 ![Zalety zabezpieczeń PaaS](./media/paas-deployments/advantages-of-paas.png)
 
@@ -87,19 +73,19 @@ Zasady i wzorce dla obwodu sieci są dostępne dla dekad. Z kolei branża ma sto
 
 Poniżej przedstawiono najlepsze rozwiązania dotyczące zarządzania obwodem tożsamości.
 
-**Najlepsze rozwiązanie**: Zabezpiecz swoje klucze i poświadczenia, aby zabezpieczyć wdrożenie PaaS.   
-**Szczegóły**: Utrata kluczy i poświadczeń jest typowym problemem. Możesz użyć scentralizowanego rozwiązania, w którym klucze i wpisy tajne mogą być przechowywane w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń). [Azure Key Vault](../../key-vault/key-vault-overview.md) zabezpiecza klucze i wpisy tajne, szyfrując klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych, pliki PFX i hasła przy użyciu kluczy chronionych przez sprzętowych modułów zabezpieczeń.
+**Najlepsze rozwiązanie**: Zabezpiecz klucze i poświadczenia, aby zabezpieczyć wdrożenie PaaS.   
+**Szczegóły**: problem polega na utracie kluczy i poświadczeń. Możesz użyć scentralizowanego rozwiązania, w którym klucze i wpisy tajne mogą być przechowywane w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń). [Azure Key Vault](../../key-vault/key-vault-overview.md) zabezpiecza klucze i wpisy tajne, szyfrując klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych, pliki PFX i hasła przy użyciu kluczy chronionych przez sprzętowych modułów zabezpieczeń.
 
-**Najlepsze rozwiązanie**: Nie umieszczaj poświadczeń i innych wpisów tajnych w kodzie źródłowym ani w witrynie GitHub.   
-**Szczegóły**: Jedyną czynnością, która nie jest utrata kluczy i poświadczeń, jest posiadanie nieautoryzowanej strony dostępu do nich. Osoby atakujące mogą skorzystać z technologii bot, aby znaleźć klucze i wpisy tajne przechowywane w repozytoriach kodu, takich jak GitHub. Nie umieszczaj kluczy i wpisów tajnych w tych publicznych repozytoriach kodu.
+**Najlepsze rozwiązanie**: nie umieszczaj poświadczeń i innych wpisów tajnych w kodzie źródłowym ani w witrynie GitHub.   
+**Szczegóły**: jedynym warunkiem, aby nie utracić kluczy i poświadczeń, jest posiadanie nieautoryzowanej strony dostępu do nich. Osoby atakujące mogą skorzystać z technologii bot, aby znaleźć klucze i wpisy tajne przechowywane w repozytoriach kodu, takich jak GitHub. Nie umieszczaj kluczy i wpisów tajnych w tych publicznych repozytoriach kodu.
 
 **Najlepsze rozwiązanie**: Zabezpiecz interfejsy zarządzania maszyną wirtualną w ramach hybrydowych usług PaaS i IaaS przy użyciu interfejsu zarządzania, który umożliwia zdalne zarządzanie tymi maszynami wirtualnymi.   
-**Szczegóły**: Mogą być używane protokoły zdalnego zarządzania, takie jak [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)i [komunikacja zdalna programu PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) . Ogólnie rzecz biorąc, zaleca się, aby nie włączać bezpośredniego dostępu zdalnego do maszyn wirtualnych z Internetu.
+**Szczegóły**: można używać protokołów zarządzania zdalnego, takich jak [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)i [komunikacja zdalna programu PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) . Ogólnie rzecz biorąc, zaleca się, aby nie włączać bezpośredniego dostępu zdalnego do maszyn wirtualnych z Internetu.
 
 Jeśli to możliwe, użyj alternatywnych metod, takich jak korzystanie z wirtualnych sieci prywatnych w sieci wirtualnej platformy Azure. Jeśli alternatywne podejścia nie są dostępne, należy się upewnić, że są używane złożone hasła i uwierzytelnianie dwuskładnikowe (na przykład [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)).
 
-**Najlepsze rozwiązanie**: Używaj mocnych platform uwierzytelniania i autoryzacji.   
-**Szczegóły**: Zamiast niestandardowych magazynów użytkowników używaj tożsamości federacyjnych w usłudze Azure AD. W przypadku korzystania z tożsamości federacyjnych należy skorzystać z podejścia opartego na platformie i delegować zarządzanie autoryzowanymi tożsamościami do partnerów. Podejście do tożsamości federacyjnej jest szczególnie ważne, gdy pracownicy są zwolnieni i że informacje muszą być widoczne przez wiele systemów tożsamości i autoryzacji.
+**Najlepsze rozwiązanie**: Użyj mocnych platform uwierzytelniania i autoryzacji.   
+**Szczegóły**: Użyj tożsamości federacyjnych w usłudze Azure AD zamiast niestandardowych magazynów użytkowników. W przypadku korzystania z tożsamości federacyjnych należy skorzystać z podejścia opartego na platformie i delegować zarządzanie autoryzowanymi tożsamościami do partnerów. Podejście do tożsamości federacyjnej jest szczególnie ważne, gdy pracownicy są zwolnieni i że informacje muszą być widoczne przez wiele systemów tożsamości i autoryzacji.
 
 Używanie mechanizmów uwierzytelniania i autoryzacji dostarczonych przez platformę zamiast kodu niestandardowego. Przyczyną jest to, że programowanie niestandardowego kodu uwierzytelniania może być podatne na błędy. Większość deweloperów nie jest ekspertami ds. zabezpieczeń i nie jest mało prawdopodobne, że subtleties i najnowsze postępy w zakresie uwierzytelniania i autoryzacji. Kod komercyjny (na przykład od firmy Microsoft) jest często szeroko przeglądany pod kątem zabezpieczeń.
 
@@ -114,31 +100,31 @@ Poniższa tabela zawiera listę zagrożeń związanych z KROKami i zawiera przyk
 
 | Ważną | Właściwość zabezpieczeń | Potencjalne ograniczenia dotyczące platformy Azure |
 | --- | --- | --- |
-| Fałszowaniem | Authentication | Wymagaj połączeń HTTPS. |
+| Fałszowaniem | Uwierzytelnianie | Wymagaj połączeń HTTPS. |
 | Manipulowanie | Integralność | Sprawdź poprawność certyfikatów SSL. |
 | Rzuca | Brak wyparcia | Włącz [monitorowanie i diagnostykę](/azure/architecture/best-practices/monitoring)platformy Azure. |
 | Ujawnienie informacji | Poufne | Szyfruj poufne dane przy użyciu [certyfikatów usługi](/rest/api/appservice/certificates). |
 | Odmowa usługi | Dostępność | Monitoruj metryki wydajności dla potencjalnych warunków odmowy usług. Implementuj filtry połączeń. |
-| Podniesienie uprawnień | Authorization | Użyj [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements). |
+| Podniesienie uprawnień | Autoryzacja | Użyj [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements). |
 
 ## <a name="develop-on-azure-app-service"></a>Opracowywanie na Azure App Service
 [Azure App Service](/azure/app-service/overview) to oferta PaaS, która umożliwia tworzenie aplikacji sieci Web i mobilnych dla dowolnej platformy lub urządzenia oraz łączenie się z danymi gdziekolwiek w chmurze lub lokalnie. App Service obejmuje możliwości sieci Web i urządzeń przenośnych, które zostały wcześniej dostarczone osobno jako usługi Azure Websites i Azure Mobile Services. Obejmuje ona także nowe funkcje automatyzacji procesów biznesowych i hostowania interfejsów API w chmurze. Jako pojedyncza zintegrowana usługa App Service oferuje bogaty zestaw funkcji dla scenariuszy sieci Web, mobilnych i integracji.
 
 Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z App Service.
 
-**Najlepsze rozwiązanie**: [Uwierzytelnij za Azure Active Directory](/azure/app-service/overview-authentication-authorization).   
+**Najlepsze rozwiązanie**: [uwierzytelnianie za Azure Active Directory](/azure/app-service/overview-authentication-authorization).   
 **Szczegóły**: App Service udostępnia usługę OAuth 2,0 dla dostawcy tożsamości. Uwierzytelnianie OAuth 2,0 koncentruje się na prostotie deweloperów klienta, a jednocześnie udostępnia określone przepływy autoryzacji dla aplikacji sieci Web, aplikacji klasycznych i telefonów komórkowych. Usługa Azure AD korzysta z protokołu OAuth 2,0, aby umożliwić autoryzowanie dostępu do aplikacji mobilnych i sieci Web.
 
-**Najlepsze rozwiązanie**: Ogranicz dostęp w oparciu o konieczność znajomości i najniższych zasad zabezpieczeń.   
-**Szczegóły**: Ograniczanie dostępu jest przeznaczone dla organizacji, które chcą wymusić zasady zabezpieczeń na potrzeby dostępu do danych. Za pomocą RBAC można przypisywać uprawnienia użytkownikom, grupom i aplikacjom w określonym zakresie. Aby dowiedzieć się więcej o udzielaniu użytkownikom dostępu do aplikacji, zobacz Wprowadzenie do [zarządzania dostępem](/azure/role-based-access-control/overview).
+**Najlepsze rozwiązanie**: ograniczanie dostępu na podstawie potrzeb znajomości zasad zabezpieczeń i ich najniższych uprawnień.   
+**Szczegóły**: ograniczanie dostępu jest konieczne dla organizacji, które chcą wymusić zasady zabezpieczeń dostępu do danych. Za pomocą RBAC można przypisywać uprawnienia użytkownikom, grupom i aplikacjom w określonym zakresie. Aby dowiedzieć się więcej o udzielaniu użytkownikom dostępu do aplikacji, zobacz Wprowadzenie do [zarządzania dostępem](/azure/role-based-access-control/overview).
 
 **Najlepsze rozwiązanie**: Ochrona kluczy.   
-**Szczegóły**: Azure Key Vault pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Za pomocą Key Vault można szyfrować klucze i wpisy tajne (takie jak klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych). Pliki i hasła PFX) przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w modułach HSM. Aby dowiedzieć się więcej, zobacz [Azure Key Vault](/azure/key-vault/key-vault-overview) . Za pomocą Key Vault można także zarządzać certyfikatami TLS przy użyciu autoodnawiania.
+**Szczegóły**: Azure Key Vault pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Za pomocą Key Vault można szyfrować klucze i wpisy tajne (takie jak klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych). Pliki i hasła PFX) przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). W celu zapewnienia dodatkowej ochrony można importować lub generować klucze w sprzętowych modułach zabezpieczeń. Aby dowiedzieć się więcej, zobacz [Azure Key Vault](/azure/key-vault/key-vault-overview) . Za pomocą Key Vault można także zarządzać certyfikatami TLS przy użyciu autoodnawiania.
 
-**Najlepsze rozwiązanie**: Ogranicz przychodzące źródłowe adresy IP.   
+**Najlepsze rozwiązanie**: ograniczanie przychodzących źródłowych adresów IP.   
 **Szczegóły**: [App Service Environment](/azure/app-service/environment/intro) ma funkcję integracji sieci wirtualnej, która pomaga ograniczyć przychodzące źródłowe adresy IP za pomocą sieciowych grup zabezpieczeń. Sieci wirtualne umożliwiają umieszczanie zasobów platformy Azure w nieinternetowej, rutowanej sieci, do której kontroluje się dostęp. Aby dowiedzieć się więcej, zobacz [Integrowanie aplikacji z siecią wirtualną platformy Azure](/azure/app-service/web-sites-integrate-with-vnet).
 
-**Najlepsze rozwiązanie**: Monitoruj stan zabezpieczeń środowisk App Serviceych.   
+**Najlepsze rozwiązanie**: monitorowanie stanu zabezpieczeń środowisk App Serviceych.   
 **Szczegóły**: Aby monitorować środowiska App Service, użyj Azure Security Center. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy [zalecenia](../../security-center/security-center-virtual-machine-protection.md) , które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek.
 
 > [!NOTE]
@@ -167,11 +153,11 @@ Testowanie rozmyte to metoda odnajdywania awarii programu (błędy kodu) przez d
 ## <a name="next-steps"></a>Następne kroki
 W tym artykule koncentrujemy się na zaletach zabezpieczeń wdrożenia usługi Azure PaaS i najlepszych rozwiązaniach dotyczących zabezpieczeń dla aplikacji w chmurze. Następnie zapoznaj się z zalecanymi rozwiązaniami dotyczącymi zabezpieczania rozwiązań sieci Web i urządzeń przenośnych PaaS przy użyciu określonych usług platformy Azure. Zaczniemy od Azure App Service, Azure SQL Database i Azure SQL Data Warehouse i usługi Azure Storage. Ponieważ artykuły dotyczące zalecanych praktyk dla innych usług platformy Azure stają się dostępne, linki zostaną podane na poniższej liście:
 
-- [Usługa Azure App Service](paas-applications-using-app-services.md)
+- [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Database i Azure SQL Data Warehouse](paas-applications-using-sql.md)
 - [Azure Storage](paas-applications-using-storage.md)
 - Azure Cache for Redis
-- Magistrala usług Azure
+- Azure Service Bus
 - Zapory aplikacji sieci Web
 
 Zapoznaj się z tematem [opracowywanie bezpiecznych aplikacji na platformie Azure](abstract-develop-secure-apps.md) , aby poznać pytania zabezpieczające i kontrolki, które należy wziąć pod uwagę w każdej fazie cyklu projektowania oprogramowania podczas tworzenia aplikacji dla chmury.
@@ -180,6 +166,4 @@ Zobacz [najlepsze rozwiązania i wzorce dotyczące zabezpieczeń platformy Azure
 
 Dostępne są następujące zasoby umożliwiające dostarczenie bardziej ogólnych informacji na temat zabezpieczeń platformy Azure i powiązanych usług firmy Microsoft:
 * [Blog zespołu ds. zabezpieczeń platformy Azure](https://blogs.msdn.microsoft.com/azuresecurity/) — na bieżąco z najnowszymi informacjami na temat zabezpieczeń platformy Azure
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) — w przypadku których luki w zabezpieczeniach firmy Microsoft, w tym problemy z platformą Azure, mogą być zgłaszane lub wysyłane pocztą e-mailsecure@microsoft.com
-
-
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) — w przypadku których luki w zabezpieczeniach firmy Microsoft, w tym problemy z platformą Azure, mogą być zgłaszane lub wysyłane pocztą e-mail do secure@microsoft.com

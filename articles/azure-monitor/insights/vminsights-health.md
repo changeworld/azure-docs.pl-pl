@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: c9dfd3bfcacc1f50bb9be04c927bf3cbb4895f6d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: e19ba55e48c537974ad4136d40505514b92d387d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555260"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162297"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Informacje o kondycji maszyn wirtualnych platformy Azure
 
@@ -339,7 +339,7 @@ Aby zidentyfikować *elementu monitorid* dla określonych kryteriów kondycji, w
 2. Wprowadź następujące polecenie, aby pobrać wszystkie aktywne kryterium kondycji dla określonej maszyny wirtualnej i zidentyfikuj wartość właściwości *elementu monitorid* :
 
     ```
-    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
+    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview"
     ```
 
     Poniższy przykład przedstawia dane wyjściowe polecenia *Get armclient* . Zwróć uwagę na wartość *elementu monitorid*. Ta wartość jest wymagana w następnym kroku, w którym należy określić identyfikator kryteriów kondycji i zmodyfikować jej właściwość w celu utworzenia alertu.

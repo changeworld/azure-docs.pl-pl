@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 74518fb891c5ecb25e818b9642d31e3daaf828de
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71036621"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162617"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Osadź Video Indexer widżety w aplikacjach
 
@@ -253,7 +253,7 @@ Na przykład:
 
 Domyślnie program Video Indexer Player ma automatycznie generowane napisy, które są oparte na transkrypcji filmu wideo. Transkrypcja jest wyodrębniana z filmu wideo z językiem źródłowym, który został wybrany podczas przekazywania wideo.
 
-Jeśli chcesz osadzić w innym języku, możesz dodać `&captions=< Language | ”all” | “false” >` do adresu URL osadzania odtwarzacza. Jeśli chcesz mieć podpisy we wszystkich dostępnych językach, użyj wartości `all`. Jeśli chcesz, aby podpisy były wyświetlane domyślnie, możesz przekazać `&showCaptions=true`.
+Jeśli chcesz osadzić w innym języku, możesz dodać `&captions=< Language | "all" | "false" >` do adresu URL osadzania odtwarzacza. Jeśli chcesz mieć podpisy we wszystkich dostępnych językach, użyj wartości `all`. Jeśli chcesz, aby podpisy były wyświetlane domyślnie, możesz przekazać `&showCaptions=true`.
 
 Adres URL osadzania będzie wyglądać następująco: 
 

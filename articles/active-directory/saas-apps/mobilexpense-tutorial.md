@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Mobile Xpense | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Mobile Xpense.
+title: 'Samouczek: integracja Azure Active Directory z urządzeniami przenośnymi Xpense | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Mobile Xpense.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,51 +8,52 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e649fc4e-3e15-4948-b977-00bfe9f7db13
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 0918333d70efcd8c93f77f99b2a36b099fb211e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba7a8e4dc8172d0ba254a10d4efd5d9354a3d453
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096953"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161356"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Mobile Xpense
+# <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>Samouczek: integracja Azure Active Directory z urządzeniami przenośnymi Xpense
 
-W tym samouczku dowiesz się, jak zintegrować Mobile Xpense z usługą Azure Active Directory (Azure AD).
-Integrowanie Mobile Xpense z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę Mobile Xpense z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji mobilnych Xpense z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Mobile Xpense.
-* Użytkownikom można automatycznie zalogowany do Xpense Mobile (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi Mobile Xpense.
+* Możesz umożliwić użytkownikom automatyczne logowanie do aplikacji Mobile Xpense (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Mobile Xpense, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą Mobile Xpense, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Xpense mobilnej logowanie jednokrotne włączone subskrypcji
+* Subskrypcja obsługująca Logowanie jednokrotne w usłudze Mobile Xpense
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje Mobile Xpense **SP** i **tożsamości** jednokrotne logowanie inicjowane przez
+* Usługa Mobile Xpense obsługuje funkcję SSO zainicjowaną przez usługę **SP** i **dostawcy tożsamości**
 
-## <a name="adding-mobile-xpense-from-the-gallery"></a>Dodawanie Mobile Xpense za pomocą galerii
+## <a name="adding-mobile-xpense-from-the-gallery"></a>Dodawanie Xpense Mobile z galerii
 
-Aby skonfigurować integrację Mobile Xpense w usłudze Azure AD, należy dodać Mobile Xpense z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację aplikacji mobilnych Xpense z usługą Azure AD, musisz dodać do niej Xpense urządzeń przenośnych z galerii, aby wyświetlić listę zarządzanych usług SaaS.
 
-**Aby dodać Mobile Xpense z galerii, wykonaj następujące czynności:**
+**Aby dodać Xpense Mobile z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -60,37 +61,37 @@ Aby skonfigurować integrację Mobile Xpense w usłudze Azure AD, należy dodać
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Mobile Xpense**, wybierz opcję **Mobile Xpense** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Mobile Xpense**, wybierz pozycję **Mobile Xpense** w panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
-     ![Xpense Mobile na liście wyników](common/search-new-app.png)
+     ![Mobile Xpense na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Xpense Mobile, w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Mobile Xpense musi zostać ustanowione.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego w usłudze Azure AD za pomocą usługi Mobile Xpense na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w usłudze Mobile Xpense.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Mobile Xpense, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi Mobile Xpense, należy wykonać następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie mobilnej Xpense logowania jednokrotnego](#configure-mobile-xpense-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Mobile Xpense](#create-mobile-xpense-test-user)**  — aby odpowiednikiem Britta Simon w Xpense Mobile, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj logowanie](#configure-mobile-xpense-single-sign-on)** jednokrotne w usłudze Mobile Xpense — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego mobilnego Xpense](#create-mobile-xpense-test-user)** , aby dysponować odpowiednikiem Britta Simon w urządzeniach przenośnych Xpense, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Mobile Xpense, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą usługi Mobile Xpense, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Mobile Xpense** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **mobilnych Xpense** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -102,7 +103,7 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Mobile Xpense, wyko
 
 4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
-    ![Mobile Xpense domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
+    ![Informacje logowania jednokrotnego w domenie i adresach URL aplikacji mobilnej Xpense](common/idp-intiated.png)
 
     a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://mobilexpense.com/ServiceProvider`
 
@@ -110,18 +111,18 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Mobile Xpense, wyko
 
 5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Mobile Xpense domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+    ![Informacje logowania jednokrotnego w domenie i adresach URL aplikacji mobilnej Xpense](common/metadata-upload-additional-signon.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<sub-domain>.mobilexpense.com/<customername>`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Xpense Mobile](https://www.mobilexpense.net/contact) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta Mobile Xpense](https://www.mobilexpense.net/contact) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-7. Na **Konfigurowanie Mobile Xpense** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+7. W sekcji **Konfigurowanie aplikacji mobilnej Xpense** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -129,11 +130,11 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Mobile Xpense, wyko
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-mobile-xpense-single-sign-on"></a>Konfigurowanie mobilnej Xpense logowanie jednokrotne
+### <a name="configure-mobile-xpense-single-sign-on"></a>Konfigurowanie logowania jednokrotnego dla urządzeń przenośnych Xpense
 
-Do konfigurowania logowania jednokrotnego na **Mobile Xpense** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure w celu [Mobile Xpense zespołem pomocy technicznej ](https://www.mobilexpense.net/contact). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować Logowanie jednokrotne na stronie **mobilnej Xpense** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej Xpense dla urządzeń przenośnych](https://www.mobilexpense.net/contact). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -153,22 +154,22 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do Mobile Xpense.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do aplikacji mobilnych Xpense.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Mobile Xpense**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Mobile Xpense**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Mobile Xpense**.
+2. Na liście Aplikacje wybierz pozycję **Mobile Xpense**.
 
     ![Link Mobile Xpense na liście aplikacji](common/all-applications.png)
 
@@ -186,21 +187,21 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-mobile-xpense-test-user"></a>Tworzenie użytkownika testowego Mobile Xpense
+### <a name="create-mobile-xpense-test-user"></a>Tworzenie użytkownika testowego mobilnego Xpense
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Mobile Xpense. Praca z [zespołem pomocy technicznej Mobile Xpense](https://www.mobilexpense.net/contact) Aby dodać użytkowników na platformie Mobile Xpense. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Xpense Mobile. Współpracuj z [zespołem pomocy technicznej Xpense Mobile](https://www.mobilexpense.net/contact) , aby dodać użytkowników na platformie Mobile Xpense. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Mobile Xpense w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze Xpense Mobile, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Mobile Xpense w panelu dostępu należy automatycznie zalogować się do urządzenia przenośnego Xpense, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

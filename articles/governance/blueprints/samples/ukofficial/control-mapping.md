@@ -7,18 +7,18 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 72b7b370158f228d725e9c6970dfcffb09e7986b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e86c7040e94553b032b565e282639047a1ed8750
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297117"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162956"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Kontrolowanie mapowania przykładowych OFICJALNych i BRYTYJSKIch planów NHS w Wielkiej Brytanii
 
 W poniższym artykule szczegółowo przedstawiono sposób mapowania przykładowych OFICJALNych i BRYTYJSKIch planów NHS z brytyjskimi i BRYTYJSKImi formantami NHS. Aby uzyskać więcej informacji na temat kontrolek, zobacz [Zjednoczone Królestwo](https://www.gov.uk/government/publications/government-security-classifications).
 
-Następujące mapowania są do **oficjalnych** i **brytyjskich NHS** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz pozycję **\[Preview @ no__t-2 — Przeprowadź inspekcję USA i brytyjskich NHS kontrolek i Wdróż określone rozszerzenia maszyn wirtualnych, aby zapewnić obsługę zasad inspekcji** wbudowanej.
+Następujące mapowania są do **oficjalnych** i **brytyjskich NHS** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz **\[wersja Zapoznawcza\] Przeprowadź inspekcję oficjalnych i brytyjskich kontrolek NHS oraz Wdróż określone rozszerzenia maszyn wirtualnych, aby zapewnić obsługę zasad inspekcji** wbudowanej.
 
 > [!IMPORTANT]
 > Każda kontrolka poniżej jest skojarzona z co najmniej jedną definicją [Azure Policy](../../../policy/overview.md) . Te zasady mogą pomóc w [ocenie zgodności](../../../policy/how-to/get-compliance-data.md) z kontrolką; Niemniej jednak często nie jest to 1:1 ani kompletna zgodność między kontrolką a co najmniej jedną zasadą. W związku z tym **zgodność** w Azure Policy odnosi się tylko do samych zasad; nie gwarantuje to, że jest w pełni zgodne ze wszystkimi wymaganiami formantu. Ponadto Standard zgodności zawiera kontrolki, które nie są obecnie rozwiązywane przez żadną Azure Policy definicje. W związku z tym zgodność w Azure Policy jest tylko częściowym widokiem ogólnego stanu zgodności. Skojarzenia między kontrolkami i definicjami Azure Policy dla tego przykładowego planu zgodności mogą ulec zmianie z upływem czasu. Aby wyświetlić historię zmian, zobacz [historię zatwierdzeń usługi GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md).
@@ -90,27 +90,27 @@ Ten plan przypisuje również definicje Azure Policy do kont inspekcji, dla któ
 
 Ten plan przypisuje również definicję Azure Policy, która przeprowadza inspekcję uprawnień pliku hasła maszyny wirtualnej systemu Linux do alertu, jeśli są ustawione nieprawidłowo. Ten projekt umożliwia podejmowanie działań naprawczych w celu zapewnienia, że uwierzytelniające nie zostały naruszone.
 
-- \[Preview @ no__t-1: Inspekcja pliku/etc/passwd maszyny wirtualnej z systemem Linux jest ustawiona na 0644
+- \[Podgląd\]: Inspekcja pliku/etc/passwd maszyny wirtualnej z systemem Linux jest ustawiona na 0644
 
 Ten plan pomaga wymusić silne hasła, przypisując definicje Azure Policy, które umożliwiają inspekcję maszyn wirtualnych z systemem Windows, które nie wymuszają minimalnej siły i innych wymagań dotyczących hasła Świadomość maszyn wirtualnych w przypadku naruszenia zasad dotyczących siły haseł ułatwia podejmowanie działań naprawczych w celu zapewnienia zgodności haseł dla wszystkich kont użytkowników maszyny wirtualnej z zasadami.
 
-- \[Preview @ no__t-1: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
-- \[Preview @ no__t-1: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają maksymalnego wieku hasła wynoszącego 70 dni
-- \[Preview @ no__t-1: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają minimalnego wieku hasła wynoszącego 1 dzień
-- \[Preview @ no__t-1: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
-- \[Preview @ no__t-1: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
-- \[Preview @ no__t-1: Inspekcja maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
-- \[Preview @ no__t-1: Inspekcja maszyn wirtualnych z systemem Windows bez maksymalnego wieku hasła wynoszącego 70 dni
-- \[Preview @ no__t-1: Inspekcja maszyn wirtualnych z systemem Windows bez minimalnego wieku hasła wynoszącego 1 dzień
-- \[Preview @ no__t-1: Inspekcja maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
-- \[Preview @ no__t-1: Inspekcja maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają maksymalnego wieku hasła wynoszącego 70 dni
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają minimalnego wieku hasła wynoszącego 1 dzień
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
+- \[Podgląd\]: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
+- Wersja zapoznawcza \[\]: Inspekcja maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
+- Wersja zapoznawcza \[\]: Inspekcja maszyn wirtualnych z systemem Windows bez maksymalnego wieku hasła 70 dni
+- Wersja zapoznawcza \[\]: Inspekcja maszyn wirtualnych z systemem Windows bez minimalnego wieku hasła wynoszącego 1 dzień
+- \[Podgląd\]: Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
+- Wersja zapoznawcza \[\]: Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, które zezwalają na ponowne korzystanie z poprzednich 24 haseł
 
 Ten plan pomaga również kontrolować dostęp do zasobów platformy Azure, przypisując definicje Azure Policy. Te zasady przeprowadzają inspekcję użycia typów zasobów i konfiguracji, które mogą zezwalać na dostęp do zasobów. Informacje o zasobach, które naruszają te zasady, mogą pomóc w podejmowaniu działań naprawczych w celu zapewnienia dostępu do zasobów platformy Azure tylko autoryzowanym użytkownikom.
 
-- \[Preview @ no__t-1: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Linux, które mają konta bez hasła
-- \[Preview @ no__t-1: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
-- \[Preview @ no__t-1: Inspekcja maszyn wirtualnych z systemem Linux, które mają konta bez hasła
-- \[Preview @ no__t-1: Inspekcja maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Linux, które mają konta bez hasła
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
+- \[Podgląd\]: Inspekcja maszyn wirtualnych z systemem Linux, które mają konta bez hasła
+- \[Podgląd\]: Inspekcja maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
 - Konta magazynu należy migrować do nowych zasobów Azure Resource Manager
 - Maszyny wirtualne należy migrować do nowych zasobów Azure Resource Manager
 - Inspekcja maszyn wirtualnych, które nie korzystają z dysków zarządzanych
@@ -147,7 +147,7 @@ Ten plan przypisuje również definicje Azure Policy do kont inspekcji, dla któ
 
 Ten plan przypisuje również definicję Azure Policy, która przeprowadza inspekcję uprawnień pliku hasła maszyny wirtualnej systemu Linux do alertu, jeśli są ustawione nieprawidłowo. Ten projekt umożliwia podejmowanie działań naprawczych w celu zapewnienia, że uwierzytelniające nie zostały naruszone.
 
-- \[Preview @ no__t-1: Inspekcja pliku/etc/passwd maszyny wirtualnej z systemem Linux jest ustawiona na 0644
+- \[Podgląd\]: Inspekcja pliku/etc/passwd maszyny wirtualnej z systemem Linux jest ustawiona na 0644
 
 ## <a name="13-audit-information-for-users"></a>13 informacji o inspekcji dla użytkowników
 
@@ -156,8 +156,8 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 - Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja ustawień inspekcji poziomu serwera SQL
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Linux
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
 - Wdróż obserwatora sieciowego po utworzeniu sieci wirtualnych
 
 ## <a name="next-steps"></a>Następne kroki
@@ -168,7 +168,7 @@ Po przejrzeniu mapowania kontroli w OFICJALNych i BRYTYJSKIch planach NHS, odwie
 > [Krótkoterminowe i brytyjskie plany NHS — przegląd](./index.md)
 > [BRYTYJSKIe i brytyjskie plany NHS — wdrażanie kroków](./deploy.md)
 
-Dodatkowe artykuły na temat strategii i sposobu ich używania:
+Dodatkowe artykuły o planach i sposobach ich użycia:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

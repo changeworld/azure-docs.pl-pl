@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac894db42b2b5ee2612e2e3b2906bc2bffcc4c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717380"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160709"
 ---
 # <a name="set-up-security-info-to-use-a-security-key-preview"></a>Skonfiguruj informacje zabezpieczające, aby użyć klucza zabezpieczeń (wersja zapoznawcza)
 
@@ -51,7 +51,7 @@ Aby można było zarejestrować klucz zabezpieczeń, należy wykonać następuj�
 
 Przed zalogowaniem się do konta służbowego przy użyciu klucza należy utworzyć klucz zabezpieczeń i nadać mu unikatowy numer PIN. Być może zarejestrowano maksymalnie 10 kluczy na Twoim koncie. 
 
-1. Przejdź do strony **mój profil** w https://myprofile.microsoft.com obszarze i zaloguj się, jeśli jeszcze tego nie zrobiono.
+1. Przejdź do strony **mój profil** w https://myprofile.microsoft.com i zaloguj się, jeśli jeszcze nie zostało to zrobione.
 
 2. Wybierz pozycję **Informacje o zabezpieczeniach**, wybierz pozycję **Dodaj metodę**, a następnie wybierz pozycję **klucz zabezpieczeń** z listy rozwijanej **Dodaj metodę** .
 
@@ -96,7 +96,7 @@ Przed zalogowaniem się do konta służbowego przy użyciu klucza należy utworz
 
 ## <a name="delete-a-security-key-from-your-security-info"></a>Usuwanie klucza zabezpieczeń z informacji zabezpieczających
 
-Jeśli użytkownik nie umieści lub nie chce już korzystać z klucza zabezpieczeń, można usunąć klucz z informacji zabezpieczających. Ponieważ spowoduje to zatrzymanie klucza zabezpieczeń z użyciem konta służbowego, klucz zabezpieczeń kontynuuje przechowywanie danych i poświadczeń. Aby usunąć dane i poświadczenia z samego klucza zabezpieczeń, należy postępować zgodnie z instrukcjami w sekcji Resetowanie [zabezpieczeń zgodnych z firmą Microsoft](#reset-your-security-key) w tym artykule.
+Jeśli użytkownik nie umieści lub nie chce już korzystać z klucza zabezpieczeń, można usunąć klucz z informacji zabezpieczających. Ponieważ spowoduje to zatrzymanie klucza zabezpieczeń z użyciem konta służbowego, klucz zabezpieczeń kontynuuje przechowywanie danych i poświadczeń. Aby usunąć dane i poświadczenia z samego klucza zabezpieczeń, należy postępować zgodnie z instrukcjami w sekcji [Resetowanie zabezpieczeń zgodnych z firmą Microsoft](#reset-your-security-key) w tym artykule.
 
 1. Wybierz łącze **Usuń** z klucza zabezpieczeń do usunięcia.
 
@@ -148,12 +148,12 @@ Nowy numer PIN klucza zabezpieczeń można utworzyć dla klucza zabezpieczeń.
 
 Aby zarejestrować klucz zabezpieczeń, należy mieć co najmniej jedną zarejestrowaną dodatkową metodę weryfikacji zabezpieczeń. Aby uzyskać więcej informacji, zobacz [sekcję Omówienie](security-info-add-update-methods-overview.md) . 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji na temat metod uwierzytelniania bezhasła, zapoznaj się z tematem " [usługa Azure AD" rozpoczyna publiczną wersję zapoznawczą kluczy zabezpieczeń FIDO2, włączając](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) w to Blog dotyczący logowania bezhasła lub zapoznaj się z [aplikacją Microsoft Authenticator?](user-help-auth-app-overview.md) [ Artykuły dotyczące omówienia systemu Windows Hello](https://www.microsoft.com/windows/windows-hello) .
 
 - Aby uzyskać bardziej szczegółowe informacje o [kluczach zabezpieczeń zgodnych z firmą Microsoft](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 
-- Zagubione lub zapomniane hasło możesz zresetować w [portalu resetowania hasła](https://passwordreset.microsoftonline.com/) lub wykonując kroki przedstawione w artykule [Resetowanie hasła służbowego](user-help-reset-password.md).
+- Zagubione lub zapomniane hasło możesz zresetować w [portalu resetowania hasła](https://passwordreset.microsoftonline.com/) lub wykonując kroki przedstawione w artykule [Resetowanie hasła służbowego](active-directory-passwords-update-your-own-password.md).
 
 - Wskazówki i pomoc dotyczące rozwiązywania problemów z logowaniem znajdują się w artykule [Nie można zalogować się na konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

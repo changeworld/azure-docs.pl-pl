@@ -9,19 +9,19 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 5777d728f61b3ffe7d0fdaaac1391f600dca12fd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
-ms.translationtype: HT
+ms.openlocfilehash: ce07d43a289cf527664b120dd832cf832fb2b05e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097838"
+ms.locfileid: "73161401"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-by-using-the-maven-plug-in"></a>Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu wtyczki Maven
 
 Dzięki usłudze Azure wiosny Cloud Maven można łatwo tworzyć i aktualizować aplikacje usług w chmurze platformy Azure. Dzięki wstępnemu definiowaniu konfiguracji można wdrażać aplikacje w istniejącej usłudze w chmurze platformy Azure. W tym artykule przedstawiono tę funkcję za pomocą przykładowej aplikacji o nazwie PiggyMetrics.
 
 >[!Note]
-> Przed rozpoczęciem pracy z tym przewodnikiem Szybki Start upewnij się, że Twoja subskrypcja platformy Azure ma dostęp do chmury wiosennej platformy Azure. Jako usługa w wersji zapoznawczej zachęcamy Cię do skontaktowania się z nami, aby można było dodać subskrypcję do listy dozwolonych. Jeśli chcesz poznać możliwości chmury Azure wiosny, Wypełnij i prześlij [chmurę Azure wiosennej (prywatna wersja zapoznawcza) — forma zainteresowania](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).
+> Przed rozpoczęciem pracy z tym przewodnikiem Szybki Start upewnij się, że Twoja subskrypcja platformy Azure ma dostęp do chmury wiosennej platformy Azure. Jako usługa w wersji zapoznawczej zachęcamy Cię do skontaktowania się z nami, aby można było dodać subskrypcję do listy dozwolonych. Jeśli chcesz poznać możliwości chmury Azure wiosny, Wypełnij i prześlij [chmurę Azure wiosennej (prywatna wersja zapoznawcza) — forma zainteresowania](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u). Chociaż chmura Wiosenna platformy Azure jest dostępna w wersji zapoznawczej, firma Microsoft oferuje ograniczoną pomoc techniczną bez umowy SLA.  Aby uzyskać więcej informacji na temat pomocy technicznej w przypadku wersji zapoznawczych, zapoznaj się z tematem [często zadawanych pytań](https://azure.microsoft.com/support/faq/).
 
 >[!TIP]
 > Azure Cloud Shell to bezpłatna interaktywna powłoka, której można użyć do uruchomienia poleceń z tego artykułu. Ma ona popularne narzędzia platformy Azure preinstalowane, w tym najnowsze wersje narzędzia Git, zestawu Java Development Kit (JDK), Maven i interfejsu wiersza polecenia platformy Azure. Jeśli logujesz się do subskrypcji platformy Azure, uruchom [Azure Cloud Shell](https://shell.azure.com). Aby uzyskać więcej informacji, zobacz [omówienie Azure Cloud Shell](../cloud-shell/overview.md).

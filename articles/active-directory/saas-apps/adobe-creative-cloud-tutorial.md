@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: integracja usługi Azure Active Directory z rozwiązaniem Adobe Creative Cloud | Microsoft Docs'
+title: 'Samouczek: integracja Azure Active Directory z Adobe Creative Cloud | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i rozwiązaniem Adobe Creative Cloud.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c199073f-02ce-45c2-b515-8285d4bbbca2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,21 +16,21 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9650389d8ec641af1db0652dd09fbd7f06223956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f3fdd1aa4fa655cfffb9e9a2f29d551133613a8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107348"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154015"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Samouczek: integracja usługi Azure Active Directory z rozwiązaniem Adobe Creative Cloud
+# <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Samouczek: integracja Azure Active Directory z Adobe Creative Cloud
 
 Z tego samouczka dowiesz się, jak zintegrować rozwiązanie Adobe Creative Cloud z usługą Azure Active Directory (Azure AD).
 Integrowanie rozwiązania Adobe Creative Cloud z usługą Azure AD zapewnia następujące korzyści:
 
 * Możesz kontrolować w usłudze Azure AD, kto ma dostęp do rozwiązania Adobe Creative Cloud.
 * Twoi użytkownicy mogą być automatycznie logowani do rozwiązania Adobe Creative Cloud (logowanie jednokrotne) przy użyciu swoich kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
@@ -53,7 +54,7 @@ Aby skonfigurować integrację rozwiązania Adobe Creative Cloud z usługą Azur
 
 **Aby dodać rozwiązanie Adobe Creative Cloud z galerii, wykonaj następujące czynności:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
@@ -61,27 +62,27 @@ Aby skonfigurować integrację rozwiązania Adobe Creative Cloud z usługą Azur
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **Adobe Creative Cloud**, wybierz pozycję **Adobe Creative Cloud** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
     ![Rozwiązanie Adobe Creative Cloud na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z rozwiązaniem Adobe Creative Cloud, korzystając z danych użytkownika testowego **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem rozwiązania Adobe Creative Cloud.
 
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z rozwiązaniem Adobe Creative Cloud, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w rozwiązaniu Adobe Creative Cloud](#configure-adobe-creative-cloud-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
 5. **[Tworzenie użytkownika testowego rozwiązania Adobe Creative Cloud](#create-adobe-creative-cloud-test-user)** — aby udostępnić w rozwiązaniu Adobe Creative Cloud odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
@@ -91,7 +92,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Adobe C
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Adobe Creative Cloud** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -110,7 +111,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Adobe C
     b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.okta.com/saml2/service-provider/<token>`
 
     > [!NOTE]
-    > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. W celu uzyskania tej wartości skontaktuj się z [zespołem pomocy technicznej klienta rozwiązania Adobe Creative Cloud](https://www.adobe.com/au/creativecloud/business/teams/plans.html). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość identyfikatora nie jest prawdziwa. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. W celu uzyskania tej wartości skontaktuj się z [zespołem pomocy technicznej klienta rozwiązania Adobe Creative Cloud](https://www.adobe.com/au/creativecloud/business/teams/plans.html). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Aplikacja Adobe Creative Cloud oczekuje asercji SAML w konkretnym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
@@ -122,7 +123,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Adobe C
     |----- | --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | Email | user.mail
+    | Adres e-mail | user.mail
 
     a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
@@ -140,14 +141,14 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Adobe C
 
     f. Kliknij przycisk **OK**.
 
-    g. Kliknij pozycję **Zapisz**.
+    g. Kliknij przycisk **Save** (Zapisz).
 
     > [!NOTE]
     > Aby wartość oświadczenia e-mail była wypełniana w odpowiedzi SAML, użytkownicy muszą mieć ważną licencję usługi Office 365 ExO.
 
 7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificatebase64.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
 8. W sekcji **Skonfiguruj aplikację Adobe Creative Cloud** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
@@ -171,7 +172,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Adobe C
 
     b. W polu tekstowym **IDP issuer** (Wystawca IDP) wprowadź wartość **identyfikatora tożsamości SAML** skopiowaną z sekcji **Konfigurowanie logowania jednokrotnego** w witrynie Azure Portal.
 
-    c. W polu tekstowym **IDP Login URL** (Adres URL logowania IDP) wprowadź wartość **adresu URL usługi logowania jednokrotnego SAML** skopiowaną z sekcji **Konfigurowanie logowania jednokrotnego** w witrynie Azure Portal.
+    d. W polu tekstowym **IDP Login URL** (Adres URL logowania IDP) wprowadź wartość **adresu URL usługi logowania jednokrotnego SAML** skopiowaną z sekcji **Konfigurowanie logowania jednokrotnego** w witrynie Azure Portal.
 
     d. Wybierz wartość **HTTP — Redirect** w polu **IDP Binding** (Powiązanie IDP).
 
@@ -205,12 +206,12 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -249,23 +250,23 @@ Aby użytkownicy usługi Azure AD mogli logować się do rozwiązania Adobe Crea
 2. W konsoli firmy Adobe dodaj użytkownika z identyfikatorem Federated ID i przypisz go do profilu produktu. Aby uzyskać szczegółowe informacje na temat dodawania użytkowników, zobacz [Add users in Adobe Admin Console](https://helpx.adobe.com/enterprise/using/users.html#Addusers) (Dodawanie użytkowników w konsoli administracyjnej firmy Adobe). 
 
 3. Na tym etapie wpisz swój adres e-mail/nazwę upn w formularzu logowania Adobe i naciśnij klawisz Tab. Powinien nastąpić sfederowany powrót do usługi Azure AD:
-   * Program Web access: www\.adobe.com > Zaloguj się
+   * Web Access: Logowanie\.www > adobe.com
    * W narzędziu aplikacji klasycznej > logowanie
    * W aplikacji > pomoc > logowanie
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Adobe Creative Cloud w panelu dostępu powinno nastąpić automatyczne zalogowanie do rozwiązania Adobe Creative Cloud, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
   
 - [Konfigurowanie domeny (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
   

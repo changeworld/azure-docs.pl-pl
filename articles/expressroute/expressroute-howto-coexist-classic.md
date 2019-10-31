@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie połączeń usługi ExpressRoute i sieci VPN typu lokacja-lokacja — współistnieć: klasycznym: Azure | Microsoft Docs'
+title: 'Konfigurowanie połączeń usługi ExpressRoute i sieci VPN typu lokacja-lokacja — współistniejących: wersja klasyczna: Azure | Microsoft Docs'
 description: Ten artykuł zawiera instrukcje dotyczące konfigurowania połączeń usługi ExpressRoute oraz sieci VPN typu lokacja-lokacja, które mogą współistnieć, w klasycznym modelu wdrożenia.
 documentationcenter: na
 services: expressroute
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 70e7c689acac094890545ac1e65374e9377a0be0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8eb1d7da9c588aedaedb37dc50c69970fe79ac2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370427"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162713"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurowanie współistniejących połączeń usługi ExpressRoute i połączeń typu lokacja-lokacja (wersja klasyczna)
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "60370427"
 > 
 > 
 
-Ten artykuł ułatwia konfigurowanie połączeń usługi ExpressRoute i sieci VPN typu lokacja-lokacja, które współistnieć. Możliwość skonfigurowania sieci VPN typu lokacja-lokacja i usługi ExpressRoute niesie ze sobą pewne korzyści. Sieć VPN typu lokacja-lokacja można skonfigurować jako bezpieczną ścieżkę trybu failover dla usługi ExpressRoute lub użyć tej sieci do połączenia z lokacjami, które nie zostały połączone za pośrednictwem usługi ExpressRoute. Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Dotyczy on klasycznego modelu wdrożenia. Ta konfiguracja nie jest dostępna w portalu.
+Ten artykuł pomaga skonfigurować współistniejące połączenia usługi ExpressRoute i połączenia sieci VPN typu lokacja-lokacja. Możliwość skonfigurowania sieci VPN typu lokacja-lokacja i usługi ExpressRoute niesie ze sobą pewne korzyści. Sieć VPN typu lokacja-lokacja można skonfigurować jako bezpieczną ścieżkę trybu failover dla usługi ExpressRoute lub użyć tej sieci do połączenia z lokacjami, które nie zostały połączone za pośrednictwem usługi ExpressRoute. Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Dotyczy on klasycznego modelu wdrożenia. Ta konfiguracja nie jest dostępna w portalu.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -200,7 +200,7 @@ Jeśli podsieć bramy ma wartość /27 lub większą, a sieć wirtualna jest po�
         Remove-AzureVNetGateway –VnetName MyAzureVNET
 3. Wyeksportuj schemat sieci wirtualnej. Użyj poniższego polecenia cmdlet programu PowerShell, zastępując wartości swoimi własnymi.
    
-        Get-AzureVNetConfig –ExportToFile “C:\NetworkConfig.xml”
+        Get-AzureVNetConfig –ExportToFile "C:\NetworkConfig.xml"
 4. Edytuj schemat pliku konfiguracji sieci w taki sposób, aby wartość podsieci bramy wynosiła /27 lub miała krótszy prefiks (np. /26 lub /25). Zobacz poniższy przykład. 
    
    > [!NOTE]
@@ -222,6 +222,6 @@ Jeśli podsieć bramy ma wartość /27 lub większą, a sieć wirtualna jest po�
                 </Gateway>
 6. Na tym etapie będziesz mieć sieć wirtualną bez bram. W celu utworzenia nowych bram i wykonania połączeń wykonaj instrukcje z części [Krok 4 — tworzenie bramy usługi ExpressRoute](#gw) znajdujące się w poprzednim zestawie kroków.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).
 

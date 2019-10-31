@@ -1,6 +1,6 @@
 ---
-title: Integrowanie środowiska Azure potoki w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zintegrować środowiska usługi Azure DevTest Labs w sieci Web usługi Azure DevOps ciągłej integracji (CI) i potoków ciągłego dostarczania (polecenie CD).
+title: Integruj środowiska w Azure Pipelines Azure DevTest Labs | Microsoft Docs
+description: Dowiedz się, jak zintegrować środowiska Azure DevTest Labs z potokiem ciągłej integracji (CI) DevOps (CI) i ciągłe dostarczanie (CD).
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,73 +12,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c665c65dcda2266a7acd7bc78726179d559f4d64
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61318394"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163915"
 ---
-# <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrowanie środowiska potoków usługi Azure DevOps ciągłej integracji/ciągłego wdrażania
-Można użyć rozszerzenia usługi Azure DevTest Labs zadania, które jest zainstalowany w usługom DevOps platformy Azure (dawniej Visual Studio Team Services), aby w łatwy sposób zintegrować swoje ciągłej integracji (CI) / ciągłe dostarczanie (CD) kompilacji i wydania potoku za pomocą platformy Azure Usługa DevTest Labs. Rozszerzenia te ułatwiają szybkie wdrożenie [środowiska](devtest-lab-test-env.md) dla określonego testu zadania i usunąć go po zakończeniu testu. 
+# <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integruj środowiska z potokami CI/DevOps na platformie Azure
+Możesz użyć rozszerzenia Azure DevTest Labs zadania, które jest zainstalowane w Azure DevOps Services (dawniej znany jako Visual Studio Team Services), aby łatwo zintegrować potok "Kompiluj i" ciągłej integracji (CI)/ciągłego dostarczania (CD-and-Release) z platformą Azure DevTest Labs. Te rozszerzenia ułatwiają szybkie wdrażanie [środowiska](devtest-lab-test-env.md) dla określonego zadania testowego, a następnie usuwanie go po zakończeniu testu. 
 
-W tym artykule pokazano, jak utworzyć i wdrożyć środowiska, a następnie usunąć środowisko, wszystko w jednym kompletny potok. Zazwyczaj przeprowadza każdego z tych zadań indywidualnie w własnej niestandardowej kompilacji, testowania i wdrażania potoku. Rozszerzenia używane w tym artykule w niniejszym dokumencie stanowią one [Tworzenie/usuwanie zadań maszyn wirtualnych DTL](devtest-lab-integrate-ci-cd-vsts.md):
+W tym artykule pokazano, jak utworzyć i wdrożyć środowisko, a następnie usunąć środowisko, wszystko w jednym kompletnym potoku. Zwykle wykonujesz każde z tych zadań osobno we własnym niestandardowym potoku kompilacji-test-Deploy. Rozszerzenia używane w tym artykule stanowią uzupełnienie następujących [zadań tworzenia/usuwania DTL](devtest-lab-integrate-ci-cd-vsts.md):
 
 - Tworzenie środowiska
 - Usuwanie środowiska
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Przed potokiem ciągłej integracji/ciągłego Dostarczania można zintegrować z usługą Azure DevTest Labs, zainstaluj [Azure DevTest Labs zadania](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) rozszerzeń w Visual Studio Marketplace. 
+Aby można było zintegrować potok ciągłej integracji/ciągłego wdrażania z Azure DevTest Labs, zainstaluj rozszerzenie [zadania Azure DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) z Visual Studio Marketplace. 
 
 ## <a name="create-and-configure-the-lab-for-environments"></a>Tworzenie i Konfigurowanie laboratorium dla środowisk
-W tej sekcji opisano, jak utworzyć i skonfigurować laboratorium wdrożonym środowiska platformy Azure do.
+W tej sekcji opisano sposób tworzenia i konfigurowania laboratorium, w którym zostanie wdrożone środowisko platformy Azure.
 
-1. [Tworzenie laboratorium](devtest-lab-create-lab.md) Jeśli nie masz jeszcze jeden. 
-2. Konfigurowanie laboratorium i utworzyć szablon środowiska, wykonując instrukcje przedstawione w tym artykule: [Tworzenie środowisk z wieloma Maszynami wirtualnymi i zasobów PaaS za pomocą szablonów usługi Azure Resource Manager](devtest-lab-create-environment-from-arm.md).
-3. W tym przykładzie użyj istniejącego szablonu szybkiego startu platformy Azure [ https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/ ](https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/).
-4. Kopiuj **201-web-app-redis-cache-sql-database** do folderu **ArmTemplate** folderu w repozytorium skonfigurowane w kroku 2.
+1. [Utwórz laboratorium](devtest-lab-create-lab.md) , jeśli jeszcze go nie masz. 
+2. Skonfiguruj laboratorium i Utwórz szablon środowiska, wykonując instrukcje opisane w tym artykule: [Tworzenie środowisk wielu maszyn wirtualnych i zasobów PaaS za pomocą szablonów Azure Resource Manager](devtest-lab-create-environment-from-arm.md).
+3. Na potrzeby tego przykładu Użyj istniejącego szablonu szybkiego startu platformy Azure [https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/](https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/).
+4. Skopiuj folder **201-Web-App-Redis-Cache-SQL-Database** do folderu **ArmTemplate** w repozytorium skonfigurowanym w kroku 2.
 
 ## <a name="create-a-release-definition"></a>Tworzenie definicji wydania
-Aby utworzyć definicję wydania, należy wykonać następujące czynności:
+Aby utworzyć definicję wydania, wykonaj następujące czynności:
 
-1.  Na **wersji** karcie **Centrum kompilacja i wydanie**, wybierz opcję **znak plus (+)** przycisku.
-2.  W **Tworzenie definicji wydania** wybierz **pusty** szablonu, a następnie wybierz **dalej**.
-3.  Wybierz **Wybierz później**, a następnie wybierz pozycję **Utwórz** do utworzenia nowych definicji wydania z jednym domyślnym środowisku i nie połączonych artefaktów.
-4.  Aby otworzyć menu skrótów w nowych definicji wydania, należy wybrać **wielokropek (...)**  dalej, aby nazwa środowiska, a następnie wybierz **skonfigurować zmienne**.
-5.  W **Konfiguruj - środowiska** okno zmiennych, których używasz w zadaniach definicji wydania, wprowadź następujące wartości:
-1.  Aby uzyskać **administratorLogin**, wprowadź nazwę logowania administratora SQL.
-2.  Aby uzyskać **administratorLoginPassword**, wprowadź hasło do użycia przez identyfikator logowania administratora SQL. Użyj ikony "kłódki", aby ukryć i bezpieczeństwo hasła.
-3.  Aby uzyskać **databaseName**, wprowadź nazwę bazy danych SQL.
-4.  Te zmienne są specyficzne dla środowiska, w przykładzie, różnych środowisk może mieć różne zmienne.
+1.  Na karcie **wersje** w **centrum kompilacja & wydania**wybierz przycisk **znak plus (+)** .
+2.  W oknie **Tworzenie definicji wydania** wybierz **pusty** szablon, a następnie wybierz przycisk **dalej**.
+3.  Wybierz pozycję **Wybierz później**, a następnie wybierz pozycję **Utwórz** , aby utworzyć nową definicję wydania z jednym środowiskiem domyślnym i bez połączonych artefaktów.
+4.  Aby otworzyć menu skrótów, w nowej definicji wydania, wybierz **wielokropek (...)** obok nazwy środowiska, a następnie wybierz pozycję **Konfiguruj zmienne**.
+5.  W oknie **Konfigurowanie środowiska** , dla zmiennych, które są używane w zadania definicji wersji, wprowadź następujące wartości:
+1.  W polu **administratorLogin**wprowadź nazwę logowania administratora SQL.
+2.  W polu **administratorLoginPassword**wprowadź hasło, które ma być używane przez dane logowania administratora SQL. Aby ukryć i zabezpieczyć hasło, użyj ikony "kłódki".
+3.  W polu **DatabaseName**wpisz nazwę SQL Database.
+4.  Te zmienne są specyficzne dla przykładowych środowisk, ale różne środowiska mogą mieć różne zmienne.
 
 ## <a name="create-an-environment"></a>Tworzenie środowiska
-Następny etap wdrożenia to aby utworzyć środowisko, które ma być używany dla programowania i testowania.
+Następnym etapem wdrożenia jest utworzenie środowiska, które ma być używane na potrzeby tworzenia i testowania.
 
-1. W definicji wydania wybierz **dodawać zadania**.
-2. Na **zadania** kartę, Dodaj zadanie programu tworzenie środowiska usługi Azure DevTest Labs. Skonfiguruj zadania w następujący sposób:
-    1. Dla **subskrypcji Menedżera zasobów platformy Azure**, wybierając pozycję Podłączanie w **dostępne połączenia usługi Azure Service** listy lub utworzyć połączenie bardziej ograniczone uprawnienia do subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [punktu końcowego usługi Azure Resource Manager](/azure/devops/pipelines/library/service-endpoints).
-2. Aby uzyskać **Nazwa laboratorium**, wybierz nazwę wystąpienia, który został utworzony wcześniej *.
-3. Aby uzyskać **nazwę repozytorium**, wybierz repozytorium, w której zostało wypchnięte do szablonu usługi Resource Manager (201) *.
-4. Aby uzyskać **Nazwa szablonu**, wybierz nazwę środowisko, w którym został zapisany do Twojego źródła kodu repozytorium *. 
-5. **Nazwa laboratorium**, **nazwę repozytorium**, i **Nazwa szablonu** są przyjazne reprezentacje identyfikatorów zasobów platformy Azure. Ręcznie wprowadź przyjazną nazwę powodować błędy, użyj listy rozwijanej, aby wybrać informacje.
-6. Aby uzyskać **Nazwa środowiska**, wprowadź nazwę, aby jednoznacznie identyfikują wystąpienie środowiska w laboratorium.  Musi być unikatowa w ramach laboratorium.
-7. **Plik parametrów** i **parametry**, Zezwalaj na niestandardowe parametry do przekazania do środowiska. Jeden lub oba może służyć do ustawiania wartości parametru. W tym przykładzie posłuży sekcji parametrów. Użyj nazwy zmiennych, które zostały zdefiniowane w środowisku, na przykład: `-administratorLogin “$(administratorLogin)” -administratorLoginPassword “$(administratorLoginPassword)” -databaseName “$(databaseName)” -cacheSKUCapacity 1`
-8. Informacje w ramach szablonu środowiska mogą być przekazywane za pośrednictwem w sekcji danych wyjściowych szablonu. Sprawdź **zmienne wyjściowe Utwórz oparte na danych wyjściowych szablonu środowiska** dzięki innych zadań za pomocą danych. `$(Reference name.Output Name)` to wzorzec do wykonania. Na przykład, jeśli nazwa odwołania został DTL i Nazwa wyjściowego w szablonie został lokalizacji zmienna będzie `$(DTL.location)`.
+1. W definicji wersji wybierz pozycję **Dodaj zadania**.
+2. Na karcie **zadania** dodaj zadanie Azure DevTest Labs tworzenia środowiska. Skonfiguruj zadanie w następujący sposób:
+    1. W przypadku **subskrypcji platformy Azure RM**wybierz połączenie na liście **dostępne połączenia usługi platformy Azure** lub Utwórz bardziej ograniczone uprawnienia do subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure Resource Manager punkt końcowy usługi](/azure/devops/pipelines/library/service-endpoints).
+2. W polu **Nazwa laboratorium**wybierz nazwę wystąpienia, które zostało utworzone wcześniej *.
+3. W polu **Nazwa repozytorium**wybierz repozytorium, w którym został wypchnięte szablon Menedżer zasobów (201) do *.
+4. W polu **Nazwa szablonu**wybierz nazwę środowiska zapisanego w repozytorium kodu źródłowego *. 
+5. **Nazwa laboratorium**, **Nazwa repozytorium**i **Nazwa szablonu** są przyjaznymi reprezentacjami identyfikatorów zasobów platformy Azure. Ręczne wprowadzenie przyjaznej nazwy spowoduje wystąpienie błędów, użyj list rozwijanych, aby wybrać informacje.
+6. W polu **Nazwa środowiska**wprowadź nazwę, aby jednoznacznie zidentyfikować wystąpienie środowiska w laboratorium.  Musi być unikatowa w ramach laboratorium.
+7. **Plik parametrów** i **Parametry**umożliwiają przekazywanie parametrów niestandardowych do środowiska. W celu ustawienia wartości parametrów można użyć obu tych metod. W tym przykładzie zostanie użyta sekcja Parameters. Użyj nazw zmiennych zdefiniowanych w środowisku, na przykład: `-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
+8. Informacje w szablonie środowiska mogą być przekazywane przez sekcję wyjściową szablonu. Zaznacz opcję **Utwórz zmienne wyjściowe w oparciu o dane wyjściowe szablonu środowiska** , aby inne zadania mogły korzystać z danych. `$(Reference name.Output Name)` jest wzorcem do wykonania. Na przykład jeśli nazwa odwołania to DTL i nazwa wyjściowa w szablonie była lokalizacją, zmienna byłaby `$(DTL.location)`.
 
-## <a name="delete-the-environment"></a>Usuń środowisko
-Końcowy etap polega na usunięciu środowiska, która została wdrożona w wystąpieniu usługi Azure DevTest Labs. Zazwyczaj będzie usunąć środowisko, po wykonywanie zadań deweloperskich lub uruchomić testy, które należy wdrożonych zasobów.
+## <a name="delete-the-environment"></a>Usuwanie środowiska
+Ostatnim etapem jest usunięcie środowiska wdrożonego w wystąpieniu Azure DevTest Labs. Zwykle należy usunąć środowisko po wykonaniu zadań deweloperskich lub przeprowadzeniu testów, które są potrzebne w wdrożonych zasobach.
 
-W definicji wydania wybierz **dodawać zadania**, a następnie na **Wdróż** kartę, należy dodać **usuwania środowiska Azure DevTest Labs** zadania. Skonfiguruj w następujący sposób:
+W definicji wersji wybierz pozycję **Dodaj zadania**, a następnie na karcie **wdrażanie** Dodaj zadanie **Azure DevTest Labs usuwanie środowiska** . Skonfiguruj go w następujący sposób:
 
-1. Aby usunąć maszynę Wirtualną, zobacz [Azure DevTest Labs zadania](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks):
-    1. Dla **subskrypcji Menedżera zasobów platformy Azure**, wybierając pozycję Podłączanie w **dostępne połączenia usługi Azure Service** listy lub utworzyć połączenie bardziej ograniczone uprawnienia do subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [punktu końcowego usługi Azure Resource Manager](/azure/devops/pipelines/library/service-endpoints).
-    2. Aby uzyskać **Nazwa laboratorium**, wybierz laboratorium, w której istnieje środowisko.
-    3. Aby uzyskać **Nazwa środowiska**, wprowadź nazwę środowiska, które ma zostać usunięty.
-2. Wprowadź nazwę definicji wydania, a następnie zapisz go.
+1. Aby usunąć maszynę wirtualną, zobacz [Azure DevTest Labs Tasks](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks):
+    1. W przypadku **subskrypcji platformy Azure RM**wybierz połączenie na liście **dostępne połączenia usługi platformy Azure** lub Utwórz bardziej ograniczone uprawnienia do subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure Resource Manager punkt końcowy usługi](/azure/devops/pipelines/library/service-endpoints).
+    2. W polu **Nazwa laboratorium**wybierz laboratorium, w którym istnieje środowisko.
+    3. W polu **Nazwa środowiska**wprowadź nazwę środowiska, które ma zostać usunięte.
+2. Wprowadź nazwę definicji wersji, a następnie zapisz ją.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły: 
-- [Tworzenie środowisk z wieloma Maszynami wirtualnymi za pomocą szablonów usługi Resource Manager](devtest-lab-create-environment-from-arm.md).
-- Szablony szybkiego startu Resource Manager dla usługi DevTest Labs automatyzacji z [repozytorium GitHub laboratoria DevTest](https://github.com/Azure/azure-quickstart-templates).
-- [Rozwiązywanie problemów z usługi VSTS strony](/azure/devops/pipelines/troubleshooting)
+- [Twórz środowiska z obsługą wielu maszyn wirtualnych za pomocą szablonów Menedżer zasobów](devtest-lab-create-environment-from-arm.md).
+- Przewodnik Szybki Start dotyczący Menedżer zasobów szablonów dla automatyzacji DevTest Labs z [repozytorium DevTest Labs](https://github.com/Azure/azure-quickstart-templates)w witrynie GitHub.
+- [Strona rozwiązywania problemów z VSTS](/azure/devops/pipelines/troubleshooting)
 

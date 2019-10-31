@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie usługi ExpressRoute bezpośrednio — wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł pomoże Ci skonfigurować bezpośrednio z usługi ExpressRoute za pomocą wiersza polecenia platformy Azure
+title: Konfigurowanie usługi ExpressRoute Direct — interfejs wiersza polecenia platformy Azure | Microsoft Docs
+description: W tym artykule opisano sposób konfigurowania ExpressRoute bezpośrednio przy użyciu interfejsu wiersza polecenia platformy Azure
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: ebfe3db43de87e67ad05ed8cb9f5812b5ded04e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a879344fddd6d12ae8a50e109dcaf4a4bb2c1b68
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965904"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161553"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurowanie usługi ExpressRoute bezpośrednio przy użyciu wiersza polecenia platformy Azure
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurowanie usługi ExpressRoute Direct przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośrednio połączyć się z globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Aby uzyskać więcej informacji, zobacz [dotyczące usługi ExpressRoute bezpośrednie łączenie](expressroute-erdirect-about.md).
+Możesz użyć usługi Azure ExpressRoute Direct, aby połączyć się bezpośrednio z siecią globalną firmy Microsoft w lokalizacjach komunikacji równorzędnej strategicznie rozmieszczonych na całym świecie. Aby uzyskać więcej informacji, zobacz [Informacje o programie ExpressRoute Direct Connect](expressroute-erdirect-about.md).
 
-## <a name="resources"></a>Utwórz zasób
+## <a name="resources"></a>Tworzenie zasobu
 
-1. Logowanie do platformy Azure i wybierz subskrypcję, która zawiera usługi ExpressRoute. Zasób bezpośrednio z usługi ExpressRoute i obwodów usługi ExpressRoute musi być w tej samej subskrypcji. W interfejsie wiersza polecenia platformy Azure uruchom następujące polecenia:
+1. Zaloguj się do platformy Azure i wybierz subskrypcję zawierającą ExpressRoute. Zasób ExpressRoute Direct i obwody usługi ExpressRoute muszą znajdować się w tej samej subskrypcji. W interfejsie wiersza polecenia platformy Azure Uruchom następujące polecenia:
 
    ```azurecli
    az login
    ```
 
-   Sprawdź subskrypcje dla konta: 
+   Sprawdź subskrypcje konta: 
 
    ```azurecli
    az account list 
@@ -39,7 +39,7 @@ Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośred
    az account set --subscription "<subscription ID>"
    ```
 
-2. Wyświetl wszystkie lokalizacje, w którym są obsługiwane bezpośrednio z usługi ExpressRoute:
+2. Wyświetl listę wszystkich lokalizacji, w których obsługiwana jest ExpressRoute Direct:
     
    ```azurecli
    az network express-route port location list
@@ -106,7 +106,7 @@ Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośred
    }
    ]
    ```
-3. Określ, czy jeden z lokalizacji wymienionych w poprzednim kroku ma dostępną przepustowość:
+3. Ustal, czy jedna z lokalizacji wymienionych w poprzednim kroku ma dostępną przepustowość:
 
    ```azurecli
    az network express-route port location show -l "Equinix-Ashburn-DC2"
@@ -132,14 +132,14 @@ Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośred
    "type": "Microsoft.Network/expressRoutePortsLocations"
    }
    ```
-4. Utwórz zasób usługi bezpośrednio z usługi ExpressRoute, która zależy od lokalizacji, który został wybrany w poprzednich krokach.
+4. Utwórz zasób ExpressRoute Direct, który jest oparty na lokalizacji wybranej w poprzednich krokach.
 
-   Usługa ExpressRoute bezpośrednio obsługuje QinQ i Dot1Q hermetyzacji. Jeśli wybierzesz QinQ, każdy obwód usługi ExpressRoute jest dynamicznie przypisywany S Tag i są unikatowe w obrębie całej zasobów bezpośrednio z usługi ExpressRoute. Każdy Tag języka C, w ramach obwodu muszą być unikatowe w ramach obwodu, ale nie dla zasobów ExpressRoute bezpośrednio.  
+   ExpressRoute Direct obsługuje hermetyzację QinQ i Dot1Q. W przypadku wybrania opcji QinQ każdy obwód ExpressRoute jest dynamicznie przypisywany do znacznika S-i jest unikatowy przez cały zasób ExpressRoute Direct. Każdy tag C w obwodzie musi być unikatowy w obwodzie, ale nie w ramach zasobu bezpośredniego ExpressRoute.  
 
-   Jeśli wybierzesz Dot1Q hermetyzacji, można zarządzać unikatowości tagu języka C (VLAN), w całego zasobu bezpośrednio z usługi ExpressRoute.  
+   W przypadku wybrania hermetyzacji Dot1Q należy zarządzać unikatowością tagów języka C (VLAN) w całym zasobie ExpressRoute Direct.  
 
    > [!IMPORTANT]
-   > Bezpośrednie usługi ExpressRoute może być tylko jeden typ hermetyzacji. Nie można zmienić typ hermetyzacji, po utworzeniu zasobu bezpośrednio z usługi ExpressRoute.
+   > ExpressRoute Direct może być tylko jednym typem hermetyzacji. Nie można zmienić typu hermetyzacji po utworzeniu zasobu ExpressRoute Direct.
    > 
  
    ```azurecli
@@ -147,7 +147,7 @@ Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośred
    ```
 
    > [!NOTE]
-   > Możesz również ustawić **hermetyzacji** atrybutu **Dot1Q**. 
+   > Można również ustawić atrybut **hermetyzacji** na **Dot1Q**. 
    >
 
    **Przykładowe dane wyjściowe**
@@ -204,13 +204,13 @@ Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośred
    }  
    ```
 
-## <a name="state"></a>Zmiana AdminState dla łączy
+## <a name="state"></a>Zmień AdminState dla linków
 
-Ten proces umożliwia przeprowadzanie testów warstwy 1. Upewnij się, że każdy obejmującej wiele połączeń jest zainstalowane odpowiednie poprawki do poszczególnych routerów w portów podstawowych i pomocniczych.
+Użyj tego procesu, aby przeprowadzić test warstwy 1. Upewnij się, że każde połączenie krzyżowe jest poprawnie poprawione na każdy router w portach podstawowych i dodatkowych.
 
-1. Ustaw łącza **włączone**. Powtórz ten krok, aby ustawić każdy link **włączone**.
+1. Ustaw linki do **włączenia**. Powtórz ten krok, aby ustawić wszystkie łącza do **włączone**.
 
-   Łącza [0] jest podstawowy port i łącza [1] jest dodatkowych portów.
+   Linki [0] są portem podstawowym, a linki [1] są portem pomocniczym.
 
    ```azurecli
    az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[0].adminState="Enabled"
@@ -272,18 +272,18 @@ Ten proces umożliwia przeprowadzanie testów warstwy 1. Upewnij się, że każd
    }
    ```
 
-   Użyj tej samej procedury, aby w dół do portów przy użyciu `AdminState = “Disabled”`.
+   Użyj tej samej procedury, aby obsłużyć porty przy użyciu `AdminState = "Disabled"`.
 
 ## <a name="circuit"></a>Tworzenie obwodu
 
-Domyślnie można utworzyć 10 obwody w subskrypcji, która zawiera zasób bezpośrednio z usługi ExpressRoute. Microsoft Support można zwiększenia domyślnego limitu. Jesteś odpowiedzialny za śledzenie elastycznie i wykorzystywanych przepustowość. Elastycznie przepustowości to suma przepustowości wszystkich obwodów zasobu bezpośrednio z usługi ExpressRoute. Przepustowość wykorzystywanych jest użycie fizycznego bazowego interfejsy fizyczne.
+Domyślnie można utworzyć 10 obwodów w ramach subskrypcji zawierającej zasób ExpressRoute Direct. Pomoc techniczna firmy Microsoft może zwiększyć domyślny limit. Użytkownik jest odpowiedzialny za śledzenie przydziałów i wykorzystania przepustowości. Przystosowana przepustowość to suma przepustowości wszystkich obwodów w zasobie ExpressRoute Direct. Wykorzystanie przepustowości jest fizycznym użyciem podstawowych interfejsów fizycznych.
 
-Przepustowości obwodu dodatkowe na bezpośrednio ExpressRoute służy tylko do obsługi scenariuszy opisanych w tym miejscu. Wartości przepustowości to 40 GB/s i 100 GB/s.
+Dodatkowe przepustowości obwodów w usłudze ExpressRoute Direct można używać tylko w celu obsługi scenariuszy opisanych w tym miejscu. Przepustowość wynosi 40 GB/s i 100 GB/s.
 
-**SkuTier** może być lokalny, standardowa lub Premium.
+**SkuTier** może być lokalna, standardowa lub Premium.
 
-**SkuFamily** musi być MeteredData tylko jako nieograniczona liczba nie jest obsługiwana na bezpośrednio z usługi ExpressRoute.
-Utwórz obwód zasobu bezpośrednio z usługi ExpressRoute:
+**SkuFamily** muszą być MeteredData tylko jako nieograniczone nie są obsługiwane w przypadku ExpressRoute Direct.
+Utwórz obwód w zasobie ExpressRoute Direct:
 
   ```azurecli
   az network express-route create --express-route-port "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct" -n "Contoso-Direct-ckt" -g "Contoso-Direct-rg" --sku-family MeteredData --sku-tier Standard --bandwidth 100 Gbps
@@ -327,6 +327,6 @@ Utwórz obwód zasobu bezpośrednio z usługi ExpressRoute:
   }  
   ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat usługi ExpressRoute bezpośrednio zobacz [Przegląd](expressroute-erdirect-about.md).
+Aby uzyskać więcej informacji na temat usługi ExpressRoute Direct, zobacz [Omówienie](expressroute-erdirect-about.md).

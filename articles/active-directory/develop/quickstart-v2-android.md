@@ -16,16 +16,16 @@ ms.date: 09/16/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2704a6e1af2f06b49b1d3817ad7a30bf53419ffe
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 01c45c3f90fd1c9bf457f5c4024d029bf3819813
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964002"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149480"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
-Ten przewodnik Szybki Start używa przykładu kodu, aby zademonstrować, jak aplikacja systemu Android może zalogować się do konta osobistego, służbowego lub szkolnego, a następnie uzyskać token dostępu i wywołać interfejs API Microsoft Graph.
+Ten przewodnik Szybki Start używa przykładu kodu, aby zademonstrować, jak aplikacja systemu Android może zalogować się do konta osobistego, służbowego lub szkolnego za pomocą platformy tożsamości firmy Microsoft, a następnie uzyskać token dostępu i wywołać interfejs API Microsoft Graph.
 
 ![Screenshoft aplikacji przykładowej](media/quickstart-v2-android/android-intro.svg)
 

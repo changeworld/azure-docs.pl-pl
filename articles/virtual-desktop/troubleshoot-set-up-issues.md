@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 811fdd0b177e3a255ca91145e39005de1d2328ad
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e2d2da5e2c8c0236a4f42bc69a521891616df0d4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676466"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163289"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
@@ -97,7 +97,7 @@ Postępuj zgodnie z poniższymi instrukcjami, aby rozwiązywać problemy z niepo
 3. Po zidentyfikowaniu tego błędu Użyj komunikatu o błędzie i zasobów w [rozwiązywaniu typowych błędów wdrażania platformy Azure z Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors) , aby rozwiązać problem.
 4. Usuń wszystkie zasoby utworzone w poprzednim wdrożeniu i ponów próbę wdrożenia szablonu.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Błąd: wdrożenie nie powiodło się... \<hostname >/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Błąd: wdrożenie nie powiodło się...\<nazwa hosta >/JoinDomain
 
 ![Zrzut ekranu wdrożenia nie powiódł się.](media/e72df4d5c05d390620e07f0d7328d50f.png)
 
@@ -310,13 +310,13 @@ The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d2
 **Poprawka:** Użytkownik, który utworzył dzierżawcę pulpitów wirtualnych systemu Windows, musi zalogować się do programu PowerShell Virtual Desktop systemu Windows i przypisać użytkownikowi, który podjął próbę przypisania roli. Jeśli uruchamiasz parametry szablonu Azure Resource Manager GitHub, postępuj zgodnie z tymi instrukcjami przy użyciu poleceń programu PowerShell:
 
 ```PowerShell
-Add-RdsAccount -DeploymentUrl “https://rdbroker.wvd.microsoft.com”
-New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName “RDS Contributor” -SignInName <UPN>
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
 ### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Błąd: użytkownik wymaga platformy Azure Multi-Factor Authentication (MFA)
 
-![Zrzut ekranu wdrożenia nie powiódł się z powodu braku uwierzytelniania wieloskładnikowego (MFA)](media/MFARequiredError.png)
+![Zrzut ekranu wdrożenia nie powiódł się z powodu braku Multi-Factor Authentication (MFA)](media/MFARequiredError.png)
 
 Przykład nieprzetworzonego błędu:
 

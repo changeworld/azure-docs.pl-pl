@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2c7cd377929d1dd6d2e6ed8831597695ae02d21c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512593"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146245"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
@@ -200,9 +200,9 @@ Aby dowiedzieć się więcej na temat zabezpieczeń platformy Azure, zobacz [Mic
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Twórz i wdrażaj modele za pomocą bezpłatnych narzędzi [SQL Server Data Tools (SSDT) dla Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt). Narzędzia SSDT obejmują szablony projektów usług Analysis Services, które pozwalają szybko rozpocząć pracę. SSDT obejmuje teraz nowoczesne zapytania dotyczące źródła danych pobieranie danych i funkcje programu mashup dla tabelarycznych modeli 1400. Jeśli znasz już funkcję Get Data w programach Power BI Desktop i Excel 2016, wiesz już, jak łatwo tworzy się wysoce dostosowywalne zapytania do źródeł danych. 
+Opracowywanie i wdrażanie modeli przy użyciu programu Visual Studio z projektami Analysis Services. Rozszerzenie projekty Analysis Services zawiera szablony i kreatory umożliwiające szybkie rozpoczęcie pracy. Środowisko tworzenia modelu w programie Visual Studio zawiera teraz nowoczesne zapytania dotyczące źródła danych pobieranie danych i funkcje programu mashup dla tabelarycznych modeli 1400 i wyższych. Jeśli znasz już funkcję Get Data w programach Power BI Desktop i Excel 2016, wiesz już, jak łatwo tworzy się wysoce dostosowywalne zapytania do źródeł danych. 
 
-Jeśli używasz programu Visual Studio 2017 lub nowszego, projekty programu Microsoft Analysis Services są dostępne jako bezpłatny instalowalny pakiet VSIX. [Pobierz z witryny Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
+Projekty Analysis Services firmy Microsoft są dostępne jako bezpłatny możliwy do zainstalowania pakiet VSIX. [Pobierz z witryny Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). Rozszerzenie współpracuje z dowolną wersją programu Visual Studio 2017 lub nowszą, w tym bezpłatną wersję Community.
 
 ### <a name="sql-server-management-studio"></a>Sql Server Management Studio
 

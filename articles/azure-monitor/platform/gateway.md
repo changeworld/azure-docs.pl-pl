@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 10/24/2019
-ms.openlocfilehash: ba0ee29b48be259bddd898c3d1119b77f6ee5228
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/30/2019
+ms.openlocfilehash: 87e1995a84ae2b598b8097d4910914831a75a318
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932299"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162021"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Łączenie komputerów bez dostępu do Internetu przy użyciu bramy Log Analytics w programie Azure Monitor
 
@@ -22,7 +22,7 @@ ms.locfileid: "72932299"
 
 W tym artykule opisano sposób konfigurowania komunikacji z Azure Automation i Azure Monitor przy użyciu bramy Log Analytics, gdy komputery połączone bezpośrednio lub monitorowane przez Operations Manager nie mają dostępu do Internetu. 
 
-Brama Log Analytics jest serwerem proxy przesyłania dalej HTTP, który obsługuje Tunelowanie HTTP przy użyciu polecenia HTTP CONNECT. Ta brama wysyła dane do Azure Automation i Log Analytics obszaru roboczego w Azure Monitor w imieniu komputerów, które nie mogą bezpośrednio łączyć się z Internetem. Nie buforuje danych z agentów, Agent obsługuje dane buforowania w tej sytuacji do momentu przywrócenia komunikacji.
+Brama Log Analytics jest serwerem proxy przesyłania dalej HTTP, który obsługuje Tunelowanie HTTP przy użyciu polecenia HTTP CONNECT. Ta brama wysyła dane do Azure Automation i Log Analytics obszaru roboczego w Azure Monitor w imieniu komputerów, które nie mogą bezpośrednio łączyć się z Internetem. 
 
 Brama Log Analytics obsługuje:
 
@@ -33,7 +33,7 @@ Brama Log Analytics obsługuje:
 
 Niektóre zasady zabezpieczeń IT nie zezwalają na połączenie internetowe komputerów sieciowych. Te niepołączone komputery mogą wskazywać na przykład urządzenia do sprzedaży (POS) lub serwery obsługujące usługi IT. Aby podłączyć te urządzenia do Azure Automation lub Log Analytics obszaru roboczego, tak aby można było nimi zarządzać i monitorować, należy skonfigurować je do bezpośredniego komunikowania się z bramą Log Analytics. Brama Log Analytics może odbierać informacje o konfiguracji i przesyłać dalej dane w ich imieniu. Jeśli komputery są skonfigurowane z agentem Log Analytics, aby połączyć się bezpośrednio z obszarem roboczym Log Analytics, komputery będą komunikować się z bramą Log Analytics.  
 
-Brama usługi Log Analytics transferuje dane bezpośrednio z agentów do usługi. Nie analizuje żadnych danych podczas przesyłania.
+Brama usługi Log Analytics transferuje dane bezpośrednio z agentów do usługi. Nie analizuje on żadnych przesyłanych danych, a Brama nie buforuje danych w przypadku utraty łączności z usługą. Gdy brama nie może komunikować się z usługą, Agent kontynuuje uruchamianie i kolejkuje zebrane dane na dysku monitorowanego komputera. Po przywróceniu połączenia agent wysyła dane przechowywane w pamięci podręcznej zebrane do Azure Monitor.
 
 Po zintegrowaniu Operations Manager grupy zarządzania z Log Analytics, serwery zarządzania można skonfigurować tak, aby łączyły się z bramą Log Analytics, aby otrzymywać informacje o konfiguracji i wysyłać zebrane dane, w zależności od włączonego rozwiązania. .  Operations Manager agenci wysyłają dane do serwera zarządzania. Na przykład agenci mogą wysyłać alerty Operations Manager, dane oceny konfiguracji, dane przestrzeni wystąpienia oraz dane pojemności. Inne dane o dużej ilości danych, takie jak dzienniki Internet Information Services (IIS), dane wydajności i zdarzenia zabezpieczeń, są wysyłane bezpośrednio do bramy Log Analytics. 
 
@@ -167,7 +167,7 @@ W poniższej tabeli przedstawiono parametry obsługiwane przez Instalatora.
 Aby zainstalować bramę w trybie dyskretnym i skonfigurować ją z określonym adresem serwera proxy, numer portu, wpisz następujące polecenie:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 LicenseAccepted=1 
 ```
 
 Użycie opcji wiersza polecenia/Qn powoduje ukrycie Instalatora,/QB pokazuje Instalatora podczas instalacji dyskretnej.  
@@ -175,7 +175,7 @@ Użycie opcji wiersza polecenia/Qn powoduje ukrycie Instalatora,/QB pokazuje Ins
 Jeśli musisz podać poświadczenia w celu uwierzytelnienia z serwerem proxy, wpisz następujące polecenie:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 HASAUTH=1 USERNAME="<username>" PASSWORD="<password>" LicenseAccepted=1 
 ```
 
 Po zakończeniu instalacji można potwierdzić, że ustawienia są akceptowane (exlcuding nazwę użytkownika i hasło) przy użyciu następujących poleceń cmdlet programu PowerShell:

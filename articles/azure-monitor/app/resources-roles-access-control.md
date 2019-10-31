@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 02/14/2019
-ms.openlocfilehash: eea991b553d69fce5c177c1eee48633484dc19db
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: cdc534325fd693dd34f2dc25c9953cd40ca96163
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899958"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162299"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Zasoby, role i kontrola dostępu w Application Insights
 
@@ -125,16 +125,16 @@ Ponieważ niektóre role mogą być połączone z powiadomieniami i alertami e-m
 ### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>Zapytanie w kontekście określonego Application Insights zasobów dla właścicieli i współautorów
 
 ```powershell
-$resourceGroup = “RGNAME”
-$resourceName = “AppInsightsName”
-$resourceType = “microsoft.insights/components”
+$resourceGroup = "RGNAME"
+$resourceName = "AppInsightsName"
+$resourceType = "microsoft.insights/components"
 (Get-AzRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>Zapytanie w kontekście określonej grupy zasobów dla właścicieli i współautorów
 
 ```powershell
-$resourceGroup = “RGNAME”
+$resourceGroup = "RGNAME"
 (Get-AzRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 

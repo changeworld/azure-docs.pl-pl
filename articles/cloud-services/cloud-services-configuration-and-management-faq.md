@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154721"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161768"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z konfiguracją i zarządzaniem Cloud Services platformy Azure: Często zadawane pytania
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy związane z konfiguracją i zarządzaniem w usłudze Azure Cloud Services: często zadawane pytania
 
 W tym artykule opisano często zadawane pytania dotyczące problemów z konfiguracją i zarządzaniem w programie [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informacje o rozmiarze można także znaleźć na [stronie Cloud Services rozmiaru maszyny wirtualnej](cloud-services-sizes-specs.md) .
 
@@ -52,7 +52,7 @@ W tym artykule opisano często zadawane pytania dotyczące problemów z konfigur
 **Uprawnienia**
 
 - [Czy program Microsoft Internal inżynierowie mogą uzyskać dostęp do wystąpień usługi w chmurze bez uprawnień?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [Nie mogę uzyskać pulpitu zdalnego z maszyną wirtualną usługi w chmurze przy użyciu pliku RDP. Pojawia się następujący błąd: Wystąpił błąd uwierzytelniania (kod: 0x80004005](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [Nie mogę uzyskać pulpitu zdalnego z maszyną wirtualną usługi w chmurze przy użyciu pliku RDP. Pojawia się następujący błąd: Wystąpił błąd uwierzytelniania (kod: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
 **Skalowanie**
 
@@ -100,7 +100,7 @@ Aby odnowić certyfikaty zarządzania, można użyć następujących poleceń pr
     Select-AzureSubscription -Current -SubscriptionName <your subscription name>
     Get-AzurePublishSettingsFile
 
-Element **Get-AzurePublishSettingsFile** utworzy nowy certyfikat zarządzania w ramach**certyfikatów zarządzania** **subskrypcjami** > w Azure Portal. Nazwa nowego certyfikatu wygląda jak "YourSubscriptionNam]-[CurrentDate]-Credentials".
+Element **Get-AzurePublishSettingsFile** utworzy nowy certyfikat zarządzania w ramach **subskrypcji** > **certyfikaty zarządzania** w Azure Portal. Nazwa nowego certyfikatu wygląda jak "YourSubscriptionNam]-[CurrentDate]-Credentials".
 
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak zautomatyzować instalację głównego certyfikatu SSL (pfx) i certyfikatu pośredniego (. p7b)?
 
@@ -169,7 +169,7 @@ Limit czasu można określić w pliku definicji usługi (csdef) w następujący 
     </Endpoints>
   </WorkerRole>
 ```
-Zobacz [nowy: Konfigurowalny limit czasu bezczynności dla Azure Load Balancer](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) , aby uzyskać więcej informacji.
+Zobacz [Nowy: konfigurowalny limit czasu bezczynności dla Azure Load Balancer](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) , aby uzyskać więcej informacji.
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Jak mogę skojarzyć statyczny adres IP z moją usługą w chmurze?
 Aby skonfigurować statyczny adres IP, należy utworzyć zastrzeżoną wartość adresu IP. Ten zastrzeżony adres IP można skojarzyć z nową usługą w chmurze lub istniejącym wdrożeniem. Aby uzyskać szczegółowe informacje, zobacz następujące dokumenty:
@@ -197,8 +197,8 @@ Systemy Windows 10 i Windows Server 2016 są dostarczane z obsługą protokołu 
 
 Aby uzyskać więcej informacji, zobacz:
 
-- [Protokołu HTTP/2 w programie IIS](https://blogs.iis.net/davidso/http2)
-- [Wideo: HTTP/2 w systemie Windows 10: Przeglądarka, aplikacje i serwer sieci Web](https://channel9.msdn.com/Events/Build/2015/3-88)
+- [Protokół HTTP/2 w usługach IIS](https://blogs.iis.net/davidso/http2)
+- [Wideo: HTTP/2 w systemie Windows 10: przeglądarka, aplikacje i serwer sieci Web](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
 Te kroki można zautomatyzować za pomocą zadania uruchamiania, dzięki czemu po każdym utworzeniu nowego wystąpienia PaaS można wykonać powyższe zmiany w rejestrze systemowym. Aby uzyskać więcej informacji, zobacz [jak skonfigurować i uruchomić zadania uruchamiania dla usługi w chmurze](cloud-services-startup-tasks.md).
@@ -249,7 +249,7 @@ Aby uzyskać więcej informacji na temat włączania Application Insights dla Cl
 
 Aby uzyskać więcej informacji na temat włączania rejestrowania Diagnostyka Azure dla Cloud Services, zobacz [Konfigurowanie diagnostyki dla Cloud Services platformy Azure i maszyn wirtualnych](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
-## <a name="generic"></a>Ogólny
+## <a name="generic"></a>Ogólnego
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Jak mogę dodać "nowykrywanie" do mojej witryny sieci Web?
 Aby uniemożliwić klientom wykrywanie typów MIME, Dodaj ustawienie w pliku *Web. config* .
@@ -281,7 +281,7 @@ Zobacz [limity dotyczące usługi](../azure-subscription-service-limits.md#subsc
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Dlaczego dysk na maszynie wirtualnej usługi w chmurze pokazuje bardzo mało wolnego miejsca na dysku?
 Jest to oczekiwane zachowanie i nie powinno spowodować jakiegokolwiek problemu dla aplikacji. Funkcja rejestrowania jest włączona dla dysku% głównego aplikacji% na maszynach wirtualnych usługi Azure PaaS, które zasadniczo zużywają dwukrotnie ilość miejsca, w którym zwykle zajmują się pliki. Należy jednak pamiętać o kilku kwestiach, które zasadniczo przenoszą tę funkcję na nieemisyjną.
 
-Rozmiar dysku% głównego aplikacji% jest obliczany jako \<rozmiar. cspkg + maksymalny rozmiar dziennika + margines wolnego miejsca > lub 1,5 GB, w zależności od tego, który jest większy. Rozmiar maszyny wirtualnej nie ma znaczenia dla tego obliczenia. Rozmiar maszyny wirtualnej ma wpływ tylko na rozmiar dysku tymczasowego C:. 
+Rozmiar dysku% głównego aplikacji% jest obliczany jako rozmiar \<rozmiaru. cspkg + maksymalny rozmiar dziennika + margines wolnego miejsca > lub 1,5 GB, w zależności od tego, który jest większy. Rozmiar maszyny wirtualnej nie ma znaczenia dla tego obliczenia. Rozmiar maszyny wirtualnej ma wpływ tylko na rozmiar dysku tymczasowego C:. 
 
 Zapis na dysku% głównego aplikacji% nie jest obsługiwany. Jeśli piszesz na maszynę wirtualną platformy Azure, musisz to zrobić w tymczasowym zasobie LocalStorage (lub innej opcji, takiej jak BLOB Storage, Azure Files itp.). Ilość wolnego miejsca w folderze% głównego aplikacji% jest niezrozumiała. Jeśli nie masz pewności, czy aplikacja zapisuje się na dysku% głównego aplikacji%, zawsze możesz pozwolić, aby usługa działała przez kilka dni, a następnie porównać rozmiary "Before" i "After". 
 
@@ -302,7 +302,7 @@ Aby uzyskać więcej informacji o scenariuszach wdrażania oprogramowania chroni
 
 SNI można włączyć w Cloud Services przy użyciu jednej z następujących metod:
 
-**Metoda 1: Korzystanie z programu PowerShell**
+**Metoda 1. Korzystanie z programu PowerShell**
 
 Powiązanie SNI można skonfigurować przy użyciu polecenia cmdlet **New-Webbinding** programu PowerShell w zadaniu uruchamiania dla wystąpienia roli usługi w chmurze poniżej:
     
@@ -310,14 +310,14 @@ Powiązanie SNI można skonfigurować przy użyciu polecenia cmdlet **New-Webbin
     
 Zgodnie z opisem w [tym miejscu](https://technet.microsoft.com/library/ee790567.aspx)$sslFlags może być jedną z następujących wartości:
 
-|Value|Znaczenie|
+|Wartość|Znaczenie|
 ------|------
 |0|Brak SNI|
-|1|SNI włączone |
-|2 |Powiązanie inne niż SNI, które używa centralnego magazynu certyfikatów|
-|3|Powiązanie SNI używające centralnego magazynu certyfikatów |
+|1|SNI włączone|
+|2|Powiązanie inne niż SNI, które używa centralnego magazynu certyfikatów|
+|3|Powiązanie SNI używające centralnego magazynu certyfikatów|
  
-**Metoda 2. Użyj kodu**
+**Metoda 2. Korzystanie z kodu**
 
 Powiązanie SNI można również skonfigurować za pomocą kodu podczas uruchamiania roli, zgodnie z opisem w tym [wpisie w blogu](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
 
@@ -325,8 +325,8 @@ Powiązanie SNI można również skonfigurować za pomocą kodu podczas uruchami
     //<code snip> 
                     var serverManager = new ServerManager(); 
                     var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(“:443:www.test1.com”, newCert.GetCertHash(), “My”); 
-                    binding.SetAttributeValue(“sslFlags”, 1); //enables the SNI 
+                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
                     serverManager.CommitChanges(); 
     //</code snip> 
     

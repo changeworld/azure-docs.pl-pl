@@ -81,6 +81,8 @@
           href: how-to/upgrade-tools.md
         - name: Używanie ciągłej integracji/ciągłego wdrażania w ramach usługi Azure Dev Spaces
           href: how-to/setup-cicd.md
+        - name: Korzystanie z usług GitHub Actions i Azure Dev Spaces (wersja zapoznawcza)
+          href: how-to/github-actions.md
         - name: Używanie wtyczki usługi Azure Dev Spaces dla serwera Jenkins
           href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Ciągłość działalności biznesowej i odzyskiwanie po awarii (BCDR) dla usługi Azure Dev Spaces
@@ -89,6 +91,8 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Używanie rozwiązania traefik w przypadku niestandardowego ruchu przychodzącego i ruchu HTTPS
           href: how-to/ingress-https-traefik.md
+        - name: Korzystanie z funkcji Azure Dev Spaces Connect (wersja zapoznawcza)
+          href: how-to/connect.md
     - name: Rozwiązywanie problemów
       href: troubleshooting.md
     - name: Często zadawane pytania

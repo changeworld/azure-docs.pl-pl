@@ -6,18 +6,18 @@ ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: a326a5b323999e97b4d015403e36eb97dfc8483f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8ef32a2cf385c052437c5e5cbd7c95077a262e83
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248824"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163008"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Sterowanie mapowaniem SWIFT programu CSP-CSCF V2020 plan
 
 W poniższym artykule szczegółowo opisano sposób, w jaki usługa Azure planuje SWIFT programu CSP — przykład strategii CSCF V2020 Maps do kontrolek SWIFT CSP-CSCF V2020. Aby uzyskać więcej informacji na temat kontrolek, zobacz [SWIFT CSP-CSCF V2020](https://www.swift.com/myswift/customer-security-programme-csp).
 
-Następujące mapowania są do kontrolek **SWIFT CSP-CSCF V2020** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz **\[Preview @ no__t-2: Inspekcja SWIFT CSP-CSCF V2020 Controls i Wdróż określone rozszerzenia maszyny wirtualnej w celu obsługi inspekcji wbudowanych wymagań** zasad.
+Następujące mapowania są do kontrolek **SWIFT CSP-CSCF V2020** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz **\[wersji za\]poznawczej: Inspekcja SWIFT dostawcy usług kryptograficznych — CSCF V2020 Controls i Wdróż określone rozszerzenia maszyn wirtualnych, aby zapewnić obsługę zasad inspekcji** wbudowanej.
 
 > [!IMPORTANT]
 > Każda kontrolka poniżej jest skojarzona z co najmniej jedną definicją [Azure Policy](../../../policy/overview.md) . Te zasady mogą pomóc w [ocenie zgodności](../../../policy/how-to/get-compliance-data.md) z kontrolką; Niemniej jednak często nie jest to 1:1 ani kompletna zgodność między kontrolką a co najmniej jedną zasadą. W związku z tym **zgodność** w Azure Policy odnosi się tylko do samych zasad; nie gwarantuje to, że jest w pełni zgodne ze wszystkimi wymaganiami formantu. Ponadto Standard zgodności zawiera kontrolki, które nie są obecnie rozwiązywane przez żadną Azure Policy definicje. W związku z tym zgodność w Azure Policy jest tylko częściowym widokiem ogólnego stanu zgodności. Skojarzenia między kontrolkami i definicjami Azure Policy dla tego przykładowego planu zgodności mogą ulec zmianie z upływem czasu. Aby wyświetlić historię zmian, zobacz [historię zatwierdzeń usługi GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/swift-2020/control-mapping.md).
@@ -75,8 +75,8 @@ Funkcja odnajdywania i klasyfikowania danych Advanced Data Security dla Azure SQ
 
 Ten plan ułatwia monitorowanie i kontrolowanie dostępu zdalnego przez przypisanie definicji [Azure Policy](../../../policy/overview.md) do monitorów, że debugowanie zdalne dla Azure App Service aplikacji jest wyłączone i definicje zasad, które przeprowadzają inspekcję maszyn wirtualnych systemu Linux, które umożliwiają zdalne połączenia z kont bez haseł. Ten plan przypisuje również definicję Azure Policy, która ułatwia monitorowanie nieograniczonego dostępu do kont magazynu. Monitorowanie tych wskaźników może pomóc zapewnić zgodność metod dostępu zdalnego z zasadami zabezpieczeń.
 
-- \[Preview @ no__t-1: Pokaż wyniki inspekcji z maszyn wirtualnych systemu Linux, które zezwalają na połączenia zdalne z kont bez hasła
-- \[Preview @ no__t-1: Wdróż wymagania wstępne w celu inspekcji maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
+- \[Podgląd\]: Pokaż wyniki inspekcji z maszyn wirtualnych systemu Linux, które zezwalają na połączenia zdalne z kont bez hasła
+- \[wersji zapoznawczej\]: Wdróż wymagania wstępne do inspekcji maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
 - Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
 - Debugowanie zdalne powinno być wyłączone dla aplikacji interfejsu API
 - Zdalne debugowanie powinno zostać wyłączone dla aplikacja funkcji
@@ -86,11 +86,11 @@ Ten plan ułatwia monitorowanie i kontrolowanie dostępu zdalnego przez przypisa
 
 Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics obszarze roboczym, co pozwala na scentralizowaną konfigurację i zarządzanie. Ten plan pomaga zapewnić, że zdarzenia są rejestrowane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które przeprowadzają inspekcję i egzekwowanie wdrożenia agenta log Analytics na maszynach wirtualnych platformy Azure.
 
-- \[Preview @ no__t-1: Inspekcja wdrożenia agenta Log Analytics — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Linux
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
 
 ## <a name="22-27-and-64-response-to-audit-processing-failures"></a>2,2, 2,7 i 6,4 odpowiedź na błędy przetwarzania inspekcji
 
@@ -104,21 +104,21 @@ Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , któ
 
 Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics obszarze roboczym, co umożliwia scentralizowane raportowanie i analizę. Ten plan pomaga zapewnić, że zdarzenia są rejestrowane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które przeprowadzają inspekcję i egzekwowanie wdrożenia agenta log Analytics na maszynach wirtualnych platformy Azure.
 
-- \[Preview @ no__t-1: Inspekcja wdrożenia agenta Log Analytics — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Linux
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1,3, 2,2, 2,7, 6,4 i 6.5 Generowanie inspekcji
 
 Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które Przeprowadź inspekcję ustawień dziennika w zasobach platformy Azure. Te definicje zasad przeprowadzają inspekcję i egzekwowanie wdrożenia agenta Log Analytics na maszynach wirtualnych platformy Azure oraz konfigurację ustawień inspekcji dla innych typów zasobów platformy Azure. Te definicje zasad umożliwiają również inspekcję konfiguracji dzienników diagnostycznych w celu zapewnienia wglądu w operacje wykonywane w ramach zasobów platformy Azure. Ponadto na serwerach SQL są konfigurowane inspekcje i zaawansowane zabezpieczenia danych.
 
-- \[Preview @ no__t-1: Inspekcja wdrożenia agenta Log Analytics — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Linux
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja ustawień inspekcji poziomu serwera SQL
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
@@ -161,29 +161,29 @@ Ten plan pomaga ograniczyć i kontrolować dostęp przez przypisanie definicji [
 
 Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które przeprowadzają inspekcję maszyn wirtualnych systemu Linux, które zezwalają na połączenia zdalne z kont bez haseł i/lub mają ustawione nieprawidłowe uprawnienia w pliku haseł. Ten plan przypisuje również definicje zasad, które przeprowadzają inspekcję konfiguracji typu szyfrowania hasła dla maszyn wirtualnych z systemem Windows. Monitorowanie tych wskaźników pomaga upewnić się, że uwierzytelniające systemu są zgodne z zasadami identyfikacji i uwierzytelniania w organizacji.
 
-- \[Preview @ no__t-1: Pokaż wyniki inspekcji z maszyn wirtualnych systemu Linux, które nie mają uprawnień do pliku haseł ustawione na 0644
-- \[Preview @ no__t-1: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Linux, które nie mają uprawnień do pliku haseł ustawione na 0644
-- \[Preview @ no__t-1: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Linux, które mają konta bez hasła
-- \[Preview @ no__t-1: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Linux, które mają konta bez hasła
-- \[Preview @ no__t-1: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
-- \[Preview @ no__t-1: Wdróż wymagania w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
+- Wersja zapoznawcza \[\]: Pokaż wyniki inspekcji z maszyn wirtualnych systemu Linux, które nie mają uprawnień do pliku haseł ustawione na 0644
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Linux, które nie mają uprawnień do pliku haseł ustawione na 0644
+- \[Podgląd\]: Pokaż wyniki inspekcji z maszyn wirtualnych systemu Linux, które mają konta bez hasła
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Linux, które mają konta bez hasła
+- \[Podgląd\]: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
+- \[wersji zapoznawczej\]: Wdróż wymagania w celu inspekcji maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
 
 ## <a name="23-and-41-authenticator-management--password-based-authentication"></a>2,3 i 4,1 Zarządzanie wystawcy Uwierzytelnianie oparte na hasłach
 
 Ten plan pomaga wymusić silne hasła, przypisując definicje [Azure Policy](../../../policy/overview.md) , które przeprowadzają inspekcję maszyn wirtualnych systemu Windows, które nie wymuszają minimalnej siły i innych wymagań dotyczących haseł. Świadomość maszyn wirtualnych z naruszeniem zasad dotyczących siły haseł pomaga podejmować działania naprawcze w celu zapewnienia zgodności haseł dla wszystkich kont użytkowników maszyny wirtualnej z zasadami haseł obowiązującymi w organizacji.
 
-- \[Preview @ no__t-1: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
-- \[Preview @ no__t-1: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie mają maksymalnego wieku hasła wynoszącego 70 dni
-- \[Preview @ no__t-1: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie mają minimalnego wieku hasła wynoszącego 1 dzień
-- \[Preview @ no__t-1: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
-- \[Preview @ no__t-1: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
-- \[Preview @ no__t-1: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
-- \[Preview @ no__t-1: Wdróż wymagania wstępne w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
-- \[Preview @ no__t-1: Wdróż wymagania wstępne w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają maksymalnego wieku hasła wynoszącego 70 dni
-- \[Preview @ no__t-1: Wdróż wymagania wstępne w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają minimalnego wieku hasła wynoszącego 1 dzień
-- \[Preview @ no__t-1: Wdróż wymagania wstępne, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
-- \[Preview @ no__t-1: Wdróż wymagania wstępne w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
-- \[Preview @ no__t-1: Wdróż wymagania wstępne, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
+- \[Podgląd\]: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
+- \[Podgląd\]: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie mają maksymalnego wieku hasła wynoszącego 70 dni
+- \[Podgląd\]: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie mają minimalnego wieku hasła wynoszącego 1 dzień
+- \[Podgląd\]: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
+- \[Podgląd\]: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
+- \[Podgląd\]: Pokaż wyniki inspekcji z maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
+- \[wersji zapoznawczej\]: Wdróż wymagania wstępne w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które zezwalają na ponowne używanie poprzednich 24 haseł
+- \[Podgląd\]: Wdróż wymagania wstępne w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają maksymalnego wieku hasła wynoszącego 70 dni
+- \[wersji zapoznawczej\]: Wdróż wymagania wstępne w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, których okres ważności hasła wynosi 1 dzień
+- \[wersji zapoznawczej\]: Wdróż wymagania wstępne w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie mają włączonego ustawienia złożoności hasła
+- \[wersji zapoznawczej\]: Wdróż wymagania wstępne w celu przeprowadzenia inspekcji maszyn wirtualnych z systemem Windows, które nie ograniczają minimalnej długości hasła do 14 znaków
+- \[wersji zapoznawczej\]: Wdróż wymagania wstępne do inspekcji maszyn wirtualnych z systemem Windows, które nie przechowują haseł przy użyciu szyfrowania odwracalnego
 
 ## <a name="22-and-27-vulnerability-scanning"></a>Skanowanie luk w zabezpieczeniach 2,2 i 2,7
 
@@ -273,11 +273,11 @@ Ten plan ułatwia zarządzanie programem Endpoint Protection, w tym złośliwą 
 
 Ten plan ułatwia monitorowanie systemu przez inspekcjonowanie i wymuszanie rejestrowania i zabezpieczeń danych w ramach zasobów platformy Azure. W odniesieniu do zasad są przypisane inspekcje i egzekwowanie wdrożenia agenta Log Analytics oraz ulepszone ustawienia zabezpieczeń baz danych SQL, kont magazynu i zasobów sieciowych. Te możliwości mogą pomóc w wykrywaniu nietypowych zachowań i wskaźników ataków, co pozwala na podejmowanie odpowiednich działań.
 
-- \[Preview @ no__t-1: Inspekcja wdrożenia agenta Log Analytics — lista obrazów maszyn wirtualnych (OS) nie została wystawiona
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Linux
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[Preview @ no__t-1: Wdróż agenta Log Analytics dla maszyn wirtualnych z systemem Windows
+- \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 - Zaawansowane ustawienia zabezpieczeń danych dla programu SQL Server powinny zawierać adres e-mail, aby otrzymywać alerty zabezpieczeń
 - Dzienniki diagnostyczne w Azure Stream Analytics powinny być włączone
@@ -303,7 +303,7 @@ Po przejrzeniu mapowania kontrolki SWIFT planu CSP-CSCF V2020, odwiedź następu
 > [SWIFT CSP-CSCF V2020 plan-Overview](./index.md)
 > [SWIFT CSP-CSCF V2020 plan-Deploy kroki](./deploy.md)
 
-Dodatkowe artykuły na temat strategii i sposobu ich używania:
+Dodatkowe artykuły o planach i sposobach ich użycia:
 
 - Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).

@@ -1,5 +1,5 @@
 ---
-title: Chroniony internetowy interfejs API — konfiguracja kodu aplikacji Active Directory
+title: Weryfikowanie zakresów i ról aplikacji z chronionym interfejsem API sieci Web
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć chroniony internetowy interfejs API i skonfigurować kod aplikacji.
 services: active-directory
@@ -17,14 +17,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7044180c72f92b70e0c3a2085eca043f44da45f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4340d92bdfe871010021edcbefcde62ab8202462
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803630"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149239"
 ---
-# <a name="protected-web-api-adding-authorization-to-your-api"></a>Chroniony internetowy interfejs API: Dodawanie autoryzacji do interfejsu API
+# <a name="protected-web-api-verify-scopes-and-app-roles"></a>Chroniony internetowy interfejs API: weryfikowanie zakresów i ról aplikacji
 
 W tym artykule opisano sposób dodawania autoryzacji do internetowego interfejsu API. Ta ochrona zapewnia, że interfejs API jest wywoływany tylko przez:
 

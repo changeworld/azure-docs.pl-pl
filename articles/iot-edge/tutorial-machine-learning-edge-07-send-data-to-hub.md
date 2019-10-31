@@ -8,14 +8,14 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0fe05131268b8a6a6c61323289d3017231e49706
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 224afe19e50e52c56c223ff1a52f9989943ce712
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299820"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163108"
 ---
-# <a name="tutorial-send-data-via-transparent-gateway"></a>Samouczek: Wysyłanie danych za pośrednictwem nieprzezroczystej bramy
+# <a name="tutorial-send-data-via-transparent-gateway"></a>Samouczek: wysyłanie danych za pośrednictwem niewidocznej bramy
 
 > [!NOTE]
 > Ten artykuł jest częścią serii samouczka dotyczącego używania Azure Machine Learning w IoT Edge. Jeśli ten artykuł został osiągnięty bezpośrednio, zachęcamy do rozpoczęcia od [pierwszego artykułu](tutorial-machine-learning-edge-01-intro.md) z serii w celu uzyskania najlepszych wyników.
@@ -37,7 +37,7 @@ Spójrz na kod, aby zobaczyć, jak te dwa elementy są implementowane.
 
 1. Na komputerze deweloperskim Otwórz Visual Studio Code.
 
-2. Użyj**folderu Otwórz folder...** , aby otworzyć **plik** > C\\:\\\\Source IoTEdgeAndMlSample DeviceHarness.
+2. Użyj **pliku** > **Otwórz folder...** , aby otworzyć plik C:\\Source\\IoTEdgeAndMlSample\\DeviceHarness.
 
 3. Spójrz na metodę InstallCertificate () w Program.cs.
 
@@ -53,11 +53,11 @@ Spójrz na kod, aby zobaczyć, jak te dwa elementy są implementowane.
 
 ## <a name="build-and-run-leaf-device"></a>Kompiluj i uruchom urządzenie liścia
 
-1. Gdy projekt DeviceHarness jest wciąż otwarty w Visual Studio Code, Skompiluj projekt (Ctrl + Shift + B lub > **zadanie kompilacji przebiegu końcowego...** ) i wybierz opcję **Kompiluj** z okna dialogowego.
+1. Gdy projekt DeviceHarness jest wciąż otwarty w Visual Studio Code, Skompiluj projekt (Ctrl + Shift + B lub **Terminal** > **Uruchom zadanie kompilacji...** ) i wybierz opcję **Kompiluj** z okna dialogowego.
 
 2. Znajdź w pełni kwalifikowaną nazwę domeny (FQDN) dla bramy granicznej, przechodząc do maszyny wirtualnej IoT Edge urządzenia w portalu i kopiując wartość **nazwy DNS** z przeglądu.
 
-3. Otwórz Terminal Visual Studio Code (**Terminal** > **New**Terminal) i uruchom następujące polecenie, zastępując `<edge_device_fqdn>` nazwę DNS skopiowaną z maszyny wirtualnej:
+3. Otwórz Terminal Visual Studio Code (**terminal** > **New Terminal**) i uruchom następujące polecenie, zastępując `<edge_device_fqdn>` nazwą DNS skopiowaną z maszyny wirtualnej:
 
    ```cmd
    dotnet run -- --gateway-host-name "<edge_device_fqdn>" --certificate C:\edgecertificates\certs\azure-iot-test-only.root.ca.cert.pem --max-devices 1
@@ -103,7 +103,7 @@ Dane wyjściowe modułu avroFileWriter można łatwo zaobserwować, przeglądaj�
 
    Może istnieć więcej niż jeden plik w zależności od czasu uruchomienia.
 
-4. Zwróć uwagę na sygnatury czasowe. Moduł avroFileWriter przekazuje pliki do chmury po ostatniej modyfikacji w przeszłości ponad 10 minut (zobacz zmodyfikowany\_limit czasu pliku\_w Uploader.py w module avroFileWriter).
+4. Zwróć uwagę na sygnatury czasowe. Moduł avroFileWriter przekazuje pliki do chmury po ostatniej modyfikacji w przeszłości ponad 10 minut (zobacz zmodyfikowane\_pliku\_TIMEOUT w uploader.py w module avroFileWriter).
 
 5. Po upływie 10 minut moduł powinien przekazać pliki. Jeśli przekazywanie zakończy się pomyślnie, program usunie pliki z dysku.
 
@@ -119,7 +119,7 @@ Można obserwować wyniki wysyłania danych z urządzenia typu liść, przegląd
 
 4. Z pracy wykonanej w poprzedniej części samouczka oczekujemy, że kontener **ruldata** powinien zawierać komunikaty z pozostałego czasu eksploatacji. Rozwiń węzeł **ruldata** .
 
-5. Zobaczysz jeden lub więcej plików obiektów BLOB o nazwie like `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`:.
+5. Zobaczysz jeden lub więcej plików obiektów BLOB o nazwie like: `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`.
 
 6. Kliknij prawym przyciskiem myszy jeden z plików, a następnie wybierz pozycję **Pobierz obiekt BLOB** , aby zapisać plik na komputerze deweloperskim.
 
@@ -131,7 +131,7 @@ Można obserwować wyniki wysyłania danych z urządzenia typu liść, przegląd
 
 Dodaliśmy proste narzędzie wiersza polecenia do odczytywania pliku Avro i zwracania ciągu JSON komunikatów w pliku. W tej sekcji zostanie zainstalowana i uruchomiona.
 
-1. Otwórz terminal w**Visual Studio Code (**  > **Nowy terminal**terminalu).
+1. Otwórz terminal w Visual Studio Code (**terminalowych** > **nowym terminalu**).
 
 2. Zainstaluj hubavroreader:
 
@@ -213,7 +213,7 @@ Dodaliśmy proste narzędzie wiersza polecenia do odczytywania pliku Avro i zwra
            "ConnectionDeviceId": "Client_001",
            "CorrelationId": "70df0c98-0958-4c8f-a422-77c2a599594f",
            "CreationTimeUtc": "0001-01-01T00:00:00+00:00",
-           "EnqueuedTimeUtc": “<time>”
+           "EnqueuedTimeUtc": "<time>"
    }
    ```
 

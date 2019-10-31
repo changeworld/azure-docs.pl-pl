@@ -82,7 +82,7 @@
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
     - name: Przekształcanie danych przy użyciu przepływu danych mapowania
       href: tutorial-data-flow.md
-    - name: Przekształcanie danych w chmurze
+    - name: Przekształcenia zewnętrzne
       items:
         - name: HDInsight Spark
           items:
@@ -94,7 +94,7 @@
           items:
             - name: Interfejs użytkownika
               href: transform-data-using-databricks-notebook.md
-    - name: Przekształcanie danych w sieci wirtualnej
+    - name: Przekształcenie programu Hive w sieci wirtualnej
       items:
         - name: Interfejs użytkownika
           href: tutorial-transform-data-hive-virtual-network-portal.md
@@ -622,6 +622,8 @@
       items:
         - name: Przetwarzanie plików tekstowych o stałej szerokości
           href: how-to-fixed-width.md
+        - name: Obsługa wierszy błędów
+          href: how-to-data-flow-error-rows.md
     - name: Migracja ze środowiska lokalnego za pomocą usług SSIS
       items:
         - name: Migracja za pomocą usług SSIS — omówienie

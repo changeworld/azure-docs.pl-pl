@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5aab9d8c2b7993598c602ae6b730baff06d807e1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933119"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151634"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Ukończ wdrażanie uwierzytelniania przy użyciu hasła
 
@@ -104,18 +104,27 @@ Klucze zabezpieczeń umożliwiają dostęp do zasobów i należy zaplanować zar
 
 Włączenie logowania systemu Windows 10 przy użyciu kluczy zabezpieczeń FIDO2 wymaga włączenia funkcji dostawcy poświadczeń w systemie Windows 10. Włącz ją na jeden z dwóch sposobów:
 
-- [Włącz dostawcę poświadczeń przy użyciu dostosowanego wdrożenia usługi Intune](howto-authentication-passwordless-security-key.md#enable-targeted-intune-deployment)
-   - Wdrożenie usługi Intune jest zalecaną opcją dla Azure Active Directory przyłączonych komputerów.
-- [Włącz dostawcę poświadczeń za pomocą pakietu aprowizacji](howto-authentication-passwordless-security-key.md#enable-credential-provider-via-provisioning-package)
+- [Włączanie dostawcy poświadczeń przy użyciu usługi Intune](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
+   - Zalecanym rozwiązaniem jest wdrożenie usługi Intune.
+- [Włączanie dostawcy poświadczeń z pakietem aprowizacji](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Jeśli wdrożenie usługi Intune nie jest możliwe, Administratorzy muszą wdrożyć pakiet na każdej maszynie, aby włączyć funkcję dostawcy poświadczeń. Instalację pakietu można przeprowadzić za pomocą jednej z następujących opcji:
       - Zasady grupy lub System Center Configuration Manager (SCCM)
       - Instalacja lokalna na komputerze z systemem Windows 10
+- [Włącz dostawcę poświadczeń przy użyciu zasady grupy](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
+   - Obsługiwane tylko w przypadku urządzeń przyłączonych do hybrydowej usługi Azure AD.
+
+#### <a name="enable-on-premises-integration"></a>Włącz integrację lokalną
+
+Wykonaj kroki opisane w artykule [Włączanie klucza zabezpieczeń bezhasłem Zaloguj się do zasobów lokalnych (wersja zapoznawcza)](howto-authentication-passwordless-security-key-on-premises.md) , aby umożliwić dostęp do zasobów lokalnych.
+
+> [!IMPORTANT]
+> Te kroki należy również wykonać dla wszystkich urządzeń z dołączoną hybrydą usługą Azure AD, aby użyć kluczy zabezpieczeń FIDO2 dla logowania do systemu Windows 10.
 
 ### <a name="register-security-keys"></a>Rejestrowanie kluczy zabezpieczeń
 
 Użytkownicy muszą zarejestrować swój klucz zabezpieczeń na każdej Azure Active Directory przyłączonych do komputerów z systemem Windows 10.
 
-Aby uzyskać więcej informacji, zobacz [Rejestrowanie użytkowników i zarządzanie kluczami zabezpieczeń FIDO2](howto-authentication-passwordless-security-key.md).
+Aby uzyskać więcej informacji, zobacz [Rejestrowanie użytkowników i zarządzanie kluczami zabezpieczeń FIDO2](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys).
 
 ### <a name="licensing-for-passwordless-authentication"></a>Licencjonowanie do uwierzytelniania bezhasła
 
@@ -257,7 +266,7 @@ Wykonaj kroki opisane w artykule, [Włącz logowanie bez hasła przy użyciu apl
 ### <a name="deploy-fido2-security-key-sign-in"></a>Wdróż klucz zabezpieczeń FIDO2
 
 Wykonaj kroki opisane w artykule, aby [włączyć klucz zabezpieczeń bezhasło dla usługi Azure AD](howto-authentication-passwordless-security-key.md) , aby włączyć klucze zabezpieczeń FIDO2 jako metody uwierzytelniania bezhasło w organizacji.
- 
+
 ### <a name="troubleshoot-phone-sign-in"></a>Rozwiązywanie problemów z logowaniem do telefonu
 
 | Scenariusz | Rozwiązanie |

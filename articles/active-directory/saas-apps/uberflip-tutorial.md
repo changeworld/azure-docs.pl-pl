@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację z usługą Uberflip | Microsoft Docs'
+title: 'Samouczek: integracja Azure Active Directory z usługą Uberflip | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Uberflip.
 services: active-directory
 documentationCenter: na
@@ -8,20 +8,21 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 754b1f5b-6694-4fd6-9e1e-9fad769c64db
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8760606c981f494b38d4eb8ac1b2cd50ceb8582c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6710344e73e3c0ea6f9b3491209689871cc14a4f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852103"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160940"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Samouczek: Integracja Azure Active Directory z usługą Uberflip
+# <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Samouczek: integracja Azure Active Directory z usługą Uberflip
 
 W tym samouczku dowiesz się, jak zintegrować usługę Uberflip z usługą Azure Active Directory (Azure AD).
 
@@ -53,7 +54,7 @@ Program Uberflip obsługuje następujące funkcje:
 
 Aby skonfigurować integrację programu Uberflip z usługą Azure AD, musisz dodać Uberflip z portalu Azure Marketplace do listy zarządzanych aplikacji SaaS:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. W lewym okienku wybierz pozycję **Azure Active Directory**.
 
    ![Opcja Azure Active Directory](common/select-azuread.png)
@@ -70,7 +71,7 @@ Aby skonfigurować integrację programu Uberflip z usługą Azure AD, musisz dod
 
    ![Uberflip na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji należy skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą Uberflip na podstawie użytkownika testowego o nazwie **B Simon**. Aby logowanie jednokrotne działało, należy nawiązać połączenie między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Uberflip.
 
@@ -83,13 +84,13 @@ Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za 
 1. **[Utwórz użytkownika testowego Uberflip](#create-an-uberflip-test-user)** , aby uzyskać użytkownika o nazwie b. Simon w Uberflip, który jest połączony z użytkownikiem usługi Azure AD o nazwie b. Simon.
 1. **[Przetestuj logowanie](#test-single-sign-on)** jednokrotne, aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
 Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą Uberflip, wykonaj następujące czynności:
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Uberflip** wybierz pozycję **Logowanie**jednokrotne.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Uberflip** wybierz pozycję **Logowanie jednokrotne**.
 
     ![Konfigurowanie opcji logowania jednokrotnego](common/select-sso.png)
 
@@ -152,7 +153,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie B. Simon w Azure Portal.
 
     1. W polu **Nazwa** wprowadź **BSimon**.
   
-    1. W polu **Nazwa użytkownika** wprowadź **BSimon\@\<yourcompanydomain >.\< > rozszerzenia**. Na przykład **BSimon\@contoso.com**.
+    1. W polu **Nazwa użytkownika** wprowadź **BSimon\@\<yourcompanydomain >.\<rozszerzenia >** . Na przykład **BSimon\@contoso.com**.
 
     1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
 
@@ -162,7 +163,7 @@ W tej sekcji utworzysz użytkownika testowego o nazwie B. Simon w Azure Portal.
 
 W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure, przyznając im dostęp do Uberflip.
 
-1. W Azure Portal wybierz pozycję **aplikacje** > dla przedsiębiorstw**wszystkie aplikacje** > **Uberflip**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **Uberflip**.
 
     ![Okienko aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -189,7 +190,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 Użytkownik o nazwie B. Simon jest teraz tworzony w Uberflip. Nie trzeba wykonywać żadnych czynności w celu utworzenia tego użytkownika. Uberflip obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. Jeśli użytkownik o nazwie B. Simon nie istnieje już w Uberflip, zostanie utworzony nowy po uwierzytelnieniu.
 
 > [!NOTE]
-> Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z zespołem [pomocy technicznej Uberflip](mailto:support@uberflip.com).
+> Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej Uberflip](mailto:support@uberflip.com).
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -197,7 +198,7 @@ W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure A
 
 Po wybraniu opcji **Uberflip** w portalu Moje aplikacje należy automatycznie zalogować się do subskrypcji usługi Uberflip, dla której skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat portalu Moje aplikacje, zobacz [dostęp i używanie aplikacji w portalu Moje aplikacje](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS z Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

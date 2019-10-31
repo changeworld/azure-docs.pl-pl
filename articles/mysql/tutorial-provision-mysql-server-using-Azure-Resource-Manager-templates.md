@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Aprowizowanie serwera usługi Azure Database for MySQL za pomocą szablonu usługi Azure Resource Manager'
+title: 'Samouczek: Inicjowanie obsługi administracyjnej serwera Azure Database for MySQL przy użyciu szablonu Azure Resource Manager'
 description: W tym samouczku wyjaśniono, w jaki sposób aprowizować i zautomatyzować wdrożenia serwera usługi Azure Database for MySQL przy użyciu szablonu usługi Azure Resource Manager.
 author: savjani
 ms.author: pariks
@@ -8,14 +8,14 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 6e4bb7622fe51c0cab4fc45e945e5bb07b1d32f1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 69025dd70ffe88c1592cf656e956b3e78a97a5e7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925841"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163902"
 ---
-# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Samouczek: Aprowizowanie serwera usługi Azure Database for MySQL za pomocą szablonu usługi Azure Resource Manager
+# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Samouczek: Inicjowanie obsługi administracyjnej serwera Azure Database for MySQL przy użyciu szablonu Azure Resource Manager
 
 [Interfejs API REST usługi Azure Database for MySQL](https://docs.microsoft.com/rest/api/mysql/) umożliwia inżynierom DevOps automatyzowanie i integrowanie aprowizacji, konfiguracji i operacji zarządzanych serwerów i baz danych MySQL na platformie Azure.  Interfejs API umożliwia tworzenie, wyliczanie i usuwanie serwerów i baz danych MySQL oraz zarządzanie nimi w usłudze Azure Database for MySQL.
 
@@ -26,7 +26,7 @@ Z tego samouczka dowiesz się, jak wykonywać następujące czynności, używaj�
 > [!div class="checklist"]
 > * Tworzenie serwera usługi Azure Database for MySQL za pomocą punktu końcowego usługi sieci wirtualnej przy użyciu szablonu usługi Azure Resource Manager
 > * Tworzenie bazy danych za pomocą [narzędzia wiersza polecenia mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
-> * Ładowanie przykładowych danych
+> * Ładuj dane przykładowe
 > * Zapytania o dane
 > * Aktualizowanie danych
 
@@ -87,7 +87,7 @@ W tym żądaniu należy dostosować następujące wartości:
 +   `storageProfile/geoRedundantBackup` — określ wartość Enabled/Disabled (Włączone/wyłączone) w zależności od wymagań Geo-DR.
 +   `sku/tier` — określ warstwę Basic, GeneralPurpose lub MemoryOptimized dla wdrożenia.
 +   `sku/capacity` — określ ilość rdzeni wirtualnych. Możliwe wartości to 2, 4, 8, 16, 32 lub 64.
-+   `sku/family` -Określ 5. generacji, aby wybrać generacja sprzętu do wdrożenia serwera.
++   `sku/family` — Określ 5 rdzeń, aby wybrać generowanie sprzętu na potrzeby wdrażania serwera.
 +   `sku/name` — określ wartość TierPrefix_family_capacity. Na przykład B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Aby ustalić prawidłowe wartości dla poszczególnych regionów i warstw, zapoznaj się z [dokumentacją warstw cenowych](./concepts-pricing-tiers.md).
 +   `resources/properties/virtualNetworkSubnetId` — określ identyfikator platformy Azure dla podsieci w sieci wirtualnej, w której ma zostać umieszczony serwer Azure MySQL. 
 +   `tags(optional)` — określ opcjonalne tagi, stanowiące pary klucz-wartość, z których można korzystać do kategoryzowania zasobów w celach rozliczeniowych itd.
@@ -105,11 +105,11 @@ Aby uruchamiać bloki kodu z tego samouczka, możesz skorzystać z usługi Azure
 
 ```azurecli-interactive
 az login
-az group create -n ExampleResourceGroup  -l “West US2”
+az group create -n ExampleResourceGroup  -l "West US2"
 az group deployment create -g $ ExampleResourceGroup   --template-file $ {templateloc} --parameters $ {parametersloc}
 ```
 
-## <a name="get-the-connection-information"></a>Pobieranie informacji o połączeniu
+## <a name="get-the-connection-information"></a>Uzyskiwanie informacji o połączeniu
 Aby nawiązać połączenie z serwerem, musisz podać informacje o hoście i poświadczenia dostępu.
 ```azurecli-interactive
 az mysql server show --resource-group myresourcegroup --name mydemoserver
@@ -199,12 +199,12 @@ Wiersz jest aktualizowany podczas pobierania danych.
 SELECT * FROM inventory;
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie serwera usługi Azure Database for MySQL za pomocą punktu końcowego usługi sieci wirtualnej przy użyciu szablonu usługi Azure Resource Manager
 > * Tworzenie bazy danych za pomocą [narzędzia wiersza polecenia mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
-> * Ładowanie przykładowych danych
+> * Ładuj dane przykładowe
 > * Zapytania o dane
 > * Aktualizowanie danych
 > 

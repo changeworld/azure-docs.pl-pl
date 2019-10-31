@@ -1,6 +1,6 @@
 ---
-title: Wstawianie reklam po stronie klienta | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono sposób Wstawianie reklam po stronie klienta.
+title: Wstawianie reklam po stronie klienta | Microsoft Docs
+description: W tym temacie pokazano, jak wstawiać reklamy po stronie klienta.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 49c836f5e9189104ba77e8f3d865f4db199c4060
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37ee600a2f7d621d3fefb2f70c26b6c29f738ea9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002971"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162690"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Wstawianie reklam po stronie klienta
-Ten artykuł zawiera informacje na temat sposobu Wstaw różnego rodzaju reklam po stronie klienta.
+Ten artykuł zawiera informacje na temat wstawiania różnych typów reklam po stronie klienta.
 
-Informacje na temat zamknięte podpisy i ad obsługi w transmisji strumieniowej na żywo w filmach wideo, zobacz [Ad wstawiania standardów i obsługiwane kodowane](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
+Aby uzyskać informacje na temat napisów i pomocy technicznej usługi AD w filmach wideo na żywo, zobacz [obsługiwane napisy i standardy wstawiania do usługi AD](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads).
 
 > [!NOTE]
-> Usługa Azure Media Player nie obsługuje obecnie reklam.
+> Azure Media Player obecnie nie obsługuje reklam.
 > 
 > 
 
 ## <a id="insert_ads_into_media"></a>Wstawianie reklam do multimediów
-Usługa Azure Media Services zapewnia obsługę wstawiania reklam za pośrednictwem platformy Media Windows: Architektury odtwarzaczy. Architektury odtwarzaczy z obsługą usługi ad są dostępne dla urządzeń z systemem Windows 8, Silverlight, Windows Phone 8 i iOS. Każdy struktury odtwarzacza zawiera przykładowy kod, który pokazuje, jak zaimplementować aplikacja odtwarzacza. Istnieją trzy różne rodzaje reklam, które można wstawić do nośnika: listy.
+Azure Media Services zapewnia obsługę wstawiania do usługi AD za pomocą platformy Windows Media platform: Player Frameworks. Platformy odtwarzacza z obsługą usług AD są dostępne dla urządzeń z systemami Windows 8, Silverlight, Windows Phone 8 i iOS. Każda platforma odtwarzacza zawiera przykładowy kod, który pokazuje, jak wdrożyć aplikację odtwarzacza. Istnieją trzy różne rodzaje reklam, które można wstawić do listy Media:.
 
-* **Liniowy** — pełna reklamy ramki, które wstrzymanie odtwarzania filmu głównego.
-* **Nieliniowych** — reklamy nakładki, które są wyświetlane jako odtwarzania wideo głównym, zwykle logo lub inne obraz statyczny umieszczony w odtwarzaczu.
-* **Pomocnik** — reklam, które są wyświetlane poza odtwarzacza.
+* **Liniowa** — reklamy zawierające całą ramkę, która wstrzymuje główne wideo.
+* **Nieliniowe** — oferty, które są wyświetlane jako główne wideo, są odtwarzane, zwykle logo lub innym obrazem statycznym umieszczonym w odtwarzaczu.
+* **Pomocnik** — reklamy, które są wyświetlane poza odtwarzaczem.
 
-Usługa AD można umieścić w dowolnym momencie w głównym wideo osi czasu. Musisz poinformować odtwarzacza, kiedy należy odtworzyć ad i reklam, które do odtwarzania. Odbywa się przy użyciu zestawu standardowych plików oparty na formacie XML: Szablon (VAST), Digital Video usługi Ad wideo, wiele Ad odtwarzania (VMAP), Media abstrakcji sekwencjonowania szablonu (MASZTÓW), a definicja interfejsu Ad cyfrowy odtwarzacz wideo (VPAID). OGROMNA pliki określają, jakie reklam, aby wyświetlić. Pliki VMAP Określ, kiedy do odtwarzania różnych reklam i zawierać OGROMNA kod XML. Pliki MASZTÓW są innym sposobem reklamy sekwencji, które również mogą zawierać duże XML. Pliki VPAID definiują interfejs między odtwarzacza wideo i usługi ad lub serwera usługi ad.
+Reklamy można umieścić w dowolnym miejscu w linii czasu głównego wideo. Musisz poinformować odtwarzacz, kiedy ma być odtwarzany AD i które reklamy mają być odtwarzane. Jest to realizowane przy użyciu zestawu standardowych plików opartych na języku XML: szablonów usługi AD wideo (ogromny), cyfrowego wideo z wieloma listami (VMAP), abstrakcyjnych szablonów sekwencji (MAST) i Digital Video Player AD Definition (VPAID). W przypadku dużych plików można określić, które reklamy mają być wyświetlane. Pliki VMAP określają, kiedy mają być odtwarzane różne reklamy i zawierają OGROMNą zawartość XML. Pliki MAST są kolejną metodą sekwencjonowania reklam, które również mogą zawierać OGROMNą zawartość XML. Pliki VPAID definiują interfejs między odtwarzaczem wideo a serwerem AD lub AD.
 
-Każdy struktury odtwarzacza zmieniło i każdy zostały omówione w artykule swój własny. W tym artykule opisano podstawowe mechanizmów, które służy do wstawiania reklam. Aplikacji odtwarzacza wideo żądać reklam z serwera usługi ad. Serwer usługi ad może odpowiadać na różne sposoby:
+Każda platforma odtwarzacza działa inaczej, a każdy z nich zostanie uwzględniony w jego własnym artykule. W tym artykule opisano podstawowe mechanizmy służące do wstawiania reklam. Aplikacje odtwarzacza wideo żądają reklam z serwera usługi AD. Serwer usługi AD może odpowiadać na wiele sposobów:
 
-* Zwróć OGROMNYCH plików
-* Zwrócić VMAP plik (przy użyciu osadzonych VAST)
-* Zwrócić MASZTÓW plik (przy użyciu osadzonych VAST)
-* Zwrócić OGROMNA plik za pomocą VPAID reklam
+* Zwracanie OGROMNEgo pliku
+* Zwróć plik VMAP (z osadzoną OGROMNą)
+* Zwróć plik MAST (z osadzoną OGROMNą)
+* Zwracanie OGROMNEgo pliku za pomocą VPAID ads
 
-### <a name="using-a-video-ad-service-template-vast-file"></a>Użycie pliku szablonów (VAST) usługi Ad wideo
-OGROMNA plik Określa, jakie usługi ad lub AD, aby wyświetlić. Następujący kod XML znajduje się przykład OGROMNEJ pliku liniowej ad:
+### <a name="using-a-video-ad-service-template-vast-file"></a>Korzystanie z pliku szablonu usługi AD wideo (ogromny)
+OLBRZYMI plik określa, jakie usługi AD lub reklamy mają być wyświetlane. Poniższy kod XML jest przykładem OGROMNEgo pliku dla liniowej usługi AD:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -94,9 +94,9 @@ OGROMNA plik Określa, jakie usługi ad lub AD, aby wyświetlić. Następujący 
     </VAST>
 ```
 
-Liniowy ad jest opisana przez <**liniowej**> element. Określa czas trwania ad, śledzenia zdarzeń, kliknij za pośrednictwem śledzenie kliknięć i liczbę **MediaFile** elementów. Zdarzenia śledzenia są określone w <**TrackingEvents**> element i Zezwól serwerowi usługi ad do śledzenia różnych zdarzeń, które występują podczas wyświetlania ad. W takim przypadku rozpoczęcia punktu środkowego zakończone i rozwiń listę zdarzeń są śledzone. Zdarzenie rozpoczęcia występuje, gdy jest wyświetlana ad. Zdarzenie punktu środkowego występuje, gdy co najmniej wyświetlił 50% ad osi czasu. Zdarzenie ukończenia występuje, gdy ad zostało uruchomione na końcu. Zdarzenie rozwinięcia występuje, gdy użytkownik rozwija odtwarzacza wideo do pełnego ekranu. W witrynie są określane za pomocą <**przeglądowe**> elemencie <**VideoClicks**> elementu i określa identyfikator URI do zasobu do wyświetlenia, gdy użytkownik kliknie ad. ClickTracking została określona w <**ClickTracking**> elementu również w ramach <**VideoClicks**> elementu i Określa zasób śledzenia dla gracza, aby zażądać, gdy użytkownik kliknie ad . <**MediaFile**> elementy Określ informacje dotyczące określonego kodowania usługi ad. Gdy istnieje więcej niż jeden <**MediaFile**> elementu odtwarzacza wideo można wybrać optymalne kodowanie dla platformy.
+Liniowy AD jest opisywany przez <**liniowy**> elementu. Określa czas trwania usługi AD, śledzenie zdarzeń, klikanie przez, śledzenie i liczbę elementów **MediaFile** . Zdarzenia śledzenia są określone w elemencie <**TrackingEvents**> i umożliwiają serwerowi AD śledzenie różnych zdarzeń, które wystąpiły podczas wyświetlania usługi AD. W takim przypadku śledzone są zdarzenia uruchamiania, punktu środkowego, ukończenia i rozwinięcia. Zdarzenie uruchamiania występuje, gdy zostanie wyświetlona wartość AD. Zdarzenie punktu środkowego występuje, gdy została wyświetlona co najmniej 50% czasu. Pełne zdarzenie występuje po uruchomieniu usługi AD na końcu. Zdarzenie expando występuje, gdy użytkownik poszerzy odtwarzacz wideo na pełny ekran. Przeglądy są określane przy**użyciu <ego**>ego elementu**w < elementu**> i określa identyfikator URI dla zasobu, który będzie wyświetlany po kliknięciu przez użytkownika usługi AD. ClickTracking jest określony w elemencie <**ClickTracking**>, również w elemencie <**VideoClicks**> i określa zasób śledzenia dla odtwarzacza, gdy użytkownik kliknie w usłudze AD. Elementy <**MediaFile**> określają informacje o konkretnym kodowaniu usługi AD. Jeśli istnieje więcej niż jeden <**MediaFile**>, odtwarzacz wideo może wybrać najlepsze kodowanie dla danej platformy.
 
-Liniowy reklam, mogą być wyświetlane w określonej kolejności. Aby to zrobić, Dodaj dodatkowe `<Ad>` elementów do VAST pliku i określić kolejność przy użyciu atrybutu sekwencji. Ilustruje to poniższy przykład:
+Oferty liniowe mogą być wyświetlane w określonej kolejności. Aby to zrobić, Dodaj kolejne `<Ad>` elementy do OGROMNEgo pliku i określ kolejność przy użyciu atrybutu Sequence. Poniższy przykład ilustruje:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -143,7 +143,7 @@ Liniowy reklam, mogą być wyświetlane w określonej kolejności. Aby to zrobi�
     </VAST>
 ```
 
-Reklamy nieliniowych są określone w `<Creative>` również element. W poniższym przykładzie przedstawiono `<Creative>` element, który opisuje nieliniowych ad.
+Reklamy nieliniowe są również określone w elemencie `<Creative>`. W poniższym przykładzie pokazano element `<Creative>`, który opisuje nieliniowe AD.
 
 ```xml
     <Creative id="video" sequence="1" AdID="">
@@ -160,20 +160,20 @@ Reklamy nieliniowych są określone w `<Creative>` również element. W poniższ
     </Creative>
 ```
 
-<**NonLinearAds**> element może zawierać jeden lub więcej <**NonLinear**> elementy, z których każdy może opisywać nieliniowych ad. <**NonLinear**> element Określa zasób dla nieliniowych ad. Zasób może być <**staticresource —** >, <**IFrameResource**>, lub <**HTMLResource**>. \<**Staticresource —** > w tym artykule opisano zasobów innych niż HTML i definiuje atrybut creativeType, który określa sposób wyświetlania zasobu:
+Element <**NonLinearAds**> może zawierać co najmniej jeden <**nieliniowych**elementów >, z których każdy może opisywać nieliniowe AD. Element <**Nieliniowy**> określa zasób dla nieliniowej usługi AD. Zasób może być <**StaticResource**>, <**IFrameResource**> lub <**HTMLResource**>. \<**StaticResource**> opisuje zasób niebędący w formacie HTML i definiuje atrybut creativetype określający sposób wyświetlania zasobów:
 
-Image/gif, image/jpeg, image/png — zasób jest wyświetlana w formacie HTML <**img**> tag.
+Image/GIF, Image/JPEG, Image/PNG — zasób jest wyświetlany w tagu <**img**> języka HTML.
 
-Application/x-javascript — zasób jest wyświetlana w formacie HTML <**skryptu**> tag.
+Aplikacja/x-JavaScript — zasób jest wyświetlany w tagu >**skryptu**HTML <.
 
-Application/x-shockwave-flash — zasób jest wyświetlany w odtwarzaczu Flash.
+Application/x-Shockwave-Flash — zasób jest wyświetlany w odtwarzaczu Flash.
 
-**IFrameResource** opisuje zasobu HTML, która może być wyświetlana w ramce IFrame. **HTMLResource** opisuje fragment kodu HTML, które mogą być wstawiane do strony sieci web. **TrackingEvents** Określ zdarzenia śledzenia i identyfikatora URI żądania po wystąpieniu zdarzenia. W tym przykładzie acceptInvitation i Zwiń zdarzeń są śledzone. Aby uzyskać więcej informacji na temat **NonLinearAds** elementu i jego elementy podrzędne, zobacz IAB.NET/VAST. Należy pamiętać, że **TrackingEvents** element znajduje się w obrębie **NonLinearAds** elementu zamiast **NonLinear** elementu.
+**IFrameResource** OPISUJE zasób HTML, który może być wyświetlany w elemencie iframe. **HTMLResource** opisuje fragment kodu HTML, który można wstawić do strony sieci Web. **TrackingEvents** Określ zdarzenia śledzenia i identyfikator URI do żądania, gdy wystąpi zdarzenie. W tym przykładzie zdarzenia acceptInvitation i zwijania są śledzone. Aby uzyskać więcej informacji na temat elementu **NonLinearAds** i jego elementów podrzędnych, zobacz IAB.NET/VAST. Należy zauważyć, że element **TrackingEvents** znajduje się w elemencie **NonLinearAds** , a nie w elemencie **nieliniowym** .
 
-Pomocnik reklam są zdefiniowane w ramach `<CompanionAds>` elementu. `<CompanionAds>` Element może zawierać jeden lub więcej `<Companion>` elementów. Każdy `<Companion>` element w tym artykule opisano ad pomocnika i może zawierać `<StaticResource>`, `<IFrameResource>`, lub `<HTMLResource>` określone w taki sam sposób jak nieliniowych ad. OGROMNA plik może zawierać wiele reklam pomocnika, a aplikacja odtwarzacza można wybrać najbardziej odpowiedni ad, aby wyświetlić. Aby uzyskać więcej informacji na temat VAST zobacz [OGROMNA 3.0](https://www.iab.net/media/file/VASTv3.0.pdf).
+Reklamy towarzyszące są zdefiniowane w ramach elementu `<CompanionAds>`. Element `<CompanionAds>` może zawierać jeden lub więcej elementów `<Companion>`. Każdy element `<Companion>` opisuje pomocnika usługi AD i może zawierać `<StaticResource>`, `<IFrameResource>`lub `<HTMLResource>`, które są określone w taki sam sposób jak w przypadku nieliniowej usługi AD. OLBRZYMI plik może zawierać wiele reklam, a aplikacja odtwarzacza może wybrać najbardziej odpowiednią reklamę do wyświetlenia. Aby uzyskać więcej informacji na temat OGROMNYch, zobacz artykuł [ogromny 3,0](https://www.iab.net/media/file/VASTv3.0.pdf).
 
-### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>#Using Digital Video wielu Ad listy odtwarzania (VMAP)
-Plik VMAP można określić po wystąpieniu przerwy ad, jak długo trwa każdego podziału, jak wiele reklam, może być wyświetlana w podziału i jakie typy AD może być wyświetlany podczas podziału. Następujące opcje w VMAP przykładowy plik, który definiuje podziału pojedynczej usługi ad:
+### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Używanie pliku listy odtwarzania (VMAP) cyfrowego wideo
+Plik VMAP umożliwia określenie czasu, w którym występują przerwy w usłudze AD, czas trwania każdego przerwania, liczbę reklam, które mogą być wyświetlane w ramach przerwy, oraz typy reklam, które mogą być wyświetlane w trakcie przerwy. Poniżej znajduje się przykład pliku VMAP, który definiuje pojedynczy podział usługi AD:
 
 ```xml
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
@@ -224,34 +224,34 @@ Plik VMAP można określić po wystąpieniu przerwy ad, jak długo trwa każdego
     </vmap:VMAP>
 ```
 
-Plik VMAP zaczyna się od `<VMAP>` element, który zawiera co najmniej jeden `<AdBreak>` elementów, definiowanie przerwanie usługi ad. Każdy podziału ad Określa typ podziału, identyfikator przerwania i przesunięcie czasu. Atrybut breakType Określa typ ad, która może być odtwarzany podczas przerwy: liniowych, nieliniowych, lub wyświetlić. Wyświetl reklamy, mapy do OGROMNYCH pomocnika reklam. Można określić więcej niż jeden typ usługi ad w listę rozdzielanych przecinkami (bez spacji). BreakID jest opcjonalny identyfikator ad. TimeOffset Określa, kiedy ad powinna być wyświetlana. Można wybrać jeden z następujących sposobów:
+Plik VMAP rozpoczyna się od elementu `<VMAP>`, który zawiera jeden lub więcej elementów `<AdBreak>`, z których każda definiuje przerwanie usługi AD. Każdy podział usługi AD określa typ przerwania, identyfikator przerwania i przesunięcie czasu. Atrybut breaktype określa typ usługi AD, która może być odtwarzana w trakcie przerwy: liniowe, nieliniowe lub wyświetlanie. Wyświetl mapę ads w postaci OGROMNYch reklam. Więcej niż jeden typ AD można określić na liście rozdzielanej przecinkami (bez spacji). BreakID jest opcjonalnym identyfikatorem dla usługi AD. TimeOffset określa, kiedy powinna być wyświetlana wartość AD. Można ją określić w jeden z następujących sposobów:
 
-1. Godzina w formacie: mm: ss lub GG:mm:ss.mmm, w którym .mmm jest milisekund. Wartość tego atrybutu określa czas od początku osi czasu w wideo na początku tego podziału usługi ad.
-2. Procent — format n %, gdzie n to wartość procentowa wideo osi czasu do odtwarzania przed odtwarzanie ad
-3. Rozpoczęcia/zakończenia — określa, że usługi ad powinna być wyświetlana przed lub po film wideo został wyświetlony
-4. Umieść — określa kolejność podziały ad, gdy czas przerwy ad jest nieznany, takiego jak transmisja strumieniowa na żywo. Kolejność każdego podziału ad jest określona w formacie #n, gdzie n to liczba całkowita 1 lub większą. 1 oznacza ad powinna być odtwarzane przy okazji pierwszego 2 oznacza ad powinna być odtworzona w drugiej szansy sprzedaży i tak dalej.
+1. Time — w formacie gg: mm: SS lub hh: mm: SS. mmm format, gdzie. mmm jest milisekundą. Wartość tego atrybutu określa czas od początku osi czasu wideo do początku przerwy w usłudze AD.
+2. Wartość procentowa — w formacie n%, gdzie n jest wartością procentową osi czasu wideo do odtwarzania przed rozpoczęciem korzystania z usługi AD
+3. Początek/koniec — określa, że AD ma być wyświetlana przed lub po wyświetleniu wideo
+4. Position — określa kolejność przerw w usłudze AD, gdy czas trwania przerw w usłudze AD jest nieznany, na przykład w przypadku przesyłania strumieniowego na żywo. Kolejność każdej przerwy w usłudze AD jest określona w formacie #n, gdzie n jest liczbą całkowitą 1 lub większą. 1 oznacza, że usługi AD powinny być odtwarzane w pierwszej okazji, 2 oznacza, że reklama powinna być odtwarzana w drugiej szansie i tak dalej.
 
-W ramach `<AdBreak>` elementu, może istnieć tylko jeden <**AdSource**> element. <**AdSource**> element zawiera następujące atrybuty:
+W elemencie `<AdBreak>` może istnieć jeden <**AdSource**> elementu. Element <**AdSource**> zawiera następujące atrybuty:
 
-1. Identyfikator — Określa identyfikator źródła usługi ad
-2. allowMultipleAds — wartość logiczna określająca, czy wiele reklam, mogą być wyświetlane podczas przerwy ad
-3. followRedirects — opcjonalna wartość logiczna określająca, jeśli odtwarzacza wideo należy przestrzegać przekierowuje w odpowiedzi usługi ad
+1. ID — określa identyfikator źródła usługi AD
+2. allowMultipleAds — wartość logiczna określająca, czy wiele reklam może być wyświetlanych podczas przerwy w usłudze AD
+3. followRedirects — opcjonalna wartość logiczna określająca, czy odtwarzacz wideo powinien przestrzegać przekierowań w odpowiedzi usługi AD
 
-<**AdSource**> element udostępnia odtwarzacz odpowiedź ad wbudowanych lub odwołanie do odpowiedzi usługi ad. Nazwa może zawierać jedną z następujących elementów:
+Element <**AdSource**> Umożliwia odtwarzaczowi wbudowaną odpowiedź usługi AD lub odwołanie do odpowiedzi usługi AD. Może zawierać jeden z następujących elementów:
 
-* `<VASTAdData>` Wskazuje, że odpowiedź OGROMNA ad jest osadzony w pliku VMAP
-* `<AdTagURI>` Identyfikator URI, który odwołuje się do ad odpowiedzi z innego systemu
-* `<CustomAdData>` -dowolny ciąg, który reprezentuje odpowiedź — duże
+* `<VASTAdData>` wskazuje, że OGROMNa odpowiedź usługi AD jest osadzona w pliku VMAP
+* `<AdTagURI>` identyfikator URI, który odwołuje się do odpowiedzi usługi AD z innego systemu
+* `<CustomAdData>` — dowolny ciąg, który reprezentuje nieogromną odpowiedź
 
-W tym przykładzie odpowiedź ad w tekście jest określony za pomocą `<VASTAdData>` element, który zawiera odpowiedź OGROMNA ad. Aby uzyskać więcej informacji na temat innych elementów zobacz [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
+W tym przykładzie jest określona w wierszu odpowiedź usługi AD z elementem `<VASTAdData>`, który zawiera OGROMNą odpowiedź usługi AD. Aby uzyskać więcej informacji o innych elementach, zobacz [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
-<**AdBreak**> element może także zawierać jeden <**TrackingEvents**> element. <**TrackingEvents**> element służy do śledzenia początku lub końcu parametru break ad lub tego, czy wystąpił błąd podczas podziału usługi ad. <**TrackingEvents**> element zawiera co najmniej jeden <**śledzenia**> elementy, z których każdy określa zdarzenie śledzenia i śledzenie identyfikatora URI. Zdarzenia śledzenia możliwe są:
+Element <**AdBreak**> może również zawierać jeden < elementu >**TrackingEvents**. Element <**TrackingEvents**> umożliwia śledzenie rozpoczęcia lub zakończenia przerwy w usłudze AD lub tego, czy wystąpił błąd podczas przerwy w usłudze AD. Element <**TrackingEvents**> zawiera co najmniej jeden <**śledzenia**elementów >, z których każdy określa zdarzenie śledzenia i identyfikator URI śledzenia. Możliwe są następujące zdarzenia śledzenia:
 
-1. breakStart — śledzi początku podziału ad
-2. breakEnd — śledzenia wykonania podziału ad
-3. Błąd — śledzi błędu, który wystąpił podczas przerwy ad
+1. breakStart — śledzi początek przerwy w usłudze AD
+2. breakEnd — śledzenie ukończenia przerwy w usłudze AD
+3. Error — śledzi błąd, który wystąpił podczas przerwania usługi AD
 
-W poniższym przykładzie pokazano plik VMAP, który określa zdarzenia śledzenia
+W poniższym przykładzie przedstawiono plik VMAP, który określa zdarzenia śledzenia
 
 ```xml
     <vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
@@ -276,10 +276,10 @@ W poniższym przykładzie pokazano plik VMAP, który określa zdarzenia śledzen
     </vmap:VMAP>
 ```
 
-Aby uzyskać więcej informacji na temat <**TrackingEvents**> element i jego elementy podrzędne, zobacz http://iab.net/VMAP.pdf
+Aby uzyskać więcej informacji na temat <**TrackingEvents**> elementu i jego elementów podrzędnych, zobacz http://iab.net/VMAP.pdf
 
-### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Za pomocą abstrakcyjny Media, sekwencjonowanie plik szablonu (MASZTÓW)
-Plik MASZTÓW umożliwia określenie wyzwalacze, które określają, kiedy jest wyświetlana przy użyciu usług ad. Oto przykładowy plik MASZTÓW, który zawiera Wyzwalacze dla usługi pre roll ad, ad środku procesu i ad po wdrożenie.
+### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Używanie pliku szablonu (MAST) abstrakcyjnej zawartości multimedialnej
+Plik MAST pozwala określić wyzwalacze, które definiują, kiedy zostanie wyświetlona wartość AD. Poniżej znajduje się przykładowy plik MAST, który zawiera wyzwalacze dla wstępnej kompilacji usługi AD, usługi AD i usługi AD po rozwinięcia.
 
 ```xml
     <MAST xsi:schemaLocation="http://openvideoplayer.sf.net/mast http://openvideoplayer.sf.net/mast/mast.xsd" xmlns="http://openvideoplayer.sf.net/mast" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
@@ -325,16 +325,16 @@ Plik MASZTÓW umożliwia określenie wyzwalacze, które określają, kiedy jest 
 ```
 
 
-Plik MASZTÓW zaczyna się od **MASZTÓW** element, który zawiera jeden **wyzwalaczy** elementu. `<triggers>` Elementu zawiera jeden lub więcej **wyzwalacza** elementy, które określają, kiedy powinna być odtworzona usługi ad.
+Plik MAST rozpoczyna się od elementu **Mast** , który zawiera jeden element **Triggers** . Element `<triggers>` zawiera jeden lub więcej elementów **wyzwalacza** , które definiują, kiedy ma być odtwarzany AD.
 
-**Wyzwalacza** element zawiera **startConditions** element określające rozpoczęcia reklamy do odtwarzania. **StartConditions** elementu zawiera jeden lub więcej `<condition>` elementów. Podczas każdego `<condition>` jest spełniony, wyzwalacz jest inicjowana lub odwoływane, w zależności od czy `<condition>` znajduje się w obrębie **startConditions** lub **endConditions** — element odpowiednio. Gdy wiele `<condition>` znajdują się elementy, będą one traktowane jako niejawny lub dowolny warunek oceny na wartość true powoduje, że wyzwalacz inicjujący. `<condition>` elementy mogą być zagnieżdżone. Gdy podrzędny `<condition>` elementy są ustawione wstępnie tak, będą one traktowane jako i niejawne, wszystkie warunki musi zwrócić wartość true dla wyzwalacza do inicjowania. `<condition>` Element zawiera następujące atrybuty, które określają warunek:
+Element **wyzwalacza** zawiera element **startConditions** , który określa, kiedy ma się rozpoczynać odtwarzanie AD. Element **startConditions** zawiera jeden lub więcej elementów `<condition>`. Gdy każda `<condition>` ma wartość true, wyzwalacz jest inicjowany lub odwołany w zależności od tego, czy `<condition>` jest zawarty w elemencie **startConditions** czy **endConditions** odpowiednio. Gdy są obecne wiele elementów `<condition>`, są one traktowane jako niejawne lub, dowolny warunek oceniający wartość true spowoduje zainicjowanie wyzwalacza. elementy `<condition>` mogą być zagnieżdżane. Gdy podrzędne elementy `<condition>` są wstępnie ustawione, są traktowane jako niejawne i, wszystkie warunki muszą oszacować wartość true, aby wyzwalacz został zainicjowany. Element `<condition>` zawiera następujące atrybuty, które definiują warunek:
 
-1. **Typ** — Określa typ zdarzenia, właściwość lub warunku
-2. **Nazwa** — nazwa właściwości lub zdarzenia, które ma być używany podczas oceny
-3. **wartość** — wartość, która będzie porównywany właściwość
-4. **operator** — operacja ma być używany podczas oceny: EQ (równe), NEQ (nie równa się), GTR (większe), GEQ (większe lub równe), LT (mniejsze niż), LEQ (mniejsze niż lub równe), dzielenie MODULO (modulo)
+1. **Typ** — określa typ warunku, zdarzenia lub właściwości.
+2. **name** — nazwa właściwości lub zdarzenia, które mają być używane podczas obliczania
+3. **Value** — wartość, względem której zostanie oceniona Właściwość
+4. **operator** — operacja do użycia podczas obliczania: EQ (równe), NEQ (nie równe), GTR (większe), GEQ (większe lub równe), lt (mniejsze niż), LEQ (mniejsze niż lub równe), mod (modulo)
 
-**endConditions** również zawierać `<condition>` elementów. Jeśli wynikiem warunku jest wartość true, wyzwalacz jest resetowany. `<trigger>` Zawiera również element `<sources>` element, który zawiera co najmniej jeden `<source>` elementów. `<source>` Elementy Definiowanie identyfikator URI odpowiedzi usługi ad i typ odpowiedzi usługi ad. W tym przykładzie identyfikator URI znajduje się do OGROMNYCH odpowiedzi.
+**endConditions** również zawiera elementy `<condition>`. Gdy warunek zwróci wartość true, wyzwalacz jest resetowany. Element `<trigger>` zawiera również element `<sources>`, który zawiera jeden lub więcej elementów `<source>`. Elementy `<source>` definiują identyfikator URI odpowiedzi usługi AD i typ odpowiedzi usługi AD. W tym przykładzie identyfikator URI jest przydzielany do ogromnej odpowiedzi.
 
 ```xml
     <trigger id="postroll" description="postroll"  >
@@ -349,41 +349,41 @@ Plik MASZTÓW zaczyna się od **MASZTÓW** element, który zawiera jeden **wyzwa
     </trigger>
 ```
 
-### <a name="using-video-player-ad-interface-definition-vpaid"></a>Za pomocą odtwarzacza wideo — Ad definicji interfejsu (VPAID)
-VPAID to interfejs API, umożliwiających jednostki ad pliku wykonywalnego do komunikowania się z odtwarzacza wideo. Dzięki temu ad wysoce interaktywnych środowisk. Użytkownik może korzystać z usług ad i ad mogą odpowiadać na akcje wykonywane przez przeglądarkę. Na przykład usługi ad mogą być wyświetlane przyciski, dzięki czemu można wyświetlić więcej informacji lub dłuższej wersji z usług ad. Odtwarzacz wideo musi obsługiwać interfejs API VPAID i pliku wykonywalnego usługi ad musi implementować interfejs API. Gdy gracz żądania usługi ad z serwera ad serwer może odpowiadać z OBSZERNYM odpowiedź, która zawiera VPAID ad.
+### <a name="using-video-player-ad-interface-definition-vpaid"></a>Używanie odtwarzacza wideo — definicja interfejsu usługi AD (VPAID)
+VPAID to interfejs API służący do włączania funkcji wykonywalnych jednostek usługi AD do komunikowania się z odtwarzaczem wideo. Pozwala to na wysoce interaktywne środowiska usługi AD. Użytkownik może korzystać z usługi AD, a usługi AD mogą reagować na akcje wykonywane przez przeglądarkę. Na przykład w usłudze AD mogą być wyświetlane przyciski umożliwiające użytkownikowi wyświetlanie większej ilości informacji lub dłuższej wersji usługi AD. Odtwarzacz wideo musi obsługiwać interfejs API VPAID, a plik wykonywalny musi implementować interfejs API. Gdy odtwarzacz żąda usługi AD z serwera usługi AD, serwer może odpowiedzieć z dużą odpowiedzią, która zawiera VPAID usługi AD.
 
-Wykonywalny ad jest tworzony w kodzie, który musi zostać wykonana w środowisku uruchomieniowym, takie jak Adobe Flash™ lub JavaScript, która może być wykonywana w przeglądarce sieci web. Po powrocie z serwera ad OGROMNA odpowiedź zawierającą VPAID ad wartość apiFramework atrybutu w `<MediaFile>` element musi być "VPAID". Ten atrybut definiuje zawarte ad ad do pliku wykonywalnego VPAID. Atrybut typu musi być równa typ MIME pliku wykonywalnego, takie jak "application/x-shockwave-flash" lub "application/x-javascript". Poniższy fragment kodu przedstawia XML `<MediaFile>` elementu z OBSZERNYM odpowiedź zawierającą ad do pliku wykonywalnego VPAID.
+Plik wykonywalny usługi AD jest tworzony w kodzie, który musi być wykonywany w środowisku uruchomieniowym, takim jak Adobe Flash™ lub JavaScript, które można wykonać w przeglądarce internetowej. Gdy serwer usługi AD zwraca OGROMNą odpowiedź zawierającą VPAID AD, wartość atrybutu apiFramework w elemencie `<MediaFile>` musi być równa "VPAID". Ten atrybut określa, że zawarta AD jest VPAID pliku wykonywalnego. Atrybut type musi być ustawiony na typ MIME pliku wykonywalnego, na przykład "application/x-Shockwave-Flash" lub "application/x-JavaScript". Poniższy fragment kodu XML przedstawia `<MediaFile>` elementu z ROZLEGŁej odpowiedzi zawierającej VPAID plik wykonywalny.
 
 ```xml
     <MediaFiles>
-       <MediaFile id="1" delivery="progressive" type=”application/x-shockwaveflash”
-                  width=”640” height=”480” apiFramework=”VPAID”>
+       <MediaFile id="1" delivery="progressive" type="application/x-shockwaveflash"
+                  width="640" height="480" apiFramework="VPAID">
            <!-- CDATA wrapped URI to executable ad -->
        </MediaFile>
     </MediaFiles>
 ```
 
-Wykonywalny ad mogą być inicjowane przy użyciu `<AdParameters>` elemencie `<Linear>` lub `<NonLinear>` elementów w OBSZERNYM odpowiedzi. Aby uzyskać więcej informacji na temat `<AdParameters>` elementu, zobacz [OGROMNA 3.0](https://www.iab.net/media/file/VASTv3.0.pdf). Aby uzyskać więcej informacji na temat interfejsu API VPAID zobacz [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
+Plik wykonywalny usługi AD można zainicjować przy użyciu elementu `<AdParameters>` w `<Linear>` lub `<NonLinear>` elementów w ROZLEGŁej odpowiedzi. Aby uzyskać więcej informacji na temat `<AdParameters>` elementu, zobacz artykuł [ogromny 3,0](https://www.iab.net/media/file/VASTv3.0.pdf). Aby uzyskać więcej informacji na temat interfejsu API VPAID, zobacz [VPAID 2,0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
-## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Implementowanie Windows lub Windows Phone 8 Player z obsługą usługi Ad
-Microsoft Media Platform: Player Framework dla systemu Windows 8 i Windows Phone 8 zawiera kolekcję przykładowych aplikacji, które pokazują, jak wdrażanie przy użyciu platformy aplikacji odtwarzacza wideo. Możesz pobrać Player Framework i przykładów z poziomu [Player Framework dla systemu Windows 8 i Windows Phone 8](https://playerframework.codeplex.com).
+## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Implementowanie programu Windows lub Windows Phone 8 Player z obsługą usługi AD
+Platforma Microsoft Media platform: Player Framework dla systemów Windows 8 i Windows Phone 8 zawiera kolekcję przykładowych aplikacji, które pokazują, jak wdrożyć aplikację odtwarzacza wideo przy użyciu struktury. Możesz pobrać platformę odtwarzacza i przykłady z programu [Player Framework dla systemu Windows 8 i Windows Phone 8](https://playerframework.codeplex.com).
 
-Po otwarciu rozwiązania Microsoft.PlayerFramework.Xaml.Samples, zobaczysz liczbę folderów w ramach projektu. Folder reklamy zawiera przykładowy kod dotyczą tworzenia odtwarzacza wideo z obsługą usługi ad. Wewnątrz reklamy folder jest XAML/cs pliki, które pokazują, jak wstawianie reklam w inny sposób. Poniższa lista zawiera opis:
+Po otwarciu rozwiązania Microsoft. PlayerFramework. XAML. Samples w projekcie zostanie wyświetlona liczba folderów. Folder anons zawiera przykładowy kod przydatny do tworzenia odtwarzacza wideo z obsługą usługi AD. W folderze anonsów jest wiele plików XAML/cs, z których każdy pokazuje, jak wstawiać reklamy w inny sposób. Na poniższej liście opisano każdy z nich:
 
-* AdPodPage.xaml pokazuje sposób wyświetlania zasobnika usługi ad.
-* AdSchedulingPage.xaml pokazuje, jak zaplanować reklam.
-* FreeWheelPage.xaml pokazuje, jak za pomocą wtyczki FreeWheel zaplanować reklam.
-* MastPage.xaml pokazuje, jak zaplanować reklam z plikiem MASZTÓW.
-* ProgrammaticAdPage.xaml pokazuje, jak programowo zaplanować reklam w wideo.
-* ScheduleClipPage.xaml pokazuje sposób tworzenia harmonogramu bez OGROMNYCH plików przy użyciu usług ad.
-* VastLinearCompanionPage.xaml przedstawiono sposób wstawiania liniowych i towarzyszące ad.
-* VastNonLinearPage.xaml przedstawia sposób wstawiania nieliniowych ad.
-* VmapPage.xaml pokazuje sposób określania reklam z plikiem VMAP.
+* AdPodPage. XAML pokazuje, jak wyświetlić usługi AD pod.
+* AdSchedulingPage. XAML pokazuje, jak planować reklamy.
+* FreeWheelPage. XAML pokazuje, jak planować reklamy przy użyciu wtyczki FreeWheel.
+* MastPage. XAML pokazuje, jak planować reklamy przy użyciu pliku MAST.
+* ProgrammaticAdPage. XAML pokazuje, jak programowo zaplanować reklamy do wideo.
+* ScheduleClipPage. XAML pokazuje, jak zaplanować usługi AD bez OBSZERNego pliku.
+* VastLinearCompanionPage. XAML pokazuje, jak wstawiać liniowe i pomocnicze usługi AD.
+* VastNonLinearPage. XAML pokazuje, jak wstawić nieliniowe AD.
+* VmapPage. XAML pokazuje, jak określać reklamy przy użyciu pliku VMAP.
 
-Każda próbka używa MediaPlayer — klasa zdefiniowana przez strukturę odtwarzacza. Większość przykładów za pomocą wtyczki, który dodano obsługę różnych formatach odpowiedzi usługi ad. Przykładowe ProgrammaticAdPage programowo współdziała z wystąpienia elementu MediaPlayer.
+Każdy z tych przykładów używa klasy MediaPlayer zdefiniowanej przez platformę odtwarzacza. Większość przykładów używa wtyczek, które dodają obsługę różnych formatów odpowiedzi usługi AD. Przykład ProgrammaticAdPage programowo współdziała z wystąpieniem MediaPlayer.
 
-### <a name="adpodpage-sample"></a>Przykładowe AdPodPage
-W tym przykładzie używa AdSchedulerPlugin w celu zdefiniowania, kiedy będą wyświetlane przy użyciu usług ad. W tym przykładzie anonsu środku wdrożenie jest zaplanowane do odtwarzania po 5 sekundach. Zasobnik ad (grupa reklam, aby wyświetlić w kolejności) jest określone w pliku OGROMNA zwrócony z serwera usługi ad. Identyfikator URI do OGROMNYCH plików jest określony w `<RemoteAdSource>` elementu.
+### <a name="adpodpage-sample"></a>Przykład AdPodPage
+Ten przykład używa AdSchedulerPlugin, aby zdefiniować, kiedy ma być wyświetlana wartość AD. W tym przykładzie zaplanowano odtworzenie anonsu w postaci rzutu po upływie pięciu sekund. AD pod (Grupa reklam do wyświetlania w kolejności) jest określona w OLBRZYMIm pliku zwracanym z serwera usługi AD. Identyfikator URI dla OGROMNEgo pliku jest określony w elemencie `<RemoteAdSource>`.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -405,10 +405,10 @@ W tym przykładzie używa AdSchedulerPlugin w celu zdefiniowania, kiedy będą w
     </mmppf:MediaPlayer>
 ```
 
-Aby uzyskać więcej informacji na temat AdSchedulerPlugin zobacz [reklamowych w ramach odtwarzacza systemu Windows 8 i Windows Phone 8](https://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
+Aby uzyskać więcej informacji na temat AdSchedulerPlugin, zobacz [reklamy w środowisku odtwarzacza w systemie Windows 8 i Windows Phone 8](https://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
 ### <a name="adschedulingpage"></a>AdSchedulingPage
-W tym przykładzie używa również AdSchedulerPlugin. Planuje ona trzy reklam, ad wstępne wdrożenie, ad środku procesu i ad po wdrożenie. Identyfikator URI do VAST w przypadku każdej reklamy została określona w `<RemoteAdSource>` elementu.
+Ten przykład używa również AdSchedulerPlugin. Planuje ona trzy reklamy, wstępnie rzutowane usługi AD, usługi AD i przewinięcie usługi AD. Identyfikator URI dla każdej usługi AD jest określony w elemencie `<RemoteAdSource>`.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -442,7 +442,7 @@ W tym przykładzie używa również AdSchedulerPlugin. Planuje ona trzy reklam, 
 ```
 
 ### <a name="freewheelpage"></a>FreeWheelPage
-W tym przykładzie użyto FreeWheelPlugin, który określa atrybut źródłowy, który określa identyfikator URI, który wskazuje plik SmartXML, który określa ad zawartości, a także informacje dotyczące planowania usługi ad.
+Ten przykład używa FreeWheelPlugin, który określa atrybut źródłowy, który określa identyfikator URI wskazujący plik SmartXML, który określa zawartość usługi AD, a także informacje o planowaniu usługi AD.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -454,7 +454,7 @@ W tym przykładzie użyto FreeWheelPlugin, który określa atrybut źródłowy, 
 ```
 
 ### <a name="mastpage"></a>MastPage
-W tym przykładzie użyto MastSchedulerPlugin, która pozwala na używanie plików MASZTÓW. Atrybut źródłowy określa lokalizację pliku MASZTÓW.
+Ten przykład używa MastSchedulerPlugin, który umożliwia korzystanie z pliku MAST. Atrybut source określa lokalizację pliku MAST.
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
                 <mmppf:MediaPlayer.Plugins>
@@ -465,13 +465,13 @@ W tym przykładzie użyto MastSchedulerPlugin, która pozwala na używanie plik�
 ```
 
 ### <a name="programmaticadpage"></a>ProgrammaticAdPage
-W tym przykładzie programowo współdziała z MediaPlayer. Plik ProgrammaticAdPage.xaml tworzy MediaPlayer:
+Ten przykład programowo współdziała z MediaPlayer. Plik ProgrammaticAdPage. XAML tworzy wystąpienie MediaPlayer:
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
 ```
 
-Plik ProgrammaticAdPage.xaml.cs tworzy AdHandlerPlugin dodaje TimelineMarker, aby określić przy użyciu usług ad powinien zostać wyświetlony, a następnie dodaje program obsługi zdarzeń MarkerReached, ładuje RemoteAdSource, określając identyfikatora URI do OGROMNYCH plików, a następnie odgrywa ad.
+Plik ProgrammaticAdPage.xaml.cs tworzy AdHandlerPlugin, dodaje TimelineMarker, aby określić, kiedy powinna być wyświetlana wartość AD, a następnie dodaje procedurę obsługi dla zdarzenia MarkerReached, które ładuje RemoteAdSource, określając identyfikator URI dla OGROMNEgo pliku, a następnie odtwarza AD.
 
 ```csharp
     public sealed partial class ProgrammaticAdPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage
@@ -504,7 +504,7 @@ Plik ProgrammaticAdPage.xaml.cs tworzy AdHandlerPlugin dodaje TimelineMarker, ab
 ```
 
 ### <a name="scheduleclippage"></a>ScheduleClipPage
-Ta próbka używa AdSchedulerPlugin można zaplanować ad środku procesu, określając plik wmv, który zawiera ad.
+Ten przykład używa AdSchedulerPlugin do zaplanowania rzutu usługi AD przy użyciu pliku. wmv, który zawiera usługi AD.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.cloudapp.net/html5/media/bigbuck.mp4">
@@ -530,7 +530,7 @@ Ta próbka używa AdSchedulerPlugin można zaplanować ad środku procesu, okre�
 ```
 
 ### <a name="vastlinearcompanionpage"></a>VastLinearCompanionPage
-Ten przykład ilustruje sposób użycia AdSchedulerPlugin można zaplanować środku procesu liniowego usługi ad z usługą ad pomocnika. `<RemoteAdSource>` Element określa lokalizację pliku OGROMNYCH.
+Ten przykład ilustruje sposób użycia AdSchedulerPlugin do zaplanowania rzutu liniowego usługi AD przy użyciu pomocnika usługi AD. Element `<RemoteAdSource>` określa lokalizację OGROMNEgo pliku.
 
 ```xml
     <mmppf:MediaPlayer Grid.Row="1"  x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -552,7 +552,7 @@ Ten przykład ilustruje sposób użycia AdSchedulerPlugin można zaplanować śr
 ```
 
 ### <a name="vastlinearnonlinearpage"></a>VastLinearNonLinearPage
-Ta próbka używa AdSchedulerPlugin można zaplanować liniowych i nieliniowych ad. Lokalizacja pliku OGROMNA jest określony za pomocą `<RemoteAdSource>` elementu.
+Ten przykład używa AdSchedulerPlugin do zaplanowania liniowej i nieliniowej usługi AD. Określona lokalizacja pliku jest określana za pomocą elementu `<RemoteAdSource>`.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -574,7 +574,7 @@ Ta próbka używa AdSchedulerPlugin można zaplanować liniowych i nieliniowych 
 ```
 
 ### <a name="vmappage"></a>VMAPPage
-Ta próbka używa VmapSchedulerPlugin można zaplanować przy użyciu pliku VMAP reklam. Identyfikator URI pliku VMAP jest określony w atrybut źródłowy `<VmapSchedulerPlugin>` elementu.
+W tym przykładzie użyto VmapSchedulerPlugin do zaplanowania reklam przy użyciu pliku VMAP. Identyfikator URI pliku VMAP jest określony w atrybucie Source elementu `<VmapSchedulerPlugin>`.
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -585,11 +585,11 @@ Ta próbka używa VmapSchedulerPlugin można zaplanować przy użyciu pliku VMAP
             </mmppf:MediaPlayer>
 ```
 
-## <a name="implementing-an-ios-video-player-with-ad-support"></a>Implementowanie odtwarzacza wideo z obsługą usługi Ad dla systemu iOS
-Microsoft Media Platform: Struktury odtwarzacza dla systemu iOS zawiera kolekcję przykładowych aplikacji, które pokazują, jak wdrażanie przy użyciu platformy aplikacji odtwarzacza wideo. Możesz pobrać Player Framework i przykładów z poziomu [usługi Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework). Na stronie usługi GitHub ma link do witryny typu Wiki, która zawiera dodatkowe informacje na temat struktury odtwarzacza i wprowadzenie do przykładu player: [Witryny typu Wiki usługi Azure Media Player](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
+## <a name="implementing-an-ios-video-player-with-ad-support"></a>Wdrażanie odtwarzacza wideo dla systemu iOS z obsługą usługi AD
+Platforma Microsoft Media: Player Framework dla systemu iOS zawiera kolekcję przykładowych aplikacji, które pokazują, jak zaimplementować aplikację odtwarzacza wideo przy użyciu struktury. Możesz pobrać platformę odtwarzacza i przykłady z programu [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework). Na stronie usługi GitHub znajduje się link do witryny typu wiki, która zawiera dodatkowe informacje na temat platformy odtwarzacza i wprowadzenie do przykładu odtwarzacza: [Azure Media Player wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
 
-### <a name="scheduling-ads-with-vmap"></a>Planowanie reklam z VMAP
-Poniższy przykład pokazuje sposób tworzenia harmonogramu przy użyciu pliku VMAP reklam.
+### <a name="scheduling-ads-with-vmap"></a>Planowanie reklam przy użyciu VMAP
+Poniższy przykład pokazuje, jak zaplanować reklamy przy użyciu pliku VMAP.
 
 ```csharp
     // How to schedule an Ad using VMAP.
@@ -609,8 +609,8 @@ Poniższy przykład pokazuje sposób tworzenia harmonogramu przy użyciu pliku V
             }
 ```
 
-### <a name="scheduling-ads-with-vast"></a>Planowanie reklam z VAST
-Poniższy przykład pokazuje sposób tworzenia harmonogramu późne powiązania OGROMNA ad.
+### <a name="scheduling-ads-with-vast"></a>Planowanie reklam przy użyciu OGROMNYch
+Poniższy przykład pokazuje, jak zaplanować ogromny czas powiązania usługi AD.
 
 
 ```csharp
@@ -640,7 +640,7 @@ Poniższy przykład pokazuje sposób tworzenia harmonogramu późne powiązania 
     }
 ```
 
-   Poniższy przykład pokazuje sposób tworzenia harmonogramu wczesne ad OGROMNA powiązania.
+   Poniższy przykład pokazuje, jak zaplanować wczesne powiązanie z OGROMNą usługą AD.
 
 ```csharp
     //Example:4 Schedule an early binding VAST ad
@@ -669,7 +669,7 @@ Poniższy przykład pokazuje sposób tworzenia harmonogramu późne powiązania 
     }
 ```
 
-Poniższy przykład przedstawia sposób wstawiania ad przy użyciu nierównej Wytnij edycji (Ródłowy)
+Poniższy przykład pokazuje, jak wstawić AD przy użyciu niesztywnej edycji (RÓDŁOWY)
 
 ```csharp
     //Example:1 How to use RCE.
@@ -687,7 +687,7 @@ Poniższy przykład przedstawia sposób wstawiania ad przy użyciu nierównej Wy
     }
 ```
 
-Poniższy przykład pokazuje, jak można zaplanować zasobnika usługi ad.
+Poniższy przykład pokazuje, jak zaplanować usługi AD pod.
 
 ```csharp
     //Example:5 Schedule an ad Pod.
@@ -717,7 +717,7 @@ Poniższy przykład pokazuje, jak można zaplanować zasobnika usługi ad.
     }
 ```
 
-Poniższy przykład pokazuje, jak można zaplanować-umocowany ad roll pośredniej. Ad umocowany tylko zostanie odtworzony po niezależnie od wszelkich znalezienia wykonuje przeglądarka.
+W poniższym przykładzie pokazano, jak zaplanować planowanie usługi AD w postaci nietrwałej. Niedziałający program jest odtwarzany tylko raz, bez względu na to, co wykonuje przeglądarka.
 
 ```csharp
     //Example:6 Schedule a single non sticky mid roll Ad
@@ -746,7 +746,7 @@ Poniższy przykład pokazuje, jak można zaplanować-umocowany ad roll pośredni
     }
 ```
 
-Poniższy przykład pokazuje, jak można zaplanować umocowany ad roll pośredniej. Umocowany ad jest wyświetlany za każdym razem, osiągnięty określonego punktu na osi czasu w wideo.
+W poniższym przykładzie pokazano, jak zaplanować zaplanowanie usługi AD w środku. Program Sticky WebAD jest wyświetlany za każdym razem, gdy zostanie osiągnięty określony punkt na osi czasu wideo.
 
 ```csharp
     //Example:7 Schedule a single sticky mid roll Ad
@@ -772,7 +772,7 @@ Poniższy przykład pokazuje, jak można zaplanować umocowany ad roll pośredni
     }
 ```
 
-Poniższy przykład pokazuje sposób tworzenia harmonogramu ad po wdrożenie.
+Poniższy przykład pokazuje, jak zaplanować ogłoszenie usługi AD.
 
 ```csharp
     //Example:8 Schedule Post Roll Ad
@@ -794,7 +794,7 @@ Poniższy przykład pokazuje sposób tworzenia harmonogramu ad po wdrożenie.
     }
 ```
 
-Poniższy przykład pokazuje sposób tworzenia harmonogramu ad wstępne wdrożenie.
+Poniższy przykład pokazuje, jak zaplanować wstępną wersję usługi AD.
 
 ```csharp
     //Example:9 Schedule Pre Roll Ad
@@ -816,7 +816,7 @@ Poniższy przykład pokazuje sposób tworzenia harmonogramu ad wstępne wdrożen
     }
 ```
 
-Poniższy przykład pokazuje sposób tworzenia harmonogramu ad środku roll nakładki.
+Poniższy przykład pokazuje, jak zaplanować nakładanie się usługi AD.
 
 ```csharp
     // Example10: Schedule a Mid Roll overlay Ad
@@ -846,7 +846,7 @@ Poniższy przykład pokazuje sposób tworzenia harmonogramu ad środku roll nak�
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz też

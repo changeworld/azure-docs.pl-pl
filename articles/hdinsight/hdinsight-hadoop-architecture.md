@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.openlocfilehash: 3767ea10d777a0ea7ad88a2ffa4793e866ffbe6c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 10/28/2019
+ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091483"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162879"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura platformy Apache Hadoop w usłudze HDInsight
 
@@ -24,20 +24,20 @@ ms.locfileid: "71091483"
 
 W tym artykule omówiono PRZĘDZę i sposób koordynowania wykonywania aplikacji w usłudze HDInsight.
 
-## <a name="apache-hadoop-yarn-basics"></a>Podstawy Apache Hadoop PRZĘDZy 
+## <a name="apache-hadoop-yarn-basics"></a>Podstawy Apache Hadoop PRZĘDZy
 
-PRZĘDZa zarządza i organizuje przetwarzanie danych w usłudze Hadoop. PRZĘDZa ma dwie podstawowe usługi, które są uruchamiane jako procesy na węzłach w klastrze: 
+PRZĘDZa zarządza i organizuje przetwarzanie danych w usłudze Hadoop. PRZĘDZa ma dwie podstawowe usługi, które są uruchamiane jako procesy na węzłach w klastrze:
 
-* ResourceManager 
+* ResourceManager
 * Węzełmanager
 
-Program ResourceManager przydaje zasoby obliczeniowe klastra do aplikacji, takich jak MapReduce jobs. Obiekt ResourceManager przypisuje te zasoby jako kontenery, gdzie każdy kontener składa się z przydziału rdzeni procesora CPU i pamięci RAM. W przypadku połączenia wszystkich zasobów dostępnych w klastrze, a następnie rozdystrybuowania rdzeni i pamięci w blokach, każdy blok zasobów jest kontenerem. Każdy węzeł w klastrze ma pojemność określoną liczbę kontenerów, w związku z czym klaster ma stały limit liczby dostępnych kontenerów. Przydział zasobów w kontenerze można skonfigurować. 
+Program ResourceManager przydaje zasoby obliczeniowe klastra do aplikacji, takich jak MapReduce jobs. Obiekt ResourceManager przypisuje te zasoby jako kontenery, gdzie każdy kontener składa się z przydziału rdzeni procesora CPU i pamięci RAM. W przypadku połączenia wszystkich zasobów dostępnych w klastrze, a następnie rozdystrybuowania rdzeni i pamięci w blokach, każdy blok zasobów jest kontenerem. Każdy węzeł w klastrze ma pojemność określoną liczbę kontenerów, w związku z czym klaster ma stały limit liczby dostępnych kontenerów. Przydział zasobów w kontenerze można skonfigurować.
 
-Gdy aplikacja MapReduce jest uruchamiana w klastrze, obiekt ResourceManager zapewnia aplikację kontenerów, które mają zostać wykonane. Program ResourceManager śledzi stan uruchomionych aplikacji, dostępnej pojemności klastra i śledzi aplikacje w miarę ich kończenia i zwalniają zasoby. 
+Gdy aplikacja MapReduce jest uruchamiana w klastrze, obiekt ResourceManager zapewnia aplikację kontenerów, które mają zostać wykonane. Program ResourceManager śledzi stan uruchomionych aplikacji, dostępnej pojemności klastra i śledzi aplikacje w miarę ich kończenia i zwalniają zasoby.
 
 Obiekt ResourceManager również uruchamia proces serwera sieci Web, który udostępnia interfejs użytkownika sieci Web do monitorowania stanu aplikacji.
 
-Gdy użytkownik przesyła aplikację MapReduce do uruchamiania w klastrze, aplikacja zostanie przesłana do elementu ResourceManager. Z kolei obiekt ResourceManager przydziela kontener w dostępnych węzłach Nodemanager. Węzły Nodemanager to miejsce, w którym aplikacja jest faktycznie wykonywana. Pierwszy przydzielony kontener uruchamia specjalną aplikację o nazwie ApplicationMaster. Ten ApplicationMaster jest odpowiedzialny za pozyskiwanie zasobów w formie kolejnych kontenerów, co jest konieczne do uruchomienia przesłanej aplikacji. ApplicationMaster bada etapy aplikacji, na przykład etap mapy i zmniejsza etap, oraz czynniki, w których należy przetworzyć dane. ApplicationMaster następnie żąda (*negocjuje*) zasobów z obiektu ResourceManager w imieniu aplikacji. Program ResourceManager z kolei przydaje zasoby z NodeManagers w klastrze do ApplicationMaster, aby można było użyć ich do wykonywania aplikacji. 
+Gdy użytkownik przesyła aplikację MapReduce do uruchamiania w klastrze, aplikacja zostanie przesłana do elementu ResourceManager. Z kolei obiekt ResourceManager przydziela kontener w dostępnych węzłach Nodemanager. Węzły Nodemanager to miejsce, w którym aplikacja jest faktycznie wykonywana. Pierwszy przydzielony kontener uruchamia specjalną aplikację o nazwie ApplicationMaster. Ten ApplicationMaster jest odpowiedzialny za pozyskiwanie zasobów w formie kolejnych kontenerów, co jest konieczne do uruchomienia przesłanej aplikacji. ApplicationMaster bada etapy aplikacji, na przykład etap mapy i zmniejsza etap, oraz czynniki, w których należy przetworzyć dane. ApplicationMaster następnie żąda (*negocjuje*) zasobów z obiektu ResourceManager w imieniu aplikacji. Program ResourceManager z kolei przydaje zasoby z NodeManagers w klastrze do ApplicationMaster, aby można było użyć ich do wykonywania aplikacji.
 
 NodeManagers uruchamia zadania wchodzące w skład aplikacji, a następnie raportuje postęp i stan z powrotem do ApplicationMaster. ApplicationMaster z kolei raportuje stan aplikacji z powrotem do obiektu ResourceManager. Datasourcemanager zwraca wyniki do klienta.
 

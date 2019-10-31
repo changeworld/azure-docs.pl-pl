@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą MyWorkDrive | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i MyWorkDrive.
+title: 'Samouczek: integracja Azure Active Directory z usługą MyWorkDrive | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i MyWorkDrive.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,75 +8,76 @@ manager: mtillman
 ms.reviewer: celested
 ms.assetid: 4d049778-3c7b-46c0-92a4-f2633a32334b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c3eb72abc90347c8e18a2f56a5d4756ecd80f3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03998d214c1fb977741976eca7b878d0c6b577aa
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096334"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160392"
 ---
-# <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Samouczek: Integracja MyWorkDrive za pomocą usługi Azure Active Directory
+# <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Samouczek: integracja MyWorkDrive z usługą Azure Active Directory
 
-W tym samouczku dowiesz się, jak zintegrować MyWorkDrive w usłudze Azure Active Directory (Azure AD). W ramach MyWorkDrive integracji z usługą Azure AD, możesz wykonywać następujące czynności:
+W tym samouczku dowiesz się, jak zintegrować usługę MyWorkDrive z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi MyWorkDrive z usługą Azure AD można:
 
-* Kontrolowanie w usłudze Azure AD, kto ma dostęp do MyWorkDrive.
-* Umożliwianie użytkownikom można automatycznie zalogowany do MyWorkDrive za pomocą kont usługi Azure AD.
-* Zarządzanie Twoimi kontami w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do MyWorkDrive.
+* Zezwól użytkownikom na automatyczne logowanie się do usługi MyWorkDrive przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć pracę, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz pobrać miesięcznej bezpłatnej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
-* MyWorkDrive logowania jednokrotnego (SSO) włączone subskrypcji.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz skorzystać z miesięcznej [bezpłatnej wersji](https://azure.microsoft.com/pricing/free-trial/)próbnej.
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) MyWorkDrive.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku, skonfiguruj i przetestuj logowania jednokrotnego usługi Azure AD w środowisku testowym. Obsługuje MyWorkDrive **SP** i **tożsamości** jednokrotne logowanie inicjowane przez
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. MyWorkDrive obsługuje usługę **SP** i **dostawcy tożsamości** zainicjowano Logowanie jednokrotne
 
 ## <a name="adding-myworkdrive-from-the-gallery"></a>Dodawanie MyWorkDrive z galerii
 
-Aby skonfigurować integrację MyWorkDrive do usługi Azure AD, należy dodać MyWorkDrive z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu MyWorkDrive z usługą Azure AD, musisz dodać MyWorkDrive z galerii do listy zarządzanych aplikacji SaaS.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory** usługi.
-1. Przejdź do **aplikacje dla przedsiębiorstw** , a następnie wybierz **wszystkie aplikacje**.
-1. Aby dodać nową aplikację, wybierz **nową aplikację**.
-1. W **Dodaj z galerii** sekcji, wpisz **MyWorkDrive** w polu wyszukiwania.
-1. Wybierz **MyWorkDrive** z wyników panelu, a następnie dodać aplikację. Odczekaj kilka sekund, podczas gdy aplikacja zostanie dodany do Twojej dzierżawy.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **MyWorkDrive** w polu wyszukiwania.
+1. Wybierz pozycję **MyWorkDrive** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Konfiguracja i testowanie logowania jednokrotnego usługi Azure AD za pomocą MyWorkDrive za pomocą użytkownika testu o nazwie **Britta Simon**. Logowanie Jednokrotne do pracy musisz ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w MyWorkDrive.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą MyWorkDrive przy użyciu użytkownika testowego o nazwie **Britta Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w MyWorkDrive.
 
-Aby skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą MyWorkDrive, wykonaj poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą MyWorkDrive, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-sso)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego MyWorkDrive](#configure-myworkdrive-sso)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego MyWorkDrive](#create-myworkdrive-test-user)**  — aby odpowiednikiem Britta Simon w MyWorkDrive, połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-sso)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Skonfiguruj Logowanie jednokrotne](#configure-myworkdrive-sso)** w usłudze MyWorkDrive, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Utwórz użytkownika testowego MyWorkDrive](#create-myworkdrive-test-user)** , aby uzyskać odpowiednik Britta Simon w MyWorkDrive, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azure AD w witrynie Azure portal.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **MyWorkDrive** strona integracji aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **logowanie jednokrotne**.
-1. Na **wybierz jedną metodę logowania jednokrotnego** wybierz **SAML**.
-1. Na **Ustaw się logowanie jednokrotne z SAML** kliknij ikonę edycji/pióra **podstawową konfigurację protokołu SAML** edytować ustawienia.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **MyWorkDrive** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Na **podstawową konfigurację protokołu SAML** strony, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb, wprowadź wartości dla następujących pól:
+1. Jeśli chcesz skonfigurować aplikację w trybie zainicjowanym przy użyciu usługi **dostawcy tożsamości** , na stronie **Podstawowa konfiguracja protokołu SAML** wprowadź wartości dla następujących pól:
 
     W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx`
 
@@ -85,79 +86,79 @@ Wykonaj następujące kroki, aby włączyć logowania jednokrotnego usługi Azur
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<SERVER.DOMAIN.COM>/Account/Login-saml`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL odpowiedzi i adresu URL logowania. Wprowadź name:e.g hosta serwera MyWorkDrive własnej firmy.
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL odpowiedzi i adresu URL logowania. Wprowadź nazwę hosta serwera MyWorkDrive firmy: np.
     > 
     > Adres URL odpowiedzi: `https://yourserver.yourdomain.com/SAML/AssertionConsumerService.aspx`
     > 
     > Adres URL logowania:`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > Skontaktuj się z pomocą [zespołem pomocy technicznej MyWorkDrive](mailto:support@myworkdrive.com) Jeśli wiesz, jak skonfigurować własną nazwę hosta i certyfikat protokołu SSL dla tych wartości.
+    > Skontaktuj się z [zespołem pomocy technicznej MyWorkDrive](mailto:support@myworkdrive.com) , jeśli nie masz pewności, jak skonfigurować własną nazwę hosta i certyfikat SSL dla tych wartości.
 
-1. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** stronie **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** do Schowka.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** kliknij przycisk Kopiuj, aby skopiować **adres URL metadanych federacji aplikacji** do Schowka.
 
-    ![Link pobierania certyfikatu](common/copy-metadataurl.png)
+    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
 
 ### <a name="configure-myworkdrive-sso"></a>Konfigurowanie logowania jednokrotnego MyWorkDrive
 
-1. W oknie przeglądarki internetowej innej Zaloguj się do MyWorkDrive jako Administrator zabezpieczeń.
+1. W innym oknie przeglądarki sieci Web Zaloguj się, aby MyWorkDrive jako administrator zabezpieczeń.
 
-2. Na serwerze MyWorkDrive w panelu administracyjnym kliknij **ENTERPRISE** i wykonaj następujące czynności:
+2. Na serwerze MyWorkDrive w panelu administratora kliknij pozycję **Enterprise** i wykonaj następujące czynności:
 
     ![Administrator](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 
-    a. Włącz **logowania jednokrotnego SAML/usług AD FS**.
+    a. Włącz **Logowanie jednokrotne SAML/ADFS**.
 
-    b. Wybierz **SAML - usługi Azure AD**
+    b. Wybierz pozycję **SAML — Azure AD**
 
-    c. W **adres Url metadanych Federacji aplikacji Azure** pola tekstowego, Wklej wartość **adres Url metadanych Federacji aplikacji** skopiowanej w witrynie Azure portal.
+    d. W polu tekstowym **adres URL metadanych federacji aplikacji platformy Azure** wklej wartość **adresu URL metadanych federacji aplikacji** skopiowanego z Azure Portal.
 
-    d. Kliknij polecenie **Zapisz**.
+    d. Kliknij pozycję **Zapisz**
 
     > [!NOTE]
-    > Aby uzyskać dodatkowe informacje, przejrzyj [artykuł pomocy technicznej usługi Azure AD MyWorkDrive](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/).
+    > Aby uzyskać dodatkowe informacje, zobacz artykuł dotyczący [pomocy technicznej usługi Azure AD MyWorkDrive](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzymy użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie Britta Simon.
 
-1. W okienku po lewej stronie w witrynie Azure portal wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
-1. W **użytkownika** właściwości, wykonaj następujące kroki:
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `Britta Simon`.  
-   1. W **nazwa_użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do MyWorkDrive.
+W tej sekcji włączysz usługę Britta Simon do korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do usługi MyWorkDrive.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście aplikacji wybierz **MyWorkDrive**.
-1. Na stronie Przegląd usługi aplikacji, Znajdź **Zarządzaj** i wybierz pozycję **użytkowników i grup**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **MyWorkDrive**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz **Dodaj użytkownika**, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-1. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** z listy użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
-1. Jeśli oczekujesz wszelkie wartości roli dla asercji SAML w **wybierz rolę** okno dialogowe, wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **Britta Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-myworkdrive-test-user"></a>Tworzenie użytkownika testowego MyWorkDrive
+### <a name="create-myworkdrive-test-user"></a>Utwórz użytkownika testowego MyWorkDrive
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w MyWorkDrive. Praca z [zespołem pomocy technicznej MyWorkDrive](mailto:support@myworkdrive.com) Aby dodać użytkowników na platformie MyWorkDrive. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w MyWorkDrive. Aby dodać użytkowników na platformie MyWorkDrive, Pracuj z [zespołem pomocy technicznej MyWorkDrive](mailto:support@myworkdrive.com) . Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
-Po wybraniu kafelka MyWorkDrive w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze MyWorkDrive, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po wybraniu kafelka MyWorkDrive w panelu dostępu należy automatycznie zalogować się do MyWorkDrive, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

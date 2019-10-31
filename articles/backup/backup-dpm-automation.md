@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: dacurwin
-ms.openlocfilehash: 12c6df6b68ee0996b468ff1e7d929ce6bfa680c9
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: ef20de40433542c1ed0780f198b10d6a1fb78789
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210242"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162144"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Wdrażanie kopii zapasowych serwerów Data Protection Manager (DPM) na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 
@@ -119,9 +119,9 @@ MARSAgentInstaller.exe /q
 
 Spowoduje to zainstalowanie agenta ze wszystkimi opcjami domyślnymi. Instalacja trwa kilka minut w tle. Jeśli nie określisz opcji */Nu* , zostanie otwarte okno **Windows Update** po zakończeniu instalacji, aby sprawdzić dostępność aktualizacji.
 
-Agent zostanie wyświetlony na liście zainstalowanych programów. Aby wyświetlić listę zainstalowanych programów, przejdź do pozycji **panel** > sterowania**programy** > **programy i funkcje**.
+Agent zostanie wyświetlony na liście zainstalowanych programów. Aby wyświetlić listę zainstalowanych programów, przejdź do pozycji **Panel sterowania** > **programy** > **programy i funkcje**.
 
-![Agent jest zainstalowany](./media/backup-dpm-automation/installed-agent-listing.png)
+![Agent zainstalowany](./media/backup-dpm-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Opcje instalacji
 
@@ -133,14 +133,14 @@ MARSAgentInstaller.exe /?
 
 Dostępne opcje to:
 
-| Opcja | Szczegóły | Domyślny |
+| Opcja | Szczegóły | Domyślne |
 | --- | --- | --- |
-| /q |Instalacja cicha |- |
+| parametru |Instalacja cicha |- |
 | /p: "Location" |Ścieżka do folderu instalacji agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s: "lokalizacja" |Ścieżka do folderu pamięci podręcznej dla agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m |Zezwól na Microsoft Update |- |
+| parametr |Zezwól na Microsoft Update |- |
 | /nu |Nie sprawdzaj, czy są aktualizacje po zakończeniu instalacji |- |
-| /d |Odinstalowuje agenta Microsoft Azure Recovery Services |- |
+| parametr |Odinstalowuje agenta Microsoft Azure Recovery Services |- |
 | /pH Generuj dyrektywę |Adres hosta serwera proxy |- |
 | /po |Numer portu hosta serwera proxy |- |
 | /pu |Nazwa użytkownika hosta serwera proxy |- |
@@ -183,7 +183,7 @@ Po zarejestrowaniu serwera programu DPM w magazynie Recovery Services rozpoczyna
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-Wszystkie modyfikacje są wprowadzane do tego lokalnego obiektu ```$setting``` programu PowerShell, a następnie pełny obiekt jest zatwierdzany w programie DPM i Azure Backup, aby je zapisać przy użyciu polecenia cmdlet [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) . Musisz użyć ```–Commit``` flagi, aby upewnić się, że zmiany są utrwalane. Ustawienia nie będą stosowane i używane przez Azure Backup, chyba że zostanie zatwierdzone.
+Wszystkie modyfikacje są wprowadzane do tego lokalnego obiektu programu PowerShell ```$setting``` a następnie pełny obiekt jest zatwierdzany w programie DPM i Azure Backup do zapisywania ich przy użyciu polecenia cmdlet [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) . Musisz użyć flagi ```–Commit```, aby upewnić się, że zmiany są utrwalane. Ustawienia nie będą stosowane i używane przez Azure Backup, chyba że zostanie zatwierdzone.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -191,13 +191,13 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>Networking
 
-Jeśli łączność maszyny programu DPM z usługą Azure Backup w Internecie odbywa się za pośrednictwem serwera proxy, należy zapewnić ustawienia serwera proxy dla udanych kopii zapasowych. W ```-ProxyServer```tym celu należy ```-ProxyPort``` ```-ProxyUsername``` użyć```ProxyPassword``` parametrów i i parametru z poleceniem cmdlet [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) . W tym przykładzie nie ma serwera proxy, dlatego wszystkie informacje związane z serwerem proxy są wyraźnie wyczyszczone.
+Jeśli łączność maszyny programu DPM z usługą Azure Backup w Internecie odbywa się za pośrednictwem serwera proxy, należy zapewnić ustawienia serwera proxy dla udanych kopii zapasowych. Odbywa się to przy użyciu ```-ProxyServer```i ```-ProxyPort```, ```-ProxyUsername``` i ```ProxyPassword``` parametrów za pomocą polecenia cmdlet [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) . W tym przykładzie nie ma serwera proxy, dlatego wszystkie informacje związane z serwerem proxy są wyraźnie wyczyszczone.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
 ```
 
-Użycie przepustowości może być również kontrolowane za pomocą opcji ```-WorkHourBandwidth``` i ```-NonWorkHourBandwidth``` dla danego zestawu dni tygodnia. W tym przykładzie nie ustawiamy żadnego ograniczenia.
+Użycie przepustowości może być również kontrolowane z opcjami ```-WorkHourBandwidth``` i ```-NonWorkHourBandwidth``` dla danego zestawu dni tygodnia. W tym przykładzie nie ustawiamy żadnego ograniczenia.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoThrottle
@@ -205,19 +205,19 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="configuring-the-staging-area"></a>Konfigurowanie obszaru przemieszczania
 
-Agent Azure Backup uruchomiony na serwerze programu DPM wymaga tymczasowego magazynu dla danych przywróconych z chmury (lokalny obszar przemieszczania). Skonfiguruj obszar przemieszczania za pomocą polecenia cmdlet [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) i ```-StagingAreaPath``` parametru.
+Agent Azure Backup uruchomiony na serwerze programu DPM wymaga tymczasowego magazynu dla danych przywróconych z chmury (lokalny obszar przemieszczania). Skonfiguruj obszar przemieszczania za pomocą polecenia cmdlet [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) i parametru ```-StagingAreaPath```.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
 ```
 
-W powyższym przykładzie obszar tymczasowy zostanie ustawiony na *C:\StagingArea* w obiekcie ```$setting```programu PowerShell. Upewnij się, że określony folder już istnieje, lub w przeciwnym razie ostateczne zatwierdzenie ustawień subskrypcji zakończy się niepowodzeniem.
+W powyższym przykładzie obszar tymczasowy zostanie ustawiony na *C:\StagingArea* w ```$setting```obiekcie programu PowerShell. Upewnij się, że określony folder już istnieje, lub w przeciwnym razie ostateczne zatwierdzenie ustawień subskrypcji zakończy się niepowodzeniem.
 
 ### <a name="encryption-settings"></a>Ustawienia szyfrowania
 
 Dane kopii zapasowej wysyłane do Azure Backup są szyfrowane w celu ochrony poufności danych. Hasło szyfrowania to "hasło" do odszyfrowania danych w momencie przywracania. Ważne jest, aby zachować te informacje bezpiecznie i bezpiecznie po ich ustawieniu.
 
-W poniższym przykładzie pierwsze polecenie konwertuje ciąg ```passphrase123456789``` na bezpieczny ciąg i przypisuje bezpieczny ciąg do zmiennej o nazwie. ```$Passphrase``` Drugie polecenie ustawia bezpieczny ciąg w ```$Passphrase``` jako hasło do szyfrowania kopii zapasowych.
+W poniższym przykładzie pierwsze polecenie konwertuje ciąg ```passphrase123456789``` na bezpieczny ciąg i przypisuje bezpieczny ciąg do zmiennej o nazwie ```$Passphrase```. Drugie polecenie ustawia bezpieczny ciąg w ```$Passphrase``` jako hasło do szyfrowania kopii zapasowych.
 
 ```powershell
 $Passphrase = ConvertTo-SecureString -string "passphrase123456789" -AsPlainText -Force
@@ -230,7 +230,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 >
 >
 
-W tym momencie należy wykonać wszystkie wymagane zmiany ```$setting``` w obiekcie. Pamiętaj, aby zatwierdzić zmiany.
+W tym momencie należy wykonać wszystkie wymagane zmiany w obiekcie ```$setting```. Pamiętaj, aby zatwierdzić zmiany.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -240,7 +240,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 W tej sekcji dodasz serwer produkcyjny do programu DPM, a następnie włączy się ochronę danych do lokalnego magazynu programu DPM, a następnie do Azure Backup. W przykładach pokazano, jak utworzyć kopię zapasową plików i folderów. Logikę można łatwo rozszerzyć, aby utworzyć kopię zapasową dowolnego źródła danych obsługiwanego przez program DPM. Wszystkie kopie zapasowe programu DPM podlegają grupie ochrony (PG) z czterema częściami:
 
-1. **Członkowie grupy** to lista wszystkich obiektów chronionych (nazywanych również źródłami danych w programie DPM), które mają być chronione w tej samej grupie ochrony. Na przykład może być konieczne Ochrona maszyn wirtualnych w ramach jednej grupy ochrony i SQL Server baz danych w innej grupie ochrony, ponieważ mogą one mieć różne wymagania dotyczące kopii zapasowych. Aby można było utworzyć kopię zapasową dowolnego źródła danych na serwerze produkcyjnym, należy upewnić się, że Agent programu DPM jest zainstalowany na serwerze i jest zarządzany przez program DPM. Postępuj zgodnie z instrukcjami dotyczącymi [instalowania agenta programu DPM](https://technet.microsoft.com/library/bb870935.aspx) i łączenia go z odpowiednim serwerem programu DPM.
+1. **Członkowie grupy** to lista wszystkich obiektów chronionych (nazywanych również *źródłami* danych w programie DPM), które mają być chronione w tej samej grupie ochrony. Na przykład może być konieczne Ochrona maszyn wirtualnych w ramach jednej grupy ochrony i SQL Server baz danych w innej grupie ochrony, ponieważ mogą one mieć różne wymagania dotyczące kopii zapasowych. Aby można było utworzyć kopię zapasową dowolnego źródła danych na serwerze produkcyjnym, należy upewnić się, że Agent programu DPM jest zainstalowany na serwerze i jest zarządzany przez program DPM. Postępuj zgodnie z instrukcjami dotyczącymi [instalowania agenta programu DPM](https://technet.microsoft.com/library/bb870935.aspx) i łączenia go z odpowiednim serwerem programu DPM.
 2. **Metoda ochrony danych** określa docelowe lokalizacje kopii zapasowych — taśmę, dysk i chmurę. W naszym przykładzie będziemy chronić dane na dysku lokalnym i w chmurze.
 3. **Harmonogram tworzenia kopii zapasowych** , który określa, kiedy należy wykonać kopie zapasowe, oraz częstotliwość synchronizacji danych między serwerem programu DPM a serwerem produkcyjnym.
 4. **Harmonogram przechowywania** określający, jak długo mają być przechowywane punkty odzyskiwania na platformie Azure.
@@ -253,7 +253,7 @@ Zacznij od utworzenia nowej grupy ochrony przy użyciu polecenia cmdlet [New-DPM
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-Powyższe polecenie cmdlet utworzy grupę ochrony o nazwie *ProtectGroup01*. Istniejącą grupę ochrony można również zmodyfikować później, aby dodać kopię zapasową do chmury platformy Azure. Jednak aby wprowadzić zmiany do grupy ochrony — nowe lub istniejące — musimy uzyskać dojście do modyfikowalnego obiektu za pomocą polecenia cmdlet [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) .
+Powyższe polecenie cmdlet utworzy grupę ochrony o nazwie *ProtectGroup01*. Istniejącą grupę ochrony można również zmodyfikować później, aby dodać kopię zapasową do chmury platformy Azure. Jednak aby wprowadzić zmiany do grupy ochrony — nowe lub istniejące — musimy uzyskać dojście do *modyfikowalnego* obiektu za pomocą polecenia cmdlet [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) .
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
@@ -271,13 +271,13 @@ Każdy agent programu DPM wie listę źródeł danych na serwerze, na którym je
 Lista serwerów, na których zainstalowano agenta programu DPM i jest zarządzana przez serwer programu DPM, jest uzyskiwana przy użyciu polecenia cmdlet [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) . W tym przykładzie będziemy filtrować i konfigurować tylko PS o nazwie *ProductionServer01* na potrzeby tworzenia kopii zapasowych.
 
 ```powershell
-$server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains “productionserver01”}
+$server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}
 ```
 
-Teraz Pobierz listę źródeł ```$server``` danych przy użyciu polecenia cmdlet [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) . W tym przykładzie stosujemy filtrowanie dla woluminu *D:\\*  , który chcemy skonfigurować do tworzenia kopii zapasowych. To źródło danych jest następnie dodawane do grupy ochrony przy użyciu polecenia cmdlet [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) . Należy pamiętać, aby użyć obiektu ```$MPG``` grupy ochrony modyfikowalnej w celu dodania.
+Teraz Pobierz listę źródeł danych na ```$server``` za pomocą polecenia cmdlet [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) . W tym przykładzie stosujemy filtrowanie dla woluminu *D:\\* , który chcemy skonfigurować do tworzenia kopii zapasowych. To źródło danych jest następnie dodawane do grupy ochrony przy użyciu polecenia cmdlet [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) . Pamiętaj, aby użyć obiektu grupy ochrony *modyfikowalnego* ```$MPG```, aby wprowadzić dodatki.
 
 ```powershell
-$DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains “D:\” }
+$DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains "D:\" }
 
 Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 ```
@@ -295,9 +295,9 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 
 ### <a name="setting-the-retention-range"></a>Ustawianie zakresu przechowywania
 
-Ustaw przechowywanie punktów kopii zapasowych za pomocą polecenia cmdlet [Set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) . Chociaż może wydawać się nieparzysta, aby ustawić przechowywanie przed zdefiniowaniem harmonogramu tworzenia kopii zapasowych ```Set-DPMPolicyObjective``` , za pomocą polecenia cmdlet automatycznie ustawia domyślny harmonogram tworzenia kopii zapasowych, który można następnie zmodyfikować. Zawsze jest możliwe ustawienie harmonogramu tworzenia kopii zapasowych i zasad przechowywania po.
+Ustaw przechowywanie punktów kopii zapasowych za pomocą polecenia cmdlet [Set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) . Chociaż może wydawać się nieparzysta, aby ustawić przechowywanie przed zdefiniowaniem harmonogramu tworzenia kopii zapasowych, za pomocą polecenia cmdlet ```Set-DPMPolicyObjective``` automatycznie ustawia domyślny harmonogram tworzenia kopii zapasowych, który można następnie zmodyfikować. Zawsze jest możliwe ustawienie harmonogramu tworzenia kopii zapasowych i zasad przechowywania po.
 
-W poniższym przykładzie polecenie cmdlet ustawia parametry przechowywania kopii zapasowych dysków. Spowoduje to zachowanie kopii zapasowych przez 10 dni i zsynchronizowanie danych co 6 godzin między serwerem produkcyjnym a serwerem programu DPM. Program ```SynchronizationFrequencyMinutes``` nie definiuje, jak często jest tworzony punkt kopii zapasowej, ale jak często dane są kopiowane na serwer programu DPM.  To ustawienie uniemożliwia tworzenie kopii zapasowych za duże.
+W poniższym przykładzie polecenie cmdlet ustawia parametry przechowywania kopii zapasowych dysków. Spowoduje to zachowanie kopii zapasowych przez 10 dni i zsynchronizowanie danych co 6 godzin między serwerem produkcyjnym a serwerem programu DPM. ```SynchronizationFrequencyMinutes``` nie definiuje, jak często jest tworzony punkt kopii zapasowej, ale jak często dane są kopiowane na serwer programu DPM.  To ustawienie uniemożliwia tworzenie kopii zapasowych za duże.
 
 ```powershell
 Set-DPMPolicyObjective –ProtectionGroup $MPG -RetentionRangeInDays 10 -SynchronizationFrequencyMinutes 360
@@ -316,7 +316,7 @@ Set-DPMPolicyObjective –ProtectionGroup $MPG -OnlineRetentionRangeList $RRlist
 
 ### <a name="set-the-backup-schedule"></a>Ustawianie harmonogramu tworzenia kopii zapasowych
 
-Program DPM automatycznie ustawia domyślny harmonogram tworzenia kopii zapasowych w przypadku określenia celu ochrony ```Set-DPMPolicyObjective``` przy użyciu polecenia cmdlet. Aby zmienić harmonogramy domyślne, należy użyć polecenia cmdlet [Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) , a następnie polecenia cmdlet [Set-DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) .
+Program DPM automatycznie ustawia domyślny harmonogram tworzenia kopii zapasowych w przypadku określenia celu ochrony przy użyciu polecenia cmdlet ```Set-DPMPolicyObjective```. Aby zmienić harmonogramy domyślne, należy użyć polecenia cmdlet [Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) , a następnie polecenia cmdlet [Set-DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) .
 
 ```powershell
 $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTerm Online
@@ -329,16 +329,16 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 W powyższym przykładzie ```$onlineSch``` jest tablicą zawierającą cztery elementy, które zawierają istniejący harmonogram ochrony w trybie online dla grupy ochrony w schemacie GFS:
 
-1. ```$onlineSch[0]```zawiera dzienny harmonogram
-2. ```$onlineSch[1]```zawiera Harmonogram tygodniowy
-3. ```$onlineSch[2]```zawiera Harmonogram miesięczny
-4. ```$onlineSch[3]```zawiera harmonogram roczny
+1. ```$onlineSch[0]``` zawiera dzienny harmonogram
+2. ```$onlineSch[1]``` zawiera Harmonogram tygodniowy
+3. ```$onlineSch[2]``` zawiera Harmonogram miesięczny
+4. ```$onlineSch[3]``` zawiera harmonogram roczny
 
 Dlatego jeśli trzeba zmodyfikować harmonogram tygodniowy, należy odwołać się do ```$onlineSch[1]```.
 
 ### <a name="initial-backup"></a>Początkowa kopia zapasowa
 
-Podczas tworzenia kopii zapasowej źródła danych po raz pierwszy program DPM musi utworzyć replikę początkową, która tworzy pełną kopię źródła danych, która ma być chroniona na woluminie repliki programu DPM. To działanie może być zaplanowane dla określonego czasu lub może zostać wyzwolone ręcznie przy użyciu polecenia cmdlet [Set-DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) z parametrem ```-NOW```.
+Podczas tworzenia kopii zapasowej źródła danych po raz pierwszy program DPM musi utworzyć replikę początkową, która tworzy pełną kopię źródła danych, która ma być chroniona na woluminie repliki programu DPM. To działanie można zaplanować do określonego czasu lub może zostać wyzwolone ręcznie przy użyciu polecenia cmdlet [Set-DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) z parametrem ```-NOW```.
 
 ```powershell
 Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
@@ -346,7 +346,7 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>Zmiana rozmiaru repliki programu DPM & wolumin punktu odzyskiwania
 
-Możesz również zmienić rozmiar woluminu repliki programu DPM i woluminu kopii w tle za pomocą polecenia cmdlet [Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) , tak jak w poniższym przykładzie: Get-DatasourceDiskAllocation -Datasource $DS Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
+Możesz również zmienić rozmiar woluminu repliki programu DPM i woluminu kopii w tle za pomocą polecenia cmdlet [Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) , tak jak w poniższym przykładzie: Get-DatasourceDiskAllocation-DataSource $ds Set-DatasourceDiskAllocation-DataSource $ds- Ochrona $MPG-ręczna-ReplicaArea (2 GB) — ShadowCopyArea (2 GB)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>Zatwierdzanie zmian w grupie ochrony
 
@@ -360,8 +360,8 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 Możesz użyć polecenia cmdlet [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) , aby uzyskać listę wszystkich punktów odzyskiwania dla źródła danych. W tym przykładzie będziemy:
 
-* Pobierz wszystkie PGs na serwerze DPM i zapisywanych w tablicy```$PG```
-* Pobierz źródła danych odpowiadające```$PG[0]```
+* Pobierz wszystkie PGs na serwerze DPM i zapisywanych w tablicy ```$PG```
+* Pobierz źródła danych odpowiadające ```$PG[0]```
 * Pobierz wszystkie punkty odzyskiwania dla źródła danych.
 
 ```powershell
@@ -372,16 +372,16 @@ $RecoveryPoints = Get-DPMRecoverypoint -Datasource $DS[0] -Online
 
 ## <a name="restore-data-protected-on-azure"></a>Przywracanie danych chronionych na platformie Azure
 
-Przywracanie danych jest kombinacją ```RecoverableItem``` obiektu ```RecoveryOption``` i obiektu. W poprzedniej sekcji mamy listę punktów kopii zapasowych dla źródła danych.
+Przywracanie danych jest kombinacją obiektu ```RecoverableItem``` i ```RecoveryOption``` obiektu. W poprzedniej sekcji mamy listę punktów kopii zapasowych dla źródła danych.
 
 W poniższym przykładzie pokazano, jak przywrócić maszynę wirtualną funkcji Hyper-V z Azure Backup przez połączenie punktów kopii zapasowych z celem odzyskiwania. Ten przykład obejmuje:
 
 * Tworzenie opcji odzyskiwania przy użyciu polecenia cmdlet [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) .
-* Pobieranie tablicy punktów kopii zapasowych przy użyciu ```Get-DPMRecoveryPoint``` polecenia cmdlet.
+* Pobieranie tablicy punktów kopii zapasowej za pomocą polecenia cmdlet ```Get-DPMRecoveryPoint```.
 * Wybieranie punktu kopii zapasowej do przywrócenia.
 
 ```powershell
-$RecoveryOption = New-DPMRecoveryOption -HyperVDatasource -TargetServer "HVDCenter02" -RecoveryLocation AlternateHyperVServer -RecoveryType Recover -TargetLocation “C:\VMRecovery”
+$RecoveryOption = New-DPMRecoveryOption -HyperVDatasource -TargetServer "HVDCenter02" -RecoveryLocation AlternateHyperVServer -RecoveryType Recover -TargetLocation "C:\VMRecovery"
 
 $PG = Get-DPMProtectionGroup –DPMServerName "TestingServer"
 $DS = Get-DPMDatasource -ProtectionGroup $PG[0]

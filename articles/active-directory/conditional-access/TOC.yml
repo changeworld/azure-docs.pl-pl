@@ -50,6 +50,8 @@
           href: howto-conditional-access-policy-admin-mfa.md
         - name: Wymaganie uwierzytelniania wieloskładnikowego do zarządzania platformą Azure
           href: howto-conditional-access-policy-azure-management.md
+        - name: Wymaganie uwierzytelniania wieloskładnikowego dla wszystkich użytkowników
+          href: howto-conditional-access-policy-all-users-mfa.md
         - name: Blokowanie starszego uwierzytelniania
           href: howto-conditional-access-policy-block-legacy.md
         - name: Dostęp warunkowy oparty na ryzyku

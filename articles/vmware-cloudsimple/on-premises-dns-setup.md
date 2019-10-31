@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f00e7663c4ed2211927f5c8d1c131d85bc6c96dd
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 72bf461dc882b9a097e59e8ecf40b0f71b2cc1f2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900898"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163143"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurowanie systemu DNS do rozpoznawania nazw dla prywatnego dostępu vCenter w chmurze z lokalnych stacji roboczych
 
@@ -46,11 +46,11 @@ Określony plik i parametry do skonfigurowania mogą się różnić w zależnoś
 Na przykład dla domyślnej konfiguracji serwera BIND Edytuj plik/etc/named.conf na serwerze DNS i Dodaj następujące informacje o strefie.
 
 ```
-zone “cloudsimple.io”
+zone "cloudsimple.io"
 {
     type stub;
     masters { IP address of DNS servers; };
-    file “slaves/cloudsimple.io.db”;
+    file "slaves/cloudsimple.io.db";
 };
 ```
 
@@ -87,7 +87,7 @@ Określony plik i parametry do skonfigurowania mogą się różnić w zależnoś
 Na przykład dla domyślnej konfiguracji serwera BIND Edytuj plik/etc/named.conf na serwerze DNS i Dodaj następujące informacje warunkowego przekazywania.
 
 ```
-zone “cloudsimple.io” {
+zone "cloudsimple.io" {
     type forward;
     forwarders { IP address of DNS servers; };
 };

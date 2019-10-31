@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd2259dc715fb54122b721ce40a715c6987947d2
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ad44cc83d65206ec1f199e57685b0dcc3cbb07a5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170110"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151171"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Dostęp warunkowy: Wymagaj uwierzytelniania wieloskładnikowego dla zarządzania na platformie Azure
 
 Organizacje korzystają z różnych usług platformy Azure i zarządzają nimi za pomocą narzędzi opartych na Azure Resource Manager, takich jak:
 
 * Azure Portal
-* Azure PowerShell
+* Program Azure PowerShell
 * Interfejs wiersza polecenia platformy Azure
 
 Te narzędzia mogą zapewnić wysoce uprzywilejowany dostęp do zasobów, które mogą zmieniać konfiguracje, ustawienia usług i rozliczenia subskrypcji w całej subskrypcji. Aby chronić te zasoby uprzywilejowane, firma Microsoft zaleca wymaganie uwierzytelniania wieloskładnikowego dla każdego użytkownika, który uzyskuje dostęp do tych zasobów.
@@ -48,9 +48,9 @@ Poniższe kroki pomogą utworzyć zasady dostępu warunkowego, aby wymagać przy
 1. W obszarze **przypisania**wybierz pozycję **Użytkownicy i grupy**
    1. W obszarze **dołączanie**wybierz pozycję **Wszyscy użytkownicy**.
    1. W obszarze **Wyklucz**wybierz pozycję **Użytkownicy i grupy** , a następnie wybierz opcję dostęp awaryjny lub konta w ramach swojej organizacji. 
-   1. Wybierz pozycję **gotowe**.
+   1. Wybierz pozycję **Done** (Gotowe).
 1. W obszarze **aplikacje lub akcje w chmurze** > **Dołącz**wybierz pozycję **Wybierz aplikacje**, wybierz opcję **Zarządzanie Microsoft Azure**i wybierz pozycję **Wybierz** , a następnie pozycję **gotowe**.
-1. W obszarze **kontroli dostępu**@no__t-**1 Przydziel**, wybierz pozycję **Udziel dostępu**, **Wymagaj uwierzytelniania wieloskładnikowego**, a następnie wybierz pozycję **Wybierz**.
+1. W obszarze **kontroli dostępu** > **Udziel**wybierz pozycję **Udziel dostępu**, **Wymagaj uwierzytelniania wieloskładnikowego**, a następnie wybierz pozycję **Wybierz**.
 1. Potwierdź ustawienia i ustaw opcję **Włącz zasady** na **włączone**.
 1. Wybierz pozycję **Utwórz** , aby utworzyć zasady.
 

@@ -1,142 +1,172 @@
 ---
-title: Resetowanie hasła — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Używać samoobsługowego resetowania hasła, aby odzyskać dostęp do służbowej firmowego lub szkolnego konta użytkownika
+title: Zresetuj hasło przy użyciu informacji zabezpieczających — Azure Active Directory | Microsoft Docs
+description: Jak zresetować własne hasło, jeśli go zapomnisz, przy użyciu informacji zabezpieczających i weryfikacji dwuetapowej.
 services: active-directory
 author: eross-msft
 manager: daveba
 ms.reviewer: sahenry
-ms.assetid: 7ba69b18-317a-4a62-afa3-924c4ea8fb49
 ms.service: active-directory
-ms.subservice: user-help
 ms.workload: identity
+ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/11/2018
+ms.date: 07/30/2018
 ms.author: lizross
-ms.custom: end-user
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d16b54df5b8392a294036978e0b917ecdb3ce1ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c0d0fdf4e7df0401692eb026d55fe1a7c9322f1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60862265"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160788"
 ---
-# <a name="reset-your-work-or-school-password"></a>Resetowanie hasła służbowego
+# <a name="reset-your-work-or-school-password"></a>Zresetuj hasło służbowe
 
-Jeśli nie pamiętasz hasła nigdy nie otrzyma jeden z pomocy technicznej Twojej firmy, została zablokowana ze swojego konta lub chcesz je zmienić, firma Microsoft może pomóc. Jeśli znasz swoje hasło i po prostu chcesz je zmienić, w dalszym ciągu [zmiana hasła](#change-my-password) sekcji.
+Jeśli nie pamiętasz hasła, dział pomocy technicznej firmy nie przekazała Ci go lub Twoje konto zostało zablokowane, możesz zresetować hasło przy użyciu informacji zabezpieczających i urządzenia przenośnego.
 
-   > [!NOTE]
-   > Jeśli próbujesz Ci je odzyskać konto osobiste, takich jak Xbox, hotmail.com lub outlook.com, spróbuj sugestie w [Jeśli nie możesz zalogować się na koncie Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) artykułu.
-   >
+>[!NOTE]
+>Jeśli znasz swoje hasło i chcesz je zmienić, możesz przejść do sekcji [zmiana hasła](#how-to-change-your-password) w tym artykule.<br><br>
+>Jeśli próbujesz wrócić do konta osobistego, takiego jak Xbox, hotmail.com lub outlook.com, wypróbuj sugestie w programie, [gdy nie możesz zalogować się do konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) artykułu.
 
-## <a name="reset-or-unlock-my-password-for-a-work-or-school-account"></a>Resetowanie lub odblokowywanie hasła do konta służbowego
+## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Jak zresetować lub odblokować hasło dla konta służbowego
 
-Może się nie można uzyskać dostępu do konta usługi Azure Active Directory (Azure AD) z jednego z następujących powodów:
+Jeśli nie możesz uzyskać dostępu do konta usługi Azure Active Directory (Azure AD), może to być spowodowane tym, że:
 
-* Hasło nie działa, a chcesz je zresetować.
-* Znać hasło, ale Twoje konto jest zablokowane i zechcesz je odblokować.
+- Twoje hasło nie działa i chcesz je zresetować.
 
-Dostęp do usługi Azure AD samoobsługowego resetowania haseł (SSPR) i do niej wrócić do swojego konta, wykonaj następujące kroki.
+- Znasz hasło, ale Twoje konto jest zablokowane i musisz je odblokować.
 
-1. Za pomocą dowolnego pracy lub szkołą **logowania** wybierz opcję **nie może uzyskać dostępu do konta?** połączyć, a następnie wybierz pozycję **pracy konta służbowego** lub przejdź bezpośrednio do [ Strony resetowania hasła](https://passwordreset.microsoftonline.com/).
+### <a name="to-reset-your-password-and-get-back-into-your-account"></a>Aby zresetować hasło i wrócić do swojego konta
 
-    ![Nie możesz uzyskać dostępu do konta?][Login]
+1. Na ekranie **wprowadzanie hasła** wybierz opcję nie **pamiętam hasła**.
 
-2. Wprowadź pracy lub nauki **identyfikator użytkownika**, udowodnić, że nie jesteś robotem, wprowadzając znaki widoczne na ekranie, a następnie wybierz **dalej**.
+2. Na ekranie **Wróć do konta** wpisz swój **Identyfikator użytkownika** lub szkoły (na przykład Twój adres e-mail), aby udowodnić, że nie jesteś robotem, wprowadzając znaki widoczne na ekranie, a następnie wybierz przycisk **dalej**.
 
-   > [!NOTE]
-   > Jeśli dział IT nie włączył tej funkcji, więc dział informatyczny może pomóc za pośrednictwem poczty e-mail lub własnego portalu sieci web pojawi się link "Skontaktuj się z administratorem".
-   >
-   > Jeśli potrzebujesz odblokować konto, w tym momencie wybierz opcję **swoje hasło, ale nadal nie zalogować.**
-   >
+   ![Wróć do ekranu konta](media/security-info/security-info-back-into-acct.png)
 
-3. W zależności od jak dział informatyczny skonfigurował Samoobsługowe Resetowanie HASEŁ powinien zostać wyświetlony co najmniej jeden z następujących metod uwierzytelniania. Użytkownik lub pracownicy działu IT powinny wypełnili niektóre z tych informacji przedstawionych w [rejestrowanie na potrzeby samoobsługowego resetowania haseł](active-directory-passwords-reset-register.md) artykułu.
+   >[!NOTE]
+   >Jeśli administrator nie włączył możliwości resetowania własnego hasła, zobaczysz link **skontaktuj się z administratorem** zamiast przycisku **Wróć do konta** . Ten link umożliwia skontaktowanie się z administratorem w sprawie resetowania hasła za pośrednictwem poczty e-mail lub portalu sieci Web.
 
-   * **Wyślij wiadomość e-mail na mój alternatywny adres e-mail**
-   * **Wyślij wiadomość SMS na mój telefon komórkowy**
-   * **Zadzwoń na mój telefon komórkowy**
-   * **Zadzwoń na mój telefon biurowy**
-   * **Odpowiedz na moje pytania zabezpieczeń**
+3. Wybierz jedną z następujących metod, aby zweryfikować swoją tożsamość i zmienić hasło. W zależności od tego, jak administrator skonfigurował Twoją organizację, może być konieczne przeprowadzenie tego procesu po raz drugi, dodanie informacji dla drugiego kroku weryfikacji.
 
-   Wybierz jedną z opcji, podaj poprawne odpowiedzi, a następnie wybierz **dalej**.
+    ![Wróć do swojego konta, #1 kroku weryfikacji](media/security-info/security-info-back-into-acct2.png)
 
-   ![Sprawdzanie danych uwierzytelniania][Verification]
+    >[!NOTE]
+    >W zależności od tego, jak administrator skonfigurował Twoją organizację, niektóre z tych opcji weryfikacyjnych mogą być niedostępne. Wcześniej należy skonfigurować urządzenie przenośne do weryfikacji przy użyciu co najmniej jednej z tych metod.<br><br>Ponadto nowe hasło może wymagać spełnienia pewnych wymagań dotyczących siły. Silne hasła zwykle zawierają od 8 do 16 znaków, w tym wielkie i małe litery, co najmniej jedną cyfrę oraz co najmniej jeden znak specjalny.
 
-4. Dział IT może wymagać dodatkowej weryfikacji i może być konieczne powtórzenie kroku 3 z wyborem innej opcji.
-5. Na **wybranie nowego hasła** , strony, wprowadź nowe hasło i Potwierdź hasło, a następnie wybierz **Zakończ**. Hasło do służbowego może mieć określone wymagania, które należy spełnić. Sugerujemy, że Wybierz hasło, które jest 8 do 16 znaków i zawiera wielkie i małe litery, liczbę i znak specjalny.
-6. Gdy zostanie wyświetlony komunikat **Twoje hasło zostało zresetowane**, można zalogować się przy użyciu nowego hasła.
+- **Zresetuj hasło przy użyciu adresu e-mail.** Wysyła wiadomość e-mail na adres e-mail, który został wcześniej skonfigurowany w ramach weryfikacji dwuetapowej lub informacji zabezpieczających. Jeśli administrator włączył środowisko informacje zabezpieczające, można znaleźć więcej informacji na temat konfigurowania adresu e-mail w artykule [Konfigurowanie informacji zabezpieczających do używania poczty e-mail (wersja zapoznawcza)](security-info-setup-email.md) . Jeśli jeszcze nie korzystasz z informacji zabezpieczających, możesz znaleźć więcej informacji na temat konfigurowania adresu e-mail w artykule [Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) . 
 
-    ![Hasło zostało zresetowane][Complete]
+    1. Wybierz pozycję **Wyślij pocztą e-mail mój alternatywny adres e-mail**, a następnie wybierz pozycję **poczta e-mail**.
 
-Teraz można uzyskać dostępu do konta. Jeśli nie można uzyskać dostępu do konta, należy skontaktować się ze swojej organizacji działem IT w celu uzyskania dalszej pomocy.
+    2. Wpisz kod weryfikacyjny z wiadomości e-mail w polu, a następnie wybierz przycisk **dalej**.
+    
+    3. Wpisz i Potwierdź nowe hasło, a następnie wybierz pozycję **Zakończ**.
 
-Można otrzymać wiadomość e-mail z potwierdzeniem, która pochodzi z konta takiego jak "firmy Microsoft w imieniu \<organizacji >." Jeśli nie używasz samoobsługowego resetowania hasła, aby odzyskać dostęp do Twojego konta otrzymasz wiadomość e-mail, takich jak ta, skontaktuj się z Twojej organizacji pracowników wsparcia informatycznego.
+- **Zresetuj hasło przy użyciu wiadomości tekstowej.** Wysyła wiadomość SMS na numer telefonu, który został wcześniej skonfigurowany w informacjach zabezpieczających. Jeśli administrator włączył środowisko informacje zabezpieczające, można znaleźć więcej informacji na temat konfigurowania wiadomości tekstowych w artykule [Konfigurowanie informacji zabezpieczających do korzystania z wiadomości tekstowych (wersja zapoznawcza)](security-info-setup-text-msg.md) . Jeśli jeszcze nie korzystasz z informacji zabezpieczających, możesz znaleźć więcej informacji na temat konfigurowania wiadomości tekstowych w artykule [Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) .
 
-## <a name="change-my-password"></a>Zmiana hasła
+    1. Wybierz pozycję **tekst mój telefon komórkowy**, wpisz swój numer telefonu, a następnie wybierz pozycję **tekst**.
 
-Jeśli znasz swoje hasło i chcesz je zmienić, wykonaj następujące kroki.
+    2. Wpisz kod weryfikacyjny z wiadomości tekstowej w polu, a następnie wybierz przycisk **dalej**.
 
-### <a name="change-your-password-from-the-office-365-portal"></a>Zmiana hasła w portalu usługi Office 365
+    3. Wpisz i Potwierdź nowe hasło, a następnie wybierz pozycję **Zakończ**.
 
-Jeśli zwykle dostęp do aplikacji za pośrednictwem portalu pakietu Office, należy użyć tej metody:
+- **Zresetuj hasło, używając numeru telefonu.** Wysyła wiadomość SMS na numer telefonu, który został wcześniej skonfigurowany w informacjach zabezpieczających. Jeśli administrator włączył środowisko informacje zabezpieczające, można znaleźć więcej informacji na temat konfigurowania numeru telefonu w artykule [Konfigurowanie informacji zabezpieczających do korzystania z połączenia telefonicznego (wersja zapoznawcza)](security-info-setup-phone-number.md) . Jeśli jeszcze nie korzystasz z informacji zabezpieczających, możesz znaleźć więcej informacji na temat konfigurowania numeru telefonu w artykule [Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) .
 
-1. Zaloguj się do Twojej [konta usługi Office 365](https://www.office.com) przy użyciu istniejącego hasła.
-2. Wybierz swój profil w prawym górnym rogu po stronie, a następnie wybierz **wyświetlić konto**.
-3. Wybierz **zabezpieczenia i ochrona prywatności** > **hasło**.
-4. Wprowadź stare hasło, ustaw i Potwierdź nowe hasło, a następnie wybierz **przesyłania**.
+    1. Wybierz pozycję **Zadzwoń na mój telefon komórkowy**, wpisz numer telefonu, a następnie wybierz pozycję **Połącz**.
 
-### <a name="change-your-password-from-the-azure-access-panel"></a>Zmiana hasła w panelu dostępu platformy Azure
+    2. Odpowiedz na połączenie telefoniczne i postępuj zgodnie z instrukcjami, aby zweryfikować swoją tożsamość, a następnie wybierz przycisk **dalej**.
 
-Użyj tej metody, jeśli zwykle dostęp do aplikacji przy użyciu panelu dostępu platformy Azure (Moje aplikacje):
+    3. Wpisz i Potwierdź nowe hasło, a następnie wybierz pozycję **Zakończ**.
 
-1. Zaloguj się do [panelu dostępu platformy Azure](https://myapps.microsoft.com/) przy użyciu istniejącego hasła.
-2. Wybierz swój profil w prawym górnym rogu po stronie, a następnie wybierz **profilu**.
-3. Wybierz **Zmień hasło**.
-4. Wprowadź stare hasło, ustaw i Potwierdź nowe hasło, a następnie wybierz **przesyłania**.
+- **Zresetuj hasło, korzystając z pytań zabezpieczających.** Zawiera listę pytań zabezpieczających skonfigurowanych w oknie Informacje zabezpieczające. Jeśli administrator włączył środowisko z informacjami o zabezpieczeniach, możesz znaleźć więcej informacji na temat konfigurowania pytań zabezpieczających w artykule [Konfigurowanie informacji zabezpieczających, aby korzystać ze wstępnie zdefiniowanych pytań zabezpieczających (wersja zapoznawcza)](security-info-setup-questions.md) . Jeśli jeszcze nie korzystasz z informacji zabezpieczających, możesz znaleźć więcej informacji na temat konfigurowania pytań zabezpieczających w artykule [Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) .
 
-## <a name="reset-password-at-sign-in"></a>Resetowanie hasła podczas logowania
+    1. Wybierz pozycję **odpowiedzi moje pytania zabezpieczające**, Odpowiedz na pytania, a następnie wybierz przycisk **dalej**.
 
-Jeśli administrator włączył funkcje, możesz teraz widoczny link do **Resetuj hasło** na ekranie logowania systemu Windows 10 Fall Creators Update.
+    2. Wpisz i Potwierdź nowe hasło, a następnie wybierz pozycję **Zakończ**.
 
-![Ekran logowania][LoginScreen]
+- **Zresetuj hasło przy użyciu powiadomienia z aplikacji uwierzytelniania.** Wysyła powiadomienie o zatwierdzeniu do aplikacji uwierzytelniania. Jeśli administrator włączył środowisko informacje zabezpieczające, można znaleźć więcej informacji na temat konfigurowania aplikacji uwierzytelniającej w celu wysłania powiadomienia w artykule [Konfigurowanie informacji zabezpieczających do korzystania z aplikacji uwierzytelniania (wersja zapoznawcza)](security-info-setup-auth-app.md) . Jeśli jeszcze nie korzystasz z informacji zabezpieczających, możesz znaleźć więcej informacji na temat konfigurowania aplikacji uwierzytelniającej w celu wysłania powiadomienia w artykule [Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) .
 
-Wybierz **Resetuj hasło** link, aby otworzyć środowiska samoobsługowego resetowania HASEŁ na ekranie logowania, dzięki czemu możesz zresetować hasła, bez konieczności zaloguj się do dostępu do normalnego internetowy interfejs.
+    1. Wybierz pozycję **Zatwierdź powiadomienie w mojej aplikacji uwierzytelniającej**, a następnie wybierz pozycję **Wyślij powiadomienie**.
 
-1. Potwierdź swój identyfikator użytkownika, a następnie wybierz **dalej**.
-2. Wybierz i upewnij się, skontaktuj się z pomocą metodę weryfikacji. Dział IT może wymagać dodatkowej weryfikacji i może być konieczne powtórzenie tego kroku z wyborem innej opcji.
+    2. Zatwierdź logowanie z poziomu aplikacji uwierzytelniania.
 
-   ![Metoda kontaktu][ContactMethod]
+    3. Wpisz i Potwierdź nowe hasło, a następnie wybierz pozycję **Zakończ**.
 
-3. Na **Utwórz nowe hasło** , strony, wprowadź nowe hasło i Potwierdź hasło, a następnie wybierz **dalej**. Zaleca się, że hasło 8 do 16 znaków długo i składa się z wielkie i małe litery, cyfry i znaki specjalne.
+- **Zresetuj hasło przy użyciu kodu z aplikacji uwierzytelniania.** Akceptuje losowy kod dostarczany przez aplikację uwierzytelniania. Jeśli administrator włączył środowisko z informacjami o zabezpieczeniach, możesz znaleźć więcej informacji na temat konfigurowania aplikacji uwierzytelniającej, aby udostępnić kod w artykule [Konfigurowanie informacji zabezpieczających do korzystania z aplikacji uwierzytelniania (wersja zapoznawcza)](security-info-setup-auth-app.md) . Jeśli jeszcze nie korzystasz z informacji zabezpieczających, możesz znaleźć więcej informacji na temat konfigurowania aplikacji uwierzytelniającej, aby udostępnić kod w artykule [Konfigurowanie mojego konta na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) .
 
-   ![Resetowanie hasła][ResetPassword]
+  1. Wybierz pozycję **Wprowadź kod z aplikacji Authenticator**, a następnie wybierz pozycję **Wyślij powiadomienie**.
 
-4. Gdy zostanie wyświetlony komunikat **Twoje hasło zostało zresetowane**, wybierz opcję **Zakończ**.
+  2. Otwórz aplikację Authenticator, wpisz kod weryfikacyjny dla swojego konta w polu, a następnie wybierz przycisk **dalej**.
 
-Teraz można uzyskać dostępu do konta. Jeśli nie, skontaktuj się z Twojej organizacji działem IT w celu uzyskania dalszej pomocy.
+  3. Wpisz i Potwierdź nowe hasło, a następnie wybierz pozycję **Zakończ**.
+
+  4. Po otrzymaniu komunikatu z informacją, że hasło zostało zresetowane, możesz zalogować się do swojego konta przy użyciu nowego hasła.
+        
+     Jeśli nadal nie możesz uzyskać dostępu do konta, skontaktuj się z administratorem organizacji, aby uzyskać pomoc.
+
+Po zresetowaniu hasła może zostać wykorzystana wiadomość e-mail z potwierdzeniem, która pochodzi z konta takiego jak "Microsoft w imieniu \<*your_organization*>". Jeśli otrzymasz podobną wiadomość e-mail, ale ostatnio nie zresetujesz hasła, musisz natychmiast skontaktować się z administratorem w organizacji.
+
+## <a name="how-to-change-your-password"></a>Jak zmienić hasło
+
+Jeśli chcesz tylko zmienić hasło, możesz to zrobić za pomocą portalu pakietu Office 365, panelu dostępu platformy Azure lub strony logowania systemu Windows 10.
+
+### <a name="to-change-your-password-using-the-office-365-portal"></a>Aby zmienić hasło przy użyciu portalu pakietu Office 365
+
+Użyj tej metody, jeśli zwykle uzyskujesz dostęp do aplikacji za pomocą portalu pakietu Office:
+
+1. Zaloguj się do [konta Office 365](https://portal.office.com)przy użyciu istniejącego hasła.
+
+2. Wybierz swój profil w prawym górnym rogu, a następnie wybierz pozycję **Wyświetl konto**.
+
+3. Wybierz pozycję **zabezpieczenia & prywatność** > **hasło**.
+
+4. Wpisz stare hasło, Utwórz i Potwierdź nowe hasło, a następnie wybierz pozycję **Prześlij**.
+
+### <a name="to-change-your-password-from-the-azure-access-panel"></a>Aby zmienić hasło w panelu dostępu platformy Azure
+
+Użyj tej metody, jeśli zwykle uzyskujesz dostęp do aplikacji z poziomu panelu dostępu platformy Azure (aplikacje):
+
+1. Zaloguj się do [panelu dostępu platformy Azure](https://myapps.microsoft.com/)przy użyciu istniejącego hasła.
+
+2. Wybierz swój profil w prawym górnym rogu, a następnie wybierz pozycję **profil**.
+
+3. Wybierz pozycję **Zmień hasło**.
+
+4. Wpisz stare hasło, Utwórz i Potwierdź nowe hasło, a następnie wybierz pozycję **Prześlij**.
+
+### <a name="to-change-your-password-at-windows-sign-in"></a>Aby zmienić hasło podczas logowania do systemu Windows
+
+Jeśli administrator włączył tę funkcję, zobaczysz link służący do **resetowania hasła** na ekranie logowania systemu Windows 7, Windows 8, Windows 8.1 lub Windows 10.
+
+1. Wybierz link **resetowania hasła** , aby rozpocząć proces resetowania hasła bez konieczności korzystania z normalnego środowiska internetowego.
+
+2. Potwierdź swój identyfikator użytkownika i wybierz pozycję **dalej**.
+
+3. Wybierz i Potwierdź metodę kontaktu dla weryfikacji. W razie potrzeby wybierz drugą opcję weryfikacji inną niż poprzednia, wypełniając odpowiednie informacje.
+
+4. Na stronie **Utwórz nowe hasło** wpisz i Potwierdź nowe hasło, a następnie wybierz przycisk **dalej**.
+
+    Silne hasła zwykle zawierają od 8 do 16 znaków, w tym wielkie i małe litery, co najmniej jedną cyfrę oraz co najmniej jeden znak specjalny.
+
+5. Po otrzymaniu komunikatu z informacją, że hasło zostało zresetowane, możesz wybrać pozycję **Zakończ**.
+
+    Jeśli nadal nie możesz uzyskać dostępu do konta, skontaktuj się z administratorem organizacji, aby uzyskać pomoc.
 
 ## <a name="common-problems-and-their-solutions"></a>Typowe problemy i ich rozwiązania
 
- Poniżej przedstawiono niektóre typowe przypadki błędów i sposoby ich rozwiązywania:
+Poniżej przedstawiono kilka typowych przypadków błędów i ich rozwiązań:
 
-| Przypadki błędów| Jaki dokładnie błąd widzisz?| Rozwiązanie |
+|Problem|Opis|Rozwiązanie|
 | --- | --- | --- |
-| Widzę błąd podczas próby zmiany hasła. | Niestety Twoje hasło zawiera słowo, frazę lub wzorzec, który sprawia, że hasło jest łatwe do odgadnięcia. Spróbuj ponownie, używając innego hasła. | Wybierz hasło, które jest trudniejsze do odgadnięcia. |
-| Pojawia się Strona "Skontaktuj się z administratorem" po wprowadzeniu mój identyfikator użytkownika | Skontaktuj się z administratorem. <br> <br> Wykryliśmy, że hasło konta użytkownika nie jest zarządzana przez firmę Microsoft. W rezultacie nie możemy automatycznie resetowania hasła. <br> <br> Musisz skontaktować się z działu IT, aby uzyskać dalszą pomoc. | Widzisz ten komunikat, ponieważ dział IT zarządza hasła w środowisku w środowisku lokalnym. Nie można zresetować hasło przy użyciu linku "Nie może uzyskać dostępu do konta". <br> <br> Do zresetowania hasła, bezpośrednio w celu uzyskania pomocy skontaktuj się z pomocą działu IT i poinformuj ich o tym, że chcesz zresetować hasło, dzięki czemu mogą włączyć tę funkcję dla Ciebie.|
-| Otrzymuję błąd "Twoje konto nie jest włączone do resetowania hasła", który po wprowadzeniu mój identyfikator użytkownika | Twoje konto nie jest włączone do resetowania hasła. <br> <br> Przepraszamy, ale działu IT nie skonfigurował Twoje konto w używać tej usługi. <br> <br> Jeśli chcesz, możemy skontaktować się z administratorem w Twojej organizacji, aby zresetował Twoje hasło. | Widzisz ten komunikat, ponieważ dział informatyczny nie włączył resetowania hasła dla organizacji z linku "Nie może uzyskać dostępu do konta" lub nie można używać funkcji licencjonowane. <br> <br> Aby zresetować hasło, wybierz pozycję "Skontaktuj się z administratorem łącze" Aby wysłać wiadomość e-mail do Twojej firmy przez personel IT i poinformuj ich, aby zresetować hasło, dzięki czemu mogą włączyć tę funkcję dla Ciebie. |
-| Otrzymuję błąd "Nie można zweryfikować Twoje konto", który po wprowadzeniu mój identyfikator użytkownika | Nie można zweryfikować Twoje konto. <br> <br> Jeśli chcesz, możemy skontaktować się z administratorem w Twojej organizacji, aby zresetował Twoje hasło. | Widzisz ten komunikat, ponieważ masz uprawnień do resetowania hasła, ale nie została zarejestrowana do korzystania z usługi. Aby zarejestrować się do resetowania hasła, przejdź do https://aka.ms/ssprsetup po ma się odzyskać dostęp do Twojego konta. <br> <br> Aby zresetować hasło, wybierz link "Skontaktuj się z administratorem", aby wysłać wiadomość e-mail do Twojej firmy personel IT. |
+|Gdy próbuję zmienić moje hasło, otrzymuję komunikat o błędzie. |Hasło zawiera słowo, frazę lub wzorzec, które ułatwiają odgadnięcie hasła.| Spróbuj ponownie, używając silniejszego hasła.|
+|Po wprowadzeniu identyfikatora użytkownika przejdź na stronę o nazwie "Skontaktuj się z administratorem".|Firma Microsoft ustaliła, że hasło konta użytkownika jest zarządzane przez administratora w środowisku lokalnym. W związku z tym nie można zresetować hasła z linku "nie można uzyskać dostępu do konta". |Aby uzyskać pomoc, skontaktuj się z administratorem.|
+|Po wprowadzeniu identyfikatora użytkownika otrzymuję komunikat o błędzie "Twoje konto nie jest włączone do resetowania hasła".|Administrator nie skonfigurował Twojego konta, aby można było zresetować własne hasło.|Administrator nie włączył resetowania hasła dla Twojej organizacji z poziomu linku "nie można uzyskać dostępu do konta" lub nie ma licencji na korzystanie z tej funkcji.<br><br> Aby zresetować hasło, musisz wybrać link "Skontaktuj się z administratorem", aby wysłać wiadomość e-mail do administratora firmy i poinformować o konieczności zresetowania hasła.|
+|Po wprowadzeniu identyfikatora użytkownika otrzymuję komunikat o błędzie "nie można zweryfikować Twojego konta".|Proces logowania nie może zweryfikować informacji o koncie.|Istnieją dwa powody, dla których zobaczysz ten komunikat.<br><br>1. administrator włączył Resetowanie hasła dla Twojej organizacji, ale nie zarejestrowano go do korzystania z usługi. Aby zarejestrować się w celu zresetowania hasła, zobacz jeden z następujących artykułów na podstawie metody weryfikacji: [Skonfiguruj informacje zabezpieczające, aby korzystać z aplikacji uwierzytelniania (wersja zapoznawcza)](security-info-setup-auth-app.md), [skonfigurować informacje zabezpieczające do korzystania z połączenia telefonicznego (wersja zapoznawcza)](security-info-setup-phone-number.md), [skonfigurować informacje zabezpieczające do użycia wiadomość SMS (wersja zapoznawcza)](security-info-setup-text-msg.md), [Skonfiguruj informacje zabezpieczające do korzystania z poczty e-mail (wersja zapoznawcza)](security-info-setup-email.md)lub [Skonfiguruj informacje zabezpieczające do korzystania z pytań zabezpieczających (wersja zapoznawcza)](security-info-setup-questions.md).<br><br>2. Administrator nie włączył resetowania hasła dla Twojej organizacji. W takiej sytuacji należy wybrać opcję "Skontaktuj się z administratorem", aby wysłać wiadomość e-mail do administratora, z prośbą o zresetowanie hasła.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
+- Informacje o zabezpieczeniach w artykule [Przegląd informacji zabezpieczających (wersja zapoznawcza)](user-help-security-info-overview.md) .
 
-* [Jak zarejestrować się do używania samoobsługowego resetowania hasła](active-directory-passwords-reset-register.md)
-* [Strona rejestracji w celu resetowania hasła](https://aka.ms/ssprsetup)
-* [Portal resetowania hasła](https://passwordreset.microsoftonline.com/)
-* [Nie można zalogować się do konta Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
+- Więcej informacji na temat weryfikacji dwuetapowej w artykule [Przegląd weryfikacji dwuetapowej](user-help-two-step-verification-overview.md) . 
 
-[Login]: ./media/active-directory-passwords-update-your-own-password/reset-1-login.png "Strona logowania — Nie możesz uzyskać dostępu do konta?"
-[Verification]: ./media/active-directory-passwords-update-your-own-password/reset-2-verification.png "Weryfikowanie danych uwierzytelniania"
-[Change]: ./media/active-directory-passwords-update-your-own-password/reset-3-change.png "Zmiana hasła"
-[Complete]: ./media/active-directory-passwords-update-your-own-password/reset-4-complete.png "Hasło zostało zresetowane"
-[LoginScreen]: ./media/active-directory-passwords-update-your-own-password/login-screen.png "Link systemu Windows 10 Fall Creators Update logowania ekranu resetowania hasła"
-[ContactMethod]: ./media/active-directory-passwords-update-your-own-password/reset-contact-method-screen.png "Weryfikowanie danych uwierzytelniania"
-[ResetPassword]: ./media/active-directory-passwords-update-your-own-password/reset-password-screen.png "Zmiana hasła"
+- Zresetuj hasło, jeśli zostało zgubione lub zapomniane, z poziomu [portalu resetowania haseł](https://passwordreset.microsoftonline.com/)
+
+- Wskazówki i pomoc dotyczące rozwiązywania problemów z logowaniem znajdują się w artykule [Nie można zalogować się na konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

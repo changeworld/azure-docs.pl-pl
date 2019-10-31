@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 202d608e5d994cabd3d7e2e9a0887c8aab75af31
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e5d24c35fd2fafc27f2339af5b1c92875b0138d9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437821"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162203"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informacje o kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -45,20 +45,10 @@ Przed rozpoczęciem Sprawdź, czy:
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
 **Obsługiwane wdrożenia** | Obsługiwane są maszyny wirtualne SQL Marketplace Azure i maszyny wirtualne spoza witryny Marketplace (z ręcznie instalowanym programem SQL Server).
-**Obsługiwane obszary geograficzne** | Australia Południowo-Wschodnia (ASE), Australia Wschodnia (AE), Australia Środkowa (AC), Australia Środkowa 2 (AC) <br> Brazylia Południowa (BRS)<br> Kanada Środkowa (CNC), Kanada Wschodnia (CE)<br> Azja Wschodnia Południowe (SEA), Azja Wschodnia (EA) <br> Wschodnie stany USA (EUS), Wschodnie stany USA 2 (EUS2), zachodnio-środkowe stany USA (WCUS), zachodnie stany USA (WUS); Zachodnie stany USA 2 (WUS 2) Północno-środkowe stany USA (NCUS) środkowe stany USA (CUS) Południowo-środkowe stany USA (SCUS) <br> Indie Środkowe (INC.), Indie Południowe, Indie Zachodnie <br> Japonia Wschodnia (JPE), Japonia Zachodnia (JPW) <br> Korea Środkowa (KRC), Korea Południowa (KRS) <br> Europa Północna (NE), Europa Zachodnia <br> Południowe Zjednoczone Królestwo (UKS), Zachodnie Zjednoczone Królestwo (UKW) <br> US Gov Arizona, US Gov Wirginia, US Gov Teksas, US DoD (region środkowy), US DoD (region wschodni) <br> Niemcy Północne, Niemcy Środkowo-Zachodnie <br> Szwajcaria Północna, Szwajcaria Zachodnia
-**Obsługiwane systemy operacyjne** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> System Linux nie jest obecnie obsługiwany.
-**Obsługiwane wersje programu SQL Server** | SQL Server 2017, zgodnie z opisem [poniżej](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 i SPS w sposób opisany [tutaj](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
-**Obsługiwane wersje platformy .NET** | .NET Framework 4.5.2 i nowsze wersje zainstalowane na maszynie wirtualnej
-
-### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Obsługa SQL Server 2008 i SQL Server 2008 R2
-
-Azure Backup ostatnio ogłosiła wsparcie dla [EOS SQL Servers](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) -SQL Server 2008 i SQL Server 2008 R2. Rozwiązanie jest obecnie dostępne w wersji zapoznawczej dla usługi EOS SQL Server i obsługuje następującą konfigurację:
-
-1. SQL Server 2008 i SQL Server 2008 R2 uruchomione w systemie Windows 2008 R2 z dodatkiem SP1
-2. .NET Framework 4.5.2 i nowsze muszą być zainstalowane na maszynie wirtualnej
-3. Tworzenie kopii zapasowej dla FCI i dublowanych baz danych nie jest obsługiwane
-
-Użytkownicy nie będą obciążani opłatami za tę funkcję do momentu, gdy jest on ogólnie dostępny. Wszystkie inne [zagadnienia i ograniczenia dotyczące funkcji](#feature-consideration-and-limitations) są również stosowane do tych wersji. Należy zapoznać się z [wymaganiami wstępnymi](backup-sql-server-database-azure-vms.md#prerequisites) przed skonfigurowaniem ochrony na serwerach SQL 2008 i 2008 R2.
+**Obsługiwane obszary geograficzne** | Australia Południowo-Wschodnia (ASE), Australia Wschodnia (AE), Australia Środkowa (AC), Australia Środkowa 2 (AC) <br> Brazylia Południowa (BRS)<br> Kanada Środkowa (CNC), Kanada Wschodnia (CE)<br> Azja Wschodnia Południowe (SEA), Azja Wschodnia (EA) <br> Wschodnie stany USA (EUS), Wschodnie stany USA 2 (EUS2), zachodnio-środkowe stany USA (WCUS), zachodnie stany USA (WUS); Zachodnie stany USA 2 (WUS 2) Północno-środkowe stany USA (NCUS) środkowe stany USA (CUS) Południowo-środkowe stany USA (SCUS) <br> Indie Środkowe (INC.), Indie Południowe, Indie Zachodnie <br> Japonia Wschodnia (JPE), Japonia Zachodnia (JPW) <br> Korea Środkowa (KRC), Korea Południowa (KRS) <br> Europa Północna (NE), Europa Zachodnia <br> Południowe Zjednoczone Królestwo (UKS), Zachodnie Zjednoczone Królestwo (UKW) <br> US Gov Arizona, US Gov Wirginia, US Gov Teksas, US DoD (region środkowy), US DoD (region wschodni) <br> Niemcy Północne, Niemcy Środkowo-Zachodnie <br> Szwajcaria Północna, Szwajcaria Zachodnia <br> Francja Środkowa <br> Chiny Wschodnie, Chiny Wschodnie 2, Chiny Północne, Chiny Północne 2
+**Obsługiwane systemy operacyjne** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 z dodatkiem SP1 <br/><br/> System Linux nie jest obecnie obsługiwany.
+**Obsługiwane wersje programu SQL Server** | SQL Server 2019, SQL Server 2017 zgodnie z opisem na [stronie cykl życia produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 i SPS zgodnie ze szczegółowymi informacjami na [stronie cykl życia produktu search](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.
+**Obsługiwane wersje platformy .NET** | .NET Framework 4.5.2 lub nowszy jest zainstalowany na maszynie wirtualnej
 
 ## <a name="feature-consideration-and-limitations"></a>Zagadnienia i ograniczenia dotyczące funkcji
 

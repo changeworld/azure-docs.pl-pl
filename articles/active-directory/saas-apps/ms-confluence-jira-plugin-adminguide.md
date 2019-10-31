@@ -1,12 +1,13 @@
 ---
-title: Podręcznik administratora Atlassian Jira/Confluence — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Podręcznik administratora Atlassian Jira i Confluence za pomocą usługi Azure Active Directory (Azure AD)...
+title: Podręcznik administratora Atlassian JIRA/Confluence-Azure Active Directory | Microsoft Docs
+description: Przewodnik administratora do korzystania z Atlassian JIRA i Confluence z usługą Azure Active Directory (Azure AD).
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: daveba
 ms.reviewer: joflore
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,64 +15,64 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60935775"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161196"
 ---
-# <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira i Confluence podręczniku administratora usługi Azure Active Directory
+# <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian JIRA i Podręcznik administratora Confluence dla Azure Active Directory
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Usługi Azure Active Directory (Azure AD) logowanie jednokrotne (SSO) wtyczka umożliwia klientom usługi Microsoft Azure AD na potrzeby logowania się do Atlassian Jira i produktów serwerowych Confluence swojego konta firmowego lub szkolnego. Implementuje rejestracji Jednokrotnej opartej na SAML 2.0.
+Wtyczka Logowanie jednokrotne w usłudze Azure Active Directory (Azure AD) umożliwia Microsoft Azure AD klientom korzystanie z konta służbowego do logowania się do produktów Atlassian JIRA i Confluence na serwerach. Implementuje Logowanie jednokrotne w oparciu o protokół SAML 2,0.
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
-Gdy użytkownik chce zarejestrować się w aplikacji Atlassian Jira lub Confluence, widzą **Zaloguj się przy użyciu usługi Azure AD** przycisk na stronie logowania. Po wybraniu jego są zobowiązani do logowania przy użyciu usługi Azure AD organizacja strony logowania (czyli swoje konto służbowe).
+Gdy użytkownicy chcą zalogować się do aplikacji Atlassian JIRA lub Confluence, zobaczysz przycisk **Zaloguj przy użyciu usługi Azure AD** na stronie logowania. Po ich wybraniu wymagane jest zalogowanie się przy użyciu strony logowania organizacji usługi Azure AD (czyli konta służbowego).
 
-Po uwierzytelnieniu użytkowników należy mogli logować się do aplikacji. Jeśli zostali już uwierzytelnieni przy użyciu Identyfikatora i hasła dla konta firmowego lub szkolnego, a następnie ich bezpośrednio Zaloguj się do aplikacji. 
+Po uwierzytelnieniu użytkownicy powinni mieć możliwość zalogowania się do aplikacji. Jeśli są już uwierzytelniane przy użyciu identyfikatora i hasła dla konta służbowego, wówczas logują się oni bezpośrednio do aplikacji. 
 
-Logowania działa w usłudze Jira i Confluence. Jeśli użytkownicy są zalogowani do aplikacji programu Jira Confluence jest otwarty w oknie przeglądarki, nie muszą podać poświadczenia dla innych aplikacji. 
+Logowanie działa w JIRA i Confluence. Jeśli użytkownicy są zalogowani do aplikacji JIRA, a Confluence jest otwarty w tym samym oknie przeglądarki, nie muszą podawać poświadczeń dla innej aplikacji. 
 
-Użytkowników można również uzyskać z produktem Atlassian za pośrednictwem Moje aplikacje przy użyciu konta służbowego lub szkolnego. Powinny one podpisane bez pytany o poświadczenia.
+Użytkownicy mogą również uzyskać dostęp do produktu Atlassian za pomocą aplikacji Moje aplikacje w ramach konta służbowego. Należy zalogować się bez monitowania o poświadczenia.
 
 > [!NOTE]
-> Inicjowanie obsługi użytkowników nie odbywa się za pośrednictwem dodatku typu plug-in.
+> Inicjowanie obsługi użytkowników nie odbywa się za pomocą wtyczki.
 
-## <a name="audience"></a>Grupy odbiorców
+## <a name="audience"></a>Odbiorcy
 
-Administratorzy programu Jira i Confluence można użyć wtyczki do włączenia funkcji logowania jednokrotnego przy użyciu usługi Azure AD.
+Administratorzy JIRA i Confluence mogą używać wtyczki, aby włączyć logowanie jednokrotne za pomocą usługi Azure AD.
 
 ## <a name="assumptions"></a>Założenia
 
-* Jira i Confluence są obsługujące protokół HTTPS.
-* Użytkownicy, zostały już utworzone w usłudze Jira lub Confluence.
-* Użytkownicy mają przypisane w usłudze Jira lub Confluence role.
+* Wystąpienia JIRA i Confluence są włączone przy użyciu protokołu HTTPS.
+* Użytkownicy są już utworzeni w JIRA lub Confluence.
+* Użytkownicy mają role przypisane w JIRA lub Confluence.
 * Administratorzy mają dostęp do informacji wymaganych do skonfigurowania wtyczki.
-* Jira lub Confluence jest dostępna spoza do sieci firmowej.
-* Wtyczka działa z wersją w lokalnych programu Jira i Confluence.
+* JIRA lub Confluence jest również dostępna poza siecią firmową.
+* Wtyczka współpracuje tylko z lokalną wersją programu JIRA i Confluence.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed zainstalowaniem dodatku typu plug-in, należy zwrócić uwagę na następujące informacje:
+Przed zainstalowaniem wtyczki należy zwrócić uwagę na następujące informacje:
 
-* Jira i Confluence są instalowane w wersji Windows 64-bitowych.
-* Wersje programu Jira i Confluence są obsługujące protokół HTTPS.
-* Jira i Confluence są dostępne w Internecie.
-* Poświadczenia administratora zostały spełnione dla programu Jira i Confluence.
-* Poświadczenia administratora są spełnione dla usługi Azure AD.
-* WebSudo jest wyłączona w usłudze Jira i Confluence.
+* JIRA i Confluence są zainstalowane w wersji systemu Windows 64-bitowej.
+* Wersje JIRA i Confluence są włączone przy użyciu protokołu HTTPS.
+* JIRA i Confluence są dostępne w Internecie.
+* Poświadczenia administratora są stosowane dla JIRA i Confluence.
+* Poświadczenia administratora dla usługi Azure AD.
+* WebSudo jest wyłączona w JIRA i Confluence.
 
-## <a name="supported-versions-of-jira-and-confluence"></a>Obsługiwane wersje programu Jira i Confluence
+## <a name="supported-versions-of-jira-and-confluence"></a>Obsługiwane wersje programu JIRA i Confluence
 
-Wtyczka obsługuje następujące wersje programu Jira Confluence:
+Wtyczka obsługuje następujące wersje JIRA i Confluence:
 
-* Jira Core i oprogramowania: wersja od 6.0 do 7.12
-* Jira Service Desk: 3.0.0 lub 3.5.0
+* JIRA rdzeń i oprogramowanie: od 6,0 do 7,12
+* JIRA Service Desk: 3.0.0 do 3.5.0
 * Usługa JIRA obsługuje także wersję 5.2. Aby uzyskać więcej szczegółowych informacji, kliknij następujący link: [logowanie jednokrotne usługi Microsoft Azure Active Directory dla usługi JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence: 5.0 do 5.10
+* Confluence: 5,0 do 5,10
 * Confluence: 6.0.1
 * Confluence: 6.1.1
 * Confluence: 6.2.1
@@ -88,108 +89,108 @@ Wtyczka obsługuje następujące wersje programu Jira Confluence:
 
 ## <a name="installation"></a>Instalacja
 
-Aby zainstalować dodatek typu plug-in, wykonaj następujące kroki:
+Aby zainstalować wtyczkę, wykonaj następujące kroki:
 
-1. Zaloguj się do swojej Jira lub Confluence wystąpienia jako administrator.
+1. Zaloguj się do swojego wystąpienia JIRA lub Confluence jako administrator.
 
-2. Przejdź do konsoli administracyjnej programu Jira/Confluence i wybierz **dodatki**.
+2. Przejdź do konsoli administracyjnej JIRA/Confluence i wybierz pozycję **Dodatki**.
 
-3. Z Microsoft Download Center, Pobierz [wtyczkę logowania jednokrotnego SAML firmy Microsoft dla programu Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [wtyczkę logowania jednokrotnego SAML firmy Microsoft dla Confluence](https://www.microsoft.com/download/details.aspx?id=56503).
+3. W centrum pobierania Microsoft Pobierz [wtyczkę Microsoft SAML SSO Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [dodatek Microsoft SAML SSO plugin for Confluence](https://www.microsoft.com/download/details.aspx?id=56503).
 
-   Odpowiednią wersję dodatku typu plug-in, zostanie wyświetlony w wynikach wyszukiwania.
+   W wynikach wyszukiwania zostanie wyświetlona odpowiednia wersja wtyczki.
 
-4. Wybierz wtyczkę, a Universal dodatku typu Plug-in Manager (UPM) instaluje go.
+4. Wybierz wtyczkę, a Menedżer uniwersalnej wtyczki (UPM) zainstaluje ją.
 
-Po zainstalowaniu dodatku typu plug-in pojawia się w **użytkownika zainstalowane dodatki** części **Zarządzanie dodatkami**.
+Gdy wtyczka jest zainstalowana, zostanie wyświetlona w sekcji **dodatków zainstalowanych użytkowników** w temacie **Zarządzanie dodatkami**.
 
-## <a name="plug-in-configuration"></a>Konfiguracja dodatku typu plug-in
+## <a name="plug-in-configuration"></a>Konfiguracja wtyczki
 
-Przed rozpoczęciem za pomocą wtyczki, należy skonfigurować. Wybierz pozycję wtyczki **Konfiguruj** przycisk, a następnie podaj szczegóły konfiguracji.
+Przed rozpoczęciem korzystania z wtyczki należy ją skonfigurować. Wybierz wtyczkę, wybierz przycisk **Konfiguruj** i podaj szczegóły konfiguracji.
 
-Na poniższej ilustracji przedstawiono ekran konfiguracji w usłudze Jira i Confluence:
+Na poniższej ilustracji przedstawiono ekran konfiguracji zarówno w JIRA, jak i w Confluence:
 
-![Ekran konfiguracji dodatku typu plug-in](./media/ms-confluence-jira-plugin-adminguide/jira.png)
+![Ekran konfiguracji wtyczki](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-* **Adres URL metadanych**: Adres URL można uzyskać metadanych federacji z usługi Azure AD.
+* **Adres URL metadanych**: adres URL umożliwiający uzyskiwanie metadanych Federacji z usługi Azure AD.
 
-* **Identyfikatory**: Adres URL usługi Azure AD używa do sprawdzania poprawności źródła żądania. Jest on mapowany **identyfikator** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https:// *\<domeny: port >* /.
+* **Identyfikatory**: adres URL, którego usługa Azure AD używa do weryfikacji źródła żądania. Mapuje do elementu **identyfikatora** w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https:// *\<Domain: port >* /.
 
-* **Adres URL odpowiedzi**: Adres URL odpowiedzi, inicjuje logowania języka SAML dostawcy tożsamości (IdP). Jest on mapowany **adres URL odpowiedzi** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https:// *\<domeny: port >* /plugins/servlet/saml/auth.
+* **Adres URL odpowiedzi**: adres URL odpowiedzi w dostawcy tożsamości (dostawcy tożsamości), który inicjuje Logowanie przy użyciu protokołu SAML. Jest on mapowany na element **adresu URL odpowiedzi** w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https:// *\<domena: port >* /plugins/servlet/SAML/auth.
 
-* **Adres URL logowania**: Adres URL logowania w inicjujący logowania języka SAML dostawcy tożsamości. Jest on mapowany **rejestracji jednokrotnej** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https:// *\<domeny: port >* /plugins/servlet/saml/auth.
+* **Adres URL logowania**: adres URL logowania w dostawcy tożsamości, który inicjuje Logowanie przy użyciu protokołu SAML. Jest on mapowany na element **Sign on** w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https:// *\<domena: port >* /plugins/servlet/SAML/auth.
 
-* **Identyfikator dostawcy tożsamości jednostki**: Identyfikator jednostki, która używa dostawcy tożsamości. To pole jest wypełniana po usunięciu adres URL metadanych.
+* **Identyfikator jednostki dostawcy tożsamości**: identyfikator jednostki używany przez dostawcy tożsamości. To pole jest wypełniane, gdy adres URL metadanych zostanie rozwiązany.
 
-* **Adres URL logowania**: Zaloguj się adres URL z dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
+* **Adres URL logowania**: adres URL logowania z dostawcy tożsamości. To pole jest wypełniane w usłudze Azure AD, gdy adres URL metadanych zostanie rozwiązany.
 
-* **Adres URL wylogowania**: Adres URL wylogowania dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
+* **Adres URL wylogowywania**: adres URL wylogowania z dostawcy tożsamości. To pole jest wypełniane w usłudze Azure AD, gdy adres URL metadanych zostanie rozwiązany.
 
-* **Certyfikat X.509**: Certyfikat X.509 dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
+* **Certyfikat x. 509**: certyfikat x. 509 dostawcy tożsamości. To pole jest wypełniane w usłudze Azure AD, gdy adres URL metadanych zostanie rozwiązany.
 
-* **Nazwa przycisku logowania**: Nazwa logowania przycisk, który organizacja chce, aby użytkownicy, aby wyświetlić na stronie logowania.
+* **Nazwa przycisku logowania**: nazwa przycisku logowania, który organizacja chce, aby użytkownicy mogli zobaczyć na stronie logowania.
 
-* **Lokalizacje identyfikator użytkownika SAML**: Lokalizacja, w którym identyfikator użytkownika w usłudze Jira lub Confluence jest oczekiwany w odpowiedzi SAML. Może być w **NameID** lub w nazwie atrybutu niestandardowego.
+* **Lokalizacje identyfikatora użytkownika SAML**: lokalizacja, w której jest oczekiwany identyfikator użytkownika JIRA lub Confluence w odpowiedzi SAML. Może być w **NameID** lub w nazwie atrybutu niestandardowego.
 
-* **Atrybut nazwy**: Nazwa atrybutu, gdy jest oczekiwany identyfikator użytkownika.
+* **Nazwa atrybutu**: nazwa atrybutu, w którym Oczekiwano identyfikatora użytkownika.
 
-* **Strona główna Włącz odnajdowanie obszaru**: Zaznaczenie, aby upewnić się, jeśli firma korzysta z usługi Active Directory Federation Services (ADFS) — na podstawie logowania — w.
+* **Włącz odnajdowanie obszaru macierzystego**: wybór, który ma być używany, jeśli firma korzysta z logowania opartego na Active Directory Federation Services (AD FS).
 
-* **Nazwa domeny**: Nazwa domeny, jeśli logowanie jest usług AD FS, na podstawie.
+* **Nazwa domeny**: nazwa domeny, jeśli logowanie odbywa się na podstawie AD FS.
 
-* **Włącz pojedynczego wylogowanie**: Zaznaczenie, aby upewnić się, jeśli chcesz wylogować się z usługi Azure AD, gdy użytkownik wylogowuje się z programu Jira lub Confluence.
+* **Włącz pojedynczy wylogowaniu**: wybór do wylogowania z usługi Azure AD, gdy użytkownik wyloguje się z JIRA lub Confluence.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-* **Otrzymujesz wiele błędów certyfikatu**: Zaloguj się do usługi Azure AD i usunąć wiele certyfikatów, które są dostępne dla aplikacji. Upewnij się, że występuje tylko jeden certyfikat.
+* **Otrzymujesz wiele błędów certyfikatów**: Zaloguj się do usługi Azure AD i Usuń wiele certyfikatów, które są dostępne dla aplikacji. Upewnij się, że istnieje tylko jeden certyfikat.
 
-* **Certyfikat wkrótce wygaśnie w usłudze Azure AD**: Dodatki zajmie się automatyczne Przerzucanie certyfikatu. Gdy certyfikat wkrótce wygaśnie, nowego certyfikatu powinna być oznaczona jako aktywny i nieużywanych certyfikaty powinny zostać usunięte. Gdy użytkownik próbuje zalogować się do programu Jira, w tym scenariuszu wtyczki odczyty i zapisywany nowy certyfikat.
+* **Certyfikat niedługo wygaśnie w usłudze Azure AD**: Dodatki zadbają o automatyczne Przerzucanie certyfikatu. Gdy certyfikat wkrótce wygaśnie, należy oznaczyć nowy certyfikat jako aktywny i nieużywane certyfikaty powinny zostać usunięte. Gdy użytkownik próbuje zalogować się do JIRA w tym scenariuszu, wtyczka pobiera i zapisuje nowy certyfikat.
 
-* **Aby wyłączyć WebSudo (Wyłącz sesji bezpiecznego administratora)** :
+* **Chcesz wyłączyć WebSudo (Wyłącz sesję administratora zabezpieczeń)** :
 
-  * Dla programu Jira administrator bezpiecznej sesji (oznacza to potwierdzenie hasła przed uzyskaniem dostępu do funkcji administracyjnych) są domyślnie włączone. Jeśli chcesz usunąć tę możliwość w wystąpieniu programu Jira, należy wprowadzić następujący wiersz w pliku jira config.properties: `ira.websudo.is.disabled = true`
+  * W przypadku usługi JIRA są domyślnie włączone bezpieczne sesje administratora (czyli potwierdzenie hasła przed uzyskaniem dostępu do funkcji administracyjnych). Jeśli chcesz usunąć tę możliwość w wystąpieniu programu JIRA, określ następujący wiersz w pliku JIRA-config. Properties: `ira.websudo.is.disabled = true`
 
-  * Aby uzyskać Confluence, postępuj zgodnie z instrukcjami [witrynie pomocy technicznej Confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html).
+  * W przypadku Confluence postępuj zgodnie z instrukcjami w [witrynie obsługi Confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html).
 
-* **Pola, które mogą być wypełnione przez adres URL metadanych nie są wprowadzenie uzupełniane**:
+* **Pola, które mają zostać wypełnione przez adres URL metadanych, nie są wypełniane**:
 
-  * Sprawdź, czy adres URL jest poprawny. Sprawdź, jeśli zmapowano poprawny identyfikator dzierżawy i aplikacji.
+  * Sprawdź, czy adres URL jest poprawny. Sprawdź, czy zamapowano prawidłowy identyfikator dzierżawy i aplikacji.
 
-  * Wprowadź adres URL w przeglądarce i zobacz, jeśli zostanie wyświetlony kod XML metadanych federacji.
+  * Wprowadź adres URL w przeglądarce i sprawdź, czy jest wyświetlany plik XML metadanych Federacji.
 
-* **Wystąpił błąd wewnętrzny serwera**: Przejrzyj dzienniki w katalogu dzienników instalacji. Jeśli otrzymujesz błąd, gdy użytkownik próbuje zarejestrować się przy użyciu logowania jednokrotnego usługi Azure AD, możesz udostępniać dzienniki z zespołem pomocy technicznej.
+* **Wystąpił wewnętrzny błąd serwera**: Zapoznaj się z dziennikami w katalogu dziennika instalacji. Jeśli wystąpi błąd podczas próby zalogowania się przy użyciu logowania jednokrotnego w usłudze Azure AD, możesz udostępnić dzienniki zespołowi pomocy technicznej.
 
-* **Występuje błąd "Nie znaleziono Identyfikatora użytkownika", gdy użytkownik próbuje zarejestrować się w**: Utwórz identyfikator użytkownika w usłudze Jira lub Confluence.
+* Wystąpił **błąd "nie znaleziono identyfikatora użytkownika", gdy użytkownik próbuje się zalogować**: Utwórz identyfikator użytkownika w JIRA lub Confluence.
 
-* **Występuje błąd "Nie można odnaleźć aplikacji" w usłudze Azure AD**: Zobacz, czy odpowiedni adres URL jest mapowany do aplikacji w usłudze Azure AD.
+* Wystąpił **błąd "nie znaleziono aplikacji" w usłudze Azure AD**: Sprawdź, czy odpowiedni adres URL jest mapowany do aplikacji w usłudze Azure AD.
 
-* **Potrzebujesz pomocy technicznej**: Dotrzyj do [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Zespół odpowiada w 24-48 godzin pracy.
+* **Potrzebujesz pomocy technicznej**: skontaktuj się z [zespołem integracji rejestracji jednokrotnej usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Zespół odpowiada za 24-48 godzin pracy.
 
-  Może również zgłosić bilet pomocy technicznej w firmie Microsoft za pośrednictwem kanału portalu Azure.
+  Możesz również zgłosić bilet pomocy technicznej w firmie Microsoft za pośrednictwem kanału Azure Portal.
 
-## <a name="plug-in-faq"></a>Wtyczka — często zadawane pytania
+## <a name="plug-in-faq"></a>Wtyczka często zadawane pytania
 
-Zapoznaj się poniżej — często zadawane pytania, jeśli masz dowolną kwerendę w sprawie tej wtyczki.
+Zapoznaj się z poniższymi pytaniami, jeśli masz jakieś zapytania dotyczące tej wtyczki.
 
-### <a name="what-does-the-plug-in-do"></a>Jak działa dodatku typu plug-in?
+### <a name="what-does-the-plug-in-do"></a>Co to jest wtyczka?
 
-Dodatek zapewnia możliwość logowania jednokrotnego (SSO) Atlassian Jira (w tym Core programu Jira, Jira Software, pomocy technicznej programu Jira) i Confluence oprogramowania lokalnego. Wtyczka działa z usługą Azure Active Directory (Azure AD) jako dostawcy tożsamości (IdP).
+Wtyczka udostępnia funkcję logowania jednokrotnego (SSO, Single Sign-on) dla Atlassian JIRA (w tym JIRA Core, JIRA Software, JIRA Service Desk) i Confluence oprogramowanie lokalne. Wtyczka współpracuje z usługą Azure Active Directory (Azure AD) jako dostawcą tożsamości (dostawcy tożsamości).
 
-### <a name="which-atlassian-products-does-the-plug-in-work-with"></a>Które produkty Atlassian działają wtyczki za pomocą?
+### <a name="which-atlassian-products-does-the-plug-in-work-with"></a>Które produkty Atlassianą współpracuje z wtyczką?
 
-Wtyczka działa z programu Jira i Confluence wersji w środowisku lokalnym.
+Wtyczka współpracuje z lokalnymi wersjami JIRA i Confluence.
 
-### <a name="does-the-plug-in-work-on-cloud-versions"></a>Działa wtyczki jest w wersji chmury?
+### <a name="does-the-plug-in-work-on-cloud-versions"></a>Czy wtyczka współpracuje z wersjami w chmurze?
 
-Nie. Wtyczka obsługuje tylko lokalne wersje programu Jira i Confluence.
+Nie. Wtyczka obsługuje tylko lokalne wersje systemów JIRA i Confluence.
 
-### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>Które wersje programu Jira i Confluence jest wtyczki pomocy technicznej?
+### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>Które wersje programu JIRA i Confluence obsługują wtyczkę?
 
 Wtyczka obsługuje następujące wersje:
 
-* Jira Core i oprogramowania: wersja od 6.0 do 7.12
-* Jira Service Desk: 3.0.0 lub 3.5.0
+* JIRA rdzeń i oprogramowanie: od 6,0 do 7,12
+* JIRA Service Desk: 3.0.0 do 3.5.0
 * Usługa JIRA obsługuje także wersję 5.2. Aby uzyskać więcej szczegółowych informacji, kliknij następujący link: [logowanie jednokrotne usługi Microsoft Azure Active Directory dla usługi JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence: 5.0 do 5.10
+* Confluence: 5,0 do 5,10
 * Confluence: 6.0.1
 * Confluence: 6.1.1
 * Confluence: 6.2.1
@@ -204,40 +205,40 @@ Wtyczka obsługuje następujące wersje:
 * Confluence: 6.11.0
 * Confluence: 6.12.0
 
-### <a name="is-the-plug-in-free-or-paid"></a>Wtyczka jest bezpłatne lub płatne?
+### <a name="is-the-plug-in-free-or-paid"></a>Czy wtyczka jest bezpłatna czy płatna?
 
-Jest bezpłatnym dodatkiem.
+Jest to bezpłatny dodatek.
 
-### <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Należy o ponowne uruchomienie programu Jira lub Confluence, po czy mogę wdrożyć dodatku typu plug-in?
+### <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Czy muszę ponownie uruchomić JIRA lub Confluence po wdrożeniu wtyczki?
 
-Ponowne uruchomienie komputera nie jest wymagane. Możesz rozpocząć od razu korzystać do wtyczki.
+Nie jest wymagane ponowne uruchomienie komputera. Możesz zacząć od razu korzystać z wtyczki.
 
-### <a name="how-do-i-get-support-for-the-plug-in"></a>Jak uzyskać pomoc techniczną dla dodatku typu plug-in?
+### <a name="how-do-i-get-support-for-the-plug-in"></a>Jak mogę uzyskać pomoc techniczną dla wtyczki?
 
-Można skontaktowanie się z [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) dla pomocy technicznej potrzebnych dla tej wtyczki. Zespół odpowiada w 24-48 godzin pracy.
+Aby uzyskać pomoc techniczną dotyczącą tej wtyczki, możesz skontaktować się z [zespołem integracji usługi Azure AD SSO](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) . Zespół odpowiada za 24-48 godzin pracy.
 
-Może również zgłosić bilet pomocy technicznej w firmie Microsoft za pośrednictwem kanału portalu Azure.
+Możesz również zgłosić bilet pomocy technicznej w firmie Microsoft za pośrednictwem kanału Azure Portal.
 
-### <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>Czy wtyczki prac na komputerze Mac lub systemu Ubuntu instalację programu Jira i Confluence?
+### <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>Czy wtyczka będzie działała na komputerach Mac lub Ubuntu instalacji JIRA i Confluence?
 
-Przetestowaliśmy dodatku typu plug-in tylko w 64-bitowej instalacji systemu Windows Server Jira i Confluence.
+Wtyczka została przetestowana tylko na 64-bitowych instalacjach systemu Windows Server z JIRA i Confluence.
 
-### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>Wykonuje pracę wtyczki za pomocą dostawców tożsamości innych niż Usługa Azure AD?
+### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>Czy wtyczka współpracuje z usługą dostawców tożsamości inną niż usługa Azure AD?
 
 Nie. Działa tylko z usługą Azure AD.
 
-### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>Jakie wersje protokołu SAML działają wtyczki za pomocą?
+### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>W jakiej wersji protokołu SAML działa wtyczka?
 
-Działa z języka SAML 2.0.
+Działa z użyciem protokołu SAML 2,0.
 
-### <a name="does-the-plug-in-do-user-provisioning"></a>Wtyczka robi aprowizacji użytkowników?
+### <a name="does-the-plug-in-do-user-provisioning"></a>Czy wtyczka wykonuje aprowizacji użytkowników?
 
-Nie. Dodatek zapewnia tylko rejestracji Jednokrotnej opartej na SAML 2.0. Użytkownik będzie musiał można udostępnić w aplikacji przed logowania SSO.
+Nie. Wtyczka zapewnia tylko Logowanie jednokrotne oparte na protokole SAML 2,0. Użytkownik musi być zainicjowany w aplikacji przed logowaniem jednokrotnym.
 
-### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>Czy obsługa wtyczki wersje klastra programu Jira i Confluence?
+### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>Czy wtyczka obsługuje klastry wersji JIRA i Confluence?
 
-Nie. Wtyczka działa z programu Jira i Confluence wersji w środowisku lokalnym.
+Nie. Wtyczka współpracuje z lokalnymi wersjami JIRA i Confluence.
 
-### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>Wykonuje pracę wtyczkę z programu Jira i Confluence wersji protokołu HTTP?
+### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>Czy wtyczka współpracuje z wersjami HTTP JIRA i Confluence?
 
-Nie. Wtyczka działa przy użyciu tylko urządzenia z włączonym protokołem HTTPS.
+Nie. Wtyczka współpracuje tylko z instalacjami z obsługą protokołu HTTPS.

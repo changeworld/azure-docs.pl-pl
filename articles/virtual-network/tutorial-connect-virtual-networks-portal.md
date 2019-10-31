@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: bf7b9b288a32d9f6cc2c9e0d7dba4b074c4bf878
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515717"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73164053"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Samouczek: łączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych z użyciem witryny Azure Portal
 
@@ -54,7 +54,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
     |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*.|
     |Region| Wybierz pozycję **Wschodnie stany USA**.|
     |Nazwa|myVirtualNetwork1|
-    ! [Konfigurowanie ustawień podstawowej sieci wirtualnej] (
+   
 4. Na stronie **adresy IP** wprowadź wartość 10.0.0.0/16 dla pola **przestrzeń adresowa** . Kliknij przycisk **Dodaj podsieć** poniżej i wprowadź Subnet1 dla **nazwy podsieci** i 10.0.0.0/24 dla **zakresu adresów podsieci**.
    
 5. Ponownie wykonaj kroki 1–3 z następującymi zmianami:
@@ -147,7 +147,7 @@ Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wy
 6. W kolejnym kroku polecenie ping jest używane do komunikacji z maszyną wirtualną *myVm2* z poziomu maszyny wirtualnej *myVm1*. Polecenie ping używa protokołu ICMP (Internet Control Message Protocol), którego ruch jest domyślnie blokowany przez zaporę systemu Windows. Na maszynie wirtualnej *myVm1* wyłącz blokowanie protokołu ICMP przez zaporę systemu Windows, dzięki czemu w kolejnym kroku będzie można wykonać polecenie ping względem tej maszyny wirtualnej z poziomu maszyny wirtualnej *myVm2* przy użyciu programu PowerShell:
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
     
     Chociaż w tym samouczku do komunikacji między maszynami wirtualnymi jest używane polecenie ping, nie zaleca się zezwalania na komunikację za pomocą protokołu ICMP w zaporze systemu Windows we wdrożeniach produkcyjnych.

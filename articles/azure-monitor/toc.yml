@@ -119,10 +119,6 @@
           href: app/troubleshoot-faq.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Scenariusze monitorowania
-      items:
-        - name: Monitorowanie usługi platformy Azure
-          href: insights/monitor-azure-resource.md
     - name: Zarządzanie usługą Azure Monitor
       items:
         - name: Projektowanie wdrożenia obszaru roboczego
@@ -156,160 +152,28 @@
               href: app/pricing.md
             - name: Rejestrowanie użycia danych i kosztów
               href: platform/manage-cost-storage.md
-    - name: Monitorowanie zasobów
+    - name: Application Insights
       items:
-        - name: Aplikacje
+        - name: Omówienie usługi Application Insights
+          href: app/app-insights-overview.md
+        - name: Monitorowanie oparte na kodzie
           items:
-            - name: Omówienie usługi Application Insights
-              href: app/app-insights-overview.md
-            - name: Monitorowanie oparte na kodzie
-              items:
-                - name: ASP.NET Core
-                  displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
-                  href: app/asp-net-core.md
-                - name: ASP.NET
-                  displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
-                  href: app/asp-net.md
-                - name: Aplikacje bez HTTP/aplikacje w tle
-                  displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
-                  href: app/worker-service.md
-                - name: Konsola .NET
-                  displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
-                  href: app/console.md
-                - name: ILogger
-                  displayname: 'ilogger, logging, log'
-                  href: app/ilogger.md
-                - name: Java
-                  items:
-                    - name: Aplikacje internetowe
-                      displayname: java
-                      href: app/java-get-started.md
-                    - name: Aplikacje platformy Docker
-                      href: app/docker.md
-                    - name: Ślady dzienników
-                      href: app/java-trace-logs.md
-                    - name: Metryki systemu UNIX
-                      href: app/java-collectd.md
-                    - name: Zależności
-                      href: app/java-agent.md
-                    - name: Filtrowanie danych telemetrycznych
-                      href: app/java-filter-telemetry.md
-                    - name: Metryki mikrometryczne
-                      displayname: java
-                      href: app/micrometer-java.md
-                    - name: Aplikacja Spring Boot
-                      displayname: java
-                      href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
-                    - name: Rozwiązywanie problemów
-                      href: app/java-troubleshoot.md
-                - name: Node.js
-                  href: app/nodejs.md
-                - name: Python
-                  items:
-                    - name: Omówienie
-                      href: app/opencensus-python.md
-                    - name: Zależności
-                      href: app/opencensus-python-dependency.md
-                - name: Strony sieci Web
-                  items:
-                    - name: Język JavaScript po stronie klienta
-                      href: app/javascript.md
-                - name: Podsumowanie interfejsu API usługi Application Insights
-                  displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
-                  href: app/api-custom-events-metrics.md
-                - name: Rozwiązywanie problemów z platformą ASP.NET
-                  href: app/asp-net-troubleshoot-no-data.md
-            - name: Monitorowanie bez użycia kodu
-              items:
-                - name: Maszyna wirtualna i zestaw skalowania platformy Azure
-                  href: app/azure-vm-vmss-apps.md
-                - name: Azure App Service
-                  displayname: 'App Service, web app, PaaS, Azure web app'
-                  href: app/azure-web-apps.md
-                - name: usług Azure Cloud Services
-                  displayname: 'cloud, cloud services, PaaS'
-                  href: app/cloudservices.md
-                - name: Azure Functions
-                  displayname: 'functions, monitor functions, automation'
-                  href: ../azure-functions/functions-monitoring.md
-                - name: Aplikacje rozwiązania Kubernetes
-                  displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
-                  href: app/kubernetes.md
-                - name: Monitor stanu (starsza wersja)
-                  displayname: 'IIS monitoring, on premises monitoring, on prem,'
-                  href: app/monitor-performance-live-website-now.md
-                - name: Serwery lokalne
-                  items:
-                    - name: Omówienie
-                      displayname: 'IIS monitoring, on premises monitoring, on prem,'
-                      href: app/status-monitor-v2-overview.md
-                    - name: Wprowadzenie
-                      href: app/status-monitor-v2-get-started.md
-                    - name: Szczegółowe instrukcje
-                      href: app/status-monitor-v2-detailed-instructions.md
-                    - name: Znane problemy i rozwiązywanie problemów
-                      href: app/status-monitor-v2-troubleshoot.md
-                    - name: API Disable-InstrumentationEngine
-                      href: app/status-monitor-v2-api-disable-instrumentation-engine.md
-                    - name: API Disable-ApplicationInsightsMonitoring
-                      href: app/status-monitor-v2-api-disable-monitoring.md
-                    - name: API Enable-InstrumentationEngine
-                      href: app/status-monitor-v2-api-enable-instrumentation-engine.md
-                    - name: API Enable-ApplicationInsightsMonitoring
-                      href: app/status-monitor-v2-api-enable-monitoring.md
-                    - name: API Get-ApplicationInsightsMonitoringConfig
-                      href: app/status-monitor-v2-api-get-config.md
-                    - name: API Get-ApplicationInsightsMonitoringStatus
-                      href: app/status-monitor-v2-api-get-status.md
-                    - name: API Set-ApplicationInsightsMonitoringConfig
-                      href: app/status-monitor-v2-api-set-config.md
-                    - name: API Start-ApplicationInsightsMonitoringTrace
-                      href: app/status-monitor-v2-api-start-trace.md
-            - name: Tworzenie zasobu
-              href: app/create-new-resource.md
-            - name: Pulpit nawigacyjny aplikacji
-              displayname: 'dashboard, Application Insights dashboard'
-              href: app/overview-dashboard.md
-            - name: Mapa aplikacji
-              displayname: 'appmap, app map, dependency map, dependencies, hotspots, cloud role name, cloudrolename, cloud_rolename, cloud.rolename, cloud role instance, node'
-              href: app/app-map.md
-            - name: Diagnostyka transakcji
-              href: app/transaction-diagnostics.md
-              displayname: 'e2e, end-to-end, component, dependency, cross-compoent transaction, operation ID, dependencies'
-            - name: Dostępność
-              items:
-                - name: Testy adresów URL
-                  displayname: 'ping, ping tests, availability, GSM, up/down'
-                  href: app/monitor-web-app-availability.md
-                - name: Testy wieloetapowe
-                  displayname: 'availability, GSM, visual studio web test, web test'
-                  href: app/availability-multistep.md
-                - name: Dostępność i usługa Azure Functions
-                  href: app/availability-azure-functions.md
-                  displayname: 'availability,azure functions,TrackAvailability(), timer function, azure gov, azure china, custom test, customized tests, contentmatch'
-                - name: Alerty dostępności
-                  displayname: 'alerts, global, alerting'
-                  href: app/availability-alerts.md
-                - name: Testowanie wydajności
-                  href: app/performance-testing.md
-                - name: Rozwiązywanie problemów
-                  displayname: 'availability, troubleshoot, troubleshoot availability'
-                  href: app/troubleshoot-availability.md
-            - name: Rozproszone śledzenie
-              items:
-                - name: Omówienie
-                  href: app/distributed-tracing.md
-                - name: Korelacja telemetrii
-                  href: app/correlation.md
-                  displayname: 'correlation headers, w3c, distributed tracing, tracing'
-                - name: Lokalna usługa przesyłania dalej
-                  href: app/opencensus-local-forwarder.md
-                - name: Przejdź
-                  href: app/opencensus-go.md
-            - name: Transmisja strumieniowa metryk na żywo
-              displayname: 'live, quickpulse, quick pulse, live metrics'
-              href: app/live-stream.md
-            - name: Metryki
+            - name: ASP.NET Core
+              displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
+              href: app/asp-net-core.md
+            - name: ASP.NET
+              displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
+              href: app/asp-net.md
+            - name: Aplikacje bez HTTP/aplikacje w tle
+              displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
+              href: app/worker-service.md
+            - name: Konsola .NET
+              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
+              href: app/console.md
+            - name: ILogger
+              displayname: 'ilogger, logging, log'
+              href: app/ilogger.md
+            - name: Java
               items:
                 - name: Metryki dziennika i wstępnie zagregowane
                   href: app/pre-aggregated-metrics-log-metrics.md
@@ -396,6 +260,8 @@
                   href: app/usage-flows.md
                 - name: Analiza użycia
                   href: app/usage-troubleshoot.md
+                - name: Skoroszyty
+                  href: app/usage-workbooks.md
             - name: Azure DevOps
               items:
                 - name: Adnotacje dotyczące wersji
@@ -429,274 +295,516 @@
                 - name: Wyjątki
                   href: app/asp-net-exceptions.md
                 - name: Ślady dzienników
-                  href: app/asp-net-trace-logs.md
-                - name: Liczniki wydajności
-                  href: app/performance-counters.md
-                - name: EventCounters
-                  href: app/eventcounters.md
+                  href: app/java-trace-logs.md
+                - name: Metryki systemu UNIX
+                  href: app/java-collectd.md
                 - name: Zależności
-                  href: app/asp-net-dependencies.md
-                - name: Plik ApplicationInsights.config
-                  href: app/configuration-with-applicationinsights-config.md
-                - name: Korelowanie niestandardowych źródeł danych
-                  href: app/custom-data-correlation.md
-                - name: Tematy specjalne
-                  items:
-                    - name: Szczegółowa diagnostyka dla usług i aplikacji internetowych
-                      href: app/devops.md
-                    - name: Monitorowanie wydajności w aplikacjach internetowych
-                      href: app/web-monitor-performance.md
-                    - name: 'Oddzielanie programowania, testowania i produkcji'
-                      href: app/separate-resources.md
-                    - name: Jak mogę (...) w usłudze Application Insights?
-                      href: app/how-do-i.md
+                  href: app/java-agent.md
+                - name: Filtrowanie danych telemetrycznych
+                  href: app/java-filter-telemetry.md
+                - name: Metryki mikrometryczne
+                  displayname: java
+                  href: app/micrometer-java.md
+                - name: Aplikacja Spring Boot
+                  displayname: java
+                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
+                - name: Rozwiązywanie problemów
+                  href: app/java-troubleshoot.md
+            - name: Node.js
+              href: app/nodejs.md
+            - name: Python
+              items:
+                - name: Omówienie
+                  href: app/opencensus-python.md
+                - name: Zależności
+                  href: app/opencensus-python-dependency.md
+            - name: Strony sieci Web
+              items:
+                - name: Język JavaScript po stronie klienta
+                  href: app/javascript.md
+            - name: Podsumowanie interfejsu API usługi Application Insights
+              displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
+              href: app/api-custom-events-metrics.md
+            - name: Rozwiązywanie problemów z platformą ASP.NET
+              href: app/asp-net-troubleshoot-no-data.md
+        - name: Monitorowanie bez użycia kodu
+          items:
+            - name: Maszyna wirtualna i zestaw skalowania platformy Azure
+              href: app/azure-vm-vmss-apps.md
+            - name: Azure App Service
+              displayname: 'App Service, web app, PaaS, Azure web app'
+              href: app/azure-web-apps.md
+            - name: usług Azure Cloud Services
+              displayname: 'cloud, cloud services, PaaS'
+              href: app/cloudservices.md
+            - name: Azure Functions
+              displayname: 'functions, monitor functions, automation'
+              href: ../azure-functions/functions-monitoring.md
+            - name: Aplikacje rozwiązania Kubernetes
+              displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
+              href: app/kubernetes.md
+            - name: Monitor stanu (starsza wersja)
+              displayname: 'IIS monitoring, on premises monitoring, on prem,'
+              href: app/monitor-performance-live-website-now.md
+            - name: Serwery lokalne
+              items:
+                - name: Omówienie
+                  displayname: 'IIS monitoring, on premises monitoring, on prem,'
+                  href: app/status-monitor-v2-overview.md
+                - name: Wprowadzenie
+                  href: app/status-monitor-v2-get-started.md
+                - name: Szczegółowe instrukcje
+                  href: app/status-monitor-v2-detailed-instructions.md
+                - name: Znane problemy i rozwiązywanie problemów
+                  href: app/status-monitor-v2-troubleshoot.md
+                - name: API Disable-InstrumentationEngine
+                  href: app/status-monitor-v2-api-disable-instrumentation-engine.md
+                - name: API Disable-ApplicationInsightsMonitoring
+                  href: app/status-monitor-v2-api-disable-monitoring.md
+                - name: API Enable-InstrumentationEngine
+                  href: app/status-monitor-v2-api-enable-instrumentation-engine.md
+                - name: API Enable-ApplicationInsightsMonitoring
+                  href: app/status-monitor-v2-api-enable-monitoring.md
+                - name: API Get-ApplicationInsightsMonitoringConfig
+                  href: app/status-monitor-v2-api-get-config.md
+                - name: API Get-ApplicationInsightsMonitoringStatus
+                  href: app/status-monitor-v2-api-get-status.md
+                - name: API Set-ApplicationInsightsMonitoringConfig
+                  href: app/status-monitor-v2-api-set-config.md
+                - name: API Start-ApplicationInsightsMonitoringTrace
+                  href: app/status-monitor-v2-api-start-trace.md
+        - name: Tworzenie zasobu
+          href: app/create-new-resource.md
+        - name: Pulpit nawigacyjny aplikacji
+          displayname: 'dashboard, Application Insights dashboard'
+          href: app/overview-dashboard.md
+        - name: Mapa aplikacji
+          displayname: 'appmap, app map, dependency map, dependencies, hotspots, cloud role name, cloudrolename, cloud_rolename, cloud.rolename, cloud role instance, node'
+          href: app/app-map.md
+        - name: Diagnostyka transakcji
+          href: app/transaction-diagnostics.md
+          displayname: 'e2e, end-to-end, component, dependency, cross-compoent transaction, operation ID, dependencies'
+        - name: Dostępność
+          items:
+            - name: Testy adresów URL
+              displayname: 'ping, ping tests, availability, GSM, up/down'
+              href: app/monitor-web-app-availability.md
+            - name: Testy wieloetapowe
+              displayname: 'availability, GSM, visual studio web test, web test'
+              href: app/availability-multistep.md
+            - name: Dostępność i usługa Azure Functions
+              href: app/availability-azure-functions.md
+              displayname: 'availability,azure functions,TrackAvailability(), timer function, azure gov, azure china, custom test, customized tests, contentmatch'
+            - name: Alerty dostępności
+              displayname: 'alerts, global, alerting'
+              href: app/availability-alerts.md
+            - name: Testowanie wydajności
+              href: app/performance-testing.md
+            - name: Rozwiązywanie problemów
+              displayname: 'availability, troubleshoot, troubleshoot availability'
+              href: app/troubleshoot-availability.md
+        - name: Rozproszone śledzenie
+          items:
+            - name: Omówienie
+              href: app/distributed-tracing.md
+            - name: Korelacja telemetrii
+              href: app/correlation.md
+              displayname: 'correlation headers, w3c, distributed tracing, tracing'
+            - name: Lokalna usługa przesyłania dalej
+              href: app/opencensus-local-forwarder.md
+            - name: Przejdź
+              href: app/opencensus-go.md
+        - name: Transmisja strumieniowa metryk na żywo
+          displayname: 'live, quickpulse, quick pulse, live metrics'
+          href: app/live-stream.md
+        - name: Metryki
+          items:
+            - name: Metryki dziennika i wstępnie zagregowane
+              href: app/pre-aggregated-metrics-log-metrics.md
+            - name: Definicje metryk dziennika
+              href: platform/app-insights-metrics.md
+            - name: Klasyczny Eksplorator metryk
+              href: app/metrics-explorer.md
+        - name: Wyszukiwanie
+          href: app/diagnostic-search.md
+        - name: Profiler
+          items:
+            - name: Omówienie
+              displayname: 'profiling, debugging, code performance, perf'
+              href: app/profiler-overview.md
+            - name: Włączanie profilera dla usługi App Service
+              href: app/profiler.md
+            - name: Włączanie profilera dla usługi w chmurze
+              href: app/profiler-cloudservice.md
+            - name: Włączanie profilera dla aplikacji usługi Service Fabric
+              href: app/profiler-servicefabric.md
+            - name: Włączanie profilera dla maszyny wirtualnej platformy Azure
+              href: app/profiler-vm.md
+            - name: Profiler dla usług aplikacji w systemie Linux (wersja zapoznawcza)
+              href: app/profiler-aspnetcore-linux.md
+            - name: Ustawienia profilera
+              href: app/profiler-settings.md
+            - name: Śledzenie żądań na potrzeby profilowania
+              href: app/profiler-trackrequests.md
+            - name: Rozwiązywanie problemów z profilerem
+              href: app/profiler-troubleshooting.md
+        - name: Debuger migawek
+          items:
+            - name: Omówienie
+              displayname: 'snapshot, debug, debugger, snapshot debugger, snapshotdebugger'
+              href: app/snapshot-debugger.md
+            - name: Włączanie rozszerzenia Snapshot Debugger dla usługi App Service
+              href: app/snapshot-debugger-appservice.md
+            - name: Włączanie rozszerzenia Snapshot Debugger dla innych środowisk
+              href: app/snapshot-debugger-vm.md
+            - name: Uaktualnianie rozszerzenia Snapshot Debugger
+              href: app/snapshot-debugger-upgrade.md
+            - name: Rozwiązywanie problemów z rozszerzeniem Snapshot Debugger
+              displayname: 'troubleshoot, troubleshooting'
+              href: app/snapshot-debugger-troubleshoot.md
+        - name: Wykrywanie inteligentne
+          href: app/proactive-diagnostics.md
+          items:
+            - name: Anomalie błędów
+              href: app/proactive-failure-diagnostics.md
+            - name: Anomalie wydajności
+              href: app/proactive-performance-diagnostics.md
+            - name: Degradacja śladów
+              href: app/proactive-trace-severity.md
+            - name: Wzrost liczby wyjątków
+              href: app/proactive-exception-volume.md
+            - name: Przeciek pamięci
+              href: app/proactive-potential-memory-leak.md
+            - name: Wykrywanie zabezpieczeń
+              href: app/proactive-application-security-detection-pack.md
+            - name: usług Azure Cloud Services
+              href: app/proactive-cloud-services.md
+            - name: Zarządzaj regułami wykrywania inteligentnego
+              href: app/proactive-arm-config.md
+            - name: Powiadomienie e-mail
+              href: app/proactive-email-notification.md
+        - name: Użycie (analiza zachowania użytkownika)
+          items:
+            - name: Omówienie
+              displayname: 'user behavior analytics, user behavior, usage, behavioral analytics'
+              href: app/usage-overview.md
+            - name: Wysyłanie kontekstu użytkownika
+              href: app/usage-send-user-context.md
+            - name: 'Użytkownicy, sesje, zdarzenia'
+              href: app/usage-segmentation.md
+            - name: Lejki
+              href: app/usage-funnels.md
+            - name: Kohorty
+              href: app/usage-cohorts.md
+            - name: Wpływ
+              href: app/usage-impact.md
+            - name: Przechowywanie
+              href: app/usage-retention.md
+            - name: Przepływy użytkowników
+              href: app/usage-flows.md
+            - name: Analiza użycia
+              href: app/usage-troubleshoot.md
+        - name: Azure DevOps
+          items:
+            - name: Adnotacje dotyczące wersji
+              href: app/annotations.md
+            - name: Monitorowanie ciągłe
+              href: app/continuous-monitoring.md
+        - name: Konfiguracja zaawansowana
+          items:
+            - name: Kontrola dostępu
+              href: app/resources-roles-access-control.md
+            - name: Kolekcja adresów IP
+              href: app/ip-collection.md
+              displayname: 'geolocation, IP collection, IP tracking, IP storage'
+            - name: Próbkowanie
+              displayname: 'adaptive sampling, fixed rate sample, fixed sampling, ingestion sampling'
+              href: app/sampling.md
+            - name: Kanały telemetrii
+              dispayname: 'in memory, server telemetry channel, channel, inmemory, servertelemetry'
+              href: app/telemetry-channels.md
+            - name: Procesory telemetrii
+              displayname: 'processors, filtering, telemetry filtering, telemetry processor'
+              href: app/api-filtering-sampling.md
+            - name: Korelacja telemetrii
+              href: app/correlation.md
+              displayname: 'correlation headers, w3c, distributed tracing'
+            - name: Śledzenie operacji niestandardowych w zestawie SDK .NET
+              href: app/custom-operations-tracking.md
+              displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
+            - name: Niestandardowe raporty przesyłane pocztą e-mail
+              href: app/automate-custom-reports.md
+            - name: Wyjątki
+              href: app/asp-net-exceptions.md
+            - name: Ślady dzienników
+              href: app/asp-net-trace-logs.md
+            - name: Liczniki wydajności
+              href: app/performance-counters.md
+            - name: EventCounters
+              href: app/eventcounters.md
+            - name: Zależności
+              href: app/asp-net-dependencies.md
+            - name: Plik ApplicationInsights.config
+              href: app/configuration-with-applicationinsights-config.md
+            - name: Korelowanie niestandardowych źródeł danych
+              href: app/custom-data-correlation.md
+            - name: Tematy specjalne
+              items:
+                - name: Szczegółowa diagnostyka dla usług i aplikacji internetowych
+                  href: app/devops.md
+                - name: Monitorowanie wydajności w aplikacjach internetowych
+                  href: app/web-monitor-performance.md
+                - name: 'Oddzielanie programowania, testowania i produkcji'
+                  href: app/separate-resources.md
+                - name: Jak mogę (...) w usłudze Application Insights?
+                  href: app/how-do-i.md
+        - name: Eksportowanie
+          items:
+            - name: Eksport ciągły
+              href: app/export-telemetry.md
+            - name: Eksportowanie do usługi Stream Analytics
+              href: app/export-stream-analytics.md
+            - name: Eksportowanie do bazy danych SQL przy użyciu usługi Stream Analytics
+              href: app/code-sample-export-sql-stream-analytics.md
+            - name: Eksportowanie modelu danych
+              href: app/export-data-model.md
+        - name: Visual Studio
+          items:
+            - name: Informacje na temat technologii F5
+              href: app/visual-studio.md
+            - name: Trends
+              href: app/visual-studio-trends.md
+            - name: CodeLens
+              href: app/visual-studio-codelens.md
+        - name: Inne platformy
+          items:
+            - name: Witryny programu SharePoint
+              href: app/sharepoint.md
+            - name: Pulpit systemu Windows
+              href: app/windows-desktop.md
+    - name: Monitorowanie zasobów platformy Azure
+      items:
+        - name: Monitorowanie usługi platformy Azure
+          href: insights/monitor-azure-resource.md
+        - name: Monitorowanie grup zasobów
+          href: insights/resource-group-insights.md
+        - name: Omówienie dzienników platformy
+          href: platform/platform-logs-overview.md
+        - name: Dzienniki zasobów
+          items:
+            - name: Omówienie
+              href: platform/resource-logs-overview.md
+            - name: Zbieranie dzienników w usłudze Azure Monitor
+              href: platform/resource-logs-collect-workspace.md
+            - name: Archiwizowanie w magazynie
+              href: platform/resource-logs-collect-storage.md
+            - name: Przesyłanie strumieniowe do usługi Event Hubs
+              href: platform/resource-logs-stream-event-hubs.md
+        - name: Dziennik aktywności
+          items:
+            - name: Omówienie
+              href: platform/activity-logs-overview.md
+            - name: Wyświetlanie i pobieranie
+              href: platform/activity-log-view.md
+            - name: Zbieranie i analizowanie
+              href: platform/activity-log-collect.md
+            - name: Zbieranie w wielu dzierżawach
+              href: platform/activity-log-collect-tenants.md
             - name: Eksportowanie
-              items:
-                - name: Eksport ciągły
-                  href: app/export-telemetry.md
-                - name: Eksportowanie do usługi Stream Analytics
-                  href: app/export-stream-analytics.md
-                - name: Eksportowanie do bazy danych SQL przy użyciu usługi Stream Analytics
-                  href: app/code-sample-export-sql-stream-analytics.md
-                - name: Eksportowanie modelu danych
-                  href: app/export-data-model.md
-            - name: Visual Studio
-              items:
-                - name: Informacje na temat technologii F5
-                  href: app/visual-studio.md
-                - name: Trends
-                  href: app/visual-studio-trends.md
-                - name: CodeLens
-                  href: app/visual-studio-codelens.md
-            - name: Inne platformy
-              items:
-                - name: Witryny programu SharePoint
-                  href: app/sharepoint.md
-                - name: Pulpit systemu Windows
-                  href: app/windows-desktop.md
-        - name: Containers
+              href: platform/activity-log-export.md
+            - name: Schemat
+              href: platform/activity-log-schema.md
+        - name: Ustawienia diagnostyczne
           items:
-            - name: Usługa Azure Monitor dla kontenerów
+            - name: Tworzenie ustawienia diagnostycznego
+              href: platform/diagnostic-settings.md
+            - name: Tworzenie ustawienia diagnostycznego przy użyciu usługi Resource Manager
+              href: platform/diagnostic-settings-template.md
+            - name: Zmiana na format magazynu obiektów blob
+              href: platform/resource-logs-blob-format.md
+        - name: Przesyłanie strumieniowe danych do usługi Event Hubs
+          href: platform/stream-monitoring-data-event-hubs.md
+    - name: Monitorowanie maszyn wirtualnych i zasobów obliczeniowych
+      items:
+        - name: Agenci
+          items:
+            - name: Omówienie agentów
+              href: platform/agents-overview.md
+            - name: Rozszerzenie Diagnostyki Azure
               items:
                 - name: Omówienie
-                  href: insights/container-insights-overview.md
-                - name: Często zadawane pytania
-                  href: insights/container-insights-faq.md
-                - name: Włączanie monitorowania
+                  href: platform/diagnostics-extension-overview.md
+                - name: Zbieranie dzienników
+                  href: platform/azure-storage-iis-table.md
+                - name: Windows
                   items:
-                    - name: Omówienie włączania monitorowania
-                      href: insights/container-insights-onboard.md
-                    - name: Włączanie dla nowego klastra
-                      href: insights/container-insights-enable-new-cluster.md
-                    - name: Włączanie dla istniejącego klastra
-                      href: insights/container-insights-enable-existing-clusters.md
-                    - name: Mapowania regionów
-                      href: insights/container-insights-region-mapping.md
-                - name: Analiza
-                  href: insights/container-insights-analyze.md
-                - name: Wyłączanie monitorowania
-                  href: insights/container-insights-optout.md
-                - name: Wyświetlanie dzienników na żywo
-                  href: insights/container-insights-live-logs.md
-                - name: Analizowanie danych przy użyciu zapytań dzienników
-                  href: insights/container-insights-log-search.md
-                - name: Generowanie alertów
-                  href: insights/container-insights-alerts.md
+                    - name: Historia wersji
+                      href: platform/diagnostics-extension-schema.md
+                    - name: Schemat
+                      href: platform/diagnostics-extension-schema-1dot3.md
+                    - name: Wysyłanie do usługi Azure Storage
+                      href: platform/diagnostics-extension-to-storage.md
+                    - name: Wysyłanie do usługi Application Insights
+                      href: platform/diagnostics-extension-to-application-insights.md
+                    - name: Wysyłanie do usługi Event Hubs
+                      href: platform/diagnostics-extension-stream-event-hubs.md
+                    - name: Wysyłanie do usługi Azure Monitor jako metryki niestandardowe
+                      items:
+                        - name: Maszyna wirtualna
+                          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                        - name: Zestaw skalowania maszyn wirtualnych
+                          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                        - name: Klasyczna maszyna wirtualna
+                          href: platform/collect-custom-metrics-guestos-vm-classic.md
+                        - name: Usługa w chmurze
+                          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Format dzienników diagnostycznych JSON Lines
+                      href: platform/diagnostic-logs-append-blobs.md
+                    - name: Rozwiązywanie problemów
+                      href: platform/diagnostics-extension-troubleshooting.md
+                - name: Linux
+                  items:
+                    - name: Używanie z maszynami wirtualnymi
+                      href: ../virtual-machines/extensions/diagnostics-linux.md
+                    - name: Metryki niestandardowe z programem Telegraf
+                      href: platform/collect-custom-metrics-linux-telegraf.md
+            - name: Konfigurowanie agentów usługi Log Analytics
+              items:
+                - name: Omówienie
+                  href: platform/log-analytics-agent.md
+                - name: Agenci dla systemu Windows
+                  href: platform/agent-windows.md
+                - name: Rozszerzenie maszyny wirtualnej dla systemu Windows
+                  href: ../virtual-machines/windows/extensions-oms.md
+                - name: Rozszerzenie maszyny wirtualnej dla systemu Linux
+                  href: ../virtual-machines/linux/extensions-oms.md
+                - name: Brama usługi Log Analytics
+                  href: platform/gateway.md
                 - name: Agent zarządzania
-                  href: insights/container-insights-manage-agent.md
-                - name: Konfigurowanie ustawień zbierania agenta
-                  href: insights/container-insights-agent-config.md
-                - name: Aktualizowanie w celu włączenia metryk
-                  href: insights/container-insights-update-metrics.md
-                - name: Rozwiązywanie problemów
-                  href: insights/container-insights-troubleshoot.md
-            - name: Platforma Docker i monitorowanie kontenerów systemu Windows
-              href: insights/containers.md
-        - name: System operacyjny (maszyny wirtualne i inne)
+                  href: platform/agent-manage.md
+                - name: Kondycja agenta
+                  href: insights/solution-agenthealth.md
+            - name: Rozwiązywanie problemów
+              items:
+                - name: Rozszerzenie maszyny wirtualnej usługi Log Analytics
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: platform/vmext-troubleshoot.md
+                - name: Agent usługi Log Analytics dla systemu Windows
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: platform/agent-windows-troubleshoot.md
+                - name: Agent usługi Log Analytics dla systemu Linux
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: platform/agent-linux-troubleshoot.md
+        - name: Źródła danych agentów
           items:
-            - name: Agenci
-              items:
-                - name: Omówienie agentów
-                  href: platform/agents-overview.md
-                - name: Rozszerzenie Diagnostyki Azure
-                  items:
-                    - name: Omówienie
-                      href: platform/diagnostics-extension-overview.md
-                    - name: Zbieranie dzienników
-                      href: platform/azure-storage-iis-table.md
-                    - name: Windows
-                      items:
-                        - name: Historia wersji
-                          href: platform/diagnostics-extension-schema.md
-                        - name: Schemat
-                          href: platform/diagnostics-extension-schema-1dot3.md
-                        - name: Wysyłanie do usługi Azure Storage
-                          href: platform/diagnostics-extension-to-storage.md
-                        - name: Wysyłanie do usługi Application Insights
-                          href: platform/diagnostics-extension-to-application-insights.md
-                        - name: Wysyłanie do usługi Event Hubs
-                          href: platform/diagnostics-extension-stream-event-hubs.md
-                        - name: Wysyłanie do usługi Azure Monitor jako metryki niestandardowe
-                          items:
-                            - name: Maszyna wirtualna
-                              href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                            - name: Zestaw skalowania maszyn wirtualnych
-                              href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                            - name: Klasyczna maszyna wirtualna
-                              href: platform/collect-custom-metrics-guestos-vm-classic.md
-                            - name: Usługa w chmurze
-                              href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                        - name: Format dzienników diagnostycznych JSON Lines
-                          href: platform/diagnostic-logs-append-blobs.md
-                        - name: Rozwiązywanie problemów
-                          href: platform/diagnostics-extension-troubleshooting.md
-                    - name: Linux
-                      items:
-                        - name: Używanie z maszynami wirtualnymi
-                          href: ../virtual-machines/extensions/diagnostics-linux.md
-                        - name: Metryki niestandardowe z programem Telegraf
-                          href: platform/collect-custom-metrics-linux-telegraf.md
-                - name: Konfigurowanie agentów usługi Log Analytics
-                  items:
-                    - name: Omówienie
-                      href: platform/log-analytics-agent.md
-                    - name: Agenci dla systemu Windows
-                      href: platform/agent-windows.md
-                    - name: Rozszerzenie maszyny wirtualnej dla systemu Windows
-                      href: ../virtual-machines/windows/extensions-oms.md
-                    - name: Rozszerzenie maszyny wirtualnej dla systemu Linux
-                      href: ../virtual-machines/linux/extensions-oms.md
-                    - name: Brama usługi Log Analytics
-                      href: platform/gateway.md
-                    - name: Agent zarządzania
-                      href: platform/agent-manage.md
-                    - name: Kondycja agenta
-                      href: insights/solution-agenthealth.md
-                - name: Rozwiązywanie problemów
-                  items:
-                    - name: Rozszerzenie maszyny wirtualnej usługi Log Analytics
-                      displayname: 'troubleshoot, troubleshooting'
-                      href: platform/vmext-troubleshoot.md
-                    - name: Agent usługi Log Analytics dla systemu Windows
-                      displayname: 'troubleshoot, troubleshooting'
-                      href: platform/agent-windows-troubleshoot.md
-                    - name: Agent usługi Log Analytics dla systemu Linux
-                      displayname: 'troubleshoot, troubleshooting'
-                      href: platform/agent-linux-troubleshoot.md
-            - name: Źródła danych agentów
-              items:
-                - name: Omówienie
-                  href: platform/agent-data-sources.md
-                - name: Zdarzenia systemu Windows
-                  href: platform/data-sources-windows-events.md
-                - name: Niestandardowe dane JSON
-                  href: platform/data-sources-json.md
-                - name: Dane wydajności demona CollectD
-                  href: platform/data-sources-collectd.md
-                - name: Dziennik systemu
-                  href: platform/data-sources-syslog.md
-                - name: Liczniki wydajności
-                  href: platform/data-sources-performance-counters.md
-                - name: Wydajność aplikacji dla systemu Linux
-                  href: platform/data-sources-linux-applications.md
-                - name: Dzienniki usług IIS
-                  href: platform/data-sources-iis-logs.md
-                - name: Niestandardowe dzienniki
-                  href: platform/data-sources-custom-logs.md
-                - name: Niestandardowe pola
-                  href: platform/custom-fields.md
-            - name: Usługa Azure Monitor dla maszyn wirtualnych
-              items:
-                - name: Omówienie
-                  href: insights/vminsights-overview.md
-                - name: Znane problemy
-                  href: insights/vminsights-known-issues.md
-                - name: Ogólna dostępność — często zadawane pytania
-                  href: insights/vminsights-ga-release-faq.md
-                - name: Często zadawane pytania
-                  href: insights/vminsights-faq.md
-                - name: Włączanie monitorowania
-                  items:
-                    - name: Omówienie włączania monitorowania
-                      href: insights/vminsights-enable-overview.md
-                    - name: Włączanie obsługi pojedynczej maszyny wirtualnej platformy Azure
-                      href: insights/vminsights-enable-single-vm.md
-                    - name: Włączanie obsługi usługi Azure Policy
-                      href: insights/vminsights-enable-at-scale-policy.md
-                    - name: Włączanie obsługi programu Azure PowerShell
-                      href: insights/vminsights-enable-at-scale-powershell.md
-                    - name: Włączanie obsługi środowiska hybrydowego
-                      href: insights/vminsights-enable-hybrid-cloud.md
-                    - name: Integracja z programem Operations Manager
-                      href: insights/service-map-scom.md
-                - name: Monitorowanie kondycji
-                  href: insights/vminsights-health.md
-                - name: Mapowanie zależności
-                  href: insights/vminsights-maps.md
-                - name: Monitorowanie wydajności
-                  href: insights/vminsights-performance.md
-                - name: Korzystanie ze skoroszytów
-                  href: insights/vminsights-workbooks.md
-                - name: Analizowanie danych przy użyciu zapytań dzienników
-                  href: insights/vminsights-log-search.md
-                - name: Uaktualnianie agenta zależności
-                  href: insights/vminsights-dependency-agent-maintenance.md
-                - name: Wyłączanie monitorowania
-                  href: insights/vminsights-optout.md
-            - name: Rozwiązanie w zakresie pojemności i wydajności
-              href: insights/capacity-performance.md
-            - name: Rozwiązanie do analizy oprogramowania VMware
-              href: insights/vmware.md
-            - name: Rozwiązanie Dane o komunikacji sieciowej
-              href: insights/wire-data.md
-            - name: Rozwiązanie Service Map
-              href: insights/service-map.md
-            - name: Grupy komputerów
-              href: platform/computer-groups.md
-        - name: Platforma Azure
+            - name: Omówienie
+              href: platform/agent-data-sources.md
+            - name: Zdarzenia systemu Windows
+              href: platform/data-sources-windows-events.md
+            - name: Niestandardowe dane JSON
+              href: platform/data-sources-json.md
+            - name: Dane wydajności demona CollectD
+              href: platform/data-sources-collectd.md
+            - name: Dziennik systemu
+              href: platform/data-sources-syslog.md
+            - name: Liczniki wydajności
+              href: platform/data-sources-performance-counters.md
+            - name: Wydajność aplikacji dla systemu Linux
+              href: platform/data-sources-linux-applications.md
+            - name: Dzienniki usług IIS
+              href: platform/data-sources-iis-logs.md
+            - name: Niestandardowe dzienniki
+              href: platform/data-sources-custom-logs.md
+            - name: Niestandardowe pola
+              href: platform/custom-fields.md
+        - name: Usługa Azure Monitor dla maszyn wirtualnych
           items:
-            - name: Omówienie dzienników platformy
-              href: platform/platform-logs-overview.md
-            - name: Dzienniki zasobów
+            - name: Omówienie
+              href: insights/vminsights-overview.md
+            - name: Znane problemy
+              href: insights/vminsights-known-issues.md
+            - name: Ogólna dostępność — często zadawane pytania
+              href: insights/vminsights-ga-release-faq.md
+            - name: Często zadawane pytania
+              href: insights/vminsights-faq.md
+            - name: Włączanie monitorowania
               items:
-                - name: Omówienie
-                  href: platform/resource-logs-overview.md
-                - name: Zbieranie dzienników w usłudze Azure Monitor
-                  href: platform/resource-logs-collect-workspace.md
-                - name: Archiwizowanie w magazynie
-                  href: platform/resource-logs-collect-storage.md
-                - name: Przesyłanie strumieniowe do usługi Event Hubs
-                  href: platform/resource-logs-stream-event-hubs.md
-            - name: Dziennik aktywności
+                - name: Omówienie włączania monitorowania
+                  href: insights/vminsights-enable-overview.md
+                - name: Włączanie obsługi pojedynczej maszyny wirtualnej platformy Azure
+                  href: insights/vminsights-enable-single-vm.md
+                - name: Włączanie obsługi usługi Azure Policy
+                  href: insights/vminsights-enable-at-scale-policy.md
+                - name: Włączanie obsługi programu Azure PowerShell
+                  href: insights/vminsights-enable-at-scale-powershell.md
+                - name: Włączanie obsługi środowiska hybrydowego
+                  href: insights/vminsights-enable-hybrid-cloud.md
+                - name: Integracja z programem Operations Manager
+                  href: insights/service-map-scom.md
+            - name: Monitorowanie kondycji
+              href: insights/vminsights-health.md
+            - name: Mapowanie zależności
+              href: insights/vminsights-maps.md
+            - name: Monitorowanie wydajności
+              href: insights/vminsights-performance.md
+            - name: Korzystanie ze skoroszytów
+              href: insights/vminsights-workbooks.md
+            - name: Analizowanie danych przy użyciu zapytań dzienników
+              href: insights/vminsights-log-search.md
+            - name: Uaktualnianie agenta zależności
+              href: insights/vminsights-dependency-agent-maintenance.md
+            - name: Wyłączanie monitorowania
+              href: insights/vminsights-optout.md
+        - name: Rozwiązanie w zakresie pojemności i wydajności
+          href: insights/capacity-performance.md
+        - name: Rozwiązanie do analizy oprogramowania VMware
+          href: insights/vmware.md
+        - name: Rozwiązanie Dane o komunikacji sieciowej
+          href: insights/wire-data.md
+        - name: Rozwiązanie Service Map
+          href: insights/service-map.md
+        - name: Grupy komputerów
+          href: platform/computer-groups.md
+    - name: Monitorowanie kontenerów
+      items:
+        - name: Usługa Azure Monitor dla kontenerów
+          items:
+            - name: Omówienie
+              href: insights/container-insights-overview.md
+            - name: Często zadawane pytania
+              href: insights/container-insights-faq.md
+            - name: Włączanie monitorowania
               items:
-                - name: Omówienie
-                  href: platform/activity-logs-overview.md
-                - name: Wyświetlanie i pobieranie
-                  href: platform/activity-log-view.md
-                - name: Zbieranie i analizowanie
-                  href: platform/activity-log-collect.md
-                - name: Zbieranie w wielu dzierżawach
-                  href: platform/activity-log-collect-tenants.md
-                - name: Eksportowanie
-                  href: platform/activity-log-export.md
-                - name: Schemat
-                  href: platform/activity-log-schema.md
-            - name: Ustawienia diagnostyczne
-              items:
-                - name: Tworzenie ustawienia diagnostycznego
-                  href: platform/diagnostic-settings.md
-                - name: Tworzenie ustawienia diagnostycznego przy użyciu usługi Resource Manager
-                  href: platform/diagnostic-settings-template.md
-                - name: Zmiana na format magazynu obiektów blob
-                  href: platform/resource-logs-blob-format.md
-            - name: Przesyłanie strumieniowe danych do usługi Event Hubs
-              href: platform/stream-monitoring-data-event-hubs.md
-            - name: Key Vault Analytics
-              href: insights/azure-key-vault.md
-            - name: Service Fabric Analytics
-              href: ../service-fabric/service-fabric-diagnostics-oms-agent.md
-            - name: Monitorowanie grup zasobów
-              href: insights/resource-group-insights.md
+                - name: Omówienie włączania monitorowania
+                  href: insights/container-insights-onboard.md
+                - name: Włączanie dla nowego klastra
+                  href: insights/container-insights-enable-new-cluster.md
+                - name: Włączanie dla istniejącego klastra
+                  href: insights/container-insights-enable-existing-clusters.md
+                - name: Mapowania regionów
+                  href: insights/container-insights-region-mapping.md
+            - name: Analiza
+              href: insights/container-insights-analyze.md
+            - name: Wyłączanie monitorowania
+              href: insights/container-insights-optout.md
+            - name: Wyświetlanie dzienników na żywo
+              href: insights/container-insights-live-logs.md
+            - name: Analizowanie danych przy użyciu zapytań dzienników
+              href: insights/container-insights-log-search.md
+            - name: Generowanie alertów
+              href: insights/container-insights-alerts.md
+            - name: Agent zarządzania
+              href: insights/container-insights-manage-agent.md
+            - name: Konfigurowanie ustawień zbierania agenta
+              href: insights/container-insights-agent-config.md
+            - name: Aktualizowanie w celu włączenia metryk
+              href: insights/container-insights-update-metrics.md
+            - name: Rozwiązywanie problemów
+              href: insights/container-insights-troubleshoot.md
+        - name: Platforma Docker i monitorowanie kontenerów systemu Windows
+          href: insights/containers.md
+    - name: Monitorowanie innych zasobów
+      items:
         - name: Magazyn
           items:
             - name: Usługa Azure Monitor dla magazynu
@@ -708,6 +816,8 @@
               href: insights/azure-sql.md
             - name: Oprogramowanie SQL Server
               href: insights/sql-assessment.md
+            - name: Azure Cosmos DB
+              href: insights/cosmosdb-insights-overview.md
         - name: Sieci
           items:
             - name: Analiza sieci
@@ -728,42 +838,32 @@
                   href: insights/network-performance-monitor-pricing-faq.md
                 - name: Często zadawane pytania
                   href: insights/network-performance-monitor-faq.md
-        - name: Inne zasoby
-          items:
-            - name: Ocena kondycji usługi AD
-              href: insights/ad-assessment.md
-            - name: Stan replikacji usługi AD
-              href: insights/ad-replication-status.md
-            - name: Office 365
-              href: insights/solution-office-365.md
-            - name: Surface Hub
-              href: insights/surface-hubs.md
-        - name: Używanie rozwiązań do monitorowania
+        - name: Rozwiązania do monitorowania
           items:
             - name: Omówienie
               href: insights/solutions.md
             - name: Rozwiązania docelowe
               href: insights/solution-targeting.md
-        - name: Zbieranie danych niestandardowych
-          items:
-            - name: Metryki niestandardowe
-              href: platform/metrics-custom-overview.md
-            - name: Interfejs API REST metryk
-              href: platform/metrics-store-custom-rest-api.md
-            - name: Interfejs API modułu zbierającego dane usługi Log Analytics
-              href: platform/data-collector-api.md
-            - name: Przykładowy potok interfejsu API modułu zbierającego dane usługi Log Analytics
-              href: platform/create-pipeline-datacollector-api.md
-        - name: Korzystanie z programu System Center
-          items:
-            - name: Łączenie programu Operations Manager
-              href: platform/om-agents.md
-            - name: Ocena programu Operations Manager
-              href: insights/scom-assessment.md
-            - name: Łączenie programu Configuration Manager
-              href: platform/collect-sccm.md
-        - name: Przesyłanie strumieniowe danych do usługi Event Hubs
-          href: platform/resource-logs-stream-event-hubs.md
+            - name: Ocena kondycji usługi AD
+              href: insights/ad-assessment.md
+            - name: Stan replikacji usługi AD
+              href: insights/ad-replication-status.md
+            - name: Key Vault Analytics
+              href: insights/azure-key-vault.md
+            - name: Office 365
+              href: insights/solution-office-365.md
+            - name: Surface Hub
+              href: insights/surface-hubs.md
+    - name: Zbieranie danych niestandardowych
+      items:
+        - name: Metryki niestandardowe
+          href: platform/metrics-custom-overview.md
+        - name: Interfejs API REST metryk
+          href: platform/metrics-store-custom-rest-api.md
+        - name: Interfejs API modułu zbierającego dane usługi Log Analytics
+          href: platform/data-collector-api.md
+        - name: Przykładowy potok interfejsu API modułu zbierającego dane usługi Log Analytics
+          href: platform/create-pipeline-datacollector-api.md
     - name: Analizowanie danych
       items:
         - name: Metryki
@@ -887,7 +987,31 @@
             - name: Eksportowanie danych aplikacji
               href: app/export-power-bi.md
         - name: Skoroszyty
-          href: app/usage-workbooks.md
+          items:
+            - name: Omówienie
+              href: platform/workbooks-overview.md
+            - name: Wizualizacje
+              href: platform/workbooks-visualizations.md
+            - name: Źródła danych
+              href: platform/workbooks-data-sources.md
+            - name: Wdrażanie za pomocą usługi Azure Resource Manager
+              href: platform/workbooks-automate.md
+            - name: Konfigurowanie
+              items:
+                - name: Kontrola dostępu
+                  href: platform/workbooks-access-control.md
+                - name: Parametry
+                  items:
+                    - name: Podsumowanie parametrów
+                      href: platform/workbooks-parameters.md
+                    - name: Parametry listy rozwijanej
+                      href: platform/workbooks-dropdowns.md
+                    - name: Parametry interaktywne
+                      href: platform/workbooks-interactive.md
+                    - name: Parametry czasu
+                      href: platform/workbooks-time.md
+                    - name: Parametry tekstu
+                      href: platform/workbooks-text.md
         - name: Pulpity nawigacyjne
           items:
             - name: Pulpit nawigacyjny przy użyciu danych dziennika
@@ -1060,6 +1184,14 @@
               href: insights/solutions-resources-views.md
             - name: Najlepsze praktyki
               href: insights/solutions-best-practices.md
+    - name: Integracja z programem System Center
+      items:
+        - name: Łączenie programu Operations Manager
+          href: platform/om-agents.md
+        - name: Ocena programu Operations Manager
+          href: insights/scom-assessment.md
+        - name: Łączenie programu Configuration Manager
+          href: platform/collect-sccm.md
 - name: Dokumentacja
   items:
     - name: Limity usługi

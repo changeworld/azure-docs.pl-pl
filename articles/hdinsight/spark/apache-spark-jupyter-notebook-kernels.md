@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.openlocfilehash: 371ba46b477b5dba245a116d2ea9d21d2b732a97
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 41cb27096782f525a531f38efda539c065fa4c72
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337676"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163603"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jądra notesu Jupyter w klastrze Apache Spark w usłudze Azure HDInsight
 
@@ -53,48 +53,48 @@ Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Twor
 
 Oto kilka korzyści wynikających z używania nowych jądra z notesem Jupyter w klastrach usługi HDInsight Spark.
 
-- **Wstępnie ustawione konteksty**. Przy użyciu **PySpark**, **PySpark3**lub jądra **Spark** nie trzeba jawnie ustawiać kontekstów platformy Spark ani Hive przed rozpoczęciem pracy z aplikacjami. Są one dostępne domyślnie. Tych kontekstach są następujące:
+- **Wstępnie ustawione konteksty**. Przy użyciu **PySpark**, **PySpark3**lub jądra **platformy Spark** nie trzeba jawnie ustawiać kontekstów platformy Spark ani Hive przed rozpoczęciem pracy z aplikacjami. Są one dostępne domyślnie. Te konteksty są następujące:
 
-  * **SC** -for Spark — kontekst
-  * **SqlContext** — dla kontekstu Hive
-   
+  - **SC** -for Spark — kontekst
+  - **SqlContext** — dla kontekstu Hive
+
     W związku z tym nie trzeba uruchamiać takich instrukcji jak następujące, aby ustawić konteksty:
-   
+
          sc = SparkContext('yarn-client')
          sqlContext = HiveContext(sc)
 
     Zamiast tego można bezpośrednio użyć predefiniowanych kontekstów w aplikacji.
 
-- **Magiczna komórka**. Jądro PySpark zawiera wstępnie zdefiniowane "MAGICS", które są specjalnymi poleceniami, które można wywołać z `%%` (na przykład `%%MAGIC` `<args>`). Magic polecenia musi być pierwszym słowem w komórce kodu i zezwalać na wiele wierszy zawartości. Słowo magiczne powinno być pierwszym słowem w komórce. Dodanie wszystkiego przed magiczną, parzystą komentarzem powoduje wystąpienie błędu.     Aby uzyskać więcej informacji na temat MAGICS, zobacz [tutaj](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
+- **Magiczna komórka**. Jądro PySpark zawiera wstępnie zdefiniowane "MAGICS", które są specjalnymi poleceniami, które można wywołać za pomocą `%%` (na przykład `%%MAGIC` `<args>`). Magic polecenia musi być pierwszym słowem w komórce kodu i zezwalać na wiele wierszy zawartości. Słowo magiczne powinno być pierwszym słowem w komórce. Dodanie wszystkiego przed magiczną, parzystą komentarzem powoduje wystąpienie błędu.     Aby uzyskać więcej informacji na temat MAGICS, zobacz [tutaj](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
 
     W poniższej tabeli wymieniono różne Magic dostępne za pomocą jądra.
 
    | Magic | Przykład | Opis |
    | --- | --- | --- |
-   | pomoc |`%%help` |Generuje tabelę zawierającą wszystkie dostępne magicy z przykładem i opisem |
-   | info |`%%info` |Wyprowadza informacje o sesji dla bieżącego punktu końcowego usługi Livy |
-   | konfiguruj |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguruje parametry tworzenia sesji. Flaga Force (-f) jest wymagana, jeśli sesja została już utworzona, co gwarantuje, że sesja zostanie porzucona i utworzona ponownie. Aby uzyskać listę prawidłowych parametrów, spójrz na [treść żądania post/Sessions usługi Livy](https://github.com/cloudera/livy#request-body) . Parametry muszą być przesyłane jako ciąg JSON i muszą znajdować się w następnym wierszu po Magic, jak pokazano w przykładowej kolumnie. |
-   | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Wykonuje zapytanie programu Hive względem sqlContext. Jeśli parametr `-o` jest przenoszona, wynik zapytania jest utrwalany w lokalnym kontekście języka Python%% jako [Pandas](https://pandas.pydata.org/) Dataframe. |
-   | lokalne |`%%local`<br>`a=1` |Cały kod w kolejnych wierszach jest wykonywany lokalnie. Kod musi być prawidłowym kodem python2, nawet niezależnie od używanego jądra. Tak więc, nawet w przypadku wybrania jądra **PySpark3** lub **Spark** podczas tworzenia notesu, w przypadku użycia Magic `%%local` w komórce ta komórka musi zawierać tylko prawidłowy kod python2. |
-   | logs |`%%logs` |Wyprowadza dzienniki dla bieżącej sesji usługi Livy. |
+   | Pomoc |`%%help` |Generuje tabelę zawierającą wszystkie dostępne magicy z przykładem i opisem |
+   | Informacje |`%%info` |Wyprowadza informacje o sesji dla bieżącego punktu końcowego usługi Livy |
+   | Ponowne |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguruje parametry tworzenia sesji. Flaga Force (-f) jest wymagana, jeśli sesja została już utworzona, co gwarantuje, że sesja zostanie porzucona i utworzona ponownie. Aby uzyskać listę prawidłowych parametrów, spójrz na [treść żądania post/Sessions usługi Livy](https://github.com/cloudera/livy#request-body) . Parametry muszą być przesyłane jako ciąg JSON i muszą znajdować się w następnym wierszu po Magic, jak pokazano w przykładowej kolumnie. |
+   | Server |`%%sql -o <variable name>`<br> `SHOW TABLES` |Wykonuje zapytanie programu Hive względem elementu SqlContext. Jeśli parametr `-o` jest przenoszona, wynik zapytania jest utrwalany w lokalnym kontekście języka Python%% jako [Pandas](https://pandas.pydata.org/) Dataframe. |
+   | LAN |`%%local`<br>`a=1` |Cały kod w kolejnych wierszach jest wykonywany lokalnie. Kod musi być prawidłowym kodem python2, nawet niezależnie od jądra, którego używasz. Tak więc, nawet w przypadku wybrania jądra **PySpark3** lub **Spark** podczas tworzenia notesu, w przypadku użycia Magic `%%local` w komórce ta komórka musi zawierać tylko prawidłowy kod python2. |
+   | dzienniki |`%%logs` |Wyprowadza dzienniki dla bieżącej sesji usługi Livy. |
    | delete |`%%delete -f -s <session number>` |Usuwa określoną sesję bieżącego punktu końcowego usługi Livy. Nie można usunąć sesji, która została zainicjowana dla samego jądra. |
    | oczyszczanie |`%%cleanup -f` |Usuwa wszystkie sesje dla bieżącego punktu końcowego usługi Livy, w tym sesję tego notesu. Flaga Force-f jest obowiązkowa. |
 
    > [!NOTE]  
-   > Oprócz magicznych dodanych przez jądro PySpark, można również użyć [wbudowanych Magic IPython](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), w tym `%%sh`. Można użyć `%%sh` Magic do uruchamiania skryptów i bloków kodu w klastrze węzła głównego.
+   > Oprócz magicznych dodanych przez jądro PySpark, można również użyć [wbudowanych Magic IPython](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), w tym `%%sh`. Możesz użyć Magic `%%sh`, aby uruchamiać skrypty i blokować kod w klastrze węzła głównego.
 
 - **Autowizualizacja**. Jądro Pyspark automatycznie wizualizuje dane wyjściowe z kwerend Hive i SQL. Można wybrać różne typy wizualizacji, w tym tabelę, wykres kołowy, linię, obszar, pasek.
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>Parametry obsługiwane przez Magic%% SQL
 
-@No__t-0 Magic obsługuje różne parametry, których można użyć do kontrolowania rodzaju danych wyjściowych otrzymywanych podczas uruchamiania zapytań. W poniższej tabeli przedstawiono dane wyjściowe.
+`%%sql` Magic obsługuje inne parametry, których można użyć do kontrolowania rodzaju danych wyjściowych otrzymywanych podczas uruchamiania zapytań. W poniższej tabeli przedstawiono dane wyjściowe.
 
 | Parametr | Przykład | Opis |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Użyj tego parametru, aby zachować wynik zapytania w lokalnym kontekście języka Python%% jako [Pandas](https://pandas.pydata.org/) Dataframe. Nazwa zmiennej Dataframe to określona nazwa zmiennej. |
-| -q |`-q` |Użyj tej opcji, aby wyłączyć wizualizacje dla komórki. Jeśli nie chcesz autowizualizować zawartości komórki i chcesz ją przechwycić jako ramkę danych, użyj `-q -o <VARIABLE>`. Jeśli chcesz wyłączyć wizualizacje bez przechwytywania wyników (na przykład w przypadku uruchamiania zapytania SQL, takiego jak instrukcja `CREATE TABLE`), użyj `-q` bez określania argumentu `-o`. |
-| -m |`-m <METHOD>` |Miejsce, w którym **Metoda** jest **pobierana** , lub **próbka** (wartość domyślna to **Zrób**). Jeśli metoda jest **pobierana**, jądro wybiera elementy z góry zestawu danych wynikowych określonego przez MAXROWS (opisane w dalszej części tej tabeli). Jeśli metoda jest **próbką**, elementy losowych próbek jądra zestawu danych zgodnie z `-r` parametr, opisany dalej w tej tabeli. |
-| -r |`-r <FRACTION>` |Tutaj **ułamek** jest liczbą zmiennoprzecinkową z zakresu od 0,0 do 1,0. Jeśli przykładowa Metoda zapytania SQL jest `sample`, wówczas jądro losowo pobiera określoną część elementów zestawu wyników. Na przykład, jeśli uruchomisz zapytanie SQL z argumentami `-m sample -r 0.01`, wówczas 1% wierszy wyników zostanie losowo próbkowane. |
+| -q |`-q` |Użyj tej opcji, aby wyłączyć wizualizacje dla komórki. Jeśli nie chcesz autowizualizować zawartości komórki i chcesz, aby przechwycić ją jako ramkę danych, a następnie użyj `-q -o <VARIABLE>`. Jeśli chcesz wyłączyć wizualizacje bez przechwytywania wyników (na przykład w przypadku uruchamiania zapytania SQL, takiego jak instrukcja `CREATE TABLE`), użyj `-q` bez określania argumentu `-o`. |
+| -m |`-m <METHOD>` |Miejsce, w którym **Metoda** jest **pobierana** , lub **próbka** (wartość domyślna to **Zrób**). Jeśli metoda jest **pobierana**, jądro wybiera elementy z góry zestawu danych wynikowych określonego przez MAXROWS (opisane w dalszej części tej tabeli). Jeśli metoda jest **próbką**, elementy losowych próbek jądra zestawu danych zgodnie z parametrem `-r`, opisane dalej w tej tabeli. |
+| -r |`-r <FRACTION>` |Tutaj **ułamek** jest liczbą zmiennoprzecinkową z zakresu od 0,0 do 1,0. Jeśli przykładowa Metoda zapytania SQL jest `sample`, jądro losowo pobiera określoną część elementów zestawu wyników. Na przykład w przypadku uruchomienia zapytania SQL z argumentami `-m sample -r 0.01`, 1% wierszy wynik jest losowo próbkowany. |
 | -n |`-n <MAXROWS>` |**MAXROWS** jest wartością całkowitą. Jądro ogranicza liczbę wierszy danych wyjściowych do **MAXROWS**. Jeśli **MAXROWS** jest liczbą ujemną, taką jak **-1**, wówczas liczba wierszy w zestawie wyników nie jest ograniczona. |
 
 **Przykład:**
@@ -104,18 +104,18 @@ Oto kilka korzyści wynikających z używania nowych jądra z notesem Jupyter w 
 
 Powyższa instrukcja wykonuje następujące czynności:
 
-* Wybiera wszystkie rekordy z **hivesampletable**.
-* Ponieważ używamy-q, wyłącza funkcję autowizualizacji.
-* Ponieważ używamy `-m sample -r 0.1 -n 500` losowo próbek 10% wierszy w hivesampletable i ogranicza rozmiar zestawu wyników do 500 wierszy.
-* Na koniec, ponieważ użyto `-o query2` również zapisuje dane wyjściowe w ramce Dataframe o nazwie **query2**.
+- Wybiera wszystkie rekordy z **hivesampletable**.
+- Ponieważ używamy-q, wyłącza funkcję autowizualizacji.
+- Ponieważ używamy `-m sample -r 0.1 -n 500` losowo próbek 10% wierszy w hivesampletable i ogranicza rozmiar zestawu wyników do 500 wierszy.
+- Na koniec, ponieważ użyto `-o query2` również zapisuje dane wyjściowe w ramce Dataframe o nazwie **query2**.
 
 ## <a name="considerations-while-using-the-new-kernels"></a>Zagadnienia dotyczące korzystania z nowych jądra
 
-Niezależnie od tego, z których korzystasz jądro, wyjście z uruchomionych notesów zużywa zasoby klastra.  Z tymi jądrami, ponieważ konteksty są wstępnie zdefiniowane, po prostu wyjście notesu nie powoduje zakończenia kontekstu, w związku z czym zasoby klastra nadal są używane. Dobrym rozwiązaniem jest użycie opcji **Zamknij i zatrzymywanie** z menu **plik** notesu po zakończeniu korzystania z notesu, który kasuje kontekst, a następnie opuszcza Notes.
+Niezależnie od tego, z których korzystasz jądro, wyjście z uruchomionych notesów zużywa zasoby klastra.  Z tymi jądrami, ponieważ konteksty są wstępnie zdefiniowane, po prostu wyjście z nich nie powoduje zakończenia tego kontekstu, w związku z czym zasoby klastra nadal są używane. Dobrym rozwiązaniem jest użycie opcji **Zamknij i zatrzymywanie** z menu **plik** notesu po zakończeniu korzystania z notesu, który kasuje kontekst, a następnie opuszcza Notes.
 
 ## <a name="where-are-the-notebooks-stored"></a>Gdzie są przechowywane notesy?
 
-Jeśli klaster używa usługi Azure Storage jako domyślnego konta magazynu, notesy Jupyter są zapisywane na koncie magazynu w folderze **/HdiNotebooks** .  Notesy, pliki tekstowe i foldery tworzone w programie Jupyter są dostępne z konta magazynu.  Na przykład, jeśli używasz Jupyter do **tworzenia folderu folder i Notes** **/Notes. ipynb**, możesz uzyskać dostęp do tego notesu w `/HdiNotebooks/myfolder/mynotebook.ipynb` na koncie magazynu.  Odwrócenie jest również prawdziwe, to oznacza, że w przypadku przekazania notesu bezpośrednio do konta magazynu w `/HdiNotebooks/mynotebook1.ipynb` Notes jest również widoczny w Jupyter.  Notesy pozostają na koncie magazynu nawet po usunięciu klastra.
+Jeśli klaster używa usługi Azure Storage jako domyślnego konta magazynu, notesy Jupyter są zapisywane na koncie magazynu w folderze **/HdiNotebooks** .  Notesy, pliki tekstowe i foldery tworzone w programie Jupyter są dostępne z konta magazynu.  Na przykład, jeśli używasz Jupyter do **tworzenia folderu folder i Notes** **/Notes. ipynb**, możesz uzyskać dostęp do tego notesu w `/HdiNotebooks/myfolder/mynotebook.ipynb` na koncie magazynu.  Odwrócenie jest również prawdziwe, to oznacza, że w przypadku przekazania notesu bezpośrednio do konta magazynu w `/HdiNotebooks/mynotebook1.ipynb`, Notes jest również widoczny w Jupyter.  Notesy pozostają na koncie magazynu nawet po usunięciu klastra.
 
 > [!NOTE]  
 > Klastry usługi HDInsight z Azure Data Lake Storagem domyślnym magazynem nie przechowują notesów w skojarzonym magazynie.
@@ -126,7 +126,7 @@ Sposób zapisywania notesów na koncie magazynu jest zgodny z [Apache HADOOP HDF
     hdfs dfs –copyToLocal /HdiNotebooks                   # Download the contents of the HdiNotebooks folder
     hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
-Niezależnie od tego, czy klaster używa usługi Azure Storage, czy Azure Data Lake Storage jako domyślnego konta magazynu, notesy są również zapisywane w klastrze węzła głównego pod `/var/lib/jupyter`.
+Niezależnie od tego, czy klaster używa usługi Azure Storage, czy Azure Data Lake Storage jako domyślnego konta magazynu, notesy są również zapisywane w klastrze węzła głównego w `/var/lib/jupyter`.
 
 ## <a name="supported-browser"></a>Obsługiwana przeglądarka
 
@@ -138,29 +138,29 @@ Nowe jądra są w fazie rozwoju i zostaną dojrzałe w czasie. Może to oznacza�
 
 ## <a name="seealso"></a>Zobacz też
 
-* [Podsumowanie Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+- [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
 
-* [Apache Spark z usługą BI: Przeprowadzanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
-* [Analiza dzienników witryny sieci Web przy użyciu Apache Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
+- [Apache Spark z usługą BI: wykonywanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
+- [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
+- [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
+- [Analiza dzienników witryny sieci Web przy użyciu Apache Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji
 
-* [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
-* [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](apache-spark-livy-rest-interface.md)
+- [Tworzenie autonomicznych aplikacji przy użyciu języka Scala](apache-spark-create-standalone-application.md)
+- [Zdalne uruchamianie zadań w klastrze Apache Spark przy użyciu programu Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Narzędzia i rozszerzenia
 
-* [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)
-* [Użyj wtyczki narzędzi HDInsight do IntelliJ pomysł, aby debugować aplikacje Apache Spark zdalnie](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Korzystanie z notesów Apache Zeppelin z klastrem Apache Spark w usłudze HDInsight](apache-spark-zeppelin-notebook.md)
-* [Korzystanie z zewnętrznych pakietów z notesami Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](apache-spark-jupyter-notebook-install-locally.md)
+- [Tworzenie i przesyłanie aplikacji Spark Scala przy użyciu dodatku HDInsight Tools Plugin for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)
+- [Użyj wtyczki narzędzi HDInsight do IntelliJ pomysł, aby debugować aplikacje Apache Spark zdalnie](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+- [Korzystanie z notesów Apache Zeppelin z klastrem Apache Spark w usłudze HDInsight](apache-spark-zeppelin-notebook.md)
+- [Korzystanie z zewnętrznych pakietów z notesami Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
+- [Instalacja oprogramowania Jupyter na komputerze i nawiązywanie połączenia z klastrem Spark w usłudze HDInsight](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Zarządzaj zasobami
+### <a name="manage-resources"></a>Zarządzanie zasobami
 
-* [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
-* [Śledzenie i debugowanie zadań uruchamianych w klastrze Apache Spark w usłudze HDInsight](apache-spark-job-debugging.md)
+- [Zarządzanie zasobami klastra Apache Spark w usłudze Azure HDInsight](apache-spark-resource-manager.md)
+- [Śledzenie i debugowanie zadań uruchamianych w klastrze Apache Spark w usłudze HDInsight](apache-spark-job-debugging.md)

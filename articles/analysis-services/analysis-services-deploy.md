@@ -1,33 +1,33 @@
 ---
-title: Wdrażanie do Azure Analysis Services przy użyciu programu Visual Studio (SSDT) | Microsoft Docs
-description: Dowiedz się, jak wdrożyć model tabelaryczny na serwerze usług Azure Analysis Services przy użyciu programu SSDT.
+title: Wdrażanie do Azure Analysis Services przy użyciu programu Visual Studio | Microsoft Docs
+description: Dowiedz się, jak wdrożyć model tabelaryczny na serwerze Azure Analysis Services przy użyciu programu Visual Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 759d85db26ac7370c0b884d2e4839d3045384673
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 60681739854515078a521a4ff795e52aa7d74183
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301133"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146953"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Wdrażanie modelu z programu Visual Studio
 
-Po utworzeniu serwera w ramach subskrypcji platformy Azure wszystko jest gotowe do wdrożenia bazy danych modelu tabelarycznego. Program SSDT (SQL Server Data Tools) służy do tworzenia i wdrażania projektu modelu tabelarycznego, nad którymi pracujesz. 
+Po utworzeniu serwera w ramach subskrypcji platformy Azure wszystko jest gotowe do wdrożenia bazy danych modelu tabelarycznego. Możesz użyć programu Visual Studio z projektami Analysis Services do kompilowania i wdrażania projektu modelu tabelarycznego, nad którym pracujesz. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby rozpocząć pracę, potrzebne będą następujące elementy:
 
 * **Serwer usług Analysis Services** na platformie Azure. Aby dowiedzieć się więcej, zobacz artykuł [Create an Azure Analysis Services server](analysis-services-create-server.md) (Tworzenie serwera usług Azure Analysis Services).
-* **Projekt modelu tabelarycznego** w programie SSDT lub istniejący model tabelaryczny na poziomie zgodności 1200 lub wyższym. Nie wiesz, jak go utworzyć? Spróbuj skorzystać z [samouczka sprzedaży modelowania tabelarycznego projektu Adventure Works Internet Sales](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial).
+* **Projekt modelu tabelarycznego** w programie Visual Studio lub istniejący model tabelaryczny na poziomie zgodności 1200 lub wyższym. Nie wiesz, jak go utworzyć? Spróbuj skorzystać z [samouczka sprzedaży modelowania tabelarycznego projektu Adventure Works Internet Sales](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial).
 * **Brama lokalna** — jeśli co najmniej jedno źródło danych znajduje się w sieci organizacji, należy zainstalować [bramę danych lokalnych](analysis-services-gateway.md). Brama jest niezbędna, aby umożliwić serwerowi w chmurze łączenie się z lokalnymi źródłami danych w celu przetwarzania i odświeżania danych w modelu.
 
 > [!TIP]
-> Przed jej wdrożeniem upewnij się, że można przetwarzać dane w tabelach. W programie SSDT kliknij opcje **Model** > **Przetwarzaj** > **Przetwarzaj wszystko**. Jeśli przetwarzanie zakończy się niepowodzeniem, wdrożenie nie jest możliwe.
+> Przed jej wdrożeniem upewnij się, że można przetwarzać dane w tabelach. W programie Visual Studio kliknij pozycję **Model** > **Process** > Process **All**. Jeśli przetwarzanie zakończy się niepowodzeniem, wdrożenie nie jest możliwe.
 > 
 > 
 
@@ -37,9 +37,9 @@ Skopiuj nazwę serwera z **portalu Azure** > serwer > **Omówienie** > **Nazwa s
    
 ![Pobieranie nazwy serwera z systemu Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
-## <a name="to-deploy-from-ssdt"></a>Aby wdrożyć z SSDT
+## <a name="to-deploy-from-visual-studio"></a>Aby wdrożyć z programu Visual Studio
 
-1. W programie SSDT > **Eksplorator rozwiązań** kliknij prawym przyciskiem myszy projekt > **Właściwości**. Następnie w obszarze **Wdrożenie** > **Serwer** wklej nazwę serwera.   
+1. W programie Visual Studio > **Eksplorator rozwiązań**, kliknij prawym przyciskiem myszy > **Właściwości**projektu. Następnie w obszarze **Wdrożenie** > **Serwer** wklej nazwę serwera.   
    
     ![Wklejanie nazwy serwera we właściwościach serwera wdrażania](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
 2. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy **Właściwości**, a następnie kliknij przycisk **Wdróż**. Może zostać wyświetlony monit o zalogowanie się do platformy Azure.
@@ -55,11 +55,11 @@ To wszystko!
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli wdrożenie zakończy się niepowodzeniem podczas wdrażania metadanych, prawdopodobną przyczyną jest brak połączenia programu SSDT z serwerem. Upewnij się, że możesz połączyć się z serwerem przy użyciu programu SSMS. Upewnij się, że właściwość serwera wdrażania dla projektu jest poprawna.
+Jeśli wdrażanie nie powiedzie się, prawdopodobnie program Visual Studio nie może nawiązać połączenia z serwerem. Upewnij się, że możesz połączyć się z serwerem przy użyciu programu SSMS. Upewnij się, że właściwość serwera wdrażania dla projektu jest poprawna.
 
 Jeśli wdrożenie zakończy się niepowodzeniem dla tabeli, prawdopodobnie serwer nie mógł nawiązać połączenia ze źródłem danych. Jeśli źródło danych znajduje się w lokalnej sieci organizacji, należy zainstalować [bramę danych lokalnych](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po wdrożeniu modelu tabelarycznego na serwerze możesz się z nim połączyć. W celu zarządzania modelem możesz [połączyć się przy użyciu programu SSMS](analysis-services-manage.md). Możesz również [nawiązać połączenie za pomocą narzędzia klienta](analysis-services-connect.md), takiego jak usługi Power BI, Power BI Desktop lub program Excel, i rozpocząć tworzenie raportów.
+Po wdrożeniu modelu tabelarycznego na serwerze możesz się z nim połączyć. Możesz połączyć się z [nim za pomocą SQL Server Management Studio (SSMS)](analysis-services-manage.md) , aby zarządzać nim. Możesz również [nawiązać połączenie za pomocą narzędzia klienta](analysis-services-connect.md), takiego jak usługi Power BI, Power BI Desktop lub program Excel, i rozpocząć tworzenie raportów.
 

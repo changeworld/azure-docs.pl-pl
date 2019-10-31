@@ -11,14 +11,14 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: f191a9f589f54bdd657c017060f501b176a8647d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: beeb5fa4f979ac457db8a779dd8f8f2e94ef87f5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596727"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163853"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell i interfejs wiersza polecenia: Włącz Transparent Data Encryption z kluczem zarządzanym przez klienta z poziomu usługi Azure Key Vault
+# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell i interfejs wiersza polecenia: Włącz Transparent Data Encryption z kluczem zarządzanym przez klienta w programie Azure Key Vault
 
 W tym artykule przedstawiono sposób użycia klucza z Azure Key Vault dla Transparent Data Encryption (TDE) na SQL Database lub magazynie danych. Aby dowiedzieć się więcej na temat obsługi TDE Azure Key Vault z integracją Bring Your Own Key (BYOK), odwiedź [TDE z kluczami zarządzanymi przez klienta w Azure Key Vault](transparent-data-encryption-byok-azure-sql.md). 
 
@@ -35,12 +35,12 @@ W tym artykule przedstawiono sposób użycia klucza z Azure Key Vault dla Transp
   - [Instrukcje programu PowerShell z Key Vault](../key-vault/quick-create-powershell.md)
   - [Instrukcje dotyczące korzystania z sprzętowego modułu zabezpieczeń (HSM) i Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
     - Magazyn kluczy musi mieć następującą właściwość, która ma być używana dla TDE:
-  - [](../key-vault/key-vault-ovw-soft-delete.md) ochrona przed usuwaniem i przeczyszczaniem
+  - Ochrona przed [usuwaniem](../key-vault/key-vault-ovw-soft-delete.md) i przeczyszczaniem
   - [Jak używać usuwania nietrwałego w usłudze Key Vault z programem PowerShell](../key-vault/key-vault-soft-delete-powershell.md) 
 - Klucz musi mieć następujące atrybuty, aby można było używać go dla TDE:
    - Brak daty wygaśnięcia
    - Niewyłączone
-   - Możliwość wykonania operacji *Get*, *zawijania klucza*, odpakowania *klucza*
+   - Możliwość wykonania operacji *Get*, *zawijania klucza*, *odpakowania klucza*
 
 ## <a name="step-1-assign-an-azure-ad-identity-to-your-server"></a>Krok 1. Przypisywanie tożsamości usługi Azure AD do serwera 
 
@@ -153,7 +153,7 @@ Użyj elementu [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/a
    -ServerName <LogicalServerName> `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -DatabaseName <DatabaseName> `
-   -State "Disabled”
+   -State "Disabled"
    ```
  
 - Użyj polecenia cmdlet [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) , aby zwrócić listę kluczy Key Vault dodanych do serwera.
@@ -191,7 +191,7 @@ Jeśli wystąpi problem, sprawdź następujące kwestie:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak obrócić funkcję ochrony TDE na serwerze w celu zachowania zgodności z wymaganiami dotyczącymi zabezpieczeń: [Obróć funkcję ochrony transparent Data Encryption przy użyciu programu PowerShell](transparent-data-encryption-byok-azure-sql-key-rotation.md).
+- Dowiedz się, jak obrócić funkcję ochrony TDE na serwerze, aby zachować zgodność z wymaganiami dotyczącymi zabezpieczeń: [obróć transparent Data Encryption funkcję ochrony przy użyciu programu PowerShell](transparent-data-encryption-byok-azure-sql-key-rotation.md).
 - W przypadku zagrożenia bezpieczeństwa należy dowiedzieć się, jak usunąć potencjalnie naruszoną ochronę TDE: [Usuń potencjalnie złamany klucz](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
 
 ## <a name="prerequisites-for-cli"></a>Wymagania wstępne dotyczące interfejsu wiersza polecenia
@@ -203,12 +203,12 @@ Jeśli wystąpi problem, sprawdź następujące kwestie:
   - [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia 2,0](../key-vault/key-vault-manage-with-cli2.md)
   - [Instrukcje dotyczące korzystania z sprzętowego modułu zabezpieczeń (HSM) i Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
     - Magazyn kluczy musi mieć następującą właściwość, która ma być używana dla TDE:
-  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+  - [usuwanie nietrwałe](../key-vault/key-vault-ovw-soft-delete.md)
   - [Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia](../key-vault/key-vault-soft-delete-cli.md) 
 - Klucz musi mieć następujące atrybuty, aby można było używać go dla TDE:
    - Brak daty wygaśnięcia
    - Niewyłączone
-   - Możliwość wykonania operacji *Get*, *zawijania klucza*, odpakowania *klucza*
+   - Możliwość wykonania operacji *Get*, *zawijania klucza*, *odpakowania klucza*
    
 ## <a name="step-1-create-a-server-with-an-azure-ad-identity"></a>Krok 1. Tworzenie serwera przy użyciu tożsamości usługi Azure AD
       cli
@@ -230,7 +230,7 @@ Jeśli wystąpi problem, sprawdź następujące kwestie:
 
 
 >[!Tip]
->Zachowaj identyfikator URI klucza lub keyID nowego klucza dla następnego kroku, na przykład: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+>Zachowaj klucz URI lub keyID nowego klucza dla następnego kroku, na przykład: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 >
  
        

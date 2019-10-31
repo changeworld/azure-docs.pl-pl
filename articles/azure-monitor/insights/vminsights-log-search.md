@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/10/2019
-ms.openlocfilehash: 7363f1ec11974dab3e0c0149c18ac4f0bf1c86ee
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/29/2019
+ms.openlocfilehash: 69ed49c0e1b90b4086a40bd15f5d276c6cfe137f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555193"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162222"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak wykonywać zapytania dotyczące dzienników z Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Azure Monitor dla maszyn wirtualnych zbiera metryki wydajności i połączeń, dane spisu komputerów i procesów oraz informacje o stanie kondycji i przekazuje je do obszaru roboczego Log Analytics w Azure Monitor.  Te dane są dostępne dla [zapytań](../../azure-monitor/log-query/log-query-overview.md) w Azure monitor. Te dane można zastosować do scenariuszy, które obejmują Planowanie migracji, analizę pojemności, odnajdywanie i rozwiązywanie problemów z wydajnością na żądanie.
@@ -25,7 +25,7 @@ Istnieją wewnętrznie wygenerowane właściwości, których można użyć do id
 - Komputer: Użyj *ResourceID* lub *ResourceName_s* w celu jednoznacznego zidentyfikowania komputera w obszarze roboczym log Analytics.
 - Proces: Użyj *ResourceID* , aby jednoznacznie zidentyfikować proces w obszarze roboczym log Analytics. *ResourceName_s* jest unikatowy w kontekście maszyny, na której jest uruchomiony proces (MachineResourceName_s) 
 
-Ponieważ wiele rekordów może istnieć dla określonego procesu i komputera w określonym przedziale czasu, kwerendy mogą zwrócić więcej niż jeden rekord dla tego samego komputera lub procesu. Aby dołączyć tylko najnowszy rekord, Dodaj element "| Identyfikator zasobu deduplikacji "do zapytania.
+Ponieważ wiele rekordów może istnieć dla określonego procesu i komputera w określonym przedziale czasu, kwerendy mogą zwrócić więcej niż jeden rekord dla tego samego komputera lub procesu. Aby uwzględnić tylko najnowszy rekord, Dodaj `| summarize arg_max(TimeGenerated, *) by ResourceId` do zapytania.
 
 ### <a name="connections-and-ports"></a>Połączenia i porty
 Funkcja metryk połączenia wprowadza dwie nowe tabele w Azure Monitor Logs — VMConnection i VMBoundPort. Te tabele zawierają informacje o połączeniach dla komputera (ruchu przychodzącego i wychodzącego), a także portów serwerów, które są w nich otwarte/aktywne. ConnectionMetrics są również udostępniane za pośrednictwem interfejsów API, które udostępniają metodę uzyskiwania określonej metryki w przedziale czasu. Połączenia TCP wynikające z *zaakceptowania* w gnieździe nasłuchiwania są przychodzące, podczas gdy te utworzone przez *połączenie* z danym adresem IP i portem są wychodzące. Kierunek połączenia jest reprezentowany przez Właściwość Direction, która może być ustawiona na wartość **przychodzące** lub **wychodzące**. 
@@ -198,82 +198,82 @@ Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesów połączon
 
 ### <a name="list-all-known-machines"></a>Wyświetl listę wszystkich znanych maszyn
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="when-was-the-vm-last-rebooted"></a>Kiedy maszyna wirtualna została ostatnio uruchomiona ponownie
 ```kusto
-let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc
 ```
 
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Podsumowanie maszyn wirtualnych platformy Azure według obrazu, lokalizacji i jednostki SKU
 ```kusto
-ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s
 ```
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Wyświetl listę pojemności pamięci fizycznej wszystkich zarządzanych komputerów.
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
 ```
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Wyświetl listę nazw komputerów, DNS, IP i systemu operacyjnego.
 ```kusto
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 ```
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Znajdź wszystkie procesy z "SQL" w wierszu polecenia
 ```kusto
-ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
+ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Znajdź maszynę (najnowszy rekord) według nazwy zasobu
 ```kusto
-search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Znajdź komputer (najnowszy rekord) według adresu IP
 ```kusto
-search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
+search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Wyświetl listę wszystkich znanych procesów na określonym komputerze
 ```kusto
-ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
+ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
 ```
 
 ### <a name="list-all-computers-running-sql-server"></a>Wyświetl listę wszystkich komputerów z systemem SQL Server
 ```kusto
-ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
+ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
 ```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Wyświetl listę wszystkich unikatowych wersji programu zwinięcie w moim centrum danych
 ```kusto
-ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
+ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
 ```
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Utwórz grupę komputerów z systemem CentOS
 ```kusto
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 ```
 
 ### <a name="bytes-sent-and-received-trends"></a>Liczba bajtów wysłanych i otrzymanych trendów
 ```kusto
-VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart
 ```
 
 ### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>Które maszyny wirtualne platformy Azure przesyłają najwięcej bajtów
 ```kusto
-VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc
 ```
 
 ### <a name="link-status-trends"></a>Trendy stanu łącza
 ```kusto
-VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart
 ```
 
 ### <a name="connection-failures-trend"></a>Trend błędów połączeń
 ```kusto
-VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
+VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart
 ```
 
 ### <a name="bound-ports"></a>Powiązane porty
@@ -357,4 +357,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>Następne kroki
 * Jeśli jesteś nowym sposobem pisania zapytań dzienników w Azure Monitor, zapoznaj się z [tematem jak używać log Analytics](../../azure-monitor/log-query/get-started-portal.md) w Azure Portal do zapisywania zapytań dzienników.
+
 * Dowiedz się więcej na temat [pisania zapytań wyszukiwania](../../azure-monitor/log-query/search-queries.md).

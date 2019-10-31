@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbac4f364dedc28f7d5f3e100481a56bde70b4d3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: b28330f8e81efbb496fb30a14e8ae10415ded27f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382911"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160745"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>Skonfiguruj informacje zabezpieczające (wersja zapoznawcza), aby korzystać z połączeń telefonicznych
 
@@ -41,7 +41,7 @@ W zależności od ustawień organizacji może być możliwe użycie połączeń 
 
 ### <a name="to-set-up-phone-calls"></a>Aby skonfigurować połączenia telefoniczne
 
-1. Zaloguj się do swojego konta służbowego, a następnie przejdź do https://myprofile.microsoft.com/ strony.
+1. Zaloguj się do swojego konta służbowego, a następnie przejdź na stronę https://myprofile.microsoft.com/.
 
     ![Strona mój profil zawierająca wyróżnione linki do informacji zabezpieczających](media/security-info/securityinfo-myprofile-page.png)
 
@@ -53,7 +53,7 @@ W zależności od ustawień organizacji może być możliwe użycie połączeń 
 
     ![Dodaj pole metody z wybranym numerem telefonu](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. Na stronie **telefon** wpisz numer telefonu urządzenia przenośnego, wybierz opcję Zadzwoń do **mnie**, a następnie wybierz przycisk **dalej**.
+4. Na stronie **telefon** wpisz numer telefonu urządzenia przenośnego, wybierz opcję **Zadzwoń do mnie**, a następnie wybierz przycisk **dalej**.
 
     ![Dodawanie numeru telefonu i Wybieranie połączeń telefonicznych](media/security-info/securityinfo-myprofile-phonecall-addnumber.png)
 
@@ -115,6 +115,6 @@ Dostępne są dodatkowe opcje dotyczące sposobu, w jaki Twoja organizacja konta
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zagubione lub zapomniane hasło możesz zresetować w [portalu resetowania hasła](https://passwordreset.microsoftonline.com/) lub wykonując kroki przedstawione w artykule [Resetowanie hasła służbowego](user-help-reset-password.md).
+- Zagubione lub zapomniane hasło możesz zresetować w [portalu resetowania hasła](https://passwordreset.microsoftonline.com/) lub wykonując kroki przedstawione w artykule [Resetowanie hasła służbowego](active-directory-passwords-update-your-own-password.md).
 
 - Wskazówki i pomoc dotyczące rozwiązywania problemów z logowaniem znajdują się w artykule [Nie można zalogować się na konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).
