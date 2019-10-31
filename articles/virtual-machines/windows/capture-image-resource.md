@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: c133431bb2b84525a8ea875dea94cec8595733bb
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: fd2b3a8a09ce69c07cc7d4715a4aaeacf64f0817
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273865"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200636"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Tworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure
 
@@ -44,7 +44,7 @@ Aby uogólnić maszynę wirtualną z systemem Windows, wykonaj następujące kro
 
 1. Zaloguj się do maszyny wirtualnej z systemem Windows.
    
-2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na%windir%\System32\Sysprep, a następnie uruchom `sysprep.exe`polecenie.
+2. Otwórz okno wiersza polecenia jako administrator. Zmień katalog na%windir%\System32\Sysprep, a następnie uruchom `sysprep.exe`.
    
 3. W oknie dialogowym **Narzędzie przygotowywania systemu** wybierz opcję **Wprowadź system out-of-Box Experience (OOBE)** i zaznacz pole wyboru **generalize** .
    
@@ -56,6 +56,17 @@ Aby uogólnić maszynę wirtualną z systemem Windows, wykonaj następujące kro
 
 6. Po zakończeniu działania narzędzia Sysprep zamyka ono maszynę wirtualną. Nie uruchamiaj ponownie maszyny wirtualnej.
 
+> [!TIP]
+> **Opcjonalne** Użyj [narzędzia DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) , aby zoptymalizować obraz i skrócić czas pierwszego rozruchu maszyny wirtualnej.
+>
+> Aby zoptymalizować obraz, Zainstaluj wirtualny dysk twardy przez dwukrotne kliknięcie go w Eksploratorze Windows, a następnie uruchom narzędzie DISM z parametrem `/optimize-image`.
+>
+> ```cmd
+> DISM /image:D:\ /optimize-image /boot
+> ```
+> Gdzie D: jest ścieżką zainstalowanego wirtualnego dysku twardego.
+>
+> Uruchamianie `DISM /optimize-image` powinno być ostatnią modyfikacją dysku VHD. Jeśli wprowadzisz zmiany na wirtualnym dysku twardym przed wdrożeniem, musisz ponownie uruchomić `DISM /optimize-image`.
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Tworzenie obrazu zarządzanego w portalu 
 
@@ -87,11 +98,11 @@ Aby uogólnić maszynę wirtualną z systemem Windows, wykonaj następujące kro
 
 Utworzenie obrazu bezpośrednio z maszyny wirtualnej zapewnia, że obraz zawiera wszystkie dyski skojarzone z maszyną wirtualną, w tym dysk systemu operacyjnego i wszystkie dyski z danymi. Ten przykład pokazuje, jak utworzyć obraz zarządzany na podstawie maszyny wirtualnej korzystającej z dysków zarządzanych.
 
-Przed rozpoczęciem upewnij się, że masz najnowszą wersję modułu Azure PowerShell. Aby znaleźć wersję, uruchom `Get-Module -ListAvailable Az` polecenie w programie PowerShell. Jeśli musisz przeprowadzić uaktualnienie, zobacz [instalowanie Azure PowerShell w systemie Windows za pomocą PowerShellGet](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, uruchom `Connect-AzAccount` polecenie, aby utworzyć połączenie z platformą Azure.
+Przed rozpoczęciem upewnij się, że masz najnowszą wersję modułu Azure PowerShell. Aby znaleźć wersję, uruchom `Get-Module -ListAvailable Az` w programie PowerShell. Jeśli musisz przeprowadzić uaktualnienie, zobacz [instalowanie Azure PowerShell w systemie Windows za pomocą PowerShellGet](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, uruchom `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 
 > [!NOTE]
-> Jeśli chcesz przechowywać obraz w magazynie strefowo nadmiarowym, musisz go utworzyć w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) i dołączyć `-ZoneResilient` parametr w konfiguracji obrazu (`New-AzImageConfig` polecenie).
+> Jeśli chcesz przechowywać obraz w magazynie strefowo nadmiarowym, musisz go utworzyć w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) , i uwzględnić parametr `-ZoneResilient` w konfiguracji obrazu (polecenie`New-AzImageConfig`).
 
 Aby utworzyć obraz maszyny wirtualnej, wykonaj następujące kroki:
 
@@ -207,7 +218,7 @@ Można utworzyć obraz zarządzany na podstawie migawki uogólnionej maszyny wir
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Tworzenie obrazu na podstawie maszyny wirtualnej korzystającej z konta magazynu
 
-Aby utworzyć obraz zarządzany na podstawie maszyny wirtualnej, która nie korzysta z usługi Managed disks, musisz mieć identyfikator URI wirtualnego dysku twardego systemu operacyjnego na koncie magazynu w następującym formacie: https://*mojekontomagazynu*. blob.Core.Windows.NET/*vhdcontainer* /  *vhdfilename. VHD*. W tym przykładzie wirtualny dysk twardy znajduje się w *mojekontomagazynu*, w kontenerze o nazwie *vhdcontainer*, a nazwa pliku VHD to *vhdfilename. VHD*.
+Aby utworzyć obraz zarządzany na podstawie maszyny wirtualnej, która nie korzysta z usługi Managed disks, musisz mieć identyfikator URI wirtualnego dysku twardego systemu operacyjnego na koncie magazynu w następującym formacie: https://*mojekontomagazynu*. blob.core.windows.net/*vhdcontainer*/*vhdfilename. VHD* . W tym przykładzie wirtualny dysk twardy znajduje się w *mojekontomagazynu*, w kontenerze o nazwie *vhdcontainer*, a nazwa pliku VHD to *vhdfilename. VHD*.
 
 
 1.  Utwórz pewne zmienne.

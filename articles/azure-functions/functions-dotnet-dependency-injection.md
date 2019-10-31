@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: de8782edcc8b9c64621f1ca67d4bb810c926afaf
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 06415db201582f3e594173e9fe891ee9fdba4b18
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973385"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200393"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Używanie iniekcji zależności w programie .NET Azure Functions
 
@@ -74,7 +74,7 @@ Seria kroków rejestracji jest uruchamiana przed i po przetworzeniu klasy starto
 
 - *Klasa startowa jest przeznaczona tylko do konfiguracji i rejestracji.* Unikaj korzystania z usług zarejestrowanych podczas uruchamiania podczas uruchamiania. Na przykład nie należy próbować rejestrować komunikatu w rejestratorze, który jest rejestrowany podczas uruchamiania. Ten punkt procesu rejestracji jest zbyt wczesny, aby Twoje usługi były dostępne do użycia. Po uruchomieniu metody `Configure` środowisko uruchomieniowe funkcji kontynuuje rejestrowanie dodatkowych zależności, co może wpłynąć na działanie usług.
 
-- *Kontener iniekcji zależności zawiera tylko jawnie zarejestrowane typy*. Jedyne usługi dostępne jako typy z możliwością wstrzykiwania to ustawienia konfiguracji w metodzie `Configure`. W związku z tym typy specyficzne dla funkcji, takie jak `BindingContext` i `ExecutionContext`, nie są dostępne podczas instalacji ani jako typy wstrzykiwane.
+- *Kontener iniekcji zależności zawiera tylko jawnie zarejestrowane typy*. Jedyne usługi dostępne jako typy z możliwością iniekcji to ustawienia konfiguracji w metodzie `Configure`. W związku z tym typy specyficzne dla funkcji, takie jak `BindingContext` i `ExecutionContext`, nie są dostępne podczas instalacji ani jako typy wstrzykiwane.
 
 ## <a name="use-injected-dependencies"></a>Użyj wstrzykiwanych zależności
 
@@ -126,7 +126,7 @@ Aplikacje Azure Functions zapewniają te same okresy istnienia usługi jak [inie
 
 - **Przejściowe**: usługi przejściowe są tworzone na podstawie każdego żądania usługi.
 - W **zakresie**: okres istnienia usługi w zakresie jest zgodny z okresem istnienia funkcji. Usługi w zakresie są tworzone raz na wykonanie. Późniejsze żądania dla tej usługi podczas wykonywania ponownie użyją istniejącego wystąpienia usługi.
-- **Pojedyncze**: okres istnienia usługi pojedynczej jest zgodny z okresem istnienia hosta i jest ponownie używany w ramach wykonywania funkcji w tym wystąpieniu. Dla połączeń i klientów zaleca się używanie pojedynczych usług okresu istnienia, na przykład `SqlConnection` lub `HttpClient`.
+- **Pojedyncze**: okres istnienia usługi pojedynczej jest zgodny z okresem istnienia hosta i jest ponownie używany w ramach wykonywania funkcji w tym wystąpieniu. Dla połączeń i klientów zaleca się używanie pojedynczych usług okresu istnienia, na przykład `SqlConnection` lub `HttpClient` wystąpień.
 
 Wyświetl lub Pobierz [przykład różnych okresów istnienia usługi](https://aka.ms/functions/di-sample) w serwisie GitHub.
 
@@ -135,8 +135,8 @@ Wyświetl lub Pobierz [przykład różnych okresów istnienia usługi](https://a
 Jeśli potrzebujesz własnego dostawcy rejestrowania, Zarejestruj niestandardowy typ jako wystąpienie `ILoggerProvider`. Application Insights jest automatycznie dodawane przez Azure Functions.
 
 > [!WARNING]
-> - Nie należy dodawać `AddApplicationInsightsTelemetry()` do kolekcji usług, ponieważ rejestruje ona usługi powodujące konflikt z usługami udostępnianymi przez środowisko.
-> - Nie rejestruj własnych `TelemetryConfiguration` lub `TelemetryClient`, jeśli używasz wbudowanej funkcji Application Insights.
+> - Nie należy dodawać `AddApplicationInsightsTelemetry()` do kolekcji usług, ponieważ rejestruje ona usługi, które powodują konflikt z usługami udostępnianymi przez środowisko.
+> - Nie rejestruj własnych `TelemetryConfiguration` ani `TelemetryClient`, jeśli używasz wbudowanej funkcji Application Insights.
 
 ## <a name="function-app-provided-services"></a>Usługi funkcji dostarczone przez aplikację
 
@@ -144,8 +144,8 @@ Host funkcji rejestruje wiele usług. Następujące usługi są bezpieczne do po
 
 |Typ usługi|Okres istnienia|Opis|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|Pojedynczego|Konfiguracja środowiska uruchomieniowego|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Pojedynczego|Osoba odpowiedzialna za podanie identyfikatora wystąpienia hosta|
+|`Microsoft.Extensions.Configuration.IConfiguration`|pojedynczego|Konfiguracja środowiska uruchomieniowego|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|pojedynczego|Osoba odpowiedzialna za podanie identyfikatora wystąpienia hosta|
 
 Jeśli istnieją inne usługi, dla których chcesz wziąć zależność, [Utwórz problem i Zaproponuj je w serwisie GitHub](https://github.com/azure/azure-functions-host).
 
@@ -192,7 +192,6 @@ public class HttpTrigger
 
     public HttpTrigger(IOptions<MyOptions> options)
     {
-        _service = service;
         _settings = options.Value;
     }
 }

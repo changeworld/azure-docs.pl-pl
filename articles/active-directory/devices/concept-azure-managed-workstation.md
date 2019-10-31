@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00e5e4a9751a03fe961fe02fec28f41b49e5ba43
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 2abc5434f11bf00c6872775b1336694c04972e95
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175163"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200217"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Informacje na temat bezpiecznych stacji roboczych zarządzanych przez platformę Azure
 
@@ -91,7 +91,7 @@ Te wskazówki odnoszą się do kilku profilów zabezpieczeń i ról, które mog�
 
 * **Ulepszone zabezpieczenia** — to na poziomie tego, chronione rozwiązanie jest dobre dla użytkowników domowych, małych użytkowników i deweloperów.
 
-   Ulepszona stacja robocza to oparta na zasadach Metoda zwiększania bezpieczeństwa profilu niskiego poziomu zabezpieczeń. Zapewnia ona bezpieczny sposób pracy z danymi klientów, a także korzysta z narzędzi do produktywności, takich jak poczta e-mail i przeglądanie w sieci Web. Za pomocą zasad inspekcji i usługi Intune można monitorować rozszerzoną stację roboczą w celu zachowania użytkowników i użycia profilów. Ulepszony profil stacji roboczej można wdrożyć za pomocą skryptu Windows10 (1809) i korzystać z zaawansowanej ochrony przed złośliwym oprogramowaniem przy użyciu funkcji [zaawansowanej ochrony przed zagrożeniami (ATP)](https://docs.microsoft.com/office365/securitycompliance/office-365-atp).
+   Ulepszona stacja robocza to oparta na zasadach Metoda zwiększania bezpieczeństwa profilu niskiego poziomu zabezpieczeń. Zapewnia ona bezpieczny sposób pracy z danymi klientów, a także korzysta z narzędzi do produktywności, takich jak poczta e-mail i przeglądanie w sieci Web. Za pomocą zasad inspekcji i usługi Intune można monitorować rozszerzoną stację roboczą w celu zachowania użytkowników i użycia profilów. Ulepszony profil stacji roboczej można wdrożyć za pomocą skryptu Windows10 (1809) i korzystać z zaawansowanej ochrony przed złośliwym oprogramowaniem przy użyciu funkcji [zaawansowanej ochrony przed zagrożeniami (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection).
 
 * **Wysoki poziom zabezpieczeń** — najbardziej skutecznym sposobem na zmniejszenie podatności na ataki stacji roboczej jest usunięcie możliwości samodzielnego administrowania stacją roboczą. Usuwanie lokalnych praw administracyjnych to krok, który zwiększa bezpieczeństwo, ale może mieć wpływ na wydajność, jeśli został zaimplementowany nieprawidłowo. Profil wysokiego poziomu zabezpieczeń jest oparty na ulepszonym profilu zabezpieczeń i ma jedną znaczną zmianę: usunięcie lokalnego administratora. Ten profil jest przeznaczony dla użytkowników z wysokim profilem: dyrektorzy, płace i użytkownicy danych poufnych, osoby zatwierdzające usługi i procesy.
 

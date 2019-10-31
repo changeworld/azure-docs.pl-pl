@@ -379,7 +379,11 @@
         - name: Wysoka dostępność
           href: manage-availability.md
         - name: Tworzenie grupy umieszczania w pobliżu
-          href: proximity-placement-groups.md
+          items:
+            - name: Interfejs wiersza polecenia
+              href: proximity-placement-groups.md
+            - name: Portal
+              href: ../windows/proximity-placement-groups-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Tworzenie maszyny wirtualnej w strefie dostępności
           href: create-cli-availability-zone.md
     - name: Korzystanie z narzędzi automatyzacji

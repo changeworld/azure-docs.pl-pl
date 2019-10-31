@@ -1,5 +1,5 @@
 ---
-title: Zbieranie dzienników zasobów platformy Azure w obszarze roboczym Log Analytics w Azure Monitor
+title: Zbieranie dzienników zasobów platformy Azure w obszarze roboczym Log Analytics
 description: Informacje na temat przesyłania strumieniowego dzienników zasobów platformy Azure do obszaru roboczego Log Analytics w programie Azure Monitor.
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 2f5dba7c36ec04263f6d227d82b9fc50b82890a3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262442"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200506"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie dzienników zasobów platformy Azure w obszarze roboczym Log Analytics w Azure Monitor
 [Dzienniki zasobów](resource-logs-overview.md) na platformie Azure zapewniają rozbudowane, częste dane dotyczące wewnętrznej operacji zasobu platformy Azure. W tym artykule opisano zbieranie dzienników zasobów w Log Analytics obszarze roboczym, które umożliwiają analizowanie go przy użyciu innych danych monitorowania zebranych w dziennikach Azure Monitor przy użyciu zaawansowanych zapytań dzienników, a także do korzystania z innych funkcji Azure Monitor, takich jak alerty i wizualizacje. 
@@ -51,13 +51,13 @@ Rozważmy następujący przykład, w którym ustawienia diagnostyczne są zbiera
 
 Tabela AzureDiagnostics będzie wyglądać następująco:  
 
-| ResourceProvider    | Category     | A  | B  | C  | D  | E  | P  | G  | H  | I  |
+| ResourceProvider    | Kategoria     | A  | B  | C  | D  | Adres  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft. Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
-| Microsoft. Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
-| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
-| Microsoft. Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
-| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
+| Microsoft. Service1 | AuditLogs    | x1 | Y1 | z1 |    |    |    |    |    |    |
+| Microsoft. Service1 | ErrorLogs    |    |    |    | pierwszym | W1 | E1 |    |    |    |
+| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | J1 | K1 | L1 |
+| Microsoft. Service1 | ErrorLogs    |    |    |    | Q2 | W2 | punktu |    |    |    |
+| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | Scale |
 | Microsoft. Service1 | AuditLogs    | x5 | Y5 | z5 |    |    |    |    |    |    |
 | Przyciski ... |
 
@@ -68,26 +68,26 @@ W powyższym przykładzie powstaje trzy tabele:
  
 - *Service1AuditLogs* tabeli w następujący sposób:
 
-    | Dostawca zasobów | Category | A | B | C |
+    | Dostawca zasobów | Kategoria | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Service1 | AuditLogs | x1 | y1 | z1 |
+    | Service1 | AuditLogs | x1 | Y1 | z1 |
     | Service1 | AuditLogs | x5 | Y5 | z5 |
     | Przyciski ... |
 
 - *Service1ErrorLogs* tabeli w następujący sposób:  
 
-    | Dostawca zasobów | Category | D | E | P |
+    | Dostawca zasobów | Kategoria | D | Adres | F |
     | -- | -- | -- | -- | -- | 
-    | Service1 | ErrorLogs |  q1 | w1 | e1 |
-    | Service1 | ErrorLogs |  q2 | w2 | e2 |
+    | Service1 | ErrorLogs |  pierwszym | W1 | E1 |
+    | Service1 | ErrorLogs |  Q2 | W2 | punktu |
     | Przyciski ... |
 
 - *Service2AuditLogs* tabeli w następujący sposób:  
 
-    | Dostawca zasobów | Category | G | H | I |
+    | Dostawca zasobów | Kategoria | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Językowej2 | AuditLogs | j1 | k1 | l1|
-    | Językowej2 | AuditLogs | j3 | k3 | l3|
+    | Językowej2 | AuditLogs | J1 | K1 | L1|
+    | Językowej2 | AuditLogs | j3 | k3 | Scale|
     | Przyciski ... |
 
 

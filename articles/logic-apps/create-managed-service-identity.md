@@ -9,16 +9,16 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: fdc5340c9affa7137815577af842aa8b43a552a8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2d1dbde2499dbe793a895f894e5ae83c36c54449
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799647"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200627"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Uwierzytelnianie dostępu do zasobów platformy Azure przy użyciu tożsamości zarządzanych w programie Azure Logic Apps
 
-Aby uzyskać dostęp do zasobów w innych dzierżawach usługi Azure Active Directory (Azure AD) i uwierzytelnić swoją tożsamość bez logowania, aplikacja logiki może korzystać z [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) przypisanej przez system (znanej wcześniej jako tożsamość usługi ZARZĄDZANEJ lub MSI) zamiast poświadczenia lub wpisy tajne. Platforma Azure zarządza tą tożsamością i pomaga zabezpieczyć Twoje poświadczenia, ponieważ nie trzeba podawać ani obrócić wpisów tajnych. W tym artykule przedstawiono sposób konfigurowania tożsamości zarządzanej przypisanej przez system i używania jej w aplikacji logiki.
+Aby uzyskać dostęp do zasobów w innych dzierżawach usługi Azure Active Directory (Azure AD) i uwierzytelnić swoją tożsamość bez logowania, aplikacja logiki może korzystać z [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) przypisanej przez system (znanej wcześniej jako tożsamość usługi ZARZĄDZANEJ lub MSI) zamiast poświadczenia lub wpisy tajne. Platforma Azure zarządza tą tożsamością i pomaga zabezpieczyć Twoje poświadczenia, ponieważ nie trzeba podawać ani obrócić wpisów tajnych. W tym artykule przedstawiono sposób konfigurowania tożsamości zarządzanej przypisanej przez system i używania jej w aplikacji logiki. Obecnie zarządzane tożsamości działają tylko z [określonymi wbudowanymi wyzwalaczami i akcjami](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls), niezarządzanymi łącznikami lub połączeniami.
 
 Aby uzyskać więcej informacji, zobacz następujące tematy:
 
@@ -155,7 +155,7 @@ Po skonfigurowaniu zarządzanej tożsamości dla aplikacji logiki możesz [nada�
 
 ## <a name="authenticate-access-with-managed-identity"></a>Uwierzytelnianie dostępu przy użyciu tożsamości zarządzanej
 
-Po [włączeniu zarządzanej tożsamości dla aplikacji logiki](#azure-portal-system-logic-app) i [udzieleniu tej tożsamości dostępu do zasobu docelowego](#access-other-resources)można użyć tej tożsamości w [wyzwalaczach i akcjach, które obsługują tożsamości zarządzane](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+Po [włączeniu zarządzanej tożsamości dla aplikacji logiki](#azure-portal-system-logic-app) i [udzieleniu tej tożsamości dostępu do zasobu lub jednostki docelowej](#access-other-resources)można użyć tej tożsamości w [wyzwalaczach i akcjach, które obsługują tożsamości zarządzane](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
 > [!IMPORTANT]
 > Jeśli masz funkcję platformy Azure, w której chcesz użyć tożsamości przypisanej do systemu, najpierw [Włącz uwierzytelnianie dla usługi Azure Functions](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
@@ -164,27 +164,34 @@ W tych krokach pokazano, jak używać zarządzanej tożsamości z wyzwalaczem lu
 
 1. W [Azure Portal](https://portal.azure.com)Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
-1. Jeśli jeszcze tego nie zrobiono, Dodaj wyzwalacz lub akcję [, która obsługuje zarządzane tożsamości](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+1. Jeśli jeszcze tego nie zrobiono, Dodaj [wyzwalacz lub akcję, która obsługuje zarządzane tożsamości](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
-   Załóżmy na przykład, że chcesz uruchomić [operację tworzenia migawek obiektów](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) BLOB na obiekcie BLOB na koncie usługi Azure Storage, na którym wcześniej skonfigurowano dostęp do Twojej tożsamości, ale [łącznik usługi Azure Blob Storage](/connectors/azureblob/) nie oferuje obecnie tej operacji. Zamiast tego można użyć [akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) do uruchomienia operacji lub innych [operacji interfejsu API REST usługi BLOB Service](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs). W celu uwierzytelnienia akcja HTTP może korzystać z tożsamości przypisanej do systemu, która została włączona dla aplikacji logiki. Akcja HTTP używa również tych właściwości do określenia zasobu, do którego chcesz uzyskać dostęp:
+   Na przykład wyzwalacz HTTP lub akcja może korzystać z tożsamości przypisanej do systemu, która została włączona dla aplikacji logiki. Na ogół wyzwalacz HTTP lub akcja używa tych właściwości do określenia zasobu lub jednostki, do których chcesz uzyskać dostęp:
 
-   * Właściwość **URI** określa adres URL punktu końcowego służący do uzyskiwania dostępu do docelowego zasobu platformy Azure. Ta składnia identyfikatora URI zwykle zawiera [Identyfikator zasobu](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) dla usługi lub zasobu platformy Azure.
+   | Właściwość | Wymagane | Opis |
+   |----------|----------|-------------|
+   | **Metoda** | Tak | Metoda HTTP, która jest używana przez operację, którą chcesz uruchomić |
+   | **ADRESU** | Tak | Adres URL punktu końcowego służący do uzyskiwania dostępu do docelowego zasobu lub jednostki platformy Azure. Składnia identyfikatora URI zwykle zawiera [Identyfikator zasobu](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) dla usługi lub zasobu platformy Azure. |
+   | **Nagłówki** | Nie | Wszystkie wartości nagłówka, które są potrzebne lub które mają zostać uwzględnione w żądaniu wychodzącym, takie jak typ zawartości. |
+   | **Zapytania** | Nie | Wszystkie parametry zapytania, które są potrzebne lub które mają zostać uwzględnione w żądaniu, takie jak parametr określonej operacji lub wersja interfejsu API dla operacji, którą chcesz uruchomić |
+   | **Uwierzytelnianie** | Tak | Typ uwierzytelniania używany do uwierzytelniania dostępu do zasobu lub jednostki docelowej |
+   ||||
 
-   * Właściwość **Headers** określa wszelkie wartości nagłówka, które są potrzebne lub które mają zostać uwzględnione w żądaniu, na przykład wersję interfejsu API dla operacji, która ma być uruchamiana w zasobie docelowym.
+   Na przykład załóżmy, że chcesz uruchomić [operację tworzenia migawek obiektów](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) BLOB na obiekcie BLOB na koncie usługi Azure Storage, na którym wcześniej skonfigurowano dostęp do Twojej tożsamości. Jednak [Łącznik usługi Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/) nie oferuje obecnie tej operacji. Zamiast tego można uruchomić tę operację za pomocą [akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) lub innej [operacji interfejsu API REST usługi BLOB Service](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs).
 
-   * Właściwość **zapytania** określa wszelkie parametry zapytania, które należy uwzględnić w żądaniu, takie jak parametr określonej operacji lub określona wersja interfejsu API, gdy jest to wymagane.
+   > [!IMPORTANT]
+   > Aby uzyskać dostęp do kont usługi Azure Storage za zaporami przy użyciu żądań HTTP i tożsamości zarządzanych, należy się upewnić, że konto magazynu zostało również skonfigurowane z [wyjątkiem, który zezwala na dostęp za pomocą zaufanych usług firmy Microsoft](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service).
 
    Aby uruchomić [operację tworzenia migawek obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob), Akcja http określa następujące właściwości:
 
-   * **Metoda**: określa `PUT` operacji.
-
-   * Identyfikator **URI**: Określa identyfikator zasobu dla pliku BLOB Storage platformy Azure w środowisku globalnym (publicznym) platformy Azure i używa następującej składni:
-
-     `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}`
-
-   * **Nagłówki**: określa `x-ms-blob-type` jako `BlockBlob` i `x-ms-version` jako `2019-02-02` dla operacji migawki obiektu BLOB. Aby uzyskać więcej informacji, zobacz temat [nagłówki żądań — obiekt BLOB migawek](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) i [przechowywanie wersji dla usług Azure Storage](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services).
-
-   * **Zapytania**: określa `comp` jako nazwę parametru zapytania i `snapshot` jako wartość parametru.
+   | Właściwość | Wymagane | Przykładowa wartość | Opis |
+   |----------|----------|---------------|-------------|
+   | **Metoda** | Tak | `PUT`| Metoda HTTP, której używa operacja obiektu BLOB Snapshot |
+   | **ADRESU** | Tak | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Identyfikator zasobu dla pliku Blob Storage platformy Azure w środowisku globalnym (publicznym) platformy Azure, który używa tej składni |
+   | **Nagłówki** | Tak, w przypadku usługi Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | `x-ms-blob-type` i `x-ms-version` wartości nagłówka wymagane przez operacje usługi Azure Storage. <p><p>**Ważne**: w wychodzących wyzwalaczach http i żądaniach akcji dla usługi Azure Storage nagłówek wymaga właściwości `x-ms-version` i wersji interfejsu API dla operacji, która ma zostać uruchomiona. <p>Aby uzyskać więcej informacji, zobacz następujące tematy: <p><p>[nagłówki żądania - — obiekt BLOB migawek](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>[przechowywanie wersji - dla usług Azure Storage](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **Zapytania** | Tak, dla tej operacji | `comp` = `snapshot` | Nazwa parametru kwerendy i wartość dla operacji migawki obiektu BLOB. |
+   | **Uwierzytelnianie** | Tak | `Managed Identity` | Typ uwierzytelniania, który ma być używany do uwierzytelniania dostępu do obiektu blob platformy Azure |
+   |||||
 
    Oto przykładowa akcja HTTP, która wyświetla wszystkie te wartości właściwości:
 

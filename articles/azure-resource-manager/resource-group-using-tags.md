@@ -4,20 +4,20 @@ description: Pokazuje, jak zastosować Tagi do organizowania zasobów platformy 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9bcbfe1bdb501cac6ff31156db5382d1174eb8ad
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e7763889ecf69231b7a4daf31e6899b33f3e2b36
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146837"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199160"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
 [!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
-Aby zastosować Tagi do zasobów, użytkownik musi mieć dostęp do zapisu dla tego typu zasobu. Aby zastosować Tagi do wszystkich typów zasobów, użyj roli [współautor](../role-based-access-control/built-in-roles.md#contributor) . Aby zastosować Tagi tylko do jednego typu zasobu, należy użyć roli współautor dla tego zasobu. Aby na przykład zastosować Tagi do maszyn wirtualnych, użyj współautora [maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+Aby zastosować Tagi do zasobów, użytkownik musi mieć dostęp do zapisu dla tego typu zasobu. Aby zastosować Tagi do wszystkich typów zasobów, użyj roli [współautor](../role-based-access-control/built-in-roles.md#contributor) . Aby zastosować Tagi tylko do jednego typu zasobu, należy użyć roli współautor dla tego zasobu. Aby na przykład zastosować Tagi do maszyn wirtualnych, użyj [współautora maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
@@ -180,7 +180,7 @@ W przypadku zapętlenia przez kolekcję zasobów warto wyświetlić zasób wedł
 az resource show --id <resource-id> --query tags
 ```
 
-Aby uzyskać grupy zasobów, które mają określony tag, użyj `az group list`:
+Aby uzyskać grupy zasobów z określonym tagiem, użyj `az group list`:
 
 ```azurecli
 az group list --tag Dept=IT
@@ -250,7 +250,7 @@ done
 
 ## <a name="templates"></a>Szablony
 
-Aby oznaczyć zasób podczas wdrażania, Dodaj `tags` element do zasobu, który jest wdrażany. Podaj nazwę i wartość tagu.
+Aby oznaczyć zasób podczas wdrażania, Dodaj element `tags` do zasobu, który jest wdrażany. Podaj nazwę i wartość tagu.
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>Stosowanie wartości literału do nazwy tagu
 
@@ -361,7 +361,7 @@ Aby przechowywać wiele wartości w jednym tagu, zastosuj ciąg JSON reprezentuj
 
 ### <a name="apply-tags-from-resource-group"></a>Zastosuj Tagi z grupy zasobów
 
-Aby zastosować Tagi z grupy zasobów do zasobu, użyj funkcji Resources. [](resource-group-template-functions-resource.md#resourcegroup) Podczas pobierania wartości tagu Użyj `tags.[tag-name]` składni zamiast `tags.tag-name` składni, ponieważ niektóre znaki nie są prawidłowo analizowane w notacji kropkowej.
+Aby zastosować Tagi z grupy zasobów do zasobu, użyj funkcji [resources](resource-group-template-functions-resource.md#resourcegroup) . Podczas pobierania wartości tagu użyj składni `tags.[tag-name]` zamiast składni `tags.tag-name`, ponieważ niektóre znaki nie są poprawnie analizowane w notacji kropkowej.
 
 ```json
 {

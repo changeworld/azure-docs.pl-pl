@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e8164a111b9ad5ebcc67c248586e2576046334b0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 05cc1dcb2a6fa4e7790fa57cd2136d21d94b8a0b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883245"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200527"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Zbieranie niestandardowych metryk dla maszyny wirtualnej z systemem Linux za pomocą agenta InfluxData telegraf
 
@@ -29,7 +29,7 @@ Korzystając z Azure Monitor, można zbierać niestandardowe metryki za pośredn
 
 W tym samouczku wdrażamy maszynę wirtualną z systemem Linux z systemem operacyjnym Ubuntu 16,04 LTS. Agent telegraf jest obsługiwany w przypadku większości systemów operacyjnych Linux. Pakiety Debian i RPM są dostępne wraz z nieopakowanymi plikami binarnymi systemu Linux w [portalu pobierania InfluxData](https://portal.influxdata.com/downloads). Więcej instrukcji i opcji instalacji można znaleźć w tym [przewodniku instalacji telegraf](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 Utwórz nową maszynę wirtualną z systemem Linux: 
 
@@ -39,7 +39,7 @@ Utwórz nową maszynę wirtualną z systemem Linux:
 1. Podaj nazwę maszyny wirtualnej, taką jak **MyTelegrafVM**.  
 1. Pozostaw typ dysku jako dysk **SSD**. Podaj **nazwę użytkownika**, taką jak **azureuser**. 
 1. W obszarze **Typ uwierzytelniania**wybierz pozycję **hasło**. Następnie wprowadź hasło, które będzie używane później do protokołu SSH do tej maszyny wirtualnej. 
-1. Wybierz opcję **utworzenia nowej grupy zasobów**. Podaj nazwę, na przykład. Wybierz **lokalizację**. Następnie wybierz przycisk **OK**. 
+1. Wybierz opcję **utworzenia nowej grupy zasobów**. Podaj nazwę **, na przykład.** Wybierz **lokalizację**. Następnie wybierz przycisk **OK**. 
 
     ![Tworzenie maszyny wirtualnej z systemem Ubuntu](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -47,13 +47,13 @@ Utwórz nową maszynę wirtualną z systemem Linux:
 
     ![Omówienie agenta telegraficznego rozmiaru maszyny wirtualnej](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. Na stronie **Ustawienia** > w**grupie** > zabezpieczeń sieci**Wybierz pozycję publiczne porty przychodzące**, wybierz pozycję **http** i **SSH (22)** . Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **OK**. 
+1. Na stronie **Ustawienia** w obszarze **Sieć** > **sieciowa Grupa zabezpieczeń** > **Wybierz pozycję publiczne porty przychodzące**, wybierz pozycję **http** i **SSH (22)** . Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **OK**. 
 
 1. Na stronie podsumowania wybierz pozycję **Utwórz**, aby rozpocząć wdrażanie maszyny wirtualnej. 
 
 1. Maszyna wirtualna jest przypięta do pulpitu nawigacyjnego witryny Azure Portal. Po zakończeniu wdrożenia zostanie automatycznie otwarte podsumowanie maszyny wirtualnej. 
 
-1. W okienku maszyn wirtualnych przejdź do karty **tożsamość** . Upewnij się, że **na**maszynie wirtualnej jest ustawiona tożsamość przypisana do systemu. 
+1. W okienku maszyn wirtualnych przejdź do karty **tożsamość** . **upewnij się,** że maszyna wirtualna ma ustawioną tożsamość przypisaną do systemu. 
  
     ![Wersja zapoznawcza maszyny wirtualnej telegraf](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
@@ -108,7 +108,7 @@ Teraz agent będzie zbierać metryki z każdej z określonych wtyczek wejściowy
 
 1. Otwórz [portal Azure](https://portal.azure.com). 
 
-1. Przejdź do karty nowy **monitor** . Następnie wybierzpozycję metryki.  
+1. Przejdź do karty nowy **monitor** . Następnie wybierz pozycję **metryki**.  
 
      ![Monitor — metryki (wersja zapoznawcza)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
@@ -130,7 +130,7 @@ Ponadto w tym instruktażu Agent telegraf był używany do emitowania metryk dot
 
 Gdy nie są już potrzebne, możesz usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby. W tym celu wybierz grupę zasobów dla maszyny wirtualnej, a następnie wybierz pozycję **Usuń**. Następnie Potwierdź nazwę grupy zasobów do usunięcia. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [metrykach niestandardowych](metrics-custom-overview.md).
 
 

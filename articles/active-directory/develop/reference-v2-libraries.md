@@ -18,12 +18,12 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94e4199ff15dc63a729a601840e312afeadc8823
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a09f782e9a4d31385868e8383b9b7be83d85d0f0
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678081"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200303"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Biblioteki uwierzytelniania platformy tożsamości firmy Microsoft
 
@@ -61,7 +61,7 @@ Użyj bibliotek uwierzytelniania klienta, aby uzyskać token do wywoływania chr
 ![Angular](media/sample-v2-code/logo_angular.png) | MSAL kątowy (wersja zapoznawcza) | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
 | ![.NET Framework](media/sample-v2-code/logo_NET.png) ![PLATFORMY UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Aplikacja klasyczna](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Dokumentacja koncepcji](msal-overview.md) | [Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
 | ![Python](media/sample-v2-code/logo_python.png) | MSAL Python (wersja zapoznawcza) | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Przykłady](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) (Witryna typu wiki) | [Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
-| ![Java](media/sample-v2-code/logo_java.png) | MSAL Java (wersja zapoznawcza) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Przykłady](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) (Witryna typu wiki) | [Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
+| ![Java](media/sample-v2-code/logo_java.png) | MSAL Java (wersja zapoznawcza) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Przykłady](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [Dokumentacja](https://javadoc.io/doc/com.microsoft.azure/msal4j/0.6.0-preview/index.html) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) (Witryna typu wiki) | [Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
 | macOS & systemu iOS | MSAL iOS i macOS | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [aplikacja systemu iOS](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc), [aplikacja macOS](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [Dokumentacja](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [Dokumentacja koncepcji](msal-overview.md) | |
 |![System Android/Java](media/sample-v2-code/logo_Android.png) | MSAL Android | [Repozytorium centralne](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Aplikacja systemu Android](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | [Dokumentacja koncepcji](msal-overview.md) |[Harmonogram działania](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Roadmap)
 

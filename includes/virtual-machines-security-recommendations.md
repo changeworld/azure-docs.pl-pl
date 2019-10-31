@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: d43860d71b14bdac275df51695c9206539529171
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e687fc071272e7a509b1dcfb0a417828a07aa7a9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72511503"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182260"
 ---
-Ten artykuł zawiera zalecenia dotyczące zabezpieczeń dla usługi Azure Virtual Machines. Postępuj zgodnie z tymi zaleceniami, aby pomóc w spełnieniu obowiązków związanych z zabezpieczeniami opisanymi w naszym modelu dla współdzielonej odpowiedzialności. Zalecenia ułatwią również poprawę ogólnego bezpieczeństwa rozwiązań aplikacji sieci Web. Aby uzyskać więcej informacji na temat tego, co firma Microsoft może spełnić obowiązki dostawcy usług, zobacz [udostępnianie obowiązków w chmurze obliczeniowej](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225237/1/Shared%20Responsibilities%20for%20Cloud%20Computing%20(2017-04-03).pdf).
+Ten artykuł zawiera zalecenia dotyczące zabezpieczeń dla usługi Azure Virtual Machines. Postępuj zgodnie z tymi zaleceniami, aby pomóc w spełnieniu obowiązków związanych z zabezpieczeniami opisanymi w naszym modelu dla współdzielonej odpowiedzialności. Zalecenia ułatwią również poprawę ogólnego bezpieczeństwa rozwiązań aplikacji sieci Web. Aby uzyskać więcej informacji na temat tego, co firma Microsoft może spełnić obowiązki dostawcy usług, zobacz [udostępnianie obowiązków w chmurze obliczeniowej](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
 
 Niektóre z tych zaleceń w tym artykule mogą być automatycznie rozwiązywane przez Azure Security Center. Azure Security Center to pierwszy wiersz obrony dla zasobów na platformie Azure. Okresowo analizuje stan zabezpieczeń zasobów platformy Azure w celu identyfikowania potencjalnych luk w zabezpieczeniach. Następnie zaleca się rozwiązanie tych luk w zabezpieczeniach. Aby uzyskać więcej informacji, zobacz [zalecenia dotyczące zabezpieczeń w Azure Security Center](../articles/security-center/security-center-recommendations.md).
 

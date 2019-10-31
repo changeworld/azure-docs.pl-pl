@@ -1,6 +1,6 @@
 ---
 title: Nawiązywanie połączenia z usługą Azure Blob Storage — Azure Logic Apps
-description: Tworzenie obiektów BLOB w usłudze Azure Storage i zarządzanie nimi za pomocą Azure Logic Apps
+description: Tworzenie obiektów blob i zarządzanie nimi na kontach usługi Azure Storage przy użyciu Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,33 +9,29 @@ ms.author: estfan
 manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 10/28/2019
 tags: connectors
-ms.openlocfilehash: 98a811508d5fa65135c224536b668145ea0808d0
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: c431f917f6fc1ac080b13184bd9ce205a20afbaa
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176064"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199662"
 ---
-# <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Tworzenie obiektów BLOB w usłudze Azure Blob Storage i zarządzanie nimi za pomocą Azure Logic Apps
+# <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Tworzenie obiektów blob i zarządzanie nimi w usłudze Azure Blob Storage przy użyciu Azure Logic Apps
 
 W tym artykule pokazano, jak można uzyskać dostęp do plików przechowywanych jako obiekty blob w ramach konta usługi Azure Storage i zarządzać nimi z poziomu aplikacji logiki za pomocą łącznika usługi Azure Blob Storage. Dzięki temu można tworzyć aplikacje logiki, które automatyzują zadania i przepływy pracy związane z zarządzaniem plikami. Można na przykład tworzyć aplikacje logiki, które tworzą, pobierają, aktualizują i usuwają pliki na koncie magazynu.
 
 Załóżmy, że masz narzędzie, które jest aktualizowane w witrynie sieci Web systemu Azure. który działa jako wyzwalacz aplikacji logiki. Po wystąpieniu tego zdarzenia aplikacja logiki może aktualizować jakiś plik w kontenerze magazynu obiektów blob, który jest akcją w aplikacji logiki.
 
+Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zapoznaj [się z tematem Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informacje techniczne dotyczące konkretnego łącznika można znaleźć w [dokumentacji łącznika usługi Azure Blob Storage](https://docs.microsoft.com/connectors/azureblobconnector/).
+
 > [!IMPORTANT]
->
-> Usługa Logic Apps nie może bezpośrednio uzyskać dostępu do kont usługi Azure Storage, które mają [reguły zapory](../storage/common/storage-network-security.md) i istnieją w tym samym regionie. Jeśli jednak zezwolisz na [wychodzące adresy IP dla łączników zarządzanych w Twoim regionie](../logic-apps/logic-apps-limits-and-config.md#outbound), usługa Logic Apps będzie mogła uzyskać dostęp do kont magazynu w innym regionie, z wyjątkiem sytuacji, gdy używasz łącznika usługi Azure Table Storage lub łącznika usługi Azure queue storage. Aby uzyskać dostęp do Table Storage lub Queue Storage, można nadal używać wyzwalacza HTTP i akcji. 
-> W przeciwnym razie możesz użyć bardziej zaawansowanych opcji tutaj:
-> 
-> * Utwórz [środowisko usługi integracji](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), które może łączyć się z zasobami w sieci wirtualnej platformy Azure.
->
-> * W przypadku korzystania z warstwy dedykowanej dla API Management można skorzystać z interfejsu API usługi Storage, korzystając z API Management i zezwalając na te adresy IP w ramach zapory. W zasadzie należy dodać sieć wirtualną platformy Azure używaną przez API Management do ustawienia zapory dla konta magazynu. Następnie można użyć akcji API Management lub akcji HTTP do wywołania interfejsów API usługi Azure Storage. Jednak w przypadku wybrania tej opcji musisz samodzielnie obsłużyć proces uwierzytelniania. Aby uzyskać więcej informacji, zobacz [prosta architektura integracji przedsiębiorstwa](https://aka.ms/aisarch).
+> Aby włączyć dostęp z Azure Logic Apps do kont magazynu za zaporą, zobacz sekcję [dostęp do kont magazynu związanych z zaporami](#storage-firewalls) w dalszej części tego tematu.
 
-Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zapoznaj [się z tematem Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informacje techniczne dotyczące konkretnego łącznika można znaleźć w [dokumentacji łącznika usługi Azure Blob Storage](/connectors/azureblobconnector/).
+<a name="blob-storage-limits"></a>
 
-## <a name="limits"></a>Ograniczeń
+## <a name="limits"></a>Limity
 
 * Domyślnie akcje Blob Storage platformy Azure mogą odczytywać lub zapisywać pliki o *rozmiarze 50 MB lub mniejszym*. Do obsługi plików o rozmiarze większym niż 50 MB, ale nawet do 1024 MB, działania Blob Storage platformy Azure obsługują [fragmenty komunikatów](../logic-apps/logic-apps-handle-large-messages.md). Akcja **Pobierz zawartość obiektu BLOB** niejawnie używa podziału.
 
@@ -47,7 +43,7 @@ Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zapoznaj [się z tematem Azu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 * [Kontener konta i magazynu platformy Azure](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -67,7 +63,7 @@ Ten przykład pokazuje, jak uruchomić przepływ pracy aplikacji logiki przy uż
 
    W tym przykładzie używa tego wyzwalacza: **gdy obiekt BLOB jest dodawany lub modyfikowany (tylko właściwości)**
 
-   ![Wybierz wyzwalacz](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
+   ![Wybierz wyzwalacz usługi Azure Blob Storage](./media/connectors-create-api-azureblobstorage/add-azure-blob-storage-trigger.png)
 
 3. Jeśli zostanie wyświetlony monit o podanie szczegółów połączenia, [Utwórz teraz połączenie usługi BLOB Storage](#create-connection). Lub, jeśli połączenie już istnieje, podaj niezbędne informacje dla wyzwalacza.
 
@@ -77,7 +73,7 @@ Ten przykład pokazuje, jak uruchomić przepływ pracy aplikacji logiki przy uż
 
    2. Na liście folder wybierz nawias kątowy ( **>** ), a następnie Przeglądaj do momentu znalezienia i wybrania żądanego folderu.
 
-      ![Wybierz folder](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
+      ![Wybierz folder magazynu do użycia z wyzwalaczem](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
 
    3. Wybierz interwał i częstotliwość sprawdzania przez wyzwalacza zmian w folderze.
 
@@ -95,7 +91,7 @@ W Azure Logic Apps [Akcja](../logic-apps/logic-apps-overview.md#logic-app-concep
 
 2. W Projektancie aplikacji logiki w obszarze wyzwalacza lub akcji wybierz pozycję **nowy krok**.
 
-   ![Dodaj akcję](./media/connectors-create-api-azureblobstorage/add-action.png) 
+   ![Dodawanie nowego kroku do przepływu pracy aplikacji logiki](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
    Aby dodać akcję między istniejącymi krokami, przesuń wskaźnik myszy na strzałkę łączącą. Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
 
@@ -103,7 +99,7 @@ W Azure Logic Apps [Akcja](../logic-apps/logic-apps-overview.md#logic-app-concep
 
    W tym przykładzie używa tej akcji: **Pobierz zawartość obiektu BLOB**
 
-   ![Wybierz akcję](./media/connectors-create-api-azureblobstorage/azure-blob-action.png)
+   ![Wybierz akcję Blob Storage platformy Azure](./media/connectors-create-api-azureblobstorage/add-azure-blob-storage-action.png)
 
 4. Jeśli zostanie wyświetlony monit o podanie szczegółów połączenia, [Utwórz teraz połączenie BLOB Storage platformy Azure](#create-connection).
 Lub, jeśli połączenie już istnieje, podaj niezbędne informacje dla tej akcji.
@@ -112,7 +108,7 @@ Lub, jeśli połączenie już istnieje, podaj niezbędne informacje dla tej akcj
 
    1. W polu **obiekt BLOB** wybierz ikonę folderu.
   
-      ![Wybierz folder](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
+      ![Wybierz folder magazynu do użycia z akcją](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
    2. Znajdź i wybierz odpowiedni plik na podstawie numeru **identyfikacyjnego** obiektu BLOB. Ten numer **identyfikacyjny** można znaleźć w metadanych obiektu BLOB, które są zwracane przez poprzednio opisany wyzwalacz magazynu obiektów BLOB.
 
@@ -127,11 +123,84 @@ W tym przykładzie pobierana jest tylko zawartość obiektu BLOB. Aby wyświetli
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-[!INCLUDE [Create a connection to Azure blob storage](../../includes/connectors-create-api-azureblobstorage.md)]
+1. Po wyświetleniu monitu o utworzenie połączenia podaj następujące informacje:
 
-## <a name="connector-reference"></a>Odwołanie do łącznika
+   | Właściwość | Wymagane | Wartość | Opis |
+   |----------|----------|-------|-------------|
+   | **Nazwa połączenia** | Tak | <*Nazwa połączenia*> | Nazwa do utworzenia dla połączenia |
+   | **Konto magazynu** | Tak | <*konto magazynu*> | Wybierz konto magazynu z listy. |
+   ||||
 
-Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku Open API (dawniej Swagger) łącznika, zobacz [stronę odniesienia łącznika](/connectors/azureblobconnector/).
+   Na przykład:
+
+   ![Tworzenie połączenia z kontem usługi Azure Blob Storage](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+
+1. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz** .
+
+1. Po utworzeniu połączenia Kontynuuj [Dodawanie wyzwalacza usługi BLOB Storage](#add-trigger) lub [Dodawanie akcji magazynu obiektów BLOB](#add-action).
+
+## <a name="connector-reference"></a>Dokumentacja łączników
+
+Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku Open API (dawniej Swagger) łącznika, zobacz [stronę odniesienia łącznika](https://docs.microsoft.com/connectors/azureblobconnector/).
+
+<a name="storage-firewalls"></a>
+
+## <a name="access-storage-accounts-behind-firewalls"></a>Dostęp do kont magazynu za zaporą
+
+Możesz dodać zabezpieczenia sieciowe do konta usługi Azure Storage, ograniczając dostęp z użyciem [zapory i reguł zapory](../storage/common/storage-network-security.md). Jednak ta konfiguracja powoduje utworzenie wyzwania dla platformy Azure i innych usług firmy Microsoft, które wymagają dostępu do konta magazynu. Komunikacja lokalna w centrum danych dzieli wewnętrzne adresy IP, dlatego nie można skonfigurować reguł zapory z ograniczeniami adresów IP. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage](../storage/common/storage-network-security.md).
+
+Poniżej przedstawiono różne opcje uzyskiwania dostępu do kont magazynu za zaporą z Azure Logic Apps przy użyciu łącznika Blob Storage platformy Azure lub innych rozwiązań:
+
+* Łącznik usługi Azure Storage Blob
+
+  * [Dostęp do kont magazynu w innych regionach](#access-other-regions)
+  * [Dostęp do kont magazynu za pomocą zaufanej sieci wirtualnej](#access-trusted-virtual-network)
+
+* Inne rozwiązania
+
+  * [Dostęp do kont magazynu jako usługi zaufanej z tożsamościami zarządzanymi](#access-trusted-service)
+  * [Dostęp do kont magazynu za pomocą usługi Azure API Management](#access-api-management)
+
+<a name="access-other-regions"></a>
+
+### <a name="access-to-storage-accounts-in-other-regions"></a>Dostęp do kont magazynu w innych regionach
+
+Aplikacje logiki nie mogą bezpośrednio uzyskiwać dostępu do kont magazynu, które mają reguły zapory i znajdują się w tym samym regionie. Jeśli jednak zezwolisz na dostęp do [wychodzących adresów IP dla łączników zarządzanych w Twoim regionie](../logic-apps/logic-apps-limits-and-config.md#outbound), Twoje aplikacje logiki będą mogły uzyskać dostęp do kont magazynu w innym regionie, z wyjątkiem sytuacji, gdy używasz łącznika usługi Azure Table Storage lub łącznika usługi Azure queue storage. Aby uzyskać dostęp do Table Storage lub Queue Storage, można nadal użyć wbudowanego wyzwalacza HTTP i akcji.
+
+<a name="access-trusted-virtual-network"></a>
+
+### <a name="access-storage-accounts-through-a-trusted-virtual-network"></a>Dostęp do kont magazynu za pomocą zaufanej sieci wirtualnej
+
+Konto magazynu można umieścić w zarządzanej sieci wirtualnej platformy Azure, a następnie dodać tę sieć wirtualną do listy zaufanych sieci wirtualnych. Aby aplikacja logiki mogła uzyskać dostęp do konta magazynu za pomocą [zaufanej sieci wirtualnej](../virtual-network/virtual-networks-overview.md), należy wdrożyć tę aplikację logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), które może łączyć się z zasobami w sieci wirtualnej. Następnie można dodać podsieci w tym ISE do listy zaufanych. Łączniki usługi Azure Storage, takie jak łącznik Blob Storage, mogą bezpośrednio uzyskiwać dostęp do kontenera magazynu. Ta konfiguracja jest taka sama jak w przypadku korzystania z punktów końcowych usługi z ISE.
+
+<a name="access-trusted-service"></a>
+
+### <a name="access-storage-accounts-as-a-trusted-service-with-managed-identities"></a>Dostęp do kont magazynu jako usługi zaufanej z tożsamościami zarządzanymi
+
+Aby przyznać zaufanym usługom firmy Microsoft dostęp do konta magazynu za pomocą zapory, można skonfigurować wyjątek dla tego konta magazynu dla tych usług. To rozwiązanie umożliwia usługom platformy Azure, które obsługują [tożsamości zarządzane do uwierzytelniania](../active-directory/managed-identities-azure-resources/overview.md) w celu uzyskania dostępu do kont magazynu za zaporą jako zaufanych usług. W przypadku aplikacji logiki na globalnie wielodostępnej platformie Azure, aby uzyskać dostęp do tych kont magazynu, należy najpierw [włączyć obsługę tożsamości zarządzanych](../logic-apps/create-managed-service-identity.md) w aplikacji logiki. Następnie użyj akcji HTTP lub wyzwalacza w aplikacji logiki i [Ustaw ich typ uwierzytelniania, aby używał tożsamości zarządzanej aplikacji logiki](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). W tym scenariuszu można użyć *tylko* akcji lub wyzwalacza http.
+
+Aby skonfigurować wyjątek i obsługę tożsamości zarządzanej, wykonaj następujące ogólne czynności:
+
+1. Na koncie magazynu w obszarze **Ustawienia**wybierz pozycję **zapory i sieci wirtualne**. W obszarze **Zezwalaj na dostęp z**, zaznacz opcję **wybrane sieci** , aby wyświetlić ustawienia pokrewne.
+
+1. W obszarze **wyjątki**wybierz opcję **Zezwalaj zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu**, a następnie wybierz pozycję **Zapisz**.
+
+   ![Wybierz wyjątek, który umożliwia korzystanie z zaufanych usług firmy Microsoft](./media/connectors-create-api-azureblobstorage/allow-trusted-services-firewall.png)
+
+1. W ustawieniach aplikacji logiki [Włącz obsługę zarządzanej tożsamości](../logic-apps/create-managed-service-identity.md).
+
+1. W przepływie pracy aplikacji logiki Dodaj i skonfiguruj akcję lub wyzwalacz HTTP w celu uzyskania dostępu do konta magazynu lub jednostki.
+
+   > [!IMPORTANT]
+   > W przypadku wychodzących akcji HTTP lub wyzwalania wywołań do kont usługi Azure Storage upewnij się, że nagłówek żądania zawiera właściwość `x-ms-version` i wersję interfejsu API dla operacji, która ma być uruchamiana na koncie magazynu. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie dostępu z zarządzaną tożsamością](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) i [przechowywaniem wersji dla usług Azure Storage](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests).
+
+1. Na tej akcji [Wybierz zarządzaną tożsamość](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) , która ma być używana do uwierzytelniania.
+
+<a name="access-api-management"></a>
+
+### <a name="access-storage-accounts-through-azure-api-management"></a>Dostęp do kont magazynu za pomocą usługi Azure API Management
+
+W przypadku korzystania z warstwy dedykowanej dla [API Management](../api-management/api-management-key-concepts.md)można skorzystać z interfejsu API usługi Storage, korzystając z API Management i zezwalając na te adresy IP w ramach zapory. W zasadzie należy dodać sieć wirtualną platformy Azure używaną przez API Management do ustawienia zapory dla konta magazynu. Następnie można użyć akcji API Management lub akcji HTTP do wywołania interfejsów API usługi Azure Storage. Jednak w przypadku wybrania tej opcji musisz samodzielnie obsłużyć proces uwierzytelniania. Aby uzyskać więcej informacji, zobacz [prosta architektura integracji przedsiębiorstwa](https://aka.ms/aisarch).
 
 ## <a name="next-steps"></a>Następne kroki
 

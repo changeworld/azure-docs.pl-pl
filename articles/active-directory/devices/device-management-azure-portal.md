@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b1b44a7df499dc0b6ce4370bf74ece35c99a4493
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860891"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200230"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Zarządzanie tożsamościami urządzeń przy użyciu Azure Portal
 
@@ -34,11 +34,11 @@ Portal usługi Azure AD udostępnia centralne miejsce do zarządzania tożsamoś
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako administrator.
 2. Na lewym pasku nawigacyjnym kliknij pozycję **Active Directory**.
 
-   ![Konfiguruj ustawienia urządzenia](./media/device-management-azure-portal/01.png)
+   ![Konfigurowanie ustawień urządzenia](./media/device-management-azure-portal/01.png)
 
 3. W sekcji **Zarządzanie** kliknij pozycję **urządzenia**.
 
-   ![Konfiguruj ustawienia urządzenia](./media/device-management-azure-portal/74.png)
+   ![Konfigurowanie ustawień urządzenia](./media/device-management-azure-portal/74.png)
 
 Na stronie **urządzenia** można:
 
@@ -47,11 +47,11 @@ Na stronie **urządzenia** można:
 - Wykonywanie zadań zarządzania tożsamościami urządzeń
 - Przeglądanie dzienników inspekcji związanych z urządzeniem  
   
-## <a name="configure-device-settings"></a>Konfiguruj ustawienia urządzenia
+## <a name="configure-device-settings"></a>Konfigurowanie ustawień urządzenia
 
 Aby zarządzać tożsamościami urządzeń za pomocą portalu usługi Azure AD, urządzenia muszą być [zarejestrowane lub dołączone](overview.md) do usługi Azure AD. Jako administrator możesz dostosować proces rejestrowania i dołączania urządzeń przez skonfigurowanie ustawień urządzenia.
 
-![Konfiguruj ustawienia urządzenia](./media/device-management-azure-portal/22.png)
+![Konfigurowanie ustawień urządzenia](./media/device-management-azure-portal/22.png)
 
 Strona Ustawienia urządzenia umożliwia konfigurowanie:
 
@@ -136,6 +136,7 @@ Aby włączyć/wyłączyć urządzenie, dostępne są dwie opcje:
 
 - Aby włączyć/wyłączyć urządzenie, musisz być administratorem globalnym lub administratorem urządzenia w chmurze w usłudze Azure AD. 
 - Wyłączenie urządzenia zapobiega pomyślnym uwierzytelnieniu urządzenia w usłudze Azure AD, uniemożliwiając dostęp urządzenia do zasobów usługi Azure AD chronionych przez urząd certyfikacji urządzenia lub przy użyciu poświadczeń WH4B.
+- Wyłączenie urządzenia spowoduje odwołanie podstawowego tokenu odświeżania (PRT) oraz wszystkich tokenów odświeżania (RT) na urządzeniu.
 
 ### <a name="delete-an-azure-ad-device"></a>Usuwanie urządzenia usługi Azure AD
 
@@ -173,7 +174,7 @@ Można wyświetlać i kopiować klucze funkcji BitLocker, aby ułatwić użytkow
 
 Aby wyświetlić lub skopiować klucze funkcji BitLocker, musisz być właścicielem urządzenia lub użytkownikiem, który ma co najmniej jedną z następujących ról:
 
-- Administrator urządzeń w chmurze
+- Administrator urządzenia w chmurze
 - Administrator globalny
 - Administrator pomocy technicznej
 - Administrator usługi Intune

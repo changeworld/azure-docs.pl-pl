@@ -1,5 +1,5 @@
 ---
-title: Twórz interaktywne raporty przy użyciu skoroszytów Azure Monitor | Microsoft Docs
+title: Twórz interaktywne raporty Azure Monitor dla maszyn wirtualnych ze skoroszytami | Microsoft Docs
 description: Uprość złożone raporty ze wstępnie zdefiniowanymi i niestandardowymi skoroszytami dla Azure Monitor dla maszyn wirtualnych.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 47e2e5d80241ac093d136b45c853d94a9dd43cbe
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553729"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200548"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Tworzenie interaktywnych raportów przy użyciu skoroszytów Azure Monitor
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Twórz interaktywne raporty Azure Monitor dla maszyn wirtualnych ze skoroszytami
 
 Skoroszyty łączą tekst, [kwerendy dzienników](../log-query/query-language.md), metryki i parametry w rozbudowanych raportach interaktywnych. Skoroszyty są edytowane przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
 
@@ -105,7 +105,7 @@ Aby dołączyć dane z innych obszarów roboczych Log Analytics lub z określone
 
 ### <a name="advanced-analytic-query-settings"></a>Zaawansowane ustawienia zapytania analitycznego
 
-Każda sekcja ma własne ustawienia zaawansowane, które są dostępne za pośrednictwem ustawień ![Workbooks kontrolki edycji sekcji ](media/vminsights-workbooks/006-settings.png) znajdujące się po prawej stronie przycisku **Dodaj parametry** .
+Każda sekcja ma własne ustawienia zaawansowane, które są dostępne za pośrednictwem sekcji Ustawienia ![skoroszyty edytowanie formantów](media/vminsights-workbooks/006-settings.png) ikon znajdujących się po prawej stronie przycisku **Dodaj parametry** .
 
 ![Kontrolki edycji sekcji Azure Monitor dla maszyn wirtualnych skoroszytów](media/vminsights-workbooks/007-settings-expanded.png)
 

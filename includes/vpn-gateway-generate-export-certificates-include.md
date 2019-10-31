@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cf384f29bcc82c80c94e1408f535c592b8b728cb
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 89fa06dda418f328b3bc07aada49aa347e35220a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285732"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182258"
 ---
 ## <a name="rootcert"></a>Tworzenie certyfikatu głównego z podpisem własnym
 
@@ -58,7 +58,7 @@ Jeśli tworzysz dodatkowe certyfikaty klienta lub nie korzystasz z tej samej ses
 1. Zidentyfikuj certyfikat główny z podpisem własnym, który jest zainstalowany na komputerze. To polecenie cmdlet zwraca listę certyfikatów zainstalowanych na komputerze.
 
    ```powershell
-   Get-ChildItem -Path “Cert:\CurrentUser\My”
+   Get-ChildItem -Path "Cert:\CurrentUser\My"
    ```
 2. Znajdź nazwę podmiotu z listy zwracanej, a następnie skopiuj odcisk palca znajdujący się obok niego do pliku tekstowego. W poniższym przykładzie istnieją dwa certyfikaty. Nazwa POSPOLITa to nazwa certyfikatu głównego z podpisem własnym, z którego ma zostać wygenerowany certyfikat podrzędny. W tym przypadku "P2SRootCert".
 

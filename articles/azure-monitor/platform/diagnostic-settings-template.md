@@ -1,5 +1,5 @@
 ---
-title: Tworzenie ustawień diagnostycznych na platformie Azure przy użyciu szablonu Menedżer zasobów | Microsoft Docs
+title: Tworzenie ustawień diagnostycznych na platformie Azure przy użyciu szablonu Menedżer zasobów
 description: Tworzenie ustawień diagnostycznych przy użyciu szablonu Menedżer zasobów do przesyłania dalej dzienników platformy Azure do Azure Monitor dzienników, usługi Azure Storage lub platformy Azure Event Hubs.
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0cb4cee732b1784de489d97769294c455cfd5efd
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597283"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200490"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Tworzenie ustawień diagnostycznych na platformie Azure przy użyciu szablonu Menedżer zasobów
 [Dzienniki platformy](platform-logs-overview.md) na platformie Azure zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure i platformy Azure, od których zależą. Ten artykuł zawiera szczegółowe informacje na temat używania [szablonu Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) w celu skonfigurowania ustawień diagnostycznych w celu zbierania dzienników platformy do różnych miejsc docelowych. Dzięki temu można automatycznie rozpocząć zbieranie dzienników platformy podczas tworzenia zasobu.

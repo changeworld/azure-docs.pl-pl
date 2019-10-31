@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a073a476043fc6570a42cc142e01f2c6f98c7741
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: b88648ce68a7359a842ec975d8633d6200b1a507
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175930"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200141"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Jak używać Azure Monitor skoroszytów dla raportów Azure Active Directory
 
@@ -77,23 +77,17 @@ Aby zarządzać skoroszytami, musisz mieć jedną z następujących ról oraz mi
 -   Czytelnik raportu
 -   Administrator aplikacji
 
-
 ## <a name="workbook-access"></a>Dostęp do skoroszytu 
 
 Aby uzyskać dostęp do skoroszytów:
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
-2. W okienku nawigacji po lewej stronie wybierz pozycję **Azure Active Directory**.
+1. Przejdź do **Azure Active Directory** > **monitorowania** > **skoroszytów**. 
 
-3. W sekcji **monitorowanie** wybierz pozycję **skoroszyty**. 
+1. Wybierz raport lub szablon lub na pasku narzędzi wybierz pozycję **Otwórz**. 
 
-    ![Wybieranie szczegółowych informacji](./media/howto-use-azure-monitor-workbooks/41.png)
-
-4. Wybierz raport lub szablon lub na pasku narzędzi wybierz pozycję **Otwórz**. 
-
-    ![Wybierz pozycję Otwórz](./media/howto-use-azure-monitor-workbooks/42.png)
-
+![Znajdowanie skoroszytów Azure Monitor w usłudze Azure AD](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>Analiza logowania
 

@@ -447,7 +447,11 @@
         - name: Wysoka dostępność
           href: manage-availability.md
         - name: Tworzenie grupy umieszczania w pobliżu
-          href: proximity-placement-groups.md
+          items:
+            - name: Portal
+              href: proximity-placement-groups-portal.md
+            - name: PowerShell
+              href: proximity-placement-groups.md
         - name: Skalowanie w pionie
           items:
             - name: PowerShell

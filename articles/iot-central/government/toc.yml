@@ -38,8 +38,6 @@
           href: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Uruchamianie zadania
           href: ../core/howto-run-a-job.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
-        - name: Korzystanie z grup urządzeń
-          href: ../core/howto-use-device-groups-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Wersjonowanie szablonu urządzenia
           href: ../core/howto-version-device-template-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Monitorowanie i analizowanie
@@ -110,8 +108,6 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zasoby
   items:
-    - name: Dokumentacja referencyjna interfejsu API
-      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
     - name: Żądania danych klienta
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Obsługiwane przeglądarki

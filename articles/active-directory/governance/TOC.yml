@@ -5,7 +5,7 @@
   items:
     - name: Co to jest nadzór nad tożsamościami?
       href: identity-governance-overview.md
-    - name: Co to jest zarządzanie upoważnieniami? (Wersja zapoznawcza)
+    - name: Co to jest zarządzanie upoważnieniami?
       href: entitlement-management-overview.md
     - name: Co to są przeglądy dostępu?
       href: access-reviews-overview.md

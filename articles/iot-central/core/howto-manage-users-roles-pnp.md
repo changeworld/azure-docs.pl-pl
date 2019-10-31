@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 14789549218d46dc0eb147bc659fce7adba0a9bd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 17dd4862a02a736237257c50802135fb62883d77
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953241"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200611"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application-preview-features"></a>Zarządzanie użytkownikami i rolami w aplikacji IoT Central (funkcje w wersji zapoznawczej)
 
@@ -40,6 +40,9 @@ Aby uzyskać więcej informacji, zobacz [konto Microsoft pomocy](https://support
 
     > [!div class="mx-imgBorder"]
     >![Dodaj użytkownika i wybierz rolę](media/howto-manage-users-roles-pnp/add-user-pnp.png)
+
+    > [!NOTE]
+    > Użytkownik, który znajduje się w roli niestandardowej, która przyzna im uprawnienia do dodawania innych użytkowników, może dodawać tylko użytkowników do roli z tymi samymi lub mniej uprawnień niż ich własna rola.
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>Edytuj role przypisane do użytkowników
 
@@ -195,6 +198,9 @@ Podczas definiowania roli niestandardowej należy wybrać zestaw uprawnień, kt�
 | Dodawanie | Wyświetl <br/> Inne zależności: Wyświetlanie ról niestandardowych |
 | Usuń | Wyświetl <br/> Inne zależności: Wyświetlanie ról niestandardowych |
 | Pełna kontrola | Wyświetlanie, Dodawanie, usuwanie <br/> Inne zależności: Wyświetlanie ról niestandardowych |
+
+> [!NOTE]
+> Użytkownik, który znajduje się w roli niestandardowej, która przyzna im uprawnienia do dodawania innych użytkowników, może dodawać tylko użytkowników do roli z tymi samymi lub mniej uprawnień niż ich własna rola.
 
 #### <a name="customizing-the-app"></a>Dostosowywanie aplikacji
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 17b68de4766aa8f995a88bd583a7a84e646b9325
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 31d7299b0c14b35aad7a29c875630d8a7fa4827e
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529154"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200590"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności klastrów usługi HDInsight
 
@@ -68,13 +68,7 @@ Każdy typ klastra ma zestaw typów węzłów, a każdy typ węzła ma konkretne
 
 Aby określić optymalny rozmiar klastra dla aplikacji, można testować pojemność klastra i zwiększyć rozmiar zgodnie z oczekiwaniami. Można na przykład użyć symulowanego obciążenia lub zapytania w języku *Kanaryjskie*. Dzięki symulowanemu obciążeniu można uruchamiać oczekiwane obciążenia w różnych klastrach rozmiaru, stopniowo zwiększając rozmiar do momentu osiągnięcia żądanej wydajności. Zapytanie typu Kanaryjskie można wstawiać okresowo między innymi zapytaniami produkcyjnymi, aby pokazać, czy klaster ma wystarczającą ilość zasobów.
 
-Rozmiar i typ maszyny wirtualnej są określane przez procesor CPU, rozmiar pamięci RAM i opóźnienie sieci:
-
-* Procesor: rozmiar maszyny wirtualnej określa liczbę rdzeni. Im więcej rdzeni, tym większy stopień równoległych obliczeń każdego węzła. Ponadto niektóre typy maszyn wirtualnych mają szybsze rdzenie.
-
-* Pamięć RAM: rozmiar maszyny wirtualnej określa również ilość pamięci RAM dostępnej w maszynie wirtualnej. W przypadku obciążeń, które przechowują dane w pamięci do przetworzenia, zamiast odczytywania z dysku, upewnij się, że węzły procesu roboczego mają wystarczającą ilość pamięci, aby dopasować dane.
-
-* Sieć: w przypadku większości typów klastrów dane przetwarzane przez klaster nie są na dysku lokalnym, ale raczej w zewnętrznej usłudze magazynu, takiej jak Data Lake Storage lub Azure Storage. Należy wziąć pod uwagę przepustowość sieci i przepływność między węzłową maszyną wirtualną a usługą magazynu. Przepustowość sieci dostępna dla maszyny wirtualnej zwykle wzrasta o większych rozmiarach. Aby uzyskać szczegółowe informacje, zobacz [Omówienie rozmiarów maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+Aby uzyskać więcej informacji na temat wybierania odpowiedniej rodziny maszyn wirtualnych dla obciążenia, zobacz [Wybieranie odpowiedniego rozmiaru maszyny wirtualnej w klastrze](hdinsight-selecting-vm-size.md).
 
 ## <a name="choose-the-cluster-scale"></a>Wybierz skalę klastra
 
@@ -104,10 +98,11 @@ Po określeniu rozmiaru, skali i typu docelowej maszyny wirtualnej klastra spraw
 1. Wybierz pozycję **Pomoc i obsługa techniczna** w lewej dolnej części strony.
 1. Wybierz pozycję **Nowe żądanie obsługi**.
 1. Na stronie **nowe żądanie obsługi** w obszarze **podstawowe** karty wybierz następujące opcje:
+
    - **Typ problemu**: **limity usług i subskrypcji (przydziały)**
    - **Subskrypcja**: subskrypcja, którą chcesz zmodyfikować
    - **Typ limitu przydziału**: **HDInsight**
-    
+
      ![Utwórz żądanie obsługi, aby zwiększyć limit przydziału rdzeni usługi HDInsight](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. Wybierz pozycję **Dalej: rozwiązania > >** .

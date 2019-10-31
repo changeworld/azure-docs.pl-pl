@@ -5,15 +5,15 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/11/2019
+ms.date: 10/30/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: a9a837d8a486e10ea2a62be69b889e657b1dbc05
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c141e67157f3ec17d475062ec76406ec765c4f50
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72601071"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199142"
 ---
 Znaczniki są stosowane do zasobów platformy Azure, dzięki czemu metadane są logicznie organizowane w taksonomii. Każdy tag składa się z nazwy i pary wartości. Na przykład można zastosować nazwę „Środowisko” i wartość „Produkcyjne” do wszystkich zasobów w środowisku produkcyjnym.
 
@@ -24,7 +24,7 @@ Taksonomia powinna uwzględniać samoobsługową strategię tagowania metadanych
 Tagi mają następujące ograniczenia:
 
 * Nie wszystkie typy zasobów obsługują Tagi. Aby określić, czy można zastosować tag do typu zasobu, zobacz [obsługa tagów dla zasobów platformy Azure](../articles/azure-resource-manager/tag-support.md).
-* Każdy zasób lub Grupa zasobów może mieć maksymalnie 50 par nazwa/wartość tagu. Obecnie konta magazynu obsługują tylko 15 tagów, ale ten limit zostanie podniesiony do 50 w przyszłej wersji. Jeśli musisz zastosować więcej tagów niż maksymalna dozwolona liczba, użyj ciągu JSON dla wartości tagu. Ciąg JSON może zawierać wiele wartości, które są stosowane do jednej nazwy tagu. Grupa zasobów może zawierać wiele zasobów, dla których każda z nich ma 50 par nazwa/wartość.
+* Każdy zasób lub Grupa zasobów może mieć maksymalnie 50 par nazwa/wartość tagu. Jeśli musisz zastosować więcej tagów niż maksymalna dozwolona liczba, użyj ciągu JSON dla wartości tagu. Ciąg JSON może zawierać wiele wartości, które są stosowane do jednej nazwy tagu. Grupa zasobów może zawierać wiele zasobów, dla których każda z nich ma 50 par nazwa/wartość.
 * Nazwa tagu może zawierać maksymalnie 512 znaków, a wartość tagu jest ograniczona do 256 znaków. W przypadku kont magazynu nazwa tagu jest ograniczona do 128 znaków, a wartość tagu jest ograniczona do 256 znaków.
 * Uogólnione maszyny wirtualne nie obsługują tagów.
 * Tagi zastosowane do grupy zasobów nie są dziedziczone przez zasoby należące do tej grupy.

@@ -1,5 +1,5 @@
 ---
-title: Jak wyświetlić zależności aplikacji za pomocą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) | Microsoft Docs
+title: Wyświetlanie zależności aplikacji za pomocą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 description: Mapa jest funkcją Azure Monitor dla maszyn wirtualnych. Automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje dotyczące korzystania z funkcji map w różnych scenariuszach.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: f886ce4ed1b9396cf90bf98626e0cfd2424b2eac
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 7ca79b0df55dbfea6a0e2c016773f9f32bf29667
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553781"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199078"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Użyj funkcji map Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza), aby zrozumieć składniki aplikacji
 W Azure Monitor dla maszyn wirtualnych można wyświetlić odnalezione składniki aplikacji na maszynach wirtualnych z systemem Windows i Linux, które działają na platformie Azure lub w środowisku. Można obserwować maszyny wirtualne na dwa sposoby. Wyświetl mapę bezpośrednio z maszyny wirtualnej lub Wyświetl mapę z Azure Monitor, aby wyświetlić składniki w różnych grupach maszyn wirtualnych. Ten artykuł pomoże Ci zrozumieć te dwie metody wyświetlania i sposób korzystania z funkcji map. 

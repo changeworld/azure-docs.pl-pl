@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf254f06c14afa7ee32f27d6632ab33665cf31c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 3eb7960d58723d6fdd165841baea3416d5a84348
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173460"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199771"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Zatwierdzanie lub odrzucanie żądań dostępu w usłudze Azure AD uprawnienia do zarządzania
 
@@ -35,7 +35,7 @@ Pierwszym krokiem w celu zatwierdzenia lub odmowy żądań dostępu jest znalezi
 
 1. Poszukaj wiadomości e-mail z Microsoft Azure, która prosi o zatwierdzenie lub odrzucenie żądania. Oto przykład wiadomości e-mail:
 
-    ![Zatwierdź żądanie uzyskania dostępu do poczty e-mail pakietu](./media/entitlement-management-shared/email-approve-request.png)
+    ![Zatwierdź żądanie uzyskania dostępu do poczty e-mail pakietu](./media/entitlement-management-shared/approver-request-email.png)
 
 1. Kliknij link **Zatwierdź lub Odmów żądania** , aby otworzyć żądanie dostępu.
 
