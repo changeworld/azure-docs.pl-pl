@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e4449ac3519757bb9670d2d7fec53cb5f3ce152
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 540dbc3605cfddc9b8d83eceeae8407848f1a91e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948298"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175995"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Samouczek Azure Active Directory: integracja logowania jednokrotnego (SSO) z usługą G Suite
 
@@ -150,7 +150,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     | `https://google.com/a/<yourdomain.com>` |
     
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Pakiet G Suite nie udostępnia wartości identyfikatora/identyfikatora jednostki na potrzeby konfiguracji logowania jednokrotnego, więc po odpisaniu opcji **wystawcy specyficznego dla domeny** wartość identyfikatora będzie `google.com`. Jeśli zostanie zaznaczona opcja **wystawcy specyficzny dla domeny** , będzie ona `google.com/a/<yourdomainname.com>`. Aby zaznaczyć/wyczyścić opcję **wystawcy specyficzną dla domeny** , należy przejść do sekcji Konfigurowanie w usłudze **G Suite rejestracji jednokrotnej** , która została omówiona w dalszej części tego samouczka. Aby uzyskać więcej informacji, skontaktuj się z [zespołem pomocy technicznej usługi G Suite](https://www.google.com/contact/).
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Pakiet G Suite nie udostępnia wartości identyfikatora/identyfikatora jednostki na potrzeby konfiguracji logowania jednokrotnego, więc po odpisaniu opcji **wystawcy specyficznego dla domeny** wartość identyfikatora zostanie `google.com`. W przypadku zaznaczenia opcji **wystawcy specyficznego dla domeny** zostanie `google.com/a/<yourdomainname.com>`. Aby zaznaczyć/wyczyścić opcję **wystawcy specyficzną dla domeny** , należy przejść do sekcji Konfigurowanie w usłudze **G Suite rejestracji jednokrotnej** , która została omówiona w dalszej części tego samouczka. Aby uzyskać więcej informacji, skontaktuj się z [zespołem pomocy technicznej usługi G Suite](https://www.google.com/contact/).
 
 1. Aplikacja G Suite oczekuje asercji SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenów języka SAML. Poniższy zrzut ekranu przedstawia przykład tego działania. Wartość domyślna atrybutu **Unikatowy identyfikator użytkownika** to **user.userprincipalname**, ale usługa G Suite oczekuje, że zostanie ona zamapowana na adres e-mail użytkownika. Do tego celu można użyć atrybutu **user.mail** z listy lub odpowiedniej wartości atrybutu zgodnie z konfiguracją organizacji.
 
@@ -250,7 +250,9 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ### <a name="create-g-suite-test-user"></a>Tworzenie użytkownika testowego usługi G Suite
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie B. Simon w artykule G Suite Software. Usługa G Suite obsługuje automatyczną aprowizację, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w oprogramowaniu G Suite, zostanie utworzony podczas próby uzyskania dostępu do tego oprogramowania.
+Celem tej sekcji jest [utworzenie użytkownika w usłudze G Suite](https://support.google.com/a/answer/33310?hl=en) o nazwie B. Simon. Po ręcznym utworzeniu użytkownika w usłudze G Suite użytkownik będzie mógł zalogować się przy użyciu poświadczeń logowania do pakietu Office 365.
+
+Pakiet G Suite obsługuje również automatyczne Inicjowanie obsługi użytkowników. Aby skonfigurować automatyczne Inicjowanie obsługi użytkowników, należy najpierw [skonfigurować pakiet G Suite do automatycznej aprowizacji użytkowników](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
 
 > [!NOTE]
 > Przed testowaniem logowania jednokrotnego upewnij się, że użytkownik już istnieje w usłudze G Suite, jeśli aprowizacja w usłudze Azure AD nie została włączona.

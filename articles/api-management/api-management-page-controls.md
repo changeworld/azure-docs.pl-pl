@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: b720d64f5b0a5f66375083b7854658aa754db150
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70072302"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176601"
 ---
 # <a name="azure-api-management-page-controls"></a>Kontrolki strony API Management platformy Azure
 Usługa Azure API Management udostępnia następujące kontrolki do użycia w szablonach portalu dla deweloperów.  
@@ -28,9 +28,11 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
 ```  
   
- Wartości parametrów są przenoszone w ramach modelu danych dla szablonu. W większości przypadków można po prostu wkleić w podanym przykładzie dla każdej kontrolki, aby działała poprawnie. Aby uzyskać więcej informacji na temat wartości parametrów, można wyświetlić sekcję model danych dla każdego szablonu, w którym można użyć kontrolki.  
-  
- Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dostosowywanie portalu deweloperów API Management przy użyciu szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+Wartości parametrów są przenoszone w ramach modelu danych dla szablonu. W większości przypadków można po prostu wkleić w podanym przykładzie dla każdej kontrolki, aby działała poprawnie. Aby uzyskać więcej informacji na temat wartości parametrów, można wyświetlić sekcję model danych dla każdego szablonu, w którym można użyć kontrolki.  
+
+Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dostosowywanie portalu deweloperów API Management przy użyciu szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
@@ -87,7 +89,7 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
 -   [Rejestrowanie](api-management-page-templates.md#SignIn)  
   
 ##  <a name="paging-control"></a>Kontrola stronicowania  
- @No__t_0 udostępnia funkcje stronicowania na stronach portalu dla deweloperów, które wyświetlają listę elementów.  
+ `paging-control` udostępnia funkcje stronicowania na stronach portalu dla deweloperów, które wyświetlają listę elementów.  
   
  ![Kontrolka stronicowania](./media/api-management-page-controls/APIM-paging-control.png "APIM — formant stronicowania")  
   
@@ -129,7 +131,7 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
 -   [Rejestrowanie](api-management-page-templates.md#SignIn)  
   
 ##  <a name="search-control"></a>Kontrolka wyszukiwania  
- @No__t_0 udostępnia funkcje wyszukiwania na stronach portalu dla deweloperów, które wyświetlają listę elementów.  
+ `search-control` udostępnia funkcje wyszukiwania na stronach portalu dla deweloperów, które wyświetlają listę elementów.  
   
  ![Kontrolka wyszukiwania](./media/api-management-page-controls/APIM-search-control.png "APIM — formant wyszukiwania")  
   
@@ -169,7 +171,7 @@ Aby użyć kontrolki, umieść ją w odpowiedniej lokalizacji w szablonie portal
 -   [Tworzenie konta](api-management-page-templates.md#SignUp)  
   
 ##  <a name="subscribe-button"></a>subskrypcja — przycisk  
- @No__t_0 zapewnia kontrolę subskrybowania użytkownika w produkcie.  
+ `subscribe-button` zapewnia kontrolę subskrybowania użytkownika w produkcie.  
   
  ![przycisk&#45;subskrybowania — formant](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM — formant subskrypcji przycisku")  
   

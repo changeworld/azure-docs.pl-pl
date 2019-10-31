@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: 7e155df62d05045ceed4479643ed13a8ba6fa06d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bf6efbdbe19be28c005e2081c99827734ef10174
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958301"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176997"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Samouczek: używanie aparatu rozpoznawania formularzy z Azure Logic Apps do analizowania faktur
 
@@ -62,7 +62,7 @@ Ten kontener służy do przekazywania przykładowych danych, które są wymagane
 
 Pobierz przykładowe dane dostępne w serwisie [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451). Wyodrębnij dane do folderu lokalnego i przekaż zawartość folderu **/Train** do utworzonego wcześniej **formrecocontainer** . Postępuj zgodnie z instrukcjami w obszarze [Przekaż blokowy obiekt BLOB](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) , aby przekazać dane do kontenera.
 
-Skopiuj adres URL kontenera. Będzie to potrzebne w dalszej części tego samouczka. Jeśli utworzono konto magazynu i kontener o takich samych nazwach jak wymienione w tym samouczku, adres URL będzie *https://formrecostorage.blob.core.windows.net/formrecocontainer/* .
+Skopiuj adres URL kontenera. Będzie to potrzebne w dalszej części tego samouczka. Jeśli utworzono konto magazynu i kontener o takich samych nazwach jak wymienione w tym samouczku, adres URL będzie *https:\//formrecostorage.blob.Core.Windows.NET/formrecocontainer/* .
 
 ## <a name="create-a-form-recognizer-resource"></a>Tworzenie zasobu aparatu rozpoznawania formularza
 

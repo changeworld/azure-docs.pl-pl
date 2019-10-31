@@ -1,6 +1,6 @@
 ---
-title: Link udostępniania do żądania pakietu dostępu w usłudze Azure AD uprawnia zarządzanie (wersja zapoznawcza) — Azure Active Directory
-description: Dowiedz się, jak udostępnić link, aby zażądać pakietu dostępu w Azure Active Directory Zarządzanie prawami (wersja zapoznawcza).
+title: Link udostępniania do żądania pakietu dostępu w usłudze Azure AD uprawnień zarządzanie — Azure Active Directory
+description: Dowiedz się, jak udostępnić link, aby zażądać pakietu dostępu w Azure Active Directory Zarządzanie uprawnieniami.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91b98df1f93991d4781283bc38b02dc20d11268d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 94d32bf26def6832f51b4e09c697bca885162dc2
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392334"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174420"
 ---
-# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management-preview"></a>Link udostępniania do żądania pakietu dostępu w usłudze Azure AD uprawnia zarządzanie (wersja zapoznawcza)
-
-> [!IMPORTANT]
-> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Link udostępniania do żądania pakietu dostępu w usłudze Azure AD uprawnień zarządzanie
 
 Większość użytkowników w katalogu może zalogować się do portalu My Access i automatycznie wyświetlić listę pakietów dostępu, których mogą żądać. Jednak w przypadku użytkowników zewnętrznego partnera biznesowego, którzy nie znajdują się jeszcze w Twoim katalogu, należy wysłać im link umożliwiający zażądanie pakietu dostępu. 
 

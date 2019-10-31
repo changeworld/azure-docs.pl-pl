@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aa0480e95fa072b6fa87aea8debd3dafc8ebcab
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 519993be873e7864dab4de4f66919c56aebfc379
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042062"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171868"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Instrukcje: Włączanie resetowania hasła na ekranie logowania systemu Windows
 
@@ -24,29 +24,10 @@ W przypadku maszyn z systemem Windows 7, 8, 8,1 i 10 można umożliwić użytkow
 
 ![Przykład ekranu logowania z systemem Windows 7 i 10 z pokazanym linkiem SSPR](./media/howto-sspr-windows/windows-reset-password.png)
 
-## <a name="general-prerequisites"></a>Ogólne wymagania wstępne
-
-- Administrator musi włączyć funkcję samoobsługowego resetowania hasła w usłudze Azure AD z poziomu Azure Portal.
-- **Użytkownicy muszą zarejestrować się w usłudze SSPR przed użyciem tej funkcji**
-- Wymagania dotyczące serwera proxy sieci
-   - Urządzenia z systemem Windows 10 
-       - Port 443 do `passwordreset.microsoftonline.com` i `ajax.aspnetcdn.com`
-       - Urządzenia z systemem Windows 10 obsługują tylko konfigurację serwera proxy na poziomie komputera
-   - Urządzenia z systemami Windows 7, 8 i 8,1
-       - Port 443 do `passwordreset.microsoftonline.com`
-
 ## <a name="general-limitations"></a>Ogólne ograniczenia
 
 - Resetowanie hasła nie jest obecnie obsługiwane z poziomu Pulpit zdalny ani rozszerzonych sesji funkcji Hyper-V.
 - Ta funkcja nie działa w przypadku sieci z wdrożonym uwierzytelnianiem sieci 802.1x oraz opcji „Wykonaj bezpośrednio przed logowaniem użytkownika”. W sieciach z wdrożonym uwierzytelnianiem sieci 802.1x zalecane jest używanie uwierzytelniania maszynowego w celu włączenia tej funkcji.
-
-## <a name="windows-10-password-reset"></a>Resetowanie hasła w systemie Windows 10
-
-### <a name="windows-10-specific-prerequisites"></a>Wymagania wstępne dotyczące systemu Windows 10
-
-- Uruchom co najmniej system Windows 10, wersja kwiecień 2018 Update (v1803), a urządzenia muszą mieć jedną z tych opcji:
-    - Przyłączone do usługi Azure AD
-    - Dołączona hybrydowa usługa Azure AD
 - Hybrydowe maszyny przyłączone do usługi Azure AD muszą mieć linię łączności sieciowej z kontrolerem domeny, aby użyć nowego hasła i zaktualizować buforowane poświadczenia.
 - Jeśli używasz obrazu, przed uruchomieniem narzędzia Sysprep upewnij się, że pamięć podręczna sieci Web jest wyczyszczona dla wbudowanego administratora przed wykonaniem kroku CopyProfile. Więcej informacji na temat tego kroku można znaleźć w artykule dotyczącym pomocy technicznej [niska w przypadku używania niestandardowego domyślnego profilu użytkownika](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - Następujące ustawienia są znane, aby zakłócać możliwość używania i resetowania haseł na urządzeniach z systemem Windows 10
@@ -60,7 +41,21 @@ W przypadku maszyn z systemem Windows 7, 8, 8,1 i 10 można umożliwić użytkow
 - Ta funkcja nie będzie działała w połączeniu następujących trzech ustawień.
     - Logowanie interakcyjne: nie wymagaj kombinacji klawiszy CTRL + ALT + DEL = wyłączone
     - DisableLockScreenAppNotifications = 1 lub włączony
-    - IsContentDeliveryPolicyEnforced = 1 lub prawda 
+    - IsContentDeliveryPolicyEnforced = 1 lub prawda
+
+## <a name="windows-10-password-reset"></a>Resetowanie hasła w systemie Windows 10
+
+### <a name="windows-10-prerequisites"></a>Wymagania wstępne dotyczące systemu Windows 10
+
+- Administrator musi włączyć funkcję samoobsługowego resetowania hasła w usłudze Azure AD z poziomu Azure Portal.
+- **Użytkownicy muszą zarejestrować się w usłudze SSPR przed użyciem tej funkcji**
+- Wymagania dotyczące serwera proxy sieci
+   - Urządzenia z systemem Windows 10 
+       - Port 443 do `passwordreset.microsoftonline.com` i `ajax.aspnetcdn.com`
+       - Urządzenia z systemem Windows 10 obsługują tylko konfigurację serwera proxy na poziomie komputera
+- Uruchom co najmniej system Windows 10, wersja kwiecień 2018 Update (v1803), a urządzenia muszą mieć jedną z tych opcji:
+    - Przyłączone do usługi Azure AD
+    - Dołączona hybrydowa usługa Azure AD
 
 ### <a name="enable-for-windows-10-using-intune"></a>Włącz dla systemu Windows 10 przy użyciu usługi Intune
 
@@ -94,7 +89,6 @@ Wdrażanie zmiany konfiguracji w celu włączenia możliwości resetowania hasł
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-
 #### <a name="troubleshooting-windows-10-password-reset"></a>Rozwiązywanie problemów z resetowaniem haseł systemu Windows 10
 
 Dziennik inspekcji usługi Azure AD zawiera informacje dotyczące adresu IP i typu klienta, które są powiązane z żądaniem resetowania hasła.
@@ -105,8 +99,13 @@ Po zresetowaniu hasła przez użytkownika na ekranie logowania urządzenia z sys
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Resetowanie hasła dla systemu Windows 7, 8 i 8,1
 
-### <a name="windows-7-8-and-81-specific-prerequisites"></a>Wymagania wstępne dotyczące systemów Windows 7, 8 i 8,1
+### <a name="windows-7-8-and-81-prerequisites"></a>Wymagania wstępne dotyczące systemów Windows 7, 8 i 8,1
 
+- Administrator musi włączyć funkcję samoobsługowego resetowania hasła w usłudze Azure AD z poziomu Azure Portal.
+- **Użytkownicy muszą zarejestrować się w usłudze SSPR przed użyciem tej funkcji**
+- Wymagania dotyczące serwera proxy sieci
+   - Urządzenia z systemami Windows 7, 8 i 8,1
+       - Port 443 do `passwordreset.microsoftonline.com`
 - Poprawiony system operacyjny Windows 7 lub Windows 8.1.
 - Protokół TLS 1,2 został włączony przy użyciu wskazówek dostępnych w [ustawieniach rejestru Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12).
 - Jeśli na komputerze jest włączony więcej niż jeden dostawca poświadczeń innych firm, na ekranie logowania użytkownicy będą widzieć więcej niż jeden profil użytkownika.
@@ -151,7 +150,7 @@ Teraz, po skonfigurowaniu resetowania haseł dla urządzeń z systemem Windows, 
 
 Gdy użytkownicy próbują się zalogować, zobaczymy teraz link **resetowania** hasła lub **zapomnianego hasła** , które powoduje otwarcie funkcji samoobsługowego resetowania hasła na ekranie logowania. Ta funkcja umożliwia użytkownikom zresetowanie hasła bez konieczności uzyskiwania dostępu do przeglądarki internetowej przy użyciu innego urządzenia.
 
-Wskazówki dotyczące używania tej funkcji będzie można znaleźć w artykule [Reset your work or school password (Resetowanie hasła służbowego)](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)
+Wskazówki dotyczące używania tej funkcji będzie można znaleźć w artykule [Reset your work or school password (Resetowanie hasła służbowego)](../user-help/active-directory-passwords-update-your-own-password.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

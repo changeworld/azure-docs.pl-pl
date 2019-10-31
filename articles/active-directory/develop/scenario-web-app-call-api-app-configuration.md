@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1131cba204b7b7af33cc0441ee455b6e333aba20
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 231ecdb6afae1fc36d11b2c12aa82c7e860bb708
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310075"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175320"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — konfiguracja kodu
 
@@ -38,8 +38,8 @@ Biblioteki obsługujące przepływ kodu autoryzacji dla usługi Web Apps to:
 | Biblioteka MSAL | Opis |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Obsługiwane platformy to .NET Framework i platformy .NET Core (nie platformy UWP, Xamarin. iOS i Xamarin. Android, ponieważ te platformy są używane do tworzenia publicznych aplikacji klienckich). |
-| ![MSAL. Python](media/sample-v2-code/logo_python.png) <br/> MSAL. Python | Opracowywanie w toku — w publicznej wersji zapoznawczej |
-| ![MSAL.Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Opracowywanie w toku — w publicznej wersji zapoznawczej |
+| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Opracowywanie w toku — w publicznej wersji zapoznawczej |
+| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Opracowywanie w toku — w publicznej wersji zapoznawczej |
 
 Wybierz kartę odpowiadającą używanej platformie:
 
@@ -70,8 +70,8 @@ Fragmenty kodu w tym artykule i poniższe elementy są wyodrębniane z [przykła
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Fragmenty kodu w tym artykule i następujące zostały wyodrębnione z [aplikacji sieci Web Java wywołującej przykład aplikacji Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp) msal4j Web App.
-Przykład umożliwia obecnie msal4j Tworzenie adresu URL kodu autoryzacji i obsługuje nawigację do punktu końcowego autoryzacji platformy tożsamości firmy Microsoft. Istnieje również możliwość użycia zabezpieczeń przebiegu w celu zalogowania użytkownika. Warto zapoznać się z tym przykładem, aby uzyskać szczegółowe informacje dotyczące implementacji.
+Fragmenty kodu w tym artykule i następujące zostały wyodrębnione z [aplikacji sieci Web Java wywołującej](https://github.com/Azure-Samples/ms-identity-java-webapp) przykład aplikacji sieci Web programu Microsoft Graph MSAL Java.
+Przykład umożliwia obecnie MSAL Java Tworzenie adresu URL kodu autoryzacji i obsługę nawigacji do platformy tożsamości firmy Microsoft autoryzuje punkt końcowy. Istnieje również możliwość użycia zabezpieczeń przebiegu w celu zalogowania użytkownika. Warto zapoznać się z tym przykładem, aby uzyskać szczegółowe informacje dotyczące implementacji.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -86,11 +86,11 @@ Przykład umożliwia obecnie MSAL. Język Python tworzy adres URL kodu autoryzac
 
 ### <a name="startupcs"></a>Startup.cs
 
-W ASP.NET Core zasada jest w `Startup.cs` pliku. Chcesz subskrybować `OnAuthorizationCodeReceived` zdarzenie połączenia Open ID i z tego zdarzenia, wywołaj MSAL. Metoda `AcquireTokenFromAuthorizationCode`sieci, która ma wpływ na przechowywanie w pamięci podręcznej tokenów, token dostępu dla żądanego `scopes`i tokenu odświeżania, który zostanie użyty do odświeżenia tokenu dostępu, gdy jest bliski wygaśnięcia lub aby uzyskać token w imieniu tego samego użytkownika , ale dla innego zasobu.
+W ASP.NET Core zasada jest w pliku `Startup.cs`. Chcesz subskrybować zdarzenie `OnAuthorizationCodeReceived` Open ID Connect i z tego zdarzenia Wywołaj MSAL. Metoda sieci `AcquireTokenFromAuthorizationCode`, która ma wpływ na przechowywanie w pamięci podręcznej tokenów, token dostępu dla żądanych `scopes`i token odświeżania, który zostanie użyty do odświeżenia tokenu dostępu, gdy jest bliski wygaśnięcia lub aby uzyskać token w imieniu tego samego użytkownika , ale dla innego zasobu.
 
 W ramach tego [samouczka ASP.NET Core aplikacji sieci Web](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) próbuje udostępnić Ci kod wielokrotnego użytku dla aplikacji sieci Web.
 
-Poniżej znajduje się kod [Startup. cs # L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42) , który zawiera wywołanie `AddMicrosoftIdentityPlatformAuthentication` metody, która dodaje uwierzytelnianie do aplikacji sieci Web i `AddMsal` dodaje możliwość wywoływania interfejsów API sieci Web. Wywołanie ma na `AddInMemoryTokenCaches` celu wybranie implementacji pamięci podręcznej tokenu między tymi, które są możliwe:
+Oto kod [Startup. cs # L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42) , który zawiera wywołanie metody `AddMicrosoftIdentityPlatformAuthentication`, która dodaje uwierzytelnianie do aplikacji sieci Web, a `AddMsal`, która dodaje możliwość wywoływania interfejsów API sieci Web. Wywołanie `AddInMemoryTokenCaches` polega na wyborze implementacji pamięci podręcznej tokenów wśród tych, które są możliwe:
 
 ```CSharp
 public class Startup
@@ -110,7 +110,7 @@ public class Startup
 }
 ```
 
-`Constants.ScopeUserRead`jest zdefiniowany w [stałych. cs # P5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
+`Constants.ScopeUserRead` jest zdefiniowany w [stałych. cs # P5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
 
 ```CSharp
 public static class Constants
@@ -119,11 +119,11 @@ public static class Constants
 }
 ```
 
-Udało Ci się już badać zawartość `AddMicrosoftIdentityPlatformAuthentication` w [aplikacji sieci Web, która loguje się do użytkowników — konfiguracja kodu](scenario-web-app-sign-user-app-configuration.md?tabs=aspnetcore#initialization-code)
+Przebadano już zawartość `AddMicrosoftIdentityPlatformAuthentication` w [aplikacji sieci Web, która umożliwia logowanie użytkowników — konfiguracja kodu](scenario-web-app-sign-user-app-configuration.md?tabs=aspnetcore#initialization-code)
 
 ### <a name="the-addmsal-method"></a>Metoda AddMsal
 
-Kod dla `AddMsal` programu znajduje się w [witrynie Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L108-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159).
+Kod dla `AddMsal` znajduje się w [witrynie Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L108-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159).
 
 ```CSharp
 
@@ -182,15 +182,15 @@ public static class WebAppServiceCollectionExtensions
 }
 ```
 
-`AddMsal` Metoda zapewnia, że:
+Metoda `AddMsal` zapewnia, że:
 
 - Aplikacja sieci Web ASP.NET Core żąda dla użytkownika zarówno IDToken, jak i kodu uwierzytelniania (`options.ResponseType = OpenIdConnectResponseType.CodeIdToken`)
-- `offline_access` zakres został dodany. Jest to konieczne, aby użytkownik wyraził zgodę na uzyskanie tokenu odświeżania.
-- Aplikacja subskrybuje zdarzenie OIDC `OnAuthorizationCodeReceived` i realizuje wywołanie za pomocą MSAL.NET, które jest tutaj hermetyzowane do `ITokenAcquisition`składnika do wielokrotnego użytku.
+- zostanie dodany zakres `offline_access`. Jest to konieczne, aby użytkownik wyraził zgodę na uzyskanie tokenu odświeżania.
+- Aplikacja subskrybuje zdarzenie `OnAuthorizationCodeReceived` OIDC i realizuje wywołanie przy użyciu MSAL.NET, które jest tutaj hermetyzowane do składnika wielokrotnego użytku implementującego `ITokenAcquisition`.
 
 ### <a name="the-tokenacquisitionaddaccounttocachefromauthorizationcodeasync-method"></a>TokenAcquisition. AddAccountToCacheFromAuthorizationCodeAsync — Metoda
 
-Metoda znajduje się w [Microsoft. Identity. Web/TokenAcquisition. cs # L101-L145.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L101-L145) `TokenAcquisition.AddAccountToCacheFromAuthorizationCodeAsync` Gwarantuje to:
+Metoda `TokenAcquisition.AddAccountToCacheFromAuthorizationCodeAsync` znajduje się w [witrynie Microsoft. Identity. Web/TokenAcquisition. cs # L101-L145](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L101-L145). Gwarantuje to:
 
 - ASP.NET nie próbuje zrealizować kodu uwierzytelniania równolegle z MSAL.NET (`context.HandleCodeRedemption();`)
 - Oświadczenia w IDToken są dostępne dla MSAL, aby obliczyć klucz pamięci podręcznej tokenu dla konta użytkownika
@@ -246,12 +246,12 @@ public class TokenAcquisition : ITokenAcquisition
 
 ### <a name="the-tokenacquisitionbuildconfidentialclientapplication-method"></a>TokenAcquisition. BuildConfidentialClientApplication — Metoda
 
-W ASP.NET Core tworzenia poufnej aplikacji klienckiej używa informacji znajdujących się w elemencie HttpContext. Dostęp za pomocą `CurrentHttpContext` właściwości, elementu HttpContext skojarzonego z żądaniem, znanego na adres URL aplikacji sieci Web oraz zalogowanego użytkownika (w a `ClaimsPrincipal`). Używa `BuildConfidentialClientApplication` również konfiguracji ASP.NET Core, która zawiera sekcję "AzureAD", która jest powiązana z:
+W ASP.NET Core tworzenia poufnej aplikacji klienckiej używa informacji znajdujących się w elemencie HttpContext. Dostęp za pomocą właściwości `CurrentHttpContext`, elementu HttpContext skojarzonego z żądaniem, wie o adresie URL aplikacji sieci Web oraz zalogowanego użytkownika (w `ClaimsPrincipal`). `BuildConfidentialClientApplication` używa również konfiguracji ASP.NET Core, która zawiera sekcję "AzureAD", która jest powiązana z:
 
-- Struktura danych typu [ConfidentialClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet) `_applicationOptions`
-- wystąpienie typu [AzureAdOptions](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs) zdefiniowane w ASP.NET Core `Authentication.AzureAD.UI`. `azureAdOptions` Na koniec aplikacja musi obsługiwać pamięć podręczną tokenów. Dowiesz się więcej na ten temat w następnej sekcji.
+- Struktura danych `_applicationOptions` typu [ConfidentialClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet)
+- wystąpienie `azureAdOptions` typu [AzureAdOptions](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs) zdefiniowane w ASP.NET Core `Authentication.AzureAD.UI`. Na koniec aplikacja musi obsługiwać pamięć podręczną tokenów. Dowiesz się więcej na ten temat w następnej sekcji.
 
-Kod dla `GetOrBuildConfidentialClientApplication()` metody ma wartość [Microsoft. Identity. Web/TokenAcquisition. cs # L290-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333). Używa elementów członkowskich, które zostały wprowadzone przez wstrzyknięcie zależności (przekazano w konstruktorze TokenAcquisition w [Microsoft. Identity. Web/TokenAcquisition. cs # L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59))
+Kod dla metody `GetOrBuildConfidentialClientApplication()` ma wartość [Microsoft. Identity. Web/TokenAcquisition. cs # L290-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333). Używa elementów członkowskich, które zostały wprowadzone przez wstrzyknięcie zależności (przekazano w konstruktorze TokenAcquisition w [Microsoft. Identity. Web/TokenAcquisition. cs # L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59))
 
 ```CSharp
 public class TokenAcquisition : ITokenAcquisition
@@ -316,11 +316,11 @@ public class TokenAcquisition : ITokenAcquisition
 
 ### <a name="summary"></a>Podsumowanie
 
-Aby zsumować, `AcquireTokenByAuthorizationCode` naprawdę realizuje kod autoryzacji wymagany przez ASP.NET i pobiera tokeny dodawane do pamięci podręcznej tokenów użytkownika MSAL.NET. Następnie są one używane w kontrolerach ASP.NET Core.
+W celu podsumowania `AcquireTokenByAuthorizationCode` naprawdę realizuje kod autoryzacji żądany przez ASP.NET i pobiera tokeny dodawane do pamięci podręcznej tokenów użytkownika MSAL.NET. Następnie są one używane w kontrolerach ASP.NET Core.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-Sposób, w jaki ASP.NET obsługuje elementy, jest podobny do ASP.NET Core, z tą różnicą, że konfiguracja OpenIdConnect `OnAuthorizationCodeReceived` i subskrypcja zdarzenia wystąpi w pliku [App_Start\Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . Podobne koncepcje znajdziesz w ASP.NET Core, z wyjątkiem tego, że w ASP.NET należy określić RedirectUri w [pliku Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ta konfiguracja jest nieco mniej niezawodna niż to, co jest wykonywane w ASP.NET Core, ponieważ należy ją zmienić podczas wdrażania aplikacji.
+Sposób, w jaki ASP.NET obsługuje elementy, jest podobny do ASP.NET Core, z tą różnicą, że konfiguracja OpenIdConnect i subskrypcja zdarzenia `OnAuthorizationCodeReceived` odbywa się w pliku [App_Start\Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . Podobne koncepcje znajdziesz w ASP.NET Core, z wyjątkiem tego, że w ASP.NET należy określić RedirectUri w [pliku Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ta konfiguracja jest nieco mniej niezawodna niż to, co jest wykonywane w ASP.NET Core, ponieważ należy ją zmienić podczas wdrażania aplikacji.
 
 ```CSharp
 public partial class Startup
@@ -370,14 +370,14 @@ public partial class Startup
         }
       });
   }
-  
+
   private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification context)
   {
       // Upon successful sign in, get the access token & cache it using MSAL
       IConfidentialClientApplication clientApp = MsalAppBuilder.BuildConfidentialClientApplication(new ClaimsPrincipal(context.AuthenticationTicket.Identity));
       AuthenticationResult result = await clientApp.AcquireTokenByAuthorizationCode(new[] { "Mail.Read" }, context.Code).ExecuteAsync();
   }
-  
+
   private Task OnAuthenticationFailed(AuthenticationFailedNotification<OpenIdConnectMessage, OpenIdConnectAuthenticationOptions> notification)
   {
       notification.HandleResponse();
@@ -389,7 +389,7 @@ public partial class Startup
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Zobacz sekcję w [aplikacji sieci Web, która umożliwia użytkownikom](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code) logowanie się — konfiguracja kodu, aby zrozumieć, jak przykład Java Pobiera kod autoryzacji. Po odebraniu przez aplikację Aplikacja [AuthFilter. Java # L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56) deleguje do `AuthHelper.processAuthenticationCodeRedirect` metody w [AuthHelper. Java # L67-L97](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L67-L97), a następnie wywołuje `getAuthResultByAuthCode`:
+Zobacz sekcję w [aplikacji sieci Web, która umożliwia użytkownikom](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code) logowanie się — konfiguracja kodu, aby zrozumieć, jak przykład Java Pobiera kod autoryzacji. Po odebraniu przez aplikację Aplikacja [AuthFilter. Java # L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56) deleguje do metody `AuthHelper.processAuthenticationCodeRedirect` w [AuthHelper. Java # L67-L97](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L67-L97), a następnie wywołuje `getAuthResultByAuthCode`:
 
 ```Java
 class AuthHelper {
@@ -411,7 +411,7 @@ class AuthHelper {
 }
 ```
 
-Metoda jest definiowana w [AuthHelper. Java # L176.](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176) `getAuthResultByAuthCode` Tworzy MSAL `ConfidentialClientApplication` oraz `acquireToken()` wywołania utworzonenapodstawiekoduautoryzacji.`AuthorizationCodeParameters`
+Metoda `getAuthResultByAuthCode` jest definiowana w [AuthHelper. Java # L176](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176). Tworzy MSAL `ConfidentialClientApplication` i wywołuje `acquireToken()` za pomocą `AuthorizationCodeParameters` utworzonych na podstawie kodu autoryzacji.
 
 ```Java
    private IAuthenticationResult getAuthResultByAuthCode(
@@ -455,7 +455,7 @@ Metoda jest definiowana w [AuthHelper. Java # L176.](https://github.com/Azure-Sa
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Po zażądaniu przepływu kodu autoryzacji, który jest widoczny w [aplikacji sieci Web, która umożliwia użytkownikom](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code)logowanie się, kod autoryzacji jest odbierany przez `authorized` funkcję, która znajduje się na trasie z adresu URL/getAToken. Zobacz [App. PR # L30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44)
+Po zażądaniu przepływu kodu autoryzacji, który jest widoczny w [aplikacji sieci Web, która loguje](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code)się przez użytkowników, kod autoryzacji jest odbierany przez funkcję `authorized`, która zawiera więcej niż jeden z adresów URL/getAToken. Zobacz [App. PR # L30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44)
 
 ```python
  @app.route("/getAToken")  # Its absolute URL must match your app's redirect_uri set in AAD
@@ -478,7 +478,7 @@ def authorized():
 ---
 
 Zamiast wpisu tajnego klienta poufna aplikacja kliencka może również udowodnić swoją tożsamość przy użyciu certyfikatu klienta lub potwierdzenia klienta.
-Korzystanie z zatwierdzeń klientów jest zaawansowanym scenariuszem, szczegółowym w przypadku potwierdzeń [klienta](msal-net-client-assertions.md)
+Korzystanie z zatwierdzeń klientów jest zaawansowanym scenariuszem, szczegółowym w przypadku [potwierdzeń klienta](msal-net-client-assertions.md)
 
 ## <a name="token-cache"></a>Pamięć podręczna tokenów
 
@@ -534,17 +534,17 @@ public static class MsalAppBuilder
             .WithRedirectUri(AuthenticationConfig.RedirectUri)
             .WithAuthority(new Uri(AuthenticationConfig.Authority))
             .Build();
-  
+
       // After the ConfidentialClientApplication is created, we overwrite its default UserTokenCache with our implementation
       MSALPerUserMemoryTokenCache userTokenCache = new MSALPerUserMemoryTokenCache(clientapp.UserTokenCache, currentUser ?? ClaimsPrincipal.Current);
-  
+
       return clientapp;
   }
 ```
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-msal4j udostępnia metody serializacji i deserializacji pamięci podręcznej tokenów. Przykład Java obsługuje serializację z sesji, jak pokazano w `getAuthResultBySilentFlow` metodzie w [AuthHelper. Java # L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122)
+MSAL Java udostępnia metody serializacji i deserializacji pamięci podręcznej tokenów. Przykład Java obsługuje serializację z sesji, jak pokazano w metodzie `getAuthResultBySilentFlow` w [AuthHelper. Java # L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122)
 
 ```Java
 IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
@@ -560,7 +560,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
   }
 
   SilentParameters parameters = SilentParameters.builder(
-          Collections.singleton("User.ReadBasic.All"),
+          Collections.singleton("User.Read"),
           result.account()).build();
 
   CompletableFuture<IAuthenticationResult> future = app.acquireTokenSilently(parameters);
@@ -573,7 +573,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
 }
 ```
 
-Szczegóły `SessionManagementHelper` klasy są podane w[](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java)
+Szczegóły klasy `SessionManagementHelper` są podane w[](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 

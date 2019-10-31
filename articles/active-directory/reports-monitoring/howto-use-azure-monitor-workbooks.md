@@ -11,17 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 10/29/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5e498dcb39f62fc870bc7efa989b91caeac0dedc
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
-ms.translationtype: MT
+ms.openlocfilehash: a073a476043fc6570a42cc142e01f2c6f98c7741
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819719"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175930"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Jak używać Azure Monitor skoroszytów dla raportów Azure Active Directory
+
+> [!IMPORTANT]
+> Aby zoptymalizować bazowe zapytania w tym skoroszycie, kliknij pozycję "Edytuj", kliknij ikonę ustawienia i wybierz obszar roboczy, w którym chcesz uruchomić te zapytania. Skoroszyty domyślnie będą wybierać wszystkie obszary robocze, w których są rozsyłane dzienniki usługi Azure AD. 
 
 Czy chcesz:
 
@@ -31,7 +34,17 @@ Czy chcesz:
 
 - Wiedzieć, kto używa starszych uwierzytelnień do logowania się do środowiska? (Przez [blokowanie starszego uwierzytelniania](../conditional-access/block-legacy-authentication.md)można poprawić ochronę dzierżawy).
 
-Aby ułatwić rozwiązanie tych pytań, Active Directory udostępnia skoroszyty do monitorowania. [Azure monitor skoroszyty](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) łączą teksty, zapytania analityczne, metryki i parametry w rozbudowanych raportach interaktywnych. 
+- Czy musisz zrozumieć wpływ zasad dostępu warunkowego w dzierżawie?
+
+- Czy chcesz, aby przeglądanie: zarejestrowano logowania, skoroszyt raportuje liczbę użytkowników, którym udzielono lub odmówiono dostępu, a także liczbę użytkowników, których zasady dostępu warunkowego zostały pominięte podczas uzyskiwania dostępu do zasobów?
+
+- Interesuje się opracowywanie dokładniejszych informacji o: szczegóły skoroszytu na warunek, tak aby wpływ zasad można było zasubskrybować według warunku, w tym platformy urządzeń, stanu urządzenia, aplikacji klienckiej, ryzyka związanego z logowaniem, lokalizacji i aplikacji?
+
+- Uzyskaj dokładniejsze informacje o zapytaniach dziennika logowania, w tym skoroszycie przedstawiono liczbę użytkowników, którym udzielono lub odmówiono dostępu, a także liczbę użytkowników, których zasady dostępu warunkowego zostały pominięte podczas uzyskiwania dostępu do zasobów.
+
+- Aby ułatwić rozwiązanie tych pytań, Active Directory udostępnia skoroszyty do monitorowania. [Azure monitor skoroszyty](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) łączą teksty, zapytania analityczne, metryki i parametry w rozbudowanych raportach interaktywnych.
+
+
 
 W tym artykule:
 
@@ -57,7 +70,7 @@ Aby używać skoroszytów monitorowania, potrzebne są:
     - Administrator globalny
 
 ## <a name="roles"></a>Role
-Aby zarządzać skoroszytami, musisz mieć jedną z następujących ról oraz mieć [dostęp do podstawowego](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) obszaru roboczego log Analytics:
+Aby zarządzać skoroszytami, musisz mieć jedną z następujących ról oraz mieć [dostęp do podstawowego](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) obszaru roboczego log Analytics:
 -   Administrator globalny
 -   Administrator zabezpieczeń
 -   Czytelnik zabezpieczeń
@@ -170,7 +183,43 @@ W przypadku wyłączonych logowań otrzymujesz podział według stanu dostępu w
 ![Stan dostępu warunkowego](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
+## <a name="conditional-access-insights"></a>Szczegółowe informacje na temat dostępu warunkowego
 
+### <a name="overview"></a>Przegląd
+
+Skoroszyty zawierają zapytania dzienników logowania, które mogą pomóc administratorom IT monitorować wpływ zasad dostępu warunkowego w ich dzierżawie. Istnieje możliwość raportowania liczby użytkowników, którym udzielono lub odmówiono dostępu. Skoroszyt zawiera szczegółowe informacje na temat liczby użytkowników, którzy mają pominięte zasady dostępu warunkowego na podstawie atrybutów tych użytkowników w momencie logowania. Zawiera szczegółowe informacje na temat stanu, dzięki czemu wpływ zasad może być zapisywany na warunek, w tym na platformie urządzenia, stanie urządzenia, aplikacji klienckiej, zagrożeniu logowania, lokalizacji i aplikacji.
+
+### <a name="instructions"></a>Instrukcje 
+Aby uzyskać dostęp do skoroszytu na potrzeby wglądu w szczegółowe dane, wybierz skoroszyt **dostęp warunkowy** w sekcji dostęp warunkowy. Ten skoroszyt pokazuje oczekiwany wpływ poszczególnych zasad dostępu warunkowego w dzierżawie. Wybierz co najmniej jedną zasadę dostępu warunkowego z listy rozwijanej i Zawęź zakres skoroszytu, stosując następujące filtry: 
+
+- **Zakres czasu**
+
+- **Użytkownicy**
+
+- **Korzysta**
+
+- **Widok danych**
+
+![Stan dostępu warunkowego](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+
+
+Podsumowanie wpływu pokazuje liczbę użytkowników lub logowań, dla których wybrane zasady miały określony wynik. Suma to liczba użytkowników lub logowania, dla których wybrane zasady zostały ocenione w wybranym zakresie czasu. Kliknij kafelek, aby odfiltrować dane w skoroszycie według tego typu wyniku. 
+
+![Stan dostępu warunkowego](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+
+Ten skoroszyt pokazuje także wpływ wybranych zasad z podziałem na sześć warunków: 
+- **Stan urządzenia**
+- **Platforma urządzeń**
+- **Aplikacje klienckie**
+- **Ryzyko związane z logowaniem**
+- **Lokalizacja**
+- **Aplikacje**
+
+![Stan dostępu warunkowego](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+
+Możesz również zbadać poszczególne logowania, przefiltrowane według parametrów wybranych w skoroszycie. Wyszukaj poszczególnych użytkowników, posortowane według częstotliwości logowania i Wyświetl ich odpowiednie zdarzenia logowania. 
+
+![Stan dostępu warunkowego](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 
 
@@ -211,7 +260,7 @@ Dla każdego trendu można uzyskać Podział według aplikacji i protokołu.
 
 ## <a name="sign-ins-failure-analysis"></a>Analiza niepowodzeń logowania
 
-Za pomocą skoroszytu **analizy błędów logowania** można rozwiązywać problemy z następującymi kwestiami:
+Użyj skoroszytu **analizy błędów logowania** , aby rozwiązać problemy z:
 
 - Logowania
 - Zasady dostępu warunkowego

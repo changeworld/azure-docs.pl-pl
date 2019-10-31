@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: b94d376ee107f9acd45dff5b96fc43722f2fe208
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 00de95f3b3e6eddd1f45be830202ba3ec8772bfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965457"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176168"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Używanie prywatnych punktów końcowych usługi Azure Storage (wersja zapoznawcza)
 
@@ -48,7 +48,7 @@ Podczas tworzenia prywatnego punktu końcowego należy określić konto magazynu
 > [!TIP]
 > Utwórz oddzielny prywatny punkt końcowy dla dodatkowego wystąpienia usługi Storage, aby uzyskać lepszą wydajność odczytu na kontach RA-GRS.
 
-Aby uzyskać informacje o dostępności na [koncie magazynu geograficznie nadmiarowego do odczytu](storage-redundancy-grs.md#read-access-geo-redundant-storage), musisz oddzielić prywatne punkty końcowe zarówno dla wystąpienia podstawowego, jak i pomocniczego usługi. Nie musisz tworzyć prywatnego punktu końcowego dla wystąpienia dodatkowego do pracy w trybie failover. Prywatny punkt końcowy będzie automatycznie łączyć się z nowym wystąpieniem podstawowym po przejściu w tryb failover.
+Aby uzyskać informacje o dostępności na [koncie magazynu geograficznie nadmiarowego do odczytu](storage-redundancy-grs.md#read-access-geo-redundant-storage), musisz oddzielić prywatne punkty końcowe zarówno dla wystąpienia podstawowego, jak i pomocniczego usługi. Nie musisz tworzyć prywatnego punktu końcowego dla wystąpienia dodatkowego do **pracy w trybie failover**. Prywatny punkt końcowy będzie automatycznie łączyć się z nowym wystąpieniem podstawowym po przejściu w tryb failover. git 
 
 #### <a name="resources"></a>Zasoby
 
@@ -91,14 +91,14 @@ Takie podejście umożliwia dostęp do konta magazynu przy użyciu tych samych p
 
 Zalecane nazwy stref DNS dla prywatnych punktów końcowych usług magazynu to:
 
-| Usługa magazynu       | Nazwa strefy                          |
-| :-------------------- | :--------------------------------- |
-| Usługa Obiekty Blob          | privatelink.blob.core.windows.net  |
-| System plików Data Lake | privatelink.dfe.core.windows.net   |
-| Usługa plików          | privatelink.file.core.windows.net  |
-| usługa kolejki         | privatelink.queue.core.windows.net |
-| Table service         | privatelink.table.core.windows.net |
-| Statyczne witryny sieci Web       | privatelink.web.core.windows.net   |
+| Usługa magazynu        | Nazwa strefy                            |
+| :--------------------- | :----------------------------------- |
+| Usługa Obiekty Blob           | `privatelink.blob.core.windows.net`  |
+| Data Lake Storage 2. generacji | `privatelink.dfs.core.windows.net`   |
+| Usługa plików           | `privatelink.file.core.windows.net`  |
+| usługa kolejki          | `privatelink.queue.core.windows.net` |
+| Table service          | `privatelink.table.core.windows.net` |
+| Statyczne witryny sieci Web        | `privatelink.web.core.windows.net`   |
 
 ## <a name="pricing"></a>Cennik
 
@@ -119,6 +119,6 @@ Klienci w programie sieci wirtualnych z istniejącymi prywatnymi punktami końco
 
 To ograniczenie jest wynikiem zmian wprowadzonych w systemie DNS, gdy konto a2 tworzy prywatny punkt końcowy.
 
-### <a name="network-security-group-rules-on-subnets-with-private-endpoints"></a>Reguły sieciowej grupy zabezpieczeń w podsieciach z prywatnymi punktami końcowymi
+### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Reguły sieciowej grupy zabezpieczeń dla podsieci z prywatnymi punktami końcowymi
 
-W tej chwili nie można skonfigurować reguł [grupy zabezpieczeń sieci](../../virtual-network/security-overview.md) (sieciowej grupy zabezpieczeń) dla podsieci z prywatnymi punktami końcowymi. Ograniczone obejście tego problemu polega na implementacji reguł dostępu dla prywatnych punktów końcowych w podsieciach źródłowych, chociaż takie podejście może wymagać wyższego obciążenia zarządzania.
+Obecnie nie można skonfigurować zasad [sieciowych grup zabezpieczeń](../../virtual-network/security-overview.md) (sieciowej grupy zabezpieczeń) dla podsieci z prywatnymi punktami końcowymi. Ograniczone obejście tego problemu polega na implementacji reguł dostępu dla prywatnych punktów końcowych w podsieciach źródłowych, chociaż takie podejście może wymagać wyższego obciążenia zarządzania.

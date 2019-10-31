@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0184aa7bff4203f50d834f603bed5fd2af52e4c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 051565d984196edce0404b12677cf27de9006f29
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514429"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175214"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzowanie dostępu do aplikacji internetowych usługi Azure Active Directory przy użyciu przepływu udzielania kodu OAuth 2.0
 
@@ -64,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji po jej zarejestrowaniu w usłudze Azure AD. Ten temat można znaleźć w witrynie Azure Portal. Kliknij przycisk **Azure Active Directory** na pasku bocznym usługi, kliknij pozycję **rejestracje aplikacji**, a następnie wybierz aplikację. |
 | response_type |Wymagane |Musi zawierać `code` dla przepływu kodu autoryzacji. |
 | parametr |Rekomendowane |Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Musi dokładnie odpowiadać jednemu z redirect_uris zarejestrowanych w portalu, z wyjątkiem tego, że musi on być zakodowany w adresie URL. W przypadku natywnych aplikacji mobilnych & należy użyć wartości domyślnej `urn:ietf:wg:oauth:2.0:oob`. |
-| response_mode |Obowiązkowe |Określa metodę, która ma zostać użyta do wysłania zwróconego tokenu z powrotem do aplikacji. Może być `query`, `fragment` lub `form_post`. `query` udostępnia kod jako parametr ciągu zapytania w identyfikatorze URI przekierowania. Jeśli żądasz tokenu identyfikatora przy użyciu niejawnego przepływu, nie możesz użyć `query`, jak określono w [specyfikacji OpenID Connect](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Jeśli żądasz tylko kodu, możesz użyć `query`, `fragment` lub `form_post`. `form_post` wykonuje wpis zawierający kod dla identyfikatora URI przekierowania. Wartość domyślna to `query` dla przepływu kodu.  |
+| response_mode |Obowiązkowe |Określa metodę, która ma zostać użyta do wysłania zwróconego tokenu z powrotem do aplikacji. Może być `query`, `fragment`lub `form_post`. `query` udostępnia kod jako parametr ciągu zapytania w identyfikatorze URI przekierowania. Jeśli żądasz tokenu identyfikatora przy użyciu niejawnego przepływu, nie możesz użyć `query`, jak określono w [specyfikacji OpenID Connect](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Jeśli żądasz tylko kodu, możesz użyć `query`, `fragment`lub `form_post`. `form_post` wykonuje wpis zawierający kod dla identyfikatora URI przekierowania. Wartość domyślna to `query` dla przepływu kodu.  |
 | state |Rekomendowane |Wartość zawarta w żądaniu, która jest również zwracana w odpowiedzi tokenu. Losowo wygenerowana unikatowa wartość jest zwykle używana w celu [zapobiegania atakom na fałszerstwo żądań między witrynami](https://tools.ietf.org/html/rfc6749#section-10.12). Ten stan jest również używany do kodowania informacji o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelnienia, takiego jak strona lub widok. |
 | Zasoby | Rekomendowane |Identyfikator URI aplikacji docelowego internetowego interfejsu API (zabezpieczony zasób). Aby znaleźć identyfikator URI aplikacji, w witrynie Azure Portal kliknij pozycję **Azure Active Directory**, kliknij pozycję **rejestracje aplikacji**, Otwórz stronę **Ustawienia** aplikacji, a następnie kliknij przycisk **Właściwości**. Może to być również zasób zewnętrzny, taki jak `https://graph.microsoft.com`. Jest to wymagane w jednym z żądań autoryzacji lub tokenu. Aby zapewnić mniejszą liczbę wierszy uwierzytelniania, umieść ją w żądaniu autoryzacji, aby upewnić się, że od użytkownika otrzymano zgodę. |
 | scope | **Ignoruj** | W przypadku aplikacji usługi Azure AD w wersji 1 zakresy muszą być konfigurowane statycznie w witrynie Azure Portal w obszarze **Ustawienia**aplikacji, **wymagane uprawnienia**. |
@@ -148,8 +148,8 @@ grant_type=authorization_code
 | dzierżaw |Wymagane |Wartość `{tenant}` w ścieżce żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to identyfikatory dzierżawców, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` dla tokenów niezależnych od dzierżawy |
 | client_id |Wymagane |Identyfikator aplikacji przypisany do aplikacji po jej zarejestrowaniu w usłudze Azure AD. Można to znaleźć w Azure Portal. Identyfikator aplikacji jest wyświetlany w ustawieniach rejestracji aplikacji. |
 | grant_type |Wymagane |Należy `authorization_code` dla przepływu kodu autoryzacji. |
-| Kodu |Wymagane |@No__t_0, które zostały nabyte w poprzedniej sekcji |
-| parametr |Wymagane | @No__t_0registered w aplikacji klienckiej. |
+| Kodu |Wymagane |`authorization_code`, które zostały nabyte w poprzedniej sekcji |
+| parametr |Wymagane | `redirect_uri`zarejestrowany w aplikacji klienckiej. |
 | client_secret |wymagane dla aplikacji sieci Web, niedozwolone dla klientów publicznych |Wpis tajny aplikacji utworzony w witrynie Azure Portal dla aplikacji w obszarze **klucze**. Nie może być używana w aplikacji natywnej (klient publiczny), ponieważ client_secrets nie może być niezawodnie przechowywana na urządzeniach. Jest to wymagane w przypadku aplikacji sieci Web i interfejsów API sieci Web (wszystkich klientów poufnych), które umożliwiają bezpieczne przechowywanie `client_secret` po stronie serwera. Client_secret powinna być zakodowana przy użyciu adresu URL przed wysłaniem. |
 | Zasoby | Rekomendowane |Identyfikator URI aplikacji docelowego internetowego interfejsu API (zabezpieczony zasób). Aby znaleźć identyfikator URI aplikacji, w witrynie Azure Portal kliknij pozycję **Azure Active Directory**, kliknij pozycję **rejestracje aplikacji**, Otwórz stronę **Ustawienia** aplikacji, a następnie kliknij przycisk **Właściwości**. Może to być również zasób zewnętrzny, taki jak `https://graph.microsoft.com`. Jest to wymagane w jednym z żądań autoryzacji lub tokenu. Aby zapewnić mniejszą liczbę wierszy uwierzytelniania, umieść ją w żądaniu autoryzacji, aby upewnić się, że od użytkownika otrzymano zgodę. Jeśli zarówno w żądaniu autoryzacji, jak i w żądaniu tokenu, parametry zasobu muszą być zgodne. | 
 | code_verifier | Obowiązkowe | Ten sam code_verifier, który został użyty w celu uzyskania authorization_code. Wymagane, jeśli w żądaniu udzielenia uprawnienia do kodu autoryzacji użyto PKCE. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636)   |
@@ -240,7 +240,7 @@ Poniższa tabela zawiera listę kodów stanu HTTP zwracanych przez punkt końcow
 | temporarily_unavailable |Serwer jest tymczasowo zbyt zajęty, aby obsłużyć żądanie. |Ponów żądanie. Aplikacja kliencka może wyjaśnić użytkownikowi, że jego odpowiedź jest opóźniona ze względu na tymczasowy warunek. |
 
 ## <a name="use-the-access-token-to-access-the-resource"></a>Korzystanie z tokenu dostępu w celu uzyskania dostępu do zasobu
-Po pomyślnym pobraniu `access_token` można użyć tokenu w żądaniach do interfejsów API sieci Web, dołączając go do nagłówka `Authorization`. Specyfikacja [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) wyjaśnia, jak używać tokenów okaziciela w żądaniach HTTP w celu uzyskania dostępu do chronionych zasobów.
+Po pomyślnym pobraniu `access_token`można użyć tokenu w żądaniach do interfejsów API sieci Web, dołączając go do nagłówka `Authorization`. Specyfikacja [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) wyjaśnia, jak używać tokenów okaziciela w żądaniach HTTP w celu uzyskania dostępu do chronionych zasobów.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 ```
@@ -279,7 +279,7 @@ Specyfikacja RFC 6750 definiuje następujące błędy dla zasobów, które używ
 
 ## <a name="refreshing-the-access-tokens"></a>Odświeżanie tokenów dostępu
 
-Tokeny dostępu są krótkotrwałe i muszą być odświeżane po wygaśnięciu, aby nadal uzyskiwać dostęp do zasobów. @No__t_0 można odświeżyć przez przesłanie kolejnego żądania `POST` do punktu końcowego `/token`, ale ten czas zapewnia `refresh_token` zamiast `code`.  Tokeny odświeżania są prawidłowe dla wszystkich zasobów, do których klient wyraził zgodę na dostęp — w tym celu token odświeżania wystawiony na żądanie `resource=https://graph.microsoft.com` może służyć do żądania nowego tokenu dostępu dla `resource=https://contoso.com/api`. 
+Tokeny dostępu są krótkotrwałe i muszą być odświeżane po wygaśnięciu, aby nadal uzyskiwać dostęp do zasobów. `access_token` można odświeżyć przez przesłanie kolejnego żądania `POST` do punktu końcowego `/token`, ale ten czas zapewnia `refresh_token` zamiast `code`.  Tokeny odświeżania są prawidłowe dla wszystkich zasobów, do których klient wyraził zgodę na dostęp — w tym celu token odświeżania wystawiony na żądanie `resource=https://graph.microsoft.com` może służyć do żądania nowego tokenu dostępu dla `resource=https://contoso.com/api`. 
 
 Tokeny odświeżania nie mają określonych okresów istnienia. Zwykle okresy istnienia tokenów odświeżania są stosunkowo długie. Jednak w niektórych przypadkach tokeny odświeżania wygasną, są odwoływane lub nie ma wystarczających uprawnień do żądanej akcji. Aplikacja musi oczekiwać i obsłużyć błędy zwrócone przez punkt końcowy wystawiania tokenów.
 

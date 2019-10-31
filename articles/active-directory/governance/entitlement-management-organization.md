@@ -1,5 +1,5 @@
 ---
-title: Dodawanie połączonej organizacji w usłudze Azure AD uprawnień do zarządzania (wersja zapoznawcza) — Azure Active Directory
+title: Dodawanie połączonej organizacji w usłudze Azure AD uprawnień zarządzanie — Azure Active Directory
 description: Dowiedz się, jak zezwolić osobom spoza organizacji na żądanie pakietów dostępu, dzięki czemu można współpracować nad projektami.
 services: active-directory
 documentationCenter: ''
@@ -16,14 +16,14 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d45db1f62b370a2692ed932572e16c247b8903
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9a8e5dc43170af8f33ad266edfa02ac5b41ca67a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952487"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174138"
 ---
-# <a name="add-a-connected-organization-in-azure-ad-entitlement-management-preview"></a>Dodawanie połączonej organizacji w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
+# <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Dodawanie połączonej organizacji w zarządzaniu prawami usługi Azure AD
 
 Zarządzanie prawami w usłudze Azure AD umożliwia współpracę z osobami spoza organizacji. Jeśli często pracujesz z użytkownikami w zewnętrznym katalogu lub domenie usługi Azure AD, możesz je dodać jako podłączoną organizację. W tym artykule opisano sposób dodawania połączonej organizacji w taki sposób, aby umożliwić użytkownikom spoza organizacji żądanie zasobów w katalogu.
 
@@ -39,11 +39,9 @@ Można skonfigurować dwie połączone organizacje — jeden dla Instytutu proje
 
 Sposób uwierzytelniania użytkowników z katalogu lub domeny usługi Azure AD zależy od typu uwierzytelniania. Typy uwierzytelniania dla połączonych organizacji są następujące:
 
-| Typ uwierzytelniania | Stan |
-| --- | --- |
-| Azure AD | Obsługiwane |
-| [Federacja bezpośrednia](../b2b/direct-federation.md) | Wersja zapoznawcza |
-| [Jednorazowy kod dostępu](../b2b/one-time-passcode.md) (domena) | Wersja zapoznawcza |
+- Azure AD
+- [Federacja bezpośrednia](../b2b/direct-federation.md)
+- [Jednorazowy kod dostępu](../b2b/one-time-passcode.md) (domena)
 
 ## <a name="add-a-connected-organization"></a>Dodawanie połączonej organizacji
 

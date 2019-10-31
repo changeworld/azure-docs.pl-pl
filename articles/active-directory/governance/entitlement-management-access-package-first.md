@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Tworzenie pierwszego pakietu dostępu w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza) — Azure Active Directory
-description: Samouczek krok po kroku dotyczący sposobu tworzenia pierwszego pakietu dostępu w Azure Active Directory Zarządzanie prawami (wersja zapoznawcza).
+title: Samouczek — Tworzenie pierwszego pakietu dostępu w usłudze Azure AD uprawnień zarządzania — Azure Active Directory
+description: Samouczek krok po kroku dotyczący sposobu tworzenia pierwszego pakietu dostępu w Azure Active Directory Zarządzanie uprawnieniami.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e25213305e2bf73bfe6980c0a09ffc73bd4f94ae
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893637"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174876"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Samouczek: Tworzenie pierwszego pakietu dostępu w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
-
-> [!IMPORTANT]
-> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Samouczek: Tworzenie pierwszego pakietu dostępu w usłudze Azure AD uprawnienia do zarządzania
 
 Zarządzanie dostępem do wszystkich zasobów wymaganych przez pracowników, takich jak grupy, aplikacje i lokacje, jest ważną funkcją dla organizacji. Aby udzielić pracownikom odpowiedniego poziomu dostępu, muszą one być produktywne i usuwać ich dostęp, gdy nie są już potrzebne.
 
@@ -49,7 +44,7 @@ Aby zapoznać się z krok po kroku procesu wdrażania Azure Active Directory Zar
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z usługi Azure AD do zarządzania prawami (wersja zapoznawcza), musisz mieć jedną z następujących licencji:
+Aby móc korzystać z usługi Azure AD do zarządzania prawami, musisz mieć jedną z następujących licencji:
 
 - Usługa Azure AD — warstwa Premium P2
 - Licencja na usługę Enterprise Mobility + Security (EMS) E5

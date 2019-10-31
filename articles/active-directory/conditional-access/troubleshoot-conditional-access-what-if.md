@@ -11,20 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d463bc889385f8f157ebb9892acc7a4a8b2a2e
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278512"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175812"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Rozwiązywanie problemów z dostępem warunkowym przy użyciu narzędzia What If
 
 [Narzędzie What If](what-if-tool.md) w dostępie warunkowym jest zaawansowane podczas próby zrozumienia, dlaczego zasady zostały lub nie zostały zastosowane do użytkownika w konkretnym przypadku lub jeśli zasady byłyby stosowane w znanym stanie.
 
-Narzędzie What If znajduje się w **Azure Portal** > **Azure Active Directory** > **dostęp** > warunkowy**What If**.
+Narzędzie What If znajduje się w **Azure Portal** > **Azure Active Directory** > **dostępu warunkowego** do >  **.**
 
 ![Narzędzie What If dostępu warunkowego w stanie domyślnym](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
+
+> [!NOTE]
+> Narzędzie What If obecnie nie szacuje zasad w trybie tylko do raportowania.
 
 ## <a name="gathering-information"></a>Zbieranie informacji
 
@@ -34,7 +37,7 @@ Następujące dodatkowe informacje są opcjonalne, ale pomogą w zawężaniu zak
 
 * Aplikacje w chmurze lub akcje
 * Adres IP 
-* Country
+* Kraj
 * Platforma urządzeń
 * Aplikacje klienckie (wersja zapoznawcza)
 * Stan urządzenia (wersja zapoznawcza) 

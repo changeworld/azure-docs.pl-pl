@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c509e061c43c81f72682fb428529a8e72b34066a
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 05418cde7b31392c1a55f64945764e978daba1bf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056322"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175393"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — Przenieś do środowiska produkcyjnego
 
@@ -51,23 +51,22 @@ Oto kilka linków, aby dowiedzieć się więcej:
 - Inne przykłady/samouczki:
   - [program Microsoft-Identity-platform-Console DAEMON](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) oferuje prostą aplikację konsolową demona programu .NET Core, która wyświetla użytkowników dzierżawcy z przeszukiwaniem Microsoft Graph.
 
-    ![topologia](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![topology](media/scenario-daemon-app/daemon-app-sample.svg)
 
     Ten sam przykład ilustruje również zmiany z certyfikatami.
 
-    ![topologia](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![topology](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
   - [Microsoft-Identity-platform-ASPNET-webapp-demos](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) ASP.NET MVC Web Application, która synchronizuje dane z Microsoft Graph przy użyciu tożsamości aplikacji zamiast w imieniu użytkownika. Przykład ilustruje również proces wyrażania zgody administratora.
 
-    ![topologia](media/scenario-daemon-app/damon-app-sample-web.svg)
+    ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-MSAL Python jest obecnie w publicznej wersji zapoznawczej.
-Aby uzyskać więcej informacji, zobacz [przykłady w repozytorium MSAL języka Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample).
+Wypróbuj Szybki Start [token i Wywołaj interfejs API Microsoft Graph z aplikacji konsolowej języka Python przy użyciu tożsamości aplikacji](./quickstart-v2-python-daemon.md).
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-msal4j (MSAL. Java) jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [MSAL Java in-Repository Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+MSAL Java jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
 
 ---

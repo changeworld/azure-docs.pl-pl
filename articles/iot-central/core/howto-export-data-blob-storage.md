@@ -8,12 +8,12 @@ ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: efa44df378e88b870654111295c10bec06539adb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b6a437af33e3e85b8dc07de223b6e1fd7ce6cb03
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950524"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176255"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Eksportowanie danych do usługi Azure Blob Storage
 
@@ -85,7 +85,7 @@ Teraz, gdy masz miejsce docelowe magazynu, do którego chcesz wyeksportować dan
 
 9. Aby włączyć ciągły eksport danych, upewnij się, że przełącznik **eksportu danych** jest **włączony**. Wybierz pozycję **Zapisz**.
 
-   ![Konfigurowanie ciągłego eksportowania danych](media/howto-export-data/export-list-blob2.png)
+   ![Konfigurowanie ciągłego eksportu danych](media/howto-export-data/export-list-blob2.png)
 
 10. Po kilku minutach dane zostaną wyświetlone na koncie magazynu.
 
@@ -132,7 +132,7 @@ Poniższy przykład przedstawia rekord w zdekodowanym pliku Avro:
 Gdy ciągły eksport danych jest najpierw włączony, wyeksportowana jest pojedyncza migawka ze wszystkimi urządzeniami. Każde urządzenie obejmuje:
 - `id` urządzenia w IoT Central
 - `name` urządzenia
-- `deviceId` z [usługi Device Provisioning](https://aka.ms/iotcentraldocsdps)
+- `deviceId` z [usługi Device Provisioning](/azure/iot-central/core/howto-connect-nodejs)
 - Informacje o szablonie urządzenia
 - Wartości właściwości
 - Ustawianie wartości

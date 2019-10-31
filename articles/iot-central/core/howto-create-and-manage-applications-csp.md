@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 2acac429dc8f0d9981e4c952702edd24b598881b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8e9c2077960dc64aa7bac13a53e0b3f74062aa55
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950901"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177279"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Tworzenie aplikacji IoT Central platformy Azure i zarządzanie nią z poziomu portalu CSP
 
@@ -33,7 +33,7 @@ Na stronie Menedżer aplikacji IoT Central platformy Azure. Usługa Azure IoT Ce
 
 ![Tworzenie Menedżera dla dostawców CSP](media/howto-create-application-csp/image3.png)
 
-Aby utworzyć aplikację IoT Central platformy Azure, wybierz kafelek **Nowa aplikacja** . Spowoduje to załadowanie strony tworzenia aplikacji. Musisz ukończyć wszystkie pola na tej stronie, a następnie wybierz pozycję **Utwórz**. Znajdziesz więcej informacji na temat każdego z poniższych pól.
+Aby utworzyć aplikację IoT Central platformy Azure, wybierz opcję **Kompiluj** w menu po lewej stronie. Wybierz jeden z szablonów idustry lub wybierz pozycję **aplikacja niestandardowa** , aby utworzyć aplikację od podstaw. Spowoduje to załadowanie strony tworzenia aplikacji. Musisz ukończyć wszystkie pola na tej stronie, a następnie wybierz pozycję **Utwórz**. Znajdziesz więcej informacji na temat każdego z poniższych pól.
 
 ![Tworzenie strony aplikacji dla dostawców CSP](media/howto-create-application-csp/image4.png)
 

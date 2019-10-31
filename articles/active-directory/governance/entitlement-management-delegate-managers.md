@@ -1,5 +1,5 @@
 ---
-title: Delegowanie dostępu ładu w celu uzyskania dostępu do menedżerów pakietów w usłudze Azure AD uprawnień zarządzanie (wersja zapoznawcza) — Azure Active Directory
+title: Delegowanie dostępu ładu w celu uzyskania dostępu do menedżerów pakietów w usłudze Azure AD uprawnień zarządzanie — Azure Active Directory
 description: Dowiedz się, jak delegować nadzór dostępu od administratorów IT, aby uzyskiwać dostęp do menedżerów pakietów i menedżerów projektów, aby mogli zarządzać samymi prawami dostępu.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a2b6bfdb4904e11ffba3a9fe1097c7f5cfe9d6
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170739"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174356"
 ---
-# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management-preview"></a>Delegowanie dostępu do menedżerów pakietów w usłudze Azure AD uprawnień zarządzanie (wersja zapoznawcza)
-
-> [!IMPORTANT]
-> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Delegowanie dostępu ładu w celu uzyskania dostępu do menedżerów pakietów w usłudze Azure AD uprawnień zarządzanie
 
 Aby delegować tworzenie i zarządzanie pakietami dostępu w wykazie, należy dodać użytkowników do roli Menedżer pakietów dostępu. Menedżerowie pakietów muszą znać potrzeby uzyskiwania dostępu do zasobów w katalogu. Na przykład jeśli katalog jest używany w projekcie, potencjalnym liderem projektu może być Menedżer pakietów dostępu dla tego wykazu.  Menedżerowie pakietów dostępu nie mogą dodawać zasobów do wykazu, ale mogą zarządzać pakietami i zasadami dostępu w wykazie.  W przypadku delegowania do Menedżera pakietów programu Access osoba ta może być odpowiedzialna za:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 040874f0ba5e2766aab8aa399bcae65a6676fa53
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bcf19956d998ace88efbd4e1c9d787f1baeef642
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951135"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177392"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Jak używać analiz do analizowania danych urządzenia
 
@@ -39,7 +39,7 @@ Interfejs użytkownika analizy składa się z trzech głównych składników:
 
 Należy rozpocząć od wybrania **grupy urządzeń**i danych telemetrycznych, które mają być analizowane. Gdy skończysz, wybierz pozycję **Analizuj** , aby rozpocząć wizualizację danych.
 
-- **Grupa urządzeń:** [Grupa urządzeń](howto-use-device-groups-pnp.md) to zdefiniowana przez użytkownika grupa urządzeń. Na przykład wszystkie lodówki w Oakland lub wszystkie wersje 2,0 wiatru.
+- **Grupa urządzeń:** [Grupa urządzeń](tutorial-use-device-groups-pnp.md) to zdefiniowana przez użytkownika grupa urządzeń. Na przykład wszystkie lodówki w Oakland lub wszystkie wersje 2,0 wiatru.
 
 - Dane **telemetryczne:** Wybierz dane telemetryczne, które chcesz analizować i eksplorować. Możesz wybrać wiele telemetrii do przeanalizowania. Domyślna metoda agregacji jest ustawiana na wartość średnia dla liczb i liczby dla typu danych String. Obsługiwane metody agregacji dla liczbowych typów danych to Average, maksimum, minimum, Count i, sum.  Liczba obsługiwanych metod agregacji dla typu danych string to Count.
 

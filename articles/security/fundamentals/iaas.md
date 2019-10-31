@@ -4,7 +4,7 @@ description: " Migracja obciążeń do usługi Azure IaaS pozwala na ocenę nasz
 services: security
 documentationcenter: na
 author: barclayn
-manager: MBaldwin
+manager: rkarlin
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/26/2019
+ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: fc1657be4dbff1acee186e3a85d9d1e772055f73
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fc72c59721a6f244806bf229ebded1e66341a04d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262744"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177694"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczeń dla obciążeń IaaS na platformie Azure
 W tym artykule opisano najlepsze rozwiązania w zakresie zabezpieczeń dotyczące maszyn wirtualnych i systemów operacyjnych.
@@ -28,13 +28,6 @@ W tym artykule opisano najlepsze rozwiązania w zakresie zabezpieczeń dotycząc
 Najlepsze rozwiązania są oparte na konsensusie opinii i współpracują z bieżącymi funkcjami platformy Azure i zestawami funkcji. Ponieważ Opinie i technologie mogą ulec zmianie z upływem czasu, ten artykuł zostanie zaktualizowany w celu odzwierciedlenia tych zmian.
 
 W większości scenariuszy infrastruktury jako usługi (IaaS) [maszyny wirtualne platformy Azure](/azure/virtual-machines/) są głównym obciążeniem dla organizacji korzystających z chmury obliczeniowej. Ten fakt jest oczywisty w [scenariuszach hybrydowych](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) , w których organizacje chcą wolno migrować obciążenia do chmury. W takich scenariuszach postępuj zgodnie z [ogólnymi zagadnieniami dotyczącymi zabezpieczeń IaaS](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)i stosuj najlepsze rozwiązania w zakresie zabezpieczeń do wszystkich maszyn wirtualnych.
-
-## <a name="shared-responsibility"></a>Wspólna odpowiedzialność
-Odpowiedzialność za bezpieczeństwo jest oparta na typie usługi w chmurze. Poniższy wykres podsumowuje saldo odpowiedzialności dla firmy Microsoft i:
-
-![Obszary odpowiedzialności](./media/iaas/sec-cloudstack-new.png)
-
-Wymagania dotyczące zabezpieczeń różnią się w zależności od liczby czynników, w tym różnych rodzajów obciążeń. Niektóre z tych najlepszych rozwiązań nie mogą być bezpieczne dla systemów. Podobnie jak w przypadku innych zabezpieczeń, należy wybrać odpowiednie opcje i zobaczyć, jak rozwiązania mogą uzupełniać się wzajemnie, wypełniając przerwy.
 
 ## <a name="protect-vms-by-using-authentication-and-access-control"></a>Ochrona maszyn wirtualnych przy użyciu uwierzytelniania i kontroli dostępu
 Pierwszym krokiem w ochronie maszyn wirtualnych jest upewnienie się, że tylko autoryzowani użytkownicy mogą konfigurować nowe maszyny wirtualne i uzyskiwać dostęp do maszyn wirtualnych.
@@ -44,21 +37,21 @@ Pierwszym krokiem w ochronie maszyn wirtualnych jest upewnienie się, że tylko 
 >
 >
 
-**Najlepsze rozwiązanie**: Kontrola dostępu do maszyny wirtualnej.   
-**Szczegóły**: Użyj [zasad platformy Azure](/azure/azure-policy/azure-policy-introduction) , aby ustalić konwencje dla zasobów w organizacji i utworzyć dostosowane zasady. Zastosuj te zasady do zasobów, takich jak [grupy zasobów](/azure/azure-resource-manager/resource-group-overview). Maszyny wirtualne należące do grupy zasobów dziedziczą swoje zasady.
+**Najlepsze rozwiązanie**: kontrolowanie dostępu do maszyny wirtualnej.   
+**Szczegóły**: Użyj [zasad platformy Azure](/azure/azure-policy/azure-policy-introduction) , aby określić konwencje dla zasobów w organizacji i utworzyć dostosowane zasady. Zastosuj te zasady do zasobów, takich jak [grupy zasobów](/azure/azure-resource-manager/resource-group-overview). Maszyny wirtualne należące do grupy zasobów dziedziczą swoje zasady.
 
 Jeśli Twoja organizacja ma wiele subskrypcji, może być konieczne w celu wydajnego zarządzania dostępem, zasadami i zgodnością dla tych subskrypcji. [Grupy zarządzania platformy Azure](/azure/azure-resource-manager/management-groups-overview) zapewniają poziom zakresu powyżej subskrypcji. Można organizować subskrypcje w grupy zarządzania (kontenery) i stosować warunki ładu do tych grup. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą warunki zastosowane do grupy. Grupy zarządzania umożliwiają zarządzanie klasy korporacyjnej na dużą skalę niezależnie od typu subskrypcji.
 
-**Najlepsze rozwiązanie**: Zmniejszenie zmienności instalacji i wdrożenia maszyn wirtualnych.   
-**Szczegóły**: Użyj szablonów [Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates) , aby wzmocnić wybór wdrożenia i ułatwić zrozumienie i Spis maszyn wirtualnych w środowisku.
+**Najlepsze rozwiązanie**: redukcja zmienności instalacji i wdrożenia maszyn wirtualnych.   
+**Szczegóły**: użyj szablonów [Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates) , aby wzmocnić wybór wdrożenia i ułatwić jego zrozumienie i Spis maszyn wirtualnych w środowisku.
 
-**Najlepsze rozwiązanie**: Bezpieczny dostęp uprzywilejowany.   
-**Szczegóły**: Użyj [podejścia najniższych uprawnień](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) oraz wbudowanych ról platformy Azure, aby umożliwić użytkownikom dostęp do maszyn wirtualnych i konfigurowanie ich:
+**Najlepsze rozwiązanie**: bezpieczny dostęp uprzywilejowany.   
+**Szczegóły**: aby umożliwić użytkownikom dostęp do maszyn wirtualnych i konfigurować je, użyj [podejścia najniższych uprawnień](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) oraz wbudowanych ról platformy Azure:
 
-- [Współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): Może zarządzać maszynami wirtualnymi, ale nie z siecią wirtualną ani kontem magazynu, z którym są połączone.
-- [Współautor klasycznej maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): Może zarządzać maszynami wirtualnymi utworzonymi przy użyciu klasycznego modelu wdrażania, ale nie do sieci wirtualnej lub konta magazynu, z którym są połączone maszyny wirtualne.
-- [Administrator zabezpieczeń](../../role-based-access-control/built-in-roles.md#security-admin): Tylko w Security Center: Może wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlać alerty i zalecenia, odrzucać alerty i zalecenia.
-- [Użytkownik DevTest Labs](../../role-based-access-control/built-in-roles.md#devtest-labs-user): Może wyświetlać wszystko i łączyć, uruchamiać, ponownie uruchamiać i zamykać maszyny wirtualne.
+- [Współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): może zarządzać maszynami wirtualnymi, ale nie z siecią wirtualną ani kontem magazynu, z którym są połączone.
+- [Współautor klasycznej maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): może zarządzać maszynami wirtualnymi utworzonymi przy użyciu klasycznego modelu wdrażania, ale nie z siecią wirtualną ani kontem magazynu, z którym są połączone maszyny wirtualne.
+- [Administrator zabezpieczeń](../../role-based-access-control/built-in-roles.md#security-admin): tylko w Security Center: mogą wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlać alerty i zalecenia, odrzucać alerty i zalecenia.
+- [Użytkownik DevTest Labs](../../role-based-access-control/built-in-roles.md#devtest-labs-user): może wyświetlać wszystko i łączyć, uruchamiać, ponownie uruchamiać i zamykać maszyny wirtualne.
 
 Administratorzy subskrypcji i współadministratorzy mogą zmienić to ustawienie, tworząc administratorów wszystkich maszyn wirtualnych w ramach subskrypcji. Upewnij się, że ufasz wszystkim administratorom subskrypcji i współadministratorom logowanie się na dowolnych komputerach.
 
@@ -75,47 +68,47 @@ Jeśli maszyna wirtualna uruchamia krytyczne aplikacje, które muszą mieć wyso
 Zestaw dostępności jest grupą logiczną, której można użyć na platformie Azure, aby upewnić się, że zasoby maszyny wirtualnej, które znajdują się w niej, są od siebie odizolowane, gdy zostaną wdrożone w centrum danych platformy Azure. System Azure zapewnia, że maszyny wirtualne, które są umieszczane w zestawie dostępności, są uruchamiane na wielu serwerach fizycznych, w stojakach obliczeniowych, jednostkach magazynowych i przełącznikach sieciowych. Jeśli wystąpi awaria sprzętu lub oprogramowania platformy Azure, ma to zastosowanie tylko do podzbioru maszyn wirtualnych, a ogólna aplikacja będzie nadal dostępna dla klientów. Zestawy dostępności są istotną funkcją do tworzenia niezawodnych rozwiązań w chmurze.
 
 ## <a name="protect-against-malware"></a>Chroń się przed złośliwym oprogramowaniem
-Należy zainstalować ochronę przed złośliwym oprogramowaniem, aby ułatwić identyfikowanie i usuwanie wirusów, programów szpiegujących i innego złośliwego oprogramowania. Można zainstalować [oprogramowanie Microsoft chroniące przed złośliwym kodem](antimalware.md) lub rozwiązanie Endpoint Protection partnera firmy Microsoft ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/search/result.aspx?q=Windows+defender+endpoint+protection)i [System Center Endpoint Protection](https://www.microsoft.com/search/result.aspx?q=System+Center+endpoint+protection)).
+Należy zainstalować ochronę przed złośliwym oprogramowaniem, aby ułatwić identyfikowanie i usuwanie wirusów, programów szpiegujących i innego złośliwego oprogramowania. Można zainstalować [oprogramowanie Microsoft chroniące przed złośliwym kodem](antimalware.md) lub rozwiązanie Endpoint Protection partnera firmy Microsoft ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/en-us/search?q=Windows+defender+endpoint+protection&rtc=1)i [System Center Endpoint Protection](https://www.microsoft.com/en-us/search?q=System+Center+endpoint+protection&rtc=1)).
 
 Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft oferuje takie funkcje jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowanie złośliwego oprogramowania, aktualizacje sygnatur, aktualizacje aparatu, raportowanie przykładów i zbieranie zdarzeń wykluczania. W przypadku środowisk, które są hostowane niezależnie od środowiska produkcyjnego, można użyć rozszerzenia chroniącego przed złośliwym kodem, aby chronić maszyny wirtualne i usługi w chmurze.
 
 Możesz zintegrować rozwiązania firmy Microsoft chroniące przed złośliwym oprogramowaniem i partnerzy [Azure Security Center](../../security-center/index.yml) , aby ułatwić wdrażanie i wbudowane wykrywanie (alerty i zdarzenia).
 
-**Najlepsze rozwiązanie**: Zainstaluj rozwiązanie chroniące przed złośliwym kodem, aby chronić przed złośliwym oprogramowaniem.   
+**Najlepsze**rozwiązania: Zainstaluj rozwiązanie chroniące przed złośliwym kodem, aby chronić przed złośliwym oprogramowaniem.   
 **Szczegóły**: [Zainstaluj rozwiązanie partnerskie firmy Microsoft lub oprogramowanie chroniące przed złośliwym kodem](../../security-center/security-center-install-endpoint-protection.md)
 
-**Najlepsze rozwiązanie**: Zintegruj rozwiązanie chroniące przed złośliwym kodem za pomocą Security Center, aby monitorować stan ochrony.   
-**Szczegóły**: [Zarządzanie problemami z programem Endpoint Protection przy użyciu Security Center](../../security-center/security-center-partner-integration.md)
+**Najlepsze**rozwiązania: Zintegruj rozwiązanie chroniące przed złośliwym kodem za pomocą Security Center, aby monitorować stan ochrony.   
+**Szczegóły**: [Zarządzanie problemami z programem Endpoint protection przy użyciu Security Center](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>Zarządzanie aktualizacjami maszyny wirtualnej
 Maszyny wirtualne platformy Azure, takie jak wszystkie lokalne maszyny wirtualne, są przeznaczone do zarządzania przez użytkownika. Platforma Azure nie wypychanie do nich aktualizacji systemu Windows. Musisz zarządzać aktualizacjami maszyny wirtualnej.
 
-**Najlepsze rozwiązanie**: Utrzymuj aktualność maszyn wirtualnych.   
-**Szczegóły**: Użyj rozwiązania [Update Management](../../automation/automation-update-management.md) w Azure Automation, aby zarządzać aktualizacjami systemu operacyjnego dla komputerów z systemem Windows i Linux wdrożonych na platformie Azure, w środowiskach lokalnych lub innych dostawców chmury. Umożliwia ono szybką ocenę stanu dostępnych aktualizacji na wszystkich komputerach agentów oraz zarządzanie procesem instalacji wymaganych aktualizacji serwerów.
+**Najlepsze rozwiązanie**: Zachowaj aktualność maszyn wirtualnych.   
+**Szczegóły**: użyj rozwiązania [Update Management](../../automation/automation-update-management.md) w Azure Automation do zarządzania aktualizacjami systemu operacyjnego na komputerach z systemami Windows i Linux, które są wdrożone na platformie Azure, w środowiskach lokalnych lub w innych dostawcach chmury. Umożliwia ono szybką ocenę stanu dostępnych aktualizacji na wszystkich komputerach agentów oraz zarządzanie procesem instalacji wymaganych aktualizacji serwerów.
 
-Komputery zarządzane przez program Update Management używają następujących konfiguracji do przeprowadzania wdrożeń oceny i aktualizacji:
+W celu przeprowadzania ocen i wdrożeń aktualizacji na komputerach zarządzanych przez rozwiązanie Update Management są używane następujące konfiguracje:
 
-- Microsoft Monitoring Agent (MMA) dla systemu Windows lub Linux
+- Program Microsoft Monitoring Agent (MMA) dla systemu Windows lub Linux
 - Platforma PowerShell Desired State Configuration (DSC) dla systemu Linux
 - Hybrydowy proces roboczy elementu runbook usługi Automation
-- Microsoft Update lub Windows Server Update Services (WSUS) dla komputerów z systemem Windows
+- Usługa Microsoft Update lub Windows Server Update Services (WSUS) dla komputerów z systemem Windows
 
 Jeśli używasz Windows Update, pozostaw ustawienie automatyczne Windows Update włączone.
 
 **Najlepsze rozwiązanie**: Upewnij się, że wdrożone obrazy zawierają najnowsze aktualizacje systemu Windows.   
-**Szczegóły**: Sprawdź i zainstaluj wszystkie aktualizacje systemu Windows jako pierwszy krok każdego wdrożenia. Ta miara jest szczególnie ważna w przypadku wdrażania obrazów pochodzących z własnej lub własnej biblioteki. Mimo że obrazy z portalu Azure Marketplace są automatycznie aktualizowane domyślnie, może istnieć czas opóźnienia (do kilku tygodni) po wersji publicznej.
+**Szczegóły**: należy sprawdzić i zainstalować wszystkie aktualizacje systemu Windows jako pierwszy krok każdego wdrożenia. Ta miara jest szczególnie ważna w przypadku wdrażania obrazów pochodzących z własnej lub własnej biblioteki. Mimo że obrazy z portalu Azure Marketplace są automatycznie aktualizowane domyślnie, może istnieć czas opóźnienia (do kilku tygodni) po wersji publicznej.
 
-**Najlepsze rozwiązanie**: Okresowo ponownie Wdrażaj maszyny wirtualne w celu wymuszenia nowej wersji systemu operacyjnego.   
-**Szczegóły**: Zdefiniuj maszynę wirtualną za pomocą [szablonu Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) , aby można było łatwo wdrożyć ją ponownie. Korzystanie z szablonu zapewnia bezpieczną i zabezpieczoną maszynę wirtualną, gdy jej potrzebujesz.
+**Najlepsze rozwiązanie**: okresowo ponownie Wdrażaj maszyny wirtualne w celu wymuszenia nowej wersji systemu operacyjnego.   
+**Szczegóły**: Zdefiniuj maszynę wirtualną za pomocą [szablonu Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) , aby można było ją łatwo wdrożyć ponownie. Korzystanie z szablonu zapewnia bezpieczną i zabezpieczoną maszynę wirtualną, gdy jej potrzebujesz.
 
 **Najlepsze rozwiązanie**: Szybkie stosowanie aktualizacji zabezpieczeń do maszyn wirtualnych.   
 **Szczegóły**: Włącz Azure Security Center (warstwa Bezpłatna lub standardowa), aby [zidentyfikować brakujące aktualizacje zabezpieczeń i zastosować je](../../security-center/security-center-apply-system-updates.md).
 
 **Najlepsze rozwiązanie**: Zainstaluj najnowsze aktualizacje zabezpieczeń.   
-**Szczegóły**: Niektóre z pierwszych obciążeń, które klienci przechodzą na platformę Azure, to laboratoria i systemy zewnętrzne. Jeśli aplikacje lub usługi dla maszyn wirtualnych platformy Azure, które wymagają dostępu do Internetu, są czujność na temat stosowania poprawek. Poprawka poza system operacyjny. Niepoprawione luki w zabezpieczeniach aplikacji partnerskich mogą również prowadzić do problemów, które można uniknąć w przypadku dobrego zarządzania poprawkami.
+**Szczegóły**: niektóre z pierwszych obciążeń, które klienci przechodzą na platformę Azure, to laboratoria i systemy zewnętrzne. Jeśli aplikacje lub usługi dla maszyn wirtualnych platformy Azure, które wymagają dostępu do Internetu, są czujność na temat stosowania poprawek. Poprawka poza system operacyjny. Niepoprawione luki w zabezpieczeniach aplikacji partnerskich mogą również prowadzić do problemów, które można uniknąć w przypadku dobrego zarządzania poprawkami.
 
-**Najlepsze rozwiązanie**: Wdróż i przetestuj rozwiązanie do tworzenia kopii zapasowych.   
-**Szczegóły**: Kopia zapasowa musi być obsługiwana w taki sam sposób, jak w przypadku każdej innej operacji. Jest to prawdziwe w przypadku systemów, które są częścią środowiska produkcyjnego, rozszerzając do chmury.
+**Najlepsze**rozwiązanie: Wdróż i przetestuj rozwiązanie do tworzenia kopii zapasowych.   
+**Szczegóły**: kopia zapasowa musi być obsługiwana w taki sam sposób, jak w przypadku każdej innej operacji. Jest to prawdziwe w przypadku systemów, które są częścią środowiska produkcyjnego, rozszerzając do chmury.
 
 Systemy testowe i deweloperskie muszą stosować się do strategii tworzenia kopii zapasowych, które udostępniają możliwości przywracania, które są podobne do tego, do jakich użytkowników korzystali, w zależności od ich środowiska lokalnego. Obciążenia produkcyjne przeniesione na platformę Azure powinny być zintegrowane z istniejącymi rozwiązaniami do tworzenia kopii zapasowych, jeśli to możliwe Można też użyć [Azure Backup](../../backup/backup-azure-vms-first-look-arm.md) , aby pomóc w rozwiązywaniu wymagań dotyczących kopii zapasowych.
 
@@ -146,8 +139,8 @@ Użycie zasobów może być problemem, gdy procesy maszyny wirtualnej zużywają
 
 Zalecamy używanie [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) , aby uzyskać wgląd w kondycję zasobu. Funkcje Azure Monitor:
 
-- [Pliki dziennika diagnostyki zasobów](../../azure-monitor/platform/resource-logs-overview.md): Monitoruje zasoby maszyn wirtualnych i identyfikuje potencjalne problemy, które mogą naruszyć wydajność i dostępność.
-- [Diagnostyka Azure rozszerzenie](/azure/azure-monitor/platform/diagnostics-extension-overview): Oferuje funkcje monitorowania i diagnostyki na maszynach wirtualnych z systemem Windows. Te możliwości można włączyć, dołączając rozszerzenie jako część [szablonu Azure Resource Manager](/azure/virtual-machines/windows/extensions-diagnostics-template).
+- [Pliki dziennika diagnostyki zasobów](../../azure-monitor/platform/resource-logs-overview.md): monitoruje zasoby maszyn wirtualnych i identyfikuje potencjalne problemy, które mogą naruszyć wydajność i dostępność.
+- [Rozszerzenie Diagnostyka Azure](/azure/azure-monitor/platform/diagnostics-extension-overview): oferuje funkcje monitorowania i diagnostyki na maszynach wirtualnych z systemem Windows. Te możliwości można włączyć, dołączając rozszerzenie jako część [szablonu Azure Resource Manager](/azure/virtual-machines/windows/extensions-diagnostics-template).
 
 Organizacje, które nie monitorują wydajności maszyn wirtualnych, nie mogą określić, czy pewne zmiany wzorców wydajności są normalne, czy nietypowe. Maszyna wirtualna, która zużywa więcej zasobów niż normalna, może wskazywać na atak z zasobów zewnętrznych lub zagrożony proces uruchomiony na maszynie wirtualnej.
 
@@ -159,16 +152,16 @@ Zalecamy zaszyfrowanie wirtualnych dysków twardych (VHD), aby chronić wolumin 
 Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z Azure Disk Encryption:
 
 **Najlepsze rozwiązanie**: Włącz szyfrowanie na maszynach wirtualnych.   
-**Szczegóły**: Azure Disk Encryption generuje i zapisuje klucze szyfrowania do magazynu kluczy. Zarządzanie kluczami szyfrowania w magazynie kluczy wymaga uwierzytelniania usługi Azure AD. Utwórz aplikację usługi Azure AD, w tym celu. Na potrzeby uwierzytelniania, można użyć albo uwierzytelnianie oparte na klucz tajny klienta lub [uwierzytelnianie klienta oparte na certyfikatach usługi Azure AD](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
+**Szczegóły**: Azure Disk Encryption generuje i zapisuje klucze szyfrowania do magazynu kluczy. Zarządzanie kluczami szyfrowania w magazynie kluczy wymaga uwierzytelniania usługi Azure AD. Utwórz w tym celu aplikację usługi Azure AD. Do celów uwierzytelniania można użyć uwierzytelniania opartego na kluczu tajnym klienta lub [uwierzytelniania usługi Azure AD opartego na certyfikatach klienta](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
 **Najlepsze rozwiązanie**: Użyj klucza szyfrowania klucza (KEK) w celu uzyskania dodatkowej warstwy zabezpieczeń dla kluczy szyfrowania. Dodaj KEK do magazynu kluczy.   
-**Szczegóły**: Użyj polecenia cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) , aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Możesz również zaimportować KEK z lokalnego sprzętowego modułu zabezpieczeń (HSM) do zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [dokumentację Key Vault](../../key-vault/key-vault-hsm-protected-keys.md). Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. Przechowywanie kopii tego klucza w ramach lokalnego modułu HSM zarządzania kluczami zapewnia dodatkową ochronę przed przypadkowym usunięciem kluczy.
+**Szczegóły**: Użyj polecenia cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) , aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Możesz również zaimportować KEK z lokalnego sprzętowego modułu zabezpieczeń (HSM) do zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [dokumentację Key Vault](../../key-vault/key-vault-hsm-protected-keys.md). W przypadku określenia klucza szyfrowania klucza Azure Disk Encryption używa tego klucza do zawijania wpisów tajnych szyfrowania przed zapisem w Key Vault. Przechowywanie kopii tego klucza w ramach lokalnego modułu HSM zarządzania kluczami zapewnia dodatkową ochronę przed przypadkowym usunięciem kluczy.
 
-**Najlepsze rozwiązanie**: Utwórz [migawkę](../../virtual-machines/windows/snapshot-copy-managed-disk.md) i/lub kopię zapasową przed zaszyfrowaniem dysków. Kopie zapasowe zapewniają opcję odzyskiwania, jeśli wystąpi nieoczekiwany błąd podczas szyfrowania.   
-**Szczegóły**: Maszyny wirtualne z dyskami zarządzanymi wymagają kopię zapasową przed zaszyfrowaniem. Po wykonaniu kopii zapasowej można użyć polecenia cmdlet **Set-AzVMDiskEncryptionExtension** w celu zaszyfrowania dysków zarządzanych przez określenie parametru *-skipVmBackup* . Aby uzyskać więcej informacji na temat tworzenia kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych, zobacz [kopia zapasowa Azure](../../backup/backup-azure-vms-encryption.md) artykułu.
+**Najlepsze rozwiązanie**: wykonaj [migawkę](../../virtual-machines/windows/snapshot-copy-managed-disk.md) i/lub kopię zapasową przed zaszyfrowaniem dysków. Kopie zapasowe zapewniają opcję odzyskiwania, jeśli wystąpi nieoczekiwany błąd podczas szyfrowania.   
+**Szczegóły**: maszyny wirtualne z dyskami zarządzanymi wymagają utworzenia kopii zapasowej przed wystąpieniem szyfrowania. Po wykonaniu kopii zapasowej można użyć polecenia cmdlet **Set-AzVMDiskEncryptionExtension** w celu zaszyfrowania dysków zarządzanych przez określenie parametru *-skipVmBackup* . Aby uzyskać więcej informacji na temat tworzenia kopii zapasowych i przywracania szyfrowanych maszyn wirtualnych, zobacz artykuł [Azure Backup](../../backup/backup-azure-vms-encryption.md) .
 
-**Najlepsze rozwiązanie**: Aby upewnić się, że wpisy tajne szyfrowania nie przekraczają granic regionalnych, Azure Disk Encryption potrzebuje magazynu kluczy i maszyn wirtualnych, które mają znajdować się w tym samym regionie.   
-**Szczegóły**: Utwórz i Użyj magazynu kluczy, który znajduje się w tym samym regionie co maszyna wirtualna do zaszyfrowania.
+**Najlepsze rozwiązanie**: aby upewnić się, że wpisy tajne szyfrowania nie przekraczają granic regionalnych, Azure Disk Encryption potrzebuje magazynu kluczy i maszyn wirtualnych znajdujących się w tym samym regionie.   
+**Szczegóły**: Utwórz i Użyj magazynu kluczy znajdującego się w tym samym regionie co maszyna wirtualna, która ma być szyfrowana.
 
 Po zastosowaniu Azure Disk Encryption można spełnić następujące wymagania biznesowe:
 
@@ -178,18 +171,18 @@ Po zastosowaniu Azure Disk Encryption można spełnić następujące wymagania b
 ## <a name="restrict-direct-internet-connectivity"></a>Ograniczanie bezpośredniej łączności z Internetem
 Monitorowanie i ograniczanie łączności z Internetem bezpośrednio z maszyn wirtualnych. Osoby atakujące stale skanują zakresy adresów IP w chmurze publicznej dla otwartych portów zarządzania i podejmują próby ataków typu "łatwe", takie jak typowe hasła i znane luki w zabezpieczeniach. W poniższej tabeli przedstawiono najlepsze rozwiązania ułatwiające ochronę przed atakami:
 
-**Najlepsze rozwiązanie**: Zapobiegaj nieumyślnemu narażeniu na Routing i zabezpieczenia sieci.   
+**Najlepsze rozwiązanie**: zapobiegaj nieumyślnemu narażeniu na Routing i zabezpieczenia sieci.   
 **Szczegóły**: Użyj RBAC, aby upewnić się, że tylko Centralna Grupa sieciowa ma uprawnienia do zasobów sieciowych.
 
-**Najlepsze rozwiązanie**: Zidentyfikuj i skoryguj uwidocznione maszyny wirtualne, które zezwalają na dostęp z "dowolnego" źródłowego adresu IP.   
+**Najlepsze rozwiązanie**: Identyfikowanie i korygowanie narażonych maszyn wirtualnych, które zezwalają na dostęp z "dowolnego" źródłowego adresu IP.   
 **Szczegóły**: Użyj Azure Security Center. Security Center zaleca się ograniczyć dostęp za pośrednictwem punktów końcowych dostępnych z Internetu, jeśli dowolna z grup zabezpieczeń sieci ma co najmniej jedną regułę ruchu przychodzącego, która zezwala na dostęp z "dowolnego" źródłowego adresu IP. Security Center będzie zalecać edytowanie tych reguł ruchu przychodzącego w celu [ograniczenia dostępu](../../security-center/security-center-network-recommendations.md) do źródłowych adresów IP, które w rzeczywistości potrzebują dostępu.
 
-**Najlepsze rozwiązanie**: Ogranicz porty zarządzania (RDP, SSH).   
-**Szczegóły**: [Dostęp z maszyn wirtualnych just-in-Time (JIT)](../../security-center/security-center-just-in-time.md) może służyć do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure, co zmniejsza narażenie na ataki, zapewniając łatwy dostęp do łączenia się z maszynami wirtualnymi w razie potrzeby. Po włączeniu JIT Security Center blokuje ruch przychodzący do maszyn wirtualnych platformy Azure przez utworzenie reguły sieciowej grupy zabezpieczeń. Wybierasz porty na maszynie wirtualnej, do której zostanie zablokowany ruch przychodzący. Te porty są kontrolowane przez rozwiązanie JIT.
+**Najlepsze rozwiązanie**: ograniczanie portów zarządzania (RDP, SSH).   
+**Szczegóły**: [dostęp do maszyny wirtualnej just-in-Time (JIT)](../../security-center/security-center-just-in-time.md) może służyć do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure, co pozwala ograniczyć narażenie na ataki, zapewniając łatwy dostęp do łączenia się z maszynami wirtualnymi w razie potrzeby. Po włączeniu JIT Security Center blokuje ruch przychodzący do maszyn wirtualnych platformy Azure przez utworzenie reguły sieciowej grupy zabezpieczeń. Wybierasz porty na maszynie wirtualnej, do której zostanie zablokowany ruch przychodzący. Te porty są kontrolowane przez rozwiązanie JIT.
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz [najlepsze rozwiązania i wzorce dotyczące zabezpieczeń platformy Azure](best-practices-and-patterns.md) , aby uzyskać więcej najlepszych rozwiązań w zakresie zabezpieczeń, które są używane podczas projektowania i wdrażania rozwiązań w chmurze oraz zarządzania nimi przy użyciu platformy Azure.
 
 Dostępne są następujące zasoby umożliwiające dostarczenie bardziej ogólnych informacji na temat zabezpieczeń platformy Azure i powiązanych usług firmy Microsoft:
 * [Blog zespołu ds. zabezpieczeń platformy Azure](https://blogs.msdn.microsoft.com/azuresecurity/) — na bieżąco z najnowszymi informacjami na temat zabezpieczeń platformy Azure
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) — w przypadku których luki w zabezpieczeniach firmy Microsoft, w tym problemy z platformą Azure, mogą być zgłaszane lub wysyłane pocztą e-mailsecure@microsoft.com
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) — w przypadku których luki w zabezpieczeniach firmy Microsoft, w tym problemy z platformą Azure, mogą być zgłaszane lub wysyłane pocztą e-mail do secure@microsoft.com

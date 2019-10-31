@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: a8b250c45716146c505a803046b18bf5d05cf116
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9657414c56296ee710f17663bf0bbdd3a4d67ac8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073775"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176816"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Jak dostosować Portal deweloperów API Management platformy Azure przy użyciu szablonów
 
@@ -26,15 +26,17 @@ Istnieją trzy podstawowe sposoby dostosowywania portalu deweloperów w usłudze
 
 * [Edycja zawartości stron statycznych i elementów układu strony][modify-content-layout]
 * [Aktualizowanie stylów używanych dla elementów strony w portalu dla deweloperów][customize-styles]
-* [Modyfikowanie szablonów używanych dla stron wygenerowanych przez portal][portal-templates] (wyjaśniono w tym przewodniku)
+* [Modyfikowanie szablonów używanych dla stron wygenerowanych przez portal][portal-templates] (wyjaśnione w tym przewodniku)
 
 Szablony służą do dostosowywania zawartości stron portalu deweloperów generowanych przez system (na przykład dokumentacji interfejsu API, produktów, uwierzytelniania użytkowników itp.). Za pomocą składni [DotLiquid](http://dotliquidmarkup.org/) i dostępnego zestawu zlokalizowanych zasobów ciągów, ikon i kontrolek stron, masz doskonałą elastyczność konfigurowania zawartości stron zgodnie z oczekiwaniami.
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="developer-portal-templates-overview"></a>Omówienie szablonów portalu dla deweloperów
 
-Edytowanie szablonów odbywa się z poziomu **portalu dla deweloperów** , podczas gdy użytkownik jest zalogowany jako administrator. Aby najpierw uzyskać dostęp do witryny Azure Portal, kliknij pozycję **Portal dla deweloperów** na pasku narzędzi wystąpienia usługi API Management.
+Edytowanie szablonów odbywa się z poziomu **portalu dla deweloperów** , podczas gdy użytkownik jest zalogowany jako administrator. Aby najpierw otworzyć Azure Portal i kliknij przycisk Portal dla **deweloperów** na pasku narzędzi wystąpienia API Management.
 
 Aby uzyskać dostęp do szablonów portalu dla deweloperów, kliknij ikonę Dostosuj po lewej stronie, aby wyświetlić menu Dostosowywanie, a następnie kliknij pozycję **Szablony**.
 
@@ -54,7 +56,7 @@ Niektóre szablony, takie jak szablony **profilów użytkowników** , dostosowuj
 
 Edytor dla każdego szablonu portalu dla deweloperów ma dwie sekcje wyświetlane w dolnej części strony. Po lewej stronie zostanie wyświetlone okienko edycji szablonu, a po prawej stronie zostanie wyświetlony model danych dla szablonu.
 
-Okienko edycji szablonu zawiera znacznik, który kontroluje wygląd i zachowanie odpowiedniej strony w portalu dla deweloperów. Znaczniki w szablonie używają składni [DotLiquid](http://dotliquidmarkup.org/) . Jeden z popularnych edytorów dla DotLiquid jest [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Wszystkie zmiany wprowadzone w szablonie podczas edytowania są wyświetlane w czasie rzeczywistym w przeglądarce, ale nie są widoczne dla klientów do momentu [zapisania](#to-save-a-template) i opublikowanie szablonu [](#to-publish-a-template) .
+Okienko edycji szablonu zawiera znacznik, który kontroluje wygląd i zachowanie odpowiedniej strony w portalu dla deweloperów. Znaczniki w szablonie używają składni [DotLiquid](http://dotliquidmarkup.org/) . Jeden z popularnych edytorów dla DotLiquid jest [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Wszystkie zmiany wprowadzone w szablonie podczas edytowania są wyświetlane w czasie rzeczywistym w przeglądarce, ale nie są widoczne dla klientów do momentu [zapisania](#to-save-a-template) i [opublikowanie](#to-publish-a-template) szablonu.
 
 ![Znaczniki szablonu][api-management-template]
 
@@ -100,7 +102,7 @@ W poprzednim przykładzie w portalu deweloperów są wyświetlane dwa produkty, 
 }
 ```
 
-Znaczniki w szablonie **listy produktów** przetwarzają dane w celu zapewnienia żądanych danych wyjściowych przez iterację kolekcji produktów do wyświetlania informacji oraz łącza do poszczególnych produktów. Zanotuj elementy `<page-control>`iw znaczniku. `<search-control>` Kontrolują one wyświetlanie kontrolek wyszukiwania i stronicowania na stronie. `ProductsStrings|PageTitleProducts`to zlokalizowane odwołanie do ciągu, które zawiera `h2` tekst nagłówka strony. Listę zasobów ciągów, kontrolek stron i ikon dostępnych do użycia w szablonach portalu deweloperów można znaleźć w temacie [API Management dokumentacja szablonów portalu dla deweloperów](api-management-developer-portal-templates-reference.md).
+Znaczniki w szablonie **listy produktów** przetwarzają dane w celu zapewnienia żądanych danych wyjściowych przez iterację kolekcji produktów do wyświetlania informacji oraz łącza do poszczególnych produktów. Zanotuj `<search-control>` i `<page-control>` elementy znacznika. Kontrolują one wyświetlanie kontrolek wyszukiwania i stronicowania na stronie. `ProductsStrings|PageTitleProducts` jest zlokalizowanym odwołaniem do ciągu, który zawiera `h2` tekst nagłówka strony. Listę zasobów ciągów, kontrolek stron i ikon dostępnych do użycia w szablonach portalu deweloperów można znaleźć w temacie [API Management dokumentacja szablonów portalu dla deweloperów](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>

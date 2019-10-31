@@ -1,6 +1,6 @@
 ---
-title: Ukrywanie lub usuwanie pakietu dostępu w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza) — Azure Active Directory
-description: Dowiedz się, jak ukryć lub usunąć pakiet dostępu w Azure Active Directory Zarządzanie prawami (wersja zapoznawcza).
+title: Ukrywanie lub usuwanie pakietu dostępu w usłudze Azure AD uprawnień zarządzanie — Azure Active Directory
+description: Dowiedz się, jak ukryć lub usunąć pakiet dostępu w Azure Active Directory Zarządzanie uprawnieniami.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab6f3a86d8e88ee2d7465fd32bde7b7555f1f326
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 4391cd20f3919e8def28fa3c1d5007f91b2d9f0b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389170"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174751"
 ---
-# <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management-preview"></a>Ukrywanie lub usuwanie pakietu dostępu w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
-
-> [!IMPORTANT]
-> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>Ukrywanie lub usuwanie pakietu dostępu w usłudze Azure AD uprawnienia do zarządzania
 
 Pakiety dostępu są domyślnie odnajdywane. Oznacza to, że jeśli zasady zezwalają użytkownikowi na żądanie pakietu dostępu, automatycznie zobaczą pakiet dostępu wymieniony w portalu mojego dostępu. Ustawienie **ukrywane** można jednak zmienić tak, aby pakiet dostępu nie był wyświetlany na liście Portal użytkownika mojego dostępu.
 

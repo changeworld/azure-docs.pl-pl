@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4bd1386c68f3173c19b282c1e01ecff545c4bcd7
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 39746032fd012de8e0868c3bc7f810cd8e780b68
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972061"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176363"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Źródła danych dla QnA Maker zawartości
 
@@ -29,8 +29,8 @@ Poniższa tabela zawiera podsumowanie typów zawartości i formatów plików, kt
 
 |Typ źródła|Typ zawartości| Przykłady|
 |--|--|--|
-|Adres URL|Często zadawane pytania<br> (Płaski, z sekcjami lub z stroną główną tematów)<br>Strony pomocy technicznej <br> (Artykuły z artykułami z artykułu z jedną stroną, rozwiązywanie problemów itp.)|[Zwykłe często zadawane pytania](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Często zadawane pytania dotyczące linków](https://www.microsoft.com/software-download/faq),<br> [Często zadawane pytania dotyczące strony głównej tematów](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Artykuł pomocy technicznej](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
-|PLIK PDF/DOC|Najczęściej<br> Podręcznik produktu,<br> Broszury,<br> Drukowane<br> Zasady ulotek,<br> Przewodnik pomocy technicznej,<br> QnA strukturalne,<br> itd.|[Strukturalny QNA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy produkt. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Przykład semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy oficjalny dokument. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf),<br>[Przykład Multi-turn. docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
+|Adres URL|Często zadawane pytania<br> (Płaski, z sekcjami lub z stroną główną tematów)<br>Strony pomocy technicznej <br> (Artykuły z artykułami z artykułu z jedną stroną, rozwiązywanie problemów itp.)|[Zwykłe często zadawane pytania](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Często zadawane pytania dotyczące linków](https://www.microsoft.com/en-us/software-download/faq),<br> [Często zadawane pytania dotyczące strony głównej tematów](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Artykuł pomocy technicznej](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|PLIK PDF/DOC|Najczęściej<br> Podręcznik produktu,<br> broszury,<br> Drukowane<br> Zasady ulotek,<br> Przewodnik pomocy technicznej,<br> QnA strukturalne,<br> itd.|[Strukturalny QNA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy produkt. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Przykład semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Przykładowy oficjalny dokument. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf),<br>[Przykład Multi-turn. docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
 |\* Excel|Strukturalny plik QnA<br> (w tym RTF, obsługa HTML)|[Przykładowy QnA często zadawane pytania. xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |\* TXT/TSV|Strukturalny plik QnA|[Przykład Chit-Chat. tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
@@ -193,7 +193,7 @@ Poniżej znajduje się lista formatów promocji, których można użyć w QnA Ma
 |Przeznaczenie|Format|Przykład promocji|Renderowanie<br>jak w programie Chat bot|
 |--|--|--|--|
 Nowy wiersz między 2 zdaniami.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![Formatuj nowy wiersz między dwoma zdaniami](../media/qnamaker-concepts-datasources/format-newline.png)|
-|Nagłówki od h1 do H6 —, liczba `#` oznacza, który nagłówek. 1 `#` to H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![Formatuj z nagłówkami promocji](../media/qnamaker-concepts-datasources/format-headers.png)<br>![format z nagłówkami promocji od h1 do h](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
+|Nagłówki od h1 do H6 —, liczba `#` wskazuje, który nagłówek. 1 `#` to H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![Formatuj z nagłówkami promocji](../media/qnamaker-concepts-datasources/format-headers.png)<br>![format z nagłówkami promocji od h1 do h](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
 |Kursywa |`*text*`|`How do I create a bot with *QnA Maker*?`|![Formatuj z kursywą](../media/qnamaker-concepts-datasources/format-italics.png)|
 |Ciąg (pogrubiony)|`**text**`|`How do I create a bot with **QnA Maker**?`|![Formatuj z silnym oznaczeniem dla pogrubienia](../media/qnamaker-concepts-datasources/format-strong.png)|
 |Adres URL linku|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![Format adresu URL (hiperłącze)](../media/qnamaker-concepts-datasources/format-url.png)|
@@ -205,7 +205,7 @@ Nowy wiersz między 2 zdaniami.|`\n\n`|`How can I create a bot with \n\n QnA Mak
 |Symbole promocji z przeznaczeniem|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Format adresu URL kursywy](../media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Lista uporządkowana|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>W poprzednim przykładzie funkcja automatycznego numerowania została wbudowana w funkcję promocji.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>W poprzednim przykładzie jest stosowane jawne numerowanie.|![Format listy uporządkowanej](../media/qnamaker-concepts-datasources/format-ordered-list.png)|
 |Lista nieuporządkowana|`\n * item1 \n * item2`<br>lub<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![Format listy nieuporządkowanej](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
-|Listy zagnieżdżone|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Uporządkowane i nieuporządkowane listy można zagnieżdżać razem. Karta `\t` wskazuje poziom wcięcia elementu podrzędnego.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![Format zagnieżdżonej listy nieuporządkowanej](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![Format zagnieżdżonej listy uporządkowanej](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
+|Listy zagnieżdżone|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Uporządkowane i nieuporządkowane listy można zagnieżdżać razem. Karta `\t`, wskazuje poziom wcięcia elementu podrzędnego.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![Format zagnieżdżonej listy nieuporządkowanej](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![Format zagnieżdżonej listy uporządkowanej](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
 \* QnA Maker nie przetwarza obrazu w jakikolwiek sposób. Jest to rola aplikacji klienckiej do renderowania obrazu. 
 
@@ -213,10 +213,10 @@ Jeśli chcesz dodać zawartość przy użyciu funkcji aktualizacji/zastępowania
 
 | Zachowaj kod HTML  | Reprezentacja w żądaniu interfejsu API  | Reprezentacja w KB |
 |-----------|---------|-------------------------|
-| Tak | \&lt; br @ no__t-1gt; | &lt;br @ no__t-1 |
-| Tak | \&lt; H3 @ no__t-1gt; nagłówek @ no__t-2LT;/H3 @ no__t-3gt; | &lt;h3 @ no__t-1header @ no__t-2/H3 @ no__t-3 |
+| Tak | \&lt; br\&gt; | &lt;br&gt; |
+| Tak | \&lt; H3\&gt; nagłówek\&lt;/H3\&gt; | &lt;H3&gt;nagłówka&lt;/H3&gt; |
 
-Ponadto znak CR LF (\r\n) jest konwertowany na \n w KB. Znaki LF (\n) są utrzymywane w postaci, w jakiej jest. Jeśli chcesz wypróbować jakąkolwiek sekwencję ucieczki, taką jak \t lub \n, możesz użyć ukośnika odwrotnego, na przykład: "\\ @ no__t-1R @ no__t-2 @ no__t-3N" i "\\ @ no__t-5t"
+Ponadto znak CR LF (\r\n) jest konwertowany na \n w KB. Znaki LF (\n) są utrzymywane w postaci, w jakiej jest. Jeśli chcesz wypróbować dowolną sekwencję ucieczki, taką jak \t lub \n, możesz użyć ukośnika odwrotnego, na przykład: "\\\\r\\\\n" i "\\\\t"
 
 ## <a name="editing-your-knowledge-base-locally"></a>Lokalne edytowanie bazy wiedzy
 

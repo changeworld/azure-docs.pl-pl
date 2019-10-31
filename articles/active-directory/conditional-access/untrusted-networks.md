@@ -1,6 +1,6 @@
 ---
-title: Instrukcje ustawiania wymogu uwierzytelniania wieloskładnikowego (MFA) dla dostępu z niezaufanymi sieciami przy użyciu dostępu warunkowego usługi Azure Active Directory (Azure AD) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować zasady dostępu warunkowego w usłudze Azure Active Directory (Azure AD) do podejmowania prób dostępu z niezaufanymi sieciami.
+title: Jak wymagać uwierzytelniania wieloskładnikowego (MFA) na potrzeby dostępu z niezaufanych sieci przy użyciu dostępu warunkowego Azure Active Directory (Azure AD) | Microsoft Docs
+description: Dowiedz się, jak skonfigurować zasady dostępu warunkowego w usłudze Azure Active Directory (Azure AD) na potrzeby prób dostępu z niezaufanych sieci.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,62 +11,62 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b75e9aa3c588f5046ec55c0d809ca74060ad9c2
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 39ec09c1ecb94a5ae189317d89cce4bc8f279b48
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509341"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175686"
 ---
-# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Instrukcje: Wymagać uwierzytelniania Wieloskładnikowego, aby uzyskać dostęp z niezaufanymi sieciami przy użyciu dostępu warunkowego   
+# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Instrukcje: wymaganie uwierzytelniania MFA w celu uzyskania dostępu z niezaufanych sieci z dostępem warunkowym   
 
-Usługa Azure Active Directory (Azure AD) umożliwia logowanie jednokrotne do urządzeń, aplikacji i usług z dowolnego miejsca. Użytkownicy uzyskają dostęp swoje aplikacje w chmurze, nie tylko z siecią organizacji, ale z dowolnej niezaufanej lokalizacji internetowej. Typowe, najlepszym rozwiązaniem dla dostępu z niezaufanymi sieciami jest wymaganie uwierzytelniania wieloskładnikowego (MFA).
+Usługa Azure Active Directory (Azure AD) umożliwia logowanie jednokrotne do urządzeń, aplikacji i usług z dowolnego miejsca. Użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze, nie tylko z sieci organizacji, ale również z niezaufanej lokalizacji w Internecie. Typowym najlepszym rozwiązaniem w przypadku dostępu z niezaufanych sieci jest wymaganie uwierzytelniania wieloskładnikowego (MFA).
 
-Ten artykuł zawiera informacje potrzebne do konfigurowania zasad dostępu warunkowego, która wymaga uwierzytelniania Wieloskładnikowego dla dostępu z niezaufanymi sieciami. 
+Ten artykuł zawiera informacje potrzebne do skonfigurowania zasad dostępu warunkowego, które wymagają uwierzytelniania wieloskładnikowego na potrzeby dostępu z niezaufanych sieci. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W tym artykule założono, że znasz: 
 
-- [Podstawowe pojęcia](overview.md) dostępu warunkowego usługi Azure AD 
-- [Najlepsze praktyki](best-practices.md) na temat konfigurowania zasad dostępu warunkowego w witrynie Azure portal
+- [Podstawowe koncepcje](overview.md) dostępu warunkowego usługi Azure AD 
+- [Najlepsze rozwiązania](best-practices.md) dotyczące konfigurowania zasad dostępu warunkowego w Azure Portal
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-Do głównej równowagę między zabezpieczeń i wydajności, może być wystarczające tylko Wymagaj hasła do logowania z siecią organizacji. Aby uzyskać dostęp z lokalizacji niezaufanych sieci, ma jednak zwiększoną ryzyko logowania nie są wykonywane przez autoryzowanych użytkowników. Aby rozwiązać ten problem, możesz zablokować dostęp z niezaufanymi sieciami. Alternatywnie możesz również wymagać uwierzytelniania wieloskładnikowego (MFA) do uzyskania ponownie dodatkową pewność, że nastąpiła próba przez prawowitym właścicielem konta. 
+Aby określić równowagę między zabezpieczeniami i produktywnością, może być wystarczające, aby tylko hasło logowania z sieci organizacji było wymagane. Jednak w przypadku dostępu z niezaufanej lokalizacji sieciowej istnieje większe ryzyko, że logowania nie są wykonywane przez uprawnionych użytkowników. Aby rozwiązać ten problem, można zablokować dostęp z niezaufanych sieci. Alternatywnie można również wymagać uwierzytelniania wieloskładnikowego (MFA), aby uzyskać dodatkową gwarancję, że próba została podjęta przez uprawniony właściciel konta. 
 
-Przy użyciu dostępu warunkowego usługi Azure AD można rozwiązać tego wymagania, z jedną zasadę, która udziela dostępu: 
+Za pomocą dostępu warunkowego usługi Azure AD można rozwiązać ten wymóg przy użyciu jednej zasady, która udziela dostępu: 
 
-- Wybrana chmura usługi aplikacji
+- Do wybranych aplikacji w chmurze
 - Dla wybranych użytkowników i grup  
 - Wymaganie uwierzytelniania wieloskładnikowego 
-- Gdy dostęp jest pochodzi od: 
+- Gdy dostęp pochodzi z: 
    - Lokalizacja, która nie jest zaufana
 
 ## <a name="implementation"></a>Wdrażanie
 
-Żądanie tego scenariusza jest sformułowanie *dostępu z sieci niezaufanej lokalizacji* do warunki dostępu warunkowego. W zasadach dostępu warunkowego można skonfigurować [warunek lokalizacji](location-condition.md) dla scenariuszy, które są powiązane z lokalizacji sieciowych. Warunek lokalizacji umożliwia wybranie nazwane lokalizacje, będące logicznie zgrupowanymi zakresów adresów IP, krajów i regionów.  
+Wyzwaniem tego scenariusza jest przetłumaczenie *dostępu z niezaufanej lokalizacji sieciowej* na warunek dostępu warunkowego. W zasadach dostępu warunkowego można skonfigurować [warunek lokalizacji](location-condition.md) , aby zająć się scenariuszami związanymi z lokalizacjami sieciowymi. Warunek lokalizacji umożliwia wybranie nazwanych lokalizacji, które są logicznymi grupami zakresów adresów IP, krajów i regionów.  
 
-Zazwyczaj organizacja ma jeden lub więcej zakresów adresów, na przykład 199.30.16.0 - 199.30.16.24.
-Można skonfigurować nazwanych lokalizacji przez:
+Zazwyczaj organizacja jest właścicielem co najmniej jednego zakresu adresów, na przykład 199.30.16.0-199.30.16.15.
+Nazwaną lokalizację można skonfigurować przez:
 
-- Określenie tego zakresu (199.30.16.0/24) 
-- Przypisywanie opisową nazwę, takich jak **sieci firmowej** 
+- Określanie tego zakresu (199.30.16.0/28) 
+- Przypisywanie nazwy opisowej, takiej jak **Sieć firmowa** 
 
-Zamiast próbować definiowaniu wszystkie lokalizacje, które nie są zaufane, można wykonywać następujące czynności:
+Zamiast próbować definiować, które lokalizacje nie są zaufane, możesz:
 
-- Obejmują z dowolnego miejsca 
+- Uwzględnij dowolną lokalizację 
 
    ![Dostęp warunkowy](./media/untrusted-networks/02.png)
 
-- Wyklucz wszystkie zaufane lokalizacje 
+- Wyklucz wszystkie Zaufane lokalizacje 
 
    ![Dostęp warunkowy](./media/untrusted-networks/01.png)
 
 ## <a name="policy-deployment"></a>Wdrażanie zasad
 
-W przypadku metody opisane w tym artykule można teraz skonfigurować zasady dostępu warunkowego dla niezaufanych lokalizacji. Aby upewnić się, że zasad usługi działa zgodnie z oczekiwaniami, zalecanym najlepszym rozwiązaniem jest przetestowanie go przed udostępnieniem jej w środowisku produkcyjnym. W idealnym przypadku umożliwia to dzierżawa testowa Sprawdź, czy nowe zasady działa zgodnie z oczekiwaniami. Aby uzyskać więcej informacji, zobacz [wdrażanie nowych zasad](best-practices.md#how-should-you-deploy-a-new-policy). 
+Z podejściem opisanym w tym artykule można teraz skonfigurować zasady dostępu warunkowego dla niezaufanych lokalizacji. Aby upewnić się, że zasady działają zgodnie z oczekiwaniami, zalecanym najlepszym rozwiązaniem jest przetestowanie go przed wycofaniem do produkcji. Najlepiej użyć dzierżawy testowej, aby sprawdzić, czy nowe zasady działają zgodnie z oczekiwaniami. Aby uzyskać więcej informacji, zobacz [jak wdrożyć nowe zasady](best-practices.md#how-should-you-deploy-a-new-policy). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli chcesz dowiedzieć się więcej na temat dostępu warunkowego, zobacz [co to jest dostęp warunkowy w usłudze Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)
+Jeśli chcesz dowiedzieć się więcej na temat dostępu warunkowego, zobacz [co to jest dostęp warunkowy w Azure Active Directory?](../active-directory-conditional-access-azure-portal.md)

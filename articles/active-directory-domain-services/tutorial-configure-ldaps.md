@@ -7,16 +7,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193333"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172801"
 ---
-# <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: Konfigurowanie bezpiecznego protokołu LDAP dla Azure Active Directory Domain Services domeny zarządzanej
+# <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: Konfigurowanie bezpiecznego protokołu LDAP dla domeny zarządzanej Azure Active Directory Domain Services
 
 Aby komunikować się z domeną zarządzaną Azure Active Directory Domain Services (Azure AD DS), używany jest protokół LDAP (Lightweight Directory Access Protocol). Domyślnie ruch związany z protokołem LDAP nie jest szyfrowany, co stanowi problem z zabezpieczeniami w wielu środowiskach. Za pomocą usługi Azure AD DS można skonfigurować domenę zarządzaną w taki sposób, aby korzystała z protokołu LDAPs (Secure Lightweight Directory Access Protocol). W przypadku korzystania z bezpiecznego protokołu LDAP ruch jest szyfrowany. Secure LDAP jest również znana jako LDAP over SSL (SSL) lub Transport Layer Security (TLS).
 
@@ -68,7 +68,7 @@ Certyfikat, którego żądanie lub utworzenie, musi spełniać poniższe wymagan
 * **Użycie klucza** — certyfikat musi być skonfigurowany pod kątem *podpisów cyfrowych* i *szyfrowania kluczy*.
 * **Cel certyfikatu** — certyfikat musi być prawidłowy na potrzeby uwierzytelniania serwera SSL.
 
-W tym samouczku utworzymy certyfikat z podpisem własnym dla bezpiecznego protokołu LDAP przy użyciu programu PowerShell. Otwórz okno programu PowerShell jako **administrator** i uruchom następujące polecenia. Zastąp zmienną *$dnsname* nazwą DNS używaną przez własną domenę zarządzaną, taką jak *contoso.com*:
+W tym samouczku utworzymy certyfikat z podpisem własnym dla bezpiecznego protokołu LDAP przy użyciu polecenia cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] . Otwórz okno programu PowerShell jako **administrator** i uruchom następujące polecenia. Zastąp zmienną *$dnsname* nazwą DNS używaną przez własną domenę zarządzaną, taką jak *contoso.com*:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -120,7 +120,7 @@ Aby można było używać certyfikatu cyfrowego utworzonego w poprzednim kroku z
 1. W menu **plik** kliknij polecenie **Dodaj/Usuń przystawkę...**
 1. W kreatorze **przystawek certyfikatów** wybierz pozycję **konto komputera**, a następnie wybierz przycisk **dalej**.
 1. Na stronie **Wybieranie komputera** wybierz pozycję **komputer lokalny: (komputer, na którym uruchomiona jest ta konsola)** , a następnie wybierz pozycję **Zakończ**.
-1. W oknie dialogowym **Dodawanie lub usuwanie** przystawek kliknij przycisk **OK** , aby dodać przystawkę Certyfikaty do programu MMC.
+1. W oknie dialogowym **Dodawanie lub usuwanie przystawek** kliknij przycisk **OK** , aby dodać przystawkę Certyfikaty do programu MMC.
 1. W oknie programu MMC rozwiń węzeł **katalog główny konsoli**. Wybierz pozycję **Certyfikaty (komputer lokalny)** , a następnie rozwiń węzeł **osobiste** , a następnie węzeł **Certyfikaty** .
 
     ![Otwórz magazyn certyfikatów osobistych w programie Microsoft Management Console.](./media/tutorial-configure-ldaps/open-personal-store.png)
@@ -176,7 +176,7 @@ Komputery klienckie muszą ufać wystawcy certyfikatu bezpiecznego protokołu LD
 
 Przy użyciu certyfikatu cyfrowego utworzonego i wyeksportowanego, który zawiera klucz prywatny, a komputer kliencki ustawił zaufanie połączenia, teraz Włącz bezpieczny protokół LDAP w domenie zarządzanej AD DS platformy Azure. Aby włączyć bezpieczny protokół LDAP w domenie zarządzanej AD DS platformy Azure, wykonaj następujące czynności konfiguracyjne:
 
-1. W [Azure Portal](https://portal.azure.com)Wyszukaj *usługi domenowe* w polu **Wyszukaj zasoby** . Wybierz **Azure AD Domain Services** z wyniku wyszukiwania.
+1. W [Azure Portal](https://portal.azure.com)wprowadź w polu **wyszukiwania zasobów** pozycję *usługi domenowe* . Wybierz **Azure AD Domain Services** z wyniku wyszukiwania.
 
     ![Wyszukaj i wybierz domenę zarządzaną platformy Azure AD DS w Azure Portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
@@ -207,21 +207,21 @@ Po włączeniu bezpiecznego dostępu do protokołu LDAP za pośrednictwem Intern
 Utwórz regułę zezwalającą na dostęp przychodzący do bezpiecznego protokołu LDAP za pośrednictwem portu TCP 636 z określonego zestawu adresów IP. Domyślna reguła *DenyAll* z niższym priorytetem ma zastosowanie do całego ruchu przychodzącego z Internetu, więc tylko podane adresy mogą dotrzeć do domeny zarządzanej platformy Azure AD DS przy użyciu protokołu Secure LDAP.
 
 1. W Azure Portal wybierz pozycję *grupy zasobów* po lewej stronie nawigacyjnej.
-1. Wybierz grupę zasobów, na przykład grupazasobów, a następnie wybierz grupę zabezpieczeń sieci, na przykład *AADDS-contoso.com-sieciowej grupy zabezpieczeń*.
+1. Wybierz grupę zasobów, *na przykład grupa zasobów, a*następnie wybierz grupę zabezpieczeń sieci, na przykład *aaads-sieciowej grupy zabezpieczeń*.
 1. Zostanie wyświetlona lista istniejących reguł zabezpieczeń dla ruchu przychodzącego i wychodzącego. Po lewej stronie okna sieciowych grup zabezpieczeń wybierz pozycję **zabezpieczenia > reguły zabezpieczeń dla ruchu przychodzącego**.
 1. Wybierz pozycję **Dodaj**, a następnie utwórz regułę zezwalającą na port *TCP* *636*. Aby zwiększyć bezpieczeństwo, wybierz źródło jako *adresy IP* , a następnie określ własny prawidłowy adres IP lub zakres dla swojej organizacji.
 
-    | Ustawienie                           | Value        |
+    | Ustawienie                           | Wartość        |
     |-----------------------------------|--------------|
-    | Source                            | Adresy IP |
+    | Źródło                            | Adresy IP |
     | Źródłowe adresy IP/zakresy CIDR | Prawidłowy adres IP lub zakres dla Twojego środowiska |
-    | Source port ranges                | *            |
-    | Miejsce docelowe                       | Any          |
-    | Docelowe zakresy portów           | 636          |
-    | Protocol                          | TCP          |
-    | Action                            | Allow        |
-    | Priority                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | Zakresy portów źródłowych                | *            |
+    | Cel                       | Dowolne          |
+    | Zakresy portów docelowych           | 636          |
+    | Protocol (Protokół)                          | TCP          |
+    | Działanie                            | Zezwól        |
+    | Priorytet                          | 401          |
+    | Nazwa                              | AllowLDAPS   |
 
 1. Gdy wszystko będzie gotowe, wybierz pozycję **Dodaj** , aby zapisać i zastosować regułę.
 
@@ -273,7 +273,7 @@ Jeśli dodano wpis DNS do lokalnego pliku hosts komputera w celu przetestowania 
 
 1. Na komputerze lokalnym Otwórz *Notatnik* jako administrator
 1. Przeglądaj i Otwórz plik *C:\Windows\System32\drivers\etc*
-1. Usuń wiersz dla dodanego rekordu, taki jak`40.121.19.239    ldaps.contoso.com`
+1. Usuń wiersz dla dodanego rekordu, taki jak `40.121.19.239    ldaps.contoso.com`
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -297,3 +297,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 <!-- EXTERNAL LINKS -->
 [rsat]: /windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: /windows/desktop/ad/creating-a-query-filter
+[New-SelfSignedCertificate]: /powershell/module/pkiclient/new-selfsignedcertificate

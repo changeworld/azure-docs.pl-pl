@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.openlocfilehash: aa5329c6321866fd26e393b581702a392f510108
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936843"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177363"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optymalizowanie Apache Spark zadań w usłudze HDInsight
 
@@ -67,14 +67,14 @@ Podczas tworzenia nowego klastra Spark można wybrać platformę Azure Blob Stor
 
 ## <a name="use-the-cache"></a>Użyj pamięci podręcznej
 
-Platforma Spark zapewnia własne natywne mechanizmy buforowania, które mogą być używane przez różne metody, takie jak `.persist()`, `.cache()` i `CACHE TABLE`. Natywne buforowanie jest efektywne w przypadku małych zestawów danych oraz potoków ETL, w których należy buforować pośrednie wyniki. Jednak natywne buforowanie Spark nie działa prawidłowo z partycjonowaniem, ponieważ w pamięci podręcznej tabela nie zachowuje danych partycjonowania. Bardziej generyczną i niezawodną techniką buforowania jest *buforowanie warstwy magazynowania*.
+Platforma Spark zapewnia własne natywne mechanizmy buforowania, które mogą być używane przez różne metody, takie jak `.persist()`, `.cache()`i `CACHE TABLE`. Natywne buforowanie jest efektywne w przypadku małych zestawów danych oraz potoków ETL, w których należy buforować pośrednie wyniki. Jednak natywne buforowanie Spark nie działa prawidłowo z partycjonowaniem, ponieważ w pamięci podręcznej tabela nie zachowuje danych partycjonowania. Bardziej generyczną i niezawodną techniką buforowania jest *buforowanie warstwy magazynowania*.
 
 * Natywne buforowanie Spark (niezalecane)
     * Dobre dla małych zestawów danych.
     * Nie działa z partycjonowaniem, co może ulec zmianie w przyszłych wersjach platformy Spark.
 
 * Buforowanie na poziomie magazynu (zalecane)
-    * Można zaimplementować przy użyciu [Alluxio](https://www.alluxio.org/).
+    * Można zaimplementować przy użyciu [Alluxio](https://www.alluxio.io/).
     * Używa buforowania w pamięci i dysku SSD.
 
 * Lokalny system plików HDFS (zalecane)
@@ -88,7 +88,7 @@ Platforma Spark działa przez umieszczenie danych w pamięci, więc zarządzanie
 
 * Preferuj mniejsze partycje danych i konta na potrzeby rozmiaru danych, typów i dystrybucji w strategii partycjonowania.
 * Weź pod uwagę nowszą, wydajniejszą [serializację danych Kryo](https://github.com/EsotericSoftware/kryo)zamiast domyślnej serializacji języka Java.
-* Preferuj użycie PRZĘDZy, ponieważ oddziela `spark-submit` przez partię.
+* Preferuj użycie PRZĘDZy, ponieważ oddziela `spark-submit` według usługi Batch.
 * Monitorowanie i dostrajanie ustawień konfiguracji platformy Spark.
 
 Dla odwołania, struktura pamięci platformy Spark i niektóre parametry pamięci modułu wykonującego klucze są wyświetlane na następnym obrazie.
@@ -102,8 +102,8 @@ Jeśli używasz [przędzy Apache Hadoop](https://hadoop.apache.org/docs/current/
 Aby rozwiązać komunikaty o braku pamięci, spróbuj wykonać następujące działania:
 
 * Przejrzyj DAGe w celu zarządzania nimi. Zmniejszaj dane źródłowe, które znajdują się na dysku (lub dzielenia), Maksymalizuj, przełączając pojedyncze losowo i zmniejszając ilość wysyłanych danych.
-* Preferuj `ReduceByKey` ze stałym limitem pamięci na `GroupByKey`, który zapewnia agregacje, okna i inne funkcje, ale ma Ann limit pamięci.
-* Preferuj `TreeReduce`, która wykonuje więcej pracy na modułach wykonawców lub partycjach, do `Reduce`, które działają na sterowniku.
+* Preferuj `ReduceByKey` ze stałym limitem pamięci, aby `GroupByKey`, który zapewnia agregacje, okna i inne funkcje, ale Ann limit pamięci nieograniczonej.
+* Preferuj `TreeReduce`, która wykonuje więcej zadań na wykonawczych lub partycjach, do `Reduce`, które działają na sterowniku.
 * Wykorzystanie ramek danych zamiast obiektów RDD niskiego poziomu.
 * Utwórz ComplexType, które hermetyzują akcje, takie jak "pierwsze N", różne agregacje lub operacje okienkowe.
 
@@ -134,7 +134,7 @@ Innym czynnikiem powodującym powolne sprzężenie może być typ sprzężenia. 
 
 Sprzężenie `Broadcast` najlepiej nadaje się w przypadku mniejszych zestawów danych lub gdy jedna strona sprzężenia jest znacznie mniejsza od drugiej strony. Ten typ sprzężenia emituje jeden bok do wszystkich wykonawców, a więc wymaga więcej pamięci do emisji ogólnie.
 
-Można zmienić typ sprzężenia w konfiguracji przez ustawienie `spark.sql.autoBroadcastJoinThreshold` lub ustawić wskazówkę sprzężenia przy użyciu interfejsów API Dataframe (`dataframe.join(broadcast(df2))`).
+Możesz zmienić typ sprzężenia w konfiguracji, ustawiając `spark.sql.autoBroadcastJoinThreshold`, lub można ustawić wskazówkę sprzężenia przy użyciu interfejsów API Dataframe (`dataframe.join(broadcast(df2))`).
 
 ```scala
 // Option 1
@@ -149,7 +149,7 @@ df1.join(broadcast(df2), Seq("PK")).
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-Jeśli używasz tabel z przedziałem, masz trzeci typ sprzężenia, `Merge` sprzężenia. Prawidłowo wstępnie podzielony i wstępnie posortowany zestaw danych pominie kosztowną fazę sortowania z sprzężenia `SortMerge`.
+Jeśli używasz tabel z przedziałem, masz trzeci typ sprzężenia, `Merge` dołączyć. Prawidłowo wstępnie podzielony i wstępnie posortowany zestaw danych pominie kosztowną fazę sortowania z `SortMerge` Join.
 
 Kolejność sprzężeń, szczególnie w bardziej złożonych zapytaniach. Zacznij od najbardziej wybiórczych sprzężeń. Ponadto należy przenieść sprzężenia, które zwiększają liczbę wierszy po agregacji, jeśli jest to możliwe.
 
@@ -193,7 +193,7 @@ Podczas uruchamiania współbieżnych zapytań należy wziąć pod uwagę nastę
 3. Dystrybuuj zapytania w aplikacjach równoległych.
 4. Zmodyfikuj rozmiar na podstawie zarówno w przypadku wersji próbnej, jak i w powyższych czynnikach, takich jak obciążenie GC.
 
-Monitoruj wydajność zapytań pod kątem wartości odstających lub innych problemów z wydajnością, przeglądając widok oś czasu, program SQL Graph, statystyki zadań i tak dalej. Czasami jeden lub kilka z wykonawców jest wolniejsze niż inne, a wykonywanie zadań trwa znacznie dłużej. Często odbywa się to w większych klastrach (> 30 węzłach). W takim przypadku należy podzielić pracę na większą liczbę zadań, aby harmonogram mógł wyrównać powolne zadania. Na przykład należy mieć co najmniej dwa razy więcej zadań jako liczbę rdzeni wykonawców w aplikacji. Można również włączyć spekulacyjne wykonywanie zadań z `conf: spark.speculation = true`.
+Monitoruj wydajność zapytań pod kątem wartości odstających lub innych problemów z wydajnością, przeglądając widok oś czasu, program SQL Graph, statystyki zadań i tak dalej. Czasami jeden lub kilka z wykonawców jest wolniejsze niż inne, a wykonywanie zadań trwa znacznie dłużej. Często odbywa się to w większych klastrach (> 30 węzłach). W takim przypadku należy podzielić pracę na większą liczbę zadań, aby harmonogram mógł wyrównać powolne zadania. Na przykład należy mieć co najmniej dwa razy więcej zadań jako liczbę rdzeni wykonawców w aplikacji. Możesz również włączyć spekulacyjne wykonywanie zadań przy użyciu `conf: spark.speculation = true`.
 
 ## <a name="optimize-job-execution"></a>Optymalizuj wykonywanie zadania
 
@@ -206,7 +206,7 @@ Regularnie Monitoruj uruchomione zadania pod kątem problemów z wydajnością. 
 * [Narzędzie Intel PAL](https://github.com/intel-hadoop/PAT) monitoruje wykorzystanie procesora CPU, magazynu i przepustowości sieci.
 * Program [Oracle Java 8 profil kontroli misja](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) Spark i kod wykonawczy.
 
-Klucz do wydajności zapytań Spark 2. x jest aparatem, który zależy od generacji całego etapu. W niektórych przypadkach generowanie kodu w całym etapie może być wyłączone. Jeśli na przykład w wyrażeniu agregacji jest używany niemodyfikowalny typ (`string`), zamiast `HashAggregate` pojawia się `SortAggregate`. Na przykład w celu uzyskania lepszej wydajności spróbuj wykonać następujące czynności, a następnie ponownie włączyć generowanie kodu:
+Klucz do wydajności zapytań Spark 2. x jest aparatem, który zależy od generacji całego etapu. W niektórych przypadkach generowanie kodu w całym etapie może być wyłączone. Jeśli na przykład w wyrażeniu agregacji jest używany typ niemodyfikowalny (`string`), `SortAggregate` pojawia się zamiast `HashAggregate`. Na przykład w celu uzyskania lepszej wydajności spróbuj wykonać następujące czynności, a następnie ponownie włączyć generowanie kodu:
 
 ```sql
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))

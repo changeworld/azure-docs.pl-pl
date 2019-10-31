@@ -1,35 +1,28 @@
 ---
-title: Używanie grup umieszczania w sąsiedztwie dla maszyn wirtualnych z systemem Windows | Microsoft Docs
+title: Używanie grup umieszczania w sąsiedztwie dla maszyn wirtualnych z systemem Windows
 description: Dowiedz się więcej na temat tworzenia i używania grup umieszczania sąsiedztwa dla maszyn wirtualnych z systemem Windows na platformie Azure.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: af75b3f98232d6507fc8b0fda179bebc75828086
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6d0c35737151b060dcffba8944f4a1361d36dc14
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088839"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171206"
 ---
-# <a name="preview-deploy-vms-to-proximity-placement-groups-using-powershell"></a>Wersja zapoznawcza: Wdrażanie maszyn wirtualnych w grupach umieszczania sąsiedztwa przy użyciu programu PowerShell
+# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Wdrażanie maszyn wirtualnych w grupach umieszczania sąsiedztwa przy użyciu programu PowerShell
 
 
-Aby zapewnić, że maszyny wirtualne będą możliwie jak najbliżej, osiągając najniższe możliwe opóźnienie, należy wdrożyć je w obrębie [grupy umieszczania sąsiedztwa](co-location.md#preview-proximity-placement-groups).
+Aby zapewnić, że maszyny wirtualne będą możliwie jak najbliżej, osiągając najniższe możliwe opóźnienie, należy wdrożyć je w obrębie [grupy umieszczania sąsiedztwa](co-location.md#proximity-placement-groups).
 
 Grupa umieszczania bliskości jest grupą logiczną używaną w celu upewnienia się, że zasoby obliczeniowe platformy Azure znajdują się fizycznie blisko siebie. Grupy umieszczania zbliżeniowe są przydatne w przypadku obciążeń, w których jest wymagane małe opóźnienia.
-
-> [!IMPORTANT]
-> Grupy umieszczania w sąsiedztwie są obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> Grupy umieszczania w sąsiedztwie nie są dostępne w tych regionach w ramach wersji zapoznawczej: **Japonia Wschodnia**, **Australia Wschodnia** i **Indie Środkowe**.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Tworzenie grupy umieszczania w pobliżu
@@ -58,7 +51,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
-Utwórz maszynę wirtualną w grupie położenia sąsiedztwa `-ProximityPlacementGroup $ppg.Id` przy użyciu polecenia, aby odwołać się do identyfikatora grupy umieszczania bliskości podczas tworzenia maszyny wirtualnej przy użyciu polecenia [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) .
+Utwórz maszynę wirtualną w grupie położenia zbliżeniowe przy użyciu `-ProximityPlacementGroup $ppg.Id`, aby odwołać się do identyfikatora grupy umieszczania bliskości w przypadku tworzenia maszyny wirtualnej przy użyciu polecenia [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) .
 
 ```azurepowershell-interactive
 $vmName = "myVM"

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
-ms.author: twhitney
+ms.date: 10/29/2019
+ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a30f792a74ffc3aa983d84d902fa736a3f9b015
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 0996c5635223800a981497256654b7e418bf4163
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802955"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175602"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Korzystanie z MSAL.NET do logowania użytkowników przy użyciu tożsamości społecznościowych
 
@@ -36,12 +36,13 @@ Ta strona dotyczy MSAL 3. x. Jeśli interesuje Cię MSAL 2. x, zobacz [szczegó�
 
 ## <a name="authority-for-a-azure-ad-b2c-tenant-and-policy"></a>Urząd Azure AD B2C dzierżawy i zasady
 
-Urząd do użytku jest `https://login.microsoftonline.com/tfp/{tenant}/{policyName}` gdzie:
+Urząd do użytku jest `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}` gdzie:
 
-- `tenant` jest nazwą dzierżawy Azure AD B2C, 
-- `policyName` nazwę zasad do zastosowania (na przykład "b2c_1_susi" do logowania/rejestrowania).
+- `azureADB2CHostname` jest nazwą dzierżawy Azure AD B2C i hostem (na przykład `{your-tenant-name}.b2clogin.com`).
+- `tenant` to pełna nazwa dzierżawy Azure AD B2C (na przykład `{your-tenant-name}.onmicrosoft.com`) lub identyfikator GUID dzierżawy, 
+- `policyName` nazwę zasady lub przepływu użytkownika do zastosowania (na przykład "b2c_1_susi" do rejestracji/logowania).
 
-Bieżące wskazówki dotyczące Azure AD B2C to użycie `b2clogin.com` jako urzędu certyfikacji. Na przykład `$"https://{your-tenant-name}.b2clogin.com/tfp/{your-tenant-ID}/{policyname}"`. Aby uzyskać więcej informacji, zobacz tę [dokumentację](/azure/active-directory-b2c/b2clogin).
+Więcej informacji na temat Azure AD B2C urzędów można znaleźć w tej [dokumentacji](/azure/active-directory-b2c/b2clogin).
 
 ## <a name="instantiating-the-application"></a>Tworzenie wystąpienia aplikacji
 
@@ -50,12 +51,13 @@ Podczas kompilowania aplikacji należy zapewnić urząd.
 ```csharp
 // Azure AD B2C Coordinates
 public static string Tenant = "fabrikamb2c.onmicrosoft.com";
+public static string AzureADB2CHostname = "fabrikamb2c.b2clogin.com";
 public static string ClientID = "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6";
 public static string PolicySignUpSignIn = "b2c_1_susi";
 public static string PolicyEditProfile = "b2c_1_edit_profile";
 public static string PolicyResetPassword = "b2c_1_reset";
 
-public static string AuthorityBase = $"https://fabrikamb2c.b2clogin.com/tfp/{Tenant}/";
+public static string AuthorityBase = $"https://{AzureADB2CHostname}/tfp/{Tenant}/";
 public static string Authority = $"{AuthorityBase}{PolicySignUpSignIn}";
 public static string AuthorityEditProfile = $"{AuthorityBase}{PolicyEditProfile}";
 public static string AuthorityPasswordReset = $"{AuthorityBase}{PolicyResetPassword}";
@@ -71,14 +73,16 @@ Uzyskanie tokenu dla Azure AD B2C chronionego interfejsu API w publicznej aplika
 
 ```csharp
 IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application .AcquireToken(scopes, parentWindow)
+AuthenticationResult ar = await application .AcquireTokenInteractive(scopes)
                                             .WithAccount(GetAccountByPolicy(accounts, policy))
+                                            .WithParentActivityOrWindow(ParentActivityOrWindow)
                                             .ExecuteAsync();
 ```
 
 tym:
 
 - `policy` być jednym z poprzednich ciągów (na przykład `PolicySignUpSignIn`).
+- `ParentActivityOrWindow` jest wymagany dla systemu Android (działanie) i opcjonalnie dla innych platform, które obsługują nadrzędny interfejs użytkownika, na przykład Windows w systemie Windows i UIViewController na platformie iOS. Więcej informacji można znaleźć [w tym miejscu w oknie dialogowym interfejsu użytkownika](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow).
 - `GetAccountByPolicy(IEnumerable<IAccount>, string)` to metoda, która odnajduje konto dla określonych zasad. Na przykład:
 
   ```csharp
@@ -94,11 +98,11 @@ tym:
   }
   ```
 
-Zastosowanie zasad (na przykład umożliwienie użytkownikowi końcowemu edytowania profilu lub resetowania hasła) jest obecnie wykonywane przez wywołanie `AcquireTokenInteractive`. W przypadku tych dwóch zasad nie korzystasz z zwróconego wyniku tokenu/uwierzytelniania.
+Zastosowanie zasad lub przepływu użytkownika (na przykład umożliwienie użytkownikowi końcowemu edytowania profilu lub resetowania hasła) jest obecnie wykonywane przez wywołanie `AcquireTokenInteractive`. W przypadku tych dwóch zasad nie jest używany zwrócony wynik tokenu/uwierzytelniania.
 
 ## <a name="special-case-of-editprofile-and-resetpassword-policies"></a>Specjalny przypadek zasad EditProfile i ResetPassword
 
-Jeśli chcesz zapewnić użytkownikom końcowym logowanie się przy użyciu tożsamości społecznościowej, a następnie Edytuj swój profil, który chcesz zastosować zasady EditProfileymi Azure AD B2C. Aby to zrobić, należy wywołać `AcquireTokenInteractive` z określonym urzędem dla tych zasad i monitem ustawionym na `Prompt.NoPrompt`, aby uniknąć wyświetlania okna dialogowego wyboru konta (ponieważ użytkownik jest już zalogowany).
+Jeśli chcesz zapewnić użytkownikom końcowym logowanie się przy użyciu tożsamości społecznościowej, a następnie edytować swój profil, chcesz zastosować Azure AD B2C edytowanie zasad profilu. Aby to zrobić, należy wywołać `AcquireTokenInteractive` z określonym urzędem dla tych zasad, a następnie ustawić monit na `Prompt.NoPrompt`, aby zapobiec wyświetlaniu okna dialogowego wyboru konta (ponieważ użytkownik jest już zalogowany i ma aktywną sesję plików cookie).
 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
@@ -124,8 +128,8 @@ Więcej szczegółów dotyczących przepływu ROPC można znaleźć w tej [dokum
 
 Ten przepływ **nie jest zalecany** , ponieważ aplikacja, do której należy użytkownik, nie jest zabezpieczona. Aby uzyskać więcej informacji o tym problemie, zobacz [ten artykuł](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 
 
-Korzystając z nazwy użytkownika/hasła, można uzyskać wiele rzeczy:
-- Główne dzierżawy nowoczesnej tożsamości: hasło zostanie złowione, powtórzone. Ponieważ mamy koncepcji dotyczącej tajnego udziału, który można przechwycić. Jest to niezgodne z hasłem.
+Przy użyciu nazwy użytkownika i hasła podajesz wiele rzeczy:
+- Rdzeń założenia nowoczesnej tożsamości: hasło zostanie złowione, powtórzone. Ponieważ mamy koncepcji dotyczącej tajnego udziału, który można przechwycić. Jest to niezgodne z hasłem.
 - Użytkownicy, którzy muszą wykonywać uwierzytelnianie wieloskładnikowe, nie będą mogli się zalogować (w przypadku braku interakcji).
 - Użytkownicy nie będą mogli korzystać z logowania jednokrotnego.
 
@@ -149,13 +153,12 @@ Należy pamiętać, aby użyć urzędu, który zawiera zasady ROPC.
 
 ### <a name="limitations-of-the-ropc-flow"></a>Ograniczenia przepływu ROPC
  - Przepływ ROPC **działa tylko dla kont lokalnych** (gdzie rejestrujesz się w Azure AD B2C przy użyciu adresu e-mail lub nazwy użytkownika). Ten przepływ nie działa, jeśli federowanie do któregokolwiek z dostawców tożsamości obsługiwanych przez Azure AD B2C (Facebook, Google itp.).
- - Obecnie **nie ma żadnych id_token zwróconych z Azure AD B2C** podczas implementowania przepływu ROPC z MSAL. Oznacza to, że nie można utworzyć obiektu konta, więc w pamięci podręcznej nie będzie żadnego konta ani użytkownika. Przepływ AcquireTokenSilent nie będzie działał w tym scenariuszu. Jednak ROPC nie wyświetla interfejsu użytkownika, więc nie będzie to miało wpływu na środowisko użytkownika.
 
 ## <a name="google-auth-and-embedded-webview"></a>Uwierzytelnianie Google i osadzony widok WebView
 
 Jeśli jesteś deweloperem Azure AD B2C przy użyciu usługi Google jako dostawcy tożsamości, używamy przeglądarki systemu, ponieważ usługa Google nie zezwala na [uwierzytelnianie z osadzonych widoków WebView](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Obecnie `login.microsoftonline.com` jest zaufaną autoryzacją w usłudze Google. Użycie tego urzędu będzie działało z osadzonym widokiem WebView. Używanie `b2clogin.com` nie jest zaufanym urzędem w usłudze Google, dlatego użytkownicy nie będą mogli się uwierzytelniać.
 
-Udostępnimy aktualizację typu wiki i ten [problem](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) , jeśli zmienią się.
+Jeśli zmienią się zmiany, firma Microsoft udostępnia aktualizację tego [problemu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688) .
 
 ## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>Buforowanie przy użyciu Azure AD B2C w MSAL.Net 
 

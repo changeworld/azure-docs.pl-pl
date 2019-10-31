@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: efb668971bc4a8c5a0968836aab71107aa6b88d5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072656"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176914"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Szablony aplikacji na platformie Azure API Management
 Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu dla deweloperów przy użyciu zestawu szablonów, które konfigurują ich zawartość. Korzystając z składni [DotLiquid](http://dotliquidmarkup.org/) i wybranego edytora, takiego jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i dostępnego zestawu zlokalizowanych [zasobów ciągów](api-management-template-resources.md#strings), [zasobów symboli](api-management-template-resources.md#glyphs)i [kontrolek stron](api-management-page-controls.md), masz doskonałą elastyczność konfigurowania zawartość stron wyświetlanych w postaci dopasowania przy użyciu tych szablonów.  
@@ -31,6 +31,8 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
   
 > [!NOTE]
 >  Przykładowe szablony domyślne są zawarte w poniższej dokumentacji, ale mogą ulec zmianie ze względu na ciągłe ulepszenia. Możesz wyświetlić szablony domyślne na żywo w portalu dla deweloperów, przechodząc do żądanych poszczególnych szablonów. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dostosowywanie portalu deweloperów API Management przy użyciu szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
@@ -71,18 +73,18 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 </div>  
 ```  
   
-### <a name="controls"></a>Formanty  
- Szablon może korzystać z następujących [kontrolek strony.](api-management-page-controls.md) `Product list`  
+### <a name="controls"></a>Kontrolki  
+ Szablon `Product list` może korzystać z następujących [kontrolek strony](api-management-page-controls.md).  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [Kontrola stronicowania](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Model danych  
   
-|Właściwość|Type|Opis|  
+|Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|`Paging`|[](api-management-template-data-model-reference.md#Paging) Jednostka stronicowania.|Informacje o stronicowaniu dla kolekcji aplikacji.|  
+|`Paging`|Jednostka [stronicowania](api-management-template-data-model-reference.md#Paging) .|Informacje o stronicowaniu dla kolekcji aplikacji.|  
 |`Applications`|Kolekcja jednostek [aplikacji](api-management-template-data-model-reference.md#Application) .|Aplikacje widoczne dla bieżącego użytkownika.|  
-|`CategoryName`|ciąg|Kategoria aplikacji.|  
+|`CategoryName`|string|Kategoria aplikacji.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -178,8 +180,8 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
   
 ```  
   
-### <a name="controls"></a>Formanty  
- Szablon nie zezwala na używanie żadnych [kontrolek strony.](api-management-page-controls.md) `Application`  
+### <a name="controls"></a>Kontrolki  
+ Szablon `Application` nie zezwala na używanie dowolnych [kontrolek strony](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Model danych  
  Jednostka [aplikacji](api-management-template-data-model-reference.md#Application) .  

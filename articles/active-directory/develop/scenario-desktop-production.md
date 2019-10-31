@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a353b4577f8cfa9ba279ad2793e1a7ab8b27e55
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 5331f01c5dc6acf01f567dbe4c332853bf7aa47e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268336"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175555"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — Przenieś do środowiska produkcyjnego
 
@@ -37,14 +37,14 @@ W różnych przepływach wiesz, jak obsłużyć błędy dla przepływów dyskret
 > [!NOTE]
 > Uzyskanie zgody na kilka zasobów działa w przypadku platformy tożsamości firmy Microsoft, ale nie dla Azure Active Directory (Azure AD) B2C. Azure AD B2C obsługuje tylko zgodę z uprawnieniami administratora, a nie za zgodą użytkownika.
 
-Punkt końcowy Microsoft Identity platform (v 2.0) nie zezwala na uzyskanie tokenu dla kilku zasobów jednocześnie. W związku z tym parametrmożezawieraćtylkozakresydlapojedynczegozasobu.`scopes` Można upewnić się, że użytkownik wstępnie wysłał kilka zasobów przy użyciu `extraScopesToConsent` parametru.
+Punkt końcowy Microsoft Identity platform (v 2.0) nie zezwala na uzyskanie tokenu dla kilku zasobów jednocześnie. W związku z tym, parametr `scopes` może zawierać tylko zakresy dla pojedynczego zasobu. Można upewnić się, że użytkownik wstępnie wysłał do kilku zasobów przy użyciu `extraScopesToConsent` parametru.
 
 Na przykład jeśli masz dwa zasoby, które mają dwa zakresy:
 
-- `https://mytenant.onmicrosoft.com/customerapi`– z 2 zakresami `customer.read` i`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`– z 2 zakresami `vendor.read` i`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` — z 2 zakresami `customer.read` i `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` — z 2 zakresami `vendor.read` i `vendor.write`
 
-Należy używać `.WithAdditionalPromptToConsent` modyfikatora, który `extraScopesToConsent` ma parametr.
+Należy użyć modyfikatora `.WithAdditionalPromptToConsent`, który ma parametr `extraScopesToConsent`.
 
 Na wystąpienie:
 
@@ -76,10 +76,10 @@ Cel-C:
 ```objc
 NSArray *scopesForCustomerApi = @[@"https://mytenant.onmicrosoft.com/customerapi/customer.read",
                                 @"https://mytenant.onmicrosoft.com/customerapi/customer.write"];
-    
+
 NSArray *scopesForVendorApi = @[@"https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
                               @"https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
-    
+
 MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopesForCustomerApi webviewParameters:[MSALWebviewParameters new]];
 interactiveParams.extraScopesToConsent = scopesForVendorApi;
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
@@ -90,10 +90,10 @@ Adres
 ```swift
 let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
                             "https://mytenant.onmicrosoft.com/customerapi/customer.write"]
-        
+
 let scopesForVendorApi = ["https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
                           "https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
-        
+
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopesForCustomerApi, webviewParameters: MSALWebviewParameters())
 interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
@@ -101,7 +101,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 To wywołanie spowoduje uzyskanie tokenu dostępu dla pierwszego internetowego interfejsu API.
 
-Gdy musisz wywołać drugi internetowy interfejs API, możesz wywołać `AcquireTokenSilent` interfejs API:
+Gdy musisz wywołać drugi internetowy interfejs API, możesz wywołać `AcquireTokenSilent` API:
 
 ```CSharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

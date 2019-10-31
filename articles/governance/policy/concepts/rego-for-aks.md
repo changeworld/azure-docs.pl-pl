@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 56bc8934db86bb03446a6d2637bd54daaf2b5fb9
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6a3d1fb347819015887ffc4fd8089bbc1f3a70de
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254746"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176319"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Opis Azure Policy usługi Azure Kubernetes Service
 
@@ -164,7 +164,7 @@ Co 5 minut, dodatek wywołuje pełne skanowanie klastra. Po zebraniu szczegóło
 
 Azure Policy struktura języka dla zarządzania AKS jest zgodna z istniejącymi zasadami. Efekt _EnforceRegoPolicy_ służy do zarządzania klastrami AKS i ma _szczegółowe_ właściwości specyficzne dla pracy z nieprzez i strażnikiem. Aby uzyskać szczegółowe informacje i przykłady, zobacz efekt [EnforceRegoPolicy](effects.md#enforceregopolicy) .
 
-Jako część właściwości _szczegóły. Policy_ w definicji zasad, Azure Policy przekazuje identyfikator URI zasad rego do dodatku. Rego to język, w którym NIEPRZEZ i strażnik może zweryfikować lub zmodyfikować żądanie do klastra Kubernetes. Dzięki obsłudze istniejącej normy Kubernetes Management Azure Policy umożliwia ponowne użycie istniejących reguł i sparowanie ich z Azure Policy na potrzeby ujednoliconego środowiska raportowania zgodności z chmurą. Aby uzyskać więcej informacji, zobacz [co to jest rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego).
+Jako część właściwości _szczegóły. Policy_ w definicji zasad, Azure Policy przekazuje identyfikator URI zasad rego do dodatku. Rego to język, w którym NIEPRZEZ i strażnik może zweryfikować lub zmodyfikować żądanie do klastra Kubernetes. Dzięki obsłudze istniejącej normy Kubernetes Management Azure Policy umożliwia ponowne użycie istniejących reguł i sparowanie ich z Azure Policy na potrzeby ujednoliconego środowiska raportowania zgodności z chmurą. Aby uzyskać więcej informacji, zobacz [co to jest rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego).
 
 ## <a name="built-in-policies"></a>Wbudowane zasady
 

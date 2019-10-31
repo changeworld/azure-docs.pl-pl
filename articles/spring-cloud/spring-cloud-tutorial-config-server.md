@@ -7,13 +7,13 @@ ms.topic: tutorial
 ms.reviewer: jeconnoc
 ms.author: v-vasuke
 author: v-vasuke
-ms.date: 08/08/2019
-ms.openlocfilehash: 31ef82976a1c6938ae0bf591b2f8c8b1a0040466
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/18/2019
+ms.openlocfilehash: 3a091c22f49ec31029a1808c10e675a4d0960fb4
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928943"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177917"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>Samouczek: Konfigurowanie serwera sieci w chmurze wiosny dla usługi
 
@@ -52,7 +52,7 @@ W przypadku korzystania z repozytorium publicznego właściwości konfigurowalne
 Poniżej wymieniono wszystkie konfigurowalne właściwości używane do konfigurowania repozytorium publicznego `Git`.
 
 > [!NOTE]
-> Używanie łącznika ("-") do oddzielenia słów jest jedyną konwencją nazewnictwa, która jest obecnie obsługiwana. Na przykład użyj `default-label` nie `defaultLabel`.
+> Używanie łącznika ("-") do oddzielenia słów jest jedyną konwencją nazewnictwa, która jest obecnie obsługiwana. Na przykład można użyć `default-label`, ale nie `defaultLabel`.
 
 | Właściwość        | Wymagane | Funkcja                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
@@ -67,7 +67,7 @@ Poniżej wymieniono wszystkie konfigurowalne właściwości używane do konfigur
 Poniżej wymieniono wszystkie konfigurowalne właściwości używane do konfigurowania repozytorium prywatnego `Git` z `Ssh`.
 
 > [!NOTE]
-> Używanie łącznika ("-") do oddzielenia słów jest jedyną konwencją nazewnictwa, która jest obecnie obsługiwana. Na przykład użyj `default-label` nie `defaultLabel`.
+> Używanie łącznika ("-") do oddzielenia słów jest jedyną konwencją nazewnictwa, która jest obecnie obsługiwana. Na przykład można użyć `default-label`, ale nie `defaultLabel`.
 
 | Właściwość                   | Wymagane | Funkcja                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
@@ -121,10 +121,6 @@ Poniżej znajdują się wszystkie konfigurowalne właściwości używane do konf
 | `repos."host-key-algorithm"`       | `no`             | Algorytm klucza hosta powinien mieć wartość `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`lub `ecdsa-sha2-nistp521`. __Wymagane__ tylko wtedy, gdy istnieje `host-key`. |
 | `repos."strict-host-key-checking"` | `no`             | Wskazuje, czy serwer konfiguracji nie zostanie uruchomiony podczas korzystania z prywatnego `host-key`. Powinna być `true` (wartość domyślna) lub `false`. |
 
-### <a name="import-applicationyml-file-from-spring-cloud-config"></a>Importuj plik `application.yml` z konfiguracji chmury wiosennej
-
-Niektóre domyślne ustawienia serwera konfiguracji można zaimportować bezpośrednio z witryny sieci Web [konfiguracji chmury wiosnowej](https://spring.io/projects/spring-cloud-config) . Można to zrobić bezpośrednio z poziomu Azure Portal, więc nie trzeba wykonywać żadnych kroków teraz, aby przygotować pliki lub repozytorium konfiguracyjne.
-
 ## <a name="attaching-your-config-server-repository-to-azure-spring-cloud"></a>Dołączanie repozytorium serwera konfiguracji do chmury Azure wiosennej
 
 Teraz, gdy masz zapisane pliki konfiguracji w repozytorium, musisz połączyć z nim chmurę sieciową platformy Azure.
@@ -135,19 +131,60 @@ Teraz, gdy masz zapisane pliki konfiguracji w repozytorium, musisz połączyć z
 
 1. Przejdź do karty **serwer konfiguracji** w polu Nagłówek **ustawień** w menu po lewej stronie.
 
-### <a name="public-repository"></a>Repozytorium publiczne
+![zrzut ekranu okna](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
-Jeśli repozytorium jest publiczne, po prostu kliknij przycisk **publiczny** i wklej adres URL.
+### <a name="input-repository-information-directly-to-the-azure-portal"></a>Informacje o repozytorium wejściowym bezpośrednio do Azure Portal
 
-### <a name="private-repository"></a>Repozytorium prywatne
+#### <a name="default-repository"></a>Repozytorium domyślne
 
-Chmura sprężynowa platformy Azure obsługuje uwierzytelnianie SSH. Postępuj zgodnie z instrukcjami w Azure Portal, aby dodać klucz publiczny do repozytorium. Następnie upewnij się, że klucz prywatny został uwzględniony w pliku konfiguracji.
+* Repozytorium publiczne: w sekcji **repozytorium domyślne** wklej identyfikator URI repozytorium w sekcji **Identyfikator URI** i upewnij się, że ustawienie **uwierzytelniania** jest **publiczne**. Następnie kliknij przycisk **Zastosuj** , aby zakończyć. 
 
-Kliknij przycisk **Zastosuj** , aby zakończyć konfigurowanie serwera konfiguracji.
+* Repozytorium prywatne: chmura sprężynowa platformy Azure obsługuje podstawowe uwierzytelnianie oparte na hasłach i tokenach.
+
+    * Uwierzytelnianie podstawowe: w sekcji **repozytorium domyślne** wklej identyfikator URI repozytorium w sekcji **Identyfikator URI** , a następnie kliknij pozycję **uwierzytelnianie**. Wybierz pozycję **podstawowa** jako **Typ uwierzytelniania** , a następnie wprowadź nazwę użytkownika i hasło/token, aby udzielić dostępu do chmury Azure wiosennej. Kliknij przycisk **OK** i **Zastosuj** , aby zakończyć konfigurowanie serwera konfiguracji.
+
+    ![zrzut ekranu okna](media/spring-cloud-tutorial-config-server/basic-auth.png)
+    
+    > [!CAUTION]
+    > Niektóre serwery repozytorium git, takie jak GitHub, używają `personal-token` lub `access-token`, takich jak hasło **uwierzytelniania podstawowego**. Tego rodzaju tokenu można używać jako hasła w chmurze Azure wiosennej, ponieważ nigdy nie wygasa. Jednak w przypadku innych serwerów repozytorium git, takich jak BitBucket i Azure DevOps, `access-token` wygaśnie w ciągu jednej lub dwóch godzin. Oznacza to, że ta opcja nie jest przeznaczona do użycia w przypadku korzystania z tych serwerów repozytorium z chmurą usługi Azure wiosną.]
+
+    * SSH: w sekcji **repozytorium domyślne** wklej identyfikator URI repozytorium w sekcji **Identyfikator URI** , a następnie kliknij pozycję **uwierzytelnianie**. Wybierz pozycję **SSH** jako **Typ uwierzytelniania** , a następnie wprowadź swój **klucz prywatny**. Opcjonalnie możesz określić **klucz hosta** i **algorytm klucza hosta**. Upewnij się, że klucz publiczny został uwzględniony w repozytorium serwera konfiguracji. Kliknij przycisk **OK** i **Zastosuj** , aby zakończyć konfigurowanie serwera konfiguracji.
+
+    ![zrzut ekranu okna](media/spring-cloud-tutorial-config-server/ssh-auth.png)
+
+#### <a name="pattern-repository"></a>Repozytorium wzorców
+
+Jeśli chcesz użyć opcjonalnego **repozytorium wzorców** w celu skonfigurowania usługi, określ **Identyfikator URI** i **uwierzytelnianie** tak samo jak w przypadku **repozytorium domyślnego**. Upewnij się, że dołączono **nazwę** wzorca, a następnie kliknij przycisk **Zastosuj** , aby dołączyć go do wystąpienia. 
+
+### <a name="enter-repository-information-into-a-yaml-file"></a>Wprowadź informacje o repozytorium do pliku YAML
+
+Jeśli zapisano plik YAML z ustawieniami repozytorium, możesz zaimportować plik YAML bezpośrednio z komputera lokalnego do chmury z systemem Azure wiosną. Prosty plik YAML dla repozytorium prywatnego z uwierzytelnianiem podstawowym będzie wyglądać następująco:
+
+```yml
+spring:
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/azure-spring-cloud-samples/config-server-repository.git
+                    username: <username>
+                    password: <password/token>
+
+```
+
+Kliknij przycisk **ustawienia importowania** , a następnie wybierz plik `.yml` z katalogu projektu. Kliknij pozycję **Importuj**, a następnie w oknie **powiadomienia** zostanie wyświetlona operacja `async`. Po 1-2 minutach powinna być zgłaszana sukces.
+
+![zrzut ekranu okna](media/spring-cloud-tutorial-config-server/local-yml-success.png)
+
+
+Informacje zawarte w pliku YAML powinny być widoczne w Azure Portal. Kliknij przycisk **Zastosuj** , aby zakończyć. 
+
 
 ## <a name="delete-your-app-configuration"></a>Usuwanie konfiguracji aplikacji
 
 Po zapisaniu pliku konfiguracji przycisk **Usuń konfigurację aplikacji** zostanie wyświetlony na karcie **Konfiguracja** . Spowoduje to całkowite wymazanie istniejących ustawień. Należy to zrobić, jeśli chcesz połączyć serwer konfiguracji z innym źródłem, na przykład przechodząc z witryny GitHub do usługi Azure DevOps.
+
+
 
 ## <a name="next-steps"></a>Następne kroki
 

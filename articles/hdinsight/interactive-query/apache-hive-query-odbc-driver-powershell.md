@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.openlocfilehash: 04771ddc633c210ce8c7b3c42a9e46cb2f1ed349
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4ec580c3d4c30fa4d86c24defb7eaded464dea3b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122171"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177314"
 ---
-# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Samouczek: Apache Hive zapytań za pomocą ODBC i programu PowerShell
+# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Samouczek: zapytanie Apache Hive z ODBC i programu PowerShell
 
 Sterowniki ODBC firmy Microsoft zapewniają elastyczny sposób współpracy z różnymi rodzajami źródeł danych, w tym Apache Hive. Możesz napisać kod w językach skryptów, takich jak program PowerShell korzystający ze sterowników ODBC, aby otworzyć połączenie z klastrem Hive, przekazać wybrane zapytanie i wyświetlić wyniki.
 
@@ -36,13 +36,13 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mi
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Zainstaluj sterownik Microsoft Hive ODBC
 
-Pobierz i zainstaluj [Sterownik Microsoft Hive ODBC](https://go.microsoft.com/fwlink/?LinkID=286698).
+Pobierz i zainstaluj [Sterownik Microsoft Hive ODBC](https://www.microsoft.com/download/details.aspx?id=40886).
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Tworzenie źródła danych Apache Hive ODBC
 
 Poniższe kroki przedstawiają sposób tworzenia źródła danych Apache Hive ODBC.
 
-1. W systemie Windows przejdź do menu **Start** > **Narzędzia** > administracyjne systemu Windows**źródła danych ODBC (32-bitowe)/(64-bitowe)** .  Otworzy się okno **Administrator źródła danych ODBC** .
+1. W systemie Windows przejdź do menu **Start** , aby rozpocząć > **Narzędzia administracyjne systemu Windows** > **źródła danych ODBC (32-bitowe)/(64-bitowe)** .  Otworzy się okno **Administrator źródła danych ODBC** .
 
     ![Administrator źródła danych OBDC](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Konfigurowanie DSN przy użyciu administratora źródła danych ODBC")
 
@@ -58,11 +58,11 @@ Poniższe kroki przedstawiają sposób tworzenia źródła danych Apache Hive OD
    |  Hosty |Wprowadź polecenie `CLUSTERNAME.azurehdinsight.net`. Na przykład: `myHDICluster.azurehdinsight.net` |
    |  Port |Użyj portu **443**.|
    |  Database (Baza danych) |Użyj **domyślnego**. |
-   |  Mechanizm |Wybieranie **usługi HDInsight systemu Windows Azure** |
+   |  Mechanism (Mechanizm) |Wybieranie **usługi HDInsight systemu Windows Azure** |
    |  Nazwa użytkownika |Wprowadź nazwę użytkownika HTTP klastra usługi HDInsight. Domyślna nazwa użytkownika to **admin**. |
    |  Hasło |Wprowadź hasło użytkownika klastra usługi HDInsight. Zaznacz pole wyboru **Zapisz hasło (zaszyfrowane)** .|
 
-1. Opcjonalnie: Wybierz **Opcje zaawansowane**.  
+1. Opcjonalne: Wybierz **Opcje zaawansowane**.  
 
    | Parametr | Opis |
    | --- | --- |
@@ -109,7 +109,7 @@ function Get-ODBC-Data {
 }
 ```
 
-Poniższy fragment kodu używa funkcji powyżej, aby wykonać zapytanie w klastrze zapytań interaktywnych, który został utworzony na początku samouczka. Zamień `DATASOURCENAME` na **nazwę źródła danych** określoną na ekranie **instalacji sterownik Microsoft Hive ODBC DSN** . Gdy zostanie wyświetlony monit o podanie poświadczeń, wprowadź nazwę użytkownika i hasło wprowadzone w obszarze **Nazwa użytkownika logowania klastra** i **hasło logowania klastra** podczas tworzenia klastra.
+Poniższy fragment kodu używa funkcji powyżej, aby wykonać zapytanie w klastrze zapytań interaktywnych, który został utworzony na początku samouczka. Zastąp `DATASOURCENAME` **nazwą źródła danych** określoną na ekranie **instalacji sterownik Microsoft Hive ODBC DSN** . Gdy zostanie wyświetlony monit o podanie poświadczeń, wprowadź nazwę użytkownika i hasło wprowadzone w obszarze **Nazwa użytkownika logowania klastra** i **hasło logowania klastra** podczas tworzenia klastra.
 
 ```powershell
 

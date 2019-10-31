@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/15/2019
+ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a5176f74964e0809cea39aa160943cc6f3451237
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260144"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176526"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać tożsamości zarządzanych do App Service i Azure Functions
 
@@ -43,17 +43,17 @@ Aby skonfigurować tożsamość zarządzaną w portalu, musisz najpierw utworzy�
 
 3. Wybierz pozycję **zarządzana tożsamość**.
 
-4. W ramach karty przypisanej do **systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij pozycję **Zapisz**.
+4. W ramach karty **przypisanej do systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij przycisk **Save** (Zapisz).
 
-![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/msi-blade-system.png)
 
 ### <a name="using-the-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
 
-Aby skonfigurować tożsamość zarządzaną za pomocą interfejsu wiersza polecenia platformy Azure, musisz użyć polecenia w `az webapp identity assign` stosunku do istniejącej aplikacji. Dostępne są trzy opcje uruchamiania przykładów w tej sekcji:
+Aby skonfigurować tożsamość zarządzaną za pomocą interfejsu wiersza polecenia platformy Azure, należy użyć polecenia `az webapp identity assign` w stosunku do istniejącej aplikacji. Dostępne są trzy opcje uruchamiania przykładów w tej sekcji:
 
 - Użyj [Azure Cloud Shell](../cloud-shell/overview.md) z Azure Portal.
 - Użyj osadzonego Azure Cloud Shell za pomocą przycisku "Wypróbuj go" znajdującego się w prawym górnym rogu każdego bloku kodu poniżej.
-- [Zainstaluj najnowszą wersję interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 lub nowszy), jeśli wolisz używać lokalnej konsoli interfejsu wiersza polecenia. 
+- [Zainstaluj najnowszą wersję interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 lub nowsza), jeśli wolisz korzystać z lokalnej konsoli interfejsu wiersza polecenia. 
 
 Poniższe kroki przeprowadzą Cię przez proces tworzenia aplikacji sieci Web i przypisywania jej tożsamości przy użyciu interfejsu wiersza polecenia:
 
@@ -70,7 +70,7 @@ Poniższe kroki przeprowadzą Cię przez proces tworzenia aplikacji sieci Web i 
     az webapp create --name myApp --resource-group myResourceGroup --plan myPlan
     ```
 
-3. `identity assign` Uruchom polecenie, aby utworzyć tożsamość dla tej aplikacji:
+3. Uruchom `identity assign` polecenie, aby utworzyć tożsamość dla tej aplikacji:
 
     ```azurecli-interactive
     az webapp identity assign --name myApp --resource-group myResourceGroup
@@ -97,7 +97,7 @@ Poniższe kroki przeprowadzą Cię przez proces tworzenia aplikacji sieci Web i 
     New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
 
-3. `Set-AzWebApp -AssignIdentity` Uruchom polecenie, aby utworzyć tożsamość dla tej aplikacji:
+3. Uruchom `Set-AzWebApp -AssignIdentity` polecenie, aby utworzyć tożsamość dla tej aplikacji:
 
     ```azurepowershell-interactive
     Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
@@ -115,7 +115,7 @@ Każdy zasób typu `Microsoft.Web/sites` można utworzyć za pomocą tożsamośc
 ```
 
 > [!NOTE] 
-> Aplikacja może mieć w tym samym czasie zarówno tożsamość przypisana do systemu, jak i przypisanych do użytkownika. W tym przypadku `type` właściwość będzie`SystemAssigned,UserAssigned`
+> Aplikacja może mieć w tym samym czasie zarówno tożsamość przypisana do systemu, jak i przypisanych do użytkownika. W takim przypadku Właściwość `type` będzie `SystemAssigned,UserAssigned`
 
 Dodanie typu przypisanego do systemu informuje platformę Azure, aby utworzył tożsamość aplikacji i zarządzać nią.
 
@@ -151,7 +151,7 @@ Gdy witryna zostanie utworzona, ma następujące dodatkowe właściwości:
 }
 ```
 
-Gdzie `<TENANTID>` i`<PRINCIPALID>` są zastępowane identyfikatorami GUID. Właściwość tenantId identyfikuje dzierżawcę usługi AAD, do której należy tożsamość. PrincipalId jest unikatowym identyfikatorem nowej tożsamości aplikacji. W usłudze AAD nazwa główna usługi ma taką samą nazwę, która została nadana App Service lub Azure Functions wystąpieniem.
+Gdzie `<TENANTID>` i `<PRINCIPALID>` są zastępowane identyfikatorami GUID. Właściwość tenantId identyfikuje dzierżawcę usługi AAD, do której należy tożsamość. PrincipalId jest unikatowym identyfikatorem nowej tożsamości aplikacji. W usłudze AAD nazwa główna usługi ma taką samą nazwę, która została nadana App Service lub Azure Functions wystąpieniem.
 
 
 ## <a name="adding-a-user-assigned-identity"></a>Dodawanie tożsamości przypisanej do użytkownika
@@ -172,15 +172,15 @@ Najpierw należy utworzyć zasób tożsamości przypisany przez użytkownika.
 
 5. Na karcie **przypisane przez użytkownika** kliknij przycisk **Dodaj**.
 
-6. Wyszukaj utworzoną wcześniej tożsamość i wybierz ją. Kliknij pozycję **Dodaj**.
+6. Wyszukaj utworzoną wcześniej tożsamość i wybierz ją. Kliknij pozycję **Add** (Dodaj).
 
-![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/msi-blade-user.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>Korzystanie z szablonu Azure Resource Manager
 
 Szablon Azure Resource Manager może służyć do automatyzowania wdrażania zasobów platformy Azure. Aby dowiedzieć się więcej o wdrażaniu do App Service i funkcji, zobacz [Automatyzowanie wdrażania zasobów w App Service](../app-service/deploy-complex-application-predictably.md) i [Automatyzowanie wdrażania zasobów w Azure Functions](../azure-functions/functions-infrastructure-as-code.md).
 
-Każdy zasób typu `Microsoft.Web/sites` można utworzyć za pomocą tożsamości, dołączając następujący blok w definicji zasobu, zastępując `<RESOURCEID>` identyfikator zasobu żądanej tożsamości:
+Każdy zasób typu `Microsoft.Web/sites` można utworzyć za pomocą tożsamości, dołączając następujący blok w definicji zasobu, zastępując `<RESOURCEID>` IDENTYFIKATORem zasobu żądanej tożsamości:
 ```json
 "identity": {
     "type": "UserAssigned",
@@ -191,7 +191,7 @@ Każdy zasób typu `Microsoft.Web/sites` można utworzyć za pomocą tożsamośc
 ```
 
 > [!NOTE] 
-> Aplikacja może mieć w tym samym czasie zarówno tożsamość przypisana do systemu, jak i przypisanych do użytkownika. W tym przypadku `type` właściwość będzie`SystemAssigned,UserAssigned`
+> Aplikacja może mieć w tym samym czasie zarówno tożsamość przypisana do systemu, jak i przypisanych do użytkownika. W takim przypadku Właściwość `type` będzie `SystemAssigned,UserAssigned`
 
 Dodanie typu przypisanego przez użytkownika i informuje platformę Azure, aby utworzyć tożsamość aplikacji i zarządzać nią.
 
@@ -235,7 +235,7 @@ Gdy witryna zostanie utworzona, ma następujące dodatkowe właściwości:
 }
 ```
 
-Gdzie `<PRINCIPALID>` i`<CLIENTID>` są zastępowane identyfikatorami GUID. PrincipalId jest unikatowym identyfikatorem tożsamości, która jest używana do administrowania usługą AAD. ClientId jest unikatowym identyfikatorem nowej tożsamości aplikacji, która jest używana do określania tożsamości, która ma być używana podczas wywołań środowiska uruchomieniowego.
+Gdzie `<PRINCIPALID>` i `<CLIENTID>` są zastępowane identyfikatorami GUID. PrincipalId jest unikatowym identyfikatorem tożsamości, która jest używana do administrowania usługą AAD. ClientId jest unikatowym identyfikatorem nowej tożsamości aplikacji, która jest używana do określania tożsamości, która ma być używana podczas wywołań środowiska uruchomieniowego.
 
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Uzyskiwanie tokenów dla zasobów platformy Azure
@@ -245,55 +245,7 @@ Aplikacja może używać swojej tożsamości do uzyskiwania tokenów do innych z
 > [!IMPORTANT]
 > Może być konieczne skonfigurowanie zasobu docelowego, aby zezwalać na dostęp z poziomu aplikacji. Na przykład, Jeśli zażądasz tokenu do Key Vault, musisz się upewnić, że dodano zasady dostępu zawierające tożsamość aplikacji. W przeciwnym razie wywołania Key Vault będą odrzucane, nawet jeśli zawierają token. Aby dowiedzieć się więcej o tym, które zasoby obsługują tokeny Azure Active Directory, zobacz [usługi platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Istnieje prosty protokół REST umożliwiający uzyskanie tokenu w App Service i Azure Functions. W przypadku aplikacji .NET Biblioteka Microsoft. Azure. Services. AppAuthentication zawiera streszczenie tego protokołu i obsługuje lokalne środowisko programistyczne.
-
-### <a name="asal"></a>Korzystanie z biblioteki Microsoft. Azure. Services. AppAuthentication dla platformy .NET
-
-W przypadku aplikacji i funkcji platformy .NET Najprostszym sposobem pracy z zarządzaną tożsamością jest pakiet Microsoft. Azure. Services. AppAuthentication. Ta biblioteka umożliwia również testowanie kodu lokalnie na komputerze deweloperskim przy użyciu konta użytkownika z programu Visual Studio, [interfejsu wiersza polecenia platformy Azure](/cli/azure)lub zintegrowanego uwierzytelniania Active Directory. Aby uzyskać więcej informacji na temat lokalnych opcji tworzenia w tej bibliotece, zobacz [Dokumentacja Microsoft. Azure. Services. AppAuthentication]. W tej sekcji pokazano, jak rozpocząć pracę z biblioteką w kodzie.
-
-1. Dodaj odwołania do [programu Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) oraz innych niezbędnych pakietów NuGet do aplikacji. Poniższy przykład używa także [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)kluczy.
-
-2. Dodaj następujący kod do aplikacji, modyfikując go jako docelowy dla poprawnego zasobu. Ten przykład przedstawia dwa sposoby pracy z Azure Key Vault:
-
-```csharp
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Azure.KeyVault;
-// ...
-var azureServiceTokenProvider = new AzureServiceTokenProvider();
-string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
-// OR
-var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-```
-
-Aby dowiedzieć się więcej na temat Microsoft. Azure. Services. AppAuthentication i wykonywanych przez niego operacji, zobacz artykuł [Dokumentacja Microsoft. Azure. Services. AppAuthentication] , a [App Service i Magazyn kluczy za pomocą przykładu MSI .NET](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
-
-
-### <a name="using-the-azure-sdk-for-java"></a>Korzystanie z zestawu Azure SDK dla języka Java
-
-W przypadku aplikacji i funkcji języka Java Najprostszym sposobem pracy z zarządzaną tożsamością jest [zestaw Azure SDK dla języka Java](https://github.com/Azure/azure-sdk-for-java). W tej sekcji pokazano, jak rozpocząć pracę z biblioteką w kodzie.
-
-1. Dodaj odwołanie do [biblioteki zestawu Azure SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure). W przypadku projektów Maven można dodać ten fragment kodu do `dependencies` sekcji pliku pliku pom projektu:
-
-```xml
-<dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>azure</artifactId>
-    <version>1.23.0</version>
-</dependency>
-```
-
-2. `AppServiceMSICredentials` Użyj obiektu do uwierzytelnienia. Ten przykład pokazuje, jak można użyć tego mechanizmu do pracy z Azure Key Vault:
-
-```java
-import com.microsoft.azure.AzureEnvironment;
-import com.microsoft.azure.management.Azure;
-import com.microsoft.azure.management.keyvault.Vault
-//...
-Azure azure = Azure.authenticate(new AppServiceMSICredentials(AzureEnvironment.AZURE))
-        .withSubscription(subscriptionId);
-Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName);
-
-```
+Istnieje prosty protokół REST umożliwiający uzyskanie tokenu w App Service i Azure Functions. Można go używać dla wszystkich aplikacji i języków. W przypadku niektórych platform .NET i Java zestaw Azure SDK zapewnia streszczenie za pośrednictwem tego protokołu i ułatwia lokalne środowisko programistyczne.
 
 ### <a name="using-the-rest-protocol"></a>Korzystanie z protokołu REST
 
@@ -304,15 +256,15 @@ Aplikacja z zarządzaną tożsamością ma zdefiniowane dwie zmienne środowisko
 
 **MSI_ENDPOINT** jest lokalnym adresem URL, z którego aplikacja może żądać tokenów. Aby uzyskać token dla zasobu, wprowadź żądanie HTTP GET do tego punktu końcowego, w tym następujące parametry:
 
-> |Nazwa parametru|W|Opis|
+> |Nazwa parametru|Podczas|Opis|
 > |-----|-----|-----|
-> |resource|Zapytanie|Identyfikator URI zasobu usługi AAD zasobu, dla którego ma zostać uzyskany token. Może to być jedna z [usług platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) lub dowolny inny identyfikator URI zasobu.|
-> |api-version|Zapytanie|Wersja interfejsu API tokenu, który ma być używany. "2017-09-01" jest obecnie jedyną obsługiwaną wersją.|
-> |secret|nagłówek|Wartość zmiennej środowiskowej MSI_SECRET. Ten nagłówek jest używany, aby pomóc w ograniczeniu ataków SSRF (po stronie serwera).|
+> |Zasoby|Zapytanie|Identyfikator URI zasobu usługi AAD zasobu, dla którego ma zostać uzyskany token. Może to być jedna z [usług platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) lub dowolny inny identyfikator URI zasobu.|
+> |wersja interfejsu API|Zapytanie|Wersja interfejsu API tokenu, który ma być używany. "2017-09-01" jest obecnie jedyną obsługiwaną wersją.|
+> |wpis tajny|Nagłówek|Wartość zmiennej środowiskowej MSI_SECRET. Ten nagłówek jest używany, aby pomóc w ograniczeniu ataków SSRF (po stronie serwera).|
 > |clientid|Zapytanie|(Opcjonalnie, chyba że zostanie przypisany przez użytkownika) Identyfikator tożsamości przypisanej do użytkownika, który ma być używany. W przypadku pominięcia zostanie użyta tożsamość przypisana do systemu.|
 
 > [!IMPORTANT]
-> Jeśli próbujesz uzyskać tokeny dla tożsamości przypisanych przez użytkownika, musisz dołączyć `clientid` właściwość. W przeciwnym razie usługa tokenów podejmie próbę uzyskania tokenu dla tożsamości przypisanej do systemu, która może być lub nie istnieje.
+> Jeśli próbujesz uzyskać tokeny dla tożsamości przypisanych przez użytkownika, musisz uwzględnić Właściwość `clientid`. W przeciwnym razie usługa tokenów podejmie próbę uzyskania tokenu dla tożsamości przypisanej do systemu, która może być lub nie istnieje.
 
 Pomyślne odpowiedź 200 OK zawiera treść JSON o następujących właściwościach:
 
@@ -320,13 +272,13 @@ Pomyślne odpowiedź 200 OK zawiera treść JSON o następujących właściwośc
 > |-------------|----------|
 > |access_token|Żądany token dostępu. Wywoływana usługa sieci Web może używać tego tokenu do uwierzytelniania w usłudze sieci Web otrzymującej.|
 > |expires_on|Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczba sekund od 1970-01-01T0:0: 0Z UTC do czasu wygaśnięcia. Ta wartość służy do określenia okresu istnienia buforowanych tokenów.|
-> |resource|Identyfikator URI identyfikatora aplikacji dla usługi sieci Web odbiorczej.|
-> |token_type|Wskazuje wartość typu tokenu. Jedynym typem obsługiwanym przez usługę Azure AD jest znak. Aby uzyskać więcej informacji na temat tokenów okaziciela [, zobacz Struktura autoryzacji OAuth 2,0: Użycie tokenu okaziciela (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
+> |Zasoby|Identyfikator URI identyfikatora aplikacji dla usługi sieci Web odbiorczej.|
+> |token_type|Wskazuje wartość typu tokenu. Jedynym typem obsługiwanym przez usługę Azure AD jest znak. Aby uzyskać więcej informacji o tokenach okaziciela, zobacz [Framework uwierzytelniania OAuth 2,0: użycie tokenu okaziciela (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 Ta odpowiedź jest taka sama jak [odpowiedź na żądanie tokenu dostępu między usługą AAD](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
 > [!NOTE]
-> Zmienne środowiskowe są konfigurowane podczas pierwszego uruchomienia procesu, więc po włączeniu tożsamości zarządzanej dla aplikacji może być konieczne ponowne uruchomienie aplikacji lub wdrożenie jej kodu przed `MSI_ENDPOINT` i `MSI_SECRET` będzie dostępna dla Twojego kodu.
+> Zmienne środowiskowe są konfigurowane podczas pierwszego uruchomienia procesu, więc po włączeniu tożsamości zarządzanej dla aplikacji może być konieczne ponowne uruchomienie aplikacji lub wdrożenie jej kodu przed `MSI_ENDPOINT` i `MSI_SECRET` są dostępne dla kodu.
 
 ### <a name="rest-protocol-examples"></a>Przykłady protokołu REST
 
@@ -354,26 +306,29 @@ Content-Type: application/json
 
 ### <a name="code-examples"></a>Przykłady kodu
 
-<a name="token-csharp"></a>Aby wykonać to żądanie w C#:
-
-```csharp
-public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
-    HttpClient client = new HttpClient();
-    client.DefaultRequestHeaders.Add("Secret", Environment.GetEnvironmentVariable("MSI_SECRET"));
-    return await client.GetAsync(String.Format("{0}/?resource={1}&api-version={2}", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource, apiversion));
-}
-```
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 > [!TIP]
 > W przypadku języków .NET można także samodzielnie użyć [Microsoft. Azure. Services. AppAuthentication](#asal) zamiast tego żądania.
 
-<a name="token-js"></a>W programie Node. JS:
+```csharp
+private readonly HttpClient _client;
+// ...
+public async Task<HttpResponseMessage> GetToken(string resource)  {
+    var request = new HttpRequestMessage(HttpMethod.Get, 
+        String.Format("{0}/?resource={1}&api-version=2017-09-01", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource));
+    request.Headers.Add("Secret", Environment.GetEnvironmentVariable("MSI_SECRET"));
+    return await _client.SendAsync(request);
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
-const getToken = function(resource, apiver, cb) {
+const getToken = function(resource, cb) {
     let options = {
-        uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=${apiver}`,
+        uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=2017-09-01`,
         headers: {
             'Secret': process.env["MSI_SECRET"]
         }
@@ -383,7 +338,7 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
-<a name="token-python"></a>W języku Python:
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```python
 import os
@@ -392,8 +347,8 @@ import requests
 msi_endpoint = os.environ["MSI_ENDPOINT"]
 msi_secret = os.environ["MSI_SECRET"]
 
-def get_bearer_token(resource_uri, token_api_version):
-    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version={token_api_version}"
+def get_bearer_token(resource_uri):
+    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version=2017-09-01"
     head_msi = {'Secret':msi_secret}
 
     resp = requests.get(token_auth_uri, headers=head_msi)
@@ -402,15 +357,64 @@ def get_bearer_token(resource_uri, token_api_version):
     return access_token
 ```
 
-<a name="token-powershell"></a>W programie PowerShell:
+# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
 
 ```powershell
-$apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
-$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVersion"
+$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=2017-09-01"
 $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
+
+---
+
+### <a name="asal"></a>Korzystanie z biblioteki Microsoft. Azure. Services. AppAuthentication dla platformy .NET
+
+W przypadku aplikacji i funkcji platformy .NET Najprostszym sposobem pracy z zarządzaną tożsamością jest pakiet Microsoft. Azure. Services. AppAuthentication. Ta biblioteka umożliwia również testowanie kodu lokalnie na komputerze deweloperskim przy użyciu konta użytkownika z programu Visual Studio, [interfejsu wiersza polecenia platformy Azure](/cli/azure)lub zintegrowanego uwierzytelniania Active Directory. Aby uzyskać więcej informacji na temat lokalnych opcji tworzenia w tej bibliotece, zobacz [Dokumentacja Microsoft. Azure. Services. AppAuthentication]. W tej sekcji pokazano, jak rozpocząć pracę z biblioteką w kodzie.
+
+1. Dodaj odwołania do [programu Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) oraz innych niezbędnych pakietów NuGet do aplikacji. Poniższy przykład używa także [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)kluczy.
+
+2. Dodaj następujący kod do aplikacji, modyfikując go jako docelowy dla poprawnego zasobu. Ten przykład przedstawia dwa sposoby pracy z Azure Key Vault:
+
+    ```csharp
+    using Microsoft.Azure.Services.AppAuthentication;
+    using Microsoft.Azure.KeyVault;
+    // ...
+    var azureServiceTokenProvider = new AzureServiceTokenProvider();
+    string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
+    // OR
+    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+    ```
+
+Aby dowiedzieć się więcej na temat Microsoft. Azure. Services. AppAuthentication i wykonywanych przez niego operacji, zobacz artykuł [Dokumentacja Microsoft. Azure. Services. AppAuthentication] , a [App Service i Magazyn kluczy za pomocą przykładu MSI .NET](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+
+### <a name="using-the-azure-sdk-for-java"></a>Korzystanie z zestawu Azure SDK dla języka Java
+
+W przypadku aplikacji i funkcji języka Java Najprostszym sposobem pracy z zarządzaną tożsamością jest [zestaw Azure SDK dla języka Java](https://github.com/Azure/azure-sdk-for-java). W tej sekcji pokazano, jak rozpocząć pracę z biblioteką w kodzie.
+
+1. Dodaj odwołanie do [biblioteki zestawu Azure SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure). W przypadku projektów Maven można dodać ten fragment kodu do sekcji `dependencies` pliku pliku pom projektu:
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure</artifactId>
+        <version>1.23.0</version>
+    </dependency>
+    ```
+
+2. Użyj obiektu `AppServiceMSICredentials` na potrzeby uwierzytelniania. Ten przykład pokazuje, jak można użyć tego mechanizmu do pracy z Azure Key Vault:
+
+    ```java
+    import com.microsoft.azure.AzureEnvironment;
+    import com.microsoft.azure.management.Azure;
+    import com.microsoft.azure.management.keyvault.Vault
+    //...
+    Azure azure = Azure.authenticate(new AppServiceMSICredentials(AzureEnvironment.AZURE))
+            .withSubscription(subscriptionId);
+    Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName);
+
+    ```
+
 
 ## <a name="remove"></a>Usuwanie tożsamości
 

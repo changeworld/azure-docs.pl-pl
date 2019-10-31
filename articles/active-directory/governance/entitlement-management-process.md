@@ -1,6 +1,6 @@
 ---
-title: Zażądaj procesu i powiadomień e-mail w usłudze Azure AD uprawnień do zarządzania (wersja zapoznawcza) — Azure Active Directory
-description: Dowiedz się więcej o procesie żądania dla pakietu dostępu i powiadomieniach e-mail, które są wysyłane w Azure Active Directory Zarządzanie prawami (wersja zapoznawcza).
+title: Zażądaj procesu i powiadomień e-mail w usłudze Azure AD uprawnień zarządzania — Azure Active Directory
+description: Dowiedz się więcej o procesie żądania dla pakietu dostępu i powiadomieniach e-mail, które są wysyłane w Azure Active Directory zarządzania prawami.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb5f322d8bc974274f7f2da7811b124499224635
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: MT
+ms.openlocfilehash: 6a1ce3b2cb72a7b57e556e09264cb5bd421eda0f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678143"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173742"
 ---
-# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Zażądaj procesu i powiadomień e-mail w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
-
-> [!IMPORTANT]
-> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Zażądaj procesu i powiadomień e-mail w usłudze Azure AD uprawnienia do zarządzania
 
 Gdy użytkownik przesyła żądanie do pakietu dostępu, proces jest uruchamiany w celu dostarczenia tego żądania. Zarządzanie prawami w usłudze Azure AD wysyła również powiadomienia e-mail do osób zatwierdzających i osoby żądające w przypadku wystąpienia kluczowych zdarzeń w trakcie procesu.
 
@@ -42,12 +37,12 @@ Użytkownik wymagający dostępu do pakietu dostępu może przesłać żądanie 
 
 | Stan | Opis |
 | --- | --- |
-| Przesłano | Użytkownik przesyła żądanie. |
-| Oczekuje na zatwierdzenie | Jeśli zasady dla pakietu dostępu wymagają zatwierdzenia, żądanie przechodzi do oczekującego zatwierdzenia. |
-| Wygaśnięcie | Jeśli żadne osoby zatwierdzające nie zatwierdzą żądania w ramach limitu czasu żądania zatwierdzenia, żądanie wygasa. Aby ponowić próbę, użytkownik będzie musiał ponownie przesłać żądanie. |
-| Odmówiono | Osoba zatwierdzająca odrzuca żądanie. |
-| Zatwierdzono | Osoba zatwierdzająca zatwierdza żądanie. |
-| Dostarczanie | Użytkownikowi **nie** przypisano dostępu do wszystkich zasobów w pakiecie dostępu. Jeśli jest to użytkownik zewnętrzny, użytkownik może jeszcze nie uzyskać dostępu do katalogu zasobów i zaakceptował monit o zgodę. |
+| Złożona | Użytkownik przesyła żądanie. |
+| Oczekiwanie na zatwierdzenie | Jeśli zasady dla pakietu dostępu wymagają zatwierdzenia, żądanie przechodzi do oczekującego zatwierdzenia. |
+| Wygasłe | Jeśli żadne osoby zatwierdzające nie zatwierdzą żądania w ramach limitu czasu żądania zatwierdzenia, żądanie wygasa. Aby ponowić próbę, użytkownik będzie musiał ponownie przesłać żądanie. |
+| Dozwolone | Osoba zatwierdzająca odrzuca żądanie. |
+| Approved (Zatwierdzono) | Osoba zatwierdzająca zatwierdza żądanie. |
+| Wykonania | Użytkownikowi **nie** przypisano dostępu do wszystkich zasobów w pakiecie dostępu. Jeśli jest to użytkownik zewnętrzny, użytkownik może jeszcze nie uzyskać dostępu do katalogu zasobów i zaakceptował monit o zgodę. |
 | Dostarczono | Użytkownikowi przypisano dostęp do wszystkich zasobów w pakiecie dostępu. |
 | Dostęp rozszerzony | Jeśli w zasadach są dozwolone rozszerzenia, Użytkownik rozszerzył przypisanie. |
 | Dostęp wygasł | Dostęp użytkownika do pakietu dostępu wygasł. Aby uzyskać dostęp ponownie, użytkownik będzie musiał przesłać żądanie. |
@@ -62,14 +57,14 @@ Poniższa tabela zawiera więcej szczegółów na temat każdej z tych powiadomi
 
 | # | Temat wiadomości e-mail | Po wysłaniu | Wysłane do |
 | --- | --- | --- | --- |
-| 1 | Wymagana akcja: Przeglądanie żądania dostępu od *[żądającego]* do *[pakiet dostępu]* przez *[Date]* | Gdy obiekt żądający wyśle żądanie dotyczące pakietu dostępu | Wszystkie osoby zatwierdzające |
-| 2 | Wymagana akcja: Przeglądanie żądania dostępu od *[żądającego]* do *[pakiet dostępu]* przez *[Date]* | X dni przed upływem limitu czasu żądania zatwierdzenia | Wszystkie osoby zatwierdzające |
-| 3 | Powiadomienie o stanie: upłynął czas żądania dostępu [ *żądającego]* do *[pakietu dostępu]* | Kiedy osoby zatwierdzające nie zatwierdzają lub nie odrzucają żądania dostępu w czasie trwania żądania | Żądający |
+| 1 | Wymagana akcja: przeglądanie żądania dostępu od *[żądającego]* do *[pakiet dostępu]* przez *[Date]* | Gdy obiekt żądający wyśle żądanie dotyczące pakietu dostępu | Wszystkie osoby zatwierdzające |
+| 2 | Wymagana akcja: przeglądanie żądania dostępu od *[żądającego]* do *[pakiet dostępu]* przez *[Date]* | X dni przed upływem limitu czasu żądania zatwierdzenia | Wszystkie osoby zatwierdzające |
+| 3 | Powiadomienie o stanie: upłynął czas żądania dostępu [ *żądającego]* do *[pakietu dostępu]* | Kiedy osoby zatwierdzające nie zatwierdzają lub nie odrzucają żądania dostępu w czasie trwania żądania | Obiektu żądającego |
 | 4 | Powiadomienie o stanie: zakończono żądanie dostępu *[żądającego]* do *[pakietu dostępu]* | Kiedy pierwsza osoba zatwierdzająca zatwierdza lub odrzuca żądanie dostępu | Wszystkie osoby zatwierdzające |
-| 5 | Odmówiono dostępu do *[pakiet dostępu]* | Gdy obiekt żądający odrzucił dostęp do pakietu dostępu | Żądający |
-| 6 | Masz teraz dostęp do programu *[dostęp do pakietu]*  | Gdy obiekt żądający uzyska dostęp do każdego zasobu w pakiecie dostępu | Żądający |
-| 7 | Dostęp do *[pakietu dostępu]* wygaśnie w ciągu X dni | X dni przed uzyskaniem dostępu do pakietu dostępu przez żądającego | Żądający |
-| 8 | Twój dostęp do *[pakietu dostępu]* wygasł | Gdy wygasa dostęp do pakietu dostępu przez żądającego | Żądający |
+| 5 | Odmówiono dostępu do *[pakiet dostępu]* | Gdy obiekt żądający odrzucił dostęp do pakietu dostępu | Obiektu żądającego |
+| 6 | Masz teraz dostęp do programu *[dostęp do pakietu]*  | Gdy obiekt żądający uzyska dostęp do każdego zasobu w pakiecie dostępu | Obiektu żądającego |
+| 7 | Dostęp do *[pakietu dostępu]* wygaśnie w ciągu X dni | X dni przed uzyskaniem dostępu do pakietu dostępu przez żądającego | Obiektu żądającego |
+| 8 | Twój dostęp do *[pakietu dostępu]* wygasł | Gdy wygasa dostęp do pakietu dostępu przez żądającego | Obiektu żądającego |
 
 ### <a name="access-request-emails"></a>Adresy e-mail żądania dostępu
 

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e7c3ccb553010b84a30ccdad875ea0362112d830
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619096"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172333"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: Tworzenie maszyny wirtualnej zarządzania w celu skonfigurowania i administrowania Azure Active Directory Domain Services domeną zarządzaną
 
@@ -101,10 +101,10 @@ Zarządzanie domenami zarządzanymi AD DS platformy Azure odbywa się przy użyc
 
 Aby zainstalować narzędzia administracyjne Active Directory na maszynie wirtualnej przyłączonej do domeny, wykonaj następujące czynności:
 
-1. **Menedżer serwera** powinna być otwarta domyślnie po zalogowaniu się do maszyny wirtualnej. Jeśli nie, w menu **Start** wybierz **Menedżer serwera**.
+1. Jeśli **Menedżer serwera** nie zostanie otwarta domyślnie po zalogowaniu się do maszyny wirtualnej, wybierz menu **Start** , a następnie wybierz pozycję **Menedżer serwera**.
 1. W okienku *pulpit nawigacyjny* okna **Menedżer serwera** wybierz pozycję **Dodaj role i funkcje**.
 1. Na stronie **zanim rozpoczniesz** *Kreatora dodawania ról i funkcji*wybierz pozycję **dalej**.
-1. W polu *Typ instalacji*pozostaw zaznaczoną opcję **Instalacja oparta na rolach lub** oparta na funkcjach, a następnie wybierz pozycję **dalej**.
+1. W polu *Typ instalacji*pozostaw zaznaczoną opcję **Instalacja oparta na rolach lub oparta na funkcjach** , a następnie wybierz pozycję **dalej**.
 1. Na stronie **Wybór serwera** wybierz bieżącą maszynę wirtualną z puli serwerów, takiej jak *MyVM.contoso.com*, a następnie wybierz przycisk **dalej**.
 1. Na stronie **role serwera** kliknij przycisk **dalej**.
 1. Na stronie **funkcje** rozwiń węzeł **Narzędzia administracji zdalnej serwera** , a następnie rozwiń węzeł Narzędzia do **administrowania rolami** .
@@ -131,13 +131,15 @@ Po zainstalowaniu narzędzi administracyjnych Zobaczmy, jak używać ich do admi
 
 1. Aby wyświetlić użytkowników i grupy należące do domeny zarządzanej AD DS platformy Azure, wybierz kontener **AADDC Users (Użytkownicy** ). Konta użytkowników i grupy z dzierżawy usługi Azure AD są wymienione w tym kontenerze.
 
-    W poniższych przykładowych danych wyjściowych konto użytkownika o nazwie *contosoadmin* i Grupa dla *administratorów usługi AAD* są wyświetlane w tym kontenerze.
+    W poniższych przykładowych danych wyjściowych w tym kontenerze zostanie wyświetlone konto użytkownika o nazwie *administrator firmy Contoso* i Grupa dla *administratorów usługi AAD* .
 
     ![Wyświetl listę użytkowników domeny usługi Azure AD DS w Centrum administracyjne usługi Active Directory](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
 1. Aby wyświetlić komputery, które są przyłączone do domeny zarządzanej AD DS platformy Azure, wybierz kontener **komputery AADDC** . Zostanie wyświetlona pozycja dla bieżącej maszyny wirtualnej, na przykład *myVM*. Konta komputerów dla wszystkich komputerów, które są przyłączone do domeny zarządzanej AD DS platformy Azure, są przechowywane w tym kontenerze *komputery AADDC* .
 
-Typowe akcje Centrum administracyjne usługi Active Directory, takie jak resetowanie hasła konta użytkownika lub zarządzanie członkostwem w grupie, są dostępne. W celu zarządzania typowymi akcjami w domenie zarządzanej AD DS platformy Azure można również użyć *modułu Active Directory dla środowiska Windows PowerShell*, który jest instalowany jako część narzędzi administracyjnych.
+Typowe akcje Centrum administracyjne usługi Active Directory, takie jak resetowanie hasła konta użytkownika lub zarządzanie członkostwem w grupie, są dostępne. Te akcje działają tylko dla użytkowników i grup utworzonych bezpośrednio w domenie zarządzanej AD DS platformy Azure. Informacje o tożsamości są synchronizowane wyłącznie *z* usługą Azure AD do usługi Azure AD DS. Nie ma możliwości zapisu z usługi Azure AD DS w usłudze Azure AD. Nie można zmienić haseł ani członkostwa w grupie zarządzanej dla użytkowników synchronizowanych z usługi Azure AD, a te zmiany są synchronizowane z powrotem.
+
+W celu zarządzania typowymi akcjami w domenie zarządzanej AD DS platformy Azure można również użyć *modułu Active Directory dla środowiska Windows PowerShell*, który jest instalowany jako część narzędzi administracyjnych.
 
 ## <a name="next-steps"></a>Następne kroki
 

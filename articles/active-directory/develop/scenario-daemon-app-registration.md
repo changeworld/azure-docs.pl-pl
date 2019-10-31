@@ -16,18 +16,18 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fddd95564e3683aaee067f0442573c41e93376dd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 8d0d88f72cca45280bd76ac7bb9d7a6e0a1d37fb
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264390"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175448"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — Rejestracja aplikacji
 
 Poniżej przedstawiono informacje o tym, co należy wiedzieć podczas rejestrowania aplikacji.
 
-## <a name="supported-account-types"></a>Obsługiwane typy kont
+## <a name="supported-account-types"></a>Obsługiwane typy konta
 
 Uwzględniając, że aplikacje demona mają sens tylko w dzierżawach usługi Azure AD, podczas tworzenia aplikacji należy wybrać następujące opcje:
 
@@ -36,7 +36,7 @@ Uwzględniając, że aplikacje demona mają sens tylko w dzierżawach usługi Az
 
 ## <a name="authentication---no-reply-uri-needed"></a>Uwierzytelnianie — nie jest wymagany identyfikator URI odpowiedzi
 
-W przypadku, gdy poufna aplikacja kliencka używa **tylko** przepływu poświadczeń klienta, adres URL odpowiedzi nie musi być zarejestrowany. Nie jest to konieczne w przypadku konfiguracji/konstrukcji aplikacji. Przepływ poświadczeń klienta nie używa tego programu.
+W przypadku, gdy poufna aplikacja kliencka używa **tylko** przepływu poświadczeń klienta, identyfikator URI odpowiedzi nie musi być zarejestrowany. Nie jest to konieczne w przypadku konfiguracji/konstrukcji aplikacji. Przepływ poświadczeń klienta nie używa tego programu.
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>Uprawnienia interfejsu API — uprawnienia aplikacji i zgoda administratora
 
@@ -45,7 +45,7 @@ Aplikacja demona może żądać uprawnień aplikacji tylko do interfejsów API (
 ![Uprawnienia aplikacji i zgoda administratora](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> Internetowy interfejs API, który ma zostać wywołany, musi definiować **uprawnienia aplikacji (Role aplikacji)** , a nie delegowane uprawnienia. Aby uzyskać szczegółowe informacje na temat sposobu ujawniania takiego interfejsu [API, zobacz chroniony internetowy interfejs API: Rejestracja aplikacji — gdy interfejs API sieci Web jest wywoływany przez aplikację demona](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)
+> Internetowy interfejs API, który ma zostać wywołany, musi definiować **uprawnienia aplikacji (Role aplikacji)** , a nie delegowane uprawnienia. Aby uzyskać szczegółowe informacje na temat sposobu ujawniania takiego interfejsu API, zobacz [chroniony internetowy interfejs API: Rejestracja aplikacji — gdy interfejs API sieci Web jest wywoływany przez aplikację demona](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)
 
 Aplikacje demona wymagają, aby administrator dzierżawy wstępnie wyraził zgodę na aplikację wywołującą internetowy interfejs API. Ta zgoda jest świadczona na tej samej stronie **uprawnień interfejsu API** , przez administratora dzierżawy, wybierając pozycję **Udziel zgody administratorowi na swoją *organizację***
 

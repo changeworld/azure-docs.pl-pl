@@ -1,5 +1,5 @@
 ---
-title: Dostosowanie stylu strony w portalu deweloperów usługi Azure API Management | Microsoft Docs
+title: Dostosuj styl strony w witrynie Azure API Management starszej wersji portalu dla deweloperów | Microsoft Docs
 description: Wykonaj kroki tego przewodnika Szybki start, aby dostosować styl elementów w portalu deweloperów usługi Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -11,43 +11,41 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 047e724fe3e1c2e4738e5964326bf7719281f4af
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 779d1228393cdc88f88820d8a335cb2e32424c14
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073709"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176861"
 ---
-# <a name="customize-the-style-of-the-developer-portal-pages"></a>Dostosowywanie stylu stron portalu deweloperów
+# <a name="customize-the-style-of-the-developer-portal-pages"></a>Dostosowywanie stylu stron portalu dla deweloperów
 
-Istnieją trzy najpopularniejsze sposoby dostosowywania portalu deweloperów usługi Azure API Management:
+Istnieją trzy najczęstsze sposoby dostosowywania portalu dla deweloperów w usłudze Azure API Management:
  
 * [Edycja zawartości stron statycznych i elementów układu strony](api-management-modify-content-layout.md)
 * Aktualizacja stylów używanych dla elementów strony w portalu deweloperów (opisana w tym przewodniku)
 * [Modyfikowanie szablonów używanych dla stron wygenerowanych przez portal](api-management-developer-portal-templates.md) (na przykład dokumentacji interfejsu API, produktów czy uwierzytelniania użytkowników)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Dostosowywanie stylu elementów na stronach portalu **deweloperów**
-> * Wyświetlanie zmiany
+W tym artykule dowiesz się, jak dostosować styl elementów na stronach starszego portalu dla **deweloperów** i wyświetlić zmiany.
 
 ![Dostosowywanie stylu](./media/modify-developer-portal-style/developer_portal.png)
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 + Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
 + Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
-+ Ukończ również następujący samouczek: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
++ Ponadto wykonaj zadania z następującego samouczka: [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
 
 ## <a name="customize-the-developer-portal"></a>Dostosowywanie portalu deweloperów
 
 1. Wybierz pozycję **Przegląd**.
-2. Kliknij przycisk **Portal deweloperów** u góry okna **Przegląd**. Możesz też kliknąć link **Adres URL portalu deweloperów**.
+2. Kliknij przycisk **Portal dla deweloperów (starsza wersja)** w górnej części okna **Przegląd** .
 3. W lewej górnej części ekranu będzie widoczna ikona składająca się z dwóch pędzli. Zatrzymaj wskaźnik myszy nad tą ikoną, aby otworzyć menu dostosowywania portalu.
 
     ![Dostosowywanie stylu](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
@@ -56,11 +54,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     Na stronie zostaną wyświetlone wszystkie elementy, które można dostosować za pomocą **stylów**
 5. Wprowadź wartość „headings-color” w polu **Change variable values to customize developer portal appearance:** (Zmień wartości zmiennych w celu dostosowania wyglądu portalu dla deweloperów:).
 
-    Na stronie pojawi się element  **nagłówki—kolor.\@** Ta zmienna steruje kolorem tekstu.
+    Na stronie pojawią się **\@nagłówki-kolor** . Ta zmienna steruje kolorem tekstu.
 
     ![Dostosowywanie stylu](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Kliknij pole dla  **\@zmiennej nagłówki i kolor** . 
+6. Kliknij pole dla **\@nagłówki — zmienna koloru** . 
     
     Zostanie otwarta lista rozwijana selektora kolorów.
 7. Wybierz nowy kolor z listy rozwijanej selektora kolorów.
@@ -73,15 +71,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="view-your-change"></a>Wyświetlanie zmiany
 
-1. Przejdź do portalu deweloperów.
+1. Przejdź do portalu dla deweloperów.
 2. Wprowadzone zmiany będą widoczne.
 
 ## <a name="next-steps"></a>Następne kroki
-
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Dostosowywanie stylu elementów na stronach portalu **deweloperów**
-> * Wyświetlanie zmiany
 
 Może Cię również zainteresować poznanie [sposobu dostosowywania portalu dla deweloperów usługi Azure API Management przy użyciu szablonów](api-management-developer-portal-templates.md).

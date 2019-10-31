@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a81ecd855b098ec59c5b6f7761ceebfa7a03fa9
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 2148d6ea869a87571008c1f84c5b1000d4030bbb
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936723"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175936"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Włączanie dostępu zdalnego do Power BI Mobile przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -85,7 +85,7 @@ Teraz możesz przystąpić do konfigurowania serwer proxy aplikacji usługi Azur
    - **Wewnętrzny adres URL**: wprowadź adres URL serwera raportów, który łącznik może dotrzeć do sieci firmowej. Upewnij się, że ten adres URL jest dostępny z serwera, na którym jest zainstalowany łącznik. Najlepszym rozwiązaniem jest użycie domeny najwyższego poziomu, takiej jak `https://servername/`, aby uniknąć problemów z ścieżkami podrzędnymi (na przykład `https://servername/reports/` i `https://servername/reportserver/`), które nie zostały opublikowane za pośrednictwem serwera proxy aplikacji.
      > [!NOTE]
      > Zalecamy używanie bezpiecznego połączenia HTTPS z serwerem raportów. Aby uzyskać informacje na temat sposobu, zobacz [Konfigurowanie połączeń SSL na serwerze raportów w trybie macierzystym](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) .
-   - **Zewnętrzny adres URL**: wprowadź publiczny adres URL, z którym zostanie nawiązane połączenie Power BI aplikacji mobilnej. Na przykład może wyglądać podobnie do `https://reports.contoso.com`, jeśli jest używana domena niestandardowa. Aby użyć domeny niestandardowej, Przekaż certyfikat dla domeny i wskaż rekord DNS jako domyślną domenę msappproxy.net dla aplikacji. Aby uzyskać szczegółowe instrukcje, zobacz [Praca z domenami niestandardowymi w usłudze Azure serwer proxy aplikacji usługi Azure AD](application-proxy-configure-custom-domain.md).
+   - **Zewnętrzny adres URL**: wprowadź publiczny adres URL, z którym zostanie nawiązane połączenie Power BI aplikacji mobilnej. Na przykład może wyglądać tak jak `https://reports.contoso.com`, jeśli jest używana domena niestandardowa. Aby użyć domeny niestandardowej, Przekaż certyfikat dla domeny i wskaż rekord DNS jako domyślną domenę msappproxy.net dla aplikacji. Aby uzyskać szczegółowe instrukcje, zobacz [Praca z domenami niestandardowymi w usłudze Azure serwer proxy aplikacji usługi Azure AD](application-proxy-configure-custom-domain.md).
 
    - **Metoda wstępnego uwierzytelniania**: Azure Active Directory
 

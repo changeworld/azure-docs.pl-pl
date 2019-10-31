@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 6b1f226fba43428cdf5f46d41425ac534219de7f
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 6270237e2319c42ed30fc347b7ab9c1c2a008314
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619057"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177752"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Samouczek: skalowanie klastra usługi Service Fabric na platformie Azure
 
@@ -48,7 +48,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Zainstaluj program [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) lub [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 * Tworzenie bezpiecznego [klastra systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) na platformie Azure
 
@@ -110,7 +110,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 
 ## <a name="add-a-node-type-to-the-cluster"></a>Dodawanie typu węzła do klastra
 
-Każdy typ węzła zdefiniowany w klastrze Service Fabric uruchomionym na platformie Azure jest ustawiany jako oddzielny [zestaw skalowania maszyn wirtualnych](service-fabric-cluster-nodetypes.md). Każdy typ węzła może być następnie zarządzany osobno. Można niezależnie skalować każdy typ węzła w górę lub w dół, mieć otwarte różne zestawy portów i korzystać z różnych metryk pojemności. Można również niezależnie zmienić jednostkę SKU systemu operacyjnego działającą w każdym węźle klastra, ale należy pamiętać, że w przykładowym klastrze nie można używać kombinacji systemów Windows i Linux. Typ pojedynczego węzła/zestaw skalowania nie może zawierać więcej niż 100 węzłów.  Klaster można skalować w poziomie do więcej niż 100 węzłów przez dodanie dodatkowych typów węzłów/zestawów skalowania. Klaster można skalować w dowolnym momencie, nawet w przypadku uruchamiania obciążeń w klastrze.
+Każdy typ węzła zdefiniowany w klastrze Service Fabric uruchomionym na platformie Azure jest ustawiany jako [oddzielny zestaw skalowania maszyn wirtualnych](service-fabric-cluster-nodetypes.md). Każdy typ węzła może być następnie zarządzany osobno. Można niezależnie skalować każdy typ węzła w górę lub w dół, mieć otwarte różne zestawy portów i korzystać z różnych metryk pojemności. Można również niezależnie zmienić jednostkę SKU systemu operacyjnego działającą w każdym węźle klastra, ale należy pamiętać, że w przykładowym klastrze nie można używać kombinacji systemów Windows i Linux. Typ pojedynczego węzła/zestaw skalowania nie może zawierać więcej niż 100 węzłów.  Klaster można skalować w poziomie do więcej niż 100 węzłów przez dodanie dodatkowych typów węzłów/zestawów skalowania. Klaster można skalować w dowolnym momencie, nawet w przypadku uruchamiania obciążeń w klastrze.
 
 ### <a name="update-the-template"></a>Aktualizowanie szablonu
 
@@ -387,20 +387,6 @@ W pliku *Template. JSON* Dodaj nową sieciową grupę zabezpieczeń i zasoby zes
     },
     "properties": {
         "securityRules": [
-            {
-                "name": "allowSvcFabSMB",
-                "properties": {
-                    "access": "Allow",
-                    "destinationAddressPrefix": "*",
-                    "destinationPortRange": "445",
-                    "direction": "Inbound",
-                    "priority": 3950,
-                    "protocol": "*",
-                    "sourceAddressPrefix": "VirtualNetwork",
-                    "sourcePortRange": "*",
-                    "description": "allow SMB traffic within the net, used by fabric to move packages around"
-                }
-            },
             {
                 "name": "allowSvcFabCluser",
                 "properties": {
@@ -871,7 +857,7 @@ Lub następujące polecenie interfejsu wiersza polecenia platformy Azure:
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

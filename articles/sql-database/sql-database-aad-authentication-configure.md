@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 10/16/2019
-ms.openlocfilehash: 82409bbe2f40e42a8331cd801649b93987a923d2
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550705"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177637"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i Zarządzanie uwierzytelnianiem Azure Active Directory przy użyciu programu SQL
 
@@ -208,7 +208,7 @@ W poniższych dwóch procedurach pokazano, jak zainicjować obsługę administra
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) w prawym górnym rogu wybierz swoje połączenia, aby wyświetlić listę rozwijaną możliwych usług Active Directory. Wybierz odpowiednią usługę Active Directory jako domyślną usługę Azure AD. W tym kroku powiązana z subskrypcją usługa Active Directory zostaje połączona z serwerem Azure SQL. Dzięki temu mamy pewność, że ta sama subskrypcja jest używana zarówno przez usługę Azure AD, jak i SQL Server. (Serwer SQL platformy Azure może obsługiwać Azure SQL Database lub Azure SQL Data Warehouse.)  ![choose — ][8] usługi AD
+1. W witrynie [Azure Portal](https://portal.azure.com/) w prawym górnym rogu wybierz swoje połączenia, aby wyświetlić listę rozwijaną możliwych usług Active Directory. Wybierz odpowiednią usługę Active Directory jako domyślną usługę Azure AD. W tym kroku powiązana z subskrypcją usługa Active Directory zostaje połączona z serwerem Azure SQL. Dzięki temu mamy pewność, że ta sama subskrypcja jest używana zarówno przez usługę Azure AD, jak i SQL Server. (Serwer SQL platformy Azure może obsługiwać Azure SQL Database lub Azure SQL Data Warehouse.) ![wybór usługi AD][8]
 
 2. Na lewym transparencie wybierz pozycję **wszystkie usługi**, a następnie w polu Typ filtru w programie **SQL Server**. Wybierz pozycję **serwery SQL**.
 
@@ -218,7 +218,7 @@ W poniższych dwóch procedurach pokazano, jak zainicjować obsługę administra
     > Na tej stronie przed wybraniem opcji **serwery SQL**możesz wybrać **gwiazdkę** obok nazwy, aby dodać do *ulubionych* kategorię, i Dodaj **serwery SQL** na lewym pasku nawigacyjnym.
 
 3. Na stronie **SQL Server** wybierz pozycję **administrator Active Directory**.
-4. Na stronie **administrator Active Directory** wybierz pozycję **Ustaw administratora**.   ![select usługi Active Directory ](./media/sql-database-aad-authentication/select-active-directory.png)  
+4. Na stronie **administrator Active Directory** wybierz pozycję **Ustaw administratora**.  ![wybierz pozycję Active Directory](./media/sql-database-aad-authentication/select-active-directory.png)  
 
 5. Na stronie **Dodawanie administratora** wyszukaj użytkownika, wybierz użytkownika lub grupę do pełnienia funkcji administratora, a następnie kliknij opcję **Wybierz**. (Na stronie administratora usługi Active Directory wyświetlono wszystkich członków i grupy danej usługi Active Directory). Nie można wybrać wyszarzonych użytkowników lub grup, ponieważ nie są oni obsługiwani jako administratorzy usługi Azure AD. (Zobacz listę obsługiwanych administratorów w sekcji **funkcje usługi Azure AD i ograniczenia** dotyczące [uwierzytelniania przy użyciu Azure Active Directory uwierzytelniania SQL Database lub SQL Data Warehouse](sql-database-aad-authentication.md)). Kontrola dostępu oparta na rolach (RBAC) dotyczy tylko portalu i nie jest propagowana do SQL Server.
     ![wybór administratora](./media/sql-database-aad-authentication/select-admin.png)  
@@ -262,7 +262,7 @@ Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 Parametr wejściowy **DisplayName** akceptuje nazwę wyświetlaną usługi Azure AD lub główną nazwę użytkownika. Na przykład ``DisplayName="John Smith"`` i ``DisplayName="johns@contoso.com"``. W przypadku grup usługi Azure AD jest obsługiwana tylko nazwa wyświetlana usługi Azure AD.
 
 > [!NOTE]
-> @No__t_0 polecenie Azure PowerShell nie uniemożliwia aprowizacji administratorów usługi Azure AD dla nieobsługiwanych użytkowników. Nieobsługiwany użytkownik może zostać zainicjowany, ale nie może nawiązać połączenia z bazą danych.
+> ```Set-AzSqlServerActiveDirectoryAdministrator``` polecenie Azure PowerShell nie uniemożliwia aprowizacji administratorów usługi Azure AD dla nieobsługiwanych użytkowników. Nieobsługiwany użytkownik może zostać zainicjowany, ale nie może nawiązać połączenia z bazą danych.
 
 Poniższy przykład używa opcjonalnego **identyfikatora objectid**:
 
@@ -465,7 +465,7 @@ Aby uzyskać więcej informacji, zobacz Blog dotyczący [zabezpieczeń SQL Serve
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-Poniższe instrukcje łączą się przy użyciu wersji 13,1 narzędzia sqlcmd, która jest dostępna w [Centrum pobierania](https://go.microsoft.com/fwlink/?LinkID=825643).
+Poniższe instrukcje łączą się przy użyciu wersji 13,1 narzędzia sqlcmd, która jest dostępna w [Centrum pobierania](https://www.microsoft.com/download/details.aspx?id=53591).
 
 > [!NOTE]
 > `sqlcmd` za pomocą polecenia `-G` nie działa z tożsamościami systemowymi i wymaga logowania do nazwy głównej użytkownika.

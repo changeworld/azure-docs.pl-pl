@@ -12,18 +12,18 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c5975b57b6f960badf747e33deb238adf260199
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ede458e7d4c1cb1a8d7e3f2e2c9df54d5925d6d8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967215"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175974"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Wybieranie odpowiedniego protokołu federacyjnego dla aplikacji wielodostępnej
 
 Podczas tworzenia aplikacji SaaS (Software as a Service) należy wybrać protokół federacyjny, który najlepiej spełnia Twoje potrzeby i klientów. Ta decyzja jest oparta na platformie deweloperskiej i chcemy zintegrować dane z danymi dostępnymi w obrębie klientów pakietu Office 365 i usługi Azure AD.
 
-Zapoznaj się z pełną listą [protokołów dostępnych dla integracji](what-is-single-sign-on.md) z logowaniem jednokrotnym za pomocą Azure Active Directory.
+Zapoznaj się z pełną listą [protokołów dostępnych dla integracji z logowaniem JEDNOkrotnym](what-is-single-sign-on.md) za pomocą Azure Active Directory.
 Poniższa tabela zawiera porównanie 
 * Uwierzytelnianie Open 2,0 (OAuth 2,0)
 * Nawiązywanie połączenia przy otwartym IDENTYFIKATORze (OIDC)
@@ -34,8 +34,8 @@ Poniższa tabela zawiera porównanie
 | - |-|-|
 | Logowanie jednokrotne oparte na sieci Web| √| √ |
 | Logowanie jednokrotne oparte na sieci Web| √| √ |
-| Logowanie jednokrotne oparte na urządzeniach przenośnych| √| √* |
-| Logowanie jednokrotne oparte na urządzeniach przenośnych| √| √* |
+| Logowanie jednokrotne oparte na urządzeniach przenośnych| √| √ |
+| Logowanie jednokrotne oparte na urządzeniach przenośnych| √| √ |
 | Zasady dostępu warunkowego dla aplikacji mobilnych| √| X |
 | Bezproblemowe środowisko MFA dla aplikacji mobilnych| √| X |
 | Microsoft Graph dostępu| √| X |
@@ -56,7 +56,7 @@ Korzystanie z protokołu OAuth 2,0 i OIDC upraszcza środowisko użytkownika ko�
 
 Ponadto użycie tych protokołów umożliwia klientom korzystanie z zasad dostępu warunkowego i uwierzytelniania MFA w celu kontrolowania dostępu do aplikacji. Firma Microsoft udostępnia biblioteki i [przykłady kodu na wielu platformach technologicznych](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples) , aby pomóc w rozwoju.  
 
-### <a name="implementation"></a>Implementacja
+### <a name="implementation"></a>Wdrażanie
 
 Możesz zarejestrować swoją aplikację przy użyciu tożsamości firmy Microsoft, która jest dostawcą protokołu OAuth 2,0. Możesz również zarejestrować aplikację opartą na protokole OAuth 2,0 przy użyciu dowolnego innego dostawcy tożsamości, z którym chcesz zintegrować program. 
 
@@ -82,7 +82,7 @@ SAML 2,0 to wersja najbardziej dojrzałej i większość platform technologiczny
 
 W przypadku korzystania z protokołów SAML 2,0 lub WSFed dla aplikacji mobilnych niektóre zasady dostępu warunkowego, w tym uwierzytelnianie wieloskładnikowe (MFA), będą mieć obniżoną wydajność. Ponadto, jeśli chcesz uzyskać dostęp do Microsoft Graph, musisz zaimplementować autoryzację za pomocą protokołu OAuth 2,0 w celu wygenerowania niezbędnych tokenów. 
 
-### <a name="implementation"></a>Implementacja
+### <a name="implementation"></a>Wdrażanie
 
 Firma Microsoft nie udostępnia bibliotek dla implementacji języka SAML ani nie zaleca określonych bibliotek. Dostępnych jest wiele bibliotek Open Source.
 

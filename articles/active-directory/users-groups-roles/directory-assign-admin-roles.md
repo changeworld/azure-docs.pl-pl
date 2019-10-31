@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0f7c1987cd4184ba6cda37d4d1894f0dba0b2f1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: ea38317868d183bd02958398b51ef906eb78e799
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024632"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177032"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -236,6 +236,10 @@ Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjn
 > Te funkcje są obecnie opracowywane.
 >
 
+### <a name="group-administratorgroup-administrator"></a>[Administrator grupy](#group-administrator)
+
+Użytkownicy w tej roli mogą tworzyć grupy i ich ustawienia, takie jak zasady nazewnictwa i wygasania, oraz zarządzać nimi. Ważne jest, aby zrozumieć, że przypisanie użytkownika do tej roli daje im możliwość zarządzania wszystkimi grupami w dzierżawie w różnych obciążeniach, takimi jak zespoły, SharePoint, Yammer w dodatku do programu Outlook. Ponadto użytkownik będzie mógł zarządzać różnymi ustawieniami grup w różnych portalach administracyjnych, takich jak centrum administracyjne firmy Microsoft, witryna Azure Portal, a także obciążenie specyficzne dla zespołów i centrów administracyjnych programu SharePoint.
+
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Zapraszający gościa](#guest-inviter-permissions)
 
 Użytkownicy w tej roli mogą zarządzać Azure Active Directory zaproszeniami użytkowników typu B2B, gdy **Członkowie mogą zapraszać** ustawienie użytkownika na wartość nie. Więcej informacji na temat współpracy B2B na [temat współpracy B2B w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Nie zawiera żadnych innych uprawnień.
@@ -286,6 +290,10 @@ Użytkownicy w tej roli mogą monitorować wszystkie powiadomienia w centrum wia
 ### <a name="message-center-readermessage-center-reader-permissions"></a>[Czytelnik centrum wiadomości](#message-center-reader-permissions)
 
 Użytkownicy w tej roli mogą monitorować powiadomienia i aktualizacje kondycji doradców w [centrum komunikatów pakietu Office 365](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) dla swojej organizacji na skonfigurowanych usługach, takich jak Exchange, Intune i Microsoft Teams. Czytelnicy centrum wiadomości otrzymują cotygodniowe podsumowanie wiadomości e-mail z ogłoszeń, aktualizacji i mogą udostępniać wpisy centrum wiadomości w pakiecie Office 365. W usłudze Azure AD Użytkownicy przypisani do tej roli będą mieli dostęp tylko do odczytu w ramach usług Azure AD, takich jak użytkownicy i grupy. Ta rola nie ma dostępu do wyświetlania biletów pomocy technicznej, tworzenia ich ani zarządzania nimi.
+
+### <a name="office-apps-administratoroffice-apps-administrator-permissions"></a>[Administrator aplikacji pakietu Office](#office-apps-administrator-permissions)
+
+Użytkownicy w tej roli mogą zarządzać ustawieniami chmury aplikacji pakietu Office 365. Obejmuje to zarządzanie zasadami chmury, samoobsługowym zarządzaniem pobieraniem i możliwością wyświetlania raportu związanego z aplikacjami pakietu Office. Ta rola dodatkowo umożliwia zarządzanie biletami pomocy technicznej i monitorowanie kondycji usługi w głównym centrum administracyjnym. Użytkownicy przypisani do tej roli mogą również zarządzać komunikacją o nowych funkcjach w aplikacjach pakietu Office. 
 
 ### <a name="partner-tier1-supportpartner-tier1-support-permissions"></a>[Obsługa pomoc partnera](#partner-tier1-support-permissions)
 
@@ -1060,6 +1068,28 @@ Może odczytywać wszystko, co Administrator globalny może, ale nie edytować n
 | Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 | Microsoft. 365. webports/allEntities/Standard/Read   | Odczytywanie właściwości standardowych wszystkich zasobów w Microsoft. 365. webport. |
 
+### <a name="group-administrator"></a>Administrator grupy
+Może zarządzać wszystkimi aspektami grup i ustawień grup, takimi jak nazewnictwo i zasady wygasania
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| Microsoft. Directory/Groups/Basic/Read | Odczytywanie właściwości standardowych grup w Azure Active Directory.  |
+| Microsoft. Directory/Groups/Basic/Update | Zaktualizuj podstawowe właściwości dla grup w Azure Active Directory. |
+| Microsoft. Directory/Groups/Create | Utwórz grupy w Azure Active Directory. |
+| Microsoft. Directory/Groups/createAsOwner | Utwórz grupy w Azure Active Directory. Twórca jest dodawany jako pierwszy właściciel, a tworzony obiekt jest liczony według przydziału 250 obiektów utworzonych przez twórcę. |
+| Microsoft. Directory/Groups/Delete | Usuń grupy w Azure Active Directory. |
+| Microsoft. Directory/Groups/hiddenMembers/Read | Odczytaj właściwości groups. hiddenMembers w Azure Active Directory. |
+| Microsoft. Directory/Groups/Members/Update | Aktualizowanie właściwości groups. Members w Azure Active Directory. |
+| Microsoft. Directory/Groups/Owners/Update | Aktualizacja właściwości groups. Owners w Azure Active Directory. |
+| Microsoft. Directory/Groups/Restore | Przywróć grupy w Azure Active Directory. |
+| Microsoft. Directory/Groups/Settings/Update | Aktualizowanie właściwości groups. Settings w Azure Active Directory. |
+| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| Microsoft. Office 365. messageCenter/messages/Read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
+| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+
 ### <a name="guest-inviter-permissions"></a>Uprawnienia osoby zapraszające gościa
 Może zapraszać użytkowników-Gości niezależnie od ustawienia "członkowie mogą zapraszać Gości".
 
@@ -1201,6 +1231,25 @@ Może odczytywać wiadomości i aktualizacje dla swojej organizacji tylko w cent
 | --- | --- |
 | Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 | Microsoft. Office 365. messageCenter/messages/Read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
+
+### <a name="office-apps-administrator-permissions"></a>Uprawnienia administratora aplikacji pakietu Office
+Usługa umożliwia zarządzanie aplikacjami pakietu Office w chmurze, w tym zarządzaniem zasadami i ustawieniami, a także pozwala na wybór, usuwanie i publikowanie zawartości funkcji "co nowego" na urządzeniach użytkowników końcowych.
+
+> [!NOTE]
+> Ta rola ma dodatkowe uprawnienia poza Azure Active Directory. Aby uzyskać więcej informacji, zobacz opis roli powyżej.
+>
+>
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| Microsoft. Azure. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Azure Service Health. |
+| Microsoft. Azure. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej systemu Azure i zarządzaj nimi. |
+| Microsoft. Office 365. messageCenter/messages/Read | Odczytuj wiadomości w Microsoft. 365. messageCenter. |
+| Microsoft. Office 365. servicehealth/allEntities/allTasks | Odczytaj i skonfiguruj Service Health pakietu Office 365. |
+| Microsoft. Office 365. supportTickets/allEntities/allTasks | Twórz bilety pomocy technicznej pakietu Office 365 i zarządzaj nimi. |
+| Microsoft. Office 365. usageReports/allEntities/odczyt | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
+| Microsoft. Office 365. userCommunication/allEntities/allTasks | Odczytuj i Aktualizuj informacje o nowościach. |
+| Microsoft. 365. webports/allEntities/Basic/Read | Zapoznaj się z podstawowymi właściwościami wszystkich zasobów w Microsoft. 365. webport. |
 
 ### <a name="partner-tier1-support-permissions"></a>Uprawnienia do obsługi pomoc partnerów
 
@@ -1636,6 +1685,7 @@ Autorzy katalogów | Autorzy katalogów | 9360feb5-f418-4baa-8175-e2a00bac4301
 Administrator usługi Exchange | Administrator programu Exchange | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Administrator zewnętrznego dostawcy tożsamości | Administrator zewnętrznego dostawcy tożsamości | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Czytnik globalny | Czytnik globalny | f2ef992c-3afb-46b9-b7cf-a126ee74c451
+Administrator grupy | Administrator grupy | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Zapraszający gościa | Zapraszający gościa | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Administrator pomocy technicznej | Administrator haseł | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Administrator usługi Intune | Administrator usługi Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
@@ -1644,6 +1694,7 @@ Administrator licencji | Administrator licencji | 4d6ac14f-3453-41d0-bef9-a3e0c5
 Administrator usługi Lync | Administrator programu Skype dla firm | 75941009-915A-4869-abe7-691bff18279e
 Czytnik prywatności centrum wiadomości | Czytnik prywatności centrum wiadomości | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Czytelnik centrum wiadomości | Czytelnik centrum wiadomości | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Administrator aplikacji pakietu Office | Administrator aplikacji pakietu Office | 2b745bdf-0803-4d80-aa65-822c4493daac
 Obsługa pomoc partnera | Obsługa pomoc partnera | 4ba39ca4-527c-499a-b93d-d9b492c50246
 Obsługa SVR partnera | Obsługa SVR partnera | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Administrator haseł | Administrator haseł | 966707d0-3269-4727-9be2-8c3a10f19b9d

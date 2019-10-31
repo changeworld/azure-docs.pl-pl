@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 048051a612793cbe82f82fbde482ed470ad3758c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302476"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177828"
 ---
-# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: Tworzenie infrastruktury usługi AWS do hostowania klastra usługi Service Fabric
+# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: tworzenie infrastruktury usług AWS do obsługi klastra usługi Service Fabric
 
 Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. Ta seria samouczków przedstawia proces tworzenia klastra autonomicznego hostowanego w usłudze AWS i instalowania w nim aplikacji.
 
@@ -42,7 +42,7 @@ Do ukończenia tego samouczka jest potrzebne konto usług AWS.  Jeśli nie masz 
 
 ## <a name="create-ec2-instances"></a>Tworzenie wystąpień EC2
 
-Zaloguj się do konsoli usług AWS > wprowadź **usługi EC2** w polu wyszukiwania > **usługi EC2 serwerów wirtualnych w chmurze**
+Zaloguj się do konsoli usługi AWS > wprowadź **EC2** w polu wyszukiwania, > **EC2 serwery wirtualne w chmurze**
 
 ![Wyszukiwanie w konsoli usług AWS][aws-console]
 
@@ -50,7 +50,7 @@ Wybierz pozycję **Uruchom wystąpienie**. Na następnym ekranie wybierz przycis
 
 ![Wybór wystąpienia EC2][aws-ec2instance]
 
-Wybierz **t2.medium**, a następnie wybierz **dalej: Skonfiguruj Szczegóły wystąpienia**na następnym ekranie zmienić liczbę wystąpień `3`, a następnie wybierz **szczegóły zaawansowane** aby rozwinąć tę sekcję.
+Wybierz pozycję **t2.medium**, a następnie pozycję **Dalej: skonfiguruj szczegóły wystąpienia**. Na następnym ekranie zmień liczbę wystąpień na `3` i wybierz pozycję  **Szczegóły zaawansowane**, aby rozwinąć tę sekcję.
 
 Aby połączyć maszyny wirtualne z usługą Service Fabric, maszyny wirtualne, które hostują infrastrukturę, muszą mieć takie same poświadczenia.  Istnieją dwa podstawowe sposoby na uzyskanie spójnych poświadczeń: dołączenie wszystkich hostów do tej samej domeny lub ustawienie takiego samego hasła administratora na każdej maszynie wirtualnej.  W tym samouczku użyto skryptu danych użytkownika w celu ustawienia dla wszystkich wystąpień EC2 takiego samego hasła.  W środowisku produkcyjnym dołączenie hostów do domeny systemu Windows jest bardziej bezpieczne.
 
@@ -82,7 +82,7 @@ Usługa Service Fabric wymaga otwarcia niektórych portów między hostami w kla
 
 Aby uniknąć otwierania tych portów dla wszystkich użytkowników na świecie, należy otworzyć je tylko dla hostów z tej samej grupy zabezpieczeń. Zanotuj identyfikator grupy zabezpieczeń, w tym przykładzie jest to **sg-c4fb1eba**.  Wybierz pozycję **Edytuj**.
 
-Następnie dodaj cztery reguły do grupy zabezpieczeń pod kątem zależności usług i jeszcze trzy dla samej usługi Service Fabric. Pierwsza reguła zezwala na ruch ICMP, aby można było przeprowadzić podstawowe monitorowanie połączeń. Pozostałe reguły otwierają porty wymagane do włączenia protokołu SMB i rejestru zdalnego.
+Następnie dodaj cztery reguły do grupy zabezpieczeń pod kątem zależności usług i jeszcze trzy dla samej usługi Service Fabric. Pierwsza reguła zezwala na ruch ICMP, aby można było przeprowadzić podstawowe monitorowanie połączeń. Inne reguły otwierają wymagane porty, aby umożliwić Rejestr zdalny.
 
 W przypadku pierwszej reguły wybierz przycisk **Dodaj regułę**, a następnie z listy rozwijanej wybierz pozycję **Wszystkie ICMP — IPv4**. Wybierz pole wprowadzania obok wartości Niestandardowe i wprowadź zanotowany wcześniej identyfikator grupy zabezpieczeń.
 
@@ -110,7 +110,7 @@ Po zanotowaniu wszystkich adresów IP wybierz jedno z wystąpień, z którym ma 
 
 Po pomyślnym nawiązaniu połączenia z wystąpieniem zweryfikuj połączenie i możliwość udostępnienia plików.  Wcześniej zebrano adresy IP wszystkich wystąpień. Wybierz wystąpienie, z którym aktualnie nawiązano połączenie. Przejdź do menu **Start**, wprowadź `cmd` i wybierz pozycję **Wiersz polecenia**.
 
-W tych przykładach nawiązano połączenie RDP do następującego adresu IP: 172.31.21.141. Połączenie wszystkich testów, a następnie występują na adres IP: 172.31.20.163.
+W tych przykładach nawiązano połączenie RDP z następującym adresem IP: 172.31.21.141. Wszystkie testy łączności są następnie przeprowadzane względem drugiego adresu IP: 172.31.20.163.
 
 Aby sprawdzić, czy podstawowe połączenie działa, użyj polecenia ping.
 
@@ -118,33 +118,21 @@ Aby sprawdzić, czy podstawowe połączenie działa, użyj polecenia ping.
 ping 172.31.20.163
 ```
 
-Jeśli w Twoich danych wyjściowych cztery razy pojawia się komunikat podobny do tego: `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, oznacza to, że połączenie między wystąpieniami działa.  Teraz użyj następującego polecenia, aby zweryfikować, że udostępnianie za pomocą protokołu SMB działa:
-
-```
-net use * \\172.31.20.163\c$
-```
-
-Powinien zostać wyświetlony komunikat podobny do następującego: `Drive Z: is now connected to \\172.31.20.163\c$.`.
+Jeśli w Twoich danych wyjściowych cztery razy pojawia się komunikat podobny do tego: `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, oznacza to, że połączenie między wystąpieniami działa.  
 
 ## <a name="prep-instances-for-service-fabric"></a>Przygotowywanie wystąpień na potrzeby usługi Service Fabric
 
-Jeśli wszystkie opisywane czynności były tworzone od podstaw, należało wykonać jeszcze kilka dodatkowych kroków.  Należało sprawdzić, czy rejestr zdalny jest uruchomiony, włączyć protokół SMB i otworzyć porty wymagane dla protokołu SMB oraz rejestru zdalnego.
+Jeśli wszystkie opisywane czynności były tworzone od podstaw, należało wykonać jeszcze kilka dodatkowych kroków.  W tym celu należy sprawdzić, czy Rejestr zdalny był uruchomiony i otworzyć wymagane porty.
 
 Aby sobie ułatwić pracę, wszystkie te czynności zostały wykonane podczas inicjowania wystąpień za pomocą skryptu danych użytkownika.
-
-W celu włączenia protokołu SMB użyto tego polecenia programu PowerShell:
-
-```powershell
-netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-```
 
 W celu otwarcia portów w zaporze użyto tego polecenia programu PowerShell:
 
 ```powershell
-New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W części pierwszej tej serii przedstawiono sposób uruchamiania trzech wystąpień EC2 i ich konfigurowania na potrzeby instalacji usługi Service Fabric:
 

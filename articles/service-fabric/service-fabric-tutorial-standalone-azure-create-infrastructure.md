@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: v-vasuke
 ms.custom: mvc
-ms.openlocfilehash: d9db71a1b64ea6bf2dc73500160ce8e5e6022ef6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385031"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177731"
 ---
-# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: Tworzenie infrastruktury maszyny wirtualnej platformy Azure na potrzeby hostowania klastra Service Fabric
+# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: tworzenie infrastruktury maszyny wirtualnej platformy Azure na potrzeby hostowania klastra Service Fabric
 
 Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków utworzysz klaster autonomiczny hostowany na maszynach wirtualnych platformy Azure i zainstaluje na nim aplikację.
 
@@ -58,14 +58,14 @@ Do wykonania kroków tego samouczka potrzebna jest subskrypcja platformy Azure. 
 
 7. Na karcie **Sieć** utwórz nową **Virtual Network** i zanotuj jej nazwę.
 
-8. Następnie ustaw wartość Advanced **Network Security Group** (karta sieciowa). Utwórz nową grupę zabezpieczeń, zwracając nazwę i Utwórz następujące reguły, aby zezwolić na ruch TCP z dowolnego źródła:
+8. Następnie ustaw wartość Advanced **Network Security Group** (kartasieciowa). Utwórz nową grupę zabezpieczeń, zwracając nazwę i Utwórz następujące reguły, aby zezwolić na ruch TCP z dowolnego źródła:
 
    ![SF — przychodzące][sf-inbound]
 
-   * Port `3389`, protokół RDP i ICMP (łączność podstawowa).
-   * Porty `19000-19003`dla Service Fabric.
-   * Porty `19080-19081`dla Service Fabric.
-   * Port `8080`dla żądań przeglądarki sieci Web.
+   * `3389`portów dla protokołu RDP i ICMP (podstawowa łączność).
+   * Porty `19000-19003`, dla Service Fabric.
+   * Porty `19080-19081`, dla Service Fabric.
+   * `8080`portów w przypadku żądań przeglądarki sieci Web.
 
    > [!TIP]
    > Aby połączyć maszyny wirtualne z usługą Service Fabric, maszyny wirtualne, które hostują infrastrukturę, muszą mieć takie same poświadczenia.  Istnieją dwa podstawowe sposoby na uzyskanie spójnych poświadczeń: dołączenie wszystkich hostów do tej samej domeny lub ustawienie takiego samego hasła administratora na każdej maszynie wirtualnej. Na szczęście platforma Azure umożliwia łatwe łączenie się z wszystkimi maszynami wirtualnymi w tej samej **sieci wirtualnej** , dlatego będziemy mieć wszystkie nasze wystąpienia w tej samej sieci.
@@ -90,18 +90,12 @@ Uruchom jeszcze dwie **Virtual Machines**, pamiętaj, aby zachować te same usta
  
 4. Otwórz plik RDP i po wyświetleniu monitu wprowadź nazwę użytkownika i hasło podane w konfiguracji maszyny wirtualnej.
 
-5. Po nawiązaniu połączenia z wystąpieniem należy sprawdzić, czy Rejestr zdalny był uruchomiony, włączyć protokół SMB i otworzyć wymagane porty dla protokołu SMB i rejestru zdalnego.
-
-   Aby włączyć protokół SMB, jest to polecenie programu PowerShell:
-
-   ```powershell
-   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-   ```
+5. Po nawiązaniu połączenia z wystąpieniem należy sprawdzić, czy Rejestr zdalny był uruchomiony i otworzyć wymagane porty.
 
 6. W celu otwarcia portów w zaporze użyto tego polecenia programu PowerShell:
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
    ```
 
 7. Powtórz ten proces dla innych wystąpień i ponownie Zanotuj prywatne adresy IP.
@@ -117,15 +111,6 @@ Uruchom jeszcze dwie **Virtual Machines**, pamiętaj, aby zachować te same usta
    ```
 
    Jeśli w Twoich danych wyjściowych cztery razy pojawia się komunikat podobny do tego: `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, oznacza to, że połączenie między wystąpieniami działa.
-
-3. Teraz użyj następującego polecenia, aby zweryfikować, że udostępnianie za pomocą protokołu SMB działa:
-
-   ```
-   net use * \\172.31.20.163\c$
-   ```
-
-   Powinien zostać wyświetlony komunikat podobny do następującego: `Drive Z: is now connected to \\172.31.20.163\c$.`.
-
 
    Teraz Twoje wystąpienia są prawidłowo przygotowane do Service Fabric.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 6c74684ac45a040be154a1e6406c1e7a5e0dd253
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 47e5e9dd81174b79e149ba29eec725c8c17eb1a6
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817152"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176408"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>zebrane: metryki wydajności systemu Linux w Application Insights
 
@@ -32,7 +32,7 @@ Skopiuj klucz instrumentacji, który identyfikuje zasób.
 Na komputerach z systemem Linux:
 
 1. Zainstaluj [zebraną](https://collectd.org/) wersję 5.4.0 lub nowszą.
-2. Pobierz [wtyczkę Application Insights zebranych modułów zapisujących](https://aka.ms/aijavasdk). Zanotuj numer wersji.
+2. Pobierz [wtyczkę Application Insights zebranych modułów zapisujących](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Zanotuj numer wersji.
 3. Skopiuj wtyczkę JAR do `/usr/share/collectd/java`.
 4. Edytuj `/etc/collectd/collectd.conf`:
    * Upewnij się, że [Wtyczka Java](https://collectd.org/wiki/index.php/Plugin:Java) jest włączona.

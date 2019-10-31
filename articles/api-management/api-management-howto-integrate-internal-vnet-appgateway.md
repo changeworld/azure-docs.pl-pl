@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: b994f75327cb78cd422d75682ee68ea7840a87e8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193955"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176747"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrowanie API Management w wewnętrznej sieci wirtualnej z Application Gateway
 
@@ -86,7 +86,7 @@ W tym przewodniku udostępnimy również **Portal deweloperów** dla zewnętrzny
 > Jeśli używasz usługi Azure AD lub uwierzytelniania innej firmy, Włącz funkcję [koligacji sesji na podstawie plików cookie](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) w Application Gateway.
 
 > [!WARNING]
-> Aby uniemożliwić Application Gateway WAF pobieranie specyfikacji OpenAPI w portalu dla deweloperów, należy wyłączyć regułę `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`zapory.
+> Aby uniemożliwić Application Gateway WAF pobieranie specyfikacji OpenAPI w portalu dla deweloperów, należy wyłączyć regułę zapory `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Tworzenie grupy zasobów dla usługi Resource Manager
 
@@ -119,11 +119,11 @@ $location = "West US"           # Azure region
 New-AzResourceGroup -Name $resGroupName -Location $location
 ```
 
-Usługa Azure Resource Manager wymaga, aby wszystkie grupy zasobów określały lokalizację. Będzie ona używana jako domyślna lokalizacja dla zasobów w danej grupie zasobów. Upewnij się, że wszystkie polecenia służące do tworzenia bramy aplikacji używają tej samej grupy zasobów.
+Usługa Azure Resource Manager wymaga, żeby wszystkie grupy zasobów miały lokalizację. Będzie ona używana jako domyślna lokalizacja dla zasobów w danej grupie zasobów. Upewnij się, że wszystkie polecenia służące do tworzenia bramy aplikacji używają tej samej grupy zasobów.
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Tworzenie Virtual Network i podsieci dla bramy aplikacji
 
-Poniższy przykład pokazuje, jak utworzyć Virtual Network przy użyciu usługi Resource Manager.
+Poniższy przykład pokazuje, jak utworzyć Virtual Network przy użyciu Menedżer zasobów.
 
 ### <a name="step-1"></a>Krok 1
 
@@ -181,13 +181,13 @@ $apimAdminEmail = "admin@contoso.com" # administrator's email address
 $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $location -Name $apimServiceName -Organization $apimOrganization -AdminEmail $apimAdminEmail -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
 ```
 
-Gdy powyższe polecenie zakończy się pomyślnie, odwołuje się do konfiguracji DNS wymaganej do uzyskania dostępu do tej [usługi API Management wewnętrznej sieci wirtualnej](api-management-using-with-internal-vnet.md#apim-dns-configuration) . Ten krok może potrwać ponad pół godziny.
+Gdy powyższe polecenie zakończy się pomyślnie, odwołuje się do [konfiguracji DNS wymaganej do](api-management-using-with-internal-vnet.md#apim-dns-configuration) uzyskania dostępu do tej usługi API Management wewnętrznej sieci wirtualnej. Ten krok może potrwać ponad pół godziny.
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>Skonfiguruj niestandardową nazwę domeny w API Management
 
 ### <a name="step-1"></a>Krok 1
 
-Zainicjuj następujące zmienne, podając szczegóły certyfikatów z kluczami prywatnymi domen. W tym przykładzie będziemy używać `api.contoso.net` i. `portal.contoso.net`  
+Zainicjuj następujące zmienne, podając szczegóły certyfikatów z kluczami prywatnymi domen. W tym przykładzie będziemy używać `api.contoso.net` i `portal.contoso.net`.  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -208,12 +208,15 @@ Utwórz i ustaw obiekty konfiguracji nazwy hosta dla serwera proxy oraz dla port
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
-$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType Portal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
+$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType DeveloperPortal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
 
 $apimService.ProxyCustomHostnameConfiguration = $proxyHostnameConfig
 $apimService.PortalCustomHostnameConfiguration = $portalHostnameConfig
 Set-AzApiManagement -InputObject $apimService
 ```
+
+> [!NOTE]
+> Aby skonfigurować starszą łączność z portalem deweloperów, należy zamienić `-HostnameType DeveloperPortal` z `-HostnameType Portal`.
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Tworzenie publicznego adresu IP dla konfiguracji frontonu
 
@@ -273,10 +276,10 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>Krok 6
 
-Utwórz niestandardowe sondy do punktu końcowego domeny `ContosoApi` serwera proxy usługi API Management. Ścieżka `/status-0123456789abcdef` jest domyślnym punktem końcowym kondycji hostowanym na wszystkich API Management usługach. Ustaw `api.contoso.net` jako niestandardową nazwę hosta sondy do zabezpieczenia za pomocą certyfikatu SSL.
+Utwórz niestandardowe sondy do punktu końcowego domeny serwera proxy usługi API Management `ContosoApi`. Ścieżka `/status-0123456789abcdef` to domyślny punkt końcowy kondycji hostowany na wszystkich API Management usługach. Ustaw `api.contoso.net` jako niestandardową nazwę hosta sondy do zabezpieczenia za pomocą certyfikatu SSL.
 
 > [!NOTE]
-> Nazwa hosta `contosoapi.azure-api.net` jest domyślną nazwą hosta serwera proxy skonfigurowaną, gdy `contosoapi` usługa nazwana jest tworzona na publicznej platformie Azure.
+> Nazwa hosta `contosoapi.azure-api.net` jest domyślną nazwą hosta serwera proxy skonfigurowaną, gdy usługa o nazwie `contosoapi` jest tworzona na publicznej platformie Azure.
 >
 
 ```powershell
@@ -350,7 +353,7 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 
 Po utworzeniu bramy następnym krokiem jest skonfigurowanie frontonu na potrzeby komunikacji. W przypadku korzystania z publicznego adresu IP Application Gateway wymaga dynamicznie przypisanej nazwy DNS, co może nie być łatwe w użyciu.
 
-Nazwa DNS Application Gateway powinna zostać użyta do utworzenia rekordu CNAME, który wskazuje nazwę hosta serwera proxy APIM (np. `api.contoso.net` w powyższych przykładach) do tej nazwy DNS. Aby skonfigurować rekord CNAME IP frontonu, Pobierz szczegóły Application Gateway i skojarzonego z nim nazwy IP/DNS przy użyciu elementu PublicIPAddress. Użycie rekordów A nie jest zalecane, ponieważ adres VIP może ulec zmianie po ponownym uruchomieniu bramy.
+Nazwa DNS Application Gateway powinna zostać użyta do utworzenia rekordu CNAME, który wskazuje nazwę hosta serwera proxy APIM (np. `api.contoso.net` w powyższych przykładach) na tę nazwę DNS. Aby skonfigurować rekord CNAME IP frontonu, Pobierz szczegóły Application Gateway i skojarzonego z nim nazwy IP/DNS przy użyciu elementu PublicIPAddress. Użycie rekordów A nie jest zalecane, ponieważ adres VIP może ulec zmianie po ponownym uruchomieniu bramy.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"

@@ -1,6 +1,6 @@
 ---
-title: Zmiana ról zasobów dla pakietu dostępu w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza) — Azure Active Directory
-description: Dowiedz się, jak zmienić role zasobów dla istniejącego pakietu dostępu w Azure Active Directory Zarządzanie prawami (wersja zapoznawcza).
+title: Zmiana ról zasobów dla pakietu dostępu w usłudze Azure AD uprawnień zarządzanie — Azure Active Directory
+description: Dowiedz się, jak zmienić role zasobów dla istniejącego pakietu dostępu w Azure Active Directory Zarządzanie uprawnieniami.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b719546ec598f2e99061597e99a3d4e875b12cf
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429810"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174646"
 ---
-# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Zmiana ról zasobów dla pakietu dostępu w usłudze Azure AD uprawnia do zarządzania (wersja zapoznawcza)
-
-> [!IMPORTANT]
-> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Zmiana ról zasobów dla pakietu dostępu w usłudze Azure AD uprawnienia zarządzania
 
 Jako Menedżer pakietów programu Access można w dowolnym momencie zmienić zasoby w pakiecie dostępu bez konieczności aprowizacji dostępu użytkownika do nowych zasobów lub usuwania ich dostępu z poprzednich zasobów. W tym artykule opisano sposób zmiany ról zasobów dla istniejącego pakietu dostępu.
 

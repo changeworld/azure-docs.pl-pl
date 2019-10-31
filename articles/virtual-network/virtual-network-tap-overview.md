@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 3ea1b97855e5c060b6cbb6c43ce5111506bf4c20
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 99cd9fc1da009660023a246c5210e7f54bdebcfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676916"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177421"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 
 Usługa Azure Virtual Network TAP (punkt dostępu terminalu) umożliwia ciągłą przesyłanie strumieniowego ruchu sieciowego maszyny wirtualnej do narzędzia do zbierania pakietów sieciowych lub narzędzi analitycznych. Moduł zbierający lub narzędzie analityczne jest dostarczany przez partnera [wirtualnego urządzenia sieciowego](https://azure.microsoft.com/solutions/network-appliances/) . Aby uzyskać listę rozwiązań partnerskich, które są sprawdzane pod kątem współpracy z siecią wirtualną, zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions).
 
 > [!IMPORTANT]
-> Usługa Virtual Network TAP jest obecnie dostępna w wersji zapoznawczej we wszystkich regionach świadczenia usługi Azure. Aby skorzystać z usługi Virtual Network, musisz zarejestrować się w wersji zapoznawczej, wysyłając wiadomość e-mail na adres @ no__t-0 z IDENTYFIKATORem subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej możliwości, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie powinna być używana na potrzeby obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Zobacz [uzupełniające warunki użytkowania Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)wersje zapoznawcze @no__t — szczegóły 1for.
+> Usługa Virtual Network TAP jest obecnie dostępna w wersji zapoznawczej we wszystkich regionach świadczenia usługi Azure. Aby skorzystać z usługi Virtual Network, musisz zarejestrować się w wersji zapoznawczej, wysyłając wiadomość e-mail na adres <azurevnettap@microsoft.com> przy użyciu identyfikatora subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej możliwości, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie powinna być używana na potrzeby obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure .
 
 ## <a name="virtual-network-tap-partner-solutions"></a>Rozwiązania partnerskie TAP sieci wirtualnej
 
@@ -43,7 +43,7 @@ Usługa Azure Virtual Network TAP (punkt dostępu terminalu) umożliwia ciągł�
 - [Zabezpieczenia w stanie aktywności](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Chmura Cisco Stealthwatch](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Darktrace](https://www.darktrace.com/en/azure/)
-- [ExtraHop (x)](https://www.extrahop.com/company/tech-partners/microsoft/)
+- [ExtraHop (x)](https://www.extrahop.com/partners/tech-partners/microsoft/)
 - [Fidelis cyberbezpieczeństwa](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)

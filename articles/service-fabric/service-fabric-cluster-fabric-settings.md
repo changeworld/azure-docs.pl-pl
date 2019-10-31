@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: e361ba4c7275a783b9211def5047a5a755f5a8b8
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: d0d87b42232a19d6bcd3c225fb4a4f8f8b459350
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881997"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177794"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosuj ustawienia klastra Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej dla klastra Service Fabric, które można dostosować. W przypadku klastrów hostowanych na platformie Azure można dostosować ustawienia za pomocą [Azure Portal](https://portal.azure.com) lub szablonu Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra platformy Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych można dostosować ustawienia, aktualizując plik *ClusterConfig. JSON* i wykonując uaktualnienie konfiguracji w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -131,14 +131,14 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |AppEtwTraceDeletionAgeInDays |Int, wartość domyślna to 3 | Dynamiczny |Liczba dni, po usunięciu starych plików ETL zawierających ślady ETW aplikacji. |
 |ApplicationLogsFormatVersion |int, wartość domyślna to 0 | Dynamiczny |Wersja formatu dzienników aplikacji. Obsługiwane wartości to 0 i 1. Wersja 1 zawiera więcej pól z rekordu zdarzenia ETW niż wersja 0. |
 |AuditHttpRequests |Bool, wartość domyślna to false | Dynamiczny | Włącz lub Wyłącz inspekcję HTTP. Celem inspekcji jest wyświetlenie działań, które zostały wykonane względem klastra; dołączenie do osoby, która zainicjowała żądanie. Należy zauważyć, że jest to Najlepsza próba zarejestrowania; mogą wystąpić utracone wyniki. Żądania HTTP z uwierzytelnianiem użytkownika nie są rejestrowane. |
-|CaptureHttpTelemetry|Bool, wartość domyślna to false | Dynamiczny | Włączać lub wyłączać dane telemetryczne protokołu HTTP. Celem telemetrii jest umożliwienie Service Fabric przechwycenia danych telemetrycznych w celu zaplanowania przyszłej pracy i zidentyfikowania obszarów problemów. Telemetrię nie rejestruje żadnych danych osobowych ani treści żądania. Dane telemetryczne przechwytują wszystkie żądania HTTP, o ile nie zostały skonfigurowane inaczej |
+|CaptureHttpTelemetry|Bool, wartość domyślna to true | Dynamiczny | Włączać lub wyłączać dane telemetryczne protokołu HTTP. Celem telemetrii jest umożliwienie Service Fabric przechwycenia danych telemetrycznych w celu zaplanowania przyszłej pracy i zidentyfikowania obszarów problemów. Telemetrię nie rejestruje żadnych danych osobowych ani treści żądania. Dane telemetryczne przechwytują wszystkie żądania HTTP, o ile nie zostały skonfigurowane inaczej |
 |ClusterId |Ciąg | Dynamiczny |Unikatowy identyfikator klastra. Ta wartość jest generowana podczas tworzenia klastra. |
 |ConsumerInstances |Ciąg | Dynamiczny |Lista wystąpień konsumentów DCA. |
 |DiskFullSafetySpaceInMB |Int, wartość domyślna to 1024 | Dynamiczny |Pozostała ilość miejsca na dysku (w MB) do ochrony przed użyciem przez DCA. |
 |EnableCircularTraceSession |Bool, wartość domyślna to false | Statyczny |Flaga wskazuje, czy należy używać cyklicznych sesji śledzenia. |
 |EnablePlatformEventsFileSink |Bool, wartość domyślna to false | Statyczny |Włączanie/wyłączanie zdarzeń platformy zapisywanych na dysku |
 |EnableTelemetry |Bool, wartość domyślna to true | Dynamiczny |Spowoduje to włączenie lub wyłączenie telemetrii. |
-|FailuresOnlyHttpTelemetry | Bool, wartość domyślna to true | Dynamiczny | Jeśli funkcja przechwytywania telemetrii HTTP jest włączona; Przechwyć tylko Nieudane żądania. Jest to pomocne w zmniejszeniu liczby zdarzeń wygenerowanych na potrzeby telemetrii. |
+|FailuresOnlyHttpTelemetry | Bool, wartość domyślna to false | Dynamiczny | Jeśli funkcja przechwytywania telemetrii HTTP jest włączona; Przechwyć tylko Nieudane żądania. Jest to pomocne w zmniejszeniu liczby zdarzeń wygenerowanych na potrzeby telemetrii. |
 |HttpTelemetryCapturePercentage | int, wartość domyślna to 50 | Dynamiczny | Jeśli funkcja przechwytywania telemetrii HTTP jest włączona; Przechwyć tylko losową wartość procentową żądań. Jest to pomocne w zmniejszeniu liczby zdarzeń wygenerowanych na potrzeby telemetrii. |
 |MaxDiskQuotaInMB |Int, wartość domyślna to 65536 | Dynamiczny |Przydział dysku w MB dla plików dziennika Windows Fabric. |
 |ProducerInstances |Ciąg | Dynamiczny |Lista wystąpień producentów DCA. |

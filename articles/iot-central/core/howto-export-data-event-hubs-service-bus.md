@@ -8,12 +8,12 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: df1263e2cc13f875819c9bb16b5eb7399368b7f5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4a0959c7562c3868825e26366ae08e9b87f92319
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953527"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177213"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Eksportowanie danych do usługi Azure IoT Central
 
@@ -160,7 +160,7 @@ Komunikaty zawierające dane urządzenia są wysyłane do centrum zdarzeń lub k
 Każdy komunikat reprezentuje co najmniej jedną zmianę urządzenia od ostatniego wyeksportowanego komunikatu. Informacje wysyłane w poszczególnych wiadomościach obejmują:
 - `id` urządzenia w IoT Central
 - `name` urządzenia
-- `deviceId` z [usługi Device Provisioning](https://aka.ms/iotcentraldocsdps)
+- `deviceId` z [usługi Device Provisioning](/azure/iot-central/core/howto-connect-nodejs)
 - Informacje o szablonie urządzenia
 - Wartości właściwości
 - Ustawianie wartości

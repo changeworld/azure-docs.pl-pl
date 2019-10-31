@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598872"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177988"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Samouczek: Wdrażanie klastra Service Fabric z systemem Windows w sieci wirtualnej platformy Azure
 
@@ -80,14 +80,14 @@ W zasobie **Microsoft.ServiceFabric/clusters** skonfigurowano klaster systemu Wi
 
 * Trzy typy węzłów.
 * Pięć węzłów w podstawowym typie węzła (konfigurowalne w parametrach szablonu) i jeden węzeł w każdym z dwóch pozostałych typów węzłów.
-* System operacyjny: System Windows Server 2016 Datacenter z kontenerami (konfigurowalne w parametrach szablonu).
+* System operacyjny: Windows Server 2016 Datacenter z kontenerami (konfigurowalne w parametrach szablonu).
 * Certyfikat zabezpieczony (konfigurowalny w parametrach szablonu).
 * [Zwrotny serwer proxy](service-fabric-reverseproxy.md) jest włączony.
 * [Usługa DNS](service-fabric-dnsservice.md) jest włączona.
 * [Poziom trwałości](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Bronze (konfigurowalny w parametrach szablonu).
 * [Poziom niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) Silver (konfigurowalny w parametrach szablonu).
-* Punkt końcowy połączenia klienta: 19000 (konfigurowalne w parametrach szablonu).
-* Punkt końcowy bramy protokołu HTTP: 19080 (konfigurowalne w parametrach szablonu).
+* Punkt końcowy połączenia klienta: 19000 (konfigurowalny w parametrach szablonu).
+* Punkt końcowy bramy HTTP: 19080 (konfigurowalne w parametrach szablonu).
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
@@ -112,11 +112,10 @@ Poniższe reguły ruchu przychodzącego są włączone w zasobie **Microsoft.Net
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
-* SMB: 445
 * Internodecommunication: 1025, 1026, 1027
-* Zakres portów tymczasowych: 49152 do 65534 (wymagane jest co najmniej 256 portów).
+* Zakres portów tymczasowych: 49152 do 65534 (wymaga co najmniej 256 portów).
 * Porty do użytku aplikacji: 80 i 443
-* Zakres portów aplikacji: 49152 do 65534 (używany do komunikacji między usługami. Inne porty nie są otwierane w module równoważenia obciążenia).
+* Zakres portów aplikacji: od 49152 do 65534 (używany do komunikacji między usługami. Inne porty nie są otwierane w module równoważenia obciążenia).
 * Wszystkie pozostałe porty są zablokowane
 
 Jeśli są potrzebne inne porty aplikacji, należy dostosować zasób **Microsoft. Network/loadBalancers** oraz zasób **Microsoft. Network/networkSecurityGroups** , aby umożliwić ruch w programie.
@@ -154,14 +153,14 @@ Domyślnie [program antywirusowy Windows Defender](/windows/security/threat-prot
 
 Plik parametrów [azuredeploy. Parameters. JSON][parameters] deklaruje wiele wartości używanych do wdrożenia klastra i skojarzonych zasobów. Poniżej przedstawiono parametry, które należy zmodyfikować dla danego wdrożenia:
 
-**Parametr** | **Przykładowa wartość** | **Uwagi** 
+**Konstruktora** | **Przykładowa wartość** | **Uwagi** 
 |---|---|---|
 |adminUserName|vmadmin| Nazwa użytkownika będącego administratorem maszyn wirtualnych klastra. [Wymagania dotyczące nazwy użytkownika dla maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
 |adminPassword|Haslo#1234| Hasło administratora maszyn wirtualnych klastra. [Wymagania dotyczące hasła dla maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mojklastersf123| Nazwa klastra. Może zawierać tylko litery i cyfry. Długość powinna wynosić od 3 do 23 znaków.|
 |location|southcentralus| Lokalizacja klastra. |
 |certificateThumbprint|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość odcisku palca SHA1 certyfikatu. Na przykład „6190390162C988701DB5676EB81083EA608DCCF3”.</p> |
-|certificateUrlValue|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta. </p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź adres URL certyfikatu. Na przykład "https:\//mykeyvault.Vault.Azure.NET:443/Secrets/MyCertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta. </p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź adres URL certyfikatu. Na przykład "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość magazynu źródłowego. Na przykład „/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT”.</p>|
 
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Konfigurowanie uwierzytelniania klienta za pomocą usługi Azure Active Directory
@@ -192,15 +191,15 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 ```
 
 > [!NOTE]
-> W przypadku chmur narodowych (na przykład Azure Government Azure Chiny, Azure (Niemcy), `-Location` określ parametr.
+> W przypadku chmur narodowych (na przykład Azure Government Azure Chiny, Azure (Niemcy), określ parametr `-Location`.
 
-Wartość *TenantId*, czyli identyfikator katalogu, możesz znaleźć w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **Azure Active Directory** > **Właściwości** i skopiuj wartość **Identyfikator katalogu** .
+Wartość *TenantId*, czyli identyfikator katalogu, możesz znaleźć w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję Azure Active Directory **Właściwości** > i skopiuj wartość **Identyfikator katalogu** .
 
 Wartość *ClusterName* służy jako prefiks aplikacji usługi Azure AD tworzonych przez skrypt. Nie musi dokładnie pasować do rzeczywistej nazwy klastra. Ułatwia on mapowanie artefaktów usługi Azure AD do klastra Service Fabric w użyciu.
 
 Wartość *WebApplicationReplyUrl* to domyślny punkt końcowy zwracany przez usługę Azure AD do użytkowników, gdy zakończą logowanie. Ustaw ten punkt końcowy jako punkt końcowy narzędzia Service Fabric Explorer dla klastra. Domyślnie to:
 
-https://&lt;cluster_domain&gt;:19080/Explorer
+https://&lt;domena_klastra&gt;:19080/Explorer
 
 Zostanie wyświetlony monit o zalogowanie się do konta z uprawnieniami administracyjnymi dla dzierżawy usługi Azure AD. Po zalogowaniu skrypt utworzy aplikacje internetową i natywną mające reprezentować klaster usługi Service Fabric. W aplikacjach dzierżawy w [Azure Portal](https://portal.azure.com)powinny zostać wyświetlone dwa nowe wpisy:
 
@@ -442,9 +441,9 @@ Aby włączyć usługę EventStore w klastrze, Dodaj następujące polecenie do 
 
 ## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>Konfigurowanie dzienników Azure Monitor dla klastra
 
-Dzienniki Azure Monitor to nasze zalecenie do monitorowania zdarzeń na poziomie klastra. Aby skonfigurować Azure Monitor dzienników do monitorowania klastra, musisz mieć włączoną diagnostykę, [Aby wyświetlić zdarzenia poziomu klastra](#configure-diagnostics-collection-on-the-cluster).  
+Dzienniki Azure Monitor to nasze zalecenie do monitorowania zdarzeń na poziomie klastra. Aby skonfigurować Azure Monitor dzienników do monitorowania klastra, musisz mieć [włączoną diagnostykę, aby wyświetlić zdarzenia poziomu klastra](#configure-diagnostics-collection-on-the-cluster).  
 
-Obszaru roboczego musi być podłączony do danych diagnostycznych z klastra.  Te dane dziennika są przechowywane na koncie magazynu *applicationDiagnosticsStorageAccountName* w tabelach WADServiceFabric * Eventing, WADWindowsEventLogsTable i WADETWEventTable.
+Obszar roboczy musi być połączony z danymi diagnostycznymi pochodzącymi z klastra.  Te dane dziennika są przechowywane na koncie magazynu *applicationDiagnosticsStorageAccountName* w tabelach WADServiceFabric * Eventing, WADWindowsEventLogsTable i WADETWEventTable.
 
 Dodaj obszar roboczy usługi Azure Log Analytics i Dodaj rozwiązanie do obszaru roboczego:
 
@@ -716,7 +715,7 @@ Get-ServiceFabricClusterHealth
 
 Inne artykuły w tej serii samouczków używają utworzonego klastra. Jeśli nie przechodzisz od razu do następnego artykułu, rozważ [usunięcie klastra](service-fabric-cluster-delete.md), aby uniknąć naliczania opłat.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przejdź do następującego samouczka, aby dowiedzieć się, jak skalować klaster.
 

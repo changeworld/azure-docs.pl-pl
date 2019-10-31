@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/30/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f30194592989b74aca96a5a483e9128cd3a86eb5
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a259fbcf3fde84edccafbcd2fd6594ddb623edfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274475"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175329"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — uzyskuje token dla aplikacji
 
@@ -81,7 +81,7 @@ Te zaawansowane kroki są przetwarzane w rozdziale 3 samouczka [3-webapp-wiele i
 
 Elementy są podobne do ASP.NET:
 
-- Akcja kontrolera chroniona przez atrybut [autoryzuje] wyodrębnia identyfikator dzierżawy i identyfikator użytkownika elementu członkowskiego `ClaimsPrincipal` kontrolera. (ASP.NET używa `HttpContext.User`).
+- Akcja kontrolera chroniona przez atrybut [autoryzuje] wyodrębnia identyfikator dzierżawy i identyfikator użytkownika `ClaimsPrincipal` elementu członkowskiego kontrolera. (ASP.NET używa `HttpContext.User`).
 - Z tego miejsca tworzy MSAL.NET `IConfidentialClientApplication`.
 - Na koniec wywołuje metodę `AcquireTokenSilent` poufnej aplikacji klienckiej.
 
@@ -94,40 +94,59 @@ W przykładowym kodzie Java kod, który wywołuje interfejs API, znajduje się w
 Próbuje wywołać `getAuthResultBySilentFlow`. Jeśli użytkownik musi wyrazić zgodę na więcej zakresów, kod przetwarza `MsalInteractionRequiredException`, aby zakwestionować użytkownika.
 
 ```java
-@RequestMapping("/msal4jsample/graph/users")
-    public ModelAndView getUsersFromGraph(HttpServletRequest httpRequest, HttpServletResponse response)
-            throws Throwable {
+@RequestMapping("/msal4jsample/graph/me")
+public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServletResponse response)
+        throws Throwable {
 
-        IAuthenticationResult result;
-        ModelAndView mav;
-        try {
-            result = authHelper.getAuthResultBySilentFlow(httpRequest, response);
-        } catch (ExecutionException e) {
-            if (e.getCause() instanceof MsalInteractionRequiredException) {
+    IAuthenticationResult result;
+    ModelAndView mav;
+    try {
+        result = authHelper.getAuthResultBySilentFlow(httpRequest, response);
+    } catch (ExecutionException e) {
+        if (e.getCause() instanceof MsalInteractionRequiredException) {
 
-                // If silent call returns MsalInteractionRequired, then redirect to Authorization endpoint
-                // so user can consent to new scopes
-                String state = UUID.randomUUID().toString();
-                String nonce = UUID.randomUUID().toString();
+            // If silent call returns MsalInteractionRequired, then redirect to Authorization endpoint
+            // so user can consent to new scopes
+            String state = UUID.randomUUID().toString();
+            String nonce = UUID.randomUUID().toString();
 
-                SessionManagementHelper.storeStateAndNonceInSession(httpRequest.getSession(), state, nonce);
+            SessionManagementHelper.storeStateAndNonceInSession(httpRequest.getSession(), state, nonce);
 
-                String authorizationCodeUrl = authHelper.getAuthorizationCodeUrl(
-                        httpRequest.getParameter("claims"),
-                        "User.ReadBasic.all",
-                        authHelper.getRedirectUriGraphUsers(),
-                        state,
-                        nonce);
+            String authorizationCodeUrl = authHelper.getAuthorizationCodeUrl(
+                    httpRequest.getParameter("claims"),
+                    "User.Read",
+                    authHelper.getRedirectUriGraph(),
+                    state,
+                    nonce);
 
-                return new ModelAndView("redirect:" + authorizationCodeUrl);
-            } else {
+            return new ModelAndView("redirect:" + authorizationCodeUrl);
+        } else {
 
-                mav = new ModelAndView("error");
-                mav.addObject("error", e);
-                return mav;
-            }
+            mav = new ModelAndView("error");
+            mav.addObject("error", e);
+            return mav;
         }
-    // Code omitted here.
+    }
+
+    if (result == null) {
+        mav = new ModelAndView("error");
+        mav.addObject("error", new Exception("AuthenticationResult not found in session."));
+    } else {
+        mav = new ModelAndView("auth_page");
+        setAccountInfo(mav, httpRequest);
+
+        try {
+            mav.addObject("userInfo", getUserInfoFromGraph(result.accessToken()));
+
+            return mav;
+        } catch (Exception e) {
+            mav = new ModelAndView("error");
+            mav.addObject("error", e);
+        }
+    }
+    return mav;
+}
+// Code omitted here.
 ```
 
 # <a name="pythontabpython"></a>[Python](#tab/python)

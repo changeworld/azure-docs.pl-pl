@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/30/2019
 ms.author: helohr
-ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b62351f1d99ef54d2416a2427264aea225afc5a8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300164"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171612"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
@@ -71,6 +71,16 @@ deviceTRUST to dostawca usług dodanego pulpitu wirtualnego systemu Windows, kt�
 deviceTRUST rozszerza wartość pulpitu wirtualnego systemu Windows z ich kontekstową technologią zabezpieczeń. deviceTRUST umożliwia dostęp warunkowy do bezpiecznego dostępu do pulpitu wirtualnego systemu Windows, warunkowego dostępu do aplikacji w ramach pulpitu wirtualnego systemu Windows i stosowania zasad pulpitu wirtualnego systemu Windows bez żadnej dodatkowej infrastruktury. Korzystanie z usługi deviceTRUST umożliwia mobilny, elastyczny obszar roboczy, który spełnia wszystkie wymagania dotyczące zabezpieczeń, zgodności i przepisów prawnych. 
 
 - [Przejdź do witryny sieci Web partnera](https://devicetrust.com/wvd).
+
+## <a name="ivanti"></a>Ivanti
+
+![Logo Ivanti](./media/partners/ivanti.png)
+
+Ivanti User Workspace Manager to usługa, która jest dołączana do usług pulpitu wirtualnego systemu Windows, która ułatwia wdrażanie komputerów i zarządzanie nimi, oddzielając dane użytkowników z pulpitu w celu zapewnienia bezproblemowej przenośności. Dzięki programowi Ivanti użytkownicy mogą dostarczać złożone projekty, takie jak migracja do systemu Windows 10, przyjmowanie pakietu Office 365 lub przenoszenie usług do chmury szybciej. 
+
+Gdy jest używany z pulpitem wirtualnym systemu Windows, Menedżer obszaru roboczego użytkownika Ivanti zapewnia proste, kontekstowe zarządzanie środowiska pulpitu użytkownika, eliminując długotrwałe logowanie i likwidowanie zasad grupy Nightmares. Ivanti szablony z menedżerem obszarów roboczych użytkowników upraszczają instalację dla użytkowników za pomocą agentów i istniejącej konsoli programu. Menedżer obszarów roboczych użytkowników Ivanti zapewnia wydajność, bezpieczne pulpity, które użytkownicy odkochają, oszczędzają pieniądze na serwerach, skuteczniej zarządzają użytkownikami i obniżają ryzyko bezpieczeństwa punktów końcowych. 
+
+- [Przejdź do witryny sieci Web partnera](https://www.ivanti.com/products/user-workspace-manager).
 
 ## <a name="lakeside-software"></a>Lakeside oprogramowanie
 
@@ -133,6 +143,26 @@ Dostępna jako SaaS lub jako stos sieci Web w prywatnej chmurze, platforma Print
 
 - [Przejdź do witryny sieci Web partnera](https://www.printerlogic.com).
 
+## <a name="numecent"></a>Numecent
+
+![Logo Numecent](./media/partners/numecent.png)
+
+Numecent to dostawca usług dodanej przez pulpit wirtualny systemu Windows, który znacząco zmniejsza łączną liczbę kosztów operacyjnych dzięki szybkiemu dołączeniu i migracji skomplikowanych lub niezgodnych aplikacji systemu Windows w środowiskach klasycznych systemu Windows. Numecent minimalizuje także ilość potrzebnych użytkowników konfiguracji, redukuje aktualizacje aplikacji i upraszcza procesy złożone. Ponieważ Numecent Cloudpaging obsługuje więcej aplikacji bezproblemowo niż inne narzędzia dostarczania aplikacji, skraca czas i obciążenia IT w środowiskach z różnorodnym zestawem aplikacji. 
+
+W przypadku użycia z pulpitem wirtualnym systemu Windows Cloudpaging bardziej obniża koszty, wykonując cykl życia zasobów oprogramowania z wdrożenia w celu uaktualniania, mierzenia i usuwania aplikacji. Cloudpaging upraszcza zarządzanie obrazami przez dynamiczne Inicjowanie obsługi aplikacji zgodnie z potrzebami w czasie rzeczywistym do wdrożeń pulpitów wirtualnych systemu Windows. Cloudpaging pomaga aplikacjom uruchamiać się bez administracji ani interwencji w okresowych aktualizacjach systemu Windows 10. Cloudpaging również zmniejsza koszt licencjonowania kosztownych aplikacji przez umożliwienie wydajniejszego wdrażania i użycia tych aplikacji. 
+
+- [Przejdź do witryny sieci Web partnera](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+
+## <a name="rdpsoft"></a>RDPSoft
+
+![Logo RDPSoft](./media/partners/rdpsoft.png)
+
+RDPSoft to partner pulpitu wirtualnego systemu Windows, który zapewnia zaawansowane i niedrogie rozwiązania do monitorowania, zarządzania i raportowania. Oferty dowódców Pulpit zdalny umożliwiają specjalistom IT uzyskanie wglądu w kondycję, wydajność, aktywność użytkowników, Licencjonowanie i bezpieczeństwo wdrożeń pulpitów wirtualnych systemu Windows. 
+ 
+Rozwiązania dowódców Pulpit zdalny RDPSoft ulepszają administrację pulpitów wirtualnych systemu Windows. Funkcje zarządzania w warstwie Premium upraszczają delegowanie zadań związanych z zarządzaniem pulpitem wirtualnym systemu Windows do pomocy technicznej personelowi, zapewniając pomoc zdalną, sesję użytkownika i zarządzanie procesami. W tym samym czasie pakiet dowódców Pulpit zdalny zbiera bogate metryki dotyczące wydajności i obciążenia użytkownika, aktywności użytkowników i inspekcji, jakości połączenia pulpitu wirtualnego systemu Windows (opóźnienia i przepustowości), Licencjonowanie i zabezpieczenia w centralną usługę Azure SQL wystąpienie bazy danych do przeglądu. Dzięki RDPSoft bogate raporty historyczne i kompleksowe pulpity nawigacyjne są po prostu kliknięciami.
+
+- [Przejdź do witryny sieci Web partnera](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
 ## <a name="thinprint"></a>ThinPrint
 
 ![Logo ThinPrint](./media/partners/thinprint.png)
@@ -143,6 +173,16 @@ Rozwiązanie ezeep ThinPrint rozszerza wartość pulpitu wirtualnego systemu Win
 
 - [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
 - [Przejdź do witryny sieci Web partnera](https://www.ezeep.com/wvd-printing).
+
+## <a name="tricerat"></a>Tricerat
+
+![Logo Tricerat](./media/partners/tricerat.png)
+
+Tricerat oferuje znakomite rozwiązanie do zarządzania drukowaniem dla pulpitów wirtualnych systemu Windows i innych platform stacjonarnych. Oprogramowanie Tricerat ma niezawodne funkcje, oferując lepsze środowisko dla użytkowników i administratorów. Administratorzy mogą uzyskać wydajność dzięki zakończeniu zarządzania sterownikami, uproszczonym wdrażaniu kolejek wydruku i spójnym zarządzaniem na różnych platformach hybrydowych. Środowisko użytkownika zwiększa się w krótszym czasie, inteligentne kolejki wydruku na podstawie użytkownika, urządzenia i lokalizacji sieciowej oraz opcje samoobsługowego wybierania szybkiej drukarki. 
+
+Dzięki Tricerat drukowanie jest płynne w klasycznym pulpicie systemu Windows. Tricerat oprogramowanie umożliwia administratorom łatwe łączenie drukarek lokalnych z chmurą, rozszerzając Zarządzanie drukowaniem w przedsiębiorstwie z tradycyjnych środowisk na nowe, nowoczesne obszary robocze.
+
+- [Przejdź do witryny sieci Web partnera](https://www.tricerat.com/solutions/wvd-microsoft/).
 
 ## <a name="workspot"></a>Workspot
 

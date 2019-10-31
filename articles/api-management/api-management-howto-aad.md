@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6116ece6035b326440108c1f2b2effd1b6bb9258
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1def431bd24019c5f7d15cf7ac0e7550b85d17c4
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072543"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176711"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autoryzuj konta dewelopera przy użyciu Azure Active Directory na platformie Azure API Management
 
@@ -32,7 +32,7 @@ W tym artykule opisano sposób włączania dostępu do portalu dla deweloperów 
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autoryzuj konta dewelopera przy użyciu usługi Azure AD
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
 2. Wybierz ![strzałkę](./media/api-management-howto-aad/arrow.png).
 3. Wpisz w polu wyszukiwania **interfejs API** .
 4. Wybierz pozycję **API Management Services**.
@@ -59,8 +59,8 @@ W tym artykule opisano sposób włączania dostępu do portalu dla deweloperów 
 
 14.  Po zarejestrowaniu aplikacji Skopiuj **Identyfikator aplikacji (klienta)** ze strony **Przegląd** . 
 15. Wróć do wystąpienia API Management. W oknie **Dodawanie dostawcy tożsamości** wklej wartość **identyfikatora aplikacji (klienta)** do pola **Identyfikator klienta** .
-16. Przejdź z powrotem do konfiguracji usługi Azure AD, wybierz pozycję **certyfikaty &** wpisy tajne w obszarze **Zarządzaj**. Wybierz przycisk **nowy klucz tajny klienta** . Wprowadź wartość w polu **Opis**, wybierz dowolną opcję **wygaśnięcia** i wybierz pozycję **Dodaj**. Skopiuj wartość klucza tajnego klienta przed opuszczeniem strony. Będą one potrzebne w kolejnym kroku. 
-17. W obszarze **Zarządzaj**wybierz pozycję **uwierzytelnianie** , a następnie pozycję **tokeny ID** w obszarze niejawne **udzielenie**
+16. Przejdź z powrotem do konfiguracji usługi Azure AD, wybierz pozycję **certyfikaty & wpisy tajne** w obszarze **Zarządzaj**. Wybierz przycisk **nowy klucz tajny klienta** . Wprowadź wartość w polu **Opis**, wybierz dowolną opcję **wygaśnięcia** i wybierz pozycję **Dodaj**. Skopiuj wartość klucza tajnego klienta przed opuszczeniem strony. Będą one potrzebne w kolejnym kroku. 
+17. W obszarze **Zarządzaj**wybierz pozycję **uwierzytelnianie** , a następnie pozycję **tokeny ID** w obszarze **niejawne udzielenie**
 18. Wróć do wystąpienia API Management, wklej wpis tajny do pola **klucz tajny klienta** .
 
     > [!IMPORTANT]
@@ -71,9 +71,9 @@ W tym artykule opisano sposób włączania dostępu do portalu dla deweloperów 
 19. Okno **Dodawanie dostawcy tożsamości** zawiera również pole tekstowe **dozwolone dzierżawy** . W tym miejscu należy określić domeny wystąpień usługi Azure AD, do których chcesz udzielić dostępu do interfejsów API wystąpienia usług API Management. Można rozdzielić wiele domen z wierszami, spacjami lub przecinkami.
 
 > [!NOTE]
-> W sekcji **dozwolone dzierżawy** możesz określić wiele domen. Zanim użytkownik będzie mógł zalogować się z innej domeny niż oryginalna domena, w której zarejestrowano aplikację, Administrator globalny innej domeny musi udzielić uprawnienia aplikacji dostępu do danych katalogu. Aby udzielić uprawnienia, Administrator globalny powinien: a. Przejdź do `https://<URL of your developer portal>/aadadminconsent` (na https://contoso.portal.azure-api.net/aadadminconsent) przykład.
+> W sekcji **dozwolone dzierżawy** możesz określić wiele domen. Zanim użytkownik będzie mógł zalogować się z innej domeny niż oryginalna domena, w której zarejestrowano aplikację, Administrator globalny innej domeny musi udzielić uprawnienia aplikacji dostępu do danych katalogu. Aby udzielić uprawnienia, Administrator globalny powinien: a. Przejdź do `https://<URL of your developer portal>/aadadminconsent` (na przykład https://contoso.portal.azure-api.net/aadadminconsent).
 > b. Wpisz nazwę domeny dzierżawy usługi Azure AD, do której chcesz udzielić dostępu.
-> c. Wybierz **przesłać**. 
+> d. Wybierz pozycję **Prześlij**. 
 
 20.  Po określeniu odpowiedniej konfiguracji wybierz pozycję **Dodaj**.
 
@@ -84,13 +84,13 @@ Po zapisaniu zmian użytkownicy w określonym wystąpieniu usługi Azure AD mog�
 Po włączeniu dostępu dla użytkowników w wystąpieniu usługi Azure AD można dodać grupy usługi Azure AD w API Management. Następnie można łatwiej zarządzać skojarzeniem deweloperów w grupie z żądanymi produktami.
 
  > [!IMPORTANT]
- > Aby dodać zewnętrzną grupę usługi Azure AD, należy najpierw skonfigurować wystąpienie usługi Azure AD na karcie **tożsamości** , wykonując procedurę opisaną w poprzedniej sekcji. Ponadto aplikacja musi mieć udzielony dostęp do usługi Azure AD interfejs API programu Graph z `Directory.Read.All` uprawnieniami. 
+ > Aby dodać zewnętrzną grupę usługi Azure AD, należy najpierw skonfigurować wystąpienie usługi Azure AD na karcie **tożsamości** , wykonując procedurę opisaną w poprzedniej sekcji. Ponadto aplikacja musi mieć udzielony dostęp do usługi Azure AD interfejs API programu Graph z uprawnieniami `Directory.Read.All`. 
 
 Możesz dodać zewnętrzne grupy usługi Azure AD z karty **grupy** wystąpienia API Management.
 
 1. Wybierz kartę **Grupy**.
 2. Wybierz przycisk **Dodaj grupę usługi AAD** .
-   ![Przycisk "Dodaj grupę usługi AAD"](./media/api-management-howto-aad/api-management-with-aad008.png)
+   ![przycisk "Dodaj grupę usługi AAD"](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. Wybierz grupę, którą chcesz dodać.
 4. Naciśnij przycisk **Wybierz** .
 
@@ -98,7 +98,17 @@ Po dodaniu zewnętrznej grupy usługi Azure AD można przejrzeć i skonfigurowa�
  
 Użytkownicy ze skonfigurowanego wystąpienia usługi Azure AD mogą teraz logować się do portalu dla deweloperów. Mogą oni wyświetlać i subskrybować wszystkie grupy, do których mają wgląd.
 
-## <a name="a-idlog_in_to_dev_portalsign-in-to-the-developer-portal-by-using-an-azure-ad-account"></a><a id="log_in_to_dev_portal"/>Logowanie się do portalu dla deweloperów przy użyciu konta usługi Azure AD
+## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a>Portal dla deweloperów <a id="log_in_to_dev_portal"/> — Dodawanie uwierzytelniania konta usługi Azure AD
+
+Aby włączyć logowanie za pomocą usługi AAD w portalu dla deweloperów, należy dodać widżet **przycisków OAuth** do formularza logowania.
+
+![Widżet przycisków usługi AAD](./media/api-management-howto-aad/portal-oauth-widget.png)
+
+Mimo że nowe konto zostanie utworzone automatycznie za każdym razem, gdy nowy użytkownik zaloguje się za pomocą usługi AAD, można rozważyć dodanie tego samego widżetu w formularzu rejestracji.
+
+## <a name="legacy-developer-portal---how-to-sign-in-with-azure-ad"></a>Starszy Portal dla deweloperów — jak zalogować się przy użyciu usługi Azure AD
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 Aby zalogować się do portalu dla deweloperów przy użyciu konta usługi Azure AD skonfigurowanego w poprzednich sekcjach:
 

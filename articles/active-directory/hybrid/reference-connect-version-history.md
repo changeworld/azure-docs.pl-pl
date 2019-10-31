@@ -16,12 +16,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5132581c3d79db88dabc3c20ac3b962226d8a12d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6968379722dc7f2deda95e8d3804a03d4dbc8686
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025833"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176019"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -108,7 +108,7 @@ W pewnych okolicznościach serwery, które były automatycznie uaktualnione do w
 >[!IMPORTANT]
 >Istnieje znany problem z uaktualnianiem Azure AD Connect ze starszej wersji do 1.3.21.0, gdzie portal usługi O365 nie odzwierciedla zaktualizowanej wersji, nawet jeśli pomyślnie uaktualniono Azure AD Connect.
 >
-> Aby rozwiązać ten problem, należy zaimportować moduł **AdSync** , a następnie uruchomić polecenie cmdlet programu PowerShell @ no__t-1 na serwerze Azure AD Connect.  Można wykonać następujące czynności:
+> Aby rozwiązać ten problem, należy zaimportować moduł **AdSync** , a następnie uruchomić polecenie cmdlet`Set-ADSyncDirSyncConfiguration` PowerShell na serwerze Azure AD Connect.  Można wykonać następujące czynności:
 >
 >1. Otwórz program PowerShell w trybie administrator
 >2. Uruchom polecenie `Import-Module "ADSync"`

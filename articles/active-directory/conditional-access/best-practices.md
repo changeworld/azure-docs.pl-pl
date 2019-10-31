@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980499"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175768"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory
 
@@ -35,7 +35,7 @@ Podczas tworzenia nowych zasad nie wybrano żadnych użytkowników, grup, aplika
 
 Aby zasady działały, należy skonfigurować:
 
-| Co           | Jaka                                  | Zalet |
+| Elementy           | Jaka                                  | Zalet |
 | :--            | :--                                  | :-- |
 | **Aplikacje w chmurze** |Wybierz co najmniej jedną aplikację.  | Celem zasad dostępu warunkowego jest umożliwienie kontroli nad sposobem, w jaki autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze.|
 | **Użytkownicy i grupy** | Wybierz co najmniej jednego użytkownika lub grupę, która ma uprawnienia dostępu do wybranych aplikacji w chmurze. | Zasady dostępu warunkowego, które nie mają przypisanych użytkowników i grup, nigdy nie są wyzwalane. |
@@ -53,7 +53,7 @@ Wszystkie zasady są wymuszane w dwóch fazach:
 
 - W **drugiej** fazie zostanie wyświetlony monit o spełnienie wymagań, które nie zostały spełnione. Jeśli jedna z zasad blokuje dostęp, zostanie zablokowana i nie zostanie wyświetlony monit o spełnienie innych kontroli zasad. Jeśli żaden z tych zasad nie zostanie zablokowany, zostanie wyświetlony monit o spełnienie innych kontroli zasad w następującej kolejności:
 
-   ![Zamówienie](./media/best-practices/06.png)
+   ![Zamów](./media/best-practices/06.png)
     
    Dostawcy zewnętrznych usług MFA i warunki użytkowania są dalej.
 
@@ -109,7 +109,7 @@ W danym środowisku należy unikać następujących konfiguracji:
 
 - **Blokuj dostęp** — ta konfiguracja blokuje całą organizację, która nie jest dobrym pomysłem.
 - **Wymagaj zgodnego urządzenia** — dla użytkowników, którzy nie zarejestrowali jeszcze urządzeń, ta zasada blokuje dostęp do portalu usługi Intune. Jeśli jesteś administratorem programu bez zarejestrowanego urządzenia, ta zasada uniemożliwia powrót do Azure Portal, aby zmienić zasady.
-- **Wymagaj** przyłączenia do domeny — ta zasada blokuje również możliwość blokowania dostępu dla wszystkich użytkowników w organizacji, jeśli nie masz jeszcze urządzenia przyłączonego do domeny.
+- **Wymagaj przyłączenia do domeny** — ta zasada blokuje również możliwość blokowania dostępu dla wszystkich użytkowników w organizacji, jeśli nie masz jeszcze urządzenia przyłączonego do domeny.
 - **Wymagaj zasad ochrony aplikacji** — ten blok dostępu blokuje również możliwość blokowania dostępu dla wszystkich użytkowników w organizacji, jeśli nie masz zasad usługi Intune. Jeśli jesteś administratorem bez aplikacji klienckiej z zasadami ochrony aplikacji usługi Intune, te zasady uniemożliwiają powrót do portali, takich jak usługa Intune i platforma Azure.
 
 **Dla wszystkich użytkowników, wszystkie aplikacje w chmurze, wszystkie platformy urządzeń:**

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 34ff075a604afdcbef67c7b10ce1ef8cbe2924e7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: adc7b65b4e079c55b9400b06603625971efc3ea3
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137034"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177679"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Wyzwalacze i wykonywanie potoku w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -77,7 +77,7 @@ Na przykład załóżmy, że masz podstawowy potok o nazwie **copyPipeline**, kt
 W definicji JSON potok przyjmuje dwa parametry: **sourceBlobContainer** i **sinkBlobContainer**. Wartości tych parametrów są przekazywane w czasie uruchomienia.
 
 Możesz uruchomić potok ręcznie, używając jednej z następujących metod:
-- Zestaw SDK .NET
+- Zestaw SDK dla platformy .NET
 - Moduł programu Azure PowerShell
 - Interfejs API REST
 - Zestaw SDK dla języka Python
@@ -90,9 +90,9 @@ POST
 https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory/pipelines/copyPipeline/createRun?api-version=2017-03-01-preview
 ```
 
-Aby uzyskać pełny przykład, zobacz [szybki start: Utwórz fabrykę danych przy użyciu interfejsu API](quickstart-create-data-factory-rest-api.md)Rest.
+Pełny przykład można znaleźć w artykule [Szybki start: tworzenie fabryki danych przy użyciu interfejsu API REST](quickstart-create-data-factory-rest-api.md).
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -119,16 +119,16 @@ Parametry są przekazywane w treści ładunku żądania. W zestawie SDK platform
 }
 ```
 
-Aby uzyskać pełny przykład, zobacz [szybki start: Utwórz fabrykę danych przy użyciu Azure PowerShell](quickstart-create-data-factory-powershell.md).
+Pełny przykład można znaleźć w artykule [Szybki start: tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="net-sdk"></a>Zestaw SDK .NET
+### <a name="net-sdk"></a>Zestaw SDK dla platformy .NET
 Następujące przykładowe wywołanie ilustruje, jak ręcznie uruchomić potok przy użyciu zestawu SDK platformy .NET:
 
 ```csharp
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
 ```
 
-Aby uzyskać pełny przykład, zobacz [szybki start: Utwórz fabrykę danych przy użyciu zestawu .NET SDK](quickstart-create-data-factory-dot-net.md).
+Pełny przykład można znaleźć w artykule [Szybki start: tworzenie fabryki danych przy użyciu zestawu SDK platformy .NET](quickstart-create-data-factory-dot-net.md).
 
 > [!NOTE]
 > Zestaw SDK platformy .NET umożliwia wywoływanie potoków usługi Data Factory z usługi Azure Functions, z własnych usług internetowych itp.
@@ -136,13 +136,13 @@ Aby uzyskać pełny przykład, zobacz [szybki start: Utwórz fabrykę danych prz
 <h2 id="triggers">Wykonywanie wyzwalacza</h2>
 Wyzwalacze to inny sposób wykonywania uruchomienia potoku. Wyzwalacze reprezentują jednostki przetwarzania, które określają, kiedy należy rozpocząć wykonanie potoku. Obecnie usługa Data Factory obsługuje 3 typy wyzwalaczy:
 
-- Wyzwalacz harmonogramu: Wyzwalacz, który wywołuje potok zgodnie z harmonogramem zegarowym.
+- Wyzwalacz harmonogramu: wyzwalacz, który wywołuje potok zgodnie z harmonogramem zegarowym.
 
-- Wyzwalacz okna wirowania: Wyzwalacz, który działa w regularnych odstępach czasu, zachowując również stan.
+- Wyzwalacz okna wirowania: wyzwalacz działający w okresowych interwałach przy zachowaniu stanu.
 
-- Wyzwalacz oparty na zdarzeniach: Wyzwalacz, który reaguje na zdarzenie.
+- Wyzwalacz oparty na zdarzeniach: wyzwalacz, który odpowiada na zdarzenie.
 
-Między potokami i wyzwalaczami występuje relacja wiele-do-wielu. Wiele wyzwalaczy może uruchamiać jeden potok, a jeden wyzwalacz może uruchamiać wiele potoków. W poniższej definicji wyzwalacza właściwość **pipelines** odnosi się do listy potoków wyzwalanych przez określony wyzwalacz. Definicja właściwości zawiera wartości dla parametrów potoku.
+Potoki i wyzwalacze mają relację wiele-do-wielu (z wyjątkiem wyzwalacza okna wirowania). Wiele wyzwalaczy może uruchamiać pojedynczy potok lub jeden wyzwalacz może uruchomić wiele potoków. W poniższej definicji wyzwalacza właściwość **pipelines** odnosi się do listy potoków wyzwalanych przez określony wyzwalacz. Definicja właściwości zawiera wartości dla parametrów potoku.
 
 ### <a name="basic-trigger-definition"></a>Podstawowa definicja wyzwalacza
 
@@ -276,13 +276,13 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów schematu odnos
 
 ### <a name="schema-defaults-limits-and-examples"></a>Wartości domyślne, limity i przykłady harmonogramów
 
-| Właściwość JSON | Type | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
+| Właściwość JSON | Typ | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | ciąg | Tak | Brak | Daty i godziny ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | object | Tak | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | string | Tak | Brak | Daty i godziny ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | obiekt | Tak | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | numer | Nie | 1 | Od 1 do 1000 | `"interval":10` |
-| **endTime** | ciąg | Tak | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | object | Nie | Brak | Obiekt harmonogramu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **endTime** | string | Tak | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | obiekt | Nie | Brak | Obiekt harmonogramu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Właściwość startTime
 W poniższej tabeli przedstawiono, w jaki sposób właściwość **startTime** kontroluje uruchamianie wyzwalacza:
@@ -292,7 +292,7 @@ W poniższej tabeli przedstawiono, w jaki sposób właściwość **startTime** k
 | **Czas rozpoczęcia jest w przeszłości** | Oblicza pierwszy przyszły czas wykonania po czasie rozpoczęcia i uruchamia wyzwalacz w tym czasie.<br /><br />Uruchamia kolejne wykonania obliczone na podstawie ostatniego czasu wykonania.<br /><br />Zobacz przykład znajdujący się pod tabelą. | Wyzwalacz jest uruchamiany _nie wcześniej niż_ w określonym czasie rozpoczęcia. Pierwsze wystąpienie opiera się na harmonogramie obliczonym na podstawie czasu rozpoczęcia.<br /><br />Kolejne wykonania opierają na harmonogramie cyklu. |
 | **Czas rozpoczęcia jest w przyszłości lub jest to bieżący czas** | Uruchamiany raz o określonym czasie rozpoczęcia.<br /><br />Uruchamia kolejne wykonania obliczone na podstawie ostatniego czasu wykonania. | Wyzwalacz jest uruchamiany _nie wcześniej niż_ w określonym czasie rozpoczęcia. Pierwsze wystąpienie opiera się na harmonogramie obliczonym na podstawie czasu rozpoczęcia.<br /><br />Kolejne wykonania opierają na harmonogramie cyklu. |
 
-Rozpatrzmy przykład zdarzeń w przypadku, gdy czas rozpoczęcia przypada w przeszłości, z cyklem, ale bez harmonogramu. Załóżmy, że obecna data i godzina to 13:00 08-04-2017, czas rozpoczęcia to 14:00 07-04-2017, a cykl jest określony na 2 dni. (Wartość właściwości **recurrence** definiuje się, ustawiając właściwość **frequency** na wartość „day” („dzień”) i właściwość **interval** na wartość 2). Zwróć uwagę, że wartość właściwości **startTime** dotyczy przeszłej daty i następuje przed aktualną godziną.
+Rozpatrzmy przykład zdarzeń w przypadku, gdy czas rozpoczęcia przypada w przeszłości, z cyklem, ale bez harmonogramu. Załóżmy, że obecna data i godzina to 13:00 08-04-2017, czas rozpoczęcia to 14:00 07-04-2017, a cykl jest określony na 2 dni. (Wartość **cyklu** jest definiowana przez ustawienie właściwości **częstotliwość** na wartość "dzień" i Właściwość **Interwał** na 2). Należy zauważyć, że wartość **StartTime** jest w przeszłości i występuje przed bieżącą godziną.
 
 W tych warunkach pierwsze wykonanie jest 2017-04-09 o 14:00. Aparat harmonogramu oblicza wystąpienia wykonania od czasu rozpoczęcia. Wszystkie wystąpienia w przeszłości są odrzucane. Aparat wykorzystuje następne wystąpienie, które ma miejsce w przyszłości. W tym scenariuszu godziną rozpoczęcia jest 14:00 w dniu 07-04-2017. Następne wystąpienie zostanie uruchomione za dwa dni od tego czasu, czyli o 14:00 w dniu 09-04-2017.
 
@@ -314,7 +314,7 @@ W poniższej tabeli opisano szczegółowo elementy właściwości **schedule**:
 | **minutes** | Minuty godziny, o których uruchamiany jest wyzwalacz. |- Liczba całkowita<br />- Tablica liczb całkowitych|
 | **hours** | Godziny dnia, o których uruchamiany jest wyzwalacz. |- Liczba całkowita<br />- Tablica liczb całkowitych|
 | **weekDays** | Dni tygodnia, w które uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością tygodniową.|<br />- Poniedziałek<br />- Wtorek<br />- Środa<br />- Czwartek<br />- Piątek<br />- Sobota<br />- Niedziela<br />- Tablica wartości dni (maksymalny rozmiar tablicy to 7)<br /><br />W wartościach dni nie są uwzględniane wielkości liter|
-| **monthlyOccurrences** | Dni miesiąca, w których uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. |-Tablica obiektów **monthlyOccurrence** :`{ "day": day, "occurrence": occurrence }`<br />- Atrybut **day** jest dniem tygodnia, w którym uruchamiany jest wyzwalacz. Na przykład właściwość **monthlyOccurrences** o wartości **day** wynoszącej `{Sunday}` oznacza każdą niedzielę miesiąca. Atrybut **day** jest wymagany.<br />- Atrybut **occurence** jest wystąpieniem określonej wartości **day** w miesiącu. Na przykład właściwość **monthlyOccurrences** o wartościach **day** i **occurence** wynoszących `{Sunday, -1}` oznacza ostatnią niedzielę miesiąca. Atrybut **occurence** jest opcjonalny.|
+| **monthlyOccurrences** | Dni miesiąca, w których uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. |-Tablica obiektów **monthlyOccurrence** : `{ "day": day, "occurrence": occurrence }`<br />- Atrybut **day** jest dniem tygodnia, w którym uruchamiany jest wyzwalacz. Na przykład właściwość **monthlyOccurrences** o wartości **day** wynoszącej `{Sunday}` oznacza każdą niedzielę miesiąca. Atrybut **day** jest wymagany.<br />- Atrybut **occurence** jest wystąpieniem określonej wartości **day** w miesiącu. Na przykład właściwość **monthlyOccurrences** o wartościach **day** i **occurence** wynoszących `{Sunday, -1}` oznacza ostatnią niedzielę miesiąca. Atrybut **occurence** jest opcjonalny.|
 | **monthDays** | Dzień miesiąca, w którym uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. |- Dowolna wartość <= -1 i >= -31<br />- Dowolna wartość >= 1 i <= 31<br />- Tablica wartości|
 
 ## <a name="tumbling-window-trigger"></a>Wyzwalacz okna wirowania
@@ -371,7 +371,7 @@ Poniższa tabela zawiera porównanie wyzwalacza okna wirowania i wyzwalacza harm
 |:--- |:--- |:--- |
 | **Scenariusze wypełniania** | Obsługiwane. Uruchomienia potoków można planować dla okien w przeszłości. | Nieobsługiwane. Uruchomienia potoków można wykonywać tylko w teraźniejszych i przyszłych okresach czasu. |
 | **Niezawodność** | 100-procentowa niezawodność. Uruchomienia potoków można zaplanować dla wszystkich okien od określonej daty rozpoczęcia bez przerw. | Mniej niezawodne. |
-| **Możliwość ponowienia próby** | Obsługiwane. Uruchomienia potoków zakończone niepowodzeniem mają domyślne zasady ponawiania próby ustawione na wartość 0 lub zasady określone przez użytkownika w definicji wyzwalacza. Automatycznie ponawia próbę, gdy uruchomienie potoku nie powiedzie się z powodu ograniczeń współbieżności/serwera/ograniczania (czyli kodów stanu 400: Błąd użytkownika, 429: Zbyt wiele żądań i 500: Wewnętrzny błąd serwera). | Nieobsługiwane. |
+| **Możliwość ponowienia próby** | Obsługiwane. Uruchomienia potoków zakończone niepowodzeniem mają domyślne zasady ponawiania próby ustawione na wartość 0 lub zasady określone przez użytkownika w definicji wyzwalacza. Automatycznie ponawia próbę, gdy uruchomienia potoków kończą się niepowodzeniem z powodu limitów współbieżności/serwerów /ograniczania (czyli kody stanu 400: Błąd użytkownika, 429: Zbyt wiele żądań i 500: Wewnętrzny błąd serwera). | Nieobsługiwane. |
 | **Współbieżność** | Obsługiwane. Użytkownicy mogą jawnie ustawić limity współbieżności dla wyzwalacza. Umożliwia od 1 do 50 jednocześnie wyzwolonych uruchomień potoków. | Nieobsługiwane. |
 | **Zmienne systemu** | Obsługuje używanie zmiennych systemowych **WindowStart** i **WindowEnd**. Użytkownicy mogą uzyskiwać dostęp do zmiennych `triggerOutputs().windowStartTime` i `triggerOutputs().windowEndTime` jako zmiennych systemu wyzwalacza w definicji wyzwalacza. Wartości są używane odpowiednio jako czas rozpoczęcia okna i czas zakończenia okna. Na przykład w przypadku wyzwalacza okna wirowania uruchamianego co godzinę dla okna od godz. 1:00 do 2:00 definicją jest zmienna `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` i `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Nieobsługiwane. |
 | **Relacja potoku do wyzwalacza** | Obsługuje relację „jeden do jednego”. Można wyzwolić tylko jeden potok. | Obsługuje relacje „wiele do wielu”. Wiele wyzwalaczy może uruchomić jeden potok. Jeden wyzwalacz może uruchamiać wiele potoków. |
@@ -379,6 +379,6 @@ Poniższa tabela zawiera porównanie wyzwalacza okna wirowania i wyzwalacza harm
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące samouczki:
 
-- [Szybki start: Tworzenie fabryki danych przy użyciu zestawu .NET SDK](quickstart-create-data-factory-dot-net.md)
+- [Szybki start: tworzenie fabryki danych przy użyciu zestawu SDK platformy .NET](quickstart-create-data-factory-dot-net.md)
 - [Tworzenie wyzwalacza harmonogramu](how-to-create-schedule-trigger.md)
 - [Tworzenie wyzwalacza okna wirowania](how-to-create-tumbling-window-trigger.md)

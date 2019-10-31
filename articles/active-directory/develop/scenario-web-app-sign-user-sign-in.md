@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5c45005d6a54765458b463acb12c21a1f3b6d0c
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d727b570361e721c49173138bb60ae89df710e81
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336762"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175222"
 ---
 # <a name="web-app-that-signs-in-users---sign-in-and-sign-out"></a>Aplikacja internetowa, która loguje się do użytkowników — Zaloguj się i wyloguj
 
@@ -37,7 +37,7 @@ Logowanie jest wprowadzane przez dwie części:
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-W ASP.NET Core przycisk logowania jest uwidaczniany w `Views\Shared\_LoginPartial.cshtml` usłudze i wyświetlany tylko wtedy, gdy nie ma konta uwierzytelnionego (to oznacza, że użytkownik nie został jeszcze zalogowany lub wyloguje się).
+W ASP.NET Core przycisk logowania jest uwidoczniony w `Views\Shared\_LoginPartial.cshtml` i wyświetlany tylko wtedy, gdy nie ma żadnego uwierzytelnionego konta (to oznacza, że użytkownik nie został jeszcze zalogowany lub został wylogowany).
 
 ```html
 @using Microsoft.Identity.Web
@@ -106,17 +106,17 @@ def index():
 
 ---
 
-### <a name="login-action-of-the-controller"></a>`Login`Akcja kontrolera
+### <a name="login-action-of-the-controller"></a>`Login` akcji kontrolera
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-W programie ASP.NET naciśnięcie przycisku **logowania** w aplikacji sieci Web wyzwala `SignIn` akcję na `AccountController` kontrolerze. W poprzednich wersjach szablonów `Account` ASP.NET Core kontroler został osadzony w aplikacji sieci Web, ale nie jest już tak samo, jak teraz jest częścią samej struktury ASP.NET Core.
+W programie ASP.NET naciśnięcie przycisku **logowania** w aplikacji sieci Web wyzwala akcję `SignIn` na kontrolerze `AccountController`. W poprzednich wersjach szablonów ASP.NET Core kontroler `Account` został osadzony w aplikacji sieci Web, ale nie jest już tak samo w przypadku, gdy jest teraz częścią samej struktury ASP.NET Core.
 
-Kod `AccountController` jest dostępny w repozytorium ASP.NET Core z [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs). Kontrola konta wzywa użytkownika przez przekierowanie do punktu końcowego platformy tożsamości firmy Microsoft. Aby uzyskać szczegółowe informacje, zobacz metodę [logowania](https://github.com/aspnet/AspNetCore/blob/f3e6b74623d42d5164fd5f97a288792c8ad877b6/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs#L23-L31) podaną jako część ASP.NET Core.
+Kod dla `AccountController` jest dostępny w repozytorium ASP.NET Core z [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs). Kontrola konta wzywa użytkownika przez przekierowanie do punktu końcowego platformy tożsamości firmy Microsoft. Aby uzyskać szczegółowe informacje, zobacz metodę [logowania](https://github.com/aspnet/AspNetCore/blob/f3e6b74623d42d5164fd5f97a288792c8ad877b6/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs#L23-L31) podaną jako część ASP.NET Core.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-W ASP.NET wylogowanie jest wyzwalane z `SignOut()` metody na kontrolerze (na przykład [elementu AccountController. cs # L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)). Ta metoda nie jest częścią ASP.NET Framework (w przeciwieństwie do co dzieje się w ASP.NET Core). Go
+W ASP.NET wylogowanie jest wyzwalane przez metodę `SignOut()` na kontrolerze (na przykład [elementu AccountController. cs # L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)). Ta metoda nie jest częścią ASP.NET Framework (w przeciwieństwie do co dzieje się w ASP.NET Core). Go
 
 - wysyła wyzwanie logowania OpenID Connect po zaproponowaniu identyfikatora URI przekierowania
 
@@ -161,7 +161,7 @@ public class AuthPageController {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-W przeciwieństwie do innych platform, MSAL. W języku Python należy zadbać o to, aby użytkownik zalogować się na stronie logowania. Zobacz [App. PR # L20-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L20-L28)
+W przeciwieństwie do innych platform, MSAL Python zadbaje o umożliwienie logowania użytkownika na stronie logowania. Zobacz [App. PR # L20-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L20-L28)
 
 ```Python
 @app.route("/login")
@@ -211,7 +211,7 @@ Gdy użytkownik zaloguje się do aplikacji, prawdopodobnie trzeba będzie ją wy
 ## <a name="sign-out"></a>Wyloguj
 
 Wylogowanie z aplikacji sieci Web ma więcej niż usuwanie informacji o koncie zalogowanym ze stanu aplikacji sieci Web.
-Aplikacja sieci Web musi również przekierować użytkownika do punktu końcowego platformy `logout` tożsamości firmy Microsoft, aby się wylogować. Gdy aplikacja internetowa przekierowuje użytkownika do `logout` punktu końcowego, ten punkt końcowy czyści sesję użytkownika z przeglądarki. Jeśli Twoja aplikacja nie przejdzie do `logout` punktu końcowego, użytkownik będzie ponownie uwierzytelniać się w aplikacji bez konieczności ponownego wprowadzania poświadczeń, ponieważ będzie mieć prawidłową sesję logowania jednokrotnego z punktem końcowym platformy tożsamości firmy Microsoft.
+Aplikacja sieci Web musi również przekierować użytkownika do platformy tożsamości firmy Microsoft `logout` Endpoint, aby się wylogować. Gdy aplikacja internetowa przekierowuje użytkownika do punktu końcowego `logout`, ten punkt końcowy czyści sesję użytkownika z przeglądarki. Jeśli Twoja aplikacja nie przejdzie do punktu końcowego `logout`, użytkownik będzie ponownie uwierzytelniać się w aplikacji bez konieczności ponownego wprowadzania poświadczeń, ponieważ będzie mieć prawidłową sesję logowania jednokrotnego z punktem końcowym platformy tożsamości firmy Microsoft.
 
 Aby dowiedzieć się więcej, zobacz sekcję [Wysyłanie żądania wylogowania](v2-protocols-oidc.md#send-a-sign-out-request) z poziomu [platformy tożsamości firmy Microsoft i](v2-protocols-oidc.md) dokumentacji dotyczącej pojęć dotyczących protokołu OpenID Connect Connect.
 
@@ -219,15 +219,15 @@ Aby dowiedzieć się więcej, zobacz sekcję [Wysyłanie żądania wylogowania](
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Podczas rejestracji aplikacji zarejestrowano **Identyfikator URI po wylogowaniu**. `https://localhost:44321/signout-oidc` W naszym samouczku zarejestrowano się w polu **adres URL wylogowania** w sekcji **Ustawienia zaawansowane** na stronie **uwierzytelnianie** . Aby uzyskać szczegółowe informacje, zobacz [Rejestrowanie aplikacji webApp](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)
+Podczas rejestracji aplikacji zarejestrowano **Identyfikator URI po wylogowaniu**. W naszym samouczku zarejestrowano `https://localhost:44321/signout-oidc` w polu **adres URL wylogowania** w sekcji **Ustawienia zaawansowane** na stronie **uwierzytelnianie** . Aby uzyskać szczegółowe informacje, zobacz [Rejestrowanie aplikacji webApp](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-Podczas rejestracji aplikacji zarejestrowano **Identyfikator URI po wylogowaniu**. `https://localhost:44308/Account/EndSession` W naszym samouczku zarejestrowano się w polu **adres URL wylogowania** w sekcji **Ustawienia zaawansowane** na stronie **uwierzytelnianie** . Aby uzyskać szczegółowe informacje, zobacz [Rejestrowanie aplikacji webApp](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)
+Podczas rejestracji aplikacji zarejestrowano **Identyfikator URI po wylogowaniu**. W naszym samouczku zarejestrowano `https://localhost:44308/Account/EndSession` w polu **adres URL wylogowania** w sekcji **Ustawienia zaawansowane** na stronie **uwierzytelnianie** . Aby uzyskać szczegółowe informacje, zobacz [Rejestrowanie aplikacji webApp](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Podczas rejestracji aplikacji należy zarejestrować **Identyfikator URI po wylogowaniu**. `http://localhost:8080/msal4jsample/` W naszym samouczku zarejestrowano się w polu **adres URL wylogowania** w sekcji **Ustawienia zaawansowane** na stronie **uwierzytelnianie** .
+Podczas rejestracji aplikacji należy zarejestrować **Identyfikator URI po wylogowaniu**. W naszym samouczku zarejestrowano `http://localhost:8080/msal4jsample/sign_out` w polu **adres URL wylogowania** w sekcji **Ustawienia zaawansowane** na stronie **uwierzytelnianie** .
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -239,7 +239,7 @@ Podczas rejestracji aplikacji nie trzeba rejestrować dodatkowego adresu URL wyl
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-W ASP.NET Core przycisk Wyloguj jest uwidaczniany w `Views\Shared\_LoginPartial.cshtml` usłudze i wyświetlany tylko wtedy, gdy istnieje konto uwierzytelnione (to oznacza, że użytkownik zalogował się wcześniej).
+W ASP.NET Core przycisk Wyloguj jest uwidaczniany w usłudze `Views\Shared\_LoginPartial.cshtml` i wyświetlany tylko wtedy, gdy istnieje uwierzytelnione konto (to jest logowanie użytkownika wcześniej).
 
 ```html
 @using Microsoft.Identity.Web
@@ -320,23 +320,23 @@ W przewodniku szybki start w języku Python przycisk Wyloguj znajduje się w pli
 
 ---
 
-### <a name="signout-action-of-the-controller"></a>`Signout`Akcja kontrolera
+### <a name="signout-action-of-the-controller"></a>`Signout` akcji kontrolera
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-W ASP.NET naciśnięcie przycisku **Wyloguj** w aplikacji sieci Web wyzwala `SignOut` akcję na `AccountController` kontrolerze. W poprzednich wersjach szablonów `Account` ASP.NET Core kontroler został osadzony w aplikacji sieci Web, ale nie jest już tak samo, jak teraz jest częścią samej struktury ASP.NET Core.
+W ASP.NET naciśnięcie przycisku **Wyloguj** w aplikacji sieci Web wyzwala akcję `SignOut` na kontrolerze `AccountController`. W poprzednich wersjach szablonów ASP.NET Core kontroler `Account` został osadzony w aplikacji sieci Web, ale nie jest już tak samo w przypadku, gdy jest teraz częścią samej struktury ASP.NET Core.
 
-Kod `AccountController` jest dostępny w repozytorium ASP.NET Core w lokalizacji z [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs). Kontrola konta:
+Kod dla `AccountController` jest dostępny w repozytorium ASP.NET Core w lokalizacji z [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs). Kontrola konta:
 
-- Ustawia identyfikator URI przekierowania OpenID Connect `/Account/SignedOut` na tak, aby kontroler został wywołany, gdy usługa Azure AD zakończy wylogowywanie
-- Wywołania `Signout()`, które umożliwiają oprogramowanie pośredniczące OpenIdConnect kontaktują się z punktem `logout` końcowym platformy tożsamości firmy Microsoft, który:
+- Ustawia identyfikator URI przekierowania OpenID Connect na `/Account/SignedOut`, aby kontroler został wywołany, gdy usługa Azure AD ukończy wylogowywanie
+- Wywołuje `Signout()`, dzięki czemu oprogramowanie pośredniczące OpenIdConnect skontaktuje się z punktem końcowym Microsoft Identity platform `logout`, który:
 
   - Czyści plik cookie sesji z przeglądarki i
   - na koniec wywołuje **adres URL wylogowania**, który domyślnie wyświetla stronę ze stroną widoku wylogowanego [SignedOut. html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) , która jest dostępna jako część ASP.NET Core.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-W ASP.NET wylogowanie jest wyzwalane z `SignOut()` metody na kontrolerze (na przykład [elementu AccountController. cs # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)). Ta metoda nie jest częścią ASP.NET Framework (w przeciwieństwie do co dzieje się w ASP.NET Core). Go
+W ASP.NET wylogowanie jest wyzwalane przez metodę `SignOut()` na kontrolerze (na przykład [elementu AccountController. cs # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)). Ta metoda nie jest częścią ASP.NET Framework (w przeciwieństwie do co dzieje się w ASP.NET Core). Go
 
 - wysyła wyzwanie wylogowania OpenID Connect
 - czyści pamięć podręczną
@@ -388,13 +388,13 @@ def logout():
 
 ---
 
-### <a name="intercepting-the-call-to-the-logout-endpoint"></a>Przechwytywanie wywołania do `logout` punktu końcowego
+### <a name="intercepting-the-call-to-the-logout-endpoint"></a>Przechwytywanie wywołania punktu końcowego `logout`
 
 Identyfikator URI po wylogowaniu umożliwia aplikacjom uczestnictwo w globalnych wylogowaniach.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core pośredniczące umożliwia aplikacji przechwycenie wywołania punktu końcowego platformy `logout` tożsamości firmy Microsoft przez podanie zdarzenia OpenIdConnect o nazwie. `OnRedirectToIdentityProviderForSignOut` Zobacz [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156) , aby zapoznać się z przykładem subskrybowania tego zdarzenia (w celu wyczyszczenia pamięci podręcznej tokenów)
+ASP.NET Core oprogramowanie pośredniczące umożliwia aplikacji przechwycenie wywołania do platformy tożsamości firmy Microsoft `logout` punktu końcowego przez udostępnienie zdarzenia OpenIdConnect o nazwie `OnRedirectToIdentityProviderForSignOut`. Zobacz [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156) , aby zapoznać się z przykładem subskrybowania tego zdarzenia (w celu wyczyszczenia pamięci podręcznej tokenów)
 
 ```CSharp
     // Handling the global sign-out
@@ -423,7 +423,7 @@ public class AccountController : Controller
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-W naszym przewodniku szybki start dla języka Java, identyfikator URI przekierowania po wylogowaniu po prostu wyświetla stronę index. html 
+W naszym przewodniku szybki start dla języka Java, identyfikator URI przekierowania po wylogowaniu po prostu wyświetla stronę index. html
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -431,7 +431,7 @@ W przewodniku szybki start w języku Python identyfikator URI przekierowania po 
 
 ---
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>Protocol (Protokół)
 
 Jeśli chcesz dowiedzieć się więcej o wylogowaniu, zapoznaj się z dokumentacją protokołu, która jest dostępna w programie [Open ID Connect](./v2-protocols-oidc.md).
 

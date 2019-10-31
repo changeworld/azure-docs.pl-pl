@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 69197b9c0d2a60e1833d03a3f12802221a8307e2
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 0097d0e1d5ea7de092da14683d4bab3d673b2219
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530838"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177779"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>Azure Disk Encryption Virtual Machine Scale Sets
 
@@ -23,7 +23,7 @@ Azure Disk Encryption można również zastosować do zestawów skalowania maszy
 - System operacyjny i woluminy danych w zestawach skalowania systemu Windows.
 - Woluminy danych w zestawach skalowania systemu Linux. Szyfrowanie dysków systemu operacyjnego nie jest obsługiwane w przypadku zestawów skalowania w systemie Linux.
 
-Podstawy Azure Disk Encryption dla zestawów skalowania maszyn wirtualnych można uzyskać w zaledwie kilka minut, korzystając z [funkcji szyfrowania zestawów skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure](disk-encryption-cli.md) lub [szyfrowania zestawów skalowania maszyn wirtualnych przy użyciu samouczków interfejsu wiersza polecenia platformy Azure](disk-encryption-powershell.md) .
+Podstawy Azure Disk Encryption dla zestawów skalowania maszyn wirtualnych można uzyskać w zaledwie kilka minut, korzystając z [funkcji szyfrowania zestawów skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure](disk-encryption-cli.md) lub [szyfrowania zestawów skalowania maszyn wirtualnych przy użyciu Azure PowerShell](disk-encryption-powershell.md) Podręcznik.
 
 ## <a name="next-steps"></a>Następne kroki
 

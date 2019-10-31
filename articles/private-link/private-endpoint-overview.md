@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7f0d846a83312e28c305100e7c8dc74cc8140d7d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: a3c25553e7abbe39c00407e8000880dc99056bcd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023846"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172977"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -81,7 +81,7 @@ Właściciel zasobu link prywatny może wykonywać następujące akcje za pośre
 > Tylko prywatny punkt końcowy w zatwierdzonym stanie może wysyłać ruch do podanego zasobu linku prywatnego. 
 
 ### <a name="connecting-using-alias"></a>Łączenie przy użyciu aliasu
-Alias jest unikatowy moniker, który jest generowany, gdy właściciel usługi tworzy prywatną usługę linku za pomocą usługi równoważenia obciążenia w warstwie Standardowa. Właściciel usługi może udostępniać ten alias użytkownikom w trybie offline. Konsumenci mogą zażądać połączenia z usługą linku prywatnego przy użyciu identyfikatora URI zasobu lub aliasu. Jeśli chcesz nawiązać połączenie przy użyciu aliasu, musisz utworzyć prywatny punkt końcowy przy użyciu metody ręcznego zatwierdzania połączeń. W przypadku używania metody zatwierdzania ręcznego połączenia ustaw parametr żądania ręcznego na wartość true podczas tworzenia przepływu prywatnego punktu końcowego. Aby uzyskać szczegółowe informacje, zapoznaj się z tematem [New-AzPrivateEndpoint](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) i [AZ Network Private-Endpoint Create](https://docs.microsoft.com/en-us/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) . 
+Alias jest unikatowy moniker, który jest generowany, gdy właściciel usługi tworzy prywatną usługę linku za pomocą usługi równoważenia obciążenia w warstwie Standardowa. Właściciel usługi może udostępniać ten alias użytkownikom w trybie offline. Konsumenci mogą zażądać połączenia z usługą linku prywatnego przy użyciu identyfikatora URI zasobu lub aliasu. Jeśli chcesz nawiązać połączenie przy użyciu aliasu, musisz utworzyć prywatny punkt końcowy przy użyciu metody ręcznego zatwierdzania połączeń. W przypadku używania metody zatwierdzania ręcznego połączenia ustaw parametr żądania ręcznego na wartość true podczas tworzenia przepływu prywatnego punktu końcowego. Aby uzyskać szczegółowe informacje, zapoznaj się z tematem [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) i [AZ Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) . 
 
 ## <a name="dns-configuration"></a>Konfiguracja usługi DNS 
 W przypadku nawiązywania połączenia z prywatnym zasobem linku przy użyciu w pełni kwalifikowanej nazwy domeny (FQDN) jako części parametrów połączenia należy prawidłowo skonfigurować ustawienia DNS w celu rozpoznania przydzielony prywatny adres IP. Istniejące usługi platformy Azure mogą już mieć konfigurację DNS do użycia podczas nawiązywania połączenia przez publiczny punkt końcowy. Należy je zastąpić, aby nawiązać połączenie przy użyciu prywatnego punktu końcowego. 
@@ -91,7 +91,7 @@ Interfejs sieciowy skojarzony z prywatnym punktem końcowym zawiera pełen zesta
 Aby skonfigurować ustawienia DNS dla prywatnych punktów końcowych, można użyć następujących opcji: 
 - **Użyj pliku hosta (zalecane tylko do testowania)** . Aby zastąpić serwer DNS, można użyć pliku hosta na maszynie wirtualnej.  
 - **Użyj prywatnej strefy DNS**. Za pomocą prywatnych stref DNS można zastąpić rozpoznawanie nazw DNS dla danego prywatnego punktu końcowego. Prywatna strefa DNS może być połączona z siecią wirtualną w celu rozpoznania określonych domen.
-- **Użyj niestandardowego serwera DNS**. Możesz użyć własnego serwera DNS do zastąpienia rozpoznawania nazw DNS dla danego zasobu linku prywatnego. Jeśli [serwer DNS](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server) jest hostowany w sieci wirtualnej, można utworzyć regułę przekazywania DNS w celu użycia prywatnej strefy DNS w celu uproszczenia konfiguracji wszystkich prywatnych zasobów łączy.
+- **Użyj niestandardowego serwera DNS**. Możesz użyć własnego serwera DNS do zastąpienia rozpoznawania nazw DNS dla danego zasobu linku prywatnego. Jeśli [serwer DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) jest hostowany w sieci wirtualnej, można utworzyć regułę przekazywania DNS w celu użycia prywatnej strefy DNS w celu uproszczenia konfiguracji wszystkich prywatnych zasobów łączy.
  
 > [!IMPORTANT]
 > Nie zaleca się przesłonięcia strefy, która aktywnie używa do rozpoznawania publicznych punktów końcowych. Połączenia z zasobami nie będą działać prawidłowo, bez przekazywania DNS do publicznej usługi DNS. Aby uniknąć problemów, Utwórz inną nazwę domeny lub postępuj według sugerowanej nazwy dla każdej usługi poniżej. 
@@ -122,8 +122,6 @@ Poniższa tabela zawiera listę znanych ograniczeń dotyczących używania prywa
 |Ograniczenia |Opis |Środki zaradcze  |
 |---------|---------|---------|
 |Reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) i trasy zdefiniowane przez użytkownika nie mają zastosowania do prywatnego punktu końcowego    |SIECIOWEJ grupy zabezpieczeń nie jest obsługiwany w prywatnych punktach końcowych. W podsieciach zawierających prywatny punkt końcowy może być skojarzonych sieciowej grupy zabezpieczeń, więc reguły nie będą obowiązywać w przypadku ruchu przetwarzanego przez prywatny punkt końcowy. Aby wdrażać prywatne punkty końcowe w podsieci, należy [wyłączyć wymuszanie zasad sieciowych](disable-private-endpoint-network-policy.md) . SIECIOWEJ grupy zabezpieczeń jest nadal wymuszane dla innych obciążeń hostowanych w tej samej podsieci. Trasy w dowolnej podsieci klienta będą używać prefiksu/32, zmiana domyślnego zachowania routingu wymaga podobnego UDR  | Kontroluj ruch przy użyciu reguł sieciowej grupy zabezpieczeń dla ruchu wychodzącego na klientach źródłowych. Wdróż pojedyncze trasy z prefiksem/32, aby przesłonić prywatne trasy punktów końcowych        |
-|Nie można tworzyć prywatnych punktów końcowych w podsieciach włączonych dla punktu końcowego usługi lub obciążeń wyspecjalizowanych    |Nie można wdrożyć prywatnych punktów końcowych w podsieciach z włączonymi punktami końcowymi usług lub podsieciami delegowanymi do wyspecjalizowanych obciążeń|  Utwórz oddzielną podsieć do wdrożenia prywatnych punktów końcowych.        |
-|prywatny punkt końcowy można zamapować tylko do usługi linku prywatnego (należącej do klienta) w tym samym regionie.    |   Łączenie się z usługą linku prywatnego (własne) z innego regionu nie jest obsługiwane       |  W trakcie okresu zapoznawczego należy wdrożyć usługę prywatnego linku w tym samym regionie.        |
 |  Virtual Network komunikacji równorzędnej z prywatnymi punktami końcowymi nie są obsługiwane   |   Podczas nawiązywania połączenia z prywatnymi punktami końcowymi w Virtual Network komunikacji równorzędnej bez żadnych innych obciążeń nie jest obsługiwane       | Wdróż pojedynczą maszynę wirtualną na Virtual Network komunikacji równorzędnej w celu włączenia łączności |
 |Wyspecjalizowane obciążenia nie mogą uzyskać dostępu do prywatnych punktów końcowych    |   Następujące usługi wdrożone w sieci wirtualnej nie mogą uzyskać dostępu do żadnego prywatnego zasobu linku przy użyciu prywatnych punktów końcowych:<br>Plan usługi App Service</br>Wystąpienie kontenera platformy Azure</br>Azure NetApp Files</br>Dedykowany moduł HSM platformy Azure<br>       |   Brak środków zaradczych w trakcie okresu zapoznawczego.       |
 

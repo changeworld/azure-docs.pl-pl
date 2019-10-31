@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ddda8ff67cfdfebcf19f53c307c689884baf4d
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a2e92ca85c485f8c93fc9202b9084ec37d7506e1
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942896"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175054"
 ---
-# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Instrukcje: Zarządzanie nieaktywnymi urządzeniami w usłudze Azure AD
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Instrukcje: Zarządzanie nieodświeżonymi urządzeniami w usłudze Azure AD
 
 W idealnym przypadku, aby zakończyć cykl życia, zarejestrowane urządzenia powinny zostać wyrejestrowane, gdy nie są już potrzebne. Ale czasami, na przykład z powodu zgubienia, kradzieży lub uszkodzenia urządzenia albo ponownej instalacji systemu operacyjnego, w Twoim środowisku pojawiają się nieaktywne urządzenia. Jako administrator IT prawdopodobnie potrzebujesz metody usuwania takich nieaktywnych urządzeń, aby Twoje zasoby mogły skoncentrować się na zarządzaniu urządzeniami, które faktycznie wymagają zarządzania.
 
@@ -70,12 +70,12 @@ Aby skutecznie oczyścić nieaktywne urządzenia w swoim środowisku, zdefiniuj 
 Aby zaktualizować urządzenie w usłudze Azure AD, potrzebne jest konto, które ma przypisaną jedną z następujących ról:
 
 - Administrator globalny
-- Administrator urządzeń w chmurze
+- Administrator urządzenia w chmurze
 - Administrator usługi Intune
 
 W zasadach oczyszczania wybierz konta, które mają przypisane wymagane role. 
 
-### <a name="timeframe"></a>Przedział czasu
+### <a name="timeframe"></a>Ramy czasowe
 
 Zdefiniuj przedział czasu, który jest wskaźnikiem służącym do wykrywania nieaktywnego urządzenia. Podczas definiowania przedziału czasu należy wziąć pod uwagę okno w celu zaktualizowania sygnatury czasowej działania do wartości. Na przykład nie należy uwzględniać sygnatury czasowej starszej niż 21 dni (łącznie z wariancją) jako wskaźnika dla nieodświeżonego urządzenia. Istnieją sytuacje, w których urządzenie może wyglądać na nieaktywne, chociaż tak nie jest. Na przykład gdy właściciel urządzenia jest na urlopie lub na zwolnieniu lekarskim  przekraczającym przedział czasu zdefiniowany dla nieaktywnych urządzeń.
 
@@ -113,7 +113,7 @@ Urządzenia dołączone do usługi Azure AD wyłącza się lub usuwa w usłudze 
 
 > [!NOTE]
 >* Usunięcie urządzenia usługi Azure AD nie powoduje usunięcia rejestracji na kliencie. Uniemożliwi dostęp do zasobów tylko za pomocą urządzenia jako tożsamości (np. dostępu warunkowego). 
->* Dowiedz się więcej na temat rozłączania [w usłudze Azure AD](faq.md#azure-ad-join-faq) 
+>* Dowiedz się więcej na temat [rozłączania w usłudze Azure AD](faq.md#azure-ad-join-faq) 
 
 ### <a name="azure-ad-registered-devices"></a>Urządzenia zarejestrowane w usłudze Azure AD
 

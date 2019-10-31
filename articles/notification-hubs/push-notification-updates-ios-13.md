@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 2bb66c52e48e2e872d7f67bfdea88602ba12e5de
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: e493ac10858aa374362d25f1467ded237b30ca44
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518592"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177403"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Aktualizacje usługi Azure Notification Hubs dla systemu iOS 13
 
@@ -23,7 +23,7 @@ Firma Apple wprowadziła niedawno pewne zmiany do ich publicznej usługi wypycha
 
 ### <a name="apns-push-type"></a>Typ wypychania APNS
 
-Firma Apple wymaga teraz, aby deweloperzy identyfikli powiadomienia jako alerty lub powiadomienia w tle za pomocą nowego nagłówka `apns-push-type` w interfejsie API usługi APNS. Zgodnie z [dokumentacją firmy Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): "wartość tego nagłówka musi dokładnie odzwierciedlać zawartość ładunku powiadomienia. W przypadku niezgodności lub braku nagłówka w wymaganych systemach usługi APNs mogą zwrócić błąd, opóźnić dostarczenie powiadomienia lub usunąć je całkowicie. "
+Firma Apple wymaga teraz, aby deweloperzy identyfikli powiadomienia jako alerty lub powiadomienia w tle za pomocą nowego nagłówka `apns-push-type` w interfejsie API usługi APNS. Zgodnie z [dokumentacją firmy Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): "wartość tego nagłówka musi dokładnie odzwierciedlać zawartość ładunku powiadomienia. W razie niezgodności lub braku nagłówka w wymaganych systemach usługa APNs może zwrócić błąd, opóźnić dostarczenie powiadomienia lub w całości je odrzucić”.
 
 Deweloperzy muszą teraz ustawić ten nagłówek w aplikacjach wysyłających powiadomienia za pomocą usługi Azure Notification Hubs. Ze względu na ograniczenie techniczne klienci muszą używać uwierzytelniania opartego na tokenach dla poświadczeń usługi APNS z żądaniami, które zawierają ten atrybut. Jeśli używasz uwierzytelniania opartego na certyfikatach dla poświadczeń usługi APNS, musisz przełączyć się do korzystania z uwierzytelniania opartego na tokenach.
 
@@ -46,7 +46,7 @@ await hub.SendNotificationAsync(notification);
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
 var headers = new Dictionary<string, string> {{"apns-push-type", "alert"}};
-var notification = new ApnsNotification("notification text", headers);
+var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 
@@ -70,7 +70,7 @@ Ustawienie tej wartości na 10 nie jest już dozwolone w przypadku powiadomień 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
 var headers = new Dictionary<string, string> {{"apns-push-type", "background"}, { "apns-priority", "5" }};
-var notification = new ApnsNotification("notification text", headers);
+var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 

@@ -1,6 +1,6 @@
 ---
-title: Aplikacja sieci Web, że wywołania internetowych interfejsów API (wywoływanie interfejsu web API) — Platforma tożsamości firmy Microsoft
-description: Informacje o sposobie tworzenia aplikacji sieci Web, która wywołuje internetowych interfejsów API (wywoływanie interfejsu web API)
+title: Aplikacja sieci Web, która wywołuje interfejsy API sieci Web (wywołując internetowy interfejs API) — Microsoft Identity platform
+description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje interfejsy API sieci Web (wywołując internetowy interfejs API)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3624f4e859081e53ee27b6f8415eb3f9b5a2a5fa
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: d971ec3c7cd82d6e028d0f96c8f52b897cedc351
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785455"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175301"
 ---
-# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Aplikacja sieci Web, która wywołuje interfejsy API — w sieci web wywołania interfejsu API sieci web
+# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — wywołuje internetowy interfejs API
 
-Teraz, gdy masz token, można wywoływać chroniony internetowy interfejs API.
+Teraz, gdy masz token, możesz wywołać chroniony internetowy interfejs API.
 
-## <a name="aspnet-core"></a>ASP.NET Core
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Oto uproszczony kod akcji `HomeController`. Ten kod pobiera tokenu służącego do wywoływania programu Microsoft Graph. Tego kodu w czasie został dodany, przedstawiający sposób wywoływania programu Microsoft Graph jako interfejs API REST. Adres URL dla interfejsu API programu graph jest podawany jako `appsettings.json` plików i odczytywanie w zmiennej o nazwie `webOptions`:
+Poniżej przedstawiono uproszczony kod akcji `HomeController`. Ten kod pobiera token, który wywoła Microsoft Graph. Ten kod czasu został dodany, pokazując sposób wywoływania Microsoft Graph jako interfejsu API REST. Adres URL interfejsu API programu Graph jest dostępny w pliku `appsettings.json` i odczytywany w zmiennej o nazwie `webOptions`:
 
 ```JSon
 {
@@ -83,11 +83,54 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> Ta sama zasada służy do wywołania dowolnego interfejsu API sieci web.
+> Tej samej zasady można użyć do wywołania dowolnego internetowego interfejsu API.
 >
-> Najbardziej w usłudze Azure web API udostępniają zestaw SDK, który upraszcza wywoływaniu tego elementu. Jest to również w przypadku programu Microsoft Graph. W następnym artykule dowiesz się, gdzie można znaleźć samouczek pokazujący tych aspektów.
+> Większość interfejsów API sieci Web platformy Azure udostępnia zestaw SDK, który upraszcza jego wywoływanie. Jest to również przypadek Microsoft Graph. Poznasz w następnym artykule, w którym znajdziesz samouczek ilustrujący te aspekty.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```Java
+private String getUserInfoFromGraph(String accessToken) throws Exception {
+    // Microsoft Graph user endpoint
+    URL url = new URL("https://graph.microsoft.com/v1.0/me");
+
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+    // Set the appropriate header fields in the request header.
+    conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+    conn.setRequestProperty("Accept", "application/json");
+
+    String response = HttpClientHelper.getResponseStringFromConn(conn);
+
+    int responseCode = conn.getResponseCode();
+    if(responseCode != HttpURLConnection.HTTP_OK) {
+        throw new IOException(response);
+    }
+
+    JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
+    return responseObject.toString();
+}
+
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+@app.route("/graphcall")
+def graphcall():
+    token = _get_token_from_cache(app_config.SCOPE)
+    if not token:
+        return redirect(url_for("login"))
+    graph_data = requests.get(  # Use token to call downstream service
+        app_config.ENDPOINT,
+        headers={'Authorization': 'Bearer ' + token['access_token']},
+        ).json()
+    return render_template('display.html', result=graph_data)
+```
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przenoszenie do środowiska produkcyjnego](scenario-web-app-call-api-production.md)
+> [Przenieś do środowiska produkcyjnego](scenario-web-app-call-api-production.md)

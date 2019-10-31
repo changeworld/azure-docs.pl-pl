@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab7c3699abdd5c094b1b14cd53f76023fa8c1ac
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 641f71f6111930b54d0a2bd548f16d3cb0c07189
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309603"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175261"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>Aplikacja sieci Web, która loguje się do użytkowników — Rejestracja aplikacji
 
@@ -56,7 +56,7 @@ Jeśli przejdziesz do tego linku, możesz utworzyć uruchomienie aplikacji sieci
    1. W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `AspNetCore-WebApp`.
    1. W obszarze **Identyfikator URI przekierowania**Dodaj typ aplikacji oraz miejsce docelowe identyfikatora URI, które będą akceptować zwrócone odpowiedzi na tokeny po pomyślnym uwierzytelnieniu. Na przykład `https://localhost:44321/`.  Wybierz pozycję **Zarejestruj**.
 1. Wybierz menu **Uwierzytelnianie**, a następnie dodaj następujące informacje:
-   1. W polu **adres URL odpowiedzi**Dodaj `https://localhost:44321/signin-oidc` typ "Web".
+   1. W polu **adres URL odpowiedzi**Dodaj `https://localhost:44321/signin-oidc` typu "Web".
    1. W sekcji **Ustawienia zaawansowane** ustaw pole **Adres URL wylogowywania** na wartość `https://localhost:44321/signout-oidc`.
    1. W obszarze **Niejawne przyznanie** zaznacz pole wyboru **Tokeny Identyfikatorów**.
    1. Wybierz pozycję **Zapisz**.
@@ -66,36 +66,51 @@ Jeśli przejdziesz do tego linku, możesz utworzyć uruchomienie aplikacji sieci
 4. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
    1. Wybierz obsługiwane typy kont dla aplikacji (zobacz [obsługiwane typy kont](./v2-supported-account-types.md))
    - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `MailApp-openidconnect-v2`.
-   - W sekcji identyfikator URI przekierowania (opcjonalnie) wybierz pozycję **Sieć Web** w polu kombi i wprowadź następujące identyfikatory URI przekierowania `https://localhost:44326/`:.
+   - W sekcji identyfikator URI przekierowania (opcjonalnie) wybierz pozycję **Sieć Web** w polu kombi i wprowadź następujące identyfikatory URI przekierowania: `https://localhost:44326/`.
 1. Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 1. Wybierz menu **Uwierzytelnianie**, a następnie dodaj następujące informacje:
-   - W sekcji **Zaawansowane ustawienia** | **niejawnego** przypisywania Sprawdź **tokeny identyfikatora** , ponieważ ten przykład wymaga, aby [przepływ niejawnego przydzielenia](v2-oauth2-implicit-grant-flow.md) był włączony do logowania użytkownika.
+   - W sekcji **Ustawienia zaawansowane** | **niejawnego udzielenia** Sprawdź **tokeny identyfikatora** , ponieważ ten przykład wymaga, aby [przepływ niejawnego przydzielenia](v2-oauth2-implicit-grant-flow.md) był włączony do logowania użytkownika.
 1. Wybierz pozycję **Zapisz**.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 4. Gdy zostanie wyświetlona **Strona Zarejestruj aplikację** , wprowadź przyjazną nazwę aplikacji, na przykład "Java-webapp", wybierz pozycję "konta w dowolnym katalogu organizacyjnym i osobiste konta Microsoft (np. Skype, Xbox, Outlook.com)" i wybierz pozycję "aplikacja sieci Web" /API "jako *Typ aplikacji*.
 1. Kliknij pozycję **zarejestruj** , aby zarejestrować aplikację.
-1. W menu po lewej stronie kliknij pozycję **uwierzytelnianie**, a następnie w obszarze *identyfikatory URI przekierowania*wybierz pozycję "Web". Należy wprowadzić dwa różne identyfikatory URI przekierowania: jeden dla strony logowania i jeden dla strony użytkownicy programu Graph. W obu przypadkach należy używać tego samego hosta i numeru portu, a następnie "/msal4jsample/Secure/AAD" dla strony logowania i "msal4jsample/Graph/users" na stronie użytkownicy.
- Domyślnie użycie przykładu: 
+1. W menu po lewej stronie kliknij pozycję **uwierzytelnianie**, a następnie w obszarze *identyfikatory URI przekierowania*wybierz pozycję "Web". Należy wprowadzić dwa różne identyfikatory URI przekierowania: jeden dla strony logowania i jeden dla strony Graf. W obu przypadkach należy używać tego samego hosta i numeru portu, a następnie "/msal4jsample/Secure/AAD" dla strony logowania i "msal4jsample/Graph/Me" na stronie informacje o użytkowniku.
+ Domyślnie użycie przykładu:
 
-    - `http://localhost:8080/msal4jsample/secure/aad`. 
-    - `http://localhost:8080/msal4jsample/graph/users`
+    - `http://localhost:8080/msal4jsample/secure/aad`.
+    - `http://localhost:8080/msal4jsample/graph/me`
 
-Kliknij pozycję **Zapisz**.
+    W sekcji **Ustawienia zaawansowane** ustaw pole **Adres URL wylogowywania** na wartość `http://localhost:8080/msal4jsample/sign_out`.
+
+     Kliknij pozycję **Zapisz**.
+
+1. Wybierz pozycję **certyfikaty & wpisy tajne** z menu i w sekcji wpisy **tajne klienta** kliknij **nowy klucz tajny klienta**:
+
+    - Wpisz opis klucza
+    - Wybierz czas trwania klucza **w 1 roku**.
+    - Wartość klucza zostanie wyświetlona po wybraniu opcji **Dodaj**.
+    - Skopiuj wartość klucza w późniejszym czasie. Ta wartość klucza nie będzie ponownie wyświetlana ani nie można jej pobrać z innych metod, dlatego Zapisz ją tak szybko, jak to będzie widoczne w Azure Portal.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 4. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
    - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `python-webapp`.
    - Zmień **obsługiwane typy kont** na **konta w dowolnym katalogu organizacyjnym i osobiste konta Microsoft (np. Skype, Xbox, Outlook.com)** .
-   - W sekcji identyfikator URI przekierowania (opcjonalnie) wybierz pozycję **Sieć Web** w polu kombi i wprowadź następujące identyfikatory URI przekierowania `http://localhost:5000/getAToken`:.
+   - W sekcji identyfikator URI przekierowania (opcjonalnie) wybierz pozycję **Sieć Web** w polu kombi i wprowadź następujące identyfikatory URI przekierowania: `http://localhost:5000/getAToken`.
 1. Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 1. Na stronie **Przegląd** aplikacji Znajdź wartość **Identyfikator aplikacji (klienta)** i Zapisz ją jako nowszą. Będzie ona potrzebna do skonfigurowania pliku konfiguracji programu Visual Studio dla tego projektu.
 1. Na stronie Przegląd aplikacji wybierz sekcję **uwierzytelnianie** .
-   - W sekcji **Ustawienia zaawansowane** Ustaw **adres URL wylogowywania** na`http://localhost:5000/logout`
-1. Wybierz pozycję **Zapisz**.
+   - W sekcji **Ustawienia zaawansowane** Ustaw **adres URL wylogowywania** na `http://localhost:5000/logout`
 
+  Wybierz pozycję **Zapisz**.
+1. W menu po lewej stronie wybierz pozycję **certyfikaty & wpisy tajne** i kliknij pozycję **Nowy wpis tajny klienta** w sekcji wpisy **tajne klienta** :
+
+      - Wpisz opis klucza
+      - Wybierz kluczowy czas trwania wynoszący **1 rok**.
+      - Po kliknięciu przycisku **Dodaj**zostanie wyświetlona wartość klucza.
+      - Skopiuj wartość klucza. Będzie potrzebny później.
 ---
 
 ## <a name="register-an-app-using-powershell"></a>Rejestrowanie aplikacji przy użyciu programu PowerShell
@@ -106,7 +121,7 @@ Kliknij pozycję **Zapisz**.
 > - MyOrg (konta tylko w tym katalogu organizacji)
 > - AnyOrg (konta w dowolnym katalogu organizacyjnym).
 >
-> Jeśli chcesz utworzyć aplikację, która umożliwia użytkownikom logowanie się przy użyciu osobistych kont Microsoft (np. Skype, XBox, Outlook.com), można najpierw utworzyć aplikację wielodostępną (obsługiwane typy kont = konta w dowolnym katalogu organizacyjnym), a następnie zmienić `signInAudience` właściwość w manifeście aplikacji z Azure Portal. Opisano to szczegółowo w kroku [1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) samouczka ASP.NET Core (i może być uogólniony do aplikacji sieci Web w dowolnym języku).
+> Jeśli chcesz utworzyć aplikację, która umożliwia użytkownikom logowanie się przy użyciu osobistych kont Microsoft (np. Skype, XBox, Outlook.com), można najpierw utworzyć aplikację wielodostępną (obsługiwane typy kont = konta w dowolnym katalogu organizacyjnym), a następnie zmienić Właściwość `signInAudience` w manifeście aplikacji z Azure Portal. Opisano to szczegółowo w kroku [1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) samouczka ASP.NET Core (i może być uogólniony do aplikacji sieci Web w dowolnym języku).
 
 ## <a name="next-steps"></a>Następne kroki
 

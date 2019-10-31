@@ -1,5 +1,5 @@
 ---
-title: Delegowanie i role w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza) — Azure Active Directory
+title: Delegowanie i role w zarządzaniu prawami usługi Azure AD — Azure Active Directory
 description: Dowiedz się, jak delegować nadzór dostępu od administratorów IT do kierowników działu i menedżerów projektów, aby mogli zarządzać dostępem do siebie.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9eb97b88be3ed68398cf7844b03e6a1fc9cd1b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934441"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174260"
 ---
-# <a name="delegation-and-roles-in-azure-ad-entitlement-management-preview"></a>Delegowanie i role w usłudze Azure AD uprawnienia do zarządzania (wersja zapoznawcza)
-
-> [!IMPORTANT]
-> Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
-> Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegowanie i role w zarządzaniu prawami usługi Azure AD
 
 Domyślnie Administratorzy globalni i Administratorzy użytkowników mogą tworzyć wszystkie aspekty zarządzania prawami usługi Azure AD i zarządzać nimi. Jednak użytkownicy z tych ról mogą nie wiedzieć o wszystkich sytuacjach, w których wymagane są pakiety dostępu. Zwykle są to użytkownicy w ramach odpowiednich działów, zespołów lub projektów, które wiedzą, komu pracują z usługą, za pomocą których zasobów i jak długo. Zamiast udzielania nieograniczonych uprawnień administratorom niebędącym administratorami, można udzielić użytkownikom najniższych uprawnień, których potrzebują do wykonywania swoich zadań, i uniknąć tworzenia sprzecznych lub nieodpowiednich praw dostępu.
 
@@ -113,8 +108,9 @@ Poniższa tabela zawiera listę zadań, które mogą być wykonywane przez role 
 | [Bezpośrednie przypisywanie użytkownika do pakietu dostępu](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Wyświetl osoby, które mają przypisanie do pakietu dostępu](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Wyświetlanie żądań pakietu dostępu](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Wyświetl błędy dostarczania żądania](entitlement-management-access-package-requests.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Anulowanie oczekującego żądania](entitlement-management-access-package-requests.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Wyświetl błędy dostarczania żądania](entitlement-management-troubleshoot.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Przetwórz ponownie żądanie](entitlement-management-troubleshoot.md#reprocess-a-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Anulowanie oczekującego żądania](entitlement-management-troubleshoot.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Ukryj pakiet dostępu](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Usuwanie pakietu dostępu](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 64f79b3e72a8655f8d704ffd531d9e34485832b0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570617"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176039"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw zasobów w sieciach wirtualnych platformy Azure
 
@@ -26,7 +26,7 @@ W zależności od tego, jak korzystasz z platformy Azure do hostowania rozwiąza
 Kiedy zasoby wdrożone w sieciach wirtualnych muszą rozpoznać nazwy domen jako wewnętrzne adresy IP, mogą użyć jednej z dwóch metod:
 
 * [Rozpoznawanie nazw udostępniane przez platformę Azure](#azure-provided-name-resolution)
-* [Rozpoznawanie nazw wykorzystujące własny serwer DNS](#name-resolution-that-uses-your-own-dns-server) (które mogą przekazywać zapytania do serwerów DNS udostępnianych przez platformę Azure)
+* [Rozpoznawanie nazw wykorzystujące własny serwer DNS](#name-resolution-that-uses-your-own-dns-server) (co może przekazywać zapytania do serwerów DNS udostępnianych przez platformę Azure)
 
 Używany typ rozpoznawania nazw zależy od tego, w jaki sposób zasoby muszą komunikować się ze sobą. W poniższej tabeli przedstawiono scenariusze i odpowiednie rozwiązania rozpoznawania nazw:
 
@@ -34,13 +34,13 @@ Używany typ rozpoznawania nazw zależy od tego, w jaki sposób zasoby muszą ko
 > W zależności od danego scenariusza warto użyć funkcji Azure DNS Private Zones, która jest obecnie dostępna w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Using Azure DNS for private domains (Korzystanie z usługi Azure DNS na potrzeby domen prywatnych)](../dns/private-dns-overview.md).
 >
 
-| **Scenariusz** | **Rozwiązanie** | **Suffix** |
+| **Scenariusz** | **Rozwiązanie** | **Przedrostk** |
 | --- | --- | --- |
 | Rozpoznawanie nazw między maszynami wirtualnymi znajdującymi się w tej samej sieci wirtualnej lub wystąpieniami roli Cloud Services platformy Azure w tej samej usłudze w chmurze. | [Azure DNS Private Zones](../dns/private-dns-overview.md) lub [rozpoznawanie nazw udostępniane przez platformę Azure](#azure-provided-name-resolution) |Nazwa hosta lub nazwa FQDN |
 | Rozpoznawanie nazw między maszynami wirtualnymi w różnych sieciach wirtualnych lub wystąpieniach ról w różnych usługach w chmurze. |[Azure DNS Private Zones](../dns/private-dns-overview.md) lub serwery DNS zarządzane przez klienta przesyłają dalej zapytania między sieciami wirtualnymi w celu rozpoznania ich przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Rozpoznawanie nazw z Azure App Service (aplikacja sieci Web, funkcja lub bot) przy użyciu integracji sieci wirtualnej z wystąpieniami roli lub maszynami wirtualnymi w tej samej sieci wirtualnej. |Serwery DNS zarządzane przez klienta przesyłają zapytania między sieciami wirtualnymi w celu rozpoznawania przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Rozpoznawanie nazw z App Service Web Apps do maszyn wirtualnych w tej samej sieci wirtualnej. |Serwery DNS zarządzane przez klienta przesyłają zapytania między sieciami wirtualnymi w celu rozpoznawania przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
-| Rozpoznawanie nazw od App Service Web Apps w jednej sieci wirtualnej do maszyn wirtualnych w innej sieci wirtualnej. |Serwery DNS zarządzane przez klienta przesyłają zapytania między sieciami wirtualnymi w celu rozpoznawania przez platformę Azure (DNS proxy). Zobacz rozpoznawanie nazw przy użyciu własnego serwera DNS. |Tylko nazwa FQDN |
+| Rozpoznawanie nazw od App Service Web Apps w jednej sieci wirtualnej do maszyn wirtualnych w innej sieci wirtualnej. |Serwery DNS zarządzane przez klienta przesyłają zapytania między sieciami wirtualnymi w celu rozpoznawania przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Rozpoznawanie lokalnych nazw komputerów i usług z maszyn wirtualnych lub wystąpień ról na platformie Azure. |Serwery DNS zarządzane przez klienta (kontroler domeny lokalnej, lokalny kontroler domeny tylko do odczytu lub pomocniczy serwer DNS z użyciem transferów stref, na przykład). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Rozpoznawanie nazw hostów platformy Azure z komputerów lokalnych. |Przekazuj zapytania do serwera proxy DNS zarządzanego przez klienta w odpowiedniej sieci wirtualnej, serwer proxy przekazuje zapytania do platformy Azure w celu rozwiązania problemu. Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Zwrotny serwer DNS dla wewnętrznych adresów IP. |[Rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Nie dotyczy |
@@ -89,19 +89,19 @@ Domyślny klient DNS systemu Windows ma wbudowaną pamięć podręczną usługi 
 Dostępnych jest wiele różnych pakietów buforowania DNS (takich jak dnsmasq). Poniżej przedstawiono sposób instalowania dnsmasq na najbardziej typowych dystrybucjach:
 
 * **Ubuntu (używa resolvconf)** :
-  * Zainstaluj pakiet dnsmasq przy użyciu `sudo apt-get install dnsmasq`programu.
+  * Zainstaluj pakiet dnsmasq z `sudo apt-get install dnsmasq`.
 * **SUSE (używa serviceconf)** :
-  * Zainstaluj pakiet dnsmasq przy użyciu `sudo zypper install dnsmasq`programu.
-  * Włącz usługę dnsmasq przy użyciu `systemctl enable dnsmasq.service`usługi. 
-  * Uruchom usługę dnsmasq za pomocą `systemctl start dnsmasq.service`programu. 
+  * Zainstaluj pakiet dnsmasq z `sudo zypper install dnsmasq`.
+  * Włącz usługę dnsmasq przy użyciu `systemctl enable dnsmasq.service`. 
+  * Uruchom usługę dnsmasq z `systemctl start dnsmasq.service`. 
   * Edytuj **/etc/sysconfig/Network/config**i Zmień *NETCONFIG_DNS_FORWARDER = ""* na *dnsmasq*.
-  * Zaktualizuj plik resolv. conf z `netconfig update`, aby ustawić pamięć podręczną jako lokalny program rozpoznawania nazw DNS.
+  * Zaktualizuj plik resolv. conf przy użyciu `netconfig update`, aby ustawić pamięć podręczną jako lokalny program rozpoznawania nazw DNS.
 * **CentOS (korzysta z gniazd sieciowych)** :
-  * Zainstaluj pakiet dnsmasq przy użyciu `sudo yum install dnsmasq`programu.
-  * Włącz usługę dnsmasq przy użyciu `systemctl enable dnsmasq.service`usługi.
-  * Uruchom usługę dnsmasq za pomocą `systemctl start dnsmasq.service`programu.
+  * Zainstaluj pakiet dnsmasq z `sudo yum install dnsmasq`.
+  * Włącz usługę dnsmasq przy użyciu `systemctl enable dnsmasq.service`.
+  * Uruchom usługę dnsmasq z `systemctl start dnsmasq.service`.
   * Dodaj *ciąg Domain-Name-Server 127.0.0.1;* do **/etc/dhclient-eth0.conf**.
-  * Uruchom ponownie usługę sieciową `service network restart`za pomocą programu, aby ustawić pamięć podręczną jako lokalny program rozpoznawania nazw DNS.
+  * Uruchom ponownie usługę sieciową przy użyciu `service network restart`, aby ustawić pamięć podręczną jako lokalny program rozpoznawania nazw DNS.
 
 > [!NOTE]
 > Pakiet dnsmasq jest tylko jedną z wielu pamięci podręcznych DNS dostępnych dla systemu Linux. Przed użyciem sprawdź jego przydatność do określonych potrzeb i sprawdź, czy nie zainstalowano żadnej innej pamięci podręcznej.
@@ -115,7 +115,7 @@ System DNS jest przede wszystkim protokołem UDP. Ponieważ protokół UDP nie g
 * Systemy operacyjne Windows ponowią próbę po upływie jednej sekundy, a następnie ponownie po upływie dwóch sekund, cztery sekundy i inne cztery sekundy. 
 * Domyślna instalacja systemu Linux ponawia próbę po upływie pięciu sekund. Zalecamy zmianę specyfikacji ponownych prób na pięć razy, w odstępach jednosekundowych.
 
-Sprawdź bieżące ustawienia na maszynie wirtualnej z systemem Linux `cat /etc/resolv.conf`za pomocą programu. Zapoznaj się z wierszem *opcji* , na przykład:
+Sprawdź bieżące ustawienia na maszynie wirtualnej z systemem Linux przy użyciu `cat /etc/resolv.conf`. Zapoznaj się z wierszem *opcji* , na przykład:
 
 ```bash
 options timeout:1 attempts:5
@@ -125,13 +125,13 @@ Plik plik resolv. conf jest zwykle generowany automatycznie i nie powinien być 
 
 * **Ubuntu** (używa resolvconf):
   1. Dodaj wiersz *opcji* do **/etc/resolvconf/resolv.conf.d/tail**.
-  2. Uruchom `resolvconf -u` , aby zaktualizować.
-* **SUSE** (używa w usłudze nr conf):
+  2. Uruchom `resolvconf -u`, aby zaktualizować.
+* **SUSE** (używa serviceconf):
   1. Dodaj *limit czasu: 1 próby: 5* do parametru **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** w **/etc/sysconfig/Network/config**.
-  2. Uruchom `netconfig update` , aby zaktualizować.
+  2. Uruchom `netconfig update`, aby zaktualizować.
 * **CentOS** (korzysta z gniazd sieciowych):
   1. Dodaj *Echo "Opcje limitu czasu: 1 próby: 5"* do **/etc/NetworkManager/Dispatcher.d/11-dhclient**.
-  2. Aktualizuj przy `service network restart`użyciu programu.
+  2. Aktualizowanie za pomocą `service network restart`.
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>Rozpoznawanie nazw wykorzystujące własny serwer DNS
 
@@ -173,7 +173,7 @@ Jeśli przekazywanie zapytań do platformy Azure nie odpowiada Twoim potrzebom, 
 > 
 > 
 
-### <a name="web-apps"></a>Aplikacje internetowe
+### <a name="web-apps"></a>Aplikacje sieci Web
 Załóżmy, że konieczne jest przeprowadzenie rozpoznawania nazw z aplikacji sieci Web utworzonej przy użyciu App Service połączonej z siecią wirtualną z maszynami wirtualnymi w tej samej sieci wirtualnej. Oprócz konfigurowania niestandardowego serwera DNS, który ma usługę przesyłania dalej DNS, która przekazuje zapytania do platformy Azure (Virtual IP 168.63.129.16), wykonaj następujące czynności:
 1. Włącz integrację sieci wirtualnej dla aplikacji sieci Web, jeśli nie została jeszcze wykonana, zgodnie z opisem w temacie [Integrowanie aplikacji z siecią wirtualną](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. W Azure Portal, w przypadku planu App Service hostujący aplikację sieci Web, wybierz pozycję **Synchronizuj sieć** w obszarze **Sieć**, **Virtual Network integrację**.
@@ -189,7 +189,7 @@ Jeśli konieczne jest przeprowadzenie rozpoznawania nazw z aplikacji sieci Web s
 * W Azure Portal, w przypadku planu App Service hostujący aplikację sieci Web, wybierz pozycję **Synchronizuj sieć** w obszarze **Sieć**, **Virtual Network integrację**.
 
 ## <a name="specify-dns-servers"></a>Określ serwery DNS
-Jeśli używasz własnych serwerów DNS, platforma Azure umożliwia określenie wielu serwerów DNS na potrzeby sieci wirtualnej. Można również określić wiele serwerów DNS dla każdego interfejsu sieciowego (dla usługi Azure Resource Manager) lub dla usługi w chmurze (w przypadku klasycznego modelu wdrażania). Serwery DNS określone dla interfejsu sieciowego lub usługi w chmurze mają pierwszeństwo przed serwerami DNS określonymi dla sieci wirtualnej.
+Jeśli używasz własnych serwerów DNS, platforma Azure umożliwia określenie wielu serwerów DNS na potrzeby sieci wirtualnej. Można również określić wiele serwerów DNS dla każdego interfejsu sieciowego (w przypadku usługi Azure Resource Manager) lub dla usługi w chmurze (w przypadku klasycznego modelu wdrażania). Serwery DNS określone dla interfejsu sieciowego lub usługi w chmurze mają pierwszeństwo przed serwerami DNS określonymi dla sieci wirtualnej.
 
 > [!NOTE]
 > Właściwości połączenia sieciowego, takie jak adresy IP serwera DNS, nie powinny być edytowane bezpośrednio w maszynach wirtualnych. Dzieje się tak, ponieważ mogą one zostać wymazane podczas stosowania poprawek do usługi, gdy karta sieci wirtualnej zostanie zastąpiona. Dotyczy to zarówno maszyn wirtualnych z systemem Windows, jak i Linux.
@@ -210,7 +210,7 @@ W przypadku korzystania z klasycznego modelu wdrażania można określić serwer
 >
 >
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Azure Resource Manager model wdrażania:
 

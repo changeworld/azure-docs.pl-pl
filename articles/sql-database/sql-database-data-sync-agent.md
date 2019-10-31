@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: de7858be4ac4e392b4fb92cacf55882378ba9813
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568979"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177716"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizacji danych dla platformy Azure SQL Data Sync
 
@@ -31,13 +31,13 @@ Aby pobrać agenta synchronizacji danych, przejdź do [agenta usługi SQL Data S
 
 ### <a name="install-silently"></a>Instaluj w trybie dyskretnym
 
-Aby zainstalować agenta synchronizacji danych w trybie dyskretnym z wiersza polecenia, wprowadź polecenie podobne do poniższego przykładu. Sprawdź nazwę pliku pobranego pliku MSI i podaj własne wartości argumentów **TARGETDIR** i ServiceAccount.
+Aby zainstalować agenta synchronizacji danych w trybie dyskretnym z wiersza polecenia, wprowadź polecenie podobne do poniższego przykładu. Sprawdź nazwę pliku pobranego pliku MSI i podaj własne wartości argumentów **TARGETDIR** i **ServiceAccount** .
 
 - Jeśli nie podano wartości dla **TARGETDIR**, wartość domyślna to `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`.
 
-- Jeśli podano `LocalSystem` wartość parametru ServiceAccount, Użyj uwierzytelniania SQL Server podczas konfigurowania agenta do nawiązywania połączenia z SQL Server lokalnymi.
+- Jeśli podano `LocalSystem` jako wartość **ServiceAccount**, użyj uwierzytelniania SQL Server podczas konfigurowania agenta do nawiązywania połączenia z lokalnym SQL serverem.
 
-- W przypadku podania konta użytkownika domeny lub konta użytkownika lokalnego jako wartości ServiceAccount należyrównież podać hasło przy użyciu ARGUMENTU servicepassword. Na przykład `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
+- W przypadku podania konta użytkownika domeny lub konta użytkownika lokalnego jako wartości **ServiceAccount**należy również podać hasło przy użyciu ARGUMENTU **ServicePassword** . Na przykład `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
 
 ```cmd
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
@@ -99,10 +99,10 @@ Jeśli chcesz uruchomić agenta lokalnego z innego komputera niż aktualnie wł�
 
 - **Przyczyna**. Przyczyną tego błędu może być wiele scenariuszy. Aby ustalić konkretną przyczynę tego błędu, należy zapoznać się z dziennikami.
 
-- **Rozwiązanie**. Aby znaleźć konkretną przyczynę niepowodzenia, wygeneruj i poszukaj dzienników Instalator Windows. Rejestrowanie można włączyć w wierszu polecenia. Na przykład, jeśli pobrany plik instalacyjny to `SQLDataSyncAgent-2.0-x86-ENU.msi`, wygeneruj i Przejrzyj pliki dziennika przy użyciu następujących wierszy poleceń:
+- **Rozwiązanie**. Aby znaleźć konkretną przyczynę niepowodzenia, wygeneruj i poszukaj dzienników Instalator Windows. Rejestrowanie można włączyć w wierszu polecenia. Na przykład jeśli pobrany plik instalacyjny jest `SQLDataSyncAgent-2.0-x86-ENU.msi`, wygeneruj i Przejrzyj pliki dziennika przy użyciu następujących wierszy poleceń:
 
-  - W przypadku instalacji:`msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-  - W przypadku dezinstalacji:`msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - W przypadku instalacji: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - W przypadku dezinstalacji: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Możesz również włączyć rejestrowanie dla wszystkich instalacji, które są wykonywane przez Instalator Windows. Artykuł z bazy wiedzy Microsoft Knowledge Base, [jak włączyć rejestrowanie Instalator Windows](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) , udostępnia rozwiązanie z jednym kliknięciem umożliwiające włączenie rejestrowania Instalator Windows. Zawiera również lokalizację dzienników.
 
@@ -115,7 +115,7 @@ Agent klienta nie działa, nawet po anulowaniu jego dezinstalacji.
 - **Rozwiązanie**. Możesz wypróbować te dwa rozwiązania:
 
     -   Użyj programu Services. msc, aby ponownie wprowadzić poświadczenia dla agenta klienta.
-    -   Odinstaluj tego agenta klienta, a następnie zainstaluj nowy. Pobierz i zainstaluj najnowszego agenta klienta z [Centrum pobierania](https://go.microsoft.com/fwlink/?linkid=221479).
+    -   Odinstaluj tego agenta klienta, a następnie zainstaluj nowy. Pobierz i zainstaluj najnowszego agenta klienta z [Centrum pobierania](https://www.microsoft.com/download/details.aspx?id=27693).
 
 ### <a name="agent-list"></a>Moja baza danych nie znajduje się na liście agentów
 
@@ -138,7 +138,7 @@ Te scenariusze mogą spowodować wystąpienie tego problemu:
 
 ### <a name="agent-start"></a>Nie uruchomiono agenta klienta (Błąd 1069)
 
-Użytkownik stwierdzi, że Agent nie jest uruchomiony na komputerze, który hostuje SQL Server. Podczas próby ręcznego uruchomienia agenta zobaczysz okno dialogowe, w którym jest wyświetlany komunikat "Błąd 1069: Usługa nie została uruchomiona z powodu niepowodzenia logowania. "
+Użytkownik stwierdzi, że Agent nie jest uruchomiony na komputerze, który hostuje SQL Server. Podczas próby ręcznego uruchomienia agenta zostanie wyświetlone okno dialogowe z komunikatem "Błąd 1069: usługa nie została uruchomiona z powodu błędu logowania".
 
 ![Błąd synchronizacji danych — okno dialogowe 1069](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
@@ -147,16 +147,16 @@ Użytkownik stwierdzi, że Agent nie jest uruchomiony na komputerze, który host
 - **Rozwiązanie**. Zaktualizuj hasło agenta do bieżącego hasła serwera:
 
   1. Znajdź usługę agenta klienta SQL Data Sync.  
-    a. Wybierz **Start**.  
+    a. Wybierz pozycję **Uruchom**.  
     b. W polu wyszukiwania wpisz polecenie **Services. msc**.  
-    c. W wynikach wyszukiwania wybierz pozycję **usługi**.  
+    d. W wynikach wyszukiwania wybierz pozycję **usługi**.  
     d. W oknie **usługi** przewiń do pozycji **SQL Data Sync agenta**.  
   1. Kliknij prawym przyciskiem myszy pozycję **SQL Data Sync Agent**, a następnie wybierz polecenie **Zatrzymaj**.
   1. Kliknij prawym przyciskiem myszy pozycję **SQL Data Sync Agent**, a następnie wybierz polecenie **Właściwości**.
   1. Na **SQL Data Sync właściwości agenta**wybierz kartę **Logowanie** .
   1. W polu **hasło** wprowadź hasło.
   1. W polu **Potwierdź hasło** ponownie wprowadź hasło.
-  1. Wybierz **Zastosuj**, a następnie wybierz pozycję **OK**.
+  1. Wybierz pozycję **Apply** (Zastosuj), a następnie wybierz przycisk **OK**.
   1. W oknie **usługi** kliknij prawym przyciskiem myszy usługę **Agent SQL Data Sync** , a następnie kliknij polecenie **Uruchom**.
   1. Zamknij okno **usługi** .
 
@@ -205,7 +205,7 @@ Jeśli lokalny punkt końcowy (czyli baza danych) zarejestrowany przy użyciu ag
 - **Rozwiązanie**. Użyj "Wymuś usunięcie", aby usunąć nieosiągalną bazę danych.
 
 > [!NOTE]
-> Jeśli tabele metadanych synchronizacji pozostają po "Wymuś usunięcie", użyj `deprovisioningutil.exe` , aby wyczyścić je.
+> Jeśli tabele metadanych synchronizacji pozostają po "Wymuś usunięcie", użyj `deprovisioningutil.exe`, aby wyczyścić je.
 
 ### <a name="agent-connect"></a>Aplikacja agenta synchronizacji lokalnej nie może nawiązać połączenia z lokalną usługą synchronizacji
 
@@ -298,7 +298,7 @@ SqlDataSyncAgentCommand.exe -action unregisterdatabase -servername [on-premisesd
 SqlDataSyncAgentCommand.exe -action "unregisterdatabase" -serverName localhost -databaseName testdb
 ```
 
-### <a name="update-credentials"></a>Aktualizuj poświadczenia
+### <a name="update-credentials"></a>Aktualizowanie poświadczeń
 
 #### <a name="usage"></a>Użycie
 
@@ -314,7 +314,7 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -databaseName testdb -authentication windows -encryption true
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat SQL Data Sync, zobacz następujące artykuły:
 
@@ -323,7 +323,7 @@ Aby uzyskać więcej informacji na temat SQL Data Sync, zobacz następujące art
     - W portalu — [Tutorial: Set up SQL Data Sync to sync data between Azure SQL Database and SQL Server on-premises](sql-database-get-started-sql-data-sync.md) (Samouczek: konfigurowanie usługi SQL Data Sync w celu synchronizowania danych między usługą Azure SQL Database i lokalnym programem SQL Server)
     - Z programem PowerShell
         -  [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
+        -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL Database i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Najlepsze rozwiązania — [Best practices for Azure SQL Data Sync](sql-database-best-practices-data-sync.md) (Najlepsze rozwiązania dotyczące korzystania z usługi Azure SQL Data Sync)
 -   Monitor- [monitor SQL Data Sync z dziennikami Azure monitor](sql-database-sync-monitor-oms.md)
 -   Rozwiązywanie problemów — [Troubleshoot issues with Azure SQL Data Sync](sql-database-troubleshoot-data-sync.md) (Rozwiązywanie problemów z usługą Azure SQL Data Sync)

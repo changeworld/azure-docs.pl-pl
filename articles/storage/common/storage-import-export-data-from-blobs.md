@@ -1,6 +1,6 @@
 ---
-title: Eksportowanie danych z obiektów blob platformy Azure przy użyciu usługi Azure Import/Export | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzyć zadania eksportu w witrynie Azure portal na przesyłanie danych z obiektów blob platformy Azure.
+title: Eksportowanie danych z obiektów blob platformy Azure przy użyciu usługi Azure Import/Export | Microsoft Docs
+description: Dowiedz się, jak tworzyć zadania eksportu w Azure Portal, aby przesyłać dane z obiektów blob platformy Azure.
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,159 +8,159 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e542ad59f6fd64b52aef9438ed0f646e9e36fc4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3166c1f97a81c12b75dd400f591fd92a705cadf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209623"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73178036"
 ---
-# <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia eksportowanie danych z usługi Azure Blob storage
-Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu używania usługi Azure Import/Export bezpiecznie eksportowania dużych ilości danych z usługi Azure Blob storage. Usługa wymaga dostarczaj puste dyski w centrach danych platformy Azure. Usługa eksportuje dane z konta magazynu na dyski i następnie jest dostarczany z stacje ponownie.
+# <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Eksportowanie danych z magazynu obiektów blob platformy Azure za pomocą usługi Azure Import/Export
+Ten artykuł zawiera instrukcje krok po kroku dotyczące korzystania z usługi Azure Import/Export do bezpiecznego eksportowania dużych ilości danych z magazynu obiektów blob platformy Azure. Usługa wymaga wysłania pustych dysków do centrum danych platformy Azure. Usługa eksportuje dane z konta magazynu na dyski, a następnie dostarcza dyski z powrotem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed przystąpieniem do tworzenia zadania eksportu transferować dane z usługi Azure Blob Storage, należy dokładnie przejrzyj i ukończ Poniższa lista wymagań wstępnych dla tej usługi. Musisz mieć:
+Przed utworzeniem zadania eksportu w celu przetransferowania danych z usługi Azure Blob Storage należy uważnie przejrzeć i wykonać poniższą listę wymagań wstępnych dla tej usługi. Należy:
 
-- Mieć aktywną subskrypcją platformy Azure, który może służyć do usługi Import/Export.
-- Ma co najmniej jedno konto usługi Azure Storage. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-quickstart-create-account.md).
-- Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks).
-- Mieć konto FedEx/DHL w sprawie. Jeśli chcesz użyć operatora innego niż FedEx/DHL w sprawie, skontaktuj się z zespołem operacje pole danych platformy Azure w `adbops@microsoft.com`. 
-    - Konto musi być prawidłowy, powinny mieć salda i musi mieć możliwości wysyłki zwrotnej.
-    - Generowanie numer śledzenia, zadanie eksportu.
-    - Każde zadanie powinno mieć numer oddzielne śledzenia. Wiele zadań przy użyciu tego samego numeru śledzenia nie są obsługiwane. 
-    - Jeśli nie masz konto przewoźnika, przejdź do strony:
-        - [Utwórz konto FedEX](https://www.fedex.com/en-us/create-account.html), lub 
-        - [Tworzenie konta przez firmę DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
+- Mieć aktywną subskrypcję platformy Azure, która może być używana w usłudze Import/Export.
+- Mieć co najmniej jedno konto usługi Azure Storage. Zapoznaj się z listą [obsługiwanych kont magazynu i typów magazynów dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [jak utworzyć konto magazynu](storage-quickstart-create-account.md).
+- Ma wystarczającą liczbę dysków [obsługiwanych typów](storage-import-export-requirements.md#supported-disks).
+- Mieć konto FedEx/DHL. Jeśli chcesz użyć operatora innego niż FedEx/DHL, skontaktuj się z zespołem operacyjnym Azure Data Box w `adbops@microsoft.com`. 
+    - Konto musi być prawidłowe, powinno mieć saldo i musi mieć możliwości wysyłki zwrotnej.
+    - Generuj numer śledzenia dla zadania eksportu.
+    - Każde zadanie powinno mieć oddzielny numer śledzenia. Wiele zadań o tym samym numerze śledzenia nie są obsługiwane. 
+    - Jeśli nie masz konta nośnego, przejdź do:
+        - [Utwórz konto FedEx](https://www.fedex.com/en-us/create-account.html)lub 
+        - [Utwórz konto DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
-## <a name="step-1-create-an-export-job"></a>Krok 1: Tworzenie zadania eksportu
+## <a name="step-1-create-an-export-job"></a>Krok 1. Tworzenie zadania eksportu
 
-Wykonaj poniższe kroki, aby utworzyć zadanie eksportu w witrynie Azure portal.
+Wykonaj następujące kroki, aby utworzyć zadanie eksportu w Azure Portal.
 
 1. Zaloguj się do https://portal.azure.com/.
-2. Przejdź do **wszystkie usługi > Magazyn > zadania importu/eksportu**. 
+2. Przejdź do obszaru **wszystkie usługi > magazyn > zadania importowania/eksportowania**. 
 
-    ![Przejdź do zadania importu/eksportu](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
+    ![Przejdź do zadań importu/eksportu](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
 
-3. Kliknij przycisk **Tworzenie zadania importu/eksportu**.
+3. Kliknij pozycję **Utwórz zadanie importu/eksportu**.
 
-    ![Kliknij zadanie importu/eksportu](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
+    ![Kliknij przycisk Importuj/Eksportuj zadanie](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
 
-4. W **podstawy**:
+4. **Podstawowe informacje**:
     
-    - Wybierz **Eksportuj z platformy Azure**. 
-    - Wprowadź opisową nazwę zadania eksportu. Użyj imienia lub pseudonimu wybierz w celu śledzenia postępu zadań. 
+    - Wybierz pozycję **Eksportuj z platformy Azure**. 
+    - Wprowadź opisową nazwę zadania eksportu. Użyj wybranej nazwy do śledzenia postępu zadań. 
         - Nazwa może zawierać tylko małe litery, cyfry, łączniki i podkreślenia.
-        - Nazwa musi zaczynać się literą i nie może zawierać spacji. 
+        - Nazwa musi rozpoczynać się od litery i nie może zawierać spacji. 
     - Wybierz subskrypcję.
     - Wprowadź lub wybierz grupę zasobów.
 
         ![Podstawy](./media/storage-import-export-data-from-blobs/export-from-blob3.png) 
     
-3. W **szczegóły zadania**:
+3. W **szczegółach zadania**:
 
-    - Wybierz konto magazynu, w której znajdują się dane, które mają zostać wyeksportowane. Użyj konta magazynu w pobliżu lokalizacji.
-    - Lokalizacja dropoff jest automatycznie wypełniane na podstawie w regionie wybranym koncie magazynu. 
-    - Określ dane obiektów blob, który chcesz wyeksportować z konta magazynu do pustego dysku lub dysków. 
-    - Możliwość **Wyeksportuj wszystkie** danych obiektu blob na koncie magazynu.
+    - Wybierz konto magazynu, w którym znajdują się dane, które mają zostać wyeksportowane. Użyj konta magazynu w pobliżu miejsca, w którym się znajdujesz.
+    - Lokalizacja Dropoff jest automatycznie wypełniana na podstawie regionu wybranego konta magazynu. 
+    - Określ dane obiektów blob, które mają zostać wyeksportowane z konta magazynu do pustego dysku lub dysków. 
+    - Wybierz, aby **wyeksportować wszystkie** dane obiektów BLOB na koncie magazynu.
     
          ![Eksportuj wszystko](./media/storage-import-export-data-from-blobs/export-from-blob4.png) 
 
-    - Można określić, które kontenery i obiekty BLOB do wyeksportowania.
-        - **Aby określić obiekt blob do wyeksportowania**: Użyj **równe** selektora. Określ ścieżkę względną do obiektu blob, począwszy od nazwy kontenera. Użyj *$root* do określenia kontenera głównego.
-        - **Aby określić wszystkie obiekty BLOB rozpoczynających się prefiksem**: Użyj **rozpoczyna się od** selektora. Określ prefiks, rozpoczynające się od ukośnika "/". Prefiks może składać się z prefiksu nazwy kontenera, nazwa kontenera pełną lub nazwę kontenera ukończone, a następnie prefiks nazwy obiektu blob. Należy podać ścieżki obiektu blob w prawidłowym formacie, aby uniknąć błędów podczas przetwarzania, jak pokazano w tym zrzucie ekranu. Aby uzyskać więcej informacji, zobacz [przykłady ścieżek prawidłowy obiekt blob](#examples-of-valid-blob-paths). 
+    - Możesz określić kontenery i obiekty blob do wyeksportowania.
+        - **Aby określić obiekt BLOB do wyeksportowania**: Użyj selektora **równego** . Określ ścieżkę względną do obiektu BLOB, rozpoczynając od nazwy kontenera. Użyj *$root* , aby określić kontener główny.
+        - **Aby określić wszystkie obiekty blob zaczynające się od prefiksu**: Użyj elementu **Start with** Selector. Określ prefiks, zaczynając od ukośnika "/". Prefiks może być prefiksem nazwy kontenera, pełną nazwą kontenera lub pełną nazwą kontenera, po którym następuje prefiks nazwy obiektu BLOB. Musisz podać ścieżki obiektów BLOB w prawidłowym formacie, aby uniknąć błędów podczas przetwarzania, jak pokazano na poniższym zrzucie ekranu. Aby uzyskać więcej informacji, zobacz [przykłady prawidłowych ścieżek obiektów BLOB](#examples-of-valid-blob-paths). 
    
-           ![Eksportuj zaznaczone kontenerów i obiektów blob](./media/storage-import-export-data-from-blobs/export-from-blob5.png) 
+           ![Eksportuj wybrane kontenery i obiekty blob](./media/storage-import-export-data-from-blobs/export-from-blob5.png) 
 
-    - Możesz wyeksportować z pliku listy obiektów blob.
+    - Możesz wyeksportować z pliku listy obiektów BLOB.
 
-        ![Eksportowanie z pliku listy obiektów blob](./media/storage-import-export-data-from-blobs/export-from-blob6.png)  
+        ![Eksportuj z pliku listy obiektów BLOB](./media/storage-import-export-data-from-blobs/export-from-blob6.png)  
    
    > [!NOTE]
-   > Jeśli obiekt blob do wyeksportowania jest używany podczas kopiowania danych, usługa Azure Import/Export tworzy migawkę obiektu blob i kopiuje migawkę.
+   > Jeśli obiekt BLOB do wyeksportowania jest używany podczas kopiowania danych, usługa Azure Import/Export wykonuje migawkę obiektu BLOB i kopiuje migawkę.
  
 
-4. W **zwracają informacje o wysyłce**:
+4. W oknie **Informacje o wysyłce zwrotu**:
 
-    - Wybierz nośnik, z listy rozwijanej. Jeśli chcesz użyć operatora innego niż FedEx/DHL w sprawie, wybierz opcję istniejący, z listy rozwijanej. Skontaktuj się z pomocą operacje pole danych platformy Azure zespołu w `adbops@microsoft.com` informacji na temat operatora planujesz używać.
-    - Wprowadź numer konta operatora prawidłowe, utworzony za pomocą tego operatora. Firma Microsoft używa tego konta do wysłania dysków do Ciebie, po zakończeniu zadania eksportu. 
-    - Podaj kompletne i prawidłowe nazwisko osoby kontaktowej, telefonicznej, wiadomości e-mail, adres, Miasto, zip, stan/prowincję/Województwo i kraj/region.
+    - Wybierz operatora z listy rozwijanej. Jeśli chcesz użyć operatora innego niż FedEx/DHL, wybierz istniejącą opcję z listy rozwijanej. Skontaktuj się z zespołem ds. operacyjnych Azure Data Box w `adbops@microsoft.com` z informacjami dotyczącymi przewoźnika, którego zamierzasz używać.
+    - Wprowadź prawidłowy numer konta nośnego, który został utworzony za pomocą tego operatora. Firma Microsoft korzysta z tego konta do dostarczania dysków z powrotem po zakończeniu zadania eksportowania. 
+    - Podaj pełną i poprawną nazwę kontaktu, numer telefonu, adres e-mail, ulica, miasto, kod pocztowy, Województwo i kraj/region.
 
         > [!TIP] 
-        > Zamiast określania adresu e-mail dla pojedynczego użytkownika, należy podać adres e-mail grupy. Dzięki temu otrzymywać powiadomienia, nawet jeśli opuści administrator.
+        > Zamiast określania adresu e-mail dla pojedynczego użytkownika, podaj adres e-mail grupy. Dzięki temu będziesz otrzymywać powiadomienia nawet w przypadku opuszczenia przez administratora.
    
-5. W **Podsumowanie**:
+5. **Podsumowanie**:
 
     - Przejrzyj szczegóły zadania.
-    - Zanotuj nazwę zadania i podana centrum danych platformy Azure, wysyłania adres wysyłkowy dysków na platformie Azure. 
+    - Zanotuj nazwę zadania i podano adres wysyłkowy centrum danych platformy Azure na potrzeby wysyłania dysków na platformę Azure. 
 
         > [!NOTE] 
-        > Zawsze wysyłaj dysków do centrum danych w witrynie Azure portal. Jeśli dyski zostaną dostarczone do niewłaściwej centrum danych, zadania nie zostaną przetworzone.
+        > Zawsze wysyłaj dyski do centrum danych zanotowanego w Azure Portal. Jeśli dyski są dostarczane do niewłaściwego centrum danych, zadanie nie zostanie przetworzone.
 
-    - Kliknij przycisk **OK** aby zakończyć tworzenie zadania eksportu.
+    - Kliknij przycisk **OK** , aby zakończyć tworzenie zadania eksportowania.
 
-## <a name="step-2-ship-the-drives"></a>Krok 2: Dostarczaj dyski
+## <a name="step-2-ship-the-drives"></a>Krok 2. dostarczenie dysków
 
-Jeśli nie znasz liczbę stacji, należy przejść do [Sprawdź liczbę dysków](#check-the-number-of-drives). Jeśli wiesz, liczba dysków, przejdź do wysłania dysków.
+Jeśli nie znasz wymaganej liczby dysków, przejdź do obszaru [Sprawdzanie liczby dysków](#check-the-number-of-drives). Jeśli znasz liczbę dysków, wykonaj instrukcje dotyczące dostarczania dysków.
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-3-update-the-job-with-tracking-information"></a>Krok 3: Aktualizacja zadania przy użyciu informacji o śledzeniu
+## <a name="step-3-update-the-job-with-tracking-information"></a>Krok 3. aktualizowanie zadania przy użyciu informacji śledzenia
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
 
-## <a name="step-4-receive-the-disks"></a>Krok 4: Odbieranie dysków
-Gdy pulpit nawigacyjny zgłasza, że zadanie zostało ukończone, dyski zostaną dostarczone do Ciebie, a numer śledzenia dla danego wydania jest dostępna w portalu.
+## <a name="step-4-receive-the-disks"></a>Krok 4. odbieranie dysków
+Gdy pulpit nawigacyjny zgłosi zadanie, dyski są wysyłane do Ciebie, a numer śledzenia dla wysyłki jest dostępny w portalu.
 
-1. Po otrzymaniu dyski z wyeksportowane dane, musisz Pobierz klucze funkcji BitLocker, aby odblokować dyski. Przejdź do zadania eksportu w witrynie Azure portal. Kliknij przycisk **Import/Export** kartę. 
-2. Wybierz i kliknij zadanie eksportu z listy. Przejdź do **klucze funkcji BitLocker** i kopiowanie kluczy.
+1. Po otrzymaniu dysków z wyeksportowanymi danymi należy pobrać klucze funkcji BitLocker w celu odblokowania dysków. Przejdź do zadania eksportu w Azure Portal. Kliknij kartę **Importuj/Eksportuj** . 
+2. Wybierz i kliknij zadanie eksportowania z listy. Przejdź do pozycji **klucze funkcji BitLocker** i Skopiuj klucze.
    
    ![Wyświetl klucze funkcji BitLocker dla zadania eksportu](./media/storage-import-export-service/export-job-bitlocker-keys.png)
 
-3. Klucze funkcji BitLocker umożliwia odblokowanie dysków.
+3. Użyj kluczy funkcji BitLocker do odblokowania dysków.
 
-Eksportowanie zostało ukończone. W tej chwili można usunąć zadania lub automatycznie pobiera usunięty po upływie 90 dni.
+Eksportowanie zostało zakończone. W tej chwili można usunąć zadanie lub automatycznie je usunąć po 90 dniach.
 
 
 ## <a name="check-the-number-of-drives"></a>Sprawdź liczbę dysków
 
-To *opcjonalne* krok ułatwia określa liczbę dysków wymaganych do zadania eksportu. Wykonaj tę czynność na działanie systemu Windows [obsługiwany system operacyjny w wersji](storage-import-export-requirements.md#supported-operating-systems).
+Ten *opcjonalny* krok pozwala określić liczbę dysków wymaganych dla zadania eksportu. Wykonaj ten krok w systemie operacyjnym Windows z [obsługiwaną wersją systemu operacyjnego](storage-import-export-requirements.md#supported-operating-systems).
 
-1. [Pobierz WAImportExport wersji 1](https://aka.ms/waiev1) w systemie Windows. 
-2. Rozpakuj go do domyślnego folderu `waimportexportv1`. Na przykład `C:\WaImportExportV1`.
-3. Otwórz okno programu PowerShell lub wierszu polecenia z uprawnieniami administracyjnymi. Zmień katalog na folder rozpakowany, uruchom następujące polecenie:
+1. [Pobierz wersję WAImportExport 1](https://www.microsoft.com/download/details.aspx?id=42659) w systemie Windows. 
+2. Rozpakuj do domyślnego folderu `waimportexportv1`. Na przykład `C:\WaImportExportV1`.
+3. Otwórz okno programu PowerShell lub wiersza polecenia z uprawnieniami administracyjnymi. Aby zmienić katalog na folder niespakowany, uruchom następujące polecenie:
     
     `cd C:\WaImportExportV1`
 
-4. Aby sprawdzić, liczba dysków wymagana dla wybranych obiektów blob, uruchom następujące polecenie:
+4. Aby sprawdzić liczbę dysków wymaganych dla wybranych obiektów blob, uruchom następujące polecenie:
 
     `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
-    W poniższej tabeli opisano parametry:
+    Parametry są opisane w poniższej tabeli:
     
     |Parametr wiersza polecenia|Opis|  
     |--------------------------|-----------------|  
-    |**/logdir:**|Opcjonalny. Katalog dziennika. Plików pełnego dziennika są zapisywane do tego katalogu. Jeśli nie zostanie określony, bieżący katalog jest używany jako katalog dziennika.|  
-    |**/SN:**|Wymagany. Nazwa konta magazynu dla zadania eksportu.|  
-    |**/sk:**|Wymagane tylko, jeśli sygnatury dostępu Współdzielonego kontenera nie jest określony. Klucz konta dla konta magazynu dla zadania eksportu.|  
-    |**/csas:**|Wymagane tylko, jeśli nie określono klucza konta magazynu. Sygnatury dostępu Współdzielonego kontenera do wyświetlania listy obiektów blob, które mają zostać wyeksportowane przez zadanie eksportu.|  
-    |**/ExportBlobListFile:**|Wymagany. Ścieżka do pliku XML plik zawierający listę ścieżek obiektów blob lub obiektu blob prefiksy ścieżki dla obiektów blob do wyeksportowania. Format pliku używany w `BlobListBlobPath` element [umieścić zadania](/rest/api/storageimportexport/jobs) operacji interfejs API REST usługi Import/Export.|  
-    |**/DriveSize:**|Wymagany. Rozmiar dysków do użycia przez zadanie eksportu *np.* , 500 GB, 1,5 TB.|  
+    |**/logdir:**|Opcjonalny. Katalog dzienników. Pełne pliki dziennika są zapisywane w tym katalogu. Jeśli nie zostanie określony, bieżący katalog jest używany jako katalog dziennika.|  
+    |**sery**|Wymagany. Nazwa konta magazynu dla zadania eksportu.|  
+    |**SK**|Wymagane tylko wtedy, gdy nie określono sygnatury dostępu współdzielonego kontenera. Klucz konta magazynu dla zadania eksportu.|  
+    |**/csas:**|Wymagane tylko wtedy, gdy nie określono klucza konta magazynu. Sygnatura dostępu współdzielonego kontenera do wyświetlania obiektów BLOB do wyeksportowania w zadaniu eksportu.|  
+    |**/ExportBlobListFile:**|Wymagany. Ścieżka do pliku XML zawierającego listę ścieżek obiektów blob lub prefiksów ścieżek obiektów BLOB dla obiektów BLOB do wyeksportowania. Format pliku używany w elemencie `BlobListBlobPath` w operacji [Put zadania](/rest/api/storageimportexport/jobs) interfejsu API REST usługi Import/Export.|  
+    |**/DriveSize:**|Wymagany. Rozmiar dysków, które mają być używane dla zadania eksportu, *np.* 500 GB, 1,5 TB.|  
 
     Zobacz [przykład polecenia PreviewExport](#example-of-previewexport-command).
  
-5. Sprawdź, czy użytkownik może odczytu/zapisu na dyskach, które zostaną dostarczone zadanie eksportu.
+5. Sprawdź, czy możesz odczytywać i zapisywać dane na dyskach, które zostaną wysłane dla zadania eksportu.
 
 ### <a name="example-of-previewexport-command"></a>Przykład polecenia PreviewExport
 
-W poniższym przykładzie pokazano `PreviewExport` polecenia:  
+Poniższy przykład ilustruje `PreviewExport` polecenie:  
   
 ```  
 WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB    
 ```  
   
-Pliku listy obiektów blob eksportu może zawierać nazwy obiektów blob i obiektów blob prefiksy, jak pokazano poniżej:  
+Plik listy eksportu obiektów BLOB może zawierać nazwy obiektów blob i prefiksy obiektów blob, jak pokazano poniżej:  
   
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>  
@@ -171,9 +171,9 @@ Pliku listy obiektów blob eksportu może zawierać nazwy obiektów blob i obiek
 </BlobList>  
 ```
 
-Narzędzie importu/eksportu platformy Azure zawiera listę wszystkich obiektów blob do wyeksportowania oblicza jak umieszczenie ich na dyski o określonym rozmiarze, biorąc pod uwagę wszystkie niezbędne czynności, a następnie Szacuje liczbę dysków wymaganych do przechowywania obiektów blob oraz informacje o użyciu dysku.  
+Narzędzie Azure Import/Export wyświetla listę wszystkich obiektów blob, które mają zostać wyeksportowane, i oblicza sposób pakowania ich na dyski o określonym rozmiarze, uwzględniając wszelkie niezbędne obciążenie, a następnie szacuje liczbę napędów potrzebnych do przechowywania obiektów blob i informacje o użyciu dysków.  
   
-Oto przykład danych wyjściowych za pomocą dzienników informacyjny pominięte:  
+Oto przykład danych wyjściowych z pominiętymi dziennikami informacyjnymi:  
   
 ```  
 Number of unique blob paths/prefixes:   3  
@@ -189,23 +189,23 @@ Number of drives needed:        3
         Drive #3:       blobs = 2, occupied space = 131.28 GB    
 ```
 
-## <a name="examples-of-valid-blob-paths"></a>Przykłady ścieżek prawidłowy obiekt blob
+## <a name="examples-of-valid-blob-paths"></a>Przykłady prawidłowych ścieżek obiektów BLOB
 
-W poniższej tabeli przedstawiono przykłady ścieżek prawidłowy obiekt blob:
+W poniższej tabeli przedstawiono przykłady prawidłowych ścieżek obiektów blob:
    
-   | Selektor | Ścieżka obiektu blob | Opis |
+   | Selektor | Ścieżka obiektu BLOB | Opis |
    | --- | --- | --- |
-   | Rozpoczyna się od |/ |Eksportuje wszystkie obiekty BLOB na koncie magazynu |
-   | Rozpoczyna się od |/$root / |Eksportuje wszystkie obiekty BLOB w kontenerze głównego |
-   | Rozpoczyna się od |/book |Eksportuje wszystkie obiekty BLOB w dowolnym kontenerze, który rozpoczyna się od prefiksu **książki** |
-   | Rozpoczyna się od |/Music/ |Eksportuje wszystkie obiekty BLOB w kontenerze **utworów muzycznych** |
-   | Rozpoczyna się od |/ music/love |Eksportuje wszystkie obiekty BLOB w kontenerze **utworów muzycznych** , zaczynać się od prefiksu **ulubionych** |
-   | Równa się |$root/logo.bmp |Eksportowanie obiektów blob **logo.bmp** w kontenerze głównego |
-   | Równa się |videos/Story.mp4 |Eksportowanie obiektów blob **story.mp4** w kontenerze **filmów wideo** |
+   | Rozpoczyna się od |/ |Eksportuje wszystkie obiekty blob na koncie magazynu |
+   | Rozpoczyna się od |/$root/ |Eksportuje wszystkie obiekty blob w kontenerze głównym |
+   | Rozpoczyna się od |/book |Eksportuje wszystkie obiekty blob w dowolnym kontenerze rozpoczynającym się od prefiksu **książki** |
+   | Rozpoczyna się od |muzyk |Eksportuje wszystkie obiekty blob w kontenerze **muzyka** |
+   | Rozpoczyna się od |/music/love |Eksportuje wszystkie obiekty blob w ramach **muzyki** kontenera, które zaczynają się od prefiksu **miłość** |
+   | Równa się |$root/logo.bmp |Eksportuje **logo obiektu BLOB. bmp** w kontenerze głównym |
+   | Równa się |wideo/historia. mp4 |Eksportuje **wątek obiektów BLOB. mp4** w **filmach wideo** kontenera |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Wyświetlanie stanu zadania i dysku](storage-import-export-view-drive-status.md)
-* [Przegląd wymagań importu/eksportu](storage-import-export-requirements.md)
+* [Przejrzyj wymagania dotyczące importu/eksportu](storage-import-export-requirements.md)
 
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 10/02/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1af622f4b483abec757d1392bfa4fefe91c8bc49
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 840280eecce60ac74514404497b857cd5362c9a0
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990008"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171646"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Samouczek: Konfigurowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 
@@ -45,7 +45,7 @@ W tej sekcji utworzysz trzy symulowane urządzenia, które wysyłają dane do wy
 
 1. Przejdź do [strony akceleratorów rozwiązań Azure IoT](https://www.azureiotsolutions.com/Accelerators). Na stronie będzie widocznych kilka gotowych przykładów. Zaloguj się przy użyciu konta platformy Azure. Następnie wybierz pozycję **Symulacja urządzenia**.
 
-   [Strona akceleratorów rozwiązań usługi Azure IoT![](media/v2-update-provision/device-one-accelerator.png)](media/v2-update-provision/device-one-accelerator.png#lightbox)
+   [Strona akceleratorów rozwiązań usługi Azure IoT ![](media/v2-update-provision/device-one-accelerator.png)](media/v2-update-provision/device-one-accelerator.png#lightbox)
 
    Wybierz pozycję **Wypróbuj teraz**.
 
@@ -60,7 +60,7 @@ W tej sekcji utworzysz trzy symulowane urządzenia, które wysyłają dane do wy
  
     Wybierz pozycję **Utwórz rozwiązanie**. Ukończenie wdrażania rozwiązania może potrwać do 20 minut.
 
-    [Strona tworzenia rozwiązania symulacji urządzenia![](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
+    [Strona tworzenia rozwiązania symulacji urządzenia ![](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
 ## <a name="create-a-preview-payg-environment"></a>Tworzenie środowiska w wersji zapoznawczej PAYG
 
@@ -125,7 +125,7 @@ W tej sekcji opisano sposób tworzenia środowiska Azure Time Series Insights w 
 
    1. Na stronie Podgląd Azure Time Series Insights wybierz pozycję **zasady dostępu do danych**:
 
-      [zasady dostępu do danych![](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox)
+      [zasady dostępu do danych ![](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox)
 
    1. Sprawdź, czy na liście znajdują się Twoje poświadczenia:
 
@@ -143,7 +143,7 @@ Teraz, gdy wdrożono środowisko Time Series Insights, przesyłaj strumieniowo d
 
 1. Nastąpi przekierowanie do strony **Symulacja urządzeń Microsoft Azure IoT**. W prawym górnym rogu strony wybierz pozycję **Nowa symulacja**.
 
-    [Strona symulacji usługi Azure IoT![](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
+    [Strona symulacji usługi Azure IoT ![](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
 
 1. W okienku **Konfiguracja symulacji** ustaw następujące parametry:
 
@@ -161,7 +161,7 @@ Teraz, gdy wdrożono środowisko Time Series Insights, przesyłaj strumieniowo d
 
     Na pulpicie nawigacyjnym symulacji urządzenia Zwróć uwagę na informacje wyświetlane dla **aktywnych urządzeń** i **komunikatów na sekundę**.
 
-    [Pulpit nawigacyjny symulacji usługi Azure IoT![](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
+    [Pulpit nawigacyjny symulacji usługi Azure IoT ![](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
 ## <a name="analyze-data"></a>Analizuj dane
 
@@ -197,7 +197,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
 1. W eksploratorze wybierz kartę **Model**:
 
-   [Karta![model w Eksploratorze](media/v2-update-provision/define-one-model.png)](media/v2-update-provision/define-one-model.png#lightbox)
+   [Karta ![model w Eksploratorze](media/v2-update-provision/define-one-model.png)](media/v2-update-provision/define-one-model.png#lightbox)
 
 1. Wybierz pozycję **Dodaj** , aby dodać typ:
 
@@ -252,7 +252,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
 1. Następnym krokiem jest dodanie hierarchii. W obszarze **hierarchie**wybierz pozycję **Dodaj**:
 
-    [Karta hierarchie![z przyciskiem Dodaj](media/v2-update-provision/define-seven-hierarchy.png)](media/v2-update-provision/define-seven-hierarchy.png#lightbox)
+    [Karta hierarchie ![z przyciskiem Dodaj](media/v2-update-provision/define-seven-hierarchy.png)](media/v2-update-provision/define-seven-hierarchy.png#lightbox)
 
 1. W okienku **Edytuj hierarchię** ustaw następujące parametry:
 

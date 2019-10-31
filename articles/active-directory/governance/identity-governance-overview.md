@@ -12,26 +12,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/28/2019
+ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a17b64cbfffbe9cabd909bccb16d55c07bba8bb0
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c90052d1d75ba65a8e0b0e7a2cd26a279019a82d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241449"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173160"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co to jest usługa Azure AD Identity Governance?
 
-Usługa Azure Active Directory (Azure AD) Zarządzanie tożsamościami pozwala zrównoważyć potrzebę organizacji w zakresie zabezpieczeń i produktywności pracowników z właściwymi procesami i widocznością. Zapewnia to możliwość zapewnienia, że odpowiedni użytkownicy mają odpowiedni dostęp do odpowiednich zasobów i umożliwia ochronę, monitorowanie i inspekcję dostępu do kluczowych elementów zawartości — jednocześnie zapewniając produktywność pracowników.  
+Usługa Azure Active Directory (Azure AD) Zarządzanie tożsamościami pozwala zrównoważyć potrzebę organizacji w zakresie zabezpieczeń i produktywności pracowników z właściwymi procesami i widocznością. Zapewnia to możliwość zapewnienia, że odpowiednie osoby mają właściwy dostęp do odpowiednich zasobów. Te i powiązane funkcje usługi Azure AD i Enterprise Mobility + Security umożliwiają zmniejszenie ryzyka związanego z dostępem przez ochronę, monitorowanie i inspekcję dostępu do krytycznych zasobów — jednocześnie zapewniając produktywność pracowników i partnerów.  
 
-Zarządzanie tożsamościami zapewnia organizacjom możliwość wykonywania następujących zadań między pracownikami, partnerami biznesowymi i dostawcami oraz usługami i aplikacjami:
+Zarządzanie tożsamościami umożliwia organizacjom wykonywanie następujących zadań między pracownikami, partnerami biznesowymi i dostawcami oraz między usługami i aplikacjami zarówno lokalnie, jak i w chmurach:
 
-- Zarządzanie cyklem życia tożsamości
+- Zapewnij ład cyklu życia tożsamości
 - Zarządzanie cyklem życia dostępu
-- Bezpieczna Administracja
+- Bezpieczny dostęp uprzywilejowany dla administracji
 
 W odróżnieniu od tych czterech najważniejszych pytań warto ułatwić organizacjom Rozwiązywanie problemów:
 
@@ -46,9 +46,9 @@ Zarządzanie tożsamościami pomaga organizacjom w osiągnięciu równowagi mię
 
 ![Cykl życia tożsamości](./media/identity-governance-overview/identity-lifecycle.png)
 
-W przypadku wielu organizacji cykl życia tożsamości dla pracowników jest powiązany z reprezentacją tego użytkownika w systemie HCM (zarządzanie dużymi środkami).  Azure AD — wersja Premium automatycznie obsługuje tożsamości użytkowników dla osób przedstawionych w dniach roboczych w Active Directory i Azure Active Directory, zgodnie z opisem w [samouczku dotyczącym obsługi ruchu przychodzącego (wersja zapoznawcza) usługi Workday](../saas-apps/workday-inbound-tutorial.md).  Azure AD — wersja Premium obejmuje również [Microsoft Identity Manager](/microsoft-identity-manager/), które mogą importować rekordy z lokalnych systemów HCM, takich jak SAP, Oracle eBusiness i Oracle PeopleSoft.
+W przypadku wielu organizacji cykl życia tożsamości dla pracowników jest powiązany z reprezentacją tego użytkownika w systemie HCM (zarządzanie dużymi środkami).  Azure AD — wersja Premium automatycznie obsługuje tożsamości użytkowników dla osób przedstawionych w dniach roboczych w Active Directory i Azure Active Directory, zgodnie z opisem w [samouczku inicjowania obsługi ruchu przychodzącego](../saas-apps/workday-inbound-tutorial.md)dla programu Workday.  Azure AD — wersja Premium obejmuje również [Microsoft Identity Manager](/microsoft-identity-manager/), które mogą importować rekordy z lokalnych systemów HCM, takich jak SAP, Oracle eBusiness i Oracle PeopleSoft.
 
-W coraz większym stopniu scenariusze wymagają współpracy z osobami spoza organizacji. Współpraca B2B w usłudze [Azure AD](/azure/active-directory/b2b/) umożliwia bezpieczne udostępnianie aplikacji i usług organizacji użytkownikom-Gościom i partnerom zewnętrznym z dowolnej organizacji przy zachowaniu kontroli nad danymi firmowymi.
+W coraz większym stopniu scenariusze wymagają współpracy z osobami spoza organizacji. Współpraca B2B w usłudze [Azure AD](/azure/active-directory/b2b/) umożliwia bezpieczne udostępnianie aplikacji i usług organizacji użytkownikom-Gościom i partnerom zewnętrznym z dowolnej organizacji przy zachowaniu kontroli nad danymi firmowymi.  [Zarządzanie prawami w usłudze Azure AD](entitlement-management-overview.md) pozwala wybrać, którzy użytkownicy organizacji mogą żądać dostępu i mogą być dodawani jako Goście B2B do katalogu organizacji, a także zagwarantować, że Ci Goście zostaną usunięci, gdy nie potrzebują już dostępu.
 
 ## <a name="access-lifecycle"></a>Cykl życia dostępu
 
@@ -58,7 +58,7 @@ Organizacje muszą mieć proces zarządzania dostępem poza to, co zostało pocz
 
 Zwykle deleguje decyzje dotyczące zatwierdzenia dostępu do podmiotów podejmujących decyzje biznesowe.  Ponadto może to dotyczyć samych użytkowników.  Na przykład użytkownicy, którzy uzyskują dostęp do poufnych danych klienta w aplikacji marketingowej firmy w Europie, muszą znać zasady firmy. Użytkownicy-Goście mogą nie wiedzieć, jakie są wymagania dotyczące obsługi danych w organizacji, do której zostały zaproszone.
 
-Organizacje mogą zautomatyzować proces cyklu życia dostępu za pomocą technologii, takich jak [grupy dynamiczne](../users-groups-roles/groups-dynamic-membership.md), w połączeniu z obsługą użytkowników, aby [SaaS aplikacje](../saas-apps/tutorial-list.md) lub [Aplikacje zintegrowane z usługą Standard scim](../manage-apps/use-scim-to-provision-users-and-groups.md).  Organizacje mogą również kontrolować, którzy [Użytkownicy-Goście mają dostęp do aplikacji lokalnych](../b2b/hybrid-cloud-to-on-premises.md).  Te prawa dostępu można następnie regularnie przeglądać przy użyciu cyklicznych [przeglądów dostępu do usługi Azure AD](access-reviews-overview.md).
+Organizacje mogą zautomatyzować proces cyklu życia dostępu za pomocą technologii, takich jak [grupy dynamiczne](../users-groups-roles/groups-dynamic-membership.md), w połączeniu z obsługą użytkowników, aby [SaaS aplikacje](../saas-apps/tutorial-list.md) lub [Aplikacje zintegrowane z usługą Standard scim](../manage-apps/use-scim-to-provision-users-and-groups.md).  Organizacje mogą również kontrolować, którzy [Użytkownicy-Goście mają dostęp do aplikacji lokalnych](../b2b/hybrid-cloud-to-on-premises.md).  Te prawa dostępu można następnie regularnie przeglądać przy użyciu cyklicznych [przeglądów dostępu do usługi Azure AD](access-reviews-overview.md).   [Zarządzanie prawami w usłudze Azure AD](entitlement-management-overview.md) umożliwia także definiowanie sposobu, w jaki użytkownicy żądają dostępu między pakietami członkostwa grup i zespołów, rolami aplikacji i rolami usługi SharePoint Online.
 
 Gdy użytkownik próbuje uzyskać dostęp do aplikacji, usługa Azure AD wymusza zasady [dostępu warunkowego](/azure/active-directory/conditional-access/) . Na przykład zasady dostępu warunkowego mogą zawierać [warunki użytkowania](../conditional-access/terms-of-use.md) i [upewnić się, że użytkownik wyraził zgodę na te warunki](../conditional-access/require-tou.md) przed uzyskaniem dostępu do aplikacji.
 
@@ -68,36 +68,38 @@ W przeszłości dostęp uprzywilejowany został opisany przez innych dostawców 
 
 ![Cykl życia uprzywilejowanego dostępu](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-Azure AD Privileged Identity Management (PIM) oferuje dodatkowe funkcje kontroli dostosowane do zabezpieczania praw dostępu do zasobów w usłudze Azure AD, na platformie Azure i innych usługach online firmy Microsoft.  Dostęp just-in-Time i funkcje alertów o zmianie roli udostępniane przez usługę Azure AD PIM, oprócz uwierzytelniania wieloskładnikowego i dostępu warunkowego, zapewniają kompleksowy zestaw kontrolek ładu, który pomaga zabezpieczyć zasoby firmy (katalog, Office 365 i role zasobów platformy Azure). Podobnie jak w przypadku innych form dostępu, organizacje mogą korzystać z przeglądów dostępu w celu skonfigurowania cyklicznej certyfikacji dostępu dla wszystkich użytkowników w rolach administratora.
-
-## <a name="least-privileged-roles"></a>Najniższe role uprzywilejowane
-
-Najlepszym rozwiązaniem jest użycie roli najniższych uprawnień do wykonywania zadań administracyjnych w ramach nadzoru tożsamości. Zalecamy użycie usługi Azure AD PIM do uaktywnienia roli w razie potrzeby w celu wykonania tych zadań. Poniżej wymieniono najmniej uprzywilejowane role katalogu w celu skonfigurowania funkcji zarządzania tożsamościami: 
-
-| Cecha | Najmniejsza rola uprzywilejowana |
-| ------- | --------------------- |
-| Zarządzanie upoważnieniami | Administrator użytkowników (z wyjątkiem dodawania witryn usługi SharePoint Online do wykazów, które wymagają administratora globalnego) |
-| Warunki użytkowania | Administrator zabezpieczeń lub administrator dostępu warunkowego |
-| Przeglądy dostępu | Administrator użytkowników (z wyjątkiem przeglądów dostępu dotyczących ról platformy Azure lub usługi Azure AD, które wymagają uprzywilejowanego administratora roli) |
-|Privileged Identity Management | Administrator ról uprzywilejowanych |
-
+[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) oferuje dodatkowe funkcje kontroli dostosowane do zabezpieczania praw dostępu do zasobów w usłudze Azure AD, na platformie Azure i innych usługach online firmy Microsoft.  Dostęp just-in-Time i funkcje alertów o zmianie roli udostępniane przez usługę Azure AD PIM, oprócz uwierzytelniania wieloskładnikowego i dostępu warunkowego, zapewniają kompleksowy zestaw kontrolek ładu, który pomaga zabezpieczyć zasoby firmy (katalog, Office 365 i role zasobów platformy Azure). Podobnie jak w przypadku innych form dostępu, organizacje mogą korzystać z przeglądów dostępu w celu skonfigurowania cyklicznej certyfikacji dostępu dla wszystkich użytkowników w rolach administratora.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Chociaż nie ma doskonałego rozwiązania lub rekomendacji dla każdego klienta, następujące konfiguracje zawierają przewodnik, w jaki sposób zasady podstawowe firma Microsoft zalecają, aby zapewnić bardziej bezpieczny i wydajny pracownik.
-
-- [Konfiguracje dostępu tożsamości i urządzenia](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Zabezpieczanie dostępu uprzywilejowanego](../users-groups-roles/directory-admin-roles-secure.md)
-
-Możesz również zapoznać się z kartą wprowadzenie w temacie **Zarządzanie tożsamościami** w Azure Portal, aby rozpocząć korzystanie z funkcji zarządzania prawami, przeglądów dostępu, Privileged Identity Management i warunki użytkowania.
+Zapoznaj się z kartą wprowadzenie w temacie Zarządzanie **tożsamościami** w Azure Portal, aby rozpocząć korzystanie z funkcji zarządzania prawami, przeglądów dostępu, Privileged Identity Management i warunki użytkowania.
 
 ![Wprowadzenie do zarządzania tożsamościami](./media/identity-governance-overview/getting-started.png)
 
+
 Jeśli masz opinię na temat funkcji zarządzania tożsamościami, kliknij przycisk **otrzymasz opinię?** w Azure Portal przesłać swoją opinię. Zespół regularnie przegląda swoją opinię.
+
+Chociaż nie ma doskonałego rozwiązania lub rekomendacji dla każdego klienta, następujące przewodniki konfiguracyjne zawierają również zasady linii bazowej firmy Microsoft zalecane do zapewnienia większego bezpieczeństwa i produktywności pracowników.
+
+- [Konfiguracje i dostęp do urządzeń](/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Zabezpieczanie dostępu uprzywilejowanego](../users-groups-roles/directory-admin-roles-secure.md)
+
+## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>Dodatek-najmniejsze role uprzywilejowane do zarządzania w funkcjach ładu tożsamości
+
+Najlepszym rozwiązaniem jest użycie roli najniższych uprawnień do wykonywania zadań administracyjnych w ramach nadzoru tożsamości. Zalecamy użycie usługi Azure AD PIM do uaktywnienia roli w razie potrzeby w celu wykonania tych zadań. Poniżej wymieniono najmniej uprzywilejowane role katalogu w celu skonfigurowania funkcji zarządzania tożsamościami:
+
+| Funkcja | Najmniejsza rola uprzywilejowana |
+| ------- | --------------------- |
+| Zarządzanie upoważnieniami | Administrator użytkowników (z wyjątkiem dodawania witryn usługi SharePoint Online do wykazów, które wymagają administratora globalnego) |
+| Przeglądy dostępu | Administrator użytkowników (z wyjątkiem przeglądów dostępu dotyczących ról platformy Azure lub usługi Azure AD, które wymagają uprzywilejowanego administratora roli) |
+|Privileged Identity Management | Administrator ról uprzywilejowanych |
+| Warunki użytkowania | Administrator zabezpieczeń lub administrator dostępu warunkowego |
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Co to jest zarządzanie prawami w usłudze Azure AD? (wersja zapoznawcza)](entitlement-management-overview.md)
+- [Co to jest zarządzanie upoważnieniami w usłudze Azure AD?](entitlement-management-overview.md)
 - [Co to są przeglądy dostępu w usłudze Azure AD?](access-reviews-overview.md)
 - [Co to jest Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
 - [Do czego można wykorzystać warunki użytkowania?](active-directory-tou.md)
+
+

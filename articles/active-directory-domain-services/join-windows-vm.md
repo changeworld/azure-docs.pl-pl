@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 00e717202116cf9a48c2c2d889374d451b8e4d45
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 164ba5ff7be38d3b11a8c5f8e5c76a3ff19ff508
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754375"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172879"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Samouczek: dołączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej
 
@@ -55,11 +55,11 @@ Aby dowiedzieć się, jak przyłączyć komputer do domeny zarządzanej AD DS pl
 Jeśli masz już maszynę wirtualną do przyłączenia do domeny, przejdź do sekcji, aby [dołączyć maszynę wirtualną do domeny zarządzanej AD DS platformy Azure](#join-the-vm-to-the-azure-ad-ds-managed-domain).
 
 1. W lewym górnym rogu Azure Portal wybierz pozycję **+ Utwórz zasób**.
-2. W obszarze **wprowadzenie**wybierz pozycję **Windows Server 2016 Datacenter**.
+1. W obszarze **wprowadzenie**wybierz pozycję **Windows Server 2016 Datacenter**.
 
     ![Wybierz, aby utworzyć maszynę wirtualną z systemem Windows Server 2016 Datacenter w Azure Portal](./media/join-windows-vm/select-vm-image.png)
 
-3. W oknie **podstawy** Skonfiguruj podstawowe ustawienia dla maszyny wirtualnej. Pozostaw wartości domyślne *opcji dostępności*, *obrazu*i *rozmiaru*.
+1. W oknie **podstawy** Skonfiguruj podstawowe ustawienia dla maszyny wirtualnej. Pozostaw wartości domyślne *opcji dostępności*, *obrazu*i *rozmiaru*.
 
     | Parametr            | Sugerowana wartość   |
     |----------------------|-------------------|
@@ -69,17 +69,17 @@ Jeśli masz już maszynę wirtualną do przyłączenia do domeny, przejdź do se
     | Nazwa użytkownika             | Wprowadź nazwę użytkownika dla konta administratora lokalnego, które ma zostać utworzone na maszynie wirtualnej, na przykład *azureuser* |
     | Hasło             | Wprowadź wartość, a następnie potwierdź hasło do konta administratora lokalnego na maszynie wirtualnej. Nie określaj poświadczeń konta użytkownika domeny. |
 
-4. Domyślnie maszyny wirtualne utworzone na platformie Azure nie są dostępne z Internetu. Ta konfiguracja pozwala ulepszyć zabezpieczenia maszyny wirtualnej i zmniejsza obszar pod kątem potencjalnego ataku. W następnym kroku tego samouczka musisz nawiązać połączenie z maszyną wirtualną za pomocą protokołu RDP (Remote Desktop Protocol), a następnie przyłączyć serwer systemu Windows do domeny zarządzanej AD DS platformy Azure.
+1. Domyślnie maszyny wirtualne utworzone na platformie Azure nie są dostępne z Internetu. Ta konfiguracja pozwala ulepszyć zabezpieczenia maszyny wirtualnej i zmniejsza obszar pod kątem potencjalnego ataku. W następnym kroku tego samouczka musisz nawiązać połączenie z maszyną wirtualną za pomocą protokołu RDP (Remote Desktop Protocol), a następnie przyłączyć serwer systemu Windows do domeny zarządzanej AD DS platformy Azure.
 
     Po włączeniu protokołu RDP mogą wystąpić automatyczne ataki, które mogą wyłączyć konta z nazwami wspólnymi, takimi jak *administrator* czy *administrator* , z powodu wielokrotnych nieudanych prób logowania. Protokół RDP powinien być włączony tylko w razie potrzeby i ograniczony do zestawu autoryzowanych zakresów adresów IP. [Dostęp do maszyny wirtualnej "just in Time"][jit-access] w ramach usługi Azure Security Center może umożliwić te krótkoterminowe, ograniczone sesje protokołu RDP. Możesz również [utworzyć i użyć hosta usługi Azure bastionu (obecnie w wersji zapoznawczej)][azure-bastion] , aby zezwolić na dostęp tylko za Azure Portal pośrednictwem protokołu SSL.
 
     Na potrzeby tego samouczka ręcznie Włącz połączenia RDP z maszyną wirtualną.
 
-    W obszarze **publiczne porty przychodzące**wybierz opcję **zezwalającą na wybrane porty**. Z menu rozwijanego **Wybierz pozycję porty przychodzące**, wybierz pozycję *RDP*.
+    W obszarze **publiczne porty przychodzące**wybierz opcję **zezwalającą na wybrane porty**. Z menu rozwijanego **Wybierz pozycję porty przychodzące**, wybierz pozycję *RDP (3389)* .
 
-5. Gdy skończysz, wybierz pozycję **Dalej: dyski**.
-6. Z menu rozwijanego **typ dysku systemu operacyjnego**wybierz *SSD w warstwie Standardowa*, a następnie wybierz **Dalej: sieć**.
-7. Maszyna wirtualna musi nawiązać połączenie z podsiecią sieci wirtualnej platformy Azure, która może komunikować się z podsiecią, w której wdrożono domenę zarządzaną platformy Azure AD DS. Zalecamy, aby domena zarządzana AD DS platformy Azure została wdrożona w swojej własnej dedykowanej podsieci. Nie Wdrażaj maszyny wirtualnej w tej samej podsieci co domena zarządzana AD DS platformy Azure.
+1. Gdy skończysz, wybierz pozycję **Dalej: dyski**.
+1. Z menu rozwijanego **typ dysku systemu operacyjnego**wybierz *SSD w warstwie Standardowa*, a następnie wybierz **Dalej: sieć**.
+1. Maszyna wirtualna musi nawiązać połączenie z podsiecią sieci wirtualnej platformy Azure, która może komunikować się z podsiecią, w której wdrożono domenę zarządzaną platformy Azure AD DS. Zalecamy, aby domena zarządzana AD DS platformy Azure została wdrożona w swojej własnej dedykowanej podsieci. Nie Wdrażaj maszyny wirtualnej w tej samej podsieci co domena zarządzana AD DS platformy Azure.
 
     Istnieją dwa główne sposoby wdrożenia maszyny wirtualnej i łączenia się z odpowiednią podsiecią sieci wirtualnej:
     
@@ -88,20 +88,30 @@ Jeśli masz już maszynę wirtualną do przyłączenia do domeny, przejdź do se
     
     W przypadku wybrania podsieci sieci wirtualnej, która nie jest połączona z podsiecią dla wystąpienia usługi Azure AD DS, nie można przyłączyć maszyny wirtualnej do domeny zarządzanej. Na potrzeby tego samouczka utworzymy nową podsieć w sieci wirtualnej platformy Azure.
 
-    W okienku **Sieć** wybierz sieć wirtualną, w której wdrożono domenę zarządzaną platformy Azure AD DS, na przykład *myVnet*
-8. W tym przykładzie istniejąca podsieć *DomainServices* jest pokazana, z którą jest połączona domena zarządzana platformy AD DS Azure. Nie łącz maszyny wirtualnej z tą podsiecią. Aby utworzyć podsieć dla maszyny wirtualnej, wybierz pozycję **Zarządzaj konfiguracją podsieci**.
+    W okienku **Sieć** wybierz sieć wirtualną, w której wdrożono domenę zarządzaną platformy Azure AD DS, na przykład *aaads-VNET*
+1. W tym przykładzie istniejąca *podsieć aaads* jest pokazana, z którą jest połączona domena zarządzana platformy AD DS Azure. Nie łącz maszyny wirtualnej z tą podsiecią. Aby utworzyć podsieć dla maszyny wirtualnej, wybierz pozycję **Zarządzaj konfiguracją podsieci**.
 
     ![Wybierz, aby zarządzać konfiguracją podsieci w Azure Portal](./media/join-windows-vm/manage-subnet.png)
 
-9. Wybierz pozycję **+ podsieć**, a następnie wprowadź nazwę podsieci, na przykład *ManagedVMs*. Podaj **zakres adresów (blok CIDR)** , taki jak *10.1.1.0/24*. Upewnij się, że ten zakres adresów IP nie pokrywa się z żadnym innym istniejącymi zakresami adresów platformy Azure lub lokalnymi. Pozostaw wartości domyślne innych opcji, a następnie wybierz przycisk **OK**.
+1. W menu po lewej stronie okna Sieć wirtualna wybierz pozycję **przestrzeń adresowa**. Sieć wirtualna jest tworzona z użyciem pojedynczej przestrzeni adresowej *10.0.1.0/24*, która jest używana przez domyślną podsieć.
+
+    Dodaj dodatkowy zakres adresów IP do sieci wirtualnej. Rozmiar tego zakresu adresów oraz rzeczywisty zakres adresów IP, który ma być używany, zależy od innych już wdrożonych zasobów sieciowych. Zakres adresów IP nie powinien nakładać się na wszystkie istniejące zakresy adresów w środowisku platformy Azure lub lokalnym. Upewnij się, że rozmiar zakresu adresów IP jest wystarczająco duży, aby liczba maszyn wirtualnych, które mają zostać wdrożone w podsieci.
+
+    W poniższym przykładzie dodano dodatkowy zakres adresów IP *10.0.2.0/24* . Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
+
+    ![Dodaj dodatkowy zakres adresów IP sieci wirtualnej w Azure Portal](./media/tutorial-configure-networking/add-vnet-address-range.png)
+
+1. Następnie w menu po lewej stronie okna Sieć wirtualna wybierz pozycję **podsieci**, a następnie wybierz pozycję **+ podsieć** , aby dodać podsieć.
+
+1. Wybierz pozycję **+ podsieć**, a następnie wprowadź nazwę podsieci, na przykład *Zarządzanie*. Podaj **zakres adresów (blok CIDR)** , taki jak *10.0.2.0/24*. Upewnij się, że ten zakres adresów IP nie pokrywa się z żadnym innym istniejącymi zakresami adresów platformy Azure lub lokalnymi. Pozostaw wartości domyślne innych opcji, a następnie wybierz przycisk **OK**.
 
     ![Utwórz konfigurację podsieci w Azure Portal](./media/join-windows-vm/create-subnet.png)
 
-10. Utworzenie podsieci trwa kilka sekund. Po jego utworzeniu wybierz pozycję *X* , aby zamknąć okno podsieć.
-11. Wróć do okienka **Sieć** , aby utworzyć maszynę wirtualną, wybierz podsieć utworzoną z menu rozwijanego, na przykład *ManagedVMs*. Upewnij się, że wybrano poprawną podsieć i nie Wdróż maszyny wirtualnej w tej samej podsieci co domena zarządzana AD DS Azure.
-12. Pozostaw wartości domyślne innych opcji, a następnie wybierz pozycję **Zarządzanie**.
-13. Ustaw wartość ustawienia **Diagnostyka rozruchu** *.* Pozostaw wartości domyślne innych opcji, a następnie wybierz pozycję **Przegląd + Utwórz**.
-14. Przejrzyj ustawienia maszyny wirtualnej, a następnie wybierz pozycję **Utwórz**.
+1. Utworzenie podsieci trwa kilka sekund. Po jego utworzeniu wybierz pozycję *X* , aby zamknąć okno podsieć.
+1. Wróć do okienka **Sieć** , aby utworzyć maszynę wirtualną, wybierz podsieć utworzoną z menu rozwijanego, na przykład *Zarządzanie*. Upewnij się, że wybrano poprawną podsieć i nie Wdróż maszyny wirtualnej w tej samej podsieci co domena zarządzana AD DS Azure.
+1. Pozostaw wartości domyślne innych opcji, a następnie wybierz pozycję **Zarządzanie**.
+1. Ustaw wartość ustawienia **Diagnostyka rozruchu** *.* Pozostaw wartości domyślne innych opcji, a następnie wybierz pozycję **Przegląd + Utwórz**.
+1. Przejrzyj ustawienia maszyny wirtualnej, a następnie wybierz pozycję **Utwórz**.
 
 Utworzenie maszyny wirtualnej może potrwać kilka minut. Azure Portal pokazuje stan wdrożenia. Gdy maszyna wirtualna jest gotowa, wybierz pozycję **Przejdź do zasobu**.
 
@@ -124,7 +134,7 @@ Teraz Połączmy się z nowo utworzoną maszyną wirtualną z systemem Windows S
 
 Po utworzeniu maszyny wirtualnej i nawiązaniu połączenia RDP przystąpi teraz do domeny zarządzanej platformy Azure AD DS. Ten proces jest taki sam jak komputer łączący się z zwykłą lokalną domeną Active Directory Domain Services.
 
-1. **Menedżer serwera** powinna być otwarta domyślnie po zalogowaniu się do maszyny wirtualnej. Jeśli nie, w menu **Start** wybierz **Menedżer serwera**.
+1. Jeśli **Menedżer serwera** nie zostanie otwarta domyślnie po zalogowaniu się do maszyny wirtualnej, wybierz menu **Start** , a następnie wybierz pozycję **Menedżer serwera**.
 1. W lewym okienku okna **Menedżer serwera** wybierz pozycję **serwer lokalny**. W obszarze **Właściwości** w okienku po prawej stronie wybierz pozycję **Grupa robocza**.
 
     ![Otwórz Menedżer serwera na maszynie wirtualnej i edytuj Właściwość grupy roboczej](./media/join-windows-vm/server-manager.png)
@@ -137,7 +147,7 @@ Po utworzeniu maszyny wirtualnej i nawiązaniu połączenia RDP przystąpi teraz
 
     ![Określ domenę zarządzaną AD DS platformy Azure do przyłączenia](./media/join-windows-vm/join-domain.png)
 
-1. Wprowadź poświadczenia domeny w celu przyłączenia do domeny. Użyj poświadczeń dla użytkownika, który należy do grupy *administratorów DC usługi Azure AD* . Tylko członkowie tej grupy mają uprawnienia do przyłączania maszyn do domeny zarządzanej AD DS platformy Azure. Poświadczenia konta można określić w jeden z następujących sposobów:
+1. Wprowadź poświadczenia domeny w celu przyłączenia do domeny. Użyj poświadczeń dla użytkownika, który należy do grupy *administratorów DC usługi Azure AD* . Tylko członkowie tej grupy mają uprawnienia do przyłączania maszyn do domeny zarządzanej AD DS platformy Azure. Konto musi być częścią domeny zarządzanej platformy Azure AD DS lub dzierżawy usługi Azure AD z zewnętrznych katalogów skojarzonych z dzierżawą usługi Azure AD nie można prawidłowo uwierzytelnić podczas procesu przyłączania do domeny. Poświadczenia konta można określić w jeden z następujących sposobów:
 
     * **Format nazwy UPN** (zalecane) — wprowadź sufiks głównej nazwy użytkownika (UPN) dla konta użytkownika, zgodnie z konfiguracją w usłudze Azure AD. Na przykład sufiks nazwy UPN *contosoadmin* użytkownika będzie `contosoadmin@contoso.onmicrosoft.com`. Istnieje kilka typowych przypadków użycia, w których format nazwy UPN może być niezawodnie używany do logowania się do domeny, a nie do formatu *sAMAccountName* :
         * Jeśli prefiks nazwy UPN użytkownika jest długi, taki jak *deehasareallylongname* *, może to* być automatycznie generowane.
@@ -157,7 +167,7 @@ Po utworzeniu maszyny wirtualnej i nawiązaniu połączenia RDP przystąpi teraz
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
 >
-> Aby przyłączyć do domeny maszynę wirtualną bez nawiązywania z nią połączenia i ręcznie skonfigurować połączenie, można również poznać korzystanie z polecenia cmdlet [Set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell.
+> Aby przyłączyć do domeny maszynę wirtualną bez nawiązywania z nią połączenia i ręcznie skonfigurować połączenie, można użyć polecenia cmdlet [Set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell.
 
 Po ponownym uruchomieniu maszyny wirtualnej z systemem Windows Server wszystkie zasady zastosowane w domenie zarządzanej usługi Azure AD DS są wypychane do maszyny wirtualnej. Teraz możesz także zalogować się do maszyny wirtualnej z systemem Windows Server przy użyciu odpowiednich poświadczeń domeny.
 
@@ -212,6 +222,7 @@ Jeśli zostanie wyświetlony monit z prośbą o podanie poświadczeń w celu prz
 Po wykonaniu każdego z tych kroków rozwiązywania problemów spróbuj ponownie dołączyć maszynę wirtualną z systemem Windows Server do domeny zarządzanej.
 
 * Upewnij się, że określone konto użytkownika należy do grupy *Administratorzy domeny usługi AAD* .
+* Upewnij się, że konto jest częścią domeny zarządzanej usługi Azure AD DS lub dzierżawy usługi Azure AD. Konta z zewnętrznych katalogów skojarzonych z dzierżawą usługi Azure AD nie mogą być prawidłowo uwierzytelniane podczas procesu przyłączania do domeny.
 * Spróbuj użyć formatu UPN, aby określić poświadczenia, takie jak `contosoadmin@contoso.onmicrosoft.com`. Jeśli istnieje wielu użytkowników z tym samym prefiksem nazwy UPN w dzierżawie lub jeśli prefiks nazwy UPN jest zbyt długi, zostanie automatycznie wygenerowany *sAMAccountName* dla Twojego konta. W takich przypadkach format *sAMAccountName* dla konta może być inny niż oczekiwany lub używany w domenie lokalnej.
 * Sprawdź, czy [włączono synchronizację haseł][password-sync] z domeną zarządzaną. Bez tego kroku konfiguracji wymagane skróty haseł nie będą obecne w domenie zarządzanej AD DS platformy Azure w celu poprawnego uwierzytelnienia próby logowania.
 * Poczekaj na zakończenie synchronizacji haseł. Po zmianie hasła konta użytkownika automatyczna synchronizacja w tle z usługi Azure AD aktualizuje hasło w usłudze Azure AD DS. Udostępnienie hasła przez przyłączenie do domeny wymaga pewnego czasu.

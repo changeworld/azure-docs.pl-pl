@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba53049d580f3f90499dc0471b9ac981f4a374f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.openlocfilehash: 00e5e4a9751a03fe961fe02fec28f41b49e5ba43
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562171"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175163"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Informacje na temat bezpiecznych stacji roboczych zarządzanych przez platformę Azure
 
@@ -85,7 +85,7 @@ Kluczową podstawą dla zabezpieczonej stacji roboczej jest rozwiązanie łańcu
 ## <a name="device-roles-and-profiles"></a>Role i profile urządzeń
 
 Te wskazówki odnoszą się do kilku profilów zabezpieczeń i ról, które mogą pomóc w tworzeniu bardziej bezpiecznych rozwiązań dla użytkowników, deweloperów i pracowników działu IT. Te profile równoważą użyteczność i ryzyko dla typowych użytkowników, którzy mogą korzystać z zwiększonej lub zabezpieczonej stacji roboczej. Konfiguracje ustawień podane w tym miejscu są oparte na przyjętych standardach branżowych. Wskazówki te pokazują, jak zabezpieczyć system Windows 10 i zmniejszyć ryzyko związane z naruszeniem bezpieczeństwa urządzeń lub użytkowników. Robi to za pomocą zasad i technologii, które ułatwiają zarządzanie funkcjami zabezpieczeń i zagrożeniami.
-![Bezpieczeństwo poziomów stacji roboczej](./media/concept-azure-managed-workstation/seccon-levels.png)
+![bezpiecznych poziomów stacji roboczej](./media/concept-azure-managed-workstation/seccon-levels.png)
 
 * **Niskie zabezpieczenia** — zarządzana, standardowa stacja robocza zapewnia dobry punkt wyjścia dla większości i małych firm. Te urządzenia są zarejestrowane w usłudze Azure AD i zarządzane za pomocą usługi Intune. Ten profil pozwala użytkownikom na uruchamianie dowolnych aplikacji i przeglądanie dowolnej witryny sieci Web. Rozwiązanie chroniące przed złośliwym oprogramowaniem, takie jak [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) , powinno być włączone.
 
