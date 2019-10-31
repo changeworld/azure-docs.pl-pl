@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/22/2019
+ms.date: 10/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 31e19034f6a2c6f5ab52cbc34d8b3f6e0a1051bc
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dff222788480eea882614ad29478df1dce359199
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803573"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101293"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role dla zasobów platformy Azure
 
@@ -114,6 +114,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 | [Czytnik aplikacji zarządzanych](#managed-applications-reader) | Umożliwia odczytanie zasobów w zarządzanej aplikacji i zażądanie dostępu JIT. |
 | [Współautor tożsamości zarządzanej](#managed-identity-contributor) | Tworzenie, odczytywanie, aktualizowanie i usuwanie tożsamości przypisanej przez użytkownika |
 | [Operator tożsamości zarządzanej](#managed-identity-operator) | Odczytaj i przypisz tożsamość przypisaną przez użytkownika |
+| [Rola usuwania przypisania rejestracji usług zarządzanych](#managed-services-registration-assignment-delete-role) | Rola usuwania przypisania rejestracji usług zarządzanych umożliwia użytkownikom zarządzającym dzierżawę usuwanie przypisania rejestracji przypisanego do swojej dzierżawy. |
 | [Współautor grupy zarządzania](#management-group-contributor) | Rola współautora grupy zarządzania |
 | [Czytelnik grupy zarządzania](#management-group-reader) | Rola czytelnika grupy zarządzania |
 | [Współautor monitorowania](#monitoring-contributor) | Może odczytywać wszystkie dane monitorowania i edytować ustawienia monitorowania. Zobacz też Rozpoczynanie [pracy z rolami, uprawnieniami i zabezpieczeniami przy użyciu Azure monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
@@ -1963,6 +1964,23 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft. resources/subscriptions/resourceGroups/Read | Pobiera lub wyświetla listę grup zasobów. |
 > | Microsoft. resources/Deployments/* | Tworzenie wdrożeń grup zasobów i zarządzanie nimi |
 > | Microsoft. Support/* | Tworzenie biletów pomocy technicznej i zarządzanie nimi |
+> | **Nonaruszone** |  |
+> | *dawaj* |  |
+> | **Akcje dataactions** |  |
+> | *dawaj* |  |
+> | **NotDataActions** |  |
+> | *dawaj* |  |
+
+## <a name="managed-services-registration-assignment-delete-role"></a>Rola usuwania przypisania rejestracji usług zarządzanych
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Rola usuwania przypisania rejestracji usług zarządzanych umożliwia użytkownikom zarządzającym dzierżawę usuwanie przypisania rejestracji przypisanego do swojej dzierżawy. |
+> | **Identyfikator** | 91c1777a-f3dc-4fae-b103-61d183457e46 |
+> | **Akcje** |  |
+> | Microsoft. ManagedServices/registrationAssignments/odczyt | Pobiera listę przypisań rejestracji usług zarządzanych. |
+> | Microsoft. ManagedServices/registrationAssignments/Delete | Usuwa przypisanie rejestracji usług zarządzanych. |
+> | Microsoft. ManagedServices/operationStatuses/odczyt | Odczytuje stan operacji dla zasobu. |
 > | **Nonaruszone** |  |
 > | *dawaj* |  |
 > | **Akcje dataactions** |  |

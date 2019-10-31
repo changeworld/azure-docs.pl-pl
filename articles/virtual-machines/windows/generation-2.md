@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 10/29/2019
 ms.author: lahugh
-ms.openlocfilehash: 1b906a9e3ce803b7f319a920f29b5a60f62c47b1
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c85e02b01e11b94d9e23e669bf2f6fcde7f2c1de
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550154"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064017"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Obsługa maszyn wirtualnych 2. generacji (wersja zapoznawcza) na platformie Azure
 
@@ -64,6 +64,8 @@ Maszyny wirtualne 2. generacji obsługują następujące obrazy w portalu Market
 * Windows Server 2012 Datacenter
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
+* Ubuntu Server 16.04 +
+
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Lokalna a maszyny wirtualne 2. generacji platformy Azure
 

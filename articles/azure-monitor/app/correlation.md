@@ -8,16 +8,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755375"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063951"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w Application Insights
 
-Na świecie mikrousług każda operacja logiczna wymaga wykonania pracy w różnych składnikach usługi. Każdy z tych składników może być monitorowany oddzielnie za pomocą [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Składnik aplikacji sieci Web komunikuje się ze składnikiem dostawcy uwierzytelniania w celu zweryfikowania poświadczeń użytkownika i składnika interfejsu API w celu pobrania danych do wizualizacji. Składnik API może wysyłać zapytania dotyczące danych z innych usług i używać składników dostawcy pamięci podręcznej do powiadamiania składnika rozliczania o tym wywołaniu. Application Insights obsługuje korelację rozproszonej telemetrii, za pomocą której można wykryć, który składnik jest odpowiedzialny za błędy lub spadek wydajności.
+Na świecie mikrousług każda operacja logiczna wymaga wykonania pracy w różnych składnikach usługi. Każdy z tych składników może być monitorowany oddzielnie za pomocą [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights obsługuje korelację rozproszonej telemetrii, za pomocą której można wykryć, który składnik jest odpowiedzialny za błędy lub spadek wydajności.
 
 W tym artykule opisano model danych używany przez Application Insights do skorelowania telemetrii wysyłanej przez wiele składników. Obejmuje to techniki i protokoły propagacji kontekstowej. Obejmuje to również implementację koncepcji korelacji w różnych językach i platformach.
 
@@ -25,11 +25,11 @@ W tym artykule opisano model danych używany przez Application Insights do skore
 
 Application Insights definiuje [model danych](../../azure-monitor/app/data-model.md) dla korelacji rozproszonej telemetrii. Aby skojarzyć dane telemetryczne z operacją logiczną, każdy element telemetrii ma pole kontekstu o nazwie `operation_Id`. Ten identyfikator jest współużytkowany przez każdy element telemetrii rozproszonego śledzenia. W związku z tym nawet z utratą danych telemetrycznych z pojedynczej warstwy można nadal kojarzyć dane telemetryczne zgłoszone przez inne składniki.
 
-Rozproszone operacje logiczne zwykle składają się z zestawu mniejszych operacji, które są żądaniami przetworzonymi przez jeden ze składników. Te operacje są definiowane przez dane [telemetryczne żądania](../../azure-monitor/app/data-model-request-telemetry.md). Wszystkie dane telemetryczne żądania mają własne `id`, które jednoznacznie identyfikują i globalnie. Wszystkie elementy telemetrii (takie jak ślady i wyjątki), które są skojarzone z tym żądaniem, powinny ustawić `operation_parentId` na wartość `id` żądania.
+Rozproszone operacje logiczne zwykle składają się z zestawu mniejszych operacji, które są żądaniami przetworzonymi przez jeden ze składników. Te operacje są definiowane przez dane [telemetryczne żądania](../../azure-monitor/app/data-model-request-telemetry.md). Wszystkie dane telemetryczne żądania mają własne `id`, które jednoznacznie identyfikują i globalnie. Wszystkie elementy telemetrii (takie jak ślady i wyjątki), które są skojarzone z tym żądaniem, powinny ustawić `operation_parentId` na wartość `id`żądania.
 
 Każda operacja wychodząca, taka jak wywołanie HTTP w innym składniku, jest reprezentowana przez dane [telemetryczne zależności](../../azure-monitor/app/data-model-dependency-telemetry.md). Dane telemetryczne zależności również definiują własną `id` globalnie unikatową. Dane telemetryczne żądania inicjowane przez to wywołanie zależności używa tego `id` jako `operation_parentId`.
 
-Można utworzyć widok rozproszonej operacji logicznej przy użyciu `operation_Id`, `operation_parentId` i `request.id` z `dependency.id`. Te pola definiują również kolejność wywoływania wywołań telemetrycznych.
+Można utworzyć widok rozproszonej operacji logicznej przy użyciu `operation_Id`, `operation_parentId`i `request.id` z `dependency.id`. Te pola definiują również kolejność wywoływania wywołań telemetrycznych.
 
 W środowisku mikrousług ślady składników mogą przechodzić do różnych elementów magazynu. Każdy składnik może mieć własny klucz Instrumentacji w Application Insights. Aby uzyskać dane telemetryczne dla operacji logicznej, Application Insights UX wykonuje zapytania dotyczące danych z każdego elementu magazynu. Gdy liczba elementów magazynu jest duża, należy zapoznać się z wskazówką dotyczącą lokalizacji następnej. Application Insights model danych definiuje dwa pola, aby rozwiązać ten problem: `request.source` i `dependency.target`. Pierwsze pole identyfikuje składnik inicjujący żądanie zależności, a drugi identyfikuje składnik, który zwrócił odpowiedź wywołania zależności.
 
@@ -221,7 +221,7 @@ OpenCensus Python jest zgodna z specyfikacjami modelu danych `OpenTracing` opisa
 
 ### <a name="incoming-request-correlation"></a>Korelacja żądań przychodzących
 
-OpenCensus Python skorelowanie nagłówków kontekstu śledzenia W3C z żądań przychodzących do zakresów, które są generowane na podstawie samych żądań. Program OpenCensus automatycznie podejmie integrację dla popularnych struktur aplikacji sieci Web, takich jak `flask`, `django` i `pyramid`. Nagłówki kontekstowe śledzenia W3C muszą być wypełniane przy użyciu [poprawnego formatu](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)i wysyłane z żądaniem. Poniżej znajduje się przykład `flask` aplikacji.
+OpenCensus Python skorelowanie nagłówków kontekstu śledzenia W3C z żądań przychodzących do zakresów, które są generowane na podstawie samych żądań. Program OpenCensus automatycznie podejmie integrację dla następujących popularnych struktur aplikacji sieci Web: `flask`, `django` i `pyramid`. Nagłówki kontekstowe śledzenia W3C muszą być wypełniane przy użyciu [poprawnego formatu](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) i wysyłane z żądaniem. Poniżej znajduje się przykład `flask` aplikacji.
 
 ```python
 from flask import Flask
@@ -253,7 +253,7 @@ Przeglądając [Format nagłówka kontekstu śledzenia](https://www.w3.org/TR/tr
  `parent-id/span-id`: `00f067aa0ba902b7` 
  0: 1
 
-Jeśli Przyjrzyjmy się wpisowi żądania, który został wysłany do Azure Monitor, można zobaczyć pola wypełnione informacjami nagłówka śledzenia.
+Jeśli Przyjrzyjmy się wpisowi żądania, który został wysłany do Azure Monitor, można zobaczyć pola wypełnione informacjami nagłówka śledzenia. Te dane można znaleźć w obszarze Dzienniki (analiza) w Azure Monitor Application Insights zasobów.
 
 ![Zrzut ekranu przedstawiający dane telemetryczne żądania w dziennikach (analiza) z polami nagłówków śledzenia wyróżnionych czerwonym prostokątem](./media/opencensus-python/0011-correlation.png)
 
@@ -290,6 +290,8 @@ Po uruchomieniu tego kodu w konsoli zostaną wyświetlone następujące elementy
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
 Zwróć uwagę na to, w jaki sposób spanId jest obecny dla komunikatu dziennika znajdującego się w obrębie zakresu, który jest tym samym spanId, który należy do zakresu o nazwie `hello`.
+
+Dane dziennika można wyeksportować przy użyciu `AzureLogHandler`. Więcej informacji można znaleźć [tutaj](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)
 
 ## <a name="telemetry-correlation-in-net"></a>Korelacja telemetrii w programie .NET
 

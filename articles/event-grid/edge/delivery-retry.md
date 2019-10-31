@@ -5,20 +5,20 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 0a678023b1097c4bdec70d866632da6ae4ad57bb
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992394"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100709"
 ---
 # <a name="delivery-and-retry"></a>Dostarczanie i ponawianie prób
 
-Event Grid zapewnia trwałe dostarczanie. Próbuje dostarczyć każdy komunikat co najmniej raz dla każdej pasującej subskrypcji. Jeśli punkt końcowy subskrybenta nie potwierdzi odbioru zdarzenia lub jeśli wystąpi błąd, Event Grid ponowienia próby w oparciu o ustalony **harmonogram ponownych prób** i **zasady ponawiania**prób.  Obecnie Event Grid module dostarcza zdarzenie do subskrybenta. Ładunek jest jednak tablicą z pojedynczym zdarzeniem.
+Event Grid zapewnia trwałe dostarczanie. Próbuje dostarczyć każdy komunikat co najmniej raz dla każdej pasującej subskrypcji. Jeśli punkt końcowy subskrybenta nie potwierdzi odbioru zdarzenia lub jeśli wystąpi błąd, Event Grid ponowienia próby w oparciu o ustalony **harmonogram ponownych prób** i **zasady ponawiania**prób.  Domyślnie moduł Event Grid dostarcza jedno zdarzenie naraz do subskrybenta. Ładunek jest jednak tablicą z pojedynczym zdarzeniem. Moduł może dostarczyć więcej niż jedno zdarzenie naraz, włączając funkcję tworzenia wsadowego danych wyjściowych. Aby uzyskać szczegółowe informacje na temat tej funkcji, zobacz Tworzenie [wsadowe danych wyjściowych](delivery-output-batching.md).  
 
 > [!IMPORTANT]
 >Brak obsługi trwałości dla danych zdarzenia. Oznacza to, że ponowne wdrożenie lub uruchomienie modułu Event Grid spowoduje utratę wszystkich zdarzeń, które nie zostały jeszcze dostarczone.

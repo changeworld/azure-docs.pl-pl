@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: b2003b9c7520cfa3e82576fd3430063c20d452ff
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 53df209d080cf91be9c558b43edaa618c0748fc5
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104576"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101536"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>Wyłącz zasady sieciowe dla źródłowego adresu IP usługi linku prywatnego
 
-Aby można było wybrać źródłowy adres IP dla usługi linku prywatnego, w podsieci musi być wymagane `privateLinkServiceNetworkPolicies` jawne ustawienie Wyłącz. To ustawienie dotyczy tylko określonego prywatnego adresu IP, który został wybrany jako źródłowy adres IP usługi łącza prywatnego. W przypadku innych zasobów w podsieci dostęp jest kontrolowany na podstawie definicji reguł zabezpieczeń sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń). 
+Aby można było wybrać źródłowy adres IP dla usługi linku prywatnego, w podsieci jest wymagane jawne ustawienie Wyłącz `privateLinkServiceNetworkPolicies`. To ustawienie dotyczy tylko określonego prywatnego adresu IP, który został wybrany jako źródłowy adres IP usługi łącza prywatnego. W przypadku innych zasobów w podsieci dostęp jest kontrolowany na podstawie definicji reguł zabezpieczeń sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń). 
  
 W przypadku korzystania z dowolnego klienta platformy Azure (środowiska PowerShell, interfejsu wiersza polecenia lub szablonów) do zmiany tej właściwości wymagany jest dodatkowy krok. Zasady można wyłączyć za pomocą usługi Cloud Shell z poziomu Azure Portal lub instalacji lokalnych Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub szablonów Azure Resource Manager.  
  
@@ -30,9 +30,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
   -Name "myVirtualNetwork" ` 
   -ResourceGroupName "myResourceGroup"  
    
-($virtualNetwork ` 
-  | Select -ExpandProperty subnets ` 
-  | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled" 
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled"  
  
 $virtualNetwork | Set-AzVirtualNetwork 
 ```

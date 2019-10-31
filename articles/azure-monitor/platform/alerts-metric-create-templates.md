@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f341a3599607e527556f90626dd866418910f61e
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052323"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099751"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
 
@@ -27,8 +27,9 @@ W tym artykule pokazano, jak można użyć [szablonu Azure Resource Manager](../
 Podstawowe kroki są następujące:
 
 1. Użyj jednego z poniższych szablonów jako pliku JSON, który opisuje sposób tworzenia alertu.
-2. Edytuj odpowiedni plik parametrów w formacie JSON i używaj go w celu dostosowania alertu
-3. Wdróż szablon przy użyciu [dowolnej metody wdrażania](../../azure-resource-manager/resource-group-template-deploy.md).
+2. Edytuj odpowiedni plik parametrów w formacie JSON i używaj go w celu dostosowania alertu.
+3. `metricName` parametru można znaleźć w temacie dostępne metryki w [Azure monitor obsługiwane metryki](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+4. Wdróż szablon przy użyciu [dowolnej metody wdrażania](../../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Szablon prostego alertu dotyczącego metryki statycznej progu
 

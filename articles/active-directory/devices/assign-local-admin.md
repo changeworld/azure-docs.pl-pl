@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f50ace6d707db35dfd7cf9f14026d755093a038c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802446"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062258"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak zarządzać lokalną grupą administratorów na urządzeniach dołączonych do usługi Azure AD
 
@@ -59,10 +59,10 @@ Aby zmodyfikować rolę administratora urządzenia, należy skonfigurować **dod
 >[!NOTE]
 > Ta opcja wymaga dzierżawy Azure AD — wersja Premium. 
 
-Administratorzy urządzeń są przypisani do wszystkich urządzeń przyłączonych do usługi Azure AD. Nie można określić zakresu administratorów urządzeń do określonego zestawu urządzeń. Aktualizacja roli administratora urządzenia nie musi mieć natychmiastowego wpływu na użytkowników, których dotyczy problem. W przypadku urządzeń użytkownik jest już zalogowany, aktualizacja uprawnień jest wykonywana:
+Administratorzy urządzeń są przypisani do wszystkich urządzeń przyłączonych do usługi Azure AD. Nie można określić zakresu administratorów urządzeń do określonego zestawu urządzeń. Aktualizacja roli administratora urządzenia nie musi mieć natychmiastowego wpływu na użytkowników, których dotyczy problem. Na urządzeniach, na których użytkownik jest już zalogowany, aktualizacja uprawnień odbywa się po *obu* poniższych akcjach:
 
-- Gdy użytkownik wyloguje się.
-- Po 4 godzinach, gdy zostanie wystawiony nowy podstawowy token odświeżania. 
+- 4 godziny przekazały, że usługa Azure AD wystawia nowy podstawowy token odświeżania z odpowiednimi uprawnieniami. 
+- Użytkownik wyloguje się i zaloguje się ponownie, nie blokując/Odblokuj, aby odświeżyć swój profil.
 
 ## <a name="manage-regular-users"></a>Zarządzanie regularnymi użytkownikami
 

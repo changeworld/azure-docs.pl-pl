@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: e03c68854d9150c25019fe198fe855a011750844
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b7015b3e861aea3a33ea26d6a8c1a31f7f17b8c4
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566548"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063089"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie zasobów pojedynczej bazy danych w Azure SQL Database
 
-W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe dostępne dla pojedynczej bazy danych w warstwie obliczeniowej zainicjowanej. Alternatywnie [warstwa obliczeniowa bezserwerowa (wersja zapoznawcza)](sql-database-serverless.md) oferuje automatyczne skalowanie i opłaty za użycie obliczeń na sekundę.
+W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe dostępne dla Azure SQL Database w warstwie obliczeniowej zainicjowanej. Alternatywnie [warstwa obliczeniowa bezserwerowa (wersja zapoznawcza)](sql-database-serverless.md) oferuje automatyczne skalowanie i opłaty za użycie obliczeń na sekundę.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -36,35 +36,35 @@ Poniższy film wideo pokazuje dynamicznie zmieniające się warstwy usług i roz
 >
 
 > [!IMPORTANT]
-> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
+> W pewnych okolicznościach może być konieczne zmniejszenie bazy danych w celu Odbierz nieużywanej przestrzeni. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Wpływ zmiany warstwy usług lub skalowanie w poziomie
 
-Zmiana warstwy usług lub wielkości obliczeniowej pojedynczej bazy danych polega głównie na wykonaniu następujących czynności:
+Zmiana warstwy usług lub rozmiaru obliczeniowego głównie obejmuje usługę wykonującą następujące czynności:
 
 1. Utwórz nowe wystąpienie obliczeniowe dla bazy danych  
 
-    Nowe wystąpienie obliczeniowe dla bazy danych jest tworzone z żądaną warstwą usług i rozmiarem obliczeniowym. W przypadku niektórych kombinacji warstwy usług i rozmiaru obliczeń replika bazy danych musi zostać utworzona w nowym wystąpieniu obliczeniowym, które obejmuje kopiowanie danych i może mieć silny wpływ na ogólne opóźnienie. Bez względu na to, że baza danych pozostanie w trybie online w tym kroku, a połączenia będą nadal kierowane do bazy danych w oryginalnym wystąpieniu obliczeniowym.
+    Nowe wystąpienie obliczeniowe jest tworzone z żądaną warstwą usługi i rozmiarem obliczeniowym. W przypadku niektórych kombinacji warstwy usług i rozmiaru obliczeń replika bazy danych musi zostać utworzona w nowym wystąpieniu obliczeniowym, które obejmuje kopiowanie danych i może mieć silny wpływ na ogólne opóźnienie. Bez względu na to, że baza danych pozostanie w trybie online w tym kroku, a połączenia będą nadal kierowane do bazy danych w oryginalnym wystąpieniu obliczeniowym.
 
 2. Przełącz routing połączeń do nowego wystąpienia obliczeniowego
 
     Istniejące połączenia z bazą danych w oryginalnym wystąpieniu obliczeniowym są usuwane. Wszystkie nowe połączenia są ustanawiane do bazy danych w nowym wystąpieniu obliczeniowym. W przypadku niektórych kombinacji warstwy usług i rozmiaru obliczeń pliki bazy danych są odłączone i ponownie dołączone podczas przełączania.  Bez względu na to, że przełącznik może spowodować powstanie krótkiej przerwy w działaniu usługi, gdy baza danych jest niedostępna na ogół przez mniej niż 30 sekund i często tylko przez kilka sekund. W przypadku długotrwałych transakcji uruchomionych w przypadku porzucenia połączeń czas trwania tego kroku może trwać dłużej w celu odzyskania przerwanych transakcji. [Szybsze odzyskiwanie bazy danych](sql-database-accelerated-database-recovery.md) może zmniejszyć wpływ przerwań długotrwałych transakcji.
 
 > [!IMPORTANT]
-> W żadnym kroku przepływu pracy nie są tracone żadne dane.
+> W żadnym kroku przepływu pracy nie są tracone żadne dane. Upewnij się, że zaimplementowano kilka [logiki ponawiania](sql-database-connectivity-issues.md) w aplikacjach i składnikach, które używają Azure SQL Database podczas zmiany warstwy usług.
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Opóźnienie zmiany warstwy usług lub ponowne skalowanie rozmiaru obliczeń
 
 Szacowane opóźnienie zmiany warstwy usług lub ponowne skalowanie wielkości obliczeniowej pojedynczej bazy danych lub puli elastycznej jest opisane w następujący sposób:
 
-|Warstwa usług|Podstawowa pojedyncza baza danych,</br>Standard (S0-S1)|Podstawowa Pula elastyczna,</br>Standardowa (S2-S12), </br>Hiperskali </br>Ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej|Premium lub Krytyczne dla działania firmy pojedynczą bazę danych lub pulę elastyczną|
+|Warstwa usługi|Podstawowa pojedyncza baza danych,</br>Standard (S0-S1)|Podstawowa Pula elastyczna,</br>Standardowa (S2-S12), </br>Hiperskali </br>Ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej|Premium lub Krytyczne dla działania firmy pojedynczą bazę danych lub pulę elastyczną|
 |:---|:---|:---|:---|
-|**Podstawowa pojedyncza baza</br> danych, Standard (S0-S1)**|&bull;&nbsp;Stałe opóźnienie czasu niezależne od użytego miejsca</br>&bull;&nbsp;Zwykle, mniej niż 5 minut|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|
-|**Podstawowa Pula elastyczna </br>, standardowa (S2-S12) </br>, skalowanie </br>ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej**|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|&bull;&nbsp;Stałe opóźnienie czasu niezależne od użytego miejsca</br>&bull;&nbsp;Zwykle, mniej niż 5 minut|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|
-|**Premium lub Krytyczne dla działania firmy pojedynczą bazę danych lub pulę elastyczną**|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|&bull;&nbsp;Opóźnienie proporcjonalne do miejsca bazy danych używane z powodu kopiowania danych</br>&bull;&nbsp;Zwykle jest to mniej niż 1 minuta na GB zajętego miejsca|
+|**Podstawowa pojedyncza baza danych,</br> Standard (S0-S1)**|&bull; &nbsp;czas opóźnienia niezależny od użytego miejsca</br>&bull; &nbsp;zwykle, mniej niż 5 minut|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|
+|**Podstawowa Pula elastyczna, </br>Standard (S2-S12), </br>do skalowania, </br>Ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej**|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|&bull; &nbsp;czas opóźnienia niezależny od użytego miejsca</br>&bull; &nbsp;zwykle, mniej niż 5 minut|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|
+|**Premium lub Krytyczne dla działania firmy pojedynczą bazę danych lub pulę elastyczną**|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|
 
 > [!TIP]
-> Aby monitorować operacje w toku, zobacz: [Zarządzanie operacjami przy użyciu interfejsu API REST usługi SQL](https://docs.microsoft.com/rest/api/sql/operations/list), [Zarządzanie operacjami przy użyciu interfejsu wiersza](/cli/azure/sql/db/op)polecenia, [monitorowanie operacji przy użyciu języka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) i tych dwóch poleceń programu PowerShell: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) i [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Aby monitorować operacje w toku, zobacz: [Zarządzanie operacjami przy użyciu interfejsu API REST usługi SQL](https://docs.microsoft.com/rest/api/sql/operations/list), [Zarządzanie operacjami przy użyciu wiersza polecenia](/cli/azure/sql/db/op), [monitorowanie operacji przy użyciu języka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) i tych dwóch poleceń programu PowerShell: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) i [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Anulowanie zmian w warstwie usług lub operacji ponownego skalowania obliczeń
 
@@ -82,7 +82,7 @@ Następnie kliknij przycisk z etykietą **Anuluj tę operację**.
 
 #### <a name="powershell"></a>PowerShell
 
-W wierszu polecenia programu PowerShell Ustaw `$ResourceGroupName`polecenie, `$ServerName`, i `$DatabaseName`, a następnie uruchom następujące polecenie:
+W wierszu polecenia programu PowerShell Ustaw `$ResourceGroupName`, `$ServerName`i `$DatabaseName`, a następnie uruchom następujące polecenie:
 
 ```PowerShell
 $OperationName = (az sql db op list --resource-group $ResourceGroupName --server $ServerName --database $DatabaseName --query "[?state=='InProgress'].name" --out tsv)
@@ -102,8 +102,8 @@ if(-not [string]::IsNullOrEmpty($OperationName))
 - W przypadku uaktualniania do wyższej warstwy usług lub rozmiaru obliczeń maksymalny rozmiar bazy danych nie zwiększa się, chyba że jawnie określono większy rozmiar (wartość maksymalna).
 - Aby można było obniżyć wersję bazy danych, ilość używanej bazy danych musi być mniejsza niż maksymalny dozwolony rozmiar docelowej warstwy usługi i rozmiaru.
 - W przypadku obniżenia poziomu wersji **Premium** do warstwy **standardowa** obowiązuje dodatkowy koszt magazynu, jeśli oba (1) maksymalny rozmiar bazy danych jest obsługiwany w docelowym rozmiarze obliczeniowym i (2) maksymalny rozmiar przekracza ilość dołączonego miejsca docelowego. Jeśli na przykład baza danych P1 o maksymalnym rozmiarze 500 GB to S3, nastąpi zastosowanie dodatkowego kosztu magazynu, ponieważ S3 obsługuje maksymalny rozmiar 1 TB, a uwzględniona ilość miejsca w magazynie wynosi tylko 250 GB. W związku z tym dodatkowa kwota magazynu wynosi 500 GB – 250 GB = 250 GB. Aby uzyskać cennik dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywista ilość użytego miejsca jest mniejsza niż uwzględniona ilość miejsca w magazynie, można uniknąć tego dodatkowego kosztu, zmniejszając maksymalną wielkość bazy danych do uwzględnionej kwoty.
-- Podczas uaktualniania bazy danych z [](sql-database-geo-replication-portal.md) włączoną replikacją geograficzną należy uaktualnić jej pomocnicze bazy danych do żądanej warstwy usług i rozmiaru obliczeń przed uaktualnieniem podstawowej bazy danych (ogólne wskazówki dotyczące najlepszej wydajności). W przypadku uaktualniania do innego programu należy najpierw uaktualnić pomocniczą bazę danych.
-- W przypadku obniżenia poziomu bazy [](sql-database-geo-replication-portal.md) danych z włączoną replikacją geograficzną należy zmienić jej podstawowe bazy danych na żądaną warstwę usługi i rozmiar obliczeń przed obniżeniem poziomu pomocniczej bazy danych (ogólne wskazówki dotyczące najlepszej wydajności). W przypadku obniżenia poziomu do innej wersji najpierw wymagana jest starsza baza danych.
+- Podczas uaktualniania bazy danych z włączoną [replikacją geograficzną](sql-database-geo-replication-portal.md) należy uaktualnić jej pomocnicze bazy danych do żądanej warstwy usług i rozmiaru obliczeń przed uaktualnieniem podstawowej bazy danych (ogólne wskazówki dotyczące najlepszej wydajności). W przypadku uaktualniania do innego programu należy najpierw uaktualnić pomocniczą bazę danych.
+- W przypadku obniżenia poziomu bazy danych z włączoną [replikacją geograficzną](sql-database-geo-replication-portal.md) należy zmienić jej podstawowe bazy danych na żądaną warstwę usługi i rozmiar obliczeń przed obniżeniem poziomu pomocniczej bazy danych (ogólne wskazówki dotyczące najlepszej wydajności). W przypadku obniżenia poziomu do innej wersji najpierw wymagana jest starsza baza danych.
 - Oferowane usługi przywracania różnią się w zależności do warstwy usługi. W przypadku obniżenia poziomu do warstwy **podstawowa** istnieje dolny okres przechowywania kopii zapasowej. Zobacz [Azure SQL Database kopii zapasowych](sql-database-automated-backups.md).
 - Nowe właściwości bazy danych są stosowane dopiero po zakończeniu wprowadzania zmian.
 
@@ -121,27 +121,27 @@ Opłaty są naliczane za każdą godzinę, gdy baza danych istnieje przy użyciu
 - Cena magazynu dla pojedynczej bazy danych to suma ilości magazynu danych i magazynu dzienników pomnożona przez cenę jednostkową magazynu warstwy usług. Koszt bazy danych TempDB jest uwzględniany w cenie rdzeń wirtualny. Aby uzyskać szczegółowe informacje na temat ceny dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
+> W pewnych okolicznościach może być konieczne zmniejszenie bazy danych w celu Odbierz nieużywanej przestrzeni. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>Model zakupu oparty na jednostkach DTU
 
-- Cena jednostek DTU dla pojedynczej bazy danych obejmuje pewną ilość miejsca w magazynie bez dodatkowych kosztów. Dodatkowy magazyn poza uwzględnioną ilością można zainicjować w celu uzyskania dodatkowego kosztu do maksymalnego limitu rozmiaru w przyrostach wynoszących 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB poza 1 TB. W przypadku uwzględnionych kwot magazynu i maksymalnych limitów rozmiaru zapoznaj [się z jedną bazą danych: Rozmiary magazynu i rozmiary](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)obliczeniowe.
+- Cena jednostek DTU dla pojedynczej bazy danych obejmuje pewną ilość miejsca w magazynie bez dodatkowych kosztów. Dodatkowy magazyn poza uwzględnioną ilością można zainicjować w celu uzyskania dodatkowego kosztu do maksymalnego limitu rozmiaru w przyrostach wynoszących 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB poza 1 TB. W przypadku uwzględnionych kwot magazynu i maksymalnych limitów rozmiaru zobacz [pojedyncza baza danych: rozmiary magazynu i rozmiary obliczeń](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
 - Dodatkowy magazyn dla pojedynczej bazy danych może być inicjowany przez zwiększenie jego maksymalnego rozmiaru przy użyciu Azure Portal, [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), interfejsu [wiersza polecenia platformy Azure](/cli/azure/sql/db#az-sql-db-update)lub [API REST](https://docs.microsoft.com/rest/api/sql/databases/update).
 - Cena dodatkowego magazynu dla pojedynczej bazy danych to ilość dodatkowego magazynu pomnożona przez dodatkową cenę jednostkową magazynu warstwy usług. Aby uzyskać szczegółowe informacje na temat ceny dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
+> W pewnych okolicznościach może być konieczne zmniejszenie bazy danych w celu Odbierz nieużywanej przestrzeni. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11 i P15, gdy maksymalny rozmiar jest większy niż 1 TB
 
-Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Chiny Wschodnie, Chiny Północne, Niemcy Środkowe, Niemcy Północno-Wschodnie, Zachodnio-środkowe stany USA, regiony US DoD i Instytucje rządowe dla środkowych stanów USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB. Następujące zagadnienia i ograniczenia mają zastosowanie do baz danych P11 i P15 o maksymalnym rozmiarze większym niż 1 TB:
+Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach z wyjątkiem: Chiny Wschodnie, Chiny Północne, Niemcy środkowe, Niemcy północno-zachodnie stany USA, regiony US DoD oraz centralne stany USA. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB. Następujące zagadnienia i ograniczenia mają zastosowanie do baz danych P11 i P15 o maksymalnym rozmiarze większym niż 1 TB:
 
 - Jeśli maksymalny rozmiar bazy danych P11 lub P15 został kiedykolwiek ustawiony na wartość większą niż 1 TB, można go przywrócić lub skopiować do bazy danych P11 lub P15.  Następnie można ponownie przeskalować bazę danych do innego rozmiaru obliczeniowego, o ile ilość miejsca przydzieloną w czasie operacji ponownego skalowania nie przekracza maksymalnego limitu rozmiaru dla nowego rozmiaru obliczenia.
 - W przypadku aktywnych scenariuszy replikacji geograficznej:
-  - Konfigurowanie relacji replikacji geograficznej: Jeśli podstawową bazą danych jest P11 lub P15, pomocnicze muszą być również P11 lub P15; mniejsze rozmiary obliczeń są odrzucane jako serwery pomocnicze, ponieważ nie mogą obsługiwać więcej niż 1 TB.
-  - Uaktualnianie podstawowej bazy danych w relacji replikacji geograficznej: Zmiana maksymalnego rozmiaru na więcej niż 1 TB w podstawowej bazie danych wyzwala tę samą zmianę w pomocniczej bazie danych. Aby zmiana dotycząca podstawowego zaczęła obowiązywać, należy przeprowadzić obie uaktualnienia. Ograniczenia regionów dla opcji ponad 1 TB mają zastosowanie. Jeśli pomocnicza znajduje się w regionie, który nie obsługuje więcej niż 1 TB, podstawowy nie zostanie uaktualniony.
+  - Konfigurowanie relacji replikacji geograficznej: Jeśli podstawowa baza danych to P11 lub P15, muszą być one również P11 lub P15; mniejsze rozmiary obliczeń są odrzucane jako serwery pomocnicze, ponieważ nie mogą obsługiwać więcej niż 1 TB.
+  - Uaktualnianie podstawowej bazy danych w relacji replikacji geograficznej: zmiana maksymalnego rozmiaru na więcej niż 1 TB w podstawowej bazie danych wyzwala tę samą zmianę w pomocniczej bazie danych. Aby zmiana dotycząca podstawowego zaczęła obowiązywać, należy przeprowadzić obie uaktualnienia. Ograniczenia regionów dla opcji ponad 1 TB mają zastosowanie. Jeśli pomocnicza znajduje się w regionie, który nie obsługuje więcej niż 1 TB, podstawowy nie zostanie uaktualniony.
 - Korzystanie z usługi Import/Export do ładowania baz danych P11/P15 z więcej niż 1 TB nie jest obsługiwane. [Importowanie](sql-database-import.md) i [Eksportowanie](sql-database-export.md) danych przy użyciu programu sqlpackage. exe.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ogólne limity zasobów można znaleźć w temacie [SQL Database limitów zasobów opartych na rdzeń wirtualny — pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [SQL Database limitów zasobów opartych na jednostkach DTU —](sql-database-dtu-resource-limits-single-databases.md)w przypadku pul elastycznych.
+Ogólne limity zasobów można znaleźć w temacie [SQL Database limitów zasobów opartych na rdzeń wirtualny — pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [SQL Database limitów zasobów opartych na jednostkach DTU — w przypadku pul elastycznych](sql-database-dtu-resource-limits-single-databases.md).

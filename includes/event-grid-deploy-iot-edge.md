@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: fab9a8a8c28f2f75e7e5af69b70229c1de74c684
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992290"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098671"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Wdróż moduł IoT Edge Event Grid
 
@@ -24,7 +24,7 @@ Istnieje kilka sposobów wdrażania modułów na urządzeniu IoT Edge i wszystki
 
 >[!IMPORTANT]
 > W tym samouczku moduł Event Grid zostanie wdrożony z włączonym uwierzytelnianiem klienta i zezwolił subskrybentom protokołu HTTP. W przypadku obciążeń produkcyjnych zaleca się włączenie tylko żądań HTTPS i subskrybentów z włączonym uwierzytelnianiem klienta. Aby uzyskać więcej informacji na temat bezpiecznego konfigurowania modułu Event Grid, zobacz [zabezpieczenia i uwierzytelnianie](../articles/event-grid/edge/security-authentication.md).
-
+ 
 ### <a name="select-your-iot-edge-device"></a>Wybierz urządzenie IoT Edge
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
@@ -67,6 +67,10 @@ Manifest wdrożenia to dokument JSON, który opisuje moduły do wdrożenia, spos
 
  1. Kliknij pozycję **Zapisz**
  1. Kliknij przycisk **dalej** , aby przejść do sekcji trasy
+
+    > [!NOTE]
+    > Jeśli używasz maszyny wirtualnej platformy Azure jako urządzenia brzegowego, Dodaj regułę portu przychodzącego, aby zezwolić na ruch przychodzący na porcie 4438. Aby uzyskać instrukcje dotyczące dodawania reguły, zobacz [Jak otworzyć porty na maszynie wirtualnej](../articles/virtual-machines/windows/nsg-quickstart-portal.md).
+
 
 ### <a name="setup-routes"></a>Skonfiguruj trasy
 

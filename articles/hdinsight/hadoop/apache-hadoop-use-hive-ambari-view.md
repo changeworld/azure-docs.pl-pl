@@ -2,18 +2,18 @@
 title: Korzystanie z widoku programu Apache Ambari Hive z Apache Hadoop w usłudze Azure HDInsight
 description: Dowiedz się, jak przesyłać zapytania programu Hive za pomocą widoku programu Hive z przeglądarki sieci Web. Widok Hive jest częścią Ambari internetowego interfejsu użytkownika dostarczonego z klastrem usługi HDInsight opartego na systemie Linux.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 10/24/2019
+ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044825"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097099"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Korzystanie z widoku platformy Apache Ambari z usługą Apache Hadoop w usłudze HDInsight
 
@@ -30,9 +30,9 @@ Dowiedz się, jak uruchamiać zapytania programu Hive za pomocą widoku Hive w p
 
 1. Na [Azure Portal](https://portal.azure.com/)wybierz swój klaster.  Instrukcje można znaleźć w temacie Wyświetlanie [i wyświetlanie klastrów](../hdinsight-administer-use-portal-linux.md#showClusters) . Klaster zostanie otwarty w nowym bloku portalu.
 
-2. W obszarze **pulpity nawigacyjne klastra**wybierz pozycję **widoki Ambari**. Po wyświetleniu monitu o uwierzytelnienie Użyj nazwy konta (domyślnej `admin`) i hasła podanego podczas tworzenia klastra.
+1. W obszarze **pulpity nawigacyjne klastra**wybierz pozycję **widoki Ambari**. Po wyświetleniu monitu o uwierzytelnienie Użyj nazwy konta (domyślnej `admin`) i hasła podanego podczas tworzenia klastra. Alternatywnie przejdź do `https://CLUSTERNAME.azurehdinsight.net/#/main/views` w przeglądarce, gdzie `CLUSTERNAME` jest nazwą klastra.
 
-3. Z listy widoki wybierz pozycję __Widok Hive__.
+1. Z listy widoki wybierz pozycję __Widok Hive__.
 
     ![Ambari wybierz widok Apache Hive Apache](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
@@ -40,7 +40,7 @@ Dowiedz się, jak uruchamiać zapytania programu Hive za pomocą widoku Hive w p
 
     ![Obraz arkusza zapytania dla widoku programu Hive](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-4. Na karcie __zapytanie__ Wklej następujące instrukcje HiveQL do arkusza:
+1. Na karcie __zapytanie__ Wklej następujące instrukcje HiveQL do arkusza:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -54,8 +54,8 @@ Dowiedz się, jak uruchamiać zapytania programu Hive za pomocą widoku Hive w p
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' 
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]'
         GROUP BY t4;
     ```
 
@@ -75,9 +75,9 @@ Dowiedz się, jak uruchamiać zapytania programu Hive za pomocą widoku Hive w p
    > [!IMPORTANT]  
    > Pozostaw __Domyślnie__wybraną __bazę danych__ . Przykłady w tym dokumencie wykorzystują domyślną bazę danych dołączoną do usługi HDInsight.
 
-5. Aby uruchomić zapytanie, wybierz pozycję **Wykonaj** poniżej arkusza. Przycisk zmieni kolor na pomarańczowy, a tekst zostanie zmieniony na **zatrzymany**.
+1. Aby uruchomić zapytanie, wybierz pozycję **Wykonaj** poniżej arkusza. Przycisk zmieni kolor na pomarańczowy, a tekst zostanie zmieniony na **zatrzymany**.
 
-6. Po zakończeniu zapytania na karcie **wyniki** zostaną wyświetlone wyniki operacji. Następujący tekst jest wynikiem zapytania:
+1. Po zakończeniu zapytania na karcie **wyniki** zostaną wyświetlone wyniki operacji. Następujący tekst jest wynikiem zapytania:
 
         loglevel       count
         [ERROR]        3

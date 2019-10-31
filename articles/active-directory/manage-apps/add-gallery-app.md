@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bdf275bbafa9c46cfc4577ac2843da0be74c7ef
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: af0a826c499790c86a20ea7061075a6c3e66b3a4
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477280"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062557"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Dodawanie aplikacji galerii do organizacji usługi Azure AD
 
@@ -34,27 +34,30 @@ Azure Active Directory (Azure AD) zawiera galerię zawierającą tysiące wstęp
 
 1. W okienku **Azure Active Directory** wybierz pozycję **aplikacje dla przedsiębiorstw**.
 
-    ![Otwarte aplikacje dla przedsiębiorstw](media/add-application-portal/open-enterprise-apps.png)
+    ![Otwarte aplikacje dla przedsiębiorstw](media/add-gallery-app/open-enterprise-apps.png)
 
-1. Wybierz pozycję **Nowa aplikacja**.
 
-    ![Nowa aplikacja](media/add-application-portal/new-application.png)
+3. Aby dodać aplikację galerii do dzierżawy, wybierz pozycję **Nowa aplikacja**.
 
-1. W obszarze **Dodaj z galerii**w polu wyszukiwania wprowadź nazwę aplikacji, którą chcesz dodać. 
+    ![Wybierz pozycję Nowa aplikacja, aby dodać aplikację galerii do swojej dzierżawy](media/add-gallery-app/new-application.png)
 
-    ![Wyszukiwanie według nazwy lub kategorii](media/add-application-portal/categories.png)
+ 4. Przejdź do nowego środowiska w wersji zapoznawczej galerii: na transparencie w górnej części **strony Dodawanie aplikacji**wybierz link, który znajduje się w **tym miejscu, aby wypróbować nową i udoskonaloną galerię aplikacji**.
 
-1. Wybierz aplikację z wyników.
+5. Zostanie otwarte okienko **przeglądanie galerii usługi Azure AD** zawierające kafelki dla platform chmurowych, aplikacji lokalnych i polecanych aplikacji. Należy zauważyć, że aplikacje wymienione w sekcji **Polecane aplikacje** mają ikony wskazujące, czy obsługują one funkcję federacyjnego logowania jednokrotnego (SSO) i aprowizacji.
 
-1. Obowiązkowe W formularzu specyficznym dla aplikacji można edytować nazwę aplikacji, aby odpowiadała potrzebom organizacji.
+    ![Wyszukaj aplikację według nazwy lub kategorii](media/add-gallery-app/browse-gallery.png)
 
-1. Wybierz pozycję **Dodaj**. Zostanie otwarta strona **Przegląd** aplikacji.
+6. Przejrzyj galerię aplikacji, którą chcesz dodać, lub Wyszukaj aplikację, wprowadzając jej nazwę w polu wyszukiwania. Następnie wybierz aplikację z wyników. Obowiązkowe W formularzu można edytować nazwę aplikacji, aby odpowiadała potrzebom organizacji.
+
+    ![Pokazuje, jak dodać aplikację z galerii](media/add-gallery-app/create-application.png)
+
+7. Wybierz pozycję **Utwórz**. Zostanie wyświetlona strona wprowadzenia z opcjami konfigurowania aplikacji w organizacji.
 
 ## <a name="configure-user-sign-in-properties"></a>Konfigurowanie właściwości logowania użytkownika
 
 1. Wybierz pozycję **Właściwości** , aby otworzyć okienko właściwości do edycji.
 
-    ![Edytuj okienko właściwości](media/add-application-portal/edit-properties.png)
+    ![Edytuj okienko właściwości](media/add-gallery-app/edit-properties.png)
 
 1. Ustaw następujące opcje, aby określić, jak użytkownicy przypisani lub nieprzypisane do aplikacji mogą zalogować się do aplikacji, a użytkownik może zobaczyć aplikację w panelu dostępu.
 
@@ -80,7 +83,7 @@ Azure Active Directory (Azure AD) zawiera galerię zawierającą tysiące wstęp
 
        | Ustawienia właściwości aplikacji | | | Środowisko użytkowników nieprzypisanych | |
        |---|---|---|---|---|
-       | Włączono, aby użytkownicy mogli się zalogować? | Trzeba przypisać użytkownika? | Widoczne dla użytkowników? | Czy nieprzypisani użytkownicy mogą się logować? | Czy nieprzypisani użytkownicy widzą aplikację?* |
+       | Włączono, aby użytkownicy mogli się zalogować? | Wymagane przypisanie użytkownika? | Widoczne dla użytkowników? | Czy nieprzypisani użytkownicy mogą się logować? | Czy nieprzypisani użytkownicy widzą aplikację?* |
        | tak | tak | tak | nie  | nie   |
        | tak | tak | nie  | nie  | nie   |
        | tak | nie  | tak | tak | nie   |
@@ -94,7 +97,7 @@ Azure Active Directory (Azure AD) zawiera galerię zawierającą tysiące wstęp
 
 1. Aby użyć niestandardowego logo, Utwórz logo o 215 przez 215 pikseli i Zapisz je w formacie PNG. Następnie przejdź do swojego logo i przekaż go.
 
-    ![Zmienianie logo](media/add-application-portal/change-logo.png)
+    ![Zmienianie logo](media/add-gallery-app/change-logo.png)
 
 1. Gdy skończysz, wybierz pozycję **Zapisz**.
 

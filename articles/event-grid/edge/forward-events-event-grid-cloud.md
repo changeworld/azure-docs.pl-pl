@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: d73f64463d3e56d7bd2e59fcb719c6320cbc6321
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992355"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100652"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Samouczek: Przekazywanie zdarzeń do Event Grid chmury
 
@@ -102,7 +102,7 @@ Jeśli na przykład został utworzony temat o nazwie `testegcloudtopic` w region
    ```
 
    >[!NOTE]
-   > **EndpointUrl** określa, że adres URL tematu Event Grid w chmurze. **SasKey** odwołuje się do klucza tematu Event Grid w chmurze. Wartość w **temaciename** zostanie użyta do sygnatury wszystkich zdarzeń wychodzących do Event Grid. Może to być przydatne podczas ogłaszania w temacie domeny Event Grid. Aby uzyskać więcej informacji na temat domeny Event Grid, zobacz [domeny zdarzeń]] (.. /event-domains.md)
+   > **EndpointUrl** określa, że adres URL tematu Event Grid w chmurze. **SasKey** odwołuje się do klucza tematu Event Grid w chmurze. Wartość w **temaciename** zostanie użyta do sygnatury wszystkich zdarzeń wychodzących do Event Grid. Może to być przydatne podczas ogłaszania w temacie domeny Event Grid. Aby uzyskać więcej informacji na temat domeny Event Grid, zobacz [domeny zdarzeń](../event-domains.md)
 
     Na przykład:
   
@@ -198,5 +198,6 @@ Aby uzyskać informacje dotyczące wyświetlania zdarzeń dostarczonych przez te
 
 W tym samouczku opublikowano zdarzenie na krawędzi i przekazano je do Event Grid w chmurze platformy Azure. Teraz, gdy znasz podstawowe kroki, aby przekazywać do Event Grid w chmurze:
 
+* Aby rozwiązać problemy z używaniem Azure Event Grid na IoT Edge, zobacz [Przewodnik rozwiązywania problemów](troubleshoot.md).
 * Przekazuj zdarzenia do IoTHub, wykonując czynności opisane w tym [samouczku](forward-events-iothub.md)
 * Przekazuj zdarzenia do elementu webhook w chmurze, wykonując czynności opisane w tym [samouczku](pub-sub-events-webhook-cloud.md)

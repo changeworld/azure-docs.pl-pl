@@ -1,7 +1,7 @@
 ---
 title: Uczenie głębokie a uczenie maszynowe
 titleSuffix: Azure Machine Learning
-description: Poznaj uczenie głębokie i uczenie maszynowe oraz sposób, w jaki obydwa koncepcje odnoszą się do sztucznej analizy. Uczenie głębokie można stosować w scenariuszach takich jak wykrywanie oszustw, rozpoznawanie głosu i twarzy, analiza tonacji i prognozowanie szeregów czasowych.
+description: Dowiedz się, jak głębokie uczenie odnosi się do uczenia maszynowego i sztucznej analizy. Uczenie głębokie jest używane w scenariuszach takich jak wykrywanie oszustw, rozpoznawanie głosu & rozpoznawania twarzy, analiza tonacji i prognozowanie szeregów czasowych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ffc71cf8b2f60568e3c4bc63a3751bc44be66e58
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123143"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063139"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Uczenie głębokie a uczenie maszynowe
 
@@ -24,7 +24,7 @@ Ten artykuł pomaga porównać głębokie uczenie i uczenie maszynowe. Dowiesz s
 
 ![Diagram relacji: AI a uczenie maszynowe a uczenie głębokie](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
 
-Rozważ następujące definicje, aby zrozumieć głębokie uczenie i uczenie maszynowe a PLIKÓW
+Rozważ następujące definicje, aby zrozumieć głębokie uczenie i uczenie maszynowe a AI:
 
 - **Uczenie głębokie** to podzestaw uczenia maszynowego, który jest oparty na sztucznych sieciach neuronowych. _Proces uczenia_ jest _głęboki_ , ponieważ struktura sztucznych sieci neuronowych składa się z wielu warstw danych wejściowych, wyjściowych i ukrytych. Każda warstwa zawiera jednostki, które przekształcają dane wejściowe w informacje, które następne warstwy mogą używać dla pewnego zadania predykcyjnego. Dzięki tej strukturze komputer może poznać swoje własne przetwarzanie danych.
 

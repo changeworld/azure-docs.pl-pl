@@ -1,7 +1,7 @@
 ---
 title: Zmień klucze dostępu do konta magazynu
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak zmienić klucze dostępu dla konta usługi Azure Storage używanego w obszarze roboczym. Azure Machine Learning używa konta usługi Azure Storage do przechowywania danych i modeli. W przypadku ponownego wygenerowania klucza dostępu dla konta magazynu należy zaktualizować Azure Machine Learning, aby użyć nowych kluczy.
+description: Dowiedz się, jak zmienić klucze dostępu dla konta usługi Azure Storage używanego w obszarze roboczym. Azure Machine Learning używa konta usługi Azure Storage do przechowywania danych i modeli.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: 6c87d4553c7b0fd34513d761558a06cd527c4e3b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 77cafceee35f00a81b2e07b59f0f4a13146fd906
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034965"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063318"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Ponowne generowanie kluczy dostępu do konta magazynu
 
@@ -64,9 +64,9 @@ for name, ds in datastores.items():
 
 Ten kod wyszukuje wszystkie zarejestrowane magazyny danych korzystające z usługi Azure Storage i wyświetla następujące informacje:
 
-* Nazwa magazynu danych: Nazwa magazynu danych, w ramach którego zarejestrowano konto magazynu.
-* Nazwa konta magazynu: Nazwa konta usługi Azure Storage.
-* Wbudowane Kontener na koncie magazynu, który jest używany przez tę rejestrację.
+* Nazwa magazynu danych: Nazwa magazynów danych, w ramach którego zarejestrowano konto magazynu.
+* Nazwa konta magazynu: nazwa konta usługi Azure Storage.
+* Kontener: kontener na koncie magazynu, który jest używany przez tę rejestrację.
 
 Wskazuje również, czy magazyn danych jest przeznaczony dla obiektów blob platformy Azure, czy udziału plików platformy Azure, ponieważ istnieją różne metody ponownego rejestrowania każdego typu magazynu danych.
 
@@ -89,7 +89,7 @@ Aby zaktualizować Azure Machine Learning, aby użyć nowego klucza, wykonaj nas
         az login
         ```
 
-    1. Aby zaktualizować obszar roboczy pod kątem używania nowego klucza, użyj następującego polecenia. Zastąp `myworkspace` ciąg nazwą obszaru roboczego Azure Machine Learning i Zamień `myresourcegroup` na nazwę grupy zasobów platformy Azure, która zawiera obszar roboczy.
+    1. Aby zaktualizować obszar roboczy pod kątem używania nowego klucza, użyj następującego polecenia. Zastąp `myworkspace` nazwą obszaru roboczego Azure Machine Learning i Zastąp `myresourcegroup` nazwą grupy zasobów platformy Azure, która zawiera obszar roboczy.
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
@@ -119,8 +119,8 @@ Aby zaktualizować Azure Machine Learning, aby użyć nowego klucza, wykonaj nas
     
     ```
 
-    Ponieważ `overwrite=True` został określony, ten kod zastępuje istniejącą rejestrację i aktualizuje ją w celu użycia nowego klucza.
+    Ponieważ `overwrite=True` jest określony, ten kod zastępuje istniejącą rejestrację i aktualizuje ją w celu użycia nowego klucza.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat rejestrowania magazynów danych, [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) Zobacz odwołanie do klasy.
+Aby uzyskać więcej informacji na temat rejestrowania magazynów danych, zobacz informacje dotyczące klasy [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) .

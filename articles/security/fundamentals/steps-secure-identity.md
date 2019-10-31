@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 02a1c12957570f0e798c5abfd88562128ea1cf76
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053065"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101421"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości
 
@@ -175,21 +175,21 @@ Azure AD Identity Protection oferuje dwa ważne raporty, które należy monitoro
 
 Użytkownicy mogą dochodzić do nawigowania do witryny lub aplikacji sieci Web, które będą uzyskiwać dostęp do informacji o profilu i danych użytkownika, takich jak ich wiadomości e-mail. Złośliwy aktor może korzystać z uzyskanych uprawnień, które otrzymały w celu zaszyfrowania zawartości skrzynki pocztowej, i uzyskania dostępu do oprogramowania wymuszającego okup w celu odzyskania danych skrzynki pocztowej. [Administratorzy powinni przeglądać i przeprowadzać inspekcję](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) uprawnień określonych przez użytkowników.
 
-## <a name="step-5---enable-end-user-self-help"></a>Krok 5 — Włączanie samoobsługowej pomocy użytkownika końcowego
+## <a name="step-5---enable-end-user-self-service"></a>Krok 5 — Włączanie samoobsługowego użytkownika końcowego
 
-Tak dużo, jak to możliwe, należy zrównoważyć zabezpieczenia z wydajnością. W tych samych wierszach zbliżamy się do sposób myślenia, że tworzysz podstawę do zabezpieczeń w długim przebiegu, możesz usunąć tarcie z organizacji, zwiększając możliwości użytkowników, a pozostałe czujność. 
+Tak dużo, jak to możliwe, należy zrównoważyć zabezpieczenia z wydajnością. W tych samych wierszach zbliżamy się do sposób myślenia, że tworzysz podstawę do zabezpieczeń w długim przebiegu, możesz usunąć tarcie z organizacji, zwiększając możliwości użytkowników, a pozostałe czujność.
 
 ### <a name="implement-self-service-password-reset"></a>Implementowanie samoobsługowego resetowania hasła
 
-Funkcja samoobsługowego [resetowania haseł (SSPR)](../../active-directory/authentication/quickstart-sspr.md) na platformie Azure zapewnia administratorom IT prosty sposób, aby użytkownicy mogli resetować lub odblokowywać hasła lub konta bez interwencji administratora. System obejmuje szczegółowe raporty pozwalające śledzić, kiedy użytkownicy korzystają z systemu, oraz powiadomienia ostrzegające o jego nieprawidłowym użyciu lub nadużyciach związanych z zabezpieczeniami. 
+Funkcja samoobsługowego resetowania haseł w usłudze Azure AD [(SSPR)](../../active-directory/authentication/quickstart-sspr.md) umożliwia administratorom IT łatwe Resetowanie lub odblokowanie haseł lub kont bez pomocy technicznej ani interwencji administratora. System zawiera szczegółowe raporty, które są śledzone, gdy użytkownicy zresetują swoje hasła, wraz z powiadomieniami o alertach dotyczących nieprawidłowego lub nadużycia.
 
-### <a name="implement-self-service-group-management"></a>Implementowanie samoobsługowego zarządzania grupami
+### <a name="implement-self-service-group-and-application-access"></a>Implementowanie dostępu do grup i aplikacji samoobsługowej
 
-Usługa Azure AD umożliwia zarządzanie dostępem do zasobów przy użyciu grup zabezpieczeń i grup pakietu Office 365. Tymi grupami można zarządzać za pomocą właścicieli grup zamiast administratorów IT. Ta funkcja jest znana jako samoobsługowe [Zarządzanie grupami](../../active-directory/users-groups-roles/groups-self-service-management.md), dzięki czemu właściciele grup nie mają przypisanej roli administracyjnej do tworzenia grup i zarządzania nimi bez polegania na administratorach do obsługi swoich żądań.
+Usługa Azure AD zapewnia użytkownikom innym niż administratorzy zarządzanie dostępem do zasobów przy użyciu grup zabezpieczeń, grup usługi Office 365, ról aplikacji i katalogów pakietów dostępu.  [Samoobsługowe zarządzanie grupami](../../active-directory/users-groups-roles/groups-self-service-management.md) pozwala właścicielom grup zarządzać własnymi grupami bez konieczności przypisywania roli administracyjnej. Użytkownicy mogą również tworzyć grupy pakietu Office 365 i zarządzać nimi bez polegania na administratorach do obsługi swoich żądań, a nieużywane grupy wygasną automatycznie.  [Zarządzanie prawami w usłudze Azure AD](../../active-directory/governance/entitlement-management-overview.md) umożliwia dalsze delegowanie i widoczność przy użyciu kompleksowych przepływów pracy żądań dostępu oraz automatyczne wygaśnięcie.  Można delegować do użytkowników niebędących administratorami, możliwość konfigurowania własnych pakietów dostępu dla grup, zespołów, aplikacji i witryn usługi SharePoint Online, których są właścicielami, a także zasad niestandardowych dla osób, które są wymagane do zatwierdzenia dostępu, w tym konfigurowania pracownika Menedżerowie i partner firmy sponsorzy jako osoby zatwierdzające.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Zaimplementuj przeglądy dostępu usługi Azure AD
 
-Za pomocą [przeglądów dostępu w usłudze Azure AD](../../active-directory/governance/access-reviews-overview.md)można zarządzać członkostwem w grupach, dostępem do aplikacji dla przedsiębiorstw i przypisaniami ról uprzywilejowanych w celu zapewnienia, że utrzymujesz Standard zabezpieczeń, który nie zapewnia użytkownikom dostępu do dłuższych okresów czasu, gdy nie potrzebują go.
+[Przeglądy dostępu w usłudze Azure AD](../../active-directory/governance/access-reviews-overview.md)umożliwiają zarządzanie pakietami dostępu i członkostwem w grupach, dostępem do aplikacji przedsiębiorstwa oraz przypisaniami ról uprzywilejowanych w celu zapewnienia bezpieczeństwa.  Regularne nadzorowanie przez samych użytkowników, właściciele zasobów i inni recenzenci zapewniają, że użytkownicy nie zachowują dostępu przez dłuższy czas, gdy nie będą już potrzebne.
 
 ## <a name="summary"></a>Podsumowanie
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: b510b697fbf8b53e9e55e96f60b27967f90893f1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 3eec2d208e97cc33c318e4a45ae85074fbc2583c
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104622"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101613"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>Wyłączanie zasad sieciowych dla prywatnych punktów końcowych
 
@@ -20,7 +20,7 @@ Zasady sieciowe, takie jak sieciowe grupy zabezpieczeń (sieciowej grupy zabezpi
  
 W przypadku tworzenia prywatnego punktu końcowego przy użyciu portalu to ustawienie jest automatycznie wyłączone w ramach procesu tworzenia. Wdrożenie przy użyciu innych klientów wymaga dodatkowego kroku, aby zmienić to ustawienie. Można wyłączyć ustawienie za pomocą usługi Cloud Shell z poziomu Azure Portal lub lokalnych instalacji Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub użyć szablonów Azure Resource Manager.  
  
-W poniższych przykładach opisano, jak `PrivateEndpointNetworkPolicies` wyłączyć sieć wirtualną o nazwie *myVirtualNetwork* z *domyślną* podsiecią hostowaną w grupie zasobów o nazwie Moja *resourceName*.
+W poniższych przykładach opisano sposób wyłączania `PrivateEndpointNetworkPolicies` dla sieci wirtualnej o nazwie *myVirtualNetwork* z *domyślną* podsiecią hostowaną w grupie zasobów o nazwie Moja *resourceName*.
 
 ## <a name="using-azure-powershell"></a>Korzystanie z programu Azure PowerShell
 W tej sekcji opisano, jak wyłączyć zasady prywatnego punktu końcowego podsieci przy użyciu Azure PowerShell.
@@ -30,9 +30,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
   -Name "myVirtualNetwork" ` 
   -ResourceGroupName "myResourceGroup"  
    
-($virtualNetwork ` 
-  | Select -ExpandProperty subnets ` 
-  | Where-Object  {$_.Name -eq 'default'} ).PrivateEndpointNetworkPolicies = "Disabled" 
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq 'default'} ).PrivateEndpointNetworkPolicies = "Disabled" 
  
 $virtualNetwork | Set-AzVirtualNetwork 
 ```

@@ -7,15 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: a876269b2746a1065cee2639cfc5804aff0b3446
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: HT
+ms.date: 10/29/2019
+ms.openlocfilehash: 33302f3760cc750bfc41386aaf17368abc15ba5d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027698"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063286"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Korzystanie z zewnętrznych magazynów metadanych w usłudze Azure HDInsight
+
+Usługa HDInsight umożliwia przejęcie kontroli nad danymi i metadanymi przez wdrożenie kluczowych rozwiązań do przesyłania metadanych oraz baz danych zarządzania do zewnętrznych magazynów danych. Ta funkcja jest obecnie dostępna dla [Apache Hive metadanych](#custom-metastore), usługi [Apache Oozie](#apache-oozie-metastore) i [bazy danych Apache Ambari](#custom-ambari-db).
 
 Magazyn metadanych Apache Hive w usłudze HDInsight jest istotną częścią architektury Apache Hadoop. Magazyn metadanych to centralne repozytorium schematów, które może być używane przez inne narzędzia dostępu do danych Big Data, takie jak Apache Spark, Interactive Query (LLAP), Presto lub Apache świni. Usługa HDInsight używa Azure SQL Database jako magazyn metadanych Hive.
 
@@ -92,6 +94,10 @@ Oto kilka ogólnych magazyn metadanych Hive najlepszych rozwiązań dotyczących
 Apache Oozie to system koordynacji przepływu pracy, który zarządza zadaniami usługi Hadoop.  Usługa Oozie obsługuje zadania Hadoop dla platformy Apache MapReduce, trzody chlewnej, Hive i innych.  Oozie używa magazynu metadanych do przechowywania szczegółowych informacji o bieżących i zakończonych przepływach pracy. Aby zwiększyć wydajność podczas korzystania z programu Oozie, można użyć Azure SQL Database jako niestandardowego magazynu metadanych. Magazyn metadanych może także zapewnić dostęp do danych zadania Oozie po usunięciu klastra.
 
 Aby uzyskać instrukcje dotyczące tworzenia magazynu metadanych Oozie z Azure SQL Database, zobacz [Korzystanie z platformy Apache Oozie dla przepływów pracy](hdinsight-use-oozie-linux-mac.md).
+
+## <a name="custom-ambari-db"></a>Niestandardowa baza danych Ambari
+
+Aby użyć własnej zewnętrznej bazy danych z oprogramowaniem Apache Ambari w usłudze HDInsight, zobacz temat [Custom dataAmbari Database](hdinsight-custom-ambari-db.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

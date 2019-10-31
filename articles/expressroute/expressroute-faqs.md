@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 920419bf10634e8be15e05a89d547a5a9d1430b7
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: HT
+ms.openlocfilehash: 4dd4831d6437b7026459dc358455335dd0fa221b
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027783"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063104"
 ---
 # <a name="expressroute-faq"></a>Usługa ExpressRoute — często zadawane pytania
 
@@ -43,7 +43,7 @@ Nie. Możesz zakupić połączenie sieci VPN z dowolną szybkością od dostawcy
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Czy w przypadku skorzystania z obwodu usługi ExpressRoute o danej przepustowości czy można w razie potrzeby przeprowadzić szeregowanie do większej szybkości?
 
-Tak. Obwody usługi ExpressRoute są skonfigurowane tak, aby umożliwiały wielokrotne przekroczenie limitu przepustowości, który został pozyskany bez dodatkowych kosztów. Skontaktuj się z dostawcą usług, aby sprawdzić, czy obsługują tę funkcję. Nie jest to przez dłuższy czas i nie jest gwarantowane. 
+Tak. Obwody usługi ExpressRoute są skonfigurowane tak, aby umożliwiały wielokrotne przekroczenie limitu przepustowości, który został pozyskany bez dodatkowych kosztów. Skontaktuj się z dostawcą usług, aby sprawdzić, czy obsługują tę funkcję. Nie jest to przez dłuższy czas i nie jest gwarantowane.  Jeśli ruch przepływów przez bramę ExpressRoute, przepustowość dla jednostki SKU jest stała i nie można jej przełączać.
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Czy można jednocześnie używać tego samego połączenia sieci prywatnej z siecią wirtualną i innymi usługami platformy Azure?
 

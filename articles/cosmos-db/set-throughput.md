@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 4c25e8b93fe9bcce17189bd7b787eaf4c3885716
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: dcdc9c6a22f5d291b3773da02a79cc5ceebc3db1
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752489"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101459"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
@@ -28,7 +28,7 @@ Przepływność obsługiwana w kontenerze usługi Azure Cosmos jest zarezerwowan
 
 Ustawienie przedziału czasu obsługi administracyjnej w kontenerze to najczęściej używana opcja. Można elastycznie skalować przepływność dla kontenera przez zainicjowanie dowolnej ilości przepływności przy użyciu [jednostek żądań (jednostek ru)](request-units.md). 
 
-Przepływność obsługiwana w kontenerze usługi Azure Cosmos jest równomiernie rozłożona na wszystkie partycje logiczne kontenera. Nie można selektywnie określić przepływności dla partycji logicznych. Ponieważ co najmniej jedna partycja logiczna kontenera jest hostowana przez partycję fizyczną, partycje fizyczne należą wyłącznie do kontenera i obsługują przepływność zainicjowaną na tym kontenerze. 
+Przy założeniu, że dobrym kluczem partycji, który dystrybuuje partycje logiczne równomiernie między partycjami fizycznymi, przepływność jest również dystrybuowana równomiernie między wszystkimi partycjami logicznymi kontenera. Nie można selektywnie określić przepływności dla partycji logicznych. Ponieważ co najmniej jedna partycja logiczna kontenera jest hostowana przez partycję fizyczną, partycje fizyczne należą wyłącznie do kontenera i obsługują przepływność zainicjowaną na tym kontenerze. 
 
 Jeśli obciążenie uruchomione na partycji logicznej zużywa więcej niż przepływność, która została przypisana do tej partycji logicznej, liczba operacji jest ograniczona. Po wystąpieniu ograniczenia szybkości można zwiększyć zainicjowaną przepływność dla całego kontenera lub wykonać operację ponownie. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [partycje logiczne](partition-data.md).
 

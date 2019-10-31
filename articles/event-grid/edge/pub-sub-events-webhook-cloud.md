@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 86c0fe8b0846350f74c90dfbd229510d28ce9499
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 5fb6cab4bfeea4308873210fb5f9122b37b61dcd
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992225"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100324"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Samouczek: publikowanie, subskrybowanie zdarzeń w chmurze
 
@@ -198,6 +198,7 @@ Możesz wyświetlić zdarzenie dostarczone w Azure Portal w obszarze opcji **mon
 
 W tym samouczku opisano tworzenie tematu, subskrypcji i opublikowanych zdarzeń usługi Event Grid. Teraz, gdy znasz podstawowe kroki, zobacz następujące artykuły:
 
+* Aby rozwiązać problemy z używaniem Azure Event Grid na IoT Edge, zobacz [Przewodnik rozwiązywania problemów](troubleshoot.md).
 * Utwórz/zaktualizuj subskrypcję za pomocą [filtrów](advanced-filtering.md).
 * Konfiguracja trwałości modułu Event Grid w systemie [Linux](persist-state-linux.md) lub [Windows](persist-state-windows.md)
 * Postępuj zgodnie z [dokumentacją](configure-client-auth.md) , aby skonfigurować uwierzytelnianie klienta

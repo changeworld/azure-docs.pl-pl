@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/30/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3f3d7eb0fe544316aec1ce1ece45b2c7c1d9085
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: a8d6297a32cd0f85cf354a93bfdac72cbad9603d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694715"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062872"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Samouczek: Dodawanie aplikacji lokalnej dla dostępu zdalnego przy użyciu serwera proxy aplikacji w Azure Active Directory
 
@@ -97,9 +97,9 @@ Zezwól na dostęp do następujących adresów URL:
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikacja między łącznikiem a usługą serwera proxy aplikacji w chmurze |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Na platformie Azure są wykorzystywane te adresy URL do weryfikowania certyfikatów. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>@no__t — 0.microsoftonline-p.com<br>@no__t — 0.msauth.net<br>@no__t — 0.msauthimages.net<br>@no__t — 0.msecnd.net<br>@no__t — 0.msftauth.net<br>@no__t — 0.msftauthimages.net<br>@no__t — 0.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Łącznik używa tych adresów URL podczas procesu rejestracji. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Łącznik używa tych adresów URL podczas procesu rejestracji. |
 
-Można zezwolić na połączenia z \*.msappproxy.net i \*.servicebus.windows.net, Jeśli zapora lub serwer proxy umożliwia skonfigurowanie list dozwolonych DNS. W przeciwnym razie musisz zezwolić na dostęp do [zakresów adresów IP i tagów usług platformy Azure — chmury publicznej](https://www.microsoft.com/download/details.aspx?id=56519). Zakresy adresów IP są aktualizowane co tydzień.
+Można zezwolić na połączenia z \*. msappproxy.net i \*. servicebus.windows.net, Jeśli zapora lub serwer proxy umożliwia skonfigurowanie list dozwolonych DNS. W przeciwnym razie musisz zezwolić na dostęp do [zakresów adresów IP i tagów usług platformy Azure — chmury publicznej](https://www.microsoft.com/download/details.aspx?id=56519). Zakresy adresów IP są aktualizowane co tydzień.
 
 ## <a name="install-and-register-a-connector"></a>Instalowanie i rejestrowanie łącznika
 
@@ -142,7 +142,7 @@ Aby sprawdzić, czy łącznik został poprawnie zainstalowany i zarejestrowany:
 1. W lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **serwer proxy aplikacji** w sekcji **Zarządzanie** . Na stronie widać wszystkie łączniki i grupy łączników.
 1. Wyświetl łącznik, aby sprawdzić jego szczegóły. Łączniki powinny być domyślnie rozwinięte. Jeśli łącznik, który chcesz wyświetlić, nie jest rozwinięty, rozwiń łącznik, aby wyświetlić szczegóły. Zielona ikona oznacza, że łącznik jest aktywny i może łączyć się z usługą. Jednak nawet wtedy problem z siecią może uniemożliwiać łącznikowi odbieranie wiadomości.
 
-    ![Łączniki serwer proxy aplikacji usługi Azure AD platformy Azure](./media/application-proxy-connectors/app-proxy-connectors.png)
+    ![Łączniki serwer proxy aplikacji usługi Azure AD platformy Azure](./media/application-proxy-add-on-premises-application/app-proxy-connectors.png)
 
 Aby uzyskać pomoc dotyczącą instalowania łącznika, zobacz [problem z instalowaniem łącznika serwera proxy aplikacji](application-proxy-connector-installation-problem.md).
 
@@ -155,7 +155,7 @@ Aby sprawdzić, czy łącznik został poprawnie zainstalowany i zarejestrowany:
    - **Łącznik serwera proxy aplikacji usługi Microsoft AAD** umożliwia łączność.
    - **Aktualizator łączników serwera proxy aplikacji usługi Microsoft AAD** to automatyczna usługa aktualizacji. Sprawdza ona dostępność nowych wersji łącznika i aktualizuje go zgodnie z potrzebami.
 
-     ![Usługi łącznika serwera proxy aplikacji — zrzut ekranu](./media/application-proxy-enable/app_proxy_services.png)
+     ![Usługi łącznika serwera proxy aplikacji — zrzut ekranu](./media/application-proxy-add-on-premises-application/app_proxy_services.png)
 
 1. Jeśli stan usług nie jest **uruchomiony**, kliknij prawym przyciskiem myszy, aby wybrać poszczególne usługi, a następnie wybierz polecenie **Uruchom**.
 
@@ -164,20 +164,20 @@ Aby sprawdzić, czy łącznik został poprawnie zainstalowany i zarejestrowany:
 Po przygotowaniu środowiska i zainstalowaniu łącznika możemy dodać aplikacje lokalne do usługi Azure AD.  
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) jako administrator.
-1. W lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
-1. Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Nowa aplikacja**.
-1. Wybierz **aplikację lokalną**.  
-1. W sekcji **Dodawanie własnej aplikacji lokalnej** podaj następujące informacje o aplikacji:
+2. W lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
+3. Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Nowa aplikacja**.
+4. W sekcji **aplikacje lokalne** wybierz pozycję **Dodaj aplikację lokalną**.
+5. W sekcji **Dodawanie własnej aplikacji lokalnej** podaj następujące informacje o aplikacji:
 
     | Pole | Opis |
     | :---- | :---------- |
     | **Nazwa** | Nazwa aplikacji, która będzie wyświetlana na panelu dostępu oraz w witrynie Azure Portal. |
-    | **Wewnętrzny adres URL** | Ten adres URL umożliwia dostęp do aplikacji w sieci prywatnej. Możesz wprowadzić określoną ścieżkę na serwerze zaplecza, która zostanie opublikowana, podczas gdy pozostała część serwera pozostanie nieopublikowana. W ten sposób możesz opublikować wiele lokacji jako różne aplikacje na tym samym serwerze, nadając im różne nazwy i reguły dostępu.<br><br>W przypadku publikowania ścieżki upewnij się, że zawiera ona wszystkie niezbędne obrazy, skrypty i arkusze stylów dla aplikacji. Na przykład jeśli aplikacja jest w sieci https: \//yourapp/App i używa obrazów znajdujących się w protokole https: \//yourapp/Media, należy opublikować https: \//yourapp/jako ścieżkę. Wewnętrzny adres URL nie musi być stroną docelową widoczną dla użytkowników. Aby uzyskać więcej informacji, zobacz [Set a custom home page for published apps (Ustawianie niestandardowej strony głównej dla opublikowanych aplikacji)](application-proxy-configure-custom-home-page.md). |
+    | **Wewnętrzny adres URL** | Ten adres URL umożliwia dostęp do aplikacji w sieci prywatnej. Możesz wprowadzić określoną ścieżkę na serwerze zaplecza, która zostanie opublikowana, podczas gdy pozostała część serwera pozostanie nieopublikowana. W ten sposób możesz opublikować wiele lokacji jako różne aplikacje na tym samym serwerze, nadając im różne nazwy i reguły dostępu.<br><br>W przypadku publikowania ścieżki upewnij się, że zawiera ona wszystkie niezbędne obrazy, skrypty i arkusze stylów dla aplikacji. Jeśli na przykład aplikacja jest w sieci https:\//yourapp/App i używa obrazów znajdujących się w protokole https:\//yourapp/Media, należy opublikować https:\//yourapp/jako ścieżkę. Wewnętrzny adres URL nie musi być stroną docelową widoczną dla użytkowników. Aby uzyskać więcej informacji, zobacz [Set a custom home page for published apps (Ustawianie niestandardowej strony głównej dla opublikowanych aplikacji)](application-proxy-configure-custom-home-page.md). |
     | **Zewnętrzny adres URL** | Ten adres umożliwia użytkownikom dostęp do aplikacji spoza sieci. Jeśli nie chcesz używać domyślnej domeny serwera proxy aplikacji, zobacz [Custom domains in Azure AD Application Proxy (Domeny niestandardowe na serwerze proxy aplikacji usługi Azure AD)](application-proxy-configure-custom-domain.md).|
     | **Wstępne uwierzytelnianie** | Sposób, w jaki serwer proxy aplikacji weryfikuje użytkowników przed udzieleniem im dostępu do aplikacji.<br><br>**Azure Active Directory** — serwer proxy aplikacji przekierowuje użytkowników do zalogowania się w usłudze Azure AD, co umożliwia uwierzytelnienie ich uprawnień do katalogu i aplikacji. Zaleca się pozostawienie tej opcji jako domyślnej, dzięki czemu można korzystać z funkcji zabezpieczeń usługi Azure AD, takich jak dostęp warunkowy i Multi-Factor Authentication. Usługa **Azure Active Directory** jest wymagana do monitorowania aplikacji za pomocą usługi Microsoft Cloud Application Security.<br><br>**Przekazywanie** — użytkownicy nie muszą uwierzytelniać się w usłudze Azure AD w celu uzyskania dostępu do aplikacji. Można jednak na zapleczu skonfigurować wymagania dotyczące uwierzytelniania. |
     | **Grupa łączników** | Łączniki umożliwiają przetwarzanie zdalnego dostępu do aplikacji, a grupy łączników pozwalają klasyfikować łączniki i aplikacje według regionu, sieci lub przeznaczenia. Jeśli nie masz jeszcze żadnych grup łączników, Twoja aplikacja zostanie przypisana do grupy **Domyślne**.<br><br>Jeśli nawiązywanie połączeń w aplikacji odbywa się za pomocą elementów WebSocket, wszystkie łączniki w grupie muszą być w wersji 1.5.612.0 lub nowszej.|
 
-1. W razie potrzeby skonfiguruj **dodatkowe ustawienia**. W przypadku większości aplikacji należy pozostawić domyślne wartości tych ustawień. 
+6. W razie potrzeby skonfiguruj **dodatkowe ustawienia**. W przypadku większości aplikacji należy pozostawić domyślne wartości tych ustawień. 
 
     | Pole | Opis |
     | :---- | :---------- |
@@ -188,7 +188,7 @@ Po przygotowaniu środowiska i zainstalowaniu łącznika możemy dodać aplikacj
     | **Przekształć adresy URL w nagłówkach** | Pozostaw wartość **Tak**, chyba że aplikacja wymaga, aby żądanie uwierzytelnienia zawierało nagłówek oryginalnego hosta. |
     | **Przekształć adresy URL w treści aplikacji** | Zachowaj tę wartość jako **nie** , chyba że stałe linki HTML z innymi aplikacjami lokalnymi i nie używaj domen niestandardowych. Aby uzyskać więcej informacji, zobacz [Link translation with Application Proxy (Przekształcanie linków przy użyciu serwera proxy aplikacji)](application-proxy-configure-hard-coded-link-translation.md).<br><br>Ustaw tę wartość na **Tak**, jeśli zamierzasz monitorować aplikację za pomocą usługi Microsoft Cloud App Security (MCAS). Aby uzyskać więcej informacji, zobacz [konfigurowanie monitorowania dostępu do aplikacji w czasie rzeczywistym przy użyciu Microsoft Cloud App Security i Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-1. Wybierz pozycję **Dodaj**.
+7. Wybierz pozycję **Dodaj**.
 
 ## <a name="test-the-application"></a>Testowanie aplikacji
 
@@ -201,11 +201,11 @@ Przed dodaniem użytkownika do aplikacji sprawdź, czy konto użytkownika ma ju�
 Aby dodać użytkownika testowego:
 
 1. Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz aplikację, którą chcesz przetestować.
-1. Wybierz pozycję **wprowadzenie**, a następnie wybierz pozycję **Przypisz użytkownika do testowania**.
-1. W obszarze **Użytkownicy i grupy**wybierz pozycję **Dodaj użytkownika**.
-1. W obszarze **Dodaj przypisanie**wybierz pozycję **Użytkownicy i grupy**. Zostanie wyświetlona sekcja **Użytkownicy i grupy** .
-1. Wybierz konto, które chcesz dodać.
-1. Wybierz pozycję **Wybierz**, a następnie wybierz pozycję **Przypisz**.
+2. Wybierz pozycję **wprowadzenie**, a następnie wybierz pozycję **Przypisz użytkownika do testowania**.
+3. W obszarze **Użytkownicy i grupy**wybierz pozycję **Dodaj użytkownika**.
+4. W obszarze **Dodaj przypisanie**wybierz pozycję **Użytkownicy i grupy**. Zostanie wyświetlona sekcja **Użytkownicy i grupy** .
+5. Wybierz konto, które chcesz dodać.
+6. Wybierz pozycję **Wybierz**, a następnie wybierz pozycję **Przypisz**.
 
 ### <a name="test-the-sign-on"></a>Testowanie logowania
 

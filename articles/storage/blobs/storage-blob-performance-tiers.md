@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: ac483a338b7d71142b89b13e41fc048346ac037f
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: e0d746f1b01784bc383c12543936f06dae66ca09
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802649"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063259"
 ---
 # <a name="azure-block-blob-storage-performance-tiers"></a>Warstwy wydajności bloku blokowych obiektów blob platformy Azure
 
@@ -28,7 +28,7 @@ Poniższe uwagi dotyczą różnych warstw wydajności:
 
 - Standardowa wydajność jest dostępna we wszystkich [regionach świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/services/?products=storage). Wydajność warstwy Premium jest dostępna w [wybranych regionach](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 - Wydajność Premium zapewnia zoptymalizowane ceny dla aplikacji o wysokich stawkach transakcji, aby [zmniejszyć łączny koszt magazynu](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/) dla tych obciążeń.
-- Wydajność warstwy Premium wymaga użycia kont usługi Block BLOB Storage, które obsługują blokowe obiekty blob i dołączanie obiektu BLOB.
+- Aby uzyskać wydajność warstwy Premium dla blokowych obiektów blob, należy użyć typu konta BlockBlobStorage.
 - Standardowa wydajność jest dostępna w przypadku kont Ogólnego przeznaczenia V1, Ogólnego przeznaczenia v2 i BLOB Storage.
 - Wydajność warstwy Premium i standardowa obsługuje [wysoką przepływność blokowych obiektów BLOB](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/). Blokowe obiekty blob o wysokiej przepływności są dostępne dla wydajności Premium o wartości większej niż 256 KiB. Blokowe obiekty blob o wysokiej przepływności są dostępne dla wydajności standardowej o rozmiarze większym niż 4.
 - Wydajność warstwy Premium jest obecnie dostępna tylko w przypadku magazynu lokalnie nadmiarowego (LRS).

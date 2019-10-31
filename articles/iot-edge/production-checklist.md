@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 610e0088fe97bdda1dce7f7391530c5128428b29
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529024"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73096971"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania IoT Edge w środowisku produkcyjnym
 
@@ -102,6 +102,8 @@ W przypadku wdrażania urządzeń z ograniczeniami z ograniczoną ilością dost
 #### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Nie Optymalizuj pod kątem wydajności na ograniczonych urządzeniach
 
 Centrum IoT Edge jest zoptymalizowane pod kątem wydajności domyślnie, dlatego próbuje przydzielić duże fragmenty pamięci. Ta konfiguracja może spowodować problemy ze stabilnością na mniejszych urządzeniach, takich jak Raspberry Pi. Jeśli wdrażasz urządzenia z ograniczonymi zasobami, możesz chcieć ustawić dla zmiennej środowiskowej **OptimizeForPerformance** **wartość false** w centrum IoT Edge. 
+
+Gdy **OptimizeForPerformance** ma **wartość true**, kierownik protokołu MQTT używa PooledByteBufferAllocator, które ma lepszą wydajność, ale przydziela więcej pamięci. Program przydzielający nie działa prawidłowo w systemach operacyjnych 32 bitowych lub na urządzeniach z małą ilością pamięci. Ponadto w przypadku optymalizacji pod kątem wydajności program RocksDb przydziela więcej pamięci dla roli jako dostawcy magazynu lokalnego. 
 
 Aby uzyskać więcej informacji, zobacz [problemy ze stabilnością urządzeń z ograniczoną](troubleshoot.md#stability-issues-on-resource-constrained-devices)ilością zasobów.
 

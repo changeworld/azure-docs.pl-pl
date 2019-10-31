@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 948712b684d1cd1b072862b7253d745f89b0cc56
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b4795eeb24d1d0ac373a700a6b60b8facec0e37d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244995"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064001"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scenariusze Azure Disk Encryption na maszynach wirtualnych z systemem Windows
 
@@ -26,15 +26,12 @@ Szyfrowanie dysków można stosować tylko do maszyn wirtualnych [obsługiwanych
 - [Wymagania zasady grupy](disk-encryption-overview.md#group-policy-requirements)
 - [Wymagania dotyczące magazynu kluczy szyfrowania](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-
-
 >[!IMPORTANT]
 > - Jeśli usługa Azure AD została wcześniej Azure Disk Encryption użyta w celu zaszyfrowania maszyny wirtualnej, należy użyć tej opcji, aby zaszyfrować maszynę wirtualną. Aby uzyskać szczegółowe informacje, zobacz [Azure Disk Encryption w usłudze Azure AD (w poprzedniej wersji)](disk-encryption-overview-aad.md) . 
 >
 > - Przed zaszyfrowaniem dysków należy [wykonać migawkę](snapshot-copy-managed-disk.md) i/lub utworzyć kopię zapasową. Kopie zapasowe zapewniają opcję odzyskiwania, jeśli podczas szyfrowania wystąpi nieoczekiwany błąd. Maszyny wirtualne z dyskami zarządzanymi wymagają utworzenia kopii zapasowej przed wystąpieniem szyfrowania. Po wykonaniu kopii zapasowej można użyć [polecenia cmdlet Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) , aby zaszyfrować dyski zarządzane przez określenie parametru-skipVmBackup. Aby uzyskać więcej informacji na temat tworzenia kopii zapasowych i przywracania szyfrowanych maszyn wirtualnych, zobacz [wykonywanie kopii zapasowych i przywracanie zaszyfrowanej maszyny wirtualnej platformy Azure](../../backup/backup-azure-vms-encryption.md). 
 >
 > - Szyfrowanie lub wyłączanie szyfrowania może spowodować ponowne uruchomienie maszyny wirtualnej.
-
 
 ## <a name="install-tools-and-connect-to-azure"></a>Instalowanie narzędzi i nawiązywanie połączenia z platformą Azure
 
@@ -139,7 +136,7 @@ W poniższej tabeli wymieniono Menedżer zasobów parametry szablonu dla istniej
 | vmName | Nazwa maszyny wirtualnej do uruchomienia operacji szyfrowania. |
 | Nazwakluczamagazynu | Nazwa magazynu kluczy, do którego należy przekazać klucz funkcji BitLocker. Można to zrobić za pomocą polecenia cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` lub interfejsu CLI platformy Azure `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | Nazwa grupy zasobów zawierającej Magazyn kluczy|
-|  keyEncryptionKeyURL | Adres URL klucza szyfrowania klucza w formacie https://@no__t -0keyvault-name&gt;.vault.azure.net/Key/&lt;key-Name @ no__t-3. Jeśli nie chcesz używać elementu KEK, pozostaw to pole puste. |
+|  keyEncryptionKeyURL | Adres URL klucza szyfrowania klucza w formacie https://&lt;nazwa magazynu kluczy&gt;. vault.azure.net/key/&lt;&gt;nazwy klucza. Jeśli nie chcesz używać elementu KEK, pozostaw to pole puste. |
 | liczba woluminów | Typ woluminu, na którym jest wykonywana operacja szyfrowania. Prawidłowe wartości to _system operacyjny_, _dane_i _wszystkie_. 
 | forceUpdateTag | Przekazuj unikatową wartość, taką jak identyfikator GUID za każdym razem, gdy operacja musi zostać wymuszona. |
 | resizeOSDisk | Należy zmienić rozmiar partycji systemu operacyjnego w celu zajmowania całego wirtualnego dysku twardego systemu operacyjnego przed podziałem woluminu systemowego. |
@@ -244,7 +241,8 @@ Szyfrowanie można wyłączyć przy użyciu Azure PowerShell, interfejsu wiersza
 Azure Disk Encryption nie działa w następujących scenariuszach, funkcjach i technologiach:
 
 - Szyfrowanie maszyny wirtualnej warstwy podstawowej lub maszyn wirtualnych utworzonych za pomocą metody tworzenia klasycznej maszyny wirtualnej.
-- Szyfrowanie maszyn wirtualnych z systemem Windows skonfigurowanych z oprogramowaniem opartym na oprogramowaniu RAID.
+- Szyfrowanie maszyn wirtualnych skonfigurowanych z oprogramowaniem opartym na oprogramowaniu RAID.
+- Szyfrowanie maszyn wirtualnych skonfigurowanych przy użyciu funkcji Bezpośrednie miejsca do magazynowania (S2D) lub Windows Server w wersjach przed 2016 skonfigurowanych przy użyciu funkcji miejsca do magazynowania systemu Windows.
 - Integracja z lokalnym systemem zarządzania kluczami.
 - Azure Files (udostępniony system plików).
 - Sieciowy system plików (NFS).

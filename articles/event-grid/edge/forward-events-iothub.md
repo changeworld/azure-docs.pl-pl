@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 772fccc96f757c6165238e4041ce98c17c647880
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992303"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098674"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Samouczek: Przekazywanie zdarzeń do IoTHub
 
@@ -160,7 +160,9 @@ Zaktualizuj trasę centrum brzegowego, aby przesłać dalej zdarzenia subskrypcj
 
 ## <a name="setup-iot-hub-route"></a>Konfiguracja trasy IoT Hub
 
-Zapoznaj się z [samouczkiem](../../iot-hub/tutorial-routing.md) dotyczącym routingu IoT Hub, aby skonfigurować trasę z Centrum IoT Hub, aby można było przeglądać zdarzenia przekazane z modułu Event Grid.
+Zapoznaj się z [samouczkiem dotyczącym routingu IoT Hub](../../iot-hub/tutorial-routing.md) , aby skonfigurować trasę z Centrum IoT Hub, aby można było wyświetlać zdarzenia przekazane z modułu Event Grid. Użyj `true`, aby wykonać zapytanie w celu zachowania prostego samouczka.  
+
+
 
 ## <a name="publish-an-event"></a>Publikowanie zdarzenia
 
@@ -205,6 +207,7 @@ Instrukcje dotyczące wyświetlania zdarzeń można znaleźć w [samouczku IoT H
 
 W tym samouczku opisano tworzenie tematu usługi Event Grid, subskrypcji centrum usługi Edge i opublikowanych zdarzeń. Teraz, gdy znasz podstawowe kroki umożliwiające przekazanie do centrum brzegowego, zobacz następujące artykuły:
 
+* Aby rozwiązać problemy z używaniem Azure Event Grid na IoT Edge, zobacz [Przewodnik rozwiązywania problemów](troubleshoot.md).
 * Używanie filtrów tras [centrum programu Edge](../../iot-edge/module-composition.md) do partycjonowania zdarzeń
 * Konfiguracja trwałości modułu Event Grid w systemie [Linux](persist-state-linux.md) lub [Windows](persist-state-windows.md)
 * Postępuj zgodnie z [dokumentacją](configure-client-auth.md) , aby skonfigurować uwierzytelnianie klienta

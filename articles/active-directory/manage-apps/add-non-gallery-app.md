@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8d8d6df16c5df7e29d8bb870c5d5eda6d8a2d3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 6656361fd4634c46cd5216b57eb8465536319f09
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477257"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062813"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Dodawanie aplikacji nieznajdującej się na liście (bez galerii) do organizacji usługi Azure AD
 
@@ -33,21 +33,36 @@ W tym artykule opisano sposób dodawania aplikacji spoza galerii do aplikacji dl
 ## <a name="add-a-non-gallery-application"></a>Dodawanie aplikacji spoza galerii
 
 1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com/) przy użyciu konta administratora platformy tożsamości firmy Microsoft.
-1. Wybierz pozycję **aplikacje** > dla przedsiębiorstw**Nowa aplikacja**.
-2. (Opcjonalne, ale zalecane) W polu wyszukiwania **Dodaj z galerii** wprowadź nazwę wyświetlaną aplikacji. Jeśli aplikacja pojawia się w wynikach wyszukiwania, wybierz ją i pomiń pozostałą część tej procedury.
-3. Wybierz pozycję **aplikacja**niebędąca galerią. Zostanie wyświetlona strona **Dodawanie własnej aplikacji** .
 
-   ![Dodawanie aplikacji](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-5. Wprowadź nazwę wyświetlaną dla nowej aplikacji.
-6. Wybierz pozycję **Dodaj**. Zostanie otwarta strona **Przegląd** aplikacji.
+2. Wybierz pozycję **aplikacje dla przedsiębiorstw** > **nową aplikację**.
+
+3. (Opcjonalne, ale zalecane) W polu wyszukiwania **Przejrzyj galerię usługi Azure AD** wprowadź nazwę wyświetlaną aplikacji. 
+
+4. Wybierz pozycję **Utwórz własną aplikację**. Zostanie wyświetlona strona **Tworzenie własnej aplikacji** .
+
+   ![Dodawanie aplikacji](media/add-non-gallery-app/create-your-own-application.png)
+
+5. Zacznij wpisywać nazwę wyświetlaną dla nowej aplikacji. Jeśli istnieją aplikacje galerii o podobnych nazwach, zostaną one wyświetlone na liście wyników wyszukiwania.
+
+   > [!NOTE]
+   > Jeśli to możliwe, zalecamy używanie wersji galerii aplikacji. Jeśli aplikacja, którą chcesz dodać, pojawia się w wynikach wyszukiwania, wybierz aplikację i pomiń pozostałą część tej procedury.
+
+6. W obszarze **co chcesz zrobić z aplikacją?** wybierz opcję **Zintegruj każdą inną aplikację, która nie znajduje się w galerii**. Ta opcja jest zwykle używana w przypadku aplikacji SAML i WS-karmione.
+
+   > [!NOTE]
+   > Pozostałe dwie opcje są używane w następujących scenariuszach:
+   >* **Skonfiguruj serwer proxy aplikacji dla bezpiecznego dostępu zdalnego do aplikacji lokalnej** otwiera stronę konfiguracji dla serwer proxy aplikacji usługi Azure AD i łączników platformy Azure.
+   >* **Zarejestrowanie aplikacji, nad którą pracujesz, aby zintegrować usługę z usługą Azure AD** , spowoduje otwarcie strony **rejestracje aplikacji** . Ta opcja jest zwykle używana w przypadku aplikacji OpenID Connect Connect.
+
+7. Wybierz pozycję **Utwórz**. Zostanie otwarta strona **Przegląd** aplikacji.
 
 ## <a name="configure-user-sign-in-properties"></a>Konfigurowanie właściwości logowania użytkownika
 
 1. Wybierz pozycję **Właściwości** , aby otworzyć okienko właściwości do edycji.
 
-    ![Edytuj okienko właściwości](media/add-application-portal/edit-properties.png)
+    ![Edytuj okienko właściwości](media/add-non-gallery-app/edit-properties.png)
 
-1. Ustaw następujące opcje, aby określić, jak użytkownicy przypisani lub nieprzypisane do aplikacji mogą zalogować się do aplikacji, a użytkownik może zobaczyć aplikację w panelu dostępu.
+2. Ustaw następujące opcje, aby określić, jak użytkownicy przypisani lub nieprzypisane do aplikacji mogą zalogować się do aplikacji, a użytkownik może zobaczyć aplikację w panelu dostępu.
 
     - Opcja **Włączono dla użytkowników w celu logowania się** określa, czy użytkownicy przypisani do aplikacji mogą się logować.
     - **Wymagane przypisanie użytkownika** określa, czy użytkownicy, którzy nie są przypisani do aplikacji, mogą się zalogować.
@@ -71,7 +86,7 @@ W tym artykule opisano sposób dodawania aplikacji spoza galerii do aplikacji dl
 
        | Ustawienia właściwości aplikacji | | | Środowisko użytkowników nieprzypisanych | |
        |---|---|---|---|---|
-       | Włączono, aby użytkownicy mogli się zalogować? | Trzeba przypisać użytkownika? | Widoczne dla użytkowników? | Czy nieprzypisani użytkownicy mogą się logować? | Czy nieprzypisani użytkownicy widzą aplikację?* |
+       | Włączono, aby użytkownicy mogli się zalogować? | Wymagane przypisanie użytkownika? | Widoczne dla użytkowników? | Czy nieprzypisani użytkownicy mogą się logować? | Czy nieprzypisani użytkownicy widzą aplikację?* |
        | tak | tak | tak | nie  | nie   |
        | tak | tak | nie  | nie  | nie   |
        | tak | nie  | tak | tak | nie   |
@@ -83,11 +98,11 @@ W tym artykule opisano sposób dodawania aplikacji spoza galerii do aplikacji dl
 
      *Czy użytkownik widzi aplikację w panelu dostępu i narzędziu do uruchamiania aplikacji usługi Office 365?
 
-1. Aby użyć niestandardowego logo, Utwórz logo o 215 przez 215 pikseli i Zapisz je w formacie PNG. Następnie przejdź do swojego logo i przekaż go.
+3. Aby użyć niestandardowego logo, Utwórz logo o 215 przez 215 pikseli i Zapisz je w formacie PNG. Następnie przejdź do swojego logo i przekaż go.
 
-    ![Zmienianie logo](media/add-application-portal/change-logo.png)
+    ![Zmienianie logo](media/add-non-gallery-app/change-logo.png)
 
-1. Gdy skończysz, wybierz pozycję **Zapisz**.
+4. Gdy skończysz, wybierz pozycję **Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
 

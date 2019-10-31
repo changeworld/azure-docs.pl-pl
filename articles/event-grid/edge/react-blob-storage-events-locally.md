@@ -9,12 +9,12 @@ ms.date: 10/02/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 851b5607ad5413cd1a594f788cb294ee7790e8eb
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a074abf494e155e0dc088d0db6af7eba0b3cf3c2
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043169"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100236"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Samouczek: reagowanie na zdarzenia Blob Storage w IoT Edge (wersja zapoznawcza)
 W tym artykule opisano sposób wdrażania Blob Storage platformy Azure w module IoT, który mógłby pełnić rolę Event Grid wydawcy do wysyłania zdarzeń dotyczących tworzenia obiektów blob i usuwania obiektów BLOB do Event Grid.  
@@ -167,7 +167,10 @@ W tej sekcji pokazano, jak wdrożyć moduł Blob Storage platformy Azure, który
 5. Kliknij pozycję **Zapisz**
 6. Kliknij przycisk **dalej** , aby przejść do sekcji trasy
 
- ### <a name="setup-routes"></a>Skonfiguruj trasy
+    > [!NOTE]
+    > Jeśli używasz maszyny wirtualnej platformy Azure jako urządzenia brzegowego, Dodaj regułę portu przychodzącego, aby zezwolić na ruch przychodzący na portach hosta używanych w tym samouczku: 4438, 5888, 8080 i 11002. Aby uzyskać instrukcje dotyczące dodawania reguły, zobacz [Jak otworzyć porty na maszynie wirtualnej](../../virtual-machines/windows/nsg-quickstart-portal.md).
+
+### <a name="setup-routes"></a>Skonfiguruj trasy
 
 Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejść do sekcji Przegląd
 
@@ -184,7 +187,7 @@ Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejś�
 
    Uruchomienie modułu na urządzeniu może potrwać kilka minut, a następnie zgłoszone z powrotem do IoT Hub. Odśwież stronę, aby zobaczyć zaktualizowany stan.
 
-## <a name="publish-created-and-deleted-events"></a>Publikuj utworzone i usunięte zdarzenia
+## <a name="publish-blobcreated-and-blobdeleted-events"></a>Publikuj zdarzenia BlobCreated i BlobDeleted
 
 1. Ten moduł automatycznie tworzy **MicrosoftStorage**tematu. Sprawdź, czy istnieje
     ```sh

@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 8e22bf53a81d94c5204a76c58b43fed63e32b136
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45cf7b7d9383de467f72769465a3ad382fe9d589
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803399"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064045"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Przydziały usługi Azure Cosmos DB
 
@@ -38,7 +38,7 @@ Po utworzeniu konta usługi Azure Cosmos w ramach subskrypcji możesz zarządza�
 
 Kontener Cosmos (lub udostępniona baza danych przepływności) musi mieć minimalną przepływność wynoszącą 400 jednostek ru. Wraz z rozwojem kontenera Minimalna obsługiwana przepływność zależy również od następujących czynników:
 
-* Minimalna przepływność, którą można ustawić dla kontenera, zależy od maksymalnej przepływności, która jest kiedykolwiek obsługiwana w kontenerze. Usługa obsługuje niższą przepływność kontenera do 10% zainicjowanej wartości maksymalnej. Na przykład jeśli przepustowość została zwiększona do 10000 jednostek ru, najniższa możliwa przepustowość zainicjowana to 1000 jednostek ru
+* Minimalna przepływność, którą można ustawić dla kontenera, zależy od maksymalnej przepływności, która jest kiedykolwiek obsługiwana w kontenerze. Na przykład jeśli przepustowość została zwiększona do 10000 jednostek ru, najniższa możliwa przepustowość zainicjowana to 1000 jednostek ru
 * Minimalna przepływność dla udostępnionej bazy danych przepływności zależy również od całkowitej liczby kontenerów utworzonych kiedykolwiek w udostępnionej bazie danych przepływności, mierzoną przy 100 jednostek ru na kontener. Jeśli na przykład utworzono pięć kontenerów w ramach udostępnionej bazy danych przepływności, przepływność musi wynosić co najmniej 500 jednostek ru
 
 Bieżącą i minimalną przepływność kontenera lub bazy danych można pobrać z Azure Portal lub zestawów SDK. Aby uzyskać więcej informacji, zobacz temat [udostępnianie przepływności na kontenerach i bazach danych](set-throughput.md). 

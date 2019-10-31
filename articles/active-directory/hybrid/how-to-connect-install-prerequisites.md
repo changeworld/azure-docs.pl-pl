@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2db8d5881b5847adca4fffb72c0a678e1ec550c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3a1906b8ac281620381176a2a11dff3841069f69
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596327"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062669"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące Azure AD Connect
 Ten temat zawiera opis wymagań wstępnych i wymagania sprzętowe Azure AD Connect.
@@ -85,7 +85,7 @@ Aby dowiedzieć się więcej, zobacz:
 * Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych tożsamości. Domyślnie jest zainstalowana SQL Server 2012 Express LocalDB (wersja uproszczona SQL Server Express). SQL Server Express ma limit rozmiaru 10 GB, który umożliwia zarządzanie około 100 000 obiektów. Aby zarządzać większą ilością obiektów katalogu, należy wskazać Kreator instalacji innej instalacji SQL Server. Typ instalacji SQL Server może mieć wpływ na [wydajność Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
 * W przypadku korzystania z innej instalacji SQL Server są stosowane następujące wymagania:
   * Azure AD Connect obsługuje wszystkie wersje Microsoft SQL Server z 2008 R2 (z najnowszym dodatkiem Service Pack) do SQL Server 2019. Microsoft Azure SQL Database **nie jest obsługiwana** jako baza danych.
-  * Musisz użyć sortowania SQL bez uwzględniania wielkości liter. Te sortowania są identyfikowane za pomocą \_CI_ w ich nazwie. Nie jest **obsługiwane** użycie sortowania z uwzględnieniem wielkości liter, identyfikowane przez \_CS_ w ich nazwie.
+  * Musisz użyć sortowania SQL bez uwzględniania wielkości liter. Te sortowania są identyfikowane za pomocą \_CI_ w ich imieniu. Nie jest **obsługiwane** użycie sortowania z uwzględnieniem wielkości liter, identyfikowane przez \_cs_ w ich imieniu.
   * Można korzystać tylko z jednego aparatu synchronizacji na wystąpienie bazy danych SQL. Udostępnianie wystąpienia programu SQL Server za pomocą narzędzia synchronizacji FIM/MIM, narzędzia DirSync lub Azure AD Sync **nie jest obsługiwane** .
 
 ### <a name="accounts"></a>Konta
@@ -221,7 +221,7 @@ W poniższej tabeli przedstawiono minimalne wymagania dotyczące komputera synch
 | 300000 – 600 000 |1,6 GHz |32 GB |450 GB |
 | Więcej niż 600 000 |1,6 GHz |32 GB |500 GB |
 
-Poniżej przedstawiono minimalne wymagania dotyczące komputerów z uruchomionymi AD FS lub serwerami aplikacji sieci Web:
+Poniżej przedstawiono minimalne wymagania dotyczące komputerów z uruchomionymi AD FS lub serwerami proxy aplikacji sieci Web:
 
 * Procesor CPU: dwurdzeniowy 1,6 GHz lub szybszy
 * Pamięć: 2 GB lub więcej

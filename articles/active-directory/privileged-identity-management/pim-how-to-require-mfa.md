@@ -14,18 +14,18 @@ ms.date: 08/31/2018
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12b6cd17fac77361fa20d3b3e048e64228a2ed3d
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 2aa58c354198e648227b9b0b43d1f60546f87d32
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809012"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063062"
 ---
 # <a name="multi-factor-authentication-and-privileged-identity-management"></a>Uwierzytelnianie wieloskładnikowe i Privileged Identity Management
 
 Zalecamy wymaganie uwierzytelniania wieloskładnikowego (MFA) dla wszystkich administratorów. Zmniejsza to ryzyko ataków spowodowanych przez złamane hasło.
 
-Możesz wymagać, aby użytkownicy ukończyli wyzwanie uwierzytelniania wieloskładnikowego podczas logowania. Możesz również wymagać, aby użytkownicy ukończyli wyzwanie uwierzytelniania wieloczynnikowego, gdy aktywują rolę w usłudze Azure Active Directory (Azure AD) Privileged Identity Management (PIM). W ten sposób, jeśli użytkownik nie wykonał żądania uwierzytelniania wieloczynnikowego podczas logowania, zostanie wyświetlony monit, aby to zrobić przez Privileged Identity Management.
+Możesz wymagać, aby użytkownicy ukończyli wyzwanie usługi uwierzytelniania wieloskładnikowego podczas logowania. Możesz również wymagać, aby użytkownicy ukończyli wyzwanie usługi uwierzytelnianie wieloskładnikowe, gdy aktywują rolę w usłudze Azure Active Directory (Azure AD) Privileged Identity Management (PIM). W ten sposób, jeśli użytkownik nie wykonał żądania uwierzytelniania wieloskładnikowego po zalogowaniu się, zostanie wyświetlony monit o wykonanie tej czynności przez Privileged Identity Management.
 
 > [!IMPORTANT]
 > Teraz usługa Azure Multi-Factor Authentication działa tylko z kontami służbowymi, a nie kontami osobistymi firmy Microsoft (zazwyczaj konta osobistego, które jest używane do logowania się do usług firmy Microsoft, takich jak Skype, Xbox lub Outlook.com). Z tego względu każdy użytkownik korzystający z konta osobistego nie może być uprawnionym administratorem, ponieważ nie może używać uwierzytelniania wieloskładnikowego w celu aktywowania ich ról. Jeśli Ci użytkownicy muszą kontynuować zarządzanie obciążeniami przy użyciu konto Microsoft, w razie potrzeby Podnieś poziom uprawnień do stałych administratorów.

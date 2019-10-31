@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b472d36f17853549f2bfc773bdcb65faf0421b3f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 9e51249bdcfa3cf506700cd3032b1ca39b773d82
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718986"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73102363"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Zapewnianie uwierzytelniania Key Vault przy użyciu zasad kontroli dostępu
 
@@ -83,7 +83,7 @@ Można dodać wiele aplikacji i użytkowników do grupy usługi Azure AD, a nast
 Aby znaleźć identyfikator objectId grupy usługi Azure AD za pomocą interfejsu wiersza polecenia platformy Azure, użyj polecenie [AZ AD Group list](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) . Ze względu na dużą liczbę grup, które mogą znajdować się w organizacji, należy również podać ciąg wyszukiwania do parametru `--display-name`.
 
 ```azurecli-interactive
-az ad group list --displayname <search-string>
+az ad group list --display-name <search-string>
 ```
 Identyfikator objectId zostanie zwrócony w formacie JSON:
 
@@ -111,7 +111,7 @@ Id                    : 1cef38c4-388c-45a9-b5ae-3d88375e166a
 
 Możesz również dodać pojedynczego użytkownika do zasad kontroli dostępu magazynu kluczy. **Nie jest to zalecane.** Zamiast tego zachęcamy do dodawania użytkowników do grupy usługi Azure AD i dodawania grupy do zasad.
 
-Jeśli jednak chcesz znaleźć użytkownika przy użyciu interfejsu wiersza polecenia platformy Azure, użyj [AZ AD User show](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-show) , przekazując adres e-mail użytkownika do parametru `--id`.
+Jeśli mimo to chcesz znaleźć użytkownika przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenie [AZ AD User show](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-show) , przekazując adres e-mail użytkownika do parametru `--id`.
 
 
 ```azurecli-interactive
@@ -127,7 +127,7 @@ Identyfikator obiektu użytkownika zostanie zwrócony w danych wyjściowych:
   ...
 ```
 
-Aby znaleźć użytkownika z Azure PowerShell, należy użyć polecenia cmdlet [Get-AzADUser](/powershell/module/az.resources/get-azaduser?view=azps-2.7.0) , przekazując adres e-mail użytkowników do parametru `-UserPrincipalName`.
+Aby znaleźć użytkownika z Azure PowerShell, należy użyć polecenia cmdlet [Get-AzADUser](/powershell/module/az.resources/get-azaduser?view=azps-2.7.0) , przekazując adres e-mail użytkownika do parametru `-UserPrincipalName`.
 
 ```azurepowershell-interactive
  Get-AzAdUser -UserPrincipalName <email-address-of-user>
@@ -203,7 +203,7 @@ Aby znaleźć identyfikatory obiektów użytkowników, wykonaj kroki opisane w s
 
 Teraz Dodaj identyfikatory obiektów do nowo utworzonej grupy usługi Azure AD.
 
-Używając interfejsu wiersza polecenia platformy Azure, użyj [elementu członkowskiego AZ AD Group Add](/cli/azure/ad/group/member?view=azure-cli-latest#az-ad-group-member-add), przekazując identyfikator objectid do parametru `--member-id`.
+Za pomocą interfejsu wiersza polecenia platformy Azure, użyj [elementu członkowskiego AZ AD Group Add](/cli/azure/ad/group/member?view=azure-cli-latest#az-ad-group-member-add), przekazując identyfikator objectid do parametru `--member-id`.
 
 
 ```azurecli-interactive

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a77cdcf332d450b2d3d9219ebfbaed2f799e7e6d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 81c2c2af78f5f066e1b27e14fa774df04d7c5868
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991185"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063982"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Modelowanie danych w wersji zapoznawczej Azure Time Series Insights
 
@@ -29,7 +29,7 @@ Aby dowiedzieć się więcej na temat sposobu korzystania z aktualizacji, przecz
 
 1. Przejdź do panelu selektora modelu szeregów czasowych, a następnie wybierz pozycję **typy** z menu. Zwiń panel, aby skoncentrować się na typach modelu szeregów czasowych.
 
-    [okienko!["typy"](media/v2-update-how-to-tsm/portal-one.png)](media/v2-update-how-to-tsm/portal-one.png#lightbox)
+    [okienko !["typy"](media/v2-update-how-to-tsm/portal-one.png)](media/v2-update-how-to-tsm/portal-one.png#lightbox)
 
 1. Wybierz pozycję **+ Dodaj**.
 1. Wprowadź wszystkie szczegóły odnoszące się do typów, a następnie wybierz pozycję **Utwórz**. Ta akcja tworzy typy w środowisku.
@@ -64,7 +64,7 @@ Aby dowiedzieć się więcej na temat sposobu korzystania z aktualizacji, przecz
 
 1. Przejdź do panelu selektora modelu szeregów czasowych, a następnie wybierz **hierarchie** z menu. Zwiń panel, aby skoncentrować się na hierarchiach modelu szeregów czasowych.
 
-    [okienko "hierarchie"![](media/v2-update-how-to-tsm/portal-six.png)](media/v2-update-how-to-tsm/portal-six.png#lightbox)
+    [okienko "hierarchie" ![](media/v2-update-how-to-tsm/portal-six.png)](media/v2-update-how-to-tsm/portal-six.png#lightbox)
 
 1. Wybierz pozycję **+ Dodaj**.
 
@@ -106,7 +106,7 @@ Aby dowiedzieć się więcej na temat sposobu korzystania z aktualizacji, przecz
 
 1. Przejdź do panelu selektora modelu szeregów czasowych, a następnie wybierz pozycję **wystąpienia** z menu. Zwiń panel, aby skoncentrować się na wystąpieniach modelu szeregów czasowych.
 
-    [okienko "wystąpienia"![](media/v2-update-how-to-tsm/portal-thirteen.png)](media/v2-update-how-to-tsm/portal-thirteen.png#lightbox)
+    [okienko "wystąpienia" ![](media/v2-update-how-to-tsm/portal-thirteen.png)](media/v2-update-how-to-tsm/portal-thirteen.png#lightbox)
 
 1. Wybierz pozycję **Dodaj**.
 

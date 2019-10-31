@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 2e5eaed40c954df5e7c731bb3fbd5d9424ea9b97
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: HT
+ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053298"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064105"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnozowanie i rozwiązywanie problemów podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 
@@ -105,6 +105,7 @@ Ten błąd występuje, jeśli projekt Azure Functions (lub dowolny projekt, do k
 Aby obejść tę sytuację, Usuń ręczne odwołanie do narzędzia NuGet, które zostało dodane i pozwól, aby Azure Cosmos DB odwołanie do zestawu SDK przez pakiet rozszerzenia Cosmos DB Azure Functions.
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Zmienianie interwału sondowania funkcji platformy Azure na potrzeby wykrywania zmian
+
 Zgodnie z wcześniejszym opisem w przypadku, gdy zmiany nie zostaną [odebrane](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), funkcja platformy Azure będzie w stanie uśpienia przez konfigurowalny czas (domyślnie 5 sekund) przed sprawdzeniem nowych zmian (aby uniknąć używania wysokiego poziomu ru). Ten czas uśpienia można skonfigurować za pomocą ustawienia `FeedPollDelay/feedPollDelay` w [konfiguracji](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) wyzwalacza (oczekiwana jest wartość w milisekundach).
 
 ## <a name="next-steps"></a>Następne kroki

@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 6639b8f4d947720db38a6b366c47700a56154af3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992277"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100334"
 ---
 # <a name="persist-state-in-linux"></a>Stan utrwalania w systemie Linux
 
@@ -40,7 +40,7 @@ W tym artykule przedstawiono procedurę wdrażania modułu Event Grid z trwało�
 ```
 
 >[!IMPORTANT]
->Nie zmieniaj drugiej części wartości powiązania. Wskazuje konkretną lokalizację w module. W przypadku modułu Event Grid w systemie Linux musi być **/App/Metadata**.
+>Nie zmieniaj drugiej części wartości powiązania. Wskazuje konkretną lokalizację w module. W przypadku modułu Event Grid w systemie Linux musi być **/App/metadataDb**.
 
 Na przykład następująca konfiguracja spowoduje utworzenie woluminu **egmetadataDbVol** , gdzie metadane zostaną utrwalone.
 

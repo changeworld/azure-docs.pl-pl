@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa42c63809472e1681a820031e48fe4f86fb584
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756502"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062522"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurowanie domen niestandardowych za pomocą usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -77,38 +77,40 @@ Aby uzyskać bardziej szczegółowe instrukcje, zobacz [Dodawanie niestandardowe
 
 Aby opublikować aplikację za pomocą serwera proxy aplikacji z domeną niestandardową:
 
-1. W przypadku nowej aplikacji w obszarze Azure Active Directory wybierz pozycję **aplikacje dla przedsiębiorstw** na lewym pasku nawigacyjnym, wybierz pozycję **Nowa aplikacja**, a następnie wybierz pozycję **aplikacja lokalna**. 
+1. W przypadku nowej aplikacji w obszarze Azure Active Directory wybierz pozycję **aplikacje dla przedsiębiorstw** na lewym pasku nawigacyjnym. Wybierz pozycję **Nowa aplikacja**. W sekcji **aplikacje lokalne** wybierz pozycję **Dodaj aplikację lokalną**. 
    
    W przypadku aplikacji już znajdującej się w **aplikacjach dla przedsiębiorstw**wybierz ją z listy, a następnie wybierz pozycję **serwer proxy aplikacji** w lewym okienku nawigacji. 
 
-1. Na stronie **serwer proxy aplikacji** w polu **wewnętrzny adres URL** wprowadź wewnętrzny adres URL aplikacji. 
+2. Na stronie Ustawienia serwera proxy aplikacji wprowadź **nazwę** , jeśli dodajesz własną aplikację lokalną.
+
+3.  W polu **wewnętrzny adres URL** wprowadź wewnętrzny adres URL aplikacji.
    
-1. W polu **zewnętrzny adres URL** rozwiń listę i wybierz domenę niestandardową, której chcesz użyć.
+4. W polu **zewnętrzny adres URL** rozwiń listę i wybierz domenę niestandardową, której chcesz użyć.
    
-1. Wybierz pozycję **Zapisz**.
+5. Wybierz pozycję **Dodaj**.
    
    ![Wybierz domenę niestandardową](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-1. Jeśli domena ma już certyfikat, w polu **certyfikat** zostaną wyświetlone informacje o certyfikacie. W przeciwnym razie wybierz pole **certyfikatu** . 
+6. Jeśli domena ma już certyfikat, w polu **certyfikat** zostaną wyświetlone informacje o certyfikacie. W przeciwnym razie wybierz pole **certyfikatu** . 
    
    ![Kliknij, aby przekazać certyfikat](./media/application-proxy-configure-custom-domain/certificate.png)
    
-1. Na stronie **certyfikat protokołu SSL** przejdź do pliku certyfikatu PFX i wybierz go. Wprowadź hasło certyfikatu i wybierz pozycję **Przekaż certyfikat**. Więcej informacji o certyfikatach znajduje się w sekcji [certyfikaty dla domen niestandardowych](#certificates-for-custom-domains) .
+7. Na stronie **certyfikat protokołu SSL** przejdź do pliku certyfikatu PFX i wybierz go. Wprowadź hasło certyfikatu i wybierz pozycję **Przekaż certyfikat**. Więcej informacji o certyfikatach znajduje się w sekcji [certyfikaty dla domen niestandardowych](#certificates-for-custom-domains) .
    
    ![Przekaż certyfikat](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
    > Domena niestandardowa wymaga tylko jednokrotnego przekazania certyfikatu. Następnie przekazany certyfikat jest automatycznie stosowany podczas korzystania z domeny niestandardowej dla innych aplikacji.
    
-1. W przypadku dodania certyfikatu na stronie **serwer proxy aplikacji** wybierz pozycję **Zapisz**. 
+8. W przypadku dodania certyfikatu na stronie **serwer proxy aplikacji** wybierz pozycję **Zapisz**. 
    
-1. Na pasku informacji na stronie **serwer proxy aplikacji** Zwróć uwagę na wpis CNAME, który należy dodać do strefy DNS. 
+9. Na pasku informacji na stronie **serwer proxy aplikacji** Zwróć uwagę na wpis CNAME, który należy dodać do strefy DNS. 
    
    ![Dodaj wpis DNS CNAME](./media/application-proxy-configure-custom-domain/dns-info.png)
    
-1. Postępuj zgodnie z instrukcjami w obszarze [Zarządzanie rekordami i zestawami rekordów DNS przy użyciu Azure Portal](../../dns/dns-operations-recordsets-portal.md) , aby dodać rekord DNS, który przekierowuje nowy zewnętrzny adres URL do domeny *msappproxy.NET* .
+10. Postępuj zgodnie z instrukcjami w obszarze [Zarządzanie rekordami i zestawami rekordów DNS przy użyciu Azure Portal](../../dns/dns-operations-recordsets-portal.md) , aby dodać rekord DNS, który przekierowuje nowy zewnętrzny adres URL do domeny *msappproxy.NET* .
    
-1. Aby sprawdzić, czy rekord DNS został prawidłowo skonfigurowany, użyj polecenia [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) , aby potwierdzić, że zewnętrzny adres URL jest osiągalny, a domena *msapproxy.NET* jest wyświetlana jako alias.
+11. Aby sprawdzić, czy rekord DNS został prawidłowo skonfigurowany, użyj polecenia [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) , aby potwierdzić, że zewnętrzny adres URL jest osiągalny, a domena *msapproxy.NET* jest wyświetlana jako alias.
 
 Aplikacja jest teraz skonfigurowana do korzystania z domeny niestandardowej. Należy pamiętać o przypisaniu użytkowników do aplikacji przed jej przetestowaniem lub wydaniem. 
 

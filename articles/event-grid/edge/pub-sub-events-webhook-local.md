@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: b484306504af8f83a393feb0469fff5b524948ab
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992212"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098634"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Samouczek: publikowanie, subskrybowanie zdarzeń lokalnie
 
@@ -81,6 +81,8 @@ Manifest wdrożenia to dokument JSON, który opisuje moduły do wdrożenia, spos
 
     >[!IMPORTANT]
     > W tym samouczku zostanie wdrożony moduł Event Grid z wyłączonym uwierzytelnianiem klienta i zezwolisz subskrybentom protokołu HTTP. W przypadku obciążeń produkcyjnych zaleca się włączenie uwierzytelniania klienta i Zezwalanie na tylko subskrybenci HTTPs. Aby uzyskać więcej informacji na temat bezpiecznego konfigurowania modułu Event Grid, zobacz [zabezpieczenia i uwierzytelnianie](security-authentication.md).
+    > 
+    > Jeśli używasz maszyny wirtualnej platformy Azure jako urządzenia brzegowego, Dodaj regułę portu przychodzącego, aby zezwolić na ruch przychodzący na porcie 4438. Aby uzyskać instrukcje dotyczące dodawania reguły, zobacz [Jak otworzyć porty na maszynie wirtualnej](../../virtual-machines/windows/nsg-quickstart-portal.md).
     
 
 ## <a name="deploy-azure-function-iot-edge-module"></a>Wdróż moduł IoT Edge usługi Azure Functions
@@ -257,7 +259,7 @@ Subskrybenci mogą rejestrować się w przypadku zdarzeń opublikowanych w temac
     W systemie Windows uruchom następujące polecenie:
 
     ```sh
-    iotedge logs subscriber -f
+    docker -H npipe:////./pipe/iotedge_moby_engine container logs subscriber
     ```
 
    W systemie Linux Uruchom następujące polecenie:
@@ -299,6 +301,7 @@ Subskrybenci mogą rejestrować się w przypadku zdarzeń opublikowanych w temac
 ## <a name="next-steps"></a>Następne kroki
 W tym samouczku opisano tworzenie tematu, subskrypcji i opublikowanych zdarzeń usługi Event Grid. Teraz, gdy znasz podstawowe kroki, zobacz następujące artykuły: 
 
+- Aby rozwiązać problemy z używaniem Azure Event Grid na IoT Edge, zobacz [Przewodnik rozwiązywania problemów](troubleshoot.md).
 - Utwórz/zaktualizuj subskrypcję za pomocą [filtrów](advanced-filtering.md).
 - Włącz trwałość modułu Event Grid w systemie [Linux](persist-state-linux.md) lub [Windows](persist-state-windows.md)
 - Postępuj zgodnie z [dokumentacją](configure-client-auth.md) , aby skonfigurować uwierzytelnianie klienta
