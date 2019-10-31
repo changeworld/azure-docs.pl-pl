@@ -29,7 +29,7 @@
     - name: Rejestrowanie się w celu zresetowania hasła
       href: active-directory-passwords-reset-register.md
     - name: Resetowanie hasła
-      href: user-help-reset-password.md
+      href: active-directory-passwords-update-your-own-password.md
 - name: Pomoc dotycząca aplikacji Microsoft Authenticator
   items:
     - name: Omówienie
