@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wykonywanie skryptu języka R w usłudze ML przy użyciu konsoli języka R — Azure HDInsight'
+title: 'Szybki Start: skrypt R w usłudze l Services & konsoli języka R — Azure HDInsight'
 description: W ramach przewodnika Szybki Start wykonujesz skrypt języka R w klastrze usług ML w usłudze Azure HDInsight przy użyciu konsoli języka R.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 44bc90a4c556108b4b6874a2d1297a6467413824
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: af41a7569dedc9a56f67be8ae791d7185e0c7489
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736367"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241604"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Szybki start: Wykonywanie skryptu języka R w klastrze usługi ML w usłudze Azure HDInsight przy użyciu konsoli języka R
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Szybki Start: wykonywanie skryptu języka R w klastrze usług ML w usłudze Azure HDInsight przy użyciu konsoli języka R
 
 Usługi ML w usłudze Azure HDInsight umożliwiają używanie skryptów języka R Apache Spark i Apache Hadoop MapReduce do uruchamiania obliczeń rozproszonych. Usługa ML kontroluje sposób wykonywania wywołań przez ustawienie kontekstu obliczeniowego. Węzeł brzegowy klastra zapewnia wygodne miejsce do łączenia się z klastrem i uruchamiania skryptów języka R. Węzeł brzegowy umożliwia uruchamianie równoległych funkcji rozproszonych kolekcję funkcji revoscaler na różnych rdzeniach serwera węzła brzegowego. Można je również uruchamiać w węzłach klastra przy użyciu mapy usługi Hadoop w usłudze kolekcję funkcji revoscaler, zmniejszając lub Apache Spark konteksty obliczeniowe.
 
@@ -30,7 +30,7 @@ W tym przewodniku szybki start dowiesz się, jak uruchomić skrypt języka R z k
 
 ## <a name="connect-to-r-console"></a>Połącz z konsolą języka R
 
-1. Połącz się z węzłem brzegowym klastra usługi HDInsight usług w usłudze ML przy użyciu protokołu SSH. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` je nazwą klastra, a następnie wprowadź polecenie:
+1. Połącz się z węzłem brzegowym klastra usługi HDInsight usług w usłudze ML przy użyciu protokołu SSH. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` nazwą klastra, a następnie wprowadź polecenie:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ed-ssh.azurehdinsight.net

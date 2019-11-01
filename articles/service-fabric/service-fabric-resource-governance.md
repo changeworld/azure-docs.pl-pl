@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: atsenthi
-ms.openlocfilehash: aa388a688e76b0ba69231d8a11aa1bfa686f7f51
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166551"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242932"
 ---
-# <a name="resource-governance"></a>Zarządzanie zasobami
+# <a name="resource-governance"></a>Nadzór nad zasobami
 
 W przypadku uruchamiania wielu usług w tym samym węźle lub klastrze istnieje możliwość, że jedna usługa może zużywać więcej zasobów, blokują inne usługi w procesie. Ten problem jest określany jako problem "sąsiada z zakłóceniami". Usługa Azure Service Fabric umożliwia deweloperom określenie rezerwacji i limitów dla usługi w celu zagwarantowania zasobów i ograniczenia użycia zasobów.
 
@@ -110,6 +110,18 @@ W celu uzyskania optymalnej wydajności należy również włączyć następują
 </Section>
 ```
 
+> [!IMPORTANT]
+> Począwszy od Service Fabric w wersji 7,0, zaktualizowaliśmy regułę dotyczącą sposobu obliczania pojemności zasobów węzłów w przypadkach, gdy użytkownik ręcznie udostępnia wartości dla dyspozycyjności zasobów węzła. Rozważmy następujący scenariusz:
+>
+> * W węźle istnieje 10 rdzeni procesora
+> * SF jest skonfigurowany do używania 80% łącznej liczby zasobów dla usług użytkowników (ustawienie domyślne), co pozostawia bufor 20% dla innych usług uruchomionych w węźle (w tym Service Fabric usługi systemowe).
+> * Użytkownik decyduje się ręcznie przesłonić pojemność zasobów węzła dla metryki rdzeni procesora CPU i ustawia ją na 5 rdzeni
+>
+> Zmieniono regułę dotyczącą sposobu obliczania dostępnej pojemności Service Fabric usług użytkownika w następujący sposób:
+>
+> * Przed Service Fabric 7,0 przepustowość dostępna dla usług użytkowników zostanie obliczona na **5 rdzeni** (bufor pojemności 20% zostanie zignorowany)
+> * Począwszy od Service Fabric 7,0, dostępna pojemność dla usług użytkowników zostanie obliczona na **4 rdzenie** (bufor pojemności 20% nie zostanie zignorowany)
+
 ## <a name="specify-resource-governance"></a>Określanie ładu zasobów
 
 Limity zarządzania zasobami są określone w manifeście aplikacji (sekcja ServiceManifestImport), jak pokazano w następującym przykładzie:
@@ -137,11 +149,11 @@ W tym przykładzie pakiet usługi o nazwie **Servicepackage** . otrzymuje jeden 
 
 W ten przykład, w tym przykładzie, CodeA1 pobiera dwie trzecie rdzenia, a CodeA2 pobiera jedną trzecią z rdzenia (i rezerwacji nietrwałej w taki sam sposób). Jeśli CpuShares nie są określone dla pakietów kodu, Service Fabric dzieli rdzenie równomiernie między nimi.
 
-Limity pamięci są bezwzględne, więc oba pakiety kodu są ograniczone do 1024 MB pamięci (i rezerwacja nietrwałej gwarancji tego samego). Pakiety kodu (kontenerów lub procesów) nie mogą alokować większej ilości pamięci niż ten limit i próba wykonania tej czynności spowoduje wyjątek braku pamięci. Aby wymuszanie limitu zasobów działało, wszystkie pakiety kodu w ramach pakietu usługi powinny mieć określone limity pamięci.
+Limity pamięci są bezwzględne, więc oba pakiety kodu są ograniczone do 1024 MB pamięci (i rezerwacja nietrwałej gwarancji tego samego). Pakiety kodu (kontenerów lub procesów) nie mogą alokować większej ilości pamięci niż ten limit i próba wykonania tej czynności spowoduje wyjątek braku pamięci. Aby wymuszanie limitu zasobów działało, wszystkie pakiety kodu w ramach pakietu usług powinny mieć określone limity pamięci.
 
 ### <a name="using-application-parameters"></a>Używanie parametrów aplikacji
 
-Podczas określania ładu zasobów można używać [parametrów aplikacji](service-fabric-manage-multiple-environment-app-configuration.md) do zarządzania wieloma konfiguracjami aplikacji. W poniższym przykładzie pokazano użycie parametrów aplikacji:
+Podczas określania ustawień zarządzania zasobami można używać [parametrów aplikacji](service-fabric-manage-multiple-environment-app-configuration.md) do zarządzania wieloma konfiguracjami aplikacji. W poniższym przykładzie pokazano użycie parametrów aplikacji:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -185,6 +197,27 @@ W tym przykładzie domyślne wartości parametrów są ustawiane dla środowiska
 > Określanie nadzoru zasobów przy użyciu parametrów aplikacji jest dostępne począwszy od Service Fabric w wersji 6,1.<br>
 >
 > Gdy parametry aplikacji są używane do określania ładu zasobów, Service Fabric nie może zostać obniżone do wersji starszej niż 6,1.
+
+## <a name="enforcing-the-resource-limits-for-user-services"></a>Wymuszanie limitów zasobów dla usług użytkownika
+
+Podczas stosowania nadzoru zasobów do Service Fabric usług gwarantuje, że te usługi, które nie mogą przekraczać limitu przydziału zasobów, wielu użytkowników nadal muszą uruchamiać niektóre usługi Service Fabric w trybie niezarządzanym. W przypadku korzystania z nieregulowanej Service Fabric usług można uruchamiać w sytuacjach, w których "przemijające" usługi niezarządzane zużywają wszystkie dostępne zasoby w węzłach Service Fabric, co może prowadzić do poważnych problemów, takich jak:
+
+* Zablokowanie zasobów dla innych usług uruchomionych w węzłach (w tym Service Fabric usługach systemowych)
+* Węzły kończące się w złej kondycji
+* Nieodpowiadające interfejsy API zarządzania klastrem Service Fabric
+
+Aby zapobiec wystąpieniu tych sytuacji, Service Fabric umożliwia *wymuszenie limitów zasobów dla wszystkich Service Fabric usług użytkowników działających w węźle* (podlegających i niezarządzana) w celu zagwarantowania, że usługi użytkownika nigdy nie będą używać więcej niż określona ilość zasobów. Można to osiągnąć przez ustawienie wartości właściwości EnforceUserServiceMetricCapacities w sekcji PlacementAndLoadBalancing w ClusterManifest na true. To ustawienie jest domyślnie wyłączone.
+
+```xml
+<SectionName="PlacementAndLoadBalancing">
+    <ParameterName="EnforceUserServiceMetricCapacities" Value="false"/>
+</Section>
+```
+
+Dodatkowe uwagi:
+
+* Wymuszanie limitu zasobów dotyczy tylko metryk zasobów `servicefabric:/_CpuCores` i `servicefabric:/_MemoryInMB`
+* Wymuszanie limitu zasobów działa tylko wtedy, gdy pojemność węzłów dla metryk zasobów jest dostępna do Service Fabric, za pomocą mechanizmu autowykrywania, lub przez użytkowników ręcznie określając pojemności węzła (zgodnie z opisem w temacie [Konfigurowanie klastra do włączania Sekcja ładu zasobów](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ). Jeśli nie skonfigurowano pojemności węzła, nie można użyć możliwości wymuszania limitu zasobów, ponieważ Service Fabric nie może znać ilości zasobów zarezerwowanych dla usług użytkownika. Service Fabric wystawia ostrzeżenia o kondycji, jeśli "EnforceUserServiceMetricCapacities" ma wartość true, ale pojemności węzła nie są skonfigurowane.
 
 ## <a name="other-resources-for-containers"></a>Inne zasoby dla kontenerów
 

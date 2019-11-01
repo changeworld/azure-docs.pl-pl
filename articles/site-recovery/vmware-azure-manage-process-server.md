@@ -1,84 +1,97 @@
 ---
-title: Zarządzanie serwerem proces używany na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano zarządzanie serwerem proces konfigurowania odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do platformy Azure przy użyciu usługi Azure Site Recovery.
+title: Zarządzanie serwerem przetwarzania używanym do odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure przy użyciu Azure Site Recovery | Microsoft Docs
+description: W tym artykule opisano zarządzanie serwerem przetwarzania skonfigurowanym na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformie Azure przy użyciu Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 2c27779719c73adf4d7fc1a61a0c77d03df71815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 509b9aed9f5daebb70a18336837da2152667a458
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925612"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242841"
 ---
 # <a name="manage-process-servers"></a>Zarządzanie serwerami przetwarzania
 
-W tym artykule opisano typowe zadania zarządzania na serwerze przetwarzania Site Recovery.
+W tym artykule opisano typowe zadania związane z zarządzaniem serwerem przetwarzania Site Recovery.
 
-Serwer przetwarzania jest używany do odbierania, optymalizowanie i wysyłają dane replikacji do platformy Azure. Wykonuje także instalację wypychaną usługi Mobility na maszynach wirtualnych VMware i serwerów fizycznych, którą chcesz replikować, i przeprowadza automatyczne odnajdywanie maszyn lokalnych. Do replikowania lokalnych maszyn wirtualnych z programu VMware lub serwery fizyczne do platformy Azure, serwer przetwarzania jest instalowany domyślnie na komputerze z serwerem konfiguracji. 
+Serwer przetwarzania służy do odbierania, optymalizowania i wysyłania danych replikacji na platformę Azure. Wykonuje także instalację wypychaną usługi mobilności na maszynach wirtualnych programu VMware i serwerach fizycznych, które mają być replikowane, i wykonuje automatyczne odnajdowanie maszyn lokalnych. W przypadku replikowania lokalnych maszyn wirtualnych VMware lub serwerów fizycznych na platformę Azure serwer przetwarzania jest instalowany domyślnie na komputerze serwera konfiguracji. 
 
-- W przypadku dużych wdrożeń możesz potrzebować dodatkowych lokalnych serwerów przetwarzania skalować wydajność.
-- Do powrotu po awarii z platformy Azure do serwera lokalnego należy skonfigurować serwer tymczasowy przetwarzania na platformie Azure. Po zakończeniu powrotu po awarii, można usunąć tej maszyny Wirtualnej. 
+- W przypadku dużych wdrożeń do skalowania pojemności mogą być potrzebne dodatkowe serwery przetwarzania lokalnego.
+- W przypadku powrotu po awarii z platformy Azure do lokacji lokalnej należy skonfigurować tymczasowy serwer przetwarzania na platformie Azure. Możesz usunąć tę maszynę wirtualną po zakończeniu powrotu po awarii. 
 
-Dowiedz się więcej na temat serwera przetwarzania.
+Dowiedz się więcej o serwerze przetwarzania.
 
 
-## <a name="upgrade-a-process-server"></a>Uaktualnij serwer przetwarzania
+## <a name="upgrade-a-process-server"></a>Uaktualnianie serwera przetwarzania
 
-Podczas wdrażania serwera przetwarzania w środowisku lokalnym, lub jako Maszynę wirtualną platformy Azure do powrotu po awarii, jest zainstalowana najnowsza wersja serwera przetwarzania. Usługa Site Recovery zespołów wersji poprawki i ulepszenia w regularnych odstępach czasu i zalecamy serwerów przetwarzania zapewnianie aktualności. Możesz uaktualnić serwer przetwarzania w następujący sposób:
+Po wdrożeniu lokalnego serwera procesów lub jako maszyny wirtualnej platformy Azure na potrzeby powrotu po awarii jest zainstalowana najnowsza wersja serwera przetwarzania. Site Recovery zespoły wprowadzają poprawki i ulepszenia w regularnych odstępach czasu, a firma Microsoft zaleca utrzymywanie Aktualności serwerów przetwarzania. Serwer przetwarzania można uaktualnić w następujący sposób:
 
 [!INCLUDE [site-recovery-vmware-upgrade -process-server](../../includes/site-recovery-vmware-upgrade-process-server-internal.md)]
 
 
 ## <a name="move-vms-to-balance-the-process-server-load"></a>Przenoszenie maszyn wirtualnych w celu zrównoważenia obciążenia serwera przetwarzania
 
-Równoważenie obciążenia przez przeniesienie maszyn wirtualnych między dwoma serwerami proces, w następujący sposób:
+Należy zrównoważyć obciążenie przez przeniesienie maszyn wirtualnych między dwoma serwerami przetwarzania w następujący sposób:
 
-1. W magazynie w obszarze **Zarządzaj** kliknij **infrastruktura usługi Site Recovery**. W obszarze **oprogramowanie VMware i fizycznych komputerów**, kliknij przycisk **serwery konfiguracji**.
-2. Kliknij serwer konfiguracji za pomocą którego zarejestrowano serwerów przetwarzania.
-3. Kliknij na serwerze przetwarzania, dla których chcesz równoważyć obciążenie.
+1. W magazynie w obszarze **Zarządzaj** kliknij **Site Recovery infrastruktura**. W obszarze **dla maszyn fizycznych VMware &** kliknij pozycję **serwery konfiguracji**.
+2. Kliknij serwer konfiguracji, z którym są zarejestrowane serwery przetwarzania.
+3. Kliknij serwer przetwarzania, dla którego chcesz równoważyć obciążenie ruchem.
 
-    ![DSM](media/vmware-azure-manage-process-server/LoadBalance.png)
+    ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
 
-4. Kliknij przycisk **Równoważenie obciążenia**, wybierz docelowy serwer przetwarzania, do którego chcesz przenieść maszyny. Następnie kliknij przycisk **OK**
+4. Kliknij pozycję **równoważenie obciążenia**i wybierz docelowy serwer przetwarzania, do którego chcesz przenieść maszyny. Następnie kliknij przycisk **OK** .
 
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
-2. Kliknij przycisk **wybierz maszyny**i wybierz maszyny, którą chcesz przenieść z bieżącej do docelowego serwera przetwarzania. Szczegółowe informacje o zmianie uśrednianie danych są wyświetlane na każdej maszynie wirtualnej. Następnie kliknij przycisk **OK**. 
-3. W magazynie, monitorować postęp zadania w obszarze **monitorowanie** > **zadania usługi Site Recovery**.
+2. Kliknij pozycję **Wybierz Maszyny**, a następnie wybierz maszyny, które chcesz przenieść z bieżącego do docelowego serwera przetwarzania. Szczegóły średniej zmiany danych są wyświetlane dla każdej maszyny wirtualnej. Następnie kliknij przycisk **OK**. 
+3. W magazynie Monitoruj postęp zadania w obszarze **monitorowanie** > **zadania Site Recovery**.
 
-Potrwa około 15 minut, zanim zmiany zostaną odzwierciedlone w portalu. Aby szybciej efekt [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
+Wprowadzenie zmian w portalu zajmie około 15 minut. Aby uzyskać szybszy efekt, [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
-## <a name="switch-an-entire-workload-to-another-process-server"></a>Przełącz całe obciążenie na inny serwer przetwarzania
+## <a name="switch-an-entire-workload-to-another-process-server"></a>Przełączanie całego obciążenia na inny serwer przetwarzania
 
-Przenieś całe obciążenie, które są obsługiwane przez serwer przetwarzania do innego serwera przetwarzania, w następujący sposób:
+Przenieś całe obciążenie obsługiwane przez serwer przetwarzania na inny serwer przetwarzania w następujący sposób:
 
-1. W magazynie w obszarze **Zarządzaj** kliknij **infrastruktura usługi Site Recovery**. W obszarze **oprogramowanie VMware i fizycznych komputerów**, kliknij przycisk **serwery konfiguracji**.
-2. Kliknij serwer konfiguracji za pomocą którego zarejestrowano serwerów przetwarzania.
-3. Kliknij na serwerze przetwarzania, w którym chcesz się przełączyć obciążenia.
-4. Kliknij pozycję **przełącznika**, wybierz docelowy serwer przetwarzania, do którego chcesz przenieść obciążenia. Następnie kliknij przycisk **OK**
+1. W magazynie w obszarze **Zarządzaj** kliknij **Site Recovery infrastruktura**. W obszarze **dla maszyn fizycznych VMware &** kliknij pozycję **serwery konfiguracji**.
+2. Kliknij serwer konfiguracji, z którym są zarejestrowane serwery przetwarzania.
+3. Kliknij serwer przetwarzania, z którego chcesz przełączyć obciążenie.
+4. Kliknij pozycję **przełącznik**, wybierz docelowy serwer przetwarzania, do którego chcesz przenieść obciążenie. Następnie kliknij przycisk **OK** .
 
     ![Przełącznik](media/vmware-azure-manage-process-server/Switch.PNG)
 
-5. W magazynie, monitorować postęp zadania w obszarze **monitorowanie** > **zadania usługi Site Recovery**.
+5. W magazynie Monitoruj postęp zadania w obszarze **monitorowanie** > **zadania Site Recovery**.
 
-Potrwa około 15 minut, zanim zmiany zostaną odzwierciedlone w portalu. Aby szybciej efekt [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
+Wprowadzenie zmian w portalu zajmie około 15 minut. Aby uzyskać szybszy efekt, [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
+## <a name="register-a-master-target-server"></a>Rejestrowanie głównego serwera docelowego
 
+Główny serwer docelowy znajduje się na serwerze konfiguracji i skalowalnych w poziomie serwerach procesów. Musi być zarejestrowany na serwerze konfiguracji. W przypadku awarii tej rejestracji może to mieć wpływ na kondycję chronionych elementów. Aby zarejestrować główny serwer docelowy z serwerem konfiguracji, zaloguj się na konkretnym serwerze konfiguracji/skalowalnym w poziomie serwerze przetwarzania, na którym jest wymagana rejestracja. Przejdź do folderu **%ProgramData%\ASR\Agent**, a następnie uruchom następujące polecenie w wierszu polecenia administratora.
 
-## <a name="reregister-a-process-server"></a>Zarejestruj ponownie serwer przetwarzania
+   ```
+   cmd
+   cdpcli.exe --registermt
 
-Zarejestruj ponownie serwer przetwarzania, działającego lokalnie lub na Maszynie wirtualnej platformy Azure z serwerem konfiguracji, w następujący sposób:
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
+
+## <a name="reregister-a-process-server"></a>Ponowne zarejestrowanie serwera przetwarzania
+
+Zarejestruj ponownie serwer przetwarzania działający lokalnie lub na maszynie wirtualnej platformy Azure z serwerem konfiguracji w następujący sposób:
 
 [!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
 
-Po zapisaniu ustawień, wykonaj następujące czynności:
+Po zapisaniu ustawień wykonaj następujące czynności:
 
-1. Na serwerze przetwarzania Otwórz wiersz polecenia administratora.
-2. Przejdź do folderu **%PROGRAMDATA%\ASR\Agent**, a następnie uruchom polecenie:
+1. Na serwerze przetwarzania Otwórz wiersz polecenia z uprawnieniami administratora.
+2. Przejdź do folderu **%ProgramData%\ASR\Agent**i uruchom polecenie:
 
     ```
     cdpcli.exe --registermt
@@ -86,19 +99,19 @@ Po zapisaniu ustawień, wykonaj następujące czynności:
     net start obengine
     ```
 
-## <a name="modify-proxy-settings-for-an-on-premises-process-server"></a>Modyfikowanie ustawień serwera proxy dla serwera przetwarzania w środowisku lokalnym
+## <a name="modify-proxy-settings-for-an-on-premises-process-server"></a>Modyfikowanie ustawień serwera proxy dla lokalnego serwera przetwarzania
 
-Jeśli serwer przetwarzania w środowisku lokalnym używa serwera proxy do połączenia z platformą Azure, można zmodyfikować ustawienia serwera proxy w następujący sposób:
+Jeśli lokalny serwer przetwarzania używa serwera proxy do łączenia się z platformą Azure, można zmodyfikować ustawienia serwera proxy w następujący sposób:
 
-1. Zaloguj się do komputera serwera przetwarzania. 
-2. Otwórz okno poleceń programu PowerShell i uruchom następujące polecenie:
+1. Zaloguj się do maszyny serwera przetwarzania. 
+2. Otwórz okno poleceń administracyjnych programu PowerShell i uruchom następujące polecenie:
    ```powershell
    $pwd = ConvertTo-SecureString -String MyProxyUserPassword
    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
    net stop obengine
    net start obengine
    ```
-2. Przejdź do folderu **%PROGRAMDATA%\ASR\Agent**, i uruchom następujące polecenie:
+2. Przejdź do folderu **%ProgramData%\ASR\Agent**i uruchom następujące polecenie:
    ```
    cmd
    cdpcli.exe --registermt
@@ -114,12 +127,12 @@ Jeśli serwer przetwarzania w środowisku lokalnym używa serwera proxy do poł�
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 
-## <a name="exclude-folders-from-anti-virus-software"></a>Wyklucz foldery z oprogramowania antywirusowego
+## <a name="exclude-folders-from-anti-virus-software"></a>Wykluczanie folderów z oprogramowania antywirusowego
 
-Jeśli oprogramowanie antywirusowe jest uruchomiona na serwerze przetwarzania skalowalnego w poziomie (lub główny serwer docelowy), należy wyłączyć następujące foldery z oprogramowania antywirusowego operacje:
+Jeśli oprogramowanie antywirusowe jest uruchomione na serwerze przetwarzania skalowalnego w poziomie (lub głównym serwerze docelowym), Wyklucz następujące foldery z operacji programu antywirusowego:
 
 
-- Agent usług C:\Program Files\Microsoft Azure Recovery Services
+- C:\Program Files\Microsoft Azure Recovery Services Agent
 - C:\ProgramData\ASR
 - C:\ProgramData\ASRLogs
 - C:\ProgramData\ASRSetupLogs

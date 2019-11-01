@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka — Azure HDInsight '
+title: 'Samouczek: Apache Kafka producenci & interfejsy API konsumentów — Azure HDInsight'
 description: Informacje o sposobie korzystania z interfejsów API producentów i odbiorców platformy Apache Kafka w usłudze HDInsight. W tym samouczku dowiesz się, jak używać tych interfejsów API na platformie Kafka w usłudze HDInsight z poziomu aplikacji Java.
 author: dhgoelmsft
 ms.author: dhgoel
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 3ac68732042016c747b693e97bf8da15e1843b1e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ad810ac2f8751554aaf0afcd2b15e1da83f38fe1
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817800"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242011"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Samouczek: korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka
 

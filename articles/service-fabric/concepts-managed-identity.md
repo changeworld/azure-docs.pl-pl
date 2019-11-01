@@ -7,16 +7,16 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e2f05ba28109a9b3c88d80eb218bf94014f0f082
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333124"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243029"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Tożsamość zarządzana dla aplikacji Service Fabric (wersja zapoznawcza)
 
-Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób zarządzania poświadczeniami w kodzie w przypadku uwierzytelniania przy użyciu usług w chmurze. Utrzymywanie bezpiecznych poświadczeń jest ważnym zadaniem, ponieważ nigdy nie pojawiają się na stacjach roboczych deweloperów i nie są zaewidencjonowane do kontroli źródła. Funkcja zarządzanej tożsamości dla zasobów platformy Azure w Azure Active Directory (Azure AD) rozwiązuje ten problem. Ta funkcja udostępnia usługi platformy Azure z automatycznie zarządzaną tożsamością w usłudze Azure AD. Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności umieszczania poświadczeń w kodzie.
+Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób zarządzania poświadczeniami w kodzie w przypadku uwierzytelniania przy użyciu usług w chmurze. Utrzymywanie bezpiecznych poświadczeń jest ważnym zadaniem, ponieważ nigdy nie pojawiają się na stacjach roboczych deweloperów i nie są zaewidencjonowane do kontroli źródła. Funkcja zarządzanej tożsamości dla zasobów platformy Azure w Azure Active Directory (Azure AD) rozwiązuje ten problem. Funkcja ta udostępnia usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure AD. Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności umieszczania poświadczeń w kodzie.
 
 Funkcja tożsamości zarządzanej dla zasobów platformy Azure jest bezpłatna za pomocą usługi Azure AD dla subskrypcji platformy Azure. Nie ma dodatkowych kosztów.
 
@@ -45,7 +45,7 @@ Poniższe terminy są używane w całej zarządzanej tożsamości dla zestawu do
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Obsługiwane scenariusze dla aplikacji Service Fabric
 
-Zarządzane tożsamości dla Service Fabric są obsługiwane tylko w klastrach Service Fabric wdrożonych na platformie Azure i tylko w przypadku aplikacji wdrożonych jako zasoby platformy Azure; nie można przypisać tożsamości do aplikacji, które nie zostały wdrożone jako zasoby platformy Azure. Koncepcyjnie mówiąc, obsługa zarządzanych tożsamości w klastrze Service Fabric platformy Azure składa się z dwóch faz:
+Zarządzane tożsamości dla Service Fabric są obsługiwane tylko w klastrach Service Fabric wdrożonych na platformie Azure i tylko w przypadku aplikacji wdrożonych jako zasoby platformy Azure; nie można przypisać tożsamości do aplikacji, która nie jest wdrożona jako zasób platformy Azure. Koncepcyjnie mówiąc, obsługa zarządzanych tożsamości w klastrze Service Fabric platformy Azure składa się z dwóch faz:
 
 1. Przypisz co najmniej jedną zarządzaną tożsamość do zasobu aplikacji; do aplikacji można przypisać jedną tożsamość przypisaną do systemu i/lub do 32 tożsamości przypisanych do użytkownika.
 
@@ -78,3 +78,4 @@ Następujące scenariusze nie są obsługiwane lub nie są zalecane; Uwaga te ak
 * [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej przez użytkownika](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Korzystanie z zarządzanej tożsamości aplikacji Service Fabric z poziomu kodu usługi](./how-to-managed-identity-service-fabric-app-code.md)
 * [Przyznaj aplikacji Service Fabric platformy Azure dostęp do innych zasobów platformy Azure](./how-to-grant-access-other-resources.md)
+* [Deklarowanie i używanie wpisów tajnych aplikacji jako KeyVaultReferences](./service-fabric-keyvault-references.md) 

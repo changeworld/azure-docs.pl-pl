@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: a795e01d37504dad360dc094b6b2aea2955b6a4a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bb3fd77df60be68408fceea683ee4b8b74d77427
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170454"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242906"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Określanie zasobów w manifeście usługi
 ## <a name="overview"></a>Przegląd
@@ -30,6 +30,8 @@ Gdy zasób punktu końcowego jest zdefiniowany w manifeście usługi, Service Fa
 
 > [!WARNING] 
 > Przez projektowanie portów statycznych nie należy nakładać się na zakres portów aplikacji określony w ClusterManifest. Jeśli określisz port statyczny, przypisz go poza zakresem portów aplikacji, w przeciwnym razie spowoduje to konflikty portów. Za pomocą programu Release 6.5 ZASTOSUJESZ pakietu CU2 zostanie **wyświetlone ostrzeżenie o kondycji** , gdy wykryjesz taki konflikt, ale zezwolisz na synchronizację wdrożenia z przesłanym zachowaniem 6,5. Jednak firma Microsoft może uniemożliwić wdrożenie aplikacji z następnych głównych wersji.
+>
+> W wersji 7,0 zostanie **wyświetlone ostrzeżenie o kondycji** , gdy zostanie wykryte użycie zakresu portów aplikacji wykraczające poza HostingConfig:: ApplicationPortExhaustThresholdPercentage (domyślny 80%).
 >
 
 ```xml
@@ -56,7 +58,7 @@ W przypadku wielu pakietów kodu w jednym pakiecie usługi, w sekcji **punkty ko
 Zapoznaj się z tematem [konfigurowanie Reliable Services stanowych](service-fabric-reliable-services-configuration.md) , aby dowiedzieć się więcej na temat odwołań do punktów końcowych z pliku ustawień pakietu konfiguracji (Settings. xml).
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Przykład: Określanie punktu końcowego HTTP dla usługi
-Poniższy manifest usługi definiuje jeden zasób punktu końcowego TCP i dwa zasoby punktu końcowego HTTP w elemencie &lt;Resources @ no__t-1.
+Poniższy manifest usługi definiuje jeden zasób punktu końcowego TCP i dwa zasoby punktu końcowego HTTP w &lt;&gt; zasobów elementu.
 
 Punkty końcowe HTTP są automatycznie listą ACL pochodzącą przez Service Fabric.
 

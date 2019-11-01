@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 5108424c4e39c1c47710c0e25e4e22c4474e68ad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: bd9b9edde0f4c5e3bea6e31342298f2df5a2b5fe
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941695"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241869"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co to jest usługa ML w usłudze Azure HDInsight
 
@@ -23,7 +23,7 @@ Usługi ML w usłudze HDInsight zapewniają najnowsze możliwości analizy opart
 
 Węzeł brzegowy klastra zapewnia wygodne miejsce do łączenia się z klastrem i uruchamiania skryptów języka R. W węźle brzegowym można uruchamiać równoległe funkcje rozproszone skalowania na wielu rdzeniach serwera węzła brzegowego. Można je również uruchamiać w węzłach klastra przy użyciu mapy usługi Hadoop skalowania w celu zmniejszenia lub Apache Spark kontekstów obliczeniowych.
 
-Modele lub przewidywania powstałe w wyniku analizy mogą być pobierane do użytku lokalnego. Mogą również działać w innym miejscu na platformie Azure, w szczególności za pomocą [usługi sieci web](../../machine-learning/studio/publish-a-machine-learning-web-service.md) [Azure Machine Learning Studio](https://studio.azureml.net) .
+Modele lub przewidywania powstałe w wyniku analizy mogą być pobierane do użytku lokalnego. Mogą również działać w innym miejscu na platformie Azure, w szczególności za pomocą [usługi sieci web](../../machine-learning/studio/publish-a-machine-learning-web-service.md) [Azure Machine Learning Studio (klasycznej)](https://studio.azureml.net) .
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Wprowadzenie do usługi l Services w usłudze HDInsight
 
@@ -92,7 +92,7 @@ Aby wypróbować w usłudze HDInsight, napisz funkcję języka R, która wywołu
 
 Aby wypróbować Azure Machine Learning, Użyj pakietu języka R "Open Azure Machine Learning source", który jest znany jako [Azure](https://cran.r-project.org/src/contrib/Archive/AzureML/) , aby opublikować model jako usługę sieci Web platformy Azure. Dla wygody ten pakiet jest wstępnie zainstalowany w węźle brzegowym. Następnie użyj funkcji w Azure Machine Learning, aby utworzyć interfejs użytkownika dla usługi sieci Web, a następnie Wywołaj usługę sieci Web zgodnie z wymaganiami dla oceny.
 
-Jeśli wybierzesz tę opcję, musisz przekonwertować wszystkie obiekty modelu skalowania na równoważne obiekty modelu "open source", które będą używane z usługą sieci Web. W przypadku tej konwersji Użyj funkcji przekształcania skalowania, `as.randomForest()` na przykład dla modeli opartych na modelu.
+Jeśli wybierzesz tę opcję, musisz przekonwertować wszystkie obiekty modelu skalowania na równoważne obiekty modelu "open source", które będą używane z usługą sieci Web. W przypadku tej konwersji Użyj funkcji przekształcania skalowania, takich jak `as.randomForest()` dla modeli opartych na modelu.
 
 ### <a name="score-on-premises"></a>Ocena w środowisku lokalnym
 
@@ -102,7 +102,7 @@ Aby oceniać lokalne po utworzeniu modelu, można serializować model w języku 
 
 ### <a name="install-and-maintain-r-packages"></a>Instalowanie i konserwowanie pakietów języka R
 
-Większość używanych pakietów języka R jest wymagana w węźle brzegowym, ponieważ większość kroków skryptów języka R jest w tej chwili uruchamiana. Aby zainstalować dodatkowe pakiety języka r w węźle brzegowym, można użyć `install.packages()` metody w języku R.
+Większość używanych pakietów języka R jest wymagana w węźle brzegowym, ponieważ większość kroków skryptów języka R jest w tej chwili uruchamiana. Aby zainstalować dodatkowe pakiety języka R w węźle brzegowym, można użyć metody `install.packages()` w języku R.
 
 Jeśli używasz tylko procedur z biblioteki skalowania w klastrze, zazwyczaj nie musisz instalować dodatkowych pakietów R w węzłach danych. Mogą jednak być potrzebne dodatkowe pakiety do obsługi **rxExec** lub **RxDataStep** wykonywania w węzłach danych.
 
@@ -130,7 +130,7 @@ Ponieważ węzły główne są nadmiarowe i nie mają wpływu na wszystkie węz�
 
 Węzeł brzegowy systemu Linux klastra usługi HDInsight jest strefą docelową analizy na podstawie języka R. Najnowsze wersje usługi HDInsight zapewniają domyślną instalację serwera RStudio na węźle brzegowym jako środowisko IDE oparte na przeglądarce. Korzystanie z serwera RStudio jako środowiska IDE do tworzenia i wykonywania skryptów języka R może być znacznie bardziej wydajne niż w przypadku korzystania z konsoli języka R.
 
-Ponadto można zainstalować środowisko IDE pulpitu i używać go do uzyskiwania dostępu do klastra za pomocą zdalnego kontekstu obliczeniowego MapReduce lub Spark. Dostępne opcje to: [R Tools for Visual Studio](https://www.visualstudio.com/features/rtvs-vs.aspx) firmy Microsoft (RTVS), RStudio i Walware. [](http://www.walware.de/goto/statet)
+Ponadto można zainstalować środowisko IDE pulpitu i używać go do uzyskiwania dostępu do klastra za pomocą zdalnego kontekstu obliczeniowego MapReduce lub Spark. Dostępne opcje to: [R Tools for Visual Studio](https://www.visualstudio.com/features/rtvs-vs.aspx) firmy Microsoft (RTVS), RStudio i [Walware.](http://www.walware.de/goto/statet)
 
 Ponadto możesz uzyskać dostęp do konsoli języka R w węźle brzegowym, wpisując **R** w wierszu polecenia systemu Linux po nawiązaniu połączenia za pośrednictwem protokołu SSH lub wyciągania. W przypadku korzystania z interfejsu konsoli można uruchomić Edytor tekstu dla tworzenia skryptów języka R w innym oknie, a następnie wyciąć i wkleić sekcje skryptu do konsoli języka R zgodnie z potrzebami.
 

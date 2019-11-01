@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066977"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241655"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Głębokie szczegółowe — analiza zaawansowana
 
@@ -43,12 +43,12 @@ Wraz z wybraniem algorytmów najlepszego dopasowania należy wziąć pod uwagę,
 * Algorytm wzmacniania używa agentów oprogramowania do określenia idealnego zachowania w określonym kontekście (często używanym w programie Robotic)
 
 
-| Kategoria algorytmu| Zastosowanie | Typ uczenia | Algorytmy |
+| Kategoria algorytmu| Eksploatacja | Typ uczenia | Algorytmy |
 | --- | --- | --- | -- |
 | Klasyfikacja | Klasyfikowanie osób lub rzeczy do grup | Nadzorowane | Drzewa decyzyjne, regresja logistyczna, sieci neuronowyche |
-| Klastrowanie | Dzielenie zestawu przykładów do jednorodnych grup | Nienadzorowanych | K-oznacza klastrowanie |
+| Usługę | Dzielenie zestawu przykładów do jednorodnych grup | Nienadzorowanych | K-oznacza klastrowanie |
 | Wykrywanie wzorca | Zidentyfikuj częste skojarzenia danych | Nienadzorowanych | Reguły kojarzenia |
-| Regresji | Przewidywanie wyników liczbowych | Nadzorowane | Regresja liniowa, sieci neuronowych |
+| Ubytk | Przewidywanie wyników liczbowych | Nadzorowane | Regresja liniowa, sieci neuronowych |
 | Wzmacnianie | Określanie optymalnego zachowania dla robotów | Wzmacnianie | Symulacje Carlo Monte, DeepMind |
 
 ## <a name="machine-learning-on-hdinsight"></a>Uczenie maszynowe w usłudze HDInsight
@@ -63,7 +63,7 @@ Usługa HDInsight ma kilka opcji uczenia maszynowego dla przepływu pracy zaawan
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning i Apache Spark
 
 
-[HDInsight Spark](../spark/apache-spark-overview.md) to oparta na platformie Azure oferta [Apache Spark](https://spark.apache.org/), ujednolicona platforma przetwarzania danych typu open source, która korzysta z przetwarzania w pamięci, aby zwiększyć analizę danych Big Data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. 
+[HDInsight Spark](../spark/apache-spark-overview.md) to oparta na platformie Azure oferta [Apache Spark](https://spark.apache.org/), ujednolicona platforma przetwarzania danych typu open source, która korzysta z przetwarzania w pamięci, aby zwiększyć analizę danych Big Data. Aparat przetwarzania Spark jest zbudowany z myślą o szybkości, łatwości użycia i zaawansowanej analizie. Możliwości obliczeniowe rozproszone w pamięci platformy Spark sprawiają, że jest dobrym rozwiązaniem dla algorytmów iteracyjnych używanych w obliczeniach uczenia maszynowego i grafu. 
 
 
 Istnieją trzy skalowalne biblioteki uczenia maszynowego, które doprowadzają możliwości modelowania algorytmów do tego środowiska rozproszonego:
@@ -78,7 +78,7 @@ W ramach programu HDInsight można utworzyć klaster usługi HDInsight z [usług
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning i Apache Hive
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) udostępnia narzędzia do modelowania analizy predykcyjnej, a także w pełni zarządzaną usługę, z której można korzystać w celu wdrażania modeli predykcyjnych jako gotowych do użycia usług sieci Web. Azure Machine Learning udostępnia narzędzia do tworzenia kompletnych rozwiązań analizy predykcyjnej w chmurze, które umożliwiają szybkie tworzenie, testowanie i operacjonalizować modeli predykcyjnych oraz zarządzanie nimi. Wybierz jedną z wielu bibliotek algorytmów, użyj programu Studio opartego na sieci Web do tworzenia modeli i łatwo Wdrażaj model jako usługę sieci Web.
+[Azure Machine Learning Studio (klasyczny)](https://studio.azureml.net/) oferuje narzędzia do modelowania analizy predykcyjnej, a także w pełni zarządzaną usługę, z której można korzystać w celu wdrażania modeli predykcyjnych jako gotowych do użycia usług sieci Web. Azure Machine Learning udostępnia narzędzia do tworzenia kompletnych rozwiązań analizy predykcyjnej w chmurze, które umożliwiają szybkie tworzenie, testowanie i operacjonalizować modeli predykcyjnych oraz zarządzanie nimi. Wybierz jedną z wielu bibliotek algorytmów, użyj programu Studio opartego na sieci Web do tworzenia modeli i łatwo Wdrażaj model jako usługę sieci Web.
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark i uczenie głębokie
 
@@ -127,8 +127,8 @@ Apache Hive i Azure Machine Learning
 Apache Spark i MLLib
 
 * [Uczenie maszynowe za pomocą Apache Spark w usłudze HDInsight](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Apache Spark z Machine Learning: Używanie Apache Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark z Machine Learning: Używanie Apache Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark z Machine Learning: używanie Apache Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark z Machine Learning: Użyj Apache Spark w usłudze HDInsight, aby przewidzieć wyniki inspekcji żywności](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
 Uczenie głębokie, Cognitive Toolkit i inne
 

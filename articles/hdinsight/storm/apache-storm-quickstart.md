@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie i monitorowanie topologii Apache Storm w usłudze Azure HDInsight'
+title: 'Szybki Start: Tworzenie i zarządzanie topologią Apache Storm — Azure HDInsight'
 description: W samouczku szybki start dowiesz się, jak utworzyć i monitorować topologię Apache Storm w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 9e48cb53b55cdc4200498a54dba31ae93ca8b31a
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 24173b553f30f652caf20b1ec7500fd9c4d2f7a0
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018573"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241226"
 ---
-# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Szybki start: Tworzenie i monitorowanie topologii Apache Storm w usłudze Azure HDInsight
+# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Szybki Start: Tworzenie i monitorowanie topologii Apache Storm w usłudze Azure HDInsight
 
 Apache Storm to skalowalny, odporny na błędy, rozproszony system obliczeniowy działający w czasie rzeczywistym do przetwarzania strumieni danych. Dzięki platformie Storm w usłudze Azure HDInsight można utworzyć oparty na chmurze klaster Storm do wykonywania analizy danych big data w czasie rzeczywistym.
 
@@ -29,13 +29,13 @@ W tym przewodniku szybki start użyto przykładu z projektu Apache [burza-Starte
 
 ## <a name="create-the-topology"></a>Tworzenie topologii
 
-1. Nawiąż połączenie z klastrem burzy. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` je nazwą klastra burzy, a następnie wprowadź polecenie:
+1. Nawiąż połączenie z klastrem burzy. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` nazwą klastra burzy, a następnie wprowadź polecenie:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Przykład **WORDCOUNT** jest dołączany do klastra usługi HDInsight `/usr/hdp/current/storm-client/contrib/storm-starter/`w lokalizacji. Topologia generuje losowe zdania i zlicza, ile razy występują słowa. Użyj następującego polecenia, aby uruchomić topologię **WORDCOUNT** w klastrze:
+2. Przykład **WORDCOUNT** jest dołączany do klastra usługi HDInsight w `/usr/hdp/current/storm-client/contrib/storm-starter/`. Topologia generuje losowe zdania i zlicza, ile razy występują słowa. Użyj następującego polecenia, aby uruchomić topologię **WORDCOUNT** w klastrze:
 
     ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
@@ -58,13 +58,13 @@ Wykonaj następujące kroki, aby monitorować topologię za pomocą interfejsu u
     |Właściwość | Opis |
     |---|---|
     |Statystyka topologii|Podstawowe informacje o wydajności topologii, zorganizowane w okna czasu. Wybór określonego okna czasowego zmienia przedział czasu dla informacji wyświetlanych w innych sekcjach strony.|
-    |Elementy spout|Podstawowe informacje na temat elementy Spout, w tym ostatni błąd zwrócony przez każdy elementu Spout.|
-    |Elementy bolt|Podstawowe informacje na temat piorunów.|
+    |Elementy Spout|Podstawowe informacje na temat elementy Spout, w tym ostatni błąd zwrócony przez każdy elementu Spout.|
+    |Elementy Bolt|Podstawowe informacje na temat piorunów.|
     |Konfiguracja topologii|Szczegółowe informacje o konfiguracji topologii.|
-    |Uaktywnij|Wznawia przetwarzanie zdezaktywowanej topologii.|
-    |Dezaktywuj|Wstrzymuje uruchomioną topologię.|
-    |Zbilansuj ponownie|Dostosowuje równoległość topologii. Po zmianie liczby węzłów w klastrze należy przeprowadzić ponowne równoważenie uruchomionych topologii. Pozwoli to dostosować równoległość topologii w celu kompensacji zwiększonej/zmniejszonej liczby węzłów w klastrze. Aby uzyskać więcej informacji, zobacz [Omówienie równoległości topologii Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).|
-    |Zabij|Kończy topologię burzy po określonym limicie czasu.|
+    |Aktywuj|Wznawia przetwarzanie zdezaktywowanej topologii.|
+    |Szablony|Wstrzymuje uruchomioną topologię.|
+    |Ponownego równoważenia|Dostosowuje równoległość topologii. Po zmianie liczby węzłów w klastrze należy przeprowadzić ponowne równoważenie uruchomionych topologii. Pozwoli to dostosować równoległość topologii w celu kompensacji zwiększonej/zmniejszonej liczby węzłów w klastrze. Aby uzyskać więcej informacji, zobacz [Omówienie równoległości topologii Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).|
+    |Killbit|Kończy topologię burzy po określonym limicie czasu.|
 
 3. Na tej stronie wybierz pozycję z sekcji **Spouts** (Elementy spout) lub **Bolts** (Elementy bolt). Zostaną wyświetlone informacje o wybranym składniku.
 
@@ -77,7 +77,7 @@ Wykonaj następujące kroki, aby monitorować topologię za pomocą interfejsu u
     |Statystyka elementu Spout/błyskawicy|Podstawowe informacje o wydajności składników zorganizowane w okna czasu. Wybór określonego okna czasowego zmienia przedział czasu dla informacji wyświetlanych w innych sekcjach strony.|
     |Statystyki wejściowe (tylko Piorun)|Informacje o składnikach, które generują dane używane przez pioruna.|
     |Statystyka wyjściowa|Informacje o danych emitowanych przez ten piorun.|
-    |Funkcje wykonawcze|Informacje o wystąpieniach tego składnika.|
+    |Wykonawców|Informacje o wystąpieniach tego składnika.|
     |Błędy|Błędy wytwarzane przez ten składnik.|
 
 4. Wyświetlając szczegółowe informacje o elemencie spout lub bolt, wybierz pozycję w kolumnie **Port** w sekcji **Executors** (Wykonawcy), aby wyświetlić szczegóły dotyczące określonego wystąpienia składnika.

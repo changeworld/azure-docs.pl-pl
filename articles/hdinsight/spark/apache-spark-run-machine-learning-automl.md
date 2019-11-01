@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie Azure Machine Learning obciążeń na Apache Spark w usłudze Azure HDInsight
+title: Uruchamianie Azure Machine Learning obciążeń na Apache Spark w usłudze HDInsight
 description: Dowiedz się, jak uruchamiać obciążenia Azure Machine Learning przy użyciu automatycznego uczenia maszynowego (AutoML) na Apache Spark w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 14cb4f02bc18bda24f022f1ccf41a06776a5136b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814044"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241482"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Uruchamianie obciążeń Azure Machine Learning przy użyciu automatycznego uczenia maszynowego na Apache Spark w usłudze HDInsight
 
@@ -21,7 +21,7 @@ Azure Machine Learning upraszcza i przyspiesza kompilowanie, uczenie i wdrażani
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>Instalowanie Azure Machine Learning w klastrze usługi HDInsight
 
-Ogólne samouczki dotyczące automatycznego uczenia maszynowego [znajdują się w samouczku: Użyj zautomatyzowanej uczenia maszynowego, aby](../../machine-learning/service/tutorial-auto-train-models.md)skompilować model regresji.
+Ogólne samouczki dotyczące automatycznego uczenia maszynowego znajdują się w [samouczku: korzystanie z zautomatyzowanej uczenia maszynowego do kompilowania modelu regresji](../../machine-learning/service/tutorial-auto-train-models.md).
 Wszystkie nowe klastry usługi HDInsight-Spark są wstępnie zainstalowane przy użyciu zestawu Azure AutoML SDK. Możesz rozpocząć pracę z usługą AutoML w usłudze HDInsight za pomocą tego [przykładowego notesu Jupyter](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi). W tym Jupyter Notebook pokazano, jak używać zautomatyzowanego klasyfikatora uczenia maszynowego dla prostego problemu klasyfikacji.
 
 > [!Note]
@@ -76,5 +76,5 @@ W [zautomatyzowanej konfiguracji usługi Machine Learning](https://docs.microsof
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać więcej informacji na temat motywacji za automatyczne Uczenie maszynowe, zobacz [modele wydań przy użyciu zautomatyzowanej nauki maszyn firmy Microsoft!](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
-* Aby uzyskać więcej informacji na temat korzystania z funkcji zautomatyzowanej platformy Azure ML, zobacz [nowe automatyczne Uczenie maszynowe w usłudze Azure Machine Learning](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
+* Aby uzyskać więcej informacji o korzystaniu z funkcji zautomatyzowanej platformy Azure ML, zobacz [nowe automatyczne Uczenie maszynowe w Azure Machine Learning](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
 * [AutoML projekt z Microsoft Research](https://www.microsoft.com/research/project/automl/)

@@ -1,6 +1,6 @@
 ---
-title: 'Menedżer zasobów klastra usługi Service Fabric: Koszt przeniesienia | Dokumentacja firmy Microsoft'
-description: Omówienie koszt przeniesienia do usługi Service Fabric
+title: 'Service Fabric klastra Menedżer zasobów: koszt przenoszenia | Microsoft Docs'
+description: Przegląd kosztów przenoszenia dla usług Service Fabric Services
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1bd049e6f929b6c3247ca1842412d5527605e643
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516607"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243014"
 ---
-# <a name="service-movement-cost"></a>Kosztach przenoszenia usług
-Czynnikiem, który Menedżer zasobów klastra usługi Service Fabric pod uwagę podczas próby określenia, jakie zmiany można wprowadzać w klastrze jest to koszt tych zmian. Pojęcie "cost" jest dłuższym czasem względem można zwiększyć ilość klastra. Koszt jest brana pod uwagę podczas przenoszenia usługi równoważenia, defragmentacji i inne wymagania. Celem jest, aby spełnić wymagania w taki sposób, co najmniej uciążliwe lub kosztowne. 
+# <a name="service-movement-cost"></a>Koszt przeniesienia usługi
+Jest to czynnik, który Menedżer zasobów klastrze Service Fabric podczas próby ustalenia, które zmiany należy wprowadzić w klastrze, jest kosztem tych zmian. Pojęcie "koszt" jest wymieniane z informacjami o tym, jak dużo można ulepszyć klaster. Koszt jest przynoszony podczas przechodzenia usług na potrzeby równoważenia, defragmentacji i innych wymagań. Celem jest spełnienie wymagań dotyczących najmniej niezakłóconych lub kosztownych sposobów. 
 
-Przesunięcie czasu procesora CPU koszty usług i przepustowość, co najmniej sieci. W przypadku usług stanowych wymaga kopiowania stan tych usług, zużywa więcej pamięci i dysku. Minimalizacja kosztu rozwiązania, które Menedżer zasobów klastra Azure Service Fabric funkcjonuje ze pomaga upewnić się, że zasobów klastra nie są poświęcony niepotrzebnie. Jednak również nie chcesz zignorować rozwiązania, które może znacznie poprawić alokacji zasobów w klastrze.
+Przeniesienie usług na minimalny koszt czasu procesora i przepustowości sieci. W przypadku usług stanowych wymagane jest skopiowanie stanu tych usług, zużywających dodatkową pamięć i dysk. Minimalizacja kosztu rozwiązań, które Menedżer zasobów z klastrem platformy Azure Service Fabric, pomaga zapewnić, że zasoby klastra nie są niepotrzebne. Jednak nie ma potrzeby ignorowania rozwiązań, które znacząco zwiększą przydział zasobów w klastrze.
 
-Menedżer zasobów klastra ma dwa sposoby przetwarzania koszty i ograniczanie ich podczas próby zarządzania klastrem. Pierwszy mechanizm jest po prostu zliczania co przeniesienia, która powinna mieć. Jeśli dwa rozwiązania w zakresie są generowane przy użyciu mniej więcej taka sama waga (wynik), a następnie Menedżer zasobów klastra preferuje jeden generuje najniższy koszt (całkowita liczba przeniesień).
+Klaster Menedżer zasobów ma dwa sposoby obliczania kosztów obliczeniowych i ograniczania ich podczas próby zarządzania klastrem. Pierwszy mechanizm jest po prostu zliczany po każdym przeniesieniu. W przypadku wygenerowania dwóch rozwiązań o takim samym saldzie (wyniku), klaster Menedżer zasobów preferuje ten sam koszt (łącznie z liczbą przeniesień).
 
-Ta strategia sprawdza się dobrze. Ale podobnie jak w przypadku domyślnych lub obciążeń statycznych jest mało prawdopodobne w złożonego systemu, przenosi wszystkie są takie same. Niektóre mogą być znacznie bardziej kosztowne.
+Ta strategia działa dobrze. Ale tak jak w przypadku obciążeń domyślnych lub statycznych, jest mało prawdopodobne, że wszystkie przenoszone systemy są równe. Niektóre z nich mogą być znacznie droższe.
 
-## <a name="setting-move-costs"></a>Ustawienie przesuwanie kosztów 
-Możesz określić domyślną przenieść kosztów dla usługi, po utworzeniu:
+## <a name="setting-move-costs"></a>Ustawianie kosztów przenoszenia 
+Można określić domyślny koszt przenoszenia dla usługi po jej utworzeniu:
 
 Program PowerShell:
 
@@ -49,7 +49,7 @@ serviceDescription.DefaultMoveCost = MoveCost.Medium;
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Można również określić lub zaktualizować MoveCost dynamicznie usługi po utworzeniu usługi: 
+Można również określić lub zaktualizować MoveCost dynamicznie dla usługi po utworzeniu usługi: 
 
 Program PowerShell: 
 
@@ -65,9 +65,9 @@ updateDescription.DefaultMoveCost = MoveCost.High;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/ServiceName"), updateDescription);
 ```
 
-## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Dynamicznie określanie kosztu przeniesienia na zasadzie na replikę
+## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Dynamiczne określanie kosztu przeniesienia dla poszczególnych replik
 
-Poprzedzających fragmentów są dostępne do określania MoveCost dla całej usługi jednocześnie z poza samą usługę. Jednak przenieść koszt jest najbardziej przydatna jest, gdy koszt przeniesienia obiektu określonej usługi zmienia się w jego czas. Ponieważ uwierzytelnienia usługi mają prawdopodobnie najlepsze pogląd na sposób kosztownych się one w celu przenoszenia w danym momencie, Brak interfejsu API usługi własne poszczególnych przenieść kosztów, podczas wykonywania raportu. 
+Poprzedzające fragmenty kodu są przeznaczone do określenia MoveCost dla całej usługi jednocześnie spoza usługi. Koszt przeniesienia jest jednak najbardziej przydatny, gdy koszt przeniesienia określonego obiektu usługi zostanie zmieniony na jego cykl życia. Ze względu na to, że same usługi są prawdopodobnie najlepszym pomysłem do przenoszenia danego czasu, istnieje interfejs API służący do zgłaszania indywidualnych kosztów przenoszenia w czasie wykonywania. 
 
 C#:
 
@@ -75,25 +75,35 @@ C#:
 this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
-## <a name="impact-of-move-cost"></a>Wpływ na koszt przeniesienia
-MoveCost zawiera cztery poziomy: Zero, niski, średni i wysoki. MoveCosts są względem siebie, z wyjątkiem Zero. Żadnych kosztów przenoszenia oznacza, że przepływ jest bezpłatna powinna nie wliczają wynik rozwiązania. Ustawienie przejście kosztować wysokiego jest *nie* gwarancji, że replika pozostanie w jednym miejscu.
+## <a name="impact-of-move-cost"></a>Wpływ kosztu przenoszenia
+MoveCost ma pięć poziomów: zero, niski, średni, wysoki i VeryHigh. Mają zastosowanie następujące reguły:
+
+* MoveCosts są względem siebie, z wyjątkiem wartości zero i VeryHigh. 
+* Zero kosztu przeniesienia oznacza, że przenoszenie jest bezpłatne i nie powinno być wliczane do wyniku rozwiązania.
+* Ustawienie kosztu przenoszenia na wartość High lub VeryHigh *nie gwarantuje* , że replika *nigdy* nie zostanie przeniesiona.
+* Repliki z kosztem przeniesienia VeryHigh będą przenoszone tylko w przypadku naruszenia ograniczenia w klastrze, którego nie można naprawić w żaden inny sposób (nawet jeśli wymaga przenoszenia wielu innych replik w celu naprawy naruszenia)
+
+
 
 <center>
 
-![Koszt przenoszenia jako czynnika podczas Wybieranie repliki dla przepływu][Image1]
-</center>
+![przenieść koszt jako czynnik podczas wybierania replik dla][Image1]
+przenoszenia </center>
 
-MoveCost pomoże Ci znaleźć rozwiązania, które spowodować zakłócenie co najmniej ogólną i jest najłatwiejsza do osiągnięcia jednocześnie nadal otrzymywanych saldo równoważne. Pojęcia usługi koszt może być względem wiele rzeczy. Najbardziej typowe czynniki podczas obliczania kosztów przeniesienia są następujące:
+Program MoveCost ułatwia znalezienie rozwiązań, które powodują, że najtańsze zakłócenia i najłatwiej osiągnąć przy zachowaniu równoważnej równowagi. Pojęcie kosztu usługi może być względem wielu rzeczy. Najczęstszymi czynnikami związanymi ze obliczaniem kosztów przeprowadzki są:
 
-- Ilość stanu lub usługa musi przenieść dane.
-- Koszt rozłączenia klientów. Przeniesienie replika podstawowa jest zazwyczaj bardziej kosztowne niż koszty przechodzenia do repliki pomocniczej.
-- Koszt śledząc operacji przerywania. Niektóre operacje na danych magazynu poziom lub operacje wykonywane w odpowiedzi na wywołanie klienta są kosztowne. W pewnym momencie nie chcesz ich zatrzymania, jeśli nie masz. Dlatego podczas operacji się dzieje, zwiększasz kosztu przeniesienia tego obiektu usługi, aby zmniejszyć prawdopodobieństwo, że przemieszczał się. Po zakończeniu operacji, ustawisz koszt powrót do normalnego.
+- Ilość lub dane, które usługa ma przenieść.
+- Koszt odłączenia klientów. Przeniesienie repliki podstawowej zwykle jest droższe niż koszt przeniesienia repliki pomocniczej.
+- Koszt przerwania operacji w locie. Niektóre operacje na poziomie magazynu danych lub operacje wykonywane w odpowiedzi na wywołanie klienta są kosztowne. Po pewnym momencie nie chcesz ich zatrzymać, jeśli nie musisz. W związku z tym podczas trwania operacji można zwiększyć koszt przenoszenia tego obiektu usługi, aby zmniejszyć prawdopodobieństwo jego przeniesienia. Po zakończeniu operacji należy ustawić koszt z powrotem na normalny.
 
-## <a name="enabling-move-cost-in-your-cluster"></a>Włączanie kosztu przeniesienia w klastrze
-Aby bardziej szczegółowego MoveCosts należy wziąć pod uwagę MoveCost musi być włączona w klastrze. Bez tego ustawienia, domyślny tryb liczenia przenosi jest używany do obliczania MoveCost i MoveCost raporty są ignorowane.
+> [!IMPORTANT]
+> Użycie kosztu przeniesienia VeryHigh należy uważnie traktować, ponieważ znacząco ogranicza Menedżer zasobów możliwość znajdowania w klastrze rozwiązania do umieszczania na globalnie optymalnych rozwiązań. Repliki z kosztem przeniesienia VeryHigh będą przenoszone tylko w przypadku naruszenia ograniczenia w klastrze, którego nie można naprawić w żaden inny sposób (nawet jeśli wymaga przenoszenia wielu innych replik w celu naprawy naruszenia)
+
+## <a name="enabling-move-cost-in-your-cluster"></a>Włączanie kosztu przenoszenia w klastrze
+Aby bardziej szczegółowo MoveCosts wziąć pod uwagę, MoveCost musi być włączona w klastrze. Bez tego ustawienia domyślny tryb obliczeń jest używany do obliczania MoveCost, a raporty MoveCost są ignorowane.
 
 
-ClusterManifest.xml:
+ClusterManifest. XML:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -101,7 +111,7 @@ ClusterManifest.xml:
         </Section>
 ```
 
-za pomocą ClusterConfig.json dla autonomicznych wdrożeniach lub Template.json na platformie Azure hostowane klastrów:
+za pośrednictwem ClusterConfig. JSON dla wdrożeń autonomicznych lub Template. JSON dla klastrów hostowanych przez platformę Azure:
 
 ```json
 "fabricSettings": [
@@ -117,8 +127,8 @@ za pomocą ClusterConfig.json dla autonomicznych wdrożeniach lub Template.json 
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-- Menedżera klastra usługi Service Fabric używa metryk do zarządzania, użycie i wydajność w klastrze. Aby dowiedzieć się więcej na temat metryk i sposobach ich konfigurowania, zapoznaj się z [obciążenia w usłudze Service Fabric za pomocą metryk i użycia zasobów na zarządzanie](service-fabric-cluster-resource-manager-metrics.md).
-- Aby dowiedzieć się, jak Menedżer zasobów klastra zarządza i równoważy obciążenie w klastrze, zapoznaj się z [równoważenie klastra usługi Service Fabric](service-fabric-cluster-resource-manager-balancing.md).
+## <a name="next-steps"></a>Następne kroki
+- Service Fabric Menedżer zasobów klastra używa metryk do zarządzania zużyciem i pojemnością w klastrze. Aby dowiedzieć się więcej o metrykach i sposobach ich konfigurowania, zapoznaj się z tematem [Zarządzanie użyciem zasobów i obciążeniem Service Fabric za pomocą metryk](service-fabric-cluster-resource-manager-metrics.md).
+- Aby dowiedzieć się, jak klaster Menedżer zasobów zarządza i zrównoważy obciążenie w klastrze, sprawdź [równoważenie Service Fabric klastra](service-fabric-cluster-resource-manager-balancing.md).
 
 [Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png

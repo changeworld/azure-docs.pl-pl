@@ -1,5 +1,5 @@
 ---
-title: Używanie Apache Spark do analizowania danych w Azure Data Lake Storage Gen1
+title: Analizowanie Azure Data Lake Storage Gen1 przy użyciu Apache Spark usługi HDInsight
 description: Uruchamianie Apache Spark zadań w celu analizowania danych przechowywanych w Azure Data Lake Storage Gen1
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 7c60fdfd4d8e579c24da3c43501e4437806becc6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002490"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241722"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Analizowanie danych w Data Lake Storage Gen1 przy użyciu klastra usługi HDInsight Spark
 
@@ -23,7 +23,7 @@ W tym artykule opisano [Jupyter Notebook](https://jupyter.org/) dostępne z klas
 
 * Konto Azure Data Lake Storage Gen1. Postępuj zgodnie z instrukcjami w punkcie wprowadzenie [do Azure Data Lake Storage Gen1 przy użyciu Azure Portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 
-* Azure HDInsight Spark klaster z Data Lake Storage Gen1 jako magazyn. Postępuj zgodnie z instrukcjami w artykule [Szybki start: Konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Azure HDInsight Spark klaster z Data Lake Storage Gen1 jako magazyn. Postępuj zgodnie z instrukcjami w [przewodniku szybki start: Konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 ## <a name="prepare-the-data"></a>Przygotowywanie danych
 
@@ -32,7 +32,7 @@ W tym artykule opisano [Jupyter Notebook](https://jupyter.org/) dostępne z klas
 
 Jeśli klaster usługi HDInsight został utworzony przy użyciu Data Lake Storage jako dodatkowego magazynu i Azure Storage Blob jako magazyn domyślny, należy najpierw skopiować kilka przykładowych danych do konta Data Lake Storage. Możesz użyć przykładowych danych z Azure Storage Blob skojarzonych z klastrem usługi HDInsight. Aby to zrobić, możesz użyć [Narzędzia ADLCopy](https://aka.ms/downloadadlcopy) . Pobierz i zainstaluj narzędzie z linku.
 
-1. Otwórz wiersz polecenia i przejdź do katalogu, w którym zainstalowano AdlCopy, `%HOMEPATH%\Documents\adlcopy`zwykle.
+1. Otwórz wiersz polecenia i przejdź do katalogu, w którym zainstalowano AdlCopy, zwykle `%HOMEPATH%\Documents\adlcopy`.
 
 2. Uruchom następujące polecenie, aby skopiować konkretny obiekt BLOB z kontenera źródłowego do Data Lake Storage:
 
@@ -108,18 +108,18 @@ Jeśli klaster usługi HDInsight został utworzony przy użyciu Data Lake Storag
            # Register the data fram as a table to run queries against
            hvacdf.registerTempTable("hvac")
 
-6. Ponieważ używane jest jądro PySpark, można teraz bezpośrednio uruchomić zapytanie SQL w tabeli tymczasowej **hvac** utworzonej przed chwilą za pomocą polecenia magicznego `%%sql`. Aby uzyskać więcej informacji na `%%sql` temat Magic, a także innych magicznych Magic dostępnych w jądrze PySpark, zobacz [jądra dostępne w notesach Jupyter z klastrami usługi HDInsight Apache Spark](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+6. Ponieważ używane jest jądro PySpark, można teraz bezpośrednio uruchomić zapytanie SQL w tabeli tymczasowej **hvac** utworzonej przed chwilą za pomocą polecenia magicznego `%%sql`. Aby uzyskać więcej informacji na temat `%%sql` Magic, a także innych magicznych Magic dostępnych w jądrze PySpark, zobacz [jądra dostępne w notesach Jupyter z Apache Spark klastrami usługi HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 
 7. Po pomyślnym ukończeniu zadania domyślnie wyświetlane są następujące tabelaryczne dane wyjściowe.
 
-      ![Wyniki zapytania w tabeli danych wyjściowych](./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "Wyniki zapytania w tabeli danych wyjściowych")
+      ![Dane wyjściowe tabeli dla wyniku zapytania](./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "Wyniki zapytania w tabeli danych wyjściowych")
 
      Wyniki można również przeglądać w postaci innych wizualizacji. Na przykład wykres warstwowy tych samych danych wyjściowych będzie wyglądać w następujący sposób.
 
-     ![Wykres warstwowy wyników zapytania](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "Wykres warstwowy wyników zapytania")
+     ![Wykres warstwowy wyniku zapytania](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "Wykres warstwowy wyników zapytania")
 
 8. Po zakończeniu działania aplikacji należy ją zamknąć, aby zwolnić zasoby. W tym celu w menu **File** (Plik) w notesie kliknij polecenie **Close and Halt** (Zamknij i zatrzymaj). Spowoduje to zakończenie pracy i zamknięcie notesu.
 

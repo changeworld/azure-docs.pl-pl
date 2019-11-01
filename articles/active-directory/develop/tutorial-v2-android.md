@@ -11,26 +11,34 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/09/2019
+ms.date: 10/10/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b29e5815ec39e850bee0707a9c92c12201c7f21e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934525"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242203"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Logowanie użytkowników i wywoływanie Microsoft Graph z poziomu aplikacji systemu Android
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Samouczek: Logowanie użytkowników i wywoływanie Microsoft Graph z aplikacji systemu Android
 
 > [!NOTE]
 > Ten samouczek nie został jeszcze zaktualizowany do pracy z biblioteką MSAL dla systemu Android w wersji 1,0. Działa ze starszą wersją zgodnie z konfiguracją w tym samouczku.
 
 W tym samouczku dowiesz się, jak zintegrować aplikację systemu Android z platformą tożsamości firmy Microsoft. Twoja aplikacja zaloguje użytkownika, uzyskaj token dostępu, aby wywołać interfejs API Microsoft Graph i przetworzyć żądanie do interfejsu API Microsoft Graph.  
 
-Po ukończeniu tego przewodnika aplikacja będzie akceptować logowania do osobistych kont Microsoft (w tym outlook.com, live.com i innych) oraz kont służbowych z dowolnej firmy lub organizacji korzystającej z Azure Active Directory.
+> [!div class="checklist"]
+> * Integrowanie aplikacji systemu Android z platformą tożsamości firmy Microsoft
+> * Zaloguj użytkownika
+> * Uzyskiwanie tokenu dostępu w celu wywołania interfejsu API Microsoft Graph
+> * Wywołaj interfejs API Microsoft Graph.  
+
+Po ukończeniu tego samouczka aplikacja będzie akceptować logowania do osobistych kont Microsoft (w tym outlook.com, live.com i innych), a także kont służbowych z dowolnej firmy lub organizacji korzystającej z Azure Active Directory.
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="how-this-tutorial-works"></a>Jak działa ten samouczek
 
@@ -56,7 +64,7 @@ Ten przykład używa biblioteki uwierzytelniania firmy Microsoft dla systemu And
 
 ## <a name="create-a-project"></a>Tworzenie projektu
 
-Ten samouczek spowoduje utworzenie nowego projektu. Jeśli chcesz zamiast tego pobrać ukończony samouczek, [Pobierz kod](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
+Ten samouczek spowoduje utworzenie nowego projektu. Jeśli chcesz zamiast tego pobrać ukończony samouczek, [Pobierz kod](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip).
 
 1. Otwórz Android Studio i wybierz pozycję **Rozpocznij nowy projekt Android Studio**.
 2. Wybierz **działanie podstawowe** i wybierz pozycję **dalej**.
@@ -538,6 +546,10 @@ Po zalogowaniu aplikacja będzie wyświetlać dane zwrócone z punktu końcowego
 ### <a name="consent"></a>Posiadacz
 
 Gdy użytkownik po raz pierwszy zaloguje się do aplikacji, otrzyma monit o tożsamość firmy Microsoft, aby wyrazić zgodę na wymagane uprawnienia.  Chociaż większość użytkowników może wyrażać zgodę, niektórzy dzierżawy usługi Azure AD mają wyłączoną opcję zgody użytkownika, która wymaga od administratorów zgody w imieniu wszystkich użytkowników. Aby obsłużyć ten scenariusz, należy zarejestrować zakresy aplikacji w Azure Portal.
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Gdy nie jest już potrzebne, Usuń obiekt aplikacji, który został utworzony w kroku [zarejestruj aplikację](#register-your-application) .
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 

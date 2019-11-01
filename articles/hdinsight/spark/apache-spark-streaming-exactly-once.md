@@ -1,5 +1,5 @@
 ---
-title: Zadania przesyłania strumieniowego Spark z przetwarzaniem zdarzeń dokładnie raz — usługa Azure HDInsight
+title: Przesyłanie strumieniowe Spark & przetwarzanie zdarzeń dokładnie raz — usługa Azure HDInsight
 description: Jak skonfigurować Apache Spark streaming, aby przetwarzać zdarzenie raz i tylko raz.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,20 +8,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 908c49a46fe7993bc20bcb63a3c15758e2de5343
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 34cb3f4cdcc5bfc11bba300ff1aa04422e0fcc57
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091024"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241134"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Twórz Apache Spark zadania przesyłania strumieniowego z przetwarzaniem zdarzeń dokładnie raz
 
 Aplikacje przetwarzania strumieniowego wykorzystują różne podejścia do sposobu obsługi komunikatów o ponownym przetwarzaniu po wystąpieniu błędu w systemie:
 
-* Co najmniej raz: Każdy komunikat jest gwarantowany do przetworzenia, ale może zostać przetworzony więcej niż jeden raz.
+* Co najmniej raz: Każdy komunikat jest gwarantowany do przetworzenia, ale może zostać przetworzony więcej niż raz.
 * Maksymalnie raz: Każdy komunikat może być nieprzetwarzany lub nie można go przetworzyć. Jeśli komunikat jest przetwarzany, jest przetwarzany tylko raz.
-* Dokładnie raz: Każdy komunikat jest gwarantowany do przetworzenia tylko raz i tylko raz.
+* Dokładnie raz: Każdy komunikat jest gwarantowany do przetworzenia jednokrotnie i tylko raz.
 
 W tym artykule opisano sposób konfigurowania przesyłania strumieniowego platformy Spark w celu osiągnięcia dokładnie jednego przetwarzania.
 
@@ -49,7 +49,7 @@ W przypadku przesyłania strumieniowego Spark źródła, takie jak Event Hubs i 
 
 ### <a name="use-the-write-ahead-log"></a>Korzystanie z dziennika zapisu
 
-Funkcja przesyłania strumieniowego Spark obsługuje zapisywanie w dzienniku z wyprzedzeniem, gdzie każde odebrane zdarzenie jest najpierw zapisywane w katalogu punktów kontrolnych platformy Spark w magazynie odpornym na błędy, a następnie przechowywane w odpornym na rozdzielonym zestawie danych (RDD). Na platformie Azure Magazyn Odporny na uszkodzenia to system plików HDFS objęty usługą Azure Storage lub Azure Data Lake Storage. W aplikacji do przesyłania strumieniowego Spark dziennik zapisu jest włączony dla wszystkich odbiorników przez ustawienie `spark.streaming.receiver.writeAheadLog.enable` ustawienia konfiguracji na. `true` Dziennik zapisu z wyprzedzeniem zapewnia odporność na uszkodzenia w przypadku awarii sterownika i modułów wykonujących.
+Funkcja przesyłania strumieniowego Spark obsługuje zapisywanie w dzienniku z wyprzedzeniem, gdzie każde odebrane zdarzenie jest najpierw zapisywane w katalogu punktów kontrolnych platformy Spark w magazynie odpornym na błędy, a następnie przechowywane w odpornym na rozdzielonym zestawie danych (RDD). Na platformie Azure Magazyn Odporny na uszkodzenia to system plików HDFS objęty usługą Azure Storage lub Azure Data Lake Storage. W aplikacji do przesyłania strumieniowego Spark dziennik zapisu jest włączony dla wszystkich odbiorników przez ustawienie ustawienia konfiguracji `spark.streaming.receiver.writeAheadLog.enable` na `true`. Dziennik zapisu z wyprzedzeniem zapewnia odporność na uszkodzenia w przypadku awarii sterownika i modułów wykonujących.
 
 W przypadku pracowników, którzy uruchamiają zadania dotyczące danych zdarzeń, każda RDD jest określana jako replikacja i dystrybucja między wieloma pracownikami. Jeśli zadanie nie powiedzie się z powodu awarii procesu roboczego, zadanie zostanie uruchomione ponownie w innym procesie roboczym, który ma replikę danych zdarzenia, więc zdarzenie nie zostanie utracone.
 

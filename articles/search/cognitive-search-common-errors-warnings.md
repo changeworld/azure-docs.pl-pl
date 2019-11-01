@@ -1,23 +1,24 @@
 ---
-title: Typowe błędy i ostrzeżenia
-titleSuffix: Azure Cognitive Search
-description: Ten artykuł zawiera informacje i rozwiązania typowych błędów i ostrzeżeń, które mogą wystąpić podczas wzbogacania danych AI na platformie Azure Wyszukiwanie poznawcze.
-manager: nitinme
+title: Typowe błędy i ostrzeżenia — Azure Search
+description: Ten artykuł zawiera informacje i rozwiązania typowych błędów i ostrzeżeń, które mogą wystąpić podczas wzbogacania AI w Azure Search.
+services: search
+manager: heidist
 author: amotley
-ms.author: abmotley
-ms.service: cognitive-search
+ms.service: search
+ms.workload: search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 09/18/2019
+ms.author: abmotley
+ms.openlocfilehash: 6455ac9dbe0933f6d46d1137e0a19dcc388d8c80
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787977"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243039"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Typowe błędy i ostrzeżenia dotyczące potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Typowe błędy i ostrzeżenia dotyczące potoku wzbogacenia AI w Azure Search
 
-Ten artykuł zawiera informacje i rozwiązania typowych błędów i ostrzeżeń, które mogą wystąpić podczas wzbogacania danych AI na platformie Azure Wyszukiwanie poznawcze.
+Ten artykuł zawiera informacje i rozwiązania typowych błędów i ostrzeżeń, które mogą wystąpić podczas wzbogacania AI w Azure Search.
 
 ## <a name="errors"></a>Błędy
 Indeksowanie jest przerywane, gdy licznik błędów przekracza wartość ["maxFailedItems"](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). 
@@ -132,6 +133,10 @@ Dokument został odczytany i przetworzony, ale z powodu niezgodności konfigurac
 
 We wszystkich tych przypadkach należy zapoznać się z [obsługiwanymi typami danych (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) i [mapą typów danych dla indeksatorów w Azure Search](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) , aby upewnić się, że schemat indeksu został prawidłowo skonstruowany i skonfigurowano odpowiednie [mapowania pól indeksatora](search-indexer-field-mappings.md). Komunikat o błędzie będzie zawierać szczegóły, które mogą pomóc w śledzeniu źródła niezgodności.
 
+### <a name="could-not-process-document-within-indexer-max-run-time"></a>Nie można przetworzyć dokumentu w maksymalnym czasie wykonywania indeksatora
+
+Ten błąd występuje, gdy indeksator nie może zakończyć przetwarzania pojedynczego dokumentu ze źródła danych w dozwolonym czasie wykonywania. [Maksymalny czas działania](search-limits-quotas-capacity.md#indexer-limits) jest krótszy, gdy są używane umiejętności. W przypadku wystąpienia tego błędu, jeśli maxFailedItems ustawiono wartość inną niż 0, Indeksator pomija dokument w przyszłych uruchomieniach, tak aby indeksowanie mogło postępować. Jeśli nie możesz mieć możliwości pominięcia jakiegokolwiek dokumentu lub jeśli ten błąd występuje w sposób ciągły, rozważ przerwanie dokumentów w mniejszych dokumentach, aby można było wykonać częściowe postępy w ramach jednego wykonywania indeksatora.
+
 ##  <a name="warnings"></a>Ostrzeżeni
 Ostrzeżenia nie zatrzymują indeksowania, ale wskazują warunki, które mogą spowodować nieoczekiwane wyniki. Niezależnie od tego, czy podejmujesz akcję, czy nie zależą od danych i Twojego scenariusza.
 
@@ -160,7 +165,7 @@ Jeśli chcesz podać wartość domyślną w przypadku braku danych wejściowych,
 | --- | --- | --- |
 | Dane wejściowe umiejętności są niewłaściwego typu | Wymagane `X` danych wejściowych kwalifikacji nie ma oczekiwanego typu `String`. Wymagane `X` danych wejściowych kwalifikacji nie ma oczekiwanego formatu. | Pewne umiejętności oczekują danych wejściowych określonych typów, na przykład [umiejętność tonacji](cognitive-search-skill-sentiment.md) oczekuje, że `text` być ciągiem. Jeśli dane wejściowe określają wartość różną od ciągu, wówczas umiejętność nie zostanie wykonana i nie wygeneruje żadnych danych wyjściowych. Upewnij się, że zestaw danych zawiera wartości wejściowe, które są jednorodne w typie, lub Użyj [niestandardowej umiejętności interfejsu API sieci Web](cognitive-search-custom-skill-web-api.md) , aby wstępnie przetworzyć dane wejściowe. Jeśli Iteracja jest przeprowadzana przez tablicę, sprawdź kontekst umiejętności i wprowadź `*` w poprawnych pozycjach. Zwykle zarówno kontekst, jak i źródło danych wejściowych powinny kończyć się `*` dla tablic. |
 | Brak danych wejściowych kwalifikacji | Brak wymaganego `X` wejściowego umiejętności. | Jeśli wszystkie dokumenty otrzymają to ostrzeżenie, prawdopodobnie występuje literówka w ścieżkach wejściowych i należy dokładnie sprawdzić wielkość liter nazwy właściwości, dodatkowe lub brakujące `*` w ścieżce, a dokumenty ze źródła danych definiują wymagane dane wejściowe. |
-| Dane wejściowe kodu języka umiejętności są nieprawidłowe | @No__t_0 danych wejściowych umiejętności zawiera następujące kody języka `X,Y,Z`, co najmniej jeden z nich jest nieprawidłowy. | Zobacz więcej szczegółów [poniżej](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) |
+| Dane wejściowe kodu języka umiejętności są nieprawidłowe | `languageCode` danych wejściowych umiejętności zawiera następujące kody języka `X,Y,Z`, co najmniej jeden z nich jest nieprawidłowy. | Zobacz więcej szczegółów [poniżej](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) |
 
 ### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Dane wejściowe umiejętności "languageCode" zawierają następujące kody języka: "X, Y, Z", co najmniej jeden z nich jest nieprawidłowy.
 Co najmniej jedna wartość przeniesiona do opcjonalnego wejścia `languageCode` z poziomu umiejętności podrzędnej nie jest obsługiwana. Taka sytuacja może wystąpić, jeśli przekazujesz dane wyjściowe [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) do kolejnych umiejętności, a dane wyjściowe składają się z większej liczby języków niż jest to obsługiwane w tych umiejętnościach podrzędnych.

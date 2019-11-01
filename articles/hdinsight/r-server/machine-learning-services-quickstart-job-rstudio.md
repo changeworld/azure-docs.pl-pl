@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Serwer RStudio do wykonania języka R względem usługi ML w usłudze Azure HDInsight'
+title: 'Szybki Start: RStudio Server & ML Services for R — Azure HDInsight'
 description: W ramach przewodnika Szybki Start wykonujesz skrypt języka R w klastrze usług ML w usłudze Azure HDInsight przy użyciu serwera RStudio.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,32 +8,32 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: e2fcdeb91517b048766d59a9714346f76091a8c8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8a6a204ee5080e3acf99c13ecba1e1c7664d68b4
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123126"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241888"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Szybki start: Wykonywanie skryptu języka R w klastrze usług ML w usłudze Azure HDInsight przy użyciu serwera RStudio
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Szybki Start: wykonywanie skryptu języka R w klastrze usług ML w usłudze Azure HDInsight przy użyciu serwera RStudio
 
 Usługi ML w usłudze Azure HDInsight umożliwiają używanie skryptów języka R Apache Spark i Apache Hadoop MapReduce do uruchamiania obliczeń rozproszonych. Usługa ML kontroluje sposób wykonywania wywołań przez ustawienie kontekstu obliczeniowego. Węzeł brzegowy klastra zapewnia wygodne miejsce do łączenia się z klastrem i uruchamiania skryptów języka R. Węzeł brzegowy umożliwia uruchamianie równoległych funkcji rozproszonych kolekcję funkcji revoscaler na różnych rdzeniach serwera węzła brzegowego. Można je również uruchamiać w węzłach klastra przy użyciu mapy usługi Hadoop w usłudze kolekcję funkcji revoscaler, zmniejszając lub Apache Spark konteksty obliczeniowe.
 
 W tym przewodniku szybki start dowiesz się, jak uruchomić skrypt języka R z serwerem RStudio, który demonstruje użycie platformy Spark w przypadku obliczeń rozproszonych języka R. Zdefiniujesz kontekst obliczeniowy do wykonywania obliczeń lokalnie w węźle brzegowym i ponownie dystrybuowany w węzłach klastra usługi HDInsight.
 
-## <a name="prerequisite"></a>Wymagania wstępne
+## <a name="prerequisite"></a>Warunek wstępny
 
 Klaster usługi ML w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz pozycję **usługi ml** dla **typu klastra**.
 
 ## <a name="connect-to-rstudio-server"></a>Łączenie z programem RStudio Server
 
-Serwer RStudio jest uruchamiany w węźle brzegowym klastra. Przejdź do następującego adresu URL, `CLUSTERNAME` gdzie to nazwa utworzonego klastra usług ml:
+Serwer RStudio jest uruchamiany w węźle brzegowym klastra. Przejdź do następującego adresu URL, gdzie `CLUSTERNAME` jest nazwą utworzonego klastra usługi ML:
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Gdy logujesz się po raz pierwszy, musisz uwierzytelnić się dwa razy. W przypadku pierwszego monitu o uwierzytelnienie Podaj nazwę logowania administratora klastra i hasło, `admin`wartość domyślna to. W przypadku drugiego monitu uwierzytelniania Podaj nazwę logowania SSH i hasło, wartość domyślna `sshuser`to. Kolejne logowania wymagają tylko poświadczeń SSH.
+Gdy logujesz się po raz pierwszy, musisz uwierzytelnić się dwa razy. W przypadku pierwszego monitu o uwierzytelnienie Podaj nazwę logowania administratora klastra i hasło, wartość domyślna to `admin`. W przypadku drugiego monitu uwierzytelniania Podaj nazwę logowania SSH i hasło, wartość domyślna to `sshuser`. Kolejne logowania wymagają tylko poświadczeń SSH.
 
 Po nawiązaniu połączenia ekran powinien przypominać następujący zrzut ekranu:
 

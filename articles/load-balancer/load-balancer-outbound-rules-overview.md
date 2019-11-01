@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9fc9eb347e97fe6ab57b3e30651e4ea77a4ce9c8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fd43e9c71db9ae553b24e6cd774495ee8cc5b621
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790247"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242346"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer reguły ruchu wychodzącego
 
@@ -86,7 +86,7 @@ Użyj następującego parametru, aby przydzielić porty protokołu IPSec 10 000 
 
 Każdy publiczny adres IP ze wszystkich frontonów reguły wychodzącej współużytkuje do 64 000 tymczasowych portów do użycia jako porty protokołu reportowego.  Load Balancer przydziela porty przystawek adresów sieciowych w wielokrotnościach 8. Jeśli podano wartość, która nie jest podzielna przez 8, operacja konfiguracji zostanie odrzucona.  Jeśli podjęto próbę przydzielenia większej liczby portów ze standardem adresów IP, które są dostępne w oparciu o liczbę publicznych adresów, operacja konfiguracji zostanie odrzucona.  Na przykład w przypadku przydzielenia 10 000 portów na maszynę wirtualną i 7 maszyn wirtualnych w puli zaplecza współużytkują jeden publiczny 64 000 > 10 000 adres IP  Aby włączyć ten scenariusz, można dodać więcej publicznych adresów IP do frontonu reguły ruchu wychodzącego.
 
-Można przywrócić [automatyczną alokację portu na podstawie rozmiaru puli zaplecza](load-balancer-outbound-connections.md#preallocatedports) , określając 0 dla liczby portów.
+Można przywrócić [automatyczną alokację portu na podstawie rozmiaru puli zaplecza](load-balancer-outbound-connections.md#preallocatedports) , określając 0 dla liczby portów. W takim przypadku pierwsze wystąpienia maszyn wirtualnych 50 będą mieć 1024 portów, a 51-100 wystąpienia maszyn wirtualnych otrzymają 512 i tak dalej, zgodnie z tabelą. Posiadanie więcej niż jednego frontonu z publicznym adresem IP skojarzonym z regułą ruchu wychodzącego nie zwiększa liczby portów przypisywanych do poszczególnych wystąpień maszyn wirtualnych.
 
 ### <a name="idletimeout"></a>Kontrola limitu czasu bezczynności przepływu wychodzącego
 

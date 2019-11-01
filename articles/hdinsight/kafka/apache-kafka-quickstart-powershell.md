@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie Apache Kafka w usłudze HDInsight przy użyciu Azure PowerShell — Szybki Start
+title: 'Szybki Start: Tworzenie Apache Kafka przy użyciu Azure PowerShell-HDInsight'
 description: W tym przewodniku Szybki start dowiesz się, jak utworzyć klaster platformy Apache Kafka w usłudze Azure HDInsight przy użyciu programu Azure PowerShell. Zdobędziesz także informacje o tematach, subskrybentach i odbiorcach platformy Kafka.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 79224879dc0f23c7ad022134c6add087b90304b7
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 082be3630474ec5f97ab7d80a3ee1b92cdc28fd7
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123166"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242329"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Szybki start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu programu PowerShell
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Szybki Start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu programu PowerShell
 
 [Apache Kafka](https://kafka.apache.org/) to rozproszona platforma przesyłania strumieniowego typu open source. Jest ona często używana jako broker komunikatów, ponieważ oferuje funkcje podobne do kolejki komunikatów dotyczących publikowania i subskrybowania. 
 
@@ -33,9 +33,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 * Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się do subskrypcji platformy Azure za pomocą `Connect-AzAccount` polecenia cmdlet i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
+Zaloguj się do subskrypcji platformy Azure za pomocą polecenia cmdlet `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
 ```azurepowershell-interactive
 # Login to your Azure subscription
@@ -65,7 +65,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 Platforma Kafka w usłudze HDInsight używa funkcji Dyski zarządzane platformy Azure do przechowywania danych platformy Kafka, natomiast klaster używa też usługi Azure Storage do przechowywania informacji, takich jak dzienniki. Użyj [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) , aby utworzyć nowe konto magazynu.
 
 > [!IMPORTANT]  
-> Rodzaj `BlobStorage` konta magazynu może być używany tylko jako magazyn pomocniczy dla klastrów usługi HDInsight.
+> Rodzaj konta magazynu `BlobStorage` może być używany tylko jako magazyn pomocniczy dla klastrów usługi HDInsight.
 
 ```azurepowershell-interactive
 $storageName = Read-Host -Prompt "Enter the storage account name"

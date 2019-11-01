@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie Apache Kafka w usłudze HDInsight przy użyciu Azure Resource Manager — Szybki Start
+title: 'Szybki Start: Apache Kafka przy użyciu Azure Resource Manager-HDInsight'
 description: W tym przewodniku szybki start dowiesz się, jak utworzyć klaster Apache Kafka w usłudze Azure HDInsight przy użyciu szablonu Azure Resource Manager. Zdobędziesz także informacje o tematach, subskrybentach i odbiorcach platformy Kafka.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: deae58c30e37aa4df1dd8ca9b1b64cc79e9509ae
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: d908d210ff0448069a9abc76209c72d9b2a7595c
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123173"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242025"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Szybki start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu szablonu Menedżer zasobów
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Szybki Start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu szablonu Menedżer zasobów
 
 [Apache Kafka](https://kafka.apache.org/) to rozproszona platforma przesyłania strumieniowego typu open source. Jest ona często używana jako broker komunikatów, ponieważ oferuje funkcje podobne do kolejki komunikatów dotyczących publikowania i subskrybowania. 
 
@@ -39,11 +39,11 @@ Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą 
 
 2. Aby utworzyć klaster platformy Kafka, użyj następujących wartości:
 
-    | Właściwość | Value |
+    | Właściwość | Wartość |
     | --- | --- |
-    | Subscription | Swoją subskrypcję platformy Azure. |
-    | Resource group | Grupa zasobów, w której jest tworzony klaster. |
-    | Location | Region świadczenia usługi Azure, w którym jest tworzony klaster. |
+    | Subskrypcja | Swoją subskrypcję platformy Azure. |
+    | Grupa zasobów | Grupa zasobów, w której jest tworzony klaster. |
+    | Lokalizacja | Region świadczenia usługi Azure, w którym jest tworzony klaster. |
     | Nazwa klastra | Nazwa klastra Kafka. |
     | Nazwa użytkownika logowania klastra | Nazwa konta używana do logowania w usługach opartych na protokole HTTPS hostowanych w klastrze. |
     | Hasło logowania klastra | Hasło dla nazwy użytkownika logowania. |

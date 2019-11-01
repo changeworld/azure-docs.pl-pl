@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984134"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242475"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Wytyczne dotyczące planowania sieci usługi Azure NetApp Files
 
@@ -95,11 +95,11 @@ Na poniższym diagramie przedstawiono środowisko platformy Azure w języku maci
 
 Podstawowym scenariuszem jest utworzenie lub nawiązanie połączenia z woluminem Azure NetApp Files z maszyny wirtualnej (VM) w tej samej sieci wirtualnej. W przypadku sieci wirtualnej 2 na powyższym diagramie wolumin 1 jest tworzony w delegowanej podsieci i można go zainstalować na maszynie wirtualnej 1 w podsieci domyślnej.
 
-### <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych
+### <a name="vnet-peering"></a>Wirtualne sieci równorzędne
 
 Jeśli masz dodatkowe sieci wirtualnych w tym samym regionie, które potrzebują dostępu do zasobów każdego z nich, sieci wirtualnych można połączyć za pomocą [komunikacji równorzędnej sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) , aby zapewnić bezpieczną łączność za pośrednictwem infrastruktury platformy Azure. 
 
-Rozważ użycie sieci VNet 2 i sieci wirtualnej 3 na powyższym diagramie. Jeśli maszyna wirtualna 2 musi nawiązać połączenie z maszyną wirtualną 3 lub 2, lub jeśli maszyna wirtualna 3 musi nawiązać połączenie z maszyną wirtualną 2 lub woluminem 1, należy włączyć komunikację równorzędną sieci wirtualnej między siecią wirtualną 2 i siecią wirtualną 3. 
+Rozważ użycie sieci VNet 2 i sieci wirtualnej 3 na powyższym diagramie. Jeśli maszyna wirtualna 1 musi nawiązać połączenie z maszyną wirtualną 2 lub 2, lub jeśli maszyna wirtualna 2 musi nawiązać połączenie z maszyną wirtualną 1 lub wolumin 1, należy włączyć komunikację równorzędną sieci wirtualnej między siecią wirtualną 2 i siecią wirtualną 3. 
 
 Ponadto Rozważmy scenariusz, w którym sieć wirtualna 1 jest połączona z siecią VNet 2, a sieć wirtualna 2 jest połączona z siecią VNet 3 w tym samym regionie. Zasoby z sieci wirtualnej 1 mogą łączyć się z zasobami na platformie sieci wirtualnej 2, ale nie mogą łączyć się z zasobami w VNet 3, chyba że sieć wirtualna 1 i Sieć wirtualna 3 są połączone za pomocą komunikacji równorzędnej. 
 

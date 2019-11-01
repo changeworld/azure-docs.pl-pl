@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb4668ae87404771513ca5825482efe9206308d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d0cb5becd8375c393031892efb0b6c54786eeb8f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025001"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242227"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -73,7 +73,7 @@ Jeśli używasz publicznego adresu IP jako punktu końcowego, możesz znaleźć 
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Czy nazwa adresu IP lub DNS jest zmieniana w okresie istnienia bramy aplikacji?
 
-Adres VIP można zmienić, jeśli zatrzymasz i uruchomisz bramę aplikacji. Jednak nazwa DNS skojarzona z bramą aplikacji nie zmienia się w okresie istnienia bramy. Ponieważ nazwa DNS nie zmienia się, należy użyć aliasu CNAME i wskazać adres DNS bramy aplikacji.
+W przypadku jednostki SKU Application Gateway V1, adres VIP może ulec zmianie, jeśli zatrzymasz i uruchomisz bramę aplikacji. Jednak nazwa DNS skojarzona z bramą aplikacji nie zmienia się w okresie istnienia bramy. Ponieważ nazwa DNS nie zmienia się, należy użyć aliasu CNAME i wskazać adres DNS bramy aplikacji. W jednostkach SKU Application Gateway v2 można ustawić adres IP jako statyczny, aby nazwy IP i DNS nie zmieniły się w okresie istnienia bramy aplikacji. 
 
 ### <a name="does-application-gateway-support-static-ip"></a>Czy Application Gateway obsługiwać statyczny adres IP?
 
@@ -322,7 +322,7 @@ Aby uzyskać więcej informacji, zobacz temat [OWASPs Top-10](https://www.owasp.
 
 ### <a name="does-waf-support-ddos-protection"></a>Czy WAF obsługuje ochronę DDoS?
 
-Tak. Ochronę DDoS można włączyć w sieci wirtualnej, w której wdrożono bramę aplikacji. To ustawienie zapewnia, że usługa Azure DDoS Protection chroni również wirtualny adres IP bramy aplikacji (VIP).
+Tak. Możesz włączyć ochronę przed atakami DDoS dla sieci wirtualnej, gdzie jest wdrożona brama aplikacji. Te ustawienia zapewniają, że usługa Azure DDoS Protection chroni także wirtualny adres IP bramy aplikacji.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Czy istnieją wskazówki dotyczące migracji z jednostki SKU w wersji 1 do wersji 2 SKU?
 

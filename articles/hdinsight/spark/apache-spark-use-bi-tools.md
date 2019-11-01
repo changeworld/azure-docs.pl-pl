@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: analizowanie danych platformy Apache Spark przy użyciu usługi Power BI w usłudze Azure HDInsight '
+title: 'Samouczek: analizowanie danych Apache Spark usługi Azure HDInsight za pomocą Power BI'
 description: Samouczek — używanie Power BI firmy Microsoft do wizualizacji Apache Spark przechowywanych klastrów usługi HDInsight danych
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: fe7560f68690233d7a333724274a259d693123d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: c2d6a5acba304d7421b000cab2ee5cee5b85e5ce
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035692"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241358"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Samouczek: analizowanie danych platformy Apache Spark przy użyciu usługi Power BI w usłudze HDInsight
 
@@ -78,11 +78,11 @@ Pierwsze kroki podczas pracy z platformą Spark obejmują połączenie się z kl
 
 2. Na karcie **Narzędzia główne** przejdź do okna **pobieranie danych** >  **.** ..
 
-    ![Pobieranie danych do programu Power BI Desktop z usługi HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Pobieranie danych do usługi Power BI z usługi HDInsight Apache Spark")
+    ![Pobierz dane do Power BI Desktop z usługi HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Pobieranie danych do Power BI z poziomu usługi Apache Spark BI")
 
 3. Wprowadź `Spark` w polu wyszukiwania wybierz pozycję **Azure HDInsight Spark**, a następnie wybierz pozycję **Połącz**.
 
-    ![Pobieranie danych do usługi Power BI z usługi Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Pobieranie danych do usługi Power BI z usługi Apache Spark BI")
+    ![Pobieranie danych do Power BI z poziomu usługi Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Pobieranie danych do Power BI z poziomu usługi Apache Spark BI")
 
 4. Wprowadź adres URL klastra (w formacie `mysparkcluster.azurehdinsight.net`) w polu tekstowym **serwer** .
 
@@ -104,21 +104,21 @@ Pierwsze kroki podczas pracy z platformą Spark obejmują połączenie się z kl
 
     2. Przeciągnij pole **BuildingID** do obszaru **Oś** i przeciągnij pola **ActualTemp** i **TargetTemp** do obszaru **Wartość**.
 
-        ![Dodawanie kolumn wartości]—(./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Dodaj kolumny wartości")
+        ![Dodaj kolumny wartości](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Dodaj kolumny wartości")
 
         Diagram wygląda następująco:
 
-        ![Wykres obszaru]Sum —(./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Wykres obszaru")
+        ![suma wykresu warstwowego](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "suma wykresu warstwowego")
 
         Domyślnie wizualizacja pokazuję sumę wartości **ActualTemp** i **TargetTemp**. Wybierz strzałkę w dół obok pozycji **ActualTemp** i **TragetTemp** w okienku wizualizacje, aby zobaczyć pozycję **Suma** jest zaznaczona.
 
     3. Wybierz strzałkę w dół obok pozycji **ActualTemp** i **TragetTemp** w okienku wizualizacje, a następnie wybierz pozycję **średnia** , aby uzyskać średnią rzeczywistą i docelową temperaturę dla każdego budynku.
 
-        ![średnia wartość](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "średnia") wartości
+        ![Średnia wartość](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "Średnia wartość")
 
         Twoja wizualizacja danych będzie podobna do przedstawionej na zrzucie ekranu. Przesuń kursor nad wizualizację, aby wyświetlić etykietki narzędzi z odpowiednimi danymi.
 
-        (./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Wykres obszaru") ![wykresu warstwowego]
+        ![Wykres warstwowy](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Wykres warstwowy")
 
 9. Przejdź do **pliku** > **Zapisz**, wprowadź nazwę `BuildingTemperature` dla pliku, a następnie wybierz pozycję **Zapisz**.
 
@@ -134,19 +134,19 @@ Usługa Power BI umożliwia udostępnianie raportów i pulpitów nawigacyjnych w
 
 1. Wybierz obszar roboczy, do którego chcesz opublikować zestaw danych i raport, a następnie kliknij pozycję **Wybierz**. Na poniższej ilustracji domyślnie wybrany jest **Mój obszar roboczy**.
 
-    ![Wybieranie obszaru roboczego, do którego chcesz opublikować zestaw danych i raport](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Wybieranie obszaru roboczego, do którego chcesz opublikować zestaw danych i raport") 
+    ![Wybierz obszar roboczy, aby opublikować zestaw danych i raport](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Wybierz obszar roboczy, aby opublikować zestaw danych i raport") 
 
 1. Po pomyślnym zakończeniu publikowania kliknij pozycję **Otwórz „BuildingTemperature.pbix” w usłudze Power BI**.
 
-    ![Publikowanie zakończone pomyślnie, kliknij, aby wprowadzić poświadczenia](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Publikowanie zakończone pomyślnie, kliknij, aby wprowadzić poświadczenia") 
+    ![Publikowanie powiodło się, kliknij, aby wprowadzić poświadczenia](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Publikowanie powiodło się, kliknij, aby wprowadzić poświadczenia") 
 
 1. W usłudze Power BI kliknij pozycję **Wprowadź poświadczenia**.
 
-    ![Wprowadzanie poświadczeń w usłudze Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Wprowadzanie poświadczeń w usłudze Power BI")
+    ![Wprowadź poświadczenia w usługa Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Wprowadź poświadczenia w usługa Power BI")
 
 1. Kliknij pozycję **Edytuj poświadczenia**.
 
-    ![Edycja poświadczeń w usłudze Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Edycja poświadczeń w usłudze Power BI")
+    ![Edytuj poświadczenia w usługa Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Edytuj poświadczenia w usługa Power BI")
 
 1. Wprowadź dane konta logowania usługi HDInsight, a następnie kliknij przycisk **Zaloguj**. Domyślna nazwa konta to *admin*.
 
@@ -154,7 +154,7 @@ Usługa Power BI umożliwia udostępnianie raportów i pulpitów nawigacyjnych w
 
 1. W okienku po lewej stronie przejdź do pozycji **Obszary robocze** > **Mój obszar roboczy** > **RAPORTY**, a następnie kliknij pozycję **BuildingTemperature** (temperatura budynku).
 
-    ![Raport na liście raportów w okienku po lewej stronie](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Raport na liście raportów w okienku po lewej stronie")
+    ![Raport wyświetlany w obszarze raporty w okienku po lewej stronie](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Raport wyświetlany w obszarze raporty w okienku po lewej stronie")
 
     Pozycja **BuildingTemperature** powinna również zostać wyświetlona w obszarze **ZESTAWY DANYCH** w okienku po lewej stronie.
 
@@ -162,11 +162,11 @@ Usługa Power BI umożliwia udostępnianie raportów i pulpitów nawigacyjnych w
 
 1. Umieść kursor na wizualizacji, a następnie kliknij ikonę pinezki w prawym górnym rogu.
 
-    ![Raport w usłudze Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Raport w usłudze Power BI")
+    ![Raport w usługa Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Raport w usługa Power BI")
 
 1. Wybierz pozycję „Nowy pulpit nawigacyjny”, wprowadź nazwę `Building temperature`, a następnie kliknij przycisk **Przypnij**.
 
-    ![Przypinanie do nowego pulpitu nawigacyjnego](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Przypinanie do nowego pulpitu nawigacyjnego")
+    ![Przypnij do nowego pulpitu nawigacyjnego](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Przypnij do nowego pulpitu nawigacyjnego")
 
 1. W raporcie kliknij pozycję **Przejdź do pulpitu nawigacyjnego**.
 

@@ -1,5 +1,5 @@
 ---
-title: Zadanie Apache Spark kończy się niepowodzeniem z InvalidClassException w usłudze Azure HDInsight
+title: Błąd InvalidClassException Apache Spark w usłudze Azure HDInsight
 description: Zadanie Apache Spark nie powiodło się z InvalidClassException, niezgodność wersji klasy w usłudze Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: c32b6a5ed7e8c052096f6125a5246fc9685302d4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ad9ec8e97827fb6158476165a610c9d69b12a528
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088686"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241178"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Zadanie Apache Spark nie powiodło się z InvalidClassException, niezgodność wersji klasy w usłudze Azure HDInsight
 
@@ -34,9 +34,9 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 
 ## <a name="cause"></a>Przyczyna
 
-Ten błąd może być spowodowany dodaniem dodatkowego `spark.yarn.jars` pliku JAR do konfiguracji, który jest "zacieniony" Jar, który obejmuje inną `commons-lang3` wersję pakietu i wprowadza niezgodność klas. Domyślnie platforma Spark 2.1/2/3 używa wersji 3,5 programu `commons-lang3`.
+Ten błąd może być spowodowany dodaniem dodatkowego pliku JAR do `spark.yarn.jars` konfiguracji, który jest "zacieniony" Jar, który obejmuje inną wersję pakietu `commons-lang3` i wprowadza niezgodność klas. Domyślnie platforma Spark 2.1/2/3 używa wersji 3,5 `commons-lang3`.
 
-## <a name="resolution"></a>Rozwiązanie
+## <a name="resolution"></a>Rozdzielczość
 
 Usuń plik JAR lub ponownie skompiluj dostosowany plik JAR (AzureLogAppender), a następnie Przemieść klasy przy użyciu [Maven-odcieni-wtyczki](https://maven.apache.org/plugins/maven-shade-plugin/examples/class-relocation.html) .
 
@@ -46,6 +46,6 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 * Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Połącz się [@AzureSupport](https://twitter.com/azuresupport) za pomocą — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
+* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalne Microsoft Azure konto, aby usprawnić obsługę klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
 * Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

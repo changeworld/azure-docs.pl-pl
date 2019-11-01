@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8eb329ae019f125b98c475b4a77d19e9cafe23fa
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 57f37808f3f90863079ba73f7899f142d32951d3
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053820"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242954"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Powrót po awarii maszyny wirtualnej platformy Azure między regionami platformy Azure
 
@@ -58,7 +58,7 @@ Po ponownym włączeniu ochrony maszyn wirtualnych można wrócić do regionu po
     ![Maszyna wirtualna w regionach podstawowym i pomocniczym](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> W przypadku maszyn, na których uruchomiono rozszerzenie Site Recovery w wersji 9.28. x. x i [pakiet zbiorczy aktualizacji 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery oczyszczanie maszyn w pomocniczym regionie odzyskiwania po awarii, nafter powrót po awarii jest zakończony, a maszyny wirtualne są chronione. Nie ma potrzeby ręcznego usuwania maszyn wirtualnych i kart interfejsu sieciowego.
+> W przypadku maszyn, na których uruchomiono rozszerzenie Site Recovery w wersji 9.28. x. x i [pakiet zbiorczy aktualizacji 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery czyści maszyny w dodatkowym regionie odzyskiwania po awarii, po zakończeniu powrotu po awarii i ponownym włączeniu ochrony maszyn wirtualnych. Nie ma potrzeby ręcznego usuwania maszyn wirtualnych i kart sieciowych w regionie pomocniczym. W przypadku całkowitego wyłączenia replikacji po powrocie po awarii program Site Recovery czyści dyski w regionie odzyskiwania po awarii, a także maszyny wirtualne i karty sieciowe.
 
 ## <a name="next-steps"></a>Następne kroki
 

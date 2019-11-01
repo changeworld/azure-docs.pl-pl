@@ -1,5 +1,5 @@
 ---
-title: Tworzenie zadań strumienia Spark o wysokiej dostępności w ramach PRZĘDZy — Azure HDInsight
+title: Zadania przesyłania strumieniowego Spark o wysokiej dostępności w PRZĘDZe — Azure HDInsight
 description: Jak skonfigurować Apache Spark przesyłania strumieniowego w scenariuszu wysokiej dostępności w usłudze Azure HDInsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 3e48f220035c56d34d6ca5a7347e9a4ee100e1f1
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002981"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241242"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Tworzenie Apache Spark zadań przesyłania strumieniowego o wysokiej dostępności przy użyciu PRZĘDZy
 
@@ -71,8 +71,8 @@ Jeśli jednak **Sterownik** ulegnie awarii, wszystkie powiązane z nim Moduły w
 
 Aby odzyskać sterowniki z DStream Checkpoint:
 
-* Skonfiguruj automatyczne ponowne uruchamianie sterowników w PRZĘDZe z ustawieniem `yarn.resourcemanager.am.max-attempts`konfiguracji.
-* Ustaw katalog punktów kontrolnych w systemie plików zgodnym z systemem `streamingContext.checkpoint(hdfsDirectory)`HDFS przy użyciu programu.
+* Skonfiguruj automatyczne ponowne uruchamianie sterowników w PRZĘDZe z ustawieniem konfiguracji `yarn.resourcemanager.am.max-attempts`.
+* Ustaw katalog punktów kontrolnych w systemie plików zgodnym z systemem HDFS przy użyciu `streamingContext.checkpoint(hdfsDirectory)`.
 * Restrukturyzacja kodu źródłowego do używania punktów kontrolnych do odzyskiwania, na przykład:
 
     ```scala
@@ -88,7 +88,7 @@ Aby odzyskać sterowniki z DStream Checkpoint:
         context.start()
     ```
 
-* Skonfiguruj odzyskiwanie utraconych danych, włączając dziennik zapisu (WAL) w programie `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`, i Wyłącz replikację w pamięci dla danych wejściowych DStreams z. `StorageLevel.MEMORY_AND_DISK_SER`
+* Skonfiguruj odzyskiwanie utraconych danych, włączając dziennik zapisu (WAL) z `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`i Wyłącz replikację w pamięci dla danych wejściowych DStreams z `StorageLevel.MEMORY_AND_DISK_SER`.
 
 Aby podsumować przy użyciu punktów kontrolnych + WAL i niezawodnych odbiorców, będzie można dostarczyć "co najmniej raz" odzyskiwania danych:
 
@@ -106,7 +106,7 @@ Aby podsumować przy użyciu punktów kontrolnych + WAL i niezawodnych odbiorcó
     spark.yarn.am.attemptFailuresValidityInterval=1h
     ```
 
-* Platforma Spark i interfejs użytkownika funkcji przesyłania strumieniowego Spark mają konfigurowalny system metryk. Możesz również użyć dodatkowych bibliotek, takich jak grafit/Grafana, aby pobrać metryki pulpitu nawigacyjnego, takie jak "liczba rekordów przetworzonych", "użycie pamięci/GC na sterowniku & wykonywania", "całkowitego opóźnienia", "użycie klastra" i tak dalej. W przypadku przesyłania strumieniowego ze strukturą w wersji 2,1 `StreamingQueryListener` lub nowszej można użyć programu, aby zebrać dodatkowe metryki.
+* Platforma Spark i interfejs użytkownika funkcji przesyłania strumieniowego Spark mają konfigurowalny system metryk. Możesz również użyć dodatkowych bibliotek, takich jak grafit/Grafana, aby pobrać metryki pulpitu nawigacyjnego, takie jak "liczba rekordów przetworzonych", "użycie pamięci/GC na sterowniku & wykonywania", "całkowitego opóźnienia", "użycie klastra" i tak dalej. W przypadku przesyłania strumieniowego ze strukturą w wersji 2,1 lub nowszej można użyć `StreamingQueryListener`, aby zebrać dodatkowe metryki.
 
 * Należy dzielić długotrwałe zadania.  Gdy aplikacja do przesyłania strumieniowego Spark jest przesyłana do klastra, należy zdefiniować kolejkę PRZĘDZy, w której uruchomiono zadanie. Można użyć [harmonogramu pojemności przędzy](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) do przesyłania długotrwałych zadań do oddzielnych kolejek.
 
@@ -122,5 +122,5 @@ Aby podsumować przy użyciu punktów kontrolnych + WAL i niezawodnych odbiorcó
 * [Omówienie Apache Spark Streaming](apache-spark-streaming-overview.md)
 * [Twórz Apache Spark zadania przesyłania strumieniowego z przetwarzaniem zdarzeń dokładnie raz](apache-spark-streaming-exactly-once.md)
 * [Długotrwałe wykonywanie zadań przesyłania strumieniowego Apache Spark na PRZĘDZe](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
-* [Przesyłanie strumieniowe strukturalne: Semantyka odporna na uszkodzenia](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
-* [Zdyskretyzowanej strumienie: Model odporny na uszkodzenia dla skalowalnego przetwarzania strumieniowego](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+* [Przesyłanie strumieniowe strukturalne: semantyka odporna na uszkodzenia](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
+* [Zdyskretyzowanej strumienie: model odporny na uszkodzenia dla skalowalnego przetwarzania strumieniowego](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

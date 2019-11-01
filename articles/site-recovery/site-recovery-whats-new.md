@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/31/2019
 ms.author: raynew
-ms.openlocfilehash: 144050bd29e8d2ec56c1347d60fd7452ea60b9cf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 54416faa9140cf6e7c7c471e4b4c62db5f6f079b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053641"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242940"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
@@ -41,14 +41,45 @@ W przypadku składników Site Recovery obsługiwane są wersje N-4, gdzie N to n
 
 **Aktualizacja** |  **Ujednolicona konfiguracja** | **Komórki jajowe serwera konfiguracji** | **Agent usługi mobilności** | **Dostawca Site Recovery** | **Agent Recovery Services**
 --- | --- | --- | --- | --- | ---
+[Pakiet zbiorczy 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 9.29.5367.1 | 5.15000.0 | 9.29.5367.1 | 5.15000.0 | 2.0.9165.0
 [Pakiet zbiorczy 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Pakiet zbiorczy 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [Pakiet zbiorczy 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
 [Pakiet zbiorczy 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
-[Pakiet zbiorczy 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
         
 
 [Dowiedz się więcej](service-updates-how-to.md) na temat instalacji i obsługi aktualizacji.
+
+
+## <a name="updates-october-2019"></a>Aktualizacje (październik 2019)
+
+### <a name="update-rollup-41"></a>Pakiet zbiorczy aktualizacji 41
+
+[Pakiet zbiorczy aktualizacji 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) udostępnia następujące aktualizacje.
+
+**Aktualizacja** | **Szczegóły**
+--- | ---
+**Dostawcy i agenci** | Aktualizacje Site Recovery agentów i dostawców (zgodnie z opisem w pakiecie zbiorczym)
+**Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń (zgodnie z opisem w pakiecie zbiorczym)
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure
+
+W tabeli zestawiono nowe funkcje odzyskiwania po awarii maszyny wirtualnej platformy Azure.
+
+**Funkcja** | **Szczegóły**
+--- | ---
+**Ustawienia testu pracy w trybie failover** | Podczas konfigurowania testowej pracy w trybie failover można teraz skonfigurować ustawienia dla maszyny wirtualnej w trybie failover i sieci, w tym adresu IP, sieciowej grupy zabezpieczeń, wewnętrznego równoważenia obciążenia i publicznego adresu IP dla każdej karty sieciowej komputera. Te ustawienia są opcjonalne i nie zmieniają bieżącego zachowania. Jeśli te ustawienia nie są skonfigurowane, możesz wybrać sieć wirtualną platformy Azure w momencie testowania pracy w trybie failover. [Dowiedz się więcej](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/).
+**Plany odzyskiwania** | Plany odzyskiwania są teraz ograniczone do 100 maszyn wirtualnych, aby zapewnić niezawodność trybu failover.
+
+### <a name="vmware-to-azure-disaster-recovery"></a>Odzyskiwanie po awarii VMware–Azure
+
+Nowe funkcje odzyskiwania po awarii oprogramowania VMware na platformę Azure zostały podsumowane w tabeli.
+
+**Funkcja** | **Szczegóły**
+--- | ---
+**Plany odzyskiwania** | Plany odzyskiwania są teraz ograniczone do 100 maszyn wirtualnych, aby zapewnić niezawodność trybu failover.
 
 
 ## <a name="updates-september-2019"></a>Aktualizacje (2019 września)

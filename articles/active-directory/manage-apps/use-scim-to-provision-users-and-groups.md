@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5c24a2340775712f1105448b2aacfdc9a75f1a6
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: c9c15a462692c257fac759998698679d9e59dc53
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001727"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242296"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory"></a>Standard scim aprowizacji użytkowników przy użyciu Azure Active Directory
 
@@ -34,7 +34,7 @@ Głównym celem tego artykułu jest profil Standard scim 2,0, który usługa Azu
 > [!IMPORTANT]
 > Ostatnio Zaktualizowano zachowanie implementacji usługi Azure AD Standard scim w dniu 18 grudnia 2018. Aby uzyskać informacje na temat zmian, zobacz [zgodność protokołów standard scim 2,0 usługi Azure AD User Provisioning](application-provisioning-config-problem-scim-compatibility.md).
 
-@no__t 0Shows — Inicjowanie obsługi administracyjnej z usługi Azure AD do aplikacji lub magazynu tożsamości @ no__t-1<br/>
+![przedstawia Inicjowanie obsługi z usługi Azure AD do aplikacji lub magazynu tożsamości][0]<br/>
 *Rysunek 1: Inicjowanie obsługi z Azure Active Directory do aplikacji lub magazynu tożsamości implementującego Standard scim*
 
 Ten artykuł jest podzielony na cztery sekcje:
@@ -64,13 +64,13 @@ Aplikacje obsługujące profil Standard scim opisany w tym artykule mogą być p
 1. Wybierz pozycję **+ Nowa aplikacja** > **wszystkie** > **aplikacji spoza galerii**.
 1. Wprowadź nazwę aplikacji, a następnie wybierz pozycję **Dodaj** , aby utworzyć obiekt aplikacji. Nowa aplikacja zostanie dodana do listy aplikacji dla przedsiębiorstw i zostanie otwarta na swoim ekranie zarządzania aplikacjami.
 
-   ![Screenshot pokazuje galerię aplikacji usługi Azure AD @ no__t-1<br/>
+   Zrzut ekranu ![przedstawia galerię aplikacji usługi Azure AD][1]<br/>
    *Rysunek 2. Galeria aplikacji usługi Azure AD*
 
 1. Na ekranie Zarządzanie aplikacjami wybierz opcję **Inicjowanie obsługi** w lewym panelu.
 1. W menu **tryb aprowizacji** wybierz pozycję **automatycznie**.
 
-   ![Example: Strona aprowizacji aplikacji w Azure Portal @ no__t-1<br/>
+   ![przykład: Strona aprowizacji aplikacji w Azure Portal][2]<br/>
    *Rysunek 3. Konfigurowanie aprowizacji w Azure Portal*
 
 1. W polu **adres URL dzierżawy** wprowadź adres URL punktu końcowego Standard scim aplikacji. Przykład: https://api.contoso.com/scim/
@@ -130,7 +130,7 @@ Postępuj zgodnie z ogólnymi wskazówkami dotyczącymi wdrażania punktu końco
 
 Na poniższej ilustracji przedstawiono komunikaty, które Azure Active Directory wysyła do usługi Standard scim w celu zarządzania cyklem życia użytkownika w magazynie tożsamości aplikacji.  
 
-@no__t — 0Shows, że inicjowanie obsługi użytkowników i anulowanie aprowizacji @ no__t-1<br/>
+![przedstawia][4] sekwencji aprowizacji użytkowników i anulowania aprowizacji<br/>
 *Ilustracja 4. Inicjowanie obsługi użytkowników i anulowanie aprowizacji*
 
 ### <a name="group-provisioning-and-de-provisioning"></a>Inicjowanie obsługi administracyjnej grup i Inicjowanie obsługi administracyjnej
@@ -140,7 +140,7 @@ Inicjowanie obsługi grup i Inicjowanie obsługi administracyjnej są opcjonalne
 * Żądania pobrania grup określają, że atrybut Members ma być wykluczony z dowolnego zasobu dostarczonego w odpowiedzi na żądanie.  
 * Żądania, aby określić, czy atrybut odwołania ma pewne wartości są żądaniami dotyczącymi atrybutu Members.  
 
-@no__t — 0Shows się, że inicjowanie obsługi administracyjnej grupy i anulowanie aprowizacji @ no__t-1<br/>
+![przedstawia sekwencję aprowizacji i nieaprowizacji grupy][5]<br/>
 *Rysunek 5: Inicjowanie obsługi grup i kolejność anulowania aprowizacji*
 
 ### <a name="scim-protocol-requests-and-responses"></a>Żądania i odpowiedzi protokołu Standard scim
@@ -151,56 +151,56 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
 
 - [Operacje użytkownika](#user-operations)
   - [Utwórz użytkownika](#create-user)
-    - [Żądając](#request)
-    - [Reakcji](#response)
+    - [Żądanie](#request)
+    - [Odpowiedź](#response)
   - [Pobierz użytkownika](#get-user)
-    - [Żądając](#request-1)
-    - [Reakcji](#response-1)
+    - [Żądanie](#request-1)
+    - [Odpowiedź](#response-1)
   - [Pobierz użytkownika według zapytania](#get-user-by-query)
-    - [Żądając](#request-2)
-    - [Reakcji](#response-2)
+    - [Żądanie](#request-2)
+    - [Odpowiedź](#response-2)
   - [Pobierz użytkownika według zapytania — wyniki zerowe](#get-user-by-query---zero-results)
-    - [Żądając](#request-3)
-    - [Reakcji](#response-3)
+    - [Żądanie](#request-3)
+    - [Odpowiedź](#response-3)
   - [Aktualizowanie użytkownika [właściwości wielowartościowe]](#update-user-multi-valued-properties)
-    - [Żądając](#request-4)
-    - [Reakcji](#response-4)
+    - [Żądanie](#request-4)
+    - [Odpowiedź](#response-4)
   - [Aktualizowanie użytkownika [właściwości pojedynczej wartości]](#update-user-single-valued-properties)
-    - [Żądając](#request-5)
-    - [Reakcji](#response-5)
+    - [Żądanie](#request-5)
+    - [Odpowiedź](#response-5)
   - [Usuń użytkownika](#delete-user)
-    - [Żądając](#request-6)
-    - [Reakcji](#response-6)
+    - [Żądanie](#request-6)
+    - [Odpowiedź](#response-6)
 - [Operacje grupy](#group-operations)
   - [Utwórz grupę](#create-group)
-    - [Żądając](#request-7)
-    - [Reakcji](#response-7)
+    - [Żądanie](#request-7)
+    - [Odpowiedź](#response-7)
   - [Pobierz grupę](#get-group)
-    - [Żądając](#request-8)
-    - [Reakcji](#response-8)
+    - [Żądanie](#request-8)
+    - [Odpowiedź](#response-8)
   - [Pobierz grupowanie według displayName](#get-group-by-displayname)
-    - [Żądając](#request-9)
-    - [Reakcji](#response-9)
+    - [Żądanie](#request-9)
+    - [Odpowiedź](#response-9)
   - [Aktualizacja grupy [atrybuty niebędące elementami członkowskimi]](#update-group-non-member-attributes)
-    - [Żądając](#request-10)
-    - [Reakcji](#response-10)
+    - [Żądanie](#request-10)
+    - [Odpowiedź](#response-10)
   - [Grupa aktualizacji [Dodaj członków]](#update-group-add-members)
-    - [Żądając](#request-11)
-    - [Reakcji](#response-11)
+    - [Żądanie](#request-11)
+    - [Odpowiedź](#response-11)
   - [Grupa aktualizacji [usuwanie członków]](#update-group-remove-members)
-    - [Żądając](#request-12)
-    - [Reakcji](#response-12)
+    - [Żądanie](#request-12)
+    - [Odpowiedź](#response-12)
   - [Usuń grupę](#delete-group)
-    - [Żądając](#request-13)
-    - [Reakcji](#response-13)
+    - [Żądanie](#request-13)
+    - [Odpowiedź](#response-13)
 
 ### <a name="user-operations"></a>Operacje użytkownika
 
-* Użytkownikom można wykonywać zapytania przez `userName` lub `email[type eq "work"]` atrybutów.  
+* Użytkownicy mogą wykonywać zapytania o atrybuty `userName` lub `email[type eq "work"]`.  
 
 #### <a name="create-user"></a>Utwórz użytkownika
 
-###### <a name="request"></a>Request
+###### <a name="request"></a>Prośba
 
 *Opublikuj/users*
 ```json
@@ -228,7 +228,7 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
 }
 ```
 
-##### <a name="response"></a>Reakcji
+##### <a name="response"></a>Odpowiedź
 
 *Utworzono protokół HTTP/1.1 201*
 ```json
@@ -261,7 +261,7 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
 ###### <a name="request-1"></a>Żądając
 *Pobierz/users/5d48a0a8e9f04aa38008* 
 
-###### <a name="response-1"></a>Reakcji
+###### <a name="response-1"></a>Odpowiedź (znaleziono użytkownika)
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -285,6 +285,21 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
         "type": "work",
         "primary": true
     }]
+}
+```
+
+###### <a name="request"></a>Prośba
+*Pobierz/users/5171a35d82074e068ce2* 
+
+###### <a name="response-user-not-found-note-that-the-detail-is-not-required-only-status"></a>Odpowiedź (nie znaleziono użytkownika. Należy zauważyć, że szczegóły nie są wymagane, tylko stan.)
+
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:Error"
+    ],
+    "status": "404",
+    "detail": "Resource 23B51B0E5D7AE9110A49411D@7cca31655d49f3640a494224 not found"
 }
 ```
 
@@ -462,7 +477,7 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
 * Aktualizacja żądania poprawek grupy powinna spowodować, że w odpowiedzi *nie ma żadnej zawartości HTTP 204* . Zwracanie treści z listą wszystkich elementów członkowskich nie jest zalecane.
 * Nie trzeba obsługiwać zwracania wszystkich elementów członkowskich grupy.
 
-#### <a name="create-group"></a>Utwórz grupę
+#### <a name="create-group"></a>Tworzenie grupy
 
 ##### <a name="request-7"></a>Żądając
 
@@ -472,7 +487,6 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
     "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
     "displayName": "displayName",
-    "members": [],
     "meta": {
         "resourceType": "Group"
     }
@@ -1338,11 +1352,11 @@ Zasoby grupy są identyfikowane przez identyfikator schematu, `urn:ietf:params:s
 | Azure Active Directory użytkownika | "urn: IETF: params: Standard scim: schematy: Extension: Enterprise: 2.0: User" |
 | --- | --- |
 | IsSoftDeleted |aktywne |
-| Nazwa |Nazwa |
+| displayName |displayName |
 | Faks-numer telefonu |numer telefonu [typ EQ "Fax"]. wartość |
 | GivenName |Nazwa. imię |
-| Stanowiska |tytuły |
-| poczta |wiadomości e-mail [Type EQ "Work"]. Value |
+| Stanowiska |title |
+| mail (poczta) |wiadomości e-mail [Type EQ "Work"]. Value |
 | MailNickname |externalId |
 | Menedżera |Menedżera |
 | urządzenie |numer telefonu [typ EQ "Mobile"]. Value |
@@ -1351,7 +1365,7 @@ Zasoby grupy są identyfikowane przez identyfikator schematu, `urn:ietf:params:s
 | Adresy serwera proxy |wiadomości e-mail [Type EQ "Other"]. Wartościami |
 | Physical-Delivery-OfficeName |adresy [Type EQ "Other"]. Poprawić |
 | streetAddress |adresy [typ EQ "Work"]. streetAddress |
-| Imię |Nazwa. rodzina |
+| surname |Nazwa. rodzina |
 | Numer telefonu |numer telefonu [typ EQ "Work"]. wartość |
 | User-PrincipalName |Uż |
 
@@ -1359,10 +1373,10 @@ Zasoby grupy są identyfikowane przez identyfikator schematu, `urn:ietf:params:s
 
 | Grupa Azure Active Directory | urn: IETF: params: Standard scim: schematy: rdzeń: 2.0: Grupa |
 | --- | --- |
-| Nazwa |externalId |
-| poczta |wiadomości e-mail [Type EQ "Work"]. Value |
-| MailNickname |Nazwa |
-| elementy członkowskie |elementy członkowskie |
+| displayName |externalId |
+| mail (poczta) |wiadomości e-mail [Type EQ "Work"]. Value |
+| MailNickname |displayName |
+| Skład |Skład |
 | Obiektu |ID |
 | proxyAddresses |wiadomości e-mail [Type EQ "Other"]. Wartościami |
 
@@ -1370,7 +1384,7 @@ Zasoby grupy są identyfikowane przez identyfikator schematu, `urn:ietf:params:s
 
 Niektóre aplikacje zezwalają na ruch przychodzący do swojej aplikacji. Aby usługa Azure AD Provisioning działała zgodnie z oczekiwaniami, używane adresy IP muszą być dozwolone. Aby uzyskać listę adresów IP dla każdego tagu usługi/regionu, zobacz plik JSON — [zakresy adresów IP platformy Azure i Tagi usług — chmura publiczna](https://www.microsoft.com/download/details.aspx?id=56519). W razie konieczności można pobrać i obsłużyć te adresy IP w zaporze. Zakresy zarezerwowanych adresów IP dla aprowizacji usługi Azure AD można znaleźć w obszarze "AzureActiveDirectoryDomainServices".
 
-## <a name="related-articles"></a>Powiązane artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
 * [Automatyzacja aprowizacji użytkowników/anulowania obsługi administracyjnej w aplikacjach SaaS](user-provisioning.md)
 * [Dostosowywanie mapowań atrybutów na potrzeby aprowizacji użytkowników](customize-application-attributes.md)

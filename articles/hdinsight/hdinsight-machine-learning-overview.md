@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 139d82079b5946b0628760f5b05bb08d208cae6f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: a770fca4f14e5441e5ef4f7bc99d9c0abd9a59d3
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105414"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241629"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Uczenie maszynowe w usłudze HDInsight
 
-Usługa HDInsight umożliwia Uczenie maszynowe przy użyciu danych Big Data, co zapewnia możliwość uzyskania cennych informacji o dużych ilościach (petabajtów, a nawet eksabajtowej) ze strukturą, bez struktury i szybko przenoszone dane. Usługa HDInsight zawiera kilka opcji uczenia maszynowego:  SparkML i Apache Spark MLlib, R, Apache Hive i Microsoft Cognitive Toolkit.
+Usługa HDInsight umożliwia Uczenie maszynowe przy użyciu danych Big Data, co zapewnia możliwość uzyskania cennych informacji o dużych ilościach (petabajtów, a nawet eksabajtowej) ze strukturą, bez struktury i szybko przenoszone dane. Istnieje kilka opcji uczenia maszynowego w usłudze HDInsight: SparkML i Apache Spark MLlib, R, Apache Hive i Microsoft Cognitive Toolkit.
 
 ## <a name="sparkml-and-mllib"></a>SparkML i MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) to oparta na platformie Azure oferta [Apache Spark](https://spark.apache.org/), ujednolicona, równoległa platforma przetwarzania danych, która obsługuje przetwarzanie w pamięci w celu zwiększenia analiz danych Big Data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. Istnieją dwie skalowalne biblioteki uczenia maszynowego, które zapewniają możliwości modelowania algorytmów w tym środowisku rozproszonym: MLlib i SparkML. MLlib zawiera oryginalny interfejs API zbudowany w oparciu o odporne. SparkML to nowszy pakiet, który udostępnia interfejs API wyższego poziomu zbudowany na podstawie ramek dataframes do konstruowania potoków ML. Usługa SparkML nie obsługuje jeszcze wszystkich funkcji MLlib, ale zastępuje MLlib jako bibliotekę uczenia maszynowego w warstwie Standardowa platformy Spark.
+[HDInsight Spark](spark/apache-spark-overview.md) to oparta na platformie Azure oferta [Apache Spark](https://spark.apache.org/), ujednolicona, równoległa platforma przetwarzania danych, która obsługuje przetwarzanie w pamięci w celu zwiększenia analiz danych Big Data. Aparat przetwarzania Spark jest zbudowany z myślą o szybkości, łatwości użycia i zaawansowanej analizie. Możliwości obliczeniowe rozproszone w pamięci platformy Spark sprawiają, że jest dobrym rozwiązaniem dla algorytmów iteracyjnych używanych w obliczeniach uczenia maszynowego i grafu. Istnieją dwie skalowalne biblioteki uczenia maszynowego, które wprowadzają możliwości modelowania algorytmów do tego środowiska rozproszonego: MLlib i SparkML. MLlib zawiera oryginalny interfejs API zbudowany w oparciu o odporne. SparkML to nowszy pakiet, który udostępnia interfejs API wyższego poziomu zbudowany na podstawie ramek dataframes do konstruowania potoków ML. Usługa SparkML nie obsługuje jeszcze wszystkich funkcji MLlib, ale zastępuje MLlib jako bibliotekę uczenia maszynowego w warstwie Standardowa platformy Spark.
 
 Biblioteka Machine Learning firmy Microsoft dla Apache Spark jest [MMLSpark](https://github.com/Azure/mmlspark). Ta biblioteka została zaprojektowana w celu zwiększenia produktywności analityków danych na platformie Spark, zwiększania liczby eksperymentów i korzystania z najnowocześniejszych technik uczenia maszynowego, w tym uczenie głębokie, na bardzo dużych zestawach danych. Funkcja MMLSpark zapewnia warstwę na podstawie interfejsów API niskiego poziomu SparkML podczas tworzenia skalowalnych modeli ML, takich jak indeksowanie ciągów, Przekształcanie danych w układ oczekiwany przez algorytmy uczenia maszynowego i konstruowanie wektorów funkcji. Biblioteka MMLSpark upraszcza te i inne typowe zadania związane z tworzeniem modeli w PySpark.
 
@@ -41,9 +41,9 @@ Azure Machine Learning udostępnia narzędzia do modelowania analizy predykcyjne
 
 ![Microsoft Azure omówienie uczenia maszynowego](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
-Tworzenie funkcji dla danych w klastrze usługi HDInsight Hadoop przy użyciu [zapytań programu Hive](../machine-learning/team-data-science-process/create-features-hive.md). *Inżynieria funkcji* próbuje zwiększyć predykcyjne algorytmy uczenia, tworząc funkcje z danych pierwotnych, które ułatwiają proces uczenia się. Za pomocą [modułu Importuj dane](../machine-learning/studio/import-data.md)można uruchamiać zapytania HiveQL z Azure Machine Learning Studio i uzyskiwać dostęp do danych przetworzonych w usłudze Hive i przechowywanych w usłudze BLOB Storage.
+Tworzenie funkcji dla danych w klastrze usługi HDInsight Hadoop przy użyciu [zapytań programu Hive](../machine-learning/team-data-science-process/create-features-hive.md). *Inżynieria funkcji* próbuje zwiększyć predykcyjne algorytmy uczenia, tworząc funkcje z danych pierwotnych, które ułatwiają proces uczenia się. Za pomocą [modułu Importuj dane](../machine-learning/studio/import-data.md)można uruchamiać zapytania HiveQL z Azure Machine Learning Studio (klasycznego) i uzyskiwać dostęp do danych przetworzonych w programie Hive i przechowywanych w usłudze BLOB Storage.
 
-## <a name="microsoft-cognitive-toolkit"></a>Zestaw narzędzi usług Microsoft Cognitive
+## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 
 [Uczenie głębokie](https://www.microsoft.com/en-us/research/group/dltc/) to rozgałęzienie uczenia maszynowego, które korzysta z sieci neuronowych, inspirowane procesami biologicznymi mózgów. Wielu badaczy widzą uczenie głębokie jako obietnicowe podejście do ulepszania sztucznej analizy. Przykłady uczenia głębokiego to wypowiadane translatory języka, systemy rozpoznawania obrazów i przyczyny maszyn.
 
@@ -53,8 +53,8 @@ Aby pomóc w zapoznaniu się z swoją działalnością w ramach uczenia głębok
 
 ### <a name="scenarios"></a>Scenariusze
 
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](spark/apache-spark-machine-learning-mllib-ipython.md)
 * [Generowanie zaleceń dotyczących filmów za pomocą platformy Apache Mahout](hadoop/apache-hadoop-mahout-linux-mac.md)
 * [Apache Hive i Azure Machine Learning](../machine-learning/team-data-science-process/create-features-hive.md)
 * [Apache Hive i Azure Machine Learning kompleksowe](../machine-learning/team-data-science-process/hive-walkthrough.md)

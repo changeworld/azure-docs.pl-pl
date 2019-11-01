@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0b51617966ad85037ad29f3e5005a17f66602e01
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5c07fac0590b833aa19909849271c59d65d42ad6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677118"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242441"
 ---
 # <a name="what-is-distributed-tracing"></a>Co to jest śledzenie rozproszone?
 
@@ -40,6 +40,7 @@ Zestawy SDK Application Insights dla platform .NET, .NET Core, Java, Node. js i 
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [Python (wersja zapoznawcza)](opencensus-python.md)
 
 Po zainstalowaniu i skonfigurowaniu odpowiedniego zestawu Application Insights SDK informacje o śledzeniu są automatycznie zbierane dla popularnych struktur, bibliotek i technologii przez automatyczne zbieranie zależności zestawu SDK. Pełną listę obsługiwanych technologii można znaleźć w dokumentacji dotyczącej [autozbierania zależności](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
 
@@ -49,7 +50,7 @@ Po zainstalowaniu i skonfigurowaniu odpowiedniego zestawu Application Insights S
 
 Oprócz zestawów SDK Application Insights, Application Insights obsługuje również śledzenie rozproszone za pomocą [OpenCensus](https://opencensus.io/). OpenCensus to model typu open source, Vendor-niezależny od, pojedynczej dystrybucji bibliotek, aby zapewnić zbieranie metryk i rozproszone śledzenie dla usług. Umożliwia również społeczności typu "open source" Włączenie śledzenia rozproszonego przy użyciu popularnych technologii, takich jak Redis, Memcached lub MongoDB. [Firma Microsoft współpracuje z usługą OpenCensus przy użyciu kilku innych partnerów monitorujących i w chmurze](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-Aby dodać funkcje śledzenia rozproszonego do aplikacji z OpenCensus, należy najpierw [zainstalować i skonfigurować usługę przesyłania dalej w Application Insights lokalnej](./../../azure-monitor/app/opencensus-local-forwarder.md). W tym miejscu Skonfiguruj OpenCensus do kierowania dystrybuowanych danych śledzenia za pośrednictwem lokalnej usługi przesyłania dalej. Obsługiwane są zarówno język [Python](./../../azure-monitor/app/opencensus-python.md) , jak i [go](./../../azure-monitor/app/opencensus-go.md) .
+[Python (wersja zapoznawcza)](opencensus-python.md) 
 
 Witryna sieci Web OpenCensus przechowuje dokumentację referencyjną interfejsu API dla języka [Python](https://opencensus.io/api/python/trace/usage.html) i języka [go](https://godoc.org/go.opencensus.io), a także różne różne przewodniki dotyczące korzystania z OpenCensus. 
 

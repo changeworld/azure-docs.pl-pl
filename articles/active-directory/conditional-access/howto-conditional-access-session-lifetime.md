@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356f2eac06365b90052cab214d9d1ac318710730
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 70de9da44d52bd6e93377776a2dbfc1b802dd412
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389666"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241696"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurowanie zarządzania sesjami uwierzytelniania przy użyciu dostępu warunkowego
 
@@ -53,7 +53,7 @@ Wartość domyślna usługi Azure AD na potrzeby trwałości sesji przeglądarki
 Dostęp warunkowy jest możliwością Azure AD — wersja Premium i wymaga licencji Premium. Jeśli chcesz dowiedzieć się więcej na temat dostępu warunkowego, zobacz [co to jest dostęp warunkowy w Azure Active Directory?](overview.md#license-requirements)
 
 > [!WARNING]
-> Jeśli używasz funkcji [okresowego istnienia tokenu](../develop/active-directory-configurable-token-lifetimes.md) , który jest obecnie w publicznej wersji zapoznawczej, pamiętaj, że nie obsługujemy tworzenia dwóch różnych zasad dla tej samej kombinacji użytkownika lub aplikacji: jeden z tą funkcją i inną z konfigurowalnym tokenem Funkcja okresu istnienia. Firma Microsoft planuje wycofać funkcję konfigurowalnego okresu istnienia tokenu 1 listopada i zamienić ją na funkcję zarządzania sesjami uwierzytelniania dostępu warunkowego.  
+> Jeśli używasz funkcji [okresowego istnienia tokenu](../develop/active-directory-configurable-token-lifetimes.md) , który jest obecnie w publicznej wersji zapoznawczej, pamiętaj, że nie obsługujemy tworzenia dwóch różnych zasad dla tej samej kombinacji użytkownika lub aplikacji: jeden z tą funkcją i inną z konfigurowalnym tokenem Funkcja okresu istnienia. Firma Microsoft planuje wycofać funkcję konfigurowalnego okresu istnienia tokenu 1 maja 2020 i zamienić ją na funkcję zarządzania sesjami uwierzytelniania dostępu warunkowego.  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Zasady 1: kontrola częstotliwości logowania
 
