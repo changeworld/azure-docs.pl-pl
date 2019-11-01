@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d7d2ad6adefb83c3c313063a9e630458ccebc5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 07c1d6e3c622a76a1e625962ad5f08d414ad8cef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851765"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175044"
 ---
 # <a name="what-is-a-device-identity"></a>Co to jest tożsamość urządzenia?
 
@@ -66,14 +66,14 @@ Urządzenia, które są przyłączone do usługi Azure AD lub korzystają z hybr
 
 - **Zarejestrowane urządzenia usługi Azure AD** wykorzystują konto zarządzane przez użytkownika końcowego, to konto jest konto Microsoft lub innym lokalnym zarządzanym poświadczeniami zabezpieczonymi przy użyciu co najmniej jednej z poniższych opcji.
    - Hasło
-   - Kod PIN
-   - Wzorzec
+   - WEJŚCIE
+   - Wzorce
    - Windows Hello
 - **Przyłączone do usługi Azure AD lub hybrydowe urządzenia z usługą Azure AD** wykorzystują konto organizacyjne w usłudze Azure AD zabezpieczone przy użyciu co najmniej jednego z następujących elementów.
    - Hasło
    - Windows Hello dla firm
 
-## <a name="provisioning"></a>Aprowizowanie
+## <a name="provisioning"></a>Inicjowanie obsługi administracyjnej
 
 Uzyskiwanie urządzeń w usłudze Azure AD może odbywać się w sposób samoobsługowy lub kontrolowany proces aprowizacji przez administratorów.
 
@@ -88,10 +88,10 @@ Za pomocą zarządzania tożsamościami urządzeń w usłudze Azure AD można:
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [zarejestrowanych urządzeniach usługi Azure AD](concept-azure-ad-register.md)
-- Dowiedz się więcej o urządzeniach przyłączonych do [usługi Azure AD](concept-azure-ad-join.md)
-- Dowiedz się więcej o urządzeniach przyłączonych do [hybrydowej usługi Azure AD](concept-azure-ad-join-hybrid.md)
+- Dowiedz się więcej o [urządzeniach przyłączonych do usługi Azure AD](concept-azure-ad-join.md)
+- Dowiedz się więcej o [urządzeniach przyłączonych do hybrydowej usługi Azure AD](concept-azure-ad-join-hybrid.md)
 - Aby dowiedzieć się, jak zarządzać tożsamościami urządzeń w Azure Portal, zobacz [Zarządzanie tożsamościami urządzeń przy użyciu Azure Portal](device-management-azure-portal.md).
 - Aby dowiedzieć się więcej o dostępie warunkowym opartym na urządzeniach, zobacz [Konfigurowanie zasad dostępu warunkowego opartego na urządzeniach Azure Active Directory](../conditional-access/require-managed-devices.md).

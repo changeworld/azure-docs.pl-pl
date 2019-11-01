@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 0bd078e8c920ca1ebe01767915036ca84650aadd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e012f595dbd12ba3f85045293420329352d30373
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958196"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176238"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Skorzystaj z samouczka dotyczącego interfejsu użytkownika platformy Azure IoT Central (funkcje w wersji zapoznawczej)
 
@@ -138,7 +138,7 @@ Aby dowiedzieć się więcej, zobacz samouczek [monitorowanie urządzeń](tutori
 > [!div class="mx-imgBorder"]
 > Strona ![grupy urządzeń](media/overview-iot-central-tour-pnp/device-groups-pnp.png)
 
-Grupa urządzeń to kolekcja powiązanych urządzeń. *Konstruktor rozwiązań* definiuje zapytanie w celu zidentyfikowania urządzeń uwzględnionych w grupie urządzeń. Grupy urządzeń służą do wykonywania operacji zbiorczych w aplikacji. Aby dowiedzieć się więcej, zobacz artykuł [Używanie grup urządzeń w aplikacji platformy Azure IoT Central](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
+Grupa urządzeń to kolekcja powiązanych urządzeń. *Konstruktor rozwiązań* definiuje zapytanie w celu zidentyfikowania urządzeń uwzględnionych w grupie urządzeń. Grupy urządzeń służą do wykonywania operacji zbiorczych w aplikacji. Aby dowiedzieć się więcej, zobacz artykuł [Używanie grup urządzeń w aplikacji platformy Azure IoT Central](tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
 
 ### <a name="rules"></a>Reguły
 > [!div class="mx-imgBorder"]
@@ -151,7 +151,7 @@ Strona reguły umożliwia definiowanie reguł na podstawie danych telemetrycznyc
 > [!div class="mx-imgBorder"]
 > ](media/overview-iot-central-tour-pnp/analytics-pnp.png) strony analizy ![
 
-Analiza umożliwia tworzenie niestandardowych widoków na podstawie danych urządzenia w celu uzyskania szczegółowych informacji z aplikacji. Aby dowiedzieć się więcej, zobacz artykuł [Create custom analytics for your Azure IoT Central application (Tworzenie niestandardowej analizy dla aplikacji usługi Azure IoT Central)](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+Analiza umożliwia tworzenie niestandardowych widoków na podstawie danych urządzenia w celu uzyskania szczegółowych informacji z aplikacji. Aby dowiedzieć się więcej, zobacz artykuł [Tworzenie analizy dla aplikacji platformy Azure IoT Central](howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
 
 ### <a name="jobs"></a>Stanowiska
 

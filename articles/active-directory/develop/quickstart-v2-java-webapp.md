@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: ff7563a9ebbbc996af56f94b8e23d349752ef9f4
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 0046443bef0e71215157dfe89aaae45b2a91c330
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964120"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200270"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Szybki Start: Dodawanie logowania do aplikacji sieci Web w języku Java przez firmę Microsoft
 
@@ -58,14 +58,15 @@ Do uruchomienia tego przykładu potrzebne są:
 > 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 > 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
 > 
-> 1. Przejdź do strony Microsoft Identity Platform for Developers [rejestracje aplikacji](https://go.microsoft.com/fwlink/linkid=2083908) .
+> 1. Przejdź do strony Microsoft Identity Platform for Developers [rejestracje aplikacji](/azure/active-directory/develop/) .
 > 1. Wybierz pozycję **Nowa rejestracja**.
 > 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
 >    - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `java-webapp`.
 >    - Pozostaw teraz pustą wartość **URI przekierowania** , a następnie wybierz pozycję **zarejestruj**.
 > 1. Na stronie **Przegląd** Znajdź wartość **Identyfikator aplikacji (klienta)** i **Identyfikator katalogu (dzierżawcy)** aplikacji. Skopiuj te wartości później.
 > 1. Wybierz **uwierzytelnianie** z menu, a następnie Dodaj następujące informacje:
->    - W obszarze **identyfikatory URI przekierowania**Dodaj `http://localhost:8080/msal4jsamples/secure/aad` i `https://localhost:8080/msal4jsamples/graph/me`.
+>    - W obszarze **identyfikatory URI przekierowania**Dodaj `http://localhost:8080/msal4jsamples/secure/aad` i `http://localhost:8080/msal4jsamples/graph/me`.
+>    - W obszarze **Ustawienia zaawansowane**Dodaj `https://localhost:8080/msal4jsample/sign-out` do **WYlogowania w adresie URL**.
 >    - Wybierz pozycję **Zapisz**.
 > 1. Wybierz pozycję **certyfikaty & wpisy tajne** z menu i w sekcji wpisy **tajne klienta** kliknij **nowy klucz tajny klienta**:
 > 
@@ -79,10 +80,10 @@ Do uruchomienia tego przykładu potrzebne są:
 > 
 > Aby uzyskać przykładowy kod dla tego przewodnika Szybki Start, należy wykonać następujące czynności:
 > 
-> 1. Dodaj adresy URL odpowiedzi jako `http://localhost:8080/msal4jsamples/secure/aad` i `https://localhost:8080/msal4jsamples/graph/me`.
+> 1. Dodaj adresy URL odpowiedzi jako `http://localhost:8080/msal4jsamples/secure/aad` i `http://localhost:8080/msal4jsamples/graph/me`.
 > 1. Utwórz klucz tajny klienta.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Wprowadź tę zmianę automatycznie]()
+> > [Wprowadź zmiany automatycznie]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Już skonfigurowano](media/quickstart-v2-aspnet-webapp/green-check.png) Twoja aplikacja została skonfigurowana za pomocą tych atrybutów.
@@ -100,7 +101,7 @@ Do uruchomienia tego przykładu potrzebne są:
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
-    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Name_Here/
+    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
     aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
     aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
@@ -111,7 +112,7 @@ Do uruchomienia tego przykładu potrzebne są:
 >
 > - `Enter_the_Application_Id_here` jest identyfikatorem dla zarejestrowanej aplikacji.
 > - `Enter_the_Client_Secret_Here` — jest **kluczem tajnym klienta** utworzonym w **certyfikatach & wpisy tajne** dla zarejestrowanej aplikacji.
-> - `Enter_the_Tenant_Name_Here` — jest wartością **identyfikatora katalogu (dzierżawy)** zarejestrowanej aplikacji.
+> - `Enter_the_Tenant_Info_Here` — jest wartością **identyfikatora katalogu (dzierżawy)** zarejestrowanej aplikacji.
 
 #### <a name="step-4-run-the-code-sample"></a>Krok 4. Uruchamianie przykładu kodu
 
@@ -149,7 +150,7 @@ Dodaj MSAL4J do aplikacji za pomocą Maven lub Gradle, aby zarządzać zależno�
 ```
 
 ```$xslt
-compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
+compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.6.0-preview'
 ```
 
 ### <a name="msal-initialization"></a>Inicjowanie biblioteki MSAL
