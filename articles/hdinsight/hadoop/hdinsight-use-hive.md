@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 10/31/2019
 ms.locfileid: "72167346"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?
@@ -42,7 +42,7 @@ Skorzystaj z poniższej tabeli, aby poznać różne sposoby używania programu H
 | [Narzędzia HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
 | [Widok Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Dowolny (oparty na przeglądarce) |
 | [Klient z usługi Beeline](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, UNIX, Mac OS X lub Windows |
-| [INTERFEJS API REST](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, UNIX, Mac OS X lub Windows |
+| [Interfejs API REST](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, UNIX, Mac OS X lub Windows |
 | [Program Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
 ## <a name="hiveql-language-reference"></a>Dokumentacja języka HiveQL
@@ -173,7 +173,7 @@ Te instrukcje wykonują następujące czynności:
 
 * `STORED AS ORC`: przechowuje dane w formacie ORC (zoptymalizowany wiersz kolumnowy). ORC to wysoce zoptymalizowany i wydajny format służący do przechowywania danych programu Hive.
 
-* `INSERT OVERWRITE ... SELECT`: wybiera wiersze z tabeli **log4jLogs** , która zawiera wartość **[Error]** , a następnie wstawia dane do tabeli **errorLogs** .
+* `INSERT OVERWRITE ... SELECT`: wybiera wiersze z tabeli **log4jLogs** zawierającej wartość **[Error]** , a następnie wstawia dane do tabeli **errorLogs** .
 
 > [!NOTE]  
 > W przeciwieństwie do tabel zewnętrznych, porzucanie tabeli wewnętrznej powoduje również usunięcie danych źródłowych.
@@ -218,4 +218,4 @@ Teraz, gdy wiesz już, co to jest gałąź i jak używać jej z usługą Hadoop 
 
 * [Przekazywanie danych do usługi HDInsight](../hdinsight-upload-data.md)
 * [Używanie funkcji języka Python zdefiniowanej przez użytkownika (UDF) z Apache Hive i Apache chlewnej w usłudze HDInsight](./python-udf-hdinsight.md)
-* [Używanie zadań MapReduce z usługą HDInsight](hdinsight-use-mapreduce.md)
+* [Korzystanie z zadań MapReduce z usługą HDInsight](hdinsight-use-mapreduce.md)
