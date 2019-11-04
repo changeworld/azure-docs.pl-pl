@@ -31,8 +31,8 @@
       href: api-management-get-started-revise-api.md
     - name: 8 — Dodawanie wielu wersji
       href: api-management-get-started-publish-versions.md
-    - name: 9 — Dostosowywanie portalu dla deweloperów
-      href: api-management-customize-styles.md
+    - name: 9 — Dostosowywanie portalu deweloperów
+      href: api-management-howto-developer-portal-customize.md
 - name: Przykłady
   items:
     - name: Zasady
@@ -123,15 +123,11 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: Dostosowywanie środowiska deweloperów
       items:
-        - name: Uzyskiwanie dostępu do nowego portalu deweloperów i dostosowywanie go
+        - name: Omówienie portalu deweloperów
           href: api-management-howto-developer-portal.md
-        - name: Modyfikowanie zawartości i układu strony
-          href: api-management-modify-content-layout.md
-        - name: Dostosowywanie stron systemowych za pomocą szablonów
-          href: api-management-developer-portal-templates.md
-        - name: Uwierzytelnianie przy użyciu usługi Azure AD
+        - name: Uwierzytelnianie za pomocą usługi Azure AD
           href: api-management-howto-aad.md
-        - name: Uwierzytelnianie przy użyciu usługi Azure AD B2C
+        - name: Uwierzytelnianie za pomocą usługi Azure AD B2C
           href: api-management-howto-aad-b2c.md
         - name: Uwierzytelnianie delegowane
           href: api-management-howto-setup-delegation.md
@@ -139,6 +135,34 @@
           href: api-management-howto-configure-notifications.md
         - name: Włączanie obsługi uwierzytelniania OAuth konsoli
           href: api-management-howto-oauth2.md
+        - name: Starszy portal — dostosowywanie portalu
+          href: api-management-customize-styles.md
+        - name: Starszy portal — modyfikowanie stron i układów
+          href: api-management-modify-content-layout.md
+        - name: Starszy portal — dostosowywanie przy użyciu szablonów
+          href: api-management-developer-portal-templates.md
+    - name: Szablony starszego portalu
+      items:
+        - name: Dokumentacja dotycząca modeli obiektów
+          href: api-management-template-data-model-reference.md
+        - name: Kontrolki strony
+          href: api-management-page-controls.md
+        - name: Szablony
+          href: api-management-developer-portal-templates-reference.md
+        - name: Interfejsy API
+          href: api-management-api-templates.md
+        - name: Produkty
+          href: api-management-product-templates.md
+        - name: Aplikacje
+          href: api-management-application-templates.md
+        - name: Problemy
+          href: api-management-issue-templates.md
+        - name: Profil użytkownika
+          href: api-management-user-profile-templates.md
+        - name: Strony
+          href: api-management-page-templates.md
+        - name: Zasoby szablonu
+          href: api-management-template-resources.md
     - name: Definiowanie zasad
       items:
         - name: Ustawianie lub edytowanie zasad
@@ -167,28 +191,6 @@
           href: api-management-cross-domain-policies.md
         - name: Zasady transformacji
           href: api-management-transformation-policies.md
-    - name: Dokumentacja dotycząca szablonów
-      items:
-        - name: Szablony
-          href: api-management-developer-portal-templates-reference.md
-        - name: Interfejsy API
-          href: api-management-api-templates.md
-        - name: Produkty
-          href: api-management-product-templates.md
-        - name: Aplikacje
-          href: api-management-application-templates.md
-        - name: Problemy
-          href: api-management-issue-templates.md
-        - name: Profil użytkownika
-          href: api-management-user-profile-templates.md
-        - name: Strony
-          href: api-management-page-templates.md
-        - name: Zasoby szablonu
-          href: api-management-template-resources.md
-    - name: Dokumentacja dotycząca modeli obiektów
-      href: api-management-template-data-model-reference.md
-    - name: Kontrolki strony
-      href: api-management-page-controls.md
     - name: Zarządzanie w produkcji
       items:
         - name: Zarządzanie grupami

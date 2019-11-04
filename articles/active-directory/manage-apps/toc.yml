@@ -131,10 +131,14 @@
           items:
             - name: Konfigurowanie zgody użytkownika
               href: configure-user-consent.md
+            - name: Konfigurowanie przepływu pracy zgody administratora (wersja zapoznawcza)
+              href: configure-admin-consent-workflow.md
             - name: Metody przypisywania użytkowników i grup do aplikacji
               href: methods-for-assigning-users-and-groups.md
             - name: Przypisywanie użytkownika do aplikacji
               href: assign-user-or-group-access-portal.md
+            - name: Tworzenie obszarów roboczych w Moich aplikacjach (wersja zapoznawcza)
+              href: access-panel-workspaces.md
             - name: Używanie dostępu do aplikacji samoobsługowej
               href: access-panel-manage-self-service-access.md
             - name: Metody usuwania dostępu użytkownika do aplikacji
@@ -155,6 +159,8 @@
               href: migration-resources.md
             - name: Migrowanie aplikacji usług ADFS na platformę Azure
               href: migrate-adfs-apps-to-azure.md
+            - name: Korzystanie z raportu aktywności aplikacji usługi AD FS (wersja zapoznawcza)
+              href: migrate-adfs-application-activity.md
         - name: Rozwiązywanie problemów
           items:
             - name: Rozwiązywanie problemów z dodawaniem aplikacji

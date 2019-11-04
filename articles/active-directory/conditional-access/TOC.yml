@@ -31,6 +31,8 @@
       href: location-condition.md
     - name: Kontrolki
       href: controls.md
+    - name: Tryb samego raportu
+      href: concept-conditional-access-report-only.md
     - name: Zależności usługi
       href: service-dependencies.md
     - name: Narzędzie analizy warunkowej
@@ -76,6 +78,8 @@
       href: untrusted-networks.md
     - name: Wymaganie warunków użytkowania
       href: terms-of-use.md
+    - name: Konfigurowanie trybu samego raportu
+      href: howto-conditional-access-report-only.md
     - name: Kontrolki częstotliwości logowania i trwałości przeglądarki
       href: howto-conditional-access-session-lifetime.md
     - name: Migrowanie zasad klasycznych

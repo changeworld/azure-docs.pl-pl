@@ -135,7 +135,7 @@
     - name: Bezpieczeństwo
       items:
         - name: Aplikacje internetowe i mobilne
-          href: 'https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl'
+          href: 'https://docs.microsoft.com/azure/app-service/configure-ssl-bindings'
     - name: Backup
       items:
         - name: Aplikacje internetowe i mobilne
