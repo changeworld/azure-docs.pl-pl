@@ -46,6 +46,12 @@
           href: prevent-translation.md
         - name: Korzystanie z funkcji słownika dynamicznego
           href: dynamic-dictionary.md
+        - name: Korzystanie z kontenerów
+          items:
+            - name: Instalowanie i uruchamianie kontenerów
+              href: how-to-install-containers.md
+            - name: Konfigurowanie kontenerów
+              href: translator-text-container-config.md
         - name: Tłumaczenie za zaporami
           href: firewalls.md
     - name: Przykłady
