@@ -65,7 +65,7 @@
   items:
     - name: Tworzenie i konfigurowanie usługi Personalizacja
       href: how-to-settings.md
-      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model'
+      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
     - name: Analiza
       items:
         - name: Ocena w trybie offline
