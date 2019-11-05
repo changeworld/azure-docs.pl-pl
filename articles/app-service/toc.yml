@@ -47,8 +47,8 @@
       href: app-service-web-tutorial-rest-api.md
     - name: Mapowanie domeny niestandardowej
       href: app-service-web-tutorial-custom-domain.md
-    - name: Wiązanie certyfikatu protokołu SSL
-      href: app-service-web-tutorial-custom-ssl.md
+    - name: Zabezpieczanie domeny przy użyciu protokołu SSL
+      href: configure-ssl-bindings.md
     - name: Dodawanie usługi CDN
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: Uwierzytelnianie użytkowników
@@ -143,8 +143,8 @@
           href: manage-custom-dns-migrate-domain.md
     - name: Zabezpieczanie aplikacji
       items:
-        - name: Kupowanie certyfikatu SSL
-          href: web-sites-purchase-ssl-web-site.md
+        - name: Dodawanie certyfikatu SSL
+          href: configure-ssl-certificate.md
         - name: Uwierzytelnianie użytkowników
           items:
             - name: Uwierzytelnianie za pomocą usługi Azure AD
@@ -165,8 +165,8 @@
           href: overview-managed-identity.md
         - name: Odwoływanie się do wpisów tajnych z usługi Key Vault
           href: app-service-key-vault-references.md
-        - name: Używanie certyfikatu SSL w kodzie aplikacji
-          href: app-service-web-ssl-cert-load.md
+        - name: Używanie certyfikatu SSL w kodzie
+          href: configure-ssl-certificate-in-code.md
         - name: Konfigurowanie wzajemnego uwierzytelniania protokołu TLS
           href: app-service-web-configure-tls-mutual-auth.md
     - name: Skalowanie aplikacji
@@ -265,7 +265,7 @@
               href: faq-availability-performance-application-issues.md
             - name: Często zadawane pytania dotyczące wdrażania
               href: faq-deployment.md
-            - name: Często zadawane pytania dotyczące technologii typu open source
+            - name: Często zadawane pytania dotyczące technologii typu open-source
               href: faq-open-source-technologies.md
             - name: Często zadawane pytania dotyczące konfiguracji i zarządzania
               href: faq-configuration-and-management.md

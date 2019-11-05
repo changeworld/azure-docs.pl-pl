@@ -61,6 +61,8 @@
       href: api-management-error-handling-policies.md
     - name: Ograniczenia importu interfejsu API
       href: api-management-api-import-restrictions.md
+    - name: Omówienie własnej bramy
+      href: self-hosted-gateway-overview.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Definiowanie interfejsów API
@@ -93,6 +95,16 @@
           href: api-management-howto-autoscale.md
         - name: Konfigurowanie domeny niestandardowej
           href: configure-custom-domain.md
+        - name: Wdrażanie w wielu regionach platformy Azure
+          href: api-management-howto-deploy-multi-region.md
+        - name: Aprowizowanie własnej bramy
+          href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Wdrażanie własnej bramy w usłudze Kubernetes
+          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+        - name: Wdrażanie własnej bramy na platformie Docker
+          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+        - name: Konfigurowanie domeny niestandardowej dla własnej bramy
+          href: api-management-howto-configure-custom-domain-gateway.md
     - name: Pamięć podręczna
       items:
         - name: Dodawanie pamięci podręcznej w celu podniesienia wydajności
@@ -195,8 +207,6 @@
       items:
         - name: Zarządzanie grupami
           href: api-management-howto-create-groups.md
-        - name: Wdrażanie w wielu regionach platformy Azure
-          href: api-management-howto-deploy-multi-region.md
         - name: Pobieranie adresów IP
           href: api-management-howto-ip-addresses.md
         - name: Rejestrowanie zdarzeń w usłudze Azure Event Hubs

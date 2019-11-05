@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Dokumentacja zapory aplikacji internetowej
+summary: Zapora aplikacji internetowej zapewnia centralną ochronę aplikacji internetowych przez typowymi atakami wykorzystującymi luki i lukami w zabezpieczeniach. Zaporę aplikacji internetowej można wdrożyć w usłudze Azure Application Gateway lub w usłudze Azure Front Door Service.
+metadata:
+  title: Dokumentacja zapory aplikacji internetowej
+  description: Dowiedz się więcej o zaporze aplikacji internetowej, którą można wdrożyć w usługach Application Gateway i Front Door
+  services: web-application-firewall
+  ms.service: web-application-firewall
+  ms.topic: landing-page
+  author: vhorne
+  ms.author: victorh
+  ms.date: 09/28/2019
+  ms.openlocfilehash: 1fb58cdf0f5c88a560ccbd4140564497745b503e
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73508775"
+landingContent:
+- title: Omówienie
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest zapora aplikacji internetowej?
+      url: overview.md
+    - text: Zapora aplikacji internetowej w usłudze Application Gateway
+      url: ./ag/ag-overview.md
+    - text: Zapora aplikacji internetowej w usłudze Front Door
+      url: ./afds/afds-overview.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Zapora aplikacji internetowej w usłudze Application Gateway
+      url: ./ag/application-gateway-web-application-firewall-portal.md
+    - text: Zapora aplikacji internetowej w usłudze Front Door
+      url: ./afds/waf-front-door-create-portal.md
+- title: Zarządzanie regułami zapory aplikacji internetowej w usłudze Application Gateway
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Dostosowywanie reguł zapory aplikacji internetowej w usłudze Azure Application Gateway
+      url: ./ag/application-gateway-customize-waf-rules-portal.md
+  - linkListType: overview
+    links:
+    - text: Reguły i grupy reguł CRS zapory aplikacji internetowej
+      url: ./ag/application-gateway-crs-rulegroups-rules.md
+- title: Konfigurowanie zapory aplikacji internetowej w usłudze Front Door
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie ochrony przed botami
+      url: ./afds/waf-front-door-policy-configure-bot-protection.md
+    - text: Konfigurowanie odpowiedzi niestandardowej
+      url: ./afds/waf-front-door-configure-custom-response-code.md

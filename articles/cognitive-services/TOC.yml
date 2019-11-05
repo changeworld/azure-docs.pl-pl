@@ -3,12 +3,14 @@
 - name: Omówienie
   expanded: true
   items:
-    - name: Co to są usługi poznawcze Cognitive Services?
+    - name: Co to są usługi Cognitive Services?
       href: Welcome.md
-    - name: Niestandardowe poddomeny usług Cognitive Services
-      href: cognitive-services-custom-subdomains.md
     - name: Usługi Cognitive Services i uczenie maszynowe
       href: cognitive-services-and-machine-learning.md
+    - name: Sieci wirtualne dla usługi Cognitive Services
+      href: cognitive-services-virtual-networks.md
+    - name: Niestandardowe poddomeny usług Cognitive Services
+      href: cognitive-services-custom-subdomains.md
     - name: Obsługa języków
       href: language-support.md
 - name: Obsługa kontenerów

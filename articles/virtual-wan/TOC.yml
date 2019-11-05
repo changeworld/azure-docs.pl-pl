@@ -8,6 +8,8 @@
   items:
     - name: Tworzenie połączenia typu lokacja-lokacja
       href: virtual-wan-site-to-site-portal.md
+    - name: Tworzenie połączeń punkt-lokacja
+      href: virtual-wan-point-to-site-portal.md
     - name: Tworzenie połączenia usługi ExpressRoute
       href: virtual-wan-expressroute-portal.md
 - name: Pojęcia
@@ -24,13 +26,27 @@
           href: virtual-wan-office365-overview.md
 - name: Przewodniki z instrukcjami
   items:
+    - name: Podwyższanie poziomu jednostki SKU wirtualnej sieci WAN
+      href: upgrade-virtual-wan.md
+    - name: Migrowanie do wirtualnej sieci WAN
+      href: migrate-from-hub-spoke-topology.md
+    - name: Tworzenie połączenia sieci VPN za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute
+      href: vpn-over-expressroute.md
+    - name: Łączenie bramy sieci wirtualnej z usługą Virtual WAN
+      href: connect-virtual-network-gateway-vwan.md
+    - name: Konfigurowanie niestandardowych zasad protokołu IPsec
+      href: virtual-wan-custom-ipsec-portal.md
+    - name: Konfigurowanie certyfikatów dla sieci VPN użytkownika
+      href: certificates-point-to-site.md
     - name: Kierowanie ruchem z koncentratora wirtualnego do wirtualnego urządzenia sieciowego
       items:
         - name: Portal Azure
           href: virtual-wan-route-table-portal.md
         - name: Azure PowerShell
           href: virtual-wan-route-table.md
-    - name: Partnerzy ds. wirtualnej sieci WAN — automatyzacja
+    - name: Wyświetlanie obowiązujących tras koncentratora wirtualnego
+      href: effective-routes-virtual-hub.md
+    - name: Automatyzacja dla partnerów usługi Virtual WAN
       href: virtual-wan-configure-automation-providers.md
 - name: Dokumentacja
   items:

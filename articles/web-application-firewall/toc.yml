@@ -1,0 +1,140 @@
+- name: Dokumentacja usługi Azure Web Application Firewall
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Co to jest usługa Azure Web Application Firewall?
+      href: overview.md
+    - name: Application Gateway
+      items:
+        - name: Zapora aplikacji internetowej w usłudze Application Gateway
+          href: ./ag/ag-overview.md
+        - name: Co nowego
+          href: ./ag/whats-new.md
+    - name: Front Door
+      items:
+        - name: Zapora aplikacji internetowej w usłudze Azure Front Door
+          href: ./afds/afds-overview.md
+- name: Samouczki
+  items:
+    - name: Application Gateway
+      items:
+        - name: Włączanie zapory aplikacji internetowych
+          href: ./ag/application-gateway-web-application-firewall-portal.md
+    - name: Front Door
+      items:
+        - name: Konfigurowanie zasad zapory aplikacji internetowej — portal
+          href: ./afds/waf-front-door-create-portal.md
+- name: Przykłady
+  items:
+    - name: Azure PowerShell
+      href: ./ag/powershell-samples.md
+    - name: Szablony usługi Resource Manager
+      href: ./ag/resource-manager-template-samples.md
+- name: Pojęcia
+  items:
+    - name: Application Gateway
+      items:
+        - name: Reguły zarządzane
+          href: ./ag/application-gateway-crs-rulegroups-rules.md
+        - name: Omówienie reguł niestandardowych
+          href: ./ag/custom-waf-rules-overview.md
+        - name: Limity rozmiaru żądań i listy wykluczeń
+          href: ./ag/application-gateway-waf-configuration.md
+    - name: Front Door
+      items:
+        - name: Reguły niestandardowe
+          href: ./afds/waf-front-door-custom-rules.md
+        - name: Ustawienia zasad
+          href: ./afds/waf-front-door-policy-settings.md
+        - name: Filtrowanie geograficzne
+          href: ./afds/waf-front-door-geo-filtering.md
+        - name: Często zadawane pytania
+          href: ./afds/waf-faq.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Application Gateway
+      items:
+        - name: Tworzenie zasad zapory aplikacji internetowej
+          href: ./ag/create-waf-policy-ag.md
+        - name: Konfigurowanie zapory aplikacji internetowej
+          items:
+            - name: Azure PowerShell
+              href: ./ag/tutorial-restrict-web-traffic-powershell.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: ./ag/tutorial-restrict-web-traffic-cli.md
+        - name: Dostosowywanie reguł zapory aplikacji internetowych
+          items:
+            - name: Azure Portal
+              href: ./ag/application-gateway-customize-waf-rules-portal.md
+            - name: Azure PowerShell
+              href: ./ag/application-gateway-customize-waf-rules-powershell.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: ./ag/application-gateway-customize-waf-rules-cli.md
+        - name: Konfigurowanie reguły niestandardowej zapory aplikacji internetowej w wersji 2 — PowerShell
+          href: ./ag/configure-waf-custom-rules.md
+        - name: Przykłady reguł niestandardowych
+          href: ./ag/create-custom-waf-rules.md
+        - name: Ochrona przed botami
+          href: ./ag/bot-protection.md
+        - name: Kojarzenie zasad z istniejącym wystąpieniem usługi Application Gateway
+          href: ./ag/associate-waf-policy-existing-gateway.md
+        - name: Dzienniki diagnostyczne
+          href: ./ag/web-application-firewall-logs.md
+        - name: Rozwiązywanie problemów z zaporą aplikacji internetowej
+          href: ./ag/web-application-firewall-troubleshoot.md
+    - name: Front Door
+      items:
+        - name: Konfigurowanie zasad zapory aplikacji internetowej — PowerShell
+          href: ./afds/waf-front-door-custom-rules-powershell.md
+        - name: Konfigurowanie ochrony przed botami
+          href: ./afds/waf-front-door-policy-configure-bot-protection.md
+        - name: Konfigurowanie niestandardowego kodu odpowiedzi
+          href: ./afds/waf-front-door-configure-custom-response-code.md
+        - name: Konfigurowanie ograniczeń adresów IP
+          href: ./afds/waf-front-door-configure-ip-restriction.md
+        - name: Konfigurowanie limitu szybkości — PowerShell
+          href: ./afds/waf-front-door-rate-limit-powershell.md
+        - name: Konfigurowanie zasad zapory aplikacji internetowej do filtrowania geograficznego
+          href: ./afds/waf-front-door-tutorial-geo-filtering.md
+        - name: Monitorowanie i rejestrowanie
+          href: ./afds/waf-front-door-monitor.md
+- name: Rozwiązywanie problemów
+  items:
+    - name: Application Gateway
+      items:
+        - name: Rozwiązywanie problemów z zaporą aplikacji internetowej
+          href: ./ag/web-application-firewall-troubleshoot.md
+        - name: Analiza dziennika
+          href: ./ag/log-analytics.md
+- name: Dokumentacja
+  items:
+    - name: Reguły CRS
+      href: ./ag/application-gateway-crs-rulegroups-rules.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: /cli/azure/ext/azure-firewall/network/firewall
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/new-azfirewall
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: Zasoby
+  items:
+    - name: Tworzenie szablonów
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Szablony społeczności
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/web-application-firewall/'
+    - name: Dostępność regionalna
+      href: 'https://azure.microsoft.com/regions/services/'

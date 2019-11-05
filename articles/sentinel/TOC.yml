@@ -76,12 +76,26 @@
               href: connect-fortinet.md
             - name: Łączenie z rozwiązaniami F5
               href: connect-f5.md
+            - name: Łączenie z rozwiązaniem F5 BIG-IP
+              href: connect-f5-big-ip.md
             - name: Łączenie ze źródłami Syslog
               href: connect-syslog.md
             - name: Łączenie z rozwiązaniem Symantec ICDX
               href: connect-symantec.md
             - name: Łączenie z rozwiązaniami Cisco
               href: connect-cisco.md
+            - name: Łączenie z rozwiązaniem Barracuda CloudGen Firewall
+              href: connect-barracuda-cloudgen-firewall.md
+            - name: Łączenie z rozwiązaniem Citrix Analytics (Security)
+              href: connect-citrix-analytics.md
+            - name: Łączenie z rozwiązaniem ExtraHop Reveal(x)
+              href: connect-extrahop.md
+            - name: Łączenie z rozwiązaniem One Identity Safeguard
+              href: connect-one-identity.md
+            - name: Trend Micro Deep Security
+              href: connect-trend-micro.md
+            - name: Łączenie z rozwiązaniem Zscaler
+              href: connect-zscaler.md
         - name: Łączenie z funkcjami analizy zagrożeń
           href: connect-threat-intelligence.md
         - name: Łączenie maszyn wirtualnych usługi Azure Stack
@@ -97,6 +111,8 @@
           href: notebooks.md
         - name: Wyszukiwanie zagrożeń za pomocą zakładek
           href: bookmarks.md
+        - name: Wyszukiwanie zagrożeń za pomocą transmisji strumieniowej na żywo
+          href: livestream.md
     - name: Usuwanie usługi Azure Sentinel
       href: offboard.md
 - name: Zasoby

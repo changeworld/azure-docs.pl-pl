@@ -781,20 +781,32 @@
                   href: insights/container-insights-enable-new-cluster.md
                 - name: Włączanie dla istniejącego klastra
                   href: insights/container-insights-enable-existing-clusters.md
+                - name: Włączanie dla klastra hybrydowego
+                  href: insights/container-insights-hybrid-setup.md
                 - name: Mapowania regionów
                   href: insights/container-insights-region-mapping.md
             - name: Analiza
               href: insights/container-insights-analyze.md
             - name: Wyłączanie monitorowania
               href: insights/container-insights-optout.md
-            - name: Wyświetlanie dzienników na żywo
-              href: insights/container-insights-live-logs.md
+            - name: Wyświetlanie danych na żywo
+              items:
+                - name: Dane na żywo (wersja zapoznawcza) — omówienie
+                  href: insights/container-insights-livedata-overview.md
+                - name: Konfigurowanie
+                  href: insights/container-insights-livedata-setup.md
+                - name: Wyświetlanie metryk klastra
+                  href: insights/container-insights-livedata-metrics.md
+                - name: Wyświetlanie wdrożeń
+                  href: insights/container-insights-livedata-deployments.md
             - name: Analizowanie danych przy użyciu zapytań dzienników
               href: insights/container-insights-log-search.md
             - name: Generowanie alertów
               href: insights/container-insights-alerts.md
             - name: Agent zarządzania
               href: insights/container-insights-manage-agent.md
+            - name: Konfigurowanie wycinania metryk Prometheus
+              href: insights/container-insights-prometheus-integration.md
             - name: Konfigurowanie ustawień zbierania agenta
               href: insights/container-insights-agent-config.md
             - name: Aktualizowanie w celu włączenia metryk

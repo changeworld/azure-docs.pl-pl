@@ -1,0 +1,34 @@
+- name: Dokumentacja usługi Internet Analyzer
+  href: index.yml
+- name: Omówienie
+  items:
+    - name: Azure Internet Analyzer — informacje
+      href: internet-analyzer-overview.md
+- name: Samouczek
+  items:
+    - name: Tworzenie testu analizatora internetowego przy użyciu portalu
+      href: internet-analyzer-create-test-portal.md
+    - name: Tworzenie testu analizatora internetowego przy użyciu interfejsu wiersza polecenia
+      herf: internet-analyzer-cli.md
+- name: Przewodniki z instrukcjami
+  items:
+    - name: Osadzanie klienta
+      href: internet-analyzer-embed-client.md
+    - name: Konfigurowanie niestandardowego punktu końcowego
+      href: internet-analyzer-custom-endpoint.md
+    - name: Interpretowanie karty wyników
+      href: internet-analyzer-scorecard.md
+- name: Zasoby
+  items:
+    - name: Internet Analyzer — często zadawane pytania
+      href: internet-analyzer-faq.md
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Forum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Umowa SLA wersji zapoznawczej
+      href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
+    - name: Umowa SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

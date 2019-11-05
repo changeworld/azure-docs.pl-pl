@@ -20,29 +20,34 @@
           items:
             - name: Omówienie
               href: sql-database-purchase-models.md
-            - name: Model oparty na rdzeniach wirtualnych
-              href: sql-database-service-tiers-vcore.md
+            - name: Model rdzenia wirtualnego
               items:
-                - name: Warstwa bezserwerowych usług obliczeniowych
+                - name: Omówienie modelu rdzeni wirtualnych
+                  href: sql-database-service-tiers-vcore.md
+                - name: Praca bezserwerowa
                   href: sql-database-serverless.md
-                - name: Opłacanie wydajności rezerwowej z góry
+                - name: Korzyść użycia hybrydowego platformy Azure
+                  href: sql-database-azure-hybrid-benefit.md
+                - name: Pojemność zarezerwowana
                   href: sql-database-reserved-capacity.md
-            - name: Warstwy usług z jednostkami DTU
+            - name: Omówienie modelu jednostek DTU
               href: sql-database-service-tiers-dtu.md
+            - name: Migrowanie z modelu jednostek DTU do modelu rdzeni wirtualnych
+              href: sql-database-dtu-to-vcore.md
         - name: Obliczenia i magazyn
           items:
             - name: Omówienie
               href: sql-database-service-tiers-general-purpose-business-critical.md
               displayName: provisioned compute tier
-            - name: Warstwy usług Ogólnego przeznaczenia/Standardowa
+            - name: Ogólnego przeznaczenia/Standardowa
               href: sql-database-service-tier-general-purpose.md
-            - name: Warstwy usług Krytyczne dla działania firmy/Premium
+            - name: Krytyczne dla działania firmy/Premium
               href: sql-database-service-tier-business-critical.md
-            - name: Warstwa usługi Hiperskala
+            - name: Hiperskala
               href: sql-database-service-tier-hyperscale.md
             - name: Hiperskala — często zadawane pytania
               href: sql-database-service-tier-hyperscale-faq.md
-            - name: Migracja z warstwy usługi Premium RS
+            - name: Migrowanie z warstwy Premium RS
               href: sql-database-service-tiers-prs.md
 - name: Przewodniki Szybki start
   expanded: true
@@ -501,17 +506,17 @@
       items:
         - name: Zasoby pojedynczej bazy danych
           items:
-            - name: Limity zasobów na podstawie rdzeni wirtualnych
+            - name: Limity zasobów rdzenia wirtualnego
               href: sql-database-vcore-resource-limits-single-databases.md
-            - name: Limity zasobów na podstawie jednostek DTU
+            - name: Limity zasobów jednostki DTU
               href: sql-database-dtu-resource-limits-single-databases.md
             - name: Skalowanie zasobów
               href: sql-database-single-database-scale.md
         - name: Zasoby elastycznej puli
           items:
-            - name: Limity zasobów na podstawie rdzeni wirtualnych
+            - name: Limity zasobów rdzenia wirtualnego
               href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: Limity zasobów na podstawie jednostek DTU
+            - name: Limity zasobów jednostki DTU
               href: sql-database-dtu-resource-limits-elastic-pools.md
             - name: Skalowanie zasobów
               href: sql-database-elastic-pool-scale.md

@@ -10,13 +10,13 @@ metadata:
   ms.topic: hub-page
   author: PatAltimore
   ms.author: patricka
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 0bdf46585a05ffc286e26087dad005eb102ed6b8
-  ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+  ms.date: 10/23/2019
+  ms.openlocfilehash: 87184cc5be0494ade7cc3e055083134b6cbe4bd7
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/29/2019
-  ms.locfileid: "73027120"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73466088"
 productDirectory:
   items:
   - title: Usługa Azure Blockchain
@@ -32,6 +32,13 @@ productDirectory:
     - url: ./workbench/overview.md
       text: Czym jest usługa Azure Blockchain Workbench?
     - url: ./workbench/index.yml
+      text: Zobacz więcej >
+  - title: Tokeny usługi Azure Blockchain
+    imageSrc: ./media/index/blockchain-tokens.svg
+    links:
+    - url: ./tokens/overview.md
+      text: Co to są tokeny usługi Azure Blockchain?
+    - url: ./tokens/index.yml
       text: Zobacz więcej >
 conceptualContent:
   title: Rozpoczęcie pracy
@@ -64,6 +71,28 @@ conceptualContent:
     - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
       itemType: video
       text: Prezentacja tworzenia pierwszej aplikacji
+  - title: Tworzenie tokenów i zarządzanie nimi
+    links:
+    - url: ./tokens/templates.md
+      itemType: concept
+      text: Definiowanie tokenu przy użyciu wstępnie utworzonego szablonu
+    - url: ./tokens/account-management.md
+      itemType: concept
+      text: Zarządzanie tokenami przy użyciu tokenów usługi Azure Blockchain
+    - url: https://aka.ms/ABTokensPartI
+      itemType: video
+      text: Obejrzyj wprowadzenie do tokenów usługi Azure Blockchain
+  - title: Publikowanie danych łańcucha bloków przy użyciu menedżera danych łańcucha bloków
+    links:
+    - url: ./service/data-manager.md
+      itemType: concept
+      text: Co to jest menedżer danych łańcucha bloków dla usługi Azure Blockchain Service?
+    - url: ./service/data-manager-portal.md
+      itemType: how-to-guide
+      text: Tworzenie wystąpienia menedżera danych łańcucha bloków przy użyciu witryny Azure Portal
+    - url: https://aka.ms/BTDataManager
+      itemType: video
+      text: Obejrzyj wprowadzenie do menedżera danych łańcucha bloków
   - title: Tworzenie rozwiązania za pomocą rejestru odpowiedniego do danego przypadku użycia
     links:
     - url: ./templates/ethereum-poa-deployment.md

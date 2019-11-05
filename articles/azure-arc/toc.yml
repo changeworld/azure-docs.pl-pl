@@ -1,0 +1,18 @@
+- name: Dokumentacja usługi Azure Arc
+  href: index.yml
+- name: Omówienie
+  expanded: true
+  items:
+    - name: Co to jest usługa Azure Arc dla serwerów?
+      href: ./servers/overview.md
+- name: Przewodniki Szybki start
+  expanded: true
+  items:
+    - name: Łączenie komputerów z platformą Azure przy użyciu usługi Azure Arc dla serwerów — portal
+      href: ./servers/quickstart-onboard-portal.md
+    - name: Łączenie komputerów z platformą Azure przy użyciu usługi Azure Arc dla serwerów — PowerShell
+      href: ./servers/quickstart-onboard-powershell.md
+- name: Dokumentacja
+  items:
+    - name: Interfejs wiersza polecenia agenta komputera połączonego z platformą Azure
+      href: ./servers/azcmagent-reference.md

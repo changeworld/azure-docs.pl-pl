@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure SQL Data Warehouse
-summary: Dowiedz się, jak używać usługi Azure SQL Data Warehouse, która łączy relacyjne bazy danych SQL z masowym przetwarzaniem równoległym (MPP). Samouczki i inna dokumentacja przedstawiają sposób projektowania, ładowania i analizowania danych oraz zarządzania nimi przy użyciu magazynu danych.
+title: Azure Synapse Analytics (dawniej Azure SQL Data Warehouse)
+summary: Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie danych przedsiębiorstwa z analizą danych big data. Zapewnia swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z bezserwerowych zasobów na żądanie lub aprowizowanych zasobów — w dużej skali.
 metadata:
-  title: Azure SQL Data Warehouse
-  description: description
+  title: Azure Synapse Analytics
+  description: Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie danych przedsiębiorstwa z analizą danych big data. Zapewnia swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z bezserwerowych zasobów na żądanie lub aprowizowanych zasobów — w dużej skali.
   services: sql-data-warehouse
   ms.service: sql-data-warehouse
   ms.subservice: design
@@ -12,38 +12,38 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 10/03/2019
-  ms.openlocfilehash: ffb90d5d15b83570511c3f70b39f9f83f000ab35
-  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.openlocfilehash: 2ad2e5b4d17c4642b42efd51de2b91308f49a101
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/10/2019
-  ms.locfileid: "72245851"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73492213"
 landingContent:
-- title: Informacje o usłudze Azure SQL Data Warehouse
+- title: Informacje o usłudze Azure Synapse Analytics
   linkLists:
   - linkListType: overview
     links:
-    - text: Co to jest SQL Data Warehouse?
+    - text: Co to jest usługa Azure Synapse?
       url: sql-data-warehouse-overview-what-is.md
   - linkListType: architecture
     links:
-    - text: SQL Data Warehouse — architektura MPP
+    - text: Architektura usługi Azure Synapse
       url: massively-parallel-processing-mpp-architecture.md
-    - text: Wskazówki i najlepsze rozwiązania dotyczące magazynu danych
+    - text: Wskazówki i najlepsze rozwiązania
       url: cheat-sheet.md
 - title: Wprowadzenie
   linkLists:
   - linkListType: deploy
     links:
-    - text: Tworzenie bazy danych w usłudze SQL Data Warehouse
+    - text: Tworzenie puli SQL (magazyn danych)
       url: create-data-warehouse-portal.md
 - title: Ładowanie danych
   linkLists:
   - linkListType: concept
     links:
-    - text: Projektowanie strategii ładowania danych PolyBase
+    - text: Projektowanie strategii ładowania danych
       url: design-elt-data-loading.md
-    - text: Najlepsze rozwiązania dotyczące ładowania danych
+    - text: Najlepsze praktyki
       url: guidance-for-loading-data.md
   - linkListType: how-to-guide
     links:
@@ -57,7 +57,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Najlepsze rozwiązania dotyczące usługi SQL Data Warehouse
+    - text: Najlepsze praktyki
       url: sql-data-warehouse-best-practices.md
     - text: Dostosowywanie uporządkowanego klastrowanego indeksu magazynu kolumn
       url: performance-tuning-ordered-cci.md
@@ -67,11 +67,11 @@ landingContent:
     links:
     - text: Analizowanie obciążenia
       url: analyze-your-workload.md
-- title: Monitorowanie usługi SQL Data Warehouse i zarządzanie nią
+- title: Zarządzanie i monitorowanie
   linkLists:
   - linkListType: overview
     links:
-    - text: Dowiedz się, jak monitorować usługę SQL Data Warehouse i zarządzać nią
+    - text: Dowiedz się, jak monitorować magazyn danych i zarządzać nim
       url: sql-data-warehouse-overview-manageability-monitoring.md
   - linkListType: how-to-guide
     links:
@@ -79,11 +79,11 @@ landingContent:
       url: sql-data-warehouse-manage-monitor.md
     - text: Monitorowanie znaczenia obciążenia i zarządzanie nim
       url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
-- title: Zabezpieczanie usługi SQL Data Warehouse
+- title: Zabezpieczanie magazynu danych
   linkLists:
   - linkListType: overview
     links:
-    - text: Zapoznaj się z podstawowymi informacjami na temat zabezpieczania usługi SQL Data Warehouse
+    - text: Podstawowe informacje na temat zabezpieczania magazynu danych
       url: sql-data-warehouse-overview-manage-security.md
   - linkListType: how-to-guide
     links:
@@ -93,5 +93,5 @@ landingContent:
   linkLists:
   - linkListType: video
     links:
-    - text: Obejrzyj najnowsze klipy wideo dotyczące usługi Azure SQL Data Warehouse
+    - text: Oglądanie najnowszych wideo dotyczących magazynu danych
       url: sql-data-warehouse-videos.md

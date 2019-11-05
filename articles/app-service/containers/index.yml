@@ -94,7 +94,7 @@ sections:
         items:
           - html: 'Tworzenie aplikacji za pomocą <a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">programu .NET Core z usługą Azure SQL DB</a>, <a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">języka Java Enterprise z usługą PostgreSQL</a> lub <a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">platformy Node.js z usługą MongoDB</a>'
           - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Mapowanie istniejącej domeny niestandardowej na aplikację</a>
-          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">Powiązywanie istniejącego certyfikatu SSL z aplikacją</a>
+          - html: <a href="/azure/app-service/configure-ssl-bindings">Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL w usłudze Azure App Service</a>
           - html: <a href="/azure/cdn/cdn-add-to-web-app">Dodawanie usługi CDN do aplikacji</a>
   - title: Przykłady
     items:

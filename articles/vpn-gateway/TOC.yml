@@ -124,6 +124,8 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: Tworzenie i instalowanie plików konfiguracji klienta sieci VPN
               href: point-to-site-vpn-client-configuration-azure-cert.md
+            - name: Informacje o pobieranym pliku profilu sieci VPN klienta
+              href: about-vpn-profile-download.md
         - name: Uwierzytelnianie za pomocą protokołu RADIUS
           items:
             - name: Konfigurowanie sieci VPN typu P2S
@@ -138,6 +140,14 @@
               href: vpn-gateway-howto-openvpn.md
             - name: Konfigurowanie klientów OpenVPN
               href: vpn-gateway-howto-openvpn-clients.md
+            - name: OpenVPN — uwierzytelnianie za pomocą usługi Azure Active Directory
+              items:
+                - name: Konfigurowanie dzierżawy usługi Azure AD
+                  href: openvpn-azure-ad-tenant.md
+                - name: Konfigurowanie klienta VPN — Azure AD
+                  href: openvpn-azure-ad-client.md
+        - name: Przejście do certyfikatu bramy publicznego urzędu certyfikacji dla połączenia punkt-lokacja
+          href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Konfigurowanie tunelu zawsze włączonego urządzenia sieci VPN
           href: vpn-gateway-howto-always-on-device-tunnel.md
         - name: Konfigurowanie zawsze włączonego tunelu VPN użytkownika
@@ -188,6 +198,10 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: Konfigurowanie alertów w oparciu o dziennik diagnostyczny
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
+    - name: Konfigurowanie przechwytywania pakietów
+      href: packet-capture.md
+    - name: Konfigurowanie niestandardowych selektorów ruchu
+      href: custom-traffic-selectors.md
     - name: Rozwiązywanie problemów
       href: vpn-gateway-troubleshoot.md
       items:
@@ -203,6 +217,8 @@
               href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
             - name: Problemy z połączeniem punkt-lokacja — klient sieci VPN w systemie Mac OS X
               href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
+            - name: Punkt-lokacja — uwierzytelnianie za pomocą usługi Azure AD
+              href: troubleshoot-ad-vpn-client.md
         - name: Problemy dotyczące połączenia lokacja-lokacja
           items:
             - name: Połączenia typu lokacja-lokacja

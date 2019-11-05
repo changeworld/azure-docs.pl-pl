@@ -220,6 +220,8 @@
           href: disk-encryption.md
         - name: Projektowanie pod kątem wysokiej wydajności
           href: premium-storage-performance.md
+        - name: Rozszerzanie możliwości dysków
+          href: disk-bursting.md
         - name: Wartości docelowe skalowalności dysków
           href: disk-scalability-targets.md
         - name: Kopia zapasowa i odzyskiwanie po awarii dla dysków

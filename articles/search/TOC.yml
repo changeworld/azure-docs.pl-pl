@@ -33,7 +33,7 @@
       href: search-get-started-python.md
 - name: Samouczki
   items:
-    - name: Tworzenie pierwszej aplikacji
+    - name: 'Tworzenie pierwszej aplikacji w języku C#'
       items:
         - name: 1 — Strona wyszukiwania podstawowego
           href: tutorial-csharp-create-first-app.md
@@ -215,8 +215,6 @@
           href: search-howto-schedule-indexers.md
         - name: Mapowanie pól
           href: search-indexer-field-mappings.md
-        - name: Indeksowanie przyrostowe
-          href: search-howto-incremental-index.md
         - name: Łączenie z wystąpieniem zarządzanym SQL
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Łączenie z maszynami wirtualnymi z programem SQL Server
@@ -239,14 +237,14 @@
               href: cognitive-search-output-field-mapping.md
             - name: Przetwarzanie i wyodrębnianie informacji z obrazów
               href: cognitive-search-concept-image-scenarios.md
+            - name: Konfigurowanie indeksowania przyrostowego
+              href: search-howto-incremental-index.md
         - name: Umiejętności niestandardowe
           items:
             - name: Integrowanie umiejętności niestandardowych
               href: cognitive-search-custom-skill-interface.md
             - name: Przykład — Azure Functions
               href: cognitive-search-create-custom-skill-example.md
-            - name: Przykłady — umiejętności Power
-              href: 'https://aka.ms/powerskills'
             - name: Przykład — Containers
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Wskazówki dotyczące rozwiązywania problemów
@@ -378,6 +376,8 @@
           href: cognitive-search-skill-shaper.md
         - name: Warunkowe
           href: cognitive-search-skill-conditional.md
+        - name: Wyodrębnianie dokumentów
+          href: cognitive-search-skill-document-extraction.md
     - name: Umiejętności niestandardowe
       items:
         - name: Niestandardowy internetowy interfejs API

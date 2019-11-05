@@ -37,6 +37,14 @@
       href: security-center-using-recommendations.md
     - name: Zarządzanie wieloma dzierżawami
       href: security-center-cross-tenant-management.md
+    - name: Zabezpieczenia kontenerów
+      items:
+        - name: Omówienie zabezpieczeń kontenera
+          href: container-security.md
+        - name: Integracja z usługą Azure Container Registry
+          href: azure-container-registry-integration.md
+        - name: Integracja z usługą Azure Kubernetes Service
+          href: azure-kubernetes-service-integration.md
     - name: Alerty wykrywania zagrożeń i zdarzenia
       items:
         - name: Omówienie alertów zabezpieczeń
@@ -51,7 +59,7 @@
           href: security-center-alerts-compute.md
         - name: Wykrywanie zagrożeń dla usług danych
           href: security-center-alerts-data-services.md
-        - name: Wykrywanie zagrożeń dla warstwy usługi platformy Azure
+        - name: Wykrywanie zagrożeń dla warstw usługi platformy Azure
           href: security-center-alerts-service-layer.md
         - name: Integracja z produktami zabezpieczeń platformy Azure
           href: security-center-alerts-integration.md
@@ -67,33 +75,47 @@
       href: security-center-secure-score.md
     - name: Przechodzenie na zabezpieczenia zaawansowane
       href: security-center-onboarding.md
-    - name: Ochrona serwera za pomocą usługi Microsoft Defender ATP
+    - name: Ochrona serwerów za pomocą usługi Microsoft Defender ATP
       href: security-center-wdatp.md
-    - name: Zaawansowane zabezpieczenia danych dla bazy danych SQL na maszynach wirtualnych platformy Azure (publiczna wersja zapoznawcza)
+    - name: Używanie zaawansowanych zabezpieczeń danych dla bazy danych SQL na maszynach wirtualnych platformy Azure
       href: security-center-iaas-advanced-data.md
     - name: Używanie usługi App Service do ochrony aplikacji
       href: security-center-app-services.md
-    - name: Praca z zasadami zabezpieczeń
-      href: tutorial-security-policy.md
+    - name: Korzystanie z zasad zabezpieczeń
+      items:
+        - name: Omówienie zasad zabezpieczeń
+          href: tutorial-security-policy.md
+        - name: Korzystanie z wbudowanych zasad zabezpieczeń
+          href: security-center-policy-definitions.md
+        - name: Tworzenie niestandardowych zasad zabezpieczeń
+          href: custom-security-policies.md
+        - name: Zarządzanie zasadami przy użyciu interfejsu API REST usługi Azure Policy
+          href: configure-security-policy-azure-policy.md
+    - name: Dodawanie dynamicznych pakietów zgodności
+      href: update-regulatory-compliance-packages.md
     - name: Dostosowywanie zasad ochrony informacji
       href: security-center-info-protection-policy.md
     - name: Zarządzanie rozwiązaniami zabezpieczeń
       href: security-center-partner-integration.md
     - name: Automatyzowanie dołączania przy użyciu programu PowerShell
       href: security-center-powershell-onboarding.md
-    - name: Ustawienia usługi Security Center
-      href: security-center-policies-overview.md
+    - name: Integracja z rozwiązaniem Windows Admin Center
+      href: windows-admin-center-integration.md
     - name: Porównanie planów bazowych przy użyciu monitorowania integralności plików
       href: security-center-file-integrity-monitoring-baselines.md
-    - name: Zbieranie danych
+    - name: Automatyzowanie odpowiedzi na alerty i zalecenia
+      href: workflow-automation.md
+    - name: Eksportowanie alertów i zaleceń
+      href: continuous-export.md
+    - name: Konfigurowanie zbierania danych
       href: security-center-enable-data-collection.md
-    - name: Wbudowane zasady zabezpieczeń
-      href: security-center-policy-definitions.md
-    - name: Powiadomienia e-mail
+    - name: Konfigurowanie zaawansowanej ochrony przed zagrożeniami dla usługi Azure Key Vault
+      href: advanced-threat-protection-key-vault.md
+    - name: Konfigurowanie powiadomień e-mail
       href: security-center-provide-security-contact-details.md
     - name: Cennik
       href: security-center-pricing.md
-    - name: Widoczność w całej dzierżawie
+    - name: Uzyskiwanie wglądu w całą dzierżawę
       href: security-center-management-groups.md
     - name: Zalecenia dotyczące implementowania zabezpieczeń
       items:
@@ -160,7 +182,7 @@
     - name: Zarządzanie danymi użytkowników
       href: security-center-privacy.md
     - name: Dokumentacja usługi Azure Security Center dla IoT
-      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
+      href: 'https://docs.microsoft.com/azure/asc-for-iot/'
     - name: Często zadawane pytania
       href: security-center-faq.md
     - name: Dokumentacja zabezpieczeń platformy Azure

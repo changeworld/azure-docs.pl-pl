@@ -105,7 +105,7 @@ sections:
         items:
           - html: Tworzenie aplikacji za pomocą <a href="/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase">platformy .NET i usługi Azure SQL DB</a> lub <a href="/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app">platformy Node.js z usługą MongoDB</a>
           - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Mapowanie istniejącej domeny niestandardowej na aplikację</a>
-          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">Powiązywanie istniejącego certyfikatu SSL z aplikacją</a>
+          - html: <a href="/azure/app-service/configure-ssl-certificate">Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL w usłudze Azure App Service</a>
           - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">Dodawanie usługi CDN do aplikacji</a>
   - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     items:

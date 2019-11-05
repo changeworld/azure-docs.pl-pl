@@ -1,9 +1,11 @@
-- name: Dokumentacja usługi Azure Data Share (wersja zapoznawcza)
+- name: Dokumentacja dotycząca usługi Azure Data Share
   href: index.yml
 - name: Omówienie
   items:
-    - name: Co to jest Azure Data Share (wersja zapoznawcza)?
+    - name: Co to jest usługa Azure Data Share?
       href: overview.md
+    - name: Obsługiwane magazyny danych
+      href: supported-data-stores.md
 - name: Samouczki
   expanded: true
   items:
@@ -19,6 +21,8 @@
       href: concepts-roles-permissions.md
 - name: Przykłady
   items:
+    - name: Przykłady kodu
+      href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure PowerShell
       href: samples-powershell.md
 - name: Przewodniki z instrukcjami
@@ -52,7 +56,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: Blog
-      href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
+      href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Share/bg-p/AzureDataShareBlog'
     - name: Społeczność techniczna firmy Microsoft
       href: 'https://techcommunity.microsoft.com/'
     - name: Opinia dotycząca produktu
