@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa08ea44722b2def684c269c3f9a0a30a4890a12
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 64a162b9d2f83b4bc703f5912116fd302fcb601c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970906"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495725"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informacje o ustawieniach konfiguracji VPN Gateway
 
@@ -79,9 +79,9 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 Jeśli masz bramę sieci VPN i chcesz korzystać z innej jednostki SKU bramy, opcje umożliwiają zmianę rozmiaru jednostki SKU bramy lub zmianę na inną jednostkę SKU. Po zmianie na inną jednostkę SKU bramy należy usunąć istniejącą bramę całkowicie i utworzyć nową. Kompilowanie bramy może potrwać do 45 minut. W porównaniu z rozmiarem jednostki SKU bramy nie ma dużo przestoju, ponieważ nie trzeba usuwać i ponownie kompilować bramy. Jeśli istnieje możliwość zmiany rozmiaru jednostki SKU bramy, zamiast jej zmiany należy to zrobić. Istnieją jednak reguły dotyczące zmiany rozmiarów:
 
-1. Można zmienić rozmiar jednostek SKU, wybierając z opcji VpnGw1, VpnGw2 i VpnGw3.
+1. Z wyjątkiem podstawowej jednostki SKU można zmienić rozmiar jednostki SKU bramy sieci VPN na inną jednostkę SKU bramy sieci VPN w ramach tej samej generacji (Generation1 lub Generation2). Na przykład VpnGw1 Generation1 można zmienić na VpnGw2 Generation1, ale nie do VpnGw2.
 2. Podczas pracy ze starymi jednostkami SKU bramy można zmienić rozmiar, wybierając z opcji Basic, Standard i HighPerformance.
-3. **Nie można** zmienić rozmiaru z opcji Basic/Standard/HighPerformance na nowe opcje VpnGw1/VpnGw2/VpnGw3. Zamiast tego należy [zmienić](#change) na nowe jednostki SKU.
+3. **Nie można** zmienić rozmiaru jednostek SKU Basic/Standard/HighPerformance na jednostki SKU VpnGw. Zamiast tego należy [zmienić](#change) na nowe jednostki SKU.
 
 #### <a name="resizegwsku"></a>Aby zmienić rozmiar bramy
 

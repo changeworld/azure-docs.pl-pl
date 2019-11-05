@@ -5,53 +5,61 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 07/22/2019
+ms.date: 10/14/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: f1576e963f9c25821b5e3f57907662e3d86df4e0
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 76a82696986f4957e7a5a96a3b93497ed461f0c4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406361"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491709"
 ---
-# <a name="what-is-azure-virtual-wan"></a>Co to jest usługa Azure Virtual WAN?
+# <a name="about-azure-virtual-wan"></a>Informacje o wirtualnej sieci WAN platformy Azure
 
 Wirtualna sieć WAN platformy Azure to usługa sieciowa, która zapewnia zoptymalizowaną i zautomatyzowaną łączność z gałęzią z usługami i i za pośrednictwem platformy Azure. Regiony platformy Azure służą jako centra, do których można połączyć gałęzie. Korzystając ze szkieletu platformy Azure, można również łączyć gałęzie i korzystać z połączeń między sieciami wirtualnymi. Mamy listę partnerów, którzy obsługują automatyzację łączności przy użyciu wirtualnej sieci WAN platformy Azure. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [partnerów i lokalizacji wirtualnych sieci WAN](virtual-wan-locations-partners.md) .
 
-Wirtualna sieć WAN platformy Azure oferuje wiele usług łączności w chmurze platformy Azure, takich jak sieć VPN typu lokacja-lokacja, i ExpressRoute do jednego interfejsu operacyjnego. Połączenie z usługą Azure sieci wirtualnych jest nawiązywane przy użyciu połączeń sieci wirtualnej.
-
-ExpressRoute dla wirtualnej sieci WAN jest obecnie w wersji zapoznawczej.
+Wirtualna sieć WAN platformy Azure oferuje wiele usług łączności w chmurze platformy Azure, takich jak sieć VPN typu lokacja-lokacja, Sieć VPN użytkownika (punkt-lokacja) i ExpressRoute w pojedynczy interfejs operacyjny. Połączenie z usługą Azure sieci wirtualnych jest nawiązywane przy użyciu połączeń sieci wirtualnej. Umożliwia ona [globalną architekturę sieci tranzytowej](virtual-wan-global-transit-network-architecture.md) opartą na klasycznym modelu łączności typu Hub i satelity, gdzie sieć hostowana w chmurze umożliwia komunikację przechodnią między punktami końcowymi, które mogą być dystrybuowane między różnymi typami "szprych".
 
 ![Diagram usługi Virtual WAN](./media/virtual-wan-about/virtualwan1.png)
 
 Ten artykuł zawiera szybki podgląd łączności sieciowej w wirtualnej sieci WAN platformy Azure. Usługa Virtual WAN oferuje następujące korzyści:
 
 * **Zintegrowane rozwiązania łączności w centrum i szprychie:** Automatyzowanie konfiguracji lokacja-lokacja i łączności między lokacjami lokalnymi i centrum platformy Azure.
-* **Instalacja i konfiguracja zautomatyzowanej szprychy:** Bezproblemowo łącz sieci wirtualne i obciążenia z centrum platformy Azure.
+* **Automatyczna instalacja i konfiguracja szprych:** bezproblemowe łączenie sieci wirtualnych i obciążeń z koncentratorem na platformie Azure.
 * **Intuicyjne Rozwiązywanie problemów:** Możesz zobaczyć kompleksowy przepływ na platformie Azure, a następnie użyć tych informacji do podjęcia wymaganych akcji.
+
+## <a name="basicstandard"></a>Wirtualne sieci WAN w warstwach Podstawowa i Standardowa
+
+Istnieją dwa typy wirtualnych sieci WAN: podstawowa i standardowa. W poniższej tabeli przedstawiono dostępne konfiguracje dla każdego typu.
+
+[!INCLUDE [Basic and Standard SKUs](../../includes/virtual-wan-standard-basic-include.md)]
+
+Aby uzyskać instrukcje dotyczące uaktualniania wirtualnej sieci WAN, zobacz [uaktualnianie wirtualnej sieci WAN z warstwy Podstawowa do standardowa](upgrade-virtual-wan.md).
 
 ## <a name="resources"></a>Zasoby usługi Virtual WAN
 
 Aby skonfigurować kompleksową wirtualną sieć WAN, należy utworzyć następujące zasoby:
 
-* **virtualWAN:** Zasób virtualWAN reprezentuje wirtualną nakładkę sieci platformy Azure i jest kolekcją wielu zasobów. Zawiera linki do wszystkich koncentratorów wirtualnych, które mają się znaleźć w wirtualnej sieci WAN. Zasoby usługi Virtual WAN są wzajemnie izolowane i nie mogą zawierać wspólnego koncentratora. Koncentratory wirtualne w usłudze Virtual WAN nie komunikują się ze sobą. Właściwość "Zezwalaj na ruch rozgałęzienia do oddziału" umożliwia ruch między lokacjami sieci VPN oraz sieciami VPN do ExpressRoute (obecnie w wersji zapoznawczej).
+* **virtualWAN:** zasób virtualWAN reprezentuje wirtualną nakładkę sieci platformy Azure i stanowi zbiór kilku zasobów. Zawiera linki do wszystkich koncentratorów wirtualnych, które mają się znaleźć w wirtualnej sieci WAN. Zasoby usługi Virtual WAN są wzajemnie izolowane i nie mogą zawierać wspólnego koncentratora. Koncentratory wirtualne między wirtualną siecią WAN nie komunikują się ze sobą.
 
-* **Centralny** Koncentratorem wirtualnym jest sieć wirtualna zarządzana przez firmę Microsoft. Koncentrator zawiera różne punkty końcowe usług, umożliwiające łączność z siecią lokalną (zasobem vpnsite). Koncentrator to podstawowy element sieci w danym regionie. W jednym regionie świadczenia usługi Azure może znajdować się tylko jeden koncentrator. Utworzenie koncentratora w witrynie Azure Portal spowoduje utworzenie sieci wirtualnej i bramy vpngateway dla koncentratora wirtualnego.
+* **Koncentrator:** koncentrator wirtualny to sieć wirtualna zarządzana przez firmę Microsoft. Koncentrator zawiera różne punkty końcowe usługi umożliwiające łączność. Z sieci lokalnej (vpnsite) można nawiązać połączenie z VPN Gateway wewnątrz koncentratora wirtualnego, podłączyć obwody usługi ExpressRoute do koncentratora wirtualnego, a nawet podłączyć użytkowników mobilnych do bramy typu punkt-lokacja w koncentratorze wirtualnym. Koncentrator to podstawowy element sieci w danym regionie. W jednym regionie świadczenia usługi Azure może znajdować się tylko jeden koncentrator.
 
   Brama koncentratora różni się od bramy sieci wirtualnej używanej w usługach ExpressRoute i VPN Gateway. Na przykład w przypadku korzystania z wirtualnej sieci WAN nie można utworzyć połączenia typu lokacja-lokacja z lokacji lokalnej bezpośrednio do sieci wirtualnej. Zamiast tego należy utworzyć połączenie lokacja-lokacja z centrum. Ruch zawsze jest kierowany przez bramę koncentratora. Oznacz to, że sieci wirtualne nie muszą mieć własnych bram sieci wirtualnej. Usługa Virtual WAN umożliwia łatwe skalowanie sieci wirtualnych za pośrednictwem koncentratora wirtualnego i bramy koncentratora wirtualnego.
 
-* **Połączenie sieci wirtualnej centrum:** Zasób połączenia sieci wirtualnej centrum służy do bezproblemowego łączenia koncentratora z siecią wirtualną. Obecnie można tworzyć połączenia tylko z sieciami wirtualnymi znajdującymi się w tym samym regionie co koncentrator.
+* **Połączenie sieci wirtualnej koncentratora:** zasób połączenia sieci wirtualnej koncentratora umożliwia bezproblemowe łączenie koncentratora z siecią wirtualną.
 
-* **Tabela tras centrum:**  Można utworzyć trasę koncentratora wirtualnego i zastosować trasę do tabeli tras koncentratora wirtualnego. Możesz zastosować wiele tras do tabeli tras koncentratora wirtualnego.
+* **(Wersja zapoznawcza) połączenia** między centrami — koncentratory są połączone ze sobą w wirtualnej sieci WAN. Oznacza to, że gałąź, użytkownik lub Sieć wirtualna połączona z koncentratorem lokalnym może komunikować się z inną gałęzią lub siecią wirtualną przy użyciu pełnej architektury sieci podłączonych centrów. Można także połączyć sieci wirtualnych w ramach przechodzenia przez centrum wirtualne, a także sieci wirtualnych między centrami przy użyciu platformy połączonej z centrum-centrum.
+
+* **Tabela tras koncentratora:** możesz utworzyć trasę koncentratora wirtualnego i zastosować tę trasę do tabeli tras koncentratora wirtualnego. Możesz zastosować wiele tras do tabeli tras koncentratora wirtualnego.
 
 **Dodatkowe zasoby wirtualnej sieci WAN**
 
-  * **Lokacji** Ten zasób jest używany tylko w przypadku połączeń lokacja-lokacja. Zasób lokacji to **vpnsite**. Reprezentuje lokalne urządzenie sieci VPN i jego ustawienia. Dzięki współpracy z partnerem usługi Virtual WAN otrzymasz wbudowane rozwiązanie do automatycznego eksportowania tych informacji na platformę Azure.
+  * **Lokacja:** Ten zasób jest używany tylko w przypadku połączeń lokacja-lokacja. Zasób lokacji to **vpnsite**. Reprezentuje lokalne urządzenie sieci VPN i jego ustawienia. Dzięki współpracy z partnerem usługi Virtual WAN otrzymasz wbudowane rozwiązanie do automatycznego eksportowania tych informacji na platformę Azure.
 
 ## <a name="connectivity"></a>Łączność
 
-Wirtualna sieć WAN zezwala na dwa typy łączności: Lokacja-lokacja i ExpressRoute (wersja zapoznawcza).
+Wirtualna sieć WAN umożliwia łączenie następujących typów: sieci VPN typu lokacja-lokacja, sieci VPN użytkownika (punkt-lokacja) i ExpressRoute.
 
 ### <a name="s2s"></a>Połączenia sieci VPN typu lokacja-lokacja
 
@@ -71,9 +79,11 @@ Podczas pracy z partnerem wirtualnego sieci WAN przepływ pracy to:
 
 Listę dostępnych partnerów i lokalizacji można znaleźć w artykule dotyczącym [partnerów i lokalizacji wirtualnych sieci WAN](virtual-wan-locations-partners.md) .
 
+### <a name="uservpn"></a>Połączenia sieci VPN użytkownika (punkt-lokacja)
 
-### <a name="er"></a>Połączenia usługi ExpressRoute (wersja zapoznawcza)
+Możesz połączyć się z zasobami na platformie Azure za pośrednictwem protokołu IPsec/IKE (IKEv2) lub połączenia OpenVPN. Ten typ połączenia wymaga skonfigurowania klienta sieci VPN na komputerze klienckim. Aby uzyskać więcej informacji, zobacz [Tworzenie połączenia typu punkt-lokacja](virtual-wan-site-to-site-portal.md).
 
+### <a name="er"></a>Połączenia ExpressRoute
 ExpressRoute umożliwia łączenie sieci lokalnej z platformą Azure za pośrednictwem połączenia prywatnego. Aby utworzyć połączenie, zobacz [Tworzenie połączenia usługi ExpressRoute przy użyciu wirtualnej sieci WAN](virtual-wan-expressroute-portal.md).
 
 ## <a name="locations"></a>Miejsce

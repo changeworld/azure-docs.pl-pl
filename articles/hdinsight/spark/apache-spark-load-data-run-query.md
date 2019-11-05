@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: ładowanie danych i uruchamianie zapytań w klastrze Apache Spark w usłudze Azure HDInsight'
+title: 'Samouczek: ładowanie danych & uruchamianie zapytań za pomocą usługi Azure HDInsight Apache Spark'
 description: Samouczek — informacje na temat ładowania danych i uruchamiania interakcyjnych zapytań w klastrach Spark w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: 3d6b7cf67faa94d0947d16cc79d0d5b839de7acb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8c5fe1970857a04c7b237a101ac228dea024815b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027791"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494497"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Samouczek: ładowanie danych i uruchamianie zapytań w klastrze platformy Apache Spark w usłudze Azure HDInsight
 
@@ -36,7 +36,7 @@ Jupyter Notebook to interakcyjne środowisko notesu, które obsługuje różne j
 
 2. Na stronie sieci Web Jupyter wybierz pozycję **nowy** > **PySpark** , aby utworzyć Notes.
 
-   ![Tworzenie notesu Jupyter w celu uruchomienia interakcyjnego zapytania Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Tworzenie notesu Jupyter w celu uruchomienia interakcyjnego zapytania Spark SQL")
+   ![Utwórz Jupyter Notebook do uruchamiania interakcyjnego zapytania Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Utwórz Jupyter Notebook do uruchamiania interakcyjnego zapytania Spark SQL")
 
    Nowy Notes zostanie utworzony i otwarty z nazwą bez tytułu (`Untitled.ipynb`).
 
@@ -47,7 +47,7 @@ Jupyter Notebook to interakcyjne środowisko notesu, które obsługuje różne j
 
 Aplikacje mogą tworzyć ramki danych bezpośrednio z plików lub folderów w magazynie zdalnym, takich jak usługa Azure Storage lub Azure Data Lake Storage; z tabeli programu Hive; lub z innych źródeł danych obsługiwanych przez platformę Spark, takich jak Cosmos DB, Azure SQL DB, DW i tak dalej. Poniższy zrzut ekranu przedstawia migawkę pliku HVAC.csv używanego w tym samouczku. Plik csv jest zainstalowany na wszystkich klastrach HDInsight Spark. Dane dotyczą zmian temperatury w niektórych budynkach.
 
-![Migawka danych używanych w interakcyjnym zapytaniu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Migawka danych używanych w interakcyjnym zapytaniu Spark SQL")
+![Migawka danych dla interakcyjnego zapytania Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Migawka danych dla interakcyjnego zapytania Spark SQL")
 
 1. Wklej następujący kod w pustej komórce notesu Jupyter, a następnie naciśnij klawisze **SHIFT + ENTER** , aby uruchomić kod. Kod importuje typy wymagane w tym scenariuszu:
 
@@ -81,13 +81,13 @@ Po utworzeniu tabeli możesz uruchomić interakcyjne zapytanie na danych.
 
    Zostanie wyświetlona następująca tabela danych wyjściowych.
 
-     ![Tabela wyjściowa wyników interakcyjnego zapytania Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Tabela wyjściowa wyników interakcyjnego zapytania Spark")
+     ![Wyniki tabeli danych wyjściowych interaktywnego zapytania Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Wyniki tabeli danych wyjściowych interaktywnego zapytania Spark")
 
 2. Wyniki można również przeglądać w postaci innych wizualizacji. Aby wyświetlić wykres warstwowy dla tych samych danych wyjściowych, wybierz pozycję **Area** (Obszar), a następnie ustaw inne wartości, jak pokazano poniżej.
 
     ![Wykres warstwowy wyników interakcyjnego zapytania Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Wykres warstwowy wyników interakcyjnego zapytania Spark")
 
-3. Na pasku menu Notes przejdź do **pliku** > **zapis i punkt kontrolny**.
+3. Na pasku menu Notes przejdź do **pliku** > **Zapisz i punkt kontrolny**.
 
 4. Jeśli zamierzasz teraz otworzyć [następny samouczek](apache-spark-use-bi-tools.md), pozostaw notes otwarty. W przeciwnym razie Zamknij Notes, aby zwolnić zasoby klastra: na pasku menu Notes przejdź do **pliku** >  **Zamknij i zatrzymywanie**.
 

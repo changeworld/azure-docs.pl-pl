@@ -11,25 +11,25 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 724e120a8ed92f71ff2e7f2bdda7d1884d80bc10
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3c98da50d0c50a7fdb94f579444f3c09c1096d18
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997149"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476421"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co się stało z aplikacją Azure Machine Learning Workbench?
 
-Aplikacja Azure Machine Learning Workbench i niektóre inne wczesne funkcje zostały wycofane i zastąpione w wersji z września 2018 r., aby zwolnić miejsce na ulepszoną [architekturę](concept-azure-machine-learning-architecture.md).
+Aplikacja Azure Machine Learning Workbench i niektóre inne wczesne funkcje były przestarzałe i zastąpione w wersji **2018 września** w celu zapewnienia lepszej [architektury](concept-azure-machine-learning-architecture.md).
 
-Wersja zawiera wiele znaczących aktualizacji wprowadzonych w oparciu o opinie klientów, które mają na celu udoskonalenie środowiska użytkownika. Podstawowe funkcje z przebiegów eksperymentu w zakresie wdrażania modelu nie uległy zmianie. Jednak teraz można używać zaawansowanego zestawu <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> i [interfejsu wiersza polecenia platformy Azure](reference-azure-machine-learning-cli.md) do wykonywania zadań i potoków uczenia maszynowego.
+Wersja zawiera wiele znaczących aktualizacji wprowadzonych w oparciu o opinie klientów, które mają na celu udoskonalenie środowiska użytkownika. Podstawowe funkcje z przebiegów eksperymentu w zakresie wdrażania modelu nie uległy zmianie. Ale teraz można użyć niezawodnego <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">zestawu SDK języka Python</a>, zestawu R SDK i [interfejsu wiersza polecenia platformy Azure](reference-azure-machine-learning-cli.md) do wykonywania zadań i potoków uczenia maszynowego.
 
 Większość artefaktów, które zostały utworzone we wcześniejszej wersji Azure Machine Learning są przechowywane w magazynie lokalnym lub w chmurze. Te artefakty nigdy nie zostaną usunięte.
 
 Z tego artykułu dowiesz się, co się zmieniło i jak zmiany wpłynęły na zadania wykonywane obecnie przy użyciu aplikacji Azure Machine Learning Workbench i jej interfejsów API.
 
 >[!Warning]
->Ten artykuł nie jest dostępne dla użytkowników usługi Azure Machine Learning Studio. Dotyczy to Azure Machine Learning klientów, którzy zainstalowali aplikację Workbench (wersja zapoznawcza) i/lub mają konta eksperymentowanie i Zarządzanie modelami w wersji zapoznawczej.
+>Ten artykuł nie jest przeznaczony dla użytkowników środowiska Azure Machine Learning Studio. Dotyczy to Azure Machine Learning klientów, którzy zainstalowali aplikację Workbench (wersja zapoznawcza) i/lub mają konta eksperymentowanie i Zarządzanie modelami w wersji zapoznawczej.
 
 
 ## <a name="what-changed"></a>Co się zmieniło?
@@ -42,7 +42,7 @@ Najnowsza wersja Azure Machine Learning obejmuje następujące funkcje:
 
 [Architektura](concept-azure-machine-learning-architecture.md) została zaprojektowana od nowa, aby ułatwić obsługę. Zamiast wielu zasobów i kont platformy Azure, będziesz potrzebować tylko aplikacji [Azure Machine Learning Workspace](concept-workspace.md). Obszary robocze można szybko tworzyć w witrynie [Azure Portal](how-to-manage-workspace.md). Dzięki użyciu obszaru roboczego wielu użytkowników może przechowywać cele obliczeniowe szkoleń i wdrożeń, eksperymenty dotyczące modeli, obrazy platformy Docker, wdrożone modele itd.
 
-Bieżąca wersja udostępnia nowe, ulepszone klienty interfejsu wiersza polecenia i zestawu SDK, ale sama klasyczna aplikacja Workbench została wycofana z użytku. Eksperymentami można zarządzać na [pulpicie nawigacyjnym obszaru roboczego w witrynie Azure Portal](how-to-track-experiments.md#view-the-experiment-in-the-web-portal). Pulpit nawigacyjny umożliwia pobieranie historii, zarządzanie celami obliczeniowymi dołączonymi do obszaru roboczego, zarządzanie modelami i obrazami platformy Docker, a nawet wdrażanie usług internetowych.
+Bieżąca wersja udostępnia nowe, ulepszone klienty interfejsu wiersza polecenia i zestawu SDK, ale sama klasyczna aplikacja Workbench została wycofana z użytku. Eksperymenty mogą być zarządzane za pomocą [pulpitu nawigacyjnego obszaru roboczego w programie Azure Machine Learning Studio](how-to-track-experiments.md#view-the-experiment-in-the-web-portal). Pulpit nawigacyjny umożliwia pobieranie historii, zarządzanie celami obliczeniowymi dołączonymi do obszaru roboczego, zarządzanie modelami i obrazami platformy Docker, a nawet wdrażanie usług internetowych.
 
 <a name="timeline"></a>
 
@@ -56,13 +56,13 @@ Wszystkie najnowsze możliwości są dostępne za pomocą tego <a href="https://
 
 Starsze historie uruchamiania nie są już dostępne, ale nadal można wyświetlać uruchomienia w najnowszej wersji.
 
-Historie uruchamiania są teraz nazywane **eksperymentami**. Eksperymenty modelu można gromadzić i zapoznawać się z nimi przy użyciu zestawu SDK, interfejsu wiersza polecenia lub witryny Azure Portal.
+Historie uruchamiania są teraz nazywane **eksperymentami**. Można zbierać eksperymenty modelu i eksplorować je za pomocą zestawu SDK, interfejsu wiersza polecenia lub Azure Machine Learning Studio.
 
 Pulpit nawigacyjny obszaru roboczego w portalu jest obsługiwany tylko w przeglądarkach Microsoft Edge, Chrome i Firefox:
 
-[![Portal online](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
+[Portal ![online](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
-Rozpocznij szkolenie modeli i śledzenie uruchomień przy użyciu nowego interfejsu wiersza polecenia i zestawu SDK. Możesz dowiedzieć się, jak za pomocą [samouczka: uczenie modeli za pomocą Azure Machine Learning](tutorial-train-models-with-aml.md).
+Rozpocznij uczenie modeli i śledzenie historii uruchamiania przy użyciu nowego interfejsu wiersza polecenia i zestawu SDK. Możesz dowiedzieć się, jak za pomocą [samouczka: uczenie modeli za pomocą Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 ## <a name="can-i-still-prep-data"></a>Czy nadal można przygotowywać dane?
 
@@ -74,7 +74,7 @@ W przypadku zestawów danych o dowolnym rozmiarze można użyć [pakietu przygot
 
 Nie stracisz żadnego kodu ani wykonanej pracy. W starszej wersji projekty są jednostkami chmury z katalogiem lokalnym. W najnowszej wersji dołączysz katalogi lokalne do obszaru roboczego Azure Machine Learning przy użyciu lokalnego pliku konfiguracji. Zobacz [diagram przedstawiający najnowszą architekturę](concept-azure-machine-learning-architecture.md).
 
-Większa część zawartości projektu znajduje się już na komputerze lokalnym. Wystarczy utworzyć w odpowiednim katalogu plik konfiguracji i odwołać się do niego w kodzie, aby nawiązać połączenie z obszarem roboczym. Aby nadal korzystać z lokalnego katalogu zawierającego pliki i skrypty, należy określić nazwę katalogu w poleceniu ["eksperyment. Submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) języka Python lub przy użyciu `az ml project attach` interfejsu wiersza polecenia.  Na przykład:
+Większa część zawartości projektu znajduje się już na komputerze lokalnym. Wystarczy utworzyć w odpowiednim katalogu plik konfiguracji i odwołać się do niego w kodzie, aby nawiązać połączenie z obszarem roboczym. Aby nadal korzystać z lokalnego katalogu zawierającego pliki i skrypty, należy określić nazwę katalogu w poleceniu ["eksperyment. Submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python lub przy użyciu polecenia `az ml project attach`  Na przykład:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)
@@ -112,7 +112,7 @@ W najnowszej wersji nazwa rozszerzenia została zmieniona na Azure Machine Learn
 
 ## <a name="what-about-domain-packages"></a>Co się stanie z pakietami domen?
 
-Pakietów domen funkcji przetwarzania obrazów, analizy tekstu i prognozowania nie można używać z najnowszą wersją usługi Azure Machine Learning. Można jednak nadal kompilować i uczyć modele przetwarzania obrazów, analizy tekstu oraz prognozowania przy użyciu najnowszego zestawu <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> języka Python dla usługi Azure Machine Learning. Aby dowiedzieć się, jak przeprowadzić migrację istniejących wcześniej modeli utworzonych przy użyciu pakietów przetwarzania obrazów, analizy tekstu i prognozowania, skontaktuj się z nami pod adresem [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com).
+Pakietów domen funkcji przetwarzania obrazów, analizy tekstu i prognozowania nie można używać z najnowszą wersją usługi Azure Machine Learning. Można jednak nadal kompilować i uczyć modele przetwarzania obrazów, analizy tekstu oraz prognozowania przy użyciu najnowszego zestawu <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> języka Python dla usługi Azure Machine Learning.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -120,6 +120,9 @@ Poznaj [najnowszą architekturę Azure Machine Learning](concept-azure-machine-l
 
 Aby zapoznać się z omówieniem usługi, przeczytaj artykuł [co to jest Azure Machine Learning?](overview-what-is-azure-ml.md).
 
-Utwórz pierwszy eksperyment z dwuczęściowym samouczkiem, aby [skonfigurować środowisko i obszar roboczy](tutorial-1st-experiment-sdk-setup.md) oraz [szkolić swój pierwszy model](tutorial-1st-experiment-sdk-train.md)
-
-Aby uzyskać bardziej szczegółowe środowisko tego przepływu pracy, postępuj zgodnie z [samouczkiem o pełnej długości](tutorial-train-models-with-aml.md) , który zawiera szczegółowe instrukcje dotyczące uczenia i wdrażania modeli przy użyciu Azure Machine Learning.
+Utwórz pierwszy eksperyment przy użyciu preferowanej metody:
+  + [Korzystanie z notesów Python do uczenia & Wdrażanie modeli ML](tutorial-1st-experiment-sdk-setup.md)
+  + [Używanie R Markdown do uczenia & wdrażania modeli ML]( tutorial-1st-r-experiment.md) 
+  + [Używanie automatycznej uczenia maszynowego do uczenia & Wdrażanie modeli ML](ui-tutorial-automobile-price-train-score.md) 
+  + [Korzystanie z funkcji upuszczania & przez projektanta w celu uczenia & wdrożenia](tutorial-first-experiment-automated-ml.md) 
+  + [Korzystanie z interfejsu wiersza polecenia Machine Learning w celu uczenia i wdrożenia modelu](tutorial-train-deploy-model-cli.md)

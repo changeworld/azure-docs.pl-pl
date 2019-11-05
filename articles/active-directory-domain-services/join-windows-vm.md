@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 164ba5ff7be38d3b11a8c5f8e5c76a3ff19ff508
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172879"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474691"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Samouczek: dołączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej
 
@@ -54,7 +54,8 @@ Aby dowiedzieć się, jak przyłączyć komputer do domeny zarządzanej AD DS pl
 
 Jeśli masz już maszynę wirtualną do przyłączenia do domeny, przejdź do sekcji, aby [dołączyć maszynę wirtualną do domeny zarządzanej AD DS platformy Azure](#join-the-vm-to-the-azure-ad-ds-managed-domain).
 
-1. W lewym górnym rogu Azure Portal wybierz pozycję **+ Utwórz zasób**.
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**.
+
 1. W obszarze **wprowadzenie**wybierz pozycję **Windows Server 2016 Datacenter**.
 
     ![Wybierz, aby utworzyć maszynę wirtualną z systemem Windows Server 2016 Datacenter w Azure Portal](./media/join-windows-vm/select-vm-image.png)

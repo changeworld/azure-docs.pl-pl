@@ -12,14 +12,14 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab1caeb59cf7fc0a6baef5ba0001e734a75fccd2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758236"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473331"
 ---
-# <a name="plan-an-automatic-user-provisioning-deployment"></a>Planowanie automatycznego wdrożenia aprowizacji użytkowników
+# <a name="plan-an-automatic-user-provisioning-deployment"></a>Planowanie wdrożenia automatycznego aprowizowania użytkowników
 
 Wiele organizacji korzysta z aplikacji typu oprogramowanie jako usługa (SaaS), takich jak usługi ServiceNow, rozwiązania Zscaler i zapasowy, na potrzeby produktywności użytkowników końcowych. W przeszłości pracownicy IT korzystali z ręcznych metod inicjowania obsługi, takich jak przekazywanie plików CSV lub używanie skryptów niestandardowych do bezpiecznego zarządzania tożsamościami użytkowników w każdej aplikacji SaaS. Procesy te są podatne na błędy, niezabezpieczone i trudne do zarządzania.
 
@@ -27,7 +27,7 @@ Usługa Azure Active Directory (Azure AD) automatyczne Inicjowanie obsługi uży
 
 Zapoznaj się [z automatyzacją aprowizacji użytkowników i cofaj obsługę administracyjną, aby SaaS aplikacje za pomocą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) w celu lepszego zrozumienia funkcjonalności.
 
-## <a name="learn"></a>Nauka
+## <a name="learn"></a>Dowiedz się więcej
 
 Inicjowanie obsługi użytkowników tworzy podstawę do ciągłego zarządzania tożsamościami i zwiększa jakość procesów biznesowych, które opierają się na autorytatywnych danych tożsamości.
 
@@ -63,14 +63,14 @@ W tym artykule są stosowane następujące warunki:
 
 * System docelowy — repozytorium użytkowników, do których mają prawa usługi Azure AD. System docelowy jest zazwyczaj aplikacją SaaS, taką jak usługi ServiceNow, rozwiązania Zscaler i zapasowy. System docelowy może być również systemem lokalnym, takim jak usługi AD.
 
-* [System do zarządzania tożsamościami między domenami (standard scim)](http://www.simplecloud.info/)) — Otwarty standard, który umożliwia automatyzację aprowizacji użytkowników. Standard scim komunikuje dane tożsamości użytkowników między dostawcami tożsamości, takimi jak firma Microsoft, i dostawcami usług, takimi jak Salesforce lub innymi aplikacjami SaaS, które wymagają informacji o tożsamości użytkownika.
+* [System do zarządzania tożsamościami między domenami (standard scim)](https://aka.ms/scimoverview) — otwarty standard, który umożliwia automatyzację aprowizacji użytkowników. Standard scim komunikuje dane tożsamości użytkowników między dostawcami tożsamości, takimi jak firma Microsoft, i dostawcami usług, takimi jak Salesforce lub innymi aplikacjami SaaS, które wymagają informacji o tożsamości użytkownika.
 
 ### <a name="training-resources"></a>Zasoby szkoleniowe
 
 | Zasoby| Link i opis |
 | - | - |
 | Seminaria internetowe na żądanie| [Zarządzanie aplikacjami przedsiębiorstwa za pomocą usługi Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Dowiedz się, jak usługa Azure AD może pomóc Ci w osiągnięciu rejestracji jednokrotnej w aplikacjach SaaS w przedsiębiorstwie i najlepszych rozwiązaniach dotyczących kontroli dostępu. |
-| Filmy| [Co to jest inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/_ZjARPpI6NI) <br> [Jak wdrożyć Inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/pKzyts6kfrw) <br> [Integrowanie usług Salesforce z usługą Azure AD: jak zautomatyzować Inicjowanie obsługi użytkowników](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
+| Filmy wideo| [Co to jest inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/_ZjARPpI6NI) <br> [Jak wdrożyć Inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/pKzyts6kfrw) <br> [Integrowanie usług Salesforce z usługą Azure AD: jak zautomatyzować Inicjowanie obsługi użytkowników](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Kursy online| SkillUp online: [Zarządzanie tożsamościami](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Dowiedz się, jak zintegrować usługę Azure AD z wieloma aplikacjami SaaS i zabezpieczyć dostęp użytkowników do tych aplikacji. |
 | Książki| [Nowoczesne uwierzytelnianie za pomocą Azure Active Directory dla aplikacji sieci Web (Dokumentacja dla deweloperów) wersja 1](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Jest to autorytatywny, głęboki szczegółowe Przewodnik dotyczący tworzenia rozwiązań uwierzytelniania Active Directory dla tych nowych środowisk. |
 | Samouczki| Zapoznaj się z [listą samouczków dotyczących integrowania aplikacji SaaS z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
@@ -281,6 +281,8 @@ Po pomyślnym [cyklu początkowym](https://docs.microsoft.com/azure/active-direc
 * Proces aprowizacji prowadzi do kwarantanny ze względu na wysoki współczynnik błędów i pozostaje w kwarantannie przez ponad cztery tygodnie, gdy zostanie on automatycznie wyłączony.
 
 Aby przejrzeć te zdarzenia i wszystkie inne działania wykonywane przez usługę aprowizacji, zapoznaj się z [dziennikami aprowizacji](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context)usługi Azure AD.
+
+Aby dowiedzieć się, jak długo trwa proces aprowizacji i monitoruje postęp zadania aprowizacji, można [sprawdzić stan aprowizacji użytkownika](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).
 
 ### <a name="gain-insights-from-reports"></a>Uzyskiwanie szczegółowych informacji z raportów
 

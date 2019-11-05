@@ -1,22 +1,22 @@
 ---
 title: Co to są otwarte zestawy danych? Nadzorowane publiczne zestawy danych
-titleSuffix: Azure Open Datasets (preview)
-description: Informacje o otwartych zestawach danych platformy Azure (wersja zapoznawcza), nadzorowanych zestawach danych z domeny publicznej, które są gotowe do użycia w rozwiązaniach uczenia maszynowego i analizy. Zestawy danych obejmują dane publiczne, takie jak pogoda, spis, święta i lokalizacja, aby ułatwić wzbogacanie rozwiązań predykcyjnych.
+titleSuffix: Azure Open Datasets
+description: Informacje o otwartych zestawach danych platformy Azure, nadzorowanych zestawach danych z domeny publicznej, takich jak pogoda, spis, święta i lokalizacja do wzbogacania rozwiązań predykcyjnych.
 ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 0c4bf3143bbf1ceb2f2f3c4a22477daa03690a0e
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: b8633bd91abc1f336870158f54d75829ed5cf6a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70213580"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496583"
 ---
-# <a name="what-are-azure-open-datasets-preview-and-how-can-you-use-them"></a>Co to są otwarte zestawy danych platformy Azure (wersja zapoznawcza) i jak można z nich korzystać?
+# <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Co to są otwarte zestawy danych platformy Azure i jak można z nich korzystać?
 
-[Otwarte zestawy danych platformy Azure](https://azure.microsoft.com/services/open-datasets/) mają nadzorowane zestawy danych, których można użyć do dodawania funkcji specyficznych dla scenariusza do rozwiązań uczenia maszynowego w celu uzyskania dokładniejszych modeli. Otwarte zestawy danych znajdują się w chmurze na Microsoft Azure i są łatwo dostępne do Azure Databricks, Machine Learning usługi i Machine Learning Studio. Możesz również uzyskać dostęp do zestawów danych za pomocą interfejsów API i używać ich w innych produktach, takich jak Power BI i Azure Data Factory.
+[Otwarte zestawy danych platformy Azure](https://azure.microsoft.com/services/open-datasets/) mają nadzorowane zestawy danych, których można użyć do dodawania funkcji specyficznych dla scenariusza do rozwiązań uczenia maszynowego w celu uzyskania dokładniejszych modeli. Otwarte zestawy danych znajdują się w chmurze w Microsoft Azure i są zintegrowane z Azure Machine Learning i są łatwo dostępne do Azure Databricks i Machine Learning Studio (klasyczne). Możesz również uzyskać dostęp do zestawów danych za pomocą interfejsów API i używać ich w innych produktach, takich jak Power BI i Azure Data Factory.
 
 Zestawy danych obejmują dane z domeny publicznej na potrzeby pogodowych, spisu, świąt, bezpieczeństwa publicznego i lokalizacji, które ułatwiają uczenie modeli uczenia maszynowego i wzbogacanie rozwiązań predykcyjnych. Możesz również udostępnić publiczne zestawy danych na platformie Azure Otwórz zestaw danych. 
 
@@ -47,13 +47,13 @@ Poniżej przedstawiono przykłady dostępnych zestawów danych.
 ## <a name="access-to-datasets"></a>Dostęp do zestawów danych  
 Za pomocą konta platformy Azure możesz uzyskać dostęp do otwartych zestawów danych za pomocą kodu lub za pośrednictwem interfejsu usługi platformy Azure. Dane są współzlokalizowane z zasobami obliczeniowymi w chmurze platformy Azure do użycia w rozwiązaniu do uczenia maszynowego.  
 
-Otwarte zestawy danych udostępniają Azure Notebooks i Azure Databricks notesy, których można użyć do łączenia danych z usługą Azure Machine Learning i Azure Databricks. Do zestawów danych można także uzyskać dostęp za pomocą zestawu SDK języka Python. 
+Otwarte zestawy danych są dostępne za pomocą interfejsu użytkownika Azure Machine Learning i zestawu SDK. Otwarte zestawy danych udostępniają również Azure Notebooks i Azure Databricks notesy, których można użyć do łączenia danych z Azure Machine Learning i Azure Databricks. Do zestawów danych można także uzyskać dostęp za pomocą zestawu SDK języka Python. 
 
 Nie jest jednak potrzebne konto platformy Azure, aby uzyskać dostęp do otwartych zestawów danych; Możesz uzyskać do nich dostęp z dowolnego środowiska języka Python z platformą Spark lub bez niej.
 
 ## <a name="request-or-contribute-datasets"></a>Żądanie lub zestawy danych współtworzenia
 
-Jeśli nie możesz znaleźć żądanych danych, Wyślij do nas wiadomość e-mail z prośbą o [zestaw](mailto:aod@microsoft.com?Subject=Request%20dataset%3A%20%3Creplace%20with%20dataset%20name%3E&Body=%0AYour%20name%20and%20institution%3A%20%0A%0ADataset%20name%3A%0A%20%0ADataset%20description%3A%20%0A%3Cfill%20in%20a%20brief%20description%20and%20share%20any%20web%20links%20of%20the%20dataset%3E%20%0A%0ADataset%20size%3A%20%0A%3Chow%20much%20space%20does%20the%20dataset%20need%20today%20and%20how%20much%20is%20it%20expected%20to%20grow%20each%20year%3E%20%0A%0ADataset%20file%20formats%3A%20%0A%3Ccurrent%20dataset%20file%20formats%2C%20and%20optionally%2C%20any%20formats%20that%20the%20dataset%20must%20be%20transformed%20to%20for%20easy%20access%3E%0A%0ALicense%3A%20%0A%3Cwhat%20is%20the%20license%20or%20terms%20and%20conditions%20governing%20the%20distribution%20of%20this%20dataset%3E%0A%0AUse%20cases%3A%20%0A%3CExplain%20some%20common%20use%20of%20the%20dataset.%20E.g.%20weather%20dataset%20can%20be%20useful%20in%20demand%20forecasting%20and%20predictive%20maintenance%20scenarios%3E%20%0A%0AAny%20additional%20information%20you%20want%20us%20to%20know%3A%0A) danych lub [Współtworzenie zestawu danych](mailto:aod@microsoft.com?Subject=Contribute%20dataset%3A%20%3Creplace%20with%20dataset%20name%3E&Body=%0AYour%20name%20and%20institution%3A%20%0A%0ADataset%20name%3A%0A%20%0ADataset%20description%3A%20%0A%3Cfill%20in%20a%20brief%20description%20and%20share%20any%20web%20links%20of%20the%20dataset%3E%20%0A%0ADataset%20size%3A%20%0A%3Chow%20much%20space%20does%20the%20dataset%20need%20today%20and%20how%20much%20is%20it%20expected%20to%20grow%20each%20year%3E%20%0A%0ADataset%20file%20formats%3A%20%0A%3Ccurrent%20dataset%20file%20formats%2C%20and%20optionally%2C%20any%20formats%20that%20the%20dataset%20must%20be%20transformed%20to%20for%20easy%20access%3E%0A%0ALicense%3A%20%0A%3Cwhat%20is%20the%20license%20or%20terms%20and%20conditions%20governing%20the%20distribution%20of%20this%20dataset%3E%0A%0AUse%20cases%3A%20%0A%3CExplain%20some%20common%20use%20of%20the%20dataset.%20E.g.%20weather%20dataset%20can%20be%20useful%20in%20demand%20forecasting%20and%20predictive%20maintenance%20scenarios%3E%20%0A%0AAny%20additional%20information%20you%20want%20us%20to%20know%3A%0A). 
+Jeśli nie możesz znaleźć żądanych danych, Wyślij do nas wiadomość e-mail z [prośbą o zestaw](mailto:aod@microsoft.com?Subject=Request%20dataset%3A%20%3Creplace%20with%20dataset%20name%3E&Body=%0AYour%20name%20and%20institution%3A%20%0A%0ADataset%20name%3A%0A%20%0ADataset%20description%3A%20%0A%3Cfill%20in%20a%20brief%20description%20and%20share%20any%20web%20links%20of%20the%20dataset%3E%20%0A%0ADataset%20size%3A%20%0A%3Chow%20much%20space%20does%20the%20dataset%20need%20today%20and%20how%20much%20is%20it%20expected%20to%20grow%20each%20year%3E%20%0A%0ADataset%20file%20formats%3A%20%0A%3Ccurrent%20dataset%20file%20formats%2C%20and%20optionally%2C%20any%20formats%20that%20the%20dataset%20must%20be%20transformed%20to%20for%20easy%20access%3E%0A%0ALicense%3A%20%0A%3Cwhat%20is%20the%20license%20or%20terms%20and%20conditions%20governing%20the%20distribution%20of%20this%20dataset%3E%0A%0AUse%20cases%3A%20%0A%3CExplain%20some%20common%20use%20of%20the%20dataset.%20E.g.%20weather%20dataset%20can%20be%20useful%20in%20demand%20forecasting%20and%20predictive%20maintenance%20scenarios%3E%20%0A%0AAny%20additional%20information%20you%20want%20us%20to%20know%3A%0A) danych lub [Współtworzenie zestawu danych](mailto:aod@microsoft.com?Subject=Contribute%20dataset%3A%20%3Creplace%20with%20dataset%20name%3E&Body=%0AYour%20name%20and%20institution%3A%20%0A%0ADataset%20name%3A%0A%20%0ADataset%20description%3A%20%0A%3Cfill%20in%20a%20brief%20description%20and%20share%20any%20web%20links%20of%20the%20dataset%3E%20%0A%0ADataset%20size%3A%20%0A%3Chow%20much%20space%20does%20the%20dataset%20need%20today%20and%20how%20much%20is%20it%20expected%20to%20grow%20each%20year%3E%20%0A%0ADataset%20file%20formats%3A%20%0A%3Ccurrent%20dataset%20file%20formats%2C%20and%20optionally%2C%20any%20formats%20that%20the%20dataset%20must%20be%20transformed%20to%20for%20easy%20access%3E%0A%0ALicense%3A%20%0A%3Cwhat%20is%20the%20license%20or%20terms%20and%20conditions%20governing%20the%20distribution%20of%20this%20dataset%3E%0A%0AUse%20cases%3A%20%0A%3CExplain%20some%20common%20use%20of%20the%20dataset.%20E.g.%20weather%20dataset%20can%20be%20useful%20in%20demand%20forecasting%20and%20predictive%20maintenance%20scenarios%3E%20%0A%0AAny%20additional%20information%20you%20want%20us%20to%20know%3A%0A). 
 
 ## <a name="next-steps"></a>Następne kroki
 * [Przykładowy Notes](samples.md)

@@ -8,15 +8,17 @@ ms.topic: include
 ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6c59513c2c84b5f280e8200411b53848768eaf29
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 9648f4c16e8d266bbdd504d4a7599b67a5c846b4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970842"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523461"
 ---
-1. W portalu kliknij pozycję **+Utwórz zasób**.
-2. W polu wyszukiwania wpisz wartość **Brama sieci lokalnej**, a następnie naciśnij klawisz **Enter**, aby wyszukać. Spowoduje to zwrócenie listy wyników. Kliknij pozycję **Brama sieci lokalnej**, a następnie kliknij przycisk **Utwórz**, aby otworzyć stronę **Utwórz bramę sieci lokalnej**.
+1. Z menu [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób**. 
+
+   ![Utwórz zasób w Azure Portal](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
+2. W polu **Wyszukaj w witrynie Marketplace** wpisz **Brama sieci lokalnej**, a następnie naciśnij klawisz **Enter** , aby wyszukać. Spowoduje to zwrócenie listy wyników. Kliknij pozycję **Brama sieci lokalnej**, a następnie kliknij przycisk **Utwórz**, aby otworzyć stronę **Utwórz bramę sieci lokalnej**.
 
    ![Tworzenie bramy sieci lokalnej](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "Tworzenie bramy sieci lokalnej")
 

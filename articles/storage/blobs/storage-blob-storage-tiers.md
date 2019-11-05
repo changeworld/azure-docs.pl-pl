@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 642fcc9ac2513329e9223f59a33d51ac5005e1fd
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 5ba2255cfe0d5c4220ec2215ac837649af1ba896
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802181"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521178"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: warstwy dostępu gorąca, chłodna i archiwalna
 
@@ -79,7 +79,7 @@ Zmiana warstwy dostępu do konta ma zastosowanie do wszystkich obiektów _odrocz
 
 Funkcja obsługi warstw na poziomie obiektów blob umożliwia zmianę warstwy danych na poziomie obiektu przy użyciu jednej operacji o nazwie [Ustawianie warstwy obiektu blob](/rest/api/storageservices/set-blob-tier). W odpowiedzi na zmiany wzorców użycia można łatwo zmieniać warstwy dostępu do obiektu blob (wybierając warstwę gorącą, chłodną lub archiwalną) bez przenoszenia danych między kontami. Wszystkie zmiany warstwy są wykonywane natychmiast. Ponownego wypełniania obiekt BLOB z archiwum może jednak trwać kilka godzin.
 
-Czas ostatniej zmiany warstwy obiektu blob jest uwidaczniany za pomocą właściwości obiektu blob **Czas zmiany warstwy dostępu**. Jeśli obiekt BLOB znajduje się w warstwie archiwum, nie można go zastąpić, więc przekazywanie tego samego obiektu BLOB nie jest dozwolone w tym scenariuszu. Podczas zastępowania obiektu BLOB w warstwie gorąca lub chłodna nowy obiekt BLOB dziedziczy warstwę obiektu BLOB, który został zastąpiony.
+Czas ostatniej zmiany warstwy obiektu blob jest uwidaczniany za pomocą właściwości obiektu blob **Czas zmiany warstwy dostępu**. Jeśli obiekt BLOB znajduje się w warstwie archiwum, nie można go zastąpić, więc przekazywanie tego samego obiektu BLOB nie jest dozwolone w tym scenariuszu. Podczas zastępowania obiektu BLOB w warstwie gorąca lub chłodna nowo utworzony obiekt BLOB dziedziczy warstwę obiektu BLOB, który został zastąpiony, chyba że nowa warstwa dostępu do obiektów BLOB jest jawnie ustawiona podczas tworzenia.
 
 > [!NOTE]
 > Magazyn Archiwum i funkcja obsługi warstw na poziomie obiektów blob obsługują tylko blokowe obiekty blob. Obecnie nie można zmienić warstwy blokowego obiektu BLOB, który ma migawki.
@@ -116,10 +116,10 @@ W poniższej tabeli przedstawiono porównanie magazynu obiektów BLOB wydajnośc
 |                                           | **Wydajność warstwy Premium**   | **Warstwa gorąca** | **Warstwa chłodna**       | **Warstwa Archiwum**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Dostępność**                          | 99,9%                     | 99,9%        | 99%                 | Stanie           |
-| **Dostępność** <br> **(odczyty RA-GRS)**  | ND                       | 99,99%       | 99,9%               | Stanie           |
+| **Dostępność** <br> **(odczyty RA-GRS)**  | Nie dotyczy                       | 99,99%       | 99,9%               | Stanie           |
 | **Opłaty za użycie**                         | Wyższe koszty magazynowania, niższy koszt dostępu i transakcji | Wyższe koszty magazynowania, niższy dostęp i koszty transakcji | Niższe koszty magazynowania, wyższego poziomu dostępu i kosztów transakcji | Najniższe koszty magazynowania, najwyższy poziom dostępu i koszty transakcji |
-| **Minimalny rozmiar obiektu**                   | ND                       | ND          | ND                 | ND               |
-| **Minimalny czas magazynowania**              | ND                       | ND          | 30 dni<sup>1</sup> | 180 dni
+| **Minimalny rozmiar obiektu**                   | Nie dotyczy                       | Nie dotyczy          | Nie dotyczy                 | Nie dotyczy               |
+| **Minimalny czas magazynowania**              | Nie dotyczy                       | Nie dotyczy          | 30 dni<sup>1</sup> | 180 dni
 | **Opóźnienie** <br> **(czas do pierwszego bajtu)** | Jednocyfrowe milisekundy | milisekundy | milisekundy        | godz.<sup>2</sup> |
 
 <sup>1</sup> obiekty w warstwie chłodna na kontach GPv2 mają minimalny okres przechowywania równy 30 dni. Konta usługi BLOB Storage nie mają minimalnego czasu trwania przechowywania dla warstwy chłodna.
@@ -138,7 +138,7 @@ W tej sekcji przedstawiono następujące scenariusze obejmujące użycie witryny
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Zmienianie domyślnej warstwy dostępu konta GPv2 lub usługi Blob Storage
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Aby przejść do konta magazynu, zaznacz pozycję Wszystkie zasoby, a następnie wybierz konto magazynu.
 
@@ -150,7 +150,7 @@ W tej sekcji przedstawiono następujące scenariusze obejmujące użycie witryny
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Zmienianie warstwy obiektu BLOB na koncie GPv2 lub BLOB Storage
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Aby przejść do obiektu blob na koncie magazynu, wybierz pozycję Wszystkie zasoby, wybierz konto magazynu, wybierz kontener, a następnie wybierz obiekt blob.
 
@@ -192,7 +192,7 @@ Tak, możesz zmienić domyślną warstwę konta, ustawiając atrybut **Warstwa d
 
 **Czy mogę ustawić domyślną warstwę dostępu do konta na Archiwum?**
 
-Nie. Tylko warstwy dostępu gorąca i chłodna mogą być ustawione jako domyślna Warstwa dostępu do konta. Archiwum można ustawić tylko na poziomie obiektu.
+Nie. Tylko warstwy dostępu gorąca i chłodna mogą być ustawione jako domyślna Warstwa dostępu do konta. Archiwum można ustawić tylko na poziomie obiektu. W przypadku przekazywania obiektów BLOB należy określić wybraną warstwę dostępu, która ma być gorąca, chłodna lub archiwalna, niezależnie od domyślnej warstwy konta. Ta funkcja umożliwia zapisanie danych bezpośrednio w warstwie archiwum, co pozwala na wykorzystanie oszczędności kosztów od momentu utworzenia danych w magazynie obiektów BLOB.
 
 **W jakich regionach są dostępne warstwy dostępu gorąca, chłodna i archiwalna?**
 

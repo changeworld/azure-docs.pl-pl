@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: fe40eb27b07304aba48be4a47fb22168cb60434c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: 5bf8aea05855d81e88face1dd507f0006cc19cab
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332265"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483900"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: konfigurowanie laboratorium na potrzeby zajęć 
 W tym samouczku skonfigurujesz laboratorium na potrzeby zajęć z maszynami wirtualnymi używanymi przez uczniów podczas zajęć.  
@@ -111,11 +111,11 @@ Utwórz zaplanowane zdarzenie dla laboratorium, aby maszyny wirtualne w laborato
 1. Przejdź do strony **harmonogramy** , a następnie wybierz pozycję **Dodaj wydarzenie zaplanowane** na pasku narzędzi. 
 
     ![Przycisk dodawania harmonogramu na stronie harmonogramów](../media/how-to-create-schedules/add-schedule-button.png)
-2. Upewnij się, że w polu **Standardowy** wybrano **Typ zdarzenia**. Wybierz pozycję **Rozpocznij tylko** , aby określić tylko godzinę rozpoczęcia dla maszyn wirtualnych. Wybierz pozycję **Zatrzymaj tylko** , aby określić tylko czas zatrzymania dla maszyn wirtualnych. 
-7. W sekcji **Repeat (powtarzanie** ) wybierz bieżący harmonogram. 
+2. Potwierdź, że jako **Typ zdarzenia**wybrano **Standard** . Wybierz pozycję **Rozpocznij tylko** , aby określić tylko godzinę rozpoczęcia dla maszyn wirtualnych. Wybierz pozycję **Zatrzymaj tylko** , aby określić tylko czas zatrzymania dla maszyn wirtualnych. 
+3. W sekcji **Repeat (powtarzanie** ) wybierz bieżący harmonogram. 
 
     ![Przycisk dodawania harmonogramu na stronie harmonogramów](../media/how-to-create-schedules/select-current-schedule.png)
-5. W oknie dialogowym **powtarzanie** wykonaj następujące czynności:
+4. Wybranie harmonogramu spowoduje otwarcie okna dialogowego **powtarzanie** . W tym oknie dialogowym wykonaj następujące czynności:
     1. Upewnij się, że dla **każdego tygodnia** jest ustawiona wartość pole **powtarzanie** . 
     3. Określ **datę rozpoczęcia**.
     4. Określ **godzinę rozpoczęcia** uruchamiania maszyn wirtualnych.
@@ -124,10 +124,8 @@ Utwórz zaplanowane zdarzenie dla laboratorium, aby maszyny wirtualne w laborato
     2. Wybierz dni, w których harmonogram ma obowiązywać. W poniższym przykładzie wybrano poniedziałek-czwartek. 
     8. Wybierz pozycję **Zapisz**. 
 
-        ![Ustaw harmonogram powtarzania](../media/how-to-create-schedules/set-repeat-schedule.png)
-
-3. Teraz na stronie **Dodawanie zaplanowanego zdarzenia** dla **notatek (opcjonalnie)** wprowadź dowolny opis lub uwagi dotyczące harmonogramu. 
-4. Na stronie **Dodawanie zaplanowanego zdarzenia** wybierz pozycję **Zapisz**. 
+5. Teraz na stronie **Dodawanie zaplanowanego zdarzenia** dla **notatek (opcjonalnie)** wprowadź dowolny opis lub uwagi dotyczące harmonogramu. 
+6. Na stronie **Dodawanie zaplanowanego zdarzenia** wybierz pozycję **Zapisz**. 
 
     ![Harmonogram tygodniowy](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
@@ -140,7 +138,7 @@ Utwórz zaplanowane zdarzenie dla laboratorium, aby maszyny wirtualne w laborato
 1. Na stronie **wysyłanie zaproszenia** pocztą e-mail wprowadź opcjonalną wiadomość, a następnie wybierz pozycję **Wyślij**. Wiadomość e-mail automatycznie zawiera link rejestracji. Możesz uzyskać ten link rejestracji, wybierając pozycję **... (wielokropek)** na pasku narzędzi i w **łączu rejestracji**. 
 
     ![Wyślij link rejestracji za pośrednictwem poczty e-mail](../media/tutorial-setup-classroom-lab/send-email.png)
-4. Stan **zaproszenia** zostanie wyświetlony na liście **Użytkownicy** . Stan powinien zostać zmieniony na **wysłanie** , a następnie do **wysłania w &lt;date @ no__t-3**. 
+4. Stan **zaproszenia** zostanie wyświetlony na liście **Użytkownicy** . Stan powinien zostać zmieniony na **wysłanie** , a następnie do **wysłania &lt;Data&gt;** . 
 
 ## <a name="next-steps"></a>Następne kroki
 W tym samouczku utworzono i skonfigurowano laboratorium na potrzeby zajęć. Aby dowiedzieć się, jak uczeń może uzyskać dostęp do maszyny wirtualnej w laboratorium przy użyciu linku rejestracyjnego, przejdź do następnego samouczka:

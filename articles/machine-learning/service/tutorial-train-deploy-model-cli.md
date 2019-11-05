@@ -1,6 +1,6 @@
 ---
 title: Uczenie i wdrażanie modeli z interfejsu wiersza polecenia
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak używać rozszerzenia Uczenie maszynowe dla interfejsu wiersza polecenia platformy Azure, aby uczenie, zarejestrować i wdrożyć model z wiersza poleceń.
 ms.author: larryfr
 author: Blackmist
@@ -9,14 +9,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: fb46aaf04535c1b44cdd80810fbb6382dc727a67
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
-ms.translationtype: MT
+ms.openlocfilehash: 3f619caf7e2713e1c9251550b06c8bdefba5936f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350424"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493390"
 ---
-# <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Samouczek: Uczenie i wdrażanie modelu z poziomu interfejsu wiersza polecenia
+# <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Samouczek: uczenie i wdrażanie modelu z poziomu interfejsu wiersza polecenia
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym samouczku użyjesz rozszerzenia Machine Learning dla interfejsu wiersza polecenia platformy Azure, aby nauczyć, zarejestrować i wdrożyć model.
 
@@ -55,10 +56,10 @@ git clone https://github.com/microsoft/MLOps.git
 
 Katalog `model-training` zawiera następujące pliki, które są używane podczas uczenia modelu:
 
-* `.azureml\sklearn.runconfig`: Plik __konfiguracji uruchomieniowej__ . Ten plik definiuje środowisko uruchomieniowe potrzebne do uczenia modelu.
-* `train-sklearn.py`: Skrypt szkoleniowy. Ten plik pociąga za model.
-* `mylib.py`: Moduł pomocnika używany przez `train-sklearn.py`.
-* `training-env.yml`: Definiuje zależności oprogramowania wymagające do uruchomienia skryptu szkoleniowego.
+* `.azureml\sklearn.runconfig`: plik __konfiguracji uruchomieniowej__ . Ten plik definiuje środowisko uruchomieniowe potrzebne do uczenia modelu.
+* `train-sklearn.py`: skrypt szkoleniowy. Ten plik pociąga za model.
+* `mylib.py`: moduł pomocnika używany przez `train-sklearn.py`.
+* `training-env.yml`: definiuje zależności oprogramowania wymagające do uruchomienia skryptu szkoleniowego.
 
 Skrypt szkoleniowy używa zestawu danych cukrzycą z scikit — Dowiedz się, jak szkolić model.
 
@@ -66,10 +67,10 @@ Skrypt szkoleniowy używa zestawu danych cukrzycą z scikit — Dowiedz się, ja
 
 Katalog `model-deployment` zawiera następujące pliki, które są używane do wdrożenia przeszkolonego modelu jako usługi sieci Web:
 
-* `aciDeploymentConfig.yml`: Plik __konfiguracji wdrożenia__ . Ten plik definiuje środowisko hostingu, które jest niezbędne dla modelu.
-* `inferenceConfig.yml`: Plik configuration__ wnioskowania. Ten plik definiuje środowisko oprogramowania używane przez usługę do oceny danych w modelu.
-* `score.py`: Skrypt języka Python, który akceptuje dane przychodzące, ocenia je przy użyciu modelu, a następnie zwraca odpowiedź.
-* `scoring-env.yml`: Zależności Conda, które są konieczne do uruchomienia modelu i skryptu `score.py`.
+* `aciDeploymentConfig.yml`: plik __konfiguracji wdrożenia__ . Ten plik definiuje środowisko hostingu, które jest niezbędne dla modelu.
+* `inferenceConfig.yml`: plik wnioskowania configuration__. Ten plik definiuje środowisko oprogramowania używane przez usługę do oceny danych w modelu.
+* `score.py`: skrypt języka Python, który akceptuje dane przychodzące, ocenia je przy użyciu modelu, a następnie zwraca odpowiedź.
+* `scoring-env.yml`: Conda zależności, które są konieczne do uruchomienia modelu i `score.py` skryptu.
 
 ## <a name="connect-to-your-azure-subscription"></a>Nawiązywanie połączenia z subskrypcją platformy Azure
 
@@ -79,7 +80,7 @@ Istnieje kilka sposobów uwierzytelniania w ramach subskrypcji platformy Azure z
 az login
 ```
 
-Jeśli interfejs wiersza polecenia może otworzyć Twoją domyślną przeglądarkę, zrobi to i załaduje stronę logowania. W przeciwnym razie musisz otworzyć przeglądarkę i postępować zgodnie z instrukcjami w wierszu polecenia. Instrukcje obejmują przeglądanie [https://aka.ms/devicelogin](https://aka.ms/devicelogin) i wprowadzanie kodu autoryzacji.
+Jeśli interfejs wiersza polecenia może otworzyć Twoją domyślną przeglądarkę, zrobi to i załaduje stronę logowania. W przeciwnym razie musisz otworzyć przeglądarkę i postępować zgodnie z instrukcjami w wierszu polecenia. Instrukcje obejmują przechodzenie do [https://aka.ms/devicelogin](https://aka.ms/devicelogin) i wprowadzanie kodu autoryzacji.
 
 ## <a name="install-the-machine-learning-extension"></a>Zainstaluj rozszerzenie uczenia maszynowego
 
@@ -97,12 +98,12 @@ az extension update -n azure-cli-ml
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów to podstawowy kontener zasobów na platformie Azure. Podczas pracy z usługą Azure Machine Learning Grupa zasobów będzie zawierać obszar roboczy usługi Azure Machine Learning. Będzie również zawierać inne usługi platformy Azure używane przez obszar roboczy. Na przykład jeśli nauczysz model przy użyciu zasobów obliczeniowych opartych na chmurze, ten zasób zostanie utworzony w grupie zasobów.
+Grupa zasobów to podstawowy kontener zasobów na platformie Azure. Podczas pracy z Azure Machine Learning Grupa zasobów będzie zawierać obszar roboczy Azure Machine Learning. Będzie również zawierać inne usługi platformy Azure używane przez obszar roboczy. Na przykład jeśli nauczysz model przy użyciu zasobów obliczeniowych opartych na chmurze, ten zasób zostanie utworzony w grupie zasobów.
 
-Aby __utworzyć nową grupę zasobów__, użyj następującego polecenia. Zamień `<resource-group-name>` na nazwę, która ma być używana dla tej grupy zasobów. Zamień `<location>` na region platformy Azure, który ma być używany dla tej grupy zasobów:
+Aby __utworzyć nową grupę zasobów__, użyj następującego polecenia. Zastąp `<resource-group-name>` nazwą, która ma być używana dla tej grupy zasobów. Zastąp `<location>` w regionie świadczenia usługi Azure, który ma być używany dla tej grupy zasobów:
 
 > [!TIP]
-> Należy wybrać region, w którym usługa Azure Machine Learning jest dostępna. Aby uzyskać więcej informacji, zobacz [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
+> Należy wybrać region, w którym Azure Machine Learning jest dostępna. Aby uzyskać więcej informacji, zobacz [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -182,7 +183,7 @@ To polecenie tworzy plik `.azureml/config.json`, który zawiera informacje, któ
 
 ## <a name="create-the-compute-target-for-training"></a>Utwórz element docelowy obliczeń na potrzeby szkolenia
 
-Ten przykład używa wystąpienia obliczeniowego Azure Machine Learning do uczenia modelu. Aby utworzyć nowe wystąpienie obliczeniowe, użyj następującego polecenia:
+W tym przykładzie zastosowano Azure Machine Learning klaster obliczeniowy do uczenia modelu. Aby utworzyć nowy klaster obliczeniowy, użyj następującego polecenia:
 
 ```azurecli-interactive
 az ml computetarget create amlcompute -n cpu --max-nodes 4 --vm-size Standard_D2_V2
@@ -199,14 +200,14 @@ Dane wyjściowe tego polecenia są podobne do następujących:
 }
 ```
 
-To polecenie tworzy nowy obiekt docelowy obliczeń o nazwie `cpu` z maksymalnie czterema węzłami. Wybrany rozmiar maszyny wirtualnej zapewnia maszynę wirtualną z zasobem procesora GPU. Aby uzyskać informacje na temat rozmiaru maszyny wirtualnej, zobacz [typy maszyn wirtualnych i rozmiary].
+To polecenie tworzy nowy obiekt docelowy obliczeń o nazwie `cpu`, z maksymalnie czterema węzłami. Wybrany rozmiar maszyny wirtualnej zapewnia maszynę wirtualną z zasobem procesora GPU. Aby uzyskać informacje na temat rozmiaru maszyny wirtualnej, zobacz [typy maszyn wirtualnych i rozmiary].
 
 > [!IMPORTANT]
 > Nazwa elementu docelowego obliczeń (`cpu` w tym przypadku) jest ważna; odwołuje się do niego plik `.azureml/sklearn.runconfig` używany w następnej sekcji.
 
 ## <a name="submit-the-training-run"></a>Prześlij przebieg szkolenia
 
-Aby rozpocząć szkolenie w miejscu docelowym obliczeń `cpu`, należy zmienić katalogi na katalog `model-training`, a następnie użyć następującego polecenia:
+Aby uruchomić szkolenie na `cpu` celu obliczeń, należy zmienić katalogi na katalog `model-training`, a następnie użyć następującego polecenia:
 
 ```azurecli-interactive
 cd ~/mlops/model-training
@@ -215,9 +216,9 @@ az ml run submit-script -e myexperiment -c sklearn -d training-env.yml -t runout
 
 To polecenie określa nazwę eksperymentu (`myexperiment`). Eksperyment zapisuje informacje o tym przebiegu w obszarze roboczym.
 
-Parametr `-c sklearn` Określa plik `.azureml/sklearn.runconfig`. Jak wspomniano wcześniej, ten plik zawiera informacje służące do konfigurowania środowiska używanego w ramach przebiegu szkoleniowego. Po sprawdzeniu tego pliku zobaczysz, że odwołuje się do utworzonego wcześniej elementu docelowego obliczeń `cpu`. Zawiera również listę liczby węzłów, które mają być używane podczas uczenia (`"nodeCount": "4"`) i zawiera sekcję `"condaDependenciees"`, która zawiera listę pakietów języka Python wymaganych do uruchomienia skryptu szkoleniowego.
+`-c sklearn` parametr określa plik `.azureml/sklearn.runconfig`. Jak wspomniano wcześniej, ten plik zawiera informacje służące do konfigurowania środowiska używanego w ramach przebiegu szkoleniowego. Po sprawdzeniu tego pliku zobaczysz, że odwołuje się do utworzonego wcześniej elementu docelowego obliczeń `cpu`. Zawiera również listę liczby węzłów, które mają być używane podczas uczenia (`"nodeCount": "4"`) i zawiera sekcję `"condaDependenciees"`, w której znajdują się pakiety języka Python niezbędne do uruchomienia skryptu szkoleniowego.
 
-Aby uzyskać więcej informacji na temat uruchamiania plików konfiguracji, zobacz [Konfigurowanie elementów docelowych obliczeń i używanie ich do uczenia modelu](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli).
+Aby uzyskać więcej informacji na temat uruchamiania plików konfiguracji, zobacz [Konfigurowanie elementów docelowych obliczeń i używanie ich do uczenia modelu](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)lub odwoływanie się do tego [pliku JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) , aby zobaczyć pełny schemat dla runconfig.
 
 Parametr `-t` przechowuje odwołanie do tego przebiegu w pliku JSON i zostanie użyte w następnych krokach w celu zarejestrowania i pobrania modelu.
 
@@ -236,11 +237,11 @@ Cleaning up all outstanding Run operations, waiting 300.0 seconds
 
 Ten tekst jest rejestrowany ze skryptu szkoleniowego (`train-sklearn.py`) i wyświetla dwie metryki wydajności dla tego modelu. W tym przypadku chcemy, aby model miał najwyższą wartość alfa. Metryki wydajności są specyficzne dla modelu, który jest szkoleniowy. Inne modele będą mieć różne metryki wydajności.
 
-W przypadku inspekcji `train-sklearn.py` Zauważ, że używa również wartości alfa, gdy przechowuje przeszkolone modele do pliku. W tym przypadku pociąga za niego kilka modeli. Jeden z najwyższą wartością alfa powinna być najlepszym. Patrząc na dane wyjściowe powyżej, a kod, model z alfa 0,95 został zapisany jako `./outputs/ridge_0.95.pkl`
+W przypadku inspekcji `train-sklearn.py`należy zauważyć, że używa ona również wartości alfa, gdy przechowuje przeszkolone modele do pliku. W tym przypadku pociąga za niego kilka modeli. Jeden z najwyższą wartością alfa powinna być najlepszym. Patrząc na dane wyjściowe powyżej, a kod, model z alfa 0,95 został zapisany jako `./outputs/ridge_0.95.pkl`
 
 Model został zapisany w katalogu `./outputs` w miejscu docelowym obliczeń, w którym został przeszkolony. W tym przypadku wystąpienie obliczeniowe Azure Machine Learning w chmurze platformy Azure. Proces uczenia automatycznie przekazuje zawartość katalogu `./outputs` z elementu docelowego obliczeń, w którym szkolenia odbywają się w obszarze roboczym Azure Machine Learning. Jest ona przechowywana w ramach eksperymentu (`myexperiment` w tym przykładzie).
 
-## <a name="register-the-model"></a>Zarejestruj model
+## <a name="register-the-model"></a>Rejestrowanie modelu
 
 Aby zarejestrować model bezpośrednio z wersji zapisanej w eksperymentie, użyj następującego polecenia:
 
@@ -248,7 +249,7 @@ Aby zarejestrować model bezpośrednio z wersji zapisanej w eksperymentie, użyj
 az ml model register -n mymodel -f runoutput.json --asset-path "outputs/ridge_0.95.pkl" -t registeredmodel.json
 ```
 
-To polecenie rejestruje plik `outputs/ridge_0.95.pkl` utworzony w ramach szkolenia przebiegu jako nowy model rejestracji o nazwie `mymodel`. @No__t-0 odwołuje się do ścieżki w eksperymentie. W takim przypadku eksperyment i informacje o przebiegu są ładowane z pliku `runoutput.json` utworzonego przez polecenie szkolenia. @No__t-0 tworzy plik JSON, który odwołuje się do nowego zarejestrowanego modelu utworzonego przez to polecenie, i jest używany przez inne polecenia CLI, które działają z zarejestrowanymi modelami.
+To polecenie rejestruje plik `outputs/ridge_0.95.pkl` utworzony w ramach szkolenia przebiegu jako nowy model rejestracji o nazwie `mymodel`. `--assets-path` odwołuje się do ścieżki w eksperymentie. W takim przypadku eksperyment i informacje o przebiegu są ładowane z pliku `runoutput.json` utworzonego przez polecenie szkolenia. `-t registeredmodel.json` tworzy plik JSON, który odwołuje się do nowego zarejestrowanego modelu utworzonego przez to polecenie, i jest używany przez inne polecenia CLI, które działają z zarejestrowanymi modelami.
 
 Dane wyjściowe tego polecenia są podobne do następujących:
 
@@ -277,7 +278,7 @@ az ml model download -i "mymodel:1" -t .
 az ml model register -n mymodel -p "ridge_0.95.pkl"
 ```
 
-Pierwsze polecenie pobiera zarejestrowany model do bieżącego katalogu. Nazwa pliku to `ridge_0.95.pkl`, który jest plikiem, do którego odwołuje się po zarejestrowaniu modelu. Drugie polecenie rejestruje model lokalny (`-p "ridge_0.95.pkl"`) o takiej samej nazwie jak w poprzedniej rejestracji (`mymodel`). Tym razem dane JSON zwracają listę wersji jako 2.
+Pierwsze polecenie pobiera zarejestrowany model do bieżącego katalogu. Nazwa pliku to `ridge_0.95.pkl`, który jest plikiem, do którego odwołuje się po zarejestrowaniu modelu. Drugie polecenie rejestruje model lokalny (`-p "ridge_0.95.pkl"`) o takiej samej nazwie jak poprzednia rejestracja (`mymodel`). Tym razem dane JSON zwracają listę wersji jako 2.
 
 ## <a name="deploy-the-model"></a>Wdrażanie modelu
 
@@ -290,11 +291,11 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 Może zostać wyświetlony komunikat "nie można utworzyć klienta platformy Docker". Możesz zignorować ten komunikat. Interfejs wiersza polecenia umożliwia wdrożenie usługi sieci Web do lokalnego kontenera platformy Docker i sprawdzenie, czy platforma Docker. W takim przypadku nie korzystamy z lokalnego wdrożenia.
 
-To polecenie służy do wdrażania nowej usługi o nazwie `myservice` przy użyciu wersji 1 modelu, który został wcześniej zarejestrowany.
+To polecenie służy do wdrażania nowej usługi o nazwie `myservice`przy użyciu wersji 1 modelu, który został wcześniej zarejestrowany.
 
-Plik `inferenceConfig.yml` zawiera informacje dotyczące sposobu wykonywania wnioskowania, takie jak skrypt wejścia (`score.py`) i zależności oprogramowania. Aby uzyskać więcej informacji na temat struktury tego pliku, zobacz [Schemat konfiguracji wnioskowania](reference-azure-machine-learning-cli.md#inference-configuration-schema). Aby uzyskać więcej informacji na temat skryptów wprowadzania, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
+Plik `inferenceConfig.yml` zawiera informacje dotyczące sposobu wykonywania wnioskowania, takie jak skrypt wprowadzania (`score.py`) i zależności oprogramowania. Aby uzyskać więcej informacji na temat struktury tego pliku, zobacz [Schemat konfiguracji wnioskowania](reference-azure-machine-learning-cli.md#inference-configuration-schema). Aby uzyskać więcej informacji na temat skryptów wprowadzania, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
 
-@No__t-0 opisuje środowisko wdrożenia używane do hostowania usługi. Konfiguracja wdrożenia jest specyficzna dla typu obliczenia używanego na potrzeby wdrożenia. W takim przypadku używane jest wystąpienie kontenera platformy Azure. Aby uzyskać więcej informacji, zobacz [Schemat konfiguracji wdrożenia](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
+`aciDeploymentConfig.yml` opisuje środowisko wdrożenia używane do hostowania usługi. Konfiguracja wdrożenia jest specyficzna dla typu obliczenia używanego na potrzeby wdrożenia. W takim przypadku używane jest wystąpienie kontenera platformy Azure. Aby uzyskać więcej informacji, zobacz [Schemat konfiguracji wdrożenia](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 
 Ukończenie procesu wdrażania potrwa kilka minut.
 
@@ -318,7 +319,7 @@ ACI service creation operation finished, operation "Succeeded"
 
 ### <a name="the-scoring-uri"></a>Identyfikator URI oceniania
 
-@No__t-0 zwrócony ze wdrożenia to punkt końcowy REST dla modelu wdrożonego jako usługa sieci Web. Ten identyfikator URI można także uzyskać za pomocą następującego polecenia:
+`scoringUri` zwróconych z wdrożenia to punkt końcowy REST dla modelu wdrożonego jako usługa sieci Web. Ten identyfikator URI można także uzyskać za pomocą następującego polecenia:
 
 ```azurecli-interactive
 az ml service show -n myservice
@@ -355,7 +356,7 @@ To polecenie zwraca dokument JSON zawierający nazwę usuniętej usługi. Usuni�
 
 ### <a name="delete-the-training-compute"></a>Usuń obliczenia szkoleniowe
 
-Jeśli planujesz kontynuowanie korzystania z obszaru roboczego Azure Machine Learning, ale chcesz usunąć element docelowy obliczeń `cpu` utworzonego na potrzeby szkolenia, użyj następującego polecenia:
+Jeśli planujesz kontynuować korzystanie z obszaru roboczego Azure Machine Learning, ale chcesz pozbyć się `cpu` celu obliczeń utworzonych na potrzeby szkolenia, użyj następującego polecenia:
 
 ```azurecli-interactive
 az ml computetarget delete -n cpu
@@ -386,4 +387,4 @@ W tym samouczku Azure Machine Learning użyto interfejsu wiersza polecenia usłu
 > * Wdróż model jako usługę sieci Web
 > * Dane oceny przy użyciu usługi sieci Web
 
-Aby uzyskać więcej informacji na temat korzystania z interfejsu wiersza polecenia, zobacz [Korzystanie z rozszerzenia interfejsu wiersza polecenia dla usługi Azure Machine Learning](reference-azure-machine-learning-cli.md).
+Aby uzyskać więcej informacji na temat korzystania z interfejsu wiersza polecenia, zobacz [Używanie rozszerzenia interfejsu wiersza polecenia dla Azure Machine Learning](reference-azure-machine-learning-cli.md).

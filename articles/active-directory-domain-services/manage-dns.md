@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 9279f97d5260eae698d5dbee10e077b71ab01992
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c225be5a1123c89d8a470a8dea48b3c57eb893b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612328"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474582"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>Administrowanie systemem DNS w Azure AD Domain Services domenie zarządzanej
 
@@ -23,7 +23,9 @@ W Azure Active Directory Domain Services (Azure AD DS), składnik klucza to DNS 
 
 Podczas uruchamiania własnych aplikacji i usług może być konieczne utworzenie rekordów DNS dla komputerów, które nie są przyłączone do domeny, skonfigurować wirtualne adresy IP dla modułów równoważenia obciążenia lub skonfigurować zewnętrzne usługi przesyłania dalej DNS. Użytkownicy, którzy należą do grupy *administratorów DC usługi AAD* , mają uprawnienia do administrowania systemem DNS w domenie zarządzanej usługi Azure AD DS i mogą tworzyć i edytować niestandardowe rekordy DNS.
 
-W tym artykule opisano sposób instalowania narzędzi serwera DNS, a następnie używania konsoli DNS do zarządzania rekordami.
+W środowisku hybrydowym strefy i rekordy DNS skonfigurowane w środowisku lokalnym AD DS nie są synchronizowane z usługą Azure AD DS. Aby zdefiniować i użyć własnych wpisów DNS, należy utworzyć rekordy na serwerze DNS usługi Azure AD DS lub użyć usług przesyłania dalej warunkowego, które wskazują istniejące serwery DNS w danym środowisku.
+
+W tym artykule opisano sposób instalowania narzędzi serwera DNS, a następnie używania konsoli DNS do zarządzania rekordami w usłudze Azure AD DS.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
@@ -43,13 +45,13 @@ Aby wykonać ten artykuł, potrzebne są następujące zasoby i uprawnienia:
 
 ## <a name="install-dns-server-tools"></a>Instalowanie narzędzi serwera DNS
 
-Aby utworzyć i zmodyfikować system DNS, należy zainstalować narzędzia serwera DNS. Te narzędzia można zainstalować jako funkcję systemu Windows Server. Aby uzyskać więcej informacji na temat instalowania narzędzi administracyjnych na kliencie systemu Windows, zobacz Install [Narzędzia administracji zdalnej serwera (RSAT)][install-rsat].
+Aby tworzyć i modyfikować rekordy DNS w usłudze Azure AD DS, należy zainstalować narzędzia serwera DNS. Te narzędzia można zainstalować jako funkcję systemu Windows Server. Aby uzyskać więcej informacji na temat instalowania narzędzi administracyjnych na kliencie systemu Windows, zobacz Install [Narzędzia administracji zdalnej serwera (RSAT)][install-rsat].
 
 1. Zaloguj się do maszyny wirtualnej zarządzania. Aby uzyskać instrukcje dotyczące sposobu nawiązywania połączenia przy użyciu Azure Portal, zobacz [nawiązywanie połączenia z maszyną wirtualną z systemem Windows Server][connect-windows-server-vm].
-1. **Menedżer serwera** powinna być otwarta domyślnie po zalogowaniu się do maszyny wirtualnej. Jeśli nie, w menu **Start** wybierz **Menedżer serwera**.
+1. Jeśli **Menedżer serwera** nie zostanie otwarta domyślnie po zalogowaniu się do maszyny wirtualnej, wybierz menu **Start** , a następnie wybierz pozycję **Menedżer serwera**.
 1. W okienku *pulpit nawigacyjny* okna **Menedżer serwera** wybierz pozycję **Dodaj role i funkcje**.
 1. Na stronie **zanim rozpoczniesz** *Kreatora dodawania ról i funkcji*wybierz pozycję **dalej**.
-1. W polu *Typ instalacji*pozostaw zaznaczoną opcję **Instalacja oparta na rolach lub** oparta na funkcjach, a następnie wybierz pozycję **dalej**.
+1. W polu *Typ instalacji*pozostaw zaznaczoną opcję **Instalacja oparta na rolach lub oparta na funkcjach** , a następnie wybierz pozycję **dalej**.
 1. Na stronie **Wybór serwera** wybierz bieżącą maszynę wirtualną z puli serwerów, takiej jak *MyVM.contoso.com*, a następnie wybierz przycisk **dalej**.
 1. Na stronie **role serwera** kliknij przycisk **dalej**.
 1. Na stronie **funkcje** rozwiń węzeł **Narzędzia administracji zdalnej serwera** , a następnie rozwiń węzeł Narzędzia do **administrowania rolami** . Wybierz funkcję **Narzędzia serwera DNS** z listy narzędzi do administrowania rolami.

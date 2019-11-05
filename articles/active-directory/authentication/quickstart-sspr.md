@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a863c8fe81a08f00385cb267bf360994918fe82
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9adf083f8e4c8c269b895dac87b4e4613ec1b023
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212109"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474381"
 ---
-# <a name="quickstart-self-service-password-reset"></a>Szybki start: Samoobsługowe resetowanie haseł
+# <a name="quickstart-self-service-password-reset"></a>Szybki start: samoobsługowe resetowanie haseł
 
 W tym przewodniku Szybki start opisano konfigurowanie funkcji samoobsługowego resetowania haseł (SSPR), dzięki której administratorzy IT mogą w prosty sposób umożliwić użytkownikom zresetowanie swoich haseł lub odblokowanie kont.
 
@@ -26,14 +26,14 @@ W tym przewodniku Szybki start opisano konfigurowanie funkcji samoobsługowego r
 
 * Działająca dzierżawa usługi Azure AD z włączoną co najmniej próbną wersją licencji.
 * Konto z uprawnieniami administratora globalnego.
-* Testowe konto użytkownika niebędącego administratorem i hasło do tego konta. Jeśli chcesz utworzyć użytkownika, zobacz artykuł [Szybki start: Dodawanie nowych użytkowników do usługi Azure Active Directory](../add-users-azure-active-directory.md).
+* Testowe konto użytkownika niebędącego administratorem i hasło do tego konta. Jeśli chcesz utworzyć użytkownika, zobacz artykuł [Szybki start: dodawanie nowych użytkowników do usługi Azure Active Directory](../add-users-azure-active-directory.md).
 * Grupa pilotażowa na potrzeby testów z testowym użytkownikiem niebędącym administratorem jako jej członkiem. Jeśli chcesz utworzyć grupę, zobacz artykuł [Tworzenie grupy i dodawanie do niej członków w usłudze Azure Active Directory](../active-directory-groups-create-azure-portal.md).
 
 ## <a name="enable-self-service-password-reset"></a>Włączanie samoobsługowego resetowania hasła
 
 [Wyświetl ten proces jako film wideo w usłudze YouTube](https://youtu.be/Pa0eyqjEjvQ)
 
-1. W istniejącej dzierżawie usługi Azure AD w witrynie **Azure Portal** w obszarze **Azure Active Directory** wybierz pozycję **Resetowanie hasła**.
+1. Z istniejącej dzierżawy usługi Azure AD w menu Azure Portal lub na stronie **głównej** wybierz pozycję **Azure Active Directory**. Następnie wybierz pozycję **Resetowanie hasła**.
 
 2. Na stronie **Właściwości** w ramach opcji **Funkcja samoobsługowego resetowania hasła jest włączona** wybierz pozycję **Wybrane**.
     * W obszarze **Wybieranie grupy** wybierz grupę pilotażową utworzoną w sekcji dotyczącej wymagań wstępnych w tym artykule.

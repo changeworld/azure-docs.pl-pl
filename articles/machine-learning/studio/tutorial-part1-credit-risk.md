@@ -1,7 +1,7 @@
 ---
-title: Samouczek 1. Przewidywanie ryzyka kredytowego
-titleSuffix: Azure Machine Learning Studio
-description: Szczegółowy samouczek pokazujący sposób tworzenia rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning Studio. Ten samouczek jest pierwszą częścią trzyczęściowej serii.  Pokazano w nim, jak utworzyć obszar roboczy, przekazać dane i utworzyć eksperyment.
+title: 'Samouczek 1: przewidywanie ryzyka kredytowego'
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Szczegółowy Samouczek przedstawiający sposób tworzenia rozwiązania do analizy predykcyjnej w celu oceny ryzyka kredytowego w klasycznej wersji Azure Machine Learning Studio. Ten samouczek jest pierwszą częścią trzyczęściowej serii.  Pokazano w nim, jak utworzyć obszar roboczy, przekazać dane i utworzyć eksperyment.
 keywords: ryzyko kredytowe, rozwiązanie analizy predykcyjnej, ocena ryzyka
 author: sdgilley
 ms.author: sgilley
@@ -10,59 +10,58 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f9746dae4cdf10a10922be41602f4ecd7f032f5b
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: b861fbca1f8b4fd6b313e770b1636674767e406a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949796"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492624"
 ---
-# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Samouczek 1. Przewidywanie ryzyka kredytowego — Azure Machine Learning Studio
+# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Samouczek 1: przewidywanie ryzyka kredytowego — Azure Machine Learning Studio (klasyczny)
 
-W tym samouczku szczegółowo przedstawiono proces opracowywania rozwiązania analizy predykcyjnej. W jego ramach opracujesz prosty model w usłudze Machine Learning Studio.  Następnie wdrożysz model jako usługę internetową w ramach usługi Azure Machine Learning.  Wdrożony model może tworzyć przewidywania przy użyciu nowych danych. Ten samouczek jest **pierwszą częścią trzyczęściowej serii**.
+[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+
+W tym samouczku szczegółowo przedstawiono proces opracowywania rozwiązania analizy predykcyjnej. Tworzysz prosty model w Machine Learning Studio (klasyczny).  Następnie wdrożysz model jako usługę internetową w ramach usługi Azure Machine Learning.  Wdrożony model może tworzyć przewidywania przy użyciu nowych danych. Ten samouczek jest **pierwszą częścią trzyczęściowej serii**.
 
 Załóżmy, że chcesz przewidzieć ryzyko kredytowe osoby na podstawie informacji przekazanych we wniosku kredytowym.  
 
-Ocena ryzyka kredytowego to złożony problem, ale w tym samouczku zostanie on nieco uproszczony. Użyjesz go jako przykładu na potrzeby przedstawienia sposobu tworzenia rozwiązania analizy predykcyjnej przy użyciu usługi Microsoft Azure Machine Learning Studio. W tym rozwiązaniu skorzystasz z usługi Azure Machine Learning Studio i usługi internetowej Machine Learning.  
+Ocena ryzyka kredytowego to złożony problem, ale w tym samouczku zostanie on nieco uproszczony. Będziesz jej używać jako przykładu tworzenia rozwiązania do analizy predykcyjnej przy użyciu Microsoft Azure Machine Learning Studio (klasyczne). Będziesz używać klasycznej wersji Azure Machine Learning Studio i usługi sieci Web Machine Learning dla tego rozwiązania.  
 
 W tym trzyczęściowym samouczku zaczniesz od publicznie dostępnych danych ryzyka kredytowego.  Następnie wdrożysz i wytrenujesz model predykcyjny.  Na koniec wdrożysz model jako usługę internetową.
 
 W tej części samouczka zostaną wykonane następujące czynności: 
  
 > [!div class="checklist"]
-> * Tworzenie obszaru roboczego usługi Machine Learning Studio
+> * Tworzenie obszaru roboczego Machine Learning Studio (klasyczny)
 > * Przekazywanie istniejących danych
 > * Tworzenie eksperymentu
 
 Następnie możesz użyć tego eksperymentu, aby [wytrenować modele w części 2](tutorial-part2-credit-risk-train.md) i [wdrożyć je w części 3](tutorial-part3-credit-risk-deploy.md).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku przyjęto założenie, że usługa Machine Learning Studio była już przez Ciebie używana przynajmniej raz i że znasz niektóre pojęcia związane z uczeniem maszynowym. Nie zakładamy jednak, że jesteś ekspertem w którejkolwiek z tych dziedzin.
+W tym samouczku założono, że wcześniej korzystano Machine Learning Studio (klasyczny) co najmniej raz i że masz pewne zrozumienie koncepcji uczenia maszynowego. Nie zakładamy jednak, że jesteś ekspertem w którejkolwiek z tych dziedzin.
 
-Jeśli usługa **Azure Machine Learning Studio** nie była nigdy wcześniej przez Ciebie używana, możesz najpierw skorzystać z przewodnika Szybki start [Tworzenie pierwszego eksperymentu dotyczącego przetwarzania danych w usłudze Azure Machine Learning Studio](create-experiment.md). Ten przewodnik Szybki start przedstawia pracę z usługą Machine Learning Studio po raz pierwszy. Podstawowe informacje przedstawione w tym samouczku obejmują przeciąganie modułów i upuszczanie ich w obszarze eksperymentu, łączenie modułów ze sobą, uruchamianie eksperymentu oraz przeglądanie wyników.
+Jeśli wcześniej nie korzystasz z **Azure Machine Learning Studio (klasyczny)** , możesz zacząć od przewodnika Szybki Start, [utworzyć pierwszy eksperyment nauki o danych w Azure Machine Learning Studio (klasyczny)](create-experiment.md). Przewodnik Szybki Start przeprowadzi Cię przez Machine Learning Studio (klasyczny) po raz pierwszy. Podstawowe informacje przedstawione w tym samouczku obejmują przeciąganie modułów i upuszczanie ich w obszarze eksperymentu, łączenie modułów ze sobą, uruchamianie eksperymentu oraz przeglądanie wyników.
 
 
 > [!TIP] 
-> Funkcjonalną kopię eksperymentu opracowywanego w tym samouczku można znaleźć w witrynie [Azure AI Gallery](https://gallery.azure.ai). Otwórz stronę **[Tutorial — Predict credit risk](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** (Samouczek — przewidywanie ryzyka kredytowego) i kliknij przycisk **Open in Studio** (Otwórz w usłudze Studio), aby pobrać kopię eksperymentu do obszaru roboczego usługi Machine Learning Studio.
+> Funkcjonalną kopię eksperymentu opracowywanego w tym samouczku można znaleźć w witrynie [Azure AI Gallery](https://gallery.azure.ai). Przejdź do **[samouczka — przewidywanie ryzyka kredytowego](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** , a następnie kliknij pozycję **Otwórz w programie Studio** , aby pobrać kopię eksperymentu do obszaru roboczego Machine Learning Studio (klasycznego).
 > 
 
 
-## <a name="create-a-machine-learning-studio-workspace"></a>Tworzenie obszaru roboczego usługi Machine Learning Studio
+## <a name="create-a-machine-learning-studio-classic-workspace"></a>Tworzenie obszaru roboczego Machine Learning Studio (klasyczny)
 
-Aby używać usługi Machine Learning Studio, musisz mieć obszar roboczy usługi Microsoft Azure Machine Learning Studio. Ten obszar roboczy zawiera narzędzia potrzebne do tworzenia i publikowania eksperymentów oraz zarządzania nimi.  
+Aby użyć Machine Learning Studio (klasyczny), musisz mieć obszar roboczy Microsoft Azure Machine Learning Studio (klasyczny). Ten obszar roboczy zawiera narzędzia potrzebne do tworzenia i publikowania eksperymentów oraz zarządzania nimi.  
 
-Aby utworzyć obszar roboczy, zobacz [Tworzenie i udostępnianie obszaru roboczego usługi Azure Machine Learning Studio](create-workspace.md).
+Aby utworzyć obszar roboczy, zobacz temat [Tworzenie i udostępnianie obszaru roboczego Azure Machine Learning Studio (klasycznego)](create-workspace.md).
 
-Po utworzeniu obszaru roboczego, należy otworzyć usługi Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Jeśli masz więcej niż jednego obszaru roboczego, można wybrać obszar roboczy na pasku narzędzi w prawym górnym rogu okna.
+Po utworzeniu obszaru roboczego Otwórz Machine Learning Studio (klasyczny) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Jeśli masz więcej niż jeden obszar roboczy, możesz wybrać odpowiedni obszar roboczy na pasku narzędzi w prawym górnym rogu okna.
 
-![Wybieranie obszaru roboczego w usłudze Studio](./media/tutorial-part1-credit-risk/open-workspace.png)
+![Wybieranie obszaru roboczego w programie Studio (klasyczny)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> Jeśli jesteś właścicielem obszaru roboczego, możesz udostępniać eksperymenty, nad którymi pracujesz, zapraszając inne osoby do obszaru roboczego. Możesz to zrobić w usłudze Machine Learning Studio na stronie **SETTINGS** (USTAWIENIA). Wystarczy konto Microsoft lub konto organizacyjne dla każdego użytkownika.
+> Jeśli jesteś właścicielem obszaru roboczego, możesz udostępniać eksperymenty, nad którymi pracujesz, zapraszając inne osoby do obszaru roboczego. Można to zrobić w Machine Learning Studio (klasyczny) na stronie **Ustawienia** . Wystarczy, że każdy użytkownik będzie miał konto Microsoft lub konto organizacji.
 > 
 > Na stronie **SETTINGS** (USTAWIENIA) kliknij pozycję **USERS** (UŻYTKOWNICY), a następnie kliknij przycisk **INVITE MORE USERS** (ZAPROŚ UŻYTKOWNIKÓW) w dolnej części okna.
 > 
@@ -78,7 +77,7 @@ Zestaw danych **german.data** zawiera wiersze 20 zmiennych z 1000 złożonych w 
 
 Witryna internetowa UCI zawiera opis atrybutów wektora cech dla tych danych. Te dane obejmują informacje finansowe, historię kredytową, stan zatrudnienia i dane osobowe. Każdy wnioskodawca został poddany klasyfikacji binarnej, która wskazuje, czy jego ryzyko kredytowe jest wysokie, czy niskie. 
 
-Użyjesz tych danych, aby wytrenować model analizy predykcyjnej. Gdy wszystko będzie gotowe, model powinien móc zaakceptować wektor funkcji dla poszczególnych nowych i przewidywania, czy są one ryzyko kredytowe niskie lub wysokie.  
+Użyjesz tych danych, aby wytrenować model analizy predykcyjnej. Gdy wszystko będzie gotowe, model powinien mieć możliwość akceptowania wektora funkcji dla nowej osoby i przewidywania, czy są to niskie czy wysokie ryzyko kredytowe.  
 
 Jest jeszcze pewien interesujący zwrot.
 
@@ -96,7 +95,7 @@ W takim przypadku, jeśli model błędnie sklasyfikuje niskie ryzyko kredytowe d
 
 ### <a name="convert-the-dataset-format"></a>Konwertowanie formatu zestawu danych
 
-Oryginalny zestaw danych ma format wartości rozdzielanych spacją. Usługa Machine Learning Studio działa lepiej z plikiem wartości rozdzielanych przecinkami (CSV), dlatego warto przekonwertować zestaw danych, zastępując spacje za pomocą przecinków.  
+Oryginalny zestaw danych ma format wartości rozdzielanych spacją. Klasyczna wersja Machine Learning Studio działa lepiej przy użyciu pliku wartości rozdzielanych przecinkami (CSV), dzięki czemu można przekonwertować zestaw danych, zastępując spacje przecinkami.  
 
 Istnieje wiele sposobów na przekonwertowanie danych. Jednym z nich jest użycie następującego polecenia programu Windows PowerShell:   
 
@@ -108,11 +107,11 @@ Innym sposobem jest użycie polecenia sed systemu Unix:
 
 W obu przypadkach zostanie utworzona rozdzielana przecinkami wersja danych w pliku o nazwie **german.csv**, którego możesz użyć w eksperymencie.
 
-### <a name="upload-the-dataset-to-machine-learning-studio"></a>Przekazywanie zestawu danych do usługi Machine Learning Studio
+### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Przekaż zestaw danych do Machine Learning Studio (klasyczny)
 
-Po przekonwertowaniu danych na format CSV należy je przekazać do usługi Machine Learning Studio. 
+Gdy dane zostaną przekonwertowane do formatu CSV, należy przekazać je do klasycznej wersji Machine Learning Studio. 
 
-1. Otwórz stronę główną usługi Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)). 
+1. Otwórz stronę główną Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)). 
 
 2. Kliknij menu ![Menu](./media/tutorial-part1-credit-risk/menu.png) w lewym górnym rogu okna, kliknij pozycję **Azure Machine Learning**, wybierz pozycję **Studio** i zaloguj się.
 
@@ -138,17 +137,17 @@ Po przekonwertowaniu danych na format CSV należy je przekazać do usługi Machi
 
 Spowoduje to przekazanie danych do modułu zestawu danych, którego możesz użyć w eksperymencie.
 
-Aby zarządzać zestawami danych przekazanymi do usługi Studio, kliknij kartę **DATASETS** (ZESTAWY DANYCH) po lewej stronie okna usługi Studio.
+Można zarządzać zestawami danych, które zostały przekazane do Studio (klasyczne), klikając kartę **zestawy danych** z lewej strony okna Studio (klasyczne).
 
 ![Zarządzanie zestawami danych](./media/tutorial-part1-credit-risk/dataset-list.png)
 
-Aby uzyskać więcej informacji na temat importowania innych typów danych do eksperymentu, zobacz [Importowanie danych szkoleniowych do usługi Azure Machine Learning Studio](import-data.md).
+Aby uzyskać więcej informacji na temat importowania innych typów danych do eksperymentu, zobacz [Importowanie danych szkoleniowych do Azure Machine Learning Studio (klasyczne)](import-data.md).
 
 ## <a name="create-an-experiment"></a>Tworzenie eksperymentu
 
-Następnym krokiem w tym samouczku jest utworzenie eksperymentu w usłudze Machine Learning Studio, który używa przekazanego zestawu danych.  
+Następnym krokiem w tym samouczku jest utworzenie eksperymentu w klasycznej wersji Machine Learning Studio, która używa przekazanego zestawu danych.  
 
-1. W usłudze Studio kliknij pozycję **+NEW** (+NOWY) w dolnej części okna.
+1. W programie Studio (klasyczny) kliknij pozycję **+ Nowy** w dolnej części okna.
 1. Wybierz pozycję **EXPERIMENT** (EKSPERYMENT), a następnie wybierz pozycję „Blank Experiment” (Pusty eksperyment). 
 
     ![Tworzenie nowego eksperymentu](./media/tutorial-part1-credit-risk/create-new-experiment.png)
@@ -172,21 +171,21 @@ Następnym krokiem w tym samouczku jest utworzenie eksperymentu w usłudze Machi
 
 ### <a name="prepare-the-data"></a>Przygotowywanie danych
 
-Możesz wyświetlić 100 pierwszych wierszy danych i pewne informacje statystyczne dla całego zestawu danych: Kliknij port wyjściowy zestawu danych (mały okrąg w dolnej części), a następnie wybierz pozycję **Visualize** (Wizualizuj).  
+Można wyświetlić pierwsze 100 wierszy danych i niektóre informacje statystyczne dla całego zestawu danych: kliknij port wyjściowy zestawu danych (mały okrąg u dołu) i wybierz opcję **Wizualizuj**.  
 
-Ponieważ plik danych nie zawiera nagłówków kolumn, usługa Studio wstawiła nagłówki ogólne (Col1, Col2, *itd.*). Dobre nagłówki nie są niezbędne do utworzenia modelu, ale ułatwiają pracę z danymi w eksperymencie. Ponadto po opublikowaniu tego modelu w usłudze internetowej nagłówki pomagają w identyfikowaniu kolumn użytkownikowi usługi.  
+Ponieważ plik danych nie zawiera nagłówków kolumn, w klasycznej wersji programu Studio udostępniono nagłówki ogólne (Kol1, Col2 *itp.* ). Dobre nagłówki nie są niezbędne do utworzenia modelu, ale ułatwiają pracę z danymi w eksperymencie. Ponadto po opublikowaniu tego modelu w usłudze internetowej nagłówki pomagają w identyfikowaniu kolumn użytkownikowi usługi.  
 
-Nagłówki kolumn możesz dodać za pomocą modułu [Edit Metadata][edit-metadata] (Edytowanie metadanych).
+Nagłówki kolumn można dodawać przy użyciu modułu [Edytowanie metadanych][edit-metadata] .
 
-Modułu [Edit Metadata][edit-metadata] (Edytowanie metadanych) możesz użyć, aby zmienić metadane skojarzone z zestawem danych. W tym przypadku użyjesz go do nadania bardziej przyjaznych nazw nagłówkom kolumn. 
+Aby zmienić metadane skojarzone z zestawem danych, należy użyć modułu [Edytowanie metadanych][edit-metadata] . W tym przypadku użyjesz go do nadania bardziej przyjaznych nazw nagłówkom kolumn. 
 
-Aby użyć modułu [Edit Metadata][edit-metadata] (Edytowanie metadanych), najpierw należy określić kolumny, które będą modyfikowane (w tym przypadku wszystkie). Następnie określ akcję, która ma zostać wykonana na tych kolumnach (w tym przypadku — zmiana nagłówków kolumn).
+Aby użyć [edycji metadanych][edit-metadata], należy najpierw określić kolumny do zmodyfikowania (w tym przypadku wszystkie). Następnie należy określić akcję do wykonania dla tych kolumn (w tym przypadku zmiana nagłówków kolumn).
 
-1. W palecie modułów wpisz wyraz „metadata” (metadane) w polu **Search** (Wyszukaj). Moduł [Edit Metadata][edit-metadata] (Edytowanie metadanych) zostanie wyświetlony na liście modułów.
+1. W palecie modułów wpisz wyraz „metadata” (metadane) w polu **Search** (Wyszukaj). [Edytowanie metadanych][edit-metadata] pojawia się na liście modułów.
 
-1. Kliknij i przeciągnij moduł [Edit Metadata][edit-metadata] (Edytowanie metadanych) na kanwę i upuść go poniżej dodanego wcześniej zestawu danych.
+1. Kliknij i przeciągnij moduł [Edytuj metadane][edit-metadata] na kanwę i upuść go poniżej zestawu danych, który został dodany wcześniej.
 
-1. Połącz zestaw danych z modułem [Edit Metadata][edit-metadata] (Edytowanie metadanych): kliknij port wyjściowy zestawu danych (mały okrąg w dolnej części zestawu danych), przeciągnij go do portu wejściowego modułu [Edit Metadata][edit-metadata] (Edytowanie metadanych) (mały okrąg w górnej części modułu), a następnie zwolnij przycisk myszy. Zestaw danych i moduł pozostaną połączone, nawet jeśli będziesz przenosić je w obrębie kanwy.
+1. Połącz zestaw danych z [edycją metadanych][edit-metadata]: kliknij port wyjściowy zestawu danych (mały okrąg w dolnej części zestawu danych), przeciągnij do portu wejściowego [edytowania metadanych][edit-metadata] (mały okrąg w górnej części modułu), a następnie zwolnij przycisk myszy. Zestaw danych i moduł pozostaną połączone, nawet jeśli będziesz przenosić je w obrębie kanwy.
  
     Eksperyment powinien wyglądać teraz mniej więcej tak:  
 
@@ -195,12 +194,12 @@ Aby użyć modułu [Edit Metadata][edit-metadata] (Edytowanie metadanych), najpi
     Czerwony wykrzyknik wskazuje, że dla tego modułu nie ustawiono jeszcze właściwości. Zrobisz to w następnym kroku.
 
     > [!TIP]
-    > Aby dodać komentarz do modułu, kliknij dwukrotnie moduł i wpisz tekst. Pozwoli to od razu sprawdzić rolę modułu w eksperymencie. W tym przypadku kliknij dwukrotnie moduł [Edit Metadata][edit-metadata] (Edytowanie metadanych) i wpisz komentarz „Dodawanie nagłówków kolumn”. Kliknij dowolne miejsce na kanwie, aby zamknąć pole tekstowe. Aby wyświetlić komentarz, kliknij strzałkę w dół na module.
+    > Aby dodać komentarz do modułu, kliknij dwukrotnie moduł i wpisz tekst. Pozwoli to od razu sprawdzić rolę modułu w eksperymencie. W takim przypadku kliknij dwukrotnie moduł [Edytuj metadane][edit-metadata] i wpisz komentarz "Dodaj nagłówki kolumn". Kliknij dowolne miejsce na kanwie, aby zamknąć pole tekstowe. Aby wyświetlić komentarz, kliknij strzałkę w dół na module.
     > 
     > ![Moduł Edytowanie metadanych z dodanym komentarzem](./media/tutorial-part1-credit-risk/edit-metadata-with-comment.png)
     > 
 
-1. Wybierz moduł [Edit Metadata][edit-metadata] (Edytowanie metadanych), a następnie w okienku **Properties** (Właściwości) po prawej stronie kanwy kliknij pozycję **Launch column selector** (Uruchom selektor kolumn).
+1. Wybierz pozycję [Edytuj metadane][edit-metadata], a następnie w okienku **Właściwości** z prawej strony kanwy kliknij pozycję **Uruchom selektor kolumny**.
 
 1. W oknie dialogowym **Select columns** (Wybieranie kolumn) wybierz wszystkie wiersze w obszarze **Available Columns** (Dostępne kolumny) i kliknij pozycję > w celu przeniesienia ich do obszaru **Selected Columns** (Wybrane kolumny).
    Okno dialogowe powinno wyglądać następująco:
@@ -221,7 +220,7 @@ Aby użyć modułu [Edit Metadata][edit-metadata] (Edytowanie metadanych), najpi
    ![Właściwości modułu Edytowanie metadanych](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
    > [!TIP]
-   > Jeśli chcesz zweryfikować nagłówki kolumn, uruchom eksperyment (kliknij przycisk **RUN** (URUCHOM) poniżej kanwy eksperymentu). Po zakończeniu eksperymentu (na module [Edit Metadata][edit-metadata] (Edytowanie metadanych) zostanie wyświetlony zielony znacznik wyboru), kliknij port wyjściowy modułu [Edit Metadata][edit-metadata] (Edytowanie metadanych) i wybierz pozycję **Visualize** (Wizualizuj). W ten sam sposób możesz wyświetlić dane wyjściowe każdego modułu, aby sprawdzić postęp danych w eksperymencie.
+   > Jeśli chcesz zweryfikować nagłówki kolumn, uruchom eksperyment (kliknij przycisk **RUN** (URUCHOM) poniżej kanwy eksperymentu). Po zakończeniu działania (zielony znacznik wyboru pojawia się w obszarze [Edytowanie metadanych][edit-metadata]) kliknij port wyjściowy modułu [Edytowanie metadanych][edit-metadata] i wybierz polecenie **Wizualizuj**. W ten sam sposób możesz wyświetlić dane wyjściowe każdego modułu, aby sprawdzić postęp danych w eksperymencie.
    > 
    > 
 
@@ -230,30 +229,30 @@ Aby użyć modułu [Edit Metadata][edit-metadata] (Edytowanie metadanych), najpi
 Potrzebujesz danych, aby wytrenować model i aby go przetestować.
 Z tego względu w następnym kroku eksperymentu podzielisz zestaw danych na dwa oddzielne zestawy danych: jeden na potrzeby trenowania naszego modelu, a drugi na potrzeby testowania.
 
-Aby to zrobić, należy użyć modułu [Split Data][split] (Podział danych).  
+W tym celu należy użyć modułu [Split Data][split] .  
 
-1. Znajdź moduł [Split Data][split] (Podział danych), przeciągnij go na kanwę, a następnie połącz go z modułem [Edit Metadata][edit-metadata] (Edytowanie metadanych).
+1. Znajdź moduł [Split Data][split] , przeciągnij go na kanwę, a następnie połącz go z modułem [Edytowanie metadanych][edit-metadata] .
 
-1. Domyślnie współczynnik podziału wynosi 0,5 i jest ustawiony parametr **Randomized split** (Podział losowy). Oznacza to, że losowa połowa danych przechodzi przez jeden port wyjściowy modułu [Split Data][split] (Podział danych), a pozostała połowa przez drugi. Możesz dostosować te parametry, jak również parametr **Random seed** (Podział losowy), aby zmienić podział między danymi szkoleniowymi i testowymi. W tym przykładzie pozostaw je tak, jak są.
+1. Domyślnie współczynnik podziału wynosi 0,5 i jest ustawiony parametr **Randomized split** (Podział losowy). Oznacza to, że Losowa połowa danych jest wyprowadzana przez jeden port modułu [Split Data][split] i połowa do drugiego. Możesz dostosować te parametry, jak również parametr **Random seed** (Podział losowy), aby zmienić podział między danymi szkoleniowymi i testowymi. W tym przykładzie pozostaw je tak, jak są.
    
    > [!TIP]
    > Właściwość **Fraction of rows in the first output dataset** (Odsetek wierszy w pierwszym zestawie danych wyjściowych) określa, ile danych przechodzi przez *lewy* port wyjściowy. Jeśli na przykład ustawisz współczynnik o wartości 0,7, to 70% danych będzie przechodzić przez lewy port wyjściowy, a 30% przez prawy port.  
    > 
    > 
 
-1. Kliknij dwukrotnie moduł [Split Data][split] (Podział danych) i wprowadź komentarz „Podział na dane szkoleniowe/testowe 50%”. 
+1. Kliknij dwukrotnie moduł [Split Data][split] i wprowadź komentarz "szkolenia/dane testowe podzielone na 50%". 
 
-Danych wyjściowych modułu [Split Data][split] (Podział danych) możesz używać, jak chcesz, ustalmy jednak, że lewych danych wyjściowych użyjemy do trenowania, a prawych danych wyjściowych do testowania.  
+Możesz korzystać z danych wyjściowych modułu [Split Data][split] , ale zamiast tego wybieramy użycie z lewej strony jako dane szkoleniowe i właściwych danych wyjściowych jako danych testowych.  
 
 Jak wspomnieliśmy w [poprzednim kroku](tutorial-part1-credit-risk.md#upload), koszt błędnego sklasyfikowania wysokiego ryzyka kredytowego jako niskiego jest pięć razy wyższy, niż koszt błędnego sklasyfikowania niskiego ryzyka kredytowego jako wysokiego. Aby to uwzględnić, musisz wygenerować nowy zestaw danych, który odzwierciedla tę cechę kosztu. W nowym zestawie danych każdy przykład wysokiego ryzyka jest replikowany pięć razy, podczas gdy przykłady niskiego ryzyka nie są replikowane.   
 
 Tę replikację możesz przeprowadzić przy użyciu kodu języka R:  
 
-1. Znajdź moduł [Execute R Script][execute-r-script] (Wykonywanie skryptu R) i przeciągnij go na kanwę eksperymentu. 
+1. Znajdź i przeciągnij moduł [Wykonaj skrypt języka R][execute-r-script] na kanwę eksperymentu. 
 
-1. Połącz lewy port wyjściowy modułu [Split Data][split] (Podział danych) z pierwszy portem wejściowym („Dataset1”) modułu [Execute R Script][execute-r-script] (Wykonywanie skryptu R).
+1. Podłącz lewy port wyjściowy modułu [Split Data][split] do pierwszego portu wejściowego ("pozycję DataSet1") modułu [skryptu wykonywania języka R][execute-r-script] .
 
-1. Kliknij dwukrotnie moduł [Execute R Script][execute-r-script] (Wykonywanie skryptu R) i wprowadź komentarz „Ustawianie korekty kosztu”.
+1. Kliknij dwukrotnie moduł [wykonywania skryptu języka R][execute-r-script] i wprowadź komentarz "Ustaw korektę kosztów".
 
 1. W okienku **Properties** (Właściwości) usuń domyślny tekst dla parametru **R Script** (Skrypt R) i wprowadź ten skrypt:
    
@@ -265,13 +264,13 @@ Tę replikację możesz przeprowadzić przy użyciu kodu języka R:
 
     ![Skrypt języka R w module Wykonywanie skryptu R](./media/tutorial-part1-credit-risk/execute-r-script.png)
 
-Musisz wykonać tę samą operację replikacji dla wszystkich danych wyjściowych modułu [Split Data][split] (Podział danych), aby dane szkoleniowe i testowe miały taką samą korektę kosztów. Najłatwiejszym sposobem na zrobienie tego jest zduplikowanie właśnie utworzonego modułu [Execute R Script][execute-r-script] (Wykonywanie skryptu R) i połączenie go z drugim portem wyjściowym modułu [Split Data][split] (Podział danych).
+Tę samą operację replikacji należy wykonać dla każdego danych wyjściowych modułu [Split Data][split] , aby dane dotyczące szkolenia i testowania miały takie samo dostosowanie kosztów. Najprostszym sposobem na to jest zduplikowanie wykonanego modułu [skryptu języka R][execute-r-script] i połączenie go z innym portem wyjściowym modułu [Split Data][split] .
 
-1. Kliknij prawym przyciskiem myszy moduł [Execute R Script][execute-r-script] (Wykonywanie skryptu R), a następnie wybierz pozycję **Copy** (Kopiuj).
+1. Kliknij prawym przyciskiem myszy moduł [wykonywania skryptu R][execute-r-script] i wybierz polecenie **Kopiuj**.
 
 1. Kliknij prawym przyciskiem myszy kanwę eksperymentu, a następnie wybierz pozycję **Paste** (Wklej).
 
-1. Przeciągnij nowy moduł w odpowiednie miejsce, a następnie połącz prawy port wyjściowy modułu [Split Data][split] (Podział danych) z pierwszym portem wejściowym tego nowego modułu [Execute R Script][execute-r-script] (Wykonywanie skryptu R). 
+1. Przeciągnij nowy moduł do pozycji, a następnie podłącz odpowiedni port wyjściowy modułu [Split Data][split] do pierwszego portu wejściowego tego nowego modułu [skryptu języka R][execute-r-script] . 
 
 1. W dolnej części kanwy kliknij przycisk **Run** (Uruchom). 
 
@@ -291,12 +290,12 @@ Aby uzyskać więcej informacji na temat używania skryptów języka R w ekspery
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wykonano następujące kroki: 
  
 > [!div class="checklist"]
-> * Tworzenie obszaru roboczego usługi Machine Learning Studio
+> * Tworzenie obszaru roboczego Machine Learning Studio (klasyczny)
 > * Przekazywanie istniejących danych do obszaru roboczego
 > * Tworzenie eksperymentu
 

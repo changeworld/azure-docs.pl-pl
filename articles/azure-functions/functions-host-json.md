@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 2a61a2ba74ccdaa69b26cae65dd4f74a7b837ccf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 96c346db74c1e6c43c3501b657621d09e019309c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927448"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469206"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host. JSON dla Azure Functions 2. x  
 
@@ -71,6 +71,9 @@ W poniższych przykładowych plikach *hosta. JSON* dostępne są wszystkie możl
             }
         }
     },
+    "managedDependency": {
+        "enabled": true
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -78,10 +81,7 @@ W poniższych przykładowych plikach *hosta. JSON* dostępne są wszystkie możl
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ],
-    "managedDependency": {
-        "enabled": true
-    }
+    "watchDirectories": [ "Shared", "Test" ]
 }
 ```
 
@@ -148,7 +148,7 @@ Lista funkcji uruchomionych przez hosta zadań. Pusta tablica oznacza uruchamian
 ## <a name="functiontimeout"></a>functionTimeout
 
 Wskazuje czas trwania dla wszystkich funkcji. Jest on zgodny z formatem ciągu TimeSpan. W planie zużycia bezserwerowego prawidłowy zakres to od 1 sekundy do 10 minut, a wartość domyślna to 5 minut.  
-W przypadku planu dedykowanego (App Service) nie ma żadnego całkowitego limitu, a wartość domyślna to 30 minut. Wartość `-1` wskazuje wykonanie nieograniczone.
+W przypadku planu dedykowanego (App Service) nie ma żadnego całkowitego limitu, a wartość domyślna to 30 minut. Wartość `-1` wskazuje nieograniczone wykonanie.
 
 ```json
 {
@@ -222,10 +222,10 @@ Steruje zachowaniem rejestrowania aplikacji funkcji, w tym Application Insights.
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
-|fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania plików jest włączony.  Dostępne opcje to `never`, `always`, `debugOnly`. |
-|logLevel|nd.|Obiekt, który definiuje filtrowanie kategorii dzienników dla funkcji w aplikacji. Wersja 2. x jest zgodna z układem ASP.NET Core dla filtrowania kategorii dzienników. Pozwala to na filtrowanie rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dzienników](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji ASP.NET Core. |
-|console|nd.| Ustawienie rejestrowania [konsoli](#console) . |
-|ApplicationInsights|nd.| Ustawienie [applicationInsights](#applicationinsights) . |
+|fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania plików jest włączony.  Dostępne są `never`, `always`, `debugOnly`. |
+|logLevel|Nie dotyczy|Obiekt, który definiuje filtrowanie kategorii dzienników dla funkcji w aplikacji. Wersja 2. x jest zgodna z układem ASP.NET Core dla filtrowania kategorii dzienników. Pozwala to na filtrowanie rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dzienników](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji ASP.NET Core. |
+|console|Nie dotyczy| Ustawienie rejestrowania [konsoli](#console) . |
+|ApplicationInsights|Nie dotyczy| Ustawienie [applicationInsights](#applicationinsights) . |
 
 ## <a name="console"></a>console
 
@@ -246,6 +246,18 @@ To ustawienie jest elementem podrzędnym [rejestrowania](#logging). Kontroluje R
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |isEnabled|false|Włącza lub wyłącza rejestrowanie konsoli.| 
+
+## <a name="manageddependency"></a>managedDependency
+
+Zależność zarządzana to funkcja, która jest obecnie obsługiwana tylko w przypadku funkcji opartych na programie PowerShell. Umożliwia automatyczne zarządzanie zależnościami przez usługę. Gdy właściwość `enabled` jest ustawiona na `true`, plik `requirements.psd1` jest przetwarzany. Zależności są aktualizowane, gdy zostaną wydane jakiekolwiek wersje pomocnicze. Aby uzyskać więcej informacji, zobacz [zależność zarządzana](functions-reference-powershell.md#dependency-management) w artykule dotyczącym programu PowerShell.
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
+}
+```
 
 ## <a name="queues"></a>tworzone
 
@@ -281,7 +293,7 @@ Ustawienia konfiguracji dla zachowania pojedynczej blokady. Aby uzyskać więcej
 |listenerLockPeriod|00:01:00|Okres, w którym są wykonywane blokady odbiornika.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Przedział czasu używany do odzyskiwania blokady odbiornika, jeśli nie można uzyskać blokady odbiornika podczas uruchamiania.| 
 |lockAcquisitionTimeout|00:01:00|Maksymalny czas, przez jaki środowisko uruchomieniowe podejmie próbę uzyskania blokady.| 
-|lockAcquisitionPollingInterval|nd.|Interwał między kolejnymi próbami przejęcia blokady.| 
+|lockAcquisitionPollingInterval|Nie dotyczy|Interwał między kolejnymi próbami przejęcia blokady.| 
 
 ## <a name="version"></a>version
 
@@ -294,18 +306,6 @@ Zestaw [udostępnionych katalogów kodu](functions-reference-csharp.md#watched-d
 ```json
 {
     "watchDirectories": [ "Shared" ]
-}
-```
-
-## <a name="manageddependency"></a>managedDependency
-
-Zależność zarządzana to funkcja w wersji zapoznawczej, która jest obecnie obsługiwana tylko w przypadku funkcji opartych na programie PowerShell. Umożliwia automatyczne zarządzanie zależnościami przez usługę. Gdy właściwość enabled ma wartość true, plik [Requirements. psd1](functions-reference-powershell.md#dependency-management) zostanie przetworzony. Zależności zostaną zaktualizowane, gdy zostaną wydane jakiekolwiek wersje pomocnicze.
-
-```json
-{
-    "managedDependency": {
-        "enabled": true
-    }
 }
 ```
 

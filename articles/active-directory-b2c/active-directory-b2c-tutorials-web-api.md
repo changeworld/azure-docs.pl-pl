@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 09/19/2019
+ms.date: 10/14/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: fd4bf602cb5ca409b957e9dbd6f963d88428a63f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: bb33f7f2ec917e9ae168a013a8775ec4f551848d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694646"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475019"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do interfejsu API sieci Web ASP.NET przy użyciu Azure Active Directory B2C
 
@@ -39,16 +39,33 @@ Wykonaj kroki i wymagania wstępne w [samouczku: Włączanie uwierzytelniania w 
 
 Należy zarejestrować zasoby internetowego interfejsu API w dzierżawie, zanim będzie on mógł akceptować i odpowiadać na żądania chronionych zasobów wysyłane przez aplikacje klienckie przedstawiające token dostępu.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego interfejsu Unified **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat środowiska w wersji zapoznawczej](https://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji. Na przykład *webapi1*.
-6. Dla pozycji **Uwzględnij aplikację internetową/internetowy interfejs API** i **Zezwalaj na niejawny przepływ** wybierz wartość **Tak**.
+6. W obszarze **Dołącz aplikację sieci Web/interfejs API sieci Web**wybierz pozycję **tak**.
 7. Dla pozycji **Adres URL odpowiedzi** wprowadź punkt końcowy, w którym usługa Azure AD B2C powinna zwracać wszelkie tokeny żądane przez Twoją aplikację. W tym samouczku przykładowa aplikacja jest uruchamiana lokalnie i nasłuchuje na `https://localhost:44332`.
 8. Dla pozycji **Identyfikator URI identyfikatora aplikacji** wprowadź identyfikator używany na potrzeby internetowego interfejsu API. Zostanie wygenerowany pełny identyfikator URI łącznie z domeną. Na przykład `https://contosotenant.onmicrosoft.com/api`.
-9. Kliknij przycisk **Utwórz**.
+9. Kliknij pozycję **Utwórz**.
 10. Na stronie właściwości zapisz identyfikator aplikacji, który będzie używany podczas konfigurowania aplikacji internetowej.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz pozycję **Nowa rejestracja**.
+1. Wprowadź **nazwę** aplikacji. Na przykład *webapi1*.
+1. W obszarze **Identyfikator URI przekierowania**wybierz pozycję **Sieć Web**, a następnie wprowadź punkt końcowy, w którym Azure AD B2C powinien zwrócić tokeny, których aplikacja żąda. W tym samouczku przykładowa aplikacja jest uruchamiana lokalnie i nasłuchuje na `https://localhost:44332`.
+1. Wybierz pozycję **Zarejestruj**.
+1. Zapisz **Identyfikator aplikacji (klienta)** do użycia w późniejszym kroku.
+
+* * *
 
 ## <a name="configure-scopes"></a>Konfigurowanie zakresów
 
@@ -129,7 +146,7 @@ Należy uruchomić zarówno projekt **TaskWebApp**, jak i **TaskService**.
 1. Zmień ustawienie **Akcja** dla obu projektów na wartość **Uruchom**.
 1. Kliknij pozycję **OK**, aby zapisać konfigurację.
 1. Naciśnij klawisz **F5**, aby uruchomić obie aplikacje. Każda aplikacja zostanie otwarta w osobnym oknie przeglądarki.
-    * `https://localhost:44316/` to aplikacja sieci Web.
+    * `https://localhost:44316/` jest aplikacją sieci Web.
     * `https://localhost:44332/` to internetowy interfejs API.
 
 1. W aplikacji sieci Web wybierz pozycję **Utwórz konto/Zaloguj** się, aby zalogować się do aplikacji sieci Web. Użyj konta, które zostało wcześniej utworzone.

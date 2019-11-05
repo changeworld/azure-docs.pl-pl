@@ -1,34 +1,34 @@
 ---
-title: Architektura łączności w usłudze Azure Database dla serwera MariaDB
-description: W tym artykule opisano architekturę łączności dla usługi Azure Database dla serwera MariaDB.
+title: Architektura łączności w Azure Database for MariaDB
+description: Opisuje architekturę łączności dla serwera Azure Database for MariaDB.
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: d49e4dff1664d6630c966583a722f8e136061de5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5c24a89ca12c36a54a84c61c6343ce960da012c5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595256"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498074"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Architektura łączności w usłudze Azure Database dla serwera MariaDB
-W tym artykule opisano usługi Azure Database for MariaDB architektura łączności również, jak ruch będzie kierowany do usługi Azure Database dla wystąpienia MariaDB z klientami zarówno wewnątrz jednej, jak i spoza platformy Azure.
+# <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Architektura łączności w Azure Database for MariaDB
+W tym artykule opisano architekturę Azure Database for MariaDB łączności oraz sposób kierowania ruchu do wystąpienia Azure Database for MariaDB z klientów zarówno w ramach platformy Azure, jak i poza nią.
 
 ## <a name="connectivity-architecture"></a>Architektura łączności
 
-Połączenie usługi Azure Database dla serwera MariaDB zostanie nawiązane za pośrednictwem bramy, który jest odpowiedzialny za routing połączenia przychodzące do fizycznej lokalizacji serwera w naszym klastrów. Na poniższym diagramie przedstawiono przepływ ruchu.
+Połączenie z Azure Database for MariaDB jest nawiązywane za pomocą bramy, która jest odpowiedzialna za kierowanie połączeń przychodzących do lokalizacji fizycznej serwera w naszych klastrach. Na poniższym diagramie przedstawiono przepływ ruchu.
 
-![Przegląd architektury połączenia](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+![Przegląd architektury łączności](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-Jako klient połączenia z bazą danych, otrzymują parametry połączenia, które nawiązuje połączenie z bramą. Ta brama jest publiczny adres IP, który nasłuchuje na porcie 3306. Wewnątrz klastra bazy danych ruch jest przekazywany do odpowiedniej usługi Azure Database dla serwera MariaDB. W związku z tym aby połączyć się z serwerem, takich jak z sieci firmowej, należy otworzyć zaporę po stronie klienta, aby zezwolić na ruch wychodzący można było nawiązać połączenie naszego bram. Poniżej można znaleźć pełną listę adresy IP używane przez naszych bramy na region.
+Gdy klient nawiązuje połączenie z bazą danych, otrzymują parametry połączenia, które łączą się z bramą. Ta brama ma publiczny adres IP, który nasłuchuje na porcie 3306. W klastrze bazy danych ruch jest przekazywany do odpowiednich Azure Database for MariaDB. W związku z tym, aby nawiązać połączenie z serwerem, na przykład z sieci firmowej, należy otworzyć Zaporę po stronie klienta, aby zezwolić na ruch wychodzący z naszych bram. Poniżej znajdziesz pełną listę adresów IP używanych przez nasze bramy na region.
 
-## <a name="azure-database-for-mariadb-gateway-ip-addresses"></a>Azure Database dla adresów IP bramy MariaDB
+## <a name="azure-database-for-mariadb-gateway-ip-addresses"></a>Adresy IP bramy Azure Database for MariaDB
 
-W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure Database for MariaDB bramy dla wszystkich obszarach danych. Podstawowy adres IP jest bieżący adres IP bramy, a drugi adres IP jest adresem IP trybu failover w przypadku awarii podstawowego. Jak wspomniano wcześniej, klienci powinna zezwalać na ruch wychodzący do adresów IP. Drugi adres IP nie będzie nasłuchiwać na wszystkie usługi, dopóki nie zostanie aktywowany przez usługę Azure Database dla serwera MariaDB do akceptowania połączeń.
+W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP bramy Azure Database for MariaDB dla wszystkich obszarów danych. Podstawowy adres IP to bieżący adres IP bramy, a drugi adres IP to adres IP trybu failover w przypadku awarii podstawowej. Jak wspomniano, klienci powinni zezwolić na ruch wychodzący zarówno do adresów IP. Drugi adres IP nie nasłuchuje w żadnej usłudze, dopóki nie zostanie aktywowany przez Azure Database for MariaDB w celu zaakceptowania połączeń.
 
-| **Nazwa regionu** | **Adres IP podstawowego** | **Adres IP pomocniczego** |
+| **Nazwa regionu** | **Podstawowy adres IP** | **Pomocniczy adres IP** |
 |:----------------|:-------------|:------------------------|
 | Australia Wschodnia | 13.75.149.87 | 40.79.161.1 |
 | Australia Południowo-Wschodnia | 191.239.192.109 | 13.73.109.251 |
@@ -36,7 +36,7 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure D
 | Kanada Środkowa | 40.85.224.249 | |
 | Kanada Wschodnia | 40.86.226.166 | |
 | Środkowe stany USA | 23.99.160.139 | 13.67.215.62 |
-| Chiny wschodnie 1 | 139.219.130.35 | |
+| Chiny Wschodnie 1 | 139.219.130.35 | |
 | Chiny Wschodnie 2 | 40.73.82.1 | |
 | Chiny Północne 1 | 139.219.15.17 | |
 | Chiny Północne 2 | 40.73.50.0 | |
@@ -52,10 +52,13 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure D
 | Japonia Zachodnia | 191.238.68.11 | 104.214.148.156 |
 | Korea Środkowa | 52.231.32.42 | |
 | Korea Południowa | 52.231.200.86 |  |
-| Środkowo-północne stany USA | 23.98.55.75 | 23.96.178.199 |
+| Północno-środkowe stany USA | 23.98.55.75 | 23.96.178.199 |
 | Europa Północna | 191.235.193.75 | 40.113.93.91 |
 | Środkowo-południowe stany USA | 23.98.162.75 | 13.66.62.124 |
 | Azja Południowo-Wschodnia | 23.100.117.95 | 104.43.15.0 |
+| Północna Republika Południowej Afryki | 102.133.152.0 | |
+| Północna Republika Południowej Afryki | 102.133.24.0 | |
+| Północne Zjednoczone Emiraty Arabskie | 65.52.248.0 | |
 | Południowe Zjednoczone Królestwo | 51.140.184.11 | |
 | Zachodnie Zjednoczone Królestwo | 51.141.8.11| |
 | Europa Zachodnia | 191.237.232.75 | 40.68.37.158 |
@@ -64,9 +67,9 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure D
 ||||
 
 > [!NOTE]
-> *Wschodnie stany USA 2* ma również trzeciorzędny adres IP `52.167.104.0`.
+> *Wschodnie stany USA 2* również mają adres IP trzeciego rzędu `52.167.104.0`.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Tworzenie i zarządzanie nimi — Azure Database dla MariaDB reguł zapory przy użyciu witryny Azure portal](./howto-manage-firewall-portal.md)
-* [Tworzenie i zarządzanie nimi — Azure Database dla MariaDB reguł zapory przy użyciu wiersza polecenia platformy Azure](./howto-manage-firewall-cli.md)
+* [Tworzenie reguł zapory Azure Database for MariaDB i zarządzanie nimi za pomocą Azure Portal](./howto-manage-firewall-portal.md)
+* [Tworzenie reguł zapory Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia platformy Azure i zarządzanie nimi](./howto-manage-firewall-cli.md)

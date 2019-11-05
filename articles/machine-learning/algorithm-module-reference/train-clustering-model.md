@@ -1,7 +1,7 @@
 ---
 title: 'Model usługi Uczenie: informacje o module'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób używać modułu uczenie modelu klastra w usłudze Azure Machine Learning do uczenia modeli klastrowania.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, w jaki sposób używać modułu uczenie modelu klastra w Azure Machine Learning do uczenia modeli klastrowania.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: fc6d889fb9be40c98e1a2a0de6fddb29939f3b5d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 1b26fc251aeb527041b1e648f19f9dd67f7701b7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693649"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490390"
 ---
 # <a name="train-clustering-model"></a>Trenowanie modelu klastrowania
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do uczenia modelu klastrowania.
 
@@ -28,8 +28,8 @@ Moduł przyjmuje niepociąg Model klastrowania, który został już skonfigurowa
 > Model klastrowania nie można być szkolony przy użyciu modułu [uczenie modelu](train-model.md) , który jest modułem ogólnym do uczenia modeli uczenia maszynowego. Wynika to z faktu, że [model uczenia](train-model.md) działa tylko z algorytmami uczenia nadzorowanego. K-oznacza i inne algorytmy klastrowania umożliwiają nienadzorowane uczenie, co oznacza, że algorytm może poznać dane nieoznaczone.  
   
 ## <a name="how-to-use-train-clustering-model"></a>Jak używać modelu klastrów uczenia  
-  
-1.  Dodaj moduł **uczenie modelu klastra** do potoku w programie Studio. Moduł można znaleźć w obszarze **Machine Learning modułów**w kategorii **szkolenie** .  
+
+1.  Dodaj moduł **uczenie modelu klastra** do potoku w projektancie. Moduł można znaleźć w obszarze **Machine Learning modułów**w kategorii **szkolenie** .  
   
 2. Dodaj moduł [K-oznaczający klastrowanie](k-means-clustering.md) lub inny niestandardowy moduł, który tworzy zgodny Model klastrowania, i ustaw parametry modelu klastrowania.  
     
@@ -60,4 +60,4 @@ Po zakończeniu szkolenia:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

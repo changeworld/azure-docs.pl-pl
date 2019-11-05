@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 268def74a354b19427849738549fbc0c6b197746
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e07b1d7e01d743bb46c8d5a21664bf68184c97dd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813402"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488456"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware
 
@@ -31,7 +31,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Włącz replikację maszyny wirtualnej VMware.
 
 > [!NOTE]
-> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułem w sekcji jak to zrobić w spisie treści Site Recovery.
+> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli jest to możliwe, są używane opcje domyślne, i nie są przedstawione wszystkie ustawienia i ścieżki. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułem w sekcji jak to zrobić w spisie treści Site Recovery.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -60,9 +60,9 @@ Wykonaj poprzednie samouczki:
 
 W środowisku źródłowym potrzebna jest pojedyncza maszyna, o wysokiej dostępności, do hostowania następujących lokalnych składników Site Recovery:
 
-- **Serwer konfiguracji**: Serwer konfiguracji służy do koordynowania komunikacji między środowiskiem lokalnym i platformą Azure oraz do zarządzania replikacją danych.
-- **Serwer przetwarzania**: Serwer przetwarzania działa jako brama replikacji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania, a następnie wysyła je do konta magazynu pamięci podręcznej na platformie Azure. Serwer przetwarzania instaluje również agenta usługi mobilności na maszynach wirtualnych, które mają być replikowane, i automatycznie odnajduje lokalne maszyny wirtualne VMware.
-- **Główny serwer docelowy**: Główny serwer docelowy służy do obsługi replikacji danych podczas powrotu po awarii z platformy Azure.
+- **Serwer konfiguracji**: serwer konfiguracji koordynuje komunikację między środowiskiem lokalnym i platformą Azure oraz zarządza replikacją danych.
+- **Serwer przetwarzania**: serwer przetwarzania działa jako brama replikacji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania, a następnie wysyła je do konta magazynu pamięci podręcznej na platformie Azure. Serwer przetwarzania instaluje również agenta usługi mobilności na maszynach wirtualnych, które mają być replikowane, i automatycznie odnajduje lokalne maszyny wirtualne VMware.
+- **Główny serwer docelowy**: główny serwer docelowy obsługuje dane replikacji podczas powrotu po awarii z platformy Azure.
 
 
 Wszystkie te składniki są instalowane razem na maszynach lokalnych, które są znane jako *serwer konfiguracji*. Domyślnie w przypadku odzyskiwania po awarii programu VMware jest ustawiany serwer konfiguracji jako maszynę wirtualną VMware o wysokiej dostępności. W tym celu Pobierz przygotowaną szablon aplikacji Open Virtualization (komórki jajowe) i zaimportuj szablon do programu VMware w celu utworzenia maszyny wirtualnej. 
@@ -158,7 +158,7 @@ Wybierz i zweryfikuj zasoby docelowe.
 
 ## <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
 
-1. Otwórz witrynę [Azure Portal](https://portal.azure.com) i wybierz pozycję **Wszystkie zasoby**.
+1. Otwórz [portal Azure](https://portal.azure.com). Wyszukaj i wybierz **Recovery Services magazynów**.
 2. Wybierz magazyn usług Recovery Services (**ContosoVMVault** w ramach tego samouczka).
 3. Aby utworzyć zasady replikacji, wybierz pozycję **Infrastruktura usługi Site Recovery** > **Zasady replikacji** >  **+Zasady replikacji**.
 4. W obszarze **Tworzenie zasad replikacji** wprowadź nazwę zasad. W tym scenariuszu są używane zasady **VMwareRepPolicy**.

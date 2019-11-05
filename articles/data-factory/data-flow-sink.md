@@ -6,16 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: da8dc332794cadc0eb6677390c566e67a6df6f3f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882442"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519327"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Przekształcanie ujścia dla przepływu danych
-
-
 
 Po przekształceniu przepływu danych możesz odujścia dane do docelowego zestawu danych. W transformację ujścia Wybierz definicję zestawu danych dla docelowego danych wyjściowych. Może istnieć tyle transformacji ujścia, ile wymaga przepływ danych.
 
@@ -107,6 +105,13 @@ Wybierz pozycję Ustawienia bazy danych:
 
 > [!NOTE]
 > W przypadku aktualizowania lub usuwania wierszy w ujścia bazy danych należy ustawić kolumnę klucza. To ustawienie umożliwia przekształcenie zmiany wiersza w celu określenia unikatowego wiersza w bibliotece przenoszenia danych (DML).
+
+### <a name="cosmosdb-specific-settings"></a>Ustawienia CosmosDB
+
+Podczas wypełniania danych w CosmosDB należy wziąć pod uwagę następujące dodatkowe opcje:
+
+* Klucz partycji: to pole jest wymagane. Wprowadź ciąg, który reprezentuje klucz partycji dla kolekcji. Przykład: ```/movies/title```
+* Przepływność: Ustaw opcjonalną wartość dla liczby jednostek ru, która ma zostać zastosowana do kolekcji CosmosDB dla każdego wykonywania tego przepływu danych. Wartość minimalna to 400.
 
 ## <a name="next-steps"></a>Następne kroki
 Po utworzeniu przepływu danych Dodaj [działanie przepływu danych do potoku](concepts-data-flow-overview.md).

@@ -1,23 +1,23 @@
 ---
 title: 'Regresja liniowa: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak użyć modułu regresja liniowa w usłudze Azure Machine Learning, aby utworzyć model regresji liniowej do użycia w potoku.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak użyć modułu regresja liniowa w Azure Machine Learning, aby utworzyć model regresji liniowej do użycia w potoku.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 9c1dc34743d3fe65d50559d1b75aab1a0530d24c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693708"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497752"
 ---
 # <a name="linear-regression-module"></a>Moduł regresji liniowej
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj tego modułu, aby utworzyć model regresji liniowej do użycia w potoku.  Regresja liniowa próbuje nawiązać liniową relację między jedną lub wieloma niezależnymi zmiennymi oraz wynikiem liczbowym lub zmienną zależną. 
 
@@ -63,7 +63,7 @@ Ten moduł obsługuje dwie metody dostosowania modelu regresji z różnymi opcja
 
 ## <a name="bkmk_OrdinaryLeastSquares"></a>Tworzenie modelu regresji przy użyciu zwykłych, najmniejszych kwadratów
 
-1. Dodaj moduł **modelu regresji liniowej** do potoku w interfejsie.
+1. Dodaj moduł **modelu regresji liniowej** do potoku w projektancie.
 
     Ten moduł można znaleźć w kategorii **Machine Learning** . Rozwiń węzeł **zainicjuj model**, rozwiń pozycję **regresja**, a następnie przeciągnij moduł **model regresji liniowej** do potoku.
 
@@ -97,7 +97,7 @@ Po zakończeniu szkolenia:
 
 ## <a name="bkmk_GradientDescent"></a>Tworzenie modelu regresji przy użyciu gradientu online
 
-1. Dodaj moduł **modelu regresji liniowej** do potoku w interfejsie.
+1. Dodaj moduł **modelu regresji liniowej** do potoku w projektancie.
 
     Ten moduł można znaleźć w kategorii **Machine Learning** . Rozwiń węzeł **zainicjuj model**, rozwiń **regresję**i przeciągnij moduł **modelu regresji liniowej** do potoku
 
@@ -143,4 +143,4 @@ Po zakończeniu szkolenia:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

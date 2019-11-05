@@ -8,18 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 894396686a54ed3a685366fcf3e933fa8f03bee8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958546"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474534"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Administrowanie zasady grupy w Azure AD Domain Servicesej domenie zarządzanej
 
 Ustawienia obiektów użytkowników i komputerów w Azure Active Directory Domain Services (AD DS platformy Azure) są często zarządzane przy użyciu obiektów zasady grupy. Usługa Azure AD DS obejmuje wbudowane obiekty zasad grupy dla kontenerów *użytkowników AADDC* i *AADDC* . Można dostosować te wbudowane obiekty zasad grupy w celu skonfigurowania zasady grupy, zgodnie z potrzebami środowiska. Członkowie grupy *administratorzy kontrolera domeny usługi Azure AD* zasady grupy mają uprawnienia do administrowania w domenie AD DS platformy Azure, a także mogą tworzyć niestandardowe obiekty zasad grupy i jednostki organizacyjne (OU). Więcej informacji na temat tego, co zasady grupy jest i jak to działa, można znaleźć w temacie [zasady grupy Overview][group-policy-overview].
+
+W środowisku hybrydowym zasady grupy skonfigurowane w środowisku lokalnym AD DS nie są synchronizowane z usługą Azure AD DS. Aby zdefiniować ustawienia konfiguracji dla użytkowników lub komputerów w usłudze Azure AD DS, Edytuj jeden z domyślnych obiektów zasad grupy lub Utwórz niestandardowy obiekt zasad grupy.
 
 W tym artykule opisano sposób instalowania narzędzi do zarządzania zasady grupy, a następnie edytowania wbudowanych obiektów zasad grupy i tworzenia niestandardowych obiektów zasad grupy.
 
@@ -80,7 +82,7 @@ Istnieją dwa wbudowane obiekty zasady grupy (GPO) w domenie zarządzanej AD DS 
 
     ![Wbudowane obiekty zasad grupy stosowane do domyślnych kontenerów "AADDC komputery" i "AADDC użytkowników"](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-1. Te wbudowane obiekty zasad grupy można dostosować w celu skonfigurowania określonych zasad grup w domenie zarządzanej AD DS platformy Azure. Kliknij prawym przyciskiem myszy jeden z obiektów zasad grupy, na przykład *AADDC komputery obiektów zasad grupy*, a następnie wybierz pozycję **Edytuj...** .
+1. Te wbudowane obiekty zasad grupy można dostosować w celu skonfigurowania określonych zasad grup w domenie zarządzanej AD DS platformy Azure. Kliknij prawym przyciskiem myszy jeden z obiektów zasad grupy, na przykład *AADDC komputery obiektów zasad grupy*, a następnie wybierz polecenie **Edytuj...** .
 
     ![Wybierz opcję "Edytuj" jeden z wbudowanych obiektów zasad grupy](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 

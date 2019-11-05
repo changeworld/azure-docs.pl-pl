@@ -1,18 +1,35 @@
 ---
 author: mmacy
 ms.service: active-directory-b2c
+ms.subservice: B2C
 ms.topic: include
-ms.date: 10/01/2019
+ms.date: 10/16/2019
 ms.author: marsma
-ms.openlocfilehash: 1b2753f190bc5c5d2dc3305436f7a090a5571100
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 462c1fca0ecd706c1bf04ac5a0ef8561321e05bc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694585"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474871"
 ---
+#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+
 1. Wybierz pozycję **aplikacje**, a następnie wybierz aplikację sieci Web, która powinna mieć dostęp do interfejsu API. Na przykład *webapp1*.
 1. Wybierz pozycję **Dostęp do interfejsu API**, a następnie wybierz polecenie **Dodaj**.
 1. Z listy rozwijanej **Wybierz interfejs API** wybierz interfejs API, do którego aplikacja sieci Web ma otrzymać dostęp. Na przykład *webapi1*.
 1. Z listy rozwijanej **Wybierz zakresy** wybierz zdefiniowane wcześniej zakresy. Na przykład *Demonstracja. odczyt* i *Demonstracja. Write*.
 1. Kliknij przycisk **OK**.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+
+1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz aplikację sieci Web, która powinna mieć dostęp do interfejsu API. Na przykład *webapp1*.
+1. W obszarze **Zarządzaj**wybierz pozycję **uprawnienia interfejsu API**.
+1. W obszarze **skonfigurowane uprawnienia**wybierz pozycję **Dodaj uprawnienie**.
+1. Wybierz kartę **Moje interfejsy API** .
+1. Wybierz interfejs API, do którego aplikacja sieci Web ma otrzymać dostęp. Na przykład *webapi1*.
+1. W obszarze **uprawnienie**rozwiń pozycję **Demonstracja**, a następnie wybierz zdefiniowane wcześniej zakresy. Na przykład *Demonstracja. odczyt* i *Demonstracja. Write*.
+1. Wybierz pozycję **Dodaj uprawnienia**. Poczekaj kilka minut, zanim przejdziesz do kolejnego kroku.
+1. Wybierz pozycję **Udziel zgody administratora (nazwa dzierżawy)** .
+1. Wybierz obecnie zalogowane konto administratora lub Zaloguj się przy użyciu konta w dzierżawie Azure AD B2C, do którego przypisano co najmniej rolę *administratora aplikacji w chmurze* .
+1. Wybierz pozycję **Zaakceptuj**.
+1. Wybierz pozycję **Odśwież**, a następnie sprawdź, czy "udzielono dla..." pojawia się w obszarze **stan** dla obu zakresów. Propagowanie uprawnień może potrwać kilka minut.

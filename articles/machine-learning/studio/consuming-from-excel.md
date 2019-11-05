@@ -1,7 +1,7 @@
 ---
-title: Używanie usługi sieci web w programie Excel
-titleSuffix: Azure Machine Learning Studio
-description: Usługa Azure Machine Learning Studio ułatwia wywołują usługi sieci web bezpośrednio z programu Excel, bez konieczności pisania kodu.
+title: Korzystanie z usługi sieci Web w programie Excel
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Azure Machine Learning Studio (klasyczny) ułatwia wywoływanie usług sieci Web bezpośrednio z programu Excel bez konieczności pisania kodu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,59 +10,59 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afa6430a76650b08f979687e2a1e5c7b53c89180
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773794"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493255"
 ---
-# <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Korzystanie z usługi sieci Web Azure Machine Learning Studio z poziomu programu Excel
+# <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Zużywanie Azure Machine Learning Studio (klasycznej) usługi sieci Web z programu Excel
 
- Usługa Azure Machine Learning Studio ułatwia wywołują usługi sieci web bezpośrednio z programu Excel, bez konieczności pisania kodu.
+ Azure Machine Learning Studio (klasyczny) ułatwia wywoływanie usług sieci Web bezpośrednio z programu Excel bez konieczności pisania kodu.
 
-Jeśli używasz programu Excel 2013 (lub nowszego) lub usłudze Excel Online, a następnie zaleca się, że używasz programu Excel [dodatek programu Excel](excel-add-in-for-web-services.md).
+Jeśli używasz programu Excel 2013 (lub nowszego) lub usługi Excel Online, zalecamy użycie dodatku programu Excel [Excel](excel-add-in-for-web-services.md).
 
 
 
 ## <a name="steps"></a>Kroki
-Publikowanie usługi sieci web. [Samouczek 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md) wyjaśnia, jak to zrobić. Obecnie funkcja skoroszytu programu Excel jest obsługiwana tylko dla usług żądań/odpowiedzi, które mają jeden z (czyli pojedynczej oceniania etykiety). 
+Opublikuj usługę sieci Web. [Samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md) wyjaśnia, jak to zrobić. Obecnie funkcja skoroszytu programu Excel jest obsługiwana tylko w przypadku usług żądania/odpowiedzi z pojedynczym wyjściem (czyli pojedynczą etykietą oceny). 
 
-Po utworzeniu usługi sieci web, kliknij pozycję **usług sieci WEB** sekcji po lewej stronie programu studio, a następnie wybierz usługę sieci web do korzystania z programu Excel.
+Gdy masz usługę sieci Web, kliknij sekcję **usługi sieci Web** po lewej stronie programu Studio, a następnie wybierz usługę sieci Web, która ma być wykorzystana z programu Excel.
 
 **Klasyczna usługa sieci Web**
 
-1. Na **pulpit NAWIGACYJNY** kartę dla usługi sieci web jest wiersz **ŻĄDAŃ/odpowiedzi** usługi. Jeśli ta usługa pojedynczego wyjścia, powinien zostać wyświetlony **pobrać skoroszyt programu Excel** łącza w tym wierszu.
+1. Na karcie **pulpit nawigacyjny** usługi sieci Web jest wierszem usługi **żądania/odpowiedzi** . Jeśli ta usługa ma pojedyncze dane wyjściowe, w tym wierszu powinien zostać wyświetlony link **Pobierz skoroszyt programu Excel** .
 
-    ![Pobieranie skoroszytu programu Excel przy użyciu portalu usług sieci Web Studio](./media/consuming-from-excel/excellink.png)
-2. Kliknij pozycję **pobrać skoroszyt programu Excel**.
+    ![Pobieranie skoroszytu programu Excel przy użyciu portalu usługi sieci Web programu Studio (klasycznego)](./media/consuming-from-excel/excellink.png)
+2. Kliknij pozycję **Pobierz skoroszyt programu Excel**.
 
 **Nowa usługa sieci Web**
 
-1. W portalu usługi sieci Web Azure Machine Learning, wybierz **zużywania**.
-2. Na stronie zużywania w **opcje użycia usługi sieci Web** kliknij ikonę programu Excel.
+1. W portalu usługi sieci Web **Azure Machine Learning wybierz pozycję**Użyj.
+2. Na stronie korzystanie w sekcji **Opcje zużycia usług sieci Web** kliknij ikonę programu Excel.
 
-**Używaj skoroszytu**
+**Korzystanie z skoroszytu**
 
 1. Otwórz skoroszyt.
-2. Zostanie wyświetlone ostrzeżenie o zabezpieczeniach; Kliknij pozycję **Włącz edytowanie** przycisku.
+2. Zostanie wyświetlone ostrzeżenie o zabezpieczeniach. Kliknij przycisk **Włącz edycję** .
 
-    ![Włącz edytowanie usunąć ostrzeżenie o zabezpieczeniach widok chroniony](./media/consuming-from-excel/enableeditting.png)
-3. Zostanie wyświetlone ostrzeżenie o zabezpieczeniach. Kliknij pozycję **Włącz zawartość** przycisk, aby uruchomić makra w arkuszu kalkulacyjnym.
+    ![Włącz edytowanie, aby usunąć ostrzeżenie o zabezpieczeniach widoku chronionego](./media/consuming-from-excel/enableeditting.png)
+3. Zostanie wyświetlone ostrzeżenie dotyczące zabezpieczeń. Kliknij przycisk **Włącz zawartość** , aby uruchomić makra w arkuszu kalkulacyjnym.
 
-    ![Włącz zawartość zamknąć ostrzeżenie o zabezpieczeniach wyłączenie makr](./media/consuming-from-excel/enablecontent.png)
-4. Po włączeniu makra, generowany jest tabelą. Kolumny w niebieskim są wymagane jako dane wejściowe do usługi sieci web RRS, lub **parametry**. Należy pamiętać, danych wyjściowych usługi RRS **przewidywane wartości** w kolorze zielonym. Gdy wszystkie kolumny dla danego wiersza są wypełnione, skoroszyt automatycznie wywołuje interfejs API oceniania i wyświetla wyniki ocenami.
+    ![Włącz zawartość, aby odrzucić makra ostrzeżenia o wyłączaniu zabezpieczeń](./media/consuming-from-excel/enablecontent.png)
+4. Po włączeniu makr jest generowana tabela. Kolumny w kolorze niebieskim są wymagane jako dane wejściowe do usługi sieci Web RR lub **parametrów**. Zwróć uwagę na dane wyjściowe usługi RR, **wartości przewidywane** w kolorze zielonym. Gdy wypełniono wszystkie kolumny dla danego wiersza, skoroszyt automatycznie wywoła interfejs API oceniania i wyświetla wyniki wynikowe.
 
-    ![Tabeli dla parametru w danych wejściowych i wynikowy przewidywane wartości](./media/consuming-from-excel/sampletable.png)
-5. Zdobycie więcej niż jeden wiersz, wypełnienie drugi wiersz z danymi i przewidywane wartości są tworzone. Jednocześnie można wkleić nawet kilka wierszy.
+    ![Tabela dla danych wejściowych parametrów i wyniki przewidywane](./media/consuming-from-excel/sampletable.png)
+5. Aby wyrównać więcej niż jeden wiersz, Wypełnij drugi wiersz danymi, a przewidywane wartości są generowane. Można nawet wkleić kilka wierszy jednocześnie.
 
-Umożliwia dowolnej funkcji programu Excel (wykresy, power map, formatowanie warunkowe itp.) z przewidywane wartości pomagają wizualizować dane.
+Możesz użyć dowolnej z funkcji programu Excel (wykresy, Mapa napięcia, formatowanie warunkowe itp.) z wartościami przewidywanymi, aby ułatwić wizualizowanie danych.
 
 ## <a name="sharing-your-workbook"></a>Udostępnianie skoroszytu
-Makr do pracy klucz interfejsu API musi być częścią arkusza kalkulacyjnego. Oznacza to, że należy udostępnić skoroszyt tylko w przypadku jednostek/osób, którym ufasz.
+Aby makra działały, klucz interfejsu API musi być częścią arkusza kalkulacyjnego. Oznacza to, że należy udostępnić skoroszyt tylko z zaufanymi jednostkami i osobami.
 
 ## <a name="automatic-updates"></a>Automatyczne aktualizacje
-Wykonano wywołanie rekordy zasobów w tych dwóch sytuacji:
+W następujących dwóch sytuacjach jest wykonywane wywołanie RR:
 
-1. Po raz pierwszy wiersz ma zawartość we wszystkich jej **parametrów**
-2. Ilekroć dowolny z **parametry** zmian w wierszu, który miał wszystkie jego **parametry** wprowadzony.
+1. Pierwszy raz wiersz zawiera zawartość we wszystkich jego **parametrach**
+2. Wszystkie parametry każdego z **parametrów** zmieniają się w wierszu, który miał wszystkie wprowadzone **Parametry** .

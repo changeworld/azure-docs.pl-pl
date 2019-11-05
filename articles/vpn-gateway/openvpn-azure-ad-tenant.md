@@ -1,0 +1,115 @@
+---
+title: 'Tworzenie dzierżawy Azure Active Directory dla połączeń sieci VPN P2S: uwierzytelnianie usługi Azure AD | Microsoft Docs'
+description: Aby nawiązać połączenie z siecią wirtualną przy użyciu uwierzytelniania usługi Azure AD, możesz użyć sieci VPN P2S
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: conceptual
+ms.date: 10/08/2019
+ms.author: cherylmc
+ms.openlocfilehash: 9d3ab7e56c136d110f58b95d10c0e4bda5839fd0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73517399"
+---
+# <a name="create-an-azure-active-directory-tenant-for-p2s-open-vpn-connections-that-use-azure-ad-authentication"></a>Tworzenie dzierżawy Azure Active Directory na potrzeby P2S otwartych połączeń sieci VPN korzystających z uwierzytelniania usługi Azure AD
+
+Podczas nawiązywania połączenia z siecią wirtualną można użyć uwierzytelniania opartego na certyfikatach lub uwierzytelniania usługi RADIUS. Jednak w przypadku korzystania z otwartego protokołu sieci VPN można również użyć uwierzytelniania Azure Active Directory. Ten artykuł ułatwia skonfigurowanie dzierżawy usługi Azure AD na potrzeby P2S Open VPN Authentication.
+
+## <a name="tenant"></a>1. Tworzenie dzierżawy usługi Azure AD
+
+Utwórz dzierżawę usługi Azure AD, wykonując czynności opisane w artykule [Tworzenie nowej dzierżawy](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) :
+
+* Nazwa organizacji
+* Początkowa nazwa domeny
+
+Przykład:
+
+   ![Nowa dzierżawa usługi Azure AD](./media/openvpn-create-azure-ad-tenant/newtenant.png)
+
+## <a name="users"></a>2. tworzenie użytkowników dzierżawy usługi Azure AD
+
+Następnie Utwórz dwa konta użytkowników. Utwórz jedno konto administratora globalnego i jedno konto użytkownika głównego. Główne konto użytkownika jest używane jako główne konto osadzania (konto usługi). Podczas tworzenia konta użytkownika dzierżawy usługi Azure AD można dostosować rolę katalogu dla typu użytkownika, który ma zostać utworzony.
+
+Wykonaj kroki opisane w [tym artykule](../active-directory/fundamentals/add-users-azure-active-directory.md) , aby utworzyć co najmniej dwóch użytkowników dla dzierżawy usługi Azure AD. Pamiętaj, aby zmienić **rolę katalogu** w celu utworzenia typów kont:
+
+* Administrator globalny
+* Użytkownik
+
+## <a name="enable-authentication"></a>3. Włącz uwierzytelnianie usługi Azure AD na bramie sieci VPN
+
+1. Znajdź identyfikator katalogu katalogu, który ma być używany do uwierzytelniania. Jest on wymieniony w sekcji właściwości na stronie Active Directory.
+
+    ![Identyfikator katalogu](./media/openvpn-create-azure-ad-tenant/directory-id.png)
+
+2. Skopiuj identyfikator katalogu.
+
+3. Zaloguj się do Azure Portal jako użytkownik, do którego przypisano rolę **administratora globalnego** .
+
+4. Następnie udziel zgody administratora. Skopiuj i wklej adres URL odnoszący się do lokalizacji wdrożenia na pasku adresu przeglądarki:
+
+    Public
+
+    ```
+    https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
+    ````
+
+    Azure Government
+
+    ```
+    https://login-us.microsoftonline.com/common/oauth2/authorize?client_id=51bb15d4-3a4f-4ebf-9dca-40096fe32426&response_type=code&redirect_uri=https://portal.azure.us&nonce=1234&prompt=admin_consent
+    ````
+
+    Microsoft Cloud Niemcy
+
+    ```
+    https://login-us.microsoftonline.de/common/oauth2/authorize?client_id=538ee9e6-310a-468d-afef-ea97365856a9&response_type=code&redirect_uri=https://portal.microsoftazure.de&nonce=1234&prompt=admin_consent
+    ````
+
+    Azure w Chinach — 21Vianet
+
+    ```
+    https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
+    ```
+
+5. Jeśli zostanie wyświetlony monit, wybierz konto **administratora globalnego** .
+
+    ![Identyfikator katalogu](./media/openvpn-create-azure-ad-tenant/pick.png)
+
+6. Wybierz pozycję **Akceptuj** po wyświetleniu monitu.
+
+    ![odebrać](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+
+7. W ramach usługi Azure AD w **aplikacjach dla przedsiębiorstw**zostanie wyświetlona lista **Azure VPN** .
+
+    ![Sieć VPN platformy Azure](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+
+8. Włącz uwierzytelnianie usługi Azure AD na bramie sieci VPN, uruchamiając następujące polecenia, pamiętając, aby zmodyfikować polecenie w celu odzwierciedlenia własnego środowiska:
+
+    ```azurepowershell-interactive
+    $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/"
+    ```
+
+9. Utwórz i Pobierz profil, uruchamiając następujące polecenia. Zmień wartości parametrów-ResourcGroupName i-Name, aby były zgodne z własnymi.
+
+    ```azurepowershell-interactive
+    $profile = New-AzVpnClientConfiguration -ResourceGroupName AADAuth -Name AADauthGW -AuthenticationMethod "EapTls"
+    $PROFILE.VpnProfileSASUrl
+    ```
+
+10. Po uruchomieniu poleceń zobaczysz wynik podobny do przedstawionego poniżej. Skopiuj adres URL wyniku do przeglądarki, aby pobrać plik zip profilu.
+
+    ![Sieć VPN platformy Azure](./media/openvpn-create-azure-ad-tenant/profile.png)
+
+11. Wyodrębnij pobrany plik zip.
+
+12. Przejdź do folderu rozpakowanego "AzureVPN".
+
+13. Zanotuj lokalizację pliku "azurevpnconfig. xml". Azurevpnconfig. xml zawiera ustawienie dla połączenia sieci VPN i można je zaimportować bezpośrednio do aplikacji klienckiej sieci VPN platformy Azure. Możesz również dystrybuować ten plik do wszystkich użytkowników, którzy muszą łączyć się za pośrednictwem poczty e-mail lub w inny sposób. Aby nawiązać połączenie, użytkownik musi dysponować prawidłowymi poświadczeniami usługi Azure AD.
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby można było połączyć się z siecią wirtualną, należy utworzyć i skonfigurować profil klienta sieci VPN. Zobacz [Konfigurowanie klienta VPN dla połączeń sieci VPN P2S](openvpn-azure-ad-client.md).

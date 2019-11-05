@@ -16,16 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: edba2a18e3b086a132f0bba7622df5df389671c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372402"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489188"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel"></a>W przypadku zagrożeń związanych z platformą Azure — wskaźnikiem
-
-
+# <a name="hunt-for-threats-with-azure-sentinel"></a>W przypadku zagrożeń związanych z platformą Azure — wskaźnikiem
 
 Jeśli jesteś analitykiem, który chce być aktywny w sprawie wyszukania zagrożeń bezpieczeństwa, platforma Azure bada zaawansowane narzędzia wyszukiwania i zapytań w poszukiwaniu zagrożeń związanych z bezpieczeństwem w źródłach danych organizacji. Jednak systemy i urządzenia zabezpieczeń generują górach danych, które mogą być trudne do analizy i filtrowania do znaczących zdarzeń. Aby ułatwić analitykom zabezpieczeń odszukanie nowych anomalii, które nie zostały wykryte przez aplikacje zabezpieczające, wbudowane zapytania polowające dotyczące platformy Azure wskazują, że zażądają odpowiednich pytań, aby znaleźć problemy w danych, które już znajdują się w sieci. 
 
@@ -48,7 +46,7 @@ Korzystając z łowiectwa wskaźnikowego platformy Azure, możesz korzystać z n
 ## <a name="get-started-hunting"></a>Wprowadzenie do łowiectwa
 
 1. W portalu wskaźnikowym platformy Azure kliknij pozycję **łowiectwo**.
-  ![Azure wskaźnik startowy to łowiectwo @ no__t-1
+  ![platformy Azure — wskaźnik startowy](media/tutorial-hunting/hunting-start.png)
 
 2. Po otwarciu strony **polowania** wszystkie zapytania polowania są wyświetlane w pojedynczej tabeli. W tabeli wymieniono wszystkie zapytania, które zostały utworzone przez zespół analityków zabezpieczeń firmy Microsoft, a także wszelkie dodatkowe lub zmodyfikowane zapytania. Każde zapytanie zawiera opis tego, czego szuka i jakiego rodzaju dane są uruchamiane. Te szablony są pogrupowane według różnych taktykę — ikony po prawej stronie są typu zagrożenia, takie jak początkowy dostęp, trwałość i eksfiltracji. Te szablony zapytań polowania można filtrować przy użyciu dowolnych pól. Możesz zapisać dowolne zapytanie do ulubionych. Zapisanie zapytania do ulubionych spowoduje automatyczne uruchomienie zapytania przy każdej próbie uzyskania dostępu do strony **polowania** . Możesz utworzyć własne zapytanie polowania lub klonować i dostosowywać istniejący szablon zapytania polowania. 
  

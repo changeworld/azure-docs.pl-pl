@@ -4,15 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 1b94a437d48fbfe9a3669924682ebd5dea22f87a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 56b6ba3dcd88dd45bbda3ccb9ba7ddeb5b373b10
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857448"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73518933"
 ---
 ## <a name="get-the-training-and-prediction-keys"></a>Uzyskanie kluczy szkoleniowego i predykcyjnego
 
-Projekt wymaga prawidłowego zestawu kluczy subskrypcji w celu interakcji z usługą. Aby uzyskać zestaw bezpłatnych kluczy w wersji próbnej, przejdź do [witryny internetowej Custom Vision](https://customvision.ai) i zaloguj się przy użyciu konta Microsoft. Wybierz __ikonę koła zębatego__ w prawym górnym rogu. W sekcji __accounts (konta__ ) przejrzyj wartości pól __klucz szkoleniowy__, __klucz predykcyjny__ i __Identyfikator zasobu przewidywania__ . Będą one potrzebne później. 
+Aby można było korzystać z usługi, projekt musi mieć prawidłowy zestaw kluczy subskrypcji. Elementy można znaleźć w [witrynie sieci web Custom Vision](https://customvision.ai). Zaloguj się przy użyciu konta skojarzonego z kontem platformy Azure używanego do tworzenia zasobów Custom Vision. Wybierz __ikonę koła zębatego__ w prawym górnym rogu. W sekcji __accounts (konta__ ) listy rozwijane będą dostępne dla zasobów platformy Azure, co pozwala na wyświetlanie wartości __pól klucz szkoleniowy__, __klucz predykcyjny__i __Identyfikator zasobu przewidywania__ .
 
 ![Obraz interfejsu użytkownika do uzyskiwania kluczy](../media/csharp-tutorial/training-prediction-keys.png)
+
+ Klucze i identyfikatory można także uzyskać w [witrynie Azure Portal](https://www.portal.azure.com) , wyświetlając Custom Vision szkolenia i zasoby przewidywania oraz przeglądając kartę __klucze__ . Możesz znaleźć __klucz szkoleniowy__ lub __klucz przewidywania__. Przejdź do karty __Właściwości__ zasobu predykcyjnego, aby uzyskać __Identyfikator zasobu predykcyjnego__.
+

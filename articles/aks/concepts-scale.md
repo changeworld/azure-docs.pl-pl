@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: d2d7508b4f0a2789a0eae5d6c6205475b5795e36
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1972a91e1ed8a39bcd467272108e0e772116344e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097837"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472884"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje skalowania dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -56,8 +56,6 @@ Aby odpowiedzieć na zmieniające się zapotrzebowanie na żądanie, Kubernetes 
 ![Automatyczne skalowanie klastra Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 
 Automatyczne skalowanie klastra jest zwykle używane razem ze skalowaniem w poziomie. W związku z tym automatyczne skalowanie w poziomie, zwiększa lub zmniejsza liczbę zasobników na podstawie zapotrzebowania aplikacji, a automatyczne skalowanie klastra dostosowuje liczbę węzłów w miarę potrzeb, aby odpowiednio uruchamiać te dodatkowe zasobniki.
-
-Automatyczne skalowanie klastra powinno być testowane tylko w wersji zapoznawczej w klastrach AKS.
 
 Aby rozpocząć pracę z automatycznym skalowaniem klastra w programie AKS, zobacz artykuł [Automatyczne skalowanie klastra na AKS][aks-cluster-autoscaler].
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 7f62e437d80f023972327d98b4add193eb7b8dd6
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044415"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469733"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure
 
@@ -47,8 +47,9 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 Najpierw na maszynie wirtualnej używanej w tym samouczku włącz rozwiązanie Update Management:
 
-1. W menu witryny Azure Portal po lewej stronie wybierz pozycję **Maszyny wirtualne**. Wybierz maszynę wirtualną z listy.
-2. Na stronie maszyny wirtualnej w obszarze **OPERACJE** wybierz pozycję **Update Management**. Zostanie wyświetlone okienko **Włączanie rozwiązania Update Management**.
+1. W menu [Azure Portal](https://portal.azure.com) wybierz pozycję **maszyny wirtualne** lub Wyszukaj i wybierz pozycję **maszyny wirtualne** ze strony **głównej** .
+1. Wybierz maszynę wirtualną, dla której chcesz włączyć Update Management.
+1. Na stronie maszyny wirtualnej w obszarze **OPERACJE** wybierz pozycję **Update Management**. Zostanie wyświetlone okienko **Włączanie rozwiązania Update Management**.
 
 Jest przeprowadzana walidacja w celu ustalenia, czy rozwiązanie Update Management zostało włączone dla tej maszyny wirtualnej. Ta walidacja obejmuje kontrole obszaru roboczego usługi Azure Log Analytics i powiązanego konta usługi Automation i tego, czy rozwiązanie Update Management znajduje się w obszarze roboczym.
 
@@ -215,7 +216,7 @@ Aby wyświetlić szczegółowe informacje o błędach związanych z wdrożeniem,
 
 Po pomyślnym wdrożeniu aktualizacji zostanie wysłana wiadomość e-mail podobna do poniższego przykładu z informacją o powodzeniu tego wdrożenia:
 
-![Skonfiguruj grupę akcji poczty e-mail](./media/automation-tutorial-update-management/email-notification.png)
+![Konfigurowanie grupy akcji dla poczty e-mail](./media/automation-tutorial-update-management/email-notification.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

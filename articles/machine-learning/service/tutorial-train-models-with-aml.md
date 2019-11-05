@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek dotyczący klasyfikacji obrazów: Szkolenie modeli'
+title: 'Samouczek klasyfikacji obrazów: Nauka modeli'
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak szkolić model klasyfikacji obrazów za pomocą scikit — Dowiedz się więcej w notesie środowiska Python Jupyter z Azure Machine Learning. Ten samouczek jest pierwszą częścią dwuczęściowej serii.
 services: machine-learning
@@ -8,16 +8,17 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/20/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f3277d76709fe14a5eaa28cc0f562d95c1e4004
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
-ms.translationtype: MT
+ms.openlocfilehash: dd215e754b7e72c9ac424a53015955332068558e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128948"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493560"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: Uczenie modeli klasyfikacji obrazów przy użyciu MNIST ręcznie danych i scikit — uczenie się za pomocą Azure Machine Learning
+# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: uczenie modeli klasyfikacji obrazów przy użyciu MNIST ręcznie danych i scikit — uczenie się przy użyciu Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym samouczku przeprowadzisz szkolenie modelu uczenia maszynowego na zdalnych zasobach obliczeniowych. Możesz użyć przepływu pracy szkolenia i wdrażania Azure Machine Learning w notesie w języku Python Jupyter.  Następnie możesz użyć notesu jako szablonu do uczenia własnego modelu uczenia maszynowego z użyciem własnych danych. Ten samouczek jest **pierwszą częścią dwuczęściowej serii**.  
 
@@ -36,19 +37,25 @@ Tego, jak wybrać i wdrożyć model, dowiesz się z [drugiej części tego samou
 Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.57.
+> Kod w tym artykule został przetestowany przy użyciu [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.65.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Wykonaj kroki z artykułu [Samouczek: Rozpocznij tworzenie pierwszego eksperymentu](tutorial-1st-experiment-sdk-setup.md) w celu:
+* Ukończ [Samouczek: wprowadzenie do tworzenia pierwszej z pierwszych prób](tutorial-1st-experiment-sdk-setup.md) w:
     * Tworzenie obszaru roboczego
-    * Tworzenie serwera notesu w chmurze
-    * Uruchamianie pulpitu nawigacyjnego notesu Jupyter
+    * Sklonuj Notes samouczków do folderu w obszarze roboczym.
+    * Tworzenie wystąpienia obliczeniowego opartego na chmurze.
 
-* Po uruchomieniu pulpitu nawigacyjnego notesu Jupyter Otwórz Notes **/IMG-Classification-part1-Training. ipynb** .
+* W folderze sklonowanych **samouczków** Otwórz Notes **IMG-klasyfikacyjn-part1-Training. ipynb** . 
 
-Samouczek i towarzyszący plik **utils.py** są również dostępne w usłudze [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz korzystać z niego w [środowisku lokalnym](how-to-configure-environment.md#local).  Upewnij się, że zainstalowano `matplotlib` i `scikit-learn` w Twoim środowisku.
 
+Samouczek i towarzyszący plik **utils.py** są również dostępne w usłudze [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz korzystać z niego w [środowisku lokalnym](how-to-configure-environment.md#local). Uruchom `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib`, aby zainstalować zależności dla tego samouczka.
+
+> [!Important]
+> Pozostała część tego artykułu zawiera tę samą zawartość, która jest wyświetlana w notesie.  
+>
+> Przełącz się do notesu Jupyter teraz, jeśli chcesz czytać wraz z uruchamianiem kodu. 
+> Aby uruchomić pojedynczą komórkę kodu w notesie, kliknij komórkę kod i naciśnij **klawisze SHIFT + ENTER**. Lub Uruchom cały Notes, wybierając pozycję **Uruchom wszystkie** z górnego paska narzędzi.
 
 ## <a name="start"></a>Konfigurowanie środowiska projektowego
 
@@ -143,51 +150,48 @@ Teraz masz pakiety i zasoby obliczeniowe niezbędne do przeprowadzenia uczenia m
 
 ## <a name="explore-data"></a>Eksplorowanie danych
 
-Zanim nauczysz model, musisz zrozumieć dane używane na potrzeby uczenia. Musisz również przekazać dane do chmury przy użyciu usługi, aby można było uzyskać do niej dostęp w środowisku szkoleniowym chmury. W tej sekcji dowiesz się, jak wykonać następujące czynności:
+Zanim nauczysz model, musisz zrozumieć dane używane na potrzeby uczenia. W tej sekcji dowiesz się, jak wykonać następujące czynności:
 
 * Pobieranie zestawu danych MNIST
 * Wyświetlanie przykładowych obrazów
-* Przekaż dane do obszaru roboczego w chmurze.
 
 ### <a name="download-the-mnist-dataset"></a>Pobieranie zestawu danych MNIST
 
-Pobierz zestaw danych MNIST i zapisz pliki lokalnie w katalogu `data`. Zostaną pobrane obrazy i etykiety zarówno na potrzeby uczenia, jak i testowania:
+Użyj otwartych zestawów danych platformy Azure, aby pobrać pierwotne pliki MNIST ręcznie. [Otwarte zestawy danych platformy Azure](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) mają nadzorowane zestawy danych, których można użyć do dodawania funkcji specyficznych dla scenariusza do rozwiązań uczenia maszynowego w celu uzyskania dokładniejszych modeli. Każdy zestaw danych ma odpowiadającą klasę, `MNIST` w tym przypadku, aby pobrać dane na różne sposoby.
+
+Ten kod pobiera dane jako obiekt `FileDataset`, który jest podklasą `Dataset`. `FileDataset` odwołuje się do jednego lub wielu plików dowolnego formatu w magazynach danych lub publicznych adresach URL. Klasa umożliwia pobieranie lub Instalowanie plików w ramach obliczeń przez utworzenie odwołania do lokalizacji źródła danych. Ponadto możesz zarejestrować zestaw danych w obszarze roboczym, aby ułatwić jego pobieranie podczas uczenia się.
+
+Postępuj [zgodnie z instrukcjami, aby](how-to-create-register-datasets.md) dowiedzieć się więcej o zestawach danych i ich użyciu w zestawie SDK.
 
 ```python
-import urllib.request
-import os
+from azureml.core import Dataset
+from azureml.opendatasets import MNIST
 
 data_folder = os.path.join(os.getcwd(), 'data')
 os.makedirs(data_folder, exist_ok=True)
 
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
-                           filename=os.path.join(data_folder, 'train-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
-                           filename=os.path.join(data_folder, 'train-labels.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
-                           filename=os.path.join(data_folder, 'test-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz',
-                           filename=os.path.join(data_folder, 'test-labels.gz'))
-```
+mnist_file_dataset = MNIST.get_file_dataset()
+mnist_file_dataset.download(data_folder, overwrite=True)
 
-Zostaną wyświetlone dane wyjściowe podobne do tych: ```('./data/test-labels.gz', <http.client.HTTPMessage at 0x7f40864c77b8>)```
+mnist_file_dataset = mnist_file_dataset.register(workspace=ws,
+                                                 name='mnist_opendataset',
+                                                 description='training and test dataset',
+                                                 create_new_version=True)
+```
 
 ### <a name="display-some-sample-images"></a>Wyświetlanie przykładowych obrazów
 
-Załaduj pliki skompresowane do tablic `numpy`. Następnie użyj `matplotlib` do wykreślenia 30 losowych obrazów z zestawu danych wraz z ich etykietami nad nimi. Ten krok wymaga funkcji `load_data` uwzględnionej w pliku `util.py`. Ten plik znajduje się w folderze przykładu. Upewnij się, że znajduje się on w tym samym folderze co ten notes. Funkcja `load_data` po prostu analizuje skompresowane pliki i przetwarza je w tablice numpy:
+Załaduj pliki skompresowane do tablic `numpy`. Następnie użyj `matplotlib` do wykreślenia 30 losowych obrazów z zestawu danych wraz z ich etykietami nad nimi. Ten krok wymaga funkcji `load_data` uwzględnionej w pliku `util.py`. Ten plik znajduje się w folderze przykładu. Upewnij się, że znajduje się on w tym samym folderze co ten notes. Funkcja `load_data` po prostu analizuje skompresowane pliki i przetwarza je w tablice numpy.
 
 ```python
 # make sure utils.py is in the same directory as this code
 from utils import load_data
 
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the model converge faster.
-X_train = load_data(os.path.join(
-    data_folder, 'train-images.gz'), False) / 255.0
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_train = load_data(os.path.join(
-    data_folder, 'train-labels.gz'), True).reshape(-1)
-y_test = load_data(os.path.join(
-    data_folder, 'test-labels.gz'), True).reshape(-1)
+X_train = load_data(os.path.join(data_folder, "train-images-idx3-ubyte.gz"), False) / 255.0
+X_test = load_data(os.path.join(data_folder, "t10k-images-idx3-ubyte.gz"), False) / 255.0
+y_train = load_data(os.path.join(data_folder, "train-labels-idx1-ubyte.gz"), True).reshape(-1)
+y_test = load_data(os.path.join(data_folder, "t10k-labels-idx1-ubyte.gz"), True).reshape(-1)
 
 # now let's show some randomly chosen images from the traininng set.
 count = 0
@@ -209,33 +213,6 @@ Zostanie wyświetlona losowa próbka obrazów:
 
 Teraz wiesz już, jak wyglądają te obrazy i jakie są oczekiwane wyniki przewidywania.
 
-### <a name="create-a-filedataset"></a>Utwórz FileDataset
-
-`FileDataset` Obiekt odwołuje się do co najmniej jednego pliku w magazynie danych obszaru roboczego lub publicznych adresów URL. Pliki mogą być w dowolnym formacie, a Klasa oferuje możliwość pobierania lub instalowania plików do obliczeń. Tworząc `FileDataset`, Utwórz odwołanie do lokalizacji źródła danych. Jeśli zastosowano jakiekolwiek przekształcenia do zestawu danych, zostaną one zapisane również w zestawie danych. Dane pozostają w istniejącej lokalizacji, więc nie są naliczane żadne dodatkowe koszty związane z magazynem. Aby uzyskać więcej informacji, `Dataset` [Zobacz przewodnik po tym pakiecie](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-register-datasets) .
-
-```python
-from azureml.core.dataset import Dataset
-
-web_paths = [
-            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
-            ]
-dataset = Dataset.File.from_files(path=web_paths)
-```
-
-`register()` Użyj metody, aby zarejestrować zestaw danych w obszarze roboczym, aby można było udostępnić go innym osobom, ponownie używać w różnych eksperymentach i określać nazwę w skrypcie szkoleniowym.
-
-```python
-dataset = dataset.register(workspace=ws,
-                           name='mnist dataset',
-                           description='training and test dataset',
-                           create_new_version=True)
-```
-
-Masz teraz wszystko, czego potrzebujesz, aby rozpocząć uczenie modelu.
-
 ## <a name="train-on-a-remote-cluster"></a>Uczenie w klastrze zdalnym
 
 Na potrzeby tego samouczka prześlij zadanie do skonfigurowanego wcześniej zdalnego klastra uczenia.  W celu przesłania zadania wykonywane są następujące czynności:
@@ -249,7 +226,6 @@ Na potrzeby tego samouczka prześlij zadanie do skonfigurowanego wcześniej zdal
 Utwórz katalog w celu dostarczenia niezbędnego kodu ze swojego komputera do zasobu zdalnego.
 
 ```python
-import os
 script_folder = os.path.join(os.getcwd(), "sklearn-mnist")
 os.makedirs(script_folder, exist_ok=True)
 ```
@@ -317,7 +293,7 @@ Zwróć uwagę, jak skrypt pobiera dane i zapisuje modele:
 
 + Skrypt szkoleniowy zapisuje model w katalogu **o nazwie**Outputs. Dowolne pliki zapisane w tym katalogu są automatycznie przekazywane do Twojego obszaru roboczego. W dalszej części samouczka z poziomu tego katalogu uzyskasz dostęp do swojego modelu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
-+ Skrypt szkoleniowy wymaga pliku `utils.py` do poprawnego załadowania zestawu danych. Poniższy kod kopiuje `utils.py` do `script_folder` programu, aby można było uzyskać dostęp do pliku wraz z skryptem szkoleniowym w zasobie zdalnym.
++ Skrypt szkoleniowy wymaga poprawnego ładowania zestawu danych `utils.py` pliku. Poniższy kod kopiuje `utils.py` do `script_folder`, aby można było uzyskać dostęp do pliku wraz z skryptem szkoleniowym w zasobie zdalnym.
 
   ```python
   import shutil
@@ -351,7 +327,7 @@ Następnie utwórz szacowania z poniższym kodem.
 from azureml.train.sklearn import SKLearn
 
 script_params = {
-    '--data-folder': dataset.as_named_input('mnist').as_mount(),
+    '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
     '--regularization': 0.5
 }
 
@@ -379,21 +355,21 @@ Ponieważ wywołanie jest asynchroniczne, zwraca ono stan **Przygotowywanie** lu
 
 Co się dzieje podczas oczekiwania:
 
-- **Tworzenie obrazu**: tworzony jest obraz platformy Docker zgodny ze środowiskiem Python określonym przez narzędzie do szacowania. Obraz jest przekazywany do obszaru roboczego. Tworzenie obrazu i jego przekazywanie trwa **około pięciu minut**.
+- **Tworzenie obrazu**: tworzony jest obraz platformy Docker, który jest zgodny ze środowiskiem Python określonym przez szacowania. Obraz jest przekazywany do obszaru roboczego. Tworzenie obrazu i jego przekazywanie trwa **około pięciu minut**.
 
   Ten etap jest wykonywany tylko raz dla każdego środowiska Python, ponieważ kontener jest buforowany dla kolejnych przebiegów. Podczas tworzenia obrazu dzienniki są przesyłane strumieniowo do historii uruchamiania. Postęp tworzenia obrazu możesz monitorować przy użyciu tych dzienników.
 
-- **Skalowanie**: jeśli klaster zdalny wymaga więcej węzłów do wykonania przebiegu niż jest obecnie dostępnych, dodatkowe węzły są dodawane automatycznie. Skalowanie zazwyczaj trwa **około pięciu minut.**
+- **Skalowanie**: Jeśli klaster zdalny wymaga większej liczby węzłów do uruchomienia, niż jest to obecnie dostępne, dodatkowe węzły są dodawane automatycznie. Skalowanie zazwyczaj trwa **około pięciu minut.**
 
-- **Uruchamianie**: na tym etapie niezbędne skrypty i pliki są wysyłane do docelowego zasobu obliczeniowego. Następnie magazyny danych są instalowane lub kopiowane. Następnie uruchamiany jest skrypt **entry_script**. Podczas działania zadania dane z wyjścia **stdout** i katalogu **./logs** są przesyłane strumieniowo do historii uruchamiania. Postęp przebiegu możesz monitorować przy użyciu tych dzienników.
+- **Uruchomione**: na tym etapie niezbędne skrypty i pliki są wysyłane do elementu docelowego obliczeń. Następnie magazyny danych są instalowane lub kopiowane. Następnie uruchamiany jest skrypt **entry_script**. Podczas działania zadania dane z wyjścia **stdout** i katalogu **./logs** są przesyłane strumieniowo do historii uruchamiania. Postęp przebiegu możesz monitorować przy użyciu tych dzienników.
 
-- **Przetwarzanie końcowe**: katalog **./outputs** przebiegu jest kopiowany do historii uruchamiania w Twoim obszarze roboczym, więc możesz uzyskać dostęp do tych wyników.
+- **Przetwarzanie końcowe**: katalog **./Outputs** przebiegu jest kopiowany do historii uruchamiania w obszarze roboczym, dzięki czemu możesz uzyskać dostęp do tych wyników.
 
 Postęp działającego zadania możesz sprawdzić na kilka sposobów. W tym samouczku jest używany widżet Jupyter oraz metoda `wait_for_completion`.
 
 ### <a name="jupyter-widget"></a>Widżet Jupyter
 
-Obejrzyj postęp przebiegu za pomocą widżetu [Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Podobnie jak przesyłanie przebiegu, widżet jest asynchroniczny i udostępnia aktualizacje na bieżąco co 10–15 sekund aż do zakończenia zadania:
+Obejrzyj postęp przebiegu za pomocą [widżetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Podobnie jak przesyłanie przebiegu, widżet jest asynchroniczny i udostępnia aktualizacje na bieżąco co 10–15 sekund aż do zakończenia zadania:
 
 ```python
 from azureml.widgets import RunDetails

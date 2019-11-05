@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 5cf4773ac781ae51a60ef7d987c3dc324c125d95
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 53c38af2208be6bb7cdb794ad0403456613f2df6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387729"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486177"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Rozwiązywanie problemów z przepływami danych Azure Data Factory
 
@@ -68,6 +68,14 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z przepływ
 
 - **Rozwiązanie**: Zmień nazwę tabeli, którą próbujesz utworzyć
 
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-string-or-binary-data-would-be-truncated"></a>Komunikat o błędzie: DF-SYS-01: com. Microsoft. SqlServer. JDBC. sqlserverexception: ciąg lub dane binarne zostałyby obcięte. 
+
+- **Objawy**: podczas zapisywania danych w ujściach SQL przepływ danych kończy się niepowodzeniem podczas wykonywania potoku z możliwym błędem obcięcia.
+
+- **Przyczyna**: pole z przepływu danych mapuje do kolumny w bazie danych SQL jest wystarczająco szerokie, aby można było zapisać tę wartość, powodując zgłoszenie tego błędu przez sterownik SQL
+
+- **Rozwiązanie**: można zmniejszyć długość danych dla kolumn ciągów przy użyciu ```left()``` w kolumnie pochodnej lub zaimplementować [wzorzec "wiersz błędu".](how-to-data-flow-error-rows.md)
+
 ## <a name="general-troubleshooting-guidance"></a>Ogólne wskazówki dotyczące rozwiązywania problemów
 
 1. Sprawdź stan połączeń zestawu danych. W każdej transformacji źródłowej i ujścia należy odwiedzić połączoną usługę dla każdego zestawu danych, którego używasz, i przetestować połączenia.
@@ -78,7 +86,7 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z przepływ
 
 Aby uzyskać więcej informacji dotyczących rozwiązywania problemów, wypróbuj następujące zasoby:
 
-*  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Blog dotyczący usługi Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Żądania funkcji Data Factory](https://feedback.azure.com/forums/270578-data-factory)
 *  [Wideo na platformie Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Forum MSDN](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

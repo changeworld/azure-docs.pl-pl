@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3c0b9ad774d336da9bc60d2ef9f7ff2645602b6c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2530fb0bd27cd98b702d804b0cb5a1dc60419f2f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259219"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490415"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Key Vault przy użyciu witryny Azure Portal
 
@@ -23,22 +23,20 @@ Azure Key Vault to usługa w chmurze, która zapewnia bezpieczny magazyn wpisów
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Tworzenie magazynu
 
-1. Wybierz opcję **Utwórz zasób** w lewym górnym rogu witryny Azure Portal
-
-    ![Dane wyjściowe po ukończeniu tworzenia usługi Key Vault](./media/quick-create-portal/search-services.png)
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**.
 2. W polu wyszukiwania wpisz **Key Vault**.
 3. Na liście wyników wybierz pozycję **Key Vault**.
 4. W sekcji Key Vault, wybierz przycisk **Utwórz**.
 5. W sekcji **Tworzenie magazynu kluczy** podaj następujące informacje:
-    - **Nazwa**: wymagana jest unikatowa nazwa. W tym przewodniku Szybki start użyjemy nazwy **Contoso vault2**. 
+    - **Nazwa**: wymagana jest unikatowa nazwa. W tym przewodniku szybki start użyjemy **contoso-vault2**. 
     - **Subskrypcja**: wybierz subskrypcję.
-    - W obszarze **Grupa zasobów** wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.
+    - W obszarze **Grupa zasobów**wybierz pozycję **Utwórz nową** , a następnie wprowadź nazwę grupy zasobów.
     - W menu rozwijanym **Lokalizacja** wybierz lokalizację.
     - Dla pozostałych opcji zostaw wartości domyślne.
 6. Po podaniu powyższych informacje wybierz przycisk **Utwórz**.
@@ -56,13 +54,13 @@ Twoje konto platformy Azure jest teraz jedynym kontem z uprawnieniami do wykonyw
 
 Aby dodać wpis tajny do magazynu, wystarczy tylko wykonać kilka dodatkowych czynności. W tym przypadku dodamy hasło, którego będzie mogła używać aplikacja. Hasło ma nazwę **ExamplePassword** i przechowujemy w nim wartość **hVFkk965BuUv**.
 
-1. Na stronie właściwości usługi Key Vault wybierz pozycję **Wpisy tajne**.
+1. Na stronie właściwości Key Vault wybierz pozycję wpisy **tajne**.
 2. Kliknij pozycję **Wygeneruj/zaimportuj**.
 3. Na ekranie **Tworzenie wpisu tajnego** wybierz następujące wartości:
-    - **Opcje przekazywania**: ręcznie.
+    - **Opcje przekazywania**: Ręcznie.
     - **Nazwa**: ExamplePassword.
     - **Wartość**: hVFkk965BuUv
-    - Dla pozostałych opcji zostaw wartości domyślne. Kliknij przycisk **Utwórz**.
+    - Dla pozostałych opcji zostaw wartości domyślne. Kliknij pozycję **Utwórz**.
 
 Gdy otrzymasz komunikat o pomyślnym utworzeniu wpisu tajnego, możesz kliknąć go na liście. Zostaną wtedy wyświetlone niektóre jego właściwości. Jeśli klikniesz bieżącą wersję, zostanie wyświetlona wartość określona w poprzednim kroku.
 

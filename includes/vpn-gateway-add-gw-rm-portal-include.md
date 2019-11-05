@@ -8,19 +8,22 @@ ms.topic: include
 ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ed828a09843648b129b701c9afd22aac9e2fa9b0
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 12c28969ed00a1370b90e06e9d57cd666c50ea29
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970841"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523459"
 ---
-1. W portalu po lewej stronie kliknij pozycję **+ Utwórz zasób** i wpisz „Brama sieci wirtualnej” w polu wyszukiwania. Znajdź pozycję **Brama sieci wirtualnej** w wynikach wyszukiwania i kliknij tę pozycję. Na stronie **Brama sieci wirtualnej** kliknij pozycję **Utwórz**. Spowoduje to otwarcie strony **Tworzenie bramy sieci wirtualnej**.
+1. Z menu [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób**. 
 
-   ![Pola na stronie Tworzenie bramy sieci wirtualnej](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw.png "Pola na stronie Tworzenie bramy sieci wirtualnej")
+   ![Utwórz zasób w Azure Portal](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
+2. W polu **Wyszukaj w witrynie Marketplace** wpisz "Virtual Network Gateway". Znajdź pozycję **Brama sieci wirtualnej** w wynikach wyszukiwania i kliknij tę pozycję. Na stronie **Brama sieci wirtualnej** kliknij pozycję **Utwórz**. Spowoduje to otwarcie strony **Tworzenie bramy sieci wirtualnej**.
 
-   ![Pola na stronie Tworzenie bramy sieci wirtualnej](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw2.png "Pola na stronie Tworzenie bramy sieci wirtualnej")
-2. Na stronie **Tworzenie bramy sieci wirtualnej** wypełnij wartości dla swojej bramy sieci wirtualnej.
+   ![Utwórz pola strony bramy sieci wirtualnej](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw.png "Utwórz pola strony bramy sieci wirtualnej")
+
+   ![Utwórz pola strony bramy sieci wirtualnej](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw2.png "Utwórz pola strony bramy sieci wirtualnej")
+3. Na stronie **Tworzenie bramy sieci wirtualnej** wypełnij wartości dla swojej bramy sieci wirtualnej.
 
    **Szczegóły projektu**
 
@@ -49,6 +52,6 @@ ms.locfileid: "71970841"
 
    Pozostaw opcję **Skonfiguruj numer ASN protokołu BGP** niewybraną, chyba że Twoja konfiguracja wymaga tego ustawienia. Jeśli to ustawienie jest wymagane, domyślny numer ASN to 65515, ale można go zmienić.
 
-3. Kliknij przycisk **Przegląd + Utwórz** , aby uruchomić walidację. Po zakończeniu walidacji kliknij pozycję **Utwórz** , aby wdrożyć bramę sieci VPN. Aby w pełni utworzyć i wdrożyć bramę, może upłynąć do 45 minut. Stan wdrożenia można sprawdzić na stronie Przegląd dla bramy.
+4. Kliknij przycisk **Przegląd + Utwórz** , aby uruchomić walidację. Po zakończeniu walidacji kliknij pozycję **Utwórz** , aby wdrożyć bramę sieci VPN. Aby w pełni utworzyć i wdrożyć bramę, może upłynąć do 45 minut. Stan wdrożenia można sprawdzić na stronie Przegląd dla bramy.
 
 Po utworzeniu bramy można znaleźć adres IP, który został do niej przypisany, spoglądając na sieć wirtualną w portalu. Brama jest widoczna jako urządzenie podłączone.

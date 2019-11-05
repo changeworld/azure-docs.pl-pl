@@ -1,24 +1,24 @@
 ---
 title: 'Usuń zduplikowane wiersze: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób używać modułu usuwania zduplikowanych wierszy w usłudze Azure Machine Learning, aby usunąć potencjalne duplikaty z zestawu danych.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak za pomocą modułu Usuń zduplikowane wiersze w Azure Machine Learning usunąć potencjalne duplikaty z zestawu danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 8b3f73c56d85eecd50633085eca0e632abaa6b4c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693667"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497702"
 ---
 # <a name="remove-duplicate-rows-module"></a>Usuń moduł zduplikowanych wierszy
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do usuwania potencjalnych duplikatów z zestawu danych.
 
@@ -26,15 +26,15 @@ Załóżmy na przykład, że dane wyglądają jak poniżej, i reprezentują wiel
 
 | PatientID | Inicjały| Płeć|Wiek|Przyjęte|
 |----|----|----|----|----|
-|1|F.M.| milionów| 53| Stycznia|
-|2| F.A.M.| milionów| 53| Stycznia|
-|3| F.A.M.| milionów| 24| Stycznia|
-|3| F.M.| milionów| 24| Lutego|
-|4| F.M.| milionów| 23| Lutego|
-| | F.M.| milionów| 23| |
-|5| F.A.M.| milionów| 53| |
-|6| F.A.M.| milionów| NaN| |
-|7| F.A.M.| milionów| NaN| |
+|1|F.M.| M| 53| Stycznia|
+|2| F.A.M.| M| 53| Stycznia|
+|3| F.A.M.| M| 24| Stycznia|
+|3| F.M.| M| 24| Lutego|
+|4| F.M.| M| 23| Lutego|
+| | F.M.| M| 23| |
+|5| F.A.M.| M| 53| |
+|6| F.A.M.| M| NaN| |
+|7| F.A.M.| M| NaN| |
 
 Jasno ten przykład zawiera wiele kolumn, które mogą duplikować dane. Bez względu na to, czy są one w rzeczywistości duplikatami, zależy od wiedzy o danych. 
 
@@ -78,4 +78,4 @@ Po uruchomieniu modułu tworzy zestaw danych kandydujących i zwraca zbiór wier
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

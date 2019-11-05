@@ -11,14 +11,15 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 0ceb21d6f77fd9694f7cd564c2e89735cf2a774d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067702"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497426"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Zarządzanie dostępem do obszaru roboczego Azure Machine Learning
+[!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 W tym artykule dowiesz się, jak zarządzać dostępem do obszaru roboczego Azure Machine Learning. [Kontrola dostępu oparta na rolach (RBAC)](/azure/role-based-access-control/overview) służy do zarządzania dostępem do zasobów platformy Azure. Użytkownicy w Azure Active Directory są przypisani do określonych ról, które przyznają dostęp do zasobów. Platforma Azure udostępnia wbudowane role i możliwość tworzenia ról niestandardowych.
 
@@ -26,7 +27,7 @@ W tym artykule dowiesz się, jak zarządzać dostępem do obszaru roboczego Azur
 
 Obszar roboczy Azure Machine Learning jest zasobem platformy Azure. Podobnie jak w przypadku innych zasobów platformy Azure, podczas tworzenia nowego obszaru roboczego Azure Machine Learning dostępne są trzy domyślne role. Możesz dodać użytkowników do obszaru roboczego i przypisać je do jednej z tych wbudowanych ról.
 
-| Role | Poziom dostępu |
+| Rola | Poziom dostępu |
 | --- | --- |
 | **Czytelnik** | Akcje tylko do odczytu w obszarze roboczym. Czytelnicy mogą wyświetlać i przeglądać zasoby w obszarze roboczym, ale nie mogą tworzyć ani aktualizować tych zasobów. |
 | **Współautor** | Wyświetlanie, tworzenie, edytowanie lub usuwanie (jeśli dotyczy) zasobów w obszarze roboczym. Można na przykład utworzyć eksperyment, utworzyć lub dołączyć klaster obliczeniowy, przesłać przebieg i wdrożyć usługę sieci Web. |
@@ -41,9 +42,9 @@ Aby uzyskać więcej informacji na temat określonych ról wbudowanych, zobacz [
 
 Jeśli jesteś właścicielem obszaru roboczego, możesz dodawać i usuwać role dla obszaru roboczego. Możesz również przypisywać role do użytkowników. Skorzystaj z poniższych linków, aby dowiedzieć się, jak zarządzać dostępem:
 - [Interfejs użytkownika Azure Portal](/azure/role-based-access-control/role-assignments-portal)
-- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
+- [Program PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Interfejs wiersza polecenia platformy Azure](/azure/role-based-access-control/role-assignments-cli)
-- [REST API](/azure/role-based-access-control/role-assignments-rest)
+- [Interfejs API REST](/azure/role-based-access-control/role-assignments-rest)
 - [Szablony Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
 
 Jeśli zainstalowano [interfejs wiersza polecenia Azure Machine Learning](reference-azure-machine-learning-cli.md), można także przypisać role do użytkowników za pomocą interfejsu CLI.
@@ -52,13 +53,13 @@ Jeśli zainstalowano [interfejs wiersza polecenia Azure Machine Learning](refere
 az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
-`user` Pole jest adresem e-mail istniejącego użytkownika w wystąpieniu Azure Active Directory, w którym znajduje się subskrypcja nadrzędna obszaru roboczego. Oto przykład użycia tego polecenia:
+Pole `user` jest adresem e-mail istniejącego użytkownika w wystąpieniu Azure Active Directory, w którym znajduje się subskrypcja nadrzędna obszaru roboczego. Oto przykład użycia tego polecenia:
 
 ```azurecli-interactive 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
 
-## <a name="create-custom-role"></a>Utwórz rolę niestandardową
+## <a name="create-custom-role"></a>Tworzenie roli niestandardowej
 
 Jeśli wbudowane role są niewystarczające, można utworzyć role niestandardowe. Role niestandardowe mogą mieć uprawnienia do odczytu, zapisu, usuwania i zasobów obliczeniowych w tym obszarze roboczym. Rolę można udostępnić na określonym poziomie obszaru roboczego, na poziomie określonego grupy zasobów lub na określonym poziomie subskrypcji.
 
@@ -67,7 +68,7 @@ Jeśli wbudowane role są niewystarczające, można utworzyć role niestandardow
 
 Aby utworzyć rolę niestandardową, należy najpierw skonstruować plik JSON definicji roli, który określa uprawnienie i zakres roli. W poniższym przykładzie zdefiniowano rolę niestandardową o nazwie "analityk danych" objętą zakresem na określonym poziomie obszaru roboczego:
 
-`data_scientist_role.json` :
+`data_scientist_role.json`:
 ```json
 {
     "Name": "Data Scientist",
@@ -86,7 +87,7 @@ Aby utworzyć rolę niestandardową, należy najpierw skonstruować plik JSON de
 }
 ```
 
-Można zmienić `AssignableScopes` pole, aby ustawić zakres tej roli niestandardowej na poziomie subskrypcji, na poziomie grupy zasobów lub na określonym poziomie obszaru roboczego.
+Można zmienić pole `AssignableScopes`, aby ustawić zakres tej roli niestandardowej na poziomie subskrypcji, na poziomie grupy zasobów lub na określonym poziomie obszaru roboczego.
 
 Ta rola niestandardowa może wykonywać wszystkie czynności w obszarze roboczym, z wyjątkiem następujących akcji:
 
@@ -101,7 +102,7 @@ Aby wdrożyć tę rolę niestandardową, użyj następującego polecenia platfor
 az role definition create --role-definition data_scientist_role.json
 ```
 
-Po wdrożeniu ta rola zostanie udostępniona w określonym obszarze roboczym. Teraz możesz dodać tę rolę i przypisać ją do Azure Portal. Można też przypisać tę rolę do użytkownika za pomocą `az ml workspace share` polecenia interfejsu wiersza poleceń:
+Po wdrożeniu ta rola zostanie udostępniona w określonym obszarze roboczym. Teraz możesz dodać tę rolę i przypisać ją do Azure Portal. Można też przypisać tę rolę do użytkownika przy użyciu polecenia interfejsu wiersza `az ml workspace share`:
 
 ```azurecli-interactive
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
@@ -115,5 +116,5 @@ Aby uzyskać więcej informacji o operacjach (działania), których można uży�
 
 - [Omówienie zabezpieczeń przedsiębiorstwa](concept-enterprise-security.md)
 - [Bezpieczne uruchamianie eksperymentów i wnioskowania/wyniku w sieci wirtualnej](how-to-enable-virtual-network.md)
-- [Samouczek: Modele uczenia](tutorial-train-models-with-aml.md)
+- [Samouczek: uczenie modeli](tutorial-train-models-with-aml.md)
 - [Operacje dostawcy zasobów](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

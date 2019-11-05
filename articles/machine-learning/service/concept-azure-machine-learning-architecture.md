@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/12/2019
+ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 706f76c00022c5f5661ea261a5bb35eedc13d5ba
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: MT
+ms.openlocfilehash: ba6d81596cd8a690f5c17e1ca55b91c5ff27b916
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756028"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497533"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa Azure Machine Learning: architektura i koncepcje
 
@@ -28,13 +28,13 @@ Poznaj architekturę, koncepcje i przepływ pracy dla Azure Machine Learning. G�
 Przepływ pracy modelu uczenia maszynowego jest zwykle następujący:
 
 1. **Trasy**
-    + Opracowuj skrypty szkoleniowe dotyczące uczenia maszynowego w języku **Python** lub za pomocą interfejsu wizualnego.
+    + Opracowywanie skryptów szkoleniowych dotyczących uczenia maszynowego w języku **Python** lub przy użyciu projektanta wizualnego.
     + Utwórz i skonfiguruj **obiekt docelowy obliczeń**.
     + **Prześlij skrypty** do skonfigurowanego obiektu docelowego obliczeń do uruchomienia w tym środowisku. Podczas szkoleń skrypty mogą odczytywać dane z **magazynu**danych lub zapisywać do niego. Rekordy wykonywania są zapisywane jako **uruchomienia** w **obszarze roboczym** i pogrupowane w obszarze **eksperymenty**.
 
 1. **Pakiet** — po znalezieniu zadowalającego przebiegu Zarejestruj trwały model w **rejestrze modelu**.
 
-1. **Sprawdź Poprawność**  - **Zbadaj eksperyment** rejestrowanych metryk z bieżącego i przeszłego uruchomienia. Jeśli metryki nie wskazują żądanego wyniku, pętla Wróć do kroku 1 i wykonuje iterację w skryptach.
+1. **Sprawdź Poprawność** - **Zbadaj eksperyment** rejestrowanych metryk z bieżącego i przeszłego uruchomienia. Jeśli metryki nie wskazują żądanego wyniku, pętla Wróć do kroku 1 i wykonuje iterację w skryptach.
 
 1. **Wdróż** — opracowuje skrypt oceniania, który używa modelu i **wdraża model** jako **usługę sieci Web** na platformie Azure lub na **IoT Edge urządzenie**.
 
@@ -45,23 +45,26 @@ Przepływ pracy modelu uczenia maszynowego jest zwykle następujący:
 Użyj tych narzędzi dla Azure Machine Learning:
 
 +  Korzystanie z usługi w dowolnym środowisku języka Python z [zestawem SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
++ Korzystanie z usługi w dowolnym środowisku R z [zestawem SDK Azure Machine Learning dla języka r](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
 + Automatyzuj działania uczenia maszynowego za pomocą [interfejsu wiersza polecenia Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
 + Napisz kod w Visual Studio Code z [rozszerzeniem Azure Machine Learning vs Code](how-to-vscode-tools.md)
-+ Użyj [interfejsu wizualizacji (wersja zapoznawcza), aby uzyskać Azure Machine Learning](ui-concept-visual-interface.md) wykonywania kroków przepływu pracy bez pisania kodu.
++ Użyj programu [Azure Machine Learning Designer (wersja zapoznawcza)](concept-designer.md) , aby wykonać etapy przepływu pracy bez pisania kodu.
+
 
 > [!NOTE]
 > Chociaż w tym artykule opisano warunki i pojęcia używane przez Azure Machine Learning, nie zdefiniowano warunków i koncepcji dla platformy Azure. Aby uzyskać więcej informacji na temat terminologii platformy Azure, zobacz [słownik Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
 ## <a name="glossary"></a>Słownik
 + <a href="#activities">Działanie</a>
++ <a href="#compute-instance">Wystąpienie obliczeniowe</a>
 + <a href="#compute-targets">Cele obliczeń</a>
 + <a href="#datasets-and-datastores">& Magazynów danych</a>
-+ <a href="#deployment">Wdrożenie</a>
++ <a href="#endpoints">Punktów końcowych</a>
 + <a href="#environments">Wiejski</a>
 + [Szacowania](#estimators)
 + <a href="#experiments">Eksperymenty</a>
 + <a href="#github-tracking-and-integration">Śledzenie git</a>
-+ <a href="#iot-module-deployments">Moduły IoT</a>
++ <a href="#iot-module-endpoints">Moduły IoT</a>
 + <a href="#logging">Rejestrować</a>
 + <a href="#ml-pipelines">Potoki ML</a>
 + <a href="#models">Przykładów</a>
@@ -69,7 +72,7 @@ Użyj tych narzędzi dla Azure Machine Learning:
 + <a href="#run-configurations">Uruchom konfigurację</a>
 + <a href="#snapshots">Zdjęcie</a>
 + <a href="#training-scripts">Skrypt szkoleniowy</a>
-+ <a href="#web-service-deployments">Usługi sieci Web</a>
++ <a href="#web-service-endpoint">Usługi sieci Web</a>
 + <a href="#workspaces">Obszary</a>
 
 ### <a name="activities"></a>Działania
@@ -81,9 +84,19 @@ Działanie reprezentuje długotrwałą operację. Następujące operacje są prz
 
 Działania mogą udostępniać powiadomienia za pomocą zestawu SDK lub internetowego interfejsu użytkownika, dzięki czemu można łatwo monitorować postęp tych operacji.
 
+### <a name="compute-instance"></a>Wystąpienie obliczeniowe
+
+> [!NOTE]
+> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
+>Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
+
+**Wystąpienie obliczeniowe Azure Machine Learning** (dawniej jest maszyną wirtualną) to w pełni zarządzana stacja robocza oparta na chmurze, która obejmuje wiele narzędzi i środowisk zainstalowanych na potrzeby uczenia maszynowego. Wystąpienia obliczeniowe mogą służyć jako element docelowy obliczeń dla zadań szkoleniowych i inferencing. W przypadku dużych zadań [Azure Machine Learning klastrów obliczeniowych](how-to-set-up-training-targets.md#amlcompute) z możliwościami skalowania wielu węzłów jest lepszym rozwiązaniem docelowym obliczeń.
+
+Dowiedz się więcej o [wystąpieniach obliczeniowych](concept-compute-instance.md).
+
 ### <a name="compute-targets"></a>Cele obliczeń
 
-[Obiekt docelowy obliczeń](concept-compute-target.md) pozwala określić zasób obliczeniowy służący do uruchamiania skryptu szkoleniowego lub hostowania wdrożenia usługi. Ta lokalizacja może być maszyną lokalną lub zasobem obliczeniowym opartym na chmurze. Elementy docelowe obliczeń ułatwiają zmianę środowiska obliczeniowego bez konieczności zmiany kodu.
+[Obiekt docelowy obliczeń](concept-compute-target.md) pozwala określić zasób obliczeniowy służący do uruchamiania skryptu szkoleniowego lub hostowania wdrożenia usługi. Ta lokalizacja może być maszyną lokalną lub zasobem obliczeniowym opartym na chmurze.
 
 Dowiedz się więcej o [dostępnych celach obliczeniowych na potrzeby szkolenia i wdrażania](concept-compute-target.md).
 
@@ -97,23 +110,23 @@ Aby uzyskać więcej informacji, zobacz [Tworzenie i Rejestrowanie zestawów dan
 
 **Magazyn** danych to Abstrakcja magazynu przez konto usługi Azure Storage. Magazyn danych może używać kontenera obiektów blob platformy Azure lub udziału plików platformy Azure jako magazynu zaplecza. Każdy obszar roboczy ma domyślny magazyn danych i można zarejestrować dodatkowe magazyny danych. Użyj interfejsu API zestawu SDK języka Python lub wiersza polecenia Azure Machine Learning, aby przechowywać i pobierać pliki z magazynu danych.
 
-### <a name="deployment"></a>Wdrażanie
+### <a name="endpoints"></a>Punkty końcowe
 
-Wdrożenie to tworzenie wystąpienia modelu w usłudze sieci Web, która może być hostowana w chmurze lub w module IoT na potrzeby wdrożeń zintegrowanych urządzeń.
+Punkt końcowy to tworzenie wystąpienia modelu w usłudze sieci Web, która może być hostowana w chmurze lub module IoT na potrzeby wdrożeń zintegrowanych urządzeń.
 
-#### <a name="web-service-deployments"></a>Wdrożenia usługi sieci Web
+#### <a name="web-service-endpoint"></a>Punkt końcowy usługi sieci Web
 
-Wdrożona usługa sieci Web może używać Azure Container Instances, usługi Azure Kubernetes lub FPGA. Usługę można utworzyć z modelu, skryptu i skojarzonych plików. Są one hermetyzowane w obrazie, który zapewnia środowisko uruchomieniowe dla usługi sieci Web. Obraz zawiera punkt końcowy HTTP o zrównoważonym obciążeniu, który odbiera żądania oceniania wysyłane do usługi sieci Web.
+Podczas wdrażania modelu jako usługi sieci Web punkt końcowy można wdrożyć na Azure Container Instances, usłudze Azure Kubernetes lub FPGA. Usługę można utworzyć z modelu, skryptu i skojarzonych plików. Są one umieszczane w podstawowym obrazie kontenera, który zawiera środowisko wykonawcze dla modelu. Obraz zawiera punkt końcowy HTTP o zrównoważonym obciążeniu, który odbiera żądania oceniania wysyłane do usługi sieci Web.
 
-Platforma Azure pomaga monitorować wdrożenie usługi sieci Web, zbierając Application Insights dane telemetryczne lub model telemetrii, jeśli wybrano włączenie tej funkcji. Dane telemetryczne są dostępne tylko dla Ciebie i są przechowywane w wystąpieniach Application Insights i konta magazynu.
+Platforma Azure pomaga monitorować usługę sieci Web, zbierając Application Insights dane telemetryczne lub model telemetrii, jeśli wybrano opcję włączenia tej funkcji. Dane telemetryczne są dostępne tylko dla Ciebie i są przechowywane w wystąpieniach Application Insights i konta magazynu.
 
 Jeśli włączono automatyczne skalowanie, platforma Azure automatycznie skaluje wdrożenie.
 
 Aby zapoznać się z przykładem wdrażania modelu jako usługi sieci Web, zobacz [Wdrażanie modelu klasyfikacji obrazów w Azure Container Instances](tutorial-deploy-models-with-aml.md).
 
-#### <a name="iot-module-deployments"></a>Wdrożenia modułu IoT
+#### <a name="iot-module-endpoints"></a>Punkty końcowe modułu IoT
 
-Wdrożony moduł IoT to kontener platformy Docker, który obejmuje model i skojarzony skrypt lub aplikację oraz wszelkie dodatkowe zależności. Te moduły są wdrażane przy użyciu Azure IoT Edge na urządzeniach brzegowych.
+Wdrożony punkt końcowy modułu IoT to kontener platformy Docker, który obejmuje model i skojarzony skrypt lub aplikację oraz wszelkie dodatkowe zależności. Te moduły są wdrażane przy użyciu Azure IoT Edge na urządzeniach brzegowych.
 
 Jeśli włączono monitorowanie, platforma Azure zbiera dane telemetryczne z modelu w module Azure IoT Edge. Dane telemetryczne są dostępne tylko dla Ciebie i są przechowywane w wystąpieniu konta magazynu.
 
@@ -188,7 +201,6 @@ Nie można usunąć zarejestrowanego modelu, który jest używany przez aktywne 
 
 Aby zapoznać się z przykładem rejestrowania modelu, zobacz [uczenie modelu klasyfikacji obrazów przy użyciu Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-
 ### <a name="runs"></a>Uruchomienia
 
 Uruchomienie to pojedyncze wykonanie skryptu szkoleniowego. Azure Machine Learning rejestruje wszystkie uruchomienia i przechowuje następujące informacje:
@@ -223,7 +235,6 @@ Aby zapoznać się z przykładem, zobacz [Samouczek: uczenie modelu klasyfikacji
 ### <a name="workspaces"></a>Obszary robocze
 
 [Obszar roboczy](concept-workspace.md) jest zasobem najwyższego poziomu dla Azure Machine Learning. Zapewnia centralne miejsce do pracy ze wszystkimi artefaktami tworzonymi podczas korzystania z Azure Machine Learning. Obszar roboczy można udostępniać innym osobom. Aby uzyskać szczegółowy opis obszarów roboczych, zobacz [co to jest obszar roboczy Azure Machine Learning?](concept-workspace.md)
-
 
 ### <a name="next-steps"></a>Następne kroki
 

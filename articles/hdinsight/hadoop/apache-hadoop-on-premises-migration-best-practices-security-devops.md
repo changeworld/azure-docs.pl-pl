@@ -1,5 +1,5 @@
 ---
-title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — zabezpieczenia
+title: 'Zabezpieczenia: Migrowanie Apache Hadoop lokalnych do usługi Azure HDInsight'
 description: Poznaj zabezpieczenia i DevOps najlepsze rozwiązania dotyczące migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: c1523ccb3952bce904deac375d11de692ac235ef
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 1cebe425e323eefda6e26b0f32ddeda0118a70d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736137"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494975"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — Security i DevOps Best Practices
 
@@ -23,7 +23,7 @@ W tym artykule przedstawiono zalecenia dotyczące zabezpieczeń i DevOps w syste
 
 Pakiet Enterprise Security (ESP) obsługuje uwierzytelnianie oparte na Active Directory, obsługę wielodostępności oraz kontrolę dostępu opartą na rolach. Po wybraniu opcji ESP klaster usługi HDInsight jest przyłączony do domeny Active Directory, a administrator przedsiębiorstwa może skonfigurować kontrolę dostępu opartą na rolach (RBAC) dla Apache Hive zabezpieczeń przy użyciu platformy Apache Ranger. Administrator może również przeprowadzać inspekcję dostępu do danych przez pracowników i wszelkie zmiany wprowadzone w zasadach kontroli dostępu.
 
-Protokół ESP jest dostępny w następujących typach klastrów: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka i zapytania interaktywne (Hive LLAP). 
+Protokół ESP jest dostępny w następujących typach klastrów: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka i Interactive Query (Hive LLAP). 
 
 Wykonaj następujące kroki, aby wdrożyć przyłączony do domeny klaster usługi HDInsight:
 
@@ -43,12 +43,12 @@ Wykonaj następujące kroki, aby wdrożyć przyłączony do domeny klaster usłu
 
 
 - Wdróż klaster usługi HDInsight ESP przez ustawienie następujących parametrów:
-    - **Nazwa domeny**: Nazwa domeny skojarzona z usługą Azure AD DS.
-    - **Nazwa użytkownika domeny**: Konto usługi w domenie zarządzanej przez kontroler domeny platformy Azure AD DS, która została utworzona w poprzedniej sekcji, na przykład `hdiadmin@contoso.onmicrosoft.com`:. Ten użytkownik domeny będzie administratorem tego klastra usługi HDInsight.
-    - **Hasło domeny**: Hasło konta usługi.
-    - **Jednostka organizacyjna**: Nazwa wyróżniająca jednostki organizacyjnej, która ma być używana z klastrem usługi HDInsight, na przykład `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`:. Jeśli ta jednostka organizacyjna nie istnieje, klaster usługi HDInsight podejmie próbę utworzenia jednostki organizacyjnej przy użyciu uprawnień konta usługi.
+    - **Nazwa domeny**: nazwa domeny skojarzona z usługą Azure AD DS.
+    - **Nazwa użytkownika domeny**: konto usługi w domenie zarządzanej przez kontroler domeny platformy Azure AD DS, która została utworzona w poprzedniej sekcji, na przykład: `hdiadmin@contoso.onmicrosoft.com`. Ten użytkownik domeny będzie administratorem tego klastra usługi HDInsight.
+    - **Hasło domeny**: hasło konta usługi.
+    - **Jednostka organizacyjna**: Nazwa WYRÓŻNIAJĄCA jednostki organizacyjnej, która ma być używana z klastrem usługi HDInsight, na przykład: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Jeśli ta jednostka organizacyjna nie istnieje, klaster usługi HDInsight podejmie próbę utworzenia jednostki organizacyjnej przy użyciu uprawnień konta usługi.
     - **Adres URL adresów LDAP**: na przykład `ldaps://contoso.onmicrosoft.com:636`.
-    - **Dostęp do grupy użytkowników**: Grupy zabezpieczeń, których użytkownicy mają synchronizować z klastrem, na przykład: `HiveUsers`. Jeśli chcesz określić wiele grup użytkowników, rozdziel je średnikami ";". Grupy muszą istnieć w katalogu przed utworzeniem klastra ESP.
+    - **Dostęp do grupy użytkowników**: grupy zabezpieczeń, których użytkownicy mają synchronizować z klastrem, na przykład: `HiveUsers`. Jeśli chcesz określić wiele grup użytkowników, rozdziel je średnikami ";". Grupy muszą istnieć w katalogu przed utworzeniem klastra ESP.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
@@ -108,13 +108,13 @@ Regularnie uaktualniaj do najnowszej wersji usługi HDInsight, aby korzystać z 
 1. Zaimportuj wszystkie dane przejściowe, których kopię zapasową utworzono.
 1. Uruchom zadania/Kontynuuj przetwarzanie przy użyciu nowego klastra.
 
-Aby uzyskać więcej informacji, zobacz artykuł: [Uaktualnij klaster usługi HDInsight do nowej wersji](../hdinsight-upgrade-cluster.md).
+Aby uzyskać więcej informacji, zobacz artykuł: [Uaktualnianie klastra usługi HDInsight do nowej wersji](../hdinsight-upgrade-cluster.md).
 
 ## <a name="patch-cluster-operating-systems"></a>Poprawianie systemów operacyjnych klastra
 
 W ramach zarządzanej usługi Hadoop Usługa HDInsight obsługuje poprawki systemu operacyjnego maszyn wirtualnych używanych przez klastry usługi HDInsight.
 
-Aby uzyskać więcej informacji, zobacz artykuł: [Stosowanie poprawek systemu operacyjnego do usługi HDInsight](../hdinsight-os-patching.md).
+Aby uzyskać więcej informacji, zobacz artykuł: [poprawka systemu operacyjnego dla usługi HDInsight](../hdinsight-os-patching.md).
 
 ## <a name="post-migration"></a>Po migracji
 

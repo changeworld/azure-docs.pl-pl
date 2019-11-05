@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 84f13f7e1d83f1ead00303b694b617d3ba1c8931
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0e748e81de39b2bef14b543063adeb51b8b3ecdb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876642"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486711"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Utwórz plan ciągłości biznesowej dla usługi QnA Maker
 
@@ -27,13 +27,13 @@ Pomysł wysokiego poziomu przedstawiony powyżej jest następujący:
 
 1. Skonfiguruj dwie [usługi QNA Maker Parallel Services](../How-To/set-up-qnamaker-service-azure.md) w [sparowanych regionach platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-2. Zachowaj synchronizację podstawowych i pomocniczych indeksów usługi Azure Search. Skorzystaj z przykładu [](https://github.com/pchoudhari/QnAMakerBackupRestore) GitHub, aby zobaczyć, jak tworzyć kopie zapasowe indeksów platformy Azure.
+2. Zachowaj synchronizację podstawowych i pomocniczych indeksów usługi Azure Search. Skorzystaj [z przykładu GitHub, aby](https://github.com/pchoudhari/QnAMakerBackupRestore) zobaczyć, jak tworzyć kopie zapasowe indeksów platformy Azure.
 
 3. Wykonaj kopię zapasową Application Insights za pomocą [eksportu ciągłego](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry).
 
 4. Po skonfigurowaniu stosów podstawowych i pomocniczych Użyj usługi [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) , aby skonfigurować dwa punkty końcowe i skonfigurować metodę routingu.
 
-5. Należy utworzyć certyfikat SSL dla punktu końcowego usługi Traffic Manager. [Powiąż certyfikat SSL](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl) w usługach aplikacji.
+5. Należy utworzyć certyfikat SSL dla punktu końcowego usługi Traffic Manager. [Powiąż certyfikat SSL](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) w usługach aplikacji.
 
 6. Na koniec użyj punktu końcowego w usłudze Traffic Manager w bot lub aplikacji.
 

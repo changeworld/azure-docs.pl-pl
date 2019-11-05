@@ -11,15 +11,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 77f816400709262fab8cb9bd351bdcde73377e09
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: 41b2602e57d295cfd7e475f4b3aa5657bd4e24d7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034292"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489603"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Miejsce zapisywania i zapisywania plików do Azure Machine Learning eksperymentów
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym artykule dowiesz się, gdzie zapisywać pliki wejściowe i gdzie zapisywać pliki wyjściowe z eksperymentów, aby zapobiec błędom limitu magazynu i opóźnieniu eksperymentów.
 
@@ -53,9 +54,9 @@ Aby rozwiązać ten problem, należy przechowywać pliki eksperymentów w magazy
 Opis&nbsp;eksperymentu|Rozwiązanie limitu magazynu
 ---|---
 Mniej niż 2000 plików & nie może używać magazynu danych| Przesłoń limit rozmiaru migawki przy użyciu <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Może to potrwać kilka minut w zależności od liczby i rozmiaru plików.
-Musi używać określonego katalogu skryptów| `.amlignore` Utwórz plik do wykluczania plików z migawki eksperymentu, które nie są częścią kodu źródłowego. Dodaj nazwy plików do `.amlignore` pliku i umieść je w tym samym katalogu, co skrypt szkoleniowy. Plik używa takiej samej `.gitignore` [składni i wzorców](https://git-scm.com/docs/gitignore) jak plik. `.amlignore`
+Musi używać określonego katalogu skryptów| Utwórz plik `.amlignore`, aby wykluczyć z migawki eksperymentu pliki, które nie są częścią kodu źródłowego. Dodaj nazwy plików do pliku `.amlignore` i umieść je w tym samym katalogu, w którym znajduje się Twój skrypt szkoleniowy. Plik `.amlignore` używa tej samej [składni i wzorców](https://git-scm.com/docs/gitignore) co plik `.gitignore`.
 Potok|Użyj innego podkatalogu dla każdego kroku
-Notesy programu Jupyter| `.amlignore` Utwórz plik lub Przenieś Notes do nowego, pustego, podkatalogu i ponownie uruchom kod.
+Notesy programu Jupyter| Utwórz plik `.amlignore` lub Przenieś Notes do nowego, pustego, podkatalogu i ponownie uruchom kod.
 
 ## <a name="where-to-write-files"></a>Miejsce zapisu plików
 
@@ -63,14 +64,14 @@ W związku z izolacją eksperymentów szkoleniowych zmiany w plikach, które są
 
 Podczas zapisywania zmian zalecamy zapisanie plików do magazynu danych Azure Machine Learning. Zobacz [dostęp do danych z Twoich magazynów](how-to-access-data.md).
 
-Jeśli nie jest wymagane przechowywanie danych, Zapisz pliki w `./outputs` folderze i/lub. `./logs`
+Jeśli nie jest wymagane przechowywanie danych, Zapisz pliki w folderze `./outputs` i/lub `./logs`.
 
 >[!Important]
-> Dwa foldery, dane *wyjściowe* i *dzienniki*, otrzymują specjalne traktowanie według Azure Machine Learning. Podczas uczenia pliki do`./outputs` i`./logs` foldery są automatycznie przekazywane do historii uruchamiania, dzięki czemu będziesz mieć do nich dostęp po zakończeniu przebiegu.
+> Dwa foldery, dane *wyjściowe* i *dzienniki*, otrzymują specjalne traktowanie według Azure Machine Learning. Podczas uczenia pliki do`./outputs` i`./logs` folderów są automatycznie przekazywane do historii uruchamiania, dzięki czemu będziesz mieć do nich dostęp po zakończeniu przebiegu.
 
-* W **przypadku danych wyjściowych, takich jak komunikaty o stanie lub wyniki oceniania,** Zapisuj pliki do `./outputs` folderu, tak aby były utrwalane jako artefakty w historii uruchamiania. Należy mieć na uwadze liczbę i rozmiar plików zapisaną w tym folderze, ponieważ opóźnienie może wystąpić podczas przekazywania zawartości do historii uruchamiania. Jeśli opóźnienie jest istotna, zaleca się zapisanie plików do magazynu danych.
+* W **przypadku danych wyjściowych, takich jak komunikaty o stanie lub wyniki oceniania,** pliki są zapisywane do folderu `./outputs`, więc są utrwalane jako artefakty w historii uruchamiania. Należy mieć na uwadze liczbę i rozmiar plików zapisaną w tym folderze, ponieważ opóźnienie może wystąpić podczas przekazywania zawartości do historii uruchamiania. Jeśli opóźnienie jest istotna, zaleca się zapisanie plików do magazynu danych.
 
-* **Aby zapisać zapisany plik jako dzienniki w historii uruchamiania,** Zapisz pliki w `./logs` folderze. Dzienniki są przekazywane w czasie rzeczywistym, więc ta metoda jest odpowiednia do przesyłania strumieniowego aktualizacji na żywo z przebiegu zdalnego.
+* **Aby zapisać zapisany plik jako dzienniki w historii uruchamiania,** Zapisz pliki do folderu `./logs`. Dzienniki są przekazywane w czasie rzeczywistym, więc ta metoda jest odpowiednia do przesyłania strumieniowego aktualizacji na żywo z przebiegu zdalnego.
 
 ## <a name="next-steps"></a>Następne kroki
 

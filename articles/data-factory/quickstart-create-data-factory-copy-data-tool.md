@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: yexu
-ms.openlocfilehash: b330c6010ddb5401dbf9753c2ea91bfeedf35c3b
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 22ff4adfa3cbb8ead500e817620b9236fe32ed0e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020053"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490833"
 ---
-# <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Szybki start: Kopiowanie danych przy użyciu narzędzia do kopiowania danych
+# <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Szybki Start: Używanie narzędzia Kopiowanie danych do kopiowania danych
 
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -35,9 +35,14 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
 
 1. Uruchom przeglądarkę internetową **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika usługi Data Factory jest obsługiwany tylko przez przeglądarki internetowe Microsoft Edge i Google Chrome.
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com). 
-1. Wybierz pozycję **Utwórz zasób** w menu po lewej stronie, a następnie pozycje **Analiza** i **Data Factory**. 
-   
-   ![Wybór usługi Data Factory w okienku „Nowy”](./media/doc-common-process/new-azure-data-factory-menu.png)
+1. Z menu Azure Portal wybierz pozycję **Utwórz zasób**.
+
+    ![Utwórz zasób z menu Azure Portal](./media/quickstart-create-data-factory-copy-data-tool/create-data-factory-resource.png)
+
+1. Wybierz pozycję **Analiza**, a następnie wybierz pozycję **Data Factory**.
+
+   ![Wybór usługi Data Factory w okienku „Nowy”](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
+
 1. Na stronie **Nowa fabryka danych** wprowadź wartość **ADFTutorialDataFactory** w polu **Nazwa**. 
  
    Nazwa fabryki danych platformy Azure musi być *globalnie unikatowa*. Jeśli wystąpi poniższy błąd, zmień nazwę fabryki danych (na przykład **&lt;twojanazwa&gt;ADFTutorialDataFactory**) i spróbuj utworzyć ją ponownie. Artykuł [Usługa Data Factory — reguły nazewnictwa](naming-rules.md) zawiera reguły nazewnictwa artefaktów usługi Data Factory.
@@ -76,7 +81,7 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
 
     b. Wybierz pozycję **Azure Blob Storage** z galerii, a następnie wybierz pozycję **Kontynuuj**.
 
-    c. Na stronie **Nowa połączona usługa (Azure Blob Storage)** Określ nazwę połączonej usługi. Wybierz konto magazynu z listy **nazwa konta magazynu** , Testuj połączenie, a następnie wybierz pozycję **Zakończ**. 
+    d. Na stronie **Nowa połączona usługa (Azure Blob Storage)** Określ nazwę połączonej usługi. Wybierz konto magazynu z listy **nazwa konta magazynu** , Testuj połączenie, a następnie wybierz pozycję **Zakończ**. 
 
    ![Konfigurowanie konta usługi Azure Blob Storage](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 
@@ -106,7 +111,7 @@ W tym przewodniku Szybki start utworzysz fabrykę danych przy użyciu witryny Az
 
     ![Strona „Zakończono wdrożenie”](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-1. Aplikacja zostanie przełączona na kartę **Monitorowanie**. Na tej karcie wyświetlany jest stan potoku. Wybierz pozycję **Odśwież**, aby odświeżyć listę. 
+1. Aplikacja przełączy się na kartę **monitorowanie** . Na tej karcie zobaczysz stan potoku. Wybierz pozycję **Odśwież** , aby odświeżyć listę. 
     
 1. Wybierz link **Wyświetl uruchomienia działania** w kolumnie **Akcje**. Potok ma tylko jedno działanie typu **Kopiowanie**. 
     

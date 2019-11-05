@@ -1,27 +1,27 @@
 ---
-title: Dodawanie zestawów danych do istniejącej wersji zapoznawczej udziału danych platformy Azure
+title: Dodawanie zestawów danych do istniejącej usługi Azure Data Share
 description: Dowiedz się, jak dodawać zestawy danych do istniejącego udziału danych w usłudze Azure Data Share i udostępniać je tym samym odbiorcom.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 8cc61307ae6664889f60469cc3ca65c840c43b86
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 00c96950565b077e65f84e2d8b4977092df5e317
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169195"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490545"
 ---
-# <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share-preview"></a>Jak dodać zestawy danych do istniejącego udziału w wersji zapoznawczej usługi Azure Data Share
+# <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Jak dodać zestawy danych do istniejącego udziału w usłudze Azure Data Share
 
-W tym artykule wyjaśniono, jak dodać zestawy danych do istniejącego już udziału w usłudze Azure Data Share Preview. Pozwala to na udostępnianie większej ilości danych tym samym odbiorcom bez konieczności tworzenia nowego udziału.
+W tym artykule wyjaśniono, jak dodać zestawy danych do istniejącego udziału danych przy użyciu usługi Azure Data Share. Pozwala to na udostępnianie większej ilości danych tym samym odbiorcom bez konieczności tworzenia nowego udziału.
 
 Aby uzyskać informacje na temat dodawania zestawów danych podczas tworzenia udziału, zobacz samouczek [udostępnianie danych](share-your-data.md) .
 
 ## <a name="navigate-to-a-sent-data-share"></a>Przejdź do wysłanego udziału danych
 
-W wersji zapoznawczej usługi Azure Data Share przejdź do wysłanego udziału i wybierz kartę **zestawy danych** . kliknij przycisk **+ Dodaj zestawy danych** , aby dodać więcej zestawów danych.
+W udziale danych platformy Azure przejdź do wysłanego udziału i wybierz kartę **DataSets** . kliknij przycisk **+ Dodaj zestawy danych** , aby dodać więcej zestawów danych.
 
 ![Dodaj zestawy danych](./media/how-to/how-to-add-datasets/add-datasets.png)
 

@@ -1,24 +1,24 @@
 ---
 title: 'Dodawanie kolumn: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak łączyć dwa zestawy danych przy użyciu modułu dodawania kolumn w usłudze Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak połączyć dwa zestawy danych przy użyciu modułu Dodaj kolumny w Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: cbb1249b529fde1368bfaff0c6c251c93fa6c309
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 55981279cb1902424d1a0f77af097dc379d7222f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693855"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493961"
 ---
 # <a name="add-columns-module"></a>Dodawanie modułu kolumn
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do łączenia dwóch zestawów danych. Wszystkie kolumny z dwóch zestawów danych, które można określić jako dane wejściowe, są łączone w celu utworzenia jednego elementu DataSet. Jeśli musisz połączyć więcej niż dwa zestawy danych, użyj kilku wystąpień **Dodaj kolumny**.
 
@@ -46,4 +46,4 @@ Jeśli istnieją dwie kolumny o tej samej nazwie w wejściowych zestawach danych
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

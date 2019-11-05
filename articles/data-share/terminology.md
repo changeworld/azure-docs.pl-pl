@@ -1,21 +1,21 @@
 ---
-title: Terminologia dotycząca udziału danych platformy Azure
-description: Poznaj typowe terminy używane do opisywania zasobów używanych w wersji zapoznawczej udziału danych platformy Azure (dostawca danych, odbiorca danych, udział danych, subskrypcja udostępniania, migawka, zaproszenie, odbiorca).
+title: Terminologia związana z usługą Azure Data Share
+description: Poznaj typowe terminy używane do opisywania zasobów używanych w udziale danych platformy Azure (dostawca danych, odbiorca danych, udział danych, subskrypcja udostępniania, migawka, zaproszenie, odbiorca).
+ms.service: data-share
 author: joannapea
 ms.author: joanpo
-ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166269"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468560"
 ---
-# <a name="azure-data-share-preview-concepts"></a>Pojęcia dotyczące usługi Azure Data Share w wersji zapoznawczej 
+# <a name="azure-data-share-concepts"></a>Pojęcia dotyczące udziałów danych platformy Azure 
 
-W wersji zapoznawczej usługi Azure Data Share wprowadzono nową terminologię związaną z udostępnianiem danych. W tym artykule opisano niektóre często używane terminy, które mogą być używane w całej usłudze. 
+W udziale danych platformy Azure wprowadzono nową terminologię związaną z udostępnianiem danych. W tym artykule opisano niektóre często używane terminy, które mogą być używane w całej usłudze. 
 
 ## <a name="data-provider"></a>Dostawca danych
 
@@ -35,7 +35,7 @@ Subskrypcja udziału jest tworzona, gdy odbiorca danych akceptuje zaproszenie do
 
 Odbiorca danych może sprawdzić, czy ma aktywną subskrypcję udziałów, przechodząc do **odebranych udziałów** i wyświetlając stan odebranych udziałów. 
 
-## <a name="snapshot"></a>Migawka
+## <a name="snapshot"></a>Snapshot
 
 Migawkę można utworzyć przez odbiorcę danych po zaakceptowaniu zaproszenia udziału danych. Po zaakceptowaniu zaproszenia mogą wyzwalać pełną migawkę danych, które są do nich udostępniane. Migawka jest kopią danych w punkcie w czasie, w którym odbiorca danych wygenerował migawkę. 
 
@@ -64,4 +64,3 @@ Odbiorca to osoba, która otrzymuje zaproszenie do udziału danych. Zazwyczaj do
 ## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się, jak zacząć udostępniać dane, przejdź do samouczka [udostępnianie danych](share-your-data.md) .
-

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Przeglądanie punktu końcowego wyrażenia długości — LUIS'
+title: 'Samouczek: przeglądanie punktu końcowego wyrażenia długości — LUIS'
 titleSuffix: Azure Cognitive Services
 description: Ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS i uznane za niepewne przez tę usługę. Niektóre wypowiedzi mogą wymagać weryfikacji pod kątem intencji, a inne — pod kątem jednostki.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: f81066ed21702dfe94ad7897adc3b82ed5a49f4d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 04f30818e3c871d74d94bfd92bd3f73e4e6637a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387516"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499410"
 ---
-# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Samouczek: Rozwiązywanie problemów z niepewnymi przewidywaniami przez przeglądanie wypowiedzi punktu końcowego
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Samouczek: usuwanie prognoz przez przeglądanie punktu końcowego wyrażenia długości
 W tym samouczku ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS i uznane za niepewne przez tę usługę. Niektóre wypowiedzi mogą wymagać weryfikacji pod kątem intencji, a inne — pod kątem jednostki. Należy regularnie przeglądać wypowiedzi punktu końcowego w ramach zaplanowanej konserwacji usługi LUIS. 
 
 Ten proces przeglądu to kolejny sposób, w który usługa LUIS może nauczyć się domeny aplikacji. Usługa LUIS wybrała wypowiedzi występujące na liście do przeglądu. Ta lista ma następujące cechy:
@@ -29,6 +29,8 @@ Ten proces przeglądu to kolejny sposób, w który usługa LUIS może nauczyć s
 
 Przeglądając wypowiedzi punktu końcowego, weryfikujesz lub poprawiasz przewidzianą intencję wypowiedzi. Możesz też oznaczać etykietami jednostki niestandardowe, które nie zostały przewidziane lub zostały przewidziane niepoprawnie. 
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 <!-- green checkmark -->
@@ -38,7 +40,7 @@ Przeglądając wypowiedzi punktu końcowego, weryfikujesz lub poprawiasz przewid
 > * Aktualizowanie listy fraz
 > * Szkolenie aplikacji
 > * Publikowanie aplikacji
-> * Wysyłanie zapytań do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
+> * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -75,7 +77,7 @@ Wykonaj następujące czynności:
     [![Zrzut ekranu obszaru Review endpoint utterances (Przeglądanie wypowiedzi punktu końcowego) z wyróżnionym przełącznikiem Entities view (Widok jednostek)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
 
-    Ta wypowiedź, `I'm looking for a job with Natural Language Processing`, nie jest w poprawnym zamiarem. 
+    Ta wypowiedź `I'm looking for a job with Natural Language Processing`nie jest w poprawnym zamiarem. 
 
     Przyczyną nieoczekiwanej przewidywania wypowiedź jest to, że intencja **ApplyForJob** ma 21 wyrażenia długości w porównaniu do 7 wyrażenia długości w **GetJobInformation**. Cel o większej wyrażenia długości będzie miał wyższą prognozę. Należy pamiętać, że ilość i jakość wyrażenia długości w ramach intencji są zrównoważone.
 

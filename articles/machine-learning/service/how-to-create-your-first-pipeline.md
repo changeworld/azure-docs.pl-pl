@@ -11,14 +11,15 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe4a2082647ef1325d03ce4eec428ed1579704c5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: MT
+ms.openlocfilehash: 373713cc92379236385024beff201d16fbbfd4b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755981"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497045"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoków uczenia maszynowego za pomocą zestawu SDK Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ten artykuł zawiera informacje na temat tworzenia, publikowania, uruchamiania i śledzenia [potoku uczenia maszynowego](concept-ml-pipelines.md) przy użyciu [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Użyj **potoków ml** , aby utworzyć przepływ pracy, który jest połączony z różnymi etapami ml, a następnie opublikuj ten potok w obszarze roboczym Azure Machine Learning, aby uzyskać dostęp do nich później lub udostępniać innym osobom.  Potoki ML doskonale nadają się do scenariuszy wsadowych oceniania, przy użyciu różnych obliczeń, ponownej realizacji czynności zamiast uruchamiania ich, a także udostępniania przepływów pracy ML innym osobom. 
 
@@ -36,7 +37,11 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 * Utwórz [obszar roboczy Azure Machine Learning](how-to-manage-workspace.md) , aby pomieścić wszystkie zasoby potoku.
 
-* [Skonfiguruj środowisko programistyczne](how-to-configure-environment.md) , aby zainstalować zestaw SDK Azure Machine Learning lub użyć [maszyny wirtualnej z notesem](tutorial-1st-experiment-sdk-setup.md#azure) z już zainstalowanym zestawem SDK.
+* [Skonfiguruj środowisko programistyczne](how-to-configure-environment.md) , aby zainstalować zestaw SDK Azure Machine Learning, lub Użyj [wystąpienia obliczeniowego Azure Machine Learning](concept-compute-instance.md) z już zainstalowanym zestawem SDK.
+
+> [!NOTE]
+> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
+>Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
 
 Zacznij od dołączenia obszaru roboczego:
 
@@ -410,21 +415,21 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>Wyświetl wyniki opublikowanego potoku
 
 Zobacz listę wszystkich opublikowanych potoków i ich szczegóły przebiegu:
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com).
 
 1. [Wyświetlenie obszaru roboczego](how-to-manage-workspace.md#view) , aby znaleźć listę potoków.
- ![list potoków uczenia maszynowego ](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
+ ![listę potoków uczenia maszynowego](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Wybierz konkretny potok, aby wyświetlić wyniki przebiegu.
 
-Te wyniki są również dostępne na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
+Te wyniki są również dostępne w obszarze roboczym w programie [Azure Machine Learning Studio]] (https://ml.azure.com).
 
 ### <a name="disable-a-published-pipeline"></a>Wyłącz opublikowany potok
 
 Aby ukryć potok z listy opublikowanych potoków, należy go wyłączyć:
 
 ```
-# Get the pipeline by using its ID from the Azure portal
+# Get the pipeline by using its ID from Azure Machine Learning studio
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```

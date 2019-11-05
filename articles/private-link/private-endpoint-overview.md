@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: a3c25553e7abbe39c00407e8000880dc99056bcd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccc3da6f2dd49775ff4d4486fcd2af9f08a396d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172977"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475925"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
-Prywatny punkt końcowy platformy Azure to interfejs sieciowy, który nawiązuje połączenie prywatnie i bezpiecznie z usługą obsługiwanej przez link prywatny platformy Azure. Prywatny punkt końcowy używa prywatnego adresu IP z sieci wirtualnej, efektywnie przenosząc usługę do sieci wirtualnej. Usługa może być usługą platformy Azure, taką jak Azure Storage, SQL itp. lub własną [usługą linku prywatnego](private-link-service-overview.md).
+Prywatny punkt końcowy platformy Azure to interfejs sieciowy, który nawiązuje połączenie prywatnie i bezpiecznie z usługą obsługiwanej przez link prywatny platformy Azure. Prywatny punkt końcowy używa prywatnego adresu IP z sieci wirtualnej, efektywnie przenosząc usługę do sieci wirtualnej. Usługa może być usługą platformy Azure, taką jak Azure Storage, Azure Cosmos DB, SQL itp. lub własną [usługą linku prywatnego](private-link-service-overview.md).
   
 ## <a name="private-endpoint-properties"></a>Właściwości prywatnego punktu końcowego 
  Prywatny punkt końcowy określa następujące właściwości: 
@@ -57,7 +57,7 @@ Zasób link prywatny jest docelowym miejscem docelowym danego prywatnego punktu 
 |**Azure SQL Data Warehouse** | Microsoft. SQL/serwery    |  Program SQL Server (sqlServer)        |
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  Obiekt BLOB (BLOB, blob_secondary)<BR> Tabela (tabela, table_secondary)<BR> Kolejka (Queue, queue_secondary)<BR> Plik (plik, file_secondary)<BR> Sieć Web (sieć Web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Obiekt BLOB (BLOB, blob_secondary)       |
- 
+|**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabela|
  
 ## <a name="network-security-of-private-endpoints"></a>Zabezpieczenia sieciowe prywatnych punktów końcowych 
 Gdy korzystasz z prywatnych punktów końcowych dla usług platformy Azure, ruch jest zabezpieczony do określonego zasobu linku prywatnego. Platforma wykonuje kontrolę dostępu, aby sprawdzić poprawność połączeń sieciowych tylko do określonego zasobu linku prywatnego. Aby uzyskać dostęp do dodatkowych zasobów w ramach tej samej usługi platformy Azure, wymagane są dodatkowe prywatne punkty końcowe. 
@@ -107,9 +107,12 @@ W przypadku usług platformy Azure Użyj zalecanych nazw stref, zgodnie z opisem
 |Konto magazynu (Microsoft. Storage/storageAccounts)   |    Plik (plik, file_secondary)      |    privatelink.file.core.windows.net      |
 |Konto magazynu (Microsoft. Storage/storageAccounts)     |  Sieć Web (sieć Web, web_secondary)        |    privatelink.web.core.windows.net      |
 |Gen2 systemu plików Data Lake (Microsoft. Storage/storageAccounts)  |  Gen2 systemu plików Data Lake (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-||||
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Tabela|privatelink.table.cosmos.azure.com|
  
-
 Platforma Azure utworzy rekord DNS o nazwie kanonicznej (CNAME) w publicznym systemie DNS, aby przekierować rozwiązanie do sugerowanych nazw domen. Możliwe będzie przesłonięcie rozwiązania przy użyciu prywatnego adresu IP prywatnych punktów końcowych. 
  
 Aplikacje nie muszą zmieniać adresu URL połączenia. Podczas próby rozwiązania przy użyciu publicznego serwera DNS serwer DNS zostanie teraz rozpoznany jako prywatne punkty końcowe. Ten proces nie ma wpływu na aplikacje. 
@@ -131,4 +134,5 @@ Poniższa tabela zawiera listę znanych ograniczeń dotyczących używania prywa
 - [Tworzenie prywatnego punktu końcowego dla serwera SQL Database przy użyciu programu PowerShell](create-private-endpoint-powershell.md)
 - [Tworzenie prywatnego punktu końcowego dla serwera SQL Database przy użyciu interfejsu wiersza polecenia](create-private-endpoint-cli.md)
 - [Tworzenie prywatnego punktu końcowego dla konta magazynu przy użyciu portalu](create-private-endpoint-storage-portal.md)
+- [Tworzenie prywatnego punktu końcowego dla konta usługi Azure Cosmos za pomocą portalu](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Tworzenie własnej usługi linku prywatnego przy użyciu Azure PowerShell](create-private-link-service-powershell.md)

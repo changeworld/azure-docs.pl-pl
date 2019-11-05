@@ -1,24 +1,24 @@
 ---
 title: 'Czyste brakujące dane: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak usunąć, zamienić lub wywnioskować brakujące wartości przy użyciu modułu czyste brakujące dane w usłudze Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak usunąć brakujące wartości przy użyciu modułu czyste brakujące dane w Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7167d53cce2c44f754f438753acda008e53bb2b3
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: fef8cb0c29eac4b26b93abee54faa4fe1078678d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693218"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493811"
 ---
 # <a name="clean-missing-data-module"></a>Wyczyść nieobecny moduł danych
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do usuwania, zastępowania lub wnioskowania brakujących wartości. 
 
@@ -133,8 +133,8 @@ Jeśli trzeba często powtarzać operacje czyszczenia, zalecamy zapisanie przepi
   
 2.  Dodaj zestaw danych, który chcesz wyczyścić, i Połącz zestaw danych z portem wejściowym z prawej strony.  
   
-3.  Rozwiń grupę **przekształcenia** w okienku po lewej stronie interfejsu. Znajdź zapisaną transformację i przeciągnij ją do potoku.  
-  
+3.  Rozwiń grupę **przekształcenia** w okienku po lewej stronie projektanta. Znajdź zapisaną transformację i przeciągnij ją do potoku.  
+
 4.  Połącz zapisaną transformację z lewym portem wejściowym [zastosowania transformacji](./apply-transformation.md). 
 
     W przypadku zastosowania zapisanej transformacji nie można wybrać kolumn, do których zastosowano transformację. Wynika to z faktu, że transformacja została już zdefiniowana i automatycznie stosowana do kolumn określonych w pierwotnej operacji.
@@ -145,4 +145,4 @@ Jeśli trzeba często powtarzać operacje czyszczenia, zalecamy zapisanie przepi
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

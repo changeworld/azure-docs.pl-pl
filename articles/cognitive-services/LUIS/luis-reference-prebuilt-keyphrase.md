@@ -11,117 +11,90 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e55c0453c117c51e5a8e4986631516d3e61ed10b
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 51d1bd515651824545d486207ad4a74476aa7092
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677591"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491279"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>keyPhrase prekompilowaną jednostkę dla aplikacji LUIS
 Jednostka keyPhrase wyodrębnia różne kluczowe frazy z wypowiedź. Nie musisz dodawać przykładowej wyrażenia długości zawierającej keyPhrase do aplikacji. Jednostka keyPhrase jest obsługiwana w [wielu kulturach](luis-language-support.md#languages-supported) w ramach funkcji [analizy tekstu](../text-analytics/overview.md) . 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Rozwiązanie dla wstępnie skompilowanej jednostki keyPhrase
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+Następujące obiekty jednostki są zwracane dla zapytania:
 
-Poniższy przykład pokazuje rozdzielczość jednostki **wbudowanej. keyPhrase** .
+`where is the educational requirements form for the development and engineering group`
 
-```json
-{
-  "query": "where is the educational requirements form for the development and engineering group",
-  "topScoringIntent": {
-    "intent": "GetJobInformation",
-    "score": 0.182757929
-  },
-  "entities": [
-    {
-      "entity": "development",
-      "type": "builtin.keyPhrase",
-      "startIndex": 51,
-      "endIndex": 61
-    },
-    {
-      "entity": "educational requirements",
-      "type": "builtin.keyPhrase",
-      "startIndex": 13,
-      "endIndex": 36
-    }
-  ]
-}
-```
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-responsetabv3"></a>[Odpowiedź v3](#tab/V3)
 
 Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
 
 ```json
-{
-    "query": "where is the educational requirements form for the development and engineering group",
-    "prediction": {
-        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
-        "topIntent": "GetJobInformation",
-        "intents": {
-            "GetJobInformation": {
-                "score": 0.157861546
-            }
-        },
-        "entities": {
-            "keyPhrase": [
-                "educational requirements",
-                "development"
-            ]
-        }
-    }
+"entities": {
+    "keyPhrase": [
+        "educational requirements",
+        "development"
+    ]
 }
 ```
-
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Pełna odpowiedź w wersji 3](#tab/V3-verbose)
 Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
 
 ```json
-{
-    "query": "where is the educational requirements form for the development and engineering group",
-    "prediction": {
-        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
-        "topIntent": "GetJobInformation",
-        "intents": {
-            "GetJobInformation": {
-                "score": 0.157861546
-            }
-        },
-        "entities": {
-            "keyPhrase": [
-                "educational requirements",
-                "development"
-            ],
-            "$instance": {
-                "keyPhrase": [
-                    {
-                        "type": "builtin.keyPhrase",
-                        "text": "educational requirements",
-                        "startIndex": 13,
-                        "length": 24,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor",
-                        "recognitionSources": [
-                            "model"
-                        ]
-                    },
-                    {
-                        "type": "builtin.keyPhrase",
-                        "text": "development",
-                        "startIndex": 51,
-                        "length": 11,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor",
-                        "recognitionSources": [
-                            "model"
-                        ]
-                    }
+"entities": {
+    "keyPhrase": [
+        "educational requirements",
+        "development"
+    ],
+    "$instance": {
+        "keyPhrase": [
+            {
+                "type": "builtin.keyPhrase",
+                "text": "educational requirements",
+                "startIndex": 13,
+                "length": 24,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.keyPhrase",
+                "text": "development",
+                "startIndex": 51,
+                "length": 11,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
+```
+#### <a name="v2-responsetabv2"></a>[Odpowiedź w wersji 2](#tab/V2)
+
+Poniższy przykład pokazuje rozdzielczość jednostki **wbudowanej. keyPhrase** .
+
+```json
+"entities": [
+    {
+        "entity": "development",
+        "type": "builtin.keyPhrase",
+        "startIndex": 51,
+        "endIndex": 61
+    },
+    {
+        "entity": "educational requirements",
+        "type": "builtin.keyPhrase",
+        "startIndex": 13,
+        "endIndex": 36
+    }
+]
 ```
 * * * 
 

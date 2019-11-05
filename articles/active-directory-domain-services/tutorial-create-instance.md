@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: d880bcc7c0c3f1b9cf647242a54cc779ba8945e1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2a1fbe8d47af8a2215b0d0a3d81fbe67a62d4755
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172400"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474430"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Samouczek: Tworzenie i Konfigurowanie wystąpienia Azure Active Directory Domain Services
 
@@ -55,7 +55,7 @@ W tym samouczku utworzysz i skonfigurujesz wystąpienie usługi Azure AD DS przy
 
 Aby uruchomić kreatora **włączania Azure AD Domain Services** , wykonaj następujące czynności:
 
-1. W lewym górnym rogu Azure Portal wybierz pozycję **+ Utwórz zasób**.
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**.
 1. Wprowadź *usługi domenowe* na pasku wyszukiwania, a następnie wybierz *Azure AD Domain Services* z sugestii wyszukiwania.
 1. Na stronie Azure AD Domain Services wybierz pozycję **Utwórz**. Zostanie uruchomiony Kreator **włączania Azure AD Domain Services** .
 1. Wybierz **subskrypcję** platformy Azure, w której chcesz utworzyć domenę zarządzaną.

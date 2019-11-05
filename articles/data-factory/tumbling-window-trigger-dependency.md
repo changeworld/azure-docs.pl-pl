@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: daperlov
-ms.openlocfilehash: 6e5e293e9759f091b6537d5efab9884e0a20fabc
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
-ms.translationtype: HT
+ms.openlocfilehash: 24a1a5d132990db2aa10b7860774eecafb4b4edb
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725433"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "73520636"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Tworzenie zależności wyzwalacza okna wirowania
 
@@ -79,8 +79,8 @@ Poniższa tabela zawiera listę atrybutów wymaganych do zdefiniowania zależno�
 | **Nazwa właściwości** | **Opis**  | **Typ** | **Wymagane** |
 |---|---|---|---|
 | type  | Wszystkie istniejące wyzwalacze okna wirowania są wyświetlane na liście rozwijanej. Wybierz wyzwalacz, od którego ma być zależne.  | TumblingWindowTriggerDependencyReference lub SelfDependencyTumblingWindowTriggerReference | Tak |
-| offset | Przesunięcie wyzwalacza zależności. Podaj wartość w formacie przedziału czasu, a ujemne i pozytywne przesunięcia są dozwolone. Ta właściwość jest wymagana, jeśli wyzwalacz jest zależny od siebie i we wszystkich innych przypadkach jest opcjonalny. Samodzielna wartość powinna zawsze być ujemna. Jeśli żadna wartość nie zostanie określona, okno jest takie samo jak wyzwalacz. | Timespan<br/>(hh: mm: SS) | Samoobsługowe: Tak<br/>Inne: Nie |
-| size | Rozmiar okna wirowania zależności. Podaj dodatnią wartość TimeSpan. Ta właściwość jest opcjonalna. | Timespan<br/>(hh: mm: SS) | Nie  |
+| Przesunięcie | Przesunięcie wyzwalacza zależności. Podaj wartość w formacie przedziału czasu, a ujemne i pozytywne przesunięcia są dozwolone. Ta właściwość jest wymagana, jeśli wyzwalacz jest zależny od siebie i we wszystkich innych przypadkach jest opcjonalny. Samodzielna wartość powinna zawsze być ujemna. Jeśli żadna wartość nie zostanie określona, okno jest takie samo jak wyzwalacz. | Zakres czasu<br/>(hh: mm: SS) | Samozależność: tak<br/>Inne: nie |
+| Zmienia | Rozmiar okna wirowania zależności. Podaj dodatnią wartość TimeSpan. Ta właściwość jest opcjonalna. | Zakres czasu<br/>(hh: mm: SS) | Nie  |
 
 > [!NOTE]
 > Wyzwalacz okna wirowania może zależeć od maksymalnie dwóch innych wyzwalaczy.
@@ -147,20 +147,22 @@ Codzienne zadanie przetwarzania danych telemetrycznych w zależności od innego 
 
 Codzienne zadanie bez przerw w strumieniach wyjściowych zadania:
 
-![Przykład] samoobsługowy (media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Przykład") samoobsługowy
+![Przykład samoobsługowy](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Przykład samoobsługowy")
 
 ## <a name="monitor-dependencies"></a>Monitorowanie zależności
 
-Można monitorować łańcuch zależności i odpowiadające im okna na stronie monitorowania uruchomienia wyzwalacza. Przejdź do **monitorowania > uruchomienia wyzwalacza**.
+Można monitorować łańcuch zależności i odpowiadające im okna na stronie monitorowania uruchomienia wyzwalacza. Przejdź do **monitorowania > uruchomienia wyzwalacza**. W kolumnie akcje można ponownie uruchomić wyzwalacz lub wyświetlić jego zależności.
 
-![Monitoruj uruchomienia wyzwalacza](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Monitoruj uruchomienia wyzwalacza")
+![Monitoruj uruchomienia wyzwalacza](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Monitorowanie uruchomień wyzwalacza")
 
-Kliknij ikonę akcji, aby wyświetlić wszystkie uruchomienia wyzwalacza zależnego wybranego okna.
+Kliknięcie przycisku "Wyświetl zależności wyzwalacza" umożliwia wyświetlenie stanu zależności. Jeśli jeden z wyzwalaczy zależności ulegnie awarii, należy uruchomić go ponownie w celu uruchomienia wyzwalacza zależnego. Wyzwalacz okna wirowania będzie oczekiwał na zależności przez siedem dni przed upływem limitu czasu.
 
 ![Monitorowanie zależności](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Monitorowanie zależności")
 
-W powyższym przykładzie wyzwalacz dzienny zależy od wyzwalacza godzinowego bez zdefiniowanego okna i przesunięcia 3 godz. W efekcie wyzwalacz jest uruchamiany po 24 pomyślnych uruchomieniach zależności.
+Aby uzyskać więcej wizualizacji w celu wyświetlenia harmonogramu zależności wyzwalacza, wybierz widok wykresu Gantta.
 
-## <a name="next-steps"></a>Kolejne kroki
+![Monitorowanie zależności](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Monitorowanie zależności")
+
+## <a name="next-steps"></a>Następne kroki
 
 * Zapoznaj [się z tematem jak utworzyć wyzwalacz okna wirowania](how-to-create-tumbling-window-trigger.md)

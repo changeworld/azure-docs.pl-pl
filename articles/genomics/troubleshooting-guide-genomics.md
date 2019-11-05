@@ -1,7 +1,7 @@
 ---
 title: Przewodnik rozwiązywania problemów
 titleSuffix: Microsoft Genomics
-description: Dowiedz się więcej na temat strategii rozwiązywania problemów dotyczących korzystania z Microsoft Genomics.
+description: Dowiedz się więcej na temat strategii rozwiązywania problemów dotyczących używania Microsoft Genomics, w tym komunikatów o błędach i sposobu ich rozwiązywania.
 keywords: Rozwiązywanie problemów, błąd, debugowanie
 services: genomics
 author: ruchir
@@ -11,14 +11,14 @@ ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: ce8af4d444e642a8f67f43f8cf403ce9b2cb08ab
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248511"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485997"
 ---
-# <a name="troubleshooting-guide"></a>Podręcznik rozwiązywania problemów
+# <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
 Poniżej przedstawiono kilka wskazówek dotyczących rozwiązywania problemów związanych z typowymi problemami, które można napotkać podczas korzystania z usługi Microsoft Genomics, MSGEN.
 
@@ -27,7 +27,7 @@ Poniżej przedstawiono kilka wskazówek dotyczących rozwiązywania problemów z
 
 Komunikaty o błędach skojarzone z przepływem pracy można zlokalizować przez:
 
-1. Korzystanie z wiersza polecenia i wpisywanie w `msgen status`
+1. Przy użyciu wiersza polecenia i wpisując w `msgen status`
 2. Badanie zawartości wyjście standardowe. txt.
 
 ### <a name="1-using-the-command-line-msgen-status"></a>1. przy użyciu wiersza polecenia `msgen status`
@@ -88,7 +88,7 @@ Znajdź kontener danych wyjściowych dla danego przepływu pracy. MSGEN tworzy f
 * outputFileList. txt — lista plików wyjściowych tworzonych w ramach przepływu pracy
 * błąd standardowy. txt — ten plik jest pusty.
 * Wyjście standardowe. txt — rejestruje wszystkie komunikaty o stanie najwyższego poziomu, w tym błędy, które wystąpiły podczas uruchamiania przepływu pracy.
-* Pliki dziennika GATK — wszystkie inne pliki w folderze `logs`
+* Pliki dziennika GATK — wszystkie pozostałe pliki w folderze `logs`
 
 W celu rozwiązywania problemów sprawdź zawartość wyjście standardowe. txt i zanotuj wszystkie wyświetlane komunikaty o błędach.
 

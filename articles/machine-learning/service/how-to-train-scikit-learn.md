@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 707c6d99d4c5f4335ff771bdd916b2ee37092604
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
-ms.translationtype: MT
+ms.openlocfilehash: ec1ea8bac35906969f051a70c44bd6f0685dc942
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710064"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489436"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Kompiluj scikit — Poznaj modele na dużą skalę dzięki Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym artykule dowiesz się, jak uruchamiać scikite skrypty szkoleniowe na skalę przedsiębiorstwa przy użyciu klasy [skryptu sklearn szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) firmy Azure Machine Learning. 
 
@@ -28,7 +29,7 @@ Bez względu na to, czy przeprowadzasz szkolenia z modelu uczenia maszynowego sc
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Uruchom ten kod w dowolnym z następujących środowisk:
- - Maszyna wirtualna w Azure Machine Learning Notes — nie jest wymagane pobieranie ani instalacja
+ - Wystąpienie obliczeniowe Azure Machine Learning — nie jest wymagane pobieranie ani instalacja
 
     - Ukończ [Samouczek: Zainstaluj środowisko i obszar roboczy](tutorial-1st-experiment-sdk-setup.md) , aby utworzyć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium.
     - W folderze uczenie przykładów na serwerze notesu Znajdź ukończony i rozwinięty Notes, przechodząc do tego katalogu: How to- **use-azure > ml-frameworks > scikit-uczenie > uczenie > uczenie-parametr-dostrajania-Deploy-with-skryptu sklearn** folder.
@@ -46,7 +47,7 @@ Uruchom ten kod w dowolnym z następujących środowisk:
 
 Ta sekcja umożliwia skonfigurowanie eksperymentu szkoleniowego przez załadowanie wymaganych pakietów języka Python, zainicjowanie obszaru roboczego, utworzenie eksperymentu i przekazanie danych szkoleniowych i skryptów szkoleniowych.
 
-### <a name="import-packages"></a>Importuj pakiety
+### <a name="import-packages"></a>Importowanie pakietów
 
 Najpierw zaimportuj niezbędne biblioteki języka Python.
 
@@ -88,9 +89,9 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 W tym samouczku skrypt szkoleniowy **train_iris. PR** został już udostępniony. W tym celu należy mieć możliwość wykonania dowolnego niestandardowego skryptu szkoleniowego i uruchomienia go z platformą Azure ML bez konieczności modyfikowania kodu.
 
-Aby korzystać z funkcji śledzenia i metryk platformy Azure ML, Dodaj niewielką ilość kodu platformy Azure ML w skrypcie szkoleniowym.  Skrypt szkoleniowy **train_iris. PR** pokazuje, w jaki sposób rejestrować niektóre metryki w usłudze Azure ml przy użyciu obiektu `Run` w skrypcie.
+Aby korzystać z funkcji śledzenia i metryk platformy Azure ML, Dodaj niewielką ilość kodu platformy Azure ML w skrypcie szkoleniowym.  Skrypt szkoleniowy **train_iris. PR** pokazuje, jak rejestrować pewne metryki do przebiegu w usłudze Azure ml przy użyciu obiektu `Run` w skrypcie.
 
-Dostarczony skrypt szkoleniowy używa przykładowych danych z funkcji `iris = datasets.load_iris()`.  W przypadku własnych danych może być konieczne wykonanie kroków takich jak [przekazywanie zestawu danych i skryptów](how-to-train-keras.md#data-upload) w celu udostępnienia danych podczas szkoleń.
+Podany skrypt szkoleniowy używa przykładowych danych z funkcji `iris = datasets.load_iris()`.  W przypadku własnych danych może być konieczne wykonanie kroków takich jak [przekazywanie zestawu danych i skryptów](how-to-train-keras.md#data-upload) w celu udostępnienia danych podczas szkoleń.
 
 Skopiuj skrypt szkoleniowy **train_iris. PR** do katalogu projektu.
 
@@ -127,7 +128,7 @@ Aby uzyskać więcej informacji na temat obiektów docelowych obliczeń, zobacz 
 
 [Scikit — uczenie szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) zapewnia prostą metodę uruchamiania zadania szkoleniowego scikit-uczenia na obiekcie docelowym obliczeń. Jest implementowana za pomocą klasy [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) , która może być używana do obsługi szkolenia procesora jednowęzłowego.
 
-Jeśli do uruchomienia skryptu szkoleniowego wymagane są dodatkowe pakiety PIP lub Conda, można je zainstalować na efekcie obrazu platformy Docker, przenosząc ich nazwy za pomocą argumentów `pip_packages` i `conda_packages`.
+Jeśli do uruchomienia skryptu szkoleniowego wymagane są dodatkowe pakiety PIP lub Conda, można je zainstalować na utworzonym obrazie platformy Docker, przekazując ich nazwy za pomocą argumentów `pip_packages` i `conda_packages`.
 
 ```Python
 from azureml.train.sklearn import SKLearn

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/30/2019
 ms.author: daveba
 ms.openlocfilehash: 5e430b16bbdebf97c1499d997fe2c30771270987
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204404"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523462"
 ---
-Korzystając z tej funkcji wymaga licencji usługi Azure AD Premium P2. Aby znaleźć odpowiedniej licencji zgodnie z wymaganiami dotyczącymi, zobacz [porównanie ogólnie dostępnych funkcji w wersjach bezpłatna, podstawowa i Premium](https://azure.microsoft.com/pricing/details/active-directory/).
+Korzystanie z tej funkcji wymaga licencji na Azure AD — wersja Premium P2. Aby znaleźć odpowiednią licencję dla wymagań, zobacz [porównanie ogólnie dostępnych funkcji wersji bezpłatna, podstawowa i Premium](https://azure.microsoft.com/pricing/details/active-directory/).

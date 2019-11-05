@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: Tworzenie eksperymentu dotyczącego nauki o danych'
-titleSuffix: Azure Machine Learning Studio
+title: 'Szybki Start: Tworzenie eksperymentu do nauki o danych'
+titleSuffix: Azure Machine Learning Studio (classic)
 description: Ten przewodnik Szybki start z dziedziny uczenia maszynowego przeprowadzi Cię przez łatwy eksperyment dotyczący nauki o danych. Będziemy prognozować cenę samochodu, używając algorytmu regresji.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: e5c004b69f24b50ed2eb3a10dbd0a7915c0773ce
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c95954bbe96b947312a952ebaab4e6bfc2b2f5a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515112"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493280"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Szybki start: Tworzenie pierwszego eksperymentu dotyczącego nauki o danych w usłudze Azure Machine Learning Studio
+# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Szybki Start: Tworzenie pierwszego eksperymentu do nauki o danych w Azure Machine Learning Studio (klasyczny)
 
-W ramach tego przewodnika Szybki start utworzysz w usłudze [Azure Machine Learning Studio](what-is-ml-studio.md) eksperyment uczenia maszynowego, który będzie prognozował cenę samochodu na podstawie różnych zmiennych, takich jak marka i dane techniczne.
+[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+
+W tym przewodniku szybki start utworzysz eksperyment uczenia maszynowego w [Azure Machine Learning Studio (klasyczny)](what-is-ml-studio.md) , który przewiduje cenę samochodu na podstawie różnych zmiennych, takich jak marka i specyfikacje techniczne.
 
 Jeśli dopiero zaczynasz korzystać z uczenia maszynowego, seria filmów wideo zatytułowana [Data Science for Beginners](data-science-for-beginners-the-5-questions-data-science-answers.md) (Analiza danych dla początkujących) stanowi znakomite wprowadzenie do uczenia maszynowego przedstawione przy użyciu codziennego języka i pojęć.
 
@@ -40,20 +42,18 @@ W tym przewodniku Szybki start obowiązuje domyślny przepływ pracy dla ekspery
 [Wybieranie i stosowanie algorytmu]: #choose-and-apply-an-algorithm
 [Przewidywanie nowych cen samochodów]: #predict-new-automobile-prices
 
-Jeśli nie masz konta w usłudze Studio, przejdź do [strony głównej usługi Studio](https://studio.azureml.net) i wybierz pozycję **Zarejestruj się tutaj**, aby utworzyć bezpłatne konto. Bezpłatny obszar roboczy będzie zawierał wszystkie funkcje potrzebne w tym przewodniku Szybki start.
-
 ## <a name="get-the-data"></a>Pobieranie danych
 
 Do przeprowadzenia uczenia maszynowego potrzebne są dane.
-Usługa Studio udostępnia wiele przykładowych zestawów danych do wyboru. Dane można również importować z wielu źródeł. W tym scenariuszu będziemy używać przykładowego zestawu danych **Automobile price data (Raw)** (Nieprzetworzone dane z cenami samochodów), dołączonego do obszaru roboczego.
+Istnieje kilka przykładowych zestawów danych dołączonych do klasycznej wersji programu Studio, których można użyć, lub można importować dane z wielu źródeł. W tym scenariuszu będziemy używać przykładowego zestawu danych **Automobile price data (Raw)** (Nieprzetworzone dane z cenami samochodów), dołączonego do obszaru roboczego.
 Zestaw ten zawiera dane różnych modeli samochodów, na przykład informacje dotyczące marki, ceny czy specyfikacji technicznej.
 
 > [!TIP]
-> Funkcjonalną kopię poniższego eksperymentu można znaleźć w [galerii sztucznej inteligencji platformy Azure](https://gallery.azure.ai). Otwórz stronę **[Pierwszy eksperyment z przetwarzaniem danych — prognozowanie cen samochodów](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** i kliknij przycisk **Open in Studio** (Otwórz w usłudze Studio), aby pobrać kopię eksperymentu do obszaru roboczego usługi Machine Learning Studio.
+> Funkcjonalną kopię poniższego eksperymentu można znaleźć w [galerii sztucznej inteligencji platformy Azure](https://gallery.azure.ai). Przejdź do **[pierwszego eksperymentu z nauką o danych — Prognoza cen samochodów](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** i kliknij pozycję **Otwórz w programie Studio** , aby pobrać kopię eksperymentu do obszaru roboczego Machine Learning Studio (klasycznego).
 
 Poniżej przedstawiono procedurę dołączania zestawu danych do eksperymentu.
 
-1. Utwórz nowy eksperyment, klikając pozycję **+NEW** (+NOWY) u dołu okna Machine Learning Studio. Wybierz pozycję **EXPERIMENT** (EKSPERYMENT) >  **Blank Experiment** (Pusty eksperyment).
+1. Utwórz nowy eksperyment, klikając pozycję **+ Nowy** u dołu okna Machine Learning Studio (klasycznego). Wybierz pozycję **EXPERIMENT** (EKSPERYMENT) >  **Blank Experiment** (Pusty eksperyment).
 
 1. Eksperymentowi zostanie nadana domyślna nazwa, wyświetlana w górnej części obszaru roboczego. Zaznacz ten tekst i wpisz opisową nazwę, na przykład **Prognozowanie cen samochodów**. Nazwa nie musi być unikatowa.
 
@@ -181,9 +181,9 @@ Dane dzielimy na dwa oddzielne zestawy, aby użyć ich do celów szkoleniowych i
 
 1. Uruchom eksperyment. Po uruchomieniu eksperymentu moduły [Wybieranie kolumn w zestawie danych][select-columns] i [Podziel dane][split] przekazują definicje kolumn do modułów, które będą dodawane dalej.  
 
-1. Aby wybrać algorytm uczenia, rozwiń kategorię **Machine Learning** (Uczenie maszynowe) na palecie modułów wyświetlanej z lewej strony obszaru roboczego, a następnie rozwiń węzeł **Initialize Model** (Inicjacja modelu). Zostaną wyświetlone różne kategorie modułów, których można użyć do zainicjowania algorytmów uczenia maszynowego. Na potrzeby tego eksperymentu wybierz [][linear-regression] moduł regresja liniowa w kategorii **regresja** , a następnie przeciągnij go do kanwy eksperymentu. (Możesz również znaleźć go, wpisując „linear regression” [regresja liniowa] w polu wyszukiwania palety).
+1. Aby wybrać algorytm uczenia, rozwiń kategorię **Machine Learning** (Uczenie maszynowe) na palecie modułów wyświetlanej z lewej strony obszaru roboczego, a następnie rozwiń węzeł **Initialize Model** (Inicjacja modelu). Zostaną wyświetlone różne kategorie modułów, których można użyć do zainicjowania algorytmów uczenia maszynowego. Na potrzeby tego eksperymentu wybierz moduł [regresja liniowa][linear-regression] w kategorii **regresja** , a następnie przeciągnij go do kanwy eksperymentu. (Możesz również znaleźć go, wpisując „linear regression” [regresja liniowa] w polu wyszukiwania palety).
 
-1. Znajdź i przeciągnij moduł [uczenie modelu][train-model] do kanwy eksperymentu. Połącz dane wyjściowe modułu [regresji liniowej][linear-regression] z lewym wejściem modułu uczenie [modelu][train-model] i Połącz dane wyjściowe szkoleń (lewy port) modułu [Split Data (podział danych][split] ) z prawym wejściem modułu [szkolenia model][train-model] .
+1. Znajdź i przeciągnij moduł [uczenie modelu][train-model] do kanwy eksperymentu. Połącz dane wyjściowe modułu [regresji liniowej][linear-regression] z lewym wejściem modułu [uczenie modelu][train-model] i Połącz dane wyjściowe szkoleń (lewy port) modułu [Split Data (podział danych][split] ) z prawym wejściem modułu [szkolenia model][train-model] .
 
     ![Łączenie modułu „Train model” (Uczenie modelu) z modułami „Linear Regression” (Regresja liniowa) i „Split Data” (Podział danych)](./media/create-experiment/connect-train-model.png)
 
@@ -211,7 +211,7 @@ Gdy udało się nauczyć model przy użyciu 75% danych, można wygenerować wyni
 
     ![Dane wyjściowe modułu „Score model” (Generowanie wyników przez model)](./media/create-experiment/score-model-output.png)
 
-1. Na koniec przetestujemy jakość wyników. Wybierz i przeciągnij moduł [Oceń model][evaluate-model] do kanwy eksperymentu, a następnie Połącz dane wyjściowe modułu [][score-model] z modelem wynikowym z lewym wejściem do [oceny modelu][evaluate-model]. Końcowy eksperyment powinien wyglądać następująco:
+1. Na koniec przetestujemy jakość wyników. Wybierz i przeciągnij moduł [Oceń model][evaluate-model] do kanwy eksperymentu, a następnie Połącz dane wyjściowe modułu z [modelem wynikowym][score-model] z lewym wejściem do [oceny modelu][evaluate-model]. Końcowy eksperyment powinien wyglądać następująco:
 
     ![Eksperyment końcowy](./media/create-experiment/complete-linear-regression-experiment.png)
 
@@ -235,12 +235,12 @@ W przypadku wszystkich powyższych statystyk mniejsze wartości oznaczają lepsz
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W ramach tego przewodnika Szybki start utworzyliśmy prosty eksperyment przy użyciu przykładowego zestawu danych. Aby bardziej szczegółowo zapoznać się z procesem tworzenia i wdrażania modelu, przejdź do samouczka dotyczącego rozwiązań do analizy predykcyjnej.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Tworzenie rozwiązania do analizy predykcyjnej w usłudze Studio](tutorial-part1-credit-risk.md)
+> [Samouczek: opracowywanie rozwiązania predykcyjnego w programie Studio (klasyczne)](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/

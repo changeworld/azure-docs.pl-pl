@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 82a1dc293a019e4a48760ccbce830d067f2d620d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 919e717811b3b04ca7407772fcf11f293d58508c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240942"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471560"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Tworzenie aplikacji internetowej ASP.NET Core na platformie Azure
 
@@ -39,8 +39,8 @@ Aby ukończyć ten samouczek, zainstaluj <a href="https://www.visualstudio.com/d
 
 Jeśli zainstalowano już program Visual Studio 2019:
 
-- Zainstaluj najnowsze aktualizacje programu Visual Studio, wybierając pozycję **Pomoc** > **Sprawdź dostępność aktualizacji**.
-- Dodaj obciążenie, wybierając kolejno pozycje **Narzędzia** > **Pobierz narzędzia i funkcje**.
+- Zainstaluj najnowsze aktualizacje w programie Visual Studio, wybierając pozycję **pomoc** > **sprawdzić dostępność aktualizacji**.
+- Dodaj obciążenie, wybierając pozycję **narzędzia** > **Pobierz narzędzia i funkcje**.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Tworzenie aplikacji internetowej ASP.NET Core
 
@@ -60,7 +60,7 @@ Utwórz aplikację sieci Web ASP.NET Core, wykonując następujące czynności:
 
     Na platformie Azure można wdrożyć dowolny typ aplikacji internetowej ASP.NET Core.
 
-1. Z menu programu Visual Studio wybierz pozycję **Debuguj** > **Uruchom bez debugowania** , aby uruchomić aplikację internetową lokalnie.
+1. Z menu programu Visual Studio wybierz kolejno opcje **debuguj** > **Uruchom bez debugowania** , aby uruchomić aplikację internetową lokalnie.
 
    ![Uruchamianie aplikacji lokalnie](./media/app-service-web-get-started-dotnet/razor-web-app-running-locally.png)
 
@@ -78,7 +78,7 @@ Utwórz aplikację sieci Web ASP.NET Core, wykonując następujące czynności:
    > Jeśli przeprowadzono już logowanie, nie wybieraj jeszcze pozycji **Utwórz**.
    >
 
-   ![Logowanie do platformy Azure](./media/app-service-web-get-started-dotnet/sign-in-azure-vs2019.png)
+   ![Zaloguj się w usłudze Azure](./media/app-service-web-get-started-dotnet/sign-in-azure-vs2019.png)
 
    [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
@@ -95,12 +95,12 @@ Utwórz aplikację sieci Web ASP.NET Core, wykonując następujące czynności:
    | Ustawienie | Sugerowana wartość | Opis |
    |-|-|-|
    |Plan usługi App Service| myAppServicePlan | Nazwa planu usługi App Service. |
-   | Location | Europa Zachodnia | Centrum danych, w którym hostowana jest aplikacja internetowa. |
-   | Size | Bezpłatna | [Warstwa cenowa](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) określa funkcje hostowania. |
+   | Lokalizacja | Europa Zachodnia | Centrum danych, w którym hostowana jest aplikacja internetowa. |
+   | Rozmiar | Bezpłatna | [Warstwa cenowa](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) określa funkcje hostowania. |
 
    ![Tworzenie planu usługi App Service](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)
 
-1. W polu **Nazwa**wprowadź unikatową nazwę aplikacji, która zawiera tylko prawidłowe znaki to `a-z`, `A-Z` `0-9`, i `-`. Możesz zaakceptować automatycznie wygenerowaną unikatową nazwę. Adres URL aplikacji internetowej to `http://<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji.
+1. W polu **Nazwa**wprowadź unikatową nazwę aplikacji, która zawiera tylko prawidłowe znaki to `a-z`, `A-Z`, `0-9`i `-`. Możesz zaakceptować automatycznie wygenerowaną unikatową nazwę. Adres URL aplikacji internetowej to `http://<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji.
 
    ![Konfigurowanie nazwy aplikacji](./media/app-service-web-get-started-dotnet/web-app-name-vs2019.png)
 
@@ -116,7 +116,7 @@ Nazwa aplikacji określona na **App Service Utwórz nową** stronę jest używan
 
 ## <a name="update-the-app-and-redeploy"></a>Aktualizowanie aplikacji i ponowne wdrażanie
 
-1. W **Eksplorator rozwiązań**w projekcie Otwórz **stronę** > **index. cshtml**.
+1. W **Eksplorator rozwiązań**w projekcie otwórz **stronę** > **index. cshtml**.
 
 1. Zastąp dwa tagi `<div>` następującym kodem:
 
@@ -139,17 +139,19 @@ Po zakończeniu publikowania program Visual Studio otworzy w przeglądarce adres
 
 ## <a name="manage-the-azure-app"></a>Zarządzanie aplikacją platformy Azure
 
-1. Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać aplikacją internetową.
+Aby zarządzać aplikacją sieci Web, przejdź do [Azure Portal](https://portal.azure.com), a następnie wyszukaj i wybierz pozycję **App Services**.
 
-1. W lewym menu wybierz pozycję **App Services**, a następnie wybierz nazwę swojej aplikacji platformy Azure.
+![Wybierz App Services](./media/app-service-web-get-started-dotnet/app-services.png)
 
-   ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-get-started-dotnet/access-portal-vs2019.png)
+Na stronie **App Services** wybierz nazwę aplikacji sieci Web.
 
-   Zostanie wyświetlona strona Omówienie aplikacji internetowej. W tym miejscu można wykonać podstawowe zarządzanie, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
+![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-get-started-dotnet/access-portal-vs2019.png)
 
-   ![App Service w Azure Portal](./media/app-service-web-get-started-dotnet/web-app-general-vs2019.png)
+Zostanie wyświetlona strona Omówienie aplikacji internetowej. W tym miejscu można wykonać podstawowe zarządzanie, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
 
-   Menu po lewej stronie zawiera różne strony służące do konfigurowania aplikacji.
+![App Service w Azure Portal](./media/app-service-web-get-started-dotnet/web-app-general-vs2019.png)
+
+Menu po lewej stronie zawiera różne strony służące do konfigurowania aplikacji.
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5df6ab47c45a64077a39974a30c65fe13f3c851d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 90de0b4bfad4c5096ebc38eb3d31fc41bca6649b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091498"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494847"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Włączanie zrzutów sterty dla usług Apache Hadoop w usłudze HDInsight opartej na systemie Linux
 
@@ -37,12 +37,12 @@ Można również włączyć Zrzuty sterty dla mapy i ograniczyć procesy urucham
 
 Zrzuty sterty są włączane przez przekazanie opcji (czasami znanych jako opcje lub parametry) do JVM podczas uruchamiania usługi. W przypadku większości usług [Apache Hadoop](https://hadoop.apache.org/) można zmodyfikować skrypt powłoki używany do uruchomienia usługi, aby przekazać te opcje.
 
-W każdym skrypcie istnieje  **\*eksport dla \_opcji**, który zawiera opcje przesłane do JVM. Na przykład w skrypcie **Hadoop-ENV.sh** wiersz zaczynający `export HADOOP_NAMENODE_OPTS=` się od zawiera opcje dla usługi NameNode.
+W każdym skrypcie istnieje eksport dla **\*\_** opcji, który zawiera opcje przesłane do JVM. Na przykład w skrypcie **Hadoop-ENV.sh** wiersz zaczynający się od `export HADOOP_NAMENODE_OPTS=` zawiera opcje dla usługi NameNode.
 
 Procesy mapowania i zmniejszania są nieco inne, ponieważ te operacje są procesem podrzędnym usługi MapReduce. Każda mapa lub ograniczenie procesu są uruchamiane w kontenerze podrzędnym, a istnieją dwa wpisy, które zawierają opcje JVM. Oba zawarte w **mapred-site. XML**:
 
-* **mapreduce.admin.map.child.java.opts**
-* **mapreduce.admin.reduce.child.java.opts**
+* **MapReduce. admin. map. Child. Java.**
+* **MapReduce. admin. Zredukuj. Child. Java.**
 
 > [!NOTE]  
 > Zalecamy użycie platformy [Apache Ambari](https://ambari.apache.org/) w celu zmodyfikowania zarówno ustawień skryptów, jak i mapred-site. XML, jako obsługi Ambari Replikowanie zmian między węzłami w klastrze. Szczegółowe instrukcje znajdują się w sekcji Korzystanie z usługi [Apache Ambari](#using-apache-ambari) .
@@ -53,7 +53,7 @@ Następująca opcja włącza Zrzuty sterty, gdy występuje OutOfMemoryError:
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-**+** Wskazuje, że ta opcja jest włączona. Domyślne ustawienie to Wyłączony.
+**+** wskazuje, że ta opcja jest włączona. Domyślne ustawienie to Wyłączony.
 
 > [!WARNING]  
 > Zrzuty sterty nie są domyślnie włączone dla usług Hadoop w usłudze HDInsight, ponieważ pliki zrzutu mogą być duże. Jeśli włączysz je do rozwiązywania problemów, pamiętaj, aby je wyłączyć po ponownym utworzeniu problemu i zebraniu plików zrzutu.
@@ -64,7 +64,7 @@ Domyślna lokalizacja pliku zrzutu jest bieżącym katalogiem roboczym. Możesz 
 
     -XX:HeapDumpPath=/path
 
-Na przykład użycie `-XX:HeapDumpPath=/tmp` powoduje, że zrzuty są przechowywane w katalogu/tmp.
+Na przykład użycie `-XX:HeapDumpPath=/tmp` powoduje, że zrzuty mają być przechowywane w katalogu/tmp.
 
 ### <a name="scripts"></a>Scripts
 
@@ -75,13 +75,13 @@ Możesz również wyzwolić skrypt w przypadku wystąpienia **OutOfMemoryError**
 > [!NOTE]  
 > Ponieważ Apache Hadoop jest systemem rozproszonym, każdy używany skrypt musi być umieszczony na wszystkich węzłach w klastrze, na którym działa usługa.
 > 
-> Skrypt musi znajdować się również w lokalizacji dostępnej dla konta, na którym jest uruchomiona usługa, i musi zapewnić uprawnienia do wykonywania. Można na przykład przechowywać skrypty w `/usr/local/bin` usłudze i używać `chmod go+rx /usr/local/bin/filename.sh` ich do przyznawania uprawnień odczytu i wykonania.
+> Skrypt musi znajdować się również w lokalizacji dostępnej dla konta, na którym jest uruchomiona usługa, i musi zapewnić uprawnienia do wykonywania. Można na przykład przechowywać skrypty w `/usr/local/bin` i używać `chmod go+rx /usr/local/bin/filename.sh` do przyznawania uprawnień odczytu i wykonania.
 
 ## <a name="using-apache-ambari"></a>Korzystanie z usługi Apache Ambari
 
 Aby zmodyfikować konfigurację usługi, wykonaj następujące czynności:
 
-1. Otwórz interfejs użytkownika sieci Web Ambari dla klastra. Adres URL to https://YOURCLUSTERNAME.azurehdinsight.net.
+1. Otwórz interfejs użytkownika sieci Web Ambari dla klastra. Adres URL jest https://YOURCLUSTERNAME.azurehdinsight.net.
 
     Po wyświetleniu monitu należy uwierzytelnić się w lokacji przy użyciu nazwy konta HTTP (domyślnie: admin) i hasła dla klastra.
 
@@ -96,7 +96,7 @@ Aby zmodyfikować konfigurację usługi, wykonaj następujące czynności:
 
     ![Lista przefiltrowanych konfiguracji oprogramowania Apache Ambari](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. Znajdź wpis opcji dla usługi, dla której chcesz włączyć Zrzuty sterty, i Dodaj opcje, które chcesz włączyć.  **\* \_** Na poniższej ilustracji dodaliśmy `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` do wpisu NAMENODE **\_\_usługi HADOOP** :
+4. Znajdź wpis **\*\_** opcje dla usługi, dla której chcesz włączyć Zrzuty sterty dla programu, i Dodaj opcje, które chcesz włączyć. Na poniższej ilustracji dodaliśmy `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` do\_usługi HADOOP, **NAMENODE\_** :
 
     ![Apache Ambari Hadoop-namenode-](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 

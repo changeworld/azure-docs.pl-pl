@@ -1,5 +1,5 @@
 ---
-title: Migrowanie Apache Hadoop lokalnych do usługi Azure HDInsight — motywacji i korzyści
+title: 'Zalety: Migrowanie Apache Hadoop lokalnych do usługi Azure HDInsight'
 description: Poznaj motywację i zalety migracji lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718357"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494942"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — motywacji i korzyści
 
@@ -51,9 +51,9 @@ Usługa Azure HDInsight to dystrybucja w chmurze składników usługi Hadoop. Us
 
 - **Produktywność** — możesz używać różnych narzędzi dla usługi Hadoop i platformy Spark w preferowanym środowisku programistycznym.
 
-- **Rozszerzalność przy użyciu narzędzi niestandardowych lub aplikacji innych** firm — klastry usługi HDInsight można rozszerzać z zainstalowanymi składnikami i można je również zintegrować z innymi rozwiązaniami do obsługi danych Big Data, korzystając z [jednego kliknięcia](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)@no__t 2deployments z platformy Azure Miejsce na rynku.
+- **Rozszerzalność przy użyciu narzędzi niestandardowych lub aplikacji innych** firm — klastry usługi HDInsight można rozszerzać z zainstalowanymi składnikami i można je również zintegrować z innymi rozwiązaniami do obsługi danych Big Data, korzystając z [jednego kliknięcia](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) wdrożenia z platformy Azure Miejsce na rynku.
 
-- **Łatwe zarządzanie, administrowanie i monitorowanie** — usługa Azure HDInsight integruje się z [dziennikami Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) to zapewniają jeden interfejs, za pomocą którego można monitorować wszystkie klastry.
+- **Łatwe zarządzanie, administrowanie i monitorowanie** — usługa Azure HDInsight integruje się z [dziennikami Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) w celu zapewnienia pojedynczego interfejsu, za pomocą którego można monitorować wszystkie klastry.
 
 - **Integracja z innymi usługami Azure** — HDInsight można łatwo zintegrować z innymi popularnymi usługami platformy Azure, takimi jak następujące:
 
@@ -97,7 +97,7 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Liczba węzłów głównych|2|
 |Liczba węzłów procesu roboczego|100|
 |Liczba węzłów krawędzi| 5|
-|Całkowite miejsce na dysku|100 TB|
+|Całkowite miejsce na dysku|100 TB|
 |Konfiguracja węzła głównego|m/y, procesor, dysk itd.|
 |Konfiguracja węzłów danych|m/y, procesor, dysk itd.|
 |Konfiguracja węzłów brzegowych|m/y, procesor, dysk itd.|
@@ -113,7 +113,7 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Uwierzytelnianie w usłudze Hive & autoryzacja|Sentry, LDAP, AD z Kerberos, Ranger|
 |Inspekcja|Ambari, Nawigator Cloudera, Ranger|
 |Monitorowanie|Grafit, zebrany, z telegraf, InfluxDB|
-|Alerty|Kapacitor, Prometheus, usługi Datadog|
+|Generowanie alertów|Kapacitor, Prometheus, usługi Datadog|
 |Czas przechowywania danych| 3 lata, 5 lat|
 |Administratorzy klastrów|Pojedynczy administrator, wielu administratorów|
 
@@ -142,7 +142,7 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Liczba zasad Ranger|20||
 |Liczba przepływów pracy Oozie|100||
 |**Temat**: **skalowanie**|||
-|Ilość danych, w tym replikacja|100 TB||
+|Ilość danych, w tym replikacja|100 TB||
 |Dzienny wolumin pozyskiwania|50 GB||
 |Szybkość wzrostu danych|10% na rok||
 |Tempo wzrostu węzłów klastra|5% na rok

@@ -16,12 +16,12 @@ ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 380e587fc8c921b395d63d1dbca10e2f5fb1b9ba
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 98d939c69bb03666dbeed124778b06f8a7e73532
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433201"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471464"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Tworzenie aplikacji internetowej Node.js na platformie Azure 
 
@@ -76,7 +76,7 @@ Następnie Utwórz aplikację Node. js, którą można wdrożyć w chmurze. Ten 
 npx express-generator myExpressApp --view pug --git
 ```
 
-Parametry `--view pug --git` informują generatora, aby korzystał z aparatu szablonu [Pug](https://pugjs.org/api/getting-started.html) (wcześniej znanego jako `jade`) i aby utworzyć plik `.gitignore`.
+`--view pug --git` parametry informują generatora, aby korzystał z aparatu szablonu [Pug](https://pugjs.org/api/getting-started.html) (wcześniej znanego jako `jade`) i aby utworzyć plik `.gitignore`.
 
 Aby zainstalować wszystkie zależności aplikacji, przejdź do nowego folderu i uruchom `npm install`.
 
@@ -93,7 +93,7 @@ Następnie upewnij się, że aplikacja działa. W terminalu uruchom aplikację z
 npm start
 ```
 
-Teraz otwórz przeglądarkę i przejdź do [http://localhost:3000](http://localhost:3000), gdzie powinien wyglądać w następujący sposób:
+Teraz otwórz przeglądarkę i przejdź do [http://localhost:3000](http://localhost:3000), w której powinny zostać wyświetlone następujące elementy:
 
 ![Uruchamianie aplikacji Express](containers/media/quickstart-nodejs/express.png)
 
@@ -124,13 +124,13 @@ W Eksploratorze **usługi Azure App Service** wybierz ikonę strzałki w górę,
 1. Wybierz opcję tworzenia opartą na systemie operacyjnym, w którym chcesz wdrożyć:
 
     - Linux: wybierz pozycję **Utwórz nową aplikację sieci Web**.
-    - System Windows: wybierz pozycję **Utwórz nową aplikację sieci Web... Zaawansowane**.
+    - System Windows: wybierz pozycję **Utwórz nową aplikację sieci Web** i wybierz opcję **Zaawansowane** .
 
 1. Wpisz globalnie unikatową nazwę aplikacji sieci Web, a następnie naciśnij klawisz ENTER. Prawidłowymi znakami dla nazwy aplikacji są "a-z", "0-9" i "-".
 
 1. W przypadku określania systemu Linux wybierz wersję środowiska Node. js po wyświetleniu monitu. Zalecana jest wersja **LTS** .
 
-1. W przypadku systemu Windows przy użyciu opcji *Advanced** postępuj zgodnie z dodatkowymi monitami:
+1. W przypadku systemu Windows przy użyciu opcji **Zaawansowane** postępuj zgodnie z dodatkowymi monitami:
     1. Wybierz pozycję **Utwórz nową grupę zasobów**, a następnie wprowadź nazwę grupy zasobów.
     1. Wybierz **system Windows** dla systemu operacyjnego.
     1. Wybierz istniejący plan App Service lub Utwórz nowy. Możesz wybrać warstwę cenową podczas tworzenia nowego planu.

@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 07/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: c90deefba75cd8bbeda126c9da8a05e1069831d4
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c248a2e3e6724388fa6402a70ac3bcb51f0f9ef3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597470"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492252"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Projektowanie strategii ładowania danych podstawowych dla Azure SQL Data Warehouse
 
@@ -57,37 +57,37 @@ Baza danych ładuje dane z rozdzielanych plików tekstowych UTF-8 i UTF-16. Opr�
 |       smallint        |                           smallint                           |
 |          int          |                             int                              |
 |        bigint         |                            bigint                            |
-|        boolean        |                             bit                              |
+|        wartość logiczna        |                             bit                              |
 |        double         |                            float                             |
-|         float         |                             real                             |
-|        double         |                            money                             |
+|         float         |                             czasie rzeczywistym                             |
+|        double         |                            finansowego                             |
 |        double         |                          smallmoney                          |
 |        ciąg         |                            nchar                             |
 |        ciąg         |                           nvarchar                           |
-|        ciąg         |                             char                             |
+|        ciąg         |                             delikatn                             |
 |        ciąg         |                           varchar                            |
-|        binary         |                            binary                            |
-|        binary         |                          varbinary                           |
-|       timestamp       |                             date                             |
-|       timestamp       |                        smalldatetime                         |
-|       timestamp       |                          datetime2                           |
-|       timestamp       |                           datetime                           |
-|       timestamp       |                             time                             |
+|        Binarny         |                            Binarny                            |
+|        Binarny         |                          liczby                           |
+|       sygnatura czasowa       |                             date                             |
+|       sygnatura czasowa       |                        smalldatetime                         |
+|       sygnatura czasowa       |                          datetime2                           |
+|       sygnatura czasowa       |                           datetime                           |
+|       sygnatura czasowa       |                             time                             |
 |       date            |                             date                             |
 |        decimal        |                            decimal                           |
 
-## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Wydziel dane do usługi Azure Blob Storage lub Azure Data Lake Store
+## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. wyląduj dane do usługi Azure Blob Storage lub Azure Data Lake Store
 
 Aby wystawić dane w usłudze Azure Storage, można przenieść je do [usługi Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) lub [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). W każdej lokalizacji dane powinny być przechowywane w plikach tekstowych. Baza Base może ładować z jednej lokalizacji.
 
 Narzędzia i usługi, których można użyć do przenoszenia danych do usługi Azure Storage:
 
-- Usługa [Azure ExpressRoute](../expressroute/expressroute-introduction.md) zwiększa przepustowość sieci, wydajność i przewidywalność. ExpressRoute to usługa, która kieruje dane za pomocą dedykowanego połączenia prywatnego na platformie Azure. Połączenia ExpressRoute nie kierują danych za pomocą publicznego Internetu. Połączenia oferują większą niezawodność, większe szybkości, krótsze opóźnienia oraz lepsze zabezpieczenia niż typowe połączenia przez publiczny Internet.
+- Usługa [Azure ExpressRoute](../expressroute/expressroute-introduction.md) zwiększa przepustowość sieci, wydajność i przewidywalność. ExpressRoute to usługa, która przekierowuje dane za pomocą dedykowanego połączenia prywatnego z platformą Azure. Połączenia ExpressRoute nie kierują danych za pomocą publicznego Internetu. Połączenia oferują większą niezawodność, większe szybkości, krótsze opóźnienia oraz lepsze zabezpieczenia niż typowe połączenia przez publiczny Internet.
 - [Narzędzie AzCopy](../storage/common/storage-moving-data.md) przenosi dane do usługi Azure Storage za pośrednictwem publicznego Internetu. To działa, jeśli rozmiar danych jest mniejszy niż 10 TB. Aby przeprowadzić regularne ładowanie w programie AZCopy, przetestuj szybkość sieci, aby sprawdzić, czy jest ona akceptowalna. 
 - [Azure Data Factory (ADF)](../data-factory/introduction.md) zawiera bramę, którą można zainstalować na serwerze lokalnym. Następnie możesz utworzyć potok, aby przenieść dane z serwera lokalnego do usługi Azure Storage. Aby użyć Data Factory z SQL Data Warehouse, zobacz [ładowanie danych do SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
 
 
-## <a name="3-prepare-the-data-for-loading"></a>3. Przygotowywanie danych do załadowania
+## <a name="3-prepare-the-data-for-loading"></a>3. Przygotuj dane do załadowania
 
 Może być konieczne przygotowanie i oczyszczenie danych na koncie magazynu przed załadowaniem go do SQL Data Warehouse. Przygotowanie danych można wykonać, gdy dane są przechowywane w źródle, podczas eksportowania danych do plików tekstowych lub po utworzeniu danych w usłudze Azure Storage.  Najłatwiej pracujesz z danymi tak wcześnie w procesie, jak to możliwe.  
 
@@ -123,19 +123,19 @@ Aby załadować dane za pomocą bazy danych Base, można użyć dowolnej z nast�
 - Baza danych w języku [T-SQL](load-data-from-azure-blob-storage-using-polybase.md) działa prawidłowo, gdy dane są przechowywane w usłudze Azure Blob storage lub Azure Data Lake Store. Zapewnia ona największą kontrolę nad procesem ładowania, ale wymaga również zdefiniowania zewnętrznych obiektów danych. Inne metody definiują te obiekty w tle podczas mapowania tabel źródłowych do tabel docelowych.  Aby zorganizować obciążenia T-SQL, można użyć Azure Data Factory, SSIS lub Azure Functions. 
 - [Baza](/sql/integration-services/load-data-to-sql-data-warehouse) danych programu SSIS działa dobrze, gdy dane źródłowe są w SQL Server, SQL Server lokalnie lub w chmurze. Program SSIS definiuje mapowania tabeli źródłowej do docelowej, a także organizuje obciążenie. Jeśli masz już pakiety SSIS, możesz zmodyfikować pakiety, aby współpracowały z nowym miejscem docelowym magazynu danych. 
 - [Baza z Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) to inne narzędzie aranżacji.  Definiuje potok i planuje zadania. 
-- [Baza danych z usługą Azure](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) datacegłs przenosi dane z tabeli SQL Data Warehouse do elementu datakostks i/lub zapisuje dane z ramki Databases do tabeli SQL Data Warehouse przy użyciu bazy danych.
+- [Baza danych z Azure Databricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) transferuje dane z tabeli SQL Data Warehouse do Databases dataframes i/lub zapisuje dane z ramki Databases do tabeli SQL Data Warehouse przy użyciu bazy danych.
 
 ### <a name="non-polybase-loading-options"></a>Opcje ładowania inne niż podstawowe
 
 Jeśli dane nie są zgodne z bazą danych, można użyć narzędzia [BCP](/sql/tools/bcp-utility) lub [interfejsu API SqlBulkCopy](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP ładuje się bezpośrednio do SQL Data Warehouse bez przechodzenia przez usługę Azure Blob Storage i jest przeznaczony tylko do małych obciążeń. Należy pamiętać, że wydajność ładowania tych opcji jest znacznie mniejsza niż baza Base. 
 
 
-## <a name="5-transform-the-data"></a>5. Przekształcanie danych
+## <a name="5-transform-the-data"></a>5. Przekształć dane
 
 Gdy dane są w tabeli przemieszczania, należy wykonać przekształcenia wymagane przez obciążenie. Następnie Przenieś dane do tabeli produkcyjnej.
 
 
-## <a name="6-insert-the-data-into-production-tables"></a>6. Wstawianie danych do tabel produkcyjnych
+## <a name="6-insert-the-data-into-production-tables"></a>6. Wstaw dane do tabel produkcyjnych
 
 Wstaw do... Instrukcja SELECT przenosi dane z tabeli przemieszczania do trwałej tabeli. 
 

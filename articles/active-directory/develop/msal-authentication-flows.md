@@ -18,18 +18,18 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65c68e4f24dd95696cc53b92dd7e2b59d940b6c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175723"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473811"
 ---
 # <a name="authentication-flows"></a>Przepływy uwierzytelniania
 
 W tym artykule opisano różne przepływy uwierzytelniania udostępniane przez bibliotekę uwierzytelniania firmy Microsoft (MSAL).  Te przepływy mogą być używane w różnych scenariuszach aplikacji.
 
-| Przepływ | Opis | Używany w|  
+| Ruch | Opis | Używany w|  
 | ---- | ----------- | ------- | 
 | [Interaktywne](#interactive) | Pobiera token przez proces interaktywny, który wyświetla użytkownikowi komunikat o poświadczeniach za pomocą przeglądarki lub okna podręcznego. | [Aplikacje klasyczne](scenario-desktop-overview.md), [aplikacje mobilne](scenario-mobile-overview.md) |
 | [Niejawne przyznanie](#implicit-grant) | Zezwala aplikacji na pobieranie tokenów bez przeprowadzania wymiany poświadczeń serwera zaplecza. Dzięki temu aplikacja może logować się do użytkownika, obsługiwać sesję i uzyskiwać tokeny do innych interfejsów API sieci Web, a wszystko to w kodzie JavaScript klienta.| [Aplikacje jednostronicowe (SPA)](scenario-spa-overview.md) |
@@ -44,7 +44,7 @@ W tym artykule opisano różne przepływy uwierzytelniania udostępniane przez b
  
 W zależności od sposobu skompilowania klienta można użyć jednego (lub kilku) przepływów uwierzytelniania obsługiwanych przez platformę tożsamości firmy Microsoft.  Te przepływy mogą generować różne tokeny (id_tokens, tokeny odświeżenia, tokeny dostępu), a także kody autoryzacji i wymagać różnych tokenów, aby umożliwić ich działanie. Ten wykres proides przegląd:
  
-|Przepływ | KONIECZN | id_token | token dostępu | Odśwież token | kod autoryzacji | 
+|Ruch | KONIECZN | id_token | token dostępu | Odśwież token | kod autoryzacji | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Przepływ kodu autoryzacji](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Niejawny przepływ](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
@@ -54,7 +54,7 @@ W zależności od sposobu skompilowania klienta można użyć jednego (lub kilku
 |[Przepływ kodu urządzenia](v2-oauth2-device-code.md) | | x| x| x| |
 |[Poświadczenia klienta](v2-oauth2-client-creds-grant-flow.md) | | | x (tylko aplikacja)| | |
  
-Tokeny wystawione za pośrednictwem trybu niejawnego mają ograniczenie długości z powodu przekazanie z powrotem do przeglądarki za pośrednictwem adresu URL (gdzie `response_mode` jest `query` lub `fragment`).  Niektóre przeglądarki mają limit rozmiaru adresu URL, który może być umieszczony na pasku przeglądarki i niepowodzenie, gdy jest zbyt długi.  W rezultacie te tokeny nie mają oświadczeń `groups` ani `wids`.
+Tokeny wystawione za pośrednictwem trybu niejawnego mają ograniczenie długości z powodu przekazanie z powrotem do przeglądarki za pośrednictwem adresu URL (gdzie `response_mode` jest `query` lub `fragment`).  Niektóre przeglądarki mają limit rozmiaru adresu URL, który może być umieszczony na pasku przeglądarki i niepowodzenie, gdy jest zbyt długi.  W rezultacie te tokeny nie mają `groups` ani `wids` oświadczeń.
 
 ## <a name="interactive"></a>Interaktywne
 
@@ -203,7 +203,7 @@ Oznacza to, że jest spełniony jeden z następujących warunków:
 - Użytkownik podał sposób, aby użytkownicy wyrażali zgodę na aplikację (patrz [żądanie zgody poszczególnych użytkowników](v2-permissions-and-consent.md#requesting-individual-user-consent)).
 - Podano sposób, w jaki Administrator dzierżawy wyrazi zgodę na aplikację (zobacz [zgoda administratora](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
 
-Przepływ IWA jest włączony dla aplikacji platformy .NET dla komputerów stacjonarnych, platformy .NET Core i systemu Windows. W przypadku platformy .NET Core dostępna jest tylko Przeciążenie z nazwą użytkownika. Platforma .NET Core nie może zadawać nazwy użytkownika systemowi operacyjnemu.
+Przepływ IWA jest włączony dla aplikacji platformy .NET dla komputerów stacjonarnych, platformy .NET Core i systemu Windows. W przypadku platformy .NET Core należy podać nazwę użytkownika IWA, ponieważ .NET Core nie może uzyskać nazw użytkowników z systemu operacyjnego.
   
 Aby uzyskać więcej informacji na temat zgody, zobacz temat [uprawnienia i zgoda dotyczące programu v 2.0](v2-permissions-and-consent.md).
 

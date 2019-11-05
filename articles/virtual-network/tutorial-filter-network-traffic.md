@@ -14,14 +14,14 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: a700cc83c6bd34f5f726b9cc1c97bd7e1476963b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984905"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519293"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Samouczek: Filtrowanie ruchu sieciowego za pomocą sieciowej grupy zabezpieczeń przy użyciu Azure Portal
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Samouczek: filtrowanie ruchu sieciowego za pomocą sieciowej grupy zabezpieczeń przy użyciu Azure Portal
 
 Ruch sieciowy przychodzący do podsieci sieci wirtualnej i wychodzący z niej możesz filtrować za pomocą sieciowej grupy zabezpieczeń. Sieciowe grupy zabezpieczeń zawierają reguły zabezpieczeń, które filtrują ruch sieciowy według adresów IP, portów i protokołów. Reguły zabezpieczeń są stosowane do zasobów wdrożonych w podsieci. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -35,23 +35,23 @@ Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza p
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. 
 2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Sieć wirtualna**.
 3. Wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Name (Nazwa)                    | myVirtualNetwork                                   |
+    | Nazwa                    | myVirtualNetwork                                   |
     | Przestrzeń adresowa           | 10.0.0.0/16                                        |
     | Subskrypcja            | Wybierz subskrypcję.                          |
     | Grupa zasobów          | Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*. |
-    | Location                | Wybierz pozycję **Wschodnie stany USA**.                                |
+    | Lokalizacja                | Wybierz pozycję **Wschodnie stany USA**.                                |
     | Nazwa podsieci            | mySubnet                                           |
     | Zakres adresów podsieci: 10.41.0.0/24  | 10.0.0.0/24                                        |
 
@@ -59,38 +59,38 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcjach, np. serwerów internetowych.
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. 
 2. W polu **Wyszukaj w witrynie Marketplace** wpisz *Grupa zabezpieczeń aplikacji*. Gdy **Grupa zabezpieczeń aplikacji** pojawi się w wynikach wyszukiwania, wybierz ją, wybierz opcję **Grupa zabezpieczeń aplikacji** ponownie w pozycji **Wszystko**, a następnie wybierz opcję **Utwórz**.
 3. Wprowadź lub wybierz następujące informacje, a następnie wybierz pozycję **Utwórz**:
 
     | Ustawienie        | Wartość                                                         |
     | ---            | ---                                                           |
-    | Name           | myAsgWebServers                                               |
-    | Subscription   | Wybierz subskrypcję.                                     |
-    | Resource group | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
-    | Location       | East US                                                       |
+    | Nazwa           | myAsgWebServers                                               |
+    | Subskrypcja   | Wybierz subskrypcję.                                     |
+    | Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
+    | Lokalizacja       | Wschodnie stany USA                                                       |
 
 4. Ponownie wykonaj krok 3, używając następujących wartości:
 
     | Ustawienie        | Wartość                                                         |
     | ---            | ---                                                           |
-    | Name           | myAsgMgmtServers                                              |
-    | Subscription   | Wybierz subskrypcję.                                     |
-    | Resource group | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
-    | Location       | East US                                                       |
+    | Nazwa           | myAsgMgmtServers                                              |
+    | Subskrypcja   | Wybierz subskrypcję.                                     |
+    | Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
+    | Lokalizacja       | Wschodnie stany USA                                                       |
 
 ## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. 
 2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Sieciowa grupa zabezpieczeń**.
 3. Wprowadź lub wybierz następujące informacje, a następnie wybierz pozycję **Utwórz**:
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name|myNsg|
-    |Subscription| Wybierz subskrypcję.|
+    |Nazwa|myNsg|
+    |Subskrypcja| Wybierz subskrypcję.|
     |Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę *myResourceGroup*.|
-    |Location|East US|
+    |Lokalizacja|Wschodnie stany USA|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Przypisywanie sieciowej grupy zabezpieczeń do podsieci
 
@@ -109,22 +109,22 @@ Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych funkcj
 
 2. Utwórz regułę zabezpieczeń, która zezwala na stosowanie portów 80 i 443 do grupy zabezpieczeń aplikacji **myAsgWebServers**. W obszarze **Dodaj regułę zabezpieczeń ruchu przychodzącego** wprowadź lub wybierz następujące wartości, zaakceptuj pozostałe wartości domyślne, a następnie wybierz opcję **Dodaj**:
 
-    | Ustawienie                 | Value                                                                                                           |
+    | Ustawienie                 | Wartość                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Miejsce docelowe             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgWebServers** w pozycji **Grupa zabezpieczeń aplikacji**.  |
-    | Docelowe zakresy portów | Wprowadź wartości 80,443                                                                                                    |
-    | Protocol                | Wybierz pozycję TCP                                                                                                      |
-    | Name                    | Allow-Web-All                                                                                                   |
+    | Cel             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgWebServers** w pozycji **Grupa zabezpieczeń aplikacji**.  |
+    | Zakresy portów docelowych | Wprowadź wartości 80,443                                                                                                    |
+    | Protokół                | Wybierz pozycję TCP                                                                                                      |
+    | Nazwa                    | Allow-Web-All                                                                                                   |
 
 3. Ponownie wykonaj krok 2, używając następujących wartości:
 
-    | Ustawienie                 | Value                                                                                                           |
+    | Ustawienie                 | Wartość                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Miejsce docelowe             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgMgmtServers** w pozycji **Grupa zabezpieczeń aplikacji**. |
-    | Docelowe zakresy portów | Wprowadź 3389                                                                                                      |
-    | Protocol                | Wybierz pozycję TCP                                                                                                      |
-    | Priority                | Wprowadź wartość 110                                                                                                       |
-    | Name                    | Allow-RDP-All                                                                                                   |
+    | Cel             | Wybierz opcję **Grupa zabezpieczeń aplikacji**, a następnie wybierz opcję **myAsgMgmtServers** w pozycji **Grupa zabezpieczeń aplikacji**. |
+    | Zakresy portów docelowych | Wprowadź 3389                                                                                                      |
+    | Protokół                | Wybierz pozycję TCP                                                                                                      |
+    | Priorytet                | Wprowadź wartość 110                                                                                                       |
+    | Nazwa                    | Allow-RDP-All                                                                                                   |
 
     W tym samouczku protokół RDP (port 3389) jest połączony z Internetem dla maszyny wirtualnej przydzielonej do grupy zabezpieczeń aplikacji *myAsgMgmtServers*. W przypadku środowisk produkcyjnych zamiast uwidaczniania portu 3389 w Internecie zaleca się połączenie z zasobami platformy Azure, którymi chcesz zarządzać, przy użyciu sieci VPN lub prywatnego połączenia sieciowego.
 
@@ -138,16 +138,16 @@ W sieci wirtualnej utwórz dwie maszyny wirtualne.
 
 ### <a name="create-the-first-vm"></a>Tworzenie pierwszej maszyny wirtualnej
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. 
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**.
 3. Wprowadź lub wybierz poniższe informacje, a następnie zaakceptuj wartości domyślne dla pozostałych ustawień:
 
-    |Ustawienie|Value|
+    |Ustawienie|Wartość|
     |---|---|
-    |Subscription| Wybierz subskrypcję.|
-    |Resource group| Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
-    |Name|myVmWeb|
-    |Location| Wybierz pozycję **Wschodnie stany USA**.|
+    |Subskrypcja| Wybierz subskrypcję.|
+    |Grupa zasobów| Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
+    |Nazwa|myVmWeb|
+    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
     |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
 
@@ -217,7 +217,7 @@ Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już po
 
 1. Wprowadź ciąg *myResourceGroup* w polu **Szukaj** w górnej części portalu. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
+3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **myResourceGroup**, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

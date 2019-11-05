@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f010e7564f097f28269070d85e2895e73f454054
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 2f815d99c32c2dcaa1fd35d00110b27a90f53ab4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415573"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471198"
 ---
-# <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Samouczek: Tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database
+# <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Samouczek: tworzenie aplikacji ASP.NET na platformie Azure przy użyciu usługi SQL Database
 
-Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. W tym samouczku pokazano, jak wdrożyć opartą na danych aplikację ASP.NET w usłudze App Service i połączyć ją z usługą [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Po zakończeniu aplikacja platformy ASP.NET działających na platformie Azure i połączone z bazą danych SQL.
+Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. W tym samouczku pokazano, jak wdrożyć opartą na danych aplikację ASP.NET w usłudze App Service i połączyć ją z usługą [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Po zakończeniu masz aplikację ASP.NET działającą na platformie Azure i połączoną z SQL Database.
 
 ![Opublikowana aplikacja ASP.NET w aplikacji usługi App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
@@ -44,7 +44,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 W celu ukończenia tego samouczka:
 
-Zainstaluj <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> z **ASP.NET i tworzenie aplikacji internetowych** obciążenia.
+Zainstaluj <a href="https://www.visualstudio.com/downloads/" target="_blank">program Visual Studio 2019</a> przy użyciu obciążeń **ASP.NET i Web Development** .
 
 Jeśli program Visual Studio został już zainstalowany, dodaj obciążenia w programie Visual Studio, klikając kolejno pozycje **Narzędzia** > **Pobierz narzędzia i funkcje**.
 
@@ -63,7 +63,7 @@ Naciśnij klawisze `Ctrl+F5`, aby uruchomić aplikację bez debugowania. Aplikac
 
 ![Okno dialogowe Nowy projekt ASP.NET](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
-Test **Edytuj**, **szczegóły**, i **Usuń** łącza.
+Przetestuj linki **Edytuj**, **Szczegóły** i **Usuń**.
 
 Na potrzeby połączenia z bazą danych aplikacja używa kontekstu bazy danych. W tym przykładzie kontekst bazy danych używa parametrów połączenia o nazwie `MyDbConnection`. Parametry połączenia są ustawiane w pliku *Web.config*, a przywoływane w pliku *Models/MyDatabaseContext.cs*. Ta nazwa parametrów połączenia jest używana w dalszej części tego samouczka w celu połączenia aplikacji platformy Azure z usługą Azure SQL Database. 
 
@@ -79,7 +79,7 @@ Upewnij się, że jest zaznaczona usługa **Microsoft Azure App Service**, a nas
 
 Publikowanie powoduje otwarcie okna dialogowego **Tworzenie usługi App Service**, które ułatwia tworzenie wszystkich zasobów platformy Azure potrzebnych do uruchomienia aplikacji ASP.NET na platformie Azure.
 
-### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 W oknie dialogowym **Tworzenie usługi App Service** kliknij pozycję **Dodaj konto**, a następnie zaloguj się do swojej subskrypcji platformy Azure. Jeśli zalogowano się już do konta Microsoft, upewnij się, że to konto zawiera Twoją subskrypcję platformy Azure. Jeśli użyte do logowania konto Microsoft nie ma subskrypcji platformy Azure, kliknij je, aby dodać prawidłowe konto. 
 
@@ -88,7 +88,7 @@ W oknie dialogowym **Tworzenie usługi App Service** kliknij pozycję **Dodaj ko
 >
 >
    
-![Logowanie do platformy Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
+![Zaloguj się w usłudze Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 ### <a name="configure-the-web-app-name"></a>Konfigurowanie nazwy aplikacji internetowej
 
@@ -116,11 +116,11 @@ W oknie dialogowym **Konfiguruj plan usługi App Service** skonfiguruj nowy plan
 
 ![Tworzenie planu usługi App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
-| Ustawienie  | Sugerowana wartość | Aby uzyskać więcej informacji |
+| Ustawienie  | Sugerowana wartość | Więcej informacji |
 | ----------------- | ------------ | ----|
 |**Plan usługi App Service**| myAppServicePlan | [Plany usługi App Service](../app-service/overview-hosting-plans.md) |
 |**Lokalizacja**| Europa Zachodnia | [Regiony platformy Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
-|**Rozmiar**| Wolny | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
+|**Rozmiar**| Bezpłatna | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
 ### <a name="create-a-sql-server-instance"></a>Tworzenie wystąpienia programu SQL Server
 
@@ -201,7 +201,7 @@ Po zakończeniu tworzenia ustawienia zapory dla wystąpienia bazy danych SQL w p
 
 W tym miejscu można wykonywać najpopularniejsze operacje, takie jak uruchamianie zapytań, tworzenie widoków oraz procedur składowanych i inne. 
 
-Rozwiń swoje połączenia, a następnie wybierz pozycje **Bazy danych** > **&lt;Twoja baza danych>** > **Tabele**. Kliknij prawym przyciskiem myszy tabelę `Todoes` i wybierz polecenie **Wyświetl dane**. 
+Rozwiń swoje połączenia, a następnie wybierz pozycje **Bazy danych** >  **&lt;Twoja baza danych>**  > **Tabele**. Kliknij prawym przyciskiem myszy tabelę `Todoes` i wybierz polecenie **Wyświetl dane**. 
 
 ![Eksplorowanie obiektów bazy danych SQL](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
@@ -311,9 +311,9 @@ Kliknij pozycję **Konfiguruj**, aby otworzyć ustawienia publikowania.
 
 W Kreatorze kliknij pozycję **Dalej**.
 
-Upewnij się, że parametry połączenia z bazą danych SQL Database są wypełnione w obszarze **MyDatabaseContext (MyDbConnection)**. Może być konieczne wybranie z listy rozwijanej bazy danych **myToDoAppDb**. 
+Upewnij się, że parametry połączenia z bazą danych SQL Database są wypełnione w obszarze **MyDatabaseContext (MyDbConnection)** . Może być konieczne wybranie z listy rozwijanej bazy danych **myToDoAppDb**. 
 
-Wybierz pozycję **Wykonaj migracje Code First (wywoływane po uruchomieniu aplikacji)**, a następnie kliknij przycisk **Zapisz**.
+Wybierz pozycję **Wykonaj migracje Code First (wywoływane po uruchomieniu aplikacji)** , a następnie kliknij przycisk **Zapisz**.
 
 ![Włączanie funkcji Migracje Code First w aplikacji platformy Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/enable-migrations.png)
 
@@ -392,11 +392,11 @@ Aby zatrzymać usługę przesyłania strumieniowego dzienników, kliknij przycis
 
 ## <a name="manage-your-azure-app"></a>Zarządzanie aplikacją platformy Azure
 
-Przejdź do witryny [Azure Portal](https://portal.azure.com), aby wyświetlić utworzoną aplikację. 
+Przejdź do witryny [Azure Portal](https://portal.azure.com), aby zarządzać aplikacją internetową. Wyszukaj i wybierz **App Services**. 
 
+![Wyszukaj w usłudze Azure App Services](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-portal-navigate-app-services.png)
 
-
-W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji platformy Azure.
+Wybierz nazwę aplikacji platformy Azure.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png)
 

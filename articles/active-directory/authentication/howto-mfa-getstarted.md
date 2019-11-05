@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7504d14d522a440572aa25491270c0afc73325a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2d80ac949dea3c9d6c3d28d2a343c4ed7bad8983
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554393"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474341"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planowanie wdrożenia usługi Azure Multi-Factor Authentication opartej na chmurze
 
@@ -28,7 +28,7 @@ Osoby nawiązują połączenie z zasobami organizacji w coraz bardziej skompliko
 
 Przed rozpoczęciem wdrażania usługi Azure Multi-Factor Authentication istnieją wstępnie wymagane elementy, które należy wziąć pod uwagę.
 
-| Scenariusz | Warunek wstępny |
+| Scenariusz | Wymagania wstępne |
 | --- | --- |
 | Środowisko tożsamości **tylko w chmurze** z nowoczesnego uwierzytelniania | **Brak dodatkowych zadań wymaganych wstępnie** |
 | Scenariusze tożsamości **hybrydowej** | Wdrożono [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) i tożsamości użytkowników są synchronizowane lub federacyjne z Active Directory Domain Services lokalnymi z Azure Active Directory. |
@@ -220,6 +220,7 @@ Ważne jest, aby zapobiec przypadkowemu zablokowaniu dzierżawy usługi Azure AD
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta administratora globalnego.
 1. Przejdź do **Azure Active Directory**, **dostęp warunkowy**.
 1. Wybierz pozycję **nowe zasady**.
+   ![utworzyć zasady dostępu warunkowego, aby włączyć usługę MFA dla Azure Portal użytkowników w grupie pilotażowej](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Podaj opisową nazwę zasad.
 1. W obszarze **Użytkownicy i grupy**:
    * Na karcie **Dołącz** wybierz przycisk radiowy **Wszyscy użytkownicy**
@@ -236,9 +237,7 @@ Ważne jest, aby zapobiec przypadkowemu zablokowaniu dzierżawy usługi Azure AD
     * Kliknij pozycję **Wybierz**.
 1. Pomiń sekcję **sesji** .
 1. Ustaw przełącznik **Włącz zasady** na wartość **włączone**.
-1. Kliknij przycisk **Utwórz**.
-
-![Tworzenie zasad dostępu warunkowego w celu włączenia uwierzytelniania wieloskładnikowego dla użytkowników Azure Portal w grupie pilotażowej](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
+1. Kliknij pozycję **Utwórz**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Planowanie integracji z systemami lokalnymi
 

@@ -1,6 +1,6 @@
 ---
-title: Reguły zapory usługi Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Użyj reguł zapory zezwala na połączenia z określonych adresów IP usługi Azure Event Hubs.
+title: Reguły zapory Event Hubs platformy Azure | Microsoft Docs
+description: Użyj reguł zapory, aby zezwolić na połączenia z określonych adresów IP z platformą Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
 author: spelluru
@@ -11,68 +11,67 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f96c25dbb85ed92141636487f10d861a8c5e5f28
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821674"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468426"
 ---
-# <a name="use-firewall-rules"></a>Użyj reguł zapory
+# <a name="use-firewall-rules"></a>Korzystanie z reguł zapory
 
-W przypadku scenariuszy, w których usługa Azure Event Hubs powinny być tylko dostępne z określonych witryn dobrze znanych reguł zapory umożliwiają skonfigurowanie reguły do akceptowania ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy może być udostępnianych przez firmy bramy translatora adresów Sieciowych.
+W przypadku scenariuszy, w których usługa Azure Event Hubs powinna być dostępna tylko z niektórych dobrze znanych lokacji, reguły zapory umożliwiają konfigurowanie reguł akceptowania ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy mogą być tymi, które należą do firmowej bramy translatora adresów sieciowych.
 
 ## <a name="when-to-use"></a>Kiedy stosować
 
-Jeśli chcesz skonfigurować przestrzeni nazw usługi Event Hubs takie, które klient powinien otrzymać ruchu z tylko określony zakres adresów IP i odrzucić wszystkie inne elementy, a następnie można wykorzystać *reguły zapory* blokowanie punktów końcowych Centrum zdarzeń, z inne adresy IP. Na przykład, jeśli korzystasz z usługi Event Hubs za pomocą [Azure Express Route][express-route], możesz utworzyć *reguły zapory* do ograniczania ruchu z lokalnej infrastruktury IP adresy.
+Jeśli chcesz skonfigurować przestrzeń nazw Event Hubs w taki sposób, że powinna ona odbierać ruch z tylko określonego zakresu adresów IP i odrzucać wszystko inne, możesz użyć *reguły zapory* , aby zablokować punkty końcowe centrum zdarzeń z innych adresów IP. Na przykład jeśli używasz Event Hubs z usługą [Azure Express Route][express-route], możesz utworzyć *regułę zapory* , aby ograniczyć ruch z adresów IP infrastruktury lokalnej.
 
-## <a name="how-filter-rules-are-applied"></a>Sposób stosowania reguły filtrowania
+## <a name="how-filter-rules-are-applied"></a>Jak są stosowane reguły filtrowania
 
-Reguły filtrowania adresów IP są stosowane na poziomie przestrzeni nazw usługi Event Hubs. W związku z tym zasady stosowane do wszystkich połączeń z klientami przy użyciu dowolnego obsługiwanego protokołu.
+Reguły filtru IP są stosowane na poziomie przestrzeni nazw Event Hubs. W związku z tym reguły są stosowane do wszystkich połączeń z klientów przy użyciu dowolnego obsługiwanego protokołu.
 
-Brak autoryzacji wszelkie próby połączenia z adresu IP, który nie jest zgodny regułę dozwolonych adresów IP w przestrzeni nazw jest odrzucana jako usługi Event Hubs. Odpowiedź nie mogą zawierać reguły adresów IP.
+Wszystkie próby połączenia z adresu IP, które nie pasują do dozwolonej reguły adresów IP w przestrzeni nazw Event Hubs, są odrzucane jako nieautoryzowane. Odpowiedź nie zawiera wzmianki o regule adresów IP.
 
 ## <a name="default-setting"></a>Ustawienie domyślne
 
-Domyślnie **filtru IP** siatki w portalu usługi Event Hubs jest pusty. To ustawienie domyślne oznacza, że Centrum zdarzeń akceptuje połączenia z dowolnego adresu IP. To ustawienie domyślne jest odpowiednikiem regułę, która akceptuje zakres adresów IP 0.0.0.0/0.
+Domyślnie siatka **filtrów IP** w portalu dla Event Hubs jest pusta. To ustawienie domyślne oznacza, że centrum zdarzeń akceptuje połączenia z dowolnego adresu IP. To ustawienie domyślne jest równoważne z regułą akceptującą zakres adresów IP 0.0.0.0/0.
 
-## <a name="ip-filter-rule-evaluation"></a>Ocenę reguł filtrowania adresów IP
+## <a name="ip-filter-rule-evaluation"></a>Obliczanie reguły filtru IP
 
-Reguły filtrowania adresów IP są stosowane w kolejności, a pierwszej reguły, który jest zgodny z adresem IP określa akcji Zaakceptuj lub Odrzuć.
+Reguły filtrowania adresów IP są stosowane w podanej kolejności, a pierwsza reguła zgodna z adresem IP określa akcję Akceptuj lub Odrzuć.
 
 >[!WARNING]
-> Wdrażanie zapory uniemożliwia innych usług platformy Azure interakcji z usługą Event Hubs.
+> Zaimplementowanie zapór może uniemożliwić innym usługom platformy Azure współdziałanie z Event Hubs.
 >
-> Zaufane usługi firmy Microsoft nie są obsługiwane podczas filtrowania adresów IP (zapory) są wykonywane i zostanie udostępniona wkrótce.
+> Zaufane usługi firmy Microsoft nie są obsługiwane, gdy są implementowane filtrowanie adresów IP (zapory) i wkrótce zostaną udostępnione.
 >
-> Typowe scenariusze platformy Azure, które nie działają z filtrowania adresów IP (należy pamiętać, że lista jest **nie** wyczerpująca) —
+> Typowe scenariusze platformy Azure, które nie współpracują z filtrowaniem adresów IP (należy zauważyć, że lista **nie** jest wyczerpująca) —
 > - Azure Monitor
-> - Usługa Azure Stream Analytics
+> - Azure Stream Analytics
 > - Integracja z usługą Azure Event Grid
-> - Azure IoT Hub Routes
-> - Usługa Azure IoT Device Explorer
-> - Azure Data Explorer
+> - Trasy usługi Azure IoT Hub
+> - Device Explorer usługi Azure IoT
 >
-> Poniżej Microsoft usług są wymagane w sieci wirtualnej
+> Poniższe usługi firmy Microsoft muszą znajdować się w sieci wirtualnej
 > - Azure Web Apps
 > - Azure Functions
 
-### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły zapory przy użyciu szablonów usługi Azure Resource Manager
+### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły zapory za pomocą szablonów Azure Resource Manager
 
 > [!IMPORTANT]
-> Reguły zapory są obsługiwane w **standardowa** i **dedykowanych** warstw usługi Event Hubs. Nie są obsługiwane w warstwie Podstawowa.
+> Reguły zapory są obsługiwane w warstwach **standardowa** i **dedykowana** Event Hubs. Nie są obsługiwane w warstwie Podstawowa.
 
-Następujący szablon usługi Resource Manager umożliwia dodawanie reguły filtrowania adresów IP do istniejącej przestrzeni nazw usługi Event Hubs.
+Poniższy szablon Menedżer zasobów umożliwia dodanie reguły filtru IP do istniejącej przestrzeni nazw Event Hubs.
 
 Parametry szablonu:
 
-- **ipMask** jest pojedynczy adres IPv4 lub bloku adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
+- **ipMask** to pojedynczy adres IPv4 lub blok adresów IP w notacji CIDR. Na przykład w notacji CIDR 70.37.104.0/24 reprezentuje adresy IPv4 256 z 70.37.104.0 do 70.37.104.255, z 24 wskazujące liczbę znaczących bitów prefiksu dla zakresu.
 
 > [!NOTE]
-> Choć Brak reguł odmowy, możliwe, szablon usługi Azure Resource Manager jest domyślna akcja równa **"Zezwalaj"** która nie stanowi ograniczenia połączeń.
-> Podczas tworzenia reguł sieci wirtualnej lub zapory, możemy zmienić ***"defaultAction"***
+> Chociaż nie ma możliwych reguł Odmów, szablon Azure Resource Manager ma ustawioną akcję domyślną **"Zezwalaj"** , która nie ogranicza połączeń.
+> Podczas tworzenia reguł Virtual Network lub zapór należy zmienić wartość ***"DefaultAction"***
 > 
-> from
+> wniosek
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -143,13 +142,13 @@ Parametry szablonu:
   }
 ```
 
-Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dotyczącymi [usługi Azure Resource Manager][lnk-deploy].
+Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dotyczącymi [Azure Resource Manager][lnk-deploy].
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Ograniczanie dostępu do usługi Event Hubs sieciami wirtualnymi platformy Azure zobacz następujące łącze:
+Aby ograniczyć dostęp do Event Hubs do sieci wirtualnych platformy Azure, Skorzystaj z następującego linku:
 
-- [Punkty końcowe usługi sieci wirtualnej dla usługi Event Hubs][lnk-vnet]
+- [Virtual Network punkty końcowe usługi dla Event Hubs][lnk-vnet]
 
 <!-- Links -->
 

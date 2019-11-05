@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 40a2443419fab5d0a89d704312d880e344597b8b
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: MT
+ms.openlocfilehash: db6e47b39b7ebe35a6c0fef42af53f91e96c363f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053910"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496206"
 ---
 # <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
 
 Azure SQL Database jest oparta na architekturze SQL Server Database Engine, która jest dostosowywana do środowiska chmury w celu zapewnienia dostępności 99,99% nawet w przypadku awarii infrastruktury. Istnieją trzy modele architektury, które są używane w Azure SQL Database:
 - Ogólnego przeznaczenia/Standard 
--  Hiperskalowanie
+-  Hiperskala
 -  Krytyczne dla działania firmy/Premium
 
 Warstwa usługi do skalowania w Azure SQL Database to najnowsza warstwa usługi w modelu zakupu opartego na rdzeń wirtualny. Ta warstwa usług jest wysoce skalowalną warstwą wydajności magazynu i obliczeń, która wykorzystuje architekturę platformy Azure do skalowania w poziomie magazynu i zasobów obliczeniowych dla Azure SQL Database znacznie przekraczające limity dostępne dla Ogólnego przeznaczenia i firmy Krytyczne warstwy usług.
@@ -47,7 +47,7 @@ Warstwa usługi do skalowania usuwa wiele praktycznych ograniczeń tradycyjnie w
 
 Ponadto czas wymagany do utworzenia kopii zapasowej bazy danych lub skalowania w górę lub w dół nie jest już związany z ilością danych w bazie danych. Kopie zapasowe baz danych można wykonać w sposób niemal natychmiastowy. Bazę danych można także skalować w ciągu kilku minut w górę lub w dół. Ta funkcja umożliwia zwolnienie Cię z obaw związanych z zapisaniem konfiguracji początkowej.
 
-Aby uzyskać więcej informacji na temat rozmiarów obliczeń dla warstwy usługi w ramach skalowania, zobacz [Charakterystyka warstwy usług](sql-database-service-tiers-vcore.md#service-tier-characteristics).
+Aby uzyskać więcej informacji na temat rozmiarów obliczeń dla warstwy usługi w ramach skalowania, zobacz [Charakterystyka warstwy usług](sql-database-service-tiers-vcore.md#service-tiers).
 
 ## <a name="who-should-consider-the-hyperscale-service-tier"></a>Kto powinien wziąć pod uwagę warstwę usługi do skalowania
 
@@ -102,7 +102,7 @@ Usługa log przyjmuje rekordy dziennika z podstawowej repliki obliczeniowej, utr
 
 Usługa Azure Storage zawiera wszystkie pliki danych w bazie danych. Serwery stron zachowują aktualne pliki danych w usłudze Azure Storage. Ten magazyn jest używany na potrzeby tworzenia kopii zapasowych, a także do replikacji między regionami platformy Azure. Kopie zapasowe są implementowane przy użyciu migawek magazynu plików danych. Operacje przywracania przy użyciu migawek są szybkie, niezależnie od rozmiaru danych. Dane można przywrócić do dowolnego punktu w czasie w ramach okresu przechowywania kopii zapasowej bazy danych.
 
-## <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
+## <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
 Kopie zapasowe są tworzone na podstawie migawek plików, a tym samym prawie chwilowo. Rozdzielenie magazynu i obliczeń umożliwia wypychanie operacji tworzenia kopii zapasowej/przywracania do warstwy magazynowania w celu zmniejszenia obciążenia związanego z przetwarzaniem w podstawowej replice obliczeniowej. W związku z tym kopia zapasowa bazy danych nie ma wpływu na wydajność podstawowego węzła obliczeniowego; Analogicznie, przywracanie odbywa się przez przywrócenie migawek plików, co nie jest rozmiarem operacji danych. Przywracanie jest operacją o stałym czasie, a nawet kilka baz danych można przywrócić w ciągu kilku minut, a nie godzin lub dni. Tworzenie nowych baz danych przez przywrócenie istniejącej kopii zapasowej obejmuje również korzystanie z tej funkcji: Tworzenie kopii bazy danych do celów deweloperskich i testowych, nawet w przypadku baz danych o rozmiarze terabajtów, jest doable w ciągu kilku minut.
 
@@ -137,7 +137,7 @@ GO
 
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Nawiązywanie połączenia z repliką w skali odczytu bazy danych
 
-W przypadku baz danych w ramach skalowania `ApplicationIntent` argument w parametrach połączenia dostarczonych przez klienta wskazuje, czy połączenie jest kierowane do repliki zapisu, czy do repliki pomocniczej tylko do odczytu. Jeśli `ApplicationIntent` ustawiono na `READONLY`, a baza danych nie ma repliki pomocniczej, połączenie zostanie przekazane do repliki podstawowej i domyślnie zostanie użyte zachowanie `ReadWrite`.
+W bazach danych w ramach skalowania `ApplicationIntent` argument w parametrach połączenia dostarczonych przez klienta wskazuje, czy połączenie jest kierowane do repliki zapisu, czy do repliki pomocniczej tylko do odczytu. Jeśli `ApplicationIntent` ustawiona na `READONLY` i baza danych nie ma repliki pomocniczej, połączenie zostanie przekazane do repliki podstawowej i zostanie domyślnie użyte do `ReadWrite` zachowania.
 
 ```cmd
 -- Connection string with application intent
@@ -184,7 +184,7 @@ Warstwa skalowania Azure SQL Database jest obecnie dostępna w następujących r
 - Północno-środkowe stany USA
 - Europa Północna
 - Północna Republika Południowej Afryki
-- Południowo-środkowe stany USA
+- Środkowo-południowe stany USA
 - Azja Południowo-Wschodnia
 - Południowe Zjednoczone Królestwo
 - Zachodnie Zjednoczone Królestwo

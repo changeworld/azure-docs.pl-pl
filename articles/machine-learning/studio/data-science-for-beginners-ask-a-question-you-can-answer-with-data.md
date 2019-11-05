@@ -1,7 +1,7 @@
 ---
-title: Zadaj pytanie, na które pozwala uzyskać odpowiedzi na dane
-titleSuffix: Azure Machine Learning Studio
-description: Dowiedz się, jak sformułować pytanie do nauki o danych sharp przetwarzanie danych dla początkujących 3 wideo. Zawiera porównanie pytania dotyczące klasyfikacji i regresji.
+title: Proszenie odpowiedzi na dane pytań
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Dowiedz się, jak sformułować szczegółowe pytania dotyczące nauki danych w nauce danych dla początkujących filmów wideo 3. Zawiera porównanie pytań dotyczących klasyfikacji i regresji.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 7343692e8484e50a02963b4528889a35cc1fcaa6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f0064d30c96a143dd2e53637a681e4a7ee0bc30
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66239075"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493169"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Zadawanie pytań, na które można odpowiedzieć za pomocą danych
 ## <a name="video-3-data-science-for-beginners-series"></a>Wideo 3: Analiza danych dla początkujących serii
-Dowiedz się, jak sformułować problem do nauki o danych na pytanie na przetwarzanie danych dla początkujących 3 wideo. Ten film zawiera porównanie pytania dotyczące klasyfikacji i regresji algorytmów.
+Dowiedz się, jak sformułować problem z analizą danych na pytanie w nauce danych dla początkujących filmów wideo 3. To wideo zawiera porównanie pytań dotyczących algorytmów klasyfikacji i regresji.
 
-Aby maksymalnie wykorzystać możliwości serii, obejrzyj je wszystkie. [Przejdź do listy filmów wideo](#other-videos-in-this-series)
+Aby maksymalnie wykorzystać serię, Obejrzyj wszystko. [Przejdź do listy filmów wideo](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
@@ -28,68 +28,68 @@ Aby maksymalnie wykorzystać możliwości serii, obejrzyj je wszystkie. [Przejd�
 >
 
 ## <a name="other-videos-in-this-series"></a>Inne filmy wideo w tej serii
-*Przetwarzanie danych dla początkujących* jest szybkie wprowadzenie do nauki o danych w pięciu krótkich filmach wideo.
+*Nauka danych dla początkujących* to krótkie wprowadzenie do nauki danych w pięciu krótkich klipach wideo.
 
-* Wideo 1: [5 pytań, analiza danych daje odpowiedzi](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
-* Wideo 2: [Czy dane są gotowe do analizy danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek.)*
-* Wideo 3: Zadawanie pytań, na które można odpowiedzieć za pomocą danych
-* Wideo 4: [Prognozowanie odpowiedzi za pomocą prostego modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek.)*
-* Wideo 5: [Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek.)*
+* Wideo 1: [5 pytań dotyczących analizy danych](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek.)*
+* Wideo 2: [czy Twoje dane są gotowe do analizy danych?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 minuty 56 s)*
+* Wideo 3: zadawanie pytania można odpowiedzieć na dane
+* Wideo 4: [prognozowanie odpowiedzi za pomocą prostego modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 s)*
+* Wideo 5: [kopiowanie pracy innych osób w celu przeprowadzenia analizy danych](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 minuty 18 sek.)*
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Zapis: Zadawanie pytań, na które można odpowiedzieć za pomocą danych
-Zapraszamy do zapoznania się trzeci wideo z serii "Przetwarzanie danych dla początkujących."  
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Transkrypcja: zadawanie pytania, na które można odpowiedzieć z danymi
+Witamy w trzecim filmie wideo w serii "Analiza danych dla początkujących".  
 
-W tym obiekcie otrzymasz wskazówki dotyczące opracowywania pytanie, na które można odpowiedzieć za pomocą danych.
+W tym temacie uzyskasz kilka porad dotyczących formułowania pytania, które można odpowiedzieć na dane.
 
-Możesz otrzymać więcej poza tym filmie pokazano, jeśli najpierw obejrzeć dwa wideo wcześniej w tej serii: "5 pytań analizy danych pozwala uzyskać odpowiedzi na" lub "Is, Twoje dane są gotowe na analizę danych?"
+Możesz uzyskać więcej informacji o tym filmie wideo, jeśli najpierw Oglądasz dwa wcześniejsze filmy wideo w tej serii: "5 pytań dotyczących analizy danych może odpowiedzieć na pytanie" i "czy Twoje dane są gotowe do nauki o danych?".
 
-## <a name="ask-a-sharp-question"></a>Zadaj pytanie sharp
-Mówiliśmy o tym, jak do nauki o danych jest proces przewidywanie odpowiedzi na pytanie przy użyciu nazwy (nazywane również kategorii lub etykiety) i cyfr. Ale nie może być po prostu każde pytanie; musi ona być *sharp pytanie.*
+## <a name="ask-a-sharp-question"></a>Podawanie ostrych pytań
+Porozmawiamy o tym, jak nauka danych jest procesem używania nazw (nazywanych również kategoriami lub etykietami) i numerami w celu przewidywania odpowiedzi na pytanie. Ale nie może to być tylko pytanie; musi to być *ostre pytanie.*
 
-Niezrozumiała pytanie nie ma na udzielenie odpowiedzi z nazwą lub liczbą. Musi być sharp pytanie.
+Nie trzeba otrzymywać odpowiedzi na pytanie niejasne z nazwą lub cyfrą. Konieczne jest wyraźne pytanie.
 
-Załóżmy, że znaleziono magic lamp przy użyciu genie, kto realistyczne odpowiedzą na każde pytanie, które możesz zadawać pytania. Ale mischievous genie, który podejmie próbę upewnij ich odpowiedzi jako niejasna i pozostał przejrzysty, jak można natychmiast uzyskać za pomocą. Chcesz przypiąć je w dół do pytania, więc hermetyczne, że nie może pomóc, ale informujące o tym, co chcesz wiedzieć.
+Wyobraź sobie, że znaleziono lampę magiczną z Genie, który będzie udzielić wiarygodnych gwarancji odpowiedzi na pytania. Ale jest to Mischievous Genie, który podejmie próbę uzyskania odpowiedzi jako niejasnej i mylącej, ponieważ mogą one się odejść. Chcesz przypiąć je z pytaniem, aby nie było możliwe, ale poinformuj Cię o tym, co chcesz wiedzieć.
 
-Jeśli masz zamiar Zadaj pytanie niejasne, takie jak "Co się dzieje się tak zdarzyć z moich stock?", genie mogą odpowiedzieć, "cena zmieni się". To realistyczne odpowiedzi, ale nie jest to bardzo przydatne.
+Jeśli zadasz pytanie niejasne, np. "co się dzieje z moim giełdą?", Genie może odpowiedzieć, "cena zostanie zmieniona". To jest odpowiedź realistyczne, ale nie jest bardzo przydatna.
 
-Ale zostałby Zadaj pytanie sharp, takich jak "Co cena detaliczna Moje zasobów będzie w następnym tygodniu?", genie nie jest jednak umożliwiają określonej odpowiedzi i przewidzieć cenę sprzedaży.
+Ale jeśli chcesz zadać szczególną kwestię, na przykład "jakie ceny sprzedaży na moim giełdie będą naliczane w następnym tygodniu?", Genie nie może pomóc, ale uzyskać konkretnej odpowiedzi i przewidzieć cenę sprzedaży.
 
-## <a name="examples-of-your-answer-target-data"></a>Przykłady odpowiedzi: Dane docelowego
-Po użytkownik sformułować Twoje pytanie, sprawdź, czy masz przykłady odpowiedzi w Twoich danych.
+## <a name="examples-of-your-answer-target-data"></a>Przykłady odpowiedzi: dane docelowe
+Po sformułowaniu pytania Sprawdź, czy w danych znajdują się przykłady odpowiedzi.
 
-W przypadku naszej pytanie "Co cena detaliczna Moje zasobów będzie w następnym tygodniu?" następnie mamy upewnij się, że nasze dane obejmują historię cena akcji.
+Jeśli chodzi o pytanie "jakie ceny sprzedaży na moim giełdie będą się znajdować w następnym tygodniu"? Następnie musimy upewnić się, że nasze dane obejmują historię cen giełdowych.
 
-W przypadku naszej pytanie "które samochodów w mojej floty zamierza najpierw zakończyć się niepowodzeniem?" następnie mamy upewnij się, że nasze dane zawierają informacje dotyczące wcześniejszych niepowodzeń.
+Jeśli nasze pytanie dotyczy "którego samochodu w mojej flotie nie uda się w pierwszej kolejności?" Następnie musimy upewnić się, że nasze dane zawierają informacje o poprzednich błędach.
 
-![Dane docelowego — przykłady odpowiedzi. Formułowanie zapytania do nauki o danych.](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/target-data.png)
+![Przykładowe dane docelowe — przykłady odpowiedzi. Formułowanie pytania dotyczącego analizy danych.](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/target-data.png)
 
-Te przykłady odpowiedzi są nazywane obiektu docelowego. Obiekt docelowy jest co próbujemy przewidzieć o punktów danych w przyszłości, czy kategoria lub liczbą.
+Te przykłady odpowiedzi są nazywane elementem docelowym. Celem jest to, czego próbujemy przewidzieć przyszłe punkty danych, niezależnie od tego, czy jest to kategoria czy liczba.
 
-Jeśli nie masz żadnych danych docelowego należy uzyskać niektóre. Nie będzie w stanie udzielić odpowiedzi na pytania bez niego.
+Jeśli nie masz żadnych danych docelowych, musisz uzyskać pewne. Nie będziesz w stanie udzielić odpowiedzi na Twoje pytanie.
 
-## <a name="reformulate-your-question"></a>Sformułować Twoje pytanie
-Czasami można adnotacji Twoje pytanie, aby uzyskać bardziej przydatne odpowiedzi.
+## <a name="reformulate-your-question"></a>Przeformułowanie pytania
+Czasami możesz wyrazić swoje pytanie, aby uzyskać bardziej przydatną odpowiedź.
 
-Pytanie "Jest to data punktu A lub B?" Prognozuje kategorii (lub nazwa lub etykieta) obiektu. Aby Odbierz, użyjemy *algorytm klasyfikacji*.
+Pytanie "czy ten punkt danych A lub B?" przewiduje kategorię (lub nazwę lub etykietę) elementu. Aby odpowiedzieć na nie, używamy *algorytmu klasyfikacji*.
 
-Pytanie "Ile?" lub "Ile?" Prognozuje kwoty. Aby Odbierz użyjemy *algorytmu regresji*.
+Pytanie "jak dużo?" lub "jak wiele?" przewidywana jest kwota. Aby odpowiedzieć, używamy *algorytmu regresji*.
 
-Aby zobaczyć, jak firma Microsoft może zmienić je, Spójrzmy na pytanie "która historii wiadomości jest najbardziej interesujących ten czytnik?" Sprawdza, czy do przewidywania pojedynczego wyboru z wielu możliwości — innymi słowy "Jest to A lub B lub C lub D?" - i będzie używać algorytm klasyfikacji.
+Aby zobaczyć, jak możemy to przekształcić, przyjrzyjmy się pytaniu "w jakim scenariuszu wiadomości są najbardziej interesujące dla tego czytnika?". Pyta do prognozowania pojedynczego wyboru z wielu możliwości — innymi słowy "to jest A lub B lub C lub D?" -i użyj algorytmu klasyfikacji.
 
-Ale to pytanie, być może łatwiej będzie odpowiedzieć, jeśli go jako adnotacji "jak interesujące jest każdy wątek na liście, aby ten czytnik?" Teraz możesz nadać poszczególnymi artykułami, wynik liczbowe, a to łatwo identyfikować ich najwyższym oceniania artykułu. Jest to, ponownie sformułować pytanie klasyfikacji do zapytania regresji lub ile?
+Jednak ten problem może być łatwiejszy w odpowiedzi na to, czy będzie się on znajdować na tej liście w tym czytelniku? Teraz możesz nadać każdemu artykułowi wartość numeryczną, a następnie łatwo zidentyfikować artykuł o najwyższej ocenie. To jest sformułowanie pytania klasyfikacji do pytania regresji lub tego, ile?
 
-![Sformułować Twoje pytanie. Pytanie klasyfikacji i regresji pytanie.](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/classification-question-vs-regression-question.png)
+![Przeformułowanie pytania. Pytanie klasyfikacji a pytanie regresji.](./media/data-science-for-beginners-ask-a-question-you-can-answer-with-data/classification-question-vs-regression-question.png)
 
-Jak zadać pytanie jest sugeruje algorytmu, który daje odpowiedzi.
+Pytanie, w jaki sposób pytasz, że algorytm może dać odpowiedź.
 
-Można znaleźć niektórych rodzin algorytmy — np w naszym przykładzie historii wiadomości — są ściśle powiązane. Można sformułować Twoje pytanie, aby używać algorytmu, który zapewnia najbardziej przydatne odpowiedzi.
+Zobaczysz, że niektóre rodziny algorytmów, podobnie jak te, w naszym przykładzie historii wiadomości — są ściśle powiązane. Możesz sformułować swoje pytanie, aby użyć algorytmu, który zapewnia najbardziej przydatną odpowiedź.
 
-Jednak najważniejsze Zadaj pytanie, na które można odpowiedzieć za pomocą danych to pytanie sharp -. I upewnij się, że masz odpowiednie dane do odpowiedzi go.
+Jednak najważniejsze pytanie — pytanie, na które można odpowiedzieć na dane. Upewnij się, że masz odpowiednie dane, aby je odpowiedzieć.
 
-Rozmawialiśmy o pewne podstawowe zasady dotyczące zadawania pytań, że można odpowiedzieć za pomocą danych.
+Porozmawiamy o niektórych podstawowych zasadach zadawania pytania, na które można odpowiedzieć za pomocą danych.
 
-Pamiętaj sprawdzić inne filmy wideo "Dane do analizy dla początkujących" z usługi Microsoft Azure Machine Learning Studio.
+Upewnij się, że zapoznaj się z innymi filmami wideo w obszarze "Analiza danych dla początkujących" z Microsoft Azure Machine Learning Studio (klasyczne).
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Spróbuj pierwszy eksperyment dotyczący przetwarzania danych, za pomocą usługi Machine Learning Studio](create-experiment.md)
-* [Wprowadzenie do usługi Machine Learning na Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+## <a name="next-steps"></a>Następne kroki
+* [Wypróbuj pierwszy eksperyment nauki o danych z Machine Learning Studio (klasyczny)](create-experiment.md)
+* [Zapoznaj się z wprowadzeniem do Machine Learning na Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

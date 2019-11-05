@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 11b16f91d600c20b48fbdc5887a4a0a4b538e916
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: a1ab8f881aaee9e29519e99a5cd2a0e6fdbc9846
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330658"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489412"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Twórz TensorFlow model uczenia głębokiego na dużą skalę dzięki Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym artykule pokazano, jak uruchamiać skrypty szkoleniowe [TensorFlow](https://www.tensorflow.org/overview) na dużą skalę przy użyciu klasy [TensorFlow szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) Azure Machine Learning. Ten przykład pociąga za siebie i rejestruje model TensorFlow do klasyfikowania cyfr pisanych ręcznie przy użyciu sieci głębokiej neuronowych (DNN).
 
@@ -29,7 +30,7 @@ Dowiedz się więcej na temat uczenia głębokiego i uczenia [maszynowego](conce
 
 Uruchom ten kod w dowolnym z następujących środowisk:
 
- - Maszyna wirtualna w Azure Machine Learning Notes — nie jest wymagane pobieranie ani instalacja
+ - Wystąpienie obliczeniowe Azure Machine Learning — nie jest wymagane pobieranie ani instalacja
 
      - Ukończ [Samouczek: Zainstaluj środowisko i obszar roboczy](tutorial-1st-experiment-sdk-setup.md) , aby utworzyć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium.
     - W folderze przykłady głębokiego uczenia na serwerze notesu Znajdź ukończony i rozwinięty Notes, przechodząc do tego katalogu: How to- **use-azure > ml-frameworks > tensorflow > deployment > Pouczenie-parametr-dostrajania-Deploy-with-tensorflow** . 
@@ -86,7 +87,7 @@ exp = Experiment(workspace=ws, name='tf-mnist')
 
 ### <a name="create-a-file-dataset"></a>Utwórz plik DataSet
 
-Obiekt `FileDataset` odwołuje się do co najmniej jednego pliku w magazynie danych obszaru roboczego lub publicznych adresów URL. Pliki mogą być w dowolnym formacie, a Klasa oferuje możliwość pobierania lub instalowania plików do obliczeń. Utworzenie `FileDataset` powoduje utworzenie odwołania do lokalizacji źródła danych. Jeśli zastosowano jakiekolwiek przekształcenia do zestawu danych, zostaną one zapisane również w zestawie danych. Dane pozostają w istniejącej lokalizacji, więc nie są naliczane żadne dodatkowe koszty związane z magazynem. Więcej informacji można znaleźć w przewodniku [jak](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) uzyskać w pakiecie `Dataset`.
+Obiekt `FileDataset` odwołuje się do jednego lub wielu plików w magazynie danych obszaru roboczego lub publicznych adresów URL. Pliki mogą być w dowolnym formacie, a Klasa oferuje możliwość pobierania lub instalowania plików do obliczeń. Tworząc `FileDataset`, można utworzyć odwołanie do lokalizacji źródła danych. Jeśli zastosowano jakiekolwiek przekształcenia do zestawu danych, zostaną one zapisane również w zestawie danych. Dane pozostają w istniejącej lokalizacji, więc nie są naliczane żadne dodatkowe koszty związane z magazynem. Aby uzyskać więcej informacji, [Zobacz przewodnik](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) dotyczący `Dataset` pakietu.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -100,7 +101,7 @@ web_paths = [
 dataset = Dataset.File.from_files(path=web_paths)
 ```
 
-Użyj metody `register()`, aby zarejestrować zestaw danych w obszarze roboczym, dzięki czemu mogą one być współużytkowane z innymi osobami, ponownie używane w różnych eksperymentach i nazwach w skrypcie szkoleniowym.
+Użyj metody `register()`, aby zarejestrować zestaw danych w obszarze roboczym, aby można było udostępnić go innym osobom, ponownie używać w różnych eksperymentach i nazwach w skrypcie szkoleniowym.
 
 ```python
 dataset = dataset.register(workspace=ws,
@@ -138,9 +139,9 @@ Aby uzyskać więcej informacji na temat obiektów docelowych obliczeń, zobacz 
 
 [TensorFlow szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) zapewnia prosty sposób uruchamiania zadania szkolenia TensorFlow na obiekcie docelowym obliczeń.
 
-TensorFlow szacowania jest implementowane za pomocą klasy generycznej [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) , która może służyć do obsługi dowolnej struktury. Aby uzyskać więcej informacji o modelach szkoleniowych przy użyciu generycznej szacowania, zobacz [uczenie modeli Azure Machine Learning przy](how-to-train-ml-models.md) użyciu usługi szacowania
+TensorFlow szacowania jest implementowane za pomocą klasy generycznej [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) , która może być używana do obsługi dowolnej struktury. Aby uzyskać więcej informacji o modelach szkoleniowych przy użyciu generycznej szacowania, zobacz [uczenie modeli Azure Machine Learning przy](how-to-train-ml-models.md) użyciu usługi szacowania
 
-Jeśli do uruchomienia skryptu szkoleniowego wymagane są dodatkowe pakiety PIP lub Conda, można je zainstalować na efekcie obrazu platformy Docker, przenosząc ich nazwy za pomocą argumentów `pip_packages` i `conda_packages`.
+Jeśli do uruchomienia skryptu szkoleniowego wymagane są dodatkowe pakiety PIP lub Conda, można je zainstalować na utworzonym obrazie platformy Docker, przekazując ich nazwy za pomocą argumentów `pip_packages` i `conda_packages`.
 
 ```python
 script_params = {
@@ -185,7 +186,7 @@ Po przeszkoleniu modelu możesz zarejestrować go w obszarze roboczym. Rejestrac
 model = run.register_model(model_name='tf-dnn-mnist', model_path='outputs/model')
 ```
 
-Możesz również pobrać lokalną kopię modelu przy użyciu obiektu Run. W skrypcie szkoleniowym `mnist-tf.py` obiekt wygaszacza TensorFlow utrzymuje model do folderu lokalnego (lokalnie dla elementu docelowego obliczeń). Aby pobrać kopię, można użyć obiektu Run.
+Możesz również pobrać lokalną kopię modelu przy użyciu obiektu Run. W `mnist-tf.py`skrypcie szkoleniowym obiekt wygaszacza TensorFlow utrzymuje model do folderu lokalnego (lokalnie dla elementu docelowego obliczeń). Aby pobrać kopię, można użyć obiektu Run.
 
 ```Python
 # Create a model folder in the current directory
@@ -198,9 +199,9 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="distributed-training"></a>Szkolenie rozproszone
+## <a name="distributed-training"></a>Trenowanie rozproszone
 
-[@No__t-1](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) szacowania obsługuje również szkolenia rozproszone między procesorami i klastrami GPU. Można łatwo uruchomić rozproszone zadania TensorFlow, a Azure Machine Learning będzie zarządzać aranżacją.
+[`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) szacowania obsługuje również szkolenia rozproszone między procesorami i klastrami GPU. Można łatwo uruchomić rozproszone zadania TensorFlow, a Azure Machine Learning będzie zarządzać aranżacją.
 
 Azure Machine Learning obsługuje dwie metody rozłożonego szkolenia w TensorFlow:
 
@@ -233,7 +234,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 Można również uruchomić [natywne rozproszone TensorFlow](https://www.tensorflow.org/deploy/distributed), które korzysta z modelu serwera parametrów. W tej metodzie są nauczeni przez klaster serwerów parametrów i procesów roboczych. Pracownicy obliczają gradienty podczas szkolenia, natomiast serwery parametrów agregują gradienty.
 
-Aby użyć metody serwera parametrów, Określ obiekt [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) dla parametru `distributed_training` w konstruktorze TensorFlow.
+Aby użyć metody serwera parametrów, należy określić obiekt [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) dla parametru `distributed_training` w konstruktorze TensorFlow.
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -272,9 +273,9 @@ TF_CONFIG='{
 }'
 ```
 
-W przypadku interfejsu API wysokiego poziomu [@no__t 1](https://www.tensorflow.org/api_docs/python/tf/estimator) TensorFlow TensorFlow analizuje zmienną `TF_CONFIG` i kompiluje specyfikację klastra.
+W przypadku interfejsu API [`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) wysokiego poziomu TensorFlow TensorFlow analizuje zmienną `TF_CONFIG` i kompiluje specyfikację klastra.
 
-W przypadku podstawowych interfejsów API TensorFlow na niższym poziomie na potrzeby szkoleń Przeanalizuj zmienną `TF_CONFIG` i skompiluj `tf.train.ClusterSpec` w kodzie szkoleniowym.
+W przypadku podstawowych interfejsów API TensorFlow na niższym poziomie na potrzeby szkoleń należy analizować zmienną `TF_CONFIG` i utworzyć `tf.train.ClusterSpec` w kodzie szkoleniowym.
 
 ```Python
 import os, json

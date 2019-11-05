@@ -12,22 +12,22 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 3e328d242bccd9f2ab037131d3fcce585bc6b8da
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: MT
+ms.openlocfilehash: 9a5e826fd4de3641c4c5ce8ae728d354cb7ba8f7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432804"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495187"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Szybki Start: Tworzenie aplikacji w języku Python przy użyciu Azure Cosmos DB konta interfejsu API SQL
 
 > [!div class="op_single_selector"]
-> * [.NET](create-sql-api-dotnet.md)
+> * [.NET V3](create-sql-api-dotnet.md)
+> * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
->  
 
 Ten przewodnik Szybki start przedstawia, jak utworzyć konto [interfejsu API SQL](sql-api-introduction.md) usługi Azure Cosmos DB, bazę danych dokumentów i kontener przy użyciu witryny Azure Portal. Następnie za pomocą [interfejsu API SQL](sql-api-sdk-python.md) i zestawu Python SDK skompilujesz i uruchomisz aplikację konsolową.
 
@@ -39,7 +39,7 @@ Ten przewodnik Szybki Start używa wersji 3,0 [zestawu SDK języka Python](https
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Środowisko [Python 3,6](https://www.python.org/downloads/)z plikiem wykonywalnym `python` dostępnym w `PATH`.
+* Środowisko [Python 3,6](https://www.python.org/downloads/)z `python` pliku wykonywalnego dostępnego w `PATH`.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Rozszerzenie języka Python dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
@@ -74,7 +74,7 @@ Teraz sklonujemy aplikację interfejsu API SQL z serwisu GitHub, ustawimy parame
    mkdir "git-samples"
    ```
 
-2. Otwórz okno terminalu usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
 
     ```bash
     cd "git-samples"
@@ -94,7 +94,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
     ![Uzyskaj klucz dostępu i identyfikator URI w ustawieniach kluczy w Azure Portal](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
 
-2. Otwórz plik `CosmosGetStarted.py` w programie \git-samples\azure-Cosmos-DB-Python-Getting-Started w Visual Studio Code.
+2. Otwórz plik `CosmosGetStarted.py` w programie \git-samples\azure-Cosmos-DB-Python-Getting-Started w programie Visual Studio Code.
 
 3. Skopiuj wartość identyfikatora **URI** z portalu (przy użyciu przycisku kopiowania) i przypisz ją do klucza **endpoint** w pliku ``CosmosGetStarted.py``. 
 

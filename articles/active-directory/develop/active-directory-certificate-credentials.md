@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1184d210f5b7ea25b9f73cbd70b5f960402126a1
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3fca872d639ab5c2d4053656cdd3e68a59fdc1e6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803523"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473962"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Poświadczenia certyfikatu na potrzeby uwierzytelniania aplikacji
 
@@ -101,7 +101,7 @@ Poświadczenie certyfikatu można skojarzyć z aplikacją kliencką w usłudze A
 W usłudze Azure App Registration dla aplikacji klienckiej:
 1. Wybierz pozycję **certyfikaty & wpisy tajne**. 
 2. Kliknij pozycję **Przekaż certyfikat** i wybierz plik certyfikatu do przekazania.
-3. Kliknij pozycję **Add** (Dodaj).
+3. Kliknij pozycję **Dodaj**.
   Po przekazaniu certyfikatu zostaną wyświetlone wartości odcisku palca, Data rozpoczęcia i wygaśnięcie. 
 
 ### <a name="updating-the-application-manifest"></a>Aktualizowanie manifestu aplikacji
@@ -133,5 +133,8 @@ W usłudze Azure App Registration dla aplikacji klienckiej:
    Właściwość `keyCredentials` ma wiele wartości, dzięki czemu można przekazać wiele certyfikatów w celu zaawansowania zarządzania kluczami.
    
 ## <a name="code-sample"></a>Przykład kodu
+
+> [!NOTE]
+> Należy obliczyć nagłówek X5T za pomocą skrótu certyfikatu i przekonwertować go na ciąg Base64. C# Będzie wyglądać podobnie do: `System.Convert.ToBase64String(cert.GetCertHash());`
 
 Przykładowy kod na potrzeby [uwierzytelniania w usłudze Azure AD w aplikacjach demonów z certyfikatami](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) pokazuje, w jaki sposób aplikacja korzysta z własnych poświadczeń do uwierzytelniania. Przedstawiono w nim również, jak [utworzyć certyfikat z](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) podpisem własnym za pomocą polecenia `New-SelfSignedCertificate` PowerShell. Możesz również wykorzystać [Skrypty tworzenia aplikacji](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) do tworzenia certyfikatów, obliczania odcisku palca i tak dalej.

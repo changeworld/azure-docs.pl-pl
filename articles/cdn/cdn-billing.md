@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: magattus
-ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e2827a11f4ec2a5c0467c3699cd9990aaf7ae97a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996807"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495477"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Omówienie rozliczania za usługę Azure CDN
 
@@ -55,11 +55,11 @@ Korzystanie z Azure CDN również wiąże się z niektórymi opłatami za użyci
 
 Jeśli używasz magazynu obiektów blob platformy Azure jako źródła zawartości, naliczane są również następujące opłaty za magazyn pamięci podręcznej:
 
-- Używane rzeczywiste GB: Rzeczywisty magazyn obiektów źródłowych.
+- Rzeczywiste użycie GB: rzeczywisty magazyn obiektów źródłowych.
 
-- Akcja W razie potrzeby w celu wypełnienia pamięci podręcznej.
+- Transakcje: w razie potrzeby w celu wypełnienia pamięci podręcznej.
 
-- Transfery w GB: Ilość danych transferowanych w celu wypełnienia pamięci podręcznych usługi CDN.
+- Transfery w GB: ilość danych transferowanych w celu wypełnienia pamięci podręcznych usługi CDN.
 
 > [!NOTE]
 > Od października 2019, jeśli używasz Azure CDN firmy Microsoft, koszt transferu danych z pochodzenia hostowanego na platformie Azure do punktów obecności w sieci CDN jest bezpłatny. Azure CDN z Verizon i Azure CDN z Akamai podlegają kursom opisanym poniżej.
@@ -68,9 +68,9 @@ Aby uzyskać więcej informacji na temat rozliczeń usługi Azure Storage, zobac
 
 W przypadku korzystania z *dostarczania usług hostowanych*opłaty będą naliczane w następujący sposób:
 
-- Czas obliczeń na platformie Azure: Wystąpienia obliczeniowe, które działają jako źródło.
+- Czas obliczeń na platformie Azure: wystąpienia obliczeniowe, które działają jako źródło.
 
-- Transfer obliczeń na platformie Azure: Transfer danych z wystąpień obliczeniowych w celu wypełnienia pamięci podręcznych Azure CDN.
+- Transfer obliczeń na platformie Azure: transfer danych z wystąpień obliczeniowych w celu wypełnienia pamięci podręcznych Azure CDN.
 
 Jeśli klient używa żądań zakresu bajtów (niezależnie od usługi pochodzenia), mają zastosowanie następujące zagadnienia:
 
@@ -81,22 +81,22 @@ Jeśli klient używa żądań zakresu bajtów (niezależnie od usługi pochodzen
 ## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Ile działań związanych z transferem ma obsługiwać pamięć podręczną?
 Za każdym razem, gdy punkt obecności usługi CDN musi wypełnić pamięć podręczną, wysyła żądanie do źródła dla obiektu w pamięci podręcznej. W związku z tym źródło ponosi transakcję rozliczaną za każdy chybień w pamięci podręcznej. Liczba chybień w pamięci podręcznej zależy od kilku czynników:
 
-- Sposób buforowania zawartości: Jeśli zawartość ma wysoką wartość czasu wygaśnięcia (Time-to-Live)/Expiration i jest dostępna często, więc jest najbardziej popularna w pamięci podręcznej, to ogromna większość obciążenia jest obsługiwana przez sieć CDN. Typowy dobry współczynnik trafień pamięci podręcznej jest również większy niż 90%, co oznacza, że mniej niż 10% żądań klientów musi powrócić do źródła, w przypadku chybień w pamięci podręcznej lub odświeżenia obiektu.
+- Jak ma być dostępna zawartość pamięci podręcznej: Jeśli zawartość ma wysoką wartość czasu wygaśnięcia (Time-to-Live)/Expiration i jest często używana, więc pozostaje popularna w pamięci podręcznej, a następnie większość obciążenia jest obsługiwana przez sieć CDN. Typowy dobry współczynnik trafień pamięci podręcznej jest również większy niż 90%, co oznacza, że mniej niż 10% żądań klientów musi powrócić do źródła, w przypadku chybień w pamięci podręcznej lub odświeżenia obiektu.
 
-- Ile węzłów wymaga załadowania obiektu: Za każdym razem, gdy węzeł ładuje obiekt ze źródła, ponosi transakcję rozliczaną. W związku z tym większa zawartość globalna (dostępną z większej liczby węzłów) skutkuje bardziej obciążanymi transakcjami.
+- Liczba węzłów potrzebnych do załadowania obiektu: za każdym razem, gdy węzeł ładuje obiekt ze źródła, ponosi transakcję rozliczaną. W związku z tym większa zawartość globalna (dostępną z większej liczby węzłów) skutkuje bardziej obciążanymi transakcjami.
 
-- Wpływ na czas wygaśnięcia: Wyższy czas TTL dla obiektu oznacza, że musi być pobierany z części początkowej. Oznacza to również, że klienci, tacy jak przeglądarki, mogą buforować obiekt więcej, co może zmniejszyć liczbę transakcji do sieci CDN.
+- Wpływ na czas wygaśnięcia: wyższy czas TTL dla obiektu oznacza, że musi być pobierany z mniejszego poziomu pochodzenia. Oznacza to również, że klienci, tacy jak przeglądarki, mogą buforować obiekt więcej, co może zmniejszyć liczbę transakcji do sieci CDN.
 
 ## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Które usługi pochodzenia kwalifikują się do bezpłatnego transferu danych z Azure CDN firmy Microsoft? 
 W przypadku korzystania z jednej z następujących usług platformy Azure jako źródła CDN nie zostanie naliczona opłata za transfer danych z punktu początkowego do punktów POP usługi CDN. 
 
 - Azure Storage
 - Azure Media Services
-- Usługa Azure Virtual Machines
-- Sieć wirtualna
+- Azure Virtual Machines
+- Virtual Network
 - Moduł równoważenia obciążenia
 - Application Gateway
-- System DNS Azure
+- System DNS platformy Azure
 - ExpressRoute
 - VPN Gateway
 - Traffic Manager
@@ -107,13 +107,13 @@ W przypadku korzystania z jednej z następujących usług platformy Azure jako �
 - Usługa Azure App Service
 - Azure Functions
 - Azure Data Factory
-- Azure API Management
+- Usługa Azure API Management
 - Azure Batch 
 - Azure Data Explorer
 - HDInsight
 - Azure Cosmos DB
 - Azure Data Lake Store
-- Usługa Azure Machine Learning 
+- Azure Machine Learning 
 - Baza danych Azure SQL Database
 - Azure Cache for Redis
 

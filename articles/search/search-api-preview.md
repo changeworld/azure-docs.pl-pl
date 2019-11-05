@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a4daaac6abababcedb5d6dd7eb2122ef29846ef4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: dff6473fd01fc2d41c5bb100eefd583afe4175b0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792529"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496482"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Interfejs API REST usługi Wyszukiwanie poznawcze platformy Azure — Wersja 2019-05-06-Preview
 
@@ -24,6 +24,8 @@ W tym artykule opisano `api-version=2019-05-06-Preview` wersja interfejsu API RE
 
 
 ## <a name="new-in-2019-05-06-preview"></a>Nowość w 2019-05-06 — wersja zapoznawcza
+
+[* * Indeksowanie przyrostowe](cognitive-search-incremental-indexing-conceptual.md) jest nowym trybem do indeksowania, który dodaje stan i buforowanie, umożliwiając ponowne używanie istniejących danych wyjściowych, gdy definicje danych, indeksatorów i zestawu umiejętności nie są zmieniane. Ta funkcja ma zastosowanie tylko do wzbogacania za pomocą zestawu umiejętności poznawczych.
 
 [**Magazyn wiedzy**](knowledge-store-concept-intro.md) to nowe miejsce docelowe potoku wzbogacania opartego na AI. Oprócz indeksu można teraz utrwalać wypełnione struktury danych utworzone podczas indeksowania w usłudze Azure Storage. Możesz kontrolować struktury fizyczne danych za pomocą elementów w zestawu umiejętności, w tym w jaki sposób dane są zapisywane, czy dane są przechowywane w magazynie tabel lub w magazynie obiektów blob, oraz czy istnieje wiele widoków.
 

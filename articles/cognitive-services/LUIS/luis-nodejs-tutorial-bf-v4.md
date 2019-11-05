@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 8f0438ab015f9d16fd3776421b8d0032fc0a0639
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 9a38f43b24e5db6a60ff38cd0f1d9b59b9875bba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772899"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492674"
 ---
-# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Samouczek: Korzystanie z bot aplikacji sieci Web z włączonym Language Understanding w języku Node. js 
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Samouczek: używanie bot aplikacji sieci Web w programie Node. js przy użyciu Language Understanding 
 
 Użyj środowiska Node. js, aby skompilować bot z integracją z funkcją interpretacji języka (LUIS). Bot jest tworzona przy użyciu [aplikacji sieci Web](https://docs.microsoft.com/azure/bot-service/) platformy Azure bot Resource i [bot Framework w wersji](https://github.com/Microsoft/botbuilder-dotnet) v4.
+
+[!INCLUDE [Waiting for Bot refresh](./includes/wait-bot-upgrade.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -44,12 +46,12 @@ Użyj środowiska Node. js, aby skompilować bot z integracją z funkcją interp
 
 1. W polu **Bot Service** (Usługa bota) podaj wymagane informacje:
 
-    |Ustawienie|Cel|Zalecane ustawienia|
+    |Ustawienie|Przeznaczenie|Zalecane ustawienia|
     |--|--|--|
     |Nazwa bota|Nazwa zasobu|`luis-nodejs-bot-` + `<your-name>`, na przykład `luis-nodejs-bot-johnsmith`|
-    |Subscription|Subskrypcja miejsca utworzenia bota.|Subskrypcja podstawowa.
-    |Resource group|Logiczna grupa zasobów platformy Azure|Utwórz nową grupę do przechowywania wszystkich zasobów używanych z tym botem, nazwij grupę `luis-nodejs-bot-resource-group`.|
-    |Location|Region platformy Azure — nie musi być taki sam jak region tworzenia lub publikowania usługi LUIS.|`westus`|
+    |Subskrypcja|Subskrypcja miejsca utworzenia bota.|Subskrypcja podstawowa.
+    |Grupa zasobów|Logiczna grupa zasobów platformy Azure|Utwórz nową grupę do przechowywania wszystkich zasobów używanych z tym botem, nazwij grupę `luis-nodejs-bot-resource-group`.|
+    |Lokalizacja|Region platformy Azure — nie musi być taki sam jak region tworzenia lub publikowania usługi LUIS.|`westus`|
     |Warstwa cenowa|Służy do określania limitów żądań usługi i rozliczeń.|`F0` to warstwa bezpłatna.
     |Nazwa aplikacji|Nazwa jest używana jako domena podrzędna, gdy bot jest wdrażany w chmurze (na przykład humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, na przykład `luis-nodejs-bot-johnsmith`|
     |Szablon bota|Ustawienia struktury bota — zobacz następną tabelę|
@@ -60,7 +62,7 @@ Użyj środowiska Node. js, aby skompilować bot z integracją z funkcją interp
 
 1. W **szablonie bot**wybierz poniższe opcje, a następnie wybierz przycisk **Wybierz** w obszarze te ustawienia:
 
-    |Ustawienie|Cel|Wybór|
+    |Ustawienie|Przeznaczenie|Wybór|
     |--|--|--|
     |Wersja zestawu SDK|Wersja struktury bota|**Zestaw SDK w wersji 4**|
     |Język zestawu SDK|Język programowania bota|**Node.js**|
@@ -83,7 +85,7 @@ Proces tworzenia usługi bot tworzy również nową aplikację LUIS z intencjami
 |Getpogoda|`what's the weather like?`|
 |Brak|Cokolwiek spoza domeny aplikacji.|
 
-## <a name="test-the-bot-in-web-chat"></a>Testowanie bota w czatów internetowych
+## <a name="test-the-bot-in-web-chat"></a>Testowanie bot w rozmowie w sieci Web
 
 1. Mimo że w Azure Portal dla nowego bot, wybierz pozycję **Testuj w rozmowie w sieci Web**. 
 1. W polu tekstowym **wpisz wiadomość** wpisz tekst `Book a flight from Seattle to Berlin tomorrow`. Bot reaguje na weryfikację, aby zaksięgować lot. 
@@ -199,15 +201,15 @@ Aby tworzyć kod bota aplikacji internetowej, pobierz kod i użyj go na komputer
 Zażądaj bot pytania dotyczącego zamiaru lotów w ramach książki.
 
 1. Rozpocznij emulator bot i wybierz pozycję **Otwórz bot**.
-1. W wyskakującym okienku Otwórz okno dialogowe **bot** wprowadź adres URL bot, taki jak `http://localhost:3978/api/messages`. `/api/messages` Trasa jest adresem sieci Web dla bot.
+1. W wyskakującym okienku Otwórz okno dialogowe **bot** wprowadź adres URL bot, taki jak `http://localhost:3978/api/messages`. Trasa `/api/messages` jest adresem sieci Web bot.
 1. Wprowadź **Identyfikator aplikacji firmy Microsoft** i **hasło aplikacji firmy**Microsoft, które znajdują się w pliku **ENV** w katalogu głównym pobranego kodu bot.
 
 1. W emulatorze bot wprowadź `Book a flight from Seattle to Berlin tomorrow` i uzyskaj taką samą odpowiedź dla podstawowego bot, jak w przypadku **testu w rozmowie w sieci Web**.
 
     [![Odpowiedź bota podstawowego w emulatorze](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
-1. Wybierz pozycję **tak**. Bot reaguje z podsumowaniem jego akcji. 
-1. Z dziennika emulatora bot wybierz wiersz, który zawiera `Luis Trace`. Spowoduje to wyświetlenie odpowiedzi JSON z LUIS dla zamiar i jednostek wypowiedź.
+1. Wybierz pozycję **Tak**. Bot reaguje z podsumowaniem jego akcji. 
+1. Z dziennika emulatora bot wybierz wiersz zawierający `Luis Trace`. Spowoduje to wyświetlenie odpowiedzi JSON z LUIS dla zamiar i jednostek wypowiedź.
 
     [![Odpowiedź bota podstawowego w emulatorze](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 

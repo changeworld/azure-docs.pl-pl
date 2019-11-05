@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: f260e019ffa6eb89e8a2c1e17d2bf239e74290c2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 798c368edb4a738124fce965f8990e6805fbdeba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900109"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472599"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zaawansowanych funkcji harmonogramu w usłudze Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ Te najlepsze rozwiązania koncentrują się na zaawansowanych funkcjach planowan
 
 Podczas tworzenia klastra AKS można wdrożyć węzły z obsługą procesora GPU lub dużą liczbą zaawansowanych procesorów CPU. Te węzły są często używane do obciążeń przetwarzania dużych ilości danych, takich jak uczenie maszynowe (ML) lub Sztuczna inteligencja (AI). Ponieważ ten typ sprzętu jest zazwyczaj kosztownym zasobem węzła do wdrożenia, Ogranicz obciążenia, które można zaplanować w tych węzłach. Możesz zamiast tego chcieć przeznaczyć niektóre węzły w klastrze do uruchamiania usług przychodzących i uniemożliwić inne obciążenia.
 
-Ta obsługa różnych węzłów jest zapewniana przy użyciu wielu pul węzłów. Klaster AKS zawiera co najmniej jedną pulę węzłów. Obsługa wielu pul węzłów w AKS jest obecnie w wersji zapoznawczej.
+Ta obsługa różnych węzłów jest zapewniana przy użyciu wielu pul węzłów. Klaster AKS zawiera co najmniej jedną pulę węzłów.
 
 Harmonogram Kubernetes może używać przyniesień i tolerowanych elementów w celu ograniczenia obciążeń, które mogą być uruchamiane w węzłach.
 
@@ -69,7 +69,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Po wdrożeniu tego wdrożenia, na przykład przy użyciu `kubectl apply -f gpu-toleration.yaml`, Kubernetes można pomyślnie zaplanować na węzłach z zastosowaniem zmiany. Ta izolacja logiczna pozwala kontrolować dostęp do zasobów w klastrze.
+Po wdrożeniu tego wdrożenia, na przykład przy użyciu `kubectl apply -f gpu-toleration.yaml`, Kubernetes można pomyślnie zaplanować na węzłach przy użyciu zastosowanego zmiany. Ta izolacja logiczna pozwala kontrolować dostęp do zasobów w klastrze.
 
 Po zastosowaniu przydziałów należy współpracować z programistami i właścicielami aplikacji, aby mogli definiować wymagane tolerowania w ich wdrożeniach.
 
@@ -81,16 +81,16 @@ Aby uzyskać więcej informacji na temat używania wielu pul węzłów w AKS, zo
 
 Po uaktualnieniu puli węzłów w AKS, jego przypisaniach i tolerowaniu stosują się do wzorca zestawu, gdy są one stosowane do nowych węzłów:
 
-- **Klastry domyślne bez obsługi skalowania maszyn wirtualnych**
+- **Domyślne klastry korzystające z zestawów skalowania maszyn wirtualnych**
+  - Załóżmy, że masz klaster z dwoma węzłami — *Węzeł1* i *Węzeł2*. Należy uaktualnić pulę węzłów.
+  - Tworzone są dwa dodatkowe węzły, *Węzeł3* i *Węzeł4*, a ich przekazanie odbywa się odpowiednio.
+  - Oryginalne *Węzeł1* i *Węzeł2* są usuwane.
+
+- **Klastry bez obsługi zestawu skalowania maszyn wirtualnych**
   - Załóżmy, że masz klaster z dwoma węzłami — *Węzeł1* i *Węzeł2*. Podczas uaktualniania jest tworzony dodatkowy węzeł (*Węzeł3*).
   - *Węzeł1* są stosowane do *Węzeł3*, a następnie *Węzeł1* jest usuwana.
   - Tworzony jest inny nowy węzeł (o nazwie *Węzeł1*, ponieważ poprzedni *Węzeł1* został usunięty), a do nowego *Węzeł1*są stosowane *węzeł2y* . Następnie *Węzeł2* jest usuwany.
   - W zasadzie *Węzeł1* staną się *Węzeł3*, a *Węzeł2* zostanie *Węzeł1*.
-
-- **Klastry korzystające z zestawów skalowania maszyn wirtualnych**
-  - Załóżmy, że masz klaster z dwoma węzłami — *Węzeł1* i *Węzeł2*. Należy uaktualnić pulę węzłów.
-  - Tworzone są dwa dodatkowe węzły, *Węzeł3* i *Węzeł4*, a ich przekazanie odbywa się odpowiednio.
-  - Oryginalne *Węzeł1* i *Węzeł2* są usuwane.
 
 W przypadku skalowania puli węzłów w AKS, zmiany czasu i tolerowania nie są przenoszone przez projektowanie.
 

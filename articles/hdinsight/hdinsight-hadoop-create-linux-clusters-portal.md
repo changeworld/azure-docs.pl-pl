@@ -1,5 +1,5 @@
 ---
-title: Tworzenie klastrów Apache Hadoop przy użyciu przeglądarki sieci Web, usługa Azure HDInsight
+title: Tworzenie klastrów Apache Hadoop przy użyciu przeglądarki sieci Web, Azure HDInsight
 description: Dowiedz się, jak tworzyć klastry Apache Hadoop, Apache HBase, Apache Storm lub Apache Spark w systemie Linux dla usługi HDInsight przy użyciu przeglądarki sieci Web i Azure Portal.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/28/2019
-ms.openlocfilehash: 687fde2e203ed471e2f0164f1f4a670de4afc74e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 3a64ba088a24f6202b74ae84ad7fb6c011d3bcbf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71677084"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494773"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu Azure Portal
 
@@ -34,9 +34,9 @@ Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablon�
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-1. W menu po lewej stronie przejdź do **+ Utwórz zasób**  >  **Analytics**  > **HDInsight**.
+1. W menu po lewej stronie przejdź do **+ Utwórz zasób** >  **Analytics** > **HDInsight**.
 
     ![Utwórz nowy klaster w Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Tworzenie nowego klastra w Azure Portal")
 
@@ -81,7 +81,7 @@ Azure Portal uwidacznia większość właściwości klastra. Za pomocą szablon�
 
      ![Magazyn tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Tworzenie nowego klastra w Azure Portal")
 
-     | Usługa Storage                                      | Opis |
+     | Magazyn                                      | Opis |
      |----------------------------------------------|-------------|
      | **Obiekty blob usługi Azure Storage jako magazyn domyślny**   | <ul><li>W obszarze **Typ magazynu podstawowego**wybierz pozycję **Azure Storage**. W **obszarze Metoda wyboru**wybierz pozycję **Moje subskrypcje** , aby określić konto magazynu, które jest częścią subskrypcji platformy Azure. Następnie wybierz konto magazynu. W przeciwnym razie wybierz pozycję **klucz dostępu**. Następnie podaj informacje dotyczące konta magazynu, które chcesz wybrać spoza subskrypcji platformy Azure.</li><li>W przypadku **kontenera domyślnego**wybierz domyślną nazwę kontenera sugerowaną przez portal lub określ własny.</li><li>Jeśli magazyn obiektów blob platformy Azure jest magazynem domyślnym, możesz również wybrać **dodatkowe konta magazynu** , aby określić dodatkowe konta magazynu do skojarzenia z klastrem. W przypadku **kluczy usługi Azure Storage**wybierz pozycję **Dodaj klucz magazynu**. Następnie możesz podać konto magazynu z subskrypcji platformy Azure lub z innych subskrypcji. Podaj klucz dostępu do konta magazynu.</li><li>Jeśli magazyn obiektów BLOB jest domyślnym magazynem, możesz również wybrać opcję **Data Lake Storage dostęp** , aby określić Azure Data Lake Storage jako dodatkowy magazyn. Aby uzyskać więcej informacji, zobacz [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
      | **Azure Data Lake Storage jako magazyn domyślny** | W obszarze **Typ magazynu podstawowego**wybierz pozycję **Azure Data Lake Storage Gen1** lub **Azure Data Lake Storage Gen2**. Następnie zapoznaj się z artykułem [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) , aby uzyskać instrukcje. |

@@ -3,26 +3,27 @@ title: Tworzenie i używanie obiektów docelowych obliczeń do szkolenia modelu
 titleSuffix: Azure Machine Learning
 description: Skonfiguruj środowiska szkoleniowe (cele obliczeniowe) dla szkolenia modelu uczenia maszynowego. Można łatwo przełączać się między środowiskami szkoleniowymi. Zacznij szkolenie lokalnie. Jeśli konieczne jest skalowanie w poziomie, przełącz się do elementu docelowego obliczeń opartego na chmurze.
 services: machine-learning
-author: rastala
-ms.author: roastala
+author: sdgilley
+ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 46a212719846eddc7d21f3aeb0815dfbf4119e15
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935366"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489591"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu 
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dzięki Azure Machine Learning można nauczyć model na różnych zasobach lub środowiskach, zbiorczo nazywanymi [__obiektami docelowymi obliczeń__](concept-azure-machine-learning-architecture.md#compute-targets). Obiekt docelowy obliczeń może być maszyną lokalną lub zasobem w chmurze, takim jak Azure Machine Learning COMPUTE, Azure HDInsight lub zdalną maszynę wirtualną.  Możesz również utworzyć cele obliczeniowe dla wdrożenia modelu, zgodnie z opisem w artykule ["gdzie i jak wdrażać modele"](how-to-deploy-and-where.md).
 
-Można utworzyć obiekt docelowy obliczeń i zarządzać nim przy użyciu zestawu SDK Azure Machine Learning, Azure Portal, strony docelowej obszaru roboczego (wersja zapoznawcza), interfejsu wiersza polecenia platformy Azure lub rozszerzenia VS Code Azure Machine Learning. Jeśli masz cele obliczeniowe, które zostały utworzone za pomocą innej usługi (na przykład klastra HDInsight), możesz ich użyć, dołączając je do obszaru roboczego Azure Machine Learning.
+Można utworzyć obiekt docelowy obliczeń i zarządzać nim przy użyciu zestawu SDK Azure Machine Learning, Azure Machine Learning Studio, interfejsu wiersza polecenia platformy Azure lub rozszerzenia Azure Machine Learning VS Code. Jeśli masz cele obliczeniowe, które zostały utworzone za pomocą innej usługi (na przykład klastra HDInsight), możesz ich użyć, dołączając je do obszaru roboczego Azure Machine Learning.
  
 W tym artykule dowiesz się, jak używać różnych obiektów docelowych obliczeń do uczenia modelu.  Kroki dla wszystkich obiektów docelowych obliczeń są zgodne z tym samym przepływem pracy:
 1. __Utwórz__ obiekt docelowy obliczeń, jeśli jeszcze go nie masz.
@@ -132,7 +133,7 @@ Trwałe Obliczanie Azure Machine Learning może być ponownie używane między z
    Podczas tworzenia Azure Machine Learning obliczeń można także skonfigurować kilka zaawansowanych właściwości. Właściwości umożliwiają tworzenie trwałego klastra o stałym rozmiarze lub w ramach istniejącej Virtual Network platformy Azure w ramach subskrypcji.  Aby uzyskać szczegółowe informacje, zobacz [klasę AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     ) .
     
-   Można też utworzyć i dołączyć trwały zasób obliczeniowy Azure Machine Learning [w Azure Portal](#portal-create).
+   Można też utworzyć i dołączyć trwały zasób obliczeniowy Azure Machine Learning w programie [Azure Machine Learning Studio](#portal-create).
 
 1. **Konfiguracja**: Utwórz konfigurację uruchamiania dla trwałego elementu docelowego obliczeń.
 
@@ -154,7 +155,7 @@ W tym scenariuszu Użyj usługi Azure Data Science Virtual Machine (DSVM) jako m
     > [!WARNING]
     > Azure Machine Learning obsługuje tylko maszyny wirtualne z systemem Ubuntu. Podczas tworzenia maszyny wirtualnej lub wybrania istniejącej maszyny wirtualnej należy wybrać maszynę wirtualną, która używa Ubuntu.
 
-1. **Dołącz**: Aby dołączyć istniejącą maszynę wirtualną jako obiekt docelowy obliczeń, należy podać w pełni kwalifikowaną nazwę domeny (FQDN), nazwę użytkownika i hasło dla maszyny wirtualnej. W przykładzie Zastąp \<fqdn > nazwą publiczną FQDN maszyny wirtualnej lub publicznym adresem IP. Zastąp \<username > i \<Password > nazwą użytkownika SSH i hasłem dla maszyny wirtualnej.
+1. **Dołącz**: Aby dołączyć istniejącą maszynę wirtualną jako obiekt docelowy obliczeń, należy podać w pełni kwalifikowaną nazwę domeny (FQDN), nazwę użytkownika i hasło dla maszyny wirtualnej. W przykładzie Zastąp \<FQDN > z publiczną nazwą FQDN maszyny wirtualnej lub publicznym adresem IP. Zastąp \<username > i \<Password > nazwą użytkownika SSH i hasłem dla maszyny wirtualnej.
 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
@@ -179,7 +180,7 @@ W tym scenariuszu Użyj usługi Azure Data Science Virtual Machine (DSVM) jako m
    compute.wait_for_completion(show_output=True)
    ```
 
-   Możesz też dołączyć DSVM do obszaru roboczego [przy użyciu Azure Portal](#portal-reuse).
+   Możesz też dołączyć DSVM do obszaru roboczego [za pomocą programu Azure Machine Learning Studio](#portal-reuse).
 
 1. **Konfiguracja**: Utwórz konfigurację uruchomieniową dla elementu docelowego obliczeń DSVM. Platformy Docker i Conda są używane do tworzenia i konfigurowania środowiska szkoleniowego na DSVM.
 
@@ -196,9 +197,9 @@ Usługa Azure HDInsight to popularna platforma do analizy danych Big Data. Platf
 
     Podczas tworzenia klastra należy określić nazwę użytkownika i hasło SSH. Zwróć uwagę na te wartości, ponieważ są one potrzebne do korzystania z usługi HDInsight jako elementu docelowego obliczeń.
     
-    Po utworzeniu klastra Połącz się z nim za pomocą nazwy hosta \<clustername >-ssh.azurehdinsight.net, gdzie \<clustername > jest nazwą dostarczoną dla klastra. 
+    Po utworzeniu klastra Połącz się z nim za pomocą nazwy hosta \<ClusterName >-ssh.azurehdinsight.net, gdzie \<ClusterName > jest nazwą dostarczoną dla klastra. 
 
-1. **Dołącz**: Aby dołączyć klaster usługi HDInsight jako obiekt docelowy obliczeń, należy podać nazwę hosta, nazwa użytkownika i hasło dla klastra usługi HDInsight. Poniższy przykład używa zestawu SDK do dołączania klastra do obszaru roboczego. W przykładzie Zastąp \<clustername > nazwą klastra. Zastąp \<username > i \<Password > nazwą użytkownika i hasłem SSH dla klastra.
+1. **Dołącz**: Aby dołączyć klaster usługi HDInsight jako obiekt docelowy obliczeń, należy podać nazwę hosta, nazwa użytkownika i hasło dla klastra usługi HDInsight. Poniższy przykład używa zestawu SDK do dołączania klastra do obszaru roboczego. W przykładzie Zastąp \<ClusterName > nazwą klastra. Zastąp \<username > i \<Password > nazwą użytkownika SSH i hasłem dla klastra.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -220,7 +221,7 @@ Usługa Azure HDInsight to popularna platforma do analizy danych Big Data. Platf
    hdi_compute.wait_for_completion(show_output=True)
    ```
 
-   Można też dołączyć klaster usługi HDInsight do obszaru roboczego [przy użyciu Azure Portal](#portal-reuse).
+   Możesz też dołączyć klaster usługi HDInsight do obszaru roboczego [za pomocą programu Azure Machine Learning Studio](#portal-reuse).
 
 1. **Konfiguracja**: Utwórz konfigurację uruchomieniową dla elementu docelowego obliczeń HDI. 
 
@@ -270,9 +271,9 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-in-azure-portal"></a>Konfiguracja w Azure Portal
+## <a name="set-up-in-azure-machine-learning-studio"></a>Konfiguracja w programie Azure Machine Learning Studio
 
-Możesz uzyskać dostęp do obiektów docelowych obliczeń skojarzonych z obszarem roboczym w Azure Portal.  Możesz użyć portalu, aby:
+Możesz uzyskać dostęp do obiektów docelowych obliczeń skojarzonych z obszarem roboczym w programie Azure Machine Learning Studio.  Możesz użyć programu Studio do:
 
 * [Wyświetl cele obliczeń](#portal-view) dołączone do obszaru roboczego
 * [Tworzenie obiektu docelowego obliczeń](#portal-create) w obszarze roboczym
@@ -291,11 +292,11 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 Aby zobaczyć cele obliczeń dla obszaru roboczego, wykonaj następujące czynności:
 
-1. Przejdź do [Azure Portal](https://portal.azure.com) i Otwórz obszar roboczy. Możesz również uzyskać dostęp do tych samych kroków na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com), ale poniższe obrazy pokazują Azure Portal.
+1. Przejdź do [Azure Machine Learning Studio](https://ml.azure.com).
  
 1. W obszarze __aplikacje__wybierz pozycję __obliczenia__.
 
-    [Karta obliczeniowa widoku![](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [Karta obliczeniowa widoku ![](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Tworzenie obiektu docelowego obliczeń
 
@@ -310,7 +311,7 @@ Wykonaj poprzednie kroki, aby wyświetlić listę elementów docelowych oblicze�
 1. Wybierz **środowisko obliczeniowe usługi Machine Learning** jako typ obliczeń do użycia na potrzeby __szkolenia__. 
 
     >[!NOTE]
-    >Azure Machine Learning COMPUTE to jedyny zasób obliczeniowy, który można utworzyć w Azure Portal.  Wszystkie inne zasoby obliczeniowe mogą być dołączane po ich utworzeniu.
+    >Azure Machine Learning COMPUTE to jedyny zasób obliczeniowy, który można utworzyć w programie Azure Machine Learning Studio.  Wszystkie inne zasoby obliczeniowe mogą być dołączane po ich utworzeniu.
 
 1. Wypełnij formularz. Podaj wartości dla wymaganych właściwości, szczególnie **rodziny maszyn wirtualnych**i **maksymalną liczbę węzłów** do użycia w celu uruchomienia obliczeń.  
 
@@ -336,7 +337,7 @@ Wykonaj kroki opisane wcześniej, aby wyświetlić listę elementów docelowych 
 1. Wybierz typ obliczeń do dołączenia do __szkolenia__:
 
     > [!IMPORTANT]
-    > Nie wszystkie typy obliczeniowe mogą być dołączane z Azure Portal. Typy obliczeń, które są obecnie dołączone do szkolenia, obejmują:
+    > Nie wszystkie typy obliczeniowe mogą być dołączane z programu Azure Machine Learning Studio. Typy obliczeń, które są obecnie dołączone do szkolenia, obejmują:
     >
     > * Zdalna maszyna wirtualna
     > * Azure Databricks (do użycia w potokach uczenia maszynowego)
@@ -422,7 +423,7 @@ Aby uzyskać więcej informacji, zobacz dokumentację [ScriptRunConfig](https://
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Utwórz konfigurację uruchamiania i prześlij przebieg przy użyciu interfejsu wiersza polecenia Azure Machine Learning
 
-Możesz użyć [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) i [Machine Learning rozszerzenia interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) , aby utworzyć konfigurację uruchamiania i przesłać przebiegi w różnych obiektach docelowych obliczeń. W poniższych przykładach założono, że masz już istniejące Obszar roboczy usługi Azure Machine Learning i zalogowano się na platformie Azure przy użyciu polecenia interfejsu CLI `az login`. 
+Możesz użyć [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) i [Machine Learning rozszerzenia interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) , aby utworzyć konfigurację uruchamiania i przesłać przebiegi w różnych obiektach docelowych obliczeń. W poniższych przykładach założono, że masz już istniejące Obszar roboczy usługi Azure Machine Learning i zalogujesz się na platformie Azure przy użyciu polecenia `az login` CLI. 
 
 ### <a name="create-run-configuration"></a>Utwórz konfigurację uruchamiania
 
@@ -432,7 +433,7 @@ Najprostszym sposobem tworzenia konfiguracji uruchamiania jest nawigowanie po fo
 az ml folder attach
 ```
 
-To polecenie tworzy podfolder `.azureml`, który zawiera pliki konfiguracji uruchamiania dla różnych obiektów docelowych obliczeń. Można kopiować i edytować te pliki, aby dostosować konfigurację, na przykład dodać pakiety Python lub zmienić ustawienia platformy Docker.  
+To polecenie tworzy podfolder `.azureml`, który zawiera pliki konfiguracji uruchamiania dla różnych elementów docelowych obliczeń. Można kopiować i edytować te pliki, aby dostosować konfigurację, na przykład dodać pakiety Python lub zmienić ustawienia platformy Docker.  
 
 ### <a name="structure-of-run-configuration-file"></a>Struktura pliku konfiguracji uruchamiania
 
@@ -446,6 +447,8 @@ Plik konfiguracji uruchomieniowej jest YAML sformatowany z następującymi sekcj
  * Szczegóły konfiguracji specyficzne dla wybranego środowiska.
  * Odwołania do danych i szczegóły magazynu danych.
  * Szczegóły konfiguracji specyficzne dla środowisko obliczeniowe usługi Machine Learning tworzenia nowego klastra.
+
+Zobacz przykładowy [plik JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) dla całego schematu runconfig.
 
 ### <a name="create-an-experiment"></a>Tworzenie eksperymentu
 
@@ -493,7 +496,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 Zwróć uwagę na sekcję *argumenty* w runconfig i *przestrzeni parametrów* w pliku config. Zawierają one argumenty wiersza polecenia, które mają być przekazane do skryptu szkoleniowego. Wartość w runconfig pozostaje taka sama dla każdej iteracji, podczas gdy zakres w konfiguracji dysku jest powtarzany. Nie określaj tego samego argumentu w obu plikach.
 
-Aby uzyskać więcej informacji na temat tych poleceń interfejsu wiersza polecenia ```az ml``` i pełnego zestawu argumentów, zobacz [dokumentację referencyjną](reference-azure-machine-learning-cli.md).
+Aby uzyskać więcej informacji na temat tych ```az ml``` poleceń interfejsu wiersza polecenia i pełnego zestawu argumentów, zobacz [dokumentację referencyjną](reference-azure-machine-learning-cli.md).
 
 <a id="gitintegration"></a>
 

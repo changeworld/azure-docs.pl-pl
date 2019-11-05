@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 8a0fe871685f2a140cd8272d93f49f594cd2c910
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 53d656d8d39c71c813d7dd7a504ec45667bf18b4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947485"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482426"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Dane rozproszone w Azure Database for PostgreSQL — skalowanie (Citus)
 
-W tym artykule opisano trzy typy tabel w programie Azure Database for PostgreSQL — wersja zapoznawcza (Citus).
+W tym artykule opisano trzy typy tabel w Azure Database for PostgreSQL — funkcja Citus).
 Pokazuje, jak tabele rozproszone są przechowywane jako fragmentów, i sposób, w jaki fragmentów są umieszczane w węzłach.
 
 ## <a name="table-types"></a>Typy tabel
@@ -51,7 +51,7 @@ Dobrym kandydatem do tabel lokalnych byłyby małe tabele administracyjne, któr
 
 W poprzedniej sekcji opisano, jak tabele rozproszone są przechowywane jako fragmentów w węzłach procesu roboczego. W tej sekcji omówiono więcej szczegółów technicznych.
 
-Tabela metadanych `pg_dist_shard` w koordynatorze zawiera wiersz dla każdej fragmentu tabeli rozproszonej w systemie. Wiersz jest zgodny z IDENTYFIKATORem fragmentu z zakresem liczb całkowitych w przestrzeni skrótów (shardminvalue, shardmaxvalue).
+Tabela metadanych `pg_dist_shard` na koordynatorze zawiera wiersz dla każdej fragmentu tabeli rozproszonej w systemie. Wiersz jest zgodny z IDENTYFIKATORem fragmentu z zakresem liczb całkowitych w przestrzeni skrótów (shardminvalue, shardmaxvalue).
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -64,7 +64,7 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Jeśli węzeł koordynatora chce określić, które fragmentu przechowuje wiersz `github_events`, miesza wartość kolumny dystrybucji w wierszu. Następnie węzeł sprawdzi, który fragmentu @ no__t-0s zawiera wartość zmieszaną. Zakresy są zdefiniowane, aby obraz funkcji skrótu był ich rozłącznym złożeniem.
+Jeśli węzeł koordynatora chce określić, które fragmentu przechowuje wiersz `github_events`, miesza wartość kolumny dystrybucji w wierszu. Następnie węzeł sprawdzi, który fragmentu\'s zawiera wartość zmieszaną. Zakresy są zdefiniowane, aby obraz funkcji skrótu był ich rozłącznym złożeniem.
 
 ### <a name="shard-placements"></a>Fragmentu
 

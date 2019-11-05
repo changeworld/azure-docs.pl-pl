@@ -1,7 +1,7 @@
 ---
 title: Ocena wydajności modelu
-titleSuffix: Azure Machine Learning Studio
-description: Ten artykuł pokazuje, jak ocena wydajności modelu w usłudze Azure Machine Learning Studio i zawiera krótki opis dostępnych metryk dla tego zadania.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: W tym artykule przedstawiono sposób oceny wydajności modelu w Azure Machine Learning Studio (klasyczny) i przedstawiono krótkie objaśnienie metryk dostępnych dla tego zadania.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,170 +10,170 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 37ab56c377bc53a7300b51ffc709ea8d1b9d6f9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7947c1be552e72cea9fb0b9214e82a1ecc481fb1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60750661"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493084"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Ocenianie wydajności modelu w usłudze Azure Machine Learning Studio
+# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Jak oszacować wydajność modelu w Azure Machine Learning Studio (klasyczny)
 
-Ten artykuł pokazuje, jak ocena wydajności modelu w usłudze Azure Machine Learning Studio i zawiera krótki opis dostępnych metryk dla tego zadania. Przedstawiono trzy typowe scenariusze uczenia nadzorowanego: 
+W tym artykule przedstawiono sposób oceny wydajności modelu w Azure Machine Learning Studio (klasyczny) i przedstawiono krótkie objaśnienie metryk dostępnych dla tego zadania. Prezentowane są trzy popularne scenariusze uczenia nauki: 
 
-* Regresji
+* Ubytk
 * Klasyfikacja binarna 
-* Wieloklasowej klasyfikacji
+* Klasyfikacja wieloklasowa
 
 
 
-Ocena wydajności modelu jest jednym z podstawowych etapów w procesie nauki o danych. Oznacza to, jak pomyślnie oceniania (prognozy) zestaw został przez uczonego modelu. 
+Ocenianie wydajności modelu jest jednym z podstawowych etapów procesu analizy danych. Wskazuje, jak pomyślne ocenianie (przewidywania) zestawu danych zostało przeprowadzone przez szkolony model. 
 
-Usługa Azure Machine Learning Studio obsługuje oceny modelu dwie jego główne maszyny uczenia modułów: [Ocena modelu] [ evaluate-model] i [krzyżowa Weryfikacja modelu][cross-validate-model]. Zezwalaj na te moduły, można zobaczyć, jak model działa pod względem liczby metryk, które są często używane podczas uczenia maszynowego i statystyki.
+Azure Machine Learning Studio (klasyczny) obsługuje Obliczanie modelu przez dwa z głównych modułów uczenia maszynowego: [Oceń model][evaluate-model] i [model weryfikacji krzyżowej][cross-validate-model]. Te moduły umożliwiają sprawdzenie, w jaki sposób Twój model wykonuje różne metryki, które są często używane w uczeniu maszynowym i danych statystycznych.
 
-## <a name="evaluation-vs-cross-validation"></a>Ocena programu vs. Krzyżowe sprawdzanie poprawności
-Ocena i krzyżowego sprawdzania poprawności są standardowe metody zadaniem jest mierzenie wydajności modelu. Zarówno generują metryki oceny, które można sprawdzić lub porównać te z innymi modelami.
+## <a name="evaluation-vs-cross-validation"></a>Ocena a weryfikacja krzyżowa
+Ocena i sprawdzanie krzyżowe są standardowymi sposobami mierzenia wydajności modelu. Zarówno generują metryki oceny, które można sprawdzić, jak i porównać z innymi modelami.
 
-[Ocena modelu] [ evaluate-model] oczekuje ocenami zestawu danych jako dane wejściowe (lub 2 w przypadku chcesz porównać wydajność dwa różne modele). Oznacza to konieczność uczenie modelu przy użyciu [uczenie modelu] [ train-model] marki i moduł prognozy na niektórych zestawu danych za pomocą [Score Model] [ score-model]modułu, zanim będziesz w stanie ocenić wyniki. Obliczanie opiera się na ocenami etykiety/prawdopodobieństwa wraz z etykiety wartość true, które są generowane przez [Score Model] [ score-model] modułu.
+[Ocena modelu][evaluate-model] oczekuje, że zestaw danych jest obliczany jako dane wejściowe (lub 2 w przypadku, gdy chcesz porównać wydajność dwóch różnych modeli). Oznacza to, że konieczne jest uczenie modelu przy użyciu modułu [uczenie modelu][train-model] i wykonywanie prognoz dla niektórych zestawów danych przy użyciu modułu [modelu oceny][score-model] , zanim będzie można oszacować wyniki. Obliczenia opierają się na etykietach i prawdopodobieństwach z wynikowymi etykietami, z których wszystkie są wyprowadzane przez moduł [modelu wyniku][score-model] .
 
-Alternatywnie służy krzyżowego sprawdzania poprawności do wykonania wielu operacji obliczyć ocenę train (10 złożeń) automatycznie na różne podzbiory danych wejściowych. Dane wejściowe jest dzielony na 10 części, w której jedna jest zarezerwowana do testowania, a inne 9 na potrzeby szkolenia. Ten proces jest powtarzany 10 razy, a metryki oceny są uśredniane. Pomaga to w określeniu, jak dobrze modelu będzie generalize nowych zestawów danych. [Krzyżowa Weryfikacja modelu] [ cross-validate-model] moduł przyjmuje nieprzeszkolonych modelu i niektóre etykietami zestaw danych i wyniki oceny każdego 10 złożeń, oprócz uśrednionej wyników.
+Alternatywnie można użyć weryfikacji krzyżowej do wykonywania wielu różnych podzestawów danych wejściowych (10 zagięć) automatycznie. Dane wejściowe są podzielone na 10 części, z których jeden jest zastrzeżony do testowania, a drugi 9 do szkoleń. Ten proces jest powtarzany 10 razy, a metryki oceny są uśredniane. Pomaga to w ustaleniu, jak dobrze model będzie uogólniać do nowych zestawów danych. Moduł [modelu krzyżowego sprawdzania poprawności][cross-validate-model] przejmuje niesprawdzony model i niepewną część zestawu danych i wyprowadza wyniki oceny dla każdego z 10 zagięć, a także do wyników średniej.
 
-W poniższych sekcjach opracowanie proste modele regresji i klasyfikację i oceniać ich wydajności, przy użyciu zarówno [Evaluate Model] [ evaluate-model] i [krzyżowa Weryfikacja modelu ] [ cross-validate-model] modułów.
+W poniższych sekcjach utworzysz proste modele regresji i klasyfikacji oraz Oceń ich wydajność przy użyciu zarówno [modelu oceny][evaluate-model] , jak i modułowego [sprawdzania poprawności][cross-validate-model] .
 
 ## <a name="evaluating-a-regression-model"></a>Ocenianie modelu regresji
-Załóżmy, że chcemy przewidzieć cenę samochodu, korzystanie z niektórych funkcji, takich jak wymiarów, moc, aparat dane techniczne i tak dalej. Jest to problem regresji typowe, gdzie zmienna docelowa (*cena*) jest wartością liczbową ciągłe. Firma Microsoft może składać się modelu prostego regresji liniowej, który w podanej wartości funkcji samochodu można przewidzieć cenę samochodu, że. Ten model regresji, może służyć do wyniku tego samego zestawu danych, które szkoliliśmy na. Gdy będziemy już mieć dostęp do przewidywanych ceny dla wszystkich samochodów, firma Microsoft oceny wydajności modelu, patrząc na ile prognozy są tym różni się od rzeczywiste ceny średniej. Na przykład używamy *zestawu danych data (Raw) cen samochodów* dostępne w **zapisane zestawów danych** sekcji w usłudze Azure Machine Learning Studio.
+Załóżmy, że chcemy przewidzieć cenę samochodu przy użyciu niektórych funkcji, takich jak wymiary, możliwości techniczne, specyfikacje silnika i tak dalej. Jest to typowy problem z regresją, gdzie zmienna docelowa (*Cena*) jest stałą wartością liczbową. Możemy dopasować prosty model regresji liniowej, który, uwzględniając wartości funkcji określonego samochodu, może przewidywać cenę tego samochodu. Ten model regresji może służyć do oceny tego samego zestawu danych, który został przeszkolony. Po zastosowaniu przewidywanych cen dla wszystkich samochodów możemy oszacować wydajność modelu, sprawdzając, ile prognoz jest odchyleń od rzeczywistych cen. Aby to zilustrować, korzystamy z *zestawu danych cen dla samochodów (RAW)* dostępnego w sekcji **zapisane zestawy** danych w klasycznej wersji Azure Machine Learning Studio.
 
 ### <a name="creating-the-experiment"></a>Tworzenie eksperymentu
-Dodaj następujące moduły do obszaru roboczego usługi Azure Machine Learning Studio:
+Dodaj następujące moduły do obszaru roboczego w klasycznej wersji Azure Machine Learning Studio:
 
-* Cen samochodów, data (Raw)
+* Dane cen samochodów (RAW)
 * [Regresja liniowa][linear-regression]
-* [Trenowanie modelu][train-model]
-* [Score Model][score-model]
-* [Ocena modelu][evaluate-model]
+* [Model uczenia][train-model]
+* [Model oceny][score-model]
+* [Oceń model][evaluate-model]
 
-Połączyć porty, jak pokazano poniżej na rysunku 1 i ustaw kolumny etykiety [Train Model] [ train-model] moduł *cena*.
+Połącz porty, jak pokazano poniżej na rysunku 1 i ustaw kolumnę etykieta modułu [uczenie modelu][train-model] na Price ( *Cena*).
 
 ![Ocenianie modelu regresji](./media/evaluate-model-performance/1.png)
 
-Rysunek 1. Oceniania modelu regresji.
+Rysunek 1. Ocenianie modelu regresji.
 
 ### <a name="inspecting-the-evaluation-results"></a>Sprawdzanie wyników oceny
-Po uruchomieniu eksperymentu, kliknij port wyjściowy [Evaluate Model] [ evaluate-model] modułu, a następnie wybierz pozycję *Visualize* aby zobaczyć wyniki oceny. Są dostępne dla modele regresji metryk oceny: *Średni bezwzględny błąd*, *Root Mean błąd absolutny*, *względny błąd absolutny*, *względem kwadrat błąd*i *współczynnik Oznaczanie*.
+Po uruchomieniu eksperymentu możesz kliknąć port wyjściowy modułu [Oceń model][evaluate-model] i wybrać opcję *Wizualizuj* , aby wyświetlić wyniki oceny. Metryki oceny dostępne dla modeli regresji to: *średni błąd bezwzględny*, *główny średni błąd bezwzględny*, *względny*błąd względny, względny *błąd*i *współczynnik wyznaczania*.
 
-Termin "error" w tym miejscu reprezentuje różnicy między wartością prognozowaną a wartością true. Wartość bezwzględna lub kwadrat różnica ta zazwyczaj obliczany jest do przechwytywania całkowita wielkość błąd we wszystkich wystąpieniach jako różnicy między wartością przewidywane i true może być ujemna w niektórych przypadkach. Metryki błąd zadaniem jest mierzenie wydajności predykcyjnego modelu regresji pod względem odchylenie oznacza jego przewidywań wartości true. Niższe wartości błąd oznacza, że model, który jest bardziej precyzyjne w podejmowaniu prognozy. Metrykę ogólny błąd zero oznacza, że model doskonałe dopasowanie danych.
+Termin "błąd" oznacza różnicę między wartością przewidywaną a wartością rzeczywistą. Wartość bezwzględna lub kwadrat tej różnicy jest zwykle obliczany w celu przechwycenia łącznej wielkości błędu we wszystkich wystąpieniach, ponieważ różnica między wartością przewidywaną i rzeczywistą może być ujemna w niektórych przypadkach. Metryki błędów mierzą predykcyjną wydajność modelu regresji pod względem średniego odchylenia jego prognoz od wartości true. Niższe wartości błędów oznaczają, że model jest bardziej precyzyjny podczas tworzenia prognoz. Ogólna Metryka błędu równa zero oznacza, że model dopasowuje dane.
 
-Współczynnik oznaczania, która jest również znana jako R kwadrat, jest również standardowy sposób pomiaru, jak dobrze pasuje do modelu danych. Mogą być interpretowane jako część odmiany wyjaśnione przy użyciu modelu. Uzyskanie lepszej udział w tym przypadku jest lepiej gdzie 1 oznacza dokładne dopasowanie.
+Współczynnik wyznaczania, który jest również znany jako R kwadratowy, jest również standardowym sposobem mierzenia, jak dobrze model dopasowuje dane. Można go interpretować jako proporcje zmienności wyjaśnione przez model. Wyższa wartość jest lepsza w tym przypadku, gdzie 1 oznacza idealne dopasowanie.
 
-![Regresja liniowa metryk oceny](./media/evaluate-model-performance/2.png)
+![Metryki oceny regresji liniowej](./media/evaluate-model-performance/2.png)
 
 Rysunek 2. Metryki oceny regresji liniowej.
 
-### <a name="using-cross-validation"></a>Za pomocą krzyżowego sprawdzania poprawności
-Jak wspomniano wcześniej, można przeprowadzić szkolenia powtarzane, oceniania i ocen automatycznie przy użyciu [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu. Wszystko, czego potrzebujesz w takiej sytuacji jest zestaw nieprzeszkolonych modelu i [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu (zobacz rysunek poniżej). Należy ustawić kolumny etykiety *cena* w [krzyżowa Weryfikacja modelu] [ cross-validate-model] właściwości modułu.
+### <a name="using-cross-validation"></a>Używanie krzyżowego sprawdzania poprawności
+Jak wspomniano wcześniej, można automatycznie przeprowadzać powtarzające się szkolenia, ocenianie i ocenianie przy użyciu modułu [Międzyvalidate model][cross-validate-model] . Wszystko, co jest potrzebne w tym przypadku, jest zestawem danych, niesprawdzonym modelem i modułem [Międzywalidacji modelu][cross-validate-model] (patrz rysunek poniżej). Należy ustawić wartość *Price* kolumny etykieta w module [modelu krzyżowego sprawdzania poprawności][cross-validate-model] .
 
-![Krzyżowe sprawdzanie modelu regresji](./media/evaluate-model-performance/3.png)
+![Sprawdzanie poprawności modelu regresji](./media/evaluate-model-performance/3.png)
 
-Rysunek 3. Cross-sprawdzania poprawności modelu regresji.
+Rysunek 3. Sprawdzanie poprawności modelu regresji.
 
-Po uruchomieniu eksperymentu, można sprawdzić wyniki oceny, kliknij port wyjściowy prawo [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu. Zapewni to szczegółowy wgląd w metryki dla każdej iteracji (zwijania) i uśrednionej wyniki każdego z metryk (rysunek 4).
+Po uruchomieniu eksperymentu możesz sprawdzić wyniki oceny, klikając odpowiedni port wyjściowy modułu [modelu krzyżowego sprawdzania poprawności][cross-validate-model] . Spowoduje to udostępnienie szczegółowego widoku metryk dla każdej iteracji (złożenia) i średniego wyniku poszczególnych metryk (rysunek 4).
 
-![Wyników krzyżowego sprawdzania poprawności modelu regresji](./media/evaluate-model-performance/4.png)
+![Wyniki wzajemnego sprawdzania poprawności modelu regresji](./media/evaluate-model-performance/4.png)
 
-Rysunek 4. Wyników krzyżowego sprawdzania poprawności modelu regresji.
+Rysunek 4. Wyniki wzajemnego sprawdzania poprawności modelu regresji.
 
-## <a name="evaluating-a-binary-classification-model"></a>Ocena Model klasyfikacji binarnej
-W przypadku klasyfikacji binarnej Zmienna docelowa ma tylko dwa możliwe wyniki, na przykład: {0, 1} lub {FAŁSZ, PRAWDA}, {dodatnie, ujemne}. Przyjęto założenie, otrzymują zestaw treści dla dorosłych pracowników z niektórymi demograficznych i zatrudnienia zmienne i zostanie wyświetlony monit do prognozowania poziomu dochodu binarne zmiennej o wartości {"< = 50 K", "> 50 K"}. Innymi słowy ujemna klasa reprezentuje pracowników, którzy tworzą mniejsza lub równa 50 K rocznie i dodatnią klasa reprezentuje innym pracownikom. Tak jak w scenariuszu regresji firma Microsoft będzie wytrenuj model, oceniać niektóre dane i ocena wyników. Główną różnicą jest wybór metryk, które oblicza Azure Machine Learning Studio i danych wyjściowych. Aby zilustrować scenariusza prognozowania poziomu przychodów, użyjemy [treści dla dorosłych](https://archive.ics.uci.edu/ml/datasets/Adult) zestawu danych, aby utworzyć eksperyment Studio i ocena wydajności modelu regresji logistycznej dwuklasowych, powszechnie używane Klasyfikator binarny.
-
-### <a name="creating-the-experiment"></a>Tworzenie eksperymentu
-Dodaj następujące moduły do obszaru roboczego usługi Azure Machine Learning Studio:
-
-* Treści dla dorosłych klasyfikacji binarnej dochodu spisu zestawu danych.
-* [Regresja logistyczna Two-Class][two-class-logistic-regression]
-* [Trenowanie modelu][train-model]
-* [Score Model][score-model]
-* [Ocena modelu][evaluate-model]
-
-Połączyć porty, jak pokazano poniżej na rysunku 5 i ustaw kolumny etykiety [Train Model] [ train-model] moduł *dochodu*.
-
-![Ocena Model klasyfikacji binarnej](./media/evaluate-model-performance/5.png)
-
-Rysunek 5. Ocena Model klasyfikacji binarnej.
-
-### <a name="inspecting-the-evaluation-results"></a>Sprawdzanie wyników oceny
-Po uruchomieniu eksperymentu, kliknij port wyjściowy [Evaluate Model] [ evaluate-model] modułu, a następnie wybierz pozycję *Visualize* aby zobaczyć wyniki oceny (rysunek 7). Są dostępne dla modeli klasyfikacji binarnej metryki oceny: *Dokładność*, *dokładności*, *Odwołaj*, *wynik F1*, i *AUC*. Ponadto moduł generuje macierz pomyłek, w którym wyświetlana jest liczba prawdziwie dodatnie, fałszywych wyników negatywnych, liczbę wyników fałszywie dodatnich i negatywów wartość true, a także *ROC*, *dokładności/odwołania*, i  *Przenoszenie* krzywych.
-
-Dokładność jest po prostu część wystąpień poprawnie sklasyfikowane. Zazwyczaj jest pierwszym metrykę, które przyjrzymy się podczas oceny klasyfikatora. Jednakże, gdy dane testowe jest niezrównoważone (gdzie większość wystąpień należą do jednej z klas) lub interesuje Cię bardziej w czasie wykonywania w jednej z klas, dokładność naprawdę nie odzwierciedla skuteczność klasyfikatora. W scenariuszu poziomu Klasyfikacja dochodu przyjęto założenie, że testujesz niektórych danych, gdzie 99% wystąpień reprezentują osób, które kwota zobowiązania, tym mniejsza lub równa 50 K rocznie. Jest możliwe uzyskanie 0.99 dokładności, przewidując klasy "< = 50K" dla wszystkich wystąpień. Klasyfikator w tym przypadku wydaje się być wysoki poziom ogólną, ale w rzeczywistości nie jest on klasyfikowania dowolnego osobom high-income (1%) poprawnie.
-
-Z tego powodu warto obliczenia dodatkowe metryki, które przechwycić bardziej konkretnych aspektów oceny. Przed przejściem do szczegółów tych metryk, ważne jest zrozumienie macierz pomyłek oceny klasyfikacji binarnej. Etykiety klasy w zestawie szkolenia można wykonać na tylko 2 możliwych wartości, które zazwyczaj nazywamy, jak dodatnie lub ujemne. Dodatnie i ujemne wystąpień, które klasyfikatora przewiduje poprawnie są nazywane odpowiednio prawdziwie dodatnie (TP) i PRAWDA negatywów (TN). Podobnie niepoprawnie niejawnych wystąpienia są nazywane wyników fałszywie dodatnich (FP) i fałszywych wyników negatywnych (FN). Macierz pomyłek jest po prostu tabelę przedstawiającą liczbę wystąpień, które są objęte każdej z tych kategorii 4. Usługa Azure Machine Learning Studio automatycznie decyduje, dwóch klas w zestawie danych jest klasa dodatnią. W przypadku wartości logicznych lub liczby całkowite etykiety klasy wystąpienia etykietą "prawda" lub "1" są przypisywane dodatnią klasy. Jeśli etykiety są ciągami, tak jak w przypadku zestawu danych dochodu etykiety są sortowane alfabetycznie, a pierwszy poziom jest wybierany jako ujemny klasy, podczas gdy drugi poziom jest dodatnia klasy.
-
-![Macierz pomyłek Klasyfikacja binarna](./media/evaluate-model-performance/6a.png)
-
-Rysunek 6. Macierz pomyłek klasyfikacji binarnej.
-
-Wracając do problemu klasyfikacji przychodów, firma Microsoft będzie chciała zadawać na kilka pytań oceny, które pomagają nam zrozumieć wydajność klasyfikatora używane. Bardzo naturalnych pytaniem jest: "Poza osób, których model przewiduje się być zarabiać > 50 K (TP + FP), jak wiele zostały poprawnie klasyfikowane (TP)?" To pytanie, można uzyskać, analizując **dokładności** modelu, który jest część alarmów, które są poprawnie klasyfikowane: TP/(TP+FP). Jest inny, często zadawane pytania "poza wszystkich wysokiej zarabiać pracownikom dochodu > 50 k (TP + FN), ile klasyfikatora klasyfikowania poprawnie (TP)". Jest to rzeczywiście **Odwołaj**, lub wartość true, wartości dodatnich: TP/(TP+FN) klasyfikatora. Może się okazać, czy jest oczywisty kompromisu między dokładności i odwołania. Na przykład biorąc pod uwagę zestaw stosunkowo o zrównoważonym obciążeniu, klasyfikatora, który prognozuje przede wszystkim dodatnią wystąpień miałby wysokiej odwołania, ale raczej niski dokładności tyle wystąpień ujemna może być źle zakwalifikowane skutkuje dużą liczbę wyników fałszywie dodatnich. Aby zobaczyć, jak te dwie metryki w zależności od wykres, możesz kliknąć **dokładności/odwołania** krzywą na stronie dane wyjściowe wyniku oceny (część lewym górnym rogu rysunek 7).
-
-![Wyniki oceny Klasyfikacja binarna](./media/evaluate-model-performance/7.png)
-
-Rysunek 7. Wyniki oceny klasyfikacji binarnej.
-
-Innego powiązane metryki, która jest często używana jest **wynik F1**, który przyjmuje dokładności i wycofaniu pod uwagę. Jest harmoniczną tych metryk 2 i jest obliczana w związku z tym: F1 = 2 (wycofaniu dokładności x) / (dokładności + odwołania). Wynik F1 jest dobrym sposobem na podsumowanie oceny w liczbie pojedynczej, ale zawsze jest dobrym rozwiązaniem, Przyjrzyj się dokładności i wycofaniu ze sobą, aby lepiej zrozumieć sposób działania klasyfikatora.
-
-Ponadto jeden sprawdzić wartość true, zawartość dodatnich a wyników fałszywie dodatnich w **odbiorcy operacyjnego cechy (ROC)** krzywej i odpowiedni **powierzchni pod krzywą (AUC)** wartość. Im bliżej krzywej na lewym górnym rogu, tym lepiej wydajności klasyfikatora (który jest maksymalizowanie true dodatnich przy jednoczesnym zmniejszeniu fałszywie dodatnich). Krzywe, które znajdują się blisko przekątnej wykres, wynikiem klasyfikatorów, które przeważnie do przewidywania przyszłych zdarzeń znajdujących się blisko zgadywania losowych.
-
-### <a name="using-cross-validation"></a>Za pomocą krzyżowego sprawdzania poprawności
-Tak jak w przykładzie regresji można wykonać krzyżowego sprawdzania poprawności wielokrotnie uczenie, ocenę i automatycznie obliczyć różne podzbiory danych. Podobnie, możemy użyć [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu, model regresji logistycznej nieprzeszkolonych i zestawu danych. Kolumna etykiety musi być równa *dochodu* w [krzyżowa Weryfikacja modelu] [ cross-validate-model] właściwości modułu. Po uruchomienie eksperymentu spowodowało i klikając przycisk po prawej stronie wyjściowe port [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu, widać wartości metryk klasyfikacji binarnej dla poszczególnych etapów dodatkowo do średniej i Odchylenie standardowe każdego z nich. 
-
-![Krzyżowe sprawdzanie Model klasyfikacji binarnej](./media/evaluate-model-performance/8.png)
-
-Rysunek 8. Weryfikowanie między Model klasyfikacji binarnej.
-
-![Wyników krzyżowego sprawdzania poprawności Klasyfikator binarny](./media/evaluate-model-performance/9.png)
-
-Rysunek 9. Wyników krzyżowego sprawdzania poprawności Klasyfikator binarny.
-
-## <a name="evaluating-a-multiclass-classification-model"></a>Ocenianie modeli klasyfikacji Wieloklasowej
-W tym eksperymencie użyjemy popularnej [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") zestawu danych zawierającego wystąpienia 3 różne rodzaje (grupy) roślin iris. Istnieją 4 wartości funkcji (słupka długość/szerokość i długość/szerokość płatka) dla każdego wystąpienia. W poprzednich doświadczeń możemy przeszkolonych i przetestowane modele przy użyciu tych samych zestawów danych. W tym miejscu użyjemy [podziału danych] [ split] modułu do tworzenia 2 podzbiorów danych, uczenie się na pierwszym i ocenianie i oceny w drugiej. Zestawu danych Iris jest publicznie dostępny w [UCI Machine Learning repozytorium](https://archive.ics.uci.edu/ml/index.html)i można je pobrać za pomocą [importu danych] [ import-data] modułu.
+## <a name="evaluating-a-binary-classification-model"></a>Ocenianie binarnego modelu klasyfikacji
+W scenariuszu klasyfikacji binarnej zmienna docelowa ma tylko dwa możliwe wyniki, na przykład: {0, 1} lub {false, true}, {ujemna, pozytywna}. Załóżmy, że otrzymujesz zestaw danych dla dorosłych pracowników z niektórymi zmiennymi demograficznymi i pracowniczymi, i że zostanie wyświetlony monit o przewidywanie poziomu dochodów, zmiennej binarnej o wartościach {"< = 50 K", "> 50 K"}. Innymi słowy Klasa negatywna reprezentuje pracowników, którzy nie mają więcej niż 50 K rocznie, a Klasa dodatnia reprezentuje wszystkich innych pracowników. Podobnie jak w przypadku scenariusza regresji będziemy uczyć się modelu, oceny danych i oceny wyników. Główną różnicą jest wybór metricsthe klasycznej wersji Azure Machine Learning Studio obliczeń i danych wyjściowych. Aby zilustrować scenariusz przewidywania poziomu dochodów, użyjemy zestawu danych [dla dorosłych](https://archive.ics.uci.edu/ml/datasets/Adult) do utworzenia eksperymentu dla programu Studio (klasycznego) i oceny wydajności modelu regresji logistycznej z dwoma klasami, powszechnie używanego klasyfikatora binarnego.
 
 ### <a name="creating-the-experiment"></a>Tworzenie eksperymentu
-Dodaj następujące moduły do obszaru roboczego usługi Azure Machine Learning Studio:
+Dodaj następujące moduły do obszaru roboczego w klasycznej wersji Azure Machine Learning Studio:
 
-* [Importowanie danych][import-data]
-* [Las decyzyjny kontra][multiclass-decision-forest]
-* [Podział danych][split]
-* [Trenowanie modelu][train-model]
-* [Score Model][score-model]
-* [Ocena modelu][evaluate-model]
+* Binarny zestaw danych klasyfikacji dochodów z spisu dla dorosłych
+* [Regresja logistyczna dla dwóch klas][two-class-logistic-regression]
+* [Model uczenia][train-model]
+* [Model oceny][score-model]
+* [Oceń model][evaluate-model]
 
-Połącz porty, jak pokazano poniżej na rysunku nr 10.
+Połącz porty, jak pokazano poniżej na rysunku 5 i ustaw kolumnę etykieta modułu [uczenie modelu][train-model] na *przychód*.
 
-Ustaw indeks kolumny etykiety [Train Model] [ train-model] modułu do 5. Zestaw danych zawiera wiersz nie nagłówka, ale wiemy, że etykiety klasy znajdują się w piąta kolumna.
+![Ocenianie binarnego modelu klasyfikacji](./media/evaluate-model-performance/5.png)
 
-Kliknij pozycję [importu danych] [ import-data] modułu i ustaw *źródła danych* właściwości *adres URL sieci Web za pośrednictwem protokołu HTTP*i *adresuURL* do http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
-
-Ustawianie wystąpień służący do szkolenia w [podziału danych] [ split] modułu (0,7, na przykład).
-
-![Ocena Wieloklasowej klasyfikatora](./media/evaluate-model-performance/10.png)
-
-Rysunek 10. Ocena Wieloklasowej klasyfikatora
+Rysunek 5. Ocenianie binarnego modelu klasyfikacji.
 
 ### <a name="inspecting-the-evaluation-results"></a>Sprawdzanie wyników oceny
-Uruchom eksperyment, kliknij port wyjściowy [Evaluate Model][evaluate-model]. Wyniki oceny są prezentowane w postaci macierz pomyłek, w tym przypadku. Rzeczywiste a przewidywane wystąpienia dla wszystkich klas 3 pokazuje macierzy.
+Po uruchomieniu eksperymentu możesz kliknąć port wyjściowy modułu [oceny modelu][evaluate-model] i wybrać opcję *Wizualizuj* , aby wyświetlić wyniki oceny (Rysunek 7). Metryki oceny dostępne dla modeli klasyfikacji binarnych są następujące: *dokładność*, *precyzja*, *odwołanie*, *wynik F1*i *AUC*. Ponadto moduł wyprowadza macierz niepoprawną, pokazując liczbę prawdziwych dodatnich, fałszywych wartości ujemnych, fałszywych dodatnich i prawdziwych wartości ujemnych, a także *Roc*, *dokładności/odwoływania*i *podnoszenia* krzywych.
 
-![Wyniki oceny wieloklasowej klasyfikacji](./media/evaluate-model-performance/11.png)
+Dokładność jest po prostu proporcją poprawnie sklasyfikowanych wystąpień. Zwykle jest to pierwsza Metryka, która jest sprawdzana podczas oceny klasyfikatora. Jednak jeśli dane testowe są niezrównoważone (gdzie większość wystąpień należy do jednej z klas) lub użytkownik jest bardziej interesujący w wydajności jednej z klas, dokładność nie przechwytuje skuteczności klasyfikatora. W scenariuszu klasyfikacji poziomu dochodu przyjęto założenie, że testy są przeprowadzane na niektórych danych, gdzie 99% wystąpień reprezentuje osoby, które uzyskują mniej niż lub równą 50 000 na rok. Istnieje możliwość osiągnięcia dokładności 0,99, przewidywalność klasy "< = 50 000" dla wszystkich wystąpień. Klasyfikator w tym przypadku wygląda na to, że jest to dobre zadanie ogólne, ale w rzeczywistości nie jest klasyfikowane żadnej z dużych dochodów (1%) prawidłowego.
+
+Z tego powodu warto obliczyć dodatkowe metryki, które przechwytują bardziej charakterystyczne aspekty oceny. Przed przechodzeniem do szczegółów takich metryk ważne jest, aby zrozumieć matrycę nieporozumienej oceny klasyfikacji binarnej. Etykiety klas w zestawie szkoleniowym mogą przyjmować tylko 2 możliwe wartości, które zwykle odnoszą się do nich jako wartość dodatnia lub ujemna. Dodatnie i ujemne wystąpienia klasyfikatora, które są prawidłowo przewidywalne, są nazywane odpowiednio prawdziwymi wynikami dodatnimi (TP) i prawdziwymi negatywnymi (TN). Podobnie niewłaściwie sklasyfikowane wystąpienia są nazywane fałszywie dodatnimi (FP) i fałszywych negatywnych (FN). Zamylenie macierzy to po prostu tabela przedstawiająca liczbę wystąpień przypadających na poszczególne cztery kategorie. Klasyczna wersja Azure Machine Learning Studio automatycznie decyduje, które z dwóch klas w zestawie danych jest klasą dodatnią. Jeśli etykiety klas są typu Boolean lub Integer, wówczas wystąpienia oznaczone jako "true" lub "1" są przypisywane do klasy dodatniej. Jeśli etykiety są ciągami, tak jak w przypadku zestawu danych dochodu, etykiety są sortowane alfabetycznie, a pierwszy poziom jest wybierany jako Klasa ujemna, podczas gdy drugi poziom jest klasą dodatnią.
+
+![Niemylenie macierzy binarnej](./media/evaluate-model-performance/6a.png)
+
+Rysunek 6. Niemyląca Klasyfikacja w klasyfikacji binarnej.
+
+Powracając do problemu klasyfikacji dochodu, chcemy zadać kilka pytań dotyczących oceny, które pomogą nam zrozumieć wydajność używanego klasyfikatora. Bardzo naturalne pytanie: "poza osobami, których model przewiduje > 50 000 (TP + FP), ile z nich zostało poprawnie sklasyfikowane (TP)?" Na to pytanie można uzyskać odpowiedzi, sprawdzając **precyzję** modelu, która jest proporcją liczby dodatnich, które są poprawnie sklasyfikowane: TP/(TP + FP). Innym typowym pytaniem jest "poza wszystkimi pracownikami o dużym wpływie na dochody > 50 000 (TP + FN), jak wiele z nich klasyfikuje prawidłowo (TP)". W rzeczywistości jest to **odwołanie**lub prawdziwa dodatnia stawka: TP/(TP + Fn) klasyfikatora. Można zauważyć, że istnieje oczywisty kompromis między precyzją i odwołaniem. Na przykład, mając relatywnie zrównoważony zestaw danych, klasyfikator, który przewiduje większość wystąpień pozytywnych, będzie miał wysoką wartość odwołania, ale niewielka precyzja jako wiele wystąpień ujemnych byłaby błędnie sklasyfikowana, co oznacza znaczną liczbę fałszywych dodatnich. Aby zobaczyć, jak te dwie metryki zależą od siebie, można kliknąć krzywą **precyzja/odwołania** na stronie danych wyjściowych wyniku oceny (w lewej górnej części rysunku 7).
+
+![Wyniki oceny klasyfikacji danych binarnych](./media/evaluate-model-performance/7.png)
+
+Rysunek 7. Wyniki oceny klasyfikacji danych binarnych.
+
+Kolejną pokrewną metryką, która jest często używana, jest **wynik F1**, który przyjmuje precyzję i odwołanie do rozważenia. Jest to średnia harmoniczna tych dwóch metryk i jest obliczana w następujący sposób: F1 = 2 (precyzja x odwołania)/(precyzja + odwoływanie). Wynik F1 jest dobrym sposobem podsumowywania oceny w pojedynczej liczbie, ale zawsze dobrym rozwiązaniem jest zapoznanie się z dokładnością i odzyskanie, aby lepiej zrozumieć, jak działa klasyfikator.
+
+Ponadto jeden może sprawdzać prawdziwą dodatnią stawkę w porównaniu z fałszywą dodatnią częstotliwością w krzywej **charakterystyki (ROC) odbiornika** i odpowiednim **obszarze pod wartością krzywej (AUC)** . Bliżej tej krzywej jest w lewym górnym rogu, tym lepsza wydajność klasyfikatora to (maksymalizuje prawdziwie dodatnią częstotliwość, jednocześnie minimalizując wynik fałszywie dodatni). Krzywe znajdujące się blisko przekątnej wykresu mogą wynikać z klasyfikatorów, które mają na celu wykonywanie prognoz, które są blisko losowego odgadnięcia.
+
+### <a name="using-cross-validation"></a>Używanie krzyżowego sprawdzania poprawności
+Podobnie jak w przykładzie regresji, możemy wykonać krzyżowe sprawdzanie poprawności, aby wielokrotnie nauczyć się, oceny i oceny różnych podzestawów danych. Podobnie możemy użyć modułu [międzyweryfikuj model][cross-validate-model] , nauczenia się modelu regresji logistycznej i zestawu danych. W kolumnie etykieta musi być ustawiona wartość *dochodu* we właściwościach modułu [międzywalidacji modelu][cross-validate-model] . Po uruchomieniu eksperymentu i kliknięciu odpowiedniego portu wyjściowego modułu [Międzyvalidate model][cross-validate-model] można zobaczyć wartości metryk klasyfikacji binarnej dla każdego zgięcia, oprócz średniej i odchylenia standardowego każdego z nich. 
+
+![Weryfikowanie krzyżowe modelu klasyfikacji binarnej](./media/evaluate-model-performance/8.png)
+
+Rysunek 8. Weryfikowanie krzyżowe modelu klasyfikacji binarnej.
+
+![Wyniki wzajemnej walidacji klasyfikatora binarnego](./media/evaluate-model-performance/9.png)
+
+Rysunek 9. Wyniki wzajemnej walidacji klasyfikatora binarnego.
+
+## <a name="evaluating-a-multiclass-classification-model"></a>Ocenianie modelu klasyfikacji wieloklasowej
+W tym doświadczeniu będziemy używać popularnego zestawu danych [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Tęczówki") , który zawiera wystąpienia 3 różnych typów (klasy) zakładu Iris. Istnieją 4 wartości funkcji (słupka długość/szerokość i długość/szerokość) dla każdego wystąpienia. W poprzednich eksperymentach przeszkolone i przetestowano modele przy użyciu tych samych zestawów danych. W tym miejscu będziemy używać modułu [Split Data][split] , aby utworzyć 2 podzbiory danych, nauczyć się pierwszego i oceny i oszacować w drugim. Zestaw danych Iris jest publicznie dostępny w [repozytorium Machine Learning](https://archive.ics.uci.edu/ml/index.html)i można go pobrać za pomocą modułu [Importuj dane][import-data] .
+
+### <a name="creating-the-experiment"></a>Tworzenie eksperymentu
+Dodaj następujące moduły do obszaru roboczego w klasycznej wersji Azure Machine Learning Studio:
+
+* [Importuj dane][import-data]
+* [Las decyzyjny wieloklasowej][multiclass-decision-forest]
+* [Podziel dane][split]
+* [Model uczenia][train-model]
+* [Model oceny][score-model]
+* [Oceń model][evaluate-model]
+
+Połącz porty, jak pokazano poniżej na rysunku 10.
+
+Ustaw indeks kolumny etykieta modułu [szkolenia model][train-model] na 5. Zestaw danych nie ma wiersza nagłówka, ale wiemy, że etykiety klas znajdują się w piątej kolumnie.
+
+Kliknij moduł [Importuj dane][import-data] i ustaw właściwość *Źródło danych* na *adres URL sieci Web za pośrednictwem protokołu HTTP*i *adres URL* do http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
+
+Ustaw ułamek wystąpień, które mają być używane na potrzeby szkolenia w module [Split Data][split] 0,7 (na przykład).
+
+![Ocenianie klasyfikatora wieloklasowego](./media/evaluate-model-performance/10.png)
+
+Rysunek 10. Ocenianie klasyfikatora wieloklasowego
+
+### <a name="inspecting-the-evaluation-results"></a>Sprawdzanie wyników oceny
+Uruchom eksperyment i kliknij port wyjściowy [oszacowania model][evaluate-model]. Wyniki oceny są prezentowane w postaci matrycy pomyłek, w tym przypadku. Macierz pokazuje rzeczywiste a przewidywane wystąpienia dla wszystkich 3 klas.
+
+![Wyniki oceny klasyfikacji wieloklasowej](./media/evaluate-model-performance/11.png)
 
 Rysunek 11. Wyniki oceny klasyfikacji wieloklasowej.
 
-### <a name="using-cross-validation"></a>Za pomocą krzyżowego sprawdzania poprawności
-Jak wspomniano wcześniej, można przeprowadzić szkolenia powtarzane, oceniania i ocen automatycznie przy użyciu [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu. Będziesz potrzebować zestawu danych, model nieprzeszkolonych i [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu (zobacz rysunek poniżej). Ponownie należy ustawić kolumny etykiety [krzyżowa Weryfikacja modelu] [ cross-validate-model] modułu (indeks kolumny 5 w tym przypadku). Po uruchomienie eksperymentu spowodowało i klikając przycisk po prawej stronie wyjściowe port [krzyżowa Weryfikacja modelu][cross-validate-model], można sprawdzić wartości metryk dla poszczególnych etapów, jak również odchylenie mean i standard. Metryki wyświetlane w tym miejscu są podobne do tych omówionych w tym przypadku klasyfikacji binarnej. Jednak należy pamiętać, że wieloklasowej klasyfikacji, obliczeniowych true alarmów/negatywów i fałszywych alarmów/wyników negatywnych jest wykonywane przez zliczania na podstawie klasy, ponieważ brak klasy ogólnej dodatnia lub ujemna. Na przykład podczas obliczania precyzję lub wycofaniu klasy "Iris-setosa", zakłada się, to dodatnia klasy i wszystkie inne jako ujemny.
+### <a name="using-cross-validation"></a>Używanie krzyżowego sprawdzania poprawności
+Jak wspomniano wcześniej, można przeprowadzić powtarzające się szkolenia, ocenianie i ocenianie automatycznie przy użyciu modułu [Międzyvalidate model][cross-validate-model] . Potrzebny jest zestaw danych, nauczenie modelu i moduł [modelowego sprawdzania poprawności][cross-validate-model] (patrz rysunek poniżej). Ponownie należy ustawić kolumnę etykieta modułu [Wielovalidate model][cross-validate-model] (indeks kolumn 5 w tym przypadku). Po uruchomieniu eksperymentu i kliknięciu odpowiedniego portu wyjściowego [modelu krzyżowego sprawdzania poprawności][cross-validate-model]można sprawdzić wartości metryk dla każdego zgięcia, jak również średnią i odchylenie standardowe. Wyświetlane metryki są podobne do tych, które zostały omówione w przypadku klasyfikacji binarnej. Należy jednak pamiętać, że w klasyfikacji wieloklasowej, obliczanie prawdziwych dodatnich/negatywnych i fałszywych wartości dodatnich/negatywnych jest wykonywane przez zliczanie dla poszczególnych klas, ponieważ nie ma żadnej ogólnej klasy pozytywnej ani ujemnej. Na przykład podczas obliczania dokładności lub odwoływania klasy "Iris-setosa" zakłada się, że jest to Klasa dodatnia i wszystkie pozostałe jako ujemne.
 
-![Krzyżowe sprawdzanie Model klasyfikacji Wieloklasowej](./media/evaluate-model-performance/12.png)
+![Krzyżowe sprawdzanie poprawności modelu klasyfikacji wieloklasowej](./media/evaluate-model-performance/12.png)
 
-Rysunek 12. Weryfikowanie wielu modeli klasyfikacji Wieloklasowej.
+Rysunek 12. Krzyżowe sprawdzanie poprawności modelu klasyfikacji wieloklasowej.
 
-![Wyników krzyżowego sprawdzania poprawności modelu klasyfikacji Wieloklasowej](./media/evaluate-model-performance/13.png)
+![Wyniki wzajemnego sprawdzania poprawności modelu klasyfikacji wieloklasowej](./media/evaluate-model-performance/13.png)
 
-Rysunek 13. Wyników krzyżowego sprawdzania poprawności modelu klasyfikacji Wieloklasowej.
+Rysunek 13. Wyniki wzajemnego sprawdzania poprawności modelu klasyfikacji wieloklasowej.
 
 <!-- Module References -->
 [cross-validate-model]: https://msdn.microsoft.com/library/azure/75fb875d-6b86-4d46-8bcc-74261ade5826/

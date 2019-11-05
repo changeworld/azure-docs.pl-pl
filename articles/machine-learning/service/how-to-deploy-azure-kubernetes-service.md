@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
-ms.openlocfilehash: dfaa39b33839406ffdf484299cb520aebf011c7d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/25/2019
+ms.openlocfilehash: 45d76328f4a5de4a5cf26b0a126825c1b0a906c7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299686"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496950"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Wdrażanie modelu w klastrze usługi Azure Kubernetes Service
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dowiedz się, jak za pomocą Azure Machine Learning wdrożyć model jako usługę sieci Web w usłudze Azure Kubernetes Service (AKS). Usługa Azure Kubernetes Service jest dobra w przypadku dużych wdrożeń produkcyjnych. Użyj usługi Azure Kubernetes Service, jeśli potrzebujesz co najmniej jednej z następujących możliwości:
 
@@ -30,8 +31,8 @@ Dowiedz się, jak za pomocą Azure Machine Learning wdrożyć model jako usług�
 
 Podczas wdrażania w usłudze Azure Kubernetes należy wdrożyć klaster AKS, który jest __połączony z obszarem roboczym__. Istnieją dwa sposoby łączenia klastra AKS z obszarem roboczym:
 
-* Utwórz klaster AKS przy użyciu zestawu SDK Azure Machine Learning, interfejsu wiersza polecenia Machine Learning, strony docelowej [Azure Portal](https://portal.azure.com) lub [obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com). Ten proces automatycznie łączy klaster z obszarem roboczym.
-* Dołącz istniejący klaster AKS do obszaru roboczego Azure Machine Learning. Klaster może być dołączany przy użyciu zestawu SDK Azure Machine Learning, Machine Learning interfejsu wiersza polecenia lub Azure Portal.
+* Utwórz klaster AKS przy użyciu zestawu SDK Azure Machine Learning, interfejsu wiersza polecenia Machine Learning lub [Azure Machine Learning Studio](https://ml.azure.com). Ten proces automatycznie łączy klaster z obszarem roboczym.
+* Dołącz istniejący klaster AKS do obszaru roboczego Azure Machine Learning. Klaster może być dołączany przy użyciu zestawu SDK Azure Machine Learning, Machine Learning interfejsu wiersza polecenia lub Azure Machine Learning Studio.
 
 > [!IMPORTANT]
 > Proces tworzenia lub załączników to zadanie jednorazowe. Gdy klaster AKS jest połączony z obszarem roboczym, można go użyć do wdrożeń. Możesz odłączyć lub usunąć klaster AKS, jeśli nie jest już potrzebny. Po detatched lub usunięciu nie będzie już można wdrażać w klastrze.
@@ -66,7 +67,7 @@ Tworzenie i dołączanie klastra AKS jest jednym procesem czasu dla Twojego obsz
 Jeśli chcesz utworzyć klaster AKS __na potrzeby tworzenia__, __sprawdzania poprawności__i __testowania__ zamiast produkcji, możesz określić __cel klastra__ dla __testu deweloperskiego__.
 
 > [!WARNING]
-> W przypadku ustawienia `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` klaster, który został utworzony, nie jest odpowiedni dla ruchu na poziomie produkcyjnym i może zwiększyć czas wnioskowania. Klastry deweloperskie i testowe nie gwarantują odporności na uszkodzenia. Zalecamy co najmniej 2 wirtualne procesory CPU dla klastrów deweloperskich i testowych.
+> Jeśli ustawisz `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, tworzony klaster nie jest odpowiedni dla ruchu na poziomie produkcyjnym i może zwiększyć czas wnioskowania. Klastry deweloperskie i testowe nie gwarantują odporności na uszkodzenia. Zalecamy co najmniej 2 wirtualne procesory CPU dla klastrów deweloperskich i testowych.
 
 W poniższych przykładach pokazano, jak utworzyć nowy klaster AKS przy użyciu zestawu SDK i interfejsu wiersza polecenia:
 
@@ -91,9 +92,9 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> W przypadku [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)w przypadku wybrania wartości niestandardowych dla `agent_count` i `vm_size`, a `cluster_purpose` nie jest `DEV_TEST`, należy upewnić się, że `agent_count` pomnożone przez `vm_size` jest większe lub równe 12 wirtualnym procesorom CPU. Na przykład jeśli używasz `vm_size` z "Standard_D3_v2", który ma 4 procesory wirtualne, należy wybrać `agent_count` z 3 lub większą.
+> W przypadku [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), w przypadku wybrania wartości niestandardowych dla `agent_count` i `vm_size`, a `cluster_purpose` nie `DEV_TEST`, należy upewnić się, że `agent_count` pomnożone przez `vm_size` nie są równe 12 wirtualnym procesorom CPU. Na przykład, jeśli używasz `vm_size` "Standard_D3_v2", który ma 4 procesory wirtualne, należy wybrać `agent_count` z 3 lub więcej.
 >
-> Zestaw SDK Azure Machine Learning nie zapewnia obsługi skalowania klastra AKS. Aby skalować węzły w klastrze, użyj interfejsu użytkownika dla klastra AKS w Azure Portal. Można zmienić tylko liczbę węzłów, a nie rozmiar maszyn wirtualnych klastra.
+> Zestaw SDK Azure Machine Learning nie zapewnia obsługi skalowania klastra AKS. Aby skalować węzły w klastrze, użyj interfejsu użytkownika dla klastra AKS w programie Azure Machine Learning Studio. Można zmienić tylko liczbę węzłów, a nie rozmiar maszyn wirtualnych klastra.
 
 Aby uzyskać więcej informacji na temat klas, metod i parametrów używanych w tym przykładzie, zobacz następujące dokumenty referencyjne:
 
@@ -122,11 +123,11 @@ Jeśli masz już klaster AKS w ramach subskrypcji platformy Azure i jest on niż
 > Jeśli chcesz zabezpieczyć klaster AKS przy użyciu Virtual Network platformy Azure, musisz najpierw utworzyć sieć wirtualną. Aby uzyskać więcej informacji, zobacz temat [bezpieczne eksperymentowanie i wnioskowanie za pomocą usługi Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
 
 > [!WARNING]
-> W przypadku dołączania klastra AKS do obszaru roboczego można określić, w jaki sposób będzie używany klaster przez ustawienie parametru `cluster_purpose`.
+> Podczas dołączania klastra AKS do obszaru roboczego można określić, jak będzie używany klaster, ustawiając parametr `cluster_purpose`.
 >
-> Jeśli nie ustawisz parametru `cluster_purpose` lub ustawisz `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, klaster musi mieć dostępne co najmniej 12 procesorów wirtualnych.
+> Jeśli nie ustawisz parametru `cluster_purpose` ani nie ustawisz `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, klaster musi mieć co najmniej 12 dostępnych procesorów wirtualnych.
 >
-> W przypadku wybrania `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` klaster nie musi mieć 12 wirtualnych procesorów CPU. Zalecamy co najmniej 2 wirtualne procesory CPU na potrzeby tworzenia i testowania. Jednak klaster skonfigurowany do tworzenia i testowania nie jest odpowiedni dla ruchu na poziomie produkcyjnym i może zwiększyć czas wnioskowania. Klastry deweloperskie i testowe nie gwarantują odporności na uszkodzenia.
+> Jeśli ustawisz `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, klaster nie musi mieć 12 wirtualnych procesorów CPU. Zalecamy co najmniej 2 wirtualne procesory CPU na potrzeby tworzenia i testowania. Jednak klaster skonfigurowany do tworzenia i testowania nie jest odpowiedni dla ruchu na poziomie produkcyjnym i może zwiększyć czas wnioskowania. Klastry deweloperskie i testowe nie gwarantują odporności na uszkodzenia.
 
 Aby uzyskać więcej informacji na temat tworzenia klastra AKS przy użyciu interfejsu wiersza polecenia platformy Azure lub portalu, zobacz następujące artykuły:
 
@@ -227,6 +228,69 @@ Aby uzyskać informacje na temat korzystania z VS Code, zobacz [wdrażanie do AK
 > [!IMPORTANT] 
 > Wdrożenie za pomocą VS Code wymaga, aby klaster AKS został utworzony lub dołączony do obszaru roboczego z wyprzedzeniem.
 
+## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Wdróż modele do AKS przy użyciu kontrolowanego wdrożenia (wersja zapoznawcza)
+Analizuj i podnieś wersje modeli w kontrolowany sposób za pomocą punktów końcowych. Wdróż maksymalnie 6 wersji za pojedynczym punktem końcowym i skonfiguruj% ruchu oceniania w każdej wdrożonej wersji. Możesz włączyć usługi App Insights, aby wyświetlać metryki operacyjne punktów końcowych i wdrożonych wersji.
+
+### <a name="create-an-endpoint"></a>Tworzenie punktu końcowego
+Gdy wszystko będzie gotowe do wdrożenia modeli, Utwórz punkt końcowy oceniania i Wdróż swoją pierwszą wersję. W poniższym kroku pokazano, jak wdrożyć i utworzyć punkt końcowy przy użyciu zestawu SDK. Pierwsze wdrożenie zostanie zdefiniowane jako wersja domyślna, co oznacza, że nieokreślony ruch o percentylu w wszystkich wersjach będzie przechodził do wersji domyślnej.  
+
+```python
+import azureml.core,
+from azureml.core.webservice import AksEndpoint
+from azureml.core.compute import AksCompute
+from azureml.core.compute import ComputeTarget
+# select a created compute
+compute = ComputeTarget(ws, 'myaks')
+namespace_name= endpointnamespace 
+# define the endpoint and version name
+endpoint_name = "mynewendpoint",
+version_name= "versiona",
+# create the deployment config and define the scoring traffic percentile for the first deployment
+endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
+                                                              enable_app_insights = true, 
+                                                              tags = {'sckitlearn':'demo'},
+                                                              decription = testing versions,
+                                                              version_name = version_name,
+                                                              traffic_percentile = 20)
+ # deploy the model and endpoint
+ endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ ```
+
+### <a name="update-and-add-versions-to-an-endpoint"></a>Aktualizowanie i Dodawanie wersji do punktu końcowego
+
+Dodaj kolejną wersję do punktu końcowego i skonfiguruj przechodzenie oceniające ruch do wersji. Istnieją dwa typy wersji, kontrolki i wersja leczenia. Może istnieć wiele wersji obróbki, aby pomóc w porównaniu z wersją pojedynczej kontrolki. 
+
+ ```python
+from azureml.core.webservice import AksEndpoint
+
+# add another model deployment to the same endpoint as above
+version_name_add = "versionb" 
+endpoint.create_version(version_name = version_name_add, 
+                        inference_config=inference_config,
+                        models=[model], 
+                        tags = {'modelVersion':'b'}, 
+                        description = "my second version", 
+                        traffic_percentile = 10)
+```
+
+Zaktualizuj istniejące wersje lub usuń je w punkcie końcowym. Można zmienić domyślny typ wersji, typ kontrolki i percentyl ruchu. 
+ 
+ ```python
+from azureml.core.webservice import AksEndpoint
+
+# update the version's scoring traffic percentage and if it is a default or control type 
+endpoint.update_version(version_name=endpoint.versions["versionb"].name, 
+                        description="my second version update", 
+                        traffic_percentile=40,
+                        is_default=True,
+                        is_control_version_type=True)
+
+# delete a version in an endpoint 
+endpoint.delete_version(version_name="versionb")
+
+```
+
+
 ## <a name="web-service-authentication"></a>Uwierzytelnianie usługi sieci Web
 
 W przypadku wdrażania w usłudze Azure Kubernetes uwierzytelnianie __oparte na kluczach__ jest domyślnie włączone. Można również włączyć uwierzytelnianie __oparte na tokenach__ . Uwierzytelnianie oparte na tokenach wymaga, aby klienci używali konta Azure Active Directory do żądania tokenu uwierzytelniania, który jest używany do wysyłania żądań do wdrożonej usługi.
@@ -241,7 +305,7 @@ Informacje o uwierzytelnianiu z aplikacji klienckiej można znaleźć w temacie 
 
 ### <a name="authentication-with-keys"></a>Uwierzytelnianie przy użyciu kluczy
 
-Jeśli uwierzytelnianie klucza jest włączone, można użyć metody `get_keys`, aby pobrać klucz uwierzytelniania podstawowy i pomocniczy:
+Jeśli uwierzytelnianie klucza jest włączone, można użyć metody `get_keys`, aby pobrać podstawowy i pomocniczy klucz uwierzytelniania:
 
 ```python
 primary, secondary = service.get_keys()
@@ -267,7 +331,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Musisz zażądać nowego tokenu po upływie czasu @no__t tokenu.
+> Musisz zażądać nowego tokenu po upływie `refresh_by` tokenu.
 >
 > Firma Microsoft zdecydowanie zaleca utworzenie obszaru roboczego Azure Machine Learning w tym samym regionie, w którym znajduje się klaster usługi Azure Kubernetes. W celu uwierzytelnienia przy użyciu tokenu usługa sieci Web wykona wywołanie do regionu, w którym jest tworzony obszar roboczy Azure Machine Learning. Jeśli region obszaru roboczego jest niedostępny, nie będzie można pobrać tokenu dla usługi sieci Web nawet wtedy, gdy klaster znajduje się w innym regionie niż obszar roboczy. W efekcie uwierzytelnianie oparte na tokenach jest niedostępne do momentu ponownego udostępnienia regionu obszaru roboczego. Ponadto im większa odległość między regionem klastra a regionem obszaru roboczego, tym dłużej potrwa pobieranie tokenu.
 

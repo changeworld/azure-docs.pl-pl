@@ -1,6 +1,6 @@
 ---
-title: Projektowanie pulpit nawigacyjny w czasie rzeczywistym z usługą Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza) samouczek
-description: W tym samouczku pokazano, jak tworzyć i wypełnić oraz zapytania rozproszone tabele w usłudze Azure Database for postgresql w warstwie na dużą skalę (Citus) (wersja zapoznawcza).
+title: Projektowanie pulpitu nawigacyjnego w czasie rzeczywistym przy użyciu samouczka Azure Database for PostgreSQL — Citus)
+description: W tym samouczku przedstawiono sposób tworzenia, wypełniania i wykonywania zapytań dotyczących tabel rozproszonych w Azure Database for PostgreSQL funkcji Citus.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,35 +8,35 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: a5e4b2073a29785ee851b2733c12d6331afe59d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 32487d65397a96d9e96ae3bf3476eed23ddb8adc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791329"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482879"
 ---
-# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Samouczek: Projektowanie pulpit nawigacyjny analizy w czasie rzeczywistym za pomocą usługi Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
+# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Samouczek: projektowanie pulpitu nawigacyjnego analizy w czasie rzeczywistym za pomocą Azure Database for PostgreSQL — Citus
 
-W tym samouczku możesz używać usługi Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza), aby dowiedzieć się, jak:
+W tym samouczku użyjemy Azure Database for PostgreSQL-Citus, aby dowiedzieć się, jak:
 
 > [!div class="checklist"]
-> * Utwórz grupę serwerów (Citus) na dużą skalę
-> * Utwórz schemat przy użyciu narzędzia psql
-> * Tabele fragmentów w węzłach
+> * Tworzenie grupy serwerów hiperskali (Citus)
+> * Tworzenie schematu za pomocą narzędzia PSQL
+> * Fragmentu tabele między węzłami
 > * Generowanie danych przykładowych
-> * Wykonywać zbiorcze
-> * Wykonywanie zapytań o dane nieprzetworzone i zagregowane
-> * Wygasanie danych
+> * Wykonaj pakiety zbiorcze
+> * Wykonywanie zapytań dotyczących danych nieprzetworzonych i agregowanych
+> * Dane wygasające
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
-## <a name="use-psql-utility-to-create-a-schema"></a>Utwórz schemat przy użyciu narzędzia psql
+## <a name="use-psql-utility-to-create-a-schema"></a>Tworzenie schematu za pomocą narzędzia PSQL
 
-Po nawiązaniu połączenia z usługi Azure Database for PostgreSQL — na dużą skalę (Citus) (wersja zapoznawcza) za pomocą narzędzia psql, można wykonać niektóre podstawowe zadania. Ten samouczek przeprowadzi Cię przez ruch danych z funkcji web analytics, następnie zestawianie danych w celu zapewnienia pulpity nawigacyjne czasu rzeczywistego na podstawie tych danych.
+Po nawiązaniu połączenia z Azure Database for PostgreSQL-Citus z użyciem PSQL można wykonać niektóre podstawowe zadania. Ten samouczek przeprowadzi Cię przez proces pozyskiwania danych o ruchu z analizy sieci Web, a następnie zestawia dane w celu zapewnienia pulpitów nawigacyjnych w czasie rzeczywistym na podstawie tych danych.
 
-Utwórzmy tabelę, która zużyje wszystkie nasze dane ruchu pierwotne sieci web. Uruchom następujące polecenia w terminalu psql:
+Utwórzmy tabelę, która będzie używać wszystkich naszych nieprzetworzonych danych o ruchu w sieci Web. Uruchom następujące polecenia w terminalu PSQL:
 
 ```sql
 CREATE TABLE http_request (
@@ -52,7 +52,7 @@ CREATE TABLE http_request (
 );
 ```
 
-Przedstawimy również tworzenie tabeli, w którym będą przechowywane w naszych agregacji na minutę i tabelę, która zachowuje położenie naszej ostatniej zbiorczy. Uruchom następujące polecenia w także psql:
+Utworzymy również tabelę, w której będą przechowywane nasze zagregowane wartości, oraz tabelę, która utrzymuje pozycję naszego ostatniego zestawienia. Uruchom następujące polecenia w PSQL również:
 
 ```sql
 CREATE TABLE http_request_1min (
@@ -76,17 +76,17 @@ CREATE TABLE latest_rollup (
 );
 ```
 
-Możesz wyświetlić nowo utworzonego tabelami w listę tabel, teraz za pomocą tego polecenia psql:
+Nowo utworzone tabele znajdują się na liście tabel teraz za pomocą tego polecenia PSQL:
 
 ```postgres
 \dt
 ```
 
-## <a name="shard-tables-across-nodes"></a>Tabele fragmentów w węzłach
+## <a name="shard-tables-across-nodes"></a>Fragmentu tabele między węzłami
 
-Wdrożenia na dużą skalę wiersze tabeli są przechowywane w różnych węzłach, na podstawie wartości kolumny wyznaczony przez użytkownika. Ta "kolumna dystrybucji" oznacza to, jak dane są podzielone na fragmenty w węzłach.
+Wdrożenie w celu przechowania tabeli wierszy w różnych węzłach w oparciu o wartość kolumny wyznaczonej przez użytkownika. Ta "kolumna dystrybucji" oznacza sposób, w jaki dane są podzielonej na fragmenty między węzłami.
 
-Teraz należy ustawić kolumny dystrybucji lokacji jako\_identyfikator, klucz fragmentu. W psql uruchom następujące funkcje:
+Ustawmy, aby kolumna dystrybucji była\_identyfikatorem witryny, klucz fragmentu. W PSQL Uruchom następujące funkcje:
 
   ```sql
 SELECT create_distributed_table('http_request',      'site_id');
@@ -95,7 +95,7 @@ SELECT create_distributed_table('http_request_1min', 'site_id');
 
 ## <a name="generate-sample-data"></a>Generowanie danych przykładowych
 
-Teraz naszej grupy serwerów powinna być gotowa do odbierania niektórych danych. Firma Microsoft może uruchom następujące polecenie lokalnie z naszych `psql` połączenia stale wstawiania danych.
+Teraz nasza grupa serwerów powinna być gotowa do pozyskiwania danych. Aby ciągle wstawiać dane, można uruchomić następujące lokalnie z naszego połączenia z usługą `psql`.
 
 ```sql
 DO $$
@@ -122,18 +122,18 @@ DO $$
 END $$;
 ```
 
-Zapytanie wstawia około ośmiu wierszy co sekundę. Wiersze są przechowywane w węzłach innego procesu roboczego, zgodnie z zaleceniami kolumny dystrybucji `site_id`.
+Zapytanie wstawia około osiem wierszy co sekundę. Wiersze są przechowywane w różnych węzłach procesu roboczego jako kierowane do kolumny dystrybucja, `site_id`.
 
    > [!NOTE]
-   > Pozostaw zapytanie generowania danych, które są uruchomione i otwieraniu drugie połączenie psql dla pozostałych poleceń w ramach tego samouczka.
+   > Pozostaw uruchomioną kwerendę generowania danych i Otwórz drugie połączenie PSQL dla pozostałych poleceń w tym samouczku.
    >
 
 ## <a name="query"></a>Zapytanie
 
-Opcja hostingu w hiperskali zezwala na wiele węzłów do przetworzenia zapytania równolegle dla danej szybkości. Na przykład baza danych oblicza agregacji typu Suma i liczba na węzłach procesu roboczego i łączy wyniki końcowe odpowiedzi.
+Opcja hostingu w ramach skalowania umożliwia wielu węzłom równoległe przetwarzanie zapytań w celu przyspieszenia. Na przykład baza danych oblicza zagregowane wartości, takie jak SUM i COUNT w węzłach procesu roboczego, a następnie łączy wyniki w odpowiedzi końcowej.
 
-Oto zapytanie, aby liczba żądań sieci web na minutę, wraz z kilkoma statystyki.
-Spróbuj uruchomić go w psql i sprawdź wyniki.
+Oto zapytanie pozwalające obliczyć liczbę żądań sieci Web na minutę wraz z kilkoma statystykami.
+Spróbuj uruchomić go w PSQL i obserwuj wyniki.
 
 ```sql
 SELECT
@@ -149,13 +149,13 @@ GROUP BY site_id, minute
 ORDER BY minute ASC;
 ```
 
-## <a name="rolling-up-data"></a>Zestawianie danych
+## <a name="rolling-up-data"></a>Wycofywanie danych
 
-Poprzednie zapytanie działa prawidłowo we wczesnych etapach, ale obniża wydajność w miarę skalowania danych. Nawet w przypadku przetwarzania rozproszonego, szybciej jest wstępnie obliczenia danych niż Aby ponownie obliczyć jej wielokrotnie.
+Poprzednie zapytanie działa prawidłowo w wczesnych etapach, ale jego wydajność obniży się w miarę skalowania danych. Nawet w przypadku przetwarzania rozproszonego szybciej można wstępnie obliczyć dane, niż w przypadku wielokrotnego obliczania.
 
-Możemy zapewnić, że pulpit nawigacyjny pozostanie szybkie, regularnie zestawianie nieprzetworzone dane do tabeli agregacji. Możesz eksperymentować z czasem trwania agregacji. Użyliśmy tabeli agregacji na minutę, ale można podzielić dane na 5, 15 lub 60 minut zamiast tego.
+Możemy upewnić się, że pulpit nawigacyjny pozostanie szybko, regularnie pobierając pierwotne dane do tabeli agregacji. Można eksperymentować z czasem trwania agregacji. Użyto tabeli agregacji na minutę, ale zamiast tego można przerwać dane w ciągu 5, 15 lub 60 minut.
 
-Aby łatwiej uruchomić roll-up, którą zamierzamy umieścić go w funkcji plpgsql. Uruchom następujące polecenia w psql, aby utworzyć `rollup_http_request` funkcji.
+Aby łatwiej uruchomić ten pakiet zbiorczy, należy umieścić go w funkcji plpgsql. Uruchom te polecenia w PSQL, aby utworzyć funkcję `rollup_http_request`.
 
 ```sql
 -- initialize to a time long ago
@@ -190,13 +190,13 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-Za pomocą naszych funkcji w miejscu ją wykonać, aby rzutować dane:
+Korzystając z naszej funkcji, wykonaj ją w celu zestawienia danych:
 
 ```sql
 SELECT rollup_http_request();
 ```
 
-I z naszych danych w postaci wstępnie zagregowane firma Microsoft może odpytać tabelę rollup w celu uzyskania tego samego raportu, jak wcześniej. Uruchom następujące zapytanie:
+Wraz z naszymi danymi w formie wstępnie zagregowanej możemy zbadać tabelę zestawień, aby uzyskać ten sam raport zgodnie z wcześniejszym użyciem. Uruchom następujące zapytanie:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,
@@ -205,25 +205,25 @@ SELECT site_id, ingest_time as minute, request_count,
  WHERE ingest_time > date_trunc('minute', now()) - '5 minutes'::interval;
  ```
 
-## <a name="expiring-old-data"></a>Wygasające stare dane
+## <a name="expiring-old-data"></a>Wygaśnięcie starych danych
 
-Pakiety zbiorcze szybciej zapytań, ale wciąż potrzebujemy wygaśnięcie starych danych, aby uniknąć kosztów magazynowania niepowiązanych. Zdecyduj, jak długo chcesz przechowywać dane dla każdej stopień szczegółowości i Użyj standardowego zapytania, aby usunąć dane wygasłe. W poniższym przykładzie podjęliśmy decyzję o nieprzetworzone dane przez jeden dzień, a na minutę agregacji przez jeden miesiąc:
+Pakiety zbiorcze umożliwiają szybsze wykonywanie zapytań, ale nadal musimy wygasnąć stare dane, aby uniknąć niezwiązanych kosztów magazynowania. Zdecyduj, jak długo chcesz przechowywać dane dla każdego stopnia szczegółowości, i użyj standardowych zapytań, aby usunąć wygasłe dane. W poniższym przykładzie postanowiono zachować dane pierwotne przez jeden dzień i agregacje na minutę przez jeden miesiąc:
 
 ```sql
 DELETE FROM http_request WHERE ingest_time < now() - interval '1 day';
 DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 ```
 
-W środowisku produkcyjnym można opakować te zapytania w funkcji i wywołać go co minutę zadania cron.
+W środowisku produkcyjnym można zawijać te zapytania w funkcji i wywoływać je co minutę w zadaniu firmy cronus.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W poprzednich krokach utworzono zasoby platformy Azure w grupie serwerów. Jeśli nie będziesz już potrzebować tych zasobów w przyszłości, Usuń grupę serwera. Naciśnij klawisz *Usuń* znajdujący się w *Przegląd* strony grupy serwerów. Po wyświetleniu monitu na stronie wyskakujące, upewnij się, nazwę grupy serwerów i kliknij końcowe *Usuń* przycisku.
+W poprzednich krokach zostały utworzone zasoby platformy Azure w grupie serwerów. Jeśli nie chcesz potrzebować tych zasobów w przyszłości, Usuń grupę serwerów. Naciśnij przycisk *Usuń* na stronie *Przegląd* dla swojej grupy serwerów. Po wyświetleniu monitu na stronie podręcznej Potwierdź nazwę grupy serwerów, a następnie kliknij przycisk *Usuń* końcowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób aprowizowania grupy serwerów na dużą skalę (Citus). Dołączone do niego za pomocą narzędzia psql, utworzyć schemat i rozproszonych danych. Regularnie przedstawiono przesyłać zapytania dotyczące danych zarówno w postaci pierwotnej agregowanie danych, wykonywać zapytania dotyczące tabel zagregowane i wygaśnięcie starych danych.
+W tym samouczku pokazano, jak zainicjować obsługę administracyjną grupy serwerów Citus. Nawiązano połączenie z usługą PSQL, utworzono schemat i dane rozproszone. Wiesz już, jak wykonywać zapytania dotyczące danych w postaci surowej, regularnie agregować te dane, tworzyć zapytania dotyczące zagregowanych tabel i wygasać stare dane.
 
-Następnie Dowiedz się więcej o koncepcjach na dużą skalę.
+Następnie Dowiedz się więcej na temat pojęć związanych ze skalą.
 > [!div class="nextstepaction"]
-> [Typy węzłów na dużą skalę](https://aka.ms/hyperscale-concepts)
+> [Skalowanie typów węzłów](https://aka.ms/hyperscale-concepts)

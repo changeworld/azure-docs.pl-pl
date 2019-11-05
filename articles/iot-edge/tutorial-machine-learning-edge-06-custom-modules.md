@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5fa13f209d6f4df0ebd531f803e75cdb657abf5c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163123"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494006"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Samouczek: Tworzenie i wdrażanie niestandardowych modułów IoT Edge
 
@@ -172,7 +172,7 @@ Następnie dodamy moduł routera do naszego rozwiązania. Moduł routera obsług
 4. Po wyświetleniu monitu dotyczącego repozytorium obrazów platformy Docker Użyj rejestru z obszaru roboczego usługi Machine Learning (możesz znaleźć rejestr w węźle registryCredentials pliku *Deployment. Template. JSON* ). Ta wartość to w pełni kwalifikowany adres do rejestru, taki jak **\<rejestru\>. azurecr.IO/turbofanrouter**.
 
     > [!NOTE]
-    > W tym artykule używamy Azure Container Registry utworzonych przez obszar roboczy usługi Azure Machine Learning, który został użyty do uczenia i wdrożenia naszego klasyfikatora. Jest to wyłącznie wygoda. Możemy utworzyć nowy rejestr kontenerów i opublikować tam nasze moduły.
+    > W tym artykule używamy Azure Container Registry utworzonych przez obszar roboczy Azure Machine Learning, który został użyty do uczenia i wdrożenia naszego klasyfikatora. Jest to wyłącznie wygoda. Możemy utworzyć nowy rejestr kontenerów i opublikować tam nasze moduły.
 
 5. Otwórz nowe okno terminalu w Visual Studio Code (**Wyświetl** **Terminal** > ) i skopiuj pliki z katalogu modułów.
 
@@ -639,7 +639,7 @@ W przypadku routera i klasyfikatora oczekuje się otrzymywania zwykłych komunik
 
 13. Wybierz opcję **trasa testowa**. Jeśli test zakończy się pomyślnie, zobaczysz komunikat pasujący do zapytania.
 
-14. Kliknij przycisk **Save** (Zapisz).
+14. Kliknij pozycję **Zapisz**.
 
 #### <a name="update-turbofandevicetostorage-route"></a>Aktualizowanie trasy turbofanDeviceToStorage
 
@@ -752,7 +752,7 @@ Po wprowadzeniu zmian w konfiguracji wszystko jest gotowe do skompilowania obraz
 
 Po pomyślnym zakończeniu kompilacji będziemy mogli używać Azure Portal do przeglądania naszych opublikowanych modułów.
 
-1. W Azure Portal przejdź do obszaru roboczego usługi Azure Machine Learning i kliknij hiperlink dla **rejestru**.
+1. W Azure Portal przejdź do obszaru roboczego Azure Machine Learning i kliknij hiperlink dla **rejestru**.
 
     ![Przejdź do rejestru z obszaru roboczego usługi Machine Learning](media/tutorial-machine-learning-edge-06-custom-modules/follow-registry-link.png)
 

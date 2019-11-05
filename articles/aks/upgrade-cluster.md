@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 9404888eadf94eaf86a6e8584b49595e10b34c69
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 36bd05940644b62bc3e58b642bfe6c00238383fa
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264183"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472472"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Ten artykuł wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Sprawdź dostępność dostępnych uaktualnień klastrów AKS
 
-Aby sprawdzić, które wersje Kubernetes są dostępne dla klastra, użyj polecenia [AZ AKS Get-Upgrades][az-aks-get-upgrades] . Poniższy przykład sprawdza dostępność dostępnych uaktualnień do klastra o nazwie *myAKSCluster* w grupie zasobów o nazwiemoja resourceName:
+Aby sprawdzić, które wersje Kubernetes są dostępne dla klastra, użyj polecenia [AZ AKS Get-Upgrades][az-aks-get-upgrades] . Poniższy przykład sprawdza dostępność dostępnych uaktualnień do klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie Moja *resourceName*:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
@@ -65,7 +65,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 Uaktualnienie klastra trwa kilka minut, w zależności od liczby posiadanych węzłów. 
 
 > [!NOTE]
-> Istnieje łączny czas trwania uaktualniania klastra. Ten czas jest obliczany przez pobranie produktu z `10 minutes * total number of nodes in the cluster`. Na przykład w klastrze 20 węzłów operacje uaktualniania muszą się powieść w ciągu 200 minut, a operacja nie powiedzie się, aby uniknąć nieodwracalnego stanu klastra. Aby odzyskać sprawność po błędzie uaktualnienia, ponów próbę wykonania operacji uaktualniania po osiągnięciu limitu czasu.
+> Istnieje łączny czas trwania uaktualniania klastra. Ten czas jest obliczany przez pobranie iloczynu `10 minutes * total number of nodes in the cluster`. Na przykład w klastrze 20 węzłów operacje uaktualniania muszą się powieść w ciągu 200 minut, a operacja nie powiedzie się, aby uniknąć nieodwracalnego stanu klastra. Aby odzyskać sprawność po błędzie uaktualnienia, ponów próbę wykonania operacji uaktualniania po osiągnięciu limitu czasu.
 
 Aby upewnić się, że uaktualnienie zakończyło się pomyślnie, użyj polecenia [AZ AKS show][az-aks-show] :
 

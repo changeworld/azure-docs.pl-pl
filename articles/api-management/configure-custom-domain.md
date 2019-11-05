@@ -11,16 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 52eeedf4651cee012569034ae635a4736b3f3335
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ba2288fa4add6df6b7861b5f8a99bcd3ee8b4c12
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135535"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472193"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurowanie niestandardowej nazwy domeny
 
-Podczas tworzenia wystąpienia usługi Azure API Management, platforma Azure przypisze mu poddomenę azure-api.net (na przykład `apim-service-name.azure-api.net`). Można jednak uwidocznić API Management punkty końcowe przy użyciu własnej niestandardowej nazwy domeny, takiej jak **contoso.com**. W tym samouczku przedstawiono sposób mapowania istniejącej niestandardowej nazwy DNS na punkty końcowe udostępniane przez wystąpienie API Management.
+Gdy tworzysz wystąpienie usługi Azure API Management, platforma Azure przypisze ją poddomenie azure-api.net (na przykład `apim-service-name.azure-api.net`). Można jednak uwidocznić API Management punkty końcowe przy użyciu własnej niestandardowej nazwy domeny, takiej jak **contoso.com**. W tym samouczku przedstawiono sposób mapowania istniejącej niestandardowej nazwy DNS na punkty końcowe udostępniane przez wystąpienie API Management.
 
 > [!WARNING]
 > Klienci, którzy chcą korzystać z przypinania certyfikatów w celu poprawy bezpieczeństwa aplikacji, muszą używać niestandardowej nazwy domeny > i certyfikatu, którym zarządzają, a nie z domyślnym certyfikatem. Klienci, którzy zamiast niego przypinają certyfikat domyślny, będą > podjęcia twardej zależności od właściwości niekontrolowanego certyfikatu, co nie jest zalecanym postępowaniem.
@@ -45,10 +45,10 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
 
     Istnieje kilka punktów końcowych, do których można przypisać niestandardową nazwę domeny. Obecnie dostępne są następujące punkty końcowe:
 
-    - **Brama** (wartość domyślna to `<apim-service-name>.azure-api.net`:),
-    - **Portal** (wartość domyślna to `<apim-service-name>.portal.azure-api.net`:),
-    - **Zarządzanie** (wartość domyślna to `<apim-service-name>.management.azure-api.net`:),
-    - **Menedżer SCM** (wartość domyślna to `<apim-service-name>.scm.azure-api.net`:).
+    - **Brama** (domyślnie: `<apim-service-name>.azure-api.net`),
+    - **Portal** (domyślnie: `<apim-service-name>.portal.azure-api.net`),
+    - **Zarządzanie** (domyślnie: `<apim-service-name>.management.azure-api.net`),
+    - **SCM** (domyślnie: `<apim-service-name>.scm.azure-api.net`).
 
     > [!NOTE]
     > Tylko punkt końcowy **bramy** dostępny do konfiguracji w warstwie zużycia.
@@ -63,7 +63,7 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
     - W obszarze **certyfikat**wybierz certyfikat z Key Vault. Można również przekazać prawidłowy. Plik PFX i podaj jego **hasło**, jeśli certyfikat jest chroniony hasłem.
 
     > [!NOTE]
-    > Nazwy domen wieloznacznych, `*.contoso.com` np., są obsługiwane we wszystkich warstwach poza warstwą zużycia.
+    > Nazwy domen symboli wieloznacznych, np. `*.contoso.com` są obsługiwane we wszystkich warstwach z wyjątkiem warstwy zużycia.
 
     > [!TIP]
     > Zalecamy używanie Azure Key Vault do zarządzania certyfikatami i ustawiania ich na automatyczne obracanie.
@@ -88,7 +88,7 @@ Podczas konfigurowania usługi DNS dla niestandardowej nazwy domeny dostępne s�
 -   Skonfiguruj rekord A, który wskazuje adres IP bramy API Management.
 
 > [!NOTE]
-> Mimo że adres IP wystąpienia zarządzania interfejsem API jest statyczny, może on ulec zmianie w kilku scenariuszach. Z tego powodu zaleca się użycie rekordu CNAME podczas konfigurowania domeny niestandardowej. Weź pod uwagę podczas wybierania metody konfiguracji DNS. Przeczytaj więcej na temat [często zadawanych pytań dotyczących interfejsu API Mananagement](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
+> Mimo że adres IP wystąpienia zarządzania interfejsem API jest statyczny, może on ulec zmianie w kilku scenariuszach. Z tego powodu zaleca się użycie rekordu CNAME podczas konfigurowania domeny niestandardowej. Weź pod uwagę podczas wybierania metody konfiguracji DNS. Przeczytaj więcej na temat [API Management często zadawanych pytań](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
 
 ## <a name="next-steps"></a>Następne kroki
 

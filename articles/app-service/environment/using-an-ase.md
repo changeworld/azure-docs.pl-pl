@@ -13,24 +13,24 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cabefcc53106a53459975fc26513dc59ae7d3372
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 841271c474ba8e24bc352bcae1fa037cf382a8ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073214"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470581"
 ---
 # <a name="use-an-app-service-environment"></a>Używanie środowiska App Service #
 
 Azure App Service Environment to wdrożenie Azure App Service w podsieci w sieci wirtualnej platformy Azure klienta. Składa się z:
 
-- **Frontony**: Frontony to miejsce, w którym protokół HTTP/HTTPS kończy działanie w środowisku App Serviceowym (ASE).
-- **Pracownicy**: Pracownicy to zasoby, które obsługują aplikacje.
-- **Baza danych**: Baza danych zawiera informacje, które definiują środowisko.
+- **Frontony**: frontony http/https w środowisku App Serviceowym (ASE).
+- **Procesy robocze**: pracownicy są zasobami, które obsługują aplikacje.
+- **Baza danych**: baza danych zawiera informacje, które definiują środowisko.
 - **Magazyn**: Magazyn jest używany do hostowania aplikacji opublikowanych przez klienta.
 
 > [!NOTE]
-> Istnieją dwie wersje App Service Environment: ASEv1 i ASEv2. W środowiska asev1 należy zarządzać zasobami, zanim będzie można z nich korzystać. Aby dowiedzieć się, jak konfigurować środowiska asev1 i zarządzać nim, zobacz [Konfigurowanie środowiska App Service w wersji 1][ConfigureASEv1]. Pozostała część tego artykułu koncentruje się na ASEv2.
+> Istnieją dwie wersje App Service Environment: środowiska asev1 i ASEv2. W środowiska asev1 należy zarządzać zasobami, zanim będzie można z nich korzystać. Aby dowiedzieć się, jak konfigurować środowiska asev1 i zarządzać nim, zobacz [Konfigurowanie środowiska App Service w wersji 1][ConfigureASEv1]. Pozostała część tego artykułu koncentruje się na ASEv2.
 >
 >
 
@@ -65,9 +65,9 @@ Aby utworzyć aplikację w środowisku ASE:
 
     b. Wprowadź nazwę planu App Service.
 
-    c. Wybierz pozycję ASE na liście rozwijanej **Lokalizacja** . 
+    d. Wybierz pozycję ASE na liście rozwijanej **Lokalizacja** . 
     
-    d. Wybierz **izolowaną** warstwę cenową. Wybierz **wybierz**.
+    d. Wybierz **izolowaną** warstwę cenową. Wybierz przycisk **Wybierz**.
 
     e. Kliknij przycisk **OK**.
     
@@ -105,7 +105,7 @@ Zasoby frontonu są punktami końcowymi protokołu HTTP/HTTPS dla środowiska AS
 
 ## <a name="app-access"></a>Dostęp do aplikacji ##
 
-W zewnętrznym środowisku ASE domena używana podczas tworzenia aplikacji różni się od App Service wielodostępnych. Zawiera nazwę środowiska ASE. Aby uzyskać więcej informacji na temat tworzenia zewnętrznego środowiska ASE, zobacz [Create a App Service Environment][MakeExternalASE]. Nazwa domeny w zewnętrznym środowisku ASE wygląda następująco *.&lt; asename&gt;. p.azurewebsites.NET*. Na przykład jeśli środowisko ASE ma nazwę _External-ASE_ i hostuje aplikację o nazwie _contoso_ w tym środowisku ASE, dotrzemy do niej przy użyciu następujących adresów URL:
+W zewnętrznym środowisku ASE domena używana podczas tworzenia aplikacji różni się od App Service wielodostępnych. Zawiera nazwę środowiska ASE. Aby uzyskać więcej informacji na temat tworzenia zewnętrznego środowiska ASE, zobacz [Create a App Service Environment][MakeExternalASE]. Nazwa domeny w zewnętrznym środowisku ASE wygląda jak *.&lt;asename&gt;. p.azurewebsites.NET*. Na przykład jeśli środowisko ASE ma nazwę _External-ASE_ i hostuje aplikację o nazwie _contoso_ w tym środowisku ASE, dotrzemy do niej przy użyciu następujących adresów URL:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
@@ -122,7 +122,7 @@ W środowisku ILB ASE należy określić domenę w czasie wdrażania. Aby uzyska
 Podobnie jak w przypadku App Service wielodostępnego, w środowisku ASE można publikować przy użyciu:
 
 - Wdrażanie w sieci Web.
-- FTP.
+- Zwrócił.
 - Ciągła integracja.
 - Przeciągnij i upuść w konsoli kudu.
 - Środowisko IDE, takie jak Visual Studio, zaćmienie lub IntelliJ pomysł.
@@ -133,7 +133,7 @@ Główna różnica polega na publikowaniu w odniesieniu do ILB ASE. W ILB ASE pu
 
 Poza platformą internetowe systemy CI, takie jak GitHub i Azure DevOps, nie współpracują z ILB ASE, ponieważ punkt końcowy publikowania nie jest dostępny dla Internetu. W przypadku usługi Azure DevOps można obejść ten krok poprzez zainstalowanie samoobsługowego agenta wydania w sieci wewnętrznej, gdzie może dotrzeć do ILB. Alternatywnie można również użyć systemu CI, który używa modelu ściągania, takiego jak Dropbox.
 
-Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Zobaczysz ją w profilu publikowania aplikacji i w bloku portalu aplikacji (w temacie **Omówienie** > **podstawy** oraz we **właściwościach**). 
+Punkty końcowe publikowania dla aplikacji w środowisku ASE z wewnętrznym modułem równoważenia obciążenia używają domeny, za pomocą której utworzono to środowisko. Zobaczysz ją w profilu publikowania aplikacji i w bloku portalu aplikacji (w temacie **omówienie** > **Essentials** , a także we **właściwościach**). 
 
 ## <a name="pricing"></a>Cennik ##
 
@@ -179,7 +179,7 @@ Aby usunąć środowisko ASE:
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

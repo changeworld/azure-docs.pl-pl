@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: c26c0b16331ae01f7505e44cef3fe91b3282750b
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 09696f5a3df7cc4170c57b862a11bbd5a82e2bc9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809848"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494805"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Tworzenie klastrów usługi HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -46,12 +46,12 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
 
     |Parametr | Opis |
     |---|---|
-    |`--size`| Liczba węzłów procesu roboczego w klastrze. W tym artykule jest stosowana `clusterSizeInNodes` zmienna jako wartość przekazaną do. `--size` |
-    |`--version`| Wersja klastra usługi HDInsight. W tym artykule jest stosowana `clusterVersion` zmienna jako wartość przekazaną do. `--version` Zobacz też: [Obsługiwane wersje usługi HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| Typ klastra usługi HDInsight, taki jak: Hadoop, interactivehive, HBase, Kafka, burza, Spark, Rserver, mlservices.  W tym artykule jest stosowana `clusterType` zmienna jako wartość przekazaną do. `--type` Zobacz też: [Typy i konfiguracja klastra](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
-    |`--component-version`|Wersje różnych składników usługi Hadoop, w wersjach rozdzielonych spacjami w formacie "Component = Version". W tym artykule jest stosowana `componentVersion` zmienna jako wartość przekazaną do. `--component-version` Zobacz też: [Składniki usługi Hadoop](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
+    |`--size`| Liczba węzłów procesu roboczego w klastrze. W tym artykule jest stosowana zmienna `clusterSizeInNodes` jako wartość przekazaną do `--size`. |
+    |`--version`| Wersja klastra usługi HDInsight. W tym artykule jest stosowana zmienna `clusterVersion` jako wartość przekazaną do `--version`. Zobacz również: [obsługiwane wersje usługi HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
+    |`--type`| Typ klastra usługi HDInsight, taki jak: Hadoop, interactivehive, HBase, Kafka, burza, Spark, Rserver, mlservices.  W tym artykule jest stosowana zmienna `clusterType` jako wartość przekazaną do `--type`. Zobacz również: [typy i konfiguracja klastra](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
+    |`--component-version`|Wersje różnych składników usługi Hadoop, w wersjach rozdzielonych spacjami w formacie "Component = Version". W tym artykule jest stosowana zmienna `componentVersion` jako wartość przekazaną do `--component-version`. Zobacz również: [składniki usługi Hadoop](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
 
-    Zamień `RESOURCEGROUPNAME`, `LOCATION`, ,`CLUSTERNAME` iz`PASSWORD` wymaganymi wartościami. `STORAGEACCOUNTNAME` Zmień wartości innych zmiennych zgodnie z potrzebami. Następnie wprowadź polecenie interfejsu wiersza polecenia.
+    Zastąp `RESOURCEGROUPNAME`, `LOCATION`, `CLUSTERNAME`, `STORAGEACCOUNTNAME`i `PASSWORD` odpowiednimi wartościami. Zmień wartości innych zmiennych zgodnie z potrzebami. Następnie wprowadź polecenie interfejsu wiersza polecenia.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -76,7 +76,7 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
         --name $resourceGroupName
     ```
 
-    Aby uzyskać listę prawidłowych lokalizacji, użyj `az account list-locations` polecenia, a następnie użyj jednej z tych lokalizacji `name` z wartości.
+    Aby uzyskać listę prawidłowych lokalizacji, użyj polecenia `az account list-locations`, a następnie użyj jednej z lokalizacji z wartości `name`.
 
 4. [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) , wprowadzając następujące polecenie:
 

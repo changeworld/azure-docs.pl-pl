@@ -3,15 +3,15 @@ title: Informacje o działaniu efektów
 description: Definicje Azure Policy mają różne skutki, które określają sposób zarządzania i zgłaszania zgodności.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/17/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c448ab889ad263f4f8b6c9a59048551ca761d69a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176339"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464053"
 ---
 # <a name="understand-azure-policy-effects"></a>Zrozumienie efektów Azure Policy
 
@@ -25,6 +25,7 @@ Te efekty są obecnie obsługiwane w definicji zasad:
 - [Pozbawić](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled (Wyłączone)](#disabled)
+- [EnforceOPAConstraint](#enforceopaconstraint) (wersja zapoznawcza)
 - [EnforceRegoPolicy](#enforceregopolicy) (wersja zapoznawcza)
 - [Zmodyfikować](#modify)
 
@@ -39,7 +40,7 @@ Te efekty są obecnie obsługiwane w definicji zasad:
 
 Gdy dostawca zasobów zwróci kod sukcesu, **AuditIfNotExists** i **DeployIfNotExists** , aby określić, czy wymagane jest dodatkowe rejestrowanie zgodności lub akcja.
 
-Obecnie nie ma żadnych kolejności oceny dla efektu **EnforceRegoPolicy** .
+Obecnie nie ma żadnych kolejności oceny dla efektów **EnforceOPAConstraint** lub **EnforceRegoPolicy** .
 
 ## <a name="disabled"></a>Disabled (Wyłączony)
 
@@ -99,7 +100,7 @@ Przykład 2: pojedyncze pary **pól/wartości** przy użyciu [aliasu](definition
 
 ## <a name="modify"></a>Modyfikuj
 
-Modyfikowanie służy do dodawania, aktualizowania lub usuwania tagów w zasobie podczas tworzenia lub aktualizowania. Typowym przykładem jest aktualizowanie tagów w zasobach, takich jak costCenter. Zasady modyfikowania powinny mieć zawsze ustawioną wartość `mode` _, chyba że_ zasób docelowy jest grupą zasobów. Istniejące niezgodne zasoby można skorygować przy użyciu [zadania korygowania](../how-to/remediate-resources.md). Pojedyncza reguła modyfikowania może zawierać dowolną liczbę operacji.
+Modyfikowanie służy do dodawania, aktualizowania lub usuwania tagów w zasobie podczas tworzenia lub aktualizowania. Typowym przykładem jest aktualizowanie tagów w zasobach, takich jak costCenter. Zasady modyfikowania powinny mieć zawsze ustawioną `mode` _indeksowanie_ , chyba że zasób docelowy jest grupą zasobów. Istniejące niezgodne zasoby można skorygować przy użyciu [zadania korygowania](../how-to/remediate-resources.md). Pojedyncza reguła modyfikowania może zawierać dowolną liczbę operacji.
 
 > [!IMPORTANT]
 > Modyfikacja jest obecnie tylko do użytku z tagami. Jeśli zarządzasz tagami, zaleca się korzystanie z funkcji Modify zamiast Dołącz jako Modyfikuj udostępnia dodatkowe typy operacji i możliwość korygowania istniejących zasobów. Jednakże zaleca się dołączenie, jeśli nie można utworzyć tożsamości zarządzanej.
@@ -134,7 +135,7 @@ Tablica właściwości **operacji** umożliwia zmianę kilku tagów na różne s
 
 - Ustawia tag `environment` na "test", nawet jeśli istnieje już z inną wartością.
 - Usuwa tag `TempResource`.
-- Ustawia tag `Dept` do parametru zasad _deptname_ skonfigurowany w przypisaniu zasad.
+- Ustawia tag `Dept` na parametr zasad _deptname_ skonfigurowany w przypisaniu zasad.
 
 ```json
 "details": {
@@ -212,7 +213,7 @@ Przykład 2: Usuń tag `env` i Dodaj tag `environment` lub Zastąp istniejące T
 }
 ```
 
-## <a name="deny"></a>Odmów
+## <a name="deny"></a>Zablokuj
 
 Odmów służy do zapobiegania żądaniu zasobu, który nie jest zgodny ze zdefiniowanymi standardami za pomocą definicji zasad i nie powoduje wykonania żądania.
 
@@ -242,7 +243,7 @@ Inspekcja służy do tworzenia zdarzenia ostrzegawczego w dzienniku aktywności 
 
 ### <a name="audit-evaluation"></a>Ocena inspekcji
 
-Inspekcja jest ostatnim efektem sprawdzonym przez Azure Policy podczas tworzenia lub aktualizowania zasobu. Azure Policy następnie wysyła zasób do dostawcy zasobów. Inspekcja działa tak samo dla żądania zasobu i cyklu oceny. Azure Policy dodaje do dziennika aktywności operację `Microsoft.Authorization/policies/audit/action` i oznacza zasób jako niezgodny.
+Inspekcja jest ostatnim efektem sprawdzonym przez Azure Policy podczas tworzenia lub aktualizowania zasobu. Azure Policy następnie wysyła zasób do dostawcy zasobów. Inspekcja działa tak samo dla żądania zasobu i cyklu oceny. Azure Policy dodaje operację `Microsoft.Authorization/policies/audit/action` do dziennika aktywności i oznacza zasób jako niezgodny.
 
 ### <a name="audit-properties"></a>Właściwości inspekcji
 
@@ -264,7 +265,7 @@ AuditIfNotExists włącza inspekcję zasobów, które pasują do warunku **if** 
 
 ### <a name="auditifnotexists-evaluation"></a>Ocena AuditIfNotExists
 
-AuditIfNotExists jest uruchamiany po obsłudze żądania Create lub Update zasobu przez dostawcę zasobów i zwróciło kod stanu sukcesu. Inspekcja występuje, gdy nie ma żadnych powiązanych zasobów lub jeśli zasoby zdefiniowane przez **ExistenceCondition** nie są oceniane na wartość true. Azure Policy dodaje do dziennika aktywności operację `Microsoft.Authorization/policies/audit/action` w taki sam sposób, jak efekt inspekcji. Gdy wyzwalane, zasób, który spełnił warunek **if** , jest zasobem oznaczonym jako niezgodny.
+AuditIfNotExists jest uruchamiany po obsłudze żądania Create lub Update zasobu przez dostawcę zasobów i zwróciło kod stanu sukcesu. Inspekcja występuje, gdy nie ma żadnych powiązanych zasobów lub jeśli zasoby zdefiniowane przez **ExistenceCondition** nie są oceniane na wartość true. Azure Policy dodaje operację `Microsoft.Authorization/policies/audit/action` do dziennika aktywności w taki sam sposób, jak efekt inspekcji. Gdy wyzwalane, zasób, który spełnił warunek **if** , jest zasobem oznaczonym jako niezgodny.
 
 ### <a name="auditifnotexists-properties"></a>Właściwości AuditIfNotExists
 
@@ -373,7 +374,7 @@ Właściwość **Details** efektu DeployIfNotExists ma wszystkie właściwości,
   - W przypadku korzystania z wdrożeń na poziomie subskrypcji należy określić właściwość _Location_ we _wdrożeniu_ .
   - Wartość domyślna to _resourceName_.
 - **Wdrożenie** [wymagane]
-  - Ta właściwość powinna obejmować pełne wdrożenie szablonu, ponieważ zostanie przesłane do interfejsu API PUT `Microsoft.Resources/deployments`. Aby uzyskać więcej informacji, zobacz [interfejs API REST wdrożeń](/rest/api/resources/deployments).
+  - Ta właściwość powinna obejmować pełne wdrożenie szablonu, ponieważ zostanie przesłane do interfejsu API `Microsoft.Resources/deployments` PUT. Aby uzyskać więcej informacji, zobacz [interfejs API REST wdrożeń](/rest/api/resources/deployments).
 
   > [!NOTE]
   > Wszystkie funkcje wewnątrz właściwości **wdrożenia** są oceniane jako składniki szablonu, a nie zasady. Wyjątkiem jest właściwość **Parameters** , która przekazuje wartości z zasad do szablonu. **Wartość** w tej sekcji w kolumnie Nazwa parametru szablonu służy do przekazywania tej wartości (zobacz _FullDbName_ w przykładzie DeployIfNotExists).
@@ -431,12 +432,68 @@ Przykład: oblicza SQL Server baz danych, aby określić, czy transparentDataEnc
 }
 ```
 
-## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Ten efekt jest używany z *trybem* definicji zasad wynoszącym `Microsoft.ContainerService.Data`. Służy do przekazywania reguł kontroli przyjęcia zdefiniowanych za pomocą [rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) , aby [otworzyć agenta zasad](https://www.openpolicyagent.org/) (Nieprzez) w [usłudze Azure Kubernetes](../../../aks/intro-kubernetes.md).
+Ten efekt jest używany z *trybem* definicji zasad `Microsoft.Kubernetes.Data`. Jest on używany do przekazywania reguł kontroli przyjęcia strażnika v3 zdefiniowanych za pomocą [Nieprzez ograniczenia środowiska](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) , aby [otworzyć agenta zasad](https://www.openpolicyagent.org/) (nieprzez) do samozarządzanej klastrów Kubernetes na platformie Azure.
 
 > [!NOTE]
-> [Azure Policy Kubernetes](rego-for-aks.md) jest w publicznej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
+> [Azure Policy aparatu AKS](aks-engine.md) jest w publicznej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
+
+### <a name="enforceopaconstraint-evaluation"></a>Ocena EnforceOPAConstraint
+
+Otwarty kontroler przyjmowania agentów zasad umożliwia ocenę każdego nowego żądania w klastrze w czasie rzeczywistym.
+Co 5 minut jest wykonywane pełne skanowanie klastra i wyniki zgłoszone do Azure Policy.
+
+### <a name="enforceopaconstraint-properties"></a>Właściwości EnforceOPAConstraint
+
+Właściwość **Details** efektu EnforceOPAConstraint ma właściwości SubProperties opisujące regułę kontroli dostępu strażnik v3.
+
+- **constraintTemplate** [wymagane]
+  - Szablon ograniczenia CustomResourceDefinition (CRD), który definiuje nowe ograniczenia. Szablon definiuje logikę rego, schemat ograniczenia i parametry ograniczenia, które są przesyłane za pośrednictwem **wartości** z Azure Policy.
+- **ograniczenie** [wymagane]
+  - Implementacja CRD szablonu ograniczenia. Używa parametrów przekazaną przez **wartości** jako `{{ .Values.<valuename> }}`. W poniższym przykładzie `{{ .Values.cpuLimit }}` i `{{ .Values.memoryLimit }}`.
+- **wartości** [opcjonalne]
+  - Definiuje wszelkie parametry i wartości, które mają zostać przekazane do ograniczenia. Każda wartość musi istnieć w szablonie ograniczenia CRD.
+
+### <a name="enforceregopolicy-example"></a>Przykład EnforceRegoPolicy
+
+Przykład: strażnik v3 reguła kontroli w celu ustawienia limitów zasobów procesora i pamięci kontenera w aparacie AKS.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "in": [
+                "Microsoft.ContainerService/managedClusters",
+                "AKS Engine"
+            ]
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "enforceOPAConstraint",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
+        "values": {
+            "cpuLimit": "[parameters('cpuLimit')]",
+            "memoryLimit": "[parameters('memoryLimit')]"
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Ten efekt jest używany z *trybem* definicji zasad `Microsoft.ContainerService.Data`. Służy do przekazywania reguł kontroli wpływu strażnika v2 zdefiniowanych za pomocą [rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) , aby [otworzyć agenta zasad](https://www.openpolicyagent.org/) (Nieprzez) w [usłudze Azure Kubernetes](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [Azure Policy dla AKS](rego-for-aks.md) jest w ograniczonej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad
 
 ### <a name="enforceregopolicy-evaluation"></a>Ocena EnforceRegoPolicy
 
@@ -445,7 +502,7 @@ Co 5 minut jest wykonywane pełne skanowanie klastra i wyniki zgłoszone do Azur
 
 ### <a name="enforceregopolicy-properties"></a>Właściwości EnforceRegoPolicy
 
-Właściwość **Details** efektu EnforceRegoPolicy ma właściwości SubProperties opisujące regułę rego Admission Control.
+Właściwość **Details** efektu EnforceRegoPolicy ma właściwości, które opisują regułę kontroli dostępu strażnik v2.
 
 - **policyId** [wymagane]
   - Unikatowa nazwa przenoszona jako parametr do reguły rego Admission Control.
@@ -456,7 +513,7 @@ Właściwość **Details** efektu EnforceRegoPolicy ma właściwości SubPropert
 
 ### <a name="enforceregopolicy-example"></a>Przykład EnforceRegoPolicy
 
-Przykład: REGO regułę kontroli wpływu, aby zezwalać tylko na określone obrazy kontenerów w AKS.
+Przykład: strażnika v2 reguła kontroli, aby zezwalać tylko na określone obrazy kontenerów w AKS.
 
 ```json
 "if": {

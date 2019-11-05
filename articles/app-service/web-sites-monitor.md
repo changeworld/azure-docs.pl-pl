@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b9e910f24503f6bbf86e8ed8cdcb6f422d2490d9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073992"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470122"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorowanie aplikacji w Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) zapewnia wbudowaną funkcję monitorowania dla aplikacji sieci Web, zaplecza mobilnego i aplikacji interfejsu API w [Azure Portal](https://portal.azure.com).
 
-W Azure Portal można sprawdzić przydziały i *metryki* dla aplikacji, przejrzeć plan App Service i automatycznie skonfigurować *alerty* i skalowanie, które są oparte na metrykach.
+W Azure Portal można sprawdzić *przydziały* i *metryki* dla aplikacji, przejrzeć plan App Service i automatycznie skonfigurować *alerty* i *skalowanie* , które są oparte na metrykach.
 
 ## <a name="understand-quotas"></a>Informacje o przydziałach
 
@@ -32,19 +32,19 @@ Aplikacje hostowane w App Service podlegają pewnym ograniczeniom dotyczącym za
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Jeśli aplikacja jest hostowana w planie bezpłatnym lub współdzielonym, limity dla zasobów, które mogą być używane przez aplikację, są definiowane przez przydziały.
+Jeśli aplikacja jest hostowana w planie *bezpłatnym* lub *współdzielonym* , limity dla zasobów, które mogą być używane przez aplikację, są definiowane przez przydziały.
 
 Jeśli aplikacja jest hostowana w planie w warstwie *podstawowa*, *standardowa*lub *Premium* , limity zasobów, których mogą używać są ustawiane przez *rozmiar* (mały, średni, duży) i *Liczba wystąpień* (1, 2, 3 i tak dalej) planu App Service.
 
 Przydziały dla aplikacji bezpłatnych lub udostępnionych:
 
-| Limit przydziału | Opis |
+| Przydział | Opis |
 | --- | --- |
 | **PROCESOR (krótki)** | Ilość procesora CPU dozwolona dla tej aplikacji w interwale 5-minutowym. Ten przydział resetuje co pięć minut. |
 | **PROCESOR (dzień)** | Całkowita ilość procesora CPU dozwolona dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
-| **Pamięć** | Całkowita ilość pamięci dozwolonej dla tej aplikacji. |
-| **Bandwidth** | Całkowita ilość wychodzącej przepustowości dozwolonej dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
-| **Filesystem** | Łączna ilość dozwolonego miejsca w magazynie. |
+| **Rozmiar** | Całkowita ilość pamięci dozwolonej dla tej aplikacji. |
+| **Przepustowość** | Całkowita ilość wychodzącej przepustowości dozwolonej dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
+| **Wymagany** | Łączna ilość dozwolonego miejsca w magazynie. |
 
 Jedynym przydziałem stosowanym dla aplikacji hostowanych w planach *Basic*, *Standard*i *Premium* jest system plików.
 
@@ -70,7 +70,7 @@ W przypadku aplikacji dostępne są następujące metryki:
 
 | Metryka | Opis |
 | --- | --- |
-| **Średni czas odpowiedzi** | Średni czas, w którym aplikacja będzie obsługiwała żądania, w milisekundach. |
+| **Średni czas odpowiedzi** | Średni czas, w którym aplikacja będzie obsługiwała żądania (w sekundach). |
 | **Średni zestaw roboczy pamięci** | Średnia ilość pamięci używanej przez aplikację w megabajtach (MiB). |
 | **Połączenia** | Liczba powiązanych gniazd istniejących w piaskownicy (w3wp. exe i jej procesów podrzędnych).  Powiązane gniazdo jest tworzone przez wywoływanie interfejsów API bind ()/Connect () i pozostanie do momentu zamknięcia wskazanego gniazda przy użyciu funkcji CloseHandle ()/closesocket (). |
 | **Czas procesora CPU** | Ilość procesora CPU zużywanego przez aplikację w sekundach. Aby uzyskać więcej informacji na temat tej metryki, zobacz [czas procesora CPU w porównaniu z wartością procentową procesora](#cpu-time-vs-cpu-percentage)CPU. |
@@ -124,29 +124,29 @@ W przypadku planu App Service dostępne są następujące metryki:
 
 Istnieją dwie metryki odzwierciedlające użycie procesora CPU:
 
-**Czas procesora CPU**: Jest to przydatne w przypadku aplikacji hostowanych w planach bezpłatnych lub wspólnych, ponieważ jeden z ich przydziałów jest zdefiniowany w minutach procesora używanego przez aplikację.
+**Czas procesora**: przydatne w przypadku aplikacji hostowanych w planach bezpłatnych lub wspólnych, ponieważ jeden z ich przydziałów jest zdefiniowany w minutach procesora używanego przez aplikację.
 
-**Procent użycia procesora CPU**: Jest to przydatne w przypadku aplikacji hostowanych w planach Basic, standard i Premium, ponieważ mogą one być skalowane w poziomie. Wartość procentowa procesora CPU jest dobrym wskaźnikiem ogólnego użycia we wszystkich wystąpieniach.
+**Procent użycia procesora CPU**: przydatne w przypadku aplikacji hostowanych w planach Basic, standard i Premium, ponieważ mogą one być skalowane w poziomie. Wartość procentowa procesora CPU jest dobrym wskaźnikiem ogólnego użycia we wszystkich wystąpieniach.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Zasady szczegółowości i przechowywania metryk
 Metryki dla aplikacji i planu usługi App Service są rejestrowane i agregowane przez usługę z użyciem następujących zasad szczegółowości i przechowywania:
 
 * Metryki stopnia szczegółowości **minut** są zachowywane przez 30 godzin.
-* Metryki szczegółowości godzinowej są przechowywane przez 30 dni.
-* Metryki stopnia szczegółowości są przechowywane przez 30 dni.
+* Metryki szczegółowości **godzinowej** są przechowywane przez 30 dni.
+* **Metryki stopnia szczegółowości** są przechowywane przez 30 dni.
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Monitorowanie przydziałów i metryk w Azure Portal
 Aby sprawdzić stan różnych przydziałów i metryk, które mają wpływ na aplikację, przejdź do [Azure Portal](https://portal.azure.com).
 
 ![Przydziały wykresu w Azure Portal][quotas]
 
-Aby znaleźć przydziały, wybierz pozycję **Ustawienia** > **limity przydziału**. Na wykresie można przejrzeć: 
+Aby znaleźć przydziały, wybierz pozycję **ustawienia** > **limity przydziału**. Na wykresie można przejrzeć: 
 1. Nazwa przydziału.
 1. Jego interwał resetowania.
 1. Bieżący limit.
 1. Jego bieżąca wartość.
 
-![Wykres pomiarowy w Azure Portal][metrics] można uzyskać dostęp do metryk bezpośrednio ze strony **zasobów** . Aby dostosować wykres: 
+![wykres metryki w Azure Portal][metrics] możesz uzyskać dostęp do metryk bezpośrednio ze strony **zasobów** . Aby dostosować wykres: 
 1. Wybierz wykres.
 1. Wybierz pozycję **Edytuj wykres**.
 1. Edytuj **zakres czasu**.

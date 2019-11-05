@@ -1,5 +1,5 @@
 ---
-title: Samouczek Apache Spark strukturalne przesyłanie strumieniowe za pomocą Apache Kafka — Azure HDInsight
+title: 'Samouczek: Apache Spark przesyłania strumieniowego & Apache Kafka — Azure HDInsight'
 description: Dowiedz się, jak wymieniać dane z platformą Apache Kafka za pomocą przesyłania strumieniowego platformy Apache Spark. Ten samouczek obejmuje przesyłanie strumieniowe danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: db2174451f01ef38dc69e4e14561175203e075c3
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 96420a3ea4ddc8c3d8210f1b35d6606257eba5ff
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264256"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494384"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Samouczek: używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight
 
@@ -94,7 +94,7 @@ W obu fragmentach dane są odczytywane z platformy Kafka i zapisywane do pliku. 
 | `write` | `writeStream` |
 | `save` | `start` |
 
-W operacji przesyłania strumieniowego jest również używany `awaitTermination(30000)`, która powoduje zatrzymanie strumienia po 30 000 MS.
+Operacja przesyłania strumieniowego używa również `awaitTermination(30000)`, które powoduje zatrzymanie strumienia po 30 000 MS.
 
 Aby używać przesyłania strumieniowego ze strukturą na platformie Kafka, projekt musi mieć zdefiniowaną zależność od pakietu `org.apache.spark : spark-sql-kafka-0-10_2.11`. Wersja tego pakietu powinna być zgodna z wersją platformy Spark w usłudze HDInsight. W przypadku platformy Spark 2.2.0 (dostępnej w usłudze HDInsight 3.6) informacje o zależnościach dla różnych typów projektu możesz znaleźć na stronie [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar).
 
@@ -165,7 +165,7 @@ Aby utworzyć usługę Azure Virtual Network, a następnie utworzyć w niej klas
 
 W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze strukturą Kafka w usłudze HDInsight. Używa on danych w podróży taksówkach, który jest dostarczany przez Nowy Jork miasto.  Zestaw danych używany przez ten Notes pochodzi z [2016](https://data.cityofnewyork.us/Transportation/2016-Green-Taxi-Trip-Data/hvrh-b6nb).
 
-1. Zbierz informacje o hoście. Użyj poniższych poleceń zwinięcie i [JQ](https://stedolan.github.io/jq/) , aby uzyskać informacje o Kafka dozorcy i brokera. Polecenia są przeznaczone dla wiersza polecenia systemu Windows, jednak nieznaczne różnice będą wymagały w innych środowiskach. Zastąp `KafkaCluster` nazwą klastra Kafka i `KafkaPassword` hasłem logowania do klastra. Ponadto Zastąp `C:\HDI\jq-win64.exe` rzeczywistą ścieżką do instalacji JQ. Wprowadź polecenia w wierszu polecenia systemu Windows i Zapisz dane wyjściowe do użycia w dalszych krokach.
+1. Zbierz informacje o hoście. Użyj poniższych poleceń zwinięcie i [JQ](https://stedolan.github.io/jq/) , aby uzyskać informacje o Kafka dozorcy i brokera. Polecenia są przeznaczone dla wiersza polecenia systemu Windows, jednak nieznaczne różnice będą wymagały w innych środowiskach. Zastąp `KafkaCluster` nazwą klastra Kafka i `KafkaPassword` przy użyciu hasła logowania do klastra. Ponadto Zastąp `C:\HDI\jq-win64.exe` rzeczywistą ścieżką do instalacji JQ. Wprowadź polecenia w wierszu polecenia systemu Windows i Zapisz dane wyjściowe do użycia w dalszych krokach.
 
     ```cmd
     set CLUSTERNAME=KafkaCluster
@@ -224,7 +224,7 @@ W tym przykładzie pokazano, jak używać przesyłania strumieniowego Spark ze s
     taxiDF.show()
     ```
 
-7. Ustaw informacje o hostach brokera Kafka. Zastąp wartość `YOUR_KAFKA_BROKER_HOSTS` informacjami o brokerach, które zostały wyodrębnione w kroku 1.  Wprowadź edytowane polecenie w następnej komórce Jupyter Notebook.
+7. Ustaw informacje o hostach brokera Kafka. Zastąp `YOUR_KAFKA_BROKER_HOSTS` informacjami o brokerach, które zostały wyodrębnione w kroku 1.  Wprowadź edytowane polecenie w następnej komórce Jupyter Notebook.
 
     ```scala
     // The Kafka broker hosts and topic used to write to Kafka

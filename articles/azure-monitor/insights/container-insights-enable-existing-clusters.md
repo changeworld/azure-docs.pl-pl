@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/12/2019
-ms.openlocfilehash: 0ca73d75751259eccd9e952c2d704a09fc081396
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5d68c343fee5807c430ce42777b988a48b9227f8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162274"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478610"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Włącz monitorowanie już wdrożonego klastra usługi Azure Kubernetes Service (AKS)
 
@@ -27,11 +27,11 @@ Można włączyć monitorowanie klastra AKS, który jest już wdrożony przy uż
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com). 
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 
 ## <a name="enable-using-azure-cli"></a>Włączanie przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Poniższy krok umożliwia monitorowanie klastra AKS przy użyciu interfejsu wiersza polecenia platformy Azure. W tym przykładzie nie trzeba tworzyć ani określać istniejącego obszaru roboczego. To polecenie upraszcza proces przez utworzenie domyślnego obszaru roboczego w domyślnej grupie zasobów subskrypcji klastra AKS, jeśli jeszcze nie istnieje w regionie.  Utworzony domyślny obszar roboczy jest podobny do formatu *DefaultWorkspace \<GUID > \<Region >* .  
+Poniższy krok umożliwia monitorowanie klastra AKS przy użyciu interfejsu wiersza polecenia platformy Azure. W tym przykładzie nie trzeba tworzyć ani określać istniejącego obszaru roboczego. To polecenie upraszcza proces przez utworzenie domyślnego obszaru roboczego w domyślnej grupie zasobów subskrypcji klastra AKS, jeśli jeszcze nie istnieje w regionie.  Utworzony domyślny obszar roboczy przypomina format *DefaultWorkspace\<identyfikator GUID >-\<regionu >* .  
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
@@ -348,7 +348,7 @@ omsagent   2         2         2         2            2           beta.kubernete
 
 ## <a name="view-configuration-with-cli"></a>Wyświetl konfigurację przy użyciu interfejsu wiersza polecenia
 
-Użyj polecenia `aks show`, aby uzyskać szczegółowe informacje, takie jak rozwiązanie włączone lub nie, co to jest element resourceID Log Analytics obszaru roboczego oraz szczegóły podsumowania klastra.  
+Użyj `aks show` polecenia, aby uzyskać szczegółowe informacje, takie jak rozwiązanie włączone lub nie, co to jest identyfikator zasobu Log Analytics obszaru roboczego oraz szczegóły podsumowania klastra.  
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
@@ -371,4 +371,6 @@ Po kilku minutach polecenie zostanie wykonane i zwróci informacje w formacie JS
 
 * Jeśli wystąpią problemy podczas próby dołączenia rozwiązania, zapoznaj się z [przewodnikiem rozwiązywania problemów](container-insights-troubleshoot.md)
 
-* Po włączeniu monitorowania pod kątem przechwytywania metryk kondycji zarówno dla węzłów klastra AKS, jak i dla każdego zasobnika te metryki kondycji są dostępne w Azure Portal. Aby dowiedzieć się, jak używać Azure Monitor kontenerów, zobacz temat [Wyświetlanie kondycji usługi Azure Kubernetes](container-insights-analyze.md).
+* Po włączeniu monitorowania w celu zbierania danych o kondycji i użyciu zasobów klastra AKS oraz obciążeń na nich uruchomionych należy dowiedzieć się, [jak używać](container-insights-analyze.md) Azure monitor do kontenerów.
+
+

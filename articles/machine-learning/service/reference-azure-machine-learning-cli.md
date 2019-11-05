@@ -11,14 +11,15 @@ ms.author: jordane
 author: jpe316
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 597cc4e03257b544187fc2bc131974954b64c84b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: dcbe535bb92f7755980929956093b0f0121ef41b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819869"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476442"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Użyj rozszerzenia interfejsu wiersza polecenia dla Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Interfejs wiersza polecenia Azure Machine Learning jest rozszerzeniem [dla platformy Azure, który](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)działa na wielu platformach. To rozszerzenie udostępnia polecenia do pracy z Azure Machine Learning. Pozwala to zautomatyzować działania uczenia maszynowego. Poniższa lista zawiera przykładowe akcje, które można wykonać przy użyciu rozszerzenia interfejsu wiersza polecenia:
 
@@ -100,7 +101,7 @@ Następujące polecenia pokazują, jak używać interfejsu wiersza polecenia do 
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    To polecenie tworzy podkatalog `.azureml`, który zawiera przykładowe pliki środowiska runconfig i Conda. Zawiera również plik `config.json`, który jest używany do komunikowania się z obszarem roboczym Azure Machine Learning.
+    To polecenie tworzy podkatalog `.azureml` zawierający przykładowe pliki środowiska runconfig i Conda. Zawiera również plik `config.json` używany do komunikowania się z obszarem roboczym Azure Machine Learning.
 
     Aby uzyskać więcej informacji, zobacz [AZ ml folder Attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -149,7 +150,7 @@ Następujące polecenia pokazują, jak używać interfejsu wiersza polecenia do 
     >
     > Jeśli masz skrypt języka Python, który programowo tworzy obiekt konfiguracji uruchomieniowej, możesz użyć [runconfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) , aby zapisać go jako plik runconfig.
     >
-    > Aby uzyskać więcej przykładowych plików runconfig, zobacz [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml).
+    > Pełny schemat runconfig można znaleźć w tym [pliku JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
 
     Aby uzyskać więcej informacji, zobacz [AZ ml Run Submit-Script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 

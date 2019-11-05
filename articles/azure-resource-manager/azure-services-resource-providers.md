@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: e8bcaf1e55b042f8dfd8bba2e2113894a67e8b13
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 3bbd52615962c2cd187fb16282a373688175cf59
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035626"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476694"
 ---
 # <a name="resource-providers-for-azure-services"></a>Dostawcy zasobów dla usług platformy Azure
 
@@ -32,7 +32,7 @@ W tym artykule pokazano, jak przestrzenie nazw dostawcy zasobów są mapowane na
 | Microsoft. AppConfiguration | rdzeń |
 | Microsoft. zaświadczanie | Usługa zaświadczania platformy Azure |
 | Microsoft. autoryzacja | [Azure Resource Manager](index.yml) |
-| Microsoft. Automation | [Automatyzacja](../automation/index.yml) |
+| Microsoft. Automation | [Automation](../automation/index.yml) |
 | Microsoft. usługi azureactivedirectory | [Azure Active Directory B2C](../active-directory-b2c/index.yml) |
 | Microsoft. AzureStack | rdzeń |
 | Microsoft.Batch | [Batch](../batch/index.yml) |
@@ -45,7 +45,7 @@ W tym artykule pokazano, jak przestrzenie nazw dostawcy zasobów są mapowane na
 | Microsoft. cache | [Azure Cache for Redis](/azure/azure-cache-for-redis/) |
 | Microsoft. Pojemność | rdzeń |
 | Microsoft. CDN | [Content Delivery Network](../cdn/index.yml) |
-| Microsoft. CertificateRegistration | [App Service certyfikaty](../app-service/web-sites-purchase-ssl-web-site.md) |
+| Microsoft. CertificateRegistration | [App Service certyfikaty](../app-service/configure-ssl-certificate.md#import-an-app-service-certificate) |
 | Microsoft. ChangeAnalysis | [Azure Monitor](../azure-monitor/index.yml) |
 | Microsoft.ClassicCompute | Maszyna wirtualna klasycznego modelu wdrażania |
 | Microsoft. ClassicInfrastructureMigrate | Migracja klasycznego modelu wdrażania |
@@ -125,7 +125,7 @@ W tym artykule pokazano, jak przestrzenie nazw dostawcy zasobów są mapowane na
 | Microsoft. Migrowanie | [Azure Migrate](../migrate/migrate-overview.md) |
 | Microsoft. MixedReality | [Kotwice przestrzenne platformy Azure](/azure/spatial-anchors/) |
 | Microsoft. NetApp | [Azure NetApp Files](../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Virtual Network](../virtual-network/index.yml)<br />[Moduł równoważenia obciążenia](../load-balancer/index.yml)<br />[Application Gateway](../application-gateway/index.yml)<br />[Azure DNS](../dns/index.yml)<br />[ExpressRoute](../expressroute/index.yml)<br />[VPN Gateway](../vpn-gateway/index.yml)<br />[Traffic Manager](../traffic-manager/index.yml)<br />[Network Watcher](../network-watcher/index.yml)<br />[Azure Firewall](../firewall/index.yml)<br />[Azure Front Door Service](../frontdoor/index.yml)<br />[Azure bastionu](/azure/bastion/) |
+| Microsoft.Network | [Virtual Network](../virtual-network/index.yml)<br />[Load Balancer](../load-balancer/index.yml)<br />[Application Gateway](../application-gateway/index.yml)<br />[Azure DNS](../dns/index.yml)<br />[ExpressRoute](../expressroute/index.yml)<br />[VPN Gateway](../vpn-gateway/index.yml)<br />[Traffic Manager](../traffic-manager/index.yml)<br />[Network Watcher](../network-watcher/index.yml)<br />[Azure Firewall](../firewall/index.yml)<br />[Azure Front Door Service](../frontdoor/index.yml)<br />[Azure bastionu](/azure/bastion/) |
 | Microsoft. NotificationHubs | [Notification Hubs](../notification-hubs/index.yml) |
 | Microsoft. OffAzure | [Azure Migrate](../migrate/migrate-overview.md) |
 | Microsoft. OperationalInsights | [Azure Monitor](../azure-monitor/index.yml) |
@@ -134,7 +134,7 @@ W tym artykule pokazano, jak przestrzenie nazw dostawcy zasobów są mapowane na
 | Microsoft. PolicyInsights | [Azure Policy](../governance/policy/index.yml) |
 | Microsoft. Portal | [Azure Portal](/azure/azure-portal/) |
 | Microsoft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
-| Microsoft. PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
+| Microsoft. PowerBIDedicated | [Usługa Power BI Embedded](/azure/power-bi-embedded/) |
 | Microsoft. RecoveryServices | [Site Recovery](../site-recovery/index.yml) |
 | Microsoft. Relay | [Azure Relay](../service-bus-relay/relay-what-is-it.md) |
 | Microsoft. ResourceGraph | [Wykres zasobów platformy Azure](/azure/governance/resource-graph/) |

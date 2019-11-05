@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: klastry Apache Hadoop na żądanie w usłudze Azure HDInsight — Data Factory'
+title: 'Samouczek: klastry na żądanie w usłudze Azure HDInsight z Data Factory'
 description: Samouczek — informacje na temat tworzenia klastrów Apache Hadoop na żądanie w usłudze HDInsight przy użyciu Azure Data Factory.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 10/09/2019
-ms.openlocfilehash: 00937197536ede7d6eed168e0a84bad294800159
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 1d1ddb84c000efaf58356ffdd15382e0b74aa744
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72264559"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494865"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: tworzenie klastrów Apache Hadoop na żądanie w usłudze HDInsight przy użyciu Azure Data Factory
 
@@ -154,7 +154,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 **Aby zweryfikować Tworzenie konta magazynu**
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Po lewej stronie przejdź do **wszystkich usług** > **Ogólne** > **grupy zasobów**.
+1. Po lewej stronie przejdź do **wszystkich usług** , > **Ogólne** > **grupy zasobów**.
 1. Wybierz nazwę grupy zasobów utworzoną w skrypcie programu PowerShell. Użyj filtru, jeśli na liście znajduje się zbyt wiele grup zasobów.
 1. W widoku **Przegląd** zobaczysz jeden zasób na liście, o ile nie zostanie udostępniona Grupa zasobów z innymi projektami. Ten zasób jest kontem magazynu o podanej wcześniej nazwie. Wybierz nazwę konta magazynu.
 1. Wybierz kafelek **kontenery** .
@@ -183,7 +183,7 @@ W tym artykule opisano konfigurowanie działania programu Hive w celu utworzenia
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 2. W menu po lewej stronie przejdź do **+ Utwórz zasób** > **Analytics** > **Data Factory**.
 
@@ -267,9 +267,9 @@ W tej sekcji utworzysz dwie połączone usługi w fabryce danych.
     | Prefiks nazwy klastra | Podaj wartość, która będzie poprzedzona prefiksem wszystkich typów klastrów tworzonych przez fabrykę danych. |
     |Subskrypcja |Wybierz swoją subskrypcję z listy rozwijanej.|
     | Wybieranie grupy zasobów | Wybierz grupę zasobów utworzoną w ramach użytego wcześniej skryptu programu PowerShell.|
-    | Typ systemu operacyjnego/nazwa użytkownika SSH klastra | Wprowadź nazwę użytkownika SSH, która jest zwykle `sshuser`. |
+    | Typ systemu operacyjnego/nazwa użytkownika SSH klastra | Wprowadź nazwę użytkownika SSH, która jest często `sshuser`. |
     | Typ systemu operacyjnego/hasło SSH dla klastra | Podaj hasło dla użytkownika SSH |
-    | Typ systemu operacyjnego/nazwa użytkownika klastra | Wprowadź nazwę użytkownika klastra, która jest zwykle `admin`. |
+    | Typ systemu operacyjnego/nazwa użytkownika klastra | Wprowadź nazwę użytkownika klastra, która jest często `admin`. |
     | Typ systemu operacyjnego/hasło klastra | Podaj hasło dla użytkownika klastra. |
 
     Następnie wybierz przycisk **Utwórz**.
@@ -336,7 +336,7 @@ W tej sekcji utworzysz dwie połączone usługi w fabryce danych.
 
     - Zobaczysz element **adfgerstarted/outputfolder** , który zawiera dane wyjściowe skryptu Hive, który został uruchomiony w ramach potoku.
 
-    - Zobaczysz **adfhdidatafactory-\<linked-Service-name >-\<timestamp >** kontenera. Ten kontener jest domyślną lokalizacją magazynu klastra usługi HDInsight, który został utworzony w ramach uruchomienia potoku.
+    - Zobaczysz **adfhdidatafactory\<połączonej usługi-name >-\<sygnatura czasowa >** Ten kontener jest domyślną lokalizacją magazynu klastra usługi HDInsight, który został utworzony w ramach uruchomienia potoku.
 
     - Zobaczysz kontener **adfjobs** z dziennikami zadań Azure Data Factory.  
 

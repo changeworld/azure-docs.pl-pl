@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 949595b35c6d989be62dbda43a3b8ccb1608a23d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 2a8a19dfd2cdc7a64a5ea90b96808963b19f73bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937574"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498650"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska VMware
 
@@ -36,11 +36,11 @@ W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych VMwar
 --- | ---
 **Uprawnienia platformy Azure** | Aby utworzyć projekt Azure Migrate, musisz mieć uprawnienia współautora lub właściciela w ramach subskrypcji.
 **Ograniczenia dotyczące oprogramowania VMware**  | Oceń do 35 000 maszyn wirtualnych VMware w jednym projekcie. Możesz utworzyć wiele projektów w ramach subskrypcji platformy Azure. Projekt może zawierać zarówno maszyny wirtualne VMware, jak i maszyny wirtualne funkcji Hyper-V, a także limity oceny.
-**Lokalizacja geograficzna** | Projekt Azure Migrate można utworzyć w wielu lokalizacje geograficzneach. Chociaż można tworzyć tylko projekty w tych lokalizacje geograficzne, można ocenić lub migrować maszyny dla innych lokalizacji docelowych. Lokalizacja geograficzna projektu służy tylko do przechowywania odnalezionych metadanych.
+**Lokalizacja geograficzna** | [Przejrzyj](migrate-support-matrix.md#supported-geographies) obsługiwane lokalizacje geograficzne.
 
 **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
 --- | ---
-Platforma Azure dla instytucji rządowych | Administracja USA — Wirginia
+Azure Government | Administracja USA — Wirginia
 Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
 Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
 Brazylia | Brazylia Południowa
@@ -50,13 +50,24 @@ Francja | Francja Środkowa
 Indie | Indie Środkowe lub Indie Południowe
 Japonia |  Japonia Wschodnia lub Japonia Zachodnia
 Korea Południowa | Korea środkowa lub Korea Południowa
-Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
+Wielka Brytania | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
 Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
 
  > [!NOTE]
  > Obsługa Azure Government jest obecnie dostępna tylko dla [starszej wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
 
+
+## <a name="application-discovery"></a>Odnajdywanie aplikacji
+
+Azure Migrate: Ocena serwera umożliwia odnajdywanie aplikacji, ról i funkcji. Odnajdywanie spisu aplikacji umożliwia zidentyfikowanie i zaplanowanie ścieżki migracji dopasowanej do obciążeń lokalnych. Azure Migrate: Ocena serwera zapewnia odnajdywanie bez agenta, przy użyciu poświadczeń gościa komputera, zdalnie uzyskując dostęp do maszyn za pomocą usługi WMI i wywołań SSH.
+
+**Pomoc techniczna** | **Szczegóły**
+--- | ---
+Obsługiwane maszyny | Lokalne maszyny wirtualne VMware
+System operacyjny maszyny | Wszystkie wersje systemów Windows i Linux
+Poświadczenia | Obecnie obsługuje użycie jednego poświadczenia dla wszystkich serwerów z systemem Windows i jedno poświadczenie dla wszystkich serwerów z systemem Linux. Tworzysz konto użytkownika-gościa dla maszyn wirtualnych z systemem Windows oraz normalne/normalne konto użytkownika (dostęp sudo) dla wszystkich maszyn wirtualnych z systemem Linux.
+Limity maszyn na potrzeby odnajdywania aplikacji | 10000 na urządzenie. 35000 na projekt
 
 ## <a name="assessment-vcenter-server-requirements"></a>Ocena — wymagania dotyczące vCenter Server
 
@@ -107,8 +118,24 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 
 **Pliku** | **Połączenie**
 --- | ---
-Wprowadzony | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/><br/> Połączenia przychodzące na porcie 44368 umożliwiające zdalny dostęp do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Połączenia wychodzące na porcie 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
+Wprowadzony | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/><br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Połączenia wychodzące na porcie 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 Serwer vCenter | Połączenia przychodzące na porcie TCP 443 umożliwiające urządzeniu zbieranie metadanych dotyczących konfiguracji i wydajności dla ocen. <br/><br/> Urządzenie domyślnie łączy się z programem vCenter na porcie 443. Jeśli serwer vCenter nasłuchuje na innym porcie, można zmodyfikować port podczas konfigurowania odnajdywania.
+
+## <a name="assessment-dependency-visualization"></a>Wizualizacja zależności
+
+Wizualizacja zależności ułatwia wizualizację zależności między maszynami, które mają zostać poddane ocenie i przeprowadzeniem migracji. Mapowanie zależności zazwyczaj jest stosowane, gdy chcesz ocenić komputery z wyższym poziomem zaufania. W przypadku maszyn wirtualnych VMware, Wizualizacja zależności jest obsługiwana w następujący sposób:
+
+- **Wizualizacja zależności bez agenta**: Ta opcja jest obecnie dostępna w wersji zapoznawczej. Nie wymaga to instalowania żadnych agentów na komputerach.
+    - Działa przez przechwytywanie danych połączenia TCP z maszyn, dla których jest włączona. Po rozpoczęciu odnajdywania zależności urządzenie zbiera dane z maszyn z interwałem sondowania równym pięć minut.
+    - Zbierane są następujące dane:
+        - Połączenia TCP
+        - Nazwy procesów, które mają aktywne połączenia
+        - Nazwy zainstalowanych aplikacji, które uruchamiają powyższe procesy
+        - Nie. wykrytych połączeń podczas każdego interwału sondowania
+- **Wizualizacja zależności oparta na agentach**: Aby użyć wizualizacji zależności opartej na agentach, należy pobrać i zainstalować następujących agentów na każdej maszynie lokalnej, która ma zostać przeanalizowana.
+    - Program Microsoft Monitoring Agent (MMA) musi zostać zainstalowany na każdej maszynie. [Dowiedz się więcej](how-to-create-group-machine-dependencies.md#install-the-mma) na temat sposobu instalowania agenta MMA.
+    - Agent zależności musi być zainstalowany na każdej maszynie. [Dowiedz się więcej](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) na temat sposobu instalowania agenta zależności.
+    - Ponadto w przypadku maszyn, które nie są połączone z Internetem, należy pobrać i zainstalować na nich bramę usługi Log Analytics.
 
 ## <a name="migration---limitations"></a>Migracja — ograniczenia
 Można wybrać maksymalnie 10 maszyn wirtualnych na potrzeby replikacji. Jeśli chcesz migrować więcej maszyn, wykonaj replikację w grupach o wartości 10. W przypadku migracji programu VMware bez agenta można jednocześnie uruchomić do 100 replikacji.
@@ -262,8 +289,8 @@ https:\//management.azure.com | Używany do operacji zarządzania replikacją i 
 *.services.visualstudio.com | Używane na potrzeby telemetrii (jest opcjonalne)
 time.nist.gov | Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
 time.windows.com | Służą do sprawdzania synchronizacji czasu między systemem i czasem globalnym.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \//login. Live. com <br/> https: \//Graph. Windows. NET <br/> https:\//login.windows.net <br/> https: \//www. Live. com <br/> https: \//www. Microsoft. com  | Instalator OVF potrzebuje dostępu do tych adresów URL. Są one używane do kontroli dostępu i zarządzania tożsamościami przez Azure Active Directory
-https: \//dev. MySQL. com/get/downloads/MySQLInstaller/MySQL-Installer-Community-5.7.20.0. msi | Aby ukończyć pobieranie bazy danych MySQL
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Instalator OVF potrzebuje dostępu do tych adresów URL. Są one używane do kontroli dostępu i zarządzania tożsamościami przez Azure Active Directory
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Aby ukończyć pobieranie bazy danych MySQL
 
 
 #### <a name="mysql-installation-options"></a>Opcje instalacji MySQL
@@ -350,7 +377,7 @@ Udostępniony wirtualny dysk twardy | Nieobsługiwane. | Sprawdzanie kończy si�
 Dysk FC | Nieobsługiwane. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 BitLocker | Nieobsługiwane. | Aby włączyć replikację dla maszyny, należy wyłączyć funkcję BitLocker.
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków.<br/> Ograniczone do liter, cyfr i łączników.<br/><br/> Nazwa maszyny musi rozpoczynać się i kończyć literą lub cyfrą. |  Zaktualizuj wartość we właściwościach komputera w Site Recovery.
-Połącz po migracji — Windows | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure z systemem Windows po migracji:<br/> -Przed migracją włącza protokół RDP na lokalnej maszynie wirtualnej. Upewnij się, że reguły TCP i UDP zostały dodane do profilu **publicznego** oraz że w pozycji **Zapora systemu Windows** > **Dozwolone aplikacje** zezwolono na użycie protokołu RDP we wszystkich profilach.<br/> W przypadku dostępu do sieci VPN typu lokacja-lokacja Włącz protokół RDP i Zezwalaj na używanie protokołu RDP w **zaporze systemu Windows** -> **dozwolone aplikacje i funkcje** dla sieci w sieciach **i prywatnych** . Ponadto sprawdź, czy zasady sieci SAN systemu operacyjnego są ustawione na **OnlineAll**. [Dowiedz się więcej](prepare-for-migration.md). |
+Połącz po migracji — Windows | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure z systemem Windows po migracji:<br/> -Przed migracją włącza protokół RDP na lokalnej maszynie wirtualnej. Upewnij się, że reguły TCP i UDP zostały dodane do profilu **publicznego** oraz że w pozycji **Zapora systemu Windows** > **Dozwolone aplikacje** zezwolono na użycie protokołu RDP we wszystkich profilach.<br/> W przypadku dostępu do sieci VPN typu lokacja-lokacja Włącz protokół RDP i Zezwalaj na używanie protokołu RDP w **zaporze systemu Windows** -> **dozwolonych aplikacji i funkcji** dla sieci **,** w których są dozwolone. Ponadto sprawdź, czy zasady sieci SAN systemu operacyjnego są ustawione na **OnlineAll**. [Dowiedz się więcej](prepare-for-migration.md). |
 Połącz po migracji — system Linux | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure po migracji przy użyciu protokołu SSH:<br/> Przed migracją na maszynie lokalnej Sprawdź, czy usługa Secure Shell jest ustawiona do uruchamiania, oraz czy reguły zapory zezwalają na połączenie SSH.<br/> Po przejściu w tryb failover na maszynie wirtualnej platformy Azure Zezwól na połączenia przychodzące do portu SSH dla reguł sieciowej grupy zabezpieczeń na maszynie wirtualnej w trybie failover oraz dla podsieci platformy Azure, do której jest podłączona. Dodatkowo Dodaj publiczny adres IP dla maszyny wirtualnej. |  
 
 

@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: nacharya1
-ms.author: nilesha
-ms.date: 06/20/2019
-ms.custom: seodec18
-ms.openlocfilehash: 999f554bf4a2b9ddda83ee6398950cefb11d32aa
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+author: cartacioS
+ms.author: sacartac
+ms.date: 11/04/2019
+ms.openlocfilehash: 5c8ce6a588fd630f69d8ffc682b611baba3afdd4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929337"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497563"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczne Uczenie maszynowe?
 
@@ -54,7 +53,9 @@ Korzystając z **Azure Machine Learning**, można projektować i uruchamiać zau
 
 1. **Skonfiguruj cel obliczeń dla szkolenia modelu**, takiego jak [komputer lokalny, Azure Machine Learning obliczeń, zdalnych maszyn wirtualnych lub Azure Databricks](how-to-set-up-training-targets.md).  Dowiedz się więcej o zautomatyzowanym szkoleniu [dla zasobu zdalnego](how-to-auto-train-remote.md).
 
-1. **Skonfiguruj zautomatyzowane parametry uczenia maszynowego** , które określają, ile iteracji przekroczy różne modele, ustawienia parametrów, zaawansowane przetwarzanie wstępne/cechowania i jakie metryki mają być sprawdzane podczas określania najlepszego modelu.  Ustawienia automatycznego eksperymentu szkoleniowego można skonfigurować w [Azure Portal](how-to-create-portal-experiments.md), [na stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com)lub w [zestawie SDK](how-to-configure-auto-train.md). 
+1. **Skonfiguruj zautomatyzowane parametry uczenia maszynowego** , które określają, ile iteracji przekroczy różne modele, ustawienia parametrów, zaawansowane przetwarzanie wstępne/cechowania i jakie metryki mają być sprawdzane podczas określania najlepszego modelu.  Można skonfigurować ustawienia automatycznego eksperymentu szkoleniowego w programie [Azure Machine Learning Studio](https://ml.azure.com)lub [za pomocą zestawu SDK](how-to-configure-auto-train.md). 
+
+    [!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
 1. **Prześlij przebieg szkoleniowy.**
 
@@ -62,7 +63,7 @@ Korzystając z **Azure Machine Learning**, można projektować i uruchamiać zau
 
 Podczas uczenia Azure Machine Learning tworzy wiele potoków równoległych, które wypróbuje różne algorytmy i parametry. Zostanie ona zatrzymana po trafieniu kryteriów zakończenia zdefiniowanych w eksperymentie.
 
-Możesz również sprawdzić zarejestrowane informacje o uruchomieniu, które [zawierają metryki](how-to-understand-automated-ml.md) zebrane podczas uruchamiania. Uruchomienie szkolenia powoduje utworzenie serializowanego obiektu języka Python (plik `.pkl`), który zawiera model i przetwarzanie wstępne przetwarzania danych.
+Możesz również sprawdzić zarejestrowane informacje o uruchomieniu, które [zawierają metryki](how-to-understand-automated-ml.md) zebrane podczas uruchamiania. Uruchomienie szkoleniowe powoduje utworzenie serializowanego obiektu języka Python (pliku`.pkl`) zawierającego model i przetwarzanie wstępne przetwarzania danych.
 
 Chociaż Kompilowanie modelu jest zautomatyzowane, można również [dowiedzieć się, jak ważne lub istotne funkcje są](how-to-configure-auto-train.md#explain) wygenerowane modele.
 
@@ -94,6 +95,8 @@ W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są automa
 ### <a name="advanced-preprocessing-optional-featurization"></a>Zaawansowane przetwarzanie wstępne: opcjonalne cechowania
 
 Dostępne są również dodatkowe zaawansowane procesy przetwarzania wstępnego i cechowania, takie jak brakujące wartości, które nie są przypisywaniem, kodowaniem i transformacjem. [Dowiedz się więcej na temat tego, co obejmuje cechowania](how-to-create-portal-experiments.md#preprocess). Włącz to ustawienie przy użyciu:
+
++ Azure Machine Learning Studio: wybierz opcję **Wyświetl ustawienia cechowania** w sekcji **uruchomienie konfiguracji** , [wykonując następujące kroki](how-to-create-portal-experiments.md).
 
 + Zestaw SDK języka Python: Określanie `"feauturization": auto' / 'off' / FeaturizationConfig` dla [klasy`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
@@ -175,7 +178,7 @@ Zobacz przykłady i Dowiedz się, jak tworzyć modele przy użyciu automatyczneg
 + Postępuj zgodnie z [samouczkiem: automatyczne uczenie modelu regresji przy użyciu automatycznego Machine Learning platformy Azure](tutorial-auto-train-models.md)
 
 + Skonfiguruj ustawienia dla eksperymentu automatycznego szkolenia:
-  + W interfejsie Azure Portal lub na stronie docelowej obszaru roboczego (wersja zapoznawcza) [wykonaj następujące kroki](how-to-create-portal-experiments.md).
+  + W programie Azure Machine Learning Studio [wykonaj te kroki](how-to-create-portal-experiments.md).
   + Za pomocą zestawu SDK języka Python [wykonaj te kroki](how-to-configure-auto-train.md).
 
 + Dowiedz się, jak korzystać z funkcji autouczenia przy użyciu danych szeregów czasowych, [wykonując następujące kroki](how-to-auto-train-forecast.md).

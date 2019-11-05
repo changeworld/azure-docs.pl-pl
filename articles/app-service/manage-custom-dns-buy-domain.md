@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 188db5e89097542b5a47b43e7bc8bbb2ce30b072
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1354f48843f8006b4a6180a2cea60e735413e446
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073129"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470409"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kup niestandardową nazwę domeny dla Azure App Service
 
@@ -38,9 +38,9 @@ W celu ukończenia tego samouczka:
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Aby można było używać domen niestandardowych w Azure App Service, [plan App Service](https://azure.microsoft.com/pricing/details/app-service/) aplikacji musi być płatną warstwą(współdzielona, **podstawowa**, **standardowa**lub **Premium**). W tym kroku upewnij się, że aplikacja jest w obsługiwanej warstwie cenowej.
+Aby można było używać domen niestandardowych w Azure App Service, [plan App Service](https://azure.microsoft.com/pricing/details/app-service/) aplikacji musi być płatną warstwą **(współdzielona**, **podstawowa**, **standardowa**lub **Premium**). W tym kroku upewnij się, że aplikacja jest w obsługiwanej warstwie cenowej.
 
-### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Otwórz witrynę [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
 
@@ -62,13 +62,13 @@ Bieżąca warstwa aplikacji jest wyróżniona niebieskim obramowaniem. Upewnij s
 
 ![Sprawdzanie warstwy cenowej](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Jeśli plan App Service nie znajduje się w warstwie **F1** , zamknij stronę skalowanie w **górę** i przejdź do [opcji Kup domenę](#buy-the-domain).
+Jeśli plan App Service nie znajduje się w warstwie **F1** , zamknij stronę **skalowanie w górę** i przejdź do [opcji Kup domenę](#buy-the-domain).
 
 ### <a name="scale-up-the-app-service-plan"></a>Skalowanie w górę planu usługi App Service
 
 Wybierz jedną z płatnych warstw (**D1**, **B1**, **B2**, **B3** lub dowolną warstwę z kategorii **Produkcja**). Aby uzyskać dodatkowe opcje, kliknij pozycję **Wyświetl dodatkowe opcje**.
 
-Kliknij przycisk **zastosować**.
+Kliknij przycisk **Zastosuj**.
 
 ![Sprawdzanie warstwy cenowej](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -81,7 +81,7 @@ Wyświetlenie następującego powiadomienia oznacza zakończenie operacji skalow
 ### <a name="pricing-information"></a>Informacje o cenach
 Aby uzyskać informacje o cenach Azure App Service domenach, odwiedź [stronę cennika App Service](https://azure.microsoft.com/pricing/details/app-service/windows/) i przewiń w dół do App Service domeny.
 
-### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 Otwórz witrynę [Azure Portal](https://portal.azure.com/) i zaloguj się przy użyciu konta platformy Azure.
 
 ### <a name="launch-buy-domains"></a>Uruchamianie kupowania domen
@@ -100,7 +100,7 @@ Na stronie **domeny niestandardowe** kliknij pozycję **Kup domenę**.
 
 ### <a name="configure-the-domain-purchase"></a>Konfigurowanie zakupu domeny
 
-Na stronie **domena App Service** w polu **Wyszukaj domenę** wpisz nazwę domeny, którą chcesz kupić i wpisz `Enter`. Sugerowane dostępne domeny są wyświetlane tuż poniżej pola tekstowego. Wybierz co najmniej jedną domenę, którą chcesz kupić.
+Na stronie **domena App Service** w polu **Wyszukaj domenę** wpisz nazwę domeny, którą chcesz kupić, i wpisz `Enter`. Sugerowane dostępne domeny są wyświetlane tuż poniżej pola tekstowego. Wybierz co najmniej jedną domenę, którą chcesz kupić.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
@@ -117,8 +117,8 @@ Następnie wybierz odpowiednie opcje dla domeny. Zapoznaj się z poniższymi tab
 
 | Ustawienie | Sugerowana wartość | Opis |
 |-|-|-|
-|Ochrona prywatności | Włączenie | Zezwól na "ochronę prywatności", która jest oferowana _bezpłatnie_w cenie zakupu. Niektóre domeny najwyższego poziomu są zarządzane przez rejestratory, które nie obsługują ochrony prywatności i są wyświetlane na stronie **Ochrona prywatności** . |
-| Przypisz domyślne nazwy hostów | **www** i **\@** | Wybierz żądane powiązania nazwy hosta, jeśli jest to wymagane. Po zakończeniu operacji zakupu domeny dostęp do aplikacji można uzyskać na wybranych nazwach hostów. Jeśli aplikacja jest za [Traffic managerem platformy Azure](https://azure.microsoft.com/services/traffic-manager/), nie widzisz opcji przypisywania domeny głównej (@), ponieważ Traffic Manager nie obsługuje rekordów. Po zakończeniu zakupu domeny możesz wprowadzić zmiany w przypisaniach do nazwy hosta. |
+|Ochrona prywatności | Włączanie | Zezwól na "ochronę prywatności", która jest oferowana _bezpłatnie_w cenie zakupu. Niektóre domeny najwyższego poziomu są zarządzane przez rejestratory, które nie obsługują ochrony prywatności i są wyświetlane na stronie **Ochrona prywatności** . |
+| Przypisywanie domyślnych nazw hostów | **www** i **\@** | Wybierz żądane powiązania nazwy hosta, jeśli jest to wymagane. Po zakończeniu operacji zakupu domeny dostęp do aplikacji można uzyskać na wybranych nazwach hostów. Jeśli aplikacja jest za [Traffic managerem platformy Azure](https://azure.microsoft.com/services/traffic-manager/), nie widzisz opcji przypisywania domeny głównej (@), ponieważ Traffic Manager nie obsługuje rekordów. Po zakończeniu zakupu domeny możesz wprowadzić zmiany w przypisaniach do nazwy hosta. |
 
 ### <a name="accept-terms-and-purchase"></a>Zaakceptuj warunki i zakup
 
@@ -141,12 +141,12 @@ Jeśli do aplikacji zostały przypisane domyślne nazwy hostów, zobaczysz równ
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-Na stronie niestandardowe **nazwy** hostów widoczne są także wybrane nazwy hostów.
+Na stronie niestandardowe **nazwy** hostów **widoczne są także** wybrane nazwy hostów.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> Etykieta **niezabezpieczona** dla domeny niestandardowej oznacza, że nie jest ona jeszcze powiązana z certyfikatem SSL, a wszystkie żądania HTTPS z przeglądarki do domeny niestandardowej otrzymają błąd lub ostrzeżenie, w zależności od przeglądarki. Aby skonfigurować powiązanie protokołu SSL, zobacz [kupowanie i Konfigurowanie certyfikatu SSL dla Azure App Service](web-sites-purchase-ssl-web-site.md).
+> Etykieta **niezabezpieczona** dla domeny niestandardowej oznacza, że nie jest ona jeszcze powiązana z certyfikatem SSL, a wszystkie żądania HTTPS z przeglądarki do domeny niestandardowej otrzymają błąd lub ostrzeżenie, w zależności od przeglądarki. Aby skonfigurować powiązanie SSL, zobacz temat [Zabezpieczanie niestandardowej nazwy DNS z powiązaniem SSL w Azure App Service](configure-ssl-bindings.md).
 >
 
 Aby przetestować nazwy hostów, przejdź do listy nazw hostów w przeglądarce. W przykładzie na poprzednim zrzucie ekranu spróbuj przejść do _kontoso.NET_ i _www\.kontoso.NET_.
@@ -158,7 +158,7 @@ Jeśli nie przypiszesz co najmniej jednej domyślnej nazwy hosta do aplikacji po
 Nazwy hostów można także przypisywać w domenie App Service do dowolnej innej aplikacji. Kroki te zależą od tego, czy domena App Service i aplikacja należą do tej samej subskrypcji.
 
 - Inna subskrypcja: Mapuj niestandardowe rekordy DNS z domeny App Service do aplikacji, takiej jak domena zakupiona zewnętrznie. Aby uzyskać informacje na temat dodawania niestandardowych nazw DNS do domeny App Service, zobacz [Zarządzanie niestandardowymi rekordami DNS](#custom). Aby zmapować zewnętrznie zakupioną domenę do aplikacji, zobacz [Mapowanie istniejącej niestandardowej nazwy DNS na Azure App Service](app-service-web-tutorial-custom-domain.md). 
-- Ta sama subskrypcja: Wykonaj poniższe kroki.
+- Ta sama subskrypcja: wykonaj poniższe kroki.
 
 ### <a name="launch-add-hostname"></a>Uruchom Dodawanie nazwy hosta
 Na stronie **App Services** wybierz nazwę aplikacji, do której chcesz przypisać nazwy hostów, wybierz pozycję **Ustawienia**, a następnie wybierz pozycję **domeny niestandardowe**.
@@ -177,10 +177,10 @@ Upewnij się, że zakupiona domena znajduje się na liście w sekcji **domeny Ap
 Wybierz przycisk **Dodaj nazwę hosta**.
 
 ### <a name="configure-hostname"></a>Konfigurowanie nazwy hosta
-W oknie dialogowym **Dodawanie nazwy hosta** wpisz w pełni kwalifikowaną nazwę domeny domeny App Service lub dowolna poddomena. Przykład:
+W oknie dialogowym **Dodawanie nazwy hosta** wpisz w pełni kwalifikowaną nazwę domeny domeny App Service lub dowolna poddomena. Na przykład:
 
 - kontoso.net
-- kontoso.NET\.www
+- kontoso.net www\.
 - abc.kontoso.net
 
 Po zakończeniu wybierz pozycję **Weryfikuj**. Typ rekordu nazwy hosta jest automatycznie wybierany.
@@ -228,10 +228,10 @@ Jeśli odnowienie domeny zakończyło się pomyślnie, otrzymasz powiadomienie e
 
 Platforma Azure zajmuje się wygaśniemi lub wygasłymi domenami App Service w następujący sposób:
 
-* Jeśli automatyczne odnawianie jest wyłączone: 90 dni przed wygaśnięciem domeny wiadomość e-mail z powiadomieniem o odnowieniu zostanie wysłana do Ciebie, a przycisk **Odnów domenę** zostanie aktywowany w portalu.
-* Jeśli automatyczne odnawianie jest włączone: Na dzień po dacie wygaśnięcia domeny platforma Azure podejmie próbę naliczania opłat za odnowienie nazwy domeny.
-* Jeśli wystąpi błąd podczas automatycznego odnawiania (na przykład Twoja karta w pliku wygasła) lub jeśli automatyczne odnawianie jest wyłączone i zezwolisz na wygaśnięcie domeny, system Azure powiadamia użytkownika o wygaśnięciu domeny i parkach nazwy domeny. Możesz [ręcznie](#renew-the-domain) odnowić domenę.
-* W dniu 4 i 12 dni po wygaśnięciu na platformie Azure są wysyłane dodatkowe wiadomości e-mail z powiadomieniami. Możesz [ręcznie](#renew-the-domain) odnowić domenę.
+* Jeśli automatyczne odnawianie jest wyłączone: 90 dni przed wygaśnięciem domeny, zostanie do Ciebie wysłana wiadomość e-mail z powiadomieniem o odnowieniu, a przycisk **Odnów domenę** zostanie aktywowany w portalu.
+* Jeśli automatyczne odnawianie jest włączone: w dniu po dacie wygaśnięcia domeny, platforma Azure podejmie próbę naliczania opłat za odnowienie nazwy domeny.
+* Jeśli wystąpi błąd podczas automatycznego odnawiania (na przykład Twoja karta w pliku wygasła) lub jeśli automatyczne odnawianie jest wyłączone i zezwolisz na wygaśnięcie domeny, system Azure powiadamia użytkownika o wygaśnięciu domeny i parkach nazwy domeny. Możesz [ręcznie odnowić](#renew-the-domain) domenę.
+* W dniu 4 i 12 dni po wygaśnięciu na platformie Azure są wysyłane dodatkowe wiadomości e-mail z powiadomieniami. Możesz [ręcznie odnowić](#renew-the-domain) domenę.
 * W dniu 19 po wygaśnięciu domena pozostaje wstrzymana, ale podlega opłacie za realizację. Można skontaktować się z pomocą techniczną, aby odnowić nazwę domeny, z zastrzeżeniem odpowiednich opłat za odnowienie i umorzenie.
 * W 25-dniowym dniu po wygaśnięciu platforma Azure umieszcza swoją domenę na potrzeby aukcji za pomocą usługi aukcyjnej o nazwie domeny. Można skontaktować się z pomocą techniczną, aby odnowić nazwę domeny, z zastrzeżeniem odpowiednich opłat za odnowienie i umorzenie.
 * Na 30 dzień po wygaśnięciu nie można już zrealizować Twojej domeny.
@@ -270,7 +270,7 @@ W Azure Portal z menu po lewej stronie wybierz pozycję **wszystkie usługi** > 
 
 Wybierz domenę, do której chcesz anulować lub usunąć. 
 
-### <a name="delete-hostname-bindings"></a>Usuń powiązania nazw hostów
+### <a name="delete-hostname-bindings"></a>Usuń powiązania nazwy hosta
 
 W menu po lewej stronie domeny wybierz pozycję **powiązania nazwy hosta**. W tym miejscu są wyświetlane powiązania nazwy hosta ze wszystkich usług platformy Azure.
 
@@ -278,7 +278,7 @@ W menu po lewej stronie domeny wybierz pozycję **powiązania nazwy hosta**. W t
 
 Nie można usunąć domeny App Service, dopóki nie zostaną usunięte wszystkie powiązania nazwy hosta.
 
-Usuń każde powiązanie nazwy hosta, wybierając pozycję **...**  >  **Usuń**. Po usunięciu wszystkich powiązań wybierz pozycję **Zapisz**.
+Usuń każde powiązanie nazwy hosta, wybierając pozycję **...**  > **Usuń**. Po usunięciu wszystkich powiązań wybierz pozycję **Zapisz**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
@@ -296,4 +296,4 @@ Po zakończeniu operacji domena zostanie wydzielona z subskrypcji i będzie dost
 
 ## <a name="direct-default-url-to-a-custom-directory"></a>Kierowanie domyślnego adresu URL do katalogu niestandardowego
 
-Domyślnie usługa App Service kieruje żądania internetowe do katalogu głównego w kodzie aplikacji. Aby skierować je do podkatalogu, na przykład `public`, zobacz [bezpośredni domyślny adres URL do katalogu niestandardowego](app-service-web-tutorial-custom-domain.md#virtualdir).
+Domyślnie usługa App Service kieruje żądania internetowe do katalogu głównego w kodzie aplikacji. Aby skierować je do podkatalogu, takiego jak `public`, zobacz [bezpośredni domyślny adres URL do katalogu niestandardowego](app-service-web-tutorial-custom-domain.md#virtualdir).

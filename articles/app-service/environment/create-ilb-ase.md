@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dad2841d680702786cfc1f175a70390158444e02
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 07b47374484cf954b1fc4279c93dddcc6cec7e61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928627"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470572"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Tworzenie i używanie wewnętrznego Load Balancer App Service Environment 
 
@@ -29,7 +29,7 @@ Azure App Service Environment to wdrożenie Azure App Service w podsieci w sieci
 
 W tym artykule przedstawiono sposób tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia. Aby zapoznać się z omówieniem środowiska ASE, zobacz [wprowadzenie do środowisk App Service][Intro]. Aby dowiedzieć się, jak utworzyć zewnętrzny środowisko ASE, zobacz [Tworzenie zewnętrznego środowiska ASE][MakeExternalASE].
 
-## <a name="overview"></a>Przegląd 
+## <a name="overview"></a>Omówienie 
 
 Środowisko ASE można wdrożyć za pomocą punktu końcowego dostępnego z Internetu lub adresu IP w sieci wirtualnej. Aby można było ustawić jako adres IP adres sieci wirtualnej, należy wdrożyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia. W przypadku wdrażania środowiska ASE przy użyciu ILB należy podać nazwę środowiska ASE. Nazwa środowiska ASE jest używana w sufiksie domeny dla aplikacji w środowisku ASE.  Sufiks domeny dla środowiska ILB ASE to &lt;ASE Name&gt;. appserviceenvironment.net. Aplikacje utworzone w środowisku ILB ASE nie są umieszczane w publicznym systemie DNS. 
 
@@ -157,7 +157,7 @@ ILB środowisk ASE, które zostały wprowadzone przed 2019 maja, wymagały ustaw
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

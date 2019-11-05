@@ -5,15 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.custom: mvc
-ms.openlocfilehash: d1c90e61890ee98dc5371faed872d03409aaf31f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: bfec1493492fb1e8e9bd7394aae3db8983f4cff9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489543"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495656"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Samouczek: Tworzenie bramy sieci VPN i zarządzanie nią przy użyciu programu PowerShell
 
@@ -85,7 +84,7 @@ New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Brama sieci VPN na platformie Azure zapewnia łączność między lokalizacjami oraz funkcjonalność serwera VPN P2S w sieci wirtualnej. Dodaj bramę sieci VPN do istniejącej sieci wirtualnej lub utwórz nową sieć wirtualną i bramę. Należy zauważyć, że w przykładzie określono nazwę podsieci bramy. Należy zawsze określić nazwę podsieci bramy jako "GatewaySubnet", aby działała prawidłowo. W tym przykładzie tworzona jest nowa sieć wirtualna z trzema podsieciami: frontonu, zaplecza i bramy za pomocą poleceń [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) oraz [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
+Brama sieci VPN na platformie Azure zapewnia łączność między lokalizacjami oraz funkcjonalność serwera VPN P2S w sieci wirtualnej. Dodaj bramę sieci VPN do istniejącej sieci wirtualnej lub utwórz nową sieć wirtualną i bramę. Należy zauważyć, że w przykładzie określono nazwę podsieci bramy. Należy zawsze określić nazwę podsieci bramy jako "GatewaySubnet", aby działała prawidłowo. Ten przykład umożliwia utworzenie nowej sieci wirtualnej z trzema podsieciami: frontonu, zaplecza i GatewaySubnet przy użyciu polecenia [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) i [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
 ```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
@@ -128,9 +127,9 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 Wartości parametrów klucza:
 * GatewayType: użyj **Vpn** w przypadku połączeń między lokacjami oraz między sieciami wirtualnymi
 * VpnType: użyj **RouteBased**, by umożliwić interakcję z większą liczbą urządzeń VPN oraz korzystanie z większej liczby funkcji routingu
-* GatewaySku: domyślna wartość to **VpnGw1**. Zmień ją na VpnGw2 lub VpnGw3, jeśli potrzebujesz wyższej przepływności albo większej liczby połączeń. Aby uzyskać więcej informacji, zobacz [Gateway SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Jednostki SKU bramy).
+* GatewaySku: **VpnGw1** jest wartością domyślną; Zmień ją na inną jednostkę SKU VpnGw, jeśli potrzebujesz większej przepływności lub większej liczby połączeń. Aby uzyskać więcej informacji, zobacz [Gateway SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Jednostki SKU bramy).
 
-W przypadku używania funkcji Wypróbuj może upłynąć limit czasu sesji. Nie przejmuj się tym. Brama zostanie utworzona.
+Jeśli używasz TryIt, sesja może przekroczyć limit czasu. Tak jest ok. Brama zostanie utworzona.
 
 Po zakończeniu tworzenia bramy możesz utworzyć połączenie między swoją siecią wirtualną a inną siecią wirtualną albo lokalizacją lokalną. Możesz również skonfigurować połączenie P2S komputera klienckiego ze swoją siecią lokalną.
 
@@ -147,7 +146,7 @@ $myGwIp.IpAddress
 
 ## <a name="resize-a-gateway"></a>Zmienianie rozmiaru bramy
 
-Możesz zmienić jednostkę SKU po utworzeniu bramy sieci VPN. Różne jednostki SKU obsługują różne specyfikacje, takie jak przepływność, liczba połączeń itd. W poniższym przykładzie zmieniono rozmiar bramy z VpnGw1 na VpnGw2 za pomocą polecenia [Resize-AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway). Aby uzyskać więcej informacji, zobacz [Gateway SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Jednostki SKU bramy).
+Możesz zmienić jednostkę SKU po utworzeniu bramy sieci VPN. Różne jednostki SKU bramy obsługują różne specyfikacje, takie jak przepływność, liczba połączeń itp. W poniższym przykładzie zastosowano [zmianę rozmiaru AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) , aby zmienić rozmiar bramy z VpnGw1 na VpnGw2. Aby uzyskać więcej informacji, zobacz [Gateway SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Jednostki SKU bramy).
 
 ```azurepowershell-interactive
 $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1

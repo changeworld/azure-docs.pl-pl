@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 05/22/2019
+ms.date: 10/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: b4ad8697997a8c90a6548c66819bfe790c8235e3
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 82e9003036f67ecd3b3ecd7d8ab6cd434fcfc438
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798994"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495690"
 ---
 # <a name="what-is-vpn-gateway"></a>Co to jest usługa VPN Gateway?
 
@@ -21,11 +21,13 @@ Brama sieci VPN to specyficzny typ bramy sieci wirtualnej, który służy do wys
 
 ## <a name="whatis"></a>Co to jest brama sieci wirtualnej?
 
-Brama sieci wirtualnej składa się z co najmniej dwóch maszyn wirtualnych, które są wdrażane w utworzonej przez Ciebie podsieci nazywanej *podsiecią bramy*. Maszyny wirtualne, które znajdują się w podsieci bramy, są tworzone podczas tworzenia bramy sieci wirtualnej. Maszyny wirtualne bramy sieci wirtualnej są skonfigurowane w taki sposób, aby zawierały tabele routingu oraz specyficzne dla siebie usługi bramy. Nie można bezpośrednio skonfigurować maszyn wirtualnych, które są częścią bramy sieci wirtualnej, i nie należy nigdy wdrażać dodatkowych zasobów w podsieci bramy.
+Brama sieci wirtualnej składa się z co najmniej dwóch maszyn wirtualnych wdrożonych w określonej podsieci, która jest tworzona w ramach *podsieci bramy*. Maszyny wirtualne bramy sieci wirtualnej zawierają tabele routingu i uruchamiają konkretne usługi bramy. Te maszyny wirtualne są tworzone podczas tworzenia bramy sieci wirtualnej. Nie można bezpośrednio skonfigurować maszyn wirtualnych, które są częścią bramy sieci wirtualnej.
 
-Bramy sieci VPN można wdrażać w strefach dostępności platformy Azure. To zapewniają elastyczność, skalowalność i większą dostępność bramy sieci wirtualnej. Wdrażanie bramy w strefach dostępności Azure fizycznie i logicznie dzieli bramy w danym regionie, przy jednoczesnej ochronie łączności sieci środowiska lokalnego do platformy Azure przed awariami poziomu strefy. zobacz [o bramach sieci wirtualnej strefowo nadmiarowy w strefach dostępności platformy Azure](about-zone-redundant-vnet-gateways.md)
+Jednym z ustawień skonfigurowanych dla bramy sieci wirtualnej jest typ bramy. Typ bramy określa sposób użycia bramy sieci wirtualnej oraz akcje podejmowane przez bramę. Typ bramy "VPN" określa, że typ tworzonej bramy sieci wirtualnej to "Brama sieci VPN", a nie Brama ExpressRoute. Sieć wirtualna może mieć dwie bramy sieci wirtualnej; jedna Brama sieci VPN i jedna brama ExpressRoute — podobnie jak w przypadku [współistniejących](#coexisting) konfiguracji połączeń. Aby uzyskać więcej informacji, zobacz [Gateway types](vpn-gateway-about-vpn-gateway-settings.md#gwtype) (Typy bram).
 
-Tworzenie bramy sieci wirtualnej może potrwać do 45 minut. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane w podsieci bramy i konfigurowane przy użyciu określonych przez Ciebie ustawień. Skonfigurować możesz między innymi typ bramy. Typ bramy „vpn” określa, że utworzona brama sieci wirtualnej jest bramą sieci VPN. Po utworzeniu bramy sieci VPN możesz utworzyć połączenie tunelu VPN IPsec/IKE między bramą sieci VPN a inną bramą sieci VPN (sieć wirtualna-sieć wirtualna) lub utworzyć połączenie tunelu VPN IPsec/IKE obejmujące wiele lokalizacji między bramą sieci VPN a lokalnym urządzeniem sieci VPN (lokacja-lokacja). Można również utworzyć połączenie sieci VPN typu punkt-lokacja (sieć VPN przez OpenVPN, protokół IKEv2 lub SSTP), która pozwala na połączenie z siecią wirtualną z lokalizacji zdalnej, np. z konferencji lub domu.
+Bramy sieci VPN można wdrożyć w Strefy dostępności platformy Azure. Zapewnia to elastyczność, skalowalność i wyższą dostępność dla bram sieci wirtualnej. Wdrażanie bram w Strefy dostępności platformy Azure fizycznie i logicznie oddziela bramy w danym regionie, chroniąc połączenie sieci lokalnej na platformie Azure przed awariami na poziomie strefy. Zobacz [temat strefy — nadmiarowe bramy sieci wirtualnej w strefy dostępności platformy Azure](about-zone-redundant-vnet-gateways.md)
+
+Tworzenie bramy sieci wirtualnej może potrwać do 45 minut. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane w podsieci bramy i konfigurowane przy użyciu określonych przez Ciebie ustawień. Po utworzeniu bramy sieci VPN możesz utworzyć połączenie tunelu VPN IPsec/IKE między bramą sieci VPN a inną bramą sieci VPN (sieć wirtualna-sieć wirtualna) lub utworzyć połączenie tunelu VPN IPsec/IKE obejmujące wiele lokalizacji między bramą sieci VPN a lokalnym urządzeniem sieci VPN (lokacja-lokacja). Możesz również utworzyć połączenie sieci VPN typu punkt-lokacja (VPN over OpenVPN, IKEv2 lub SSTP), które umożliwia łączenie się z siecią wirtualną z lokalizacji zdalnej, np. z konferencji lub z domu.
 
 ## <a name="configuring"></a>Konfigurowanie bramy VPN Gateway
 
@@ -51,7 +53,7 @@ W poniższej tabeli znajdują się informacje pomocne podczas podejmowania decyz
 
 ## <a name="gwsku"></a>Jednostki SKU bramy
 
-Podczas tworzenia bramy sieci wirtualnej określa się jednostkę SKU bramy do użycia. Wybierz jednostkę SKU spełniającą Twoje wymagania na podstawie typów obciążeń, przepustowości, funkcji i umów SLA. Aby uzyskać więcej informacji na temat bramy jednostki SKU, w tym obsługiwanych funkcji, produkcji i dewelopersko testowe i kroki konfiguracji, zobacz [ustawień usługi VPN Gateway - jednostki SKU bramy](vpn-gateway-about-vpn-gateway-settings.md#gwsku) artykułu. Aby uzyskać informacje o jednostkach SKU starszej wersji, zobacz [pracy przy użyciu starszej wersji jednostki SKU](vpn-gateway-about-skus-legacy.md).
+Podczas tworzenia bramy sieci wirtualnej określa się jednostkę SKU bramy do użycia. Wybierz jednostkę SKU spełniającą Twoje wymagania na podstawie typów obciążeń, przepustowości, funkcji i umów SLA. Aby uzyskać więcej informacji o jednostkach SKU bramy, w tym obsługiwanych funkcjach, środowisku produkcyjnym i procesie tworzenia i konfigurowania, zapoznaj się z artykułem [VPN Gateway Settings-Gateway SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) . Aby uzyskać informacje o starszych jednostkach SKU, zobacz [Praca ze starszymi wersjami SKU](vpn-gateway-about-skus-legacy.md).
 
 ### <a name="benchmark"></a>Jednostki SKU bramy według tunelowania, połączenia i przepływności
 
@@ -85,7 +87,7 @@ Ten typ połączenia jest odmianą połączenia typu lokacja-lokacja. W tym przy
 
 [!INCLUDE [site-to-site and multi-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-## <a name="P2S"></a>Sieci VPN typu punkt lokacja
+## <a name="P2S"></a>Sieć VPN typu punkt-lokacja
 
 Połączenie bramy VPN Gateway typu punkt-lokacja pozwala utworzyć bezpieczne połączenie z siecią wirtualną z indywidualnego komputera klienckiego. Połączenie typu punkt-lokacja jest ustanawiane przez uruchomienie z komputera klienckiego. To rozwiązanie jest przydatne dla osób pracujących zdalnie, które chcą łączyć się z sieciami wirtualnymi platformy Azure z lokalizacji zdalnej, na przykład z domu lub sali konferencyjnej. Połączenie sieci VPN typu punkt-lokacja jest również przydatne zamiast połączenia sieci VPN typu lokacja-lokacja w przypadku niewielkiej liczby klientów, którzy muszą się łączyć z siecią wirtualną.
 
@@ -152,7 +154,7 @@ Więcej informacji o jednostkach SKU bramy dla usługi VPN Gateway zawiera artyk
 
 Aby zapoznać się z często zadawanymi pytaniami dotyczącymi bramy sieci VPN, zobacz [Brama VPN Gateway — często zadawane pytania](vpn-gateway-vpn-faq.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Więcej informacji można znaleźć w temacie [Brama VPN Gateway — często zadawane pytania](vpn-gateway-vpn-faq.md).
 - Wyświetl [limity usług i subskrypcji](../azure-subscription-service-limits.md#networking-limits).

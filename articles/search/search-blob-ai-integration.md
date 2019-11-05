@@ -1,23 +1,23 @@
 ---
 title: Używanie AI do zrozumienia danych magazynu obiektów BLOB
-titleSuffix: Azure Search
-description: Dodaj semantykę, przetwarzanie języka naturalnego i analizę obrazu do obiektów blob platformy Azure przy użyciu potoku wzbogacania AI w Azure Search.
+titleSuffix: Azure Cognitive Search
+description: Dodaj semantykę, przetwarzanie języka naturalnego i analizę obrazu do obiektów blob platformy Azure przy użyciu potoku wzbogacania AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/09/2019
-ms.openlocfilehash: 5f65667ac8ffacdd12e57ae0d46e25c586624a31
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 11/04/2019
+ms.openlocfilehash: 591437eb3951164d53388b6164103948e9ad65e0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792469"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496431"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>Używanie AI do zrozumienia danych magazynu obiektów BLOB
 
-Dane w usłudze Azure Blob Storage to często wiele zawartości bez struktury, takich jak obrazy, długie teksty, pliki PDF i dokumenty pakietu Office. Korzystając z możliwości systemu AI w Azure Search, można zrozumieć i wyodrębnić cenne informacje z obiektów BLOB na różne sposoby. Przykłady zastosowania AI do zawartości obiektów BLOB obejmują:
+Dane w usłudze Azure Blob Storage to często wiele zawartości bez struktury, takich jak obrazy, długie teksty, pliki PDF i dokumenty pakietu Office. Korzystając z funkcji AI w usłudze Azure Wyszukiwanie poznawcze, można zrozumieć i wyodrębnić cenne informacje z obiektów BLOB na wiele sposobów. Przykłady zastosowania AI do zawartości obiektów BLOB obejmują:
 
 + Wyodrębnij tekst z obrazów przy użyciu optycznego rozpoznawania znaków (OCR)
 + Tworzenie opisu sceny lub tagów ze zdjęcia
@@ -32,41 +32,41 @@ W tym artykule przedstawiono wzbogacenie AI za pośrednictwem szerokiego obiekty
 
 ## <a name="what-it-means-to-enrich-blob-data-with-ai"></a>Co oznacza "wzbogacanie" danych obiektów blob z AI
 
-*Wzbogacanie systemu AI* jest częścią architektury indeksowania Azure Search, która integruje wbudowane AI z firmy Microsoft lub niestandardowego AI. Ułatwia ona implementowanie kompleksowych scenariuszy, w których należy przetwarzać obiekty blob (zarówno istniejące, jak i nowe), ponieważ są one dostępne lub są aktualizowane), w tym celu należy otworzyć wszystkie formaty plików w celu wyodrębnienia obrazów i tekstu, wyodrębnienie wymaganych informacji przy użyciu różnych funkcji AI. Indeksuj je w indeks Azure Search, aby uzyskać szybkie wyszukiwanie, pobieranie i eksplorację. 
+*Wzbogacanie AI* jest częścią architektury indeksowania platformy Azure wyszukiwanie poznawcze, która integruje wbudowane AI z firmy Microsoft lub niestandardowego AI, który zapewniasz. Ułatwia ona implementowanie kompleksowych scenariuszy, w których należy przetwarzać obiekty blob (zarówno istniejące, jak i nowe), ponieważ są one dostępne lub są aktualizowane), w tym celu należy otworzyć wszystkie formaty plików w celu wyodrębnienia obrazów i tekstu, wyodrębnienie wymaganych informacji przy użyciu różnych funkcji AI. Indeksuj je w indeksie wyszukiwania, aby uzyskać szybkie wyszukiwanie, pobieranie i eksplorację. 
 
 Dane wejściowe są obiektami BLOB w jednym kontenerze w usłudze Azure Blob Storage. Obiekty blob mogą być niemal dowolnym rodzajem danych tekstowych lub graficznych. 
 
-Dane wyjściowe są zawsze indeksem Azure Search używanym do szybkiego wyszukiwania tekstu, pobierania i eksploracji w aplikacjach klienckich. Ponadto dane wyjściowe mogą być również *magazynem wiedzy* , który projektuje wzbogacone dokumenty do obiektów blob platformy Azure lub tabel platformy Azure w celu przeprowadzenia analizy podrzędnej w przypadku narzędzi takich jak Power BI lub obciążeń związanych z nauką danych.
+Wyjście jest zawsze indeksem wyszukiwania używanym do szybkiego wyszukiwania tekstu, pobierania i eksploracji w aplikacjach klienckich. Ponadto dane wyjściowe mogą być również *magazynem wiedzy* , który projektuje wzbogacone dokumenty do obiektów blob platformy Azure lub tabel platformy Azure w celu przeprowadzenia analizy podrzędnej w przypadku narzędzi takich jak Power BI lub obciążeń związanych z nauką danych.
 
 Między programem jest samą architekturą potoku. Potok jest oparty na funkcji *indeksatora* , do której można przypisać *zestawu umiejętności*, która składa się z co najmniej jednej *umiejętności* zapewniającej AI. Potok jest przeznaczony do tworzenia *wzbogaconych dokumentów* , które wprowadzają jako nieprzetworzoną zawartość, ale pobierają dodatkową strukturę, kontekst i informacje podczas poruszania się po potoku. Wzbogacone dokumenty są używane podczas indeksowania do tworzenia odwróconych indeksów i innych struktur używanych w wyszukiwaniu pełnotekstowym lub eksploracji i analizie.
 
 ## <a name="start-with-services"></a>Zacznij od usług
 
-Potrzebujesz Azure Search i usługi Azure Blob Storage. W magazynie obiektów BLOB wymagany jest kontener, który udostępnia zawartość źródłową.
+Potrzebujesz platformy Azure Wyszukiwanie poznawcze i usługi Azure Blob Storage. W magazynie obiektów BLOB wymagany jest kontener, który udostępnia zawartość źródłową.
 
-Możesz rozpocząć bezpośrednio na stronie portalu konta magazynu. Na lewej stronie nawigacyjnej w obszarze **BLOB Service** kliknij pozycję **Dodaj Azure Search** , aby utworzyć nową usługę, lub wybierz istniejącą. 
+Możesz rozpocząć bezpośrednio na stronie portalu konta magazynu. Na lewej stronie nawigacyjnej w obszarze **BLOB Service** kliknij pozycję **Dodaj wyszukiwanie poznawcze platformy Azure** , aby utworzyć nową usługę, lub wybierz istniejącą. 
 
-Po dodaniu Azure Search do konta magazynu można wykonać standardowy proces, aby wzbogacić dane w dowolnym źródle danych platformy Azure. Zaleca się, aby Kreator **importu danych** w Azure Search mógł łatwo zapoczątkować wprowadzenie do wzbogacania AI. Ten przewodnik Szybki Start przeprowadzi Cię przez kroki: [Tworzenie potoku wzbogacania AI w portalu](cognitive-search-quickstart-blob.md). 
+Po dodaniu Wyszukiwanie poznawcze platformy Azure do konta magazynu można wykonać standardowy proces, aby wzbogacić dane w dowolnym źródle danych platformy Azure. Zaleca się, aby Kreator **importu danych** na platformie Azure wyszukiwanie poznawczeł łatwy początkowy wprowadzenie do wzbogacania AI. Ten przewodnik Szybki Start przeprowadzi Cię przez kroki: [Tworzenie potoku wzbogacania AI w portalu](cognitive-search-quickstart-blob.md). 
 
 W poniższych sekcjach omówiono więcej składników i koncepcji.
 
 ## <a name="use-a-blob-indexer"></a>Używanie indeksatora obiektów BLOB
 
-Wzbogacanie AI jest dodatkiem do potoku indeksowania, a w Azure Search te potoki są zbudowane na podstawie *indeksatora*. Indeksator to podusługa z obsługą źródła danych, która jest wyposażona w wewnętrzną logikę do próbkowania danych, odczytywanie danych metadanych, pobieranie danych i Serializowanie danych z formatów natywnych do dokumentów JSON w celu późniejszego zaimportowania. Indeksatory są często używane do importowania, oddziel je od AI, ale jeśli chcesz skompilować potok wzbogacania AI, będziesz potrzebować indeksatora i zestawu umiejętności. Ta sekcja wyróżnia indeksator; Następna sekcja koncentruje się na umiejętności.
+Wzbogacanie AI jest dodatkiem do potoku indeksowania i w usłudze Azure Wyszukiwanie poznawcze te potoki są zbudowane na podstawie *indeksatora*. Indeksator to podusługa z obsługą źródła danych, która jest wyposażona w wewnętrzną logikę do próbkowania danych, odczytywanie danych metadanych, pobieranie danych i Serializowanie danych z formatów natywnych do dokumentów JSON w celu późniejszego zaimportowania. Indeksatory są często używane do importowania, oddziel je od AI, ale jeśli chcesz skompilować potok wzbogacania AI, będziesz potrzebować indeksatora i zestawu umiejętności. Ta sekcja wyróżnia indeksator; Następna sekcja koncentruje się na umiejętności.
 
-Obiekty blob w usłudze Azure Storage są indeksowane przy użyciu [indeksatora magazynu obiektów blob Azure Search](search-howto-indexing-azure-blob-storage.md). Można wywołać ten indeksator przy użyciu kreatora **importu danych** , interfejsu API REST lub zestawu .NET SDK. W kodzie, używasz tego indeksatora, ustawiając typ i dostarczając informacje o połączeniu, które obejmują konto usługi Azure Storage wraz z kontenerem obiektów BLOB. Obiekty blob można podzbiórować przez utworzenie katalogu wirtualnego, który można następnie przekazać jako parametr lub przez filtrowanie według rozszerzenia typu pliku.
+Obiekty blob w usłudze Azure Storage są indeksowane przy użyciu [indeksatora usługi azure wyszukiwanie poznawcze BLOB Storage](search-howto-indexing-azure-blob-storage.md). Można wywołać ten indeksator przy użyciu kreatora **importu danych** , interfejsu API REST lub zestawu .NET SDK. W kodzie, używasz tego indeksatora, ustawiając typ i dostarczając informacje o połączeniu, które obejmują konto usługi Azure Storage wraz z kontenerem obiektów BLOB. Obiekty blob można podzbiórować przez utworzenie katalogu wirtualnego, który można następnie przekazać jako parametr lub przez filtrowanie według rozszerzenia typu pliku.
 
-Indeksator wykonuje "pęknięcia dokumentu", otwierając obiekt BLOB w celu przeprowadzenia inspekcji zawartości. Po nawiązaniu połączenia ze źródłem danych jest to pierwszy krok w potoku. W przypadku danych obiektów BLOB są wykrywane pliki PDF, dokumenty pakietu Office, obrazy i inne typy zawartości. Łamanie dokumentów przy użyciu wyodrębniania tekstu nie jest naliczane. W przypadku rozpakowywania dokumentu przy użyciu wyodrębniania obrazów opłaty są naliczone według stawek, które można znaleźć na [stronie cennika](https://azure.microsoft.com/pricing/details/search/)Azure Search.
+Indeksator wykonuje "pęknięcia dokumentu", otwierając obiekt BLOB w celu przeprowadzenia inspekcji zawartości. Po nawiązaniu połączenia ze źródłem danych jest to pierwszy krok w potoku. W przypadku danych obiektów BLOB są wykrywane pliki PDF, dokumenty pakietu Office, obrazy i inne typy zawartości. Łamanie dokumentów przy użyciu wyodrębniania tekstu nie jest naliczane. W przypadku rozpakowywania dokumentu przy użyciu wyodrębniania obrazów opłaty są naliczone według stawek, które można znaleźć na [stronie cennika](https://azure.microsoft.com/pricing/details/search/).
 
 Chociaż wszystkie dokumenty będą rozpękane, wzbogaca się tylko wtedy, gdy użytkownik jawnie udostępni odpowiednie umiejętności. Na przykład jeśli potok składa się wyłącznie z analizy obrazów, tekst w kontenerze lub dokumentach jest ignorowany.
 
-Indeksator obiektów BLOB zawiera parametry konfiguracji i obsługuje śledzenie zmian, jeśli dane podstawowe zawierają wystarczające informacje. Więcej informacji na temat podstawowych funkcji można znaleźć w [Azure Search indeksator magazynu obiektów BLOB](search-howto-indexing-azure-blob-storage.md).
+Indeksator obiektów BLOB zawiera parametry konfiguracji i obsługuje śledzenie zmian, jeśli dane podstawowe zawierają wystarczające informacje. Aby dowiedzieć się więcej na temat podstawowych funkcji w [usłudze Azure wyszukiwanie poznawcze indeksator magazynu obiektów BLOB](search-howto-indexing-azure-blob-storage.md), należy zapoznać się z tematem.
 
 ## <a name="add-ai-components"></a>Dodaj składniki AI
 
 Wzbogacanie AI odnosi się do modułów, które szukają wzorców lub cech, a następnie wykonać odpowiednią operację. Rozpoznawanie twarzy na zdjęciach, tekstowe opisy zdjęć, wykrywanie kluczowych fraz w dokumencie, a także OCR (lub rozpoznawanie tekstu napisanego lub odręcznego w plikach binarnych) to przykłady ilustrujące.
 
-W Azure Search, *umiejętności* są indywidualnymi składnikami przetwarzania AI, które można wykorzystać autonomiczną lub w połączeniu z innymi umiejętnościami. 
+Na platformie Azure Wyszukiwanie poznawcze *umiejętności* są indywidualnymi składnikami przetwarzania AI, których można używać autonomicznie lub w połączeniu z innymi umiejętnościami. 
 
 + Wbudowane umiejętności są obsługiwane przez Cognitive Services, z analizą obrazów na podstawie przetwarzanie obrazów i przetwarzania w języku naturalnym opartym na analiza tekstu. Aby zapoznać się z pełną listą, zobacz [wbudowaną umiejętność wzbogacania zawartości](cognitive-search-predefined-skills.md).
 
@@ -76,7 +76,7 @@ W Azure Search, *umiejętności* są indywidualnymi składnikami przetwarzania A
 
 Umiejętności niestandardowe mogą być solidnie skomplikowane, ale mogą być proste i łatwe w realizacji. Jeśli masz istniejące pakiety, które zapewniają dopasowania wzorców lub modele klasyfikacji, zawartość wyodrębnianą z obiektów BLOB może zostać przeniesiona do tych modeli w celu przetworzenia. Ponieważ wzbogacanie AI korzysta z platformy Azure, model powinien również znajdować się na platformie Azure. Niektóre typowe metody hostingu obejmują używanie [Azure Functions](cognitive-search-create-custom-skill-example.md) lub [kontenerów](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
-Wbudowane umiejętności, które są obsługiwane przez Cognitive Services wymagają [dołączonego Cognitive Services](cognitive-search-attach-cognitive-services.md) klucz subskrypcji All-in-one, który zapewnia dostęp do zasobu. Klucz "wszystko w jednym" umożliwia analizę obrazu, wykrywanie języka, tłumaczenie tekstu i analizę tekstu. Inne wbudowane umiejętności to funkcje Azure Search i nie wymagają dodatkowych usług ani kluczy. Kształtowanie tekstu, rozdzielacz i scalanie to przykłady umiejętności pomocnika, które są czasami niezbędne podczas projektowania potoku.
+Wbudowane umiejętności, które są obsługiwane przez Cognitive Services wymagają [dołączonego Cognitive Services](cognitive-search-attach-cognitive-services.md) klucz subskrypcji All-in-one, który zapewnia dostęp do zasobu. Klucz "wszystko w jednym" umożliwia analizę obrazu, wykrywanie języka, tłumaczenie tekstu i analizę tekstu. Inne wbudowane umiejętności to funkcje platformy Azure Wyszukiwanie poznawcze i nie wymagają dodatkowych usług ani kluczy. Kształtowanie tekstu, rozdzielacz i scalanie to przykłady umiejętności pomocnika, które są czasami niezbędne podczas projektowania potoku.
 
 Jeśli używasz tylko umiejętności niestandardowych i wbudowanych narzędzi, nie ma żadnej zależności ani kosztów związanych z Cognitive Services.
 
@@ -96,9 +96,9 @@ For example, given a large blob of unstructured text, a sample order of operatio
 
 ## <a name="consume-ai-enriched-output-in-downstream-solutions"></a>Korzystanie z ulepszonych danych wyjściowych AI w rozwiązaniach podrzędnych
 
-Dane wyjściowe wzbogacania AI to indeks wyszukiwania na Azure Search lub [Magazyn wiedzy](knowledge-store-concept-intro.md) w usłudze Azure Storage.
+Dane wyjściowe wzbogacania AI to indeks wyszukiwania w usłudze Azure Wyszukiwanie poznawcze lub [Magazyn wiedzy](knowledge-store-concept-intro.md) w usłudze Azure Storage.
 
-W Azure Search indeks wyszukiwania jest używany na potrzeby interaktywnej eksploracji przy użyciu dowolnego tekstu i filtrowanych zapytań w aplikacji klienckiej. Wzbogacone dokumenty utworzone za pomocą AI są sformatowane w formacie JSON i indeksowane w taki sam sposób, jak wszystkie dokumenty są indeksowane w Azure Search, przy użyciu wszystkich korzyści oferowanych przez indeksator. Na przykład podczas indeksowania indeksator obiektu BLOB odwołuje się do parametrów i ustawień konfiguracji w celu wykorzystania dowolnego mapowania pól lub logiki wykrywania zmian. Takie ustawienia są w pełni dostępne dla regularnego indeksowania i wzbogaconych obciążeń AI. Indeksowanie końcowe, gdy zawartość jest przechowywana w Azure Search, można tworzyć rozbudowane zapytania i wyrażenia filtru, aby zrozumieć zawartość.
+Na platformie Azure Wyszukiwanie poznawcze indeks wyszukiwania jest używany na potrzeby interaktywnej eksploracji przy użyciu dowolnego tekstu i filtrowanych zapytań w aplikacji klienckiej. Wzbogacone dokumenty utworzone za pomocą AI są sformatowane w formacie JSON i indeksowane w taki sam sposób, jak wszystkie dokumenty są indeksowane na platformie Azure Wyszukiwanie poznawcze, przy użyciu wszystkich korzyści oferowanych przez indeksator. Na przykład podczas indeksowania indeksator obiektu BLOB odwołuje się do parametrów i ustawień konfiguracji w celu wykorzystania dowolnego mapowania pól lub logiki wykrywania zmian. Takie ustawienia są w pełni dostępne dla regularnego indeksowania i wzbogaconych obciążeń AI. Indeksowanie końcowe, gdy zawartość jest przechowywana w usłudze Azure Wyszukiwanie poznawcze, można tworzyć rozbudowane zapytania i wyrażenia filtru, aby zrozumieć zawartość.
 
 W usłudze Azure Storage magazyn wiedzy ma dwie manifesty: kontener obiektów blob lub tabele w magazynie tabel. 
 
@@ -113,7 +113,7 @@ Wzbogacony dokument na końcu potoku różni się od oryginalnej wersji wejścio
 Istnieje dużo więcej możliwości dzięki wzbogacaniu AI, aby maksymalnie wykorzystać swoje dane w usłudze Azure Storage, w tym łączenie Cognitive Services na różne sposoby i tworzenie niestandardowych umiejętności w przypadkach, gdy nie ma istniejącej usługi poznawczej dla tego scenariusza. Więcej informacji można uzyskać, korzystając z poniższych linków.
 
 + [Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB za pomocą Azure Portal (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-+ [Konfigurowanie indeksatora obiektów BLOB (Azure Search)](search-howto-indexing-azure-blob-storage.md) 
-+ [Omówienie wzbogacenia AI (Azure Search)](cognitive-search-concept-intro.md) 
-+ [Utwórz zestawu umiejętności (Azure Search)](cognitive-search-defining-skillset.md)
-+ [Mapuj węzły w drzewie adnotacji (Azure Search)](cognitive-search-output-field-mapping.md)
++ [Konfigurowanie indeksatora obiektów BLOB (Azure Wyszukiwanie poznawcze)](search-howto-indexing-azure-blob-storage.md) 
++ [Omówienie wzbogacenia AI (Azure Wyszukiwanie poznawcze)](cognitive-search-concept-intro.md) 
++ [Tworzenie zestawu umiejętności (Azure Wyszukiwanie poznawcze)](cognitive-search-defining-skillset.md)
++ [Mapowanie węzłów w drzewie adnotacji (Wyszukiwanie poznawcze platformy Azure)](cognitive-search-output-field-mapping.md)

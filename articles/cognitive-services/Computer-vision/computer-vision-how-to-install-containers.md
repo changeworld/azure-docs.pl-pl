@@ -8,24 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 7c137572fadd07254343b7b4c34b5a63534b9d88
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 2b6918e9b334ee8a906a477ee1c3e7e4d86e8551
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936999"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481790"
 ---
-# <a name="install-and-run-computer-vision-containers"></a>Instalowanie i uruchamianie kontenerów przetwarzanie obrazów
+# <a name="install-and-run-read-containers"></a>Instalowanie i uruchamianie kontenerów odczytu
 
 Kontenery umożliwiają uruchamianie przetwarzanie obrazów interfejsów API we własnym środowisku. Kontenery doskonale nadaje się do określonych wymagań w zakresie zabezpieczeń i zarządzania danymi. W tym artykule dowiesz się, jak pobrać, zainstalować i uruchomić kontener przetwarzanie obrazów.
 
-Istnieją dwa kontenery Docker dostępne dla przetwarzanie obrazów: *rozpoznawanie tekstu* i *Read*. Kontener *rozpoznawanie tekstu* umożliwia wykrywanie i wyodrębnianie *drukowanych tekstów* z obrazów różnych obiektów z różnymi powierzchniami i tłem, takimi jak paragony, plakaty i karty biznesowe. Kontener *odczytu* ; wykrywa także *Tekst odręczny* w obrazach i zapewnia obsługę formatu PDF/TIFF/wielostronicowej. Aby uzyskać więcej informacji, zobacz dokumentację [interfejsu API odczytu](concept-recognizing-text.md#read-api) .
-
-> [!IMPORTANT]
-> Kontener Rozpoznawanie tekstu jest przestarzały na rzecz kontenera odczytu. Kontener odczytu jest nadzbiorem Rozpoznawanie tekstu kontenera, a konsumenci powinni migrować do korzystania z kontenera Read. Oba kontenery działają tylko w języku angielskim.
+Pojedynczy kontener Docker, *Odczyt*, jest dostępny dla przetwarzanie obrazów. Kontener *Odczyt* umożliwia wykrywanie i wyodrębnianie *drukowanych tekstu* z obrazów różnych obiektów z różnymi powierzchniami i tłem, takimi jak paragony, plakaty i karty biznesowe. Ponadto kontener *Odczytaj* wykrywa *Tekst odręczny* w obrazach i zapewnia obsługę plików PDF, TIFF i wielostronicowych. Aby uzyskać więcej informacji, zobacz dokumentację [interfejsu API odczytu](concept-recognizing-text.md#read-api) .
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -33,17 +30,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Przed użyciem kontenerów należy spełnić następujące wymagania wstępne:
 
-|Wymagane|Przeznaczenie|
+|Wymagany|Przeznaczenie|
 |--|--|
 |Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Podstawowe informacje dotyczące platformy Docker i kontenera można znaleźć w temacie [Omówienie platformy Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Program Docker musi być skonfigurowany tak, aby umożliwić kontenerom łączenie się z danymi rozliczeń i wysyłanie ich do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy dysponować podstawową wiedzą na temat pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów, a także znajomość podstawowych poleceń `docker`.| 
 |Zasób przetwarzanie obrazów |Aby można było używać kontenera, musisz mieć:<br><br>Zasób usługi Azure **Przetwarzanie obrazów** i skojarzony klucz interfejsu API dla identyfikatora URI punktu końcowego. Obie wartości są dostępne na stronach przeglądów i kluczy dla zasobu i są wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : jeden z dwóch dostępnych kluczy zasobów na stronie **kluczy**<br><br>**{ENDPOINT_URI}** : punkt końcowy określony na stronie **Przegląd**|
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>Zażądaj dostępu do rejestru kontenera prywatnego
-
-[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>Komputer-host
 
@@ -53,29 +46,15 @@ Przed użyciem kontenerów należy spełnić następujące wymagania wstępne:
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
-## <a name="get-the-container-image-with-docker-pull"></a>Pobierz obraz kontenera z `docker pull`
-
-# <a name="readtabread"></a>[Odczyt](#tab/read)
+## <a name="get-the-container-image-with-docker-pull"></a>Pobierz obraz kontenera za pomocą `docker pull`
 
 Dostępne są obrazy kontenerów do odczytu.
 
 | Kontener | Container Registry/repozytorium/nazwa obrazu |
 |-----------|------------|
-| Odczyt | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+| Odczytywanie | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
-# <a name="recognize-texttabrecognize-text"></a>[Rozpoznawanie tekstu](#tab/recognize-text)
-
-Dostępne są obrazy kontenerów dla Rozpoznawanie tekstu.
-
-| Kontener | Container Registry/repozytorium/nazwa obrazu |
-|-----------|------------|
-| Rozpoznawanie tekstu | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
-
-***
-
-Użyj polecenia [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) , aby pobrać obraz kontenera.
-
-# <a name="readtabread"></a>[Odczyt](#tab/read)
+Użyj [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera.
 
 ### <a name="docker-pull-for-the-read-container"></a>Wypychanie platformy Docker dla kontenera odczytu
 
@@ -83,32 +62,20 @@ Użyj polecenia [`docker pull`](https://docs.docker.com/engine/reference/command
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 ```
 
-# <a name="recognize-texttabrecognize-text"></a>[Rozpoznawanie tekstu](#tab/recognize-text)
-
-### <a name="docker-pull-for-the-recognize-text-container"></a>Wypychanie platformy Docker dla kontenera Rozpoznawanie tekstu
-
-```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
-
-***
-
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
 ## <a name="how-to-use-the-container"></a>Jak używać kontenera
 
 Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj następującego procesu, aby współpracować z kontenerem.
 
-1. [Uruchom kontener](#run-the-container-with-docker-run)z wymaganymi ustawieniami rozliczania. Więcej [przykładów](computer-vision-resource-container-config.md) polecenia `docker run` jest dostępnych. 
+1. [Uruchom kontener](#run-the-container-with-docker-run)z wymaganymi ustawieniami rozliczania. Więcej [przykładów](computer-vision-resource-container-config.md) polecenia `docker run` są dostępne. 
 1. [Zbadaj punkt końcowy przewidywania kontenera](#query-the-containers-prediction-endpoint). 
 
-## <a name="run-the-container-with-docker-run"></a>Uruchom kontener z `docker run`
+## <a name="run-the-container-with-docker-run"></a>Uruchom kontener za pomocą `docker run`
 
 Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) , aby uzyskać szczegółowe informacje na temat pobierania wartości `{ENDPOINT_URI}` i `{API_KEY}`.
 
-[Przykłady](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` polecenia są dostępne.
-
-# <a name="readtabread"></a>[Odczyt](#tab/read)
+[Przykłady](computer-vision-resource-container-config.md#example-docker-run-commands) polecenia `docker run` są dostępne.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -125,29 +92,10 @@ To polecenie:
 * Udostępnia port TCP 5000 i przydziela pseudo-TTY dla kontenera.
 * Automatycznie usuwa kontener po zakończeniu. Obraz kontenera jest nadal dostępny na komputerze-hoście.
 
-# <a name="recognize-texttabrecognize-text"></a>[Rozpoznawanie tekstu](#tab/recognize-text)
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-To polecenie:
-
-* Uruchamia kontener Rozpoznawanie tekstu z obrazu kontenera.
-* Przypisuje 8 rdzeni procesora i 16 gigabajtów (GB) pamięci.
-* Udostępnia port TCP 5000 i przydziela pseudo-TTY dla kontenera.
-* Automatycznie usuwa kontener po zakończeniu. Obraz kontenera jest nadal dostępny na komputerze-hoście.
-
-***
-
-Więcej [przykładów](./computer-vision-resource-container-config.md#example-docker-run-commands) polecenia `docker run` jest dostępnych. 
+Więcej [przykładów](./computer-vision-resource-container-config.md#example-docker-run-commands) polecenia `docker run` są dostępne. 
 
 > [!IMPORTANT]
-> Aby można było uruchomić kontener, należy określić opcje `Eula`, `Billing` i `ApiKey`. w przeciwnym razie kontener nie zostanie uruchomiony.  Aby uzyskać więcej informacji, zobacz [rozliczenia](#billing).
+> Aby można było uruchomić kontener, należy określić opcje `Eula`, `Billing`i `ApiKey`. w przeciwnym razie kontener nie zostanie uruchomiony.  Aby uzyskać więcej informacji, zobacz [rozliczenia](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -159,19 +107,17 @@ Więcej [przykładów](./computer-vision-resource-container-config.md#example-do
 
 Kontener udostępnia interfejsy API punktu końcowego przewidywania zapytań. 
 
-Użyj hosta `http://localhost:5000` w przypadku interfejsów API kontenerów.
-
-# <a name="readtabread"></a>[Odczyt](#tab/read)
+Użyj hosta `http://localhost:5000`w przypadku interfejsów API kontenerów.
 
 ### <a name="asynchronous-read"></a>Odczyt asynchroniczny
 
-Możesz użyć operacji `POST /vision/v2.0/read/core/asyncBatchAnalyze` i `GET /vision/v2.0/read/operations/{operationId}` w połączeniu z asynchroniczne odczytywanie obrazu, podobnie jak usługa przetwarzanie obrazów używa tych odpowiednich operacji REST. Asynchroniczna Metoda POST zwróci `operationId`, który jest używany jako identyfikator do żądania HTTP GET.
+Operacji `POST /vision/v2.0/read/core/asyncBatchAnalyze` i `GET /vision/v2.0/read/operations/{operationId}` można użyć w połączeniu z asynchroniczne odczytywanie obrazu, podobnie jak usługa przetwarzanie obrazów używa tych odpowiednich operacji REST. Asynchroniczna Metoda POST zwróci `operationId`, który jest używany jako identyfikator do żądania HTTP GET.
 
-W interfejsie użytkownika programu Swagger wybierz `asyncBatchAnalyze`, aby rozwinąć go w przeglądarce. Następnie wybierz pozycję **wypróbuj** > **Wybierz plik**. W tym przykładzie użyjemy poniższej ilustracji:
+W interfejsie użytkownika programu Swagger wybierz `asyncBatchAnalyze`, aby rozwinąć go w przeglądarce. Następnie wybierz opcję **wypróbuj** > **Wybierz plik**. W tym przykładzie użyjemy poniższej ilustracji:
 
 ![karty vs Spaces](media/tabs-vs-spaces.png)
 
-Po pomyślnym uruchomieniu asynchronicznego wpisu zwraca kod stanu **HTTP 202** . W ramach odpowiedzi istnieje nagłówek `operation-location`, który zawiera punkt końcowy wyniku żądania.
+Po pomyślnym uruchomieniu asynchronicznego wpisu zwraca kod stanu **HTTP 202** . W ramach odpowiedzi występuje `operation-location` nagłówek, który zawiera punkt końcowy wyniku żądania.
 
 ```http
  content-length: 0
@@ -180,7 +126,7 @@ Po pomyślnym uruchomieniu asynchronicznego wpisu zwraca kod stanu **HTTP 202** 
  server: Kestrel
 ```
 
-@No__t-0 to w pełni kwalifikowany adres URL i jest dostępny za pośrednictwem protokołu HTTP GET. Oto odpowiedź JSON z wykonywania `operation-location` URL z poprzedniego obrazu:
+`operation-location` to w pełni kwalifikowany adres URL i jest dostępny za pośrednictwem protokołu HTTP GET. Oto odpowiedź JSON, z której ma być wykonywany `operation-location` adres URL z poprzedniego obrazu:
 
 ```json
 {
@@ -271,7 +217,7 @@ Po pomyślnym uruchomieniu asynchronicznego wpisu zwraca kod stanu **HTTP 202** 
 
 ### <a name="synchronous-read"></a>Odczyt synchroniczne
 
-Do synchronicznego odczytu obrazu można użyć operacji `POST /vision/v2.0/read/core/Analyze`. Gdy obraz jest odczytywany w całości, wówczas i tylko wtedy, gdy interfejs API zwróci odpowiedź JSON. Jedynym wyjątkiem jest to, że wystąpi błąd. Gdy wystąpi błąd, zwracany jest następujący kod JSON:
+Za pomocą operacji `POST /vision/v2.0/read/core/Analyze` można synchronicznie odczytywać obraz. Gdy obraz jest odczytywany w całości, wówczas i tylko wtedy, gdy interfejs API zwróci odpowiedź JSON. Jedynym wyjątkiem jest to, że wystąpi błąd. Gdy wystąpi błąd, zwracany jest następujący kod JSON:
 
 ```json
 {
@@ -279,7 +225,7 @@ Do synchronicznego odczytu obrazu można użyć operacji `POST /vision/v2.0/read
 }
 ```
 
-Obiekt odpowiedzi JSON ma ten sam Graf obiektów co wersja asynchroniczna. Jeśli jesteś użytkownikiem języka JavaScript i chcesz mieć bezpieczeństwo typu, można użyć następujących typów do rzutowania odpowiedzi JSON jako obiektu `AnalyzeResult`.
+Obiekt odpowiedzi JSON ma ten sam Graf obiektów co wersja asynchroniczna. Jeśli jesteś użytkownikiem języka JavaScript i potrzebujesz bezpieczeństwa typu, można użyć następujących typów do rzutowania odpowiedzi JSON jako obiektu `AnalyzeResult`.
 
 ```typescript
 export interface AnalyzeResult {
@@ -314,26 +260,19 @@ export interface Line {
     words?: Word[] | null;
 }
 
+export enum Confidence {
+    High = 0,
+    Low = 1
+}
+
 export interface Word {
   boundingBox?: number[] | null;
   text: string;
-  confidence?: string | null;
+  confidence?: Confidence | null;
 }
 ```
 
-Aby zapoznać się z przykładowym przypadkiem użycia, zobacz [piaskownicę TypeScript tutaj](https://aka.ms/ts-read-api-types) i wybierz pozycję "Uruchom", aby wizualizować jej łatwość użytkowania.
-
-# <a name="recognize-texttabrecognize-text"></a>[Rozpoznawanie tekstu](#tab/recognize-text)
-
-### <a name="asynchronous-text-recognition"></a>Asynchroniczne rozpoznawanie tekstu
-
-Możesz użyć operacji `POST /vision/v2.0/recognizeText` i `GET /vision/v2.0/textOperations/*{id}*` w sposób asynchroniczny rozpoznawać drukowany tekst w obrazie, podobnie jak usługa przetwarzanie obrazów używa tych odpowiednich operacji REST. Kontener Rozpoznawanie tekstu rozpoznaje tylko drukowany tekst, a nie tekst odręczny, więc parametr `mode` określony dla operacji usługi przetwarzanie obrazów jest ignorowany przez kontener Rozpoznawanie tekstu.
-
-### <a name="synchronous-text-recognition"></a>Rozpoznawanie tekstu synchronicznego
-
-Za pomocą operacji `POST /vision/v2.0/recognizeTextDirect` można synchronicznie rozpoznać drukowany tekst w obrazie. Ponieważ ta operacja jest synchroniczna, treść żądania dla tej operacji jest taka sama jak operacja `POST /vision/v2.0/recognizeText`, ale treść odpowiedzi dla tej operacji jest taka sama jak zwracana przez operację `GET /vision/v2.0/textOperations/*{id}*`.
-
-***
+Aby zapoznać się z przykładowym przypadkiem użycia, zobacz <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">piaskownicę TypeScript <span class="docon docon-navigate-external x-hidden-focus"></span> tutaj</a> i wybierz pozycję **Uruchom** , aby wizualizować jej łatwość użytkowania.
 
 ## <a name="stop-the-container"></a>Zatrzymaj kontener
 
@@ -361,10 +300,10 @@ Aby uzyskać więcej informacji na temat tych opcji, zobacz [Konfigurowanie kont
 
 W tym artykule przedstawiono koncepcje i przepływ pracy służące do pobierania, instalowania i uruchamiania kontenerów przetwarzanie obrazów. Podsumowanie:
 
-* Przetwarzanie obrazów udostępnia kontener systemu Linux dla platformy Docker, hermetyzując oba Rozpoznawanie tekstu i odczytu.
+* Przetwarzanie obrazów udostępnia kontener systemu Linux dla platformy Docker, hermetyzując odczyt.
 * Obrazy kontenerów są pobierane z rejestru kontenerów "Podgląd kontenera" na platformie Azure.
 * Obrazy kontenerów są uruchamiane w platformie Docker.
-* Można użyć interfejsu API REST lub zestawu SDK do wywoływania operacji w Rozpoznawanie tekstu lub odczytywania kontenerów przez określenie identyfikatora URI hosta kontenera.
+* Do wywoływania operacji w kontenerach odczytu można użyć interfejsu API REST lub zestawu SDK, określając identyfikator URI hosta kontenera.
 * Podczas tworzenia wystąpienia kontenera należy określić informacje o rozliczeniach.
 
 > [!IMPORTANT]

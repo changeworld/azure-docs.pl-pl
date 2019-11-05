@@ -12,36 +12,38 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bc3e3bb178efbbc8f4cee6d81417ce70bd7a662
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c8310b6fc33f1d03e1ccc9ccddfcd7b9e6c35d37
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562062"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473350"
 ---
-# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Szybki start: Tworzenie nowej dzierżawy w usłudze Azure Active Directory
+# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Szybki Start: Tworzenie nowej dzierżawy w Azure Active Directory
 Wszystkie zadania administracyjne, w tym tworzenie nowej dzierżawy dla swojej organizacji, możesz wykonywać przy użyciu portalu usługi Azure Active Directory (Azure AD). 
 
 W tym przewodniku Szybki start dowiesz się, jak uzyskać dostęp do witryny Azure Portal i usługi Azure Active Directory oraz jak utworzyć podstawową dzierżawę dla organizacji.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) Twojej organizacji przy użyciu konta administratora globalnego.
-
-![Azure Portal ekranu, z opcją usługi Azure AD](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
-
 ## <a name="create-a-new-tenant-for-your-organization"></a>Tworzenie nowej dzierżawy dla organizacji
 Po zalogowaniu się do witryny Azure Portal możesz utworzyć nową dzierżawę dla swojej organizacji. Nowa dzierżawa reprezentuje Twoją organizację i pomaga w zarządzaniu konkretnym wystąpieniem usług firmy Microsoft w chmurze na potrzeby użytkowników wewnętrznych i zewnętrznych.
 
 ### <a name="to-create-a-new-tenant"></a>Aby utworzyć nową dzierżawę
-1. Wybierz pozycję **Utwórz zasób**, wybierz pozycję **Tożsamość**, a następnie wybierz pozycję **Azure Active Directory**.
+
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) Twojej organizacji przy użyciu konta administratora globalnego.
+
+1. Z menu Azure Portal wybierz pozycję **Utwórz zasób**.  
+
+    ![Azure Active Directory utworzyć strony](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+
+1. Wybierz pozycję **tożsamość**, a następnie wybierz pozycję **Azure Active Directory**.
 
     Zostanie wyświetlona strona **Tworzenie katalogu**.
 
     ![Strona tworzenia usługi Azure Active Directory](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
 
-2.  Na stronie **Tworzenie katalogu** wprowadź następujące informacje:
+1.  Na stronie **Tworzenie katalogu** wprowadź następujące informacje:
     
     - Wpisz wartość _Contoso_ w polu **Nazwa organizacji**.
 
@@ -49,7 +51,7 @@ Po zalogowaniu się do witryny Azure Portal możesz utworzyć nową dzierżawę 
 
     - Pozostaw opcję _Stany Zjednoczone_ w polu **Kraj lub region**.
 
-3. Wybierz pozycję **Utwórz**.
+1. Wybierz pozycję **Utwórz**.
 
 Twoja nowa dzierżawa zostanie utworzona i będzie miała domenę contoso.onmicrosoft.com.
 

@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 07/24/2019
-ms.openlocfilehash: d0e0c5601a6cddf936604df6d5b48b8bf48e7c8d
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/25/2019
+ms.openlocfilehash: 2e088557bf61141d3ea3cbeb25d53f711a71fd97
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162449"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496861"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Wdrażanie modelu uczenia głębokiego na potrzeby wnioskowania z procesorem GPU
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym artykule przedstawiono sposób użycia Azure Machine Learning do wdrożenia modelu z obsługą procesora GPU jako usługi sieci Web. Informacje przedstawione w tym artykule opierają się na wdrażaniu modelu w usłudze Azure Kubernetes Service (AKS). Klaster AKS udostępnia zasób procesora GPU, który jest używany przez model do wnioskowania.
 
@@ -136,7 +137,7 @@ Ten plik ma nazwę `score.py`. Aby uzyskać więcej informacji na temat skryptó
 
 ## <a name="define-the-conda-environment"></a>Zdefiniuj środowisko Conda
 
-Plik środowiska Conda określa zależności dla usługi. Zawiera zależności wymagane przez model i skrypt wejścia. Poniższy YAML definiuje środowisko dla modelu Tensorflow. Określa `tensorflow-gpu`, która spowoduje użycie procesora GPU użytego w tym wdrożeniu:
+Plik środowiska Conda określa zależności dla usługi. Zawiera zależności wymagane przez model i skrypt wejścia. Poniższy YAML definiuje środowisko dla modelu Tensorflow. Określa `tensorflow-gpu`, co spowoduje użycie procesora GPU użytego w tym wdrożeniu:
 
 ```yaml
 name: project_environment
@@ -153,7 +154,7 @@ channels:
 - conda-forge
 ```
 
-Na potrzeby tego przykładu plik jest zapisywany `myenv.yml`jako.
+W tym przykładzie plik jest zapisywany jako `myenv.yml`.
 
 ## <a name="define-the-deployment-configuration"></a>Definiowanie konfiguracji wdrożenia
 
@@ -209,7 +210,7 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> Jeśli obiekt ma `enable_gpu=True`, wówczas `deployment_target` parametr musi odwoływać się do klastra, który udostępnia procesor GPU. `InferenceConfig` W przeciwnym razie wdrożenie zakończy się niepowodzeniem.
+> Jeśli obiekt `InferenceConfig` ma `enable_gpu=True`, parametr `deployment_target` musi odwoływać się do klastra, który udostępnia procesor GPU. W przeciwnym razie wdrożenie zakończy się niepowodzeniem.
 
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną dla [modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 

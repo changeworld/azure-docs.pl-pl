@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek dotyczący klasyfikacji obrazów: Wdrażanie modeli'
+title: 'Samouczek klasyfikacji obrazów: Wdrażanie modeli'
 titleSuffix: Azure Machine Learning
 description: W tym samouczku pokazano, jak za pomocą Azure Machine Learning wdrożyć model klasyfikacji obrazów przy użyciu scikit — uczenie się w notesie Jupyter języka Python. Ten samouczek jest drugą częścią dwuczęściowej serii.
 services: machine-learning
@@ -10,14 +10,15 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 988f91d9ab644df4ecb375114abf4245440cbf13
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: ae657daca86c979495ca14d9df845e2a7a769e0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162527"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476148"
 ---
-# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Samouczek: wdrażanie modelu klasyfikacji obrazów w usłudze Azure Container Instances
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Samouczek: Wdrażanie modelu klasyfikacji obrazów w Azure Container Instances
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ten samouczek jest **drugą częścią dwuczęściowej serii samouczków**. W [poprzednim samouczku](tutorial-train-models-with-aml.md) przeszkoliliśmy modele uczenia maszynowego, a następnie zarejestrowaliśmy model w Twoim obszarze roboczym w chmurze.  
 
@@ -39,9 +40,15 @@ Usługa Container Instances to doskonałe rozwiązanie do testowania i interpret
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uruchomić notes, najpierw przeprowadź trenowanie modelu zgodnie z krokami opisanymi w artykule [Samouczek (część 1): Uczenie modelu](tutorial-train-models-with-aml.md)klasyfikacji obrazów.   Następnie Otwórz Notes **samouczków/IMG-Classification-part2-Deploy. ipynb** przy użyciu tego samego serwera notesu.
+Aby uruchomić Notes, najpierw Ukończ szkolenia modelu w [samouczku (część 1): uczenie modelu klasyfikacji obrazów](tutorial-train-models-with-aml.md).   Następnie Otwórz Notes **IMG-klasyfikacyjn-part2-Deploy. ipynb** w folderze sklonowanych **samouczków** .
 
-Ten samouczek jest również dostępny w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz używać go w [środowisku lokalnym](how-to-configure-environment.md#local).  Upewnij się, że zainstalowano `matplotlib` i `scikit-learn` w Twoim środowisku. 
+Ten samouczek jest również dostępny w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz używać go w [środowisku lokalnym](how-to-configure-environment.md#local).  Upewnij się, że w środowisku zainstalowano `matplotlib` i `scikit-learn`. 
+
+> [!Important]
+> Pozostała część tego artykułu zawiera tę samą zawartość, która jest wyświetlana w notesie.  
+>
+> Przełącz się do notesu Jupyter teraz, jeśli chcesz czytać wraz z uruchamianiem kodu.
+> Aby uruchomić pojedynczą komórkę kodu w notesie, kliknij komórkę kod i naciśnij **klawisze SHIFT + ENTER**. Lub Uruchom cały Notes, wybierając pozycję **Uruchom wszystkie** z górnego paska narzędzi.
 
 ## <a name="start"></a>Konfigurowanie środowiska
 
@@ -260,7 +267,7 @@ Skonfiguruj i wdróż obraz. Poniższy kod wykonuje następujące kroki:
 1. Utworzenie obrazu za pomocą następujących plików:
    * plik oceniania (`score.py`),
    * plik środowiska (`myenv.yml`),
-   * plik modelu.
+   * Plik modelu
 1. Zarejestrowanie tego obrazu w obszarze roboczym. 
 1. Wysłanie obrazu do kontenera usługi Container Instances.
 1. Uruchomienie kontenera w usłudze Container Instances przy użyciu obrazu.

@@ -7,33 +7,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 902bf84ebf090cf9f0f886ad1e774ff7bdfeca93
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002890"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490745"
 ---
 # <a name="how-personalizer-works"></a>Jak działa usługa Personalizacja
 
-Personalizacja korzysta z uczenia maszynowego, aby poznać działanie, które ma być używane w kontekście. Każda pętla szkoleniowa ma model, który jest szkolony wyłącznie na danych wysłanych do niego za pośrednictwem wywołań rangi i **nagrody** . Każda pętla szkoleniowa jest całkowicie niezależna od siebie. Utwórz pętlę szkoleniową dla każdej części lub zachowania aplikacji, którą chcesz spersonalizować.
+Personalizacja korzysta z uczenia maszynowego, aby poznać działanie, które ma być używane w kontekście. Każda pętla szkoleniowa ma model, który jest szkolony wyłącznie na danych wysłanych do niego za pośrednictwem wywołań **rangi** i **nagrody** . Każda pętla szkoleniowa jest całkowicie niezależna od siebie. Utwórz pętlę szkoleniową dla każdej części lub zachowania aplikacji, którą chcesz spersonalizować.
 
 Dla każdej pętli należy **wywołać interfejs API rangi** w oparciu o bieżący kontekst z:
 
 * Lista możliwych akcji: elementy zawartości, z których ma zostać wybrana Górna akcja.
 * Lista [funkcji kontekstu](concepts-features.md): kontekstowe istotne dane, takie jak użytkownik, zawartość i kontekst.
 
-Interfejs API rangi decyduje się użyć:
+Interfejs API **rangi** decyduje się użyć:
 
-* _Wykorzystanie_: Bieżący model, aby określić najlepszą akcję na podstawie przeszłych danych.
+* _Wykorzystanie_: bieżący model, aby określić najlepszą akcję na podstawie przeszłych danych.
 * _Eksploruj_: Wybierz inną akcję, a nie górną akcję.
 
-Interfejs API nagradzania:
+Interfejs API **nagradzania** :
 
 * Zbiera dane do uczenia modelu przez zarejestrowanie funkcji i nagrody każdego wywołania rangi.
-* Używa tych danych do aktualizowania modelu na podstawie ustawień określonych w _zasadach nauki_.
+* Używa tych danych do aktualizowania modelu w oparciu o konfigurację określoną w _zasadach nauki_.
 
 ## <a name="architecture"></a>Architektura
 
@@ -55,11 +55,11 @@ Personalizacja jest oparta na wykorzystaniu nauki i badań w dziedzinie [nauki w
 
 ## <a name="terminology"></a>Terminologia
 
-* **Pętla szkoleniowa**: Możesz utworzyć pętlę szkoleniową dla każdej części aplikacji, która może korzystać z personalizacji. Jeśli masz więcej niż jedno środowisko do personalizacji, Utwórz pętlę dla każdego z nich. 
+* **Pętla szkoleniowa**: możesz utworzyć pętlę szkoleniową dla każdej części aplikacji, która może korzystać z personalizacji. Jeśli masz więcej niż jedno środowisko do personalizacji, Utwórz pętlę dla każdego z nich. 
 
-* **Akcje**: Akcje to elementy zawartości, takie jak produkty lub promocje, do wyboru. Personalizacja wybiera górną akcję pokazywaną użytkownikom, znaną jako _Akcja nagrody_, za pośrednictwem interfejsu API rangi. Każda akcja może mieć funkcje przesłane przy użyciu żądania rangi.
+* **Akcje**: akcje to elementy zawartości, takie jak produkty lub promocje, do wyboru. Personalizacja wybiera górną akcję pokazywaną użytkownikom, znaną jako _Akcja nagrody_, za pośrednictwem interfejsu API rangi. Każda akcja może mieć funkcje przesłane przy użyciu żądania rangi.
 
-* **Kontekst**: Aby zapewnić dokładniejszą rangę, podaj informacje o Twoim kontekście, na przykład:
+* **Kontekst**: aby zapewnić dokładniejszą rangę, podaj informacje o Twoim kontekście, na przykład:
     * Użytkownik.
     * Urządzenie, na którym się znajdują. 
     * Bieżący czas.
@@ -68,19 +68,19 @@ Personalizacja jest oparta na wykorzystaniu nauki i badań w dziedzinie [nauki w
 
     Dana aplikacja może mieć różne informacje o kontekście. 
 
-* **[Funkcje](concepts-features.md)** : Jednostka informacji o elemencie zawartości lub kontekście użytkownika.
+* **[Funkcje](concepts-features.md)** : jednostka informacji o elemencie zawartości lub kontekście użytkownika.
 
-* **Nagroda**: Miara sposobu, w jaki Użytkownik odpowiedział na działanie interfejsu API rangi, jako wynik z przedziału od 0 do 1. Wartość od 0 do 1 jest ustawiana przez logikę biznesową, w zależności od tego, jak wybór pozwala osiągnąć cele biznesowe personalizacji. 
+* **Wynagrodzenie**: miara, w jaki Użytkownik odpowiedział na działanie interfejsu API rangi, jako wynik z przedziału od 0 do 1. Wartość od 0 do 1 jest ustawiana przez logikę biznesową, w zależności od tego, jak wybór pozwala osiągnąć cele biznesowe personalizacji. 
 
-* **Eksploracja**: Usługa personalizacji szuka, gdy, zamiast zwracać najlepszą akcję, wybiera inną akcję dla użytkownika. Usługa personalizacji pozwala uniknąć dryfowania, stagnation i można dostosowywać do bieżących zachowań użytkowników przez Eksplorowanie. 
+* **Eksploracja**: usługa personalizacji szuka, gdy, zamiast zwracać najlepszą akcję, wybiera inną akcję dla użytkownika. Usługa personalizacji pozwala uniknąć dryfowania, stagnation i można dostosowywać do bieżących zachowań użytkowników przez Eksplorowanie. 
 
-* **Czas trwania eksperymentu**: Czas, przez jaki usługa personalizacji czeka na wynagrodzenie, rozpoczynając od momentu wywołania rangi dla tego zdarzenia.
+* **Czas trwania eksperymentu**: ilość czasu, przez jaką usługa personalizacji czeka na wynagrodzenie, rozpoczynając od momentu wywołania rangi dla tego zdarzenia.
 
-* **Zdarzenia nieaktywne**: Nieaktywne zdarzenie to wystąpienie o nazwie rangi, ale nie masz pewności, że użytkownik zobaczy wynik z powodu decyzji aplikacji klienta. Nieaktywne zdarzenia umożliwiają tworzenie i przechowywanie wyników personalizacji, a następnie podjęcie decyzji o odrzuceniu ich później bez wpływu na model uczenia maszynowego.
+* **Zdarzenia nieaktywne**: zdarzenie nieaktywne to wystąpienie o nazwie rangi, ale nie masz pewności, że użytkownik zobaczy wynik z powodu decyzji aplikacji klienta. Nieaktywne zdarzenia umożliwiają tworzenie i przechowywanie wyników personalizacji, a następnie podjęcie decyzji o odrzuceniu ich później bez wpływu na model uczenia maszynowego.
 
-* **Model**: Model personalizacji przechwytuje wszystkie dane, które zostały uzyskane o zachowaniu użytkownika, uzyskując dane szkoleniowe z kombinacji argumentów wysyłanych do rangi i płatnych wywołań oraz z zachowaniem szkolenia określonym w zasadach nauki. 
+* **Model**: model personalizowania przechwytuje wszystkie dane, które są uzyskiwane na temat zachowania użytkowników, uzyskiwanie danych szkoleniowych z kombinacji argumentów wysyłanych do rangi i płatnych wywołań oraz z zachowaniem szkolenia określonym przez zasady uczenia się. 
 
-* **Zasady uczenia**: Sposób, w jaki program łączący połączy model dla każdego zdarzenia, zostanie określony przez niektóre meta parametry, które wpływają na działanie algorytmów uczenia maszynowego. Nowe pętle personalizacji zaczynają się od domyślnych zasad uczenia, co może spowodować umiarkowaną wydajność. Podczas przeprowadzania [obliczeń](concepts-offline-evaluation.md)program personalizujer może utworzyć nowe zasady uczenia, które zostały zoptymalizowane pod kątem użycia pętli. Personalizacja będzie działać znacznie lepiej dzięki zasadom zoptymalizowanym dla każdej konkretnej pętli, generowanej podczas obliczania.
+* **Zasady uczenia**: jak program łączący tworzy model dla każdego zdarzenia, zostanie określony przez niektóre meta-parametry, które wpływają na działanie algorytmów uczenia maszynowego. Nowe pętle personalizacji zaczynają się od domyślnych zasad uczenia, co może spowodować umiarkowaną wydajność. Podczas przeprowadzania [obliczeń](concepts-offline-evaluation.md)program personalizujer może utworzyć nowe zasady uczenia, które zostały zoptymalizowane pod kątem użycia pętli. Personalizacja będzie działać znacznie lepiej dzięki zasadom zoptymalizowanym dla każdej konkretnej pętli, generowanej podczas obliczania.
 
 ## <a name="example-use-cases-for-personalizer"></a>Przykładowe przypadki użycia dla personalizacji
 

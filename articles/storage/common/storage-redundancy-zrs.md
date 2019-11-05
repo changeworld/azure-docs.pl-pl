@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: e075091461949639fc36ffb9feab69ac5399ae61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673105"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491973"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS) do tworzenia aplikacji usługi Azure Storage o wysokiej dostępności
 
@@ -28,7 +28,7 @@ ZRS jest dostępny dla blokowych obiektów blob, niedyskowych obiektów blob, pl
 
 W przypadku kont ogólnego przeznaczenia w wersji 2 ZRS jest ogólnie dostępna w następujących regionach:
 
-- Azja Południowo-Wschodnia
+- Azja Południowo-wschodnia
 - Europa Zachodnia
 - Europa Północna
 - Francja Środkowa
@@ -42,6 +42,7 @@ W przypadku kont ogólnego przeznaczenia w wersji 2 ZRS jest ogólnie dostępna 
 W przypadku kont FileStorage ZRS jest ogólnie dostępna w następujących regionach:
 
 - Europa Zachodnia
+- Wschodnie stany USA
 
 Firma Microsoft nadal włącza ZRS w dodatkowych regionach świadczenia usługi Azure. Sprawdź regularnie informacje o nowych regionach na stronie [aktualizacji usługi platformy Azure](https://azure.microsoft.com/updates/) .
 
@@ -56,7 +57,7 @@ Dane są nadal dostępne dla operacji odczytu i zapisu, nawet jeśli strefa będ
 
 Gdy strefa jest niedostępna, platforma Azure podniesie aktualizacje sieciowe, takie jak repunktowanie DNS. Te aktualizacje mogą mieć wpływ na aplikację, Jeśli uzyskujesz dostęp do danych przed ukończeniem aktualizacji.
 
-ZRS może nie chronić danych przed awarią regionalną, w której mają stałe zmiany w wielu strefach. Zamiast tego ZRS zapewnia odporność na dane, jeśli staną się tymczasowo niedostępne. Aby chronić przed awariami regionalnymi, firma Microsoft zaleca korzystanie z magazynu geograficznie nadmiarowego (GRS). Aby uzyskać więcej informacji na temat GRS [, zobacz Magazyn Geograficznie nadmiarowy (GRS): Replikacja między regionami w ramach usługi](storage-redundancy-grs.md)Azure Storage.
+ZRS może nie chronić danych przed awarią regionalną, w której mają stałe zmiany w wielu strefach. Zamiast tego ZRS zapewnia odporność na dane, jeśli staną się tymczasowo niedostępne. Aby chronić przed awariami regionalnymi, firma Microsoft zaleca korzystanie z magazynu geograficznie nadmiarowego (GRS). Aby uzyskać więcej informacji na temat GRS, zobacz [Magazyn Geograficznie nadmiarowy (GRS): replikacja międzyregionalna dla usługi Azure Storage](storage-redundancy-grs.md).
 
 ## <a name="converting-to-zrs-replication"></a>Konwertowanie na replikację ZRS
 
@@ -90,7 +91,7 @@ Należy pamiętać o następujących ograniczeniach migracji na żywo:
 - Twoje konto musi zawierać dane.
 - Dane można migrować tylko w tym samym regionie. Jeśli chcesz przeprowadzić migrację danych do konta ZRS znajdującego się w regionie innym niż konto źródłowe, należy przeprowadzić migrację ręczną.
 - Tylko standardowe typy kont magazynu obsługują migrację na żywo. Konta magazynu w warstwie Premium muszą być migrowane ręcznie.
-- Migracja na żywo z ZRS do LRS, GRS lub RA-GRS nie jest obsługiwana. Konieczne będzie ręczne przeniesienie danych na nowe lub istniejące konto magazynu.
+- Migracja na żywo z ZRS do LRS, GRS lub RA-GRS nie jest obsługiwana. Konieczne będzie ręczne przeniesienie danych do nowego lub istniejącego konta magazynu.
 - Dyski zarządzane są dostępne tylko dla LRS i nie można ich migrować do ZRS. Można przechowywać migawki i obrazy dla SSD w warstwie Standardowa Managed Disks HDD w warstwie Standardowa magazynu i [wybierać między opcjami LRS i ZRS](https://azure.microsoft.com/pricing/details/managed-disks/). Aby poznać integrację z zestawami dostępności [, zobacz Wprowadzenie do usługi Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
 - Kont LRS lub GRS z danymi archiwalnymi nie można migrować do ZRS.
 
@@ -99,11 +100,11 @@ Możesz zażądać migracji na żywo za pomocą [portalu pomocy technicznej syst
 2. Wypełnij **podstawowe** informacje na podstawie informacji o koncie. W sekcji **Usługa** wybierz pozycję **Zarządzanie kontem magazynu** i zasób, który chcesz przekonwertować na ZRS. 
 3. Wybierz opcję **Dalej**. 
 4. Określ następujące wartości w sekcji **problem** : 
-    - **Ważność**: Pozostaw wartość domyślną.
-    - **Typ problemu**: Wybierz pozycję **migracja danych**.
-    - **Kategoria**: Wybierz pozycję **Migruj do ZRS**.
-    - **Tytuł**: Wpisz opisowy tytuł, na przykład **ZRS**.
-    - **Szczegóły**: Wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład chcę przeprowadzić migrację do ZRS z [LRS, GRS] w regionie \_ @ no__t-2. 
+    - **Ważność**: pozostaw wartość domyślną równą-is.
+    - **Typ problemu**: wybierz pozycję **migracja danych**.
+    - **Kategoria**: wybierz pozycję **Migruj do ZRS**.
+    - **Title**: wpisz opisowy tytuł, na przykład **ZRS**.
+    - **Szczegóły**: wpisz dodatkowe szczegóły w polu **szczegóły** , na przykład chcę migrować do ZRS z [LRS, GRS] w regionie \_ \_. 
 5. Wybierz opcję **Dalej**.
 6. Sprawdź, czy informacje kontaktowe są poprawne w bloku **informacje kontaktowe** .
 7. Wybierz pozycję **Utwórz**.
@@ -144,9 +145,9 @@ Jeśli chcesz przeprowadzić migrację danych do konta ZRS znajdującego się w 
 
 ZRS klasyczny asynchronicznie replikuje dane między centrami danych w jednym lub dwóch regionach. Zreplikowane dane mogą nie być dostępne, jeśli firma Microsoft zainicjuje przejście w tryb failover do pomocniczej. Nie można przekonwertować klasycznego konta ZRS na lub z LRS, GRS lub RA-GRS. Klasyczne konta ZRS również nie obsługują metryk ani rejestrowania.
 
-ZRS klasyczny jest dostępny tylko dla **blokowych obiektów BLOB** w ramach kont magazynu ogólnego przeznaczenia w wersji 1 (GPv1). Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](storage-account-overview.md) (Omówienie konta usługi Azure Storage).
+ZRS klasyczny jest dostępny tylko dla **blokowych obiektów BLOB** w ramach kont magazynu ogólnego przeznaczenia w wersji 1 (GPv1). Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview (Omówienie konta usługi Azure Storage)](storage-account-overview.md).
 
-Aby ręcznie przeprowadzić migrację danych konta ZRS do lub z konta LRS, ZRS klasycznego, GRS lub RA-GRS, użyj jednego z następujących narzędzi: AzCopy, Eksplorator usługi Azure Storage, Azure PowerShell lub interfejs wiersza polecenia platformy Azure. Możesz również utworzyć własne rozwiązanie migracji przy użyciu jednej z bibliotek klienckich usługi Azure Storage.
+Aby ręcznie przeprowadzić migrację danych konta ZRS do lub z konta LRS, ZRS klasycznego, GRS lub RA-GRS, użyj jednego z następujących narzędzi: AzCopy, Eksplorator usługi Azure Storage, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Możesz również utworzyć własne rozwiązanie migracji przy użyciu jednej z bibliotek klienckich usługi Azure Storage.
 
 Możesz również uaktualnić swoje klasyczne konta ZRS do ZRS w portalu lub za pomocą Azure PowerShell lub interfejsu wiersza polecenia platformy Azure w regionach, w których ZRS jest dostępny. Aby uaktualnić do ZRS w Azure Portal, przejdź do sekcji **Konfiguracja** konta i wybierz pozycję **Uaktualnij**:
 
@@ -162,7 +163,7 @@ Aby przeprowadzić uaktualnienie do ZRS przy użyciu interfejsu wiersza poleceni
 az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 - [Replikacja usługi Azure Storage](storage-redundancy.md)
-- [Magazyn lokalnie nadmiarowy (LRS): Niski koszt nadmiarowości danych dla usługi Azure Storage](storage-redundancy-lrs.md)
-- [Magazyn Geograficznie nadmiarowy (GRS): Replikacja między regionami w ramach usługi Azure Storage](storage-redundancy-grs.md)
+- [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](storage-redundancy-lrs.md)
+- [Magazyn Geograficznie nadmiarowy (GRS): replikacja w wielu regionach dla usługi Azure Storage](storage-redundancy-grs.md)

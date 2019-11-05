@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Wykonywanie operacji ETL przy użyciu zapytania interaktywnego w usłudze Azure HDInsight'
+title: 'Samouczek: operacje ETL przy użyciu zapytania interaktywnego — Azure HDInsight'
 description: Samouczek — informacje na temat wyodrębniania danych z nieprzetworzonego zestawu danych CSV, przekształcania ich przy użyciu interakcyjnych zapytań w usłudze HDInsight, a następnie ładowania przekształconych danych do usługi Azure SQL Database przy użyciu platformy Apache Sqoop.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 9ff215bb687ea2b6aa32ecb01dba7a61385b15a4
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735831"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494156"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu interakcyjnych zapytań w usłudze Azure HDInsight
 
@@ -42,10 +42,10 @@ Ten samouczek obejmuje następujące zadania:
 
 2. Na stronie Wyczyść wszystkie pola, a następnie wybierz następujące wartości:
 
-   | Name | Wartość |
+   | Nazwa | Wartość |
    | --- | --- |
    | Rok filtrowania |2019 |
-   | Okres filtrowania |January (Styczeń) |
+   | Filter Period (Okres filtrowania) |January (Styczeń) |
    | Pola |Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, cel, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
 
 3. Wybierz przycisk **Download** (Pobierz). Uzyskasz plik zip z wybranymi polami danych.
@@ -54,7 +54,7 @@ Ten samouczek obejmuje następujące zadania:
 
 Istnieje wiele sposobów przekazywania danych do magazynu skojarzonego z klastrem usługi HDInsight. W tej sekcji przekażesz dane za pomocą polecenia `scp`. Aby dowiedzieć się więcej o innych sposobach przekazywania danych, zobacz [Upload data to HDInsight (przekazywanie danych do usługi HDInsight)](../hdinsight-upload-data.md).
 
-1. Przekaż plik zip do węzła głównego klastra usługi HDInsight. Edytuj poniższe polecenie, zastępując `FILENAME` je nazwą pliku zip i `CLUSTERNAME` nazwą klastra usługi HDInsight. Następnie otwórz wiersz polecenia, Ustaw katalog roboczy na lokalizację pliku, a następnie wprowadź polecenie.
+1. Przekaż plik zip do węzła głównego klastra usługi HDInsight. Edytuj poniższe polecenie, zastępując `FILENAME` nazwą pliku zip, a `CLUSTERNAME` nazwą klastra usługi HDInsight. Następnie otwórz wiersz polecenia, Ustaw katalog roboczy na lokalizację pliku, a następnie wprowadź polecenie.
 
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
@@ -62,13 +62,13 @@ Istnieje wiele sposobów przekazywania danych do magazynu skojarzonego z klastre
 
     Jeśli zostanie wyświetlony monit o wprowadzenie opcji tak lub nie, aby przejść, wpisz tak w wierszu polecenia i naciśnij klawisz ENTER. Tekst nie jest widoczny w oknie podczas pisania.
 
-2. Po zakończeniu przekazywania połącz się z klastrem przy użyciu protokołu SSH. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` je nazwą klastra usługi HDInsight. Wprowadź następujące polecenie:
+2. Po zakończeniu przekazywania połącz się z klastrem przy użyciu protokołu SSH. Edytuj poniższe polecenie, zastępując `CLUSTERNAME` nazwą klastra usługi HDInsight. Wprowadź następujące polecenie:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Skonfiguruj zmienną środowiskową po nawiązaniu połączenia SSH. Zamień `FILE_NAME`, `SQL_SERVERNAME`, ,`SQL_DATABASE` iz`SQL_PASWORD` odpowiednimi wartościami`SQL_USER`. Następnie wprowadź polecenie:
+3. Skonfiguruj zmienną środowiskową po nawiązaniu połączenia SSH. Zastąp `FILE_NAME`, `SQL_SERVERNAME`, `SQL_DATABASE`, `SQL_USER`i `SQL_PASWORD` odpowiednimi wartościami. Następnie wprowadź polecenie:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -260,15 +260,15 @@ W poprzednich sekcjach skopiowano przekształcone dane w lokalizacji `/tutorials
     sqoop list-databases --connect jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433 --username $SQLUSER --password $SQLPASWORD
     ```
 
-    To polecenie zwraca listę baz danych, w tym bazę danych, w której utworzono `delays` wcześniej tabelę.
+    To polecenie zwraca listę baz danych, w tym bazę danych, w której utworzono wcześniej tabelę `delays`.
 
-2. Wyeksportuj `/tutorials/flightdelays/output` dane z `delays` do tabeli, wprowadzając następujące polecenie:
+2. Wyeksportuj dane z `/tutorials/flightdelays/output` do tabeli `delays`, wprowadzając następujące polecenie:
 
     ```bash
     sqoop export --connect "jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433;database=$DATABASE" --username $SQLUSER --password $SQLPASWORD --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    Sqoop nawiązuje połączenie z bazą danych, `delays` która zawiera tabelę, i eksportuje `/tutorials/flightdelays/output` dane z katalogu `delays` do tabeli.
+    Sqoop nawiązuje połączenie z bazą danych, która zawiera tabelę `delays` i eksportuje dane z katalogu `/tutorials/flightdelays/output` do tabeli `delays`.
 
 3. Po zakończeniu wykonywania polecenia Sqoop Użyj narzędzia TSQL, aby nawiązać połączenie z bazą danych, wprowadzając następujące polecenie:
 

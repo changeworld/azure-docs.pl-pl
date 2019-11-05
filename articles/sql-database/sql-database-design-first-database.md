@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: projektowanie pierwszej relacyjnej bazy danych w usłudze Azure SQL Database przy użyciu programu SSMS | Microsoft Docs'
+title: 'Samouczek: projektowanie pierwszej relacyjnej bazy danych w Azure SQL Database przy użyciu programu SSMS | Microsoft Docs'
 description: Dowiedz się, jak zaprojektować swoją pierwszą relacyjną bazę danych jako pojedynczą bazę danych w usłudze Azure SQL Database przy użyciu programu SQL Server Management Studio.
 services: sql-database
 ms.service: sql-database
@@ -9,14 +9,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: c6ad1cd7af02f281c53ece23a018f8b5ec0c7da9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 18e7e75b259475b9e360dc3441ed83ccb577e557
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640942"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492031"
 ---
-# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Samouczek: projektowanie relacyjnej bazy danych jako pojedynczej bazy danych w usłudze Azure SQL Database przy użyciu programu SSMS
+# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Samouczek: projektowanie relacyjnej bazy danych w pojedynczej bazie danych w ramach Azure SQL Database przy użyciu programu SSMS
 
 Baza danych Azure SQL Database to relacyjna baza danych oferowana jako usługa (DBaaS, database-as-a service) na platformie Microsoft Cloud (Azure). Z tego samouczka dowiesz się, jak przy użyciu witryny Azure Portal i programu [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) wykonać następujące czynności:
 
@@ -33,7 +33,7 @@ Baza danych Azure SQL Database to relacyjna baza danych oferowana jako usługa (
 > [!TIP]
 > Poniższy moduł Microsoft Learn umożliwia zapoznanie się z bezpłatnymi sposobami tworzenia [i konfigurowania aplikacji ASP.NET, która wysyła zapytanie do Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), w tym tworzenia prostej bazy danych.
 > [!NOTE]
-> Na potrzeby tego samouczka użyto pojedynczej bazy danych. Możesz także użyć bazy danych w puli elastycznej lub bazy danych wystąpienia w wystąpieniu zarządzanym. Aby uzyskać informacje o łączności z wystąpieniem zarządzanym, zapoznaj się z następującymi przewodnikami Szybki start: [Szybki start: konfigurowanie maszyny wirtualnej platformy Azure w celu nawiązania połączenia z wystąpieniem zarządzanym usługi Azure SQL Database](sql-database-managed-instance-configure-vm.md) i [Szybki start: konfigurowanie połączenia punkt-lokacja z wystąpieniem zarządzanym usługi Azure SQL Database ze środowiska lokalnego](sql-database-managed-instance-configure-p2s.md).
+> Na potrzeby tego samouczka użyto pojedynczej bazy danych. Możesz także użyć bazy danych w puli elastycznej lub bazy danych wystąpienia w wystąpieniu zarządzanym. Aby uzyskać łączność z wystąpieniem zarządzanym, zobacz te Przewodniki Szybki Start: [Przewodnik Szybki Start: Konfigurowanie maszyny wirtualnej platformy Azure do nawiązywania połączenia z wystąpieniem zarządzanym Azure SQL Database](sql-database-managed-instance-configure-vm.md) i [Szybki Start: Konfigurowanie połączenia punkt-lokacja z Azure SQL Database Wystąpienie zarządzane z lokalnego](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -52,7 +52,7 @@ Pojedyncza baza danych usługi Azure SQL Database jest tworzona ze zdefiniowanym
 
 Wykonaj poniższe kroki, aby utworzyć pustą pojedynczą bazę danych.
 
-1. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**.
 2. Na stronie **Nowy** wybierz pozycję **Bazy danych** w sekcji Azure Marketplace, a następnie kliknij pozycję **Baza danych SQL** w sekcji **Polecane**.
 
    ![tworzenie pustej bazy danych](./media/sql-database-design-first-database/create-empty-database.png)
@@ -73,11 +73,11 @@ Wykonaj poniższe kroki, aby utworzyć pustą pojedynczą bazę danych.
     | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
     | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). |
     | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
-    | **Location** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
+    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |
 
     ![tworzenie serwera bazy danych](./media/sql-database-design-first-database/create-database-server.png)
 
-5. Kliknij przycisk **wybierz**.
+5. Kliknij pozycję **Wybierz**.
 6. Kliknij pozycję **Warstwa cenowa**, aby określić warstwę usługi, liczbę jednostek DTU lub rdzeni wirtualnych i ilość miejsca do magazynowania. Możesz przejrzeć opcje liczby jednostek DTU/rdzeni wirtualnych i miejsca do magazynowania dostępne dla poszczególnych warstw usług.
 
     Po wybraniu warstwy usługi, liczby jednostek DTU lub rdzeni wirtualnych i ilości miejsca do magazynowania kliknij pozycję **Zastosuj**.
@@ -97,21 +97,23 @@ Usługa SQL Database tworzy zaporę IP na poziomie serwera. Ta zapora uniemożli
 > [!IMPORTANT]
 > Usługa SQL Database komunikuje się przez port 1433. Jeśli próbujesz nawiązać połączenie z tą usługą z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. W takim przypadku nie będzie można nawiązać połączenia z pojedynczą bazą danych, chyba że administrator otworzy port 1433.
 
-1. Po ukończeniu wdrażania kliknij pozycję **Bazy danych SQL** w menu po lewej stronie i kliknij bazę danych *yourDatabase* na stronie **Bazy danych SQL**. Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną **nazwę serwera** (na przykład *yourserver.database.windows.net*) i opcje dalszej konfiguracji.
+1. Po zakończeniu wdrożenia wybierz opcję **bazy danych SQL** z menu Azure Portal lub Wyszukaj i wybierz pozycję *bazy danych SQL* z dowolnej strony.  
 
-2. Skopiuj tę w pełni kwalifikowaną nazwę serwera w celu nawiązania połączenia z serwerem i bazami danych w programie SQL Server Management Studio.
+1. Wybierz pozycję *yourDatabase* na stronie **bazy danych SQL** . Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną **nazwę serwera** (na przykład `contosodatabaseserver01.database.windows.net`) i opcje dalszej konfiguracji.
 
    ![nazwa serwera](./media/sql-database-design-first-database/server-name.png)
 
-3. Kliknij pozycję **Ustaw zaporę serwera** na pasku narzędzi. Zostanie otwarta strona **Ustawienia zapory** dla serwera usługi SQL Database.
+1. Skopiuj tę w pełni kwalifikowaną nazwę serwera w celu nawiązania połączenia z serwerem i bazami danych w programie SQL Server Management Studio.
+
+1. Kliknij pozycję **Ustaw zaporę serwera** na pasku narzędzi. Zostanie otwarta strona **Ustawienia zapory** dla serwera usługi SQL Database.
 
    ![reguła zapory bazująca na adresach IP na poziomie serwera](./media/sql-database-design-first-database/server-firewall-rule.png)
 
-4. Kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory bazującej na adresach IP. Reguła zapory bazująca na adresach IP może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
+1. Kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory bazującej na adresach IP. Reguła zapory bazująca na adresach IP może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
 
-5. Kliknij polecenie **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory bazująca na adresach IP na poziomie serwera otwierająca port 1433 na serwerze usługi SQL Database.
+1. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory bazująca na adresach IP na poziomie serwera otwierająca port 1433 na serwerze usługi SQL Database.
 
-6. Kliknij przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
+1. Kliknij przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
 
 Adres IP może teraz być przekazywany przez zaporę IP. Możesz teraz połączyć się z pojedynczą bazą danych przy użyciu programu SQL Server Management Studio lub innego wybranego narzędzia. Używaj wcześniej utworzonego konta administratora serwera.
 
@@ -129,7 +131,7 @@ Nawiąż połączenie z pojedynczą bazą danych za pomocą programu [SQL Server
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Typ serwera** | Aparat bazy danych | Ta wartość jest wymagana. |
    | **Nazwa serwera** | W pełni kwalifikowana nazwa serwera | Przykład: *yourserver.database.windows.net*. |
-   | **Uwierzytelnianie** | Uwierzytelnianie serwera SQL | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
+   | **Uwierzytelnianie** | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
    | **Logowanie** | Konto administratora serwera | Konto określone podczas tworzenia serwera. |
    | **Hasło** | Hasło konta administratora serwera | Hasło określone podczas tworzenia serwera. |
 
@@ -266,7 +268,7 @@ Wykonaj następujące zapytania, aby pobrać informacje z tabel bazy danych. Zob
        AND person.LastName = 'Coleman'
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono wiele podstawowych zadań bazy danych. W tym samouczku omówiono:
 

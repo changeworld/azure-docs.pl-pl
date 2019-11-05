@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c21ff5c4c94eecc7bb1a6643e46166df80edf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648321"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474354"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Włącz logowanie bez hasła przy użyciu aplikacji Microsoft Authenticator (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Zamiast wyświetlać monit o hasło po wprowadzeniu nazwy użytkownika, osoba, k
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Uwierzytelnianie wieloskładnikowe systemu Azure z użyciem powiadomień wypychanych jako metody weryfikacji 
+- Multi-Factor Authentication platformy Azure, z powiadomieniami wypychanymi, które są dozwolone jako metoda weryfikacji 
 - Najnowsza wersja Microsoft Authenticator zainstalowana na urządzeniach z systemem iOS 8,0 lub nowszym albo systemem Android 6,0 lub nowszym.
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Funkcje rejestracji dla metod uwierzytelniania bezhaseł polegają na połączon
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Włącz metodę uwierzytelniania logowania jednokrotnego przy użyciu hasła
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
-1. Przejdźdo **Azure Active Directory** > metodamiuwierzytelnianiaMetodauwierzytelniania(wersjazapoznawcza >  **)**
+1. Przejdź do **usługi Azure AD Security** > **metod uwierzytelniania** > **zasady metod uwierzytelniania (wersja zapoznawcza)**
 1. W obszarze **Logowanie za pomocą telefonu bezhasło**wybierz następujące opcje
    1. **Włącz** — tak lub nie
    1. **Cel** — wszyscy użytkownicy lub wybrani użytkownicy
@@ -78,7 +78,7 @@ Po wpisaniu nazwy użytkownika w sieci Web i wybraniu **pozycji dalej**użytkown
 
 Istnieje możliwość, że użytkownik ma w pewnym momencie utworzyć poświadczenia logowania za pomocą telefonu bez hasła w bieżącej aplikacji Microsoft Authenticator lub na wcześniejszym urządzeniu. Gdy administrator włączy zasady metody uwierzytelniania dla logowania za pomocą telefonu bez hasła, każdy użytkownik z zarejestrowanym poświadczeniem rozpocznie korzystanie z nowego monitu logowania, niezależnie od tego, czy włączono do używania zasad, czy nie. Jeśli użytkownik nie zezwolił na korzystanie z poświadczeń za pomocą zasad, zobaczy błąd po zakończeniu przepływu uwierzytelniania. 
 
-Administrator może wybrać opcję, aby umożliwić użytkownikowi korzystanie z logowania jednokrotnego przy użyciu hasła lub użytkownik musi usunąć metodę. Jeśli użytkownik nie ma już zarejestrowanego urządzenia, może przejść do [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) obszaru i usunąć go. Jeśli nadal korzystają z uwierzytelniania wieloskładnikowego, można wybrać opcję **Wyłącz logowanie** za pomocą telefonu z poziomu Microsoft Authenticator.  
+Administrator może wybrać opcję, aby umożliwić użytkownikowi korzystanie z logowania jednokrotnego przy użyciu hasła lub użytkownik musi usunąć metodę. Jeśli użytkownik nie ma już zarejestrowanego urządzenia, może przejść do [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) i usunąć go. Jeśli nadal korzystają z uwierzytelniania wieloskładnikowego, można wybrać opcję **Wyłącz logowanie** za pomocą telefonu z poziomu Microsoft Authenticator.  
 
 ### <a name="ad-fs-integration"></a>Integracja AD FS
 
@@ -103,4 +103,4 @@ Jedno z wymagań wstępnych dotyczących tworzenia nowego silnego poświadczenia
 
 [Informacje o rejestracji urządzeń](../devices/overview.md#getting-devices-in-azure-ad)
 
-[Dowiedz się więcej o usłudze Azure wieloskładnikowe Authentication](../authentication/howto-mfa-getstarted.md)
+[Dowiedz się więcej o usłudze Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

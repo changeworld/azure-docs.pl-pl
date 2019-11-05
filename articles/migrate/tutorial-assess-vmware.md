@@ -5,18 +5,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 10/11/2019
 ms.author: hamusa
-ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 46bf756a729441bd3bc4b2b00aaa2c79fa06c0b8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952099"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521222"
 ---
-# <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych VMware przy użyciu Azure Migrate: Server Assessment
+# <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Ocenianie maszyn wirtualnych VMware za pomocą Azure Migrate: Ocena serwera
 
-W tym artykule przedstawiono sposób oceny lokalnych maszyn wirtualnych VMware przy użyciu Azure Migrate: Narzędzie do oceny serwera.
+W tym artykule przedstawiono sposób oceny lokalnych maszyn wirtualnych VMware przy użyciu narzędzia do oceny serwera Azure Migrate:.
 
 [Azure Migrate](migrate-services-overview.md) udostępnia centrum narzędzi, które ułatwiają odnajdywanie, ocenianie i Migrowanie aplikacji, infrastruktury i obciążeń do Microsoft Azure. Centrum obejmuje narzędzia Azure Migrate i oferty niezależnych dostawców oprogramowania (ISV) innych firm.
 
@@ -48,32 +48,32 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="set-up-an-azure-migrate-project"></a>Konfigurowanie projektu Azure Migrate
 
-Skonfiguruj nowy projekt Azure Migrate w następujący sposób.
+Skonfiguruj nowy projekt usługi Azure Migrate w następujący sposób.
 
-1. W Azure Portal > **wszystkie usługi**Znajdź **Azure Migrate**.
-2. W obszarze **usługi**wybierz pozycję **Azure Migrate**.
-3. W obszarze **Przegląd**w obszarze **odnajdywanie, ocenianie i Migrowanie serwerów**kliknij pozycję **Oceń i Przeprowadź migrację serwerów**.
+1. W witrynie Azure Portal > **Wszystkie usługi** znajdź pozycję **Azure Migrate**.
+2. W obszarze **Usługi** wybierz pozycję **Azure Migrate**.
+3. W obszarze **Omówienie**, **Odnajdywanie, ocena i migracja serwerów** kliknij pozycję **Oceń i zmigruj serwery**.
 
     ![Odnajdywanie i ocenianie serwerów](./media/tutorial-assess-vmware/assess-migrate.png)
 
-4. W obszarze **wprowadzenie**kliknij pozycję **Dodaj narzędzia**.
-5. W obszarze **Migrowanie projektu**wybierz subskrypcję platformy Azure i Utwórz grupę zasobów, jeśli jej nie masz.     
-6. W obszarze **szczegóły projektu**Określ nazwę projektu i lokalizację geograficzną, w której chcesz utworzyć projekt. Azja, Europa, Zjednoczone Królestwo i Stany Zjednoczone są obsługiwane.
+4. W obszarze **Wprowadzenie** kliknij pozycję **Dodaj narzędzia**.
+5. W obszarze **Projekt migracji**wybierz subskrypcję platformy Azure i utwórz grupę zasobów, jeśli jej nie masz.     
+6. W obszarze **szczegóły projektu**Określ nazwę projektu i lokalizację geograficzną, w której chcesz utworzyć projekt. Azja, Europa, Wielka Brytania i Stany Zjednoczone są obsługiwane.
 
-    - Lokalizacja geograficzna projektu służy tylko do przechowywania metadanych zebranych z lokalnych maszyn wirtualnych.
+    - Lokalizacja geograficzna projektu jest używana wyłącznie do przechowywania metadanych zebranych z lokalnych maszyn wirtualnych.
     - Podczas przeprowadzania migracji można wybrać dowolny region docelowy.
 
     ![Tworzenie projektu Azure Migrate](./media/tutorial-assess-vmware/migrate-project.png)
 
 
 7. Kliknij przycisk **Dalej**.
-8. W **narzędziu Wybierz ocenę**wybierz **pozycję Azure Migrate: **Następnie**Ocena** > serwera.
+8. W **narzędziu Wybierz ocenę**wybierz pozycję **Azure Migrate: Ocena serwera** > **dalej**.
 
     ![Tworzenie projektu Azure Migrate](./media/tutorial-assess-vmware/assessment-tool.png)
 
-9. W obszarze **Wybieranie narzędzia migracji**wybierz pozycję **Pomiń Dodawanie narzędzia do migracji teraz** > .
-10. W oknie **Recenzja + Dodawanie narzędzi**przejrzyj ustawienia, a następnie kliknij pozycję **Dodaj narzędzia**.
-11. Zaczekaj kilka minut, aż projekt Azure Migrate zostanie wdrożony. Nastąpi przekierowanie do strony projektu. Jeśli nie widzisz projektu, możesz uzyskać do niego dostęp z **serwerów** na pulpicie nawigacyjnym Azure Migrate.
+9. W obszarze **Wybierz narzędzie migracji** wybierz pozycję **Pomiń na razie dodawanie narzędzia migracji** > **Dalej**.
+10. W obszarze **Przegląd i dodawanie narzędzi** przejrzyj ustawienia, a następnie kliknij pozycję **Dodaj narzędzia**.
+11. Zaczekaj kilka minut, aż projekt usługi Azure Migrate zostanie wdrożony. Nastąpi przekierowanie do strony projektu. Jeśli nie widzisz projektu, możesz uzyskać do niego dostęp z obszaru **Serwery** na pulpicie nawigacyjnym usługi Azure Migrate.
 
 
 ## <a name="set-up-the-appliance-vm"></a>Konfigurowanie maszyny wirtualnej urządzenia
@@ -89,9 +89,9 @@ Azure Migrate: Ocena serwera uruchamia lekkie urządzenie maszyny wirtualnej VMw
 
 ### <a name="download-the-ova-template"></a>Pobierz szablon komórki jajowe
 
-1. W obszarze**serwery** > celówmigracji > Azure Migrate: **Ocena**serwera, kliknij przycisk **odkryj**.
-2. W > obszarze odnajdywanie maszyn**są zwirtualizowane maszyny?** kliknij przycisk **tak, z funkcją hypervisor programu VMware vSphere**.
-3. Kliknij pozycję **Pobierz** , aby pobrać. Plik szablonu komórki jajowe.
+1. W obszarze **cele migracji** > **serwery** > **Azure Migrate: Ocena serwera**, kliknij przycisk **odkryj**.
+2. W obszarze **Odnajdź maszyny** > **Czy maszyny są zwirtualizowane?** kliknij pozycję **Tak, z funkcją VMware vSphere Hypervisor**.
+3. Kliknij pozycję **Pobierz**, aby pobrać plik szablonu OVA.
 
     ![Pobieranie pliku OVA](./media/tutorial-assess-vmware/download-ova.png)
 
@@ -104,7 +104,7 @@ Przed wdrożeniem należy sprawdzić, czy plik komórki jajowe jest bezpieczny.
 2. Uruchom następujące polecenie, aby wygenerować skrót pliku OVA:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. W przypadku wersji 2.19.07.30 wygenerowana wartość skrótu powinna być zgodna z tymi wartościami. 
+3. W przypadku wersji 2.19.07.30 wygenerowana wartość skrótu powinna być zgodna z tymi wartościami.
 
   **Algorytm** | **Wartość skrótu**
   --- | ---
@@ -140,18 +140,18 @@ Skonfiguruj urządzenie, wykonując następujące kroki.
 
 1. W konsoli klienta vSphere kliknij maszynę wirtualną prawym przyciskiem myszy, a następnie kliknij pozycję **Open Console** (Otwórz konsolę).
 2. Podaj język, strefę czasową i hasło dla urządzenia.
-3. Otwórz przeglądarkę na dowolnym komputerze, który może nawiązać połączenie z maszyną wirtualną, a następnie otwórz adres URL aplikacji sieci **Web urządzenia: https://*Nazwa urządzenia lub adres IP*: 44368**.
+3. Otwórz przeglądarkę na dowolnym komputerze, który może nawiązać połączenie z maszyną wirtualną, a następnie otwórz adres URL aplikacji sieci Web urządzenia: **https://*Nazwa urządzenia lub adres IP*: 44368**.
 
    Możesz też otworzyć aplikację na pulpicie urządzenia, klikając skrót do aplikacji.
 4. W aplikacji internetowej > **skonfigurować wymagania wstępne**, wykonaj następujące czynności:
-    - **Licencja**: Zaakceptuj postanowienia licencyjne i przeczytaj informacje innych firm.
-    - **Łączność**: Aplikacja sprawdza, czy maszyna wirtualna ma dostęp do Internetu. Jeśli maszyna wirtualna używa serwera proxy:
+    - **Licencja**: zaakceptuj postanowienia licencyjne i przeczytaj informacje o innych firmach.
+    - **Łączność**: aplikacja sprawdza, czy maszyna wirtualna ma dostęp do Internetu. Jeśli maszyna wirtualna używa serwera proxy:
         - Kliknij pozycję **Ustawienia serwera proxy**i określ adres serwera proxy i port nasłuchujący w formularzu http://ProxyIPAddress lub http://ProxyFQDN.
         - Jeśli serwer proxy wymaga uwierzytelnienia, wprowadź poświadczenia.
         - Obsługiwane są tylko serwery proxy HTTP.
     - **Synchronizacja czasu**: czas na urządzeniu powinien być zsynchronizowany z czasem Internetu, aby odnajdywanie działało prawidłowo.
-    - **Zainstaluj aktualizacje**: Urządzenie zapewnia zainstalowanie najnowszych aktualizacji.
-    - **Zainstaluj VDDK**: Urządzenie sprawdza, czy jest zainstalowany pakiet VMWare vSphere Virtual Disk Development Kit (VDDK).
+    - **Zainstaluj aktualizacje**: urządzenie zapewnia zainstalowanie najnowszych aktualizacji.
+    - **Zainstaluj VDDK**: Urządzenie sprawdza, czy jest zainstalowany program VMware VSphere Virtual Disk Development Kit (VDDK).
         - Azure Migrate: Migracja serwera używa VDDK do replikowania maszyn podczas migracji na platformę Azure.
         - Pobierz VDDK 6,7 z programu VMware i Wyodrębnij zawartość pliku zip do określonej lokalizacji na urządzeniu.
 
@@ -166,17 +166,30 @@ Skonfiguruj urządzenie, wykonując następujące kroki.
 3. Określ nazwę urządzenia. Nazwa powinna być alfanumeryczna z 14 znakami lub mniej.
 4. Kliknij pozycję **zarejestruj**.
 
-
 ## <a name="start-continuous-discovery"></a>Uruchom odnajdywanie ciągłe
 
-Teraz podłącz urządzenie do vCenter Server i Uruchom odnajdywanie maszyn wirtualnych.
+Urządzenie musi połączyć się z vCenter Server, aby odnaleźć dane dotyczące konfiguracji i wydajności maszyn wirtualnych.
 
+### <a name="specify-vcenter-server-details"></a>Określanie szczegółów programu vCenter Server
 1. W obszarze **określ vCenter Server Szczegóły**Określ nazwę (FQDN) lub adres IP vCenter Server. Możesz opuścić port domyślny lub określić niestandardowy port, na którym nasłuchuje vCenter Server.
 2. W polu **Nazwa użytkownika** i **hasło**określ poświadczenia konta tylko do odczytu, które będą używane przez urządzenie do odnajdywania maszyn wirtualnych na serwerze vCenter. Upewnij się, że konto ma [wymagane uprawnienia do odnajdywania](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). Zakres odnajdywania można ograniczyć, ograniczając dostęp do konta vCenter odpowiednio; Więcej informacji o określaniu zakresu odnajdywania [znajdziesz tutaj](tutorial-assess-vmware.md#scoping-discovery).
 3. Kliknij pozycję **Sprawdź poprawność połączenia** , aby upewnić się, że urządzenie może połączyć się z vCenter Server.
-4. Po nawiązaniu połączenia kliknij pozycję **Zapisz i Rozpocznij odnajdywanie**.
 
-Spowoduje to uruchomienie odnajdywania. Metadane wykrytych maszyn wirtualnych będą wyświetlane w portalu na około 15 minut.
+### <a name="specify-vm-credentials"></a>Określ poświadczenia maszyny wirtualnej
+W przypadku odnajdywania aplikacji, ról i funkcji oraz wizualizacji zależności maszyn wirtualnych można podać poświadczenia maszyny wirtualnej, które mają dostęp do maszyn wirtualnych VMware. Można dodać jedno poświadczenie dla maszyn wirtualnych z systemem Windows i jedno poświadczenie dla maszyn wirtualnych z systemem Linux. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) o wymaganych uprawnieniach dostępu.
+
+> [!NOTE]
+> Dane wejściowe są opcjonalne i są konieczne do włączenia funkcji odnajdywania aplikacji i wizualizacji zależności bez wykorzystania agentów.
+
+1. W obszarze **Znajdź aplikacje i zależności na maszynach wirtualnych**kliknij pozycję **Dodaj poświadczenia**.
+2. Wybierz **system operacyjny**.
+3. Podaj przyjazną nazwę dla poświadczenia.
+4. W polu **Nazwa użytkownika** i **hasło**Określ konto, które ma co najmniej dostęp gościa na maszynach wirtualnych.
+5. Kliknij pozycję **Dodaj**.
+
+Po określeniu vCenter Server i poświadczeń maszyny wirtualnej (opcjonalnie) kliknij przycisk **Zapisz i Rozpocznij odnajdywanie** , aby rozpocząć odnajdywanie środowiska lokalnego.
+
+Metadane wykrytych maszyn wirtualnych będą wyświetlane w portalu na około 15 minut. Odnajdywanie zainstalowanych aplikacji, ról i funkcji zajmuje trochę czasu, a czas trwania zależy od liczby wykrytych maszyn wirtualnych. W przypadku maszyn wirtualnych 500 potrzeba około 1 godziny, aby spis aplikacji był wyświetlany w portalu Azure Migrate.
 
 ### <a name="scoping-discovery"></a>Odnajdowanie zakresu
 
@@ -189,13 +202,13 @@ Aby ustawić zakres, należy wykonać następujące czynności:
 
 **Tworzenie konta użytkownika vCenter**
 1.  Zaloguj się do klienta sieci Web vSphere jako administrator vCenter Server.
-2.  Kliknij kolejno pozycje **Administracja** > **Użytkownicy logowania jednokrotnego i grupy** > **Użytkownicy** .
+2.  Kliknij kolejno pozycje **administracja** > **Użytkownicy i grupy logowania jednokrotnego** > karta **Użytkownicy** .
 3.  Kliknij ikonę **nowego użytkownika** .
 4.  Wprowadź wymagane informacje, aby utworzyć nowego użytkownika, a następnie kliknij przycisk **OK**.
 
-**Zdefiniuj nową rolę z wymaganymi uprawnieniami** (<em>wymagane w przypadku migracji serwera bez agentów</em>)
+**Zdefiniuj nową rolę z wymaganymi uprawnieniami** (<em>wymaganą do migracji serwera bez agentów</em>)
 1.  Zaloguj się do klienta sieci Web vSphere jako administrator vCenter Server.
-2.  Przejdź do**menadżera roli** **Administracja** > .
+2.  Przejdź do widoku **administracja** > **Menedżer ról**.
 3.  Wybierz vCenter Server z menu rozwijanego.
 4.  Kliknij pozycję **Utwórz akcję roli** .
 5.  Wpisz nazwę nowej roli. (na przykład <em>Azure_Migrate</em>).
@@ -205,18 +218,18 @@ Aby ustawić zakres, należy wykonać następujące czynności:
 **Przypisywanie uprawnień do obiektów vCenter**
 
 Istnieją 2 podejścia do przypisywania uprawnień do obiektów spisu w programie vCenter do konta użytkownika vCenter z przypisaną rolą.
-- W celu oceny serwera należy zastosować rolę **tylko do odczytu** dla konta użytkownika vCenter dla wszystkich obiektów nadrzędnych, w których są hostowane maszyny wirtualne, które mają zostać odnalezione. Wszystkie obiekty nadrzędne — host, folder hostów, klaster, folder klastrów w hierarchii do centrum danych. Te uprawnienia są propagowane do obiektów podrzędnych w hierarchii. 
+- W celu oceny serwera należy zastosować rolę **tylko do odczytu** dla konta użytkownika vCenter dla wszystkich obiektów nadrzędnych, w których są hostowane maszyny wirtualne, które mają zostać odnalezione. Wszystkie obiekty nadrzędne — host, folder hostów, klaster, folder klastrów w hierarchii do centrum danych. Te uprawnienia są propagowane do obiektów podrzędnych w hierarchii.
 
     Podobnie w przypadku migracji serwera rola zdefiniowana przez użytkownika (może mieć nazwę <em>Azure _Migrate</em>) z tymi przypisanymi [uprawnieniami](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) musi być stosowana do konta użytkownika vCenter dla wszystkich obiektów nadrzędnych, w których są hostowane maszyny wirtualne do migracji.
 
 ![Przypisywanie uprawnień](./media/tutorial-assess-vmware/assign-perms.png)
 
 - Alternatywnym podejściem jest przypisanie konta użytkownika i roli na poziomie centrum danych i propagowanie ich do obiektów podrzędnych. Następnie nadaj kontu rolę **Brak dostępu** dla każdego obiektu (takiego jak maszyny wirtualne), które nie mają być odnajdywane/migrowane. Ta konfiguracja jest nieposkomplikowana. Udostępnia on przypadkowe kontrole dostępu, ponieważ każdy nowy obiekt podrzędny ma również automatycznie udzielony dostęp Dziedziczony z elementu nadrzędnego. W związku z tym zalecamy korzystanie z pierwszej metody.
- 
+
 > [!NOTE]
 > Obecnie Ocena serwera nie umożliwia odnajdywania maszyn wirtualnych, jeśli konto vCenter ma dostęp udzielony na poziomie folderu vCenter VM. Jeśli chcesz przeznaczyć zakres odnajdywania według folderów maszyn wirtualnych, możesz to zrobić, upewniając się, że konto vCenter ma dostęp tylko do odczytu na poziomie maszyny wirtualnej.  Poniżej znajdują się instrukcje, jak to zrobić:
 >
-> 1. Przypisz uprawnienia tylko do odczytu wszystkim maszynom wirtualnym w folderach maszyny wirtualnej, do których chcesz określić zakres odnajdywania. 
+> 1. Przypisz uprawnienia tylko do odczytu wszystkim maszynom wirtualnym w folderach maszyny wirtualnej, do których chcesz określić zakres odnajdywania.
 > 2. Przyznaj dostęp tylko do odczytu do wszystkich obiektów nadrzędnych, w których są hostowane maszyny wirtualne. Wszystkie obiekty nadrzędne — host, folder hostów, klaster, folder klastrów — w hierarchii do centrum danych należy uwzględnić. Nie ma potrzeby propagowania uprawnień do wszystkich obiektów podrzędnych.
 > 3. Użyj poświadczeń do odnajdywania, wybierając pozycję Centrum *danych jako zakres kolekcji*. Konfiguracja RBAC gwarantuje, że odpowiedni użytkownik vCenter będzie miał dostęp tylko do maszyn wirtualnych specyficznych dla dzierżawy.
 >
@@ -227,16 +240,16 @@ Istnieją 2 podejścia do przypisywania uprawnień do obiektów spisu w programi
 Po przeprowadzeniu odnajdywania możesz sprawdzić, czy maszyny wirtualne pojawiają się w Azure Portal.
 
 1. Otwórz pulpit nawigacyjny Azure Migrate.
-2. W **Azure Migrate serwerów** > **Azure Migrate: Na stronie** Ocena serwera kliknij ikonę, która wyświetla liczbę odnalezionych **serwerów**.
+2. W **Azure Migrate serwery** > **Azure Migrate: Strona Ocena serwera** kliknij ikonę, która wyświetla liczbę **odnalezionych serwerów**.
 
 ## <a name="set-up-an-assessment"></a>Konfigurowanie oceny
 
-Istnieją dwa typy ocen, które można utworzyć przy użyciu Azure Migrate: Server Assessment.
+Istnieją dwa typy ocen, które można utworzyć przy użyciu Azure Migrate: Ocena serwera.
 
-**Stopnia** | **Szczegóły** | **Dane**
+**Ocena** | **Szczegóły** | **Dane**
 --- | --- | ---
-**Oparta na wydajności** | Oceny oparte na zebranych danych wydajności | **Zalecany rozmiar maszyny wirtualnej**: Na podstawie danych użycia procesora i pamięci.<br/><br/> **Zalecany typ dysku (dysk zarządzany w warstwie Standardowa lub Premium)** : Na podstawie liczby operacji we/wy na sekundę i przepływności dysków lokalnych.
-**Jako lokalne** | Oceny oparte na wymiarach lokalnych. | **Zalecany rozmiar maszyny wirtualnej**: Na podstawie lokalnego rozmiaru maszyny wirtualnej<br/><br> **Zalecany typ dysku**: Na podstawie ustawienia typu magazynu wybieranego do oceny.
+**Oparta na wydajności** | Oceny oparte na zebranych danych wydajności | **Zalecany rozmiar maszyny wirtualnej**: na podstawie danych użycia procesora CPU i pamięci.<br/><br/> **Zalecany typ dysku (dysk zarządzany w warstwie Standardowa lub Premium)** : w zależności od liczby operacji we/wy na sekundę i przepływności dysków lokalnych.
+**Jako lokalne** | Oceny oparte na wymiarach lokalnych. | **Zalecany rozmiar maszyny wirtualnej**: na podstawie rozmiaru lokalnego maszyny wirtualnej<br/><br> **Zalecany typ dysku**: na podstawie ustawienia typu magazynu wybieranego do oceny.
 
 
 ### <a name="run-an-assessment"></a>Uruchamianie oceny
@@ -244,9 +257,9 @@ Istnieją dwa typy ocen, które można utworzyć przy użyciu Azure Migrate: Ser
 Uruchom ocenę w następujący sposób:
 
 1. Zapoznaj się z [najlepszymi rozwiązaniami](best-practices-assessment.md) dotyczącymi tworzenia ocen.
-2. Na karcie **serwery** w **Azure Migrate: Kafelek Ocena** serwera, kliknij przycisk **Oceń**.
+2. Na karcie **serwery** w **Azure Migrate: kafelek Ocena serwera** kliknij pozycję **Oceń**.
 
-    ![Oceń](./media/tutorial-assess-vmware/assess.png)
+    ![Ocena](./media/tutorial-assess-vmware/assess.png)
 
 2. W obszarze **ocenianie serwerów**Określ nazwę oceny.
 3. Kliknij pozycję **Wyświetl wszystko**, aby sprawdzić właściwości oceny.
@@ -259,7 +272,7 @@ Uruchom ocenę w następujący sposób:
 
     ![Tworzenie oceny](./media/tutorial-assess-vmware/assessment-create.png)
 
-6. Po utworzeniu oceny Wyświetl ją w obszarze **serwery** > **Azure Migrate: **Oceny**oceny** > serwera.
+6. Po utworzeniu oceny Wyświetl ją w obszarze **serwery** > **Azure Migrate: Ocena serwera** > **ocen**.
 7. Kliknij polecenie **Eksportuj ocenę**, aby pobrać ocenę jako plik programu Excel.
 
 
@@ -268,13 +281,13 @@ Uruchom ocenę w następujący sposób:
 
 Ocena zawiera opis:
 
-- **Gotowość platformy Azure**: Czy maszyny wirtualne są odpowiednie do migracji na platformę Azure.
-- **Szacowany koszt miesięczny**: Szacowane miesięczne koszty obliczeniowe i magazynowe związane z uruchamianiem maszyn wirtualnych na platformie Azure.
-- **Oszacowanie kosztu miesięcznego magazynu**: Szacowane koszty magazynu dyskowego po migracji.
+- **Gotowość platformy Azure**: czy maszyny wirtualne są odpowiednie do migracji na platformę Azure.
+- **Oszacowanie kosztów miesięcznych**: szacowane miesięczne koszty obliczeniowe i magazynowe związane z uruchamianiem maszyn wirtualnych na platformie Azure.
+- **Oszacowanie kosztu miesięcznego magazynu**: szacowane koszty magazynu dyskowego po migracji.
 
 ### <a name="view-an-assessment"></a>Wyświetlanie oceny
 
-1. W obszarze**serwery** **celów** >  migracji kliknij pozycję **oceny** w **Azure Migrate: Ocena**serwera.
+1. W obszarze **cele migracji** >  **serwery**kliknij pozycję **oceny** w **Azure Migrate: Ocena serwera**.
 2. W obszarze **oceny**kliknij ocenę, aby go otworzyć.
 
     ![Podsumowanie oceny](./media/tutorial-assess-vmware/assessment-summary.png)
@@ -283,10 +296,10 @@ Ocena zawiera opis:
 
 1. W obszarze **gotowość platformy Azure**Sprawdź, czy maszyny wirtualne są gotowe do migracji na platformę Azure.
 2. Sprawdź stan maszyny wirtualnej:
-    - **Gotowe do platformy Azure**: Azure Migrate zalecane jest użycie rozmiaru maszyny wirtualnej i oszacowania kosztów dla maszyn wirtualnych w ocenie.
-    - **Gotowe warunki**: Pokazuje problemy i sugerowane korygowanie.
-    - **Nie gotowy na platformę Azure**: Pokazuje problemy i sugerowane korygowanie.
-    - **Nieznane gotowość**: Używany, gdy Azure Migrate nie może ocenić gotowości ze względu na problemy z dostępnością danych.
+    - **Gotowe do platformy Azure**: Azure Migrate zaleca rozmiar maszyny wirtualnej i oszacowania kosztów dla maszyn wirtualnych w ocenie.
+    - **Gotowe warunki**: pokazuje problemy i sugerowane korygowanie.
+    - **Nie gotowy na platformę Azure**: zawiera problemy i sugerowane korygowanie.
+    - **Nieznane gotowość**: używany, gdy Azure Migrate nie może ocenić gotowości ze względu na problemy z dostępnością danych.
 
 2. Kliknij stan **gotowości platformy Azure** . Możesz wyświetlić szczegóły gotowości maszyn wirtualnych i przejść do szczegółów, aby wyświetlić szczegóły dotyczące maszyn wirtualnych, w tym ustawienia obliczeń, magazynu i sieci.
 
@@ -310,7 +323,7 @@ Ten widok przedstawia szacowany koszt obliczeń i magazynu dla uruchomionych mas
 
 Po uruchomieniu ocen opartych na wydajności, do oceny jest przypisywany rating zgodności.
 
-![Ocena ufności](./media/tutorial-assess-vmware/confidence-rating.png)
+![Ocena zaufania](./media/tutorial-assess-vmware/confidence-rating.png)
 
 - Nadawana jest Ocena z 1 – gwiazdka (najmniejsza) do 5-gwiazdka (najwyższa).
 - Ocena zaufania pomaga oszacować niezawodność zaleceń dotyczących rozmiaru zapewnianych przez ocenę.

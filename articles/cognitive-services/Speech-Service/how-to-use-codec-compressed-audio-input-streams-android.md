@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: df5eb123a2fd47a3eceea8153786442bf56a2718
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803834"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464373"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Używanie kodera-dekoder skompresowanego audio z zestawem Speech SDK w systemie Android
 
@@ -37,13 +37,13 @@ W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej.  Na zewn
 
 Koder-dekoder skompresowany audio jest implementowany przy użyciu [GStreamer](https://gstreamer.freedesktop.org). Ze względów licencjonowania GStreamer pliki binarne nie są kompilowane z zestawem SDK. Musisz użyć wstępnie skompilowanych plików binarnych dla systemu Android. Aby pobrać wstępnie skompilowane biblioteki, zobacz [Instalowanie aplikacji dla systemu Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c). 
 
-`libgstreamer_android.so` jest wymagany. Upewnij się, że wtyczki GStreamer są połączone w `libgstreamer_android.so`.
+`libgstreamer_android.so` jest wymagana. Upewnij się, że wtyczki GStreamer są połączone w `libgstreamer_android.so`.
 
 ```make
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac
 ```
 
-Poniżej przedstawiono przykładowy plik `Android.mk` i `Application.mk`. Wykonaj następujące kroki, aby utworzyć obiekt współużytkowany GStreamer: `libgstreamer_android.so`.
+Poniżej przedstawiono przykładowy `Android.mk` i plik `Application.mk`. Wykonaj następujące kroki, aby utworzyć obiekt współużytkowany GStreamer: `libgstreamer_android.so`.
 
 ```make
 # Android.mk
@@ -97,7 +97,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-@No__t-0 można skompilować przy użyciu następującego polecenia w systemie Ubuntu 16,04 lub 18,04. Następujące wiersze polecenia zostały przetestowane tylko dla [GStreamer Android Version 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) z [systemem Android NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
+`libgstreamer_android.so` można skompilować przy użyciu następującego polecenia w systemie Ubuntu 16,04 lub 18,04. Następujące wiersze polecenia zostały przetestowane tylko dla [GStreamer Android Version 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) z [systemem Android NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
 
 ```sh
 # assuming wget and unzip already installed on the system
@@ -133,7 +133,7 @@ Gdy obiekt współużytkowany (libgstreamer_android. so) jest skompilowany, Dewe
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Przykładowy kod przy użyciu kodera skompresowanego sygnału audio
 
-Aby przesłać strumieniowo w skompresowanym formacie audio do usługi mowy, Utwórz `PullAudioInputStream` lub `PushAudioInputStream`. Następnie utwórz `AudioConfig` z wystąpienia klasy strumienia, określając format kompresji strumienia.
+Aby przesłać strumieniowo w skompresowanym formacie audio do usługi mowy, Utwórz `PullAudioInputStream` lub `PushAudioInputStream`. Następnie utwórz `AudioConfig` z wystąpienia klasy Stream, określając format kompresji strumienia.
 
 Załóżmy, że masz klasę strumienia wejściowego o nazwie `myPullStream` i używają OPUS/OGG. Twój kod może wyglądać następująco:
 
@@ -159,5 +159,5 @@ String text = result.getText();
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Uzyskaj subskrypcję wersji próbnej usługi Speech](https://azure.microsoft.com/try/cognitive-services/)
-- [Zobacz, jak rozpoznać mowęC#](quickstart-csharp-dotnet-windows.md)
+- [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+* [Zobacz jak rozpoznać mowę w języku Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

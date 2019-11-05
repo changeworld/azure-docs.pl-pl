@@ -1,5 +1,5 @@
 ---
-title: Przytnij wartości
+title: Obcinanie wartości
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, w jaki sposób używać modułu wartości klipów w usłudze Azure Machine Learning, aby wykrywać elementy odstające i wycinania lub zastępować ich wartości.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a45755ca13aed6a514b548674ef424c40238fa42
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 704b7c8a0c55bdcdd69bd8a44b0f9f44e8ddf457
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694742"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493824"
 ---
-# <a name="clip-values"></a>Przytnij wartości
+# <a name="clip-values"></a>Obcinanie wartości
 
-W tym artykule opisano moduł Azure Machine Learning Visual Interface.
+W tym artykule opisano moduł programu Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj modułu wartości klipów, aby identyfikować i opcjonalnie zamieniać wartości danych powyżej lub poniżej określonego progu ze średnią, stałą lub inną wartością zastępczą.  
 

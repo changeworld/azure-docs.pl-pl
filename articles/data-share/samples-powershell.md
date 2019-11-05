@@ -1,19 +1,17 @@
 ---
 title: Przykłady Azure PowerShell dla udziału danych platformy Azure
-description: Dowiedz się więcej na temat Azure PowerShell przykładowe skrypty ułatwiające tworzenie udziałów danych i zarządzanie nimi w wersji zapoznawczej usługi Azure Data Share.
+description: Dowiedz się więcej na temat Azure PowerShell przykładowe skrypty ułatwiające tworzenie udziałów danych i zarządzanie nimi w udziale danych platformy Azure.
 ms.service: data-share
-ms.workload: data-services
-ms.topic: conceptual
-ms.devlang: powershell
 author: joannapea
 ms.author: joanpo
-ms.date: 07/6/2019
-ms.openlocfilehash: a694ced2697cba8cc50e3c7b5b14f712527e1cd9
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.topic: conceptual
+ms.date: 07/06/2019
+ms.openlocfilehash: c2593c4c03f48624b8b9e3b9d72a3558f5f581be
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166332"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499297"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Przykłady Azure PowerShell dla udziału danych platformy Azure
 
@@ -32,3 +30,9 @@ Poniższa tabela zawiera linki do przykładowych skryptów Azure PowerShell dla 
 |[Wyświetlanie szczegółów udziałów danych](scripts/powershell/view-share-details-powershell.md)| Ten przykładowy skrypt programu PowerShell zawiera listę i pobiera szczegóły udziałów danych. |
 |[Monitorowanie użycia danych udostępnionych](scripts/powershell/monitor-usage-powershell.md)| Ten przykładowy skrypt programu PowerShell służy do monitorowania użycia wysłanych danych udostępnionych. |
 |[Tworzenie i wyświetlanie wyzwalaczy migawek](scripts/powershell/create-view-trigger-powershell.md)| Ten przykładowy skrypt programu PowerShell tworzy wyzwalacze migawek udziału.
+
+
+
+
+
+

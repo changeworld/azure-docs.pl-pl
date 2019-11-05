@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2172ac30cd5b4251933e5012affdb41a0202a344
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784852"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479663"
 ---
 # <a name="text-split-cognitive-skill"></a>Umiejętność rozdzielania tekstu
 
@@ -33,7 +33,7 @@ W parametrach jest rozróżniana wielkość liter.
 |--------------------|-------------|
 | textsplitmode      | "Strony" lub "zdania" | 
 | maximumPageLength | Jeśli textsplitmode ma wartość "Pages", odnosi się do maksymalnej długości strony, która jest mierzona przez `String.Length`. Wartość minimalna to 100.  Jeśli element textsplitmode ma wartość "Pages", algorytm podejmie próbę podzielenia tekstu na fragmenty o rozmiarze co najwyżej "maximumPageLength". W takim przypadku algorytm będzie optymalnie dzielić zdanie na granicy zdania, więc rozmiar fragmentu może być nieco mniejszy niż "maximumPageLength". | 
-| defaultLanguageCode   | obowiązkowe Jeden z następujących kodów języka: `da, de, en, es, fi, fr, it, ko, pt`. Wartość domyślna to angielski (EN). Kilka kwestii, które należy wziąć pod uwagę:<ul><li>Jeśli przekażesz format languagecode-CountryCode, zostanie użyta tylko część languagecode formatu.</li><li>Jeśli język nie znajduje się na poprzedniej liście, podzielona umiejętność zrywa tekst w granicach znaku.</li><li>Podawanie kodu języka jest przydatne, aby uniknąć wycinania wyrazu w połowie dla języków bez miejsca, takich jak chiński, japoński i koreański.</li></ul>  |
+| defaultLanguageCode   | obowiązkowe Jeden z następujących kodów języka: `da, de, en, es, fi, fr, it, ko, pt`. Wartość domyślna to angielski (EN). Kilka kwestii, które należy wziąć pod uwagę:<ul><li>Jeśli przekażesz format languagecode-CountryCode, zostanie użyta tylko część languagecode formatu.</li><li>Jeśli język nie znajduje się na poprzedniej liście, podzielona umiejętność zrywa tekst w granicach znaku.</li><li>Udostępnianie kodu języka jest przydatne, aby uniknąć wycinania wyrazu w połowie dla języków innych niż odstępy, takich jak chińskie, Japońskie i koreański.</li><li>Jeśli nie znasz języka (tj. musisz podzielić tekst na dane wejściowe na [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), wartość domyślna języka angielskiego (EN) powinna być wystarczająca. </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
@@ -41,7 +41,7 @@ W parametrach jest rozróżniana wielkość liter.
 | Nazwa parametru       | Opis      |
 |----------------------|------------------|
 | tekst  | Tekst, który ma zostać podzielony na podciąg. |
-| languageCode  | Obowiązkowe Kod języka dla dokumentu.  |
+| languageCode  | Obowiązkowe Kod języka dla dokumentu. Jeśli nie znasz języka (tj. musisz podzielić tekst na dane wejściowe na [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), możesz bezpiecznie usunąć te dane wejściowe.  |
 
 ## <a name="skill-outputs"></a>Wyniki umiejętności 
 
@@ -130,7 +130,7 @@ W parametrach jest rozróżniana wielkość liter.
 ## <a name="error-cases"></a>Przypadki błędów
 Jeśli język nie jest obsługiwany, generowane jest ostrzeżenie, a tekst jest dzielony w granicach znaków.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

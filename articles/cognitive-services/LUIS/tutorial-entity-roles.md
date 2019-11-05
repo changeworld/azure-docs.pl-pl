@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Dane kontekstowe z rolami — LUIS'
+title: 'Samouczek: dane kontekstowe z rolami — LUIS'
 titleSuffix: Azure Cognitive Services
 description: Znajdź powiązane dane na podstawie kontekstu. Na przykład powiązane są lokalizacje początkowa i docelowa dla fizycznego przeniesienia z jednego budynku i biura do innego budynku i biura.
 services: cognitive-services
@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 2af35e08b523d782418ab356bf148e038f397f83
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308052"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488733"
 ---
-# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Samouczek: wyodrębnianie danych powiązanych kontekstowo z wypowiedzi
+# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Samouczek: Wyodrębnij powiązane z kontekstem dane z wypowiedź
 
 W tym samouczku znajdziesz powiązane elementy danych na podstawie kontekstu. Na przykład lokalizację początkową i docelową dla przeniesienia z jednego miasta do innego. Potrzebne mogą być oba elementy danych. Są one powiązane ze sobą.  
 
 Roli można używać z dowolnym prekompilowanym lub niestandardowym typem jednostki i używanym w obu przykładach wyrażenia długości i wzorców. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -36,7 +38,7 @@ Roli można używać z dowolnym prekompilowanym lub niestandardowym typem jednos
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="related-data"></a>Pokrewne dane
+## <a name="related-data"></a>Powiązane dane
 
 Ta aplikacja określa, dokąd ma zostać przeniesiony pracownik z miasta źródłowego do miasta docelowego. Używa wstępnie skompilowanej jednostki GeographyV2 do identyfikowania nazw miast i używa ról do określenia typów lokalizacji (źródła i miejsca docelowego) w wypowiedź.
 
@@ -55,7 +57,7 @@ Rola powinna być używana, gdy dane jednostkowe mają zostać wyodrębnione:
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
+1. Wybierz pozycję**Create new intent** (Utwórz nową intencję). 
 
 1. Wprowadź ciąg `MoveEmployeeToCity` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe). 
 
@@ -83,12 +85,12 @@ Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji
 
 1. Wybierz **jednostki** z nawigacji po lewej stronie.
 
-1. Wybierz pozycję **Dodaj prekompilowaną jednostkę**, `geo` a następnie wybierz pozycję na pasku wyszukiwania, aby odfiltrować wstępnie skompilowane jednostki. 
+1. Wybierz pozycję **Dodaj prekompilowaną jednostkę**, a następnie wybierz pozycję `geo` na pasku wyszukiwania, aby przefiltrować wstępnie skompilowane jednostki. 
 
     ![Dodaj wstępnie utworzoną jednostkę geographyV2 do aplikacji](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. Zaznacz pole wyboru i wybierz pozycję **gotowe**.
 1. Na liście **jednostki** wybierz **geographyV2** , aby otworzyć nową jednostkę. 
-1. Dodaj dwie role, `Origin`i. `Destination` 
+1. Dodaj dwie role, `Origin`i `Destination`. 
 
     ![Dodaj role do wstępnie skompilowanej jednostki](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Wybierz pozycję **intencje** z nawigacji po lewej stronie, a następnie wybierz opcję **MoveEmployeeToCity** . Zwróć uwagę na to, że nazwy miast są oznaczone wstępnie utworzoną jednostką **geographyV2**.
@@ -113,7 +115,7 @@ Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-1. Przejdź na koniec adresu URL na pasku adresu i wprowadź ciąg `Please move Carl Chamerlin from Tampa to Portland`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ten wypowiedź nie jest taki sam jak żaden z wyrażenia długości z etykietą, więc jest dobrym testem i powinien zwrócić `MoveEmployee` cel z wyodrębnioną jednostką.
+1. Przejdź na koniec adresu URL na pasku adresu i wprowadź ciąg `Please move Carl Chamerlin from Tampa to Portland`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ten wypowiedź nie jest taki sam jak żaden z wyrażenia długości z etykietą, więc jest dobrym testem i powinien zwrócić zamiar `MoveEmployee` z wyodrębnioną jednostką.
 
     ```json
     {

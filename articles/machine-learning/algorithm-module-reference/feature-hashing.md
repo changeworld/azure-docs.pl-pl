@@ -1,7 +1,7 @@
 ---
 title: Odwołanie do modułu wyznaczania wartości skrótu funkcji
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak cechowanie dane tekstowe przy użyciu modułu tworzenia skrótów funkcji w usłudze Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu wyznaczania wartości skrótu funkcji w Azure Machine Learning do cechowanie danych tekstowych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: bbcab6e94783583c7e13ae482d68fd013ba4c91d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170878"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497836"
 ---
 # <a name="feature-hashing-module-reference"></a>Odwołanie do modułu wyznaczania wartości skrótu funkcji
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł dostępny w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj modułu wyznaczania wartości skrótu funkcji, aby przekształcić strumień tekstu w języku angielskim do zestawu funkcji całkowitych. Następnie można przekazać tę funkcję skrótu do algorytmu uczenia maszynowego, aby szkolić model analizy tekstu.
 
@@ -52,14 +52,14 @@ Można kontrolować rozmiar n-gramów przy użyciu właściwości **n-Grams** . 
 |------------|---------------|
 |typu|3|
 |I|3|
-|Stad|1|
-|było|1|
+|stad|1|
+|błędu|1|
 
 Po skompilowaniu słownika moduł tworzenia skrótów funkcji konwertuje warunki słownika na wartości skrótu. Następnie oblicza, czy funkcja została użyta w każdym przypadku. Dla każdego wiersza danych tekstowych moduł wyprowadza zestaw kolumn, jedną kolumnę dla każdej funkcji skrótu.
 
 Na przykład po utworzeniu skrótu kolumny funkcji mogą wyglądać następująco:
 
-|Ocena|Funkcja mieszania 1|Funkcja mieszania 2|Funkcja mieszania 3|
+|Klasyfikacji|Funkcja mieszania 1|Funkcja mieszania 2|Funkcja mieszania 3|
 |-----|-----|-----|-----|
 |4|1|1|0|
 |5|0|0|0|
@@ -73,7 +73,7 @@ Wyniki liczbowe umożliwiają również korzystanie z typowych metod uczenia mas
 
 ## <a name="configure-the-feature-hashing-module"></a>Konfigurowanie modułu wyznaczania wartości skrótu funkcji
 
-1.  Dodaj moduł skrótu funkcji do eksperymentu w interfejsie wizualnym.
+1.  Dodaj moduł skrótu funkcji do potoku w projektancie.
 
 1. Połącz zestaw danych zawierający tekst, który chcesz przeanalizować.
 
@@ -94,7 +94,7 @@ Wyniki liczbowe umożliwiają również korzystanie z typowych metod uczenia mas
 
     Na przykład, jeśli wprowadzisz 3, unigrams, i trigrams zostanie utworzony.
 
-1. Uruchom eksperyment.
+1. Uruchamianie potoku.
 
 ## <a name="results"></a>Wyniki
 
@@ -127,8 +127,8 @@ Poniższe najlepsze rozwiązania mogą pomóc w optymalnym wykorzystaniu modułu
     * Usuwanie interpunkcji i znaków specjalnych
     * Uszkodzeniem  
 
-Optymalny zestaw metod przetwarzania wstępnego, które mają być stosowane w dowolnym rozwiązaniu, zależy od domeny, słownika i potrzeby biznesowe. Eksperymentuj z danymi, aby zobaczyć, które metody przetwarzania tekstu są najbardziej skuteczne.
+Optymalny zestaw metod przetwarzania wstępnego, które mają być stosowane w dowolnym rozwiązaniu, zależy od domeny, słownika i potrzeby biznesowe. potoku z danymi, aby zobaczyć, które metody przetwarzania tekstu są najbardziej skuteczne.
 
 ## <a name="next-steps"></a>Następne kroki
             
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zobacz [zestaw modułów dostępnych](module-reference.md) do Azure Machine Learning 

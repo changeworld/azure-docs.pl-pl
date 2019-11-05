@@ -6,19 +6,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
-ms.author: marthalc
-author: marthalc
+ms.reviewer: laobri
+ms.author: copeters
+author: lostmygithubaccount
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25017e6ea0be5d4320832298cdadbec7ec5a05cc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 845d271c60762177ea88912f2100f3b47aedde46
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929379"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489994"
 ---
 # <a name="collect-data-for-models-in-production"></a>Zbieranie danych dla modeli w środowisku produkcyjnym
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
 > Ten zestaw SDK zostanie wkrótce wycofany. Ten zestaw SDK jest nadal odpowiedni dla deweloperów monitorujących dryfowanie danych w modelach, ale większość deweloperów powinien korzystać z uproszczonego [monitorowania danych z Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights). 
@@ -115,11 +116,11 @@ Aby je włączyć, należy:
 
 Jeśli masz już usługę z zależnościami zainstalowanymi w **pliku środowiska** i **plikiem oceniania**, Włącz zbieranie danych przez:
 
-1. Przejdź do [Azure Portal](https://portal.azure.com).
+1. Przejdź do [Azure Machine Learning Studio](https://ml.azure.com).
 
 1. Otwórz obszar roboczy.
 
-1. Przejdź do pozycji **wdrożenia** -> **Select Service** -> **Edit**.
+1. Przejdź do pozycji **wdrożenia** -> **wybierz pozycję Usługa** -> **Edytuj**.
 
    ![Edytuj usługę](media/how-to-enable-data-collection/EditService.PNG)
 
@@ -133,16 +134,16 @@ Jeśli masz już usługę z zależnościami zainstalowanymi w **pliku środowisk
 
 
 ## <a name="disable-data-collection"></a>Wyłącz zbieranie danych
-Zbieranie danych można zatrzymać w dowolnym momencie. Aby wyłączyć zbieranie danych, użyj kodu Python lub Azure Portal.
+Zbieranie danych można zatrzymać w dowolnym momencie. Użyj kodu Python lub Azure Machine Learning Studio, aby wyłączyć zbieranie danych.
 
-+ Opcja 1 — Wyłącz w Azure Portal: 
-  1. Zaloguj się w [portalu Azure](https://portal.azure.com).
++ Opcja 1 — wyłączanie w programie Azure Machine Learning Studio: 
+  1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com).
 
   1. Otwórz obszar roboczy.
 
-  1. Przejdź do pozycji **wdrożenia** -> **Select Service** -> **Edit**.
+  1. Przejdź do pozycji **wdrożenia** -> **wybierz pozycję Usługa** -> **Edytuj**.
 
-     [Opcja edycji![](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+     [Opcja edycji ![](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. W obszarze **Ustawienia zaawansowane**Usuń zaznaczenie opcji **Włącz zbieranie danych modelu**. 
 
@@ -150,7 +151,7 @@ Zbieranie danych można zatrzymać w dowolnym momencie. Aby wyłączyć zbierani
 
   1. Wybierz pozycję **Aktualizuj** , aby zastosować zmianę.
 
-  Możesz również uzyskać dostęp do tych ustawień na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
+  Możesz również uzyskać dostęp do tych ustawień w obszarze roboczym w programie [Azure Machine Learning Studio](https://ml.azure.com).
 
 + Opcja 2 — Wyłączenie zbierania danych przy użyciu języka Python:
 
@@ -160,15 +161,15 @@ Zbieranie danych można zatrzymać w dowolnym momencie. Aby wyłączyć zbierani
   ```
 
 ## <a name="validate-your-data-and-analyze-it"></a>Sprawdzanie poprawności danych i analizowanie ich
-Możesz wybrać dowolne narzędzie preferencji, aby przeanalizować dane zebrane w obiekcie blob platformy Azure. 
+Możesz wybrać dowolne narzędzie preferencji, aby przeanalizować dane zebrane w obiekcie blob platformy Azure.
 
 Aby szybko uzyskać dostęp do danych z obiektu BLOB:
-1. Zaloguj się w [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com).
 
 1. Otwórz obszar roboczy.
 1. Kliknij pozycję **Magazyn**.
 
-    [Magazyn![](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+    [Magazyn ![](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
 1. Postępuj zgodnie ze ścieżką do danych wyjściowych w obiekcie blob przy użyciu następującej składni:
 
@@ -184,7 +185,7 @@ Aby szybko uzyskać dostęp do danych z obiektu BLOB:
 
 1. Wybierz pozycję **Pobierz dane** i kliknij pozycję [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 
-    [Konfiguracja obiektu BLOB![PBI](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+    [Konfiguracja obiektu BLOB ![PBI](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
 1. Dodaj nazwę konta magazynu i wprowadź swój klucz magazynu. Te informacje można znaleźć w **ustawieniach** obiektu blob, > > klucze dostępu. 
@@ -220,11 +221,11 @@ Aby szybko uzyskać dostęp do danych z obiektu BLOB:
 
 1. W obszarze roboczym datakostki wybierz pozycję **Przekaż dane**.
 
-    [przekazywanie![DB](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
+    [przekazywanie ![DB](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
 1. Utwórz nową tabelę i wybierz **inne źródła danych** — > Azure Blob Storage — > Utwórz tabelę w notesie.
 
-    [tabela![DB](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+    [tabela ![DB](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
 1. Zaktualizuj lokalizację danych. Oto przykład:
 

@@ -1,6 +1,6 @@
 ---
-title: Reguły zapory na magistrali usług platformy Azure | Dokumentacja firmy Microsoft
-description: Jak używać reguł zapory zezwala na połączenia z określonych adresów IP usługi Azure Service Bus.
+title: Reguły zapory Azure Service Bus | Microsoft Docs
+description: Jak używać reguł zapory do zezwalania na połączenia z określonych adresów IP do Azure Service Bus.
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -11,68 +11,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 540435e3e018ae77477030ae8b9f727d71782121
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45415af479c9581ee04b97af4fb5297d09c5769d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704585"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496328"
 ---
-# <a name="use-firewall-rules"></a>Użyj reguł zapory
+# <a name="use-firewall-rules"></a>Korzystanie z reguł zapory
 
-W przypadku scenariuszy, w których usługi Azure Service Bus jest dostępna tylko w niektórych witrynach dobrze znanych reguł zapory umożliwiają skonfigurowanie reguły do akceptowania ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy może być udostępnianych przez firmy bramy translatora adresów Sieciowych.
+W przypadku scenariuszy, w których Azure Service Bus są dostępne tylko z niektórych dobrze znanych lokacji, reguły zapory umożliwiają skonfigurowanie reguł do akceptowania ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy mogą być tymi, które należą do firmowej bramy translatora adresów sieciowych.
 
 ## <a name="when-to-use"></a>Kiedy stosować
 
-Jeśli szukasz do Instalatora usługi Service Bus, w której powinna odbierać ruch tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy, a następnie można wykorzystać *zapory* blokowanie punktów końcowych usługi Service Bus, z innych adresów IP. Na przykład używasz usługi Service Bus za pomocą [Azure Express Route] [ express-route] na tworzenie prywatnych połączeń w infrastrukturze lokalnej. 
+Jeśli chcesz skonfigurować Service Bus taki, że powinien on odbierać ruch tylko z określonego zakresu adresów IP i odrzucać wszystko inne, możesz użyć *zapory* do zablokowania Service Bus punktów końcowych z innych adresów IP. Na przykład w celu utworzenia prywatnych połączeń z infrastrukturą lokalną używasz Service Bus z usługą [Azure Express Route][express-route] . 
 
-## <a name="how-filter-rules-are-applied"></a>Sposób stosowania reguły filtrowania
+## <a name="how-filter-rules-are-applied"></a>Jak są stosowane reguły filtrowania
 
-Reguły filtrowania adresów IP są stosowane na poziomie przestrzeni nazw usługi Service Bus. W związku z tym zasady stosowane do wszystkich połączeń z klientami przy użyciu dowolnego obsługiwanego protokołu.
+Reguły filtru IP są stosowane na poziomie przestrzeni nazw Service Bus. W związku z tym reguły są stosowane do wszystkich połączeń z klientów przy użyciu dowolnego obsługiwanego protokołu.
 
-Każda próba połączenia z adresu IP, który nie jest zgodny regułę dozwolonych adresów IP w usłudze Service Bus, przestrzeń nazw zostanie odrzucone jako nieautoryzowany. Odpowiedź nie mogą zawierać reguły adresów IP.
+Wszystkie próby połączenia z adresu IP, które nie pasują do dozwolonej reguły adresów IP w przestrzeni nazw Service Bus, są odrzucane jako nieautoryzowane. Odpowiedź nie zawiera wzmianki o regule adresów IP.
 
 ## <a name="default-setting"></a>Ustawienie domyślne
 
-Domyślnie **filtru IP** siatki w portalu usługi Service Bus jest pusty. To ustawienie domyślne oznacza, że przestrzeń nazw akceptuje połączenia z dowolnego adresu IP. To ustawienie domyślne jest odpowiednikiem regułę, która akceptuje zakres adresów IP 0.0.0.0/0.
+Domyślnie siatka **filtrów IP** w portalu dla Service Bus jest pusta. To ustawienie domyślne oznacza, że przestrzeń nazw akceptuje połączenia dowolnego adresu IP. To ustawienie domyślne jest równoważne z regułą akceptującą zakres adresów IP 0.0.0.0/0.
 
-## <a name="ip-filter-rule-evaluation"></a>Ocenę reguł filtrowania adresów IP
+## <a name="ip-filter-rule-evaluation"></a>Obliczanie reguły filtru IP
 
-Reguły filtrowania adresów IP są stosowane w kolejności i pierwszej reguły, który jest zgodny z adresem IP określa akcję Zaakceptuj lub Odrzuć.
+Reguły filtrowania adresów IP są stosowane w kolejności, a pierwsza reguła zgodna z adresem IP określa akcję Akceptuj lub Odrzuć.
 
 >[!WARNING]
-> Implementowanie reguł zapory można zapobiec interakcji z usługą Service Bus innych usług platformy Azure.
+> Implementowanie reguł zapory może uniemożliwić innym usługom platformy Azure współdziałanie z Service Bus.
 >
-> Zaufane usługi firmy Microsoft nie są obsługiwane podczas filtrowania adresów IP (reguły zapory) są wykonywane i zostanie udostępniona wkrótce.
+> Zaufane usługi firmy Microsoft nie są obsługiwane, gdy są implementowane filtrowanie adresów IP (reguły zapory) i wkrótce zostaną udostępnione.
 >
-> Typowe scenariusze platformy Azure, które nie działają z filtrowania adresów IP (należy pamiętać, że lista jest **nie** wyczerpująca) —
+> Typowe scenariusze platformy Azure, które nie współpracują z filtrowaniem adresów IP (należy zauważyć, że lista **nie** jest wyczerpująca) —
 > - Azure Monitor
-> - Usługa Azure Stream Analytics
+> - Azure Stream Analytics
 > - Integracja z usługą Azure Event Grid
-> - Azure IoT Hub Routes
-> - Usługa Azure IoT Device Explorer
-> - Azure Data Explorer
+> - Trasy usługi Azure IoT Hub
+> - Device Explorer usługi Azure IoT
 >
-> Poniżej Microsoft usług są wymagane w sieci wirtualnej
-> - Usługa Azure App Service
+> Poniższe usługi firmy Microsoft muszą znajdować się w sieci wirtualnej
+> - Azure App Service
 > - Azure Functions
 
-### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Tworzenie wirtualnej sieci i reguła zapory przy użyciu szablonów usługi Azure Resource Manager
+### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Tworzenie sieci wirtualnej i reguły zapory za pomocą szablonów Azure Resource Manager
 
 > [!IMPORTANT]
-> Zapory i sieci wirtualne są obsługiwane tylko w **premium** warstwy usługi Service Bus.
+> Zapory i sieci wirtualne są obsługiwane tylko w warstwie **premium** Service Bus.
 
-Następujący szablon usługi Resource Manager umożliwia dodanie reguły sieci wirtualnej do istniejącej przestrzeni nazw usługi Service Bus.
+Poniższy szablon Menedżer zasobów umożliwia dodanie reguły sieci wirtualnej do istniejącej Service Bus przestrzeni nazw.
 
 Parametry szablonu:
 
-- **ipMask** jest pojedynczy adres IPv4 lub bloku adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
+- **ipMask** to pojedynczy adres IPv4 lub blok adresów IP w notacji CIDR. Na przykład w notacji CIDR 70.37.104.0/24 reprezentuje adresy IPv4 256 z 70.37.104.0 do 70.37.104.255, z 24 wskazujące liczbę znaczących bitów prefiksu dla zakresu.
 
 > [!NOTE]
-> Choć Brak reguł odmowy, możliwe, szablon usługi Azure Resource Manager jest domyślna akcja równa **"Zezwalaj"** która nie stanowi ograniczenia połączeń.
-> Podczas tworzenia reguł sieci wirtualnej lub zapory, możemy zmienić ***"defaultAction"***
+> Chociaż nie ma możliwych reguł Odmów, szablon Azure Resource Manager ma ustawioną akcję domyślną **"Zezwalaj"** , która nie ogranicza połączeń.
+> Podczas tworzenia reguł Virtual Network lub zapór należy zmienić wartość ***"DefaultAction"***
 > 
-> from
+> wniosek
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -143,13 +142,13 @@ Parametry szablonu:
   }
 ```
 
-Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dotyczącymi [usługi Azure Resource Manager][lnk-deploy].
+Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dotyczącymi [Azure Resource Manager][lnk-deploy].
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Ograniczanie dostępu do usługi Service Bus, sieciami wirtualnymi platformy Azure zobacz następujące łącze:
+Aby ograniczyć dostęp do Service Bus do sieci wirtualnych platformy Azure, Skorzystaj z następującego linku:
 
-- [Punkty końcowe usługi sieci wirtualnej dla usługi Service Bus][lnk-vnet]
+- [Virtual Network punkty końcowe usługi dla Service Bus][lnk-vnet]
 
 <!-- Links -->
 

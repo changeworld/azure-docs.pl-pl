@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 5664bf1eaee85d2492601ef00968d9b17d857abb
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900480"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489085"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostowanie statycznej witryny sieci Web w usłudze Azure Storage
 
@@ -22,9 +22,9 @@ W tym artykule opisano sposób włączania obsługi statycznej witryny sieci Web
 
 <a id="portal" />
 
-## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
+## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-Aby zapoznać się z samouczkiem krok po kroku, [zobacz Samouczek: Hostowanie statycznej witryny internetowej w usłudze Blob Storage ](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
+Aby zapoznać się z samouczkiem krok po kroku, zobacz [Samouczek: hostowanie statycznej witryny sieci Web na BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
 
 Po włączeniu hostingu statycznej witryny sieci Web można wyświetlić strony witryny z przeglądarki przy użyciu publicznego adresu URL witryny sieci Web.
 
@@ -38,7 +38,7 @@ W okienku, które pojawia się obok strony Przegląd konta na koncie magazynu, w
 
 <a id="cli" />
 
-## <a name="use-the-azure-cli"></a>Używanie interfejsu wiersza polecenia platformy Azure
+## <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 Można włączyć obsługę statycznej witryny sieci Web przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
@@ -50,7 +50,7 @@ Można włączyć obsługę statycznej witryny sieci Web przy użyciu [interfejs
    az account set --subscription <subscription-id>
    ```
 
-   Zastąp `<subscription-id>` wartość symbolu zastępczego identyfikatorem subskrypcji.
+   Zastąp wartość symbolu zastępczego `<subscription-id>` IDENTYFIKATORem subskrypcji.
 
 3. Włącz hosting statycznej witryny sieci Web.
 
@@ -60,14 +60,14 @@ Można włączyć obsługę statycznej witryny sieci Web przy użyciu [interfejs
 
    * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
 
-   * Zastąp `<error-document-name>` symbol zastępczy nazwą dokumentu błędu, który będzie widoczny dla użytkowników, gdy przeglądarka zażąda strony, która nie istnieje.
+   * Zastąp symbol zastępczy `<error-document-name>` nazwą dokumentu błędu, który będzie widoczny dla użytkowników, gdy przeglądarka zażąda strony, która nie istnieje.
 
-   * Zastąp `<index-document-name>` symbol zastępczy nazwą dokumentu indeksu. Ten dokument jest często "index. html".
+   * Zastąp symbol zastępczy `<index-document-name>` nazwą dokumentu indeksu. Ten dokument jest często "index. html".
 
 4. Przekaż obiekty do kontenera *$Web* z katalogu źródłowego.
 
    > [!NOTE]
-   > Jeśli używasz Azure Cloud Shell, pamiętaj o dodaniu `\` znaku ucieczki podczas odwoływania `$web` się do kontenera (na przykład: `\$web`). Jeśli używasz lokalnej instalacji interfejsu wiersza polecenia platformy Azure, nie musisz używać znaku ucieczki.
+   > Jeśli używasz Azure Cloud Shell, pamiętaj o dodaniu znaku ucieczki `\` podczas odwoływania się do kontenera `$web` (na przykład: `\$web`). Jeśli używasz lokalnej instalacji interfejsu wiersza polecenia platformy Azure, nie musisz używać znaku ucieczki.
 
    W tym przykładzie przyjęto założenie, że używasz poleceń z sesji Azure Cloud Shell.
 
@@ -77,7 +77,7 @@ Można włączyć obsługę statycznej witryny sieci Web przy użyciu [interfejs
 
    * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
 
-   * Zastąp `<source-path>` symbol zastępczy ścieżką do lokalizacji plików, które chcesz przekazać.
+   * Zastąp symbol zastępczy `<source-path>` ścieżką do lokalizacji plików, które chcesz przekazać.
 
    > [!NOTE]
    > Jeśli używasz instalacji lokalizacji interfejsu wiersza polecenia platformy Azure, możesz użyć ścieżki do dowolnej lokalizacji na komputerze lokalnym (na przykład: `C:\myFolder`.
@@ -98,11 +98,11 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 
 * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
 
-* Zastąp `<resource-group-name>` wartość symbolu zastępczego nazwą grupy zasobów.
+* Zastąp wartość symbolu zastępczego `<resource-group-name>` nazwą grupy zasobów.
 
 <a id="powershell" />
 
-## <a name="use-powershell"></a>Korzystanie z programu PowerShell
+## <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
 Można włączyć hosting statycznej witryny sieci Web przy użyciu modułu Azure PowerShell.
 
@@ -129,7 +129,7 @@ Można włączyć hosting statycznej witryny sieci Web przy użyciu modułu Azur
    Set-AzContext $context
    ```
 
-   Zastąp `<subscription-id>` wartość symbolu zastępczego identyfikatorem subskrypcji.
+   Zastąp wartość symbolu zastępczego `<subscription-id>` IDENTYFIKATORem subskrypcji.
 
 5. Pobierz kontekst konta magazynu, który definiuje konto magazynu, którego chcesz użyć.
 
@@ -138,7 +138,7 @@ Można włączyć hosting statycznej witryny sieci Web przy użyciu modułu Azur
    $ctx = $storageAccount.Context
    ```
 
-   * Zastąp `<resource-group-name>` wartość symbolu zastępczego nazwą grupy zasobów.
+   * Zastąp wartość symbolu zastępczego `<resource-group-name>` nazwą grupy zasobów.
 
    * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
 
@@ -148,9 +148,9 @@ Można włączyć hosting statycznej witryny sieci Web przy użyciu modułu Azur
    Enable-AzStorageStaticWebsite -Context $ctx -IndexDocument <index-document-name> -ErrorDocument404Path <error-document-name>
    ```
 
-   * Zastąp `<error-document-name>` symbol zastępczy nazwą dokumentu błędu, który będzie widoczny dla użytkowników, gdy przeglądarka zażąda strony, która nie istnieje.
+   * Zastąp symbol zastępczy `<error-document-name>` nazwą dokumentu błędu, który będzie widoczny dla użytkowników, gdy przeglądarka zażąda strony, która nie istnieje.
 
-   * Zastąp `<index-document-name>` symbol zastępczy nazwą dokumentu indeksu. Ten dokument jest często "index. html".
+   * Zastąp symbol zastępczy `<index-document-name>` nazwą dokumentu indeksu. Ten dokument jest często "index. html".
 
 7. Przekaż obiekty do kontenera *$Web* z katalogu źródłowego.
 
@@ -162,9 +162,9 @@ Można włączyć hosting statycznej witryny sieci Web przy użyciu modułu Azur
     -Context $ctx
      ```
 
-   * Zastąp wartość `C:\temp\index.html` symboluzastępczegowpełnikwalifikowanąścieżkądopliku,którychceszprzekazać(na`<path-to-file>` przykład:).
+   * Zastąp wartość symbolu zastępczego `<path-to-file>` z w pełni kwalifikowaną ścieżką do pliku, który chcesz przekazać (na przykład: `C:\temp\index.html`).
 
-   * Zastąp wartość `index.html` symboluzastępczegonazwą,któramadaćotrzymanyobiektBLOB(na`<blob-name>` przykład:).
+   * Zastąp wartość symbolu zastępczego `<blob-name>` nazwą, która ma dać otrzymany obiekt BLOB (na przykład: `index.html`).
 
 <a id="powershell-find-url" />
 
@@ -179,17 +179,19 @@ Znajdź adres URL przy użyciu następującego polecenia:
 Write-Output $storageAccount.PrimaryEndpoints.Web
 ```
 
-* Zastąp `<resource-group-name>` wartość symbolu zastępczego nazwą grupy zasobów.
+* Zastąp wartość symbolu zastępczego `<resource-group-name>` nazwą grupy zasobów.
 
 * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
 
 <a id="metrics" />
 
+---
+
 ## <a name="enable-metrics-on-static-website-pages"></a>Włącz metryki na stronach statycznej witryny internetowej
 
 Po włączeniu metryk statystyki ruchu dla plików w kontenerze **$Web** są raportowane na pulpicie nawigacyjnym metryk.
 
-1. Kliknij kolejno pozycje **Ustawienia** > **Monitoruj** > **metryki**.
+1. Kliknij pozycję **ustawienia** > **monitorowanie** > **metryki**.
 
    Dane metryk są generowane przez Podłączanie do różnych interfejsów API metryk. W portalu są wyświetlane tylko elementy API używane w danym przedziale czasowym, aby skoncentrować się tylko na elementach członkowskich, które zwracają dane. Aby upewnić się, że można wybrać wymagany element członkowski interfejsu API, pierwszym krokiem jest rozwinięcie przedziału czasu.
 
@@ -223,6 +225,6 @@ Po włączeniu metryk statystyki ruchu dla plików w kontenerze **$Web** są rap
 * [Użyj Azure CDN, aby uzyskać dostęp do obiektów BLOB za pomocą domen niestandardowych za pośrednictwem protokołu HTTPS](storage-https-custom-domain-cdn.md)
 * [Konfigurowanie niestandardowej nazwy domeny dla obiektu BLOB lub punktu końcowego sieci Web](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
-* [Usługa Azure App Service](/azure/app-service/overview)
+* [Azure App Service](/azure/app-service/overview)
 * [Tworzenie pierwszej aplikacji sieci Web bezserwerowej](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [Samouczek: Hostowanie domeny w Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

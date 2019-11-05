@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 7d4546a6d2de01575825154ab30a909b76b3fc89
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171925"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474469"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Jak obiekty i poświadczenia są synchronizowane w Azure AD Domain Servicesej domenie zarządzanej
 
-Obiekty i poświadczenia w domenie zarządzanej Azure Active Directory Domain Services (AD DS) można utworzyć lokalnie w domenie lub zsynchronizować z dzierżawy usługi Azure Active Directory (AD). Podczas pierwszego wdrażania usługi Azure AD DS zostanie skonfigurowana automatyczna synchronizacja jednokierunkowa i uruchomiona w celu replikowania obiektów z usługi Azure AD. Ta Jednokierunkowa synchronizacja nadal działa w tle, aby zapewnić aktualność domeny zarządzanej przez platformę Azure AD DS przy użyciu wszelkich zmian z usługi Azure AD.
+Obiekty i poświadczenia w domenie zarządzanej Azure Active Directory Domain Services (AD DS) można utworzyć lokalnie w domenie lub zsynchronizować z dzierżawy usługi Azure Active Directory (Azure AD). Podczas pierwszego wdrażania usługi Azure AD DS zostanie skonfigurowana automatyczna synchronizacja jednokierunkowa i uruchomiona w celu replikowania obiektów z usługi Azure AD. Ta Jednokierunkowa synchronizacja nadal działa w tle, aby zapewnić aktualność domeny zarządzanej przez platformę Azure AD DS przy użyciu wszelkich zmian z usługi Azure AD. Na platformie Azure nie są wykonywane żadne synchronizacje AD DS z powrotem do usługi Azure AD.
 
 W środowisku hybrydowym obiekty i poświadczenia z lokalnej domeny AD DS mogą być synchronizowane z usługą Azure AD przy użyciu Azure AD Connect. Po pomyślnym zsynchronizowaniu tych obiektów z usługą Azure AD automatyczna synchronizacja w tle sprawia, że te obiekty i poświadczenia są dostępne dla aplikacji korzystających z domeny zarządzanej AD DS platformy Azure.
 
@@ -38,16 +38,18 @@ Proces synchronizacji jest jednym ze sposobów/jednokierunkowy przez projektowan
 
 W poniższej tabeli wymieniono niektóre typowe atrybuty i sposób ich synchronizowania z usługą Azure AD DS.
 
-| Atrybut w usłudze Azure AD DS | Source | Uwagi |
+| Atrybut w usłudze Azure AD DS | Element źródłowy | Uwagi |
 |:--- |:--- |:--- |
-| UPN | Atrybut *nazwy UPN* użytkownika w dzierżawie usługi Azure AD | Atrybut nazwy UPN dzierżawy usługi Azure AD jest zsynchronizowany z usługą Azure AD DS. Najbardziej niezawodnym sposobem zalogowania się do domeny zarządzanej usługi Azure AD DS jest użycie nazwy UPN. |
-| SAMAccountName | Atrybut *mailNickname* użytkownika w dzierżawie usługi Azure AD lub wygenerowany automatycznie | Atrybut *sAMAccountName* jest źródłem z atrybutu *mailNickname* w dzierżawie usługi Azure AD. Jeśli wiele kont użytkowników ma ten sam atrybut *mailNickname* , nazwa *sAMAccountName* jest generowana automatycznie. Jeśli długość prefiksu *mailNickname* lub *nazwy UPN* użytkownika jest dłuższa niż 20 znaków, nazwa *sAMAccountName* jest generowana automatycznie, aby spełnić limit 20 znaków dla atrybutów *sAMAccountName* . |
+| GŁÓWNEJ | Atrybut *nazwy UPN* użytkownika w dzierżawie usługi Azure AD | Atrybut nazwy UPN dzierżawy usługi Azure AD jest zsynchronizowany z usługą Azure AD DS. Najbardziej niezawodnym sposobem zalogowania się do domeny zarządzanej usługi Azure AD DS jest użycie nazwy UPN. |
+| Nazwy | Atrybut *mailNickname* użytkownika w dzierżawie usługi Azure AD lub wygenerowany automatycznie | Atrybut *sAMAccountName* jest źródłem z atrybutu *mailNickname* w dzierżawie usługi Azure AD. Jeśli wiele kont użytkowników ma ten sam atrybut *mailNickname* , nazwa *sAMAccountName* jest generowana automatycznie. Jeśli długość prefiksu *mailNickname* lub *nazwy UPN* użytkownika jest dłuższa niż 20 znaków, nazwa *sAMAccountName* jest generowana automatycznie, aby spełnić limit 20 znaków dla atrybutów *sAMAccountName* . |
 | Hasła | Hasło użytkownika z dzierżawy usługi Azure AD | Starsze skróty haseł wymagane do uwierzytelniania NTLM lub Kerberos są synchronizowane z dzierżawy usługi Azure AD. Jeśli dzierżawa usługi Azure AD jest skonfigurowana pod kątem synchronizacji hybrydowej przy użyciu Azure AD Connect, te skróty haseł pochodzą z lokalnego środowiska AD DS. |
 | Podstawowy identyfikator SID użytkownika/grupy | Automatycznie generowanych | Podstawowy identyfikator SID kont użytkowników/grup jest generowany automatycznie na platformie Azure AD DS. Ten atrybut nie jest zgodny z identyfikatorem SID podstawowego użytkownika/grupy obiektu w środowisku lokalnym AD DS. Ta niezgodność wynika z faktu, że domena zarządzana przez usługę Azure AD DS ma inną przestrzeń nazw identyfikatora SID niż domena lokalna AD DS. |
 | Historia identyfikatora SID dla użytkowników i grup | Lokalny podstawowy użytkownik i identyfikator SID grupy | Atrybut *SIDHistory* dla użytkowników i grup w usłudze Azure AD DS jest ustawiony jako zgodny z identyfikatorem SID odpowiedniego użytkownika podstawowego lub grupy w środowisku lokalnym AD DS. Ta funkcja ułatwia tworzenie i przenoszenie aplikacji lokalnych na platformę Azure AD DS łatwiejsze, ponieważ nie trzeba ponownie tworzyć listy ACL zasobów. |
 
 > [!TIP]
-> **Zaloguj się do domeny zarządzanej przy użyciu formatu nazwy UPN** Atrybut *sAMAccountName* , taki jak `CONTOSO\driley`, może być automatycznie generowany dla niektórych kont użytkowników w domenie zarządzanej AD DS platformy Azure. Automatycznie generowane *sAMAccountName* użytkownika może różnić się od prefiksu UPN, więc nie zawsze jest to niezawodne rozwiązanie do logowania. Jeśli na przykład wielu użytkowników ma ten sam atrybut *mailNickname* lub użytkownicy mają zbyt długie prefiksy UPN, można automatycznie wygenerować *sAMAccountName* dla tych użytkowników. Użyj formatu UPN, takiego jak, `driley@contoso.com`aby w sposób niezawodny zalogować się do domeny zarządzanej AD DS platformy Azure.
+> **Zaloguj się do domeny zarządzanej przy użyciu formatu nazwy UPN** Atrybut *sAMAccountName* , taki jak `CONTOSO\driley`, może być generowany automatycznie dla niektórych kont użytkowników w domenie zarządzanej AD DS platformy Azure. Automatycznie generowane *sAMAccountName* użytkownika może różnić się od prefiksu UPN, więc nie zawsze jest to niezawodne rozwiązanie do logowania.
+>
+> Jeśli na przykład wielu użytkowników ma ten sam atrybut *mailNickname* lub użytkownicy mają zbyt długie prefiksy UPN, można automatycznie wygenerować *sAMAccountName* dla tych użytkowników. Użyj formatu UPN, takiego jak `driley@contoso.com`, aby w niezawodny sposób zalogować się do domeny zarządzanej AD DS platformy Azure.
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Mapowanie atrybutów dla kont użytkowników
 
@@ -55,28 +57,28 @@ W poniższej tabeli przedstawiono, w jaki sposób konkretne atrybuty obiektów u
 
 | Atrybut użytkownika w usłudze Azure AD | Atrybut użytkownika w usłudze Azure AD DS |
 |:--- |:--- |
-| accountEnabled |kontroli konta użytkownika (ustawia lub czyści bit ACCOUNT_DISABLED) |
-| city |l |
-| trzeciego |co |
-| Dział |Dział |
+| AccountEnabled |kontroli konta użytkownika (ustawia lub czyści bit ACCOUNT_DISABLED) |
+| city |& |
+| Trzeciego |współzarządzania |
+| department |department |
 | displayName |displayName |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
-| givenName |givenName |
-| Stanowisko |tytuł |
-| poczta |poczta |
-| mailNickname |msDS-AzureADMailNickname |
-| mailNickname |SAMAccountName (czasami może być generowane automatycznie) |
-| Telefon komórkowy |Telefon komórkowy |
+| GivenName |GivenName |
+| Stanowiska |title |
+| mail (poczta) |mail (poczta) |
+| MailNickname |msDS-AzureADMailNickname |
+| MailNickname |SAMAccountName (czasami może być generowane automatycznie) |
+| urządzenie |urządzenie |
 | obiektu |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |Skopiowano element SIDHistory |
 | passwordPolicies |kontroli konta użytkownika (ustawia lub czyści bit DONT_EXPIRE_PASSWORD) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
-| postalCode |postalCode |
+| Pocztowy |Pocztowy |
 | preferredLanguage |preferredLanguage |
-| state |St |
-| Adres |Adres |
-| nazwisko |numery seryjne |
-| telephoneNumber |telephoneNumber |
+| state |Krótkoterminow |
+| streetAddress |streetAddress |
+| surname |sery |
+| TelephoneNumber |TelephoneNumber |
 | userPrincipalName |userPrincipalName |
 
 ### <a name="attribute-mapping-for-groups"></a>Mapowanie atrybutów dla grup
@@ -87,8 +89,8 @@ W poniższej tabeli przedstawiono, w jaki sposób konkretne atrybuty obiektów g
 |:--- |:--- |
 | displayName |displayName |
 | displayName |SAMAccountName (czasami może być generowane automatycznie) |
-| poczta |poczta |
-| mailNickname |msDS-AzureADMailNickname |
+| mail (poczta) |mail (poczta) |
+| MailNickname |msDS-AzureADMailNickname |
 | obiektu |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |Skopiowano element SIDHistory |
 | securityEnabled |groupType |
@@ -112,13 +114,13 @@ Jak wspomniano wcześniej, nie istnieje żadna synchronizacja z platformy Azure 
 
 ## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>Co nie jest zsynchronizowane z usługą Azure AD DS
 
-Następujące obiekty lub atrybuty nie są zsynchronizowane z usługą Azure AD ani do usługi Azure AD DS:
+Następujące obiekty lub atrybuty nie są zsynchronizowane z lokalnego środowiska AD DS do usługi Azure AD lub platformy Azure AD DS:
 
 * **Wykluczone atrybuty:** Można zdecydować się na wykluczenie niektórych atrybutów z synchronizacji do usługi Azure AD z lokalnego środowiska AD DS przy użyciu Azure AD Connect. Te wykluczone atrybuty nie są następnie dostępne w usłudze Azure AD DS.
 * **Zasady grupy:** Zasady grupy skonfigurowane w lokalnym środowisku AD DS nie są synchronizowane z usługą Azure AD DS.
 * **Folder SYSVOL:** Zawartość folderu *SYSVOL* w lokalnym środowisku AD DS nie jest synchronizowana z usługą Azure AD DS.
 * **Obiekty komputera:** Obiekty komputerów dla komputerów przyłączonych do środowiska lokalnego AD DS nie są synchronizowane z usługą Azure AD DS. Te komputery nie mają relacji zaufania z domeną zarządzaną platformy Azure AD DS i należą tylko do lokalnego środowiska AD DS. W usłudze Azure AD DS są wyświetlane tylko obiekty komputerów w przypadku komputerów, które mają jawnie przyłączoną do domeny zarządzanej domeny.
-* **Atrybuty SidHistory dla użytkowników i grup:** Identyfikatory SID użytkownika podstawowego i grupy podstawowej z lokalnego środowiska AD DS są synchronizowane z usługą Azure AD DS. Jednak istniejące atrybuty *historii SID* dla użytkowników i grup nie są zsynchronizowane ze środowiska lokalnego AD DS do usługi Azure AD DS.
+* **Atrybuty SIDHistory dla użytkowników i grup:** Identyfikatory SID użytkownika podstawowego i grupy podstawowej z lokalnego środowiska AD DS są synchronizowane z usługą Azure AD DS. Jednak istniejące atrybuty *historii SID* dla użytkowników i grup nie są zsynchronizowane ze środowiska lokalnego AD DS do usługi Azure AD DS.
 * **Struktury jednostek organizacyjnych (OU):** Jednostki organizacyjne zdefiniowane w środowisku lokalnym AD DS nie są synchronizowane z usługą Azure AD DS. Istnieją dwie wbudowane jednostki organizacyjne na platformie Azure AD DS — jeden dla użytkowników i jeden dla komputerów. Domena zarządzana AD DS platformy Azure ma płaską strukturę jednostki organizacyjnej. Możesz [utworzyć niestandardową jednostkę organizacyjną w domenie zarządzanej](create-ou.md).
 
 ## <a name="password-hash-synchronization-and-security-considerations"></a>Synchronizacja skrótów haseł i zagadnienia dotyczące zabezpieczeń

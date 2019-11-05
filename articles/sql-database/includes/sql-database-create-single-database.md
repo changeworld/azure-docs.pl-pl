@@ -3,14 +3,14 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.author: mathoma
-ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933239"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496152"
 ---
 W tym kroku utworzysz Azure SQL Database pojedynczą bazę danych. 
 
@@ -55,12 +55,12 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
      ![Szczegóły SQL Database](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - Wybierz opcję **aprowizacji** i **5 rdzeń**.
+   - Wybierz opcję **Obsługa administracyjna**.
 
      ![Obliczenia zainicjowany](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
-   - Zapoznaj się z ustawieniami **Maksymalna rdzeni wirtualnych**, **minimum rdzeni wirtualnych**, **opóźnienie AutoPause**i **Maksymalny rozmiar danych**. Zmień je zgodnie z potrzebami.
-   - Zaakceptuj warunki wersji zapoznawczej, a następnie kliknij przycisk **OK**.
+   - Sprawdź ustawienia **rdzeni wirtualnych**i **Maksymalny rozmiar danych**. Zmień je zgodnie z potrzebami. 
+     - Opcjonalnie możesz również wybrać pozycję **Zmień konfigurację** , aby zmienić generowanie sprzętu.
    - Wybierz przycisk **Zastosuj**.
 
 5. Wybierz kartę **Ustawienia dodatkowe** . 

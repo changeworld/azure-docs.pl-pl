@@ -3,25 +3,25 @@ title: Dowiedz się Azure Policy usługi Azure Kubernetes Service
 description: Dowiedz się, w jaki sposób Azure Policy używać usługi rego i Otwórz agenta zasad do zarządzania klastrami w usłudze Azure Kubernetes.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 06/24/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 6a3d1fb347819015887ffc4fd8089bbc1f3a70de
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 248f96b4385e97605986b53bd94fd83236ec8f08
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176319"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480906"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Opis Azure Policy usługi Azure Kubernetes Service
 
 Azure Policy integruje się z [usługą Azure Kubernetes Service](../../../aks/intro-kubernetes.md) (AKS), aby stosować wymuszanie i zabezpieczenia w klastrach w scentralizowany, spójny sposób.
-Rozszerzając korzystanie z [strażnika](https://github.com/open-policy-agent/gatekeeper), _elementu webhook kontrolera systemu Admission_ dla programu [Open Policy Agent](https://www.openpolicyagent.org/) (nieprzez), Azure Policy umożliwia zarządzanie stanem zgodności zasobów platformy Azure i klastrów AKS z jednego miejsca oraz tworzenie raportów na ich temat.
+Rozszerzając użycie [strażnika](https://github.com/open-policy-agent/gatekeeper/tree/master/deprecated) v2, _elementu webhook kontrolera systemu Admission_ dla programu [Open Policy Agent](https://www.openpolicyagent.org/) (nieprzez), Azure Policy umożliwia zarządzanie stanem zgodności zasobów platformy Azure i klastrów AKS z jednego miejsca oraz tworzenie raportów na ich temat.
 
 > [!NOTE]
 > Azure Policy dla AKS jest w ograniczonej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby włączyć i używać Azure Policy dla AKS z klastrem AKS, wykonaj następujące czynności:
 
@@ -34,11 +34,11 @@ Aby włączyć i używać Azure Policy dla AKS z klastrem AKS, wykonaj następuj
 
 Przed zainstalowaniem dodatku Azure Policy lub włączenia jakichkolwiek funkcji usługi subskrypcja musi włączyć dostawcę zasobów **Microsoft. ContainerService** i dostawcę zasobów **Microsoft. PolicyInsights** , a następnie zostać zatwierdzone do Dołącz do wersji zapoznawczej. Aby dołączyć do wersji zapoznawczej, wykonaj następujące kroki w Azure Portal lub w interfejsie wiersza polecenia platformy Azure:
 
-- Azure Portal:
+- Witryna Azure Portal:
 
   1. Zarejestruj dostawców zasobów **Microsoft. ContainerService** i **Microsoft. PolicyInsights** . Aby uzyskać instrukcje, zobacz [dostawcy zasobów i ich typy](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
-  1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
+  1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając opcję **Wszystkie usługi** i następnie wyszukując i wybierając opcję **Zasada**.
 
      ![Wyszukaj zasady w obszarze wszystkie usługi](../media/rego-for-aks/search-policy.png)
 
@@ -162,7 +162,7 @@ Co 5 minut, dodatek wywołuje pełne skanowanie klastra. Po zebraniu szczegóło
 
 ## <a name="policy-language"></a>Język zasad
 
-Azure Policy struktura języka dla zarządzania AKS jest zgodna z istniejącymi zasadami. Efekt _EnforceRegoPolicy_ służy do zarządzania klastrami AKS i ma _szczegółowe_ właściwości specyficzne dla pracy z nieprzez i strażnikiem. Aby uzyskać szczegółowe informacje i przykłady, zobacz efekt [EnforceRegoPolicy](effects.md#enforceregopolicy) .
+Azure Policy struktura języka dla zarządzania AKS jest zgodna z istniejącymi zasadami. Efekt _EnforceRegoPolicy_ służy do zarządzania klastrami AKS i zawiera _szczegółowe_ właściwości specyficzne dla pracy z nieprzez i strażnikiem v2. Aby uzyskać szczegółowe informacje i przykłady, zobacz efekt [EnforceRegoPolicy](effects.md#enforceregopolicy) .
 
 Jako część właściwości _szczegóły. Policy_ w definicji zasad, Azure Policy przekazuje identyfikator URI zasad rego do dodatku. Rego to język, w którym NIEPRZEZ i strażnik może zweryfikować lub zmodyfikować żądanie do klastra Kubernetes. Dzięki obsłudze istniejącej normy Kubernetes Management Azure Policy umożliwia ponowne użycie istniejących reguł i sparowanie ich z Azure Policy na potrzeby ujednoliconego środowiska raportowania zgodności z chmurą. Aby uzyskać więcej informacji, zobacz [co to jest rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego).
 
@@ -182,6 +182,9 @@ Aby znaleźć wbudowane zasady zarządzania AKS przy użyciu Azure Portal, wykon
 > Podczas przypisywania Azure Policy definicji AKS **zakres** musi zawierać zasób klastra AKS.
 
 Alternatywnie można [użyć zasad do szybkiego](../assign-policy-portal.md) startu, aby znaleźć i przypisać zasady AKS. Wyszukaj definicję zasad Kubernetes zamiast przykładu "Inspekcja maszyn wirtualnych".
+
+> [!IMPORTANT]
+> Wbudowane zasady w kategorii **Kubernetes** są przeznaczone tylko do użytku z AKS.
 
 ## <a name="logging"></a>Rejestrowanie
 
@@ -227,6 +230,29 @@ Aby usunąć dodatek Azure Policy z klastra AKS, użyj Azure Portal lub interfej
 
   az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
   ```
+
+## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Dane diagnostyczne zbierane przez Azure Policy dodatek
+
+Dodatek Azure Policy dla Kubernetes zbiera ograniczone dane diagnostyczne klastra. Te dane diagnostyczne są istotnymi danymi technicznymi związanymi z oprogramowaniem i wydajnością. Jest on używany w następujący sposób:
+
+- Kontynuuj aktualizowanie Azure Policy
+- Utrzymywanie bezpiecznych, niezawodnych i wydajnych Azure Policy dodatków
+- Ulepszanie Azure Policy dodatku poprzez zagregowaną analizę użycia dodatku
+
+Informacje zbierane przez dodatek nie są danymi osobistymi. Obecnie są zbierane następujące szczegóły:
+
+- Azure Policy wersji agenta dodatku
+- Typ klastra
+- Region klastra
+- Grupa zasobów klastra
+- Identyfikator zasobu klastra
+- Identyfikator subskrypcji klastra
+- System operacyjny klastra (przykład: Linux)
+- Miasto klastra (przykład: Seattle)
+- Województwo klastra (przykład: Waszyngton)
+- Kraj lub region klastra (przykład: Stany Zjednoczone)
+- Wyjątki/błędy napotykane przez dodatek Azure Policy podczas instalacji agenta podczas oceny zasad
+- Liczba zasad strażnika niezainstalowanych przez dodatek Azure Policy
 
 ## <a name="next-steps"></a>Następne kroki
 

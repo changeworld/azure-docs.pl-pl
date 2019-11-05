@@ -8,27 +8,30 @@ ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790070"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485160"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Łączenie ze sklepem wiedzy Power BI
 
 > [!Note]
-> Magazyn wiedzy jest w wersji zapoznawczej i nie powinien być używany w środowisku produkcyjnym. [Interfejs API REST usługi Azure wyszukiwanie poznawcze w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
+> Magazyn wiedzy jest w wersji zapoznawczej i nie powinien być używany w środowisku produkcyjnym. Ta funkcja jest dostępna w portalu i [interfejsie API REST usługi Search w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) . W tej chwili nie ma obsługi zestawu SDK platformy .NET.
 >
-W tym artykule dowiesz się, jak nawiązać połączenie i eksplorować magazyn wiedzy przy użyciu Power Query w aplikacji Power BI Desktop. Aby utworzyć przykład sklepu z bazami danych używany w tym przewodniku, zobacz temat [Tworzenie sklepu z bazami danych w Azure Portal](knowledge-store-create-portal.md).
+
+W tym artykule dowiesz się, jak nawiązać połączenie z magazynem wiedzy i poznać go przy użyciu Power Query w aplikacji Power BI Desktop. Możesz szybko zacząć korzystać z szablonów lub utworzyć niestandardowy pulpit nawigacyjny od podstaw.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Wykonaj kroki opisane w temacie [Tworzenie magazynu wiedzy w Azure Portal,](knowledge-store-create-portal.md) aby utworzyć przykładowy magazyn wiedzy używany w tym instruktażu. Potrzebna będzie również nazwa konta usługi Azure Storage, które zostało użyte do utworzenia magazynu wiedzy, wraz z jego kluczem dostępu z poziomu Azure Portal.
-
 + [Zainstaluj Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
-## <a name="connect-with-power-bi"></a>Łączenie z usługą Power BI
++ Będziesz potrzebować sklepu z bazami wiedzy z projekcją w usłudze Azure Table Storage. Potrzebna będzie również nazwa konta usługi Azure Storage użytego do utworzenia sklepu merytorycznego wraz z jego kluczem dostępu z Azure Portal.
+
+Jeśli chcesz współpracować z przykładowym magazynem wiedzy, postępuj zgodnie z instrukcjami, aby [utworzyć magazyn wiedzy](knowledge-store-create-portal.md).
+
+## <a name="create-a-custom-report"></a>Tworzenie raportu niestandardowego
 
 1. Rozpocznij Power BI Desktop a następnie kliknij pozycję **Pobierz dane**.
 

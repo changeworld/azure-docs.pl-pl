@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756105"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490770"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkcje to informacje o akcjach i kontekście
 
@@ -56,12 +56,12 @@ Personalizacja wykonuje funkcje zorganizowane w przestrzenie nazw. W aplikacji n
 Poniżej przedstawiono przykłady przestrzeni nazw funkcji używanych przez aplikacje:
 
 * User_Profile_from_CRM
-* Czas
+* Time
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
 * UserDeviceInfo
-* Meteorologiczn
+* Pogoda
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,7 +69,10 @@ Poniżej przedstawiono przykłady przestrzeni nazw funkcji używanych przez apli
 Przestrzenie nazw funkcji można nazwać po własnych konwencjach, o ile są one prawidłowymi kluczami JSON. Przestrzenie nazw służą do organizowania funkcji w różne zestawy oraz do odróżniania funkcji o podobnych nazwach. Przestrzenie nazw można traktować jako prefiks, który jest dodawany do nazw funkcji. Przestrzenie nazw nie mogą być zagnieżdżane.
 
 
-W poniższym formacie JSON, `user`, `state`i `device` są przestrzeniami nazw funkcji. Uwaga dotycząca publicznej wersji zapoznawczej: obecnie zdecydowanie zalecamy używanie nazw dla przestrzeni nazw funkcji, które są oparte na kodowaniu UTF-8 i zaczynają się od różnych liter. Na przykład `user`, `state`i `device` rozpoczynają się od `u`, `s`i `d`. Obecnie przestrzenie nazw zawierające te same pierwsze znaki mogą powodować kolizje w indeksach używanych do uczenia maszynowego.
+W poniższym formacie JSON, `user`, `state`i `device` są przestrzeniami nazw funkcji. 
+
+> [!Note]
+> Obecnie zdecydowanie zalecamy używanie nazw dla przestrzeni nazw funkcji, które są oparte na kodowaniu UTF-8 i zaczynają się od różnych liter. Na przykład `user`, `state`i `device` rozpoczynają się od `u`, `s`i `d`. Obecnie przestrzenie nazw zawierające te same pierwsze znaki mogą powodować kolizje w indeksach używanych do uczenia maszynowego.
 
 Obiekty JSON mogą zawierać zagnieżdżone obiekty JSON oraz proste właściwości/wartości. Tablica może być uwzględniana tylko wtedy, gdy elementy tablicy są liczbami. 
 
@@ -175,7 +178,7 @@ Akcje wysyłane do interfejsu API rangi zależą od tego, co próbujesz spersona
 
 Oto kilka przykładów:
 
-|Przeznaczenie|Działanie|
+|Przeznaczenie|Akcja|
 |--|--|
 |Personalizowanie artykułu wyróżnionego w witrynie sieci Web z wiadomościami.|Każda akcja jest potencjalnym artykułem z wiadomościami.|
 |Optymalizacja umieszczania w usłudze AD w witrynie sieci Web.|Każda akcja będzie układem lub regułami, aby utworzyć układ dla reklamy (na przykład w górnej części, w prawym, małych obrazach, Big images).|

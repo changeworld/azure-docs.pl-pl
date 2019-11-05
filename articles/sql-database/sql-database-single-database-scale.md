@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: b7015b3e861aea3a33ea26d6a8c1a31f7f17b8c4
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: d2571b04f10bbbd3a461e553a56904abb3b46588
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063089"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496028"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie zasobów pojedynczej bazy danych w Azure SQL Database
 
-W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe dostępne dla Azure SQL Database w warstwie obliczeniowej zainicjowanej. Alternatywnie [warstwa obliczeniowa bezserwerowa (wersja zapoznawcza)](sql-database-serverless.md) oferuje automatyczne skalowanie i opłaty za użycie obliczeń na sekundę.
+W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe dostępne dla Azure SQL Database w warstwie obliczeniowej zainicjowanej. Alternatywnie [warstwa obliczeń bezserwerowych](sql-database-serverless.md) oferuje automatyczne skalowanie i rozliczanie na sekundę w przypadku używanych obliczeń.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]

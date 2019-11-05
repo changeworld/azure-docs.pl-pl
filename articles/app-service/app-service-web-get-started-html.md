@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ac0fe7a77496a0dae8606e4599bcb262a191196c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 12c034e6521a1afd25e2390502faec39461bf5b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067320"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471498"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Tworzenie statycznej aplikacji internetowej w języku HTML na platformie Azure
 
@@ -47,7 +47,7 @@ Uruchom następujące polecenie, aby sklonować przykładowe repozytorium aplika
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 ```
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
+## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 Przejdź do katalogu, który zawiera przykładowy kod, i uruchom polecenie `az webapp up`.
 
@@ -67,7 +67,7 @@ Polecenie `az webapp up` wykonuje następujące akcje:
 
 - Utwórz aplikację z określoną nazwą.
 
-- [Spakuj pliki](https://docs.microsoft.com/azure/app-service/deploy-zip) wdrożenia z bieżącego katalogu roboczego do aplikacji sieci Web.
+- [Spakuj pliki](https://docs.microsoft.com/azure/app-service/deploy-zip) wdrożenia z bieżącego katalogu roboczego do aplikacji internetowej.
 
 Wykonanie tego polecenia może potrwać kilka minut. Podczas wykonywania polecenie wyświetli informacje podobne do następującego przykładu:
 
@@ -117,9 +117,11 @@ Po zakończeniu wdrożenia przejdź z powrotem do okna przeglądarki otwartego w
 
 ## <a name="manage-your-new-azure-app"></a>Zarządzanie nową aplikacją platformy Azure
 
-Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją internetową.
+Aby zarządzać utworzoną aplikacją sieci Web, w [Azure Portal](https://portal.azure.com)Wyszukaj i wybierz pozycję **App Services**. 
 
-W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji platformy Azure.
+![Wybierz App Services w Azure Portal](./media/app-service-web-get-started-html/portal0.png)
+
+Na stronie **App Services** wybierz nazwę swojej aplikacji platformy Azure.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-get-started-html/portal1.png)
 

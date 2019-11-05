@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 4308ed6d00bd3900986f08a93a686f0d7d00bcfb
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b86a8df86b7f9b8a5936752a5f0413aa863ae85f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515599"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490798"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>Szybki Start: Biblioteka klienta personalizacji dla platformy .NET
 
@@ -26,7 +26,7 @@ Wprowadzenie do biblioteki klienta programu Personalizacja dla platformy .NET. W
  * Ustalanie rangi listy akcji do personalizacji.
  * Ocenę nagrody raportu wskazującej na powodzenie najwyższej funkcjonalnej akcji.
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview)  |   |  pakietu[kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) [ | ](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
+[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) [ | ](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,29 +38,28 @@ Wprowadzenie do biblioteki klienta programu Personalizacja dla platformy .NET. W
 Aby skorzystać z tego przewodnika Szybki Start, należy wykonać kilka czynności:
 
 * W Azure Portal Utwórz zasób personalizacji
-* W Azure Portal dla zasobu Personalizacja na stronie **Ustawienia** Zmień częstotliwość aktualizacji modelu
+* W Azure Portal dla zasobu Personalizacja na stronie **Konfiguracja** Zmień częstotliwość aktualizacji modelu
 * W edytorze kodu Utwórz plik kodu i edytuj plik kodu
 * W wierszu polecenia lub terminalu Zainstaluj zestaw SDK z wiersza polecenia
 * W wierszu polecenia lub terminalu uruchom plik kodu
 
 ## <a name="create-a-personalizer-azure-resource"></a>Tworzenie zasobu platformy Azure dla programu personalizacji
 
-Usługa Azure Cognitive Services jest reprezentowana przez zasoby platformy Azure, które subskrybujesz. Utwórz zasób dla narzędzia Personalizacja przy użyciu [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na komputerze lokalnym. Możesz również wykonać następujące czynności:
+Utwórz zasób dla narzędzia Personalizacja przy użyciu [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na komputerze lokalnym. Możesz również wykonać następujące czynności:
 
 * Uzyskaj [klucz wersji próbnej](https://azure.microsoft.com/try/cognitive-services) ważny przez 7 dni bezpłatnie. Po zarejestrowaniu program będzie dostępny w [witrynie sieci Web systemu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Wyświetl zasób na [Azure Portal](https://portal.azure.com/).
 
-<!-- rename TBD_KEY to something meaningful for your service, like TEXT_ANALYTICS_KEY -->
 Po otrzymaniu klucza z subskrypcji próbnej lub zasobu Utwórz dwie [zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
 * `PERSONALIZER_RESOURCE_KEY` klucza zasobu.
 * `PERSONALIZER_RESOURCE_ENDPOINT` dla punktu końcowego zasobu.
 
-W Azure Portal wartości klucza i punktu końcowego są dostępne na stronie **Szybki Start** .
+W Azure Portal wartości klucza i punktu końcowego są dostępne na stronie **szybkiego startu** .
 
 ## <a name="change-the-model-update-frequency"></a>Zmień częstotliwość aktualizacji modelu
 
-W Azure Portal na stronie **Ustawienia** w zasobów personalizacji Zmień **częstotliwość aktualizacji modelu** na 10 sekund. Dzięki temu będzie można szybko przeszkolić usługę, co pozwoli zobaczyć, jak Górna akcja zmienia się dla każdej iteracji.
+W Azure Portal na stronie **Konfiguracja** w zasobów personalizacji Zmień **częstotliwość aktualizacji modelu** na 10 sekund. Ten krótki czas będzie szybko szkolić usługę, co pozwoli zobaczyć, w jaki sposób Górna akcja zmienia się dla każdej iteracji.
 
 ![Zmień częstotliwość aktualizacji modelu](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -110,11 +109,11 @@ Aby poprosił o rangę zawartości, Utwórz element [RankRequest](https://docs.m
 
 Aby wysłać wynagrodzenie do programu Personalizacja, Utwórz element [RewardRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview), a następnie Przekaż go do [klienta. Metoda nagradzania](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview) . 
 
-Ustalenie nagrody w tym przewodniku Szybki Start jest proste. W systemie produkcyjnym określenie, co ma wpływ na [wynik nagrody](concept-rewards.md) i według ile może być złożonym procesem, można zmienić z upływem czasu. Powinna to być jedna z podstawowych decyzji projektowych w architekturze personalizacji. 
+Ustalenie nagrody w tym przewodniku Szybki Start jest proste. W systemie produkcyjnym określenie, co ma wpływ na [wynik nagrody](concept-rewards.md) i według ile może być złożonym procesem, można zmienić z upływem czasu. Ta decyzja projektowa powinna być jedną z podstawowych decyzji w architekturze personalizacji. 
 
 ## <a name="code-examples"></a>Przykłady kodu
 
-Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą biblioteki klienta programu Personalizacja dla platformy .NET:
+Te fragmenty kodu przedstawiają sposób wykonywania następujących zadań przy użyciu biblioteki klienta programu Personalizacja dla platformy .NET:
 
 * [Tworzenie klienta programu Personalizacja](#create-a-personalizer-client)
 * [Żądaj rangi](#request-a-rank)

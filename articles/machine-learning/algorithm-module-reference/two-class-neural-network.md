@@ -1,24 +1,24 @@
 ---
 title: 'Dwie klasy sieci neuronowych: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób używać wieloklasowego modułu sieci neuronowych w usłudze Azure Machine Learning, aby utworzyć model sieci neuronowych, który może służyć do przewidywania elementu docelowego, który ma tylko dwie wartości.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak za pomocą dwuklasowego modułu sieci neuronowych w Azure Machine Learning utworzyć model sieci neuronowych, który może służyć do przewidywania elementu docelowego, który ma tylko dwie wartości.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 8f38a7b7086e5023eb63e94363301ac5277f7e7c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d8e27d13de6b1ac6940972022f66811eb75c8986
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693598"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485881"
 ---
 # <a name="two-class-neural-network-module"></a>Dwuklasowy moduł sieci neuronowych
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do tworzenia modelu sieci neuronowych, który może służyć do przewidywania elementu docelowego, który ma tylko dwie wartości.
 
@@ -89,4 +89,4 @@ Po zakończeniu szkolenia:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

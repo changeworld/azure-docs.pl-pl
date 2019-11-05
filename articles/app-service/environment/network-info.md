@@ -13,21 +13,21 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9b7c63639eea7176af36593983b08ad0c5213613
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ee7e3cb200a20b52a307dba31682a534e9f7b455
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073232"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470647"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Zagadnienia dotyczące sieci dla App Service Environment #
 
-## <a name="overview"></a>Przegląd ##
+## <a name="overview"></a>Omówienie ##
 
  Usługa Azure [App Service Environment][Intro] to wdrożenie Azure App Service w podsieci w sieci wirtualnej platformy Azure. Istnieją dwa typy wdrożeń dla środowiska App Serviceowego (ASE):
 
-- **Zewnętrzne środowisko ASE**: Uwidacznia aplikacje hostowane na internetowym adresie IP. Aby uzyskać więcej informacji, zobacz [Tworzenie zewnętrznego środowiska ASE][MakeExternalASE].
-- **ILB ASE**: Uwidacznia aplikacje hostowane na adresie IP w sieci wirtualnej. Wewnętrzny punkt końcowy jest wewnętrznym modułem równoważenia obciążenia (ILB), dlatego jest on nazywany ILB ASE. Aby uzyskać więcej informacji, zobacz [Tworzenie i używanie środowiska ILB ASE][MakeILBASE].
+- **Zewnętrzne środowisko ASE**: uwidacznia aplikacje hostowane na internetowym adresie IP. Aby uzyskać więcej informacji, zobacz [Tworzenie zewnętrznego środowiska ASE][MakeExternalASE].
+- **ILB ASE**: uwidacznia aplikacje hostowane na adresie IP w sieci wirtualnej. Wewnętrzny punkt końcowy jest wewnętrznym modułem równoważenia obciążenia (ILB), dlatego jest on nazywany ILB ASE. Aby uzyskać więcej informacji, zobacz [Tworzenie i używanie środowiska ILB ASE][MakeILBASE].
 
 Wszystkie środowisk ASE, zewnętrzne i ILB mają publiczny adres VIP używany przez ruch przychodzący zarządzania i jako adres od podczas wykonywania wywołań z programu ASE do Internetu. Wywołania z programu ASE, które przechodzą do Internetu, opuszczają sieć wirtualną za pośrednictwem adresu VIP przypisanego do środowiska ASE. Publiczny adres IP tego adresu VIP jest źródłowym adresem IP dla wszystkich wywołań z programu ASE, które przechodzą do Internetu. Jeśli aplikacje w środowisku ASE powodują wywoływanie zasobów w sieci wirtualnej lub przez sieć VPN, źródłowy adres IP jest jednym z adresów IP w podsieci używanej przez środowisko ASE. Ze względu na to, że środowisko ASE znajduje się w sieci wirtualnej, może również uzyskać dostęp do zasobów w sieci wirtualnej bez żadnej dodatkowej konfiguracji. Jeśli sieć wirtualna jest połączona z siecią lokalną, aplikacje w środowisku ASE mają również dostęp do zasobów bez dodatkowej konfiguracji.
 
@@ -59,10 +59,10 @@ W przypadku skalowania w górę lub w dół nowe role o odpowiednim rozmiarze s�
 
 Aby środowisko ASE mogło działać, środowisko ASE wymaga otwarcia następujących portów:
 
-| Zastosowanie | Z | Zadanie |
+| Eksploatacja | Od | Do |
 |-----|------|----|
 | Zarządzanie | Adresy zarządzania App Service | Podsieć środowiska ASE: 454, 455 |
-|  Komunikacja wewnętrzna ASE | Podsieć środowiska ASE: Wszystkie porty | Podsieć środowiska ASE: Wszystkie porty
+|  Komunikacja wewnętrzna ASE | Podsieć środowiska ASE: wszystkie porty | Podsieć środowiska ASE: wszystkie porty
 |  Zezwalaj na ruch przychodzący modułu równoważenia obciążenia platformy Azure | Moduł równoważenia obciążenia platformy Azure | Podsieć środowiska ASE: 16001
 
 Istnieją 2 inne porty, które mogą być wyświetlane jako otwarte przy skanowaniu portów, 7654 i 1221. Odpowiadają one za adres IP i nic nie rób. W razie potrzeby można je zablokować. 
@@ -75,9 +75,9 @@ W przypadku komunikacji między modułem równoważenia obciążenia platformy A
 
 Inne porty, z którymi należy się zapoznać, to porty aplikacji:
 
-| Zastosowanie | Porty |
+| Eksploatacja | Porty |
 |----------|-------------|
-|  HTTP/HTTPS  | 80, 443 |
+|  PROTOKÓŁ HTTP/HTTPS  | 80, 443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
 |  Zdalne debugowanie programu Visual Studio  |  4020, 4022, 4024 |
 |  Usługa Web Deploy | 8172 |
@@ -95,10 +95,10 @@ W przypadku dostępu wychodzącego środowisko ASE jest zależne od wielu system
 | DNS | 53 |
 | NTP | 123 |
 | 8CRL, aktualizacje systemu Windows, zależności Linux, usługi platformy Azure | 80/443 |
-| SQL Azure | 1433 | 
+| Azure SQL | 1433 | 
 | Monitorowanie | 12000 |
 
-Zależności wychodzące są wymienione w dokumencie, który opisuje [blokowanie App Service Environment ruchu](./firewall-integration.md)wychodzącego. Jeśli środowisko ASE utraci dostęp do jego zależności, przestanie działać. Gdy ma to miejsce wystarczająco długo, środowisko ASE jest zawieszone. 
+Zależności wychodzące są wymienione w dokumencie, który opisuje [blokowanie App Service Environment ruchu wychodzącego](./firewall-integration.md). Jeśli środowisko ASE utraci dostęp do jego zależności, przestanie działać. Gdy ma to miejsce wystarczająco długo, środowisko ASE jest zawieszone. 
 
 ### <a name="customer-dns"></a>Klient DNS ###
 
@@ -130,10 +130,10 @@ Jeśli ILB ASE jest nazwą domeny *contoso.appserviceenvironment.NET* , a nazwa 
 
 Środowisko ASE zawiera kilka adresów IP, z którymi należy się zapoznać. Oto one:
 
-- **Publiczny adres IP ruchu przychodzącego**: Używany na potrzeby ruchu aplikacji w zewnętrznym środowisku ASE i zarządzania ruchem zarówno w zewnętrznym środowisku ASE, jak i w środowisku ILB ASE.
-- **Publiczny adres IP dla ruchu**wychodzącego: Używany jako adres IP "od" dla połączeń wychodzących z środowiska ASE, które opuszczają sieć wirtualną, która nie jest przekierowywana do sieci VPN.
-- **ILB adres IP**: Adres IP ILB istnieje tylko w ILB ASE.
-- **Adresy SSL oparte na aplikacjach przypisane do aplikacji**: Możliwe tylko z zewnętrznym środowiskiem ASE i w przypadku skonfigurowania protokołu SSL opartego na protokole IP.
+- **Publiczny adres IP ruchu przychodzącego**: używany dla ruchu aplikacji w zewnętrznym środowisku ASE i ruch związany z zarządzaniem zarówno w zewnętrznym środowisku ASE, jak i w środowisku ILB ASE.
+- **Wychodzący publiczny adres IP**: używany jako adres IP "od" dla połączeń wychodzących z środowiska ASE, które opuszczają sieć wirtualną, która nie jest przekierowywana do sieci VPN.
+- **ILB adres IP**: adres IP ILB istnieje tylko w ILB ASE.
+- **Adresy SSL oparte na aplikacjach przypisane do aplikacji**: możliwe tylko z zewnętrznym środowiskiem ASE i SKONFIGUROWANYm protokołem SSL opartym na protokole IP.
 
 Wszystkie te adresy IP są widoczne w Azure Portal z interfejsu użytkownika środowiska ASE. Jeśli masz ILB ASE, zostanie wyświetlony adres IP dla ILB.
 
@@ -144,7 +144,7 @@ Wszystkie te adresy IP są widoczne w Azure Portal z interfejsu użytkownika śr
 
 ### <a name="app-assigned-ip-addresses"></a>Adresy IP przypisane do aplikacji ###
 
-Przy użyciu zewnętrznego środowiska ASE można przypisywać adresy IP do poszczególnych aplikacji. Nie można tego zrobić za pomocą ILB ASE. Aby uzyskać więcej informacji na temat sposobu konfigurowania aplikacji w celu posiadania własnego adresu IP, zobacz [Powiązywanie istniejącego niestandardowego certyfikatu protokołu SSL z Azure App Service](../app-service-web-tutorial-custom-ssl.md).
+Przy użyciu zewnętrznego środowiska ASE można przypisywać adresy IP do poszczególnych aplikacji. Nie można tego zrobić za pomocą ILB ASE. Aby uzyskać więcej informacji na temat sposobu konfigurowania aplikacji w celu posiadania własnego adresu IP, zobacz [Zabezpieczanie niestandardowej nazwy DNS z powiązaniem SSL w Azure App Service](../configure-ssl-bindings.md).
 
 Gdy aplikacja ma swój własny adres SSL oparty na protokole IP, środowisko ASE rezerwuje dwa porty do mapowania na ten adres IP. Jeden port jest przeznaczony dla ruchu HTTP, a drugi port jest przeznaczony dla protokołu HTTPS. Porty te są wymienione w interfejsie użytkownika środowiska ASE w sekcji adresy IP. Ruch musi być w stanie połączyć się z tymi portami z adresu VIP lub aplikacje są niedostępne. Ten wymóg należy pamiętać podczas konfigurowania sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń).
 
@@ -172,9 +172,9 @@ Wymagane wpisy w sieciowej grupy zabezpieczeń, dla których środowisko ASE ma 
 
 Nie trzeba dodawać portu DNS, ponieważ reguły sieciowej grupy zabezpieczeń nie wpływają na ruch do systemu DNS. Te porty nie obejmują portów wymaganych przez aplikacje do pomyślnego użycia. Normalne porty dostępu do aplikacji są następujące:
 
-| Zastosowanie | Porty |
+| Eksploatacja | Porty |
 |----------|-------------|
-|  HTTP/HTTPS  | 80, 443 |
+|  PROTOKÓŁ HTTP/HTTPS  | 80, 443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
 |  Zdalne debugowanie programu Visual Studio  |  4020, 4022, 4024 |
 |  Usługa Web Deploy | 8172 |
@@ -183,7 +183,7 @@ W przypadku uwzględnienia wymagań dotyczących ruchu przychodzącego i wychodz
 
 ![Reguły zabezpieczeń dla ruchu przychodzącego][4]
 
-Reguła domyślna umożliwia komunikację między adresami IP w sieci wirtualnej w podsieci środowiska ASE. Inna domyślna reguła umożliwia modułowi równoważenia obciążenia, znanym również jako publiczny adres VIP, komunikowanie się ze środowiskiem ASE. Aby wyświetlić reguły domyślne, wybierz opcję **domyślne reguły** obok ikony **Dodaj** . Jeśli przed regułami domyślnymi zostanie umieszczona reguła Odmów wszystkiego innego, zapobiegasz ruchu między wirtualnym adresem IP a środowiskiem ASE. Aby zapobiec ruchowi pochodzącemu z sieci wirtualnej, Dodaj własną regułę, aby zezwolić na przychodzący. Użyj źródła równego AzureLoadBalancer z miejscem docelowym **dowolnego** i zakresu **\*** portów. Ponieważ reguła sieciowej grupy zabezpieczeń jest stosowana do podsieci środowiska ASE, nie musisz być konkretna w miejscu docelowym.
+Reguła domyślna umożliwia komunikację między adresami IP w sieci wirtualnej w podsieci środowiska ASE. Inna domyślna reguła umożliwia modułowi równoważenia obciążenia, znanym również jako publiczny adres VIP, komunikowanie się ze środowiskiem ASE. Aby wyświetlić reguły domyślne, wybierz opcję **domyślne reguły** obok ikony **Dodaj** . Jeśli przed regułami domyślnymi zostanie umieszczona reguła Odmów wszystkiego innego, zapobiegasz ruchu między wirtualnym adresem IP a środowiskiem ASE. Aby zapobiec ruchowi pochodzącemu z sieci wirtualnej, Dodaj własną regułę, aby zezwolić na przychodzący. Użyj źródła równego AzureLoadBalancer z miejscem docelowym **dowolnego** i zakresu portów **\*** . Ponieważ reguła sieciowej grupy zabezpieczeń jest stosowana do podsieci środowiska ASE, nie musisz być konkretna w miejscu docelowym.
 
 Jeśli do aplikacji został przypisany adres IP, upewnij się, że porty są otwarte. Aby wyświetlić porty, wybierz pozycję **App Service Environment** > **adresy IP**.  
 
@@ -200,13 +200,13 @@ Wymuszone tunelowanie polega na ustawieniu tras w sieci wirtualnej, tak aby ruch
 Po utworzeniu środowiska ASE w portalu utworzymy również zestaw tabel tras w podsieci, która jest tworzona przy użyciu środowiska ASE.  Trasy te po prostu wysyłają ruch wychodzący bezpośrednio do Internetu.  
 Aby ręcznie utworzyć te same trasy, wykonaj następujące czynności:
 
-1. Przejdź do witryny Azure Portal. Wybierz pozycję **Sieć** > **tabele tras**.
+1. Przejdź do witryny Azure Portal. Wybierz pozycję **sieć** > **tabele tras**.
 
 2. Utwórz nową tabelę tras w tym samym regionie, w którym znajduje się sieć wirtualna.
 
 3. Z poziomu interfejsu użytkownika tabeli tras wybierz pozycję **trasy** > **Dodaj**.
 
-4. Ustaw **Typ następnego** przeskoku na **Internet** i **prefiks adresu** **0.0.0.0/0**. Wybierz pozycję **Zapisz**.
+4. Ustaw **Typ następnego przeskoku** na **Internet** i **prefiks adresu** **0.0.0.0/0**. Wybierz pozycję **Zapisz**.
 
     Następnie zobaczysz coś podobne do następujących:
 
@@ -251,7 +251,7 @@ Kiedy punkty końcowe usługi są włączone w podsieci z wystąpieniem usługi 
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

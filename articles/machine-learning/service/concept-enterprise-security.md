@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/07/2019
-ms.openlocfilehash: 309cef6ec058d8192bc7a6341b49a59c0000a305
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: e834c55ec35195ff627176603c7611abbf6adf1c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035562"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497511"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Zabezpieczenia przedsiębiorstwa dla Azure Machine Learning
 
@@ -31,7 +31,7 @@ Uwierzytelnianie wieloskładnikowe jest obsługiwane, jeśli Azure Active Direct
 1. Klient przedstawia token do Azure Resource Manager i wszystkich Azure Machine Learning.
 1. Usługa Machine Learning udostępnia token usługi Machine Learning dla elementu docelowego obliczeń użytkownika (na przykład środowisko obliczeniowe usługi Machine Learning). Ten token jest używany przez element docelowy obliczeń użytkownika do wywołania zwrotnego do usługi Machine Learning po zakończeniu przebiegu. Zakres jest ograniczony do obszaru roboczego.
 
-[![Uwierzytelnianie w Azure Machine Learning](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
+[Uwierzytelnianie ![w Azure Machine Learning](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Uwierzytelnianie dla wdrożenia usługi sieci Web
 
@@ -40,7 +40,7 @@ Azure Machine Learning obsługuje dwie formy uwierzytelniania dla usług sieci W
 |Metoda uwierzytelniania|Azure Container Instances|AKS|
 |---|---|---|
 |Klucz|Domyślnie wyłączone| Włączona domyślnie|
-|Token| Niedostępny| Domyślnie wyłączone |
+|Token| Niedostępne| Domyślnie wyłączone |
 
 #### <a name="authentication-with-keys"></a>Uwierzytelnianie przy użyciu kluczy
 
@@ -49,9 +49,9 @@ Po włączeniu uwierzytelniania klucza dla wdrożenia automatycznie tworzone są
 * Uwierzytelnianie jest domyślnie włączone w przypadku wdrażania w usłudze Azure Kubernetes Service (AKS).
 * Podczas wdrażania programu do Azure Container Instances uwierzytelnianie jest domyślnie wyłączone.
 
-Aby włączyć uwierzytelnianie klucza, użyj `auth_enabled` parametru podczas tworzenia lub aktualizowania wdrożenia.
+Aby włączyć uwierzytelnianie klucza, użyj parametru `auth_enabled` podczas tworzenia lub aktualizowania wdrożenia.
 
-Jeśli uwierzytelnianie klucza jest włączone, można użyć `get_keys` metody, aby pobrać podstawowy i pomocniczy klucz uwierzytelniania:
+Jeśli uwierzytelnianie klucza jest włączone, można użyć metody `get_keys`, aby pobrać podstawowy i pomocniczy klucz uwierzytelniania:
 
 ```python
 primary, secondary = service.get_keys()
@@ -59,7 +59,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Jeśli konieczne jest ponowne wygenerowanie klucza, użyj [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+> Jeśli musisz ponownie wygenerować klucz, użyj [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
 
 #### <a name="authentication-with-tokens"></a>Uwierzytelnianie przy użyciu tokenów
 
@@ -70,7 +70,7 @@ Po włączeniu uwierzytelniania tokenów dla usługi sieci Web użytkownicy musz
 
 Aby kontrolować uwierzytelnianie tokenu, użyj `token_auth_enabled` parametru podczas tworzenia lub aktualizowania wdrożenia.
 
-Jeśli jest włączone uwierzytelnianie tokenu, można użyć `get_token` metody, aby pobrać token sieci Web JSON (JWT) i czas wygaśnięcia tego tokenu:
+Jeśli jest włączone uwierzytelnianie tokenu, można użyć metody `get_token`, aby pobrać token sieci Web JSON (JWT) i czas wygaśnięcia tego tokenu:
 
 ```python
 token, refresh_by = service.get_token()
@@ -78,7 +78,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Po upływie `refresh_by` czasu tokenu musisz zażądać nowego tokenu.
+> Musisz zażądać nowego tokenu po upływie `refresh_by` tokenu.
 >
 > Zdecydowanie zalecamy utworzenie obszaru roboczego Azure Machine Learning w tym samym regionie, w którym znajduje się klaster usługi Azure Kubernetes. 
 >
@@ -86,9 +86,9 @@ print(token)
 >
 > Ponadto im większa odległość między regionem klastra a regionem obszaru roboczego, tym dłużej potrwa pobieranie tokenu.
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Autoryzacja
 
-Możesz utworzyć wiele obszarów roboczych, a każdy obszar roboczy może być współużytkowany przez wiele osób. Po udostępnieniu obszaru roboczego można kontrolować do niego dostęp, przypisując te role do użytkowników:
+Można utworzyć wiele obszarów roboczych, a każdy obszar roboczy może być współużytkowany przez wiele osób. Po udostępnieniu obszaru roboczego można kontrolować do niego dostęp, przypisując te role do użytkowników:
 
 * Właściciel
 * Współautor
@@ -100,13 +100,14 @@ W poniższej tabeli wymieniono niektóre główne operacje Azure Machine Learnin
 | ---- |:----:|:----:|:----:|
 | Tworzenie obszaru roboczego | ✓ | ✓ | |
 | Udostępnianie obszaru roboczego | ✓ | |  |
+| Uaktualnij obszar roboczy do wersji Enterprise | ✓ | |
 | Utwórz element docelowy obliczeń | ✓ | ✓ | |
 | Dołącz cel obliczeń | ✓ | ✓ | |
 | Dołącz magazyny danych | ✓ | ✓ | |
-| Uruchamianie eksperymentu | ✓ | ✓ | |
+| Uruchom eksperyment | ✓ | ✓ | |
 | Wyświetl przebiegi/metryki | ✓ | ✓ | ✓ |
 | Rejestrowanie modelu | ✓ | ✓ | |
-| Tworzenie obrazu | ✓ | ✓ | |
+| Utwórz obraz | ✓ | ✓ | |
 | Wdróż usługę sieci Web | ✓ | ✓ | |
 | Wyświetlanie modeli/obrazów | ✓ | ✓ | ✓ |
 | Wywoływanie usługi sieci Web | ✓ | ✓ | ✓ |
@@ -121,12 +122,12 @@ Każdy obszar roboczy ma także skojarzoną tożsamość zarządzaną przypisan�
 
 Aby uzyskać więcej informacji o tożsamościach zarządzanych, zobacz [zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-| Resource | Uprawnienia |
+| Zasób | Uprawnienia |
 | ----- | ----- |
 | Obszar roboczy | Współautor |
-| Konto magazynu | Współautor danych obiektu blob usługi Storage |
+| Konto magazynu | Współautor danych obiektu blob magazynu |
 | Magazyn kluczy | Dostęp do wszystkich kluczy, wpisów tajnych, certyfikatów |
-| Rejestr kontenerów platformy Azure | Współautor |
+| Azure Container Registry | Współautor |
 | Grupa zasobów, która zawiera obszar roboczy | Współautor |
 | Grupa zasobów zawierająca Magazyn kluczy (jeśli jest inna niż ta, która zawiera obszar roboczy) | Współautor |
 
@@ -158,11 +159,11 @@ Aby uzyskać informacje o ponownym generowaniu kluczy dostępu dla kont usługi 
 
 Azure Machine Learning przechowuje metryki i metadane w wystąpieniu Azure Cosmos DB skojarzonym z subskrypcją firmy Microsoft zarządzaną przez Azure Machine Learning. Wszystkie dane przechowywane w Azure Cosmos DB są szyfrowane w stanie spoczynku przy użyciu kluczy zarządzanych przez firmę Microsoft.
 
-#### <a name="azure-container-registry"></a>Rejestr kontenerów platformy Azure
+#### <a name="azure-container-registry"></a>Azure Container Registry
 
 Wszystkie obrazy kontenerów w rejestrze (Azure Container Registry) są szyfrowane w stanie spoczynku. Platforma Azure automatycznie szyfruje obraz przed jego zapisaniem i odszyfrowuje go na bieżąco, gdy Azure Machine Learning pobiera obraz.
 
-#### <a name="machine-learning-compute"></a>Środowisko obliczeniowe usługi Machine Learning
+#### <a name="machine-learning-compute"></a>środowisko obliczeniowe usługi Machine Learning
 
 Dysk systemu operacyjnego dla każdego węzła obliczeniowego przechowywanego w usłudze Azure Storage jest szyfrowany przy użyciu kluczy zarządzanych przez firmę Microsoft w ramach kont magazynu Azure Machine Learning. Ten obiekt docelowy obliczeń jest nieulotny, a klastry są zwykle skalowane w dół, gdy żadne przebiegi nie są umieszczane w kolejce. Podstawowa maszyna wirtualna jest nieobsługiwana i dysk systemu operacyjnego zostanie usunięty. Azure Disk Encryption nie jest obsługiwana w przypadku dysku systemu operacyjnego.
 
@@ -193,7 +194,7 @@ Każdy obszar roboczy ma skojarzoną w systemie tożsamość zarządzaną, któr
 
 Za pomocą metryk Azure Monitor można wyświetlać i monitorować metryki dla Azure Machine Learningego obszaru roboczego. W [Azure Portal](https://portal.azure.com)wybierz swój obszar roboczy, a następnie wybierz pozycję **metryki**:
 
-[![Zrzut ekranu przedstawiający przykładowe metryki dla obszaru roboczego](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
+[Zrzut ekranu ![przedstawiający przykładowe metryki dla obszaru roboczego](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 Metryki obejmują informacje dotyczące uruchamiania, wdrożeń i rejestracji.
 
@@ -205,7 +206,7 @@ Możesz wyświetlić dziennik aktywności obszaru roboczego, aby zobaczyć róż
 
 Ten zrzut ekranu przedstawia dziennik aktywności obszaru roboczego:
 
-[![Zrzut ekranu przedstawiający dziennik aktywności obszaru roboczego](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
+[Zrzut ekranu ![przedstawiający dziennik aktywności obszaru roboczego](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 Szczegóły żądania oceniania są przechowywane w Application Insights. Application Insights jest tworzony w ramach subskrypcji podczas tworzenia obszaru roboczego. Zarejestrowane informacje zawierają pola, takie jak HTTPMethod, UserAgent, Computetype, RequestUrl, StatusCode, Numer_id_żądania i Duration.
 
@@ -233,7 +234,7 @@ Dodatkowe zasoby są tworzone w ramach subskrypcji użytkownika podczas tworzeni
 
 Użytkownik może również udostępnić innym obiektom docelowym obliczeń, które są dołączone do obszaru roboczego (np. usługi Azure Kubernetes lub maszyn wirtualnych).
 
-[![Przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
+[przepływ pracy ![tworzenia obszaru roboczego](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>Zapisz kod źródłowy (skrypty szkoleniowe)
 
@@ -241,7 +242,7 @@ Na poniższym diagramie przedstawiono przepływ pracy migawek kodu.
 
 Skojarzona z obszarem roboczym Azure Machine Learning to katalogi (eksperymenty), które zawierają kod źródłowy (skrypty szkoleniowe). Te skrypty są przechowywane na komputerze lokalnym i w chmurze (w usłudze Azure Blob Storage w ramach subskrypcji). Migawki kodu są używane do wykonywania lub inspekcji inspekcji historycznej.
 
-[![Przepływ pracy migawek kodu](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
+[przepływ pracy migawek kodu ![](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>Szkolenia
 
@@ -268,7 +269,7 @@ Ponieważ środowisko obliczeniowe usługi Machine Learning jest zarządzanym el
 
 Na poniższym diagramie przepływu ten krok występuje, gdy obiekt docelowy obliczeń szkolenia zapisuje metryki uruchamiania z powrotem do Azure Machine Learning z magazynu w bazie danych Cosmos DB. Klienci mogą wywoływać Azure Machine Learning. Machine Learning spowoduje włączenie metryk ściągania z bazy danych Cosmos DB i zwrócenie ich z powrotem do klienta.
 
-[![Przepływ pracy szkolenia](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
+[przepływ pracy szkolenia ![](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>Tworzenie usług sieci Web
 
@@ -283,13 +284,13 @@ Oto szczegółowe informacje:
 * Szczegóły żądania oceniania są przechowywane w Application Insights, które znajdują się w subskrypcji użytkownika.
 * Dane telemetryczne są również wypychane do subskrypcji Microsoft/Azure.
 
-[![Przepływ pracy wnioskowania](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
+[przepływ pracy wnioskowania ![](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)
+* [Zabezpieczanie Azure Machine Learning usług sieci Web przy użyciu protokołu SSL](how-to-secure-web-service.md)
 * [Korzystanie z modelu Machine Learning wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
-* [Jak uruchomić prognoz usługi batch](how-to-run-batch-predictions.md)
+* [Jak uruchamiać przewidywania wsadowe](how-to-run-batch-predictions.md)
 * [Monitoruj modele Azure Machine Learning przy użyciu Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md)
 * [Zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

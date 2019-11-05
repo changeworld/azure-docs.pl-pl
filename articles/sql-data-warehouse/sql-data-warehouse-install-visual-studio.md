@@ -12,12 +12,12 @@ ms.subservice: development
 ms.date: 10/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 81c709e7705e16484438ab684a6b1591e5e624ba
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0ca59080b4056ba74e2f05038e07d647f12de765
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553515"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485056"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Wprowadzenie do programu Visual Studio 2019 dla SQL Data Warehouse
 Visual Studio **2019** SQL Server Data Tools (SSDT) to pojedyncze narzędzie, które umożliwia wykonywanie następujących czynności:
@@ -26,7 +26,7 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) to pojedyncze narzędzie, kt
 - Skorzystaj z Eksploratora obiektów, aby wizualnie eksplorować wszystkie obiekty w modelu danych, w tym tabele, widoki, procedury składowane itd.
 - Generowanie skryptów języka T-SQL Data Definition Language (DDL) dla obiektów
 - Opracowywanie magazynu danych przy użyciu metody opartej na stanie z projektami bazy danych SSDT
-- Integruj projekt bazy danych z systemami kontroli źródła, takimi jak Git, za pomocą repozytoriów usługi Azure DevOps
+- Zintegruj projekt bazy danych z systemami kontroli źródła, takimi jak Git, za pomocą Azure Repos
 - Konfigurowanie potoków ciągłej integracji i wdrażania z serwerami automatyzacji, takimi jak Azure DevOps
 
 > [!NOTE]

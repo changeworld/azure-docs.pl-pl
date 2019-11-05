@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 90f83e3e6fa1910641b3e384460cf4aa14016c1a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 386229bc272a520ec8093c95bc861704ce9ea7eb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067331"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471438"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Tworzenie aplikacji internetowej w języku PHP na platformie Azure
 
@@ -75,7 +75,7 @@ W oknie terminalu naciśnij kombinację klawiszy **Ctrl + C**, aby zamknąć ser
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)]
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
+## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
 W usłudze Cloud Shell utwórz aplikację internetową w planie usługi App Service `myAppServicePlan` za pomocą polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). 
 
@@ -182,17 +182,19 @@ Po zakończeniu wdrożenia wróć do okna przeglądarki otwartego w kroku **prze
 
 ## <a name="manage-your-new-azure-app"></a>Zarządzanie nową aplikacją platformy Azure
 
-Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją internetową.
+1. Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją internetową. Wyszukaj i wybierz **App Services**.
 
-W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji platformy Azure.
+    ![Wyszukiwanie App Services, Azure Portal, tworzenie aplikacji sieci Web w języku PHP](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 
-![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
+2. Wybierz nazwę aplikacji platformy Azure.
 
-Zostanie wyświetlona strona Omówienie aplikacji internetowej. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
+    ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-![Strona usługi App Service w witrynie Azure Portal](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
+    Zostanie wyświetlona strona **przeglądu** aplikacji sieci Web. W tym miejscu można wykonywać podstawowe zadania zarządzania, takie jak **przeglądanie**, **Zatrzymywanie**, **Ponowne uruchamianie**i **usuwanie**.
 
-Menu po lewej stronie zawiera różne opcje służące do konfigurowania aplikacji. 
+    ![Strona usługi App Service w witrynie Azure Portal](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
+
+    Menu aplikacji sieci Web zawiera różne opcje konfigurowania aplikacji. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

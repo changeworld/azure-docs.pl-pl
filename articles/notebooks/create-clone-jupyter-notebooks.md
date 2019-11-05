@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 13615d319af600234dcc23e04f82ce46b8f97780
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 3e0c49d1141d976558ece325baaa99fc9981275e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970084"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496710"
 ---
 # <a name="create-and-clone-projects"></a>Tworzenie i klonowanie projektów
 
@@ -27,9 +27,9 @@ Projekt utrzymuje również metadane i inne ustawienia konfiguracji, które maj�
 
 ## <a name="use-the-my-projects-dashboard"></a>Korzystanie z pulpitu nawigacyjnego moje projekty
 
-Pulpit nawigacyjny **Moje projekty** w witrynie @no__t — 1 to miejsce, w którym można wyświetlać i zarządzać projektami oraz w nich tworzyć:
+Pulpit nawigacyjny **Moje projekty** w `https://notebooks.azure.com/<userID>/projects` jest miejscem, w którym można wyświetlać projekty i zarządzać nimi:
 
-[Pulpit nawigacyjny projektów @no__t 1My w Azure Notebooks](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[![pulpit nawigacyjny moje projekty w programie Azure Notebooks](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 Co można zrobić na pulpicie nawigacyjnym, zależy od tego, czy użytkownik jest zalogowany przy użyciu konta, które jest właścicielem identyfikatora użytkownika:
 
@@ -37,7 +37,7 @@ Co można zrobić na pulpicie nawigacyjnym, zależy od tego, czy użytkownik jes
 | --- | --- | --- |
 | **Wykonane** | Właściciel | Uruchamia serwer projektu i otwiera folder projektu w Jupyter. (Najczęściej możesz przejść do folderu projektu, a następnie uruchomić Notes z tego miejsca). |
 | **Pobieranie** | Każdy | Pobiera kopię wybranego projektu jako plik ZIP. |
-| **Udostępnij** | Każdy | Wyświetla okno podręczne udostępniania, za pomocą którego można uzyskać adres URL wybranego projektu, udostępnić do mediów społecznościowych, wysłać wiadomość e-mail z adresem URL oraz uzyskać kod HTML lub promocji dla programu za pomocą wskaźnika "Uruchom Notes" (zobacz temat [Uzyskiwanie wskaźnika uruchamiania](#obtain-a-launch-badge)) przy użyciu adresu URL. |
+| **Share** | Każdy | Wyświetla okno podręczne udostępniania, za pomocą którego można uzyskać adres URL wybranego projektu, udostępnić do mediów społecznościowych, wysłać wiadomość e-mail z adresem URL oraz uzyskać kod HTML lub promocji dla programu za pomocą wskaźnika "Uruchom Notes" (zobacz temat [Uzyskiwanie wskaźnika uruchamiania](#obtain-a-launch-badge)) przy użyciu adresu URL. |
 | **Usuwanie** | Właściciel | Usuwa wybrany projekt. Tej operacji nie można cofnąć. |
 | **Terminal** | Właściciel | Uruchamia serwer Project Server, a następnie otwiera nowe okno przeglądarki z terminalem bash dla tego serwera. |
 | **+ Nowy projekt** | Właściciel | Tworzy nowy projekt. Zobacz [Tworzenie nowego projektu](#create-a-new-project). |
@@ -68,7 +68,7 @@ W przypadku korzystania z polecenia **+ Nowy projekt** Azure Notebooks wyświetl
 | --- | --- |
 | Project name (Nazwa projektu) | Przyjazna nazwa projektu, który Azure Notebooks używany do wyświetlania. Na przykład "mój projekt notesu". |
 | Identyfikator projektu | Niestandardowy identyfikator, który jest częścią adresu URL, który jest używany do udostępniania projektu (formularz jest `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ten identyfikator może korzystać tylko z liter, cyfr i łączników, jest ograniczony do 30 znaków i nie może być [zarezerwowanym identyfikatorem projektu](#reserved-project-ids). Jeśli nie masz pewności, co należy używać, Wspólna konwencja polega na użyciu małych wersji nazwy projektu, gdzie spacje są włączane do łączników, takich jak "My-Notes-Project" (w razie potrzeby można je dopasować do limitu długości). |
-| Publiczne | Jeśli ta wartość jest ustawiona, umożliwia każdej osobie z linkiem dostęp do projektu. Podczas tworzenia projektu prywatnego Usuń zaznaczenie tej opcji. |
+| Public | Jeśli ta wartość jest ustawiona, umożliwia każdej osobie z linkiem dostęp do projektu. Podczas tworzenia projektu prywatnego Usuń zaznaczenie tej opcji. |
 | Zainicjuj ten projekt przy użyciu pliku Readme | Jeśli ta wartość jest ustawiona, program tworzy domyślny plik *README.MD* w projekcie. Plik *README.MD* to miejsce, w którym podano dokumentację projektu, w razie potrzeby. |
 
 ### <a name="reserved-project-ids"></a>Zarezerwowane identyfikatory projektów
@@ -77,11 +77,11 @@ Następujące słowa zastrzeżone nie mogą być używane przez siebie jako iden
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| o | account | administracyjnego | api | wpisów | miejsca |
+| O | account | administracyjnego | api | wpisów | miejsca |
 | content | pulpit nawigacyjny | przeglądać | FAQ | Pomoc | html |
-| mowa | zaimportować | biblioteki | administracyjnego | nowe | notesu |
-| żadnym | formatach | wersja zapoznawcza | cennik | profilu | wyszukiwania |
-| status | pomocy | test | | | |
+| Mowa | Zaimportować | biblioteki | zarządzanie | nowe | notesu |
+| żadnym | formatach | wersja zapoznawcza | cennik | Profilu | Wyszukiwania |
+| status | Pomocy | test | | | |
 
 Jeśli spróbujesz użyć jednego z tych słów jako identyfikatora projektu, okna podręczne **Utwórz nowy projekt** i **Ustawienia projektu** wskazują, "identyfikator biblioteki jest zarezerwowanym identyfikatorem".
 
@@ -93,11 +93,11 @@ Możesz łatwo zaimportować cały publiczny repozytorium GitHub jako projekt ob
 
 | Pole | Opis |
 | --- | --- |
-| Repozytorium serwisu GitHub | Nazwa repozytorium źródłowego w github.com. Na przykład aby sklonować notesy Jupyter dla platformy Azure Cognitive Services w [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks), wprowadź "Microsoft/poznawcze-Services-Notess".  |
+| Repozytorium GitHub | Nazwa repozytorium źródłowego w github.com. Na przykład aby sklonować notesy Jupyter dla usługi Azure Cognitive Services w [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks), wprowadź "Microsoft/poznawcze-Services-Notess".  |
 | Klonuj cyklicznie | Repozytoria GitHub mogą zawierać wiele repozytoriów podrzędnych. Ustaw tę opcję, jeśli chcesz sklonować repozytorium nadrzędne i wszystkie jego elementy podrzędne. Ponieważ istnieje możliwość, aby repozytorium miało wiele elementów podrzędnych, należy pozostawić tę opcję niezbędną, chyba że wiadomo, że jest ona potrzebna. |
 | Project name (Nazwa projektu) | Przyjazna nazwa projektu, który Azure Notebooks używany do wyświetlania. |
 | Identyfikator projektu | Niestandardowy identyfikator, który jest częścią adresu URL, który jest używany do udostępniania projektu (formularz jest `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ten identyfikator może korzystać tylko z liter, cyfr i łączników, jest ograniczony do 30 znaków i nie może być [zarezerwowanym identyfikatorem projektu](#reserved-project-ids). Jeśli nie masz pewności, co należy używać, Wspólna konwencja polega na użyciu małych wersji nazwy projektu, gdzie spacje są włączane do łączników, takich jak "My-Notes-Project" (w razie potrzeby można je dopasować do limitu długości). |
-| Publiczne | Jeśli ta wartość jest ustawiona, umożliwia każdej osobie z linkiem dostęp do projektu. Podczas tworzenia projektu prywatnego Usuń zaznaczenie tej opcji. |
+| Public | Jeśli ta wartość jest ustawiona, umożliwia każdej osobie z linkiem dostęp do projektu. Podczas tworzenia projektu prywatnego Usuń zaznaczenie tej opcji. |
 
 Importowanie repozytorium z usługi GitHub również importuje jego historię. Możesz użyć standardowych poleceń git z terminalu, aby zatwierdzić nowe zmiany, ściągnąć zmiany z usługi GitHub i tak dalej.
 
@@ -125,4 +125,4 @@ Aby sklonować projekt:
 - [Instrukcje: prezentowanie pokazu slajdów](present-jupyter-notebooks-slideshow.md)
 - [Instrukcje: korzystanie z plików danych](work-with-project-data-files.md)
 - [Instrukcje: dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
-- [Instrukcje: korzystanie z usług Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Instrukcje: korzystanie z Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)

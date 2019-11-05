@@ -9,30 +9,30 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: 3886777b283af35e84683480a59097584b537fea
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717148"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523532"
 ---
-## <a name="create-an-face-resource"></a>Utwórz zasób usługi rozpoznawania twarzy
+## <a name="create-an-face-resource"></a>Tworzenie zasobu kroju
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)
-1. Kliknij przycisk [Utwórz **twarzy** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace) zasobów
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)
+1. Kliknij pozycję [Utwórz zasób **czołowy** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)
 1. Wprowadź wszystkie wymagane ustawienia:
 
     |Ustawienie|Wartość|
     |--|--|
-    |Name (Nazwa)|Nazwy żądanej (2 do 64 znaków)|
-    |Subscription|Wybierz odpowiednią subskrypcję.|
-    |Location|Wybierz dowolną lokalizację w pobliżu i dostępne|
-    |Warstwa cenowa|`F0` -minimalnej warstwy cenowej|
-    |Grupa zasobów|Wybierz grupę dostępnych zasobów|
+    |Nazwa|Wymagana nazwa (2-64 znaków)|
+    |Subskrypcja|Wybierz odpowiednią subskrypcję|
+    |Lokalizacja|Wybierz dowolną lokalizację w pobliżu i dostępną|
+    |Warstwa cenowa|`F0` — minimalna warstwa cenowa|
+    |Grupa zasobów|Wybierz dostępną grupę zasobów|
 
-1. Kliknij przycisk **Utwórz** i poczekaj na zasób, który ma zostać utworzony. Po jego utworzeniu, przejdź do strony zasobu
+1. Kliknij przycisk **Utwórz** i poczekaj na utworzenie zasobu. Po jego utworzeniu przejdź do strony zasobów
 1. Zbierz skonfigurowane `endpoint` i klucz interfejsu API:
 
-    |Karta zasobów w portalu|Ustawienie|Value|
+    |Karta zasób w portalu|Ustawienie|Wartość|
     |--|--|--|
-    |**Omówienie**|Endpoint|Kopiowanie punktu końcowego. Będzie on podobny do `https://face.cognitiveservices.azure.com/face/v1.0`|
-    |**klucze**|Klucz interfejsu API|Skopiuj 1 dwa klucze. Jest to 32 ciąg znaków alfanumerycznych, bez spacji lub kreski, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |**Omówienie**|Endpoint|Skopiuj punkt końcowy. Wygląda podobnie do `https://face.cognitiveservices.azure.com/face/v1.0`|
+    |**Ponownie**|Klucz interfejsu API|Kopiuj 1 z dwóch kluczy. Jest to 32 ciąg znaków alfanumerycznych bez spacji ani kresek, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|

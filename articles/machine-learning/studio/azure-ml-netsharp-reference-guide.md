@@ -1,7 +1,7 @@
 ---
-title: 'Tworzenie niestandardowych sieci neuronowych przy użyciu Net #'
-titleSuffix: Azure Machine Learning Studio
-description: 'Przewodnik po składni języka specyfikacji sieci neuronowych Net #. Dowiedz się, jak tworzyć modele sieci neuronowych niestandardowej w usłudze Azure Machine Learning Studio.'
+title: 'Tworzenie niestandardowych sieci neuronowych w usłudze net #'
+titleSuffix: Azure Machine Learning Studio (classic)
+description: 'Przewodnik dotyczący składni języka NET # neuronowych Network Specification. Dowiedz się, jak tworzyć niestandardowe modele sieci neuronowych w Azure Machine Learning Studio (klasyczne).'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,96 +10,96 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7e7ad51622c3d3c8254755fb1ad24a047d48a58b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751678"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493364"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Przewodnik po języku specyfikacji sieci neuronowych Net # dla usługi Azure Machine Learning Studio
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Przewodnik dotyczący języka specyfikacji sieci NET # neuronowych dla Azure Machine Learning Studio (klasyczny)
 
-NET # to opracowany przez firmę Microsoft, który jest używany do definiowana architektur złożonych sieci neuronowych, takich jak głębokich sieciach neuronowych lub splotowi wymiary dowolnego języka. Złożone struktury umożliwia poprawę nauki o danych, takich jak obraz, wideo lub audio.
+NET # to język opracowany przez firmę Microsoft, który służy do definiowania złożonych architektur sieci neuronowych, takich jak głębokie sieci neuronowych lub convolutions z dowolnych wymiarów. Możesz użyć złożonych struktur, aby zwiększyć uczenie się na danych, takich jak obraz, wideo lub dźwięk.
 
-Można użyć specyfikacji Net # architektury w tych kontekstach:
+W tych kontekstach można użyć specyfikacji architektury net #:
 
-+ Wszystkie moduły sieć neuronowa firmy Microsoft Azure Machine Learning Studio: [Sieć Neuronowa wieloklasowej](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [sieci neuronowych Two-Class](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), i [regresji sieci neuronowych](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Funkcje sieci neuronowych w Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) i [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)dla języka R i [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) dla języka Python.
-
-
-W tym artykule opisano podstawowe pojęcia i potrzebne do tworzenia niestandardowych sieci neuronowych, przy użyciu Net # składni:
-
-+ Wymagania dotyczące sieci neuronowe oraz sposób definiowania podstawowe składniki
-+ Składni i słów kluczowych języka specyfikacji Net #
-+ Przykładów niestandardowych sieci neuronowych utworzone za pomocą Net #
++ Wszystkie moduły sieciowe neuronowych w Microsoft Azure Machine Learning Studio (klasyczny): [wieloklasowe sieci neuronowych](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [dwie klasy sieci neuronowych](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)oraz [regresja sieci neuronowych](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Neuronowych funkcje sieciowe w programie Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) i [RxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)dla języka R oraz [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) for Python.
 
 
+W tym artykule opisano podstawowe pojęcia i składnię wymaganą do opracowania niestandardowej sieci neuronowych przy użyciu usługi net #:
 
-## <a name="neural-network-basics"></a>Podstawowe informacje o sieci neuronowych
++ Neuronowych wymagania sieciowe i jak definiować składniki podstawowe
++ Składnia i słowa kluczowe języka specyfikacji NET #
++ Przykłady niestandardowych sieci neuronowych utworzonych przy użyciu usługi NET #
 
-Struktura sieci neuronowych składa się z węzłów, które są organizowane w warstwy i ważona połączenia (lub krawędzi) między węzłami. Połączenia są kierunkowe, a każde połączenie ma węzeł źródłowy oraz węzeł docelowy.
 
-Każda warstwa trainable (ukryty lub warstwę danych wyjściowych) ma jeden lub kilka **pakiety połączenia**. Pakiet połączenia składa się z warstwy źródłowej i określenie połączenia z tym warstwy źródłowej. Wszystkich połączeń z danym pakietem Udostępnij źródłowe i docelowe warstwy. W Net # pakietu połączenia jest traktowane jako należące do warstwy docelowej przez pakiet.
 
-NET # obsługuje różne rodzaje połączenia pakietów, które można dostosować sposób dane wejściowe są mapowane na ukrytych warstw i mapowane na dane wyjściowe.
+## <a name="neural-network-basics"></a>Podstawowe informacje dotyczące sieci neuronowych
 
-Domyślne lub standardowy pakiet jest **pełny pakiet**, w którym każdego węzła w warstwie źródłowej jest podłączony do każdego węzła w warstwie docelowej.
+Struktura sieci neuronowych składa się z węzłów, które są zorganizowane w warstwach, oraz połączeń ważonych (lub krawędzi) między węzłami. Połączenia są kierunkowe, a każde połączenie ma węzeł źródłowy i węzeł docelowy.
 
-Ponadto Net # obsługuje cztery rodzaje pakietów zaawansowane połączenie:
+Każda warstwa przeszkolna (ukryta lub warstwa wyjściowa) ma jeden lub więcej **pakietów połączeń**. Pakiet połączeń składa się z warstwy źródłowej i specyfikacji połączeń z tej warstwy źródłowej. Wszystkie połączenia w danym pakiecie współdzielą źródłową i docelową warstwę. W polu NET # pakiet połączenia jest traktowany jako należący do warstwy docelowej zbioru.
 
-+ **Filtrowane pakiety**. Predykat można zdefiniować przy użyciu lokalizacji warstwy węzeł źródłowy i węzeł warstwy docelowej. Węzły są połączone w każdym przypadku, gdy predykatu ma wartość True.
+NET # obsługuje różne rodzaje pakietów połączeń, co pozwala dostosować sposób, w jaki dane wejściowe są mapowane na ukryte warstwy i zamapowane na dane wyjściowe.
 
-+ **Pakiety splotowe**. Można zdefiniować małych kluby węzłów z warstwy źródłowej. Każdy węzeł w warstwie docelowej jest połączony co otoczenia węzłów z warstwy źródłowej.
+Pakiet domyślny lub standardowy jest **pełnym pakietem**, w którym każdy węzeł w warstwie źródłowej jest połączony z każdym węzłem w warstwie docelowej.
 
-+ **Buforowanie pakietów** i **pakiety normalizacji odpowiedzi**. Te przypominają splotowe pakietów w tym, że użytkownik definiuje małych kluby węzłów z warstwy źródłowej. Różnica polega na tym, że wagi krawędzie w te pakiety nie są trainable. Zamiast tego wstępnie zdefiniowana funkcja jest stosowane do wartości węzeł źródła, aby określić wartość węzła docelowego.
+Ponadto NET # obsługuje cztery następujące rodzaje zaawansowanych pakietów połączeń:
+
++ **Przefiltrowane pakiety**. Predykat można zdefiniować przy użyciu lokalizacji węzła warstwy źródłowej i węzła warstwy docelowej. Węzły są połączone za każdym razem, gdy predykat ma wartość true.
+
++ **Zbiory splotowych**. W warstwie źródłowej można definiować małe kluby węzłów. Każdy węzeł w warstwie docelowej jest połączony z jednym otoczeniem węzłów w warstwie źródłowej.
+
++ Pakiety **puli** i **pakiety normalizacji odpowiedzi**. Są one podobne do pakietów splotowych w tym, że użytkownik definiuje małe kluby węzłów w warstwie źródłowej. Różnica polega na tym, że wagi krawędzi w tych pakietach nie są obsługiwane. Zamiast tego, wstępnie zdefiniowana funkcja jest stosowana do wartości węzła źródłowego, aby określić wartość węzła docelowego.
 
 
 ## <a name="supported-customizations"></a>Obsługiwane dostosowania
 
-Architektura modele sieci neuronowych, które możesz utworzyć w usłudze Azure Machine Learning Studio można dostosować często przy użyciu Net #. Możesz:
+Architektura modeli sieci neuronowych utworzonych w klasycznej wersji Azure Machine Learning Studio może być szeroko dostosowywana przy użyciu net #. Przekonaj się:
 
-+ Tworzenie warstwy ukryte i kontrolować liczbę węzłów w każdej warstwie.
-+ Określ, jak mają być połączone ze sobą warstwy.
-+ Zdefiniować struktury łączności specjalnych, takich jak splotowi i wagi udostępnianie pakietów.
-+ Określ Aktywacja innej funkcji.
++ Utwórz ukryte warstwy i kontroluj liczbę węzłów w każdej warstwie.
++ Określ, w jaki sposób warstwy mają być połączone ze sobą.
++ Zdefiniuj specjalne struktury połączeń, takie jak convolutions i zestawy udostępniania wag.
++ Określ inne funkcje aktywacji.
 
-Aby uzyskać szczegółowe informacje o składni specyfikacja języka, zobacz [specyfikacji struktury](#structure-specifications).
+Aby uzyskać szczegółowe informacje na temat składni języka specyfikacji, zobacz [Specyfikacja struktury](#structure-specifications).
 
-Definiowanie sieci neuronowych dla niektórych typowych maszyny uczenia zadań, od jednostronny złożone, zobacz [przykłady](#examples-of-net-usage).
+Przykłady definiowania sieci neuronowych dla niektórych typowych zadań uczenia maszynowego — od jednostronnej do złożonej — zobacz [przykłady](#examples-of-net-usage).
 
 ## <a name="general-requirements"></a>Wymagania ogólne
 
-+ Musi istnieć dokładnie jeden wyjściowy warstwy, co najmniej jednej warstwy wejściowych i zero lub więcej ukrytych warstw.
-+ Każda warstwa ma stałą liczbę węzłów, koncepcyjnie rozmieszczone w prostokątny tablicę dowolnego wymiarów.
-+ Warstwy danych wejściowych nie może mieć skojarzone uczonego parametrów i reprezentuje punkt, w którym dane wystąpienia wprowadza sieci.
-+ Trainable warstwy (warstwy ukrytych i dane wyjściowe) mieć skojarzone parametry przeszkolonych, znane jako wagi oraz tendencje.
-+ Węzły źródłowe i docelowe muszą być w oddzielne warstwy.
-+ Połączenia muszą być acykliczne; innymi słowy nie może być łańcuch połączeń, co prowadzi do węzła źródłowej.
-+ Warstwa danych wyjściowych nie może być warstwy źródłowej pakietu połączenia.
++ Musi istnieć dokładnie jedna warstwa wyjściowa, co najmniej jedna warstwa wejściowa i zero lub więcej ukrytych warstw.
++ Każda warstwa ma stałą liczbę węzłów, pojęciowo uporządkowaną w prostokątną tablicę dowolnych wymiarów.
++ Warstwy wejściowe nie mają skojarzonych parametrów szkolonych i przedstawiają punkt, w którym dane wystąpienia wchodzą w interakcję z siecią.
++ Warstwy do uczenia (warstwy ukryte i wyjściowe) mają skojarzone parametry wyszkolone, znane jako wagi i odchylenia.
++ Węzły źródłowy i docelowy muszą znajdować się w osobnych warstwach.
++ Połączenia muszą być acykliczne; Innymi słowy, nie może istnieć łańcuch połączeń prowadzących do początkowego węzła źródłowego.
++ Warstwa wyjściowa nie może być warstwą źródłową pakietu połączenia.
 
 ## <a name="structure-specifications"></a>Specyfikacje struktury
 
-Specyfikacja struktury sieci neuronowych składa się z trzy sekcje: **deklaracji stałej**, **warstwy deklaracji**, **deklaracji połączenia**. Istnieje również opcjonalny **udostępnianie deklaracji** sekcji. Sekcje można określić w dowolnej kolejności.
+Specyfikacja struktury sieci neuronowych składa się z trzech sekcji: **deklaracji stałej**, **deklaracji warstwy**, **deklaracji połączenia**. Istnieje również opcjonalna sekcja **deklaracji udostępniania** . Sekcje można określić w dowolnej kolejności.
 
-## <a name="constant-declaration"></a>Deklaracji stałej
+## <a name="constant-declaration"></a>Stała deklaracja
 
-Deklaracja stałej jest opcjonalne. Zapewnia środek do definiowania wartości używane w innych miejscach w definicji sieci neuronowych. Instrukcji deklaracji składa się z identyfikatora następuje znak równości i wyrażenie wartości.
+Deklaracja stałej jest opcjonalna. Zapewnia to sposób definiowania wartości używanych w innym miejscu w definicji sieci neuronowych. Instrukcja deklaracji składa się z identyfikatora, po którym następuje znak równości i wyrażenie wartości.
 
 Na przykład następująca instrukcja definiuje stałą `x`:
 
 `Const X = 28;`
 
-Aby zdefiniować dwa lub więcej stałych jednocześnie, należy ująć identyfikator nazwy i wartości w nawiasach klamrowych i rozdzielając je średnikami. Na przykład:
+Aby zdefiniować dwie lub więcej stałych jednocześnie, należy ująć nazwy i wartości identyfikatorów w nawiasach klamrowych i oddzielić je średnikami. Na przykład:
 
 `Const { X = 28; Y = 4; }`
 
-Po prawej stronie wyrażenia przypisania, każdy może być liczba całkowita, liczba rzeczywista, wartość logiczna (True lub False) lub wyrażenie matematyczne. Na przykład:
+Prawa strona każdego wyrażenia przypisania może być liczbą całkowitą, liczbą rzeczywistą, wartością logiczną (true lub false) lub wyrażeniem matematycznym. Na przykład:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Deklaracja warstwy
 
-Deklaracja warstwa jest wymagana. Definiuje rozmiar i źródło warstwy, łącznie z połączenia pakiety i ich atrybuty. Instrukcji deklaracji zaczyna się od nazwy warstwy (dane wejściowe, ukryte lub danych wyjściowych) następuje wymiary warstwy (krotki dodatnie liczby całkowite). Na przykład:
+Deklaracja warstwy jest wymagana. Definiuje rozmiar i źródło warstwy, łącznie z pakietami połączeń i atrybutami. Instrukcja deklaracji zaczyna się od nazwy warstwy (dane wejściowe, ukryte lub wyjściowe), po której następuje wymiary warstwy (spójna kolekcja liczb całkowitych). Na przykład:
 
 ```Net#
 input Data auto;
@@ -107,16 +107,16 @@ hidden Hidden[5,20] from Data all;
 output Result[2] from Hidden all;
 ```
 
-+ Produkt wymiarów jest liczba węzłów w warstwie. W tym przykładzie istnieją dwa wymiary [5,20], co oznacza, że nie ma 100 węzłów na warstwie.
-+ Warstwy mogą być deklarowane w dowolnej kolejności, z jednym wyjątkiem: Jeśli nie zdefiniowano więcej niż jednej warstwy wejściowych, kolejność, w którym są one zadeklarowane musi być zgodna z kolejność funkcji w danych wejściowych.
++ Iloczyn wymiarów to liczba węzłów w warstwie. W tym przykładzie istnieją dwa wymiary [5, 20], co oznacza, że w warstwie znajdują się węzły 100.
++ Warstwy można zadeklarować w dowolnej kolejności, z wyjątkiem jednego wyjątku: Jeśli zdefiniowano więcej niż jedną warstwę wejściową, kolejność, w jakiej są one deklarowane musi być zgodna z kolejnością funkcji w danych wejściowych.
 
-Aby określić, że liczba węzłów w warstwie ustalana automatycznie, użyj `auto` — słowo kluczowe. `auto` — Słowo kluczowe ma różne efekty w zależności od warstwy:
+Aby określić, że liczba węzłów w warstwie jest określana automatycznie, użyj słowa kluczowego `auto`. Słowo kluczowe `auto` ma różne efekty, w zależności od warstwy:
 
-+ W deklaracji warstwy wejściowych liczba węzłów jest liczba funkcji w danych wejściowych.
-+ W deklaracji ukrytej warstwie według następującego, liczba węzłów to numer, który jest określony przez wartość parametru **Liczba ukrytych węzłów**.
-+ W deklaracji warstwy danych wyjściowych liczba węzłów to 2 dwuklasowych klasyfikacji, 1 dla regresji i różne liczby węzłów danych wyjściowych dla klasyfikacji wieloklasowej.
++ W deklaracji warstwy wejściowej liczba węzłów jest liczbą funkcji w danych wejściowych.
++ W deklaracji warstwy ukrytej liczba węzłów jest liczbą określoną przez wartość parametru dla **liczby ukrytych węzłów**.
++ W deklaracji warstwy wyjściowej liczba węzłów wynosi 2 dla klasyfikacji dwóch klas, 1 dla regresji i równa liczbie węzłów wyjściowych klasyfikacji wieloklasowej.
 
-Na przykład następująca definicja sieci umożliwia rozmiar wszystkich warstw określone automatycznie:
+Na przykład następująca definicja sieci umożliwia automatyczne określenie rozmiaru wszystkich warstw:
 
 ```Net#
 input Data auto;
@@ -124,44 +124,44 @@ hidden Hidden auto from Data all;
 output Result auto from Hidden all;
 ```
 
-Deklaracja warstwy trainable warstwy (warstwy ukryte lub wyjściowe) może opcjonalnie obejmować dane wyjściowe funkcji (nazywanych również funkcję aktywacji), która domyślnie **sigmoid** dla modeli klasyfikacji i  **liniowy** dla modele regresji. Nawet wtedy, gdy użytkownik korzysta z domyślnych można jawnie stanu aktywacji funkcji, jeśli to konieczne w celu uściślenia.
+Deklaracja warstwy dla warstwy możliwej do przeprowadzenia (ukryte lub wyjściowe) może opcjonalnie zawierać funkcję wyjściową (nazywaną również funkcją aktywacji), która domyślnie jest **sigmoid** dla modeli klasyfikacji i **liniowy** dla modeli regresji. Nawet jeśli jest używana wartość domyślna, można jawnie użyć funkcji aktywacji, jeśli jest to potrzebne do przejrzystości.
 
-Obsługiwane są następujące funkcje danych wyjściowych:
+Obsługiwane są następujące funkcje wyjściowe:
 
 + sigmoid
-+ Liniowy
++ liniowej
 + softmax
 + rlinear
-+ Kwadrat
-+ sqrt
++ kwadratowe
++ Sqrt
 + srlinear
 + ABS
-+ TANH
++ TANH —
 + brlinear
 
-Na przykład następująca deklaracja używa **softmax** funkcji:
+Na przykład następująca deklaracja używa funkcji **softmax** :
 
 `output Result [100] softmax from Hidden all;`
 
 ## <a name="connection-declaration"></a>Deklaracja połączenia
 
-Natychmiast po definiowania trainable warstwy, należy zadeklarować połączeń między warstwami, które zostały zdefiniowane. Deklaracja pakietu połączenia zaczyna się od słowa kluczowego `from`, a następnie według nazwy rodzaj połączenia pakietu, aby utworzyć i warstw źródła pakietu.
+Natychmiast po zdefiniowaniu warstwy z przeszkoleniem należy zadeklarować połączenia między zdefiniowanymi warstwami. Deklaracja pakietu połączeń rozpoczyna się od słowa kluczowego `from`, a następnie nazwy warstwy źródłowej pakietu i rodzaju pakietu połączenia do utworzenia.
 
-Obecnie są obsługiwane pięć rodzajów pakietów połączenia:
+Obecnie obsługiwane są pięć rodzajów pakietów połączeń:
 
-+ **Pełna** pakiety, wskazywanym przez słowo kluczowe `all`
-+ **Filtrowane** pakiety, wskazywanym przez słowo kluczowe `where`, a następnie wyrażenie predykatu
-+ **Splotowe** pakiety, wskazywanym przez słowo kluczowe `convolve`, a następnie atrybuty konwolucji
-+ **Buforowanie** pakiety, wskazywanym przez słowa kluczowe **maksymalnej liczby puli** lub **oznacza puli**
-+ **Normalizacja odpowiedzi** pakiety, wskazywanym przez słowo kluczowe **norm odpowiedzi**
++ **Pełne** pakiety, wskazywane przez słowo kluczowe `all`
++ **Filtrowane** zbiory, wskazywane przez słowo kluczowe `where`, po którym następuje wyrażenie predykatu
++ Zbiory **splotowych** , wskazywane przez słowo kluczowe `convolve`, a następnie atrybuty Convolution
++ Zbiory **pul** , wskazywane przez **maksymalną pulę** lub **średnią** pulę słów kluczowych
++ Pakiety **normalizacji odpowiedzi** wskazywane przez **normę odpowiedzi** słowa kluczowego
 
 ## <a name="full-bundles"></a>Pełne pakiety
 
-Pakiet pełne połączenie obejmuje połączenie z każdego węzła w warstwie źródła do każdego węzła w warstwie docelowej. Jest to domyślny typ połączenia sieciowego.
+Pakiet Full Connection zawiera połączenie z każdego węzła w warstwie źródłowej do każdego węzła w warstwie docelowej. Jest to domyślny typ połączenia sieciowego.
 
-## <a name="filtered-bundles"></a>Filtrowane pakiety
+## <a name="filtered-bundles"></a>Przefiltrowane zbiory
 
-Specyfikacja pakietu połączenia filtrowanego obejmuje predykatu, wyrażona syntaktycznie, bardzo podobnie jak C# wyrażenia lambda. W poniższym przykładzie zdefiniowano dwa filtrowanych pakietów:
+Specyfikacja zbioru połączeń filtrowanych zawiera predykat, podobnie jak wyrażenie C# lambda. W poniższym przykładzie zdefiniowano dwa przefiltrowane pakiety:
 
 ```Net#
 input Pixels [10, 20];
@@ -169,71 +169,71 @@ hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 ```
 
-+ W predykacie dla `ByRow`, `s` parametr reprezentujący indeks do tablicy prostokątny węzłów wejściowych warstwy `Pixels`, i `d` parametr reprezentujący indeks do tablicy węzłów w ukrytej warstwie `ByRow`. Typem obu metod `s` i `d` jest spójną kolekcją liczb całkowitych o długości dwóch. Model `s` zakresów za pośrednictwem wszystkich par liczb całkowitych z `0 <= s[0] < 10` i `0 <= s[1] < 20`, i `d` zakresów za pośrednictwem wszystkich par liczb całkowitych, za pomocą `0 <= d[0] < 10` i `0 <= d[1] < 12`.
++ W predykacie dla `ByRow`, `s` jest parametrem reprezentującym indeks do prostokątnego tablicy węzłów warstwy wejściowej, `Pixels`i `d` jest parametr reprezentujący indeks do tablicy węzłów ukrytych warstwy. , `ByRow`. Typ obu `s` i `d` jest krotką liczb całkowitych długości dwóch. Koncepcyjnie, `s` zakresy wszystkich par liczb całkowitych z `0 <= s[0] < 10` i `0 <= s[1] < 20`i `d` zakresy dla wszystkich par liczb całkowitych, z `0 <= d[0] < 10` i `0 <= d[1] < 12`.
 
-+ Po prawej stronie wyrażenie predykatu występuje warunek. W tym przykładzie dla każdej wartości `s` i `d` taki sposób, że warunek ma wartość True, jest krawędź z węzła źródłowego warstwy do węzła warstwy docelowej. W związku z tym, to wyrażenie filtru wskazuje, że pakiet zawiera połączenia z węzła zdefiniowane przez `s` do węzła zdefiniowane przez `d` we wszystkich przypadkach, gdzie s [0] jest równa d [0].
++ Po prawej stronie wyrażenia predykatu istnieje warunek. W tym przykładzie dla każdej wartości `s` i `d` w taki sposób, że warunek ma wartość true, między węzłem warstwy źródłowej a docelowym węzłem warstwy znajduje się krawędź. W związku z tym wyrażenie filtru wskazuje, że pakiet zawiera połączenie z węzła zdefiniowanego przez `s` do węzła zdefiniowanego przez `d` we wszystkich przypadkach, gdzie s [0] jest równe d [0].
 
-Opcjonalnie można określić zbiór wag dla filtrowanego pakietu. Wartość **wagi** atrybut musi być spójna Kolekcja o długości, która jest zgodna z liczbą połączeń definiowane przez pakiet wartości zmiennoprzecinkowych. Domyślnie generowany losowo wagi.
+Opcjonalnie można określić zestaw wag dla odfiltrowanego pakietu. Wartość atrybutu **wagi** musi być krotką wartości zmiennoprzecinkowych o długości odpowiadającej liczbie połączeń zdefiniowanych przez ten pakiet. Domyślnie wagi są generowane losowo.
 
-Wartości wag są pogrupowane według indeksu węzła docelowego. Oznacza to, jeśli pierwszy węzeł docelowy jest połączony z węzłów źródłowych K, pierwszy `K` elementy **wagi** krotki są wag dla pierwszego węzła docelowego w kolejności indeksowania źródła. To samo dotyczy dla pozostałych węzłów docelowego.
+Wartości wag są pogrupowane według indeksu węzła docelowego. Oznacza to, że jeśli pierwszy węzeł docelowy jest połączony z węzłami źródłowymi K, pierwsze `K` elementy krotki **odważników** to wagi pierwszego węzła docelowego w kolejności indeksu źródła. To samo dotyczy pozostałego węzła docelowego.
 
-Istnieje możliwość określenia wagi bezpośrednio jako wartości stałych. Na przykład jeśli znasz wag wcześniej, można je określić jako stałe przy użyciu następującej składni:
+Możliwe jest określenie wag bezpośrednio jako wartości stałych. Na przykład jeśli poznasz już wagi, można je określić jako stałe przy użyciu następującej składni:
 
 `const Weights_1 = [0.0188045055, 0.130500451, ...]`
 
-## <a name="convolutional-bundles"></a>Pakiety splotowe
+## <a name="convolutional-bundles"></a>Pakiety splotowych
 
-Dane szkoleniowe po jednorodnych struktury splotowe połączenia są często używane się funkcje wysokiego poziomu danych. Na przykład na ilustracji, dane audio lub wideo, wymiary przestrzenne lub danych czasowych może być dość jednolite.
+Gdy dane szkoleniowe mają jednorodną strukturę, połączenia splotowych są często używane do uczenia funkcji wysokiego poziomu danych. Na przykład w przypadku danych obrazu, audio lub wideo, przestrzenne lub wymiarowe wymiary mogą być dość jednorodne.
 
-Pakiety splotowe stosować prostokątny **jądra** , są przesuwać za pośrednictwem wymiarów. Zasadniczo każdy jądra definiuje zestaw wagi stosowane w lokalnym kluby nazywane **aplikacji jądra**. Każda aplikacja jądra odnosi się do węzła w warstwie źródła, które są określone jako **węźle centralnym**. Wagi jądra są współużytkowane przez wiele połączeń. W pakiecie splotowe każdy jądra jest prostokątnym zestawem i wszystkie aplikacje jądra mają taki sam rozmiar.
+Zbiory splotowych korzystają z prostokątnych **jądra** , które są Slid przez wymiary. Zasadniczo każde jądro definiuje zestaw wag stosowanych w lokalnych klubach, nazywanych **aplikacjami jądra**. Każda aplikacja jądra odnosi się do węzła w warstwie źródłowej, który jest określany jako **węzeł centralny**. Wagi jądra są współużytkowane przez wiele połączeń. W pakiecie splotowych każde jądro jest prostokątne i wszystkie aplikacje jądra mają ten sam rozmiar.
 
-Pakiety splotowe obsługują następujące atrybuty:
+Pakiety splotowych obsługują następujące atrybuty:
 
-**InputShape** definiuje wymiarach warstwy źródłowej na potrzeby tego splotowe pakietu. Wartość musi być spójna kolekcja dodatnie liczby całkowite. Iloczyn liczby całkowite musi być równa liczby węzłów w warstwie źródła, ale w przeciwnym razie nie trzeba ją wymiarowością zadeklarowany dla warstwy źródłowej. Długość tego krotki staje się **specifikaci** wartość splotowe pakietu. Zazwyczaj specifikaci odnosi się do liczby argumentów lub argumentów operacji, które można wykonać funkcji.
+**InputShape** definiuje wymiar warstwy źródłowej dla celów tego pakietu splotowych. Wartość musi być krotką dodatnich liczb całkowitych. Iloczyn liczb całkowitych musi być równy liczbie węzłów w warstwie źródłowej, ale w przeciwnym razie nie musi być zgodny z wymiarem zadeklarowanym dla warstwy źródłowej. Długość tej krotki zmieni się na wartość **liczbową** dla pakietu splotowych. Zazwyczaj liczba argumentów odnosi się do liczby argumentów lub argumentów operacji, które może wykonać funkcja.
 
-Aby zdefiniować kształt i lokalizacje jądra, należy użyć atrybutów **KernelShape**, **Stride**, **dopełnienie**, **LowerPad**i  **UpperPad**:
+Aby zdefiniować kształt i lokalizacje jądra, użyj atrybutów **KernelShape**, **krok**, **dopełnienie**, **LowerPad**i **UpperPad**:
 
-+ **KernelShape**: definiuje (wymagane), o wymiarach każdego jądra dla splotowe pakietu. Wartość musi być spójna kolekcja dodatnimi liczbami całkowitymi o długości, która jest równa liczbie argumentów pakietu. Każdy składnik to krotki musi być większa niż odpowiadający składnik **InputShape**.
++ **KernelShape**: (wymagane) definiuje wymiar każdego jądra dla pakietu splotowych. Wartość musi być krotką dodatnich liczb całkowitych o długości równej liczbie argumentów pakietu. Każdy składnik tej krotki nie może być większy niż odpowiedni składnik **InputShape**.
 
-+ **STRIDE**: (opcjonalnie) określa krok przewijania ilości konwolucji (rozmiar jeden krok dla każdego wymiaru), jest odległość między węzłami centralnej. Wartość musi być spójna kolekcja dodatnimi liczbami całkowitymi o długości, która jest liczba argumentów pakietu. Każdy składnik to krotki musi być większa niż odpowiadający składnik **KernelShape**. Wartość domyślna to krotki ze wszystkimi składnikami równa jeden.
++ **Krok**: (opcjonalnie) definiuje rozmiary ruchomych etapów Convolution (jeden rozmiar kroku dla każdego wymiaru), czyli odległość między węzłami centralnymi. Wartość musi być krotką dodatnich liczb całkowitych o długości, która jest liczbą argumentów pakietu. Każdy składnik tej krotki nie może być większy niż odpowiedni składnik **KernelShape**. Wartość domyślna to krotka ze wszystkimi składnikami równą jeden.
 
-+ **Udostępnianie**: (opcjonalnie) określa grubość udostępniania dla każdego wymiaru konwolucji. Wartość może być pojedynczą wartością logiczną lub krotki wartości logicznych o długości, która jest liczba argumentów pakietu. Pojedynczą wartość logiczną jest rozszerzony do krotki o długości poprawne ze wszystkimi składnikami równa określonej wartości. Wartość domyślna to spójną kolekcją, która składa się ze wszystkich wartości True.
++ **Udostępnianie**: (opcjonalnie) definiuje udostępnianie wagi dla każdego wymiaru Convolution. Wartość może być pojedynczą wartością logiczną lub krotką wartości logicznych o długości, która jest równa liczbie argumentów pakietu. Pojedyncza wartość logiczna jest rozszerzona tak, aby była krotką o prawidłowej długości ze wszystkimi składnikami równymi określonej wartości. Wartość domyślna to krotka, która składa się ze wszystkich wartości rzeczywistych.
 
-+ **MapCount**: (opcjonalnie) definiuje liczbę funkcji mapy dla splotowe pakietu. Wartość może być jednym dodatnią liczbą całkowitą lub krotki dodatnich liczb całkowitych o długości, która jest liczba argumentów pakietu. Jedną wartość całkowitą jest rozszerzony do krotki o długości poprawne ze składnikami pierwszy równa określonej wartości, a wszystkie pozostałe składniki równa jeden. Wartość domyślna to jeden. Całkowita liczba funkcji mapy jest wynikiem składniki spójnej kolekcji. Wyprowadzenie to całkowita liczba składników decyduje o tym, jak wartości map funkcji są zgrupowane w węzłach docelowego.
++ **MapCount**: (opcjonalnie) określa liczbę map funkcji dla pakietu splotowych. Wartość może być pojedynczą dodatnią liczbą całkowitą lub krotką dodatnich liczb całkowitych o długości, która jest liczbą argumentów pakietu. Wartość pojedynczej liczby całkowitej jest rozszerzona tak, aby była krotką o prawidłowej długości przy pierwszym składniku równym określonej wartości, a wszystkie pozostałe składniki są równe jednej. Wartość domyślna to 1. Łączna liczba map funkcji jest iloczynem składników spójnej kolekcji. Współczynnik całkowitej liczby elementów w składnikach określa sposób grupowania wartości mapy funkcji w węzłach docelowych.
 
-+ **Wagi**: (opcjonalnie) Określa początkowy wag dla pakietu. Wartość musi być spójna Kolekcja wartości zmiennoprzecinkowych o długości, która jest liczba przypadków jądra liczba wagi za pośrednictwem jądra, zgodnie z definicją w dalszej części tego artykułu. Generowany losowo domyślnych wag.
++ **Wagi**: (opcjonalnie) określa początkowe wagi dla pakietu. Wartość musi być krotką wartości zmiennoprzecinkowych o długości, która jest liczbą jądra pomnożoną przez liczbę obciążeń na jądro, zgodnie z definicją w dalszej części tego artykułu. Domyślne wagi są generowane losowo.
 
-Istnieją dwa zestawy właściwości, które kontrolują dopełnienie, właściwości jest wzajemnie wykluczających się:
+Istnieją dwa zestawy właściwości kontrolujących dopełnienie, które wzajemnie się wykluczają:
 
-+ **Dopełnienie**: (opcjonalnie) określa czy dane wejściowe powinny dopełniane przy użyciu **domyślny schemat dopełnienie**. Wartość może być pojedynczą wartość logiczną lub może być krotka z wartościami logicznymi o długości, która jest liczba argumentów pakietu.
++ **Uzupełnienie**: (opcjonalnie) określa, czy dane wejściowe powinny być uzupełniane przy użyciu **domyślnego schematu uzupełniania**. Wartość może być pojedynczą wartością logiczną lub może być krotką wartości logicznych o długości, która jest równa liczbie argumentów z pakietu.
 
-    Pojedynczą wartość logiczną jest rozszerzony do krotki o długości poprawne ze wszystkimi składnikami równa określonej wartości.
+    Pojedyncza wartość logiczna jest rozszerzona tak, aby była krotką o prawidłowej długości ze wszystkimi składnikami równymi określonej wartości.
 
-    Jeśli wartości dla wymiaru ma wartość PRAWDA, źródło logicznie jest dopełniana w tym wymiarze z komórek o wartości zero do obsługi aplikacji dodatkowe jądra, której centralna węzły jądra imię i nazwisko, w tym wymiarze węzłów imię i nazwisko, w tym wymiar z warstwy źródłowej. W związku z węzłów "fikcyjny" w każdym wymiarze jest określana automatycznie, aby dokładnie dopasować `(InputShape[d] - 1) / Stride[d] + 1` jądra na warstwę wypełniony źródła.
+    Jeśli wartość dla wymiaru ma wartość true, źródło zostanie logicznie uzupełnione w tym wymiarze z komórkami o zerowej wartości, aby zapewnić obsługę dodatkowych aplikacji jądra, w taki sposób, że centralne węzły pierwszego i ostatniego jądra w tym wymiarze są pierwszym i ostatnim węzłem tego obiektu wymiar w warstwie źródłowej. W ten sposób liczba węzłów "fikcyjnych" w każdym wymiarze jest określana automatycznie, aby dokładnie dopasować `(InputShape[d] - 1) / Stride[d] + 1` jądra do uzupełnionej warstwy źródłowej.
 
-    Jeśli wartości dla wymiaru ma wartość False, jądra są zdefiniowane tak, aby liczba węzłów na każdej stronie, która pozostawiono takie same (maksymalnie różnica 1). Wartość domyślna tego atrybutu to krotki ze wszystkimi składnikami równa False.
+    Jeśli wartość dla wymiaru ma wartość false, jądra są zdefiniowane tak, aby liczba węzłów na każdej stronie, które są pozostawione, jest taka sama (maksymalnie z różnicą 1). Wartość domyślna tego atrybutu jest krotką ze wszystkimi składnikami równymi false.
 
-+ **UpperPad** i **LowerPad**: (opcjonalnie) Podaj większą kontrolę nad wielkość uzupełnienia do użycia. **Ważne:** Te atrybuty mogą być zdefiniowane wtedy i tylko wtedy, gdy **dopełnienie** powyższej właściwości jest ***nie*** zdefiniowane. Wartość musi być wartości całkowite krotki o długości, które są liczby argumentów pakietu. Jeśli te atrybuty są określone, "fikcyjny" węzłów są dodawane do dolnym i górnym numerem zakończenia każdego wymiaru warstwy danych wejściowych. Liczba węzłów dodanych do punktów końcowych dolnym i górnym numerem w każdym wymiarze jest określana przez **LowerPad**[i] i **UpperPad**[i] odpowiednio.
++ **UpperPad** i **LowerPad**: (opcjonalnie) zapewniają większą kontrolę nad ilością dopełnienia, która ma zostać użyta. **Ważne:** Te atrybuty można zdefiniować, jeśli i tylko wtedy, gdy właściwość **uzupełnienie** ***nie*** jest zdefiniowana. Wartości powinny być krotkami o wartościach całkowitych o długościach, które są liczbami argumentów pakietu. Gdy te atrybuty są określone, węzły "fikcyjne" są dodawane do dolnego i górnego końca każdego wymiaru warstwy wejściowej. Liczba węzłów dodawanych do dolnych i górnych punktów końcowych w każdym wymiarze jest określana odpowiednio przez **LowerPad**[i] i **UpperPad**[i].
 
-    Aby upewnić się, że jądra odpowiadają tylko dla węzłów "członu real", a nie węzłów "fikcyjny", muszą być spełnione następujące warunki:
-  - Każdy składnik **LowerPad** musi być mniejsza niż `KernelShape[d]/2`.
-  - Każdy składnik **UpperPad** musi być większa niż `KernelShape[d]/2`.
-  - Wartość domyślna z tych atrybutów jest krotki ze wszystkimi składnikami równa 0.
+    Aby zapewnić, że jądra są zgodne tylko z węzłami "Real", a nie z węzłami "fikcyjne", muszą zostać spełnione następujące warunki:
+  - Każdy składnik elementu **LowerPad** musi być ściśle mniejszy niż `KernelShape[d]/2`.
+  - Każdy składnik elementu **UpperPad** nie może być większy niż `KernelShape[d]/2`.
+  - Wartością domyślną tych atrybutów jest krotka ze wszystkimi składnikami równą 0.
 
-    Ustawienie **dopełnienie** = true zezwala na tyle dopełnienie potrzeb jest zapewnienie "Centrum" jądra wewnątrz "prawdziwy" danych wejściowych. Spowoduje to zmianę matematyczne nieco dotyczących przeprowadzania obliczeń rozmiar danych wyjściowych. Ogólnie rzecz biorąc, rozmiar danych wyjściowych *D* jest obliczana jako `D = (I - K) / S + 1`, gdzie `I` jest rozmiar wejściowy `K` jądra, ma rozmiar `S` jest stride, i `/` jest dzielenie liczby całkowitej (zaokrąglony w kierunku zera ). Jeśli ustawisz UpperPad = [1, 1], rozmiar danych wejściowych `I` jest faktycznie 29 i w związku z tym `D = (29 - 5) / 2 + 1 = 13`. Jednak, gdy **dopełnienie** = true, zasadniczo `I` pobiera zaktualizowany w przez `K - 1`; dlatego `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Określając wartości dla **UpperPad** i **LowerPad** uzyskać większą kontrolę nad uzupełnienie niż w przypadku po prostu **dopełnienie** = true.
+    **Uzupełnienie** ustawień = true zezwala na dopełnienie, gdy jest to konieczne, aby zachować "centrum" jądra wewnątrz "Real" danych wejściowych. Spowoduje to zmianę bitu matematycznego na Obliczanie rozmiaru wyjściowego. Ogólnie rzecz biorąc, rozmiar danych wyjściowych *D* jest obliczany jako `D = (I - K) / S + 1`, gdzie `I` jest rozmiarem wejściowym, `K` jest rozmiarem jądra, `S` jest to krok, a `/` jest dzieleniem liczb całkowitych (w przybliżeniu równa zero). Jeśli ustawisz UpperPad = [1, 1], rozmiar danych wejściowych `I` jest efektywny 29, a tym samym `D = (29 - 5) / 2 + 1 = 13`. Jednak po **dopełnieniu** = true, zasadniczo `I` można zwiększyć do `K - 1`; Dlatego `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Określenie wartości dla **UpperPad** i **LowerPad** zapewnia znacznie większą kontrolę nad uzupełnieniem niż w przypadku, gdy właśnie ustawiono **uzupełnienie** = true.
 
-Aby uzyskać więcej informacji na temat splotowych sieci i aplikacji zobacz następujące artykuły:
+Aby uzyskać więcej informacji na temat sieci splotowych i ich aplikacji, zobacz następujące artykuły:
 
 + [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
 + [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
-## <a name="pooling-bundles"></a>Buforowanie pakietów
+## <a name="pooling-bundles"></a>Zbiory pul
 
-A **buforowanie pakietu** stosuje podobne do łączności z splotowe geometrii, ale używa funkcji wstępnie zdefiniowane wartości węzła źródłowego do uzyskania wartości węzła docelowego. Z tego powodu buforowania pakiety mają nie trainable stanu (wagi lub odchyleń). Korzystanie z puli, pakiety obsługuje wszystkie splotowe atrybutów, z wyjątkiem **udostępniania**, **MapCount**, i **wagi**.
+**Pakiet puli** ma zastosowanie geometrii podobnej do łączności splotowych, ale używa wstępnie zdefiniowanych funkcji do wartości węzła źródłowego w celu uzyskania wartości węzła docelowego. W związku z tym zbiory buforowania nie mają stanu do uczenia (wagi lub odchylenia). Zbiory buforowania obsługują wszystkie atrybuty splotowych z wyjątkiem **udostępniania**, **MapCount**i **wag**.
 
-Zazwyczaj jądra podsumowane według sąsiadujących jednostek buforowania nie pokrywają się. Jeśli krok [d] jest równa KernelShape [d] w każdym wymiarze, warstwy uzyskane jest tradycyjnych lokalnych warstwy buforowania, która jest powszechnie wykorzystywane w splotowych sieci neuronowych. Każdy węzeł docelowy oblicza maksymalną lub średniej działania jego jądra z warstwy źródłowej.
+Zwykle jądra podsumowywane przez sąsiednie jednostki puli nie nakładają się na siebie. Jeśli krok [d] jest równy KernelShape [d] w każdym wymiarze, uzyskana warstwa jest tradycyjną warstwą buforowania lokalnego, która jest często stosowana w sieciach splotowych neuronowych. Każdy węzeł docelowy oblicza maksymalną lub średnią aktywność jądra w warstwie źródłowej.
 
-Poniższy przykład ilustruje buforowania pakietu:
+Poniższy przykład ilustruje zbiór puli:
 
 ```Net#
 hidden P1 [5, 12, 12]
@@ -244,43 +244,43 @@ hidden P1 [5, 12, 12]
   }
 ```
 
-+ Liczba ról pakietu jest 3: oznacza to, że długość kolekcje `InputShape`, `KernelShape`, i `Stride`.
++ Liczba argumentów pakietu wynosi 3: oznacza to, że długość krotek `InputShape`, `KernelShape`i `Stride`.
 + Liczba węzłów w warstwie źródłowej jest `5 * 24 * 24 = 2880`.
-+ Jest to tradycyjne lokalne warstwy buforowania, ponieważ **KernelShape** i **Stride** są takie same.
-+ Liczba węzłów w warstwie docelowej jest `5 * 12 * 12 = 1440`.
++ Jest to tradycyjna warstwa puli lokalnej, ponieważ **KernelShape** i **krok** są równe.
++ Liczba węzłów w warstwie docelowej to `5 * 12 * 12 = 1440`.
 
-Aby uzyskać więcej informacji na temat warstwy buforowania zobacz następujące artykuły:
+Aby uzyskać więcej informacji o warstwach puli, zobacz następujące artykuły:
 
-+ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (Sekcji 3.4)
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (sekcja 3,4)
 + [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
 + [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
 ## <a name="response-normalization-bundles"></a>Pakiety normalizacji odpowiedzi
 
-**Normalizacja odpowiedzi** jest systemem normalizacji lokalnej, która została wprowadzona przez Geoffrey Hinton i inni w dokumencie [Klasyfikacja sieci ImageNet przy użyciu Splotowych sieci neuronowych głębokiego](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
+**Normalizacja odpowiedzi** to lokalny schemat normalizacji, który został po raz pierwszy wprowadzony przez Geoffrey Hinton, et al, w [klasyfikacji papierowej ImageNet z głębokiego splotowych neuronowych](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
 
-Odpowiedź normalizacji jest używana do pomocy Generalizacja w sieci neuronowych. Gdy jeden neuronu jest uruchamiana na poziomie aktywacji bardzo duże, warstwy normalizacji lokalnego odpowiedzi pomija poziom aktywacji otaczające grupy neuronów. Jest to wykonywane przy użyciu trzech parametrów (`α`, `β`, i `k`) i splotowe struktury (lub kształtu otoczenia). Każdy neuronu warstwy docelowej **y** odpowiada neuronu **x** z warstwy źródłowej. Poziom aktywacji **y** znajduje się za pomocą następującego wzoru gdzie `f` jest poziom aktywacji neuronu, i `Nx` jądro (lub zestaw, który zawiera grupy neuronów w otoczeniu z **x**), zgodnie z następującą strukturę splotowe:
+Normalizacja odpowiedzi jest używana do uogólniania w sieci neuronowych. Gdy jeden neuron jest wyzwalany na wysokim poziomie aktywacji, warstwa normalizacji odpowiedzi lokalnej pomija poziom aktywacji otaczającego neurons. Jest to realizowane przy użyciu trzech parametrów (`α`, `β`i `k`) oraz struktury splotowych (lub kształtu klubu). Każdy neuron w warstwie docelowej **y** odpowiada neuron **x** w warstwie źródłowej. Poziom aktywacji **y** jest przyznany przez poniższą formułę, gdzie `f` jest poziomem aktywacji neuron, a `Nx` jest jądrem (lub zestawem zawierającym neurons w okolicy **x**), zgodnie z definicją w następującym splotowych XML
 
-![Formuła splotowe struktury](./media/azure-ml-netsharp-reference-guide/formula_large.png)
+![Formuła dla struktury splotowych](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
-Pakiety normalizacji odpowiedzi obsługuje wszystkie splotowe atrybutów, z wyjątkiem **udostępniania**, **MapCount**, i **wagi**.
+Pakiety normalizacji odpowiedzi obsługują wszystkie atrybuty splotowych z wyjątkiem **udostępniania**, **MapCount**i **wag**.
 
-+ Jeśli jądro zawiera grupy neuronów w tej samej tablicy jako ***x***, schemat normalizacji jest określany jako **takie same mapy normalizacji**. Określenie tej samej normalizacji mapy, pierwszy Współrzędna w **InputShape** musi mieć wartość 1.
++ Jeśli jądro zawiera neurons w tej samej mapie jak ***x***, schemat normalizacji jest określany jako **Ta sama normalizacja mapy**. Aby zdefiniować tę samą normalizację mapy, pierwsza Współrzędna w **InputShape** musi mieć wartość 1.
 
-+ Jeśli jądro zawiera grupy neuronów w tym samym miejscu przestrzenne ***x***, ale grupy neuronów znajdują się w innych map, nazywa się schemat normalizacji **na mapuje normalizacji**. Tego typu odpowiedzi normalizacji implementuje formę poprzecznego niemożność wykonania przez typ w rzeczywistych grupy neuronów, tworzenie konkurencję w odniesieniu do poziomów big Data aktywacji wśród wyjść neuronu obliczane na różnych mapowań. Aby zdefiniować między normalizacji map, pierwszy współrzędnych musi być liczbą całkowitą, większa niż i większa niż liczba map, a pozostałe współrzędne musi mieć wartość 1.
++ Jeśli jądro zawiera neurons w tym samym położeniu przestrzennym co ***x***, ale neurons znajdują się w innych mapach, schemat normalizacji jest wywoływany w **ramach normalizacji Maps**. Ten typ normalizacji odpowiedzi implementuje formę procedury inhibicji bocznej, która jest inspirowana typem znalezionym w rzeczywistości neurons, tworząc konkurs dla dużych poziomów aktywacji między wynikami neuron obliczanymi w różnych mapach. Aby zdefiniować w obrębie normalizacji Maps, pierwsza Współrzędna musi być liczbą całkowitą większą niż 1 i nie większa niż liczba map
 
-Ponieważ pakiety normalizacji odpowiedzi dotyczą wstępnie zdefiniowana funkcja wartości węzła źródłowego do określenia wartości węzła docelowego, muszą oni bez trainable stanu (wagi lub odchyleń).
+Ponieważ pakiety normalizacji odpowiedzi stosują wstępnie zdefiniowaną funkcję do wartości węzła źródłowego, aby określić wartość węzła docelowego, nie mają stanu do uczenia (wagi lub odchylenia).
 
 > [!NOTE]
-> Węzły w warstwie docelowej odpowiadają grupy neuronów, które są centralnej węzłami jądra. Na przykład jeśli `KernelShape[d]` jest nieparzysta, `KernelShape[d]/2` odnosi się do węzła centralnej jądra. Jeśli `KernelShape[d]` jest parzysta, wynosi węźle centralnym `KernelShape[d]/2 - 1`. W związku z tym jeśli `Padding[d]` jest wartość False, pierwszy i ostatni `KernelShape[d]/2` węzły nie mają odpowiednich węzłów warstwy docelowej. Aby uniknąć tej sytuacji, należy zdefiniować **dopełnienie** jako [ma wartość true, true na wartość true,...].
+> Węzły w warstwie docelowej odpowiadają neurons, które są centralnymi węzłami jądra. Na przykład jeśli `KernelShape[d]` jest nieparzysta, `KernelShape[d]/2` odpowiada centralnemu węzłowi jądra. Jeśli `KernelShape[d]` jest nawet, węzeł centralny jest w `KernelShape[d]/2 - 1`. W związku z tym, jeśli `Padding[d]` ma wartość false, pierwsze i ostatnie węzły `KernelShape[d]/2` nie mają odpowiednich węzłów w warstwie docelowej. Aby uniknąć tej sytuacji, zdefiniuj **uzupełnienie** jako [true, true,..., true].
 
-Oprócz cztery atrybuty opisanego wcześniej pakiety normalizacji odpowiedzi obsługują następujące atrybuty:
+Oprócz czterech opisanych wcześniej atrybutów, pakiety normalizacji odpowiedzi obsługują również następujące atrybuty:
 
-+ **Alfa**: (wymagane) określa wartość zmiennoprzecinkową, która odpowiada `α` poprzednie formuły.
-+ **W wersji beta**: (wymagane) określa wartość zmiennoprzecinkową, która odpowiada `β` poprzednie formuły.
-+ **Przesunięcie**: (opcjonalnie) określa wartość zmiennoprzecinkową, która odpowiada `k` poprzednie formuły. Jego wartość domyślna to 1.
++ **Alpha**: (required) określa wartość zmiennoprzecinkową, która odnosi się `α` w poprzedniej formule.
++ **Beta**: (wymagane) określa wartość zmiennoprzecinkową, która odnosi się `β` w poprzedniej formule.
++ **Przesunięcie**: (opcjonalnie) określa wartość zmiennoprzecinkową, która odnosi się `k` w poprzedniej formule. Wartość domyślna to 1.
 
-W poniższym przykładzie zdefiniowano pakietu normalizacji odpowiedzi, za pomocą tych atrybutów:
+W poniższym przykładzie zdefiniowano pakiet normalizacji odpowiedzi przy użyciu następujących atrybutów:
 
 ```Net#
 hidden RN1 [5, 10, 10]
@@ -292,13 +292,13 @@ from P1 response norm {
   }
 ```
 
-+ Warstwa źródłowa zawiera pięć mapy, z których każdy wymiar aof 12 x 12, sumowanie w węzłach 1440.
-+ Wartość **KernelShape** wskazuje, że jest to ten sam normalizacji warstwę mapy, gdzie otoczenia jest prostokąt 3 x 3.
-+ Wartość domyślna **dopełnienie** ma wartość FAŁSZ, dlatego warstwy docelowej ma tylko 10 węzłów, w każdym wymiarze. Aby dołączyć jednego węzła w warstwie docelowej, która odnosi się do każdego węzła w warstwie źródłowej, należy dodać dopełnienie = [true, true, true]; i zmień rozmiar RN1 [5, 12, 12].
++ Warstwa źródłowa zawiera pięć map, z których każdy ma kopia zapasowa AOF wymiar 12x12, co umożliwia sumowanie w węzłach 1440.
++ Wartość **KernelShape** wskazuje, że jest to taka sama warstwa normalizacji mapy, gdzie klub jest prostokątem 3x3.
++ Wartość domyślna **dopełnienia** to false, w tym przypadku warstwa docelowa ma tylko 10 węzłów w każdym wymiarze. Aby dołączyć jeden węzeł do warstwy docelowej, który odnosi się do każdego węzła w warstwie źródłowej, Dodaj uzupełnienie = [true, true, true]; i Zmień rozmiar RN1 na [5, 12, 12].
 
 ## <a name="share-declaration"></a>Udostępnianie deklaracji
 
-NET # obsługuje opcjonalnie zdefiniowanie kilka pakietów za pomocą wag udostępnionego. Mogą być udostępniane wagi wszelkie dwa pakiety, jeśli ich struktur są takie same. Następująca składnia określa pakiety za pomocą wag udostępnione:
+NET # opcjonalnie obsługuje definiowanie wielu pakietów z współdzielonymi wagami. Wagi każdego z dwóch pakietów można udostępnić, jeśli ich struktury są takie same. Poniższa składnia definiuje zbiory ze współdzielonymi wagami:
 
 ```Net#
 share-declaration:
@@ -328,7 +328,7 @@ share-declaration:
     identifier
 ```
 
-Na przykład następująca deklaracja udziału określa nazwy warstw, wskazujący, że powinna być udostępniana odchyleń i wagi:
+Na przykład następująca deklaracja udziału określa nazwy warstw, wskazując, że obie wagi i bias powinny być współużytkowane:
 
 ```Net#
 Const {
@@ -350,11 +350,11 @@ output Result [2] {
 share { H1, H2 } // share both weights and biases
 ```
 
-+ Funkcje wejściowe są podzielone na partycje w taki sam rozmiar warstwy danych wejściowych.
-+ Ukryte warstwy należy obliczyć wyższy poziom funkcji na dwie warstwy danych wejściowych.
-+ Deklaracja udziału określa, że *H1* i *H2* muszą być obliczone w taki sam sposób, z ich odpowiednich danych wejściowych.
++ Funkcje wejściowe są podzielone na dwie warstwy wejściowe o równym rozmiarze.
++ Ukryte warstwy następnie obliczają funkcje wyższego poziomu na dwóch warstwach wejściowych.
++ Deklaracja udziału określa, że *H1* i *H2* muszą być obliczane w taki sam sposób, jak w odpowiednich danych wejściowych.
 
-Alternatywnie to może być określona za pomocą dwóch osobnych deklaracji udziału w następujący sposób:
+Alternatywnie można je określić przy użyciu dwóch oddzielnych deklaracji udziałów w następujący sposób:
 
 ```Net#
 share { Data1 => H1, Data2 => H2 } // share weights
@@ -362,15 +362,15 @@ share { Data1 => H1, Data2 => H2 } // share weights
     share { 1 => H1, 1 => H2 } // share biases
 ```
 
-Można użyć krótkiej formy, tylko wtedy, gdy warstwy zawiera pojedynczy pakiet. Ogólnie rzecz biorąc jest możliwe udostępnianie tylko wtedy, gdy odpowiednia struktura jest taka sama, co oznacza, że mają one ten sam rozmiar, ten sam geometrii splotowe i tak dalej.
+Możesz użyć krótkiej formy tylko wtedy, gdy warstwy zawierają jeden pakiet. Ogólnie udostępnianie jest możliwe tylko wtedy, gdy odpowiednia struktura jest taka sama, co oznacza, że mają ten sam rozmiar, tę samą geometrię splotowych i tak dalej.
 
-## <a name="examples-of-net-usage"></a>Przykłady użycia Net #
+## <a name="examples-of-net-usage"></a>Przykłady użycia NET #
 
-W tej sekcji przedstawiono kilka przykładów sposobu korzystania z Net # Dodaj ukrytych warstw, definiowania sposobu interakcji z innymi warstwami ukrytych warstw i twórz splotowych sieci.
+W tej sekcji przedstawiono kilka przykładów użycia polecenia NET # do dodawania ukrytych warstw, zdefiniowanie sposobu, w jaki ukryte warstwy współdziałają z innymi warstwami i tworzą sieci splotowych.
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Zdefiniuj prostą niestandardowych sieci neuronowych: Przykład "Hello World"
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Zdefiniuj prostą niestandardową sieć neuronowych: przykład "Hello world"
 
-Ten prosty przykład przedstawia sposób tworzenia modelu sieci neuronowej, który ma jedną warstwę ukryte.
+Ten prosty przykład pokazuje, jak utworzyć model sieci neuronowych, który ma pojedynczą ukrytą warstwę.
 
 ```Net#
 input Data auto;
@@ -378,15 +378,15 @@ hidden H [200] from Data all;
 output Out [10] sigmoid from H all;
 ```
 
-W przykładzie pokazano niektóre podstawowe polecenia w następujący sposób:
+Przykład ilustruje niektóre podstawowe polecenia w następujący sposób:
 
-+ Pierwszy wiersz definiuje warstwę danych wejściowych (o nazwie `Data`). Kiedy używasz `auto` — słowo kluczowe, sieć neuronowa automatycznie uwzględnia wszystkich kolumn funkcji w danych wejściowych przykładach.
-+ Drugi wiersz tworzy ukrytej warstwie. Nazwa `H` jest przypisany do warstwy ukryte, która zawiera węzły 200. Ta warstwa podłączona do warstwy danych wejściowych.
-+ Trzeci wiersz definiuje warstwę danych wyjściowych (o nazwie `Out`), który zawiera 10 węzłów danych wyjściowych. Sieć neuronowa służy do klasyfikowania, czy jeden węzeł danych wyjściowych klasy. Słowo kluczowe **sigmoid** wskazuje, że funkcja danych wyjściowych jest stosowana do warstwy danych wyjściowych.
++ Pierwszy wiersz definiuje warstwę wejściową (o nazwie `Data`). Używając słowa kluczowego `auto`, Sieć neuronowych automatycznie uwzględnia wszystkie kolumny funkcji w przykładach wejściowych.
++ Drugi wiersz tworzy ukrytą warstwę. Nazwa `H` jest przypisana do warstwy ukrytej, która ma węzły 200. Ta warstwa jest w pełni połączona z warstwą wejściową.
++ Trzeci wiersz definiuje warstwę wyjściową (o nazwie `Out`), która zawiera 10 węzłów wyjściowych. Jeśli sieć neuronowych jest używana do klasyfikacji, istnieje jeden węzeł wyjściowy dla każdej klasy. Słowo kluczowe **sigmoid** wskazuje, że funkcja Output jest stosowana do warstwy wyjściowej.
 
-### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Zdefiniuj wiele warstw ukryte: przykład vision komputera
+### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Definiowanie wielu ukrytych warstw: przykładowa obsługa komputera
 
-Poniższy przykład pokazuje, jak zdefiniować nieco bardziej złożonych sieci neuronowych, za pomocą różnych warstw ukrytych niestandardowych.
+Poniższy przykład ilustruje sposób definiowania nieco bardziej złożonej sieci neuronowych z wieloma ukrytymi warstwami niestandardowymi.
 
 ```Net#
 // Define the input layers
@@ -412,17 +412,17 @@ from MetaData all;
 }
 ```
 
-Ten przykład ilustruje kilka funkcji w języku specyfikacji sieci neuronowych:
+Ten przykład ilustruje kilka funkcji języka specyfikacji sieci neuronowych:
 
-+ Struktura zawiera dwie warstwy danych wejściowych, `Pixels` i `MetaData`.
-+ `Pixels` Warstwa jest warstwą źródła dla dwóch pakietów połączenie, za pomocą warstwy docelowej `ByRow` i `ByCol`.
-+ Warstwy `Gather` i `Result` są warstwy docelowej w wielu pakietów połączenia.
-+ Warstwa danych wyjściowych, `Result`, jest warstwą docelowego w dwóch pakietów połączenia; jedna z drugiego poziomu ukrytej warstwie według następującego `Gather` jako warstwy docelowej, a druga z warstwą danych wejściowych `MetaData` jako warstwy docelowej.
-+ Ukryte warstwy `ByRow` i `ByCol`, określ filtrowane łączności za pomocą wyrażeń predykatu. Mówiąc ściślej, węzeł w `ByRow` w [x, y] jest podłączony do węzłów w `Pixels` , jest mają równe węzeł koordynować pierwszego indeksu w pierwszym współrzędnych, x. Podobnie, węzeł w `ByCol` w [x, y] jest podłączony do węzłów w `Pixels` , mieć drugi indeks koordynować jednego węzła przez drugi współrzędnych, y.
++ Struktura ma dwie warstwy wejściowe, `Pixels` i `MetaData`.
++ Warstwa `Pixels` jest warstwą źródłową dla dwóch pakietów połączeń z warstwami docelowymi, `ByRow` i `ByCol`.
++ Warstwy `Gather` i `Result` są warstwami docelowymi w wielu pakietach połączeń.
++ Warstwa wyjściowa, `Result`, jest warstwą docelową w dwóch pakietach połączeń; jeden z warstwą ukryta na drugim poziomie `Gather` jako warstwa docelowa, a drugi z warstwą wejściową `MetaData` jako warstwa docelowa.
++ Ukryte warstwy, `ByRow` i `ByCol`, określają połączenia filtrowane przy użyciu wyrażeń predykatu. Dokładniej, węzeł w `ByRow` na [x, y] jest połączony z węzłami w `Pixels`, które mają pierwszą współrzędną indeksu równą pierwszej koordynacji węzła, x. Podobnie węzeł w `ByCol` na [x, y] jest połączony z węzłami w `Pixels`, które mają drugą współrzędną indeksu w jednym z drugiej współrzędnej węzła, y.
 
-### <a name="define-a-convolutional-network-for-multiclass-classification-digit-recognition-example"></a>Zdefiniuj splotowej sieci wieloklasowej klasyfikacji: przykład rozpoznawanie cyfr
+### <a name="define-a-convolutional-network-for-multiclass-classification-digit-recognition-example"></a>Zdefiniuj sieć splotowych dla klasyfikacji wieloklasowej: przykład rozpoznawania cyfr
 
-Definicji następującej sieci jest przeznaczona do rozpoznaje numery, a przykład ilustruje kilka zaawansowanych technik dostosowywania sieci neuronowych.
+Definicja następującej sieci została zaprojektowana w celu rozpoznawania liczb i ilustruje kilka zaawansowanych technik dostosowywania sieci neuronowych.
 
 ```Net#
 input Image [29, 29];
@@ -446,20 +446,20 @@ hidden Hid3 [100] from Conv2 all;
 output Digit [10] from Hid3 all;
 ```
 
-+ Struktura zawiera jedną warstwę danych wejściowych, `Image`.
-+ Słowo kluczowe `convolve` wskazuje, że warstwy o nazwie `Conv1` i `Conv2` to splotowe warstwy. Każda z tych deklaracji warstwy następuje lista atrybutów konwolucji.
-+ Net trzecią ukrył warstwy, `Hid3`, która pełni jest połączona z drugą warstwę ukryte, `Conv2`.
-+ Warstwa danych wyjściowych, `Digit`, jest podłączony tylko do trzeciego ukrytej warstwie `Hid3`. Słowo kluczowe `all` wskazuje, czy warstwa danych wyjściowych jest w pełni połączone `Hid3`.
-+ Liczby argumentów konwolucji to trzy: długość kolekcje `InputShape`, `KernelShape`, `Stride`, i `Sharing`.
-+ Liczba wag na jądra jest `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. lub `26 * 50 = 1300`.
-+ Węzłów w ukrytej warstwie według następującego każdego można obliczyć w następujący sposób:
++ Struktura ma jedną warstwę wejściową, `Image`.
++ Słowo kluczowe `convolve` wskazuje, że warstwy o nazwach `Conv1` i `Conv2` są warstwami splotowych. Po każdej z tych deklaracji warstwy następuje lista atrybutów Convolution.
++ Sieć ma trzecią ukrytą warstwę `Hid3`, która jest w pełni połączona z drugą warstwą ukryta, `Conv2`.
++ Warstwa wyjściowa, `Digit`, jest połączona tylko z trzecią ukrytą warstwą, `Hid3`. Słowo kluczowe `all` wskazuje, że warstwa wyjściowa jest w pełni połączona z `Hid3`.
++ Liczba argumentów Convolution to trzy: długość spójnych krotek `InputShape`, `KernelShape`, `Stride`i `Sharing`.
++ Liczba wag na jądro jest `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Lub `26 * 50 = 1300`.
++ Węzły w każdej ukrytej warstwie można obliczyć w następujący sposób:
 
     `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
-+ Całkowita liczba węzłów można obliczyć przy użyciu zadeklarowane wymiarach warstwy [50, 5, 5], w następujący sposób: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
-+ Ponieważ `Sharing[d]` ma wartość FAŁSZ tylko w przypadku `d == 0`, liczba jądra jest `MapCount * NodeCount\[0] = 10 * 5 = 50`.
++ Łączna liczba węzłów można obliczyć przy użyciu deklarowanej wartości wymiaru warstwy [50, 5, 5] w następujący sposób: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
++ Ponieważ `Sharing[d]` ma wartość false tylko dla `d == 0`, liczba jądra jest `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
-## <a name="acknowledgements"></a>Potwierdzanie
+## <a name="acknowledgements"></a>Potwierdzeń
 
-Język Net # dostosowywania architektury sieci neuronowych został opracowany w firmie Microsoft przez Shon Katzenberger (Architekt, uczenie maszynowe) i Alexey Kamenev (inżynier oprogramowania, Microsoft Research). Jest ona używana wewnętrznie do uczenia maszynowego projektów i aplikacje, począwszy od wykrywania obrazu do analizy tekstu. Aby uzyskać więcej informacji, zobacz [neuronowe w usłudze Azure Machine Learning studio — wprowadzenie do Net #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)
+Język NET # do dostosowywania architektury sieci neuronowych został opracowany przez firmę Microsoft przez Shon Katzenberger (architekt, Machine Learning) i Alexey Kamenev (inżynier oprogramowania, Microsoft Research). Jest używany wewnętrznie w przypadku projektów i aplikacji usługi Machine Learning w zakresie od wykrywania obrazów do analizy tekstu. Aby uzyskać więcej informacji, zobacz [neuronowych sieci w Azure Machine Learning Studio — wprowadzenie do usługi NET #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)

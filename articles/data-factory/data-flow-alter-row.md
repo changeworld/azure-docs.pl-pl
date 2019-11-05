@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: fff08b3e046161fbedefdc55f4e6a39a7f965f80
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7a782c62165aa6f2641c2ebe8e4600198ec373c5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387271"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486212"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory zmodyfikować przekształcenia wierszy
 
@@ -22,11 +22,11 @@ Użyj przekształcenia ALTER Row, aby ustawić zasady wstawiania, usuwania, aktu
 ![Zmień ustawienia wiersza](media/data-flow/alter-row1.png "Zmień ustawienia wiersza")
 
 > [!NOTE]
-> Przekształcenia ALTER Row będą działać tylko w ujściach bazy danych w przepływie danych. Akcje przypisane do wierszy (INSERT, Update, DELETE, upsert) nie będą wykonywane podczas sesji debugowania. Należy dodać zadanie wykonywania przepływu danych do potoku i użyć debugowania potoku lub wyzwalaczy w celu wymuszenia zasad ALTER Row w tabelach bazy danych.
+> Przekształcenia ALTER Row będą działać tylko dla bazy danych lub ujścia CosmosDB w przepływie danych. Akcje przypisane do wierszy (INSERT, Update, DELETE, upsert) nie będą wykonywane podczas sesji debugowania. Należy dodać zadanie wykonywania przepływu danych do potoku i użyć debugowania potoku lub wyzwalaczy w celu wymuszenia zasad ALTER Row w tabelach bazy danych.
 
 ## <a name="indicate-a-default-row-policy"></a>Wskazywanie domyślnych zasad wiersza
 
-Tworzenie przekształcenia ALTER Row i Określanie zasad wiersza z warunkiem `true()`. Każdy wiersz, który nie spełnia żadnych wcześniej zdefiniowanych wyrażeń, zostanie oznaczony dla określonych zasad wiersza. Domyślnie każdy wiersz, który nie spełnia żadnego wyrażenia warunkowego, zostanie oznaczony dla `Insert`.
+Tworzenie przekształcenia ALTER Row i Określanie zasad wiersza z warunkiem `true()`. Każdy wiersz, który nie spełnia żadnych wcześniej zdefiniowanych wyrażeń, zostanie oznaczony dla określonych zasad wiersza. Domyślnie każdy wiersz, który nie spełnia żadnego wyrażenia warunkowego, zostanie oznaczony do `Insert`.
 
 ![Zmień wiersz o jedną zasadę](media/data-flow/alter-row4.png "Zmień wiersz o jedną zasadę")
 

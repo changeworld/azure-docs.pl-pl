@@ -5,19 +5,19 @@ services: expressroute
 author: rambk
 ms.service: expressroute
 ms.topic: article
-ms.date: 8/17/2018
+ms.date: 11/1/2018
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: e33e90d988251afde630401bed165a4d3614d2cd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: a24e021c34fe1ad315ca7f75f9bfdb29d94b253a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881466"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495007"
 ---
 # <a name="configure-bfd-over-expressroute"></a>Konfigurowanie BFD ponad ExpressRoute
 
-ExpressRoute obsługuje wykrywanie dwukierunkowego przekazywania (BFD) za pośrednictwem prywatnej komunikacji równorzędnej. Włączenie funkcji BFD over ExpressRoute umożliwia przyspieszenie wykrywania awarii łącza między urządzeniami Microsoft Enterprise Edge (MSEE) i routerami, na których kończy się obwód ExpressRoute (PE/CE). Możesz przerwać ExpressRoute za pośrednictwem urządzeń routingu brzegowego klienta lub urządzeń routingu brzegowego partnera (jeśli zaszło do zarządzanej usługi połączenia warstwy 3). W tym dokumencie przedstawiono potrzeby BFD oraz sposób włączania BFD przez ExpressRoute.
+ExpressRoute obsługuje wykrywanie dwukierunkowego przekazywania (BFD) zarówno w komunikacji równorzędnej, jak i za pośrednictwem firmy Microsoft. Włączenie funkcji BFD over ExpressRoute umożliwia przyspieszenie wykrywania awarii łącza między urządzeniami Microsoft Enterprise Edge (MSEE) i routerami, na których kończy się obwód ExpressRoute (CE/PE). Możesz przerwać ExpressRoute za pośrednictwem urządzeń routingu brzegowego klienta lub urządzeń routingu brzegowego partnera (jeśli zaszło do zarządzanej usługi połączenia warstwy 3). W tym dokumencie przedstawiono potrzeby BFD oraz sposób włączania BFD przez ExpressRoute.
 
 ## <a name="need-for-bfd"></a>Potrzeba do BFD
 
@@ -27,16 +27,16 @@ Obwód ExpressRoute można włączyć przez połączenia warstwy 2 lub zarządza
 
 Na urządzeniach z systemem MSEE czas utrzymywania aktywności i czasu wstrzymania BGP są zwykle konfigurowane odpowiednio do 60 i 180 sekund. W związku z tym po niepowodzeniu łącza może upłynąć nawet trzy minuty na wykrycie błędu łącza i przełączenie ruchu do alternatywnego połączenia.
 
-Można kontrolować czasomierze protokołu BGP przez skonfigurowanie mniejszej aktywności protokołu BGP i czasu wstrzymania na urządzeniu równorzędnym dla klienta. Jeśli czasomierze protokołu BGP są niezgodne między dwoma urządzeniami równorzędnymi, sesja protokołu BGP między elementami równorzędnymi będzie używać niższej wartości czasomierza. Wartość utrzymywania aktywności BGP może być ustawiona na maksymalnie trzy sekundy i czas przechowywania w kolejności dziesiątek sekund. Jednak skonfigurowanie czasomierzy protokołu BGP jest agresywnie bardziej preferowany, ponieważ protokół jest intensywnie przetwarzany.
+Można kontrolować czasomierze protokołu BGP przez skonfigurowanie mniejszej aktywności protokołu BGP i czasu wstrzymania na urządzeniu równorzędnym dla klienta. Jeśli czasomierze protokołu BGP są niezgodne między dwoma urządzeniami równorzędnymi, sesja protokołu BGP między elementami równorzędnymi będzie używać niższej wartości czasomierza. Wartość utrzymywania aktywności BGP może być ustawiona na maksymalnie trzy sekundy i czas przechowywania w kolejności dziesiątek sekund. Jednak ustawienie czasomierzy protokołu BGP agresywnie jest mniej zalecane, ponieważ protokół jest intensywnie przetwarzany.
 
 W tym scenariuszu BFD może pomóc. BFD zapewnia słabo rozrzutne wykrywanie awarii linków w drugim przedziale czasu. 
 
 
 ## <a name="enabling-bfd"></a>Włączanie BFD
 
-BFD jest domyślnie konfigurowana w ramach wszystkich nowo utworzonych interfejsów prywatnych komunikacji równorzędnej ExpressRoute na MSEE. W związku z tym, aby włączyć BFD, należy skonfigurować BFD na serwerze PEs/CE (zarówno na urządzeniach głównych, jak i dodatkowych). Konfigurowanie BFD jest procesem dwuetapowym: należy skonfigurować BFD w interfejsie, a następnie połączyć go z sesją BGP.
+BFD jest domyślnie konfigurowana w ramach wszystkich nowo utworzonych interfejsów prywatnych komunikacji równorzędnej ExpressRoute na MSEE. W związku z tym, aby włączyć BFD, należy skonfigurować BFD na serwerze rejestracji certyfikatów (zarówno na urządzeniach podstawowych, jak i dodatkowych). Konfigurowanie BFD jest procesem dwuetapowym: należy skonfigurować BFD w interfejsie, a następnie połączyć go z sesją BGP.
 
-Poniżej przedstawiono przykładową konfigurację środowiska PE/CE (przy użyciu systemu Cisco IOS XE). 
+Poniżej przedstawiono przykład CE/PE (z zastosowaniem konfiguracji Cisco IOS XE). 
 
     interface TenGigabitEthernet2/0/0.150
       description private peering to Azure
@@ -64,7 +64,7 @@ Poniżej przedstawiono przykładową konfigurację środowiska PE/CE (przy użyc
 Między elementami równorzędnymi BFD wolniejsze dwa elementy równorzędne określają szybkość transmisji. Interwały przesyłania/odbierania MSEE BFD są ustawione na 300 milisekund. W niektórych scenariuszach interwał może być ustawiony na wyższą wartość 750 milisekund. Konfigurując wyższe wartości, można wymusić dłuższe interwały. ale nie krótszy.
 
 >[!NOTE]
->Jeśli skonfigurowano geograficznie nadmiarowe obwody komunikacji równorzędnej ExpressRoute lub używasz połączenia sieci VPN typu lokacja-lokacja jako kopii zapasowej prywatnej komunikacji równorzędnej ExpressRoute; włączenie BFD za pośrednictwem prywatnej komunikacji równorzędnej może przyspieszyć przejście w tryb failover po błędzie łączności ExpressRoute. 
+>Jeśli skonfigurowano nadmiarowe obwody usługi ExpressRoute lub używasz połączenia sieci VPN typu lokacja-lokacja jako kopii zapasowej; włączenie BFD może pomóc w szybszym przejściu w tryb failover po błędzie łączności ExpressRoute. 
 >
 
 ## <a name="next-steps"></a>Następne kroki

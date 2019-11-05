@@ -9,35 +9,34 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.custom: seodec18
-ms.openlocfilehash: 5edf4a4f53e6b4255970f86dd942795ad2e4cbe2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025395"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476130"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Znane problemy i rozwiązywanie problemów Azure Machine Learning
 
 Ten artykuł pomaga znaleźć i poprawić błędy lub błędy występujące podczas korzystania z Azure Machine Learning.
 
-## <a name="upcoming-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Nadchodzące uaktualnienie SR-IOV do maszyn seria NCV3 w AmlCompute
+## <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Awaria: uaktualnianie SR-IOV do maszyn seria NCV3 w AmlCompute
 
-Usługa Azure COMPUTE będzie aktualizować jednostki SKU seria NCV3 zaczynające się od początku listopada do obsługi wszystkich implementacji i wersji MPI oraz czasowników RDMA dla maszyn wirtualnych z systemem InfiniBand. Będzie to wymagało krótkiego przestoju — [Przeczytaj więcej na temat uaktualnienia wirtualizacji SR-IOV](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
+Usługa Azure COMPUTE będzie aktualizować jednostki SKU seria NCV3 zaczynające się od początku listopada 2019, aby obsługiwały wszystkie implementacje i wersje MPI oraz czasowniki RDMA dla maszyn wirtualnych z systemem InfiniBand. Będzie to wymagało krótkiego przestoju — [Przeczytaj więcej na temat uaktualnienia wirtualizacji SR-IOV](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
 Jako klient z zarządzaną ofertą obliczeniową Azure Machine Learning (AmlCompute) nie musisz wprowadzać żadnych zmian w tym momencie. Na podstawie [harmonogramu aktualizacji](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) konieczne jest zaplanowanie krótkiej przerwy w szkoleniu. Usługa będzie odpowiedzialna za Aktualizowanie obrazów maszyn wirtualnych w węzłach klastra i automatyczne skalowanie klastra w górę. Po zakończeniu uaktualniania może być możliwe użycie wszystkich innych MPI discibutions (na przykład OpenMPI z Pytorchem), a następnie uzyskanie wyższych przepustowości InfiniBand, krótszych opóźnień i lepszą wydajność aplikacji rozproszonej.
 
-## <a name="visual-interface-issues"></a>Problemy z interfejsem wizualnym
+## <a name="azure-machine-learning-designer-issues"></a>Problemy z programem Azure Machine Learning Designer
 
-Interfejs wizualizacji problemów z usługą Machine Learning.
+Znane problemy związane z projektantem.
 
 ### <a name="long-compute-preparation-time"></a>Długi czas przygotowania obliczeń
 
 Utwórz nowe obliczenia lub Evoke, opuszczając czas obliczeń, może być kilka minut, a nawet dłużej. Zespół pracuje nad optymalizacją.
 
 
-### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Nie można uruchomić eksperymentu zawiera tylko zestaw danych 
+### <a name="cannot-run-an-experiment-only-contains-a-dataset"></a>Nie można uruchomić eksperymentu zawiera tylko zestaw danych 
 
 Możesz chcieć uruchomić eksperyment zawierający tylko zestaw danych, aby wizualizować zestaw danych. Nie jest jednak możliwe uruchamianie eksperymentu tylko zawiera zestaw danych. Aktywnie Naprawiamy ten problem.
  
@@ -144,11 +143,12 @@ Jeśli te kroki nie rozwiążą problemu, spróbuj ponownie uruchomić klaster.
 
 ### <a name="failtosendfeather"></a>FailToSendFeather
 
-Jeśli podczas odczytywania danych w klastrze Azure Databricks wyświetlany jest błąd `FailToSendFeather`, zapoznaj się z następującymi rozwiązaniami:
+Jeśli zobaczysz błąd `FailToSendFeather` podczas odczytywania danych w klastrze Azure Databricks, zapoznaj się z następującymi rozwiązaniami:
 
 * Uaktualnij pakiet `azureml-sdk[automl]` do najnowszej wersji.
 * Dodaj `azure-dataprep` w wersji 1.1.8 lub nowszej.
 * Dodaj `pyarrow` w wersji 0,11 lub nowszej.
+
 
 ## <a name="datasets"></a>Zestawy danych
 
@@ -158,11 +158,11 @@ Są to znane problemy dotyczące Azure Machine Learning zestawów danych.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Jeśli połączysz się bezpośrednio z obszarem roboczym z poziomu zestawu SDK lub portalu, nie będziesz w stanie wyświetlić standardowej strony przeglądu z informacjami o subskrypcji w rozszerzeniu. Nie będzie też możliwe przełączenie do innego obszaru roboczego. Jeśli zachodzi potrzeba wyświetlenia innego obszaru roboczego, obejście to przejście bezpośrednio do [Azure Portal](https://portal.azure.com) i wyszukanie nazwy obszaru roboczego.
+Jeśli połączysz się bezpośrednio z obszarem roboczym z poziomu zestawu SDK lub portalu, nie będziesz w stanie wyświetlić standardowej strony przeglądu z informacjami o subskrypcji w rozszerzeniu. Nie będzie też możliwe przełączenie do innego obszaru roboczego. Jeśli zachodzi potrzeba wyświetlenia innego obszaru roboczego, obejście to przejście bezpośrednio do [Azure Machine Learning Studio](https://ml.azure.com) i wyszukanie nazwy obszaru roboczego.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
-Czasami pomocne może być podanie informacji diagnostycznych podczas pytania o pomoc. Aby wyświetlić niektóre dzienniki, odwiedź stronę [Azure Portal](https://portal.azure.com) i przejdź do obszaru roboczego, a następnie wybierz pozycję **obszar roboczy > eksperymentuj > Uruchom > dzienników**.  Te informacje można również znaleźć w sekcji **eksperymenty** na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
+Czasami pomocne może być podanie informacji diagnostycznych podczas pytania o pomoc. Aby wyświetlić niektóre dzienniki, odwiedź stronę [Azure Machine Learning Studio](https://ml.azure.com) i przejdź do obszaru roboczego, a następnie wybierz pozycję **obszar roboczy > eksperymentuj > Uruchom > dzienników**.  
 
 > [!NOTE]
 > Azure Machine Learning rejestruje informacje z różnych źródeł podczas szkolenia, takie jak AutoML lub kontener platformy Docker, który uruchamia zadanie szkoleniowe. Wiele z tych dzienników nie jest udokumentowane. Jeśli wystąpią problemy i skontaktuje się z działem pomocy technicznej firmy Microsoft, mogą oni korzystać z tych dzienników podczas rozwiązywania problemów.
@@ -193,7 +193,7 @@ Na przykład, jeśli spróbujesz utworzyć lub dołączyć obiekt docelowy oblic
 
 ## <a name="overloaded-azurefile-storage"></a>Przeciążony magazyn AzureFile
 
-Jeśli wystąpi błąd `Unable to upload project files to working directory in AzureFile because the storage is overloaded`, zastosuj następujące obejścia.
+Jeśli zostanie wyświetlony komunikat o błędzie `Unable to upload project files to working directory in AzureFile because the storage is overloaded`, zastosuj następujące obejścia.
 
 Jeśli używasz udziału plików dla innych obciążeń, takich jak transfer danych, zalecenie polega na użyciu obiektów blob, dzięki czemu udział plików jest bezpłatny do użycia na potrzeby przesyłania przebiegów. Obciążenie można także podzielić między dwa różne obszary robocze.
 
@@ -233,7 +233,7 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-Jeśli certyfikat SSL i klucz prywatny nie są już używane lub używasz certyfikatu wygenerowanego przez Azure Machine Learning, możesz pobrać pliki przed odłączeniem klastra, łącząc się z klastrem przy użyciu `kubectl` i pobierając klucz tajny `azuremlfessl`.
+Jeśli certyfikat SSL i klucz prywatny nie są już używane lub używasz certyfikatu wygenerowanego przez Azure Machine Learning, możesz pobrać pliki przed odłączeniem klastra, łącząc się z klastrem przy użyciu `kubectl` i pobierając `azuremlfessl`klucza tajnego.
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml

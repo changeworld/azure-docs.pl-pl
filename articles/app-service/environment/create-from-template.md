@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bf66a9e9aeee859953b4e1e2021a385491c6298e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 60c9d89bc0ab7c63e779a7cadece863540e827aa
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069661"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470601"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Tworzenie środowiska ASE przy użyciu szablonu Azure Resource Manager
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -33,7 +33,7 @@ ms.locfileid: "70069661"
 Podczas tworzenia środowiska ASE w Azure Portal można utworzyć sieć wirtualną w tym samym czasie lub wybrać istniejącą sieć wirtualną do wdrożenia. Podczas tworzenia środowiska ASE na podstawie szablonu należy zacząć od: 
 
 * Menedżer zasobów sieci wirtualnej.
-* Podsieć w tej sieci wirtualnej. Zalecamy używanie podsieci `/24` środowiska ASE z 256 adresami, aby sprostać przyszłym potrzebom wzrostu i skalowania. Po utworzeniu środowiska ASE nie można zmienić jego rozmiaru.
+* Podsieć w tej sieci wirtualnej. Zalecamy, aby rozmiar podsieci środowiska ASE `/24` z 256 adresami w celu uwzględnienia przyszłych potrzeb wzrostu i skalowania. Po utworzeniu środowiska ASE nie można zmienić jego rozmiaru.
 * Identyfikator zasobu z sieci wirtualnej. Te informacje można uzyskać z Azure Portal w obszarze właściwości sieci wirtualnej.
 * Subskrypcja, w ramach której ma zostać wdrożone.
 * Lokalizacja, w której ma zostać wdrożone.
@@ -52,9 +52,9 @@ Menedżer zasobów szablon, który tworzy środowisko ASE i skojarzony z nim pli
 
 Jeśli chcesz utworzyć ILB ASE, Użyj tych [przykładów][quickstartilbasecreate]szablonu Menedżer zasobów. Są one stosowane do tego przypadku użycia. Większość parametrów w pliku *azuredeploy. Parameters. JSON* jest wspólna dla tworzenia ILB środowisk ASE i zewnętrznego środowisk ASE. Poniższa lista wywołuje Parametry specjalne uwagi lub są unikatowe, gdy tworzysz ILB ASE:
 
-* *internalLoadBalancingMode*: W większości przypadków należy ustawić tę wartość na 3, co oznacza, że zarówno ruch HTTP/HTTPS na portach 80/443, jak i porty kontroli/kanału danych nasłuchune przez usługę FTP w środowisku ASE, będą powiązane z adresem wewnętrznym sieci wirtualnej przydzielonej przez ILB. Jeśli ta właściwość ma wartość 2, tylko porty powiązane z usługą FTP (zarówno kanały kontroli i danych) są powiązane z adresem ILB. Ruch HTTP/HTTPS pozostaje w publicznym wirtualnym adresie IP.
-* *dnsSuffix*: Ten parametr definiuje domyślną domenę główną, która jest przypisana do środowiska ASE. W publicznej odmianie Azure App Service domyślną domeną główną dla wszystkich aplikacji sieci Web jest *azurewebsites.NET*. Ponieważ ILB ASE jest wewnętrzny dla sieci wirtualnej klienta, nie ma sensu używania domyślnej domeny głównej usługi publicznej. Zamiast tego, ILB ASE powinien mieć domyślną domenę główną, która ma Sense w przypadku użycia w wewnętrznej sieci wirtualnej firmy. Na przykład firma Contoso Corporation może używać domyślnej domeny głównej *Internal-contoso.com* dla aplikacji, które mają być rozpoznawalne i dostępne tylko w sieci wirtualnej firmy Contoso. 
-* *ipSslAddressCount*: Ten parametr automatycznie przyjmuje wartość 0 w pliku *azuredeploy. JSON* , ponieważ ILB środowisk ASE ma tylko jeden adres ILB. Brak jawnych adresów IP-SSL dla ILB ASE. W związku z tym Pula adresów IP-SSL dla ILB ASE musi mieć wartość zero. W przeciwnym razie wystąpi błąd aprowizacji. 
+* *internalLoadBalancingMode*: w większości przypadków należy ustawić tę wartość na 3, co oznacza, że zarówno ruch http/https na portach 80/443, jak i porty kontroli/kanału danych nasłuchune przez usługę FTP w środowisku ASE, będą powiązane z adresem wewnętrznym sieci wirtualnej przydzielonej przez ILB. Jeśli ta właściwość ma wartość 2, tylko porty powiązane z usługą FTP (zarówno kanały kontroli i danych) są powiązane z adresem ILB. Ruch HTTP/HTTPS pozostaje w publicznym wirtualnym adresie IP.
+* *dnsSuffix*: ten parametr definiuje domyślną domenę główną, która jest przypisana do środowiska ASE. W publicznej odmianie Azure App Service domyślną domeną główną dla wszystkich aplikacji sieci Web jest *azurewebsites.NET*. Ponieważ ILB ASE jest wewnętrzny dla sieci wirtualnej klienta, nie ma sensu używania domyślnej domeny głównej usługi publicznej. Zamiast tego, ILB ASE powinien mieć domyślną domenę główną, która ma Sense w przypadku użycia w wewnętrznej sieci wirtualnej firmy. Na przykład firma Contoso Corporation może używać domyślnej domeny głównej *Internal-contoso.com* dla aplikacji, które mają być rozpoznawalne i dostępne tylko w sieci wirtualnej firmy Contoso. 
+* *ipSslAddressCount*: ten parametr automatycznie przyjmuje wartość 0 w pliku *azuredeploy. JSON* , ponieważ środowisk ASE ILB ma tylko jeden adres ILB. Brak jawnych adresów IP-SSL dla ILB ASE. W związku z tym Pula adresów IP-SSL dla ILB ASE musi mieć wartość zero. W przeciwnym razie wystąpi błąd aprowizacji. 
 
 Po wypełnieniu pliku *azuredeploy. Parameters. JSON* Utwórz środowisko ASE przy użyciu fragmentu kodu programu PowerShell. Zmień ścieżki plików tak, aby były zgodne z lokalizacjami plików szablonu Menedżer zasobów na komputerze. Pamiętaj, aby podać własne wartości nazwy wdrożenia Menedżer zasobów i nazwy grupy zasobów:
 
@@ -72,8 +72,8 @@ Certyfikat SSL musi być skojarzony z środowiskiem ASE jako "domyślny" certyfi
 
 Uzyskaj prawidłowy certyfikat SSL przy użyciu wewnętrznych urzędów certyfikacji, kupując certyfikat od zewnętrznego wystawcy lub korzystając z certyfikatu z podpisem własnym. Niezależnie od źródła certyfikatu SSL należy prawidłowo skonfigurować następujące atrybuty certyfikatu:
 
-* **Podmiot**: Ten atrybut musi być ustawiony na * *. your-root-Domain-here.com*.
-* **Alternatywna nazwa podmiotu**: Ten atrybut musi zawierać zarówno * *. your-root-Domain-here.com* , jak i * *. SCM.your-root-Domain-here.com*. Połączenia SSL z witryną SCM/kudu skojarzoną z każdą aplikacją używają adresu formularza *Your-App-Name.SCM.your-root-Domain-here.com*.
+* **Podmiot**: ten atrybut musi być ustawiony na * *. your-root-Domain-here.com*.
+* **Alternatywna nazwa podmiotu**: ten atrybut musi zawierać zarówno * *. your-root-Domain-here.com* , jak i * *. SCM.your-root-Domain-here.com*. Połączenia SSL z witryną SCM/kudu skojarzoną z każdą aplikacją używają adresu formularza *Your-App-Name.SCM.your-root-Domain-here.com*.
 
 Mając na ręką prawidłowy certyfikat SSL, wymagane są dwa dodatkowe kroki przygotowawcze. Przekonwertuj lub zapisz certyfikat SSL jako plik pfx. Należy pamiętać, że plik PFX musi zawierać wszystkie certyfikaty pośrednie i główne. Zabezpiecz go przy użyciu hasła.
 
@@ -106,12 +106,12 @@ Po pomyślnym wygenerowaniu i przekonwertowaniu certyfikatu SSL na ciąg szyfrow
 
 Parametry w pliku *azuredeploy. Parameters. JSON* są wymienione tutaj:
 
-* *appServiceEnvironmentName*: Nazwa konfigurowanego ILB środowiska ASE.
-* *existingAseLocation*: Ciąg tekstowy zawierający region platformy Azure, w którym wdrożono ILB ASE.  Przykład: "Południowo-środkowe stany USA".
-* *pfxBlobString*: Reprezentacja ciągu zakodowanego przez based64 w pliku PFX. Użyj podanego wcześniej fragmentu kodu i skopiuj ciąg zawarty w pliku "exportedcert. pfx. B64". Wklej ją jako wartość atrybutu *pfxBlobString* .
-* *hasło*: Hasło użyte do zabezpieczenia pliku PFX.
-* *certificateThumbprint*: Odcisk palca certyfikatu. Jeśli ta wartość zostanie pobrana z programu PowerShell (na przykład *$Certificate. Odcisk palca* ze starszego fragmentu kodu), można użyć wartości jako. Jeśli skopiujesz wartość z okna dialogowego certyfikat systemu Windows, pamiętaj, aby rozdzielić spacje. *CertificateThumbprint* powinna wyglądać podobnie do AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-* Identyfikator *certyfikatu*: Przyjazny identyfikator ciągu używany do wybrania tożsamości certyfikatu. Nazwa jest używana jako część unikatowego identyfikatora Menedżer zasobów jednostki *Microsoft. Web/Certificates* , która reprezentuje certyfikat protokołu SSL. Nazwa *musi* kończyć się następującym sufiksem: \_yourASENameHere_InternalLoadBalancingASE. Azure Portal używa tego sufiksu jako wskaźnika, który służy do zabezpieczania środowiska ASE z włączoną obsługą ILB.
+* *appServiceEnvironmentName*: Nazwa KONFIGUROWANEgo ILB środowiska ASE.
+* *existingAseLocation*: ciąg tekstowy zawierający region platformy Azure, w którym WDROŻONO ILB ASE.  Na przykład: "Południowo-środkowe stany USA".
+* *pfxBlobString*: zakodowany w based64 ciąg reprezentacji pliku PFX. Użyj podanego wcześniej fragmentu kodu i skopiuj ciąg zawarty w pliku "exportedcert. pfx. B64". Wklej ją jako wartość atrybutu *pfxBlobString* .
+* *hasło*: hasło użyte do zabezpieczenia pliku PFX.
+* *certificateThumbprint*: odcisk palca certyfikatu. Jeśli ta wartość zostanie pobrana z programu PowerShell (na przykład *$Certificate. Odcisk palca* ze starszego fragmentu kodu), można użyć wartości jako. Jeśli skopiujesz wartość z okna dialogowego certyfikat systemu Windows, pamiętaj, aby rozdzielić spacje. *CertificateThumbprint* powinna wyglądać podobnie do AF3143EB61D43F6727842115BB7F17BBCECAECAE.
+* *certificateName*: przyjazny identyfikator ciągu używany do wybrania tożsamości certyfikatu. Nazwa jest używana jako część unikatowego identyfikatora Menedżer zasobów jednostki *Microsoft. Web/Certificates* , która reprezentuje certyfikat protokołu SSL. Nazwa *musi* kończyć się następującym sufiksem: \_yourASENameHere_InternalLoadBalancingASE. Azure Portal używa tego sufiksu jako wskaźnika, który służy do zabezpieczania środowiska ASE z włączoną obsługą ILB.
 
 Poniżej przedstawiono skrócony przykład pliku *azuredeploy. Parameters. JSON* :
 
@@ -188,7 +188,7 @@ Aby utworzyć środowiska asev1 za pomocą szablonu Menedżer zasobów, zobacz [
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../../app-service/web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../../app-service/configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

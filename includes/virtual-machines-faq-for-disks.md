@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
-ms.translationtype: MT
+ms.openlocfilehash: f8c049cc8d2b09cb37dbd444427b03c1013da65c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973015"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523453"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych usługi Azure IaaS oraz zarządzanych i niezarządzanych dysków Premium
 
@@ -35,7 +35,7 @@ Tak. Opłata jest naliczana za każdą transakcję. Aby uzyskać więcej informa
 
 **Czy w przypadku dysku zarządzanego w warstwie Standardowa zostanie naliczona opłata za rzeczywisty rozmiar danych na dysku lub dla pojemności dysku?**
 
-Opłata jest naliczana na podstawie zainicjowanej pojemności dysku. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
+Opłata jest naliczana na podstawie aprowizowanej pojemności dysku. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
 
 **Czym różnią się ceny dysków zarządzanych w warstwie Premium od dysków niezarządzanych?**
 
@@ -144,6 +144,30 @@ Partycjonowanie GPT może być używane tylko na dyskach danych, a nie na dyskac
 **Jakie typy dysków obsługują migawki?**
 
 SSD w warstwie Premium, standardowy dysk SSD i standardowe dyski twarde obsługują migawki. Dla tych trzech typów dysków migawki są obsługiwane dla wszystkich rozmiarów dysków (łącznie z dyskami o rozmiarze do 32 TiB). Dyski Ultra nie obsługują migawek.
+
+### <a name="disk-reservation"></a>Rezerwacja dysku
+
+**Co to jest rezerwacja dysku platformy Azure?**
+Rezerwacja dysku to opcja zakupu jednego roku magazynu dyskowego z wyprzedzeniem i zmniejszenia łącznego kosztu.
+
+**Jakie opcje oferuje oferta rezerwacji dysku platformy Azure?**
+Rezerwacja dysku platformy Azure udostępnia opcję zakupu dysków SSD Premium w określonych jednostkach SKU z P30 (1 TiB) do P80 (32 TiB) przez okres jednego roku. Nie ma ograniczenia dotyczącego minimalnej ilości dysków koniecznych do zakupu rezerwacji dysku. Ponadto możesz wybrać opcję płacenia z jedną, z góry płatnością lub miesięczną płatnością. Managed Disks SSD w warstwie Premium nie ma dodatkowych kosztów transakcyjnych.
+
+Rezerwacje są wykonywane w postaci dysków, a nie pojemności. Innymi słowy, gdy zarezerwujesz dysk z systemem P80 (32 TiB), otrzymujesz jeden dysk P80, ale nie można go Divvy do dwóch mniejszych dysków P70 (16 TiB). Można oczywiście zarezerwować dowolną liczbę lub kilka dysków, w tym dwa oddzielne dyski P70 (16 TiB).
+
+**Jak będą naliczane opłaty za usługę Azure Disk Reservation?**
+- W przypadku klientów z Umowa Enterprise (EA) zobowiązanie pieniężne platformy Azure zostanie najpierw użyte do zakupu rezerwacji dysków platformy Azure. W scenariuszach, w których klienci z umową EA wykorzystali wszystkie zobowiązania pieniężne, rezerwacja dysku może nadal zostać zakupionych, a te zakupy będą wystawiane dla jednej, z góry płatności za następną fakturę.
+
+- W przypadku klientów kupowanych za pośrednictwem usługi Azure.com w momencie zakupu karta kredytowa w pliku będzie obciążana za pełną płatność z góry (lub miesięczne stałe płatności) rezerwacji dysków Azure.
+
+**Jak jest zastosowana rezerwacja dysku platformy Azure?**
+Rezerwacja dysków jest zgodna z modelem podobnym do wystąpień zarezerwowanych maszyn wirtualnych. Różnica polega na tym, że rezerwacja dysku nie może zostać zastosowana do różnych jednostek SKU, podczas gdy wystąpienie maszyny wirtualnej może. Aby uzyskać więcej informacji o wystąpieniach maszyn wirtualnych, zobacz temat [Zapisywanie kosztów w Azure Reserved VM Instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) . 
+
+**Czy mogę użyć magazynu danych zakupionego w ramach rezerwacji na dyskach platformy Azure w wielu regionach?**
+Rezerwacja dysków Azure jest zakupionych dla określonego regionu i jednostki SKU (na przykład P30 w regionie Wschodnie stany USA 2) i dlatego nie można jej używać poza tymi konstrukcjami. Możesz zawsze zakupić dodatkowe rezerwacje platformy Azure dla potrzeb magazynu dyskowego w innych regionach lub jednostkach SKU.
+
+**Co się stanie w przypadku wygaśnięcia rezerwacji z usługi Azure disks?**
+Powiadomienia e-mail będą wysyłane na 30 dni przed wygaśnięciem i od daty wygaśnięcia. Po wygaśnięciu rezerwacji wdrożone dyski będą nadal działać i opłaty są naliczane przy użyciu najnowszych [stawek płatności zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/managed-disks/)użyciem.
 
 ## <a name="ultra-disks"></a>Ultra disks
 
@@ -334,6 +358,18 @@ Tak
 Nie. Jednak w przypadku eksportowania dysku VHD na zaszyfrowane konto magazynu z zaszyfrowanego dysku zarządzanego lub migawki jest on szyfrowany. 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Dyski w warstwie Premium: zarządzane i niezarządzane
+
+**Jakie regiony obsługują możliwości tworzenia pojemności dla odpowiedniego rozmiaru dysku SSD w warstwie Premium?**
+
+Możliwość tworzenia serii jest obecnie obsługiwana w systemie Azure zachodnio-środkowe stany USA.
+
+**Które regiony są 4/8/16 GiB rozmiary dysków zarządzanych (P1/P2/P3, E1/E2/E3) obsługiwane w?**
+
+Te nowe rozmiary dysków są obecnie obsługiwane w systemie Azure zachodnio-środkowe stany USA.
+
+**Czy rozmiary dysków P1/P2/P3 są obsługiwane dla dysków niezarządzanych lub stronicowych obiektów BLOB?**
+
+Nie, jest on obsługiwany tylko w SSD w warstwie Premium Managed Disks. 
 
 **Jeśli maszyna wirtualna korzysta z serii rozmiarów, która obsługuje SSD w warstwie Premium dysków, takich jak DSv2, czy można dołączyć dyski danych w warstwie Premium i Standardowa?** 
 

@@ -18,12 +18,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87660c6ef8266d3ebfbad1b7a8a7cb98b936e9c6
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2c838c6fe256e2960842c5b40f58f8a5d5b1fdf3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803359"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473784"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Instrukcje: Dodawanie ról aplikacji do aplikacji i odbieranie ich w tokenie
 
@@ -39,13 +39,13 @@ Te role aplikacji są zdefiniowane w [Azure Portal](https://portal.azure.com) w 
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarowanie ról aplikacji przy użyciu Azure Portal
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Na górnym pasku wybierz swoje konto, a następnie **Przełącz katalog**.
 1. Po otwarciu okienka **katalog i subskrypcja** wybierz dzierżawę Active Directory, w której chcesz zarejestrować aplikację, na liście **Ulubione** lub **wszystkie katalogi** .
 1. Wybierz pozycję **wszystkie usługi** w lewym okienku nawigacji, a następnie wybierz pozycję **Azure Active Directory**.
-1. W okienku **Azure Active Directory** wybierz pozycję **rejestracje aplikacji** , aby wyświetlić listę wszystkich aplikacji.
+1. W okienku **Azure Active Directory** wybierz pozycję **rejestracje aplikacji (starsza wersja)** , aby wyświetlić listę wszystkich aplikacji.
 
-     Jeśli nie widzisz aplikacji, która ma być wyświetlana w tym miejscu, Użyj różnych filtrów w górnej części listy **rejestracje aplikacji** , aby ograniczyć listę, lub przewiń w dół listy, aby zlokalizować aplikację.
+     Jeśli nie widzisz aplikacji, która ma być wyświetlana w tym miejscu, Użyj różnych filtrów w górnej części listy **rejestracje aplikacji (starsza wersja)** , aby ograniczyć listę lub przewinąć listę, aby zlokalizować aplikację.
 
 1. Wybierz aplikację, w której chcesz zdefiniować role aplikacji.
 1. W bloku aplikacji wybierz pozycję **manifest**.
@@ -135,4 +135,4 @@ Po dodaniu ról aplikacji w aplikacji można przypisać użytkowników i grupy d
 - [Azure Active Directory, teraz z oświadczeniami grupy i rolami aplikacji](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
 - [Azure Active Directory manifest aplikacji](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [Tokeny dostępu usługi AAD](access-tokens.md)
-- [`id_tokens`usługi AAD](id-tokens.md)
+- [`id_tokens` usługi AAD](id-tokens.md)

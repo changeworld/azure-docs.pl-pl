@@ -1,6 +1,6 @@
 ---
-title: Plany wdrażania — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: End-to-end wskazówki dotyczące wdrażania wiele funkcji usługi Azure Active Directory.
+title: Plany wdrożenia — Azure Active Directory | Microsoft Docs
+description: Kompleksowe wskazówki dotyczące wdrażania wielu Azure Active Directory funkcji.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 949676c622c87831d22dcfc7e1bc6d920b622738
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336873"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473285"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plany wdrażania usługi Azure Active Directory
 Szukasz kompleksowej wskazówki dotyczącej wdrażania możliwości usług Azure Active Directory (Azure AD)? Plany wdrażania usługi Azure AD przeprowadzą Cię przez wartość biznesową, zagadnienia dotyczące planowania i procedury operacyjne, które są potrzebne do pomyślnego wdrożenia wspólnych możliwości usługi Azure AD.
@@ -29,7 +29,7 @@ Po rozpoczęciu planowania wdrożenia nowej możliwości należy uwzględnić na
 
 Role mogą zawierać następujące elementy: 
 
-|Role |Opis |
+|Rola |Opis |
 |-|-|
 |Użytkownik końcowy|Reprezentatywna Grupa użytkowników, dla których zostanie zaimplementowana funkcja. Często przegląda zmiany w programie pilotażowym.
 |Menedżer pomocy technicznej IT|Przedstawiciel działu pomocy technicznej IT, który może wprowadzić dane wejściowe dotyczące tej zmiany w perspektywie pomocy technicznej.  
@@ -42,11 +42,11 @@ Role mogą zawierać następujące elementy:
 
 - **R**esponsible do implementacji planu i wyniku projektu 
 
-- **Pproval planu**i wyniku projektu 
+- **Pproval planu i wyniku projektu** 
 
 - **C**ondystrybucyjny do planu i wyniku projektu 
 
-- **Nformedm**planu i wyniku projektu
+- **Nformedm planu i wyniku**projektu
 
 
 ## <a name="best-practices-for-a-pilot"></a>Najlepsze rozwiązania dla pilotażu
@@ -59,23 +59,24 @@ Rozszerzanie wdrożenia do większych grup użytkowników powinno odbywać się 
 
 ## <a name="deploy-authentication"></a>Wdróż uwierzytelnianie
 
-| Możliwość | Opis|
+| Możliwości | Opis|
 | -| -|
-| [Multi-Factor Authentication](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-getstarted)| Azure Multi-Factor Authentication (MFA) to rozwiązanie firmy Microsoft służące do przeprowadzania weryfikacji dwuetapowej. Korzystając z zaakceptowanych przez administratora metod uwierzytelniania, usługa Azure MFA pomaga chronić dostęp do danych i aplikacji, a jednocześnie spełnia wymagania dotyczące prostego procesu logowania. |
+| [Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa)| Azure Multi-Factor Authentication (MFA) to rozwiązanie firmy Microsoft służące do przeprowadzania weryfikacji dwuetapowej. Korzystając z zaakceptowanych przez administratora metod uwierzytelniania, usługa Azure MFA pomaga chronić dostęp do danych i aplikacji, a jednocześnie spełnia wymagania dotyczące prostego procesu logowania. |
 | [Dostęp warunkowy](https://aka.ms/deploymentplans/ca)| Za pomocą dostępu warunkowego można zaimplementować zautomatyzowane decyzje dotyczące kontroli dostępu, które mogą uzyskiwać dostęp do aplikacji w chmurze na podstawie warunków. |
 | [Samoobsługowe resetowanie haseł](https://aka.ms/deploymentplans/sspr)| Funkcja samoobsługowego resetowania hasła pomaga użytkownikom resetować swoje hasła bez interwencji administratora, kiedy i gdzie potrzebują. |
+| [Kończenie](https://aka.ms/deploymentplans/passwordless) | Zaimplementuj uwierzytelnianie bezhasła przy użyciu aplikacji Microsoft Authenticator lub kluczy zabezpieczeń FIDO2 w organizacji |
 
 ## <a name="deploy-application-management"></a>Wdrażanie zarządzania aplikacjami
 
-| Możliwość | Opis|
+| Możliwości | Opis|
 | -| - |
 | [Logowanie jednokrotne](https://aka.ms/deploymentplans/sso)| Logowanie jednokrotne ułatwia użytkownikom dostęp do aplikacji i zasobów, które są potrzebne do prowadzenia działalności, podczas logowania tylko raz. Po zalogowaniu użytkownicy mogą przechodzić z Microsoft Office do usługi SalesForce do wewnętrznych aplikacji bez konieczności wprowadzania poświadczeń po raz drugi. |
-| [Panel dostępu](https://aka.ms/deploymentplans/accesspanel)| Oferuje użytkownikom proste koncentratora do odnajdywania i uzyskują dostęp do wszystkich aplikacji. Umożliwiają im wydajniejsze korzystanie z funkcji samoobsługowych, takich jak żądanie dostępu do aplikacji i grup oraz zarządzanie dostępem do zasobów w imieniu innych użytkowników. |
+| [Panel dostępu](https://aka.ms/deploymentplans/accesspanel)| Zapewnianie użytkownikom prostego centrum w celu odnajdywania i uzyskiwania dostępu do wszystkich aplikacji. Umożliwiają im wydajniejsze korzystanie z funkcji samoobsługowych, takich jak żądanie dostępu do aplikacji i grup oraz zarządzanie dostępem do zasobów w imieniu innych użytkowników. |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>Wdrażanie scenariuszy hybrydowych
 
-| Możliwość | Opis|
+| Możliwości | Opis|
 | -| -|
 | [Synchronizowanie skrótów haseł za pomocą usługi ADFS](https://aka.ms/deploymentplans/adfs2phs)| W przypadku synchronizacji skrótów haseł skróty użytkowników są synchronizowane z Active Directory lokalnych do usługi Azure AD, dzięki czemu usługa Azure AD uwierzytelnia użytkowników bez interakcji z lokalnym Active Directory |
 | [Uwierzytelnianie przekazywane za pomocą usługi ADFS](https://aka.ms/deploymentplans/adfs2pta)| Uwierzytelnianie przekazywane przez usługę Azure AD ułatwia użytkownikom logowanie się do aplikacji lokalnych i opartych na chmurze przy użyciu tych samych haseł. Ta funkcja zapewnia użytkownikom lepszy komfort pracy — mniej hasła do zapamiętania i zmniejsza koszty działu pomocy technicznej, ponieważ użytkownicy nie mogą zapomnieć, jak się zalogować. Gdy użytkownicy logują się za pomocą usługi Azure AD, ta funkcja weryfikuje ich hasła bezpośrednio w lokalnej usłudze Active Directory. |
@@ -84,14 +85,14 @@ Rozszerzanie wdrożenia do większych grup użytkowników powinno odbywać się 
 
 ## <a name="deploy-user-provisioning"></a>Wdróż Inicjowanie obsługi użytkowników
 
-| Możliwość | Opis|
+| Możliwości | Opis|
 | -| -|
-| [Aprowizowanie użytkowników](https://aka.ms/UserProvisioningDPDownload)| Usługa Azure AD ułatwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacjach w chmurze (SaaS), takich jak Dropbox, Salesforce, ServiceNow i nie tylko. |
-| [Aprowizacja użytkowników dla ruchu przychodzącego oparte na dzień roboczy](https://aka.ms/WorkdayDeploymentPlan)| Oparte na dzień roboczy dla ruchu przychodzącego aprowizacji użytkowników do usługi Active Directory tworzy ona podstawę do zarządzania tożsamościami bieżące i poprawia jakość procesów biznesowych, które zależą od danych autorytatywne tożsamości. Korzystając z tej funkcji, można bezproblemowo zarządzać cyklem życia tożsamości pracowników i pracowników warunkowych przez skonfigurowanie reguł, które mapują procesy w celu aprowizacji łączników (na przykład nowe zatrudnienie, zakończenie i transfer) do akcji inicjowania obsługi IT (np. Tworzenie, Włączanie, Wyłącza |
+| [Aprowizowanie użytkowników](https://aka.ms/deploymentplans/userprovisioning)| Usługa Azure AD ułatwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacjach w chmurze (SaaS), takich jak Dropbox, Salesforce, ServiceNow i nie tylko. |
+| [Inicjowanie obsługi administracyjnej użytkowników przychodzących opartych na usłudze Workday](https://aka.ms/WorkdayDeploymentPlan)| Inicjowanie obsługi użytkowników przychodzących opartych na usłudze Workday do Active Directory tworzy podstawę do ciągłego zarządzania tożsamościami i zwiększa jakość procesów biznesowych, które korzystają z autorytatywnych danych tożsamości. Korzystając z tej funkcji, można bezproblemowo zarządzać cyklem życia tożsamości pracowników i pracowników warunkowych przez skonfigurowanie reguł, które mapują procesy w celu aprowizacji łączników (na przykład nowe zatrudnienie, zakończenie i transfer) do akcji inicjowania obsługi IT (np. Tworzenie, Włączanie, Wyłącza |
 
 ## <a name="deploy-governance-and-reporting"></a>Wdrażanie ładu i raportowania
 
-| Możliwość | Opis|
+| Możliwości | Opis|
 | -| -|
 | [Privileged Identity Management](https://aka.ms/deploymentplans/pim)| Azure AD Privileged Identity Management (PIM) ułatwia zarządzanie uprzywilejowanymi rolami administracyjnymi w usłudze Azure AD, zasobach platformy Azure i innych usługach online firmy Microsoft. PIM oferuje rozwiązania, takie jak dostęp just in Time, żądania przepływów pracy zatwierdzania i w pełni zintegrowane przeglądy dostępu, dzięki czemu można identyfikować, odkrywać i zapobiegać złośliwym działaniom uprzywilejowanych ról w czasie rzeczywistym. |
 | [Raportowanie i monitorowanie](https://aka.ms/deploymentplans/reporting)| Projekt rozwiązania do raportowania i monitorowania usługi Azure AD zależy od wymagań prawnych, bezpieczeństwa i działania, a także istniejącego środowiska i procesów. W tym artykule przedstawiono różne opcje projektowania i przeprowadzimy Cię do odpowiedniej strategii wdrażania. |

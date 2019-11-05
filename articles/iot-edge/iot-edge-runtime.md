@@ -1,40 +1,40 @@
 ---
 title: Dowiedz się, jak środowisko uruchomieniowe zarządza urządzeniami — Azure IoT Edge | Microsoft Docs
-description: Dowiedz się, w jaki sposób moduły, zabezpieczenia, komunikacja i raportowanie na urządzeniach są zarządzane przez środowisko uruchomieniowe Azure IoT Edge
+description: Dowiedz się, jak środowisko uruchomieniowe IoT Edge zarządza modułami, zabezpieczeniami, komunikacją i raportowaniem na urządzeniach
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/06/2019
+ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 49abd9e5ecee8637d830604028463650071c0198
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 94e33c855327e70f486746bcd781491823324dec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163160"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490433"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Poznaj środowisko uruchomieniowe Azure IoT Edge i jego architekturę
 
 Środowisko uruchomieniowe IoT Edge to zbiór programów, które włączają urządzenie do urządzenia IoT Edge. Zbiorowo składniki środowiska uruchomieniowego IoT Edge umożliwiają IoT Edge urządzeniom otrzymywanie kodu do uruchomienia na brzegu i przekazywanie wyników. 
 
-Środowisko uruchomieniowe IoT Edge wykonuje następujące funkcje na urządzeniach IoT Edge:
+Środowisko uruchomieniowe IoT Edge jest odpowiedzialne za następujące funkcje na urządzeniach IoT Edge:
 
 * Instaluje i aktualizuje pakiety robocze na urządzeniu.
 * Utrzymuje standardy zabezpieczeń usługi Azure IoT Edge na urządzeniu.
 * Upewnij się, że [moduły IoT Edge](iot-edge-modules.md) są zawsze uruchomione.
 * Przesyła raporty o kondycji modułów do chmury na potrzeby zdalnego monitorowania.
-* Ułatwienia komunikacji między podrzędnymi urządzeniami liścia a urządzeniami IoT Edge.
-* Ułatwienia komunikacji między modułami na urządzeniu IoT Edge.
-* Ułatwienia komunikacji między urządzeniem IoT Edge i chmurą.
+* Zarządzanie komunikacją między urządzeniami podrzędnymi a urządzeniami IoT Edge.
+* Zarządzanie komunikacją między modułami na urządzeniu IoT Edge.
+* Zarządzanie komunikacją między urządzeniem IoT Edge i chmurą.
 
 ![Środowisko uruchomieniowe komunikuje się ze szczegółowymi informacjami i kondycją modułu, aby IoT Hub](./media/iot-edge-runtime/Pipeline.png)
 
 Obowiązki środowiska uruchomieniowego IoT Edge dzielą się na dwie kategorie: komunikacja i zarządzanie modułem. Te dwie role są wykonywane przez dwa składniki, które są częścią środowiska uruchomieniowego IoT Edge. *Centrum IoT Edge* jest odpowiedzialne za komunikację, a *Agent IoT Edge* wdraża i monitoruje moduły. 
 
-Zarówno centrum IoT Edge, jak i Agent IoT Edge są modułami, podobnie jak każdy inny moduł uruchomiony na IoT Edge urządzeniu. 
+Zarówno centrum IoT Edge, jak i Agent IoT Edge są modułami, podobnie jak każdy inny moduł uruchomiony na IoT Edge urządzeniu. Są one czasami określane jako *moduły środowiska uruchomieniowego*. 
 
 ## <a name="iot-edge-hub"></a>IoT Edge Hub
 
@@ -45,7 +45,7 @@ IoT Edge Hub to jeden z dwóch modułów, które tworzą Azure IoT Edge środowi
 
 Centrum IoT Edge nie jest pełną wersją IoT Hub uruchomioną lokalnie. Istnieje kilka rzeczy, które Centrum IoT Edge dyskretnie deleguje do IoT Hub. Na przykład IoT Edge centrum przekazuje żądania uwierzytelniania do IoT Hub, gdy urządzenie próbuje nawiązać połączenie. Po ustanowieniu pierwszego połączenia informacje o zabezpieczeniach są buforowane lokalnie przez IoT Edge centrum. Kolejne połączenia z tego urządzenia są dozwolone bez konieczności uwierzytelniania w chmurze. 
 
-Aby zmniejszyć przepustowość wykorzystywaną przez rozwiązanie IoT Edge, centrum IoT Edge optymalizuje, ile rzeczywistych połączeń odbywa się w chmurze. Usługa IoT Edge Hub pobiera logiczne połączenia z klientów, takich jak moduły lub urządzenia liścia, i łączy je z jednym połączeniem fizycznym z chmurą. Szczegóły tego procesu są niewidoczne dla reszty rozwiązania. Klienci uważają swoje własne połączenie z chmurą, nawet jeśli są wysyłane przez to samo połączenie. 
+Aby zmniejszyć przepustowość wykorzystywaną przez rozwiązanie IoT Edge, centrum IoT Edge optymalizuje, ile rzeczywistych połączeń odbywa się w chmurze. Usługa IoT Edge Hub pobiera logiczne połączenia z klientów, takich jak moduły lub urządzenia podrzędne, i łączy je z jednym połączeniem fizycznym z chmurą. Szczegóły tego procesu są niewidoczne dla reszty rozwiązania. Klienci uważają swoje własne połączenie z chmurą, nawet jeśli są wysyłane przez to samo połączenie. 
 
 ![IoT Edge Hub jest bramą między urządzeniami fizycznymi i IoT Hub](./media/iot-edge-runtime/Gateway.png)
 
@@ -73,13 +73,13 @@ Aby odebrać komunikat, zarejestruj wywołanie zwrotne, które przetwarza wiadom
 
 Aby uzyskać więcej informacji na temat klasy ModuleClient i jej metod komunikacji, zobacz Dokumentacja interfejsu API dla preferowanego języka SDK [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet):, [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)lub [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
-Deweloper rozwiązania jest odpowiedzialny za określenie reguł, które określają, jak centrum IoT Edge przekazuje komunikaty między modułami. Reguły routingu są zdefiniowane w chmurze i wypychane do IoT Edge Hub w urządzeniu. Ta sama składnia dla IoT Hub Routes służy do definiowania tras między modułami w Azure IoT Edge. Aby uzyskać więcej informacji, zobacz [Informacje o sposobie wdrażania modułów i ustanawiania tras w programie IoT Edge](module-composition.md).   
+Deweloper rozwiązania jest odpowiedzialny za określenie reguł, które określają, jak centrum IoT Edge przekazuje komunikaty między modułami. Reguły routingu są zdefiniowane w chmurze i wypychane do IoT Edge Hub w swoim sznurze modułu. Ta sama składnia dla IoT Hub Routes służy do definiowania tras między modułami w Azure IoT Edge. Aby uzyskać więcej informacji, zobacz [Informacje o sposobie wdrażania modułów i ustanawiania tras w programie IoT Edge](module-composition.md).   
 
 ![Trasy między modułami przechodzą przez Centrum IoT Edge](./media/iot-edge-runtime/module-endpoints-with-routes.png)
 
 ## <a name="iot-edge-agent"></a>Agent IoT Edge
 
-Agent IoT Edge jest innym modułem, który tworzy Azure IoT Edge środowiska uruchomieniowego. Jest on odpowiedzialny za tworzenie wystąpień modułów, zapewnienie, że nadal działają, i raportowanie stanu modułów z powrotem do IoT Hub. Podobnie jak każdy inny moduł, Agent IoT Edge używa swojego sznurka modułu do przechowywania tych danych konfiguracyjnych. 
+Agent IoT Edge jest innym modułem, który tworzy Azure IoT Edge środowiska uruchomieniowego. Jest on odpowiedzialny za tworzenie wystąpień modułów, zapewnienie, że nadal działają, i raportowanie stanu modułów z powrotem do IoT Hub. Te dane konfiguracyjne są zapisywane jako właściwości sznurka modułu agenta IoT Edge. 
 
 [Demon zabezpieczenia IoT Edge](iot-edge-security-manager.md) uruchamia agenta IoT Edge przy uruchamianiu urządzenia. Agent pobiera sznurek modułu z IoT Hub i sprawdza manifest wdrożenia. Manifest wdrożenia to plik JSON, który deklaruje moduły, które muszą zostać uruchomione. 
 
@@ -92,7 +92,7 @@ Każdy element w manifeście wdrożenia zawiera określone informacje o module i
    * Działanie
    * Złej kondycji
    * Niepowodzenie
-   * Zatrzymane
+   * Zatrzymano
 * **restartPolicy** — sposób ponownego uruchomienia modułu przez agenta IoT Edge. Możliwe wartości obejmują:
    * `never` — Agent IoT Edge nigdy nie uruchamia ponownie modułu.
    * `on-failure` — Jeśli moduł ulegnie awarii, Agent IoT Edge ponownie go uruchomi. Jeśli moduł nie zostanie prawidłowo zamknięty, Agent IoT Edge nie uruchomi go ponownie.
@@ -109,7 +109,7 @@ Agent IoT Edge wysyła odpowiedź środowiska uruchomieniowego do IoT Hub. Poni�
 
 Aby uzyskać więcej informacji, zobacz [Informacje o sposobie wdrażania modułów i ustanawiania tras w programie IoT Edge](module-composition.md).   
 
-### <a name="security"></a>Zabezpieczenia
+### <a name="security"></a>Bezpieczeństwo
 
 Agent IoT Edge odgrywa kluczową rolę w zabezpieczeniach IoT Edge urządzeniu. Na przykład wykonuje akcje takie jak sprawdzenie obrazu modułu przed jego uruchomieniem. 
 

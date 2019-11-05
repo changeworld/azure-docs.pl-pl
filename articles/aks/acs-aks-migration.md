@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: 66f76a8a706f60df786786cbd1ce00b7eafd8d7e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 84e0af89e2b3247bc922ab84286a79a0934323a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097886"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472992"
 ---
 # <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migrowanie z Azure Container Service (ACS) do usługi Azure Kubernetes Service (AKS)
 
@@ -26,9 +26,9 @@ Usługi ACS i AKS różnią się w niektórych kluczowych obszarach, które maj�
 
 * Węzły AKS używają [dysków zarządzanych](../virtual-machines/windows/managed-disks-overview.md).
     * Dyski niezarządzane muszą zostać przekonwertowane przed dołączeniem ich do węzłów AKS.
-    * Obiekty `StorageClass` niestandardowe dla dysków platformy Azure należy zmienić z `unmanaged` na `managed`.
-    * Każdy `PersistentVolumes` z nich `kind: Managed`powinien być używany.
-* AKS obsługuje [wiele pul węzłów](https://docs.microsoft.com/azure/aks/use-multiple-node-pools) (obecnie w wersji zapoznawczej).
+    * Niestandardowe obiekty `StorageClass` dla dysków platformy Azure należy zmienić z `unmanaged` na `managed`.
+    * Wszystkie `PersistentVolumes` powinny używać `kind: Managed`.
+* AKS obsługuje [wiele pul węzłów](https://docs.microsoft.com/azure/aks/use-multiple-node-pools).
 * Węzły oparte na systemie Windows Server są obecnie dostępne w [wersji zapoznawczej w AKS](https://azure.microsoft.com/blog/kubernetes-on-azure/).
 * AKS obsługuje ograniczoną liczbę [regionów](https://docs.microsoft.com/azure/aks/quotas-skus-regions).
 * AKS to zarządzana usługa z hostowaną płaszczyzną kontroli Kubernetes. W przypadku wcześniejszej modyfikacji konfiguracji wzorców usług ACS może zajść potrzeba zmodyfikowania aplikacji.
@@ -41,16 +41,16 @@ W przypadku migrowania do nowszej wersji programu Kubernetes zapoznaj się z pon
 
 ## <a name="migration-considerations"></a>Zagadnienia dotyczące migracji
 
-### <a name="agent-pools"></a>Pule agenta
+### <a name="agent-pools"></a>Pule agentów
 
 Chociaż AKS zarządza płaszczyzną kontroli Kubernetes, nadal definiuje się rozmiar i liczbę węzłów do uwzględnienia w nowym klastrze. Przy założeniu, że chcesz, aby mapowanie 1:1 z usług ACS AKS, chcesz przechwycić istniejące informacje o węźle ACS. Użyj tych danych podczas tworzenia nowego klastra AKS.
 
 Przykład:
 
-| Name | Count | Rozmiar maszyny wirtualnej | System operacyjny |
+| Nazwa | Licznik | Rozmiar maszyny wirtualnej | System operacyjny |
 | --- | --- | --- | --- |
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
-| agentpool1 | 1 | Maszyna wirtualna Standard_D2_v2 | Windows |
+| agentpool1 | 1 | Standardowa_D2_v2 | Windows |
 
 Ponieważ dodatkowe maszyny wirtualne zostaną wdrożone w ramach subskrypcji podczas migracji, należy sprawdzić, czy limity przydziału i ograniczenia są wystarczające dla tych zasobów. 
 
@@ -58,7 +58,7 @@ Aby uzyskać więcej informacji, zobacz [limity subskrypcji i usług platformy A
 
 ### <a name="networking"></a>Networking
 
-W przypadku złożonych aplikacji zwykle przeprowadzana jest migracja w czasie, a nie wszystkie jednocześnie. Oznacza to, że stare i nowe środowiska mogą wymagać komunikacji za pośrednictwem sieci. Aplikacje, które wcześniej `ClusterIP` korzystały z usług do komunikacji, mogą być narażone `LoadBalancer` jako typ i być odpowiednio zabezpieczone.
+W przypadku złożonych aplikacji zwykle przeprowadzana jest migracja w czasie, a nie wszystkie jednocześnie. Oznacza to, że stare i nowe środowiska mogą wymagać komunikacji za pośrednictwem sieci. Aplikacje, które wcześniej korzystały z usług `ClusterIP` do komunikowania się, mogą być narażone jako typ `LoadBalancer` i być odpowiednio zabezpieczone.
 
 Aby ukończyć migrację, należy wskazać klientom nowe usługi, które działają w systemie AKS. Zalecamy przekierowanie ruchu przez zaktualizowanie systemu DNS w taki sposób, aby wskazywał Load Balancer, które znajduje się przed klastrem AKS.
 
@@ -112,13 +112,13 @@ Jeśli aplikacja może hostować wiele replik, które wskazują ten sam udział 
 4. Legalizacj.
 5. Wskaż ruch do klastra AKS.
 
-Jeśli chcesz rozpocząć od pustego udziału i utworzyć kopię danych źródłowych, możesz użyć [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) poleceń, aby przeprowadzić migrację danych.
+Jeśli chcesz rozpocząć od pustego udziału i utworzyć kopię danych źródłowych, możesz użyć poleceń [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) , aby przeprowadzić migrację danych.
 
 ### <a name="deployment-strategy"></a>Strategia wdrażania
 
-Zalecamy używanie istniejącego potoku ciągłej integracji/ciągłego wdrażania, aby wdrożyć znaną dobrą konfigurację do AKS. Sklonuj istniejące zadania wdrażania i upewnij się, `kubeconfig` że wskazuje nowy klaster AKS.
+Zalecamy używanie istniejącego potoku ciągłej integracji/ciągłego wdrażania, aby wdrożyć znaną dobrą konfigurację do AKS. Sklonuj istniejące zadania wdrażania i upewnij się, że `kubeconfig` wskazuje nowy klaster AKS.
 
-Jeśli nie jest to możliwe, należy wyeksportować definicje zasobów z usługi ACS, a następnie zastosować je do AKS. Można użyć `kubectl` do eksportowania obiektów.
+Jeśli nie jest to możliwe, należy wyeksportować definicje zasobów z usługi ACS, a następnie zastosować je do AKS. Aby wyeksportować obiekty, można użyć `kubectl`.
 
 ```console
 kubectl get deployment -o=yaml --export > deployments.yaml
@@ -126,7 +126,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 Kilka narzędzi typu "open source" może pomóc, w zależności od potrzeb wdrożenia:
 
-* [Velero](https://github.com/heptio/ark) (To narzędzie wymaga Kubernetes 1,7).
+* [Velero](https://github.com/heptio/ark) (to narzędzie wymaga Kubernetes 1,7).
 * [Rozszerzenie interfejsu wiersza polecenia platformy Azure polecenia](https://github.com/yaron2/azure-kube-cli)
 * [Przesunięcia](https://github.com/mhausenblas/reshifter)
 
@@ -137,9 +137,9 @@ Kilka narzędzi typu "open source" może pomóc, w zależności od potrzeb wdro�
    > [!NOTE]
    > Znajdź przykładowe szablony Azure Resource Manager dla AKS w repozytorium [Azure/AKS](https://github.com/Azure/AKS/tree/master/examples/vnet) w witrynie GitHub.
 
-2. Wprowadź wszelkie niezbędne zmiany w definicjach YAML. Na przykład Zastąp `apps/v1beta1` ciąg `apps/v1` opcją `Deployments`for.
+2. Wprowadź wszelkie niezbędne zmiany w definicjach YAML. Na przykład Zastąp `apps/v1beta1` `apps/v1` `Deployments`.
 
-3. [Migrowanie woluminów](#migrating-persistent-volumes) (opcjonalnie) z klastra usługi ACS do klastra AKS.
+3. [Migruj woluminy](#migrating-persistent-volumes) (opcjonalnie) z klastra ACS do klastra AKS.
 
 4. Użyj systemu ciągłej integracji/ciągłego wdrażania aplikacji do AKS. Lub użyj polecenia kubectl, aby zastosować definicje YAML.
 

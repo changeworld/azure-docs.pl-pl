@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 04c09c60a8b633c9ddb51fbe97ac02a319472448
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 28e5e09ea64f7ac1272e8ed126d5b4153b952c1d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434685"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494043"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Samouczek: wdrażanie usługi Azure Machine Learning jako modułu usługi IoT Edge (wersja zapoznawcza)
 
 Użyj Azure Notebooks do opracowania modułu uczenia maszynowego i wdrożenia go na urządzeniu z systemem Linux z Azure IoT Edge. 
 
-Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek zawiera opis sposobu wdrażania modułu usługi Azure Machine Learning, który przewiduje awarię urządzenia na podstawie symulowanych danych dotyczących temperatury maszyny. Więcej informacji na temat usługi Azure Machine Learning Service na platformie IoT Edge można znaleźć w [dokumentacji usługi Azure Machine Learning](../machine-learning/service/how-to-deploy-to-iot.md).
+Moduły usługi IoT Edge umożliwiają wdrożenie kodu implementującego logikę biznesową bezpośrednio na urządzeniach usługi IoT Edge. Ten samouczek zawiera opis sposobu wdrażania modułu usługi Azure Machine Learning, który przewiduje awarię urządzenia na podstawie symulowanych danych dotyczących temperatury maszyny. Aby uzyskać więcej informacji na temat Azure Machine Learning na IoT Edge, zobacz [dokumentację Azure Machine Learning](../machine-learning/service/how-to-deploy-to-iot.md).
 
 Moduł usługi Azure Machine Learning tworzony w tym samouczku odczytuje dane środowiska wygenerowane przez urządzenie i oznacza, czy komunikaty wskazują wystąpienie anomalii, czy nie.
 
@@ -55,10 +55,10 @@ Zasoby w chmurze:
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Tworzenie i wdrażanie modułu Azure Machine Learning
 
-W tej sekcji przekonwertujesz przeszkolone pliki modelu uczenia maszynowego na Azure Machine Learning kontener usługi. Wszystkie wymagane składniki obrazu platformy Docker znajdują się w [repozytorium zestawu narzędzi SI dla usługi Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial). Wykonaj następujące kroki, aby przekazać repozytorium do Microsoft Azure Notebooks, aby utworzyć kontener i wypchnąć go do Azure Container Registry.
+W tej sekcji przekonwertujesz przeszkolone pliki modelu uczenia maszynowego na kontener Azure Machine Learning. Wszystkie wymagane składniki obrazu platformy Docker znajdują się w [repozytorium zestawu narzędzi SI dla usługi Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial). Wykonaj następujące kroki, aby przekazać repozytorium do Microsoft Azure Notebooks, aby utworzyć kontener i wypchnąć go do Azure Container Registry.
 
 
-1. Przejdź do projektu Azure Notebooks. Możesz uzyskać dostęp do obszaru roboczego usługi Azure Machine Learning w [Azure Portal](https://portal.azure.com) lub, logując się do [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) przy użyciu konta platformy Azure.
+1. Przejdź do projektu Azure Notebooks. Możesz uzyskać dostęp do obszaru roboczego Azure Machine Learning w [Azure Portal](https://portal.azure.com) lub, logując się do [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) przy użyciu konta platformy Azure.
 
 2. Wybierz pozycję **Przekaż repozytorium GitHub**.
 
@@ -72,7 +72,7 @@ W tej sekcji przekonwertujesz przeszkolone pliki modelu uczenia maszynowego na A
 
 6. Otwórz plik **aml_config/config. JSON** .
 
-7. Edytuj plik konfiguracji, aby uwzględnić wartości identyfikatora subskrypcji platformy Azure, grupy zasobów w subskrypcji oraz nazwę obszaru roboczego usługi Azure Machine Learning. Wszystkie te wartości można uzyskać z sekcji **Przegląd** obszaru roboczego na platformie Azure. 
+7. Edytuj plik konfiguracji, aby uwzględnić wartości identyfikatora subskrypcji platformy Azure, grupy zasobów w subskrypcji oraz nazwę obszaru roboczego Azure Machine Learning. Wszystkie te wartości można uzyskać z sekcji **Przegląd** obszaru roboczego na platformie Azure. 
 
 8. Zapisz plik konfiguracji.
 
@@ -101,7 +101,7 @@ Sprawdź, czy obraz kontenera został pomyślnie utworzony i zapisany w rejestrz
 
 4. Wybierz pozycję **tempanomalydetection**. Powinno być widoczne, że repozytorium ma jeden tag: **1**. 
 
-   Teraz, gdy znasz nazwę rejestru, nazwę repozytorium i tag, znasz pełną ścieżkę obrazu do kontenera. Ścieżki obrazów wyglądają jak **@no__t -1registry_name\>.azurecr.io/tempanomalydetection: 1**. Możesz użyć ścieżki obrazu do wdrożenia tego kontenera na IoT Edge urządzeniach. 
+   Teraz, gdy znasz nazwę rejestru, nazwę repozytorium i tag, znasz pełną ścieżkę obrazu do kontenera. Ścieżki obrazów wyglądają jak **\<registry_name\>. azurecr.IO/tempanomalydetection:1**. Możesz użyć ścieżki obrazu do wdrożenia tego kontenera na IoT Edge urządzeniach. 
 
 5. W rejestrze kontenerów wybierz pozycję **klucze dostępu**. Powinna zostać wyświetlona liczba poświadczeń dostępu, w tym **serwer logowania** i **Nazwa użytkownika**oraz **hasło** administratora.
 
@@ -149,7 +149,7 @@ Poniższe kroki pokazują, jak skonfigurować program Visual Studio Code w celu 
 
 5. Obserwuj komunikaty przychodzące z modułu tempSensor co pięć sekund. Treść wiadomości zawiera właściwość o nazwie **anomalia**, która machinelearningmodule zawiera wartość true lub false. Właściwość **AzureMLResponse** zawiera wartość „OK”, jeśli model został uruchomiony pomyślnie.
 
-   ![Odpowiedź usługi Azure Machine Learning Service w treści komunikatu](./media/tutorial-deploy-machine-learning/ml-output.png)
+   ![Odpowiedź Azure Machine Learning w treści komunikatu](./media/tutorial-deploy-machine-learning/ml-output.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

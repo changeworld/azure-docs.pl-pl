@@ -1,7 +1,7 @@
 ---
-title: Tworzenie punktów końcowych usługi sieci web
-titleSuffix: Azure Machine Learning Studio
-description: Utwórz następującą liczbę punktów końcowych usługi sieci web w usłudze Azure Machine Learning Studio. Każdy punkt końcowy usługi sieci web niezależnie rozwiązane, ograniczenia i zarządzane.
+title: Tworzenie punktów końcowych usługi sieci Web
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Utwórz punkty końcowe usługi sieci Web w Azure Machine Learning Studio (klasyczny). Każdy punkt końcowy w usłudze sieci Web jest niezależnie kierowany, ograniczany i zarządzany.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,45 +10,45 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: ac434a696f6e77e5ce61b430232166e7727eda38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d98df3e2dcc8112df9d56033bece069607380d9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751182"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493243"
 ---
-# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>Tworzenie punktów końcowych dla wdrożonej usługi sieci web Azure Machine Learning Studio
+# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Utwórz punkty końcowe dla wdrożonych usług sieci Web Azure Machine Learning Studio (klasycznych)
 
 > [!NOTE]
-> W tym temacie opisano technikach do zastosowania **klasycznego** usługę internetową Machine Learning.
+> W tym temacie opisano techniki mające zastosowanie do **klasycznej** usługi sieci Web Machine Learning.
 
-Po wdrożeniu usługi sieci Web dla tej usługi tworzony jest domyślny punkt końcowy. Domyślny punkt końcowy może być wywoływany przy użyciu właściwego dla niego klucza interfejsu API. Możesz dodać dodatkowe punkty końcowe z właściwymi dla nich kluczami z poziomu portalu usług sieci Web.
-Każdy punkt końcowy usługi sieci web niezależnie rozwiązane, ograniczenia i zarządzane. Każdy punkt końcowy jest unikatowy adres URL przy użyciu klucza autoryzacji, którą można dystrybuować swoim klientom.
+Po wdrożeniu usługi sieci Web dla tej usługi tworzony jest domyślny punkt końcowy. Domyślny punkt końcowy może być wywoływany przy użyciu właściwego dla niego klucza interfejsu API. Możesz dodać więcej punktów końcowych z własnymi kluczami z portalu usług sieci Web.
+Każdy punkt końcowy w usłudze sieci Web jest niezależnie kierowany, ograniczany i zarządzany. Każdy punkt końcowy jest unikatowym adresem URL z kluczem autoryzacji, który można dystrybuować do klientów.
 
-## <a name="add-endpoints-to-a-web-service"></a>Dodaj punkty końcowe usługi sieci web
+## <a name="add-endpoints-to-a-web-service"></a>Dodawanie punktów końcowych do usługi sieci Web
 
-Możesz dodać punkt końcowy usługi sieci web przy użyciu portalu usług sieci Web Azure Machine Learning. Po utworzeniu punktu końcowego, możesz pobrać go za pośrednictwem synchronicznych interfejsów API, interfejsów API usługi batch i arkusze programu excel.
+Punkt końcowy można dodać do usługi sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning. Po utworzeniu punktu końcowego można go wykorzystać za pomocą synchronicznych interfejsów API, interfejsów API wsadowych i arkuszy programu Excel.
 
 > [!NOTE]
-> Po dodaniu dodatkowych punktów końcowych usługi sieci web, nie można usunąć domyślnego punktu końcowego.
+> Jeśli dodano dodatkowe punkty końcowe do usługi sieci Web, nie można usunąć domyślnego punktu końcowego.
 
-1. W usłudze Machine Learning Studio w kolumnie nawigacji po lewej stronie kliknij usług sieci Web.
-2. W dolnej części pulpitu nawigacyjnego usług sieci web kliknij **zarządzanie punktami końcowymi**. Portal usług sieci Web Azure Machine Learning zostanie otwarty na stronie punkty końcowe usługi sieci web.
+1. W Machine Learning Studio (klasyczny), w lewej kolumnie nawigacyjnej kliknij pozycję usługi sieci Web.
+2. W dolnej części pulpitu nawigacyjnego usługi sieci Web kliknij pozycję **Zarządzaj punktami końcowymi**. Portal usług sieci Web Azure Machine Learning zostanie otwarty na stronie punkty końcowe usługi sieci Web.
 3. Kliknij przycisk **Nowy**.
-4. Wpisz nazwę i opis dla nowego punktu końcowego. Nazwy punktów końcowych musi być 24 znaków lub mniej długości i muszą składać się z małe litery lub cyfry. Wybierz poziom rejestrowania i czy jest włączony przykładowych danych. Aby uzyskać więcej informacji na temat rejestrowania, zobacz [Włączanie rejestrowania usług sieci web Machine Learning](web-services-logging.md).
+4. Wpisz nazwę i opis nowego punktu końcowego. Nazwy punktów końcowych muszą składać się z co najmniej 24 znaków i muszą składać się z małych liter lub cyfr. Wybierz poziom rejestrowania i czy włączono przykładowe dane. Aby uzyskać więcej informacji na temat rejestrowania, zobacz [Włączanie rejestrowania dla usług sieci web Machine Learning](web-services-logging.md).
 
-## <a id="scaling"></a> Skalowanie usługi sieci web przez dodanie dodatkowych punktów końcowych
+## <a id="scaling"></a>Skalowanie usługi sieci Web przez dodanie dodatkowych punktów końcowych
 
-Domyślnie każdy opublikowanej usługi sieci web jest skonfigurowany do obsługi 20 równoczesnych żądań i może być możliwie jak 200 równoczesnych żądań. Usługa Azure Machine Learning Studio optymalizuje automatycznie ustawienie, aby zapewnić najlepszą wydajność za daną usługę sieci web i portalu wartość jest ignorowana.
+Domyślnie każda opublikowana usługa sieci Web jest skonfigurowana do obsługi 20 współbieżnych żądań i może mieć maksymalnie 200 współbieżnych żądań. Klasyczna wersja Azure Machine Learning Studio automatycznie optymalizuje ustawienie, aby zapewnić najlepszą wydajność usługi sieci Web, a wartość portalu jest ignorowana.
 
-Jeśli planujesz wywołania interfejsu API za pomocą wyższe obciążenie niż wartość maksymalna liczba współbieżnych wywołań 200 będzie obsługiwać, należy utworzyć wiele punktów końcowych w tej samej usługi sieci web. Następnie można losowo dystrybuować swoje obciążenia na wszystkich z nich.
+Jeśli planujesz wywołać interfejs API o wyższym obciążeniu niż wartość maksymalna liczba współbieżnych wywołań 200, będzie można utworzyć wiele punktów końcowych w tej samej usłudze sieci Web. Następnie można losowo rozłożyć obciążenie na wszystkie z nich.
 
-Skalowanie usługi sieci web jest typowym zadaniem. Niektóre przyczyny skalowania to do obsługi ponad 200 równoczesnych żądań, zwiększyć dostępność za pośrednictwem wielu punktów końcowych lub podaj oddzielne punkty końcowe usługi sieci web. Można zwiększyć skalę, dodając dodatkowe punkty końcowe usługi sieci web za pośrednictwem [usługi sieci Web Azure Machine Learning](https://services.azureml.net/) portalu.
+Skalowanie usługi sieci Web jest typowym zadaniem. Niektóre z powodów skalowania to obsługa ponad 200 współbieżnych żądań, zwiększania dostępności za pomocą wielu punktów końcowych lub udostępniania oddzielnych punktów końcowych dla usługi sieci Web. Możesz zwiększyć skalę, dodając dodatkowe punkty końcowe dla tej samej usługi sieci Web za pomocą portalu [usługi sieci web Azure Machine Learning](https://services.azureml.net/) .
 
-Należy zwrócić uwagę przy użyciu liczba współbieżności wysokiej mogą być szkodliwe, jeśli one nie wywołuje metody interfejsu API przy użyciu odpowiednio dużej szybkości. Sporadyczne przekroczeń limitu czasu i/lub wartości graniczne mogą zobaczyć w opóźnienie umieszczenie stosunkowo małym obciążeniu dla interfejsu API skonfigurowany dla dużym obciążeniem.
+Należy pamiętać, że użycie wysokiej współbieżności może być niekorzystne, jeśli interfejs API nie jest wywoływany z odpowiadającą im wysoką szybkością. Czasami można zobaczyć sporadyczne przekroczenia limitu czasu i/lub opóźnienia w przypadku nadmiernego niskiego obciążenia interfejsu API skonfigurowanego do dużego obciążenia.
 
-Synchroniczne interfejsy API są zwykle używane w sytuacjach, w którym pożądane jest o małych opóźnieniach. W tym miejscu opóźnienia oznacza czasu zajmuje dla interfejsu API zakończyć jedno żądanie, a nie konta dla dowolnej opóźnienia sieci. Załóżmy, że masz interfejs API z opóźnieniem 50 ms. Pełni korzystać z dostępnej pojemności z poziom przepustowości wysokiej i maksymalna liczba współbieżnych wywołań = 20, należy wywołać tego interfejsu API 20 * 1000 / 50 = 400 godzin w ciągu sekundy. Dodatkowo to rozszerzenie, maksymalna liczba współbieżnych wywołań 200 pozwala wywoływać razy 4000 interfejsu API na sekundę, zakładając, że opóźnienie 50 ms.
+Synchroniczne interfejsy API są zwykle używane w sytuacjach, gdy jest potrzebne małe opóźnienia. Opóźnienie w tym miejscu oznacza czas potrzebny na ukończenie jednego żądania przez interfejs API i nie uwzględnia żadnych opóźnień sieci. Załóżmy, że masz interfejs API z opóźnieniem 50-ms. Aby w pełni wykorzystać dostępną pojemność z poziomem dławienia High i Max współbieżnych wywołań = 20, należy wywołać ten interfejs API 20 * 1000/50 = 400 razy na sekundę. W ten sposób Maksymalna liczba współbieżnych wywołań 200 umożliwia wywołanie interfejsu API 4000 razy na sekundę, przy założeniu opóźnienia 50-ms.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Jak używać usługi sieci web Azure Machine Learning](consume-web-services.md).
+[Jak korzystać z usługi sieci web Azure Machine Learning](consume-web-services.md).
