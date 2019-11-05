@@ -6,21 +6,21 @@ manager: nitinme
 author: lisaleib
 ms.author: v-lilei
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cfa85e61059e27cd39a9701a835a725e16e5bc0a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 9ba11b69a51a5bc563764a7e75189bed67cb2ac6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789970"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484993"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Wyświetlanie sklepu z bazami danych za pomocą Eksplorator usługi Storage
 
 > [!Note]
-> Magazyn wiedzy jest w wersji zapoznawczej i nie powinien być używany w środowisku produkcyjnym. [Interfejs API REST usługi Azure wyszukiwanie poznawcze w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zawiera tę funkcję. W tej chwili nie ma obsługi zestawu SDK platformy .NET.
+> Magazyn wiedzy jest w wersji zapoznawczej i nie powinien być używany w środowisku produkcyjnym. Ta funkcja jest dostępna w portalu i [interfejsie API REST usługi Search w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) . W tej chwili nie ma obsługi zestawu SDK platformy .NET.
 >
-W tym artykule dowiesz się, jak nawiązać połączenie i eksplorować magazyn wiedzy przy użyciu Eksplorator usługi Storage w Azure Portal. Aby utworzyć przykład sklepu z bazami danych używany w tym przewodniku, zobacz temat [Tworzenie sklepu z bazami danych w Azure Portal](knowledge-store-create-portal.md).
+W tym artykule przedstawiono przykład sposobu nawiązywania połączenia z magazynem wiedzy i eksplorowania go przy użyciu Eksplorator usługi Storage w Azure Portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,7 +30,7 @@ W tym artykule dowiesz się, jak nawiązać połączenie i eksplorować magazyn 
 
 ## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Wyświetlaj, Edytuj i badaj magazyn wiedzy w Eksplorator usługi Storage
 
-1. W Azure Portal Otwórz konto magazynu używane do tworzenia sklepu z bazami danych.
+1. W Azure Portal [Otwórz konto magazynu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) używane do tworzenia sklepu z bazami danych.
 
 1. W lewym okienku nawigacji konta magazynu kliknij przycisk **Eksplorator usługi Storage**.
 
@@ -58,12 +58,8 @@ Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech i
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak połączyć ten magazyn wiedzy z Power BI, zobacz następujący artykuł.
+Połącz ten magazyn wiedzy, aby Power BI w celu uzyskania dokładniejszej analizy lub przechodź do przodu przy użyciu kodu, korzystając z interfejsu API REST i programu Poster, aby utworzyć inny magazyn wiedzy.
 
 > [!div class="nextstepaction"]
-> [Łączenie z usługą Power BI](knowledge-store-connect-power-bi.md)
-
-Aby dowiedzieć się, jak utworzyć magazyn wiedzy przy użyciu interfejsów API REST i programu Poster, zobacz następujący artykuł.  
-
-> [!div class="nextstepaction"]
-> [Tworzenie sklepu merytorycznego w usłudze REST](knowledge-store-howto.md)
+> [Nawiązywanie połączenia z usługą Power BI](knowledge-store-connect-power-bi.md)
+> [Tworzenie sklepu z bazami danych w usłudze REST](knowledge-store-howto.md)

@@ -1,20 +1,20 @@
 ---
 title: Indeksowanie jednego obiektu BLOB w wielu dokumentach indeksu wyszukiwania z usługi Azure Blob indeksator do wyszukiwania pełnotekstowego
-description: Przeszukiwanie obiektów blob platformy Azure pod kątem zawartości tekstowej przy użyciu indeksatora Azure Search obiektów BLOB. Każdy obiekt BLOB może dać jeden lub więcej Azure Searchych dokumentów indeksu.
-ms.date: 05/02/2019
-author: arv100kri
+titleSuffix: Azure Cognitive Search
+description: Przeszukiwanie obiektów blob platformy Azure pod kątem zawartości tekstowej przy użyciu indeksatora obiektów BLOB usługi Azure Cognitive Search. Każdy obiekt BLOB może przynieść jeden lub więcej dokumentów indeksu wyszukiwania.
 manager: nitinme
+author: arv100kri
 ms.author: arjagann
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.openlocfilehash: d58be681c6a3e609712f9b0206de69f01d6a35f6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 11/04/2019
+ms.openlocfilehash: 863d38f6ea0f071a1c1a6678d025ec5b37a306dc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178002"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466424"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Indeksowanie obiektów BLOB w celu utworzenia wielu dokumentów wyszukiwania
 Domyślnie indeksator obiektów BLOB będzie traktować zawartość obiektu BLOB jako pojedynczy dokument wyszukiwania. Niektóre wartości typu **analizowaniemode** obsługują scenariusze, w których pojedynczy obiekt BLOB może spowodować wielokrotne wyszukiwanie dokumentów. Różne typy **analizmode** , które umożliwiają Indeksatorowi wyodrębnienie więcej niż jednego dokumentu wyszukiwania z obiektu BLOB:
@@ -23,11 +23,11 @@ Domyślnie indeksator obiektów BLOB będzie traktować zawartość obiektu BLOB
 + `jsonLines`
 
 ## <a name="one-to-many-document-key"></a>Klucz dokumentu "jeden do wielu"
-Każdy dokument, który jest wyświetlany w indeksie Azure Search, jest jednoznacznie identyfikowany przez klucz dokumentu. 
+Każdy dokument, który jest wyświetlany w indeksie Wyszukiwanie poznawcze platformy Azure, jest jednoznacznie identyfikowany przez klucz dokumentu. 
 
-Gdy nie jest określony tryb analizowania i jeśli nie istnieje jawne mapowanie dla pola klucza w indeksie, Azure Search automatycznie [mapuje](search-indexer-field-mappings.md) Właściwość `metadata_storage_path` jako klucz. To mapowanie zapewnia, że każdy obiekt BLOB będzie wyświetlany jako odrębny dokument wyszukiwania.
+Gdy nie określono żadnego trybu analizowania i jeśli nie istnieje jawne mapowanie dla pola klucza w indeksie Azure Wyszukiwanie poznawcze automatycznie [mapuje](search-indexer-field-mappings.md) Właściwość `metadata_storage_path` jako klucz. To mapowanie zapewnia, że każdy obiekt BLOB będzie wyświetlany jako odrębny dokument wyszukiwania.
 
-W przypadku korzystania z dowolnego z wymienionych powyżej trybów analizowania jeden obiekt BLOB mapuje do "wielu" dokumentów wyszukiwania, co sprawia, że klucz dokumentu opiera się wyłącznie na metadanych obiektów BLOB. Aby można było obejść to ograniczenie, Azure Search może wygenerować klucz dokumentu "jeden do wielu" dla każdej jednostki wyodrębnionej z obiektu BLOB. Ta właściwość ma nazwę `AzureSearch_DocumentKey` i jest dodawana do poszczególnych jednostek wyodrębnionych z obiektu BLOB. Wartość tej właściwości gwarantuje, że jest unikatowa dla każdej jednostki w obiektach _BLOB_ , a jednostki będą widoczne jako osobne dokumenty wyszukiwania.
+W przypadku korzystania z dowolnego z wymienionych powyżej trybów analizowania jeden obiekt BLOB mapuje do "wielu" dokumentów wyszukiwania, co sprawia, że klucz dokumentu opiera się wyłącznie na metadanych obiektów BLOB. Aby można było obejść to ograniczenie, usługa Azure Wyszukiwanie poznawcze może wygenerować klucz dokumentu "jeden do wielu" dla każdej jednostki wyodrębnionej z obiektu BLOB. Ta właściwość ma nazwę `AzureSearch_DocumentKey` i jest dodawana do poszczególnych jednostek wyodrębnionych z obiektu BLOB. Wartość tej właściwości gwarantuje, że jest unikatowa dla każdej jednostki w obiektach _BLOB_ , a jednostki będą widoczne jako osobne dokumenty wyszukiwania.
 
 Domyślnie, gdy nie są określone żadne jawne mapowania pól dla pola indeks klucza, `AzureSearch_DocumentKey` jest mapowany do niego przy użyciu funkcji mapowania pól `base64Encode`.
 
@@ -58,7 +58,7 @@ Gdy tworzysz indeksator i ustawisz na **`jsonLines`** — bez określania wszyst
         "mappingFunction": { "name" : "base64Encode" }
     }
 
-Ta konfiguracja spowoduje, że indeks Azure Search zawierający następujące informacje (skrócony identyfikator kodowany algorytmem Base64 dla zwięzłości)
+Ta konfiguracja spowoduje, że indeks usługi Azure Wyszukiwanie poznawcze zawierający następujące informacje (skrócony identyfikator kodowany algorytmem Base64 dla zwięzłości)
 
 | id | temperature | pressure | sygnatura czasowa |
 |----|-------------|----------|-----------|
@@ -102,5 +102,5 @@ Jeśli chcesz skonfigurować jawne Mapowanie pól, upewnij się, że _sourceFiel
 Jeśli nie znasz już podstawowej struktury i przepływu pracy indeksowania obiektów blob, najpierw przejrzyj [indeksowanie BLOB Storage platformy Azure z Azure Search](search-howto-index-json-blobs.md) . Aby uzyskać więcej informacji na temat trybów analizowania dla różnych typów zawartości obiektów blob, zapoznaj się z następującymi artykułami.
 
 > [!div class="nextstepaction"]
-> [Indeksowanie obiektów BLOB woluminów CSV](search-howto-index-csv-blobs.md) 
+> [Indeksowanie obiektów BLOB woluminów CSV](search-howto-index-csv-blobs.md)
 > [indeksowania obiektów BLOB JSON](search-howto-index-json-blobs.md)

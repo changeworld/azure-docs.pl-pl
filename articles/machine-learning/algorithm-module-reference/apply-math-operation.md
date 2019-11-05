@@ -1,5 +1,5 @@
 ---
-title: Zastosuj operacje matematyczne
+title: Stosowanie operacji matematycznej
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak używać modułu operacji matematycznej w usłudze Azure Machine Learning, aby zastosować operację matematyczną do wartości kolumn w potoku.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 49bab338f559b1b43389e12d98c75bbffbb25a85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694768"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493928"
 ---
-# <a name="apply-math-operation"></a>Zastosuj operacje matematyczne
+# <a name="apply-math-operation"></a>Stosowanie operacji matematycznej
 
-W tym artykule opisano moduł Azure Machine Learning Visual Interface.
+W tym artykule opisano moduł programu Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj operacji stosowania matematycznego, aby utworzyć obliczenia, które są stosowane do kolumn liczbowych w wejściowym zestawie danych. 
 
@@ -95,7 +95,7 @@ W przypadku generowania wyników przy użyciu opcji **Dołącz** lub **ResultOnl
 -   **Equals (Col2_Col1)** , co oznacza, że przetestowano Col2 z Kol1.  
 -   **Równa się (Col2_ $10)** , wskazujący, że kolumna 2 została porównana z stałą 10.  
 
-Nawet jeśli używasz opcji **InPlace** , dane źródłowe nie zostaną usunięte ani zmienione; kolumna w oryginalnym zestawie danych jest nadal dostępna w interfejsie wizualnym. Aby wyświetlić oryginalne dane, można połączyć moduł [Dodaj kolumny](add-columns.md) i dołączyć go do danych wyjściowych **operacji Zastosuj matematyczne**.  
+Nawet jeśli używasz opcji **InPlace** , dane źródłowe nie zostaną usunięte ani zmienione; kolumna w oryginalnym zestawie danych jest nadal dostępna w projektancie. Aby wyświetlić oryginalne dane, można połączyć moduł [Dodaj kolumny](add-columns.md) i dołączyć go do danych wyjściowych **operacji Zastosuj matematyczne**.  
     
 ## <a name="basic-math-operations"></a>Podstawowe operacje matematyczne 
 
@@ -130,7 +130,7 @@ Oblicza pierwiastek modułu dla wartości z zaznaczonej kolumny.
 
 Zwraca rozmiar przerwy między bieżącą wartością a numerem następnego lub podwójnej precyzji. Odnosi się do funkcji EPS w programie Matlab.  
   
-### <a name="exp"></a>EXP
+### <a name="exp"></a>Exp
 
 Zwraca liczbę e podniesioną do potęgi wartości z zaznaczonej kolumny. Jest to taka sama jak funkcja EXP programu Excel.  
 
@@ -162,13 +162,13 @@ Zwraca logarytm naturalny dla wartości z zaznaczonej kolumny.
 
 Zwraca logarytm naturalny plus jeden dla wartości w zaznaczonej kolumnie.  
 
-### <a name="log"></a>Dziennik
+### <a name="log"></a>Log
 
 Zwraca dziennik wartości z zaznaczonej kolumny, z uwzględnieniem określonej podstawy.  
 
 Można określić wartość bazową (drugi argument) jako stałą lub wybierając inną kolumnę wartości.  
 
-### <a name="log10"></a>Log10 —
+### <a name="log10"></a>Log10
 
 Zwraca wartości logarytmu podstawowego 10 dla zaznaczonej kolumny.  
 
@@ -208,7 +208,7 @@ Kwadratuje wartości w zaznaczonej kolumnie.
 
 ## <a name="comparison-operations"></a>Operacje porównania  
 
-Użyj funkcji porównania w Azure Machine Learning interfejsie wizualnym w dowolnym momencie, gdy konieczne jest przetestowanie dwóch zestawów wartości względem siebie. Na przykład w potoku może być konieczne wykonanie następujących operacji porównania:  
+Użyj funkcji porównania w projektancie Azure Machine Learning w dowolnym momencie, gdy konieczne jest przetestowanie dwóch zestawów wartości względem siebie. Na przykład w potoku może być konieczne wykonanie następujących operacji porównania:  
 
 - Oceń kolumnę modelu wyników prawdopodobieństwa względem wartości progowej.
 - Ustal, czy dwa zestawy wyników są takie same. Dla każdego wiersza, który jest inny, należy dodać flagę FALSE, która może być używana do dalszej przetwarzania lub filtrowania.  
@@ -280,13 +280,13 @@ Określ kolumnę wartości, na które mają być wykonywane operacje ( *odjemna*
 
 ##  <a name="rounding-operations"></a>Operacje zaokrąglania 
 
-Interfejs Azure Machine Learning wizualizacji obsługuje wiele operacji zaokrąglania. W przypadku wielu operacji należy określić liczbę dokładności, która ma być używana podczas zaokrąglania. Można użyć poziomu dokładności statycznej, określonego jako stała lub można zastosować dynamiczną wartość precyzji uzyskaną z kolumny wartości.  
+Program Azure Machine Learning Designer obsługuje różne operacje zaokrąglania. W przypadku wielu operacji należy określić liczbę dokładności, która ma być używana podczas zaokrąglania. Można użyć poziomu dokładności statycznej, określonego jako stała lub można zastosować dynamiczną wartość precyzji uzyskaną z kolumny wartości.  
 
 - Jeśli używasz stałej, ustaw dla opcji **Typ dokładności** wartość **stała** , a następnie wpisz liczbę cyfr jako liczbę całkowitą w polu tekstowym **dokładność stałej** . Jeśli wpiszesz wartość inną niż Integer, moduł nie zgłasza błędu, ale wyniki mogą być nieoczekiwane.  
 
 - Aby użyć innej wartości dokładności dla każdego wiersza w zestawie danych, ustaw dla opcji **typ precyzji** wartość **zestawem kolumn**, a następnie wybierz kolumnę zawierającą odpowiednie wartości dokładności.  
 
-### <a name="ceiling"></a>Montaż
+### <a name="ceiling"></a>Ceiling
 
 Zwraca górny limit wartości w **zestawie kolumn**.  
 
@@ -294,7 +294,7 @@ Zwraca górny limit wartości w **zestawie kolumn**.
 
 Zwraca kwadratowy pułap dla wartości w **zestawie kolumn**.  
 
-### <a name="floor"></a>Wykładzin
+### <a name="floor"></a>Floor
 
 Zwraca piętro dla wartości w **zestawie kolumn**do określonej precyzji.  
 
@@ -330,7 +330,7 @@ Zwraca wartości w **zestawie kolumn**zaokrąglone do najbliższej całkowitej l
 
 Zwraca wartości w **zestawie kolumn**zaokrąglone do najbliższej całkowitej, nieparzystej liczby.  
 
-### <a name="truncate"></a>Obciąć
+### <a name="truncate"></a>Truncate
 
 Obcina wartości w **kolumnie ustawionych** przez usunięcie wszystkich cyfr niedozwolonych przez określoną precyzję.  
   
@@ -485,7 +485,7 @@ Oblicza arcus tangens wartości kolumn (w stopniach).
 
 Oblicza arcus tangens hiperboliczny wartości kolumn.  
 
-### <a name="cos"></a>Cosinus
+### <a name="cos"></a>Cos
 
 Oblicza cosinus wartości kolumn.  
 
@@ -493,7 +493,7 @@ Oblicza cosinus wartości kolumn.
 
 Oblicza cosinus wartości kolumn (w stopniach).  
 
-### <a name="cosh"></a>Cosh —
+### <a name="cosh"></a>Cosh
 
 Oblicza cosinus hiperboliczny dla wartości kolumn.  
 
@@ -540,7 +540,7 @@ Oblicza secans hiperboliczny wartości kolumn.
 
 Zwraca znak wartości kolumny.  
 
-### <a name="sin"></a>Sinus
+### <a name="sin"></a>Sin
 
 Oblicza sinus wartości kolumn.  
 
@@ -552,7 +552,7 @@ Oblicza wartość cosinusa sinusa wartości kolumn.
 
 Oblicza sinus wartości kolumn (w stopniach).  
 
-### <a name="sinh"></a>SINH
+### <a name="sinh"></a>Sinh
 
 Oblicza sinus hiperboliczny wartości kolumn.  
 
@@ -564,7 +564,7 @@ Oblicza tangens wartości kolumn.
 
 Oblicza tangens argumentu (w stopniach).  
 
-### <a name="tanh"></a>TANH —
+### <a name="tanh"></a>Tanh
 
 Oblicza tangens hiperboliczny wartości kolumn.  
   

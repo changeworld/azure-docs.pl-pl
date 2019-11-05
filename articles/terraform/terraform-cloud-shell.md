@@ -1,37 +1,35 @@
 ---
-title: Konfigurowanie Azure Cloud Shell Terraform
+title: Samouczek — Konfigurowanie Azure Cloud Shell dla Terraform
 description: Korzystając z narzędzia Terraform z usługą Azure Cloud Shell, można uprościć uwierzytelnianie i konfigurowanie szablonów.
-services: terraform
-ms.service: azure
-keywords: terraform, devops, scale set, virtual machine, network, storage, modules
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: e0a59697a3e4da97cf082c4c771fe93ad33b6035
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 693ed462fb1ba3dfed079e8ae97152732c771253
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173542"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969595"
 ---
-# <a name="terraform-cloud-shell-development"></a>Programowanie za pomocą narzędzia Terraform w usłudze Cloud Shell 
+# <a name="tutorial-configure-azure-cloud-shell-for-terraform"></a>Samouczek: Konfigurowanie Azure Cloud Shell dla Terraform
 
-Narzędzie Terraform znakomicie działa z poziomu wiersza polecenia powłoki Bash, na przykład w narzędziu macOS Terminal czy w powłoce Bash w systemie Windows lub Linux. Uruchamianie konfiguracji narzędzia Terraform w środowisku powłoki Bash usługi [Azure Cloud Shell](/azure/cloud-shell/overview) przynosi kilka wyjątkowych korzyści, które przyspieszają cykl tworzenia oprogramowania.
-
-W tym artykule dotyczącym pojęć opisano funkcje usługi Cloud Shell, które ułatwiają pisanie skryptów narzędzia Terraform wdrażanych na platformie Azure.
+Terraform dobrze działa z wiersza polecenia bash w systemie macOS, Windows lub Linux. Uruchamianie konfiguracji Terraform w środowisku bash [Azure Cloud Shell](/azure/cloud-shell/overview) ma pewne unikatowe zalety. W tym samouczku pokazano, jak napisać skrypty Terraform wdrażane na platformie Azure przy użyciu Cloud Shell.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="automatic-credential-configuration"></a>Konfiguracja poświadczeń automatycznych
 
-Narzędzie Terraform jest instalowane i od razu dostępne w usłudze Cloud Shell. Skrypty narzędzia Terraform uwierzytelniają się na platformie Azure po zalogowaniu do usługi Cloud Shell, umożliwiając zarządzanie infrastrukturą bez konieczności przeprowadzania jakiejkolwiek dodatkowej konfiguracji. Automatyczne uwierzytelnianie omija potrzebę ręcznego tworzenia jednostki usługi Active Directory i konfigurowania zmiennych dostawcy narzędzia Azure Terraform.
+Narzędzie Terraform jest instalowane i od razu dostępne w usłudze Cloud Shell. Skrypty narzędzia Terraform uwierzytelniają się na platformie Azure po zalogowaniu do usługi Cloud Shell, umożliwiając zarządzanie infrastrukturą bez konieczności przeprowadzania jakiejkolwiek dodatkowej konfiguracji. Automatyczne uwierzytelnianie pomija dwa procesy ręczne:
+- Tworzenie jednostki usługi Active Directory.
+- Konfigurowanie zmiennych dostawcy usługi Azure Terraform.
 
 
 ## <a name="using-modules-and-providers"></a>Używanie modułów i dostawców
 
-Moduły Azure Terraform wymagają poświadczeń w celu uzyskania dostępu i wprowadzenia zmian w zasobach subskrypcji platformy Azure. Podczas pracy w usłudze Cloud Shell dodaj do skryptów następujący kod, aby używać modułów Azure Terraform w usłudze Cloud Shell:
+Moduły Terraform platformy Azure wymagają poświadczeń w celu uzyskania dostępu do zasobów platformy Azure i ich modyfikowania. Aby użyć modułów Terraform w Cloud Shell, Dodaj następujący kod:
+
 
 ```hcl
 # Configure the Microsoft Azure Provider
@@ -50,5 +48,5 @@ W usłudze Cloud Shell jest dostępny interfejs wiersza polecenia platformy Azur
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Tworzenie niewielkiego klastra maszyn wirtualnych za pomocą rejestru modułu](terraform-create-vm-cluster-module.md)
-[Tworzenie niewielkiego klastra maszyn wirtualnych za pomocą niestandardowego języka HCL](terraform-create-vm-cluster-with-infrastructure.md)
+> [!div class="nextstepaction"]
+> [Tworzenie małego klastra maszyn wirtualnych przy użyciu rejestru modułu](terraform-create-vm-cluster-module.md)

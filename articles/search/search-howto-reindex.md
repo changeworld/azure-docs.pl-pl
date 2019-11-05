@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 26a751924985f94a7d7d12a382d4e6654f36ea48
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793708"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466447"
 ---
 # <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Jak skompilować indeks Wyszukiwanie poznawcze platformy Azure
 
@@ -46,7 +46,7 @@ Wszelkie inne modyfikacje mogą być wprowadzane bez wpływu na istniejące stru
 
 Po dodaniu nowego pola, istniejące indeksowane dokumenty otrzymują wartość null dla nowego pola. W przypadku późniejszego odświeżenia danych wartości z zewnętrznych danych źródłowych zastąpią wartości null dodane przez Wyszukiwanie poznawcze platformy Azure. Aby uzyskać więcej informacji na temat aktualizowania zawartości indeksu, zobacz [Dodawanie, aktualizowanie lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-## <a name="partial-or-incremental-indexing"></a>Częściowe lub przyrostowe indeksowanie
+## <a name="partial-indexing"></a>Częściowe indeksowanie
 
 Na platformie Azure Wyszukiwanie poznawcze nie można kontrolować indeksowania dla poszczególnych pól, a także usuwać lub tworzyć ponownie określone pola. Podobnie nie istnieje wbudowany mechanizm [indeksowania dokumentów na podstawie kryteriów](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents). Wszelkie wymagania dotyczące indeksowania opartego na kryteriach muszą być spełnione przez kod niestandardowy.
 
@@ -93,7 +93,7 @@ Po załadowaniu indeksu, odwrócony indeks każdego pola jest wypełniany wszyst
 
 Możesz rozpocząć wykonywanie zapytań względem indeksu zaraz po załadowaniu pierwszego dokumentu. Jeśli znasz identyfikator dokumentu, [interfejs API REST dokumentu wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/lookup-document) zwraca określony dokument. W celu szerszego testowania należy zaczekać, aż indeks zostanie całkowicie załadowany, a następnie użyć zapytań w celu sprawdzenia kontekstu, który powinien być widoczny.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Omówienie indeksatora](search-indexer-overview.md)
 + [Indeksowanie dużych zestawów danych na dużą skalę](search-howto-large-index.md)

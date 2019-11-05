@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 846650fce6701bb7e382df049902f427390b3051
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 529568cf4f667e72b0b4fb7ba83d0b85c4a90341
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931207"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499997"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejs API analizy tekstu
 
@@ -31,7 +31,7 @@ Jeśli masz zawartość wyrażoną w rzadziej używanym języku, możesz spróbo
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analiza tonacji, wyodrębnianie kluczowych fraz i nazwanego rozpoznawania jednostek
 
-W przypadku analizy tonacji, wyodrębniania kluczowych fraz i rozpoznawania jednostek Lista obsługiwanych języków jest bardziej selektywna, ponieważ analizatory są udoskonalane w celu uwzględnienia reguł lingwistycznych dodatkowych języków. Obsługa pełnego zestawu [typów jednostek](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition) jest obecnie ograniczona do następujących języków: 
+W przypadku analizy tonacji, wyodrębniania kluczowych fraz i rozpoznawania jednostek Lista obsługiwanych języków jest bardziej selektywna, ponieważ analizatory są udoskonalane w celu uwzględnienia reguł lingwistycznych dodatkowych języków. W przypadku nazwanego rozpoznawania jednostek v2 obsługa pełnego zestawu [typów jednostek](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition-v2) jest obecnie ograniczona do następujących języków: 
 * Polski
 * Chiński (uproszczony)
 * Francuski
@@ -44,39 +44,40 @@ Tylko `Person`, `Location` i `Organization` nazwane jednostki są zwracane dla i
 
 Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowaniem do ogólnie dostępnego stanu (GA), niezależnie od siebie i ogólnej usługi analiza tekstu. Istnieje możliwość, że języki pozostają w wersji zapoznawczej, nawet gdy interfejs API analizy tekstu przejścia są ogólnie dostępne.
 
-| Język    | Kod języka | Opinia | Kluczowe frazy | Rozpoznawanie jednostek nazwanych |   Uwagi  |
-|:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
-| Arabski      | `ar`          |           |             | ✔ \*                     | |
-| Czeski       | `cs`          |           |             | ✔ \*                     | |
-| Chiński (uproszczony) | `zh-hans`| ✔ \***     |             | ✔         |    |
-| Chiński (tradycyjny) | `zh-hant`| ✔ \***     |             |          |    |
-| Duński      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
-| Holenderski       | `nl`          | ✔ \***     | ✔          |  ✔ \*           |     |
-| Polski     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
-| Fiński     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Francuski      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
-| Niemiecki      | `de`          | ✔ \***     | ✔           |  ✔           |     |
-| Grecki       | `el`          | ✔ \*     |             |            |     |
-| Węgierski   | `hu`          |           |             |  ✔ \*          |     | 
-| Włoski     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
-| Japoński    | `ja`          | ✔ \***         | ✔           |  ✔ \*          |     |
-| Koreański      | `ko`          |          | ✔           |  ✔ \*          |     |
-| Norweski (bokmål) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
-| Polski      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
-| Portugalski (Portugalia) | `pt-PT`| ✔ \***        |  ✔          | ✔ \*      |`pt` również zaakceptowana|
-| Portugalski (Brazylia)   | `pt-BR`|          |  ✔   |  ✔ \*       |     |
-| Rosyjski     | `ru`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Hiszpański     | `es`          | ✔ \***       | ✔           |   ✔ \*\*      |     | 
-| Szwedzki     | `sv`          | ✔ \*     | ✔           |   ✔ \*          |     |
-| Turecki     | `tr`          | ✔ \*     |             |   ✔ \*          |  |
+> [!NOTE]
+> Aby uzyskać szczegółowy opis obsługi języka nazwanego rozpoznawania jednostek (NER) v3 (publiczna wersja zapoznawcza), zobacz [nazwane typy jednostek](named-entity-types.md).
+
+| Język              | Kod języka | Opinia | Kluczowe frazy | Rozpoznawanie jednostek znaku | Łączenie jednostek |       Uwagi        |
+|:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
+| Arabski                |     `ar`      |           |             |           ✔ \*           |                |                    |
+| Czeski                 |     `cs`      |           |             |           ✔ \*           |                |                    |
+| Chiński (uproszczony)    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| Chiński (tradycyjny)   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
+| Duński                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Holenderski                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| Polski               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
+| Fiński               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Francuski                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
+| Niemiecki                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
+| Grecki                 |     `el`      |   ✔ \*    |             |                          |                |                    |
+| Węgierski             |     `hu`      |           |             |           ✔ \*           |                |                    |
+| Włoski               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| Japoński              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| Koreański                |     `ko`      |           |      ✔      |           ✔ \*           |                |                    |
+| Norweski (bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Polski                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Portugalski (Portugalia) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` również zaakceptowana |
+| Portugalski (Brazylia)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
+| Rosyjski               |     `ru`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Hiszpański               |     `es`      |   ✔\**    |      ✔      |           ✔ \*           |     ✔ \**      |                    |
+| Szwedzki               |     `sv`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Turecki               |     `tr`      |   ✔ \*    |             |           ✔ \*           |                |                    |
 
 Obsługa języków \* jest w wersji zapoznawczej
 
-dla tego języka są dostępne zarówno\* \*[o nazwie rozpoznawanie jednostek](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) , jak i [Konsolidacja jednostek](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) .  
+\** również dostępna w [Analiza tonacji v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) i/lub [nazwane wersje zapoznawcze programu rozpoznawania jednostek](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) w wersji 3.
 
-\** * dostępne w [wersji Zapoznawczej analiza tonacji v3](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview)
-
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 [Strona dokumentacji Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
 [Strona produktu usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

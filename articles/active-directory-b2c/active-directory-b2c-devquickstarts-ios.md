@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96221ffc8249f722268ea5778bee4b4389ded26e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 0fb5341c2e7ee55391cb38251b0ea66b55b93301
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326597"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469162"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Logowanie przy użyciu aplikacji systemu iOS
 
@@ -37,7 +37,9 @@ Następnie zarejestruj aplikację w dzierżawie Azure AD B2C. Dzięki temu usłu
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Zapisz **Identyfikator aplikacji** do użycia w późniejszym kroku. Następnie wybierz aplikację z listy i Zapisz **niestandardowy identyfikator URI przekierowania**, który również zostanie użyty w późniejszym kroku. Na przykład `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Zapisz **Identyfikator aplikacji (klienta)** do użycia w późniejszym kroku.
+
+Zapisz także niestandardowy identyfikator URI przekierowania do użycia w późniejszym kroku. Na przykład `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Tworzenie przepływów użytkownika
 W Azure AD B2C każde środowisko użytkownika jest definiowane przez [przepływ użytkownika](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera jedno środowisko tożsamości: połączone logowanie i logowanie. Podczas tworzenia przepływu użytkownika upewnij się, że:
@@ -59,19 +61,19 @@ Ten przykład został utworzony przez następujące instrukcje Readme dotyczące
 > AppAuth obsługuje system iOS 7 lub nowszy.  Jednak w celu zapewnienia obsługi logowań społecznościowych w usłudze Google wymagane jest SFSafariViewController, które wymagają systemu iOS 9 lub nowszego.
 >
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 Komunikację z Azure AD B2C można skonfigurować, określając punkt końcowy autoryzacji i identyfikatory URI punktu końcowego tokenu.  Aby wygenerować te identyfikatory URI, potrzebne są następujące informacje:
 * Identyfikator dzierżawy (na przykład contoso.onmicrosoft.com)
-* Nazwa przepływu użytkownika (na przykład B2C @ no__t-01 @ no__t-1SignUpIn)
+* Nazwa przepływu użytkownika (na przykład B2C\_1\_rejestracji)
 
-Identyfikator URI punktu końcowego tokenu może zostać wygenerowany przez zastąpienie dzierżawy @ no__t-0ID i zasad @ no__t-1Name w następującym adresie URL:
+Identyfikator URI punktu końcowego tokenu może być wygenerowany przez zastępowanie identyfikatora\_dzierżawy oraz nazwy\_zasad w następującym adresie URL:
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-Identyfikator URI punktu końcowego autoryzacji może zostać wygenerowany przez zastąpienie dzierżawy @ no__t-0ID i zasad @ no__t-1Name w następującym adresie URL:
+Identyfikator URI punktu końcowego autoryzacji można wygenerować, zastępując identyfikator\_dzierżawy oraz nazwę\_zasad w następującym adresie URL:
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";

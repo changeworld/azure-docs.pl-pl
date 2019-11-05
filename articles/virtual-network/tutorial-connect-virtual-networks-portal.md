@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b32f3762f2546a4d4956bf38c914173657e9d3da
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164053"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499870"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Samouczek: łączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych z użyciem witryny Azure Portal
 
@@ -44,7 +44,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
 ## <a name="create-virtual-networks"></a>Tworzenie sieci wirtualnych
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**.
 2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Sieć wirtualna**.
 3. Na stronie **podstawowe** wprowadź lub wybierz poniższe informacje, a następnie zaakceptuj ustawienia domyślne dla pozostałych ustawień:
 
@@ -54,7 +54,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
     |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*.|
     |Region| Wybierz pozycję **Wschodnie stany USA**.|
     |Nazwa|myVirtualNetwork1|
-   
+
 4. Na stronie **adresy IP** wprowadź wartość 10.0.0.0/16 dla pola **przestrzeń adresowa** . Kliknij przycisk **Dodaj podsieć** poniżej i wprowadź Subnet1 dla **nazwy podsieci** i 10.0.0.0/24 dla **zakresu adresów podsieci**.
    
 5. Ponownie wykonaj kroki 1–3 z następującymi zmianami:
@@ -69,7 +69,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 ## <a name="peer-virtual-networks"></a>Tworzenia komunikacji równorzędnej sieci wirtualnych
 
 1. W polu wyszukiwania w górnej części witryny Azure Portal rozpocznij wpisywanie ciągu *myVirtualNetwork1*. Gdy pozycja **myVirtualNetwork1** pojawi się w wynikach wyszukiwania, wybierz ją.
-2. Wybierz pozycję **Komunikacja równorzędna** w obszarze **USTAWIENIA**, a następnie wybierz pozycję **+ Dodaj**, jak pokazano na poniższej ilustracji:
+2. Wybierz pozycję **Komunikacja równorzędna**, w obszarze **Ustawienia**, a następnie wybierz pozycję **Dodaj**, jak pokazano na poniższej ilustracji:
 
     ![Tworzenie komunikacji równorzędnej](./media/tutorial-connect-virtual-networks-portal/create-peering.png)
 
@@ -96,7 +96,7 @@ Utwórz maszynę wirtualną w każdej sieci wirtualnej, dzięki czemu będzie mo
 
 ### <a name="create-the-first-vm"></a>Tworzenie pierwszej maszyny wirtualnej
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**.
 2. Wybierz pozycję **Wystąpienia obliczeniowe**, a następnie wybierz pozycję **Windows Server 2016 Datacenter**. Możesz wybrać inny system operacyjny, ale w pozostałych krokach założono, że wybierzesz system **Windows Server 2016 Datacenter**. 
 3. Wprowadź lub wybierz następujące informacje w obszarze **Podstawy**, zaakceptuj wartości domyślne dla pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
 
@@ -172,7 +172,7 @@ Gdy grupa zasobów nie będzie już potrzebna, usuń ją wraz ze wszystkimi zaso
 
 1. Wprowadź ciąg *myResourceGroup* w polu **Szukaj** w górnej części portalu. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
+3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **myResourceGroup**, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -3,15 +3,15 @@ title: Szczegóły struktury definicji zasad
 description: Opisuje, w jaki sposób definicja zasad zasobów jest używana przez Azure Policy do ustanawiania konwencji dotyczących zasobów w organizacji, opisując, kiedy zasady są wymuszane i jakie skutki mają być wykonywane.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: fe0f16fd4c07eac92ab3c1ae2c6f78b0bd1595eb
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d415075bda4ff58d4a3a633fe820f22d8a157459
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053496"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464034"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -81,12 +81,17 @@ Zalecamy skonfigurowanie **trybu** do `all` w większości przypadków. Wszystki
 
 `indexed` należy używać podczas tworzenia zasad, które wymuszają Tagi lub lokalizacje. Chociaż nie jest to wymagane, uniemożliwiają one nie obsługujące tagów i lokalizacji, ponieważ nie są one zgodne z wynikami sprawdzania zgodności. Wyjątkiem są **grupy zasobów**. Zasady, które wymuszają lokalizację lub Tagi w grupie zasobów, powinny ustawiać **tryb** , aby `all`, a w odniesieniu do typu `Microsoft.Resources/subscriptions/resourceGroups`. Aby zapoznać się z przykładem, zobacz [Wymuszaj Tagi grupy zasobów](../samples/enforce-tag-rg.md). Aby uzyskać listę zasobów, które obsługują Tagi, zobacz [obsługa tagów dla zasobów platformy Azure](../../../azure-resource-manager/tag-support.md).
 
-### <a name="resource-provider-modes"></a>Tryby dostawcy zasobów
+### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a>tryby dostawcy zasobów <a name="resource-provider-modes" />(wersja zapoznawcza)
 
-Obecnie obsługiwany jest jedyny tryb dostawcy zasobów `Microsoft.ContainerService.Data` do zarządzania regułami kontrolera [usługi Azure Kubernetes](../../../aks/intro-kubernetes.md).
+Następujące tryby dostawcy zasobów są obecnie obsługiwane w wersji zapoznawczej:
+
+- `Microsoft.ContainerService.Data` zarządzania regułami kontrolera przyjmowania w [usłudze Azure Kubernetes](../../../aks/intro-kubernetes.md). Zasady korzystające z tego trybu dostawcy zasobów **muszą** używać efektu [EnforceRegoPolicy](./effects.md#enforceregopolicy) .
+- `Microsoft.Kubernetes.Data` zarządzania niezarządzanymi klastrami Kubernetes Engine AKS na platformie Azure.
+  Zasady korzystające z tego trybu dostawcy zasobów **muszą** używać efektu [EnforceOPAConstraint](./effects.md#enforceopaconstraint) .
+- `Microsoft.KeyVault.Data` zarządzania magazynami i certyfikatami w programie [Azure Key Vault](../../../key-vault/key-vault-overview.md).
 
 > [!NOTE]
-> [Azure Policy Kubernetes](rego-for-aks.md) jest w publicznej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
+> Tryby dostawcy zasobów obsługują tylko wbudowane definicje zasad i nie obsługują inicjatyw w wersji zapoznawczej.
 
 ## <a name="parameters"></a>Parametry
 
@@ -134,7 +139,7 @@ Można na przykład zdefiniować definicję zasad, aby ograniczyć lokalizacje, 
 
 ### <a name="using-a-parameter-value"></a>Używanie wartości parametru
 
-W regule zasad można odwoływać się do parametrów za pomocą następującej składni funkcji `parameters` wdrożenia:
+W regule zasad, należy odwołać się do parametrów za pomocą następującej składni funkcji `parameters`:
 
 ```json
 {
@@ -272,7 +277,7 @@ Obsługiwane są następujące pola:
 - `tags['''<tagName>''']`
   - Ta składnia nawiasów umożliwia obsługę nazw tagów, które zawierają apostrofy przez ucieczki z podwójnym apostrofem.
   - Gdzie **"\<tagName\>"** jest nazwą tagu, dla którego ma zostać zweryfikowany warunek.
-  - Przykład: `tags['''My.Apostrophe.Tag''']` gdzie **"\<tagName\>"** jest nazwą tagu.
+  - Przykład: `tags['''My.Apostrophe.Tag''']`, gdzie **element "My. apostrof. tag"** jest nazwą tagu.
 - Aliasy właściwości — Aby uzyskać listę, zobacz [aliasy](#aliases).
 
 > [!NOTE]
@@ -282,7 +287,7 @@ Obsługiwane są następujące pola:
 
 Wartość parametru może być przekazanie do pola tagu. Przekazywanie parametru do pola tagu zwiększa elastyczność definicji zasad podczas przypisywania zasad.
 
-W poniższym przykładzie `concat` jest używany do tworzenia wyszukiwania pól tagów dla tagu o nazwie **TagName** parametru. Jeśli ten tag nie istnieje, efekt **dołączania** jest używany do dodawania znacznika przy użyciu wartości tego samego nazwanego tagu ustawionego w nadrzędnej grupie zasobów poddane inspekcji przy użyciu funkcji wyszukiwania `resourcegroup()`.
+W poniższym przykładzie `concat` jest używany do tworzenia wyszukiwania pól tagów dla tagu o nazwie **TagName** parametru. Jeśli ten tag nie istnieje, efekt **modyfikacji** jest używany do dodawania znacznika przy użyciu wartości tego samego nazwanego tagu ustawionego w nadrzędnej grupie zasobów poddane inspekcji przy użyciu funkcji wyszukiwania `resourcegroup()`.
 
 ```json
 {
@@ -291,11 +296,17 @@ W poniższym przykładzie `concat` jest używany do tworzenia wyszukiwania pól 
         "exists": "false"
     },
     "then": {
-        "effect": "append",
-        "details": [{
-            "field": "[concat('tags[', parameters('tagName'), ']')]",
-            "value": "[resourcegroup().tags[parameters('tagName')]]"
-        }]
+        "effect": "modify",
+        "details": {
+            "operations": [{
+                "operation": "add",
+                "field": "[concat('tags[', parameters('tagName'), ']')]",
+                "value": "[resourcegroup().tags[parameters('tagName')]]"
+            }],
+            "roleDefinitionIds": [
+                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ]
+        }
     }
 }
 ```
@@ -390,42 +401,15 @@ Po zmodyfikowaniu reguły zasad, `if()` sprawdza długość **nazwy** przed pró
 
 Azure Policy obsługuje następujące typy efektów:
 
-- **Odmów**: generuje zdarzenie w dzienniku aktywności i kończy się niepowodzeniem żądania
-- **Inspekcja**: generuje zdarzenie ostrzegawcze w dzienniku aktywności, ale nie kończy się niepowodzeniem żądania
 - **Append**: Dodaje zdefiniowany zestaw pól do żądania
-- **AuditIfNotExists**: włącza inspekcję, jeśli zasób nie istnieje
-- **DeployIfNotExists**: służy do wdrażania zasobu, jeśli jeszcze nie istnieje
+- **Inspekcja**: generuje zdarzenie ostrzegawcze w dzienniku aktywności, ale nie kończy się niepowodzeniem żądania
+- **AuditIfNotExists**: generuje zdarzenie ostrzegawcze w dzienniku aktywności, jeśli powiązany zasób nie istnieje
+- **Odmów**: generuje zdarzenie w dzienniku aktywności i kończy się niepowodzeniem żądania
+- **DeployIfNotExists**: wdraża powiązane zasoby, jeśli jeszcze nie istnieją
 - **Wyłączone**: nie oblicza zasobów pod kątem zgodności z regułą zasad
-- **EnforceRegoPolicy**: konfiguruje kontroler "Open Policy Agent Admission Control" w usłudze Azure Kubernetes Service (wersja zapoznawcza)
+- **EnforceOPAConstraint** (wersja zapoznawcza): konfiguruje kontroler "Open Policy Agent Admission Control" z strażnikiem v3 dla samozarządzanej klastrów Kubernetes na platformie Azure (wersja zapoznawcza)
+- **EnforceRegoPolicy** (wersja zapoznawcza): konfiguruje kontroler "Open Policy Agent Admission Control" z strażnikiem v2 w usłudze Azure Kubernetes Service
 - **Modyfikowanie**: dodaje, aktualizuje lub usuwa zdefiniowane znaczniki z zasobu
-
-W przypadku **dołączania**należy podać następujące informacje:
-
-```json
-"effect": "append",
-"details": [{
-    "field": "field name",
-    "value": "value of the field"
-}]
-```
-
-Wartość może być albo ciągiem lub obiektem formatu JSON.
-
-**AuditIfNotExists** i **DeployIfNotExists** ocenia istnienia powiązanego zasobu i zastosowania reguły. Jeśli zasób nie jest zgodny z regułą, efekt jest zaimplementowany. Można na przykład wymagać, aby obserwator sieci został wdrożony dla wszystkich sieci wirtualnych. Aby uzyskać więcej informacji, zobacz [Inspekcja, jeśli rozszerzenie nie istnieje](../samples/audit-ext-not-exist.md) .
-
-Efekt **DeployIfNotExists** wymaga, aby właściwość **zduplikowanych** była częścią **szczegółów** reguły zasad. Aby uzyskać więcej informacji, zobacz [korygowanie — Konfigurowanie definicji zasad](../how-to/remediate-resources.md#configure-policy-definition).
-
-```json
-"details": {
-    ...
-    "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
-        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
-    ]
-}
-```
-
-Podobnie **Modyfikacja** wymaga właściwości **zduplikowanych** w części **szczegółów** reguły zasad dla [zadania korygowania](../how-to/remediate-resources.md). **Modyfikacja** wymaga również tablicy **operacji** , aby zdefiniować akcje do wykonania względem tagów zasobów.
 
 Aby uzyskać szczegółowe informacje na temat każdego efektu, kolejności oceny, właściwości i przykładów, zobacz [opis efektów Azure Policy](effects.md).
 

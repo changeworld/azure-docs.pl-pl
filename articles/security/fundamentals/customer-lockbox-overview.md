@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 06/20/2019
-ms.openlocfilehash: 7ca5c890b1f3161923cd808c5ecec0ccf0165d64
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727516"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466404"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Skrytka klienta Microsoft Azure
 
@@ -69,13 +69,13 @@ Poniższe kroki przedstawiają typowy przepływ pracy dla żądania Skrytka klie
     
     ![Skrytka klienta platformy Azure — wyświetlanie żądania biletu pomocy technicznej](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
-11. Po przejrzeniu żądania wyznaczono opcję Zatwierdź lub **Odmów**:
+11. Po przejrzeniu żądania wyznaczono opcję **Zatwierdź** lub **Odmów**:
     
     ![Skrytka klienta platformy Azure — wybierz pozycję Zatwierdź lub Odmów](./media/customer-lockbox-overview/customer-lockbox-approval.png)
     
     W wyniku zaznaczenia:
-    - **Zatwierdź**:  Dostęp jest udzielany inżynierowi firmy Microsoft. Dostęp jest udzielany przez domyślny okres ośmiu godzin.
-    - **Odmów**: Żądanie dostępu z podwyższonym poziomem uprawnień przez inżyniera firmy Microsoft zostało odrzucone i nie są podejmowane żadne dalsze działania.
+    - **Zatwierdź**: dostęp jest udzielany do inżynierów firmy Microsoft. Dostęp jest udzielany przez domyślny okres ośmiu godzin.
+    - **Odmów**: żądanie dostępu z podwyższonym poziomem uprawnień przez inżyniera firmy Microsoft zostało odrzucone i nie są podejmowane żadne dalsze działania.
 
 W celach inspekcji akcje wykonywane w tym przepływie pracy są rejestrowane w [dziennikach żądań skrytka klienta](#auditing-logs).
 
@@ -87,11 +87,11 @@ Dzienniki Skrytka klienta są przechowywane w dziennikach aktywności. W Azure P
 - **Zatwierdź żądanie skrytki**
 - **Wygaśnięcie żądania skrytki**
 
-Na przykład:
+Przykład:
 
 ![Azure Skrytka klienta — dzienniki aktywności](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios"></a>Obsługiwane usługi i scenariusze
+## <a name="supported-services-and-scenarios-in-general-availability"></a>Obsługiwane usługi i scenariusze ogólnie dostępne
 
 Poniższe usługi i scenariusze są obecnie ogólnie dostępne dla Skrytka klienta.
 
@@ -109,6 +109,23 @@ Skrytka klienta jest obecnie włączona dla żądań dostępu pulpitu zdalnego d
 
 W przypadku scenariuszy obejmujących dostęp do pulpitu zdalnego można użyć dzienników zdarzeń systemu Windows, aby przejrzeć działania podejmowane przez inżyniera firmy Microsoft. Rozważ użycie Azure Security Center do zbierania dzienników zdarzeń i kopiowania danych do obszaru roboczego w celu analizy. Aby uzyskać więcej informacji, zobacz [zbieranie danych w Azure Security Center](../../security-center/security-center-enable-data-collection.md).
 
+## <a name="supported-services-and-scenarios-in-preview"></a>Obsługiwane usługi i scenariusze w wersji zapoznawczej
+
+Następujące usługi są obecnie dostępne w wersji zapoznawczej dla Skrytka klienta:
+
+- Azure Storage 
+
+- Azure SQL DB 
+
+- Azure Data Explorer 
+
+- Maszyny wirtualne (teraz obejmują również dostęp do zrzutów pamięci i dysków zarządzanych) 
+
+- Transfery subskrypcji platformy Azure
+
+Aby włączyć Skrytka klienta dla tych ofert w wersji zapoznawczej dla Twojej organizacji, zarejestruj się, aby uzyskać [skrytka klienta dla publicznej wersji zapoznawczej platformy Azure](https://aka.ms/customerlockbox/insiderprogram).
+
+
 ## <a name="exclusions"></a>Wykluczenia
 
 Żądania Skrytka klienta nie są wyzwalane w następujących scenariuszach obsługi inżynierów:
@@ -119,6 +136,6 @@ W przypadku scenariuszy obejmujących dostęp do pulpitu zdalnego można użyć 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Skrytka klienta jest automatycznie dostępna dla wszystkich klientów z planem [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/) o minimalnym poziomie **dewelopera**.
+Skrytka klienta jest automatycznie dostępna dla wszystkich klientów z [planem pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/) o minimalnym poziomie **dewelopera**.
 
 Jeśli masz uprawniający plan pomocy technicznej, nie musisz mieć żadnej akcji, aby włączyć Skrytka klienta. Żądania Skrytka klienta są inicjowane przez inżyniera firmy Microsoft, jeśli jest to konieczne do wykonania biletu pomocy technicznej, który został zgłoszony przez kogoś w organizacji.

@@ -1,0 +1,69 @@
+---
+title: Używanie prywatnego adresu IP do routingu wewnętrznego dla punktu końcowego transferu danych przychodzących
+description: Ten artykuł zawiera informacje na temat używania prywatnych adresów IP na potrzeby routingu wewnętrznego, a tym samym udostępniania punktu końcowego transferu danych przychodzących w ramach klastra do pozostałej części sieci wirtualnej.
+services: application-gateway
+author: caya
+ms.service: application-gateway
+ms.topic: article
+ms.date: 10/23/2019
+ms.author: caya
+ms.openlocfilehash: 13b8cc5c346febe9bd6e86be1ad8157464c83536
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73513226"
+---
+# <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Używanie prywatnego adresu IP do routingu wewnętrznego dla punktu końcowego transferu danych przychodzących 
+
+Ta funkcja pozwala uwidocznić punkt końcowy transferu danych przychodzących w ramach `Virtual Network` przy użyciu prywatnego adresu IP.
+
+## <a name="pre-requisites"></a>Wymagania wstępne  
+Application Gateway z [konfiguracją prywatnego adresu IP](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip)
+
+Istnieją dwa sposoby konfigurowania kontrolera do korzystania z prywatnego adresu IP na potrzeby ruchu przychodzącego.
+
+## <a name="assign-to-a-particular-ingress"></a>Przypisywanie do określonego ruchu przychodzącego
+Aby uwidocznić określony ruch przychodzący przez prywatny adres IP, użyj [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) adnotacji w ramach ruchu przychodzącego.
+
+### <a name="usage"></a>Sposób użycia
+```yaml
+appgw.ingress.kubernetes.io/use-private-ip: "true"
+```
+
+W przypadku bram aplikacji bez prywatnego adresu IP Ingresses z adnotacją `appgw.ingress.kubernetes.io/use-private-ip: "true"` zostaną zignorowane. Zostanie to wskazane w dzienniku zdarzeń przychodzących i AGIC pod.
+
+* Błąd, jak wskazano w zdarzeniu transferu danych przychodzących
+
+    ```bash
+    Events:
+    Type     Reason       Age               From                                                                     Message
+    ----     ------       ----              ----                                                                     -------
+    Warning  NoPrivateIP  2m (x17 over 2m)  azure/application-gateway, prod-ingress-azure-5c9b6fcd4-bctcb  Ingress default/hello-world-ingress requires Application Gateway 
+    applicationgateway3026 has a private IP address
+    ```
+
+* Błąd, jak wskazano w dziennikach AGIC
+
+    ```bash
+    E0730 18:57:37.914749       1 prune.go:65] Ingress default/hello-world-ingress requires Application Gateway applicationgateway3026 has a private IP address
+    ```
+
+
+## <a name="assign-globally"></a>Przypisz globalnie
+W przypadku wymogu jest ograniczenie, że wszystkie Ingresses mają być ujawnione za pośrednictwem prywatnego adresu IP, użyj `appgw.usePrivateIP: true` w `helm` config.
+
+### <a name="usage"></a>Sposób użycia
+```yaml
+appgw:
+    subscriptionId: <subscriptionId>
+    resourceGroup: <resourceGroupName>
+    name: <applicationGatewayName>
+    usePrivateIP: true
+```
+
+Dzięki temu kontroler transferu danych przychodzących będzie przefiltrować konfiguracje adresów IP dla prywatnego adresu IP podczas konfigurowania odbiorników frontonu na Application Gateway.
+AGIC będzie awaryjnego i ulega awarii, jeśli `usePrivateIP: true` i nie zostanie przypisany prywatny adres IP.
+
+> [!NOTE]
+> Jednostka SKU Application Gateway v2 wymaga publicznego adresu IP. Jeśli potrzebujesz Application Gateway być prywatnym, Dołącz [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) do podsieci Application Gateway, aby ograniczyć ruch.

@@ -8,14 +8,14 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 09/02/2018
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 00eb6f40e77cbdb64249600e35ca8531f1a744a8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1effd07cef439a6257028549b7b7114b742eb478
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258131"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488753"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Zaloguj się do portalu LUIS
 
@@ -41,8 +41,8 @@ Nowy użytkownik do LUIS musi wykonać następującą procedurę:
 
 1. Zostanie wyświetlone podsumowanie zasobu, który ma zostać utworzony. Wybierz opcję **Dalej**.
 
-    ![Utwórz zasób tworzenia](./media/sign-in-confirm-key-selection.png)
+    ![Utwórz zasób tworzenia](../media/sign-in/sign-in-confirm-key-selection.png)
 
-1. Krok 3 to potwierdzenie. Potwierdź wybór, wybierając pozycję **Kontynuuj**. 
+1. Potwierdź, wybierając pozycję **Kontynuuj**. 
 
-    ![Utwórz zasób tworzenia](./media/sign-in-confirm-continue.png)
+    ![Utwórz zasób tworzenia](../media/sign-in/sign-in-confirm-continue.png)

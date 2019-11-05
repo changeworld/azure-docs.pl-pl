@@ -1,5 +1,5 @@
 ---
-title: 'Program PowerShell: Włącz BYOK TDE-Azure SQL Database wystąpienia zarządzanego | Microsoft Docs'
+title: 'PowerShell: Włączanie BYOK TDE-Azure SQL Database wystąpienia zarządzanego | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować wystąpienie zarządzane usługi Azure SQL, aby rozpocząć korzystanie z BYOK Transparent Data Encryption (TDE) na potrzeby szyfrowania w środowisku REST przy użyciu programu PowerShell.
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,15 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-ms.date: 04/19/2019
-ms.openlocfilehash: d8f0f4a8e603a9040d166b00682077cff23abd8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 11/04/2019
+ms.openlocfilehash: 0413216bc666aff504193d6723d46a6ee26be8ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569697"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500057"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Zarządzanie Transparent Data Encryption w wystąpieniu zarządzanym przy użyciu własnego klucza z poziomu Azure Key Vault (wersja zapoznawcza)
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Zarządzaj Transparent Data Encryption w zarządzanym wystąpieniu przy użyciu własnego klucza z Azure Key Vault
 
 Ten przykład skryptu programu PowerShell służy do konfigurowania Transparent Data Encryption (TDE) w scenariuszu Bring Your Own Key (wersja zapoznawcza) dla wystąpienia zarządzanego usługi Azure SQL przy użyciu klucza z Azure Key Vault. Aby dowiedzieć się więcej na temat obsługi TDE z Bring Your Own Key (BYOK), zobacz [TDE Bring Your Own Key do usługi Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
 
@@ -40,7 +40,7 @@ Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `
 
 [!code-powershell-interactive[main](../../../powershell_scripts/sql-database/transparent-data-encryption/setup-tde-byok-sqlmi.ps1 "Set up BYOK TDE for SQL Managed Instance")]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

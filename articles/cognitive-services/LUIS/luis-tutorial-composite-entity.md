@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Samouczek jednostki złożonej — LUIS'
+title: 'Samouczek: samouczek jednostek złożonych — LUIS'
 titleSuffix: Azure Cognitive Services
-description: Dodaj złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
+description: Dodaj jednostkę złożoną, aby powiązać wyodrębnione dane różnych typów w jedną zawierającą ją jednostkę. Poprzez zgrupowanie danych aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typach danych.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,25 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/29/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: f20661a74397487e141e69681f207418db8ac386
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: adb8941fd60a955a44a04717958c5203b721639a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70388043"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498993"
 ---
-# <a name="tutorial-group-and-extract-related-data"></a>Samouczek: Grupowanie i wyodrębnianie powiązanych danych
-W tym samouczku należy dodać złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
+# <a name="tutorial-group-and-extract-related-data"></a>Samouczek: grupowanie i wyodrębnianie powiązanych danych
+W tym samouczku Dodaj jednostkę złożoną, aby powiązać wyodrębnione dane różnych typów w jedną zawierającą ją jednostkę. Poprzez zgrupowanie danych aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typach danych.
 
-Złożone jednostki ma na celu grupowanie powiązanych jednostek w encji kategorii nadrzędnej. Taka informacja istnieje jako osobne jednostki, przed utworzeniem złożonego. 
+Celem jednostki złożonej jest pogrupowanie powiązanych jednostek z nadrzędną jednostką kategorii. Informacje istnieją jako osobne jednostki przed utworzeniem projektu złożonego. 
 
-Złożone jednostki jest odpowiednia dla danych tego typu, ponieważ dane:
+Jednostka złożona jest odpowiednia dla tego typu danych, ponieważ dane:
 
 * Są ze sobą powiązane. 
-* Używać różnych typów jednostek.
+* Używaj różnych typów jednostek.
 * Te informacje należy grupować i przetwarzać jako całość w aplikacji klienckiej.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -50,7 +52,7 @@ Złożone jednostki jest odpowiednia dla danych tego typu, ponieważ dane:
 
 3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `composite`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
 
-## <a name="composite-entity"></a>Złożone jednostki
+## <a name="composite-entity"></a>Jednostka złożona
 
 W tej aplikacji Nazwa działu jest definiowana w jednostce listy **działów** i zawiera synonimy. 
 
@@ -85,25 +87,25 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 1. Wybierz pozycję **TransferEmployeeToDepartment** z listy intencje.
 
-1. W wypowiedź `place John Jackson in engineering`wybierz jednostkę PersonName, `John Jackson`a następnie wybierz pozycję **Otocz w jednostce złożonej** na liście rozwijanej menu dla poniższego wypowiedź. 
+1. W `place John Jackson in engineering`wypowiedź wybierz jednostkę PersonName, `John Jackson`, a następnie wybierz pozycję **Otocz w jednostce złożonej** na liście rozwijanej menu dla poniższego wypowiedź. 
 
     ![Zrzut ekranu przedstawiający Wybieranie zawijania złożonego w oknie dialogowym rozwijanym](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
-1. Następnie od razu wybierz ostatni obiekt `engineering` w wypowiedź. Zielony pasek jest rysowana w ramach wybranego słowa wskazujący złożonego jednostki. W menu podręcznym wprowadź nazwę złożonego `TransferEmployeeInfo` a następnie wybierz enter. 
+1. Następnie natychmiast Wybierz ostatnią jednostkę, `engineering` w wypowiedź. Zielony pasek jest rysowany pod zaznaczonymi wyrazami wskazującymi jednostkę złożoną. W menu podręcznym wprowadź nazwę złożoną `TransferEmployeeInfo` a następnie wybierz klawisz ENTER. 
 
     ![Zrzut ekranu przedstawiający wprowadzanie nazwy złożonej w oknie dialogowym listy rozwijanej](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. W **jakim typie obiektu chcesz utworzyć?** wszystkie wymagane pola znajdują się na liście: `personName` i. `Department` Wybierz pozycję **Done** (Gotowe). Zwróć uwagę, że wstępnie utworzona jednostka, osobaname, została dodana do jednostki złożonej. Jeśli może mieć wstępnie utworzone jednostki, pojawiają się między początkowe i końcowe tokenów złożonych jednostki, jednostki złożonego musi zawierać tych wstępnie utworzonych jednostek. Nie dołączono ze wstępnie utworzonych jednostek, złożonego jednostki nie jest poprawnie przewidzieć, ale jest każdego pojedynczego elementu.
+1. W **jakim typie obiektu chcesz utworzyć?** wszystkie wymagane pola znajdują się na liście: `personName` i `Department`. Wybierz pozycję **Done** (Gotowe). Zwróć uwagę, że wstępnie utworzona jednostka, osobaname, została dodana do jednostki złożonej. Jeśli można utworzyć wstępnie utworzoną jednostkę między początkowym i końcowym tokenem jednostki złożonej, jednostka złożona musi zawierać te wstępnie skompilowane jednostki. Jeśli wstępnie skompilowane jednostki nie są uwzględnione, jednostka złożona nie jest prawidłowo przewidywalna, ale każdy pojedynczy element to.
 
     ![Zrzut ekranu przedstawiający wprowadzanie nazwy złożonej w oknie dialogowym listy rozwijanej](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
-## <a name="label-example-utterances-with-composite-entity"></a>Wypowiedzi przykład etykiety ze złożonego jednostki
+## <a name="label-example-utterances-with-composite-entity"></a>Etykieta przykład wyrażenia długości z jednostką złożoną
 
-1. W każdym wypowiedź przykład wybierz jednostki najdalej po lewej stronie, która powinna znajdować się w złożonego. Następnie wybierz pozycję **opakować w jednostce złożone**.
+1. W każdym przykładzie wypowiedź wybierz jednostkę z lewej strony, która powinna znajdować się w ramach projektu złożonego. Następnie wybierz pozycję **Zawijanie w jednostce złożonej**.
 
 1. Zaznacz ostatni wyraz w jednostce złożonej, a następnie wybierz pozycję **TransferEmployeeInfo** z menu podręcznego. 
 
-1. Sprawdź, czy wszystkie wypowiedzi w celem są oznaczone etykietami z jednostką złożonego. 
+1. Sprawdź, czy wszystkie wyrażenia długości w zamierzeniu są oznaczone jednostką złożoną. 
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trenowanie aplikacji w celu umożliwienia testowania zmian w intencji 
 
@@ -117,9 +119,9 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move Jill Jones to DevOps`. Ostatni parametr querystring jest `q`, zapytanie wypowiedź. 
+2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move Jill Jones to DevOps`. Ostatnim parametrem QueryString jest `q`, zapytania wypowiedź. 
 
-    Ponieważ ten test jest upewnij się, że złożonego jest wyodrębniany poprawnie, test można dołączyć istniejącego wypowiedź próbki lub nowe wypowiedź. Dobry test umożliwiający jest uwzględnienie wszystkich obiektów podrzędnych w jednostce złożone.
+    Ponieważ ten test polega na sprawdzeniu, czy złożone jest prawidłowo wyodrębnione, test może obejmować istniejącą przykładową wypowiedź lub nową wypowiedź. Dobrym testem jest uwzględnienie wszystkich jednostek podrzędnych w jednostce złożonej.
 
     ```json
     {
@@ -183,7 +185,7 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
     }
     ```
 
-   Ta wypowiedź zwraca tablicę złożonego jednostek. Każda jednostka jest danego typu i wartości. Aby uzyskać większą dokładność dla każdej jednostki podrzędne, należy użyć kombinacji typu i wartości z elementu tablicy złożone Aby znaleźć odpowiedni element w tablicy jednostek.  
+   Ta wypowiedź zwraca tablicę jednostek złożonych. Każda jednostka ma typ i wartość. Aby znaleźć większą precyzję dla każdej jednostki podrzędnej, użyj kombinacji typu i wartości z elementu złożonej tablicy, aby znaleźć odpowiadający element w tablicy jednostek.  
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -200,7 +202,7 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku tworzony złożonego jednostki do hermetyzacji istniejących jednostek. Dzięki temu aplikacja kliencka można znaleźć grupy powiązanych danych w różnych typach danych, aby kontynuować rozmowę. Aplikacja kliencka dla tej aplikacji do zarządzania zasobami ludzkimi zapytać, jakie datę i godzinę przeniesienie musi rozpoczynać się i kończyć. Może również poprosił o inne logistyke przenoszenia, takie jak telefon fizyczny. 
+W tym samouczku utworzono jednostkę złożoną w celu hermetyzacji istniejących jednostek. Dzięki temu aplikacja kliencka może znaleźć grupę powiązanych danych w różnych typach, aby kontynuować konwersację. Aplikacja kliencka dla tej aplikacji Human Resources może zażądać, jaki dzień i kiedy przeniesienie musi rozpocząć się i zakończyć. Może również poprosił o inne logistyke przenoszenia, takie jak telefon fizyczny. 
 
 > [!div class="nextstepaction"] 
-> [Dowiedz się, jak dodać jednostki prostej listy fraz](luis-quickstart-primary-and-secondary-data.md)  
+> [Dowiedz się, jak dodać prostą jednostkę z listą fraz](luis-quickstart-primary-and-secondary-data.md)  

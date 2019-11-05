@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99a3ca0115611f45ed080c39767d13e087b8efb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563242"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464219"
 ---
-# <a name="tutorial-host-your-domain-in-azure-dns"></a>Samouczek: Hostowanie własnej domeny w usłudze Azure DNS
+# <a name="tutorial-host-your-domain-in-azure-dns"></a>Samouczek: hostowanie własnej domeny w usłudze Azure DNS
 
 Za pomocą usługi Azure DNS można hostować swoją domenę DNS i zarządzać rekordami DNS. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
 
@@ -34,17 +34,17 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musi mieć nazwę domeny, które jest dostępne na potrzeby testów można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
+Musisz mieć nazwę domeny dostępną do przetestowania, aby można było hostować w Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
 
-Domena przykład używane w tym samouczku jest "contoso.NET", ale korzystać z własnej nazwy domeny.
+Przykładową domeną używaną dla tego samouczka jest contoso.net, ale należy użyć własnej nazwy domeny.
 
 ## <a name="create-a-dns-zone"></a>Tworzenie strefy DNS
 
-1. Zaloguj się do Portalu Azure.
-1. W lewym górnym rogu wybierz pozycję **Utwórz zasób** > **Sieć** > **Strefa DNS**, aby otworzyć stronę **Tworzenie strefy DNS**.
+1. Przejdź do [Azure Portal](https://portal.azure.com/) , aby utworzyć strefę DNS. Wyszukaj i wybierz **strefy DNS**.
 
    ![Strefa DNS](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
+1. Wybierz pozycję **Utwórz strefę DNS**.
 1. Na stronie **Tworzenie strefy DNS** wprowadź następujące wartości, a następnie wybierz pozycję **Utwórz**:
 
    | **Ustawienie** | **Wartość** | **Szczegóły** |
@@ -113,7 +113,7 @@ Jeśli planujesz wykonanie następnego samouczka, możesz zachować grupę zasob
 
 - Wybierz grupę zasobów **contosoRG**, a następnie wybierz pozycję **Usuń grupę zasobów**. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku utworzono strefę DNS dla domeny i delegowano ją do usługi Azure DNS. Aby dowiedzieć się więcej o usłudze Azure DNS i aplikacjach internetowych, przejdź do samouczka dotyczącego aplikacji internetowych.
 

@@ -1,24 +1,24 @@
 ---
 title: 'Wieloklasowa regresja logistyczna: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak za pomocą wieloklasowego modułu regresji logistycznej w usłudze Azure Machine Learning utworzyć model regresji logistycznej, który może służyć do przewidywania wielu wartości.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak za pomocą wieloklasowego modułu regresji logistycznej w Azure Machine Learning utworzyć model regresji logistycznej, który może służyć do przewidywania wielu wartości.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: d31329d6d45fd9f137bd6d57a638915e0833ee4a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 9d6e6c11f0e2a8fb7e08385f7abf26fb4a8d21c8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692757"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465965"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Wieloklasowy moduł regresji logistycznej
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do tworzenia modelu regresji logistycznej, który może służyć do przewidywania wielu wartości.
 
@@ -67,4 +67,4 @@ Po zakończeniu szkolenia zobaczysz podsumowanie parametrów modelu wraz z wagam
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

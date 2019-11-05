@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9ab828daa009f7204abb1c64291d937a1f0dba2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1f134ac360b6c5bd04c0e141da52b6dad950e208
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784936"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466814"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Przykład: Tworzenie niestandardowej umiejętności przy użyciu interfejs API wyszukiwania jednostek Bing
 
@@ -33,9 +33,9 @@ Mimo że w tym przykładzie używa się funkcji platformy Azure do hostowania in
 
 ### <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-1. W programie Visual Studio wybierz pozycję nowy**projekt**  >  z menu plik.
+1. W programie Visual Studio wybierz pozycję nowy **projekt** > z menu plik.
 
-1. W oknie dialogowym Nowy projekt wybierz pozycję **zainstalowane**, rozwiń **węzeł C# Visual**  > **Cloud**, wybierz pozycję **Azure Functions**, wpisz nazwę projektu, a następnie wybierz **przycisk OK**. Nazwa aplikacji funkcji musi być prawidłowa jako C# przestrzeń nazw, dlatego nie należy używać podkreśleń, łączników ani żadnych innych znaków innych niż alfanumeryczne.
+1. W oknie dialogowym Nowy projekt wybierz pozycję **zainstalowane**, rozwiń **węzeł C# Visual** > **Cloud**, wybierz pozycję **Azure Functions**, wpisz nazwę projektu, a następnie wybierz **przycisk OK**. Nazwa aplikacji funkcji musi być prawidłowa jako C# przestrzeń nazw, dlatego nie należy używać podkreśleń, łączników ani żadnych innych znaków innych niż alfanumeryczne.
 
 1. Wybierz **Azure Functions v2 (.NET Core)** . Można to również zrobić z wersją 1, ale kod zapisany poniżej jest oparty na szablonie v2.
 
@@ -313,7 +313,7 @@ namespace SampleSkills
 
 Upewnij się, że wartość *klucza* została wprowadzona w `key` stałej na podstawie klucza uzyskanego podczas rejestrowania się w interfejsie API wyszukiwania jednostek Bing.
 
-Ten przykład zawiera wszystkie niezbędne kody w pojedynczym pliku dla wygody. Możesz znaleźć nieco bardziej strukturalną wersję tej samej umiejętności, a także inne przykłady umiejętności niestandardowych w [repozytorium umiejętności](https://aka.ms/entity-search-power-skill).
+Ten przykład zawiera wszystkie niezbędne kody w pojedynczym pliku dla wygody. Możesz znaleźć nieco bardziej strukturalną wersję tej samej umiejętności w [repozytorium umiejętności oszczędzania](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch).
 
 Oczywiście można zmienić nazwę pliku z `Function1.cs` na `BingEntitySearch.cs`.
 
@@ -375,7 +375,7 @@ Powinna zostać wyświetlona odpowiedź podobna do poniższego przykładu:
 
 Gdy zachowanie funkcji jest zadowalające, można je opublikować.
 
-1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**. Wybierz pozycję **Utwórz nowe**  > **Opublikuj**.
+1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Opublikuj**. Wybierz pozycję **Utwórz nowe** > **Opublikuj**.
 
 1. Jeśli program Visual Studio nie został jeszcze połączony z kontem platformy Azure, wybierz pozycję **Dodaj konto....**
 
@@ -476,10 +476,10 @@ W tym miejscu Zliczamy wbudowaną [umiejętność rozpoznawania jednostek](cogni
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Gratulacje! Utworzono pierwszy wzbogacający niestandardowy. Teraz można użyć tego samego wzorca, aby dodać własną funkcję niestandardową. 
+Gratulacje! Utworzono swoją pierwszą umiejętność niestandardową. Teraz można użyć tego samego wzorca, aby dodać własną funkcję niestandardową. Kliknij poniższe linki, aby dowiedzieć się więcej.
 
-+ [Umiejętności dotyczące oszczędzania mocy: repozytorium umiejętności niestandardowych](https://aka.ms/powerskills)
-+ [Dodaj niestandardową umiejętność do potoku wyszukiwania poznawczego](cognitive-search-custom-skill-interface.md)
++ [Umiejętności dotyczące oszczędzania mocy: repozytorium umiejętności niestandardowych](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Dodaj niestandardową umiejętność do potoku wzbogacania AI](cognitive-search-custom-skill-interface.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Utwórz zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Jak zmapować wzbogacone pola](cognitive-search-output-field-mapping.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 090242cde79f6c31b0f70e1a75240778dca89fa7
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1c9562f413fa0ed52d61d0b38df358f1a2cd03f9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828585"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498686"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Ramka zabezpieczeń: zabezpieczenia komunikacji | Środki zaradcze 
 | Produkt/usługa | Artykuł |
@@ -29,7 +29,7 @@ ms.locfileid: "71828585"
 | **Dynamics CRM** | <ul><li>[Sprawdź uprawnienia konta usługi i sprawdź, czy usługi niestandardowe lub strony ASP.NET respektują zabezpieczenia CRM](#priv-aspnet)</li></ul> |
 | **Azure Data Factory** | <ul><li>[Użyj bramy zarządzania danymi podczas łączenia SQL Server lokalnych do Azure Data Factory](#sqlserver-factory)</li></ul> |
 | **Serwer tożsamości** | <ul><li>[Upewnij się, że cały ruch do serwera tożsamości jest za pośrednictwem połączenia HTTPS](#identity-https)</li></ul> |
-| **Aplikacja sieci Web** | <ul><li>[Weryfikowanie certyfikatów X. 509 używanych do uwierzytelniania połączeń SSL, TLS i DTLS](#x509-ssltls)</li><li>[Konfigurowanie certyfikatu SSL dla domeny niestandardowej w Azure App Service](#ssl-appservice)</li><li>[Wymuszaj cały ruch do Azure App Service za pośrednictwem połączenia HTTPS](#appservice-https)</li><li>[Włącz zabezpieczenia protokołu HTTP Strict Transport (HSTS)](#http-hsts)</li></ul> |
+| **Aplikacja internetowa** | <ul><li>[Weryfikowanie certyfikatów X. 509 używanych do uwierzytelniania połączeń SSL, TLS i DTLS](#x509-ssltls)</li><li>[Konfigurowanie certyfikatu SSL dla domeny niestandardowej w Azure App Service](#ssl-appservice)</li><li>[Wymuszaj cały ruch do Azure App Service za pośrednictwem połączenia HTTPS](#appservice-https)</li><li>[Włącz zabezpieczenia protokołu HTTP Strict Transport (HSTS)](#http-hsts)</li></ul> |
 | **Baza danych** | <ul><li>[Upewnij się, że szyfrowanie połączenia z programem SQL Server i sprawdzanie poprawności certyfikatu](#sqlserver-validation)</li><li>[Wymuś zaszyfrowaną komunikację z programem SQL Server](#encrypted-sqlserver)</li></ul> |
 | **Azure Storage** | <ul><li>[Upewnij się, że komunikacja z usługą Azure Storage odbywa się za pośrednictwem protokołu HTTPS](#comm-storage)</li><li>[Weryfikuj skrót MD5 po pobieraniu obiektu BLOB, jeśli nie można włączyć protokołu HTTPS](#md5-https)</li><li>[Korzystanie z klienta zgodnego z protokołem SMB 3,0 w celu zapewnienia szyfrowania danych w ramach przesyłania do udziałów plików platformy Azure](#smb-shares)</li></ul> |
 | **Klient mobilny** | <ul><li>[Implementuj Przypinanie certyfikatów](#cert-pinning)</li></ul> |
@@ -46,7 +46,7 @@ ms.locfileid: "71828585"
 | **Składnik**               | Azure Event Hub | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólnego |
-| **Attributes**              | ND  |
+| **Attributes**              | Nie dotyczy  |
 | **Wołują**              | [Omówienie modelu uwierzytelniania i zabezpieczeń Event Hubs](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
 | **Kroki** | Zabezpieczanie połączeń AMQP lub HTTP z centrum zdarzeń przy użyciu protokołu SSL/TLS |
 
@@ -57,8 +57,8 @@ ms.locfileid: "71828585"
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólnego |
-| **Attributes**              | ND  |
-| **Wołują**              | ND  |
+| **Attributes**              | Nie dotyczy  |
+| **Wołują**              | Nie dotyczy  |
 | **Kroki** | Sprawdź uprawnienia konta usługi i sprawdź, czy usługi niestandardowe lub strony ASP.NET respektują zabezpieczenia CRM |
 
 ## <a id="sqlserver-factory"></a>Użyj bramy zarządzania danymi podczas łączenia SQL Server lokalnych do Azure Data Factory
@@ -66,7 +66,7 @@ ms.locfileid: "71828585"
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Data Factory | 
-| **Faza SDL**               | Wdrażanie |  
+| **Faza SDL**               | Wdrożenie |  
 | **Odpowiednie technologie** | Ogólnego |
 | **Attributes**              | Typy połączonych usług — platforma Azure i lokalna |
 | **Wołują**              |[Przeniesienie danych między środowiskiem lokalnym i Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [brama zarządzania danymi](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
@@ -77,9 +77,9 @@ ms.locfileid: "71828585"
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Serwer tożsamości | 
-| **Faza SDL**               | Wdrażanie |  
+| **Faza SDL**               | Wdrożenie |  
 | **Odpowiednie technologie** | Ogólnego |
-| **Attributes**              | ND  |
+| **Attributes**              | Nie dotyczy  |
 | **Wołują**              | [IdentityServer3 — klucze, podpisy i Kryptografia](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html), [IdentityServer3-Deployment](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
 | **Kroki** | Domyślnie IdentityServer wymaga, aby wszystkie połączenia przychodzące były dostarczane za pośrednictwem protokołu HTTPS. Jest absolutnie obowiązkowe, aby komunikacja z IdentityServer odbywała się tylko przez zabezpieczone transporty. Istnieją pewne scenariusze wdrażania, takie jak odciążanie protokołu SSL, w przypadku których to wymaganie może być swobodne. Aby uzyskać więcej informacji, zobacz stronę Wdrażanie serwera tożsamości w odwołaniach. |
 
@@ -90,8 +90,8 @@ ms.locfileid: "71828585"
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólnego |
-| **Attributes**              | ND  |
-| **Wołują**              | ND  |
+| **Attributes**              | Nie dotyczy  |
+| **Wołują**              | Nie dotyczy  |
 | **Kroki** | <p>Aplikacje korzystające z protokołu SSL, TLS lub DTLS muszą w pełni weryfikować certyfikaty X. 509 jednostek, z którymi się łączą. Obejmuje to weryfikację certyfikatów dla:</p><ul><li>Nazwa domeny</li><li>Daty ważności (daty rozpoczęcia i wygaśnięcia)</li><li>Stan odwołania</li><li>Użycie (na przykład uwierzytelnianie serwera dla serwerów, uwierzytelnianie klientów dla klientów)</li><li>Łańcuch zaufania. Certyfikaty muszą być powiązane z głównym urzędem certyfikacji (CA), który jest traktowany jako zaufany przez platformę lub jawnie skonfigurowany przez administratora</li><li>Długość klucza publicznego certyfikatu musi być > 2048 bitów</li><li>Algorytm wyznaczania wartości skrótu musi być SHA256 i wyższy |
 
 ## <a id="ssl-appservice"></a>Konfigurowanie certyfikatu SSL dla domeny niestandardowej w Azure App Service
@@ -102,7 +102,7 @@ ms.locfileid: "71828585"
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólnego |
 | **Attributes**              | EnvironmentType — Azure |
-| **Wołują**              | [Włącz protokół HTTPS dla aplikacji w Azure App Service](../../app-service/app-service-web-tutorial-custom-ssl.md) |
+| **Wołują**              | [Włącz protokół HTTPS dla aplikacji w Azure App Service](../../app-service/configure-ssl-bindings.md) |
 | **Kroki** | Domyślnie platforma Azure włącza już protokół HTTPS dla każdej aplikacji z certyfikatem wieloznacznym dla domeny *. azurewebsites.net. Jednak podobnie jak w przypadku wszystkich domen symboli wieloznacznych nie jest tak bezpieczne, jak używanie domeny niestandardowej z [własnym certyfikatem](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/). Zaleca się włączenie protokołu SSL dla domeny niestandardowej, do której zostanie otwarta wdrożona aplikacja|
 
 ## <a id="appservice-https"></a>Wymuszaj cały ruch do Azure App Service za pośrednictwem połączenia HTTPS
@@ -113,7 +113,7 @@ ms.locfileid: "71828585"
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólnego |
 | **Attributes**              | EnvironmentType — Azure |
-| **Wołują**              | [Wymuszanie protokołu HTTPS na Azure App Service](../../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
+| **Wołują**              | [Wymuszanie protokołu HTTPS na Azure App Service](../../app-service/configure-ssl-bindings.md#enforce-https) |
 | **Kroki** | <p>Mimo że platforma Azure umożliwia już korzystanie z protokołu HTTPS dla usług Azure App Services z certyfikatem wieloznacznym dla domeny *. azurewebsites.net, nie wymusza protokołu HTTPS. Osoby odwiedzające mogą nadal uzyskiwać dostęp do aplikacji przy użyciu protokołu HTTP, co może naruszyć bezpieczeństwo aplikacji i dlatego protokół HTTPS musi być wymuszany jawnie. Aplikacje ASP.NET MVC powinny używać [filtru RequireHttps](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) , który wymusza, aby niezabezpieczone żądanie HTTP było ponownie wysyłane za pośrednictwem protokołu HTTPS.</p><p>W celu wymuszenia protokołu HTTPS można także użyć modułu ponownego zapisywania adresu URL, który jest dołączony do Azure App Service. Moduł ponowne zapisywanie adresów URL umożliwia deweloperom definiowanie reguł, które są stosowane do żądań przychodzących przed przekazaniem żądań do aplikacji. Reguły ponownego zapisywania adresów URL są zdefiniowane w pliku Web. config przechowywanym w katalogu głównym aplikacji.</p>|
 
 ### <a name="example"></a>Przykład
@@ -145,9 +145,9 @@ Ta reguła działa przez zwrócenie kodu stanu HTTP 301 (trwałe przekierowanie)
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólnego |
-| **Attributes**              | ND  |
+| **Attributes**              | Nie dotyczy  |
 | **Wołują**              | [OWASP HTTP Strict Transport Security Ściągawka arkusz](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **Kroki** | <p>Protokół HTTP Strict Transport Security (HSTS) jest opcjonalnym ulepszeniem zabezpieczeń, który jest określany przez aplikację sieci Web przy użyciu specjalnego nagłówka odpowiedzi. Po otrzymaniu tego nagłówka przez obsługiwaną przeglądarkę przeglądarka uniemożliwi wysyłanie komunikacji za pośrednictwem protokołu HTTP do określonej domeny, a zamiast tego wyśle całą komunikację za pośrednictwem protokołu HTTPS. Zapobiega to również kliknięciu za pośrednictwem apletu polecenia w przeglądarkach.</p><p>Aby zaimplementować HSTS, należy skonfigurować następujący nagłówek odpowiedzi dla witryny sieci Web globalnie, w kodzie lub w pliku config. Rygorystyczne-Transport-Security: max-age = 300; includeSubDomains HSTS dotyczy następujących zagrożeń:</p><ul><li>Zakładki użytkownika lub ręczne typy https://example.com i podlegają ataku typu man-in-the-Middle: HSTS automatycznie przekierowuje żądania HTTP do protokołu HTTPS dla domeny docelowej</li><li>Aplikacja sieci Web, która jest przeznaczona do czystego HTTPS, zawiera linki HTTP lub obsługuje zawartość za pośrednictwem protokołu HTTP: HSTS automatycznie przekierowuje żądania HTTP do protokołu HTTPS dla domeny docelowej</li><li>Osoba atakująca typu man-in-the-Middle próbuje przechwycić ruch od użytkownika ofiary przy użyciu nieprawidłowego certyfikatu i nadziei, że użytkownik zaakceptuje nieprawidłowy certyfikat: HSTS nie zezwala użytkownikowi na przesłonięcie nieprawidłowego komunikatu certyfikatu</li></ul>|
+| **Kroki** | <p>Protokół HTTP Strict Transport Security (HSTS) jest opcjonalnym ulepszeniem zabezpieczeń, który jest określany przez aplikację sieci Web przy użyciu specjalnego nagłówka odpowiedzi. Po otrzymaniu tego nagłówka przez obsługiwaną przeglądarkę przeglądarka uniemożliwi wysyłanie komunikacji za pośrednictwem protokołu HTTP do określonej domeny, a zamiast tego wyśle całą komunikację za pośrednictwem protokołu HTTPS. Zapobiega to również kliknięciu za pośrednictwem apletu polecenia w przeglądarkach.</p><p>Aby zaimplementować HSTS, należy skonfigurować następujący nagłówek odpowiedzi dla witryny sieci Web globalnie, w kodzie lub w pliku config. Rygorystyczne-Transport-Security: max-age = 300; includeSubDomains HSTS dotyczy następujących zagrożeń:</p><ul><li>Zakładki użytkownika lub ręczne typy https://example.com i podlegają osobie atakującej typu man-in-the-Middle: HSTS automatycznie przekierowuje żądania HTTP do protokołu HTTPS dla domeny docelowej</li><li>Aplikacja sieci Web, która jest przeznaczona do czystego HTTPS, zawiera linki HTTP lub obsługuje zawartość za pośrednictwem protokołu HTTP: HSTS automatycznie przekierowuje żądania HTTP do protokołu HTTPS dla domeny docelowej</li><li>Osoba atakująca typu man-in-the-Middle próbuje przechwycić ruch od użytkownika ofiary przy użyciu nieprawidłowego certyfikatu i nadziei, że użytkownik zaakceptuje nieprawidłowy certyfikat: HSTS nie zezwala użytkownikowi na przesłonięcie nieprawidłowego komunikatu certyfikatu</li></ul>|
 
 ## <a id="sqlserver-validation"></a>Upewnij się, że szyfrowanie połączenia z programem SQL Server i sprawdzanie poprawności certyfikatu
 
@@ -155,10 +155,10 @@ Ta reguła działa przez zwrócenie kodu stanu HTTP 301 (trwałe przekierowanie)
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednie technologie** | SQL Azure  |
+| **Odpowiednie technologie** | Usługi SQL Azure  |
 | **Attributes**              | Wersja SQL — V12 |
 | **Wołują**              | [Najlepsze rozwiązania dotyczące pisania bezpiecznych parametrów połączenia dla SQL Database](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
-| **Kroki** | <p>Cała komunikacja między SQL Database i aplikacją kliencką jest szyfrowana przy użyciu SSL (SSL) przez cały czas. SQL Database nie obsługuje nieszyfrowanych połączeń. Aby sprawdzić poprawność certyfikatów przy użyciu kodu lub narzędzi aplikacji, jawnie Zażądaj szyfrowanego połączenia i nie ufaj certyfikatom serwera. Jeśli kod aplikacji lub narzędzia nie zażądają zaszyfrowanego połączenia, nadal będą otrzymywać połączenia szyfrowane</p><p>Jednak mogą oni nie sprawdzać poprawności certyfikatów serwera i dlatego są podatne na ataki typu man-in-Middle. Aby sprawdzić poprawność certyfikatów przy użyciu kodu aplikacji ADO.NET, ustaw `Encrypt=True` i `TrustServerCertificate=False` w parametrach połączenia z bazą danych. Aby sprawdzić poprawność certyfikatów za pośrednictwem SQL Server Management Studio, Otwórz okno dialogowe łączenie z serwerem. Kliknij pozycję Szyfruj połączenie na karcie Właściwości połączenia</p>|
+| **Kroki** | <p>Cała komunikacja między SQL Database i aplikacją kliencką jest szyfrowana przy użyciu SSL (SSL) przez cały czas. SQL Database nie obsługuje nieszyfrowanych połączeń. Aby sprawdzić poprawność certyfikatów przy użyciu kodu lub narzędzi aplikacji, jawnie Zażądaj szyfrowanego połączenia i nie ufaj certyfikatom serwera. Jeśli kod aplikacji lub narzędzia nie zażądają zaszyfrowanego połączenia, nadal będą otrzymywać połączenia szyfrowane</p><p>Jednak mogą oni nie sprawdzać poprawności certyfikatów serwera i dlatego są podatne na ataki typu man-in-Middle. Aby sprawdzić poprawność certyfikatów przy użyciu kodu aplikacji ADO.NET, należy ustawić `Encrypt=True` i `TrustServerCertificate=False` w parametrach połączenia bazy danych. Aby sprawdzić poprawność certyfikatów za pośrednictwem SQL Server Management Studio, Otwórz okno dialogowe łączenie z serwerem. Kliknij pozycję Szyfruj połączenie na karcie Właściwości połączenia</p>|
 
 ## <a id="encrypted-sqlserver"></a>Wymuś zaszyfrowaną komunikację z programem SQL Server
 
@@ -176,9 +176,9 @@ Ta reguła działa przez zwrócenie kodu stanu HTTP 301 (trwałe przekierowanie)
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
-| **Faza SDL**               | Wdrażanie |  
+| **Faza SDL**               | Wdrożenie |  
 | **Odpowiednie technologie** | Ogólnego |
-| **Attributes**              | ND  |
+| **Attributes**              | Nie dotyczy  |
 | **Wołują**              | [Szyfrowanie na poziomie transportu usługi Azure Storage — używanie protokołu HTTPS](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
 | **Kroki** | Aby zapewnić bezpieczeństwo danych usługi Azure Storage, zawsze używaj protokołu HTTPS podczas wywoływania interfejsów API REST lub uzyskiwania dostępu do obiektów w magazynie. Ponadto sygnatury dostępu współdzielonego, których można użyć w celu delegowania dostępu do obiektów usługi Azure Storage, obejmują opcję określenia, że tylko protokół HTTPS może być używany podczas korzystania z sygnatur dostępu współdzielonego, co gwarantuje, że każdy wysyłania linków z tokenami SAS będzie używać odpowiedni protokół.|
 
@@ -211,9 +211,9 @@ Ta reguła działa przez zwrócenie kodu stanu HTTP 301 (trwałe przekierowanie)
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólne, Windows Phone |
-| **Attributes**              | ND  |
+| **Attributes**              | Nie dotyczy  |
 | **Wołują**              | [Przypinanie certyfikatu i klucza publicznego](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
-| **Kroki** | <p>Przypinanie certyfikatu do obrony przed atakami typu man-in-the-Middle (MITM). Przypinanie to proces kojarzenia hosta z oczekiwanym certyfikatem x509 lub kluczem publicznym. Gdy certyfikat lub klucz publiczny jest znany lub widoczny dla hosta, certyfikat lub klucz publiczny są skojarzone lub przypięte do hosta. </p><p>W takim przypadku, gdy atakującej próbuje przeprowadzić atak SSL MITM, podczas uzgadniania protokołu SSL klucz od serwera osoby atakującej będzie inny niż klucz przypiętego certyfikatu, a żądanie zostanie odrzucone, w ten sposób uniemożliwienie przypięcia certyfikatów MITM można osiągnąć przez Implementowanie delegata `ServerCertificateValidationCallback` elementu ServicePointManager.</p>|
+| **Kroki** | <p>Przypinanie certyfikatu do obrony przed atakami typu man-in-the-Middle (MITM). Przypinanie to proces kojarzenia hosta z oczekiwanym certyfikatem x509 lub kluczem publicznym. Gdy certyfikat lub klucz publiczny jest znany lub widoczny dla hosta, certyfikat lub klucz publiczny są skojarzone lub przypięte do hosta. </p><p>W takim przypadku, gdy atakującej próbuje przeprowadzić atak SSL MITM, podczas uzgadniania protokołu SSL klucz od serwera osoby atakującej będzie inny niż klucz przypiętego certyfikatu, a żądanie zostanie odrzucone, w ten sposób uniemożliwienie przypięcia certyfikatów MITM można osiągnąć przez Implementowanie delegata `ServerCertificateValidationCallback` ServicePointManager.</p>|
 
 ### <a name="example"></a>Przykład
 ```csharp
@@ -288,7 +288,7 @@ namespace CertificatePinningExample
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | .NET Framework 3 |
-| **Attributes**              | ND  |
+| **Attributes**              | Nie dotyczy  |
 | **Wołują**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [wzmacnianie Królestwa](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **Kroki** | Konfiguracja aplikacji powinna mieć pewność, że protokół HTTPS jest używany do uzyskiwania dostępu do poufnych informacji.<ul><li>**Wyjaśnienie:** Jeśli aplikacja obsługuje informacje poufne i nie korzysta z szyfrowania na poziomie komunikatu, powinien mieć możliwość komunikacji tylko z szyfrowanym kanałem transportowym.</li><li>**Zalecenia:** Upewnij się, że transport HTTP jest wyłączony i Włącz transport HTTPS. Na przykład Zastąp `<httpTransport/>` znacznikiem `<httpsTransport/>`. Nie należy polegać na konfiguracji sieci (Zapora) w celu zagwarantowania, że dostęp do aplikacji będzie możliwy tylko za pośrednictwem bezpiecznego kanału. Z punktu widzenia philosophicala aplikacja nie powinna zależeć od sieci do jej zabezpieczeń.</li></ul><p>Z praktycznego punktu widzenia osoby odpowiedzialne za zabezpieczenie sieci nie zawsze śledzą wymagania dotyczące zabezpieczeń aplikacji podczas ich rozwoju.</p>|
 
@@ -299,9 +299,9 @@ namespace CertificatePinningExample
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | .NET Framework 3 |
-| **Attributes**              | ND  |
+| **Attributes**              | Nie dotyczy  |
 | **Wołują**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **Kroki** | <ul><li>**Wyjaśnienie:** Jeśli poziom ochrony jest ustawiony na wartość "Brak", zostanie wyłączona Ochrona komunikatów. Poufność i integralność są uzyskiwane z odpowiednim poziomem ustawień.</li><li>**MAJĄC**<ul><li>gdy `Mode=None`-wyłącza ochronę wiadomości</li><li>gdy `Mode=Sign`-znaki, ale nie szyfrują wiadomości; należy używać, gdy integralność danych jest ważna</li><li>gdy `Mode=EncryptAndSign`-znakuje i szyfruje komunikat</li></ul></li></ul><p>Rozważ wyłączenie szyfrowania i podpisywanie wiadomości tylko wtedy, gdy trzeba tylko sprawdzić integralność informacji bez obaw związanych z poufnością. Może to być przydatne w przypadku kontraktów operacji lub usług, w których należy zweryfikować oryginalnego nadawcy, ale nie są przesyłane poufne dane. Podczas zmniejszania poziomu ochrony należy zachować ostrożność, aby komunikat nie zawierał żadnych danych osobowych.</p>|
+| **Kroki** | <ul><li>**Wyjaśnienie:** Jeśli poziom ochrony jest ustawiony na wartość "Brak", zostanie wyłączona Ochrona komunikatów. Poufność i integralność są uzyskiwane z odpowiednim poziomem ustawień.</li><li>**MAJĄC**<ul><li>gdy `Mode=None`-wyłącza ochronę wiadomości</li><li>gdy `Mode=Sign`-znaki, ale nie szyfrują wiadomości; należy używać, gdy integralność danych jest ważna</li><li>gdy `Mode=EncryptAndSign`-podpisuje i szyfruje komunikat</li></ul></li></ul><p>Rozważ wyłączenie szyfrowania i podpisywanie wiadomości tylko wtedy, gdy trzeba tylko sprawdzić integralność informacji bez obaw związanych z poufnością. Może to być przydatne w przypadku kontraktów operacji lub usług, w których należy zweryfikować oryginalnego nadawcy, ale nie są przesyłane poufne dane. Podczas zmniejszania poziomu ochrony należy zachować ostrożność, aby komunikat nie zawierał żadnych danych osobowych.</p>|
 
 ### <a name="example"></a>Przykład
 Skonfigurowanie usługi i operacji do podpisywania wiadomości jest pokazane w poniższych przykładach. Przykład kontraktu usługi `ProtectionLevel.Sign`: poniżej przedstawiono przykład użycia ProtectionLevel. Sign na poziomie kontraktu usługi: 
@@ -314,7 +314,7 @@ public interface IService
 ```
 
 ### <a name="example"></a>Przykład
-Przykład kontraktu operacji dla `ProtectionLevel.Sign` (dla kontrolki szczegółowej): poniżej przedstawiono przykład użycia `ProtectionLevel.Sign` na poziomie OperationContract:
+Przykład kontraktu operacji dla `ProtectionLevel.Sign` (dla szczegółowej kontroli): poniżej przedstawiono przykład użycia `ProtectionLevel.Sign` na poziomie OperationContract:
 
 ```
 [OperationContract(ProtectionLevel=ProtectionLevel.Sign] 
@@ -328,7 +328,7 @@ string GetData(int value);
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | .NET Framework 3 |
-| **Attributes**              | ND  |
+| **Attributes**              | Nie dotyczy  |
 | **Wołują**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
 | **Kroki** | <ul><li>**Wyjaśnienie:** Nie należy uruchamiać usług WCF w ramach konta administratora lub wysokiego poziomu uprawnień. w przypadku naruszenia bezpieczeństwa usługi spowodują duże konsekwencje.</li><li>**Zalecenia:** Użyj konta z najniższymi uprawnieniami do hostowania usługi WCF, ponieważ zmniejszy to podatność na ataki aplikacji i zmniejszy potencjalną szkodę w przypadku ataku. Jeśli konto usługi wymaga dodatkowych praw dostępu do zasobów infrastruktury, takich jak MSMQ, dziennik zdarzeń, liczniki wydajności i system plików, należy nadać tym zasobom odpowiednie uprawnienia, aby umożliwić pomyślne uruchomienie usługi WCF.</li></ul><p>Jeśli usługa musi uzyskać dostęp do określonych zasobów w imieniu oryginalnego obiektu wywołującego, użyj personifikacji i delegowania, aby przepływać tożsamość obiektu wywołującego dla kontroli autoryzacji podrzędnej. W scenariuszu deweloperskim Użyj konta usługi sieciowej lokalnego, które jest specjalnym kontem wbudowanym, które ma ograniczone uprawnienia. W scenariuszu produkcyjnym Utwórz najwyższe uprzywilejowane konto usługi domeny niestandardowej.</p>|
 
@@ -336,10 +336,10 @@ string GetData(int value);
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Internetowy interfejs API | 
+| **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | MVC5, MVC6 |
-| **Attributes**              | ND  |
+| **Attributes**              | Nie dotyczy  |
 | **Wołują**              | [Wymuszanie protokołu SSL w kontrolerze internetowego interfejsu API](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
 | **Kroki** | Jeśli aplikacja ma powiązanie HTTPS i HTTP, klienci mogą nadal korzystać z protokołu HTTP w celu uzyskania dostępu do lokacji. Aby tego uniknąć, należy użyć filtru akcji, aby upewnić się, że żądania do chronionych interfejsów API są zawsze za pośrednictwem protokołu HTTPS.|
 
@@ -380,7 +380,7 @@ public class ValuesController : ApiController
 | **Składnik**               | Azure Cache for Redis | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólnego |
-| **Attributes**              | ND  |
+| **Attributes**              | Nie dotyczy  |
 | **Wołują**              | [Obsługa protokołu SSL w usłudze Azure Redis](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
 | **Kroki** | Serwer Redis nie obsługuje protokołu SSL, ale usługa Azure cache for Redis działa. Jeśli łączysz się z usługą Azure cache for Redis, a klient obsługuje protokół SSL, taki jak StackExchange. Redis, należy użyć protokołu SSL. Domyślnie port bez protokołu SSL jest wyłączony dla nowej pamięci podręcznej platformy Azure dla wystąpień Redis. Upewnij się, że zabezpieczone wartości domyślne nie są zmieniane, chyba że istnieje zależność od obsługi protokołu SSL dla klientów Redis. |
 
@@ -393,8 +393,8 @@ Należy pamiętać, że Redis jest dostępny dla zaufanych klientów w zaufanych
 | **Składnik**               | Brama pola IoT | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólnego |
-| **Attributes**              | ND  |
-| **Wołują**              | ND  |
+| **Attributes**              | Nie dotyczy  |
+| **Wołują**              | Nie dotyczy  |
 | **Kroki** | W przypadku urządzeń opartych na protokole IP protokół komunikacyjny może być zazwyczaj hermetyzowany w kanale SSL/TLS w celu ochrony danych podczas przesyłania. W przypadku innych protokołów, które nie obsługują protokołu SSL/TLS, jeśli istnieją bezpieczne wersje protokołu, które zapewniają zabezpieczenia w transportowej lub warstwie komunikatów. |
 
 ## <a id="device-cloud"></a>Zabezpieczanie urządzenia do komunikacji z bramą w chmurze przy użyciu protokołu SSL/TLS
@@ -404,6 +404,6 @@ Należy pamiętać, że Redis jest dostępny dla zaufanych klientów w zaufanych
 | **Składnik**               | Brama usługi IoT Cloud | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólnego |
-| **Attributes**              | ND  |
+| **Attributes**              | Nie dotyczy  |
 | **Wołują**              | [Wybieranie protokołu komunikacyjnego](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |
 | **Kroki** | Zabezpieczanie protokołów HTTP/AMQP lub MQTT przy użyciu protokołu SSL/TLS. |

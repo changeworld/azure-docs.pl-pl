@@ -9,20 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: a3f9ad20e4bfba6e0bb858c82ccce73bb687a826
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7d651849f5c8d930d99e87931eed5b823e90113c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613092"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474764"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Tworzenie jednostki organizacyjnej (OU) w Azure AD Domain Services domenie zarządzanej
 
 Jednostki organizacyjne (OU) w Active Directory Domain Services (AD DS) umożliwiają logiczne grupowanie obiektów, takich jak konta użytkowników, konta usług lub konta komputerów. Następnie można przypisać administratorów do określonych jednostek organizacyjnych i zastosować zasady grupy w celu wymuszenia ustawień konfiguracji.
 
 Domeny zarządzane AD DS platformy Azure obejmują dwa wbudowane jednostki organizacyjne — *komputery AADDC* i *AADDC użytkowników*. Jednostki organizacyjne *komputerów AADDC* zawierają obiekty komputerów dla wszystkich komputerów, które są przyłączone do domeny zarządzanej. Jednostka organizacyjna *AADDC użytkownicy* obejmuje użytkowników i grupy synchronizowane w ramach dzierżawy usługi Azure AD. Podczas tworzenia i uruchamiania obciążeń korzystających z usługi Azure AD DS może być konieczne utworzenie kont usługi dla aplikacji w celu samodzielnego uwierzytelnienia. Aby zorganizować te konta usług, często należy utworzyć niestandardową jednostkę organizacyjną w domenie zarządzanej AD DS platformy Azure, a następnie utworzyć konta usług w tej jednostce organizacyjnej.
+
+W środowisku hybrydowym jednostki organizacyjne utworzone w środowisku lokalnym AD DS nie są zsynchronizowane z usługą Azure AD DS. Domeny zarządzane AD DS platformy Azure używają płaskiej struktury jednostki organizacyjnej. Wszystkie konta użytkowników i grupy są przechowywane w kontenerze *AADDC users* , mimo że są synchronizowane z różnych domen lokalnych lub lasów, nawet jeśli skonfigurowano hierarchiczną strukturę jednostki organizacyjnej.
 
 W tym artykule opisano sposób tworzenia jednostki organizacyjnej w domenie zarządzanej AD DS platformy Azure.
 
@@ -49,7 +51,7 @@ Gdy tworzysz niestandardowe jednostki organizacyjne w domenie zarządzanej AD DS
 * Aby utworzyć niestandardowe jednostki organizacyjne, użytkownicy muszą być członkami grupy *administratorów kontrolera domeny usługi AAD* .
 * Użytkownik, który tworzy niestandardową jednostkę organizacyjną, otrzymuje uprawnienia administracyjne (Pełna kontrola) w tej jednostce organizacyjnej i jest właścicielem zasobu.
     * Domyślnie grupa Administratorzy usługi *AAD DC* ma także pełną kontrolę nad niestandardową jednostką organizacyjną.
-* Zostanie utworzona domyślna jednostka organizacyjna dla *użytkowników AADDC* , która zawiera zsynchronizowane konta użytkowników z dzierżawy usługi Azure AD.
+* Zostanie utworzona domyślna jednostka organizacyjna dla *użytkowników AADDC* , która zawiera wszystkie synchronizowane konta użytkowników z dzierżawy usługi Azure AD.
     * Nie można przenieść użytkowników ani grup z jednostki organizacyjnej *Użytkownicy AADDC* do niestandardowych jednostek organizacyjnych, które tworzysz. Tylko konta użytkowników lub zasoby utworzone w domenie zarządzanej AD DS platformy Azure można przenieść do niestandardowych jednostek organizacyjnych.
 * Konta użytkowników, grupy, konta usług i obiekty komputerów tworzone w obszarze niestandardowe jednostki organizacyjne nie są dostępne w dzierżawie usługi Azure AD.
     * Te obiekty nie są wyświetlane za pomocą usługi Azure AD interfejs API programu Graph ani w interfejsie użytkownika usługi Azure AD; są one dostępne tylko w domenie zarządzanej AD DS platformy Azure.
@@ -61,6 +63,7 @@ Aby utworzyć niestandardową jednostkę organizacyjną, należy użyć Active D
 > [!NOTE]
 > Aby utworzyć niestandardową jednostkę organizacyjną w domenie zarządzanej AD DS platformy Azure, musisz zalogować się na konto użytkownika, które jest członkiem grupy *administratorów kontrolera domeny usługi AAD* .
 
+1. Zaloguj się do maszyny wirtualnej zarządzania. Aby uzyskać instrukcje dotyczące sposobu nawiązywania połączenia przy użyciu Azure Portal, zobacz [nawiązywanie połączenia z maszyną wirtualną z systemem Windows Server][connect-windows-server-vm].
 1. Na ekranie startowym wybierz pozycję **Narzędzia administracyjne**. Zostanie wyświetlona lista dostępnych narzędzi do zarządzania, które zostały zainstalowane w samouczku, aby [utworzyć maszynę wirtualną zarządzania][tutorial-create-management-vm].
 1. Aby utworzyć jednostki organizacyjne i zarządzać nimi, wybierz **Centrum administracyjne usługi Active Directory** z listy narzędzi administracyjnych.
 1. W lewym okienku wybierz domenę zarządzaną platformy Azure AD DS, na przykład *contoso.com*. Zostanie wyświetlona lista istniejących jednostek organizacyjnych i zasobów:
@@ -71,7 +74,7 @@ Aby utworzyć niestandardową jednostkę organizacyjną, należy użyć Active D
 
     ![Wybierz opcję utworzenia nowej jednostki organizacyjnej w Centrum administracyjne usługi Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 
-1. W oknie dialogowym **Tworzenie jednostki organizacyjnej** Podaj **nazwę** nowej jednostki organizacyjnej, na przykład *MyCustomOu*. Podaj krótki opis jednostki organizacyjnej, na przykład niestandardowa *jednostka organizacyjna dla kont usług*. W razie potrzeby można również ustawić pole **zarządzane przez** dla jednostki organizacyjnej. Aby utworzyć niestandardową jednostkę organizacyjną, wybierz **przycisk OK**.
+1. W oknie dialogowym **Tworzenie jednostki organizacyjnej** Podaj **nazwę** nowej jednostki organizacyjnej, na przykład *MyCustomOu*. Podaj krótki opis jednostki organizacyjnej, na przykład *niestandardowa jednostka organizacyjna dla kont usług*. W razie potrzeby można również ustawić pole **zarządzane przez** dla jednostki organizacyjnej. Aby utworzyć niestandardową jednostkę organizacyjną, wybierz **przycisk OK**.
 
     ![Tworzenie niestandardowej jednostki organizacyjnej na podstawie Centrum administracyjne usługi Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
 
@@ -91,3 +94,4 @@ Aby uzyskać więcej informacji na temat korzystania z narzędzi administracyjny
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
+[connect-windows-server-vm]: join-windows-vm.md#connect-to-the-windows-server-vm

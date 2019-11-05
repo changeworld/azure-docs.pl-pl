@@ -3,8 +3,8 @@ title: Samouczek dotyczący używania dynamicznej konfiguracji usługi Azure App
 description: Z tego samouczka dowiesz się, jak dynamicznie aktualizować dane konfiguracji dla aplikacji platformy ASP.NET Core
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,18 +12,18 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/24/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 235b55bcd727e3e3ea947ce086209e0a94f70752
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 7fc7bd6fa0067857bde64d43be5799bd50712490
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076383"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469683"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Samouczek: Używanie dynamicznej konfiguracji w aplikacji platformy ASP.NET Core
+# <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Samouczek: używanie konfiguracji dynamicznej w aplikacji ASP.NET Core
 
-ASP.NET Core ma podłączany System konfiguracyjny, który może odczytywać dane konfiguracji z różnych źródeł. Może obsłużyć zmiany na bieżąco bez powodowania ponownego uruchomienia aplikacji. ASP.NET Core obsługuje powiązanie ustawień konfiguracji z silnie wpisanąmi klasami platformy .NET. Wprowadza je do kodu przy użyciu różnych `IOptions<T>` wzorców. Jeden z tych wzorców, `IOptionsSnapshot<T>`w odmierzeniu, automatycznie ładuje konfigurację aplikacji, gdy zmieniają się dane bazowe. Wzorzec `IOptionsSnapshot<T>` możesz wprowadzać do kontrolerów w aplikacji, aby uzyskiwać dostęp do najnowszej konfiguracji przechowywanej w usłudze Azure App Configuration.
+ASP.NET Core ma podłączany System konfiguracyjny, który może odczytywać dane konfiguracji z różnych źródeł. Może obsłużyć zmiany na bieżąco bez powodowania ponownego uruchomienia aplikacji. ASP.NET Core obsługuje powiązanie ustawień konfiguracji z silnie wpisanąmi klasami platformy .NET. Wprowadza je do kodu przy użyciu różnych wzorców `IOptions<T>`. Jeden z tych wzorców, w od`IOptionsSnapshot<T>`, automatycznie ponownie ładuje konfigurację aplikacji, gdy zmieniają się dane bazowe. Wzorzec `IOptionsSnapshot<T>` możesz wprowadzać do kontrolerów w aplikacji, aby uzyskiwać dostęp do najnowszej konfiguracji przechowywanej w usłudze Azure App Configuration.
 
 Możesz również skonfigurować konfigurację aplikacji ASP.NET Coreą bibliotekę klienta, aby odświeżyć zestaw ustawień konfiguracji dynamicznie przy użyciu oprogramowania pośredniczącego. Tak długo, jak aplikacja internetowa nadal otrzymuje żądania, ustawienia konfiguracji nadal są aktualizowane w magazynie konfiguracji.
 
@@ -45,9 +45,17 @@ Aby wykonać ten samouczek, zainstaluj [zestaw .NET Core SDK](https://dotnet.mic
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z konfiguracją aplikacji](./quickstart-aspnet-core-app.md) .
+
 ## <a name="reload-data-from-app-configuration"></a>Ponowne ładowanie danych z usługi App Configuration
 
-1. Otwórz *program.cs*i zaktualizuj `CreateWebHostBuilder` `config.AddAzureAppConfiguration()` metodę, aby dodać metodę.
+1. Dodaj odwołanie do pakietu NuGet `Microsoft.Azure.AppConfiguration.AspNetCore`, uruchamiając następujące polecenie:
+
+    ```CLI
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
+    ```
+
+1. Otwórz *program.cs*i zaktualizuj metodę `CreateWebHostBuilder`, aby dodać metodę `config.AddAzureAppConfiguration()`.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -70,7 +78,7 @@ Aby wykonać ten samouczek, zainstaluj [zestaw .NET Core SDK](https://dotnet.mic
             .UseStartup<Startup>();
     ```
 
-    Ta `ConfigureRefresh` Metoda służy do określania ustawień służących do aktualizowania danych konfiguracji z magazynem konfiguracji aplikacji w przypadku wyzwolenia operacji odświeżania. W celu faktycznego wyzwolenia operacji odświeżania należy skonfigurować oprogramowanie pośredniczące odświeżania, aby aplikacja mogła odświeżyć dane konfiguracji w przypadku wystąpienia zmiany.
+    Metoda `ConfigureRefresh` służy do określania ustawień używanych do aktualizowania danych konfiguracji z magazynem konfiguracji aplikacji w przypadku wyzwolenia operacji odświeżania. W celu faktycznego wyzwolenia operacji odświeżania należy skonfigurować oprogramowanie pośredniczące odświeżania, aby aplikacja mogła odświeżyć dane konfiguracji w przypadku wystąpienia zmiany.
 
 2. Dodaj plik *Settings.cs*, który definiuje i implementuje nową klasę `Settings`.
 
@@ -87,7 +95,7 @@ Aby wykonać ten samouczek, zainstaluj [zestaw .NET Core SDK](https://dotnet.mic
     }
     ```
 
-3. Otwórz *Startup.cs*i zaktualizuj `ConfigureServices` metodę, aby powiązać dane `Settings` konfiguracji z klasą.
+3. Otwórz *Startup.cs*i zaktualizuj metodę `ConfigureServices`, aby powiązać dane konfiguracji z klasą `Settings`.
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -104,7 +112,7 @@ Aby wykonać ten samouczek, zainstaluj [zestaw .NET Core SDK](https://dotnet.mic
     }
     ```
 
-4. `Configure` Zaktualizuj metodę, aby dodać oprogramowanie pośredniczące, aby umożliwić zaktualizowanie ustawień konfiguracji na potrzeby odświeżania, gdy aplikacja sieci Web ASP.NET Core nadal otrzymuje żądania.
+4. Zaktualizuj metodę `Configure`, aby dodać oprogramowanie pośredniczące, aby umożliwić zaktualizowanie ustawień konfiguracji na potrzeby odświeżania, gdy aplikacja sieci Web ASP.NET Core nadal otrzymuje żądania.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -114,20 +122,20 @@ Aby wykonać ten samouczek, zainstaluj [zestaw .NET Core SDK](https://dotnet.mic
     }
     ```
     
-    Oprogramowanie pośredniczące używa konfiguracji odświeżania określonej w `AddAzureAppConfiguration` metodzie w programie `Program.cs` , aby wyzwolić odświeżanie dla każdego żądania odebranego przez aplikację sieci Web ASP.NET Core. Dla każdego żądania jest wyzwalana operacja odświeżania, a Biblioteka klienta sprawdza, czy wartość pamięci podręcznej dla zarejestrowanych ustawień konfiguracji wygasła. W przypadku wartości z pamięci podręcznej, które wygasły, wartości ustawień są aktualizowane w magazynie konfiguracji aplikacji, a pozostałe wartości pozostają niezmienione.
+    Oprogramowanie pośredniczące używa konfiguracji odświeżania określonej w metodzie `AddAzureAppConfiguration` w `Program.cs`, aby wyzwolić odświeżanie dla każdego żądania odebranego przez aplikację sieci Web ASP.NET Core. Dla każdego żądania jest wyzwalana operacja odświeżania, a Biblioteka klienta sprawdza, czy wartość pamięci podręcznej dla zarejestrowanych ustawień konfiguracji wygasła. W przypadku wartości z pamięci podręcznej, które wygasły, wartości ustawień są aktualizowane w magazynie konfiguracji aplikacji, a pozostałe wartości pozostają niezmienione.
     
     > [!NOTE]
-    > Domyślny czas wygaśnięcia pamięci podręcznej dla ustawienia konfiguracji wynosi 30 sekund, ale można go zastąpić, wywołując `SetCacheExpiration` metodę z inicjatora opcji przekazaną jako argument `ConfigureRefresh` do metody.
+    > Domyślny czas wygaśnięcia pamięci podręcznej dla ustawienia konfiguracji wynosi 30 sekund, ale można go zastąpić, wywołując metodę `SetCacheExpiration` w inicjatorze opcji przekazaną jako argument do metody `ConfigureRefresh`.
 
 ## <a name="use-the-latest-configuration-data"></a>Używanie najnowszych danych konfiguracji
 
-1. Otwórz *HomeController.cs* w katalogu controllers i Dodaj odwołanie do `Microsoft.Extensions.Options` pakietu.
+1. Otwórz *HomeController.cs* w katalogu controllers i Dodaj odwołanie do pakietu `Microsoft.Extensions.Options`.
 
     ```csharp
     using Microsoft.Extensions.Options;
     ```
 
-2. Zaktualizuj klasę `HomeController` , aby otrzymywać `Settings` dane przy użyciu iniekcji zależności, i użyj jej wartości.
+2. Zaktualizuj klasę `HomeController`, aby otrzymywać `Settings` za pomocą iniekcji zależności, i użyj jej wartości.
 
     ```csharp
     public class HomeController : Controller
@@ -191,9 +199,9 @@ Aby wykonać ten samouczek, zainstaluj [zestaw .NET Core SDK](https://dotnet.mic
 
 5. Wybierz pozycję **Eksplorator konfiguracji**i zaktualizuj wartości następujących kluczy:
 
-    | Klucz | Value |
+    | Klucz | Wartość |
     |---|---|
-    | TestApp:Settings:BackgroundColor | zielony |
+    | TestApp:Settings:BackgroundColor | green |
     | TestApp:Settings:FontColor | lightGray |
     | TestApp:Settings:Message | Dane z usługi Azure App Configuration — teraz z aktualizacjami na żywo! |
 

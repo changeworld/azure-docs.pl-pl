@@ -1,6 +1,6 @@
 ---
-title: Adresy IP w usłudze Azure Functions
-description: Dowiedz się, jak znaleźć adresy IP ruchu przychodzącego i wychodzącego dla aplikacji funkcji, a co powoduje, że ich zmiany.
+title: Adresy IP w Azure Functions
+description: Dowiedz się, jak znaleźć przychodzące i wychodzące adresy IP dla aplikacji funkcji i co powoduje ich zmianę.
 services: functions
 documentationcenter: ''
 author: ggailey777
@@ -9,60 +9,60 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: glenga
-ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8b6a342dd32d430f7a40a1e0a0a17a482a0816d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035865"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469053"
 ---
-# <a name="ip-addresses-in-azure-functions"></a>Adresy IP w usłudze Azure Functions
+# <a name="ip-addresses-in-azure-functions"></a>Adresy IP w Azure Functions
 
-W tym artykule opisano następujące tematy związane z adresów IP aplikacji funkcji:
+W tym artykule opisano następujące tematy dotyczące adresów IP aplikacji funkcji:
 
-* Jak znaleźć adresy IP aktualnie używany przez aplikację funkcji.
-* Co powoduje, że funkcja adresów IP aplikacji mają być zmienione.
+* Jak znaleźć adresy IP aktualnie używane przez aplikację funkcji.
+* Co powoduje zmianę adresów IP aplikacji funkcji.
 * Jak ograniczyć adresy IP, które mogą uzyskiwać dostęp do aplikacji funkcji.
 * Jak uzyskać dedykowane adresy IP dla aplikacji funkcji.
 
-Adresy IP są skojarzone z aplikacji funkcji, a nie poszczególnych funkcji. Przychodzące żądania HTTP nie można używać dla ruchu przychodzącego adresu IP do wywoływania poszczególnych funkcji; muszą oni korzystać domyślnej nazwy domeny (functionappname.azurewebsites.net) lub niestandardowej nazwy domeny.
+Adresy IP są skojarzone z aplikacjami funkcji, a nie z poszczególnymi funkcjami. Przychodzące żądania HTTP nie mogą używać przychodzącego adresu IP do wywoływania pojedynczych funkcji; muszą używać domyślnej nazwy domeny (functionappname.azurewebsites.net) lub niestandardowej nazwy domeny.
 
-## <a name="function-app-inbound-ip-address"></a>Aplikacja funkcji dla ruchu przychodzącego adresu IP
+## <a name="function-app-inbound-ip-address"></a>Adres IP ruchu przychodzącego aplikacji funkcji
 
-Każda aplikacja funkcji zawiera pojedynczy adres IP dla ruchu przychodzącego. Aby znaleźć ten adres IP:
+Każda aplikacja funkcji ma jeden adres IP ruchu przychodzącego. Aby znaleźć ten adres IP:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Przejdź do aplikacji funkcji.
 3. Wybierz **funkcje platformy**.
-4. Wybierz **właściwości**, i adres IP dla ruchu przychodzącego, który pojawia się w obszarze **wirtualny adres IP**.
+4. Wybierz **Właściwości**, a adres IP ruchu przychodzącego jest wyświetlany w obszarze **wirtualny adres IP**.
 
-## <a name="find-outbound-ip-addresses"></a>Wychodzące adresy IP aplikacji — funkcja
+## <a name="find-outbound-ip-addresses"></a>Wychodzące adresy IP aplikacji funkcji
 
-Każda aplikacja funkcji ma zestaw dostępnych adresów IP ruchu wychodzącego. Wszystkie połączenia wychodzące z funkcji, np. w przypadku wewnętrznej bazy danych korzysta z jednego z dostępnych adresów IP ruchu wychodzącego jako punkt początkowy adres IP. Nie wiesz, wcześniej adres IP, które danego połączenia użyje. Z tego powodu usługa zaplecza należy otworzyć zapory do wszystkich aplikacji funkcji wychodzące adresy IP.
+Każda aplikacja funkcji ma zestaw dostępnych wychodzących adresów IP. Każde połączenie wychodzące z funkcji, na przykład do bazy danych zaplecza, używa jednego z dostępnych wychodzących adresów IP jako źródłowego adresu IP. Nie można wcześniej wiedzieć, który adres IP będzie używany przez określone połączenie. Z tego powodu usługa zaplecza musi otworzyć Zaporę we wszystkich wychodzących adresach IP aplikacji funkcji.
 
-Aby znaleźć dostępne dla aplikacji funkcji wychodzące adresy IP:
+Aby znaleźć wychodzące adresy IP dostępne dla aplikacji funkcji:
 
-1. Zaloguj się do [Eksplorator zasobów Azure](https://resources.azure.com).
-2. Wybierz **subskrypcje > {subscription} > dostawców > Microsoft.Web > witryn**.
-3. W panelu JSON można znaleźć lokacji przy użyciu `id` właściwość, która kończy nazwę aplikacji funkcji.
+1. Zaloguj się do [Azure Resource Explorer](https://resources.azure.com).
+2. Wybierz pozycję **subskrypcje > {Twoja subskrypcja} > dostawcami > witryny Microsoft. Web >** .
+3. W panelu JSON Znajdź witrynę z właściwością `id` kończącą się nazwą aplikacji funkcji.
 4. Zobacz `outboundIpAddresses` i `possibleOutboundIpAddresses`. 
 
-Zbiór `outboundIpAddresses` jest obecnie dostępny dla aplikacji funkcji. Zbiór `possibleOutboundIpAddresses` zawiera adresy IP, które będą dostępne tylko wtedy, gdy aplikacja funkcji [można skalować do innej warstwy cenowej](#outbound-ip-address-changes).
+Zestaw `outboundIpAddresses` jest obecnie dostępny dla aplikacji funkcji. Zestaw `possibleOutboundIpAddresses` obejmuje adresy IP, które będą dostępne tylko wtedy, gdy aplikacja funkcji jest [skalowana w inne warstwy cenowe](#outbound-ip-address-changes).
 
-Alternatywny sposób, aby znaleźć dostępne adresy IP ruchu wychodzącego jest przy użyciu [Cloud Shell](../cloud-shell/quickstart.md):
+Alternatywnym sposobem znalezienia dostępnych wychodzących adresów IP jest użycie [Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
 > [!NOTE]
-> Gdy aplikacja funkcji, które jest uruchamiane na [planu zużycie](functions-scale.md#consumption-plan) jest skalowana, nowy zakres wychodzące adresy IP można przypisać. Podczas uruchamiania na planie zużycie, może być konieczne dozwolonych całego centrum danych.
+> Gdy aplikacja funkcji uruchamiana w ramach [planu zużycia](functions-scale.md#consumption-plan) jest skalowana, można przypisać nowy zakres wychodzących adresów IP. W przypadku korzystania z planu zużycia może być konieczne dozwolonych całego centrum danych.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Wychodzące adresy IP centrum danych
 
-Jeśli chcesz umieścić na liście dozwolonych wychodzące adresy IP używane przez Twoje aplikacje funkcji, innym rozwiązaniem jest do listy dozwolonych aplikacji funkcji centrum danych (region platformy Azure). Możesz [pobranie pliku JSON, który zawiera listę adresów IP dla wszystkich centrów danych platformy Azure](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Następnie znajdź fragment kodu JSON, który ma zastosowanie do regionu, który aplikacja funkcji zostanie uruchomiona w.
+Jeśli trzeba dozwolonych wychodzące adresy IP używane przez aplikacje funkcji, kolejną opcją jest dozwolonych centrum danych aplikacji funkcji (region platformy Azure). Można [pobrać plik JSON zawierający listę adresów IP dla wszystkich centrów danych platformy Azure](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Następnie Znajdź fragment JSON dotyczący regionu, w którym działa aplikacja funkcji.
 
-Na przykład jest to, jak może wyglądać fragment kodu JSON Europa Zachodnia:
+Na przykład jest to fragment kodu JSON Europa Zachodnia, który może wyglądać następująco:
 
 ```
 {
@@ -84,56 +84,56 @@ Na przykład jest to, jak może wyglądać fragment kodu JSON Europa Zachodnia:
 }
 ```
 
- W przypadku informacji o gdy ten plik zostanie zaktualizowany, i gdy adresy IP ulegają, rozwiń **szczegóły** części [strony Centrum pobierania](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
+ Aby uzyskać informacje o tym, kiedy ten plik jest aktualizowany i kiedy zmieniają się adresy IP, rozwiń sekcję **szczegóły** na [stronie Centrum pobierania](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 
-## <a name="inbound-ip-address-changes"></a>Przychodzące zmiany adresu IP
+## <a name="inbound-ip-address-changes"></a>Zmiany adresów IP dla ruchu przychodzącego
 
-Adres IP dla ruchu przychodzącego **może** zmienić, gdy użytkownik:
+Adres IP ruchu przychodzącego **może** ulec zmianie, gdy:
 
-- Usuń aplikację funkcji i utworzyć ją ponownie w innej grupie zasobów.
-- Usuń ostatni aplikacji funkcji w grupie i regionie kombinacji zasobów, a następnie utworzyć ją ponownie.
-- Usuwanie powiązania SSL, takich jak podczas [odnowienia certyfikatu](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)).
+- Usuń aplikację funkcji i utwórz ją ponownie w innej grupie zasobów.
+- Usuń ostatnią aplikację funkcji w kombinacji grupy zasobów i regionu i utwórz ją ponownie.
+- Usuwanie powiązania SSL, na przykład podczas [odnawiania certyfikatu](../app-service/configure-ssl-certificate.md#renew-certificate)).
 
-Gdy aplikacja funkcji zostanie uruchomiona [planu zużycie](functions-scale.md#consumption-plan), adres IP dla ruchu przychodzącego również mogą ulec zmianie, gdy nie jeszcze podjęte akcje, takie jak te wyświetlane.
+Gdy aplikacja funkcji zostanie uruchomiona w [planie zużycia](functions-scale.md#consumption-plan), adres IP ruchu przychodzącego może ulec zmianie, gdy nie wykonano żadnych akcji, takich jak wymienione na liście.
 
-## <a name="outbound-ip-address-changes"></a>Wychodzące zmiany adresu IP
+## <a name="outbound-ip-address-changes"></a>Zmiany wychodzącego adresu IP
 
-Zestaw dostępny adres IP ruchu wychodzącego adresów dla aplikacji funkcji mogą ulec zmianie po użytkownik:
+Zestaw dostępnych wychodzących adresów IP dla aplikacji funkcji może ulec zmianie, gdy:
 
-* Podejmować żadnych działań, które można zmienić adres IP dla ruchu przychodzącego.
-* Zmień plan usługi App Service w warstwie cenowej. Lista wszystkich możliwych wychodzące adresy IP Twoja aplikacja może używać dla wszystkich warstw cenowych, znajduje się w `possibleOutboundIPAddresses` właściwości. Zobacz [znaleźć adresy IP ruchu wychodzącego](#find-outbound-ip-addresses).
+* Wykonaj wszelkie akcje, które mogą zmienić przychodzące adresy IP.
+* Zmień warstwę cenową planu App Service. Lista wszystkich możliwych wychodzących adresów IP, które mogą być używane przez aplikację dla wszystkich warstw cenowych, znajduje się we właściwości `possibleOutboundIPAddresses`. Zobacz [Znajdź wychodzące adresy IP](#find-outbound-ip-addresses).
 
-Gdy aplikacja funkcji zostanie uruchomiona [planu zużycie](functions-scale.md#consumption-plan), wychodzący adres IP również mogą ulec zmianie, gdy nie jeszcze podjęte akcje, takie jak te wyświetlane.
+Po uruchomieniu aplikacji funkcji w [planie zużycia](functions-scale.md#consumption-plan)wychodzący adres IP może ulec zmianie, gdy nie wykonano żadnych akcji, takich jak wymienione na liście.
 
-Aby wymusić celowo zmiana adresu IP ruchu wychodzącego:
+Aby celowo wymusić zmianę wychodzącego adresu IP:
 
-1. Skalowanie planu usługi App Service w górę lub w dół między warstwami cenowymi v2 standardowa i Premium.
-2. Poczekaj 10 minut.
-3. Skalowanie do, w którym uruchomiono.
+1. Skaluj plan App Service w górę lub w dół między warstwami cenowymi Standard i Premium w wersji 2.
+2. Odczekaj 10 minut.
+3. Skaluj z powrotem do miejsca, w którym rozpoczęto pracę.
 
 ## <a name="ip-address-restrictions"></a>Ograniczenia adresów IP
 
-Można skonfigurować listę adresów IP, które chcesz zezwolić lub odmówić dostępu do aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [usługi Azure App Service statyczne ograniczenia adresów IP](../app-service/app-service-ip-restrictions.md).
+Można skonfigurować listę adresów IP, dla których chcesz zezwolić na dostęp lub odmówić dostępu do aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [Azure App Service ograniczeń statycznych adresów IP](../app-service/app-service-ip-restrictions.md).
 
 ## <a name="dedicated-ip-addresses"></a>Dedykowane adresy IP
 
-Jeśli potrzebujesz statycznego, dedykowane adresy IP, firma Microsoft zaleca [środowisk usługi App Service](../app-service/environment/intro.md) ( [izolowane warstwy](https://azure.microsoft.com/pricing/details/app-service/) planów usługi App Service). Aby uzyskać więcej informacji, zobacz [adresy IP środowiska usługi App](../app-service/environment/network-info.md#ase-ip-addresses) i [jak kontrolować ruch przychodzący do środowiska usługi App Service](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
+Jeśli potrzebujesz statycznych, dedykowanych adresów IP, zalecamy [App Service środowiska](../app-service/environment/intro.md) ( [izolowana warstwa](https://azure.microsoft.com/pricing/details/app-service/) planów App Service). Aby uzyskać więcej informacji, zobacz [App Service Environment adresy IP](../app-service/environment/network-info.md#ase-ip-addresses) i [sterowanie ruchem przychodzącym do App Service Environment](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
 
-Aby dowiedzieć się, jeśli aplikacja funkcji zostanie uruchomiona w środowisku usługi App Service:
+Aby dowiedzieć się, czy aplikacja funkcji działa w App Service Environment:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Przejdź do aplikacji funkcji.
-3. Wybierz **Przegląd** kartę.
-4. Warstwę planu usługi App Service jest wyświetlane w obszarze **usługi App Service plan/warstwa cenowa**. Warstwa cenowa usługi App Service Environment jest **izolowany**.
+3. Wybierz kartę **Przegląd** .
+4. Warstwa planu App Service zostanie wyświetlona w obszarze **App Service planu/warstwy cenowej**. Warstwa cenowa App Service Environment jest **izolowana**.
  
-Alternatywnie, można użyć [Cloud Shell](../cloud-shell/quickstart.md):
+Alternatywnie można użyć [Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-Usługa App Service Environment `sku` jest `Isolated`.
+`sku` App Service Environment jest `Isolated`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Częstą przyczyną zmiany adresu IP jest zmiana skali aplikacji funkcji. [Dowiedz się więcej na temat skalowania aplikacji funkcji](functions-scale.md).
+Częstą przyczyną zmian adresów IP są zmiany skalowania aplikacji. [Dowiedz się więcej o skalowaniu aplikacji funkcji](functions-scale.md).

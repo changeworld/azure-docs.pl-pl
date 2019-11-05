@@ -11,25 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 98d257c28ab5ff2cf902c0b8205ac8918ccf4d45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ab291ab60a5e72b5c61552bc54c10e303c1df1a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567016"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492487"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wybierz między rdzeń wirtualny i modelami zakupów jednostek DTU
 
 Azure SQL Database pozwala łatwo zakupić aparat bazy danych w pełni zarządzanej platformy jako usługi (PaaS), który spełnia Twoje wymagania dotyczące wydajności i kosztów. W zależności od modelu wdrażania, który został wybrany dla Azure SQL Database, można wybrać model zakupu, który działa dla Ciebie:
 
-- [Model zakupu oparty na wirtualnym rdzeniu (rdzeń wirtualny)](sql-database-service-tiers-vcore.md) (zalecane). Ten model zakupów umożliwia wybór między zainicjowaną warstwą obliczeniową a warstwą obliczeniową bezserwerową (wersja zapoznawcza). W przypadku alokowanej warstwy obliczeniowej należy wybrać dokładną ilość zasobów obliczeniowych, które są zawsze obsługiwane dla obciążenia. W przypadku warstwy obliczeń bezserwerowych należy określić skalowanie zasobów obliczeniowych w ramach konfigurowalnego zakresu obliczeń. Za pomocą tej warstwy obliczeniowej można również automatycznie wstrzymywać i wznawiać bazę danych w oparciu o aktywność obciążeń. Cena jednostkowa rdzeń wirtualny na jednostkę czasu jest niższa w przypadku alokowanej warstwy obliczeniowej niż w warstwie obliczeniowej bezserwerowej.
+- [Model zakupu oparty na wirtualnym rdzeniu (rdzeń wirtualny)](sql-database-service-tiers-vcore.md) (zalecane). Ten model zakupów zapewnia wybór między zainicjowaną warstwą obliczeniową a warstwą obliczeniową bezserwerową. W przypadku alokowanej warstwy obliczeniowej należy wybrać dokładną ilość zasobów obliczeniowych, które są zawsze obsługiwane dla obciążenia. W przypadku warstwy obliczeń bezserwerowych należy określić skalowanie zasobów obliczeniowych w ramach konfigurowalnego zakresu obliczeń. Za pomocą tej warstwy obliczeniowej można również automatycznie wstrzymywać i wznawiać bazę danych w oparciu o aktywność obciążeń. Cena jednostkowa rdzeń wirtualny na jednostkę czasu jest niższa w przypadku alokowanej warstwy obliczeniowej niż w warstwie obliczeniowej bezserwerowej.
 - [Model zakupu oparty na jednostkach transakcji bazy danych (DTU)](sql-database-service-tiers-dtu.md). Ten model zakupów zawiera powiązane pakiety obliczeniowe i magazynowe, które są zrównoważone dla typowych obciążeń.
 
 Różne modele zakupów są dostępne dla różnych Azure SQL Database modeli wdrażania:
 
 - Opcje wdrażania [pojedynczej bazy danych](sql-database-single-databases-manage.md) i [elastycznej puli](sql-database-elastic-pool.md) w [Azure SQL Database](sql-database-technical-overview.md) oferują zarówno [model zakupu oparty](sql-database-service-tiers-dtu.md) na jednostkach DTU, jak i [model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
 - Opcja wdrażania [wystąpienia zarządzanego](sql-database-managed-instance.md) w Azure SQL Database oferuje tylko [model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
-- [Warstwa usługi](sql-database-service-tier-hyperscale.md) do skalowania jest dostępna dla pojedynczych baz danych korzystających z [modelu zakupu opartego na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
+- [Warstwa usługi do skalowania](sql-database-service-tier-hyperscale.md) jest dostępna dla pojedynczych baz danych korzystających z [modelu zakupu opartego na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
 
 Poniższa tabela i wykres porównują i różnią się w zależności od modelu zakupu opartego na rdzeń wirtualny i DTU:
 
@@ -53,7 +53,7 @@ Koszt magazynu kopii zapasowych jest taki sam dla warstwy usługi krytycznej dla
 
 ### <a name="serverless-compute-costs"></a>Koszty obliczeń bezserwerowych
 
-Aby uzyskać opis sposobu definiowania pojemności obliczeniowej i obliczania kosztów dla warstwy obliczeń bezserwerowych, zobacz [SQL Database bezserwerowe (wersja zapoznawcza)](sql-database-serverless.md).
+Aby uzyskać opis sposobu definiowania pojemności obliczeniowej i obliczania kosztów dla warstwy obliczeń bezserwerowych, zobacz [SQL Database bezserwerowe](sql-database-serverless.md).
 
 ## <a name="storage-costs"></a>Koszty magazynowania
 
@@ -61,13 +61,13 @@ Różne typy magazynów są rozliczane inaczej. W przypadku magazynu danych jest
 
 Domyślnie 7 dni automatycznego tworzenia kopii zapasowych baz danych są kopiowane do konta magazynu geograficznie nadmiarowego do odczytu (RA-GRS) w warstwie Standardowa. Ten magazyn jest używany przez cotygodniowe pełne kopie zapasowe, codzienne różnicowe kopie zapasowe i kopie zapasowe dziennika transakcji, które są kopiowane co 5 minut. Rozmiar dzienników transakcji zależy od szybkości zmiany bazy danych. Minimalna wielkość magazynu równa 100% rozmiaru bazy danych jest zapewniana bez dodatkowych opłat. Opłata za dodatkowe użycie magazynu kopii zapasowych jest naliczana w GB miesięcznie.
 
-Aby uzyskać więcej informacji o cenach magazynu, zobacz [](https://azure.microsoft.com/pricing/details/sql-database/single/) stronę z cennikiem.
+Aby uzyskać więcej informacji o cenach magazynu, zobacz stronę z [cennikiem](https://azure.microsoft.com/pricing/details/sql-database/single/) .
 
 ## <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
 
 Rdzeń wirtualny (rdzeń wirtualny) reprezentuje logiczny procesor CPU i oferuje możliwość wyboru między generacjami sprzętu i fizycznymi cechami sprzętu (na przykład liczby rdzeni, pamięci i rozmiaru magazynu). Model zakupu oparty na rdzeń wirtualny zapewnia elastyczność, kontrolę, przejrzystość poszczególnych zasobów oraz prostą metodę tłumaczenia lokalnych wymagań obciążeń do chmury. Ten model umożliwia wybranie zasobów obliczeniowych, pamięci i magazynu w oparciu o potrzeby związane z obciążeniem.
 
-W modelu zakupu opartego na rdzeń wirtualny można wybrać między warstwami usług [ogólnych](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) i [krytycznych](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) dla [pojedynczej bazy danych](sql-database-single-database-scale.md), [elastycznymi pulami](sql-database-elastic-pool.md)i [wystąpieniami zarządzanymi](sql-database-managed-instance.md). W przypadku pojedynczych baz danych można również wybrać [warstwę usługi](sql-database-service-tier-hyperscale.md)na potrzeby skalowania.
+W modelu zakupu opartego na rdzeń wirtualny można wybrać między warstwami usług [ogólnych](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) i [krytycznych](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) dla [pojedynczej bazy danych](sql-database-single-database-scale.md), [elastycznymi pulami](sql-database-elastic-pool.md)i [wystąpieniami zarządzanymi](sql-database-managed-instance.md). W przypadku pojedynczych baz danych można również wybrać [warstwę usługi na potrzeby skalowania](sql-database-service-tier-hyperscale.md).
 
 Model zakupu oparty na rdzeń wirtualny umożliwia niezależne wybieranie zasobów obliczeniowych i magazynowych, dopasowanie wydajności lokalnej i optymalizację cen. W modelu zakupu opartego na rdzeń wirtualny płacisz za:
 
@@ -102,7 +102,7 @@ Zasoby używane przez obciążenie nie wpływają na zasoby dostępne dla innych
 
 ![pole ograniczenia](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU są najbardziej przydatne do poznania zasobów względnych, które są przyłączone do baz danych Azure SQL w różnych rozmiarach obliczeniowych i warstwach usług. Przykład:
+DTU są najbardziej przydatne do poznania zasobów względnych, które są przyłączone do baz danych Azure SQL w różnych rozmiarach obliczeniowych i warstwach usług. Na przykład:
 
 - Podwajanie DTU przez zwiększenie rozmiaru obliczeń bazy danych jest równe Podwajanie zestawu zasobów dostępnych dla tej bazy danych.
 - Baza danych P11 usługi w warstwie Premium z 1750 DTU zapewnia większą moc obliczeniową jednostek DTU niż podstawowa baza danych warstwy usług z 5 DTU.  

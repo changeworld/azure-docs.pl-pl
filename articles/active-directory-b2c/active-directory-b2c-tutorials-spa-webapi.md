@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9ac95896e67338437325e8290a96b8e42b2fa3a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 30e7059605ef86e6afd86251db0e416c9143a9ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374243"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475123"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do ASP.NET Core internetowego interfejsu API z aplikacji jednostronicowej przy użyciu Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Zakresy umożliwiają zarządzanie dostępem do chronionych zasobów. Zakresy s�
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Zapisz **pełny zakres wartości** dla zakresu `demo.read`, który ma być używany w późniejszym kroku podczas konfigurowania aplikacji jednostronicowej. Pełna wartość zakresu jest podobna do `https://yourtenant.onmicrosoft.com/api/demo.read`.
+Zapisz wartość w obszarze **zakresy** dla zakresu `demo.read`, który ma być używany w późniejszym kroku podczas konfigurowania aplikacji jednostronicowej. Pełna wartość zakresu jest podobna do `https://contosob2c.onmicrosoft.com/api/demo.read`.
 
 ## <a name="grant-permissions"></a>Udzielenie uprawnień
 
@@ -62,7 +62,7 @@ Jednostronicowa aplikacja sieci Web jest zarejestrowana w celu wywoływania chro
 
 Po zarejestrowaniu internetowego interfejsu API i zdefiniowaniu zakresów konfigurujesz kod internetowego interfejsu API w celu skorzystania ze swojej dzierżawy usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładową aplikację internetową platformy .NET Core pobieraną z usługi GitHub.
 
-[Pobierz plik @no__t -1. zip archiwum](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) lub Sklonuj przykładowy projekt internetowego interfejsu API z usługi GitHub.
+[Pobierz archiwum \*. zip](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) lub Sklonuj przykładowy projekt internetowego interfejsu API z usługi GitHub.
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi.git
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 ### <a name="configure-the-web-api"></a>Konfigurowanie internetowego interfejsu API
 
 1. Otwórz plik <em>B2C-WebAPI/**appSettings. JSON**</em>  w programie Visual Studio lub Visual Studio Code.
-1. Zmodyfikuj blok `AzureAdB2C`, aby odzwierciedlał nazwę dzierżawy, identyfikator aplikacji internetowego interfejsu API, nazwę zasad rejestracji/logowania oraz zdefiniowane wcześniej zakresy. Blok powinien wyglądać podobnie do poniższego przykładu (z odpowiednimi wartościami `Tenant` i `ClientId`):
+1. Zmodyfikuj blok `AzureAdB2C` w taki sposób, aby odzwierciedlał nazwę dzierżawy, identyfikator aplikacji internetowego interfejsu API, nazwę zasad rejestracji/logowania oraz zdefiniowane wcześniej zakresy. Blok powinien wyglądać podobnie do poniższego przykładu (z odpowiednimi `Tenant` i `ClientId` wartościami):
 
     ```json
     "AzureAdB2C": {
@@ -133,8 +133,8 @@ Aby zmienić ustawienia w SPA:
 
 1. Otwórz plik *index. html* w projekcie [Active-Directory-B2C-JavaScript-msal-singlepageapp][github-js-spa] , który został pobrany lub sklonowany w poprzednim samouczku.
 1. Skonfiguruj przykład za pomocą identyfikatora URI dla *demonstracji.* wcześniej utworzony zakres odczytu i adres URL internetowego interfejsu API.
-    1. W definicji `appConfig` Zastąp wartość `b2cScopes` pełnym identyfikatorem URI dla zakresu ( **pełna wartość zakresu** została zapisana wcześniej).
-    1. Zmień wartość `webApi` na wartość `applicationURL` określoną w poprzedniej sekcji.
+    1. W definicji `appConfig` Zastąp wartość `b2cScopes` wartością pełny identyfikator URI zakresu (wartość **zakresu** zarejestrowana wcześniej).
+    1. Zmień wartość `webApi` na identyfikator URI przekierowania, który został dodany podczas rejestrowania aplikacji internetowego interfejsu API we wcześniejszym kroku.
 
     Definicja `appConfig` powinna wyglądać podobnie do następującego bloku kodu (z nazwą dzierżawy w miejscu `<your-tenant-name>`):
 
@@ -158,13 +158,13 @@ W programie Visual Studio naciśnij klawisz **F5** , aby skompilować i debugowa
 
 Jeśli wolisz używać interfejsu wiersza polecenia `dotnet` zamiast programu Visual Studio:
 
-1. Otwórz okno konsoli i przejdź do katalogu zawierającego plik *@no__t -1. csproj* . Na przykład:
+1. Otwórz okno konsoli i przejdź do katalogu zawierającego plik *\*. csproj* . Na przykład:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 
 1. Kompiluj i uruchamiaj internetowy interfejs API, wykonując `dotnet run`.
 
-    Gdy interfejs API jest uruchomiony i działa, powinny zostać wyświetlone dane wyjściowe podobne do następujących (dla tego samouczka możesz bezpiecznie zignorować wszelkie `NETSDK1059` ostrzeżeń):
+    Gdy interfejs API jest uruchomiony i działa, powinny zostać wyświetlone dane wyjściowe podobne do następujących (samouczek umożliwia bezpieczne ignorowanie ostrzeżeń `NETSDK1059`):
 
     ```console
     $ dotnet run

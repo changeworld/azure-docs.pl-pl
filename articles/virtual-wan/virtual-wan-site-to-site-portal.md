@@ -5,19 +5,31 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/07/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: b3147db8cda04ce7a71b35659eb91a20a06e0c52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8824111edff23b8bdc93a64707cf5198288b3a6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028052"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488976"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Samouczek: tworzenie połączenia lokacja-lokacja przy użyciu usługi Azure Virtual WAN
 
 W tym samouczku pokazano, w jaki sposób przy użyciu usługi Azure Virtual WAN utworzyć połączenie z zasobami na platformie Azure za pośrednictwem połączenia sieci VPN protokołu IPsec/IKE (IKEv1 i IKEv2). Ten typ połączenia wymaga lokalnego urządzenia sieci VPN z przypisanym publicznym adresem IP dostępnym z zewnątrz. Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz [Omówienie usługi Virtual WAN](virtual-wan-about.md).
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+
+> [!div class="checklist"]
+> * Tworzenie wirtualnej sieci WAN
+> * Tworzenie koncentratora
+> * Tworzenie lokacji
+> * Łączenie lokacji z centrum
+> * Łączenie witryny sieci VPN z centrum
+> * Łączenie sieci wirtualnej z koncentratorem
+> * Pobierz plik konfiguracji
+> * Wyświetlanie wirtualnej sieci WAN
 
 > [!NOTE]
 > Jeśli masz wiele lokacji, skorzystaj z usług [partnera usługi Virtual WAN](https://aka.ms/virtualwan) w celu utworzenia tej konfiguracji. Możesz też utworzyć tę konfigurację samodzielnie, jeśli masz wiedzę z zakresu sieci i doświadczenie w konfigurowaniu urządzeń sieci VPN.
@@ -25,76 +37,57 @@ W tym samouczku pokazano, w jaki sposób przy użyciu usługi Azure Virtual WAN 
 
 ![Diagram usługi Virtual WAN](./media/virtual-wan-about/virtualwan.png)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Tworzenie sieci WAN
-> * Tworzenie lokacji
-> * Tworzenie koncentratora
-> * Łączenie koncentratora z lokacją
-> * Utwórz zgodną sieć wirtualną (jeśli jeszcze jej nie masz)
-> * Łączenie sieci wirtualnej z koncentratorem
-> * Pobieranie i stosowanie konfiguracji urządzenia sieci VPN
-> * Wyświetlanie wirtualnej sieci WAN
-> * Wyświetlanie kondycji zasobu
-> * Monitorowanie połączenia
-
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryteria:
 
-## <a name="openvwan"></a>1. Tworzenie wirtualnej sieci WAN
+* Masz sieć wirtualną, z którą chcesz nawiązać połączenie. Sprawdź, czy żadna z podsieci sieci lokalnych nie nakłada się na sieci wirtualne, z którymi chcesz nawiązać połączenie. Aby utworzyć sieć wirtualną w Azure Portal, zobacz [Przewodnik Szybki Start](../virtual-network/quick-create-portal.md).
 
-Przejdź w przeglądarce do witryny [Azure Portal](https://aka.ms/azurevirtualwanpreviewfeatures) i zaloguj się przy użyciu konta platformy Azure.
+* Twoja sieć wirtualna nie ma żadnych bram sieci wirtualnej. Jeśli sieć wirtualna ma bramę (VPN lub ExpressRoute), należy usunąć wszystkie bramy. Ta konfiguracja wymaga, aby w zamian były połączone sieci wirtualne z bramą wirtualnego centrum sieci WAN.
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
+* Uzyskaj zakres adresów IP w regionie koncentratora. Centrum jest siecią wirtualną, która jest tworzona i używana przez wirtualną sieć WAN. Zakres adresów określony dla centrum nie może pokrywać się z żadną z istniejących sieci wirtualnych, z którymi się łączysz. Nie może również pokrywać się z zakresami adresów, z którymi łączysz się lokalnie. Jeśli nie znasz zakresów adresów IP znajdujących się w konfiguracji sieci lokalnej, koordynuj się z osobą, która może podać te szczegóły.
 
-## <a name="site"></a>2. Tworzenie witryny
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Możesz utworzyć dowolną liczbę lokacji, tak aby odpowiadała liczbie lokalizacji fizycznych. Jeśli na przykład masz oddziały w Nowym Jorku, Londynie i Los Angeles, należy utworzyć trzy oddzielne lokacje. W tych lokacjach znajdują się punkty końcowe lokalnych urządzeń sieci VPN. Obecnie można określić tylko jedną prywatną przestrzeń adresową na lokację.
+## <a name="openvwan"></a>Tworzenie wirtualnej sieci WAN
 
-1. Kliknij utworzoną sieć WAN. Na stronie sieci WAN w obszarze **Architektura wirtualnej sieci WAN**kliknij pozycję **Lokacje sieci VPN** , aby otworzyć stronę witryny sieci VPN.
-2. Na stronie **Lokacje sieci VPN** kliknij pozycję **+Utwórz lokację**.
-3. Na stronie **Tworzenie lokacji** wypełnij następujące pola:
+W przeglądarce przejdź do Azure Portal i zaloguj się przy użyciu konta platformy Azure.
 
-   * **Nazwa** — nazwa, przez którą chcesz odwołać się do lokacji lokalnej.
-   * **Publiczny adres IP** — publiczny adres IP urządzenia sieci VPN znajdującego się w lokacji lokalnej.
-   * **Prywatna przestrzeń adresowa** — to przestrzeń adresowa IP znajdująca się w lokacji lokalnej. Ruch do tej przestrzeni adresowej jest kierowany do lokacji lokalnej.
-   * **Subskrypcja** — sprawdź, czy wybrano właściwą subskrypcję.
-   * **Grupa zasobów** — grupa zasobów, której chcesz używać.
-   * **Lokalizacja**
-4. Kliknij pozycję **Pokaż zaawansowane**, aby wyświetlić dodatkowe ustawienia. 
+1. Przejdź do strony wirtualna sieć WAN. W portalu kliknij pozycję **+Utwórz zasób**. W polu wyszukiwania wpisz **wirtualną sieć WAN** i wybierz pozycję Wprowadź.
+2. Z wyników wybierz pozycję **wirtualna sieć WAN** . Na stronie wirtualna sieć WAN kliknij przycisk **Utwórz** , aby otworzyć stronę tworzenie sieci WAN.
+3. Na stronie **Tworzenie sieci WAN** na karcie **podstawowe** wypełnij następujące pola:
 
-   Możesz wybrać protokół **BGP** , aby włączyć protokół BGP, co spowoduje włączenie funkcji BGP dla wszystkich połączeń utworzonych dla tej witryny na platformie Azure. Konfigurowanie protokołu BGP w wirtualnej sieci WAN jest równoznaczne z skonfigurowaniem protokołu BGP na bramie sieci VPN platformy Azure. Adres lokalnego elementu równorzędnego protokołu BGP *nie może* być taki sam jak publiczny adres IP sieci VPN do urządzenia lub przestrzeni adresowej sieci wirtualnej witryny sieci VPN. Użyj innego adresu IP na urządzeniu sieci VPN dla adresu IP elementu równorzędnego protokołu BGP. Może to być adres przypisany do interfejsu sprzężenia zwrotnego na urządzeniu. Jednak *nie może* to być adresowanie APIPA (169,254. *x*. *x*). Ten adres należy określić w odpowiedniej bramie sieci lokalnej reprezentującej daną lokalizację. Wymagania wstępne dotyczące protokołu BGP zawiera temat [Informacje o protokole BGP z platformą Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
+   ![Wirtualna sieć WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
-   Możesz też wprowadzić **Informacje o urządzeniu** (pola opcjonalne). Dzięki temu zespół platformy Azure może lepiej zrozumieć swoje środowisko w celu dodania do niego dodatkowych możliwości optymalizacji lub ułatwienia rozwiązywania problemów.
-   
-5. Kliknij pozycję **Potwierdź**.
-6. Po kliknięciu pozycji **Potwierdź** wyświetl stan na stronie lokacji sieci VPN. Stan lokacji zmieni się z **Aprowizowanie** na **Aprowizowano**.
+   * **Subskrypcja** — wybierz subskrypcję, która ma być używana.
+   * **Grupa zasobów** — Utwórz nową lub Użyj istniejącej.
+   * **Lokalizacja grupy zasobów** — wybierz lokalizację zasobu z listy rozwijanej. Sieć WAN to zasób globalny i nie znajduje się w konkretnym regionie. Konieczne jest jednak wybranie regionu, aby łatwiej zarządzać utworzonym zasobem sieci WAN i go lokalizować.
+   * **Nazwa** — wpisz nazwę, która ma zostać wywołana w sieci WAN.
+   * **Typ:** Podstawowa lub standardowa. W przypadku tworzenia podstawowej sieci WAN można utworzyć tylko podstawowe centrum. Centra podstawowe obsługują tylko połączenia sieci VPN typu lokacja-lokacja.
+4. Po zakończeniu wypełniania pól wybierz pozycję **Przegląd + Utwórz**.
+5. Po zakończeniu walidacji wybierz pozycję **Utwórz** , aby utworzyć wirtualną sieć WAN.
 
-## <a name="hub"></a>3. Tworzenie centrum
+## <a name="hub"></a>Tworzenie centrum
 
-[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
+Centrum to sieć wirtualna, która może zawierać bramy do funkcji lokacja-lokacja, ExpressRoute lub punkt-lokacja. Po utworzeniu koncentratora będzie za niego naliczana opłata, nawet jeśli nie dołączysz żadnych lokacji. Utworzenie bramy sieci VPN typu lokacja-lokacja w koncentratorze wirtualnym trwa 30 minut.
 
-## <a name="associate"></a>4. Skojarz lokacje z centrum
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-Zasadniczo koncentratory powinny być skojarzone z lokacjami znajdującymi się w tym samym regionie, w którym znajduje się sieć wirtualna.
+## <a name="site"></a>Tworzenie witryny
 
-1. Na stronie **Lokacje sieci VPN** wybierz lokację lub lokacje, które chcesz skojarzyć z koncentratorem, a następnie kliknij pozycję **+Nowe skojarzenie koncentratora**.
-2. Na stronie **Kojarzenie lokacji z co najmniej jednym koncentratorem** wybierz koncentrator z listy rozwijanej. Możesz skojarzyć lokację z dodatkowymi koncentratorami, klikając pozycję **+Dodaj skojarzenie**.
-3. Możesz również dodać w tym miejscu określony **klucz wstępny** lub użyć domyślnego.
-4. Kliknij pozycję **Potwierdź**.
-5. Możesz wyświetlić stan połączenia na stronie **Lokacje sieci VPN**.
+Teraz można przystąpić do tworzenia lokacji odpowiadających Twoim lokalizacji fizycznej. Możesz utworzyć dowolną liczbę lokacji, tak aby odpowiadała liczbie lokalizacji fizycznych. Jeśli na przykład masz oddziały w Nowym Jorku, Londynie i Los Angeles, należy utworzyć trzy oddzielne lokacje. W tych lokacjach znajdują się punkty końcowe lokalnych urządzeń sieci VPN. W wirtualnej sieci WAN można utworzyć maksymalnie 1000 witryn na koncentratorze wirtualnym. Jeśli masz wiele centrów, możesz utworzyć 1000 dla każdego z tych centrów. Jeśli masz urządzenie z wirtualnym partnerem WAN (link INSERT), skontaktuj się z nimi, aby dowiedzieć się więcej o automatyzacji na platformie Azure. Zazwyczaj Automatyzacja to proste środowisko klikania, które umożliwia eksportowanie informacji o gałęziach o dużej skali na platformę Azure oraz Konfigurowanie łączności od CPE z bramą sieci VPN platformy Azure w wirtualnej sieci WAN (Oto link do wskazówek dotyczących automatyzacji od platformy Azure do partnerów CPE).
 
-## <a name="vnet"></a>5. Tworzenie sieci wirtualnej
+[!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-Jeśli nie masz jeszcze sieci wirtualnej, możesz ją szybko utworzyć przy użyciu programu PowerShell lub Azure Portal. Jeśli masz już sieć wirtualną, sprawdź, czy spełnia ona wymagane kryteria i nie ma bramy sieci wirtualnej.
+## <a name="connectsites"></a>Łączenie witryny sieci VPN z centrum
 
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
+W tym kroku połączysz swoją lokację sieci VPN z centrum.
 
-## <a name="vnet"></a>6. Łączenie sieci wirtualnej z centrum
+[!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-W tym kroku zostanie utworzone połączenie równorzędne pomiędzy koncentratorem i siecią wirtualną. Powtórz te czynności dla każdej sieci wirtualnej, z którą chcesz się połączyć.
+## <a name="vnet"></a>Łączenie sieci wirtualnej z centrum
+
+W tym kroku utworzysz połączenie między centrum i siecią wirtualną. Powtórz te czynności dla każdej sieci wirtualnej, z którą chcesz się połączyć.
 
 1. Na stronie sieci wirtualnej WAN kliknij pozycję **Połączenia sieci wirtualnych**.
 2. Na stronie połączenia sieci wirtualnej kliknij polecenie **+ Dodaj połączenie**.
@@ -104,16 +97,16 @@ W tym kroku zostanie utworzone połączenie równorzędne pomiędzy koncentrator
     * **Koncentratory** — wybierz koncentrator, z którym chcesz skojarzyć to połączenie.
     * **Subskrypcja** — sprawdź, czy wybrano właściwą subskrypcję.
     * **Sieć wirtualna** — wybierz sieć wirtualną, którą chcesz połączyć z tym koncentratorem. Sieć wirtualna nie może mieć istniejącej bramy sieci wirtualnej.
-4. Kliknij przycisk **OK**, aby utworzyć połączenie równorzędne.
+4. Kliknij przycisk **OK** , aby utworzyć połączenie sieci wirtualnej.
 
-## <a name="device"></a>7. Pobieranie konfiguracji sieci VPN
+## <a name="device"></a>Pobierz konfigurację sieci VPN
 
 Skorzystaj z konfiguracji urządzenia sieci VPN, aby skonfigurować swoje lokalne urządzenie sieci VPN.
 
 1. Na stronie usługi Virtual WAN kliknij pozycję **Przegląd**.
-2. W górnej części strony Przegląd kliknij pozycję **Pobierz konfigurację sieci VPN**. Platforma Azure utworzy konto magazynu w grupie zasobów „microsoft-network-[lokalizacja]”, gdzie „lokalizacja” to lokalizacja sieci WAN. Po zastosowaniu konfiguracji na urządzeniach sieci VPN możesz usunąć to konto magazynu.
+2. W górnej części strony **centrum > VPNSite** kliknij pozycję **Pobierz konfigurację sieci VPN**. Platforma Azure tworzy konto magazynu w grupie zasobów "Microsoft-Network-[Location]", gdzie lokalizacja jest lokalizacją sieci WAN. Po zastosowaniu konfiguracji na urządzeniach sieci VPN możesz usunąć to konto magazynu.
 3. Po zakończeniu tworzenia pliku możesz kliknąć link, aby go pobrać.
-4. Zastosuj konfigurację na urządzeniu sieci VPN.
+4. Zastosuj konfigurację do lokalnego urządzenia sieci VPN.
 
 ### <a name="understanding-the-vpn-device-configuration-file"></a>Opis pliku konfiguracji urządzenia sieci VPN
 
@@ -255,45 +248,15 @@ Jeśli chcesz wiedzieć, jak skonfigurować urządzenie, możesz skorzystać z i
 
 * Instrukcje na stronie urządzeń sieci VPN nie zostały napisane dla usługi Virtual WAN, ale możesz skorzystać z wartości z pliku konfiguracji usługi Virtual WAN, aby ręcznie skonfigurować urządzenie sieci VPN. 
 * Skrypty konfiguracji urządzenia do pobrania przeznaczone dla usługi VPN Gateway nie działają w przypadku usługi Virtual WAN, ponieważ ich konfiguracja różni się.
-* Nowa usługa Virtual WAN może obsługiwać zarówno protokół IKEv1, jak i IKEv2.
+* Nowa wirtualna sieć WAN może obsługiwać zarówno protokół IKEv1, jak i IKEv2.
 * W usłudze Virtual WAN można używać tylko instrukcji i urządzeń sieci VPN opartych na trasach.
 
-## <a name="viewwan"></a>8. Wyświetl wirtualną sieć WAN
+## <a name="viewwan"></a>Wyświetlanie wirtualnej sieci WAN
 
 1. Przejdź do wirtualnej sieci WAN.
-2. Na stronie Przegląd każdy punkt na mapie przedstawia koncentrator. Umieść kursor na dowolnym punkcie, aby wyświetlić podsumowanie kondycji koncentratora.
-3. W sekcji dotyczącej koncentratorów i połączeń możesz wyświetlić stan koncentratora, lokację, region, stan połączenia sieci VPN oraz bajty przychodzące i wychodzące.
-
-## <a name="viewhealth"></a>9. Wyświetl kondycję zasobów
-
-1. Przejdź do sieci WAN.
-2. Na stronie sieci WAN w sekcji **Pomoc techniczna i rozwiązywanie problemów** kliknij pozycję **Kondycja** i wyświetl zasób.
-
-## <a name="connectmon"></a>10. monitorowanie połączenia
-
-Utwórz połączenie, aby monitorować komunikację pomiędzy maszyną wirtualną platformy Azure a zdalną lokacją. Aby uzyskać informacje dotyczące konfigurowania monitora połączeń, zobacz [Monitorowanie komunikacji sieciowej](~/articles/network-watcher/connection-monitor.md). Pole Źródło zawiera adres IP maszyny wirtualnej na platformie Azure, a docelowy adres IP to adres IP lokacji.
-
-## <a name="cleanup"></a>11. Wyczyść zasoby
-
-Jeśli te zasoby nie są już potrzebne, możesz usunąć grupę zasobów i wszystkie zawarte w niej zasoby, używając polecenie [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Zastąp wartość „myResourceGroup” nazwą grupy zasobów, a następnie uruchom następujące polecenie programu PowerShell:
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+2. Na stronie **Przegląd** każdy punkt na mapie reprezentuje centrum. Umieść kursor nad dowolnym punktem, aby wyświetlić podsumowanie kondycji centrum, stan połączenia oraz liczbę bajtów w i wykroczeniu.
+3. W sekcji centra i połączenia można wyświetlić stan centrum, witryny sieci VPN itp. Możesz kliknąć określoną nazwę centrum i przejść do witryny sieci VPN, aby uzyskać dodatkowe informacje.
 
 ## <a name="next-steps"></a>Następne kroki
-
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
-
-> [!div class="checklist"]
-> * Tworzenie sieci WAN
-> * Tworzenie lokacji
-> * Tworzenie koncentratora
-> * Łączenie koncentratora z lokacją
-> * Łączenie sieci wirtualnej z koncentratorem
-> * Pobieranie i stosowanie konfiguracji urządzenia sieci VPN
-> * Wyświetlanie wirtualnej sieci WAN
-> * Wyświetlanie kondycji zasobu
-> * Monitorowanie połączenia
 
 Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz stronę [Omówienie usługi Virtual WAN](virtual-wan-about.md).

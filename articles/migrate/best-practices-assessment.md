@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: raynew
-ms.openlocfilehash: a07e83c805fc422c861f6c644a59da0b42bb8072
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: e235116ab77159a0e2e9c66ad09cdb86ce6da1e9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71007714"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466932"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Najlepsze rozwiązania dotyczące tworzenia ocen
 
@@ -41,13 +41,19 @@ Jeśli na przykład masz lokalną maszynę wirtualną z czterema rdzeniami na po
 
 ## <a name="best-practices-for-creating-assessments"></a>Najlepsze rozwiązania dotyczące tworzenia ocen
 
-Urządzenie Azure Migrate ciągle profiluje środowisko lokalne i wysyła metadane oraz dane wydajności do platformy Azure. Postępuj zgodnie z następującymi najlepszymi rozwiązaniami dotyczącymi tworzenia ocen:
+Urządzenie Azure Migrate ciągle profiluje środowisko lokalne i wysyła metadane oraz dane wydajności do platformy Azure. Postępuj zgodnie z następującymi najlepszymi rozwiązaniami dotyczącymi ocen serwerów odnalezionych przy użyciu urządzenia:
 
-- **Utwórz ocenę jako**: Możesz tworzyć jako oceny jako, które natychmiast po wyświetleniu maszyn w portalu Azure Migrate.
-- **Tworzenie oceny opartej na wydajności**: Po skonfigurowaniu odnajdywania zalecamy odczekanie co najmniej dnia przed uruchomieniem oceny opartej na wydajności:
+- **Utwórz ocenę jako przewidzianą**w ramach oceny: możesz utworzyć jako ocenę, gdy maszyny będą widoczne w portalu Azure Migrate.
+- **Tworzenie oceny opartej na wydajności**: po skonfigurowaniu odnajdywania zalecamy zaczekanie co najmniej dnia przed uruchomieniem oceny opartej na wydajności:
     - Trwa zbieranie danych dotyczących wydajności. Oczekiwanie co najmniej każdego dnia zapewnia wystarczającą ilość punktów danych wydajności przed uruchomieniem oceny.
     - W przypadku uruchamiania ocen opartych na wydajności należy upewnić się, że w środowisku jest profilowanie czasu trwania oceny. Jeśli na przykład zostanie utworzona Ocena z ustawionym przez tydzień czasem trwania wydajności, należy poczekać przez co najmniej tydzień po rozpoczęciu odnajdywania dla wszystkich punktów danych, które mają być zbierane. Jeśli tego nie zrobisz, ocena nie spowoduje pobrania klasyfikacji z pięcioma gwiazdkami.
-- **Oblicz ponownie oceny**: Ponieważ oceny są migawkami do punktu w czasie, nie są automatycznie aktualizowane przy użyciu najnowszych danych. Aby zaktualizować ocenę przy użyciu najnowszych danych, należy ją ponownie obliczyć.
+- **Oblicz ponownie oceny**: ponieważ oceny są migawkami w czasie, nie są automatycznie aktualizowane przy użyciu najnowszych danych. Aby zaktualizować ocenę przy użyciu najnowszych danych, należy ją ponownie obliczyć.
+
+Postępuj zgodnie z następującymi najlepszymi rozwiązaniami dotyczącymi ocen serwerów zaimportowanych do Azure Migrate za pośrednictwem programu. Plik CSV:
+
+- **Utwórz ocenę jako przewidzianą**w ramach oceny: możesz utworzyć jako ocenę, gdy maszyny będą widoczne w portalu Azure Migrate.
+- **Tworzenie oceny opartej na wydajności**: Dzięki temu można uzyskać lepszy szacunkowy koszt, szczególnie w przypadku nadmiernej aprowizacji zasobów serwera w środowisku lokalnym. Jednak dokładność oceny bazującej na wydajności zależy od danych wydajności określonych przez użytkownika dla serwerów. 
+- **Oblicz ponownie oceny**: ponieważ oceny są migawkami w czasie, nie są automatycznie aktualizowane przy użyciu najnowszych danych. Aby zaktualizować ocenę przy użyciu najnowszych zaimportowanych danych, należy ją ponownie obliczyć.
 
 ## <a name="best-practices-for-confidence-ratings"></a>Najlepsze rozwiązania dotyczące klasyfikacji zaufania
 
@@ -73,11 +79,11 @@ Poniżej przedstawiono sposób rozwiązywania niektórych typowych problemów ze
 
 ###  <a name="out-of-sync-assessments"></a>Oceny braku synchronizacji
 
-Jeśli dodasz lub usuniesz maszyny z grupy po utworzeniu oceny, utworzona Ocena zostanie oznaczona jako niezsynchronizowana. Uruchom ocenę ponownie, abyodzwierciedlić zmiany grupy.
+Jeśli dodasz lub usuniesz maszyny z grupy po utworzeniu oceny, utworzona Ocena zostanie oznaczona jako **niezsynchronizowana**. Uruchom ocenę ponownie, abyodzwierciedlić zmiany grupy.
 
 ### <a name="outdated-assessments"></a>Nieaktualne oceny
 
-Jeśli istnieją lokalne zmiany w maszynach wirtualnych, które znajdują się w grupie, która została oceniona, ocena jestoznaczona jako nieaktualna. Aby odzwierciedlić zmiany, należy ponownie uruchomić ocenę.
+Jeśli istnieją lokalne zmiany w maszynach wirtualnych, które znajdują się w grupie, która została oceniona, ocena jest oznaczona jako **nieaktualna**. Aby odzwierciedlić zmiany, należy ponownie uruchomić ocenę.
 
 ### <a name="low-confidence-rating"></a>Ocena niskiej pewności
 

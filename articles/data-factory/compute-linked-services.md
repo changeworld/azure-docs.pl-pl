@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7426493a575ceb38211f5e6e3b4f7e2ba558b670
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: fd874776e5be94831322bce839a502ebc43e1958
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754746"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481191"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Środowiska obliczeniowe obsługiwane przez Azure Data Factory
 W tym artykule opisano różne środowiska obliczeniowe, za pomocą których można przetwarzać lub przekształcać dane. Zawiera on także szczegółowe informacje o różnych konfiguracjach (na żądanie a), które są obsługiwane przez Data Factory podczas konfigurowania połączonych usług łączących te środowiska obliczeniowe z fabryką danych Azure.
@@ -28,7 +28,8 @@ Poniższa tabela zawiera listę środowisk obliczeniowych obsługiwanych przez D
 | [Klaster HDInsight na żądanie](#azure-hdinsight-on-demand-linked-service) lub [własny klaster usługi HDInsight](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md), [świnie](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), usługa [Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Niestandardowa](transform-data-using-dotnet-custom-activity.md)     |
 | [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Działania usługi Machine Learning: wykonywanie wsadowe i aktualizacja zasobów](transform-data-using-machine-learning.md) |
-| [Usługa Azure Machine Learning](#azure-machine-learning-service-linked-service) | [Azure Machine Learning wykonywania potoku](transform-data-machine-learning-service.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning wykonywania potoku](transform-data-machine-learning-service.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning wykonywania potoku](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Język U-SQL usługi Data Lake Analytics](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Procedura składowana](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notes](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
@@ -97,7 +98,7 @@ Poniższy kod JSON definiuje połączoną usługę HDInsight na żądanie z syst
 > 
 
 ### <a name="properties"></a>Właściwości
-| Właściwość                     | Opis                              | Wymagane |
+| Właściwość                     | Opis                              | Wymagany |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Właściwość Type powinna mieć wartość **HDInsightOnDemand**. | Tak      |
 | clusterSize                  | Liczba węzłów procesu roboczego/danych w klastrze. Klaster usługi HDInsight jest tworzony z 2 węzłami głównymi wraz z liczbą węzłów procesu roboczego określonych dla tej właściwości. Węzły mają rozmiar Standard_D3, który ma 4 rdzenie, więc klaster z 4 węzłami roboczymi ma 24 rdzenie (4\*4 = 16 rdzeni dla węzłów procesu roboczego oraz 2\*4 = 8 rdzeni dla węzłów głównych). Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie klastrów w usłudze HDInsight za pomocą usługi Hadoop, Spark, Kafka i innych](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) . | Tak      |
@@ -147,7 +148,7 @@ Połączona Usługa HDInsight na żądanie wymaga uwierzytelniania jednostki us�
 
 Użyj uwierzytelniania nazwy głównej usługi, określając następujące właściwości:
 
-| Właściwość                | Opis                              | Wymagane |
+| Właściwość                | Opis                              | Wymagany |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Określ identyfikator klienta aplikacji.     | Tak      |
 | **servicePrincipalKey** | Określ klucz aplikacji.           | Tak      |
@@ -157,7 +158,7 @@ Użyj uwierzytelniania nazwy głównej usługi, określając następujące wła�
 
 Można również określić następujące właściwości dla szczegółowej konfiguracji klastra usługi HDInsight na żądanie.
 
-| Właściwość               | Opis                              | Wymagane |
+| Właściwość               | Opis                              | Wymagany |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Określa podstawowe parametry konfiguracji (jak w pliku Core-site. xml) dla klastra usługi HDInsight, który ma zostać utworzony. | Nie       |
 | hBaseConfiguration     | Określa parametry konfiguracji HBase (HBase-site. xml) dla klastra usługi HDInsight. | Nie       |
@@ -225,7 +226,7 @@ Można również określić następujące właściwości dla szczegółowej konf
 ### <a name="node-sizes"></a>Rozmiary węzłów
 Możesz określić rozmiary węzłów głowy, danych i dozorcy, korzystając z następujących właściwości: 
 
-| Właściwość          | Opis                              | Wymagane |
+| Właściwość          | Opis                              | Wymagany |
 | :---------------- | :--------------------------------------- | :------- |
 | Dodano      | Określa rozmiar węzła głównego. Wartość domyślna to: Standard_D3. Aby uzyskać szczegółowe informacje, zobacz sekcję **Określanie rozmiarów węzłów** . | Nie       |
 | dataNodeSize      | Określa rozmiar węzła danych. Wartość domyślna to: Standard_D3. | Nie       |
@@ -285,7 +286,7 @@ Możesz utworzyć połączoną usługę Azure HDInsight, aby zarejestrować wła
 ```
 
 ### <a name="properties"></a>Właściwości
-| Właściwość          | Opis                                                  | Wymagane |
+| Właściwość          | Opis                                                  | Wymagany |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | Właściwość Type powinna być ustawiona na **HDInsight**.            | Tak      |
 | clusterUri        | Identyfikator URI klastra usługi HDInsight.                            | Tak      |
@@ -345,7 +346,7 @@ Jeśli jesteś nowym usługą Azure Batch Service, zobacz następujące artykuł
 
 
 ### <a name="properties"></a>Właściwości
-| Właściwość          | Opis                              | Wymagane |
+| Właściwość          | Opis                              | Wymagany |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Właściwość Type powinna mieć wartość **AzureBatch**. | Tak      |
 | accountName       | Nazwa konta Azure Batch.         | Tak      |
@@ -381,7 +382,7 @@ Utworzysz połączoną usługę Azure Machine Learning Studio, aby zarejestrowa�
 ```
 
 ### <a name="properties"></a>Właściwości
-| Właściwość               | Opis                              | Wymagane                                 |
+| Właściwość               | Opis                              | Wymagany                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | Typ                   | Właściwość Type powinna mieć wartość: **Azure**. | Tak                                      |
 | mlEndpoint             | Adres URL oceniania partii.                   | Tak                                      |
@@ -392,8 +393,8 @@ Utworzysz połączoną usługę Azure Machine Learning Studio, aby zarejestrowa�
 | dzierżaw                 | Określ informacje o dzierżawie (nazwę domeny lub identyfikator dzierżawy), w których znajduje się Twoja aplikacja. Możesz ją pobrać, aktywując wskaźnik myszy w prawym górnym rogu Azure Portal. | Wymagane, jeśli określono właściwości updateresourceendpoint |
 | Właściwością connectvia             | Integration Runtime używany do wysyłania działań do tej połączonej usługi. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime. Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. | Nie                                       |
 
-## <a name="azure-machine-learning-service-linked-service"></a>Połączona usługa Azure Machine Learning
-Utworzysz połączoną usługę Azure Machine Learning, aby połączyć obszar roboczy usługi Azure Machine Learning z fabryką danych.
+## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning połączona usługa
+Tworzysz Azure Machine Learning połączonej usługi, aby połączyć obszar roboczy Azure Machine Learning z fabryką danych.
 
 > [!NOTE]
 > Dla połączonej usługi Azure Machine Learning jest obsługiwane obecnie tylko uwierzytelnianie główne usługi.
@@ -425,12 +426,12 @@ Utworzysz połączoną usługę Azure Machine Learning, aby połączyć obszar r
 ```
 
 ### <a name="properties"></a>Właściwości
-| Właściwość               | Opis                              | Wymagane                                 |
+| Właściwość               | Opis                              | Wymagany                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | Typ                   | Właściwość Type powinna mieć wartość: **AzureMLService**. | Tak                                      |
 | subscriptionId         | Identyfikator subskrypcji platformy Azure              | Tak                                      |
 | resourceGroupName      | name | Tak                                      |
-| mlWorkspaceName        | Nazwa obszaru roboczego usługi Azure Machine Learning | Tak  |
+| mlWorkspaceName        | Nazwa obszaru roboczego Azure Machine Learning | Tak  |
 | servicePrincipalId     | Określ identyfikator klienta aplikacji.     | Nie |
 | servicePrincipalKey    | Określ klucz aplikacji.           | Nie |
 | dzierżaw                 | Określ informacje o dzierżawie (nazwę domeny lub identyfikator dzierżawy), w których znajduje się Twoja aplikacja. Możesz ją pobrać, aktywując wskaźnik myszy w prawym górnym rogu Azure Portal. | Wymagane, jeśli określono właściwości updateresourceendpoint | Nie |
@@ -468,7 +469,7 @@ Tworzysz **Azure Data Lake Analytics** połączonej usługi, aby połączyć us�
 
 ### <a name="properties"></a>Właściwości
 
-| Właściwość             | Opis                              | Wymagane                                 |
+| Właściwość             | Opis                              | Wymagany                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | Właściwość Type powinna mieć wartość: **AzureDataLakeAnalytics**. | Tak                                      |
 | accountName          | Nazwa konta Azure Data Lake Analytics.  | Tak                                      |
@@ -530,7 +531,7 @@ Można utworzyć **Azure Databricks połączonej usługi** , aby zarejestrować 
 
 ### <a name="properties"></a>Właściwości
 
-| Właściwość             | Opis                              | Wymagane                                 |
+| Właściwość             | Opis                              | Wymagany                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | Nazwa połączonej usługi               | Tak   |
 | type                 | Właściwość Type powinna mieć wartość: **Azure Databricks**. | Tak                                      |

@@ -11,108 +11,76 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 4a1bc9ae7ccf48b9dc8b47b57ea43b9259786d01
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 6f262752a50b58eae8ffbea81b8e7fc4d8c65b98
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677686"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464985"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>Wstępnie utworzona jednostka poczty e-mail dla aplikacji LUIS
-Wyodrębnianie wiadomości e-mail obejmuje cały adres e-mail z wypowiedź. Ponieważ ta jednostka jest już przeszkolone, nie trzeba dodawać przykładowej wyrażenia długości zawierającej wiadomości e-mail do intencji aplikacji. Jednostka poczty e-mail jest obsługiwana tylko w kulturze `en-us`. 
+Wyodrębnianie wiadomości e-mail obejmuje cały adres e-mail z wypowiedź. Ponieważ ta jednostka jest już przeszkolone, nie trzeba dodawać przykładowej wyrażenia długości zawierającej wiadomości e-mail do intencji aplikacji. Jednostka poczty e-mail jest obsługiwana tylko w `en-us` kulturze. 
 
 ## <a name="resolution-for-prebuilt-email"></a>Rozwiązanie dla wstępnie skompilowanej poczty e-mail
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
+Następujące obiekty jednostki są zwracane dla zapytania:
 
-W poniższym przykładzie przedstawiono rozdzielczość **wbudowanej jednostki poczty e-mail** .
+`please send the information to patti@contoso.com`
 
-```json
-{
-  "query": "please send the information to patti@contoso.com",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.811592042
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.811592042
-    }
-  ],
-  "entities": [
-    {
-      "entity": "patti@contoso.com",
-      "type": "builtin.email",
-      "startIndex": 31,
-      "endIndex": 55,
-      "resolution": {
-        "value": "patti@contoso.com"
-      }
-    }
-  ]
-}
-```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
+#### <a name="v3-responsetabv3"></a>[Odpowiedź v3](#tab/V3)
 
 Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
 
 ```json
-{
-    "query": "please send the information to patti@contoso.com",
-    "prediction": {
-        "normalizedQuery": "please send the information to patti@contoso.com",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5023781
-            }
-        },
-        "entities": {
-            "email": [
-                "patti@contoso.com"
-            ]
-        }
-    }
+"entities": {
+    "email": [
+        "patti@contoso.com"
+    ]
 }
 ```
-
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Pełna odpowiedź w wersji 3](#tab/V3-verbose)
 
 Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
 
 ```json
-{
-    "query": "please send the information to patti@contoso.com",
-    "prediction": {
-        "normalizedQuery": "please send the information to patti@contoso.com",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5023781
-            }
-        },
-        "entities": {
-            "email": [
-                "patti@contoso.com"
-            ],
-            "$instance": {
-                "email": [
-                    {
-                        "type": "builtin.email",
-                        "text": "patti@contoso.com",
-                        "startIndex": 31,
-                        "length": 25,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "email": [
+        "patti@contoso.com"
+    ],
+    "$instance": {
+        "email": [
+            {
+                "type": "builtin.email",
+                "text": "patti@contoso.com",
+                "startIndex": 31,
+                "length": 17,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-responsetabv2"></a>[Odpowiedź w wersji 2](#tab/V2)
 
+W poniższym przykładzie przedstawiono rozdzielczość **wbudowanej jednostki poczty e-mail** .
+
+```json
+"entities": [
+    {
+        "entity": "patti@contoso.com",
+        "type": "builtin.email",
+        "startIndex": 31,
+        "endIndex": 55,
+        "resolution": {
+        "value": "patti@contoso.com"
+        }
+    }
+]
+```
 * * * 
 
 ## <a name="next-steps"></a>Następne kroki

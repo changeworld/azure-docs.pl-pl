@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: de98f972a43f3845d2a01b928d90283732ef4843
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 26033192ee841262345b0fc7f6aec76872379070
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329791"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470179"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Przychodzące i wychodzące adresy IP w Azure App Service
 
@@ -32,7 +32,7 @@ Niezależnie od liczby wystąpień skalowanych w poziomie, każda aplikacja ma j
 
 - Usuń aplikację i utwórz ją ponownie w innej grupie zasobów.
 - Usuń ostatnią aplikację w kombinacji grupy zasobów _i_ regionu i utwórz ją ponownie.
-- Usuń istniejące powiązanie SSL, takie jak podczas odnawiania certyfikatu (zobacz [odnowienie certyfikatów](app-service-web-tutorial-custom-ssl.md#renew-certificates)).
+- Usuń istniejące powiązanie SSL, takie jak podczas odnawiania certyfikatu (zobacz [odnów certyfikat](configure-ssl-certificate.md#renew-certificate)).
 
 ## <a name="find-the-inbound-ip"></a>Znajdowanie przychodzącego adresu IP
 
@@ -44,7 +44,7 @@ nslookup <app-name>.azurewebsites.net
 
 ## <a name="get-a-static-inbound-ip"></a>Pobierz statyczny adres IP dla ruchu przychodzącego
 
-Czasami może być potrzebny dedykowany, statyczny adres IP dla aplikacji. Aby uzyskać statyczny adres IP dla ruchu przychodzącego, należy skonfigurować [powiązanie protokołu SSL opartego na](app-service-web-tutorial-custom-ssl.md#secure-a-custom-domain)protokole IP. Jeśli w rzeczywistości nie potrzebujesz funkcji SSL do zabezpieczenia aplikacji, możesz nawet przekazać certyfikat z podpisem własnym dla tego powiązania. W przypadku wiązania SSL opartego na protokole IP certyfikat jest powiązany z samym adresem IP, dlatego App Service udostępnia statyczny adres IP w celu jego wystąpienia. 
+Czasami może być potrzebny dedykowany, statyczny adres IP dla aplikacji. Aby uzyskać statyczny adres IP dla ruchu przychodzącego, należy skonfigurować [powiązanie protokołu SSL opartego na](configure-ssl-bindings.md#secure-a-custom-domain)protokole IP. Jeśli w rzeczywistości nie potrzebujesz funkcji SSL do zabezpieczenia aplikacji, możesz nawet przekazać certyfikat z podpisem własnym dla tego powiązania. W przypadku wiązania SSL opartego na protokole IP certyfikat jest powiązany z samym adresem IP, dlatego App Service udostępnia statyczny adres IP w celu jego wystąpienia. 
 
 ## <a name="when-outbound-ips-change"></a>Po zmianie wychodzących adresów IP
 
@@ -52,7 +52,7 @@ Niezależnie od liczby wystąpień skalowanych w poziomie, każda aplikacja ma o
 
 Zestaw wychodzących adresów IP dla aplikacji zmienia się podczas skalowania aplikacji między niższą warstwą (**podstawowa**, **standardowa**i **Premium**) i warstwą **Premium v2** .
 
-Można znaleźć zestaw wszystkich możliwych wychodzących adresów IP, które mogą być używane przez aplikację, niezależnie od warstw cenowych, szukając `possibleOutboundIpAddresses` właściwości lub w polu **dodatkowe wychodzące adresy IP** w bloku **Właściwości** w Azure Portal. Zobacz [Znajdź wychodzące adresy IP](#find-outbound-ips).
+Można znaleźć zestaw wszystkich możliwych wychodzących adresów IP, które mogą być używane przez aplikację, niezależnie od warstw cenowych, szukając właściwości `possibleOutboundIpAddresses` lub w polu **dodatkowe wychodzące adresy IP** w bloku **Właściwości** w Azure Portal. Zobacz [Znajdź wychodzące adresy IP](#find-outbound-ips).
 
 ## <a name="find-outbound-ips"></a>Znajdź wychodzące adresy IP
 

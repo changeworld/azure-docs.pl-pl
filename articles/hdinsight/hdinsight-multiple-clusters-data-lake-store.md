@@ -1,5 +1,5 @@
 ---
-title: Używanie wielu klastrów usługi HDInsight z jednym kontem Azure Data Lake Storage
+title: Wiele klastrów usługi HDInsight & jedno konto Azure Data Lake Storage
 description: Dowiedz się, jak używać więcej niż jednego klastra usługi HDInsight z jednym kontem Data Lake Storage
 keywords: Magazyn usługi HDInsight, system plików HDFS, dane strukturalne, dane bez struktury, Usługa Data Lake Store
 author: hrasheed-msft
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 776d8f31a5353604ff1c887bdfa214d07b2bfb48
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: ba0c26d87f2161af514c9430eae5c9949ef92b15
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733181"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498186"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Używanie wielu klastrów usługi HDInsight z kontem Azure Data Lake Storage
 
 Począwszy od usługi HDInsight w wersji 3,5, można tworzyć klastry usługi HDInsight z kontami Azure Data Lake Storage jako domyślny system plików.
-Data Lake Storage obsługuje nieograniczony magazyn, który sprawia, że nie tylko hostuje duże ilości danych. ale także do hostowania wielu klastrów usługi HDInsight, które współużytkują pojedyncze konto Data Lake Storage. Aby uzyskać instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight z Data Lake Storage jako magazyn, zobacz [szybki start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Data Lake Storage obsługuje nieograniczony magazyn, który sprawia, że nie tylko hostuje duże ilości danych. ale także do hostowania wielu klastrów usługi HDInsight, które współużytkują pojedyncze konto Data Lake Storage. Aby uzyskać instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight z Data Lake Storage jako magazyn, zobacz [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 Ten artykuł zawiera zalecenia dla administratora Data Lake Storage w celu skonfigurowania jednego i udostępnionego konta Data Lake Storage, które może być używane w wielu **aktywnych** klastrach usługi HDInsight. Te zalecenia dotyczą hostingu wielu bezpiecznych i niezabezpieczonych klastrów Apache Hadoop na współużytkowanym koncie Data Lake Storage.
 
@@ -36,9 +36,9 @@ Aby umożliwić efektywne korzystanie z tej struktury folderów przez klastry us
 
 |Folder  |Uprawnienia  |Użytkownik będący właścicielem  |Grupa będąca właścicielem  | Nazwany użytkownik | Uprawnienia nazwanego użytkownika | Nazwana grupa | Uprawnienia grupy nazwanej |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |administratora |administratora  |Jednostka usługi |--x  |FINGRP   |r-x         |
-|/clusters | rwxr-x--x |administratora |administratora |Jednostka usługi |--x  |FINGRP |r-x         |
-|/clusters/finance | rwxr-x--t |administratora |FINGRP  |Jednostka usługi |rwx  |-  |-     |
+|/ | rwxr-x--x  |Administratora |Administratora  |Nazwa główna usługi |--x  |FINGRP   |r-x         |
+|/clusters | rwxr-x--x |Administratora |Administratora |Nazwa główna usługi |--x  |FINGRP |r-x         |
+|/clusters/finance | rwxr-x--t |Administratora |FINGRP  |Nazwa główna usługi |RWX  |-  |-     |
 
 W tabeli,
 
@@ -57,7 +57,7 @@ Niektóre kluczowe kwestie, które należy wziąć pod uwagę.
 
     |Folder  |Uprawnienia  |Użytkownik będący właścicielem  |Grupa będąca właścicielem  | Nazwany użytkownik | Uprawnienia nazwanego użytkownika | Nazwana grupa | Uprawnienia grupy nazwanej |
     |---------|---------|---------|---------|---------|---------|---------|---------|
-    |/clusters/finanace/ fincluster01 | rwxr-x---  |Nazwa główna usługi |FINGRP  |- |-  |-   |-  | 
+    |/clusters/finanace/ fincluster01 | rwxr-x---  |Jednostka usługi |FINGRP  |- |-  |-   |-  | 
    
 
 
@@ -88,9 +88,9 @@ Te ustawienia mają wpływ na jeden przypadek użycia usługi HDInsight przechwy
 Jak określono w połączonej wcześniej JIRA PRZĘDZy, podczas lokalizowania zasobów publicznych lokalizator sprawdza, czy wszystkie żądane zasoby są rzeczywiście publiczne, sprawdzając ich uprawnienia do zdalnego systemu plików. Wszystkie LocalResource, które nie pasują do tego warunku, są odrzucane dla lokalizacji. Sprawdzanie uprawnień, obejmuje dostęp do odczytu do pliku dla "inne". W tym scenariuszu nie jest wykonywane wstępne działanie podczas hostowania klastrów usługi HDInsight na Azure Data Lake, ponieważ Azure Data Lake nie zezwala na dostęp do innych użytkowników na poziomie folderu głównego.
 
 #### <a name="workaround"></a>Obejście
-Ustaw uprawnienia do odczytu dla **innych użytkowników** w hierarchii, na przykład **/** , **/Clusters** i **/Clusters/Finance** , jak pokazano w powyższej tabeli.
+Ustaw uprawnienia do odczytu dla **innych użytkowników** w hierarchii, na przykład w **/** , **/Clusters** i **/Clusters/Finance** , jak pokazano w powyższej tabeli.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-* [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)

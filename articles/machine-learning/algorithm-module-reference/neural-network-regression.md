@@ -1,20 +1,20 @@
 ---
 title: 'Regresja sieci neuronowych: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak użyć modułu regresja sieci neuronowych w usłudze Azure Machine Learning, aby utworzyć model regresji przy użyciu dostosowywalnego algorytmu sieciowego neuronowych.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak użyć modułu regresja sieci neuronowych w Azure Machine Learning, aby utworzyć model regresji przy użyciu dostosowywalnego algorytmu sieciowego neuronowych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 54518d21db0c9b14cbb7b4fc4316d1db2b871573
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d5cc0f06e9fb95894df30af1322d47337f51e314
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692732"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465996"
 ---
 # <a name="neural-network-regression-module"></a>Moduł regresji sieci neuronowych
 
@@ -24,7 +24,7 @@ ms.locfileid: "72692732"
   
 ## <a name="module-overview"></a>Przegląd modułu  
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do tworzenia modelu regresji przy użyciu dostosowywalnego algorytmu sieci neuronowych.
   
@@ -51,8 +51,8 @@ Sieci neuronowych można dostosowywać w szerokim stopniu. W tej sekcji opisano 
     Ta opcja jest Najlepsza, jeśli masz już doświadczenie w korzystaniu z sieci neuronowych. Język NET # jest używany do definiowania architektury sieci.  
 
 ##  <a name="bkmk_DefaultArchitecture"></a>Tworzenie modelu sieci neuronowych przy użyciu architektury domyślnej
-  
-1.  Dodaj moduł **regresji sieci neuronowych** do potoku w interfejsie. Ten moduł można znaleźć w obszarze **Machine Learning**, **zainicjować**, w kategorii **regresja** . 
+
+1.  Dodaj moduł **regresji sieci neuronowych** do potoku w projektancie. Ten moduł można znaleźć w obszarze **Machine Learning**, **zainicjować**, w kategorii **regresja** . 
   
 2. Wskaż, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
@@ -98,4 +98,4 @@ Po zakończeniu szkolenia:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

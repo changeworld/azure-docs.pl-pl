@@ -1,24 +1,24 @@
 ---
 title: 'Konwertuj na CSV: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak za pomocą modułu konwersji do woluminów CSV w usłudze Azure Machine Learning skonwertować zestaw danych do formatu CSV, który można pobrać, wyeksportować lub udostępnić za pomocą modułów skryptów języka R lub Python.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak za pomocą modułu Konwertuj do woluminów CSV w Azure Machine Learning skonwertować zestaw danych do formatu CSV, który można pobrać, wyeksportować lub udostępnić za pomocą modułów skryptów języka R lub Python.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 37c1653b31049dc0142cf8c0c6f6d405338b1d1f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 999f78ab08e1a2c9dd6b28d853e49fbb559fab83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693193"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493852"
 ---
 # <a name="convert-to-csv-module"></a>Konwertuj na moduł CSV
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do konwertowania zestawu danych w formacie CSV, który można pobrać, wyeksportować lub udostępnić za pomocą modułów skryptów języka R lub Python.
 
@@ -36,7 +36,8 @@ Podczas konwertowania zestawu danych do formatu CSV plik jest zapisywany w obsza
 
 ## <a name="how-to-configure-convert-to-csv"></a>Jak skonfigurować konwertowanie do formatu CSV
 
-1.  Dodaj moduł [konwersji do woluminu CSV](./convert-to-csv.md) do potoku. Ten moduł można znaleźć w grupie **konwersje formatu danych** w interfejsie. 
+
+1.  Dodaj moduł [konwersji do woluminu CSV](./convert-to-csv.md) do potoku. Ten moduł można znaleźć w grupie **konwersje formatu danych** w projektancie. 
 
 2. Połącz ją z dowolnym modułem, który wyprowadza zestaw danych.   
   
@@ -56,4 +57,4 @@ Kliknij dwukrotnie dane wyjściowe [konwersji do CSV](./convert-to-csv.md), a na
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

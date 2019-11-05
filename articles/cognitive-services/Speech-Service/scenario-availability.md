@@ -8,14 +8,14 @@ manager: xdh
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: af5bb7126af65a755cb1d58788d39cb8bdcbbb3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959020"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491339"
 ---
 # <a name="scenario-availability"></a>Dostępność scenariusza
 
@@ -28,16 +28,16 @@ Zestaw SDK usługi mowy zawiera wiele scenariuszy obejmujących różne języki 
   - C#/Windows & platformy UWP & Unity
   - Java (JRE i Android)
   - Python
-  - Adres
-  - Objective-C
+  - Swift
+  - Obiektowy C
   - Interfejs API REST usługi TTS może być używany w każdej innej sytuacji.
-- **Wake Word (słowo kluczowe Spotter/KWS)**
+- **Wykrywania trendów słowa kluczowego (KWS)**
   - C++/Windows & Linux
   - C#/Windows & Linux
   - Python/Windows & Linux
   - Java/Windows & Linux & Android (Speech Devices SDK)
-  - Funkcja Wake Word (Spottere Keywords/KWS) może działać z dowolnym typem mikrofonu, oficjalną obsługą KWS, ale jest obecnie ograniczona do tablic mikrofonu znajdujących się na sprzęcie platformy Azure urządzenia Kinect DK lub w zestawie SDK urządzeń mowy
-- **Głos — pierwszy asystent wirtualny**
+  - Funkcja wykrywania trendów słowa kluczowego (KWS) może działać z dowolnym typem mikrofonu, oficjalną obsługą KWS, ale jest obecnie ograniczona do tablic mikrofonów znajdujących się na sprzęcie platformy Azure urządzenia Kinect DK lub zestawu Speech Devices SDK
+- **Asystenci głosu**
   - C++/Windows & Linux & macOS
   - C#/Windows
   - Java/Windows & Linux & macOS & Android (Speech Devices SDK)

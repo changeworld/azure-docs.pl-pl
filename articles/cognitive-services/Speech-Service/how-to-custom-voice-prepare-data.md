@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 8b4b5553605042499a9a8f3343ac4e6678e7006f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a954118cd0697213674bb9981f0d94100488fb38
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640424"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464507"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Przygotowywanie danych do tworzenia niestandardowego głosu
 
@@ -33,9 +33,9 @@ Ta tabela zawiera listę typów danych i sposób ich użycia w celu utworzenia n
 
 | Typ danych | Opis | Kiedy stosować | Wymagana jest dodatkowa usługa | Ilość szkoleniowa modelu | Ustawienia regionalne |
 | --------- | ----------- | ----------- | --------------------------- | ----------------------------- | --------- |
-| **Poszczególne wyrażenia długości + pasujące transkrypcje** | Kolekcja (zip) plików audio (. wav) jako pojedyncze wyrażenia długości. Każdy plik audio powinien mieć długość co najmniej 15 sekund, sparowany z sformatowaną transkrypcją (. txt). | Profesjonalne nagrania z pasującymi transkrypcjami | Gotowe do uczenia się. | Brak twardych wymagań dla en-US i zh-CN. Więcej niż 2000 wyrażenia długości różne ustawienia regionalne. | Wszystkie niestandardowe ustawienia regionalne głosu |
-| **Długi dźwięk + transkrypcja (beta)** | Kolekcja (zip) długich, niesegmentowych plików audio (dłużej niż 20 sekund) sparowana z transkrypcją (. txt), która zawiera wszystkie wymawiane słowa. | Masz pliki audio i pasujące transkrypcje, ale nie są one podzielone na wyrażenia długości. | Segmentacja (przy użyciu transkrypcji partii).<br>Przekształcanie formatu audio, gdy jest to wymagane. | Brak twardych wymagań dla en-US i zh-CN. | `en-US` i `zh-CN` |
-| **Tylko audio (beta)** | Kolekcja (zip) plików audio bez transkrypcji. | Dostępne są tylko pliki audio, bez transkrypcji. | Segmentacja + generacja transkrypcji (przy użyciu transkrypcji partii).<br>Przekształcanie formatu audio, gdy jest to wymagane.| Brak twardych wymagań dla `en-US` i `zh-CN`. | `en-US` i `zh-CN` |
+| **Poszczególne wyrażenia długości + pasujące transkrypcje** | Kolekcja (zip) plików audio (. wav) jako pojedyncze wyrażenia długości. Każdy plik audio powinien mieć długość co najmniej 15 sekund, sparowany z sformatowaną transkrypcją (. txt). | Profesjonalne nagrania z pasującymi transkrypcjami | Gotowe do uczenia się. | Brak twardych wymagań dla en-US i zh-CN. Więcej niż 2000 wyrażenia długości różne ustawienia regionalne. | [Wszystkie niestandardowe ustawienia regionalne głosu](language-support.md#customization) |
+| **Długi dźwięk + transkrypcja (beta)** | Kolekcja (zip) długich, niesegmentowych plików audio (dłużej niż 20 sekund) sparowana z transkrypcją (. txt), która zawiera wszystkie wymawiane słowa. | Masz pliki audio i pasujące transkrypcje, ale nie są one podzielone na wyrażenia długości. | Segmentacja (przy użyciu transkrypcji partii).<br>Przekształcanie formatu audio, gdy jest to wymagane. | Brak wymagań twardych  | [Wszystkie niestandardowe ustawienia regionalne głosu](language-support.md#customization) |
+| **Tylko audio (beta)** | Kolekcja (zip) plików audio bez transkrypcji. | Dostępne są tylko pliki audio, bez transkrypcji. | Segmentacja + generacja transkrypcji (przy użyciu transkrypcji partii).<br>Przekształcanie formatu audio, gdy jest to wymagane.| Brak wymagań twardych | [Wszystkie niestandardowe ustawienia regionalne głosu](language-support.md#customization) |
 
 Pliki powinny być pogrupowane według typu w zestawie danych i przekazywane jako plik zip. Każdy zestaw danych może zawierać tylko jeden typ danych.
 
@@ -57,15 +57,15 @@ Każdy plik audio powinien zawierać pojedynczy wypowiedź (pojedyncze zdanie lu
 
 Postępuj zgodnie z poniższymi wskazówkami podczas przygotowywania dźwięku.
 
-| Właściwość | Value |
+| Właściwość | Wartość |
 | -------- | ----- |
 | Format pliku | RIFF (. wav), pogrupowane w pliku. zip |
 | Częstotliwość próbkowania | Co najmniej 16 000 Hz |
 | Przykładowy format | PCM, 16-bitowe |
 | Nazwa pliku | Numeryczne, z rozszerzeniem. wav. Nie jest dozwolone Duplikowanie nazw plików. |
 | Długość audio | Krótsze niż 15 sekund |
-| Format archiwum | .zip |
-| Maksymalny rozmiar archiwum | 200 MB |
+| Format archiwum | zip |
+| Maksymalny rozmiar archiwum | 2048 MB |
 
 > [!NOTE]
 > pliki. wav o współczynniku próbkowania mniejszym niż 16 000 Hz zostaną odrzucone. Jeśli plik. zip zawiera pliki WAV z różnymi współczynnikami próbkowania, zostaną zaimportowane tylko te, które są równe lub większe niż 16 000 Hz. Portal zaimportuje teraz archiwum zip do 200 MB. Można jednak przekazać wiele archiwów.
@@ -74,12 +74,12 @@ Postępuj zgodnie z poniższymi wskazówkami podczas przygotowywania dźwięku.
 
 Plik transkrypcji jest plikiem w postaci zwykłego tekstu. Te wskazówki służą do przygotowania transkrypcji.
 
-| Właściwość | Value |
+| Właściwość | Wartość |
 | -------- | ----- |
 | Format pliku | Zwykły tekst (. txt) |
 | Format kodowania | ANSI/ASCII, UTF-8, UTF-8 — BOM, UTF-16-LE lub UTF-16. W przypadku metody zh-CN, ANSI/ASCII i UTF-8 nie są obsługiwane. |
 | Liczba wypowiedzi w wierszu | **Jeden** — każdy wiersz pliku transkrypcji powinien zawierać nazwę jednego z plików audio, po którym następuje odpowiednie transkrypcje. Nazwę pliku i transkrypcję należy rozdzielać przy użyciu tabulatora (\t). |
-| Maksymalna wielkość pliku | 50 MB |
+| Maksymalna wielkość pliku | 2048 MB |
 
 Poniżej znajduje się przykład sposobu, w jaki transkrypcje są zorganizowane wypowiedź przez wypowiedź w jednym pliku txt:
 
@@ -91,7 +91,7 @@ Poniżej znajduje się przykład sposobu, w jaki transkrypcje są zorganizowane 
 Należy pamiętać, że transkrypcje są 100% dokładne transkrypcje odpowiedniego dźwięku. Błędy w transkrypcjach spowodują utratę jakości podczas uczenia się.
 
 > [!TIP]
-> Podczas tworzenia głosów produkcji zamiany tekstu na mowę wybierz pozycję wyrażenia długości (lub napisz skrypty), która uwzględnia zarówno pokrycie, jak i wydajność. Masz problemy z uzyskaniem żądanych wyników? [Skontaktuj się](mailto:speechsupport@microsoft.com) z niestandardowym zespołem mowy, aby dowiedzieć się więcej o tym, jak się skontaktować.
+> Podczas tworzenia głosów produkcji zamiany tekstu na mowę wybierz pozycję wyrażenia długości (lub napisz skrypty), która uwzględnia zarówno pokrycie, jak i wydajność. Masz problemy z uzyskaniem żądanych wyników? [Skontaktuj się z niestandardowym zespołem mowy,](mailto:speechsupport@microsoft.com) aby dowiedzieć się więcej o tym, jak się skontaktować.
 
 ## <a name="long-audio--transcript-beta"></a>Długi dźwięk + transkrypcja (beta)
 
@@ -104,29 +104,29 @@ W niektórych przypadkach może nie być dostępne żadne segmenty audio. Udost�
 
 Postępuj zgodnie z poniższymi wskazówkami podczas przygotowywania audio dla segmentacji.
 
-| Właściwość | Value |
+| Właściwość | Wartość |
 | -------- | ----- |
 | Format pliku | Plik RIFF (. wav) z częstotliwością próbkowania wynoszącą co najmniej 16 kHz-16 bitów w module PCM lub MP3 z szybkością bitową wynoszącą co najmniej 256 KB/s, pogrupowane w pliku. zip |
-| Nazwa pliku | Tylko znaki ASCII. Znaki Unicode w nazwie będą kończyć się niepowodzeniem (na przykład znaki chińskie lub symbole takie jak "—"). Nie są dozwolone zduplikowane nazwy. |
+| Nazwa pliku | Obsługiwane znaki ASCII i Unicode. Nie są dozwolone zduplikowane nazwy. |
 | Długość audio | Dłużej niż 20 sekund |
-| Format archiwum | .zip |
-| Maksymalny rozmiar archiwum | 200 MB |
+| Format archiwum | zip |
+| Maksymalny rozmiar archiwum | 2048 MB |
 
-Wszystkie pliki audio powinny być pogrupowane w pliku zip. Pliki. wav i. mp3 można umieścić w jednym pliku zip audio, ale nie jest on dozwolony w folderze ZIP. Na przykład można przekazać plik zip zawierający plik audio o nazwie "kingstory. wav", 45-Second-Long i inny o nazwie "queenstory. mp3", 200-Second-Long, bez podfolderów. Wszystkie pliki. mp3 zostaną przekształcone w formacie wav po przetworzeniu.
+Wszystkie pliki audio powinny być pogrupowane w pliku zip. Pliki. wav i. mp3 można umieścić w jednym pliku zip audio. Na przykład można przekazać plik zip zawierający plik audio o nazwie "kingstory. wav", 45-Second-Long i innego audio o nazwie "queenstory. mp3", 200-Second-Long. Wszystkie pliki. mp3 zostaną przekształcone w formacie wav po przetworzeniu.
 
 ### <a name="transcripts"></a>Transkrypcji
 
 Transkrypcje muszą zostać przygotowane do specyfikacji wymienionych w tej tabeli. Każdy plik audio musi być zgodny z transkrypcją.
 
-| Właściwość | Value |
+| Właściwość | Wartość |
 | -------- | ----- |
 | Format pliku | Zwykły tekst (. txt), pogrupowany w pliku. zip |
 | Nazwa pliku | Użyj tej samej nazwy co pasujący plik audio |
 | Format kodowania | UTF-8 — tylko BOM |
-| Liczba wypowiedzi w wierszu | Bez limitu |
-| Maksymalna wielkość pliku | 50 MB |
+| Liczba wypowiedzi w wierszu | Bez ograniczeń |
+| Maksymalna wielkość pliku | 2048 MB |
 
-Wszystkie pliki transkrypcji w tym typie danych powinny być pogrupowane w pliku zip. W pliku zip nie jest dozwolony podfolder. Na przykład przekazano plik zip zawierający plik audio o nazwie "kingstory. wav", 45 s Long, a drugi o nazwie "queenstory. mp3", 200 s Long. Należy przekazać inny plik zip zawierający dwa transkrypcje, jeden o nazwie "kingstory. txt", drugi jeden "queenstory. txt". W każdym zwykłym pliku tekstowym należy zapewnić pełną transkrypcję dla pasującego dźwięku.
+Wszystkie pliki transkrypcji w tym typie danych powinny być pogrupowane w pliku zip. Na przykład przekazano plik zip zawierający plik audio o nazwie "kingstory. wav", 45 s Long, a drugi o nazwie "queenstory. mp3", 200 s Long. Należy przekazać inny plik zip zawierający dwa transkrypcje, jeden o nazwie "kingstory. txt", drugi jeden "queenstory. txt". W każdym zwykłym pliku tekstowym należy zapewnić pełną transkrypcję dla pasującego dźwięku.
 
 Po pomyślnym przekazaniu zestawu danych pomożemy Ci podzielić plik audio na wyrażenia długości w oparciu o podaną transkrypcję. Możesz sprawdzić segment wyrażenia długości i pasujące transkrypcje, pobierając zestaw danych. Unikatowe identyfikatory będą przypisywane do wyrażenia długości z segmentami automatycznie. Ważne jest, aby upewnić się, że transkrypcje są zgodne z dokładnością do 100%. Błędy w transkrypcjach mogą zmniejszyć dokładność podczas segmentacji audio i dodatkowo wprowadzić utratę jakości w fazie szkoleniowej, która jest dostępna później.
 
@@ -139,17 +139,17 @@ Postępuj zgodnie z poniższymi wskazówkami podczas przygotowywania dźwięku.
 > [!NOTE]
 > Usługa segmentacji Long-audio będzie korzystać z funkcji transkrypcji przetwarzania wsadowego zamiany mowy na tekst, która obsługuje tylko użytkowników Standard Subscription (S0).
 
-| Właściwość | Value |
+| Właściwość | Wartość |
 | -------- | ----- |
 | Format pliku | Plik RIFF (. wav) z częstotliwością próbkowania wynoszącą co najmniej 16 kHz-16 bitów w module PCM lub MP3 z szybkością bitową wynoszącą co najmniej 256 KB/s, pogrupowane w pliku. zip |
-| Nazwa pliku | Tylko znaki ASCII. Znaki Unicode w nazwie będą kończyć się niepowodzeniem (na przykład znaki chińskie lub symbole takie jak "—"). Nie można duplikować nazwy. |
+| Nazwa pliku | Obsługiwane znaki ASCII i Unicode. Nie można duplikować nazwy. |
 | Długość audio | Dłużej niż 20 sekund |
-| Format archiwum | .zip |
-| Maksymalny rozmiar archiwum | 200 MB |
+| Format archiwum | zip |
+| Maksymalny rozmiar archiwum | 2048 MB |
 
-Wszystkie pliki audio powinny być pogrupowane w pliku zip. W pliku zip nie jest dozwolony podfolder. Po pomyślnym przekazaniu zestawu danych pomożemy Ci podzielić plik audio na wyrażenia długości w oparciu o usługę transkrypcji przetwarzania wsadowego mowy. Unikatowe identyfikatory będą przypisywane do wyrażenia długości z segmentami automatycznie. Zgodne transkrypcje zostaną wygenerowane przy użyciu funkcji rozpoznawania mowy. Wszystkie pliki. mp3 zostaną przekształcone w formacie wav po przetworzeniu. Możesz sprawdzić segment wyrażenia długości i pasujące transkrypcje, pobierając zestaw danych.
+Wszystkie pliki audio powinny być pogrupowane w pliku zip. Po pomyślnym przekazaniu zestawu danych pomożemy Ci podzielić plik audio na wyrażenia długości w oparciu o usługę transkrypcji przetwarzania wsadowego mowy. Unikatowe identyfikatory będą przypisywane do wyrażenia długości z segmentami automatycznie. Zgodne transkrypcje zostaną wygenerowane przy użyciu funkcji rozpoznawania mowy. Wszystkie pliki. mp3 zostaną przekształcone w formacie wav po przetworzeniu. Możesz sprawdzić segment wyrażenia długości i pasujące transkrypcje, pobierając zestaw danych.
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Tworzenie niestandardowego głosu](how-to-custom-voice-create-voice.md)
-- [Prowadzą Rejestruj przykłady głosu](record-custom-voice-samples.md)
+- [Przewodnik: zapisywanie przykładów głosu](record-custom-voice-samples.md)

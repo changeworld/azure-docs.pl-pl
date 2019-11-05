@@ -1,5 +1,5 @@
 ---
-title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — infrastruktura
+title: 'Infrastruktura: Apache Hadoop lokalna do usługi Azure HDInsight'
 description: Poznaj najlepsze rozwiązania dotyczące infrastruktury dotyczące migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: e35917a7eb7b2e38fcc2689f6fe838ec6529428a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: adc0e5f5eef41dcb1f826ffbf0cfe91a937fac01
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087449"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499231"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania dotyczące infrastruktury
 
@@ -61,9 +61,9 @@ Aplikacje lub składniki, które były dostępne w klastrach lokalnych, ale nie 
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
-|SAS|IaaS 
+|SYGNATUR|IaaS 
 |Vertica|IaaS (SQLDW alternatywę na platformie Azure)
-|TABLEAU|IaaS 
+|Tableau|IaaS 
 |Wodną|Węzeł krawędzi usługi HDInsight
 |StreamSets|Krawędź usługi HDInsight 
 |Palantir|IaaS 
@@ -81,13 +81,13 @@ Skrypt może być utrwalony lub wykonywany jeden raz. Utrwalone skrypty są uży
 
 Usługa HDInsight udostępnia wstępnie zapisane skrypty umożliwiające zainstalowanie następujących składników w klastrach usługi HDInsight:
 
-- Dodaj konto usługi Azure Storage
-- Zainstaluj program Hue
-- Zainstaluj skrypt Presto
-- Zainstaluj program Solr
-- Zainstaluj program Giraph
+- Dodawanie konta usługi Azure Storage
+- Instalowanie rozwiązania Hue
+- Zainstaluj Presto
+- Zainstaluj Solr
+- Zainstaluj Giraph
 - Wstępne ładowanie bibliotek Hive
-- Zainstaluj lub zaktualizuj narzędzie Mono
+- Instalowanie lub aktualizowanie środowiska Mono
 
 > [!Note]  
 > Usługa HDInsight nie zapewnia bezpośredniej obsługi niestandardowych składników lub składników usługi Hadoop zainstalowanych przy użyciu akcji skryptu.
@@ -102,7 +102,7 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>Dostosowywanie konfiguracji usługi HDInsight przy użyciu narzędzia Bootstrap
 
-Zmiany w konfiguracjach w plikach konfiguracyjnych, takich `core-site.xml`jak `hive-site.xml` , `oozie-env.xml` i można wykonać przy użyciu Bootstrap. Poniższy skrypt jest przykładem przy użyciu polecenia [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) cmdlet [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)programu PowerShell:
+Zmiany w konfiguracjach w plikach konfiguracyjnych, takich jak `core-site.xml`, `hive-site.xml` i `oozie-env.xml` można wykonać przy użyciu Bootstrap. Poniższy skrypt jest przykładem przy użyciu polecenia [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) cmdlet [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)programu PowerShell:
 
 ```powershell
 # hive-site.xml configuration
@@ -137,7 +137,7 @@ Pusty węzeł brzegowy to maszyna wirtualna z systemem Linux z tymi samymi narz�
 - Testowanie aplikacji klienckich
 - Hostowanie aplikacji klienckich
 
-Węzły brzegowe można tworzyć i usuwać za pomocą Azure Portal i mogą być używane podczas tworzenia klastra lub po nim. Po utworzeniu węzła brzegowego można połączyć się z węzłem brzegowym przy użyciu protokołu SSH, a następnie uruchomić narzędzia klienckie w celu uzyskania dostępu do klastra Hadoop w usłudze HDInsight. Punkt końcowy SSH węzła brzegowego `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`to.
+Węzły brzegowe można tworzyć i usuwać za pomocą Azure Portal i mogą być używane podczas tworzenia klastra lub po nim. Po utworzeniu węzła brzegowego można połączyć się z węzłem brzegowym przy użyciu protokołu SSH, a następnie uruchomić narzędzia klienckie w celu uzyskania dostępu do klastra Hadoop w usłudze HDInsight. Punkt końcowy SSH węzła brzegowego jest `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`.
 
 
 Aby uzyskać więcej informacji, zobacz [używanie pustych węzłów brzegowych w klastrach Apache Hadoop w usłudze HDInsight](../hdinsight-apps-use-edge-node.md).
@@ -168,7 +168,7 @@ Usługę HDInsight można dodać do nowego lub istniejącego Virtual Network pla
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 - [Azure Virtual-Networks — Omówienie](../../virtual-network/virtual-networks-overview.md)
-- [Rozszerzenie Azure HDInsight przy użyciu sieci wirtualnej platformy Azure](../hdinsight-plan-virtual-network-deployment.md)
+- [Rozszerzanie usługi Azure HDInsight za pomocą usługi Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Bezpieczne łączenie z usługami platformy Azure za pomocą punktów końcowych usługi Azure Virtual Network
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 2647a8c33bf777cb2d97dcfe89799097ad719ac3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077020"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498179"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planowanie sieci wirtualnej dla usługi Azure HDInsight
 
@@ -69,9 +69,9 @@ Wykonaj kroki opisane w tej sekcji, aby dowiedzieć się, jak dodać nową usłu
     
     Aby znaleźć istniejącą konfigurację zabezpieczeń, użyj następujących Azure PowerShell lub poleceń interfejsu wiersza polecenia platformy Azure:
 
-    * Grupy zabezpieczeń sieci
+    * Sieciowe grupy zabezpieczeń
 
-        Zamień `RESOURCEGROUP` na nazwę grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
+        Zastąp `RESOURCEGROUP` nazwą grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
     
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
@@ -88,7 +88,7 @@ Wykonaj kroki opisane w tej sekcji, aby dowiedzieć się, jak dodać nową usłu
 
     * Trasy definiowane przez użytkownika
 
-        Zamień `RESOURCEGROUP` na nazwę grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
+        Zastąp `RESOURCEGROUP` nazwą grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
 
         ```powershell
         Get-AzRouteTable -ResourceGroupName "RESOURCEGROUP"
@@ -136,7 +136,7 @@ Aby włączyć rozpoznawanie nazw między siecią wirtualną i zasobami w połą
 
 2. Skonfiguruj sieć wirtualną tak, aby korzystała z niestandardowego serwera DNS.
 
-3. Znajdź sufiks DNS przypisany przez platformę Azure dla sieci wirtualnej. Ta wartość jest podobna do `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Aby uzyskać informacje dotyczące znajdowania sufiksu DNS, [Zobacz przykład: Niestandardowa sekcja DNS](hdinsight-create-virtual-network.md#example-dns) .
+3. Znajdź sufiks DNS przypisany przez platformę Azure dla sieci wirtualnej. Ta wartość jest podobna do `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Informacje dotyczące znajdowania sufiksu DNS znajdują się w sekcji [przykład: Custom DNS](hdinsight-create-virtual-network.md#example-dns) .
 
 4. Skonfiguruj przekazywanie między serwerami DNS. Konfiguracja zależy od typu sieci zdalnej.
 
@@ -148,7 +148,7 @@ Aby włączyć rozpoznawanie nazw między siecią wirtualną i zasobami w połą
 
          * Przekazuj wszystkie inne żądania do lokalnego serwera DNS. Lokalna usługa DNS obsługuje wszystkie inne żądania rozpoznawania nazw, nawet żądania dotyczące zasobów internetowych, takich jak Microsoft.com.
 
-     * __Lokalna usługa DNS__: Przekazuj żądania dla sufiksu DNS sieci wirtualnej do niestandardowego serwera DNS. Niestandardowy serwer DNS przekazuje następnie do programu rozpoznawania cyklicznego Azure.
+     * __Lokalna usługa DNS__: przekazuj żądania dla sufiksu DNS sieci wirtualnej do NIESTANDARDOWEGO serwera DNS. Niestandardowy serwer DNS przekazuje następnie do programu rozpoznawania cyklicznego Azure.
 
        Ta konfiguracja kieruje żądania dla w pełni kwalifikowanych nazw domen, które zawierają sufiks DNS sieci wirtualnej do niestandardowego serwera DNS. Wszystkie inne żądania (nawet dla publicznych adresów internetowych) są obsługiwane przez lokalny serwer DNS.
 
@@ -162,19 +162,19 @@ Aby włączyć rozpoznawanie nazw między siecią wirtualną i zasobami w połą
 
        Serwer DNS dla każdej sieci przekazuje żądania do drugiego, na podstawie sufiksu DNS. Inne żądania są rozwiązywane przy użyciu programu rozpoznawania cyklicznego Azure.
 
-     Aby zapoznać się z przykładem każdej konfiguracji, [Zobacz przykład: Niestandardowa sekcja DNS](hdinsight-create-virtual-network.md#example-dns) .
+     Przykład każdej konfiguracji można znaleźć w sekcji [przykład: Custom DNS](hdinsight-create-virtual-network.md#example-dns) .
 
 Aby uzyskać więcej informacji, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień ról](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) .
 
 ## <a name="directly-connect-to-apache-hadoop-services"></a>Połącz się bezpośrednio z usługami Apache Hadoop Services
 
-Możesz połączyć się z klastrem pod `https://CLUSTERNAME.azurehdinsight.net`adresem. Ten adres używa publicznego adresu IP, który może nie być osiągalny, jeśli używasz sieciowych grup zabezpieczeń, aby ograniczyć ruch przychodzący z Internetu. Ponadto podczas wdrażania klastra w sieci wirtualnej możesz uzyskać do niego dostęp przy użyciu prywatnego punktu końcowego `https://CLUSTERNAME-int.azurehdinsight.net`. Ten punkt końcowy jest rozpoznawany jako prywatny adres IP w sieci wirtualnej na potrzeby dostępu do klastra.
+Możesz połączyć się z klastrem w `https://CLUSTERNAME.azurehdinsight.net`. Ten adres używa publicznego adresu IP, który może nie być osiągalny, jeśli używasz sieciowych grup zabezpieczeń, aby ograniczyć ruch przychodzący z Internetu. Ponadto podczas wdrażania klastra w sieci wirtualnej można uzyskać do niego dostęp przy użyciu prywatnego punktu końcowego `https://CLUSTERNAME-int.azurehdinsight.net`. Ten punkt końcowy jest rozpoznawany jako prywatny adres IP w sieci wirtualnej na potrzeby dostępu do klastra.
 
 Aby nawiązać połączenie z usługą Apache Ambari i innymi stronami sieci Web za pomocą sieci wirtualnej, wykonaj następujące czynności:
 
 1. Aby odnaleźć wewnętrzne w pełni kwalifikowane nazwy domen (FQDN) węzłów klastra usługi HDInsight, użyj jednej z następujących metod:
 
-    Zamień `RESOURCEGROUP` na nazwę grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
+    Zastąp `RESOURCEGROUP` nazwą grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
 
     ```powershell
     $clusterNICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP" | where-object {$_.Name -like "*node*"}
@@ -194,7 +194,7 @@ Aby nawiązać połączenie z usługą Apache Ambari i innymi stronami sieci Web
     az network nic list --resource-group RESOURCEGROUP --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Na liście zwracanych węzłów Znajdź nazwę FQDN węzłów głównych i Użyj nazw FQDN, aby nawiązać połączenie z usługą Ambari i innymi usługami sieci Web. Na przykład, użyj `http://<headnode-fqdn>:8080` , aby uzyskać dostęp do Ambari.
+    Na liście zwracanych węzłów Znajdź nazwę FQDN węzłów głównych i Użyj nazw FQDN, aby nawiązać połączenie z usługą Ambari i innymi usługami sieci Web. Na przykład użyj `http://<headnode-fqdn>:8080`, aby uzyskać dostęp do Ambari.
 
     > [!IMPORTANT]  
     > Niektóre usługi hostowane w węzłach głównych są aktywne tylko na jednym węźle naraz. Jeśli spróbujesz uzyskać dostęp do usługi w jednym węźle głównym i zwróci błąd 404, przełącz się do drugiego węzła głównego.
@@ -207,9 +207,9 @@ Aby nawiązać połączenie z usługą Apache Ambari i innymi stronami sieci Web
 
 Ruch sieciowy w sieciach wirtualnych platformy Azure można kontrolować przy użyciu następujących metod:
 
-* **Sieciowe grupy zabezpieczeń** (Sieciowej grupy zabezpieczeń) umożliwia filtrowanie ruchu przychodzącego i wychodzącego do sieci. Aby uzyskać więcej informacji, zobacz [Filtrowanie ruchu sieciowego przy użyciu grup zabezpieczeń sieci](../virtual-network/security-overview.md) .
+* **Sieciowe grupy zabezpieczeń** (sieciowej grupy zabezpieczeń) umożliwiają filtrowanie ruchu przychodzącego i wychodzącego do sieci. Aby uzyskać więcej informacji, zobacz [Filtrowanie ruchu sieciowego przy użyciu grup zabezpieczeń sieci](../virtual-network/security-overview.md) .
 
-* **Wirtualne urządzenia sieciowe** (Urządzenie WUS) może być używany tylko z ruchem wychodzącym. Urządzeń WUS replikację funkcji urządzeń, takich jak zapory i routery. Aby uzyskać więcej informacji, zobacz dokument [urządzenia sieciowe](https://azure.microsoft.com/solutions/network-appliances) .
+* **Wirtualne urządzenia sieciowe** (urządzenie WUS) mogą być używane tylko z ruchem wychodzącym. Urządzeń WUS replikację funkcji urządzeń, takich jak zapory i routery. Aby uzyskać więcej informacji, zobacz dokument [urządzenia sieciowe](https://azure.microsoft.com/solutions/network-appliances) .
 
 Usługa HDInsight wymaga nieograniczonego dostępu do kondycji usługi HDInsight i usług zarządzania zarówno dla ruchu przychodzącego, jak i wychodzącego z sieci wirtualnej. W przypadku korzystania z sieciowych grup zabezpieczeń należy upewnić się, że te usługi mogą nadal komunikować się z klastrem HDInsight.
 
@@ -248,6 +248,10 @@ Jeśli planujesz używanie **zapory** i dostęp do klastra z zewnątrz na okreś
 Aby uzyskać listę portów dla określonych usług, zobacz [porty używane przez usługi Apache Hadoop Services w usłudze HDInsight](hdinsight-hadoop-port-settings-for-services.md) .
 
 Aby uzyskać więcej informacji na temat reguł zapory dla urządzeń wirtualnych, zobacz dokument [scenariusza wirtualnego urządzenia](../virtual-network/virtual-network-scenario-udr-gw-nva.md) .
+
+## <a name="load-balancing"></a>Równoważenie obciążenia
+
+Podczas tworzenia klastra usługi HDInsight jest również tworzony moduł równoważenia obciążenia. Typ tego modułu równoważenia obciążenia jest na [poziomie podstawowej jednostki SKU](../load-balancer/load-balancer-overview.md#skus) , który ma pewne ograniczenia. Jedno z tych ograniczeń polega na tym, że w przypadku dwóch sieci wirtualnych w różnych regionach nie można nawiązać połączenia z podstawowymi usługami równoważenia obciążenia. Zobacz [często zadawane pytania dotyczące usługi Virtual Networks: ograniczenia dotyczące globalnej komunikacji równorzędnej sieci](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)wirtualnej, aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Następne kroki
 

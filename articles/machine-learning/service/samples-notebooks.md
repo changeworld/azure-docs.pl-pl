@@ -9,14 +9,14 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
-ms.translationtype: MT
+ms.openlocfilehash: 145ab994bbd2ac2445947968ccdeadbb730eb76a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997059"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476099"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Eksplorowanie Azure Machine Learning z notesami Jupyter
 
@@ -24,7 +24,7 @@ ms.locfileid: "70997059"
 
 W tym artykule pokazano, jak uzyskać dostęp do repozytorium z następujących środowisk:
 
-- [Maszyna wirtualna w Azure Machine Learning notesu](#notebookvm)
+- [Wystąpienie obliczeniowe Azure Machine Learning](#notebookvm)
 - [Przenoszenie własnego serwera notesu](#byo)
 - [Data Science Virtual Machine](#dsvm)
 
@@ -32,9 +32,9 @@ W tym artykule pokazano, jak uzyskać dostęp do repozytorium z następujących 
 > Po sklonowaniu repozytorium znajdziesz notesy samouczków w folderze **samouczków** i w notesach specyficznych dla funkcji w folderze **How to-use-Azure** .
 
 <a name="notebookvm"></a>
-## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Pobierz przykłady na Azure Machine Learning notesu maszyn wirtualnych
+## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Pobierz przykłady z wystąpienia obliczeniowego Azure Machine Learning
 
-Najprostszym sposobem na rozpoczęcie pracy z przykładami jest ukończenie tego [samouczka: Zainstaluj środowisko i obszar](tutorial-1st-experiment-sdk-setup.md)roboczy. Po zakończeniu będziesz mieć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium. Nie trzeba pobierać ani zainstalacji.
+Najprostszym sposobem na rozpoczęcie pracy z przykładami jest ukończenie tego [samouczka: Konfigurowanie środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md). Po zakończeniu będziesz mieć dedykowany serwer notesu wstępnie załadowany z zestawem SDK i przykładowym repozytorium. Nie trzeba pobierać ani zainstalacji.
 
 <a name="byo"></a>
 

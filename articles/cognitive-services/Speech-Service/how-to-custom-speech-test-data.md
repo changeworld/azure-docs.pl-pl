@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802519"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464561"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Przygotuj dane dla Custom Speech
 
@@ -25,11 +25,11 @@ Bez względu na to, czy testujesz, jak Precyzyjna funkcja rozpoznawania mowy fir
 
 Ta tabela zawiera listę akceptowanych typów danych, gdy należy użyć poszczególnych typów danych i zalecanej ilości. Do utworzenia modelu nie jest wymagany każdy typ danych. Wymagania dotyczące danych będą się różnić w zależności od tego, czy tworzysz test czy uczenie modelu.
 
-| Typ danych | Używane do testowania | Ilość | Używany do szkolenia | Ilość |
+| Typ danych | Używane do testowania | Liczba | Używany do szkolenia | Liczba |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Tak<br>Używane na potrzeby inspekcji wizualnej | 5 plików audio | Nie | Nie dotyczy |
+| [Dźwięku](#audio-data-for-testing) | Tak<br>Używane na potrzeby inspekcji wizualnej | 5 plików audio | Nie | nie dotyczy |
 | [Zapisy audio + oznakowane przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Tak<br>Służy do obliczania dokładności | 0,5 – 5 godzin audio | Tak | 1 – 1 000 godzin audio |
-| [Powiązany tekst](#related-text-data-for-training) | Nie | Nie dotyczy | Tak | 1-200 MB powiązanego tekstu |
+| [Powiązany tekst](#related-text-data-for-training) | Nie | nie dotyczy | Tak | 1-200 MB powiązanego tekstu |
 
 Pliki powinny być pogrupowane według typu w zestawie danych i przekazywane jako plik zip. Każdy zestaw danych może zawierać tylko jeden typ danych.
 
@@ -52,14 +52,14 @@ Dane audio są optymalne do testowania dokładności linii bazowej "zamiany mowy
 
 Użyj tej tabeli, aby upewnić się, że pliki audio są poprawnie sformatowane do użytku z Custom Speech:
 
-| Właściwość | Value |
+| Właściwość | Wartość |
 |----------|-------|
 | Format pliku | RIFF (WAV) |
 | Częstotliwość próbkowania | 8 000 Hz lub 16 000 Hz |
 | Kanały | 1 (mono) |
 | Maksymalna długość na dźwięk | 2 godziny |
 | Przykładowy format | PCM, 16-bitowe |
-| Format archiwum | .zip |
+| Format archiwum | zip |
 | Maksymalny rozmiar archiwum | 2 GB |
 
 Jeśli dźwięk nie spełnia tych właściwości lub chcesz sprawdzić, czy jest to konieczne, zalecamy pobranie [SOX](http://sox.sourceforge.net) w celu sprawdzenia lub przekonwertowania dźwięku. Poniżej przedstawiono kilka przykładów działania poszczególnych działań za pomocą wiersza polecenia:
@@ -73,19 +73,19 @@ Jeśli dźwięk nie spełnia tych właściwości lub chcesz sprawdzić, czy jest
 
 Aby zmierzyć dokładność dokładności zamiany mowy na tekst firmy Microsoft podczas przetwarzania plików audio, należy zapewnić, aby porównanie było oznaczone przez człowieka (słowo-by-Word). Chociaż transkrypcja przez człowieka jest często czasochłonna, konieczne jest oszacowanie dokładności i uczenie modelu dla przypadków użycia. Należy pamiętać, że ulepszenia w zakresie rozpoznawania będą tylko tak dobre jak dostarczone dane. Z tego powodu ważne jest, aby przekazywać tylko transkrypcje o wysokiej jakości.  
 
-| Właściwość | Value |
+| Właściwość | Wartość |
 |----------|-------|
 | Format pliku | RIFF (WAV) |
 | Częstotliwość próbkowania | 8 000 Hz lub 16 000 Hz |
 | Kanały | 1 (mono) |
 | Maksymalna długość na dźwięk | 60 s |
 | Przykładowy format | PCM, 16-bitowe |
-| Format archiwum | .zip |
+| Format archiwum | zip |
 | Maksymalny rozmiar pliku zip | 2 GB |
 
 Aby rozwiązać problemy, takie jak usuwanie lub podstawianie wyrazów, wymagana jest znaczna ilość danych w celu usprawnienia rozpoznawania. Ogólnie rzecz biorąc, zaleca się dostarczenie transkrypcji słów-by-Word dla około 10 do 1 000 godzin. Transkrypcje dla wszystkich plików WAV powinny znajdować się w jednym pliku tekstowym (zwykły tekst). Każdy wiersz pliku z transkrypcją powinien zawierać nazwę jednego z plików dźwiękowych, a następnie odpowiednią transkrypcję. Nazwę pliku i transkrypcję należy rozdzielać przy użyciu tabulatora (\t).
 
-  Przykład:
+  Na przykład:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -94,7 +94,7 @@ Aby rozwiązać problemy, takie jak usuwanie lub podstawianie wyrazów, wymagana
 > [!NOTE]
 > Transkrypcja powinna być kodowana za pomocą kodowania UTF-8 ze znacznikiem kolejności bajtów (BOM).
 
-Transkrypcje są normalizowane pod względem tekstu, aby mogły być przetwarzane przez system. Istnieją jednak pewne istotne normalizacje, które muszą być wykonane przez użytkownika _przed_ przekazaniem danych do usługi Custom Speech Service. Aby uzyskać odpowiedni język do użycia podczas przygotowywania transkrypcji, zobacz [jak utworzyć transkrypcję z oznaczeniem ludzkim](how-to-custom-speech-human-labeled-transcriptions.md)
+Transkrypcje są normalizowane pod względem tekstu, aby mogły być przetwarzane przez system. Jednak istnieją pewne ważne normalizacji, które muszą zostać wykonane przez użytkownika _przed_ przekazaniem danych do programu Speech Studio. Aby uzyskać odpowiedni język do użycia podczas przygotowywania transkrypcji, zobacz [jak utworzyć transkrypcję z oznaczeniem ludzkim](how-to-custom-speech-human-labeled-transcriptions.md)
 
 Po zebraniu plików audio i odpowiednich transkrypcji należy je spakować jako jeden plik zip przed przekazaniem do [portalu Custom Speech](https://speech.microsoft.com/customspeech). Jest to przykładowy zestaw danych z trzema plikami audio i plik transkrypcji z etykietą o podanych przez człowieka:
 
@@ -117,7 +117,7 @@ Aby utworzyć niestandardowy model przy użyciu pokrewnego tekstu, należy poda�
 
 Użyj tej tabeli, aby upewnić się, że plik powiązane dane dla wyrażenia długości został poprawnie sformatowany:
 
-| Właściwość | Value |
+| Właściwość | Wartość |
 |----------|-------|
 | Kodowanie tekstu | UTF-8 BOM |
 | Liczba wypowiedzi w wierszu | 1 |
@@ -138,7 +138,7 @@ Jeśli istnieją nietypowe terminy bez standardowych wymowy, których użytkowni
 
 Obejmuje to przykłady mówionych wypowiedź i niestandardową wymowę dla każdej z nich:
 
-| Rozpoznany/wyświetlany formularz | Mówionej formy |
+| Rozpoznany/wyświetlany formularz | Formularz mówiony |
 |--------------|--------------------------|
 | 3CPO | trzy c p o |  
 | CNTK | c n t k |
@@ -148,14 +148,14 @@ Mówiony formularz jest wyszukiwaną sekwencją fonetyczną. Może składać si�
 
 Dostosowana wymowa jest dostępna w języku angielskim (EN-US) i niemiecki (de-DE). W tej tabeli przedstawiono obsługiwane znaki według języka:
 
-| Język | Ustawienia regionalne | Znaki |
+| Język | Ustawienia regionalne | Znaków |
 |----------|--------|------------|
-| Angielski | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
-| niemiecki | de-DE. | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Polski | pl-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Niemiecki | de-DE | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 Użyj tej tabeli, aby upewnić się, że plik powiązanych danych dla wymowy jest sformatowany prawidłowo. Pliki wymowy są małe i nie powinny przekraczać kilku artykułów bazy wiedzy.
 
-| Właściwość | Value |
+| Właściwość | Wartość |
 |----------|-------|
 | Kodowanie tekstu | BOM UTF-8 (ANSI jest również obsługiwany w języku angielskim) |
 | Liczba wymowy na wiersz | 1 |

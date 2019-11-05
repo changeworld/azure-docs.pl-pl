@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/04/2019
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: c20a14ef2bc74d73b93ab39ee52fe1be8a5f984f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 12661c77c6a950b482187b09e4465c964e6d6652
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183349"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494064"
 ---
 Jedną z najważniejszych funkcji usługi Azure IoT Edge jest możliwość wdrażania kodu na urządzeniach usługi IoT Edge z poziomu chmury. **Moduły usługi IoT Edge** to pakiety plików wykonywalnych implementowane jako kontenery. W tej sekcji wdrożysz wstępnie skompilowany moduł z [sekcji Moduły usługi IoT Edge w portalu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). 
 
@@ -37,7 +37,7 @@ Aby wdrożyć swój pierwszy moduł z witryny Azure Marketplace, wykonaj następ
 
 3. Po wybraniu modułu usługi IoT Edge w witrynie Azure Marketplace oraz wybraniu urządzenia usługi IoT Edge, które ma odebrać moduł, nastąpi przekierowanie do trzyetapowego kreatora, który ułatwia dokładne określenie sposobu wdrożenia modułu. Zwróć uwagę, że w kroku kreatora **Dodawanie modułów** moduł **SimulatedTemperatureSensor** jest wypełniany automatycznie. W samouczkach ta strona pozwala dodawać do wdrożenia dodatkowe moduły. Na potrzeby tego przewodnika Szybki start wdrożysz tylko ten jeden moduł. Wybierz **Dalej**, aby przejść do następnego kroku w kreatorze.
 
-4. W kroku kreatora **Określanie tras** należy zdefiniować sposób przekazywania komunikatów między modułami i usługą IoT Hub. W przypadku tego przewodnika Szybki start wszystkie komunikaty ze wszystkich modułów mają trafiać do usługi IoT Hub (`$upstream`). Jeśli odpowiednie wartości nie zostały automatycznie uzupełnione, dodaj następujący kod, a następnie naciśnij przycisk **Dalej**:
+4. W kroku kreatora **Określanie tras** należy zdefiniować sposób przekazywania komunikatów między modułami i usługą IoT Hub. W przypadku tego przewodnika Szybki start wszystkie komunikaty ze wszystkich modułów mają trafiać do usługi IoT Hub (`$upstream`). Jeśli nie jest automatycznie wypełniany, Dodaj następujący kod:
 
    ```json
     {
@@ -46,6 +46,7 @@ Aby wdrożyć swój pierwszy moduł z witryny Azure Marketplace, wykonaj następ
         }
     }
    ```
+   Następnie wybierz przycisk **Dalej**.
 
 5. W kroku kreatora **Przegląd wdrożenia** możesz wyświetlić podgląd pliku JSON określającego wszystkie moduły, które zostaną wdrożone na urządzeniu usługi IoT Edge. Zauważ, że uwzględniony został moduł **SimulatedTemperatureSensor** oraz dwa dodatkowe moduły systemowe o nazwach **edgeAgent** i **edgeHub**. Po wykonaniu przeglądu wybierz opcję **Prześlij**.
 

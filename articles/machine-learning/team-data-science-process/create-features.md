@@ -1,6 +1,6 @@
 ---
-title: Inżynieria funkcji w zakresie analizy danych — danych zespołu dla celów naukowych
-description: Wyjaśnia, w celu technicznego opracowywania funkcji i zawiera przykłady swojej roli w procesie rozszerzenia danych, uczenia maszynowego.
+title: Inżynieria funkcji w nauce danych — proces nauki o danych zespołowych
+description: W tym artykule wyjaśniono cele inżynierii funkcji i przedstawiono przykłady jej roli w procesie ulepszania danych uczenia maszynowego.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,85 +11,83 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e633c5742b8a7882149a347ced46e55440cb6913
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60398642"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492440"
 ---
-# <a name="feature-engineering-in-data-science"></a>Inżynieria funkcji w zakresie analizy danych
-W tym artykule wyjaśniono celów technicznego opracowywania funkcji i zawiera przykłady swojej roli w procesie rozszerzenia danych, uczenia maszynowego. Przykłady umożliwiają zilustrowanie tego procesu są pobierane z usługi Azure Machine Learning Studio. 
+# <a name="feature-engineering-in-data-science"></a>Inżynieria funkcji w dziedzinie analizy danych
+W tym artykule wyjaśniono cele Inżynieria funkcji i przedstawiono przykłady jej roli w procesie rozszerzania danych uczenia maszynowego. Przykłady używane do zilustrowania tego procesu są rysowane z Azure Machine Learning Studio. 
 
-To zadanie jest to krok w [Team Data Science naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+To zadanie jest krokiem w [procesie nauki o danych zespołowych (przetwarzania TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-Funkcja inżynierów próby zwiększają możliwości predykcyjnych algorytmów uczenia, tworząc funkcje z nieprzetworzone dane, które pomagają w wykonywaniu procesu uczenia. Inżynieria i wybór funkcji jest częścią środowiska TDSP opisane w temacie [co to jest cykl życia zespołowego danych dla celów naukowych?](overview.md) Funkcja inżynieria i wybór są częściami **opracowywanie funkcji** krok przetwarzania TDSP. 
+Inżynieria funkcji próbuje zwiększyć predykcyjne algorytmy uczenia, tworząc funkcje z danych pierwotnych, które ułatwiają proces uczenia się. Inżynieria i wybór funkcji są jedną częścią przetwarzania TDSPu, [co jest cyklem życia procesu nauki o danych zespołowych?](overview.md) Inżynieria funkcji i wybór są częścią kroku **opracowywania funkcji** przetwarzania TDSP. 
 
-* **inżynieria cech**: Ten proces próbuje utworzyć dodatkowe funkcje odpowiednie na podstawie istniejących funkcji nieprzetworzonych danych i zwiększają możliwości predykcyjnych algorytmu uczenia.
-* **Wybór funkcji**: Ten proces wybiera klucza podzbiór funkcji, oryginalnym danych w celu podjęcia próby zmniejszenia wymiarach problemu szkolenia.
+* **Inżynieria funkcji**: ten proces podejmuje próbę utworzenia dodatkowych odpowiednich funkcji z istniejących pierwotnych funkcji danych i zwiększenia mocy predykcyjnej algorytmu uczenia.
+* **wybór funkcji**: ten proces wybiera podzestaw kluczy oryginalnych funkcji danych w próbie zmniejszenia liczby problemów szkoleniowych.
 
-Zwykle **Inżynieria funkcji** najpierw stosowany jest do generowania dodatkowe funkcje, a następnie **wybór funkcji** kroku jest przeprowadzana w celu wyeliminowania funkcji nie ma znaczenia, nadmiarowe lub bardzo skorelowany.
+Zwykle **Funkcja inżynierii funkcji** jest stosowana najpierw w celu wygenerowania dodatkowych funkcji, a następnie krok **wyboru funkcji** jest wykonywany w celu wyeliminowania nieistotnych, nadmiarowych lub wysoce skorelowanych funkcji.
 
-Dane szkoleniowe, używane w uczeniu maszynowym, często może zostać poprawione przez wyodrębnianie funkcji z nieprzetworzone dane zebrane. Przykład funkcji zaprojektowanych w kontekście uczenia klasyfikowania obrazów znaków pisma odręcznego jest tworzenie nieco mapy gęstość skonstruowany na podstawie danych pierwotnych bit dystrybucji. Tę mapę można lokalizowania krawędziami znaki efektywniej niż po prostu bezpośrednio przy użyciu surowego dystrybucji.
+Dane szkoleniowe używane w usłudze Machine Learning mogą być często rozszerzane przez wyodrębnienie funkcji z zebranych danych pierwotnych. Przykładem wbudowanej funkcji w kontekście uczenia się, jak sklasyfikować obrazy pisanych cyfrowo, jest tworzona Mapa gęstości bitowej skonstruowana na podstawie danych niesformatowanej dystrybucji. Ta mapa może pomóc w bardziej wydajnej lokalizacji znaków niż zwykłe użycie dystrybucji pierwotnej.
 
-Aby utworzyć funkcji dla danych w określonych środowiskach, zobacz następujące artykuły:
+Aby utworzyć funkcje dla danych w określonych środowiskach, zobacz następujące artykuły:
 
-* [Tworzenie funkcji dla danych w programie SQL Server](create-features-sql-server.md)
-* [Tworzenie funkcji dla danych w klastrze usługi Hadoop przy użyciu zapytań Hive](create-features-hive.md)
+* [Tworzenie funkcji dla danych w SQL Server](create-features-sql-server.md)
+* [Tworzenie funkcji dla danych w klastrze usługi Hadoop przy użyciu zapytań programu Hive](create-features-hive.md)
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+## <a name="create-features-from-your-data---feature-engineering"></a>Tworzenie funkcji w ramach inżynierii funkcji danych
+Dane szkoleniowe składają się z macierzy składającej się z przykładów (rekordów lub obserwacji przechowywanych w wierszach), z których każdy ma zestaw funkcji (zmienne lub pola przechowywane w kolumnach). W celu scharakteryzowania wzorców w danych należy oczekiwać funkcji określonych w projekcie eksperymentalnym. Mimo że wiele pól danych nieprzetworzonych można bezpośrednio uwzględnić w wybranym zestawie funkcji używanym do uczenia modelu, często zdarza się, że dodatkowe (opracowane) funkcje muszą być zbudowane z funkcji danych pierwotnych w celu wygenerowania rozszerzonego zestawu danych szkoleniowych.
 
-## <a name="create-features-from-your-data---feature-engineering"></a>Tworzenie funkcji na podstawie danych - Inżynieria funkcji
-Dane szkoleniowe składa się z macierzy składa się z przykładami (rekordy lub przechowywane w wierszach uwagi), z których każdy ma zestaw funkcji (zmiennych lub przechowywane w kolumnach pól). Funkcje określone w projekcie doświadczenia powinny scharakteryzowania wzorce w danych. Chociaż wiele pól nieprzetworzone dane mogą być bezpośrednio zawarte w zestawie wybraną funkcję używane do trenowania modelu, często jest przypadek, dodatkowe funkcje (zaprojektowanych) muszą zostać utworzone na podstawie funkcji w danych pierwotnych, można wygenerować zestawu danych rozszerzonych szkolenia.
+Jakiego rodzaju funkcje należy utworzyć w celu zwiększenia zestawu danych podczas uczenia modelu? Zaprojektowane funkcje, które rozszerzają szkolenia, zapewniają informacje, które lepiej odróżniają wzorce w danych. Nowe funkcje powinny dostarczyć dodatkowe informacje, które nie są wyraźnie przechwycone lub łatwo widoczne w oryginalnym lub istniejącym zestawie funkcji. Ale ten proces to coś z kompozycji. Decyzje dotyczące dźwięku i produktywności często wymagają pewnej znajomości domeny.
 
-Jakiego rodzaju funkcje należy utworzyć w taki sposób, aby poprawić zestaw danych, podczas uczenia modelu? Zaprojektowanych funkcji, które rozszerzają szkolenia zapewniają informacje odróżniające lepiej wzorce w danych. Nowe funkcje są powinien zapewniać dodatkowe informacje, które nie jest wyraźnie przechwycony lub łatwo widoczna w zestawie oryginalny lub istniejącej funkcji. Ale ten proces jest coś, co sztuki. Dźwięk i produktywne decyzje często wymagają pewne doświadczenie domeny.
+Gdy rozpoczyna się od Azure Machine Learning, najłatwiej opanujesz ten proces przy użyciu przykładów dostarczonych w Studio. Poniżej przedstawiono dwa przykłady:
 
-Począwszy od usługi Azure Machine Learning, najłatwiej zapoznanie się z nim tego procesu, konkretnie przy użyciu przykładów, które podano w Studio. Dwa przykłady przedstawiono poniżej:
-
-* Przykład regresji [prognozowania liczby wypożyczenia rowerów](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) w eksperymencie nadzorowane, gdy wiadomo, że wartości docelowej
-* Using przykład klasyfikacji wyszukiwania tekstu [Tworzenie skrótu funkcji](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
+* Przykład regresji [przewidywania liczby czynszów rowerowych](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) w nadzorowanym doświadczeniu, w którym są znane wartości docelowe
+* Przykład klasyfikacji wyszukiwania tekstu przy użyciu [funkcji tworzenia skrótów](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Przykład 1: Dodawanie funkcji danych czasowych dla modelu regresji
-Użyjmy eksperymentu "prognozowaniu popytu rowerów" w usłudze Azure Machine Learning Studio na pokazują, jak projektować funkcje dla zadania regresji. Celem tego eksperymentu jest przewidzieć zapotrzebowanie na rowerów, czyli liczbę wypożyczenia rowerów w ramach określonego miesiąc/dzień/godz. Zestaw danych "wypożyczeń rowerów UCI zestawu danych" jest używany jako nieprzetworzone dane wejściowe. Ten zestaw danych jest oparty na prawdziwe dane pochodzące z firmy Bikeshare wielkiej litery, która obsługuje sieci wypożyczeń rowerów w Waszyngton w Stanach Zjednoczonych. Zestaw danych reprezentuje liczbę wypożyczenia rowerów w ramach określonej godziny dziennie w ciągu lat i 2011 roku 2012 i zawiera 17379 wierszy i kolumn 17. Zestaw funkcji pierwotne zawiera warunki pogodowe (temperatury/wilgotności/wiatru) i typ dnia (dzień wolny/dzień tygodnia). Pole do prognozowania jest liczba "cnt", która reprezentuje wypożyczenia rowerów w ciągu godziny określonej i który zakresu od 1 do 977.
+Użyjmy eksperymentu "prognozowanie popytu dla rowerów" w Azure Machine Learning Studio (klasyczny), aby zademonstrować sposób tworzenia funkcji regresji. Celem tego eksperymentu jest przewidywanie zapotrzebowania dla rowerów, czyli liczby czynszów rowerowych w określonym miesiącu/dniu/godz. Zestaw danych "zestaw danych o wypożyczeniu roweru" jest używany jako pierwotne dane wejściowe. Ten zestaw danych jest oparty na rzeczywistych danych firmy Bikeshare Company, która utrzymuje sieć wynajmu roweru w Waszyngtonie DC w Stany Zjednoczone. Zestaw danych przedstawia liczbę wynajmu roweru w ciągu określonej godziny dnia w latach 2011 i Year 2012 i zawiera 17379 wierszy i 17 kolumn. Nieprzetworzony zestaw funkcji zawiera warunki pogodowe (Temperatura/wilgotność/wiatr) i typ dnia (dni wolnych/dni tygodnia). Pole do przewidywania jest liczbą "CNT", która reprezentuje wypożyczenia rowerów w określonej godzinie, a które obejmują wartości z zakresu od 1 do 977.
 
-W celu konstruowania skuteczne funkcje w danych szkoleniowych, cztery regresji, który modeli są tworzone przy użyciu tego samego algorytmu, ale z czterech różnych szkolenia zestawami danych. Cztery zestawy danych reprezentują ten sam nieprzetworzone dane wejściowe, ale z coraz większą liczbę funkcji należy ustawić. Te funkcje są pogrupowane w cztery kategorie:
+W celu konstruowania efektywnych funkcji w danych szkoleniowych cztery modele regresji są kompilowane przy użyciu tego samego algorytmu, ale z czterema różnymi zestawami danych szkoleniowych. Cztery zestawy danych przedstawiają te same nieprzetworzone dane wejściowe, ale z coraz większą liczbą funkcji. Te funkcje są pogrupowane w cztery kategorie:
 
-1. Element = pogody, dniem wolnym od pracy i dni tygodnia i weekendy funkcji przewidywane dzień
-2. B = liczbę rowerów, które zostały wypożyczone w każdej z ostatnich 12 godzin
-3. C = liczbę rowerów, które zostały wypożyczone w każdej z poprzednich 12 dni, w tym samym godzinie
-4. D = liczbę rowerów, które zostały wypożyczone w każdej z poprzednich 12 tygodni w jednej godziny i tego samego dnia
+1. A = Pogoda + święta + dzień tygodnia + funkcje weekendowe dla przewidywanego dnia
+2. B = Liczba rowerów, które były dzierżawione w każdym z ostatnich 12 godzin
+3. C = Liczba rowerów, które były dzierżawione w ciągu ostatnich 12 dni w tej samej godzinie
+4. D = Liczba rowerów, które były dzierżawione w każdym z ostatnich 12 tygodni w tej samej godzinie i w tym samym dniu
 
-Oprócz funkcji set A, który już istnieje w oryginalnych danych pierwotnych, trzech zestawów funkcji są tworzone za pomocą funkcji inżynierów procesów. Funkcja ustawiona przechwytywania B bardzo ostatnie żądanie rowery. Funkcja ustawiona przechwytywania C zapotrzebowanie na rowery o określonej godzinie. Funkcja ustawić żądanie przechwycenia D rowery danej godziny i określonego dnia tygodnia. Cztery zestawów danych szkoleniowych każdego zawiera element zestaw funkcji, A + B, A + B + C i A + B + C + D, odpowiednio.
+Oprócz zestawu funkcji A, który już istnieje w oryginalnych danych pierwotnych, inne trzy zestawy funkcji są tworzone za pomocą procesu inżynierii funkcji. Zestaw funkcji B przechwytuje najnowsze zapotrzebowanie dla rowerów. Zestaw funkcji C przechwytuje zapotrzebowanie dla rowerów Bikes o określonej godzinie. Zestaw funkcji D przechwytuje zapotrzebowanie dla rowerów w określonej godzinie i konkretny dzień tygodnia. Cztery zbiory danych szkoleniowych obejmują odpowiednio zestaw funkcji A, A + B, A + B + C, a także + B + C + D.
 
-W eksperymencie usługi Azure Machine Learning tych czterech zestawów danych szkoleniowych są tworzone za pomocą czterech gałęziami za pomocą wstępnie przetworzonego wejściowego zestawu danych. Z wyjątkiem pierwszej gałęzi, każda z tych gałęzi zawiera [wykonanie skryptu języka R](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) modułu, w którym pochodnej funkcji (funkcja zestawu B, C i D) odpowiednio są zbudowane i dołączany do zaimportowanego zestawu danych. Na poniższym rysunku pokazano skrypt języka R, użyty do utworzenia zestawu funkcji B w drugim gałęzi po lewej stronie.
+W Azure Machine Learning eksperymenty te cztery zbiory danych są tworzone przez cztery gałęzie ze wstępnie przetworzonego zestawu danych wejściowych. Z wyjątkiem gałęzi z lewej strony każda z tych gałęzi zawiera moduł [wykonywania skryptu języka R](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) , w którym funkcje pochodne (zestaw funkcji B, C i D) są odpowiednio skonstruowane i dołączane do zaimportowanego zestawu danych. Na poniższej ilustracji przedstawiono skrypt języka R używany do tworzenia zestawu funkcji B w drugiej gałęzi.
 
 ![Tworzenie funkcji](./media/create-features/addFeature-Rscripts.png)
 
-Porównanie wyników wydajności z czterech modeli podsumowano w poniższej tabeli: 
+Porównanie wyników wydajności czterech modeli jest podsumowane w poniższej tabeli: 
 
-![wynik porównania](./media/create-features/result1.png)
+![Porównanie wyników](./media/create-features/result1.png)
 
-Najlepsze wyniki są wyświetlane przy użyciu funkcji A + B + C. Należy pamiętać, współczynnik błędów zmniejsza, gdy zestaw dodatkowych funkcji znajdują się w danych szkoleniowych. Weryfikuje założenie, że zestaw funkcji B, C zapewniają dodatkowe informacje istotne dla zadań regresji. Ale dodanie funkcji D nie wydaje się zapewnienie każde dodatkowe zmniejszenie współczynnik błędów.
+Najlepsze wyniki są wyświetlane na podstawie funkcji A + B + C. Należy zauważyć, że współczynnik błędów zmniejsza się, gdy w danych szkoleniowych uwzględniono dodatkowy zestaw funkcji. Sprawdza domniemanie, że zestaw funkcji B, C zapewnia dodatkowe istotne informacje dla zadania regresji. Jednak dodanie funkcji D nie zapewnia dodatkowego zmniejszenia liczby błędów.
 
-## <a name="example2"></a> Przykład 2: Tworzenie funkcji w wyszukiwania tekstu
-Technicznego opracowywania funkcji jest szeroko stosowany w zadania związane z wyszukiwania tekstu, takie jak analiza dokumentu klasyfikacji i wskaźniki nastrojów klientów. Na przykład można klasyfikować dokumenty na kilka kategorii, należy założeniu typowej jest możliwość word fraz uwzględnione w jednej kategorii doc mniej prawdopodobne w innej kategorii dokumentu. Innymi słowy częstotliwość dystrybucji słów/fraz jest w stanie celu scharakteryzowania kategorie innego dokumentu. W aplikacjach wyszukiwania tekstu ponieważ poszczególne zawartość tekstową zwykle służą jako dane wejściowe funkcji inżynierów procesów jest wymagane do utworzenia funkcje dotyczące częstotliwości słowo lub dana fraza.
+## <a name="example2"></a>Przykład 2: Tworzenie funkcji podczas wyszukiwania tekstu
+Inżynieria funkcji jest szeroko stosowana w zadaniach związanych z wyszukiwaniem tekstu, takimi jak Klasyfikacja dokumentu i analiza tonacji. Na przykład w przypadku klasyfikowania dokumentów do kilku kategorii typowe założenie polega na tym, że wyraz/frazy zawarte w jednej kategorii doc są mniej duże, które mogą wystąpić w innej kategorii dokumentu. Inaczej mówiąc, częstotliwość dystrybucji słów/fraz jest w stanie charakteryzować różne kategorie dokumentów. W aplikacjach do wyszukiwania tekstu, ponieważ poszczególne fragmenty treści tekstu zwykle pełnią rolę danych wejściowych, proces inżynierii funkcji jest wymagany do tworzenia funkcji obejmujących częstotliwość słów/fraz.
 
-Do wykonania tego zadania, to technika o nazwie **Tworzenie skrótu funkcji** jest stosowany do efektywnie przekształcając funkcje dowolnego tekstu indeksów. Zamiast kojarzenie każdej funkcji tekstu (wyrazy/zwroty) do określonego indeksu to funkcje metoda przez zastosowanie funkcji mieszania, funkcji oraz ich wartości skrótu jako wskaźników bezpośrednio.
+Aby można było wykonać to zadanie, stosowana jest technika " **mieszanie funkcji** " w celu wydajnego przetworzenia arbitralnych funkcji tekstowych w indeksach. Zamiast kojarzenia każdej funkcji tekstu (słowa/frazy) z określonym indeksem, ta metoda działa przez zastosowanie funkcji skrótu do funkcji i używanie ich wartości skrótu jako indeksów bezpośrednio.
 
-W usłudze Azure Machine Learning jest [Tworzenie skrótu funkcji](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modułu, który tworzy te słowo lub dana fraza funkcje zostaną w wygodny sposób. Poniższej ilustracji przedstawiono przykład użycia tego modułu. Wejściowy zestaw danych zawiera dwie kolumny: ocena książki w zakresie od 1 do 5 oraz zawartość, przejrzyj rzeczywiste. Celem tej [Tworzenie skrótu funkcji](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) moduł jest pobrać wiele nowych funkcji przedstawiające częstotliwości występowania odpowiedniego wyrazów / Przejrzyj "r" w ramach wybranej książki. Aby użyć tego modułu, wykonaj następujące czynności:
+W Azure Machine Learning istnieje moduł [skrótu funkcji](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) , który wygodnie tworzy te funkcje Word/phrase. Na poniższej ilustracji przedstawiono przykład użycia tego modułu. Wejściowy zestaw danych zawiera dwie kolumny: klasyfikację książki od 1 do 5 i rzeczywistą zawartość przeglądu. Celem tego modułu [wyznaczania wartości skrótu](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) jest pobranie wielu nowych funkcji, które pokazują częstotliwość występowania odpowiednich wyrazów (/phrase) w ramach określonego przeglądu książki. Aby użyć tego modułu, wykonaj następujące czynności:
 
-* Najpierw wybierz kolumnę, która zawiera tekst wejściowy ("Col2" w tym przykładzie).
-* Po drugie, równa "Hashing bitsize" 8, co oznacza, że 2 ^ 8 = 256 funkcji zostanie utworzony. Word/fazie cały tekst będzie skrótu do 256 indeksów. Parametr "Hashing bitsize" z zakresu od 1 do 31. Wyrazy "r" są mniej prawdopodobne skrótu do tego samego indeksu, jeśli zostanie ustawiona jako większą liczbę.
-* Po trzecie Ustaw parametr "N-gramy" do 2. Ta wartość pobiera częstotliwość występowania unigrams (funkcja dla każdego pojedynczego wyrazu) i bigrams (funkcja dla każdej pary słów sąsiadujące) z tekstu wejściowego. Parametr "N-gramy" zakresu od 0 do 10, która określa maksymalną liczbę kolejnych wyrazów, które mają zostać uwzględnione w funkcji.  
+* Najpierw wybierz kolumnę zawierającą tekst wejściowy ("Col2" w tym przykładzie).
+* Następnie ustaw wartość "Hashing bitsize" na 8, co oznacza, że zostanie utworzonych 2 ^ 8 = 256 funkcji. Słowa/fazy we wszystkich tekstach zostaną zmieszane do 256 indeksów. Wartość parametru "Hashing bitsize" z zakresu od 1 do 31. Wyrazy, które/phrase, są mniej podobne do tego samego indeksu, jeśli ustawienie ma być większą liczbą.
+* Po trzecie ustaw parametr "N-gramy" na 2. Ta wartość pobiera częstotliwość występowania unigrams (funkcję dla każdego pojedynczego wyrazu) i rozgramy (funkcję dla każdej pary sąsiadujących wyrazów) z tekstu wejściowego. Parametr "N-gramy" obejmuje wartości z zakresu od 0 do 10, co wskazuje maksymalną liczbę kolejnych wyrazów, które mają być uwzględnione w funkcji.  
 
-![Moduł "Funkcji Hashing"](./media/create-features/feature-Hashing1.png)
+![Moduł "mieszanie funkcji"](./media/create-features/feature-Hashing1.png)
 
-Na poniższej ilustracji przedstawiono, jakie tych nowych funkcji wyglądały.
+Na poniższej ilustracji przedstawiono, jak wygląda Nowa funkcja.
 
-![Przykład "Funkcji Hashing"](./media/create-features/feature-Hashing2.png)
+![Przykład "mieszanie funkcji"](./media/create-features/feature-Hashing2.png)
 
 ## <a name="conclusion"></a>Podsumowanie
-Funkcje zaprojektowanych i wybranego zwiększenia efektywności procesu uczenia, który próbuje wyodrębnić kluczowe informacje zawarte w danych. Mogą również zwiększyć możliwości tych modeli do klasyfikowania dokładnie dane wejściowe i bardziej niezawodnie przewidywanie wyników zainteresowania. Funkcja inżynieria i wybór można także połączyć się bardziej praktyce tractable szkoleniowe. Robi to poprawa, a następnie zmniejszenie liczby funkcje niezbędne do kalibrować lub wytrenuj model. Funkcje wybrane do nauczenia modelu, ze sobą matematycznie rzecz biorąc, są minimalny zestaw zmienne niezależne, wyjaśnić wzorce w danych, które następnie pomyślnie przewidywania wyników.
+Zaprojektowane i wybrane funkcje zwiększają wydajność procesu szkolenia, który próbuje wyodrębnić informacje o kluczu zawarte w danych. Poprawiają one również możliwości tych modeli w celu dokładnego klasyfikowania danych wejściowych i przewidywania wyników zainteresowania bardziej niezawodnie. Inżynieria funkcji i wybór mogą również łączyć się, aby zwiększyć możliwości obliczeniowe. Robi to przez zwiększenie i zmniejszenie liczby funkcji wymaganych do kalibracji lub uczenia modelu. Matematycznie mówiąc, funkcje wybrane do uczenia modelu są minimalnym zestawem niezależnych zmiennych, które wyjaśniają wzorce w danych, a następnie przewidywania wyników powiodło się.
 
-Nie zawsze jest koniecznie do wykonywania funkcji inżynierii lub funkcji wyboru cech. Czy jest potrzebne, czy nie zależy od danych ręcznie lub zebrane algorytmu, który został wybrany, a celem eksperymentu.
+Nie zawsze jest konieczna funkcja inżynierii lub wybór funkcji. Czy jest to konieczne, czy nie zależy od danych do rąk lub zebrania, wybranego algorytmu i celu eksperymentu.
 

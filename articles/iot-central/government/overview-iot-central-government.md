@@ -1,5 +1,5 @@
 ---
-title: Tworzenie rozwiązań dla instytucji rządowych przy użyciu usługi Azure IoT Central
+title: Tworzenie rozwiązań dla instytucji rządowych za pomocą usługi Azure IoT Central
 description: Dowiedz się, jak tworzyć inteligentne rozwiązania przy użyciu szablonów aplikacji platformy Azure IoT Central.
 author: miriambrus
 ms.author: miriamb
@@ -7,14 +7,14 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 02918df348414058d176246da5c2d0f14df7b405
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: a862a221f9fe2db5448473bddcca2a9932716e0e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026658"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464080"
 ---
-# <a name="building-government-solutions-with-azure-iot-central"></a>Tworzenie rozwiązań dla instytucji rządowych przy użyciu usługi Azure IoT Central
+# <a name="building-government-solutions-with-azure-iot-central"></a>Tworzenie rozwiązań dla instytucji rządowych za pomocą usługi Azure IoT Central
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
@@ -79,5 +79,5 @@ Rozpocznij pracę z [samouczkiem dotyczącym aplikacji do zarządzania odpadami]
 * Informacje o [pojęciach dotyczących monitorowania jakości wody](./concepts-waterqualitymonitoring-architecture.md)
 * Informacje o [pojęciach dotyczących monitorowania zużycia wody](./concepts-waterconsumptionmonitoring-architecture.md)
 * Informacje o [pojęciach związanych z zarządzaniem odpadami](./concepts-connectedwastemanagement-architecture.md)  
-* Więcej informacji na temat IoT Central, zobacz [omówienie IoT Central](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
+* Więcej informacji na temat IoT Central, zobacz [omówienie IoT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
  

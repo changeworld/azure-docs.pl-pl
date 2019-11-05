@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: cf5bf3dfd7b6a408179bb267156433168e562a8e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 7f42d5914a2ec7f479a8b3d1df1b8672f318036b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326834"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464624"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Samouczek: rozpoznawanie intencji z mowy przy użyciu zestawu Speech SDK dla języka C#
 
@@ -45,11 +45,12 @@ Przed rozpoczęciem tego samouczka upewnij się, że masz następujące elementy
 
 LUIS integruje się z usługami mowy, aby rozpoznawać intencje z mowy. Nie potrzebujesz subskrypcji usługi Speech Services — tylko LUIS.
 
-Usługa LUIS używa dwóch rodzajów kluczy:
+LUIS używa trzech rodzajów kluczy:
 
-|Typ klucza|Cel|
+|Typ klucza|Przeznaczenie|
 |--------|-------|
 |Tworzenie|Umożliwia programowe tworzenie i modyfikowanie aplikacji LUIS|
+|Starter (początkowy)|Umożliwia testowanie aplikacji LUIS przy użyciu tylko tekstu|
 |Endpoint |Autoryzuje dostęp do określonej aplikacji LUIS|
 
 W tym samouczku potrzebny jest typ klucza punktu końcowego. W tym samouczku jest używana przykładowa aplikacja LUIS Automation, którą można utworzyć, korzystając z [prebudowanego](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) przewodnika Szybki Start dla aplikacji do automatyzacji domowej. Jeśli utworzono własną aplikację LUIS, można jej użyć zamiast niej.
@@ -85,7 +86,7 @@ Następnie Dodaj kod do projektu.
 
 1. W **Eksplorator rozwiązań**otwórz plik **program.cs**.
 
-1. Zastąp blok `using` instrukcji na początku pliku następującym deklaracją:
+1. Zastąp blok instrukcji `using` na początku pliku następującym deklaracją:
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
@@ -123,7 +124,7 @@ Poniższe sekcje zawierają omówienie kodu.
 
 ## <a name="create-an-intent-recognizer"></a>Tworzenie aparatu rozpoznawania intencji
 
-Najpierw należy utworzyć konfigurację mowy z poziomu klucza i regionu punktu końcowego LUIS. Konfiguracje mowy umożliwiają tworzenie aparatów rozpoznawania dla różnych funkcji zestawu Speech SDK. Konfiguracja mowy ma wiele sposobów na określenie subskrypcji, której chcesz użyć; w tym miejscu użyjemy `FromSubscription`, który pobiera klucz subskrypcji i region.
+Najpierw należy utworzyć konfigurację mowy z poziomu klucza i regionu punktu końcowego LUIS. Konfiguracje mowy umożliwiają tworzenie aparatów rozpoznawania dla różnych funkcji zestawu Speech SDK. Konfiguracja mowy ma wiele sposobów na określenie subskrypcji, której chcesz użyć; tutaj używamy `FromSubscription`, które pobierają klucz subskrypcji i region.
 
 > [!NOTE]
 > Użyj klucza i regionu subskrypcji LUIS, a nie subskrypcji usługi Speech Services.
@@ -134,9 +135,9 @@ Następnie utwórz aparat rozpoznawania mowy przy użyciu elementu `new IntentRe
 
 Teraz zaimportuj model z aplikacji usługi LUIS przy użyciu elementu `LanguageUnderstandingModel.FromAppId()` i dodaj intencje usługi LUIS, które chcesz rozpoznawać za pośrednictwem metody `AddIntent()` aparatu rozpoznawania. Te dwa kroki zwiększają dokładność rozpoznawania mowy, wskazując słowa, których użytkownik prawdopodobnie użyje w swoich żądaniach. Nie musisz dodawać wszystkich intencji aplikacji, jeśli nie chcesz ich rozpoznać w aplikacji.
 
-Aby dodać intencje, należy podać trzy argumenty: model LUIS (który został utworzony i o nazwie `model`), nazwę celu i Identyfikator celu. Różnica między identyfikatorem i nazwą jest następująca.
+Aby dodać intencje, należy podać trzy argumenty: model LUIS (który został utworzony i nosi nazwę `model`), Nazwa celu i Identyfikator celu. Różnica między identyfikatorem i nazwą jest następująca.
 
-|`AddIntent()` @ no__t-1argument|Cel|
+|`AddIntent()`&nbsp;argument|Przeznaczenie|
 |--------|-------|
 |intentName|Nazwa intencji zgodnie z definicją w aplikacji usługi LUIS. Ta wartość musi być zgodna z nazwą celu LUIS.|
 |intentID|Identyfikator przypisany do rozpoznanej intencji przez zestaw SDK rozpoznawania mowy. Ta wartość może być dowolnie taka, jak chcesz. nie musi odpowiadać nazwie zamierzonej zdefiniowanej w aplikacji LUIS. Jeśli na przykład ten sam kod obsługuje wiele intencji, możesz dla nich użyć tego samego identyfikatora.|
@@ -175,11 +176,11 @@ Domyślnie usługa LUIS rozpoznaje intencje w języku angielskim (Stany Zjednocz
 
 ## <a name="continuous-recognition-from-a-file"></a>Ciągłe rozpoznawanie z pliku
 
-Poniższy kod ilustruje dwie dodatkowe możliwości funkcji rozpoznawania intencji, które korzystają z zestawu SDK rozpoznawania mowy. Pierwsza z nich, wspomniana wcześniej, to rozpoznawanie ciągłe, w przypadku którego aparat rozpoznawania emituje zdarzenia, gdy wyniki są dostępne. Te zdarzenia mogą być następnie przetwarzane przez udostępnione programy obsługi zdarzeń. W przypadku ciągłego rozpoznawania należy wywołać metodę `StartContinuousRecognitionAsync()` aparatu rozpoznawania, aby rozpocząć rozpoznawanie zamiast `RecognizeOnceAsync()`.
+Poniższy kod ilustruje dwie dodatkowe możliwości funkcji rozpoznawania intencji, które korzystają z zestawu SDK rozpoznawania mowy. Pierwsza z nich, wspomniana wcześniej, to rozpoznawanie ciągłe, w przypadku którego aparat rozpoznawania emituje zdarzenia, gdy wyniki są dostępne. Te zdarzenia mogą być następnie przetwarzane przez udostępnione programy obsługi zdarzeń. W przypadku ciągłego rozpoznawania należy wywołać metodę `StartContinuousRecognitionAsync()` aparatu rozpoznawania, aby rozpocząć rozpoznawanie, a nie `RecognizeOnceAsync()`.
 
 Inna możliwość to odczytywanie dźwięku zawierającego mowę w celu przetworzenia z pliku WAV. Implementacja obejmuje utworzenie konfiguracji audio, która może być używana podczas tworzenia aparatu rozpoznawania intencji. Plik musi być plikiem jednokanałowym (mono) z częstotliwością próbkowania wynoszącą 16 kHz.
 
-Aby wypróbować te funkcje, Usuń lub Skomentuj treść metody `RecognizeIntentAsync()` i Dodaj do niej Poniższy kod.
+Aby wypróbować te funkcje, Usuń lub Skomentuj treść metody `RecognizeIntentAsync()` i Dodaj do niej następujący kod.
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 
@@ -195,4 +196,4 @@ Poszukaj kodu z tego artykułu w folderze **Samples/CSharp/sharedcontent/Console
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Jak rozpoznawać mowę](quickstart-csharp-dotnetcore-windows.md)
+> [Jak rozpoznawać mowę](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

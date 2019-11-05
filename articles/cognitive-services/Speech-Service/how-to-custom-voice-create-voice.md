@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0fdc58ba54c63ba7dd6b74f56aa91e9c2b3c0936
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 370b5005f27fbfe6ee8fc96d6dd7e467a581ec67
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562836"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464613"
 ---
 # <a name="create-a-custom-voice"></a>Tworzenie niestandardowego głosu
 
@@ -28,7 +28,7 @@ Sprawdź języki obsługiwane dla niestandardowego głosu: [język do dostosowan
 
 ## <a name="upload-your-datasets"></a>Przekazywanie zestawów danych
 
-Gdy wszystko będzie gotowe do przekazania danych, przejdź do [niestandardowego portalu głosowego](https://aka.ms/custom-voice-portal). Utwórz lub wybierz niestandardowy projekt głosowy. Projekt musi udostępniać odpowiednie właściwości języka/ustawień regionalnych oraz płci jako dane, których zamierzasz użyć do szkolenia głosowego. Na przykład wybierz `en-GB` , czy nagranie audio zostało wykonane w języku angielskim z akcentem Zjednoczonego Królestwa.
+Gdy wszystko będzie gotowe do przekazania danych, przejdź do [niestandardowego portalu głosowego](https://aka.ms/custom-voice-portal). Utwórz lub wybierz niestandardowy projekt głosowy. Projekt musi udostępniać odpowiednie właściwości języka/ustawień regionalnych oraz płci jako dane, których zamierzasz użyć do szkolenia głosowego. Na przykład wybierz pozycję `en-GB`, jeśli nagrane audio zostało wykonane w języku angielskim z akcentem Zjednoczonego Królestwa.
 
 Przejdź do karty **dane** , a następnie kliknij pozycję **Przekaż dane**. W kreatorze wybierz odpowiedni typ danych, który jest zgodny z przygotowanymi danymi.
 
@@ -68,7 +68,7 @@ Po sprawdzeniu poprawności zestawu danych można go użyć do utworzenia niesta
 
 3.  Następnie wprowadź **nazwę** i **Opis** , aby ułatwić identyfikację tego modelu.
 
-    Należy uważnie wybrać nazwę. Wprowadzona nazwa będzie nazwą użytą do określenia głosu w żądaniu dla syntezy mowy w ramach danych wejściowych SSML. Dozwolone są tylko litery, cyfry i kilka znaków interpunkcyjnych, takich jak- \_, i (","). Użyj różnych nazw dla różnych modeli głosowych.
+    Należy uważnie wybrać nazwę. Wprowadzona nazwa będzie nazwą użytą do określenia głosu w żądaniu dla syntezy mowy w ramach danych wejściowych SSML. Dozwolone są tylko litery, cyfry i kilka znaków interpunkcyjnych, takich jak-, \_i (","). Użyj różnych nazw dla różnych modeli głosowych.
 
     Typowym zastosowaniem pola **Opis** jest zapisanie nazw zestawów danych, które zostały użyte do utworzenia modelu.
 
@@ -78,11 +78,11 @@ Po sprawdzeniu poprawności zestawu danych można go użyć do utworzenia niesta
     > Zduplikowane nazwy audio zostaną usunięte z szkolenia. Upewnij się, że wybrane zestawy danych nie zawierają tych samych nazw audio w wielu plikach ZIP.
 
     > [!TIP]
-    > Użycie zestawów danych z tego samego prezentera jest wymagane w celu uzyskania jakości wyników. Gdy zbiory danych, które zostały przesłane do szkolenia, zawierają łączną liczbę 6 000 odrębnych wyrażenia długości, nauczysz swój model głosowy za pomocą statystycznej techniki syntezy. W przypadku, gdy dane szkoleniowe przekraczają łączną liczbę 6 000 odrębnych wyrażenia długości, rozpocznie się proces szkolenia przy użyciu techniki syntezy łączenia. Zwykle technologia łączenia może skutkować bardziej naturalnymi wynikami głosu i wyższym dokładnością. [Skontaktuj się](mailto:speechsupport@microsoft.com) z niestandardowym zespołem mowy, jeśli chcesz nauczyć model z najnowszą technologią neuronowych TTS, która może generować cyfrowy głos równoważny do publicznie dostępnych [głosów neuronowych](language-support.md#neural-voices).
+    > Użycie zestawów danych z tego samego prezentera jest wymagane w celu uzyskania jakości wyników. Gdy zbiory danych, które zostały przesłane do szkolenia, zawierają łączną liczbę 6 000 odrębnych wyrażenia długości, nauczysz swój model głosowy za pomocą statystycznej techniki syntezy. W przypadku, gdy dane szkoleniowe przekraczają łączną liczbę 6 000 odrębnych wyrażenia długości, rozpocznie się proces szkolenia przy użyciu techniki syntezy łączenia. Zwykle technologia łączenia może skutkować bardziej naturalnymi wynikami głosu i wyższym dokładnością. [Skontaktuj się z niestandardowym zespołem mowy](https://go.microsoft.com/fwlink/?linkid=2108737) , jeśli chcesz nauczyć model z najnowszą technologią neuronowych TTS, która może generować cyfrowy głos równoważny do publicznie dostępnych [głosów neuronowych](language-support.md#neural-voices).
 
-5.  Kliknij  pozycję uczenie, aby rozpocząć tworzenie modelu głosu.
+5.  Kliknij pozycję **uczenie** , aby rozpocząć tworzenie modelu głosu.
 
-W tabeli szkoleń zostanie wyświetlony nowy wpis, który odnosi się do nowo utworzonego modelu. W tabeli jest również wyświetlany stan: Przetwarzanie zakończone powodzeniem, zakończone niepowodzeniem.
+W tabeli szkoleń zostanie wyświetlony nowy wpis, który odnosi się do nowo utworzonego modelu. W tabeli jest również wyświetlany stan: przetwarzanie, zakończone powodzeniem, zakończone niepowodzeniem.
 
 Wyświetlany stan odzwierciedla proces konwersji zestawu danych na model głosu, jak pokazano poniżej.
 
@@ -100,6 +100,8 @@ Czas uczenia zależy od ilości przetworzonych danych audio. Typowy przedziały 
 > [!NOTE]
 > Maksymalna liczba modeli głosu, które mogą być przeszkolone na subskrypcję, to 10 modeli dla użytkowników bezpłatnych subskrypcji (F0) i 100 dla użytkowników w warstwie Standardowa (S0).
 
+W przypadku korzystania z funkcji szkolenia głosu neuronowych można wybrać, aby szkolić model zoptymalizowany pod kątem scenariuszy przesyłania strumieniowego w czasie rzeczywistym lub model HD neuronowych zoptymalizowany pod kątem asynchronicznej [syntezy typu Long-audio](long-audio-api.md).  
+
 ## <a name="test-your-voice-model"></a>Testowanie modelu głosu
 
 Po pomyślnym skompilowaniu czcionki głosowej możesz ją przetestować przed wdrożeniem jej do użycia.
@@ -115,9 +117,9 @@ Po pomyślnym skompilowaniu czcionki głosowej możesz ją przetestować przed w
     > [!NOTE]
     > Język tekstu musi być taki sam jak język czcionki głosowej. Testy można testować tylko dla pomyślnie przeszkolonych modeli. W tym kroku jest obsługiwany tylko zwykły tekst.
 
-5.  Kliknij przycisk **Utwórz**.
+5.  Kliknij pozycję **Utwórz**.
 
-Po przesłaniu żądania testowego nastąpi powrót do strony testowej. Tabela zawiera teraz wpis odpowiadający nowemu żądaniu i kolumnie Stan. Wypróbowanie mowy może potrwać kilka minut. Gdy kolumna stanu powiedzie **się**, można odtworzyć dźwięk lub pobrać dane wejściowe tekstu (plik. txt) i dane wyjściowe audio (plik. wav), a następnie Audition je w celu zapewnienia jakości.
+Po przesłaniu żądania testowego nastąpi powrót do strony testowej. Tabela zawiera teraz wpis odpowiadający nowemu żądaniu i kolumnie Stan. Wypróbowanie mowy może potrwać kilka minut. Gdy kolumna stanu **powiedzie się**, można odtworzyć dźwięk lub pobrać dane wejściowe tekstu (plik. txt) i dane wyjściowe audio (plik. wav), a następnie Audition je w celu zapewnienia jakości.
 
 Wyniki testów można również znaleźć na stronie szczegółów poszczególnych modeli wybranych do testowania. Przejdź do karty **szkolenie** i kliknij nazwę modelu, aby wprowadzić stronę szczegółów modelu.
 
@@ -143,5 +145,6 @@ Niestandardowy punkt końcowy jest funkcjonalnie identyczny ze standardowym punk
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Prowadzą Rejestruj przykłady głosu](record-custom-voice-samples.md)
+* [Przewodnik: zapisywanie przykładów głosu](record-custom-voice-samples.md)
 * [Odwołanie do tekstu do Speech API](rest-text-to-speech.md)
+* [Długi interfejs API audio](long-audio-api.md)

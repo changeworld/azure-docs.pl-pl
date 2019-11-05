@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Wzorce — LUIS'
+title: 'Samouczek: wzorce — LUIS'
 titleSuffix: Azure Cognitive Services
 description: Aby zwiększyć przewidywanie intencji i jednostek przy jednoczesnym zapewnieniu mniejszej liczby przykładowych wypowiedzi, należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładowej wypowiedzi szablonu, która zawiera składnię służącą do identyfikowania jednostki i tekstu możliwego do zignorowania.
 services: cognitive-services
@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 69f853b77e3fbab149dbf163ed5cccb08578aa4e
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 4e4f1787db86378eaeff9df196cc061c42d0ab1e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390343"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499005"
 ---
-# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Samouczek: dodawanie wspólnego szablonu wzorca formatów wypowiedzi
+# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Samouczek: Dodawanie typowych formatów wypowiedź szablonu wzorca
 
 W ramach tego samouczka w celu zwiększenia przewidywania intencji i jednostek przy jednoczesnym zapewnieniu mniejszej liczby przykładowych wypowiedzi należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładowej wypowiedzi szablonu, która zawiera składnię służącą do identyfikowania jednostki i tekstu możliwego do zignorowania. Wzorzec jest kombinacją dopasowywania wyrażeń i uczenia maszynowego.  Przykładowa wypowiedź szablonu wraz z wypowiedziami intencji pozwala usłudze LUIS lepiej zrozumieć, jakie wypowiedzi pasują do intencji. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -69,13 +71,13 @@ Wykonaj następujące czynności:
     |Who does Jill Jones directly report to? (Kto jest bezpośrednim przełożonym Jill Jones?)|
     |Who is Jill Jones supervisor? (Kto jest przełożonym Jill Jones?)|
 
-    [![Zrzut ekranu przedstawiający dodawanie nowych wypowiedzi do intencji w usłudze LUIS](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Zrzut ekranu przedstawiający dodawanie nowych wypowiedzi do intencji w usłudze LUIS")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    [![Zrzut ekranu przedstawiający LUIS Dodawanie nowych wyrażenia długości do zamiaru](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Zrzut ekranu przedstawiający LUIS Dodawanie nowych wyrażenia długości do zamiaru")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
 
     Nie martw się, jeśli jednostka keyPhrase jest oznaczona etykietą w wypowiedziach intencji zamiast jednostki pracownika. Oba elementy są poprawnie przewidywane w okienku testu i w punkcie końcowym. 
 
 5. Wybierz pozycję **Intents** (Intencje) na lewym pasku nawigacyjnym.
 
-6. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
+6. Wybierz pozycję**Create new intent** (Utwórz nową intencję). 
 
 7. Wprowadź ciąg `OrgChart-Reports` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe).
 
@@ -377,7 +379,7 @@ Przykładowy wyrażenia długości szablonu, który zezwala na te informacje opc
 Korzystanie z opcjonalnych składni z nawiasami kwadratowymi, `[]`, sprawia, że ten opcjonalny tekst jest łatwy do dodania do wypowiedzi szablonu i może być zagnieżdżony najwyżej do drugiego poziomu, `[[]]`, a także może zawierać tekst lub jednostki.
 
 
-**Pytanie: dlaczego wszystkie wypowiedzi szablonu zaczynają się małą literą `w`? Nie powinny one być opcjonalnie duże lub małe?** Wypowiedź przesłana do punktu końcowego zapytania przez aplikację kliencką jest konwertowana na małe litery. Wypowiedź szablonu może zaczynać się dużą lub małą literą, podobnie jak wypowiedź punktu końcowego. Porównanie odbywa się zawsze po konwersji na małe litery.
+**Pytanie: Dlaczego są wszystkie `w` litery, pierwsza litera w każdym szablonie wypowiedź, małe litery? Nie powinno być opcjonalnie wielkie czy małe?** Wypowiedź przesłana do punktu końcowego zapytania przez aplikację kliencką jest konwertowana na małe litery. Wypowiedź szablonu może zaczynać się dużą lub małą literą, podobnie jak wypowiedź punktu końcowego. Porównanie odbywa się zawsze po konwersji na małe litery.
 
 **Pytanie: dlaczego wstępnie skompilowany numer nie jest częścią wypowiedzi szablonu, jeśli March 3 (3 marca) jest przewidziany zarówno jako liczba `3`, jak i data `March 3`?** Wypowiedź szablonu kontekstowo używa daty — albo dosłownie jak w wypowiedzi `March 3`, albo abstrakcyjnie jak w wypowiedzi `in a month`. Data może zawierać liczbę, ale liczba nie musi być zawsze postrzegana jako data. Należy zawsze używać jednostki najlepiej reprezentującej typ, który ma być zwracany w wynikach przewidywania JSON.  
 
@@ -389,7 +391,7 @@ Korzystanie z opcjonalnych składni z nawiasami kwadratowymi, `[]`, sprawia, że
 
 1. W witrynie usługi LUIS wybierz pozycję **Build** (Kompiluj) w górnym menu, a następnie wybierz pozycję **Patterns** (Wzorce) w menu po lewej stronie. 
 
-1. Wyszukaj istniejący szablon wypowiedź, `Who is {Employee}['s] manager[?]`a następnie wybierz wielokropek (***...***) po prawej stronie, a następnie wybierz pozycję **Edytuj** z menu podręcznego. 
+1. Wyszukaj istniejący szablon wypowiedź, `Who is {Employee}['s] manager[?]`i wybierz wielokropek (***...***) po prawej stronie, a następnie wybierz pozycję **Edytuj** z menu podręcznego. 
 
 1. Zmień wypowiedź szablonu na: `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
@@ -424,9 +426,9 @@ Wszystkie te wypowiedzi znalazły jednostki wewnątrz, dlatego pasują do tego s
 
 ## <a name="use-the-or-operator-and-groups"></a>Używanie operatora OR i grup
 
-Kilka z poprzedniego wyrażenia długości szablonu jest bardzo blisko. Użyj **grupy** `()` i **lub** `|` składni, aby zmniejszyć wyrażenia długości szablonu. 
+Kilka z poprzedniego wyrażenia długości szablonu jest bardzo blisko. Aby zmniejszyć wyrażenia długości **szablonu, użyj składni `()` i** **lub** `|`. 
 
-Poniższe 2 wzorce mogą łączyć się w jeden wzorzec przy użyciu grupy `()` i lub `|` składni.
+Poniższe 2 wzorce mogą łączyć się w jeden wzorzec przy użyciu składni `()` i lub `|`.
 
 |Intencja|Przykładowe wypowiedzi z opcjonalnym tekstem i wstępnie skompilowanymi jednostkami|
 |--|--|
@@ -437,9 +439,9 @@ Nowy szablon wypowiedź będzie:
 
 `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`. 
 
-Powoduje to użycie **grupy** wokół wymaganego przedziału i opcjonalne `in` i `on` z **lub** z potokiem między nimi. 
+Powoduje to użycie **grupy** wokół wymaganego przedziału i opcjonalne `in` i `on` z **lub** między nimi. 
 
-1. Na stronie **wzorce** wybierz filtr **schemat organizacyjny — Menedżer** . Zawęź listę, wyszukując frazę `manager`. 
+1. Na stronie **wzorce** wybierz filtr **schemat organizacyjny — Menedżer** . Zawęź listę, wyszukując `manager`. 
 
     ![Wyszukaj w obszarze schemat organizacyjny — wzorce założeń dla programu Term Manager](./media/luis-tutorial-pattern/search-patterns.png)
 
@@ -465,7 +467,7 @@ Powoduje to użycie **grupy** wokół wymaganego przedziału i opcjonalne `in` i
 
 ## <a name="use-the-utterance-beginning-and-ending-anchors"></a>Używanie kotwic początkowych i końcowych wypowiedź
 
-Składnia wzorca zapewnia początkową i końcową składnię zakotwiczenia wypowiedź karetki `^`. Kotwice początkową i końcową wypowiedź mogą być używane razem w celu określania wartości docelowej i możliwego do oddzielenia literału wypowiedź lub użycia oddzielnie do celów docelowych. 
+Składnia wzorca zapewnia początkową i końcową składnię zakotwiczenia wypowiedź karetki, `^`. Kotwice początkową i końcową wypowiedź mogą być używane razem w celu określania wartości docelowej i możliwego do oddzielenia literału wypowiedź lub użycia oddzielnie do celów docelowych. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

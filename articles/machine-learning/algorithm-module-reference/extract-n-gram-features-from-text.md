@@ -1,7 +1,7 @@
 ---
 title: Wyodrębnij funkcje N-gramowe z odwołania do modułu tekstowego
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak cechowanie dane tekstowe przy użyciu modułu wyodrębnianie N-gramów w usłudze Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu Wyodrębnij N-gramy w Azure Machine Learning, aby cechowanie dane tekstowe.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 0803627b8d2e9fb3db2c7c96d7dd74e9b275f5d8
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 71c1afd294b880f68849b283ea1a4b058d744801
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171003"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497840"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>Wyodrębnij funkcje N-gramowe z odwołania do modułu tekstowego
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning. Użycie funkcji Wyodrębnij N-gramy z modułu tekstowego do *cechowanie* danych tekstowych bez struktury. 
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza). Użycie funkcji Wyodrębnij N-gramy z modułu tekstowego do *cechowanie* danych tekstowych bez struktury. 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Konfiguracja funkcji wyodrębniania N-gramów z modułu tekstowego
 
@@ -32,7 +32,7 @@ Moduł obsługuje następujące scenariusze dotyczące korzystania ze słownika 
 
 ### <a name="create-a-new-n-gram-dictionary"></a>Tworzenie nowego słownika n-gramowego
 
-1.  Dodaj funkcje Wyodrębnij N-gram z modułu tekstowego do eksperymentu i Połącz zestaw danych z tekstem, który chcesz przetworzyć.
+1.  Dodaj funkcje Wyodrębnij N-gram z modułu tekstowego do potoku i Połącz zestaw danych z tekstem, który chcesz przetworzyć.
 
 1.  **Kolumna tekstowa** służy do wybierania kolumny zawierającej tekst, który ma zostać wyodrębniony. Ze względu na to, że wyniki są pełne, można przetwarzać tylko pojedynczą kolumnę w danym momencie.
 
@@ -44,15 +44,15 @@ Moduł obsługuje następujące scenariusze dotyczące korzystania ze słownika 
 
 1. **Funkcja ważenia** określa sposób tworzenia wektora funkcji dokumentu oraz wyodrębniania słownictwa z dokumentów.
 
-    * **Waga binarna**: Przypisuje wartość obecności binarnej do wyodrębnionych n-gramów. Wartość dla każdego n-gramu wynosi 1, gdy istnieje w dokumencie, i 0 w przeciwnym razie.
+    * **Waga binarna**: przypisuje wartość obecności binarnej do wyodrębnionych n-gramów. Wartość dla każdego n-gramu wynosi 1, gdy istnieje w dokumencie, i 0 w przeciwnym razie.
 
-    * **Waga TF**: Przypisuje wynik częstotliwości okresowej (TF) do wyodrębnionych n-gramów. Wartość każdego n-gramu jest częstotliwością występowania w dokumencie.
+    * **TF wagi**: przypisuje wynik częstotliwości okresowej (TF) do wyodrębnionych n-gramów. Wartość każdego n-gramu jest częstotliwością występowania w dokumencie.
 
-    * **Waga IDF**: Przypisuje wynik odwrotnej częstotliwości dokumentu (IDF) do wyodrębnionych n-gramów. Wartość każdego n-grama to dziennik o rozmiarze korpus podzielonym według częstotliwości występowania w całej korpus.
+    * **Waga IDF**: przypisuje wynik odwrotnej częstotliwości dokumentu (IDF) do wyodrębnionych n-gramów. Wartość każdego n-grama to dziennik o rozmiarze korpus podzielonym według częstotliwości występowania w całej korpus.
     
       `IDF = log of corpus_size / document_frequency`
  
-    *  **TF — waga IDF**: Przypisuje wynikowy wskaźnik częstotliwości/dokumentu odwrotnego (TF/IDF) do wyodrębnionych n-gramów. Wartość dla każdego n-gramu to wynik TF pomnożony przez jego ocenę IDF.
+    *  **TF-IDF wag**: przypisuje wynikowe częstotliwość/częstotliwość dokumentu odwrotnego (TF/IDF) do wyodrębnionych n-gramów. Wartość dla każdego n-gramu to wynik TF pomnożony przez jego ocenę IDF.
 
 1. Ustaw **minimalną długość wyrazu** na minimalną liczbę liter, które mogą być używane w *pojedynczym wyrazie* w n-gramowej.
 
@@ -73,11 +73,11 @@ Moduł obsługuje następujące scenariusze dotyczące korzystania ze słownika 
 
 1. Wybierz opcję **normalizuje wektory funkcji n-gramy** , aby znormalizować wektory funkcji. Jeśli ta opcja jest włączona, każdy wektor funkcji n-gram jest podzielony według normy L2.
 
-1. Uruchom eksperyment.
+1. Uruchamianie potoku.
 
 ### <a name="use-an-existing-n-gram-dictionary"></a>Użyj istniejącego słownika n-gramowego
 
-1.  Dodaj funkcje Wyodrębnij N-gram z modułu tekstowego do eksperymentu i Połącz zestaw danych z tekstem, który chcesz przetworzyć na port **DataSet** .
+1.  Dodaj funkcje Wyodrębnij N-gram z modułu tekstowego do potoku i Połącz zestaw danych z tekstem, który chcesz przetworzyć na port **DataSet** .
 
 1.  **Kolumna tekstowa** służy do zaznaczania kolumny tekstowej zawierającej tekst, który ma zostać cechowanie. Domyślnie moduł wybiera wszystkie kolumny typu **String**. Aby uzyskać najlepsze wyniki, przetwórz pojedynczą kolumnę w czasie.
 
@@ -92,7 +92,7 @@ Moduł obsługuje następujące scenariusze dotyczące korzystania ze słownika 
 
 1.  Wszystkie inne opcje można znaleźć w opisach właściwości w [poprzedniej sekcji](#create-a-new-n-gram-dictionary).
 
-1.  Uruchom eksperyment.
+1.  Uruchamianie potoku.
 
 ### <a name="score-or-publish-a-model-that-uses-n-grams"></a>Ocena lub publikacja modelu używającego n-gramów
 
@@ -102,7 +102,7 @@ Moduł obsługuje następujące scenariusze dotyczące korzystania ze słownika 
 
 1.  W przepływie pracy ocenianie Zmodyfikuj funkcje Wyodrębnij N-gramy z modułu tekstowego i ustaw parametr **tryb słownictwa** na **ReadOnly**. Pozostaw wszystkie inne te same.
 
-1.  Aby opublikować eksperyment, Zapisz **słownictwo wyniku** jako zestaw danych.
+1.  Aby opublikować potok, Zapisz **słownictwo wyniku** jako zestaw danych.
 
 1.  Podłącz zapisany zestaw danych do funkcji Wyodrębnij N-gram z modułu tekstowego na wykresie oceniania.
 
@@ -110,20 +110,20 @@ Moduł obsługuje następujące scenariusze dotyczące korzystania ze słownika 
 
 Funkcja wyodrębnianie N-gramów z modułu tekstu tworzy dwa typy danych wyjściowych: 
 
-* **Zestaw danych wyników**: To dane wyjściowe to podsumowanie analizowanego tekstu połączone z oddzielonymi n-gramami. Kolumny, które nie zostały wybrane w **kolumnie tekstowej** , są przekazywane do danych wyjściowych. Dla każdej kolumny analizowanego tekstu moduł generuje następujące kolumny:
+* **Zestaw danych wyników**: to wyjście jest podsumowaniem analizowanego tekstu połączonego z oddzielonymi n-gramami. Kolumny, które nie zostały wybrane w **kolumnie tekstowej** , są przekazywane do danych wyjściowych. Dla każdej kolumny analizowanego tekstu moduł generuje następujące kolumny:
 
-  * **Macierz wystąpień n-gram**: Moduł generuje kolumnę dla każdego n-gramu znalezionego w łącznej korpus i dodaje ocenę w każdej kolumnie, aby wskazać wagę n-grama dla tego wiersza. 
+  * **Macierz wystąpień n-gram**: moduł generuje kolumnę dla każdego n-gramu znalezionego w łącznej korpus i dodaje ocenę w każdej kolumnie, aby wskazać wagę n-grama dla tego wiersza. 
 
-* **Słownictwo wyniku**: Słownictwo zawiera rzeczywisty słownik n-gramowy wraz z wynikami częstotliwości, które są generowane w ramach analizy. Zestaw danych można zapisać do ponownego użycia z innym zestawem danych wejściowych lub w późniejszej aktualizacji. Możesz również ponownie użyć słownika do modelowania i oceniania.
+* **Słownictwo wyniku**: słownictwo zawiera rzeczywisty słownik n-gramowy wraz z wynikami częstotliwości, które są generowane w ramach analizy. Zestaw danych można zapisać do ponownego użycia z innym zestawem danych wejściowych lub w późniejszej aktualizacji. Możesz również ponownie użyć słownika do modelowania i oceniania.
 
 ### <a name="result-vocabulary"></a>Słownictwo wyniku
 
 Słownictwo zawiera słownik n-gram z wynikami częstotliwości, które są generowane w ramach analizy. Wyniki DF i IDF są generowane niezależnie od innych opcji.
 
-+ **ID**: Identyfikator wygenerowany dla każdego unikatowego n-gramu.
-+ **NGram**: N-gram. Spacje lub inne separatory wyrazów są zastępowane znakiem podkreślenia.
-+ **DF**: Wartość współczynnika częstotliwości dla n-grama w oryginalnym korpus.
-+ **IDF**: Wynik dotyczący częstotliwości odwracania dokumentu dla n-gramów w oryginalnym korpus.
++ **Identyfikator**: Identyfikator wygenerowany dla każdego unikatowego n-gramu.
++ **NGram**: n-gram. Spacje lub inne separatory wyrazów są zastępowane znakiem podkreślenia.
++ **DF**: termin częstotliwości dla n-gramu w pierwotnej korpus.
++ **IDF**: wynik odwrotnej częstotliwości dokumentu dla n-gramów w oryginalnym korpus.
 
 Możesz ręcznie zaktualizować ten zestaw danych, ale możesz wprowadzić błędy. Na przykład:
 
@@ -137,4 +137,4 @@ Możesz ręcznie zaktualizować ten zestaw danych, ale możesz wprowadzić błę
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning.

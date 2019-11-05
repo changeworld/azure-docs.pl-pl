@@ -1,5 +1,5 @@
 ---
-title: Rozszerzony serwer historii platformy Spark do debugowania aplikacji platformy Spark — Azure HDInsight
+title: Rozszerzony serwer historii platformy Spark na potrzeby debugowania aplikacji — Azure HDInsight
 description: Użyj rozszerzonego serwera historii platformy Spark do debugowania i diagnozowania aplikacji platformy Spark — Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9398745cb240e7b7dff45ff5d6d9cdf064239bfd
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1320764687f3eb2f033ca70703a9bcb16ab616ea
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130356"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494741"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Użyj serwera Apache Spark History, aby debugować i diagnozować aplikacje Apache Spark
 
@@ -32,7 +32,7 @@ Serwer historii Apache Spark jest interfejsem użytkownika sieci Web dla ukończ
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>Otwórz interfejs użytkownika sieci Web serwera historii platformy Spark według adresu URL
 
-Otwórz serwer historii platformy Spark, przechodząc do następującego adresu URL, `<ClusterName>` a następnie zastąp ciąg nazwą klastra Spark.
+Otwórz serwer historii platformy Spark, przechodząc do następującego adresu URL, zastępując `<ClusterName>` nazwą klastra Spark.
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory
@@ -106,16 +106,16 @@ Wybierz opcję Identyfikator zadania, a następnie kliknij pozycję **Graph** w 
 
 + Odtwórz zadanie, klikając przycisk **odtwarzania** i Zatrzymaj w dowolnym momencie, klikając przycisk Zatrzymaj. Zadanie jest wyświetlane w kolorze, aby pokazać inny stan podczas odtwarzania:
 
-  + Zielony dla powiodło się: Zadanie zostało ukończone pomyślnie.
-  + Pomarańczowy dla ponownych prób: Wystąpienia zadań, które zakończyły się niepowodzeniem, ale nie wpływają na końcowy wynik zadania. Te zadania mają zduplikowane lub ponawiane wystąpienia, które mogą się powieść później.
-  + Niebieski do uruchamiania: Zadanie jest uruchomione.
-  + Biały dla oczekiwania lub pominięty: Zadanie oczekuje na uruchomienie lub etap został pominięty.
-  + Czerwony dla niepowodzenia: Zadanie nie powiodło się.
+  + Zielony dla powiodło się: zadanie zostało ukończone pomyślnie.
+  + Pomarańczowy dla ponownych prób: wystąpienia zadań, które zakończyły się niepowodzeniem, ale nie wpływają na końcowy wynik zadania. Te zadania mają zduplikowane lub ponawiane wystąpienia, które mogą się powieść później.
+  + Niebieski do uruchamiania: zadanie jest uruchomione.
+  + Białe dla oczekiwania lub pominięte: zadanie oczekuje na uruchomienie lub etap został pominięty.
+  + Czerwona dla niepowodzenia: zadanie nie powiodło się.
 
     ![Przykładowy kolor grafu aplikacji i zadania platformy Spark, uruchomiony](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
     Pominięty etap zostanie wyświetlony w kolorze białym.
-    ![Przykład koloru aplikacji i wykresu platformy Spark, Pomiń](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+    Przykładowy kolor ![i wykresu zadań platformy Spark, Pomiń](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
 
     ![Próbka koloru aplikacji i wykresu platformy Spark nie powiodła się](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
 
@@ -137,7 +137,7 @@ Wybierz opcję Identyfikator zadania, a następnie kliknij pozycję **Graph** w 
     ![Ikona pochylanie aplikacji i wykresu zadań platformy Spark](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + W węźle grafu zadania zostaną wyświetlone następujące informacje dotyczące poszczególnych etapów:
-  + #C1.
+  + #.
   + Nazwa lub opis.
   + Łączny numer zadania.
   + Odczytane dane: suma rozmiaru danych wejściowych i rozmiaru losowego odczytu.
@@ -168,7 +168,7 @@ Wybierz pozycję Identyfikator zadania, a następnie kliknij pozycję **Diagnost
 
 Kliknij kartę **pochylanie danych** , odpowiednie skośne zadania są wyświetlane na podstawie określonych parametrów.
 
-+ **Określ parametry** — pierwsza sekcja zawiera parametry, które są używane do wykrywania pochylenia danych. Wbudowana reguła to: Odczyt danych zadania jest dłuższy niż 3 razy średniego odczytania danych zadania, a odczyt danych zadania przekracza 10 MB. Jeśli chcesz zdefiniować własną regułę dla pochylonych zadań, możesz wybrać parametry, **etap skośny**i odcinek **skośny** zostaną odpowiednio odświeżone.
++ **Określ parametry** — pierwsza sekcja zawiera parametry, które są używane do wykrywania pochylenia danych. Wbudowana reguła to: odczyt danych zadania jest dłuższy niż 3 razy średniego odczytania danych zadania, a odczyt danych zadania przekracza 10 MB. Jeśli chcesz zdefiniować własną regułę dla pochylonych zadań, możesz wybrać parametry, **etap skośny**i odcinek **skośny** zostaną odpowiednio odświeżone.
 
 + **Etap skośny** — druga sekcja przedstawia etapy, w których zadania skośne spełniają kryteria określone powyżej. Jeśli na etapie występuje więcej niż jedno zadanie skośne, w tabeli etapów skośnych jest wyświetlane tylko zadanie najbardziej skośne (np. największe dane dotyczące pochylenia danych).
 
@@ -224,7 +224,7 @@ Aby powrócić do wersji społeczności, wykonaj następujące czynności:
     ![Ponowne uruchamianie historii Apache Ambari Spark2](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 9. Odśwież interfejs użytkownika sieci Web serwera historii platformy Spark, który zostanie przywrócony do wersji społecznościowej.
 
-### <a name="2-upload-history-server-event"></a>2. Prześlij zdarzenie serwera historii
+### <a name="2-upload-history-server-event"></a>2. Przekaż historię zdarzeń serwera
 
 Jeśli wystąpi błąd serwera historii, postępuj zgodnie z instrukcjami, aby podać zdarzenie:
 

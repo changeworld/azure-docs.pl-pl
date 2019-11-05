@@ -7,18 +7,18 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: c9b72c90bc23cfac6f064445c4f6f98d05d7fe16
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: afc026ccb602538b0749fa294cee763efa3d27d0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331775"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483237"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Szybki Start: Konfigurowanie Data Science Virtual Machine dla systemu Windows
 
 Zacznij korzystać z Data Science Virtual Machine systemu Windows.
 
-## <a name="prerequisite"></a>Warunek wstępny
+## <a name="prerequisite"></a>Wymagania wstępne
 
 Aby utworzyć Data Science Virtual Machine systemu Windows, musisz mieć subskrypcję platformy Azure. [Wypróbuj bezpłatnie platformę Azure](https://azure.com/free).
 Zanotuj bezpłatne konta platformy Azure nie obsługują jednostek SKU maszyn wirtualnych obsługujących procesor GPU.
@@ -34,10 +34,10 @@ Aby utworzyć wystąpienie DSVM:
 
 1. Wybierz przycisk **Utwórz** u dołu.
 
-    [![](media/provision-vm/create-windows.png "Przycisk służący do tworzenia maszyny z systemem Windows")](media/provision-vm/create-windows-expanded.png#lightbox)
+    [![](media/provision-vm/create-windows.png "Button to create a Windows machine")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. Należy przekierować do bloku "Tworzenie maszyny wirtualnej".
-   Karta @no__t 0Basics odpowiadająca maszynie wirtualnej z systemem Windows @ no__t-1
+   Karta podstawy ![odpowiadająca maszynie wirtualnej z systemem Windows](./media/provision-vm/review-create-windows.png)
 
 1. Wypełnij kartę **podstawowe** :
       * **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz tę, w której zostanie utworzona i rozliczona. Musisz mieć uprawnienia do tworzenia zasobów dla tej subskrypcji.
@@ -72,7 +72,7 @@ Możesz również dołączyć DSVM do Azure Notebooks uruchamiania notesów Jupy
 ## <a name="next-steps"></a>Następne kroki
 
 * Zapoznaj się z narzędziami w DSVM, otwierając menu **Start** .
-* Dowiedz się więcej o usłudze Azure Machine Learning, odczytując informacje o tym, [co to jest usługa Azure Machine Learning?](../service/overview-what-is-azure-ml.md) i wypróbować [samouczki](../index.yml).
+* Dowiedz się więcej na temat Azure Machine Learning, odczytując informacje o tym, [co jest Azure Machine Learning?](../service/overview-what-is-azure-ml.md) i wypróbować [samouczki](../index.yml).
 * W Eksploratorze plików przejdź do folderu C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts for Samples, które używają biblioteki kolekcję funkcji revoscaler w języku R, która obsługuje analizę danych w skali przedsiębiorstwa. 
 * Zapoznaj się z artykułem [dziesięć rzeczy, które można wykonać na Data Science Virtual Machine](https://aka.ms/dsvmtenthings).
 * Dowiedz się, jak kompleksowo kompilować kompleksowe rozwiązania analityczne przy użyciu [zespołowego procesu nauki o danych](../team-data-science-process/index.yml).

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: eb4478a435fbfc899055a60e13b318be771652f7
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 46ada91060aa095b7c041ff75abb6256f3d05853
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527583"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464698"
 ---
 # <a name="try-speech-services-for-free"></a>Wypróbuj bezpłatnie usługi mowy
 
@@ -123,5 +123,5 @@ Klucze utworzone dla regionu są prawidłowe tylko w tym regionie. Próba użyci
 Wykonaj jedną z naszych 10-minutowych przewodników szybki start lub zapoznaj się z naszymi przykładami zestawu SDK:
 
 > [!div class="nextstepaction"]
-> [Szybki Start: Rozpoznawanie mowy C# w](quickstart-csharp-dotnet-windows.md) 
+> [Szybki Start: Rozpoznawanie mowy C# w](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
 > [przykłady zestawu Speech SDK](speech-sdk.md#get-the-samples)

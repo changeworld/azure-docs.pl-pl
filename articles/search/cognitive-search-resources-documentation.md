@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 5fb1050fed2ab7318ad5b4ecafec7a96a9324575
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792065"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466718"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Zasoby dokumentacji dotyczące wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze
 
@@ -22,8 +22,8 @@ Wzbogacanie AI to funkcja indeksowania Wyszukiwanie poznawcze platformy Azure, k
 Poniższe artykuły stanowią kompletną dokumentację dotyczącą wzbogacania AI.
 
 ## <a name="getting-started"></a>Wprowadzenie
-+ [Wprowadzenie do wzbogacania AI na platformie Azure Wyszukiwanie poznawcze](cognitive-search-concept-intro.md)
-+ [Szybki Start: Wypróbuj wzbogacanie AI w portalu](cognitive-search-quickstart-blob.md)
++ [Wprowadzenie do AI na platformie Azure Wyszukiwanie poznawcze](cognitive-search-concept-intro.md)
++ [Szybki Start: Tworzenie zestawu umiejętności poznawczych w Azure Portal](cognitive-search-quickstart-blob.md)
 + [Samouczek: wzbogacone indeksowanie za pomocą AI](cognitive-search-tutorial-blob.md)
 + [Przykład: Tworzenie niestandardowej umiejętności dla wzbogacania AI](cognitive-search-create-custom-skill-example.md)
 
@@ -49,6 +49,7 @@ Poniższe artykuły stanowią kompletną dokumentację dotyczącą wzbogacania A
   + [Microsoft. umiejętności. Vision. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Microsoft. umiejętności. Vision. OcrSkill](cognitive-search-skill-ocr.md)
   + [Microsoft. umiejętności. util. ConditionalSkill](cognitive-search-skill-conditional.md)
+  + [Microsoft. umiejętności. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
   + [Microsoft. umiejętności. util. ShaperSkill](cognitive-search-skill-shaper.md)
 
 + Umiejętności niestandardowe
@@ -61,7 +62,7 @@ Poniższe artykuły stanowią kompletną dokumentację dotyczącą wzbogacania A
   + [Create zestawu umiejętności (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
   + [Create indeksator (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Interfejs API REST usługi Azure Wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice/)
 + [Indeksatory w usłudze Azure Wyszukiwanie poznawcze](search-indexer-overview.md)

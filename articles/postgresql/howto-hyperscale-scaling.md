@@ -6,36 +6,41 @@ ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/17/2019
-ms.openlocfilehash: a69b4988a5ee835381de986edaa5899b09aa9e4e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 6053ba37bf330f6b59e291dade822a5ca9de8c85
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262494"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492299"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Skalowanie grupy serwerów ze skalą (Citus)
 
-Azure Database for PostgreSQL-Citus) oferuje skalowanie samoobsługowe umożliwiające zwiększenie obciążenia. Azure Portal ułatwia dodawanie nowych węzłów procesu roboczego.
+Azure Database for PostgreSQL-Citus) oferuje skalowanie samoobsługowe umożliwiające zwiększenie obciążenia. Azure Portal ułatwia dodawanie nowych węzłów procesu roboczego i zwiększanie pojemności istniejących węzłów.
 
-W tym celu przejdź na kartę **Konfiguracja** w grupie serwerów moja skala (Citus).
-Przeciągnij suwak dla pozycji **Liczba węzłów procesu roboczego** , aby zmienić wartość.
+## <a name="add-worker-nodes"></a>Dodaj węzły procesu roboczego
+
+Aby dodać węzły, przejdź na kartę **Konfiguracja** w grupie serwerów moja skala (Citus).  Przeciągnięcie suwaka dla **liczby węzłów roboczych** powoduje zmianę wartości.
 
 ![Suwaki zasobów](./media/howto-hyperscale-scaling/01-sliders-workers.png)
 
-Kliknij przycisk "Zapisz", aby zmienić wartość efektu.
+Kliknij przycisk **Zapisz** , aby zmiana wartości zaczęła obowiązywać.
 
 > [!NOTE]
 > Po zwiększeniu i zapisaniu liczba węzłów procesu roboczego nie może być obniżona przy użyciu suwaka.
->
-> Ponadto rdzeni wirtualnych i magazyn nie mogą zostać dostosowane do koordynatora lub procesów roboczych z tym interfejsem użytkownika. Otwórz bilet pomocy technicznej, jeśli jest wymagany skalowanie obliczeniowe na koordynatorze lub w węzłach procesu roboczego.
 
-Aby skorzystać z nowo dodanych węzłów, należy ponownie zrównoważyć rozproszoną tabelę [fragmentów](concepts-hyperscale-distributed-data.md#shards), co oznacza przeniesienie niektórych fragmentów z istniejących węzłów do nowych. Aby uruchomić moduł równoważenia fragmentu, Połącz się z węzłem koordynatora klastra z PSQL i uruchom polecenie:
+### <a name="rebalance-shards"></a>Ponowne równoważenie fragmentów
+
+Aby skorzystać z nowo dodanych węzłów, należy ponownie zrównoważyć rozproszoną tabelę [fragmentów](concepts-hyperscale-distributed-data.md#shards), co oznacza przeniesienie niektórych fragmentów z istniejących węzłów do nowych. Najpierw sprawdź, czy nowi pracownicy pomyślnie ukończyli Inicjowanie obsługi administracyjnej. Następnie należy uruchomić moduł równoważenia fragmentu, łącząc się z węzłem koordynatora klastra z PSQL i uruchamiając następujące polecenie:
 
 ```sql
 SELECT rebalance_table_shards('distributed_table_name');
 ```
 
-Funkcja ponownie równoważy wszystkie tabele w grupie wspólnej lokalizacji tabeli o nazwie w jej argumencie. [](concepts-hyperscale-colocation.md) `rebalance_table_shards` W ten sposób nie trzeba wywoływać funkcji dla każdej tabeli rozproszonej, po prostu wywołaj ją na reprezentatywnej tabeli z każdej grupy wspólnej lokalizacji.
+Funkcja `rebalance_table_shards` ponownie równoważy wszystkie tabele w grupie wspólnej [lokalizacji](concepts-hyperscale-colocation.md) tabeli o nazwie w argumencie. W ten sposób nie trzeba wywoływać funkcji dla każdej tabeli rozproszonej, po prostu wywołaj ją na reprezentatywnej tabeli z każdej grupy wspólnej lokalizacji.
+
+## <a name="increase-vcores-or-storage-space"></a>Zwiększ rdzeni wirtualnych lub miejsce do magazynowania
+
+Oprócz dodawania nowych węzłów można zwiększyć możliwości istniejących węzłów. Przejdź do karty **Konfiguracja** w grupie serwerów moja skala (Citus), a następnie przeciągnij suwak dla pozycji **rdzeni wirtualnych** i **Storage** , aby zmienić te wartości dla wszystkich węzłów procesu roboczego. Kliknij przycisk **Zapisz** , aby zastosować zmiany.
 
 ## <a name="next-steps"></a>Następne kroki
 

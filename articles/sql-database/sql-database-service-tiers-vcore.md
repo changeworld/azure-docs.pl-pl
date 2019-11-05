@@ -1,141 +1,183 @@
 ---
-title: Azure SQL Database Service-rdzeń wirtualny | Microsoft Docs
-description: Model zakupu oparty na rdzeń wirtualny umożliwia niezależne skalowanie zasobów obliczeniowych i magazynu, dopasowanie wydajności lokalnej i optymalizację cen.
+title: Azure SQL Database Service — Omówienie modelu rdzeń wirtualny | Microsoft Docs
+description: Model zakupów rdzeń wirtualny umożliwia niezależne skalowanie zasobów obliczeniowych i magazynu, dopasowanie wydajności lokalnej i optymalizację cen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/01/2019
-ms.openlocfilehash: af2e8826c40fb0d16844b6c67f151b0affbf3efd
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 11/04/2019
+ms.openlocfilehash: 2bbdd565a861004014ca4161856bba83ec0be511
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034988"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496059"
 ---
-# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Wybierz spośród warstw usług rdzeń wirtualny i Przeprowadź migrację z warstw usług DTU
+# <a name="vcore-model-overview"></a>Rdzeń wirtualny model — Omówienie
 
-Model zakupu oparty na wirtualnym rdzeniu (rdzeń wirtualny) umożliwia niezależne skalowanie zasobów obliczeniowych i magazynu, dopasowanie wydajności lokalnej i optymalizację cen. Umożliwia również wybranie generacji sprzętu:
+Model Virtual Core (rdzeń wirtualny) zapewnia kilka korzyści:
 
-- **Obliczenia**: do 24 procesorów logicznych opartych na procesorze Intel E5-2673 v3 (Haswell) 2,4 GHz, rdzeń wirtualny = 1 PP (rdzeń fizyczny), 7 GB na rdzeń wirtualny, PODŁĄCZONYm SSD
-- **5 rdzeń**: do 80 procesorów logicznych opartych na procesorze Intel E5-2673 v4 (Broadwell) 2,3 GHz, rdzeń wirtualny = 1 LP (Hyper-Thread), 5,1 GB na rdzeń wirtualny w przypadku obliczeń zainicjowanych i do 24 GB na rdzeń wirtualny w przypadku obliczeń bezserwerowych, Fast eNVM SSD
+- Wyższe limity obliczeń, pamięci, operacji we/wy i magazynu.
+- Kontrola nad generowaniem sprzętu w celu lepszego dopasowania do wymagań obliczeniowych i pamięci dla obciążenia.
+- Rabaty cenowe dla [korzyść użycia hybrydowego platformy Azure (AHB)](sql-database-azure-hybrid-benefit.md) i [wystąpienia zarezerwowanego (ri)](sql-database-reserved-capacity.md).
+- Większa przejrzystość szczegółów sprzętowych, które zwiększają moc obliczeniową; ułatwia planowanie migracji z wdrożeń lokalnych.
 
-Sprzęt obliczenia zapewnia znacznie większą ilość pamięci na rdzeń wirtualny. Jednak sprzęt 5 rdzeń umożliwia skalowanie zasobów obliczeniowych znacznie więcej.
+## <a name="service-tiers"></a>Warstwy usług
 
-> [!IMPORTANT]
-> Nowe bazy danych obliczenia nie są już obsługiwane w regionach Australia Wschodnia lub Brazylia Południowa.
-> [!NOTE]
-> Aby uzyskać informacje o warstwach usług opartych na jednostkach DTU, zobacz [warstwy usług dla modelu zakupu opartego na](sql-database-service-tiers-dtu.md)jednostkach DTU. Aby uzyskać informacje o różnicach między warstwami usług dla modeli zakupów opartych na jednostkach DTU i rdzeń wirtualny, zobacz [Azure SQL Database modele zakupu](sql-database-purchase-models.md).
-
-## <a name="service-tier-characteristics"></a>Charakterystyki warstwy usług
-
-Model zakupu oparty na rdzeń wirtualny oferuje trzy warstwy usług: ogólnego przeznaczenia, skalowania i działania krytyczne dla działania firmy. Te warstwy usług są zróżnicowane przez różne rozmiary obliczeń, projekty o wysokiej dostępności, metody izolacji błędów, typy i rozmiary magazynu oraz zakresy operacji we/wy.
-
-Należy oddzielnie skonfigurować wymagane przechowywanie i okres przechowywania kopii zapasowych. Aby ustawić okres przechowywania kopii zapasowych, Otwórz Azure Portal, przejdź do serwera (nie bazy danych), a następnie przejdź do pozycji **Zarządzaj kopiami zapasowymi** > **Konfigurowanie zasad** > **punkt w czasie w konfiguracji przywracania** > **7-35 dni**.
-
-W poniższej tabeli opisano różnice między tymi trzema warstwami:
+Opcje warstwy usług w modelu rdzeń wirtualny obejmują Ogólnego przeznaczenia, Krytyczne dla działania firmy i skalowanie. Warstwa usługi zwykle definiuje architekturę magazynu, limity przestrzeni i operacji we/wy oraz opcje ciągłości działania związane z dostępnością i odzyskiwaniem po awarii.
 
 ||**Zastosowania ogólne**|**Krytyczne dla działania firmy**|**Hiperskali**|
 |---|---|---|---|
-|Najlepsze dla|Oferuje zorientowane na budżety Opcje obliczeniowe i magazynowe.|Aplikacje OLTP o wysokim współczynniku transakcji i niskim opóźnieniu we/wy. Oferuje największą odporność na błędy i szybkie przełączanie w tryb failover przy użyciu wielu replik synchronicznie zaktualizowanych.|Większość obciążeń firmowych. Skalowanie automatyczne rozmiaru magazynu o rozmiarze do 100 TB, płynne skalowanie w pionie i w poziomie, szybkie przywracanie bazy danych.|
-|Wystąpienia obliczeniowe|**Zainicjowane obliczenie**:<br/>Obliczenia: od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń: od 2 do 80 rdzeni wirtualnych<br/>**Obliczenia bezserwerowe**:<br/>5 rdzeń: 0,5 – 16 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia: od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń: od 2 do 80 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia: od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń: od 2 do 80 rdzeni wirtualnych|
-|Pamięć|**Zainicjowane obliczenie**:<br/>Obliczenia: 7 GB na rdzeń wirtualny<br/>5 rdzeń: 5,1 GB na rdzeń wirtualny<br/>**Obliczenia bezserwerowe**:<br/>5 rdzeń: do 24 GB na rdzeń wirtualny|**Zainicjowane obliczenie**:<br/>Obliczenia: 7 GB na rdzeń wirtualny<br/>5 rdzeń: 5,1 GB na rdzeń wirtualny |**Zainicjowane obliczenie**:<br/>Obliczenia: 7 GB na rdzeń wirtualny<br/>5 rdzeń: 5,1 GB na rdzeń wirtualny|
-|Usługa Storage|Używa magazynu zdalnego.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Obliczenia bezserwerowe**:<br/>5 GB — 3 TB<br/>**Wystąpienie zarządzane**: 32 GB – 8 TB |Używa lokalnego magazynu SSD.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB — 4 TB |Elastyczna automatyczne zwiększanie magazynu zgodnie z wymaganiami. Obsługuje do 100 TB pamięci masowej. Używa lokalnego magazynu SSD dla lokalnej pamięci podręcznej puli buforów i lokalnego magazynu danych. Używa magazynu zdalnego platformy Azure jako końcowego długoterminowego magazynu danych. |
-|Przepływność we/wy (przybliżona)|**Pojedyncza baza danych i Pula elastyczna**: 500 operacji we/wy na sekundę rdzeń wirtualny do 40000 maksymalnej liczby IOPS.<br/>**Wystąpienie zarządzane**: zależy od [rozmiaru pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 operacji we/wy na rdzeń do 200 000 maksymalnej liczby IOPS|Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia.|
+|Najlepsze dla|Większość obciążeń firmowych. Oferuje zorientowane na budżety, zrównoważone i skalowalne Opcje obliczeniowe i magazynowe. |Oferuje aplikacjom biznesowym największą odporność na błędy przy użyciu kilku izolowanych replik i zapewnia największą wydajność operacji we/wy na replikę bazy danych.|Większość obciążeń firmowych z wysoce skalowalnym magazynem i wymaganiami dotyczącymi skali odczytu.  Zapewnia wyższą odporność na błędy, umożliwiając konfigurację wielu izolowanych replik baz danych. |
+|Magazyn|Używa magazynu zdalnego.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Obliczenia bezserwerowe**:<br/>5 GB — 3 TB<br/>**Wystąpienie zarządzane**: 32 GB – 8 TB |Używa lokalnego magazynu SSD.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 8 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB — 4 TB |Elastyczna automatyczne zwiększanie magazynu zgodnie z wymaganiami. Obsługuje do 100 TB pamięci masowej. Używa lokalnego magazynu SSD dla lokalnej pamięci podręcznej puli buforów i lokalnego magazynu danych. Używa magazynu zdalnego platformy Azure jako końcowego długoterminowego magazynu danych. |
+|Przepływność we/wy (przybliżona)|**Pojedyncza baza danych i Pula elastyczna**: 500 operacji we/wy na sekundę rdzeń wirtualny do 40000 maksymalnej liczby IOPS.<br/>**Wystąpienie zarządzane**: zależy od [rozmiaru pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 operacji we/wy na sekundę na 320 000 rdzeń wirtualny Maksymalna liczba IOPS|Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia.|
 |Dostępność|1 replika, brak replik w skali odczytu|3 repliki, 1 [replika w skali odczytu](sql-database-read-scale-out.md),<br/>Strefa — nadmiarowa wysoka dostępność (HA)|1 replika odczytu i zapisu oraz 0-4 [replik w skali odczytu](sql-database-read-scale-out.md)|
 |Tworzenie kopii zapasowych|[Magazyn Geograficznie nadmiarowy do odczytu (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|Tworzenie kopii zapasowych opartych na migawce w magazynie zdalnym platformy Azure. Przywraca używanie tych migawek do szybkiego odzyskiwania. Kopie zapasowe są natychmiast i nie wpływają na wydajność obliczeń we/wy. Przywracanie odbywa się szybko i nie jest operacją o rozmiarze danych (w minutach, a nie w godzinach lub dniach).|
 |W pamięci|Brak obsługi|Obsługiwane|Brak obsługi|
 |||
 
-> [!NOTE]
-> Możesz uzyskać bezpłatną bazę danych SQL Azure w warstwie Podstawowa usługi w połączeniu z bezpłatnym kontem platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie zarządzanej bazy danych w chmurze przy użyciu bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/services/sql-database/).
 
-- Aby uzyskać więcej informacji na temat limitów zasobów rdzeń wirtualny, zobacz [limity zasobów rdzeń wirtualny w ramach jednej bazy danych](sql-database-vcore-resource-limits-single-databases.md) i [limitów zasobów rdzeń wirtualny w wystąpieniu zarządzanym](sql-database-managed-instance.md#vcore-based-purchasing-model).
-- Aby uzyskać więcej informacji o warstwach usług ogólnego przeznaczenia i krytycznych dla firmy, zobacz [Ogólne zastosowania i najważniejsze usługi dla działalności biznesowej](sql-database-service-tiers-general-purpose-business-critical.md).
-- Aby uzyskać więcej informacji na temat warstwy usługi na potrzeby skalowania w modelu zakupu opartego na rdzeń wirtualny, zobacz [podskalowanie warstwy usług](sql-database-service-tier-hyperscale.md).  
+### <a name="choosing-a-service-tier"></a>Wybieranie warstwy usługi
 
-## <a name="azure-hybrid-benefit"></a>Korzyść użycia hybrydowego platformy Azure
+Aby uzyskać informacje na temat wybierania warstwy usług dla konkretnego obciążenia, zobacz następujące artykuły:
 
-W warstwie obliczeniowej z zainicjowaną obsługą modelu zakupu opartego na rdzeń wirtualny można wymienić istniejące licencje dla obniżonych stawek na SQL Database przy użyciu [korzyść użycia hybrydowego platformy Azure do SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Ta korzyść platformy Azure umożliwia oszczędzanie do 30 procent na Azure SQL Database przy użyciu lokalnych licencji SQL Server z programem Software Assurance.
+- [Kiedy należy wybrać warstwę usług ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Kiedy należy wybrać warstwę usługi Krytyczne dla działania firmy](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
+- [Kiedy należy wybrać warstwę usługi do skalowania](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
-![cennik](./media/sql-database-service-tiers/pricing.png)
 
-Za pomocą Korzyść użycia hybrydowego platformy Azure Możesz wybrać opcję płacenia wyłącznie za podstawową infrastrukturę platformy Azure, korzystając z istniejącej licencji SQL Server dla aparatu bazy danych SQL (podstawowa cena obliczeniowa) lub płacisz za podstawową infrastrukturę i SQL Server Licencja (cena uwzględniona w licencji).
+## <a name="compute-tiers"></a>Warstwy obliczeniowe
 
-Możesz wybrać lub zmienić model licencjonowania przy użyciu Azure Portal lub przy użyciu jednego z następujących interfejsów API:
+Opcje warstwy obliczeniowej w modelu rdzeń wirtualny obejmują warstwy obliczeniowe z obsługą administracyjną i bezserwerową.
 
-- Aby ustawić lub zaktualizować typ licencji przy użyciu programu PowerShell:
 
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
+### <a name="provisioned-compute"></a>Zaaprowizowane zasoby obliczeniowe
 
-- Aby ustawić lub zaktualizować typ licencji przy użyciu interfejsu wiersza polecenia platformy Azure:
+Wstępnie zainicjowana warstwa obliczeniowa zapewnia określoną ilość zasobów obliczeniowych, które są stale inicjowane niezależnie od aktywności obciążenia, oraz opłaty za ilość obliczeń przywidzianych przy stałej cenie za godzinę.
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [AZ SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [AZ SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
-- Aby ustawić lub zaktualizować typ licencji przy użyciu interfejsu API REST:
+### <a name="serverless-compute"></a>Bezserwerowe usługi obliczeniowe
 
-  - [Bazy danych — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [Bazy danych — aktualizacja](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [Wystąpienia zarządzane — Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [Wystąpienia zarządzane — aktualizacja](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+[Warstwa obliczeniowa bezserwerowa](sql-database-serverless.md) automatycznie skaluje zasoby obliczeniowe na podstawie aktywności obciążeń i rachunków dla ilości użytych obliczeń na sekundę.
 
-## <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrowanie z modelu opartego na jednostkach DTU do modelu opartego na rdzeń wirtualny
 
-### <a name="migrate-a-database"></a>Migrowanie bazy danych
 
-Migrowanie bazy danych z modelu zakupu opartego na jednostkach DTU do modelu zakupu opartego na rdzeń wirtualny jest podobne do uaktualnienia lub obniżenia poziomu warstwy usług standardowa i Premium w modelu zakupu opartego na jednostkach DTU.
+## <a name="hardware-generations"></a>Generacja sprzętu
 
-### <a name="migrate-databases-with-geo-replication-links"></a>Migrowanie baz danych za pomocą linków replikacji geograficznej
+Opcje generowania sprzętu w modelu rdzeń wirtualny obejmują 4/5 generacji serii M (wersja zapoznawcza) i Fsv2 (wersja zapoznawcza). Generowanie sprzętu zwykle definiuje limity obliczeń i pamięci oraz inne właściwości, które wpływają na wydajność obciążenia.
 
-Migracja z modelu opartego na jednostkach DTU do modelu zakupu opartego na rdzeń wirtualny jest podobna do uaktualnienia lub obniżenia poziomu relacji replikacji geograficznej między bazami danych w warstwach usług standardowa i Premium. Podczas migracji nie trzeba zatrzymać replikacji geograficznej, ale należy przestrzegać następujących reguł sekwencjonowania:
+### <a name="gen4gen5"></a>Obliczenia/5 rdzeń
 
-- Podczas uaktualniania należy najpierw uaktualnić pomocniczą bazę danych, a następnie uaktualnić podstawową.
-- W przypadku zmiany wersji na starszą należy odwrócić kolejność: najpierw należy zmienić podstawową bazę danych, a następnie ponownie obniżyć poziom pomocniczy.
+- Sprzęt obliczenia/5 rdzeń zapewnia zrównoważone zasoby obliczeniowe i pamięci oraz jest odpowiedni dla większości obciążeń związanych z bazą danych, które nie mają wyższej ilości pamięci, wyższych rdzeń wirtualny lub szybszych wymagań rdzeń wirtualny, które są dostarczane przez serie Fsv2 lub serii M.
 
-W przypadku korzystania z replikacji geograficznej między dwoma elastycznymi pulami zalecamy wyznaczanie jednej puli jako głównej, a drugiej jako pomocniczej. W takim przypadku podczas migrowania pul elastycznych należy stosować te same wskazówki dotyczące sekwencjonowania. Jeśli jednak istnieją pule elastyczne zawierające podstawowe i pomocnicze bazy danych, należy traktować pulę przy użyciu wyższego użycia jako podstawowego i odpowiednio przestrzegać reguł sekwencjonowania.  
+W przypadku regionów, w których jest dostępny obliczenia/5 rdzeń, zobacz [dostępność obliczenia/5 rdzeń](#gen4gen5-1).
 
-W poniższej tabeli przedstawiono wskazówki dotyczące określonych scenariuszy migracji:
+### <a name="fsv2-seriespreview"></a>Fsv2 — seria (wersja zapoznawcza)
 
-|Bieżąca warstwa usługi|Docelowa warstwa usługi|Typ migracji|Akcje użytkownika|
-|---|---|---|---|
-|Standardowa (Standard)|Zastosowania ogólne|Linię|Można migrować w dowolnej kolejności, ale trzeba zapewnić odpowiednie rozmiary rdzeń wirtualny *|
-|Premium|Krytyczne dla działania firmy|Linię|Można migrować w dowolnej kolejności, ale trzeba zapewnić odpowiednie rozmiary rdzeń wirtualny *|
-|Standardowa (Standard)|Krytyczne dla działania firmy|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
-|Krytyczne dla działania firmy|Standardowa (Standard)|Zmiana na starszą lub mniej zaawansowaną wersję|Najpierw należy zmigrować podstawowe|
-|Premium|Zastosowania ogólne|Zmiana na starszą lub mniej zaawansowaną wersję|Najpierw należy zmigrować podstawowe|
-|Zastosowania ogólne|Premium|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
-|Krytyczne dla działania firmy|Zastosowania ogólne|Zmiana na starszą lub mniej zaawansowaną wersję|Najpierw należy zmigrować podstawowe|
-|Zastosowania ogólne|Krytyczne dla działania firmy|Uaktualnienie|Najpierw należy przeprowadzić migrację pomocniczą|
-||||
+- Fsv2-Series to zoptymalizowana pod kątem wydajności opcja sprzętowa zapewniająca niskie opóźnienie procesora CPU i dużą szybkość zegara w przypadku większości obciążeń wymagających procesora CPU.
+- W zależności od obciążenia seria Fsv2 może zapewnić większą wydajność procesora CPU na rdzeń wirtualny niż 5 rdzeń, a rozmiar rdzeń wirtualny 72 może zapewnić większą wydajność procesora CPU mniejszą niż 80 rdzeni wirtualnych w 5 rdzeń. 
+- Fsv2 zapewnia mniejszą ilość pamięci i tempdb na rdzeń wirtualny niż inny sprzęt, dlatego obciążenia te mogą chcieć uwzględnić 5 rdzeń lub M serii.  
 
-\* co 100 DTU w warstwie Standardowa wymaga co najmniej 1 rdzeń wirtualny, a każdy 125 DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny.
+W przypadku regionów, w których jest dostępna seria Fsv2, zobacz [dostępność z serii Fsv2](#fsv2-series).
 
-### <a name="migrate-failover-groups"></a>Migrowanie grup trybu failover
 
-Migracja grup trybu failover z wieloma bazami danych wymaga pojedynczej migracji podstawowych i pomocniczych baz danych. W tym procesie obowiązują te same zagadnienia i reguły sekwencjonowania. Po konwersji baz danych do modelu zakupu opartego na rdzeń wirtualny Grupa trybu failover będzie obowiązywać z tymi samymi ustawieniami zasad.
+### <a name="m-seriespreview"></a>Seria M (wersja zapoznawcza)
 
-### <a name="create-a-geo-replication-secondary-database"></a>Tworzenie pomocniczej bazy danych replikacji geograficznej
+- Seria M to zoptymalizowana pod kątem pamięci opcja sprzętowa dla obciążeń wymagających większej ilości pamięci i wyższych limitów obliczeń niż zapewniana przez 5 rdzeń.
+- Seria M zapewnia 29 GB na rdzeń wirtualny i 128 rdzeni wirtualnych, co zwiększa limit pamięci względem 5 rdzeń przez 8x do niemal 4 TB.
 
-Pomocniczą bazę danych replikacji geograficznej (geograficzną) można utworzyć tylko przy użyciu tej samej warstwy usług, która została użyta dla podstawowej bazy danych. W przypadku baz danych o wysokim współczynniku generowania dzienników zalecamy utworzenie pomocniczej lokalizacji geograficznej z tym samym rozmiarem obliczeniowym co podstawowy.
+Aby włączyć sprzęt serii M dla subskrypcji i regionu, żądanie obsługi musi być otwarte. Jeśli żądanie pomocy technicznej zostanie zatwierdzone, wybór i środowisko aprowizacji serii M są zgodne z tym samym wzorcem, co w przypadku innych generacji sprzętowych. W przypadku regionów, w których jest dostępna Seria M, zobacz [dostępność serii m](#m-series).
 
-Jeśli tworzysz geograficzną lokację w puli elastycznej dla pojedynczej podstawowej bazy danych, upewnij się, że ustawienie `maxVCore` puli jest zgodne z rozmiarem obliczeniowym podstawowej bazy danych. Jeśli tworzysz geograficzną lokację główną w innej puli elastycznej, zalecamy, aby pule miały te same ustawienia `maxVCore`.
 
-### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Użycie kopii bazy danych w celu przekonwertowania bazy danych opartej na jednostkach DTU na bazę danych opartą na rdzeń wirtualny
+### <a name="compute-and-memory-specifications"></a>Specyfikacje obliczeniowe i pamięci
 
-Możesz skopiować dowolną bazę danych z rozmiarem obliczeń opartym na jednostkach DTU do bazy danych o rozmiarze obliczeń opartym na rdzeń wirtualny bez ograniczeń lub specjalnej sekwencjonowania, o ile docelowy rozmiar obliczeń obsługuje maksymalny rozmiar bazy danych źródłowej bazy danych. Kopia bazy danych tworzy migawkę danych w czasie rozpoczęcia operacji kopiowania i nie synchronizuje danych między źródłem a obiektem docelowym.
+
+|Generowanie sprzętu  |Wystąpienia obliczeniowe  |Memory (Pamięć)  |
+|:---------|:---------|:---------|
+|Obliczenia     |-Procesory Intel E5-2673 v3 (Haswell) 2,4 GHz<br>— Zapewnij do 24 rdzeni wirtualnych (1 rdzeń wirtualny = 1 rdzeń fizyczny)  |-7 GB na rdzeń wirtualny<br>— Zapewnij do 168 GB|
+|5\. generacji     |**Zainicjowane obliczenie**<br>-Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz<br>— Inicjowanie obsługi administracyjnej do 80 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)<br><br>**Obliczenia bezserwerowe**<br>-Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz<br>-Automatyczne skalowanie do 16 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)|**Zainicjowane obliczenie**<br>-5,1 GB na rdzeń wirtualny<br>— Zapewnij do 408 GB<br><br>**Obliczenia bezserwerowe**<br>-Automatyczne skalowanie do 24 GB na rdzeń wirtualny<br>— Automatyczne skalowanie do maksymalnie 48 GB|
+|Seria Fsv2     |— Procesory Intel Xeon Platinum 8168 (SkyLake)<br>— Dzięki stałej szybkości taktu Turbo o częstotliwości 3,4 GHz i maksymalnej pojedynczej podstawowej prędkości zegarka Turbo o godz. 3,7 GHz.<br>-Inicjowanie obsługi administracyjnej 72 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)|-1,9 GB na rdzeń wirtualny<br>-Inicjowanie obsługi administracyjnej 136 GB|
+|Seria M     |-Procesory Intel Xeon E7-8890 v3 2,5 GHz<br>-Inicjowanie obsługi administracyjnej 128 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)|-29 GB na rdzeń wirtualny<br>— Inicjowanie obsługi administracyjnej 3,7 TB|
+
+
+Aby uzyskać więcej informacji na temat limitów zasobów, zobacz [limity zasobów dla pojedynczych baz danych (rdzeń wirtualny)](sql-database-vcore-resource-limits-single-databases.md)lub [limity zasobów dla pul elastycznych (rdzeń wirtualny)](sql-database-vcore-resource-limits-elastic-pools.md).
+
+### <a name="selecting-a-hardware-generation"></a>Wybieranie generowania sprzętu
+
+W Azure Portal można wybrać generowanie sprzętu dla bazy danych SQL lub puli w momencie tworzenia lub można zmienić generowanie sprzętu istniejącej bazy danych lub puli SQL.
+
+**Aby wybrać generowanie sprzętu podczas tworzenia bazy danych lub puli SQL**
+
+Aby uzyskać szczegółowe informacje, zobacz [Tworzenie bazy danych SQL](sql-database-single-database-get-started.md).
+
+Na karcie **podstawowe** wybierz łącze **Konfiguruj bazę danych** w sekcji **obliczenia + magazyn** , a następnie wybierz łącze **Zmień konfigurację** :
+
+  ![Konfigurowanie bazy danych](media/sql-database-service-tiers-vcore/configure-sql-database.png)
+
+Wybierz żądaną generację sprzętu:
+
+  ![Wybierz sprzęt](media/sql-database-service-tiers-vcore/select-hardware.png)
+
+
+**Aby zmienić generowanie sprzętu istniejącej bazy danych lub puli SQL**
+
+W przypadku bazy danych na stronie Przegląd wybierz łącze **warstwa cenowa** :
+
+  ![Zmień sprzęt](media/sql-database-service-tiers-vcore/change-hardware.png)
+
+W przypadku puli na stronie Przegląd wybierz pozycję **Konfiguruj**.
+
+Postępuj zgodnie z instrukcjami, aby zmienić konfigurację, i wybierz Generowanie sprzętu zgodnie z opisem w poprzednich krokach.
+
+### <a name="hardware-availability"></a>Dostępność sprzętu
+
+#### <a name="gen4gen5"></a>Obliczenia/5 rdzeń
+
+Nowe bazy danych obliczenia nie są już obsługiwane w regionach Australia Wschodnia lub Brazylia Południowa. 
+
+5 rdzeń jest dostępna w większości regionów na całym świecie.
+
+#### <a name="fsv2-series"></a>Seria Fsv2
+
+Seria Fsv2 jest dostępna w następujących regionach: Australia Środkowa, Australia Środkowa 2, Australia Wschodnia, Australia Południowo-Wschodnia, Brazylia Południowa, Kanada środkowa, Azja Wschodnia, Wschodnie stany USA, Francja środkowa, Indie Środkowe, Indie Zachodnie, Korea środkowa, Korea Południowa Europa, Północna Republika Południowej Afryki, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA 2.
+
+
+#### <a name="m-series"></a>Seria M
+
+Seria M jest dostępna w następujących regionach: Wschodnie stany USA, Europa Północna, Europa Zachodnia, zachodnie stany USA 2.
+Seria M może również mieć ograniczoną dostępność w dodatkowych regionach. Możesz zażądać innego regionu niż wymienione tutaj, ale realizacja w innym regionie może nie być możliwa.
+
+Aby włączyć dostępność serii M w ramach subskrypcji, musisz uzyskać dostęp do żądania, podając [nowe żądanie pomocy technicznej](#create-a-support-request-to-enable-m-series).
+
+
+##### <a name="create-a-support-request-to-enable-m-series"></a>Utwórz żądanie obsługi, aby włączyć serię M: 
+
+1. Wybierz pozycję **Pomoc i obsługa techniczna** w portalu.
+2. Wybierz pozycję **Nowe żądanie obsługi**.
+
+Na stronie **podstawowe** podaj następujące informacje:
+
+1. W obszarze **typ problemu**wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
+2. W przypadku **subskrypcji** = wybierz subskrypcję, aby włączyć serie M.
+3. W obszarze **Typ limitu przydziału**wybierz pozycję **baza danych SQL**.
+4. Wybierz pozycję **dalej** , aby przejść do strony **szczegółów** .
+
+Na stronie **szczegóły** podaj następujące informacje:
+
+5. W sekcji **Szczegóły problemu** wybierz łącze **Podaj szczegóły** . 
+6. W obszarze **typ przydziału SQL Database** wybierz pozycję **Seria M**.
+7. W polu **region**wybierz region, w którym ma zostać włączona Seria M.
+    W przypadku regionów, w których jest dostępna Seria M, zobacz [dostępność serii m](#m-series).
+
+Zatwierdzone żądania pomocy technicznej są zwykle spełnione w ciągu 5 dni roboczych.
+
 
 ## <a name="next-steps"></a>Następne kroki
 
+- Aby utworzyć bazę danych SQL, zobacz [Tworzenie bazy danych SQL przy użyciu Azure Portal](sql-database-single-database-get-started.md).
 - Dla określonych rozmiarów obliczeń i opcji rozmiaru magazynu dostępnych dla pojedynczych baz danych zobacz [SQL Database limity zasobów opartych na rdzeń wirtualny dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md).
-- W przypadku określonych rozmiarów obliczeń i opcji rozmiaru magazynu dla pul elastycznych zobacz [SQL Database limity zasobów opartych na rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- W przypadku określonych rozmiarów obliczeń i opcji rozmiaru magazynu dla pul elastycznych zobacz [SQL Database limity zasobów opartych na rdzeń wirtualny dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).
+- Aby uzyskać szczegółowe informacje o cenach, zobacz [stronę z cennikiem Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/).

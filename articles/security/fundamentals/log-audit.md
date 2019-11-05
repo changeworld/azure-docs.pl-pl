@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/21/2019
+ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: d1f3f1c00ab8d92ee598a3ef52c1e6f05303b004
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f53c7e7b045805a28223fb5670afc45c980454bc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755595"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498388"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Rejestrowanie i Inspekcja zabezpieczeń platformy Azure
 
@@ -46,13 +46,13 @@ Dzienniki platformy Azure są podzielone na następujące typy:
 
 Poniższa tabela zawiera listę najważniejszych typów dzienników dostępnych na platformie Azure:
 
-| Kategoria dziennika | Typ dziennika | Użycie | Integracja |
+| Kategoria dziennika | Typ dziennika | Sposób użycia | Integracja |
 | ------------ | -------- | ------ | ----------- |
 |[Dzienniki aktywności](../../azure-monitor/platform/activity-logs-overview.md)|Zdarzenia płaszczyzny kontroli dla zasobów Azure Resource Manager|  Zapewnia wgląd w operacje wykonywane względem zasobów w ramach subskrypcji.|    Interfejs API REST, [Azure monitor](../../azure-monitor/platform/activity-logs-overview.md)|
 |[Dzienniki zasobów platformy Azure](../../azure-monitor/platform/resource-logs-overview.md)|Częste dane dotyczące operacji Azure Resource Manager zasobów w subskrypcji|   Zapewnia wgląd w operacje wykonywane przez sam zasób.| Azure Monitor|
 |[Raportowanie Azure Active Directory](../../active-directory/reports-monitoring/overview-reports.md)|Dzienniki i raporty | Zgłasza działania związane z logowaniem użytkowników i informacje o aktywności systemu dotyczące zarządzania użytkownikami i grupami.|[Interfejs API programu Graph](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[Maszyny wirtualne i usługi w chmurze](../../azure-monitor/learn/quick-collect-azurevm.md)|Usługa Dziennik zdarzeń systemu Windows i dziennik systemowy Linux|  Przechwytuje dane systemowe i rejestruje dane na maszynach wirtualnych i przesyła je do wybranego konta magazynu.|   Windows (z systemem Windows Diagnostyka Azure [[funkcji wad](../../monitoring-and-diagnostics/azure-diagnostics.md)] Storage) i Linux w systemie Azure monitor|
-|[analityka magazynu platformy Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Rejestrowanie magazynu udostępnia dane metryk dla konta magazynu|Zapewnia wgląd w żądania śledzenia, analizuje trendy użycia i diagnozuje problemy związane z kontem magazynu.|   Interfejs API REST lub [Biblioteka kliencka](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
+|[Analityka usługi Azure Storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Rejestrowanie magazynu udostępnia dane metryk dla konta magazynu|Zapewnia wgląd w żądania śledzenia, analizuje trendy użycia i diagnozuje problemy związane z kontem magazynu.|   Interfejs API REST lub [Biblioteka kliencka](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[Dzienniki przepływu sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)|Format JSON, pokazuje przepływy wychodzące i przychodzące dla każdej reguły|Wyświetla informacje dotyczące ruchu przychodzącego i wychodzącego IP za pomocą sieciowej grupy zabezpieczeń.|[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md)|
 |[Application Insights](../../azure-monitor/app/app-insights-overview.md)|Dzienniki, wyjątki i Diagnostyka niestandardowa|  Zapewnia usługę programu Application Performance Monitoring (APM) dla deweloperów sieci Web na wielu platformach.| Interfejs API REST, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
 |[Przetwarzanie alertów dotyczących danych/zabezpieczeń](../../security-center/security-center-intro.md)|  Alerty dotyczące Azure Security Center, alerty dzienników Azure Monitor|    Zawiera informacje o zabezpieczeniach i alertach.|  Interfejsy API REST, JSON|

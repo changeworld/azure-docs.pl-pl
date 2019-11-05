@@ -1,32 +1,32 @@
 ---
-title: Architektura łączności w usłudze Azure Database for MySQL
-description: W tym artykule opisano architekturę łączności dla usługi Azure Database for MySQL server.
+title: Architektura łączności w Azure Database for MySQL
+description: Opisuje architekturę łączności dla serwera Azure Database for MySQL.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 7a7ac843960e253b3172d1ed22fe5b59633897dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 664d3d4333f8c34a8c5dc6648da2beccc4d7a6a2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062466"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498429"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura łączności w usłudze Azure Database for MySQL
-W tym artykule opisano usługi Azure Database for MySQL — architektura łączności również, jak ruch będzie kierowany do usługi Azure Database for MySQL — wystąpienie z klientami zarówno wewnątrz jednej, jak i spoza platformy Azure.
+# <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura łączności w Azure Database for MySQL
+W tym artykule opisano architekturę Azure Database for MySQL łączności oraz sposób kierowania ruchu do wystąpienia Azure Database for MySQL z klientów zarówno w ramach platformy Azure, jak i poza nią.
 
 ## <a name="connectivity-architecture"></a>Architektura łączności
-Połączenie usługi Azure Database for MySQL zostanie nawiązane za pośrednictwem bramy, który jest odpowiedzialny za routing połączenia przychodzące do fizycznej lokalizacji serwera w naszym klastrów. Na poniższym diagramie przedstawiono przepływ ruchu.
+Połączenie z Azure Database for MySQL jest nawiązywane za pomocą bramy, która jest odpowiedzialna za kierowanie połączeń przychodzących do lokalizacji fizycznej serwera w naszych klastrach. Na poniższym diagramie przedstawiono przepływ ruchu.
 
-![Przegląd architektury połączenia](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+![Przegląd architektury łączności](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-Jako klient połączenia z bazą danych, otrzymują parametry połączenia, które nawiązuje połączenie z bramą. Ta brama jest publiczny adres IP, który nasłuchuje na porcie 3306. Wewnątrz klastra bazy danych ruch jest przekazywany do odpowiedniej usługi Azure Database for MySQL. W związku z tym aby połączyć się z serwerem, takich jak z sieci firmowej, należy otworzyć zaporę po stronie klienta, aby zezwolić na ruch wychodzący można było nawiązać połączenie naszego bram. Poniżej można znaleźć pełną listę adresy IP używane przez naszych bramy na region.
+Gdy klient nawiązuje połączenie z bazą danych, otrzymują parametry połączenia, które łączą się z bramą. Ta brama ma publiczny adres IP, który nasłuchuje na porcie 3306. W klastrze bazy danych ruch jest przekazywany do odpowiednich Azure Database for MySQL. W związku z tym, aby nawiązać połączenie z serwerem, na przykład z sieci firmowej, należy otworzyć Zaporę po stronie klienta, aby zezwolić na ruch wychodzący z naszych bram. Poniżej znajdziesz pełną listę adresów IP używanych przez nasze bramy na region.
 
-## <a name="azure-database-for-mysql-gateway-ip-addresses"></a>Usługa Azure Database for MySQL — adresy IP
-W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure Database for MySQL bramy dla wszystkich obszarach danych. Podstawowy adres IP jest bieżący adres IP bramy, a drugi adres IP jest adresem IP trybu failover w przypadku awarii podstawowego. Jak wspomniano wcześniej, klienci powinna zezwalać na ruch wychodzący do adresów IP. Drugi adres IP nie będzie nasłuchiwać na wszystkie usługi, dopóki nie zostanie aktywowany przez usługę Azure Database for MySQL do akceptowania połączeń.
+## <a name="azure-database-for-mysql-gateway-ip-addresses"></a>Adresy IP bramy Azure Database for MySQL
+W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP bramy Azure Database for MySQL dla wszystkich obszarów danych. Podstawowy adres IP to bieżący adres IP bramy, a drugi adres IP to adres IP trybu failover w przypadku awarii podstawowej. Jak wspomniano, klienci powinni zezwolić na ruch wychodzący zarówno do adresów IP. Drugi adres IP nie nasłuchuje w żadnej usłudze, dopóki nie zostanie aktywowany przez Azure Database for MySQL w celu zaakceptowania połączeń.
 
-| **Nazwa regionu** | **Adres IP podstawowego** | **Adres IP pomocniczego** |
+| **Nazwa regionu** | **Podstawowy adres IP** | **Pomocniczy adres IP** |
 |:----------------|:-------------|:------------------------|
 | Australia Wschodnia | 13.75.149.87 | 40.79.161.1 |
 | Australia Południowo-Wschodnia | 191.239.192.109 | 13.73.109.251 |
@@ -34,7 +34,7 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure D
 | Kanada Środkowa | 40.85.224.249 | |
 | Kanada Wschodnia | 40.86.226.166 | |
 | Środkowe stany USA | 23.99.160.139 | 13.67.215.62 |
-| Chiny wschodnie 1 | 139.219.130.35 | |
+| Chiny Wschodnie 1 | 139.219.130.35 | |
 | Chiny Wschodnie 2 | 40.73.82.1 | |
 | Chiny Północne 1 | 139.219.15.17 | |
 | Chiny Północne 2 | 40.73.50.0 | |
@@ -50,10 +50,13 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure D
 | Japonia Zachodnia | 191.238.68.11 | 104.214.148.156 |
 | Korea Środkowa | 52.231.32.42 | |
 | Korea Południowa | 52.231.200.86 |  |
-| Środkowo-północne stany USA | 23.98.55.75 | 23.96.178.199 |
+| Północno-środkowe stany USA | 23.98.55.75 | 23.96.178.199 |
 | Europa Północna | 191.235.193.75 | 40.113.93.91 |
 | Środkowo-południowe stany USA | 23.98.162.75 | 13.66.62.124 |
 | Azja Południowo-Wschodnia | 23.100.117.95 | 104.43.15.0 |
+| Północna Republika Południowej Afryki | 102.133.152.0 | |
+| Północna Republika Południowej Afryki | 102.133.24.0 | |
+| Północne Zjednoczone Emiraty Arabskie | 65.52.248.0 | |
 | Południowe Zjednoczone Królestwo | 51.140.184.11 | |
 | Zachodnie Zjednoczone Królestwo | 51.141.8.11| |
 | Europa Zachodnia | 191.237.232.75 | 40.68.37.158 |
@@ -62,10 +65,10 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP usługi Azure D
 ||||
 
 > [!NOTE]
-> *Wschodnie stany USA 2* ma również trzeciorzędny adres IP `52.167.104.0`.
+> *Wschodnie stany USA 2* również mają adres IP trzeciego rzędu `52.167.104.0`.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Tworzenie i zarządzanie nimi — Azure Database dla MySQL reguł zapory przy użyciu witryny Azure portal](./howto-manage-firewall-using-portal.md)
-* [Tworzenie i zarządzanie nimi — Azure Database dla MySQL reguł zapory przy użyciu wiersza polecenia platformy Azure](./howto-manage-firewall-using-cli.md)
+* [Tworzenie reguł zapory Azure Database for MySQL i zarządzanie nimi za pomocą Azure Portal](./howto-manage-firewall-using-portal.md)
+* [Tworzenie reguł zapory Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure i zarządzanie nimi](./howto-manage-firewall-using-cli.md)
 

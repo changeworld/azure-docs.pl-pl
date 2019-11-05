@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: diberry
-ms.openlocfilehash: cf0ef1095946b1c8e9479b3cd47fe403baeed7d1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0a59d9783eac122f96b1671f2dba5d0d708e1d83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757123"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499396"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Samouczek: identyfikowanie typowych intencji i jednostek
 
@@ -24,14 +24,16 @@ W tym samouczku dodasz wstępnie utworzone intencje i jednostki do aplikacji sam
 
 Wstępnie utworzone modele (domeny, intencje i jednostki) ułatwiają szybkie tworzenie modelu.
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 > [!div class="checklist"]
 > * Tworzenie nowej aplikacji
 > * Dodawanie wstępnie utworzonych intencji 
 > * Dodawanie wstępnie utworzonych jednostek 
-> * Uczenie 
-> * Publikuj 
+> * Szkolenie 
+> * Publikowanie 
 > * Pobieranie intencji i jednostek z punktu końcowego
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]

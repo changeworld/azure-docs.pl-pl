@@ -1,22 +1,22 @@
 ---
-title: Rozwiązywanie problemów z podglądem udziału danych platformy Azure
-description: Dowiedz się, jak rozwiązywać problemy z zaproszeniami i błędami podczas tworzenia lub otrzymywania udziałów danych za pomocą usługi Azure Data Share Preview.
+title: Rozwiązywanie problemów z usługą Azure Data Share
+description: Dowiedz się, jak rozwiązywać problemy z zaproszeniami i błędami podczas tworzenia lub otrzymywania udziałów danych za pomocą udziału danych platformy Azure.
 services: data-share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 592a2d464aed8c39dfd11734beccbd0399d75fd9
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6ad612d56b25da9e092070198e321e7fca8ad96b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169227"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490563"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Rozwiązywanie typowych problemów w wersji zapoznawczej usługi Azure Data Share
+# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Rozwiązywanie typowych problemów z udziałem danych platformy Azure 
 
-W tym artykule pokazano, jak rozwiązywać typowe problemy z usługą Azure Data Share Preview. 
+W tym artykule pokazano, jak rozwiązywać typowe problemy z udziałem danych platformy Azure. 
 
 ## <a name="azure-data-share-invitations"></a>Zaproszenia udziału danych platformy Azure 
 
@@ -55,6 +55,20 @@ Jeśli podczas tworzenia nowego udziału danych lub odbierania nowego udziału d
 1. Wybieranie **kontroli dostępu (IAM)**
 1. Kliknij przycisk **Dodaj**
 1. Dodaj siebie jako właściciela.
+
+## <a name="troubleshooting-sql-based-sharing"></a>Rozwiązywanie problemów z udostępnianiem opartym na języku SQL
+
+"Błąd: zestaw danych x nie został dodany, ponieważ nie masz wymaganych uprawnień do udostępniania".
+
+Jeśli ten błąd wystąpi podczas dodawania zestawu danych z źródła opartego na języku SQL, może to być spowodowane faktem, że nie utworzono użytkownika dla elementu MSI udziału danych platformy Azure na SQL Server.  Aby rozwiązać ten problem, uruchom następujący skrypt:
+
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```      
+Należy pamiętać, że *< share_acc_name >* to nazwa konta udziału danych. Jeśli konto udziału danych nie zostało jeszcze utworzone, możesz wrócić do tego wymagania wstępnego później.         
+
+Upewnij się, że zostały spełnione wszystkie wymagania wstępne wymienione w samouczku [udostępnianie danych](share-your-data.md) .
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
-ms.openlocfilehash: b8628d60110818fe64e5b09b400a1396213147b6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 46d78ca9f82017e1a11642af6e5dcdc68e239c8a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980770"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498278"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Przegląd usługi Azure Policy
 
@@ -48,12 +48,11 @@ Proces tworzenia i implementowania zasad w usłudze Azure Policy rozpoczyna się
 
 Usługa Azure Policy oferuje kilka wbudowanych zasad, które są domyślnie dostępne. Na przykład:
 
-- **Wymagaj SQL Server 12,0**: sprawdza, czy wszystkie serwery SQL używają wersji 12,0. Jej efektem jest odrzucanie wszystkich serwerów, które nie spełniają tego kryterium.
 - **Dozwolone jednostki SKU konta magazynu**: określa, czy wdrożone konto magazynu znajduje się w zestawie rozmiarów jednostki SKU. Jej efektem jest odrzucanie wszystkich kont magazynu, które nie są zgodne z zestawem zdefiniowanych rozmiarów SKU.
 - **Dozwolony typ zasobu**: określa typy zasobów, które można wdrożyć. Jej efektem jest odrzucanie wszystkich zasobów, które nie należą do tej zdefiniowanej listy.
 - **Dozwolone lokalizacje**: ogranicza dostępne lokalizacje dla nowych zasobów. Jej efekt jest używany do wymuszania wymagań dotyczących zgodności obszarów geograficznych.
 - **Dozwolone jednostki SKU maszyny wirtualnej**: określa zestaw jednostek SKU maszyn wirtualnych, które można wdrożyć.
-- **Zastosuj tag i jego wartość domyślną**: stosuje wymagany tag i jego wartość domyślną, jeśli nie jest określony przez żądanie wdrożenia.
+- **Dodaj tag do zasobów**: stosuje wymagany tag i jego wartość domyślną, jeśli nie jest określony przez żądanie wdrożenia.
 - **Wymuś tag i jego wartość**: wymusza wymagany tag i jego wartość do zasobu.
 - **Niedozwolone typy zasobów**: uniemożliwiają wdrożenie listy typów zasobów.
 
@@ -106,7 +105,7 @@ Na przykład masz definicję inicjatywy **initiativeC** oraz definicje zasad **p
 | Zasady | Nazwa parametru |Typ parametru  |Uwaga |
 |---|---|---|---|
 | policyA | allowedLocations | tablica  |Ten parametr oczekuje listy ciągów dla wartości, ponieważ typ parametru został zdefiniowany jako tablica |
-| policyB | allowedSingleLocation |string |Ten parametr oczekuje jednego słowa dla wartości, ponieważ typ parametru został zdefiniowany jako ciąg |
+| policyB | allowedSingleLocation |ciąg |Ten parametr oczekuje jednego słowa dla wartości, ponieważ typ parametru został zdefiniowany jako ciąg |
 
 W tym scenariuszu podczas definiowania parametrów inicjatywy **initiativeC** dostępne są trzy opcje:
 

@@ -13,60 +13,92 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: 20079fd0c95da3e3aec9518f194ea39561a5e662
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7a44d63b834a7b6b580909005a440637bf730918
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240699"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475786"
 ---
-# <a name="connect-your-fortinet-appliance"></a>Połącz urządzenie Fortinet
+# <a name="connect-fortinet-to-azure-sentinel"></a>Łączenie Fortinet z platformą Azure — wskaźnik
 
 
 
-Możesz połączyć wskaźnik na platformie Azure z dowolnym urządzeniem Fortinet, zapisując pliki dziennika jako dziennik Common Event format (CEF). Dzięki integracji z platformą Azure — wskaźnikiem, można łatwo uruchomić analizy i zapytania w danych pliku dziennika od firmy Fortinet. Aby uzyskać więcej informacji na temat sposobu pozyskiwania danych CEF przez platformę Azure, zobacz [Łączenie urządzeń CEF](connect-common-event-format.md).
+W tym artykule wyjaśniono, jak połączyć urządzenie Fortinet z platformą Azure. Program Fortinet Data Connector umożliwia łatwe łączenie dzienników Fortinet z platformą Azure, przeglądanie pulpitów nawigacyjnych, tworzenie niestandardowych alertów i ulepszanie badania. Korzystanie z platformy Fortinet na platformie Azure wskaźnikowej zapewnia więcej szczegółowych informacji dotyczących użycia Internetu w organizacji i poprawi możliwości operacji zabezpieczeń. 
 
-> [!NOTE]
-> Dane są przechowywane w lokalizacji geograficznej obszaru roboczego, w którym jest uruchamiany wskaźnik platformy Azure.
 
-## <a name="step-1-connect-your-fortinet-appliance-by-using-an-agent"></a>Krok 1: Łączenie urządzenia Fortinet przy użyciu agenta
+## <a name="how-it-works"></a>Jak to działa
 
-Aby połączyć urządzenie Fortinet z platformą Azure, należy wdrożyć agenta na dedykowanej maszynie wirtualnej lub maszynie lokalnej w celu zapewnienia obsługi komunikacji między urządzeniem i wskaźnikiem kontrolnym platformy Azure. 
+Należy wdrożyć agenta na dedykowanym komputerze z systemem Linux (maszynie wirtualnej lub lokalnie) do obsługi komunikacji między firmą Fortinet i platformą Azure. Na poniższym diagramie opisano konfigurację w przypadku maszyny wirtualnej z systemem Linux na platformie Azure.
 
-Agenta można również wdrożyć ręcznie na istniejącej maszynie wirtualnej platformy Azure, na maszynie wirtualnej w innej chmurze lub na maszynie lokalnej.
+ ![CEF na platformie Azure](./media/connect-cef/cef-syslog-azure.png)
 
-> [!NOTE]
-> Upewnij się, że skonfigurowano zabezpieczenia maszyny zgodnie z zasadami zabezpieczeń organizacji. Można na przykład skonfigurować sieć do dopasowania do zasad zabezpieczeń sieci firmowej i zmienić porty i protokoły w demoum, aby dostosować je do swoich wymagań. 
+Ta konfiguracja będzie również dostępna w przypadku korzystania z maszyny wirtualnej w innej chmurze lub na maszynie lokalnej. 
 
-Aby wyświetlić diagram sieci w obu opcjach, zobacz [łączenie ze źródłami danych](connect-data-sources.md#agent-options).
+ ![CEF lokalnie](./media/connect-cef/cef-syslog-onprem.png)
 
-### <a name="deploy-the-agent"></a>Wdrażanie agenta
 
-1. W portalu Azure Research kliknij pozycję **Łączniki danych** i wybierz pozycję **Fortinet** , a następnie **Otwórz stronę łącznik**. 
+## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
 
-1. W obszarze **Pobierz i Zainstaluj agenta dziennika**systemu wybierz typ komputera, na platformie Azure lub lokalnie. 
-1. Na ekranie **maszyny wirtualne** , który zostanie otwarty, wybierz maszynę, której chcesz użyć, a następnie kliknij przycisk **Połącz**.
-1. W przypadku wybrania opcji **Pobierz i Zainstaluj agenta dla maszyn wirtualnych platformy Azure z systemem Linux**wybierz maszynę, a następnie kliknij pozycję **Połącz**. W przypadku wybrania opcji **Pobierz i Zainstaluj agenta dla maszyn wirtualnych z systemem innym niż Azure**, na ekranie **agenta bezpośredniego** Uruchom skrypt w obszarze **Pobierz i Dołącz agenta dla systemu Linux**.
-1. Na ekranie łącznika w obszarze **Konfigurowanie i przekazywanie dziennika**systemowego Określ, czy demon dziennika systemu ma być **rsyslog. d** , czy **Dziennik**systemowy. 
-1. Skopiuj te polecenia i uruchom je na urządzeniu:
-   - W przypadku wybrania rsyslog. d:
-            
-     1. Poinformuj demona dziennika systemu, aby nasłuchiwać local_4 i wysyłać komunikaty dziennika systemowego do agenta wskaźnikowego platformy Azure przy użyciu portu 25226. Użyj tego polecenia:`sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-     1. Pobierz i zainstaluj [plik konfiguracyjny security_events](https://aka.ms/asi-syslog-config-file-linux) , który konfiguruje agenta dziennika systemowego do nasłuchiwania na porcie 25226. Użyj tego polecenia: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` gdzie {0} należy zastąpić identyfikator GUID obszaru roboczego.
-     1. Uruchom ponownie demona dziennika systemu przy użyciu tego polecenia:`sudo service rsyslog restart`
-            
-   - W przypadku wybrania dziennika systemowego — NG:
+Upewnij się, że skonfigurowano zabezpieczenia maszyny zgodnie z zasadami zabezpieczeń organizacji. Można na przykład skonfigurować sieć do dopasowania do zasad zabezpieczeń sieci firmowej i zmienić porty i protokoły w demoum, aby dostosować je do swoich wymagań. Aby ulepszyć konfigurację zabezpieczeń komputera, można użyć następujących instrukcji:  [bezpieczna maszyna wirtualna na platformie Azure](../virtual-machines/linux/security-policy.md), [najlepsze rozwiązania dotyczące zabezpieczeń sieci](../security/fundamentals/network-best-practices.md).
 
-      1. Poinformuj demona dziennika systemu, aby nasłuchiwać local_4 i wysyłać komunikaty dziennika systemowego do agenta wskaźnikowego platformy Azure przy użyciu portu 25226. Użyj tego polecenia:`sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-      1. Pobierz i zainstaluj [plik konfiguracyjny security_events](https://aka.ms/asi-syslog-config-file-linux) , który konfiguruje agenta dziennika systemowego do nasłuchiwania na porcie 25226. Użyj tego polecenia: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` gdzie {0} należy zastąpić identyfikator GUID obszaru roboczego.
-      1. Uruchom ponownie demona dziennika systemu przy użyciu tego polecenia:`sudo service syslog-ng restart`
-1. Uruchom ponownie agenta dziennika systemu przy użyciu tego polecenia:`sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-1. Upewnij się, że w dzienniku agenta nie ma błędów, uruchamiając następujące polecenie:`tail /var/opt/microsoft/omsagent/log/omsagent.log`
+Aby można było korzystać z komunikacji TLS między rozwiązaniem zabezpieczeń a maszyną dziennika systemowego, należy skonfigurować demona dziennika systemu (rsyslog lub Dziennik systemowy) do komunikacji w protokole TLS: [szyfrowanie ruchu dziennika systemu przy użyciu protokołu TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [szyfrowanie komunikatów dzienników przy użyciu protokołu TLS — Dziennik systemowy — ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
 
  
-## <a name="step-2-forward-fortinet-logs-to-the-syslog-agent"></a>Krok 2: Przekazywanie dzienników firmy Fortinet do agenta dziennika systemu
+## <a name="prerequisites"></a>Wymagania wstępne
+Upewnij się, że maszyna z systemem Linux używaną jako serwer proxy ma jeden z następujących systemów operacyjnych:
+
+- 64 — bit
+  - CentOS 6 i 7
+  - Amazon Linux 2017,09
+  - Oracle Linux 6 i 7
+  - Red Hat Enterprise Linux Server 6 i 7
+  - Debian GNU/Linux 8 i 9
+  - Ubuntu Linux 14,04 LTS, 16,04 LTS i 18,04 LTS
+  - SUSE Linux Enterprise Server 12
+- 32 — bit
+   - CentOS 6
+   - Oracle Linux 6
+   - Red Hat Enterprise Linux Server 6
+   - Debian GNU/Linux 8 i 9
+   - Ubuntu Linux 14,04 LTS i 16,04 LTS
+ 
+ - Wersje demona
+   - Dziennik systemu — NG: 2,1-3.22.1
+   - Rsyslog: V8
+  
+ - Obsługiwane są specyfikacje RFC dziennika systemowego
+   - Dziennik systemowy RFC 3164
+   - Dziennik systemowy RFC 5424
+ 
+Upewnij się, że komputer spełnia również następujące wymagania: 
+- Uprawnienia
+    - Musisz mieć podwyższony poziom uprawnień (sudo) na swojej maszynie. 
+- Wymagania dotyczące oprogramowania
+    - Upewnij się, że na maszynie jest uruchomiony Język Python
+## <a name="step-1-deploy-the-agent"></a>Krok 1. wdrażanie agenta
+
+W tym kroku należy wybrać maszynę z systemem Linux, która będzie pełnić rolę serwera proxy między wskaźnikiem danych platformy Azure a rozwiązaniem zabezpieczeń. Na komputerze proxy należy uruchomić skrypt, który:
+- Instaluje agenta Log Analytics i konfiguruje go zgodnie z potrzebami, aby nasłuchiwać komunikatów dziennika systemowego na porcie 514 przez TCP i wysyłać komunikaty CEF do obszaru roboczego wskaźnikowego platformy Azure.
+- Konfiguruje demona dziennika systemu do przesyłania dalej komunikatów CEF do agenta Log Analytics przy użyciu portu 25226.
+- Ustawia agenta dziennika systemowego do zbierania danych i bezpiecznego wysyłania go do Log Analytics, gdzie jest analizowany i wzbogacony.
+ 
+ 
+1. W portalu Azure Research kliknij pozycję **Łączniki danych** i wybierz pozycję **Fortinet** , a następnie **Otwórz stronę łącznik**. 
+
+1. W obszarze **Instalowanie i Konfigurowanie agenta dziennika**systemu wybierz typ maszyny, platformę Azure, inną chmurę lub lokalnie. 
+   > [!NOTE]
+   > Ponieważ skrypt w następnym kroku instaluje agenta Log Analytics i łączy maszynę z obszarem roboczym wskaźnikowego platformy Azure, upewnij się, że ta maszyna nie jest połączona z żadnym innym obszarem roboczym.
+1. Musisz mieć podwyższony poziom uprawnień (sudo) na swojej maszynie. Upewnij się, że na maszynie jest zainstalowany program Python, przy użyciu następującego polecenia: `python –version`
+
+1. Uruchom na komputerze proxy następujący skrypt.
+   `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+1. Gdy skrypt jest uruchomiony, upewnij się, że nie są wyświetlane żadne komunikaty o błędach lub ostrzeżeniach.
+
+ 
+## <a name="step-2-forward-fortinet-logs-to-the-syslog-agent"></a>Krok 2. przekazywanie dzienników firmy Fortinet do agenta dziennika systemu
 
 Skonfiguruj konfigurację Fortinet do przesyłania dalej komunikatów dziennika systemowego w formacie CEF do obszaru roboczego platformy Azure za pośrednictwem agenta dziennika systemu.
 
@@ -74,7 +106,6 @@ Skonfiguruj konfigurację Fortinet do przesyłania dalej komunikatów dziennika 
 
         config log syslogd setting
         set format cef
-        set facility <facility_name>
         set port 514
         set reliable disable
         set server <ip_address_of_Receiver>
@@ -82,65 +113,26 @@ Skonfiguruj konfigurację Fortinet do przesyłania dalej komunikatów dziennika 
         end
 
     - Zastąp **adres IP** serwera adresem IP agenta.
-    - Ustaw **facility_name** do korzystania z funkcji skonfigurowanej w agencie. Domyślnie agent ustawia tę wartość na local4.
     - Ustaw wartość w polu **port dziennika** systemowego na **514** lub port ustawiony w agencie.
     - Aby włączyć format CEF w wersjach wczesnego FortiOS, może być konieczne uruchomienie opcji **wyłączania CSV**zestawu poleceń.
  
    > [!NOTE] 
    > Aby uzyskać więcej informacji, przejdź do [biblioteki dokumentów Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Wybierz swoją wersję, a następnie użyj dokumentacji **podręcznika** i **komunikatu dziennika**.
 
- Aby użyć odpowiedniego schematu w Azure Monitor Log Analytics dla imprez Fortinet, wyszukaj ciąg `CommonSecurityLog`.
+ Aby użyć odpowiedniego schematu w Azure Monitor Log Analytics dla zdarzeń Fortinet, Wyszukaj `CommonSecurityLog`.
 
 
-## <a name="step-3-validate-connectivity"></a>Krok 3: Sprawdź poprawność łączności
+## <a name="step-3-validate-connectivity"></a>Krok 3. Weryfikowanie łączności
 
-Rozpoczęcie wyświetlania dzienników w Log Analytics może potrwać do 20 minut. 
+1. Otwórz Log Analytics, aby upewnić się, że dzienniki są odbierane przy użyciu schematu CommonSecurityLog.<br> Rozpoczęcie wyświetlania dzienników w Log Analytics może zająć więcej niż 20 minut. 
 
-1. Upewnij się, że używasz odpowiedniej funkcji. Ta funkcja musi być taka sama w urządzeniu i w wskaźniku na platformie Azure. Możesz sprawdzić, który plik funkcji jest używany na platformie Azure, i zmodyfikować go w pliku `security-config-omsagent.conf`. 
+1. Przed uruchomieniem skryptu zalecamy wysłanie komunikatów z rozwiązania zabezpieczeń, aby upewnić się, że są one przekazywane do skonfigurowanego komputera proxy dziennika systemu. 
+1. Musisz mieć podwyższony poziom uprawnień (sudo) na swojej maszynie. Upewnij się, że na maszynie jest zainstalowany program Python, przy użyciu następującego polecenia: `python –version`
+1. Uruchom następujący skrypt, aby sprawdzić łączność między agentem, wskaźnikiem kontroli platformy Azure i rozwiązaniem zabezpieczeń. Sprawdza, czy przekazanie demona została prawidłowo skonfigurowana, nasłuchuje na prawidłowych portach i nie blokuje komunikacji między demonem a agentem Log Analytics. Skrypt wysyła również komunikat "TestCommonEventFormat" służący do przetestowania kompleksowej łączności. <br>
+ `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
-2. Upewnij się, że dzienniki znajdują się na odpowiednim porcie w agencie dziennika systemowego. Uruchom to polecenie na komputerze agenta dziennika systemu: `tcpdump -A -ni any  port 514 -vv`. To polecenie umożliwia wyświetlenie dzienników przesyłanych strumieniowo z urządzenia do maszyny dziennika systemowego. Upewnij się, że dzienniki są odbierane z urządzenia źródłowego na odpowiednim porcie i właściwej funkcji.
 
-3. Upewnij się, że dzienniki są zgodne ze [specyfikacją RFC 3164](https://tools.ietf.org/html/rfc3164).
 
-4. Upewnij się, że porty 514 i 25226 są otwarte i nasłuchuje `netstat -a -n:`na komputerze z uruchomionym agentem dziennika systemowego. Aby uzyskać więcej informacji na temat korzystania z tego polecenia, zobacz [stronę sieci Web z systemem Linux (8)](https://linux.die.net/man/8/netstat). Jeśli nasłuchuje prawidłowo, zobaczysz:
-
-   ![Porty wskaźnikowe platformy Azure](./media/connect-cef/ports.png) 
-
-5. Upewnij się, że demon jest skonfigurowany do nasłuchiwania na porcie 514, na którym są wysyłane dzienniki.
-    - Dla rsyslog:<br>Upewnij się, że plik `/etc/rsyslog.conf` zawiera następującą konfigurację:
-
-           # provides UDP syslog reception
-           module(load="imudp")
-           input(type="imudp" port="514")
-        
-           # provides TCP syslog reception
-           module(load="imtcp")
-           input(type="imtcp" port="514")
-
-      Aby uzyskać więcej informacji, [Zobacz imudp: Moduł](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module) wejściowy dziennika systemowego UDP i [imtcp: Moduł](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)danych wejściowych dziennika systemu TCP.
-
-   - Dla dziennika systemowego — NG:<br>Upewnij się, że plik `/etc/syslog-ng/syslog-ng.conf` zawiera następującą konfigurację:
-
-           # source s_network {
-            network( transport(UDP) port(514));
-             };
-     Aby uzyskać więcej informacji, [Zobacz imudp: Moduł](https://rsyslog.readthedocs.io/en/latest/configuration/modules/imudp.html) wejściowy dziennika systemowego UDP i [Dziennik systemu w wersji Open Source Edition 3,16 — Podręcznik administrowania](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455).
-
-1. Sprawdź, czy istnieje komunikacja między demonem dziennika systemowego a agentem. Uruchom to polecenie na komputerze agenta dziennika systemu: `tcpdump -A -ni any  port 25226 -vv`. To polecenie umożliwia wyświetlenie dzienników przesyłanych strumieniowo z urządzenia do maszyny dziennika systemowego. Upewnij się, że dzienniki są również odbierane w agencie.
-
-6. Jeśli oba te polecenia zapewniały pomyślne wyniki, sprawdź Log Analytics, aby sprawdzić, czy dzienniki są odbierane. Wszystkie zdarzenia przesyłane strumieniowo z tych urządzeń są wyświetlane w formacie nieprzetworzonym w log Analytics w obszarze `CommonSecurityLog` typ.
-
-7. Aby sprawdzić, czy występują błędy lub czy dzienniki nie docierają, zapoznaj się `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`z tematem. Jeśli komunikat ma błędy niezgodności formatu dziennika, przejdź do `/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` pliku `security_events.conf`i sprawdź go. Upewnij się, że dzienniki są zgodne z formatem wyrażeń regularnych, które są widoczne w tym pliku.
-
-8. Upewnij się, że rozmiar domyślnego komunikatu dziennika systemu jest ograniczony do 2048 bajtów (2 KB). Jeśli dzienniki są zbyt długie, zaktualizuj security_events. conf przy użyciu tego polecenia:`message_length_limit 4096`
-
-10. Jeśli dzienniki firmy Fortinet nie są odbierane przez agenta, Uruchom to polecenie, w zależności od używanego typu demona dziennika systemu, aby ustawić funkcję i skonfigurować dzienniki w celu wyszukania słowa Fortinet w dziennikach:
-       - rsyslog.d: `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-
-     Uruchom ponownie demona dziennika systemu przy użyciu tego polecenia:`sudo service rsyslog restart`
-       - Dziennik systemowy — NG:`sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-      
-     Uruchom ponownie demona dziennika systemu przy użyciu tego polecenia:`sudo service syslog-ng restart`
 
 ## <a name="next-steps"></a>Następne kroki
 W tym artykule przedstawiono sposób łączenia urządzeń Fortinet z platformą Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:

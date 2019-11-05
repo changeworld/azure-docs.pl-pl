@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: ed403e3d761b32c6837eb8e72edef3f3e6380217
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 07afd197e514adb0f2fc65c11e9fec552aa05b99
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307571"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492658"
 ---
-# <a name="tutorial--get-sentiment-of-utterance"></a>Samouczek:  Uzyskiwanie tonacji wypowiedzi
+# <a name="tutorial--get-sentiment-of-utterance"></a>Samouczek: pobieranie tonacji z wypowiedź
 
 W tym samouczku utworzysz aplikację, która pokazuje, jak określić pozytywne, negatywne i neutralne tonacje z wypowiedzi. Tonację określa się na podstawie całej wypowiedzi.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -41,7 +43,7 @@ Następujące wypowiedzi przedstawiają przykłady tonacji:
 |Opinia|Wynik|Wypowiedź|
 |:--|:--|:--|
 |pozytywna|0,91 |John W. Smith zostało świetnie w prezentacji w Paryżu.|
-|pozytywna|0,84 |Inżynierowie z Seattle wykonali fantastyczną pracę na boisku Parkera|
+|pozytywna|0,84 |The Seattle engineers did fabulous work on the Parker sales pitch.|
 
 Analiza tonacji to ustawienie publikowania, które ma zastosowanie do każdej wypowiedzi. Nie ma potrzeby odnajdywania słów wskazujących tonację w ramach wypowiedzi i oznaczania ich. 
 
@@ -72,7 +74,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
 1. Wybierz pozycję **Intents** (Intencje) na lewym panelu.
 
-1. Wybierz pozycję **Create new intent** (Utwórz nową intencję).
+1. Wybierz pozycję**Create new intent** (Utwórz nową intencję).
 
 1. Nadaj nowej intencji nazwę `EmployeeFeedback`.
 
@@ -84,12 +86,12 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
     |--|
     |John Smith did a nice job of welcoming back a co-worker from maternity leave|
     |Jill Jones did a great job of comforting a co-worker in their time of grief.|
-    |Bob Barnes nie miał wszystkich wymaganych faktur za dokumenty.|
-    |Todd Thomas oddał wymagane formularze miesiąc później bez podpisów|
-    |Katherine Kelly nie dotarła na ważne spotkanie marketingowe poza miejscem.|
+    |Bob Barnes didn't have all the required invoices for the paperwork.|
+    |Todd Thomas turned in the required forms a month late with no signatures|
+    |Katherine Kelly didn't make it to the important marketing off-site meeting.|
     |Denise Dillard missed the meeting for June reviews.|
-    |Mark Mathews wstrząsnął boiskiem sprzedaży na Harvardzie|
-    |Walter Williams wykonał świetną robotę podczas prezentacji w Stanford|
+    |Mark Mathews rocked the sales pitch at Harvard|
+    |Walter Williams did a great job on the presentation at Stanford|
 
     Wybierz **Opcje widoku**, wybierz pozycję **Pokaż wartości jednostki** , aby wyświetlić nazwy.
 
@@ -103,7 +105,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurowanie aplikacji pod kątem analizy tonacji
+## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurowanie aplikacji do uwzględnienia analizy tonacji
 
 1. Wybierz pozycję **Manage** (Zarządzaj) w prawym górnym okienku nawigacji, a następnie wybierz pozycję **Publish settings** (Ustawienia publikowania) z menu po lewej stronie.
 
@@ -159,7 +161,7 @@ Dodanie nowej intencji pozwala na przechwycenie opinii pracowników firmy.
 
     Wynik analizy sentimentAnalysis jest pozytywny i ma wartość 86%. 
 
-    Wypróbuj inny wypowiedź, usuwając wartość dla `q` na pasku adresu przeglądarki: `William Jones did a terrible job presenting his ideas.`Wynik tonacji wskazuje negatywną tonacji, zwracając dolny wynik `0.18597582`.
+    Wypróbuj inną wypowiedź, usuwając wartość `q` na pasku adresu przeglądarki: `William Jones did a terrible job presenting his ideas.` wynik tonacji wskazuje negatywną tonacji poprzez zwrócenie `0.18597582`niskiego wyniku.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: efc61f7dc8e9d2caa53c4cbd7d932af9e1a206d1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793541"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466519"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Zarządzanie usługą Wyszukiwanie poznawcze platformy Azure przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Chociaż nie ma żadnych dedykowanych poleceń programu PowerShell do zarządzan
 
 Inne zadania nieobsługiwane za poorednictwem programu PowerShell lub dowolnego innego interfejsu API (tylko Portal) obejmują:
 + [Dołącz zasób usługi poznawczej](cognitive-search-attach-cognitive-services.md) do plików [indeksowanych wzbogaconych od AI](cognitive-search-concept-intro.md). Usługa poznawczej jest dołączona do zestawu umiejętności, a nie do subskrypcji ani usługi.
-+ [Rozwiązania do monitorowania rozwiązań](search-monitor-usage.md#add-on-monitoring-solutions) na potrzeby monitorowania Azure Search.
++ [Rozwiązania do monitorowania rozwiązań](search-monitor-usage.md#add-on-monitoring-solutions) na potrzeby monitorowania wyszukiwanie poznawcze platformy Azure.
 
 <a name="check-versions-and-load"></a>
 
@@ -84,7 +84,7 @@ Jeśli przechowujesz wiele subskrypcji platformy Azure, ustaw subskrypcję platf
 Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 ```
 
-Aby określić subskrypcję, uruchom następujące polecenie. W poniższym przykładzie nazwa subskrypcji to `ContosoSubscription`.
+Aby określić subskrypcję, uruchom następujące polecenie. W poniższym przykładzie nazwa subskrypcji jest `ContosoSubscription`.
 
 ```azurepowershell-interactive
 Select-AzSubscription -SubscriptionName ContosoSubscription

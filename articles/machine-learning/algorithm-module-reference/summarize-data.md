@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 54d7235ef56a94c9c0e7b780c53cbd9791bf4f53
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694716"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492574"
 ---
 # <a name="summarize-data"></a>Podsumowywanie danych
 
-W tym artykule opisano moduł Azure Machine Learning Visual Interface.
+W tym artykule opisano moduł programu Azure Machine Learning Designer (wersja zapoznawcza).
 
 Moduł podsumowujące dane służy do tworzenia zestawu standardowych miar statystycznych, które opisują poszczególne kolumny w tabeli wejściowej.
 
@@ -32,7 +32,7 @@ Moduł oblicza ważne wyniki dla każdej kolumny i zwraca wiersz statystyk podsu
 
 ## <a name="how-to-configure-summarize-data"></a>Jak skonfigurować dane podsumowujące  
 
-1. Dodaj moduł **podsumowujące dane** do potoku. Ten moduł można znaleźć w kategorii **funkcje statystyczne** w interfejsie wizualizacji.
+1. Dodaj moduł **podsumowujące dane** do potoku. Ten moduł można znaleźć w kategorii **funkcje statystyczne** w projektancie.
 
 1. Połącz zestaw danych, dla którego chcesz wygenerować raport.
 

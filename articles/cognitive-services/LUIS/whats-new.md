@@ -9,20 +9,39 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813280"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498922"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co nowego w Language Understanding
 
-Dowiedz się, co nowego w usłudze. Te elementy mogą wydawania informacji, wideo, wpisów w blogu i innych typów. Oznacz Tę stronę zakładką, aby zapewnić aktualność usługi.  
+Dowiedz się, co nowego w usłudze. Te elementy obejmują informacje o wersji, klipy wideo, wpisy w blogu i inne rodzaje informacji. Oznacz Tę stronę zakładką, aby zapewnić aktualność usługi.  
 
 ## <a name="release-notes"></a>Informacje o wersji 
+
+### <a name="november-4-2019---ignite"></a>4 listopada 2019 — zapłon
+
+* Ulepszona produktywność dla deweloperów
+    * Ogólna dostępność naszego [punktu końcowego przewidywania v3](luis-migration-api-v3.md). 
+    * Możliwość importowania i eksportowania aplikacji z formatem. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). To paves sposób na efektywny proces ciągłej integracji/ciągłego dostarczania. 
+* Rozwinięcie języka
+    * [Język arabski i hindi](luis-language-support.md) w publicznej wersji zapoznawczej.
+* Modele prekompilowania
+    * [Wstępnie skompilowane domeny](luis-reference-prebuilt-domains.md) są teraz ogólnie dostępne (ga)
+    * Japońskie wstępnie [skompilowane jednostki](luis-reference-prebuilt-entities.md#japanese-entity-support) — wiek, waluta, numer, procent nie są obsługiwane w wersji 3.
+    * Włoskie wstępnie [skompilowane jednostki](luis-reference-prebuilt-entities.md#italian-entity-support) — wiek, waluta, wymiar, liczba, rozdzielczość procentowa została zmieniona z v2.
+* Usprawnij środowisko użytkownika w [portalu Preview.Luis.AI](https://preview.luis.ai) — środowisko etykietowania odnowionych, aby umożliwić tworzenie i debugowanie złożonych modeli.
+* Dokładniejsze Omówienie języka — [tworzenie zaawansowanych modeli języków](luis-concept-entity-types.md) z mniejszym nakładem pracy. 
+* Definiowanie funkcji uczenia maszynowego na poziomie modelu i włączanie modeli do użycia jako sygnałów do innego modelu, takich jak używanie jednostek jako funkcji do intencji i innych jednostek.
+* Nowe, rozwinięte [limity](luis-boundaries.md) — wyższa wartość maksymalna dla list fraz i łączna liczba fraz, nowy model jako limity funkcji
+* Wyodrębnij informacje z tekstu w formacie głębokiej struktury hierarchii, co sprawia, że aplikacje do konwersacji są bardziej wydajne.
+
+    ![obraz jednostki o Poznaniu maszynowym](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>3 września, 2019
 
@@ -61,7 +80,7 @@ Następujące funkcje zostały wydane na konferencji Build 2019:
 
 [Bot Framework](https://blog.botframework.com/)
 
-## <a name="videos"></a>Wideo
+## <a name="videos"></a>Filmy wideo
 
 ### <a name="2019-build-videos"></a>wideo kompilacji 2019
 

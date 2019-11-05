@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d23d16d1315eeaf224a5291641ab088212fcdc77
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: b06cae5bcb07831ba79b805802a7851c2b6ad2b3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146955"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467965"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Konfigurowanie odzyskiwania po awarii do regionu pomocniczego platformy Azure dla maszyny wirtualnej platformy Azure        
 
@@ -24,7 +24,7 @@ W tym przewodniku szybki start opisano sposób konfigurowania odzyskiwania po aw
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Ten artykuł stanowi krótki przewodnik dla nowych użytkowników. Używa najprostszej ścieżki z opcjami domyślnymi i minimalnym dostosowaniem.  Aby zapoznać się z naszym samouczkiem, zobacz [nasz samouczek](azure-to-azure-tutorial-enable-replication.md).
+> Ten artykuł stanowi krótki przewodnik dla nowych użytkowników. Używa najprostszej ścieżki z opcjami domyślnymi i minimalnym dostosowaniem.  Aby zapoznać się z [naszym samouczkiem, zobacz nasz samouczek](azure-to-azure-tutorial-enable-replication.md).
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
@@ -32,11 +32,11 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Włączanie replikacji maszyny wirtualnej platformy Azure
 
-1. W witrynie Azure Portal kliknij pozycję **Maszyny wirtualne** i wybierz tę, którą chcesz zreplikować.
-2. W obszarze **Operacje** kliknij pozycję **Odzyskiwanie po awarii**.
+1. W menu Azure Portal wybierz pozycję **maszyny wirtualne**lub Wyszukaj i wybierz pozycję *maszyny wirtualne* na dowolnej stronie. Wybierz maszynę wirtualną, którą chcesz replikować.
+2. W obszarze **Operacja** wybierz pozycję **Odzyskiwanie po awarii**.
 3. W obszarze **Konfigurowanie odzyskiwania po awarii** > **Region docelowy** wybierz region docelowy, w którym maszyna będzie replikowana.
 4. W przypadku tego przewodnika Szybki Start należy zaakceptować ustawienia domyślne.
-5. Kliknij pozycję **Włącz replikację**. Spowoduje to uruchomienie zadania włączającego replikację dla maszyny wirtualnej.
+5. Wybierz kolejno pozycje **Recenzja + Uruchom replikację**. Następnie wybierz pozycję **Rozpocznij replikację** , aby uruchomić zadanie umożliwiające REPLIKACJĘ maszyny wirtualnej.
 
     ![włączanie replikacji](media/azure-to-azure-quickstart/enable-replication1.png)
 
@@ -44,8 +44,10 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
 Po zakończeniu zadania replikacji można sprawdzić stan replikacji, zmodyfikować ustawienia replikacji i przetestować wdrożenie.
 
-1. W obszarze **Operacje** kliknij pozycję **Odzyskiwanie po awarii**.
-2. Można sprawdzić kondycję replikacji, utworzone punkty odzyskiwania oraz regiony źródłowy i docelowy na mapie.
+1. W menu Azure Portal wybierz pozycję **maszyny wirtualne**lub Wyszukaj i wybierz pozycję *maszyny wirtualne* na dowolnej stronie. Wybierz maszynę wirtualną, którą chcesz zweryfikować.
+2. W obszarze **Operacja** wybierz pozycję **Odzyskiwanie po awarii**.
+
+   Można sprawdzić kondycję replikacji, utworzone punkty odzyskiwania oraz regiony źródłowy i docelowy na mapie.
 
    ![Stan replikacji](media/azure-to-azure-quickstart/replication-status.png)
 
@@ -58,8 +60,8 @@ Replikowanie maszyny wirtualnej w regionie podstawowym jest zatrzymywane w przyp
 
 Zatrzymaj replikację w następujący sposób
 
-1. Wybierz maszynę wirtualną.
-2. W obszarze **Odzyskiwanie po awarii** kliknij pozycję **Wyłącz replikację**.
+1. W menu Azure Portal wybierz pozycję **maszyny wirtualne**lub Wyszukaj i wybierz pozycję *maszyny wirtualne* na dowolnej stronie. Wybierz maszynę wirtualną, którą chcesz zmodyfikować.
+2. W obszarze **odzyskiwanie po awarii**wybierz pozycję **Wyłącz replikację**.
 
    ![Wyłączanie replikacji](media/azure-to-azure-quickstart/disable2-replication.png)
 

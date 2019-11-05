@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: cfecea6a64301d86aa657420dc300c26d4ed6f1e
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663394"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490809"
 ---
 # <a name="exploration-and-exploitation"></a>Eksploracja i wykorzystanie
 
@@ -25,22 +25,15 @@ Gdy Personalizacja odbiera wywołanie rangi, zwraca RewardActionID, że:
 * Używa luki w zabezpieczeniach, aby dopasować najbardziej prawdopodobne zachowanie użytkownika w oparciu o bieżący model uczenia maszynowego.
 * Używa eksploracji, która nie jest zgodna z akcją, która ma największe prawdopodobieństwo w rangi.
 
-<!--
-Returning the most probable action is called *exploit* behavior. Returning a different action is called *exploration*.
--->
 Personalizacja obecnie używa algorytmu o nazwie *Epsilon zachłanne* do eksplorowania. 
 
 ## <a name="choosing-an-exploration-setting"></a>Wybieranie ustawienia eksploracji
 
-Można skonfigurować procent ruchu do użycia podczas eksploracji na stronie **ustawień** Azure Portal dla personalizacji. To ustawienie określa procent wywołań rangi, które wykonują eksplorację. 
+Należy skonfigurować procent ruchu, który ma być używany do eksploracji na stronie **konfiguracji** Azure Portal dla personalizacji. To ustawienie określa procent wywołań rangi, które wykonują eksplorację. 
 
 Personalizowanie decyduje o tym, czy należy eksplorować lub wykorzystywać to prawdopodobieństwo dla każdego wywołania rangi. Różni się to od zachowania w niektórych strukturach A/B, które zablokują traktowanie określonych identyfikatorów użytkownika.
 
 ## <a name="best-practices-for-choosing-an-exploration-setting"></a>Najlepsze rozwiązania dotyczące wybierania ustawienia eksploracji
-
-<!--
-@edjez - you say what not to do, but make no recommendations of what **to** do. 
--->
 
 Wybór ustawienia eksploracji to decyzja biznesowa dotycząca proporcji interakcji użytkowników, która umożliwia Eksplorowanie w programie w celu ulepszenia modelu. 
 

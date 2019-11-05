@@ -1,7 +1,7 @@
 ---
 title: Listy fraz — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak dostarczać usługi mowy z listą fraz `PhraseListGrammar` przy użyciu obiektu, aby poprawić wyniki rozpoznawania zamiany mowy na tekst.
+description: Dowiedz się, jak dostarczać usługi mowy z listą fraz przy użyciu obiektu `PhraseListGrammar`, aby poprawić wyniki rozpoznawania zamiany mowy na tekst.
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 0e552d502184d1b537263c2c1f6b2a8562cdf791
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 61d3e4d2de6b8707ee7433815f8002e5d5e3e3d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562772"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464547"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Listy fraz dla zamiany mowy na tekst
 
@@ -23,14 +23,14 @@ Dostarczając usługi mowy z listą fraz, można poprawić dokładność rozpozn
 
 Jeśli na przykład masz polecenie "Przenieś do" i możliwe miejsce docelowe "do wewnątrz", które może być wymawiane, możesz dodać wpis "przejdź do samego". Dodanie frazy spowoduje zwiększenie prawdopodobieństwa, że gdy dźwięk zostanie rozpoznany, że "Przenieś do wewnątrz" zostanie rozpoznany zamiast "Przenieś w stronę".
 
-Pojedyncze słowa lub kompletne wyrażenia można dodać do listy fraz. Podczas rozpoznawania, gdy w dźwięku znajduje się dokładne dopasowanie, jest używana pozycja na liście fraz. Kompilowanie w poprzednim przykładzie, jeśli lista fraz zawiera ciąg "Przenieś do niego" i przechwycona fraza ma wartość "Przenieś w kierunku spowolnienia", a następnie wynik rozpoznawania zostanie "przesunięty do wolniej".
+Pojedyncze słowa lub kompletne wyrażenia można dodać do listy fraz. Podczas rozpoznawania, gdy w dźwięku znajduje się dokładne dopasowanie, jest używana pozycja na liście fraz. Kompilowanie w poprzednim przykładzie, jeśli lista fraz zawiera "Przenieś do wewnątrz", a dźwięki przechwycone przez dźwięk są podobne do "Przenieś do" i "Przenieś do nich", a następnie wynik rozpoznawania będzie bardziej prawdopodobnie rozpoznany jako "Przenieś na wolniej".
 
 >[!Note]
 > Obecnie listy fraz obsługują tylko język angielski dla zamiany mowy na tekst.
 
 ## <a name="how-to-use-phrase-lists"></a>Jak używać list fraz
 
-Poniższe przykłady ilustrują sposób tworzenia listy fraz przy użyciu `PhraseListGrammar` obiektu.
+Poniższe przykłady ilustrują sposób tworzenia listy fraz przy użyciu obiektu `PhraseListGrammar`.
 
 ```C++
 auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
@@ -70,7 +70,7 @@ phraseListGrammar.addPhrase("Move to Ted");
 >[!Note]
 > Maksymalna liczba list fraz, które będą używane przez usługę mowy do dopasowania mowy, to 1024 fraz.
 
-Możesz również wyczyścić frazy skojarzone z `PhraseListGrammar` przez wywołanie metody Clear ().
+Możesz również wyczyścić frazy skojarzone z `PhraseListGrammar` przez wywołanie Clear ().
 
 ```C++
 phraselist->Clear();
@@ -93,7 +93,7 @@ phraseListGrammar.clear();
 ```
 
 > [!NOTE]
-> Zmiany w `PhraseListGrammar` obiekcie mają wpływ na następne rozpoznanie lub po ponownym nawiązaniu połączenia z usługą mowy.
+> Zmiany w obiekcie `PhraseListGrammar` zaczną obowiązywać przy następnym rozpoznaniu lub po ponownym nawiązaniu połączenia z usługą mowy.
 
 ## <a name="next-steps"></a>Następne kroki
 

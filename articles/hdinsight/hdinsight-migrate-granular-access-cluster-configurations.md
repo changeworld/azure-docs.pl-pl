@@ -1,5 +1,5 @@
 ---
-title: Migrowanie do szczegółowego dostępu opartego na rolach — konfiguracje klastrów usługi Azure HDInsight
+title: Szczegółowy dostęp oparty na rolach konfiguracje klastrów usługi Azure HDInsight
 description: Dowiedz się więcej o zmianach wymaganych w ramach migracji do szczegółowego dostępu opartego na rolach dla konfiguracji klastra usługi HDInsight.
 author: tylerfox
 ms.author: tyfox
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 9eb77b3e4066712aecebee4660d50baf45957cb8
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: ea8e1565a5ebe4e5cb40049fbfcb329feb83bdda
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733230"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498203"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 
@@ -20,18 +20,18 @@ Wprowadzamy pewne ważne zmiany, aby obsługiwać bardziej szczegółowy dostęp
 
 ## <a name="what-is-changing"></a>Co się zmieni?
 
-Wcześniej wpisy tajne mogą być uzyskiwane za pośrednictwem interfejsu API usługi HDInsight przez użytkowników klastrów, którzy posiadają [role](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)właściciela, współautora lub czytelnika, ponieważ były `*/read` dostępne dla wszystkich osób z uprawnieniami. Wpisy tajne są definiowane jako wartości, które mogą być używane do uzyskania bardziej podwyższonego poziomu dostępu, niż powinna zezwalać rola użytkownika. Obejmują one wartości, takie jak poświadczenia HTTP bramy klastra, klucze konta magazynu i poświadczenia bazy danych.
+Wcześniej wpisy tajne mogą być uzyskiwane za pośrednictwem interfejsu API usługi HDInsight przez użytkowników klastrów, którzy posiadają [role](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)dla właściciela, współautora lub czytnika, ponieważ były dostępne dla wszystkich osób z uprawnieniami `*/read`. Wpisy tajne są definiowane jako wartości, które mogą być używane do uzyskania bardziej podwyższonego poziomu dostępu, niż powinna zezwalać rola użytkownika. Obejmują one wartości, takie jak poświadczenia HTTP bramy klastra, klucze konta magazynu i poświadczenia bazy danych.
 
-Od 3 września 2019 dostęp do tych kluczy tajnych będzie wymagał `Microsoft.HDInsight/clusters/configurations/action` uprawnień, co oznacza, że użytkownicy z rolą czytelnik nie będą mieli dostępu do nich. Role, które mają to uprawnienie, to współautor, właściciel i Nowa rola operatora klastra usługi HDInsight (więcej informacji znajduje się poniżej).
+Od 3 września 2019 dostęp do tych kluczy tajnych będzie wymagał uprawnień `Microsoft.HDInsight/clusters/configurations/action`, co oznacza, że użytkownicy z rolą czytelnik nie będą mieli już dostępu do nich. Role, które mają to uprawnienie, to współautor, właściciel i Nowa rola operatora klastra usługi HDInsight (więcej informacji znajduje się poniżej).
 
 Wprowadzamy również nową rolę [operatora klastra usługi HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) , która będzie mogła pobierać wpisy tajne bez przyznawania uprawnień administracyjnych współautora lub właściciela. Aby podsumować:
 
-| Role                                  | Poprzedniej                                                                                       | Przechodzenie do przodu       |
+| Rola                                  | Poprzedniej                                                                                       | Przechodzenie do przodu       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Czytelnik                                | — Dostęp do odczytu, w tym wpisy tajne                                                                   | — Dostęp do odczytu, **z wyłączeniem** wpisów tajnych |           |   |   |
-| Operator klastra usługi HDInsight<br>(Nowa rola) | ND                                                                                              | — Dostęp do odczytu/zapisu, w tym wpisy tajne         |   |   |
-| Współautor                           | — Dostęp do odczytu/zapisu, w tym wpisy tajne<br>— Tworzenie wszystkich typów zasobów platformy Azure i zarządzanie nimi.     | Nie wprowadzono zmian |
-| Właściciel                                 | — Dostęp do odczytu/zapisu, w tym wpisy tajne<br>-Pełny dostęp do wszystkich zasobów<br>-Deleguj dostęp do innych osób | Nie wprowadzono zmian |
+| Operator klastra usługi HDInsight<br>(Nowa rola) | Nie dotyczy                                                                                              | — Dostęp do odczytu/zapisu, w tym wpisy tajne         |   |   |
+| Współautor                           | — Dostęp do odczytu/zapisu, w tym wpisy tajne<br>— Tworzenie wszystkich typów zasobów platformy Azure i zarządzanie nimi.     | Bez zmian |
+| Właściciel                                 | — Dostęp do odczytu/zapisu, w tym wpisy tajne<br>-Pełny dostęp do wszystkich zasobów<br>-Deleguj dostęp do innych osób | Bez zmian |
 
 Aby uzyskać informacje na temat dodawania przypisania roli operatora klastra usługi HDInsight do użytkownika w celu udzielenia im dostępu do odczytu/zapisu do wpisów tajnych klastra, zapoznaj się z sekcją poniżej i [Dodaj przypisanie roli operatora klastra usługi HDInsight do użytkownika](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user).
 
@@ -39,31 +39,31 @@ Aby uzyskać informacje na temat dodawania przypisania roli operatora klastra us
 
 Dotyczy to następujących jednostek i scenariuszy:
 
-- [INTERFEJS API](#api): Użytkownicy korzystający `/configurations` z `/configurations/{configurationName}` punktów końcowych lub.
+- [Interfejs API](#api): Użytkownicy korzystający z punktów końcowych `/configurations` lub `/configurations/{configurationName}`.
 - [Narzędzia usługi Azure HDInsight dla Visual Studio Code w](#azure-hdinsight-tools-for-visual-studio-code) wersji 1.1.1 lub starszej.
 - [Azure Toolkit for IntelliJ](#azure-toolkit-for-intellij) w wersji 3.20.0 lub niższej.
 - [Azure Data Lake i Stream Analytics Tools for Visual Studio](#azure-data-lake-and-stream-analytics-tools-for-visual-studio) poniżej wersji 2.3.9000.1.
 - [Azure Toolkit for Eclipse](#azure-toolkit-for-eclipse) w wersji 3.15.0 lub niższej.
 - [Zestaw SDK dla platformy .NET](#sdk-for-net)
-    - [wersje 1. x lub 2. x](#versions-1x-and-2x): Użytkownicy korzystający `GetClusterConfigurations`z `GetConnectivitySettings`metod `ConfigureHttpSettings`, `EnableHttp` , `DisableHttp` , lub z klasy ConfigurationsOperationsExtensions.
-    - [wersje 3. x i w górę](#versions-3x-and-up): Użytkownicy korzystający `Get`z `Update`metod `EnableHttp`,, `DisableHttp` , lub z `ConfigurationsOperationsExtensions` klasy.
-- [Zestaw SDK dla języka Python](#sdk-for-python): Użytkownicy korzystający `get` z `update` metod lub z `ConfigurationsOperations` klasy.
-- [Zestaw SDK dla języka Java](#sdk-for-java): Użytkownicy korzystający `update` z `get` metod lub z `ConfigurationsInner` klasy.
-- [Zestaw SDK dla języka go](#sdk-for-go): Użytkownicy korzystający `Get` z `Update` metod lub z `ConfigurationsClient` struktury.
+    - [wersje 1. x lub 2. x](#versions-1x-and-2x): Użytkownicy korzystający z metod `GetClusterConfigurations`, `GetConnectivitySettings`, `ConfigureHttpSettings`, `EnableHttp` i `DisableHttp` z klasy ConfigurationsOperationsExtensions.
+    - [wersje 3. x i w górę](#versions-3x-and-up): Użytkownicy korzystający z metod `Get`, `Update`, `EnableHttp`lub `DisableHttp` z klasy `ConfigurationsOperationsExtensions`.
+- [Zestaw SDK dla języka Python](#sdk-for-python): Użytkownicy korzystający z metod `get` lub `update` z klasy `ConfigurationsOperations`.
+- [Zestaw SDK dla języka Java](#sdk-for-java): Użytkownicy korzystający z metod `update` lub `get` z klasy `ConfigurationsInner`.
+- [Zestaw SDK dla języka go](#sdk-for-go): Użytkownicy korzystający z metod `Get` lub `Update` z struktury `ConfigurationsClient`.
 - [AZ. HDInsight PowerShell](#azhdinsight-powershell) poniżej wersji 2.0.0.
 Procedurę migracji dla danego scenariusza można znaleźć w poniższych sekcjach (lub za pomocą powyższych linków).
 
-### <a name="api"></a>interfejs API
+### <a name="api"></a>Interfejs API
 
 Następujące interfejsy API zostaną zmienione lub przestarzałe:
 
 - [**Pobierz/Configurations/{ConfigurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (usunięto poufne informacje)
     - Poprzednio używane do uzyskiwania poszczególnych typów konfiguracji (w tym kluczy tajnych).
     - Od 3 września 2019 to wywołanie interfejsu API zwróci teraz indywidualne typy konfiguracji z kluczami tajnymi, które zostały pominięte. Aby uzyskać wszystkie konfiguracje, w tym klucze tajne, Użyj nowego wywołania POST/Configurations. Aby uzyskać tylko ustawienia bramy, Użyj nowego wywołania POST/getGatewaySettings.
-- [**Pobierz/Configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) przestarzałe
+- [**Pobierz/Configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (przestarzałe)
     - Poprzednio używane do uzyskiwania wszystkich konfiguracji (w tym wpisów tajnych)
     - Od 3 września 2019 to wywołanie interfejsu API będzie przestarzałe i nie będzie już obsługiwane. Aby uzyskać wszystkie konfiguracje w przód, Użyj nowego wywołania POST/Configurations. Aby uzyskać konfigurację z pominiętymi parametrami, użyj wywołania GET/configurations/{configurationName}.
-- [**Opublikuj/Configurations/{ConfigurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) przestarzałe
+- [ **/Configurations/{ConfigurationName} post**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (przestarzałe)
     - Poprzednio używane do aktualizacji poświadczeń bramy.
     - Od 3 września 2019 to wywołanie interfejsu API zostanie zaniechane i nie będzie już obsługiwane. Zamiast tego użyj nowego wpisu/updateGatewaySettings.
 
@@ -71,9 +71,9 @@ Dodano następujące zastępcze interfejsy API:</span>
 
 - [**Opublikuj/Configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#list-configurations)
     - Użyj tego interfejsu API, aby uzyskać wszystkie konfiguracje, w tym wpisy tajne.
-- [**POST /getGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
+- [**Opublikuj/getGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
     - Użyj tego interfejsu API, aby uzyskać ustawienia bramy.
-- [**POST /updateGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
+- [**Opublikuj/updateGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
     - Użyj tego interfejsu API, aby zaktualizować ustawienia bramy (nazwa użytkownika i/lub hasło).
 
 ### <a name="azure-hdinsight-tools-for-visual-studio-code"></a>Narzędzia usługi Azure HDInsight dla Visual Studio Code
@@ -98,60 +98,60 @@ Jeśli używasz wersji 3.15.0 lub starszej, zaktualizuj do [najnowszej wersji Az
 
 Aktualizacja do [wersji 2.1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/2.1.0) zestawu HDInsight SDK dla platformy .NET. Jeśli używasz metody, której dotyczą te zmiany, mogą być wymagane minimalne modyfikacje kodu:
 
-- `ClusterOperationsExtensions.GetClusterConfigurations`**nie będą już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
-    - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, `ClusterOperationsExtensions.ListConfigurations` Użyj przechodzenia do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra.
+- `ClusterOperationsExtensions.GetClusterConfigurations` **nie będzie już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
+    - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, użyj `ClusterOperationsExtensions.ListConfigurations` przechodzenie do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra.
     - Aby pobrać tylko poświadczenia bramy HTTP, użyj `ClusterOperationsExtensions.GetGatewaySettings`.
 
-- `ClusterOperationsExtensions.GetConnectivitySettings`jest teraz przestarzały i został zastąpiony przez `ClusterOperationsExtensions.GetGatewaySettings`.
+- `ClusterOperationsExtensions.GetConnectivitySettings` jest teraz przestarzały i został zastąpiony przez `ClusterOperationsExtensions.GetGatewaySettings`.
 
-- `ClusterOperationsExtensions.ConfigureHttpSettings`jest teraz przestarzały i został zastąpiony przez `ClusterOperationsExtensions.UpdateGatewaySettings`.
+- `ClusterOperationsExtensions.ConfigureHttpSettings` jest teraz przestarzały i został zastąpiony przez `ClusterOperationsExtensions.UpdateGatewaySettings`.
 
-- `ConfigurationsOperationsExtensions.EnableHttp`i `DisableHttp` są obecnie przestarzałe. Protokół HTTP jest teraz zawsze włączony, dlatego te metody nie są już potrzebne.
+- `ConfigurationsOperationsExtensions.EnableHttp` i `DisableHttp` są obecnie przestarzałe. Protokół HTTP jest teraz zawsze włączony, dlatego te metody nie są już potrzebne.
 
 #### <a name="versions-3x-and-up"></a>Wersje 3. x i w górę
 
 Aktualizacja do [wersji 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) lub nowszej zestawu HDInsight SDK dla platformy .NET. Jeśli używasz metody, której dotyczą te zmiany, mogą być wymagane minimalne modyfikacje kodu:
 
-- [`ConfigurationOperationsExtensions.Get`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet)**nie będą już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
-    - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, [`ConfigurationOperationsExtensions.List`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet) Użyj przechodzenia do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra. 
+- [`ConfigurationOperationsExtensions.Get`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet) **nie będzie już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
+    - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, użyj [`ConfigurationOperationsExtensions.List`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet) przechodzenie do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra. 
     - Aby pobrać tylko poświadczenia bramy HTTP, użyj [`ClusterOperationsExtensions.GetGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet). 
-- [`ConfigurationsOperationsExtensions.Update`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet)jest teraz przestarzały i został zastąpiony przez [`ClusterOperationsExtensions.UpdateGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet). 
-- [`ConfigurationsOperationsExtensions.EnableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet)i [`DisableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet) są obecnie przestarzałe. Protokół HTTP jest teraz zawsze włączony, dlatego te metody nie są już potrzebne.
+- [`ConfigurationsOperationsExtensions.Update`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet) jest teraz przestarzały i został zastąpiony przez [`ClusterOperationsExtensions.UpdateGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet). 
+- [`ConfigurationsOperationsExtensions.EnableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet) i [`DisableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet) są obecnie przestarzałe. Protokół HTTP jest teraz zawsze włączony, dlatego te metody nie są już potrzebne.
 
 ### <a name="sdk-for-python"></a>Zestaw SDK dla środowiska Python
 
 Aktualizacja do [wersji 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) lub nowszej zestawu HDInsight SDK dla języka Python. Jeśli używasz metody, której dotyczą te zmiany, mogą być wymagane minimalne modyfikacje kodu:
 
-- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-)**nie będą już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
-    - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, [`ConfigurationsOperations.list`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) Użyj przechodzenia do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra. 
+- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) **nie będzie już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
+    - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, użyj [`ConfigurationsOperations.list`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) przechodzenie do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra. 
     - Aby pobrać tylko poświadczenia bramy HTTP, użyj [`ClusterOperations.get_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-).
-- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-)jest teraz przestarzały i został zastąpiony przez [`ClusterOperations.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-).
+- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) jest teraz przestarzały i został zastąpiony przez [`ClusterOperations.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-).
 
 ### <a name="sdk-for-java"></a>Zestaw SDK dla języka Java
 
 Aktualizacja do [wersji 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) lub nowszej zestawu HDInsight SDK dla języka Java. Jeśli używasz metody, której dotyczą te zmiany, mogą być wymagane minimalne modyfikacje kodu:
 
-- [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get)**nie będą już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
-    - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) Użyj przechodzenia do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra. 
+- [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) **nie będzie już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
+    - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, użyj [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) przechodzenie do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra. 
     - Aby pobrać tylko poświadczenia bramy HTTP, użyj [`ClustersInner.getGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable).
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update)jest teraz przestarzały i został zastąpiony przez [`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable).
+- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) jest teraz przestarzały i został zastąpiony przez [`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable).
 
 ### <a name="sdk-for-go"></a>Zestaw SDK dla języka go
 
 Aktualizacja do [wersji 27.1.0](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight) lub nowszej zestawu HDInsight SDK dla języka go. Jeśli używasz metody, której dotyczą te zmiany, mogą być wymagane minimalne modyfikacje kodu:
 
-- [`ConfigurationsClient.get`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Get)**nie będą już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
-    - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, [`ConfigurationsClient.list`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.List) Użyj przechodzenia do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra. 
+- [`ConfigurationsClient.get`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Get) **nie będzie już zwracać poufnych parametrów** , takich jak klucze magazynu (lokacja podstawowa) lub poświadczenia http (brama).
+    - Aby pobrać wszystkie konfiguracje, w tym poufne parametry, użyj [`ConfigurationsClient.list`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.List) przechodzenie do przodu.  Należy pamiętać, że użytkownicy z rolą "czytelnik" nie będą mogli korzystać z tej metody. Pozwala to na szczegółową kontrolę nad tym, którzy użytkownicy mogą uzyskać dostęp do poufnych informacji dotyczących klastra. 
     - Aby pobrać tylko poświadczenia bramy HTTP, użyj [`ClustersClient.get_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.GetGatewaySettings).
-- [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Update)jest teraz przestarzały i został zastąpiony przez [`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings).
+- [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Update) jest teraz przestarzały i został zastąpiony przez [`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings).
 
 ### <a name="azhdinsight-powershell"></a>AZ. HDInsight PowerShell
 Aby uniknąć przerw, zaktualizuj program [PowerShell w wersji 2.0.0](https://www.powershellgallery.com/packages/Az) lub nowszej.  Jeśli używasz metody, której dotyczą te zmiany, mogą być wymagane minimalne modyfikacje kodu.
-- `Grant-AzHDInsightHttpServicesAccess`jest teraz przestarzały i został zastąpiony przez nowe `Set-AzHDInsightGatewayCredential` polecenie cmdlet.
-- `Get-AzHDInsightJobOutput`została zaktualizowana w celu obsługi szczegółowego dostępu opartego na rolach do klucza magazynu.
+- `Grant-AzHDInsightHttpServicesAccess` jest teraz przestarzały i został zastąpiony przez nowe `Set-AzHDInsightGatewayCredential` polecenie cmdlet.
+- `Get-AzHDInsightJobOutput` została zaktualizowana w celu obsługi szczegółowego dostępu opartego na rolach do klucza magazynu.
     - Nie ma to wpływu na użytkowników mających rolę Operator, Współautor lub Właściciel w klastrze usługi HDInsight.
-    - Tylko użytkownicy z rolą czytelnika będą musieli jawnie określić `DefaultStorageAccountKey` parametr.
-- `Revoke-AzHDInsightHttpServicesAccess`jest obecnie przestarzałe. Protokół HTTP jest teraz zawsze włączony, więc to polecenie cmdlet nie jest już potrzebne.
+    - Tylko użytkownicy z rolą czytelnika będą musieli jawnie określić parametr `DefaultStorageAccountKey`.
+- `Revoke-AzHDInsightHttpServicesAccess` jest obecnie przestarzałe. Protokół HTTP jest teraz zawsze włączony, więc to polecenie cmdlet nie jest już potrzebne.
  Zobacz [AZ. Przewodnik migracji usługi HDInsight](https://github.com/Azure/azure-powershell/blob/master/documentation/migration-guides/Az.2.0.0-migration-guide.md#azhdinsight) , aby uzyskać więcej informacji.
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Dodawanie przypisania roli operatora klastra usługi HDInsight do użytkownika
@@ -160,10 +160,10 @@ Użytkownik z rolą [właściciela](https://docs.microsoft.com/azure/role-based-
 
 ### <a name="using-the-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
 
-Najprostszym sposobem, aby dodać to przypisanie roli, jest użycie `az role assignment create` polecenia w usłudze Azure CLI.
+Najprostszym sposobem dodawania tego przypisania roli jest użycie `az role assignment create` polecenie w interfejsie wiersza polecenia platformy Azure.
 
 > [!NOTE]
-> To polecenie musi być uruchamiane przez użytkownika z rolą właściciela, ponieważ tylko mogą udzielić tych uprawnień. `--assignee` To nazwa nazwy głównej usługi lub adresu e-mail użytkownika, do którego chcesz przypisać rolę operatora klastra HDInsight. Jeśli wystąpi błąd niewystarczających uprawnień, zobacz często zadawane pytania poniżej.
+> To polecenie musi być uruchamiane przez użytkownika z rolą właściciela, ponieważ tylko mogą udzielić tych uprawnień. `--assignee` to nazwa jednostki usługi lub adresu e-mail użytkownika, do którego chcesz przypisać rolę operatora klastra HDInsight. Jeśli wystąpi błąd niewystarczających uprawnień, zobacz często zadawane pytania poniżej.
 
 #### <a name="grant-role-at-the-resource-cluster-level"></a>Udziel roli na poziomie zasobów (klastra)
 
@@ -191,17 +191,17 @@ Możesz również użyć Azure Portal, aby dodać przypisanie roli operatora kla
 
 ### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>Dlaczego widzę odpowiedź 403 (dostęp zabroniony) po zaktualizowaniu żądań interfejsu API i/lub narzędziu?
 
-Konfiguracje klastra są teraz za szczegółowej kontroli dostępu opartej na rolach i `Microsoft.HDInsight/clusters/configurations/*` wymagają uprawnienia dostępu do nich. Aby uzyskać to uprawnienie, przypisz rolę operatora klastra usługi HDInsight, współautora lub właściciela do nazwy głównej użytkownika lub usług, próbując uzyskać dostęp do konfiguracji.
+Konfiguracje klastra są teraz za szczegółowej kontroli dostępu opartej na rolach i wymagają uprawnienia `Microsoft.HDInsight/clusters/configurations/*` dostępu do nich. Aby uzyskać to uprawnienie, przypisz rolę operatora klastra usługi HDInsight, współautora lub właściciela do nazwy głównej użytkownika lub usług, próbując uzyskać dostęp do konfiguracji.
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Dlaczego widzę "niewystarczające uprawnienia do ukończenia tej operacji" podczas uruchamiania polecenia platformy Azure w celu przypisania roli operatora klastra usługi HDInsight do innego użytkownika lub jego nazwy głównej?
 
-Oprócz roli właściciela, użytkownik lub podmiot usługi wykonujące polecenie musi mieć wystarczające uprawnienia usługi AAD do wyszukiwania identyfikatorów obiektów osoby przydzielonej. Ten komunikat oznacza niewystarczające uprawnienia usługi AAD. Spróbuj zamienić `-–assignee` argument z `–assignee-object-id` i podaj identyfikator obiektu osoby przydzielonej jako parametr zamiast nazwy (lub identyfikatora podmiotu zabezpieczeń w przypadku tożsamości zarządzanej). Aby uzyskać więcej informacji, zobacz sekcję Parametry opcjonalne w sekcji [AZ role przypisanie Create Documentation](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) .
+Oprócz roli właściciela, użytkownik lub podmiot usługi wykonujące polecenie musi mieć wystarczające uprawnienia usługi AAD do wyszukiwania identyfikatorów obiektów osoby przydzielonej. Ten komunikat oznacza niewystarczające uprawnienia usługi AAD. Spróbuj zastąpić argument `-–assignee` `–assignee-object-id` i podaj identyfikator obiektu osoby przydzielonej jako parametr zamiast nazwy (lub identyfikatora podmiotu zabezpieczeń w przypadku tożsamości zarządzanej). Aby uzyskać więcej informacji, zobacz sekcję Parametry opcjonalne w sekcji [AZ role przypisanie Create Documentation](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) .
 
 Jeśli to jeszcze nie zadziała, skontaktuj się z administratorem usługi AAD, aby uzyskać odpowiednie uprawnienia.
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Co się stanie, jeśli nie będę podejmować żadnych działań?
 
-Od 3 września 2019 `GET /configurations` i `POST /configurations/gateway` wywołania nie będą już `GET /configurations/{configurationName}` zwracały żadnych informacji i wywołanie nie zwróci już parametrów poufnych, takich jak klucze konta magazynu czy hasło klastra. Ta sama wartość dotyczy odpowiednich metod zestawu SDK i poleceń cmdlet programu PowerShell.
+Od 3 września 2019 `GET /configurations` i `POST /configurations/gateway` wywołania nie będą już zwracały żadnych informacji, a połączenie `GET /configurations/{configurationName}` nie zwróci poufnych parametrów, takich jak klucze konta magazynu lub hasło klastra. Ta sama wartość dotyczy odpowiednich metod zestawu SDK i poleceń cmdlet programu PowerShell.
 
 Jeśli używasz starszej wersji jednego z narzędzi dla programu Visual Studio, programu vscode, IntelliJ lub zaćmienie wymienione powyżej, nie będą one już działać do momentu aktualizacji.
 

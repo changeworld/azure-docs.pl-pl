@@ -1,5 +1,5 @@
 ---
-title: Obsługa kontenerów
+title: Utwórz zasób LUIS
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: IEvangelist
@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: dapine
-ms.openlocfilehash: ecb172aec37fdab21bed8373ac7484dc52a54829
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a765ac27936da9da5a2f41464c17491e3561f44b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72822017"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465927"
 ---
 ## <a name="create-a-luis-resource"></a>Tworzenie zasobu LUIS
 
@@ -29,10 +29,7 @@ ms.locfileid: "72822017"
     |Warstwa cenowa|`F0` — minimalna warstwa cenowa|
     |Grupa zasobów|Wybierz dostępną grupę zasobów|
 
-1. Kliknij przycisk **Utwórz** i poczekaj na utworzenie zasobu. Po jego utworzeniu przejdź do strony zasobów
-1. Zbierz skonfigurowane `endpoint` i klucz interfejsu API:
+1. Kliknij przycisk **Utwórz** i poczekaj na utworzenie zasobu. Po jego utworzeniu przejdź do strony zasobów.
+1. Zbierz skonfigurowane `endpoint` i klucz interfejsu API, zobacz [zbieranie wymaganych parametrów](#gathering-required-parameters).
 
-    |Karta zasób w portalu|Ustawienie|Wartość|
-    |--|--|--|
-    |**Omówienie**|Punkt końcowy|Skopiuj punkt końcowy. Wygląda podobnie do `https://luis.cognitiveservices.azure.com/luis/v2.0`|
-    |**Ponownie**|Klucz interfejsu API|Kopiuj 1 z dwóch kluczy. Jest to 32 ciąg znaków alfanumerycznych bez spacji ani kresek, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+[!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]

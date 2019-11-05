@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/31/2019
 ms.author: helohr
-ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: MT
+ms.openlocfilehash: 1d7f08dbaa9b91cd2dbac28daf5c17ea85d09985
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676740"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482211"
 ---
-# <a name="connect-with-the-windows-desktop-client"></a>Nawiązywanie połączenia z klientem klasycznym systemu Windows
+# <a name="connect-with-the-windows-desktop-client"></a>Łączenie się z klientem klasycznym systemu Windows
 
 > Dotyczy: Windows 7 i Windows 10
 
@@ -25,11 +25,11 @@ Możesz uzyskać dostęp do zasobów pulpitu wirtualnego systemu Windows na urz�
 
 ## <a name="install-the-windows-desktop-client"></a>Instalowanie klienta klasycznego systemu Windows
 
-Poniżej przedstawiono klientów, których można obecnie pobrać:
+Wybierz klienta zgodnego z Twoją wersją systemu Windows:
 
 - [Windows 64-bit](https://go.microsoft.com/fwlink/?linkid=2068602)
-
-Będziemy aktualizować tę listę, ponieważ klient stanie się dostępny dla większej liczby wersji systemu Windows.
+- [Windows 32 — wersja zapoznawcza](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [Podgląd ARM64 systemu Windows](https://go.microsoft.com/fwlink/?linkid=2098961)
 
 Klienta programu można zainstalować dla bieżącego użytkownika, który nie wymaga uprawnień administratora, lub administrator może zainstalować i skonfigurować klienta tak, aby wszyscy użytkownicy na urządzeniu mogli uzyskać do niego dostęp.
 

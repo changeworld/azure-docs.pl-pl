@@ -1,6 +1,6 @@
 ---
-title: Używanie platformy Azure bliźniaczych reprezentacji urządzeń do kontrolowania LED użytkownika zestawu deweloperskiego IoT Mxchip | Dokumentacja firmy Microsoft
-description: W tym samouczku Dowiedz się, jak monitorować stany Mxchip i kontrolować użytkownika LED bliźniaków urządzeń w usłudze Azure IoT Hub.
+title: Korzystanie z usługi Azure Device bliźniaczych reprezentacji do sterowania zestawu deweloperskiego IoT DevKit użytkownika Microsoft Docs
+description: W tym samouczku dowiesz się, jak monitorować Stany DevKit i kontrolować diody LED użytkownika przy użyciu usługi Azure IoT Hub Device bliźniaczych reprezentacji.
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: e955d21132dda6caa137ad3b5de9d00ccf7ed1b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61369852"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483944"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
-W tym przykładzie służy do monitorowania stanów informacji i czujnik zestawu deweloperskiego IoT Mxchip sieci Wi-Fi i kontrolować kolor LED użytkownika przy użyciu usługi Azure IoT Hub bliźniaczych reprezentacji urządzeń.
+Tego przykładu można użyć do monitorowania informacji zestawu deweloperskiego IoT DevKit Wi-Fi i Stanów czujnika oraz do kontrolowania koloru diody LED użytkownika przy użyciu usługi Azure IoT Hub Device bliźniaczych reprezentacji.
 
 ## <a name="what-you-learn"></a>Omawiane zagadnienia
 
-- Jak monitorować stany zestawu deweloperskiego IoT Mxchip czujnika.
+- Jak monitorować Stany zestawu deweloperskiego IoT DevKit sensor States.
 
-- Jak kontrolować kolor diodą LED RGB DevKit za pomocą bliźniaczych reprezentacji urządzeń na platformie Azure.
+- Jak za pomocą usługi Azure Device bliźniaczych reprezentacji sterować kolorem diody LED RGB DevKit.
 
 ## <a name="what-you-need"></a>Co jest potrzebne
 
-- Konfigurowanie środowiska projektowego, postępując zgodnie z [Getting Started Guide](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+- Skonfiguruj środowisko programistyczne, postępując zgodnie z [przewodnikiem wprowadzenie](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
 
-- W oknie terminalu GitBash (lub innego interfejsu wiersza polecenia usługi Git) wpisz następujące polecenia:
+- W oknie terminalu GitBash (lub innym interfejsie wiersza polecenia usługi Git) wpisz następujące polecenia:
 
    ```bash
    git clone https://github.com/DevKitExamples/DevKitState.git
@@ -38,83 +38,83 @@ W tym przykładzie służy do monitorowania stanów informacji i czujnik zestawu
    code .
    ```
 
-## <a name="provision-azure-services"></a>Aprowizacja usług platformy Azure
+## <a name="provision-azure-services"></a>Udostępnianie usług platformy Azure
 
-1. Kliknij przycisk **zadania** menu rozwijane w programie Visual Studio Code i wybierz pozycję **Uruchom zadanie...**   -  **aprowizowanie chmury**.
+1. Kliknij menu rozwijane **zadania** w Visual Studio Code i wybierz polecenie **Uruchom zadanie...**  - **Cloud-zastrzeganie**.
 
-2. Postęp jest wyświetlana w obszarze **terminalu** karcie **powitalnej** panelu.
+2. Postęp jest wyświetlany na karcie **Terminal** panelu **powitalnego** .
 
-3. Po wyświetleniu monitu z komunikatem *subskrypcję, który chcesz wybrać*, wybierz subskrypcję.
+3. Po wyświetleniu monitu z komunikatem, którą *subskrypcję chcesz wybrać*, wybierz subskrypcję.
 
-4. Zaznacz lub wybierz grupę zasobów. 
+4. Wybierz lub wybierz grupę zasobów. 
  
    > [!NOTE]
-   > Jeśli masz już bezpłatna usługi IoT Hub, możesz pominąć ten krok.
+   > Jeśli masz już bezpłatną IoT Hub, możesz pominąć ten krok.
 
-5. Po wyświetleniu monitu z komunikatem *Centrum IoT, które chcesz wybrać*wybierz lub Utwórz Centrum IoT Hub.
+5. Po wyświetleniu monitu z komunikatem *co chcesz wybrać Centrum IoT*wybierz lub Utwórz IoT Hub.
 
-6. Podobnie jak *aplikacji funkcji: Nazwa aplikacji funkcji: xxx*, jest wyświetlany. Zanotuj nazwę aplikacji funkcji; będzie używany w kolejnym kroku.
+6. Jest wyświetlana coś podobnego do *aplikacji funkcji: Nazwa aplikacji funkcji: xxx*. Zanotuj nazwę aplikacji funkcji; zostanie ona użyta w późniejszym kroku.
 
-7. Poczekaj, aż usługi Azure Resource Manager szablon Zakończenie wdrożenia, który jest wskazane, gdy komunikat *wdrożenia szablonu usługi Resource Manager: Gotowe* jest wyświetlana.
+7. Poczekaj na zakończenie wdrażania szablonu Azure Resource Manager, który jest wskazywany, gdy zostanie wyświetlony komunikat *Menedżer zasobów wdrożenie szablonu: gotowe* .
 
-## <a name="deploy-function-app"></a>Wdrażanie aplikacji — funkcja
+## <a name="deploy-function-app"></a>Wdróż aplikacja funkcji
 
-1. Kliknij przycisk **zadania** menu rozwijane w programie Visual Studio Code i wybierz pozycję **Uruchom zadanie...**   -  **— wdrażanie w chmurze**.
+1. Kliknij menu rozwijane **zadania** w Visual Studio Code i wybierz polecenie **Uruchom zadanie...**  - **Cloud-Deploy**.
 
-2. Poczekaj, aż proces, aby zakończyć; przekazywania kodu aplikacji — funkcja komunikat *wdraża aplikację funkcji: Gotowe* jest wyświetlana.
+2. Poczekaj, aż kod aplikacji funkcji przekaże proces do końca; zostanie wyświetlone okno *wdrażanie aplikacji funkcji wiadomości: gotowe* .
 
-## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>Konfigurowanie parametrów połączenia urządzenia usługi IoT Hub w Mxchip
+## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>Konfigurowanie parametrów połączenia urządzenia IoT Hub w DevKit
 
-1. Podłącz swoje zestawu deweloperskiego IoT Mxchip do komputera.
+1. Połącz swoje zestawu deweloperskiego IoT DevKit z komputerem.
 
-2. Kliknij przycisk **zadania** menu rozwijane w programie Visual Studio Code i wybierz pozycję **Uruchom zadanie...**   -  **config-— połączenie z urządzeniem**
+2. Kliknij menu rozwijane **zadania** w Visual Studio Code i wybierz pozycję **Uruchom zadanie...**  - **Konfiguracja-urządzenie-połączenie**
 
-3. Na zestawu deweloperskiego IoT Mxchip, naciśnij i przytrzymaj klawisz przycisku **A**, naciśnij klawisz **resetowania** przycisk, a następnie przycisk **A** się DekKit tryb konfiguracji.
+3. Na zestawu deweloperskiego IoT DevKit naciśnij przycisk i przytrzymaj klawisz **a**, naciśnij przycisk **Resetuj** , a następnie zwolnij przycisk, **Aby wprowadzić** tryb konfiguracji DekKit.
 
-4. Poczekaj, aż proces konfiguracji ciągu połączenia, należy wykonać.
+4. Poczekaj na zakończenie procesu konfiguracji parametrów połączenia.
 
-## <a name="upload-arduino-code-to-devkit"></a>Przekaż kod Arduino do Mxchip
+## <a name="upload-arduino-code-to-devkit"></a>Przekaż kod Arduino do DevKit
 
-Za pomocą Twojego zestawu deweloperskiego IoT Mxchip podłączone do komputera:
+Wraz z zestawu deweloperskiego IoT DevKit podłączonym do komputera:
 
-1. Kliknij przycisk **zadania** menu rozwijane w programie Visual Studio Code i wybierz pozycję **uruchomienia zadania kompilacji...** Szkic Arduino kompilacji i przekazywane do Mxchip.
+1. Kliknij menu rozwijane **zadania** w Visual Studio Code i wybierz polecenie **Uruchom zadanie kompilacji...** Szkic Arduino jest kompilowany i przekazywany do DevKit.
 
-2. Gdy szkicu został przekazany pomyślnie, *tworzenie i przekazywanie szkic: Sukces* zostanie wyświetlony komunikat.
+2. Po pomyślnym przekazaniu szkicu *kompilacja & Przekaż szkic:* zostanie wyświetlony komunikat o powodzeniu.
 
-## <a name="monitor-devkit-state-in-browser"></a>Monitor stanu Mxchip w przeglądarce
+## <a name="monitor-devkit-state-in-browser"></a>Monitorowanie stanu DevKit w przeglądarce
 
-1. Otwórz w przeglądarce sieci Web `DevKitState\web\index.html` pliku--, który został utworzony podczas co należy kroku.
+1. W przeglądarce sieci Web otwórz plik `DevKitState\web\index.html` — który został utworzony podczas wykonywania kroku.
 
 2. Zostanie wyświetlona następująca strona sieci Web:![Określ nazwę aplikacji funkcji.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
 
-3. Wprowadź nazwę aplikacji funkcji, którą napisany w dół wcześniej.
+3. Wprowadź wcześniej zapisaną nazwę aplikacji funkcji.
 
-4. Kliknij przycisk **Connect** przycisku
+4. Kliknij przycisk **Połącz**
 
-5. W ciągu kilku sekund strona zostanie odświeżona i wyświetla stan połączenia sieci Wi-Fi Mxchip i stan każdego z czujników dołączania.
+5. W ciągu kilku sekund Strona odświeża i wyświetla stan połączenia Wi-Fi DevKit oraz stan wszystkich czujników dołączania.
 
-## <a name="control-the-devkits-user-led"></a>Kontrolowanie użytkowników Mxchip LED
+## <a name="control-the-devkits-user-led"></a>Kontrolowanie diody LED użytkownika DevKit
 
-1. Kliknij grafikę LED użytkownika na ilustracji strony sieci Web.
+1. Kliknij grafikę diody LED użytkownika na stronie sieci Web.
 
-2. W ciągu kilku sekund na ekranie odświeża i wskazuje bieżący stan kolor LED użytkownika.
+2. W ciągu kilku sekund ekran odświeża i pokazuje bieżący stan koloru diody LED użytkownika.
 
-3. Spróbuj zmienić wartość koloru diody LED RGB, klikając przycisk w różnych miejscach na RGB kontrolki suwaka.
+3. Spróbuj zmienić wartość koloru diody LED RGB, klikając w różnych miejscach w kontrolkach suwaka RGB.
 
-## <a name="example-operation"></a>Przykład operacji
+## <a name="example-operation"></a>Przykładowa operacja
 
-![Przykład testu procedury](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
+![Przykładowa procedura testowa](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Możesz wyświetlić nieprzetworzone dane bliźniaczej reprezentacji urządzenia w witrynie Azure portal: Usługa IoT Hub —\> urządzenia IoT —\> *\<urządzenia\>*  - \> bliźniaczej reprezentacji urządzenia.
+> Możesz zobaczyć pierwotne dane z sznurka urządzenia w Azure Portal: IoT Hub\> urządzenia IoT —\> *\<\>urządzenia* , aby -\>
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wiesz już, jak:
-- Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip, aby Twój akcelerator rozwiązań Azure IoT zdalnego monitorowania.
-- Funkcja bliźniaczych reprezentacji urządzeń Azure IoT umożliwia sens i kontrolować kolor Mxchip diodą LED RGB.
+- Połącz urządzenie zestawu deweloperskiego IoT DevKit z akceleratorem rozwiązania do monitorowania zdalnego usługi Azure IoT.
+- Użyj funkcji bliźniaczych reprezentacji urządzenia Azure IoT, aby wykrywać i kontrolować kolor diody LED RGB DevKit.
 
-Oto zalecane kolejne kroki:
+Poniżej przedstawiono sugerowane następne kroki:
 
-* [Omówienie usługi Azure akcelerator rozwiązań IoT zdalnego monitorowania](https://docs.microsoft.com/azure/iot-suite/)
-* [Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Omówienie akceleratora rozwiązań do monitorowania zdalnego usługi Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
+* [Łączenie urządzenia zestawu deweloperskiego IoT DevKit z aplikacją usługi Azure IoT Central](/azure/iot-central/core/howto-connect-devkit)

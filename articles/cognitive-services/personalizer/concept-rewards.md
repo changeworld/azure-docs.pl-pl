@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154662"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490887"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Wyniki nagrody wskazują na pomyślne personalizację
 
@@ -71,48 +71,42 @@ Następnie można wysłać łączny zarobk do interfejsu API.
 
 ## <a name="calling-the-reward-api-multiple-times"></a>Wielokrotnie wywoływanie interfejsu API nagradzania
 
-Możesz również wywołać interfejs API nagradzania przy użyciu tego samego identyfikatora zdarzenia, wysyłając różne wyniki. Gdy Personalizowanie uzyska te korzyści, określa ostateczną opłatą dla tego zdarzenia poprzez agregowanie ich w sposób określony w ustawieniach personalizacji.
+Możesz również wywołać interfejs API nagradzania przy użyciu tego samego identyfikatora zdarzenia, wysyłając różne wyniki. Gdy Personalizowanie uzyska te korzyści, określa ostateczną opłatą dla tego zdarzenia poprzez agregowanie ich w sposób określony w konfiguracji personalizacji.
 
-Ustawienia agregacji:
+Wartości agregacji:
 
-*  **Najpierw**: Przyjmuje pierwszy wynik nagrody otrzymany dla zdarzenia i odrzuca resztę.
-* **Suma**: Pobiera wszystkie wyniki uzyskane dla eventId i dodaje je razem.
+*  **Pierwszy**: Pobiera wynik pierwszej nagrody dla zdarzenia i odrzuca resztę.
+* **Sum**: Pobiera wszystkie wyniki zarobkowe zebrane dla EventId i dodaje je razem.
 
 Wszystkie nagrody dla zdarzenia, które są odbierane po upływie **czasu oczekiwania**, są odrzucane i nie mają wpływu na szkolenia modeli.
 
 Po dodaniu uzyskanych wyników ostateczne wynagrodzenie może być poza oczekiwanym zakresem wyników. Nie spowoduje to błędu usługi.
 
-<!--
-@edjez - is the number ignored if it is outside the acceptable range?
--->
-
 ## <a name="best-practices-for-calculating-reward-score"></a>Najlepsze rozwiązania dotyczące obliczania wyniku nagrody
 
-* **Weź pod uwagę prawdziwe wskaźniki pomyślnej personalizacji**: Można łatwo myśleć o kliknięciach, ale dobre wynagrodzenie opiera się na tym, co użytkownicy chcą *osiągnąć* , a nie na tym, co chcesz *robić*.  Na przykład nagradzanie kliknięć może prowadzić do wyboru zawartości, która jest podatna na clickbait.
+* **Weź pod uwagę prawdziwe wskaźniki pomyślnej personalizacji**: łatwo jest myśleć o kliknięciach, ale dobre wynagrodzenie opiera się na tym, co użytkownicy chcą *osiągnąć* , a nie na tym, co chcesz *robić*.  Na przykład nagradzanie kliknięć może prowadzić do wyboru zawartości, która jest podatna na clickbait.
 
-* **Wykorzystaj wynik nagrody, dla którego działa Personalizacja**: Personalizowanie sugestii filmu spowoduje, że użytkownik ogląda film i nadaje mu wysoką klasyfikację. Ponieważ klasyfikacja filmu prawdopodobnie zależy od wielu rzeczy (jakości działania, nastrój użytkownika), nie jest to dobry sygnał na to, jak dobrze działa *Personalizacja* . Użytkownik oglądał pierwsze kilka minut filmu, jednak może być lepszym sygnałem skuteczności personalizacji i wysłaniem nagrody 1 po 5 minutach będzie lepszym sygnałem.
+* **Skorzystaj z nagrody dotyczącej poprawnego działania personalizacji**: Personalizowanie sugestii filmu miejmy nadzieję wyniki oglądania filmu i nadając mu wysoką ocenę. Ponieważ klasyfikacja filmu prawdopodobnie zależy od wielu rzeczy (jakości działania, nastrój użytkownika), nie jest to dobry sygnał na to, jak dobrze działa *Personalizacja* . Użytkownik oglądał pierwsze kilka minut filmu, jednak może być lepszym sygnałem skuteczności personalizacji i wysłaniem nagrody 1 po 5 minutach będzie lepszym sygnałem.
 
-* **Wynagrodzenie dotyczy tylko RewardActionID**: Personalizacja stosuje nagrody, aby zrozumieć skuteczność działania określonego w RewardActionID. Jeśli zdecydujesz się wyświetlić inne akcje, a użytkownik kliknie je, wynagrodzenie powinno mieć wartość zero.
+* **Wynagrodzenie dotyczy tylko RewardActionID**: personalizujer stosuje nagrody, aby zrozumieć skuteczność działania określonego w RewardActionID. Jeśli zdecydujesz się wyświetlić inne akcje, a użytkownik kliknie je, wynagrodzenie powinno mieć wartość zero.
 
-* **Rozważ niezamierzone konsekwencje**: Twórz funkcje zarobkowe, które prowadzą do odpowiedzialnych wyników z [etyką i właściwymi do użycia](ethics-responsible-use.md).
+* **Rozważ niezamierzone konsekwencje**: Utwórz funkcje nagradzania, które prowadzą do odpowiedzialnych wyników z [etyką i właściwymi do użycia](ethics-responsible-use.md).
 
-* **Użyj korzyści przyrostowych**: Dodanie częściowego nagrody dla mniejszych zachowań użytkownika ułatwia personalizację w celu osiągnięcia lepszych korzyści. Ten Przyrostowy wzrost umożliwia algorytmowi uzyskanie bliższego zaangażowania użytkownika w końcowe żądane zachowanie.
+* **Korzystaj z korzyści przyrostowych**: dodanie częściowego nagrody dla mniejszych zachowań użytkownika ułatwia personalizację w celu osiągnięcia lepszych korzyści. Ten Przyrostowy wzrost umożliwia algorytmowi uzyskanie bliższego zaangażowania użytkownika w końcowe żądane zachowanie.
     * Jeśli zostanie wyświetlona lista filmów, jeśli użytkownik umieści wskaźnik myszy nad pierwszym przez jakiś czas, aby wyświetlić więcej informacji, można określić, że wystąpił pewne zaangażowanie użytkownika. Zachowanie może być liczone z wynikiem nagrody wynoszącym 0,1. 
     * Jeśli użytkownik otworzył stronę, a następnie zakończył działanie, wynik nagrody może być 0,2. 
 
-## <a name="reward-wait-time"></a>Czas oczekiwania nagrody
+## <a name="reward-wait-time"></a>nagradzany czas oczekiwania
 
 Personalizacja będzie skorelować informacje o randze wywołania z wynagrodzeniem wysyłanym w nagradzaniu, aby szkolić model. Mogą one występować w różnych godzinach. Personalizowanie czeka przez ograniczony czas, rozpoczynając od wywołania rangi, nawet jeśli wywołanie rangi zostało wykonane jako zdarzenie nieaktywne i aktywowane później.
 
 Jeśli nastąpi **przekroczenie czasu oczekiwania** i nie otrzymasz żadnych informacji o tym zdarzeniu, w przypadku szkolenia zostanie zastosowane domyślne wynagrodzenie. Maksymalny czas oczekiwania wynosi 6 dni.
 
-## <a name="best-practices-for-setting-reward-wait-time"></a>Najlepsze rozwiązania dotyczące ustawiania nagrody czasu oczekiwania
+## <a name="best-practices-for-reward-wait-time"></a>Najlepsze rozwiązania związane z nagrodami czasu oczekiwania
 
 Postępuj zgodnie z tymi zaleceniami, aby uzyskać lepsze wyniki.
 
 * Zwiększ czas oczekiwania, tak jak to możliwe, przy jednoczesnym pozostawieniu wystarczająco dużo czasu, aby uzyskać opinię użytkownika. 
-
-<!--@Edjez - storage quota? -->
 
 * Nie wybieraj czasu trwania, który jest krótszy niż czas potrzebny do uzyskania opinii. Na przykład jeśli pewne nagrody są dostępne po wykonaniu przez użytkownika 1 minuty filmu wideo, Długość eksperymentu powinna wynosić co najmniej dwa razy.
 

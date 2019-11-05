@@ -5,85 +5,92 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 06/10/2019
+ms.date: 10/24/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: edf5e04b7cf9b5c79666c54fbeca49858cf21079
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ad86280eab3041667bf9d1713ae2b4bc82a4c9e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077510"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491452"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Samouczek: Tworzenie skojarzenia usługi ExpressRoute przy użyciu usługi Azure Virtual WAN (wersja zapoznawcza)
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Samouczek: Tworzenie skojarzenia ExpressRoute przy użyciu wirtualnej sieci WAN platformy Azure
 
-W tym samouczku pokazano, w jaki sposób przy użyciu usługi Virtual WAN utworzyć połączenie z zasobami na platformie Azure za pośrednictwem obwodu i skojarzenia usługi ExpressRoute. Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz [Omówienie usługi Virtual WAN](virtual-wan-about.md)
+W tym samouczku pokazano, jak używać wirtualnej sieci WAN do łączenia się z zasobami na platformie Azure za pośrednictwem obwodu usługi ExpressRoute. Aby uzyskać więcej informacji na temat wirtualnych sieci WAN i wirtualnych zasobów sieci WAN, zobacz [Omówienie wirtualnej sieci WAN](virtual-wan-about.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie wirtualnej sieci WAN
-> * Tworzenie koncentratora
-> * Wyszukiwanie obwodu i kojarzenie go z koncentratorem
-> * Kojarzenie obwodu z koncentratorami
+> * Tworzenie centrum i bramy
 > * Łączenie sieci wirtualnej z koncentratorem
-> * Wyświetlanie wirtualnej sieci WAN
-> * Wyświetlanie kondycji zasobu
-> * Monitorowanie połączenia
-
-> [!IMPORTANT]
-> Ten podgląd publiczny nie jest objęty umową dotyczącą poziomu usług i nie należy korzystać z niego w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+> * Łączenie obwodu z bramą centrum
+> * Testowanie łączności
+> * Zmiana rozmiaru bramy
+> * Anonsowanie trasy domyślnej
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryteria:
 
-[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+* Masz sieć wirtualną, z którą chcesz nawiązać połączenie. Sprawdź, czy żadna z podsieci sieci lokalnych nie nakłada się na sieci wirtualne, z którymi chcesz nawiązać połączenie. Aby utworzyć sieć wirtualną w Azure Portal, zobacz [Przewodnik Szybki Start](../virtual-network/quick-create-portal.md).
 
-## <a name="register"></a>Rejestrowanie tej funkcji
+* Twoja sieć wirtualna nie ma żadnych bram sieci wirtualnej. Jeśli sieć wirtualna ma bramę (VPN lub ExpressRoute), należy usunąć wszystkie bramy. Ta konfiguracja wymaga, aby w zamian były połączone sieci wirtualne z bramą wirtualnego centrum sieci WAN.
 
-Aby móc skonfigurować usługę Virtual WAN, należy najpierw zarejestrować swoją subskrypcję w wersji zapoznawczej. Jeśli tego nie zrobisz, usługa Virtual WAN nie będzie dostępna w portalu. Aby zarejestrować urządzenie, Wyślij wiadomość e-mail do **azurevirtualwan\@microsoft.com** przy użyciu identyfikatora subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail.
+* Uzyskaj zakres adresów IP w regionie koncentratora. Centrum jest siecią wirtualną, która jest tworzona i używana przez wirtualną sieć WAN. Zakres adresów określony dla centrum nie może pokrywać się z żadną z istniejących sieci wirtualnych, z którymi się łączysz. Nie może również pokrywać się z zakresami adresów, z którymi łączysz się lokalnie. Jeśli nie znasz zakresów adresów IP znajdujących się w konfiguracji sieci lokalnej, koordynuj się z osobą, która może podać te szczegóły.
 
-**Zagadnienia dotyczące wersji zapoznawczej:**
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-  * Obwód usługi ExpressRoute musi być włączona w kraju/regionu, który obsługuje [zasięgu globalnym ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
-  * Obwód usługi ExpressRoute musi być obwodu Premium, aby można było połączyć się z Centrum wirtualne sieci WAN. 
+## <a name="openvwan"></a>Tworzenie wirtualnej sieci WAN
 
-## <a name="vnet"></a>1. Tworzenie sieci wirtualnej
+Przejdź w przeglądarce do witryny [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta platformy Azure.
 
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
+1. Przejdź do strony wirtualna sieć WAN. W portalu kliknij pozycję **+Utwórz zasób**. W polu wyszukiwania wpisz **wirtualną sieć WAN** i wybierz pozycję Wprowadź.
+2. Z wyników wybierz pozycję **wirtualna sieć WAN** . Na stronie wirtualna sieć WAN kliknij przycisk **Utwórz** , aby otworzyć stronę tworzenie sieci WAN.
+3. Na stronie **Tworzenie sieci WAN** na karcie **podstawowe** wypełnij następujące pola:
 
-## <a name="openvwan"></a>2. Tworzenie wirtualnej sieci WAN
+   ![Tworzenie sieci WAN](./media/virtual-wan-expressroute-portal/createwan.png)
 
-Przejdź w przeglądarce do witryny [Azure Portal](https://aka.ms/azurevirtualwanpreviewfeatures) (wersja zapoznawcza) i zaloguj się przy użyciu konta platformy Azure.
+   * **Subskrypcja** — wybierz subskrypcję, która ma być używana.
+   * **Grupa zasobów**— utwórz nową lub użyj istniejącej.
+   * **Lokalizacja grupy zasobów** — wybierz lokalizację zasobu z listy rozwijanej. Sieć WAN to zasób globalny i nie znajduje się w konkretnym regionie. Konieczne jest jednak wybranie regionu, aby łatwiej zarządzać utworzonym zasobem sieci WAN i go lokalizować.
+   * **Nazwa** — wpisz nazwę, która ma zostać wywołana w sieci WAN.
+   * **Typ** — wybierz pozycję **Standardowy**. Nie można utworzyć bramy ExpressRoute przy użyciu podstawowej jednostki SKU.
+4. Po zakończeniu wypełniania pól wybierz pozycję **Przegląd + Utwórz**.
+5. Po zakończeniu walidacji wybierz pozycję **Utwórz** , aby utworzyć wirtualną sieć WAN.
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
+## <a name="hub"></a>Tworzenie koncentratora wirtualnego i bramy
 
-### <a name="getting-started-page"></a>Strona Wprowadzenie
+Koncentrator wirtualny jest siecią wirtualną, która jest tworzona i używana przez wirtualną sieć WAN. Może zawierać różne bramy, takie jak sieci VPN i ExpressRoute. W tej sekcji utworzysz bramę ExpressRoute dla koncentratora wirtualnego. Bramę można utworzyć podczas [tworzenia nowego koncentratora wirtualnego](#newhub)lub można utworzyć bramę w [istniejącym centrum](#existinghub) , edytując ją. 
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-gettingstarted-include.md)]
+Bramy ExpressRoute są inicjowane w jednostkach 2 GB/s. 1 jednostka skalowania = 2 GB/s z obsługą do 10 jednostek skalowania = 20 GB/s. Aby można było w pełni utworzyć koncentrator wirtualny i Brama, zajmie około 30 minut.
 
-## <a name="hub"></a>3. Tworzenie koncentratora
+### <a name="newhub"></a>Aby utworzyć nowe centrum wirtualne i bramę
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
+Utwórz nowe centrum wirtualne. Po utworzeniu centrum zostanie naliczona opłata za centrum, nawet jeśli nie dołączysz żadnych witryn.
 
-## <a name="hub"></a>4. Wyszukiwanie obwodu i kojarzenie go z koncentratorem
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-1. Wybierz swoje vWAN i w obszarze **architektura sieci WAN wirtualnego**, wybierz opcję **obwodów usługi ExpressRoute**.
-1. Jeśli obwód usługi ExpressRoute znajduje się w tej samej subskrypcji, co Twoja vWAN, kliknij przycisk **obwodu ExpressRoute wybierz** z subskrypcji. 
-1. Z menu rozwijanego wybierz obwód usługi ExpressRoute, który chcesz skojarzyć z koncentratorem.
-1. Jeśli obwód usługi ExpressRoute nie znajduje się w tej samej subskrypcji lub udostępniony został [klucz autoryzacji i identyfikator komunikacji równorzędnej](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md), wybierz pozycję **Znajdź obwód realizujący klucz autoryzacji**
-1. Wprowadź następujące wartości:
-1. **Klucz autoryzacji** — wygenerowany przez właściciela obwodu zgodnie z powyższym opisem
-1. **Identyfikator URI obwodu równorzędnego** — identyfikator URI obwodu udostępniony przez właściciela obwodu będący jego unikatowym identyfikatorem
-1. **Waga routingu** - [Waga routingu](../expressroute/expressroute-optimize-routing.md) umożliwia preferowanie określonych ścieżek, gdy wiele obwodów z różnych lokalizacji komunikacji równorzędnej jest połączonych z tym samym koncentratorem
-1. Kliknij przycisk **znaleźć obwodów** i wybierz obwód, jeśli znaleziono.
-1. Wybierz co najmniej 1 koncentratory z listy rozwijanej, a następnie kliknij przycisk **Zapisz**.
+### <a name="existinghub"></a>Aby utworzyć bramę w istniejącym centrum
 
-## <a name="vnet"></a>5. Łączenie sieci wirtualnej z koncentratorem
+Możesz również utworzyć bramę w istniejącym centrum, edytując ją.
 
-W tym kroku zostanie utworzone połączenie równorzędne pomiędzy koncentratorem i siecią wirtualną. Powtórz te czynności dla każdej sieci wirtualnej, z którą chcesz się połączyć.
+1. Przejdź do koncentratora wirtualnego, który chcesz edytować, i zaznacz go.
+2. Na stronie **Edytuj koncentrator wirtualny** zaznacz pole wyboru **Uwzględnij bramę ExpressRoute**.
+3. Wybierz pozycję **Potwierdź** , aby potwierdzić zmiany. Do pełnego utworzenia zasobów centrum i koncentratora trwa około 30 minut.
+
+   ![istniejące centrum](./media/virtual-wan-expressroute-portal/edithub.png "Edytowanie centrum")
+
+### <a name="to-view-a-gateway"></a>Aby wyświetlić bramę
+
+Po utworzeniu bramy ExpressRoute można wyświetlić szczegóły bramy. Przejdź do centrum, wybierz pozycję **ExpressRoute**, a następnie sprawdź bramę.
+
+![Wyświetl bramę](./media/virtual-wan-expressroute-portal/viewgw.png "Wyświetl bramę")
+
+## <a name="connectvnet"></a>Łączenie sieci wirtualnej z centrum
+
+W tej sekcji utworzysz połączenie komunikacji równorzędnej między centrum i siecią wirtualną. Powtórz te czynności dla każdej sieci wirtualnej, z którą chcesz się połączyć.
 
 1. Na stronie usługi Virtual WAN kliknij pozycję **Połączenie sieci wirtualnej**.
 2. Na stronie połączenia sieci wirtualnej kliknij polecenie **+ Dodaj połączenie**.
@@ -92,44 +99,58 @@ W tym kroku zostanie utworzone połączenie równorzędne pomiędzy koncentrator
     * **Nazwa połączenia** — nazwij połączenie.
     * **Koncentratory** — wybierz koncentrator, z którym chcesz skojarzyć to połączenie.
     * **Subskrypcja** — sprawdź, czy wybrano właściwą subskrypcję.
-    * **Sieć wirtualna** — wybierz sieć wirtualną, którą chcesz połączyć z tym koncentratorem. Sieć wirtualna nie może mieć istniejącej bramy sieci wirtualnej.
+    * **Sieć wirtualna** — wybierz sieć wirtualną, którą chcesz połączyć z tym koncentratorem. Sieć wirtualna nie może mieć już istniejącej bramy sieci wirtualnej (ani sieci VPN ani ExpressRoute).
 
+## <a name="connectcircuit"></a>Łączenie obwodu z bramą centrum
 
-## <a name="viewwan"></a>6. Wyświetlanie wirtualnej sieci WAN
+Po utworzeniu bramy można podłączyć do niej [obwód ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . Należy zauważyć, że obwody usługi ExpressRoute w warstwie Premium, które znajdują się w lokalizacji obsługiwanej przez usługi ExpressRoute Global Reach, mogą łączyć się z wirtualną bramą ExpressRoute
 
-1. Przejdź do wirtualnej sieci WAN.
-2. Na stronie Przegląd każdy punkt na mapie przedstawia koncentrator. Umieść kursor na dowolnym punkcie, aby wyświetlić podsumowanie kondycji koncentratora.
-3. W sekcji dotyczącej koncentratorów i połączeń możesz wyświetlić stan koncentratora, lokację, region, stan połączenia sieci VPN oraz bajty przychodzące i wychodzące.
+### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Aby połączyć obwód z bramą centrum
 
-## <a name="viewhealth"></a>7. Wyświetlanie kondycji zasobów
+W portalu przejdź do strony **Virtual Hub-> łączności > ExpressRoute** . Jeśli masz dostęp do obwodu usługi ExpressRoute, na liście obwodów zostanie wyświetlony obwód, którego chcesz użyć. Jeśli nie widzisz żadnych obwodów, ale zostały one dostarczone z kluczem autoryzacji i identyfikatorem URI obwodu równorzędnego, możesz zrealizować obwód i połączyć go. Zapoznaj się z tematem [, aby nawiązać połączenie przez zrealizowanie klucza autoryzacji](#authkey).
 
-1. Przejdź do sieci WAN.
-2. Na stronie sieci WAN w sekcji **Pomoc techniczna i rozwiązywanie problemów** kliknij pozycję **Kondycja** i wyświetl zasób.
+1. Wybierz obwód.
+2. Wybierz pozycję **Połącz obwody**.
 
-## <a name="connectmon"></a>8. Monitorowanie połączenia
+   ![Połącz obwody](./media/virtual-wan-expressroute-portal/cktconnect.png "Połącz obwody")
 
-Utwórz połączenie, aby monitorować komunikację pomiędzy maszyną wirtualną platformy Azure a zdalną lokacją. Aby uzyskać informacje dotyczące konfigurowania monitora połączeń, zobacz [Monitorowanie komunikacji sieciowej](~/articles/network-watcher/connection-monitor.md). Pole Źródło zawiera adres IP maszyny wirtualnej na platformie Azure, a docelowy adres IP to adres IP lokacji.
+### <a name="authkey"></a>Aby nawiązać połączenie przez zrealizowanie klucza autoryzacji
 
-## <a name="cleanup"></a>9. Oczyszczanie zasobów
+Użyj klucza autoryzacji i identyfikatora URI obwodu, który podano w celu nawiązania połączenia.
 
-Jeśli te zasoby nie są już potrzebne, możesz użyć [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby. Zastąp wartość „myResourceGroup” nazwą grupy zasobów, a następnie uruchom następujące polecenie programu PowerShell:
+1. Na stronie ExpressRoute kliknij pozycję **+ Zrealizuj klucz autoryzacji**
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+   ![Zrealizuj](./media/virtual-wan-expressroute-portal/redeem.png "Zrealizuj")
+2. Na stronie klucz autoryzacji Zrealizuj wprowadź wartości.
 
-## <a name="next-steps"></a>Kolejne kroki
+   ![wartości klucza wykupu](./media/virtual-wan-expressroute-portal/redeemkey2.png "wartości klucza wykupu")
+3. Wybierz pozycję **Dodaj** , aby dodać klucz.
+4. Wyświetl obwód. Obwód zrealizowany wyświetla tylko nazwę (bez typu, dostawcy i innych informacji), ponieważ znajduje się w innej subskrypcji niż użytkownik.
 
-W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
+## <a name="to-test-connectivity"></a>Aby przetestować łączność
 
-> [!div class="checklist"]
-> * Tworzenie wirtualnej sieci WAN
-> * Tworzenie koncentratora
-> * Wyszukiwanie obwodu i kojarzenie go z koncentratorem
-> * Kojarzenie obwodu z koncentratorami
-> * Łączenie sieci wirtualnej z koncentratorem
-> * Wyświetlanie wirtualnej sieci WAN
-> * Wyświetlanie kondycji zasobu
-> * Monitorowanie połączenia
+Po nawiązaniu połączenia z obwodem stan połączenia centrum będzie wskazywał "to centrum", co oznacza, że połączenie jest nawiązywane z bramą ExpressRoute Hub. Zaczekaj około 5 minut, zanim przetestujesz łączność z klienta w ramach obwodu usługi ExpressRoute, na przykład maszynę wirtualną w sieci wirtualnej, która została utworzona wcześniej.
+
+Jeśli lokacje są połączone z bramą sieci VPN wirtualnej sieci WAN w tym samym centrum co Brama ExpressRoute, można mieć połączenie dwukierunkowe między sieciami VPN i ExpressRoute punkt końcowy. Routing dynamiczny (BGP) jest obsługiwany. Numer ASN bram w centrum jest stały i nie można go edytować w tym momencie.
+
+## <a name="to-change-the-size-of-a-gateway"></a>Aby zmienić rozmiar bramy
+
+Jeśli chcesz zmienić rozmiar bramy usługi ExpressRoute, Znajdź bramę ExpressRoute w centrum i wybierz jednostki skalowania z listy rozwijanej. Zapisz zmiany. Aktualizacja bramy centrum będzie trwać około 30 minut.
+
+![Zmień rozmiar bramy](./media/virtual-wan-expressroute-portal/changescale.png "Zmień rozmiar bramy")
+
+## <a name="to-advertise-default-route-00000-to-endpoints"></a>Anonsowanie domyślnej trasy 0.0.0.0/0 do punktów końcowych
+
+Jeśli chcesz, aby usługa Azure Virtual Hub anonsuje domyślną trasę 0.0.0.0/0 do punktów końcowych ExpressRoute, musisz włączyć opcję "Propaguj trasę domyślną".
+
+1. Wybierz **obwód >...-> Edytuj połączenie**.
+
+   ![Edytuj połączenie](./media/virtual-wan-expressroute-portal/defaultroute1.png "Edytuj połączenie")
+
+2. Wybierz pozycję **Włącz** , aby propagować trasę domyślną.
+
+   ![Propaguj trasę domyślną](./media/virtual-wan-expressroute-portal/defaultroute2.png "Propaguj trasę domyślną")
+
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz stronę [Omówienie usługi Virtual WAN](virtual-wan-about.md).

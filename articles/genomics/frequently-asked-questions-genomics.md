@@ -1,7 +1,7 @@
 ---
 title: Często zadawane pytania — często zadawane pytania
 titleSuffix: Microsoft Genomics
-description: Odpowiedzi na często zadawane pytania dotyczące Microsoft Genomics.
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące korzystania z usługi Microsoft Genomics, w tym informacje techniczne, umowę SLA i rozliczenia.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: 80a656ee687b71fcaf09a02d70d0a5a4300186bc
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 4a2b66f95467e7f6cb99f632548351f827e259c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249226"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476424"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: typowe pytania
 
@@ -32,11 +32,11 @@ Gwarantujemy, że przez 99,9% czasu usługa Microsoft Genomics będzie dostępna
 Microsoft Genomics weksle na podstawie liczby przetworzonych gigabaz na przepływ pracy. Aby uzyskać więcej informacji, zobacz [Cennik](https://azure.microsoft.com/pricing/details/genomics/).
 
 
-## <a name="where-can-i-find-a-list-of-all-possible-commands-and-arguments-for-the-msgen-client"></a>Gdzie mogę znaleźć listę wszystkich możliwych poleceń i argumentów dla klienta `msgen`?
-Pełną listę dostępnych poleceń i argumentów można uzyskać, uruchamiając `msgen help`. Jeśli nie podano żadnych dalszych argumentów, zostanie wyświetlona lista dostępnych sekcji pomocy, jednej dla `submit`, `list`, `cancel` i `status`. Aby uzyskać pomoc dotyczącą określonego polecenia, wpisz `msgen help command`; na przykład `msgen help submit` wyświetla wszystkie opcje przesyłania.
+## <a name="where-can-i-find-a-list-of-all-possible-commands-and-arguments-for-the-msgen-client"></a>Gdzie można znaleźć listę wszystkich możliwych poleceń i argumentów dla klienta `msgen`?
+Pełną listę dostępnych poleceń i argumentów można uzyskać, uruchamiając `msgen help`. Jeśli nie podano żadnych dalszych argumentów, zostanie wyświetlona lista dostępnych sekcji pomocy, jeden dla każdego z `submit`, `list`, `cancel`i `status`. Aby uzyskać pomoc dotyczącą określonego polecenia, wpisz `msgen help command`; na przykład `msgen help submit` zawiera listę wszystkich opcji przesyłania.
 
 ## <a name="what-are-the-most-commonly-used-commands-for-the-msgen-client"></a>Jakie są najczęściej używane polecenia dla klienta `msgen`?
-Najczęściej używane polecenia są argumentami dla klienta `msgen`: 
+Najczęściej używane polecenia są argumentami dla klienta `msgen` są następujące: 
 
  |**Polecenie**          |  **Opis pola** |
  |:--------------------|:-------------         |
@@ -55,7 +55,7 @@ Przejdź do Azure Portal i Otwórz stronę konta genomika. W obszarze nagłówek
 Wymagane są dwa klucze dostępu, jeśli chcesz je zaktualizować (wygenerować ponownie) bez przerywania korzystania z usługi. Na przykład jeśli chcesz zaktualizować pierwszy klucz, wszystkie Nowe przepływy pracy powinny używać drugiego klucza. Następnie poczekaj na zakończenie wszystkich przepływów pracy przy użyciu pierwszego klucza przed zaktualizowaniem pierwszego klucza.
 
 ## <a name="do-you-save-my-storage-account-keys"></a>Czy chcesz zapisać klucze konta magazynu?
-Klucz konta magazynu służy do tworzenia krótkoterminowych tokenów dostępu dla usługi Microsoft Genomics do odczytywania plików wejściowych i zapisywania plików wyjściowych. Domyślny czas trwania tokenu to 48 godzin. Czas trwania tokenu można zmienić przy użyciu opcji `-sas/--sas-duration` polecenia Prześlij; wartość jest w godzinach.
+Klucz konta magazynu służy do tworzenia krótkoterminowych tokenów dostępu dla usługi Microsoft Genomics do odczytywania plików wejściowych i zapisywania plików wyjściowych. Domyślny czas trwania tokenu to 48 godzin. Czas trwania tokenu można zmienić za pomocą opcji `-sas/--sas-duration` polecenia Prześlij; wartość jest w godzinach.
 
 ## <a name="what-genome-references-can-i-use"></a>Których odwołań genomów mogę używać?
 
@@ -73,7 +73,7 @@ Te odwołania są obsługiwane:
 msgen rozumie pliki konfiguracyjne w następującym formacie:
 * Wszystkie opcje są podane jako pary klucz-wartość z wartościami oddzielonymi od kluczy przez dwukropek.
   Biały znak jest ignorowany.
-* Wiersze zaczynające się od `#` zostały zignorowane.
+* Wiersze zaczynające się od `#` są ignorowane.
 * Każdy argument wiersza polecenia w długim formacie można przekonwertować na klucz, oddzielając jego wiodące myślniki i zastępując łączniki między wyrazami znakami podkreślenia. Poniżej przedstawiono kilka przykładów konwersji:
 
   |Argument wiersza polecenia            | Wiersz pliku konfiguracji |
@@ -86,5 +86,5 @@ msgen rozumie pliki konfiguracyjne w następującym formacie:
 
 Aby rozpocząć pracę z usługą Microsoft Genomics, Skorzystaj z następujących zasobów:
 - Zacznij od uruchomienia pierwszego przepływu pracy za pomocą usługi Microsoft Genomics. [Uruchamianie przepływu pracy za pomocą usługi Microsoft Genomics](quickstart-run-genomics-workflow-portal.md)
-- Prześlij własne dane do przetwarzania przez usługę Microsoft Genomics: [sparowane FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [wielu FASTQ lub BAM](quickstart-input-multiple.md) 
+- Prześlij własne dane do przetwarzania przez usługę Microsoft Genomics: [parowanie FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [wielu FASTQ lub BAM](quickstart-input-multiple.md) 
 

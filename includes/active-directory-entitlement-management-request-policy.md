@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 78a0dafeedc9aac4db69903b9f1193574cbd39c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6f2b5eb96eeb1c4b7d07219d5fe54a8a0ca9e28a
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934746"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73412996"
 ---
 ## <a name="for-users-in-your-directory"></a>Dla użytkowników w katalogu
 
@@ -105,19 +105,19 @@ Wykonaj następujące kroki, aby określić ustawienia zatwierdzania dla wcześn
 
 1. Aby wymagać zatwierdzenia dla żądań od wybranych użytkowników, ustaw przełącznik **Wymagaj zatwierdzenia** na **wartość tak**. Aby żądania były automatycznie zatwierdzane, ustaw przełącznik na wartość **nie**.
 
-    ![Dostęp do pakietów — ustawienia zatwierdzenia](./media/active-directory-entitlement-management-request-policy/approval.png)
-
 1. Aby wymagać od użytkowników podania uzasadnienia żądania pakietu dostępu, ustaw przełącznik Żądaj **uzasadnienia żądającego** na **wartość tak**.
 
-1. Ustal, czy żądanie będzie wymagało zatwierdzenia pojedynczego lub wieloetapowego. Ustaw liczbę przełączeń między **etapami** na **1** dla jednego etapu.
+    ![Dostęp do pakietów — ustawienia zatwierdzenia](./media/active-directory-entitlement-management-request-policy/approval.png)
+
+### <a name="single-stage-approval"></a>Zatwierdzenie na jednym etapie
 
 1. W obszarze osoby zatwierdzające wybierz pozycję **Menedżer jako osoba zatwierdzająca** lub **Wybierz określone osoby zatwierdzające**.
 
-    Menedżer jest określany przez atrybut **Manager** w profilu użytkownika usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Dodawanie lub aktualizowanie informacji o profilu użytkownika przy użyciu Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
-
-    ![Profil użytkownika Azure Active Directory — atrybut Manager](./media/active-directory-entitlement-management-request-policy/profile-manager.png)
+    ![Dostęp do pakietów-żądań — ustawienia pojedynczego etapu](./media/active-directory-entitlement-management-request-policy/approval-single-stage.png)
 
 1. W przypadku wybrania opcji Menedżer jako osoby zatwierdzającej kliknij pozycję **Dodaj rezerwę** , aby wybrać co najmniej jednego użytkownika lub grupy w Twoim katalogu jako osobę zatwierdzającą rezerwowe w przypadku, gdy zarządzanie uprawnieniami nie może znaleźć Menedżera.
+
+    Menedżer jest określany przez atrybut **Manager** w profilu użytkownika usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Dodawanie lub aktualizowanie informacji o profilu użytkownika przy użyciu Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
 1. W przypadku wybrania opcji wybierz określone osoby zatwierdzające kliknij przycisk **Dodaj osoby zatwierdzające** , aby wybrać co najmniej jednego użytkownika lub grupę w katalogu, który ma zostać zatwierdzony.
 
@@ -125,9 +125,34 @@ Wykonaj następujące kroki, aby określić ustawienia zatwierdzania dla wcześn
 
     Jeśli żądanie nie zostanie zatwierdzone w tym okresie, zostanie automatycznie odrzucone. Użytkownik będzie musiał przesłać kolejne żądanie dotyczące pakietu dostępu.
 
-1. Aby wymagać od użytkowników podania uzasadnienia żądania pakietu dostępu, ustaw opcję **Wymagaj uzasadnienia** na **wartość tak**.
+1. Aby wymagać od użytkowników podania uzasadnienia żądania pakietu dostępu, ustaw opcję **Wymagaj zatwierdzenia osoby zatwierdzającej** na **wartość tak**.
 
     Uzasadnienie jest widoczne dla innych osób zatwierdzających i osoby zgłaszającej żądanie.
+
+### <a name="alternate-approvers"></a>Alternatywne osoby zatwierdzające
+
+Oprócz określania głównych osób zatwierdzających, którzy mogą zatwierdzać żądania, można określić alternatywne osoby zatwierdzające. Dzięki temu żądania są zatwierdzane lub odrzucane przed wygaśnięciem (limit czasu).
+
+Określając alternatywne osoby zatwierdzające, w przypadku, gdy główne osoby zatwierdzające nie mogły zatwierdzić lub odrzucić żądania, oczekujące żądanie zostanie przekazane do alternatywnej osoby zatwierdzającej zgodnie z harmonogramem przekazywania określonym podczas konfigurowania zasad. Otrzymają wiadomość e-mail z prośbą o zatwierdzenie lub odrzucenie oczekującego żądania.
+
+Po przesłaniu żądania do alternatywne osoby zatwierdzające mogą nadal zatwierdzać lub odrzucać żądania. Alternatywne osoby zatwierdzające używają tej samej witryny My Access jako głównej osoby zatwierdzające, aby zatwierdzić lub odrzucić oczekujące żądanie.
+
+Możemy wyświetlić listę osób lub grup osób, które mają być głównymi osobami zatwierdzającymi i alternatywnymi osobami zatwierdzającymi. Upewnij się, że masz listę różnych zestawów osób, które mają być głównymi osobami zatwierdzającymi i alternatywnymi osobami zatwierdzającymi.
+Na przykład, jeśli na liście zostały wymienione Alicja i Robert jako podstawowe osoby zatwierdzające, listę Karoliny i Dave jako alternatywne osoby zatwierdzające. Wykonaj następujące kroki, aby dodać alternatywne osoby zatwierdzające do pakietu dostępu:
+
+1. Kliknij pozycję **Pokaż zaawansowane ustawienia żądania**.
+
+    ![Dostęp do pakietu-zasady-Pokaż zaawansowane ustawienia żądania](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+
+1. Ustaw **, jeśli nie wykonano żadnej akcji, przechodź do innej osoby zatwierdzającej?** Przełącz na **wartość tak**.
+
+1. Kliknij przycisk **Dodaj alternatywne osoby zatwierdzające** i wybierz z listy alternatywne osoby zatwierdzające.
+
+    ![Dostęp do pakietu — zasady Dodaj alternatywne osoby zatwierdzające](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+
+1. W polu **Przekaż do alternatywnych osób zatwierdzających po** liczbie dni wprowadź liczbę dni, przez które osoby zatwierdzające muszą zatwierdzić lub odrzucić żądanie. Jeśli żadna osoba zatwierdzająca nie zatwierdziła lub nie odrzuciła żądania przed upływem czasu żądania, żądanie wygasa (timeout), a użytkownik będzie musiał przesłać kolejne żądanie dotyczące pakietu dostępu. 
+
+    Żądania mogą być przekazywane do alternatywnych osób zatwierdzających dziennie po upływie czasu trwania żądania. W tym przykładzie czas trwania żądania wynosi 14 dni. Oznacza to, że czas trwania żądania osiągnie połowę okresu ważności w dniu 7. Żądanie można przesłać dalej nie wcześniej niż w dniu 8. Ponadto żądania nie mogą być przekazywane do alternatywnej osoby zatwierdzającej w ostatnim dniu czasu trwania żądania. W tym przykładzie najnowsze żądanie może być przekazywane z dniem 13.
 
 ## <a name="enable-requests"></a>Włącz żądania
 

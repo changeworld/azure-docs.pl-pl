@@ -1,7 +1,7 @@
 ---
-title: Dokumentacja zestawu SDK urządzenia usługi rozpoznawania mowy
+title: Dokumentacja zestawu SDK urządzeń mowy
 titleSuffix: Azure Cognitive Services
-description: Informacje o wersji — co zmieniło się w najnowszych wersjach
+description: Informacje o wersji — zmiany w najnowszych wersjach
 services: cognitive-services
 author: wsturman
 manager: nitinme
@@ -10,78 +10,78 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: wellsi
-ms.openlocfilehash: 1ca6b5265cf97ef551ec0b13b46ac934a372d2c7
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: ba1db1ccba6a1849756e75c9b9f7078371da5bfb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797926"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464743"
 ---
-# <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Informacje o wersji programu Cognitive Services zestawu Speech Devices SDK
-Następujące sekcje Lista zmian w najnowszych wersjach.
+# <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Informacje o wersji zestawu SDK urządzeń Cognitive Services Speech
+W poniższych sekcjach przedstawiono zmiany w najnowszych wersjach.
 
-## <a name="speech-devices-sdk-160"></a>Zestaw Speech Devices SDK 1.6.0:
+## <a name="speech-devices-sdk-160"></a>1\.6.0 zestawu SDK urządzeń mowy:
 
-*   Obsługa [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) systemach Windows i Linux z typowymi [przykładowej aplikacji](https://aka.ms/sdsdk-download)
-*   Zaktualizowano [zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.6.0. Aby uzyskać więcej informacji, zobacz jego [informacje o wersji](https://aka.ms/csspeech/whatsnew).
+*   Obsługa [usługi Azure urządzenia Kinect DK](https://azure.microsoft.com/services/kinect-dk/) w systemach Windows i Linux przy użyciu typowej [aplikacji przykładowej](https://aka.ms/sdsdk-download)
+*   Zaktualizowano składnik [zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.6.0. Aby uzyskać więcej informacji, zobacz informacje o [wersji](https://aka.ms/csspeech/whatsnew).
 
-## <a name="speech-devices-sdk-151"></a>Zestaw Speech Devices SDK 1.5.1:
+## <a name="speech-devices-sdk-151"></a>1\.5.1 zestawu SDK urządzeń mowy:
 
-*   Obejmują [transkrypcji konwersacji](conversation-transcription-service.md) w przykładowej aplikacji.
-*   Zaktualizowano [zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) składnik do wersji 1.5.1. Aby uzyskać więcej informacji, zobacz jego [informacje o wersji](https://aka.ms/csspeech/whatsnew).
+*   Uwzględnij [transkrypcję konwersacji](conversation-transcription-service.md) w przykładowej aplikacji.
+*   Zaktualizowano składnik [zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.5.1. Aby uzyskać więcej informacji, zobacz informacje o [wersji](https://aka.ms/csspeech/whatsnew).
 
-## <a name="cognitive-services-speech-devices-sdk-150-2019-may-release"></a>Usługi cognitive Services Speech Devices SDK 1.5.0: Wersja maja 2019 r
+## <a name="cognitive-services-speech-devices-sdk-150-2019-may-release"></a>Cognitive Services zestawu SDK 1.5.0 urządzeń mowy: 2019 — może wydać
 
-*   Zestawu Speech Devices SDK jest teraz ogólnie i nie jest już warunkowej wersji zapoznawczej.
-*   Zaktualizowano [zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) składnik do wersji 1.5.0. Aby uzyskać więcej informacji, zobacz jego [informacje o wersji](https://aka.ms/csspeech/whatsnew).
-*   Nową technologię word wznawiania oferuje jakości znaczne ulepszenia, zobacz fundamentalne zmiany.
-*   Nowy potok przetwarzania audio rozpoznawanie daleko pola.
+*   Zestaw SDK urządzeń mowy jest teraz w wersji GA i nie jest już w trakcie przetwarzania warunkowego.
+*   Zaktualizowano składnik [zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.5.0. Aby uzyskać więcej informacji, zobacz informacje o [wersji](https://aka.ms/csspeech/whatsnew).
+*   Nowa technologia słowa kluczowego zapewnia znaczące ulepszenia jakości, zobacz artykuł wprowadzenie zmian.
+*   Nowy potok przetwarzania audio dla ulepszonego rozpoznawania pól.
 
-**Fundamentalne zmiany**
+**Istotne zmiany**
 
-*   Ze względu na nową technologię word wznawiania wszystkie wyrazy wznawiania musi być ponownie utworzone w portalu programu word ulepszone wznawiania. Aby całkowicie usunąć stare słowa kluczowe z urządzenia odinstalować stare aplikację.
-    - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
+*   Ze względu na nową technologię słów kluczowych wszystkie słowa kluczowe muszą zostać utworzone w naszym ulepszonym portalu słów kluczowych. Aby w pełni usunąć stare słowa kluczowe z urządzenia, Odinstaluj starą aplikację.
+    - ADB Odinstaluj com. Microsoft. coginitiveservices. Speech. Samples. sdsdkstarterapp
 
-## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>Usługi cognitive Services Speech Devices SDK 1.4.0: 2019 kwi wydania
+## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>Cognitive Services zestawu 1.4.0 Speech Devices SDK: 2019-kwi Release
 
-* Zaktualizowano [zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) składnik do wersji 1.4.0. Aby uzyskać więcej informacji, zobacz jego [informacje o wersji](https://aka.ms/csspeech/whatsnew).
+* Zaktualizowano składnik [zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.4.0. Aby uzyskać więcej informacji, zobacz informacje o [wersji](https://aka.ms/csspeech/whatsnew).
 
-## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>Usługi cognitive Services Speech Devices SDK 1.3.1: Wydanie z marca 2019 r
+## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>Cognitive Services Speech Devices SDK 1.3.1:2019 — wydanie mar
 
-* Zaktualizowano [zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.3.1. Aby uzyskać więcej informacji, zobacz jego [informacje o wersji](https://aka.ms/csspeech/whatsnew).
-*   Zaktualizowano słowo aktywujące obsługi, zobacz fundamentalne zmiany.
-*   Przykładowa aplikacja dodaje wybór języka, zarówno usługa rozpoznawania mowy, jak i tłumaczenia.
+* Zaktualizowano składnik [SDK mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.3.1. Aby uzyskać więcej informacji, zobacz informacje o [wersji](https://aka.ms/csspeech/whatsnew).
+*   Obsługa zaktualizowanych słów kluczowych, zobacz istotne zmiany.
+*   Przykładowa aplikacja dodaje wybór języka dla rozpoznawania mowy i tłumaczenia.
 
-**Fundamentalne zmiany**
+**Istotne zmiany**
 
-*   [Instalowanie słowo aktywujące](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) został uproszczony, jest teraz część aplikacji i nie wymaga oddzielnej instalacji na urządzeniu.
-*   Rozpoznawanie word wznawiania została zmieniona, a obsługiwane są dwa zdarzenia.
-    - RecognizingKeyword, wskazuje, że wynik mowy zawiera tekst (niezweryfikowanych) — słowo kluczowe.
-    - RecognizedKeyword, wskazuje, że — słowo kluczowe rozpoznawania ukończone rozpoznawaniu dane słowo kluczowe.
+*   [Instalacja słowa kluczowego](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) została uproszczona, jest teraz częścią aplikacji i nie wymaga osobnej instalacji na urządzeniu.
+*   Rozpoznawanie słów kluczowych zostało zmienione i obsługiwane są dwa zdarzenia.
+    - RecognizingKeyword, wskazuje, że wynik mowy zawiera (niezweryfikowany) tekst słowa kluczowego.
+    - RecognizedKeyword, wskazuje, że rozpoznawanie słów kluczowych zostało zakończone rozpoznanie danego słowa kluczowego.
 
 
-## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>Usługi cognitive Services Speech Devices SDK 1.1.0: Wersja listopada 2018 r.
+## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>Cognitive Services zestawu SDK 1.1.0 urządzeń mowy: 2018 — wydanie lis
 
-* Zaktualizowano [zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.1.0. Aby uzyskać więcej informacji, zobacz jego [informacje o wersji](https://aka.ms/csspeech/whatsnew).
-* Skrajna dokładności rozpoznawania mowy pola została ulepszona przy użyciu naszego algorytmu rozszerzonego przetwarzania audio.
-* Przykładowa aplikacja dodano obsługę rozpoznawania mowy chińskim.
+* Zaktualizowano składnik [zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.1.0. Aby uzyskać więcej informacji, zobacz informacje o [wersji](https://aka.ms/csspeech/whatsnew).
+* Ulepszona precyzja rozpoznawania mowy z użyciem udoskonalonego algorytmu przetwarzania audio.
+* Przykładowa aplikacja dodała chińską obsługę rozpoznawania mowy.
 
-## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>Usługi cognitive Services Speech Devices SDK 1.0.1: Wersja z października 2018 r.
+## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>Cognitive Services zestawu SDK urządzeń 1.0.1:2018 — wydanie z października
 
-* Zaktualizowano [zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) składnik do wersji 1.0.1. Aby uzyskać więcej informacji, zobacz jego [informacje o wersji](https://aka.ms/csspeech/whatsnew).
-* Dokładność rozpoznawania mowy, zostanie on ulepszony przy użyciu naszego algorytmu Ulepszone przetwarzanie audio  
-* Jeden ciągły rozpoznawania dźwięku sesji naprawienia usterki.
+* Zaktualizowano składnik [zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.0.1. Aby uzyskać więcej informacji, zobacz informacje o [wersji](https://aka.ms/csspeech/whatsnew).
+* Dokładność rozpoznawania mowy zostanie ulepszona dzięki ulepszonemu algorytmowi przetwarzania dźwięku  
+* Została naprawiona jedna usterka sesji audio ciągłego rozpoznawania.
 
-**Fundamentalne zmiany**
+**Istotne zmiany**
 
-* W tej wersji wprowadzono szereg istotnych zmian. Sprawdź, czy [na tej stronie](https://aka.ms/csspeech/breakingchanges_1_0_0) Aby uzyskać szczegółowe informacje odnoszące się do interfejsów API.
-* Pliki modelu KWS nie są zgodne z zestawu Speech Devices SDK 1.0.1. Istniejące pliki funkcji programu Word zostaną usunięte po nowe pliki funkcji programu Word zapisywanych na urządzeniu.
+* W tej wersji wprowadzono kilka istotnych zmian. Sprawdź [Tę stronę](https://aka.ms/csspeech/breakingchanges_1_0_0) , aby uzyskać szczegółowe informacje dotyczące interfejsów API.
+* Pliki modelu KWS są niezgodne z zestawem SDK urządzeń Speech 1.0.1. Istniejące pliki słów kluczowych zostaną usunięte po zapisaniu nowych plików słów kluczowych na urządzeniu.
 
-## <a name="cognitive-services-speech-devices-sdk-050-2018-aug-release"></a>Usługi cognitive Services Speech Devices SDK wersję 0.5.0: Wersji z sierpnia 2018 r.
+## <a name="cognitive-services-speech-devices-sdk-050-2018-aug-release"></a>Cognitive Services zestawu 0.5.0 Speech Devices SDK: 2018-sie
 
-* Ulepszona dokładności rozpoznawania mowy, naprawiania usterki w kodzie przetwarzania audio.
-* Zaktualizowano [zestaw SDK rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) składnik do wersji wersję 0.5.0. Aby uzyskać więcej informacji, zobacz jego [informacje o wersji](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release).
+* Ulepszono dokładność rozpoznawania mowy przez naprawianie usterki w kodzie przetwarzania audio.
+* Zaktualizowano składnik [zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 0.5.0. Aby uzyskać więcej informacji, zobacz informacje o [wersji](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release).
 
-## <a name="cognitive-services-speech-devices-sdk-0212733-2018-may-release"></a>Usługi cognitive Services Speech Devices SDK 0.2.12733: Wersja maja 2018 r.
+## <a name="cognitive-services-speech-devices-sdk-0212733-2018-may-release"></a>Cognitive Services zestawu SDK 0.2.12733 urządzeń mowy: 2018 — może wydać
 
-Pierwsza wersja publiczna wersja zapoznawcza Cognitive Services Speech Devices SDK.
+Pierwsza publiczna wersja zapoznawcza zestawu SDK urządzeń Cognitive Services Speech.

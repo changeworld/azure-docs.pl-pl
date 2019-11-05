@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d60c1a01f3a4ca3a191ddb322def7d86a316c58f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 03ae780f86512ac401fcb7f6936e8f74cb595ca7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803330"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473861"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów
 
@@ -51,7 +51,7 @@ Aby uzyskać dostęp do zasobów w ramach subskrypcji, musisz przypisać aplikac
 
 Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone do niższych poziomów zakresu. Na przykład dodanie aplikacji do roli czytelnik dla grupy zasobów oznacza, że może ona odczytać grupę zasobów i wszystkie zawarte w niej zasoby.
 
-1. Przejdź do poziomu zakresu, do którego chcesz przypisać aplikację. Aby na przykład przypisać rolę w zakresie subskrypcji, wybierz pozycję **wszystkie usługi** i **subskrypcje**.
+1. W Azure Portal wybierz poziom zakresu, do którego chcesz przypisać aplikację. Aby na przykład przypisać rolę w zakresie subskrypcji, Wyszukaj i wybierz pozycję **subskrypcje**lub wybierz pozycję **subskrypcje** na stronie **głównej** .
 
    ![Na przykład Przypisz rolę w zakresie subskrypcji](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -147,7 +147,7 @@ Jeśli ustawienie rejestracje aplikacji ma wartość **nie**, tylko użytkownicy
 
 ### <a name="check-azure-subscription-permissions"></a>Sprawdź uprawnienia subskrypcji platformy Azure
 
-W ramach subskrypcji platformy Azure Twoje konto musi mieć dostęp do `Microsoft.Authorization/*/Write`, aby przypisać aplikację usługi AD do roli. Ta akcja jest wykonywana za pośrednictwem roli [Właściciel](../../role-based-access-control/built-in-roles.md#owner) lub [Administrator dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator). Jeśli Twoje konto jest przypisane do roli **współautor** , nie masz wystarczających uprawnień. Wystąpił błąd podczas próby przypisania nazwy głównej usługi do roli.
+W ramach subskrypcji platformy Azure Twoje konto musi mieć `Microsoft.Authorization/*/Write` dostępu, aby przypisać aplikację usługi AD do roli. Ta akcja jest wykonywana za pośrednictwem roli [Właściciel](../../role-based-access-control/built-in-roles.md#owner) lub [Administrator dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator). Jeśli Twoje konto jest przypisane do roli **współautor** , nie masz wystarczających uprawnień. Wystąpił błąd podczas próby przypisania nazwy głównej usługi do roli.
 
 Aby sprawdzić uprawnienia do subskrypcji:
 

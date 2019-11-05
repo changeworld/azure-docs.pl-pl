@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5f11173c7b7f7396a8cf5cda4b9c8975cd7bb38e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 172003b13807720df2431a3610947b36d8303fed
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679811"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470368"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrowanie aktywnej nazwy DNS do Azure App Service
 
@@ -48,15 +48,15 @@ Po zakończeniu migracji niestandardowej nazwy DNS ze starej lokacji do aplikacj
 
 ### <a name="create-domain-verification-record"></a>Utwórz rekord weryfikacji domeny
 
-Aby sprawdzić własność domeny, Dodaj rekord TXT. Rekord TXT jest mapowany z _awverify. &lt;subdomain >_ do _&lt;appname >. azurewebsites. NET_. 
+Aby sprawdzić własność domeny, Dodaj rekord TXT. Rekord TXT jest mapowany z _awverify.&lt;subdomain >_ do _&lt;nazwa_aplikacji >. azurewebsites. NET_. 
 
 Rekord TXT, którego potrzebujesz, zależy od rekordu DNS, który ma zostać zmigrowany. Aby zapoznać się z przykładami, zobacz poniższą tabelę (`@` zwykle reprezentuje domenę główną):
 
 | Przykład rekordu DNS | Host TXT | Wartość TXT |
 | - | - | - |
-| \@ (główny) | _awverify_ | _&lt;appname >. azurewebsites. NET_ |
-| www (Sub) | _awverify. www_ | _&lt;appname >. azurewebsites. NET_ |
-| \* (symbol wieloznaczny) | _awverify. \*_ | _&lt;appname >. azurewebsites. NET_ |
+| \@ (główny) | _awverify_ | _&lt;nazwa_aplikacji >. azurewebsites. NET_ |
+| www (Sub) | _awverify. www_ | _&lt;nazwa_aplikacji >. azurewebsites. NET_ |
+| \* (symbol wieloznaczny) | _awverify.\*_ | _&lt;nazwa_aplikacji >. azurewebsites. NET_ |
 
 Na stronie rekordów DNS Zwróć uwagę na typ rekordu nazwy DNS, którą chcesz migrować. App Service obsługuje mapowania z rekordów CNAME i A.
 
@@ -122,8 +122,8 @@ W przykładzie `contoso.com` domeny katalogu głównego ponownie zamapuj rekord 
 | Przykład nazwy FQDN | Typ rekordu | Host | Wartość |
 | - | - | - | - |
 | contoso.com (główny) | A | `@` | Adres IP z sekcji [Kopiowanie adresu IP aplikacji](#info) |
-| www \.contoso. com (Sub) | CNAME | `www` | _&lt;appname >. azurewebsites. NET_ |
-| \*. contoso.com (symbol wieloznaczny) | CNAME | _\*_ | _&lt;appname >. azurewebsites. NET_ |
+| www\.contoso.com (Sub) | CNAME | `www` | _&lt;nazwa_aplikacji >. azurewebsites. NET_ |
+| \*. contoso.com (symbol wieloznaczny) | CNAME | _\*_ | _&lt;nazwa_aplikacji >. azurewebsites. NET_ |
 
 Zapisz ustawienia.
 
@@ -140,4 +140,4 @@ Możesz znaleźć jednostkę wdrożenia dla swojej aplikacji, przeglądając naz
 Dowiedz się, jak powiązać niestandardowy certyfikat SSL z App Service.
 
 > [!div class="nextstepaction"]
-> [Wiązanie istniejącego niestandardowego certyfikatu SSL z usługą Azure App Service](app-service-web-tutorial-custom-ssl.md)
+> [Powiąż certyfikat SSL z Azure App Service](configure-ssl-bindings.md)

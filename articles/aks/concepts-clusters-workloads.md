@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 3792eed170d3e3e1cdd267c0c88d2d2d6c520733
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: da84f72c1ccf85e1f3d0f003a5aca961118c0a0e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672808"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472891"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Podstawowe pojęcia Kubernetes dla usługi Azure Kubernetes Service (AKS)
 
 Gdy Programowanie aplikacji przenosi się do podejścia opartego na kontenerach, trzeba zorganizować i zarządzać zasobami. Kubernetes to wiodąca platforma zapewniająca niezawodne planowanie obciążeń aplikacji odpornych na błędy. Usługa Azure Kubernetes Service (AKS) to zarządzana oferta Kubernetes, która ułatwia wdrażanie aplikacji opartych na kontenerach i zarządzanie nimi.
 
-W tym artykule wprowadzono podstawowe składniki infrastruktury Kubernetes, takie jak *wzorzec klastra*, *węzły*i *Pule węzłów*. Wprowadzono również zasoby obciążenia, takie jak zbiory, *wdrożenia*i *zestawy* , wraz z sposobem grupowania zasobów w *przestrzeni nazw*.
+W tym artykule wprowadzono podstawowe składniki infrastruktury Kubernetes, takie jak *wzorzec klastra*, *węzły*i *Pule węzłów*. Wprowadzono również zasoby obciążenia *, takie jak* *zbiory* , *wdrożenia*i zestawy, wraz z sposobem grupowania zasobów w *przestrzeni nazw*.
 
 ## <a name="what-is-kubernetes"></a>Co to jest Kubernetes?
 
@@ -45,7 +45,7 @@ Podczas tworzenia klastra AKS zostanie automatycznie utworzony i skonfigurowany 
 
 Wzorzec klastra zawiera następujące podstawowe składniki Kubernetes:
 
-- *polecenia-apiserver* — serwer interfejsu API to sposób, w jaki są ujawniane bazowe interfejsy API Kubernetes. Ten składnik zapewnia interakcję z narzędziami do zarządzania, `kubectl` takimi jak lub pulpitem nawigacyjnym Kubernetes.
+- *polecenia-apiserver* — serwer interfejsu API to sposób, w jaki są ujawniane bazowe interfejsy API Kubernetes. Ten składnik zapewnia interakcję z narzędziami do zarządzania, takimi jak `kubectl` lub pulpit nawigacyjny Kubernetes.
 - *etcd* — aby zachować stan klastra Kubernetes i konfiguracji, *etcd* wysoka dostępność to kluczowy magazyn wartości w ramach Kubernetes.
 - *polecenia-Scheduler* — podczas tworzenia lub skalowania aplikacji harmonogram określa węzły, które mogą uruchamiać obciążenie i je uruchamia.
 - *polecenia-Controller-Manager* — Menedżer kontrolerów widzi kilka mniejszych kontrolerów, które wykonują takie działania, jak replikowanie i obsługa operacji węzła.
@@ -62,7 +62,7 @@ W przypadku skojarzonych najlepszych rozwiązań należy zapoznać się [z najle
 
 Aby uruchamiać aplikacje i usługi pomocnicze, potrzebny jest *węzeł*Kubernetes. Klaster AKS ma co najmniej jeden węzeł, który jest maszyną wirtualną platformy Azure, na której działa składniki węzła Kubernetes i środowisko uruchomieniowe kontenera:
 
-- @No__t-0 to Agent Kubernetes, który przetwarza żądania aranżacji z głównego serwera klastra i planowania uruchamiania żądanych kontenerów.
+- `kubelet` to Agent Kubernetes, który przetwarza żądania aranżacji z głównego serwera klastra i planowania uruchamiania żądanych kontenerów.
 - Sieć wirtualna jest obsługiwana przez *polecenia-proxy* w każdym węźle. Serwer proxy kieruje ruchem sieciowym i zarządza adresami IP dla usług i zasobników.
 - *Środowisko uruchomieniowe kontenera* to składnik, który umożliwia aplikacjom kontenerowym uruchamianie i współdziałanie z dodatkowymi zasobami, takimi jak sieć wirtualna i magazyn. W AKS, Moby jest używany jako środowisko uruchomieniowe kontenera.
 
@@ -72,11 +72,11 @@ Rozmiar maszyny wirtualnej platformy Azure dla węzłów definiuje liczbę proce
 
 W AKS obraz maszyny wirtualnej dla węzłów w klastrze jest obecnie oparty na Ubuntu Linux lub Windows Server 2019. Podczas tworzenia klastra AKS lub skalowania w górę liczby węzłów platforma Azure tworzy żądaną liczbę maszyn wirtualnych i konfiguruje je. Nie istnieje ręczna konfiguracja do wykonania. Węzły agentów są rozliczane jako standardowe maszyny wirtualne, w związku z czym wszelkie zniżki na używanym rozmiarze maszyny wirtualnej (w tym [rezerwacje platformy Azure][reservation-discounts]) są automatycznie stosowane.
 
-Jeśli konieczne jest użycie innego systemu operacyjnego hosta, środowiska uruchomieniowego kontenera lub dołączenie pakietów niestandardowych, można wdrożyć własny klaster Kubernetes przy użyciu [aparatu AKS][aks-engine]. Nadrzędne funkcje `aks-engine` i udostępniają opcje konfiguracji, zanim będą oficjalnie obsługiwane w klastrach AKS. Na przykład jeśli chcesz użyć środowiska uruchomieniowego kontenera innego niż Moby, możesz użyć `aks-engine` w celu skonfigurowania i wdrożenia klastra Kubernetes spełniającego Twoje bieżące potrzeby.
+Jeśli konieczne jest użycie innego systemu operacyjnego hosta, środowiska uruchomieniowego kontenera lub dołączenie pakietów niestandardowych, można wdrożyć własny klaster Kubernetes przy użyciu [aparatu AKS][aks-engine]. Nadrzędne `aks-engine` wersje funkcji i udostępnia opcje konfiguracji, zanim będą oficjalnie obsługiwane w klastrach AKS. Na przykład jeśli chcesz użyć środowiska uruchomieniowego kontenera innego niż Moby, możesz użyć `aks-engine`, aby skonfigurować i wdrożyć klaster Kubernetes, który spełnia Twoje bieżące potrzeby.
 
 ### <a name="resource-reservations"></a>Rezerwacje zasobów
 
-Zasoby węzła są używane przez AKS, aby uczynić węzeł funkcją jako częścią klastra. Może to spowodować utworzenie discrepency między całkowitymi zasobami węzła a zasobami, które można przydzielić, gdy są używane w AKS. Jest to ważne, aby zauważyć, gdy ustawiasz żądania i limity dla wdrożonych przez użytkownika zasobników.
+Zasoby węzła są używane przez AKS, aby uczynić węzeł funkcją jako częścią klastra. Może to spowodować niezgodność między całkowitymi zasobami węzła a zasobami, które można przydzielić w programie AKS. Jest to ważne, aby zauważyć, gdy ustawiasz żądania i limity dla wdrożonych przez użytkownika zasobników.
 
 Aby znaleźć zasoby możliwe do przydzielenia przez węzeł:
 ```kubectl
@@ -110,7 +110,7 @@ Aby zapoznać się z najlepszymi rozwiązaniami, zobacz [najlepsze rozwiązania 
 
 ### <a name="node-pools"></a>Pule węzłów
 
-Węzły tej samej konfiguracji są pogrupowane w *Pule węzłów*. Klaster Kubernetes zawiera co najmniej jedną pulę węzłów. Początkowa liczba węzłów i rozmiar są definiowane podczas tworzenia klastra AKS, który tworzy *domyślną pulę węzłów*. Ta domyślna pula węzłów w AKS zawiera podstawowe maszyny wirtualne, na których są uruchomione węzły agentów. Obsługa wielu węzłów jest obecnie dostępna w wersji zapoznawczej w AKS.
+Węzły tej samej konfiguracji są pogrupowane w *Pule węzłów*. Klaster Kubernetes zawiera co najmniej jedną pulę węzłów. Początkowa liczba węzłów i rozmiar są definiowane podczas tworzenia klastra AKS, który tworzy *domyślną pulę węzłów*. Ta domyślna pula węzłów w AKS zawiera podstawowe maszyny wirtualne, na których są uruchomione węzły agentów.
 
 > [!NOTE]
 > Aby zapewnić niezawodne działanie klastra, należy uruchomić co najmniej 2 (dwa) węzły w domyślnej puli węzłów.
@@ -199,7 +199,7 @@ Aby uzyskać więcej informacji, zobacz [Kubernetes Deployments][kubernetes-depl
 
 Typowym podejściem do zarządzania aplikacjami w programie Kubernetes jest [Helm][helm]. Możesz tworzyć i używać istniejących publicznych *wykresów* Helm, które zawierają spakowaną wersję kodu aplikacji i manifestów YAML Kubernetes do wdrażania zasobów. Te wykresy Helm mogą być przechowywane lokalnie lub często w repozytorium zdalnym, takim jak repozytorium wykresu programu [Azure Container Registry Helm][acr-helm].
 
-Aby korzystać z Helm, składnik serwera o nazwieer jest instalowany w klastrze Kubernetes. Zarządzający do instalacji wykresów w klastrze. Klient Helm jest instalowany lokalnie na komputerze lub może być używany w [Azure Cloud Shell][azure-cloud-shell]. Możesz wyszukać i utworzyć wykresy Helm z klientem, a następnie zainstalować je w klastrze Kubernetes.
+Aby korzystać z Helm, składnik serwera o *nazwieer* jest instalowany w klastrze Kubernetes. Zarządzający do instalacji wykresów w klastrze. Klient Helm jest instalowany lokalnie na komputerze lub może być używany w [Azure Cloud Shell][azure-cloud-shell]. Możesz wyszukać i utworzyć wykresy Helm z klientem, a następnie zainstalować je w klastrze Kubernetes.
 
 ![Helm obejmuje składnik klienta i składnik do przydziałania po stronie serwera, który tworzy zasoby wewnątrz klastra Kubernetes](media/concepts-clusters-workloads/use-helm.png)
 
@@ -218,7 +218,7 @@ Istnieją dwa zasoby Kubernetes, które umożliwiają zarządzanie tymi typami a
 
 Nowoczesne opracowywanie aplikacji jest często stosowane w przypadku aplikacji bezstanowych, ale *StatefulSets* można używać w przypadku aplikacji stanowych, takich jak aplikacje, które zawierają składniki bazy danych. StatefulSet jest podobny do wdrożenia w przypadku tworzenia co najmniej jednego identycznego zasobnika i zarządzania nim. Repliki w StatefulSet wykonują bezpieczne, sekwencyjne podejście do wdrożenia, skalowania, uaktualnienia i zakończenia. W przypadku StatefulSet, konwencji nazewnictwa, nazw sieci i magazynu utrwalają się, gdy replika jest zaplanowana.
 
-Aplikację można zdefiniować w formacie YAML za pomocą `kind: StatefulSet`, a kontroler StatefulSet będzie obsługiwał wdrożenie i zarządzanie wymaganymi replikami. Dane są zapisywane w magazynie trwałym, udostępnianym przez usługę Azure Managed Disks lub Azure Files. W przypadku programu StatefulSets podstawowy magazyn trwały pozostaje nawet wtedy, gdy StatefulSet zostanie usunięta.
+Aplikację można zdefiniować w formacie YAML przy użyciu `kind: StatefulSet`, a kontroler StatefulSet będzie obsługiwał wdrażanie wymaganych replik i zarządzanie nimi. Dane są zapisywane w magazynie trwałym, udostępnianym przez usługę Azure Managed Disks lub Azure Files. W przypadku programu StatefulSets podstawowy magazyn trwały pozostaje nawet wtedy, gdy StatefulSet zostanie usunięta.
 
 Aby uzyskać więcej informacji, zobacz [Kubernetes StatefulSets][kubernetes-statefulsets].
 
@@ -245,7 +245,7 @@ Zasoby Kubernetes, takie jak grupy miar i wdrożenia, są logicznie pogrupowane 
 
 Podczas tworzenia klastra AKS dostępne są następujące przestrzenie nazw:
 
-- *default* — Ta przestrzeń nazw to miejsce, w którym domyślnie tworzone są i wdrożenia, gdy żaden z nich nie jest dostarczany. W mniejszych środowiskach można wdrażać aplikacje bezpośrednio w domyślnej przestrzeni nazw bez tworzenia dodatkowych rozbarwień logicznych. W przypadku korzystania z interfejsu API Kubernetes, takiego jak z `kubectl get pods`, domyślna przestrzeń nazw jest używana, gdy nie jest określona żadna wartość.
+- *default* — Ta przestrzeń nazw to miejsce, w którym domyślnie tworzone są i wdrożenia, gdy żaden z nich nie jest dostarczany. W mniejszych środowiskach można wdrażać aplikacje bezpośrednio w domyślnej przestrzeni nazw bez tworzenia dodatkowych rozbarwień logicznych. W przypadku korzystania z interfejsu API Kubernetes, takiego jak `kubectl get pods`, domyślna przestrzeń nazw jest używana, gdy nie jest określony.
 - *polecenia-system* — Ta przestrzeń nazw to miejsce, w którym istnieją podstawowe zasoby, takie jak usługa DNS i serwer proxy lub pulpit nawigacyjny Kubernetes. Zwykle nie są wdrażane własne aplikacje w tej przestrzeni nazw.
 - *polecenia-Public* — Ta przestrzeń nazw zazwyczaj nie jest używana, ale może być używana do wyświetlania zasobów w całym klastrze i może być wyświetlana przez dowolnego użytkownika.
 

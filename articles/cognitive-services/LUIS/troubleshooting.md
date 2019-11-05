@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 8adc052e732fdc54bd3b51873fdcf13a55f1f490
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 6a17993d7bc4ff54b3d55fa5b5bb141463896e32
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971971"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488706"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding często zadawane pytania
 
@@ -50,7 +50,7 @@ Tak. dobrym sposobem jest uczenie się, że **nie ma żadnych** zamiaru wyrażen
 Zobacz samouczek [Sprawdzanie pisowni Bing API wersji 7](luis-tutorial-bing-spellcheck.md) . LUIS wymusza limity narzucone przez sprawdzanie pisowni Bing API wersji 7.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Jak mogę programowo edytować moją aplikację LUIS?
-Aby programowo edytować aplikację LUIS, użyj [interfejsu API tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087). Zobacz [wywoływanie interfejsu API tworzenia Luis](./luis-quickstart-node-add-utterance.md) i [Tworzenie aplikacji Luis programowo przy użyciu środowiska Node. js](./luis-tutorial-node-import-utterances-csv.md) , aby poznać Przykłady sposobu wywoływania interfejsu API tworzenia. Interfejs API tworzenia wymaga użycia [klucza tworzenia](luis-concept-keys.md#authoring-key) zamiast klucza punktu końcowego. Program programistyczny umożliwia tworzenie do 1 000 000 wywołań miesięcznie i pięć transakcji na sekundę. Aby uzyskać więcej informacji na temat kluczy używanych z usługą LUIS, zobacz [Zarządzanie kluczami](./luis-concept-keys.md).
+Aby programowo edytować aplikację LUIS, użyj [interfejsu API tworzenia](https://go.microsoft.com/fwlink/?linkid=2092087). Zobacz [wywoływanie interfejsu API tworzenia Luis](./luis-quickstart-node-add-utterance.md) i [Tworzenie aplikacji Luis programowo przy użyciu środowiska Node. js](./luis-tutorial-node-import-utterances-csv.md) , aby poznać Przykłady sposobu wywoływania interfejsu API tworzenia. Interfejs API tworzenia wymaga użycia [klucza tworzenia](luis-concept-keys.md#azure-resources-for-luis) zamiast klucza punktu końcowego. Program programistyczny umożliwia tworzenie do 1 000 000 wywołań miesięcznie i pięć transakcji na sekundę. Aby uzyskać więcej informacji na temat kluczy używanych z usługą LUIS, zobacz [Zarządzanie kluczami](./luis-concept-keys.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Gdzie jest funkcja wzorca, która zapewnia dopasowanie wyrażenia regularnego?
 Funkcja poprzedniego **wzorca** jest obecnie przestarzała, zastępowana przez **[wzorce](luis-concept-patterns.md)** .
@@ -70,7 +70,7 @@ Aby przenieść aplikację LUIS do innej subskrypcji platformy Azure, wyeksportu
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Wstępnie utworzona jednostka jest oznaczona jako przykład wypowiedź zamiast mojej jednostki niestandardowej. Jak mogę rozwiązać ten problem? 
 
-Zobacz [Rozwiązywanie problemów prekompilowanych jednostek](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
+W portalu LUIS można oznaczyć tekst dla dokładnej jednostki, która ma zostać wyodrębniona. Jeśli portal LUIS nie pokazuje poprawnego przewidywania jednostek, może być konieczne dodanie większej liczby wyrażenia długości i oznaczenie jednostki w tekście lub dodanie deskryptora (na przykład funkcji). 
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Próbuję zaimportować plik aplikacji lub wersji, ale wystąpił błąd, co się stało? 
 
@@ -86,7 +86,7 @@ Zapoznaj się z tematem [Azure Active Directory zasobów](luis-how-to-collaborat
 
 <a name="luis-endpoint"></a>
 
-## <a name="endpoint"></a>Punkt końcowy
+## <a name="endpoint"></a>Endpoint
 
 ### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>Otrzymałem kod stanu błędu HTTP 403. Jak mogę rozwiązać ten problem?
 
@@ -193,7 +193,7 @@ Zobacz [uczenie ze wszystkimi danymi](luis-how-to-train.md#train-with-all-data).
 ## <a name="app-publishing"></a>Publikowanie aplikacji
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Jaki jest identyfikator dzierżawy w oknie "Dodawanie klucza do aplikacji"?
-Na platformie Azure dzierżawca reprezentuje klienta lub organizację, która jest skojarzona z usługą. Znajdź swój identyfikator dzierżawy w Azure Portal w polu **Identyfikator katalogu** , wybierając pozycję **Azure Active Directory** > **Zarządzaj** **właściwościami** > .
+Na platformie Azure dzierżawca reprezentuje klienta lub organizację, która jest skojarzona z usługą. Znajdź swój identyfikator dzierżawy w Azure Portal w polu **Identyfikator katalogu** , wybierając pozycję **Azure Active Directory** > **Zarządzanie** > **Właściwości**.
 
 ![Identyfikator dzierżawy w Azure Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -230,7 +230,7 @@ Klucze tworzenia są dostępne w portalu LUIS po przeprowadzeniu [migracji do ś
 Domyślnie aplikacja LUIS rejestruje wyrażenia długości użytkowników. Aby pobrać dziennik wyrażenia długości, który użytkownicy wysyłają do aplikacji LUIS, przejdź do obszaru **Moje aplikacje**i wybierz aplikację. Na kontekstowym pasku narzędzi wybierz pozycję **Eksportuj dzienniki punktów końcowych**. Dziennik jest sformatowany jako plik z wartościami rozdzielanymi przecinkami (CSV).
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Jak mogę wyłączyć rejestrowanie wyrażenia długości?
-Rejestrowanie użytkownika wyrażenia długości można wyłączyć, ustawiając wartość `log=false` w adresie URL punktu końcowego używanym przez aplikację kliencką do wysyłania zapytań do LUIS. Wyłączenie rejestrowania uniemożliwia jednak aplikacji LUIS zasugerowanie wyrażenia długości lub zwiększenie wydajności, która jest oparta na [aktywnej uczeniu](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Jeśli ustawisz `log=false` ze względu na kwestie związane z ochroną prywatności, nie możesz pobrać rekordu tego użytkownika wyrażenia długości z LUIS lub użyć tych wyrażenia długości w celu usprawnienia swojej aplikacji.
+Rejestrowanie użytkownika wyrażenia długości można wyłączyć, ustawiając `log=false` w adresie URL punktu końcowego używanym przez aplikację kliencką do wysyłania zapytań do LUIS. Wyłączenie rejestrowania uniemożliwia jednak aplikacji LUIS zasugerowanie wyrażenia długości lub zwiększenie wydajności, która jest oparta na [aktywnej uczeniu](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Jeśli ustawisz `log=false` ze względu na kwestie związane z ochroną prywatności, nie możesz pobrać rekordu tego użytkownika wyrażenia długości z LUIS lub użyć tych wyrażenia długości w celu usprawnienia swojej aplikacji.
 
 Rejestrowanie jest jedynym magazynem wyrażenia długości.
 
@@ -271,11 +271,11 @@ Pierwszym problemem jest wyizolowanie, jeśli problem związany z LUISem lub zac
 #### <a name="resolve-issue-in-luis"></a>Rozwiązywanie problemu w programie LUIS
 Przekaż ten sam wypowiedź do LUIS z [punktu końcowego Luis](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Jeśli zostanie wyświetlony komunikat o błędzie, należy rozwiązać problem w LUIS, dopóki błąd nie zostanie już zwrócony. Typowe błędy obejmują:
 
-* `Out of call volume quota. Quota will be replenished in <time>.` — ten problem oznacza konieczność zmiany z klucza tworzenia do [klucza punktu końcowego](luis-how-to-azure-subscription.md) lub konieczności zmiany [warstw usług](luis-how-to-azure-subscription.md#change-pricing-tier). 
+* `Out of call volume quota. Quota will be replenished in <time>.` — ten problem oznacza konieczność zmiany z klucza tworzenia do [klucza punktu końcowego](luis-how-to-azure-subscription.md) lub należy zmienić [warstwy usług](luis-how-to-azure-subscription.md#change-pricing-tier). 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Rozwiąż problem w Azure Bot Service
 
-Jeśli używasz Azure Bot Service a problem polega na tym, że **test w usłudze Web Chat** zwraca `Sorry, my bot code is having an issue`, Sprawdź dzienniki:
+Jeśli używasz Azure Bot Service i problem polega na tym, że **test w usłudze Web Chat** zwraca `Sorry, my bot code is having an issue`, Sprawdź dzienniki:
 
 1. W Azure Portal, w bot, w sekcji **Zarządzanie bot** wybierz opcję **Kompiluj**.
 1. Otwórz Edytor kodu online. 

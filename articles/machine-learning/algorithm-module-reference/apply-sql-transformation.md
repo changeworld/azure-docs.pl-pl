@@ -1,5 +1,5 @@
 ---
-title: Zastosuj transformację SQL
+title: Stosowanie przekształcenia SQL
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się, w jaki sposób używać modułu transformacji SQL w usłudze Azure Machine Learning, aby uruchomić zapytanie oprogramowania SQLite w wejściowych zestawach danych w celu przeprowadzenia transformacji.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 8eede9d1fbee7d8b70f6b6924b9767b4d3f4e0bf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694638"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493914"
 ---
-# <a name="apply-sql-transformation"></a>Zastosuj transformację SQL
+# <a name="apply-sql-transformation"></a>Stosowanie przekształcenia SQL
 
-W tym artykule opisano moduł Azure Machine Learning Visual Interface.
+W tym artykule opisano moduł programu Azure Machine Learning Designer (wersja zapoznawcza).
 
 Za pomocą modułu przekształcenie języka SQL można:
   
@@ -33,7 +33,7 @@ Za pomocą modułu przekształcenie języka SQL można:
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>Jak skonfigurować zastosowanie transformacji SQL  
 
-Moduł może przyjmować do trzech zestawów danych jako dane wejściowe. W przypadku odwoływania się do zestawów danych połączonych z każdym portem wejściowym należy użyć nazw `t1`, `t2` i `t3`. Numer tabeli wskazuje indeks portu wejściowego.  
+Moduł może przyjmować do trzech zestawów danych jako dane wejściowe. W przypadku odwoływania się do zestawów danych połączonych z każdym portem wejściowym należy użyć nazw `t1`, `t2`i `t3`. Numer tabeli wskazuje indeks portu wejściowego.  
   
 Pozostała wartość parametru to zapytanie SQL, które używa składni programu SQLite. Wpisując wiele wierszy w polu tekstowym **skrypt SQL** , użyj średnika, aby zakończyć każdą instrukcję. W przeciwnym razie podziały wierszy są konwertowane na spacje.  
 
@@ -55,9 +55,9 @@ Chociaż oprogramowanie SQLite obsługuje wiele standardów ANSI SQL, nie obejmu
   
 - `LEFT OUTER JOIN` jest zaimplementowana, ale nie `RIGHT OUTER JOIN` lub `FULL OUTER JOIN`.  
 
-- Można użyć instrukcji `RENAME TABLE` i `ADD COLUMN` z `ALTER TABLE` polecenie, ale inne klauzule nie są obsługiwane, w tym `DROP COLUMN`, `ALTER COLUMN` i `ADD CONSTRAINT`.  
+- Można użyć instrukcji `RENAME TABLE` i `ADD COLUMN` z `ALTER TABLE` polecenie, ale inne klauzule nie są obsługiwane, w tym `DROP COLUMN`, `ALTER COLUMN`i `ADD CONSTRAINT`.  
   
-- Możesz utworzyć widok w ramach oprogramowania SQLite, ale te widoki są tylko do odczytu. Nie można wykonać instrukcji `DELETE`, `INSERT` lub `UPDATE` w widoku. Można jednak utworzyć wyzwalacz, który jest uruchamiany przy próbie `DELETE`, `INSERT` lub `UPDATE` w widoku i wykonać inne operacje w treści wyzwalacza.  
+- Możesz utworzyć widok w ramach oprogramowania SQLite, ale te widoki są tylko do odczytu. Nie można wykonać instrukcji `DELETE`, `INSERT`lub `UPDATE` w widoku. Można jednak utworzyć wyzwalacz, który jest uruchamiany przy próbie `DELETE`, `INSERT`lub `UPDATE` w widoku i wykonać inne operacje w treści wyzwalacza.  
   
 
 Oprócz listy nieobsługiwanych funkcji dostępnych w oficjalnej witrynie programu SQLite, następująca witryna wiki zawiera listę innych nieobsługiwanych funkcji: [SQLite — nieobsługiwane SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  

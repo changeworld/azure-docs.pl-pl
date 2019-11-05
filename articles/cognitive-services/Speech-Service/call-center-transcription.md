@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 858ca114ca4c4b469ce4a5dd5275c9ac9874feb5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516767"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464994"
 ---
 # <a name="speech-services-for-telephony-data"></a>Usługi mowy dla danych telefonii
 
@@ -38,9 +38,9 @@ Poza funkcjonalnym aspektem usług mowy, których głównym celem jest zastosowa
 
 * Analiza po wywołaniu, która polega na przetwarzaniu wsadowym nagrań wywołań
 * Przetwarzanie danych analitycznych w czasie rzeczywistym w celu wyodrębnienia różnych szczegółowych informacji w trakcie wywołania (z tonacjiem jest widocznym przypadkiem użycia) i
-* Wirtualne asystenci (botów), prowadzący do dialogu między klientem a bot w celu rozwiązania problemu klienta bez udziału agenta lub zastosowania protokołów AI do ułatwienia agentowi.
+* Asystentów głosowych (botów), które umożliwiają przeprowadzenie dialogu między klientem a bot w celu rozwiązania problemu klienta bez udziału agenta lub zastosowania protokołów AI do ułatwienia agentowi.
 
-Typowy diagram architektury implementacji scenariusza wsadowego przedstawiono na ilustracji poniżej ![Call architekturę transkrypcji centrum ](media/scenarios/call-center-transcription-architecture.png)
+Typowy diagram architektury implementacji scenariusza wsadowego jest przedstawiony na poniższej ilustracji ![architekturze transkrypcji centrum wywołania](media/scenarios/call-center-transcription-architecture.png)
 
 ## <a name="speech-analytics-technology-components"></a>Składniki technologii analizy mowy
 
@@ -66,7 +66,7 @@ Nasze opóźnienia kompleksowe są dość małe, biorąc pod uwagę różne tech
 
 Nasze nowe głosy są również odróżniane od głosów ludzkich. Możesz użyć głosów out, aby bot swój unikatowy charakter.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Wyszukiwanie
 Kolejną zszywaniem funkcji analitycznych jest zidentyfikowanie interakcji w przypadku wystąpienia konkretnego zdarzenia lub doświadczenia. Zwykle odbywa się to przy użyciu jednego z dwóch metod — wyszukiwanie ad hoc, gdzie użytkownik po prostu wpisuje frazę i system odpowiada, lub bardziej strukturalne zapytanie, gdzie analityk może utworzyć zestaw instrukcji logicznych, które identyfikują scenariusz w wywołaniu , a następnie każde wywołanie można indeksować względem tego zestawu zapytań. Dobrym przykładem wyszukiwania jest Powszechna Deklaracja zgodności "to wywołanie jest rejestrowane w celach jakościowych... "— tak wiele firm chce, aby upewnić się, że ich agenci świadczą tę klauzulę klientom przed faktycznym zarejestrowaniem połączenia. Większość systemów analitycznych ma możliwość trendu zachowań znalezionych w ramach algorytmów/Search zapytania — ponieważ takie raportowanie trendów jest ostatecznie jedną z najważniejszych funkcji systemu analitycznego. Za pomocą [katalogu usług poznawczych](https://azure.microsoft.com/services/cognitive-services/directory/search/) kompleksowe rozwiązanie można znacznie rozszerzyć za pomocą funkcji indeksowania i wyszukiwania.
 
 ### <a name="key-phrase-extraction"></a>Wyodrębnianie kluczowych fraz
@@ -92,7 +92,7 @@ Typowe rozwiązanie używa tych usług:
 * Elementy [webhook](webhooks.md) są używane do uzyskiwania powiadomień po zakończeniu transkrypcji.
 
 Wewnętrznie korzystamy z powyższych technologii do obsługi wywołań klientów firmy Microsoft w trybie wsadowym.
-](media/scenarios/call-center-batch-pipeline.png) architektury ![Batch
+![](media/scenarios/call-center-batch-pipeline.png) architektury
 
 ## <a name="real-time-transcription-for-call-center-data"></a>Transkrypcja w czasie rzeczywistym dla danych centrum wywołań
 
@@ -116,7 +116,7 @@ Innym scenariuszem jest bezpośrednia integracja z SIP. Usługa platformy Azure 
 
 Usługi Azure Speech Services dobrze sprawdzają się w połączeniu z wbudowanymi modelami, ale warto dodatkowo dostosowywać i dostrajać środowisko dla danego produktu lub środowiska. Opcje dostosowania przestają być od modelu akustycznego na unikatowe czcionki głosowe dla marki. Po skompilowaniu modelu niestandardowego można go używać z dowolną usługą Azure Speech Services w czasie rzeczywistym lub w trybie wsadowym.
 
-| Usługa mowy | Model | Opis |
+| Usługa mowy | Modelowanie | Opis |
 |----------------|-------|-------------|
 | Zamiana mowy na tekst | [Model akustyczny](how-to-customize-acoustic-models.md) | Utwórz niestandardowy model akustyczny dla aplikacji, narzędzi lub urządzeń używanych w określonych środowiskach, takich jak samochód lub piętro fabryki, z których każdy ma określone warunki rejestrowania. Przykłady obejmują akcentowanie mowy, konkretne zakłócenia w tle lub użycie określonego mikrofonu do nagrywania. |
 | | [Model językowy](how-to-customize-language-model.md) | Utwórz niestandardowy model języka w celu usprawnienia transkrypcji słownictwa i gramatyki właściwych dla branży, takich jak Terminologia medyczna lub żargon IT. |

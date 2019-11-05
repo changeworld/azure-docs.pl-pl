@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 950818d08cb654bad969deaede24231cab9bcbe2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 102f3e131b20534dc2f192b6485a3fdc95070315
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098554"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470264"
 ---
 # <a name="app-service-networking-features"></a>App Service funkcje sieciowe
 
@@ -33,7 +33,7 @@ Azure App Service jest systemem rozproszonym. Role obsługujące przychodzące �
 
 | Funkcje przychodzące | Funkcje wychodzące |
 |---------------------|-------------------|
-| Adres przypisany do aplikacji | Połączenia hybrydowe |
+| Adres przypisany do aplikacji | Hybrydowe |
 | Ograniczenia dostępu | Integracja sieci wirtualnej wymagana przez bramę |
 | Punkty końcowe usługi | Integracja z siecią wirtualną (wersja zapoznawcza) |
 
@@ -43,10 +43,10 @@ O ile nie określono inaczej, wszystkie funkcje mogą być używane razem. Może
 
 W przypadku dowolnego danego przypadku użycia może istnieć kilka sposobów rozwiązania problemu.  Odpowiednia funkcja jest czasami spowodowana tylko przypadkiem użycia. Następujące przypadki użycia ruchu przychodzącego zasugerują sposób użycia App Service funkcje sieciowe do rozwiązywania problemów związanych z kontrolowaniem ruchu kierowanego do aplikacji. 
  
-| Przychodzące przypadki użycia | Cecha |
+| Przychodzące przypadki użycia | Funkcja |
 |---------------------|-------------------|
-| Obsługa protokołu SSL opartego na protokole IP dla aplikacji | adres przypisany do aplikacji |
-| Nieudostępniony, dedykowany adres przychodzący dla aplikacji | adres przypisany do aplikacji |
+| Obsługa protokołu SSL opartego na protokole IP dla aplikacji | Adres przypisany do aplikacji |
+| Nieudostępniony, dedykowany adres przychodzący dla aplikacji | Adres przypisany do aplikacji |
 | Ograniczanie dostępu do aplikacji z zestawu dobrze zdefiniowanych adresów | Ograniczenia dostępu |
 | Uwidacznianie mojej aplikacji na prywatnych adresach IP w mojej sieci wirtualnej | ILB ASE </br> Application Gateway z punktami końcowymi usługi |
 | Ograniczanie dostępu do mojej aplikacji z zasobów w sieci wirtualnej | Punkty końcowe usługi </br> ILB ASE |
@@ -57,12 +57,12 @@ W przypadku dowolnego danego przypadku użycia może istnieć kilka sposobów ro
 
 Następujące wychodzące przypadki użycia sugerują, jak używać funkcji sieciowych App Service do rozwiązywania potrzeby dostępu wychodzącego dla aplikacji. 
 
-| Wychodzące przypadki użycia | Cecha |
+| Wychodzące przypadki użycia | Funkcja |
 |---------------------|-------------------|
-| Dostęp do zasobów w Virtual Network platformy Azure w tym samym regionie | Integracja sieci wirtualnej </br> ASE |
+| Dostęp do zasobów w Virtual Network platformy Azure w tym samym regionie | Integracja z siecią wirtualną </br> ASE |
 | Dostęp do zasobów w usłudze Azure Virtual Network w innym regionie | Integracja sieci wirtualnej wymagana przez bramę </br> Środowisko ASE i Komunikacja równorzędna sieci wirtualnych |
-| Dostęp do zasobów zabezpieczonych za pomocą punktów końcowych usługi | Integracja sieci wirtualnej </br> ASE |
-| Dostęp do zasobów w sieci prywatnej, które nie są połączone z platformą Azure | Połączenia hybrydowe |
+| Dostęp do zasobów zabezpieczonych za pomocą punktów końcowych usługi | Integracja z siecią wirtualną </br> ASE |
+| Dostęp do zasobów w sieci prywatnej, które nie są połączone z platformą Azure | Hybrydowe |
 | Dostęp do zasobów między obwodymi usługi ExpressRoute | Integracja sieci wirtualnej (w przypadku ograniczonej do adresów RFC 1918) </br> ASE | 
 
 
@@ -106,7 +106,7 @@ Jeśli chcesz zablokować dostęp do aplikacji, tak aby można ją było uzyska�
 
 ### <a name="service-endpoints"></a>Punkty końcowe usługi
 
-Punkty końcowe usługi umożliwiają zablokowanie dostępu przychodzącego do aplikacji w taki sposób, że adres źródłowy musi pochodzić z zestawu podsieci, które zostały wybrane. Ta funkcja działa w połączeniu z ograniczeniami dostępu do adresów IP. Punkty końcowe usługi są ustawiane w tym samym środowisku użytkownika co ograniczenia dostępu do adresów IP. Można utworzyć listę dozwolonych/zablokowanych reguł dostępu, które zawierają adresy publiczne, a także podsieci w sieci wirtualnych. Ta funkcja obsługuje takie scenariusze, jak:
+Punkty końcowe usługi umożliwiają zablokowanie dostępu **przychodzącego** do aplikacji w taki sposób, że adres źródłowy musi pochodzić z zestawu podsieci, które zostały wybrane. Ta funkcja działa w połączeniu z ograniczeniami dostępu do adresów IP. Punkty końcowe usługi są ustawiane w tym samym środowisku użytkownika co ograniczenia dostępu do adresów IP. Można utworzyć listę dozwolonych/zablokowanych reguł dostępu, które zawierają adresy publiczne, a także podsieci w sieci wirtualnych. Ta funkcja obsługuje takie scenariusze, jak:
 
 ![punkty końcowe usługi](media/networking-features/service-endpoints.png)
 
@@ -117,7 +117,7 @@ Punkty końcowe usługi umożliwiają zablokowanie dostępu przychodzącego do a
 
 Więcej informacji na temat konfigurowania punktów końcowych usługi przy użyciu aplikacji można znaleźć w samouczku dotyczącym [konfigurowania ograniczeń dostępu do punktu końcowego usługi][serviceendpoints]
  
-### <a name="hybrid-connections"></a>Połączenia hybrydowe
+### <a name="hybrid-connections"></a>Hybrydowe
 
 App Service Połączenia hybrydowe umożliwia aplikacjom wykonywanie wywołań **wychodzących** do określonych punktów końcowych TCP. Punkt końcowy może być lokalny w sieci wirtualnej lub w dowolnym miejscu, który zezwala na ruch wychodzący do platformy Azure na porcie 443. Ta funkcja wymaga zainstalowania agenta przekazywania o nazwie Menedżer połączeń hybrydowych (HCM) na hoście z systemem Windows Server 2012 lub nowszym. HCM musi mieć możliwość uzyskania dostępu Azure Relay na porcie 443. HCM można pobrać z poziomu interfejsu użytkownika Połączenia hybrydowe App Service w portalu. 
 
@@ -151,7 +151,7 @@ Ta funkcja rozwiązuje problem z uzyskaniem dostępu do zasobów w innych sieci 
 
 Gdy ta funkcja jest włączona, aplikacja będzie używać serwera DNS, z którym jest skonfigurowana docelowa sieć wirtualna. Więcej informacji na temat tej funkcji można znaleźć w dokumentacji dotyczącej [integracji sieci wirtualnej App Service][vnetintegrationp2s]. 
 
-### <a name="vnet-integration"></a>Integracja sieci wirtualnej
+### <a name="vnet-integration"></a>Integracja z siecią wirtualną
 
 Funkcja integracji sieci wirtualnej wymagana przez bramę jest bardzo przydatna, ale nadal nie rozwiązuje dostępu do zasobów w ExpressRoute. W celu uzyskania dostępu do połączeń ExpressRoute istnieje potrzeba, aby aplikacje mogły wykonywać wywołania do zabezpieczonych usług punktu końcowego usługi. Aby rozwiązać oba te dodatkowe potrzeby, dodano inną możliwość integracji sieci wirtualnej. Nowa funkcja integracji sieci wirtualnej umożliwia umieszczenie zaplecza aplikacji w podsieci w sieci wirtualnej Menedżer zasobów w tym samym regionie. Ta funkcja jest niedostępna z App Service Environment, która znajduje się już w sieci wirtualnej. Ta funkcja umożliwia:
 
@@ -159,11 +159,11 @@ Funkcja integracji sieci wirtualnej wymagana przez bramę jest bardzo przydatna,
 * Uzyskiwanie dostępu do zasobów zabezpieczonych za pomocą punktów końcowych usługi 
 * Uzyskiwanie dostępu do zasobów, które są dostępne dla połączeń ExpressRoute lub sieci VPN
 
-![Integracja sieci wirtualnej](media/networking-features/vnet-integration.png)
+![Integracja z siecią wirtualną](media/networking-features/vnet-integration.png)
 
 Ta funkcja jest w wersji zapoznawczej i nie powinna być używana na potrzeby obciążeń produkcyjnych. Aby dowiedzieć się więcej na temat tej funkcji, przeczytaj dokumenty dotyczące [integracji sieci wirtualnej App Service][vnetintegration].
 
-## <a name="app-service-environment"></a>App Service Environment 
+## <a name="app-service-environment"></a>Środowisko usługi App Service 
 
 App Service Environment (ASE) jest wdrożeniem pojedynczej dzierżawy Azure App Service uruchamianej w sieci wirtualnej. Środowisko ASE umożliwia używanie takich przypadków, jak:
 
@@ -190,7 +190,7 @@ Istnieje kilka rzeczy, które nie są jeszcze dostępne w usłudze z wieloma dzi
 
 Środowisko ASE zapewnia najlepszą historię hostingu izolowanych aplikacji, ale wiąże się z pewnymi problemami związanymi z zarządzaniem. Niektóre zagadnienia, które należy wziąć pod uwagę przed użyciem środowiska ASE, to:
  
- * Środowisko ASE działa w sieci wirtualnej, ale ma zależności poza siecią wirtualną. Te zależności muszą być dozwolone. Przeczytaj więcej w temacie zagadnienia dotyczące [sieci dla App Service Environment][networkinfo]
+ * Środowisko ASE działa w sieci wirtualnej, ale ma zależności poza siecią wirtualną. Te zależności muszą być dozwolone. Przeczytaj więcej w temacie [zagadnienia dotyczące sieci dla App Service Environment][networkinfo]
  * Środowisko ASE nie jest skalowane bezpośrednio, podobnie jak usługa wielodostępna. Należy przewidzieć potrzeby skalowania zamiast ponownego skalowania. 
  * Środowisko ASE ma przypisany wyższy koszt z góry. Aby maksymalnie wykorzystać środowisko ASE, należy zaplanować umieszczenie wielu obciążeń w jednym środowisku ASE, zamiast korzystać z małych nakładów pracy
  * Aplikacje w środowisku ASE nie mogą ograniczać dostępu do niektórych aplikacji w środowisku ASE, a nie innych.
@@ -222,7 +222,7 @@ Aplikacja wielowarstwowa to aplikacja, w której do aplikacji zaplecza API możn
 Wiele aplikacji frontonu może korzystać z tej samej aplikacji interfejsu API przy użyciu integracji z siecią wirtualną z innych aplikacji frontonu i punktów końcowych usługi z aplikacji interfejsu API z ich podsieciami.  
 
 <!--Links-->
-[appassignedaddress]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl
+[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
 [iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections

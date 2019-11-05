@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0cb5becd8375c393031892efb0b6c54786eeb8f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242227"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470075"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -23,7 +23,7 @@ Poniżej znajdują się często zadawane pytania dotyczące usługi Azure Applic
 
 ## <a name="general"></a>Ogólne
 
-### <a name="what-is-application-gateway"></a>Co to jest Application Gateway
+### <a name="what-is-application-gateway"></a>Co to jest usługa Application Gateway?
 
 Usługa Azure Application Gateway udostępnia kontroler dostarczania aplikacji (ADC) jako usługę. Oferuje różne możliwości równoważenia obciążenia warstwy 7 dla aplikacji. Ta usługa jest wysoce dostępna, skalowalna i w pełni zarządzana przez platformę Azure.
 
@@ -135,7 +135,7 @@ Tak. Można skonfigurować opróżnianie połączenia w celu zmiany elementów c
 
 Tak. Platforma Azure dystrybuuje wystąpienia między domenami aktualizacji i błędów, aby upewnić się, że wystąpienia nie powiodą się w tym samym czasie. Application Gateway obsługuje skalowanie przez dodanie wielu wystąpień tej samej bramy w celu udostępnienia obciążenia.
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Czy Application Gateway jest zawsze wdrożona w sieci wirtualnej?
 
@@ -327,6 +327,19 @@ Tak. Możesz włączyć ochronę przed atakami DDoS dla sieci wirtualnej, gdzie 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Czy istnieją wskazówki dotyczące migracji z jednostki SKU w wersji 1 do wersji 2 SKU?
 
 Tak. Aby uzyskać szczegółowe informacje, zobacz [Migrowanie usługi Azure Application Gateway i zapory aplikacji sieci Web z wersji 1 do wersji 2](migrate-v1-v2.md).
+
+## <a name="configuration---ingress-controller-for-aks"></a>Konfiguracja — kontroler ruchu przychodzącego dla AKS
+
+### <a name="what-is-an-ingress-controller"></a>Co to jest kontroler transferu danych przychodzących?
+
+Kubernetes umożliwia tworzenie zasobów `deployment` i `service`, aby uwidocznić grupę wewnętrznie w klastrze. Aby udostępnić tę samą usługę zewnętrznie, jest zdefiniowany zasób [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) , który zapewnia Równoważenie obciążenia, Kończenie protokołu SSL i hosting wirtualny oparte na nazwach.
+Aby zapewnić spełnienie tego `Ingress`go zasobu, wymagany jest kontroler transferu danych przychodzących, który nasłuchuje wszelkich zmian `Ingress` zasobów i konfiguruje zasady usługi równoważenia obciążenia.
+
+Application Gateway kontroler transferu danych przychodzących umożliwia korzystanie z [platformy azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) jako ruchu przychodzącego dla [usługi Azure Kubernetes](https://azure.microsoft.com/services/kubernetes-service/) , znanej również jako klaster AKS.
+
+### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Czy pojedyncze wystąpienie kontrolera ruchu przychodzącego może zarządzać wieloma bramami aplikacji?
+
+Obecnie jedno wystąpienie kontrolera transferu danych przychodzących może być skojarzone tylko z jednym Application Gateway.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostyka i rejestrowanie
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 636c397001a3130c60fc2bf498339ad058aca374
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f8b963c456e4d4318c6b28cd33c18ebd615487de
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959399"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464517"
 ---
-# <a name="get-started-with-custom-voice"></a>Wprowadzenie do niestandardowego głosu
+# <a name="get-started-with-custom-voice"></a>Wprowadzenie do usługi Custom Voice
 
 [Niestandardowy głos](https://aka.ms/customvoice) to zestaw narzędzi online, które umożliwiają tworzenie rozpoznawalnego, jednoczęściowego głosu dla marki. Wszystkie potrzebne do rozpoczęcia pracy to kilku plików audio i skojarzonych transkrypcji. Skorzystaj z poniższych linków, aby rozpocząć tworzenie niestandardowego środowiska zamiany tekstu na mowę.
 
@@ -36,6 +36,13 @@ Na poniższym diagramie przedstawiono kroki umożliwiające utworzenie niestanda
 3.  [Uczenie modelu](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) — używanie danych do tworzenia niestandardowego modelu głosu zamiany tekstu na mowę. Możesz nauczyć model w różnych językach. Po przeprowadzeniu szkolenia Przetestuj model i, jeśli wynik jest zadowalający, możesz wdrożyć model.
 
 4.  [Wdrażanie modelu](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) — Tworzenie niestandardowego punktu końcowego dla modelu głosu zamiany tekstu na mowę i używanie go na potrzeby syntezy mowy w produktach, narzędziach i aplikacjach.
+
+## <a name="custom-neural-voices"></a>Niestandardowe głosy neuronowych
+
+Możliwość dostosowania głosu neuronowych jest obecnie dostępna w publicznej wersji zapoznawczej, ograniczona do wybranych klientów. Wypełnij ten [formularz aplikacji](https://go.microsoft.com/fwlink/?linkid=2108737) , aby rozpocząć pracę.
+
+> [!NOTE]
+> W ramach zobowiązania firmy Microsoft do projektowania odpowiedzialnych plików AI, nasza intencja polega na ochronie praw osób i społeczeństwa oraz wspieraniu przezroczystych interakcji między komputerami. Z tego powodu niestandardowe Neuronowyche nie są ogólnie dostępne dla wszystkich klientów. Użytkownik może uzyskać dostęp do technologii dopiero po przejrzeniu aplikacji i zapewnieniu jej używania z naszymi zasadami etyki. Dowiedz się więcej na temat naszego [procesu kontroli aplikacji](https://aka.ms/custom-neural-gating-overview).
 
 ## <a name="set-up-your-azure-account"></a>Skonfiguruj swoje konto platformy Azure
 

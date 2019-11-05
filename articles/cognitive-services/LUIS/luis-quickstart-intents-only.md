@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Przewidywanie zamiarów — LUIS'
+title: 'Samouczek: przewidywanie zamiarów — LUIS'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz niestandardową aplikację, która będzie przewidywać intencje użytkownika. Ta aplikacja to najprostszy rodzaj aplikacji usługi LUIS, ponieważ nie wyodrębnia ona z tekstu wypowiedzi różnych elementów danych, takich jak adresy e-mail czy daty.
 services: cognitive-services
@@ -11,16 +11,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7139876f64841a877e688ec6faf03597c527d1f2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 83ecf0767f2b21065c698421e3ad8f07f31d5b16
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375819"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465291"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Samouczek: Tworzenie aplikacji usługi LUIS umożliwiającej określanie intencji użytkownika
+# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Samouczek: kompilowanie aplikacji LUIS w celu określenia zamiarów użytkownika
 
 W tym samouczku utworzysz niestandardową aplikację Human Resources (HR), która na podstawie wypowiedzi (tekstu) będzie przewidywała intencje użytkownika. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -45,11 +47,11 @@ Intencje są podzielone na kategorie **intencji**.
 
 Ta aplikacja ma kilka intencji. 
 
-|Intencja|Cel|
+|Intencja|Przeznaczenie|
 |--|--|
-|ApplyForJob|Określa, czy użytkownik ubiega się o pracę.|
-|GetJobInformation|Określa, czy użytkownik szuka informacji dotyczących pracy w ogóle, czy jakiejś konkretnej pracy.|
-|Brak|Określa, czy użytkownik zadaje pytanie, na które aplikacja nie powinna odpowiadać. Ta intencja jest dostarczana jako część procesu tworzenia aplikacji i nie można jej usunąć. |
+|`ApplyForJob`|Określa, czy użytkownik ubiega się o pracę.|
+|`GetJobInformation`|Określa, czy użytkownik szuka informacji dotyczących pracy w ogóle, czy jakiejś konkretnej pracy.|
+|`None`|Określa, czy użytkownik zadaje pytanie, na które aplikacja nie powinna odpowiadać. Ta intencja jest dostarczana jako część procesu tworzenia aplikacji i nie można jej usunąć. |
 
 ## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
 
@@ -57,9 +59,9 @@ Ta aplikacja ma kilka intencji.
 
 ## <a name="create-intent-for-job-information"></a>Tworzenie intencji dotyczącej informacji o pracy
 
-1. Wybierz pozycję **Create new intent** (Utwórz nową intencję). Wprowadź nazwę nowej intencji: `GetJobInformation`. Ta intencja jest przewidywana, gdy użytkownik chce uzyskać informacje o stanowiskach dostępnych w firmie. 
+1. Wybierz pozycję**Create new intent** (Utwórz nową intencję). Wprowadź nazwę nowej intencji: `GetJobInformation`. Ta intencja jest przewidywana, gdy użytkownik chce uzyskać informacje o stanowiskach dostępnych w firmie. 
 
-    ![Zrzut ekranu przedstawiający okno dialogowe New intent (Nowa intencja) usługi Language Understanding (LUIS)](media/luis-quickstart-intents-only/create-intent.png "Zrzut ekranu przedstawiający okno dialogowe New intent (Nowa intencja) usługi Language Understanding (LUIS)")
+    ![Zrzut ekranu przedstawiający okno dialogowe nowego zamiaru Language Understanding (LUIS)](media/luis-quickstart-intents-only/create-intent.png "Zrzut ekranu przedstawiający okno dialogowe nowego zamiaru Language Understanding (LUIS)")
 
 1. Wybierz pozycję **Done** (Gotowe).
 
@@ -67,24 +69,24 @@ Ta aplikacja ma kilka intencji.
 
     | Przykładowe wypowiedzi|
     |--|
-    |Any new jobs posted today? (Czy dzisiaj zostały opublikowane jakieś nowe oferty pracy?)|
-    |Are there any new positions in the Seattle office? (Czy są dostępne jakieś nowe oferty pracy w biurze w Seattle?)|
-    |Are there any remote worker or telecommute jobs open for engineers? (Czy są dostępne dla inżynierów oferty pracy dla pracowników zdalnych lub oferty telepracy?)|
-    |Is there any work in databases? (Czy jest jakaś praca związana z bazami danych?)|
-    |I'm looking for a co-working situation in the tampa office (Szukam pracy jako współpracownik w biurze w Tampa).|
-    |Is there an internship in the san francisco office? (Czy jest możliwość odbycia stażu w biurze w San Francisco?)|
-    |Is there any part-time work for people in college? (Czy jest dostępna jakaś praca niepełnoetatowa dla studentów?)|
-    |Looking for a new situation with responsibilities in accounting (Szukam nowego wyzwania w obszarze księgowości)|
-    |Looking for a job in new york city for bilingual speakers (Szukam pracy w Nowym Jorku dla osób mówiących dwoma językami).|
-    |Looking for a new situation with responsibilities in accounting (Szukam nowego wyzwania w obszarze księgowości).|
-    |New jobs? (Jakieś nowe oferty?)|
-    |Show me all the jobs for engineers that were added in the last 2 days (Pokaż mi wszystkie oferty pracy dla inżynierów, które dodano w ciągu ostatnich 2 dni).|
-    |Today's job postings? (Czy dodano dzisiaj jakieś ofery pracy?)|
-    |What accounting positions are open in the london office? (Jakie stanowiska w obszarze księgowości są dostępne w biurze w Londynie?)|
-    |What positions are available for Senior Engineers? (Jakie oferty są dostępne dla starszych inżynierów?)|
-    |Where is the job listings (Gdzie są listy ofert pracy)|
+    |`Any new jobs posted today?`|
+    |`Are there any new positions in the Seattle office?`|
+    |`Are there any remote worker or telecommute jobs open for engineers?`|
+    |`Is there any work with databases?`|
+    |`I'm looking for a co-working situation in the tampa office.`|
+    |`Is there an internship in the san francisco office?`|
+    |`Is there any part-time work for people in college?`|
+    |`Looking for a new situation with responsibilities in accounting`|
+    |`Looking for a job in new york city for bilingual speakers.`|
+    |`Looking for a new situation with responsibilities in accounting.`|
+    |`New jobs?`|
+    |`Show me all the jobs for engineers that were added in the last 2 days.`|
+    |`Today's job postings?`|
+    |`What accounting positions are open in the london office?`|
+    |`What positions are available for Senior Engineers?`|
+    |`Where is the job listings`|
 
-    [![Zrzut ekranu przedstawiający wprowadzanie nowych wypowiedzi dla intencji MyStore](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Zrzut ekranu przedstawiający wprowadzanie nowych wypowiedzi dla intencji MyStore")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
+    [![Zrzut ekranu przedstawiający wprowadzanie nowych wyrażenia długości dla zamiaru elementu mójMagazyn](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Zrzut ekranu przedstawiający wprowadzanie nowych wyrażenia długości dla zamiaru elementu mójMagazyn")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
     Dostarczając _przykładowe wypowiedzi_, trenujesz usługę LUIS, jakiego rodzaju wypowiedzi powinny być przewidywane dla tej intencji. 
 
@@ -149,29 +151,22 @@ Wróć do portalu usługi LUIS i utwórz nową intencję, która będzie określ
 
     | Przykładowe wypowiedzi|
     |--|
-    |Fill out application for job 123456 (Wypełnij wniosek dotyczący oferty pracy 123456)|
-    |This is my c.v. for position 654234 (To jest moje CV w odpowiedzi na ofertę pracy 654234)|
-    |Here is my resume for the part-time receptionist post (To jest mój życiorys w odpowiedzi na ogłoszenie o niepełnoetatowej pracy dla recepcjonisty).|
-    |I'm applying for the art desk job with this paperwork (To jest dokumentacja używana na potrzeby ubiegania się o stanowisko rysownika).|
-    |I'm applying for the summer college internship in Research and Development in San Diego (Ubiegam się o letni staż w dziale Badania i projektowanie na uniwersytecie w San Diego)|
-    |I'm requesting to submit my resume to the temporary position in the cafeteria (Przesyłam mój życiorys w związku z ofertą tymczasowej pracy w kafeterii).|
-    |I'm submitting my resume for the new Autocar team in Columbus, OH (Przesyłam mój życiorys w związku z przyjęciem mnie do zespołu Autocar w Columbus, Ohio)|
-    |I want to apply for the new accounting job (Chcę odpowiedzieć na nową ofertę pracy w księgowości)|
-    |Job 456789 accounting internship paperwork is here (Tutaj znajdują się dokumenty dotyczące stażu w księgowości — oferta pracy 456789)|
-    |Job 567890 and my paperwork (Oferta pracy 567890 i moje papiery)|
-    |My papers for the tulsa accounting internship are attached (Dołączono dokumenty dotyczące stażu w księgowości w Tulsie).|
-    |My paperwork for the holiday delivery position (Moje dokumenty dotyczące oferty pracy jako dostawcy w dni wolne od pracy)|
-    |Please send my resume for the new accounting job in seattle (Wyślij mój życiorys na potrzeby nowej pracy w księgowości w Seattle)|
-    |Submit resume for engineering position (Prześlij CV w odpowiedzi na ofertę pracy dla inżyniera)|
-    |To jest Moja doświadczeń for post 234123 in Tampa (To jest moje CV w odpowiedzi na ofertę pracy 234123 w Tampie)|
+    |`Fill out application for Job 123456`|
+    |`Here is my c.v. for position 654234`|
+    |`Here is my resume for the part-time receptionist post.`|
+    |`I'm applying for the art desk job with this paperwork.`|
+    |`I'm applying for the summer college internship in Research and Development in San Diego`|
+    |`I'm requesting to submit my resume to the temporary position in the cafeteria.`|
+    |`I'm submitting my resume for the new Autocar team in Columbus, OH`|
+    |`I want to apply for the new accounting job`|
+    |`Job 456789 accounting internship paperwork is here`|
+    |`Job 567890 and my paperwork`|
+    |`My papers for the tulsa accounting internship are attached.`|
+    |`My paperwork for the holiday delivery position`|
+    |`Please send my resume for the new accounting job in seattle`|
+    |`Submit resume for engineering position`|
+    |`This is my c.v. for post 234123 in Tampa.`|
 
-<!--
-
-    [![Screenshot of entering new utterances for ApplyForJob intent](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot of entering new utterances for ApplyForJob intent")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
-
-    The labeled intent is outlined in red because LUIS is currently uncertain the intent is correct. Training the app tells LUIS the utterances are on the correct intent. 
-
--->
 
 ## <a name="train-again"></a>Ponowne szkolenie
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 07/05/2019
+ms.date: 11/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 993064a36bd12c95e83ffb7c9635c3e4dfcec0f0
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 46e9182d9660729dbf65367f52483d96428760ff
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803348"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467391"
 ---
 # <a name="what-are-the-speech-services"></a>Co to są usługi mowy?
 
@@ -35,21 +35,21 @@ Te funkcje składają się na usługi Azure Speech Services. Skorzystaj z łącz
 | [Zamiana tekstu na mowę](text-to-speech.md) | Zamiana tekstu na mowę | Zamiana tekstu na mowę polega na konwertowaniu tekstu wejściowego na wymowę przez człowieka, który używa [języka SSML (Speech syntezing Language)](text-to-speech.md#speech-synthesis-markup-language-ssml). Wybieraj spośród standardowych głosów i głosów neuronowych (zobacz [Obsługa języka](language-support.md)). | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Tworzenie niestandardowych głosów](#customize-your-speech-experience) | Twórz niestandardowe czcionki głosowe, które są unikatowe dla danej marki lub produktu. | Nie | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Tłumaczenie mowy](speech-translation.md) | Tłumaczenie mowy | Tłumaczenie mowy umożliwia tłumaczenie mowy w czasie rzeczywistym na wiele języków w aplikacjach, narzędziach i urządzeniach. Ta usługa umożliwia tłumaczenie mowy na mowę i zamianę mowy na tekst. | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nie |
-| [Wirtualne Asystenci z dźwiękiem](voice-first-virtual-assistants.md) | Wirtualne Asystenci z dźwiękiem | Niestandardowe Asystenci wirtualne korzystający z usług Azure Speech Services umożliwiają deweloperom tworzenie naturalnych, przypominających konwersacje interfejsów dla swoich aplikacji i środowisk. Kanał mowy liniowej w systemie bot Framework rozszerza te możliwości przez zapewnienie skoordynowanego, zorganizowanego punktu wejścia do zgodnej bot, która umożliwia korzystanie z głosu w programie, prowadzenie komunikacji głosowej z małymi opóźnieniami i wysoką niezawodnością. | [Tak](voice-first-virtual-assistants.md) | Nie |
+| [Asystenci głosu](voice-assistants.md) | Asystenci głosu | Asystenci głosowani korzystający z usług Azure Speech Services umożliwiają deweloperom tworzenie naturalnych, przypominających konwersacje interfejsów dla swoich aplikacji i środowisk. Usługa asystenta głosowego zapewnia szybką i niezawodną interakcję między urządzeniem a implementacją asystenta, która korzysta z kanału mowy linii Direct line lub zintegrowanego polecenia niestandardowego (wersja zapoznawcza) w celu ukończenia zadania. | [Tak](voice-assistants.md) | Nie |
 
 ## <a name="news-and-updates"></a>Wiadomości i aktualizacje
 
 Dowiedz się, co nowego w usłudze Azure Speech Services.
 
-* 2019 września
+* Wrzesień 2019 r.
   * Wydano 1.7.0 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
-* 2019 sierpnia
+* Sierpień 2019 r.
   * **Nowy samouczek**: [Voice Enable bot with Speech SDK, C# ](tutorial-voice-enable-your-bot-speech-sdk.md)
   * Dodano nowy styl mówiący, [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)w przypadku głosu `en-US-JessaNeural`. 
-* Czerwiec 2019
+* Czerwiec 2019 r.
   * Wydano 1.6.0 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
-* 2019 — dokumentacja jest teraz dostępna na potrzeby [transkrypcji konwersacji](conversation-transcription-service.md), [transkrypcji centrum połączeń](call-center-transcription.md)i [wirtualnych asystentów głosowych](voice-first-virtual-assistants.md).
-* 2019 maja
+* 2019 — dokumentacja jest teraz dostępna na potrzeby [transkrypcji konwersacji](conversation-transcription-service.md), [transkrypcji centrum połączeń](call-center-transcription.md)i [asystentów głosowych](voice-assistants.md).
+* Maj 2019 r.
   * Wydano 1.5.1 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
   * Wydano 1.5.0 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
 
@@ -59,10 +59,9 @@ Oferujemy Przewodniki Szybki Start w najpopularniejszych językach programowania
 
 | Zamiana mowy na tekst (SDK) | Zamiana tekstu na mowę (SDK) | Tłumaczenie (SDK) |
 |----------------------|----------------------|-------------------|
-| [C#, .NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [C#, .NET Framework (system Windows)](quickstart-text-to-speech-dotnet-windows.md) | [Java (Windows, Linux)](quickstart-translate-speech-java-jre.md) |
-| [JavaScript (przeglądarka)](quickstart-js-browser.md) | [C++Systemy](quickstart-text-to-speech-cpp-windows.md) | [C#, .NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) |
-| [Python (Windows, Linux, macOS)](quickstart-python.md) | [C++System](quickstart-text-to-speech-cpp-linux.md) | [C#, .NET Framework (system Windows)](quickstart-translate-speech-dotnetframework-windows.md) |
-| [Java (Windows, Linux)](quickstart-java-jre.md) | | [C++Systemy](quickstart-translate-speech-cpp-windows.md) |
+| [Rozpoznawanie mowy z pliku dźwiękowego](quickstarts/speech-to-text-from-file.md) | [Wytłumacz mowę na plik audio](quickstarts/text-to-speech-audio-file.md) | [Tłumaczenie zamiany mowy na tekst](quickstarts/translate-speech-to-text.md) |
+| [Rozpoznawanie mowy przy użyciu mikrofonu](quickstarts/speech-to-text-from-microphone.md) | [Funkcja syntezy mowy z prelegentem](quickstarts/text-to-speech.md) | [Tłumaczenie mowy na wiele języków docelowych](quickstarts/translate-speech-to-text-multiple-languages.md) |
+| [Rozpoznawanie mowy przechowywanej w usłudze BLOB Storage](quickstarts/from-blob.md) | [Synteza asynchroniczna dla długich postaci audio](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [Tłumaczenie zamiany mowy na mowę](quickstarts/translate-speech-to-speech.md) |
 
 > [!NOTE]
 > Funkcja zamiany mowy na tekst i zamiany tekstu na mowę również ma punkty końcowe REST i skojarzone Przewodniki Szybki Start.
@@ -80,7 +79,7 @@ Przykładowy kod jest dostępny w witrynie GitHub dla każdej usługi Azure Spee
 * [Przykłady zamiany mowy na tekst, zamiany tekstu na mowę i tłumaczenia mowy (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [Przykłady transkrypcji partii (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 * [Przykłady zamiany tekstu na mowę (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
-* [Przykłady wirtualnego asystenta głosowego (SDK)](https://aka.ms/csspeech/samples)
+* [Przykłady asystenta głosowego (SDK)](https://aka.ms/csspeech/samples)
 
 ## <a name="customize-your-speech-experience"></a>Dostosowywanie środowiska mowy
 

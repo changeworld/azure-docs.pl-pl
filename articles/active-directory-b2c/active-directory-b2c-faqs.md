@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2019
+ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
-ms.translationtype: MT
+ms.openlocfilehash: e6e4c0018f11e216afd5a8c295fc336036885e68
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302545"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468945"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: często zadawane pytania
 
@@ -35,9 +35,9 @@ Nie można użyć Azure AD B2C do uwierzytelniania użytkowników dla Microsoft 
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Co to są konta lokalne w Azure AD B2C? Czym różnią się one od kont służbowych w usłudze Azure AD?
 
-W dzierżawie usługi Azure AD użytkownicy, którzy należą do logowania do dzierżawy przy użyciu adresu e-mail w formularzu `<xyz>@<tenant domain>`. @No__t-0 to jedna z zweryfikowanych domen w dzierżawie lub początkowa domena `<...>.onmicrosoft.com`. Ten typ konta jest kontem służbowym.
+W dzierżawie usługi Azure AD użytkownicy, którzy należą do logowania do dzierżawy przy użyciu adresu e-mail w formularzu `<xyz>@<tenant domain>`. `<tenant domain>` jest jedną z zweryfikowanych domen w dzierżawie lub początkowej domenie `<...>.onmicrosoft.com`. Ten typ konta jest kontem służbowym.
 
-W dzierżawie Azure AD B2C większość aplikacji chce, aby użytkownik mógł się zalogować przy użyciu dowolnego adresu e-mail (na przykład joe@comcast.net, bob@gmail.com, sarah@contoso.com lub jim@live.com). Ten typ konta jest kontem lokalnym. Obsługiwane są również dowolne nazwy użytkowników jako konta lokalne (na przykład Jan, Robert, Sarah lub Jim). Podczas konfigurowania dostawców tożsamości dla Azure AD B2C w Azure Portal można wybrać jeden z tych dwóch typów kont lokalnych. W dzierżawie Azure AD B2C wybierz pozycję **dostawcy tożsamości**, wybierz pozycję **konto lokalne**, a następnie wybierz pozycję **Nazwa użytkownika**.
+W dzierżawie Azure AD B2C większość aplikacji chce, aby użytkownik mógł się zalogować przy użyciu dowolnego adresu e-mail (na przykład joe@comcast.net, bob@gmail.com, sarah@contoso.comlub jim@live.com). Ten typ konta jest kontem lokalnym. Obsługiwane są również dowolne nazwy użytkowników jako konta lokalne (na przykład Jan, Robert, Sarah lub Jim). Podczas konfigurowania dostawców tożsamości dla Azure AD B2C w Azure Portal można wybrać jeden z tych dwóch typów kont lokalnych. W dzierżawie Azure AD B2C wybierz pozycję **dostawcy tożsamości**, wybierz pozycję **konto lokalne**, a następnie wybierz pozycję **Nazwa użytkownika**.
 
 Konta użytkowników dla aplikacji muszą być zawsze tworzone za pośrednictwem przepływu użytkownika, tworzenia konta lub logowania lub korzystania z usługi Azure AD interfejs API programu Graph. Konta użytkowników utworzone w Azure Portal są używane tylko do administrowania dzierżawcą.
 
@@ -130,15 +130,20 @@ Obecnie nie. Ta funkcja jest dostępna w naszym przewodniku. Weryfikowanie domen
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Jak mogę usunąć moją dzierżawę Azure AD B2C?
 
-Wykonaj następujące kroki, aby usunąć dzierżawę Azure AD B2C:
+Wykonaj następujące kroki, aby usunąć dzierżawę Azure AD B2C.
 
+Możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego systemu ujednoliconego **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat środowiska w wersji zapoznawczej](http://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako *administrator subskrypcji*. Użyj tego samego konta służbowego lub tego samego konto Microsoft, które zostało użyte do zarejestrowania się na platformie Azure.
+1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Usuń wszystkie **przepływy użytkownika (zasady)** w dzierżawie Azure AD B2C.
 1. Usuń wszystkie **aplikacje** zarejestrowane w dzierżawie Azure AD B2C.
-1. Następnie zaloguj się do [Azure Portal](https://portal.azure.com/) jako administrator subskrypcji. Użyj tego samego konta służbowego lub tego samego konto Microsoft, które zostało użyte do zarejestrowania się na platformie Azure.
-1. Przejdź do Azure AD B2C dzierżawy, którą chcesz usunąć.
 1. Wybierz pozycję **Azure Active Directory** w menu po lewej stronie.
 1. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
-1. Wybierz każdego użytkownika z kolei (wykluczanie użytkownika administratora subskrypcji, który jest obecnie zalogowany). Wybierz pozycję **Usuń** w dolnej części strony i wybierz opcję **tak** po wyświetleniu monitu.
+1. Wybierz każdego użytkownika z kolei (wykluczanie użytkownika *administratora subskrypcji* , który jest obecnie zalogowany). Wybierz pozycję **Usuń** w dolnej części strony i wybierz opcję **tak** po wyświetleniu monitu.
 1. W obszarze **Zarządzaj**wybierz pozycję **Rejestracje aplikacji** (lub **rejestracje aplikacji (starsza wersja)** .
 1. Wybierz pozycję **Wyświetl wszystkie aplikacje**
 1. Wybierz aplikację o nazwie **B2C-Extensions-App**, wybierz pozycję **Usuń**, a następnie wybierz pozycję **tak** po wyświetleniu monitu.
@@ -149,6 +154,28 @@ Wykonaj następujące kroki, aby usunąć dzierżawę Azure AD B2C:
 1. Wyloguj się z Azure Portal a następnie zaloguj się ponownie, aby odświeżyć dostęp.
 1. Wybierz pozycję **Azure Active Directory** w menu po lewej stronie.
 1. Na stronie **Przegląd** wybierz pozycję **Usuń katalog**. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby ukończyć proces.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako *administrator subskrypcji*. Użyj tego samego konta służbowego lub tego samego konto Microsoft, które zostało użyte do zarejestrowania się na platformie Azure.
+1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. Usuń wszystkie **przepływy użytkowników (zasady)** w dzierżawie Azure AD B2C.
+1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz kartę **wszystkie aplikacje** .
+1. Usuń wszystkie zarejestrowane aplikacje.
+1. Usuń **B2C-Extensions-App**.
+1. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
+1. Wybierz każdego użytkownika z kolei (wykluczanie użytkownika *administratora subskrypcji* , który jest obecnie zalogowany). Wybierz pozycję **Usuń** w dolnej części strony i wybierz opcję **tak** po wyświetleniu monitu.
+1. Wybierz pozycję **Azure Active Directory** w menu po lewej stronie.
+1. W obszarze **Zarządzaj**wybierz pozycję **Ustawienia użytkownika**.
+1. Jeśli jest obecny, w obszarze **połączenia konta serwisu LinkedIn**wybierz pozycję **nie**, a następnie wybierz pozycję **Zapisz**.
+1. W obszarze **Zarządzaj**wybierz pozycję **Właściwości** .
+1. W obszarze **Zarządzanie dostępem do zasobów platformy Azure**wybierz pozycję **tak**, a następnie wybierz pozycję **Zapisz**.
+1. Wyloguj się z Azure Portal a następnie zaloguj się ponownie, aby odświeżyć dostęp.
+1. Wybierz pozycję **Azure Active Directory** w menu po lewej stronie.
+1. Na stronie **Przegląd** wybierz pozycję **Usuń katalog**. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby ukończyć proces.
+
+* * *
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Czy mogę uzyskać Azure AD B2C w ramach pakietu Enterprise Mobility Suite?
 

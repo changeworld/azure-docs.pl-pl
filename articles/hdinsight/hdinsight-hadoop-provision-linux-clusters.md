@@ -1,5 +1,5 @@
 ---
-title: Konfiguracja klastra dla Apache Hadoop, Spark, Kafka, HBase lub R Server — Azure
+title: Konfiguracja klastra dla oprogramowania Apache i R Server w usłudze Azure HDInsight
 description: Konfigurowanie klastrów Hadoop, Kafka, Spark, HBase, R Server lub burzy dla usługi HDInsight z poziomu przeglądarki, klasycznego interfejsu wiersza polecenia platformy Azure, Azure PowerShell, REST lub zestawu SDK.
 keywords: Konfiguracja klastra usługi Hadoop, Konfiguracja klastra Kafka, Konfiguracja klastra Spark, co to jest klaster w usłudze Hadoop
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 28038743f859b1a41bb332bf70b481e07b2ff29c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 0b977cb9fe2df1627ad9a2e07b00ffb0e749ed39
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677034"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498253"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurowanie klastrów w usłudze HDInsight przy użyciu Apache Hadoop, Apache Spark, Apache Kafka i innych
 
@@ -100,13 +100,13 @@ Klastry usługi HDInsight umożliwiają skonfigurowanie dwóch kont użytkownik�
 Nazwa użytkownika HTTP ma następujące ograniczenia:
 
 * Dozwolone znaki specjalne: _ i @
-* Znaki nie są dozwolone: #;. "", \/: "! *? $ () {} [] < > | &--= +% ~ ^ Space
+* Znaki nie są dozwolone: #;. "',\/: '! *? $ (){}[] < > | &--= +% ~ ^ Space
 * Maksymalna długość: 20
 
 Nazwa użytkownika SSH ma następujące ograniczenia:
 
 * Dozwolone znaki specjalne: _ i @
-* Znaki nie są dozwolone: #;. "", \/: "! *? $ () {} [] < > | &--= +% ~ ^ Space
+* Znaki nie są dozwolone: #;. "',\/: '! *? $ (){}[] < > | &--= +% ~ ^ Space
 * Maksymalna długość: 64
 * Nazwy zastrzeżonych: Hadoop, users, Oozie, Hive, mapred, Ambari-pytań i odpowiedzi, dozorcy, tez, HDFS, Sqoop, przędzy, hcat, AMS, HBase, burza, administrator, administrator, użytkownik, Użytkownik1, test, TEST1, 123 user3 gość, Jan, właściciel, główny, serwer, SQL, pomoc techniczna, Support_388945a0, sys, TEST2, test3, user4, user5, Spark
 
@@ -123,7 +123,7 @@ Mimo że lokalna instalacja usługi Hadoop wykorzystuje rozproszony system plik�
 Klastry usługi HDInsight mogą korzystać z następujących opcji magazynu:
 
 * Usługa Azure Data Lake Storage 2. generacji
-* Azure Data Lake Storage 1. generacji
+* Usługa Azure Data Lake Storage 1. generacji
 * Usługa Azure Storage Ogólnego przeznaczenia v2
 * Usługa Azure Storage Ogólnego przeznaczenia wersja 1
 * Blokowy obiekt BLOB usługi Azure Storage (**obsługiwany tylko jako magazyn pomocniczy**)
@@ -187,10 +187,10 @@ Każdy typ klastra ma własną liczbę węzłów, terminologię dla węzłów i 
 
 | Typ | Węzły | Diagram |
 | --- | --- | --- |
-| Usługa Hadoop |Węzeł główny (2), węzeł procesu roboczego (1 +) |![Węzły klastra Hadoop usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
+| Hadoop |Węzeł główny (2), węzeł procesu roboczego (1 +) |![Węzły klastra Hadoop usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |Serwer głównych (2), serwer regionu (1 +), węzeł główny/dozorcy (3) |![Konfiguracja typu klastra HBase usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
 | Storm |Węzeł Nimbus (2), serwer nadzorujący (1 +), węzeł dozorcy (3) |![Konfiguracja typu klastra burzy usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |Węzeł główny (2), węzeł procesu roboczego (1 +), węzeł dozorcy (3) (bezpłatnie dla rozmiaru maszyny wirtualnej a1 dozorcy) |![Konfiguracja typu klastra Spark usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| platforma Spark |Węzeł główny (2), węzeł procesu roboczego (1 +), węzeł dozorcy (3) (bezpłatnie dla rozmiaru maszyny wirtualnej a1 dozorcy) |![Konfiguracja typu klastra Spark usługi HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 Aby uzyskać więcej informacji, zobacz [domyślną konfigurację węzła i rozmiary maszyn wirtualnych dla klastrów](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) w artykule "Jakie są składniki i wersje usługi Hadoop w usłudze HDInsight?".
 

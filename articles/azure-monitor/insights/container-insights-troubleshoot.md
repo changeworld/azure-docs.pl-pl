@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/27/2018
-ms.openlocfilehash: ec75f607f707405d6a5bea98deb784f4306c04f1
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 3d6ed3b13c134d8e9c1df72ae2cb880a477a803a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555355"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477051"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Azure Monitor rozwiązywania problemów z kontenerami
 
@@ -25,7 +25,7 @@ Podczas procesu dołączania lub aktualizacji należy podjąć próbę przypisan
 
 Możesz również ręcznie udzielić tej roli z Azure Portal, wykonując następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi** w lewym górnym rogu. Na liście zasobów wpisz **Kubernetes**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Azure Kubernetes**.
 3. Na liście klastrów Kubernetes wybierz jedną z listy.
 2. W menu po lewej stronie kliknij pozycję **Kontrola dostępu (IAM)** .
@@ -103,13 +103,33 @@ Jeśli Azure Monitor dla kontenerów zostanie pomyślnie włączona i skonfiguro
 
 Poniższa tabela zawiera podsumowanie znanych błędów, które mogą wystąpić podczas korzystania z Azure Monitor dla kontenerów.
 
-| Komunikaty o błędach  | Działanie |  
+| Komunikaty o błędach  | Akcja |  
 | ---- | --- |  
-| @No__t_0 komunikatu o błędzie  | Ustalenie przepływu danych monitorowania dla nowo utworzonych klastrów może zająć trochę czasu. Zezwalaj na wyświetlanie danych dla klastra co najmniej 10 do 15 minut. |   
-| @No__t_0 komunikatu o błędzie | Podczas konfigurowania klastra usługi Azure Kubenetes na potrzeby monitorowania kondycji i wydajności jest nawiązywane połączenie między klastrem i obszarem roboczym usługi Azure Log Analytics. Obszar roboczy Log Analytics służy do przechowywania wszystkich danych monitorowania dla klastra. Ten błąd może wystąpić, gdy obszar roboczy Log Analytics został usunięty. Sprawdź, czy obszar roboczy został usunięty, a jeśli był, należy ponownie włączyć monitorowanie klastra przy użyciu Azure Monitor dla kontenerów i określić istniejący lub utworzyć nowy obszar roboczy. Aby ponownie włączyć, należy [wyłączyć](container-insights-optout.md) monitorowanie klastra i ponownie [włączyć](container-insights-enable-new-cluster.md) Azure monitor dla kontenerów. |  
-| `Error retrieving data` po dodaniu Azure Monitor dla kontenerów za poorednictwem polecenia AZ AKS CLI | Po włączeniu monitorowania przy użyciu `az aks cli` Azure Monitor dla kontenerów mogą nie być poprawnie wdrożone. Sprawdź, czy rozwiązanie zostało wdrożone. Aby to zrobić, przejdź do obszaru roboczego Log Analytics i sprawdź, czy rozwiązanie jest dostępne przez wybranie **rozwiązań** z okienka po lewej stronie. Aby rozwiązać ten problem, należy ponownie wdrożyć rozwiązanie, postępując zgodnie z instrukcjami dotyczącymi [wdrażania Azure monitor dla kontenerów](container-insights-onboard.md) |  
+| `No data for selected filters` komunikatu o błędzie  | Ustalenie przepływu danych monitorowania dla nowo utworzonych klastrów może zająć trochę czasu. Zezwalaj na wyświetlanie danych dla klastra co najmniej 10 do 15 minut. |   
+| `Error retrieving data` komunikatu o błędzie | Podczas konfigurowania klastra usługi Azure Kubernetes na potrzeby monitorowania kondycji i wydajności jest nawiązywane połączenie między klastrem i obszarem roboczym usługi Azure Log Analytics. Obszar roboczy Log Analytics służy do przechowywania wszystkich danych monitorowania dla klastra. Ten błąd może wystąpić, gdy obszar roboczy Log Analytics został usunięty. Sprawdź, czy obszar roboczy został usunięty, a jeśli był, należy ponownie włączyć monitorowanie klastra przy użyciu Azure Monitor dla kontenerów i określić istniejący lub utworzyć nowy obszar roboczy. Aby ponownie włączyć, należy [wyłączyć](container-insights-optout.md) monitorowanie klastra i ponownie [włączyć](container-insights-enable-new-cluster.md) Azure monitor dla kontenerów. |  
+| `Error retrieving data` po dodaniu Azure Monitor dla kontenerów za poorednictwem polecenia AZ AKS CLI | Po włączeniu monitorowania przy użyciu `az aks cli`Azure Monitor dla kontenerów mogą nie być poprawnie wdrożone. Sprawdź, czy rozwiązanie zostało wdrożone. Aby to zrobić, przejdź do obszaru roboczego Log Analytics i sprawdź, czy rozwiązanie jest dostępne przez wybranie **rozwiązań** z okienka po lewej stronie. Aby rozwiązać ten problem, należy ponownie wdrożyć rozwiązanie, postępując zgodnie z instrukcjami dotyczącymi [wdrażania Azure monitor dla kontenerów](container-insights-onboard.md) |  
 
-Aby ułatwić zdiagnozowanie problemu, w [tym miejscu](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)udostępniono skrypt rozwiązywania problemów.  
+Aby ułatwić zdiagnozowanie problemu, w [tym miejscu](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)udostępniono skrypt rozwiązywania problemów.
+
+## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>Azure Monitor dla ReplicaSet kontenerów agentów nie są zaplanowani w klastrze Kubernetes innym niż Azure
+
+Azure Monitor dla agentów kontenerów ReplicaSeta jest zależność od następujących selektorów węzłów w węzłach procesu roboczego (lub agenta) na potrzeby planowania:
+
+```
+nodeSelector:
+  beta.kubernetes.io/os: Linux
+  kubernetes.io/role: agent
+```
+
+Jeśli węzły procesu roboczego nie mają dołączonych etykiet, to nie zostanie zaplanowana usługa ReplicaSet agentów. Aby uzyskać instrukcje na temat sposobu dołączania etykiety, zapoznaj się z [Kubernetesą selektorów etykiet](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) .
+
+## <a name="performance-charts-dont-show-cpu-or-memory-of-nodes-and-containers-on-a-non-azure-cluster"></a>Wykresy wydajności nie pokazują procesora ani pamięci węzłów i kontenerów w klastrze nienależącym do platformy Azure
+
+Azure Monitor dla programu Containers Agent, który zbiera metryki wydajności, używa punktu końcowego cAdvisor w agencie węzła. Sprawdź, czy kontener kontenera w węźle został skonfigurowany tak, aby zezwalać na otwieranie `cAdvisor port: 10255` na wszystkich węzłach w klastrze w celu zbierania metryk wydajności.
+
+## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Klaster Kubernetes spoza platformy Azure nie jest wyświetlany w Azure Monitor dla kontenerów
+
+Aby wyświetlić klaster programu spoza platformy Azure Kubernetes w Azure Monitor dla kontenerów, należy uzyskać dostęp do odczytu w obszarze roboczym Log Analytics, który obsługuje tę usługę Insights, oraz na platformie Azure Insights Resource **ContainerInsights (*obszar roboczy*)** .
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: b741e928ed80a045b61d79f99d2436577ca864b0
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d97470494af0d64cc20d78d69957d84a8acebc16
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027723"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494910"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Korzystanie z klienta Apache Z usługi Beeline z usługą Apache Hive
 
@@ -24,7 +24,7 @@ Z usługi Beeline jest klientem programu Hive, który znajduje się w węzłach 
 
 ### <a name="from-an-ssh-session"></a>Z sesji SSH
 
-Podczas nawiązywania połączenia z sesji SSH z klastrem węzła głównego można nawiązać połączenie z adresem `headnodehost` na porcie `10001`:
+Podczas nawiązywania połączenia z sesji SSH z klastrem węzła głównego można połączyć się z adresem `headnodehost` na porcie `10001`:
 
 ```bash
 beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
@@ -34,7 +34,7 @@ beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
 
 ### <a name="over-an-azure-virtual-network"></a>Za pośrednictwem Virtual Network platformy Azure
 
-Podczas nawiązywania połączenia z klientem z usługą HDInsight za pośrednictwem usługi Azure Virtual Network należy podać w pełni kwalifikowaną nazwę domeny (FQDN) węzła głównego klastra. Ponieważ to połączenie jest nawiązywane bezpośrednio z węzłami klastra, połączenie używa portu `10001`:
+Podczas nawiązywania połączenia z klientem z usługą HDInsight za pośrednictwem usługi Azure Virtual Network należy podać w pełni kwalifikowaną nazwę domeny (FQDN) węzła głównego klastra. Ponieważ to połączenie jest nawiązywane bezpośrednio z węzłami klastra, połączenie używa `10001`portów:
 
 ```bash
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
@@ -46,20 +46,20 @@ Zastąp `<headnode-FQDN>` z w pełni kwalifikowaną nazwą domeny klastra węzł
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Do klastra usługi HDInsight pakiet Enterprise Security (ESP) przy użyciu protokołu Kerberos
 
-Podczas nawiązywania połączenia z klientem z klastrem pakiet Enterprise Security (ESP) przyłączonym do Azure Active Directory (AAD) — DS na komputerze w tym samym obszarze klastra należy również określić nazwę domeny `<AAD-Domain>` i nazwę konta użytkownika domeny z uprawnieniami dostęp do klastra `<username>`:
+Podczas nawiązywania połączenia z klientem z klastrem pakiet Enterprise Security (ESP) przyłączonym do Azure Active Directory (AAD) — DS na komputerze w tym samym obszarze klastra należy również określić nazwę domeny `<AAD-Domain>` i nazwę konta użytkownika domeny z uprawnieniami Uzyskaj dostęp do `<username>`klastra:
 
 ```bash
 kinit <username>
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>
 ```
 
-Zastąp `<username>` nazwą konta w domenie z uprawnieniami dostępu do klastra. Zastąp `<AAD-DOMAIN>` nazwą Azure Active Directory (AAD), do której jest dołączony klaster. Użyj ciągu wielką literą dla wartości `<AAD-DOMAIN>`. w przeciwnym razie nie zostanie znalezione poświadczenie. Sprawdź, czy w razie potrzeby nazwy obszarów `/etc/krb5.conf`.
+Zastąp `<username>` nazwą konta w domenie uprawnieniami dostępu do klastra. Zastąp `<AAD-DOMAIN>` nazwą Azure Active Directory (AAD), do której jest dołączony klaster. Użyj ciągu wielką literą dla wartości `<AAD-DOMAIN>`, w przeciwnym razie nie zostanie znalezione poświadczenie. W razie potrzeby Sprawdź `/etc/krb5.conf` nazw obszarów.
 
 ---
 
 ### <a name="over-public-or-private-endpoints"></a>Za pośrednictwem publicznych lub prywatnych punktów końcowych
 
-Podczas nawiązywania połączenia z klastrem przy użyciu publicznych lub prywatnych punktów końcowych należy podać nazwę konta logowania klastra (domyślnie `admin`) i hasło. Na przykład w celu nawiązania połączenia z adresem `<clustername>.azurehdinsight.net` przy użyciu Z usługi Beeline z systemu klienckiego. To połączenie jest nawiązywane za pośrednictwem portu `443` i szyfrowane przy użyciu protokołu SSL:
+Podczas nawiązywania połączenia z klastrem przy użyciu publicznych lub prywatnych punktów końcowych należy podać nazwę konta logowania klastra (domyślnie `admin`) i hasło. Na przykład w celu nawiązania połączenia z adresem `<clustername>.azurehdinsight.net` przy użyciu Z usługi Beeline z systemu klienckiego. To połączenie jest nawiązywane za pośrednictwem `443`portów i szyfrowane przy użyciu protokołu SSL:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
@@ -73,7 +73,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zastąp `<username>` kontem logowania klastra dla klastra. Uwaga w przypadku klastrów ESP Użyj pełnej nazwy UPN (np. user@domain.com). Zastąp `password` hasłem dla konta logowania klastra.
 
-Prywatne punkty końcowe wskazują podstawowy moduł równoważenia obciążenia, do którego można uzyskać dostęp tylko z sieci wirtualnych komunikacji równorzędnej w tym samym regionie. Aby uzyskać więcej informacji, zobacz [ten](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) temat. Można użyć `curl` polecenie z opcją `-v` do rozwiązywania problemów z łącznością z publicznymi lub prywatnymi punktami końcowymi przed użyciem z usługi Beeline.
+Prywatne punkty końcowe wskazują podstawowy moduł równoważenia obciążenia, do którego można uzyskać dostęp tylko z sieci wirtualnych komunikacji równorzędnej w tym samym regionie. Aby uzyskać więcej informacji [, zobacz ograniczenia dotyczące globalnej komunikacji równorzędnej sieci wirtualnej i modułów równoważenia obciążenia](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Można użyć `curl` polecenie z opcją `-v`, aby rozwiązać problemy z łącznością z publicznymi lub prywatnymi punktami końcowymi przed użyciem z usługi Beeline.
 
 ---
 
@@ -83,7 +83,7 @@ Apache Spark udostępnia własną implementację serwera hiveserver2, która jes
 
 #### <a name="through-public-or-private-endpoints"></a>Za poorednictwem publicznych lub prywatnych punktów końcowych
 
-Użyte parametry połączenia są nieco inne. Zamiast `httpPath=/hive2` jest `httpPath/sparkhive2`:
+Użyte parametry połączenia są nieco inne. Zamiast zawiera `httpPath=/hive2` `httpPath/sparkhive2`:
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
@@ -97,13 +97,13 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zastąp `<username>` kontem logowania klastra dla klastra. Uwaga w przypadku klastrów ESP Użyj pełnej nazwy UPN (np. user@domain.com). Zastąp `password` hasłem dla konta logowania klastra.
 
-Prywatne punkty końcowe wskazują podstawowy moduł równoważenia obciążenia, do którego można uzyskać dostęp tylko z sieci wirtualnych komunikacji równorzędnej w tym samym regionie. Aby uzyskać więcej informacji, zobacz [ten](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) temat. Można użyć `curl` polecenie z opcją `-v` do rozwiązywania problemów z łącznością z publicznymi lub prywatnymi punktami końcowymi przed użyciem z usługi Beeline.
+Prywatne punkty końcowe wskazują podstawowy moduł równoważenia obciążenia, do którego można uzyskać dostęp tylko z sieci wirtualnych komunikacji równorzędnej w tym samym regionie. Aby uzyskać więcej informacji [, zobacz ograniczenia dotyczące globalnej komunikacji równorzędnej sieci wirtualnej i modułów równoważenia obciążenia](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Można użyć `curl` polecenie z opcją `-v`, aby rozwiązać problemy z łącznością z publicznymi lub prywatnymi punktami końcowymi przed użyciem z usługi Beeline.
 
 ---
 
 #### <a name="from-cluster-head-or-inside-azure-virtual-network-with-apache-spark"></a>Z poziomu węzła klastra lub wewnątrz Virtual Network platformy Azure z Apache Spark
 
-W przypadku nawiązywania połączenia bezpośrednio z węzła głównego klastra lub z zasobu w ramach tego samego Virtual Network platformy Azure co klaster usługi HDInsight należy użyć portu `10002` dla serwera Spark Thrift zamiast `10001`. Poniższy przykład pokazuje, jak połączyć się bezpośrednio z węzłem głównym:
+W przypadku łączenia się bezpośrednio z węzłem głównym klastra lub z zasobu znajdującego się w ramach tego samego Virtual Network platformy Azure jako klastra usługi HDInsight należy używać `10002` portów zamiast `10001`. Poniższy przykład pokazuje, jak połączyć się bezpośrednio z węzłem głównym:
 
 ```bash
 /usr/hdp/current/spark2-client/bin/beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
@@ -137,9 +137,9 @@ Ten przykład jest oparty na użyciu klienta Z usługi Beeline z połączenia SS
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
     ```
 
-3. Polecenia z usługi Beeline rozpoczynają się od znaku `!`, na przykład `!help` wyświetla pomoc. Jednak dla niektórych poleceń można pominąć `!`. Na przykład `help` również działa.
+3. Polecenia z usługi Beeline rozpoczynają się od znaku `!`, na przykład `!help` wyświetla pomoc. Jednakże `!` można pominąć dla niektórych poleceń. Na przykład `help` działa również.
 
-    `!sql`, który jest używany do wykonywania instrukcji HiveQL. Jednak HiveQL jest tak często używany, aby można było pominąć poprzednią `!sql`. Następujące dwie instrukcje są równoważne:
+    `!sql`, który jest używany do wykonywania instrukcji HiveQL. HiveQL jest jednak często używany, aby pominąć poprzednią `!sql`. Następujące dwie instrukcje są równoważne:
 
     ```hiveql
     !sql show tables;
@@ -199,7 +199,7 @@ Ten przykład jest oparty na użyciu klienta Z usługi Beeline z połączenia SS
 
     * `CREATE EXTERNAL TABLE` — tworzy tabelę **zewnętrzną** w usłudze Hive. Tabele zewnętrzne przechowują wyłącznie definicję tabeli w programie Hive. Dane pozostaną w oryginalnej lokalizacji.
 
-    * `ROW FORMAT` — sposób formatowania danych. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
+    * `ROW FORMAT` — jak są formatowane dane. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
 
     * `STORED AS TEXTFILE LOCATION` — miejsce przechowywania danych i w jakim formacie pliku.
 

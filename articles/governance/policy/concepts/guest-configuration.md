@@ -6,22 +6,22 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 82279e6937fccfbbef13f9580f76cd344593b0df
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
-ms.translationtype: MT
+ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255851"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464058"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Opis konfiguracji gościa Azure Policy
 
-Poza inspekcją i [korygowaniem](../how-to/remediate-resources.md) zasobów platformy Azure, Azure Policy może przeprowadzać inspekcję ustawień wewnątrz maszyny. Sprawdzanie poprawności jest wykonywane przez rozszerzenie konfiguracji gościa i klienta. Rozszerzenie przez klienta weryfikuje ustawienia, takie jak:
+Poza inspekcją i [korygowaniem](../how-to/remediate-resources.md) zasobów platformy Azure, Azure Policy może przeprowadzać inspekcję ustawień wewnątrz maszyny. Taka weryfikacja jest wykonywana przez klienta i rozszerzenie konfiguracji gościa. Rozszerzenie to, obsługiwane za pośrednictwem klienta, umożliwia weryfikację następujących ustawień:
 
 - Konfiguracja systemu operacyjnego
 - Konfiguracja lub obecność aplikacji
 - Ustawienia środowiska
 
-W tej chwili Azure Policy konfiguracja gościa tylko inspekcji ustawień znajdujących się na komputerze. Nie stosuje on konfiguracji.
+Aktualnie konfiguracja gościa usługi Azure Policy umożliwia przeprowadzanie tylko inspekcji ustawień wewnątrz maszyny. Stosowanie konfiguracji nie jest obsługiwane.
 
 ## <a name="extension-and-client"></a>Rozszerzenie i klient
 
@@ -79,7 +79,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych n
 |-|-|-|
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |Credativ|Debian|8, 9|
-|Microsoft|Oprogramowanie Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
+|Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
 |Microsoft|Klient systemu Windows|Windows 10|
 |OpenLogic|CentOS|7,3, 7,4, 7,5|
 |Red Hat|Red Hat Enterprise Linux|7,4, 7,5|
@@ -123,6 +123,29 @@ Azure Policy używa właściwości **complianceStatus** dostawcy zasobów konfig
 
 Wszystkie wbudowane zasady konfiguracji gościa są zawarte w inicjatywie do grupowania definicji do użycia w przypisaniach. Wbudowana inicjatywa o nazwie *[wersja zapoznawcza]: Inspekcja ustawień zabezpieczeń hasła w systemach Linux i Windows* zawiera 18 zasad. Istnieje sześć par **DeployIfNotExists** i **AuditIfNotExists** dla systemu Windows i trzech par w systemie Linux. Logika [definicji zasad](definition-structure.md#policy-rule) sprawdza, czy jest oceniany tylko docelowy system operacyjny.
 
+#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Inspekcja ustawień systemu operacyjnego po liniach bazowych branżowych
+
+Jedna z inicjatyw dostępnych w Azure Policy umożliwia inspekcję ustawień systemu operacyjnego w ramach maszyn wirtualnych po "linii bazowej" od firmy Microsoft.  Definicja *[wersja zapoznawcza]: Inspekcja maszyn wirtualnych z systemem Windows, które nie są zgodne z ustawieniami linii bazowej zabezpieczeń platformy Azure,* obejmuje pełny zestaw reguł inspekcji opartych na ustawieniach zasady grupy Active Directory.
+
+Większość ustawień jest dostępnych jako parametry.  Ta funkcja umożliwia dostosowanie, co będzie poddawane inspekcji w celu dostosowania zasad do wymagań organizacji, lub zamapowanie zasad na informacje innych firm, takie jak standardy przemysłowe branżowej.
+
+Niektóre parametry obsługują zakres wartości całkowitych.  Na przykład parametr maksymalnego wieku hasła można ustawić za pomocą operatora zakresu, aby zapewnić elastyczność dla właścicieli maszyny.  Można przeprowadzić inspekcję, że efektywne ustawienie zasady grupy wymagające od użytkownika zmiany hasła nie może być dłuższe niż 70 dni, ale nie powinno być krótsze niż 1 dzień.  Zgodnie z opisem w polu dymek informacyjny dla parametru, aby wprowadzić tę wartość w polu obowiązuje Inspekcja, ustaw wartość na "1, 70".
+
+W przypadku przypisywania zasad przy użyciu Azure Resource Manager szablonu dployment można użyć pliku parametrów do zarządzania tymi ustawieniami z kontroli źródła.
+Za pomocą narzędzia, takiego jak Git do zarządzania zmianami zasad inspekcji z komentarzami w każdym zaewidencjonowaniu, program dokumentuje dowody, dlaczego przypisanie powinno być w wyjątku względem oczekiwanej wartości.
+
+#### <a name="applying-configurations-using-guest-configuration"></a>Stosowanie konfiguracji przy użyciu konfiguracji gościa
+
+Najnowsza funkcja Azure Policy konfiguruje ustawienia wewnątrz maszyn.
+Definicja *Konfigurowanie strefy czasowej na maszynach z systemem Windows* spowoduje wprowadzenie zmian na maszynie przez skonfigurowanie strefy czasowej.
+
+Podczas przypisywania definicji zaczynających się od *konfiguracji*należy również przypisać *wymagania wstępne wdrażania definicji, aby włączyć zasady konfiguracji gościa na maszynach wirtualnych z systemem Windows.*
+Możesz połączyć te definicje w ramach inicjatywy, jeśli wybierzesz opcję.
+
+#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Przypisywanie zasad do maszyn poza platformą Azure
+
+Zasady inspekcji dostępne dla konfiguracji gościa obejmują typ zasobu **Microsoft. HybridCompute/Machines** .  Wszystkie komputery dołączone do usługi Azure ARC, które znajdują się w zakresie przypisania, zostaną automatycznie uwzględnione.
+
 ### <a name="multiple-assignments"></a>Wiele przypisań
 
 Zasady konfiguracji gościa obsługują obecnie tylko jednokrotne przypisanie tego samego przypisania gościa na komputerze, nawet jeśli przypisanie zasad używa różnych parametrów.
@@ -144,7 +167,7 @@ Gdzie `<version>` odnosi się do bieżącego numeru wersji.
 
 ### <a name="collecting-logs-remotely"></a>Zdalne zbieranie dzienników
 
-Pierwszym krokiem w rozwiązywaniu problemów z konfiguracjami lub modułami konfiguracji gościa jest użycie polecenia cmdlet `Test-GuestConfigurationPackage`, zgodnie z instrukcjami w sekcji [Testowanie pakietu konfiguracji gościa](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).
+Pierwszym krokiem w rozwiązywaniu problemów z konfiguracjami lub modułami konfiguracji gościa jest użycie polecenia cmdlet `Test-GuestConfigurationPackage`, wykonując czynności opisane w sekcji [Testowanie pakietu konfiguracji gościa](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).
 Jeśli to nie powiodło się, zbieranie dzienników klienta może pomóc zdiagnozować problemy.
 
 #### <a name="windows"></a>Windows

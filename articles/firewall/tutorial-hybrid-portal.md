@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: Wdróż i skonfiguruj zaporę platformy Azure w sieci hybrydowej przy użyciu Azure Portal'
+title: 'Samouczek: wdrażanie i Konfigurowanie zapory platformy Azure w sieci hybrydowej przy użyciu Azure Portal'
 description: W tym samouczku dowiesz się, jak wdrożyć i skonfigurować zaporę platformy Azure przy użyciu Azure Portal.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 09/17/2019
+ms.date: 11/02/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 50f1d0bca958ef4504394cad1d771459cc8be27d
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018971"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468463"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Samouczek: Wdróż i skonfiguruj zaporę platformy Azure w sieci hybrydowej przy użyciu Azure Portal
+# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Samouczek: wdrażanie i Konfigurowanie zapory platformy Azure w sieci hybrydowej przy użyciu Azure Portal
 
 W przypadku łączenia sieci lokalnej z siecią wirtualną platformy Azure w celu utworzenia sieci hybrydowej ważną częścią ogólnego planu zabezpieczeń jest możliwość kontrolowania dostępu do zasobów sieciowych platformy Azure.
 
@@ -72,7 +72,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Najpierw utwórz grupę zasobów zawierającą zasoby do celów tego samouczka:
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
-2. Na stronie głównej Azure Portal wybierz pozycję **grupy** > zasobów**Dodaj**.
+2. Na stronie głównej Azure Portal wybierz pozycję **grupy zasobów** > **Dodaj**.
 3. W obszarze **Nazwa grupy zasobów**wpisz polecenie **PD-hybrydowy-test**.
 4. W polu **Subskrypcja** wybierz subskrypcję.
 5. W **obszarze region**wybierz pozycję **Wschodnie stany USA**. Wszystkie zasoby, które tworzysz później, muszą znajdować się w tej samej lokalizacji.
@@ -107,14 +107,6 @@ Teraz Utwórz sieć wirtualną:
 9. W obszarze **Podsieć** w polu **Nazwa** wpisz **SN-Workload**.
 10. W obszarze **zakres adresów**wpisz **10.6.0.0/24**.
 11. Zaakceptuj inne ustawienia domyślne, a następnie wybierz pozycję **Utwórz**.
-
-Teraz Utwórz drugą podsieć dla bramy.
-
-1. Na stronie **Sieć wirtualna-szprycha** wybierz pozycję **podsieci**.
-2. Wybierz pozycję **+ podsieć**.
-3. W obszarze **Nazwa**wpisz **GatewaySubnet**.
-4. W obszarze **zakres adresów (blok CIDR)** wpisz **10.6.1.0/24**.
-5. Kliknij przycisk **OK**.
 
 ## <a name="create-the-on-premises-virtual-network"></a>Tworzenie lokalnej sieci wirtualnej
 
@@ -157,14 +149,14 @@ Teraz Wdróż zaporę w sieci wirtualnej centrum zapory.
 2. W lewej kolumnie Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Zapora**.
 4. Na stronie **Tworzenie zapory** strony skorzystaj z poniższej tabeli, aby skonfigurować zaporę:
 
-   |Ustawienie  |Value  |
+   |Ustawienie  |Wartość  |
    |---------|---------|
-   |Subscription     |\<Twoja subskrypcja\>|
-   |Resource group     |**PD-test hybrydowy** |
-   |Name     |**AzFW01**|
-   |Location     |Wybierz tę samą lokalizację, której użyto poprzednio|
-   |Wybierz sieć wirtualną     |**Użyj istniejącej**:<br> **Sieć wirtualna — koncentrator**|
-   |Publiczny adres IP     |Utwórz nowy: <br>Nazwa - **PD-PIP**. |
+   |Subskrypcja     |\<Twoja subskrypcja\>|
+   |Grupa zasobów     |**PD-test hybrydowy** |
+   |Nazwa     |**AzFW01**|
+   |Lokalizacja     |Wybierz tę samą lokalizację, której użyto poprzednio|
+   |Wybieranie sieci wirtualnej     |**Użyj istniejącej**:<br> **Sieć wirtualna — koncentrator**|
+   |Publiczny adres IP     |Utwórz nowy: <br>**Nazwa** - **PD-PIP**. |
 
 5. Wybierz pozycję **Przegląd + utwórz**.
 6. Przejrzyj podsumowanie, a następnie wybierz pozycję **Utwórz** , aby utworzyć zaporę.
@@ -341,7 +333,7 @@ Teraz Utwórz trasę domyślną z podsieci szprych.
 2. Po utworzeniu tabeli tras wybierz ją, aby otworzyć stronę tabela tras.
 3. W lewej kolumnie Wybierz pozycję **trasy** .
 4. Wybierz pozycję **Dodaj**.
-5. Dla nazwy trasy wpisz **ToSpoke**.
+5. Dla nazwy trasy wpisz **ToHub**.
 6. Dla prefiksu adresu wpisz **0.0.0.0/0**.
 7. W polu Typ następnego przeskoku wybierz pozycję **urządzenie wirtualne**.
 8. W polu adres następnego przeskoku wpisz zanotowany wcześniej prywatny adres IP zapory.
@@ -373,7 +365,7 @@ Tworzenie maszyny wirtualnej w sieci wirtualnej szprych, uruchamianie usług IIS
     - **Nazwa użytkownika**: *azureuser*.
     - **Hasło**: *Azure123456!*
 4. Wybierz pozycję **Dalej: Dyski**.
-5. Zaakceptuj wartości domyślne i wybierz **pozycję Dalej: Sieć**.
+5. Zaakceptuj wartości domyślne i wybierz pozycję **Dalej: sieć**.
 6. Wybierz pozycję Sieć wirtualna **-szprycha** dla sieci wirtualnej, a podsieć jest **obciążeniem SN**.
 7. W obszarze **publiczny adres IP**wybierz pozycję **Brak**.
 8. W przypadku **publicznych portów ruchu przychodzącego**wybierz opcję **Zezwalaj na wybrane porty**, a następnie wybierz pozycję **http (80)** i **protokół RDP (3389).**
@@ -384,7 +376,7 @@ Tworzenie maszyny wirtualnej w sieci wirtualnej szprych, uruchamianie usług IIS
 ### <a name="install-iis"></a>Instalowanie usług IIS
 
 1. W Azure Portal Otwórz Cloud Shell i upewnij się, że jest ustawiony na program **PowerShell**.
-2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej:
+2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej i w razie potrzeby zmienić lokalizację:
 
    ```azurepowershell-interactive
    Set-AzVMExtension `
@@ -406,7 +398,7 @@ Jest to maszyna wirtualna, która jest używana do nawiązywania połączenia pr
 2. W obszarze **popularne**wybierz pozycję **Windows Server 2016 Datacenter**.
 3. Wprowadź poniższe wartości dla maszyny wirtualnej:
     - **Grupa zasobów** — wybierz pozycję istniejące, a następnie wybierz pozycję **PD-hybrydowy-test**.
-    - **Nazwa maszyny wirtualnej** *VM-lokalnego.*  - 
+    - **Nazwa maszyny wirtualnej** - *VM-lokalnego*.
     - **Region — w** tym samym regionie, który jest używany wcześniej.
     - **Nazwa użytkownika**: *azureuser*.
     - **Hasło**: *Azure123456!* .
@@ -420,7 +412,7 @@ Jest to maszyna wirtualna, która jest używana do nawiązywania połączenia pr
 
 ## <a name="test-the-firewall"></a>Testowanie zapory
 
-1. Najpierw pobierz, a następnie zanotuj prywatny adres IP dla maszyny wirtualnej **VM-spoke-01**.
+1. Najpierw Zanotuj prywatny adres IP maszyny wirtualnej **VM-szprych-01** .
 
 2. W witrynie Azure Portal połącz się z maszyną wirtualną **VM-Onprem**.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
@@ -428,7 +420,7 @@ Jest to maszyna wirtualna, która jest używana do nawiązywania połączenia pr
    You should get a reply.--->
 3. Otwórz przeglądarkę internetową na maszynie wirtualnej **VM-Onprem**, a następnie przejdź do lokalizacji http://\<VM-spoke-01 private IP\>.
 
-   Powinna zostać wyświetlona strona sieci Web **VM-szprych-01** : ![Strona sieci Web z maszyną wirtualną-szprych-01](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
+   Powinna zostać wyświetlona strona sieci Web **VM-szprych-01** : ![VM-szprych-01 strony sieci Web](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
 
 4. Z maszyny wirtualnej **VM-lokalnego** Otwórz pulpit zdalny do **maszyny wirtualnej-szprych-01** z prywatnym adresem IP.
 
@@ -459,4 +451,4 @@ Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie b�
 Następnie możesz monitorować dzienniki usługi Azure Firewall.
 
 > [!div class="nextstepaction"]
-> [Samouczek: Monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)
+> [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)

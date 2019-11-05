@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
-ms.date: 09/13/2019
-ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 536f3ab506dcbe2b8997f2c1870f25244b6c070f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123283"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489672"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Wykrywaj dryfowanie danych (wersja zapoznawcza) dla modeli wdrożonych w usłudze Azure Kubernetes Service (AKS)
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 W tym artykule dowiesz się, jak monitorować dryf danych między zestawem danych szkoleniowych i danymi wnioskowania wdrożonego modelu. W kontekście uczenia maszynowego, przeszkolone modele uczenia maszynowego mogą powodować spadek wydajności przewidywania z powodu dryfu. Za pomocą Azure Machine Learning można monitorować dryfowanie danych, a usługa może wysłać do Ciebie alert e-mail po wykryciu dryfu.
 
@@ -40,7 +41,7 @@ Za pomocą Azure Machine Learning można monitorować dane wejściowe modelu wdr
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Sposób monitorowania dryfowania danych w Azure Machine Learning
 
-Za pomocą Azure Machine Learning, dryfowanie danych jest monitorowane za pośrednictwem zestawów danych lub wdrożeń. Aby monitorować do dryfowania danych, bazowy zestaw danych — zwykle jest to zestaw danych szkoleniowych dla modelu — jest określony. Drugi zestaw danych — zwykle dane wejściowe modelu zebrane z wdrożenia — są testowane względem bazowego zestawu danych. Oba zestawy danych są profilowane i są danymi wejściowymi do usługi monitorowania dryfowania danych. Model uczenia maszynowego jest szkolony w celu wykrywania różnic między dwoma zestawami danych. Wydajność modelu jest konwertowana na współczynnik dryfu, który mierzy wielkość dryfu między dwoma zestawami danych. Przy użyciu funkcji [interpretacji modelu](machine-learning-interpretability-explainability.md)są obliczane funkcje, które przyczyniają się do współczynnika dryfu. W profilu zestawu danych są śledzone informacje statystyczne dotyczące każdej funkcji. 
+Za pomocą Azure Machine Learning, dryfowanie danych jest monitorowane za pośrednictwem zestawów danych lub wdrożeń. Aby monitorować do dryfowania danych, bazowy zestaw danych — zwykle jest to zestaw danych szkoleniowych dla modelu — jest określony. Drugi zestaw danych — zwykle dane wejściowe modelu zebrane z wdrożenia — są testowane względem bazowego zestawu danych. Oba zestawy danych są profilowane i są danymi wejściowymi do usługi monitorowania dryfowania danych. Model uczenia maszynowego jest szkolony w celu wykrywania różnic między dwoma zestawami danych. Wydajność modelu jest konwertowana na współczynnik dryfu, który mierzy wielkość dryfu między dwoma zestawami danych. Przy użyciu funkcji [interpretacji modelu](how-to-machine-learning-interpretability.md)są obliczane funkcje, które przyczyniają się do współczynnika dryfu. W profilu zestawu danych są śledzone informacje statystyczne dotyczące każdej funkcji. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -58,12 +59,12 @@ Za pomocą Azure Machine Learning, dryfowanie danych jest monitorowane za pośre
 - Zainstaluj zestaw SDK dryfowania danych przy użyciu następującego polecenia:
 
     ```shell
-    pip install azureml-contrib-datadrift
+    pip install azureml-datadrift
     ```
 
 - Utwórz [zestaw](how-to-create-register-datasets.md) danych na podstawie danych szkoleniowych modelu.
 
-- Określ zestaw danych szkoleniowych podczas [rejestrowania](concept-model-management-and-deployment.md) modelu. Poniższy przykład ilustruje użycie `datasets` parametru w celu określenia zestawu danych szkoleniowych:
+- Określ zestaw danych szkoleniowych podczas [rejestrowania](concept-model-management-and-deployment.md) modelu. Poniższy przykład ilustruje użycie parametru `datasets`, aby określić zestaw danych szkoleniowych:
 
     ```python
     model = Model.register(model_path=model_file,
@@ -74,17 +75,17 @@ Za pomocą Azure Machine Learning, dryfowanie danych jest monitorowane za pośre
     print(model_name, image_name, service_name, model)
     ```
 
-- [Włącz zbieranie danych modelu](how-to-enable-data-collection.md) , aby zbierać dane z wdrożenia AKS modelu i potwierdzić, że dane są zbierane w `modeldata` kontenerze obiektów BLOB.
+- [Włącz zbieranie danych modelu](how-to-enable-data-collection.md) , aby zbierać dane z wdrożenia AKS modelu i potwierdzić, że dane są zbierane w kontenerze obiektów BLOB `modeldata`.
 
 ## <a name="configure-data-drift"></a>Konfigurowanie dryfowania danych
 Aby skonfigurować dryf danych dla eksperymentu, zaimportuj zależności, jak pokazano w poniższym przykładzie języka Python. 
 
-Ten przykład ilustruje Konfigurowanie [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) obiektu:
+W tym przykładzie przedstawiono Konfigurowanie [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) obiektu:
 
 ```python
 # Import Azure ML packages
 from azureml.core import Experiment, Run, RunDetails
-from azureml.contrib.datadrift import DataDriftDetector, AlertConfiguration
+from azureml.datadrift import DataDriftDetector, AlertConfiguration
 
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
@@ -97,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>Prześlij DataDriftDetector uruchomienie
 
-Po skonfigurowaniu obiektu można przesłać [dane dotyczące przebiegu danych](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) w danym dniu dla modelu. `DataDriftDetector` W ramach przebiegu należy włączyć alerty DataDriftDetector przez ustawienie `drift_threshold` parametru. Jeśli [datadrift_coefficient](#metrics) znajduje się powyżej podanej `drift_threshold`wiadomości e-mail, zostanie ona wysłana.
+Po skonfigurowaniu obiektu `DataDriftDetector` można przesłać [dane dotyczące przebiegu](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) w danym dniu dla modelu. W ramach przebiegu należy włączyć alerty DataDriftDetector przez ustawienie parametru `drift_threshold`. Jeśli [datadrift_coefficient](#metrics) znajduje się powyżej danego `drift_threshold`, zostanie wysłana wiadomość e-mail.
 
 ```python
 # adhoc run today
@@ -131,9 +132,9 @@ datadrift_contribution|Znaczenie funkcji dotyczącej dryfu.|
 
 Istnieje wiele sposobów wyświetlania metryk dryfu:
 
-* Użyj widżetu [Jupyter.](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
-* Użyj funkcji na dowolnym `datadrift` obiekcie Run. [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)
-* Wyświetl metryki z sekcji **modele** na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
+* Użyj [widżetu `RunDetails`Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
+* Użyj funkcji [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) na dowolnym `datadrift` uruchomienia obiektu.
+* Wyświetl metryki z sekcji **modele** obszaru roboczego w programie [Azure Machine Learning Studio](https://ml.azure.com).
 
 W poniższym przykładzie w języku Python pokazano, jak wykreślić odpowiednie metryki dotyczące dryfowania danych. Możesz użyć zwróconych metryk do kompilowania wizualizacji niestandardowych:
 
@@ -151,22 +152,22 @@ drift_figures = datadrift.show(with_details=True)
 
 ## <a name="schedule-data-drift-scans"></a>Zaplanuj skanowanie dryfowania danych 
 
-Po włączeniu wykrywania dryfowania danych DataDriftDetector jest uruchamiany zgodnie z określoną, zaplanowaną częstotliwością. Jeśli datadrift_coefficient osiągnie podaną `drift_threshold`wartość, zostanie wysłana wiadomość e-mail z każdym zaplanowanym przebiegiem. 
+Po włączeniu wykrywania dryfowania danych DataDriftDetector jest uruchamiany zgodnie z określoną, zaplanowaną częstotliwością. Jeśli datadrift_coefficient osiągnie daną `drift_threshold`, zostanie wysłana wiadomość e-mail z każdym zaplanowanym uruchomieniem. 
 
 ```python
 datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-Konfigurację detektora dryfowania danych można zobaczyć w obszarze **modele** na karcie **szczegóły** na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com).
+Konfigurację detektora dryfowania danych można zobaczyć w obszarze **modele** na karcie **szczegóły** w obszarze roboczym w programie [Azure Machine Learning Studio](https://ml.azure.com).
 
-![Azure Portal dryfowanie danych](media/how-to-monitor-data-drift/drift-config.png)
+![Dryfowanie danych Azure Machine Learning Studio](media/how-to-monitor-data-drift/drift-config.png)
 
-## <a name="view-results-in-your-workspace-landing-page"></a>Wyświetl wyniki na stronie docelowej obszaru roboczego
+## <a name="view-results-in-your-azure-machine-learning-studio"></a>Wyświetl wyniki w Azure Machine Learning Studio
 
-Aby wyświetlić wyniki w obszarze roboczym na [stronie docelowej obszaru roboczego (wersja zapoznawcza)](https://ml.azure.com), przejdź do strony model. Na karcie Szczegóły w modelu jest wyświetlana konfiguracja dryfowania danych. Karta **dryfowanie danych** jest teraz dostępna Wizualizacja metryk dryfowania danych. 
+Aby wyświetlić wyniki w obszarze roboczym w programie [Azure Machine Learning Studio](https://ml.azure.com), przejdź do strony model. Na karcie Szczegóły w modelu jest wyświetlana konfiguracja dryfowania danych. Karta **dryfowanie danych** jest teraz dostępna Wizualizacja metryk dryfowania danych. 
 
-[![dryfowanie danych na stronie docelowej obszaru roboczego](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
+[![Azure Machine Learning Studio — dryfowanie danych](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
 
 
 ## <a name="receiving-drift-alerts"></a>Otrzymywanie alertów o dryfach

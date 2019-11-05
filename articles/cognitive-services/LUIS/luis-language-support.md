@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/16/2019
 ms.author: diberry
-ms.openlocfilehash: bd1e665114fff4d5b7b0b2dca267207bdeebab56
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 383cade6e8bb5f66aa240564912056ec345a1ee6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949542"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500187"
 ---
 # <a name="language-and-region-support-for-luis"></a>Obsługa języka i regionu w programie LUIS
 
@@ -30,32 +30,26 @@ Jeśli potrzebujesz LUIS aplikacji klienckiej z obsługą wielu języków, takie
 
 LUIS rozumie wyrażenia długości w następujących językach:
 
-| Język |Regionalne  |  Preskompilowana domena | Wstępnie utworzona jednostka | Zalecenia dotyczące listy fraz | [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) **<br>(Tonacji i<br>Służąc|
+| Język |Ustawienia regionalne  |  Preskompilowana domena | Wstępnie utworzona jednostka | Zalecenia dotyczące listy fraz | [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) **<br>(Tonacji i<br>Służąc|
 |--|--|:--:|:--:|:--:|:--:|
 | Angielski (amerykański) |`en-US` | ✔ | ✔  |✔|✔|
-| @no__t —[chiński](#chinese-support-notes) (0) |`zh-CN` | ✔ | ✔ |✔|-|
+| *[chiński](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Holenderski |`nl-NL` |✔|  -   |-|✔|
 | Francuski (Francja) |`fr-FR` |✔| ✔ |✔ |✔|
 | Francuski (Kanada) |`fr-CA` |-|   -   |-|✔|
-| niemiecki |`de-DE` |✔| ✔ |✔ |✔|
+| Niemiecki |`de-DE` |✔| ✔ |✔ |✔|
 | Hindi | `hi-IN`|-|-|-|-|
 | Włoski |`it-IT` |✔| ✔ |✔|✔|
 | *[japoński](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Tylko fraza klucza|
-| koreański |`ko-KR` |✔|   -   |-|Tylko fraza klucza|
-| portugalski (Brazylia) |`pt-BR` |✔| ✔ |✔ |nie wszystkie hodowle podrzędne|
+| Koreański |`ko-KR` |✔|   -   |-|Tylko fraza klucza|
+| Portugalski (Brazylia) |`pt-BR` |✔| ✔ |✔ |nie wszystkie hodowle podrzędne|
 | Hiszpański (Hiszpania) |`es-ES` |✔| ✔ |✔|✔|
 | Hiszpański (Meksyk)|`es-MX` |-|  -   |✔|✔|
-| turecki | `tr-TR` |✔|-|-|Tylko tonacji|
-
+| Turecki | `tr-TR` |✔|-|-|Tylko tonacji|
 
 Obsługa języków jest różna w przypadku [wstępnie utworzonych jednostek](luis-reference-prebuilt-entities.md) i [prekompilowanych domen](luis-reference-prebuilt-domains.md).
 
-### <a name="chinese-support-notes"></a>\* Uwagi dotyczące pomocy technicznej dla języka chińskiego
-
- - W kulturze `zh-cn` LUIS oczekuje zestawu znaków chińskiej uproszczonej zamiast tradycyjnego zestawu znaków.
- - Nazwy zamiarów, jednostek, funkcji i wyrażeń regularnych mogą zawierać znaki chińskie lub łacińskie.
- - Zapoznaj się z dokumentacją [prekompilowanych domen](luis-reference-prebuilt-domains.md) , aby uzyskać informacje o tym, które prekompilowane domeny są obsługiwane w kulturze `zh-cn`.
-<!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
+[!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
 ### <a name="japanese-support-notes"></a>\* Uwagi dotyczące pomocy technicznej dla języka japońskiego
 
@@ -63,8 +57,7 @@ Obsługa języków jest różna w przypadku [wstępnie utworzonych jednostek](lu
      - でございます nie jest taka sama jak です.
      - です nie jest taka sama jak だ.
 
-### <a name="text-analytics-support-notes"></a>\* * Uwagi dotyczące pomocy technicznej analizy tekstu
-Analiza tekstu zawiera prekompilowaną jednostkę keyPhrase i analizę tonacji. Dla podkultur są obsługiwane tylko język portugalski: `pt-PT` i `pt-BR`. Wszystkie inne kultury są obsługiwane na poziomie kultury podstawowej. Dowiedz się więcej o [obsługiwanych językach](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)analiza tekstu.
+[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>Obsługiwane języki Speech API
 Zobacz [języki obsługiwane](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) przez mowę dla języków trybu dyktowania mowy.
@@ -73,7 +66,7 @@ Zobacz [języki obsługiwane](https://docs.microsoft.com/azure/cognitive-service
 Zapoznaj się z listą obsługiwanych języków i Stanów w sprawdzanie pisowni Bing [obsługiwanych językach](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) .
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Rzadkie lub obce słowa w aplikacji
-W kulturze `en-us` LUIS się z rozróżnieniem większości wyrazów angielskich, w tym żargonu. W kulturze `zh-cn` LUIS uczy się odróżnić większość znaków chińskich. Jeśli używasz rzadki wyrazu w `en-us` lub znak w `zh-cn` i zobaczysz, że LUIS nie można odróżnić tego wyrazu lub znaku, możesz dodać ten wyraz lub znak do [funkcji listy fraz](luis-how-to-add-features.md). Na przykład słowa poza kulturą aplikacji — czyli słowa obce — należy dodać do funkcji listy fraz. 
+W `en-us` kulturze LUIS uczy się, jak odróżnić większość wyrazów w języku angielskim, w tym żargonu. W `zh-cn` kulturze LUIS się, aby odróżnić znaki chińskie. Jeśli używasz rzadki wyrazu w `en-us` lub znaku w `zh-cn`i zobaczysz, że LUIS nie można odróżnić tego wyrazu lub znaku, możesz dodać ten wyraz lub znak do [funkcji listy fraz](luis-how-to-add-features.md). Na przykład słowa poza kulturą aplikacji — czyli słowa obce — należy dodać do funkcji listy fraz. 
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
@@ -87,15 +80,15 @@ Aby wykonać Uczenie maszynowe, LUIS dzieli wypowiedź na [tokeny](luis-glossary
 |--|:--:|:--:|:--:|:--:|
 |Chiński||✔||✔|
 |Holenderski|||✔|✔|
-|Angielski (EN-US)|✔ ||||
+|Angielski (en-us)|✔ ||||
 |Francuski (fr-FR)|✔||||
 |Francuski (fr-CA)|✔||||
-|niemiecki|||✔|✔|
+|Niemiecki|||✔|✔|
 | Hindi |✔|-|-|-|-|
 |Włoski|✔||||
-|japoński||||✔|
-|koreański||✔||✔|
-|portugalski (Brazylia)|✔||||
+|Japoński||||✔|
+|Koreański||✔||✔|
+|Portugalski (Brazylia)|✔||||
 |Hiszpański (es-ES)|✔||||
 |Hiszpański (es-MX)|✔||||
 
@@ -103,10 +96,10 @@ Aby wykonać Uczenie maszynowe, LUIS dzieli wypowiedź na [tokeny](luis-glossary
 
 Następujące kultury mają niestandardowe wersje tokenizatora:
 
-|Dziedzinie|Wersja|Cel|
+|Kultura|Wersja|Przeznaczenie|
 |--|--|--|
-|niemiecki<br>`de-de`|1.0.0|Tokenizes wyrazy, dzieląc je za pomocą tokenizatora opartych na uczeniu maszynowym, które próbują podzielić wyrazy złożone na ich pojedyncze składniki.<br>Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, zostanie `Ich fahre einen kranken wagen`. Zezwalanie na oznaczenie `kranken` i `wagen` niezależnie od siebie jako różnych jednostek.|
-|niemiecki<br>`de-de`|1.0.2|Tokenizes wyrazy, dzieląc je na spacje.<br> Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, pozostaje pojedynczym tokenem. W ten sposób `krankenwagen` jest oznaczona jako pojedyncza jednostka. |
+|Niemiecki<br>`de-de`|1.0.0|Tokenizes wyrazy, dzieląc je za pomocą tokenizatora opartych na uczeniu maszynowym, które próbują podzielić wyrazy złożone na ich pojedyncze składniki.<br>Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, zostanie `Ich fahre einen kranken wagen`. Zezwalanie na oznaczanie `kranken` i `wagen` niezależnie jako różne jednostki.|
+|Niemiecki<br>`de-de`|1.0.2|Tokenizes wyrazy, dzieląc je na spacje.<br> Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, pozostaje pojedynczym tokenem. W ten sposób `krankenwagen` jest oznaczona jako pojedyncza jednostka. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrowanie między wersjami tokenizatora
 <!--

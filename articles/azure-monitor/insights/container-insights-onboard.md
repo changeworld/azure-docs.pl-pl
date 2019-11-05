@@ -6,17 +6,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/12/2019
-ms.openlocfilehash: 44cdc2d6b93ac9a62f96875ca6c679fbb97d85a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: dd58ec08c6ec372cf53a79b75162748cfe336b23
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555402"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477133"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Jak włączyć Azure Monitor dla kontenerów
 
-Ten artykuł zawiera omówienie opcji dostępnych w celu skonfigurowania Azure Monitor dla kontenerów w celu monitorowania wydajności obciążeń wdrożonych w środowiskach Kubernetes i hostowanych w [usłudze Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
+Ten artykuł zawiera omówienie opcji dostępnych w celu skonfigurowania Azure Monitor dla kontenerów w celu monitorowania wydajności obciążeń wdrożonych w środowiskach Kubernetes i hostowanych w [usłudze Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/), aparacie AKS na [Azure Stack ](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)lub Kubernetes wdrożone lokalnie.
 
 Azure Monitor dla kontenerów można włączyć dla nowych lub jednego lub kilku istniejących wdrożeń AKS przy użyciu następujących obsługiwanych metod:
 
@@ -26,6 +26,7 @@ Azure Monitor dla kontenerów można włączyć dla nowych lub jednego lub kilku
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Przed rozpoczęciem upewnij się, że masz następujące elementy:
 
 * **Obszar roboczy Log Analytics.**
@@ -40,7 +41,41 @@ Przed rozpoczęciem upewnij się, że masz następujące elementy:
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-* Metryki Prometheus nie są domyślnie zbierane. Przed [skonfigurowaniem agenta](container-insights-agent-config.md) do zbierania danych należy zapoznać się z [dokumentacją](https://prometheus.io/) Prometheus, aby zrozumieć, co można zdefiniować.
+* Metryki Prometheus nie są domyślnie zbierane. Przed [skonfigurowaniem agenta](container-insights-prometheus-integration.md) do zbierania danych należy zapoznać się z [dokumentacją](https://prometheus.io/) Prometheus, aby zrozumieć, co można zdefiniować.
+
+## <a name="network-firewall-requirements"></a>Wymagania dotyczące zapory sieciowej
+
+Informacje w poniższej tabeli zawierają informacje o konfiguracji serwera proxy i zapory wymagane dla agenta kontenera do komunikowania się z Azure Monitor dla kontenerów. Cały ruch sieciowy z agenta jest wychodzący do Azure Monitor.
+
+|Zasób agenta|Porty |
+|--------------|------|
+| *.ods.opinsights.azure.com | 443 |  
+| *.oms.opinsights.azure.com | 443 | 
+| *.blob.core.windows.net | 443 |
+| dc.services.visualstudio.com | 443 |
+| *.microsoftonline.com | 443 |
+| *. monitoring.azure.com | 443 |
+| login.microsoftonline.com | 443 |
+
+W poniższej tabeli przedstawiono informacje o konfiguracji serwera proxy i zapory dla Chin platformy Azure.
+
+|Zasób agenta|Porty |Opis | 
+|--------------|------|-------------|
+| *. ods.opinsights.azure.cn | 443 | Wprowadzanie danych |
+| *. oms.opinsights.azure.cn | 443 | Przechodzenie do pakietu OMS |
+| *.blob.core.windows.net | 443 | Służy do monitorowania łączności wychodzącej. |
+| microsoft.com | 80 | Używany do łączności sieciowej. Jest to wymagane tylko wtedy, gdy wersja obrazu agenta to ciprod09262019 lub wcześniejsza. |
+| dc.services.visualstudio.com | 443 | Dla programu na potrzeby telemetrii agenta przy użyciu publicznej chmury Application Insights platformy Azure. |
+
+Informacje w poniższej tabeli zawierają informacje o konfiguracji serwera proxy i zapory dla instytucji rządowych USA platformy Azure.
+
+|Zasób agenta|Porty |Opis | 
+|--------------|------|-------------|
+| *. ods.opinsights.azure.us | 443 | Wprowadzanie danych |
+| *. oms.opinsights.azure.us | 443 | Przechodzenie do pakietu OMS |
+| *.blob.core.windows.net | 443 | Służy do monitorowania łączności wychodzącej. |
+| microsoft.com | 80 | Używany do łączności sieciowej. Jest to wymagane tylko wtedy, gdy wersja obrazu agenta to ciprod09262019 lub wcześniejsza. |
+| dc.services.visualstudio.com | 443 | W przypadku telemetrii agenta przy użyciu Application Insights publicznej chmury platformy Azure. |
 
 ## <a name="components"></a>Składniki
 
@@ -53,7 +88,7 @@ Możliwość monitorowania wydajności opiera się na Log Analytics agencie dla 
 Po wydaniu nowej wersji agenta zostanie ona automatycznie uaktualniona do zarządzanych klastrów Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS). Aby postępować zgodnie z wydaną wersją, zobacz [anonse dotyczące wersji agentów](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
 
 >[!NOTE]
->Jeśli klaster AKS został już wdrożony, należy włączyć monitorowanie za pomocą interfejsu wiersza polecenia platformy Azure lub dostarczonego szablonu Azure Resource Manager, jak pokazano w dalszej części tego artykułu. Nie można użyć `kubectl` do uaktualnienia, usunięcia, ponownego wdrożenia lub wdrożenia agenta.
+>Jeśli klaster AKS został już wdrożony, należy włączyć monitorowanie za pomocą interfejsu wiersza polecenia platformy Azure lub dostarczonego szablonu Azure Resource Manager, jak pokazano w dalszej części tego artykułu. Nie można użyć `kubectl`, aby uaktualnić, usunąć, ponownie wdrożyć lub wdrożyć agenta.
 >Szablon musi zostać wdrożony w tej samej grupie zasobów co klaster.
 
 Azure Monitor dla kontenerów można włączyć za pomocą jednej z następujących metod opisanych w poniższej tabeli.
@@ -67,6 +102,7 @@ Azure Monitor dla kontenerów można włączyć za pomocą jednej z następując
 | | [Włącz z Azure Monitor](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Można włączyć monitorowanie jednego lub więcej klastrów AKS już wdrożonych ze strony AKS wielu klastrów w Azure Monitor. |
 | | [Włącz z klastra AKS](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| Monitorowanie można włączyć bezpośrednio z klastra AKS w Azure Portal. |
 | | [Włączanie przy użyciu szablonu Azure Resource Manager](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| Można włączyć monitorowanie klastra AKS przy użyciu wstępnie skonfigurowanego szablonu Azure Resource Manager. |
+| | [Włącz dla hybrydowego klastra Kubernetes](container-insights-hybrid-setup.md) | Można włączyć monitorowanie aparatu AKS hostowanego w Azure Stack lub dla Kubernetes hostowanego lokalnie. |
 
 ## <a name="next-steps"></a>Następne kroki
 

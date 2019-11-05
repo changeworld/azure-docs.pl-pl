@@ -10,12 +10,12 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 10/19/2019
-ms.openlocfilehash: 0a93bedb697a0d5a514fddab55c79b969b2bd77b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f1d152c921d38931f8c67396fc5769cfd2dfcf58
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954229"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468222"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Łączenie czujnika RuuviTag z aplikacją IoT Central platformy Azure
 
@@ -34,7 +34,7 @@ Aby połączyć czujniki RuuviTag, potrzebne są następujące zasoby:
 
 * Czujnik RuuviTag. Aby uzyskać więcej informacji, odwiedź stronę [RuuviTag](https://ruuvi.com/). 
 * Urządzenie Rigado kaskadowo 500 lub inną bramę w sieci. Aby uzyskać więcej informacji, odwiedź stronę [Rigado](https://www.rigado.com/).
-* Aplikacja IoT Central platformy Azure utworzona na podstawie jednego z szablonów aplikacji w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Tworzenie nowej aplikacji](https://docs.microsoft.com/azure/iot-central/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+* Aplikacja IoT Central platformy Azure utworzona na podstawie jednego z szablonów aplikacji w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Tworzenie nowej aplikacji](https://docs.microsoft.com/azure/iot-central/core/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
 ## <a name="add-a-ruuvitag-device-template"></a>Dodawanie szablonu urządzenia RuuviTag
 

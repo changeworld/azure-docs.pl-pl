@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: 35c696e47c0a01c2cdb4d91db5a654208f2196e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9dd24a962ddece4ae7841effea7fc36bba1b727b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71257266"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496460"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure: analiza dla usług finansowych FFIEC
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zawiera wskazówki dotyczące wdrażania architektury analizy danych na platformie Azure odpowiednie do zbierania, przechowywania i pobierania danych finansowych objętych regulacją w ramach Federalnej Rady badania instytucji finansowej (FFIEC).
 
@@ -29,7 +29,7 @@ Osiągnięcie zgodności FFIEC wymaga, aby wykwalifikowany audytor poświadczał
 
 Ten Strategia zabezpieczeń i zgodności z przepisami platformy Azure zawiera platformę analityczną, na której klienci mogą tworzyć własne narzędzia analityczne. Architektura referencyjna przedstawia ogólny przypadek użycia, w którym klienci wprowadzają dane przy użyciu zbiorczych danych importu przez administratora SQL/danych lub za pośrednictwem aktualizacji danych operacyjnych za pośrednictwem użytkownika operacyjnego. Oba strumienie służbowe zawierają Azure Functions do importowania danych do Azure SQL Database. Azure Functions musi być skonfigurowany przez klienta za pomocą Azure Portal w celu obsługi zadań importu unikatowych dla potrzeb analizy poszczególnych klientów.
 
-Platforma Azure oferuje klientom różne usługi raportowania i analizy. To rozwiązanie obejmuje Azure Machine Learning usług w połączeniu z Azure SQL Database, aby szybko przeglądać dane i dostarczać szybsze wyniki dzięki inteligentniejszemu modelowaniu. Azure Machine Learning zwiększa szybkość zapytań, odnajdując nowe relacje między zestawami danych. Po przeszkoleniu danych za pomocą kilku funkcji statystycznych, do 7 dodatkowych pul zapytań (łącznie z serwerem klienta) można synchronizować z tymi samymi modelami tabelarycznymi w celu rozproszenia obciążeń zapytań i skrócenia czasu odpowiedzi.
+Platforma Azure oferuje klientom różne usługi raportowania i analizy. To rozwiązanie obejmuje Azure Machine Learning w połączeniu z Azure SQL Database, aby szybko przeglądać dane i dostarczać szybsze wyniki dzięki inteligentniejszemu modelowaniu. Azure Machine Learning zwiększa szybkość zapytań, odnajdując nowe relacje między zestawami danych. Po przeszkoleniu danych za pomocą kilku funkcji statystycznych, do 7 dodatkowych pul zapytań (łącznie z serwerem klienta) można synchronizować z tymi samymi modelami tabelarycznymi w celu rozproszenia obciążeń zapytań i skrócenia czasu odpowiedzi.
 
 Aby uzyskać ulepszoną analizę i raportowanie, bazy danych SQL platformy Azure można skonfigurować przy użyciu indeksów magazynu kolumn. Zarówno Azure Machine Learning, jak i bazy danych SQL platformy Azure można skalować w górę lub w dół lub całkowicie wyłączać w odpowiedzi na użycie klientów. Cały ruch SQL jest szyfrowany przy użyciu protokołu SSL w ramach dołączania certyfikatów z podpisem własnym. Najlepszym rozwiązaniem jest to, że platforma Azure zaleca korzystanie z zaufanego urzędu certyfikacji w celu zwiększenia bezpieczeństwa.
 
@@ -46,18 +46,18 @@ Azure SQL Database jest często zarządzany za pośrednictwem SQL Server Managem
 To rozwiązanie używa następujących usług platformy Azure. Szczegóły architektury wdrożenia znajdują się w sekcji [Architektura wdrażania](#deployment-architecture) .
 
 - Application Insights
-- Usługa Active Directory systemu Azure
+- Usługa Azure Active Directory
 - Azure Data Catalog
-- Azure Disk Encryption
+- Usługa Azure Disk Encryption
 - Azure Event Grid
-- Stan usługi Funkcje Azure
+- Azure Functions
 - Azure Key Vault
 - Azure Machine Learning
 - Azure Monitor (dzienniki)
 - Azure Security Center
 - Azure SQL Database
 - Azure Storage
-- Usługa Azure Virtual Network
+- Azure Virtual Network
     - (1)/16 sieci
     - (2)/24 sieci
     - (2) sieciowe grupy zabezpieczeń
@@ -71,7 +71,7 @@ W poniższej sekcji znajdują się szczegółowe informacje dotyczące elementó
 
 **Azure Functions**: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) to usługa obliczeniowa bez serwera, która umożliwia użytkownikom uruchamianie kodu na żądanie bez konieczności jawnego udostępniania infrastruktury ani zarządzania nią. Za pomocą usługi Azure Functions można uruchamiać skrypty lub fragmenty kodu w reakcji na różne zdarzenia.
 
-**Usługa Azure Machine Learning**: [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) jest techniką analizy danych, która umożliwia komputerom używanie istniejących danych do prognozowania przyszłych zachowań, rezultatów i trendów.
+**Azure Machine Learning**: [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) jest techniką analizy danych, która umożliwia komputerom używanie istniejących danych do prognozowania przyszłych zachowań, rezultatów i trendów.
 
 **Azure Data Catalog**: [Data Catalog](../../data-catalog/overview.md) umożliwia łatwe odnajdywanie źródeł danych i zrozumienie ich przez użytkowników, którzy zarządzają danymi. Typowe źródła danych mogą być rejestrowane, otagowane i przeszukiwane pod kątem danych finansowych. Dane pozostają w istniejącej lokalizacji, ale kopia jej metadanych zostanie dodana do Data Catalog wraz z odwołaniem do lokalizacji źródła danych. Te metadane są również indeksowane, aby można było je łatwo odnaleźć za pomocą wyszukiwania oraz uczynić je zrozumiałymi dla użytkowników, którzy je odnajdą.
 
@@ -125,7 +125,7 @@ Następujące technologie zapewniają możliwości zarządzania dostępem do dan
 - [Azure Active Directory Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) pozwala klientom zminimalizować liczbę użytkowników, którzy mają dostęp do określonych informacji. Administratorzy mogą używać Azure Active Directory Privileged Identity Management do odnajdywania, ograniczania i monitorowania uprzywilejowanych tożsamości oraz ich dostępu do zasobów. Tej funkcji można także użyć do wymuszenia dostępu administracyjnego na żądanie, w miarę potrzeb, w razie potrzeby.
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) wykrywa potencjalne luki w zabezpieczeniach,&#39;które mają wpływ na tożsamości organizacji, konfiguruje automatyczne odpowiedzi na wykryte podejrzane działania związane z tożsamościami organizacji&#39;i bada podejrzane zdarzenia w celu podjęcia odpowiednich działań w celu ich rozwiązania.
 
-### <a name="security"></a>Zabezpieczenia
+### <a name="security"></a>Bezpieczeństwo
 
 **Zarządzanie wpisami tajnymi**: rozwiązanie używa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Następujące funkcje Azure Key Vault pomagają klientom chronić i uzyskiwać dostęp do tych danych:
 
@@ -182,7 +182,7 @@ W [macierzy strategia zabezpieczeń i zgodności z przepisami platformy Azure �
 
 Bezpieczny tunel VPN lub [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) musi być skonfigurowany do bezpiecznego nawiązywania połączenia z zasobami wdrożonymi w ramach tej architektury referencyjnej analizy danych. Przez odpowiednie skonfigurowanie sieci VPN lub ExpressRoute klienci mogą dodać warstwę ochrony danych do przetworzenia.
 
-Implementując bezpieczny tunel VPN z platformą Azure, można utworzyć wirtualne połączenie prywatne między siecią lokalną a Virtual Network platformy Azure. To połączenie odbywa się za pośrednictwem Internetu i umożliwia klientom bezpieczne &quot;tunnel &quot; informacji w ramach zaszyfrowanego połączenia między&#39;siecią klienta i platformą Azure. Sieci VPN typu lokacja-lokacja to bezpieczna, dojrzała technologia, która została wdrożona przez przedsiębiorstwa wszystkich rozmiarów dla dekad. [Tryb tunelowania IPSec](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) jest używany w tej opcji jako mechanizm szyfrowania.
+Implementując bezpieczny tunel VPN z platformą Azure, można utworzyć wirtualne połączenie prywatne między siecią lokalną a Virtual Network platformy Azure. To połączenie odbywa się za pośrednictwem Internetu i umożliwia klientom bezpieczne &quot;informacje&quot; tunelu w ramach zaszyfrowanego połączenia&#39;między siecią klienta i platformą Azure. Sieci VPN typu lokacja-lokacja to bezpieczna, dojrzała technologia, która została wdrożona przez przedsiębiorstwa wszystkich rozmiarów dla dekad. [Tryb tunelowania IPSec](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) jest używany w tej opcji jako mechanizm szyfrowania.
 
 Ze względu na to, że ruch w ramach tunelu sieci VPN przechodzi przez Internet przy użyciu sieci VPN typu lokacja-lokacja, firma Microsoft oferuje kolejną, jeszcze bardziej bezpieczną opcję połączenia. Azure ExpressRoute to dedykowany link sieci WAN między platformą Azure i lokalizacją lokalną lub dostawcą hostingu programu Exchange. Ponieważ połączenia ExpressRoute nie przechodzą przez Internet, połączenia te oferują większą niezawodność, większe szybkości, mniejsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia przez Internet. Ponadto, ponieważ jest to bezpośrednie połączenie z dostawcą telekomunikacyjnym klienta&#39;, dane nie są przesyłane przez Internet i w związku z tym nie są dostępne.
 

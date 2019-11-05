@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f86c34dcc1276b8677e3e60514661a6d0b974005
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e0b54ca89511063e1a76753793846deaf8e8b9b4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787546"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466779"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Jak dodać niestandardową umiejętność do potoku wzbogacenia Wyszukiwanie poznawcze platformy Azure
 
@@ -154,8 +154,10 @@ Podczas tworzenia programu wzbogacania interfejsu API sieci Web można opisać n
 
 ## <a name="next-steps"></a>Następne kroki
 
-+ [Umiejętności dotyczące oszczędzania mocy: repozytorium umiejętności niestandardowych](https://aka.ms/powerskills)
-+ [Przykład: Tworzenie niestandardowej umiejętności dla wyszukiwania poznawczego](cognitive-search-create-custom-skill-example.md)
+W tym artykule omówiono wymagania dotyczące interfejsu niezbędne do integracji niestandardowej umiejętności z zestawu umiejętności. Kliknij poniższe linki, aby dowiedzieć się więcej na temat umiejętności niestandardowych i kompozycji zestawu umiejętności.
+
++ [Umiejętności dotyczące oszczędzania mocy: repozytorium umiejętności niestandardowych](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Przykład: Tworzenie niestandardowej umiejętności dla wzbogacania AI](cognitive-search-create-custom-skill-example.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Utwórz zestawu umiejętności (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Jak zmapować wzbogacone pola](cognitive-search-output-field-mapping.md)

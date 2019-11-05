@@ -5,58 +5,48 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 06/17/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 29ab9b3c33aae6005510c34b207c7f87714149e5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4f49220da5d996615c9f8ef7cad2b6c6793866b7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608293"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466272"
 ---
-### <a name="preview"></a>Jak uczestniczyć w publicznej wersji zapoznawczej
-
-Należy dodać do udziału w publicznej wersji zapoznawczej. Użyj kroków w [w tym artykule](../articles/bastion/bastion-create-host-portal.md) do utworzenia nowego zasobu platformy Azure bastionu. Obecnie, gdy dostęp do korzystania z tej usługi, należy użyć [portal Azure — wersja zapoznawcza](https://aka.ms/BastionHost) zamiast regularnego witryny Azure portal.
-
-### <a name="regions"></a>Które regiony są dostępne w okresie obowiązywania wersji zapoznawczej?
-
-Możesz wdrożyć i używać bastionu zasobu w tych regionach za pomocą w wersji zapoznawczej [portal Azure — Podgląd łącza](https://aka.ms/BastionHost).
+### <a name="regions"></a>Które regiony są dostępne?
 
 [!INCLUDE [region](bastion-regions-include.md)]
 
-### <a name="portal"></a>Nie można znaleźć zasobu bastionu w witrynie Azure portal. Co mam zrobić?
+### <a name="publicip"></a>Czy na mojej maszynie wirtualnej jest potrzebny publiczny adres IP?
 
-Upewnij się, że używasz [portal Azure — Podgląd łącza](https://aka.ms/BastionHost), nie regularne witryny Azure portal.
+NIE potrzebujesz publicznego adresu IP na maszynie wirtualnej platformy Azure, z którą nawiązujesz połączenie z usługą Azure bastionu. Usługa bastionu otworzy sesję/połączenie RDP/SSH z maszyną wirtualną za pośrednictwem prywatnego adresu IP maszyny wirtualnej w sieci wirtualnej.
 
-### <a name="publicip"></a>Czy muszę mieć publiczny adres IP na mojej maszynie wirtualnej?
+### <a name="rdpssh"></a>Czy potrzebuję klienta RDP lub SSH?
 
-Publiczny adres IP na maszynie wirtualnej platformy Azure, która łączysz się z usługą Azure bastionu nie jest konieczne. Usługa bastionu spowoduje otwarcie RDP/SSH/połączenie sesji z maszyną wirtualną za pośrednictwem prywatny adres IP swojej maszyny wirtualnej w ramach sieci wirtualnej.
-
-### <a name="rdpssh"></a>Czy muszę mieć klienta protokołu RDP lub SSH?
-
-Nie musisz mieć klienta RDP lub SSH, aby uzyskiwać dostęp RDP/SSH do maszyny wirtualnej platformy Azure w witrynie Azure Portal. Użyj [portal Azure — Podgląd łącza](https://aka.ms/BastionHost) dostępu lotu w wersji zapoznawczej portalu do. Dzięki temu uzyskasz dostęp RDP/SSH do maszyny wirtualnej bezpośrednio w przeglądarce.
+Nie musisz mieć klienta RDP lub SSH, aby uzyskiwać dostęp RDP/SSH do maszyny wirtualnej platformy Azure w witrynie Azure Portal. Użyj [Azure Portal](https://portal.azure.com) , aby zezwolić na dostęp do maszyny wirtualnej za pośrednictwem protokołu RDP/SSH bezpośrednio w przeglądarce.
 
 ### <a name="agent"></a>Czy potrzebuję agenta uruchomionego na maszynie wirtualnej platformy Azure?
 
 Nie musisz instalować agenta ani innego oprogramowania w przeglądarce ani na maszynie wirtualnej platformy Azure. Usługa Bastion nie wymaga agenta ani dodatkowego oprogramowania na potrzeby połączeń RDP/SSH.
 
-### <a name="browsers"></a>Jakie przeglądarki są obsługiwane?
+### <a name="browsers"></a>Które przeglądarki są obsługiwane?
 
-W publicznej wersji zapoznawczej należy użyć przeglądarki Microsoft Edge lub Google Chrome w Windows. W komputerze Apple Mac korzystaj z przeglądarki Google Chrome. Przeglądarka Microsoft Edge Chromium jest też obsługiwana odpowiednio w systemach Windows i komputerach Mac.
+Użyj przeglądarki Microsoft Edge lub Google Chrome w systemie Windows. W komputerze Apple Mac korzystaj z przeglądarki Google Chrome. Przeglądarka Microsoft Edge Chromium jest też obsługiwana odpowiednio w systemach Windows i komputerach Mac.
 
-### <a name="roles"></a>Czy wszystkie role wymagane do dostępu do maszyny wirtualnej?
+### <a name="roles"></a>Czy wszystkie role są wymagane do uzyskania dostępu do maszyny wirtualnej?
 
-Aby można było utworzyć połączenie, wymagane są następujące role:
+Aby można było nawiązać połączenie, wymagane są następujące role:
 
 * Rola czytelnika na maszynie wirtualnej
-* Rola czytelnika na karcie Sieciowej z prywatnym adresem IP maszyny wirtualnej
-* Rola czytelnika na zasobie bastionu platformy Azure
+* Rola czytelnika na karcie sieciowej z prywatnym adresem IP maszyny wirtualnej
+* Rola czytelnika w zasobie Azure bastionu
 
-### <a name="previewbill"></a>Cennik — będą rozliczane za udział w wersji zapoznawczej?
+### <a name="pricingpage"></a>Jakie są ceny?
 
-Możesz będą naliczane tylko częściowo w publicznej wersji zapoznawczej. Jednak nie ma umowy SLA dołączona do danego wdrożenia. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://aka.ms/BastionHostPricing).
+Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://aka.ms/BastionHostPricing).
 
-### <a name="previewbill"></a>Dlaczego otrzymuję błąd "Twoja sesja wygasła" komunikatów przed uruchomieniem sesji bastionu?
+### <a name="session"></a>Dlaczego otrzymuję komunikat o błędzie "sesja wygasła" przed rozpoczęciem sesji bastionu?
 
-Sesji powinien być inicjowane tylko w witrynie Azure portal. Zaloguj się do witryny Azure portal i rozpocznij ponownie sesję. Po przejściu do adresu URL bezpośrednio z innej sesji przeglądarki lub kartę tego błędu jest oczekiwany. Pomaga ono, upewnij się, że sesja jest bardziej bezpieczne i że sesji są dostępne wyłącznie za pośrednictwem witryny Azure portal.
+Sesja powinna zostać zainicjowana tylko z Azure Portal. Zaloguj się do Azure Portal i ponownie Rozpocznij sesję. Jeśli przejdziesz do adresu URL bezpośrednio z innej sesji lub karty przeglądarki, ten błąd jest oczekiwany. Gwarantuje to, że sesja jest bezpieczniejsza i dostęp do sesji można uzyskać tylko za pomocą Azure Portal.

@@ -8,47 +8,52 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: dbd4f2cd4691f9ae6d8e37f38d2b600ec4897e45
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
-ms.translationtype: MT
+ms.openlocfilehash: 647edcab5ec2925016e8a099ae43b6133037f8de
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326694"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491123"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalowanie i uruchamianie kontenerów usługi mowy
 
-Kontenery mowy umożliwiają klientom tworzenie jednej architektury aplikacji mowy, która jest zoptymalizowana pod kątem wykorzystania zarówno niezawodnej możliwości chmury, jak i lokalizacji brzegowej. 
+Kontenery umożliwiają uruchamianie niektórych interfejsów API usługi mowy w Twoim środowisku. Kontenery doskonale nadaje się do określonych wymagań w zakresie zabezpieczeń i zarządzania danymi. W tym artykule dowiesz się, jak pobrać, zainstalować i uruchomić kontener mowy.
 
-Dwa kontenery mowy to **Zamiana mowy na tekst** i **Zamiana tekstu na mowę**. 
+Kontenery mowy umożliwiają klientom tworzenie architektury aplikacji mowy, która jest zoptymalizowana pod kątem niezawodnych możliwości chmury i lokalizacji brzegowej. Dostępne są cztery różne kontenery. Dwa standardowe kontenery to **Zamiana mowy na tekst** i zamiana **tekstu na mowę**. Dwa kontenery niestandardowe są **Custom Speech do tekstu** i **niestandardowego tekstu na mowę**.
 
-|Funkcja|Funkcje|Najnowsze|
-|-|-|--|
-|Zamiany mowy na tekst| <li>Przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub nagrania audio w trybie wsadowym do tekstu z wynikami pośrednimi.|1.2.0|
-|Zamiana tekstu na mowę| <li>Konwertuje tekst na naturalnie brzmiącą mowę. za pomocą danych wejściowych tekstu lub języka Markup syntezy mowy (SSML). |1.2.0|
+> [!IMPORTANT]
+> Wszystkie kontenery mowy są obecnie oferowane w ramach [publicznej wersji zapoznawczej "Gated"](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio). Ogłoszenie zostanie wykonane, gdy kontenery mowy postępują z ogólnie dostępnymi wersjami.
+
+| Funkcja | Funkcje | Ostatnia |
+|--|--|--|
+| Zamiana mowy na tekst | Przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub nagrania audio w trybie wsadowym do tekstu z wynikami pośrednimi. | 2.0.0 |
+| Custom Speech do tekstu | Korzystając z modelu niestandardowego z [portalu Custom Speech](https://speech.microsoft.com/customspeech), przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub przetwarzanie wsadowe audio do tekstu z wynikami pośrednimi. | 2.0.0 |
+| Zamiana tekstu na mowę | Konwertuje tekst na mowę dźwiękową przy użyciu zwykłego tekstu lub języka SSML (Speech Syntezing Language). | 1.3.0 |
+| Niestandardowa Zamiana tekstu na mowę | Przy użyciu modelu niestandardowego z [niestandardowego portalu głosowego](https://aka.ms/custom-voice-portal)program konwertuje tekst na mowę dźwiękową przy użyciu zwykłego tekstu lub języka SSML (Speech syntezing Language). | 1.3.0 |
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed użyciem kontenerów mowy należy spełnić następujące wymagania wstępne:
+Poniższe wymagania wstępne przed użyciem kontenerów mowy:
 
-|Wymagane|Cel|
+| Wymagany | Przeznaczenie |
 |--|--|
-|Aparat platformy Docker| Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
-|Znajomość platformy Docker | Należy dysponować podstawową wiedzą na temat pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów, a także znajomość `docker` podstawowych poleceń.| 
-|Zasób mowy |Aby można było korzystać z tych kontenerów, musisz mieć:<br><br>Zasób usługi Azure _Speech_ do pobrania skojarzonego klucza interfejsu API i identyfikatora URI punktu końcowego. Obie wartości są dostępne na stronach przeglądów **mowy** i kluczy Azure Portal. Są one wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : Jeden z dwóch dostępnych kluczy zasobów na stronie **klucze**<br><br>**{ENDPOINT_URI}** : Punkt końcowy zgodnie z opisem na stronie **Przegląd**|
-
-[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
+| Aparat platformy Docker | Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Podstawowe informacje dotyczące platformy Docker i kontenera można znaleźć w temacie [Omówienie platformy Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Program Docker musi być skonfigurowany tak, aby umożliwić kontenerom łączenie się z danymi rozliczeń i wysyłanie ich do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br> |
+| Znajomość platformy Docker | Należy dysponować podstawową wiedzą na temat pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów, a także znajomość podstawowych poleceń `docker`. |
+| Zasób mowy | Aby można było korzystać z tych kontenerów, musisz mieć:<br><br>Zasób usługi Azure _Speech_ do pobrania skojarzonego klucza interfejsu API i identyfikatora URI punktu końcowego. Obie wartości są dostępne na stronach przeglądów **mowy** i kluczy Azure Portal. Są one wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : jeden z dwóch dostępnych kluczy zasobów na stronie **kluczy**<br><br>**{ENDPOINT_URI}** : punkt końcowy określony na stronie **Przegląd** |
 
 ## <a name="request-access-to-the-container-registry"></a>Zażądaj dostępu do rejestru kontenerów
 
-Musisz najpierw zakończyć i przesłać [Cognitive Services formularz żądania kontenerów mowy](https://aka.ms/speechcontainerspreview/) , aby zażądać dostępu do kontenera. 
+Wypełnij i prześlij [Cognitive Services formularz żądania kontenerów mowy](https://aka.ms/speechcontainerspreview/) , aby zażądać dostępu do kontenera. 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
+
+[!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="the-host-computer"></a>Komputer-host
 
@@ -56,45 +61,101 @@ Musisz najpierw zakończyć i przesłać [Cognitive Services formularz żądania
 
 ### <a name="advanced-vector-extension-support"></a>Obsługa zaawansowanych rozszerzeń wektora
 
-**Host** to komputer, na którym jest uruchomiony kontener platformy Docker. Host musi obsługiwać [Zaawansowane rozszerzenia wektorów](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). Tę obsługę można sprawdzić na hostach z systemem Linux przy użyciu następującego polecenia: 
+**Host** to komputer, na którym jest uruchomiony kontener platformy Docker. Host *musi obsługiwać* [Zaawansowane rozszerzenia wektorów](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). Obsługę AVX2 można sprawdzić na hostach z systemem Linux przy użyciu następującego polecenia:
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
+> [!WARNING]
+> Komputer hosta jest *wymagany* do obsługi AVX2. Kontener *nie będzie* działać poprawnie bez obsługi AVX2.
 
-### <a name="container-requirements-and-recommendations"></a>Kontener wymagania i zalecenia
+### <a name="container-requirements-and-recommendations"></a>Wymagania i zalecenia dotyczące kontenera
 
-W poniższej tabeli opisano minimalną i zalecaną liczbę rdzeni procesora CPU oraz ilość pamięci do przydzielenia dla każdego kontenera mowy.
+W poniższej tabeli opisano minimalne i zalecane alokacje zasobów dla każdego kontenera mowy.
+
+# <a name="speech-to-texttabstt"></a>[Zamiana mowy na tekst](#tab/stt)
 
 | Kontener | Minimalne | Zalecane |
 |-----------|---------|-------------|
-|poznawcze — usługi — Zamiana mowy na tekst | 2 rdzeń<br>2 GB pamięci  | 4 rdzeni<br>4 GB pamięci  |
-|poznawcze — usługi — Zamiana tekstu na mowę | 1 rdzeń, 0,5 GB pamięci| 2 rdzeń, 1 GB pamięci |
+| Zamiana mowy na tekst | 2 rdzeń, 2 GB pamięci | 4 rdzenie, 4 GB pamięci |
+
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech do tekstu](#tab/cstt)
+
+| Kontener | Minimalne | Zalecane |
+|-----------|---------|-------------|
+| Custom Speech do tekstu | 2 rdzeń, 2 GB pamięci | 4 rdzenie, 4 GB pamięci |
+
+# <a name="text-to-speechtabtts"></a>[Zamiana tekstu na mowę](#tab/tts)
+
+| Kontener | Minimalne | Zalecane |
+|-----------|---------|-------------|
+| Zamiana tekstu na mowę | 1 rdzeń, 2 GB pamięci | 2 rdzeń, 3 GB pamięci |
+
+# <a name="custom-text-to-speechtabctts"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
+
+| Kontener | Minimalne | Zalecane |
+|-----------|---------|-------------|
+| Niestandardowa Zamiana tekstu na mowę | 1 rdzeń, 2 GB pamięci | 2 rdzeń, 3 GB pamięci |
+
+***
 
 * Każdy rdzeń musi mieć co najmniej 2,6 gigaherca (GHz) lub szybszy.
 
-Rdzeń i pamięć odpowiadają `--cpus` ustawieniom i `--memory` , które są `docker run` używane jako część polecenia.
+Rdzeń i pamięć odpowiadają ustawieniom `--cpus` i `--memory`, które są używane jako część polecenia `docker run`.
 
-**Uwaga**; Minimalne i zalecane są oparte na limitach platformy Docker, a *nie* na zasobach maszyn hosta. Na przykład kontenera zamiany mowy na tekst mapują fragmenty modelu dużego języka i _zaleca_ się, aby cały plik mieścił się w pamięci, czyli dodatkowej 4-6 GB. Ponadto pierwsze uruchomienie jednego kontenera może trwać dłużej, ponieważ modele są stronicowane w pamięci.
+> [!NOTE]
+> Minimalne i zalecane są oparte na limitach platformy Docker, a *nie* na zasobach maszyn hosta. Na przykład kontenera zamiany mowy na tekst mapują fragmenty modelu dużego języka i *zaleca* się, aby cały plik mieścił się w pamięci, czyli dodatkowej 4-6 GB. Ponadto pierwsze uruchomienie jednego kontenera może trwać dłużej, ponieważ modele są stronicowane w pamięci.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Pobierz obraz kontenera za pomocą`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Pobierz obraz kontenera za pomocą `docker pull`
 
-Obrazy kontenerów dla mowy są dostępne.
+Obrazy kontenerów dla mowy są dostępne w następujących Container Registry.
 
-| Kontener | Repozytorium |
+# <a name="speech-to-texttabstt"></a>[Zamiana mowy na tekst](#tab/stt)
+
+| Kontener | Kopie |
 |-----------|------------|
-| poznawcze — usługi — Zamiana mowy na tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
-| poznawcze — usługi — Zamiana tekstu na mowę | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
+| Zamiana mowy na tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
+
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech do tekstu](#tab/cstt)
+
+| Kontener | Kopie |
+|-----------|------------|
+| Custom Speech do tekstu | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
+
+# <a name="text-to-speechtabtts"></a>[Zamiana tekstu na mowę](#tab/tts)
+
+| Kontener | Kopie |
+|-----------|------------|
+| Zamiana tekstu na mowę | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
+
+# <a name="custom-text-to-speechtabctts"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
+
+| Kontener | Kopie |
+|-----------|------------|
+| Niestandardowa Zamiana tekstu na mowę | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
+
+***
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="language-locale-is-in-container-tag"></a>Ustawienia regionalne języka są w znaczniku kontenera
+### <a name="docker-pull-for-the-speech-containers"></a>Wypychanie platformy Docker dla kontenerów mowy
 
-Tag ściąga `en-us` ustawienia regionalne i `jessarus` głos. `latest`
+# <a name="speech-to-texttabstt"></a>[Zamiana mowy na tekst](#tab/stt)
 
-#### <a name="speech-to-text-locales"></a>Zamiana mowy na tekst lokalne
+#### <a name="docker-pull-for-the-speech-to-text-container"></a>Wypychanie platformy Docker dla kontenera zamiany mowy na tekst
 
-Wszystkie Tagi, z wyjątkiem `latest` programu, są w następującym formacie, `<culture>` gdzie wskazuje Kontener ustawień regionalnych:
+Użyj [Docker pull](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera z rejestru w wersji zapoznawczej.
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest
+```
+
+> [!IMPORTANT]
+> Tag `latest` pobiera `en-US` ustawień regionalnych i `jessarus` głosu. Aby uzyskać dodatkowe elementy lokalne, zobacz sekcję [Ustawienia regionalne Zamiana mowy na tekst](#speech-to-text-locales).
+
+#### <a name="speech-to-text-locales"></a>Ustawienia regionalne zamiany mowy na tekst
+
+Wszystkie Tagi, z wyjątkiem `latest`, są w następującym formacie, gdzie `<culture>` wskazuje Kontener ustawień regionalnych:
 
 ```
 <major>.<minor>.<patch>-<platform>-<culture>-<prerelease>
@@ -103,26 +164,52 @@ Wszystkie Tagi, z wyjątkiem `latest` programu, są w następującym formacie, `
 Następujący tag jest przykładem formatu:
 
 ```
-1.2.0-amd64-en-us-preview
+2.0.0-amd64-en-us-preview
 ```
 
-Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zamiany mowy na tekst** w 1.2.0 wersji kontenera:
+Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zamiany mowy na tekst** w 2.0.0 wersji kontenera:
 
-|Ustawienia regionalne języka|`Tags`|
+| Ustawienia regionalne języka | Tagi |
 |--|--|
-|Chiński|`zh-cn`|
-|Polski |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
-|Francuski |`fr-ca`<br>`fr-fr`|
-|Niemiecki|`de-de`|
-|Włoski|`it-it`|
-|Japoński|`ja-jp`|
-|Koreański|`ko-kr`|
-|Portugalski|`pt-br`|
-|Hiszpański|`es-es`<br>`es-mx`|
+| Chiński | `zh-CN` |
+| Polski | `en-US`<br>`en-GB`<br>`en-AU`<br>`en-IN` |
+| Francuski | `fr-CA`<br>`fr-FR` |
+| Niemiecki | `de-DE` |
+| Włoski | `it-IT` |
+| Japoński | `ja-JP` |
+| Koreański | `ko-KR` |
+| Portugalski | `pt-BR` |
+| Hiszpański | `es-ES`<br>`es-MX` |
 
-#### <a name="text-to-speech-locales"></a>Tekst na ustawienia regionalne mowy
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech do tekstu](#tab/cstt)
 
-Wszystkie Tagi, z wyjątkiem `latest` programu, są w następującym formacie, `<culture>` gdzie `<voice>` wskazuje ustawienia regionalne i wskazuje głos kontenera:
+#### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>Wypychanie platformy Docker dla kontenera Custom Speech-to-Text
+
+Użyj [Docker pull](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera z rejestru w wersji zapoznawczej.
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest
+```
+
+> [!NOTE]
+> `locale` i `voice` niestandardowych kontenerów mowy jest określany przez model niestandardowy pozyskiwany przez kontener.
+
+# <a name="text-to-speechtabtts"></a>[Zamiana tekstu na mowę](#tab/tts)
+
+#### <a name="docker-pull-for-the-text-to-speech-container"></a>Wypychanie platformy Docker dla kontenera zamiany tekstu na mowę
+
+Użyj [Docker pull](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera z rejestru w wersji zapoznawczej.
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest
+```
+
+> [!IMPORTANT]
+> Tag `latest` pobiera `en-US` ustawień regionalnych i `jessarus` głosu. W przypadku dodatkowych ustawień regionalnych zobacz [Ustawienia regionalne zamiany tekstu na mowę](#text-to-speech-locales).
+
+#### <a name="text-to-speech-locales"></a>Ustawienia regionalne zamiany tekstu na mowę
+
+Wszystkie Tagi, z wyjątkiem `latest`, są w następującym formacie, gdzie `<culture>` wskazuje ustawienia regionalne, a `<voice>` wskazuje głos kontenera:
 
 ```
 <major>.<minor>.<patch>-<platform>-<culture>-<voice>-<prerelease>
@@ -131,59 +218,122 @@ Wszystkie Tagi, z wyjątkiem `latest` programu, są w następującym formacie, `
 Następujący tag jest przykładem formatu:
 
 ```
-1.2.0-amd64-en-us-jessarus-preview
+1.3.0-amd64-en-us-jessarus-preview
 ```
 
-Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zamiany tekstu na mowę** w wersji 1.2.0 kontenera:
+Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zamiany tekstu na mowę** w wersji 1.3.0 kontenera:
 
-|Ustawienia regionalne języka|`Tags`|Obsługiwane głosy|
+| Ustawienia regionalne języka | Tagi | Obsługiwane głosy |
 |--|--|--|
-|Chiński|`zh-cn`|huihuirus<br>kangkang-apollo<br>yaoyao-apollo|
-|Polski |`en-au`|catherine<br>hayleyrus|
-|Polski |`en-gb`|George — Apollo<br>hazelrus<br>Susan — Apollo|
-|Polski |`en-in`|heera-apollo<br>priyarus<br>ravi-apollo<br>|
-|Polski |`en-us`|jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus|
-|Francuski|`fr-ca`|caroline<br>harmonierus|
-|Francuski|`fr-fr`|hortenserus<br>julie-apollo<br>Paul-Apollo|
-|Niemiecki|`de-de`|hedda<br>heddarus<br>Stefan-Apollo|
-|Włoski|`it-it`|cosimo-apollo<br>luciarus|
-|Japoński|`ja-jp`|ayumi-apollo<br>harukarus<br>ichiro-apollo|
-|Koreański|`ko-kr`|heamirus|
-|Portugalski|`pt-br`|Daniel — Apollo<br>heloisarus|
-|Hiszpański|`es-es`|elenarus<br>Laura — Apollo<br>pablo-apollo<br>|
-|Hiszpański|`es-mx`|hildarus<br>raul-apollo|
+| Chiński | `zh-CN` | huihuirus<br>kangkang-apollo<br>yaoyao-apollo |
+| Polski | `en-AU` | catherine<br>hayleyrus |
+| Polski | `en-GB` | George — Apollo<br>hazelrus<br>Susan — Apollo |
+| Polski | `en-IN` | heera-apollo<br>priyarus<br>ravi-apollo<br> |
+| Polski | `en-US` | jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus |
+| Francuski | `fr-CA` | caroline<br>harmonierus |
+| Francuski | `fr-FR` | hortenserus<br>julie-apollo<br>Paul-Apollo |
+| Niemiecki | `de-DE` | hedda<br>heddarus<br>Stefan-Apollo |
+| Włoski | `it-IT` | cosimo-apollo<br>luciarus |
+| Japoński | `ja-JP` | ayumi-apollo<br>harukarus<br>ichiro-apollo |
+| Koreański | `ko-KR` | heamirus |
+| Portugalski | `pt-BR` | Daniel — Apollo<br>heloisarus |
+| Hiszpański | `es-ES` | elenarus<br>Laura — Apollo<br>pablo-apollo<br> |
+| Hiszpański | `es-MX` | hildarus<br>raul-apollo |
 
-### <a name="docker-pull-for-the-speech-containers"></a>Wypychanie platformy Docker dla kontenerów mowy
+> [!IMPORTANT]
+> Podczas konstruowania standardowego wpisu http zamiany *tekstu na mowę* , komunikat [SSML (Speech synteza Markup Language)](speech-synthesis-markup.md) wymaga elementu `voice` z atrybutem `name`. Wartość jest odpowiednimi ustawieniami regionalnymi kontenera i głosem, znanym również jako ["krótka nazwa"](language-support.md#standard-voices). Na przykład tag `latest` ma nazwę głosu `en-US-JessaRUS`.
 
-#### <a name="speech-to-text"></a>Zamiany mowy na tekst
+# <a name="custom-text-to-speechtabctts"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
+
+#### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Wypychanie platformy Docker dla niestandardowego kontenera zamiany tekstu na mowę
+
+Użyj [Docker pull](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera z rejestru w wersji zapoznawczej.
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest
 ```
 
-#### <a name="text-to-speech"></a>Zamiana tekstu na mowę
+> [!NOTE]
+> `locale` i `voice` niestandardowych kontenerów mowy jest określany przez model niestandardowy pozyskiwany przez kontener.
 
-```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest
-```
+***
 
 ## <a name="how-to-use-the-container"></a>Jak używać kontenera
 
 Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj następującego procesu, aby współpracować z kontenerem.
 
-1. [Uruchom kontener](#run-the-container-with-docker-run)z wymaganymi ustawieniami rozliczania. Więcej [przykładów](speech-container-configuration.md#example-docker-run-commands) `docker run` polecenia jest dostępnych.
+1. [Uruchom kontener](#run-the-container-with-docker-run)z wymaganymi ustawieniami rozliczania. Więcej [przykładów](speech-container-configuration.md#example-docker-run-commands) polecenia `docker run` są dostępne.
 1. [Zbadaj punkt końcowy przewidywania kontenera](#query-the-containers-prediction-endpoint).
 
-## <a name="run-the-container-with-docker-run"></a>Uruchom kontener za pomocą`docker run`
+## <a name="run-the-container-with-docker-run"></a>Uruchom kontener za pomocą `docker run`
 
-Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) `{ENDPOINT_URI}` , aby uzyskać szczegółowe `{API_KEY}` informacje na temat sposobu pobierania wartości i.
+Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić kontener. Zapoznaj się z tematem [zbieranie wymaganych parametrów](#gathering-required-parameters) , aby uzyskać szczegółowe informacje na temat pobierania wartości `{Endpoint_URI}` i `{API_Key}`. Dodatkowe [przykłady](speech-container-configuration.md#example-docker-run-commands) polecenia `docker run` są również dostępne.
 
-Przykłady polecenia są dostępne. [](speech-container-configuration.md#example-docker-run-commands) `docker run`
+# <a name="speech-to-texttabstt"></a>[Zamiana mowy na tekst](#tab/stt)
 
-> [!NOTE]
-> W trakcie korzystania z **wersji**zapoznawczej ustawienia rozliczeń muszą być prawidłowe, aby można było uruchomić kontener, ale nie są naliczane opłaty za użycie.
+Aby uruchomić kontener *zamiany mowy na tekst* , wykonaj następujące `docker run` polecenie.
 
-### <a name="text-to-speech"></a>Zamiana tekstu na mowę
+```bash
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
+containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+To polecenie:
+
+* Uruchamia kontener *zamiany mowy na tekst* z obrazu kontenera.
+* Przydziela 4 rdzenie procesora CPU i 4 gigabajty (GB) pamięci.
+* Udostępnia port TCP 5000 i przydziela pseudo-TTY dla kontenera.
+* Automatycznie usuwa kontener po zakończeniu. Obraz kontenera jest nadal dostępny na komputerze-hoście.
+
+# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech do tekstu](#tab/cstt)
+
+Kontener *Custom Speech do tekstu* opiera się na niestandardowym modelu mowy. Model niestandardowy musi być [szkolony](how-to-custom-speech-train-model.md) przy użyciu [portalu mowy niestandardowej](https://speech.microsoft.com/customspeech). Do uruchomienia kontenera jest wymagany niestandardowy **Identyfikator modelu** mowy. Można je znaleźć na stronie **uczenie** niestandardowego portalu mowy. W portalu niestandardowych mowy przejdź do strony **szkoleń** i wybierz model.
+<br>
+
+![Strona niestandardowego szkolenia mowy](media/custom-speech/custom-speech-model-training.png)
+
+Uzyskaj **Identyfikator modelu** , który ma być używany jako argument parametru `ModelId` polecenia `docker run`.
+<br>
+
+![Szczegóły niestandardowego modelu mowy](media/custom-speech/custom-speech-model-details.png)
+
+Poniższa tabela przedstawia różne `docker run` parametry i odpowiadające im opisy:
+
+| Parametr | Opis |
+|---------|---------|
+| `{VOLUME_MOUNT}` | [Instalacja woluminu](https://docs.docker.com/storage/volumes/)komputera hosta, który jest używany przez platformę Docker do utrwalania modelu niestandardowego. Na przykład *C:\CustomSpeech* , gdzie *dysk C* znajduje się na komputerze-hoście. |
+| `{MODEL_ID}` | **Identyfikator modelu** Custom Speech ze strony **szkoleń** w portalu Custom Speech. |
+| `{ENDPOINT_URI}` | Punkt końcowy jest wymagany do pomiaru i rozliczania. Aby uzyskać więcej informacji, zobacz [zbieranie wymaganych parametrów](#gathering-required-parameters). |
+| `{API_KEY}` | Wymagany jest klucz interfejsu API. Aby uzyskać więcej informacji, zobacz [zbieranie wymaganych parametrów](#gathering-required-parameters). |
+
+Aby uruchomić kontener *Custom Speech-to-Text* , wykonaj następujące polecenie `docker run`:
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
+-v {VOLUME_MOUNT}:/usr/local/models \
+containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text \
+ModelId={MODEL_ID} \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+To polecenie:
+
+* Uruchamia kontener *Custom Speech do tekstu* z obrazu kontenera.
+* Przydziela 4 rdzenie procesora CPU i 4 gigabajty (GB) pamięci.
+* Ładuje model *Custom Speech-to-Text* z instalacji wejściowej woluminu, na przykład *C:\CustomSpeech*.
+* Udostępnia port TCP 5000 i przydziela pseudo-TTY dla kontenera.
+* Pobiera model przyznany `ModelId` (jeśli nie został znaleziony w instalacji woluminu).
+* Jeśli model niestandardowy został wcześniej pobrany, `ModelId` jest ignorowany.
+* Automatycznie usuwa kontener po zakończeniu. Obraz kontenera jest nadal dostępny na komputerze-hoście.
+
+# <a name="text-to-speechtabtts"></a>[Zamiana tekstu na mowę](#tab/tts)
+
+Aby uruchomić kontener *zamiany tekstu na mowę* , wykonaj następujące `docker run` polecenie.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -193,11 +343,41 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="speech-to-text"></a>Zamiany mowy na tekst
+To polecenie:
+
+* Uruchamia kontener *zamiany tekstu na mowę* z obrazu kontenera.
+* Przydziela 2 rdzenie procesora CPU i jeden gigabajt (GB) pamięci.
+* Udostępnia port TCP 5000 i przydziela pseudo-TTY dla kontenera.
+* Automatycznie usuwa kontener po zakończeniu. Obraz kontenera jest nadal dostępny na komputerze-hoście.
+
+# <a name="custom-text-to-speechtabctts"></a>[Niestandardowa Zamiana tekstu na mowę](#tab/ctts)
+
+*Niestandardowy kontener zamiany tekstu na mowę* zależy od niestandardowego modelu głosu. Model niestandardowy musi być [szkolony](how-to-custom-voice-create-voice.md) przy użyciu [niestandardowego portalu głosowego](https://aka.ms/custom-voice-portal). Niestandardowy **Identyfikator modelu** głosu jest wymagany do uruchomienia kontenera. Można je znaleźć na stronie **uczenie** niestandardowego portalu głosowego. W portalu niestandardowego programu Voice przejdź do strony **szkoleń** i wybierz model.
+<br>
+
+![Niestandardowa strona szkoleń dotyczących głosu](media/custom-voice/custom-voice-model-training.png)
+
+Uzyskaj **Identyfikator modelu** , który ma być używany jako argument parametru `ModelId` polecenia Docker Run.
+<br>
+
+![Szczegóły niestandardowego modelu głosu](media/custom-voice/custom-voice-model-details.png)
+
+Poniższa tabela przedstawia różne `docker run` parametry i odpowiadające im opisy:
+
+| Parametr | Opis |
+|---------|---------|
+| `{VOLUME_MOUNT}` | [Instalacja woluminu](https://docs.docker.com/storage/volumes/)komputera hosta, który jest używany przez platformę Docker do utrwalania modelu niestandardowego. Na przykład *C:\CustomSpeech* , gdzie *dysk C* znajduje się na komputerze-hoście. |
+| `{MODEL_ID}` | **Identyfikator modelu** Custom Speech ze strony **uczenie** niestandardowego portalu głosu. |
+| `{ENDPOINT_URI}` | Punkt końcowy jest wymagany do pomiaru i rozliczania. Aby uzyskać więcej informacji, zobacz [zbieranie wymaganych parametrów](#gathering-required-parameters). |
+| `{API_KEY}` | Wymagany jest klucz interfejsu API. Aby uzyskać więcej informacji, zobacz [zbieranie wymaganych parametrów](#gathering-required-parameters). |
+
+Aby uruchomić *niestandardowy kontener zamiany tekstu na mowę* , wykonaj następujące `docker run` polecenie:
 
 ```bash
-docker run --rm -it -p 5000:5000 --memory 2g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
+docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
+-v {VOLUME_MOUNT}:/usr/local/models \
+containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech \
+ModelId={MODEL_ID} \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -205,62 +385,41 @@ ApiKey={API_KEY}
 
 To polecenie:
 
-* Uruchamia kontener mowy z obrazu kontenera
-* Przydziela 2 rdzenie procesora CPU i 2 gigabajty (GB) pamięci
-* Uwidacznia TCP port 5000 i przydziela pseudo-TTY kontenera
+* Uruchamia *niestandardowy kontener zamiany tekstu na mowę* z obrazu kontenera.
+* Przydziela 2 rdzenie procesora CPU i jeden gigabajt (GB) pamięci.
+* Ładuje *niestandardowy model zamiany tekstu na mowę* z instalacji wejścia woluminu, na przykład *C:\CustomVoice*.
+* Udostępnia port TCP 5000 i przydziela pseudo-TTY dla kontenera.
+* Pobiera model przyznany `ModelId` (jeśli nie został znaleziony w instalacji woluminu).
+* Jeśli model niestandardowy został wcześniej pobrany, `ModelId` jest ignorowany.
 * Automatycznie usuwa kontener po zakończeniu. Obraz kontenera jest nadal dostępny na komputerze-hoście.
 
+***
+
 > [!IMPORTANT]
-> `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing).
+> Aby można było uruchomić kontener, należy określić opcje `Eula`, `Billing`i `ApiKey`. w przeciwnym razie kontener nie zostanie uruchomiony.  Aby uzyskać więcej informacji, zobacz [rozliczenia](#billing).
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Zbadaj punkt końcowy przewidywania kontenera
 
-|Kontener|Endpoint|
-|--|--|
-|Zamiany mowy na tekst|ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1|
-|Zamiana tekstu na mowę|http://localhost:5000/speech/synthesize/cognitiveservices/v1|
+| Kontener | Endpoint | Protokół |
+|--|--|--|
+| Zamiana mowy na tekst | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
+| Custom Speech do tekstu | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
+| Zamiana tekstu na mowę | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
+| Niestandardowa Zamiana tekstu na mowę | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
 
-### <a name="speech-to-text"></a>Zamiany mowy na tekst
+Aby uzyskać więcej informacji na temat korzystania z protokołów WSS i HTTPS, zobacz [zabezpieczenia kontenera](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
 
-Kontener udostępnia interfejsy API punktu końcowego zapytania opartego na protokole WebSocket, do których można uzyskać dostęp za pośrednictwem [zestawu Speech SDK](index.yml).
+[!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
 
-Domyślnie zestaw Speech SDK używa usług online Speech Services. Aby użyć kontenera, należy zmienić metodę inicjacji. Zapoznaj się z poniższymi przykładami.
+### <a name="text-to-speech-or-custom-text-to-speech"></a>Zamiana tekstu na mowę lub niestandardowej zamiany tekstu na mowę
 
-#### <a name="for-c"></a>DlaC#
+[!INCLUDE [Query Text-to-speech container endpoint](includes/text-to-speech-container-query-endpoint.md)]
 
-Zmień użycie tego wywołania inicjalizacji Azure-Cloud:
+### <a name="run-multiple-containers-on-the-same-host"></a>Uruchamianie wielu kontenerów na tym samym hoście
 
-```csharp
-var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-```
+Jeśli zamierzasz uruchomić wiele kontenerów z uwidocznionymi portami, upewnij się, że każdy kontener jest uruchamiany z innym uwidocznionym portem. Na przykład Uruchom pierwszy kontener na porcie 5000 i drugi kontener na porcie 5001.
 
-do tego wywołania przy użyciu punktu końcowego kontenera:
-
-```csharp
-var config = SpeechConfig.FromEndpoint(
-    new Uri("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1"),
-    "YourSubscriptionKey");
-```
-
-#### <a name="for-python"></a>Dla języka Python
-
-Zmień użycie tego wywołania inicjalizacji Azure-Cloud
-
-```python
-speech_config = speechsdk.SpeechConfig(
-    subscription=speech_key, region=service_region)
-```
-
-do tego wywołania przy użyciu punktu końcowego kontenera:
-
-```python
-speech_config = speechsdk.SpeechConfig(
-    subscription=speech_key, endpoint="ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1")
-```
-
-### <a name="text-to-speech"></a>Zamiana tekstu na mowę
-
-Kontener zawiera interfejsy API punktu końcowego REST, które można znaleźć [tutaj](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech) , a przykłady można znaleźć [tutaj](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/).
+Można korzystać z tego kontenera i innego kontenera Cognitive Services platformy Azure uruchomionego na HOŚCIE. Można również mieć wiele kontenerów tego samego kontenera Cognitive Services uruchomione.
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
@@ -270,19 +429,19 @@ Kontener zawiera interfejsy API punktu końcowego REST, które można znaleźć 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli uruchamiasz kontener z [instalacją wyjściową](speech-container-configuration.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera.
+Podczas uruchamiania lub uruchamiania kontenera mogą wystąpić problemy. Należy użyć [instalacji](speech-container-configuration.md#mount-settings) wyjściowej i włączyć rejestrowanie. Wykonanie tej operacji umożliwi kontenerowi generowanie plików dziennika, które są przydatne podczas rozwiązywania problemów.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Rozliczenia
 
-Kontenery mowy wysyłają informacje o rozliczeniach do platformy Azure przy użyciu zasobu _mowy_ na koncie platformy Azure.
+Kontenery mowy wysyłają informacje o rozliczeniach do platformy Azure przy użyciu zasobu *mowy* na koncie platformy Azure.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](speech-container-configuration.md).
+Aby uzyskać więcej informacji na temat tych opcji, zobacz [Konfigurowanie kontenerów](speech-container-configuration.md).
 
-<!--blogs/samples/video coures -->
+<!--blogs/samples/video courses -->
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
@@ -290,16 +449,21 @@ Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery
 
 W tym artykule przedstawiono koncepcje i przepływ pracy służące do pobierania, instalowania i uruchamiania kontenerów mowy. Podsumowanie:
 
-* Funkcja rozpoznawania mowy oferuje dwa kontenery systemu Linux dla platformy Docker, hermetyzując mowę na tekst i tekst na mowę.
-* Obrazy kontenerów są pobierane z prywatnego rejestru kontenerów na platformie Azure.
-* Obrazy kontenera Uruchom na platformie Docker.
+* Funkcja rozpoznawania mowy oferuje cztery kontenery systemu Linux dla platformy Docker, hermetyzowając różne możliwości:
+  * *Zamiana mowy na tekst*
+  * *Custom Speech do tekstu*
+  * *Zamiana tekstu na mowę*
+  * *Niestandardowa Zamiana tekstu na mowę*
+* Obrazy kontenerów są pobierane z rejestru kontenerów na platformie Azure.
+* Obrazy kontenerów są uruchamiane w platformie Docker.
 * Można użyć interfejsu API REST lub zestawu SDK do wywoływania operacji w kontenerach mowy przez określenie identyfikatora URI hosta kontenera.
 * Podczas tworzenia wystąpienia kontenera wymagane jest podanie informacji dotyczących rozliczeń.
 
 > [!IMPORTANT]
->  Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klientów (np. obraz lub tekst, który jest analizowana) do firmy Microsoft.
+>  Kontenery Cognitive Services nie są licencjonowane do uruchamiania bez połączenia z platformą Azure w celu pomiaru. Klienci muszą włączyć kontenery do przekazywania informacji rozliczeniowych za pomocą usługi pomiarowej przez cały czas. Kontenery Cognitive Services nie wysyłają danych klienta (np. obrazu lub tekstu, który jest analizowany) do firmy Microsoft.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Przegląd [skonfigurować kontenery](speech-container-configuration.md) ustawień konfiguracji
+* Przegląd [konfigurowania kontenerów](speech-container-configuration.md) dla ustawień konfiguracji
+* Dowiedz się [, jak używać kontenerów usługi mowy z Kubernetes i Helm](speech-container-howto-on-premises.md)
 * Użyj więcej [kontenerów Cognitive Services](../cognitive-services-container-support.md)

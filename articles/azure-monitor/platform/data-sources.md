@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/23/2019
-ms.openlocfilehash: 7c03c0c649876143eaa75c98fa0c9001f2b24fbd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b93bf4f67c2581b7cac476b83fc130bf344cfa83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932383"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476741"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Źródła danych monitorowania dla Azure Monitor
 Azure Monitor jest oparta na [wspólnej platformie danych monitorowania](data-platform.md) , która obejmuje [dzienniki](data-platform-logs.md) i [metryki](data-platform-metrics.md). Zbieranie danych do tej platformy pozwala analizować dane z wielu zasobów wspólnie przy użyciu wspólnego zestawu narzędzi w Azure Monitor. Dane monitorowania mogą być również wysyłane do innych lokalizacji w celu obsługi niektórych scenariuszy, a niektóre zasoby mogą zapisywać w innych lokalizacjach, zanim będą mogły być zbierane w dziennikach lub metrykach.
@@ -74,7 +74,7 @@ Dane telemetryczne związane z kondycją i działaniem subskrypcji platformy Azu
 | Dziennik aktywności | Dziennik aktywności jest zbierany do własnego magazynu danych, który można wyświetlić z menu Azure Monitor lub użyć do tworzenia alertów dziennika aktywności. | [Wykonaj zapytanie dotyczące dziennika aktywności w Azure Portal](activity-log-view.md#azure-portal) |
 | Dzienniki usługi Azure Monitor | Skonfiguruj dzienniki Azure Monitor w celu zebrania dziennika aktywności w celu przeanalizowania go przy użyciu innych danych monitorowania. | [Zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym Log Analytics w Azure Monitor](activity-log-collect.md) |
 | Azure Storage | Wyeksportuj dziennik aktywności do usługi Azure Storage w celu archiwizacji. | [Archiwizowanie dziennika aktywności](activity-log-export.md#archive-activity-log)  |
-| Centra zdarzeń | Strumieniowe przesyłanie dziennika aktywności do innych lokalizacji przy użyciu Event Hubs | [Przesyłaj strumieniowo dziennik aktywności do centrum zdarzeń](activity-log-export.md#stream-activity-log-to-event-hub). |
+| Usługa Event Hubs | Strumieniowe przesyłanie dziennika aktywności do innych lokalizacji przy użyciu Event Hubs | [Przesyłaj strumieniowo dziennik aktywności do centrum zdarzeń](activity-log-export.md#stream-activity-log-to-event-hub). |
 
 ### <a name="azure-service-health"></a>Azure Service Health
 [Azure Service Health](../../service-health/service-health-overview.md) zawiera informacje o kondycji usług platformy Azure w ramach subskrypcji, na których zależą Twoje aplikacje i zasoby.
@@ -84,7 +84,7 @@ Dane telemetryczne związane z kondycją i działaniem subskrypcji platformy Azu
 | Dziennik aktywności<br>Dzienniki usługi Azure Monitor | Rekordy Service Health są przechowywane w dzienniku aktywności platformy Azure, dzięki czemu można je przeglądać w Azure Portal lub wykonywać inne czynności, które można wykonać przy użyciu dziennika aktywności. | [Wyświetlanie powiadomień dotyczących kondycji usługi za pomocą witryny Azure Portal](service-notifications.md) |
 
 
-## <a name="azure-resources"></a>Zasoby Azure
+## <a name="azure-resources"></a>Zasoby platformy Azure
 Metryki i dzienniki zasobów zawierają informacje o _wewnętrznej_ operacji zasobów platformy Azure. Są one dostępne dla większości usług platformy Azure, a monitorowanie rozwiązań i szczegółowych informacji zbiera dodatkowe dane dotyczące określonych usług.
 
 ![Zbieranie zasobów platformy Azure](media/data-sources/azure-resources.png)
@@ -97,7 +97,7 @@ Większość usług platformy Azure wyśle [metryki platformy](data-platform-met
 |:---|:---|:---|
 | Metryki Azure Monitor | Metryki platformy będą zapisywać w bazie danych metryk Azure Monitor bez konfiguracji. Uzyskaj dostęp do metryk platformy z Eksplorator metryk.  | [Wprowadzenie do Eksploratora metryk platformy Azure](metrics-getting-started.md)<br>[Obsługiwane metryki z Azure Monitor](metrics-supported.md) |
 | Dzienniki usługi Azure Monitor | Kopiuj metryki platformy do dzienników dla trendów i innych analiz przy użyciu Log Analytics. | [Diagnostyka Azure bezpośrednio do Log Analytics](resource-logs-collect-workspace.md) |
-| Centra zdarzeń | Metryki strumienia do innych lokalizacji przy użyciu Event Hubs. |[Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń w celu użycia przez narzędzie zewnętrzne](stream-monitoring-data-event-hubs.md) |
+| Usługa Event Hubs | Metryki strumienia do innych lokalizacji przy użyciu Event Hubs. |[Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń w celu użycia przez narzędzie zewnętrzne](stream-monitoring-data-event-hubs.md) |
 
 ### <a name="resource-logs"></a>Dzienniki zasobów
 [Dzienniki zasobów](resource-logs-overview.md) zapewniają wgląd w _wewnętrzną_ operację zasobów platformy Azure.  Dzienniki zasobów są tworzone automatycznie, ale należy utworzyć ustawienie diagnostyczne, aby określić miejsce docelowe do zebrania dla każdego zasobu.
@@ -107,8 +107,8 @@ Wymagania dotyczące konfiguracji i zawartość dzienników zasobów różnią s
 | Cel | Opis | Informacje ogólne |
 |:---|:---|:---|
 | Dzienniki usługi Azure Monitor | Wyślij dzienniki zasobów, aby Azure Monitor dzienniki analizy z innymi zebranymi danymi dzienników. | [Zbieranie dzienników zasobów platformy Azure w obszarze roboczym Log Analytics w Azure Monitor](resource-logs-collect-storage.md) |
-| Usługa Storage | Wyślij dzienniki zasobów do usługi Azure Storage w celu archiwizacji. | [Archiwizowanie dzienników zasobów platformy Azure](resource-logs-collect-workspace.md) |
-| Centra zdarzeń | Przesyłanie strumieniowe dzienników zasobów do innych lokalizacji przy użyciu Event Hubs. |[Przesyłanie strumieniowe dzienników zasobów platformy Azure do centrum zdarzeń](resource-logs-stream-event-hubs.md) |
+| Magazyn | Wyślij dzienniki zasobów do usługi Azure Storage w celu archiwizacji. | [Archiwizowanie dzienników zasobów platformy Azure](resource-logs-collect-workspace.md) |
+| Usługa Event Hubs | Przesyłanie strumieniowe dzienników zasobów do innych lokalizacji przy użyciu Event Hubs. |[Przesyłanie strumieniowe dzienników zasobów platformy Azure do centrum zdarzeń](resource-logs-stream-event-hubs.md) |
 
 ## <a name="operating-system-guest"></a>System operacyjny (gościa)
 Zasoby obliczeniowe na platformie Azure, w innych chmurach i lokalnie, mają system operacyjny gościa do monitorowania. W przypadku instalacji jednego lub większej liczby agentów można zbierać dane telemetryczne od gościa do Azure Monitor, aby przeanalizować je za pomocą tych samych narzędzi monitorujących co same usługi platformy Azure.
@@ -120,10 +120,10 @@ Włączenie rozszerzenia Diagnostyka Azure dla usługi Azure Virtual Machines um
 
 | Cel | Opis | Informacje ogólne |
 |:---|:---|:---|
-| Usługa Storage | Włączenie rozszerzenia Diagnostyka spowoduje domyślne zapisanie konta magazynu. | [Przechowywanie i przeglądanie danych diagnostycznych w usłudze Azure Storage](diagnostics-extension-to-storage.md) |
+| Magazyn | Włączenie rozszerzenia Diagnostyka spowoduje domyślne zapisanie konta magazynu. | [Przechowywanie i przeglądanie danych diagnostycznych w usłudze Azure Storage](diagnostics-extension-to-storage.md) |
 | Metryki Azure Monitor | Podczas konfigurowania rozszerzenia diagnostyki do zbierania liczników wydajności są one zapisywane w bazie danych metryk Azure Monitor. | [Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Menedżer zasobów dla maszyny wirtualnej z systemem Windows](collect-custom-metrics-guestos-resource-manager-vm.md) |
 | Dzienniki Application Insights | Zbieranie dzienników i liczników wydajności z zasobów obliczeniowych obsługujących aplikację do analizy z innymi danymi aplikacji. | [Wyślij usługę w chmurze, maszynę wirtualną lub Service Fabric dane diagnostyczne do Application Insights](diagnostics-extension-to-application-insights.md) |
-| Centra zdarzeń | Skonfiguruj rozszerzenie diagnostyki, aby przesyłać strumieniowo dane do innych lokalizacji przy użyciu Event Hubs.  | [Przesyłanie strumieniowe danych Diagnostyka Azure w ścieżce gorąca przy użyciu Event Hubs](diagnostics-extension-stream-event-hubs.md) |
+| Usługa Event Hubs | Skonfiguruj rozszerzenie diagnostyki, aby przesyłać strumieniowo dane do innych lokalizacji przy użyciu Event Hubs.  | [Przesyłanie strumieniowe danych Diagnostyka Azure w ścieżce gorąca przy użyciu Event Hubs](diagnostics-extension-stream-event-hubs.md) |
 
 ### <a name="log-analytics-agent"></a>Agent Log Analytics 
 Zainstaluj agenta Log Analytics, aby uzyskać kompleksowe monitorowanie i zarządzanie maszynami wirtualnymi z systemem Windows lub Linux. Maszyna wirtualna może działać na platformie Azure, w innej chmurze lub lokalnie.
@@ -173,14 +173,14 @@ Po włączeniu Application Insights aplikacji przez zainstalowanie pakietu Instr
 | Dzienniki usługi Azure Monitor | Monitorowanie rozwiązań zbiera dane do dzienników Azure Monitor, które mogą być analizowane przy użyciu języka zapytań lub [widoków](view-designer.md) , które są zwykle dołączone do rozwiązania. | [Szczegóły zbierania danych na potrzeby monitorowania rozwiązań na platformie Azure](../insights/solutions-inventory.md) |
 
 
-### <a name="azure-monitor-for-containers"></a>Azure Monitor kontenerów
+### <a name="azure-monitor-for-containers"></a>Usługa Azure Monitor dla kontenerów
 [Azure monitor dla kontenerów](../insights/container-insights-overview.md) zapewnia dostosowane środowisko monitorowania dla [usługi Azure KUBERNETES Service (AKS)](/azure/aks/). Zbiera ona dodatkowe dane dotyczące tych zasobów opisanych w poniższej tabeli.
 
 | Cel | Opis | Informacje ogólne |
 |:---|:---|:---|
 | Dzienniki usługi Azure Monitor | Przechowuje dane monitorowania dla AKS, w tym spis, dzienniki i zdarzenia. Dane metryk są również przechowywane w dziennikach, aby można było korzystać z funkcji analizy w portalu. | [Sprawdzanie wydajności klastra usługi AKS w usłudze Azure Monitor dla kontenerów](../insights/container-insights-analyze.md) |
 | Metryki Azure Monitor | Dane metryk są przechowywane w bazie danych metryk w celu utworzenia wizualizacji i alertów. | [Wyświetlanie metryk kontenera w Eksploratorze metryk](../insights/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
-| Azure Kubernetes Service | W celu poprawienia czasu rzeczywistego środowisko Azure Monitor dla kontenerów prezentuje dane bezpośrednio z usługi Azure Kubernetes w Azure Portal. | [Jak wyświetlić dzienniki kontenerów w czasie rzeczywistym w usłudze Azure Monitor dla kontenerów (wersja zapoznawcza)](../insights/container-insights-live-logs.md) |
+| Azure Kubernetes Service | Zapewnia bezpośredni dostęp do dzienników kontenerów usługi Azure Kubernetes Service (AKS) (stdout/stderr), zdarzeń i metryk pod w portalu. | [Jak wyświetlać dzienniki Kubernetes, zdarzenia i metryki pod względem czasu rzeczywistego](../insights/container-insights-livedata-overview.md) |
 
 ### <a name="azure-monitor-for-vms"></a>Usługa Azure Monitor dla maszyn wirtualnych
 [Azure monitor dla maszyn wirtualnych](../insights/vminsights-overview.md) zapewnia dostosowane środowisko monitorowania maszyn wirtualnych. Opis danych zbieranych przez Azure Monitor dla maszyn wirtualnych znajduje się w powyższej sekcji [systemu operacyjnego (gościa)](#operating-system-guest) .

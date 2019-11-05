@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 28502c49c0eebce84ffd5aa376e7b20bd52213c0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674983"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469067"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -156,8 +156,8 @@ W wersji 2. x po uruchomieniu polecenia należy wybrać środowisko uruchomienio
 Select a worker runtime:
 dotnet
 node
-python (preview)
-powershell (preview)
+python 
+powershell
 ```
 
 Użyj klawiszy strzałek w górę/w dół, aby wybrać język, a następnie naciśnij klawisz ENTER. Jeśli planujesz programowanie funkcji JavaScript lub TypeScript, wybierz **węzeł**, a następnie wybierz język. Język TypeScript ma [pewne dodatkowe wymagania](functions-reference-node.md#typescript). 
@@ -182,7 +182,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--force`** | Zainicjuj projekt nawet wtedy, gdy istnieją pliki w projekcie. To ustawienie zastępuje istniejące pliki o tej samej nazwie. Nie ma to wpływu na inne pliki w folderze projektu. |
 | **`--no-source-control -n`** | Zapobiega domyślnym tworzeniu repozytorium Git w wersji 1. x. W wersji 2. x repozytorium Git nie jest tworzone domyślnie. |
 | **`--source-control`** | Określa, czy tworzone jest repozytorium git. Domyślnie repozytorium nie jest tworzone. Gdy `true`, tworzone jest repozytorium. |
-| **`--worker-runtime`** | Ustawia środowisko uruchomieniowe języka dla projektu. Obsługiwane wartości to `dotnet`, `node` (JavaScript), `java` i `python`. Gdy nie jest ustawiona, zostanie wyświetlony monit o wybranie środowiska uruchomieniowego podczas inicjowania. |
+| **`--worker-runtime`** | Ustawia środowisko uruchomieniowe języka dla projektu. Obsługiwane wartości to `dotnet`, `node` (JavaScript), `java`i `python`. Gdy nie jest ustawiona, zostanie wyświetlony monit o wybranie środowiska uruchomieniowego podczas inicjowania. |
 
 > [!IMPORTANT]
 > Domyślnie wersja 2. x podstawowych narzędzi tworzy projekty aplikacji funkcji dla środowiska uruchomieniowego .NET jako [ C# projekty klas](functions-dotnet-class-library.md) (. csproj). Te C# projekty, które mogą być używane z programem Visual Studio lub Visual Studio Code, są kompilowane podczas testowania i podczas publikowania na platformie Azure. Jeśli zamiast tego chcesz utworzyć i korzystać z tych samych C# plików skryptów (. CSX) utworzonych w wersji 1. x i w portalu, musisz uwzględnić parametr `--csx` podczas tworzenia i wdrażania funkcji.
@@ -202,17 +202,19 @@ Wartości ustawień aplikacji funkcji można także odczytać w kodzie jako zmie
 
 Gdy nie ustawiono prawidłowych parametrów połączenia magazynu dla [`AzureWebJobsStorage`] i emulator nie jest używany, zostanie wyświetlony następujący komunikat o błędzie:
 
-> Brak wartości elementu AzureWebJobsStorage w pliku Local. Settings. JSON. Jest to wymagane dla wszystkich wyzwalaczy innych niż HTTP. Można uruchomić polecenie "Func Azure functionapp Fetch-App-Settings \<functionAppName \>" lub określić parametry połączenia w pliku Local. Settings. JSON.
+> Brak wartości elementu AzureWebJobsStorage w pliku Local. Settings. JSON. Jest to wymagane dla wszystkich wyzwalaczy innych niż HTTP. Można uruchomić polecenie "Func Azure functionapp Fetch-App-Settings \<functionAppName\>" lub określić parametry połączenia w pliku Local. Settings. JSON.
 
 ### <a name="get-your-storage-connection-strings"></a>Pobieranie parametrów połączenia magazynu
 
 Nawet w przypadku korzystania z emulatora magazynu na potrzeby programowania można testować przy użyciu rzeczywistego połączenia magazynu. Przy założeniu, że [konto magazynu](../storage/common/storage-create-storage-account.md)zostało już utworzone, można uzyskać prawidłowe parametry połączenia magazynu w jeden z następujących sposobów:
 
-+ Z [Azure Portal]. Przejdź do konta magazynu, wybierz pozycję **klucze dostępu** w obszarze **Ustawienia**, a następnie skopiuj jedną z wartości **parametrów połączenia** .
+- W [Azure Portal]Wyszukaj i wybierz pozycję **konta magazynu**. 
+  ![Wybieranie kont magazynu z Azure Portal](./media/functions-run-local/select-storage-accounts.png)
+  
+  Wybierz konto magazynu, wybierz pozycję **klucze dostępu** w obszarze **Ustawienia**, a następnie skopiuj jedną z wartości **parametrów połączenia** .
+  ![skopiować parametrów połączenia z Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-  ![Kopiuj parametry połączenia z Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
-
-+ Użyj [Eksplorator usługi Azure Storage](https://storageexplorer.com/) , aby nawiązać połączenie z kontem platformy Azure. W **Eksploratorze**Rozwiń swoją subskrypcję, wybierz konto magazynu i skopiuj podstawowe lub pomocnicze parametry połączenia.
+- Użyj [Eksplorator usługi Azure Storage](https://storageexplorer.com/) , aby nawiązać połączenie z kontem platformy Azure. W **Eksploratorze**Rozwiń swoją subskrypcję, wybierz konto magazynu i skopiuj podstawowe lub pomocnicze parametry połączenia.
 
   ![Kopiuj parametry połączenia z Eksplorator usługi Storage](./media/functions-run-local/storage-explorer.png)
 

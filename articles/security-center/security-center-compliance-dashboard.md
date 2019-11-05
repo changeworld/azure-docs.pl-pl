@@ -1,6 +1,6 @@
 ---
 title: Zwiększanie zgodności z przepisami przy użyciu usługi Azure Security Center | Microsoft Docs
-description: 'Samouczek: Informacje na temat zwiększania zgodności z przepisami przy użyciu usługi Azure Security Center.'
+description: 'Samouczek: informacje na temat ulepszania zgodności z przepisami przy użyciu Azure Security Center.'
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/30/2019
+ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 20842997c5df81835024a6f458cd863b4e4d78b0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 2961474e84930cf548a1ef23b19fcd1be443b151
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202431"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520919"
 ---
-# <a name="tutorial-improve-your-regulatory-compliance"></a>Samouczek: Zwiększanie zgodności z przepisami
+# <a name="tutorial-improve-your-regulatory-compliance"></a>Samouczek: ulepszanie zgodności z przepisami
 ---
 
-Usługa Azure Security Center usprawnia proces spełniania wymagań dotyczących zgodności z przepisami dzięki możliwości korzystania z pulpitu nawigacyjnego Zgodność z przepisami. Ten pulpit nawigacyjny usługi Security Center zapewnia wgląd w poziom zgodności w oparciu o ciągłe oceny środowiska platformy Azure. Oceny wykonywane przez usługę Security Center analizują czynniki ryzyka w środowisku chmury hybrydowej zgodnie z najlepszymi rozwiązaniami w zakresie zabezpieczeń. Te oceny są mapowane na kontrolki zgodności z obsługiwanego zestawu standardów. Pulpit nawigacyjny Zgodność z przepisami zapewnia przejrzysty widok stanu wszystkich tych ocen w Twoim środowisku w kontekście określonego standardu lub przepisu. W miarę podejmowania działań zgodnych z rekomendacjami i ograniczania czynników ryzyka w Twoim środowisku możesz obserwować poprawę poziomu zgodności.
+Azure Security Center pomaga usprawnić proces spełnienia wymagań dotyczących zgodności z przepisami przy użyciu **pulpitu nawigacyjnego zgodności z przepisami**. Ten pulpit nawigacyjny usługi Security Center zapewnia wgląd w poziom zgodności w oparciu o ciągłe oceny środowiska platformy Azure. Security Center analizuje czynniki ryzyka w środowisku chmury hybrydowej zgodnie z najlepszymi rozwiązaniami w zakresie zabezpieczeń. Te oceny są mapowane na kontrolki zgodności z obsługiwanego zestawu standardów. Na pulpicie nawigacyjnym zgodności z przepisami można zobaczyć stan wszystkich ocen w danym środowisku w kontekście określonego standardu lub rozporządzenia. Zgodnie z zaleceniami i zmniejszeniem czynników ryzyka w Twoim środowisku stan zgodności.
 
 Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -45,20 +45,18 @@ Usługa Security Center w sposób ciągły ocenia konfigurację zasobów, aby id
 Widok pulpitu nawigacyjnego Zgodność z przepisami ułatwia skoncentrowanie uwagi na lukach w zgodności z ważnym dla Ciebie standardem lub przepisem. Ten skoncentrowany widok umożliwia także stałe monitorowanie oceny zgodności w miarę upływu czasu w chmurze dynamicznej i środowiskach hybrydowych.
 
 >[!NOTE]
-> Obecnie obsługiwane standardy prawne to: Azure CIS, PCI DSS 3.2, ISO 27001 i SOC TSP. Dodatkowe standardy będą odzwierciedlane na pulpicie nawigacyjnym w miarę ich rozwijania.
-1.  W menu głównym Security Center w obszarze **zasady &AMP; zgodność** wybierz pozycję **zgodność z przepisami**. <br>
+> Domyślnie Security Center obsługuje następujące standardy prawne: Azure CIS, PCI DSS 3,2, ISO 27001 i SOC TSP. 
+>
+> Funkcja [dynamiczne pakiety zgodności (wersja zapoznawcza)](update-regulatory-compliance-packages.md) pozwala uaktualnić standardy widoczne na pulpicie nawigacyjnym zgodności z przepisami do nowych pakietów *dynamicznych* . Możesz także użyć tej samej funkcji w wersji zapoznawczej, aby dodać nowe pakiety zgodności i monitorować swoją zgodność przy użyciu dodatkowych standardów. 
+
+1.  W menu głównym Security Center w obszarze **zasady & zgodność** wybierz pozycję **zgodność z przepisami**. <br>
 W górnej części ekranu zostanie wyświetlony pulpit nawigacyjny zawierający przegląd stanu zgodności z zestawem obsługiwanych przepisów dotyczących zgodności. Widoczna jest ogólna ocena zgodności oraz liczba ocen zakończonych powodzeniem i niepowodzeniem skojarzonych z każdym standardem.
 
     ![Opis komputera — godny zaufania](./media/security-center-compliance-dashboard/compliance-dashboard.png)
 
-
-2.  Wybierz kartę standardu zgodności, który Cię dotyczy. Zostanie wyświetlona lista wszystkich kontrolek dla tego standardu. W przypadku właściwych kontrolek możesz wyświetlić szczegóły ocen zakończonych powodzeniem i niepowodzeniem skojarzonych z daną kontrolką. Niektóre kontrolki są wyszarzone. Z tymi kontrolkami nie są skojarzone żadne oceny usługi Security Center. Musisz przeanalizować dotyczące ich wymagania i oceniać je w Twoim środowisku samodzielnie. Niektóre z nich mogą być powiązane z procesem, a nie techniczne.
+2.  Wybierz kartę standardu zgodności, który Cię dotyczy. Zostanie wyświetlona lista wszystkich kontrolek dla tego standardu. W przypadku właściwych kontrolek możesz wyświetlić szczegóły ocen zakończonych powodzeniem i niepowodzeniem skojarzonych z daną kontrolką. Niektóre kontrolki są wyszarzone. Te kontrolki nie mają skojarzonych z nimi ocen Security Center. Sprawdź wymagania dotyczące tych i Oceń je we własnym środowisku. Niektóre z nich mogą być powiązane z procesem, a nie techniczne.
 
     ![Karta zgodności](./media/security-center-compliance-dashboard/compliance-pci.png)
-
-3. Wybierz kartę **Wszystkie**, aby wyświetlić widok wszystkich odpowiednich rekomendacji usługi Security Center i skojarzonych z nimi standardów. Ten widok może ułatwić zidentyfikowanie wszystkich standardów, których dotyczy określona rekomendacja. <br> Korzystając z tego widoku, możesz również nadawać priorytety rekomendacjom, które trzeba wprowadzić w życie. Na przykład jeśli widzisz, że zalecenie **Włącz uwierzytelnianie wieloskładnikowe dla kont z uprawnieniami właściciela w Twojej subskrypcji** kończy się niepowodzeniem na wielu zasobach i jest skojarzone z wieloma standardami, wprowadzenie tej rekomendacji będzie mieć bardzo duży wpływ na ogólną ocenę zgodności.
-
-    ![Wpływ na ocenę zgodności](./media/security-center-compliance-dashboard/compliance-all-tabs.png)
 
 1. Aby wygenerować i pobrać raport PDF podsumowujący bieżący stan zgodności dla określonego standardu, kliknij przycisk **Pobierz raport**.
 
@@ -72,15 +70,17 @@ Dzięki informacjom wyświetlanym na pulpicie nawigacyjnym Zgodność z przepisa
 
 1.  Kliknij dowolną ocenę zakończoną niepowodzeniem, która jest widoczna na pulpicie nawigacyjnym, aby wyświetlić szczegóły dotyczące tej rekomendacji. Każda rekomendacja obejmuje zestaw czynności zaradczych, które należy wykonać, aby rozwiązać problem.
 
-2.  Możesz wybrać określony zasób, aby wyświetlić więcej szczegółów i zastosować rekomendację dotyczącą tego zasobu. <br>Na przykład na karcie **Standard Azure CIS** możesz kliknąć rekomendację **Wymagaj bezpiecznego transferu na konto magazynu**.
+1.  Możesz wybrać określony zasób, aby wyświetlić więcej szczegółów i zastosować rekomendację dotyczącą tego zasobu. <br>Na przykład na karcie **Standard Azure CIS** możesz kliknąć rekomendację **Wymagaj bezpiecznego transferu na konto magazynu**.
 
     ![Rekomendacje dotyczące zgodności](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
-3. Klikanie informacji dotyczących rekomendacji i wybieranie zasobów w złej kondycji prowadzi bezpośrednio do środowiska włączania **bezpiecznego transferu magazynu** w witrynie Azure Portal.<br>Więcej informacji dotyczących stosowania rekomendacji można znaleźć w temacie [Wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
+1. Klikanie informacji dotyczących rekomendacji i wybieranie zasobów w złej kondycji prowadzi bezpośrednio do środowiska włączania **bezpiecznego transferu magazynu** w witrynie Azure Portal.
+
+    Więcej informacji dotyczących stosowania rekomendacji można znaleźć w temacie [Wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
 
     ![Rekomendacje dotyczące zgodności](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
-4.  Gdy zastosujesz się do rekomendacji, w raporcie pulpitu nawigacyjnego zgodności zostanie wyświetlony ich wpływ, ponieważ zwiększy się ocena zgodności.
+1.  Gdy zastosujesz się do rekomendacji, w raporcie pulpitu nawigacyjnego zgodności zostanie wyświetlony ich wpływ, ponieważ zwiększy się ocena zgodności.
 
     > [!NOTE]
     > Oceny są przeprowadzane mniej więcej co 12 godzin, dlatego wpływ na dane dotyczące zgodności zobaczysz dopiero po uruchomieniu oceny.
@@ -95,12 +95,14 @@ W tym samouczku omówiono używanie pulpitu nawigacyjnego Zgodność z przepisam
 
 Pulpit nawigacyjny Zgodność z przepisami może znacznie uprościć proces zapewniania zgodności i zauważalnie skrócić czas wymagany do uzyskania dowodu zgodności dla platformy Azure i środowiska hybrydowego.
 
-Aby dowiedzieć się więcej na temat usługi Security Center, zobacz:
+Aby dowiedzieć się więcej, zobacz:
 
--   [Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
+-   [Zaktualizuj dynamiczne pakiety zgodności na pulpicie nawigacyjnym zgodności z przepisami (wersja zapoznawcza)](update-regulatory-compliance-packages.md) — Dowiedz się więcej na temat tej funkcji w wersji zapoznawczej, która umożliwia zaktualizowanie standardów widocznych na pulpicie nawigacyjnym zgodności z przepisami w celu uzyskania nowych pakietów *dynamicznych* . Możesz również tę samą funkcję w wersji zapoznawczej, aby dodać nowe pakiety zgodności i monitorować swoją zgodność przy użyciu dodatkowych standardów. 
 
--   [Zarządzanie rekomendacjami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — informacje o tym, jak korzystając z rekomendacji w usłudze Azure Security Center, ułatwić sobie ochronę zasobów platformy Azure.
+-   [Monitorowanie kondycji zabezpieczeń w Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 
--   [Zwiększanie oceny zabezpieczeń w usłudze Azure Security Center](security-center-secure-score.md) — informacje o tym, jak określać priorytety luk w zabezpieczeniach i rekomendacji dotyczących zabezpieczeń, aby jak najbardziej zwiększyć poziom bezpieczeństwa.
+-   [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md) — Dowiedz się, jak używać zaleceń w programie Azure Security Center, aby pomóc w ochronie zasobów platformy Azure.
 
--   [Centrum zabezpieczeń Azure — często zadawane pytania](security-center-faq.md) — odpowiedzi na najczęstsze pytania dotyczące korzystania z usługi.
+-   [Popraw swój Bezpieczny wynik w Azure Security Center](security-center-secure-score.md) — Dowiedz się, jak określać priorytety luk w zabezpieczeniach i zalecenia dotyczące zabezpieczeń, aby zwiększyć bezpieczeństwo stan.
+
+-   [Azure Security Center często zadawane](security-center-faq.md) pytania — Znajdź często zadawane pytania dotyczące korzystania z usługi.

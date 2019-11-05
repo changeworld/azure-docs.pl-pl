@@ -1,5 +1,5 @@
 ---
-title: Jednostki magazynu danych (jednostek dwu, cDWUs) w Azure SQL Data Warehouse | Microsoft Docs
+title: Jednostki magazynu danych (jednostek dwu, cDWUs) w usłudze Azure Synapse Analytics (dawniej SQL DW) | Microsoft Docs
 description: Zalecenia dotyczące wyboru idealnej liczby jednostek magazynu danych (jednostek dwu, cDWUs) w celu zoptymalizowania cen i wydajności oraz sposobu zmiany liczby jednostek.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 05/30/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 mscustom: sqlfreshmay19
-ms.openlocfilehash: 282fab70e3b6d1fcf81814b2dd599259e2396fb3
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036056"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475753"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednostki magazynu danych (jednostek dwu) i jednostki magazynu danych obliczeniowych (cDWUs)
 
@@ -24,15 +24,15 @@ Zalecenia dotyczące wyboru idealnej liczby jednostek magazynu danych (jednostek
 
 ## <a name="what-are-data-warehouse-units"></a>Co to są jednostki magazynu danych
 
-Azure SQL Data Warehouse procesora CPU, pamięci i operacji we/wy są powiązane z jednostkami skali obliczeniowej o nazwie jednostki magazynu danych (jednostek dwu). JEDNOSTEK dwu reprezentuje abstrakcyjną, znormalizowaną miarę zasobów obliczeniowych i wydajności. Zmiana poziomu usługi zmienia liczbę jednostek dwu, które są dostępne dla systemu, co z kolei dostosowuje wydajność i koszt systemu.
+Pula SQL reprezentuje kolekcję zasobów analitycznych, które są obsługiwane podczas korzystania z usługi [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse). Zasoby analityczne są definiowane jako kombinacja procesora CPU, pamięci i operacji we/wy. Te trzy zasoby są powiązane z jednostkami skali obliczeniowej o nazwie jednostki magazynu danych (jednostek dwu). JEDNOSTEK dwu reprezentuje abstrakcyjną, znormalizowaną miarę zasobów obliczeniowych i wydajności. Zmiana poziomu usługi zmienia liczbę jednostek dwu, które są dostępne dla systemu, co z kolei dostosowuje wydajność i koszt systemu.
 
 Aby uzyskać większą wydajność, można zwiększyć liczbę jednostek magazynu danych. W przypadku mniejszej wydajności Zmniejsz liczbę jednostek magazynu danych. Opłaty za magazyn i opłaty za zasoby obliczeniowe są rozliczane oddzielnie, więc zmiana jednostek magazynu danych nie ma wpływu na koszty magazynowania.
 
-Wydajność dla jednostek magazynu danych jest oparta na następujących metrykach obciążenia magazynu danych:
+Wydajność dla jednostek magazynu danych jest oparta na następujących metrykach obciążenia:
 
 - Jak Fast kwerenda magazynu danych w warstwie Standardowa może skanować dużą liczbę wierszy, a następnie przeprowadzać złożoną agregację. Ta operacja jest operacją we/wy i intensywnie wykorzystującą procesor CPU.
 - Jak szybko magazyn danych może pozyskać dane z obiektów BLOB usługi Azure Storage lub Azure Data Lake. Ta operacja jest intensywnie korzystające z sieci i procesora CPU.
-- Jak szybko [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) polecenie T-SQL może skopiować tabelę. Ta operacja obejmuje odczytywanie danych z magazynu, ich dystrybucję w węzłach urządzenia i ponowne zapisywanie w magazynie. Ta operacja polega na procesorach CPU, we/wy i intensywnym wykorzystaniu sieci.
+- Jak szybko [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) polecenie t-SQL może skopiować tabelę. Ta operacja obejmuje odczytywanie danych z magazynu, ich dystrybucję w węzłach urządzenia i ponowne zapisywanie w magazynie. Ta operacja polega na procesorach CPU, we/wy i intensywnym wykorzystaniu sieci.
 
 Zwiększanie jednostek dwu:
 
@@ -42,11 +42,11 @@ Zwiększanie jednostek dwu:
 
 ## <a name="service-level-objective"></a>Cel poziomu usługi
 
-Cel poziomu usługi (SLO) to ustawienie skalowalności określające koszt i poziom wydajności magazynu danych. Poziomy usługi dla Gen2 są mierzone w jednostkach obliczeniowych magazynu danych (cDWU), na przykład DW2000c. Poziomy usługi Gen1 są mierzone w jednostek dwu, na przykład DW2000.
+Cel poziomu usługi (SLO) to ustawienie skalowalności określające koszt i poziom wydajności magazynu danych. Poziomy usługi dla puli SQL Gen2 są mierzone w jednostkach obliczeniowych magazynu danych (cDWU), na przykład DW2000c. Gen1 poziomy usługi puli SQL są mierzone w jednostek dwu, na przykład DW2000.
   > [!NOTE]
-  > Azure SQL Data Warehouse Gen2 ostatnio dodaliśmy dodatkowe możliwości skalowania, aby zapewnić obsługę warstw obliczeniowych jako 100 cDWU. Istniejące magazyny danych obecnie w Gen1, które wymagają niższych warstw obliczeń, można teraz uaktualnić do Gen2 w regionach, które są obecnie dostępne bez dodatkowych kosztów.  Jeśli region nie jest jeszcze obsługiwany, można nadal przeprowadzić uaktualnienie do obsługiwanego regionu. Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-latest-generation.md).
+  > Pula SQL generacji 2 niedawno dodała dodatkowe możliwości skalowania do obsługi warstw obliczeniowych jako 100 cDWU. Istniejące pule SQL obecnie w usłudze Gen1, które wymagają niższych warstw obliczeń, można teraz uaktualnić do Gen2 w regionach, które są obecnie dostępne bez dodatkowych kosztów.  Jeśli region nie jest jeszcze obsługiwany, można nadal przeprowadzić uaktualnienie do obsługiwanego regionu. Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-latest-generation.md).
 
-W języku T-SQL ustawienie SERVICE_OBJECTIVE określa poziom usług i warstwę wydajności magazynu danych.
+W języku T-SQL ustawienie SERVICE_OBJECTIVE określa poziom usług i warstwę wydajności dla puli SQL.
 
 ```sql
 --Gen1
@@ -68,10 +68,10 @@ CREATE DATABASE myComputeSQLDW
 
 Każda warstwa wydajności używa nieco innej jednostki miary dla jednostek magazynu danych. Różnica ta jest odzwierciedlana na fakturze, ponieważ jednostka skali bezpośrednio tłumaczy na rozliczenia.
 
-- Magazyny danych Gen1 są mierzone w jednostkach magazynu danych (jednostek dwu).
-- Magazyny danych Gen2 są mierzone w jednostkach obliczeniowych magazynu danych (cDWUs).
+- Gen1 pule SQL są mierzone w jednostkach magazynu danych (jednostek dwu).
+- Gen2 pule SQL są mierzone w jednostkach obliczeniowych magazynu danych (cDWUs).
 
-Jednostek dwu i cDWUs obsługują skalowanie w górę lub w dół oraz wstrzymywanie obliczeń, gdy nie trzeba używać magazynu danych. Wszystkie te operacje są na żądanie. Gen2 używa lokalnej pamięci podręcznej opartej na dyskach w węzłach obliczeniowych w celu zwiększenia wydajności. W przypadku skalowania lub wstrzymania systemu pamięć podręczna jest unieważniona i dlatego przed osiągnięciem optymalnej wydajności jest wymagane przeprowadzenie pamięci podręcznej.  
+Zarówno jednostek dwu, jak i cDWUs obsługują skalowanie w górę i w dół oraz wstrzymywanie obliczeń, gdy nie trzeba używać puli SQL. Wszystkie te operacje są na żądanie. Gen2 używa lokalnej pamięci podręcznej opartej na dyskach w węzłach obliczeniowych w celu zwiększenia wydajności. W przypadku skalowania lub wstrzymania systemu pamięć podręczna jest unieważniona i dlatego przed osiągnięciem optymalnej wydajności jest wymagane przeprowadzenie pamięci podręcznej.  
 
 W miarę zwiększania liczby jednostek magazynu danych zwiększa się liniowo zasoby obliczeniowe. Gen2 zapewnia najlepszą wydajność zapytań i najwyższą skalę. Systemy Gen2 korzystają również z pamięci podręcznej.
 
@@ -89,7 +89,7 @@ Kroki umożliwiające znalezienie najlepszego jednostek dwu dla obciążenia:
 2. Monitoruj wydajność aplikacji podczas testowania obciążeń danych w systemie, obserwując liczbę jednostek dwu wybranych w porównaniu z podaną wydajnością.
 3. Określ dodatkowe wymagania dla okresowych okresów aktywności szczytowej. Obciążenia pokazujące znaczące wartości szczytowe i troughs w działaniu mogą wymagać częstego skalowania.
 
-SQL Data Warehouse to system skalowalny w poziomie, który umożliwia udostępnianie ogromnych ilości danych obliczeniowych i zapytań o pokaźnąe. Aby wyświetlić prawdziwe możliwości skalowania, szczególnie w przypadku większych jednostek dwu, zalecamy skalowanie zestawu danych w miarę skalowania, aby upewnić się, że dane są wystarczające do strumieniowego korzystania z procesorów. W celu przetestowania skali zalecamy użycie co najmniej 1 TB.
+SQL Analytics to system skalowalny w poziomie, który umożliwia udostępnianie ogromnych ilości danych obliczeniowych i zapytań pokaźną. Aby wyświetlić prawdziwe możliwości skalowania, szczególnie w przypadku większych jednostek dwu, zalecamy skalowanie zestawu danych w miarę skalowania, aby upewnić się, że dane są wystarczające do strumieniowego korzystania z procesorów. W celu przetestowania skali zalecamy użycie co najmniej 1 TB.
 
 > [!NOTE]
 >
@@ -126,9 +126,9 @@ Aby zmienić jednostek dwu lub cDWUs:
 
 1. Otwórz [Azure Portal](https://portal.azure.com), Otwórz bazę danych, a następnie kliknij pozycję **Skaluj**.
 
-2. Wobszarze skalowanie przesuń suwak w lewo lub w prawo, aby zmienić ustawienie jednostek dwu.
+2. W obszarze **skalowanie**przesuń suwak w lewo lub w prawo, aby zmienić ustawienie jednostek dwu.
 
-3. Kliknij polecenie **Zapisz**. Zostanie wyświetlony komunikat z potwierdzeniem. Kliknij pozycję **tak**, aby potwierdzić, lub **nie**, aby anulować.
+3. Kliknij pozycję **Zapisz**. Zostanie wyświetlony komunikat z potwierdzeniem. Kliknij pozycję **tak**, aby potwierdzić, lub **nie**, aby anulować.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -185,25 +185,26 @@ Nie można sprawdzić stanu bazy danych dla operacji skalowania w poziomie przy 
 Aby sprawdzić stan jednostek dwu zmian:
 
 1. Nawiąż połączenie z bazą danych Master skojarzoną z serwerem logicznym SQL Database.
-2. Prześlij następujące zapytanie, aby sprawdzić stan bazy danych.
 
-```sql
-SELECT    *
-FROM      sys.databases
-;
-```
+1. Prześlij następujące zapytanie, aby sprawdzić stan bazy danych.
 
+    ```sql
+    SELECT    *
+    FROM      sys.databases
+    ;
+    ```
+    
 1. Prześlij następujące zapytanie, aby sprawdzić stan operacji
 
-```sql
-SELECT    *
-FROM      sys.dm_operation_status
-WHERE     resource_type_desc = 'Database'
-AND       major_resource_id = 'MySQLDW'
-;
-```
-
-Ta DMV zwraca informacje dotyczące różnych operacji zarządzania na SQL Data Warehouse, takich jak operacja i stan operacji, która jest IN_PROGRESS lub zakończona.
+    ```sql
+    SELECT    *
+    FROM      sys.dm_operation_status
+    WHERE     resource_type_desc = 'Database'
+    AND       major_resource_id = 'MySQLDW'
+    ;
+    ```
+    
+Ta DMV zwraca informacje o różnych operacjach zarządzania w puli SQL, takich jak operacja i stan operacji, która jest IN_PROGRESS lub została UKOŃCZONa.
 
 ## <a name="the-scaling-workflow"></a>Przepływ pracy skalowania
 

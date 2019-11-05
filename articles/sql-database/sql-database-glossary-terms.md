@@ -11,22 +11,22 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/26/2019
-ms.openlocfilehash: 5fccf1ffc76c824c81f8b8b826f90bf8314ff1e3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f23ef5506027a5de9f4189a11636d323679707f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883344"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488502"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database słownik terminów
 
 |Kontekst|Termin|Więcej informacji|
 |:---|:---|:---|
 |Nazwa usługi platformy Azure|Azure SQL Database lub SQL Database|[Usługa Azure SQL Database](sql-database-technical-overview.md)|
-|Warstwa obliczeniowa|Bezserwerowe (wersja zapoznawcza)|[Warstwa obliczeń bezserwerowych](sql-database-serverless.md)
-||Przeprowadzono aprowizację|[Warstwa obliczeń bezserwerowych](sql-database-serverless.md)
+|Warstwa obliczeniowa|Praca bezserwerowa |[Warstwa obliczeń bezserwerowych](sql-database-serverless.md)
+||Zaaprowizowane|[Warstwa obliczeń bezserwerowych](sql-database-serverless.md)
 |Opcje wdrożenia |Pojedyncza baza danych|[Pojedyncze bazy danych](sql-database-single-database.md)|
-||Pula elastyczna|[Elastyczna pula](sql-database-elastic-pool.md)|
+||Elastyczna pula|[Elastyczna pula](sql-database-elastic-pool.md)|
 ||Wystąpienie zarządzane|[Wystąpienie zarządzane](sql-database-managed-instance.md)|
 |Obiekty serwera|Serwer SQL Database lub serwer bazy danych|[Serwer bazy danych](sql-database-servers.md)|
 ||SQL Database serwer wystąpienia zarządzanego, serwer wystąpienia zarządzanego lub serwer wystąpienia|[Wystąpienie zarządzane](sql-database-managed-instance.md)|
@@ -43,8 +43,8 @@ Obiekty bazy danych|Baza danych Azure SQL Database|Dowolna baza danych w Azure S
 ||Baza danych z obsługą administracyjną|Baza danych skonfigurowana w warstwie obliczeniowej zainicjowanej|
 |[Kup modele i zasoby](sql-database-purchase-models.md)|Model zakupu oparty na jednostkach DTU|[Model zakupu oparty na jednostkach DTU](sql-database-service-tiers-dtu.md)|
 ||Model zakupów oparty na rdzeniach wirtualnych|[Model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md)|
-||rdzeń wirtualny|Rdzeń dostarczany przez funkcję hypervisor dla systemu operacyjnego gościa.|
-||Warstwa usług|Poziom usługi w modelu zakupu|
+||Rdzeń wirtualny|Rdzeń dostarczany przez funkcję hypervisor dla systemu operacyjnego gościa.|
+||Warstwa usługi|Poziom usługi w modelu zakupu|
 ||Rozmiar obliczeń|Ilość zasobów obliczeniowych dla pojedynczej bazy danych, puli elastycznej lub wystąpienia zarządzanego w ramach warstwy usług|
 ||Ilość miejsca w magazynie|Ilość dostępnego miejsca do magazynowania dla pojedynczej bazy danych, puli elastycznej lub wystąpienia zarządzanego|
 ||Generowanie obliczeń|Generowanie procesora w warstwie usług|

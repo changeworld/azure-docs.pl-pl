@@ -1,5 +1,5 @@
 ---
-title: Wizualizacja interakcyjnych zapytań dotyczących danych Hive przy użyciu Power BI w usłudze Azure HDInsight
+title: Wyświetlanie interakcyjnych zapytań dotyczących danych Hive przy użyciu Power BI w usłudze Azure HDInsight
 description: Używanie Power BI firmy Microsoft do wizualizacji interakcyjnych zapytań dotyczących danych Hive z usługi Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 0f273f75c33362bc99efbd7ac6bc46c3778ae88b
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ea63b0784c0f8680e544179dfcd927f59336b3ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123015"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467136"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Wizualizowanie interakcyjnych zapytań Apache Hive danych za pomocą usługi Microsoft Power BI przy użyciu zapytania bezpośredniego w usłudze HDInsight
 
-W tym artykule opisano sposób łączenia Power BI firmy Microsoft z klastrami zapytań interakcyjnych usługi Azure HDInsight i wizualizacji danych Apache Hive przy użyciu zapytania bezpośredniego. Podany przykład ładuje dane z `hivesampletable` tabeli programu Hive do Power BI. Tabela `hivesampletable` programu Hive zawiera dane użycia telefonu komórkowego. Następnie można wykreślić dane użycia na mapie światowej:
+W tym artykule opisano sposób łączenia Power BI firmy Microsoft z klastrami zapytań interakcyjnych usługi Azure HDInsight i wizualizacji danych Apache Hive przy użyciu zapytania bezpośredniego. Podany przykład ładuje dane z tabeli programu Hive `hivesampletable` do Power BI. Tabela programu Hive `hivesampletable` zawiera dane użycia telefonu komórkowego. Następnie można wykreślić dane użycia na mapie światowej:
 
 ![Usługa HDInsight Power BI raport mapy](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
@@ -31,7 +31,7 @@ Przed przejściem do tego artykułu należy dysponować następującymi elementa
 
 ## <a name="load-data-from-hdinsight"></a>Ładowanie danych z usługi HDInsight
 
-Tabela `hivesampletable` programu Hive zawiera wszystkie klastry usługi HDInsight.
+Tabela programu Hive `hivesampletable` zawiera wszystkie klastry usługi HDInsight.
 
 1. Rozpocznij Power BI Desktop.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c5fb79fc3aa3297068f93b631d11e967c9345f4c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: MT
+ms.openlocfilehash: 531f6d86d57be550d0a1147e131d93ae6e298406
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71717164"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474745"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpieczanie interfejsu API usługi Azure API Management przy użyciu Azure AD B2C
 
@@ -35,11 +35,25 @@ Przed wykonaniem kroków opisanych w tym artykule potrzebne są następujące za
 
 W przypadku zabezpieczania interfejsu API w usłudze Azure API Management przy użyciu Azure AD B2C potrzebne są kilka wartości dla [zasad przychodzących](../api-management/api-management-howto-policies.md) tworzonych w APIM. Najpierw Zapisz identyfikator aplikacji utworzonej wcześniej w dzierżawie Azure AD B2C. Jeśli używasz aplikacji utworzonej w ramach wymagań wstępnych, użyj identyfikatora aplikacji dla *webbapp1*.
 
-1. Przejdź do dzierżawy Azure AD B2C w [Azure Portal](https://portal.azure.com).
-1. W obszarze **Zarządzaj**wybierz pozycję **aplikacje**.
-1. Zapisz wartość w **identyfikatorze aplikacji** dla *webapp1* lub inną utworzoną wcześniej aplikację.
+Aby uzyskać identyfikator aplikacji, możesz użyć aktualnego środowiska **aplikacji** lub naszego nowego systemu ujednoliconego **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat środowiska w wersji zapoznawczej](http://aka.ms/b2cappregintro).
 
-  ![Lokalizacja identyfikatora aplikacji aplikacji B2C w Azure Portal](media/secure-apim-with-b2c-token/portal-02-app-id.png)
+#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. W obszarze **Zarządzaj**wybierz pozycję **aplikacje**.
+1. Zapisz wartość w kolumnie **Identyfikator aplikacji** dla *webapp1* lub innej aplikacji, która została wcześniej utworzona.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz kartę **posiadane aplikacje** .
+1. Zapisz wartość w kolumnie **Identyfikator aplikacji (klienta)** dla *webapp1* lub innej aplikacji, która została wcześniej utworzona.
+
+* * *
 
 ## <a name="get-token-issuer-endpoint"></a>Pobierz punkt końcowy wystawcy tokenu
 
@@ -74,12 +88,12 @@ Teraz można przystąpić do dodawania zasad ruchu przychodzącego w usłudze Az
 1. Wybierz pozycję **Interfejsy API**.
 1. Wybierz interfejs API, który ma być zabezpieczony za pomocą Azure AD B2C.
 1. Wybierz kartę **Projekt**.
-1. W obszarze **Przetwarzanie przychodzące**wybierz pozycję **\< @ no__t-3 @ no__t-4** , aby otworzyć Edytor kodu zasad.
+1. W obszarze **Przetwarzanie przychodzące**wybierz pozycję **\</\>** , aby otworzyć Edytor kodu zasad.
 1. Umieść Poniższy tag `<validate-jwt>` wewnątrz zasad `<inbound>`.
 
     1. Zaktualizuj wartość `url` w elemencie `<openid-config>` za pomocą dobrze znanego adresu URL konfiguracji zasad.
-    1. Zaktualizuj element `<audience>` z IDENTYFIKATORem aplikacji utworzonej wcześniej w dzierżawie usługi B2C (na przykład *webapp1*).
-    1. Zaktualizuj element `<issuer>` z zarejestrowanym wcześniej punktem końcowym wystawcy tokenu.
+    1. Zaktualizuj element `<audience>` przy użyciu identyfikatora aplikacji aplikacji utworzonej wcześniej w dzierżawie usługi B2C (na przykład *webapp1*).
+    1. Zaktualizuj element `<issuer>` za pomocą zarejestrowanego wcześniej punktu końcowego wystawcy tokenu.
 
     ```xml
     <policies>
@@ -148,7 +162,7 @@ Po zarejestrowaniu tokenu dostępu i klucza subskrypcji APIM można już sprawdz
 
     | Klucz | Wartość |
     | --- | ----- |
-    | `Authorization` | Zarejestrowano wcześniej wartość tokenu zakodowanego, poprzedzoną `Bearer ` (Dodaj odstęp po "okaziciela") |
+    | `Authorization` | Zarejestrowano wcześniej wartość tokenu zakodowanego, która poprzedza prefiks `Bearer ` (z uwzględnieniem odstępu po "okaziciela") |
     | `Ocp-Apim-Subscription-Key` | APIM klucz subskrypcji został zarejestrowany wcześniej |
 
     Adres URL i **nagłówki** żądania **pobrania** powinny wyglądać podobnie do:
@@ -184,7 +198,7 @@ Po zarejestrowaniu tokenu dostępu i klucza subskrypcji APIM można już sprawdz
 
 ### <a name="test-an-insecure-api-call"></a>Testowanie wywołania niezabezpieczonego interfejsu API
 
-Po pomyślnym wykonaniu żądania Przetestuj przypadek niepowodzenia, aby upewnić się, że wywołania interfejsu API z *nieprawidłowym* tokenem zostaną odrzucone zgodnie z oczekiwaniami. Jednym ze sposobów przeprowadzenia testu jest dodanie lub zmiana kilku znaków w wartości tokenu, a następnie wykonanie tego samego żądania `GET` tak jak wcześniej.
+Po pomyślnym wykonaniu żądania Przetestuj przypadek niepowodzenia, aby upewnić się, że wywołania interfejsu API z *nieprawidłowym* tokenem zostaną odrzucone zgodnie z oczekiwaniami. Jednym ze sposobów przeprowadzenia testu jest dodanie lub zmiana kilku znaków w wartości tokenu, a następnie wykonanie tego samego żądania `GET` jak wcześniej.
 
 1. Dodaj kilka znaków do wartości tokenu, aby symulować nieprawidłowy token. Na przykład Dodaj wartość "Nieprawidłowa" do wartości tokenu:
 
@@ -199,11 +213,11 @@ Po pomyślnym wykonaniu żądania Przetestuj przypadek niepowodzenia, aby upewni
     }
     ```
 
-Jeśli zobaczysz kod stanu `401`, sprawdzono, że tylko wywołania z prawidłowym tokenem dostępu wystawionego przez Azure AD B2C mogą wykonywać pomyślne żądania do interfejsu API API Management platformy Azure.
+Jeśli zobaczysz kod stanu `401`, sprawdzono, że tylko wywołujący z prawidłowym tokenem dostępu wystawionym przez Azure AD B2C mogą wykonywać pomyślne żądania do interfejsu API API Management platformy Azure.
 
 ## <a name="support-multiple-applications-and-issuers"></a>Obsługa wielu aplikacji i wystawców
 
-Niektóre aplikacje zwykle współpracują z pojedynczym interfejsem API REST. Aby umożliwić interfejsowi API akceptowanie tokenów przeznaczonych dla wielu aplikacji, Dodaj ich identyfikatory aplikacji do elementu `<audiences>` w zasadach ruchu przychodzącego APIM.
+Niektóre aplikacje zwykle współpracują z pojedynczym interfejsem API REST. Aby umożliwić interfejsowi API akceptowanie tokenów przeznaczonych dla wielu aplikacji, Dodaj ich identyfikatory aplikacji do `<audiences>` elementu w zasadach ruchu przychodzącego APIM.
 
 ```XML
 <!-- Accept tokens intended for these recipient applications -->
@@ -213,7 +227,7 @@ Niektóre aplikacje zwykle współpracują z pojedynczym interfejsem API REST. A
 </audiences>
 ```
 
-Podobnie aby obsługiwać wiele wystawców tokenów, Dodaj ich identyfikatory URI punktu końcowego do elementu `<issuers>` w zasadach ruchu przychodzącego APIM.
+Podobnie aby obsługiwać wiele wystawców tokenów, Dodaj ich identyfikatory URI punktów końcowych do elementu `<issuers>` w zasadach ruchu przychodzącego APIM.
 
 ```XML
 <!-- Accept tokens from multiple issuers -->
@@ -225,7 +239,7 @@ Podobnie aby obsługiwać wiele wystawców tokenów, Dodaj ich identyfikatory UR
 
 ## <a name="migrate-to-b2clogincom"></a>Migrowanie do b2clogin.com
 
-Jeśli masz interfejs API APIM, który sprawdza poprawność tokenów wystawionych przez starszy punkt końcowy `login.microsoftonline.com`, należy migrować interfejs API i aplikacje, które go wywołują, aby używać tokenów wystawionych przez [b2clogin.com](b2clogin.md).
+Jeśli masz interfejs API APIM, który sprawdza poprawność tokenów wystawionych przez starszy punkt końcowy `login.microsoftonline.com`, należy przeprowadzić migrację interfejsu API i aplikacji, które go wywołują, aby używać tokenów wystawionych przez [b2clogin.com](b2clogin.md).
 
 Ten ogólny proces można wykonać w celu przeprowadzenia migracji etapowej:
 

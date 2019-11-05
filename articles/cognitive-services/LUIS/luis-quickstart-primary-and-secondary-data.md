@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Prosta jednostka, lista fraz — LUIS'
+title: 'Samouczek: prosta jednostka, lista fraz — LUIS'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku wyodrębnisz z wypowiedzi dane nauczone maszynowo dotyczące nazwy stanowiska pracownika, używając prostej jednostki. Aby zwiększyć dokładność wyodrębniania, dodaj listę fraz zawierającą terminy specyficzne dla danej prostej jednostki.
 services: cognitive-services
@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a917176cb06e833745996326520341c1f819c5bf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376268"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465403"
 ---
-# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Samouczek: wyodrębnianie nazw przy użyciu prostej jednostki i listy fraz
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Samouczek: Wyodrębnianie nazw z prostą jednostką i listą fraz
 
 W tym samouczku wyodrębnisz z wypowiedzi dane nauczone maszynowo dotyczące nazwy stanowiska pracownika, używając **prostej** jednostki. Aby zwiększyć dokładność wyodrębniania, dodaj listę fraz zawierającą terminy specyficzne dla danej prostej jednostki.
 
 Prosta jednostka wykrywa pojedynczą koncepcję danych zawartą w wyrazach lub frazach.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -54,15 +56,15 @@ Przeanalizujmy następujące wypowiedzi z czatbota:
 
 |Wypowiedź|Nazwa stanowiska możliwa do wyodrębnienia|
 |:--|:--|
-|Chcę, aby poprosić o nowe zadanie ewidencjonowania aktywności.|księgowość|
-|Prześlij życiorysem dla inżynierów pozycji.|inżynierów|
+|Chcę, aby poprosić o nowe zadanie ewidencjonowania aktywności.|accounting|
+|Submit my resume for the engineering position.|engineering|
 |Wypełnij aplikacji dla zadania 123456|123456|
 
 Nazwa stanowiska jest trudna do określenia, ponieważ może być rzeczownikiem, czasownikiem lub frazą składającą się z kilku wyrazów. Na przykład:
 
-|Stanowiska|
+|Zadania|
 |--|
-|inżynier ds|
+|engineer|
 |inżynier ds oprogramowania|
 |starszy programista|
 |zespół inżynieryjny |
@@ -93,15 +95,15 @@ Po oznaczeniu jednostek w przykładowych wypowiedziach ważne jest dodanie listy
 
 1. W wypowiedzi `I want to apply for the new accounting job` wybierz pozycję `accounting`, wprowadź `Job` w górnym polu menu podręcznego, a następnie w menu podręcznym wybierz polecenie **Create new entity** (Utwórz nową jednostkę). 
 
-    [![Zrzut ekranu przedstawiający usługę LUIS z intencją „ApplyForJob” z wyróżnionymi krokami tworzenia intencji](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Zrzut ekranu przedstawiający usługę LUIS z intencją „ApplyForJob” z wyróżnionymi krokami tworzenia intencji")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![Zrzut ekranu elementu LUIS z zamiarem "ApplyForJob" z wyróżnioną procedurą Create Entity](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Zrzut ekranu elementu LUIS z zamiarem "ApplyForJob" z wyróżnioną procedurą Create Entity")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 1. W oknie podręcznym sprawdź nazwę i typ jednostki, a następnie wybierz pozycję **Done** (Gotowe).
 
-    ![Modalne okno dialogowe tworzenia prostej jednostki o nazwie Job (Stanowisko) i typie Simple (Prosta)](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
+    ![Modalne okno dialogowe tworzenia prostej jednostki o nazwie Job (Zadanie) i typie Simple (Prosta)](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
 1. W pozostałych wypowiedziach oznacz wyrazy powiązane ze stanowiskiem za pomocą jednostki **Job** (Stanowisko), wybierając wyraz lub frazę, a następnie wybierając z menu podręcznego pozycję **Job** (Stanowisko). 
 
-    [![Zrzut ekranu przedstawiający wyróżnioną jednostkę zadania usługi LUIS](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Zrzut ekranu przedstawiający wyróżnioną jednostkę zadania usługi LUIS")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![Zrzut ekranu przedstawiający obiekt zadania etykietowania LUIS](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Zrzut ekranu przedstawiający obiekt zadania etykietowania LUIS")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
 
 ## <a name="add-more-example-utterances-and-mark-entity"></a>Dodawanie większej liczby przykładowych wypowiedzi i oznaczanie jednostki
@@ -117,7 +119,7 @@ Proste jednostki wymagają wielu przykładów do zapewnienia wysokiego poziomu p
     |Życiorysem dla kamping counselor jest dołączony.|kamping counselor|
     |To jest Moja doświadczeń Aby uzyskać Asystenta administracyjnego.|Asystent|
     |Czy chcesz zastosować dla zadania zarządzania w sprzedaży.|Zarządzanie, sprzedaży|
-    |Jest to życiorysem dla nowej pozycji ewidencjonowania aktywności.|Księgowość|
+    |Jest to życiorysem dla nowej pozycji ewidencjonowania aktywności.|accounting|
     |Moja aplikacja dla barback jest dołączony.|barback|
     |Składam Moja aplikacja roofer i framer.|roofer, framer|
     |Moje doświadczeń Service bus sterownik jest tutaj.|Sterownik magistrali|
@@ -231,7 +233,7 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-s
 
 1. Nadaj nowej liście fraz nazwę `JobNames` i skopiuj listę z pliku jobs-phrase-list.csv do pola tekstowego **Values** (Wartości).
 
-    [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![Zrzut ekranu przedstawiający okno dialogowe Tworzenie nowej listy fraz](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Zrzut ekranu przedstawiający okno dialogowe Tworzenie nowej listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     Jeśli chcesz dodać więcej wyrazów do listy fraz, wybierz opcję **Recommand (Zalecane)** , a następnie przejrzyj nowe elementy w pozycji **Related Values (Powiązane wartości)** i dodaj odpowiednie pozycje. 
 
@@ -239,7 +241,7 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-s
 
 1. Wybierz pozycję **gotowe** , aby aktywować listę fraz.
 
-    [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz ze słowami w polu wartości listy fraz](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe Tworzenie nowej listy fraz ze słowami w polu wartości listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![Zrzut ekranu przedstawiający okno dialogowe Tworzenie nowej listy fraz z wyrazami w polu wartości listy fraz](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Zrzut ekranu przedstawiający okno dialogowe Tworzenie nowej listy fraz z wyrazami w polu wartości listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 1. Wytrenuj i opublikuj aplikację ponownie, aby użyć listy fraz.
 

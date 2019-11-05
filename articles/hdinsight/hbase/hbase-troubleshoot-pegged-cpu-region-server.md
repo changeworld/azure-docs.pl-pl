@@ -1,5 +1,5 @@
 ---
-title: Niezależny procesor CPU na serwerze regionów w klastrze Apache HBase w usłudze Azure HDInsight
+title: Nieustalony procesor CPU w klastrze Apache HBase — Azure HDInsight
 description: Rozwiązywanie problemów z ustalonym procesorem CPU na serwerze regionów w klastrze Apache HBase w usłudze Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
-ms.openlocfilehash: 0712e6e8e9fe6db370d913d04e562c19b72d69a7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 845307f24495090891812b4e945e202cdad47e71
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091661"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468335"
 ---
-# <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>Scenariusz: Niezależny procesor CPU na serwerze regionów w klastrze Apache HBase w usłudze Azure HDInsight
+# <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>Scenariusz: niezależny procesor CPU na serwerze regionów w klastrze Apache HBase w usłudze Azure HDInsight
 
 W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku współpracy z klastrami usługi Azure HDInsight.
 
@@ -24,19 +24,19 @@ Proces serwera regionu Apache HBase zajmuje się bliskością 200% procesora CPU
 
 ## <a name="cause"></a>Przyczyna
 
-Jeśli korzystasz z klastra HBase w wersji 3.4, być może napotkasz potencjalną usterkę, która została spowodowana przez uaktualnienie JDK do wersja 1.7.0 _151. Widocznym objawem jest proces serwera regionu, który rozpoczyna się w pobliżu 200% procesora CPU (aby sprawdzić, `top` czy jest to polecenie. Jeśli istnieje proces zamieszkania w pobliżu 200% procesora CPU, należy uzyskać identyfikator PID i potwierdzić, że `ps -aux | grep` jest to proces serwera regionu przez uruchomienie).
+Jeśli korzystasz z klastra HBase w wersji 3.4, być może napotkasz potencjalną usterkę, która została spowodowana przez uaktualnienie JDK do wersja 1.7.0 _151. Widocznym objawem jest proces serwera regionu, który rozpoczyna się w pobliżu 200% procesora CPU (aby sprawdzić, czy jest to możliwe, uruchom polecenie `top`. Jeśli istnieje proces zamieszkania w pobliżu 200% procesora, Uzyskaj swój identyfikator PID i Potwierdź, że jest to proces serwera regionu przez uruchomienie `ps -aux | grep`).
 
-## <a name="resolution"></a>Rozwiązanie
+## <a name="resolution"></a>Rozdzielczość
 
 1. Zainstaluj program JDK 1,8 na wszystkich węzłach klastra w następujący sposób:
 
-    * Uruchom akcję `https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh`skryptu. Upewnij się, że wybrano opcję uruchamiania na wszystkich węzłach.
+    * Uruchom akcję skryptu `https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/upgradetojdk18allnodes.sh`. Upewnij się, że wybrano opcję uruchamiania na wszystkich węzłach.
 
     * Alternatywnie możesz zalogować się do każdego pojedynczego węzła i uruchomić polecenie `sudo add-apt-repository ppa:openjdk-r/ppa -y && sudo apt-get -y update && sudo apt-get install -y openjdk-8-jdk`.
 
-1. Przejdź do interfejsu użytkownika Ambari `https://<clusterdnsname>.azurehdinsight.net`—.
+1. Przejdź do interfejsu użytkownika Ambari — `https://<clusterdnsname>.azurehdinsight.net`.
 
-1. Przejdź do **HBase > konfiguracjami-> Advanced-> Advanced** `hbase-env configs` i zmień wartość zmiennej `JAVA_HOME` na `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`. Zapisz zmianę konfiguracji.
+1. Przejdź do **HBase > konfiguracjami-> Advanced-> advanced** `hbase-env configs` i zmień zmienną `JAVA_HOME` na `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`. Zapisz zmianę konfiguracji.
 
 1. [Opcjonalne, ale zalecane] [Opróżnianie wszystkich tabel w klastrze](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
@@ -56,6 +56,6 @@ Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odw
 
 * Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Połącz się [@AzureSupport](https://twitter.com/azuresupport) za pomocą — oficjalnego konta Microsoft Azure, aby zwiększyć komfort obsługi klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
+* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalne Microsoft Azure konto, aby usprawnić obsługę klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [Jak utworzyć żądanie obsługi na platformie Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy technicznej dotyczącej zarządzania subskrypcjami i rozliczeniami jest oferowany w ramach subskrypcji platformy Microsoft Azure, a pomoc techniczna jest świadczona w ramach jednego z [planów pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/).

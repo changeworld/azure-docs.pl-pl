@@ -10,14 +10,15 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b0d7286d96d2fbfa35eb7ce9079413dfd186288c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034594"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496963"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Wdróż model uczenia maszynowego w Azure App Service (wersja zapoznawcza)
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dowiedz się, jak wdrożyć model na podstawie Azure Machine Learning jako aplikacji sieci Web w programie Azure App Service.
 
@@ -28,7 +29,7 @@ Za pomocą Azure Machine Learning można tworzyć obrazy platformy Docker z prze
 
 * Zaawansowane [uwierzytelnianie](/azure/app-service/configure-authentication-provider-aad) na potrzeby zwiększonych zabezpieczeń. Metody uwierzytelniania obejmują zarówno Azure Active Directory, jak i uwierzytelnianie wieloskładnikowe.
 * [Skalowanie automatyczne](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) bez konieczności ponownego wdrażania.
-* [Obsługa protokołu SSL](/azure/app-service/app-service-web-ssl-cert-load) w celu zapewnienia bezpiecznej komunikacji między klientami a usługą.
+* [Obsługa protokołu SSL](/azure/app-service/configure-ssl-certificate-in-code) w celu zapewnienia bezpiecznej komunikacji między klientami a usługą.
 
 Aby uzyskać więcej informacji na temat funkcji zapewnianych przez Azure App Service, zobacz [omówienie App Service](/azure/app-service/overview).
 
@@ -38,19 +39,19 @@ Aby uzyskać więcej informacji na temat funkcji zapewnianych przez Azure App Se
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz artykuł [Tworzenie obszaru roboczego](how-to-manage-workspace.md) .
-* [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Model uczenia maszynowego zarejestrowany w Twoim obszarze roboczym. Jeśli nie masz modelu, Skorzystaj z [samouczka klasyfikacji obrazów: uczenie modelu](tutorial-train-models-with-aml.md) do uczenia i zarejestrowania go.
 
     > [!IMPORTANT]
     > W fragmentach kodu w tym artykule przyjęto założenie, że ustawiono następujące zmienne:
     >
-    > * `ws`— Obszar roboczy Azure Machine Learning.
-    > * `model`-Zarejestrowany model, który zostanie wdrożony.
-    > * `inference_config`-Konfiguracja wnioskowania dla modelu.
+    > * `ws` — Azure Machine Learning obszaru roboczego.
+    > * `model` — zarejestrowany model, który zostanie wdrożony.
+    > * `inference_config` — konfiguracja wnioskowania dla modelu.
     >
     > Aby uzyskać więcej informacji na temat ustawiania tych zmiennych, zobacz [Deploying Models with Azure Machine Learning](how-to-deploy-and-where.md).
 
-## <a name="prepare-for-deployment"></a>Przygotowanie do wdrożenia
+## <a name="prepare-for-deployment"></a>Przygotowywanie do wdrażania
 
 Przed wdrożeniem należy zdefiniować, co jest potrzebne do uruchomienia modelu jako usługi sieci Web. Na poniższej liście opisano podstawowe elementy, które są związane z wdrożeniem:
 
@@ -99,7 +100,7 @@ Aby uzyskać więcej informacji na temat konfiguracji wnioskowania, zobacz [Wdra
 Aby utworzyć obraz platformy Docker wdrożony w Azure App Service, użyj [modelu model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-). Poniższy fragment kodu przedstawia sposób tworzenia nowego obrazu z konfiguracji modelu i wnioskowania:
 
 > [!NOTE]
-> W fragmencie kodu założono `model` , że zawiera zarejestrowany model `inference_config` i zawiera konfigurację środowiska wnioskowania. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
+> W fragmencie kodu założono, że `model` zawiera zarejestrowany model i że `inference_config` zawiera konfigurację środowiska wnioskowania. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -110,14 +111,14 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-Gdy `show_output=True`są wyświetlane dane wyjściowe procesu kompilacji platformy Docker. Po zakończeniu procesu obraz został utworzony w Azure Container Registry dla obszaru roboczego. Po skompilowaniu obrazu zostanie wyświetlona lokalizacja w Azure Container Registry. Zwrócona Lokalizacja ma format `<acrinstance>.azurecr.io/package:<imagename>`. Na przykład `myml08024f78fd10.azurecr.io/package:20190827151241`.
+Gdy `show_output=True`, zostanie wyświetlony wynik procesu kompilacji platformy Docker. Po zakończeniu procesu obraz został utworzony w Azure Container Registry dla obszaru roboczego. Po skompilowaniu obrazu zostanie wyświetlona lokalizacja w Azure Container Registry. Zwrócona Lokalizacja ma format `<acrinstance>.azurecr.io/package:<imagename>`. Na przykład `myml08024f78fd10.azurecr.io/package:20190827151241`.
 
 > [!IMPORTANT]
 > Zapisz informacje o lokalizacji, ponieważ są używane podczas wdrażania obrazu.
 
 ## <a name="deploy-image-as-a-web-app"></a>Wdrażanie obrazu jako aplikacji sieci Web
 
-1. Użyj poniższego polecenia, aby uzyskać poświadczenia logowania dla Azure Container Registry zawierającej obraz. Zamień `<acrinstance>` na wartość e zwracaną wcześniej z `package.location`: 
+1. Użyj poniższego polecenia, aby uzyskać poświadczenia logowania dla Azure Container Registry zawierającej obraz. Zastąp `<acrinstance>` wartością e zwracaną wcześniej z `package.location`: 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -150,12 +151,12 @@ Gdy `show_output=True`są wyświetlane dane wyjściowe procesu kompilacji platfo
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    W tym przykładzie jest używana __podstawowa__ warstwa cenowa`--sku B1`().
+    W tym przykładzie jest używana __podstawowa__ warstwa cenowa (`--sku B1`).
 
     > [!IMPORTANT]
-    > Obrazy utworzone przez Azure Machine Learning używają systemu Linux, dlatego należy użyć `--is-linux` parametru.
+    > Obrazy utworzone przez Azure Machine Learning używają systemu Linux, dlatego należy użyć parametru `--is-linux`.
 
-1. Aby utworzyć aplikację sieci Web, użyj następującego polecenia. Zamień `<app-name>` na nazwę, której chcesz użyć. Zamień `<acrinstance>` `package.location` i `<imagename>` na wartości zwracane wcześniej:
+1. Aby utworzyć aplikację sieci Web, użyj następującego polecenia. Zastąp `<app-name>` nazwą, której chcesz użyć. Zastąp `<acrinstance>` i `<imagename>` wartościami ze zwracanych `package.location` wcześniej:
 
     ```azurecli-interactive
     az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
@@ -184,7 +185,7 @@ Gdy `show_output=True`są wyświetlane dane wyjściowe procesu kompilacji platfo
     > [!IMPORTANT]
     > W tym momencie aplikacja sieci Web została utworzona. Jednak ponieważ nie podano poświadczeń do Azure Container Registry, które zawierają obraz, aplikacja sieci Web nie jest aktywna. W następnym kroku podajesz informacje o uwierzytelnianiu dla rejestru kontenerów.
 
-1. Aby zapewnić aplikacji sieci Web poświadczenia potrzebne do uzyskania dostępu do rejestru kontenerów, użyj następującego polecenia. Zamień `<app-name>` na nazwę, której chcesz użyć. Zamień `<acrinstance>` `package.location` i `<imagename>` na wartości zwracane wcześniej. Zamień `<username>` i`<password>` na pobrane wcześniej informacje logowania ACR:
+1. Aby zapewnić aplikacji sieci Web poświadczenia potrzebne do uzyskania dostępu do rejestru kontenerów, użyj następującego polecenia. Zastąp `<app-name>` nazwą, której chcesz użyć. Zastąp `<acrinstance>` i `<imagename>` wartościami zwracanymi `package.location` wcześniej. Zamień `<username>` i `<password>` na pobrane wcześniej informacje logowania ACR:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -230,7 +231,7 @@ W tym momencie aplikacja sieci Web rozpocznie ładowanie obrazu.
 > az webapp log tail --name <app-name> --resource-group myresourcegroup
 > ```
 >
-> Po załadowaniu obrazu, gdy lokacja jest aktywna, w dzienniku zostanie wyświetlony komunikat z informacją `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`o stanie.
+> Po załadowaniu obrazu, gdy lokacja jest aktywna, w dzienniku zostanie wyświetlony komunikat informujący o tym, że `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`.
 
 Po wdrożeniu obrazu można znaleźć nazwę hosta za pomocą następującego polecenia:
 
@@ -242,7 +243,7 @@ To polecenie zwraca informacje podobne do następującej nazwy hosta `<app-name>
 
 ## <a name="use-the-web-app"></a>Korzystanie z aplikacji sieci Web
 
-Usługa sieci Web, która przekazuje żądania do modelu, znajduje się `{baseurl}/score`w lokalizacji. Na przykład `https://<app-name>.azurewebsites.net/score`. Poniższy kod w języku Python pokazuje, jak przesłać dane do adresu URL i wyświetlić odpowiedź:
+Usługa sieci Web, która przekazuje żądania do modelu, znajduje się w `{baseurl}/score`. Na przykład `https://<app-name>.azurewebsites.net/score`. Poniższy kod w języku Python pokazuje, jak przesłać dane do adresu URL i wyświetlić odpowiedź:
 
 ```python
 import requests
@@ -267,6 +268,6 @@ print(response.json())
 
 * Dowiedz się, jak skonfigurować aplikację sieci Web w [App Service w](/azure/app-service/containers/) dokumentacji systemu Linux.
 * Dowiedz się więcej na temat skalowania w temacie [wprowadzenie do automatycznego skalowania na platformie Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
-* [Użyj certyfikatu SSL w Azure App Service](/azure/app-service/app-service-web-ssl-cert-load).
+* [Użyj certyfikatu SSL w Azure App Service](/azure/app-service/configure-ssl-certificate-in-code).
 * [Skonfiguruj aplikację App Service, aby używała Azure Active Directory logowania](/azure/app-service/configure-authentication-provider-aad).
-* [Korzystanie z modelu uczenia Maszynowego, wdrożyć jako usługę sieci web](how-to-consume-web-service.md)
+* [Korzystanie z modelu ML wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)

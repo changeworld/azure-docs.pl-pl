@@ -1,7 +1,7 @@
 ---
 title: 'Dołącz dane: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak scalić zestawy danych przy użyciu modułu Join Data JOIN w Azure Machine Learning Service.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak scalić zestawy danych za pomocą modułu Join Data JOIN w Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 587490284b2886764c137a01e0eb4b3c9c755d41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693092"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495096"
 ---
 # <a name="join-data"></a>Łączenie danych
 
-W tym artykule opisano, jak używać modułu **dołączania danych** w interfejsie wizualnym usługi Azure Machine Learning Service do scalania dwóch zestawów danych przy użyciu operacji łączenia w stylu bazy danych.  
+W tym artykule opisano sposób korzystania z modułu **dołączania danych** w programie Azure Machine Learning Designer (wersja zapoznawcza) w celu scalenia dwóch zestawów danych przy użyciu operacji łączenia w stylu bazy danych.  
 
 ## <a name="how-to-configure-join-data"></a>Jak skonfigurować dane sprzężenia
 
@@ -64,8 +64,8 @@ Aby wykonać sprzężenie na dwóch zestawach danych, powinny one być powiązan
 
 1. Uruchom potok lub wybierz moduł łączenia danych i wybrane **uruchomienie wybrane** do wykonania sprzężenia.
 
-1. Aby wyświetlić wyniki, kliknij prawym przyciskiem myszy**element dataset** **dane sprzężenia**  >  wyników  > **Wizualizacja**.
+1. Aby wyświetlić wyniki, kliknij prawym przyciskiem myszy **element dataset** **dane sprzężenia** > wyników > **Wizualizacja**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

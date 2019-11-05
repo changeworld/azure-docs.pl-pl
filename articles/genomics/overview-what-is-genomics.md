@@ -1,7 +1,7 @@
 ---
 title: Co to jest Microsoft Genomics?
 titleSuffix: Microsoft Genomics
-description: Dowiedz się, jak Microsoft Genomics może przystąpić do sekwencjonowania genomu przy użyciu implementacji w chmurze Burrows-Wheeler align (BWA) i genom Analysis Toolkit (GATK).
+description: Dowiedz się, jak używać Microsoft Genomics do uruchamiania przepływu pracy BWA-GATK na potrzeby analizy genomiki.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: overview
 ms.date: 12/07/2017
-ms.openlocfilehash: 04ecab58db822aa80ca2abba1bebaa39598498bd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 461e385bae3b091c72355ed27a35ae5408bda7c2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244011"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498817"
 ---
 # <a name="what-is-microsoft-genomics"></a>Co to jest Microsoft Genomics?
 Microsoft Genomics oferuje implementację w chmurze Burrows-Wheeler align (BWA) i genom Analysis Toolkit (GATK) do analizy pomocniczej. Usługa jest certyfikowana pod kątem zgodności z normą ISO i jest zgodna z przepisami HIPAA i oferuje przewidywalność cen dla potrzeb sekwencjonowania genomu. Dowiedz się, jak używać usługi Microsoft Genomics i zintegrować ją z naszym interfejsem API, czytając nasze Przewodniki Szybki Start, samouczki i dokumentację.
@@ -35,5 +35,5 @@ Usługa Microsoft Genomics to ISO 27001, ISO 27018 i ISO 9001 certyfikowane i zg
 Teraz, po zapoznaniu się z wprowadzeniem do Microsoft Genomics, możesz przystąpić do:
 - Odwiedzenie strony cennika zawierającej porównania kosztów i kalkulatory. [Cennik](https://azure.microsoft.com/pricing/details/genomics/)
 - Zacznij od uruchomienia pierwszego przepływu pracy za pomocą usługi Microsoft Genomics. [Uruchamianie przepływu pracy za pomocą usługi Microsoft Genomics](quickstart-run-genomics-workflow-portal.md)
-- Prześlij własne dane do przetwarzania przez usługę Microsoft Genomics: [sparowane FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [wielu FASTQ lub BAM](quickstart-input-multiple.md) 
+- Prześlij własne dane do przetwarzania przez usługę Microsoft Genomics: [parowanie FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [wielu FASTQ lub BAM](quickstart-input-multiple.md) 
 

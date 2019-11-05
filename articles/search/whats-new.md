@@ -1,0 +1,47 @@
+---
+title: Co nowego w usłudze
+titleSuffix: Azure Cognitive Search
+description: Anonse nowych i ulepszonych funkcji, w tym zmiana nazwy usługi Azure Search na platformę Azure Wyszukiwanie poznawcze.
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: e81eaf232e3234ac4de0cfb7412e23709f0c0b99
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73549094"
+---
+# <a name="whats-new-in-azure-cognitive-search"></a>Co nowego w usłudze Azure Wyszukiwanie poznawcze
+
+Dowiedz się, co nowego w usłudze. Oznacz Tę stronę zakładką, aby zapewnić aktualność usługi.
+
+<a name="new-service-name"></a>
+
+## <a name="new-service-name-for-azure-search"></a>Nowa nazwa usługi dla Azure Search
+
+Azure Search teraz zmieniono nazwę na **platformę Azure wyszukiwanie poznawcze** w celu odzwierciedlenia rozszerzonego użycia umiejętności poznawczych i przetwarzania AI w operacjach podstawowych. Chociaż umiejętności poznawcze dodają nowe możliwości, korzystanie z AI jest absolutnie opcjonalne. Możesz nadal używać platformy Azure Wyszukiwanie poznawcze bez systemu AI do kompilowania rozbudowanych rozwiązań wyszukiwania pełnotekstowego za pośrednictwem prywatnej, heterogenicznychowej zawartości opartej na tekście w indeksie tworzonym i zarządzanym w chmurze. 
+
+Wersje interfejsu API, pakiety NuGet, przestrzenie nazw i punkty końcowe nie są zmieniane. Zmiany nazwy usługi nie wpływają na istniejące rozwiązania wyszukiwania.
+
+## <a name="feature-announcements"></a>Anonse funkcji
+
+4 listopada 2019 — Konferencja zapłonowa
+
++ [Indeksowanie przyrostowe](cognitive-search-incremental-indexing-conceptual.md), teraz w wersji zapoznawczej, pozwala przetwarzać lub ponownie przetwarzać tylko te czynności, które są absolutnie niezbędne przy wprowadzaniu zmian do potoku wzbogacania. Jest to szczególnie przydatne w przypadku zawartości obrazu, która została wcześniej przeanalizowana. Dane wyjściowe analizy kosztów są przechowywane, a następnie używane jako podstawa do dodatkowego indeksowania lub wzbogacania.
+
+<!-- 
++ Custom Entity Lookup is a cognitive skill used during indexing that allows you to provide a list of custom entities (such as part numbers, diseases, or names of locations you care about) that should be found within the text. It supports fuzzy matching, case-insensitive matching, and entity synonyms. -->
+
++ [Wyodrębnianie dokumentów](cognitive-search-skill-document-extraction.md) to umiejętność wykorzystywana podczas indeksowania, która pozwala wyodrębnić zawartość pliku z zestawu umiejętności. Wcześniej przed wykonaniem zestawu umiejętności tylko złamanie dokumentu. Po dodaniu tej umiejętności można także wykonać tę operację w ramach wykonywania zestawu umiejętności.
+
++ [Tłumaczenie tekstu](cognitive-search-skill-text-translation.md) jest umiejętnością poznawczyą używaną podczas indeksowania, która oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy.
+
++ [Szablony Power BI](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) mogą szybko Rozpocznij pracę wizualizacje i analizę wzbogaconej zawartości w sklepie z Power BI Desktop. Ten szablon jest przeznaczony dla projekcji tabel platformy Azure utworzonych za pomocą [Kreatora importu danych](knowledge-store-create-portal.md).
+
+## <a name="service-updates"></a>Aktualizacje usług
+
+[Anonse aktualizacji usługi](https://azure.microsoft.com/updates/?product=search&status=all) dla systemu Azure wyszukiwanie poznawcze można znaleźć w witrynie sieci Web systemu Azure.

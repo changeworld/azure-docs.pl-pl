@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uruchamianie zestawu Speech Devices SDK w systemie Linux — usługa rozpoznawania mowy'
+title: 'Szybki Start: uruchamianie zestawu Speech Devices SDK w systemie Linux-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Wymagania wstępne i instrukcje dotyczące rozpoczynania pracy z zestawem SDK dla urządzeń z systemem Linux Speech.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 3ee39f4cf0c78850b0128fc5e497f2b2aee57bbc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5c881551648e8fc6078405e34fa3280723009b20
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559041"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490971"
 ---
-# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Szybki start: Uruchamianie przykładowej aplikacji zestawu Speech Devices SDK w systemie Linux
+# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Szybki Start: uruchamianie przykładowej aplikacji zestawu Speech Devices SDK w systemie Linux
 
 W tym przewodniku szybki start dowiesz się, jak za pomocą zestawu Speech Devices SDK dla systemu Linux utworzyć produkt z obsługą mowy lub użyć go jako urządzenia [transkrypcji konwersacji](conversation-transcription-service.md) . Obecnie jest obsługiwana tylko [usługa Azure urządzenia Kinect DK](https://azure.microsoft.com/services/kinect-dk/) .
 
@@ -25,13 +25,13 @@ Aplikacja została skompilowana przy użyciu pakietu zestawu Speech SDK, a środ
 
 Ten przewodnik wymaga konta usługi [Azure Cognitive Services](get-started.md) z zasobem usługi Speech Services. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 
-Kod źródłowy [przykładowej aplikacji](https://aka.ms/sdsdk-download-JRE) jest dołączony do zestawu Speech Devices SDK. Warto również [dostępne w serwisie GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+Kod źródłowy [przykładowej aplikacji](https://aka.ms/sdsdk-download-JRE) jest dołączony do zestawu Speech Devices SDK. Jest ona również [dostępna w witrynie GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* System operacyjny: 64 — bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)
+* System operacyjny: 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)
 * [Azure urządzenia Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Zintegrowane środowisko projektowe Eclipse Java](https://www.eclipse.org/downloads/)
 * Tylko [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) .
@@ -64,13 +64,13 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
 
 1. Uruchom środowisko Eclipse.
 
-1. W obszarze roboczym zaćmienie w środowisku  **IDE**wprowadź nazwę nowego katalogu obszaru roboczego. Następnie wybierz pozycję **Launch** (Uruchom).
+1. W obszarze **roboczym** **zaćmienie**w środowisku IDE wprowadź nazwę nowego katalogu obszaru roboczego. Następnie wybierz pozycję **Launch** (Uruchom).
 
    ![Zrzut ekranu przedstawiający program Eclipse Launcher](media/speech-devices-sdk/eclipse-launcher-linux.png)
 
 1. Za chwilę zostanie wyświetlone główne okno środowiska IDE programu Eclipse. Zamknij ekran powitalny, jeśli się pojawi.
 
-1. Na pasku menu przezaćmienie Utwórz nowy projekt, wybierając kolejno pozycje **plik** > **Nowy** > **projekt Java**. W przypadku niedostępności wybierz **projekt** , a następnie **projekt Java**.
+1. Na pasku menu zaćmienie Utwórz nowy projekt, wybierając kolejno pozycje **plik** > **Nowy** > **projekt Java**. W przypadku niedostępności wybierz **projekt** , a następnie **projekt Java**.
 
 1. Zostanie uruchomiony Kreator **nowego projektu Java** . **Przeglądaj** w poszukiwaniu lokalizacji przykładowego projektu. Wybierz pozycję **Finish** (Zakończ).
 
@@ -80,22 +80,22 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
 
    ![Zrzut ekranu narzędzia Package Explorer](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
-1. W **Eksploratorze pakietów**kliknij projekt prawym przyciskiem myszy. Wybierz **Właściwości**, a następnie **Uruchom/Debuguj ustawienia** > **nowe...** > **Aplikacja Java**. 
+1. W **Eksploratorze pakietów**kliknij projekt prawym przyciskiem myszy. Wybierz **Właściwości**, a następnie **Uruchom/Debuguj ustawienia** > **nowe...** > **aplikacji Java**. 
 
-1. Zostanie wyświetlone okno **Edytuj konfigurację** . W polu **Nazwa** wprowadź wartość **Main**, a następnie  Użyj opcji Wyszukaj **klasy głównej** , aby znaleźć i wybrać obiekt **com. Microsoft. cognitiveservices. Speech. Samples. FunctionsList**.
+1. Zostanie wyświetlone okno **Edytuj konfigurację** . W polu **Nazwa** wprowadź wartość **Main**, a następnie Użyj opcji Wyszukaj **klasy głównej** , aby znaleźć i wybrać obiekt **com. Microsoft. cognitiveservices. Speech. Samples. FunctionsList**.
 
    ![Zrzut ekranu przedstawiający konfigurację uruchamiania edycji](media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
 1. W oknie **Edycja konfiguracji** wybierz stronę **środowisko** i **nową**. Zostanie wyświetlone okno **Nowa zmienna środowiskowa** . W polu **Nazwa** wprowadź **LD_LIBRARY_PATH** , a w polu **wartość** wprowadź folder zawierający pliki *. so, na przykład **/Home/wcaltest/JRE-Sample-Release**
 
-1. Kopiuj `kws.table` i`participants.properties` do folderu projektu **Target/Classs**
+1. Kopiuj `kws.table` i `participants.properties` do **obiektu docelowego/klas** folderu projektu
 
 
 ## <a name="configure-the-sample-application"></a>Konfigurowanie przykładowej aplikacji
 
-1. Dodaj swój klucz subskrypcji mowy do kodu źródłowego. Do wypróbowania rozpoznawanie intencji, również należy dodać swoje [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klucz subskrypcji i aplikacji identyfikatora.
+1. Dodaj swój klucz subskrypcji mowy do kodu źródłowego. Jeśli chcesz wypróbować funkcję rozpoznawania intencji, Dodaj również klucz subskrypcji [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) i identyfikator aplikacji.
 
-   W przypadku mowy i LUIS informacje są umieszczane `FunctionsList.java`w:
+   W przypadku mowy i LUIS informacje są wprowadzane do `FunctionsList.java`:
 
    ```java
     // Subscription
@@ -106,23 +106,23 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    W przypadku korzystania z transkrypcji konwersacji informacje o kluczu mowy i regionie są również potrzebne w `Cts.java`programie:
+    W przypadku korzystania z transkrypcji konwersacji informacje o kluczu mowy i regionie są również potrzebne w `Cts.java`:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. Aktywujące domyślne (słowo kluczowe) jest "Computer". Można też spróbować jednego z innych podane wake słów, takich jak "Maszyna" lub "Asystent". Pliki zasobów dla tych słów alternatywne wznawiania znajdują się w zestawu Speech Devices SDK, na w tym folderze — słowo kluczowe. Na przykład `/home/wcaltest/JRE-Sample-Release/keyword/Computer` zawiera pliki używane dla programu Wake Word "Computer".
+1. Słowo kluczowe default (słowo kluczowe) to "Computer". Możesz również wypróbować jeden z innych podanych słów kluczowych, takich jak "Machine" lub "Assistant". Pliki zasobów dla tych alternatywnych słów kluczowych znajdują się w zestawie SDK urządzeń mowy w folderze słów kluczowych. Na przykład `/home/wcaltest/JRE-Sample-Release/keyword/Computer` zawiera pliki używane dla słowa kluczowego "Computer".
 
    > [!TIP]
-   > Możesz również [utworzyć niestandardowe słowo aktywujące](speech-devices-sdk-create-kws.md).
+   > Możesz również [utworzyć niestandardowe słowo kluczowe](speech-devices-sdk-create-kws.md).
 
-    Aby użyć nowego wyrazu wznawiania, zaktualizuj następujące dwa wiersze w `FunctionsList.java`programie i skopiuj pakiet wybudzenia programu Word do aplikacji. Na przykład, aby użyć programu Wake Word "Machine" z pakietu `kws-machine.zip`programu Wake Word:
+    Aby użyć nowego słowa kluczowego, zaktualizuj następujące dwa wiersze w `FunctionsList.java`i skopiuj pakiet słów kluczowych do aplikacji. Na przykład, aby użyć słowa kluczowego "Machine" z pakietu słowa kluczowego `kws-machine.zip`:
 
-   * Skopiuj pakiet wybudzenia programu Word do **obiektu docelowego/klasy**folderu projektu.
+   * Skopiuj pakiet słów kluczowych do folderu projektu **Target/Classes**.
 
-   * `FunctionsList.java` Zaktualizuj za pomocą słowa kluczowego i nazwy pakietu:
+   * Zaktualizuj `FunctionsList.java` za pomocą słowa kluczowego i nazwy pakietu:
 
      ```java
      private static final String Keyword = "Machine";
@@ -131,19 +131,19 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Uruchamianie przykładowej aplikacji z poziomu programu zaćmienie
 
-1. Na pasku menu przezaćmienia **Uruchom** > polecenie**Uruchom** 
+1. Na pasku menu zaćmienie **uruchom** > **Uruchom** 
 
-1. Przykładowa aplikacja zestawu Speech Devices SDK rozpoczyna się i wyświetla następujące opcje:
+1. Aplikacja Przykładowa zestawu SDK urządzeń mowy uruchamia się i wyświetla następujące opcje:
 
-   ![Opcje i przykładowa aplikacja przykład zestawu Speech Devices SDK](media/speech-devices-sdk/java-sample-app-linux.png)
+   ![Przykładowa aplikacja i opcje zestawu SDK urządzeń rozpoznawania mowy](media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. Wypróbuj nową wersję demonstracyjną **transkrypcji konwersacji** . Rozpocznij jego przepisywania z rozpoczęciem **sesji** > . Domyślnie wszyscy są gośćmi. Jeśli jednak masz podpisy głosowe uczestnika, można je umieścić `participants.properties` w **obiekcie docelowym/Klasa**folderu projektu. Aby wygenerować podpis głosowy, spójrz na [transkrypcja konwersacje (SDK)](how-to-use-conversation-transcription-service.md).
+1. Wypróbuj nową wersję demonstracyjną **transkrypcji konwersacji** . Uruchom jego przepisywania z **sesją** **startową** > . Domyślnie wszyscy są gośćmi. Jeśli jednak masz podpisy głosu uczestnika, można je umieścić w `participants.properties` w **obiekcie docelowym/klasie**folderu projektu. Aby wygenerować podpis głosowy, spójrz na [transkrypcja konwersacje (SDK)](how-to-use-conversation-transcription-service.md).
 
    ![Aplikacja do transkrypcji konwersacji demonstracyjnej](media/speech-devices-sdk/cts-sample-app-linux.png)
 
 ## <a name="create-and-run-standalone-the-application"></a>Tworzenie i uruchamianie autonomicznej aplikacji
 
-1. W **Eksploratorze pakietów**kliknij projekt prawym przyciskiem myszy. Wybierz **wyeksportować**. 
+1. W **Eksploratorze pakietów**kliknij projekt prawym przyciskiem myszy. Wybierz pozycję **Eksportuj**. 
 1. Zostanie wyświetlone okno **eksport** . Rozwiń węzeł **Java** i wybierz pozycję **możliwy do uruchomienia plik JAR** , a następnie wybierz pozycję **Next (dalej**).
 
    ![Zrzut ekranu okna eksportowania](media/speech-devices-sdk/eclipse-export-linux.png) 
@@ -152,7 +152,7 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
  
    ![Zrzut ekranu przedstawiający Eksport pliku JAR możliwy do uruchomienia](media/speech-devices-sdk/eclipse-export-jar-linux.png)
 
-1. Umieść `kws.table` i`participants.properties` w folderze docelowym wybranym powyżej, ponieważ te pliki są zbędne przez aplikację.
+1. Umieść `kws.table` i `participants.properties` w folderze docelowym wybranym powyżej, ponieważ te pliki są wymagane przez aplikację.
 
 1. Ustaw LD_LIBRARY_LIB do folderu zawierającego *. so plików
 
@@ -166,7 +166,7 @@ Jeśli planujesz korzystać z intencji, musisz mieć subskrypcję [usługi Langu
      java -jar SpeechDemo.jar
      ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Zapoznaj się z informacjami o wersji](devices-sdk-release-notes.md)

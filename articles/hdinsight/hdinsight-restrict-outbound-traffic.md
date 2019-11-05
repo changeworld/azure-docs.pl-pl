@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie ograniczenia wychodzącego ruchu sieciowego dla klastrów usługi Azure HDInsight
+title: Konfigurowanie ograniczenia ruchu wychodzącego w sieci — Azure HDInsight
 description: Dowiedz się, jak skonfigurować ograniczenie ruchu sieciowego ruchu wychodzącego dla klastrów usługi Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 56e745a4f4e4bfbe82da00b46b7a5c0a58e3785e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: df691102b565824d6cb6a86f19e6fce3822d8ba8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789806"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498131"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurowanie wychodzącego ruchu sieciowego dla klastrów usługi Azure HDInsight przy użyciu zapory (wersja zapoznawcza)
 
@@ -46,7 +46,7 @@ Podsumowanie kroków służących do blokowania ruchu wychodzącego z istniejąc
 
 Utwórz kolekcję reguł aplikacji, która umożliwia klastrowi wysyłanie i odbieranie ważnej komunikacji.
 
-Wybierz nową zaporę **test-FW01** z Azure Portal. Kliknij pozycję **reguły** w obszarze **Ustawienia**  > **kolekcje reguł aplikacji**  > **Dodawanie kolekcji reguł aplikacji**.
+Wybierz nową zaporę **test-FW01** z Azure Portal. Kliknij pozycję **reguły** w obszarze **Ustawienia** > **kolekcje reguł aplikacji** > **Dodawanie kolekcji reguł aplikacji**.
 
 ![Title: Dodawanie kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
@@ -66,7 +66,7 @@ Na ekranie **Dodawanie kolekcji reguł aplikacji** wykonaj następujące czynno�
    | Rule_3 | * | https: 443 | login.microsoftonline.com | Zezwala na działanie logowania systemu Windows |
    | Rule_4 | * | https: 443, http: 80 | < storage_account_name. blob. Core. Windows. net > | Jeśli klaster jest objęty WASB, Dodaj regułę do WASB. Aby korzystać tylko z połączeń HTTPS, upewnij się, że na koncie magazynu jest włączone [żądanie bezpiecznego transferu](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) . |
 
-1. Kliknij pozycję **Add** (Dodaj).
+1. Kliknij pozycję **Dodaj**.
 
    ![Title: Wprowadź szczegóły kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -75,7 +75,7 @@ Na ekranie **Dodawanie kolekcji reguł aplikacji** wykonaj następujące czynno�
 Utwórz reguły sieciowe w celu poprawnego skonfigurowania klastra usługi HDInsight.
 
 1. Wybierz nową zaporę **test-FW01** z Azure Portal.
-1. Kliknij pozycję **reguły** w obszarze **Ustawienia**  > **zbieranie reguł sieci**  > **Dodawanie kolekcji reguł sieci**.
+1. Kliknij pozycję **reguły** w obszarze **Ustawienia** > **zbieranie reguł sieci** > **Dodawanie kolekcji reguł sieci**.
 1. Na ekranie **Dodawanie kolekcji reguł sieci** wprowadź **nazwę**i **Priorytet**, a następnie kliknij pozycję **Zezwól** z menu rozwijanego **Akcja** .
 1. Utwórz następujące reguły w sekcji **adresy IP** :
 
@@ -177,17 +177,17 @@ Poprzednie instrukcje ułatwiają skonfigurowanie zapory platformy Azure pod ką
 |---|
 | Azure SQL |
 | Azure Storage |
-| Usługa Active Directory systemu Azure |
+| Usługa Azure Active Directory |
 
 #### <a name="ip-address-dependencies"></a>Zależności adresów IP
 
 | **Punktu końcowego** | **Szczegóły** |
 |---|---|
-| \*:123 | Sprawdzanie zegara NTP. Ruch jest sprawdzany w wielu punktach końcowych na porcie 123 |
+| \*: 123 | Sprawdzanie zegara NTP. Ruch jest sprawdzany w wielu punktach końcowych na porcie 123 |
 | Adresy IP opublikowane w [tym miejscu](hdinsight-management-ip-addresses.md) | To są usługi HDInsight |
 | AAD — prywatne adresy IP DS dla klastrów ESP |
-| \*:16800 dla aktywacji usługi KMS systemu Windows |
-| \*12000 Log Analytics |
+| \*: 16800 dla aktywacji usługi KMS systemu Windows |
+| \*12000 dla Log Analytics |
 
 #### <a name="fqdn-httphttps-dependencies"></a>Zależności HTTP/HTTPS w nazwie FQDN
 

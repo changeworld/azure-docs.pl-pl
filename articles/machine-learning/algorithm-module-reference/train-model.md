@@ -1,24 +1,24 @@
 ---
 title: 'Model uczenia: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak korzystać z modułu **uczenie modelu** w usłudze Azure Machine Learning, aby szkolić model klasyfikacji lub regresji.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu **uczenie modelu** w Azure Machine Learning, aby szkolić model klasyfikacji lub regresji.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: f9717c39388c85ced889744722899b78a5df8453
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 28cc2e1f8782f1ffd37e3a20fcc68264b481e42e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693692"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490376"
 ---
 # <a name="train-model-module"></a>Moduł uczenia modelu
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do uczenia modelu klasyfikacji lub regresji. Szkolenia odbywają się po zdefiniowaniu modelu i ustawieniu jego parametrów i wymaganiu oznakowanych danych. Możesz również użyć **modelu uczenia** , aby ponownie szkolić istniejący model przy użyciu nowych danych. 
 
@@ -77,4 +77,4 @@ Po przeszkoleniu modelu:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

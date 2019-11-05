@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3118be297caabbd4b829344e42361fa6b7602aad
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 78440185b4a26bccc8ffb0258416a19aa929af6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066728"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470235"
 ---
 # <a name="azure-app-service-plan-overview"></a>Przegląd planu Azure App Service
 
@@ -35,9 +35,9 @@ Po utworzeniu planu App Service w określonym regionie (na przykład Europa Zach
 
 _Warstwa cenowa_ planu App Service określa, jakie funkcje App Service uzyskasz i ile płacisz za plan. Istnieje kilka kategorii warstw cenowych:
 
-- **Udostępnione obliczenia**: **Bezpłatna** i **współdzielona**— dwie warstwy podstawowe, uruchamiają aplikację na tej samej maszynie wirtualnej platformy Azure, co inne App Service aplikacje, w tym aplikacje innych klientów. Te warstwy przydzielą limity przydziału procesora CPU do poszczególnych aplikacji, które są uruchamiane w udostępnionych zasobach, a zasoby nie mogą skalować w poziomie.
-- **Dedykowane obliczenia**: Warstwy **Basic**, **Standard**, **Premium**i **PremiumV2** uruchamiają aplikacje na dedykowanych maszynach wirtualnych platformy Azure. Tylko aplikacje w tym samym planie App Service współużytkują te same zasoby obliczeniowe. Im wyższa warstwa, tym więcej wystąpień maszyn wirtualnych jest dostępnych do skalowania w poziomie.
-- **Izolowany**: Ta warstwa służy do uruchamiania dedykowanych maszyn wirtualnych platformy Azure w dedykowanych sieciach wirtualnych platformy Azure. Zapewnia izolację sieci na poziomie izolacji obliczeniowej dla aplikacji. Zapewnia maksymalne możliwości skalowania w poziomie.
+- **Udostępnione obliczenia**: **bezpłatne** i **udostępnione**, dwie warstwy podstawowe, URUCHAMIAJĄ aplikację na tej samej maszynie wirtualnej platformy Azure, co inne App Service aplikacje, w tym aplikacje innych klientów. Te warstwy przydzielą limity przydziału procesora CPU do poszczególnych aplikacji, które są uruchamiane w udostępnionych zasobach, a zasoby nie mogą skalować w poziomie.
+- **Dedykowane obliczenia**: warstwy **Basic**, **Standard**, **Premium**i **PremiumV2** korzystają z aplikacji na dedykowanych maszynach wirtualnych platformy Azure. Tylko aplikacje w tym samym planie App Service współużytkują te same zasoby obliczeniowe. Im wyższa warstwa, tym więcej wystąpień maszyn wirtualnych jest dostępnych do skalowania w poziomie.
+- **Izolowane**: Ta warstwa służy do uruchamiania dedykowanych maszyn wirtualnych platformy Azure w dedykowanych sieciach wirtualnych platformy Azure. Zapewnia izolację sieci na poziomie izolacji obliczeniowej dla aplikacji. Zapewnia maksymalne możliwości skalowania w poziomie.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -60,7 +60,7 @@ Każda warstwa udostępnia również określony podzbiór funkcji App Service. T
 
 ## <a name="how-does-my-app-run-and-scale"></a>Jak działa i skalowanie mojej aplikacji?
 
-W warstwach **bezpłatna** i współdzielona aplikacja otrzymuje minuty procesora CPU w wystąpieniu udostępnionej maszyny wirtualnej i nie może skalować w poziomie. W innych warstwach aplikacja działa i skaluje się w następujący sposób.
+W warstwach **bezpłatna** i **współdzielona** aplikacja otrzymuje minuty procesora CPU w wystąpieniu udostępnionej maszyny wirtualnej i nie może skalować w poziomie. W innych warstwach aplikacja działa i skaluje się w następujący sposób.
 
 Podczas tworzenia aplikacji w App Service jest ona umieszczana w planie App Service. Gdy aplikacja zostanie uruchomiona, zostanie uruchomiona na wszystkich wystąpieniach maszyn wirtualnych skonfigurowanych w planie App Service. Jeśli wiele aplikacji jest w tym samym planie App Service, wszystkie współużytkują te same wystąpienia maszyn wirtualnych. Jeśli masz wiele miejsc wdrożenia dla aplikacji, wszystkie miejsca wdrożenia są również uruchamiane na tych samych wystąpieniach maszyn wirtualnych. W przypadku włączenia dzienników diagnostycznych, wykonywania kopii zapasowych lub uruchamiania zadań WebJob program używa również cykli procesora CPU i pamięci dla tych wystąpień maszyn wirtualnych.
 
@@ -95,7 +95,7 @@ Za korzystanie z funkcji App Service, które są dostępne dla użytkownika (Kon
 
 Plan App Service można w dowolnym momencie skalować w górę i w dół. Jest tak proste, jak zmiana warstwy cenowej planu. W pierwszej kolejności możesz wybrać niższą warstwę cenową i później ją skalować, gdy będzie potrzebna więcej App Service funkcji.
 
-Możesz na przykład rozpocząć testowanie aplikacji sieci Web w ramach planu App Service **bezpłatna** i zwrócić wartość Nothing. Aby dodać niestandardową [nazwę DNS](app-service-web-tutorial-custom-domain.md) do aplikacji sieci Web, wystarczy przeskalować swój plan do warstwy **udostępnionej** . Później, jeśli chcesz dodać [niestandardowy certyfikat protokołu SSL](app-service-web-tutorial-custom-ssl.md), Skaluj plan do warstwy **podstawowa** . Jeśli chcesz mieć [środowiska przejściowe](deploy-staging-slots.md), Skaluj do warstwy **standardowa** . Jeśli potrzebujesz więcej rdzeni, pamięci lub magazynu, możesz skalować w górę do większego rozmiaru maszyny wirtualnej w tej samej warstwie.
+Możesz na przykład rozpocząć testowanie aplikacji sieci Web w ramach planu App Service **bezpłatna** i zwrócić wartość Nothing. Aby dodać [niestandardową nazwę DNS](app-service-web-tutorial-custom-domain.md) do aplikacji sieci Web, wystarczy przeskalować swój plan do warstwy **udostępnionej** . Później, jeśli chcesz [utworzyć powiązanie SSL](configure-ssl-bindings.md), Skaluj plan do warstwy **podstawowa** . Jeśli chcesz mieć [środowiska przejściowe](deploy-staging-slots.md), Skaluj do warstwy **standardowa** . Jeśli potrzebujesz więcej rdzeni, pamięci lub magazynu, możesz skalować w górę do większego rozmiaru maszyny wirtualnej w tej samej warstwie.
 
 To samo działa w odwrocie. Jeśli uważasz, że nie potrzebujesz już możliwości lub funkcji wyższego poziomu, możesz skalować w dół do niższej warstwy, co pozwala zaoszczędzić pieniądze.
 

@@ -1,7 +1,7 @@
 ---
-title: Pojęcia audio strumienia wejściowego zestawu SDK usługi mowy
+title: Pojęcia dotyczące strumienia danych wejściowych audio zestawu Speech SDK
 titleSuffix: Azure Cognitive Services
-description: Omówienie funkcji zestaw SDK rozpoznawania mowy strumienia wejściowego audio interfejsu API.
+description: Przegląd możliwości interfejsu API wejściowego strumienia usługi Speech SDK.
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 06b69da7f7435ce8a1e32150b7abe161ebdf527c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e00feed416eb3e06b703a2ef4fe040f0c815716e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606501"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464307"
 ---
-# <a name="about-the-speech-sdk-audio-input-stream-api"></a>Temat audio zestaw SDK rozpoznawania mowy danych wejściowych interfejsu API usługi stream
+# <a name="about-the-speech-sdk-audio-input-stream-api"></a>Informacje o interfejsie API strumieniowego wejścia audio zestawu mowy SDK
 
-Zestaw SDK rozpoznawania mowy **Stream dane wejściowe dźwięk** interfejs API umożliwia przesyłanie strumieniowe strumieni audio do aparatów rozpoznawania gestów zamiast korzystać z mikrofonu lub pliku wejściowego interfejsów API.
+Interfejs API **wejścia audio** zestawu mowy SDK umożliwia strumieniowe przesyłanie strumieni audio do aparatów rozpoznawania zamiast używania mikrofonu lub interfejsów API plików wejściowych.
 
-Poniższe kroki są wymagane, gdy za pomocą audio strumienie wejściowe:
+Następujące kroki są wymagane w przypadku korzystania ze strumieni danych wejściowych audio:
 
-- Określ format strumienia audio. Format muszą być obsługiwane przez zestaw SDK rozpoznawania mowy i usługi rozpoznawania mowy. Aktualnie obsługiwana jest tylko następującą konfigurację:
+- Określ format strumienia audio. Ten format musi być obsługiwany przez zestaw mowy SDK i usługę mowy. Obecnie obsługiwana jest tylko następująca konfiguracja:
 
-  Próbki audio w formacie PCM, jeden kanał, 16000 próbki na sekundę, 32000 bajtów na sekundę, blok dwóch wyrównanie (16-bitowych tym dopełnienie przykład), 16 bitów na próbkę.
+  Próbki audio w formacie PCM, jeden kanał, 16000 próbek na sekundę, 32000 bajtów na sekundę, Wyrównaj do dwóch bloków (16 bitów włącznie z uzupełnieniem dla próbki), 16 bitów na próbkę.
 
-  Odpowiedni kod w zestawie SDK, aby utworzyć audio format wygląda następująco:
+  Odpowiedni kod w zestawie SDK, aby utworzyć format audio wygląda następująco:
 
   ```
   byte channels = 1;
@@ -36,9 +36,9 @@ Poniższe kroki są wymagane, gdy za pomocą audio strumienie wejściowe:
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
-- Upewnij się, że Twój kod może zapewnić pierwotne dane audio zgodnie z tymi specyfikacjami. Jeśli Twoje źródło audio nie są zgodne z obsługiwanych formatów, audio, musi być transkodowane na wymagany format.
+- Upewnij się, że kod może dostarczyć nieprzetworzone dane audio zgodnie z tymi specyfikacjami. Jeśli dane źródłowe audio nie są zgodne z obsługiwanymi formatami, dźwięk musi być przekształcony w wymagany format.
 
-- Utwórz własne klasy strumienia wejściowego audio pochodną `PullAudioInputStreamCallback`. Zaimplementuj elementy członkowskie `Read()` i `Close()`. Podpis funkcji Porównaj jest zależne od języka, ale kod będzie wyglądać podobnie do tego przykładu kodu:
+- Utwórz własną klasę strumienia wejściowego audio pochodzącą z `PullAudioInputStreamCallback`. Zaimplementuj `Read()` i `Close()` członków. Dokładna sygnatura funkcji jest zależna od języka, ale kod będzie wyglądać podobnie do tego przykładu kodu:
 
   ```
    public class ContosoAudioStream : PullAudioInputStreamCallback {
@@ -59,7 +59,7 @@ Poniższe kroki są wymagane, gdy za pomocą audio strumienie wejściowe:
    };
   ```
 
-- Utwórz konfigurację adresu audio oparte na audio format i dane wejściowe strumienia. Przekaż konfigurację regularnego mowy i konfiguracja wejściowe audio podczas tworzenia usługi rozpoznawania. Na przykład:
+- Utwórz konfigurację audio w oparciu o format audio i strumień wejściowy. Podczas tworzenia aparatu rozpoznawania należy przekazać zwykłą konfigurację mowy i konfigurację wejściową audio. Na przykład:
 
   ```
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
@@ -73,7 +73,7 @@ Poniższe kroki są wymagane, gdy za pomocą audio strumienie wejściowe:
   var text = result.GetText();
   ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz, jak rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)
+* [Zobacz, jak rozpoznać mowęC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

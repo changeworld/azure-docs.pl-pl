@@ -1,36 +1,55 @@
 ---
-title: 'Samouczek: Udostępnianie poza swoją organizacji — wersja zapoznawcza usługi Azure Data Share'
-description: Samouczek — udostępnianie danych klientom i partnerom przy użyciu wersji zapoznawczej usługi Azure Data Share
+title: 'Samouczek: udostępnianie poza swoją organizacji — udział danych platformy Azure'
+description: Samouczek — udostępnianie danych klientom i partnerom za pomocą udziału danych platformy Azure
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: f7df46a6a6f149ef0228fda8c967469a25dc3d50
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 4ef9256404b0d0d4d6379e4f5a76c0d41a38c7cd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327416"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499321"
 ---
-# <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>Samouczek: Udostępnianie danych przy użyciu wersji zapoznawczej usługi Azure Data Share
+# <a name="tutorial-share-data-using-azure-data-share"></a>Samouczek: udostępnianie danych za pomocą udziału danych platformy Azure  
 
 W tym samouczku dowiesz się, jak skonfigurować nowy udział danych platformy Azure i zacząć udostępniać dane klientom i partnerom spoza organizacji platformy Azure. 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Utwórz udział danych.
-> * Dodaj zestawy danych do swojego udziału.
-> * Włącz harmonogram synchronizacji dla udziału danych. 
-> * Dodaj adresatów do udziału danych. 
+> * Utwórz usługę Data Share.
+> * Dodaj zestawy danych do usługi Data Share.
+> * Włącz harmonogram synchronizacji dla usługi Data Share. 
+> * Dodaj odbiorców do usługi Data Share. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
-* Konto usługi Azure Storage: Jeśli jeszcze tego nie masz, możesz utworzyć [konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) .
+* Adres e-mail logowania odbiorcy platformy Azure (przy użyciu aliasu poczty e-mail nie będzie działał).
+
+### <a name="share-from-a-storage-account"></a>Udostępnianie z konta magazynu:
+
+* Konto usługi Azure Storage: Jeśli jeszcze go nie masz, możesz utworzyć [konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 * Uprawnienie do dodawania przypisywania roli do konta magazynu, które jest obecne w uprawnieniach *Microsoft. Autoryzacja/Przypisywanie ról/zapis* . To uprawnienie istnieje w roli właściciela. 
-* Adresaci adresu e-mail logowania platformy Azure (przy użyciu aliasu poczty e-mail nie będą zadziałały).
+
+### <a name="share-from-a-sql-based-source"></a>Udostępnianie z poziomu źródła opartego na języku SQL:
+
+* Azure SQL Database lub Azure SQL Data Warehouse z tabelami i widokami, które chcesz udostępnić.
+* Uprawnienie do udziału danych w celu uzyskania dostępu do magazynu danych. Można to zrobić, wykonując następujące czynności: 
+    1. Ustaw siebie jako administratora Azure Active Directory dla serwera.
+    1. Nawiąż połączenie z magazynem Azure SQL Database/danymi przy użyciu Azure Active Directory.
+    1. Użyj edytora zapytań (wersja zapoznawcza), aby wykonać poniższy skrypt w celu dodania pliku MSI udziału danych jako db_owner. Musisz nawiązać połączenie przy użyciu Active Directory, a nie SQL Server uwierzytelniania. 
+    
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```                   
+Należy pamiętać, że *< share_acc_name >* to nazwa konta udziału danych. Jeśli konto udziału danych nie zostało jeszcze utworzone, możesz wrócić do tego wymagania wstępnego później.  
+
+* Adres IP klienta SQL Server dostęp do zapory: można to zrobić, wykonując następujące kroki: 1. Przejdź do obszarze *zapory i sieci wirtualne* 1. Kliknij przełącznik **, aby zezwolić na dostęp** do usług platformy Azure. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -44,16 +63,16 @@ Utwórz zasób udziału danych platformy Azure w grupie zasobów platformy Azure
 
 1. Wyszukaj *udział danych*.
 
-1. Wybierz pozycję udział danych (wersja zapoznawcza) i wybierz pozycję **Utwórz**.
+1. Wybierz pozycję udział danych i wybierz pozycję **Utwórz**.
 
 1. Wypełnij podstawowe szczegóły zasobu udziału danych platformy Azure, korzystając z poniższych informacji. 
 
      **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | Name | *datashareacount* | Określ nazwę konta udziału danych. |
-    | Subscription | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla konta udziału danych.|
-    | Resource group | *test-resource-group* | Użyj istniejącej grupy zasobów lub utwórz nową. |
-    | Location | *Wschodnie stany USA 2* | Wybierz region dla konta udziału danych.
+    | Nazwa | *datashareacount* | Określ nazwę konta udziału danych. |
+    | Subskrypcja | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla konta udziału danych.|
+    | Grupa zasobów | *test-resource-group* | Użyj istniejącej grupy zasobów lub utwórz nową. |
+    | Lokalizacja | *Wschodnie stany USA 2* | Wybierz region dla konta udziału danych.
     | | |
 
 1. Wybierz pozycję **Utwórz** , aby zainicjować obsługę administracyjną konta udziału danych. Inicjowanie obsługi nowego konta udziału danych zwykle trwa około 2 minuty. 
@@ -64,7 +83,7 @@ Utwórz zasób udziału danych platformy Azure w grupie zasobów platformy Azure
 
 1. Przejdź do strony Przegląd udostępniania danych.
 
-    ![Udostępnianie danych]do(./media/share-receive-data.png "udostępniania danych") 
+    ![Udostępnianie danych](./media/share-receive-data.png "Udostępnianie danych") 
 
 1. Wybierz pozycję **Rozpocznij udostępnianie danych**.
 
@@ -78,11 +97,11 @@ Utwórz zasób udziału danych platformy Azure w grupie zasobów platformy Azure
 
 1. Aby dodać zbiory danych do swojego udziału, wybierz pozycję **Dodaj zestawy**. 
 
-    (./media/datasets.png "Zestawy danych") ![DataSets]
+    ![Zestawy danych](./media/datasets.png "Zestawy danych")
 
 1. Wybierz typ zestawu danych, który chcesz dodać. 
 
-    ![Adddatasets](./media/add-datasets.png "Add DataSets")    
+    ![Adddatasets](./media/add-datasets.png "Dodaj zestawy danych")    
 
 1. Przejdź do obiektu, który chcesz udostępnić, i wybierz pozycję "Dodaj zestawy danych". 
 
@@ -90,7 +109,7 @@ Utwórz zasób udziału danych platformy Azure w grupie zasobów platformy Azure
 
 1. Na karcie adresaci wprowadź adres e-mail odbiorcy danych, wybierając pozycję "+ Dodaj odbiorcę". 
 
-    ![](./media/add-recipient.png "Dodawanie adresatów dla odbiorców") 
+    ![Addrecipients](./media/add-recipient.png "Dodawanie adresatów") 
 
 1. Wybierz pozycję **Kontynuuj**
 

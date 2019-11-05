@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: bf2441d5c0947ec94cbee247bdc4634ff9e53bfd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 768e354281aeb5e2143ddb0e190b0f27bf4f4e24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070311"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470694"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Niestandardowe ustawienia konfiguracji dla środowisk App Service Environment
 ## <a name="overview"></a>Omówienie
@@ -66,7 +66,7 @@ Jeśli na przykład środowisko App Service Environment ma cztery frontony, koń
 
 ## <a name="disable-tls-10-and-tls-11"></a>Wyłączanie protokołów TLS 1.0 i TLS 1.1
 
-Jeśli chcesz zarządzać ustawieniami protokołu TLS dla każdej aplikacji z osobna, możesz skorzystać ze wskazówek zawartych w dokumentacji [Wymuszanie ustawień protokołu TLS](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions). 
+Jeśli chcesz zarządzać ustawieniami protokołu TLS dla każdej aplikacji z osobna, możesz skorzystać ze wskazówek zawartych w dokumentacji [Wymuszanie ustawień protokołu TLS](../configure-ssl-bindings.md#enforce-tls-versions). 
 
 Jeśli chcesz wyłączyć całych ruch przychodzący protokołów TLS 1.0 i TLS 1.1 dla wszystkich aplikacji w środowisku ASE, możesz ustawić następujący wpis **clusterSettings**:
 
@@ -94,7 +94,7 @@ Kolejne pytanie klientów dotyczy tego, czy mogą oni modyfikować listę szyfr�
 > 
 > 
 
-## <a name="get-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpocznij
 W witrynie szablonów szybkiego startu Azure Resource Manager można znaleźć szablon z podstawową definicją umożliwiającą [tworzenie środowiska App Service Environment](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
 
 <!-- LINKS -->

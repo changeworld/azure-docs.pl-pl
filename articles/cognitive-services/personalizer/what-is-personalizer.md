@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 8a0b0dde50de1806762076025e4f74f19388f81b
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989596"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467192"
 ---
 # <a name="what-is-personalizer"></a>Co to jest usługa Personalizacja?
 
@@ -25,6 +25,8 @@ Personalizacja Azure to oparta na chmurze usługa interfejsu API, która pozwala
 * Nie ma potrzeby czyszczenia i etykietowania danych przed użyciem narzędzia Personalizacja.
 * Prześlij opinię na temat personalizowania, gdy jest to wygodne. 
 * Wyświetlanie analizy w czasie rzeczywistym. 
+
+Zobacz pokaz działania narzędzia [Personalizacja](https://personalizercontentdemo.azurewebsites.net/)
 
 ## <a name="how-does-personalizer-work"></a>Jak działa program Personalizuj?
 

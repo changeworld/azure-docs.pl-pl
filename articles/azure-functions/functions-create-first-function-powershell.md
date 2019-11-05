@@ -1,26 +1,21 @@
 ---
-title: Utwórz pierwszą funkcję programu PowerShell przy użyciu Azure Functions
+title: Tworzenie pierwszej funkcji programu PowerShell na platformie Azure
 description: Dowiedz się, jak utworzyć pierwszą funkcję programu PowerShell na platformie Azure przy użyciu Visual Studio Code.
-services: functions
-keywords: ''
 author: joeyaiello
-manager: jeconnoc
+manager: gwallace
 ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.devlang: powershell
-ms.openlocfilehash: c9de4cec417625bb8451457652dacb61550c31b0
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 1d6d641e141862b12fed40b800589aad70af2789
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248332"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469410"
 ---
-# <a name="create-your-first-powershell-function-in-azure-preview"></a>Tworzenie pierwszej funkcji programu PowerShell na platformie Azure (wersja zapoznawcza)
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
+# <a name="create-your-first-powershell-function-in-azure"></a>Tworzenie pierwszej funkcji programu PowerShell na platformie Azure
 
 Ten artykuł Szybki Start przeprowadzi Cię przez proces tworzenia pierwszej funkcji programu PowerShell [bezserwerowej](https://azure.com/serverless) przy użyciu Visual Studio Code.
 
@@ -35,7 +30,7 @@ Poniższe kroki są obsługiwane w systemach operacyjnych macOS, Windows i Linux
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki Start:
+Aby ukończyć ten przewodnik Szybki start:
 
 * Instalowanie [programu PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
 
@@ -66,9 +61,9 @@ Szablon projektu usługi Azure Functions w programie Visual Studio Code umożliw
     > [!NOTE]
     > Ten artykuł został zaprojektowany pod kątem wykonania poza obszarem roboczym. W takim przypadku nie wybieraj folderu projektu, który jest częścią obszaru roboczego.
 
-1. Wybierz program **PowerShell (wersja zapoznawcza)** jako język projektu aplikacji funkcji, a następnie **Azure Functions v2**.
+1. Wybierz program **PowerShell** jako język projektu aplikacji funkcji, a następnie **Azure Functions v2**.
 
-1. Wybierz **wyzwalacz http** jako szablon pierwszej funkcji, użyj `HTTPTrigger` jako nazwy funkcji, a następnie wybierz poziom autoryzacji **funkcji**.
+1. Wybierz **wyzwalacz http** jako szablon pierwszej funkcji, użyj `HTTPTrigger` jako nazwy funkcji i wybierz poziom autoryzacji **funkcji**.
 
     > [!NOTE]
     > Poziom autoryzacji **funkcji** wymaga wartości [klucza funkcji](functions-bindings-http-webhook.md#authorization-keys) podczas wywoływania punktu końcowego funkcji na platformie Azure. Dzięki temu tylko każdy użytkownik może wywołać swoją funkcję.
@@ -87,7 +82,7 @@ Azure Functions Core Tools integruje się z Visual Studio Code, aby umożliwić 
 
     ![Lokalne dane wyjściowe platformy Azure](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
 
-1. Dołącz ciąg zapytania `?name=<yourname>` do tego adresu URL, a następnie użyj `Invoke-RestMethod` do wykonania żądania w następujący sposób:
+1. Dołącz ciąg zapytania `?name=<yourname>` do tego adresu URL, a następnie użyj `Invoke-RestMethod`, aby wykonać żądanie w następujący sposób:
 
     ```powershell
     PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
@@ -103,10 +98,10 @@ Azure Functions Core Tools integruje się z Visual Studio Code, aby umożliwić 
 Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokalnym, możesz opublikować projekt na platformie Azure.
 
 > [!NOTE]
-> Pamiętaj, aby usunąć wszystkie wywołania `Wait-Debugger` przed opublikowaniem funkcji na platformie Azure. 
-
-> [!NOTE]
-> W przypadku tworzenia aplikacja funkcji na platformie Azure zostanie wyświetlony monit dotyczący aplikacja funkcji nazwy. Ustaw azureFunctions. advancedCreation na wartość true, aby uzyskać monit dotyczący wszystkich innych wartości.
+> Pamiętaj, aby usunąć wszystkie wywołania do `Wait-Debugger` przed opublikowaniem funkcji na platformie Azure. 
+>
+> Tworzenie aplikacji funkcji na platformie Azure tylko pyta o nazwę aplikacji funkcji. Inne wartości są zdefiniowane dla Ciebie.
+> Ustaw `azureFunctions.advancedCreation`, aby `true` monitować o wszystkie inne wartości.
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 

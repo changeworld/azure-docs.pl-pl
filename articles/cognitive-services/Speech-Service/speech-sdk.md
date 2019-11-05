@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: ee505cc78c16d85640c7e13541272f1bafe30061
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: f6446a2dbe3f111c9c617e78a0bdd98f6cea9153
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71800001"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468779"
 ---
 # <a name="about-the-speech-sdk"></a>Informacje o zestawie SDK mowy
 
@@ -45,7 +45,7 @@ W przypadku systemu Windows obsługiwane są następujące języki:
 
 Upewnij się, że wymagane biblioteki są zainstalowane, uruchamiając następujące polecenia powłoki:
 
-w Ubuntu:
+W systemie Ubuntu:
 
 ```sh
 sudo apt-get update
@@ -71,7 +71,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
   |Ścieżka|Opis|
   |-|-|
-  |`license.md`|Licencjonowan|
+  |`license.md`|Licencja|
   |`ThirdPartyNotices.md`|Uwagi dotyczące innych firm|
   |`include`|Pliki nagłówkowe dla C iC++|
   |`lib/x64`|Natywna biblioteka x64 do łączenia z aplikacją|
@@ -81,7 +81,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
 ### <a name="android"></a>Android
 
-Zestaw Java SDK dla systemu Android jest spakowany jako [AAR (Biblioteka systemu Android)](https://developer.android.com/studio/projects/android-library), który obejmuje niezbędne biblioteki i wymagane uprawnienia systemu Android. Jest ona hostowana w repozytorium Maven w `https://csspeechstorage.blob.core.windows.net/maven/` jako pakiet `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`.
+Zestaw Java SDK dla systemu Android jest spakowany jako [AAR (Biblioteka systemu Android)](https://developer.android.com/studio/projects/android-library), który obejmuje niezbędne biblioteki i wymagane uprawnienia systemu Android. Jest ona hostowana w repozytorium Maven w `https://csspeechstorage.blob.core.windows.net/maven/` jako `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`pakietu.
 
 Aby użyć pakietu z projektu Android Studio, wprowadź następujące zmiany:
 
@@ -103,5 +103,5 @@ Zestaw Java SDK jest również częścią [zestawu Speech Devices SDK](speech-de
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Uzyskaj subskrypcję wersji próbnej usługi Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobacz, jak rozpoznać mowęC#](quickstart-csharp-dotnet-windows.md)
+* [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+* [Zobacz, jak rozpoznać mowęC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

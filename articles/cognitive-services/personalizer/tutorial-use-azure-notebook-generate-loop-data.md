@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 10/04/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515173"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467250"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Samouczek: używanie programu Personalizujer w notesie platformy Azure
 
@@ -81,7 +81,7 @@ Opisy plików:
 
 ## <a name="configure-personalizer-resource"></a>Konfiguruj zasób personalizacji
 
-W Azure Portal Skonfiguruj [zasób personalizacji](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) z **częstotliwością aktualizacji** z ustawioną na 15 sekund i **poczekaj** na 15 sekund. Te ustawienia są dostępne na stronie **[Ustawienia](how-to-settings.md#configure-service-settings-in-the-azure-portal)** . 
+W Azure Portal Skonfiguruj [zasób personalizacji](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) z **częstotliwością aktualizacji** z ustawioną na 15 sekund i **poczekaj** na 15 sekund. Te wartości można znaleźć na stronie **[Konfiguracja](how-to-settings.md#configure-service-settings-in-the-azure-portal)** . 
 
 |Ustawienie|Wartość|
 |--|--|
@@ -170,7 +170,7 @@ def get_last_updated(currentModifiedDate):
 
 Sprawdź stan usługi za pomocą tych dwóch wywołań REST.
 
-Te komórki nie mają danych wyjściowych. Funkcja wyprowadza ustawienia usługi po wywołaniu.
+Te komórki nie mają danych wyjściowych. Funkcja wyprowadza wartości usługi po wywołaniu.
 
 ```python
 def get_service_settings():
@@ -574,11 +574,11 @@ Ten wykres pokazuje powodzenie modelu dla bieżących domyślnych zasad nauki.
 ![Ten wykres pokazuje pomyślne bieżące zasady uczenia w czasie trwania testu.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-Idealnym miejscem docelowym, który kończy się na końcu testu, pętla jest przeciętnie Częstotliwość powodzeń zbliżoną do 100 procent minus eksploracji. Domyślnym ustawieniem eksploracji jest 20%. 
+Idealnym miejscem docelowym, który kończy się na końcu testu, pętla jest przeciętnie Częstotliwość powodzeń zbliżoną do 100 procent minus eksploracji. Domyślna wartość eksploracji to 20%. 
 
 `100-20=80`
 
-To ustawienie eksploracji znajduje się w Azure Portal dla zasobu Personalizacja na stronie **Ustawienia** . 
+Ta wartość eksploracji znajduje się w Azure Portal dla zasobu Personalizacja na stronie **Konfiguracja** . 
 
 Aby znaleźć lepsze zasady uczenia na podstawie danych do interfejsu API rangi, uruchom [ocenę w trybie offline](how-to-offline-evaluation.md) w portalu dla pętli personalizacji.
 
@@ -587,7 +587,7 @@ Aby znaleźć lepsze zasady uczenia na podstawie danych do interfejsu API rangi,
 1. W Azure Portal Otwórz stronę **oceny** zasobów dla programu Personalizacja.
 1. Wybierz pozycję **Utwórz ocenę**.
 1. Wprowadź wymagane dane nazwy oceny i zakres dat dla oceny pętli. Zakres dat powinien zawierać tylko dni, w których użytkownik koncentruje się na potrzeby oceny. 
-    ![In Azure Portal, Otwórz stronę oceny zasobów personalizacji. Wybierz pozycję Utwórz ocenę. Wprowadź nazwę ewaluacyjną i zakres dat. ](./media/tutorial-azure-notebook/create-offline-evaluation.png)
+    ![w Azure Portal Otwórz stronę oceny zasobów personalizacji. Wybierz pozycję Utwórz ocenę. Wprowadź nazwę ewaluacyjną i zakres dat.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
     Celem tej oceny w trybie offline jest ustalenie, czy istnieją lepsze zasady uczenia dotyczące funkcji i akcji używanych w tej pętli. Aby znaleźć lepsze zasady uczenia, upewnij się, że **zasady optymalizacji** są włączone.
 
@@ -598,7 +598,7 @@ Aby znaleźć lepsze zasady uczenia na podstawie danych do interfejsu API rangi,
 
 ## <a name="change-update-model-frequency-to-5-minutes"></a>Zmień częstotliwość modelu aktualizacji na 5 minut
 
-1. Na Azure Portal, w którym nadal znajduje się zasób Personalizacja, wybierz stronę **Ustawienia** . 
+1. W Azure Portal nadal w obszarze zasób Personalizacja wybierz stronę **Konfiguracja** . 
 1. Zmień **częstotliwość aktualizacji modelu** i zmniejsz **czas oczekiwania** na 5 minut, a następnie wybierz pozycję **Zapisz**.
 
 Dowiedz się więcej na temat [nagrody czasu oczekiwania](concept-rewards.md#reward-wait-time) i [częstotliwości aktualizacji modelu](how-to-settings.md#model-update-frequency).

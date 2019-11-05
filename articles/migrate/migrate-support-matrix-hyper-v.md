@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802183"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498690"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
 
@@ -35,26 +35,7 @@ W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych funkc
 --- | ---
 Uprawnienia platformy Azure | Aby utworzyć projekt Azure Migrate, musisz mieć uprawnienia współautora lub właściciela w ramach subskrypcji.
 Maszyny wirtualne funkcji Hyper-V | Oceń do 35 000 maszyn wirtualnych funkcji Hyper-V w jednym projekcie. W ramach subskrypcji platformy Azure można mieć wiele projektów. Projekt może zawierać zarówno maszyny wirtualne VMware, jak i maszyny wirtualne funkcji Hyper-V, a także limity oceny.
-Geograficzne | Możesz tworzyć Azure Migrate projekty w wielu lokalizacje geograficzneach. Chociaż można tworzyć projekty w określonych lokalizacje geograficzne, można ocenić lub migrować maszyny pod kątem innych lokalizacji docelowych. Lokalizacja geograficzna projektu służy tylko do przechowywania odnalezionych metadanych.
-
-  **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
-  --- | ---
-  Platforma Azure dla instytucji rządowych | US Gov Wirginia
-  Azja i Pacyfik | Azja Wschodnia lub Azja Południowo-Wschodnia
-  Australia | Australia Wschodnia lub Australia Południowo-Wschodnia
-  Brazylia | Brazylia Południowa
-  Kanada | Kanada środkowa lub Kanada Wschodnia
-  Europa | Europa Północna lub Europa Zachodnia
-  Francja | Francja Środkowa
-  Indie | Indie Środkowe lub Indie Południowe
-  Japonia |  Japonia Wschodnia lub Japonia Zachodnia
-  Korea Południowa | Korea środkowa lub Korea Południowa
-  Zjednoczone Królestwo | Południowe Zjednoczone Królestwo lub Zachodnie Zjednoczone Królestwo
-  Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
-
-
- > [!NOTE]
- > Obsługa Azure Government jest obecnie dostępna tylko dla [starszej wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
+Geograficzne | [Przejrzyj](migrate-support-matrix.md#supported-geographies) obsługiwane lokalizacje geograficzne.
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>Ocena — wymagania dotyczące hosta funkcji Hyper-V

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6987c6f1191b0dfc7b78b14e77a5d6a0ab369f57
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e46bc9e4fbb2b573338b8be43c38e658ebde05a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782601"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468032"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -23,7 +23,7 @@ Usługa [Azure Site Recovery](site-recovery-overview.md) przyczynia się do real
 W tym samouczku pokazano, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przez replikowanie ich z jednego regionu świadczenia usługi Azure do innego. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie magazynu usługi Recovery Services
+> * Tworzenie magazynu Usług odzyskiwania
 > * Sprawdzanie ustawień zasobów docelowych
 > * Konfigurowanie wychodzącej łączności sieciowej dla maszyn wirtualnych
 > * Włączanie replikacji maszyny wirtualnej
@@ -38,12 +38,12 @@ W celu ukończenia tego samouczka:
 - Zapoznaj się ze [składnikami i architekturą scenariusza](concepts-azure-to-azure-architecture.md).
 - Zapoznaj się z wymaganiami dotyczącymi [obsługi](site-recovery-support-matrix-azure-to-azure.md) przed rozpoczęciem.
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
 
 Magazyn można utworzyć w dowolnym regionie, z wyjątkiem regionu źródłowego.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Kliknij kolejno pozycje **Utwórz zasób** > **Narzędzia do zarządzania** > **Backup i Site Recovery**.
+2. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. Następnie wybierz pozycję **Narzędzia do zarządzania** > **kopia zapasowa i Site Recovery**.
 3. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Jeśli masz więcej niż jedną subskrypcję, wybierz jedną z nich.
 4. Utwórz grupę zasobów lub wybierz istniejącą grupę. Określ region platformy Azure. Aby sprawdzić obsługiwane regiony, zobacz sekcję dotyczącą dostępności geograficznej w temacie [Szczegóły cennika usługi Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
 5. Aby szybko uzyskać dostęp do magazynu z pulpitu nawigacyjnego, kliknij pozycję **Przypnij do pulpitu nawigacyjnego**, a następnie kliknij pozycję **Utwórz**.
@@ -126,7 +126,7 @@ Usługa Site Recovery pobiera listę maszyn wirtualnych skojarzonych z subskrypc
 1. W obszarze **Maszyny wirtualne** wybierz maszyny wirtualne, które mają być replikowane.
 2. Kliknij przycisk **OK**.
 
-### <a name="configure-replication-settings"></a>Konfiguruj ustawienia replikacji
+### <a name="configure-replication-settings"></a>Konfigurowanie ustawień replikacji
 
 Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie docelowym. Ustawienia możesz zmienić zgodnie z potrzebami.
 
@@ -175,8 +175,8 @@ Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie
 Jeśli źródłowa maszyna wirtualna ma włączoną usługę Azure Disk Encryption (ADE), przejrzyj ustawienia.
 
 1. Sprawdź ustawienia:
-    - **Magazyny kluczy szyfrowania dysków**: Domyślnie program Site Recovery tworzy nowy magazyn kluczy dla źródłowych kluczy szyfrowania dysku maszyny wirtualnej z sufiksem "ASR". Jeśli magazyn kluczy już istnieje, jest ponownie używany.
-    - **Magazyny kluczy szyfrowania kluczy**: Domyślnie Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Nazwa ma sufiks "ASR" i opiera się na kluczach szyfrowania źródłowych maszyn wirtualnych. Jeśli magazyn kluczy utworzony przez Site Recovery już istnieje, jest ponownie używany.
+    - **Magazyny kluczy szyfrowania dysku**: domyślnie Site Recovery tworzy nowy magazyn kluczy dla źródłowych kluczy szyfrowania dysku maszyny wirtualnej z sufiksem "ASR". Jeśli magazyn kluczy już istnieje, jest ponownie używany.
+    - **Magazyny kluczy szyfrowania kluczy**: domyślnie Site Recovery tworzy nowy magazyn kluczy w regionie docelowym. Nazwa ma sufiks "ASR" i opiera się na kluczach szyfrowania źródłowych maszyn wirtualnych. Jeśli magazyn kluczy utworzony przez Site Recovery już istnieje, jest ponownie używany.
 
 2. Kliknij pozycję **Dostosuj**, aby wybrać niestandardowe magazyny kluczy.
 

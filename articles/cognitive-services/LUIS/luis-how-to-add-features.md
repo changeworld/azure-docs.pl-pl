@@ -1,7 +1,7 @@
 ---
 title: Listy fraz — LUIS
 titleSuffix: Azure Cognitive Services
-description: Użyj Language Understanding (LUIS), aby dodać funkcje aplikacji, które może poprawić Prognozowanie intencje i podmioty lub wykrywania tej kategorii i wzorce
+description: Użyj Language Understanding (LUIS), aby dodać funkcje aplikacji, które mogą ulepszyć wykrywanie lub przewidywania intencji i jednostek, które są kategoriami i wzorcami
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,52 +9,56 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: f51f5a8583a73219ffb419c76fcd009d102f6ffb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0e3e4226eaaa0505eea96d8b3aca820f2327349e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932911"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467615"
 ---
-# <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Użyj frazy Wyświetla sygnału boost listy programu word
+# <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Użyj list fraz, aby zwiększyć liczbę sygnałów listy słów
 
-Można dodać funkcje do aplikacji usługi LUIS, aby zwiększyć jego dokładność. Funkcje pomocy usługi LUIS, zapewniając wskazówek dotyczących tego określonych słów i fraz są częścią słownictwa domeny aplikacji. 
+Aby poprawić swoją dokładność, możesz dodać funkcje do aplikacji LUIS. Funkcje ułatwiają LUIS, dostarczając wskazówki, że określone słowa i frazy są częścią słownictwa domeny aplikacji. 
 
-A [listy fraz](luis-concept-feature.md) znajduje się grupa wartości (słów i fraz), które należą do tej samej klasy i muszą być traktowane w podobny sposób (na przykład nazwy miasta lub produktów). Usługa LUIS się o jeden z nich jest automatycznie stosowany do pozostałych. Ta lista nie jest taka sama jak [Jednostka listy](reference-entity-list.md) (dokładne dopasowanie tekstu) pasujących wyrazów.
+[Lista fraz](luis-concept-feature.md) zawiera grupę wartości (wyrazów lub fraz) należących do tej samej klasy i musi być traktowana podobnie (na przykład nazwy miast lub produktów). LUIS informacje o jednym z nich są również automatycznie stosowane do innych. Ta lista nie jest taka sama jak [Jednostka listy](reference-entity-list.md) (dokładne dopasowanie tekstu) pasujących wyrazów.
 
-Lista fraz dodaje do słownictwa używanego w domenie aplikacji jako drugi sygnał do usługi LUIS o tych słów.
+Lista fraz dodaje do słownictwa domeny aplikacji jako drugi sygnał LUIS o tych słowach.
 
-## <a name="add-phrase-list"></a>Dodawanie listy fraz
+Zapoznaj się z [pojęciami dotyczącymi funkcji](luis-concept-feature.md) , aby zrozumieć, kiedy i dlaczego należy używać listy fraz. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+## <a name="add-phrase-list"></a>Dodaj listę fraz
 
 LUIS umożliwia maksymalnie 10 list fraz na aplikację. 
 
-1. Otwórz aplikację, klikając jego nazwę **Moje aplikacje** strony, a następnie kliknij przycisk **kompilacji**, następnie kliknij przycisk **frazę list** w panelu po lewej stronie Twojej aplikacji. 
+1. Otwórz aplikację, klikając jej nazwę na stronie **Moje aplikacje** , a następnie kliknij pozycję **Kompiluj**, a następnie kliknij pozycję **listy fraz** w lewym panelu aplikacji. 
 
-1. Na **frazę list** kliknij **Utwórz nową listę frazy**. 
+1. Na stronie **listy fraz** kliknij pozycję **Utwórz nową listę fraz**. 
  
-1. W oknie dialogowym **Dodawanie listy fraz** wpisz `Cities` jako nazwę listy fraz. W **wartość** wpisz wartości listy fraz. Wpisz jedną wartość lub zbiór wartości oddzielonych przecinkami, a następnie naciśnij klawisz **Enter**.
+1. W oknie dialogowym **Dodawanie listy fraz** wpisz `Cities` jako nazwę listy fraz. W polu **wartość** wpisz wartości listy fraz. Można wpisać jedną wartość naraz lub zestaw wartości rozdzielonych przecinkami, a następnie nacisnąć klawisz **Enter**.
 
-    ![Dodaj frazy listę miast](./media/luis-add-features/add-phrase-list-cities.png)
+    ![Dodawanie miejscowości z listy wyrazów](./media/luis-add-features/add-phrase-list-cities.png)
 
-1. Usługa LUIS może zaproponować powiązanych wartości do dodania do listy fraz. Kliknij przycisk **zaleca się** można pobrać grupy proponowane wartości, które są semantycznie związane added value(s). Kliknij dowolną z wartości proponowane, lub kliknij przycisk **Dodaj wszystkie** Aby dodać je wszystkie.
+1. LUIS może zaproponować powiązane wartości, aby dodać je do listy fraz. Kliknij pozycję **zalecamy** , aby uzyskać grupę proponowanych wartości, które są semantycznie powiązane z dodanymi wartościami. Możesz kliknąć dowolne proponowane wartości lub kliknąć przycisk **Dodaj wszystko** , aby je dodać.
 
     ![Proponowane wartości listy fraz — Dodaj wszystko](./media/luis-add-features/related-values.png)
 
-1. Kliknij przycisk **te wartości są wymienne** Jeśli frazy dodano wartości listy są dostępne opcje alternatywne, które mogą być używane zamiennie.
+1. Kliknij **te wartości są zamienne** , jeśli dodane wartości listy fraz są alternatywami, których można użyć zamiennie.
 
     ![Proponowane wartości na liście fraz — wybierz pole, które jest zamienne](./media/luis-add-features/interchangeable.png)
 
-1. Kliknij przycisk **Gotowe**. Na liście frazę "Miast" zostanie dodany do **frazę list** strony.
+1. Kliknij przycisk **Gotowe**. Lista fraz "miasta" została dodana do strony **list fraz** .
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Usuń lub dezaktywowanie listy fraz z paska narzędzi kontekstowych na **frazę list** strony.
+> Listę fraz można usunąć lub dezaktywować z poziomu kontekstowego paska narzędzi na stronie **listy fraz** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po Dodawanie, edytowanie, usuwanie lub dezaktywowanie listę frazy [uczenie i testowanie aplikacji](luis-interactive-test.md) ponownie, aby zobaczyć, czy wydajność się zwiększy.
+Po dodaniu, edycji, usunięciu lub dezaktywowaniu listy fraz należy ponownie [nauczyć się i przetestować aplikację](luis-interactive-test.md) , aby sprawdzić, czy wydajność jest zwiększona.

@@ -1,6 +1,6 @@
 ---
-title: Użyj punktów końcowych usługi Machine Learning w usłudze Azure Stream Analytics
-description: W tym artykule opisano sposób użycia funkcji zdefiniowanych przez użytkownika języka maszyny w usłudze Azure Stream Analytics.
+title: Używanie punktów końcowych Machine Learning w Azure Stream Analytics
+description: W tym artykule opisano sposób korzystania z funkcji zdefiniowanych przez użytkownika w języku maszynowym w programie Azure Stream Analytics.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -8,47 +8,47 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 650f8952e58046082768007295208f52113b5f81
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 1adb7d58246ea37fd8322cb6fc6ffd53c5f19efb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620892"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467823"
 ---
-# <a name="azure-machine-learning-studio-integration-in-stream-analytics-preview"></a>Integracja usługi Azure Machine Learning Studio w usłudze Stream Analytics (wersja zapoznawcza)
-Stream Analytics obsługuje funkcje zdefiniowane przez użytkownika, które wywołują z punktami końcowymi usługi Azure Machine Learning Studio. Obsługa interfejsu API REST, aby ta funkcja została szczegółowo opisana w [biblioteki interfejsu API REST usługi Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ten artykuł zawiera dodatkowe informacje wymagane do pomyślnego wdrożenia tej funkcji w usłudze Stream Analytics. Samouczek również została opublikowana i jest dostępny [tutaj](stream-analytics-machine-learning-integration-tutorial.md).
+# <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Integracja Azure Machine Learning Studio (klasyczny) w Stream Analytics (wersja zapoznawcza)
+Stream Analytics obsługuje funkcje zdefiniowane przez użytkownika, które wywołują Azure Machine Learning Studio (klasyczne) punkty końcowe. Obsługa interfejsu API REST dla tej funkcji jest szczegółowa w [bibliotece interfejsu API rest Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ten artykuł zawiera dodatkowe informacje, które są odpowiednie do pomyślnej implementacji tej możliwości w Stream Analytics. Samouczek został również ogłoszony i jest dostępny w [tym miejscu](stream-analytics-machine-learning-integration-tutorial.md).
 
-## <a name="overview-azure-machine-learning-studio-terminology"></a>Omówienie: Terminologii platformy Azure Machine Learning Studio
-Microsoft Azure Machine Learning Studio zawiera narzędzie do współpracy, obsługiwane metodą przeciągania i upuszczania, które służy do tworzenia, testowania i wdrażania rozwiązań do analizy predykcyjnej na podstawie posiadanych danych. To narzędzie jest nazywany *Azure Machine Learning Studio*. Studio służy do interakcji z zasobami usługi Machine Learning i łatwego tworzenia, testowania i wykonania iteracji projektu. Te zasoby i ich definicje są poniżej.
+## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Przegląd: Azure Machine Learning Studio (klasyczny) terminologia
+Microsoft Azure Machine Learning Studio (klasyczny) to narzędzie do współpracy typu "przeciągnij i upuść", które służy do kompilowania, testowania i wdrażania rozwiązań analizy predykcyjnej na danych. To narzędzie jest nazywane *Azure Machine Learning Studio (klasyczne)* . Studio jest używana do współdziałania z zasobami Machine Learning i łatwego kompilowania, testowania i iteracji w projekcie. Te zasoby i ich definicje są poniżej.
 
-* **Obszar roboczy**: *Obszaru roboczego* jest kontenerem, który zawiera inne zasoby usługi Machine Learning ze sobą w kontenerze zarządzania i kontroli.
-* **Eksperyment**: *Eksperymenty* są tworzone przez analityków danych korzystanie z zestawów danych i szkolenie modelu uczenia maszynowego.
-* **Punkt końcowy**: *Punkty końcowe* są obiektu usługi Azure Machine Learning Studio umożliwia wybranie funkcji jako dane wejściowe, model uczenia maszynowego określonego i zwraca wynik ocenami.
-* **Ocenianie usługi sieci Web**: A *oceny Usługa sieci Web* jest kolekcją punktów końcowych, jak wspomniano powyżej.
+* **Obszar roboczy**: *obszar roboczy* to kontener, który przechowuje wszystkie inne Machine Learning zasoby w kontenerze na potrzeby zarządzania i kontroli.
+* **Eksperymentowanie**: *eksperymenty* są tworzone przez analityków danych do korzystania z zestawu danych i uczenia modelu uczenia maszynowego.
+* **Punkt końcowy**: *punkty końcowe* są obiektem Azure Machine Learning Studio (klasycznym) używanym do podejmowania funkcji jako danych wejściowych, stosowania określonego modelu uczenia maszynowego i zwracania oceny danych wyjściowych.
+* **Ocenianie**usługi sieci Web: usługa sieci *Web oceniania* jest kolekcją punktów końcowych, jak wspomniano powyżej.
 
-Każdy punkt końcowy ma interfejsów API w celu wykonywania wsadowego i wykonania synchroniczne. Stream Analytics używa synchronicznej. Nosi nazwę określonej usługi [żądań/odpowiedzi usługi](../machine-learning/studio/consume-web-services.md) w usłudze Azure Machine Learning studio.
+Każdy punkt końcowy ma interfejsy API do wykonywania wsadowego i wykonywania synchronicznego. Stream Analytics używa wykonywania synchronicznego. Określona usługa nosi nazwę [usługi żądanie/odpowiedź](../machine-learning/studio/consume-web-services.md) w Azure Machine Learning Studio (klasyczny).
 
-## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Machine Learning zasoby wymagane dla zadania usługi Stream Analytics
-Na potrzeby usługi Stream Analytics, zadania przetwarzania punktu końcowego żądania/odpowiedzi [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md), i definicji struktury swagger są wszystkie niezbędne do pomyślnego wykonania. Stream Analytics ma dodatkowy punkt końcowy, który konstruuje adres url punktu końcowego struktury swagger, wyszukuje interfejsu i zwraca domyślną definicją funkcji zdefiniowanej przez użytkownika dla użytkownika.
+## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Machine Learning zasobów wymaganych do Stream Analytics zadań
+Na potrzeby przetwarzania zadań Stream Analytics, punkt końcowy żądania/odpowiedzi, [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md)i Definicja struktury Swagger są niezbędne do pomyślnego wykonania. Stream Analytics ma dodatkowy punkt końcowy, który konstruuje adres URL dla punktu końcowego struktury Swagger, wyszukuje interfejs i zwraca domyślną definicję UDF do użytkownika.
 
-## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>Konfigurowanie usługi Stream Analytics i Machine Learning funkcji zdefiniowanej przez użytkownika za pośrednictwem interfejsu API REST
-Za pomocą interfejsów API REST można skonfigurować zadania do wywoływania funkcji języka maszyny platformy Azure. Dostępne są następujące czynności:
+## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>Konfigurowanie Stream Analytics i Machine Learning UDF za pośrednictwem interfejsu API REST
+Za pomocą interfejsów API REST można skonfigurować zadanie do wywoływania funkcji języka maszynowego platformy Azure. Kroki są następujące:
 
 1. Tworzenie zadania usługi Stream Analytics
-2. Zdefiniuj wejściowe
-3. Zdefiniuj dane wyjściowe
+2. Zdefiniuj dane wejściowe
+3. Definiowanie danych wyjściowych
 4. Tworzenie funkcji zdefiniowanej przez użytkownika (UDF)
-5. Zapis przekształcania usługi Stream Analytics, która wywołuje funkcji zdefiniowanej przez użytkownika
+5. Napisz transformację Stream Analytics, która wywołuje funkcję UDF
 6. Uruchamianie zadania
 
-## <a name="creating-a-udf-with-basic-properties"></a>Tworzenie funkcji zdefiniowanej przez użytkownika za pomocą właściwości podstawowe
-Na przykład następujący przykładowy kod tworzy skalarny systemu plików UDF o nazwie *newudf* wiąże punktu końcowego usługi Azure Machine Learning Studio. Należy pamiętać, że *punktu końcowego* (identyfikator URI usługi) można znaleźć na stronie pomocy interfejsu API dla wybranej usługi i *apiKey* można znaleźć na stronie głównej usługi.
+## <a name="creating-a-udf-with-basic-properties"></a>Tworzenie elementu UDF z podstawowymi właściwościami
+Na przykład następujący przykładowy kod tworzy skalarną UDF o nazwie *newudf* , która wiąże się z punktem końcowym Azure Machine Learning Studio (klasycznym). Należy pamiętać, że *punkt końcowy* (identyfikator URI usługi) można znaleźć na stronie pomocy interfejsu API dla wybranej usługi, a *apiKey* można znaleźć na stronie głównej usług.
 
 ```
     PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
 ```
 
-Przykład treść żądania:
+Przykład treści żądania:
 
 ```json
     {
@@ -68,14 +68,14 @@ Przykład treść żądania:
     }
 ```
 
-## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Wywołanie punktu końcowego RetrieveDefaultDefinition domyślnego systemu plików UDF
-Po szkielet UDF kompletną definicję funkcji zdefiniowanej przez użytkownika jest wymagana. Punkt końcowy RetrieveDefaultDefinition ułatwiają definicji domyślnej dla funkcji skalarnej, który jest powiązany z punktu końcowego usługi Azure Machine Learning Studio. Ładunek poniżej wymaga można pobrać definicji domyślnej funkcji zdefiniowanej przez użytkownika, dla funkcji skalarnej, który jest powiązany z punktu końcowego usługi Azure Machine Learning. Nie go określić istniejący punkt końcowy, ponieważ już zostało podane podczas wykonywania żądania PUT. Stream Analytics wywołuje punkt końcowy, podany w żądaniu, jeśli podano jawnie. W przeciwnym razie używa jednego pierwotnie odwołania. W tym miejscu przyjmuje funkcji zdefiniowanej przez użytkownika, w jeden ciąg parametrów (zdanie) i zwraca pojedynczy danych wyjściowych typu ciąg, co oznacza "opinie" etykietę dla tego zdania.
+## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Wywoływanie punktu końcowego RetrieveDefaultDefinition dla domyślnego formatu UDF
+Po utworzeniu szkieletu UDF jest wymagana kompletna definicja UDF. Punkt końcowy RetrieveDefaultDefinition pomaga uzyskać definicję domyślną dla funkcji skalarnej, która jest powiązana z Azure Machine Learning Studio (klasyczny) punkt końcowy. Poniższy ładunek wymaga pobrania domyślnej definicji UDF dla funkcji skalarnej, która jest powiązana z punktem końcowym Azure Machine Learning. Nie określa faktycznego punktu końcowego, ponieważ został już podany podczas żądania PUT. Stream Analytics wywołuje punkt końcowy podany w żądaniu, jeśli został podany jawnie. W przeciwnym razie używa tego samego odwołania. W tym miejscu funkcja UDF przyjmuje jeden parametr ciągu (zdanie) i zwraca pojedyncze dane wyjściowe typu String, który wskazuje etykietę "tonacji" dla tego zdania.
 
 ```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
 ```
 
-Przykład treść żądania:
+Przykład treści żądania:
 
 ```json
     {
@@ -87,7 +87,7 @@ Przykład treść żądania:
     }
 ```
 
-Przykład danych wyjściowych, to czy Szukaj coś w rodzaju poniżej.
+Przykładowe dane wyjściowe wyglądają poniżej.
 
 ```json
     {
@@ -127,8 +127,8 @@ Przykład danych wyjściowych, to czy Szukaj coś w rodzaju poniżej.
     }
 ```
 
-## <a name="patch-udf-with-the-response"></a>Poprawka funkcji zdefiniowanej przez użytkownika z odpowiedzią
-Teraz funkcji zdefiniowanej przez użytkownika należy poprawić z poprzedniej odpowiedzi, jak pokazano poniżej.
+## <a name="patch-udf-with-the-response"></a>Poprawka UDF z odpowiedzią
+Teraz należy zastosować poprawki do formatu UDF z poprzednią odpowiedzią, jak pokazano poniżej.
 
 ```
 PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
@@ -174,8 +174,8 @@ Treść żądania (dane wyjściowe z RetrieveDefaultDefinition):
     }
 ```
 
-## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>Implementowanie przekształcania usługi Stream Analytics do wywołania funkcji zdefiniowanej przez użytkownika
-Teraz zapytanie funkcji zdefiniowanej przez użytkownika (w tym miejscu o nazwie scoreTweet) dla każdego zdarzenia wejściowe i zapisywać dane wyjściowe odpowiedzi dla tego zdarzenia.
+## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>Zaimplementuj transformację Stream Analytics, aby wywołać metodę UDF
+Teraz wykonaj zapytanie dotyczące formatu UDF (tutaj o nazwie scoreTweet) dla każdego zdarzenia wejściowego i Napisz odpowiedź dla tego zdarzenia do danych wyjściowych.
 
 ```json
     {
@@ -191,8 +191,8 @@ Teraz zapytanie funkcji zdefiniowanej przez użytkownika (w tym miejscu o nazwie
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
+## <a name="next-steps"></a>Następne kroki
+* [Wprowadzenie do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

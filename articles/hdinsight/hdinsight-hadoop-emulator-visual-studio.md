@@ -1,5 +1,5 @@
 ---
-title: Data Lake Tools for Visual Studio z piaskownicą Hortonworks — Azure HDInsight
+title: Narzędzia Data Lake Tools for Visual Studio & Hortonworks — Azure HDInsight
 description: Dowiedz się, jak używać narzędzi Azure Data Lake Tools for Visual Studio z piaskownicą Hortonworks działającą na lokalnej maszynie wirtualnej. Za pomocą tych narzędzi możesz tworzyć i uruchamiać zadania Hive i świńskie w piaskownicy oraz wyświetlać dane wyjściowe i historyczne zadań.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e128aaf6e1726b7a1341fefc6df3cdafd3beb880
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098772"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500164"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Korzystanie z Azure Data Lake narzędzi dla programu Visual Studio z piaskownicą Hortonworks
 
@@ -33,7 +33,7 @@ Użycie piaskownicy Hortonworks umożliwia lokalne korzystanie z usługi Hadoop 
 
 ## <a name="configure-passwords-for-the-sandbox"></a>Konfigurowanie haseł dla piaskownicy
 
-Upewnij się, że piaskownica Hortonworks jest uruchomiona. Następnie wykonaj kroki opisane w dokumencie Wprowadzenie do [piaskownicy Hortonworks](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) . Poniższe kroki służą do konfigurowania hasła dla `root` konta SSH oraz konta Apache Ambari `admin` . Te hasła są używane podczas nawiązywania połączenia z piaskownicą z programu Visual Studio.
+Upewnij się, że piaskownica Hortonworks jest uruchomiona. Następnie wykonaj kroki opisane w dokumencie Wprowadzenie do [piaskownicy Hortonworks](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) . Poniższe kroki służą do konfigurowania hasła dla konta `root` SSH oraz konta usługi Apache Ambari `admin`. Te hasła są używane podczas nawiązywania połączenia z piaskownicą z programu Visual Studio.
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>Łączenie narzędzi z piaskownicą
 
@@ -49,7 +49,7 @@ Upewnij się, że piaskownica Hortonworks jest uruchomiona. Następnie wykonaj k
 
     Kliknij przycisk **Dalej**, aby kontynuować.
 
-4. Użyj pola **hasło** , aby wprowadzić hasło skonfigurowane dla `root` konta. Pozostaw pozostałe pola w wartości domyślnej.
+4. Użyj pola **hasło** , aby wprowadzić hasło skonfigurowane dla konta `root`. Pozostaw pozostałe pola w wartości domyślnej.
 
     ![Zrzut ekranu przedstawiający okno dialogowe z wyróżnionym polem tekstowym hasło główne](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
 
@@ -63,7 +63,7 @@ Upewnij się, że piaskownica Hortonworks jest uruchomiona. Następnie wykonaj k
     > Proces aktualizacji używa Ambari, aby zmodyfikować konfigurację piaskownicy Hortonworks na oczekiwaną przez narzędzia Data Lake Tools for Visual Studio.
 
 6. Po zakończeniu walidacji wybierz pozycję **Zakończ** , aby zakończyć konfigurację.
-    ![Zrzut ekranu przedstawiający okno dialogowe z wyróżnionym przyciskiem zakończenia](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
+    ![zrzut ekranu okna dialogowego z wyróżnionym przyciskiem Zakończ](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
 
      >[!NOTE]  
      > W zależności od szybkości środowiska programistycznego i ilości pamięci przystosowanej do maszyny wirtualnej może upłynąć kilka minut, aby skonfigurować i sprawdzić poprawność usług.
@@ -99,7 +99,7 @@ Program Hive udostępnia język zapytań przypominający SQL (HiveQL) do pracy z
     Gdy **stan zadania** zostanie zmieniony na **zakończone**, zostanie wyświetlony ukierunkowany wykres o postaci acykliczne (DAG). Ten diagram zawiera opis ścieżki wykonywania, która została określona przez tez podczas przetwarzania zapytania programu Hive. Tez jest domyślnym aparatem wykonywania dla programu Hive w klastrze lokalnym.
 
     > [!NOTE]  
-    > Apache Tez jest również wartością domyślną w przypadku korzystania z klastrów usługi HDInsight opartych na systemie Linux. Nie jest to ustawienie domyślne w usłudze HDInsight opartej na systemie Windows. Aby go użyć, musisz dodać wiersz `set hive.execution.engine = tez;` na początku zapytania programu Hive.
+    > Apache Tez jest również wartością domyślną w przypadku korzystania z klastrów usługi HDInsight opartych na systemie Linux. Nie jest to ustawienie domyślne w usłudze HDInsight opartej na systemie Windows. Aby go użyć, należy dodać wiersz `set hive.execution.engine = tez;` na początku zapytania programu Hive.
 
     Użyj linku **danych wyjściowych zadania** , aby wyświetlić dane wyjściowe. W tym przypadku jest to 823, liczba wierszy w tabeli sample_08. Informacje diagnostyczne dotyczące zadania można wyświetlić, korzystając z **dziennika zadania** i pobierając linki do **dziennika przędzy** .
 

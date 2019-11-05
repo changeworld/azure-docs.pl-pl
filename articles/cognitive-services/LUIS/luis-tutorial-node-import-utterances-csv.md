@@ -1,7 +1,7 @@
 ---
 title: Importowanie wyrażenia długości przy użyciu środowiska Node. js-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak utworzyć aplikację usługi LUIS programowo z istniejących danych w formacie CSV przy użyciu interfejsu API tworzenia usługi LUIS.
+description: Dowiedz się, jak utworzyć aplikację LUIS programowo z istniejących danych w formacie CSV przy użyciu interfejsu API tworzenia LUIS.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,37 +11,39 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 1bee26dc57fd844703e2c9c97b38b9a433227fbf
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: ef5f6967b7ad9500672d00d93dd8acaca99e5948
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387943"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499465"
 ---
-# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Tworzenie aplikacji usługi LUIS programowo przy użyciu środowiska Node.js
+# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programistyczne tworzenie aplikacji LUIS przy użyciu środowiska Node. js
 
-Usługa LUIS zapewnia programowego interfejsu API, które ma wszystko, [LUIS](luis-reference-regions.md) jest witryny sieci Web. To zaoszczędzić czas, gdy masz już istniejące dane i będzie szybsze tworzenie aplikacji usługi LUIS programowo niż, wprowadzając informacje ręcznie. 
+Usługa LUIS udostępnia programistyczny interfejs API, który robi wszystko, co witryna sieci Web [Luis](luis-reference-regions.md) . Pozwala to zaoszczędzić czas, gdy masz wstępnie istniejące dane i szybciej utworzyć aplikację LUIS programowo niż przez wprowadzanie informacji. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zaloguj się do witryny sieci Web [Luis](luis-reference-regions.md) i Znajdź swój [klucz tworzenia](luis-concept-keys.md#authoring-key) w ustawieniach konta. Ten klucz służy do wywoływania interfejsów API do tworzenia.
+* Zaloguj się do witryny sieci Web [Luis](luis-reference-regions.md) i Znajdź swój [klucz tworzenia](luis-concept-keys.md#authoring-key) w ustawieniach konta. Ten klucz służy do wywoływania interfejsów API tworzenia.
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Ten artykuł rozpoczyna się od pliku CSV dla hipotetycznych plików dziennika żądań użytkowników. Pobierz go [tutaj](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
-* Za pomocą pakietu NPM, należy zainstalować najnowsze środowisko Node.js. Pobierz go z [tutaj](https://nodejs.org/en/download/).
-* **[Zalecane]**  Programu visual Studio Code dla funkcji IntelliSense i debugowania, pobierz go z [tutaj](https://code.visualstudio.com/) za darmo.
+* Ten artykuł rozpoczyna się od pliku CSV dla hipotetycznych plików dziennika żądań użytkowników. Pobierz je [tutaj](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
+* Zainstaluj najnowszą wersję środowiska Node. js z NPM. Pobierz go [stąd](https://nodejs.org/en/download/).
+* **[Zalecane]** Visual Studio Code do IntelliSense i debugowania, pobierz ją z tego [miejsca](https://code.visualstudio.com/) bezpłatnie.
 
 Cały kod w tym artykule jest dostępny w [repozytorium Azure-samples Language Understanding GitHub](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv). 
 
-## <a name="map-preexisting-data-to-intents-and-entities"></a>Mapowanie istniejących danych na intencje i podmioty
-Nawet jeśli masz system, który nie został utworzony z użyciem usługi LUIS, pamiętając, jeśli zawiera on danych tekstowych, które mapuje do użytkowników różnych rzeczy, o którym chcesz przeprowadzić, może być opracowywane mapowanie z istniejącej kategorii danych wejściowych użytkownika na intencje w usługi LUIS. Jeśli możesz zidentyfikować ważne wyrazy lub frazy w powiedzieć użytkownikom, te wyrazy mogą być mapowane do jednostek.
+## <a name="map-preexisting-data-to-intents-and-entities"></a>Mapowanie istniejących danych na intencje i jednostki
+Nawet jeśli masz system, który nie został utworzony z LUIS, jeśli zawiera on dane tekstowe, które są mapowane na różne rzeczy, które użytkownicy chcą wykonać, można utworzyć mapowanie z istniejących kategorii danych wejściowych użytkownika na intencje w LUIS. Jeśli możliwe jest zidentyfikowanie ważnych wyrazów lub fraz w tym, co użytkownicy poinformowały, te słowa mogą być mapowane na jednostki.
 
-[`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) Otwórz plik. Zawiera dziennik kwerend użytkowników do usługi hipotetyczny głównego usługi automation, w tym jak zostały przydzielone, nazywany użytkownika i niektóre kolumny przydatnymi informacjami, usunąć z nich. 
+Otwórz plik [`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) . Zawiera dziennik zapytań użytkowników do hipotetycznej usługi automatyzacji domowej, w tym sposobu, w jaki zostały skategoryzowane, co użytkownik poinformował, oraz niektórych kolumn z przydatnymi informacjami. 
 
-![Plik CSV istniejących danych](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![Plik CSV wstępnie istniejących danych](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
-Zobaczysz, że **RequestType** kolumna może być intencji i **żądania** kolumna pokazuje przykład wypowiedź. Inne pola może być jednostki, jeśli występują one w wypowiedź. Ponieważ istnieje intencji, jednostek i wypowiedzi przykład, masz wymagania dotyczące prosty, przykładową aplikację.
+Zobaczysz, że kolumna **RequestType** może być intencjami, a kolumna **żądania** zawiera przykład wypowiedź. Pozostałe pola mogą być jednostkami, jeśli występują w wypowiedź. Ponieważ istnieją intencje, jednostki i przykład wyrażenia długości, masz wymagania dotyczące prostej, przykładowej aplikacji.
 
-## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>Kroki, aby wygenerować aplikacją usługi LUIS z danych niż usługi LUIS
+## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>Procedura generowania aplikacji LUIS z danych innych niż LUIS
 Aby wygenerować nową aplikację LUIS z pliku CSV:
 
 * Przeanalizuj dane z pliku CSV:
@@ -50,18 +52,18 @@ Aby wygenerować nową aplikację LUIS z pliku CSV:
 * Utwórz wywołania interfejsu API tworzenia dla:
     * Utwórz aplikację.
     * Dodawanie intencji i jednostek, które zostały zebrane z przeanalizowanych danych. 
-    * Po utworzeniu aplikacji usługi LUIS wypowiedzi przykład można dodać z przeanalizowanych danych. 
+    * Po utworzeniu aplikacji LUIS można dodać przykładową wyrażenia długości z przeanalizowanych danych. 
 
-Ten przepływ programu można zobaczyć w ostatniej części `index.js` pliku. Kopiowanie lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js) ten kod i zapisz go w `index.js`.
+Ten przepływ programu można zobaczyć w ostatniej części pliku `index.js`. Skopiuj lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js) ten kod i Zapisz go w `index.js`.
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
 
-## <a name="parse-the-csv"></a>Analizowanie plików CSV
+## <a name="parse-the-csv"></a>Analizowanie woluminu CSV
 
-Wpisy kolumny, które zawierają wypowiedzi w woluminie CSV musi przeanalizować w formacie JSON, który może zrozumieć usługi LUIS. Ten format JSON musi zawierać `intentName` pola, który identyfikuje celem wypowiedź. Musi również zawierać `entityLabels` pola, które może być pusta, jeśli nie ma żadnych podmiotów w wypowiedź. 
+Wpisy kolumn zawierające wyrażenia długości w woluminie CSV muszą być analizowane w formacie JSON, który LUIS może zrozumieć. Ten format JSON musi zawierać `intentName` pole, które identyfikuje zamiar wypowiedź. Musi także zawierać pole `entityLabels`, które może być puste, jeśli nie ma żadnych jednostek w wypowiedź. 
 
-Na przykład pozycję "Włącz światła" mapuje dane JSON:
+Na przykład wpis "Włącz lampki" odwzorowuje w ten kod JSON:
 
 ```json
         {
@@ -82,33 +84,33 @@ Na przykład pozycję "Włącz światła" mapuje dane JSON:
         }
 ```
 
-W tym przykładzie `intentName` pochodzi z żądania użytkownika w obszarze **żądania** nagłówek kolumny w pliku CSV i `entityName` pochodzi z innych kolumn z informacjami klucza. Na przykład, jeśli istnieje wpis dla **operacji** lub **urządzenia**, a ciąg występuje także w rzeczywistego żądania, a następnie może być opisane jako jednostka. Poniższy przykład demonstruje ten proces analizy. Możesz skopiować lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) go i zapisać go w celu `_parse.js`.
+W tym przykładzie `intentName` pochodzi od żądania użytkownika w nagłówku kolumny **żądanie** w pliku CSV, a `entityName` pochodzi z innych kolumn z informacjami o kluczu. Na przykład, jeśli istnieje wpis do **operacji** lub **urządzenia**, a ten ciąg występuje również w rzeczywistym żądaniu, można go oznaczyć jako jednostkę. Poniższy kod ilustruje ten proces analizy. Można je skopiować lub [pobrać](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) i zapisać w `_parse.js`.
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
 
 
-## <a name="create-the-luis-app"></a>Tworzenie aplikacji usługi LUIS
-Po przeanalizowaniu danych do postaci JSON, należy go dodać do aplikacji usługi LUIS. Poniższy kod tworzy aplikację usługi LUIS. Kopiowanie lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js) i zapisz go w `_create.js`.
+## <a name="create-the-luis-app"></a>Tworzenie aplikacji LUIS
+Gdy dane zostaną przeanalizowane w formacie JSON, Dodaj je do aplikacji LUIS. Poniższy kod tworzy aplikację LUIS. Skopiuj go lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js) , a następnie zapisz go w `_create.js`.
 
    [!code-javascript[Node.js code for creating a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/_create.js)]
 
 
 ## <a name="add-intents"></a>Dodawanie intencji
-Po utworzeniu aplikacji, musisz intencji do niego. Poniższy kod tworzy aplikację usługi LUIS. Kopiowanie lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js) i zapisz go w `_intents.js`.
+Gdy masz aplikację, musisz być jej intencjami. Poniższy kod tworzy aplikację LUIS. Skopiuj go lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js) , a następnie zapisz go w `_intents.js`.
 
    [!code-javascript[Node.js code for creating a series of intents](~/samples-luis/examples/build-app-programmatically-csv/_intents.js)]
 
 
 ## <a name="add-entities"></a>Dodawanie jednostek
-Poniższy kod dodaje jednostki do aplikacji usługi LUIS. Kopiowanie lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js) i zapisz go w `_entities.js`.
+Poniższy kod dodaje jednostki do aplikacji LUIS. Skopiuj go lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js) , a następnie zapisz go w `_entities.js`.
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
    
 
 
 ## <a name="add-utterances"></a>Dodawanie wypowiedzi
-Po zdefiniowaniu jednostek i opcjami w aplikacji usługi LUIS można dodać wypowiedzi. Poniższy kod używa [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) interfejsu API, który umożliwia dodanie maksymalnie 100 wypowiedzi w danym momencie.  Kopiowanie lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js) i zapisz go w `_upload.js`.
+Po zdefiniowaniu jednostek i intencji w aplikacji LUIS można dodać wyrażenia długości. Poniższy kod korzysta z interfejsu API [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) , który umożliwia dodanie do 100 wyrażenia długości jednocześnie.  Skopiuj go lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js) , a następnie zapisz go w `_upload.js`.
 
    [!code-javascript[Node.js code for adding utterances](~/samples-luis/examples/build-app-programmatically-csv/_upload.js)]
 
@@ -116,17 +118,17 @@ Po zdefiniowaniu jednostek i opcjami w aplikacji usługi LUIS można dodać wypo
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
 
-### <a name="install-nodejs-dependencies"></a>Zainstaluj środowisko Node.js zależności
-Zainstaluj zależności środowiska Node.js z poziomu narzędzia NPM, w wierszu polecenia/na terminalu.
+### <a name="install-nodejs-dependencies"></a>Zainstaluj zależności Node. js
+Zainstaluj zależności Node. js z NPM w terminalu/wierszu polecenia.
 
 ```console
 > npm install
 ```
 
-### <a name="change-configuration-settings"></a>Zmienianie ustawień konfiguracji
-Aby można było używać tej aplikacji, musisz zmienić wartości w pliku index.js do klucza punktu końcowego, a następnie podaj nazwę, chcesz, aby aplikacja miała. Możesz również ustawić kulturę aplikacji lub zmienić numer wersji.
+### <a name="change-configuration-settings"></a>Zmień ustawienia konfiguracji
+Aby można było korzystać z tej aplikacji, należy zmienić wartości w pliku index. js na własny klucz punktu końcowego i podać nazwę, która ma mieć aplikacja. Możesz również ustawić kulturę aplikacji lub zmienić numer wersji.
 
-Otwórz plik index.js i zmień te wartości w górnej części pliku.
+Otwórz plik index. js i Zmień te wartości w górnej części pliku.
 
 
 ```javascript
@@ -138,7 +140,7 @@ const LUIS_versionId = "0.1";
 ```
 
 ### <a name="run-the-script"></a>Uruchamianie skryptu
-Uruchom skrypt z wiersza polecenia/na terminalu przy użyciu środowiska Node.js.
+Uruchom skrypt z terminalu/wiersza polecenia przy użyciu środowiska Node. js.
 
 ```console
 > node index.js
@@ -151,7 +153,7 @@ lub
 ```
 
 ### <a name="application-progress"></a>Postęp aplikacji
-Gdy aplikacja jest uruchomiona, w wierszu polecenia pokazuje postęp. Dane wyjściowe wiersza polecenia obejmuje format odpowiedzi z usługi LUIS.
+Gdy aplikacja jest uruchomiona, wiersz polecenia wyświetla postęp. Dane wyjściowe wiersza polecenia zawierają format odpowiedzi z LUIS.
 
 ```console
 > node index.js
@@ -178,21 +180,21 @@ upload done
 
 
 
-## <a name="open-the-luis-app"></a>Otwórz aplikację usługi LUIS
-Po zakończeniu działania skryptu możesz zalogować się do [Luis](luis-reference-regions.md) i zobaczyć aplikację Luis utworzoną w obszarze **Moje aplikacje**. Powinno być możliwe zobaczyć wypowiedzi dodana w obszarze **wlaczac**, **wyłączanie**, i **Brak** intencji.
+## <a name="open-the-luis-app"></a>Otwieranie aplikacji LUIS
+Po zakończeniu działania skryptu możesz zalogować się do [Luis](luis-reference-regions.md) i zobaczyć aplikację Luis utworzoną w obszarze **Moje aplikacje**. Powinien być widoczny wyrażenia długości dodany w ramach intencji **wlaczanie** **, wykluczanie i** **Brak** .
 
-![Celem wlaczac](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
+![Zamiar wlaczania](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Testowanie i uczenie aplikacji w witrynie sieci Web usługi LUIS](luis-interactive-test.md)
+> [Testowanie i uczenie aplikacji w witrynie LUIS](luis-interactive-test.md)
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-Ta przykładowa aplikacja korzysta z następujących interfejsów API usługi LUIS:
+Ta przykładowa aplikacja używa następujących interfejsów API LUIS:
 - [Tworzenie aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
 - [Dodawanie intencji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
-- [Dodaj jednostki](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
-- [Dodawanie wypowiedzi](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)
+- [Dodawanie jednostek](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
+- [Dodaj wyrażenia długości](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)

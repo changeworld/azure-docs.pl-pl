@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 76b4f721135c6e34eebdc20268a76e84d86b0637
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575687"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494533"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Znane problemy dotyczące klastra Apache Spark w usłudze HDInsight
 
@@ -81,17 +81,17 @@ Nie należy używać znaków innych niż ASCII w nazwach plików notesu Jupyter.
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Wystąpił błąd podczas ładowania notesów o większych rozmiarach
 
-Możesz napotkać błąd **`Error loading notebook`** podczas ładowania notesów, które są większe.  
+Podczas ładowania notesów o większej wielkości może zostać wyświetlony komunikat o błędzie **`Error loading notebook`** .  
 
 **Środki zaradcze**
 
-Jeśli zostanie wyświetlony ten błąd, nie oznacza to, że dane są uszkodzone lub utracone.  Twoje notesy nadal znajdują się `/var/lib/jupyter`na dysku w systemie i można do niego uzyskać dostęp za pomocą protokołu SSH. Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Jeśli zostanie wyświetlony ten błąd, nie oznacza to, że dane są uszkodzone lub utracone.  Twoje notesy nadal znajdują się na dysku w `/var/lib/jupyter`i można do niego uzyskiwać dostęp do klastra przy użyciu protokołu SSH. Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Po nawiązaniu połączenia z klastrem przy użyciu protokołu SSH można skopiować notesy z klastra na maszynę lokalną (za pomocą usługi SCP lub WinSCP) jako kopię zapasową, aby zapobiec utracie ważnych danych w notesie. Można następnie tunel SSH do węzła głównego na porcie 8001, aby uzyskać dostęp do Jupyter bez przechodzenia przez bramę.  Stamtąd możesz wyczyścić dane wyjściowe notesu i zapisać go ponownie, aby zminimalizować rozmiar notesu.
 
 Aby zapobiec wystąpieniu tego błędu w przyszłości, musisz przestrzegać pewnych najlepszych rozwiązań:
 
-* Ważne jest, aby zachować mały rozmiar notesu. Wszystkie dane wyjściowe z zadań platformy Spark, które są wysyłane z powrotem do Jupyter, są utrwalane w notesie.  Najlepszym rozwiązaniem jest Jupyter ogólnie, aby uniknąć uruchamiania `.collect()` w dużych RDD lub ramkach danych, a zamiast tego, jeśli chcesz uzyskać wgląd w zawartość RDD, Rozważ uruchomienie `.take()` lub `.sample()` , aby dane wyjściowe nie były zbyt duże.
+* Ważne jest, aby zachować mały rozmiar notesu. Wszystkie dane wyjściowe z zadań platformy Spark, które są wysyłane z powrotem do Jupyter, są utrwalane w notesie.  Najlepszym rozwiązaniem jest Jupyter ogólnie, aby uniknąć uruchamiania `.collect()` w dużych RDDach lub ramkach danych. Zamiast tego, jeśli chcesz uzyskać wgląd w zawartość RDD, Rozważ uruchomienie `.take()` lub `.sample()`, aby dane wyjściowe nie były zbyt duże.
 * Ponadto podczas zapisywania notesu Wyczyść wszystkie komórki wyjściowe, aby zmniejszyć rozmiar.
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Początkowe uruchamianie notesu trwa dłużej niż oczekiwano
@@ -115,15 +115,15 @@ Gdy w klastrze Spark brakuje zasobów, jądra platformy Spark i PySpark w notesi
 
 2. Uruchom ponownie Notes, który próbujesz uruchomić. Aby można było utworzyć sesję, należy teraz udostępnić wystarczającą ilość zasobów.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-* [Podsumowanie Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+* [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
 
-* [Apache Spark z usługą BI: Przeprowadzanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark z usługą BI: wykonywanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dzienników witryny sieci Web przy użyciu Apache Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Tworzenie i uruchamianie aplikacji

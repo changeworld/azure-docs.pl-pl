@@ -1,6 +1,6 @@
 ---
-title: Wykrywanie zagrożeń dla natywnych obliczeń w chmurze w Azure Security Center | Microsoft Docs
-description: Ten temat przedstawia natywne alerty obliczeniowe w chmurze dostępne w Azure Security Center.
+title: Wykrywanie zagrożeń w przypadku natywnego przetwarzania danych w chmurze w Azure Security Center | Microsoft Docs
+description: W tym artykule przedstawiono natywne alerty obliczeniowe w chmurze dostępne w Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,33 +11,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c3fcbadf93ff72f7d2a1dca3b25ace81c9d4f1ae
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f6fba7bc8e8b7d040805f0be62d436caebf638af
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202628"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520899"
 ---
-# <a name="threat-detection-for-cloud-native-compute-in-azure-security-center"></a>Wykrywanie zagrożeń dla natywnych obliczeń w chmurze w Azure Security Center
+# <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Wykrywanie zagrożeń w przypadku natywnego przetwarzania danych w chmurze w Azure Security Center
 
-Jako dostawca chmury Azure Security Center używa unikatowej widoczności, która musi analizować dzienniki wewnętrzne i identyfikować metodologie ataków na wiele obiektów docelowych. W tym temacie przedstawiono alerty dostępne dla następujących usług platformy Azure:
+Jako rozwiązanie natywne Azure Security Center ma unikatowy wgląd w dzienniki wewnętrzne na potrzeby identyfikacji metodologii ataków w wielu celach. W tym artykule przedstawiono alerty dostępne dla następujących usług platformy Azure:
 
-* [Usługa Azure App Service](#app-services)
-* [Azure Container Service](#azure-containers) 
+* [Azure App Service](#app-services)
+* [Kontenery platformy Azure](#azure-containers) 
+
+> [!NOTE]
+> Te usługi nie są obecnie dostępne w regionach platformy Azure dla instytucji rządowych i suwerennych.
 
 ## Azure App Service<a name="app-services"></a>
 
-Security Center używa skali chmury, aby identyfikować ataki ukierunkowane na aplikacje działające przez App Service. Aplikacje sieci Web są wspólne w nowoczesnych sieciach, a osoby atakujące mogą wykrywać te i luki w zabezpieczeniach. Przed skierowaniem do określonych środowisk żądania do aplikacji uruchomionych na platformie Azure przechodzą przez kilka bram, gdzie są one kontrolowane i rejestrowane. Te dane są następnie używane do identyfikowania luk w zabezpieczeniach i ataków oraz do uczenia się nowych wzorców, które będą używane później.
+Security Center używa skali chmury, aby identyfikować ataki ukierunkowane na aplikacje działające przez App Service. Osoby atakujące mogą wykrywać słabe i luki w zabezpieczeniach aplikacji sieci Web. Przed skierowaniem do określonych środowisk żądania do aplikacji uruchomionych na platformie Azure przechodzą przez kilka bram, gdzie są one kontrolowane i rejestrowane. Te dane są następnie używane do identyfikowania luk w zabezpieczeniach i ataków oraz do uczenia się nowych wzorców, które będą używane później.
 
-Korzystając z widoczności platformy Azure jako dostawcy chmury, Security Center analizuje App Service dzienników wewnętrznych w celu zidentyfikowania metodologii ataków na wiele obiektów docelowych. Na przykład metodologia obejmuje szerokie skanowanie i rozproszone ataki. Ten typ ataku zwykle pochodzi z małego podzbioru adresów IP i wykazuje wzorce przeszukiwania do podobnych punktów końcowych na wielu hostach. Ataki są wyszukiwaniem zagrożonej strony lub wtyczki i nie mogą być zidentyfikowane z punktu widzenia jednego hosta.
+Korzystając z widoczności platformy Azure jako dostawcy chmury, Security Center analizuje App Service dzienników wewnętrznych w celu zidentyfikowania metodologii ataków na wiele obiektów docelowych. Na przykład metodologia obejmuje szerokie skanowanie i rozproszone ataki. Ten typ ataku zwykle pochodzi z małego podzbioru adresów IP i pokazuje wzorce przeszukiwania do podobnych punktów końcowych na wielu hostach. Ataki są wyszukiwaniem zagrożonej strony lub wtyczki i nie mogą być zidentyfikowane z punktu widzenia jednego hosta.
 
-Security Center również ma dostęp do podstawowych piaskownic i maszyn wirtualnych. Wraz z dowodowych pamięci infrastruktura może informować o tym o tym scenariuszu, od nowego ataku rozprowadzonego na komputerach klienckich. W związku z tym Security Center mogą wykrywać ataki na aplikacje sieci Web, które są dłuższe po wykorzystaniu.
+Security Center również ma dostęp do podstawowych piaskownic i maszyn wirtualnych. Wraz z dowodowych pamięci infrastruktura może informować o tym o tym scenariuszu, od nowego ataku rozprowadzonego na komputerach klienckich. W związku z tym nawet jeśli Security Center zostanie wdrożona po wykorzystaniu aplikacji sieci Web, może być możliwe wykrycie trwających ataków.
 
 > [!div class="mx-tableFixed"]
 
-|Alerty|Opis|
+|Alert|Opis|
 |---|---|
 |**Wykryto podejrzane wywołanie w ramach platformy WordPress**|App Service dziennik aktywności wskazuje możliwe działanie iniekcji kodu w zasobie App Service.<br/> To podejrzane działanie przypomina aktywność, która manipuluje kompozycją WordPress w celu obsługi wykonywania kodu po stronie serwera, a następnie bezpośredniego żądania sieci Web w celu wywołania pliku motywu, który został przekierowany. Ten typ działania może być częścią kampanii ataków za pośrednictwem platformy WordPress.|
 |**Wykryto połączenie ze stroną internetową z nietypowego adresu IP**|App Service dziennik aktywności wskazuje połączenie z poufną stroną sieci Web na podstawie adresu źródłowego, który nigdy nie jest z nim połączony. Może to wskazywać, że ktoś próbuje przeprowadzić atak na strony administrowania aplikacjami sieci Web. Może być również wynikiem wiarygodnego użytkownika korzystającego z nowego adresu IP.|
@@ -50,11 +53,21 @@ Security Center również ma dostęp do podstawowych piaskownic i maszyn wirtual
 |**Wykonywanie procesu z folderu tymczasowego**|Analiza procesów App Service wykryła wykonywanie procesu z folderu tymczasowego aplikacji. Chociaż to zachowanie może być prawdziwe, w aplikacjach sieci Web takie zachowanie może wskazywać na złośliwe działania.|
 |**Wykryto próbę uruchomienia polecenia o wysokim poziomie uprawnień**|Analiza procesów App Service wykryła próbę uruchomienia polecenia wymagającego wysokiego poziomu uprawnień. Polecenie zostało uruchomione w kontekście aplikacji sieci Web. Chociaż to zachowanie może być prawdziwe, w aplikacjach sieci Web takie zachowanie może wskazywać na złośliwe działania.|
 
-> [!NOTE]
-> Security Center wykrywanie zagrożeń dla App Service nie jest obecnie dostępne w regionach platformy Azure dla instytucji rządowych i suwerennych.
+## Kontenery platformy Azure<a name="azure-containers"></a>
 
-## Azure Container Service<a name="azure-containers"></a>
+Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym w środowiskach kontenerów i generuje alerty dla podejrzanych działań. Te informacje pozwalają na szybkie rozwiązywanie problemów dotyczących zabezpieczeń i poprawę bezpieczeństwa kontenerów.
 
-Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym dla kontenerów na maszynach z systemem Linux na podstawie struktury poddanej inspekcji. Alerty identyfikują kilka podejrzanych działań platformy Docker, takich jak tworzenie kontenera uprzywilejowanego na hoście, wskazanie serwera Secure Shell (SSH) działającego wewnątrz kontenera Docker lub użycie kryptografii wyszukiwarek używa tego. 
+Wykrywamy zagrożenia na różnych poziomach: 
 
-Te informacje pozwalają na szybkie rozwiązywanie problemów dotyczących zabezpieczeń i poprawę bezpieczeństwa kontenerów. Oprócz wykrywania systemu Linux Security Center oferuje także analizy, które są bardziej specyficzne dla wdrożeń kontenerów.
+* Agent Security Center na **poziomie hosta** (dostępny w warstwie Standardowa, zobacz [Cennik](security-center-pricing.md) dla szczegółów) monitory Linux dla podejrzanych działań. Agent wyzwala alerty dotyczące podejrzanych działań pochodzących z węzła lub kontenera, w którym jest uruchomiona. Przykłady takich działań obejmują wykrywanie i nawiązywanie powłoki sieci Web przy użyciu znanych podejrzanych adresów IP. </br>
+Aby uzyskać dokładniejszy wgląd w zabezpieczenia środowiska kontenerowego, agent monitoruje analizę specyficzną dla kontenera. Spowoduje to wyzwolenie alertów dotyczących zdarzeń, takich jak tworzenie kontenera uprzywilejowanego, podejrzany dostęp do serwerów interfejsu API i serwery Secure Shell (SSH) działające wewnątrz kontenera Docker.
+
+    >[!NOTE]
+    > Jeśli zdecydujesz się nie instalować agentów na hostach, będziesz otrzymywać tylko podzbiór korzyści i alertów dotyczących wykrywania zagrożeń. Nadal będziesz otrzymywać alerty dotyczące analizy sieci i komunikacji ze złośliwymi serwerami.
+
+* Na **poziomie klastra AKS**istnieje monitorowanie wykrywania zagrożeń oparte na analizie dzienników inspekcji Kubernetes. Aby włączyć monitorowanie **bez wykorzystania agentów** , Dodaj opcję Kubernetes do subskrypcji na stronie **ustawień & cenowej** (zobacz [Cennik](security-center-pricing.md)). Aby generować alerty na tym poziomie, Security Center monitoruje usługi zarządzane przez AKS przy użyciu dzienników pobranych przez AKS. Przykłady zdarzeń na tym poziomie obejmują uwidocznione pulpity nawigacyjne Kubernetes, tworzenie ról z wysokim poziomem uprawnień i instalacji wrażliwych. 
+
+    >[!NOTE]
+    > Security Center generuje alerty wykrywania dla akcji i wdrożeń usługi Azure Kubernetes, które występują po włączeniu opcji Kubernetes w ustawieniach subskrypcji. 
+
+Ponadto nasz globalny zespół badaczy ds. zabezpieczeń stale monitoruje zagrożenie w poziomie. Po ich odnalezieniu są dodawane alerty i luki specyficzne dla kontenera.

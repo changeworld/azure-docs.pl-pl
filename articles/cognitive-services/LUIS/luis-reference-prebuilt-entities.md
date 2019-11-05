@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/03/2019
 ms.author: diberry
-ms.openlocfilehash: 66cdedb402392340d38ab9a72f6f19012c359664
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a5fcccc18a453101bd1166f2c85b0c3cdc747c3a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677622"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464962"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Jednostki na kulturę w modelu LUIS
 
@@ -36,27 +36,31 @@ Language Understanding (LUIS) udostępnia wstępnie utworzone jednostki. Gdy wbu
 |Hiszpański|[ES-es (Hiszpania)](#spanish-spain-entity-support), [es-MX (Meksyk)](#spanish-mexico-entity-support)||
 |Turecki|[Turecki](#turkish-entity-support)|Brak wstępnie skompilowanych jednostek obsługiwanych w języku tureckim|
 
+## <a name="prediction-endpoint-runtime"></a>Przewidywanie środowiska uruchomieniowego punktu końcowego
+
+Dostępność wstępnie skompilowanej jednostki w określonym języku jest określana na podstawie wersji środowiska uruchomieniowego punktu końcowego przewidywania. 
+
 ## <a name="chinese-entity-support"></a>Obsługa chińskich jednostek
 
 Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```zh-CN``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    ✔   |
-[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    ✔   | 
-[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    ✔   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    V2, V3   |
+[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    V2, V3   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   | 
-[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Liczbą](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[Liczba](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Liczbą](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Wartości](luis-reference-prebuilt-percentage.md)   |    ✔   | 
-[Nazwisko osoby](luis-reference-prebuilt-person.md)   |    ✔   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    ✔   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[Wartości](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[Nazwisko osoby](luis-reference-prebuilt-person.md)   |    V2, V3   | 
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    V2, V3   | 
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="dutch-entity-support"></a>Obsługa jednostek Holenderskich
 
@@ -64,21 +68,21 @@ Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```nl-NL``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    ✔   |
-[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    ✔   |
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    V2, V3   |
+[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    V2, V3   |
 [Datę](luis-reference-prebuilt-deprecated.md)   |    -   | 
-[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    ✔   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    V2, V3   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Liczbą](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Liczba](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Liczbą](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Wartości](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Wartości](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [Nazwisko osoby](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    ✔   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    V2, V3   | 
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="english-american-entity-support"></a>Obsługa jednostek w języku angielskim (American)
 
@@ -86,21 +90,21 @@ Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```en-US``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    ✔   |
-[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    ✔   | 
-[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    ✔   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    ✔   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Liczbą](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    ✔   |
-[Wartości](luis-reference-prebuilt-percentage.md)   |    ✔   | 
-[Nazwisko osoby](luis-reference-prebuilt-person.md)   |    ✔   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    ✔   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    V2, V3   |
+[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    V2, V3   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Liczba](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Liczbą](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
+[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
+[Wartości](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[Nazwisko osoby](luis-reference-prebuilt-person.md)   |    V2, V3   | 
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    V2, V3   | 
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="french-france-entity-support"></a>Obsługa jednostek francuskich (Francja)
 
@@ -108,21 +112,21 @@ Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```fr-FR``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    ✔   |
-[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    ✔   | 
-[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    ✔   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    V2, V3   |
+[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    V2, V3   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Liczbą](luis-reference-prebuilt-ordinal.md)   |    ✔   |
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Liczba](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Liczbą](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |  
-[Wartości](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Wartości](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [Nazwisko osoby](luis-reference-prebuilt-person.md)   |   -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    ✔   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    V2, V3   | 
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="french-canadian-entity-support"></a>Obsługa jednostek francuskich (kanadyjskich)
 
@@ -130,21 +134,21 @@ Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```fr-CA``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    ✔   |
-[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    ✔   | 
-[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    ✔   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    V2, V3   |
+[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    V2, V3   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Liczbą](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Liczba](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Liczbą](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Wartości](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Wartości](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [Nazwisko osoby](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    ✔   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    V2, V3   | 
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="german-entity-support"></a>Obsługa jednostek niemieckich
 
@@ -152,43 +156,45 @@ Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```de-DE``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    ✔   |
-[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    ✔   | 
-[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    ✔   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    V2, V3   |
+[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    V2, V3   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Liczbą](luis-reference-prebuilt-ordinal.md)   |    ✔   |
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Liczba](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Liczbą](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |  
-[Wartości](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Wartości](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [Nazwisko osoby](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    ✔   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    V2, V3   | 
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="italian-entity-support"></a>Obsługa jednostek włoskich
+
+Włoski prekompilowany wiek, walut, wymiar, numer, _rozdzielczość_ procentową zmieniono z wersji 2 i V3 Preview.
 
 Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```it-IT``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    ✔   |
-[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    ✔   |
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    V2, V3   |
+[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    V2, V3   |
 [Datę](luis-reference-prebuilt-deprecated.md)   |    -   | 
-[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    ✔   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    V2, V3   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Liczbą](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Liczba](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Liczbą](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Wartości](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Wartości](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [Nazwisko osoby](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    ✔   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    V2, V3   | 
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="japanese-entity-support"></a>Obsługa jednostek japońskich
 
@@ -196,21 +202,21 @@ Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```ja-JP``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    ✔   |
-[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    ✔   |
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    V2,-   |
+[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    V2,-   |
 [Datę](luis-reference-prebuilt-deprecated.md)   |    -   | 
-[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    ✔   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    V2,-   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Liczbą](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Liczba](luis-reference-prebuilt-number.md)   |    V2,-   |  
+[Liczbą](luis-reference-prebuilt-ordinal.md)   |    V2,-   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Wartości](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Wartości](luis-reference-prebuilt-percentage.md)   |    V2,-   | 
 [Nazwisko osoby](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    ✔   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    V2,-   | 
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="korean-entity-support"></a>Obsługa jednostek w języku koreańskim
 
@@ -218,21 +224,21 @@ Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```ko-KR``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    -   |
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    -   |
 [Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    -   |
 [Datę](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    -   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Liczba](luis-reference-prebuilt-number.md)   |    -   |  
 [Liczbą](luis-reference-prebuilt-ordinal.md)   |    -   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Wartości](luis-reference-prebuilt-percentage.md)   |    -   | 
 [Nazwisko osoby](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
 [Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    -   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="portuguese-brazil-entity-support"></a>Obsługa jednostek w języku portugalskim (Brazylia)
 
@@ -240,21 +246,21 @@ Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```pt-BR``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    ✔   |
-[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    ✔   | 
-[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    ✔   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    V2, V3   |
+[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    V2, V3   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Liczbą](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Liczba](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Liczbą](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Wartości](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Wartości](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [Nazwisko osoby](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    ✔   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    V2, V3   | 
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="spanish-spain-entity-support"></a>Obsługa jednostki hiszpańskiej (Hiszpania)
 
@@ -262,21 +268,21 @@ Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```es-ES``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    ✔   |
-[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    ✔   | 
-[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    ✔   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    V2, V3   |
+[Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2, V3   | 
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    V2, V3   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
-[Liczbą](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Liczba](luis-reference-prebuilt-number.md)   |    V2, V3   |  
+[Liczbą](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Wartości](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Wartości](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
 [Nazwisko osoby](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
-[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    ✔   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    V2, V3   | 
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 ## <a name="spanish-mexico-entity-support"></a>Obsługa jednostki hiszpańskiej (Meksyk)
 
@@ -284,21 +290,21 @@ Obsługiwane są następujące jednostki:
 
 |Wstępnie utworzona jednostka|```es-MX``` |
 ------|:------:|
-[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>Ciągu<br>Dzień   |    -   |
+[Wiek](luis-reference-prebuilt-age.md):<br>rocznie<br>Bieżącym<br>ciągu<br>dzień   |    -   |
 [Waluta (pieniądze)](luis-reference-prebuilt-currency.md):<br>dolarów<br>Jednostka ułamkowa (np. groszki)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>dysku<br>Stref<br>Waga<br>informacje (np. bit/Byte)<br>Długość (np. miernik)<br>szybkość (np. droga na godzinę)  |    -   | 
-[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
-[Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[Liczba](luis-reference-prebuilt-number.md)   |    V2, V3   |  
 [Liczbą](luis-reference-prebuilt-ordinal.md)   |    -   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Wartości](luis-reference-prebuilt-percentage.md)   |    -   | 
 [Nazwisko osoby](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
 [Temperatura](luis-reference-prebuilt-temperature.md):<br>Stop<br>Kelvin<br>rankine<br>delisle<br>Celsjusza   |    -   | 
-[Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
+[Adres URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
 Zobacz uwagi dotyczące [przestarzałych wstępnie skompilowanych jednostek](luis-reference-prebuilt-deprecated.md)
 

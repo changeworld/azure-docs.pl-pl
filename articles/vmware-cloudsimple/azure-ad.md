@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8e8ea11da0339103375009709be8795cdede2448
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 1a5871a052998e9dd32d698c5a89f57064cc7d6b
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972923"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987562"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Użyj usługi Azure AD jako dostawcy tożsamości dla programu vCenter w chmurze prywatnej CloudSimple
 
@@ -72,7 +72,7 @@ Opcjonalnie można skonfigurować inne funkcje usługi Azure AD.  Nie są one wy
     2. Jeśli synchronizujesz hasła z lokalnej usługi Active Directory, wykonaj kroki opisane w [dokumentacji Active Directory](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md).
 
 6.  Skonfiguruj bezpieczny protokół LDAP na Azure Active Directory Domain Services zgodnie z opisem w temacie [Konfigurowanie bezpiecznego protokołu LDAP (LDAPS) dla domeny zarządzanej Azure AD Domain Services](../active-directory-domain-services/tutorial-configure-ldaps.md).
-    1. Przekaż certyfikat do użycia przez bezpieczny protokół LDAP zgodnie z opisem w temacie dotyczącym platformy Azure [uzyskaj certyfikat dla bezpiecznego protokołu LDAP](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap).  CloudSimple zaleca użycie podpisanego certyfikatu wystawionego przez urząd certyfikacji, aby upewnić się, że program vCenter może ufać certyfikatowi.
+    1. Przekaż certyfikat do użycia przez bezpieczny protokół LDAP zgodnie z opisem w temacie [dotyczącym platformy Azure uzyskaj certyfikat dla bezpiecznego protokołu LDAP](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap).  CloudSimple zaleca użycie podpisanego certyfikatu wystawionego przez urząd certyfikacji, aby upewnić się, że program vCenter może ufać certyfikatowi.
     2. Włącz bezpieczny protokół LDAP zgodnie z opisem [Włącz bezpieczny protokół LDAP (LDAPS) dla domeny zarządzanej Azure AD Domain Services](../active-directory-domain-services/tutorial-configure-ldaps.md).
     3. Zapisz publiczną część certyfikatu (bez klucza prywatnego) w formacie CER do użycia z programem vCenter podczas konfigurowania źródła tożsamości.
     4. Jeśli jest wymagany dostęp do usług domenowych w usłudze Azure AD, Włącz opcję "Zezwalaj na bezpieczny dostęp do protokołu LDAP over internet".
@@ -83,19 +83,26 @@ Opcjonalnie można skonfigurować inne funkcje usługi Azure AD.  Nie są one wy
 1. [Eskalacja uprawnień](escalate-private-cloud-privileges.md) do chmury prywatnej dla programu vCenter.
 2. Zbierz parametry konfiguracji wymagane do skonfigurowania źródła tożsamości.
 
-    | **Option** | **Opis** |
+    | **Opcja** | **Opis** |
     |------------|-----------------|
     | **Nazwa** | Nazwa źródła tożsamości. |
-    | **Podstawowa nazwa wyróżniająca dla użytkowników** | Podstawowa nazwa wyróżniająca dla użytkowników.  W przypadku usługi Azure AD Użyj: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`Przykład: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
+    | **Podstawowa nazwa wyróżniająca dla użytkowników** | Podstawowa nazwa wyróżniająca dla użytkowników.  W przypadku usługi Azure AD Użyj: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` przykład: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
     | **Nazwa domeny** | NAZWY FDQN domeny, na przykład example.com. W tym polu tekstowym nie należy podawać adresu IP. |
     | **Alias domeny** | *(opcjonalnie)* Nazwa NetBIOS domeny. Dodaj nazwę NetBIOS domeny Active Directory jako alias źródła tożsamości, jeśli używasz uwierzytelniania SSPI. |
-    | **Podstawowa nazwa wyróżniająca dla grup** | Podstawowa nazwa wyróżniająca dla grup. W przypadku usługi Azure AD Użyj: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`Przyklad`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **Podstawowy adres URL serwera** | Serwer LDAP podstawowego kontrolera domeny dla domeny.<br><br>Użyj formatu `ldaps://hostname:port`. Port jest zazwyczaj 636 dla połączeń LDAPs. <br><br>Certyfikat, który ustanawia zaufanie dla punktu końcowego LDAPS serwera Active Directory, jest wymagany w przypadku użycia `ldaps://` w podstawowym lub pomocniczym adresie URL LDAP. |
+    | **Podstawowa nazwa wyróżniająca dla grup** | Podstawowa nazwa wyróżniająca dla grup. W przypadku usługi Azure AD Użyj: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` przykład: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **Podstawowy adres URL serwera** | Serwer LDAP podstawowego kontrolera domeny dla domeny.<br><br>Użyj formatu `ldaps://hostname:port`. Port jest zazwyczaj 636 dla połączeń LDAPs. <br><br>Certyfikat, który ustanawia zaufanie dla punktu końcowego LDAPs serwera Active Directory, jest wymagany w przypadku używania `ldaps://` w podstawowym lub pomocniczym adresie URL LDAP. |
     | **Adres URL serwera pomocniczego** | Adres serwera LDAP pomocniczego kontrolera domeny, który jest używany do pracy w trybie failover. |
-    | **Wybieranie certyfikatu** | Jeśli chcesz używać LDAPS z serwerem LDAP Active Directory lub źródłem tożsamości serwera OpenLDAP, po wpisaniu `ldaps://` w polu tekstowym adresu URL zostanie wyświetlony przycisk Wybierz certyfikat. Pomocniczy adres URL nie jest wymagany. |
+    | **Wybieranie certyfikatu** | Jeśli chcesz używać LDAPs z serwerem LDAP Active Directory lub źródłem tożsamości serwera OpenLDAP, po wpisaniu `ldaps://` w polu tekstowym adresu URL zostanie wyświetlony przycisk Wybierz certyfikat. Pomocniczy adres URL nie jest wymagany. |
     | **Nazwa użytkownika** | Identyfikator użytkownika w domenie, który ma minimalny dostęp tylko do odczytu do podstawowej nazwy wyróżniającej dla użytkowników i grup. |
     | **Hasło** | Hasło użytkownika, który jest określony przez nazwę użytkownika. |
 
 3. Zaloguj się do prywatnej chmury programu vCenter po eskalacji uprawnień.
 4. Postępuj zgodnie z instrukcjami w temacie [Dodawanie źródła tożsamości w programie vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter) przy użyciu wartości z poprzedniego kroku, aby skonfigurować Azure Active Directory jako źródło tożsamości.
-5. Dodaj użytkowników/grupy z usługi Azure AD do grup vCenter, zgodnie z opisem w temacie VMware [Dodaj członków do grupy programu vCenter logowanie](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)jednokrotne.
+5. Dodaj użytkowników/grupy z usługi Azure AD do grup vCenter, zgodnie z opisem w temacie VMware [Dodaj członków do grupy programu vCenter Logowanie jednokrotne](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
+
+> [!CAUTION]
+> Nowi użytkownicy muszą zostać dodani tylko *do chmury-właściciel-Grupa*, *chmura-Global-Cluster-admin-* Group, Cloud- *Global-Storage-Administrator-* Group, *Cloud-Global-Network-admin* -Group  Użytkownicy dodani do grupy *administratorzy* zostaną usunięci automatycznie.  Tylko konta usług należy dodać do grupy *administratorów* .
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Informacje o modelu uprawnień chmury prywatnej](learn-private-cloud-permissions.md)

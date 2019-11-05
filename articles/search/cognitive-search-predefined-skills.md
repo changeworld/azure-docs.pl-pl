@@ -1,5 +1,5 @@
 ---
-title: Wbudowane wyodrębnianie danych, język naturalny, przetwarzanie obrazów
+title: Wbudowane umiejętności wyodrębniania danych, języka naturalnego, przetwarzania obrazów podczas indeksowania.
 titleSuffix: Azure Cognitive Search
 description: Wyodrębnianie danych, język naturalny, przetwarzanie obrazów umiejętności poznawcze Dodawanie semantyki i struktury do nieprzetworzonej zawartości w potoku Wyszukiwanie poznawcze platformy Azure.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 435635018dc25ed2af0aec3d542c0388af8ab885
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2f03752c5fda366fc16b681d71ba68486527a30f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792100"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466801"
 ---
 # <a name="built-in-cognitive-skills-for-content-enrichment-azure-cognitive-search"></a>Wbudowane umiejętności poznawcze dotyczące wzbogacania zawartości (platforma Azure Wyszukiwanie poznawcze)
 
@@ -41,13 +41,14 @@ Kilka umiejętności jest elastycznych do użycia lub produkcji. Ogólnie rzecz 
 | [Microsoft. umiejętności. Vision. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Ta umiejętność używa algorytmu wykrywania obrazu do identyfikowania zawartości obrazu i generowania opisu tekstu. |
 | [Microsoft. umiejętności. Vision. OcrSkill](cognitive-search-skill-ocr.md) | Optyczne rozpoznawanie znaków. |
 | [Microsoft. umiejętności. util. ConditionalSkill](cognitive-search-skill-conditional.md) | Umożliwia filtrowanie, przypisywanie wartości domyślnej i scalanie danych na podstawie warunku.|
+| [Microsoft. umiejętności. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) | Wyodrębnia zawartość z pliku w ramach potoku wzbogacania. |
 | [Microsoft. umiejętności. util. ShaperSkill](cognitive-search-skill-shaper.md) | Mapuje dane wyjściowe do typu złożonego (wieloczęściowego typu danych, który może być używany do pełnej nazwy, adresu wielowierszowego lub kombinacji nazwiska i identyfikatora osobistego). |
 | [Microsoft. umiejętności. Custom. WebApiSkill](cognitive-search-custom-skill-web-api.md) | Umożliwia rozszerzanie potoku wzbogacenia AI przez nadanie połączenia HTTP do niestandardowego interfejsu API sieci Web |
 
 
 Aby uzyskać wskazówki dotyczące tworzenia [niestandardowych umiejętności](cognitive-search-custom-skill-web-api.md), zobacz [jak zdefiniować niestandardowy interfejs](cognitive-search-custom-skill-interface.md) i [przykład: Tworzenie NIESTANDARDOWEJ umiejętności dla wzbogacania AI](cognitive-search-create-custom-skill-example.md).
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Niestandardowa definicja interfejsu umiejętności](cognitive-search-custom-skill-interface.md)

@@ -1,53 +1,64 @@
 ---
 title: 'Importuj dane: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Informacje dotyczące ładowania danych do potoku uczenia maszynowego z istniejących usług danych w chmurze przy użyciu modułu Importuj dane w usłudze Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak za pomocą modułu Importuj dane w Azure Machine Learning załadować dane do potoku uczenia maszynowego z istniejących usług danych w chmurze.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: fef7d686479b24b0402ab6f1e6990df74231b8d6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 5fa8d3984c758d0bf95372864f3bffeb6f302c83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693149"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497791"
 ---
 # <a name="import-data-module"></a>Importuj moduł danych
 
-W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
-Ten moduł służy do ładowania danych do potoku uczenia maszynowego z istniejących usług danych w chmurze.  
+Ten moduł służy do ładowania danych do potoku uczenia maszynowego z istniejących usług danych w chmurze. 
 
-Najpierw wybierz typ magazynu opartego na chmurze, z którego czytasz i Zakończ dodatkowe ustawienia. Po zdefiniowaniu danych, które chcesz połączyć ze źródłem, [Importowanie danych](./import-data.md) powoduje, że dane są uwzględniane w poszczególnych kolumnach, na podstawie wartości, które zawiera, i ładowania danych do obszaru roboczego Azure Machine Learning. Dane wyjściowe [importowania](./import-data.md) są zestawem danych, który może być używany z dowolnym potokiem.
+> [!Note]
+> Wszystkie funkcje zapewniane przez ten moduł mogą być wykonywane przez **Magazyn** **danych i DataSets** na stronie docelowej obszaru roboczego. Zalecamy korzystanie z **magazynu** danych i **zestawu danych** , który zawiera dodatkowe funkcje, takie jak monitorowanie dane. Aby dowiedzieć się więcej, zobacz artykuł [jak uzyskać dostęp do danych](../service/how-to-access-data.md) i [jak rejestrować zestawy danych](../service/how-to-create-register-datasets.md) .
+> Po zarejestrowaniu zestawu danych można go znaleźć w obszarze **zestawy** danych -> **moje zbiory** w interfejsie projektanta. Ten moduł jest zarezerwowany dla użytkowników programu Studio (klasycznych) w celu uzyskania znanego środowiska. 
+>
 
-  
-Jeśli dane źródłowe zmienią się, można odświeżyć zestaw danych i dodać nowe dane przez ponowne uruchomienie [importowania danych](./import-data.md). Jeśli jednak nie chcesz powtarzać odczytu ze źródła przy każdym uruchomieniu potoku, wybierz opcję **Użyj wyników z pamięci podręcznej** na wartość true. Gdy ta opcja jest zaznaczona, moduł sprawdza, czy potok został wcześniej uruchomiony przy użyciu tych samych danych źródłowych i tych samych opcji. W przypadku znalezienia poprzedniego przebiegu dane w pamięci podręcznej są używane zamiast ponownego ładowania danych ze źródła.
- 
+Najpierw wybierz źródło, z którego korzystasz, i Zakończ dodatkowe ustawienia. Moduł **Importuj dane** obsługuje odczyt danych z następujących źródeł:
 
-## <a name="data-sources"></a>Źródła danych
+- Adres URL za pośrednictwem protokołu HTTP
+- Magazyny w chmurze platformy Azure za pomocą [**magazynów**](../service/how-to-access-data.md)danych)
+    - Kontener obiektów blob platformy Azure
+    - Udział plików platformy Azure
+    - Azure Data Lake
+    - Azure Data Lake Gen2
+    - Azure SQL Database
+    - Azure PostgreSQL    
 
-Moduł Importuj dane obsługuje następujące źródła danych. Kliknij linki, aby uzyskać szczegółowe instrukcje i przykłady użycia każdego źródła danych. 
- 
-Jeśli nie masz pewności, jak lub gdzie należy przechowywać dane, zapoznaj się z tym przewodnikiem, aby zapoznać się z typowymi scenariuszami dotyczącymi danych w procesie analizy danych: [scenariusze zaawansowanej analizy w Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-plan-sample-scenarios). 
+Przed rozpoczęciem korzystania z magazynu w chmurze musisz najpierw zarejestrować magazyn danych w obszarze roboczym Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [jak uzyskać dostęp do danych](../service/how-to-access-data.md). 
 
+Po zdefiniowaniu danych, które chcesz połączyć ze źródłem, **[Importowanie danych](./import-data.md)** powoduje, że dane są uwzględniane w poszczególnych kolumnach na podstawie wartości, które zawiera, i ładowania danych do potoku projektanta. Dane wyjściowe **importu** są zestawem danych, który może być używany z dowolnym potokiem projektanta.
 
-|Źródło danych| Używanie z|
-|-----------|-----------|  
-|[Adres URL sieci Web za pośrednictwem protokołu HTTP](./import-from-web-url-via-http.md)|Pobierz dane hostowane w adresie URL sieci Web, który używa protokołu HTTP i który został udostępniony w formatach CSV, TSV, ARFF lub SvmLight|  
-|[Importuj z usługi Azure Blob Storage](./import-from-azure-blob-storage.md) |Pobieranie danych przechowywanych w usłudze Azure Blob Service|  
-|[Importuj z Azure SQL Database](./import-from-azure-sql-database.md) |Pobierz dane z Azure SQL Database|
+Jeśli dane źródłowe zmienią się, można odświeżyć zestaw danych i dodać nowe dane przez ponowne uruchomienie [importowania danych](./import-data.md). Jeśli jednak nie chcesz powtarzać odczytu ze źródła przy każdym uruchomieniu potoku, ustaw opcję **Użyj wyników z pamięci podręcznej** na wartość true. Gdy ta opcja jest zaznaczona, moduł sprawdza, czy potok został wcześniej uruchomiony przy użyciu tych samych danych źródłowych i tych samych opcji. W przypadku znalezienia poprzedniego przebiegu dane w pamięci podręcznej są używane zamiast ponownego ładowania danych ze źródła.
 
 ## <a name="how-to-configure-import-data"></a>Jak skonfigurować Importowanie danych
- 
-1. Dodaj moduł **Import danych** do potoku. Ten moduł można znaleźć w kategorii dane **wejściowe i wyjściowe** w interfejsie.
 
-1. Kliknij pozycję **Źródło danych**i wybierz typ magazynu opartego na chmurze, z którego się czytasz. 
+1. Dodaj moduł **Import danych** do potoku. Ten moduł można znaleźć w kategorii dane **wejściowe i wyjściowe** w projektancie.
 
-    Dodatkowe ustawienia zależą od wybranego typu magazynu i od tego, czy magazyn jest zabezpieczony, czy nie. Może być konieczne podanie nazwy konta, typu pliku lub poświadczeń. Niektóre źródła nie wymagają uwierzytelniania; dla innych osób może być konieczne poznanie nazwy konta, klucza lub nazwy kontenera.
+1. Kliknij przycisk **Uruchom Kreatora importu danych** , aby skonfigurować źródło danych za pomocą kreatora.
+
+    Kreator pobiera nazwę i poświadczenia konta oraz ułatwia konfigurowanie innych opcji. Jeśli edytujesz istniejącą konfigurację, najpierw ładuje bieżące wartości.
+
+1. Wybierz pozycję **Źródło danych**i wybierz typ źródła danych. Może to być HTTP lub magazyn danych.
+
+    Jeśli wybierzesz pozycję Magazyn danych, możesz wybrać istniejące magazyny danych, które zostały już zarejestrowane w obszarze roboczym Azure Machine Learning, lub utworzyć nowy magazyn danych. Następnie należy zdefiniować ścieżkę danych do zaimportowania w magazynie danych. Możesz łatwo przeglądać ścieżkę, klikając pozycję **Przeglądaj ścieżka** ![Importuj-dane ścieżki](media/module/import-data-path.png)
+
+1. Wybierz schemat podglądu, aby odfiltrować kolumny, które chcesz dołączyć. Możesz również zdefiniować ustawienia zaawansowane, takie jak ogranicznik w opcjach analizy.
+
+    ![Importowanie danych — wersja zapoznawcza](media/module/import-data.png)
 
 1. Wybierz opcję **Użyj zbuforowanych wyników** , jeśli chcesz buforować zestaw danych do ponownego użycia przy kolejnych uruchomieniach.
 
@@ -57,20 +68,19 @@ Jeśli nie masz pewności, jak lub gdzie należy przechowywać dane, zapoznaj si
 
 1. Uruchamianie potoku.
 
-    W przypadku zaimportowania danych do interfejsu program wnioskuje typ danych każdej kolumny w oparciu o zawarte w niej wartości, wartość numeryczną lub kategorii.
+    Gdy importowanie danych powoduje załadowanie danych do projektanta, wnioskuje typ danych każdej kolumny na podstawie wartości, które zawiera, wartość numeryczną lub kategorii.
 
-    - Jeśli nagłówek jest obecny, nagłówek jest używany do nazwy kolumn wyjściowego zestawu danych.
+    Jeśli nagłówek jest obecny, nagłówek jest używany do nazwy kolumn wyjściowego zestawu danych.
 
-    - Jeśli w danych nie ma nagłówków istniejących kolumn, nowe nazwy kolumn są generowane przy użyciu formatu Kol1, Col2,... , coln*.
+    Jeśli w danych nie ma nagłówków istniejących kolumn, nowe nazwy kolumn są generowane przy użyciu formatu Kol1, Col2,... , coln*.
 
 ## <a name="results"></a>Wyniki
 
 Po zakończeniu importu kliknij wyjściowy zestaw danych i wybierz polecenie **Wizualizuj** , aby sprawdzić, czy dane zostały zaimportowane pomyślnie.
 
-Jeśli chcesz zapisać dane do ponownego użycia zamiast zaimportować nowy zestaw danych przy każdym uruchomieniu potoku, kliknij prawym przyciskiem myszy dane wyjściowe i wybierz polecenie **Zapisz jako zestaw danych**. Wybierz nazwę dla zestawu danych. Zapisany zestaw danych zachowuje dane podczas zapisywania, a dane nie są aktualizowane po ponownym uruchomieniu potoku, nawet jeśli zestaw danych w potoku ulegnie zmianie. Może to być przydatne do tworzenia migawek danych.
+Jeśli chcesz zapisać dane do ponownego użycia, zamiast zaimportować nowy zestaw danych przy każdym uruchomieniu potoku, kliknij prawym przyciskiem myszy dane wyjściowe i wybierz polecenie **Zapisz jako zestaw danych**. Wybierz nazwę dla zestawu danych. Zapisany zestaw danych zachowuje dane podczas zapisywania, a dane nie są aktualizowane po ponownym uruchomieniu potoku, nawet jeśli zestaw danych w potoku ulegnie zmianie. Może to być przydatne do tworzenia migawek danych.
 
 Po zaimportowaniu danych może zajść potrzeba przeprowadzenia pewnych dodatkowych przygotowań do modelowania i analizy:
-
 
 - Użyj opcji [Edytuj metadane](./edit-metadata.md) , aby zmienić nazwy kolumn, obsłużyć kolumnę jako inny typ danych lub wskazać, że niektóre kolumny są etykietami lub funkcjami.
 
@@ -80,4 +90,4 @@ Po zaimportowaniu danych może zajść potrzeba przeprowadzenia pewnych dodatkow
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

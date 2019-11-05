@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 533958221898b620500b7363f3710f75f155934a
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998058"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482762"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Współlokalizacja tabeli w Azure Database for PostgreSQL — funkcja do skalowania (Citus)
 
@@ -20,7 +20,7 @@ Wspólna lokalizacja oznacza przechowywanie powiązanych informacji w tych samyc
 
 ## <a name="data-colocation-for-hash-distributed-tables"></a>Współlokalizacja danych dla tabel dystrybuowanych przez funkcję tworzenia skrótów
 
-W programie Azure Database for PostgreSQL — wersja zapoznawcza (Citus) — wiersz jest przechowywany w fragmentu, jeśli wartość skrótu wartości w kolumnie dystrybucja mieści się w zakresie wartości skrótu fragmentu. Fragmentów z tym samym zakresem wyznaczania wartości skrótu są zawsze umieszczane w tym samym węźle. Wiersze z równymi wartościami kolumny dystrybucji są zawsze w tym samym węźle między tabelami.
+W Azure Database for PostgreSQL — Citus, wiersz jest przechowywany w fragmentu, jeśli skrót wartości w kolumnie dystrybucja mieści się w zakresie wartości skrótu fragmentu. Fragmentów z tym samym zakresem wyznaczania wartości skrótu są zawsze umieszczane w tym samym węźle. Wiersze z równymi wartościami kolumny dystrybucji są zawsze w tym samym węźle między tabelami.
 
 ![Fragmentów](media/concepts-hyperscale-colocation/colocation-shards.png)
 
@@ -68,7 +68,7 @@ Tak długo, jak [zestaw roboczy](https://en.wikipedia.org/wiki/Working_set) dla 
 
 Zapytania na jednym serwerze zaczynają spowalniać działanie, ponieważ liczba dzierżawców i danych przechowywanych dla każdej dzierżawy rośnie. Zestaw roboczy przestanie być dopasowany do pamięci, a procesor CPU stał się wąskim gardłem.
 
-W takim przypadku możemy fragmentu dane między wieloma węzłami przy użyciu funkcji Citus. Pierwszy i najważniejszy wybór, które należy podjąć, gdy zdecydujemy, że fragmentu jest kolumną dystrybucji. Zacznijmy od algorytmie wyboru użycia `event_id` dla tabeli zdarzeń i `page_id` dla `page` tabeli:
+W takim przypadku możemy fragmentu dane między wieloma węzłami przy użyciu funkcji Citus. Pierwszy i najważniejszy wybór, które należy podjąć, gdy zdecydujemy, że fragmentu jest kolumną dystrybucji. Zacznijmy od algorytmie wyboru użycia `event_id` dla tabeli zdarzeń i `page_id` dla tabeli `page`:
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -109,7 +109,7 @@ Dane są rozproszone, więc zapytania mogą być równoległe. Jest to przydatne
 
 ### <a name="distribute-tables-by-tenant"></a>Dystrybuowanie tabel według dzierżawy
 
-W obszarze skalowanie (Citus) wiersze o tej samej wartości kolumny dystrybucji są gwarantowane w tym samym węźle. Od początku możemy utworzyć nasze tabele `tenant_id` jako kolumnę dystrybucji.
+W obszarze skalowanie (Citus) wiersze o tej samej wartości kolumny dystrybucji są gwarantowane w tym samym węźle. Od początku możemy utworzyć nasze tabele z `tenant_id` jako kolumna dystrybucji.
 
 ```sql
 -- co-locate tables by using a common distribution column
@@ -140,4 +140,4 @@ W niektórych przypadkach zapytania i schematy tabeli muszą zostać zmienione w
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz, jak dane dzierżawy znajdują się w samouczku dotyczącym [wielu dzierżawców](tutorial-design-database-hyperscale-multi-tenant.md).
+- Zobacz, jak dane dzierżawy znajdują się w [samouczku dotyczącym wielu dzierżawców](tutorial-design-database-hyperscale-multi-tenant.md).

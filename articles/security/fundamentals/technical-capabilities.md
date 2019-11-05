@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129295"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468078"
 ---
-# <a name="azure-security-technical-capabilities"></a>Techniczne funkcje zabezpieczeń platformy Azure
+# <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 Ten artykuł zawiera wprowadzenie do usług zabezpieczeń na platformie Azure, które ułatwiają ochronę danych, zasobów i aplikacji w chmurze oraz zaspokajanie potrzeb firmy.
 
 ## <a name="azure-platform"></a>Platforma Azure
@@ -91,13 +91,13 @@ Logowanie jednokrotne [(SSO)](https://azure.microsoft.com/documentation/videos/o
 
 Wiele organizacji korzysta z aplikacji SaaS (Software as a Service), takich jak Office 365, Box i Salesforce, na potrzeby produktywności użytkowników końcowych. W przeszłości pracownicy działu IT musieli indywidualnie utworzyć i zaktualizować konta użytkowników w każdej aplikacji SaaS, a użytkownicy musieli zapamiętać hasło dla każdej aplikacji SaaS.
 
-[Usługa Azure AD rozszerza Active Directory lokalne](../../active-directory/manage-apps/what-is-single-sign-on.md)na chmurę, umożliwiając użytkownikom używanie ich podstawowego konta organizacyjnego, aby nie tylko zalogować się do urządzeń przyłączonych do domeny i zasobów firmy, ale także do wszystkich aplikacji sieci Web i SaaS wymaganych przez ich zleceń.
+[Usługa Azure AD rozszerza Active Directory lokalne na chmurę](../../active-directory/manage-apps/what-is-single-sign-on.md), umożliwiając użytkownikom używanie ich podstawowego konta organizacyjnego, aby nie tylko zalogować się do urządzeń przyłączonych do domeny i zasobów firmy, ale także do wszystkich aplikacji sieci Web i SaaS wymaganych przez ich zleceń.
 
 Nie tylko użytkownicy nie muszą zarządzać wieloma zestawami nazw użytkowników i haseł. dostęp do aplikacji może być inicjowany automatycznie lub nieobsługiwany w oparciu o grupy organizacyjne i ich stan jako pracownika. [Usługa Azure AD wprowadza kontrolę zabezpieczeń i dostępu](../../active-directory/active-directory-enterprise-apps-manage-sso.md) , która umożliwia centralne zarządzanie dostępem użytkowników w aplikacjach SaaS.
 
 #### <a name="multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe
 
-[Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) to metoda uwierzytelniania, która wymaga użycia więcej niż jednej metody weryfikacji i dodaje krytyczną drugą warstwę zabezpieczeń do logowania i transakcji użytkownika. Usługa [MFA pomaga](../../active-directory/authentication/concept-mfa-howitworks.md) w zabezpieczeniu dostępu do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostego procesu logowania. Zapewnia silne uwierzytelnianie dzięki szerokiemu zakresowi opcji weryfikacji — połączenie telefoniczne, wiadomość SMS lub powiadomienie aplikacji mobilnej lub kod weryfikacyjny oraz tokeny OAuth innych firm.
+[Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) to metoda uwierzytelniania, która wymaga użycia więcej niż jednej metody weryfikacji i dodaje krytyczną drugą warstwę zabezpieczeń do logowania i transakcji użytkownika. Usługa [MFA pomaga w zabezpieczeniu](../../active-directory/authentication/concept-mfa-howitworks.md) dostępu do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostego procesu logowania. Zapewnia silne uwierzytelnianie dzięki szerokiemu zakresowi opcji weryfikacji — połączenie telefoniczne, wiadomość SMS lub powiadomienie aplikacji mobilnej lub kod weryfikacyjny oraz tokeny OAuth innych firm.
 
 #### <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Monitorowanie zabezpieczeń, alerty i raporty oparte na uczeniu maszynowym
 
@@ -169,9 +169,9 @@ Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowa
 
 Jednym z kluczy ochrony danych w chmurze jest uwzględnienie możliwych stanów, w których mogą wystąpić dane, oraz tego, jakie kontrolki są dostępne dla tego stanu. W przypadku najlepszych rozwiązań dotyczących zabezpieczeń i szyfrowania danych platformy Azure zalecenia dotyczą następujących stanów danych.
 
-- W spoczynku: Obejmuje to wszystkie obiekty magazynu informacji, kontenery i typy, które istnieją statycznie na nośniku fizycznym, jako dysk magnetyczny lub optyczny.
+- W spoczynku: obejmuje to wszystkie obiekty magazynu informacji, kontenery i typy, które znajdują się statycznie na nośniku fizycznym, jako dysk magnetyczny lub optyczny.
 
-- W tranzycie: Gdy dane są przesyłane między składnikami, lokalizacjami lub programami, na przykład za pośrednictwem sieci, przez magistralę usług (od lokalnego do chmury i na odwrót, łącznie z połączeniami hybrydowymi, takimi jak ExpressRoute) lub w procesie wejścia/wyjścia, jest to uważa się, że jest to ruch w ruchu.
+- W tranzycie: w przypadku przesyłania danych między składnikami, lokalizacjami lub programami, takimi jak sieć, przez magistralę usług (od lokalnego do chmury i na odwrót, w tym połączenia hybrydowe, takie jak ExpressRoute) lub w procesie wejścia/wyjścia uważa się, że jest to ruch w ruchu.
 
 ### <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
 
@@ -206,9 +206,9 @@ Zastanów się, które sklepy są używane do przechowywania danych. Na przykła
 
 W przypadku każdego używanego magazynu Skorzystaj z istniejącego szyfrowania w obsłudze Rest.
 
-- Azure Storage: Zobacz [szyfrowanie usługi Storage platformy Azure, aby uzyskać dane przechowywane w stanie spoczynku](../../storage/common/storage-service-encryption.md),
+- Azure Storage: zobacz [szyfrowanie usługi Storage platformy Azure, aby uzyskać dane w spoczynku](../../storage/common/storage-service-encryption.md),
 
-- SQL Azure: Zobacz [transparent Data Encryption (TDE), SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
+- SQL Azure: zobacz [transparent Data Encryption (TDE), SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
 
 - Magazyn na dysku lokalnym & maszyny wirtualnej ([Azure Disk Encryption](../azure-security-disk-encryption-overview.md))
 
@@ -256,7 +256,7 @@ Większe zestawy danych można przenieść za pomocą dedykowanego, szybkiego ł
 
 W przypadku korzystania z usługi Azure Storage za pośrednictwem witryny Azure Portal wszystkie transakcje odbywają się za pośrednictwem protokołu HTTPS. [Interfejs API REST magazynu](https://msdn.microsoft.com/library/azure/dd179355.aspx) za pośrednictwem protokołu HTTPS może być również używany do współpracy z [usługą Azure Storage](https://azure.microsoft.com/services/storage/) i [Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
 
-Organizacje, które nie chronią przesyłanych danych, są bardziej podatne na [ataki typu man-in-the-Middle](https://technet.microsoft.com/library/gg195821.aspx), podsłuchiwanie i przejmowanie sesji. [](https://technet.microsoft.com/library/gg195641.aspx) Ataki te mogą być pierwszym krokiem w celu uzyskania dostępu do poufnych danych.
+Organizacje, które nie chronią przesyłanych danych, są bardziej podatne na [ataki typu man-in-the-Middle](https://technet.microsoft.com/library/gg195821.aspx), [podsłuchiwanie](https://technet.microsoft.com/library/gg195641.aspx)i przejmowanie sesji. Ataki te mogą być pierwszym krokiem w celu uzyskania dostępu do poufnych danych.
 
 Więcej informacji na temat opcji sieci VPN platformy Azure można znaleźć w artykule [Planowanie i projektowanie VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
@@ -264,7 +264,7 @@ Więcej informacji na temat opcji sieci VPN platformy Azure można znaleźć w a
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) używa zasad szyfrowania, tożsamości i autoryzacji, aby ułatwić Zabezpieczanie plików i wiadomości e-mail. Azure RMS działa na wielu urządzeniach — telefonach, tabletach i komputerach, chroniąc je zarówno w ramach organizacji, jak i poza nią. Jest to możliwe, ponieważ Azure RMS dodaje poziom ochrony, który pozostanie wraz z danymi nawet wtedy, gdy opuszcza granice organizacji.
 
-Jeśli używasz Azure RMS do ochrony plików, korzystasz z kryptografii Standard Industry z pełną obsługą standardu [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf). W przypadku korzystania z Azure RMS na potrzeby ochrony danych użytkownik ma pewność, że ochrona jest pozostawać w pliku, nawet jeśli jest ona kopiowana do magazynu nieobjętego kontrolą IT, takiego jak usługa magazynu w chmurze. Taka sama występuje w przypadku plików udostępnianych za pośrednictwem poczty e-mail, a plik jest chroniony jako załącznik do wiadomości e-mail, z instrukcjami dotyczącymi sposobu otwierania chronionego załącznika.
+Jeśli używasz Azure RMS do ochrony plików, korzystasz z kryptografii Standard Industry z pełną obsługą [standardu FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf). W przypadku korzystania z Azure RMS na potrzeby ochrony danych użytkownik ma pewność, że ochrona jest pozostawać w pliku, nawet jeśli jest ona kopiowana do magazynu nieobjętego kontrolą IT, takiego jak usługa magazynu w chmurze. Taka sama występuje w przypadku plików udostępnianych za pośrednictwem poczty e-mail, a plik jest chroniony jako załącznik do wiadomości e-mail, z instrukcjami dotyczącymi sposobu otwierania chronionego załącznika.
 Planując wdrożenie Azure RMS zalecamy wykonanie następujących czynności:
 
 - Zainstaluj [aplikację RMS sharing](https://technet.microsoft.com/library/dn339006.aspx). Ta aplikacja integruje się z aplikacjami pakietu Office, instalując dodatek dla pakietu Office, dzięki czemu użytkownicy mogą łatwo chronić pliki bezpośrednio.
@@ -309,7 +309,7 @@ Platforma Azure udostępnia również kilka łatwych w użyciu funkcji, które u
 
 - [Konfigurowanie uwierzytelniania Azure Active Directory aplikacji](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
 
-- [Zabezpieczanie ruchu do aplikacji przez włączenie Transport Layer Security (TLS/SSL) — HTTPS](../../app-service/app-service-web-tutorial-custom-ssl.md)
+- [Zabezpieczanie ruchu do aplikacji przez włączenie Transport Layer Security (TLS/SSL) — HTTPS](../../app-service/configure-ssl-bindings.md)
 
   - [Wymuś cały ruch przychodzący za pośrednictwem połączenia HTTPS](http://microsoftazurewebsitescheatsheet.info/)
 
@@ -360,7 +360,7 @@ Firma Microsoft chroniąca przed złośliwym kodem Cloud Services i Virtual Mach
 
 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) pomaga organizować replikację, pracę w trybie failover oraz odzyskiwanie obciążeń i aplikacji, dzięki czemu są one dostępne z lokalizacji dodatkowej, jeśli lokalizacja główna ulegnie awarii.
 
-## <a name="ensure-compliance-cloud-services-due-diligence-checklist"></a>Upewnij się, że: Lista kontrolna z zastarannością dla usług Cloud Services
+## <a name="ensure-compliance-cloud-services-due-diligence-checklist"></a>Zapewnianie zgodności: Lista kontrolna usługi Cloud Services z przyczyną
 
 Firma Microsoft opracowała [listę kontrolną Cloud Services z należytym](https://aka.ms/cloudchecklist.download) nadzorem, aby ułatwić organizacjom podejmowanie pomyślnych problemów, ponieważ rozważają one przechodzenie do chmury. Zapewnia ona strukturę organizacji dowolnego rozmiaru i typu — firmy prywatne i organizacje sektora publicznego, w tym rządy na wszystkich poziomach i w niezarobkach — w celu zidentyfikowania własnej wydajności, usługi, zarządzania danymi oraz celów ładu i wymagania. Dzięki temu można porównać oferty różnych dostawców usług w chmurze, co stanowi podstawę do zawarcia umowy dotyczącej usługi w chmurze.
 
@@ -388,7 +388,7 @@ Ponadto lista kontrolna:
 
 Zabezpieczenia operacyjne platformy Azure są oparte na strukturze, która obejmuje wiedzę uzyskaną za pomocą różnych funkcji, które są unikatowe dla firmy Microsoft, w tym Microsoft Security Development Lifecycle (SDL), programu Microsoft Security Response Centre i szczegółowa świadomość cyberbezpieczeństwa zagrożeń.
 
-### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
+### <a name="microsoft-azure-monitor"></a>Monitor Microsoft Azure
 
 [Azure monitor](../../azure-monitor/index.yml) to rozwiązanie do zarządzania IT w chmurze hybrydowej. Dzienniki Azure Monitor używane samodzielnie lub w celu rozbudowania istniejącego wdrożenia programu System Center oferują maksymalną elastyczność i kontrolę w zakresie zarządzania infrastrukturą opartą na chmurze.
 
@@ -438,11 +438,11 @@ Centrum zabezpieczeń automatycznie gromadzi, analizuje i integruje dane dzienni
 
 Aplikacje w chmurze są złożone z wieloma ruchomymi częściami. Monitorowanie zapewnia dane, aby upewnić się, że aplikacja będzie działać w dobrej kondycji. Pomaga również w staveniu potencjalnych problemów lub rozwiązywaniu problemów z poprzednimi.
 
-![Azure monitor](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) Ponadto możesz użyć monitorowania danych, aby uzyskać szczegółowe informacje o aplikacji. Ta wiedza może pomóc w zwiększeniu wydajności aplikacji lub utrzymaniu lub zautomatyzowaniu działań, które w przeciwnym razie wymagają ręcznej interwencji.
+![Azure Monitor](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) Dodatkowo możesz użyć monitorowania danych, aby uzyskać szczegółowe informacje o aplikacji. Ta wiedza może pomóc w zwiększeniu wydajności aplikacji lub utrzymaniu lub zautomatyzowaniu działań, które w przeciwnym razie wymagają ręcznej interwencji.
 
 Inspekcja zabezpieczeń sieci jest konieczna do wykrywania luk w zabezpieczeniach sieci i zapewnienia zgodności z modelem nadzoru obowiązującym w zakresie bezpieczeństwa i zarządzania. Widok grupy zabezpieczeń umożliwia pobranie skonfigurowanych sieciowych grup zabezpieczeń i reguł zabezpieczeń oraz obowiązujących reguł zabezpieczeń. Korzystając z listy zastosowanych reguł, można określić, które porty są otwarte i które podlegają usterce.
 
-### <a name="network-watcher"></a>Obserwator sieci
+### <a name="network-watcher"></a>Network Watcher
 
 [Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) to usługa regionalna, która umożliwia monitorowanie i diagnozowanie warunków na poziomie sieci w, do i z platformy Azure. Narzędzia do diagnostyki i wizualizacji sieci dostępne w Network Watcher pomagają zrozumieć, zdiagnozować i uzyskiwać wgląd w sieć na platformie Azure. Ta usługa obejmuje funkcję przechwytywania pakietów, następny przeskok, sprawdzenie przepływu IP, widok grupy zabezpieczeń, dzienniki przepływu sieciowej grupy zabezpieczeń. Monitorowanie poziomu scenariusza zapewnia kompleksowy wgląd w zasoby sieciowe w przeciwieństwie do monitorowania poszczególnych zasobów sieciowych.
 
@@ -478,7 +478,7 @@ Monitoruje ona:
 
 Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja internetowa, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) umożliwia współpracę z zasobami w rozwiązaniu jako Grupa.
 
-Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu.
+Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i tagowania ułatwiające zarządzanie zasobami po wdrożeniu.
 
 **Korzyści wynikające z używania Menedżer zasobów**
 

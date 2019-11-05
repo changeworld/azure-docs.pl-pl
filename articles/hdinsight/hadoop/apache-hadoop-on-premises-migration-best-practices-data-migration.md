@@ -1,5 +1,5 @@
 ---
-title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — migracja danych
+title: 'Migracja danych: Apache Hadoop lokalne do usługi Azure HDInsight'
 description: Informacje o najlepszych rozwiązaniach dotyczących migracji danych dotyczących migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 567edca422237c71f0d69c862a17fbc0d2a72795
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 30f7ae2eeb928e3f8dc71baed20d9c9b2129d1f9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735925"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494989"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania dotyczące migracji danych
 
@@ -24,11 +24,11 @@ W tym artykule przedstawiono zalecenia dotyczące migracji danych do usługi Azu
 Dostępne są dwie główne opcje migracji danych ze środowiska lokalnego do platformy Azure:
 
 1.  Transferowanie danych za pośrednictwem sieci przy użyciu protokołu TLS
-    1. Za pośrednictwem Internetu — można przesyłać dane do usługi Azure Storage za pośrednictwem zwykłego połączenia internetowego przy użyciu jednego z kilku narzędzi, takich jak: Eksplorator usługi Azure Storage, AzCopy, Azure PowerShell i interfejs wiersza polecenia platformy Azure.  Aby uzyskać więcej informacji, zobacz temat [przeniesienie danych do i z usługi Azure Storage](../../storage/common/storage-moving-data.md) .
-    2. Express Route-ExpressRoute to usługa platformy Azure, która umożliwia tworzenie prywatnych połączeń między centrami danych firmy Microsoft i infrastrukturą lokalną lub międzylokalizacyjną. Połączenia ExpressRoute nie omijają publiczny Internet i oferują wyższe bezpieczeństwa, niezawodności i szybkości pracy krótsze opóźnienia niż typowe połączenia przez Internet. Aby uzyskać więcej informacji, zobacz [Tworzenie i modyfikowanie obwodu usługi ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
-    1. Urządzenie Data Box transfer danych online — Data Box Edge i Data Box Gateway to produkty transferu danych online, które działają jako bramy magazynu sieciowego do zarządzania danymi między lokacjami i platformą Azure. Data Box Edge, lokalne urządzenie sieciowe, przesyła dane na platformę Azure i z niej oraz przetwarza dane przy użyciu funkcji obliczeniowej na brzegu sieci z obsługą sztucznej inteligencji. Data Box Gateway to urządzenie wirtualne z funkcjami bramy magazynu. Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą Azure Data Box — transfer w trybie online](https://docs.microsoft.com/azure/databox-online/).
+    1. Za pośrednictwem Internetu — można przesyłać dane do usługi Azure Storage za pośrednictwem zwykłego połączenia internetowego przy użyciu jednego z kilku narzędzi, takich jak Eksplorator usługi Azure Storage, AzCopy, Azure PowerShell i interfejs wiersza polecenia platformy Azure.  Aby uzyskać więcej informacji, zobacz temat [przeniesienie danych do i z usługi Azure Storage](../../storage/common/storage-moving-data.md) .
+    2. Express Route-ExpressRoute to usługa platformy Azure, która umożliwia tworzenie prywatnych połączeń między centrami danych firmy Microsoft i infrastrukturą lokalną lub międzylokalizacyjną. Połączenia ExpressRoute nie przechodzą przez publiczny Internet i oferują wyższe opóźnienia niż typowe połączenia przez Internet. Aby uzyskać więcej informacji, zobacz [Tworzenie i modyfikowanie obwodu usługi ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
+    1. Urządzenie Data Box transfer danych online — Data Box Edge i Data Box Gateway to produkty transferu danych online, które działają jako bramy magazynu sieciowego do zarządzania danymi między lokacjami i platformą Azure. Data Box Edge, lokalne urządzenie sieciowe, przesyła dane na i z platformy Azure i przetwarza dane przy użyciu funkcji obliczeniowej Edge z obsługą sztucznej inteligencji. Data Box Gateway to urządzenie wirtualne z funkcjami bramy magazynu. Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą Azure Data Box — transfer w trybie online](https://docs.microsoft.com/azure/databox-online/).
 1.  Dostarczanie danych w trybie offline
-    1. Urządzenie Data Box transfer danych w trybie offline — urządzenie Data Box, Data Box Disk i urządzenia Data Box Heavy umożliwiają Transferowanie dużych ilości danych na platformę Azure, gdy sieć nie jest opcją. Te urządzenia do przesyłania danych w trybie offline są dostarczane z Twojej organizacji do centrum danych platformy Azure. Korzystają one z szyfrowania AES, aby pomóc w ochronie Twoich danych podczas przesyłania, i przechodzą dokładny proces oczyszczania po przekazaniu, aby usunąć Twoje dane z urządzenia. Aby uzyskać więcej informacji na urządzenie Data Box urządzeniach transferu w trybie offline, zobacz [dokumentację Azure Data Box — transfer w trybie offline](https://docs.microsoft.com/azure/databox/). Aby uzyskać więcej informacji na temat migracji klastrów Hadoop, zobacz [używanie Azure Data Box do migrowania z lokalnego magazynu systemu plików HDFS do usługi Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
+    1. Urządzenie Data Box transfer danych w trybie offline — urządzenie Data Box, Data Box Disk i urządzenia Data Box Heavy umożliwiają Transferowanie dużych ilości danych na platformę Azure, gdy sieć nie jest opcją. Te urządzenia przesyłania danych w trybie offline są dostarczane z Twojej organizacji do centrum danych platformy Azure. Korzystają one z szyfrowania AES, aby pomóc w ochronie Twoich danych podczas przesyłania, i przechodzą dokładny proces oczyszczania po przekazaniu, aby usunąć Twoje dane z urządzenia. Aby uzyskać więcej informacji na urządzenie Data Box urządzeniach transferu w trybie offline, zobacz [dokumentację Azure Data Box — transfer w trybie offline](https://docs.microsoft.com/azure/databox/). Aby uzyskać więcej informacji na temat migracji klastrów Hadoop, zobacz [używanie Azure Data Box do migrowania z lokalnego magazynu systemu plików HDFS do usługi Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
 
 Poniższa tabela ma przybliżony czas trwania transferu danych oparty na woluminie danych i przepustowości sieci. Użyj pola danych, jeśli oczekuje się, że migracja danych zajmie więcej niż trzy tygodnie.
 
@@ -58,7 +58,7 @@ Pomocą distcp to projekt Apache, który używa zadania mapy MapReduce do transf
 Pomocą distcp próbuje utworzyć zadania mapy, tak aby każda kopia była w przybliżeniu równa tej samej liczbie bajtów. Domyślnie zadania pomocą distcp używają 20 mapowania. Użycie większej liczby odwzorowań dla pomocą distcp (z parametrem 'm w wierszu polecenia) zwiększa równoległości podczas procesu transferu danych i zmniejsza długość transferu danych. Istnieją jednak dwie rzeczy, które należy wziąć pod uwagę podczas zwiększania liczby odwzorowań:
 
 1. Najniższy poziom szczegółowości pomocą distcp jest pojedynczym plikiem. Określenie liczby odwzorowania więcej niż liczba plików źródłowych nie jest pomocna i spowoduje marnowanie dostępnych zasobów klastra.
-1. Aby określić liczbę odwzorowań, należy wziąć pod uwagę dostępną pamięć przędzy w klastrze. Każde zadanie mapy jest uruchamiane jako kontener przędzy. Przy założeniu, że żadne inne duże obciążenia nie są uruchomione w klastrze, liczba odwzorowań może być określona przez następującą formułę: m = (liczba węzłów \* procesu roboczego przędzy pamięć dla każdego węzła procesu roboczego)/rozmiar kontenera przędzy. Jeśli jednak inne aplikacje używają pamięci, należy wybrać opcję użycia tylko części pamięci PRZĘDZy dla zadań pomocą distcp.
+1. Aby określić liczbę odwzorowań, należy wziąć pod uwagę dostępną pamięć przędzy w klastrze. Każde zadanie mapy jest uruchamiane jako kontener przędzy. Przy założeniu, że w klastrze nie są uruchomione żadne inne duże obciążenia, liczba odwzorów może być określona przez następującą formułę: m = (liczba węzłów procesu roboczego \* pamięć PRZĘDZy dla każdego węzła procesu roboczego)/rozmiar kontenera PRZĘDZy. Jeśli jednak inne aplikacje używają pamięci, należy wybrać opcję użycia tylko części pamięci PRZĘDZy dla zadań pomocą distcp.
 
 ### <a name="use-more-than-one-distcp-job"></a>Użyj więcej niż jednego zadania pomocą distcp
 
@@ -70,15 +70,15 @@ Jeśli istnieje niewielka liczba dużych plików, rozważ ich rozdzielenie na fr
 
 ### <a name="use-the-strategy-command-line-parameter"></a>Użyj parametru wiersza polecenia "Strategia"
 
-Rozważ użycie `strategy = dynamic` parametru w wierszu polecenia. Wartość `strategy` domyślna parametru to, w którym `uniform size`przypadku każda kopia mapy jest w przybliżeniu równa tej samej liczbie bajtów. Gdy ten parametr zostanie zmieniony na `dynamic`, plik listy jest podzielony na kilka "fragmentów plików". Liczba plików fragmentów jest wielokrotnością liczby map. Każde zadanie mapy ma przypisany jeden z plików fragmentów. Po przetworzeniu wszystkich ścieżek w fragmencie zostaje usunięty bieżący fragment i zostanie pobrany nowy fragment. Proces jest kontynuowany, dopóki nie będzie dostępnych więcej fragmentów. To podejście "dynamiczne" pozwala szybszym zadaniom mapy na korzystanie z większej liczby ścieżek niż wolniejsze i przyspieszanie zadań pomocą distcp.
+Rozważ użycie parametru `strategy = dynamic` w wierszu polecenia. Wartość domyślna parametru `strategy` jest `uniform size`, w tym przypadku każda z nich kopiuje liczbę bajtów. Gdy ten parametr zostanie zmieniony na `dynamic`, plik listy jest podzielony na kilka "fragmentów plików". Liczba plików fragmentów jest wielokrotnością liczby map. Każde zadanie mapy ma przypisany jeden z plików fragmentów. Po przetworzeniu wszystkich ścieżek w fragmencie zostaje usunięty bieżący fragment i zostanie pobrany nowy fragment. Proces jest kontynuowany, dopóki nie będzie dostępnych więcej fragmentów. To podejście "dynamiczne" pozwala szybszym zadaniom mapy na korzystanie z większej liczby ścieżek niż wolniejsze i przyspieszanie zadań pomocą distcp.
 
 ### <a name="increase-the-number-of-threads"></a>Zwiększ liczbę wątków
 
-Sprawdź, `-numListstatusThreads` czy zwiększenie parametru zwiększa wydajność. Ten parametr określa liczbę wątków do użycia na potrzeby kompilowania listy plików, a 40 jest wartością maksymalną.
+Zobacz, czy zwiększenie `-numListstatusThreads` parametru zwiększa wydajność. Ten parametr określa liczbę wątków do użycia na potrzeby kompilowania listy plików, a 40 jest wartością maksymalną.
 
 ### <a name="use-the-output-committer-algorithm"></a>Użyj algorytmu programu przekazującego dane wyjściowe
 
-Sprawdź, czy przekazywanie parametru `-Dmapreduce.fileoutputcommitter.algorithm.version=2` poprawia wydajność pomocą distcp. Ten algorytm zatwierdzania danych wyjściowych ma optymalizacje dotyczące zapisywania plików wyjściowych w miejscu docelowym. Następujące polecenie ilustruje użycie różnych parametrów:
+Sprawdź, czy przekazywanie parametru `-Dmapreduce.fileoutputcommitter.algorithm.version=2` zwiększa wydajność pomocą distcp. Ten algorytm zatwierdzania danych wyjściowych ma optymalizacje dotyczące zapisywania plików wyjściowych w miejscu docelowym. Następujące polecenie ilustruje użycie różnych parametrów:
 
 ```bash
 hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatusThreads 30 -m 100 -strategy dynamic hdfs://nn1:8020/foo/bar wasb://<container_name>@<storage_account_name>.blob.core.windows.net/foo/

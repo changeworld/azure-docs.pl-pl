@@ -1,5 +1,5 @@
 ---
-title: Dostęp do Apache Hadoop dzienników aplikacji PRZĘDZy w usłudze HDInsight opartej na systemie Linux — Azure
+title: Dostęp do Apache Hadoop dzienników aplikacji PRZĘDZy — Azure HDInsight
 description: Dowiedz się, jak uzyskać dostęp do dzienników aplikacji PRZĘDZy w klastrze usługi HDInsight opartego na systemie Linux (Apache Hadoop) przy użyciu wiersza polecenia i przeglądarki sieci Web.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: 6eb24e85d1d7ffa4f3377d4c2fe8b168303c15f0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 263456769ab391cbc0588eed1a714a1ea5788154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091508"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494884"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Dostęp do Apache Hadoop dzienników aplikacji PRZĘDZy w usłudze HDInsight opartej na systemie Linux
 
@@ -40,7 +40,7 @@ Dzienniki aplikacji (i skojarzone z nimi dzienniki kontenerów) są krytyczne w 
 
     /app-logs/<user>/logs/<applicationId>
 
-W ścieżce `user` jest nazwą użytkownika, który uruchomił aplikację. `applicationId` Jest unikatowym identyfikatorem przypisanym do aplikacji przez przydzieloną RM.
+W ścieżce `user` to nazwa użytkownika, który uruchomił aplikację. `applicationId` jest unikatowym identyfikatorem przypisanym do aplikacji przez przydzieloną RM.
 
 Zagregowane dzienniki nie są odczytywane bezpośrednio, ponieważ są zapisywane w [TFile][T-file] [formacie binarnym][binary-format] indeksowanym przez kontener. Użyj dzienników ResourceManager lub narzędzi interfejsu wiersza polecenia, aby wyświetlić te dzienniki jako zwykły tekst dla aplikacji lub kontenerów zainteresowania.
 
@@ -53,7 +53,7 @@ Możesz wyświetlić te dzienniki jako zwykły tekst, uruchamiając jedno z nast
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-Określ > identyfikatora aplikacji, &lt;User-WHO-The-Application >, &lt;containerId >, a &lt;proces roboczy-Node-Address > informacje podczas uruchamiania tych poleceń. &lt;
+Określ > &lt;identyfikatora aplikacji, &lt;użytkowników, którzy uruchomili > aplikacji, &lt;containerId >, i &lt;informacje o >ch roboczych-Node-Address, gdy uruchamiają te polecenia.
 
 ## <a name="yarn-resourcemanager-ui"></a>Interfejs użytkownika narzędzia ResourceManager
 

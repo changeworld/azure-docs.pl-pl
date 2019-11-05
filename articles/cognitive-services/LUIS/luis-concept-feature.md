@@ -9,33 +9,53 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: dab4b4c6f41a95623a40e5d3fd859f9613afac27
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 08f78e4945b612a92d372c832490c380d3749811
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949595"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487520"
 ---
-# <a name="phrase-list-features-in-your-luis-app"></a>Funkcje list fraz w aplikacji LUIS
+# <a name="machine-learned-features"></a>Funkcje uczenia maszynowego 
 
-W uczeniu maszynowym *Funkcja* jest odróżnianą cechą lub atrybutem danych, które są przestrzegane przez system. 
+W uczeniu maszynowym *Funkcja* jest odróżnianą cechą lub atrybutem danych, które system obserwuje &. W Language Understanding (LUIS) funkcja opisuje i wyjaśnia, co jest istotne dla Twoich intencji i jednostek.
 
-Dodaj funkcje do modelu języka, aby przedstawić wskazówki dotyczące sposobu rozpoznawania danych wejściowych, które mają być oznaczone etykietami lub klasyfikacją. Funkcja LUIS rozpoznaje zarówno intencje, jak i jednostki, ale funkcje nie są intencjami lub obiektami. Zamiast tego funkcje mogą zawierać przykłady powiązanych warunków.  
+## <a name="features-in-language-understanding"></a>Funkcje w Language Understanding
 
-## <a name="what-is-a-phrase-list-feature"></a>Co to jest funkcja listy fraz?
-Lista fraz jest listą wyrazów lub fraz, które są istotne dla aplikacji, tak samo jak w przypadku innych wyrazów w wyrażenia długości. Lista fraz dodaje do słownictwa domeny aplikacji jako dodatkowy sygnał LUIS o tych słowach. LUIS informacje o jednym z nich są również automatycznie stosowane do innych. Ta lista nie jest [jednostką](luis-concept-entity-types.md#types-of-entities) zamkniętej listy z dokładnymi dopasowaniami do tekstu.
+Funkcje, znane także jako deskryptory, opisują wskazówki ułatwiające Language Understanding identyfikowanie przykładu wyrażenia długości. Funkcje obejmują: 
 
-Listy fraz nie pomagają w odniesieniu do rdzeni, dlatego należy dodać przykłady wypowiedź, które używają różnych rdzeni dla wszystkich ważnych wyrazów i fraz.
+* Lista fraz jako funkcja dla intencji lub jednostek
+* Jednostki jako funkcje dla intencji lub jednostek
 
-## <a name="phrase-lists-help-all-models"></a>Lista fraz ułatwia wszystkie modele
+Funkcje powinny być traktowane jako niezbędna część schematu do dekompozycji modelu. 
 
-Listy fraz nie są połączone z konkretnym zamiarem lub jednostką, ale są dodawane jako znaczący wzrost do wszystkich intencji i jednostek. Jego celem jest poprawa wykrywania intencji i klasyfikacji jednostek.
+## <a name="what-is-a-phrase-list"></a>Co to jest lista fraz
 
-## <a name="how-to-use-phrase-lists"></a>Jak używać list fraz
+Lista fraz jest listą wyrazów, fraz, cyfr lub innych znaków, które ułatwiają zidentyfikowanie koncepcji, którą próbujesz zidentyfikować. Na liście nie jest rozróżniana wielkość liter. 
 
-[Utwórz listę fraz](luis-how-to-add-features.md) , gdy aplikacja zawiera wyrazy lub frazy, które są ważne dla aplikacji, takie jak:
+## <a name="when-to-use-a-phrase-list"></a>Kiedy używać listy fraz
+
+Za pomocą listy fraz LUIS traktuje kontekst i generalizacje w celu zidentyfikowania elementów, które są podobne do, ale nie dokładnego dopasowania tekstu. Jeśli potrzebujesz aplikacji LUIS, aby móc uogólniać i identyfikować nowe elementy, Użyj listy fraz. 
+
+Aby można było rozpoznać nowe wystąpienia, takie jak harmonogram spotkań, który powinien rozpoznawać nazwy nowych kontaktów lub aplikację spisu, która powinna rozpoznawać nowe produkty, Zacznij od jednostki, na której nauczy się Uczenie maszynowe. Następnie utwórz listę zwrotów ułatwiającą LUIS znalezienie wyrazów o podobnym znaczeniu. W tej frazie przedstawiono wskazówki LUIS do rozpoznawania przykładów poprzez dodanie dodatkowego znaczenia do wartości tych wyrazów. 
+
+Listy fraz są podobne do słownictwa specyficznego dla domeny, który ułatwia zwiększenie jakości wiedzy o intencjach i jednostkach. 
+
+## <a name="considerations-when-using-a-phrase-list"></a>Zagadnienia dotyczące korzystania z listy fraz
+
+Lista fraz jest domyślnie stosowana do wszystkich modeli w aplikacji. To działanie będzie działało dla list fraz, które mogą przekroczyć wszystkie intencje i jednostki. W celu odtworzenia listy wyrazów należy zastosować tylko do modeli, do których odnosi się. 
+
+Jeśli utworzysz listę fraz (domyślnie utworzoną globalnie), później Zastosuj ją jako deskryptor (funkcję) do określonego modelu, zostanie ona usunięta z innych modeli. To usunięcie dodaje istotność do listy fraz dla modelu, do którego jest stosowana, pomagając poprawić dokładność zapewnianą przez ten model. 
+
+Flaga `enabledForAllModels` kontroluje ten zakres modelu w interfejsie API. 
+
+<a name="how-to-use-phrase-lists"></a>
+
+### <a name="how-to-use-a-phrase-list"></a>Jak używać listy fraz
+
+[Utwórz listę list fraz](luis-how-to-add-features.md) , gdy zamiara lub jednostka ma słowa lub frazy, które są ważne, takie jak:
 
 * warunki branżowe
 * żargonu
@@ -44,46 +64,27 @@ Listy fraz nie są połączone z konkretnym zamiarem lub jednostką, ale są dod
 * Język pochodzący z innego języka, ale często używany w aplikacji
 * kluczowe słowa i frazy w przykładowym wyrażenia długości
 
-Po wprowadzeniu kilku wyrazów lub fraz Użyj opcji **zalecane** , aby znaleźć powiązane wartości. Przejrzyj powiązane wartości przed dodaniem ich do wartości listy fraz.
-
-Lista fraz jest dla wartości, które są synonimami. Na przykład jeśli chcesz, aby znaleziono wszystkie treści wody i przykład wyrażenia długości: 
-
-* Jakie miasta zbliżają się do wspaniałych jezior? 
-* Jakie są działania dotyczące dróg i Lake Havasu?
-* Gdzie jest początek i koniec Nile? 
-
-Każdy wypowiedź należy określić dla celów i jednostek, niezależnie od treści wody: 
-
-* Jakie miasta są bliskie [bodyOfWater]?
-* Jakie przebiegi drogowe zawiera [bodyOfWater]?
-* Gdzie jest początek i koniec [bodyOfWater]? 
-
-Ponieważ słowa lub frazy dla treści wody są synonimami i mogą być używane zamiennie w wyrażenia długości. 
+**Nie** należy dodawać każdego wyrazu lub frazy. Zamiast tego Dodaj kilka wyrazów lub fraz jednocześnie, a następnie ponów próbę i Opublikuj. Gdy lista rośnie wraz z upływem czasu, niektóre terminy mogą zawierać wiele form (synonimy). Podziel je na inną listę. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Listy fraz pomagają identyfikować proste, wymienne jednostki
-Wymienne listy fraz to dobry sposób na dostosowanie wydajności aplikacji LUIS. Jeśli aplikacja ma problemy z przewidywaniami wyrażenia długości do poprawnego zamiaru lub rozpoznawania jednostek, należy zastanowić się, czy wyrażenia długości zawierają nietypowe słowa lub wyrazy, które mogą być niejednoznaczne w znaczeniu. Słowa te są dobrymi kandydatami do uwzględnienia na liście fraz.
+## <a name="when-to-use-an-entity-as-a-feature"></a>Kiedy używać jednostki jako funkcji 
 
-## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Listy fraz pomagają identyfikować intencje przez lepsze zrozumienie kontekstu
-Lista fraz nie jest instrukcją LUIS, aby wykonać ścisłe dopasowanie lub zawsze etykieta wszystkie warunki na liście fraz dokładnie takie same. Jest po prostu wskazówką. Na przykład można mieć listę wyrazów, która wskazuje, że nazwy "Patti" i "Selma" są takie same, ale LUIS nadal mogą używać informacji kontekstowych do rozpoznawania, że oznaczają coś innego w "rezerwacji dla 2 na obiadie przez Patti Diner" i "Znajdź mnie Wskazówki dotyczące Selma, Georgia ". 
+Jednostkę można dodać jako funkcję w celu zamiaru lub poziomu jednostki. 
 
-Dodawanie listy fraz jest alternatywą dla dodawania więcej przykładowych wyrażenia długości do zamiaru. 
+### <a name="entity-as-a-feature-to-an-intent"></a>Jednostka jako funkcja do celu
 
-## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Kiedy używać list fraz w stosunku do jednostek listy
-Mimo że zarówno Lista wyrazów, jak i [jednostki listy](reference-entity-list.md) mogą mieć wpływ wyrażenia długości na wszystkie intencje, każda robi się to w inny sposób. Użyj listy frazy, aby wpływać na ocenę celu. Użyj jednostki listy, aby wpływać na wyodrębnianie jednostek pod kątem dokładnego dopasowania tekstu. 
+Dodaj jednostkę jako deskryptor (funkcję) do celu, gdy wykrycie tego obiektu jest istotne dla zamiaru.
 
-### <a name="use-a-phrase-list"></a>Korzystanie z listy fraz
-Za pomocą listy wyrazów LUIS może nadal korzystać z konta i uogólniać, aby identyfikować elementy, które są podobne do, ale nie dokładne dopasowanie jako elementy na liście. Jeśli potrzebujesz aplikacji LUIS, aby móc uogólniać i identyfikować nowe elementy w kategorii, Użyj listy fraz. 
+Na przykład, jeśli zachodzi taka potrzeba dla rezerwacji, a jednostka jest informacji o biletach (takich jak liczba miejsc, pochodzenia i miejsca przeznaczenia), znalezienie jednostki informacji o biletach powinno spowodować dodanie wagi do przewidywania zamiaru lotów do książki. 
 
-Aby można było rozpoznać nowe wystąpienia jednostki, takie jak harmonogram spotkań, który powinien rozpoznawać nazwy nowych kontaktów lub aplikację spisu, która powinna rozpoznawać nowe produkty, należy użyć innego typu jednostki, na którym jest obiektem prostym. Następnie utwórz listę wyrazów i frazy, które ułatwiają LUIS znalezienie innych wyrazów podobnych do jednostki. Ta lista przedstawia LUIS do rozpoznawania przykładów jednostki przez dodanie dodatkowego znaczenia do wartości tych wyrazów. 
+### <a name="entity-as-a-feature-to-another-entity"></a>Jednostka jako funkcja innej jednostki
 
-Listy fraz są podobne do słownictwa specyficznego dla domeny, który ułatwia zwiększenie jakości wiedzy o intencjach i jednostkach. Typowym użyciem listy fraz są poprawne rzeczowniki, takie jak nazwy miast. Nazwa miasta może zawierać kilka wyrazów, w tym łączniki lub apostrofy.
- 
-### <a name="dont-use-a-phrase-list"></a>Nie używaj listy fraz 
-Jednostka listy jawnie definiuje każdą wartość, którą może wykonać jednostka, i identyfikuje tylko te wartości, które dokładnie pasują do siebie. Jednostka listy może być odpowiednia dla aplikacji, w której są znane wszystkie wystąpienia jednostki i nie zmieniają się często. Przykłady to elementy żywności w menu restauracji, które rzadko zmieniają się. Jeśli potrzebujesz dokładnego dopasowania tekstu do jednostki, nie używaj listy fraz. 
+Jednostkę (A) należy dodać jako funkcję do innej jednostki (B), gdy wykrycie tej jednostki (A) jest znaczące dla (B).
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+Na przykład jeśli wykryto jednostkę ulica (A), a następnie znalezienie adresu ulicy (A) powoduje dodanie wagi do prognozowania jednostki adres wysyłkowy (B). 
+
+## <a name="best-practices"></a>Najlepsze praktyki
 Poznaj [najlepsze rozwiązania](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Następne kroki

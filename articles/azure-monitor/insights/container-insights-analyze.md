@@ -1,27 +1,28 @@
 ---
-title: Monitorowanie wydajności klastra AKS za pomocą Azure Monitor dla kontenerów | Microsoft Docs
+title: Monitorowanie wydajności klastra Kubernetes za pomocą Azure Monitor dla kontenerów | Microsoft Docs
 description: W tym artykule opisano, jak można wyświetlać i analizować dane dotyczące wydajności i dzienników za pomocą Azure Monitor dla kontenerów.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 09/17/2019
-ms.openlocfilehash: a65951a90767acce5570244af8a9250845e12def
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: f1a5d0d98a442fab80744636eea05d4c2d26f919
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554246"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478927"
 ---
-# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Informacje o wydajności klastra AKS za pomocą Azure Monitor dla kontenerów
-Za pomocą Azure Monitor dla kontenerów można użyć wykresów wydajności i stanu kondycji do monitorowania obciążenia klastrów usługi Azure Kubernetes Service (AKS) z dwóch perspektyw. Można monitorować bezpośrednio z klastra AKS lub monitorować wszystkie klastry AKS w ramach subskrypcji z Azure Monitor. Wyświetlanie Azure Container Instances jest również możliwe podczas monitorowania określonego klastra AKS.
+# <a name="understand-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Informacje o wydajności klastra Kubernetes za pomocą Azure Monitor dla kontenerów
+
+Za pomocą Azure Monitor dla kontenerów można użyć wykresów wydajności i stanu kondycji do monitorowania obciążenia klastrów Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS), Azure Stack lub innych środowiskach z dwóch perspektyw. Można monitorować bezpośrednio z klastra lub wyświetlać wszystkie klastry w ramach subskrypcji z Azure Monitor. Przeglądanie Azure Container Instances jest również możliwe podczas monitorowania określonego klastra AKS.
 
 Ten artykuł pomaga zrozumieć dwie perspektywy i jak Azure Monitor pomaga szybko ocenić, zbadać i rozwiązać wykryte problemy.
 
 Informacje o sposobie włączania Azure Monitor dla kontenerów znajdują się w sekcji Dołączanie [Azure monitor dla kontenerów](container-insights-onboard.md).
 
-Azure Monitor zawiera widok z obsługą wielu klastrów, który pokazuje stan kondycji wszystkich monitorowanych klastrów AKS z systemem Linux i Windows Server 2019 wdrożonych w grupach zasobów w Twoich subskrypcjach. Przedstawia wykryte klastry AKS, które nie są monitorowane przez rozwiązanie. Możesz natychmiast zrozumieć kondycję klastra, a w tym miejscu możesz przejść do szczegółów na stronie wydajność węzła i kontrolera lub przejść do sekcji wykresy wydajności dla klastra. W przypadku klastrów AKS, które zostały odnalezione i zidentyfikowane jako niemonitorowane, można je włączyć w dowolnym momencie. 
+Azure Monitor zawiera widok z obsługą wielu klastrów, który pokazuje stan kondycji wszystkich monitorowanych klastrów Kubernetes z systemem Linux i Windows Server 2019 wdrożonych w grupach zasobów w Twoich subskrypcjach. Pokazuje ona klastry odnalezione we wszystkich środowiskach, które nie są monitorowane przez rozwiązanie. Możesz natychmiast zrozumieć kondycję klastra, a w tym miejscu możesz przejść do szczegółów na stronie wydajność węzła i kontrolera lub przejść do sekcji wykresy wydajności dla klastra. W przypadku klastrów AKS, które zostały odnalezione i zidentyfikowane jako niemonitorowane, można je włączyć w dowolnym momencie. 
 
 Główne różnice w monitorowaniu klastra z systemem Windows Server z Azure Monitor dla kontenerów w porównaniu z klastrem systemu Linux są następujące:
 
@@ -33,13 +34,24 @@ Główne różnice w monitorowaniu klastra z systemem Windows Server z Azure Mon
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com). 
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Widok z obsługą wiele klastrów z Azure Monitor
 
-Aby wyświetlić stan kondycji wszystkich wdrożonych klastrów AKS, wybierz pozycję **monitor** w lewym okienku w Azure Portal. W sekcji **szczegółowe informacje** wybierz pozycję **kontenery**. 
+Aby wyświetlić stan kondycji wszystkich wdrożonych klastrów Kubernetes, wybierz pozycję **monitor** w lewym okienku w Azure Portal. W sekcji **szczegółowe informacje** wybierz pozycję **kontenery**. 
 
 ![Przykład Azure Monitor pulpitu nawigacyjnego z obsługą kilku klastrów](./media/container-insights-analyze/azmon-containers-multiview.png)
+
+Można zakres wyników przedstawionych w siatce, aby pokazać klastry, które są:
+
+* Klastry **Azure** -AKS i AKS-Engine hostowane w usłudze Azure Kubernetes Service
+* **Azure Stack (wersja zapoznawcza)** — klastry aparatu AKS hostowane na Azure Stack
+* **Platformy inne niż Azure (wersja zapoznawcza)** — klastry Kubernetes hostowane lokalnie
+* **Wszystkie** — Wyświetl wszystkie klastry Kubernetes hostowane na platformie Azure, Azure Stack i środowiskach lokalnych, które są dołączane do Azure monitor dla kontenerów
+
+Aby wyświetlić klastry z określonego środowiska, wybierz je ze **środowisk** pill w lewym górnym rogu strony.
+
+![Przykład pill środowiska](./media/container-insights-analyze/clusters-multiview-environment-pill.png)
 
 Na karcie **monitorowane klastry** przedstawiono następujące informacje:
 
@@ -69,38 +81,41 @@ W poniższej tabeli przedstawiono podział obliczeń kontrolujących Stany kondy
 |**Użytkownik pod**| | |  
 | |W dobrej kondycji |100% |  
 | |Ostrzeżenie |90 – 99% |  
-| |Krytyczna |< 90% |  
+| |Krytyczny |< 90% |  
 | |Nieznane |Jeśli nie zgłoszono w ciągu ostatnich 30 minut |  
 |**System pod**| | |  
 | |W dobrej kondycji |100% |
-| |Ostrzeżenie |ND |
-| |Krytyczna |< 100% |
+| |Ostrzeżenie |Nie dotyczy |
+| |Krytyczny |< 100% |
 | |Nieznane |Jeśli nie zgłoszono w ciągu ostatnich 30 minut |
-|**Node** | | |
+|**Węzeł** | | |
 | |W dobrej kondycji |> 85% |
 | |Ostrzeżenie |60 – 84% |
-| |Krytyczna |< 60% |
+| |Krytyczny |< 60% |
 | |Nieznane |Jeśli nie zgłoszono w ciągu ostatnich 30 minut |
 
-Z listy klastrów możesz przejść do szczegółów na stronie **klaster** , wybierając nazwę klastra. Następnie przejdź do strony wydajność **węzłów** , wybierając pakiet zbiorczy węzłów w kolumnie **węzły** dla danego klastra. Możesz też przejść do szczegółów na stronie wydajność **kontrolerów** , wybierając zestawienie z kolumną **zasobników użytkownika** lub **system** .  
+Z listy klastrów możesz przejść do szczegółów na stronie **klaster** , wybierając nazwę klastra. Następnie przejdź do strony wydajność **węzłów** , wybierając pakiet zbiorczy węzłów w kolumnie **węzły** dla danego klastra. Możesz też przejść do szczegółów na stronie wydajność **kontrolerów** , wybierając zestawienie z kolumną **zasobników użytkownika** lub **system** .
 
-## <a name="view-performance-directly-from-an-aks-cluster"></a>Wyświetlanie wydajności bezpośrednio z klastra AKS
+## <a name="view-performance-directly-from-a-cluster"></a>Wyświetlanie wydajności bezpośrednio z klastra
 
-Dostęp do Azure Monitor dla kontenerów jest dostępny bezpośrednio w klastrze AKS, wybierając pozycję **szczegółowe** dane w okienku po lewej stronie. Informacje o klastrze AKS są podzielone na cztery perspektywy:
+Dostęp do Azure Monitor dla kontenerów jest dostępny bezpośrednio w klastrze AKS przez wybranie usługi **insights** > **cluster** w okienku po lewej stronie lub po wybraniu klastra z widoku wiele klastrów. Informacje o klastrze są zorganizowane w czterech perspektyw:
 
 - Klaster
 - Węzły 
 - Rejestrowanie 
-- Containers
+- Kontenery
 
-Zostanie otwarta strona domyślna, gdy wybierzesz pozycję **szczegółowe informacje**  > **klastrze**. Cztery liniowe wykresy wydajnościowe przedstawiają kluczowe metryki wydajności klastra. 
+>[!NOTE]
+>Środowisko opisane w dalszej części tego artykułu dotyczy również wyświetlania stanu wydajności i kondycji klastrów Kubernetes hostowanych w Azure Stack lub innym środowisku w przypadku wybrania z widoku wiele klastrów. 
+
+Zostanie otwarta strona domyślna i zostaną wyświetlone cztery liniowe wykresy wydajności, które pokazują kluczowe metryki wydajności klastra. 
 
 ![Przykładowe wykresy wydajności na karcie klaster](./media/container-insights-analyze/containers-cluster-perfview.png)
 
 Na wykresach wydajności są wyświetlane cztery metryki wydajności:
 
-- **Użycie procesora CPU przez węzeł &nbsp; %** : zagregowana perspektywa użycia procesora CPU dla całego klastra. Aby przefiltrować wyniki dla zakresu czasu, wybierz opcję **średnie**, **minimum**, **pięćdziesiąt**, **90**, **używany 95.** lub **Max** w selektorze percentyly powyżej wykresu. Filtry mogą być używane pojedynczo lub łącznie. 
-- **Użycie pamięci przez węzeł &nbsp; %** : zagregowana perspektywa wykorzystania pamięci dla całego klastra. Aby przefiltrować wyniki dla zakresu czasu, wybierz opcję **średnie**, **minimum**, **pięćdziesiąt**, **90**, **używany 95.** lub **Max** w selektorze percentyly powyżej wykresu. Filtry mogą być używane pojedynczo lub łącznie. 
+- **Użycie procesora CPU przez węzeł&nbsp;%** : zagregowana perspektywa użycia procesora CPU dla całego klastra. Aby przefiltrować wyniki dla zakresu czasu, wybierz opcję **średnie**, **minimum**, **pięćdziesiąt**, **90**, **używany 95.** lub **Max** w selektorze percentyly powyżej wykresu. Filtry mogą być używane pojedynczo lub łącznie. 
+- **Użycie pamięci przez węzeł&nbsp;%** : zagregowana perspektywa wykorzystania pamięci dla całego klastra. Aby przefiltrować wyniki dla zakresu czasu, wybierz opcję **średnie**, **minimum**, **pięćdziesiąt**, **90**, **używany 95.** lub **Max** w selektorze percentyly powyżej wykresu. Filtry mogą być używane pojedynczo lub łącznie. 
 - **Liczba węzłów**: liczba węzłów i stan z Kubernetes. Stanem reprezentowanego węzła klastra są łącznie, gotowe i niegotowe. Można je filtrować pojedynczo lub łączyć w selektorze powyżej wykresu. 
 - **Liczba aktywnych pod**: liczba i stan z Kubernetes. Stany reprezentowanego obszaru są całkowite, oczekujące, uruchomione, nieznane, zakończone powodzeniem lub niepowodzeniem. Można je filtrować pojedynczo lub łączyć w selektorze powyżej wykresu. 
 
@@ -136,13 +151,9 @@ Można [podzielić](../platform/metrics-charts.md#apply-splitting-to-a-chart) me
 
 Po przełączeniu do kart **węzły**, **Kontrolery**i **kontenery** okienko właściwości zostanie automatycznie wyświetlone po prawej stronie. Wyświetla właściwości wybranego elementu, w tym etykiety zdefiniowane do organizowania obiektów Kubernetes. Po wybraniu węzła systemu Linux w sekcji **pojemność dysku lokalnego** wyświetlana jest również ilość dostępnego miejsca na dysku oraz wartość procentowa użyta dla każdego dysku prezentowanego w węźle. Wybierz łącze **>>** w okienku, aby wyświetlić lub ukryć okienko.
 
-![Przykładowe okienka właściwości perspektyw Kubernetes](./media/container-insights-analyze/perspectives-preview-pane-01.png)
-
-Po rozwinięciu obiektów w hierarchii okienko właściwości jest aktualizowane w zależności od wybranego obiektu. W okienku można także wyświetlać zdarzenia Kubernetes ze wstępnie zdefiniowanymi przeszukiwaniem dzienników, wybierając łącze **Wyświetl dzienniki zdarzeń Kubernetes** w górnej części okienka. Aby uzyskać więcej informacji o sposobie wyświetlania danych dziennika Kubernetes, zobacz [dzienniki wyszukiwania do analizowania danych](container-insights-log-search.md). Podczas przeglądania zasobów klastra można zobaczyć dzienniki kontenerów i zdarzenia w czasie rzeczywistym. Aby uzyskać więcej informacji na temat tej funkcji oraz konfiguracji wymaganej do udzielenia i kontroli dostępu, zobacz [Wyświetlanie dzienników w czasie rzeczywistym za pomocą Azure monitor dla kontenerów](container-insights-live-logs.md). 
+Po rozwinięciu obiektów w hierarchii okienko właściwości jest aktualizowane w zależności od wybranego obiektu. W okienku można także wyświetlać dzienniki kontenerów Kubernetes (stdout/stderr), zdarzenia i metryki pod, wybierając link **Wyświetl dane na żywo (wersja zapoznawcza)** w górnej części okienka. Aby uzyskać więcej informacji na temat konfiguracji wymaganej do udzielenia i kontroli dostępu do wyświetlania tych danych, zobacz [Konfigurowanie danych na żywo (wersja zapoznawcza)](container-insights-livedata-setup.md). Podczas przeglądania zasobów klastra można zobaczyć te dane z kontenera w czasie rzeczywistym. Aby uzyskać więcej informacji na temat tej funkcji, zobacz [jak wyświetlać dzienniki Kubernetes, zdarzenia i metryki pod w czasie rzeczywistym](container-insights-livedata-overview.md). Aby wyświetlić dane dziennika Kubernetes przechowywane w obszarze roboczym w oparciu o wstępnie zdefiniowane przeszukiwania dzienników, wybierz opcję **Wyświetl dzienniki kontenerów** z listy rozwijanej **Widok w analizie** . Aby uzyskać dodatkowe informacje na temat tego tematu, zobacz [dzienniki wyszukiwania w celu przeanalizowania danych](container-insights-log-search.md#search-logs-to-analyze-data).
 
 Użyj opcji **+ Dodaj filtr** w górnej części strony, aby odfiltrować wyniki widoku według **usługi**, **węzła**, **przestrzeni nazw**lub **puli węzłów**. Po wybraniu zakresu filtru wybierz jedną z wartości wyświetlanych w polu **Wybierz wartości** . Po skonfigurowaniu filtru jest on stosowany globalnie podczas wyświetlania dowolnej perspektywy klastra AKS. Formuła obsługuje tylko znak równości. Możesz dodać dodatkowe filtry od pierwszego z nich, aby jeszcze bardziej zawęzić wyniki. Na przykład, jeśli określisz **węzeł**Filtruj według, możesz wybrać tylko **usługę** lub **przestrzeń nazw** dla drugiego filtru.
-
-![Przykład użycia filtru, aby zawęzić wyniki](./media/container-insights-analyze/add-filter-option-01.png)
 
 Określanie filtru na jednej karcie jest kontynuowane po wybraniu innej. Jest ona usuwana po wybraniu symbolu **x** obok określonego filtru. 
 
@@ -162,7 +173,7 @@ Z rozwiniętego węzła możesz przejść do szczegółów z lub kontenera, któ
  
 ![Przykład przechodzenia do szczegółów z węzła do kontrolera w widoku wydajności](./media/container-insights-analyze/drill-down-node-controller.png)
 
-Wybierz pozycję Kontrolery lub kontenery w górnej części strony, aby przejrzeć stan i wykorzystanie zasobów dla tych obiektów. Aby przejrzeć użycie pamięci, na liście rozwijanej **Metryka** wybierz pozycję **pamięć RSS** lub **zestaw roboczy pamięci**. **Pamięć RSS** jest obsługiwana tylko dla Kubernetes w wersji 1,8 lub nowszej. W przeciwnym razie można wyświetlić wartości dla **minimalnej &nbsp; %** jako *NaN &nbsp; %* , która jest liczbową wartością typu danych reprezentującą niezdefiniowaną lub niereprezentującą wartość.
+Wybierz pozycję Kontrolery lub kontenery w górnej części strony, aby przejrzeć stan i wykorzystanie zasobów dla tych obiektów. Aby przejrzeć użycie pamięci, na liście rozwijanej **Metryka** wybierz pozycję **pamięć RSS** lub **zestaw roboczy pamięci**. **Pamięć RSS** jest obsługiwana tylko dla Kubernetes w wersji 1,8 lub nowszej. W przeciwnym razie można wyświetlić wartości dla **minimalnej&nbsp;%** jako *NaN&nbsp;%* , która jest liczbową wartością typu danych reprezentującą niezdefiniowaną lub niereprezentującą wartość.
 
 ![Widok wydajności węzłów kontenera](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -192,12 +203,12 @@ Informacje przedstawione podczas wyświetlania karty **węzły** są opisane w p
 |--------|-------------|
 | Nazwa | Nazwa hosta. |
 | Stan | Widok Kubernetes stanu węzła. |
-| Minimalna &nbsp;%, średnia &nbsp;%, pięćdziesiąt &nbsp;%, &nbsp; 90%, używany 95. &nbsp;%, maks. &nbsp; %  | Średni procent węzła w oparciu o percentyl w wybranym czasie. |
+| Minimalna&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;%  | Średni procent węzła w oparciu o percentyl w wybranym czasie. |
 | Minimum, AVG, pięćdziesiąt, 90, używany 95., Max | Średnia wartość rzeczywista węzłów oparta na percentylu podczas wybranego czasu trwania. Średnia wartość jest mierzona na podstawie limitu procesora CPU/pamięci ustawionego dla węzła. W przypadku zasobników i kontenerów jest to średnia wartość raportowana przez hosta. |
-| Containers | Liczba kontenerów. |
+| Kontenery | Liczba kontenerów. |
 | Czas | Przedstawia czas od momentu uruchomienia lub ponownego uruchomienia węzła. |
 | Kontroler | Tylko dla kontenerów i zasobników. Pokazuje, który kontroler znajduje się w. Nie wszystkie zasobniki znajdują się w kontrolerze, dlatego niektóre mogą wyświetlać **N/a**. | 
-| Minimum trendu &nbsp;%, średnia &nbsp;%, pięćdziesiąt &nbsp;%, &nbsp; 90%, używany 95. &nbsp;%, maks. &nbsp; % | Trend wykresu słupkowego reprezentuje procentową metrykę percentylości kontrolera. |
+| Minimum trendu&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;% | Trend wykresu słupkowego reprezentuje procentową metrykę percentylości kontrolera. |
 
 W selektorze wybierz pozycję **Kontrolery**.
 
@@ -205,7 +216,7 @@ W selektorze wybierz pozycję **Kontrolery**.
 
 W tym miejscu można wyświetlić kondycję wydajności kontrolerów, Container Instances kontrolery węzłów wirtualnych lub zasobniki wirtualnego węzła nie są połączone z kontrolerem.
 
-![Widok wydajności kontrolerów > \<Name](./media/container-insights-analyze/containers-controllers-view.png)
+![Widok wydajności \<nazw kontrolerów >](./media/container-insights-analyze/containers-controllers-view.png)
 
 Hierarchia wierszy rozpoczyna się od kontrolera. Po rozszerzeniu kontrolera należy wyświetlić jeden lub więcej zasobników. Rozwiń węzeł pod, a w ostatnim wierszu jest wyświetlany kontener pogrupowany pod względem elementu. Na rozszerzonym kontrolerze możesz przejść do węzła, w którym jest uruchomiona, aby wyświetlić dane wydajności odfiltrowane dla tego węzła. Container Instances z kontrolerami nie połączono z kontrolerem na liście poniżej.
 
@@ -221,13 +232,13 @@ Informacje wyświetlane podczas przeglądania kontrolerów są opisane w poniżs
 |--------|-------------|
 | Nazwa | Nazwa kontrolera.|
 | Stan | Stan zbiorczy kontenerów po zakończeniu działania z stanem takim jak *OK*, *przerwany*, *Niepowodzenie*, *zatrzymano*lub *wstrzymano*. Jeśli kontener jest uruchomiony, ale stan nie był prawidłowo wyświetlany lub nie został pobrany przez agenta i nie odpowiedział przez dłużej niż 30 minut, stan jest *nieznany*. Dodatkowe szczegóły ikony stanu znajdują się w poniższej tabeli.|
-| Minimalna &nbsp;%, średnia &nbsp;%, pięćdziesiąt &nbsp;%, &nbsp; 90%, używany 95. &nbsp;%, maks. &nbsp; %| Średnia Zbiorcza średniej wartości procentowej każdej jednostki dla wybranej metryki i percentylu. |
+| Minimalna&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;%| Średnia Zbiorcza średniej wartości procentowej każdej jednostki dla wybranej metryki i percentylu. |
 | Minimum, AVG, pięćdziesiąt, 90, używany 95., Max  | Rzutowanie średniej millicore procesora CPU lub wydajności pamięci kontenera dla wybranego percentylu. Średnia wartość jest mierzona na podstawie limitu procesora CPU/pamięci ustawionego dla elementu. |
-| Containers | Łączna liczba kontenerów dla kontrolera lub pod. |
+| Kontenery | Łączna liczba kontenerów dla kontrolera lub pod. |
 | Uruchamiania | Zestawienie liczby ponownych uruchomień z kontenerów. |
 | Czas | Przedstawia czas od momentu rozpoczęcia kontenera. |
 | Węzeł | Tylko dla kontenerów i zasobników. Pokazuje, który kontroler znajduje się w. | 
-| Minimum trendu &nbsp;%, średnia &nbsp;%, pięćdziesiąt &nbsp;%, &nbsp; 90%, używany 95. &nbsp;%, maks. &nbsp; % | Trend wykresu słupkowego przedstawia średnią metrykę percentylu kontrolera. |
+| Minimum trendu&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;% | Trend wykresu słupkowego przedstawia średnią metrykę percentylu kontrolera. |
 
 Ikony w polu Stan wskazują stan online kontenerów.
  
@@ -246,7 +257,7 @@ W selektorze wybierz pozycję **Containers (kontenery**).
 
 W tym miejscu można wyświetlić kondycję wydajności kontenerów platformy Azure Kubernetes i Azure Container Instances. 
 
-![Widok wydajności kontenerów > \<Name](./media/container-insights-analyze/containers-containers-view.png)
+![\<nazwa > Widok wydajności kontenerów](./media/container-insights-analyze/containers-containers-view.png)
 
 Z kontenera można przejść do szczegółów na węzeł lub, aby wyświetlić dane wydajności odfiltrowane dla tego obiektu. Wybierz wartość w kolumnie **pod** lub **węzeł** dla określonego kontenera.
 
@@ -258,13 +269,13 @@ Informacje wyświetlane podczas wyświetlania kontenerów są opisane w poniższ
 |--------|-------------|
 | Nazwa | Nazwa kontrolera.|
 | Stan | Stan kontenerów (jeśli istnieją). Dodatkowe szczegóły ikony stanu znajdują się w następnej tabeli.|
-| Minimalna &nbsp;%, średnia &nbsp;%, pięćdziesiąt &nbsp;%, &nbsp; 90%, używany 95. &nbsp;%, maks. &nbsp; % | Pakiet zbiorczy średniej wartości procentowej każdej jednostki dla wybranej metryki i percentylu. |
+| Minimalna&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;% | Pakiet zbiorczy średniej wartości procentowej każdej jednostki dla wybranej metryki i percentylu. |
 | Minimum, AVG, pięćdziesiąt, 90, używany 95., Max | Rzutowanie średniej millicore procesora CPU lub wydajności pamięci kontenera dla wybranego percentylu. Średnia wartość jest mierzona na podstawie limitu procesora CPU/pamięci ustawionego dla elementu. |
 | Pod | Kontener, w którym znajduje się pod.| 
 | Węzeł |  Węzeł, w którym znajduje się kontener. | 
 | Uruchamiania | Przedstawia czas od momentu rozpoczęcia kontenera. |
 | Czas | Reprezentuje godzinę uruchomienia lub ponownego uruchomienia kontenera. |
-| Minimum trendu &nbsp;%, średnia &nbsp;%, pięćdziesiąt &nbsp;%, &nbsp; 90%, używany 95. &nbsp;%, maks. &nbsp; % | Trend wykresu słupkowego reprezentuje procentową metrykę percentylu kontenera. |
+| Minimum trendu&nbsp;%, średnia&nbsp;%, pięćdziesiąt&nbsp;%,&nbsp;90%, używany 95.&nbsp;%, maks.&nbsp;% | Trend wykresu słupkowego reprezentuje procentową metrykę percentylu kontenera. |
 
 Ikony w polu Stan wskazują stan online, zgodnie z opisem w poniższej tabeli.
  
@@ -307,4 +318,5 @@ Możesz uzyskać dostęp do tych skoroszytów, wybierając je z listy rozwijanej
 ## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z tematem [tworzenie alertów wydajności za pomocą Azure monitor dla kontenerów](container-insights-alerts.md) , aby dowiedzieć się, jak tworzyć alerty dotyczące wysokiego użycia procesora i pamięci w celu obsługi procesów i procedur operacyjnych DevOps.
+
 - Wyświetl [przykłady zapytań dotyczących dzienników](container-insights-log-search.md#search-logs-to-analyze-data) , aby wyświetlić wstępnie zdefiniowane zapytania i przykłady do oszacowania lub dostosowania do alertów, wizualizacji lub analizowania klastrów.

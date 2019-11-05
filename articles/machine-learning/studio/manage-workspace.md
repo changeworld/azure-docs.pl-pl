@@ -1,7 +1,7 @@
 ---
-title: Zarządzanie obszarem roboczym usługi Machine Learning Studio
-titleSuffix: Azure Machine Learning Studio
-description: Zarządzanie dostępem do obszarów roboczych usługi Azure Machine Learning Studio, wdrażanie i zarządzanie usługami sieci web interfejsu API usługi Machine Learning
+title: Zarządzanie obszarem roboczym Machine Learning Studio (klasycznym)
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Zarządzanie dostępem do obszarów roboczych Azure Machine Learning Studio (klasycznymi) oraz wdrażanie usług sieci Web interfejsu API Machine Learning i zarządzanie nimi
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,43 +10,43 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: a947f9a94dd4ceed624e6b04a671b21b8926d25e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f514079379143e001d72c0e6618c88e2fbb283b8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322791"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489228"
 ---
-# <a name="manage-an-azure-machine-learning-studio-workspace"></a>Zarządzanie obszarem roboczym usługi Azure Machine Learning Studio
+# <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Zarządzanie obszarem roboczym Azure Machine Learning Studio (klasycznym)
 
 > [!NOTE]
-> Aby uzyskać informacje o zarządzaniu usługami sieci Web w portalu usług sieci Web Machine Learning, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md).
+> Aby uzyskać informacje na temat zarządzania usługami sieci Web w portalu usług sieci Web Machine Learning, zobacz [Zarządzanie usługą sieci Web za pomocą portalu Azure Machine Learning Web Services](manage-new-webservice.md).
 > 
 > 
 
-Możesz zarządzać obszarami roboczymi usługi Machine Learning Studio, w witrynie Azure portal.
+W Azure Portal można zarządzać obszarami roboczymi Machine Learning Studio (klasycznymi).
 
 
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Aby zarządzać obszar roboczy Studio w witrynie Azure portal:
+Aby zarządzać obszarem roboczym Studio (klasycznego) w Azure Portal:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora subskrypcji platformy Azure.
-2. W polu wyszukiwania w górnej części strony, wprowadź "usługi machine learning Studio obszary robocze", a następnie wybierz pozycję **obszary robocze usługi Machine Learning Studio**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu konta administratora subskrypcji platformy Azure.
+2. W polu wyszukiwania w górnej części strony wprowadź "obszary robocze" Machine Learning Studio (klasyczne) ", a następnie wybierz **obszary robocze Machine Learning Studio (klasyczne)** .
 3. Kliknij obszar roboczy, który chcesz zarządzać.
 
-Oprócz informacji o zarządzaniu standardowych zasobów i dostępnych opcji możesz wykonywać następujące czynności:
+Oprócz dostępnych w warstwie Standardowa informacji i opcji zarządzania zasobami można:
 
-- Widok **właściwości** — ta strona wyświetla informacje o obszarze roboczym i zasobów, i możesz zmienić subskrypcję i grupę zasobów, ten obszar roboczy jest połączony z.
-- **Ponownie Synchronizuj klucze magazynu** — obszar roboczy przechowuje klucze do konta magazynu. Jeśli zmieni się na koncie magazynu kluczy, a następnie kliknięcie **ponowna synchronizacja kluczy** do zsynchronizowania kluczy z obszaru roboczego.
+- Wyświetl **Właściwości** — ta strona wyświetla informacje o obszarze roboczym i zasobach. można także zmienić subskrypcję i grupę zasobów, z którą jest połączony ten obszar roboczy.
+- **Ponowne synchronizowanie kluczy magazynu** — obszar roboczy obsługuje klucze do konta magazynu. Jeśli na koncie magazynu zmienią się klucze, można kliknąć przycisk **Synchronizuj ponownie klucze** , aby zsynchronizować klucze z obszarem roboczym.
 
-Aby zarządzać usługami sieci web skojarzony z tym obszarem roboczym Studio, użyj portalu usług sieci Web Machine Learning. Zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md) pełne informacje.
+Aby zarządzać usługami sieci Web skojarzonymi z tym obszarem roboczym programu Studio (klasycznym), użyj portalu usług sieci Web Machine Learning. Aby uzyskać pełne informacje [, zobacz Zarządzanie usługą sieci Web przy użyciu portalu usług sieci web Azure Machine Learning](manage-new-webservice.md) .
 
 > [!NOTE]
-> Do wdrażania i zarządzania nią nowych usług sieci web musi mieć przypisaną rolę współautorem lub administratorem subskrypcji, w której wdrażana jest usługa sieci web. Jeśli użytkownik Zaproś innego użytkownika do usługi machine learning Studio w obszarze roboczym, należy je przypisać do roli administratora lub współautora w subskrypcji przed wdrożeniem lub zarządzać usługami sieci web. 
+> Aby wdrożyć nowe usługi sieci Web lub zarządzać nimi, musisz mieć przypisaną rolę współautora lub administratora w subskrypcji, w której wdrożono usługę sieci Web. Jeśli zapraszasz innego użytkownika do obszaru roboczego usługi Machine Learning Studio (klasycznego), musisz przypisać go do roli współautor lub administrator w subskrypcji, aby można było wdrożyć usługi sieci Web lub zarządzać nimi. 
 > 
->Aby uzyskać więcej informacji o ustawianiu uprawnień dostępu, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
+>Aby uzyskać więcej informacji na temat ustawiania uprawnień dostępu, zobacz [Zarządzanie dostępem przy użyciu RBAC i Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [wdrażanie uczenie maszynowe przy użyciu szablonów usługi Azure Resource Manager](deploy-with-resource-manager-template.md). 
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się więcej o [wdrażaniu Machine Learning z szablonami Azure Resource Manager](deploy-with-resource-manager-template.md). 

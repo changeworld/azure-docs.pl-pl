@@ -1,5 +1,5 @@
 ---
-title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — architektura
+title: 'Architektura: Apache Hadoop lokalna do usługi Azure HDInsight'
 description: Poznaj najlepsze rozwiązania dotyczące architektury dotyczące migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4243100d74515576463a6812e31625ddc0ca1f48
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 4ef3cded9aba7bd95ecc48e1feadf6c55acd7bdc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735880"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499263"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania dotyczące architektury
 
@@ -32,11 +32,11 @@ Klastry usługi Azure HDInsight są przeznaczone do określonego typu obliczeń 
 |IoT/Streaming|Kafka, burza, Spark|
 |NoSQL transakcyjne przetwarzanie|HBase|
 |Interakcyjne i szybsze zapytania z buforowaniem w pamięci|Zapytanie interakcyjne|
-|Do nauki o danych|Usługi ML, Spark|
+|Nauka o danych|Usługi ML, Spark|
 
 W poniższej tabeli przedstawiono różne metody, których można użyć do utworzenia klastra usługi HDInsight.
 
-|**Narzędzie**|**Na podstawie przeglądarki**|**Wiersz polecenia**|**REST API**|**SDK**|
+|**Narzędzie**|**Na podstawie przeglądarki**|**Wiersz polecenia**|**Interfejs API REST**|**SDK**|
 |---|---|---|---|---|
 |[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|

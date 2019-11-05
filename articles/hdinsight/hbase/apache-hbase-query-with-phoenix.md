@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Kwerenda Apache HBase w usłudze Azure HDInsight — Apache Phoenix'
+title: 'Szybki Start: Apache HBase & Apache Phoenix — Azure HDInsight'
 description: W tym przewodniku szybki start dowiesz się, jak używać Apache Phoenix w usłudze HDInsight. Ponadto Dowiedz się, jak zainstalować i skonfigurować element SqlLine na komputerze, aby połączyć się z klastrem HBase w usłudze HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 20af6d32d03ae5d4fe37b1a37198ef1f2c50ec95
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: a6896eaad86c5e361c50cd81257131ee75a8d6a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312201"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467039"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Szybki Start: Kwerenda Apache HBase w usłudze Azure HDInsight z Apache Phoenix
 
@@ -47,7 +47,7 @@ Część danych wyjściowych będzie wyglądać podobnie do:
       }
 ```
 
-Zwróć uwagę na wartość `host_name` do późniejszego użycia.
+Zanotuj wartość `host_name` do późniejszego użycia.
 
 ## <a name="create-a-table-and-manipulate-data"></a>Tworzenie tabeli i manipulowanie danymi
 
@@ -108,7 +108,7 @@ Do łączenia się z klastrami HBase można użyć protokołu SSH, a następnie 
     DROP TABLE Company;
     ```
 
-10. Użyj polecenia SqlLine `!quit`, aby wyjść z SqlLine. Wprowadź następujące polecenie:
+10. Użyj polecenia SqlLine `!quit`, aby zakończyć działanie SqlLine. Wprowadź następujące polecenie:
 
     ```sqlline
     !quit

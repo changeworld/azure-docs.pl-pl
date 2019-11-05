@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 9a66e4ecf2230caad233a4eff12c0fadc95409d5
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45b45c6c9afd43b711fc548f470ce0f0acd04a0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803812"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464286"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Używanie kodera skompresowanych danych wejściowych audio z zestawem Speech SDK w systemie iOS
 
@@ -44,11 +44,11 @@ Ta struktura musi być uwzględniona we wszystkich aplikacjach, które używają
 
 Zastosuj następujące ustawienia w projekcie Xcode, aby to zrobić:
 
-1. Skopiuj tylko `GStreamerWrapper.framework` i strukturę zestawu Speech SDK Cognitive Services, który można pobrać z tego [miejsca](https://aka.ms/csspeech/iosbinary), do katalogu zawierającego przykładowy projekt.
+1. Skopiuj zarówno `GStreamerWrapper.framework`, jak i strukturę zestawu Speech SDK Cognitive Services, który można pobrać z tego [miejsca](https://aka.ms/csspeech/iosbinary), do katalogu zawierającego przykładowy projekt.
 1. Dostosuj ścieżki do struktur w *ustawieniach projektu*.
     1. Na karcie **Ogólne** w nagłówku **osadzone pliki binarne** Dodaj bibliotekę zestawu SDK jako strukturę: **Dodaj osadzone pliki binarne** > **Dodaj inne...** > przejdź do wybranego katalogu i wybierz obie platformy.
-    1. Przejdź do karty **Ustawienia kompilacji** i aktywuj **wszystkie** ustawienia.
-1. Dodaj katalog `$(SRCROOT)/..` do *ścieżki wyszukiwania struktury* pod nagłówkiem **ścieżki wyszukiwania** .
+    1. Przejdź do karty **Build Settings** (Ustawienia kompilacji) i aktywuj ustawienia **All** (Wszystko).
+1. Dodaj katalog `$(SRCROOT)/..` do pozycji *Framework Search Paths* (Ścieżki wyszukiwania struktury) w ramach nagłówka **Search Paths** (Ścieżki wyszukiwania).
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Przykładowy kod przy użyciu kodera skompresowanego sygnału audio
 
@@ -63,5 +63,5 @@ W następnym fragmencie kodu pokazano, jak skompresowane dane audio można odczy
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Uzyskaj subskrypcję wersji próbnej usługi Speech](https://azure.microsoft.com/try/cognitive-services/)
-- [Zobacz, jak rozpoznać mowęC#](quickstart-csharp-dotnet-windows.md)
+- [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+* [Zobacz jak rozpoznać mowę w języku Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

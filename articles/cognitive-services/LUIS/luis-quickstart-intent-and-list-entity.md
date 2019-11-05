@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Dokładne dopasowanie tekstu — LUIS'
+title: 'Samouczek: dokładne dopasowanie tekstu — LUIS'
 titleSuffix: Azure Cognitive Services
 description: Pobieraj dane, które są zgodne ze wstępnie zdefiniowaną listą elementów. Każdy element na liście może mieć synonimy, które są również dokładnie zgodne
 services: cognitive-services
@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307613"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492718"
 ---
-# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Samouczek: Uzyskiwanie dokładnych danych dopasowanych na podstawie tekstu z wypowiedzi
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Samouczek: uzyskiwanie dokładnych danych dopasowanych do tekstu z wypowiedź
 
 W tym samouczku dowiesz się, jak uzyskać dane jednostki zgodne ze wstępnie zdefiniowaną listą elementów. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -57,7 +59,7 @@ Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
+2. Wybierz pozycję**Create new intent** (Utwórz nową intencję). 
 
 3. Wprowadź ciąg `TransferEmployeeToDepartment` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe). 
 
@@ -78,7 +80,7 @@ Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
     |Steve Standish to 1234 (Steve Standish do 1234)|
     |Tanner Thompson to 3456 (Tanner Thompson do 3456)|
 
-    [![Zrzut ekranu przedstawiający intencję z przykładowymi wypowiedziami](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Zrzut ekranu przedstawiający intencję z przykładowymi wypowiedziami")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
+    [![Zrzut ekranu z intencją z przykładem wyrażenia długości](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Zrzut ekranu z intencją z przykładem wyrażenia długości")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
@@ -94,7 +96,7 @@ Podstawowa nazwa _kanoniczna_ każdego elementu to nazwa działu. Przykłady syn
 |Development Operations|DevOps<br>4949|
 |Inżynieria|inz<br>inznr<br>4567|
 |Finanse|fin<br>2020|
-|Technologie informatyczne|it<br>2323|
+|Technologie informatyczne|IT<br>2323|
 |Sprzedaż wewnętrzna|sprzedazw<br>sprzedazwewn<br>1414|
 |Badania i projektowanie|R&D<br>1234|
 
@@ -102,9 +104,9 @@ Podstawowa nazwa _kanoniczna_ każdego elementu to nazwa działu. Przykłady syn
 
 1. Wybierz pozycję **Create new entity** (Utwórz nową jednostkę).
 
-1. W oknie podręcznym jednostki wprowadź ciąg `Department` jako nazwę jednostki i wartość **List** (Lista) jako typ jednostki. Wybierz pozycję **Done** (Gotowe).  
+1. W oknie podręcznym jednostki wprowadź `Department` jako nazwę jednostki i **Lista** (Lista) jako typ jednostki. Wybierz pozycję **Done** (Gotowe).  
 
-    [![Zrzut ekranu przedstawiający wyskakujące okno dialogowe tworzenia nowej jednostki](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe tworzenia nowej jednostki")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
+    [![Zrzut ekranu przedstawiający tworzenie nowego okna podręcznego jednostki](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Zrzut ekranu przedstawiający tworzenie nowego okna podręcznego jednostki")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
 1. Na stronie jednostki Department (Dział) wprowadź `Accounting` jako nową wartość.
 

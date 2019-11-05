@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 26d66868ab4c003dbd962e0c94009bc38bb36345
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f8793975d920e24924fca7c2ae366f70972e6ab7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558841"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468619"
 ---
 # <a name="support-and-help-options"></a>Pomoc techniczna i opcje pomocy
 
@@ -37,7 +37,7 @@ Wiadomości dotyczące Cognitive Services są zbierane w [blogu Cognitive Servic
 
 [Informacje o wersji](https://aka.ms/csspeech/whatsnew) są aktualizowane zaraz po udostępnieniu nowej wersji. Notatki zawierają informacje dotyczące nowych funkcji, ulepszeń i poprawek błędów.
 
-## <a name="search"></a>Wyszukaj
+## <a name="search"></a>Wyszukiwanie
 
 Możesz znaleźć wymaganą odpowiedź w dokumentacji, przykłady lub odpowiedzi na pytania [Stack Overflow](https://www.stackoverflow.com) lub przykłady.
 
@@ -64,14 +64,14 @@ Stack Overflow jest preferowanym kanałem dla pytań związanych z programowanie
 
 Jeśli nie możesz znaleźć odpowiedzi na problem za pośrednictwem wyszukiwania, Prześlij nowe pytanie do Stack Overflow. Przy formułowaniu pytania Użyj jednego z następujących tagów:
 
-|Składnik/obszar  |`Tags`  |
+|Składnik/obszar  |Tagi  |
 |---------|---------|
 |Rozpoznawanie mowy |[[Microsoft-poznawcze + Zamiana mowy na tekst]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
 |Synteza mowy |[[Microsoft-poznawcze + Zamiana tekstu na mowę]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|Tłumaczenie mowy |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
+|Tłumaczenie mowy |[[Microsoft-poznawcze + tłumaczenie]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
 |Zamiar mowy |[[Microsoft-poznawcze + Luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
 |Ogólny zestaw mowy SDK |[[Microsoft-poznawcze + Microsoft-Speech-API]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-| Wirtualne Asystenci z dźwiękiem (wersja zapoznawcza) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
+|Asystenci głosu | [[Microsoft-poznawcze + Virtual-Assistant + botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
 
 > [!TIP]
 > Poniższe wpisy z Stack Overflow zawierają wskazówki dotyczące sposobu tworzenia pytań i dodawania kodu źródłowego. Postępując zgodnie z tymi wskazówkami, można zwiększyć szansę, że członkowie społeczności oceniają i reagują na pytania szybko:  

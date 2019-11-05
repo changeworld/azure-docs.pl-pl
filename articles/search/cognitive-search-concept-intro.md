@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 27578e50c56a9c7dac3d74b88e14d0f8fbe9d402
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 97622df578b6c1357601b32a22c806e9eef77c96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784992"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466872"
 ---
-# <a name="introduction-to-ai-enrichment-in-azure-cognitive-search"></a>Wprowadzenie do wzbogacania AI na platformie Azure Wyszukiwanie poznawcze
+# <a name="introduction-to-ai-in-azure-cognitive-search"></a>Wprowadzenie do AI na platformie Azure Wyszukiwanie poznawcze
 
-Wzbogacanie AI jest funkcją indeksowania Wyszukiwanie poznawcze platformy Azure, służącą do wyodrębniania tekstu z obrazów, obiektów blob i innych źródeł danych bez struktury — wzbogacanie zawartości w celu łatwiejszego wyszukiwania w indeksie lub sklepie z bazami informacji. Wyodrębnianie i wzbogacanie są implementowane przez *umiejętności poznawcze* dołączone do potoku indeksowania. Umiejętności poznawcze należą do następujących kategorii: 
+Wzbogacanie AI jest funkcją indeksowania Wyszukiwanie poznawcze platformy Azure, służącą do wyodrębniania tekstu z obrazów, obiektów blob i innych źródeł danych bez struktury — wzbogacanie zawartości w celu łatwiejszego wyszukiwania w indeksie lub sklepie z bazami informacji. Wyodrębnianie i wzbogacanie są implementowane przez *umiejętności poznawcze* dołączone do potoku indeksowania. Umiejętności poznawcze wbudowane w usługę należą do następujących kategorii: 
 
 + Umiejętności **przetwarzania języka naturalnego** obejmują [rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md), [wykrywanie języka](cognitive-search-skill-language-detection.md), [wyodrębnianie kluczowych fraz](cognitive-search-skill-keyphrases.md), manipulowanie tekstem i [wykrywanie tonacji](cognitive-search-skill-sentiment.md). Dzięki tym umiejętnościom tekst niestrukturalny może przyjąć nowe formularze, zamapowane jako pola umożliwiające wyszukiwanie i filtrowanie w indeksie.
 
@@ -36,6 +36,12 @@ Przetwarzanie języka naturalnego i obrazu jest stosowane w fazie pozyskiwania d
 
 ## <a name="when-to-use-cognitive-skills"></a>Kiedy korzystać z umiejętności poznawczych
 
+Należy rozważyć użycie wbudowanych umiejętności poznawczych, jeśli nieprzetworzona zawartość jest tekstem bez struktury, zawartością obrazu lub treścią wymagającą wykrywania i tłumaczenia języka. Zastosowanie AI przy użyciu wbudowanych umiejętności poznawczych pozwala odblokować tę zawartość, zwiększając jej wartość i narzędzie w aplikacjach do wyszukiwania i analizy danych. 
+
+Ponadto możesz rozważyć dodanie niestandardowej umiejętności, jeśli masz kod typu open source, innej firmy lub kodu pierwszej firmy, który chcesz zintegrować z potokiem. Modele klasyfikacji, które identyfikują charakterystyki najważniejsze różnych typów dokumentów, należą do tej kategorii, ale można również użyć dowolnego pakietu, który dodaje wartość do zawartości.
+
+### <a name="more-about-built-in-skills"></a>Więcej informacji na temat umiejętności wbudowanych
+
 Zestawu umiejętności, który jest montowany przy użyciu wbudowanych umiejętności, jest odpowiedni dla następujących scenariuszy aplikacji:
 
 + Zeskanowane dokumenty (JPEG), które mają być używane do wyszukiwania pełnotekstowego. Możesz dołączyć umiejętność optycznego rozpoznawania znaków (OCR) do identyfikowania, wyodrębniania i pozyskiwania tekstu z plików JPEG.
@@ -49,6 +55,8 @@ Zestawu umiejętności, który jest montowany przy użyciu wbudowanych umiejętn
   Obiekty blob w szczególności często zawierają dużą treść zawartości zapakowanej do pojedynczego "pola". Dołączając umiejętność przetwarzania obrazów i języka naturalnego do indeksatora, można utworzyć nowe informacje, które są extant w nieprzetworzonej zawartości, ale nie są w inny sposób naliczone jako odrębne pola. Niektóre gotowe do użycia umiejętności poznawcze, które mogą pomóc: Wyodrębnianie kluczowych fraz, analiza tonacji oraz rozpoznawanie jednostek (osoby, organizacje i lokalizacje).
 
   Ponadto wbudowane umiejętności mogą również służyć do zmiany struktury zawartości poprzez operacje dzielenia tekstu, scalania i kształtowania.
+
+### <a name="more-about-custom-skills"></a>Więcej informacji na temat umiejętności niestandardowych
 
 Umiejętności niestandardowe mogą obsługiwać bardziej złożone scenariusze, takie jak rozpoznawanie formularzy lub wykrywanie jednostek niestandardowych przy użyciu udostępnianego modelu i zawijania w [niestandardowym interfejsie sieci Web](cognitive-search-custom-skill-interface.md). Kilka przykładów umiejętności niestandardowych obejmuje [aparat rozpoznawania formularzy](/azure/cognitive-services/form-recognizer/overview), integrację [interfejs API wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)i [niestandardowego rozpoznawania jednostek](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
@@ -125,7 +133,7 @@ Zalecamy korzystanie z bezpłatnej usługi na potrzeby uczenia się, ale liczba 
 
 **Krok 3. Przegląd interfejsu API**
 
-@No__t_0 REST można używać w przypadku żądań lub zestawu .NET SDK. W przypadku eksplorowania sklepu z bazami danych należy zamiast tego użyć interfejsu API REST (`api-version=2019-05-06-Preview`).
+`api-version=2019-05-06` REST można używać w przypadku żądań lub zestawu .NET SDK. W przypadku eksplorowania sklepu z bazami danych należy zamiast tego użyć interfejsu API REST (`api-version=2019-05-06-Preview`).
 
 Ten krok powoduje użycie interfejsów API REST w celu utworzenia rozwiązania do wzbogacania AI. Tylko dwa interfejsy API są dodawane lub rozszerzane pod kątem wzbogacenia AI. Inne interfejsy API mają taką samą składnię jak ogólnie dostępne wersje.
 
